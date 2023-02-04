@@ -1,0 +1,24 @@
+pkgbase = apprise
+	pkgdesc = Push Notifications that work with just about every platform
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/caronc/apprise
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-certifi
+	depends = python-click
+	depends = python-dataclasses
+	depends = python-markdown
+	depends = python-requests
+	depends = python-requests-oauthlib
+	depends = python-yaml
+	provides = apprise
+	conflicts = python-apprise
+	options = !strip
+	source = https://github.com/caronc/apprise/releases/download/v1.2.1/apprise-1.2.1.tar.gz
+	sha256sums = 67e0c227eecee260000980dbbf8ba1e5eebdbe494f4730808297c9e645c03579
+
+pkgname = apprise
