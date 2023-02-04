@@ -3,7 +3,7 @@
 # Contributor: aspen <aspen@aspenuwu.me>
 pkgname=zulip-desktop-electron
 pkgver=5.9.4
-pkgrel=1
+pkgrel=2
 _electronversion=22
 pkgdesc="Real-time team chat based on the email threading model"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("${pkgname%-*}-$pkgver.tar.gz::https://github.com/zulip/zulip-desktop/ar
         "${pkgname%-*}.desktop"
         "${pkgname%-*}.sh.in")
 sha256sums=('4127a6a9bfef2acb8a6e9865e8d5d1e4033857029dad609a1cfa6cd4e68a278d'
-            '9e10e4d48fd5b31e4bcff176887f9d820153e46f159b0b6b28bdc35bb0ec8233'
+            '8f3440dc9195c6763de16f8b13409a5c130bdf417015e7e27bb64fdb227f4f10'
             '70ed0f08158c6ea8ef99dbbe360861e2c63911c2fadc74c0154bd6567abc8979')
 
 build() {
