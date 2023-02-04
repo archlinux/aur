@@ -3,8 +3,8 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}-hidpi-xprop-git"
-pkgver=r2401.32d56fec
-pkgrel=2
+pkgver=r2416.760b37f7
+pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=(any)
 url="https://github.com/hyprwm/Hyprland"
@@ -100,5 +100,6 @@ package() {
 	install -Dm644 example/hyprland.desktop -t "${pkgdir}/usr/share/wayland-sessions"
 	install -Dm644 example/hyprland.conf -t "${pkgdir}/usr/share/hyprland"
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+	install -Dm644 docs/*.1 -t "${pkgdir}/usr/share/man/man1"
 	install -Dm755 ../tmpwlr/lib/libwlroots.so.* -t "${pkgdir}/usr/lib"
 }
