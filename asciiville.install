@@ -1,0 +1,66 @@
+post_install() {
+  lol_inst=`type -p lolcat`
+  if [ ! "${lol_inst}" ]
+  then
+    gem_inst=`type -p gem`
+    if [ "${gem_inst}" ]
+    then
+      wget_inst=`type -p wget`
+      if [ "${wget_inst}" ]
+      then
+        unzip_inst=`type -p unzip`
+        if [ "${unzip_inst}" ]
+        then
+          wget --quiet https://github.com/busyloop/lolcat/archive/master.zip
+          unzip -qq master.zip
+          cd lolcat-master/bin
+          gem install lolcat
+          cd ../..
+          rm -f master.zip
+          rm -rf lolcat-master
+        fi
+      fi
+    fi
+  fi
+
+  FIGLET_DIR="/usr/share/figlet-fonts"
+  FIGLET_ZIP="figlet-fonts.zip"
+  zip_inst=`type -p zip`
+  if [ "${zip_inst}" ]
+  then
+    python -m pip install setuptools 2> /dev/null
+    pyfig_inst=`type -p pyfiglet`
+    [ "${pyfig_inst}" ] || {
+      python -m pip install pyfiglet 2> /dev/null
+      pyfig_inst=`type -p pyfiglet`
+    }
+    if [ "${pyfig_inst}" ]
+    then
+      if [ -d ${FIGLET_DIR} ]
+      then
+        cd ${FIGLET_DIR}
+        zip -q ${FIGLET_ZIP} *.flf
+        pyfiglet -L ${FIGLET_ZIP}
+        rm -f ${FIGLET_ZIP}
+      fi
+    fi
+  fi
+
+  printf "%b\n" "${ascin}"
+}
+
+post_remove() {
+  if [ -f /etc/profile.d/asciiville.sh ]
+  then
+    rm -f /etc/profile.d/asciiville.sh
+  fi
+}
+
+read -d '' ascin <<'EOF'
+Perform the following post-installation initialization:
+  - Run the 'ascinit' command as your normal user (REQUIRED)
+
+View additional post-installation configuration details at:
+  - https://github.com/doctorfree/Asciiville#readme
+  - https://github.com/doctorfree/Asciiville/wiki
+EOF
