@@ -1,6 +1,6 @@
 pkgbase = v2raya-git
 	pkgdesc = v2rayA nightly version
-	pkgver = 20221106.r1233.866642b
+	pkgver = 20230204.r1293.d626ba1
 	pkgrel = 1
 	url = https://github.com/v2rayA/v2rayA
 	install = .INSTALL
