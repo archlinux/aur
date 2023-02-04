@@ -1,0 +1,16 @@
+# Maintainer: Vaporeon <vaporeon@vaporeon.io>
+
+pkgname=sal
+pkgdesc="Markers for documenting the semantics of APIs"
+pkgver=20220802
+pkgrel=1
+arch=('x86_64')
+makedepends=('cmake')
+url="https://github.com/dotnet/runtime"
+license=('MIT')
+source=(https://raw.githubusercontent.com/dotnet/runtime/2201016c1e13bdb9abf49e2e38cadf4ee0568df2/src/coreclr/pal/inc/rt/sal.h)
+sha256sums=('7dae281adc3a09a691291fb90526f05e4f9ef8b16d7f33d716ba690f7241a492')
+
+package() {
+  install -Dm644 sal.h "${pkgdir}/usr/include/sal.h"
+}
