@@ -1,6 +1,6 @@
 pkgbase = drawio-desktop-bin
 	pkgdesc = Diagram drawing application built on web technology
-	pkgver = 20.8.10
+	pkgver = 20.8.16
 	pkgrel = 1
 	url = https://github.com/jgraph/drawio-desktop
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = drawio-desktop-bin
 	depends = nss
 	provides = drawio-desktop
 	conflicts = drawio-desktop
-	source = drawio-desktop-bin-20.8.10.deb::https://github.com/jgraph/drawio-desktop/releases/download/v20.8.10/drawio-amd64-20.8.10.deb
-	sha256sums = ecfc8e5500961402e953c2dce874df2634f2a515a5ca7b0eaad096855e911cae
+	source = drawio-desktop-bin-20.8.16.deb::https://github.com/jgraph/drawio-desktop/releases/download/v20.8.16/drawio-amd64-20.8.16.deb
+	sha256sums = 46f6a606b80b5c41764194a90c33f3382f18509b9f00376e4c41e4f9db8e037d
 
 pkgname = drawio-desktop-bin
