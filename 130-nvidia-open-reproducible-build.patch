@@ -1,6 +1,6 @@
 --- a/utils.mk
 +++ b/utils.mk
-@@ -101,16 +101,13 @@ MKDIR                 ?= mkdir -p
+@@ -104,16 +104,13 @@ MKDIR                 ?= mkdir -p
  RM                    ?= rm -f
  TOUCH                 ?= touch
  HARDLINK              ?= ln -f
@@ -16,7 +16,7 @@
 -  HOSTNAME             = $(shell hostname)
 -endif
 +WHOAMI                ?= printf '%s\n' archlinux_builder
-+HOSTNAME              ?= printf '%s\n' archlinux
++HOSTNAME              ?= archlinux
  
  
  NV_AUTO_DEPEND        ?= 1
