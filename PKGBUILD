@@ -3,7 +3,7 @@
 pkgname=nepali-calendar-gtk-git
 _pkgname=nepali-calendar
 pkgver=r27.3ea885a
-pkgrel=1
+pkgrel=2
 pkgdesc="A nepali calendar built with gtk3"
 
 arch=("any") #or x86_64 or any architectures that might support
