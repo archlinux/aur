@@ -1,5 +1,12 @@
-post_install(){
-    install -d /var/log/alist/
-    install -d /var/lib/alist/
-    install -d /var/cache/alist/temp
+post_upgrade(){
+    echo "from alist 3.9.2-3, the alist user is used to run this service"
+    echo "if you are upgrading from a previous version"
+    echo "you have to run  the following commands in green only once"
+
+    echo -e "\e[32m sudo chown -R alist:alist /var/lib/alist \e[0m"
+    echo -e "\e[32m sudo chown -R alist:alist /var/log/alist \e[0m"
+    echo -e "\e[32m sudo chown -R alist:alist /etc/alist \e[0m"
+    echo -e "\e[32m sudo chown -R alist:alist /var/cache/alist \e[0m"
+
+    echo "and chown any other local files that are served by alist"
 }

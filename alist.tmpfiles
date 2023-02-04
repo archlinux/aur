@@ -1,0 +1,6 @@
+#Type   Path                            Mode    User    Group   Age     Argument
+d       /var/lib/alist                  0755    alist   alist   -       -
+d       /var/log/alist                  0755    alist   alist   -       -
+d       /var/cache/alist                0755    alist   alist   -       -
+d       /etc/alist                      0755    alist   alist   -       -
+L       /etc/alist/config.json          0644    alist   alist   -       /var/lib/alist/config.json

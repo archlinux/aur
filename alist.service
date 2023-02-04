@@ -4,6 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
+User=alist
 WorkingDirectory=/var/lib/alist
 ExecStart=/usr/bin/alist server --data /var/lib/alist
 Restart=on-failure
