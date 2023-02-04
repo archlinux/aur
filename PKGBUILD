@@ -19,11 +19,9 @@ source=(
   "${pkgname}.sh"
   "${pkgname}.csh"
 )
-sha256sums=(
-  "345f730b78bcdadbe9096a666a41b9d588f885dd94f84514bf10b9483d18c2e5"
-  "1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a"
-  "7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f"
-)
+sha256sums=('345f730b78bcdadbe9096a666a41b9d588f885dd94f84514bf10b9483d18c2e5'
+            '1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a'
+            '7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f')
 
 build() {
   rm -rf "${srcdir}/${pkgname}/bin/cache" "${srcdir}/${pkgname}/.pub-cache"
