@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=diamond-editor
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Compact text editor designed for programmers'
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("https://github.com/copperspice/diamond/archive/diamond-${pkgver}/${pkgn
         '010-diamond-editor-do-not-copy-cs-libs.patch'
         'diamond-editor.desktop'
         'diamond-editor.sh')
-sha256sums=('d100563a5c3a890f30eca68636167ed42cc3839d17b5d1817428543d82502dba'
+sha256sums=('1dcbe0a55593bdcaa619bb45c509300491970d8e6c9ce3b0cb801577ce54d8ce'
             'e1fad1a3ea74dd9e780e5586964d9e69b4f4be2d2380dc771f52eac44f9e76ba'
             'e114cad024aa5d6768bd50fabe51c311e37a4a7969382ace8c16878a06b824e4'
             '16f8c39d44c7dfcf9784a6b0414af4aa266a67de10e17bffb6fd5ea43a95e48a')
@@ -31,7 +31,7 @@ build() {
 }
 
 package() {
-    make -C build DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake --install build
     mkdir -p "$pkgdir"{/opt/diamond-editor/{platforms,printerdrivers},/usr/share/pixmaps}
     install -D -m755 diamond-editor.sh "${pkgdir}/usr/bin/diamond-editor"
     install -D -m644 diamond-editor.desktop -t "${pkgdir}/usr/share/applications"
