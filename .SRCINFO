@@ -1,0 +1,19 @@
+pkgbase = gfh
+	pkgdesc = Git FIDO Helper - Sign your Git commits with multiple resident SSH keys
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/Ovyerus/gfh
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	makedepends = openssl
+	provides = gfh
+	conflicts = gfh
+	source = gfh-0.0.4.tar.gz::https://static.crates.io/crates/gfh/gfh-0.0.4.crate
+	sha256sums = 4cd9d0e9ababcd925a2e865b1106e86cc4303296ba4733d335b097cef7755a24
+
+pkgname = gfh
