@@ -1,15 +1,15 @@
 pkgname=youtubemusic
 _pkgname=YoutubeMusic
-pkgver=1.0.5
-pkgrel=2
+pkgver=1.0.6
+pkgrel=1
 pkgdesc="Youtube Music is a unofficial client to play your music."
 arch=('x86_64' 'aarch64')
-url="https://gitlab.com/youtube-music/application"
+url="https://gitlab.com/tubidesktop/application"
 license=('GPL')
 replaces=("youtubemusic-bin")
 conflicts=("youtubemusic-bin")
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
-source=("https://gitlab.com/youtube-music/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
+source=("https://gitlab.com/tubidesktop/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
 sha256sums=('SKIP')
 
 package() {

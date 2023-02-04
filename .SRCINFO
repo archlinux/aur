@@ -1,8 +1,8 @@
 pkgbase = youtubemusic
 	pkgdesc = Youtube Music is a unofficial client to play your music.
-	pkgver = 1.0.5
-	pkgrel = 2
-	url = https://gitlab.com/youtube-music/application
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://gitlab.com/tubidesktop/application
 	arch = x86_64
 	arch = aarch64
 	license = GPL
@@ -13,7 +13,7 @@ pkgbase = youtubemusic
 	depends = git
 	conflicts = youtubemusic-bin
 	replaces = youtubemusic-bin
-	source = https://gitlab.com/youtube-music/application/-/archive/1.0.5-2/application-1.0.5-2.tar.bz2
+	source = https://gitlab.com/tubidesktop/application/-/archive/1.0.6-1/application-1.0.6-1.tar.bz2
 	sha256sums = SKIP
 
 pkgname = youtubemusic
