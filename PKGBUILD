@@ -2,12 +2,12 @@
 
 pkgname="apprise"
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Push Notifications that work with just about every platform"
 url="https://github.com/caronc/apprise"
 license=("MIT")
 arch=("any")
-provides=("apprise")
+provides=("apprise" "python-apprise")
 conflicts=("python-apprise")
 depends=(
         "python-certifi"
