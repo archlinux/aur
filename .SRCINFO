@@ -2,13 +2,13 @@ pkgbase = cal8tor-git
 	pkgdesc = Timetable extractor for the computer science degree of Paris 8
 	pkgver = r121.98624cc
 	pkgrel = 1
-	url = https://git.kennel.ml/Anri/cal8tor
+	url = https://git.mylloon.fr/Anri/cal8tor
 	arch = x86_64
 	makedepends = git
 	makedepends = cargo
 	provides = cal8tor
 	conflicts = cal8tor
-	source = cal8tor::git+https://git.kennel.ml/Anri/cal8tor.git
+	source = cal8tor::git+https://git.mylloon.fr/Anri/cal8tor.git
 	md5sums = SKIP
 
 pkgname = cal8tor-git
