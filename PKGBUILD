@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tidybayes
-_pkgver=3.0.2
+_pkgver=3.0.3
 pkgname=r-${_pkgname,,}
-pkgver=3.0.2
-pkgrel=3
+pkgver=3.0.3
+pkgrel=1
 pkgdesc="Tidy Data and 'Geoms' for Bayesian Models"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -60,7 +60,7 @@ optdepends=(
   r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a2dd0ddbdaa8d169af0c14de09190cb90cb2d611a86a33a6261929f46017c700')
+sha256sums=('9f49d1fd4dd5184319510eb1b372e493de27b098dfaba4e20262b9438ebe7ddb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
