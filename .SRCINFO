@@ -1,7 +1,7 @@
 pkgbase = swaylock-corrupter
 	pkgdesc = Swaylock integrated with Simple image glitcher
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/r00tman/corrupter
 	arch = x86_64
 	license = BSD 2-Clause
