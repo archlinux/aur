@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=copperspice
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc='Libraries for developing cross platform software applications in C++'
 arch=('x86_64')
@@ -19,8 +19,8 @@ makedepends=('cmake' 'alsa-lib' 'mariadb-libs' 'postgresql' 'postgresql-libs'
 options=('!lto')
 source=("https://github.com/copperspice/copperspice/archive/cs-${pkgver}/${pkgname}-${pkgver}.tar.gz"
         '010-copperspice-fix-cmake-include-dirs.patch')
-sha256sums=('33eecd475f77b347343806e94d80efc68523acae3d382fba4a29b36a1d0cc505'
-            'f383d50fe4b3a6ba428dbc1a4822173aff1bd2ba57efb31c8bd977f75db5c3e8')
+sha256sums=('c3992575bd9eaf01b0c5333c8fecb16c997201f6b56b703ae9f33d5a1a8e24e1'
+            '1bef08debd977fb08861552e39e2752459c5fe9743d9d593bc135f5978df9c46')
 
 prepare() {
     patch -d "copperspice-cs-${pkgver}" -Np1 -i "${srcdir}/010-copperspice-fix-cmake-include-dirs.patch"
@@ -32,12 +32,13 @@ build() {
         -DCMAKE_INSTALL_BINDIR:PATH='lib/copperspice/bin' \
         -DCMAKE_INSTALL_INCLUDEDIR:PATH='include/copperspice' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DCMAKE_SKIP_RPATH:BOOL='YES' \
         -Wno-dev
     make -C build
 }
 
 package() {
-    make -C build DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake --install build
     
     local _file
     mkdir -p "${pkgdir}/usr/bin"
