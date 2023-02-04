@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=copperspice-git
-pkgver=1.8.0.r0.g07be95f61
+pkgver=1.8.1.r0.g7044f2831
 pkgrel=1
 pkgdesc='Libraries for developing cross platform software applications in C++ (git version)'
 arch=('x86_64')
@@ -22,7 +22,7 @@ options=('!lto')
 source=('git+https://github.com/copperspice/copperspice.git'
         '010-copperspice-fix-cmake-include-dirs.patch')
 sha256sums=('SKIP'
-            'f383d50fe4b3a6ba428dbc1a4822173aff1bd2ba57efb31c8bd977f75db5c3e8')
+            '1bef08debd977fb08861552e39e2752459c5fe9743d9d593bc135f5978df9c46')
 
 prepare() {
     patch -d copperspice -Np1 -i "${srcdir}/010-copperspice-fix-cmake-include-dirs.patch"
@@ -38,12 +38,13 @@ build() {
         -DCMAKE_INSTALL_BINDIR:PATH='lib/copperspice/bin' \
         -DCMAKE_INSTALL_INCLUDEDIR:PATH='include/copperspice' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DCMAKE_SKIP_RPATH:BOOL='YES' \
         -Wno-dev
     make -C build
 }
 
 package() {
-    make -C build DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake --install build
     
     local _file
     mkdir -p "${pkgdir}/usr/bin"

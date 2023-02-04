@@ -1,6 +1,6 @@
 pkgbase = copperspice-git
 	pkgdesc = Libraries for developing cross platform software applications in C++ (git version)
-	pkgver = 1.8.0.r0.g07be95f61
+	pkgver = 1.8.1.r0.g7044f2831
 	pkgrel = 1
 	url = https://www.copperspice.com/
 	arch = x86_64
@@ -48,6 +48,6 @@ pkgbase = copperspice-git
 	source = git+https://github.com/copperspice/copperspice.git
 	source = 010-copperspice-fix-cmake-include-dirs.patch
 	sha256sums = SKIP
-	sha256sums = f383d50fe4b3a6ba428dbc1a4822173aff1bd2ba57efb31c8bd977f75db5c3e8
+	sha256sums = 1bef08debd977fb08861552e39e2752459c5fe9743d9d593bc135f5978df9c46
 
 pkgname = copperspice-git
