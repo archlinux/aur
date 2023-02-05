@@ -1,14 +1,14 @@
 pkgbase = lua-luaprompt
 	pkgdesc = An embeddable Lua command prompt as well as a stand-alone interpreter with pretty-printing and autocompletion.
 	pkgver = 0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dpapavas/luaprompt
 	arch = i686
 	arch = x86_64
 	license = custom
+	depends = lua
 	depends = lua-argparse
-	source = https://github.com/dpapavas/luaprompt/archive/v0.7.tar.gz
+	source = lua-luaprompt-0.7::https://github.com/dpapavas/luaprompt/archive/v0.7.tar.gz
 	md5sums = eca026f5b6d294c9e6828b67a7c3447f
 
 pkgname = lua-luaprompt
-
