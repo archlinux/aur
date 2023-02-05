@@ -1,0 +1,17 @@
+pkgbase = euclidean-rhythms
+	pkgdesc = An implementation of the Euclidean rhythms idea in the form of an LV2 plugin
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/bruno-unna/euclidean-rhythms
+	arch = x86_64
+	groups = lv2-plugins
+	groups = pro-audio
+	license = GPL3
+	makedepends = lv2>=1.18.10
+	makedepends = meson>=1.0.0
+	makedepends = ninja>=1.11.1
+	optdepends = ardour: to have a host for the plugin
+	source = euclidean-rhythms-0.1.1.tar.gz::https://github.com/bruno-unna/euclidean-rhythms/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 447d3799ba4afe89cd388cc3ab1b558b1806d6127313fb678f53235b4915a361
+
+pkgname = euclidean-rhythms
