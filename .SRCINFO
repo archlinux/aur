@@ -10,5 +10,6 @@ pkgbase = scorespy-launcher
 	noextract = scorespy-launcher_0.12.426.AppImage
 	options = !strip
 	source = scorespy-launcher_0.12.426.AppImage::https://launcher.scorespy.online/dist/ScoreSpy%20Launcher-0.12.426.AppImage
+	sha1sums = b6723bb1b9f20ca8e1fa1067d221e584eaefe3b7
 
 pkgname = scorespy-launcher
