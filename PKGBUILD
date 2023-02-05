@@ -3,7 +3,7 @@
 pkgbase=nvidia-open-beta
 pkgname=('nvidia-open-beta' 'nvidia-open-beta-dkms')
 pkgver=525.85.12
-pkgrel=1
+pkgrel=2
 pkgdesc='NVIDIA open GPU kernel modules (beta version)'
 arch=('x86_64')
 url='https://github.com/NVIDIA/open-gpu-kernel-modules/'
@@ -47,7 +47,7 @@ build() {
 }
 
 package_nvidia-open-beta() {
-    depends=('linux' "nvidia-utils-beta=${pkgver}" 'libglvnd')
+    depends=('linux' 'libglvnd' "nvidia-utils-beta>=${pkgver%.*}")
     provides=("nvidia-open=${pkgver}" 'NVIDIA-MODULE')
     conflicts=('nvidia-open' 'NVIDIA-MODULE')
     
@@ -70,7 +70,7 @@ package_nvidia-open-beta() {
 
 package_nvidia-open-beta-dkms() {
     pkgdesc="$(sed 's/(\(beta[[:space:]]version\)/(sources; \1/' <<< "$pkgdesc")"
-    depends=('dkms' "nvidia-utils-beta=${pkgver}" 'libglvnd')
+    depends=('dkms' 'libglvnd' "nvidia-utils-beta>=${pkgver%.*}")
     provides=("nvidia-open=${pkgver}" 'NVIDIA-MODULE')
     conflicts=('nvidia-open' 'NVIDIA-MODULE')
     
