@@ -1,0 +1,22 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Icon=treeviewx
+Exec=tv %f
+Name=TreeView X
+GenericName=Tree Plotter
+GenericName[en]=Tree Plotter
+GenericName[fr]=Traceur d'arbres
+GenericName[pt_BR]=Plotador de árvores
+GenericName[it]=Plotter di Alberi
+Keywords=phylogenetic;tree;dendrogram;NEXUS;Newick
+Comment=Displays, modifies, prints and exports in SVG format phylogenetic trees
+Comment[en]=Displays, modifies, prints and exports in SVG format phylogenetic trees
+Comment[fr]=Affiche, modifie, imprime et exporte au format SVG des arbres phyolgénétiques
+Comment[pt_BR]=Exibe, modifica e exporta em formato SVG árvores filogenéticas
+Comment[it]=Mostra, modifica, stampa ed esporta in formato SVG alberi filogenetici
+Type=Application
+Categories=Biology;Science;Education;
+MimeType=text/x-clustalw-tree;
+
+
