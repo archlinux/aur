@@ -1,7 +1,7 @@
 pkgbase = spdk
 	pkgdesc = spdk: headers, libs, and scripts
 	pkgver = 23.01
-	pkgrel = 2
+	pkgrel = 3
 	url = https://spdk.io/
 	arch = x86_64
 	license = BSD
@@ -35,4 +35,5 @@ pkgname = python-spdk
 	depends = python-configshell-fb
 	depends = python-grpcio
 	depends = python-google-api-core
+	depends = python-pyparsing
 	depends = python-ipaddress
