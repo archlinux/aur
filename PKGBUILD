@@ -1,9 +1,10 @@
 # Maintainer: Sergey Shatunov <me@prok.pw>
 
 pkgname=dracut-uefi-hook
-pkgver=5
+pkgver=6
 pkgrel=1
 pkgdesc="Install/update/removal hooks for dracut unifed uefi image generation"
+url="https://aur.archlinux.org/packages/dracut-uefi-hook/"
 arch=(any)
 license=('MIT')
 depends=(dracut systemd binutils util-linux)
@@ -13,12 +14,12 @@ source=('90-dracut-uefi-install.hook'
         'dracut-uefi-remove'
         'dracut-uefi-hook.conf')
 sha256sums=('7c6aae6a733582fd16852e949565493bb6af1a555ab755f1bf86b136df74244c'
-            '0fb3d028214ff7579386ca4b172a88fb7edb88b81286cfb7f82bd511d2f91832'
-            '6f46e36799905c21b9b2a24a4bde415bad855e6e2c9a886c6bf22cd4dc4fb8c0'
+            'e2a04362ed1b0d462a33444921c5e15e4a82ed34f9848b4fbad554e51fd10207'
+            'eaafe8afd0727b24861d4f98702294d9ab8c0658f5d62c24aa3858b4b7e892dd'
             '8af469ab5647cd15c9370b4c44af422df99887105aca30531c0d4c7b92889f9d'
             '86a65fe822bff87a51e7fece85159a62a77a8f71f015d6400f6693d44dba9464')
 backup=(etc/dracut-uefi-hook.conf)
-url="https://aur.archlinux.org/packages/dracut-uefi-hook/"
+provides=(dracut-hook)
 conflicts=(dracut-hook-uefi)
 
 package() {

@@ -2,6 +2,7 @@
 Type = Path
 Operation = Remove
 Target = usr/lib/modules/*/pkgbase
+Target = usr/src/*/dkms.conf
 
 [Action]
 Description = Removing linux images...

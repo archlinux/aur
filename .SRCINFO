@@ -1,6 +1,6 @@
 pkgbase = dracut-uefi-hook
 	pkgdesc = Install/update/removal hooks for dracut unifed uefi image generation
-	pkgver = 5
+	pkgver = 6
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/dracut-uefi-hook/
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = dracut-uefi-hook
 	depends = systemd
 	depends = binutils
 	depends = util-linux
+	provides = dracut-hook
 	conflicts = dracut-hook-uefi
 	backup = etc/dracut-uefi-hook.conf
 	source = 90-dracut-uefi-install.hook
@@ -17,8 +18,8 @@ pkgbase = dracut-uefi-hook
 	source = dracut-uefi-remove
 	source = dracut-uefi-hook.conf
 	sha256sums = 7c6aae6a733582fd16852e949565493bb6af1a555ab755f1bf86b136df74244c
-	sha256sums = 0fb3d028214ff7579386ca4b172a88fb7edb88b81286cfb7f82bd511d2f91832
-	sha256sums = 6f46e36799905c21b9b2a24a4bde415bad855e6e2c9a886c6bf22cd4dc4fb8c0
+	sha256sums = e2a04362ed1b0d462a33444921c5e15e4a82ed34f9848b4fbad554e51fd10207
+	sha256sums = eaafe8afd0727b24861d4f98702294d9ab8c0658f5d62c24aa3858b4b7e892dd
 	sha256sums = 8af469ab5647cd15c9370b4c44af422df99887105aca30531c0d4c7b92889f9d
 	sha256sums = 86a65fe822bff87a51e7fece85159a62a77a8f71f015d6400f6693d44dba9464
 

@@ -48,6 +48,8 @@ for kernel in "${!kernels[@]}"; do
 
     if [[ "$pkgbase" == "$default_kernel_package" ]]; then
         echo "===> Mark linux image $kernel ($version) as default"
-        bootctl set-default "linux-${version}-${MACHINE_ID}-${BUILD_ID}.efi"
+        bootctl set-default "linux-${version}-${MACHINE_ID}-${BUILD_ID}.efi" || {
+        	echo "===> Unable to mark linux image $kernel ($version) as default" >&2
+        }
     fi
 done
