@@ -6,7 +6,7 @@
 _name=naiveproxy
 pkgname=${_name}-bin
 
-pkgrel=3
+pkgrel=4
 _version=v109.0.5414.74-1
 pkgver=${_version//-/_}
 pkgver=${pkgver#v}
@@ -51,7 +51,7 @@ prepare()
 		_envsubst naiveproxy.service.tmpl naiveproxy.service
 
 	# multi-instance service (http://0pointer.net/blog/projects/instances.html)
-	TMPL_CONFIG_FILE_PATH="${_config%/*}/'%i'.${_config##*.}" \
+	TMPL_CONFIG_FILE_PATH="${_config%/*}/%i.${_config##*.}" \
 		_envsubst naiveproxy.service.tmpl naiveproxy@.service
 }
 

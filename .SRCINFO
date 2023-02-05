@@ -1,7 +1,7 @@
 pkgbase = naiveproxy-bin
 	pkgdesc = Camouflage network traffic with strong censorship resistence and low detectablility
 	pkgver = 109.0.5414.74_1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/klzgrad/naiveproxy
 	arch = aarch64
 	arch = i686
