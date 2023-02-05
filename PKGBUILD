@@ -1,8 +1,8 @@
 # Maintainer: James Knight <james.d.knight@live.com>
 
 pkgname=releng-tool
-pkgver=0.13.0
-_pkgtarget=tag=v0.13
+pkgver=0.14.0
+_pkgtarget=tag=v0.14
 pkgrel=1
 pkgdesc='A tool to manage the building of packages'
 url=https://releng.io/

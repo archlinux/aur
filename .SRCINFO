@@ -1,6 +1,6 @@
 pkgbase = releng-tool
 	pkgdesc = A tool to manage the building of packages
-	pkgver = 0.13.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://releng.io/
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = releng-tool
 	optdepends = scons: support for building scons-dependent packages
 	optdepends = subversion: supporting for Subversion checkouts
 	optdepends = zsh-completions: shell completion for zsh
-	source = releng-tool-0.13.0::git+https://github.com/releng-tool/releng-tool.git#tag=v0.13
+	source = releng-tool-0.14.0::git+https://github.com/releng-tool/releng-tool.git#tag=v0.14
 	sha512sums = SKIP
 
 pkgname = releng-tool
