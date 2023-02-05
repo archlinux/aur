@@ -1,5 +1,6 @@
 // Config file of Xray. This file follows standard JSON format, with comments support.
-// Uncomment entries below to satisfy your needs. Also read our manual for more detail at
+// Uncomment entries below to satisfy your needs. Also read V2Ray's manual for more detail at
+// https://www.v2ray.com/
 {
   "log": {
     // By default, Xray writes access log to stdout.
@@ -125,7 +126,7 @@
   },
 
   // Stats enables internal stats counter.
-  // This setting can be used together with Policy and Api. 
+  // This setting can be used together with Policy and Api.
   //"stats":{},
 
   // Api enables gRPC APIs for external programs to communicate with Xray instance.
