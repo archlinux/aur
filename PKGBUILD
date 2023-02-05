@@ -23,7 +23,7 @@ build() {
 
 package() {
   cd  "${srcdir}/${pkgname}-${pkgver}"
-  python waf install --destdir=$pkgdir
+  python waf install --destdir="$pkgdir"
   cd "${pkgdir}"
   if [ -d usr/lib64   ]
     then
