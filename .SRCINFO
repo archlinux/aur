@@ -1,0 +1,22 @@
+pkgbase = python-gymnasium
+	pkgdesc = A standard API for single-agent reinforcement learning environments, with popular reference environments and related utilities (formerly Gym)
+	pkgver = 0.27.1
+	pkgrel = 1
+	url = https://gymnasium.farama.org/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-numpy
+	depends = python-jax-jumpy
+	depends = python-cloudpickle
+	depends = python-importlib-metadata
+	depends = python-typing_extensions
+	depends = python-gymnasium-notices
+	source = https://files.pythonhosted.org/packages/source/g/gymnasium/gymnasium-0.27.1.tar.gz
+	source = LICENSE-0.27.1::https://raw.githubusercontent.com/Farama-Foundation/Gymnasium/v0.27.1/LICENSE
+	b2sums = 76833e45d9c9ffc195b8513f75fd9d68500d385ae5f164f3c3cc76e13b30d422b3bc59e1077621b98278fb13adcf982779708908a7259a08fda8d217d5756269
+	b2sums = b6db99ea6c9ea0e273bcd814720a0932ea5bac664517f724a8d0c5a7b15cfb03e4a54622965ef746a725728c44e8c31713f0445500d1fe4e03ba1ff740e116b5
+
+pkgname = python-gymnasium
