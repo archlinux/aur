@@ -1,6 +1,6 @@
 pkgbase = meteoinfo
 	pkgdesc = An open source software suite to view and analyze meteorological and spatial data interactively (MeteoInfoMap) or do scientific computation and visualization (MeteoInfoLab)
-	pkgver = 3.5.3
+	pkgver = 3.5.4
 	pkgrel = 1
 	url = http://meteothink.org
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = meteoinfo
 	makedepends = unzip
 	depends = sh
 	depends = java-environment
-	source = http://meteothink.org/downloads/files/MeteoInfo_3.5.3.zip
-	sha256sums = e48628c2b0e8544acce2797fe26ae92941d08219e67bc89a0ce164b49c766da2
+	source = http://meteothink.org/downloads/files/MeteoInfo_3.5.4.zip
+	sha256sums = ee4a2837677c87a86ba8d334cc9a4cb73c2384187ccbc4975c346ce2234a6ce1
 
 pkgname = meteoinfo
