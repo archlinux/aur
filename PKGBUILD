@@ -10,7 +10,7 @@ makedepends=("git" "cmake" "make" "gcc")
 provides=("libquotient")
 conflicts=("libquotient")
 source=("${pkgname}.tar.gz::https://github.com/quotient-im/libQuotient/archive/refs/tags/0.7.1.tar.gz")
-sha512sums=("ccfadae2710359b36f35b95cc9cefaa3dd234aa5db13a7bace6ad579c3b3e8e1338d444c499fe65d1cb1df95cb37bc56e38952a274a7dbefc48b3abf0eb08ee0")
+sha512sums=("88819cafb49712d53c692008be69ea1fc01ca1ac6aedc15696eba2f830956660d185fb07273d50c7dc3e9208314ac24838746d5d9e70b3aad7fccbd15fd7c545")
 
 prepare() {
 	mkdir -p "build"
