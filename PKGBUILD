@@ -2,7 +2,7 @@
 # Contributor: Bart De Vries <bart at mogwai dot be>
 
 pkgname=snapcast-git
-pkgver=v0.26.0.r118.g7c83e3f6
+pkgver=v0.27.0.r0.g54a3d862
 pkgrel=1
 pkgdesc="Synchronous multi-room audio player"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
