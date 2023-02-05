@@ -3,12 +3,12 @@
 
 pkgname=polymc-qt5-bin
 pkgver=5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('x86_64')
 url="https://github.com/PolyMC/PolyMC"
 license=('GPL3')
-depends=('java-runtime' 'libgl' 'qt5-base' 'qt5-svg' 'qt5-imageformats' 'zlib' 'hicolor-icon-theme')
+depends=('java-runtime' 'libgl' 'qt5-base' 'qt5-svg' 'qt5-imageformats' 'qt5-charts' 'zlib' 'hicolor-icon-theme')
 provides=('polymc' 'polymc-qt5')
 conflicts=('polymc' 'polymc-qt5')
 optdepends=('java-runtime=8: support for Minecraft versions < 1.17'
