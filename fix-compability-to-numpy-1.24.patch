@@ -1,0 +1,81 @@
+--- a/astrodendro/analysis.py	2016-09-29 17:23:53.000000000 +0800
++++ b/astrodendro/analysis.py	2023-02-05 13:09:03.929960758 +0800
+@@ -77,7 +77,7 @@
+             Location of each element of values. The i-th array in the tuple
+             describes the ith positional dimension
+         """
+-        self.values = values.astype(np.float)
++        self.values = values.astype(float)
+         self.indices = indices
+ 
+     @memoize
+@@ -126,13 +126,13 @@
+             The variance (or co-variance matrix) of the data along the
+             specified direction(s).
+         """
+-        w = np.atleast_2d(direction).astype(np.float)
++        w = np.atleast_2d(direction).astype(float)
+         for row in w:
+             row /= np.linalg.norm(row)
+ 
+         result = np.dot(np.dot(w, self.mom2()), w.T)
+         if result.size == 1:
+-            result = np.asscalar(result)
++            result = result.item()
+         return result
+ 
+     @memoize
+--- a/astrodendro/dendrogram.py	2023-02-05 13:10:42.786010635 +0800
++++ b/astrodendro/dendrogram.py	2023-02-05 13:07:48.077121718 +0800
+@@ -27,7 +27,7 @@
+ # utility dict to offsets of adjacent pixel list
+ _offsets = dict((ndim, np.concatenate((
+                 np.identity(ndim),
+-                np.identity(ndim) * -1)).astype(np.int))
++                np.identity(ndim) * -1)).astype(int))
+                 for ndim in range(1, 8))
+ 
+ # the formula above generalizes this special case
+@@ -655,11 +655,11 @@
+         #    index[offset[pi] : offset[pi] + npix[pi]]
+         # and including subtrees is
+         #    index[offset[pi] : offset[pi] + npix_subtree[pi]]
+-        offset = np.zeros(idx_ct.size, dtype=np.int)
++        offset = np.zeros(idx_ct.size, dtype=int)
+         npix = offset * 0
+         npix_subtree = offset * 0
+ 
+-        index = -np.ones(sz, dtype=np.int)
++        index = -np.ones(sz, dtype=int)
+         order = dendrogram.all_structures
+ 
+         pos = 0
+@@ -852,4 +852,4 @@
+     # To make the structure.level property fast, we ensure all the structures in the
+     # trunk have their level cached as "0"
+     for structure in dendrogram.trunk:
+-        structure._level = 0  # See the definition of level() in structure.py
+\ 文件尾没有换行符
++        structure._level = 0  # See the definition of level() in structure.py
+--- a/astrodendro/pruning.py	2016-09-29 17:23:53.000000000 +0800
++++ b/astrodendro/pruning.py	2023-02-05 13:07:48.077121718 +0800
+@@ -40,7 +40,7 @@
+     else:  # mode == 'wrap'
+         indices = [i % d for i, d in zip(indices, dims)]
+ 
+-    result = np.zeros(len(multi_index[0]), dtype=np.int)
++    result = np.zeros(len(multi_index[0]), dtype=int)
+     offset = 1
+     for i, d in list(zip(indices, dims))[::-1]:
+         result += (i * offset).ravel()
+--- a/astrodendro/tests/test_compute.py	2016-09-29 17:23:53.000000000 +0800
++++ b/astrodendro/tests/test_compute.py	2023-02-05 13:07:48.080455029 +0800
+@@ -110,7 +110,7 @@
+         assert len(d.leaves) == 55
+ 
+         # Now check every pixel in the data cube (this takes a while).
+-        st_map = -np.ones(self.data.shape, dtype=np.int)
++        st_map = -np.ones(self.data.shape, dtype=int)
+         for st in d.all_structures:
+             st_map[st.indices(subtree=False)] = st.idx
+ 

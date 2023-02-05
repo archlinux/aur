@@ -3,7 +3,7 @@ pkgbase=python-astrodendro
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Python package for computation of astronomical dendrograms"
 arch=('any')
 url="https://dendrograms.readthedocs.io"
@@ -19,15 +19,18 @@ checkdepends=('python-pytest'
               'python-h5py') # 'python-astropy' 'python-matplotlib'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'fix-collection-py3.10.patch'
+        'fix-compability-to-numpy-1.24.patch'
         'new-doc-building.patch')
 md5sums=('6f4155b1d4a4b2d9cb9ae154f88c5710'
-         '1b5d8b8c5d0387a09b15c02fc1b40714'
+         '85f81c440ce6d9f38fe0f3dd3166c911'
+         '11ee36f5a91348ae6843da182d54299f'
          '2bd96deeaa18ae57c196246b74ee8030')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     patch -Np1 -i "${srcdir}/fix-collection-py3.10.patch"
+    patch -Np1 -i "${srcdir}/fix-compability-to-numpy-1.24.patch"
     patch -Np1 -i "${srcdir}/new-doc-building.patch"
 }
 
@@ -37,19 +40,18 @@ build() {
 #   python -m build --wheel --no-isolation
 
     msg "Building Docs"
-    cd ${srcdir}/${_pyname}-${pkgver}/docs
-##   python setup.py build_sphinx
-    PYTHONPATH="../build/lib" make html
+#   python setup.py build_sphinx
+    PYTHONPATH="../build/lib" make -C docs html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed"
+    pytest || warning "Tests failed" # -vv --color=yes
 }
 
 package_python-astrodendro() {
-    depends=('python' 'python-numpy>=1.4.1' 'python-astropy>=0.2.0' 'python-h5py>=0.2.0')
+    depends=('python' 'python-numpy>=1.24' 'python-astropy>=0.2.0' 'python-h5py>=0.2.0')
     optdepends=('python-matplotlib: For plotting'
                 'python-pytest: For testing'
                 'python-mock: For testing'

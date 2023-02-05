@@ -1,7 +1,7 @@
 pkgbase = python-astrodendro
 	pkgdesc = Python package for computation of astronomical dendrograms
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://dendrograms.readthedocs.io
 	arch = any
 	license = MIT
@@ -13,14 +13,16 @@ pkgbase = python-astrodendro
 	makedepends = python-aplpy
 	source = https://files.pythonhosted.org/packages/source/a/astrodendro/astrodendro-0.2.0.tar.gz
 	source = fix-collection-py3.10.patch
+	source = fix-compability-to-numpy-1.24.patch
 	source = new-doc-building.patch
 	md5sums = 6f4155b1d4a4b2d9cb9ae154f88c5710
-	md5sums = 1b5d8b8c5d0387a09b15c02fc1b40714
+	md5sums = 85f81c440ce6d9f38fe0f3dd3166c911
+	md5sums = 11ee36f5a91348ae6843da182d54299f
 	md5sums = 2bd96deeaa18ae57c196246b74ee8030
 
 pkgname = python-astrodendro
 	depends = python
-	depends = python-numpy>=1.4.1
+	depends = python-numpy>=1.24
 	depends = python-astropy>=0.2.0
 	depends = python-h5py>=0.2.0
 	optdepends = python-matplotlib: For plotting

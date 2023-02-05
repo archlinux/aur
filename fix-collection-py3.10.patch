@@ -1,23 +1,23 @@
---- a/astrodendro/dendrogram.py	2016-09-29 17:23:53.000000000 +0800
-+++ b/astrodendro/dendrogram.py	2022-08-22 16:14:19.114340172 +0800
+Description: Add try-except clause for importing Iterable pre/post Python 3.9.
+Origin: https://github.com/dendrograms/astrodendro/commit/3fde58f1e06bf7f966ed52712d1bf8929282be41.patch
+Author: nbrunett <nate.brunetti@gmail.com>
+Date: Tue, 15 Feb 2022 13:55:09 -0500
+Last-Update: 2022-04-10
+
+
+--- a/astrodendro/dendrogram.py
++++ b/astrodendro/dendrogram.py
 @@ -5,7 +5,12 @@
  # - An ancestor is the largest structure that a structure is part of
  
  import numpy as np
 -from collections import Iterable
 +try:
-+    # Python > 3.9
-+    from collections.abc import Iterable
-+except ImportError:
 +    # Python <= 3.9
 +    from collections import Iterable
++except ImportError:
++    # Python > 3.9
++    from collections.abc import Iterable
  import copy
  import warnings
  
-@@ -847,4 +852,4 @@
-     # To make the structure.level property fast, we ensure all the structures in the
-     # trunk have their level cached as "0"
-     for structure in dendrogram.trunk:
--        structure._level = 0  # See the definition of level() in structure.py
-\ No newline at end of file
-+        structure._level = 0  # See the definition of level() in structure.py
