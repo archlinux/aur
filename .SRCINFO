@@ -20,7 +20,7 @@ pkgbase = python-astrodendro-git
 
 pkgname = python-astrodendro-git
 	depends = python
-	depends = python-numpy>1.16
+	depends = python-numpy>=1.24
 	depends = python-astropy>4
 	depends = python-matplotlib>3
 	depends = python-h5py>3

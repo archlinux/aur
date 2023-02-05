@@ -36,18 +36,17 @@ build() {
     python -m build --wheel --no-isolation
 
     msg "Building Docs"
-    cd ${srcdir}/${_gitname}/docs
-    PYTHONPATH="../build/lib" make html
+    PYTHONPATH="../build/lib" make -C docs html
 }
 
 check() {
     cd ${srcdir}/${_gitname}
 
-    pytest || warning "Tests failed"
+    pytest || warning "Tests failed" # -vv --color=yes
 }
 
 package_python-astrodendro-git() {
-    depends=('python' 'python-numpy>1.16' 'python-astropy>4' 'python-matplotlib>3' 'python-h5py>3')
+    depends=('python' 'python-numpy>=1.24' 'python-astropy>4' 'python-matplotlib>3' 'python-h5py>3')
     optdepends=('python-astrodendro-doc-git: Documentation for astrodendro')
     provides=("${pkgname%-git}")
     conflicts=("${pkgname%-git}")
