@@ -1,10 +1,11 @@
 pkgbase = treeviewx
 	pkgdesc = Program to display phylogenetic trees
-	pkgver = 0.5
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://code.google.com/archive/p/treeviewx/
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	depends = wxwidgets-gtk3
 	source = git+https://github.com/rdmpage/treeviewx.git
 	source = https://storage.googleapis.com/google-code-archive/v2/code.google.com/treeviewx/logo.png

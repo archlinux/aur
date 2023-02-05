@@ -3,14 +3,14 @@
 
 pkgname=treeviewx
 _pkgname=tv
-pkgver=0.5
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Program to display phylogenetic trees"
 arch=('x86_64')
 url="https://code.google.com/archive/p/treeviewx/"
 license=('GPL')
 depends=('wxwidgets-gtk3')
-makepdens=('git')
+makedepends=('git')
 source=("git+https://github.com/rdmpage/treeviewx.git"
 	"https://storage.googleapis.com/google-code-archive/v2/code.google.com/treeviewx/logo.png"
 	"$pkgname.desktop"
