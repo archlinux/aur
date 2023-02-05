@@ -15,11 +15,10 @@ pkgdesc="A comprehensive open source library for n-D Point Clouds and 3D geometr
 arch=('x86_64' 'i686')
 url='http://www.pointclouds.org'
 license=('BSD')
-depends=('boost' 'cgns' 'cli11' 'eigen' 'flann' 'glew' 'libharu' 'liblas' 'libxcursor'
-  'netcdf' 'openni2' 'openmp' 'openvr' 'ospray' 'postgresql-libs' 'python' 'python-mpi4py'
-  'qt6-base' 'utf8cpp' 'vtk')
-makedepends=('cmake' 'gl2ps')
-optdepends=('cuda')
+depends=('boost' 'eigen' 'flann' 'vtk' 'libpcap' 'libpng' 'libusb' 'libx11')
+optdepends=('cuda' 'openmp' 'openni2' 'qhull')
+makedepends=('adios2' 'cgns' 'cli11' 'cmake' 'fmt' 'glew' 'gl2ps' 'libharu' 'liblas' 'libxcursor'
+  'netcdf' 'openvr' 'ospray' 'pdal' 'postgresql-libs' 'python-mpi4py' 'qt6-base' 'utf8cpp')
 source=("pcl-${pkgver}.tar.gz"::"https://github.com/PointCloudLibrary/pcl/archive/pcl-${pkgver}.tar.gz")
 
 sha256sums=('b6f6769b84d3d8313e48278388b923e32cf519e6a27a4876c2170d587b33721d')
@@ -33,6 +32,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_CXX_STANDARD=14 \
+    -DBUILD_surface_on_nurbs=ON \
     -DCUDA_HOST_COMPILER=/usr/bin/gcc
 
   make
