@@ -1,6 +1,6 @@
 pkgname="ata-git"
-pkgver=1.0.0
-pkgrel=0
+pkgver=r1.0aa3473
+pkgrel=1
 pkgdesc="Ask the Terminal Anything"
 arch=('x86_64')
 url="https://github.com/rikhuijzer/ata"
@@ -9,6 +9,13 @@ source=(
     "git+https://github.com/rikhuijzer/ata.git"
 )
 md5sums=('SKIP')
+
+pkgver() {
+  cd "${_pkgname}"
+  set -o pipefail
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
     cd $srcdir/ata

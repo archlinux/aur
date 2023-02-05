@@ -1,7 +1,7 @@
 pkgbase = ata-git
 	pkgdesc = Ask the Terminal Anything
-	pkgver = 1.0.0
-	pkgrel = 0
+	pkgver = r1.0aa3473
+	pkgrel = 1
 	url = https://github.com/rikhuijzer/ata
 	arch = x86_64
 	makedepends = cargo
