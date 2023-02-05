@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-g-kpe
-pkgver=5.1.1
+pkgver=5.1.2
 pkgrel=0
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE and primary support for webextensions"
 arch=('x86_64')
@@ -93,6 +93,7 @@ ac_add_options --disable-elf-hack
 ac_add_options --disable-tests
 
 # Enable wanted features
+ac_add_options --enable-jxl
 ac_add_options --enable-optimize
 ac_add_options --enable-eme=widevine
 ac_add_options --enable-rust-simd
