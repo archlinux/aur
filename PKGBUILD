@@ -1,7 +1,7 @@
 # Maintainer: Christer Solskogen <christer.solskogen@gmail.com>
 
 pkgname=sdl2-git
-pkgver=2.26.0.r1.gea8f8b6dc
+pkgver=2.26.0.r190.g4f7f72c25
 pkgrel=1
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -10,12 +10,12 @@ license=('MIT')
 depends=('glibc' 'libxext' 'libxrender' 'libx11' 'libgl' 'libxcursor' 'hidapi' 'libusb')
 makedepends=('alsa-lib' 'mesa' 'libpulse' 'libxrandr' 'libxinerama' 'wayland' 'libxkbcommon'
              'wayland-protocols' 'ibus' 'fcitx5' 'libxss' 'cmake' 'jack' 'ninja' 'pipewire'
-	     'libdecor' 'git')
+	          'libdecor' 'git')
 optdepends=('alsa-lib: ALSA audio driver'
             'libpulse: PulseAudio audio driver'
             'jack: JACK audio driver'
-	    'pipewire: PipeWire audio driver'
-	    'libdecor: Wayland client decorations')
+	         'pipewire: PipeWire audio driver'
+	         'libdecor: Wayland client decorations')
 source=("git+https://github.com/libsdl-org/SDL#branch=SDL2")
 provides=("sdl2=$pkgver")
 conflicts=(sdl2 sdl2-minimal-hg)
@@ -40,8 +40,6 @@ build() {
 package() {
 	DESTDIR="${pkgdir}" cmake --install build
 
-	# For some reason, this isn't named correctly and we have to fix it to reflect the actual staticlib name.
-	sed -i "s/libSDL2\.a/libSDL2main.a/g" "$pkgdir"/usr/lib/cmake/SDL2/SDL2Targets-noconfig.cmake
 	install -Dm644 SDL/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
