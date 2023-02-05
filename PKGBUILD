@@ -11,8 +11,8 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=openssh-selinux
-pkgver=9.1p1
-pkgrel=3
+pkgver=9.2p1
+pkgrel=1
 pkgdesc="SSH protocol implementation for remote login, command execution and file transfer, with SELinux support"
 arch=('x86_64' 'aarch64')
 url='https://www.openssh.com/portable.html'
@@ -51,14 +51,14 @@ source=(
   'sshd.conf'
   'sshd.pam'
 )
-sha256sums=('19f85009c7e3e23787f0236fbb1578392ab4d4bf9f8ec5fe6bc1cd7e8bfdd288'
+sha256sums=('3f66dbf1655fb45f50e1c56da62ab01218c228807b21338d634ebcdf9d71cf46'
             'SKIP'
             '27e43dfd1506c8a821ec8186bae65f2dc43ca038616d6de59f322bd14aa9d07f'
             'e5305767b2d317183ad1c5022a5f6705bd9014a8b22495a000fd482713738611'
             'e40f8b7c8e5e2ecf3084b3511a6c36d5b5c9f9e61f2bb13e3726c71dc7d4fbc7'
             '4effac1186cc62617f44385415103021f72f674f8b8e26447fc1139c670090f6'
             '64576021515c0a98b0aaf0a0ae02e0f5ebe8ee525b1e647ab68f369f81ecd846')
-b2sums=('287b6b1cc4858b27af88f4a4674670afff1fb5b99461892083393c53ef3747c5a0fcd90cba95d2c27465a919e00f7f42732c93af4f306665ba0393bbb7a534f5'
+b2sums=('8d0b5e43cb42cba105a1fe303c447a2b85151cb33ec7ed47747d75c5a61d0f07f0ee4b1020b79c13eb8de4b451c5a844a8afc7ebbbea7ffeceafc3bf59cb8d21'
         'SKIP'
         '29e1a1c2744e0234830c6f93a46338ea8dc943370e20a24883d207d611025e54643da678f2826050c073a36be48dfdc7329d4cfb144c2ff90607a5f10f73dc59'
         '09fad3648f48f13ee80195b90913feeba21240d121b1178e0ce62f4a17b1f7e58e8edc22c04403e377ab300f5022a804c848f5be132765d5ca26a38aab262e50'
