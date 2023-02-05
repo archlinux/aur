@@ -1,0 +1,19 @@
+pkgbase = libolivecore-git
+	pkgdesc = Common components shared between Olive libraries
+	pkgver = r12.953ee66
+	pkgrel = 1
+	url = https://www.olivevideoeditor.org/
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = ffmpeg
+	makedepends = git
+	makedepends = imath
+	makedepends = ninja
+	makedepends = opentimelineio
+	provides = libolivecore
+	conflicts = libolivecore
+	source = git+https://github.com/olive-editor/core.git
+	sha512sums = SKIP
+
+pkgname = libolivecore-git
