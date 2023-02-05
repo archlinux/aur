@@ -1,6 +1,6 @@
 pkgbase = ocp
 	pkgdesc = Open Cubic Player
-	pkgver = 0.2.101
+	pkgver = 0.2.102
 	pkgrel = 1
 	url = https://stian.cubic.org/project-ocp.php
 	install = ocp.install
@@ -24,9 +24,9 @@ pkgbase = ocp
 	depends = ttf-unifont
 	depends = libdiscid
 	depends = cjson
-	provides = ocp=0.2.101
+	provides = ocp=0.2.102
 	conflicts = ocp-git
-	source = ocp::git+https://github.com/mywave82/opencubicplayer.git#tag=v0.2.101
+	source = ocp::git+https://github.com/mywave82/opencubicplayer.git#tag=v0.2.102
 	md5sums = SKIP
 
 pkgname = ocp
