@@ -1,0 +1,14 @@
+pkgbase = parceli-git
+	pkgdesc = CLI implementation of a package/mail tracker for USPS/UPS/FedEx made in Go using the parcel library and a bit of smarts.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/cryptofyre/parceli
+	arch = x86_64
+	license = GPLv3
+	makedepends = go
+	makedepends = git
+	makedepends = gcc
+	source = git+https://github.com/cryptofyre/parceli
+	sha256sums = SKIP
+
+pkgname = parceli-git
