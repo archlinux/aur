@@ -2,7 +2,7 @@
 # Contributor: Samuel Damashek <samuel dot damashek at gmail dot com>
 # Contributor: Alex Xu <alex_y_xu dot yahoo at ca>
 pkgname=huggle
-pkgver=3.4.11
+pkgver=3.4.12
 pkgrel=1
 pkgdesc="Anti-vandalism tool for use on MediaWiki-based projects"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ source=(
     "huggle-extensions.patch"
     "huggle-desktop.patch"
 )
-b2sums=('edefaa67a87b4cb439bf7de45c1ac67c47cad8410cd598cb0c30074bf962041a43449c55a3d4caf7b6fb1ee645877b16388bcb9a6fed43c8deb85c582feddbcc'
+b2sums=('876040712fd59a2efc1f5cc20af1fc9583c9fe13213a03cdc7ca2d90da3880b88c531b112693414e595398d09af1875e73d2a828b5835227a41cb0c4df90ee37'
         'e37d338085329911277cabd58108a0be5114b2c3b0469d0e3ed4bfbabda02c85315698c1ce466cb3c9bb25adb4ba208f69a134b4eb9079a2f70b8a36815f077a'
         '4fa21457d39061bbba01c2e5f5ac9d6d703b56103fac82e48cff09d94b5ca4fe9a912756dad2c7c90079e556814654730b0c18f97f93de11b25b32ac740367ff')
 
