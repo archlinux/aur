@@ -1,6 +1,6 @@
 pkgbase = gimp-plugin-export-layers
 	pkgdesc = GIMP plug-in that exports layers as separate images.
-	pkgver = 3.3.4
+	pkgver = 3.3.5
 	pkgrel = 1
 	url = https://github.com/khalim19/gimp-plugin-export-layers
 	arch = any
@@ -8,8 +8,9 @@ pkgbase = gimp-plugin-export-layers
 	license = GPL3
 	makedepends = unzip
 	depends = gimp
-	depends = python
-	source = https://github.com/khalim19/gimp-plugin-export-layers/releases/download/3.3.4/export_layers-3.3.4.zip
-	md5sums = c8b1c1b602850014cf47ee1202a3bba8
+	depends = python2-gimp
+	depends = libffi
+	source = https://github.com/khalim19/gimp-plugin-export-layers/releases/download/3.3.5/export_layers-3.3.5.zip
+	md5sums = 498840b29c0d22afc0df884eb449ab11
 
 pkgname = gimp-plugin-export-layers
