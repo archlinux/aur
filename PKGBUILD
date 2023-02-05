@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=mozregression-gui
-pkgver=5.1.0
+pkgver=5.3.1
 pkgrel=1
 pkgdesc='Regression range finder for Firefox'
 arch=('any')
