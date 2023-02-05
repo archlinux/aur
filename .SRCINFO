@@ -1,7 +1,7 @@
 pkgbase = directxtex
 	pkgdesc = Texture processing library
 	pkgver = jan2023
-	pkgrel = 1
+	pkgrel = 2
 	url = https://go.microsoft.com/fwlink/?LinkId=248926
 	arch = x86_64
 	license = MIT
