@@ -1,7 +1,7 @@
-diff --git a/codegen.pas b/codegen.pas
+diff --git a/src/codegen.pas b/src/codegen.pas
 index f854d29..b2a7ad4 100644
---- a/codegen.pas
-+++ b/codegen.pas
+--- a/src/codegen.pas
++++ b/src/codegen.pas
 @@ -585,7 +585,7 @@ var
      Proc.Executable := 'rgbasm';
      Proc.Parameters.Clear;
@@ -49,11 +49,11 @@ index f854d29..b2a7ad4 100644
                   ['SONG_DESCRIPTOR=song',
                    IfThen(Song.TimerEnabled, 'USE_TIMER=1', ''),
                    'TIMER_MODULO='+IntToStr(Song.TimerDivider)]) <> 0 then
-diff --git a/hUGETracker.lpr b/hUGETracker.lpr
-index d2f94d0..7cdca86 100644
---- a/hUGETracker.lpr
-+++ b/hUGETracker.lpr
-@@ -39,11 +39,20 @@ function PangoCairoFontMapGetDefault: Pointer; cdecl; External 'libpangocairo-1.
+diff --git a/src/hUGETracker.lpr b/src/hUGETracker.lpr
+index 1e5603a..464121d 100644
+--- a/src/hUGETracker.lpr
++++ b/src/hUGETracker.lpr
+@@ -36,11 +36,20 @@ function PangoCairoFontMapGetDefault: Pointer; cdecl; External 'libpangocairo-1.
  procedure PangoFcFontMapConfigChanged(FcFontMap: Pointer); cdecl; External 'libpangoft2-1.0.so' Name 'pango_fc_font_map_config_changed';
  {$endif}
  
@@ -75,20 +75,20 @@ index d2f94d0..7cdca86 100644
  
    InitializeTrackerSettings;
  
-@@ -67,7 +76,7 @@ begin
+@@ -64,7 +73,7 @@ begin
  
    {$if defined(LINUX) or defined(FREEBSD) or defined(OPENBSD)}
      // https://gitlab.gnome.org/GNOME/gtk/-/issues/3886
 -    if FcConfigAppFontAddFile(nil, PChar('PixeliteTTF.ttf')) = 0 then
 +    if FcConfigAppFontAddFile(nil, PChar('/usr/share/hugetracker/PixeliteTTF.ttf')) = 0 then
-       Writeln(StdErr, '[ERROR] Couldn''t load Pixelite!!!');
+       DebugLn('[ERROR] Couldn''t load Pixelite!!!');
  
      PangoFcFontMapConfigChanged(PangoCairoFontMapGetDefault);
-diff --git a/tracker.pas b/tracker.pas
-index 9dc37f7..446a74c 100644
---- a/tracker.pas
-+++ b/tracker.pas
-@@ -1109,8 +1109,8 @@ procedure TfrmTracker.HaltPlayback;
+diff --git a/src/tracker.pas b/src/tracker.pas
+index 3159ce9..d65ce76 100644
+--- a/src/tracker.pas
++++ b/src/tracker.pas
+@@ -1118,8 +1118,8 @@ procedure TfrmTracker.HaltPlayback;
  begin
    LockPlayback;
    Application.ProcessMessages; // flush out any FD messages
@@ -99,7 +99,7 @@ index 9dc37f7..446a74c 100644
    UnlockPlayback;
  
    Playing := False;
-@@ -1134,7 +1134,7 @@ end;
+@@ -1142,7 +1142,7 @@ end;
  
  procedure TfrmTracker.OnSampleSongMenuItemClicked(Sender: TObject);
  begin
@@ -108,9 +108,9 @@ index 9dc37f7..446a74c 100644
  end;
  
  procedure TfrmTracker.CreateKeymap;
-@@ -1419,10 +1419,10 @@ var
+@@ -1426,10 +1426,10 @@ var
+   S: String;
    MenuItem: TMenuItem;
-   I: Integer;
  begin
 -  if (not FileExists('PixeliteTTF.ttf'))
 -  or (not FileExists('halt.gb'))
@@ -123,7 +123,7 @@ index 9dc37f7..446a74c 100644
      MessageDlg('Error',
        'hUGETracker can''t load a required file which comes with '+
        'the tracker. This likely means that you haven''t extracted the program ' +
-@@ -1501,7 +1501,7 @@ begin
+@@ -1508,7 +1508,7 @@ begin
    {$endif}
  
    // Load sample songs list

@@ -1,7 +1,7 @@
 # Maintainer: Eldred Habert <arch@eldred.fr>
 pkgname=hugetracker-git
-pkgver=1.0b9.r113.44d6246
-pkgrel=3
+pkgver=1.0b10.r18.a7779ed
+pkgrel=1
 pkgdesc='The music composition suite for the Nintendo Game Boy'
 arch=('x86_64')
 url='https://nickfa.ro/index.php?title=HUGETracker'
@@ -20,7 +20,7 @@ source=('hugetracker::git+https://github.com/SuperDisk/hUGETracker'
         'git+https://github.com/SuperDisk/hUGEDriver'
         'git+https://github.com/olivluca/rackctls'
         'non-portable.patch')
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' '931d0cbac169a7c25a3ac575e54ed7d334379759e04014115ee87dee1fdecbaa')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'd9caeec0317027a8e93645bf8239fd2585bf5d271c09659112c44b1e485ecadd')
 
 
 ## CONFIGURATION
@@ -49,22 +49,21 @@ prepare() {
 	# Copy the "dedicated to the public domain" line as a makeshift license file
 	grep 'public domain' README.md >LICENSE
 
-	patch -p1 -i "$srcdir/non-portable.patch"
+	patch -p1 -N <"$srcdir/non-portable.patch"
 }
 
 build() {
 	cd "$srcdir/hugetracker"
 
-	lazbuild --lazarusdir="${_lazdir}" --add-package-link rackctls/RackCtlsPkg.lpk
-	lazbuild --lazarusdir="${_lazdir}" --add-package-link bgrabitmap/bgrabitmap/bgrabitmappack.lpk
-	lazbuild --lazarusdir="${_lazdir}" hUGETracker.lpi --build-mode="Production Linux" --ws=gtk2
+	lazbuild --lazarusdir="${_lazdir}" --add-package-link src/rackctls/RackCtlsPkg.lpk
+	lazbuild --lazarusdir="${_lazdir}" --add-package-link src/bgrabitmap/bgrabitmap/bgrabitmappack.lpk
+	lazbuild --lazarusdir="${_lazdir}" src/hUGETracker.lpi --build-mode="Production Linux" --ws=gtk2
 
-	rgblink <(rgbasm -E -i hUGEDriver hUGEDriver/hUGEDriver.asm -o -) \
-	        <(rgbasm -i hUGEDriver/include halt.asm -o -) \
+	rgblink <(rgbasm -E -i src/hUGEDriver src/hUGEDriver/hUGEDriver.asm -o -) \
+	        <(rgbasm -i src/hUGEDriver/include src/halt.asm -o -) \
 	        -n halt.sym -o - | rgbfix -vp 0xFF >halt.gb
 
-	lazbuild --lazarusdir="${_lazdir}" uge2source/uge2source.lpi --build-mode="Default"
-	make -C hUGEDriver/tools # rgb2sdas
+	lazbuild --lazarusdir="${_lazdir}" src/uge2source/uge2source.lpi --build-mode="Default"
 }
 
 package() {
@@ -72,13 +71,12 @@ package() {
 
 	install -Dvm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-	install -Dvsm 755 Release/hUGETracker "$pkgdir/usr/bin/hugetracker"
+	install -Dvsm 755 src/Release/hUGETracker "$pkgdir/usr/bin/hugetracker"
 
-	install -Dvm 644 Resources/Fonts/PixeliteTTF.ttf "$pkgdir/usr/share/hugetracker/PixeliteTTF.ttf"
+	install -Dvm 644 fonts/PixeliteTTF.ttf "$pkgdir/usr/share/hugetracker/PixeliteTTF.ttf"
 	install -Dvm 644 -t "$pkgdir/usr/share/hugetracker/" halt.{gb,sym}
-	env -C "hUGEDriver" bash -c "git ls-files -z | grep -zEv '^(\.git|README|doc/|[^/]+_example/|tools/)' | xargs -0 -I '{}' install -Dvm 644 '{}' '$pkgdir/usr/share/hugetracker/hUGEDriver/{}'"
-	find "Resources/Sample Songs" -maxdepth 1 -type f -exec install -Dvm 644 -t "$pkgdir/usr/share/hugetracker/Sample Songs/" '{}' +
+	env -C src/hUGEDriver bash -c "git ls-files -z | grep -zEv '^(\.git|README|doc/|[^/]+_example/|tools/)' | xargs -0 -I '{}' install -Dvm 644 '{}' '$pkgdir/usr/share/hugetracker/hUGEDriver/{}'"
+	find sample-songs -maxdepth 1 -type f -exec install -Dvm 644 -t "$pkgdir/usr/share/hugetracker/Sample Songs/" '{}' +
 
-	install -Dvsm 755 uge2source/uge2source "$pkgdir/usr/bin/uge2source"
-	install -Dvsm 755 hUGEDriver/tools/rgb2sdas "$pkgdir/usr/bin/rgb2sdas"
+	install -Dvsm 755 src/uge2source/uge2source "$pkgdir/usr/bin/uge2source"
 }
