@@ -1,0 +1,20 @@
+pkgbase = python-segment-analytics
+	pkgdesc = The hassle-free way to integrate analytics into any python application.
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = https://github.com/segmentio/analytics-python
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pylint
+	checkdepends = flake8
+	makedepends = python-setuptools
+	depends = python
+	depends = python-backoff
+	depends = python-dateutil
+	depends = python-monotonic
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/s/segment-analytics-python/segment-analytics-python-2.2.2.tar.gz
+	sha256sums = 10ef6ee42b9e504b9db76b44c893e6a44c3ebc51cd01f475ac76f0e80a8fff09
+
+pkgname = python-segment-analytics
