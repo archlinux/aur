@@ -1,0 +1,21 @@
+pkgbase = couchbase-lite-c
+	pkgdesc = C language bindings for the Couchbase Lite embedded NoSQL database engine
+	pkgver = 3.0.6
+	pkgrel = 1
+	url = https://www.couchbase.com/products/lite/
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = git
+	depends = icu
+	depends = zlib
+	source = git+https://github.com/couchbase/couchbase-lite-c#tag=3.0.6-mp
+	source = CMakeLists.diff
+	source = StringUtil.diff
+	source = catch.diff
+	sha256sums = SKIP
+	sha256sums = 328585e9452b9522f2d23823cd3036a885dff1e8b55f5c52f29db689b89dcc04
+	sha256sums = ba7e85059f842555233c91763bba8f7b173460ccc2d555f50783ed555a43321a
+	sha256sums = 034f1e91eca7bb6e6b3ac19007de040e01b8f0fbceef34816529a72a64bc2914
+
+pkgname = couchbase-lite-c

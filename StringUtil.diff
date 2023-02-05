@@ -1,0 +1,18 @@
+# https://github.com/couchbase/couchbase-lite-core/commit/8d7c25f32b25dbfde7311577668d9d8e096388bf
+# backport: fix compilation error with revent version of gcc
+
+Submodule vendor/couchbase-lite-core contains modified content
+diff --git a/vendor/couchbase-lite-core/LiteCore/Support/StringUtil.hh b/vendor/couchbase-lite-core/LiteCore/Support/StringUtil.hh
+index 73a1b9bf..552c99eb 100644
+--- a/vendor/couchbase-lite-core/LiteCore/Support/StringUtil.hh
++++ b/vendor/couchbase-lite-core/LiteCore/Support/StringUtil.hh
+@@ -30,7 +30,7 @@ namespace litecore {
+     // Adds EXPR to a stringstream and returns the resulting string.
+     // Example: CONCAT("2+2=" << 4 << "!") --> "2+2=4!"
+ #ifndef _LIBCPP_VERSION
+-    #define CONCAT(EXPR)   (static_cast<std::stringstream&>(std::stringstream() << EXPR)).str()
++    #define CONCAT(EXPR)   (static_cast<const std::stringstream&>(std::stringstream() << EXPR)).str()
+ #else
+     #define CONCAT(EXPR)   (std::stringstream() << EXPR).str()
+ #endif
+

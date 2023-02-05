@@ -1,0 +1,16 @@
+# https://github.com/couchbase/couchbase-lite-C/commit/878269e3a600a9a31db708b31c96d24ccfd28214
+# backport: fix cmake config build when user is not root
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3e172e9..36838b1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -224,7 +224,7 @@ configure_package_config_file(
+   INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/CouchbaseLite"
+ )
+ write_basic_package_version_file(
+-    ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/cmake/CouchbaseLite/CouchbaseLiteConfigVersion.cmake
++       ${CMAKE_BINARY_DIR}/CouchbaseLiteConfigVersion.cmake
+     VERSION ${CBL_LIBRARY_VERSION} COMPATIBILITY SameMajorVersion
+ )
+
