@@ -1,7 +1,7 @@
 # Maintainer: Jan Ole Zabel <jan.zabel@posteo.de>
 pkgname=minetest-worldmapper
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Minetest world mapper"
 arch=('x86_64')
 url="https://github.com/UgnilJoZ/minetest-worldmapper"

@@ -4,10 +4,10 @@ pkgbase = minetest-worldmapper
 	pkgrel = 1
 	url = https://github.com/UgnilJoZ/minetest-worldmapper
 	arch = x86_64
-	license = AGPL-3.0
+	license = AGPL
 	makedepends = cargo
 	depends = glibc
 	source = https://github.com/UgnilJoZ/minetest-worldmapper/archive/refs/tags/v0.3.2.tar.gz
-	sha512sums = 0aacdb5379e4ba5eeae06afc3a5aa6dddef6c079de499c26e2ad430348b0b715f30f100aa08a46f30b452b86cde1cdc26134d4f9518693e04040d3c38f152491
+	sha512sums = ff2b662f5a171e0b38ca10cd762548eacc20607b1e1ae07650903b69a3af2bc745aec83bb6433c942c532c5428cefc8c2fa88349bbd4985c610b51f1d1a569bc
 
 pkgname = minetest-worldmapper
