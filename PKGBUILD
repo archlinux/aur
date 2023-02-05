@@ -1,19 +1,17 @@
 # Maintainer: Grzegorz Koperwas <admin@grzegorzkoperwas.site>
 pkgname=swww
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.7.1
+pkgrel=1
 pkgdesc="Efficient animated wallpaper daemon for wayland, controlled at runtime."
 arch=('x86_64' 'aarch64')
 url="https://github.com/Horus645/swww"
 license=('GPL')
 depends=('gcc-libs' 'lz4' 'libxkbcommon')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Horus645/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
-        "https://github.com/Horus645/swww/commit/d2f3570aa41707924abd4c0084850351580a21db.patch")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Horus645/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 
 prepare() {
     cd "$pkgname-$pkgver"
-    patch --forward --strip=1 --input="${srcdir}/d2f3570aa41707924abd4c0084850351580a21db.patch"
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -34,5 +32,4 @@ package() {
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
-sha256sums=('bb5007c1a1245bccbad7187d0d15ca3d4ecd016ff99da001c78b899d89c21a5a'
-            'bb500ec5c2af1ff86b2656aaa74092400315fa3b1c562bbb2944a1bcc522dee5')
+sha256sums=('efea61f80381334b8e97863d0a42925a0dd776430d2b8bd57de4d583bbafb918')
