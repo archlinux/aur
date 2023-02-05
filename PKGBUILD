@@ -6,7 +6,7 @@
 pkgbase=jamulus
 pkgname=(jamulus jamulus-headless)
 pkgver=3.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Internet jam session software"
 arch=(x86_64 aarch64)
 url='https://jamulus.io/'
@@ -37,13 +37,13 @@ build() {
 package_jamulus() {
   cd $_pkgsrc
   pkgdesc+=" (client and server)"
-  depends+=(libjack.so qt6-multimedia)
+  depends+=(hicolor-icon-theme libjack.so qt6-multimedia)
   install -vDm755 jamulus -t "$pkgdir"/usr/bin
   install -vDm644 ChangeLog README.md -t "$pkgdir"/usr/share/doc/$pkgbase
   install -vDm644 COPYING -t "$pkgdir"/usr/share/licenses/$pkgbase
   install -vDm644 linux/Jamulus.1 "$pkgdir"/usr/share/man/man1/jamulus.1
   install -vDm644 linux/jamulus{,-server}.desktop -t "$pkgdir"/usr/share/applications
-  install -vDm644 src/res/io.jamulus.jamulus{,server}.svg -t "$pkgdir"/usr/share/pixmaps
+  install -vDm644 src/res/io.jamulus.jamulus{,server}.svg -t "$pkgdir"/usr/share/icons/hicolor/scalable/apps/
   install -vDm644 ../jamulus.service -t "$pkgdir"/usr/lib/systemd/system
   install -vDm644 ../jamulus.sysusers "$pkgdir"/usr/lib/sysusers.d/$pkgbase.conf
 }

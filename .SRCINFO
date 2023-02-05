@@ -1,7 +1,7 @@
 pkgbase = jamulus
 	pkgdesc = Internet jam session software
 	pkgver = 3.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jamulus.io/
 	arch = x86_64
 	arch = aarch64
@@ -26,6 +26,7 @@ pkgname = jamulus
 	pkgdesc = Internet jam session software (client and server)
 	depends = gcc-libs
 	depends = qt6-base
+	depends = hicolor-icon-theme
 	depends = libjack.so
 	depends = qt6-multimedia
 
