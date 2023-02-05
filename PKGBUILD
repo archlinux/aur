@@ -1,8 +1,8 @@
 # Maintainer: Daniel Wilhelm <concat(shield, wed) @ outlook.com>
 pkgname=easytaxag
-pkgver=2021.1.3
+pkgver=2022.1.1
 pkgrel=1
-pkgdesc="EasyTax Applikation zur Steuererklärung 2021 für den Kanton Aargau"
+pkgdesc="EasyTax Applikation zur Steuererklärung 2022 für den Kanton Aargau"
 arch=('any')
 url="https://msg-easytax.ch/ag/"
 license=('unknown')
@@ -10,6 +10,10 @@ depends=(
   'sh'
   'hicolor-icon-theme'
   'jre8-openjdk'
+)
+makedepends=(
+  'libicns'
+  'optipng'
 )
 source=(
   https://msg-easytax.ch/ag/${pkgver%%.*}/EasyTax${pkgver%%.*}AG_unix_$(echo ${pkgver#*.} | sed 's/\./_/').tar.gz
@@ -19,9 +23,9 @@ source=(
 )
 
 sha256sums=(
-  '1dce65837fe258fda921035f11e724d6d19680c6ca6cab94e0551a8dd406be18'
-  '198bb1c5a5115925f97bd7090bdd8e1dbd9927f1efabe1f1f1166a4cabb0bfe0'
-  'fa7c2394bf85dcc2449258ba40509069964e726f65ecbd26256d5aba95c62291'
+  '0a6c7bcbc8179364da3b4b6772a17b7296b5687a1612e93501ccb3f7c4a99cd4'
+  '15671aacfbf5975c133847e531f0796bb97773946d6ca5cd7cee78b5354ee1b5'
+  '4341d0b441118509ec21539aed95e2a1ac33c88deba0a341af075db114cca8bd'
 )
 
 package() {
@@ -33,6 +37,11 @@ package() {
   install -d usr/bin
   ln -sf /usr/share/java/EasyTax${pkgver%%.*}AG/EasyTax${pkgver%%.*}_AG usr/bin/EasyTax${pkgver%%.*}_AG
 
-  install -Dp "${srcdir}"/EasyTax${pkgver%%.*}AG/.install4j/i4j_extf_9_171xd9w_1txahfq.png usr/share/icons/hicolor/64x64/apps/easytaxag.png
+  install -Dp "${srcdir}"/EasyTax${pkgver%%.*}AG/.install4j/i4j_extf_9_4xni41_1txahfq.png usr/share/icons/hicolor/64x64/apps/easytaxag.png
+  cp "${srcdir}"/EasyTax${pkgver%%.*}AG/.install4j/{i4j_extf_1_4xni41_1p83s44,easytaxag}.icns
+  icns2png -x -s 128x128 -d 32 "${srcdir}"/EasyTax${pkgver%%.*}AG/.install4j/easytaxag.icns -o "${srcdir}"/EasyTax${pkgver%%.*}AG/.install4j
+  optipng -o9 "${srcdir}"/EasyTax${pkgver%%.*}AG/.install4j/easytaxag_128x128x32.png
+  install -Dp "${srcdir}"/EasyTax${pkgver%%.*}AG/.install4j/easytaxag_128x128x32.png usr/share/icons/hicolor/128x128/apps/easytaxag.png
+
   install -Dp "${srcdir}"/easytaxag.desktop usr/share/applications/easytaxag.desktop
 }

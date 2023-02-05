@@ -1,18 +1,20 @@
 pkgbase = easytaxag
-	pkgdesc = EasyTax Applikation zur Steuererklärung 2021 für den Kanton Aargau
-	pkgver = 2021.1.3
+	pkgdesc = EasyTax Applikation zur Steuererklärung 2022 für den Kanton Aargau
+	pkgver = 2022.1.1
 	pkgrel = 1
 	url = https://msg-easytax.ch/ag/
 	arch = any
 	license = unknown
+	makedepends = libicns
+	makedepends = optipng
 	depends = sh
 	depends = hicolor-icon-theme
 	depends = jre8-openjdk
-	source = https://msg-easytax.ch/ag/2021/EasyTax2021AG_unix_1_3.tar.gz
+	source = https://msg-easytax.ch/ag/2022/EasyTax2022AG_unix_1_1.tar.gz
 	source = easytaxag.desktop
 	source = EasyTax_AG.patch
-	sha256sums = 1dce65837fe258fda921035f11e724d6d19680c6ca6cab94e0551a8dd406be18
-	sha256sums = 198bb1c5a5115925f97bd7090bdd8e1dbd9927f1efabe1f1f1166a4cabb0bfe0
-	sha256sums = fa7c2394bf85dcc2449258ba40509069964e726f65ecbd26256d5aba95c62291
+	sha256sums = 0a6c7bcbc8179364da3b4b6772a17b7296b5687a1612e93501ccb3f7c4a99cd4
+	sha256sums = 15671aacfbf5975c133847e531f0796bb97773946d6ca5cd7cee78b5354ee1b5
+	sha256sums = 4341d0b441118509ec21539aed95e2a1ac33c88deba0a341af075db114cca8bd
 
 pkgname = easytaxag
