@@ -1,35 +1,36 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=cs-string-git
-pkgver=r45.c6f1f51
+pkgver=1.4.0.r0.gfde6148
 pkgrel=1
 pkgdesc='Standalone library for unicode aware string support (git version)'
 arch=('x86_64')
 url='https://www.copperspice.com/'
 license=('BSD')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'catch2')
 provides=('cs-string')
 conflicts=('cs-string')
 source=('git+https://github.com/copperspice/cs_string.git')
 sha256sums=('SKIP')
 
 pkgver() {
-    printf 'r%s.%s' "$(git -C cs_string rev-list --count HEAD)" "$(git -C cs_string rev-parse --short HEAD)"
+    git -C cs_string describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^string\.//;s/^v//'
 }
 
 build() {
     cmake -B build -S cs_string \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DBUILD_TESTS:BOOL='ON' \
         -Wno-dev
     make -C build
 }
 
 check() {
-    build/bin/Test
+    make -C build test
 }
 
 package() {
-    make -C build DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake --install build
     install -D -m644 cs_string/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
