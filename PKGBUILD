@@ -1,16 +1,24 @@
-# Python package author: Pablo Lecolinet <pablolec@pm.me>
-pkgname=python-recoverpy
-_pkgname="recoverpy"
-pkgver=1.1.1
+pkgbase='python-recoverpy'
+pkgname=('python-recoverpy')
+_module='recoverpy'
+pkgver='2.0.0'
 pkgrel=1
-pkgdesc="A console user interface to recover overwritten or deleted text data."
-arch=(any)
-url="https://github.com/pablolec/recoverpy"
+pkgdesc="A TUI to recover overwritten or deleted data."
+url="https://github.com/PabloLec/recoverpy"
+depends=('python')
+makedepends=('python-setuptools')
 license=(GNU GPLv3)
-makedepends=("python" "python-setuptools" )
-source=($pkgname-$pkgver.tar.gz::https://github.com/PabloLec/recoverpy/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('1ccff07e3a4e17f6fdaee1aac83a53f0f024848741ef7b6993f0b83e6bba536e')
+arch=('any')
+source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
+sha256sums=('10ff1868223ed6590c8801b2010705323dfcb37932f6e7ddde1ba79215bf7782')
+
+build() {
+    cd "${srcdir}/${_module}-${pkgver}"
+    python setup.py build
+}
+
 package() {
- cd "$srcdir/$_pkgname-$pkgver"
- python setup.py install --root="$pkgdir" --optimize=1
+    depends+=()
+    cd "${srcdir}/${_module}-${pkgver}"
+    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
