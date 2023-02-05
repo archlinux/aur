@@ -12,7 +12,7 @@ arch=("x86_64")
 license=("freeware-proprietary")
 _appimage="${_pkgname}_${pkgver}.AppImage"
 source=("$_appimage"::"https://launcher.scorespy.online/dist/ScoreSpy%20Launcher-${pkgver}.AppImage")
-sha1sums=('b6723bb1b9f20ca8e1fa1067d221e584eaefe3b7')
+
 noextract=("$_appimage")
 options=(!strip)
 
