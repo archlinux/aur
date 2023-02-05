@@ -1,6 +1,6 @@
 pkgbase = qmplay2-git
 	pkgdesc = QMPlay2 is a video and audio player which can play most formats and codecs
-	pkgver = 22.10.23.r0.g862b8080
+	pkgver = 23.02.05.r0.g6bc2e4dc
 	pkgrel = 1
 	url = https://github.com/zaps166/QMPlay2
 	arch = i686
