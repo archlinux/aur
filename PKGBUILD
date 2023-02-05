@@ -1,14 +1,14 @@
 
 # Maintainer: Wai <waicool20@gmail.com>
 pkgname=huiontablet
-pkgver=v15.0.0.103.202208301443
+pkgver=v15.0.0.107.202209081050
 pkgrel=1
 pkgdesc="Official Huion tablet drivers"
 arch=('x86_64')
 url="https://www.huion.com/download/"
 license=('unknown')
-source=("https://driverdl.huion.com/driver/X10_G930L_Q630M/HuionTablet_$pkgver.$arch.tar.xz")
-md5sums=("262eeb45ad0c910ceec97a1837d3f001")
+source=("https://driverdl.huion.com/driver/Inspiroy2/HuionTablet_$pkgver.$arch.tar.xz")
+md5sums=("df48356b36ecd6c42a77132c9176cab7")
 
 prepare() {
   cd "${srcdir}"
