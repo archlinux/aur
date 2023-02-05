@@ -1,4 +1,5 @@
-# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
+# Maintainer: Jonas Bewig <jomosoto@proton.me>
+# Contributor: Yurii Kolesnykov <root@yurikoles.com>
 # Based on protonvpn-cli-ng by Nate Ijams ~ exprez135 <exprezdev at pm dot me>
 
 pkgname=protonvpn-cli-community
