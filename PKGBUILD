@@ -3,7 +3,7 @@
 _pkgname=appflowy
 pkgname=$_pkgname-git
 pkgver=latest
-pkgrel=7
+pkgrel=8
 pkgdesc='An open-source alternative to Notion.'
 arch=(x86_64)
 url='https://www.appflowy.io/'
@@ -18,7 +18,7 @@ options=()
 install=
 source=(
 	"$_pkgname::git+https://github.com/AppFlowy-IO/AppFlowy.git"
-	'flutter::git+https://github.com/flutter/flutter.git'
+	'flutter::git+https://github.com/flutter/flutter.git#tag=3.3.10'
 )
 sha256sums=('SKIP' 'SKIP')
 
@@ -34,7 +34,6 @@ pkgver() {
 
 prepare() {
 	_setpath
-	flutter channel stable
 	flutter config --enable-linux-desktop
 
 	cd "$srcdir/$_pkgname/frontend"
