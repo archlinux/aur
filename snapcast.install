@@ -4,8 +4,11 @@ post_install() {
   echo ":: The default setup will create a pipe /tmp/snapfifo."
   echo "   Due to recent changes in systemd, pipes in /tmp are by default only"
   echo "   writable by the owning user (here: sysuser snapserver)."
-  echo "   This is controlled by systclt fs.protected_fifos."
-  echo "   A possible workaround is to disable the sysctl feature by running:"
+  echo "   The safest option is to change the location of the fifo to a"
+  echo "   different location, e.g. /run/snapserver.  This can be done by"
+  echo "   editing /etc/snapserver.conf"
+  echo "   Another possible workaround is to disable the sysctl feature by"
+  echo "   running:"
   echo "     # sysctl fs.protected_fifos=0"
   echo ":: Snapcast now has a built-in snapweb control client which is enabled"
   echo "   by default on a new setup.  This functionality enables a webserver"
@@ -17,17 +20,20 @@ post_upgrade() {
   echo ":: The default setup will create a pipe /tmp/snapfifo."
   echo "   Due to recent changes in systemd, pipes in /tmp are by default only"
   echo "   writable by the owning user (here: sysuser snapserver)."
-  echo "   This is controlled by systclt fs.protected_fifos."
-  echo "   A possible workaround is to disable the sysctl feature by running:"
+  echo "   The safest option is to change the location of the fifo to a"
+  echo "   different location, e.g. /run/snapserver.  This can be done by"
+  echo "   editing /etc/snapserver.conf"
+  echo "   Another possible workaround is to disable the sysctl feature by"
+  echo "   running:"
   echo "     # sysctl fs.protected_fifos=0"
   echo ":: Snapcast now has a built-in snapweb control client which is enabled"
   echo "   by default on a new setup.  This functionality enables a webserver"
-  echo "   on port 1780.  This can be controlled by the doc_root variable in" 
+  echo "   on port 1780.  This can be controlled by the doc_root variable in"
   echo "   /etc/snapserver.conf."
 
   # return if old package version greater 10.4...
   (( $(vercmp $2 '0.15.0') > 0 )) && return
-  
+
   echo ":: The snapserver configuration layout has changed!"
   echo "   -> Most of the configuration has moved from /etc/default/snapserver"
   echo "      to /etc/snapserver.conf."
