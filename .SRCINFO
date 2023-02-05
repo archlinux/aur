@@ -1,0 +1,38 @@
+pkgbase = python-aim
+	pkgdesc = A super-easy way to record, search and compare AI experiments.
+	pkgver = 3.16.0
+	pkgrel = 1
+	url = https://github.com/aimhubio/aim
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = python-aim-ui=3.16.0
+	depends = python-aimrecords=0.0.7
+	depends = python-aimrocks=0.3.1
+	depends = python-cachetools
+	depends = python-click
+	depends = python-cryptography
+	depends = python-filelock
+	depends = python-numpy
+	depends = python-psutil
+	depends = python-py3nvml
+	depends = python-restrictedpython
+	depends = python-tqdm
+	depends = python-aiofiles
+	depends = python-alembic
+	depends = python-fastapi
+	depends = python-jinja
+	depends = python-pytz
+	depends = python-sqlalchemy
+	depends = uvicorn
+	depends = python-pillow
+	depends = python-protobuf
+	depends = python-packaging
+	depends = python-dateutil
+	depends = python-requests
+	depends = python-segment-analytics-python
+	source = https://files.pythonhosted.org/packages/source/a/aim/aim-3.16.0.tar.gz
+	sha256sums = 5e05c9d0ad0aaf8c4859bc717f6b51b13f563efd587d6135e93341d6a0aa9d52
+
+pkgname = python-aim
