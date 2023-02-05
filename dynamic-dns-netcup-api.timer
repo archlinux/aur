@@ -1,11 +1,11 @@
 [Unit]
 Description=periodic update of netcup dynDNS
-After=network-online.target
+After=network-online.target network.target
 
 [Timer]
 OnBootSec=30s
 OnUnitActiveSec=5m
-Persistent=true
+#Persistent=true
 Unit=dynamic-dns-netcup-api.service
 
 [Install]
