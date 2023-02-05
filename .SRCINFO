@@ -1,0 +1,13 @@
+pkgbase = gnome-shell-extension-firefox-pip
+	pkgdesc = GNOME Shell extension to make Firefox Picture-in-Picture window always on top.
+	pkgver = 3
+	pkgrel = 1
+	url = https://github.com/bennypowers/gnome-shell-extension-firefox-pip
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gnome-shell
+	source = gnome-shell-extension-firefox-pip-3.tar.gz::https://github.com/bennypowers/gnome-shell-extension-firefox-pip/archive/v3.tar.gz
+	b2sums = 24af1f7871acdeb194e41a8666420c9a90a3add8f970fb55df7975b3f990561d77e91a5d2d056bb88bce997e7f6f7203485f09fe87a8338c83a64cdc5a3abad6
+
+pkgname = gnome-shell-extension-firefox-pip
