@@ -1,10 +1,10 @@
 # Maintainer: "Jayesh Badwaik" jayesh@badwaik.dev
 
 pkgname=nvhpc
-_REL_YEAR=2022
-_CUDA_VER=11.8
-pkgver=22.11
-pkgrel=2
+_REL_YEAR=2023
+_CUDA_VER=12.0
+pkgver=23.1
+pkgrel=3
 pkgdesc='NVIDIA HPC SDK'
 arch=('x86_64')
 url="https://gitlab.com/badwaik/archlinux/aur/nvhpc"
@@ -17,8 +17,8 @@ conflicts=('pgi-compilers')
 _pkgname="nvhpc_${_REL_YEAR}_${pkgver//.}_Linux_${arch}_cuda_${_CUDA_VER}"
 source=("https://developer.download.nvidia.com/hpc-sdk/$pkgver/$_pkgname.tar.gz"
     "nvhpc.sh")
-sha256sums=('6be15d49a451983234483c5721fa12ad810e83127d2a572b5716ba9a2e2968e9'
-    '8e8a66dc93b4f0401388fb2254a8656ca505abd705b11c1b15c2343086ef5a54')
+sha256sums=('a01733a257995dc63a4f07b94dbad50b07f12d0515f7c7a9b2bebef3ac35750a'
+    'e21d9efc98ade7902463bf19dbefe7fe611e282da5deb17a5397b0842cac16b7')
 options=(!strip)
 
   prepare() {
@@ -43,9 +43,9 @@ package() {
 # Install script to set path
     install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/etc/profile.d/$pkgname.sh"
 
-# Temporary Patch to Fix Problems with OpenMPI 3.x
-    pushd $pkgdir/opt/nvidia/hpc_sdk/Linux_x86_64/22.11/comm_libs
-      unlink mpi
-      ln -s openmpi4/openmpi-4.0.5/ mpi
-    popd
+## Temporary Patch to Fix Problems with OpenMPI 3.x
+#    pushd $pkgdir/opt/nvidia/hpc_sdk/Linux_x86_64/22.11/comm_libs
+#      unlink mpi
+#      ln -s openmpi4/openmpi-4.0.5/ mpi
+#    popd
 }
