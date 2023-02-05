@@ -1,6 +1,6 @@
 pkgbase = swift-language-git
 	pkgdesc = The Swift programming language, taken directly from the Apple repository
-	pkgver = swift.DEVELOPMENT.SNAPSHOT.2022.07.25.a.r45.g0464fd302fd
+	pkgver = swift.DEVELOPMENT.SNAPSHOT.2023.02.03.a.r27.gc29abfb59
 	pkgrel = 1
 	url = https://swift.org/
 	arch = x86_64
