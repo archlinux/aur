@@ -1,7 +1,7 @@
 pkgbase = xdg-desktop-portal-hyprland-git
 	pkgdesc = xdg-desktop-portal backend for hyprland
 	pkgver = r224.3d3c5a4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hyprwm/xdg-desktop-portal-hyprland
 	arch = x86_64
 	license = custom:MIT
