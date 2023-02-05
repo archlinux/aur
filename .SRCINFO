@@ -1,0 +1,18 @@
+pkgbase = circt
+	pkgdesc = Circuit IR Compilers and Tools
+	pkgver = 1.29.0
+	pkgrel = 1
+	url = https://llvm.org/
+	arch = x86_64
+	license = custom:Apache 2.0 with LLVM Exception
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = python-psutil
+	depends = ncurses
+	source = https://github.com/llvm/circt/archive/firtool-1.29.0.tar.gz
+	source = git+https://github.com/llvm/llvm-project.git#commit=db202286eb7b3f6725c82ded4f5c8b31ea648521
+	sha256sums = ee98b41c28c4cca9555f0f1403e928b28600025cd77b4ff80e77edf20b38b38f
+	sha256sums = SKIP
+
+pkgname = firtool
