@@ -1,0 +1,13 @@
+pkgbase = cs-string
+	pkgdesc = Standalone library for unicode aware string support
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://www.copperspice.com/
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = catch2
+	source = https://github.com/copperspice/cs_string/archive/string-1.4.0/cs-string-1.4.0.tar.gz
+	sha256sums = f264994bb869916f59d356f451c3eecc6171565ae9bf828292bd3d7d14168db3
+
+pkgname = cs-string
