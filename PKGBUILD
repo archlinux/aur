@@ -34,7 +34,7 @@ depends=(
   'python-packaging'
   'python-dateutil'
   'python-requests'
-  'python-segment-analytics-python'
+  'python-segment-analytics'
 )
 makedepends=('python-setuptools')
 license=('Apache')
