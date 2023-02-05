@@ -17,6 +17,7 @@ pkgbase = gcc9
 	makedepends = python
 	options = !emptydirs
 	options = !lto
+	options = !buildflags
 	source = https://ftp.gnu.org/gnu/gcc/gcc-9.5.0/gcc-9.5.0.tar.xz
 	source = https://ftp.gnu.org/gnu/gcc/gcc-9.5.0/gcc-9.5.0.tar.xz.sig
 	source = https://gcc.gnu.org/pub/gcc/infrastructure/isl-0.24.tar.bz2

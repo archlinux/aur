@@ -16,7 +16,7 @@ license=(GPL LGPL FDL custom)
 url='https://gcc.gnu.org'
 makedepends=(binutils doxygen git libmpc python)
 checkdepends=(dejagnu inetutils)
-options=(!emptydirs !lto)
+options=(!emptydirs !lto !buildflags)
 _libdir=usr/lib/gcc/$CHOST/${pkgver%%+*}
 # _commit=6957d3e4eef1f4243eb23ff62aea06139ef4415a
 # source=(git://gcc.gnu.org/git/gcc.git#commit=$_commit
@@ -102,6 +102,7 @@ build() {
       --program-suffix=-${_majorver} \
       --enable-version-specific-runtime-libs \
       --disable-multilib
+  LD_PRELOAD='/usr/lib/libstdc++.so' \
   make
 
   # make documentation
