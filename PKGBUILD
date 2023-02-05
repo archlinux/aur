@@ -14,7 +14,7 @@ provides=('grub-customizer')
 source=("${_pkgname}_${pkgver}.tar.gz"::"http://ppa.launchpad.net/danielrichter2007/grub-customizer/ubuntu/pool/main/g/${_pkgname}/${_pkgname}_${pkgver}.orig.tar.gz"
               "grub.cfg")
 sha256sums=("39d4b3dda81c3804566f0cc9d2ab1f41e1ffa923656b651c1488220ed2046793"
-                       "db215fe06e97929ad5e82eb8257b8c487ab61414e3e9a2946b9f18880cf2caad")
+                       "47c6de7e8f77d843dd79547b6ea34d5f485271cdf86fa3770f67c59359d2e78b")
 
 prepare() {
 rm -rf ${_pkgname}-${pkgver}
