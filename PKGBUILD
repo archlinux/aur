@@ -1,6 +1,6 @@
 # Maintainer: Phorcys <aur@phorcys.net>
 pkgname=coder-bin
-pkgver="0.14.1"
+pkgver="0.14.2"
 pkgrel=1
 pkgdesc="Remote development environments on your infrastructure provisioned with Terraform"
 arch=("x86_64" "aarch64" "armv7h")
@@ -10,9 +10,9 @@ license=("AGPL3")
 source_x86_64=("https://github.com/coder/coder/releases/download/v${pkgver}/coder_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("https://github.com/coder/coder/releases/download/v${pkgver}/coder_${pkgver}_linux_arm64.tar.gz")
 source_armv7h=("https://github.com/coder/coder/releases/download/v${pkgver}/coder_${pkgver}_linux_armv7.tar.gz")
-sha256sums_x86_64=('3538ed3dfd4cd729c6656d5609b523d5fcc1f60062217573d7325bf3aa2dcdb5')
-sha256sums_aarch64=('d5472fa89169fd5c319a2516e5a50d809ab46239c20461803d4729c243a7e6d0')
-sha256sums_armv7h=('351e1733b3b71302175a9286382b9e9c07365819bdebeaa91fbcc71732e41ef4')
+sha256sums_x86_64=('449b7c9c1908f83801408a87570e0e1abfc7148e87007423c464a49eb7f3be21')
+sha256sums_aarch64=('db7ecdb73a7821a943e0655264c2205a84028491d1faddf06679f4fce89a60d8')
+sha256sums_armv7h=('8d65d3525f6786403d90dc3114863d6433793420a0ba3e63403527b8a1614077')
 
 package() {
 	cd "$srcdir"
