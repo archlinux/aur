@@ -1,31 +1,29 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
-pkgname='python-guizero'
-_module='guizero'
-pkgver=1.3.0
+_name=guizero
+pkgname=python-$_name
+pkgver=1.4.0
 pkgrel=1
-pkgdesc="Python module to allow learners to easily create GUIs"
-url="https://github.com/lawsie/guizero"
-depends=('python-pillow' 'tk')
-makedepends=('python-setuptools')
-license=('BSD')
-arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/${_module}/${_module}-${pkgver}.tar.gz"
-        'https://raw.githubusercontent.com/lawsie/guizero/master/license.txt')
-md5sums=('cb99d284c41da99f1f0ec75201eb8933'
-         '9670acd16790b84f21178f2b940a96e2')
+pkgdesc='Python module to allow learners to easily create GUIs'
+url='https://github.com/lawsie/guizero'
+depends=(python-pillow tk)
+makedepends=(python-build python-installer python-setuptools python-wheel)
+license=(BSD)
+arch=(any)
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('5764e38a3b2a089712ec1e75340bf8335ea7721e37df8d9021cdd0afb8b57a27')
 
 
 build() {
-    cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py build
+  cd $_name-$pkgver
+  python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-    # install license file
-    install -Dm644 "$srcdir/license.txt" -t "$pkgdir/usr/share/licenses/$pkgname"
-    # install readme into docdir
-    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  cd $_name-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  # install license file
+  install -Dm644 license.txt -t "$pkgdir"/usr/share/licenses/$pkgname
+  # install readme into docdir
+  install -Dm644 README.md -t "$pkgdir"/usr/share/doc/$pkgname
 }

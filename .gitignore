@@ -1,8 +1,5 @@
-pkg
-src
-license.txt
 guizero-*.tar.gz
-python-guizero-*.pkg.tar.xz
-python-guizero-*.pkg.tar.zst
+pkg/
+python-guizero-*.pkg.tar.*
 python-guizero-*.src.tar.gz
-.AURINFO
+src/
