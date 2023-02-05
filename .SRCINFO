@@ -1,0 +1,27 @@
+pkgbase = vapoursynth-classic
+	pkgdesc = A video processing framework with the future in mind with classic API compatibility
+	pkgver = R57.A7
+	pkgrel = 1
+	url = https://github.com/AmusementClub/vapoursynth-classic
+	arch = x86_64
+	license = LGPL3
+	license = custom:OFL
+	makedepends = cython
+	makedepends = git
+	makedepends = python-sphinx
+	depends = libass.so
+	depends = libavcodec.so
+	depends = libavformat.so
+	depends = libavutil.so
+	depends = libmagick
+	depends = libzimg.so
+	depends = python
+	depends = tesseract
+	provides = vapoursynth
+	conflicts = vapoursynth
+	source = git+https://github.com/AmusementClub/vapoursynth-classic.git#tag=R57.A7
+	source = vapoursynth.xml
+	sha256sums = SKIP
+	sha256sums = 8e51579547d20cd7cb9618a47b3ac508423d09d76649bf038d0ab9acb850b068
+
+pkgname = vapoursynth-classic
