@@ -1,7 +1,7 @@
 # Maintainer: ReneganRonin <renegan.ronin@gmail.co>
 
 pkgname=madgraph
-pkgver=3.4.1
+pkgver=3.4.2
 _major=${pkgver%%.*}
 _minor=${pkgver#2.}
 _minor=${_minor%%.*}
@@ -30,7 +30,7 @@ optdepends=(
 source=("https://launchpad.net/mg5amcnlo/${_major}.0/${_major}.4.x/+download/MG5_aMC_v${pkgver}.tar.gz"
 "mg5_configuration.patch"
         )
-sha256sums=('d0dc25a84393687017dcd9154e8f0eee0ba3d6a7122b4a61541db24ffbc148c3'
+sha256sums=('ca8631e10cc384f9d05a4d3311f6cb101eeaa57cb39ab7325ee5d1aec1fe218f'
             '14d418c14b96492be021da194c2f211fcd91e82c4bb04f15c4d95b7dd65656bf')
 options=("!strip")
 
