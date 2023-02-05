@@ -1,6 +1,5 @@
 See the full changelog for all versions at:
 https://github.com/krathalan/wtwitch/blob/master/FULLCHANGELOG
 
-2.6.0 (September 12, 2022)
-      If custom title is set in streamlink config, set it as mpv window title from michaeldxyz (PR#15)
-      Show streamer names as formatted in Twitch chat from michaeldxyz (PR#16)
+2.6.1 (February 05, 2023)
+    Use a separate file for API token from ruitcatarino (PR#19)
