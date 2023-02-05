@@ -1,7 +1,7 @@
 pkgbase = grub-customizer-gtk
 	pkgdesc = A tool to choose grub2 bootscreen theme
 	pkgver = 5.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/grub-customizer
 	arch = x86_64
 	license = GPL3
@@ -16,6 +16,6 @@ pkgbase = grub-customizer-gtk
 	source = grub-customizer_5.2.2.tar.gz::http://ppa.launchpad.net/danielrichter2007/grub-customizer/ubuntu/pool/main/g/grub-customizer/grub-customizer_5.2.2.orig.tar.gz
 	source = grub.cfg
 	sha256sums = 39d4b3dda81c3804566f0cc9d2ab1f41e1ffa923656b651c1488220ed2046793
-	sha256sums = db215fe06e97929ad5e82eb8257b8c487ab61414e3e9a2946b9f18880cf2caad
+	sha256sums = 47c6de7e8f77d843dd79547b6ea34d5f485271cdf86fa3770f67c59359d2e78b
 
 pkgname = grub-customizer-gtk

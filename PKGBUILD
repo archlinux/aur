@@ -3,7 +3,7 @@
 pkgname='grub-customizer-gtk'
 _pkgname='grub-customizer'
 pkgver=5.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool to choose grub2 bootscreen theme'
 arch=('x86_64')
 url="https://launchpad.net/grub-customizer"
@@ -29,28 +29,12 @@ build() {
   make
 }
 
-package() {
-  cd "${_pkgname}-${pkgver}"
-  # install lang files
-  arr=(ar ast bg bs ca cs cy de el en_GB es et eu fi fr gl hr hu it ja kk ko lt nl pl pt_BR pt ro ru sk sr sv ta th tr uk vi zh_CN zh_TW)
-  for i in "${arr[@]}"; do
-      install -Dm644 "translation/translation-$i.mo" "${pkgdir}/usr/share/locale/$i/LC_MESSAGES/grub-customizer.mo"
-  done
-  
-  # install icons
-   for i in 16x16 24x24 32x32 48x48 64x64 128x128; do
-       install -Dm644 "misc/icons/$i.svg" "${pkgdir}/usr/share/icons/hicolor/$i/apps/grub-customizer.svg"
-   done
-  
-  # install desktop files
-  install -Dm755 "misc/${_pkgname}.desktop"  "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  
-  # install bin files
-  install -Dm755 "builddir/${_pkgname}"  "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm755 "builddir/grubcfg-proxy"  "${pkgdir}/usr/lib/${_pkgname}/grubcfg-proxy"
-  install -Dm644 "${srcdir}/grub.cfg" "${pkgdir}/etc/${_pkgname}/grub.cfg"
-  
-  # install documentation
-  install -Dm755 "README" "${pkgdir}/usr/share/doc/${_pkgname}/README"
-  install -Dm755 "changelog" "${pkgdir}/usr/share/doc/${_pkgname}/changelog"
+package(){
+  cd "${_pkgname}-${pkgver}/builddir"
+  make install DESTDIR="${pkgdir}"
+  # configuration
+  install -vDm 644 "${srcdir}/grub.cfg" -t "${pkgdir}/etc/${_pkgname}/"
+  # additional documentation
+  install -vDm 644 ../{changelog,README} \
+    -t "${pkgdir}/usr/share/doc/${_pkgname}/"
 }
