@@ -1,0 +1,7 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Name=Steuern Luzern 2022 nP
+Exec="/opt/steuern-lu-np-2022/steuern.lu.2022 nP" %U
+Categories=Application;
+Icon=/opt/steuern-lu-np-2022/app.png
