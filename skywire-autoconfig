@@ -170,6 +170,9 @@ fi
 
 #root portion of the config
 _msg2 "Configuring skywire"
+if [[ $(skywire -v | awk '{print $NF}') != *"unknown"* ]] ; then
+_msg2 "version: $(skywire -v | awk '{print $NF}')"
+fi
 #attempt to import config if none exists - i.e. import skybian config or restore config
 if [[ ! -f /opt/skywire/skywire.json ]]; then
 	if [[ -f /etc/skywire-config.json ]]; then
