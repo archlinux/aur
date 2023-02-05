@@ -2,7 +2,7 @@
 pkgbase=spdk
 pkgname=('spdk' 'python-spdk')
 pkgver=23.01
-pkgrel=2
+pkgrel=3
 pkgdesc='spdk: headers, libs, and scripts'
 arch=('x86_64')
 license=('BSD')
@@ -38,7 +38,7 @@ package_spdk() {
 package_python-spdk() {
   arch=('any')
   pkgdesc='spdk: python support'
-  depends=('python-configshell-fb' 'python-grpcio' 'python-google-api-core' 'python-ipaddress')
+  depends=('python-configshell-fb' 'python-grpcio' 'python-google-api-core' 'python-pyparsing' 'python-ipaddress')
 
   local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
@@ -52,6 +52,9 @@ package_python-spdk() {
 
   install -Dm755 "scripts/spdkcli.py" "$pkgdir/usr/bin/spdkcli"
   sed -i '/sys\.path\.append/d' "$pkgdir/usr/bin/spdkcli"
+  
+  install -Dm755 "scripts/rpc.py" "$pkgdir/usr/bin/spdkrpc"
+  sed -i '/sys\.path\.append/d' "$pkgdir/usr/bin/spdkrpc"
 
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
