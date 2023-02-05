@@ -1,0 +1,14 @@
+pkgbase = python-aimrecords
+	pkgdesc = A record-oriented data format which utilizes Protocol Buffers
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://github.com/aimhubio/aimrecords
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = python-base58
+	source = https://files.pythonhosted.org/packages/source/a/aimrecords/aimrecords-0.0.7.tar.gz
+	sha256sums = 9b562fa5b5109b4b3dd4f83be0061cadbac63fa8031f281b8b5c8ae29967072f
+
+pkgname = python-aimrecords
