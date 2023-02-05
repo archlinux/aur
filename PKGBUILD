@@ -8,8 +8,8 @@
 
 _pkgname=htop
 pkgname=$_pkgname-solarized
-_tag='f3be499104b3a394505ac00d026c0013cfd33676' # git rev-parse ${pkgver}
-pkgver=3.2.1
+_tag='4dbd0b5c87f4225495d6e0591a1d7227f120ead1' # git rev-parse ${pkgver}
+pkgver=3.2.2
 pkgrel=1
 pkgdesc='Interactive process viewer with solarized patch'
 arch=('i686' 'x86_64' 'armv7h')
@@ -23,12 +23,12 @@ optdepends=('lm_sensors: show cpu temperatures'
 provides=('htop')
 conflicts=('htop')
 options=('!emptydirs')
-validpgpkeys=('F7ABE8761E6FE68638E6283AFE0842EE36DD8C0C' # Nathan Scott <nathans@debian.org>
+validpgpkeys=('F7ABE8761E6FE68638E6283AFE0842EE36DD8C0C'  # Nathan Scott <nathans@debian.org>
               '0D316B6ABE022C7798D0324BF1D35CB9E8E12EAD') # Benny Baumann <BenBE@geshi.org>
 source=("git+https://github.com/htop-dev/htop.git#tag=${_tag}?signed"
         'htop-solarized.patch')
 sha256sums=('SKIP'
-            'a89800696603ad3ccdfc9a51345f6b24d7de651e1e8691dc16671e951b4cc3e5')
+            '2b8e0b3949abd5b45c862963bde55504cd55845e734ff24fb8a310ca091c40f5')
 
 prepare() {
   cd "${_pkgname}"
