@@ -5,7 +5,7 @@
 pkgname=directx-headers-cmake
 pkgdesc="DirectX headers for using D3D12 (cmake version)"
 pkgver=1.608.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 makedepends=('cmake' 'ninja')
 url="https://github.com/microsoft/DirectX-Headers"
@@ -22,7 +22,9 @@ conflicts=('directx-headers')
 build() {
   cmake -S DirectX-Headers-$pkgver -B build -G Ninja \
     -DDXHEADERS_BUILD_TEST=OFF \
-    -DDXHEADERS_BUILD_GOOGLE_TEST=OFF
+    -DDXHEADERS_BUILD_GOOGLE_TEST=OFF \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release
 
   cmake --build build
 }

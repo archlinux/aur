@@ -1,7 +1,7 @@
 pkgbase = directx-headers-cmake
 	pkgdesc = DirectX headers for using D3D12 (cmake version)
 	pkgver = 1.608.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/microsoft/DirectX-Headers
 	arch = x86_64
 	license = MIT
