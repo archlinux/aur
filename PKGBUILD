@@ -2,7 +2,7 @@
 
 pkgname=bumper
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Easily bump $pkgver in your AUR packages.'
 url='https://github.com/bcyran/bumper'
 provides=('bumper')
@@ -28,6 +28,11 @@ build() {
     "build/${pkgname}" --completion bash > "build/completions/${pkgname}"
     "build/${pkgname}" --completion zsh > "build/completions/_${pkgname}"
     "build/${pkgname}" --completion fish > "build/completions/${pkgname}.fish"
+}
+
+check() {
+    cd "${pkgname}-${pkgver}"
+    go test ./...
 }
 
 package() {
