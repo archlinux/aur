@@ -1,7 +1,7 @@
 # Maintainer: Darjan Krijan [https://disc-kuraudo.eu]
 
 pkgname=disc-kuraudo-home
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Disc Kuraudo - The Disc Cloud"
 arch=('x86_64' 'aarch64')
@@ -30,9 +30,9 @@ source=(
 	*.patch # Any (untracked) patches lying around
 )
 if   [ ${CARCH} == "x86_64" ]; then
-	sha256sums=('2ffa66c58f3becc3ecc75b7b19fff1ac91ad1488ae7de32276f4d2b44742b045')
+	sha256sums=('c39e5b2075b41b2b9ea2ee4fd09f81dfe528dedcbc45f5184b62a1a91ed8e553')
 elif [ ${CARCH} == "aarch64" ]; then
-	sha256sums=('c18683fe6565251282d48324bcc573c574eaffc28cf346dfaeaef8d958a3417f')
+	sha256sums=('aec7b16e8fdcbec6d036a1cc5db570e5f24c954c1bc8c0f2b080ab099b32dc63')
 else
 	echo "Unsupported platform '${CARCH}', aborting."; exit 1
 fi
