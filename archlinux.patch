@@ -1,29 +1,29 @@
-Index: vstax/src/usr/share/applications/vstax2021.desktop
+Index: vstax/src/usr/share/applications/vstax2022.desktop
 ===================================================================
---- vstax.orig/src/usr/share/applications/vstax2021.desktop
-+++ vstax/src/usr/share/applications/vstax2021.desktop
+--- vstax.orig/src/usr/share/applications/vstax2022.desktop
++++ vstax/src/usr/share/applications/vstax2022.desktop
 @@ -1,12 +1,12 @@
  [Desktop Entry]
  Version=1.0
  Terminal=false
--Icon=/usr/share/vstax2021/vstax2021.png
-+Icon=/usr/share/java/vstax2021/vstax2021.png
+-Icon=/usr/share/vstax2022/vstax2022.png
++Icon=/usr/share/java/vstax2022/vstax2022.png
  Type=Application
  StartupNotify=false
- StartupWMClass=vstax2021
+ StartupWMClass=vstax2022
  Categories=Office;
--Exec=/usr/share/vstax2021/vstax2021.sh %U
-+Exec=/usr/bin/vstax2021 %U
- MimeType=application/vstax2021;
- Name=VSTax 2021
- GenericName=VSTax 2021
-Index: vstax/src/usr/share/vstax2021/vstax2021.sh
+-Exec=/usr/share/vstax2022/vstax2022.sh %U
++Exec=/usr/bin/vstax2022 %U
+ MimeType=application/vstax2022;
+ Name=VSTax 2022
+ GenericName=VSTax 2022
+Index: vstax/src/usr/share/vstax2022/vstax2022.sh
 ===================================================================
---- vstax.orig/src/usr/share/vstax2021/vstax2021.sh
-+++ vstax/src/usr/share/vstax2021/vstax2021.sh
+--- vstax.orig/src/usr/share/vstax2022/vstax2022.sh
++++ vstax/src/usr/share/vstax2022/vstax2022.sh
 @@ -1,3 +1,3 @@
  #!/bin/sh
--cd /usr/share/vstax2021
--./jre/bin/java -Xmx400m -Xms400m -Djava.locale.providers=COMPAT,CLDR --add-exports=java.base/sun.net.www.protocol.file=ALL-UNNAMED --add-exports=java.desktop/sun.swing=ALL-UNNAMED --add-exports=java.desktop/com.sun.java.swing.plaf.windows=ALL-UNNAMED --add-exports=java.desktop/sun.awt.shell=ALL-UNNAMED --add-exports=java.xml/com.sun.org.apache.xerces.internal.jaxp.datatype=ALL-UNNAMED  -jar jfw-launcher-7.2.15-obf.jar "$1"
-+cd /usr/share/java/vstax2021
-+/usr/bin/java -Xmx400m -Xms400m -Djava.locale.providers=COMPAT,CLDR --add-exports=java.base/sun.net.www.protocol.file=ALL-UNNAMED --add-exports=java.desktop/sun.swing=ALL-UNNAMED --add-exports=java.desktop/com.sun.java.swing.plaf.windows=ALL-UNNAMED --add-exports=java.desktop/sun.awt.shell=ALL-UNNAMED --add-exports=java.xml/com.sun.org.apache.xerces.internal.jaxp.datatype=ALL-UNNAMED  -jar jfw-launcher-7.2.15-obf.jar "$1"
+-cd /usr/share/vstax2022
+-./jre/bin/java -Xmx400m -Xms400m -Djava.locale.providers=COMPAT,CLDR --add-exports=java.base/sun.net.www.protocol.file=ALL-UNNAMED --add-exports=java.desktop/sun.swing=ALL-UNNAMED --add-exports=java.desktop/com.sun.java.swing.plaf.windows=ALL-UNNAMED --add-exports=java.desktop/sun.awt.shell=ALL-UNNAMED --add-exports=java.xml/com.sun.org.apache.xerces.internal.jaxp.datatype=ALL-UNNAMED  -jar jfw-launcher-7.2.19-obf.jar "$1"
++cd /usr/share/java/vstax2022
++/usr/bin/java -Xmx400m -Xms400m -Djava.locale.providers=COMPAT,CLDR --add-exports=java.base/sun.net.www.protocol.file=ALL-UNNAMED --add-exports=java.desktop/sun.swing=ALL-UNNAMED --add-exports=java.desktop/com.sun.java.swing.plaf.windows=ALL-UNNAMED --add-exports=java.desktop/sun.awt.shell=ALL-UNNAMED --add-exports=java.xml/com.sun.org.apache.xerces.internal.jaxp.datatype=ALL-UNNAMED  -jar jfw-launcher-7.2.19-obf.jar "$1"
