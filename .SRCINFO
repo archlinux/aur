@@ -31,7 +31,7 @@ pkgbase = python-aim
 	depends = python-packaging
 	depends = python-dateutil
 	depends = python-requests
-	depends = python-segment-analytics-python
+	depends = python-segment-analytics
 	source = https://files.pythonhosted.org/packages/source/a/aim/aim-3.16.0.tar.gz
 	sha256sums = 5e05c9d0ad0aaf8c4859bc717f6b51b13f563efd587d6135e93341d6a0aa9d52
 
