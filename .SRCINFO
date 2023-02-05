@@ -7,6 +7,7 @@ pkgbase = dng
 	license = ZLIB
 	makedepends = git
 	makedepends = innoextract
+	makedepends = rust
 	depends = wine
 	source = dng-15.1.1::git+https://github.com/thorpelawrence/dng.git
 	source = https://download.adobe.com/pub/adobe/dng/win/AdobeDNGConverter_x64_15_1_1.exe

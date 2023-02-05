@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/thorpelawrence/dng"
 license=('ZLIB')
 depends=(wine)
-makedepends=(git innoextract)
+makedepends=(git innoextract rust)
 source=("$pkgname-$pkgver::git+$url.git"
         'https://download.adobe.com/pub/adobe/dng/win/AdobeDNGConverter_x64_15_1_1.exe')
 sha512sums=('SKIP'
