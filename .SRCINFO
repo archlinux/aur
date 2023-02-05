@@ -1,6 +1,6 @@
 pkgbase = grub-improved-luks2-git
 	pkgdesc = GNU GRand Unified Bootloader (2) with Argon2 and better LUKS2 support
-	pkgver = 2.06.r291.ge43f3d93b
+	pkgver = 2.06.r456.g65bc45963
 	pkgrel = 1
 	url = https://www.gnu.org/software/grub/
 	install = grub-improved-luks2-git.install
@@ -29,7 +29,7 @@ pkgbase = grub-improved-luks2-git
 	conflicts = grub
 	backup = etc/default/grub
 	backup = etc/grub.d/40_custom
-	source = grub::git+https://git.savannah.gnu.org/git/grub.git#commit=e43f3d93b28cce852c110c7a8e40d8311bcd8bb1
+	source = grub::git+https://git.savannah.gnu.org/git/grub.git
 	source = grub-extras::git+https://git.savannah.gnu.org/git/grub-extras.git
 	source = gnulib::git+https://git.savannah.gnu.org/git/gnulib.git
 	source = argon_1.patch

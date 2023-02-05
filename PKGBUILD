@@ -19,9 +19,8 @@ _build_platforms="x86_64-efi"
 # [[ "${_grub_emu_build}" == "1" ]] && _build_platforms+=" ${_target_arch}-emu"
 
 _pkgname="grub"
-_commit="e43f3d93b28cce852c110c7a8e40d8311bcd8bb1"
 pkgname="${_pkgname}-improved-luks2-git"
-pkgver=2.06.r291.ge43f3d93b
+pkgver=2.06.r456.g65bc45963
 pkgrel=1
 pkgdesc="GNU GRand Unified Bootloader (2) with Argon2 and better LUKS2 support"
 arch=('x86_64')
@@ -42,7 +41,7 @@ conflicts=("${_pkgname}")
 backup=('etc/default/grub'
         'etc/grub.d/40_custom')
 install="${pkgname}.install"
-source=("grub::git+https://git.savannah.gnu.org/git/grub.git#commit=${_commit}"
+source=("grub::git+https://git.savannah.gnu.org/git/grub.git"
         "grub-extras::git+https://git.savannah.gnu.org/git/grub-extras.git"
         "gnulib::git+https://git.savannah.gnu.org/git/gnulib.git"
         'argon_1.patch'
