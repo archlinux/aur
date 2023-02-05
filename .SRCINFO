@@ -1,0 +1,12 @@
+pkgbase = kodi-addon-rumble
+	pkgdesc = Rumble plugin for Kodi
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/azzy9/plugin.video.rumble
+	arch = any
+	license = GPL2
+	depends = kodi>19.0
+	source = plugin.video.rumble-1.2.2.tar.gz::https://github.com/azzy9/plugin.video.rumble/archive/refs/tags/v1.2.2.tar.gz
+	sha256sums = e0a64f5655b02ff76157ef1779ae172628f600eeaa403f661e35fa4551ca3f7f
+
+pkgname = kodi-addon-rumble
