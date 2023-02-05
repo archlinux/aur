@@ -3,11 +3,11 @@
 
 pkgname=python-yalafi
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet another LaTeX filter"
 url="https://github.com/torik42/YaLafi"
 depends=('python' 'languagetool')
-makedepends=('python-pyproject2setuppy')
+makedepends=('python-build' 'python-installer')
 license=('GPL3')
 arch=('any')
 source=(
@@ -24,10 +24,10 @@ prepare() {
 
 build() {
     cd YaLafi-$pkgver
-    python -m pyproject2setuppy.main build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd YaLafi-$pkgver
-    python -m pyproject2setuppy.main install --root="$pkgdir" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
