@@ -5,6 +5,7 @@
 # Contributor: Renato Caldas (github.com/rmsc)
 # Contributor: goekce (github.com/goekce)
 # Contributor: David Castellon (github.com/bobosito000)
+# Contributor: Raphael (github.com/ruffson)
 # Acknowledgment: This work is hugely based on `ros2-arch-deps` AUR
 # package, maintained by T. Borgert.
 
