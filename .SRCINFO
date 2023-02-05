@@ -1,8 +1,9 @@
 pkgbase = epsonscan2
 	pkgdesc = Epson scanner management utility
-	pkgver = 6.7.0.0
-	pkgrel = 2
+	pkgver = 6.7.42.0
+	pkgrel = 1
 	url = http://support.epson.net/linux/en/epsonscan2.php
+	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = boost
@@ -14,7 +15,7 @@ pkgbase = epsonscan2
 	depends = sane
 	optdepends = epsonscan2-non-free-plugin: OCR support and wireless scanning
 	options = !buildflags
-	source = http://support.epson.net/linux/src/scanner/epsonscan2/epsonscan2-6.7.0.0-1.src.tar.gz
-	sha512sums = 0d43d91fb679b901d73da096dba10734cd091fc84365f367c828a1106bc6d62e11fc617a27beddd5e628867e80378bfb03bc0c737249b053738da11e45faec74
+	source = http://support.epson.net/linux/src/scanner/epsonscan2/epsonscan2-6.7.42.0-1.src.tar.gz
+	sha512sums = 8eccbb10e8d8e1610ea7d686f79d45364f37a7317e939a19231ebbebd2f1eb0f12fcd57512064232a0d82c8861e0ab2d6b1788d4dbc3f9b04d65d13dd3b7bb63
 
 pkgname = epsonscan2

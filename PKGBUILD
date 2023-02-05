@@ -1,10 +1,10 @@
 # Maintainer: Tércio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
 
 pkgname=epsonscan2
-pkgver=6.7.0.0
+pkgver=6.7.42.0
 _pkgver="$pkgver-1"
-pkgrel=2
-arch=('x86_64')
+pkgrel=1
+arch=('i686' 'x86_64')
 pkgdesc="Epson scanner management utility"
 url="http://support.epson.net/linux/en/epsonscan2.php"
 license=('GPL3')
@@ -13,7 +13,7 @@ makedepends=('boost' 'cmake')
 optdepends=('epsonscan2-non-free-plugin: OCR support and wireless scanning')
 options=('!buildflags')
 source=("http://support.epson.net/linux/src/scanner/$pkgname/$pkgname-$_pkgver.src.tar.gz")
-sha512sums=('0d43d91fb679b901d73da096dba10734cd091fc84365f367c828a1106bc6d62e11fc617a27beddd5e628867e80378bfb03bc0c737249b053738da11e45faec74')
+sha512sums=('8eccbb10e8d8e1610ea7d686f79d45364f37a7317e939a19231ebbebd2f1eb0f12fcd57512064232a0d82c8861e0ab2d6b1788d4dbc3f9b04d65d13dd3b7bb63')
 
 prepare() {
   [[ -d build ]] && rm -r build; mkdir build
@@ -23,6 +23,10 @@ prepare() {
 
   sed -i '1 i #include "zlib.h"' \
          "$srcdir/$pkgname-$_pkgver/src/CommonUtility/DbgLog.cpp"
+#
+#  sed -i 's/qt5/qt6/g; s/Qt5/Qt6/g; s/QT5/QT6/g' \
+#         "$srcdir/$pkgname-$_pkgver/src/DetectAlert/CMakeLists.txt" \
+#         "$srcdir/$pkgname-$_pkgver/src/Standalone/CMakeLists.txt"
 }
 
 build() {
