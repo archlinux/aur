@@ -1,7 +1,7 @@
 pkgbase = libsub
 	pkgdesc = a small C++ library to read and write subtitles in a few different formats (currently STL, SubRip and DCP)
 	pkgver = 1.6.42
-	pkgrel = 2
+	pkgrel = 3
 	url = https://carlh.net/libsub
 	arch = i686
 	arch = x86_64
