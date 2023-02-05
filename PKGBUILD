@@ -1,7 +1,7 @@
 # Maintainer: TheLastGimbus <mateusz.soszynski@tuta.io>
 pkgname=gpth-bin
-pkgver=3.3.1
-pkgrel=2
+pkgver=3.3.2
+pkgrel=1
 pkgdesc='Tool to help you with exporting stuff from Google Photos'
 arch=('x86_64')
 url='https://github.com/TheLastGimbus/GooglePhotosTakeoutHelper'
@@ -11,7 +11,7 @@ provides=('gpth')
 conflicts=('gpth')
 options=('!strip')
 source=("${url}/releases/download/v${pkgver}/gpth-linux")
-sha256sums=('b74e03cbe5c851aa5d35421ee6efac663a9b637a71eae23486c9e62206406ddb')
+sha256sums=('')
 
 package() {
     install -Dm755 "gpth-linux" "${pkgdir}/usr/bin/gpth"
