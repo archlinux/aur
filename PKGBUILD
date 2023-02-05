@@ -1,7 +1,7 @@
 # Maintainer: Slava Ganzin <slava.ganzin@gmail.com>
 
-pkgname=await
-pkgver=2021.07.29.add.site.link
+pkgname=await-bin
+pkgver=0.91
 pkgrel=1
 pkgdesc="32kb small memory footprint single binary that run list of commands in parallel and waits for their termination"
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
