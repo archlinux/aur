@@ -1,7 +1,7 @@
 pkgbase = bumper
 	pkgdesc = Easily bump $pkgver in your AUR packages.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bcyran/bumper
 	arch = x86_64
 	license = MIT
