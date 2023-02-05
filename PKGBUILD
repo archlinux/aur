@@ -2,8 +2,8 @@
 # Contributor: Ivan Agarkov <ivan.agarkov@gmail.com>
 
 pkgname=heli-x
-pkgver=10.0.2465
-pkgrel=5
+pkgver=10.1.2561
+pkgrel=1
 pkgdesc="Professional R/C Flight Simulator"
 arch=('i686' 'x86_64')
 url="https://www.heli-x.info"
@@ -17,9 +17,9 @@ source=("$pkgname-$pkgver.tar.gz::$url/${pkgver##*.}/HELI-X${pkgver%%.*}.tar.gz"
         "$pkgname-wrapper.sh"
         "$pkgname.desktop"
         "$pkgname-server.desktop")
-sha512sums=('5e51c638e9999a9959ac2254f90aa6228d98c71beb73a0dace0043b912cfb6d39f98cef177f9e83265969cd200e696ac9d95579474dfd87f2d50b6a66161481e'
-            'b8d49650284a8b7b05bc65aaed1c2bc3219cfa448165fb90b5953e2ad92a716a7543d1fb9da258162bf3541e116a7d59fc9235fdada263e8b5ff878cc4a35f31'
-            '32cca4e3a8fcdee8553931b82bf867bfdf20594b02cce8125ad8967ed56f5d10405490dc9c12f50a4a37f8c280f4dfd843a228e09cf7ec7250ae7724de207b5b'
+sha512sums=('703211f196e47ecfbf4e4f6f4af14964b0c27e82772dd204bdbe95ad32b9bbb91190e804cefa6d1cd8bffaebe959d4c0ada21343a36ecde8bccb5114f69305da'
+            '8772099f77d28c5937f66d1c28bce1e4e623ee565ed4c3b9e8aa11de579cbeda1539985a7c9ff4b374892a7b11f3001aac968fb01d4bc0c1494cb4a1129c06c1'
+            '644ec254248c2d79209a240121563a5b4cc0b835bc2bf797cac16471f612ce2dc22b50cedfd8f9de2513ea3acd26b9e259fb3091b82eecb10876c428386d71dd'
             'b6b318c787c45602f0f1cfe1e30edfc56a2fec4fd98d8add9715ef950a9355dee0f5267378a4f4aade487bb75e26150b87ece9481278dee8c20775ca01669a90'
             '36af9602ad6b4654dba7651851ee51acf062a76824dc584fbb2e836e1438199ae5ee187d76b5cb56d8c260bce7ecdefa67e973d003678c3ed3ad3c107fa9c09d'
             '8be08b65cdc9007f4d39ab7a327a407bc7162d8d091d3e44294e11ddc6903151e35eb9999082332439b065ccac6ed6cb39bb2f0dae315483b00c9580e2184010')
