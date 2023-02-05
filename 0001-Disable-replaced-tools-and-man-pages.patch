@@ -1,4 +1,4 @@
-From 2fad83b45d4cf64f7d1fb41ba075e627189df75c Mon Sep 17 00:00:00 2001
+From 2af563cb1ff3fc84549d58b64325be9606684c43 Mon Sep 17 00:00:00 2001
 From: David Runge <dvzrv@archlinux.org>
 Date: Sat, 5 Nov 2022 23:40:18 +0100
 Subject: [PATCH 1/4] Disable replaced tools and man pages
@@ -698,5 +698,5 @@ index a1a2e4e3..53cd7953 100644
  		chmod $(suidperms) $(DESTDIR)$(usbindir)/$$i; \
  	done
 -- 
-2.38.1
+2.39.0
 
