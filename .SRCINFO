@@ -32,7 +32,6 @@ pkgbase = anki
 	optdepends = mpv: play sound. prefered over mplayer
 	optdepends = mplayer: play sound
 	optdepends = texlive-most: render LaTex in cards
-	provides = anki
 	conflicts = anki-bin
 	conflicts = anki-git
 	conflicts = anki-official-binary-bundle

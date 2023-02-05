@@ -14,7 +14,6 @@ pkgdesc="Helps you remember facts (like words/phrases in a foreign language) eff
 url="https://apps.ankiweb.net/"
 license=('AGPL3')
 arch=('x86_64')
-provides=('anki')
 conflicts=('anki-bin' 'anki-git' 'anki-official-binary-bundle' 'anki-qt5')
 options=('!lto')
 depends=(
