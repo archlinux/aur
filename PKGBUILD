@@ -2,10 +2,10 @@
 
 pkgname=neopo-git
 _gitname="neopo"
-pkgver=r361.5f269eb
+pkgver=r362.f061fa6
 pkgrel=1
 pkgdesc="A lightweight solution for local Particle development."
-arch=("x86_64" "aarch64")
+arch=("x86_64" "aarch64" "armv7h")
 url="https://github.com/nrobinson2000/neopo"
 license=("custom")
 provides=("neopo")
@@ -20,7 +20,7 @@ optdepends=("visual-studio-code-bin: Particle Workbench IDE"
             "bash-completion: Bash completion")
 optdepends_x86_64=("lib32-glibc: gcc-arm 5.3.1 support")
 optdepends_aarch64=("dfu-util: flash devices with DFU"
-                    "nodejs-lts-erbium: support for particle-cli"
+                    "nodejs-lts-fermium: support for particle-cli"
                     "openocd-git: support for debugging")
 
 pkgver() {
