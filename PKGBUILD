@@ -56,7 +56,7 @@ xfce4_pkgs=(
 )
 
 pkgname=dots-git
-pkgver=1.1.13.r25.g8688eed
+pkgver=1.1.13
 pkgrel=1
 pkgdesc="Dotfiles generator that allows quick configuration and managing of different tools and window managers in multiple OSs"
 arch=(any)
@@ -84,13 +84,13 @@ md5sums=('SKIP')
 pkgver() {
 	cd dotfiles || exit 1
 	git fetch --tags
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --tags "$(git rev-list --tags --max-count=1)" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
 	cd dotfiles || exit 1
 	PKGNAME=dots
-	PKGDIR="${pkgdir}"
-	export PKGDIR PKGNAME
-	sudo ./install
+	DESTDIR="${pkgdir}"
+	export DESTDIR PKGNAME
+	./install
 }
