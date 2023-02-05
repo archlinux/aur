@@ -1,0 +1,15 @@
+pkgbase = python-dj-rest-auth
+	pkgdesc = Dj-rest-auth provides a set of REST API endpoints for Authentication and Registration
+	pkgver = 2.2.7
+	pkgrel = 1
+	url = https://github.com/iMerica/dj-rest-auth/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-django
+	depends = python-django-rest-framework
+	source = https://pypi.io/packages/source/d/dj-rest-auth/dj-rest-auth-2.2.7.tar.gz
+	sha256sums = 911bcf377df68c958a7f534def7715b61f3d887a46fbb53ca7666244b7c0b143
+
+pkgname = python-dj-rest-auth
