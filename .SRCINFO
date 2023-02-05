@@ -1,0 +1,16 @@
+pkgbase = cs-crypto-git
+	pkgdesc = C++ interface for calling existing cryptography libraries (git version)
+	pkgver = 1.0.1.r0.gbd87d67
+	pkgrel = 1
+	url = https://www.copperspice.com/
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = catch2
+	provides = cs-crypto
+	conflicts = cs-crypto
+	source = git+https://github.com/copperspice/cs_crypto.git
+	sha256sums = SKIP
+
+pkgname = cs-crypto-git
