@@ -3,7 +3,7 @@
 
 pkgname=buongiorno-git
 _pkgname=buongiorno
-pkgver=0.1.0.r0.ge616853
+pkgver=0.1.1.r0.g3b4e223
 pkgrel=1
 pkgdesc='Modal TUI greeter for greetd.'
 arch=('x86_64')
