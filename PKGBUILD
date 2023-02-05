@@ -7,7 +7,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/wb2osz/direwolf"
 license=('GPL')
 depends=('alsa-lib' 'gpsd')
-makedepends=('make' 'gcc' 'patch')
+makedepends=('cmake' 'gcc' 'patch')
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/wb2osz/direwolf/archive/refs/tags/1.6.tar.gz"
     'dwgpsd.patch'
