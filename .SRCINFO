@@ -1,0 +1,12 @@
+pkgbase = python-aim-ui
+	pkgdesc = Aim UI
+	pkgver = 3.16.0
+	pkgrel = 1
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/a/aim-ui/aim-ui-3.16.0.tar.gz
+	sha256sums = 764e1ba572ad9e3c35394cfe84b99dc4a59d3ed1e4596d90259acec4b24006fa
+
+pkgname = python-aim-ui
