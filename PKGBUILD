@@ -4,7 +4,7 @@ _pkgname=${pkgname/-bin/}
 _githuborg=skycoin
 pkgdesc="Skywire: Building a new Internet. Skycoin.com"
 pkgver='1.3.3'
-pkgrel=1
+pkgrel=2
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
@@ -27,12 +27,12 @@ _source=("${_script[@]}"
 "${_service[@]}"
 )
 source=("${_source[@]}")
-sha256sums=('08f0c625a3ae8810f0468a45aa2e463425ec307441f71f6ba48114bda2055316'
+sha256sums=('57ec0639c47da596f31ac6b299b1688e764fbcb707e7921872fbbe7aaeb1901f'
             'f0300bcde06b6818b637ccc23fa8206a40e67f63815781d265bd10d2cda93e65'
             '0c20dd44eca0266a3a10fab24c657295a833eba9f78c6b1cf06132b093ac3ba8'
             'ec24750a99f5cda8d8a8dc94743943218e1b2088c2b2c7dc1644ee78d954fe7e'
             'a6941680b5858ca3e0c85d9bf5824455a0c95524b61e42352462f2abbb750495'
-            '6d40c32452151145fef51d87cd09423cceb4d7205869e8f80fc074cd5e68f98d'
+            '9c94295df9dadbdbd5b891c6669c112e69ede97922791579ffdf415130a084da'
             '8519d027325dcb34877bb5b0fb0c3c035d7589c0046b53935e2b949d436c4be3')
 sha256sums_x86_64=('aeff9a2800e9a5272d4a5db01aa46f292f4389134e2f0bcfc9945c493a1d56ef')
 sha256sums_aarch64=('1a7035b418f0f681cf482aaaf3e41e3be516e2cdd10a0a79a4f4a12b844fa141')

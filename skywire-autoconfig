@@ -69,12 +69,23 @@ _errmsg2() {
 }
 #helpful text
 _welcome(){
-	if [[ $(uname -m) == *"arm"* ]]; then
-		_msg2 "register your public key:"
-		_msg2 "${_blue}https://whitelist.skycoin.com/${_nc}"
-		_msg2 "track uptime:"
-		_msg2 "${_blue}http://ut.skywire.skycoin.com/uptimes${_nc}"
-	fi
+#	if [[ $(uname -m) == *"arm"* ]]; then
+skywire-cli reward -r >> /dev/null 2>&1
+if [[ ${?} == 0 ]]; then
+_msg2 "skycoin reward address:
+${_green}$(skywire-cli reward -r)${_nc}"
+else
+  if [[ $(uname -m) == *"arm"* ]]; then
+    _msg2 "reward eligibility rules:
+${_yellow}https://github.com/skycoin/skywire/blob/develop/mainnet_rules.md${_nc}"
+    _msg2 "set your skycoin reward address:
+${_cyan}skywire-cli ${_yellow}reward ${_green}<skycoin-address>${_nc}"
+  fi
+fi
+	_msg2 "track uptime:
+  ${_blue}http://ut.skywire.skycoin.com/uptimes${_nc}
+  ${_blue}http://ut.skywire.skycoin.com/uptimes?v=v2${_nc}"
+#	fi
 	_msg2 "support:
 ${_blue}https://t.me/skywire${_nc}"
 }
@@ -198,7 +209,9 @@ ${_green}${_pubkey}${_nc}"
 if [[ $_is_hypervisor == "-i" ]]; then
 	if [[ $(ps -o comm= -p $PPID) != "sshd" ]]; then
 		_msg2 "Starting now on:\n${_red}http://127.0.0.1:8000${_nc}"
-		_vpnurl=$(skywire-cli vpn url -p)
+#    _vpnurl=$(skywire-cli vpn url -p)
+#		_msg2 "Use the vpn:\n${_red}${_vpnurl}${_nc}"
+    _vpnurl="http://127.0.0.1:8000/#/vpn/${_pubkey}"
 		_msg2 "Use the vpn:\n${_red}${_vpnurl}${_nc}"
 	fi
 	_hpvurl="Access hypervisor UI from local network here:"

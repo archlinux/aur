@@ -5,7 +5,7 @@ Wants=network-online.target
 [Service]
 Type=simple
 Environment="SYSTEMDCHILD=1"
-ExecStart=/usr/bin/skywire -p $AUTOPEERHV
+ExecStart=/usr/bin/skywire -p
 Restart=always
 RestartSec=20
 TimeoutSec=30
