@@ -3,7 +3,7 @@
 pkgbase=nvidia-open-git
 pkgname=('nvidia-open-git' 'nvidia-open-dkms-git')
 pkgver=525.85.12.r0.g1dc88ff75
-pkgrel=1
+pkgrel=2
 pkgdesc='NVIDIA open GPU kernel modules (git version)'
 arch=('x86_64')
 url='https://github.com/NVIDIA/open-gpu-kernel-modules/'
@@ -53,7 +53,7 @@ build() {
 }
 
 package_nvidia-open-git() {
-    depends=('linux' "nvidia-utils=${pkgver/.r*/}" 'libglvnd')
+    depends=('linux' 'libglvnd' "nvidia-utils>=$(sed 's/\.r.*//;s/\.[^\.]*$//' <<< "$pkgver")")
     provides=("nvidia-open=${pkgver}" 'NVIDIA-MODULE')
     conflicts=('nvidia-open' 'NVIDIA-MODULE')
     
@@ -76,7 +76,7 @@ package_nvidia-open-git() {
 
 package_nvidia-open-dkms-git() {
     pkgdesc="$(sed 's/(\(git[[:space:]]version\)/(sources; \1/' <<< "$pkgdesc")"
-    depends=('dkms' "nvidia-utils=${pkgver/.r*/}" 'libglvnd')
+    depends=('dkms' 'libglvnd' "nvidia-utils>=$(sed 's/\.r.*//;s/\.[^\.]*$//' <<< "$pkgver")")
     provides=("nvidia-open=${pkgver}" 'NVIDIA-MODULE')
     conflicts=('nvidia-open' 'NVIDIA-MODULE')
     
