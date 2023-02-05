@@ -3,7 +3,7 @@
 _pkgname='kgctl'
 
 pkgname="$_pkgname-bin"
-pkgver=0.3.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Kilo command line tool for inspecting and interacting with clusters"
 arch=('x86_64' 'aarch64' 'armv7h' 'armv7l')
@@ -15,10 +15,10 @@ source_x86_64=("$_pkgname-$pkgver::https://github.com/squat/kilo/releases/downlo
 source_aarch64=("$_pkgname-$pkgver::https://github.com/squat/kilo/releases/download/$pkgver/$_pkgname-linux-arm64")
 source_armv7h=("$_pkgname-$pkgver::https://github.com/squat/kilo/releases/download/$pkgver/$_pkgname-linux-arm")
 source_armv7l=("$_pkgname-$pkgver::https://github.com/squat/kilo/releases/download/$pkgver/$_pkgname-linux-arm")
-sha256sums_x86_64=('7dd9d4b610376d73ebb61ebecfa841031cc36bd3810bd145d83003e2b624ddc3')
-sha256sums_aarch64=('af5adfcc105367d68c45d7460c30b7851d137ede8aa3d8b08c68701ed2c065a2')
-sha256sums_armv7h=('004b4835805cb485ab6c297eb85a4c2b77d085a555f1c9b7375d214a69b6d12d')
-sha256sums_armv7l=('004b4835805cb485ab6c297eb85a4c2b77d085a555f1c9b7375d214a69b6d12d')
+sha256sums_x86_64=('4ff78c31e4c301544da947072dedd85d6ce884b0e9554d610ee1546cdbc855aa')
+sha256sums_aarch64=('3080d29c0b4b9123376181ce570fa4a69783acb7f06506072c0e61ae87506512')
+sha256sums_armv7h=('81d771d16b508e0b6646ca6f60aac8241d4799975bcf44b46ed598e05d0d4675')
+sha256sums_armv7l=('81d771d16b508e0b6646ca6f60aac8241d4799975bcf44b46ed598e05d0d4675')
 
 package() {
   install -D -m755 "./$_pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
