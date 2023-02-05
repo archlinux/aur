@@ -2,14 +2,13 @@
 
 _pkgname=olive
 pkgname=$_pkgname-git
-pkgver=continuous.r2461.g4c00387ab
+pkgver=continuous.r2477.gaa6b77f80
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Free non-linear video editor"
 url="https://www.olivevideoeditor.org/"
 license=('GPL3')
-#depends=('ffmpeg' 'openimageio' 'opentimelineio' 'portaudio' 'qt6-base')
-depends=('ffmpeg' 'openimageio' 'portaudio' 'qt6-base')
+depends=('ffmpeg4.4' 'libolivecore' 'openimageio' 'opentimelineio0.14' 'portaudio' 'qt6-base')
 makedepends=('cmake' 'git' 'ninja' 'qt6-svg' 'qt6-tools')
 
 # Temporarily, the "olive-git" package is incompatible
@@ -23,15 +22,14 @@ conflicts=('olive')
 source=('git+https://github.com/olive-editor/olive.git')
 sha512sums=('SKIP')
 
-prepare() {
-  # Currently, the build process fails if the OpenTimelineIO library is used
-  sed -i '/find_package(OpenTimelineIO)/d' \
-         "$srcdir"/$_pkgname/CMakeLists.txt
-}
-
 pkgver() {
   cd $_pkgname
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare(){
+  # Fix link problem with Imath library
+  echo "target_link_libraries(Imath::Imath INTERFACE OpenEXR::OpenEXR)" >> $_pkgname/cmake/FindOpenEXR.cmake
 }
 
 build() {
@@ -40,7 +38,9 @@ build() {
         -Bbuild \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DQT_VERSION_MAJOR=6
+        -DQT_VERSION_MAJOR=6 \
+        -DOTIO_DEPS_INCLUDE_DIR=/usr/include/opentimelineio \
+        -DCMAKE_PREFIX_PATH="/usr/lib/ffmpeg4.4;/usr/include/ffmpeg4.4"
   ninja -C build/
 }
 
