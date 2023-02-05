@@ -1,7 +1,7 @@
 # Maintainer: printfn <printfn@users.noreply.github.com>
 
 pkgname=fend
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 epoch=
 pkgdesc="Arbitrary-precision unit-aware calculator"
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/printfn/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-sha256sums=("6343013cedfb4000e9415b64f9f98f365c96d0c2186f912d562d4fc752a21207")
+sha256sums=("4b9c8056c3e45bcfb068b4536b037eb9986b75fa2f86f561ea3ddd87946b7127")
 validpgpkeys=()
 
 prepare() {
