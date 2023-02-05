@@ -1,11 +1,11 @@
 pkgbase = huiontablet
 	pkgdesc = Official Huion tablet drivers
-	pkgver = v15.0.0.107.202209081050
+	pkgver = v15.0.0.121.202301131103
 	pkgrel = 1
 	url = https://www.huion.com/download/
 	arch = x86_64
 	license = unknown
-	source = https://driverdl.huion.com/driver/Inspiroy2/HuionTablet_v15.0.0.107.202209081050.x86_64.tar.xz
-	md5sums = df48356b36ecd6c42a77132c9176cab7
+	source = https://driverdl.huion.com/driver/Linux/HuionTablet_v15.0.0.121.202301131103.x86_64.tar.xz
+	md5sums = 7a3d6baa71d2667bf2f0ead10a6905b1
 
 pkgname = huiontablet
