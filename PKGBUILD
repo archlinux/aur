@@ -8,7 +8,7 @@
 _name=xray
 pkgname=${_name}-bin
 
-pkgrel=1
+pkgrel=2
 _version=v1.7.3
 pkgver=${_version//-/_}
 pkgver=${pkgver#v}
@@ -18,8 +18,8 @@ url='https://github.com/XTLS/Xray-core'
 license=('MPL2')
 
 provides=("${_name}")
-conflicts=("${_name}")
-depends=('v2ray-domain-list-community' 'v2ray-geoip')
+conflicts=("${_name}" 'xray-geoip' 'xray-domain-list-community')
+depends=('v2ray-geoip' 'v2ray-domain-list-community' )
 options=('!strip') # don't modify prebuilt binaries
 
 # source array template
