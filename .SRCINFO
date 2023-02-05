@@ -1,0 +1,17 @@
+pkgbase = tree-sitter-gomod-git
+	pkgdesc = Golang modfile grammar for tree-sitter
+	pkgver = 4a65743
+	pkgrel = 1
+	url = https://github.com/camdencheek/tree-sitter-go-mod
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = MIT
+	makedepends = git
+	makedepends = tree-sitter
+	makedepends = npm
+	provides = tree-sitter-gomod
+	conflicts = tree-sitter-gomod
+	source = tree-sitter-gomod-git::git+https://github.com/camdencheek/tree-sitter-go-mod
+	sha256sums = SKIP
+
+pkgname = tree-sitter-gomod-git
