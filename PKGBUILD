@@ -5,7 +5,7 @@ pkgbase='python-aimrocks'
 pkgname=('python-aimrocks')
 _module='aimrocks'
 pkgver='0.3.1'
-pkgrel=1
+pkgrel=2
 pkgdesc="RocksDB wrapper implemented in Cython."
 url="https://github.com/aimhubio/aimrocks"
 depends=(
@@ -19,7 +19,7 @@ depends=(
   'zlib'
   'zstd'
 )
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-pip')
 checkdepends=('python-pytest')
 license=('Apache')
 arch=('any')

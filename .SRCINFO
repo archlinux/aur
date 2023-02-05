@@ -1,12 +1,13 @@
 pkgbase = python-aimrocks
 	pkgdesc = RocksDB wrapper implemented in Cython.
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aimhubio/aimrocks
 	arch = any
 	license = Apache
 	checkdepends = python-pytest
 	makedepends = python-setuptools
+	makedepends = python-pip
 	depends = python
 	depends = cython
 	depends = rocksdb
