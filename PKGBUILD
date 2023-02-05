@@ -1,55 +1,57 @@
 # Maintainer: CyanWoods <i at cyanwoods dot com>
-pkgname=spdk
+pkgbase=spdk
+pkgname=('spdk' 'python-spdk')
 pkgver=23.01
-pkgrel=1
+pkgrel=2
 pkgdesc='spdk: headers, libs, and scripts'
 arch=('x86_64')
 license=('BSD')
 url='https://spdk.io/'
-depends=('glibc')
-makedepends=('cmake' 'meson' 'python-pyelftools' 'liburing')
-provides=('spdk')
-conflicts=('spdk' 'dpdk')
-source=("$pkgname::git+https://github.com/spdk/spdk.git#tag=v${pkgver}")
+depends=('bash' 'dpdk' 'dtc' 'libaio' 'libarchive' 'libbsd' 'liburing' 'numactl' 'util-linux-libs')
+makedepends=('cmake' 'git' 'meson' 'python-pyelftools' 'python-configshell-fb' 'python-grpcio' 'python-google-api-core' 'python-ipaddress')
+provides=('spdk' 'python-spdk')
+conflicts=()
+source=("$pkgbase::git+https://github.com/spdk/spdk.git#tag=v${pkgver}")
 sha256sums=('SKIP')
-
-prepare () {
-  cd "$srcdir/$pkgname"
+prepare() {
+  cd "$srcdir/$pkgbase"
   git submodule update --init
 }
-
 build() {
-  cd "$srcdir/$pkgname"
-  ./configure --prefix=/usr --with-shared --disable-tests --disable-unit-tests --enable-lto --with-uring
+  cd "$srcdir/$pkgbase"
+  ./configure --prefix=/usr --with-dpdk --disable-examples --disable-tests --disable-unit-tests --enable-lto --with-uring --without-uring-zns
   make
 }
-
-package() {
-  cd "$srcdir/$pkgname"
-
-  mkdir -p $pkgdir/usr/lib/
-  mkdir -p $pkgdir/usr/include/spdk/
-  mkdir -p $pkgdir/usr/bin/
-  mkdir -p $pkgdir/usr/share/spdk/bin/
-  mkdir -p $pkgdir/usr/share/spdk/examples/
-
-  # programs and examples in /usr/share/spdk/
-  cp -a build/bin/* $pkgdir/usr/share/spdk/bin/
-  cp -a build/examples/* $pkgdir/usr/share/spdk/examples/
-
-  # shared libs
-  cp -a build/lib/* $pkgdir/usr/lib/
-  cp -a dpdk/build/lib/* $pkgdir/usr/lib/
-  # discard .pc files
-  rm -rf $pkgdir/usr/lib/pkgconfig
-
-  # header files
-  cp -a include/spdk/* $pkgdir/usr/include/spdk/
-  cp -rL dpdk/build/include/* $pkgdir/usr/include/
+package_spdk() {
+  cd "$srcdir/$pkgbase"
+  DESTDIR="${pkgdir}" make install
 
   # self-contained /usr/bin/spdk-setup
   echo '#!/usr/bin/env bash' >$pkgdir/usr/bin/spdk-setup
   cat scripts/{common,setup}.sh     >>$pkgdir/usr/bin/spdk-setup
   sed -ri '/^rootdir/d;/^source/d;s,\$rootdir,/usr,' $pkgdir/usr/bin/spdk-setup
   chmod +x $pkgdir/usr/bin/spdk-setup
+  
+  install -Dm644 "scripts/bash-completion/spdk" "$pkgdir/usr/share/bash-completion/completions/spdk"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+package_python-spdk() {
+  arch=('any')
+  pkgdesc='spdk: python support'
+  depends=('python-configshell-fb' 'python-grpcio' 'python-google-api-core' 'python-ipaddress')
+
+  local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+
+  #cd "$srcdir/$pkgbase/python"
+  #python -m compileall .
+
+  cd "$srcdir/$pkgbase"
+  mkdir -p $pkgdir${site_packages}
+  cp -a python/spdk $pkgdir${site_packages}
+
+  install -Dm755 "scripts/spdkcli.py" "$pkgdir/usr/bin/spdkcli"
+  sed -i '/sys\.path\.append/d' "$pkgdir/usr/bin/spdkcli"
+
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

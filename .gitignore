@@ -1,4 +1,10 @@
-*.pkg.tar.zst
-pkg/
-spdk/
-src/
+# ignore everything
+/*
+
+# include the files that matter
+!/.gitignore
+!/PKGBUILD
+!/.SRCINFO
+!/*.install
+!/*.patch
+

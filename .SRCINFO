@@ -1,19 +1,38 @@
 pkgbase = spdk
 	pkgdesc = spdk: headers, libs, and scripts
 	pkgver = 23.01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://spdk.io/
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
+	makedepends = git
 	makedepends = meson
 	makedepends = python-pyelftools
-	makedepends = liburing
-	depends = glibc
+	makedepends = python-configshell-fb
+	makedepends = python-grpcio
+	makedepends = python-google-api-core
+	makedepends = python-ipaddress
+	depends = bash
+	depends = dpdk
+	depends = dtc
+	depends = libaio
+	depends = libarchive
+	depends = libbsd
+	depends = liburing
+	depends = numactl
+	depends = util-linux-libs
 	provides = spdk
-	conflicts = spdk
-	conflicts = dpdk
+	provides = python-spdk
 	source = spdk::git+https://github.com/spdk/spdk.git#tag=v23.01
 	sha256sums = SKIP
 
 pkgname = spdk
+
+pkgname = python-spdk
+	pkgdesc = spdk: python support
+	arch = any
+	depends = python-configshell-fb
+	depends = python-grpcio
+	depends = python-google-api-core
+	depends = python-ipaddress
