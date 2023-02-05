@@ -2,7 +2,7 @@
 
 _pkgname=htop
 pkgname="${_pkgname}-vim"
-pkgver=3.2.1
+pkgver=3.2.2
 pkgrel=1
 pkgdesc='Interactive process viewer with a Vim keybindings patch'
 arch=('x86_64')
@@ -19,8 +19,8 @@ options=('!emptydirs')
 source=("https://github.com/htop-dev/htop/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         'vim-keybindings.patch'
 )
-sha256sums=('b5ffac1949a8daaabcffa659c0964360b5008782aae4dfa7702d2323cfb4f438'
-            'dd0fbe1685d4e7966c18dcfa9946da436a1d198d071def5ff7c39df8126e9483')
+sha256sums=('3829c742a835a0426db41bb039d1b976420c21ec65e93b35cd9bfd2d57f44ac8'
+            '06eb3383e3643f0edcbf5c2b5a7ef8e261dd9f81a2435bd9a17f941583c44bd2')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
