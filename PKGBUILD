@@ -1,7 +1,7 @@
 pkgname=twitch
 _pkgname=Twitch
 pkgver=1.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Unofficial Twitch desktop application."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/twitch-application/application"
