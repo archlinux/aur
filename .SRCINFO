@@ -1,13 +1,13 @@
 pkgbase = googler
 	pkgdesc = Google from the command-line
-	pkgver = 4.3.12
+	pkgver = 4.3.13
 	pkgrel = 1
 	url = https://github.com/oksiquatzel/googler
 	arch = any
 	license = GPL3
 	depends = python
 	conflicts = googler-git
-	source = https://github.com/oksiquatzel/googler/archive/v4.3.12.tar.gz
-	sha256sums = 8e1ea39d7afde497c57a628421e84d75e087bc0d5e63afd1e9bf12ba18ee0102
+	source = https://github.com/oksiquatzel/googler/archive/v4.3.13.tar.gz
+	sha256sums = 5d887f49ca2a83f8ecb87e505dfdb32d228a5b2e0d3bdd77b4722fc864085e57
 
 pkgname = googler
