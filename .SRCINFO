@@ -1,0 +1,17 @@
+pkgbase = python-jax-jumpy
+	pkgdesc = On-the-fly conversions between Jax and NumPy tensors
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Farama-Foundation/Jumpy
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-numpy
+	optdepends = python-jax
+	optdepends = python-jaxlib
+	source = https://files.pythonhosted.org/packages/source/j/jax-jumpy/jax_jumpy-0.2.0.tar.gz
+	b2sums = b9e9737455d167d0e700f543e2fef0e7f01f18a0d8bc0d29a9ab660a5dbe390aeeb5df0cf2a2da01ca6198900b38a23a5a4a6ccc5f90f37a4a9df383123804a0
+
+pkgname = python-jax-jumpy
