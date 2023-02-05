@@ -3,7 +3,7 @@
 pkgname=guile-reader
 _gitname=guile-reader
 pkgver=0.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="a simple framework for building readers for GNU Guile"
 url="http://www.nongnu.org/guile-reader"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ options=('!strip')
 build() {
   cd $pkgname-$pkgver
   autoreconf -i --force --verbose
-  CFLAGS= CPPFLAGS= LDFLAGS= GUILE_EFFECTIVE_VERSION=2.2 ./configure --prefix=/usr 
+  CFLAGS= CPPFLAGS= LDFLAGS= GUILE_EFFECTIVE_VERSION=3.0 ./configure --prefix=/usr 
   make
 }
 
