@@ -1,19 +1,19 @@
-# Maintainer: musiclover <musiclover382@protonmail.com>
+# Maintainer: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=eyedropper-git
-pkgver=0.4.0.r0.g5272841
+pkgver=0.5.1.r0.geb3c8a4
 pkgrel=1
-pkgdesc='A simple to use color picker and editor'
+pkgdesc='A powerful color picker and formatter'
 arch=(x86_64)
 url=https://github.com/FineFindus/${pkgname%-git}
 license=(GPL3)
-depends=('gtk4' 'libadwaita')
-makedepends=('git' 'meson' 'rust')
-checkdepends=('appstream-glib')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=(git+$url.git)
-b2sums=('SKIP')
+depends=(libadwaita)
+makedepends=(git meson rust)
+checkdepends=(appstream-glib)
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
+source=(git+$url)
+b2sums=(SKIP)
 
 pkgver() {
 	cd ${pkgname%-git}
