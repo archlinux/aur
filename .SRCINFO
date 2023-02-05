@@ -1,6 +1,6 @@
 pkgbase = trealla
 	pkgdesc = A compact, efficient Prolog interpreter with ISO compliant aspirations.
-	pkgver = 2.0.16
+	pkgver = 2.8.6
 	pkgrel = 1
 	url = https://github.com/trealla-prolog/trealla
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = trealla
 	depends = readline
 	depends = vim
 	depends = openssl
-	source = https://github.com/trealla-prolog/trealla/archive/v2.0.16.tar.gz
-	sha256sums = 8ef3c61c53d7af0a32ad46d4a0954ea2c2834f1287806405a4464c06df5a08ac
+	source = https://github.com/trealla-prolog/trealla/archive/v2.8.6.tar.gz
+	sha256sums = 0b9420eeb667e8e74f5e00fc62801ef8a840ae6d1b06afb32a49d7605bbd9d6c
 
 pkgname = trealla
