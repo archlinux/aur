@@ -3,7 +3,7 @@
 
 _pkgname="xdg-desktop-portal-hyprland"
 pkgname="${_pkgname}-git"
-pkgver=r231.bd91bd0
+pkgver=r257.a9b76c7
 pkgrel=1
 pkgdesc="xdg-desktop-portal backend for hyprland"
 url="https://github.com/hyprwm/xdg-desktop-portal-hyprland"
@@ -35,7 +35,7 @@ pkgver() {
 build() {
 	cd "${srcdir}/${_pkgname}"
 	git submodule update --init
-	meson build --prefix=/usr
+	meson build --prefix=/usr --libexecdir lib
 	ninja -C build
 	cd hyprland-share-picker && make all && cd ..
 }
