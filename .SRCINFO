@@ -1,7 +1,7 @@
 pkgbase = iproute2-selinux
 	pkgdesc = IP Routing Utilities with SELinux support
 	pkgver = 6.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://git.kernel.org/pub/scm/network/iproute2/iproute2.git
 	arch = x86_64
 	arch = aarch64
@@ -10,14 +10,15 @@ pkgbase = iproute2-selinux
 	makedepends = linux-atm
 	depends = glibc
 	depends = iptables
+	depends = libcap
 	depends = libelf
 	depends = libbpf
 	depends = libselinux
 	optdepends = db5.3: userspace arp daemon
-	optdepends = libcap: tipc
 	optdepends = linux-atm: ATM support
+	optdepends = python: for routel
 	provides = iproute
-	provides = iproute2=6.1.0-3
+	provides = iproute2=6.1.0-4
 	conflicts = iproute2
 	options = staticlibs
 	backup = etc/iproute2/bpf_pinning
