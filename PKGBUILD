@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=lzma-sdk
-pkgver=21.02
-pkgrel=1
+pkgver=21.07
+pkgrel=0
 epoch=
 pkgdesc="The LZMA SDK provides the documentation, samples, header files, libraries, and tools you need to develop applications that use LZMA compression."
 arch=('any')
@@ -20,14 +20,13 @@ backup=()
 options=('!strip')
 install=
 changelog=
-source=("https://www.7-zip.org/a/lzma2102.7z")
+source=("https://www.7-zip.org/a/lzma${pkgver/./}.7z")
 noextract=("lzma2102.7z")
-sha256sums=('299c435e5b97c0419deac0afd1df1b5fa8618ecb166d1d38621b3f78bec22d75')
+sha256sums=('833888f03c6628c8a062ce5844bb8012056e7ab7ba294c7ea232e20ddadf0d75')
 #validpgpkeys=()
 
 
 package() {
     install -dm0755 "${pkgdir}/usr/share/${pkgname}"
-    7z x "${srcdir}/lzma2102.7z" -o"${pkgdir}/usr/share/${pkgname}"
-
+    7z x "${srcdir}/lzma${pkgver/./}.7z" -o"${pkgdir}/usr/share/${pkgname}"
 }
