@@ -571,4 +571,21 @@ Improvements:
 Fixes:
 - We fixed a major issue that caused the synchronization of Outlook calendars to fail with events created by Microsoft Bookings.
 - Avoid scrolling the calendar when using Space as a shortcut to toggle the sidebar.
-We fixed a layout issue on tasks with priority on the Month view.
+- We fixed a layout issue on tasks with priority on the Month view.
+
+=== Morgen 2.6.5
+New Features:
+- Task Scheduling more flexible.
+- Overlaying calendar from other people now possible (with O365/Google)
+
+Improvements:
+- We fixed some layout issues caused by the new system font on Windows.
+- Scheduling tasks in the calendar is now faster and smoother.
+- Tasks that are marked as done are now "archived" and not displayed together with open tasks. You can access the Task Archive from the sidebar.
+- The resolution of the tray icon has now been improved on some systems.
+ 
+Fixes:
+- We fixed a problem that could cause the meeting organizer not to be listed among the attendees on Google Calendar.
+- We fixed a bug causing videoconferencing links to be stripped away when importing events from an external file into Google Calendar.
+- We fixed a bug causing the event time not to be displayed on the month view in some cases.
+- We fixed an issue where ghost events were occasionally left in the calendar when discarding a draft.
