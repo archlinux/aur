@@ -6,7 +6,7 @@
 
 pkgname=matomo
 pkgver=4.13.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A real-time web analytics platform"
 arch=("any")
 url="https://matomo.org/"
@@ -15,7 +15,7 @@ depends=("php" "php-gd")
 replaces=("piwik")
 optdepends=("mariadb: Database server"
             "python: Log importer script"
-            "geoip2-database: GeoIP database")
+            "geoipupdate: GeoIP database")
 install="$pkgname.install"
 source=("https://builds.matomo.org/${pkgname}-${pkgver}.tar.gz"
         "https://builds.matomo.org/${pkgname}-${pkgver}.tar.gz.asc")
@@ -58,7 +58,9 @@ package() {
   # as it is, chown the whole plugins directory in matomo.install, and wash our
   # hands of it.
 
-  # GeoLite2-City.mmdb is provided by geoip2-database, which is optdepends.
-  # I figure a dead symlink should be safe if it’s missing.
-  ln -s "../../../../../usr/share/GeoIP/GeoLite2-City.mmdb" "${pkgdir}/usr/share/webapps/matomo/misc"
+  # GeoLite2-City.mmdb is provided by geoipupdate, which is optdepends.
+  # See /etc/GeoIP.conf and make sure to enable geoipupdate's timer
+  # Keep in mind it takes a while before a newly generated license becomes active
+  # I figure a dead symlink should be safe if the DB is missing.
+  ln -s "../../../../../var/lib/GeoIP/GeoLite2-City.mmdb" "${pkgdir}/usr/share/webapps/matomo/misc"
 }
