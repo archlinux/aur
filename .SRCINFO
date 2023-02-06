@@ -1,6 +1,6 @@
 pkgbase = octave-stk
 	pkgdesc = The STK is a (not so) Small Toolbox for Kriging. Its primary focus is on the interpolation/regression technique known as kriging, which is very closely related to Splines and Radial Basis Functions, and can be interpreted as a non-parametric Bayesi [...]
-	pkgver = 2.7.0
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://gnu-octave.github.io/packages/stk/
 	install = octave-stk.install
@@ -8,8 +8,8 @@ pkgbase = octave-stk
 	groups = octave-forge
 	license = custom
 	depends = octave>=3.8.0
-	noextract = stk-2.7.0.tar.gz
-	source = https://downloads.sourceforge.net/octave/stk-2.7.0.tar.gz
-	sha256sums = bc87fe5c32ef2cd38cc29b450a08aa7e5fa8dcf210f8a2e9b0984e02b77b80c3
+	noextract = stk-2.8.0-octpkg.tar.gz
+	source = https://github.com/stk-kriging/stk/releases/download/2.8.0/stk-2.8.0-octpkg.tar.gz
+	sha256sums = 760c69c362fb7bda3fce29ac2cfa2a5bb7448a1aeb36c92ceb65edb97b78cd32
 
 pkgname = octave-stk
