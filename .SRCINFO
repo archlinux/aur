@@ -1,6 +1,6 @@
 pkgbase = librewolf
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
-	pkgver = 109.0
+	pkgver = 109.0.1
 	pkgrel = 1
 	url = https://librewolf.net/
 	install = librewolf.install
@@ -27,10 +27,10 @@ pkgbase = librewolf
 	makedepends = python
 	makedepends = rust
 	makedepends = unzip
-	makedepends = wasi-compiler-rt>13
-	makedepends = wasi-libc++>13
-	makedepends = wasi-libc++abi>13
-	makedepends = wasi-libc>=1:0+258+30094b6
+	makedepends = wasi-compiler-rt>15
+	makedepends = wasi-libc++>15
+	makedepends = wasi-libc++abi>15
+	makedepends = wasi-libc>=1:0+314+a1c7c2c
 	makedepends = xorg-server-xvfb
 	makedepends = yasm
 	makedepends = zip
@@ -55,17 +55,16 @@ pkgbase = librewolf
 	options = !strip
 	backup = usr/lib/librewolf/librewolf.cfg
 	backup = usr/lib/librewolf/distribution/policies.json
-	source = https://archive.mozilla.org/pub/firefox/releases/109.0/source/firefox-109.0.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/109.0/source/firefox-109.0.source.tar.xz.asc
+	source = https://archive.mozilla.org/pub/firefox/releases/109.0.1/source/firefox-109.0.1.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/109.0.1/source/firefox-109.0.1.source.tar.xz.asc
 	source = librewolf.desktop
-	source = git+https://gitlab.com/librewolf-community/browser/source.git#commit=d114d4f8e8271adcb854082060c387b16ac56352
-	source = git+https://gitlab.com/librewolf-community/settings.git#commit=71a20c6fff90e7fbcb216f1d644ca1b40b32b8e2
+	source = git+https://gitlab.com/librewolf-community/browser/source.git#commit=80357551854ed1e05d599dd06973d4ba2aa79257
+	source = git+https://gitlab.com/librewolf-community/settings.git#commit=6fe09c63cbfb83ebfb6a17f5e624248f2501b97e
 	source = default192x192.png
 	source = 0018-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
 	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/8eebdfaa9f99b93684cef9a2a6737cc7f56473e4/trunk/0001-libwebrtc-screen-cast-sync.patch
-	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/8eebdfaa9f99b93684cef9a2a6737cc7f56473e4/trunk/0002-Bug-1804973-Wayland-Check-size-for-valid-EGLWindows-.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = 0678a03b572b5992fb85f0923a25b236acf81e5ea2c08e549b63a56076a69351
+	sha256sums = 5e43fdfb3923ee3a7ae7bc91ef3377a3fc6f8a0c1b87436c19b29458b0d731d9
 	sha256sums = SKIP
 	sha256sums = 21054a5f41f38a017f3e1050ccc433d8e59304864021bef6b99f0d0642ccbe93
 	sha256sums = SKIP
@@ -73,7 +72,6 @@ pkgbase = librewolf
 	sha256sums = 959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1
 	sha256sums = 1d713370fe5a8788aa1723ca291ae2f96635b92bc3cb80aea85d21847c59ed6d
 	sha256sums = b1ce6936749ab1614bbce4fddc87058341ed207dde77af609fdc5ac83538517a
-	sha256sums = 34439dfb17371520e5e99444096ded97325ab2559b9039ae16055975d015ac51
 	source_aarch64 = 0001-libwebrtc-screen-cast-sync_additional_aarch64.patch
 	sha256sums_aarch64 = 358655062957b12255977714f3d04123857e562679cd35efb2b67b2e182a464a
 

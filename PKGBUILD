@@ -2,7 +2,7 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=109.0
+pkgver=109.0.1
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 url="https://librewolf.net/"
@@ -41,10 +41,10 @@ makedepends=(
   python
   rust
   unzip
-  'wasi-compiler-rt>13'
-  'wasi-libc++>13'
-  'wasi-libc++abi>13'
-  'wasi-libc>=1:0+258+30094b6'
+  'wasi-compiler-rt>15'
+  'wasi-libc++>15'
+  'wasi-libc++abi>15'
+  'wasi-libc>=1:0+314+a1c7c2c'
   xorg-server-xvfb
   yasm
   zip
@@ -70,9 +70,9 @@ _arch_git=https://raw.githubusercontent.com/archlinux/svntogit-packages/packages
 _arch_git_blob=https://raw.githubusercontent.com/archlinux/svntogit-packages
 # _source_tag="${pkgver}-${pkgrel%.*}"
 # _source_tag="${pkgver}-${pkgrel}"
-_source_commit='d114d4f8e8271adcb854082060c387b16ac56352'
+_source_commit='80357551854ed1e05d599dd06973d4ba2aa79257'
 # _settings_tag='7.4'
-_settings_commit='71a20c6fff90e7fbcb216f1d644ca1b40b32b8e2'
+_settings_commit='6fe09c63cbfb83ebfb6a17f5e624248f2501b97e'
 
 install='librewolf.install'
 source=(
@@ -83,20 +83,18 @@ source=(
   "default192x192.png"
   "0018-bmo-1516081-Disable-watchdog-during-PGO-builds.patch"
   "${_arch_git_blob}/8eebdfaa9f99b93684cef9a2a6737cc7f56473e4/trunk/0001-libwebrtc-screen-cast-sync.patch"
-  "${_arch_git_blob}/8eebdfaa9f99b93684cef9a2a6737cc7f56473e4/trunk/0002-Bug-1804973-Wayland-Check-size-for-valid-EGLWindows-.patch"
 )
 
 source_aarch64=("0001-libwebrtc-screen-cast-sync_additional_aarch64.patch") # include scoped_glib.cc for aarch64 as well; breaks x86_64 build though?
 
-sha256sums=('0678a03b572b5992fb85f0923a25b236acf81e5ea2c08e549b63a56076a69351'
+sha256sums=('5e43fdfb3923ee3a7ae7bc91ef3377a3fc6f8a0c1b87436c19b29458b0d731d9'
             'SKIP'
             '21054a5f41f38a017f3e1050ccc433d8e59304864021bef6b99f0d0642ccbe93'
             'SKIP'
             'SKIP'
             '959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1'
             '1d713370fe5a8788aa1723ca291ae2f96635b92bc3cb80aea85d21847c59ed6d'
-            'b1ce6936749ab1614bbce4fddc87058341ed207dde77af609fdc5ac83538517a'
-            '34439dfb17371520e5e99444096ded97325ab2559b9039ae16055975d015ac51')
+            'b1ce6936749ab1614bbce4fddc87058341ed207dde77af609fdc5ac83538517a')
 sha256sums_aarch64=('358655062957b12255977714f3d04123857e562679cd35efb2b67b2e182a464a')
 
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
@@ -214,9 +212,6 @@ fi
     # separate patch to also allow aarch64 to build without breaking x86_64 builds
     patch -Np1 -i ../0001-libwebrtc-screen-cast-sync_additional_aarch64.patch
   fi
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1804973
-  patch -Np1 -i ../0002-Bug-1804973-Wayland-Check-size-for-valid-EGLWindows-.patch
 
   # upstream patches from gentoo
 
@@ -341,68 +336,74 @@ build() {
   ulimit -n 4096
 
   # Do 3-tier PGO
-  echo "Building instrumented browser..."
-
-  if [[ $CARCH == 'aarch64' ]]; then
-
-    cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-profile-generate
-END
-
-    else
-
-    cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-profile-generate=cross
-END
-
-  fi
-
-  ./mach build
-
-  echo "Profiling instrumented browser..."
-
-  ./mach package
-
-  LLVM_PROFDATA=llvm-profdata \
-    JARLOG_FILE="$PWD/jarlog" \
-    xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
-    ./mach python build/pgo/profileserver.py
-
-  stat -c "Profile data found (%s bytes)" merged.profdata
-  test -s merged.profdata
-
-  stat -c "Jar log found (%s bytes)" jarlog
-  test -s jarlog
-
-  echo "Removing instrumented browser..."
-  ./mach clobber
-
-  echo "Building optimized browser..."
-
-  if [[ $CARCH == 'aarch64' ]]; then
-
-    cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-lto
-ac_add_options --enable-profile-use
-ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
-ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
-END
-
-  else
-
-    cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-lto=cross
-ac_add_options --enable-profile-use=cross
-ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
-ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
-END
-
-  fi
+####  echo "Building instrumented browser..."
+####
+####  if [[ $CARCH == 'aarch64' ]]; then
+####
+####    cat >.mozconfig ../mozconfig - <<END
+####ac_add_options --enable-profile-generate
+####END
+####
+####    else
+####
+####    cat >.mozconfig ../mozconfig - <<END
+####ac_add_options --enable-profile-generate=cross
+####END
+####
+####  fi
+####
+####  ./mach build
+####
+####  echo "Profiling instrumented browser..."
+####
+####  ./mach package
+####
+####  LLVM_PROFDATA=llvm-profdata \
+####    JARLOG_FILE="$PWD/jarlog" \
+####    xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
+####    ./mach python build/pgo/profileserver.py
+####
+####  stat -c "Profile data found (%s bytes)" merged.profdata
+####  test -s merged.profdata
+####
+####  stat -c "Jar log found (%s bytes)" jarlog
+####  test -s jarlog
+####
+####  echo "Removing instrumented browser..."
+####  ./mach clobber
+####
+####  echo "Building optimized browser..."
+####
+####   if [[ $CARCH == 'aarch64' ]]; then
+#### 
+####     cat >.mozconfig ../mozconfig - <<END
+#### ac_add_options --enable-lto
+#### ac_add_options --enable-profile-use
+#### ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
+#### ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
+#### END
+#### 
+####   else
+#### 
+####     cat >.mozconfig ../mozconfig - <<END
+#### ac_add_options --enable-lto=cross
+#### ac_add_options --enable-profile-use=cross
+#### ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
+#### ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
+#### END
+#### 
+####   fi
 
   # cat >>.mozconfig <<END
 # ac_add_options --enable-linker=lld
 # ac_add_options --disable-bootstrap
 # END
+
+
+
+#### TEMP
+  cat >.mozconfig ../mozconfig
+####
 
   ./mach build
 
