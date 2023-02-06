@@ -1,15 +1,20 @@
 # Maintainer: Clément Martinez <me at moverest dot xyz>
 pkgname=sway-interactive-screenshot
-pkgver=1.2.1
+pkgver=2.0
 pkgrel=1
 url="https://github.com/moverest/sway-interactive-screenshot"
 pkgdesc="Interactively take screenshot within Sway."
 arch=('x86_64')
 license=('MIT')
-depends=('jq' 'fuzzel' 'grim' 'slurp' 'libnotify' 'wl-clipboard')
-optdepends=('swappy: edit screenshots')
+depends=('sway' 'fuzzel' 'grim' 'slurp' 'libnotify' 'wl-clipboard')
+optdepends=(
+	'swappy: edit screenshots'
+	'dragon-drop: drap file to other programs'
+	'xdg-utils: open file'
+	'wf-recorder: capture screencasts'
+)
 source=("https://github.com/moverest/sway-interactive-screenshot/archive/$pkgver.tar.gz")
-sha256sums=('d96706f16b053527d5637454e55fbf0f67e2fc06e34e40236a3eb96997ea4306')
+sha256sums=('663e1d956074e0418e52696b15fb1882ba9f6cea2b1b2b7fe9c583d3ec3bf6ab')
 
 package() {
 	cd "sway-interactive-screenshot-$pkgver"
