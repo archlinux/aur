@@ -1,6 +1,6 @@
 # Maintainer: f4iey <f4iey@f6kgl.ampr.org>
 pkgname=tetra-kit-player-git
-pkgver=ea258fc
+pkgver=r65.ea258fc
 pkgrel=1
 pkgdesc="Web application that streams events and files produced by tetra kit."
 arch=('any')
