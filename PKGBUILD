@@ -1,6 +1,6 @@
 # Maintainer: Evgeniy Dombek <edombek@yandex.ru>
 pkgname=casa6-bin
-pkgver=6.5.2
+pkgver=6.5.3
 pkgrel=28
 pkgdesc="NRAO's Common Astronomy Software Applications package"
 url="https://casa.nrao.edu/"
