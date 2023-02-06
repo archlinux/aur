@@ -8,6 +8,7 @@ pkgbase = python-ssdeep
 	license = LGPL3
 	checkdepends = python-pytest
 	makedepends = python-setuptools
+	makedepends = python-pip
 	depends = python
 	depends = python-cffi
 	depends = ssdeep
