@@ -1,0 +1,16 @@
+pkgbase = kumi-git
+	pkgdesc = C++20 Compact Tuple Tools
+	pkgver = v3.0.r9.g3cd97fa
+	pkgrel = 1
+	url = https://github.com/jfalcou/kumi
+	arch = any
+	license = Boost
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	provides = kumi
+	conflicts = kumi
+	source = kumi-git::git+https://github.com/jfalcou/kumi.git#branch=main
+	sha256sums = SKIP
+
+pkgname = kumi-git
