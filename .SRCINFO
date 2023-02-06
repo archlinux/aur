@@ -1,0 +1,12 @@
+pkgbase = notify-send-rs
+	pkgdesc = Rust version of notify-send for display notifications on the linux desktop using notify-rust
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/VHSgunzo/notify-send-rs
+	arch = x86_64
+	provides = notify-send-rs
+	conflicts = notify-send-rs
+	source = notify-send-rs::https://github.com/VHSgunzo/notify-send-rs/releases/download/v0.0.1/notify-send-rs
+	sha256sums = SKIP
+
+pkgname = notify-send-rs
