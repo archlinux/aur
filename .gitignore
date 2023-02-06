@@ -1,5 +1,4 @@
 *~
 *.log
-pioneer-*.tar.gz
-pioneer-*.pkg.tar.zst
-pioneer-*.pkg.tar.xz
+pioneer-*.tar.*
+fix_path_to_lua_h.patch

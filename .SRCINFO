@@ -1,7 +1,7 @@
 pkgbase = pioneer
 	pkgdesc = A game of lonely space adventure
 	pkgver = 20230203
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pioneerspacesim/pioneer
 	arch = x86_64
 	license = GPL3

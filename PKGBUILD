@@ -4,7 +4,7 @@
 
 pkgname=pioneer
 pkgver=20230203
-pkgrel=1
+pkgrel=2
 pkgdesc="A game of lonely space adventure"
 arch=('x86_64')
 url="https://github.com/pioneerspacesim/pioneer"
@@ -29,8 +29,11 @@ sha256sums=('80eea94e0f7e4d8e6a0c4629bdfb89201f82aae2f59ee7a1f7a487eeeccf27c7'
             'dbb08eccb356c7b00122487b7a49df4948b82256c52b9cc36c5122a057c0635e')
 
 prepare() {
-  cd "$pkgname-$pkgver"
-  patch -p1 -i "$srcdir/fix_path_to_lua_h.patch" # https://github.com/pioneerspacesim/pioneer/issues/5525
+    cd "$pkgname-$pkgver"
+    # fix version string, don't use the build date
+    sed -i 's|PROJECT_VERSION "%Y%m%d"|PROJECT_VERSION "'$pkgver'"|' CMakeLists.txt
+    # https://github.com/pioneerspacesim/pioneer/issues/5525
+    patch -p1 -i "$srcdir/fix_path_to_lua_h.patch"
 }
 
 build()
