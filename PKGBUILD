@@ -1,7 +1,7 @@
 # Maintainer: Manuel Lladosa <$(base64 --decode <<<'bWFub2xvbGxyQHJpc2V1cC5uZXQK')>
 # Contributor: Tarn Burton <twburton at gmail dot com>
 pkgname='pioneer-git'
-pkgver=20220203.r7.gfc76a8b80
+pkgver=20230203.r4.gdf1f2a9da
 pkgrel=1
 pkgdesc="A game of lonely space adventure"
 arch=('x86_64')
@@ -21,6 +21,9 @@ pkgver() {
 
 build() {
   cd $pkgname
+
+  echo "CAUTION!!! To compile the game correctly you must remove -D_GLIBCXX_ASSERTIONS in CXXFLAGS= in file /etc/makepkg.conf"
+  read
 
   ./bootstrap -D CMAKE_INSTALL_PREFIX:PATH=/usr \
     -D PIONEER_DATA_DIR:PATH=/usr/share/pioneer/
