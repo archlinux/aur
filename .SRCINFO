@@ -5,12 +5,15 @@ pkgbase = kavita-bin
 	url = https://www.kavitareader.com/
 	arch = x86_64
 	arch = aarch64
+	arch = armv7h
 	license = GPL3
 	backup = etc/Kavita/appsettings.json
 	source_x86_64 = https://github.com/Kareadita/Kavita/releases/download/v0.6.1/kavita-linux-x64.tar.gz
 	md5sums_x86_64 = 75b74b819c44e441ae9ade78d2a4b21f
 	source_aarch64 = https://github.com/Kareadita/Kavita/releases/download/v0.6.1/kavita-linux-arm64.tar.gz
 	md5sums_aarch64 = cb8f30f28c2cee04ba0dfaf8096cc292
+	source_armv7h = https://github.com/Kareadita/Kavita/releases/download/v0.6.1/kavita-linux-arm.tar.gz
+	md5sums_armv7h = 1c54bb3c298816d3baa2e18f3c555729
 
 pkgname = kavita-bin
 	install = kavita.install
