@@ -5,8 +5,8 @@
 ## GPG key: https://github.com/web-flow.gpg
 
 pkgname=sourcegraph-cli
-pkgver=4.1.0
-_commit=ef06271
+pkgver=4.1.1
+_commit=c967c5e
 pkgrel=1
 pkgdesc='Command line interface to Sourcegraph'
 url='https://github.com/sourcegraph/src-cli'
@@ -50,7 +50,7 @@ check() {
 
 package() {
 	cd "$pkgname"
-	install -D build/src -t "$pkgdir/usr/bin/"
-	ln -s /usr/bin/src "$pkgdir/usr/bin/src-cli"
-	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dv build/src -t "$pkgdir/usr/bin/"
+	ln -sv /usr/bin/src "$pkgdir/usr/bin/src-cli"
+	install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
