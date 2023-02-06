@@ -1,6 +1,6 @@
 pkgbase = autobrr
 	pkgdesc = The modern download automation tool for torrents
-	pkgver = 1.16.0
+	pkgver = 1.17.0
 	pkgrel = 1
 	url = https://autobrr.com
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = autobrr
 	optdepends = sonarr
 	optdepends = lidarr
 	options = !lto
-	source = autobrr::git+https://github.com/autobrr/autobrr#commit=5d8131e211f88ab4cfc84a87d5c626509ffe23c8
+	source = autobrr::git+https://github.com/autobrr/autobrr#commit=d52b28d05f2a4ae147a9c2f51811e6df45bb327d
 	source = systemd.service
 	source = sysusers.conf
 	source = tmpfiles.conf
