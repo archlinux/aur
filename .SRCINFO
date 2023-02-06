@@ -1,11 +1,11 @@
 pkgbase = aliyunpan-liupan1890
 	pkgdesc = 阿里云盘小白羊版 阿里云盘PC版
 	pkgver = 2.12.14
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/liupan1890/aliyunpan
 	arch = any
 	license = None
-	depends = electron
+	depends = electron12
 	depends = aria2
 	optdepends = mpv: media preview support
 	source = https://download.copr.fedorainfracloud.org/results/zhullyb/zhullyb/fedora-35-x86_64/04222746-aliyunpan-liupan1890-bin/aliyunpan-liupan1890-bin-2.12.14-1.x86_64.rpm
