@@ -1,0 +1,14 @@
+pkgbase = zathura-pywal-git
+	pkgdesc = Scripts that dynamically theme zathura based on colors set by pywal.
+	pkgver = r25.e9973b8
+	pkgrel = 1
+	url = https://github.com/GideonWolfe/Zathura-Pywal
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = zathura
+	depends = python-pywal
+	source = zathura-pywal::git+https://github.com/GideonWolfe/Zathura-Pywal.git
+	md5sums = SKIP
+
+pkgname = zathura-pywal-git
