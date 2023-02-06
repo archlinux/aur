@@ -3,13 +3,13 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=baloo-widgets-git
-pkgver=20.04.1.r16.gc4990a7
+pkgver=22.12.0.r20.gf00fb2d
 pkgrel=1
 pkgdesc='Widgets for Baloo (Git)'
 arch=(i686 x86_64)
 url='https://community.kde.org/Baloo'
 license=(LGPL)
-depends=(baloo)
+depends=(baloo-git)
 makedepends=(extra-cmake-modules git kdoctools)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -22,7 +22,8 @@ pkgver() {
 
 build() {
     cmake -B build -S "${pkgname%-git}" \
-        -DBUILD_TESTING=OFF
+          -DQT_MAJOR_VERSION=6
+          -DBUILD_TESTING=OFF
     cmake --build build
 }
 
