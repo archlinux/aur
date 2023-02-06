@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libgit2
 	pkgdesc = A portable, pure C implementation of the Git core methods (mingw-w64)
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/libgit2/libgit2
 	arch = any
@@ -14,9 +14,9 @@ pkgbase = mingw-w64-libgit2
 	options = staticlibs
 	options = !buildflags
 	options = !strip
-	source = https://github.com/libgit2/libgit2/archive/v1.5.0.tar.gz
+	source = https://github.com/libgit2/libgit2/archive/v1.5.1.tar.gz
 	source = 0001-fix-uppercase-windows-h-include.patch
-	sha256sums = 8de872a0f201b33d9522b817c92e14edb4efad18dae95cf156cf240b2efff93e
+	sha256sums = 7074f1e2697992b82402501182db254fe62d64877b12f6e4c64656516f4cde88
 	sha256sums = a7a87b9467ef4f0a4e2f68f75c4b3e30c6b681773c636192726e59500538cf7d
 
 pkgname = mingw-w64-libgit2
