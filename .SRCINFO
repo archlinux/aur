@@ -1,5 +1,5 @@
 pkgbase = datastructure-lib-for-c-git
-	pkgdesc = This is my personal data structure for c, it has an avl, map, stack, queue, etc
+	pkgdesc = This is my personal data structure library for c, it has an avl, map, stack datastructures and more
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/alecksandr26/Data-structure-lib-for-C
