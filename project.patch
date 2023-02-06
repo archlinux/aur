@@ -1,0 +1,13 @@
+diff --git a/creator.pro b/creator.pro
+index 8c99fa5..6871e4a 100644
+--- a/creator.pro
++++ b/creator.pro
+@@ -165,7 +165,7 @@ linux* {
+     SOURCES += privileges_unix.cpp
+     HEADERS += privileges_unix.h
+ 
+-    QMAKE_CXXFLAGS += -std=c++11
++    QMAKE_CXXFLAGS += -std=c++17
+ 
+     LIBS += -lblkid
+ }

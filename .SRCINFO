@@ -1,14 +1,14 @@
 pkgbase = libreelec-usb-sd-creator-git
 	pkgdesc = A simple GUI for creating LibreELEC USB/SD card installation media
 	pkgver = r1.d5922e2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LibreELEC/usb-sd-creator
 	arch = i686
 	arch = x86_64
 	license = GPLv2
 	makedepends = git
-	makedepends = qt5-tools
-	makedepends = qt5-base
+	makedepends = qt6-tools
+	makedepends = qt6-base
 	source = git+https://github.com/LibreELEC/usb-sd-creator
 	md5sums = SKIP
 
