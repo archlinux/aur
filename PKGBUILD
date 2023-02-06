@@ -2,7 +2,7 @@
 
 pkgname=vmware-unlocker
 pkgver=4.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="VMware macOS utilities"
 arch=("x86_64")
 url="https://github.com/DrDonk/unlocker"
@@ -18,7 +18,7 @@ sha512sums=("SKIP"
 
 build() {
   cd "$srcdir/$pkgname/"
-  sed -e '/winres/ s/^#*/#/; /exe/ s/^#*/#/; /syso/ s/^#*/#/' -i build.sh
+  sed -e '/winres/ s/^#*/#/; /exe/ s/^#*/#/; /syso/ s/^#*/#/; /Windows/ s/^#*/#/; /windows/ s/^#*/#/; /darwin/ s/^#*/#/;' -i build.sh
   bash build.sh "$pkgver"
 }
 
@@ -28,8 +28,8 @@ package() {
   mkdir -p "$pkgdir/usr/backup/"
   mkdir -p "$pkgdir/etc/pacman.d/hooks/"
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dm755 "$srcdir/$pkgname/dist/linux/"* "$pkgdir/usr/bin/"
-  install -Dm644 "$srcdir/$pkgname/dist/iso/"* "$pkgdir/usr/iso/"
+  install -Dm755 "$srcdir/$pkgname/build/linux/"* "$pkgdir/usr/bin/"
+  install -Dm644 "$srcdir/$pkgname/build/iso/"* "$pkgdir/usr/iso/"
   install -Dm644 "$srcdir/"*.hook "$pkgdir/etc/pacman.d/hooks/"
   install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
