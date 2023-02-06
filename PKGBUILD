@@ -1,6 +1,6 @@
 # Maintainer: f4iey <f4iey@f6kgl.ampr.org>
 pkgname=fate-git
-pkgver=r12.7ed9e57
+pkgver=7ed9e57
 pkgrel=1
 pkgdesc="Minimal CLI JS8 software"
 arch=('any')

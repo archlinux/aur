@@ -1,6 +1,6 @@
 pkgbase = fate-git
 	pkgdesc = Minimal CLI JS8 software
-	pkgver = r12.7ed9e57
+	pkgver = 7ed9e57
 	pkgrel = 1
 	url = https://github.com/rtmrtmrtmrtm/fate
 	arch = any
