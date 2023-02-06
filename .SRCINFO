@@ -1,6 +1,6 @@
 pkgbase = steam-metadata-editor-git
 	pkgdesc = A metadata editor for Steam
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/tralph3/Steam-Metadata-Editor.git
 	arch = any

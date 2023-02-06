@@ -1,7 +1,7 @@
 # Maintainer: Tomás Ralph <tomasralph2000@gmail.com>
 _pkgname=Steam-Metadata-Editor
 pkgname=steam-metadata-editor-git
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A metadata editor for Steam"
 arch=(any)
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  printf "1.0.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "1.0.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
@@ -33,7 +33,7 @@ package() {
   install -Dm0644 --target-directory "$licdir" "$srcdir/$_pkgname/LICENSE"
   install -Dm0644 --target-directory "$imgdir" "$srcdir/$_pkgname/img/steam-metadata-editor.png"
   install -Dm0644 --target-directory "$appdir" "$srcdir/$_pkgname/steam-metadata-editor.desktop"
-  install -dm755 "$progdir"
+  install -dm0755 "$progdir"
   cp -fa "$srcdir/$_pkgname/src/."  "$progdir"
   install -Dm0755 --target-directory "$bindir" "$srcdir/$_pkgname/steammetadataeditor"
 }
