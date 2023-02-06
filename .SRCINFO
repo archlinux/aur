@@ -1,0 +1,21 @@
+pkgbase = moebius-bin
+	pkgdesc = Modern ANSI & ASCII Art Editor
+	pkgver = 1.0.29
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/blocktronics/moebius
+	arch = x86_64
+	license = Apache
+	makedepends = libarchive
+	depends = gtk3
+	depends = libnotify
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = libappindicator-gtk3
+	conflicts = moebius
+	noextract = Moebius.rpm
+	source = https://github.com/blocktronics/moebius/releases/download/1.0.29/Moebius.rpm
+	sha256sums = 69aaa1e42e287ed78c8e73971dae3df23ae4fa00e3416ea0fc262b7d147fefec
+
+pkgname = moebius-bin
