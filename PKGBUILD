@@ -8,7 +8,7 @@
 _name=xray
 pkgname=${_name}-bin
 
-pkgrel=2
+pkgrel=3
 _version=v1.7.3
 pkgver=${_version//-/_}
 pkgver=${pkgver#v}
@@ -17,10 +17,10 @@ pkgdesc='The best v2ray-core, with XTLS support'
 url='https://github.com/XTLS/Xray-core'
 license=('MPL2')
 
-provides=("${_name}")
-conflicts=("${_name}" 'xray-geoip' 'xray-domain-list-community')
-depends=('v2ray-geoip' 'v2ray-domain-list-community' )
+depends=('xray-assets-symlinks')
 options=('!strip') # don't modify prebuilt binaries
+provides=("${_name}")
+conflicts=("${_name}")
 
 # source array template
 # @ARCH@ and @SRCARCH@ will be substituted per the _archmap array below
@@ -75,9 +75,6 @@ package()
 	install -Dm755 xray          "${pkgdir}/usr/bin/xray"
 	install -Dm644 README.md     "${pkgdir}/usr/share/doc/xray/USAGE.txt"
 	install -Dm644 LICENSE       "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-	install -dm755 "${pkgdir}/usr/share/xray/"
-	ln -s /usr/share/v2ray/geo{ip,site}.dat -t "${pkgdir}/usr/share/xray/"
 }
 
 # boilerplate for generating the "arch=()" and "source_<arch>=()" arrays
