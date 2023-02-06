@@ -2,7 +2,7 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=syntax-highlighting-git
-pkgver=5.83.0_r1586.g09d72d8a
+pkgver=5.240.0_r2119.g85141223
 pkgrel=1
 pkgdesc='Syntax highlighting engine for structured text and code'
 arch=($CARCH)
@@ -24,6 +24,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DBUILD_TESTING=OFF \
     -DQRC_SYNTAX=OFF \
     -DBUILD_QCH=ON
