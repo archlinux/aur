@@ -1,6 +1,6 @@
 pkgbase = kconfigwidgets-git
 	pkgdesc = Widgets for KConfig
-	pkgver = 5.83.0_r577.g40e36e9
+	pkgver = 5.240.0_r863.g6b38832a
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -28,4 +28,3 @@ pkgbase = kconfigwidgets-git
 	sha256sums = SKIP
 
 pkgname = kconfigwidgets-git
-
