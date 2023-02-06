@@ -1,7 +1,7 @@
 pkgbase = cura-bin
 	pkgdesc = State-of-the-art slicer app to prepare your 3D models for your 3D printer
-	pkgver = 5.2.1
-	pkgrel = 4
+	pkgver = 5.2.2
+	pkgrel = 1
 	url = https://ultimaker.com/software/ultimaker-cura
 	arch = x86_64
 	license = LGPL3
@@ -11,11 +11,11 @@ pkgbase = cura-bin
 	provides = cura
 	conflicts = cura
 	options = !strip
-	source = https://github.com/Ultimaker/Cura/releases/download/5.2.1/Ultimaker-Cura-5.2.1-linux-modern.AppImage
-	source = AppRun-Ultimaker-Cura.patch
+	source = https://github.com/Ultimaker/Cura/releases/download/5.2.2/UltiMaker-Cura-5.2.2-linux-modern.AppImage
+	source = AppRun-UltiMaker-Cura.patch
 	source = AppRun-CuraEngine.patch
-	sha512sums = 9274e16e27a35f3308d7555a4a576a4122478006bb0746db2b48b6b6e9ee038ca03cb4a3a1b58c001b933a92aa696e07ffd49151b1a22b04ea56b64cfe59dea8
+	sha512sums = 3b3a1b674eb390a53f382c4ae10cc877f471ba7efbabf00330238d53baeb47a1c510c3414811840cb45a438f23fe42b50402c7c78a20d0e77e6cedaa92bdccd6
 	sha512sums = bf5fa289d8f4193e186a0d8d7e5dc5e902789674bf6c2a068655d639f1be1e7c9d9757c4709801f10c86501c6722a94a97051f662f6d1d85294d1cba16145f63
-	sha512sums = 76e0a856eec5dfcb7ab8025c07f4665305d717a7f674408a87429583fdf70af86dbbe0d45908f7f3ec0e91833f006cb3eacc8531627ba1acf389921c0d2468e8
+	sha512sums = 5a005722d6b97abe9b8fce1aa74877b5be75ec58f03afb3049d4a4df431caf4e8aba825716696f010557ac1682bfecc9e4133297c3280528af4be2e30b560860
 
 pkgname = cura-bin

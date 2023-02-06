@@ -1,5 +1,5 @@
 diff --git a/AppRun b/AppRun
-index 14ee0e4..7466a54 100755
+index fa2c73f..7466a54 100755
 --- a/AppRun
 +++ b/AppRun
 @@ -1,6 +1,6 @@
@@ -10,9 +10,14 @@ index 14ee0e4..7466a54 100755
  
  export PYTHONPATH="$scriptdir/lib/python3.10"
  export LD_LIBRARY_PATH=$scriptdir
-@@ -17,4 +17,4 @@ export OPENSSL_CONF="$scriptdir/openssl.cnf"
+@@ -17,9 +17,4 @@ export OPENSSL_CONF="$scriptdir/openssl.cnf"
  # unset `QT_STYLE_OVERRIDE` as a precaution
  unset QT_STYLE_OVERRIDE
  
--$scriptdir/Ultimaker-Cura "$@"
+-BIN=`basename "$ARGV0" .AppImage`
+-if [ -f $scriptdir/$BIN ]; then
+-    $scriptdir/$BIN "$@"
+-else
+-    $scriptdir/UltiMaker-Cura "$@"
+-fi;
 +$scriptdir/CuraEngine "$@"
