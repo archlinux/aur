@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+userdirs="${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs"
+test -f "$userdirs" && source "$userdirs"
+unset userdirs
+
+workdir="${XDG_DOCUMENTS_DIR:-"${HOME}/Documents/PRUNner"}"
+test -d "$workdir" || mkdir -p "$workdir"
+
+cd "$workdir"
+exec /opt/prunner-bin/PRUNner

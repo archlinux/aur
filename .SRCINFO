@@ -1,0 +1,16 @@
+pkgbase = prunner-bin
+	pkgdesc = Binary release of PRUNner
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = https://github.com/Jacudibu/PRUNner
+	arch = x86_64
+	license = MIT
+	depends = fontconfig
+	provides = prunner
+	options = !strip
+	source = prunner
+	sha256sums = 6c7b2db96606ed0775d7c3c02802dca25d95bb2c456c41c029fc991649c9bfc4
+	source_x86_64 = https://github.com/Jacudibu/PRUNner/releases/download/v0.5.6/PRUNner-0.5.6-linux-64.zip
+	sha256sums_x86_64 = 7c01bd7c114d36de7f117b3ca450bc2d19074bb17d09fb17e7ea8b083c10c5f7
+
+pkgname = prunner-bin
