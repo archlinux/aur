@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kitemviews-git
-pkgver=5.83.0_r325.gb2c9531
+pkgver=5.240.0_r420.g212c855
 pkgrel=1
 pkgdesc='Widget addons for Qt Model/View'
 arch=($CARCH)
@@ -26,6 +26,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=ON
   cmake --build build

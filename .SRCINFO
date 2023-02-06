@@ -1,6 +1,6 @@
 pkgbase = kitemviews-git
 	pkgdesc = Widget addons for Qt Model/View
-	pkgver = 5.83.0_r325.gb2c9531
+	pkgver = 5.240.0_r420.g212c855
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -21,4 +21,3 @@ pkgbase = kitemviews-git
 	sha256sums = SKIP
 
 pkgname = kitemviews-git
-
