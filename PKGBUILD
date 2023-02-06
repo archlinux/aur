@@ -2,7 +2,7 @@
 
 pkgname=usermin
 pkgver=1.861
-pkgrel=1
+pkgrel=2
 pkgdesc="A web-based user account administration interface"
 arch=(any)
 license=('custom:webmin')
@@ -54,6 +54,7 @@ source=(http://downloads.sourceforge.net/sourceforge/webadmin/$pkgname-$pkgver.t
         usermin.logrotate
         usermin.tmpfiles)
 options=(!strip !zipman)
+install=usermin.install
 
 prepare() {
     cd "$srcdir"/$pkgname-$pkgver
@@ -66,6 +67,13 @@ prepare() {
     echo 'Archlinux	Any version	generic-linux	*	-d "/etc/pacman.d"' > os_list.txt
     cp -rp "$srcdir"/usermin-config/* "$srcdir"/$pkgname-$pkgver/
     install -m 700 "$srcdir"/setup-{pre,post}.sh "$srcdir"/$pkgname-$pkgver/
+
+    # patch for SpamAssassin 4.0
+    # https://cwiki.apache.org/confluence/display/spamassassin/WelcomelistBlocklist
+    cd spam
+    sed -i -e 's/white/welcome/g' -e 's/black/block/g' -e 's/White/Welcome/g' -e 's/Black/Block/g' \
+        *.pl *.cgi config* uconfig* defaultuconfig lang/* ulang/*
+    find . -name '*white*' -exec rename white welcome '{}' \+
 }
 
 package() {
@@ -95,7 +103,7 @@ package() {
 sha256sums=('c4c86420c7aa959f061e8806325cd90a7a9e3eb5a5a04e37612a2fff6d42e023'
             '366e0315307c89bb0ec10d76c22352de93b92ca556f7f7bb6e34eb1b17d26a9c'
             '69c033325893aa594f975163eb723abe0907c316ac3b8999e153d07cf7f63488'
-            'c0ff7f1dfdbe7c4265ebae5a7033d46e2a3f729f092f2c975b05ae7ef4034d6d'
+            '5753ffe14ae37a511519ec937743c051352a3c2bd7363dd141b67d08e64637cf'
             'a979e236681c6a06906937cf0f012e976347af5d6d7e7ae04a11acb01cc2689d'
             '12def022feec3b063dbc0a247d3db1423785beea90d3f065e785c86799d31431'
             'be8ca34e385063a162f9ba91e535776e58b26520127f724837bc5840df07a4f7')
