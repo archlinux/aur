@@ -1,6 +1,6 @@
 pkgbase = ktextwidgets-git
 	pkgdesc = Advanced text editing widgets
-	pkgver = 5.83.0_r398.g93d3f80
+	pkgver = 5.240.0_r506.gc9d0cae
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -20,4 +20,3 @@ pkgbase = ktextwidgets-git
 	sha256sums = SKIP
 
 pkgname = ktextwidgets-git
-
