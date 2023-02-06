@@ -22,7 +22,7 @@ _makegconfig=
 # NUMA is optimized for multi-socket motherboards.
 # A single multi-core CPU actually runs slower with NUMA enabled.
 # See, https://bugs.archlinux.org/task/31187
-_NUMAdisable=y
+_NUMAdisable=
 
 # Compile ONLY used modules to VASTLYreduce the number of modules built
 # and the build time.
@@ -52,7 +52,7 @@ _disable_debug=y
 pkgbase=linux-next-git
 pkgver=20230206.r0.g129af7708234
 _srcname=linux-next
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux NEXT'
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -133,12 +133,12 @@ prepare() {
         # (x86 kernels do not support NUMA)
         if [ -n "$_NUMAdisable" ]; then
             echo "Disabling NUMA from kernel config..."
-            scripts/config -d CONFIG_NUMA
+            scripts/config -d NUMA
         fi
 
     ### Disable DEBUG
         if [ -n "$_disable_debug" ]; then
-            echo "Disabling NUMA from kernel config..."
+            echo "Disabling DEBUG kernel config..."
             scripts/config -d DEBUG_INFO \
                            -d DEBUG_INFO_BTF \
                            -d DEBUG_INFO_DWARF4 \
