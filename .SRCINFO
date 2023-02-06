@@ -16,6 +16,6 @@ pkgbase = get_iplayer
 	optdepends = ffmpeg: convert flash (flv) files
 	optdepends = perl-cgi: web PVR manager
 	source = https://github.com/get-iplayer/get_iplayer/archive/refs/tags/v3.31.tar.gz
-	md5sums = 5b296483c4f2805aa1b28060e9907450
+	md5sums = bdcdf8c916bab325c5794606962ddcbd
 
 pkgname = get_iplayer
