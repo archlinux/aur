@@ -1,4 +1,4 @@
-# Maintainer: Gleb Sinyavskiy <zhulik.gleb@gmail.com>
+# Maintainer: Andreas Wachter <buddyspencer@protonmail.com>
 
 pkgname=gickup
 pkgver=0.10.2
