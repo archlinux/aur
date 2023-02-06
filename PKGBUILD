@@ -1,5 +1,5 @@
 pkgname=mathematica-documentation-zh-cn
-pkgver=13.1.0
+pkgver=13.2.0
 pkgrel=1
 pkgdesc="Mathematica Documentation (zh-cn)"
 url="http://www.wolfram.com/mathematica/"
@@ -7,7 +7,7 @@ license=("proprietary")
 arch=('any')
 depends=('mathematica')
 source=("local://WLDocs_${pkgver}_Chinese_LINUX_CN.sh")
-md5sums=('5d3cb30bee1423e42ab3c16cd852e5fd')
+md5sums=('2fcc524c73bfdf93b34befe754c3fb35')
 install=install.install
 
 package() {
