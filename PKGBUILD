@@ -2,8 +2,8 @@
 # Maintainer: João Figueiredo <jf.mundox@gmail.com>
 
 pkgname=syndication-git
-pkgver=5.79.0_r801.gc835785
-pkgrel=2
+pkgver=5.240.0_r901.gd69d294
+pkgrel=1
 pkgdesc="RSS/Atom parser library"
 arch=($CARCH)
 url="https://community.kde.org/Frameworks"
@@ -25,6 +25,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=ON
   cmake --build build

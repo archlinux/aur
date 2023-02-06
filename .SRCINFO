@@ -1,7 +1,7 @@
 pkgbase = syndication-git
 	pkgdesc = RSS/Atom parser library
-	pkgver = 5.79.0_r801.gc835785
-	pkgrel = 2
+	pkgver = 5.240.0_r901.gd69d294
+	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
 	groups = kf5-git
@@ -23,4 +23,3 @@ pkgbase = syndication-git
 	sha256sums = SKIP
 
 pkgname = syndication-git
-
