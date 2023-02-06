@@ -1,6 +1,6 @@
 pkgbase = tetra-kit-git
 	pkgdesc = TETRA downlink decoder/recorder kit
-	pkgver = 3a18aec
+	pkgver = r110.3a18aec
 	pkgrel = 1
 	url = https://gitlab.com/larryth/tetra-kit
 	arch = any
