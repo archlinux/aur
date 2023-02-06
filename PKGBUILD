@@ -26,13 +26,13 @@ build() {
   cd $pkgname
   cmake -B build -GNinja \
       -DHUNTER_ENABLED=OFF \
-      -DMKSPECS_INSTALL_DIR=/usr/lib/qt/mkspecs/modules/\
+      -DMKSPECS_INSTALL_DIR=lib/qt/mkspecs/modules/\
       -DBUILD_PLUGINS=OFF \
       -DBUILD_DOCS=ON \
-      -DQCH_INSTALL_DESTINATION=/usr/share/doc/qt \
-      -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+      -DQCH_INSTALL_DESTINATION=share/doc/qt \
+      -DCMAKE_INSTALL_LIBDIR=lib \
       -DCMAKE_INSTALL_PREFIX=/usr \
-      -DCMAKE_BUILD_TYPE=Release
+      -DCMAKE_BUILD_TYPE=Release 
   cmake --build build
 }
 
