@@ -1,6 +1,6 @@
 pkgbase = tetra-kit-player-git
 	pkgdesc = Web application that streams events and files produced by tetra kit.
-	pkgver = r65.ea258fc
+	pkgver = ea258fc
 	pkgrel = 1
 	url = https://github.com/sonictruth/tetra-kit-player
 	arch = any
