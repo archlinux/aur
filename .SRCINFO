@@ -1,6 +1,6 @@
 pkgbase = vmware-unlocker-git
 	pkgdesc = VMware macOS utilities, from the dev branch of the upstream repo
-	pkgver = 4.2.5
+	pkgver = 4.2.6
 	pkgrel = 1
 	url = https://github.com/DrDonk/unlocker/
 	arch = x86_64
