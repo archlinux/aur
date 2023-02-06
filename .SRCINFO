@@ -1,13 +1,14 @@
 pkgbase = nodejs-forever
-	pkgdesc = A simple CLI tool for ensuring that a given node script runs continuously (i.e. forever)
-	pkgver = 4.0.0
+	pkgdesc = Simple CLI tool for running Node scripts continuously
+	pkgver = 4.0.3
 	pkgrel = 1
-	url = http://github.com/nodejitsu/forever
+	url = https://github.com/nodejitsu/forever
 	arch = any
+	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = forever-4.0.0.tgz
-	source = http://registry.npmjs.org/forever/-/forever-4.0.0.tgz
-	sha256sums = f3fb4ac520aad117569ef26b86562620f64f9f84d6f9837f85ba5af933d7042a
+	noextract = nodejs-forever-4.0.3.tgz
+	source = nodejs-forever-4.0.3.tgz::https://registry.npmjs.org/forever/-/forever-4.0.3.tgz
+	sha256sums = d8f9391901af92e157a059700d81f1c40dd5f4e7ff792d0102c748a797947a65
 
 pkgname = nodejs-forever

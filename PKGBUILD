@@ -1,31 +1,30 @@
-# Maintainer: Daniel Nagy <danielnagy at gmx de>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Daniel Nagy <danielnagy at gmx de>
 # Contributor: Nodejitsu Inc. <info@nodejitsu.com>
 # Contributor: indexzero <charlie.robbins@gmail.com>
 # Contributor: bradleymeck <bradley.meck@gmail.com>
 # Contributor: avianflu <charlie@charlieistheman.com>
 # Contributor: mmalecki <me@mmalecki.com>
 
-_npmname=forever
-pkgname=nodejs-forever # All lowercase
-pkgver=4.0.0
+pkgname=nodejs-forever
+_pkg="${pkgname#nodejs-}"
+pkgver=4.0.3
 pkgrel=1
-pkgdesc="A simple CLI tool for ensuring that a given node script runs continuously (i.e. forever)"
-arch=(any)
-url="http://github.com/nodejitsu/forever"
-license=()
+pkgdesc="Simple CLI tool for running Node scripts continuously"
+arch=('any')
+url="https://github.com/nodejitsu/forever"
+license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
-optdepends=()
-source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
-noextract=($_npmname-$pkgver.tgz)
-sha256sums=('f3fb4ac520aad117569ef26b86562620f64f9f84d6f9837f85ba5af933d7042a')
+source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$_pkg/-/$_pkg-$pkgver.tgz")
+noextract=("$pkgname-$pkgver.tgz")
+sha256sums=('d8f9391901af92e157a059700d81f1c40dd5f4e7ff792d0102c748a797947a65')
 
 package() {
-  cd "$srcdir"
-  local _npmdir="$pkgdir/usr/lib/node_modules/"
-  mkdir -p "$_npmdir"
-  cd "$_npmdir"
-  npm install -g --prefix "$pkgdir/usr" $_npmname@$pkgver
+  npm install -g --prefix "$pkgdir/usr" --cache "$srcdir/npm-cache" "$pkgname-$pkgver.tgz"
+  install -dv "$pkgdir/usr/share/licenses/$pkgname/"
+  ln -sv "/usr/lib/node_modules/$_pkg/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+  chown -R root:root "$pkgdir"
 }
 
 # vim:set ts=2 sw=2 et:
