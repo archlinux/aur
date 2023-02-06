@@ -6,15 +6,16 @@
 # Contributor: Tom Newsom <Jeepster at gmx dot co dot uk>
 
 pkgname=xosview
-pkgver=1.23
+pkgver=1.24
 pkgrel=1
 pkgdesc="Displays system stats such as cpu, memory, swap, and network usage"
-url="https://www.pogo.org.uk/~mark/xosview/"
+url="http://www.pogo.org.uk/~mark/xosview/"
 arch=(i686 x86_64)
 depends=('gcc-libs' 'hicolor-icon-theme' 'libxpm')
+options=('!debug')
 license=('GPL')
-source=("https://www.pogo.org.uk/~mark/${pkgname}/releases/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('960acb68a8668e936e8dc71cc4e3926d879f47559b4a5f64555bdcc676c6739d')
+source=("http://www.pogo.org.uk/~mark/${pkgname}/releases/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('6d486c1a5a590d440ee1e2e5b06cea6bdcda7da16ca68d80f368cdfc42d7acb9')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
