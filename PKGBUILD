@@ -3,7 +3,7 @@
 pkgname=snapcast
 _pkgname_snapos=snapos
 pkgver=0.27.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Synchronous multi-room audio player"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/badaix/snapcast"
@@ -44,6 +44,9 @@ package() {
     done
     for file in server/etc/snapweb/3rd-party/*\.*;
         do install -Dm 644 ${file} -t "${pkgdir}/usr/share/snapserver/snapweb/3rd-party/";
+    done
+    for file in server/etc/plug-ins/*\.*; 
+        do install -Dm 644 ${file} -t "${pkgdir}/usr/share/snapserver/plug-ins/"; 
     done
 
     install -Dm755 bin/snapclient "${pkgdir}/usr/bin/snapclient"
