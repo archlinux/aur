@@ -1,8 +1,9 @@
 pkgbase = webmin
 	pkgdesc = A web-based administration interface for Unix systems
 	pkgver = 2.013
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.webmin.com/
+	install = webmin.install
 	arch = any
 	license = custom:webmin
 	depends = perl

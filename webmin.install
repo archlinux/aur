@@ -1,0 +1,18 @@
+post_upgrade() {
+  if (( $(vercmp $2 2.013-1) <= 0)); then
+    sed -i -e 's/white/welcome/g' -e 's/black/block/g' etc/webmin/spam/* || true
+cat << _EOF
+
+>>> Webmin's SpamAssassin (spam) module has been patched for SpamAssassin v4+.
+>>> Replaced white/black with welcome/block in /etc/webmin/spam/*
+>>> Please verify the same and rename any files if necessary.
+
+>>> Also do not forget to activate version compatibility:
+>>>   enable_compat welcomelist_blocklist
+
+>>> For details, see:
+>>>   https://cwiki.apache.org/confluence/display/spamassassin/WelcomelistBlocklist
+
+_EOF
+  fi
+}

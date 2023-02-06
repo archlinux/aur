@@ -4,7 +4,7 @@
 
 pkgname=webmin
 pkgver=2.013
-pkgrel=1
+pkgrel=2
 pkgdesc="A web-based administration interface for Unix systems"
 arch=(any)
 license=('custom:webmin')
@@ -126,6 +126,7 @@ source=("http://downloads.sourceforge.net/sourceforge/webadmin/$pkgname-$pkgver.
         webmin.logrotate
         webmin.tmpfiles)
 options=(!strip !zipman)
+install=webmin.install
 
 prepare() {
     cd "$srcdir"/$pkgname-$pkgver
@@ -144,6 +145,13 @@ prepare() {
     echo 'Archlinux	Any version	generic-linux	*	-d "/etc/pacman.d"' > os_list.txt
     cp -rp "$srcdir"/webmin-config/* "$srcdir"/$pkgname-$pkgver/
     install -m 700 "$srcdir"/setup-{pre,post}.sh "$srcdir"/$pkgname-$pkgver/
+
+    # patch for SpamAssassin 4.0
+    # https://cwiki.apache.org/confluence/display/spamassassin/WelcomelistBlocklist
+    cd spam
+    sed -i -e 's/white/welcome/g' -e 's/black/block/g' -e 's/White/Welcome/g' -e 's/Black/Block/g' \
+        *.pl *.cgi config* defaultacl lang/*
+    find . -name '*white*' -exec rename white welcome '{}' \+
 }
 
 package() {
