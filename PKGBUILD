@@ -1,4 +1,5 @@
 # Maintainer: getchoo <getchoo at tuta dot io>
+# Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 # Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: vorpalblade77@gmail.com
 # Contributor: b.klettbach@gmail.com
@@ -8,7 +9,7 @@
 pkgname=multimc5
 _pkgname=multimc
 pkgver=0.6.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
 url="https://multimc.org/"
@@ -34,11 +35,12 @@ source=("${pkgname}::git+https://github.com/MultiMC/Launcher#tag=${pkgver}"
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
-            '9b27fb72f68245c047916ed1a32c774577089ddb66cfcb3da8f32e2aba2e3913afc794424ebd6ed5563b4e2912b8a2f0234b2cd1648ba54791f9b6a5a1515dae'
+            'd94f2f689a57a9d88db9d9bed57e1e822868688350dc449b77cf569fb62a98ea625978ee9eeae0200f0274c8b8c2b3f6764ef3091c70c2f979aa87c4f7327214'
             'd0e3152b885ec73b019dc0269d46e1ce0c43211bbcf05776a1e97f10fdc29f442930cc2d5144c0f979133e6aec68bf68474b924c746d1fa6b8c7f604af6eb83f'
             'df077c24a235117cc391ac515dd1e28c10b2082093c80aac5dcf3d6d8feaf07acacc79bfd5f111e389e7972e6f0a3b6eb217202d13e362219ed22a5437cd49c7'
             '1aeb819e1fc21f887e8f212f44eb22ccad320b9a1783ed9b55b8a2a9875103f079aaeb0a051b811f7ceb0708caf20f3c7b0c4ba21b5bb5dc25b0fec977dfc878'
             'a7c4654dd5ee260c25e0eab2dba0d929f09bc38b9af1505408a55058e73eaf35986b4a0e6de7e1893ebf860c472df984011340b3989f996a9d170cbc37dfd691')
+install=multimc5.install
 
 prepare() {
   cd "${srcdir}/${pkgname}"
