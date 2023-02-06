@@ -1,6 +1,6 @@
 pkgbase = kbookmarks-git
 	pkgdesc = Support for bookmarks and the XBEL format
-	pkgver = 5.83.0_r406.g7370299
+	pkgver = 5.240.0_r511.g563e17a
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -17,4 +17,3 @@ pkgbase = kbookmarks-git
 	sha256sums = SKIP
 
 pkgname = kbookmarks-git
-
