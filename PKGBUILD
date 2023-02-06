@@ -1,23 +1,23 @@
-# Maintainer: cmichi <mich [at] elmueller [dot] net>
+# Maintainer: Invarianz <invarianztheorem [at] web [dot] de>
+# Contributor: cmichi <mich [at] elmueller [dot] net>
 #
-# This package aims to provide the latest offical, upstream nvi
+# This package provides the latest offical, upstream nvi
 # with multibyte support enabled.
 
-pkgname=nvi-multibyte-upstream
+pkgname=nvi-multibyte-git
 pkgdesc="Upstream nvi with enabled multibyte support"
 arch=('x86_64')
 url="git://repo.or.cz/nvi.git"
 license=("BSD")
 conflicts=("nvi")
 
-_COMMIT="f462fedd26f78eec1998da4b9cba360095a6aa53"
+_COMMIT="864873d3f353ab3e54040817ec562bd3b346b55f"
 source=("http://repo.or.cz/nvi.git/snapshot/$_COMMIT.tar.gz")
-md5sums=("c9b282080e8d61f933f8e2d3bfb7dc2d")
+md5sums=('c146491156559ff069e2cfd64c97075c')
 
 # the last official release was 1.81.6, but there have been
-# commits since then. hence i append the timestamp of the
-# latest commit to the version number.
-pkgver=1.81.6_20161009
+# commits since then. Timestamp (yyyymmdd) of latest commit is appended.
+pkgver=1.81.6_20200915
 _COMMIT_HASH="${_COMMIT:0:7}"
 
 pkgrel=2
