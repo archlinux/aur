@@ -4,7 +4,7 @@
 
 pkgname=netlogo
 pkgver=6.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-agent programmable modeling environment."
 arch=('i686' 'x86_64')
 [ "$CARCH" = "i686"  ] && _NARCH=32
@@ -21,7 +21,7 @@ source=(http://ccl.northwestern.edu/netlogo/$pkgver/NetLogo-$pkgver-$_NARCH.tgz
 [[ $_NARCH = 64 ]] && md5sums=('e66b20e33fc2eeea3c2542c6a08e6ecd' 'SKIP')
 
 prepare() {
-    gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='NetLogo' --exec='/opt/netlogo/NetLogo'
+    gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='NetLogo' --exec='/opt/netlogo/bin/NetLogo'
 }
 
 package() {
@@ -34,6 +34,6 @@ package() {
 
     for file in {NetLogo,NetLogo3D,HubNetClient,Behaviorsearch}; do
         chmod +x "$pkgdir/opt/$pkgname/$file"
-        ln -s "/opt/$pkgname/$file" "$pkgdir/usr/bin/"
+        ln -s "/opt/$pkgname/bin/$file" "$pkgdir/usr/bin/"
     done
 }
