@@ -1,4 +1,4 @@
-pkgbase = acorn-git
+pkgbase = acorn-cli-git
 	pkgdesc = A simple application deployment framework for Kubernetes (git build from latest commit)
 	pkgver = git
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = acorn-git
 	source = acorn::git+https://github.com/acorn-io/acorn.git#branch=main
 	md5sums = SKIP
 
-pkgname = acorn-git
+pkgname = acorn-cli-git

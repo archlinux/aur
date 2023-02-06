@@ -1,5 +1,5 @@
 # Maintainer: drpebcak <tayworm@gmail.com>
-pkgname='acorn-git'
+pkgname='acorn-cli-git'
 pkgver=git
 pkgrel=1
 pkgdesc="A simple application deployment framework for Kubernetes (git build from latest commit)"
