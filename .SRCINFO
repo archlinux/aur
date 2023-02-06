@@ -1,7 +1,7 @@
 pkgbase = allusion-appimage
 	pkgdesc = Allusion is a tool built for artists, aimed to help you organize your Visual Library – A single place that contains your entire collection of references, inspiration and any other kinds of images.
 	pkgver = 1.0.0
-	pkgrel = 17
+	pkgrel = 18
 	url = https://allusion-app.github.io
 	arch = x86_64
 	license = GNU
@@ -10,9 +10,9 @@ pkgbase = allusion-appimage
 	depends = glibc
 	depends = zlib
 	depends = fuse2
-	noextract = Allusion-1.0.0-rc9.AppImage
+	noextract = Allusion-1.0.0-rc.10.AppImage
 	options = !strip
-	source_x86_64 = Allusion-1.0.0-rc9.AppImage::https://github.com/allusion-app/Allusion/releases/download/v1.0.0-rc9/Allusion-1.0.0-rc9.AppImage
-	sha256sums_x86_64 = ef0d573453cbab6f381a5a0cf55db718bf18219715b4b3e5d6604f66a56d2f10
+	source_x86_64 = Allusion-1.0.0-rc.10.AppImage::https://github.com/allusion-app/Allusion/releases/download/v1.0.0-rc.10/Allusion-1.0.0-rc.10.AppImage
+	sha256sums_x86_64 = e5b0508e36f6becdfeb35afbf863925506d105cf1ec968d0140948dff99487f9
 
 pkgname = allusion-appimage
