@@ -1,7 +1,7 @@
 # Maintainer SimPilotAdamT <adam_tazul@outlook.com>
 
 pkgname=vmware-unlocker
-pkgver=4.2.4
+pkgver=4.2.5
 pkgrel=1
 pkgdesc="VMware macOS utilities"
 arch=("x86_64")
