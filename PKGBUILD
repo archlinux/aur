@@ -5,10 +5,13 @@
 pkgname=mqttfx-bin
 _pkgbasename=mqttfx
 pkgver=1.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A MQTT Client written in Java based on Eclipse Paho"
 arch=("x86_64")
 url="http://mqttfx.org"
+depends=(log4jscanner
+#         unzip
+        )
 license=("Apache")
 options=("!strip")
 source=(
@@ -34,4 +37,11 @@ package() {
   # Install the application logo and desktop launcher
   install -Dm644 "${_pkgbasename}.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_pkgbasename}.png"
   install -Dm644 "${_pkgbasename}.desktop" "${pkgdir}/usr/share/applications/${_pkgbasename}.desktop"
+
+  # Fix log4j
+  cd "${pkgdir}/opt/${bin_name}/app/"
+#   zipinfo lib/log4j-core*.jar | grep Jndi
+  log4jscanner .
+  log4jscanner --rewrite .
+#   zipinfo lib/log4j-core*.jar | grep Jndi
 }
