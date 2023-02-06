@@ -1,0 +1,16 @@
+pkgbase = datastructure-lib-for-c-git
+	pkgdesc = This is my personal data structure for c, it has an avl, map, stack, queue, etc
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/alecksandr26/Data-structure-lib-for-C
+	arch = x86_64
+	license = Apache License 2.0
+	makedepends = gcc
+	makedepends = git
+	makedepends = make
+	makedepends = binutils
+	makedepends = coreutils
+	source = git+https://github.com/alecksandr26/Data-structure-lib-for-C
+	md5sums = SKIP
+
+pkgname = datastructure-lib-for-c-git
