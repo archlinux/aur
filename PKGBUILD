@@ -33,6 +33,7 @@ package() {
   install -Dm0644 --target-directory "$licdir" "$srcdir/$_pkgname/LICENSE"
   install -Dm0644 --target-directory "$imgdir" "$srcdir/$_pkgname/img/steam-metadata-editor.png"
   install -Dm0644 --target-directory "$appdir" "$srcdir/$_pkgname/steam-metadata-editor.desktop"
-  install -Dm0644 --target-directory "$progdir" "$srcdir/$_pkgname/src/*"
+  install -dm755 "$progdir"
+  cp -fa "$srcdir/$_pkgname/src/."  "$progdir"
   install -Dm0755 --target-directory "$bindir" "$srcdir/$_pkgname/steammetadataeditor"
 }
