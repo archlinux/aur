@@ -1,5 +1,6 @@
 # Maintainer: Sythelux Rikd <dersyth@gmail.com>
 # Maintainer: Mattia Basaglia <glax@dragon.best>
+# Maintainer: Evert Vorster <evorster@gmail.com>
 _corpname=glaxnimate
 _pkgname='glaxnimate'
 pkgname="glaxnimate-git"
@@ -16,15 +17,48 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
     "$_pkgname::git+https://gitlab.com/mattbas/$_pkgname/#branch=$_git_branch"
+    "git+https://gitlab.com/mattbas/CMake-Lib.git"
+    "git+https://github.com/KDE/breeze-icons.git"
+    "git+https://gitlab.com/mattbas/python-lottie.git"
+    "git+https://gitlab.com/mattbas/Qt-Color-Widgets.git"
+    "git+https://gitlab.com/mattbas/Qt-History-LineEdit.git"
+    "git+https://github.com/pybind/pybind11.git"
+    "git+https://github.com/rpavlik/cmake-modules.git"
+    "git+https://github.com/mbasaglia/QtAndroidCmake"
 )
-sha256sums=('SKIP')
+sha256sums=(
+	'SKIP'
+	'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+	)
 
 prepare() {
     cd "$_pkgname/"
 
     # Provide git submodules
+    echo "Initializing Submodules"
     git submodule init
-    git submodule update --init --recursive
+
+    echo "Updating git submodule paths"
+#    git submodule update --init --recursive
+    git config submodule.src/cmake.url "$srcdir/CMake-Lib"
+    git config submodule.src/data/icons/breeze-icons.url "$srcdir/breeze-icons"
+    git config submodule.src/data/lib/python-lottie.url "$srcdir/python-lottie"
+    git config submodule.src/external/Qt-Color-Widgets.url "$srcdir/Qt-Color-Widgets"
+    git config submodule.src/external/Qt-History-LineEdit.url "$srcdir/Qt-History-LineEdit"
+    git config submodule.src/external/pybind11.url "$srcdir/pybind11"
+    git config submodule.src/external/cmake-modules.url "$srcdir/cmake-modules"
+    git config submodule.src/src/android/qt-android-cmake.url "$srcdir/QtAndroidCmake"
+
+    echo "Updating git submodules"
+    git -c protocol.file.allow=always submodule update
+
 }
 
 pkgver() {
@@ -48,4 +82,5 @@ package() {
     cd "$srcdir/$_pkgname/build"
     make install DESTDIR=$pkgdir >/dev/null
 }
+
 

@@ -28,6 +28,22 @@ pkgbase = glaxnimate-git
 	provides = glaxnimate
 	conflicts = glaxnimate
 	source = glaxnimate::git+https://gitlab.com/mattbas/glaxnimate/#branch=master
+	source = git+https://gitlab.com/mattbas/CMake-Lib.git
+	source = git+https://github.com/KDE/breeze-icons.git
+	source = git+https://gitlab.com/mattbas/python-lottie.git
+	source = git+https://gitlab.com/mattbas/Qt-Color-Widgets.git
+	source = git+https://gitlab.com/mattbas/Qt-History-LineEdit.git
+	source = git+https://github.com/pybind/pybind11.git
+	source = git+https://github.com/rpavlik/cmake-modules.git
+	source = git+https://github.com/mbasaglia/QtAndroidCmake
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = glaxnimate-git
