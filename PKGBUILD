@@ -52,7 +52,7 @@ _disable_debug=y
 pkgbase=linux-next-git
 pkgver=20230206.r0.g129af7708234
 _srcname=linux-next
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux NEXT'
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -123,17 +123,28 @@ prepare() {
 
     ### Optionally set tickrate to 1000
 	if [ -n "$_1k_HZ_ticks" ]; then
-		echo "Setting tick rate to 1k..."
-                scripts/config -d HZ_300
-                scripts/config -e HZ_1000
-                scripts/config --set-val HZ 1000
+            echo "Setting tick rate to 1k..."
+            scripts/config -d HZ_300 \
+                           -e HZ_1000 \
+                           --set-val HZ 1000
 	fi
 
     ### Optionally disable NUMA for 64-bit kernels only
         # (x86 kernels do not support NUMA)
         if [ -n "$_NUMAdisable" ]; then
             echo "Disabling NUMA from kernel config..."
-            scripts/config -d NUMA
+            scripts/config -d NUMA \
+                           -d AMD_NUMA \
+                           -d X86_64_ACPI_NUMA \
+                           -d NODES_SPAN_OTHER_NODES \
+                           -d NUMA_EMU \
+                           -u NODES_SHIFT \
+                           -d NEED_MULTIPLE_NODES \
+                           -d MOVABLE_NODE \
+                           -d USE_PERCPU_NUMA_NODE_ID \
+                           -d ACPI_NUMA \
+                           -d NUMA_BALANCING \
+                           -d NUMA_BALANCING_DEFAULT_ENABLED
         fi
 
     ### Disable DEBUG
