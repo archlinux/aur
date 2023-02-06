@@ -51,7 +51,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hyprwm/Hyprland/release
         "nvidia.patch")
 conflicts=("${_pkgname}")
 provides=(hyprland)
-sha256sums=('babc64cde2f56e4e77c02f81862a2879e097086b074ebaa533a1bcf0a87dfb23'
+sha256sums=('fba4902f39fe549ecf829c23b1c086cbe02cd068c6f65c2571c357226fa915fd'
             '522b19656d7c1627ec615b6720182590570560e346c1670f9df002015707b340')
 options=(!makeflags !buildflags !strip)
 
