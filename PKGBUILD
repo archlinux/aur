@@ -36,7 +36,7 @@ build() {
 
 check() {
   cd "$srcdir/avalanchego-${pkgver}"
-  [[ -f avalanchego ]] && [[ -f plugins/evm ]]
+  [[ -f avalanchego ]] && [[ -f evm ]]
 }
 
 package() {
