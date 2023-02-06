@@ -1,6 +1,6 @@
 pkgbase = ytsub
 	pkgdesc = A subscriptions only TUI Youtube client that uses the Invidious API
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/sarowish/ytsub
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ytsub
 	provides = ytsub
 	conflicts = ytsub
 	options = !lto
-	source = ytsub-0.3.1.tar.gz::https://github.com/sarowish/ytsub/archive/refs/tags/v0.3.1.tar.gz
-	sha256sums = 186521d7264c19ee5ec5075aa9ddc5adc12f34b6438869818ffd956c51794bd2
+	source = ytsub-0.4.0.tar.gz::https://github.com/sarowish/ytsub/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 5da598997043189a7311716cccbf33abfcd97d05a3e3fb7706f8abcb40e9a8e1
 
 pkgname = ytsub

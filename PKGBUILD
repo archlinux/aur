@@ -1,7 +1,7 @@
 # Maintainer: Berke Enercan <berkeenercan@tutanota.com>
 
 pkgname=ytsub
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 
 pkgdesc='A subscriptions only TUI Youtube client that uses the Invidious API'
@@ -14,7 +14,7 @@ makedepends=('cargo')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('186521d7264c19ee5ec5075aa9ddc5adc12f34b6438869818ffd956c51794bd2')
+sha256sums=('5da598997043189a7311716cccbf33abfcd97d05a3e3fb7706f8abcb40e9a8e1')
 options=('!lto')
 
 prepare() {
