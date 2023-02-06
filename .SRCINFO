@@ -1,6 +1,6 @@
 pkgbase = knewstuff-git
 	pkgdesc = Support for downloading application assets from the network
-	pkgver = 5.83.0_r1150.ge1d40ecb
+	pkgver = 5.240.0_r1477.g9ccc0509
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -21,4 +21,3 @@ pkgbase = knewstuff-git
 	sha256sums = SKIP
 
 pkgname = knewstuff-git
-
