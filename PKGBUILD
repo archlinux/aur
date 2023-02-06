@@ -2,13 +2,13 @@
 
 pkgname=justbuild
 pkgver='1.0.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="A generic build system supporting multi-repository builds"
 arch=('x86_64')
 url="https://github.com/just-buildsystem/justbuild"
 license=('Apache')
 depends=('python')
-makedepends=('clang' 'binutils' 'wget')
+makedepends=('clang' 'binutils' 'wget' 'emacs')
 conflicts=('just' 'just-git' 'just-js')
 source=("justbuild-${pkgver}.tar.gz::https://github.com/just-buildsystem/justbuild/archive/v${pkgver}.tar.gz"
 		"boringssl-no-Werror.patch")
@@ -28,9 +28,23 @@ build() {
 	mkdir -p "${srcdir}/build"
     
     env JUST_BUILD_CONF='{"COMPILER_FAMILY": "clang", "CC": "/usr/bin/clang", "CXX": "/usr/bin/clang++", "AR": "/usr/bin/ar"}' python3 ./bin/bootstrap.py . "${srcdir}/build"
+
+	# convert man pages from orgmode to man
+	find "${srcdir}/justbuild-${pkgver}/share/man" -name "*.org" -exec emacs {} --batch --eval "(require 'ox-man)" -f org-man-export-to-man --kill \;
 }
 
 package() {
 	install -m 755 -Dt "${pkgdir}/usr/bin" "${srcdir}/build/out/bin/just" 
 	install -m 755 -DT "${srcdir}/justbuild-${pkgver}/bin/just-mr.py" "${pkgdir}/usr/bin/just-mr"
+	install -m 755 -DT "${srcdir}/justbuild-${pkgver}/bin/just-import-git.py" "${pkgdir}/usr/bin/just-import-git"
+	
+	# bash completion
+    mkdir -p "${pkgdir}"/usr/share/bash-completion/completions
+    install -m 0644 "${srcdir}/justbuild-${pkgver}"/share/just_complete.bash "${pkgdir}"/usr/share/bash-completion/completions/just
+
+	# man
+    mkdir -p "${pkgdir}"/usr/share/man/{man1,man5}
+    install -m 0644 -t "${pkgdir}"/usr/share/man/man1 "${srcdir}/justbuild-${pkgver}"/share/man/*.1.man
+    install -m 0644 -t "${pkgdir}"/usr/share/man/man5 "${srcdir}/justbuild-${pkgver}"/share/man/*.5.man
+	find "${pkgdir}"/usr/share/man -name "*.man" -exec sh -c 'mv "$1" "${1%.man}"' _ {} \;
 }
