@@ -2,7 +2,7 @@
 
 _name=piccata
 pkgname=python-piccata
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="A simple CoAP (RFC7252) toolkit"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(python)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha256sums=('7ea6411777bfd63d62e43086269b4f9ecc9072e6321a729ad02018e054063a32')
+sha256sums=('3f4d3148bf884457064b3d462bd71c69b47600ab1e973c8c2e73bba6668b9900')
 
 build() {
   cd $_name-$pkgver
