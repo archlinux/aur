@@ -4,7 +4,7 @@ _name=ctpg
 _author=peter-winter
 
 pkgname=${_name}-git
-pkgver=v1.3.6.r15.g2a4953e
+pkgver=v1.3.7.r10.g18c5669
 pkgrel=1
 pkgdesc="Compile Time Parser Generator is a C++ single header library which takes a language description as a C++ code and turns it into a LR1 table parser with a deterministic finite automaton lexical analyzer, all in compile time."
 arch=('any')
