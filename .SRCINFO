@@ -1,0 +1,17 @@
+pkgbase = papercraft
+	pkgdesc = A tool to unwrap 3D paper models
+	pkgver = 2.0
+	pkgrel = 1
+	url = http://github.com/rodrigorc/papercraft
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	depends = cairo
+	depends = bzip2
+	depends = shared-mime-info
+	source = papercraft::git+https://github.com/rodrigorc/papercraft.git#commit=v2.0
+	sha512sums = SKIP
+
+pkgname = papercraft
