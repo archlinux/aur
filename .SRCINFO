@@ -1,6 +1,6 @@
 pkgbase = kwindowsystem-git
 	pkgdesc = Access to the windowing system
-	pkgver = 5.83.0_r590.g6b16989
+	pkgver = 5.240.0_r761.gad91b0d
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -17,4 +17,3 @@ pkgbase = kwindowsystem-git
 	sha256sums = SKIP
 
 pkgname = kwindowsystem-git
-
