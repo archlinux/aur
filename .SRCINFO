@@ -1,6 +1,6 @@
 pkgbase = kwidgetsaddons-git
 	pkgdesc = Addons to QtWidgets
-	pkgver = 5.83.0_r817.gd375f5a7
+	pkgver = 5.240.0_r1067.gc3570ff8
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -21,4 +21,3 @@ pkgbase = kwidgetsaddons-git
 	sha256sums = SKIP
 
 pkgname = kwidgetsaddons-git
-
