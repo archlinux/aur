@@ -1,6 +1,6 @@
 pkgbase = kjobwidgets-git
 	pkgdesc = Widgets for tracking KJob instances
-	pkgver = 5.83.0_r362.gda3b9ff
+	pkgver = 5.240.0_r467.g8f49632
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -23,4 +23,3 @@ pkgbase = kjobwidgets-git
 	sha256sums = SKIP
 
 pkgname = kjobwidgets-git
-
