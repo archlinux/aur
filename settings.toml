@@ -1,0 +1,37 @@
+[clock]
+enabled = true
+# Set this to the highest priority so it will start with the clock
+# priority = 1
+# Enables a twelve hour clock instead of the 24hr one
+# Defaults to your local format if unset
+# twelve_hour = false
+
+[mpris2]
+enabled = true
+# Set this so web browsers like Firefox or Chrome don't steal the focus of your real music player
+# You can check what to put here by using tools like D-Feet
+# preferred_player = "Lollypop"
+
+[coindesk]
+enabled = false
+# Valid choices are "gbp", "usd" and "eur"
+# Default is USD
+# currency = "eur"
+
+[sysinfo]
+enabled = true
+# The polling interval for system stats in milliseconds.
+polling_interval = 1500
+# The maximum value for the net I/O stat bar (in MiB), used for scaling its fill
+# net_load_max = 100
+# The maximum value for the cpu frequency stat bar (in GHz), used for scaling its fill
+# cpu_frequency_max = 7
+# The maximum value for the temperature stat bar (in degC), used for scaling its fill
+# temperature_max = 100
+# Network interface name used in network I/O stat bar
+# To find values for this config, use the `ip link` command
+# net_interface_name = "eth0"
+# hwmon sensor array & sensor name used in temperature stat bar
+# To find values for these configs, use the `sensors` command
+# hwmon_name = "asus_wmi_sensors"
+# hwmon_sensor_name = "CPU Temperature"

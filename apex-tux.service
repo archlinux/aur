@@ -1,0 +1,10 @@
+[Unit]
+Description=Steelseries Apex OLED Support
+
+[Service]
+Type=simple
+WorkingDirectory=/etc/apex-tux
+ExecStart=/usr/bin/apex-tux
+
+[Install]
+WantedBy=default.target
