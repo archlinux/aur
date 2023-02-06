@@ -1,3 +1,3 @@
 #!/bin/sh
 cd /usr/share/coapres
-java -jar Coapres.jar
+/usr/lib/jvm/java-8-openjdk/bin/java -jar Coapres.jar

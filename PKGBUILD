@@ -2,22 +2,20 @@
 
 pkgname=coapres
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A real-time puzzle game about ants trying to reach their food"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/coapres/"
 license=("GPL3")
-depends=('java-environment')
+depends=('jdk8-openjdk')
 source=(http://downloads.sourceforge.net/project/coapres/v$pkgver/Coapres.zip
         coapres.desktop
         coapres.png
-        coapres
-)
+        coapres)
 md5sums=('9c49a540a8b1b2ad9c378bcb90d6a06d'
          '4f22077a5fd278315552948e2c9d3201'
          '70721b89b18f908793529f0b575e4845'
-         'eb3cd5ba3887777bb3140131adfc59ad'
-)
+         '41ae445ad08b85344eaf5ce80097dea0')
 
 build() {
     true
