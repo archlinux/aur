@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kio-git
-pkgver=5.83.0_r4759.g930d03d4
+pkgver=5.240.0_r6115.gf69f60d89
 pkgrel=1
 pkgdesc='Resource and network access abstraction'
 arch=($CARCH)
@@ -28,6 +28,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=ON

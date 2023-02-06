@@ -1,6 +1,6 @@
 pkgbase = kio-git
 	pkgdesc = Resource and network access abstraction
-	pkgver = 5.83.0_r4759.g930d03d4
+	pkgver = 5.240.0_r6115.gf69f60d89
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -27,4 +27,3 @@ pkgbase = kio-git
 	sha256sums = SKIP
 
 pkgname = kio-git
-
