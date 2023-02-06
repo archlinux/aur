@@ -11,7 +11,7 @@ depends=(python-geopy python-requests python-overpy python-gpxpy python-geotiler
 makedepends=(python-build python-installer python-poetry-core)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('7d4a88570d8063d7740783fa247dca252d578f92e79319f9e5ddd1fef2fca0751653d4955315d912849a3375f60210344a8e0b77c017477f647dad6bb61f3733')
+sha512sums=('737337d9e4a89b6ef8dfeff6b13a4e48c67d5f39004c8849e58cb989658e4cd83d61e771c8a618ec656cdd04cde6e2f30c911181b8fa318be1b08c5a0d989993')
 
 build() {
   cd ${_base}-${pkgver}
