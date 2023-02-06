@@ -1,7 +1,7 @@
 pkgbase = r-conquer
 	pkgdesc = Convolution-Type Smoothed Quantile Regression
-	pkgver = 1.3.1
-	pkgrel = 5
+	pkgver = 1.3.2
+	pkgrel = 1
 	url = https://cran.r-project.org/package=conquer
 	arch = x86_64
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = r-conquer
 	depends = r-matrixstats
 	depends = r-rcpp
 	depends = r-rcpparmadillo
-	source = https://cran.r-project.org/src/contrib/conquer_1.3.1.tar.gz
-	sha256sums = 14c28ab47b60c39696f34ee6fdd737bdcd2d28d05b3641c0e89960ab14a8bcd5
+	source = https://cran.r-project.org/src/contrib/conquer_1.3.2.tar.gz
+	sha256sums = 8f129bb062e447369f220a13f59ccb6cdc209f72c92a26457edd777666c9b946
 
 pkgname = r-conquer
