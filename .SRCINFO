@@ -1,6 +1,6 @@
 pkgbase = kpackage-git
 	pkgdesc = Framework that lets applications manage user installable packages of non-binary assets
-	pkgver = 5.83.0_r659.g2e761f3
+	pkgver = 5.240.0_r822.g77e31fa
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -20,4 +20,3 @@ pkgbase = kpackage-git
 	sha256sums = SKIP
 
 pkgname = kpackage-git
-
