@@ -1,6 +1,6 @@
 pkgbase = kglobalaccel-git
 	pkgdesc = Add support for global workspace shortcuts
-	pkgver = 5.83.0_r444.g9a48818
+	pkgver = 5.240.0_r635.g4bf729c
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -19,4 +19,3 @@ pkgbase = kglobalaccel-git
 	sha256sums = SKIP
 
 pkgname = kglobalaccel-git
-
