@@ -1,7 +1,7 @@
 # Maintainer: Fernando Vasquez <fmorataya.04@gmail.com>
 
 pkgname=wpgtk
-pkgver=6.5.5
+pkgver=6.5.6
 pkgrel=6
 pkgdesc="A gui wallpaper chooser that changes your WM theme, GTK theme and more"
 arch=('any')
