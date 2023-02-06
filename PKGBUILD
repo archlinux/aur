@@ -30,7 +30,8 @@ build() {
       -DQCH_INSTALL_DESTINATION=share/doc/qt \
       -DCMAKE_INSTALL_LIBDIR=lib \
       -DCMAKE_INSTALL_PREFIX=/usr \
-      -DCMAKE_BUILD_TYPE=Release
+      -DCMAKE_BUILD_TYPE=Release \
+      -DD_DSG_APP_DATA_FALLBACK=/var/dsg/appdata
   cmake --build build
 }
 
