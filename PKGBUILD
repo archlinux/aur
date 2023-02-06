@@ -4,11 +4,14 @@
 
 _pkgname='audio-offset-finder'
 pkgname="${_pkgname}-git"
-pkgver=0.4.0+r52.20220602.f9abf6e
-pkgrel=2
+pkgver=0.5.2.r126.20230123.da14f0e
+pkgrel=1
 pkgdesc="A simple tool for finding the offset of an audio file within another file."
 arch=('any')
-url="https://github.com/abramhindle/${_pkgname}"
+_githost='github.com'
+# _gituser='abramhindle'
+_gituser='bbc'
+url="https://${_githost}/${_gituser}/${_pkgname}"
 license=("Apache")
 depends=(
   'ffmpeg'
@@ -16,11 +19,19 @@ depends=(
   'python-matplotlib'
   'python-numba'
   'python-numpy'
+  'python-pytest' # Yes!, this is also a real dependency (usr/lib/python*/site-packages/tests/audio_offset_finder_test.py).
   'python-scipy>=0.12.0'
 )
 makedepends=(
   'git'
-  'python-setuptools'
+  'python-build'
+  'python-installer'
+  'python-wheel'
+  # 'python-setuptools'
+)
+checkdepends=(
+  'python-nose'
+  'python-pytest'
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -39,7 +50,7 @@ prepare() {
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
-  _ver="$(grep -E '^[[:space:]]*version[[:space:]]*=' setup.py | tail -n1 | sed -E -e 's|^[^=]*=||' -e 's|,.*$||' | tr -d \'\")"
+  _ver="$(grep -E '^[[:space:]]*version[[:space:]]*=' setup.cfg | tail -n1 | sed -E -e 's|^[^=]*=[[:space:]]*||' -e 's|,.*$||' | tr -d \'\")"
   _rev="$(git rev-list --count HEAD)"
   _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
   _hash="$(git rev-parse --short HEAD)"
@@ -48,22 +59,41 @@ pkgver() {
     error "Version could not be determined."
     return 1
   else
-    printf '%s' "${_ver}+r${_rev}.${_date}.${_hash}"
+    printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
   fi
 }
 
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  python setup.py build
+  python -m build --wheel --no-isolation
+  # python setup.py build
+}
+
+check() {
+  cd "${srcdir}/${_pkgname}"
+
+  printf '%s\n' " --> running 'nosetests' ..."
+  nosetests
+  printf '\n'
+  printf '%s\n' " --> running 'pytest' ..."
+  pytest
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
 
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" --compile-bytecode=2 dist/*.whl
+  # python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
-  for _docfile in AUTHORS README.md; do
+  # Name the executable correctly
+  mv -v "${pkgdir}/usr/bin/executable-name" "${pkgdir}/usr/bin/${_pkgname}"
+
+  # Remove files that should not be there
+  rm -fv "${pkgdir}/usr/lib"/python*/"site-packages/tests/__init__.py"
+  rm -fv "${pkgdir}/usr/lib"/python*/"site-packages/tests/__pycache__"/__init__.*.pyc
+
+  for _docfile in "AUTHORS" "CODE_OF_CONDUCT.md" "CONTRIBUTING.md" "README.md" "example_plot.png"; do
     install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/$(basename "${_docfile}")"
   done
 
