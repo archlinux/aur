@@ -7,13 +7,13 @@
 _pkgbase=gtkglext
 pkgname=lib32-$_pkgbase
 pkgver=1.2.0
-pkgrel=10
+pkgrel=11
 pkgdesc="OpenGL extensions for GTK+ (32-bit)"
 arch=('x86_64')
 url="http://gtkglext.sourceforge.net/"
 license=('LGPL')
 depends=('lib32-gtk2' 'lib32-libxmu' 'lib32-glu' 'lib32-pangox-compat' "$_pkgbase")
-makedepends=('gcc-multilib' 'lib32-mesa')
+makedepends=('gcc-multilib' 'lib32-mesa' 'python')
 options=('!libtool')
 source=("http://downloads.sourceforge.net/sourceforge/gtkglext/${_pkgbase}-${pkgver}.tar.bz2"
         gtk2.20.patch

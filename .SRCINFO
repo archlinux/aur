@@ -1,12 +1,13 @@
 pkgbase = lib32-gtkglext
 	pkgdesc = OpenGL extensions for GTK+ (32-bit)
 	pkgver = 1.2.0
-	pkgrel = 10
+	pkgrel = 11
 	url = http://gtkglext.sourceforge.net/
 	arch = x86_64
 	license = LGPL
 	makedepends = gcc-multilib
 	makedepends = lib32-mesa
+	makedepends = python
 	depends = lib32-gtk2
 	depends = lib32-libxmu
 	depends = lib32-glu
@@ -21,4 +22,3 @@ pkgbase = lib32-gtkglext
 	md5sums = 612bae44f3cc9db93687af2b5d86a02f
 
 pkgname = lib32-gtkglext
-
