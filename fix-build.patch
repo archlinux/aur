@@ -1,31 +1,12 @@
 diff --git a/desktop-app/package.json b/desktop-app/package.json
-index 9ff6d1c..15827c5 100644
+index 93a5643..3595178 100644
 --- a/desktop-app/package.json
 +++ b/desktop-app/package.json
-@@ -147,8 +147,7 @@
-     },
-     "linux": {
-       "target": [
--        "AppImage",
--        "rpm"
-+        "AppImage"
-       ],
-       "category": "Development"
-     },
-diff --git a/desktop-app/scripts/generate-checksums.js b/desktop-app/scripts/generate-checksums.js
-index 382b54a..77dcdc9 100644
---- a/desktop-app/scripts/generate-checksums.js
-+++ b/desktop-app/scripts/generate-checksums.js
-@@ -5,12 +5,7 @@ const pkg = require('../package.json');
- 
- const version = pkg.version;
- const requiredFiles = [
--  `Responsively-App-${version}.x86_64.rpm`,
--  `ResponsivelyApp-${version}-mac.zip`,
-   `ResponsivelyApp-${version}.AppImage`,
--  `ResponsivelyApp-${version}.dmg`,
--  `ResponsivelyApp ${version}.exe`,
--  `ResponsivelyApp Setup ${version}.exe`,
- ];
- 
- function hashFile(file, algorithm = 'sha512', encoding = 'hex', options = {}) {
+@@ -30,7 +30,6 @@
+     "postinstall": "yarn rimraf node_modules/browser-sync/dist/**/*.map && yarn replace '\"network-throttle\".*' '' node_modules/browser-sync-ui/lib/UI.js && ts-node .erb/scripts/check-native-dep.js && replace-in-file '/// <reference types=\"howler\" />' \"import { Howl } from 'howler';\" node_modules/use-sound/dist/types.d.ts  && electron-builder install-app-deps && cross-env NODE_ENV=development TS_NODE_TRANSPILE_ONLY=true webpack --config ./.erb/configs/webpack.config.renderer.dev.dll.ts",
+     "lint": "cross-env NODE_ENV=development eslint . --ext .js,.jsx,.ts,.tsx",
+     "package": "ts-node ./.erb/scripts/clean.js dist && yarn run build && electron-builder build --publish never",
+-    "prepare": "cd .. && husky install desktop-app/.husky && chmod a+x desktop-app/.husky/pre-commit",
+     "rebuild": "electron-rebuild --parallel --types prod,dev,optional --module-dir release/app",
+     "dev": "yarn start",
+     "start": "ts-node ./.erb/scripts/check-port-in-use.js && yarn run start:renderer",
