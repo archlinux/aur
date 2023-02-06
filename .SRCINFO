@@ -11,6 +11,7 @@ pkgbase = sway-interactive-screenshot
 	depends = slurp
 	depends = libnotify
 	depends = wl-clipboard
+	depends = python
 	optdepends = swappy: edit screenshots
 	optdepends = dragon-drop: drap file to other programs
 	optdepends = xdg-utils: open file
