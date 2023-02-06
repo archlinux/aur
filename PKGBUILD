@@ -7,15 +7,12 @@
 pkgname=datastructure-lib-for-c-git
 pkgver=1.0.0
 pkgrel=1
-epoch=
 pkgdesc="This is my personal data structure library for c, it has an avl, map, stack datastructures and more"
 arch=(x86_64)
 url="https://github.com/alecksandr26/Data-structure-lib-for-C"
 license=('Apache License 2.0')
-depends=()
 makedepends=(gcc git make binutils coreutils)
-optdepends=()
-provides=()
+optdepends=(valgrind)
 source=("git+$url")
 md5sums=('SKIP')
 

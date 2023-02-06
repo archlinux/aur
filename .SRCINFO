@@ -10,6 +10,7 @@ pkgbase = datastructure-lib-for-c-git
 	makedepends = make
 	makedepends = binutils
 	makedepends = coreutils
+	optdepends = valgrind
 	source = git+https://github.com/alecksandr26/Data-structure-lib-for-C
 	md5sums = SKIP
 
