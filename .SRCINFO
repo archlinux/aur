@@ -1,7 +1,7 @@
 pkgbase = snapcast-git
 	pkgdesc = Synchronous multi-room audio player
 	pkgver = v0.27.0.r0.g54a3d862
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/badaix/snapcast
 	install = snapcast.install
 	arch = x86_64
@@ -26,20 +26,14 @@ pkgbase = snapcast-git
 	backup = etc/default/snapclient
 	backup = etc/snapserver.conf
 	source = snapcast-git::git+https://github.com/badaix/snapcast.git#branch=develop
+	source = snapos-git::git+https://github.com/badaix/snapos.git#branch=develop
 	source = snapcast.sysusers
 	source = snapcast.tmpfiles
 	source = snapcast.install
-	source = snapclient.service
-	source = snapserver.service
-	source = snapserver.default
-	source = snapclient.default
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 9fe6e9e07adb77f555a617b772e6d01e098e1dfaad1e8075e03a7d7ba76141de
 	sha256sums = e8c3441c4ca646a9b66d61355e90862fd3481562ae3b4e0a4bc1c978464ae2c7
-	sha256sums = 98cfdc3221270e3243f7dd0ca32f8c4b271258f32fc04fdb52a286f0986d7350
-	sha256sums = b408170fde6862cf9bb5adb379d0a00314f9b68da20021496ea90332b599f440
-	sha256sums = 782f3ffc2707032c33ada827aa56c8e8c1703d222ed6654f0e59dadd6c48c6a5
-	sha256sums = 56a3eff304f0b43d31b4d8cf3f82e2c916bd3ec8c27a0d2f040e4299ac83e113
-	sha256sums = dae9b4c36a9679904c45a5bf49cda6c1d164c39a497f5a7cccf6ac967947a8c4
+	sha256sums = 87945989ce215c3720e12e9d53642d7b1112f8276cd02d999fd7e27517aea126
 
 pkgname = snapcast-git
