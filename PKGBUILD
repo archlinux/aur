@@ -1,8 +1,8 @@
 # Maintainer: ich <remove dashes in s-c--25-ni at gmail dot com>
 
 pkgname=voicevox-appimage
-pkgver=0.13.4
-pkgrel=12
+pkgver=0.14.3
+pkgrel=13
 pkgdesc='Offical Frontend for the free VOICEVOX TTS Engine'
 arch=('x86_64')
 license=('LGPLv3' 'custom')
@@ -19,15 +19,18 @@ source=(
     'voicevox.sh'
 )
 sha512sums=(
-    cf00a3c8212a9c182fe23379d014fc4b9b56d515ec1ba88e78befa8a5ada40a884195df83d7fb0eff54d7dc5b48766b7b53a53dcb3b589e4bec6bc0c0004e1dc
-    4e27223d21f33136e76f027c3ca5394550dd9698ee64086de973c04e1554d9f1f1938d8999b041c81fc459ff7491c150d51ceb445cbeeee635b32bfbe9575ca1
+    bbfd496dcbf81574bbdbc878689f34b9654574a2021138febe56f54ebf90d7ce0658beffc165b5070ca83c80d70ef814cf7269431b136fbe95017731cb1e575b
+    e4f8b725143808583e625a95679a561c6a6cc1298949b348cc7af4e46235a70642afbfe1a3546a90388deb3ffc46829dead367ce76af6748ff01d87f5ea8c1ff
     SKIP
 )
 depends=( # according to the official install script
     'glibc' # for ldconfig
     'libsndfile'
 )
-makedepends=('p7zip')
+makedepends=(
+	'p7zip'
+	'appimagetool' # Since 0.14.3
+)
 options=('!strip')
 
 prepare() {
@@ -38,6 +41,12 @@ prepare() {
     ./${_pkgname} --appimage-extract '*.desktop'
     ./${_pkgname} --appimage-extract 'usr/share/icons/**'
     sed -i "s|Exec=.*|Exec=${_installdir}/${_pkgname}|" squashfs-root/voicevox.desktop
+
+    # Unfortunately, since version 0.14.3, voicevox started to package a version of libstdc++ that is incompatible with the system libraries,
+    # So we need to rip it out
+    ./${_pkgname} --appimage-extract
+    rm squashfs-root/libstdc++.so.6   
+    unset SOURCE_DATE_EPOCH; appimagetool squashfs-root ${_pkgname}
 }
 
 package() {
