@@ -1,6 +1,6 @@
 pkgbase = ytsub-bin
 	pkgdesc = A subscriptions only TUI Youtube client that uses the Invidious API
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/sarowish/ytsub
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ytsub-bin
 	optdepends = yt-dlp: for playing videos
 	provides = ytsub
 	conflicts = ytsub
-	source = https://github.com/sarowish/ytsub/releases/download/v0.3.1/ytsub-0.3.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 8e9cde1426fa1da77c4d1c881f8b13c8a1032deb64d0c98427d3703247418e46
+	source = https://github.com/sarowish/ytsub/releases/download/v0.4.0/ytsub-0.4.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 1a3b78ead7d4026f49d56a763e425bb5689f570a4be030b838170a75ddd59709
 
 pkgname = ytsub-bin
