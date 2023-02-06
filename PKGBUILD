@@ -31,7 +31,7 @@ prepare() {
 build() {
 
   export CXXFLAGS+=" -std=c++14"
-  export PATH="${PATH}:${srcdir}/path"
+  export PATH="${srcdir}/path:${PATH}"
 
   cmake -S TensorRT -B build \
     -DCMAKE_BUILD_TYPE=Release \
