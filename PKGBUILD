@@ -2,7 +2,7 @@
 
 pkgname=nrf-command-line-tools-bin
 _pkgname=${pkgname%-bin}
-pkgver=10.18.1
+pkgver=10.19.0
 pkgrel=0
 arch=('x86_64' 'aarch64')
 depends=(jlink-software-and-documentation
@@ -27,8 +27,8 @@ url="https://www.nordicsemi.com/Products/Development-tools/nrf-command-line-tool
 _source="https://nsscprodmedia.blob.core.windows.net/prod/software-and-other-downloads/desktop-software/${_pkgname}/sw/versions-10-x-x/${pkgver//./-}/${_pkgname}-${pkgver}_linux"
 source_x86_64=("$_source-amd64.tar.gz")
 source_aarch64=("$_source-arm64.tar.gz")
-sha256sums_x86_64=('e2b8bbb1b846b5f01aff8f4195a3ff9103d28e4c15c3566838f9c87d38af0b52')
-sha256sums_aarch64=('6b02fbfeb579e1f3d0eed4e0094cef9844929f5775cbefd6e77815be89a4dab6')
+sha256sums_x86_64=('022bb174caa88c821e99934ff7ecd5f3723103aa10fd984d26168267eeb59203')
+sha256sums_aarch64=('8dd4b86b9c870f171a1ea0fb56b5b71f49838a3039275a4a2b79c1df211db9c7')
 optdepends=("nrf-udev: udev rules for nRF (Nordic Semiconductor) development kits"
             "pc-nrfconnect-programmer: Programmer app for nRF Connect for Desktop")
 
