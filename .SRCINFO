@@ -1,6 +1,6 @@
 pkgbase = kcmutils-git
 	pkgdesc = Utilities for interacting with KCModules
-	pkgver = 5.83.0_r509.g2ce8763
+	pkgver = 5.240.0_r722.gc440652
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -17,4 +17,3 @@ pkgbase = kcmutils-git
 	sha256sums = SKIP
 
 pkgname = kcmutils-git
-
