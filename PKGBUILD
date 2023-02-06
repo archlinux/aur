@@ -1,7 +1,7 @@
 # Maintainer: Marco Scopesi <marco dot scopesi at gmail dot com>
 pkgname=xeus2
 pkgver=2.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="C++ implementation of the Jupyter kernel protocol"
 arch=("x86_64")
 url="https://github.com/QuantStack/xeus"
@@ -25,4 +25,4 @@ package() {
   cd "$pkgname-$pkgver/build"
   make DESTDIR="${pkgdir}" install
 }
-sha256sums=('601de51df29f9c1953a466909ec584244c171879436cea0a580c1bf99142c654')
+sha256sums=('4d567444fd0cbe9774d8e6480470728aa076c8acc9348dd3b2cd20d9142835ee')
