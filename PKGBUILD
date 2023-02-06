@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kactivities-git
-pkgver=5.83.0_r1347.g3a68484
+pkgver=5.240.0_r1428.geb621d60
 pkgrel=1
 arch=($CARCH)
 pkgdesc="Core components for the KDE's Activities"
@@ -27,6 +27,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=ON
   cmake --build build
