@@ -16,7 +16,7 @@ source=("https://github.com/$pkgname/$pkgname/archive/v${pkgver//_/-}.tar.gz"
         'pgmodeler.install'
         'patch_no_check_update.diff'
         'pgmodeler.appdata.xml')
-sha1sums=('0522f565eca2c536952005926a86718beb4f5105'
+sha1sums=('250dfc30c13a42a8855496def4b47f0fa0b8318c'
           'f2ccb85a5c3500212c710ec538c9fae96356af21'
           '459ed6800154eed466829a7943f80d22563ea613'
           '7fab1556d9a1f5ca82a826ab32ac110f34c0f688'
