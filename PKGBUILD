@@ -2,12 +2,12 @@
 
 pkgname=cargo-semver-checks
 pkgver=0.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Scan your Rust crate for semver violations'
 url='https://github.com/obi1kenobi/cargo-semver-checks'
 license=('Apache' 'MIT')
 arch=('x86_64' 'i686' 'arm' 'aarch64')
-depends=('libgit2')
+depends=('libgit2' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/obi1kenobi/cargo-semver-checks/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('2221c2da1df8e0a4dee0ac6fac110d8038230def8f7ea3bdff6417adac1384fd')
@@ -32,7 +32,7 @@ build() {
   cd "$pkgname-$pkgver"
 
   CARGO_TARGET_DIR='target' \
-    cargo build --frozen --release
+    cargo build --frozen --release --no-default-features
 }
 
 package() {
