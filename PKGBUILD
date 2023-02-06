@@ -2,7 +2,7 @@
 
 _pkgname='synct'
 pkgname="${_pkgname}-git"
-pkgver=r14.2269103
+pkgver=r25.3ee9c8e
 pkgrel=1
 pkgdesc='A POSIX shell client for the Syncthing REST API with personal idiosyncracies'
 arch=('any')
@@ -11,7 +11,9 @@ license=('Unlicense')
 depends=(coreutils grep curl bat)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-optdepends=('git: merging with synct-diff' 'jrnl: auto-merging journal conflicts')
+optdepends=('git: merging in synct-diff'
+            'jrnl: auto-merging journal conflicts'
+            'emacs: merging with ediff in synct-diff')
 source=("git+${url}")
 sha512sums=('SKIP')
 
