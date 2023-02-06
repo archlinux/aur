@@ -8,7 +8,7 @@ pkgdesc="Efficient reliable UDP unicast, UDP multicast, and IPC message transpor
 arch=('i686' 'x86_64')
 url="https://github.com/real-logic/aeron"
 license=('Apache')
-depends=('gcc-libs' 'libbsd' 'util-linux-libs' 'zlib' 'java-environment')
+depends=('gcc-libs' 'libbsd' 'util-linux-libs' 'zlib' 'java-environment=17')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/real-logic/aeron/archive/${pkgver}.tar.gz"
         "aeronmd.service")

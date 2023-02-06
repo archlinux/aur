@@ -11,7 +11,7 @@ pkgbase = aeron
 	depends = libbsd
 	depends = util-linux-libs
 	depends = zlib
-	depends = java-environment
+	depends = java-environment=17
 	source = aeron-1.40.0.tar.gz::https://github.com/real-logic/aeron/archive/1.40.0.tar.gz
 	source = aeronmd.service
 	sha256sums = d86f0e593baddc3b3eb469f6975ae7fad8a8da92b55aaa3865dbfcde64d001fa
