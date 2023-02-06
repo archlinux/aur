@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kxmlgui-git
-pkgver=5.83.0_r760.g778badac
+pkgver=5.240.0_r1003.g6f0c9c72
 pkgrel=1
 pkgdesc='User configurable main windows'
 arch=($CARCH)
@@ -25,6 +25,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=ON
