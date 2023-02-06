@@ -1,0 +1,14 @@
+pkgbase = xray-assets-symlinks
+	pkgdesc = symlinks for making v2ray's geoip and domain-list assets available to xray
+	pkgver = r1
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/xray-assets-symlinks
+	arch = any
+	depends = v2ray-geoip
+	depends = v2ray-domain-list-community
+	provides = xray-geoip
+	provides = xray-domain-list-community
+	conflicts = xray-geoip
+	conflicts = xray-domain-list-community
+
+pkgname = xray-assets-symlinks
