@@ -3,7 +3,7 @@
 # Contributor: David Pugnasse <david.pugnasse@gmail.com>
 
 pkgname=pmd
-pkgver=6.51.0
+pkgver=6.54.0
 pkgrel=1
 pkgdesc="Extensible cross-language static code analyzer"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('java-runtime>=7')
 makedepends=('java-environment>=11' 'maven')
 source=("$pkgname-$pkgver.zip::$url/releases/download/pmd_releases%2F$pkgver/pmd-src-$pkgver.zip"
         pmdapp)
-sha256sums=('007990bec5ca9780dacc8adb30b58e8b8441de4f822b60c3533da1002cefab78'
+sha256sums=('ff16d5f83bc17eec87a8debdbbb9ff1f28196f24b6e5179466d05fc5c3a60aec'
             '047ea25735c7fabb75679889652d82e3a557c8df8d87380045c5cd3eb5f5b02e')
 
 prepare() {
@@ -31,7 +31,8 @@ build() {
 package() {
 	install -Dvm644 build/lib/*.jar -t "$pkgdir/usr/share/java/$pkgname/"
 	install -Dv pmdapp -t "$pkgdir/usr/bin/"
-	for i in pmd-bgastviewer pmd-cpd pmd-cpdgui pmd-designer pmd-designerold pmd; do
+	local dirs=(pmd{,-bgastviewer,-cpd,-cpdgui,-designer,-designerold})
+	for i in "${dirs[@]}"; do
 		ln -sv /usr/bin/pmdapp "$pkgdir/usr/bin/$i"
 	done
 	cd "pmd-src-$pkgver"
