@@ -1,0 +1,16 @@
+pkgbase = libancient-git
+	pkgdesc = Decompression routines for ancient formats
+	pkgver = 2.0.0.r6.c35638e
+	pkgrel = 1
+	url = https://github.com/temisu/ancient/
+	arch = i686
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = autoconf-archive
+	provides = libancient=2.0.0.r6.c35638e
+	conflicts = libancient
+	source = libancient::git+https://github.com/temisu/ancient.git
+	md5sums = SKIP
+
+pkgname = libancient-git
