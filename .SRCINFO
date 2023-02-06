@@ -1,6 +1,6 @@
 pkgbase = moolticute
 	pkgdesc = Easy companion for Mooltipass device
-	pkgver = 1.00.1
+	pkgver = 1.01.0
 	pkgrel = 1
 	url = https://github.com/mooltipass/moolticute
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = moolticute
 	depends = mooltipass-udev
 	depends = qt5-base
 	depends = qt5-websockets
-	source = moolticute-1.00.1.tar.gz::https://github.com/mooltipass/moolticute/archive/v1.00.1.tar.gz
-	sha256sums = 4066eab710190fb308b70fa2e0b48e0b9f68fd9e2dba6c2a6aa23e5a66eb5a8f
+	source = moolticute-1.01.0.tar.gz::https://github.com/mooltipass/moolticute/archive/v1.01.0.tar.gz
+	sha256sums = 97d5802af5e996d11a2a226c9b247d3b3d59a4ff179904e8ea9d508fa2e8c570
 
 pkgname = moolticute
