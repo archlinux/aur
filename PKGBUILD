@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kauth-git
-pkgver=5.83.0_r434.g9db4fd8
+pkgver=5.240.0_r543.g0cc153a
 pkgrel=1
 pkgdesc='Abstraction to system policy and authentication features'
 arch=($CARCH)
@@ -26,6 +26,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=ON
