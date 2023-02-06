@@ -2,7 +2,7 @@
 
 _name=pythonfinder
 pkgname=python-pythonfinder
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Cross Platform Search Tool for Finding Pythons"
 arch=(any)
@@ -13,8 +13,8 @@ makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(git python-click python-pytest)
 optdepends=('python-click: for CLI')
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha512sums=('d1bc1dcf66b2052a547f4c5476149232249d33af1184b3e5188ff5d535912ce32653616b28961fdced6870fb086c05d32ef1f896cfa0b3babeb86b030429cbeb')
-b2sums=('067e5669d95907cc9b8cdd50d539838b9e56c65f83237f2dd6b7569b15f67e6e9c2513c9a1e87b139ce718be89e4587f8ef752098aa596d9a87e16a3875cc76a')
+sha512sums=('a1a8efd7ee3f0d7eddf3414f72f59faaedd5fe8bcbd5b86dd205b464d41db19bbdf202a01c27449c2157809222a1b81f9a52f488a811872c3367cbe9f761c4cf')
+b2sums=('e8238dd000e4768a12352a4552b174c4ca40f902f64dec2afd99529e6a7b0346ad49f79aa088ff8aeb513353ea783ffbb176f0126b29edbaa566269770a96aa9')
 
 build() {
   cd $_name-$pkgver
