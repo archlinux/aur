@@ -3,18 +3,17 @@
 
 pkgname=python-tablign
 _pkg="${pkgname#python-}"
-pkgver=0.3.5
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="Aligns columns in your ASCII tables"
 arch=('any')
 url="https://github.com/nschloe/tablign"
 license=('GPL3')
 depends=('python')
-optdepends=('python-importlib-metadata: REQUIRED for python<3.8')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('8274c707093c8394c3e14d09e1df5598362fc905b215fc45aaa05df653184c91')
+sha256sums=('0ad958978b2daaf7d08e23f0cd3cff1496f48dc64147521c1c3f71915c617444')
 
 build() {
 	cd "$_pkg-$pkgver"
@@ -28,5 +27,5 @@ check() {
 
 package() {
 	cd "$_pkg-$pkgver"
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
+	python -m installer --destdir="$pkgdir/" dist/*.whl
 }
