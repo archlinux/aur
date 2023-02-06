@@ -47,10 +47,12 @@ source=(
   git+https://github.com/KhronosGroup/SPIRV-Cross.git
   armips-filesystem::git+https://github.com/Kingcom/filesystem.git
   git+https://github.com/facebook/zstd.git
+  git+https://github.com/google/cpu_features.git
   ppsspp.desktop
   ppsspp-qt.desktop
 )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -77,7 +79,7 @@ prepare() {
     git config submodule.${submodule}.url ../ppsspp-${submodule#*/}
     git -c protocol.file.allow=always submodule update ${submodule}
   done
-  for submodule in ext/{armips,discord-rpc,rapidjson,SPIRV-Cross,zstd}; do
+  for submodule in ext/{armips,discord-rpc,rapidjson,SPIRV-Cross,zstd,cpu_features}; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../${submodule#*/}
     git -c protocol.file.allow=always submodule update ${submodule}
