@@ -5,7 +5,7 @@
 # Contributor: Angel 'angvp' Velasquez <angvp[at]archlinux.com.ve> 
 
 pkgname=python-numpy-flame
-pkgver=1.24.1
+pkgver=1.24.2
 pkgrel=1
 pkgdesc="Scientific tools for Python, compiled with libFLAME"
 arch=('x86_64')
@@ -18,7 +18,7 @@ makedepends=('python-setuptools' 'gcc-fortran' 'cython')
 checkdepends=('python-pytest' 'python-hypothesis')
 options=('staticlibs')
 source=("https://github.com/numpy/numpy/releases/download/v$pkgver/numpy-$pkgver.tar.gz")
-sha256sums=('2386da9a471cc00a1f47845e27d916d5ec5346ae9696e01a8a34760858fe9dd2')
+sha256sums=('003a9f530e880cb2cd177cba1af7220b9aa42def9c4afc2a2fc3ee6be7eb2b22')
 
 # very minimal changes from the upstream python-numpy PKGBUILD. All I did was add the exports to specify libFLAME.
 build() {
@@ -29,15 +29,16 @@ build() {
 }
 
 check() {
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+
   cd numpy-$pkgver
   python setup.py install --root="$PWD/tmp_install" --optimize=1
   cd "$PWD/tmp_install"
-  PATH="$PWD/usr/bin:$PATH" PYTHONPATH="$PWD/usr/lib/python3.10/site-packages:$PYTHONPATH" python -c 'import numpy; numpy.test()'
+  PATH="$PWD/usr/bin:$PATH" PYTHONPATH="$PWD/$site_packages:$PYTHONPATH" python -c 'import numpy; numpy.test()'
 }
 
 package() {
   cd numpy-$pkgver
-
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 
   install -D -m644 LICENSE.txt -t "$pkgdir"/usr/share/licenses/python-numpy/
