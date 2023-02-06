@@ -1,7 +1,7 @@
 pkgbase = snapper-tools
 	pkgdesc = A highly opinionated Snapper GUI and CLI
-	pkgver = 1.1.1
-	pkgrel = 2
+	pkgver = 1.1.2
+	pkgrel = 1
 	url = https://gitlab.com/garuda-linux/applications/snapper-tools
 	arch = x86_64
 	license = GPL3
@@ -12,7 +12,7 @@ pkgbase = snapper-tools
 	depends = qt5-base
 	depends = qt5-svg
 	depends = polkit
-	source = snapper-tools-1.1.1.tar.gz::https://gitlab.com/garuda-linux/applications/snapper-tools/-/archive/1.1.1/snapper-tools-1.1.1.tar.gz
-	sha256sums = 1f6cb8df515c82aed8e8b4ecb8acd910633658c7c4b3919f1501c193147c4325
+	source = snapper-tools-1.1.2.tar.gz::https://gitlab.com/garuda-linux/applications/snapper-tools/-/archive/1.1.2/snapper-tools-1.1.2.tar.gz
+	sha256sums = f46a71b862512b9018dd6cf8401480e6b9e64a838b0186def87adc211106f36e
 
 pkgname = snapper-tools
