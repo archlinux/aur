@@ -1,14 +1,14 @@
 # Maintainer: Martin Diehl <aur@martin-diehl.net>
 pkgname=libfyaml
-pkgver=0.7.12
-pkgrel=2
+pkgver=0.8
+pkgrel=1
 pkgdesc='Fully feature complete YAML parser and emitter'
 arch=('x86_64')
 url='https://pantoniou.github.io/libfyaml'
 license=('MIT')
 source=(https://github.com/pantoniou/libfyaml/releases/download/v${pkgver}/libfyaml-${pkgver}.tar.gz)
 
-sha256sums=('485342c6920e9fdc2addfe75e5c3e0381793f18b339ab7393c1b6edf78bf8ca8')
+sha512sums=('da86055a9b4afd471fa58ca569df05119e3b0982a5d28666625a80c4a7b69c6a3a09aa553c2b88de35f204912b2572cbf5d6c949f09d65e44f785da86f468a2c')
 
 build() {
   cd "$srcdir"/libfyaml-${pkgver}
