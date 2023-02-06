@@ -1,0 +1,17 @@
+pkgbase = runner-bin
+	pkgdesc = An interesting and useful shell instruction.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://gitlab.com/hoggadams/runner
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = bash
+	depends = python3
+	depends = firefox
+	depends = gcc
+	noextract = 
+	source = runner-bin-0.2.1::https://gitlab.com/hoggadams/runner
+	md5sums = SKIP
+
+pkgname = runner-bin
