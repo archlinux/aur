@@ -1,6 +1,6 @@
 pkgbase = kwayland-git
 	pkgdesc = Qt-style Client and Server library wrapper for the Wayland libraries
-	pkgver = 5.83.0_r1086.g8bc536d
+	pkgver = 5.240.0_r1215.gb1d2718
 	pkgrel = 1
 	url = https://www.kde.org
 	arch = x86_64
@@ -19,4 +19,3 @@ pkgbase = kwayland-git
 	sha256sums = SKIP
 
 pkgname = kwayland-git
-

@@ -3,7 +3,7 @@
 # Contributor: Antonio Rojas
 
 pkgname=kwayland-git
-pkgver=5.83.0_r1086.g8bc536d
+pkgver=5.240.0_r1215.gb1d2718
 pkgrel=1
 pkgdesc='Qt-style Client and Server library wrapper for the Wayland libraries'
 arch=($CARCH)
@@ -25,6 +25,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=ON
