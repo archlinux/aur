@@ -5,8 +5,8 @@
 # Contributor: JD Horelick <jdhore1@gmail.com>
 
 pkgname=devscripts
-pkgver=2.22.2
-pkgrel=2
+pkgver=2.23.0
+pkgrel=1
 pkgdesc="Scripts to make the life of a Debian Package maintainer easier"
 arch=('i686' 'x86_64')
 url="https://tracker.debian.org/pkg/devscripts"
@@ -42,21 +42,21 @@ source=(
     "https://deb.debian.org/debian/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver}.tar.xz"
     fixes.patch
 )
-sha256sums=('15f95a96dd89c6a2d2d20ab4c32f3ca570aa88dbc78fbb1f3fb7cbc1d4a6502b'
+sha256sums=('564eb0d251fc2c76c4008c8fb38652d23d08fc24db98976d07a0d19997c10142'
             'f8e7ce50c0d008c5d38c94b93c9fc560e5dd2cc8f06eeb2909b0b1784911b768')
 
 prepare(){
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     patch -p1 -i "$srcdir/fixes.patch"
 }
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     make
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     make DESTDIR="$pkgdir" install
 
     # Create dch symlink to debchange
