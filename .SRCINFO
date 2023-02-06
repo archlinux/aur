@@ -7,6 +7,7 @@ pkgbase = python-pytorch-tensorrt
 	license = BSD
 	makedepends = git
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = python-pip
 	depends = python-pytorch-opt-cuda
 	depends = python-tensorrt

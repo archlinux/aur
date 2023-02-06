@@ -15,6 +15,7 @@ depends=('python-pytorch-opt-cuda'
          )
 makedepends=('git'
              'cmake'
+             'ninja'
              'python-pip'
              )
 source=("git+https://github.com/pytorch/TensorRT.git#tag=v${pkgver}")
