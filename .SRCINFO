@@ -1,4 +1,4 @@
-pkgbase = opensnitch-ebpf-module-stable
+pkgbase = opensnitch-ebpf-module
 	pkgdesc = eBPF process monitor module for opensnitch
 	pkgver = 1.5.5
 	pkgrel = 1
@@ -26,4 +26,4 @@ pkgbase = opensnitch-ebpf-module-stable
 	sha256sums = d32e284c8dba6b8bbb0e6fcc99c44e0dbfdd95f0e962e7d7cd1ec8707963424d
 	sha256sums = 5ef18f7e7fcffa2571431fccb3bc26a4e975492208e8490867148a2a5b78c220
 
-pkgname = opensnitch-ebpf-module-stable
+pkgname = opensnitch-ebpf-module

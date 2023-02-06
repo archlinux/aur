@@ -1,6 +1,6 @@
 # Maintainer: Rasmus Moorats <xx+aur@nns.ee>
 
-pkgname=opensnitch-ebpf-module-stable
+pkgname=opensnitch-ebpf-module
 _pkgname=opensnitch
 pkgver=1.5.5
 pkgrel=1
