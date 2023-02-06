@@ -3,12 +3,12 @@
 # Contributor: Xiao-Long Chen < chenxiaolong at cxl dot epac dot to >
 
 
-_commit=b43e7c6f3cf7855e16170a06d3a9c7234c60ca94  # tags/1.17.6^0
+_commit=c3b672634f0635af1ad0ffa8c15b34fc7c1035cf  # tags/1.17.8^0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-cairo
-pkgver=1.17.6
-pkgrel=3
+pkgver=1.17.8
+pkgrel=1
 pkgdesc="2D graphics library with support for multiple output devices (mingw-w64)"
 arch=('any')
 url="https://cairographics.org"
@@ -47,11 +47,11 @@ build() {
       --buildtype=release \
       --default-library=both \
       -D b_lto=false \
+      -D dwrite=disabled \
+      -D gtk_doc=false \
       -D spectre=disabled \
-      -D tee=enabled \
-      -D tests=disabled \
       -D symbol-lookup=disabled \
-      -D gtk_doc=false
+      -D tests=disabled
     meson compile -C build-${_arch}
   done
 }
