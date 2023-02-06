@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=yuzu
-pkgver=mainline.0.1318
+pkgver=mainline.0.1331
 pkgrel=1
 pkgdesc="Nintendo Switch emulator"
 arch=('aarch64' 'x86_64')
@@ -26,6 +26,7 @@ makedepends=(
 	'libinih>=52'
 	'libusb>=1.0.24'
 	'libva'
+	'llvm'
 	'lz4>=1:1.8'
 	'nlohmann-json>=3.8'
 	'openssl'
@@ -43,12 +44,14 @@ source=(
 	'yuzu-mbedtls::git+https://github.com/yuzu-emu/mbedtls.git'
 	'yuzu-sirit::git+https://github.com/yuzu-emu/sirit.git'
 	'compatibility_list.json.xz'
+	'fix-compilation-gcc.patch'
 )
 b2sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
 	'1d9591b3aad22b6a543c1675c5c12eb92ae4af33198c39cc4932a2916cf767c6da28381082e336e80d4d54bc453528c8d915b4c58fd6209338ee304b67fae112'
+	'03e3711b24b92628aa60d5b80cc09de3af547b90ab8d1cc33125de51bae5a1094643c6dd2fab2993662e1b27ddbd747db066ddcae1a61801ed872a03a78c5216'
 )
 
 prepare() {
@@ -57,6 +60,7 @@ prepare() {
 	git config submodule.mbedtls.url ../yuzu-mbedtls
 	git config submodule.sirit.url ../yuzu-sirit
 	git -c protocol.file.allow=always submodule update
+	patch -Np1 < ../fix-compilation-gcc.patch
 }
 
 build() {
