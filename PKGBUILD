@@ -44,10 +44,13 @@ _use_current=
 ### Running with a 1000 HZ tick rate
 _1k_HZ_ticks=
 
+# Disable debug to lower the size of the kernel
+_disable_debug=y
+
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20230201.r0.g66eee64b2354
+pkgver=20230206.r0.g129af7708234
 _srcname=linux-next
 pkgrel=1
 pkgdesc='Linux NEXT'
@@ -121,9 +124,9 @@ prepare() {
     ### Optionally set tickrate to 1000
 	if [ -n "$_1k_HZ_ticks" ]; then
 		echo "Setting tick rate to 1k..."
-                scripts/config -d CONFIG_HZ_300
-                scripts/config -e CONFIG_HZ_1000
-                scripts/config --set-val CONFIG_HZ 1000
+                scripts/config -d HZ_300
+                scripts/config -e HZ_1000
+                scripts/config --set-val HZ 1000
 	fi
 
     ### Optionally disable NUMA for 64-bit kernels only
@@ -131,6 +134,25 @@ prepare() {
         if [ -n "$_NUMAdisable" ]; then
             echo "Disabling NUMA from kernel config..."
             scripts/config -d CONFIG_NUMA
+        fi
+
+    ### Disable DEBUG
+        if [ -n "$_disable_debug" ]; then
+            echo "Disabling NUMA from kernel config..."
+            scripts/config -d DEBUG_INFO \
+                           -d DEBUG_INFO_BTF \
+                           -d DEBUG_INFO_DWARF4 \
+                           -d DEBUG_INFO_DWARF5 \
+                           -d PAHOLE_HAS_SPLIT_BTF \
+                           -d DEBUG_INFO_BTF_MODULES \
+                           -d SLUB_DEBUG \
+                           -d PM_DEBUG \
+                           -d PM_ADVANCED_DEBUG \
+                           -d PM_SLEEP_DEBUG \
+                           -d ACPI_DEBUG \
+                           -d SCHED_DEBUG \
+                           -d LATENCYTOP \
+                           -d DEBUG_PREEMP
         fi
 
     ### Optionally load needed modules for the make localmodconfig
