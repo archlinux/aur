@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname/"
-  sed -e '/winres/ s/^#*/#/; /exe/ s/^#*/#/; /syso/ s/^#*/#/' -i build.sh
+  sed -e '/winres/ s/^#*/#/; /exe/ s/^#*/#/; /syso/ s/^#*/#/; /Windows/ s/^#*/#/; /windows/ s/^#*/#/' -i build.sh
   bash build.sh "$pkgver"
 }
 
