@@ -9,7 +9,7 @@
 pkgname=multimc5
 _pkgname=multimc
 pkgver=0.6.16
-pkgrel=2
+pkgrel=3
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
 url="https://multimc.org/"

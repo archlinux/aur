@@ -1,7 +1,7 @@
 function info() {
   echo "--------------------------------------------------"
-  echo "multimc is no longer using stable releases. please consider switching to multimc-git or prismlauncher"
-	echo "as this will be the last update for this package before deletion"
+  echo "multimc is no longer using stable releases. please consider switching to prismlauncher"
+  echo "as this will be the last update for this package before deletion"
   echo "see the aur comment for more information: https://aur.archlinux.org/packages/multimc5"
   echo "--------------------------------------------------"
 }
