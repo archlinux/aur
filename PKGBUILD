@@ -20,7 +20,7 @@ pkgver() {
 }
 prepare(){
   cd "${srcdir}/SqlConvertTools"
-  git submodule update --init --recursive
+  # git submodule update --init --recursive
 }
 check(){
   cd "${srcdir}/SqlConvertTools"
