@@ -3,8 +3,8 @@
 
 pkgname=nrf-sniffer-ble
 pkgdesc="nRF Sniffer for Bluetooth LE - firmware, SnifferAPI and Wireshark plugin"
-pkgver=4.1.0
-pkgrel=2
+pkgver=4.1.1
+pkgrel=1
 arch=('any')
 url="https://www.nordicsemi.com/Products/Development-tools/nRF-Sniffer-for-Bluetooth-LE"
 depends=('python' 'python-pyserial' 'wireshark-cli' )
@@ -18,7 +18,7 @@ options=(!strip)
 source=("https://www.nordicsemi.com/-/media/Software-and-other-downloads/Desktop-software/nRF-Sniffer/sw/nrf_sniffer_for_bluetooth_le_${pkgver}.zip"
         'nrf_sniffer_ble.sh'
 )
-sha256sums=('F5D5D254142589D3D7B1BCE1E5C5FE244084187C6B8448528883B150BC5014FB'
+sha256sums=('26502447742346cd0b0c597564b12a621859ffd4ad05c029069c4fa22deddd40'
             'SKIP'
 )
 
