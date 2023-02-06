@@ -1,0 +1,22 @@
+pkgbase = mqmgateway-git
+	pkgdesc = MQTT gateway for modbus networks
+	pkgver = 1.0.0.r0.g589e6e1
+	pkgrel = 1
+	url = https://github.com/BlackZork/mqmgateway
+	arch = i686
+	arch = x86_64
+	license = AGPL
+	makedepends = boost
+	makedepends = cmake
+	makedepends = git
+	depends = boost-libs
+	depends = libmodbus
+	depends = mosquitto
+	depends = yaml-cpp
+	depends = rapidjson
+	optdepends = exprtk: custom expressions converter
+	backup = etc/modmqttd/config.yaml
+	source = git+https://github.com/BlackZork/mqmgateway.git
+	sha256sums = SKIP
+
+pkgname = mqmgateway-git
