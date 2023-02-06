@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdbusaddons-git
-pkgver=5.83.0_r362.g5cc8df6
+pkgver=5.240.0_r466.gedc4a4c
 pkgrel=1
 pkgdesc='Addons to QtDBus'
 arch=($CARCH)
@@ -27,6 +27,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=ON
   cmake --build build
