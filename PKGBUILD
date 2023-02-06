@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kded-git
-pkgver=5.83.0_r402.ge6bb77c
+pkgver=5.240.0_r499.gd9abab0
 pkgrel=1
 pkgdesc='Extensible deamon for providing system level services'
 arch=($CARCH)
@@ -25,6 +25,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DBUILD_TESTING=OFF
   cmake --build build
 }

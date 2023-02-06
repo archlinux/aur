@@ -1,6 +1,6 @@
 pkgbase = kded-git
 	pkgdesc = Extensible deamon for providing system level services
-	pkgver = 5.83.0_r402.ge6bb77c
+	pkgver = 5.240.0_r499.gd9abab0
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -16,4 +16,3 @@ pkgbase = kded-git
 	sha256sums = SKIP
 
 pkgname = kded-git
-
