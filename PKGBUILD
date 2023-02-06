@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-lsp_signature-git
-pkgver=0.2.0.r1.ge65a638
+pkgver=0.2.0.r39.g6f6252f
 pkgrel=1
 pkgdesc="Neovim plugin for showing LSP signature hints"
 arch=('any')
@@ -25,7 +25,7 @@ pkgver() {
 prepare() {
 	cd "$pkgname"
 	## do not run packadd
-	sed -i '158d' tests/signature_spec.lua
+	sed -i '/vim.cmd/d' tests/signature_spec.lua
 }
 
 check() {
@@ -35,6 +35,6 @@ check() {
 
 package() {
 	cd "$pkgname"
-	install -Dm644 lua/lsp_signature/*.lua -t "$pkgdir/usr/share/nvim/runtime/lua/lsp_signature/"
-	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dvm644 lua/lsp_signature/*.lua -t "$pkgdir/usr/share/nvim/runtime/lua/lsp_signature/"
+	install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
