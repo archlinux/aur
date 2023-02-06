@@ -1,5 +1,5 @@
 pkgbase = libancient-git
-	pkgdesc = Decompression routines for ancient formats
+	pkgdesc = Decompression routines for ancient formats (Git Version)
 	pkgver = 2.0.0.r6.c35638e
 	pkgrel = 1
 	url = https://github.com/temisu/ancient/
