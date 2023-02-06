@@ -3,7 +3,7 @@
 # Contributor: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 pkgname=perl-wx
 pkgver=0.9932
-pkgrel=5
+pkgrel=6
 pkgdesc="Interface to the wxWidgets cross-platform GUI toolkit"
 arch=('x86_64')
 url="https://metacpan.org/dist/Wx"
@@ -13,15 +13,31 @@ makedepends=('perl-module-build')
 #checkdepends=('xorg-server-xvfb')
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/M/MD/MDOOTSON/Wx-$pkgver.tar.gz"
-        'gtk3.patch')
+        'https://src.fedoraproject.org/rpms/perl-Wx/raw/rawhide/f/Wx-0.9932-Undefine-BOM_UTF8.patch'
+        'https://src.fedoraproject.org/rpms/perl-Wx/raw/rawhide/f/gtk3.patch'
+        'https://src.fedoraproject.org/rpms/perl-Wx/raw/rawhide/f/wxWidgets_3.2_MakeMaker.patch'
+        'https://src.fedoraproject.org/rpms/perl-Wx/raw/rawhide/f/wxWidgets_3.2_port.patch'
+        )
 sha256sums=('1cfdb6535a0f4676e6f1aab2c9d8e16d577be3eb3b7cc04c8074d685e6651b70'
-            '61fca0928af91231988779b74b2aa735f92bea40804c3c50aaa8cac4ac5b3f1b')
+            'db9a10e52a91c754ea95a1ee0f37249947ebc12190566ee46221c48e416bb9b6'
+            '61fca0928af91231988779b74b2aa735f92bea40804c3c50aaa8cac4ac5b3f1b'
+            'bc579d66dab5e497aa165c297ea77ae42d6b30e42e958f3fcc7fd82d4f1ea20e'
+            'e185d46ef500618e98898e189be65ece769efbc330beebb6a03112736289a5ed')
 
 prepare() {
   cd "Wx-$pkgver"
 
+  # Fix from fedora package
+  msg2 "Fix line endings"
+  dos2unix MANIFEST
+  dos2unix typemap
+
+
   # Fixes for GTK3 compatibility
-  patch -Np1 -i ../gtk3.patch
+  for patch in ../*.patch; do
+    msg2 "Applying $patch"
+    patch -Np1 -i $patch
+  done
 }
 
 build(){
