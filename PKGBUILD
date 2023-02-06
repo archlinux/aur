@@ -1,0 +1,15 @@
+# Maintainer: Adrian Perez de Castro <aperez@igalia.com>
+pkgname=ttf-workplace-console
+pkgdesc='Monospaced font inspired by the OS/2 Warp System VIO'
+pkgver=1.00
+pkgrel=1
+url=http://www.altsan.org/creative/fonts/workplace
+arch=(any)
+license=(custom:OFL)
+source=("$url/wpcon_ttf_${pkgver//./}.zip")
+b2sums=('51fc7d02c639eda1ef30ded725b858749b9d283653ec0215199c2e4b41fa36068c13c082f94bfb3404644b21db0a1e208ff64b8373542a9caee727acf758f8ca')
+
+package () {
+	install -Dm644 -t "$pkgdir/usr/share/fonts/$pkgname" wpcon.ttf
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" wpcon.txt
+}
