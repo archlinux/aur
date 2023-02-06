@@ -26,7 +26,6 @@ build() {
   cmake -B build -GNinja \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DMKSPECS_INSTALL_DIR=/usr/lib/qt/mkspecs/ \
-    -DLINUXNAME="archlinux" \
     -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build build
 }
