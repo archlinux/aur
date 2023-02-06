@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+TryExec=allusion
+Exec=allusion
+Terminal=false
+
+
+Name=Allusion
+Icon=Allusion
+Comment=A tool to help you organize your Visual Library
+Categories=Graphics;Viewer;Utility;
+Keywords=allusion;allusion-appimage;
+GenericName=Image Library Viewer
+StartupWMClass=Allusion
