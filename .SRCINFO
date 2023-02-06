@@ -1,6 +1,6 @@
 pkgbase = easymorse-git
 	pkgdesc = Simple crossplatform tool to learn morse code or automatic traffic on CW
-	pkgver = r38.b8748c3
+	pkgver = b8748c3
 	pkgrel = 1
 	url = https://bitbucket.org/Artemia/easymorse
 	arch = x86_64

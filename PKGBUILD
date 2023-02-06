@@ -1,7 +1,7 @@
 # Maintainer: f4iey <f4iey@f6kgl.ampr.org>
 
 pkgname=easymorse-git
-pkgver=r38.b8748c3
+pkgver=b8748c3
 pkgrel=1
 pkgdesc="Simple crossplatform tool to learn morse code or automatic traffic on CW"
 arch=(x86_64)
