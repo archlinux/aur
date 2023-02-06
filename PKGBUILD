@@ -9,10 +9,8 @@ url="https://github.com/nexxeln/license-generator"
 license=('MIT')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate"
-        'LICENSE')
-md5sums=('b227d2e73609cb388657dc9df9ac8d31'
-         'SKIP')
+source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
+md5sums=('b227d2e73609cb388657dc9df9ac8d31')
 validpgpkeys=('86395E99314F4E382517AF976558C915A20CDD93')
 
 prepare() {
@@ -34,7 +32,6 @@ check() {
 
 package() {
        cd "$pkgname-$pkgver"
-       install -Dm755 "target/release/gen-license" "$pkgdir/usr/bin/$pkgname"
+       install -Dm755 "target/release/gen-license" "$pkgdir/usr/bin/gen-license"
        install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname"
-       install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
