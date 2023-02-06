@@ -12,7 +12,7 @@ pkgbase=linux-jcore
 pkgname=('linux-jcore' 'linux-jcore-headers')
 _kernelname=-jcore
 _hostname=jcore
-pkgver=6.1.9
+pkgver=6.1.10
 pkgrel=1
 pkgdesc="Kernel for Manjaro/EndeavourOS/Arch (ACS override patch include)"
 arch=('x86_64')
@@ -49,8 +49,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
         '0413-bootsplash.gitpatch'
         # ACS override patch
         '0999-acs.gitpatch')
-sha256sums=('d60cf185693c386e7acd9f3eb3a94ae30ffbfee0a9447a20e83711e0bdf5922b'
-            '6590016dcce6dc91a1a3b17a3c9d80194a6860c8dea999203c5b54002d7a74ba'
+sha256sums=('0be2919ba91cf5873a4cb4d429de78aad0469120d624e333a43b4b011d74d19d'
+            'e472d79ea2a7fb39c07d0944434df699132afb45697d60af3ad71cfdd5bcbf66'
             'de35604b1337f3d7cd7ce8dc02a741bfdde05709f22f4dfd29d065b20b517e4c'
             '982806daa2c789a63cf685eef71a82754b0530852b7ba130cc9d4025dab79b2f'
             '0a32a567966d7c33035634c46d56073e8a6f66e4d9729b8b25d09579d00c3e7b'
