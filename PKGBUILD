@@ -4,25 +4,23 @@
 
 pkgname=typora-electron
 _pkgname=typora
-pkgver=1.4.7
+pkgver=1.5.5
 _electron=electron
-pkgrel=2
+pkgrel=1
 pkgdesc="A minimal markdown editor and reader. (Typora with system electron)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 license=('custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."')
-url="https://typora.io/"
+url="https://typora.io"
 provides=('typora')
 conflicts=('typora')
 depends=('ripgrep' "${_electron}")
 optdepends=(
 	'noto-fonts-emoji: Or some other emoji font to see emojis'
 	'pandoc: Import/export for extra file formats')
-_filename="${_pkgname}_${pkgver}_amd64.deb"
-source=("${_pkgname}_${pkgver}_amd64.deb::https://typora.io/linux/$_filename"
-"${_pkgname}.sh"
-)
-sha512sums=('fec39383931f0a9a41d2d8bb2d71895200bdadf7d9dedc5bf321ccd626de61a9afc2a476cfd0db028c5382484350a42e00eb3e166c588b960d43d4ccb3c8f277'
-            '8280c9d0267149e5c003a11b3be5cdb42718f2dcc56a4e79ab5bdd3a941b5b68e4d40606ba7ba355de8716c2e66622f27520c7f507cdef459fc39a1f304b705b')
+source_x86_64=("${_pkgname}_${pkgver}_amd64.deb::${url}/linux/${_pkgname}_${pkgver}_amd64.deb")
+source_aarch64=("${_pkgname}_${pkgver}_arm64.deb::${url}/linux/${_pkgname}_${pkgver}_arm64.deb")
+sha512sums_x86_64=('4d88db3a866ef466e94cd8e8ca2cda45f4eb6bc0f15792a36b1bd7d720481bcec2e887e69280d994b59d1fab2224725672be1ee0e62d7869a4b320c478c25c29')
+sha512sums_aarch64=('87d00267906df950ebfda414c0f3b6579f6d52920d8bf717e41813a003e5c0a8cde851f4eac473d7b5805700e22bb6c46924c58f0f1ed2cd20409f2ad422dc2a')
 
 prepare(){
 	bsdtar -xf data.tar.xz -C "$srcdir/"

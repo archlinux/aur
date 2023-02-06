@@ -1,9 +1,10 @@
 pkgbase = typora-electron
 	pkgdesc = A minimal markdown editor and reader. (Typora with system electron)
-	pkgver = 1.4.7
-	pkgrel = 2
-	url = https://typora.io/
+	pkgver = 1.5.5
+	pkgrel = 1
+	url = https://typora.io
 	arch = x86_64
+	arch = aarch64
 	license = custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."
 	depends = ripgrep
 	depends = electron
@@ -11,9 +12,9 @@ pkgbase = typora-electron
 	optdepends = pandoc: Import/export for extra file formats
 	provides = typora
 	conflicts = typora
-	source = typora_1.4.7_amd64.deb::https://typora.io/linux/typora_1.4.7_amd64.deb
-	source = typora.sh
-	sha512sums = fec39383931f0a9a41d2d8bb2d71895200bdadf7d9dedc5bf321ccd626de61a9afc2a476cfd0db028c5382484350a42e00eb3e166c588b960d43d4ccb3c8f277
-	sha512sums = 8280c9d0267149e5c003a11b3be5cdb42718f2dcc56a4e79ab5bdd3a941b5b68e4d40606ba7ba355de8716c2e66622f27520c7f507cdef459fc39a1f304b705b
+	source_x86_64 = typora_1.5.5_amd64.deb::https://typora.io/linux/typora_1.5.5_amd64.deb
+	sha512sums_x86_64 = 4d88db3a866ef466e94cd8e8ca2cda45f4eb6bc0f15792a36b1bd7d720481bcec2e887e69280d994b59d1fab2224725672be1ee0e62d7869a4b320c478c25c29
+	source_aarch64 = typora_1.5.5_arm64.deb::https://typora.io/linux/typora_1.5.5_arm64.deb
+	sha512sums_aarch64 = 87d00267906df950ebfda414c0f3b6579f6d52920d8bf717e41813a003e5c0a8cde851f4eac473d7b5805700e22bb6c46924c58f0f1ed2cd20409f2ad422dc2a
 
 pkgname = typora-electron
