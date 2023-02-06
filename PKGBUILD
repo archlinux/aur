@@ -1,15 +1,15 @@
-# Maintainer: zan <zan@420blaze.it>
+# Maintainer: Melanie Scheirer <mel@nie.rs>
 
 pkgname=attica-git
 _name=${pkgname%-git}
-pkgver=v5.72.0.r2.gef33d1e
+pkgver=v5.102.0.r9.g2bab489
 pkgrel=1
 pkgdesc='Qt5 library that implements the Open Collaboration Services API'
 arch=(x86_64)
 url='https://projects.kde.org/projects/frameworks/attica'
 license=(LGPL)
-depends=(qt5-base)
-makedepends=(git extra-cmake-modules)
+depends=(qt6-base)
+makedepends=(git extra-cmake-modules-git)
 groups=(kf5)
 conflicts=(attica)
 provides=(attica)
@@ -22,14 +22,10 @@ pkgver() {
 }
 
 build() {
-  cmake -B build -S $_name
+  cmake -DQT_DEFAULT_MAJOR_VERSION=6 -B build -S $_name
   cmake --build build
 }
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
 }
-
-
-
-
