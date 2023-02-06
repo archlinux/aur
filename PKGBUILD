@@ -3,8 +3,8 @@
 pkgname=cncli
 pkgdesc='A community-based cardano-node CLI tool'
 license=('Apache')
-url='https://github.com/AndrewWestberg/cncli'
-pkgver=4.0.4
+url='https://github.com/cardano-community/cncli'
+pkgver=5.3.0
 pkgrel=1
 arch=('x86_64')
 makedepends=('cargo' 'git')
@@ -13,7 +13,7 @@ makedepends=('cargo' 'git')
 # "https://github.com/AndrewWestberg/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 #sha512sums=('54cf02963b570c631cd92444c3137b5d586e90784e7a231469d292785dc122386e1dd83944a35ec45c9bb6df3aec2a51686bf8a384906fa409bddb0a968a783f')
 source=(
-    "git+https://github.com/AndrewWestberg/cncli.git#tag=v${pkgver}"
+    "git+https://github.com/cardano-community/cncli.git#tag=v${pkgver}"
 )
 sha256sums=('SKIP')
 
