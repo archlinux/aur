@@ -1,6 +1,6 @@
 # Maintainer: Tirr <chwo9843@gmail.com>
 pkgname=thtk-git
-pkgver=r482.6825664
+pkgver=r944.333917e
 pkgrel=1
 pkgdesc="A collection of tools for exploring and modifying the Touhou game series"
 arch=('i686' 'x86_64')
