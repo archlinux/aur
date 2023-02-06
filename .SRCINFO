@@ -1,15 +1,15 @@
 pkgbase = syntax
 	pkgdesc = Jameica Plugin for financial accounting according to SKR03/04
-	pkgver = 2.10.1
+	pkgver = 2.10.4
 	pkgrel = 1
 	url = http://willuhn.de/products/syntax/
 	arch = any
 	license = GPL2
 	depends = jameica
-	source = https://www.willuhn.de/products/syntax/releases/2.10/syntax-2.10.1.zip
-	source = https://www.willuhn.de/products/syntax/releases/2.10/syntax-2.10.1.zip.asc
+	source = https://www.willuhn.de/products/syntax/releases/2.10/syntax-2.10.4.zip
+	source = https://www.willuhn.de/products/syntax/releases/2.10/syntax-2.10.4.zip.asc
 	validpgpkeys = 7314FBDE7D38EE5610D291B65A8ED9CFC0DB6C70
-	md5sums = f7c266df0a83bc9dc26094a0a06b713c
+	md5sums = 8531885d83a1bdcb1da627c75a4b8479
 	md5sums = SKIP
 
 pkgname = syntax
