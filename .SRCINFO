@@ -1,12 +1,12 @@
-pkgbase = nvi-multibyte-upstream
+pkgbase = nvi-multibyte-git
 	pkgdesc = Upstream nvi with enabled multibyte support
-	pkgver = 1.81.6_20161009
-	pkgrel = 1
+	pkgver = 1.81.6_20200915
+	pkgrel = 2
 	url = git://repo.or.cz/nvi.git
 	arch = x86_64
 	license = BSD
-	source = http://repo.or.cz/nvi.git/snapshot/f462fedd26f78eec1998da4b9cba360095a6aa53.tar.gz
-	md5sums = c9b282080e8d61f933f8e2d3bfb7dc2d
+	conflicts = nvi
+	source = http://repo.or.cz/nvi.git/snapshot/864873d3f353ab3e54040817ec562bd3b346b55f.tar.gz
+	md5sums = c146491156559ff069e2cfd64c97075c
 
-pkgname = nvi-multibyte-upstream
-
+pkgname = nvi-multibyte-git
