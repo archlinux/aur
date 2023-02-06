@@ -1,6 +1,6 @@
 pkgbase = eve-git
 	pkgdesc = Expressive Velocity Engine - SIMD in C++ Goes Brrrr
-	pkgver = v2022.09.1.r21.geb0424e85
+	pkgver = v2022.09.1.r79.g370cf01d7
 	pkgrel = 1
 	url = https://github.com/jfalcou/eve
 	arch = any
