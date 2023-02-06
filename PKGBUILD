@@ -3,31 +3,35 @@
 # Contributor: Tarn Burton <twburton at gmail dot com>
 
 pkgname=pioneer
-pkgver=20220203
+pkgver=20230203
 pkgrel=1
 pkgdesc="A game of lonely space adventure"
-arch=('x86_64') # 'i686' untested
+arch=('x86_64')
 url="https://github.com/pioneerspacesim/pioneer"
 license=('GPL3')
 provides=('pioneer')
 conflicts=('pioneer-bin' 'pioneer-git')
 depends=(
-  'assimp' # libassimp-dev >= 3.2
-  'curl' # libcurl-dev
-  'freetype2' # libfreetype6-dev
-  'glew' # USE_SYSTEM_LIBGLEW include <GL/glew.h>
+  'assimp'
+  'freetype2'
+  'glew'
   'hicolor-icon-theme'
-  'libpng' # libpng-dev
-  'libsigc++' # libsigc++-dev libsigc++-2.0-dev
-  'libvorbis' # libvorbis-dev
-  'lua52' # USE_SYSTEM_LIBLUA
-  'mesa' # mesa-common-dev
-  'sdl2' # libsdl2-dev
-  'sdl2_image' # libsdl2-image-dev
+  'libsigc++'
+  'libvorbis'
+  'lua52'
+  'mesa'
+  'sdl2_image'
 )
-makedepends=(cmake naturaldocs ninja pkgconf)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/pioneerspacesim/pioneer/archive/$pkgver.tar.gz")
-sha256sums=('415b55bab7f011f7244348428e13006fa67a926b9be71f2c4ad24e92cfeb051c')
+makedepends=(cmake naturaldocs ninja)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pioneerspacesim/pioneer/archive/$pkgver.tar.gz"
+        fix…path_to_lua_h.patch::https://github.com/pioneerspacesim/pioneer/pull/5526/commits/058bb753ccddee110ed2fb76908cb25b5a656635.patch)
+sha256sums=('80eea94e0f7e4d8e6a0c4629bdfb89201f82aae2f59ee7a1f7a487eeeccf27c7'
+            'dbb08eccb356c7b00122487b7a49df4948b82256c52b9cc36c5122a057c0635e')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  patch -p1 -i "$srcdir/fix…path_to_lua_h.patch" # https://github.com/pioneerspacesim/pioneer/issues/5525
+}
 
 build()
 {
