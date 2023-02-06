@@ -1,13 +1,13 @@
 pkgbase = terrafirma
 	pkgdesc = Mapping for Terraria
-	pkgver = 3.1.9
+	pkgver = 3.1.11
 	pkgrel = 1
 	url = http://seancode.com/terrafirma
 	arch = any
 	license = BSD
 	makedepends = qt5-tools
 	depends = qt5-base
-	source = terrafirma-3.1.9.tar.gz::https://github.com/mrkite/TerraFirma/archive/3.1.9.tar.gz
-	sha256sums = 87df1fcd5f1aec88464eef3edd879715f560cc84a522e3e68561c8a521559470
+	source = terrafirma-3.1.11.tar.gz::https://github.com/mrkite/TerraFirma/archive/v3.1.11.tar.gz
+	sha256sums = b73099293a55e56c227d651554c8ab7ea3ab6e0239f77d1387fab7e13e3eb60f
 
 pkgname = terrafirma
