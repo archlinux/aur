@@ -1,6 +1,6 @@
 pkgbase = knotifications-git
 	pkgdesc = Abstraction for system notifications
-	pkgver = 5.83.0_r656.gd85b187
+	pkgver = 5.240.0_r811.gd0655e7
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -23,4 +23,3 @@ pkgbase = knotifications-git
 	sha256sums = SKIP
 
 pkgname = knotifications-git
-
