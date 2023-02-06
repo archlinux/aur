@@ -1,0 +1,15 @@
+pkgbase = libancient
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/temisu/ancient/
+	arch = i686
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = autoconf-archive
+	provides = libancient=2.0.0
+	conflicts = libancient-git
+	source = libancient::git+https://github.com/temisu/ancient.git#tag=v2.0.0
+	md5sums = SKIP
+
+pkgname = libancient
