@@ -1,6 +1,6 @@
 pkgbase = ki18n-git
 	pkgdesc = Advanced internationalization framework
-	pkgver = 5.83.0_r464.ga07971a
+	pkgver = 5.240.0_r621.g550dff7
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -23,4 +23,3 @@ pkgbase = ki18n-git
 	sha256sums = SKIP
 
 pkgname = ki18n-git
-
