@@ -1,6 +1,6 @@
 pkgbase = klog-bin
 	pkgdesc = A multiplatform free hamradio logger
-	pkgver = 2.1
+	pkgver = 2.3
 	pkgrel = 1
 	url = http://www.klog.xyz
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = klog-bin
 	depends = hamlib
 	provides = klog
 	conflicts = klog
-	source = http://ftp.fr.debian.org/debian/pool/main/k/klog/klog_2.1-1_amd64.deb
+	source = http://ftp.fr.debian.org/debian/pool/main/k/klog/klog_2.3-1_amd64.deb
 	sha256sums = e690862f82388eb50f875032f060609fa9901d8765cf2321e4e8a077bdf34791
 
 pkgname = klog-bin
