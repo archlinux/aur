@@ -2,8 +2,8 @@
 # Contributor: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=esbuild
-pkgver=0.17.5
-pkgrel=2
+pkgver=0.17.6
+pkgrel=1
 pkgdesc="An extremely fast JavaScript and CSS bundler and minifier."
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://${pkgname}.github.io/"
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('go')
 _snapshot="${pkgname}-${pkgver}"
 source=("${_snapshot}.tar.gz::https://github.com/evanw/${pkgname}/archive/v${pkgver}.tar.gz")
-b2sums=('61162f139d2d45f5038dc29524b0c0b9490766d49a886c264e99fe98e412c493844817105b5d70101296f09b1e1ba075b5079bf1b6c2a506230b7ea549e61d14')
+b2sums=('6ac3f6360b029dec90469bdfaa3c96221c61a3018dbcc674197a4e1f309ce0b3834df14ae86f4e7aca4fa48af084f395d6775d140da2f73bb37140dfab910acf')
 
 build() {
     set -a
@@ -27,8 +27,7 @@ build() {
 }
 
 package() {
-    local bin="/usr/bin/${pkgname}"
-    install -Dm755 "build/${pkgname}" "${pkgdir}${bin}"
+    install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
     cd "${_snapshot}"
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "LICENSE.md"
