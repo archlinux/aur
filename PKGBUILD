@@ -16,7 +16,6 @@ md5sums=('SKIP')
 prepare() {
   cd "$srcdir/$pkgname"
   git submodule update --init extlib/thtypes
-  sed -i.old -e '/RPATH/d' CMakeLists.txt
 }
 
 pkgver() {
@@ -32,7 +31,7 @@ build() {
   mkdir -p build
   cd build
 
-  cmake -DWITH_LIBPNG_SOURCE=OFF -DCMAKE_INSTALL_PREFIX="/usr" ..
+  cmake -DWITH_LIBPNG_SOURCE=OFF -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_SKIP_INSTALL_RPATH=ON ..
   make
 }
 
