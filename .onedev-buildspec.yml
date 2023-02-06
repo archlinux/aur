@@ -1,0 +1,17 @@
+version: 19
+jobs:
+- name: Build Package
+  jobExecutor: Server
+  steps:
+  - !CommandStep
+    name: Build
+    runInContainer: false
+    interpreter: !DefaultInterpreter
+      commands:
+      - pwd
+    useTTY: false
+    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
+  retryCondition: never
+  maxRetries: 3
+  retryDelay: 30
+  timeout: 3600
