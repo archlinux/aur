@@ -1,11 +1,12 @@
 pkgbase = python-gspread
 	pkgdesc = Google Spreadsheets Python API
 	pkgver = 5.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/burnash/gspread
 	arch = any
 	license = Custom:MIT
-	depends = python-requests
+	depends = python-google-auth
+	depends = python-google-auth-oauthlib
 	source = https://github.com/burnash/gspread/archive/v5.7.2.tar.gz
 	sha512sums = 5d18620bef64b37239a7ecb0120bfa9f0a8b1267de304ecaa2a16c6b41a0284f6bc1877f595e16a7274c090eecaea59cca1d92cce798d21e823c0ae142300fab
 
