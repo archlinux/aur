@@ -1,6 +1,6 @@
 _name=plotnine
 pkgname=python-$_name
-pkgver=0.8.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc='A grammar of graphics for python'
 arch=(any)
@@ -25,7 +25,7 @@ _pyarch=py3
 _wheel="$_name-$pkgver-$_pyarch-none-any.whl"
 source=("https://files.pythonhosted.org/packages/$_pyarch/${_name::1}/$_name/$_wheel")
 noextract=("$_wheel")
-sha256sums=('3c938093e20c6e68d1ee4591967a2e5093d185046bad88af00af81bf14215549')
+sha256sums=('bac216d71b04ea4e084a529c08716a981fe073c8fcdafa7643043935d7b7fa9d')
 
 package() {
 	local site="$pkgdir/usr/lib/$(readlink /bin/python3)/site-packages"
