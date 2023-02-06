@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="http://buchen.github.io/portfolio/"
 license=('EPL')
 #depends=('java-runtime>=11' 'java-runtime<15' 'webkit2gtk')
-depends=('java-runtime=11' 'webkit2gtk')
+depends=('java-runtime=17' 'webkit2gtk')
 #makedepends=('maven' 'java-runtime>=11' 'archlinux-java-run' 'gendesk')
 makedepends=('maven' 'archlinux-java-run' 'gendesk')
 
@@ -36,7 +36,7 @@ build() {
     export MAVEN_OPTS="-Xmx1g"
     #export JAVA_HOME=/usr/lib/jvm/default-runtime
     #export JAVA_HOME=$(archlinux-java-run --min 11 --max 14 --java-home)
-    export JAVA_HOME=$(archlinux-java-run --min 11 --max 11 --java-home)
+    export JAVA_HOME=$(archlinux-java-run --min 17 --max 17 --java-home)
     cd $pkgname-$pkgver
 
     cd portfolio-app
