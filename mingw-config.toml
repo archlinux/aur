@@ -87,9 +87,10 @@ changelog-seen = 2
 # this flag will indicate that this version check should not be done.
 #version-check = true
 
-# Link libstdc++ statically into the rustc_llvm instead of relying on a
-# dynamic version to be available.
-#static-libstdcpp = true
+# When true, link libstdc++ statically into the rustc_llvm.
+# This is useful if you don't want to use the dynamic version of that
+# library provided by LLVM.
+#static-libstdcpp = false
 
 # Whether to use Ninja to build LLVM. This runs much faster than make.
 #ninja = true
@@ -254,6 +255,16 @@ submodules = false
 # Defaults to the Python interpreter used to execute x.py
 #python = "python"
 
+# The path to the REUSE executable to use. Note that REUSE is not required in
+# most cases, as our tooling relies on a cached (and shrinked) copy of the
+# REUSE output present in the git repository and in our source tarballs.
+#
+# REUSE is only needed if your changes caused the overral licensing of the
+# repository to change, and the cached copy has to be regenerated.
+#
+# Defaults to the "reuse" command in the system path.
+#reuse = "reuse"
+
 # Force Cargo to check that Cargo.lock describes the precise dependency
 # set that all the Cargo.toml files create, instead of updating it.
 locked-deps = true
@@ -290,10 +301,6 @@ tools = ["cargo"]
 # Build the profiler runtime (required when compiling with options that depend
 # on this runtime, such as `-C profile-generate` or `-C instrument-coverage`).
 #profiler = false
-
-# Use the optimized LLVM C intrinsics for `compiler_builtins`, rather than Rust intrinsics.
-# Requires the LLVM submodule to be managed by bootstrap (i.e. not external).
-#optimized-compiler-builtins = false
 
 # Indicates whether the native libraries linked into Cargo will be statically
 # linked or not.
