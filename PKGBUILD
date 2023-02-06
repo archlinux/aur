@@ -10,7 +10,7 @@ url="https://metacpan.org/dist/Wx"
 license=('GPL' 'PerlArtistic')
 depends=('perl-alien-wxwidgets' 'perl-extutils-xspp' 'wxgtk3')
 makedepends=('perl-module-build')
-#checkdepends=('xorg-server-xvfb')
+checkdepends=('xorg-server-xvfb')
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/M/MD/MDOOTSON/Wx-$pkgver.tar.gz"
         'https://src.fedoraproject.org/rpms/perl-Wx/raw/rawhide/f/Wx-0.9932-Undefine-BOM_UTF8.patch'
@@ -53,15 +53,16 @@ build(){
   make
 }
 
-#check(){
-#  cd "Wx-$pkgver"
-#  if [[ -z "$DISPLAY" || -x /usr/bin/xvfb-run ]]; then
-##     warning 'Empty $DISPLAY - falling back to xvfb-run (xorg-server-xvfb)'
-#    xvfb-run -a -s "+extension GLX -screen 0 1280x1024x24" make test
-#  else
-#    make test
-#  fi
-#}
+# Use makepkg --nocheck to disable check()
+check(){
+  cd "Wx-$pkgver"
+  if [[ -z "$DISPLAY" || -x /usr/bin/xvfb-run ]]; then
+#     warning 'Empty $DISPLAY - falling back to xvfb-run (xorg-server-xvfb)'
+    xvfb-run -a -s "+extension GLX -screen 0 1280x1024x24" make test
+  else
+    make test
+  fi
+}
 
 package(){
   cd "Wx-$pkgver"
