@@ -10,7 +10,7 @@ depends=('libpng')
 makedepends=('git' 'cmake')
 provides=("${pkgname%-git}=$pkgver")
 conflicts=("${pkgname%-git}")
-source=("$pkgname"::'git://github.com/thpatch/thtk.git')
+source=("$pkgname"::'git+https://github.com/thpatch/thtk.git')
 md5sums=('SKIP')
 
 prepare() {
