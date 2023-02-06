@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=vy
+Comment=Vim-like text editor in Python
+Exec=vy
+Icon=vy
+Terminal=false
+StartupNotify=false
+Categories=TextEditor;Development;

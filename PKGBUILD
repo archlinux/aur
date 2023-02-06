@@ -1,35 +1,40 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=vy
 pkgver=4.3.1
-pkgrel=1
-pkgdesc='A vim-like text editor in python, made from scratch'
+pkgrel=2
+pkgdesc='Vim-like text editor in Python'
 arch=('any')
 url="https://github.com/vyapp/vy"
 license=('MIT')
-depends=('python-vulture'
-         'python-pyflakes'
-         'python-jedi'
-         'python-pygments'
-         'python-future'
-         'python-rope'
-         'mypy'
-         'python-untwisted')
-makedepends=('python-setuptools' 'gendesk')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vyapp/vy/archive/v${pkgver}.tar.gz")
-sha256sums=('e106004390a22baba7128ec4b38ef9422d1cdd6235ccf1056dc7d8de2144d97e')
+depends=('python' 'tk')
+optdepends=(
+	'mypy'
+	'python-future'
+	'python-jedi'
+	'python-pyflakes'
+	'python-pygments'
+	'python-rope'
+	'python-untwisted'
+	'vulture')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/v/vy/vy-$pkgver.tar.gz"
+        'vy.desktop')
+sha256sums=('551f2210aadab1d9a756b15ff014ab65cbba0af0f2641564baf1f8b84e31d99a'
+            '607da5cfb483dbc6eed8ba1aa17d4f8013d3eb96d9babdef83a067d8cf8d4db6')
+
+build() {
+	cd "$pkgname-$pkgver"
+	python -m build --wheel --no-isolation
+}
 
 package() {
-  cd "vy-${pkgver}"
-  python setup.py install --root="$pkgdir/" --optimize=1
-  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 vy.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-  gendesk -f -n --pkgname "${pkgname}" \
-            --pkgdesc "$pkgdesc" \
-            --name "vy" \
-            --comment "$pkgdesc" \
-            --exec "${pkgname}" \
-            --categories 'TextEditor;Development;' \
-            --icon "${pkgname}"
-  install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+	cd "$pkgname-$pkgver"
+	python -m installer --destdir="$pkgdir" dist/*.whl
+	install -Dvm644 "$srcdir/vy.desktop" -t "$pkgdir/usr/share/applications/"
+	install -Dvm644 vy.png -t "$pkgdir/usr/share/pixmaps/$pkgname"
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -sv "$_site/$pkgname-$pkgver.dist-info/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
