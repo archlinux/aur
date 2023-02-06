@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kcoreaddons-git
-pkgver=5.89.0_r1337.ge82b37b6
+pkgver=5.240.0_r1675.g1ee9dee0
 pkgrel=1
 pkgdesc='Addons to QtCore'
 arch=($CARCH)
@@ -26,6 +26,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -D_KDE4_DEFAULT_HOME_POSTFIX=4 \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=ON

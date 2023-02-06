@@ -1,6 +1,6 @@
 pkgbase = kcoreaddons-git
 	pkgdesc = Addons to QtCore
-	pkgver = 5.89.0_r1337.ge82b37b6
+	pkgver = 5.240.0_r1675.g1ee9dee0
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
