@@ -6,7 +6,7 @@ pkgbase = notify-send-rs
 	arch = x86_64
 	provides = notify-send-rs
 	conflicts = notify-send-rs
-	source = notify-send-rs::https://github.com/VHSgunzo/notify-send-rs/releases/download/v0.0.1/notify-send-rs
+	source = notify-send-rs.tar.xz::https://github.com/VHSgunzo/notify-send-rs/releases/download/v0.0.1/notify-send-rs.tar.xz
 	sha256sums = SKIP
 
 pkgname = notify-send-rs
