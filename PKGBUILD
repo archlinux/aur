@@ -7,27 +7,53 @@ pkgbase=mutter-auto-rotation
 pkgname=mutter-auto-rotation
 provides=(libmutter-11.so mutter)
 conflicts=(mutter)
-groups=(gnome)
 pkgver=43.2
-pkgrel=1
-pkgdesc="A window manager for GNOME, with touch-mode auto-rotation (reverts MR 1710)"
+pkgrel=2
+pkgdesc="Window manager and compositor for GNOME, with touch-mode auto-rotation (reverts MR 1710)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
 license=(GPL)
-depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
-         libcanberra startup-notification libsm gnome-desktop libxkbcommon-x11
-         gnome-settings-daemon libgudev libinput pipewire xorg-xwayland graphene
-         libxkbfile libsysprof-capture lcms2 colord)
-makedepends=(gobject-introspection git egl-wayland meson xorg-server
-             wayland-protocols sysprof gi-docgen xorg-server-xvfb)
-checkdepends=(xorg-server-xvfb wireplumber python-dbusmock zenity)
+depends=(
+  colord
+  dconf
+  gnome-desktop
+  gnome-settings-daemon
+  graphene
+  gsettings-desktop-schemas
+  lcms2
+  libcanberra
+  libgudev
+  libinput
+  libsm
+  libsysprof-capture
+  libxkbcommon-x11
+  libxkbfile
+  pipewire
+  startup-notification
+  xorg-xwayland
+)
+makedepends=(
+  egl-wayland
+  gi-docgen
+  git
+  gobject-introspection
+  meson
+  sysprof
+  wayland-protocols
+  xorg-server
+  xorg-server-xvfb
+)
 _commit=46f4143619734ec2b95503ba96e444f61f27e18e  # tags/43.2^0
 
-source=("git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
-        "0001-Revert-backends-native-Disable-touch-mode-with-point.patch")
+source=(
+  "git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
+  "0001-Revert-backends-native-Disable-touch-mode-with-point.patch"
+)
 
-sha256sums=('SKIP'
-            'fce87093b2f162114cd438a4aa5d3969a709a00416d179f76411a566e5403dae')
+sha256sums=(
+  'SKIP'
+  'fce87093b2f162114cd438a4aa5d3969a709a00416d179f76411a566e5403dae'
+)
 
 pkgver() {
   cd mutter
