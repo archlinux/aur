@@ -4,7 +4,7 @@
 # This package provides the latest offical, upstream nvi
 # with multibyte support enabled.
 
-pkgname=nvi-multibyte-git
+pkgname=nvi-multibyte-upstream
 pkgdesc="Upstream nvi with enabled multibyte support"
 arch=('x86_64')
 url="git://repo.or.cz/nvi.git"
