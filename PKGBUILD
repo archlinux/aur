@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="Expressive Velocity Engine - SIMD in C++ Goes Brrrr"
 arch=('any')
 url="https://github.com/${_author}/${_name}"
-license=('MIT')
+license=('Boost')
 
 depends=()
 makedepends=('git' 'cmake' 'make')
