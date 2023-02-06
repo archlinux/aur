@@ -1,0 +1,19 @@
+pkgbase = python-hydra-slayer
+	pkgdesc = A framework for elegantly configuring complex applications
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://catalyst-team.github.io/hydra-slayer/
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	makedepends = python-poetry
+	makedepends = git
+	depends = python
+	depends = python-pyyaml
+	source = https://files.pythonhosted.org/packages/source/h/hydra-slayer/hydra-slayer-0.4.0.tar.gz
+	source = hydra-slayer-0.4.0-git::git+https://github.com/catalyst-team/hydra-slayer.git#tag=0.4.0
+	sha256sums = 2e7ef0b99e5e11504d80996f689ed5ed7ae8766edb8e76b6933b306966159604
+	sha256sums = SKIP
+
+pkgname = python-hydra-slayer
