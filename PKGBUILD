@@ -3,7 +3,7 @@
 
 _pkgbase=ocp
 pkgname=${_pkgbase}-git
-pkgver=0.2.101.r25.b40a9ab
+pkgver=0.2.102.r2.0065417
 pkgrel=1
 pkgdesc="Open Cubic Player (GIT Version)"
 arch=('i686' 'x86_64')
@@ -24,11 +24,13 @@ depends=('hicolor-icon-theme'
 	 'libvorbis'
 	 'libmad'
 	 'libjpeg-turbo' 
-	 'libpng' 
+	 'libpng'
+	 'shared-mime-info'
 	 'freetype2' 
 	 'ttf-unifont' 
 	 'libdiscid' 
-	 'cjson')
+	 'cjson'
+	 'libancient')
 
 makedepends=('git'
              'xa'
@@ -51,7 +53,7 @@ prepare() {
 
 build() {
   	cd $_pkgbase	
-	./configure --prefix=/usr --sysconfdir=/etc --with-unifontdir=/usr/share/fonts/Unifont --with-unifont-ttf=/usr/share/fonts/Unifont/Unifont.ttf --with-unifont-csur-ttf=/usr/share/fonts/Unifont/Unifont_CSUR.ttf --with-unifont-upper-ttf=/usr/share/fonts/Unifont/Unifont_Upper.ttf		
+	./configure --prefix=/usr --sysconfdir=/etc --without-update-desktop-database --without-update-mime-database  --with-unifontdir=/usr/share/fonts/Unifont --with-unifont-ttf=/usr/share/fonts/Unifont/Unifont.ttf --with-unifont-csur-ttf=/usr/share/fonts/Unifont/Unifont_CSUR.ttf --with-unifont-upper-ttf=/usr/share/fonts/Unifont/Unifont_Upper.ttf		
 	make DESTDIR="$pkgdir"
 }
 
