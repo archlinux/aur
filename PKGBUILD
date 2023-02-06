@@ -1,7 +1,7 @@
 # Maintainer: Mikhail felixoid Shiryaev <mr dot felixoid on gmail>
 
 pkgname=joystickwake
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc='A joystick-aware screen waker'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'python-pyudev')
 conflicts=('joystickwake-git')
 license=('MIT')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=(1b15e7f5a62a6df78af52fbbd707747ca45326da65a5e3c394d06b90acb77e91)
+sha256sums=(390aa766b6694aeb6be1fd79e68213435c0cd01c0e72849f08b8ac07093dd968)
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
