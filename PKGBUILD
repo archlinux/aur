@@ -3,7 +3,7 @@
 
 pkgname='nimdow'
 pkgver='0.7.35'
-pkgrel='2'
+pkgrel='3'
 _commit='b3097e9'
 pkgdesc='Tiling window manager written in Nim'
 arch=('x86_64')
@@ -11,6 +11,7 @@ url='https://github.com/avahe-kellenberger/nimdow'
 license=('GPL2')
 provides=("$pkgname")
 conflicts=("$pkgname")
+depends=('glibc')
 makedepends=('nim')
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
@@ -19,12 +20,13 @@ source=(
 prepare() {
   cd "$srcdir/$pkgname-$pkgver" || exit 1
 
-  # Save to original build.sh script
+  # Save the original build.sh script
   cp -fax build.sh{,-orig}
 
   # The original build.sh script expects to be run from within
   # a git repository, which is not what we are doing here, so
   # we create out own build.sh script with an appropriate commit
+  # hash
   cat <<__EOT__ >build.sh
 #!/bin/sh
 set -eu
