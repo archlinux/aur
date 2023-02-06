@@ -1,7 +1,7 @@
 pkgbase = dotool
 	pkgdesc = Command to simulate input anywhere
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~geb/dotool
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = dotool
 	license = GPL3
 	makedepends = go>=1.19
 	source = https://git.sr.ht/~geb/dotool/archive/1.2.tar.gz
-	sha256sums = 80dcbc1bc4877bbef3eb30cb8c0ad7db161fb76d4999bb9b5f4a484e2267e5a1
 	sha512sums = 37ca511089ce1491bddfead3b12e41ffa12f75132e681580377313aee68994128b31f2562472cbe59478ca765e55f3b5e58369a4d905ae35218bc706cdf595f0
 
 pkgname = dotool
