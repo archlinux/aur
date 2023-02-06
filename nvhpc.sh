@@ -38,5 +38,5 @@ export CPATH=$nvcommdir/nvshmem/include:$CPATH
 export MANPATH=$nvcompdir/man:$MANPATH
 
 export OPAL_PREFIX=$nvcommdir/mpi
-export NVHPC_CUDA_HOME=$nvhome/Linux_x86_64/22.11/cuda/11.8
+export NVHPC_CUDA_HOME=$nvhome/Linux_x86_64/23.1/cuda/12.0
 fi
