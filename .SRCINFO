@@ -1,0 +1,12 @@
+pkgbase = cmvnd-fonts
+	pkgdesc = tiny bitmap fonts
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/cmvnd/fonts
+	arch = any
+	license = GPL3
+	depends = xorg-bdftopcf
+	source = cmvnd-fonts-1.2.0.tar.gz::https://github.com/cmvnd/fonts/archive/refs/tags/1.2.0.tar.gz
+	sha256sums = ed2bf5aa6e08fed2bb2940d83d1edda26b6c81f77886bdf29136d311c4dafeec
+
+pkgname = cmvnd-fonts
