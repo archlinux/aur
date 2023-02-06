@@ -1,11 +1,11 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 # Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
 
-_commit=c45e09df1ef235d653d56aef05012f6a3cc57979  # tags/2.14.1^0
+_commit=7861a719616b4b132b9cac089c6c64f47832edb1  # tags/2.14.2^0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-fontconfig
-pkgver=2.14.1
+pkgver=2.14.2
 pkgrel=1
 pkgdesc="A library for configuring and customizing font access (mingw-w64)"
 arch=('any')
