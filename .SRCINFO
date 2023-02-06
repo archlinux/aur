@@ -1,7 +1,7 @@
 pkgbase = brickv
 	pkgdesc = testing/flashing tool for tinkerforge brick(let)s
-	pkgver = 2.4.24
-	pkgrel = 2
+	pkgver = 2.4.25
+	pkgrel = 1
 	url = http://www.tinkerforge.com/
 	arch = any
 	license = GPL2
@@ -12,7 +12,7 @@ pkgbase = brickv
 	depends = python-pytz
 	depends = python-tzlocal
 	optdepends = brickd: local device support
-	source = https://github.com/Tinkerforge/brickv/archive/v2.4.24.zip
-	sha256sums = 30a180ef8dee910672cfcbb507e865f53723cc3583904cf10286e411c9a9b8bc
+	source = https://github.com/Tinkerforge/brickv/archive/v2.4.25.zip
+	sha256sums = 6f63223c942782877035d4a82f30f4389365ee4e654f652e1b610ba63944c3e7
 
 pkgname = brickv
