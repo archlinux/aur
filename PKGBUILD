@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdeclarative-git
-pkgver=5.83.0_r891.g23f570d
+pkgver=5.240.0_r1110.g92343b2
 pkgrel=1
 pkgdesc='Provides integration of QML and KDE Frameworks'
 arch=($CARCH)
@@ -25,6 +25,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=ON
   cmake --build build

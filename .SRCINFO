@@ -1,6 +1,6 @@
 pkgbase = kdeclarative-git
 	pkgdesc = Provides integration of QML and KDE Frameworks
-	pkgver = 5.83.0_r891.g23f570d
+	pkgver = 5.240.0_r1110.g92343b2
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -19,4 +19,3 @@ pkgbase = kdeclarative-git
 	sha256sums = SKIP
 
 pkgname = kdeclarative-git
-
