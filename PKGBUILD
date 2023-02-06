@@ -2,7 +2,7 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=ktexteditor-git
-pkgver=5.83.0_r2851.gedef8135
+pkgver=5.240.0_r3750.ge5b165fd
 pkgrel=1
 pkgdesc='Advanced embeddable text editor'
 arch=($CARCH)
@@ -24,6 +24,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=ON
   cmake --build build
