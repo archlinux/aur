@@ -1,7 +1,7 @@
 pkgbase = nrf-command-line-tools-bin
 	pkgdesc = The nRF Command Line Tools is used for development, programming and debugging of Nordic Semiconductor's nRF51, nRF52, nRF53 and nRF91 Series devices.
-	pkgver = 10.15.3
-	pkgrel = 1
+	pkgver = 10.16.0
+	pkgrel = 0
 	url = https://www.nordicsemi.com/Products/Development-tools/nrf-command-line-tools/download
 	arch = x86_64
 	license = Commercial
@@ -9,7 +9,7 @@ pkgbase = nrf-command-line-tools-bin
 	optdepends = jlink-software-and-documentation: Segger JLink software & documentation pack for Linux
 	optdepends = pc-nrfconnect-programmer: Programmer app for nRF Connect for Desktop
 	options = !strip
-	source_x86_64 = https://nsscprodmedia.blob.core.windows.net/prod/software-and-other-downloads/desktop-software/nrf-command-line-tools/sw/versions-10-x-x/10-15-3/nrf-command-line-tools_10.15.3_amd64.deb
-	sha256sums_x86_64 = c03ac0d6cbbde5bf7fc8ceec3cd9c96af83248eb9b98d54551da5a616376c768
+	source_x86_64 = https://nsscprodmedia.blob.core.windows.net/prod/software-and-other-downloads/desktop-software/nrf-command-line-tools/sw/versions-10-x-x/10-16-0/nrf-command-line-tools_10.16.0_amd64.deb
+	sha256sums_x86_64 = bfe72b5e5804103d8e66295f093848f30cac3d04124dfe17e793bdcccd206f95
 
 pkgname = nrf-command-line-tools-bin
