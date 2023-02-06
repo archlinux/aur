@@ -1,0 +1,14 @@
+pkgbase = kics-git
+	pkgdesc = Find security vulnerabilities, compliance issues, and infrastructure misconfigurations early in the development cycle of your infrastructure-as-code with KICS by Checkmarx. (git build from latest commit)
+	pkgver = git
+	pkgrel = 1
+	url = https://kics.io
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	makedepends = make
+	source = kics::git+https://github.com/Checkmarx/kics.git#branch=master
+	md5sums = SKIP
+
+pkgname = kics-git
