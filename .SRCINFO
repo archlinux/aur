@@ -1,0 +1,22 @@
+pkgbase = python-catalyst
+	pkgdesc = Accelerated deep learning R&D with PyTorch.
+	pkgver = 22.04
+	pkgrel = 1
+	url = https://github.com/catalyst-team/catalyst
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	checkdepends = python-path
+	makedepends = python-setuptools
+	depends = python
+	depends = python-accelerate
+	depends = python-hydra-slayer
+	depends = python-numpy
+	depends = python-pytorch
+	depends = python-pyyaml
+	depends = python-tensorboardx
+	depends = python-tqdm
+	source = catalyst-22.04.tar.gz::https://github.com/catalyst-team/catalyst/archive/refs/tags/v22.04.tar.gz
+	sha256sums = 3d00a21b3a3180e7350a89d43530c4ad84db97a6ff00fbb4f48f0540621edaf1
+
+pkgname = python-catalyst
