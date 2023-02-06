@@ -10,18 +10,17 @@
 
 pkgname=ros2-humble
 pkgver=2022.11.23
-pkgrel=2
+pkgrel=3
 pkgdesc="A set of software libraries and tools for building robot applications"
 url="https://docs.ros.org/en/humble/"
 arch=('any')
 license=('Apache')
 depends=(
     'ros2-arch-deps'
-    'ros2-pyqt5-sip-compat'
+    'python-pyqt5-sip4'
     'assimp'
     'gmock'
     'patch'
-    'sip4'
 )
 source=(
     "ros2::git+https://github.com/ros2/ros2#tag=release-humble-20221123"
