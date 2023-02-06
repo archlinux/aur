@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=nanosaur
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="Play as a cybernetic dinosaur in this third-person shooter"
 arch=(x86_64)
@@ -17,7 +17,7 @@ depends=(
   'hicolor-icon-theme'
 )
 makedepends=('git' 'cmake')
-_commit='25520d32d867e93d9523ab3b519ce21b9845fd07'
+_commit='3a56f8a0e5ea6d442ab86c33c1d033c76222b7ac'
 source=(
   "$pkgname::git+https://github.com/jorio/Nanosaur.git#commit=$_commit"
   'git+https://github.com/jorio/Pomme.git'
