@@ -2,7 +2,7 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kirigami2-git
-pkgver=5.83.0_r2803.gdd7bb331
+pkgver=5.240.0_r3633.g8a20416f
 pkgrel=1
 pkgdesc='A QtQuick based components set'
 arch=($CARCH)
@@ -24,6 +24,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%2-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=ON
   cmake --build build
