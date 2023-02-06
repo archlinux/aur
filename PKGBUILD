@@ -3,13 +3,13 @@
 # Contributor: Nicky D
 
 pkgname=firestorm
-pkgver=6.6.3
+pkgver=6.6.8
 pkgrel=1
-pkgdesc="This is the Firestorm Viewer!"
+pkgdesc="An open source viewer for accessing virtual worlds"
 arch=('i686' 'x86_64')
 url=https://www.firestormviewer.org
 license=('LGPL')
-depends=(dbus-glib gconf glu gtk2 lib32-libidn lib32-libsndfile lib32-util-linux lib32-zlib libgl libidn libjpeg-turbo libpng libxss libxml2 mesa nss openal sdl vlc zlib)
+depends=(apr-util dbus-glib gconf glu gtk2 lib32-libidn lib32-libsndfile lib32-util-linux lib32-zlib libgl libidn libjpeg-turbo libpng libxss libxml2 mesa nss openal sdl vlc zlib 'libcrypt.so=1')
 optdepends=(
   'alsa-lib: for ALSA support'
   'pepper-flash: for inworld Flash support'
@@ -19,7 +19,7 @@ optdepends=(
   'mesa-libgl: For Intel, Radeon, Nouveau support'
   'nvidia-libgl: for NVIDIA support'
   'nvidia-utils: for NVIDIA support')
-makedepends=('cmake' 'gcc' 'make' 'python-virtualenv' 'python2-pip' 'git' 'boost' 'xz')
+makedepends=('cmake' 'gcc' 'make' 'python-virtualenv' 'python-pip' 'git' 'boost' 'xz')
 conflicts=('firestorm-bin' 'firestorm-nightly' 'firestorm-beta-bin')
 provides=('firestorm')
 #options=(debug !strip)
@@ -40,7 +40,7 @@ prepare() {
 	pip3 install llbase
 	export CXXFLAGS="$CXXFLAGS -Wno-error"
 	export CFLAGS="$CFLAGS -Wno-error"
-	autobuild configure -A 64 -c ReleaseFS_open -- -DLL_TESTS:BOOL=FALSE -DREVISION_FROM_VCS=ON --chan="ArchLinux"
+	autobuild configure -A 64 -c ReleaseFS_open -- -DLL_TESTS:BOOL=FALSE -DREVISION_FROM_VCS=ON -DPACKAGE:BOOL=Off --chan="ArchLinux"
 }
 
 build() {
@@ -53,10 +53,10 @@ build() {
 }
 
 package() {
-	mkdir -p "$pkgdir/opt"
+	mkdir -p "$pkgdir/opt/firestorm"
 	mkdir -p "$pkgdir/usr/share/applications"
-
-	mv "$pkgname/build-linux-x86_64/newview/packaged" "$pkgdir/opt/firestorm"
+	
+	cp -rT "$pkgname/build-linux-x86_64/newview/packaged" "$pkgdir/opt/firestorm"
 
 	install -Dm644 "firestorm.desktop" "$pkgdir/usr/share/applications/firestorm.desktop"
 	install -Dm755 "firestorm.launcher" "$pkgdir/usr/bin/firestorm"

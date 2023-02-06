@@ -1,6 +1,6 @@
 pkgbase = firestorm
-	pkgdesc = This is the Firestorm Viewer!
-	pkgver = 6.6.3
+	pkgdesc = An open source viewer for accessing virtual worlds
+	pkgver = 6.6.8
 	pkgrel = 1
 	url = https://www.firestormviewer.org
 	arch = i686
@@ -10,10 +10,11 @@ pkgbase = firestorm
 	makedepends = gcc
 	makedepends = make
 	makedepends = python-virtualenv
-	makedepends = python2-pip
+	makedepends = python-pip
 	makedepends = git
 	makedepends = boost
 	makedepends = xz
+	depends = apr-util
 	depends = dbus-glib
 	depends = gconf
 	depends = glu
@@ -34,6 +35,7 @@ pkgbase = firestorm
 	depends = sdl
 	depends = vlc
 	depends = zlib
+	depends = libcrypt.so=1
 	optdepends = alsa-lib: for ALSA support
 	optdepends = pepper-flash: for inworld Flash support
 	optdepends = freealut: for OpenAL support
@@ -46,7 +48,7 @@ pkgbase = firestorm
 	conflicts = firestorm-bin
 	conflicts = firestorm-nightly
 	conflicts = firestorm-beta-bin
-	source = firestorm::git+https://vcs.firestormviewer.org/phoenix-firestorm#branch=Firestorm_6.6.3
+	source = firestorm::git+https://vcs.firestormviewer.org/phoenix-firestorm#branch=Firestorm_6.6.8
 	source = fs-build-variables::git+https://vcs.firestormviewer.org/fs-build-variables
 	source = firestorm.desktop
 	source = firestorm.launcher
