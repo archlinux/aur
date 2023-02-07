@@ -1,7 +1,7 @@
 # Maintainer: beelzy
 pkgname=kame-tools-git
 pkgver=5ae1ae1
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool for bundling 3DS theme files"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://gitlab.com/beelzy/kame-tools"
@@ -12,8 +12,8 @@ depends=('gcc-libs')
 _gitroot='https://gitlab.com/beelzy/kame-tools.git'
 _gitname='kame-tools'
 
-source=("${_gitname}::git+${_gitroot}"
-        "buildtools::git+https://github.com/Steveice10/buildtools.git")
+source=("git+${_gitroot}"
+        "git+https://github.com/Steveice10/buildtools.git")
 sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
@@ -24,7 +24,9 @@ pkgver() {
 prepare() {
     cd "$srcdir/$_gitname"
     git submodule init
-    git submodule--helper update
+    git config submodule.buildtools.url $srcdir/buildtools
+    git submodule sync
+    git -c protocol.file.allow=always submodule update
     cd buildtools
     git apply ../aarch64.patch
 }
