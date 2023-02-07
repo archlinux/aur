@@ -8,6 +8,7 @@ pkgbase = abc80sim-git
 	license = GPL2
 	makedepends = git
 	depends = sdl
+	depends = libpng
 	source = git+https://git.zytor.com/abc80/abc80sim.git
 	md5sums = SKIP
 

@@ -2,13 +2,13 @@
 
 _pkgname=abc80sim
 pkgname=abc80sim-git
-pkgver=r437.0398837
+pkgver=r537.1a092cf
 pkgrel=1
 pkgdesc="An SDL based emulator of a Luxor ABC80"
 url="https://git.zytor.com/abc80/abc80sim.git"
 arch=('i686' 'x86_64')
 license=('GPL2')
-depends=('sdl')
+depends=('sdl' 'libpng')
 makedepends=('git')
 source=('git+https://git.zytor.com/abc80/abc80sim.git')
 md5sums=('SKIP')
@@ -20,7 +20,7 @@ pkgver() {
 
 prepare() {
     cd ${srcdir}/${_pkgname}
-    git checkout master
+    git checkout main
 }
 
 build() {
