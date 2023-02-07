@@ -1,12 +1,11 @@
 pkgbase = jddesktopentryedit
 	pkgdesc = A graphical program to create and edit desktop entries
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/JakobDev/jdDesktopEntryEdit
 	arch = any
 	license = GPL3
 	checkdepends = appstream-glib
-	makedepends = pyside6
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools

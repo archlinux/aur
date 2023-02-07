@@ -2,13 +2,13 @@
 pkgname=jddesktopentryedit
 _app_id=page.codeberg.JakobDev.jdDesktopEntryEdit
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical program to create and edit desktop entries"
 arch=('any')
 url="https://codeberg.org/JakobDev/jdDesktopEntryEdit"
 license=('GPL3')
 depends=('python-desktop-entry-lib' 'python-pyqt6' 'python-requests')
-makedepends=('pyside6' 'python-build' 'python-installer' 'python-setuptools'
+makedepends=('python-build' 'python-installer' 'python-setuptools'
              'python-wheel' 'qt5-tools')
 checkdepends=('appstream-glib')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
