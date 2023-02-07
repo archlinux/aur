@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppxlib
 	pkgdesc = Standard library for ppx rewriters
-	pkgver = 0.28.0
-	pkgrel = 2
+	pkgver = 0.29.0
+	pkgrel = 1
 	url = https://github.com/ocaml-ppx/ppxlib
 	arch = x86_64
 	arch = i686
@@ -11,13 +11,15 @@ pkgbase = ocaml-ppxlib
 	arch = aarch64
 	license = MIT
 	makedepends = dune>=2.7.0
-	depends = ocaml>=4.04.1
+	depends = ocaml>=4.08.0
+	depends = ocaml-base>=0.15.0
 	depends = ocaml-compiler-libs-repackaged>=0.11.0
 	depends = ocaml-ppx_derivers>=1.0.0
-	depends = ocaml-sexplib0>=0.12.0
+	depends = ocaml-sexplib0>=0.15.0
 	depends = ocaml-stdlib-shims
+	depends = ocaml-yojson
 	options = !strip
-	source = ocaml-ppxlib-0.28.0-2.tar.gz::https://github.com/ocaml-ppx/ppxlib/archive/0.28.0.tar.gz
-	sha512sums = 31290cd34f4b306f289b6ef78fbc5907f007c722ffc2cb0682c1944af954f2c6732b236891d1872a22b856d0aee0f7e84d3262ee103aff15d0a4dcd1a20bbfe6
+	source = ocaml-ppxlib-0.29.0-1.tar.gz::https://github.com/ocaml-ppx/ppxlib/archive/0.29.0.tar.gz
+	sha512sums = 34babcea63b952ca610b5b9841a7d045e3973870014968d5abfff259de8d0f383e79f799fa3522830e0da5a7ff02fa52764b7cad64c8ac0da5a37f8897314c80
 
 pkgname = ocaml-ppxlib

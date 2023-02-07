@@ -2,17 +2,17 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppxlib'
 pkgname="ocaml-$_projectname"
-pkgver='0.28.0'
-pkgrel='2'
+pkgver='0.29.0'
+pkgrel='1'
 pkgdesc='Standard library for ppx rewriters'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ocaml-ppx/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.04.1' 'ocaml-compiler-libs-repackaged>=0.11.0' 'ocaml-ppx_derivers>=1.0.0' 'ocaml-sexplib0>=0.12.0' 'ocaml-stdlib-shims')
+depends=('ocaml>=4.08.0' 'ocaml-base>=0.15.0' 'ocaml-compiler-libs-repackaged>=0.11.0' 'ocaml-ppx_derivers>=1.0.0' 'ocaml-sexplib0>=0.15.0' 'ocaml-stdlib-shims' 'ocaml-yojson')
 makedepends=('dune>=2.7.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('31290cd34f4b306f289b6ef78fbc5907f007c722ffc2cb0682c1944af954f2c6732b236891d1872a22b856d0aee0f7e84d3262ee103aff15d0a4dcd1a20bbfe6')
+sha512sums=('34babcea63b952ca610b5b9841a7d045e3973870014968d5abfff259de8d0f383e79f799fa3522830e0da5a7ff02fa52764b7cad64c8ac0da5a37f8897314c80')
 
 _sourcedirectory="$_projectname-$pkgver"
 
