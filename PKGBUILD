@@ -1,14 +1,14 @@
-pkgname=kwin-bismuth-git
-pkgver=3.1.4.r0.gded2521
-pkgrel=1
+_name=bismuth
+_base=kwin-${_name}
+pkgname=${_base}-git
+pkgver=3.1.4.r3.gef69afe
+pkgrel=2
 pkgdesc="Addon for KDE Plasma to arrange your windows automatically and switch between them using keyboard shortcuts, like tiling window managers."
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
-_base="${pkgname%-git}"
-_name="${_base#kwin-}"
 url="https://github.com/Bismuth-Forge/${_name}"
 license=('MIT')
 depends=('systemsettings')
-makedepends=('git' 'cmake' 'ninja' 'esbuild' 'extra-cmake-modules' 'kcoreaddons' 'kconfig' 'ki18n' 'kcmutils' 'kdeclarative')
+makedepends=('git' 'cmake' 'npm' 'extra-cmake-modules' 'kcoreaddons' 'kconfig' 'ki18n' 'kcmutils' 'kdeclarative')
 provides=("${_base}")
 conflicts=("${_base}")
 options=('!emptydirs')
@@ -21,24 +21,23 @@ pkgver() {
     git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+    local ver
+    ver="$(sed -En 's/.*"esbuild": "(.+)".*/\1/p' "${_name}/package.json")"
+    test -n "${ver}"
+    npm i -E --ignore-scripts --prefix=. --include=optional "esbuild@${ver}"
+}
+
 build() {
-    cd "${srcdir}"
-
-    cmake -B "build" -GNinja "${_name}" \
+    cmake -B "build" -S "${_name}" \
         -DCMAKE_BUILD_TYPE=Release \
-        -DUSE_NPM=OFF \
         -DUSE_TSC=OFF \
-        -DBUILD_TESTING=false
+        -DBUILD_TESTING=OFF
 
-    ninja -C "build"
+    cmake --build "build"
 }
 
 package() {
-    cd "${srcdir}"
-    DESTDIR="${pkgdir}" ninja -C "build" install
-
-    cd "${_name}/LICENSES"
-    local licenses="${pkgdir}/usr/share/licenses/${pkgname}"
-    install -dm755 "${licenses}"
-    cp -rt "${licenses}" ./*
+    DESTDIR="${pkgdir}" cmake --install "build"
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_name}/LICENSES/"*
 }

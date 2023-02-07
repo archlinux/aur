@@ -1,4 +1,4 @@
-src/
-pkg/
-bismuth/
-*.pkg.tar.*
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
