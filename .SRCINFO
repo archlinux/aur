@@ -1,6 +1,6 @@
 pkgbase = linux-clear-lts2017
 	pkgdesc = Clear Linux lts2017
-	pkgver = 4.14.301
+	pkgver = 4.14.305
 	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux-lts2017
 	arch = x86_64
@@ -14,13 +14,13 @@ pkgbase = linux-clear-lts2017
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.14.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.14.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.14.301.xz
-	source = linux-clear-lts2017::git+https://github.com/clearlinux-pkgs/linux-lts2017.git#tag=4.14.300-215
+	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.14.305.xz
+	source = linux-clear-lts2017::git+https://github.com/clearlinux-pkgs/linux-lts2017.git#tag=4.14.305-220
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7
 	sha256sums = SKIP
-	sha256sums = 0ec0fa51f07c0d2f87956e09a9bcdd9497852355cd18f946ffaedee86799c627
+	sha256sums = f462d980b02b4042c30e6dd415b20e39087a940b48b50ef969ca6eccf9cdc08d
 	sha256sums = SKIP
 
 pkgname = linux-clear-lts2017
