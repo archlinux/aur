@@ -1,7 +1,7 @@
 pkgbase = typora-electron
 	pkgdesc = A minimal markdown editor and reader. (Typora with system electron)
 	pkgver = 1.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://typora.io
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,8 @@ pkgbase = typora-electron
 	optdepends = pandoc: Import/export for extra file formats
 	provides = typora
 	conflicts = typora
+	source = typora.sh
+	sha512sums = 8280c9d0267149e5c003a11b3be5cdb42718f2dcc56a4e79ab5bdd3a941b5b68e4d40606ba7ba355de8716c2e66622f27520c7f507cdef459fc39a1f304b705b
 	source_x86_64 = typora_1.5.5_amd64.deb::https://typora.io/linux/typora_1.5.5_amd64.deb
 	sha512sums_x86_64 = 4d88db3a866ef466e94cd8e8ca2cda45f4eb6bc0f15792a36b1bd7d720481bcec2e887e69280d994b59d1fab2224725672be1ee0e62d7869a4b320c478c25c29
 	source_aarch64 = typora_1.5.5_arm64.deb::https://typora.io/linux/typora_1.5.5_arm64.deb
