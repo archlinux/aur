@@ -1,7 +1,7 @@
-# Maintainer: Darjan Krijan (daren) <darjan_krijan@gmx.de>
+# Maintainer: Darjan Krijan [https://disc-kuraudo.eu]
 
 pkgname=maqao-bin
-pkgver=2.15.0
+pkgver=2.16.0
 pkgrel=1
 pkgdesc="MAQAO - Modular Assembly Quality Analyzer and Optimizer"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('LGPL3')
 url="http://www.maqao.org"
 source=("http://www.maqao.org/release/${pkgname%-bin}.intel64.${pkgver}.tar.xz")
 conflicts=('maqao')
-md5sums=("6d5c264890c41f5400e4c269c13125f3")
+sha256sums=("377bfbd2dfcd8f791a41c38c72b65403c5bcdeb33a113350151123a90be504c2")
 
 package() {
 	prefix=${pkgdir}/usr
