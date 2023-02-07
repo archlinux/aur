@@ -1,0 +1,19 @@
+pkgbase = python-starlink-pyast
+	pkgdesc = Python interface to the Starlink AST library
+	pkgver = 3.15.4
+	pkgrel = 1
+	url = http://starlink.eao.hawaii.edu/starlink/AST
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = python-setuptools
+	makedepends = python-numpy
+	makedepends = libyaml
+	source = https://files.pythonhosted.org/packages/source/s/starlink-pyast/starlink-pyast-3.15.4.tar.gz
+	md5sums = abb0759b0e725302b955d8058d8a5187
+
+pkgname = python-starlink-pyast
+	depends = python-numpy
+	depends = libyaml
+	optdepends = python-astropy: Support for starlink.Atl
+	optdepends = python-matplotlib: Support for starlink.Atl and starlink.Grf
