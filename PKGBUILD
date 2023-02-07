@@ -1,6 +1,6 @@
 # Maintainer: Phillip Schichtel <phillip.public@schich.tel>
 pkgname=jprofiler
-pkgver=13.0
+pkgver=13.0.5
 pkgrel=1
 options=(!strip)
 pkgdesc="The Award-Winning All-in-One Java Profiler"
@@ -11,7 +11,7 @@ depends=('java-environment')
 source=("https://download-gcdn.ej-technologies.com/jprofiler/jprofiler_linux_$(echo $pkgver | sed 's/\./_/g').tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('67c2a9859a459eac5172981c2a572f1b124eab160aaa1da4ed7e632bd51732d1'
+sha256sums=('b2cc21d00429137e76c4614ed0ba5afc18fa1bcbea3a9514c99c7371bc050cfd'
             'be6fce730c9be07ca3574c1a390f93d54d8e9ab4a18233f97bc25273beacd33a'
             'ccd3b8ffdefc25f5845263f087776153ec5269a68fe65970fe92e68e1dcf7e36')
 

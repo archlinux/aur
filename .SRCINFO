@@ -1,13 +1,13 @@
 pkgbase = jprofiler
 	pkgdesc = The Award-Winning All-in-One Java Profiler
-	pkgver = 13.0
+	pkgver = 13.0.5
 	pkgrel = 1
 	url = http://jprofiler.com
 	arch = any
 	license = custom
 	depends = java-environment
 	options = !strip
-	source = https://download-gcdn.ej-technologies.com/jprofiler/jprofiler_linux_13_0.tar.gz
+	source = https://download-gcdn.ej-technologies.com/jprofiler/jprofiler_linux_13_0_5.tar.gz
 	source = jprofiler.desktop
 	source = jprofiler.sh
 	sha256sums = 67c2a9859a459eac5172981c2a572f1b124eab160aaa1da4ed7e632bd51732d1
