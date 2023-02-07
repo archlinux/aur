@@ -1,6 +1,6 @@
 pkgbase = gst-plugins-rs
 	pkgdesc = GStreamer plugins written in Rust
-	pkgver = 0.9.7
+	pkgver = 0.9.8
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = gst-plugins-rs
 	depends = libsodium
 	depends = libwebp
 	options = !lto
-	source = git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git#tag=0.9.7
+	source = git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git#tag=0.9.8
 	sha256sums = SKIP
 
 pkgname = gst-plugins-rs
