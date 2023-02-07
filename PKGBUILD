@@ -3,8 +3,8 @@
 
 pkgname=deal-ii
 _realname=dealii
-pkgver=9.4.1
-pkgrel=2
+pkgver=9.4.2
+pkgrel=1
 pkgdesc="An Open Source Finite Element Differential Equations Analysis Library"
 arch=("i686" "x86_64")
 url="http://www.dealii.org/"
@@ -42,7 +42,7 @@ optdepends=(
 makedepends=('cmake')
 install=deal-ii.install
 source=(https://github.com/dealii/dealii/releases/download/v$pkgver/${_realname}-$pkgver.tar.gz)
-sha1sums=('c49bb0d3f0341674b5e3865df730fbef7a2a9d5c')
+sha1sums=('ea4b5fadb45a34f4f9399d305548671a8059760b')
 # where to install deal.II: change to something else (e.g., /opt/deal.II/)
 # if desired.
 _installation_prefix=/usr
@@ -103,7 +103,6 @@ build() {
      cmake_configuration_flags+=" -DLAPACK_INCLUDE_DIRS=${MKLROOT}/include"
   fi
 
-
   # For GSL compatibility we need the full link interface, which includes
   # libgslcblas, so disable --as-needed with GCC:
   sed -i '/ENABLE_IF_LINKS(DEAL_II_LINKER_FLAGS "-Wl,--as-needed")/d' \
@@ -111,9 +110,6 @@ build() {
 
   sed -i '122ifedisableexcept(FE_INVALID);\n' \
       ${srcdir}/${_realname}-$pkgver/tests/quick_tests/scalapack.cc
-
-  sed -i '146i#include <boost/algorithm/string/case_conv.hpp>\n' \
-      ${srcdir}/${_realname}-$pkgver/examples/step-70/step-70.cc
 
   # Also remove from LDFLAGS if necessary
   LDFLAGS=$(echo $LDFLAGS | sed 's/--as-needed,//')
