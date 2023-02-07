@@ -12,6 +12,10 @@ source=(
 md5sums=(
     'SKIP'
 )
+conflicts=(
+    ata
+    ata-git
+)
 
 package() {
     install -D $srcdir/ata $pkgdir/usr/bin/ata
