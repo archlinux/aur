@@ -2,7 +2,7 @@
 
 _pkgname=xsecurelock
 pkgname=xsecurelock-git
-pkgver=1.2.r7.gc75d8e2
+pkgver=1.8.0.r3.g15e9b01
 pkgrel=1
 pkgdesc="X11 screen lock utility with security in mind"
 arch=('any')
