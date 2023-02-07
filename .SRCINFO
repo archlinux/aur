@@ -1,6 +1,6 @@
 pkgbase = liberica-jre-11-full-bin
 	pkgdesc = BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads. Full version includes OpenJFX.
-	pkgver = 11.0.17.u7
+	pkgver = 11.0.18.u10
 	pkgrel = 1
 	url = https://bell-sw.com/
 	install = liberica-jre-11-full.install
@@ -23,7 +23,7 @@ pkgbase = liberica-jre-11-full-bin
 	provides = java-runtime-headless-openjdk=11
 	provides = java-runtime=11
 	provides = java-runtime-openjdk=11
-	provides = liberica-jre-11-bin=11.0.17.u7
+	provides = liberica-jre-11-bin=11.0.18.u10
 	backup = etc/liberica-jre-11-full/logging.properties
 	backup = etc/liberica-jre-11-full/management/jmxremote.access
 	backup = etc/liberica-jre-11-full/management/jmxremote.password.template
@@ -38,13 +38,13 @@ pkgbase = liberica-jre-11-full-bin
 	backup = etc/liberica-jre-11-full/security/policy/unlimited/default_US_export.policy
 	backup = etc/liberica-jre-11-full/security/policy/unlimited/default_local.policy
 	backup = etc/liberica-jre-11-full/sound.properties
-	source_aarch64 = https://download.bell-sw.com/java/11.0.17+7/bellsoft-jre11.0.17+7-linux-aarch64-full.tar.gz
-	sha1sums_aarch64 = 89b90ac3f90099e352fe6589cc29929b3466a7a3
-	source_armv7h = https://download.bell-sw.com/java/11.0.17+7/bellsoft-jre11.0.17+7-linux-arm32-vfp-hflt-full.tar.gz
-	sha1sums_armv7h = 6750cd3519af20f7cd58d24315ebad8391983a75
-	source_armv8h = https://download.bell-sw.com/java/11.0.17+7/bellsoft-jre11.0.17+7-linux-arm32-vfp-hflt-full.tar.gz
-	sha1sums_armv8h = 6750cd3519af20f7cd58d24315ebad8391983a75
-	source_x86_64 = https://download.bell-sw.com/java/11.0.17+7/bellsoft-jre11.0.17+7-linux-amd64-full.tar.gz
-	sha1sums_x86_64 = de68596af8b7d5c68636c235800e517953e52873
+	source_aarch64 = https://download.bell-sw.com/java/11.0.18+10/bellsoft-jre11.0.18+10-linux-aarch64-full.tar.gz
+	sha1sums_aarch64 = ce48d3ca2545539016225264f382d6deaa8472bb
+	source_armv7h = https://download.bell-sw.com/java/11.0.18+10/bellsoft-jre11.0.18+10-linux-arm32-vfp-hflt-full.tar.gz
+	sha1sums_armv7h = 772509cc9fdd67c6a91c0464d19f30378caaa6ef
+	source_armv8h = https://download.bell-sw.com/java/11.0.18+10/bellsoft-jre11.0.18+10-linux-arm32-vfp-hflt-full.tar.gz
+	sha1sums_armv8h = 772509cc9fdd67c6a91c0464d19f30378caaa6ef
+	source_x86_64 = https://download.bell-sw.com/java/11.0.18+10/bellsoft-jre11.0.18+10-linux-amd64-full.tar.gz
+	sha1sums_x86_64 = 51f553d94b55d9bf30230fbb04bc45c20d210032
 
 pkgname = liberica-jre-11-full-bin
