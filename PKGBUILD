@@ -1,6 +1,6 @@
 # Maintainer: ookami <mail@ookami.one>
 pkgname=proxy-ns
-pkgver=1.0.8
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Run programs in a network namespace where all traffic go through proxy"
 arch=('x86_64')
@@ -22,5 +22,4 @@ build() {
 package() {
     cd "$srcdir/$pkgname"
     make DESTDIR="$pkgdir" PREFIX=/usr install
-    setcap cap_sys_admin=ep $pkgdir/usr/bin/proxy-ns
 }
