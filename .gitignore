@@ -1,0 +1,5 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!0001-use-full-URLs-in-nimble-file.patch

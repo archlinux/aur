@@ -1,0 +1,32 @@
+From 45af1edbea79b2b5d294f514d66a5c4b1aa931a6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=A9clairevoyant?=
+ <848000+eclairevoyant@users.noreply.github.com>
+Date: Tue, 7 Feb 2023 00:56:49 -0500
+Subject: [PATCH] use full URLs in nimble file
+
+---
+ nimdow.nimble | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/nimdow.nimble b/nimdow.nimble
+index 0e73762..897666c 100644
+--- a/nimdow.nimble
++++ b/nimdow.nimble
+@@ -9,10 +9,10 @@ bin = @["nimdow"]
+ 
+ # Deps
+ requires "nim >= 1.4.0"
+-requires "x11"
+-requires "parsetoml"
+-requires "nimtest >= 0.1.0"
+-requires "https://github.com/avahe-kellenberger/safeset"
++requires "https://github.com/nim-lang/x11.git"
++requires "https://github.com/NimParsers/parsetoml.git"
++requires "https://github.com/avahe-kellenberger/nimtest.git"
++requires "https://github.com/avahe-kellenberger/safeset.git"
+ 
+ # Tasks
+ task debug, "Create a debug build":
+-- 
+2.39.1
+

@@ -1,17 +1,16 @@
 pkgbase = nimdow
 	pkgdesc = Tiling window manager written in Nim
 	pkgver = 0.7.35
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/avahe-kellenberger/nimdow
 	arch = x86_64
 	license = GPL2
+	makedepends = git
 	makedepends = nim
 	depends = glibc
-	provides = nimdow
-	conflicts = nimdow
-	source = nimdow-0.7.35.tar.gz::https://github.com/avahe-kellenberger/nimdow/archive/refs/tags/v0.7.35.tar.gz
-	sha256sums = 7491cf2752d6ba874d35ad86487011d2473db93e494e4311e65891f75097259c
-	sha512sums = 4448fbf7d81484232590e39a327805c3abc66d020dbaf0bf3f057283f59105718076708f56a5de7f12b3169090b22fe5c7240e4a3f6f4e045c2bd7021b4a35ce
-	b2sums = 441ec592e74af4cd4ad77422304192f12b1dba2a8cf952d5c20bc46c423bc9eae80c1d63169ce5a45316eab05ae129c292c5d4b6bc4e374c67f4caba7aa6bc18
+	source = git+https://github.com/avahe-kellenberger/nimdow.git#commit=b3097e94093d8c37b5331addbf3b248e194981c1
+	source = 0001-use-full-URLs-in-nimble-file.patch
+	b2sums = SKIP
+	b2sums = 9a2ab646e40b29ea44ea68c4a4b3242b982703835acfff2712ba80d8aaa92c179fa9649a8b798cae2b296857e36385b742e99e13638074dc279b3593e7fb02ad
 
 pkgname = nimdow
