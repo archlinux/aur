@@ -1,13 +1,14 @@
 pkgbase = timestampit
 	pkgdesc = Prefix each input line with a date/time stamp (formerly timestamp/stampit)
 	pkgver = 0.3.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/kas/timestampit/
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = GPL3
+	depends = glibc
 	optdepends = scdoc: for recompiling manual pages
 	provides = timestamp
 	provides = stampit
