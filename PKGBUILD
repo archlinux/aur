@@ -1,32 +1,44 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
-pkgname=grasscutter-git
-pkgver=1.1.2.45d18bc
-_pkgname=Grasscutter
-_commit=45d18bc1b6f59b769f1378868e8ffa8c442f5be7
+pkgname=(grasscutter-git grasscutter-resources-git)
+pkgver=1.4.6
+_pkgname=grasscutter
+_commit=70e448d8bcc75f3ee04257d47f795bb07f6f9933
 pkgrel=1
 pkgdesc="A server software reimplementation for a certain anime game."
 arch=('any')
 url="https://github.com/Grasscutters/Grasscutter"
 license=('AGPL3')
-provides=('grasscutter')
-conflicts=('grasscutter')
-depends=('java-runtime')
-makedepends=('jdk17-openjdk')
-source=("${pkgname}-${pkgver}.tgz::${url}/archive/${_commit}.tar.gz"
+depends=('java-runtime-headless>=17')
+makedepends=("java-environment>=17" 'gradle')
+source=("$_pkgname::git+${url}#commit=${_commit}"
+	"$_pkgname-resources.zip::https://git.crepe.moe/grasscutters/Grasscutter_Resources/-/raw/d3a5672a77180b7c74cb6c89422e0f6eed67a064/Grasscutter_Resources-3.3.zip?inline=false"
         "grasscutter-run")
-b2sums=("064c69ff0cbc6a830ed89aea0dbd65cef62ee4a16de6d8b8fcc4d055db1e8cfcfeb81a7e14ddb54ff9be31f17f0410c2b22baf9bb59afaa8f712d3a6d15254e0"
-        "6d3465934da9cedd11c6e0998caf812abbbcf9e4174df55a3cb7f7c6e2ec661567fdf8e89d2c2d031db2962c41ec7bcda04aca29adc6de285ec7c995b3c25bbd")
+b2sums=("SKIP"
+        "1cb209f62db28c6e7a4651b77567d088dd578efccd59fd020c733e1b46b1acea6f85f403954044fe9db9a41bd537168e2f83692e023453dea5f6851f7548812e"
+        "e9b4f7513617d040b41b4720fc611d1038f03ed2b4f86f9bf6276a43e3910e3cacbb7175a92ac068c6e57569c5ab145674b5a41aa9a74976db89a4cf68a7248e")
 
 build() {
-  cd "${_pkgname}-${_commit}"
-  ./gradlew clean jar
+  cd "${_pkgname}"
+  gradle clean jar
 }
 
-package() {
-  _pkgname_lower=$(echo "${_pkgname}" | tr '[:upper:]' '[:lower:]')
-  install -Dm755 "grasscutter-run" "${pkgdir}/usr/bin/${_pkgname_lower}"
-  cd "${_pkgname}-${_commit}"
+package_grasscutter-git() {
+  provides=('grasscutter')
+  conflicts=('grasscutter')
+  depends=('java-runtime-headless>=17')
+  optdepends=('grasscutter-resources: for game resources'
+              'mongodb: for game database')
+  install -Dm755 "grasscutter-run" "${pkgdir}/usr/bin/${_pkgname}"
+  cd "${_pkgname}"
   _path=$(echo ./*.jar)
-  install -Dm644 $_path "${pkgdir}/usr/share/java/${_pkgname_lower}/${_pkgname_lower}.jar"
+  install -Dm644 $_path "${pkgdir}/usr/share/java/${_pkgname}/${_pkgname}.jar"
+}
+
+package_grasscutter-resources-git() {
+  options=('!strip')
+  provides=('grasscutter-resources')
+  conflicts=('grasscutter-resources')
+  install -d "${pkgdir}/usr/share/${_pkgname}"
+  cp -r "${srcdir}/Grasscutter_Resources-3.3/Resources" "${pkgdir}/usr/share/${_pkgname}/resources" 
 }

@@ -1,17 +1,28 @@
 pkgbase = grasscutter-git
 	pkgdesc = A server software reimplementation for a certain anime game.
-	pkgver = 1.1.2.45d18bc
+	pkgver = 1.4.6
 	pkgrel = 1
 	url = https://github.com/Grasscutters/Grasscutter
 	arch = any
 	license = AGPL3
-	makedepends = jdk17-openjdk
-	depends = java-runtime
-	provides = grasscutter
-	conflicts = grasscutter
-	source = grasscutter-git-1.1.2.45d18bc.tgz::https://github.com/Grasscutters/Grasscutter/archive/45d18bc1b6f59b769f1378868e8ffa8c442f5be7.tar.gz
+	makedepends = java-environment>=17
+	makedepends = gradle
+	depends = java-runtime-headless>=17
+	source = grasscutter::git+https://github.com/Grasscutters/Grasscutter#commit=70e448d8bcc75f3ee04257d47f795bb07f6f9933
+	source = grasscutter-resources.zip::https://git.crepe.moe/grasscutters/Grasscutter_Resources/-/raw/d3a5672a77180b7c74cb6c89422e0f6eed67a064/Grasscutter_Resources-3.3.zip?inline=false
 	source = grasscutter-run
-	b2sums = 064c69ff0cbc6a830ed89aea0dbd65cef62ee4a16de6d8b8fcc4d055db1e8cfcfeb81a7e14ddb54ff9be31f17f0410c2b22baf9bb59afaa8f712d3a6d15254e0
-	b2sums = 6d3465934da9cedd11c6e0998caf812abbbcf9e4174df55a3cb7f7c6e2ec661567fdf8e89d2c2d031db2962c41ec7bcda04aca29adc6de285ec7c995b3c25bbd
+	b2sums = SKIP
+	b2sums = 1cb209f62db28c6e7a4651b77567d088dd578efccd59fd020c733e1b46b1acea6f85f403954044fe9db9a41bd537168e2f83692e023453dea5f6851f7548812e
+	b2sums = e9b4f7513617d040b41b4720fc611d1038f03ed2b4f86f9bf6276a43e3910e3cacbb7175a92ac068c6e57569c5ab145674b5a41aa9a74976db89a4cf68a7248e
 
 pkgname = grasscutter-git
+	depends = java-runtime-headless>=17
+	optdepends = grasscutter-resources: for game resources
+	optdepends = mongodb: for game database
+	provides = grasscutter
+	conflicts = grasscutter
+
+pkgname = grasscutter-resources-git
+	provides = grasscutter-resources
+	conflicts = grasscutter-resources
+	options = !strip

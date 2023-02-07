@@ -3,6 +3,10 @@
 if [[ "$1" != "-p" ]]; then
     WORKDIR=${XDG_CONFIG_HOME:-$HOME/.config}/grasscutter
     mkdir -p $WORKDIR
+    RESDIR=/usr/share/grasscutter/resources
+    if [ ! -d $WORKDIR/resources ] && [ -d $RESDIR ]; then
+    	ln -s $RESDIR $WORKDIR/resources
+    fi
     cd $WORKDIR
 fi
 
