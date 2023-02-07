@@ -1,6 +1,6 @@
 # Maintainer: Phillip Schichtel <phillip@schich.tel>
 pkgname=bookman-cockpit
-pkgver=1.12.0
+pkgver=1.12.0.5
 pkgrel=1
 options=(!strip)
 pkgdesc="Bookman Cockpit"
@@ -17,7 +17,7 @@ source=("installer.exe::https://bit.ly/3eMJh3j"
         "logback.xml"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('0720edee5828d20a21b735e0572e838f3d60e069e98da35d4f589eda690a3400'
+sha256sums=('7e3ada6b505ed81a7b2a133e2a90a1bd1b0c9f8d33a621268a58086502f600fd'
             '5a0bd9ca7d0632eec36d9f3b4980741f70e47511ee070c1da6c7c778ed058106'
             'f2a742dabb4f1ac32867c3ba152355695220e4bd4a7ba032de98e3c5d2ed3309'
             'ef6cf40ff0a46853f2d5308c884e17328a6a36009f5697d5914bfbb720cac261'
@@ -26,7 +26,6 @@ sha256sums=('0720edee5828d20a21b735e0572e838f3d60e069e98da35d4f589eda690a3400'
 
 build() {
     javac "OperatingSystemUtil.java"
-    mv "$(dirname "$(readlink -f "OperatingSystemUtil.java")")/OperatingSystemUtil.class" "$srcdir"
     unzip -p "bin/bookman-${pkgver}.jar" 'de/bookman/resources/icons/bookman.png' > bookman.png
 }
 
