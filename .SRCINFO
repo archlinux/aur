@@ -1,15 +1,24 @@
 pkgbase = python-accelerate
-	pkgdesc = GTK+ frontend for Stable Diffusion
-	pkgver = 0.15.0
+	pkgdesc = Train and use PyTorch models with multi-GPU, TPU, mixed-precision
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/huggingface/accelerate
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-datasets
+	checkdepends = python-evaluate
+	checkdepends = python-transformers
+	checkdepends = python-scipy
+	checkdepends = python-scikit-learn
+	checkdepends = python-deepspeed
+	checkdepends = python-tqdm
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python
-	source = python-accelerate-0.15.0.tar.gz::https://github.com/huggingface/accelerate/archive/refs/tags/v0.15.0.tar.gz
+	source = python-accelerate-0.16.0.tar.gz::https://github.com/huggingface/accelerate/archive/refs/tags/v0.16.0.tar.gz
 	sha512sums = 25c40dc770ffd8d8a8e3f9a9661abe556c47e43d925b7f04977925c10a99a28218b1b33cd84c34d24d4aef8367136b0abd664534ac82cda88265c62f7b9c6ef4
 
 pkgname = python-accelerate
