@@ -20,7 +20,7 @@ pkgver='1.0.0'
 platforms=( 'all' )
 groups=( 'System/Library/Database' 'System/Library/Archiver' )
 contents=( '/lib<build/lib' )
-pkgdir='/tmp/tmp.pQNZCE2Hlc/sh/pkg'
+pkgdir='/tmp/tmp.msJx4BDiWw/sh/pkg'
 options=( '!strip' )
 pkgrel=1
 
