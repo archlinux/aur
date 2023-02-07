@@ -1,0 +1,13 @@
+pkgbase = davis
+	pkgdesc = CLI client for mpd, written in rust
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/SimonPersson/davis
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	depends = mpd
+	source = davis-0.1.0.tar.gz::https://github.com/SimonPersson/davis/archive/refs/tags/0.1.0.tar.gz
+	sha256sums = 2ee37d3e1439e74713dab6efc449007224f4457993001943ab93f47d579eb25b
+
+pkgname = davis
