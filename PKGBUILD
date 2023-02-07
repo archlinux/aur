@@ -21,8 +21,8 @@ pkgver='1.0.0'
 platforms=( 'all' )
 deps=( 'rcore/libsdl:lib-sdl2' 'rcore/libsdl:lib-sdl2_image' 'rcore/libsdl:lib-sdl2_mixer' 'rcore/freetype:lib-freetype2' )
 groups=( 'Library/WidgetToolkit' )
-contents=( '/icon.svg<lt_3d.svg' '/data/Themes<./Themes' '/docs<./Docs' '/conf/ltconf.tsml<ltconf.tsml' '/lib/LT/Debug/Plugins<./build//Debug/lib/Plugins' '/lib/LT/Debug/libnfd.so<./build//Debug/lib/libnfd.so' '/lib/LT/Debug/libLT_pluginmanager.so<./build//Debug/lib/libLT_pluginmanager.so' '/lib/LT/Debug/libLT.so<./build//Debug/lib/libLT.so' '/lib/LT/Debug/libLTundoredo.so<./build//Debug/lib/libLTundoredo.so' '/lib/LT/Debug/libTSMLParser.so<./build//Debug/lib/libTSMLParser.so' )
-pkgdir='/tmp/tmp.s78AFhTCZm/sh/pkg'
+contents=( '/icon.svg<lt_3d.svg' '/data<./Data' '/data/Themes<./Themes' '/docs<./Docs' '/conf/ltconf.tsml<ltconf.tsml' '/lib/LT/Debug/Plugins<./build//Debug/lib/Plugins' '/lib/LT/Debug/libLT_pluginmanager.so<./build//Debug/lib/libLT_pluginmanager.so' '/lib/LT/Debug/libLT.so<./build//Debug/lib/libLT.so' '/lib/LT/Debug/libLTundoredo.so<./build//Debug/lib/libLTundoredo.so' '/lib/LT/Debug/libTSMLParser.so<./build//Debug/lib/libTSMLParser.so' )
+pkgdir='/tmp/tmp.22i4YS9IWh/sh/pkg'
 options=( '!strip' )
 pkgrel=1
 
