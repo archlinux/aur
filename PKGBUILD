@@ -3,11 +3,11 @@
 pkgname=mldonkey
 _pkgver=3.1.7-2
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc='A multi-network P2P client'
 arch=(x86_64)
 url='http://mldonkey.sourceforge.net/'
-license=(GPL)
+license=(GPL2)
 depends=(file gd hicolor-icon-theme miniupnpc libnatpmp libminiupnpc.so)
 makedepends=(gtk2 librsvg ocaml-num camlp4 lablgtk2)
 optdepends=('librsvg: GUI support'
@@ -16,6 +16,7 @@ backup=(etc/conf.d/mldonkey)
 source=("https://github.com/ygrek/mldonkey/releases/download/release-${pkgver//./-}/mldonkey-${_pkgver}.tar.bz2"
         "https://raw.githubusercontent.com/gentoo/gentoo/master/net-p2p/mldonkey/files/cpp17-byte-namespace.patch"
         "https://github.com/ygrek/mldonkey/commit/a153f0f7a4826d86d51d4bacedc0330b70fcbc34.patch"
+        "https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/mldonkey-fix-build.patch"
         mldonkey.conf
         mldonkey.service
         mldonkey.tmpfiles
@@ -23,6 +24,7 @@ source=("https://github.com/ygrek/mldonkey/releases/download/release-${pkgver//.
 sha256sums=('b926e7aa3de4b4525af73c88f1724d576b4add56ef070f025941dd51cb24a794'
             'eef21187cecc6f1052ff6e0d988093a6fed8b4745ecb257b9e127c23c60cb27d'
             '9c8f54159e2bf5e390f574a015a79b88a87a2117f5bb732741296948a2fb0b8b'
+            '333c3b0ad43b6d6f1786cdd780d4b66fadc638d192875df4422724176201ffdf'
             'f1d9401cefd591662d49011c53fdb2788755a6f745a963e46d8037b990edeb6a'
             '778cebe8edcffd63db3594054c2daa62ce571644a96ad235b8c95470b55c0415'
             '9c78fbfbba4f8286e2c2299e4da6f76d0f34f33fde26964922707c34fb75157b'
@@ -35,6 +37,7 @@ prepare() {
   cd "mldonkey-${_pkgver}"
   patch -Np1 -i ../cpp17-byte-namespace.patch
   patch -Np1 -i ../a153f0f7a4826d86d51d4bacedc0330b70fcbc34.patch
+  patch -Np1 -i ../mldonkey-fix-build.patch
 }
 
 build() {
