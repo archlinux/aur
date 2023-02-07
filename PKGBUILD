@@ -20,8 +20,8 @@ pkgver='1.0.0'
 platforms=( 'all' )
 deps=( 'rcore/libsdl:lib-sdl2' 'rcore/libsdl:lib-sdl2_image' 'rcore/libsdl:lib-sdl2_mixer' 'rcore/freetype:lib-freetype2' )
 groups=( 'Library/WidgetToolkit' )
-contents=( '/icon.svg<lt_3d.svg' '/data/Themes<./Themes' '/docs<./Docs' '/conf/ltconf.tsml<ltconf.tsml' '/lib<./build//platforms/archlinux_x86_64/Release/lib' )
-pkgdir='/tmp/tmp.s78AFhTCZm/sh/pkg'
+contents=( '/icon.svg<lt_3d.svg' '/data<./Data' '/data/Themes<./Themes' '/docs<./Docs' '/conf/ltconf.tsml<ltconf.tsml' '/lib<./build//platforms/linux_x86_64/Release/lib' )
+pkgdir='/tmp/tmp.22i4YS9IWh/sh/pkg'
 options=( '!strip' )
 pkgrel=1
 
