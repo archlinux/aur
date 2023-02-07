@@ -9,6 +9,10 @@ source=(
     "git+https://github.com/rikhuijzer/ata.git#tag=v$pkgver"
 )
 md5sums=('SKIP')
+conflicts=(
+    ata-bin
+    ata-git
+)
 
 build() {
     cd $srcdir/ata

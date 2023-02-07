@@ -5,6 +5,8 @@ pkgbase = ata
 	url = https://github.com/rikhuijzer/ata
 	arch = x86_64
 	makedepends = cargo
+	conflicts = ata-bin
+	conflicts = ata-git
 	source = git+https://github.com/rikhuijzer/ata.git#tag=v1.0.2
 	md5sums = SKIP
 
