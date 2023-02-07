@@ -4,8 +4,8 @@
 
 pkgname=xbl
 pkgver=1.1.6
-pkgrel=1
-pkgdesc="A 3D tetris/blockout game"
+pkgrel=2
+pkgdesc="XBlockOut: X Window block dropping game in 3 Dimension"
 arch=('i686' 'x86_64')
 url="http://perso.univ-lyon1.fr/thierry.excoffier/XBL/"
 license=('GPL')

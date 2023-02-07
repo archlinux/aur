@@ -1,7 +1,7 @@
 pkgbase = xbl
-	pkgdesc = A 3D tetris/blockout game
+	pkgdesc = XBlockOut: X Window block dropping game in 3 Dimension
 	pkgver = 1.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://perso.univ-lyon1.fr/thierry.excoffier/XBL/
 	arch = i686
 	arch = x86_64
@@ -13,4 +13,3 @@ pkgbase = xbl
 	sha1sums = 05b368c20fd16a99346540a5352a011b56926ef3
 
 pkgname = xbl
-
