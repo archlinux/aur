@@ -1,7 +1,7 @@
 #Maintainer: Dylan Delgado <dylan1496@live.com>
 
 pkgname=mtsieve
-pkgver=2.3.8.r229
+pkgver=2.4.2.r257
 pkgrel=1
 pkgdesc='Library for sieving various types of numbers'
 url='https://sourceforge.net/projects/mtsieve/'
@@ -24,6 +24,7 @@ prepare() {
 		-e 's/^CPPFLAGS =/CPPFLAGS +=/' \
 		-e "/^SVN_VERSION :=/s/=.*/= r${_pkgrev}/" \
 		-i makefile
+	sed '30 c\LD_FLAGS=-z noexecstack' -i makefile
 	cd core
 	sed '11 c\#include <cstddef>' -i MpArithVector.h
 }
@@ -31,6 +32,7 @@ prepare() {
 build() {
 	cd "${srcdir}/${pkgname}-svn"
 	CPPFLAGS+=' -march=native'
+	LD_FLAGS+=' -z noexecstack'
 	make
 
 }
