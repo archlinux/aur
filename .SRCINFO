@@ -1,0 +1,12 @@
+pkgbase = guile-wisp
+	pkgdesc = Whitespace to Lisp
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://www.draketo.de/software/wisp
+	arch = x86_64
+	license = GPL3
+	depends = guile
+	source = guile-wisp-1.0.8.tar.gz::https://hg.sr.ht/~arnebab/wisp/archive/v1.0.8.tar.gz
+	sha256sums = a504440737ed6a36e271610f143e1977f0f33103b1988560270d2bf2dd41d617
+
+pkgname = guile-wisp
