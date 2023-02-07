@@ -1,22 +1,21 @@
 # Maintainer: Serge K <arch@phnx47.net>
 
+# For Issues, Pull Requests
 # https://github.com/phnx47/pkgbuilds
 
 _pkgbin=chain-maind
-_pkgname=cro-chain-maind
-pkgname=cro-chain-maind-bin
+_pkgname=cro-${_pkgbin}
+pkgname=${_pkgname}-bin
 pkgdesc='Crypto.org Chain CLI'
+pkgver=4.2.2
+pkgrel=1
 license=('Apache')
 url='https://github.com/crypto-org-chain/chain-main'
-pkgver=3.3.9
-pkgrel=1
 arch=('x86_64')
-_targz="chain-main_${pkgver}_Linux_${arch}.tar.gz"
+_targz="chain-main_${pkgver}_Linux_${arch[0]}.tar.gz"
 source=("${_targz}::${url}/releases/download/v${pkgver}/${_targz}")
-sha512sums=('6a12e1cffb7ef96d0521318c3e5a3fd3ac4255df99d4a9adcdfc5027e451cf044673987839564576a4b0b4fdaa153bdc872d966b3831dd3240f9f9e6f92d3b52')
+sha512sums=('9e6c18825c6535e785897421c584bf46171a0f2f1ff27a31305d7ad744ad58e6e1ad86694ca4fecfca08bfecad4dd808d35862224ab11b908f0a375a304f21f7')
 
 package() {
-  cd "$srcdir/"
   install -Dm755 "bin/${_pkgbin}" "${pkgdir}/usr/bin/${_pkgbin}"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

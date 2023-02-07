@@ -1,11 +1,11 @@
 pkgbase = cro-chain-maind-bin
 	pkgdesc = Crypto.org Chain CLI
-	pkgver = 3.3.9
+	pkgver = 4.2.2
 	pkgrel = 1
 	url = https://github.com/crypto-org-chain/chain-main
 	arch = x86_64
 	license = Apache
-	source = chain-main_3.3.9_Linux_x86_64.tar.gz::https://github.com/crypto-org-chain/chain-main/releases/download/v3.3.9/chain-main_3.3.9_Linux_x86_64.tar.gz
-	sha512sums = 6a12e1cffb7ef96d0521318c3e5a3fd3ac4255df99d4a9adcdfc5027e451cf044673987839564576a4b0b4fdaa153bdc872d966b3831dd3240f9f9e6f92d3b52
+	source = chain-main_4.2.2_Linux_x86_64.tar.gz::https://github.com/crypto-org-chain/chain-main/releases/download/v4.2.2/chain-main_4.2.2_Linux_x86_64.tar.gz
+	sha512sums = 9e6c18825c6535e785897421c584bf46171a0f2f1ff27a31305d7ad744ad58e6e1ad86694ca4fecfca08bfecad4dd808d35862224ab11b908f0a375a304f21f7
 
 pkgname = cro-chain-maind-bin
