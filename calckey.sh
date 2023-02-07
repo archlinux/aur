@@ -43,7 +43,7 @@ fi
 Dependencylist=(
   "/usr/bin/runuser"
   "/usr/bin/systemctl"
-  "yarn"
+  "pnpm"
 )
 
 for dep in ${Dependencylist[@]}; do
@@ -102,7 +102,7 @@ INIT()
     fi
     printf "Initialize Calckey databases…\n"
     cd /usr/share/webapps/calckey
-    /usr/bin/runuser -u calckey -- env HOME="/usr/share/webapps/calckey" yarn run init
+    /usr/bin/runuser -u calckey -- env HOME="/usr/share/webapps/calckey" pnpm run init
 }
 
 MIGRATE()
@@ -115,7 +115,7 @@ MIGRATE()
     fi
     printf "Migrate data to new version\n"
     cd "/usr/share/webapps/calckey/"
-    /usr/bin/runuser -u calckey -- env HOME="/usr/share/webapps/calckey" yarn migrate
+    /usr/bin/runuser -u calckey -- env HOME="/usr/share/webapps/calckey" pnpm run migrate
     if ! [ -z ${MK_ACTIVE+x} ] ; then
         printf "starting up calckey\n"
         /usr/bin/systemctl start calckey.service

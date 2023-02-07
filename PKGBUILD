@@ -2,20 +2,20 @@
 # Based on https://aur.archlinux.org/packages/misskey
 
 pkgname=calckey
-pkgver=13.0.5
+pkgver=13.1.2
 pkgrel=1
 pkgdesc='A greatly enhanced fork of Misskey with better UI/UX, security, features, and more! (Experimental)'
 url='https://calckey.cloud'
 arch=('x86_64')
 license=('AGPL3' 'MIT')
-depends=('nodejs' 'npm' 'postgresql' 'redis' 'yarn')
+depends=('nodejs' 'npm' 'postgresql' 'redis' 'pnpm')
 makedepends=('git' 'python')
 options=('debug')
 install='calckey.install'
 optdepends=('elasticsearch: Search functionality'
             'ffmpeg: Media de-encode functionality'
             'nginx: Reverse-proxy usage')
-_commit='78e6f38ef247c5ea7e7d49d00af2ba99673a3ff9' #tag/13.0.5
+_commit='998e6fd4d262691e87beb5e46218490162d24452' #tag/13.0.5
 source=("git+https://codeberg.org/calckey/calckey.git#commit=${_commit}"
         "${pkgname}.install"
         "${pkgname}.service"
@@ -25,9 +25,9 @@ source=("git+https://codeberg.org/calckey/calckey.git#commit=${_commit}"
 sha256sums=('SKIP'
             '9c97cf0b759ed9b79deb08044b688fe480ced068981f20636f0aa12e47752290'
             '64f805ff3d8a69eb03b0ab4359147f7ef39d94691b6c1e7b0529cdb7a53985d2'
-            'f52d600205f5d7f18b44bdceba78d2f28d36cc3d434ffca3a3433c47700a0d8c'
+            '5847f19482a6a0c50a1619ac303ce1e46bdd9b6aef7ddbfbe73caecab09f1876'
             '51252a058e84cf3772634aa7b02199cab8ddd08fefdfc5849836403780db6470'
-            '151406c810174393235353753034eb4f2f6916dcc969c3753d0ec5bb27913a8a')
+            'b77fdf9138080924d8d4b008b6a075f513eecfad86efd1fc139bdc5e7a49f7cd')
 
 pkgver() {
     cd "${pkgname}"
@@ -40,7 +40,7 @@ prepare() {
     # Dependency handling
     git submodule update --init
     corepack enable
-    HOME="${srcdir}/${pkgname}" yarn install
+    HOME="${srcdir}/${pkgname}" pnpm install
 
     # Example configuration
     ## Change example configuration to reflect
@@ -56,7 +56,7 @@ prepare() {
 
 build() {
     cd "${pkgname}"
-    NODE_ENV=production HOME="${srcdir}/${pkgname}" yarn build
+    NODE_ENV=production HOME="${srcdir}/${pkgname}" pnpm run build
 
     # Cleanup
     find "${srcdir}/${pkgname}" \
@@ -92,7 +92,6 @@ build() {
     rm -r "${srcdir}/${pkgname}/calckey-assets"
     rm -rf "${srcdir}/${pkgname}/.npm"
     rm -r "${srcdir}/${pkgname}/scripts"
-    rm -r "${srcdir}/${pkgname}/.yarn"
 }
 
 package() {
@@ -114,8 +113,8 @@ package() {
     # cache setup
     ln -s "/var/cache/${pkgname}" "${pkgdir}/usr/share/webapps/${pkgname}/.cache"
 
-    # yarn, npm setup
-    ln -s "/var/lib/${pkgname}/yarn" "${pkgdir}/usr/share/webapps/${pkgname}/.yarn"
+    # pnpm, npm setup
+    ln -s "/var/lib/${pkgname}/pnpm" "${pkgdir}/usr/share/webapps/${pkgname}/.pnpm"
     ln -s "/var/lib/${pkgname}/npm" "${pkgdir}/usr/share/webapps/${pkgname}/.npm"
 
     # files (upload, …)

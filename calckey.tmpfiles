@@ -1,7 +1,7 @@
 #Type Path                              Mode    User    Group   Age     Argument
 d   /var/lib/calckey                    0770    calckey calckey -       -
 d   /var/lib/calckey/npm                0770    calckey calckey -       -
-d   /var/lib/calckey/yarn               0770    calckey calckey -       -
+d   /var/lib/calckey/pnpm               0770    calckey calckey -       -
 d   /var/lib/calckey/files              0770    calckey calckey -       -
 z   /etc/webapps/calckey/config.json    0660    calckey calckey -       -
 d   /var/cache/calckey                  0755    calckey calckey -       -
