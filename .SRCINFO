@@ -1,0 +1,28 @@
+pkgbase = ocp-curses-git
+	pkgdesc = Open Cubic Player - ncurses only (GIT Version)
+	pkgver = 0.2.102.r2.g0065417
+	pkgrel = 1
+	url = http://stian.cubic.org/project-ocp.php
+	install = ocp-curses-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = xa
+	depends = pulseaudio-alsa
+	depends = cjson
+	depends = libdiscid
+	depends = libancient
+	optdepends = adplug: for OPL formats support
+	optdepends = alsa-lib: for ALSA output
+	optdepends = flac: for FLAC audio support
+	optdepends = libmad: for MPEG audio support
+	optdepends = libvorbis: for Vorbis audio support
+	provides = ocp-curses=0.2.102.r2.g0065417
+	provides = ocp-curses-git=0.2.102.r2.g0065417
+	conflicts = ocp
+	conflicts = ocp-git
+	source = ocp-curses::git+https://github.com/mywave82/opencubicplayer.git
+	md5sums = SKIP
+
+pkgname = ocp-curses-git
