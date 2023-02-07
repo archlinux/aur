@@ -1,10 +1,11 @@
 pkgbase = slrn-snapshot-canlock
 	pkgdesc = An easy-to-use, text-mode, threaded Usenet/NNTP client/newsreader (development snapshot with cancel-lock)
 	pkgver = 1.0.4.6
-	pkgrel = 4
+	pkgrel = 5
 	url = https://jedsoft.org/snapshots/
 	arch = x86_64
 	arch = armv7h
+	arch = aarch64
 	license = GPL
 	makedepends = uudeview
 	depends = openssl
