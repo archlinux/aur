@@ -1,0 +1,25 @@
+pkgbase = python-pasp-git
+	pkgdesc = Probabilistic answer set programming (install from git)
+	pkgver = r203.ce327ca
+	pkgrel = 1
+	url = https://RenatoGeh.github.io/pasp
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = gcc
+	makedepends = python-numpy
+	depends = python
+	depends = clingo
+	depends = python-lark-parser
+	depends = python-numpy
+	depends = python-pandas
+	optdepends = python-pytorch
+	optdepends = python-pytorch-cuda
+	optdepends = python-pytorch-opt
+	optdepends = python-pytorch-opt-cuda
+	provides = python-pasp
+	conflicts = python-pasp
+	source = git+https://github.com/RenatoGeh/pasp#branch=master
+	sha256sums = SKIP
+
+pkgname = python-pasp-git
