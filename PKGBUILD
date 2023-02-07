@@ -4,7 +4,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=('jed-snapshot' 'xjed-snapshot' 'rgrep')
-_pkgver=0.99.20-178
+_pkgver=0.99.20-179
 pkgver=${_pkgver//-/.}
 _pkgname=${pkgname/-snapshot/}
 pkgrel=1
@@ -14,7 +14,7 @@ license=('GPL')
 depends=('gpm' 'slang' 'libxft')
 makedepends=('libxext' 'libxt')
 source=("http://www.jedsoft.org/snapshots/jed-pre${_pkgver}.tar.gz")
-sha256sums=('1a0346710dc1b21ca89473316e0d46f6d8cabb90b4024a9b2de94eae9f68a32e')
+sha256sums=('c73063ada1c25f5b684da6ba93c4c5154bfaa455127aa25c21114b20fb71a3c7')
 
 install="$pkgname.install"
 
@@ -39,6 +39,7 @@ package_jed-snapshot() {
   conflicts=('jed')
   cd ${_pkgname}-pre${_pkgver}
   make DESTDIR="${pkgdir}" install
+  
   rm "$pkgdir"/usr/bin/xjed
 }
 
@@ -48,6 +49,7 @@ package_xjed-snapshot() {
   conflicts=('xjed' 'jed')
   cd ${_pkgname}-pre${_pkgver}
   make DESTDIR="${pkgdir}" install
+  
   rm "$pkgdir"/usr/bin/{jed,jed-script}
 }
 
