@@ -20,8 +20,8 @@ pkgver='1.0.0'
 platforms=( 'all' )
 deps=( 'rcore/tssoftware:lib-lt-devel' 'rcore/tssoftware:lib-lt-headers' 'rcore/btzy:libnfd' )
 groups=( 'Developer/IDE' )
-contents=( '/icon.svg<ltstudio.svg' '/data/<./Data' '/conf/<./Config' '/bin<build/bin' '/bin/oshfclient<oshfclient' )
-pkgdir='/tmp/tmp.4bkMm8zjlO/sh/pkg'
+contents=( '/icon.svg<ltstudio.svg' '/data/<./Data' '/data/Plugins/UIEditor/libLTStudio_GuiApp.so<./Plugins/UIEditor/libLTStudio_GuiApp.so' '/data/Plugins/UIEditor/Data<./Plugins/UIEditor/Data' '/data/Plugins/Git/libLTStudio_Git.so<./Plugins/Git/libLTStudio_Git.so' '/data/Plugins/Git/Data<./Plugins/UIEditor/Data' '/conf/<./Config' '/bin<build/bin' '/bin<../LTUiTimestamp/build/bin' '/bin<../LTProjConvert/build/bin' '/bin<../UIToCpp/build/bin' '/bin/oshfclient<oshfclient' )
+pkgdir='/tmp/tmp.ubQ8Y3MWBQ/sh/pkg'
 options=( '!strip' )
 pkgrel=1
 
