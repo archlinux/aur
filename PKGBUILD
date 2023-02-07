@@ -11,7 +11,7 @@ _commit=2f38cbd83adb670ede4b654e24be600d58dee06c # tags/V_9_2_P1_Q2
 pkgrel=1
 pkgdesc="Free version of the SSH connectivity tools (with XDG support)"
 arch=('x86_64')
-url='https://www.openssh.com/portable.html'
+url='https://github.com/dusansimic/openssh-xdg'
 license=('custom:BSD')
 depends=(
   'glibc'
@@ -38,7 +38,7 @@ backup=(
   'etc/ssh/sshd_config'
 )
 source=(
-  "git+https://github.com/dusansimic/openssh-xdg#commit=$_commit"
+  "git+$url#commit=$_commit"
   "${pkgname%-xdg}-9.0p1-sshd_config.patch"
   'sshdgenkeys.service'
   'sshd.service'
