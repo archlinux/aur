@@ -3,7 +3,7 @@
 _base=pyrate_limiter
 pkgname=python-${_base/_/-}
 pkgdesc="Python Rate-Limiter using Leaky-Bucket Algorithm"
-pkgver=2.8.5
+pkgver=2.9.0
 pkgrel=1
 arch=(any)
 url="https://github.com/vutran1710/PyrateLimiter"
@@ -15,7 +15,7 @@ optdepends=('python-filelock: for create file lock in module scope to reuse acro
   'python-redis: for use a bucket with Redis using List')
 # 'python-redis-py-cluster: for support Redis cluster')
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('bd14abc3b55df2b5bca1583ecc2a3a88ef74ec46ed54944e63fc4630a775cf31015a7cb9e0c90ddcb9fd061fd1c0397603e83d7d8c56e23f8b89d3b062716c09')
+sha512sums=('f61ef7bfcabfa6650985ef70cab4d9fee0e9ad582a06f4a5f3de3b3cf5fdee969b06a2c94a9db241f55243d92889b969db1e551630b9a12ab7717a9b9ea1696c')
 
 build() {
   cd ${_base}-${pkgver}
