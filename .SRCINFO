@@ -1,6 +1,6 @@
 pkgbase = calckey
 	pkgdesc = A greatly enhanced fork of Misskey with better UI/UX, security, features, and more! (Experimental)
-	pkgver = 13.0.5
+	pkgver = 13.1.2
 	pkgrel = 1
 	url = https://calckey.cloud
 	install = calckey.install
@@ -18,7 +18,7 @@ pkgbase = calckey
 	optdepends = ffmpeg: Media de-encode functionality
 	optdepends = nginx: Reverse-proxy usage
 	options = debug
-	source = git+https://codeberg.org/calckey/calckey.git#commit=78e6f38ef247c5ea7e7d49d00af2ba99673a3ff9
+	source = git+https://codeberg.org/calckey/calckey.git#commit=998e6fd4d262691e87beb5e46218490162d24452
 	source = calckey.install
 	source = calckey.service
 	source = calckey.sh
@@ -27,8 +27,8 @@ pkgbase = calckey
 	sha256sums = SKIP
 	sha256sums = 9c97cf0b759ed9b79deb08044b688fe480ced068981f20636f0aa12e47752290
 	sha256sums = 64f805ff3d8a69eb03b0ab4359147f7ef39d94691b6c1e7b0529cdb7a53985d2
-	sha256sums = f52d600205f5d7f18b44bdceba78d2f28d36cc3d434ffca3a3433c47700a0d8c
+	sha256sums = 5847f19482a6a0c50a1619ac303ce1e46bdd9b6aef7ddbfbe73caecab09f1876
 	sha256sums = 51252a058e84cf3772634aa7b02199cab8ddd08fefdfc5849836403780db6470
-	sha256sums = 151406c810174393235353753034eb4f2f6916dcc969c3753d0ec5bb27913a8a
+	sha256sums = b77fdf9138080924d8d4b008b6a075f513eecfad86efd1fc139bdc5e7a49f7cd
 
 pkgname = calckey
