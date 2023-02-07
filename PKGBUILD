@@ -2,7 +2,7 @@
 _pkgname=harvesttimer-qt
 _appname=harvest
 pkgname=harvest-timer-qt
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc='Desktop app for Harvest, a simple time tracker and reporting tool for companies'
 arch=('x86_64')
@@ -13,11 +13,12 @@ conflicts=('harvest-timer')
 depends=('qt6-base' 'qt6-svg')
 makedepends=('cmake' 'qt6-tools')
 apptag="v${pkgver}"
+install="${pkgname}.install"
 source=(
 	"https://github.com/jorge-barroso/${_pkgname}/archive/refs/tags/${apptag}.tar.gz"
 )
 srcdir_name="${_pkgname}-${pkgver}"
-sha256sums=('cb0d477a93a7e05be6985dd0e30a4974367729140cdaa99c0b7dc8008c1c5951')
+sha256sums=('dace76122bb272f3268b5dea628ece5be399a26ba6bd893d99dbff175d38c49a')
 
 build() {
 	cd "${srcdir}"
