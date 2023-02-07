@@ -1,0 +1,24 @@
+diff --git src/net_processing.cpp b/src/net_processing.cpp
+index 6f443d3343..cac6f47a62 100644
+--- src/net_processing.cpp
++++ src/net_processing.cpp
+@@ -44,6 +44,7 @@
+ 
+ #include <chrono>
+ #include <cmath>
++#include <deque>
+ #include <memory>
+ #include <stdexcept>
+ #include <type_traits>
+diff --git src/validation.cpp src/validation.cpp
+index 99ab618e23..4fd04a7dc2 100644
+--- src/validation.cpp
++++ src/validation.cpp
+@@ -57,6 +57,7 @@
+ 
+ #include <algorithm>
+ #include <atomic>
++#include <deque>
+ #include <limits>
+ #include <list>
+ #include <optional>
