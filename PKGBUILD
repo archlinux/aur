@@ -3,7 +3,7 @@
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=system76-driver
 pkgver=20.04.73
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal driver for System76 computers"
 arch=('any')
 url="https://github.com/pop-os/system76-driver"
@@ -12,7 +12,8 @@ depends=('at' 'dmidecode' 'ethtool' 'gtk3' 'lm_sensors' 'pciutils' 'polkit'
          'python' 'python-cffi' 'python-dbus' 'python-distro' 'python-evdev'
          'python-gobject' 'python-pynacl' 'python-systemd' 'python-xlib'
          'system76-firmware-daemon' 'usbutils' 'wireless_tools')
-makedepends=('git' 'python-build' 'python-installer' 'python-pyflakes' 'python-wheel')
+makedepends=('git' 'python-build' 'python-installer' 'python-pyflakes'
+             'python-setuptools' 'python-wheel')
 optdepends=(
   'firmware-manager: Manage System76 firmware updates via standalone application'
   'grub: Required to apply kernel parameters'
