@@ -3,7 +3,7 @@
 # Contributor: Jakub Okoński <jakub@okonski.org>
 pkgname=miopengemm
 pkgver=5.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An OpenCL GEMM kernel generator"
 arch=('x86_64')
 url="https://github.com/ROCmSoftwarePlatform/MIOpenGEMM"
