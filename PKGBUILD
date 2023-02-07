@@ -1,5 +1,5 @@
 pkgname="ata-git"
-pkgver=r1.0aa3473
+pkgver=r2.3ac8785
 pkgrel=1
 pkgdesc="Ask the Terminal Anything"
 arch=('x86_64')
@@ -9,6 +9,10 @@ source=(
     "git+https://github.com/rikhuijzer/ata.git"
 )
 md5sums=('SKIP')
+conflicts=(
+    ata
+    ata-bin
+)
 
 pkgver() {
   cd "${_pkgname}"
