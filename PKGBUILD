@@ -4,7 +4,7 @@
 ## GPG key is available for download from upstream's repo
 
 pkgname=doppler-cli
-pkgver=3.45.0
+pkgver=3.54.0
 pkgrel=1
 pkgdesc="CLI utility for Doppler, environment and secrets manager"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -15,7 +15,7 @@ makedepends=('go')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/doppler_${pkgver}_src.tar.gz"
   "$pkgname-$pkgver.tar.gz.sig::$url/releases/download/$pkgver/doppler_${pkgver}_src.tar.gz.sig")
-sha256sums=('07852be641b4134f597bb09e1e383db165322d2cd4d081d499eaa286c0909058'
+sha256sums=('50b3e4769162906e062d914e930f089463e9058be48cc9a4d4e7d566f2448879'
             'SKIP')
 validpgpkeys=('B70BD7FCA460C4A3D0EEB965D3D593D50EE79DEC')
 
@@ -44,8 +44,8 @@ check() {
 }
 
 package() {
-	install -D build/cli "$pkgdir/usr/bin/doppler"
-	install -Dm644 build/doppler.bash "$pkgdir/usr/share/bash-completion/completions/doppler"
-	install -Dm644 build/_doppler -t "$pkgdir/usr/share/zsh/site-functions/"
-	install -Dm644 build/doppler.fish -t "$pkgdir/usr/share/fish/vendor_completions.d/"
+	install -Dv build/cli "$pkgdir/usr/bin/doppler"
+	install -Dvm644 build/doppler.bash "$pkgdir/usr/share/bash-completion/completions/doppler"
+	install -Dvm644 build/_doppler -t "$pkgdir/usr/share/zsh/site-functions/"
+	install -Dvm644 build/doppler.fish -t "$pkgdir/usr/share/fish/vendor_completions.d/"
 }
