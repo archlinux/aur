@@ -1,6 +1,6 @@
 pkgbase = gparted-git
 	pkgdesc = A Partition Magic clone, frontend to GNU Parted
-	pkgver = 1.1.0.r18.g5768115b
+	pkgver = 1.4.0.r85.g1d92c7aa
 	pkgrel = 1
 	url = https://gparted.org/
 	arch = i686
@@ -36,4 +36,3 @@ pkgbase = gparted-git
 	sha256sums = SKIP
 
 pkgname = gparted-git
-

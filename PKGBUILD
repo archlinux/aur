@@ -1,10 +1,11 @@
-# Maintainer: Philip Goto <philip.goto@gmail.com>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Philip Goto <philip.goto@gmail.com>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Andrew Simmons <andrew.simmons@gmail.com>
 # Contributor: György Balló <ballogy@freestart.hu>
 
 pkgname=gparted-git
-pkgver=1.1.0.r18.g5768115b
+pkgver=1.4.0.r85.g1d92c7aa
 pkgrel=1
 pkgdesc="A Partition Magic clone, frontend to GNU Parted"
 arch=(i686 x86_64 armv7h aarch64)
