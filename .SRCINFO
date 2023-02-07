@@ -1,6 +1,6 @@
 pkgbase = gnu-poke-git
-	pkgdesc = Interactive, extensible editor for binary data.
-	pkgver = r4210.a5cccc4e
+	pkgdesc = The GNU extensible binary editor
+	pkgver = r5339.bf7d302e
 	pkgrel = 1
 	url = http://www.jemarch.net/poke.html
 	arch = i686
@@ -12,18 +12,22 @@ pkgbase = gnu-poke-git
 	checkdepends = dejagnu
 	makedepends = help2man
 	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = gettext
 	depends = gc
 	depends = readline
 	depends = gettext
 	depends = json-c
 	provides = poke
+	conflicts = poke
 	options = !makeflags
-	source = gnu-poke-git::git+https://git.savannah.gnu.org/git/poke.git
-	source = gnulib::git://git.sv.gnu.org/gnulib
-	source = jitter::git+http://git.ageinghacker.net/jitter
+	source = git+https://git.savannah.gnu.org/git/poke.git
+	source = git://git.sv.gnu.org/gnulib
+	source = git+https://git.ageinghacker.net/jitter
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = gnu-poke-git
-

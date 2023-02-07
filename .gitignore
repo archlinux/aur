@@ -1,6 +1,3 @@
-*.tar.zst
-*.tar.xz
-*.tar.gz
-/gnu-poke-git
-/pkg
-/src
+*
+!.gitignore
+!PKGBUILD

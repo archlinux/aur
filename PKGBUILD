@@ -1,22 +1,26 @@
-# Maintainer: Yunxiang Li <shironeko@waifu.club>
+# Maintainer: Nichlas Severinsen <ns@nsz.no>
+# Contributor: Arvedui <arvedui@posteo.de>
+# Contributor: Yunxiang Li <shironeko@waifu.club>
 
 pkgname=gnu-poke-git
-pkgver=r4210.a5cccc4e
+_gitname=poke
+pkgver=r5339.bf7d302e
 pkgrel=1
-pkgdesc="Interactive, extensible editor for binary data."
+pkgdesc="The GNU extensible binary editor"
 arch=(i686 x86_64 armv6h armv7h aarch64)
 url="http://www.jemarch.net/poke.html"
 license=('GPL3')
 depends=('gc' 'readline' 'gettext' 'json-c')
-makedepends=('help2man' 'git')
+makedepends=('help2man' 'git' 'autoconf' 'automake' 'libtool' 'gettext')
 checkdepends=('dejagnu')
 optdepends=()
+conflicts=('poke')
 provides=('poke')
 options=('!makeflags')
-source=("
-    ${pkgname}::git+https://git.savannah.gnu.org/git/poke.git"
-    gnulib::git://git.sv.gnu.org/gnulib
-    jitter::git+http://git.ageinghacker.net/jitter
+source=(
+    "git+https://git.savannah.gnu.org/git/$_gitname.git"
+    "git://git.sv.gnu.org/gnulib"
+    "git+https://git.ageinghacker.net/jitter"
     )
 sha256sums=(
     'SKIP'
@@ -25,38 +29,34 @@ sha256sums=(
     )
 
 pkgver() {
-    cd "${pkgname}"
+    cd "${srcdir}/$_gitname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    cd "${pkgname}"
-    git submodule init gnulib
+    cd "${srcdir}/$_gitname"
+    git submodule init
     git config submodule.gnulib.url "${srcdir}/gnulib"
-    git submodule init jitter
     git config submodule.jitter.url "${srcdir}/jitter"
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 
     ./bootstrap --skip-po
-    mkdir build && cd build
+    mkdir -p build && cd build
     ../configure --prefix=/usr CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
-
 }
 
 build() {
-    cd "${pkgname}/build"
-
+    cd "${srcdir}/$_gitname/build"
     make
 }
 
 check() {
-    cd "${pkgname}/build"
-
+    cd "${srcdir}/$_gitname/build"
     make -k check
 }
 
 package() {
-    cd "${pkgname}/build"
-
+    cd "${srcdir}/$_gitname/build"
     make DESTDIR="${pkgdir}/" install
+    install -Dm644 "${srcdir}/${_gitname}/COPYING" "$pkgdir/usr/share/licenses/$_gitname/LICENSE"
 }
