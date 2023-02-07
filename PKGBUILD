@@ -1,7 +1,7 @@
 # Maintainer: Derek J. Clark <derekjohn.clark@gmail.com>
 pkgname=ogui-git
 _pkgbase=OpenGamepadUI
-pkgver=v0.0.2.r10.gd4236f8
+pkgver=v0.0.2.r16.g119e823
 pkgrel=1
 pkgdesc="Open source game launcher"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/ShadowBlip/OpenGamepadUI"
 license=('GPL')
 groups=()
 depends=('glibc' 'gcc-libs' 'libx11' 'libxres' 'libxcb' 'libxext' 'libxau'
-	 'libxdmcp' 'gamescope' 'ryzenadj-git'
+	 'libxdmcp' 'gamescope' 'ryzenadj-git' 'firejail'
 	 )
 optdepends=()
 makedepends=('godot4-bin' 'scons' 'pkgconf' 'gcc' 'libxcursor' 'libxinerama'
@@ -17,7 +17,7 @@ makedepends=('godot4-bin' 'scons' 'pkgconf' 'gcc' 'libxcursor' 'libxinerama'
 	     'unzip' 'wget' 'git'
 	     )
 provides=('ogui')
-_tag=d4236f8ee6071b31850f947bef2c73fcb76c2c22
+_tag=119e82385a72bd6c3693385989e2d9913e45f5ec
 source=("${_pkgbase}::git+https://github.com/ShadowBlip/${_pkgbase}.git#tag=${_tag}")
 sha256sums=('SKIP')
 
