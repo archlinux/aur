@@ -1,6 +1,6 @@
 pkgbase = linux-test-project
 	pkgdesc = Collection of tools for testing the Linux kernel and related features
-	pkgver = 20220930
+	pkgver = 20230127
 	pkgrel = 1
 	url = https://linux-test-project.github.io/
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = linux-test-project
 	depends = python
 	depends = numactl
 	options = !lto
-	source = https://github.com/linux-test-project/ltp/releases/download/20220930/ltp-full-20220930.tar.xz
-	sha256sums = 533ab63915b916640667ecce17ee4998006d80d394d4b1f1d105a7aa1df50d38
+	source = https://github.com/linux-test-project/ltp/releases/download/20230127/ltp-full-20230127.tar.xz
+	sha256sums = 254412a52c7238f35a247337da186f485e76fb64c6549ed849b3442fc7a417ef
 
 pkgname = linux-test-project
