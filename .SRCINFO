@@ -1,13 +1,13 @@
 pkgbase = pdfio
 	pkgdesc = Simple C library for reading and writing PDF files
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/michaelrsweet/pdfio
 	arch = x86_64
 	arch = aarch64
 	license = Apache
 	makedepends = zlib
-	source = pdfio-1.0.1.tar.gz::https://github.com/michaelrsweet/pdfio/releases/download/v1.0.1/pdfio-1.0.1.tar.gz
-	md5sums = ec0e57c8360955c87619f196db47b65d
+	source = pdfio-1.1.0.tar.gz::https://github.com/michaelrsweet/pdfio/releases/download/v1.1.0/pdfio-1.1.0.tar.gz
+	md5sums = b8b520d110244fddb6769c3a1dac8272
 
 pkgname = pdfio
