@@ -2,8 +2,8 @@
 # Contributor: Konrad Malik (https://konradmalik.github.io/)
 
 pkgname=evernote-beta-bin
-pkgver=10.49.4
-buildver=3782-127ce42593
+pkgver=10.52.8
+buildver=3911-111c1a8a34
 pkgrel=1
 pkgdesc="Official Evernote client for Linux (beta, early-access)"
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
 )
 noextract=("Evernote-Beta-${pkgver}-linux-ddl-beta-${buildver}.deb")
 sha256sums=(
-    'f39d02e5f74ac77d6ba8abc853f678f2936ef910f5f8d72b58e727b3fd80c40d'
+    'b873e806dcb3ac9716b9ff08aec6d87ced03d7e306df9b3235f71411074ea94b'
 )
 
 package() {
