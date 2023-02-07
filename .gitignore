@@ -1,1 +1,6 @@
 *.sh
+*.deb
+*.tar.zst
+
+pkg/
+src/
