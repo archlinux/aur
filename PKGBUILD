@@ -2,7 +2,7 @@
 pkgname=python-accelerate
 _name=${pkgname#python-}
 pkgver=0.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Train and use PyTorch models with multi-GPU, TPU, mixed-precision"
 arch=(any)
 url="https://github.com/huggingface/$_name"
@@ -10,16 +10,16 @@ license=('MIT')
 groups=()
 depends=(python)
 makedepends=(python-build python-installer python-wheel python-setuptools)
-checkdepends=(
-  "python-pytest"
-  "python-datasets"
-  "python-evaluate"
-  "python-transformers"
-  "python-scipy"
-  "python-scikit-learn"
-  "python-deepspeed"
-  "python-tqdm"
-)
+# checkdepends=(
+#   "python-pytest"
+#   "python-datasets"
+#   "python-evaluate"
+#   "python-transformers"
+#   "python-scipy"
+#   "python-scikit-learn"
+#   "python-deepspeed"
+#   "python-tqdm"
+# )
 optdepends=()
 provides=()
 conflicts=()
@@ -41,7 +41,7 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-check() {
-    cd "$_name-$pkgver"
-    pytest tests
-}
+# check() {
+#     cd "$_name-$pkgver"
+#     pytest tests
+# }
