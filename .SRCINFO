@@ -1,13 +1,13 @@
 pkgbase = tera-cli
 	pkgdesc = CLI to make one-off Tera templating easier
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/guangie88/tera-cli
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = tera-cli-0.4.1.tar.gz::https://github.com/guangie88/tera-cli/archive/v0.4.1.tar.gz
-	sha256sums = 1214150a5a7ff65d087a2d385344caf09c98a34ca7bfb76c41b27e3dfa3150e8
+	source = tera-cli-0.5.0.tar.gz::https://github.com/guangie88/tera-cli/archive/v0.5.0.tar.gz
+	sha256sums = 6a9bcb8cc0cdb65fa2ec5100d94be495859534abb19b6b08fe182f3825779744
 
 pkgname = tera-cli
