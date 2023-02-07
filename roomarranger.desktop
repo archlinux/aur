@@ -1,11 +1,13 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=Room Arranger
-GenericName=Design your room, office, appartment, house.
+GenericName=3D Room Designer
+Comment=Design your room, office, appartment, house.
 Exec=/usr/bin/rooarr_run.sh %f
 Icon=roomarranger
 Type=Application
 Terminal=false
 Categories=Graphics;3D;Design
 StartupNotify=true
+StartupWMClass=RoomArranger
 MimeType=MimeType=application/com.roomarranger.project;application/com.roomarranger.object;
