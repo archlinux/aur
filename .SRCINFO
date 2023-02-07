@@ -1,8 +1,8 @@
 pkgbase = loupe-git
 	pkgdesc = Simple image viewer for GNOME
-	pkgver = r143.aa781d3
+	pkgver = r189.aa7a2df
 	pkgrel = 1
-	url = https://gitlab.gnome.org/BrainBlasted/loupe
+	url = https://gitlab.gnome.org/Incubator/loupe
 	arch = x86_64
 	arch = aarch64
 	license = GPL
@@ -10,10 +10,12 @@ pkgbase = loupe-git
 	makedepends = itstool
 	makedepends = meson
 	makedepends = rust
+	depends = gtk4>=1:4.9.0
 	depends = libadwaita
+	depends = libgweather-4
 	provides = loupe
 	conflicts = loupe
-	source = git+https://gitlab.gnome.org/BrainBlasted/loupe.git
+	source = git+https://gitlab.gnome.org/Incubator/loupe.git
 	b2sums = SKIP
 
 pkgname = loupe-git

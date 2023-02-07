@@ -1,13 +1,17 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=loupe-git
-pkgver=r143.aa781d3
+pkgver=r189.aa7a2df
 pkgrel=1
 pkgdesc='Simple image viewer for GNOME'
 arch=(x86_64 aarch64)
-url='https://gitlab.gnome.org/BrainBlasted/loupe'
+url='https://gitlab.gnome.org/Incubator/loupe'
 license=(GPL)
-depends=(libadwaita)
+depends=(
+	'gtk4>=1:4.9.0'
+	libadwaita
+	libgweather-4
+)
 makedepends=(
 	git
 	itstool
@@ -37,5 +41,5 @@ check() {
 }
 
 package() {
-	DESTDIR="${pkgdir}" meson install -C build
+	meson install -C build --destdir "${pkgdir}"
 }
