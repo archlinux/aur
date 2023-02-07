@@ -1,16 +1,16 @@
 pkgbase = tbtools
 	pkgdesc = GUI/CommandLine Tool Box for biologistists to utilize NGS data.
-	pkgver = 1.098775
-	pkgrel = 2
+	pkgver = 1.112
+	pkgrel = 1
 	url = https://github.com/CJ-Chen/TBtools
 	arch = x86_64
 	license = custom:commercial
 	depends = java-runtime>=1.8
 	depends = bash
 	options = !strip
-	source = TBtools-1.098775.zip::https://github.com/CJ-Chen/TBtools/archive/refs/tags/1.098775.zip
+	source = TBtools-1.112.zip::https://github.com/CJ-Chen/TBtools/archive/refs/tags/v1.112.zip
 	source = TBtools.desktop
-	sha256sums = de988d0bff4ae73341e618867eae5598bf664d530fc4224b0381a4851038aad0
+	sha256sums = 32c209531143eb6955fc6a822b77b84f90545ec93043f73e415a17cfa839fb66
 	sha256sums = 3c12fbf52a0e3fb96fe62302f6b3938e8e42a393468620091ca7d9259073af13
 
 pkgname = tbtools
