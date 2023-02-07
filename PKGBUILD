@@ -7,7 +7,7 @@
 pkgname=mullvad-vpn-beta
 _pkgver=2023.1
 _channel=beta
-_rel=1
+_rel=2
 pkgver=${_pkgver}.${_channel}${_rel}  # beta
 #pkgver=${_pkgver}.${_channel}  # stable
 pkgrel=1
@@ -21,7 +21,7 @@ provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 options=('!lto')
 install="${pkgname%-beta}.install"
-_tag=5192b7e463aa198504819c3e1c2c894b26f1ddc4  # tags/2023.1-beta1^0
+_tag=cf294a0dacc52620d40f23bd2345706460a945ff  # tags/2023.1-beta2^0
 _commit=f6dca66645c82501a330416ad39c7e63bcdae57d
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#commit=${_tag}?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed"
