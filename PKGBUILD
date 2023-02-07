@@ -4,7 +4,7 @@
 pkgname=adguardhome
 _pkgname=AdGuardHome
 pkgver=0.107.23
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Network-wide ads and trackers blocking DNS server"
 arch=(x86_64 aarch64 armv7h armv6h)
@@ -14,7 +14,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/AdguardTeam/AdGuardHome/arc
         "$pkgname.service"
         "$pkgname.defaults"
 )
-makedepends=(go nodejs-lts-gallium npm yarn git)
+makedepends=(go nodejs-lts-gallium npm git)
 depends=(glibc)
 backup=('etc/default/adguardhome')
 b2sums=('e8fd78ae97a68f4b09299d556de43549d6fe186e168f0cb0e69b5c194c270a3e4f5bbf60de5f628009b6ef4cc52caa9fa0efec6e94e9d4c85fa90d4d0213cee3'
@@ -24,7 +24,6 @@ b2sums=('e8fd78ae97a68f4b09299d556de43549d6fe186e168f0cb0e69b5c194c270a3e4f5bbf6
 prepare() {
   cd "$_pkgname-$pkgver"
   npm --prefix client ci
-  yarn --cwd client2 install
   go mod download
 }
 
@@ -32,7 +31,6 @@ build() {
   cd "$_pkgname-$pkgver"
   export NODE_OPTIONS=--openssl-legacy-provider
   npm --prefix client run build-prod
-  yarn --cwd client2 build
   unset NODE_OPTIONS
   go build \
     -trimpath \

@@ -1,7 +1,7 @@
 pkgbase = adguardhome
 	pkgdesc = Network-wide ads and trackers blocking DNS server
 	pkgver = 0.107.23
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/AdguardTeam/AdGuardHome
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = adguardhome
 	makedepends = go
 	makedepends = nodejs-lts-gallium
 	makedepends = npm
-	makedepends = yarn
 	makedepends = git
 	depends = glibc
 	backup = etc/default/adguardhome
