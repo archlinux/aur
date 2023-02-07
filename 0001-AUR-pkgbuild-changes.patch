@@ -1,6 +1,6 @@
-From c070b8aa816e52ef2ede2eaf01aee986d2a43035 Mon Sep 17 00:00:00 2001
+From bf83d22adddc2c5a610281049442656e68046dc8 Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
-Date: Mon, 27 Jun 2022 01:26:56 +0300
+Date: Tue, 7 Feb 2023 22:00:48 +0200
 Subject: [PATCH] AUR pkgbuild changes
 
 ---
@@ -303,14 +303,14 @@ index 0827caa9..4e6d19f2 100644
  endif
  endef
 diff --git a/make/rules-cargo.mk b/make/rules-cargo.mk
-index b2af34ca..c132fffb 100644
+index b2af34ca..5ebcf009 100644
 --- a/make/rules-cargo.mk
 +++ b/make/rules-cargo.mk
 @@ -14,8 +14,10 @@ $$(OBJ)/.$(1)-configure$(3):
  $$(OBJ)/.$(1)-build$(3):
  	@echo ":: building $(3)bit $(1)..." >&2
  	cd $$($(2)_SRC) && env $$($(2)_ENV$(3)) \
-+	cargo update --offline --verbose
++	cargo update --locked --offline --verbose --workspace
 +	cd $$($(2)_SRC) && env $$($(2)_ENV$(3)) \
  	cargo build \
 -	      $$(filter -j%,$$(MAKEFLAGS)) \
@@ -439,10 +439,10 @@ index 69688a03..1c0d1d3b 100644
  	winebuild --$(lastword $(subst ., ,$(4))) --fake-module -E "$(basename $(4)).spec" -o "$(4).fake"
  	mkdir -p $$($(2)_LIBDIR$(3))/$(LIBDIR_WINE_$(3))
 diff --git a/proton b/proton
-index cc042a99..504a9beb 100755
+index f3435a74..37354b55 100755
 --- a/proton
 +++ b/proton
-@@ -424,7 +424,6 @@ class Proton:
+@@ -423,7 +423,6 @@ class Proton:
          self.wine_bin = self.bin_dir + "wine"
          self.wine64_bin = self.bin_dir + "wine64"
          self.wineserver_bin = self.bin_dir + "wineserver"
@@ -450,7 +450,7 @@ index cc042a99..504a9beb 100755
  
      def path(self, d):
          return self.base_dir + d
-@@ -1808,8 +1807,6 @@ if __name__ == "__main__":
+@@ -1797,8 +1796,6 @@ if __name__ == "__main__":
  
      g_proton = Proton(os.path.dirname(sys.argv[0]))
  
@@ -459,7 +459,7 @@ index cc042a99..504a9beb 100755
  
      g_compatdata = CompatData(os.environ["STEAM_COMPAT_DATA_PATH"])
  
-@@ -1818,7 +1815,8 @@ if __name__ == "__main__":
+@@ -1807,7 +1804,8 @@ if __name__ == "__main__":
      g_session.init_wine()
  
      if g_proton.missing_default_prefix():
@@ -470,5 +470,5 @@ index cc042a99..504a9beb 100755
      g_session.init_session(sys.argv[1] != "runinprefix")
  
 -- 
-2.39.0
+2.39.1
 

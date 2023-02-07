@@ -1,7 +1,7 @@
 pkgbase = proton-ge-custom
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build
 	pkgver = GE.Proton7.49
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 2
 	url = https://github.com/GloriousEggroll/proton-ge-custom
 	install = proton-ge-custom.install
@@ -279,6 +279,6 @@ pkgbase = proton-ge-custom
 	sha256sums = 08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3
 	sha256sums = 0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75
 	sha256sums = 9249ece664bcf2fecb1308ea1d2542c72923df9fe3df891986f137b2266a9ba3
-	sha256sums = e0cc0fc3b7d0ab1f168f76c39da226e7a2c8d379fdb9d42369dd2df4397233fb
+	sha256sums = 74f1c152a0bf75ddb9170136530249d0459173ceb641c0a6b9cd98cd81bf38b4
 
 pkgname = proton-ge-custom
