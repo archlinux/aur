@@ -2,7 +2,7 @@
 
 pkgname=bandcamp-collection-downloader
 _pkgver=2021-12-05
-pkgver=2021.12.05
+pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="CLI downloader of your purchase from Bandcamp"
 arch=(any)
