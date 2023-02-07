@@ -2,4 +2,6 @@
 *.zst
 src
 pkg
+*~
+
 

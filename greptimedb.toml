@@ -1,7 +1,14 @@
 node_id = 0
 mode = 'standalone'
-wal_dir = "/var/lib/greptimedb/wal/"
 enable_memory_catalog = false
+
+[wal]
+dir = '/var/lib/greptimedb/wal'
+file_size = '1GB'
+purge_interval = '10m'
+purge_threshold = '50GB'
+read_batch_size = 128
+sync_write = false
 
 [storage]
 type = 'File'
