@@ -3,11 +3,14 @@
 
 pkgname='libcanlock'
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A standalone RFC 8315 Netnews Cancel-Lock implementation for Unix'
-arch=('x86_64' 'armv7h')
+arch=('x86_64' 'armv7h' 'aarch64')
 url='https://micha.freeshell.org/libcanlock/'
 license=('custom')
+depends=(
+  'glibc'
+)
 provides=(
   'canlock'
   'libcanlock'
@@ -19,6 +22,7 @@ conflicts=(
 source=(
   "https://micha.freeshell.org/libcanlock/src/${pkgname}-${pkgver}.tar.bz2"
 )
+options=('lto')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver" || exit 1
