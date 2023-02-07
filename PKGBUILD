@@ -34,9 +34,7 @@ build() {
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKWIN_BUILD_KCMS=OFF \
     -DKWIN_BUILD_TABBOX=ON \
-    -DKWIN_BUILD_CMS=OFF \
     -DKWIN_BUILD_RUNNERS=OFF
   cmake --build build
 }
