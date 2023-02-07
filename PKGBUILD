@@ -1,4 +1,4 @@
-# Maintainer: Abdullah <abdullah at abdullah dot today>
+# Maintainer: Abdullah Khabir <abdullah at abdullah dot solutions>
 pkgname=ttf-urdufonts
 pkgdesc="Urdu fonts (Jameel Noori Nastaleeq (+kasheeda), Nafees Web Naskh, PDMS Saleem Quran Font) and font configuration to set Jameel Noori Nastaleeq as default font for Urdu"
 license=('custom')
