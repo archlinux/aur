@@ -7,13 +7,13 @@
 
 _tcp_module_gitname=nginx_tcp_proxy_module
 pkgname=tengine-extra
-pkgver=2.3.4
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='A web server based on Nginx and has many advanced features, originated by Taobao. Some extra modules enabled.'
 arch=('x86_64')
 url='http://tengine.taobao.org'
 license=('custom')
-depends=('pcre' 'zlib' 'openssl' 'gperftools' 'geoip' 'mailcap' 'luajit' 'libmaxminddb')
+depends=('pcre' 'zlib' 'openssl' 'gperftools' 'geoip' 'mailcap' 'libxcrypt' 'luajit' 'libmaxminddb')
 backup=('etc/tengine/fastcgi.conf'
         'etc/tengine/fastcgi_params'
         'etc/tengine/koi-win'
@@ -38,7 +38,7 @@ source=(tengine-$pkgver.tar.gz::https://github.com/alibaba/tengine/archive/$pkgv
         fancyindex-v${_fancyidx_ver}.tar.xz::https://github.com/aperezdc/ngx-fancyindex/releases/download/v${_fancyidx_ver}/ngx-fancyindex-${_fancyidx_ver}.tar.xz
         jdomain-v${_jdomain_ver}.tar.gz::https://github.com/nicholaschiasson/ngx_upstream_jdomain/archive/refs/tags/${_jdomain_ver}.tar.gz
         )
-sha256sums=('9a8d1e83ec7664f799255b0dec5baebde2d12b6578b29cfadf92316b3d3e221c'
+sha256sums=('d6ba4eecd3fb82a38b547bc92f8759cdfba4803eef289d51e2eaf8361f99c1a7'
             'c066d39d2e945b74756a2422415b086eb26a9ce34788820c86c7e3dc7c6245eb'
             '7d4bd60b9210e1dfb46bc52c344b069d5639e1ba08cd9951c0563360af238f97'
             'c85cdcfd76703c95aa4204ee4c2e619aa5b075cac18f428202f65552104add3b'
