@@ -6,7 +6,7 @@
 # Contributor : Patrick McCarty  <pnorcks at gmail dot com>
 
 pkgname=osc
-pkgver=1.0.0b3
+pkgver=1.0.0b4
 pkgrel=1
 pkgdesc="Command line client for the openSUSE Build Service"
 arch=(any)
@@ -33,13 +33,13 @@ source=("https://github.com/openSUSE/${pkgname}/archive/${pkgver}.tar.gz"
         0005-Add-support-for-rebuild-and-chroot-only-in-build.-re.patch
         0006-Add-architecture-and-scheduler-maps.patch
 )
-sha256sums=('c02d03c9327abd7a6055b8d6d7170ee57011567536f8b41dbf68b2580f7b179e'
+sha256sums=('9542585fbddadaaff914996b9e239c00ba6873a9ad4db5b28c00e841c9c582da'
             '2b045e03d2fdce12683ceb9792d491a32f00b256045456412e7bc18c8726218a'
-            '7478f2297ac87090979d19fd55d539aa1000792a8858796ba7c7f239b45d9ef6'
-            'de9cd536d5b294b5ec702d6e57f014928e67f3678c1dd9ea2a7d986c2506469b'
-            '0ac6241d05061e85f4b7d38472180c138e266bf968d6c074105d7e528f44e336'
-            '1573dd86844d1eebeb93ff092f6345928fad4611f7634dadb17fcc579de4dc32'
-            '8ac9d5760333f76428f85ff6ee8cffabc12678be703ba285f708015d95039eb4'
+            '35ba6d6c03cbb1e437708251969ca8d71376744cdb8fd826fd971645224e1ec5'
+            '569519d45ef2d87d984e6828c6c2c1bc0aedbc9485ad303fd35d11a249cc2446'
+            'add44ed6f71cadea8f43370ef2dc72516fd148db2e77879091bd812b4b95adc9'
+            '29e68a3e4142cbef52f2311d2ea3c34472de87b1f6eddf70b9d9cfb8395bd31e'
+            '0439a28bd3606fb298894c73f7d530090c31bdf638e9f3e4037bc68a36b24089'
             'eae5f978b8385db3acae46df96fc4973f306c4a640389165a8ac54469d370e5b')
 
 prepare() {

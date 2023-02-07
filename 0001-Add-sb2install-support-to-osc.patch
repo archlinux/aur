@@ -8,7 +8,7 @@ Subject: [PATCH] Add sb2install support to osc
  1 file changed, 5 insertions(+), 2 deletions(-)
 
 diff --git a/osc/build.py b/osc/build.py
-index 7e864b883686bd56755d1f0250df12ec80cecc89..d51b81c9cc66959d74194c48f2a6710649fd117f 100644
+index 36dcd75f02555a238ebcb53388b52e75418af3e9..a93e10716de947b579823a065b6b4d207bc65466 100644
 --- a/osc/build.py
 +++ b/osc/build.py
 @@ -190,12 +190,13 @@ class Buildinfo:
@@ -26,7 +26,7 @@ index 7e864b883686bd56755d1f0250df12ec80cecc89..d51b81c9cc66959d74194c48f2a67106
              self.preinstallimage = root.find('preinstallimage')
          else:
              self.preinstallimage = None
-@@ -227,7 +228,8 @@ class Pac:
+@@ -235,7 +236,8 @@ class Pac:
                    'project', 'repository', 'sysroot',
                    'preinstall', 'vminstall', 'runscripts',
                    'noinstall', 'installonly', 'notmeta',
@@ -36,7 +36,7 @@ index 7e864b883686bd56755d1f0250df12ec80cecc89..d51b81c9cc66959d74194c48f2a67106
              self.mp[i] = node.get(i)
  
          self.mp['buildarch'] = buildarch
-@@ -1390,6 +1392,7 @@ def main(apiurl, opts, argv):
+@@ -1398,6 +1400,7 @@ def main(apiurl, opts, argv):
  
      rpmlist.append('preinstall: ' + ' '.join(bi.preinstall_list) + '\n')
      rpmlist.append('vminstall: ' + ' '.join(bi.vminstall_list) + '\n')

@@ -14,10 +14,10 @@ Subject: [PATCH] Add support for --rebuild and --chroot-only in build.
  2 files changed, 10 insertions(+)
 
 diff --git a/osc/build.py b/osc/build.py
-index d51b81c9cc66959d74194c48f2a6710649fd117f..cc6386da49aefb25e9cc3b88e6829039ac032953 100644
+index a93e10716de947b579823a065b6b4d207bc65466..eea57dd942d196191607eecc655e65690b0e3b51 100644
 --- a/osc/build.py
 +++ b/osc/build.py
-@@ -688,6 +688,12 @@ def main(apiurl, opts, argv):
+@@ -696,6 +696,12 @@ def main(apiurl, opts, argv):
          buildargs.append('--norootforbuild')
      if opts.clean:
          buildargs.append('--clean')
@@ -31,10 +31,10 @@ index d51b81c9cc66959d74194c48f2a6710649fd117f..cc6386da49aefb25e9cc3b88e6829039
          buildargs.append('--no-checks')
      if not opts.no_changelog:
 diff --git a/osc/commandline.py b/osc/commandline.py
-index ccecdc43acc57f69899fa328672a22a76c547a04..81171a3fa6530fd09d8c6e7235751dff8be3bbc7 100644
+index e6045ed4add369e7cbf52cc95af6d6c2ff90a780..0fc3b87287aad930f73458c665c8e34e8116ab6c 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
-@@ -6536,6 +6536,10 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -6538,6 +6538,10 @@ Please submit there instead, or use --nodevelproject to force direct submission.
                    help='Copy overlay filesystem to buildroot after installing all RPMs .')
      @cmdln.option('--noinit', '--no-init', action='store_true',
                    help='Skip initialization of build root and start with build immediately.')
