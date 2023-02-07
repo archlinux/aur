@@ -1,7 +1,7 @@
 # Maintainer: Robert Hamblin <hamblingreen@hotmail.com>
 pkgname=numen
-pkgver=0.3
-pkgrel=3
+pkgver=0.6
+pkgrel=1
 pkgdesc="Voice control for handsfree computing"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="https://git.sr.ht/~geb/numen"
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('alsa-utils' 'dmenu' 'dotool' 'vosk-api')
 makedepends=('go>=1.19' 'gcc' 'scdoc')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('571d041d6b42e7b3b31ca2c315dd4db1ca11dfe66c7719130f7aa3768e63538acffd6b45a88f3fc40aac7db802cf9214a4fa0d0496d317d242005203140c66b2')
+sha512sums=('cc2b52310e49f9f3a2cc078d94d960e5eec7f693fb6569c8200d9b81d3834402a7ded182bb76b40fd46cecd0954bb9b19d36473c0e59207ca78c2b201319be4c')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -29,11 +29,15 @@ package() {
 
   # Install binaries
   mkdir -p "$pkgdir/usr/local/bin"
+  install "numenc" "$pkgdir/usr/local/bin/"
   install "wrapper" "$pkgdir/usr/local/bin/numen"
-  install "displaying" "$pkgdir/usr/local/bin/"
+
+  # Install scripts used in default phrases
+  mkdir -p "$pkgdir/usr/libexec/numen/phrases"
+  install phrasescripts/* "$pkgdir/usr/libexec/numen/phrases/"
 
   # Install default phrases
-  mkdir -p "$pkgdir/etc/numen/phrases"
+  mkdir -p "$pkgdir/etc/numen/phrases/"
   install phrases/* "$pkgdir/etc/numen/phrases/"
 
   # Install manpage
