@@ -6,7 +6,7 @@ _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=7.4.0
-pkgrel=2
+pkgrel=3
 epoch=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -257,7 +257,7 @@ prepare() {
     pushd $submodule
         export RUSTUP_TOOLCHAIN=stable
         export CARGO_HOME="${SRCDEST}"/proton-cargo
-        #cargo update
+        cargo update --locked --workspace
         cargo fetch --locked --target "i686-unknown-linux-gnu"
         cargo fetch --locked --target "x86_64-unknown-linux-gnu"
     popd
