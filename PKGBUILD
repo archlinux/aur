@@ -2,7 +2,7 @@
 
 _gemname=faker
 pkgname=ruby-$_gemname
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Easily generate fake data: names, addresses, phone numbers, etc"
 arch=(any)
@@ -12,10 +12,8 @@ depends=(ruby ruby-i18n)
 makedepends=(rubygems ruby-rdoc)
 checkdepends=(ruby-bundler ruby-rake ruby-minitest ruby-test-unit ruby-timecop)
 options=(!emptydirs)
-source=(${url}/archive/v$pkgver/$_gemname-$pkgver.tar.gz
-        ${url}/commit/f3117a284104c18e8c81be76b827006b93170151.patch)
-sha256sums=('d81a0e8b580afc71d888c43199f2ab7efeddcc9ba8af4d261909b5417a65fd31'
-            '9a0d06c2f341da60dbec2bf5b36bc6c540b3aff738babda070d9467ad13876fc')
+source=(${url}/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
+sha256sums=('985c22db0ef2639f2a17bda3f779c539641707d24d3cb5ddb5761e312bcb4e76')
 
 prepare() {
   cd $_gemname-$pkgver
@@ -26,9 +24,6 @@ prepare() {
   sed -i '/rubocop/Id' Rakefile
   sed -i '/yard/Id' Rakefile
   sed -i '/simplecov/,+8d' test/test_helper.rb
-
-  # release was cut without updating the version
-  patch -p1 -N -i "$srcdir/f3117a284104c18e8c81be76b827006b93170151.patch"
 }
 
 build() {
