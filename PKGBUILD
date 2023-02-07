@@ -1,10 +1,10 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=(grasscutter-git grasscutter-resources-git)
-pkgver=1.4.6
+pkgver=1.4.6.70e448d
 _pkgname=grasscutter
 _commit=70e448d8bcc75f3ee04257d47f795bb07f6f9933
-pkgrel=1
+pkgrel=2
 pkgdesc="A server software reimplementation for a certain anime game."
 arch=('any')
 url="https://github.com/Grasscutters/Grasscutter"

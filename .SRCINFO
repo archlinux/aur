@@ -1,7 +1,7 @@
 pkgbase = grasscutter-git
 	pkgdesc = A server software reimplementation for a certain anime game.
-	pkgver = 1.4.6
-	pkgrel = 1
+	pkgver = 1.4.6.70e448d
+	pkgrel = 2
 	url = https://github.com/Grasscutters/Grasscutter
 	arch = any
 	license = AGPL3
