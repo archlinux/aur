@@ -20,7 +20,7 @@ depends=(
 )
 makedepends=(python-setuptools)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('ee683243fb732e269b3a2b80653e9d80')
+b2sums=('0f1d03ced8c8b9d3074f5652292f6cfeaf60e1f0d0c809856d47db3c71a8413280a54a142c4d17c917459d51618288ed50b6c16ac457a7b2bacc119297d552b7')
 
 build() {
 	cd "${pkgname}-${pkgver}"
@@ -30,5 +30,5 @@ build() {
 package() {
 	cd "${pkgname}-${pkgver}"
 	python setup.py install --root="${pkgdir}" --optimize=1
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"a
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

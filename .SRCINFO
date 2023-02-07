@@ -16,6 +16,6 @@ pkgbase = xword-dl
 	depends = python-xmltodict
 	depends = python-yaml
 	source = xword-dl-2023.1.31.tar.gz::https://github.com/thisisparker/xword-dl/archive/refs/tags/v2023.1.31.tar.gz
-	md5sums = ee683243fb732e269b3a2b80653e9d80
+	b2sums = 0f1d03ced8c8b9d3074f5652292f6cfeaf60e1f0d0c809856d47db3c71a8413280a54a142c4d17c917459d51618288ed50b6c16ac457a7b2bacc119297d552b7
 
 pkgname = xword-dl
