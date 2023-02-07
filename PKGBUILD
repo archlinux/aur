@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=dejagnu-git
-pkgver=1.6.1.r1.gfb6ef60
+pkgver=1.6.3.r47.g865dc67
 pkgrel=1
 pkgdesc="A framework for testing other programs"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://www.gnu.org/software/dejagnu/"
 license=('GPL3')
 depends=('expect' 'sh')
-makedepends=('git')
-provides=('dejagnu')
+makedepends=('git' 'texinfo')
+provides=("dejagnu=$pkgver")
 conflicts=('dejagnu')
 source=("git+https://git.savannah.gnu.org/git/dejagnu.git")
 sha256sums=('SKIP')
@@ -27,7 +27,8 @@ pkgver() {
 build() {
   cd "dejagnu"
 
-  ./configure --prefix="/usr"
+  ./configure \
+    --prefix="/usr"
   make
 }
 
