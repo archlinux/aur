@@ -1,6 +1,6 @@
 pkgbase = upmpdcli
 	pkgdesc = A UPnP Media Renderer front-end for the Music Player Daemon (MPD)
-	pkgver = 1.6.1
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://www.lesbonscomptes.com/upmpdcli/
 	install = upmpdcli.install
@@ -33,9 +33,9 @@ pkgbase = upmpdcli
 	optdepends = python-waitress: enable uprcl media server
 	optdepends = recoll: enable uprcl media server
 	backup = etc/upmpdcli.conf
-	source = http://www.lesbonscomptes.com/upmpdcli/downloads/upmpdcli-1.6.1.tar.gz
+	source = http://www.lesbonscomptes.com/upmpdcli/downloads/upmpdcli-1.7.1.tar.gz
 	source = upmpdcli.service
-	sha256sums = 6f4b3385553c8f6fcda9ed7a69778e19df3712f3856a26e1e8307b20a52227bd
+	sha256sums = 9a2e1322c47825f31e2f97ff8c89172e23dd0cea6763f355d7e7ecc71b168d17
 	sha256sums = 53da5e4e40a1987e3c137270b315f8c0ba9521539c563e75e254f48449ce0ae9
 
 pkgname = upmpdcli
