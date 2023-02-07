@@ -3,7 +3,7 @@
 
 pkgname=calckey
 pkgver=13.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A greatly enhanced fork of Misskey with better UI/UX, security, features, and more! (Experimental)'
 url='https://calckey.cloud'
 arch=('x86_64')
@@ -56,6 +56,7 @@ prepare() {
 
 build() {
     cd "${pkgname}"
+    corepack enable
     NODE_ENV=production HOME="${srcdir}/${pkgname}" pnpm run build
 
     # Cleanup
@@ -88,7 +89,6 @@ build() {
         -delete
     rm -r "${srcdir}/${pkgname}/cypress"
     rm -r "${srcdir}/${pkgname}/.cache"
-    rm -r "${srcdir}/${pkgname}/docs"
     rm -r "${srcdir}/${pkgname}/calckey-assets"
     rm -rf "${srcdir}/${pkgname}/.npm"
     rm -r "${srcdir}/${pkgname}/scripts"
