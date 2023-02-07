@@ -1,7 +1,7 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 
 _pkgname=electron
-_major=22
+_major=23
 pkgname="${_pkgname}-bin"
 pkgver="${_major}"
 pkgrel=1
