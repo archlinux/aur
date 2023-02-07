@@ -2,7 +2,7 @@
 
 _pkgname=shadowsocks-go
 pkgname=$_pkgname-git
-pkgver=1.2.0.r0.ga888446
+pkgver=1.5.2.r4.gfc3eb45
 pkgrel=1
 pkgdesc="A versatile and efficient proxy platform for secure communications"
 arch=('x86_64' 'aarch64')
@@ -19,6 +19,7 @@ backup=(
     "etc/$_pkgname/config.json"
     "etc/$_pkgname/server.json"
     "etc/$_pkgname/client.json"
+    "etc/$_pkgname/upsks.json"
 )
 source=("$pkgname::git+$url.git")
 b2sums=('SKIP')
@@ -47,6 +48,7 @@ package() {
     install -Dm644 docs/config.json "$pkgdir"/etc/$_pkgname/config.json
     install -Dm644 docs/server.json "$pkgdir"/etc/$_pkgname/server.json
     install -Dm644 docs/client.json "$pkgdir"/etc/$_pkgname/client.json
+    install -Dm644 docs/upsks.json "$pkgdir"/etc/$_pkgname/upsks.json
     install -Dm755 $_pkgname "$pkgdir"/usr/bin/$_pkgname
     install -Dm755 $_pkgname-domain-set-converter "$pkgdir"/usr/bin/$_pkgname-domain-set-converter
 }
