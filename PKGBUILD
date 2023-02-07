@@ -1,8 +1,7 @@
 # Maintainer: cysp74 at gmail dot com
-
-pkgname=pocl-git
-_pkgname=pocl
-pkgver=1.4.RC2.r59.g3b4829d6
+_name=pocl
+pkgname="${_name}-git"
+pkgver=3.1.RC1.r160.g8a4830d1
 pkgrel=1
 epoch=1
 pkgdesc="Portable OpenCL is an open-source implementation of OpenCL which can be easily adapted for new targets (git version)"
@@ -11,14 +10,13 @@ url="http://portablecl.org/"
 license=('GPL')
 depends=('clang' 'hwloc' 'opencl-icd-loader')
 makedepends=('git' 'llvm' 'cmake' 'opencl-headers' 'ocl-icd')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("$_pkgname::git+https://github.com/pocl/pocl.git")
+provides=("${_name}=${pkgver}" "${_name}-git=${pkgver}")
+conflicts=("${_name}")
+source=("${_name}::git+https://github.com/pocl/pocl.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
+  git -C "${_name}" describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 build() {
@@ -29,11 +27,11 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_BUILD_TYPE=Release \
-    "$srcdir/$_pkgname"
+    "${srcdir}/${_name}"
   make
 }
 
 package() {
   cd build
-  make DESTDIR="$pkgdir"/ install
+  make DESTDIR="${pkgdir}"/ install
 }
