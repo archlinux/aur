@@ -28,7 +28,7 @@ backup=()
 options=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-sha512sums=('25c40dc770ffd8d8a8e3f9a9661abe556c47e43d925b7f04977925c10a99a28218b1b33cd84c34d24d4aef8367136b0abd664534ac82cda88265c62f7b9c6ef4')
+sha512sums=('55486e4e74b4aeee725539aefdacf067cf4584d726a57fcedaeba683f771f7dd33201f754b8d5df8eabc1ebbd360b48a0749f0911938094cd85edf9c4d349c9a')
 validpgpkeys=()
 
 build() {
