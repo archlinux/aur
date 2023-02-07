@@ -1,12 +1,11 @@
 pkgbase = webcord
 	pkgdesc = A Discord and Fosscord client made with the Electron API.
 	pkgver = 4.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/SpacingBat3/WebCord
 	arch = any
 	license = MIT
 	makedepends = npm
-	makedepends = esbuild
 	optdepends = electron22: runtime
 	optdepends = electron21: runtime
 	optdepends = electron20: runtime

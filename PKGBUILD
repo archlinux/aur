@@ -1,12 +1,12 @@
 pkgname=webcord
 pkgver=4.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A Discord and Fosscord client made with the Electron API."
 arch=('any')
 _repo='WebCord'
 url="https://github.com/SpacingBat3/${_repo}"
 license=('MIT')
-makedepends=('npm' 'esbuild')
+makedepends=('npm')
 options=('!strip' '!emptydirs')
 
 _evers=()
@@ -32,6 +32,8 @@ sha256sums=(
 )
 
 prepare() {
+    npm i -E --ignore-scripts --prefix=. --include=optional "esbuild@0.17"
+
     cd "${_srcname}"
     npm ci --omit=dev --ignore-scripts --prefix=.
     rm -r "sources/code/build"
@@ -41,7 +43,7 @@ prepare() {
 build() {
     cd "${_srcname}"
     shopt -s globstar
-    esbuild "sources/code/"**/*".ts" --outbase="sources" --outdir="app" --platform=node --format=cjs --supported:dynamic-import=false
+    npx esbuild "sources/code/"**/*".ts" --outbase="sources" --outdir="app" --platform=node --format=cjs --supported:dynamic-import=false
 }
 
 package() {
