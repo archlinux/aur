@@ -1,8 +1,7 @@
 pkgbase = moebius-bin
 	pkgdesc = Modern ANSI & ASCII Art Editor
 	pkgver = 1.0.29
-	pkgrel = 1
-	epoch = 1
+	pkgrel = 2
 	url = https://github.com/blocktronics/moebius
 	arch = x86_64
 	license = Apache
