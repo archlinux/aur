@@ -1,7 +1,9 @@
 #Maintainer: Rein Fernhout (LevitatingBusinessMan) <me@levitati.ng>
 
+# Some asshole is using the reddit-fs pkgbase
+pkgbase=redditfs
 pkgname=reddit-fs
-pkgver=r35.18ab93a
+pkgver=r38.7f5b73b
 arch=("x86_64")
 pkgrel=1
 pkgdesc="Reddit as a filesystem"

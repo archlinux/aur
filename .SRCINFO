@@ -1,6 +1,6 @@
-pkgbase = reddit-fs
+pkgbase = redditfs
 	pkgdesc = Reddit as a filesystem
-	pkgver = r35.18ab93a
+	pkgver = r38.7f5b73b
 	pkgrel = 1
 	url = https://github.com/LevitatingBusinessMan/reddit-fs
 	arch = x86_64
