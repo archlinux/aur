@@ -1,21 +1,20 @@
 pkgbase = crystal-launcher
 	pkgdesc = A custom Minecraft launcher with its own package system
-	pkgver = 20210809
+	pkgver = 20230116
 	pkgrel = 1
 	url = https://crystal-launcher.net/
 	install = crystal-launcher.install
 	arch = any
 	license = unknown
-	depends = java-runtime=8
-	depends = java-runtime>=16
-	depends = java8-openjfx
-	source = crystal-launcher.jar::http://main.crystal-launcher.pl/releases/other/CrystalLauncher.jar
-	source = crystal-launcher.png::http://main.crystal-launcher.pl/releases/icon.png
+	depends = java-runtime=17
+	depends = java17-openjfx
+	source = crystal-launcher.jar::https://launcher.crystal-launcher.net/bootstrapNX/data/crystal-wrapper.jar
+	source = crystal-launcher.png::https://launcher.crystal-launcher.net/linux/icon.png
 	source = crystal-launcher.sh
 	source = crystal-launcher.desktop
-	sha256sums = cb495e726512a039df6f6d297ba7cfd9ce0b1fe368bad5ba20abe7852d65527a
+	sha256sums = e9eacb799ed31b66854eb9266e126719b83afcb11e586181e9ddc19ded6c10e3
 	sha256sums = 214f4f12eb772d2ce945723ab7b126b1fb3e78c009f4132d6b0f98ea2270ab0c
-	sha256sums = 6aec5cf9f6ed8a20e138104e0cb9f33c1cbb0798ca00981158b9dbd3c4cc437a
+	sha256sums = 68a357836068f9382f96d8a858f664908d3e6dceb5246d4c34dcfb9b3495bdb6
 	sha256sums = ff160d4a4cfe366f0ec806d7eeeac4bfd5e83c3d01afbc22ecc5caa1adb247ef
 
 pkgname = crystal-launcher

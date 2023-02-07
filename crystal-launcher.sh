@@ -2,28 +2,19 @@
 # Based on:
 # https://wiki.archlinux.org/title/Java_package_guidelines
 
-# Force installation in the standard path
-CL_INST_CONF="$HOME/.crystalinst"
-if [ ! -f $CL_INST_CONF ]
-then
-    touch "$CL_INST_CONF"
-    echo  "$HOME/Crystal-Launcher" > "$CL_INST_CONF"
-fi
+# Force execution in the standard path
+mkdir -p "$HOME/Crystal-Launcher"
+cd "$HOME/Crystal-Launcher"
 
-# At the first time set up the proper JREs in the config file
-JAVA_8="%JAVA_8%"
-JAVA_16="%JAVA_16%"
-
-CL_CONFIG="`cat $CL_INST_CONF`/config.prop"
-if [ ! -f $CL_CONFIG ]
-then
-    touch $CL_CONFIG
-    echo "customjvmdir_v2.path=/usr/lib/jvm/$JAVA_8/jre/bin/java" > "$CL_CONFIG"
-    echo "customjvmdir_v2.use=true"                              >> "$CL_CONFIG"
-    echo "customjvmdir_v3.path=/usr/lib/jvm/$JAVA_16/bin/java"   >> "$CL_CONFIG"
-    echo "customjvmdir_v3.use=true"                              >> "$CL_CONFIG"
-fi
-
-# Run the app correctly
-exec /usr/bin/java -jar '/usr/share/java/crystal-launcher.jar' "$@"
-
+# Run the app correctly, using most of the parameters
+# inside the reverse engineered launcher
+exec /usr/bin/java \
+    -Dfile.encoding=UTF-8 \
+    -Djava.net.preferIPv4Stack=true \
+    -Dprism.forceGPU=true \
+    -Dprism.verbose=true \
+    -Xmx256M \
+    -Xms128M \
+    --add-opens java.desktop/sun.awt.X11=ALL-UNNAMED \
+    -cp '/usr/share/java/crystal-launcher.jar' \
+    ovh.leszczu8023.crystalwrapper.Main "$@"
