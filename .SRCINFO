@@ -1,0 +1,16 @@
+pkgbase = greetd-regreet-git
+	pkgdesc = Clean and customizable greeter for greetd
+	pkgver = r75.b0b21d1
+	pkgrel = 1
+	url = https://github.com/rharish101/ReGreet
+	install = greetd-regreet-git.install
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	depends = greetd
+	depends = gtk4
+	source = regreet::git+https://github.com/rharish101/ReGreet.git
+	sha256sums = SKIP
+
+pkgname = greetd-regreet-git
