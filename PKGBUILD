@@ -2,7 +2,7 @@
 
 pkgname=naikari-git
 _pkgname=naikari
-pkgver=0.5.0.r19.gf2fe421cc
+pkgver=0.6.0.r0.g4d42e02e2
 pkgrel=1
 pkgdesc="2-D space trading and mercenary game forked from the Naev project. Development branch."
 arch=('x86_64')
@@ -12,8 +12,8 @@ depends=('sdl2_image' 'libxml2' 'freetype2' 'libpng' 'openal' 'libvorbis' 'libgl
 makedepends=('meson' 'ninja' 'git')
 provides=('naikari')
 conflicts=('naikari')
-source=('git+https://github.com/naikari/naikari.git'
-        'git+https://github.com/naikari/naikari-artwork-production.git')
+source=('naikari::git+https://github.com/naikari/naikari.git'
+        'naikari-artwork::git+https://github.com/naikari/naikari-artwork-production.git')
 md5sums=('SKIP'
          'SKIP')
 
