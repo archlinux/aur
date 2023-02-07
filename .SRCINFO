@@ -1,6 +1,6 @@
 pkgbase = haredo
 	pkgdesc = A simple and unix-idiomatic build automator.
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://git.sr.ht/~autumnull/haredo
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = haredo
 	makedepends = hare
 	provides = haredo
 	conflicts = haredo
-	source = https://git.sr.ht/~autumnull/haredo/archive/1.0.1.tar.gz
-	sha256sums = 773c6b673c45f0165118c40265b919c0474e3510530c1f74cf85678833c65a28
+	source = https://git.sr.ht/~autumnull/haredo/archive/1.0.2.tar.gz
+	sha256sums = 2a209b9e2d8fb4eb6ff5ab9762b2fd745ec636bf50373dcebe693076be54be4d
 
 pkgname = haredo
