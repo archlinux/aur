@@ -2,7 +2,7 @@
 
 pkgname=db2-odbc-cli
 # Mentioned in clidriver/license/UNIX/odbc_LI_en
-pkgver=11.5.6.0
+pkgver=11.5.8.0
 pkgrel=1
 pkgdesc='IBM Data Server Driver for ODBC and CLI'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://www.ibm.com/support/pages/db2-odbc-cli-driver-download-and-installa
 license=('custom:IBM IPLA')
 depends=('audit' 'gcc-libs' 'glibc' 'icu' 'libcap-ng' 'pam' 'xz' 'zlib' 'libxml2' 'libxcrypt-compat')
 source=("linuxx64_odbc_cli-$pkgver.tar.gz::https://public.dhe.ibm.com/ibmdl/export/pub/software/data/db2/drivers/odbc_cli/linuxx64_odbc_cli.tar.gz")
-sha256sums=('0b0c7fa9aad9544024cafc72bcd44ff704dc7ec59431ce7f219bf1d84c58bbb3')
+sha256sums=('3f769024dcc10893b648dc588e70f0cdc9078bbce9eb1cc873baa6e106fbd37c')
 
 package() {
     local f
