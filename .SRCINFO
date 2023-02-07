@@ -1,0 +1,14 @@
+pkgbase = checkpointctl-git
+	pkgdesc = Tool to manipulate Kubernetes and Podman checkpoints
+	pkgver = 76.6476d53
+	pkgrel = 1
+	url = https://github.com/checkpoint-restore/checkpointctl
+	arch = any
+	license = APACHE
+	makedepends = go
+	makedepends = git
+	makedepends = bash-bats
+	source = git+https://github.com/checkpoint-restore/checkpointctl
+	sha256sums = SKIP
+
+pkgname = checkpointctl-git
