@@ -1,5 +1,5 @@
 pkgbase = doppler-cli-bin
-	pkgdesc = A CLI utility for Doppler, environment and secrets manager.
+	pkgdesc = CLI utility for Doppler, environment and secrets manager.
 	pkgver = 3.54.0
 	pkgrel = 1
 	url = https://doppler.com
