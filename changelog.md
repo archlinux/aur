@@ -1,3 +1,11 @@
+## GE-Proton7-49
+
+This is mainly just a hotfix release that adds the upstream Ubisoft Uplay fix
+* Updated proton-wine bleeding edge
+* Updated vkd3d-proton
+* Updated dxvk
+* Updated proton steamclient
+
 ## GE-Proton7-48
 
 * Updated proton-wine bleeding edge
