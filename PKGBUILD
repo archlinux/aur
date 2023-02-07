@@ -3,7 +3,7 @@
 
 pkgname="nzbhydra2-nojava-bin"
 pkgver=5.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Search aggregator for newznab and torznab indexers."
 arch=('x86_64' 'aarch64')
 url="https://github.com/theotherp/nzbhydra2"
@@ -23,10 +23,10 @@ source=('nzbhydra2.service'
 source_x86_64=("https://github.com/theotherp/nzbhydra2/releases/download/v${pkgver}/${pkgname%-nojava-bin}-${pkgver}-amd64-linux.zip")
 source_aarch64=("https://github.com/theotherp/nzbhydra2/releases/download/v${pkgver}/${pkgname%-nojava-bin}-${pkgver}-arm64-linux.zip")
 
-sha256sums=('cddea77be49001614826d792e52365c014a1e0056b0210d1e1542c3d37bf8bf7'
+sha256sums=('2fae64a1c5979d9f7b508f1e15d0f013b7cca1f2bbbdae56f546f4c362146b68'
             'a9ceeed2b50d55c5e554c0d4c615e855fe4d3889eb118e37908fa04ffb7cb003'
             '8f91eb4f98f7f5c11590b29b1394dfa7ca62ad115feeac4f402c9ac094fb925a'
-            '8127f92afb0f70b6f79c11db0219f8b2557cb7bcafa16fd6ddb2d61166d216fe'
+            '8e9109dd0979bf9d8423bfe59ba63c0c22144881dfe16a82e4644e32f9e4bc01'
             '5660f26303826a0b8bf3f7c198c39e345e87b799e2304a79db5a77992d09cda4'
             '35100f4e7ab5a480f5554d9abd32e8abac20d56f873f82ecbc906d0b3fdadc73'
             '73fe3e7d877f4f9f301deef9f699a357a9a1574148aedb565832f0375c99bdda')
