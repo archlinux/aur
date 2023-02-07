@@ -3,7 +3,7 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=r22989.2b534c285
+pkgver=r23195.d60e3dead
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
@@ -11,6 +11,7 @@ url='https://github.com/yuzu-emu/yuzu-mainline'
 license=('GPL2')
 provides=('yuzu' 'yuzu-cmd')
 conflicts=('yuzu-git' 'yuzu-canary-git')
+options=("!lto") #ThinLTO is already set
 depends=('desktop-file-utils'
          'fmt'
          'glslang'
