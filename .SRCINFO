@@ -1,7 +1,7 @@
 pkgbase = slrn-snapshot-canlock
 	pkgdesc = An easy-to-use, text-mode, threaded Usenet/NNTP client/newsreader (development snapshot with cancel-lock)
 	pkgver = 1.0.4.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://jedsoft.org/snapshots/
 	arch = x86_64
 	arch = armv7h
@@ -15,6 +15,7 @@ pkgbase = slrn-snapshot-canlock
 	options = !makeflags
 	options = docs
 	options = zipman
+	options = lto
 	backup = etc/slrnrc
 	source = https://jedsoft.org/snapshots/slrn-pre1.0.4-6.tar.gz
 	source = https://micha.freeshell.org/libcanlock/patches/slrn-1.0.4-6_libcanlock3_patches.tar.gz

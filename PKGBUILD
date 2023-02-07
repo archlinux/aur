@@ -5,7 +5,7 @@ pkgname=slrn-snapshot-canlock
 _pkgname=slrn
 pkgver=1.0.4.6
 _prever='pre1.0.4-6'
-pkgrel=3
+pkgrel=4
 pkgdesc='An easy-to-use, text-mode, threaded Usenet/NNTP client/newsreader (development snapshot with cancel-lock)'
 arch=('x86_64' 'armv7h')
 url='https://jedsoft.org/snapshots/'
@@ -15,7 +15,7 @@ depends=('openssl' 'slang' 'libcanlock')
 provides=('slrn')
 conflicts=('slrn')
 backup=(etc/slrnrc)
-options=('!makeflags' 'docs' 'zipman')
+options=('!makeflags' 'docs' 'zipman' 'lto')
 # <canlock>
 _canlock_ver=1.0.4-6
 _canlock_url='https://micha.freeshell.org/libcanlock/patches'
