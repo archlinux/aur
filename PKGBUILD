@@ -4,7 +4,7 @@
 # Contributor: Artem Sereda <overmind88 at gmail dot com>
 
 pkgname=flacon
-pkgver=9.5.1
+pkgver=10.0.0
 pkgrel=1
 pkgdesc="An Audio File Encoder. Extracts audio tracks from an audio CD image to separate tracks."
 arch=(x86_64 i686 aarch64)
@@ -12,17 +12,18 @@ url="https://flacon.github.io/"
 license=(LGPL2.1)
 depends=(hicolor-icon-theme qt5-base uchardet taglib)
 makedepends=(git cmake icu qt5-tools)
-optdepends=('flac: For FLAC support'
+optdepends=(
+            'alacenc: For ALAC support'
+            'faac: For AAC support'
+            'flac: For FLAC support'
             'lame: For MP3 support'
             'mac: For APE support'
-            'mp3gain: For MP3 Replay Gain support'
             'opus-tools: For OPUS support'
             'sox: For SoX support'
             'ttaenc: For TrueAudio support'
             'vorbis-tools: For OGG support'
-            'vorbisgain: For OGG Replay Gain support'
             'wavpack: For WavPack support'
-)
+            )
 source=("git+https://github.com/flacon/flacon.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
