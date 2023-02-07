@@ -1,42 +1,36 @@
 pkgbase = pytype
-	pkgdesc = Python type inferencer
-	pkgver = 2020.06.26
+	pkgdesc = A static type analyzer for Python code
+	pkgver = 2023.01.31
 	pkgrel = 1
-	url = https://google.github.io/pytype
-	arch = any
-	license = APACHE
-	makedepends = python
+	url = https://google.github.io/pytype/
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	makedepends = make
-	makedepends = gcc
-	makedepends = cmake
-	makedepends = bison>=3.0.2
-	makedepends = flex>=2.5.35
-	makedepends = fakeroot
-	depends = ninja
-	depends = python>=3.5
-	depends = python<3.9
+	makedepends = pybind11
+	depends = python
 	depends = python-attrs
-	depends = python-importlab>=0.5.1
-	depends = python-six
+	depends = python-importlab
+	depends = python-jinja
+	depends = python-libcst
+	depends = python-networkx
+	depends = ninja
+	depends = python-pydot
+	depends = python-tabulate
+	depends = python-toml
+	depends = python-typing_extensions
 	depends = python-typed-ast
-	depends = python-yaml>=3.11
-	optdepends = python2: for target code of Python 2.7 support
-	optdepends = python36: for target code of Python 3.6 support
-	optdepends = python37: for target code of Python 3.7 support
-	provides = pytype
-	options = !emptydirs
-	source = https://github.com/google/pytype/archive/2020.06.26.tar.gz
-	source = cpython-9734024.zip::https://github.com/python/cpython/archive/9734024ec65311e33936faa83fb1cb249ef0de9d.zip
-	source = googletest-e82d320.zip::https://github.com/google/googletest/archive/e82d320567a45db1a999f9109f2b9a733bc59bb1.zip
-	source = typeshed-5fe6a5b.zip::https://github.com/python/typeshed/archive/5fe6a5ba8b5d362f9339d5fef4d31ba1704c8924.zip
-	source = without-ninja-python-distributions.patch
-	sha256sums = adcf117f044d76260deb0232544e96476b46123c25f0abdd58ba1a5640a03615
-	sha256sums = ebc3b63747875586f17b967ad2dae6d2a404adb5814612200217f39074377f9a
-	sha256sums = 891d732c77eec9fb57727cd99990a25455d6d5859b1fde107a332c5e238cc9e7
-	sha256sums = d80c461ee1de1ee9a8f206043a0a13aa3a96525114f38f210bbe3c5a28a5a2ba
-	sha256sums = a73a70cd879656d07f3075298ab97412026c0b414031abd9ef84b99c2936e459
+	source = pytype::git+https://github.com/google/pytype#commit=06e3d79110e39ca1c61500719fc8efaabfa4ecfb
+	source = github.com-python-typeshed::git+https://github.com/python/typeshed
+	source = remove-version-constraints.patch
+	source = use-system-ninja.patch
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = 66171ed53b45ef3198c462fdc9689db245a48df327faaa1b62b9eb5cca99febc915010dc4127d7ec7c5a3c2f939a29d5bb7b84f3e32a93510eac57a7843038ec
+	b2sums = 2180276a2f7ef1be1036ca092243356d039c91f70077527358c76eb00d83c4866417df6a81e32a1dee105bb90c70db29582c1617c9e5b961d75ce846008bf9b1
 
 pkgname = pytype
-

@@ -1,0 +1,31 @@
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -31,17 +31,17 @@ python_requires = >=3.7, <3.11
+ packages =
+     find:
+ install_requires =
+-    attrs>=21.4.0
+-    importlab>=0.8
+-    jinja2>=3.1.2
+-    libcst>=0.4.9
+-    networkx<2.8.4
+-    ninja>=1.10.0.post2
+-    pydot>=1.4.2
+-    tabulate>=0.8.10
+-    toml>=0.10.2
+-    typed_ast>=1.5.0; python_version < '3.8'
+-    typing-extensions>=4.3.0
++    attrs
++    importlab
++    jinja2
++    libcst
++    networkx
++    ninja
++    pydot
++    tabulate
++    toml
++    typed_ast; python_version < '3.8'
++    typing-extensions
+ 
+ [options.packages.find]
+ include =

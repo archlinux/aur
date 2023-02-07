@@ -1,0 +1,31 @@
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,5 +1,5 @@
+ [build-system]
+-requires = ["setuptools>=40.8.0", "ninja", "wheel", "pybind11>=2.10.1"]
++requires = ["setuptools>=40.8.0", "wheel", "pybind11>=2.10.1"]
+ build-backend = "setuptools.build_meta"
+ 
+ [tool.pytype]
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -36,7 +36,6 @@ install_requires =
+     jinja2
+     libcst
+     networkx
+-    ninja
+     pydot
+     tabulate
+     toml
+--- a/pytype/tools/analyze_project/pytype_runner.py
++++ b/pytype/tools/analyze_project/pytype_runner.py
+@@ -379,8 +379,7 @@ class PytypeRunner:
+     # relpath() prevents possibly sensitive directory info from appearing in
+     # ninja's "Entering directory" message.
+     c = path_utils.relpath(path_utils.dirname(self.ninja_file))
+-    command = _get_executable('ninja') + [
+-        '-k', k, '-C', c, '-j', str(self.jobs)]
++    command = ['ninja', '-k', k, '-C', c, '-j', str(self.jobs)]
+     if logging.getLogger().isEnabledFor(logging.INFO):
+       command.append('-v')
+     ret = subprocess.call(command)
