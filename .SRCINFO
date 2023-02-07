@@ -8,6 +8,9 @@ pkgbase = fstl-git
 	makedepends = icoutils
 	makedepends = cmake
 	depends = qt5-base
+	provides = fslt=0.9.4.r27.g9da758b
+	provides = fslt-git=0.9.4.r27.g9da758b
+	conflicts = fslt
 	source = fstl::git+https://github.com/fstl-app/fstl.git
 	source = fstl.desktop
 	sha256sums = SKIP
