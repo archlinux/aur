@@ -1,6 +1,6 @@
 # Maintainer: Rainu <jetbrains-project-opener@raysha.de>
 pkgname=jetbrains-project-opener
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="List all your JetBrains Projects and open the selected one"
 arch=('x86_64' 'i686')
@@ -13,6 +13,6 @@ depends=('jq' 'rofi' 'jetbrains-toolbox')
 
 package() {
 	cd "$srcdir/jb-project-opener"
-  install -Dm755 openProject.sh "$pkgdir"/usr/bin/jetbrains-project-opener
+  install -Dm755 jetbrains-project-opener "$pkgdir"/usr/bin/jetbrains-project-opener
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
