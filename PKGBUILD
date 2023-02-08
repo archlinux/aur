@@ -7,7 +7,7 @@ pkgname=protonup-rs
 pkgbase=protonup-rs
 pkgver=0.3.0
 pkgrel=1
-pkgdesc="Install and Update Proton-GE with Rust"
+#pkgdesc="Lib, CLI and GUI program to automate the installation and update of Proton-GE"
 arch=('x86_64')
 url="https://github.com/auyer/Protonup-rs"
 license=('Apache')
@@ -33,16 +33,22 @@ build() {
 }
 
 package_protonup-rs() {
+  pkgdesc="CLI program to automate the installation and update of Proton-GE"
+
   cd "Protonup-rs-$pkgver"
   install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin/"
 }
 
 #package_libprotonup() {
+#  pkgdesc="" ?
+
 #  cd "Protonup-rs-$pkgver"
-#  install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin/"
+#  install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/lib/" ?
 #}
 
 #package_protonup-gui() {
 #  cd "Protonup-rs-$pkgver"
+#  pkgdesc="GUI program to automate the installation and update of Proton-GE"
+
 #  install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin/"
 #}

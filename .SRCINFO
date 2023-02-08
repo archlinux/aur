@@ -1,5 +1,4 @@
 pkgbase = protonup-rs
-	pkgdesc = Install and Update Proton-GE with Rust
 	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/auyer/Protonup-rs
@@ -12,3 +11,4 @@ pkgbase = protonup-rs
 	sha256sums = d3aa08dac1fa6d50ab282dd3aebf3f07d9bbc644d17083eec85fc5112d44bd23
 
 pkgname = protonup-rs
+	pkgdesc = CLI program to automate the installation and update of Proton-GE
