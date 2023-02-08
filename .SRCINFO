@@ -18,9 +18,7 @@ pkgbase = nekoray-bin
 	conflicts = nekoray-git
 	source = https://github.com/MatsuriDayo/nekoray/releases/download/2.14/nekoray-2.14-2023-02-04-linux64.zip
 	source = nekoray.desktop
-	source = launcher.sh
 	sha256sums = c483a5debd37c17cca5e98d6808f06f6d836a4a46985f4a60d0de4128c5d6e24
 	sha256sums = f91e598c4fb016527c05702357178126ed2faae1f7e6e71a47afde520832c33d
-	sha256sums = 321e35182d6c43fcb27e021cd2b2d50e9869e34610409bf5496919e88233cc11
 
 pkgname = nekoray-bin

@@ -24,12 +24,10 @@ optdepends=(
 source=(
     "https://github.com/MatsuriDayo/nekoray/releases/download/$pkgver/nekoray-$pkgver-$_releasedate-linux64.zip"
     'nekoray.desktop'
-    'launcher.sh'
 )
 sha256sums=(
     'c483a5debd37c17cca5e98d6808f06f6d836a4a46985f4a60d0de4128c5d6e24'
     'f91e598c4fb016527c05702357178126ed2faae1f7e6e71a47afde520832c33d'
-    '321e35182d6c43fcb27e021cd2b2d50e9869e34610409bf5496919e88233cc11'
 )
 
 package() {
