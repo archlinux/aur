@@ -52,21 +52,12 @@ optdepends=('redshift: automatic color temperature support'
 conflicts=('deepin-control-center')
 provides=('deepin-control-center')
 groups=('deepin-git')
-source=("$pkgname::git+https://github.com/linuxdeepin/dde-control-center/"
-        remove-auth.patch
-        $_pkgname-systeminfo-deepin-icon.patch)
-sha512sums=('SKIP'
-            'SKIP'
-            '74fd63391e923ca37f4559f30da967ba7f33d4426b60d58d1ece8cd9a154578e8184b1a376a8d7ff3ef81ffce530915f79d0845a2612ae4e06522b96855ab3dd')
+source=("$pkgname::git+https://github.com/linuxdeepin/dde-control-center/")
+sha512sums=('74fd63391e923ca37f4559f30da967ba7f33d4426b60d58d1ece8cd9a154578e8184b1a376a8d7ff3ef81ffce530915f79d0845a2612ae4e06522b96855ab3dd')
 
 pkgver() {
     cd $pkgname
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  rm $pkgname/src/frame/window/icons/icons/dcc_nav_systeminfo_{42,84}px.svg
-  patch -d $pkgname -Np1 < $_pkgname-systeminfo-deepin-icon.patch
 }
 
 build() {
