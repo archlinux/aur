@@ -1,21 +1,24 @@
 pkgname=fheroes2
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Recreation of the Heroes of Might and Magic II game engine"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://ihhub.github.io/fheroes2/"
 license=('GPL2')
 depends=('sdl2' 'sdl2_image' 'sdl2_mixer')
-optdepends=('curl: download demo version files'
-            'python: extract animation resources from GOG CD image'
-            'wget: download demo version files'
-            'unzip: unpack demo version files')
+optdepends=(
+  'curl: download demo version files'
+  'innoextract: extract game resources from installer package'
+  'python: extract animation resources from GOG CD image'
+  'wget: download demo version files'
+  'unzip: unpack demo version files'
+)
 makedepends=('cmake' 'gettext' 'ninja')
 conflicts=('fheroes2-git')
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/ihhub/$pkgname/archive/$pkgver.tar.gz"
 )
-sha256sums=('80468b4eaf128ac5179a3416a02e2a2ef4ab34d90876b179fccd8d505f950440')
+sha256sums=('1e913cffec5cd29671b0aecdb55f1792887ec315f45978abfe8b0c1a1b0b642b')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -25,6 +28,7 @@ build() {
 
   cmake --build build
 
+  # build man page
   make -C docs
 }
 
