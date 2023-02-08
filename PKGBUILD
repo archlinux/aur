@@ -1,7 +1,7 @@
 # Maintainer: Arvid Norlander <VorpalBlade (at) users DOT noreply DOT github DOT com>
 pkgname=greaseweazle
 pkgver=1.8
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Tools for accessing a floppy drive at the raw flux level"
 arch=('x86_64')
@@ -22,5 +22,5 @@ package() {
 	cd "$pkgname-$pkgver"
 	python -m installer --destdir="$pkgdir" dist/*.whl
 
-	install -Dm644 scripts/49-greaseweazle.rules "$pkgdir/usr/lib/udev/rules/49-greaseweazle.rules"
+	install -Dm644 scripts/49-greaseweazle.rules "$pkgdir/usr/lib/udev/rules.d/49-greaseweazle.rules"
 }

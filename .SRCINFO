@@ -1,7 +1,7 @@
 pkgbase = greaseweazle
 	pkgdesc = Tools for accessing a floppy drive at the raw flux level
 	pkgver = 1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/keirf/greaseweazle
 	arch = x86_64
 	license = Unlicense
