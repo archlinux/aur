@@ -1,6 +1,6 @@
 pkgbase = twinejs-standalone
 	pkgdesc = an open-source tool for telling interactive, nonlinear stories
-	pkgver = 2.5.1
+	pkgver = 2.6.1
 	pkgrel = 1
 	url = http://twinery.org/
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = twinejs-standalone
 	depends = libxss
 	depends = nss
 	depends = gtk3
-	noextract = twine_2.5.1_linux64.zip
-	source = https://github.com/klembot/twinejs/releases/download/2.5.1/Twine-2.5.1-Linux-x64.zip
+	noextract = twine_2.6.1_linux64.zip
+	source = https://github.com/klembot/twinejs/releases/download/2.6.1/Twine-2.6.1-Linux-x64.zip
 	source = https://twinery.org/icons/twine.svg
 	source = twinejs.desktop
-	md5sums = 48bb2ac9e7696216bd41c7622cd1dca2
+	md5sums = efe232c01ccc162ddf7a1b7d1e4f31b3
 	md5sums = 3697bac4f363f894cf3ef707cc36b7b5
 	md5sums = 71705539c71923a8464240a8cb3e567f
 
