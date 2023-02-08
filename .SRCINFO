@@ -1,6 +1,6 @@
 pkgbase = converter
 	pkgdesc = Converter is a GTK4+libadwaita application that allows you to convert and manipulate a given image. It is a front-end for ImageMagick.
-	pkgver = 1.5.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://gitlab.com/adhami3310/Converter
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = converter
 	depends = python-pymupdf
 	depends = swig
 	depends = webp-pixbuf-loader
-	source = converter::git+https://gitlab.com/adhami3310/Converter.git#commit=152f2a4aa06294a054a344c7b39e2007f648b5e0
+	source = converter::git+https://gitlab.com/adhami3310/Converter.git#commit=e80795836a062156365f95b880aa751399cffff8
 	b2sums = SKIP
 
 pkgname = converter
