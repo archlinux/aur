@@ -3,12 +3,12 @@
 
 pkgname=check-manifest
 pkgver=0.49
-pkgrel=1
+pkgrel=2
 pkgdesc='Check MANIFEST.in in a Python package for completeness'
 arch=(any)
 url='https://github.com/mgedmin/check-manifest'
 license=(MIT)
-depends=(python-build python-pep517 python-setuptools python-toml)
+depends=(python-build python-setuptools python-toml)
 makedepends=(python-installer python-wheel)
 checkdepends=(git python-mock python-pytest subversion)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
