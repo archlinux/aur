@@ -1,7 +1,7 @@
 _name=bismuth
 pkgname=kwin-${_name}
 pkgver=3.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Addon for KDE Plasma to arrange your windows automatically and switch between them using keyboard shortcuts, like tiling window managers."
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/Bismuth-Forge/${_name}"
@@ -23,7 +23,6 @@ prepare() {
 
 build() {
     cmake -B "build" -S "${_snapshot}" \
-        -DCMAKE_BUILD_TYPE=Release \
         -DUSE_TSC=OFF \
         -DBUILD_TESTING=OFF
 
