@@ -1,7 +1,7 @@
 pkgbase = ognibuild
 	pkgdesc = Detect and invoke build systems
 	pkgver = 0.0.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jelmer/ognibuild
 	arch = any
 	license = GPL2
@@ -14,6 +14,8 @@ pkgbase = ognibuild
 	depends = python-ruamel-yaml
 	depends = python-setuptools
 	depends = python-toml
+	optdepends = python-apt
+	optdepends = python-debmutate
 	source = https://files.pythonhosted.org/packages/source/o/ognibuild/ognibuild-0.0.18.tar.gz
 	sha256sums = 8d16daa719503a1c1026ea3793c1b8c5f7ebd3dd9476d0223f828e736d521edf
 
