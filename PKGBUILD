@@ -1,7 +1,7 @@
 # Maintainer: hexchain <i at hexchain dot org>
 
 pkgname=netdata-go-plugins
-pkgver=0.49.1
+pkgver=0.50.0
 pkgrel=1
 pkgdesc="netdata go.d plugin"
 url="https://github.com/netdata/go.d.plugin"
@@ -9,6 +9,7 @@ license=('GPL3')
 arch=('x86_64')
 depends=('glibc')
 makedepends=('go')
+install=netdata-go-plugins.install
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/netdata/go.d.plugin/archive/v$pkgver.tar.gz"
     "$pkgname-$pkgver-config.tar.gz::https://github.com/netdata/go.d.plugin/releases/download/v$pkgver/config.tar.gz")
@@ -42,6 +43,6 @@ package() {
     install -Dm755 "$srcdir/go.d.plugin-$pkgver/go.d.plugin" -t "$pkgdir/usr/lib/netdata/plugins.d/"
 }
 
-sha512sums=('3f7417702a14fe96c73e58547454d2acc5fb013e9b38478f1100da5a4aedd47fa6b265e562bceea9cbecda4fd3413fd55f5d8985d18e92492bc3ece30b241f82'
-            'a0b4fed43511aa5c32ee1d98b659af59e2142e235a4aa6122761f4b97adc8ea607497a27858992e79e06db911c150ccf1370cee4ce8eb04e68fb5ab73b6bdd52')
+sha512sums=('068de2d8732f03063572dbe467e58aae95b58e9bf0de931fde56170cec03e8a300e061d972cd17287393c5b269c92e5ad268545a7a5a9b03e7e868f6a2920163'
+            '73310834da54dc8244c4cfcd719ee21f80cacd1e7ba5efd557ccefa391403c62c850d1e42c4e7c7543c4b74ee5de6de8ca9c04200eec6b4b7c604f32a0fd11be')
 
