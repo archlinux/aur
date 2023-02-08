@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=('pop-launcher-git' 'pop-shell-plugin-system76-power-git')
 pkgbase=pop-launcher-git
-pkgver=1.2.1.r0.g0893990
+pkgver=1.2.1.r43.gf8ec5b8
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/launcher"
 license=('MPL2')
-depends=('fd' 'libqalculate' 'sh')
-makedepends=('cargo' 'git' 'just')
+depends=('fd' 'libqalculate' 'sh' 'xdg-utils')
+makedepends=('cargo' 'git' 'just' 'libglvnd' 'libxkbcommon')
 options=('!lto')
 source=('git+https://github.com/pop-os/launcher.git')
 sha256sums=('SKIP')
@@ -20,17 +20,21 @@ pkgver() {
 prepare() {
   cd "$srcdir/launcher"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$CARCH-unknown-linux-gnu"
-
   just vendor
 
-  sed -i 's|{{bin_path}}|/usr/bin/pop-launcher|g' justfile
+  sed -i 's|{{bin-path}}|/usr/bin/pop-launcher|g' justfile
 }
 
 build() {
   cd "$srcdir/launcher"
   export RUSTUP_TOOLCHAIN=stable
-  just vendor=1
+  just build-vendored
+}
+
+check() {
+  cd "$srcdir/launcher"
+  export RUSTUP_TOOLCHAIN=stable
+  just check
 }
 
 package_pop-launcher-git() {
@@ -42,7 +46,7 @@ package_pop-launcher-git() {
   cd "$srcdir/launcher"
   install -Dm755 "target/release/${pkgname%-git}-bin" "$pkgdir/usr/bin/${pkgname%-git}"
 
-  just rootdir="$pkgdir" install_plugins install_scripts
+  just rootdir="$pkgdir" install-plugins install-scripts
 
   rm -rf "$pkgdir/usr/lib/${pkgname%-git}/scripts/system76-power"
 }
