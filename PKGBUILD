@@ -33,23 +33,24 @@ sha256sums=(
 )
 
 package() {
+	# Prepare
 	cd $srcdir
     rm -rf nekoray
 	unzip "nekoray-$pkgver-$_releasedate-linux64.zip"
 	chown -R "$USER":"$USER" "nekoray"
-	install -dm700 "${pkgdir}${HOME}"
-	install -dm755 "${pkgdir}${HOME}/.local"
-	install -dm755 "${pkgdir}${HOME}/.local/opt"
-	cp -p -r "nekoray" "${pkgdir}${HOME}/.local/opt"
-    # Launcher script
-	install -dm755 "${pkgdir}/usr/bin"
-	cp -p "launcher.sh" "${pkgdir}/usr/bin/nekoray"
-	# Desktop file
-	install -dm755 "${pkgdir}${HOME}/.local/share"
-	install -dm700 "${pkgdir}${HOME}/.local/share/applications"
-	sed "s,~,$HOME," "nekoray.desktop" > \
-		"${pkgdir}${HOME}/.local/share/applications/nekoray.desktop"
-	# Icon
-	install -d -m755 "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
-	ln -s "${HOME}/.local/opt/nekoray/nekoray.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/nekoray.png"
+	mkdir -p "${pkgdir}/usr/lib/nekoray"
+    mkdir -p "${pkgdir}/usr/bin"
+    mkdir -p "${pkgdir}/usr/share/applications"
+	mkdir -p "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
+	# icons & desktop
+	cp "${srcdir}/nekoray.desktop" "${pkgdir}/usr/share/applications/nekoray.desktop"
+    cp -a "${srcdir}/nekoray/nekoray.png" "${pkgdir}/usr/lib/nekoray/"
+    cp -a "${srcdir}/nekoray/nekobox.png" "${pkgdir}/usr/lib/nekoray/"
+    ln -s "/usr/lib/nekoray/nekoray.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/nekoray.png"
+    ln -s "/usr/lib/nekoray/nekobox.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/nekobox.png"
+	# binary
+	cp -a "${srcdir}/nekoray/nekoray_core" "${pkgdir}/usr/lib/nekoray/"
+	cp -a "${srcdir}/nekoray/nekobox_core" "${pkgdir}/usr/lib/nekoray/"
+	cp -a "${srcdir}/nekoray/nekoray" "${pkgdir}/usr/lib/nekoray/"
+	ln -s  "/usr/lib/nekoray/nekoray" "${pkgdir}/usr/bin/nekoray"
 }
