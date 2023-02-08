@@ -589,3 +589,6 @@ Fixes:
 - We fixed a bug causing videoconferencing links to be stripped away when importing events from an external file into Google Calendar.
 - We fixed a bug causing the event time not to be displayed on the month view in some cases.
 - We fixed an issue where ghost events were occasionally left in the calendar when discarding a draft.
+
+=== Morgen 2.6.6
+According to the official Changelog, this update only consists of feature changes in the mobile version of Morgen.
