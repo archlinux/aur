@@ -1,7 +1,7 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=o-bin
-pkgver=2.59.0
+pkgver=2.59.3
 pkgrel=1
 pkgdesc='Text editor, IDE and gdb frontend (CLI only)'
 arch=(aarch64 armv6 armv7 riscv64 x86_64)
@@ -50,8 +50,8 @@ optdepends=('asciidoctor: for writing man pages'
             'vlang: for compiling and formatting V'
             'yasm: for compiling Assembly'
             'zig: for compiling and formatting Zig')
-sha256sums=('31d65f283c4f817b4314990f0d6cf62053e827d1711596148c71dc0489dc652c')
-b2sums=('04a0059e3206d4fe12324d8b2cc87b58d16923f0fdd845966dfd4e3396899aab045bfd4d8961739cd1aa84d8cb35cc4c674001e2c9a06f05edc1ad175e5546ca')
+sha256sums=('9a8a4857e83883c813a334a07a060d4714dacbd6d47d782d862b1a5d0d9c19dd')
+b2sums=('30122e66bb5ed53f71bc9d1a5a85c1821d9975fe9bb1e01042e0e16a431787aaebf1eff8f8adabb699a6a7b0637ac29fb9cab2f5a0c8efde487595f71739b940')
 
 package() {
   cd o-$pkgver-linux_${CARCH}_static
