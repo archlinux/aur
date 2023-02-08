@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Philip Goto <philip.goto@gmail.com>
 pkgname=shortwave-git
-pkgver=3.1.0.r0.gde062d5
+pkgver=3.2.0.r0.g6fb4acd
 pkgrel=1
 pkgdesc="Find and listen to internet radio stations"
 arch=('x86_64' 'aarch64')
@@ -19,6 +19,12 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/Shortwave"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$srcdir/Shortwave"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
