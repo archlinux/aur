@@ -2,7 +2,7 @@
 
 pkgname=biolibc
 pkgver=0.2.4
-pkgrel=1
+pkgrel=3
 pkgdesc="High-performance, memory-efficient bioinformatics library"
 arch=('x86_64')
 url="https://github.com/auerlab/biolibc"
@@ -14,14 +14,13 @@ sha256sums=('57535bb4f18f98cbfd47707c60f8a66fa411403d7897be257985046d82a3e94b')
 
 build() {
   cd "$pkgname-$pkgver"
-
-  #./configure --prefix=/usr
-  make PREFIX="$pkgdir/usr" clean depend
+  make PREFIX="/usr" depend
+  make PREFIX="/usr"
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  make PREFIX="$pkgdir/usr" MANPREFIX="$pkgdir/usr/share" clean depend install
+  make PREFIX="$pkgdir/usr" MANPREFIX="$pkgdir/usr/share" install
   strip -s "$pkgdir"/usr/lib/libbiolibc.so.2.0
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
