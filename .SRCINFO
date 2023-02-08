@@ -1,7 +1,7 @@
 pkgbase = wps-office-cn
 	pkgdesc = Kingsoft Office (WPS Office) CN version - an office productivity suite
 	pkgver = 11.1.0.11691
-	pkgrel = 5
+	pkgrel = 1
 	url = https://linux.wps.cn
 	arch = x86_64
 	arch = aarch64
