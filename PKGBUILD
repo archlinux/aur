@@ -1,44 +1,42 @@
 # Maintainer:
 pkgname=scrt-sfx-opt-bin
-pkgver=9.3.1
-pkgrel=2929
+pkgver=9.3.2
+pkgrel=2978
 pkgdesc='SecureCRT + SecureFX 9.0 Bundle'
 arch=('x86_64')
 url='https://www.vandyke.com/'
 license=('custom:VanDyke')
-depends=('glibc' 'openssl' 'qt5-base' 'icu66')
+depends=('glibc' 'openssl' 'qt5-base' 'icu70')
 provides=('SecureCRT' 'SecureFX')
-install=${pkgname}-${pkgver}-${pkgrel}.install
 
 _bundle_name=scrt-sfx
-_tarball_base_name=${_bundle_name}-${pkgver}.${pkgrel}.ubuntu20-64
-_tarball_name=${_tarball_base_name}.tar.gz
+_tarball_base_name=${_bundle_name}-${pkgver}-${pkgrel}.ubuntu22-64
+_tarball_name=${_tarball_base_name}.x86_64.deb
 
 source=(
 	"file://${_tarball_name}"
-	"${install}"
 )
 
 sha512sums=(
-	"c26150cc73d7447b42126942ec8f81f7d157a02256fd2fa9d7179516e20bc4a721750bb1b593e67b5dbb02c7f61467c92e0a5b25f5c6960bde2b51d29624fdb1"
-	"f1dc3fde46ea5ce3650cfdf735df85337a26e6229c70726197c618b96d3fa0b8ad06a3182c47ecc091f3162241549ede4b4e239c813ed2acb7f4e2418a6e9087"
+	"b3ee61419c4d9f7488f252e170b46334bfc183e469ffa8c836b028b772909d6850ff1eda6c9bf2dab156a7a350012bcb48cc1c36b3b356f229aa5d41a93c1377"
 )
 
 package() {
 	stage_dir=${pkgdir}/opt/${pkgname}/${_tarball_base_name}
 
 	install -dm755 "${stage_dir}"
-	cp -R "${srcdir}"/${_bundle_name}-${pkgver}/* "${stage_dir}"
+	bsdtar -x -f data.tar.zst
+	cp -R "${srcdir}"/usr/* "${stage_dir}"
 
-	ln -s /usr/lib/qt/plugins/platforms "${pkgdir}/opt/${pkgname}/${_tarball_base_name}"
+	ln -s "/opt/${pkgname}/${_tarball_base_name}/lib/scrt-sfx/plugins/platforms" "${stage_dir}/bin"
 
-	sed -ie "s+Exec=.*+Exec=env LD_LIBRARY_PATH=/opt/${pkgname}/${_tarball_base_name} /opt/${pkgname}/${_tarball_base_name}/SecureCRT+" ${srcdir}/${_bundle_name}-${pkgver}/SecureCRT.desktop
-	sed -ie "s+Exec=.*+Exec=env LD_LIBRARY_PATH=/opt/${pkgname}/${_tarball_base_name} /opt/${pkgname}/${_tarball_base_name}/SecureFX+" ${srcdir}/${_bundle_name}-${pkgver}/SecureFX.desktop
+	sed -ie "s+Exec=.*+Exec=/opt/${pkgname}/${_tarball_base_name}/bin/SecureCRT+" "${stage_dir}/share/applications/SecureCRT.desktop"
+	sed -ie "s+Exec=.*+Exec=/opt/${pkgname}/${_tarball_base_name}/bin/SecureFX+" "${stage_dir}/share/applications/SecureFX.desktop"
 
 	mkdir -p ${pkgdir}/usr/share/applications
-	cp -ar ${srcdir}/${_bundle_name}-${pkgver}/SecureCRT.desktop ${pkgdir}/usr/share/applications
-	cp -ar ${srcdir}/${_bundle_name}-${pkgver}/SecureFX.desktop ${pkgdir}/usr/share/applications
+	ln -s "/opt/${pkgname}/${_tarball_base_name}/share/applications/SecureCRT.desktop" ${pkgdir}/usr/share/applications/SecureCRT.desktop
+	ln -s "/opt/${pkgname}/${_tarball_base_name}/share/applications/SecureFX.desktop" ${pkgdir}/usr/share/applications/SecureFX.desktop
 	mkdir -p ${pkgdir}/usr/share/vandyke/data
-	cp -ar ${srcdir}/${_bundle_name}-${pkgver}/securecrt_64.png ${pkgdir}/usr/share/vandyke/data/securecrt_64.png
-	cp -ar ${srcdir}/${_bundle_name}-${pkgver}/securefx_64.png ${pkgdir}/usr/share/vandyke/data/securefx_64.png
+	ln -s "/opt/${pkgname}/${_tarball_base_name}/share/vandyke/data/securecrt_64.png" ${pkgdir}/usr/share/vandyke/data/securecrt_64.png
+	ln -s "/opt/${pkgname}/${_tarball_base_name}/share/vandyke/data/securefx_64.png" ${pkgdir}/usr/share/vandyke/data/securefx_64.png
 }
