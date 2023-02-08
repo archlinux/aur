@@ -1,7 +1,7 @@
 # Maintainer: Ales Katona <almindor@gmail.com>
 
 pkgname="mmapper"
-pkgver="22.05.0"
+pkgver="23.01.0"
 pkgrel="1"
 pkgdesc="MMapper2 is a MUD (Multi-User Dungeon) mapper especially written for the MUD MUME"
 arch=('x86_64')
@@ -14,8 +14,8 @@ provides=('mmapper')
 replaces=()
 conflicts=()
 options=(strip)
-source=('https://github.com/MUME/MMapper/archive/refs/tags/v22.05.0.tar.gz')
-sha256sums=('23916a2a7516d7c230e78d075218e8f71225f5cccf26a10f03f8cbef735da76e')
+source=('https://github.com/MUME/MMapper/archive/refs/tags/v23.01.0.tar.gz')
+sha256sums=('1c95e31541956ce48c382636b2a210feb607c6fd382f0138b5d43b4406d306e4')
 
 prepare() {
   cd "MMapper-${pkgver}"
