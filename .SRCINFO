@@ -6,10 +6,11 @@ pkgbase = easytax-ag-2022
 	arch = any
 	license = custom
 	depends = java-environment
-	depends = bash
 	source = https://msg-easytax.ch/ag/2022/EasyTax2022AG_unix_1_1.tar.gz
+	source = https://upload.wikimedia.org/wikipedia/commons/d/d9/Wappen_Aargau.svg
 	source = easytax-ag-2022.desktop
 	sha256sums = 0a6c7bcbc8179364da3b4b6772a17b7296b5687a1612e93501ccb3f7c4a99cd4
-	sha256sums = c4ee6bbd08d5e6ead09ac11770b7fefe8df654dae6d8fd981a25a64c42761d6c
+	sha256sums = 253d315b20371cd9add777dc990f96545c60d5d07a3f34cd33720d5148e82486
+	sha256sums = f666973e4142a2be29f19e206027aa89e7e7816021dbcff5f4df022cf6e11bb4
 
 pkgname = easytax-ag-2022
