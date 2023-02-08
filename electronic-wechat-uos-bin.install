@@ -15,6 +15,7 @@ function post_install(){
     note '若要启用 Wayland 支持, 请在 ~/.config/electron-flags.conf 添加 --enable-features=WaylandWindowDecorations 与 --ozone-platform-hint=auto'
     note '请注意: 启用 Wayland 支持后将无法使用 Fcitx5 输入法以及任何 Electron 应用的全局菜单'
     note '在Xwayland下请勿添加--use-gl=egl, 否则会导致程序卡顿'
+    note "警告! 使用此软件可能导致暂时性或永久性的封号"
 }
 
 function post_upgrade(){
