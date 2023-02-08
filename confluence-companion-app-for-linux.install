@@ -1,0 +1,7 @@
+post_install() {
+    echo ""
+    echo "confluence-companion has been installed."
+    echo "To start the Companion app now and at login, run"
+    echo "    $ systemctl --user enable --now confluence-companion-app-for-linux.service"
+    echo ""
+}
