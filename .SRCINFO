@@ -1,7 +1,7 @@
 pkgbase = tengine-extra
 	pkgdesc = A web server based on Nginx and has many advanced features, originated by Taobao. Some extra modules enabled.
 	pkgver = 2.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tengine.taobao.org
 	install = tengine.install
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgbase = tengine-extra
 	source = geoip2-v3.4.tar.gz::https://github.com/leev/ngx_http_geoip2_module/archive/refs/tags/3.4.tar.gz
 	source = fancyindex-v0.5.2.tar.xz::https://github.com/aperezdc/ngx-fancyindex/releases/download/v0.5.2/ngx-fancyindex-0.5.2.tar.xz
 	source = jdomain-v1.4.0.tar.gz::https://github.com/nicholaschiasson/ngx_upstream_jdomain/archive/refs/tags/1.4.0.tar.gz
-	sha256sums = d6ba4eecd3fb82a38b547bc92f8759cdfba4803eef289d51e2eaf8361f99c1a7
+	sha256sums = 53ab713136e33e595fa1cb1358f56c2226255a12c7eebb6126d05ea16a3946f9
 	sha256sums = c066d39d2e945b74756a2422415b086eb26a9ce34788820c86c7e3dc7c6245eb
 	sha256sums = 7d4bd60b9210e1dfb46bc52c344b069d5639e1ba08cd9951c0563360af238f97
 	sha256sums = c85cdcfd76703c95aa4204ee4c2e619aa5b075cac18f428202f65552104add3b
