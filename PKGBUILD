@@ -12,7 +12,7 @@ depends=('gnome-keyring' 'libsecret' 'gtk3' 'libxss' 'nss')
 
 
 source_x86_64=("https://github.com/iotaledger/firefly/releases/download/desktop-$pkgver/firefly-desktop-$pkgver.AppImage")
-sha256sums_x86_64=('d7435a22399bef1904185b2d096188b89d84753eb2d9b86f57e52ab65d01b08e')
+sha256sums_x86_64=('f984b6e5273ba74796f42ebf94142e2f2258f557a08b0ceeda44a07423635b14')
 
 source=("iota-firefly-wallet.desktop")
 md5sums=('c22e0c2b6cd8941ea147ddc01352858a')
