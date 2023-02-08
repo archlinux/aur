@@ -1,7 +1,7 @@
 pkgbase = lr2oraja
 	pkgdesc = The latest build of beatoraja, but compiled using LR2 judges and gauges.
 	pkgver = build1696491429
-	pkgrel = 5
+	pkgrel = 6
 	arch = x86_64
 	license = GPL3
 	license = unknown

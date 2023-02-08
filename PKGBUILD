@@ -1,7 +1,7 @@
 # Maintainer: Pfych <contact at pfy dot ch>
 pkgname=lr2oraja
 pkgver=build1696491429
-pkgrel=5
+pkgrel=6
 pkgdesc="The latest build of beatoraja, but compiled using LR2 judges and gauges."
 arch=('x86_64')
 depends=('liberica-jre-8-full-bin')
@@ -42,9 +42,6 @@ package() {
   cp -r skin "$pkgdir/opt/beatoraja"
   chmod -R 777 "$pkgdir/opt/beatoraja"
 
-  # Update start script to refer to correct pkg location
-  sed -i "s#/opt/beatoraja#$pkgdir/opt/beatoraja#g" "$srcdir/beatoraja.sh"
-
   # Create Desktop entry
   cp lr2oraja-icon.png "$pkgdir/usr/share/pixmaps"
   desktopEntry="$pkgdir/usr/share/applications/lr2oraja.desktop"
@@ -52,7 +49,7 @@ package() {
   echo "[Desktop Entry]" >> "$desktopEntry"
   echo "Type=Application" >> "$desktopEntry"
   echo "Terminal=true" >> "$desktopEntry"
-  echo "Exec=$pkgdir/usr/bin/beatoraja" >> "$desktopEntry"
+  echo "Exec=/usr/bin/beatoraja" >> "$desktopEntry"
   echo "Version=$pkgver" >> "$desktopEntry"
   echo "Name=LR2oraja" >> "$desktopEntry"
   echo "Categories=Games;" >> "$desktopEntry"
