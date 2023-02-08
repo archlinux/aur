@@ -1,0 +1,75 @@
+diff --git a/packages/compass-preferences-model/src/global-config.ts b/packages/compass-preferences-model/src/global-config.ts
+index ed438e40f..10d2a5aba 100644
+--- a/packages/compass-preferences-model/src/global-config.ts
++++ b/packages/compass-preferences-model/src/global-config.ts
+@@ -210,8 +210,6 @@ export interface ParsedGlobalPreferencesResult {
+   preferenceParseErrors: string[];
+ }
+ 
+-// See https://github.com/electron/electron/issues/4690
+-const argvStartIndex = process.versions.electron && !process.defaultApp ? 1 : 2;
+ export async function parseAndValidateGlobalPreferences(
+   sources: GlobalPreferenceSources = {}
+ ): Promise<ParsedGlobalPreferencesResult> {
+@@ -220,6 +218,16 @@ export async function parseAndValidateGlobalPreferences(
+   );
+   let argv = sources.argv;
+   if (!argv) {
++    let argvStartIndex = 0;
++
++    for (const arg of process.argv) {
++      argvStartIndex++;
++
++      if (arg.includes('app.asar') === true) {
++        break;
++      }
++    }
++
+     argv = process.argv.slice(argvStartIndex);
+   }
+   const cliPreferences = parseCliArgs(argv);
+@@ -309,11 +317,17 @@ export function getHelpText(): string {
+     text += `  ${path}\n`;
+   }
+   if (globalConfigPaths.length > 0) {
++    let binaryName = '';
++
++    for (const arg of process.argv) {
++      if (arg.includes('app.asar') === true) {
++        binaryName = arg.replace('/usr/lib/', '').replace('/app.asar', '');
++        break;
++      }
++    }
++
+     text += '\nIf no global configuration file exists, running Compass as\n';
+-    text += `  ${escapeShell(process.execPath)}${
+-      argvStartIndex >= 2 ? ' ' + escapeShell(process.argv[1]) : ''
+-    } `;
+-    text += `--show-example-config > ${escapeShell(globalConfigPaths[0])}\n`;
++    text += `  ${binaryName} --show-example-config > ${escapeShell(globalConfigPaths[0])}\n`;
+     text += 'can be used to install one.\n';
+   }
+   text += '\nSee the MongoDB Compass documentation for more details.\n';
+diff --git a/packages/compass/src/main/protocol-handling.ts b/packages/compass/src/main/protocol-handling.ts
+index fb4486333..6f2921174 100644
+--- a/packages/compass/src/main/protocol-handling.ts
++++ b/packages/compass/src/main/protocol-handling.ts
+@@ -13,9 +13,15 @@ async function appProtocolsConfig(): Promise<ProtocolsList> {
+   return (await import('../../package.json')).config.hadron.protocols;
+ }
+ 
+-const commandArgv = process.defaultApp
+-  ? [process.execPath, path.resolve(process.argv[1]), '--']
+-  : [process.execPath, '--'];
++let commandArgv = [];
++
++for (const arg of process.argv) {
++  if (arg.includes('app.asar') === true) {
++    commandArgv[0] = arg.replace('/usr/lib/', '').replace('/app.asar', '');
++    commandArgv[1] = '--';
++    break;
++  }
++}
+ 
+ export async function setupProtocolHandlers(
+   action: 'install' | 'uninstall',

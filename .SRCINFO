@@ -1,6 +1,6 @@
 pkgbase = mongodb-compass-isolated-git
 	pkgdesc = The official GUI for MongoDB - Isolated Edition - git version
-	pkgver = r15155.g60ed338bf
+	pkgver = r15468.g1dbe8415e
 	pkgrel = 1
 	epoch = 1
 	url = https://www.mongodb.com/products/compass
@@ -14,8 +14,7 @@ pkgbase = mongodb-compass-isolated-git
 	makedepends = npm>=8.0.0
 	makedepends = python
 	makedepends = unzip
-	makedepends = patchutils
-	depends = electron15
+	depends = electron
 	depends = krb5
 	depends = libsecret
 	depends = lsb-release
@@ -23,10 +22,10 @@ pkgbase = mongodb-compass-isolated-git
 	provides = mongodb-compass-isolated
 	conflicts = mongodb-compass-isolated
 	source = mongodb-compass-isolated-git::git+https://github.com/mongodb-js/compass
-	source = mongodb-compass-isolated-git-browserslist.diff::https://github.com/browserslist/browserslist/pull/378.diff
 	source = hadron-build.diff
+	source = fix-argv.diff
 	sha512sums = SKIP
-	sha512sums = d7fb3d9d9417bf03aee8a27a813f600756acfd2b8db581f609e13a6c8482f6f70ce1659831c9ddd85bb1a4141430213b79524227b3be775b78b4fa3619fe36d1
-	sha512sums = 8d26820139d918c4e9da05b062a86865664218bfbf32b9f002995c30fa22b64e088f59263bee5f8fb4797565fe88b7daf48c383a572c0ced657dab0639e57b94
+	sha512sums = 18029ff1479cbacb413f7154d5ca7589855273c559ee15bb5b5006eed65b8edcb58fac64cc8deabd20c36e06f298dc4b7152f61391975d2a3ecb6351b787fae7
+	sha512sums = 1a2345b90196d3c856d0288d9406cfd667d0ebcce400e6886c7eba2825fa52d7813d45f2c375fcaf4e28d116b68107219e6f662b5bdbb12bf0e402ca61194cf7
 
 pkgname = mongodb-compass-isolated-git
