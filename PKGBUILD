@@ -1,7 +1,7 @@
 # Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
 pkgname=sanjuuni
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Converts images and videos into a format that can be displayed in ComputerCraft."
 arch=('x86_64' 'i386' 'armv7l' 'armv7h' 'aarch64' 'powerpc' 'ppc64el' 's390x' 'riscv64' 'riscv32')

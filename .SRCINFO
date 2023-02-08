@@ -1,7 +1,7 @@
 pkgbase = sanjuuni
 	pkgdesc = Converts images and videos into a format that can be displayed in ComputerCraft.
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MCJack123/sanjuuni
 	arch = x86_64
 	arch = i386
