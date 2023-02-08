@@ -45,7 +45,7 @@ build(){
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps \
     PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
     PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-    WX_CONFIG=/usr/bin/wx-config-gtk3 \
+    WX_CONFIG=/usr/bin/wx-config \
     MODULEBUILDRC=/dev/null
 
   cd "Wx-$pkgver"
