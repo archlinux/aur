@@ -21,7 +21,7 @@ platforms=( 'all' )
 deps=( 'rcore/libsdl:lib-sdl2' 'rcore/libsdl:lib-sdl2_image' 'rcore/libsdl:lib-sdl2_mixer' 'rcore/freetype:lib-freetype2' )
 groups=( 'Library/WidgetToolkit' )
 contents=( '/headers<lt_headers/' )
-pkgdir='/tmp/tmp.22i4YS9IWh/sh/pkg'
+pkgdir='/tmp/tmp.bgxANPkHJ8/sh/pkg'
 options=( '!strip' )
 pkgrel=1
 
