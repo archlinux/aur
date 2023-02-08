@@ -3,10 +3,10 @@
 # Contributor: Amr Okasha <amradel55 at gmail.com>
 
 pkgname=ccstudio
-_semver=11.2.0
-_bldver=00007
+_semver=12.2.0
+_bldver=00009
 pkgver=$_semver.$_bldver
-pkgrel=2
+pkgrel=1
 pkgdesc="Texas Instruments Code Composer Studio IDE"
 arch=('x86_64')
 url="http://www.ti.com/tool/ccstudio"
@@ -24,7 +24,7 @@ optdepends=('ttf-dejavu')
 
 # The license file was copy-pasted from the installer's GUI
 _archive=CCS${pkgver}_linux-x64
-source=("https://software-dl.ti.com/ccs/esd/CCSv11/CCS_$(echo $_semver | sed 's@[.]@_@g')/exports/${_archive}.tar.gz"
+source=("https://dr-download.ti.com/software-development/ide-configuration-compiler-or-debugger/MD-J1VdearkvK/${_semver}/${_archive}.tar.gz"
 "LICENSE"
 "61-msp430uif.rules"
 "71-sd-permissions.rules"
@@ -71,8 +71,8 @@ package() {
     find $srcdir/$_installpath/ccs/eclipse/p2/org.eclipse.equinox.p2.engine/profileRegistry/epp.package.cpp.profile/.data/.settings/org.eclipse.equinox.p2.metadata.repository.prefs -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
     find $srcdir/$_installpath/ccs/eclipse/plugins/com.ti.ccstudio.base_*/properties -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
     find $srcdir/$_installpath/ccs/eclipse/configuration/org.eclipse.osgi/*/data/*/*.xml -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
-    find $srcdir/$_installpath/ccs/eclipse/configuration/org.eclipse.osgi/365/data/timestamps* -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
-    find $srcdir/$_installpath/ccs/eclipse/configuration/org.eclipse.osgi/365/data/cache.timestamps -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
+    find $srcdir/$_installpath/ccs/eclipse/configuration/org.eclipse.osgi/*/data/timestamps* -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##"
+    find $srcdir/$_installpath/ccs/eclipse/configuration/org.eclipse.osgi/*/data/cache.timestamps -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##"
     find $srcdir/$_installpath/ccs/eclipse/configuration/ccs.properties -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
 
     install -D -m0755 "$srcdir/$_installpath/$_desktop" $pkgdir/usr/share/applications/$pkgname.desktop
@@ -112,7 +112,7 @@ package() {
     install -D -m0644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
-sha256sums=('ccb886e627e66bd8fc3ffec80b0cb59948630a7942cabe3b39ca835abfcf1ffc'
+sha256sums=('6d8057ef1631a18571a5662303adf3fff7f9193c69768be0e43e254eb6de2540'
             'adc0dd74f5b95e373db4b45c74b034ec3d45e2df462b3a1a35f6d56aa8181076'
             '97061c190d86ac2de195e54070d86d8bde34774ea35261942ee44626ca3c23db'
             'ad63fd5e8a11e1ddcbe1d0d56a739f1c2f573a2781e46f4d52b5a93dd5810d1a')
