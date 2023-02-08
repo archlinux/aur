@@ -5,6 +5,7 @@ pkgbase = ltstudio
 	arch = any
 	groups = Developer/IDE
 	makedepends = rpkdev
+	depends = lib-lt
 	depends = lib-lt-devel
 	depends = lib-lt-headers
 	depends = clang

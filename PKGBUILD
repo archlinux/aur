@@ -18,16 +18,16 @@ author='TS'
 type='app'
 pkgver='1.0.0'
 platforms=( 'all' )
-deps=( 'rcore/tssoftware:lib-lt-devel' 'rcore/tssoftware:lib-lt-headers' 'rcore/llvm:libclang' 'rcore/llvm:libs' 'rcore/llvm:llvm' 'rcore/btzy:libnfd' )
+deps=( 'rcore/tssoftware:lib-lt' 'rcore/tssoftware:lib-lt-devel' 'rcore/tssoftware:lib-lt-headers' 'rcore/llvm:libclang' 'rcore/llvm:libs' 'rcore/llvm:llvm' 'rcore/btzy:libnfd' )
 groups=( 'Developer/IDE' )
 contents=( '/icon.svg<ltstudio.svg' '/data/<./Data' '/data/Plugins/UIEditor/libLTStudio_GuiApp.so<./Plugins/UIEditor/libLTStudio_GuiApp.so' '/data/Plugins/UIEditor/Data<./Plugins/UIEditor/Data' '/data/Plugins/Git/libLTStudio_Git.so<./Plugins/Git/libLTStudio_Git.so' '/data/Plugins/Git/Data<./Plugins/UIEditor/Data' '/conf/<./Config' '/bin<build/bin' '/bin<../LTUiTimestamp/build/bin' '/bin<../LTProjConvert/build/bin' '/bin<../UIToCpp/build/bin' '/bin/oshfclient<oshfclient' )
-pkgdir='/tmp/tmp.GgM8IKAMjp/sh/pkg'
+pkgdir='/tmp/tmp.yQitMjQLk7/sh/pkg'
 options=( '!strip' )
 pkgrel=1
 
 arch=(  'any' )
 
-depends=( 'lib-lt-devel' 'lib-lt-headers' 'clang' 'llvm-libs' 'llvm' 'libnfd' )
+depends=( 'lib-lt' 'lib-lt-devel' 'lib-lt-headers' 'clang' 'llvm-libs' 'llvm' 'libnfd' )
 makedepends=( rpkdev )
 abstorel(){
     sed -E 's/^\/+//g'
