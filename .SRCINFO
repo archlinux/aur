@@ -1,7 +1,7 @@
 pkgbase = qmmp-1
 	pkgdesc = Qt based audio-player (1.x branch)
 	pkgver = 1.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://qmmp.ylsoftware.com
 	arch = x86_64
 	license = GPL

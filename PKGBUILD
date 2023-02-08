@@ -1,12 +1,11 @@
-pkgname=qmmp-1
+_name=qmmp
+pkgname=${_name}-1
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt based audio-player (1.x branch)"
 arch=('x86_64')
 url="https://qmmp.ylsoftware.com"
 license=('GPL')
-
-_name="${pkgname%-1}"
 provides=("${_name}=${pkgver}")
 
 depends=(
@@ -44,16 +43,14 @@ source=("${_snapshot}.tar.bz2::${url}/files/${_name}/${pkgver%.*}/${_snapshot}.t
 sha256sums=('484b1318d01a0ac5c765605872074fec6bec32dde5d92cea2286d1d6760a30b5')
 
 build() {
-    cd "${srcdir}/${_snapshot}"
-
-    cmake . -DCMAKE_INSTALL_PREFIX=/usr \
+    cmake -B "build" -S "${_snapshot}" \
+        -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DUSE_HAL:BOOL=FALSE
 
-    make
+    cmake --build "build"
 }
 
 package() {
-    cd "${srcdir}/${_snapshot}"
-    make DESTDIR="${pkgdir}" install
+    DESTDIR="${pkgdir}" cmake --install "build"
 }
