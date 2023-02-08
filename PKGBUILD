@@ -2,9 +2,9 @@
 _pkgname=linux
 _kernver=6.1.9
 _archver=arch1
-_pkgrel=1
+_pkgrel=2
 _pkgver="${_kernver}.${_archver}"
-_KERNNAME=6.1.9-arch1-1
+_KERNNAME=6.1.9-arch1-2
 pkgbase="${_pkgname}-versioned-bin"
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}"
 pkgname=("${_pkgname}-versioned-bin"
@@ -44,9 +44,9 @@ source=("${_kernsrc}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('54d5dc937e541dbec084c4b062f2c66a838e5b65050c47156c1211a93bce9a2b'
-            '0737f32454eee9206b91a87958fe075dde5f82159d77034d85dab9684c63b5d6'
-            '7bc98ef83ed7882acfc9babc498138a31e0d86bf6406052697bf4ebd84e51288')
+sha256sums=('409715acacb4bc675fa453b1b2622cb026c43ca5f8ef78a897ec8ac97bf34842'
+            '24844ad533c5ba1d6f71a09c951ef1866e377df505eea8b555d54cbb7b90fbaa'
+            '23dd824ca29a15ce8a44f8f651d5bb5dea846f55911e26443e4524f00de90419')
 
 package_linux-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -64,7 +64,7 @@ package_linux-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux6.1.9.arch1-1-bin() {
+package_linux6.1.9.arch1-2-bin() {
   pkgdesc="The Linux kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
@@ -82,7 +82,7 @@ package_linux6.1.9.arch1-1-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux6.1.9.arch1-1-headers-bin() {
+package_linux6.1.9.arch1-2-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${_KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -91,7 +91,7 @@ package_linux6.1.9.arch1-1-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux6.1.9.arch1-1-docs-bin() {
+package_linux6.1.9.arch1-2-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
