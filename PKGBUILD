@@ -6,7 +6,7 @@
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
 pkgname="btcpayserver"
-pkgver="1.7.5"
+pkgver="1.7.6"
 pkgrel="1"
 pkgdesc="Accept Bitcoin payments. Free, open source and self-hosted Bitcoin payment processor."
 arch=("x86_64")
@@ -25,7 +25,7 @@ optdepends=("apache: HTTP server"
 install="${pkgname}.install"
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh")
-sha512sums=("def0d4b06fcf9105ef39ebd30e3fd85e585af8808b0d615418be2e62982348bcff6783c7bf6e52d10abd6899fe134a3b0c60568aa29fbd7e9e952df3c74a375f"
+sha512sums=("c8a41277ab39e7b0804febdedfb166608ba84a5adc515d2b953673153f7cd751868e894a4679889aec58dca5c5babb1ac2abf14a249bc31dd5196e6ef6f9b6b4"
     "0b95e4320dbf06e89895527a1ecc4019463f85b7d8b1799193b7101ad7f324ef21408f84850323195110a5fd2c565317a67156f724a7e688b2843269bd78f75a")
 
 build()
