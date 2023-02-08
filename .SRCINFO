@@ -1,14 +1,14 @@
 pkgbase = gpth-bin
 	pkgdesc = Tool to help you with exporting stuff from Google Photos
-	pkgver = 3.3.2
-	pkgrel = 2
+	pkgver = 3.3.3
+	pkgrel = 1
 	url = https://github.com/TheLastGimbus/GooglePhotosTakeoutHelper
 	arch = x86_64
 	license = Apache
 	provides = gpth
 	conflicts = gpth
 	options = !strip
-	source = https://github.com/TheLastGimbus/GooglePhotosTakeoutHelper/releases/download/v3.3.2/gpth-linux
-	sha256sums = eaf12feb0ea8849882b3f7f5711de764e976503bfa114d44cc4752162f93a84a
+	source = https://github.com/TheLastGimbus/GooglePhotosTakeoutHelper/releases/download/v3.3.3/gpth-linux
+	sha256sums = c9f917dceae899acdce33e5b57a98073943cebd62912594209764f85a9ccd7e7
 
 pkgname = gpth-bin
