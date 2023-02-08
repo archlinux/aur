@@ -3,7 +3,7 @@
 pkgname=confluence-companion-app-for-linux
 pkgver=1.0
 pkgrel=1
-pkgdesc=""
+pkgdesc="Unoffical Atlassian Companion App for Linux."
 arch=(any)
 url="https://github.com/zxp19821005/Companion4Linux"
 license=('GPL')
