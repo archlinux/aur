@@ -52,7 +52,7 @@ _disable_debug=y
 pkgbase=linux-next-git
 pkgver=20230208.r0.g38d2b86a665b
 _srcname=linux-next
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux NEXT'
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -63,7 +63,7 @@ _lucjanver=6.1
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_lucjanver}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver}"
 
-source=("git://git.kernel.org/pub/scm/linux/kernel/git/next/${_srcname}.git"
+source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/next/${_srcname}.git"
         "${_lucjanpath}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
          # the main kernel config files
         'config')

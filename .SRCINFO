@@ -1,7 +1,7 @@
 pkgbase = linux-next-git
 	pkgdesc = Linux NEXT
 	pkgver = 20230208.r0.g38d2b86a665b
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -14,7 +14,7 @@ pkgbase = linux-next-git
 	makedepends = tar
 	makedepends = xz
 	options = !strip
-	source = git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/6.1/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 	source = config
 	sha512sums = SKIP
