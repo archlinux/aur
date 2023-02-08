@@ -22,8 +22,8 @@ pkgver() {
 build() {
   cd $pkgname
 
-  echo "CAUTION!!! To compile the game correctly you must remove -D_GLIBCXX_ASSERTIONS in CXXFLAGS= in file /etc/makepkg.conf"
-  read
+  # https://github.com/pioneerspacesim/pioneer/issues/5387#issuecomment-1172955235
+  CXXFLAGS="${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS/}"
 
   ./bootstrap -D CMAKE_INSTALL_PREFIX:PATH=/usr \
     -D PIONEER_DATA_DIR:PATH=/usr/share/pioneer/
