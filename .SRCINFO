@@ -1,6 +1,6 @@
 pkgbase = python-hnswlib
 	pkgdesc = Header-only C++/python library for fast approximate nearest neighbors
-	pkgver = 0.6.2
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/nmslib/hnswlib
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = python-hnswlib
 	makedepends = python-setuptools
 	makedepends = pybind11
 	depends = python-numpy
-	source = python-hnswlib-0.6.2.tar.gz::https://github.com/nmslib/hnswlib/archive/refs/tags/v0.6.2.tar.gz
-	sha256sums = 19899f233f0361e1203a2b7e5143ed284f57c4e1501c8adc19f3bc341edb4100
+	source = python-hnswlib-0.7.0.tar.gz::https://github.com/nmslib/hnswlib/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = 4eba5d103a558fc76782d4051cde0cac2361fe5c36ccf56a959f9ff36813c91b
 
 pkgname = python-hnswlib
