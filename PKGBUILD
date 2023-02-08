@@ -3,12 +3,13 @@
 pkgname=python-rm2pdf
 _name=${pkgname#python-}
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A rendering library for *.rm files to pdf files."
 arch=("any")
 url="https://github.com/stwa/rm2pdf"
 license=('MIT')
 makedepends=('python-build' 'python-installer' 'python-poetry-core')
+depends=('python-rmscene')
 source=(
     "https://github.com/stwa/rm2pdf/archive/refs/tags/${pkgver}.tar.gz"
 )
