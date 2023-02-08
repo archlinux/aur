@@ -3,7 +3,7 @@
 
 pkgname=transmission-gtk-git
 _pkgname=transmission
-pkgver=4.0.0.beta.3.r28.g770da79cf
+pkgver=4.0.0.r0.g280ace12f
 pkgrel=1
 epoch=2
 pkgdesc="Fast, easy, and free BitTorrent client (GTK+ GUI)(Git version from github repository)"
@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url="http://www.transmissionbt.com/"
 license=('MIT')
 depends=('gtkmm3' 'libappindicator-gtk3' 'libnatpmp' 'libb64' 'miniupnpc')
-makedepends=('intltool' 'git' 'cmake' 'gtkmm3')
+makedepends=('intltool' 'git' 'cmake')
 optdepends=('notification-daemon: Desktop notification support'
   	    'transmission-cli: daemon and web support')
 provides=(transmission-gtk)
@@ -36,8 +36,8 @@ build() {
   cd build
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-  -DENABLE_QT=OFF \ # We only want gtk, thanks!
-  -DENABLE_TESTS=OFF # They took a lot of time to get build :(
+  -DENABLE_QT=OFF \
+  -DENABLE_TESTS=OFF
   make
 }
 
