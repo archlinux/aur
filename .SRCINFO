@@ -7,8 +7,8 @@ pkgbase = python-rm2pdf
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-poetry
+	makedepends = python-poetry-core
 	source = https://github.com/stwa/rm2pdf/archive/refs/tags/0.1.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = df11a1ebbc04bbe90efa4b82acb4a0a70da66c09371c30c9b821803e05429422
 
 pkgname = python-rm2pdf
