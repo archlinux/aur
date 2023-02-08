@@ -3,9 +3,9 @@ _pkgname=linux-zen
 _pkgver=6.1.9.zen1
 _kernver=6.1.9
 _zenver=zen1
-_pkgrel=1
+_pkgrel=2
 pkgbase="${_pkgname}-versioned-bin"
-_KERNNAME=6.1.9-zen1-1-zen
+_KERNNAME=6.1.9-zen1-2-zen
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}-zen"
 pkgname=("${_pkgname}-versioned-bin"
          "${_pkgname}-versioned-headers-bin"
@@ -44,9 +44,9 @@ source=("${_kernsrc}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('d838b3bab4fe3190b8d2c3b08129774335ea1bfa0426b15295f7cde2a8450480'
-            'add65f7be4c68da7386f1f805761df0c73ee45f556b139ef8cffd968ad972ff0'
-            '509ef4b66f84fbfc17432ff0ec1100419c79b06e0e98f34bcc6bbc89f86f2f67')
+sha256sums=('b42ecd1861c481f354e900d398694bba52502a7cbe58e26752e8795912297b49'
+            '723d108800da64dc3b35273c13fb9e6214775306e3d4fefbea01d05a6915abad'
+            '03163597910839bf85a27b7898182cdb07c0bfac88f34b911d883b07688a9894')
 
 package_linux-zen-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -64,7 +64,7 @@ package_linux-zen-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux6.1.9.zen1-1-zen-bin() {
+package_linux6.1.9.zen1-2-zen-bin() {
   pkgdesc="The Linux ZEN kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
@@ -82,7 +82,7 @@ package_linux6.1.9.zen1-1-zen-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux6.1.9.zen1-1-zen-headers-bin() {
+package_linux6.1.9.zen1-2-zen-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux ZEN kernel ${_KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -91,7 +91,7 @@ package_linux6.1.9.zen1-1-zen-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux6.1.9.zen1-1-zen-docs-bin() {
+package_linux6.1.9.zen1-2-zen-docs-bin() {
   pkgdesc="Documentation for the Linux ZEN kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
