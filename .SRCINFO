@@ -1,7 +1,7 @@
 pkgbase = linux-next-git
 	pkgdesc = Linux NEXT
-	pkgver = 20230206.r0.g129af7708234
-	pkgrel = 3
+	pkgver = 20230208.r0.g38d2b86a665b
+	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = x86_64
 	license = GPL2
