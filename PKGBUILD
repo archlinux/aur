@@ -3,7 +3,7 @@
 _pkgname=nvidia-utils
 pkgname=${_pkgname}-nvlax
 pkgver=525.85.05
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA drivers utilities with NVENC and NvFBC patched with nvlax"
 arch=('x86_64')
 license=('custom')
@@ -11,7 +11,7 @@ url="https://github.com/illnyang/nvlax/"
 depends=(
   'xorg-server' 'libglvnd' 'egl-wayland'
 )
-makedepends=('cmake' 'git')
+makedepends=('cmake' 'git' 'patchelf')
 optdepends=(
   "nvidia-settings=${pkgver}: configuration tool"
   'xorg-server-devel: nvidia-xconfig'
@@ -124,8 +124,7 @@ package() {
   install -Dm755 "libnvidia-allocator.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-allocator.so.${pkgver}"
   install -Dm755 "libnvidia-vulkan-producer.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-vulkan-producer.so.${pkgver}"
   # Sigh libnvidia-vulkan-producer.so has no SONAME set so create_links doesn't catch it. NVIDIA please fix!
-  ln -s "libnvidia-vulkan-producer.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-vulkan-producer.so.1"
-  ln -s "libnvidia-vulkan-producer.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-vulkan-producer.so"
+  patchelf --set-soname "libnvidia-vulkan-producer.so.1" "${pkgdir}/usr/lib/libnvidia-vulkan-producer.so.${pkgver}"
 
   # Patched NvFBC
   ./nvlax_fbc -i "libnvidia-fbc.so.${pkgver}" -o "libnvidia-fbc.so.${pkgver}"
@@ -148,6 +147,7 @@ package() {
   # CUDA
   install -Dm755 "libcuda.so.${pkgver}" "${pkgdir}/usr/lib/libcuda.so.${pkgver}"
   install -Dm755 "libnvcuvid.so.${pkgver}" "${pkgdir}/usr/lib/libnvcuvid.so.${pkgver}"
+  install -Dm755 "libcudadebugger.so.${pkgver}" "${pkgdir}/usr/lib/libcudadebugger.so.${pkgver}"
 
   # NVVM Compiler library loaded by the CUDA driver to do JIT link-time-optimization
   install -Dm644 "libnvidia-nvvm.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-nvvm.so.${pkgver}"
