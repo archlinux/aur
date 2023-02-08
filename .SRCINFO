@@ -1,6 +1,6 @@
 pkgbase = magicmirror
 	pkgdesc = Open source modular smart mirror platform.
-	pkgver = 2.16.0
+	pkgver = 2.22.0
 	pkgrel = 1
 	url = https://magicmirror.builders/
 	arch = any
@@ -11,14 +11,13 @@ pkgbase = magicmirror
 	depends = libxss
 	depends = nodejs
 	depends = nss
-	source = https://github.com/MichMich/MagicMirror/archive/v2.16.0.tar.gz
+	source = https://github.com/MichMich/MagicMirror/archive/v2.22.0.tar.gz
 	source = magicmirror.desktop
 	source = magicmirror.png
 	source = magicmirror.sh
-	sha256sums = b59c75d455f6f99aaa019ee2c3b3b3384f5a845591fcd7506a0a93f88c183cab
+	sha256sums = 66a735b17151ff7345f0c1bbfd2c70295ecd6c37823e79137f5823fe9c73a838
 	sha256sums = 44d4754359eea4f95f506a05a8eeeb849a5a1c79d22085f7a49e20f4cb248cc6
 	sha256sums = 8b863c41ab31114c92e060fa724e1ef63d4023cd534dafa96d49e943c346959c
 	sha256sums = 0595927a2b55ac88403f495afd413e32e72ada9262e0c709b96c7e62453fb039
 
 pkgname = magicmirror
-
