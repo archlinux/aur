@@ -11,7 +11,7 @@ makedepends=('cargo')
 provides=('rtx')
 conflicts=('rtx')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jdxcode/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('c5320778211ff2e2cb73af307b80b3b1e010be65537805772e01e7d578b38563100e71539e55161b6685d7c8ee86b25377e321738423295936e71cbd0c9beca0')
+sha512sums=('ce41003dd8ca66a948ed35eb843d686c9f19d2d2f68af4f338ef8b700dda034c36cd7912f9a3f7fb99b0a32753f6dc66bfc2b139e7ca71b037ba6fca0cf05624')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
