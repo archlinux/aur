@@ -1,5 +1,5 @@
 pkgbase = linux-tip-git
-	pkgdesc = Linux NEXT
+	pkgdesc = Linux Kernel based on the tip branch
 	pkgver = 6.2rc7.r276.gdd8bedde12ac
 	pkgrel = 1
 	url = http://www.kernel.org/
@@ -22,7 +22,7 @@ pkgbase = linux-tip-git
 	sha512sums = 0c4d52c6e7603a0ee13df9ae971a0aadf34ad9ae676904885a0432de393279c8530dce93392a5369e77767d13f0b4ba1086d4c6792df2bfaefc4fcc997ca8c23
 
 pkgname = linux-tip-git
-	pkgdesc = The Linux NEXT kernel and modules
+	pkgdesc = The Linux Kernel based on the tip branch kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -34,6 +34,6 @@ pkgname = linux-tip-git
 	provides = KSMBD-MODULE
 
 pkgname = linux-tip-git-headers
-	pkgdesc = Headers and scripts for building modules for the Linux NEXT kernel
+	pkgdesc = Headers and scripts for building modules for the Linux Kernel based on the tip branch kernel
 	depends = linux-next-git
 	depends = pahole
