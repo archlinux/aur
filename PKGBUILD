@@ -1,6 +1,6 @@
 # Maintainer: Namaku1801 <namaku1801@gmail.com>
 pkgname=deno-bin
-pkgver=1.29.4
+pkgver=1.30.3
 pkgrel=1
 pkgdesc="A modern runtime for JavaScript and TypeScript."
 arch=('x86_64' 'aarch64')
@@ -9,9 +9,9 @@ license=(MIT)
 provides=(deno)
 conflicts=(deno deno-git)
 source_x86_64=(https://github.com/denoland/deno/releases/download/v$pkgver/deno-$arch-unknown-linux-gnu.zip)
-sha256sums_x86_64=(7f158bbfcd502e84da01a668e2410a538e82eeb1902f8929e318e33b7220a52e)
+sha256sums_x86_64=(77ebb253b3bc8ba5ca62b44b60e8b8555c1b3d0011fbcebd1d52291652f834a8)
 source_aarch64=(https://github.com/LukeChannings/deno-arm64/releases/download/v$pkgver/deno-linux-arm64.zip)
-sha256sums_aarch64=(324c10a4bc8b4b731c7251008b8caae3f4c2a9f5b69c3546d8e991f614cdf0aa)
+sha256sums_aarch64=(1a3aec5aec4c828e822668297d79dcdb0fd125958d0799bc95e887c0fb68d851)
 
 package() {
   install -Dm755 "$srcdir/deno" "$pkgdir/usr/bin/deno"
