@@ -13,6 +13,3 @@ pre_remove() {
 	install-info --delete $infodir/ocp.info.gz $infodir/dir 2> /dev/null
 }
 
-post_remove() {
-	;
-}
