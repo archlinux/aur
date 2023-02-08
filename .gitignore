@@ -1,5 +1,7 @@
-*.xz
-*.zstd
-*.gz
-src
-pkg
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
