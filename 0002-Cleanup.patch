@@ -1,7 +1,7 @@
-From 08b7e6cd2ccb3576a067542923c44f4f42494825 Mon Sep 17 00:00:00 2001
+From 65cd4f0bea509989fd93258bee62769cd00b5ef1 Mon Sep 17 00:00:00 2001
 From: Aviana Cruz <gwencroft@proton.me>
 Date: Sun, 6 Nov 2022 13:33:14 +0800
-Subject: [PATCH 2/3] Cleanup
+Subject: [PATCH] Cleanup
 
 Co-authored-by: zhaose <weiliang1503@outlook.com>
 Signed-off-by: Aviana Cruz <gwencroft@proton.me>
@@ -9,25 +9,28 @@ Signed-off-by: Aviana Cruz <gwencroft@proton.me>
  .../java/org/jackhuang/hmcl/Launcher.java     |   8 -
  .../java/org/jackhuang/hmcl/Metadata.java     |   1 -
  .../jackhuang/hmcl/setting/ConfigHolder.java  |   1 -
+ .../hmcl/setting/ConfigUpgrader.java          | 112 --------
  .../org/jackhuang/hmcl/ui/Controllers.java    |   4 -
  .../org/jackhuang/hmcl/ui/CrashWindow.java    |   6 +-
- .../org/jackhuang/hmcl/ui/UpgradeDialog.java  |  77 ---
- .../jackhuang/hmcl/ui/main/FeedbackPage.java  | 470 ------------------
+ .../org/jackhuang/hmcl/ui/UpgradeDialog.java  |  77 ------
+ .../hmcl/ui/account/CreateAccountPane.java    |  16 --
+ .../jackhuang/hmcl/ui/main/FeedbackPage.java  |  80 ------
  .../hmcl/ui/main/LauncherSettingsPage.java    |  22 +-
- .../org/jackhuang/hmcl/ui/main/MainPage.java  | 117 +----
- .../org/jackhuang/hmcl/ui/main/RootPage.java  |  17 -
- .../jackhuang/hmcl/ui/main/SettingsPage.java  |  60 ---
- .../jackhuang/hmcl/ui/main/SettingsView.java  |  58 ---
- .../jackhuang/hmcl/ui/main/SponsorPage.java   | 174 -------
- .../hmcl/upgrade/ExecutableHeaderHelper.java  | 123 -----
- .../hmcl/upgrade/HMCLDownloadTask.java        |  68 ---
- .../hmcl/upgrade/IntegrityChecker.java        | 134 -----
- .../jackhuang/hmcl/upgrade/RemoteVersion.java |  96 ----
- .../jackhuang/hmcl/upgrade/UpdateChannel.java |  42 --
- .../jackhuang/hmcl/upgrade/UpdateChecker.java | 125 -----
- .../jackhuang/hmcl/upgrade/UpdateHandler.java | 257 ----------
+ .../org/jackhuang/hmcl/ui/main/MainPage.java  | 117 +-------
+ .../org/jackhuang/hmcl/ui/main/RootPage.java  |  17 --
+ .../jackhuang/hmcl/ui/main/SettingsPage.java  |  60 ----
+ .../jackhuang/hmcl/ui/main/SettingsView.java  |  58 ----
+ .../jackhuang/hmcl/ui/main/SponsorPage.java   | 174 ------------
+ .../hmcl/upgrade/ExecutableHeaderHelper.java  | 124 ---------
+ .../hmcl/upgrade/HMCLDownloadTask.java        |  68 -----
+ .../hmcl/upgrade/IntegrityChecker.java        | 148 ----------
+ .../jackhuang/hmcl/upgrade/RemoteVersion.java |  96 -------
+ .../jackhuang/hmcl/upgrade/UpdateChannel.java |  42 ---
+ .../jackhuang/hmcl/upgrade/UpdateChecker.java | 125 ---------
+ .../jackhuang/hmcl/upgrade/UpdateHandler.java | 257 ------------------
  .../jackhuang/hmcl/util/CrashReporter.java    |   5 -
- 21 files changed, 3 insertions(+), 1862 deletions(-)
+ 23 files changed, 3 insertions(+), 1615 deletions(-)
+ delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/setting/ConfigUpgrader.java
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/ui/UpgradeDialog.java
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/ui/main/FeedbackPage.java
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SponsorPage.java
@@ -40,7 +43,7 @@ Signed-off-by: Aviana Cruz <gwencroft@proton.me>
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateHandler.java
 
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java b/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
-index e5aecd61..7d260abc 100644
+index 00ed301e..96f5da68 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
 @@ -29,8 +29,6 @@ import org.jackhuang.hmcl.setting.SambaException;
@@ -52,7 +55,7 @@ index e5aecd61..7d260abc 100644
  import org.jackhuang.hmcl.util.CrashReporter;
  import org.jackhuang.hmcl.util.Lang;
  import org.jackhuang.hmcl.util.StringUtils;
-@@ -129,8 +127,6 @@ public final class Launcher extends Application {
+@@ -105,8 +103,6 @@ public final class Launcher extends Application {
                  Platform.setImplicitExit(false);
                  Controllers.initialize(primaryStage);
  
@@ -61,7 +64,7 @@ index e5aecd61..7d260abc 100644
                  primaryStage.show();
              });
          } catch (Throwable e) {
-@@ -145,10 +141,6 @@ public final class Launcher extends Application {
+@@ -207,10 +203,6 @@ public final class Launcher extends Application {
      }
  
      public static void main(String[] args) {
@@ -73,22 +76,22 @@ index e5aecd61..7d260abc 100644
          AsyncTaskExecutor.setUncaughtExceptionHandler(new CrashReporter(false));
  
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/Metadata.java b/HMCL/src/main/java/org/jackhuang/hmcl/Metadata.java
-index f24a2d47..7f49a55f 100644
+index 3c006446..f4bcb72f 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/Metadata.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/Metadata.java
-@@ -35,7 +35,6 @@ public final class Metadata {
+@@ -37,7 +37,6 @@ public final class Metadata {
      public static final String TITLE = NAME + " " + VERSION;
      public static final String FULL_TITLE = FULL_NAME + " v" + VERSION;
  
 -    public static final String UPDATE_URL = System.getProperty("hmcl.update_source.override", "https://hmcl.huangyuhui.net/api/update_link");
-     public static final String CONTACT_URL = "https://github.com/huanghongxun/HMCL/issues";
+     public static final String CONTACT_URL = "https://docs.hmcl.net/help.html";
      public static final String HELP_URL = "https://hmcl.huangyuhui.net/help";
      public static final String CHANGELOG_URL = "https://docs.hmcl.net/changelog/";
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/setting/ConfigHolder.java b/HMCL/src/main/java/org/jackhuang/hmcl/setting/ConfigHolder.java
-index 17342bcd..f7572c81 100644
+index e94bd2be..ae3ae9d0 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/setting/ConfigHolder.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/setting/ConfigHolder.java
-@@ -169,7 +169,6 @@ public final class ConfigHolder {
+@@ -168,7 +168,6 @@ public final class ConfigHolder {
                      LOG.info("Config is empty");
                  } else {
                      Map<?, ?> raw = new Gson().fromJson(content, Map.class);
@@ -96,11 +99,129 @@ index 17342bcd..f7572c81 100644
                      return deserialized;
                  }
              } catch (JsonParseException e) {
+diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/setting/ConfigUpgrader.java b/HMCL/src/main/java/org/jackhuang/hmcl/setting/ConfigUpgrader.java
+deleted file mode 100644
+index 9e519b09..00000000
+--- a/HMCL/src/main/java/org/jackhuang/hmcl/setting/ConfigUpgrader.java
++++ /dev/null
+@@ -1,112 +0,0 @@
+-/*
+- * Hello Minecraft! Launcher
+- * Copyright (C) 2020  huangyuhui <huanghongxun2008@126.com> and contributors
+- *
+- * This program is free software: you can redistribute it and/or modify
+- * it under the terms of the GNU General Public License as published by
+- * the Free Software Foundation, either version 3 of the License, or
+- * (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+- */
+-package org.jackhuang.hmcl.setting;
+-
+-import org.jackhuang.hmcl.util.StringUtils;
+-import java.util.HashMap;
+-import java.util.Map;
+-
+-import static org.jackhuang.hmcl.util.Lang.tryCast;
+-
+-final class ConfigUpgrader {
+-    private static final int VERSION = 0;
+-
+-    private ConfigUpgrader() {
+-    }
+-
+-    /**
+-     * This method is for the compatibility with old HMCL 3.x as well as HMCL 2.x.
+-     *
+-     * @param deserialized deserialized config settings
+-     * @param rawJson      raw json structure of the config settings without modification
+-     * @return true if config version is upgraded
+-     */
+-    static boolean upgradeConfig(Config deserialized, Map<?, ?> rawJson) {
+-        boolean upgraded;
+-        if (deserialized.getConfigVersion() < VERSION) {
+-            deserialized.setConfigVersion(VERSION);
+-            // TODO: Add upgrade code here.
+-            upgraded = true;
+-        } else {
+-            upgraded = false;
+-        }
+-
+-        upgradeV2(deserialized, rawJson);
+-        upgradeV3(deserialized, rawJson);
+-
+-        return upgraded;
+-    }
+-
+-    /**
+-     * Upgrade configuration of HMCL 2.x
+-     *
+-     * @param deserialized deserialized config settings
+-     * @param rawJson      raw json structure of the config settings without modification
+-     */
+-    private static void upgradeV2(Config deserialized, Map<?, ?> rawJson) {
+-        // Convert OfflineAccounts whose stored uuid is important.
+-        tryCast(rawJson.get("auth"), Map.class).ifPresent(auth -> {
+-            tryCast(auth.get("offline"), Map.class).ifPresent(offline -> {
+-                String selected = rawJson.containsKey("selectedAccount") ? null
+-                        : tryCast(offline.get("IAuthenticator_UserName"), String.class).orElse(null);
+-
+-                tryCast(offline.get("uuidMap"), Map.class).ifPresent(uuidMap -> {
+-                    ((Map<?, ?>) uuidMap).forEach((key, value) -> {
+-                        Map<Object, Object> storage = new HashMap<>();
+-                        storage.put("type", "offline");
+-                        storage.put("username", key);
+-                        storage.put("uuid", value);
+-                        if (key.equals(selected)) {
+-                            storage.put("selected", true);
+-                        }
+-                        deserialized.getAccountStorages().add(storage);
+-                    });
+-                });
+-            });
+-        });
+-    }
+-
+-    /**
+-     * Upgrade configuration of HMCL earlier than 3.1.70
+-     *
+-     * @param deserialized deserialized config settings
+-     * @param rawJson      raw json structure of the config settings without modification
+-     */
+-    private static void upgradeV3(Config deserialized, Map<?, ?> rawJson) {
+-        if (!rawJson.containsKey("commonDirType"))
+-            deserialized.setCommonDirType(deserialized.getCommonDirectory().equals(Settings.getDefaultCommonDirectory()) ? EnumCommonDirectory.DEFAULT : EnumCommonDirectory.CUSTOM);
+-        if (!rawJson.containsKey("backgroundType"))
+-            deserialized.setBackgroundImageType(StringUtils.isNotBlank(deserialized.getBackgroundImage()) ? EnumBackgroundImage.CUSTOM : EnumBackgroundImage.DEFAULT);
+-        if (!rawJson.containsKey("hasProxy"))
+-            deserialized.setHasProxy(StringUtils.isNotBlank(deserialized.getProxyHost()));
+-        if (!rawJson.containsKey("hasProxyAuth"))
+-            deserialized.setHasProxyAuth(StringUtils.isNotBlank(deserialized.getProxyUser()));
+-
+-        if (!rawJson.containsKey("downloadType")) {
+-            tryCast(rawJson.get("downloadtype"), Number.class)
+-                    .map(Number::intValue)
+-                    .ifPresent(id -> {
+-                        if (id == 0) {
+-                            deserialized.setDownloadType("mojang");
+-                        } else if (id == 1) {
+-                            deserialized.setDownloadType("bmclapi");
+-                        }
+-                    });
+-        }
+-    }
+-}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java
-index 6b13766f..af18ea1b 100644
+index 03be76c0..b74c333e 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java
-@@ -304,10 +304,6 @@ public final class Controllers {
+@@ -325,10 +325,6 @@ public final class Controllers {
  
      public static void onHyperlinkAction(String href) {
          if (href.startsWith("hmcl://")) {
@@ -218,12 +339,53 @@ index b43133a1..00000000
 -        }
 -    }
 -}
+diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/CreateAccountPane.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/CreateAccountPane.java
+index 0b9f8a42..9dd5e457 100644
+--- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/CreateAccountPane.java
++++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/CreateAccountPane.java
+@@ -58,7 +58,6 @@ import org.jackhuang.hmcl.ui.FXUtils;
+ import org.jackhuang.hmcl.ui.SVG;
+ import org.jackhuang.hmcl.ui.WeakListenerHolder;
+ import org.jackhuang.hmcl.ui.construct.*;
+-import org.jackhuang.hmcl.upgrade.IntegrityChecker;
+ import org.jackhuang.hmcl.util.StringUtils;
+ import org.jackhuang.hmcl.util.gson.UUIDTypeAdapter;
+ import org.jackhuang.hmcl.util.javafx.BindingMapping;
+@@ -304,12 +303,6 @@ public class CreateAccountPane extends JFXDialogLayout implements DialogAware {
+                 box.getChildren().setAll(profileLink, birthLink, purchaseLink, deauthorizeLink, forgotpasswordLink, createProfileLink);
+                 GridPane.setColumnSpan(box, 2);
+ 
+-                if (!IntegrityChecker.isOfficial()) {
+-                    HintPane unofficialHint = new HintPane(MessageDialogPane.MessageType.WARNING);
+-                    unofficialHint.setText(i18n("unofficial.hint"));
+-                    vbox.getChildren().add(unofficialHint);
+-                }
+-
+                 vbox.getChildren().addAll(hintPane, box);
+ 
+                 btnAccept.setDisable(false);
+@@ -399,15 +392,6 @@ public class CreateAccountPane extends JFXDialogLayout implements DialogAware {
+ 
+             int rowIndex = 0;
+ 
+-            if (!IntegrityChecker.isOfficial() && !(factory instanceof OfflineAccountFactory)) {
+-                HintPane hintPane = new HintPane(MessageDialogPane.MessageType.WARNING);
+-                hintPane.setSegment(i18n("unofficial.hint"));
+-                GridPane.setColumnSpan(hintPane, 2);
+-                add(hintPane, 0, rowIndex);
+-
+-                rowIndex++;
+-            }
+-
+             if (factory instanceof BoundAuthlibInjectorAccountFactory) {
+                 this.server = ((BoundAuthlibInjectorAccountFactory) factory).getServer();
+ 
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/FeedbackPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/FeedbackPage.java
 deleted file mode 100644
-index bca7f749..00000000
+index 58972ed3..00000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/FeedbackPage.java
 +++ /dev/null
-@@ -1,470 +0,0 @@
+@@ -1,80 +0,0 @@
 -/*
 - * Hello Minecraft! Launcher
 - * Copyright (C) 2021  huangyuhui <huanghongxun2008@126.com> and contributors
@@ -243,456 +405,66 @@ index bca7f749..00000000
 - */
 -package org.jackhuang.hmcl.ui.main;
 -
--import com.google.gson.JsonParseException;
--import com.google.gson.annotations.SerializedName;
--import com.google.gson.reflect.TypeToken;
--import com.jfoenix.controls.*;
--import javafx.beans.binding.Bindings;
--import javafx.beans.property.BooleanProperty;
--import javafx.beans.property.SimpleBooleanProperty;
--import javafx.collections.FXCollections;
--import javafx.collections.ObservableList;
 -import javafx.geometry.Insets;
--import javafx.geometry.Pos;
--import javafx.scene.control.Label;
--import javafx.scene.layout.*;
--import org.apache.commons.lang3.mutable.MutableObject;
--import org.jackhuang.hmcl.Metadata;
--import org.jackhuang.hmcl.game.OAuthServer;
--import org.jackhuang.hmcl.setting.Accounts;
--import org.jackhuang.hmcl.setting.HMCLAccounts;
--import org.jackhuang.hmcl.setting.Theme;
--import org.jackhuang.hmcl.task.Schedulers;
--import org.jackhuang.hmcl.task.Task;
--import org.jackhuang.hmcl.ui.Controllers;
+-import javafx.scene.control.ScrollPane;
+-import javafx.scene.image.Image;
+-import javafx.scene.layout.VBox;
 -import org.jackhuang.hmcl.ui.FXUtils;
--import org.jackhuang.hmcl.ui.SVG;
--import org.jackhuang.hmcl.ui.construct.*;
--import org.jackhuang.hmcl.util.StringUtils;
--import org.jackhuang.hmcl.util.io.HttpRequest;
--import org.jackhuang.hmcl.util.io.NetworkUtils;
--import org.jackhuang.hmcl.util.io.ResponseCodeException;
--import org.jackhuang.hmcl.util.javafx.BindingMapping;
+-import org.jackhuang.hmcl.ui.construct.ComponentList;
+-import org.jackhuang.hmcl.ui.construct.IconedTwoLineListItem;
+-import org.jackhuang.hmcl.ui.construct.SpinnerPane;
 -
--import java.io.IOException;
--import java.net.HttpURLConnection;
--import java.util.List;
--import java.util.Locale;
--import java.util.Map;
--
--import static org.jackhuang.hmcl.ui.FXUtils.onEscPressed;
--import static org.jackhuang.hmcl.ui.FXUtils.stringConverter;
--import static org.jackhuang.hmcl.util.Lang.mapOf;
--import static org.jackhuang.hmcl.util.Pair.pair;
 -import static org.jackhuang.hmcl.util.i18n.I18n.i18n;
 -
--public class FeedbackPage extends VBox implements PageAware {
--    private final ObservableList<FeedbackResponse> feedbacks = FXCollections.observableArrayList();
--    private final SpinnerPane spinnerPane = new SpinnerPane();
+-public class FeedbackPage extends SpinnerPane {
 -
 -    public FeedbackPage() {
--        setSpacing(10);
--        setPadding(new Insets(10));
+-        VBox content = new VBox();
+-        content.setPadding(new Insets(10));
+-        content.setSpacing(10);
+-        content.setFillWidth(true);
+-        ScrollPane scrollPane = new ScrollPane(content);
+-        scrollPane.setFitToWidth(true);
+-        FXUtils.smoothScrolling(scrollPane);
+-        setContent(scrollPane);
 -
+-        ComponentList community = new ComponentList();
 -        {
--            HBox loginPane = new HBox(16);
--            loginPane.setAlignment(Pos.CENTER_LEFT);
--            loginPane.getStyleClass().add("card");
+-            IconedTwoLineListItem users = new IconedTwoLineListItem();
+-            users.setImage(new Image("/assets/img/craft_table.png"));
+-            users.setTitle(i18n("feedback.qq_group"));
+-            users.setSubtitle(i18n("feedback.qq_group.statement"));
+-            users.setExternalLink("https://hmcl.huangyuhui.net/api/redirect/sponsor");
 -
--            TwoLineListItem accountInfo = new TwoLineListItem();
--            HBox.setHgrow(accountInfo, Priority.ALWAYS);
--            accountInfo.titleProperty().bind(BindingMapping.of(HMCLAccounts.accountProperty())
--                    .map(account -> account == null ? i18n("account.not_logged_in") : account.getNickname()));
--            accountInfo.subtitleProperty().bind(BindingMapping.of(HMCLAccounts.accountProperty())
--                    .map(account -> account == null ? i18n("account.not_logged_in") : account.getEmail()));
+-            IconedTwoLineListItem github = new IconedTwoLineListItem();
+-            github.setImage(new Image("/assets/img/github.png"));
+-            github.setTitle(i18n("feedback.github"));
+-            github.setSubtitle(i18n("feedback.github.statement"));
+-            github.setExternalLink("https://github.com/huanghongxun/HMCL/issues/new/choose");
 -
--            JFXButton logButton = new JFXButton();
--            logButton.textProperty().bind(BindingMapping.of(HMCLAccounts.accountProperty())
--                    .map(account -> account == null ? i18n("account.login") : i18n("account.logout")));
--            logButton.setOnAction(e -> log());
+-            IconedTwoLineListItem discord = new IconedTwoLineListItem();
+-            discord.setImage(new Image("/assets/img/discord.png"));
+-            discord.setTitle(i18n("feedback.discord"));
+-            discord.setSubtitle(i18n("feedback.discord.statement"));
+-            discord.setExternalLink("https://discord.gg/jVvC7HfM6U");
 -
--            loginPane.getChildren().setAll(accountInfo, logButton);
--            getChildren().add(loginPane);
+-            IconedTwoLineListItem kookapp = new IconedTwoLineListItem();
+-            kookapp.setImage(new Image("/assets/img/kookapp.png"));
+-            kookapp.setTitle(i18n("feedback.kookapp"));
+-            kookapp.setSubtitle(i18n("feedback.kookapp.statement"));
+-            kookapp.setExternalLink("https://kook.top/Kx7n3t");
+-
+-            community.getContent().setAll(users, github, discord, kookapp);
 -        }
 -
--        {
--            HBox searchPane = new HBox(8);
--            searchPane.getStyleClass().add("card");
--            getChildren().add(searchPane);
+-        content.getChildren().addAll(
+-                ComponentList.createComponentListTitle(i18n("feedback.channel")),
+-                community
+-        );
 -
--            JFXTextField searchField = new JFXTextField();
--            searchField.setOnAction(e -> search(searchField.getText(), "time", true));
--            HBox.setHgrow(searchField, Priority.ALWAYS);
--            searchField.setPromptText(i18n("search"));
--
--            JFXButton searchButton = new JFXButton();
--            searchButton.getStyleClass().add("toggle-icon4");
--            searchButton.setGraphic(SVG.magnify(Theme.blackFillBinding(), -1, -1));
--            searchButton.setOnAction(e -> search(searchField.getText(), "time", true));
--
--            JFXButton addButton = new JFXButton();
--            addButton.getStyleClass().add("toggle-icon4");
--            addButton.setGraphic(SVG.plus(Theme.blackFillBinding(), -1, -1));
--            addButton.setOnAction(e -> addFeedback());
--
--            searchPane.getChildren().setAll(searchField, searchButton, addButton);
--        }
--
--        {
--            spinnerPane.getStyleClass().add("card");
--            VBox.setVgrow(spinnerPane, Priority.ALWAYS);
--            JFXListView<FeedbackResponse> listView = new JFXListView<>();
--            spinnerPane.setContent(listView);
--            Bindings.bindContent(listView.getItems(), feedbacks);
--            MutableObject<Object> lastCell = new MutableObject<>();
--            listView.setCellFactory(x -> new MDListCell<FeedbackResponse>(listView, lastCell) {
--                private final TwoLineListItem content = new TwoLineListItem();
--                private final JFXButton likeButton = new JFXButton();
--                private final JFXButton unlikeButton = new JFXButton();
--                private final HBox container;
--
--                {
--                    container = new HBox(8);
--                    container.setPickOnBounds(false);
--                    container.setAlignment(Pos.CENTER_LEFT);
--                    HBox.setHgrow(content, Priority.ALWAYS);
--                    content.setMouseTransparent(false);
--                    setSelectable();
--
--                    likeButton.getStyleClass().add("toggle-icon4");
--                    likeButton.setGraphic(FXUtils.limitingSize(SVG.thumbUpOutline(Theme.blackFillBinding(), 24, 24), 24, 24));
--
--                    unlikeButton.getStyleClass().add("toggle-icon4");
--                    unlikeButton.setGraphic(FXUtils.limitingSize(SVG.thumbDownOutline(Theme.blackFillBinding(), 24, 24), 24, 24));
--
--                    container.getChildren().setAll(content, likeButton, unlikeButton);
--
--                    StackPane.setMargin(container, new Insets(10, 16, 10, 16));
--                    getContainer().getChildren().setAll(container);
--                }
--
--                @Override
--                protected void updateControl(FeedbackResponse feedback, boolean empty) {
--                    if (empty) return;
--                    content.setTitle(feedback.getTitle());
--                    content.setSubtitle(feedback.getAuthor());
--                    content.getTags().setAll(
--                            "#" + feedback.getId(),
--                            i18n("feedback.state." + feedback.getState().name().toLowerCase(Locale.US)),
--                            i18n("feedback.type." + feedback.getType().name().toLowerCase(Locale.US)));
--                    content.setOnMouseClicked(e -> {
--                        getFeedback(feedback.getId())
--                                .thenAcceptAsync(Schedulers.javafx(), f -> {
--                                    Controllers.dialog(new ViewFeedbackDialog(f));
--                                })
--                                .start();
--                    });
--                }
--            });
--
--            getChildren().add(spinnerPane);
--        }
+-        this.setContent(content);
 -    }
 -
--    @Override
--    public void onPageShown() {
--        search("", "time", false);
--    }
--
--    private void search(String keyword, String order, boolean showAll) {
--        HMCLAccounts.HMCLAccount account = HMCLAccounts.getAccount();
--        Task.supplyAsync(() -> {
--            Map<String, String> query = mapOf(
--                    pair("keyword", keyword),
--                    pair("order", order)
--            );
--            if (showAll) {
--                query.put("showAll", "1");
--            }
--            HttpRequest req = HttpRequest.GET(NetworkUtils.withQuery("https://hmcl.huangyuhui.net/api/feedback", query));
--            if (account != null) {
--                req.authorization("Bearer", HMCLAccounts.getAccount().getIdToken())
--                        .header("Authorization-Provider", HMCLAccounts.getAccount().getProvider());
--            }
--            return req.<List<FeedbackResponse>>getJson(new TypeToken<List<FeedbackResponse>>(){}.getType());
--        }).whenComplete(Schedulers.javafx(), (result, exception) -> {
--            spinnerPane.hideSpinner();
--            if (exception != null) {
--                if (exception instanceof ResponseCodeException) {
--                    int responseCode = ((ResponseCodeException) exception).getResponseCode();
--                    if (responseCode == HttpURLConnection.HTTP_UNAUTHORIZED) {
--                        spinnerPane.setFailedReason(i18n("feedback.failed.permission"));
--                        return;
--                    } else if (responseCode == 429) {
--                        spinnerPane.setFailedReason(i18n("feedback.failed.too_frequently"));
--                        return;
--                    }
--                }
--                spinnerPane.setFailedReason(i18n("feedback.failed"));
--            } else {
--                feedbacks.setAll(result);
--            }
--        }).start();
--    }
--
--    private Task<FeedbackResponse> getFeedback(int id) {
--        return Task.supplyAsync(() -> HttpRequest.GET("https://hmcl.huangyuhui.net/api/feedback/" + id).getJson(FeedbackResponse.class));
--    }
--
--    private void log() {
--        if (HMCLAccounts.getAccount() == null) {
--            // login
--            Controllers.dialog(new LoginDialog());
--        } else {
--            // logout
--            HMCLAccounts.setAccount(null);
--        }
--    }
--
--    private void addFeedback() {
--        if (HMCLAccounts.getAccount() == null) {
--            Controllers.dialog(i18n("feedback.add.login"));
--            return;
--        }
--
--        Controllers.dialog(new AddFeedbackDialog());
--    }
--
--    private static final class LoginDialog extends JFXDialogLayout {
--        private final SpinnerPane spinnerPane = new SpinnerPane();
--        private final Label errorLabel = new Label();
--        private final BooleanProperty logging = new SimpleBooleanProperty();
--
--        public LoginDialog() {
--            setHeading(new Label(i18n("feedback.login")));
--
--            VBox vbox = new VBox(8);
--            setBody(vbox);
--            HintPane hintPane = new HintPane(MessageDialogPane.MessageType.INFO);
--            hintPane.textProperty().bind(BindingMapping.of(logging).map(logging -> i18n("account.hmcl.hint")));
--            hintPane.setOnMouseClicked(e -> {
--                if (logging.get() && OAuthServer.lastlyOpenedURL != null) {
--                    FXUtils.copyText(OAuthServer.lastlyOpenedURL);
--                }
--            });
--            vbox.getChildren().setAll(hintPane);
--
--            JFXButton loginButton = new JFXButton();
--            spinnerPane.setContent(loginButton);
--            loginButton.setText(i18n("account.login"));
--            loginButton.setOnAction(e -> login());
--
--            JFXButton cancelButton = new JFXButton();
--            cancelButton.setText(i18n("button.cancel"));
--            cancelButton.setOnAction(e -> fireEvent(new DialogCloseEvent()));
--            onEscPressed(this, cancelButton::fire);
--
--            setActions(errorLabel, spinnerPane, cancelButton);
--        }
--
--        private void login() {
--            spinnerPane.showSpinner();
--            errorLabel.setText("");
--            logging.set(true);
--
--            HMCLAccounts.login().whenComplete(Schedulers.javafx(), (result, exception) -> {
--                logging.set(false);
--                if (exception != null) {
--                    if (exception instanceof IOException) {
--                        errorLabel.setText(i18n("account.failed.connect_authentication_server"));
--                    } else if (exception instanceof JsonParseException) {
--                        errorLabel.setText(i18n("account.failed.server_response_malformed"));
--                    } else {
--                        errorLabel.setText(Accounts.localizeErrorMessage(exception));
--                    }
--                } else {
--                    fireEvent(new DialogCloseEvent());
--                }
--            }).start();
--        }
--    }
--
--    private static class AddFeedbackDialog extends DialogPane {
--
--        JFXTextField titleField = new JFXTextField();
--        JFXComboBox<FeedbackType> comboBox = new JFXComboBox<>();
--        JFXTextArea contentArea = new JFXTextArea();
--
--        public AddFeedbackDialog() {
--            setTitle(i18n("feedback.add"));
--
--            GridPane body = new GridPane();
--            body.setVgap(8);
--            body.setHgap(8);
--
--            HintPane searchHintPane = new HintPane(MessageDialogPane.MessageType.WARNING);
--            GridPane.setColumnSpan(searchHintPane, 2);
--            searchHintPane.setText(i18n("feedback.add.hint.search_before_add"));
--            body.addRow(0, searchHintPane);
--
--            HintPane titleHintPane = new HintPane(MessageDialogPane.MessageType.INFO);
--            GridPane.setColumnSpan(titleHintPane, 2);
--            titleHintPane.setText(i18n("feedback.add.hint.title"));
--            body.addRow(1, titleHintPane);
--
--            titleField.setValidators(new RequiredValidator());
--            body.addRow(2, new Label(i18n("feedback.title")), titleField);
--
--            comboBox.setMaxWidth(-1);
--            comboBox.getItems().setAll(FeedbackType.values());
--            comboBox.getSelectionModel().select(0);
--            comboBox.setConverter(stringConverter(e -> i18n("feedback.type." + e.name().toLowerCase())));
--            body.addRow(3, new Label(i18n("feedback.type")), comboBox);
--
--            Label contentLabel = new Label(i18n("feedback.content"));
--            GridPane.setColumnSpan(contentLabel, 2);
--            body.addRow(4, contentLabel);
--
--            contentArea.setValidators(new RequiredValidator());
--            contentArea.setPromptText(i18n("feedback.add.hint.content"));
--            GridPane.setColumnSpan(contentArea, 2);
--            body.addRow(5, contentArea);
--
--            validProperty().bind(Bindings.createBooleanBinding(() -> {
--                return titleField.validate() && contentArea.validate();
--            }, titleField.textProperty(), contentArea.textProperty()));
--
--            setBody(body);
--        }
--
--        @Override
--        protected void onAccept() {
--            setLoading();
--
--            addFeedback(titleField.getText(), comboBox.getValue(), contentArea.getText())
--                    .whenComplete(Schedulers.javafx(), exception -> {
--                        if (exception != null) {
--                            onFailure(exception.getLocalizedMessage());
--                        } else {
--                            onSuccess();
--                        }
--                    })
--                    .start();
--        }
--
--        private Task<?> addFeedback(String title, FeedbackType feedbackType, String content) {
--            return Task.runAsync(() -> {
--                HttpRequest.POST("https://hmcl.huangyuhui.net/api/feedback")
--                        .json(mapOf(
--                                pair("title", title),
--                                pair("content", content),
--                                pair("type", feedbackType.name().toLowerCase(Locale.ROOT)),
--                                pair("launcher_version", Metadata.VERSION)
--                        ))
--                        .authorization("Bearer", HMCLAccounts.getAccount().getIdToken())
--                        .header("Authorization-Provider", HMCLAccounts.getAccount().getProvider())
--                        .getString();
--            });
--        }
--    }
--
--    private static class ViewFeedbackDialog extends JFXDialogLayout {
--
--        public ViewFeedbackDialog(FeedbackResponse feedback) {
--            BorderPane heading = new BorderPane();
--            TwoLineListItem left = new TwoLineListItem();
--            heading.setLeft(left);
--            left.setTitle(feedback.getTitle());
--            left.setSubtitle(feedback.getAuthor());
--            left.getTags().add("#" + feedback.getId());
--            left.getTags().add(i18n("feedback.state." + feedback.getState().name().toLowerCase(Locale.US)));
--            left.getTags().add(feedback.getLauncherVersion());
--            left.getTags().add(i18n("feedback.type." + feedback.getType().name().toLowerCase()));
--
--            setHeading(heading);
--
--            Label content = new Label(feedback.getContent());
--            content.setWrapText(true);
--
--            TwoLineListItem response = new TwoLineListItem();
--            response.getStyleClass().setAll("two-line-item-second-large");
--            response.setTitle(i18n("feedback.response"));
--            response.setSubtitle(StringUtils.isBlank(feedback.getReason())
--                    ? i18n("feedback.response.empty")
--                    : feedback.getReason());
--
--            VBox body = new VBox(content, response);
--            body.setSpacing(8);
--            setBody(body);
--
--            JFXButton okButton = new JFXButton();
--            okButton.setText(i18n("button.ok"));
--            okButton.setOnAction(e -> fireEvent(new DialogCloseEvent()));
--
--            setActions(okButton);
--        }
--    }
--
--    private static class FeedbackResponse {
--        private final int id;
--        private final String title;
--        private final String content;
--        private final String author;
--        @SerializedName("launcher_version")
--        private final String launcherVersion;
--        private final FeedbackType type;
--        private final FeedbackState state;
--        private final String reason;
--
--        public FeedbackResponse(int id, String title, String content, String author, String launcherVersion, FeedbackType type, FeedbackState state, String reason) {
--            this.id = id;
--            this.title = title;
--            this.content = content;
--            this.author = author;
--            this.launcherVersion = launcherVersion;
--            this.type = type;
--            this.state = state;
--            this.reason = reason;
--        }
--
--        public int getId() {
--            return id;
--        }
--
--        public String getTitle() {
--            return title;
--        }
--
--        public String getContent() {
--            return content;
--        }
--
--        public String getAuthor() {
--            return author;
--        }
--
--        public String getLauncherVersion() {
--            return launcherVersion;
--        }
--
--        public FeedbackType getType() {
--            return type;
--        }
--
--        public FeedbackState getState() {
--            return state;
--        }
--
--        public String getReason() {
--            return reason;
--        }
--    }
--
--    private enum FeedbackType {
--        FEATURE,
--        BUG
--    }
--
--    private enum FeedbackState {
--        OPEN,
--        REJECTED,
--        ACCEPTED
--    }
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/LauncherSettingsPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/LauncherSettingsPage.java
 index d6c11595..d7586282 100644
@@ -925,7 +697,7 @@ index 111fb82d..add45e23 100644
          FXUtils.checkFxUserThread();
          this.profile = profile;
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java
-index 94c282c0..1a4885d0 100644
+index 378c16e2..b158bc33 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java
 @@ -41,7 +41,6 @@ import org.jackhuang.hmcl.ui.decorator.DecoratorPage;
@@ -936,7 +708,7 @@ index 94c282c0..1a4885d0 100644
  import org.jackhuang.hmcl.util.TaskCancellationAction;
  import org.jackhuang.hmcl.util.io.CompressingUtils;
  import org.jackhuang.hmcl.util.versioning.VersionNumber;
-@@ -92,8 +91,6 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
+@@ -93,8 +92,6 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
              });
  
              FXUtils.onChangeAndOperate(Profiles.selectedVersionProperty(), mainPage::setCurrentGame);
@@ -945,7 +717,7 @@ index 94c282c0..1a4885d0 100644
  
              Profiles.registerVersionsListener(profile -> {
                  HMCLGameRepository repository = profile.getRepository();
-@@ -150,19 +147,6 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
+@@ -151,19 +148,6 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
              downloadItem.setTitle(i18n("download"));
              downloadItem.setOnAction(e -> Controllers.navigate(Controllers.getDownloadPage()));
  
@@ -965,10 +737,10 @@ index 94c282c0..1a4885d0 100644
              // sixth item in left sidebar
              AdvancedListItem launcherSettingsItem = new AdvancedListItem();
              launcherSettingsItem.setLeftGraphic(wrap(SVG::gearOutline));
-@@ -179,7 +163,6 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
+@@ -180,7 +164,6 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
                      .add(gameItem)
                      .add(downloadItem)
-                     .startCategory(i18n("settings.launcher.general").toUpperCase())
+                     .startCategory(i18n("settings.launcher.general").toUpperCase(Locale.ROOT))
 -                    .add(multiplayerItem)
                      .add(launcherSettingsItem);
  
@@ -1332,10 +1104,10 @@ index ff685971..00000000
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/ExecutableHeaderHelper.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/ExecutableHeaderHelper.java
 deleted file mode 100644
-index 66a0f0ee..00000000
+index 7c47f586..00000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/ExecutableHeaderHelper.java
 +++ /dev/null
-@@ -1,123 +0,0 @@
+@@ -1,124 +0,0 @@
 -/*
 - * Hello Minecraft! Launcher
 - * Copyright (C) 2020  huangyuhui <huanghongxun2008@126.com> and contributors
@@ -1357,6 +1129,7 @@ index 66a0f0ee..00000000
 -
 -import java.io.IOException;
 -import java.io.InputStream;
+-import java.nio.Buffer;
 -import java.nio.ByteBuffer;
 -import java.nio.channels.FileChannel;
 -import java.nio.channels.FileChannel.MapMode;
@@ -1413,7 +1186,7 @@ index 66a0f0ee..00000000
 -        suffixLoop: for (String suffix : suffix2header.keySet()) {
 -            Optional<byte[]> header = readHeader(zip, suffix);
 -            if (header.isPresent()) {
--                buf.rewind();
+-                ((Buffer) buf).rewind();
 -                for (byte b : header.get()) {
 -                    if (!buf.hasRemaining() || b != buf.get()) {
 -                        continue suffixLoop;
@@ -1535,10 +1308,10 @@ index 8b6fdc06..00000000
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/IntegrityChecker.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/IntegrityChecker.java
 deleted file mode 100644
-index 8c387047..00000000
+index 5faaaf8c..00000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/IntegrityChecker.java
 +++ /dev/null
-@@ -1,134 +0,0 @@
+@@ -1,148 +0,0 @@
 -/*
 - * Hello Minecraft! Launcher
 - * Copyright (C) 2020  huangyuhui <huanghongxun2008@126.com> and contributors
@@ -1558,7 +1331,9 @@ index 8c387047..00000000
 - */
 -package org.jackhuang.hmcl.upgrade;
 -
+-import org.jackhuang.hmcl.Metadata;
 -import org.jackhuang.hmcl.util.DigestUtils;
+-import org.jackhuang.hmcl.util.Lang;
 -import org.jackhuang.hmcl.util.io.IOUtils;
 -import org.jackhuang.hmcl.util.io.JarUtils;
 -
@@ -1606,7 +1381,7 @@ index 8c387047..00000000
 -        byte[] signature = null;
 -        Map<String, byte[]> fileFingerprints = new TreeMap<>();
 -        try (ZipFile zip = new ZipFile(jarPath.toFile())) {
--            for (ZipEntry entry : zip.stream().toArray(ZipEntry[]::new)) {
+-            for (ZipEntry entry : Lang.toIterable(zip.entries())) {
 -                String filename = entry.getName();
 -                try (InputStream in = zip.getInputStream(entry)) {
 -                    if (in == null) {
@@ -1647,25 +1422,37 @@ index 8c387047..00000000
 -        }
 -    }
 -
--    private static Boolean selfVerified = null;
+-    private static volatile Boolean selfVerified = null;
 -
 -    /**
 -     * Checks whether the current application is verified.
 -     * This method is blocking.
 -     */
--    public static synchronized boolean isSelfVerified() {
+-    public static boolean isSelfVerified() {
 -        if (selfVerified != null) {
 -            return selfVerified;
 -        }
--        try {
--            verifySelf();
--            LOG.info("Successfully verified current JAR");
--            selfVerified = true;
--        } catch (IOException e) {
--            LOG.log(Level.WARNING, "Failed to verify myself, is the JAR corrupt?", e);
--            selfVerified = false;
+-
+-        synchronized (IntegrityChecker.class) {
+-            if (selfVerified != null) {
+-                return selfVerified;
+-            }
+-
+-            try {
+-                verifySelf();
+-                LOG.info("Successfully verified current JAR");
+-                selfVerified = true;
+-            } catch (IOException e) {
+-                LOG.log(Level.WARNING, "Failed to verify myself, is the JAR corrupt?", e);
+-                selfVerified = false;
+-            }
+-
+-            return selfVerified;
 -        }
--        return selfVerified;
+-    }
+-
+-    public static boolean isOfficial() {
+-        return isSelfVerified() || (Metadata.GITHUB_SHA != null && Metadata.BUILD_CHANNEL.equals("nightly"));
 -    }
 -
 -    private static void verifySelf() throws IOException {
@@ -2218,7 +2005,7 @@ index 4cd06ef8..00000000
 -    // ====
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/util/CrashReporter.java b/HMCL/src/main/java/org/jackhuang/hmcl/util/CrashReporter.java
-index 252265be..53b93d43 100644
+index 5ec3d2e3..def97e1a 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/util/CrashReporter.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/util/CrashReporter.java
 @@ -23,8 +23,6 @@ import javafx.scene.control.Alert.AlertType;
@@ -2230,7 +2017,7 @@ index 252265be..53b93d43 100644
  import org.jackhuang.hmcl.util.io.NetworkUtils;
  
  import java.io.IOException;
-@@ -106,9 +104,6 @@ public class CrashReporter implements Thread.UncaughtExceptionHandler {
+@@ -105,9 +103,6 @@ public class CrashReporter implements Thread.UncaughtExceptionHandler {
                      if (showCrashWindow) {
                          new CrashWindow(text).show();
                      }
@@ -2241,5 +2028,5 @@ index 252265be..53b93d43 100644
              });
          } catch (Throwable handlingException) {
 -- 
-2.38.1
+2.39.1
 

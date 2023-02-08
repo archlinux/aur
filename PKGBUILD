@@ -6,7 +6,7 @@
 pkgname=hmcl-new
 _pkgname=HMCL
 _ver=3.5.3
-_build=228
+_build=229
 pkgver=$_ver.$_build
 pkgrel=1
 pkgdesc='An unofficial build of HMCL that trying to compile and run HMCL with the latest LTS version of java. (with HMCL-Clean changes)'
@@ -23,15 +23,13 @@ source=('hmcl.desktop'
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
   "0001-Target-java-17.patch"
   "0002-Cleanup.patch"
-  "0003-Disable-Pack200.patch"
 )
 sha256sums=('b4e8aa0f349bb3f5dd15a31c5a13ac3e10e5a5bcd2f97cf390041924275e43ef'
   '858b5082bc58ddc44fe74625937876e78442fdf5ff948d1e91cddbf170af9eeb'
   '2989a1b5301b8c7b9afdae5696c6a4e5246afa2d4f1f3d3dad5c192f036a9b4c'
-  '4e7511e23bdf6c6742444924c650e38ef458f3e59e68406d379225bb5c551e4d'
-  '8f3bc4a0ebb04734cf254233736326429ddcb5b2dd7a04e6ab57f592f71c0331'
-  '0e100dbe2c18156749b55d57b11593cef8fe30cf4442796d762f89d0ff646c2a'
-  '2d307e19328faffb49fa83836c0cb5233623c75e1a4f52e4c6ffe7215b744ada')
+  '3e818e881b4a5b2d54182d12ea61e68dc75b870afe4d1fc2dbf4df464a8b4669'
+  'b8e2cd7a4072e4df29237ac3662bb0deb51adf098601ab52b32e98c2ee33565f'
+  '881332dbdb0f437ef7a030bfdafe40e573a0153e49be0a513276762bf097ae9e')
 
 prepare() {
   cd "$_pkgname-$pkgver"
