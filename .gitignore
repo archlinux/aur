@@ -1,0 +1,5 @@
+pkg/
+rezound-qt
+rezound-qt-git-*.pkg.tar.*
+rezound-qt-git-*.src.tar.gz
+src/

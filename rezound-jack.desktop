@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=rezound --audio-method=jack %U
+MimeType=audio/x-rez;audio/wav;audio/x-vorbis;application/x-ogg;audio/basic;audio/x-aiff;audio/x-mp3;audio/x-mp2;audio/x-wav
+Name=ReZound (JACK)
+Terminal=false
+Type=Application
+Icon=rezound

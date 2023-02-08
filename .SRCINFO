@@ -1,0 +1,29 @@
+pkgbase = rezound-qt-git
+	pkgdesc = A graphical audio file editor (Qt git version)
+	pkgver = v0.13.1beta.r44.ge29a29a8
+	pkgrel = 1
+	url = http://rezound.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = audiofile
+	depends = desktop-file-utils
+	depends = fftw
+	depends = jack
+	depends = libpulse
+	depends = portaudio
+	depends = qt6-base
+	depends = soundtouch
+	optdepends = cdrdao: For burn-to-CD-feature.
+	provides = rezound
+	conflicts = rezound
+	conflicts = rezound-git
+	conflicts = rezound-svn
+	source = rezound-qt::git+https://github.com/ddurham2/rezound.git#branch=dev/qt
+	source = rezound.png
+	source = rezound-jack.desktop
+	sha256sums = SKIP
+	sha256sums = 5a33ebae3f38bf9b824c262696ea67febc66ee2ef68fa22e976409041a08a489
+	sha256sums = 50827f9b942d8ec5b951a50e5b0651c62fd31e9bba3c9bbf04a07155454bdd93
+
+pkgname = rezound-qt-git
