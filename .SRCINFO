@@ -20,7 +20,9 @@ pkgbase = namcap-improved
 	conflicts = namcap=3.3.1
 	source = git+https://gitlab.archlinux.org/pacman/namcap.git#commit=c4958720dc8b077e1c0b1f3cec38e20822e73039
 	source = ec070f25882f6dadc8fdfcd268dddcd8253cb300.patch
+	source = 437768dddb71dbb9bd866102852b9d1b0f6c7183.patch
 	sha512sums = SKIP
 	sha512sums = 3a3da0c6aa981a13778afc9eed8f30144b5071348a8839f8328a52fa1856d2ec790bd6b6d6d5c6979a9a645d675d5fd8a748436195fce0f7d824cdb2aa35087e
+	sha512sums = 16111ccb256b9dcb7e1d695664efc276b3e9a447e12c35d831c0412c9ec67e717727fbc58411742dadab40de98e7635806519842ea56e65d1d275b6f09ded7f9
 
 pkgname = namcap-improved
