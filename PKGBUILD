@@ -24,7 +24,10 @@ package_python-qcustomplot-pyqt5() {
   cd "${pkgbase}-${pkgver}/build5"
   make INSTALL_ROOT="$pkgdir" install
   cd ..
-  install -D -p -m 644 LICENSE-MIT.txt "$pkgdir/usr/share/licenses/${pkgname}/LICENSE-MIT.txt"
+  mkdir -p $pkgdir/usr/share/doc/${pkgname}
+  cp -r examples $pkgdir/usr/share/doc/${pkgname}
+  install -Dm644 README.md -t $pkgdir/usr/share/doc/${pkgname}
+  install -Dm644 LICENSE-MIT.txt -t $pkgdir/usr/share/licenses/${pkgname}
 }
 
 package_python-qcustomplot-pyqt6() {
@@ -34,5 +37,9 @@ package_python-qcustomplot-pyqt6() {
   cd "${pkgbase}-${pkgver}/build6"
   make INSTALL_ROOT="$pkgdir" install
   cd ..
-  install -D -p -m 644 LICENSE-MIT.txt "$pkgdir/usr/share/licenses/${pkgname}/LICENSE-MIT.txt"
+  mkdir -p $pkgdir/usr/share/doc/${pkgname}
+  cp -r examples $pkgdir/usr/share/doc/${pkgname}
+  sed 's/PyQt5/PyQt6/g' -i $pkgdir/usr/share/doc/${pkgname}/examples/*/*
+  install -Dm644 README.md -t $pkgdir/usr/share/doc/${pkgname}
+  install -Dm644 LICENSE-MIT.txt -t $pkgdir/usr/share/licenses/${pkgname}
 }
