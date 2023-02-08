@@ -1,0 +1,68 @@
+From 437768dddb71dbb9bd866102852b9d1b0f6c7183 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor+arch@gmail.com>
+Date: Thu, 26 Jan 2023 20:13:15 +0100
+Subject: [PATCH] Print list of files needed by uninstalled library
+
+Even if a library is uninstalled, we know the reason why we need this library, so we can show this information to the user.
+---
+ Namcap/rules/pydepends.py      | 2 +-
+ Namcap/rules/shebangdepends.py | 2 +-
+ Namcap/rules/sodepends.py      | 2 +-
+ namcap-tags                    | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/Namcap/rules/pydepends.py b/Namcap/rules/pydepends.py
+index 9e65c42..7b3f386 100644
+--- a/Namcap/rules/pydepends.py
++++ b/Namcap/rules/pydepends.py
+@@ -102,7 +102,7 @@ class PythonDependencyRule(TarballRule):
+ 		liblist = modules | gir_modules
+ 
+ 		# Handle "no package associated" errors
+-		self.warnings.extend([("library-no-package-associated %s", i)
++		self.warnings.extend([("library-no-package-associated %s %s", (i, str(list(liblist[i]))))
+ 			for i in orphans + gir_orphans])
+ 
+ 		# Print link-level deps
+diff --git a/Namcap/rules/shebangdepends.py b/Namcap/rules/shebangdepends.py
+index 07896df..8f0e021 100644
+--- a/Namcap/rules/shebangdepends.py
++++ b/Namcap/rules/shebangdepends.py
+@@ -102,7 +102,7 @@ class ShebangDependsRule(TarballRule):
+ 			self.infos.append(("script-link-detected %s in %s", (i, str(files))))
+ 
+ 		# Handle "no package associated" errors
+-		self.warnings.extend([("library-no-package-associated %s", i)
++		self.warnings.extend([("library-no-package-associated %s %s", (i, str(list(scriptlist[i]))))
+ 			for i in orphans])
+ 
+ 		# Check for packages in testing
+diff --git a/Namcap/rules/sodepends.py b/Namcap/rules/sodepends.py
+index 2f061bb..0a2a4d7 100644
+--- a/Namcap/rules/sodepends.py
++++ b/Namcap/rules/sodepends.py
+@@ -158,7 +158,7 @@ class SharedLibsRule(TarballRule):
+ 		dependlist, orphans = finddepends(liblist)
+ 
+ 		# Handle "no package associated" errors
+-		self.warnings.extend([("library-no-package-associated %s", i)
++		self.warnings.extend([("library-no-package-associated %s %s", (i, str(list(liblist[i]))))
+ 			for i in orphans])
+ 
+ 		# Print link-level deps
+diff --git a/namcap-tags b/namcap-tags
+index 1f7bc69..76db26a 100644
+--- a/namcap-tags
++++ b/namcap-tags
+@@ -46,7 +46,7 @@ info-dir-file-present %s :: Info directory file (%s) should not be present
+ insecure-rpath %s %s :: Insecure RPATH '%s' in file ('%s')
+ insecure-runpath %s %s :: Insecure RUNPATH '%s' in file ('%s')
+ libtool-file-present %s :: File (%s) is a libtool file
+-library-no-package-associated %s :: Referenced library '%s' is an uninstalled dependency
++library-no-package-associated %s %s :: Referenced library '%s' is an uninstalled dependency (needed in files %s)
+ link-level-dependence %s in %s :: Link-level dependence (%s) in file %s
+ lots-of-docs %f :: Package was %.0f%% docs by size; maybe you should split out a docs package
+ makepkg-function-used %s :: PKGBUILD uses internal makepkg '%s' subroutine
+-- 
+GitLab
+
