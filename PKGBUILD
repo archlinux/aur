@@ -1,7 +1,7 @@
 # Maintainer  : Chris Billington <chrisjbillington@gmail.com>
 pkgname=python-scipy-mkl-bin
 _pkgname=scipy
-_pkgver=1.9.3
+_pkgver=1.10.0
 _build=py310hd5efca6_0
 pkgver="${_pkgver}.anaconda${_build##*_}"
 pkgrel=1
@@ -16,7 +16,7 @@ makedepends=('jq')
 
 optdepends=('python-pillow: for image saving module')
 source=("https://repo.anaconda.com/pkgs/main/linux-64/${_pkgname}-${_pkgver}-${_build}.tar.bz2")
-sha256sums=('91443658a4012278daeb9aa0d53978f23ff9297817997c05de7edddb5bdc7d3c')
+sha256sums=('95a4a9e7f76bdc99bdbc12921175fdc9ab854763420190eed1988986b8bda10f')
 
 prepare() {
   # Prefix replacement
