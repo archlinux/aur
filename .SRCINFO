@@ -1,6 +1,6 @@
 pkgbase = tiny-remarkable-scripts-git
 	pkgdesc = A set of tiny remarkable scripts to pull and push pdfs via ssh
-	pkgver = 2.0.0
+	pkgver = r5.6d8075d
 	pkgrel = 1
 	url = https://github.com/mosauter/remarkable_scripts
 	arch = any

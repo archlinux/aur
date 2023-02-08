@@ -1,7 +1,7 @@
 # Maintainer: Moritz Sauter <moritz.sauter7+aur at gmail dot com>
 
 pkgname=tiny-remarkable-scripts-git
-pkgver=2.0.0
+pkgver=r5.6d8075d
 pkgrel=1
 pkgdesc="A set of tiny remarkable scripts to pull and push pdfs via ssh"
 arch=("any")
