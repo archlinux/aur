@@ -1,16 +1,16 @@
 pkgbase = syasokoban
 	pkgdesc = Still Yet Another Sokoban
-	pkgver = 2.0.1
-	pkgrel = 2
+	pkgver = 2.0.2
+	pkgrel = 1
 	url = http://grayskygames.com/sokoban.html
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = sdl
-	source = http://grayskygames.com/sokoban/syasokoban-2.0.1.tar.gz
+	source = https://github.com/davidjoffe/sokoban/archive/refs/tags/v2.0.2.tar.gz"
 	source = syasokoban.patch
-	md5sums = c8f320e5c43c966eebe184977542e903
-	md5sums = c9c45c06287c82097e94d26ec8b3f5e2
+    sha256sums = c9c1a1ad4e12e5376b2a4dfbaf12f1c1f4e1d51fac2954f6a8da7467181a7851
+    sha256sums = 6b4203362664b6060a0e9dd9edda01faff72f61f7b6ad55a5a336670cc2ba5d7
 
 pkgname = syasokoban
 
