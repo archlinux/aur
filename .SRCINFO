@@ -1,6 +1,6 @@
 pkgbase = youtube-viewer-git
 	pkgdesc = A lightweight YouTube client for Linux
-	pkgver = 3.10.5.r0.g0f7ba0e
+	pkgver = 3.10.6.r0.g89cd450
 	pkgrel = 1
 	url = https://github.com/trizen/youtube-viewer
 	arch = any
