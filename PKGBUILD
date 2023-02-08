@@ -1,25 +1,32 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=citations
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Manage your bibliographies using the BibTeX format"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.gnome.org/World/citations"
 license=('GPL3')
-depends=('libadwaita-git' 'poppler' 'gtksourceview5')
+depends=('libadwaita' 'poppler-glib' 'gtksourceview5')
 makedepends=('meson' 'cargo')
 checkdepends=('appstream-glib')
 source=($url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('6f18599b4ef53d079201d16496de282d59ac8e8980298f7372be658c96838c1125b938db600032e1c6573d1d7e376c4b071948326b912a63e75357a2594755b3')
+b2sums=('9510bc2ae8c94193728d635824f607f701410bbbb47ad96b67440886f355656ffe7cbad098fd444be639b90d0d2d309578e3f805350396972a70890d9ea2fdd5')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
+  export RUSTUP_TOOLCHAIN=stable
   arch-meson "$pkgname-$pkgver" build
   meson compile -C build
 }
 
 check() {
-  meson test -C build || :
+  meson test -C build --print-errorlogs || :
 }
 
 package() {
