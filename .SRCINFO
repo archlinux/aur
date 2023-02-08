@@ -1,11 +1,12 @@
 pkgbase = ad2vcf
 	pkgdesc = Tool to add allelic depth info from a SAM stream to a VCF file
 	pkgver = 0.1.6
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/auerlab/ad2vcf
 	arch = x86_64
 	license = BSD-2
 	depends = biolibc
+	depends = libxtend
 	source = ad2vcf-0.1.6.tar.gz::https://github.com/auerlab/ad2vcf/archive/refs/tags/0.1.6.tar.gz
 	sha256sums = fbed1e32504dbc6975cb124792d12e48576ed799ac148aa3b6beed33a67bdf98
 
