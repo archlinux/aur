@@ -10,7 +10,7 @@ pkgbase = deno-bin
 	conflicts = deno
 	conflicts = deno-git
 	source_x86_64 = https://github.com/denoland/deno/releases/download/v1.30.3/deno-x86_64-unknown-linux-gnu.zip
-	sha256sums_x86_64 = 77ebb253b3bc8ba5ca62b44b60e8b8555c1b3d0011fbcebd1d52291652f834a8
+	sha256sums_x86_64 = d4402bb5ba04e5ad8c946faac0ce865ea3cc83f5b59246f6a6d1c42600e0d344
 	source_aarch64 = https://github.com/LukeChannings/deno-arm64/releases/download/v1.30.3/deno-linux-arm64.zip
 	sha256sums_aarch64 = 1a3aec5aec4c828e822668297d79dcdb0fd125958d0799bc95e887c0fb68d851
 
