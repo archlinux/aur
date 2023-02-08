@@ -12,7 +12,7 @@ pkgver=4.8.0
 pkgrel=1
 pkgdesc="Framework bringing asynchronous RESTful functionality to C++14 applications"
 url='https://github.com/Corvusoft/restbed'
-license=('AGPL', 'CPL')
+license=('AGPL' 'CPL')
 options=('staticlibs')
 source=("git+https://github.com/Corvusoft/restbed#tag=${_tag}")
 sha512sums=('SKIP')
@@ -58,9 +58,11 @@ package() {
 
   mkdir -p ${pkgdir}/usr/lib
   cp ${pkgname}/distribution/library/librestbed.so.${_tag} ${pkgdir}/usr/lib/
-  ln -s ${pkgdir}/usr/lib/${fullSoName} ${pkgdir}/usr/lib/${majorSoName}
-  ln -s ${pkgdir}/usr/lib/${fullSoName} ${pkgdir}/usr/lib/${shortSoName}
-  cp ${pkgname}/distribution/library/${libBasename}.a ${pkgdir}/usr/lib/${libBasename}.a
+  ln -s /usr/lib/${fullSoName} ${pkgdir}/usr/lib/${majorSoName}
+  ln -s /usr/lib/${fullSoName} ${pkgdir}/usr/lib/${shortSoName}
+
+  # The static lib would need a -fPIC flag to be relevant. Let's not mess at linking and just ignore it
+  #cp ${pkgname}/distribution/library/${libBasename}.a ${pkgdir}/usr/lib/${libBasename}.a
 
   mkdir -p ${pkgdir}/usr/include
   cp -r ${pkgname}/distribution/include/* ${pkgdir}/usr/include/
