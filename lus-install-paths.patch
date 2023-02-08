@@ -1,9 +1,9 @@
 Submodule libultraship contains modified content
 diff --git a/libultraship/src/CMakeLists.txt b/libultraship/src/CMakeLists.txt
-index e1af64e..5c923f9 100644
+index e21c92e..55102b9 100644
 --- a/libultraship/src/CMakeLists.txt
 +++ b/libultraship/src/CMakeLists.txt
-@@ -83,7 +83,10 @@ target_sources(libultraship PRIVATE ${Source_Files__Controller} ${Source_Files__
+@@ -86,7 +86,10 @@ target_sources(libultraship PRIVATE ${Source_Files__Controller} ${Source_Files__
  
  #=================== Core ===================
  
@@ -13,39 +13,29 @@ index e1af64e..5c923f9 100644
 +    ${CMAKE_BINARY_DIR}/install_config.h
      ${CMAKE_CURRENT_SOURCE_DIR}/core/Window.h
      ${CMAKE_CURRENT_SOURCE_DIR}/core/Window.cpp
- )
-@@ -341,6 +344,7 @@ target_sources(libultraship PRIVATE ${Source_Files__Lib__stb})
+     ${CMAKE_CURRENT_SOURCE_DIR}/core/ConsoleVariable.h
+@@ -343,7 +346,7 @@ target_sources(libultraship PRIVATE ${Source_Files__Lib__stb})
+ #=================== Packages & Includes ===================
+ 
  target_include_directories(libultraship
-     PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../extern
-             ${CMAKE_CURRENT_SOURCE_DIR}/graphic/Fast3D/U64/PR
-+            ${CMAKE_BINARY_DIR}
+-    PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../extern
++    PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../extern ${CMAKE_BINARY_DIR}
      PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${INCLUDE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/../extern/spdlog/include ${CMAKE_CURRENT_SOURCE_DIR}/../extern/stb
  )
  
 diff --git a/libultraship/src/core/Window.cpp b/libultraship/src/core/Window.cpp
-index 083654b..e6b7114 100644
+index e9a8099..d1ebbbd 100644
 --- a/libultraship/src/core/Window.cpp
 +++ b/libultraship/src/core/Window.cpp
-@@ -39,6 +39,7 @@
+@@ -30,6 +30,7 @@
  #elif defined(__WIIU__)
  #include "port/wiiu/WiiUImpl.h"
  #endif
 +#include "install_config.h"
  
- #define LOAD_TEX(texPath) \
-     static_cast<Ship::Texture*>(Ship::Window::GetInstance()->GetResourceManager()->LoadResource(texPath).get());
-@@ -58,8 +59,8 @@ int32_t osContInit(OSMesgQueue* mq, uint8_t* controllerBits, OSContStatus* statu
-     }
+ namespace Ship {
  
- #ifndef __SWITCH__
--    const char* controllerDb = "gamecontrollerdb.txt";
--    int mappingsAdded = SDL_GameControllerAddMappingsFromFile(controllerDb);
-+    std::string controllerDb = Ship::Window::GetPathRelativeToAppBaseDirectory("gamecontrollerdb.txt");
-+    int mappingsAdded = SDL_GameControllerAddMappingsFromFile(controllerDb.c_str());
-     if (mappingsAdded >= 0) {
-         SPDLOG_INFO("Added SDL game controllers from \"{}\" ({})", controllerDb, mappingsAdded);
-     } else {
-@@ -330,15 +331,39 @@ std::string Window::GetAppDirectoryPath() {
+@@ -150,15 +151,39 @@ std::string Window::GetAppDirectoryPath() {
      char* fpath = std::getenv("SHIP_HOME");
      if (fpath != NULL)
          return std::string(fpath);
@@ -86,10 +76,10 @@ index 083654b..e6b7114 100644
      gfx_start_frame();
  }
 diff --git a/libultraship/src/core/Window.h b/libultraship/src/core/Window.h
-index dc8359c..ac7c77a 100644
+index 9cbb013..ddb51e4 100644
 --- a/libultraship/src/core/Window.h
 +++ b/libultraship/src/core/Window.h
-@@ -21,7 +21,9 @@ class Window {
+@@ -24,7 +24,9 @@ class Window {
      static std::shared_ptr<Window> CreateInstance(const std::string name, const std::vector<std::string>& otrFiles = {},
                                                    const std::unordered_set<uint32_t>& validHashes = {});
      static std::string GetAppDirectoryPath();
@@ -99,6 +89,28 @@ index dc8359c..ac7c77a 100644
  
      Window(std::string Name);
      ~Window();
+diff --git a/libultraship/src/core/libultra/os.cpp b/libultraship/src/core/libultra/os.cpp
+index 6f295f6..9365c47 100644
+--- a/libultraship/src/core/libultra/os.cpp
++++ b/libultraship/src/core/libultra/os.cpp
+@@ -21,8 +21,8 @@ int32_t osContInit(OSMesgQueue* mq, uint8_t* controllerBits, OSContStatus* statu
+     }
+ 
+ #ifndef __SWITCH__
+-    const char* controllerDb = "gamecontrollerdb.txt";
+-    int mappingsAdded = SDL_GameControllerAddMappingsFromFile(controllerDb);
++    std::string controllerDb = Ship::Window::GetPathRelativeToAppBaseDirectory("gamecontrollerdb.txt");
++    int mappingsAdded = SDL_GameControllerAddMappingsFromFile(controllerDb.c_str());
+     if (mappingsAdded >= 0) {
+         SPDLOG_INFO("Added SDL game controllers from \"{}\" ({})", controllerDb, mappingsAdded);
+     } else {
+@@ -97,4 +97,4 @@ int32_t osRecvMesg(OSMesgQueue* mq, OSMesg* msg, int32_t flag) {
+     mq->validCount--;
+     return 0;
+ }
+-}
+\ No newline at end of file
++}
 diff --git a/libultraship/src/install_config.h.in b/libultraship/src/install_config.h.in
 new file mode 100644
 index 0000000..029753c
