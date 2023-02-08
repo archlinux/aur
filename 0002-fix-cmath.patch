@@ -1,0 +1,13 @@
+diff --git a/ui/style/style_core_font.h b/ui/style/style_core_font.h
+index e0c85aa..152357b 100644
+--- a/ui/style/style_core_font.h
++++ b/ui/style/style_core_font.h
+@@ -11,6 +11,8 @@
+ #include <QtGui/QFont>
+ #include <QtGui/QFontMetrics>
+ 
++#include <cmath>
++
+ namespace style {
+ namespace internal {
+ 
