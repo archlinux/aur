@@ -4,12 +4,13 @@
 pkgname='snmp_exporter'
 pkgver='0.21.0'
 pkgrel='1'
-pkgdesc='This is an exporter that exposes information gathered from SNMP for use by the Prometheus monitoring system'
+pkgdesc='SNMP exporter for Prometheus'
 arch=('x86_64' 'i686')
-url="https://github.com/prometheus/${pkgname}"
+_uri='github.com/prometheus'
+url="https://${_uri}/${pkgname}"
 license=('Apache')
-makedepends=('go')
-source=("${url}/archive/v${pkgver}.tar.gz"
+makedepends=('go' 'yamllint')
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.service"
         "${pkgname}.sysusers")
 sha256sums=('a6ed31a8fd723a8c7d2880fd21d93fd2c9ae24fa4fdeb3834e72dccd8a3e1fb3'
@@ -21,17 +22,17 @@ prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   export GOPATH="${srcdir}/gopath"
   export GOBIN="${GOPATH}/bin"
-  mkdir -p "${GOPATH}/src/github.com/prometheus"
-  ln -snf "${srcdir}/${pkgname}-${pkgver}" "${GOPATH}/src/github.com/prometheus/${pkgname}"
+  mkdir -p "${GOPATH}/src/${_uri}"
+  ln -snf "${srcdir}/${pkgname}-${pkgver}" "${GOPATH}/src/${_uri}/${pkgname}"
 }
 
 build() {
-  cd "${GOPATH}/src/github.com/prometheus/${pkgname}"
+  cd "${GOPATH}/src/${_uri}/${pkgname}"
   make build
 }
 
 package() {
-  pushd "${GOPATH}/src/github.com/prometheus/${pkgname}"
+  pushd "${GOPATH}/src/${_uri}/${pkgname}"
   install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm640 -o210 -g210 "snmp.yml" "${pkgdir}/etc/prometheus/snmp.yml"
   popd
