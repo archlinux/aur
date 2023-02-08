@@ -2,7 +2,7 @@
 _base=tensortrax
 pkgname=python-${_base}
 pkgdesc="Math on (Hyper-Dual) Tensors with Trailing Axes"
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 arch=(any)
 url="https://github.com/adtzlr/${_base}"
@@ -11,7 +11,7 @@ depends=(python-numpy)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('0e780be65e72817d9ebbee5847ae64b777fdc466c1a860660da856d22b1c08a13c29bfdf5e9b9f2c3e987731f6c602f0606e259b835cf0f3fb573b99ed2f8ef0')
+sha512sums=('041428e2054850a567a20322e828e1ae25d8b47e6d88bae4ca43319cb27a1bf7819204e0ec3588bebf04abb8603effec5c9329fd52956fed6708d8284aab61bb')
 
 build() {
   cd ${_base}-${pkgver}
