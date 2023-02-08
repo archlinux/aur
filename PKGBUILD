@@ -1,7 +1,7 @@
 pkgbase=qbittorrent-beta
 pkgname=(qbittorrent-beta qbittorrent-beta-nox)
 pkgver=4.5.0beta1
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar (beta)"
 arch=('x86_64')
 _repo="qBittorrent"
@@ -18,17 +18,13 @@ source=("${_snapshot}.tar.gz::${url}/archive/${_rel}.tar.gz")
 sha256sums=('6501b725ba23b6f9c504bd07b0bb70eeaadb689b3d7306db289cc9b473bd40c0')
 
 build() {
-    cd "${srcdir}"
-
     cmake -B "build" "${_snapshot}" \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DQT6=ON
 
     cmake --build "build"
 
     cmake -B "build-nox" "${_snapshot}" \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DQT6=ON \
         -DGUI=OFF \
@@ -42,7 +38,6 @@ package_qbittorrent-beta() {
     provides=('qbittorrent')
     conflicts=('qbittorrent')
 
-    cd "${srcdir}"
     DESTDIR="${pkgdir}" cmake --install "build"
 
     cd "${_snapshot}"
@@ -53,7 +48,6 @@ package_qbittorrent-beta-nox() {
     provides=('qbittorrent-nox')
     conflicts=('qbittorrent-nox')
 
-    cd "${srcdir}"
     DESTDIR="${pkgdir}" cmake --install "build-nox"
 
     cd "${_snapshot}"

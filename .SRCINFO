@@ -1,7 +1,7 @@
 pkgbase = qbittorrent-beta
 	pkgdesc = An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar (beta)
 	pkgver = 4.5.0beta1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/qbittorrent/qBittorrent
 	arch = x86_64
 	license = custom
