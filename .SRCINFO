@@ -1,7 +1,7 @@
 pkgbase = powerpanel
 	pkgdesc = CyberPower UPS daemon
 	pkgver = 1.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.cyberpowersystems.com/product/software/powerpanel-for-linux/
 	arch = x86_64
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = powerpanel
 	source = pwrstatd.service
 	source = hibernate.sh
 	source = shutdown.sh
-	source = powerpanel_1.4.1_x86_64.tar.gz::https://www.cyberpower.com/global/en/File/GetFileSampleByType?fileId=SU-18070001-08&fileType=Download%20Center&fileSubType=FileOriginal
+	source = https://dl4jz3rbrsfum.cloudfront.net/software/PPL_64bit_v1.4.1.tar..gz
 	sha256sums = 255e5958346daa9d7c0e96ae3d86095afd3b3ec99880205d15d51b8f20a602df
 	sha256sums = c710ea7765a24fb469adf601f44c8d3857634336bdfc263434ce86c3d67a4a80
 	sha256sums = 10badc96b0ac990959ddc53d1d1cbba6b904e648b54d0eea085194e48d6a0998

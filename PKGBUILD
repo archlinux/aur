@@ -6,7 +6,7 @@
 
 pkgname=powerpanel
 pkgver=1.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="CyberPower UPS daemon"
 arch=("x86_64" "i686")
 url="https://www.cyberpowersystems.com/product/software/powerpanel-for-linux/"
@@ -24,12 +24,13 @@ sha256sums=('255e5958346daa9d7c0e96ae3d86095afd3b3ec99880205d15d51b8f20a602df'
             '10badc96b0ac990959ddc53d1d1cbba6b904e648b54d0eea085194e48d6a0998')
 
 if [[ $CARCH = 'x86_64' ]]; then
-  source+=("powerpanel_${pkgver}_x86_64.tar.gz::https://www.cyberpower.com/global/en/File/GetFileSampleByType?fileId=SU-18070001-08&fileType=Download%20Center&fileSubType=FileOriginal")
+  # Filename has two dots at the source
+  source+=("https://dl4jz3rbrsfum.cloudfront.net/software/PPL_64bit_v${pkgver}.tar..gz")
   sha256sums+=('6240dae59202531df91ccf0655cf6c61120fe64dc14642c46579366ed0d8212d')
 fi
 
 if [[ $CARCH = 'i686' ]]; then
-  source+=("powerpanel_${pkgver}_i686.tar.gz::https://www.cyberpower.com/global/en/File/GetFileSampleByType?fileId=SU-18070001-05&fileType=Download%20Center&fileSubType=FileOriginal")
+  source+=("https://dl4jz3rbrsfum.cloudfront.net/software/PPL_32bit_v${pkgver}.tar.gz")
   sha256sums+=('25921b474ae5795f7a905368dc06b37b9e49d328cd162a032bcb171a5954d7d1')
 fi
 
