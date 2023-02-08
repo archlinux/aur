@@ -8,7 +8,7 @@ pkgdesc="A rendering library for *.rm files to pdf files."
 arch=("any")
 url="https://github.com/stwa/rm2pdf"
 license=('MIT')
-makedepends=('python-build' 'python-installer' 'python-poetry')
+makedepends=('python-build' 'python-installer' 'python-poetry-core')
 source=(
     "https://github.com/stwa/rm2pdf/archive/refs/tags/${pkgver}.tar.gz"
 )
@@ -17,9 +17,13 @@ sha256sums=(
 )
 
 build() {
-    cd "$srcdir/$_name-$pkgver"
+    mv ../.git{,.bak}
+    (
+        cd "$srcdir/$_name-$pkgver"
 
-    python -m build --wheel --no-isolation
+        python -m build --wheel --no-isolation
+    )
+    mv ../.git{.bak,}
 }
 
 package() {
