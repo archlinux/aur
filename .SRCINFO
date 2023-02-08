@@ -1,6 +1,6 @@
 pkgbase = zlib-git
 	pkgdesc = A massively spiffy yet delicately unobtrusive compression library (git develop branch)
-	pkgver = 1.2.11.r27.g4346a16
+	pkgver = 1.2.13.r6.gfa8cd50
 	pkgrel = 1
 	url = https://www.zlib.net/
 	arch = i686
@@ -8,11 +8,10 @@ pkgbase = zlib-git
 	license = ZLIB
 	makedepends = git
 	depends = glibc
-	provides = zlib
+	provides = zlib=1.2.13.r6.gfa8cd50
 	conflicts = zlib
 	options = staticlibs
 	source = git+https://github.com/madler/zlib.git#branch=develop
 	sha256sums = SKIP
 
 pkgname = zlib-git
-
