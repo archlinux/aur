@@ -3,33 +3,36 @@ _target='compass'
 _edition=''
 _pkgname="mongodb-$_target"
 pkgname="$_pkgname-git"
-pkgver='r15155.g60ed338bf'
+pkgver='r15468.g1dbe8415e'
 pkgrel='1'
 epoch='1'
 pkgdesc='The official GUI for MongoDB - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('custom:SSPL')
-_electronpkg='electron15'
+_electronpkg='electron'
 depends=("$_electronpkg" 'krb5' 'libsecret' 'lsb-release')
-makedepends=('git' 'nodejs>=16.0.0' 'npm>=8.0.0' 'python' 'unzip' 'patchutils')
+makedepends=('git' 'nodejs>=16.0.0' 'npm>=8.0.0' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
 	"$pkgname::git+https://github.com/mongodb-js/compass"
-	"$pkgname-browserslist.diff::https://github.com/browserslist/browserslist/pull/378.diff"
 	'hadron-build.diff'
+	'fix-argv.diff'
 
 )
 sha512sums=('SKIP'
-            'd7fb3d9d9417bf03aee8a27a813f600756acfd2b8db581f609e13a6c8482f6f70ce1659831c9ddd85bb1a4141430213b79524227b3be775b78b4fa3619fe36d1'
-            '8d26820139d918c4e9da05b062a86865664218bfbf32b9f002995c30fa22b64e088f59263bee5f8fb4797565fe88b7daf48c383a572c0ced657dab0639e57b94')
+            '18029ff1479cbacb413f7154d5ca7589855273c559ee15bb5b5006eed65b8edcb58fac64cc8deabd20c36e06f298dc4b7152f61391975d2a3ecb6351b787fae7'
+            '1a2345b90196d3c856d0288d9406cfd667d0ebcce400e6886c7eba2825fa52d7813d45f2c375fcaf4e28d116b68107219e6f662b5bdbb12bf0e402ca61194cf7')
 
 _sourcedirectory="$pkgname"
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
+
+	# Disable husky command
+	sed -i '/husky install/d' 'package.json'
 
 	# Set system Electron version for ABI compatibility
 	sed -E -i 's|("electron": ").*"|\1'"$(cat "/usr/lib/$_electronpkg/version")"'"|' {'configs','packages'}'/'*'/package.json'
@@ -40,17 +43,11 @@ prepare() {
 	# Apply hadron-build fixes
 	patch --forward -p1 < "$srcdir/hadron-build.diff"
 
+	# Apply argv fixes
+	patch --forward -p1 < "$srcdir/fix-argv.diff"
+
 	# Run the first part of npm run bootstrap
 	npm install
-
-	# Apply browserslist fixes
-	filterdiff --exclude='*/test/*' "$srcdir/$pkgname-browserslist.diff" > "$srcdir/$pkgname-browserslist-filtered.diff"
-
-	for _folder in 'node_modules/@mongodb-js/'*'/node_modules/browserslist'; do
-		if grep -q '"version": "2' "$_folder/package.json"; then
-			patch -d "$_folder/" --forward -p1 < "$srcdir/$pkgname-browserslist-filtered.diff"
-		fi
-	done
 
 	# Run the second part of npm run bootstrap
 	NODE_OPTIONS='--openssl-legacy-provider' npx lerna run bootstrap --stream
