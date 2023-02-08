@@ -1,14 +1,14 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=o
-pkgver=2.59.0
+pkgver=2.59.2
 pkgrel=1
 pkgdesc='Text editor and minimalistic IDE'
 arch=(x86_64)
 url='https://github.com/xyproto/o'
 license=(BSD)
 makedepends=(git go vte3)
-source=("git+$url#commit=818f0194d240a4c164a851b314db75b74a4b65c7") # tag: v2.59.0
+source=("git+$url#commit=6264bb333bff740d38d06103739332cd903bf3c7") # tag: v2.59.2
 optdepends=('asciidoctor: for writing man pages'
             'agda: for compiling Agda'
             'astyle: for formatting C#'
