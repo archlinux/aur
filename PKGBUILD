@@ -3,8 +3,8 @@
 # Contributor: 網軍總司令
 
 pkgname=librime
-pkgver=1.8.0
-_commit=647a3241ab144f180ee039b6d7df661a66e61381
+pkgver=1.8.1
+_commit=7dec7a672e19871a284b53b2027e45ff546f2d67
 _octagramcommit=a6ced5a1d623afed17284fbaa395dd3a8b019a14
 _luacommit=03a2bd9e172549cb16c0718b2c9b68e8c5678085
 _charcodecommit=e8a49f503769427f9c0b14e40b2e1f02417515b2
