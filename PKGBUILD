@@ -3,7 +3,7 @@
 # Original Package: Martin Wimpress <code@flexion.org>
 _pkgbase=nvidia-settings
 pkgname=lib32-libxnvctrl
-pkgver=525.85.05
+pkgver=525.89.02
 pkgrel=1
 pkgdesc='NVIDIA NV-CONTROL X extension (32-bit)'
 url='https://github.com/NVIDIA/nvidia-settings'
@@ -13,7 +13,7 @@ depends=('lib32-gcc-libs' 'lib32-libxext')
 optdepends=('libxnvctrl: XNVCtrl development headers')
 source=("$_pkgbase-$pkgver.tar.gz::https://github.com/NVIDIA/nvidia-settings/archive/$pkgver.tar.gz"
         'libxnvctrl_so.patch')
-sha512sums=('91de4e8e979e5cbf0dc2624d50caeb9ec9a685af39fe9ca4e6f0e98958e524c2a7cfba5181b259846076020f91c0e06c85e66febdd7c204e07d8cb53079c36f0'
+sha512sums=('0f147465c5bc5f8b4e6781c478ee8a096593017d954b742fd0679c7a7db38855d4ad13735551f103ce10003c5fd3c2d8cb929f33f0170244e7663f646edc7d45'
             '8b07853f253e881d5c121c666674961d1be7f99a25deba7e521bed3ce5fa00c564d99d5b7364c0eb3afe5b64040a86a4040a99505795bfc13e70f5fa7de482af')
 
 prepare() {
