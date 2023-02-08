@@ -6,6 +6,7 @@ pkgbase = rtx
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
+	makedepends = jq
 	provides = rtx
 	conflicts = rtx
 	source = rtx-1.5.3.tar.gz::https://github.com/jdxcode/rtx/archive/v1.5.3.tar.gz
