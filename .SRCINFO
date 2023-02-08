@@ -1,6 +1,6 @@
 pkgbase = mopidy-ytmusic
 	pkgdesc = Mopidy extension for playing music from Youtube Music
-	pkgver = 0.3.7
+	pkgver = 0.3.8
 	pkgrel = 1
 	url = https://github.com/OzymandiasTheGreat/mopidy-ytmusic
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = mopidy-ytmusic
 	depends = python-urllib3
 	depends = python-zipp
 	depends = python-ytmusicapi
-	source = mopidy-ytmusic-0.3.7.tar.gz::https://github.com/OzymandiasTheGreat/mopidy-ytmusic/releases/download/v0.3.7/Mopidy-YTMusic-0.3.7.tar.gz
-	sha256sums = 38b38ebdffbc8fc4583944c87506b805861b8888eac308dbda787e6747dc123f
+	source = mopidy-ytmusic-0.3.8.tar.gz::https://github.com/OzymandiasTheGreat/mopidy-ytmusic/archive/refs/tags/v0.3.8.tar.gz
+	sha256sums = 14309ed1705cb1f67dc3502ff94387df3c8116d6c5947ba574f91f5744bb1108
 
 pkgname = mopidy-ytmusic

@@ -1,7 +1,7 @@
 # Maintainer: Kyle MacLeod <aur.kmac5@recursor.net>
 
 pkgname=mopidy-ytmusic
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="Mopidy extension for playing music from Youtube Music"
 
@@ -24,15 +24,12 @@ depends=(
   'python-ytmusicapi')
 makedepends=('python' 'git')
 
-source=("$pkgname-${pkgver}.tar.gz::$url/releases/download/v${pkgver}/Mopidy-YTMusic-${pkgver}.tar.gz")
+source=("$pkgname-${pkgver}.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
 
 package() {
-  cd "Mopidy-YTMusic-${pkgver}"
-
-  # TEMPORARY: fix Issue #53
-  # sed -i.bak 's/ytmusicapi>=0.20.0,<0.21.0/ytmusicapi>=0.20.0/' setup.py 
+  cd "mopidy-ytmusic-${pkgver}"
 
   python setup.py install --root="${pkgdir}/" --optimize=1
 }
 
-sha256sums=('38b38ebdffbc8fc4583944c87506b805861b8888eac308dbda787e6747dc123f')
+sha256sums=('14309ed1705cb1f67dc3502ff94387df3c8116d6c5947ba574f91f5744bb1108')
