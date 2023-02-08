@@ -183,6 +183,7 @@ build() {
     --enable-shared \
     --enable-version3 \
     \
+    --arch=$CARCH \
     --enable-v4l2_m2m \
     --enable-v4l2-request \
     --enable-libudev \
