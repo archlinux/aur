@@ -1,14 +1,12 @@
 pkgbase = libtorrent-rasterbar-1
 	pkgdesc = Open source C++ library implementing the BitTorrent protocol.
 	pkgver = 1.2.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://libtorrent.org/
 	arch = x86_64
 	license = BSD
-	makedepends = boost
 	makedepends = cmake
-	makedepends = ninja
-	makedepends = python-setuptools
+	makedepends = boost
 	depends = boost-libs
 	depends = openssl
 	provides = libtorrent-rasterbar=1.2.18
