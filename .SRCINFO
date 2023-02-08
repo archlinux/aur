@@ -1,0 +1,17 @@
+pkgbase = python-lazy-loader
+	pkgdesc = Populate library namespace without incurring immediate import costs
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/scientific-python/lazy_loader
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = python-flit-core
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	depends = python
+	source = lazy_loader-0.1.tar.gz::https://github.com/scientific-python/lazy_loader/archive/refs/tags/v0.1.tar.gz
+	sha512sums = d3469d7d07ebb3459d599b8346f4fd91ab8ea98c6c5a62c2f3159a7beebbb7e7c8b033b9c442d93de923d847a7f3f5bf2c5db3419da961589cee8bed5c6ab0f3
+
+pkgname = python-lazy-loader
