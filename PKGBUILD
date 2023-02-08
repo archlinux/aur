@@ -1,7 +1,7 @@
 _name=gwenview
 pkgname=${_name}-light
 pkgver=22.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast and easy to use image viewer (stripped from unnecessary dependencies)'
 url="https://apps.kde.org/${_name}/"
 arch=('x86_64')
@@ -37,7 +37,6 @@ options=('!docs' '!emptydirs')
 
 build() {
     cmake -B "build" -S "${_snapshot}" \
-        -DCMAKE_BUILD_TYPE=Release \
         -DKDEExperimentalPurpose_FOUND=OFF \
         -DKDEExperimentalBaloo_FOUND=OFF \
         -DKDEExperimentalKDcraw_FOUND=OFF \
