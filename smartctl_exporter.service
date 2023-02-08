@@ -1,0 +1,12 @@
+[Unit]
+Description=Prometheus smartctl exporter
+After=network.target
+
+[Service]
+EnvironmentFile=-/etc/conf.d/smartctl_exporter
+ExecStart=/usr/bin/smartctl_exporter $OPTIONS
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,1 @@
+OPTIONS="--smartctl.interval=60s"
