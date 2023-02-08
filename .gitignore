@@ -1,0 +1,4 @@
+git-annex*
+pkg/
+src/
+*.pkg*
