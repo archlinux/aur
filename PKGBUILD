@@ -5,12 +5,12 @@ pkgbase=libreelec-usb-sd-creator-git
 pkgname=('libreelec-usb-sd-creator-git')
 _gitname=('usb-sd-creator')
 pkgver=r1.d5922e2
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple GUI for creating LibreELEC USB/SD card installation media"
 arch=('i686' 'x86_64')
 url="https://github.com/LibreELEC/usb-sd-creator"
 license=('GPLv2')
-makedepends=('git' 'qt6-tools' 'qt6-base')
+makedepends=('git' 'dos2unix' 'qt6-tools' 'qt6-base')
 source=("git+https://github.com/LibreELEC/usb-sd-creator")
 md5sums=('SKIP')
 
@@ -21,6 +21,7 @@ pkgver() {
 
 prepare() {
     cd "${_gitname%-git}"
+    dos2unix creator.pro
     patch --forward --strip=1 --input="${srcdir}/../project.patch"
 }
 
