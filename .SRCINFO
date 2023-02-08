@@ -1,6 +1,6 @@
 pkgbase = zfsbootmenu-sb
 	pkgdesc = Hooks for signing ZFSBootMenu for use with Secure Boot.
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/Biyoni/zfsbootmenu-sb
 	arch = any
