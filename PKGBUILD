@@ -18,8 +18,8 @@ build() {
   cd "$pkgname"
   cd src
   relflags="-O3 -DNDEBUG"
-  gcc -c $relflags -fPIC -o logc.o log.c 
-  gcc -shared -o logc.so logc.o
+  gcc -c $relflags -fPIC -Wl,soname,liblogc.so -o logc.o log.c -DLOG_USE_COLOR
+  gcc -shared -o liblogc.so logc.o
 }
 
 package-lib() {
@@ -28,7 +28,7 @@ package-lib() {
     HEADER_DIR="$pkgdir"/usr/include
     mkdir -p $LIB_DIR
     mkdir -p $HEADER_DIR
-    install logc.so "$LIB_DIR"
+    install liblogc.so "$LIB_DIR"
     install log.h "$HEADER_DIR"
 }
 
