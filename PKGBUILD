@@ -6,10 +6,11 @@ pkgver='0.9.2'
 pkgrel='1'
 pkgdesc='Exporter for oVirt engine metrics'
 arch=('x86_64' 'i686')
-url="https://github.com/czerwonk/${pkgname}"
+_uri='github.com/czerwonk'
+url="https://${_uri}/${pkgname}"
 license=('MIT')
 makedepends=('go')
-source=("${url}/archive/${pkgver}.tar.gz"
+source=("${url}/archive/refs/tags/${pkgver}.tar.gz"
 	"${pkgname}"
 	"${pkgname}.service"
 	"${pkgname}.sysusers")
@@ -20,23 +21,19 @@ sha256sums=('fc0082bfd1e97dc976453550983f32a880792d93fac22db72e1d83992673715b'
 backup=("etc/conf.d/${pkgname}")
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
   export GOPATH="${srcdir}/gopath"
   export GOBIN="${GOPATH}/bin"
-  mkdir -p "${GOPATH}/src/github.com/czerwonk"
-  ln -snf "${srcdir}/${pkgname}-${pkgver}" "${GOPATH}/src/github.com/czerwonk/${pkgname}"
+  mkdir -p "${GOPATH}/src/${_uri}"
+  ln -snf "${srcdir}/${pkgname}-${pkgver}" "${GOPATH}/src/${_uri}/${pkgname}"
 }
 
 build() {
-  export GOPATH="${srcdir}/gopath"
-  cd "${GOPATH}/src/github.com/czerwonk/${pkgname}"
+  cd "${GOPATH}/src/${_uri}/${pkgname}"
   GOOS=linux go build
 }
 
 package() {
-  pushd "${GOPATH}/src/github.com/czerwonk/${pkgname}"
-  install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  popd
+  install -Dm755 "${GOPATH}/src/${_uri}/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "${pkgname}" "${pkgdir}/etc/conf.d/${pkgname}"
   install -Dm644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
   install -Dm644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
