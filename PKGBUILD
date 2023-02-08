@@ -2,7 +2,7 @@
 
 pkgname=ad2vcf
 pkgver=0.1.6
-pkgrel=3
+pkgrel=5
 pkgdesc="Tool to add allelic depth info from a SAM stream to a VCF file"
 arch=('x86_64')
 url="https://github.com/auerlab/ad2vcf"
@@ -13,6 +13,8 @@ sha256sums=('fbed1e32504dbc6975cb124792d12e48576ed799ac148aa3b6beed33a67bdf98')
 
 build() {
   cd "$pkgname-$pkgver"
+  export VERSION=${pkgver}
+  ./version.sh
   make PREFIX="/usr" depend
   make PREFIX="/usr"
 }
