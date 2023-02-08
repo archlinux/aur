@@ -1,6 +1,6 @@
 pkgbase = mongodb-compass-isolated-beta
 	pkgdesc = The official GUI for MongoDB - Isolated Edition - beta version
-	pkgver = 1.35.1.beta.1
+	pkgver = 1.35.1.beta.3
 	pkgrel = 1
 	url = https://www.mongodb.com/products/compass
 	arch = x86_64
@@ -13,17 +13,16 @@ pkgbase = mongodb-compass-isolated-beta
 	makedepends = npm>=8.0.0
 	makedepends = python
 	makedepends = unzip
-	makedepends = patchutils
-	depends = electron15
+	depends = electron
 	depends = krb5
 	depends = libsecret
 	depends = lsb-release
 	optdepends = org.freedesktop.secrets
-	source = mongodb-compass-isolated-beta-1.35.1.beta.1-1.tar.gz::https://github.com/mongodb-js/compass/archive/v1.35.1-beta.1.tar.gz
-	source = mongodb-compass-isolated-beta-1.35.1.beta.1-1-browserslist.diff::https://github.com/browserslist/browserslist/pull/378.diff
+	source = mongodb-compass-isolated-beta-1.35.1.beta.3-1.tar.gz::https://github.com/mongodb-js/compass/archive/v1.35.1-beta.3.tar.gz
 	source = hadron-build.diff
-	sha512sums = 16e867533b7179be6fb07cb82bcd0e10195d1b0e335e90f1119c173ed527f484051354f770e41d9eeacf73854c345db90cfd801c8dce1ac7623e8fb27e009224
-	sha512sums = d7fb3d9d9417bf03aee8a27a813f600756acfd2b8db581f609e13a6c8482f6f70ce1659831c9ddd85bb1a4141430213b79524227b3be775b78b4fa3619fe36d1
-	sha512sums = 8d26820139d918c4e9da05b062a86865664218bfbf32b9f002995c30fa22b64e088f59263bee5f8fb4797565fe88b7daf48c383a572c0ced657dab0639e57b94
+	source = fix-argv.diff
+	sha512sums = 0bc0c596adbb7936664075744f78e9513560e28fce08bf3b8c16ad56dc026a2b5c3e9cd3fc3008846f857ea5052bba4a75a1ca3816b09940f224015209a3856c
+	sha512sums = 18029ff1479cbacb413f7154d5ca7589855273c559ee15bb5b5006eed65b8edcb58fac64cc8deabd20c36e06f298dc4b7152f61391975d2a3ecb6351b787fae7
+	sha512sums = 1a2345b90196d3c856d0288d9406cfd667d0ebcce400e6886c7eba2825fa52d7813d45f2c375fcaf4e28d116b68107219e6f662b5bdbb12bf0e402ca61194cf7
 
 pkgname = mongodb-compass-isolated-beta
