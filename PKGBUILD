@@ -5,9 +5,9 @@
 pkgbase=transmission4
 _pkgbase=transmission
 pkgname=(transmission4-cli transmission4-gtk transmission4-qt libtransmission4)
-pkgver=4.00beta.3
-_pkgver=4.0.0-beta.3+r634b1e8fc1
-pkgrel=2
+pkgver=4.0.0
+_pkgver=$pkgver
+pkgrel=1
 arch=(x86_64)
 url="http://www.transmissionbt.com/"
 license=(GPL)
@@ -34,19 +34,10 @@ makedepends=(
 source=(https://github.com/transmission/transmission/releases/download/${_pkgver%+*}/transmission-${_pkgver}.tar.xz
         transmission-cli.sysusers
         transmission-cli.tmpfiles
-        web-outoftree.patch # https://github.com/transmission/transmission/issues/4088
 )
-sha256sums=('c54b1f7962268995c829a97df801161853582e84eeb608da644258cf0055d5e3'
+sha256sums=('af4f023c0b3f2417f62b314d84ea7f329ca080f86664f24b44246a8c50c6b10a'
             '641310fb0590d40e00bea1b5b9c843953ab78edf019109f276be9c6a7bdaf5b2'
-            '1266032bb07e47d6bcdc7dabd74df2557cc466c33bf983a5881316a4cc098451'
-            'a919f06f2dd51d197ea4c15a3b2c350f8202d62eb34efc219e5ed319ce79513f')
-
-prepare() {
-  cd $_pkgbase-$_pkgver
-pwd
-
-  patch -p1 < "$srcdir"/web-outoftree.patch
-}
+            '1266032bb07e47d6bcdc7dabd74df2557cc466c33bf983a5881316a4cc098451')
 
 build() {
   cd $_pkgbase-$_pkgver
@@ -68,7 +59,7 @@ check() {
   cd $_pkgbase-$_pkgver
 
   cd build
-  ctest -j $(nproc)
+  ctest --output-on-failure -j $(nproc)
 }
 
 _install_component() {
