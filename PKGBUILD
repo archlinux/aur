@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/MCJack123/sanjuuni/archive/$pkgver.tar.gz")
 noextract=()
-sha256sums=('cc86a1761de67a6fad1cd905fbbd0b31e57849d2c5c9e30fa84b779164138018')
+sha256sums=('bee5f95cde853a95e9caea3153cdd2bf7c731f7247ff15064b83044a0a0e3aba')
 validpgpkeys=()
 
 prepare() {
