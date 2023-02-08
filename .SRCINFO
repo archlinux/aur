@@ -1,7 +1,7 @@
 pkgbase = shortwave
 	pkgdesc = Find and listen to internet radio stations
-	pkgver = 3.1.0
-	pkgrel = 2
+	pkgver = 3.2.0
+	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.gnome.org/World/Shortwave
 	arch = x86_64
@@ -19,7 +19,8 @@ pkgbase = shortwave
 	depends = gst-plugins-bad
 	depends = gst-plugins-good
 	depends = gst-libav
-	source = shortwave::git+https://gitlab.gnome.org/World/Shortwave.git#commit=de062d5f2a2f395bb2c3f8149793d4203593e912
+	options = !lto
+	source = shortwave::git+https://gitlab.gnome.org/World/Shortwave.git#commit=6fb4acd47a4eae422270f9543bce2d5f0037504c
 	b2sums = SKIP
 
 pkgname = shortwave
