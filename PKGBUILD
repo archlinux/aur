@@ -130,23 +130,23 @@ prepare() {
 	fi
 
     ### Disable NUMA
-    if [ -n "$_NUMAdisable" ]; then
-        echo "Disabling NUMA from kernel config..."
-        scripts/config -d NUMA \
-                       -d AMD_NUMA \
-                       -d X86_64_ACPI_NUMA \
-                       -d NODES_SPAN_OTHER_NODES \
-                       -d NUMA_EMU \
-                       -d NEED_MULTIPLE_NODES \
-                       -d USE_PERCPU_NUMA_NODE_ID \
-                       -d ACPI_NUMA \
-                       -d ARCH_SUPPORTS_NUMA_BALANCING \
-                       -d NODES_SHIFT \
-                       -u NODES_SHIFT \
-                       -d NEED_MULTIPLE_NODES \
-                       -d NUMA_BALANCING \
-                       -d NUMA_BALANCING_DEFAULT_ENABLED
-    fi
+        if [ -n "$_NUMAdisable" ]; then
+            echo "Disabling NUMA from kernel config..."
+            scripts/config -d NUMA \
+                           -d AMD_NUMA \
+                           -d X86_64_ACPI_NUMA \
+                           -d NODES_SPAN_OTHER_NODES \
+                           -d NUMA_EMU \
+                           -d NEED_MULTIPLE_NODES \
+                           -d USE_PERCPU_NUMA_NODE_ID \
+                           -d ACPI_NUMA \
+                           -d ARCH_SUPPORTS_NUMA_BALANCING \
+                           -d NODES_SHIFT \
+                           -u NODES_SHIFT \
+                           -d NEED_MULTIPLE_NODES \
+                           -d NUMA_BALANCING \
+                           -d NUMA_BALANCING_DEFAULT_ENABLED
+        fi
 
     ### Disable DEBUG
         if [ -n "$_disable_debug" ]; then
