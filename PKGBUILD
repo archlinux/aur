@@ -1,7 +1,7 @@
 # Maintainer: Nils Grunwald <nils [@] grunwald [dot] fr>
 
 pkgname=neil
-pkgver=0.1.47
+pkgver=0.1.55
 pkgrel=1
 pkgdesc='A CLI to add common aliases and features to deps.edn-based projects for the Clojure language.'
 arch=('x86_64')
