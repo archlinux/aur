@@ -1,35 +1,34 @@
 # Contributor: Franck Barbenoire <contact@franck-barbenoire.fr>
 
 pkgname=syasokoban
-pkgver=2.0.1
-pkgrel=2
+pkgver=2.0.2
+pkgrel=1
 pkgdesc="Still Yet Another Sokoban"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://grayskygames.com/sokoban.html"
 depends=('sdl')
 source=(
-   "http://grayskygames.com/sokoban/$pkgname-$pkgver.tar.gz"
+   "https://github.com/davidjoffe/sokoban/archive/refs/tags/v${pkgver}.tar.gz"
    "$pkgname.patch"
 )
-
-md5sums=('c8f320e5c43c966eebe184977542e903'
-         'c9c45c06287c82097e94d26ec8b3f5e2')
+sha256sums=('c9c1a1ad4e12e5376b2a4dfbaf12f1c1f4e1d51fac2954f6a8da7467181a7851'
+            '6b4203362664b6060a0e9dd9edda01faff72f61f7b6ad55a5a336670cc2ba5d7')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/sokoban-$pkgver"
   patch -p 1 < $srcdir/"$pkgname.patch"
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/sokoban-$pkgver"
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  install -D -m755 "$srcdir/$pkgname-$pkgver/syasokoban" "$pkgdir/usr/bin/syasokoban"
-  install -D -m644 "$srcdir/$pkgname-$pkgver/README.txt" "$pkgdir/usr/share/doc/syasokoban/README.txt"
+  cd "$srcdir/sokoban-$pkgver"
+  install -D -m755 "$srcdir/sokoban-$pkgver/syasokoban" "$pkgdir/usr/bin/syasokoban"
+  install -D -m644 "$srcdir/sokoban-$pkgver/README.md" "$pkgdir/usr/share/doc/syasokoban/README.md"
   mkdir -p "$pkgdir/usr/share/syasokoban"
   cp -R data/* "$pkgdir/usr/share/syasokoban"
 }
