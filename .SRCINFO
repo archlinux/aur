@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-hanabi-git
+	pkgdesc = Live Wallpaper for GNOME
+	pkgver = r43.33699b9
+	pkgrel = 1
+	url = https://github.com/jeffshee/gnome-ext-hanabi
+	arch = any
+	license = GPL3
+	makedepends = meson
+	depends = gnome-shell
+	optdepends = clapper: Hanabi can use clappersink for the best performance
+	optdepends = gst-plugin-va: experimental performance improvement for Intel/AMD Wayland users
+	source = git+https://github.com/jeffshee/gnome-ext-hanabi
+	b2sums = SKIP
+
+pkgname = gnome-shell-extension-hanabi-git
