@@ -4,7 +4,7 @@
 pkgbase=qbittorrent-enhanced-ua
 pkgname=(qbittorrent-enhanced-ua qbittorrent-enhanced-ua-nox)
 pkgver=4.5.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar (Enhanced Edition with original user-agent)"
 arch=('x86_64')
 _repo="qBittorrent-Enhanced-Edition"
@@ -46,14 +46,12 @@ prepare() {
 
 build() {
     cmake -B "build" "${_snapshot}" \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DQT6="${USE_QT6}"
 
     cmake --build "build"
 
     cmake -B "build-nox" "${_snapshot}" \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DQT6="${USE_QT6}" \
         -DGUI=OFF \
