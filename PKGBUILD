@@ -3,12 +3,15 @@
 pkgname=snapcast
 _pkgname_snapos=snapos
 pkgver=0.27.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Synchronous multi-room audio player"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/badaix/snapcast"
 license=('GPL')
 depends=(alsa-lib avahi libvorbis flac opus expat libsoxr libpulse)
+optdepends=("python-websocket-client: stream plugin script"
+            "python-websocket-client: stream plugin script"
+            "python-musicbrainzngs: stream plugin script")
 makedepends=(cmake alsa-utils boost)
 install="snapcast.install"
 backup=('etc/default/snapserver' 'etc/default/snapclient' 'etc/snapserver.conf')
