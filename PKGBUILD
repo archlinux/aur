@@ -5,9 +5,9 @@
 
 pkgname=hmcl-dev
 _pkgname=hmcl
-pkgver=3.5.3.228
-_commit=a7108f318aa441a93b18fea2638989628527064b
-pkgrel=3
+pkgver=3.5.3.229
+_commit=b9bdc29dc2b8a46fbde1c75cf32d96e16d2de7db
+pkgrel=1
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular (development version)"
 arch=('any')
 url="https://github.com/huanghongxun/HMCL"
@@ -36,12 +36,9 @@ package() {
   install -Dm755 "hmcl-launch-script" "${pkgdir}/usr/bin/$_pkgname"
   # desktop file
   install -Dm644 "hmcl.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-
-  cd HMCL/HMCL/build
-
   # install jar
-  _path=$(echo libs/HMCL*.jar)
+  _path=$(echo HMCL/HMCL/build/libs/HMCL*.jar)
   install -Dm644 $_path "${pkgdir}/usr/share/java/${_pkgname}/${_pkgname}.jar"
   # install icon
-  install -Dm644 "resources/main/assets/img/craft_table.png" "${pkgdir}/usr/share/icons/hicolor/48x48/apps/${_pkgname}.png"
+  install -Dm644 "HMCL/HMCL/image/craft_table.webp" "${pkgdir}/usr/share/icons/hicolor/48x48/apps/${_pkgname}.png"
 }
