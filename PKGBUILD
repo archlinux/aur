@@ -2,14 +2,14 @@
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=('system76-firmware' 'system76-firmware-daemon')
 pkgbase=system76-firmware
-pkgver=1.0.50
+pkgver=1.0.50+2+g447a13d
 pkgrel=1
 pkgdesc="System76 CLI tool for installing firmware updates and systemd service that exposes a DBUS API for handling firmware updates"
 arch=('x86_64')
 url="https://github.com/pop-os/system76-firmware"
 license=('GPL3')
 makedepends=('cargo' 'dbus' 'git')
-_commit=ac4e914e28fa39b29766d82d0095d919cf5792a7  # tags/1.0.50^0
+_commit=447a13dc4cc2642bfdcfbb2aecf5046498520937
 source=("git+https://github.com/pop-os/system76-firmware.git#commit=${_commit}")
 sha256sums=('SKIP')
 #validpgpkeys=('D3FB3AF9711C1CD12639C9F587F211AF2BE4C2FE') # Jeremy Soller (https://soller.dev) <jackpot51@gmail.com>
