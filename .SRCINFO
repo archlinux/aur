@@ -1,6 +1,6 @@
 pkgbase = wine-tkg-roblox
 	pkgdesc = wine-tkg-git with patches for Roblox
-	pkgver = 7.20
+	pkgver = 8.1
 	pkgrel = 1
 	url = https://github.com/Frogging-Family/wine-tkg-git
 	arch = x86_64
@@ -108,8 +108,10 @@ pkgbase = wine-tkg-roblox
 	depends = lib32-faudio
 	depends = desktop-file-utils
 	depends = jxrlib
-	source = roblox-wine-staging-v2.5.patch::https://raw.githubusercontent.com/SegoGithub/robloxWineBuildGuide/e8761a8615499660f5e257d6401ec372c2aa074b/roblox-wine-staging-v2.5.patch
+	source = roblox-wine-staging-v2.5.patch::https://raw.githubusercontent.com/NyanCatTW1/robloxWineBuildGuide/1ac0a104e3f6c691021662ec659e8185071f2383/roblox-wine-staging-v2.5.patch
+	source = use-wine-81.patch::https://github.com/SegoGithub/wine-tkg-git/commit/7296259b6dfa640da2f810eafd19ddaa2c5d92b0.patch
 	source = git+https://github.com/Frogging-Family/wine-tkg-git
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
