@@ -1,7 +1,7 @@
 pkgbase = easytax-ag-2022
 	pkgdesc = Aargau tax declaration software.
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ag.ch/de/dfr/steuern/natuerliche_personen/steuererklaerung__easytax/steuererklaerung_easytax1.jsp
 	arch = any
 	license = custom
