@@ -1,5 +1,5 @@
 pkgname=kio-s3
-pkgver=r174.ad1143f
+pkgver=r186.77c8b43
 pkgrel=1
 pkgdesc="A kio slave for Amazon Simple Storage Service (Amazon S3)"
 arch=('x86_64')
