@@ -1,11 +1,14 @@
 pkgbase = python-tr
 	pkgdesc = Pure-Python implementation of the tr algorithm
 	pkgver = 0.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ikegami-yukino/python-tr
 	arch = any
 	license = GPL2
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	source = python-tr-0.1.2.tar.gz::https://files.pythonhosted.org/packages/source/p/python-tr/python-tr-0.1.2.tar.gz
 	sha256sums = 705630c5abd4bfc46e5e799b1002529137b56f730baceffe19a25acc4a9377d5
