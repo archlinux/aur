@@ -1,7 +1,7 @@
 _name=spectacle
 pkgname=${_name}-no-purpose
 pkgver=22.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc='KDE screenshot capture utility, without the dependency on purpose.'
 arch=('x86_64')
 url='https://apps.kde.org/spectacle/'
@@ -28,7 +28,6 @@ validpgpkeys=(
 
 build() {
     cmake -B "build" -S "${_snapshot}" \
-        -DCMAKE_BUILD_TYPE=Release \
         -DKDEExperimentalPurpose_FOUND=OFF \
         -DBUILD_TESTING=OFF
 
