@@ -1,7 +1,7 @@
 pkgbase = torrent-file-editor
 	pkgdesc = Cross-platform application intended to create and edit .torrent and uTorrent .dat files.
 	pkgver = 0.3.17
-	pkgrel = 2
+	pkgrel = 3
 	url = https://torrent-file-editor.github.io/
 	arch = x86_64
 	license = GPL3

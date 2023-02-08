@@ -1,6 +1,6 @@
 pkgname=torrent-file-editor
 pkgver=0.3.17
-pkgrel=2
+pkgrel=3
 pkgdesc='Cross-platform application intended to create and edit .torrent and uTorrent .dat files.'
 arch=('x86_64')
 url="https://${pkgname}.github.io/"
@@ -15,8 +15,7 @@ source=("${pkgname}-${pkgver}-${_commit:0:7}.tar.gz::https://github.com/${pkgnam
 sha256sums=('a0fcfd43f7fb641e64a32919921761df84e06d78531ad45070f367a1f01e7e6e')
 
 build() {
-    cmake -B "build" "${_snapshot}" \
-        -DCMAKE_BUILD_TYPE=Release \
+    cmake -B "build" -S "${_snapshot}" \
         -DCMAKE_INSTALL_PREFIX=/usr
 
     cmake --build "build"
@@ -24,7 +23,5 @@ build() {
 
 package() {
     DESTDIR="${pkgdir}" cmake --install "build"
-
-    cd "${_snapshot}"
-    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "LICENSE"
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_snapshot}/LICENSE"
 }
