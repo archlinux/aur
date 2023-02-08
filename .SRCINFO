@@ -1,6 +1,6 @@
 pkgbase = yudit-beta
 	pkgdesc = A free Unicode plain-text editor for Unix-like systems - beta version
-	pkgver = 3.1.0.beta6
+	pkgver = 3.1.0.beta12
 	pkgrel = 1
 	url = http://www.yudit.org/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = yudit-beta
 	optdepends = hunspell: spell checking
 	provides = yudit
 	conflicts = yudit
-	source = http://yudit.org/download/betas/yudit-beta-3.1.0.beta6.tar.gz
-	sha256sums = 566a3d5ccd541d95c4b0796def32d0c07f76a68a8dcd2c3dca4753d6beee6385
+	source = http://yudit.org/download/betas/yudit-3.1.0.beta12.tar.gz
+	sha256sums = de52c02de41911713f0b10267a8fe9ae093e39b01ed04f365c3babcf0b67a03e
 
 pkgname = yudit-beta
