@@ -1,0 +1,82 @@
+#compdef hr hrDiff hrInstall hrUninstall hrUpgrade
+
+function _hr_charts() {
+  local -a charts
+  local searchPath="${words[CURRENT]}"
+  if [[ "${searchPath:0:2}" == "~/" ]]; then
+    searchPath="$HOME/${searchPath:2}"
+  fi
+  if [[ ! -d "${searchPath}" ]]; then
+    searchPath="$(dirname "${searchPath}")"
+  fi
+  charts=( $(fd ${searchPath:+--search-path="${searchPath}"} -t f Chart.yaml -X dirname | sed "s#^$HOME/#~/#g; s#^\./##") )
+  _wanted sources expl 'Helm Chart source' \
+    _multi_parts / charts
+}
+function _hr_yamls() {
+  local -a hrs
+  local searchPath="${words[CURRENT]}"
+  if [[ "${searchPath:0:2}" == "~/" ]]; then
+    searchPath="$HOME/${searchPath:2}"
+  fi
+  if [[ ! -d "${searchPath}" ]]; then
+    searchPath="$(dirname "${searchPath}")"
+  fi
+  if [[ ! -d "${searchPath}" ]]; then
+    searchPath=
+  fi
+  hrs=( $(fd ${searchPath:+--search-path="${searchPath}"} -t f -e yaml -e yml -X rg '^kind: HelmRelease$' -l | sed "s#^$HOME/#~/#g; s#^\./##") )
+  _wanted yamls expl 'HelmRelease yaml' \
+    _multi_parts / hrs
+}
+function _hr_helm_opts() {
+  local command="${words[1]:2:l}"
+  [[ -z "$command" ]] && command=template
+  local -a newWords
+  local seperatorIndex=1
+  for index in {1..${#words[@]}}; do
+    if [[ "${words[$index]}" == -- ]]; then
+      seperatorIndex=$index
+      break
+    fi
+  done
+
+  CURRENT=$(( CURRENT - seperatorIndex + 2 ))
+  newWords=( helm $command ${words[$seperatorIndex+1,-1]} )
+  if [[ "${words[-1][-1]}" == "" ]]; then
+    newWords+=( - )
+  fi
+  echo "$CURRENT: ${newWords[@]}" >> /tmp/d
+  words=( ${newWords[@]} )
+  _helm
+}
+function _hr_both() {
+  _alternative 'yamls:Flux HelmRelease yaml:_hr_yamls' \
+    'sources:Helm Chart source:_hr_charts'
+}
+function _hr_one() {
+  local firstParam="${words[CURRENT-1]}"
+  if [[ "${firstParam:0:2}" == "~/" ]]; then
+    firstParam="$HOME/${firstParam:2}"
+  fi
+  if [[ -f "${firstParam}" ]]; then
+    _alternative 'sources:Helm Chart source:_hr_charts'
+  else
+    _alternative 'yamls:Flux HelmRelease yaml:_hr_yamls'
+  fi
+}
+function _hr() {
+  _arguments "1:first:_hr_both" \
+    "2:second:_hr_one" \
+    "3:seperator:(--)" \
+    "*:helm:_hr_helm_opts"
+}
+
+case $service in
+  hr|hrDiff|hrInstall|hrUninstall|hrUpgrade)
+    _hr
+    ;;
+  *)
+    _message "unknown command ${service}" && ret=1
+    ;;
+esac
