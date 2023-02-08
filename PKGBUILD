@@ -15,10 +15,10 @@ PKGEXT='.pkg.tar'
 
 pkgname=chromium-no-extras
 _pkgname=chromium
-pkgver=109.0.5414.119
+pkgver=110.0.5481.77
 pkgrel=1
 _launcher_ver=8
-_gcc_patchset=1
+_gcc_patchset=4
 pkgdesc="Chromium without hangout services, widevine, or chromedriver"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
@@ -27,7 +27,7 @@ provides=(chromium=$pkgver)
 conflicts=(chromium)
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'libva'
-         'wayland' 'desktop-file-utils' 'hicolor-icon-theme')
+         'libffi' 'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'nodejs' 'pipewire'
              'qt5-base' 'java-runtime-headless' 'git')
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
@@ -39,20 +39,20 @@ options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
-        v8-enhance-Date-parser-to-take-Unicode-SPACE.patch
+        fix-the-way-to-handle-codecs-in-the-system-icu.patch
+        v8-move-the-Stack-object-from-ThreadLocalTop.patch
         REVERT-roll-src-third_party-ffmpeg-m102.patch
         REVERT-roll-src-third_party-ffmpeg-m106.patch
         disable-GlobalMediaControlsCastStartStop.patch
-        angle-wayland-include-protocol.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('cbcdef5ee71acb53790ded3adef86871812b46e9f208dce8ec3f8ab04958be2d'
+sha256sums=('e348ab2dc4311083e729d714a81e95dd9db108ff71437dde451c97ac939881ce'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            '1ca780a2ad5351f60671a828064392096c8da7b589086ee999f25c9e6e799a7b'
-            'b83406a881d66627757d9cbc05e345cbb2bd395a48b6d4c970e5e1cb3f6ed454'
+            '8c7f93037cc236024cc8be815b2c2bd84f6dc9e32685299e31d4c6c42efde8b7'
+            'a5d5c532b0b059895bc13aaaa600d21770eab2afa726421b78cb597a78a3c7e3'
+            '49c3e599366909ddac6a50fa6f9420e01a7c0ffd029a20567a41d741a15ec9f7'
             '30df59a9e2d95dcb720357ec4a83d9be51e59cc5551365da4c0073e68ccdec44'
             '4c12d31d020799d31355faa7d1fe2a5a807f7458e7f0c374adf55edb37032152'
             '7f3b1b22d6a271431c1f9fc92b6eb49c6d80b8b3f868bdee07a6a1a16630a302'
-            'cd0d9d2a1d6a522d47c3c0891dabe4ad72eabbebc0fe5642b9e22efa3d5ee572'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -65,10 +65,10 @@ declare -gA _system_libs=(
   [fontconfig]=fontconfig
   [freetype]=freetype2
   [harfbuzz-ng]=harfbuzz
-  #[icu]=icu                 # https://crbug.com/1382032
+  [icu]=icu
   [jsoncpp]=jsoncpp
   [libaom]=aom
-  [libavif]=libavif
+  #[libavif]=libavif # https://github.com/AOMediaCodec/libavif/commit/4d2776a3
   [libdrm]=
   [libjpeg]=libjpeg
   [libpng]=libpng
@@ -115,7 +115,12 @@ prepare() {
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
 
   # Upstream fixes
-  patch -Np1 -d v8 <../v8-enhance-Date-parser-to-take-Unicode-SPACE.patch
+  patch -Np1 -i ../fix-the-way-to-handle-codecs-in-the-system-icu.patch
+
+  # https://crbug.com/v8/13630
+  # https://crrev.com/c/4200636
+  # https://github.com/nodejs/node/pull/46125#issuecomment-1407721276
+  patch -Np1 -d v8 <../v8-move-the-Stack-object-from-ThreadLocalTop.patch
 
   # Revert ffmpeg roll requiring new channel layout API support
   # https://crbug.com/1325301
@@ -127,11 +132,11 @@ prepare() {
   # https://crbug.com/1314342
   patch -Np1 -i ../disable-GlobalMediaControlsCastStartStop.patch
 
-  # https://crbug.com/angleproject/7582
-  patch -Np0 -i ../angle-wayland-include-protocol.patch
-
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i ../patches/chromium-103-VirtualCursor-std-layout.patch
+  patch -Np1 -i ../patches/chromium-110-NativeThemeBase-fabs.patch
+  patch -Np1 -i ../patches/chromium-110-CredentialUIEntry-const.patch
+  patch -Np1 -i ../patches/chromium-110-DarkModeLABColorSpace-pow.patch
 
   # Link to system tools required by the build
   mkdir -p third_party/node/linux/node-linux-x64/bin
@@ -183,8 +188,7 @@ build() {
     'use_custom_libcxx=false'
     'use_gnome_keyring=false'
     'use_sysroot=false'
-    'use_system_libwayland=true'
-    'use_system_wayland_scanner=true'
+    'use_system_libffi=true'
     'enable_hangout_services_extension=false'
     'enable_widevine=false'
     'enable_nacl=false'
