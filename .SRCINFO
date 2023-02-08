@@ -1,7 +1,7 @@
 pkgbase = hyperfine-git
 	pkgdesc = A command-line benchmarking tool
-	pkgver = 1.9.0.r36.gb702292
-	pkgrel = 2
+	pkgver = 1.15.0.r33.gf56c7a5
+	pkgrel = 1
 	url = https://github.com/sharkdp/hyperfine
 	arch = i686
 	arch = x86_64
@@ -10,10 +10,9 @@ pkgbase = hyperfine-git
 	makedepends = git
 	makedepends = rust
 	depends = gcc-libs
-	provides = hyperfine
+	provides = hyperfine=1.15.0.r33.gf56c7a5
 	conflicts = hyperfine
 	source = git+https://github.com/sharkdp/hyperfine.git
 	sha256sums = SKIP
 
 pkgname = hyperfine-git
-

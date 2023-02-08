@@ -1,19 +1,27 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=hyperfine-git
-pkgver=1.9.0.r36.gb702292
-pkgrel=2
+pkgver=1.15.0.r33.gf56c7a5
+pkgrel=1
 pkgdesc="A command-line benchmarking tool"
 arch=('i686' 'x86_64')
 url="https://github.com/sharkdp/hyperfine"
 license=('apache' 'MIT')
 depends=('gcc-libs')
 makedepends=('git' 'rust')
-provides=('hyperfine')
+provides=("hyperfine=$pkgver")
 conflicts=('hyperfine')
 source=("git+https://github.com/sharkdp/hyperfine.git")
 sha256sums=('SKIP')
 
+prepare() {
+  cd "hyperfine"
+
+  if [ ! -f "Cargo.lock" ]; then
+    cargo update
+  fi
+  cargo fetch
+}
 
 pkgver() {
   cd "hyperfine"
@@ -25,20 +33,18 @@ check() {
   cd "hyperfine"
 
   #cargo test \
-  #  --locked \
-  #  --release
+  #  --frozen
 }
 
 package() {
   cd "hyperfine"
 
   cargo install \
-    --no-track \
     --locked \
+    --no-track \
     --root "$pkgdir/usr" \
     --path "$srcdir/hyperfine"
 
   install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/hyperfine"
-  install -Dm644 "LICENSE-APACHE" -t "$pkgdir/usr/share/licenses/hyperfine"
-  install -Dm644 "LICENSE-MIT" -t "$pkgdir/usr/share/licenses/hyperfine"
+  install -Dm644 LICENSE-{APACHE,MIT} -t "$pkgdir/usr/share/licenses/hyperfine"
 }
