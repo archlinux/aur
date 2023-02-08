@@ -1,13 +1,14 @@
 pkgbase = nvidia-utils-beta-nvlax
 	pkgdesc = NVIDIA drivers utilities (beta version) with NVENC and NvFBC patched with nvlax
 	pkgver = 525.85.05
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/illnyang/nvlax/
 	install = nvidia-utils-beta.install
 	arch = x86_64
 	license = custom
 	makedepends = cmake
 	makedepends = git
+	makedepends = patchelf
 	depends = xorg-server
 	depends = libglvnd
 	depends = egl-wayland
