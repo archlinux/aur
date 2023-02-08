@@ -1,7 +1,7 @@
 pkgbase = ledger-live
 	pkgdesc = Ledger Live - Desktop
-	pkgver = 2.52.0
-	pkgrel = 3
+	pkgver = 2.53.1
+	pkgrel = 1
 	url = https://github.com/LedgerHQ/ledger-live
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = ledger-live
 	makedepends = fnm
 	makedepends = pnpm
 	depends = ledger-udev
-	source = ledger-live-desktop-2.52.0.tar.gz::https://github.com/LedgerHQ/ledger-live/archive/refs/tags/@ledgerhq/live-desktop@2.52.0.tar.gz
-	sha512sums = 7a655ae6831eed56fecb4d46e2d7af7610a60beb194e8e451f7e5d1c16b16734449c0cdc15dfea40f66f112baa31100bf6fb1f5fed51d6c5c6e4afdc31cdb4a7
+	source = ledger-live-desktop-2.53.1.tar.gz::https://github.com/LedgerHQ/ledger-live/archive/refs/tags/@ledgerhq/live-desktop@2.53.1.tar.gz
+	sha512sums = 09404f33b50a920d4c2130c585f6af7fceadb084d8ff1d3bc425ddea8f7904dec5eeb2f596abb10e55b0bb5c057ec6b84b34016751af1759da890f27c528ea74
 
 pkgname = ledger-live

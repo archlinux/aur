@@ -7,8 +7,8 @@
 _pkgbin=ledger-live-desktop
 pkgname=ledger-live
 pkgdesc="Ledger Live - Desktop"
-pkgver=2.52.0
-pkgrel=3
+pkgver=2.53.1
+pkgrel=1
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live'
 license=('MIT')
@@ -16,7 +16,7 @@ depends=('ledger-udev')
 makedepends=('python>=3.5' 'node-gyp' 'fnm' 'pnpm')
 _extdir=ledger-live--ledgerhq-live-desktop-${pkgver}
 source=("${_pkgbin}-${pkgver}.tar.gz::https://github.com/LedgerHQ/ledger-live/archive/refs/tags/@ledgerhq/live-desktop@${pkgver}.tar.gz")
-sha512sums=('7a655ae6831eed56fecb4d46e2d7af7610a60beb194e8e451f7e5d1c16b16734449c0cdc15dfea40f66f112baa31100bf6fb1f5fed51d6c5c6e4afdc31cdb4a7')
+sha512sums=('09404f33b50a920d4c2130c585f6af7fceadb084d8ff1d3bc425ddea8f7904dec5eeb2f596abb10e55b0bb5c057ec6b84b34016751af1759da890f27c528ea74')
 
 prepare() {
   cd "${_extdir}"
