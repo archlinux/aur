@@ -1,13 +1,14 @@
 # Maintainer: Moritz Sauter <moritz.sauter7+aur at gmail dot com>
 
 pkgname=tiny-remarkable-scripts-git
-pkgver=r3.15b42b4
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A set of tiny remarkable scripts to pull and push pdfs via ssh"
 arch=("any")
 url="https://github.com/mosauter/remarkable_scripts"
 license=('MIT')
-depends=("python-rmrl" "imagemagick" "util-linux")
+depends=("imagemagick" "util-linux" "python-rm2pdf")
+optdepends=("python-rmrl: for v5 rendering")
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
