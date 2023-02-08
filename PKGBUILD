@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-buildlog-consultant
 _name=${pkgname#python-}
-pkgver=0.0.32
+pkgver=0.0.33
 pkgrel=1
 pkgdesc="Build log parser and analyser"
 arch=('any')
@@ -13,7 +13,7 @@ checkdepends=('python-pytest')
 optdepends=('python-openai')
 source=("$_name-$pkgver.tar.gz::https://github.com/jelmer/buildlog-consultant/archive/refs/tags/v$pkgver.tar.gz")
 #source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('6a5a18737b053aa16f450e2662bde899f2e88486e87f20ca6d35fde518a1b545')
+sha256sums=('f1b9a0f718e2ed55888f3a839032b7f123490fc23f20db7d17cb0167588f8a97')
 #validpgpkeys=('DC837EE14A7E37347E87061700806F2BD729A457') # Jelmer Vernooĳ <jelmer@jelmer.uk>
 
 build() {
