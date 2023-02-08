@@ -1,0 +1,26 @@
+pkgbase = tod0
+	pkgdesc = A Terminal Client for Microsoft To-Do.
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/kiblee/tod0
+	arch = any
+	license = unknown
+	makedepends = python-setuptools
+	depends = python
+	depends = python-prompt_toolkit
+	depends = python-requests-oauthlib
+	depends = python-yaml
+	depends = python-beautifulsoup4
+	depends = python-yaspin
+	depends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/t/tod0/tod0-0.7.1.tar.gz
+	sha256sums = 465de30c87313df52b3f7cce681f5b255a6f46f59be52a519407de9896b59120
+
+pkgname = tod0
+	depends = python
+	depends = python-prompt_toolkit
+	depends = python-requests-oauthlib
+	depends = python-yaml
+	depends = python-beautifulsoup4
+	depends = python-yaspin
+	depends = python-setuptools
