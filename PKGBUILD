@@ -12,7 +12,7 @@ depends=('python' 'python-colorama' 'python-colour' 'python-setproctitle' 'pytho
 optdepends=('python-openrazer')
 makedepends=('meson' 'ninja' 'sassc')
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/polychromatic/polychromatic/archive/v$pkgver.tar.gz")
-sha512sums=('35249bbe5a6bff0a0872f1c7342efd46bc4d7189f0e9e4e5a56be58836dff75259977d2f0567622d1083f5d1fe3aa74bd8e297ce7a71da29a97d7d5bc2f7ef94')
+sha512sums=('a58e85e52a92ccb7fee837692bbf294fe376198582be0c0e982af37c3853667a80f8e67d074f0128a134ede05c4a064614036c847f8be22503e448b1385a1c5a')
 
 build() {
   arch-meson $pkgname-$pkgver build
