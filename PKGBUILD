@@ -6,15 +6,19 @@ _binname=vanta
 _svcname=vanta-agent
 
 pkgname=vanta-agent
+# https://app.vanta.com/downloads
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Vanta agent"
 arch=('x86_64')
 url="https://www.vanta.com/"
 depends=('systemd')
 license=('custom:vanta')
 install=$pkgname.install
-source=("https://vanta-agent-repo.s3.amazonaws.com/targets/versions/${pkgver}/${_binname}-amd64.deb")
+source=(
+    "https://vanta-agent-repo.s3.amazonaws.com/targets/versions/${pkgver}/${_binname}-amd64.deb"
+    "${_svcname}.conf"
+)
 
 package() {
 	echo "  -> Extracting the data.tar.gz..."
@@ -23,6 +27,8 @@ package() {
 	echo "  -> Moving stuff in place..."
 	# systemd
 	install -Dm644 "$srcdir"/usr/lib/systemd/system/vanta.service "$pkgdir"/usr/lib/systemd/system/$_svcname.service
+    # systemd override for regular restart because of Agent instability
+    install -Dm644 $_svcname.conf "$pkgdir"/etc/systemd/system/$_svcname.service.d/$_svcname.conf
     # changelog
 	install -Dm644 usr/share/doc/vanta/changelog.gz "$pkgdir"/usr/share/doc/$_binname/changelog.gz
     # vanta
@@ -54,4 +60,5 @@ package() {
     fi
 }
 
-sha256sums=('515abfb227bf44577ed9c5ffc07672101b693ab82148e8939793e98d80826a45')
+sha256sums=('515abfb227bf44577ed9c5ffc07672101b693ab82148e8939793e98d80826a45'
+            '2d650c20f8cabb78d3c629c38d8eed3b15f0e3f9f0b96b68f67fbe5831b41307')
