@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Celeste
+Exec=/usr/bin/celeste-client
+GenericName=Folder Sync
+Comment=GUI file synchronization client that can connect to virtually any cloud provider
+Keywords=cloud;file sync;backup;
+Icon=celeste-client
+Type=Application
+Categories=FileTools;FileTransfer;GTK;Utility;
+StartupNotify=true
+Terminal=false
+
+Name[it_IT]=celeste-client.desktop
