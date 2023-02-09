@@ -4,14 +4,13 @@ _pkgname=bioCancer
 _pkgver=1.26.04
 pkgname=r-${_pkgname,,}
 pkgver=1.26.04
-pkgrel=1
+pkgrel=3
 pkgdesc='Interactive Multi-Omics Cancers Data Visualization and Analysis'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('AGPL')
 depends=(
   r
-  r-algdesign
   r-annotationdbi
   r-biobase
   r-clusterprofiler
@@ -20,20 +19,15 @@ depends=(
   r-dplyr
   r-dt
   r-genetclassifier
-  r-go.db
   r-htmlwidgets
   r-httr
-  r-import
-  r-org.bt.eg.db
   r-org.hs.eg.db
   r-plyr
-  r-r.methodss3
   r-r.oo
   r-radiant.data
   r-reactome.db
   r-reactomepa
   r-shiny
-  r-shinythemes
   r-tibble
   r-visnetwork
   r-xml
