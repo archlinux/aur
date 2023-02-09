@@ -5,7 +5,7 @@ _pkgname=torch
 _pkgver=0.9.1
 pkgname=r-${_pkgname,,}
 pkgver=0.9.1
-pkgrel=1
+pkgrel=3
 pkgdesc="Tensors and Neural Networks with 'GPU' Acceleration"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,6 +17,7 @@ depends=(
   r-cli
   r-coro
   r-ellipsis
+  r-glue
   r-magrittr
   r-r6
   r-rcpp
@@ -25,7 +26,6 @@ depends=(
 )
 optdepends=(
   r-covr
-  r-glue
   r-katex
   r-knitr
   r-mvtnorm
