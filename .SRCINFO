@@ -1,0 +1,16 @@
+pkgbase = pkg-listn
+	pkgdesc = Manage linux packages with a textfile
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/budRich/pkg-listn
+	arch = any
+	license = Unlicense
+	makedepends = m4
+	depends = bash>=4.0.0
+	depends = sed
+	optdepends = yay: AUR helper
+	optdepends = paru: AUR helper
+	source = https://github.com/budRich/pkg-listn/archive/refs/tags/v0.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = pkg-listn
