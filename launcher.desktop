@@ -1,0 +1,18 @@
+[Desktop Entry]
+Name=Sierra Death Generator
+Comment=Creates game over pictures
+Type=Application
+Exec=xdg-open https://127.0.0.1:3000
+Icon=io.github.foone.SierraDeathGenerator
+Categories=Game;
+Actions=start;stop;
+
+[Desktop Action start]
+Name=Start server
+Exec=serve /usr/share/sierra-death-generator
+
+[Desktop Action stop]
+Name=Stop server
+Exec=killall node
+
+X-Desktop-File-Install-Version=0.26
