@@ -4,7 +4,7 @@ _pkgname=parameters
 _pkgver=0.20.2
 pkgname=r-${_pkgname,,}
 pkgver=0.20.2
-pkgrel=1
+pkgrel=3
 pkgdesc='Processing of Model Parameters'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -73,7 +73,6 @@ optdepends=(
   r-logspline
   r-lqmm
   r-m3c
-  r-magrittr
   r-marginaleffects
   r-mass
   r-matrix
@@ -86,6 +85,7 @@ optdepends=(
   r-mfx
   r-mgcv
   r-mice
+  r-mmrm
   r-multcomp
   r-mumin
   r-nbclust
@@ -111,7 +111,6 @@ optdepends=(
   r-rmarkdown
   r-rms
   r-rstanarm
-  r-rsvd
   r-sandwich
   r-see
   r-sparsepca
