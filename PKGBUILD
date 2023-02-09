@@ -4,7 +4,7 @@ _name=Ryujinx
 pkgname=ryujinx
 pkgver=1.1.614
 _commit=5f38086f9494a4ffbcb4b0ce4b7727ad8ac18b3e
-pkgrel=2
+pkgrel=3
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 arch=(x86_64)
 url="https://github.com/Ryujinx/Ryujinx"
@@ -19,7 +19,7 @@ b2sums=('SKIP')
 
 # pkgver() {
 #	cd $_name
-#   # changelog is $url/wiki/Changelog, needs python-html2text
+#	# changelog is $url/wiki/Changelog, needs python-html2text
 #	_commit_msg=$(git log -1 --pretty=%B | awk '{$NF=""}1') # remove PR number in parentheses
 #	html2text ../Changelog | grep -B 4 "${_commit_msg::length - 1}" | head -n 1 | awk '{print $2}'
 # }
@@ -43,6 +43,8 @@ package() {
 	mkdir -p $pkgdir/opt/ryujinx
 	cp -R Ryujinx/bin/Release/net7.0/linux-x64/publish/*     "$pkgdir/opt/ryujinx/"
 	cp -R Ryujinx.Ava/bin/Release/net7.0/linux-x64/publish/* "$pkgdir/opt/ryujinx/"
+	chmod 755 "$pkgdir/opt/ryujinx/Ryujinx"
+	chmod 755 "$pkgdir/opt/ryujinx/Ryujinx.Ava"
 
 	install -dm755 "$pkgdir/usr/bin"
 	ln -s "/opt/ryujinx/Ryujinx"     "$pkgdir/usr/bin/Ryujinx"
