@@ -58,7 +58,7 @@ if [ "${initial}x" = "x" ] ; then
     git add PKGBUILD .SRCINFO
     git commit -m "Released $new_ver"
     git push -u origin release/$new_ver
-    echo "{"targetProjectId":21,"sourceProjectId":21,"targetBranch":"master","sourceBranch":"release/$new_ver","title":"Bump version to $new_ver","description":"Bump version to $new_ver","mergeStrategy":"CREATE_MERGE_COMMIT_IF_NECESSARY","reviewerIds":[1],"assigneeIds":[1]}" | curl -u $TOKEN -d@- -H "Content-Type: application/json" https://onedev.polarian.dev/~api/pulls
+    echo "{\"targetProjectId\":21,\"sourceProjectId\":21,\"targetBranch\":\"master\",\"sourceBranch\":\"release/$new_ver\",\"title\":\"Bump version to $new_ver\",\"description\":\"Bump version to $new_ver\",\"mergeStrategy\":\"CREATE_MERGE_COMMIT_IF_NECESSARY\",\"reviewerIds\":[1],\"assigneeIds\":[1]}" | curl -u $TOKEN -d@- -H "Content-Type: application/json" https://onedev.polarian.dev/~api/pulls
     git checkout master
     git branch -D release/$new_ver
     rm reposilite-$new_ver.tar.*
