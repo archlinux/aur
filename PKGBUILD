@@ -2,8 +2,8 @@
 
 pkgname=osbuild-composer
 pkgdesc='An HTTP service for building bootable OS images'
-pkgver=73
-pkgrel=3
+pkgver=74
+pkgrel=1
 url="https://www.osbuild.org"
 arch=(x86_64)
 license=(Apache)
@@ -11,7 +11,7 @@ depends=('dnf' 'qemu' 'osbuild' 'systemd')
 makedepends=('go' 'systemd')
 optdepends=()
 source=($pkgname-$pkgver.tar.gz::https://github.com/osbuild/osbuild-composer/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('bdff5c6cb72cac08590697750caf0027776e5e5b1408aa5f32ad563aa59351e6')
+sha256sums=('9f9e68c79ef07caf07ca781da24c1a5de3c8228ea918a8644ce5e52b290a5035')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -40,7 +40,7 @@ package() {
 
   # binaries
   install -Dm755 "build/osbuild-composer" "${pkgdir}/usr/lib/osbuild-composer/osbuild-composer"
-  install -Dm755 "build/osbuild-worker" "${pkgdir}/usr/lib/osbuild-composer/osbuild-worker"
+  install -Dm755 "build/osbuild-worker"   "${pkgdir}/usr/lib/osbuild-composer/osbuild-worker"
   install -Dm755 "dnf-json"               "${pkgdir}/usr/lib/osbuild-composer/dnf-json"
 
   # sysusers
