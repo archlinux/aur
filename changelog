@@ -1,5 +1,19 @@
-## 2.451.0
+## 2.453.1
 
-### Features
+Bug Fixes
 
-    mini: keyboard shortcuts list command (2435928)
+    In activateGroupContext move the logger statements to correctly show the elapsed time. (df8489e)
+    In activateGroupContext, fix typos in log messages. (399c82c)
+
+## 2.453.0
+
+Features
+
+    AllowUnsecureGRPCConnections in netconf (87b3798)
+    devtools toggle to allow unsecure grpc connections (78de7ee)
+
+## 2.452.0
+
+Features
+
+    mini: directory service support (87624dd)
