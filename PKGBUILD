@@ -2,7 +2,7 @@
 # Contributor: eagleeyetom <eagleeyetom@gmail.com>
 # Original Maintainer: raininja <dandenkijin@gmail.com>
 pkgname=slimjet
-pkgver=38.0.1.0
+pkgver=38.0.2.0
 pkgrel=1
 pkgver_libffmpeg=0.71.1
 pkgdesc="Fast, smart and powerful browser based on Blink"
@@ -18,7 +18,7 @@ source_x86_64=("${pkgname}-${pkgver}_amd64.deb::http://www.slimjetbrowser.com/${
 source=('LICENSE' "libffmpeg.zip::https://github.com/ahmedmoselhi/nwjs-ffmpeg-prebuilt/releases/download/${pkgver_libffmpeg}/${pkgver_libffmpeg}-linux-x64.zip")
 md5sums=('e2f3d75bbf4ea8cef106adb30c6b4c83'
          'efb7eab92dbda0b4f25343ead437a09a')
-md5sums_x86_64=('f203da1615d472f6e65e36d568bd6f00')
+md5sums_x86_64=('2faf9e4269c7cd3a400df8a39bd2eb07')
 
 prepare() {
     bsdtar -xf data.tar.xz
