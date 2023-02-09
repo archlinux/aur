@@ -2,7 +2,7 @@
 # Co-Maintainer: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
 
 pkgname=openmw-git
-pkgver=0.47.0.r3589.gbedfbfd594
+pkgver=0.47.0.r4538.ga41cbfb349
 pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64')
@@ -18,8 +18,8 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
-  _tag="$(git describe --tags --match 'openmw*' --abbrev=0 $(git rev-list --tags) | head -n 1 | sed 's/openmw-//')"
-  _numcommits="$(git rev-list  `git rev-list --tags --no-walk --max-count=1`..HEAD --count)"
+  _tag="$(git describe --tags --match 'openmw-[01]*' --abbrev=0 $(git rev-list --tags) | uniq | sed 's/openmw-//' | sort | tail -n1)"
+  _numcommits="$(git rev-list  openmw-$_tag..HEAD --count)"
   _hash="$(git rev-parse --short HEAD)"
   printf "%s.r%s.g%s" "$_tag" "$_numcommits" "$_hash"
 }
