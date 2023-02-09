@@ -2,8 +2,8 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 # Contributor: Jakub Okoński <jakub@okonski.org>
 pkgname=miopengemm
-pkgver=5.4.2
-pkgrel=2
+pkgver=5.4.3
+pkgrel=1
 pkgdesc="An OpenCL GEMM kernel generator"
 arch=('x86_64')
 url="https://github.com/ROCmSoftwarePlatform/MIOpenGEMM"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('ocl-icd')
 makedepends=('opencl-headers' 'rocm-cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/rocm-$pkgver.tar.gz")
-sha256sums=('b28440a655629e20d278f0060c497d912bac6f5b9a37302fe5c06e4e72c05b9b')
+sha256sums=('5051051cab60ca0f6347a981da6c9dbeddf8b0de698d4e5409a0db0c622acafc')
 _dirname="$(basename "$url")-$(basename "${source[0]}" ".tar.gz")"
 
 build() {
