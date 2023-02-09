@@ -1,7 +1,7 @@
 # Maintainer: David Čuček <observ33r@gmail.com>
 
 pkgname="code-translucent"
-pkgver=1.75.0
+pkgver=1.75.1
 pkgrel=1
 pkgdesc="The Open Source build of Visual Studio Code (vscode) editor with translucent window and official marketplace support!"
 
