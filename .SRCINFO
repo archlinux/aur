@@ -1,0 +1,12 @@
+pkgbase = gosling-git
+	pkgdesc = Natural sounding text-to-speech in the terminal (and more).
+	pkgver = r15.31f87c7
+	pkgrel = 1
+	url = https://github.com/Samyak2/gosling
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = git+https://github.com/Samyak2/gosling.git
+	sha256sums = SKIP
+
+pkgname = gosling-git
