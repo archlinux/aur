@@ -5,6 +5,8 @@ pkgbase = protonup-rs-bin
 	url = https://github.com/auyer/Protonup-rs
 	arch = any
 	license = Apache
+	provides = protonup-rs
+	conflicts = protonup-rs
 	source = https://github.com/auyer/Protonup-rs/releases/download/v0.3.0/protonup-rs-linux-amd64.zip
 	sha256sums = b846d89626ebd4166b6d83ed60d9bfb851cbc13e60d5535ac67cfb52985f4ca0
 
