@@ -2,7 +2,7 @@
 # Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
 pkgname=movit-git
 pkgver=r915.0b17055
-pkgrel=1
+pkgrel=2
 pkgdesc="The modern video toolkit"
 arch=(x86_64)
 url="http://movit.sesse.net/"
