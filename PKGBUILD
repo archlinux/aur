@@ -5,7 +5,7 @@ _pkgname=tiledb
 _pkgver=0.18.0
 pkgname=r-${_pkgname,,}
 pkgver=0.18.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Universal Storage Engine for Sparse and Dense Multidimensional Arrays'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -14,7 +14,6 @@ depends=(
   r
   r-nanotime
   r-rcpp
-  r-rcppspdlog
   r-spdl
 )
 optdepends=(
