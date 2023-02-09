@@ -5,7 +5,7 @@
 pkgname=rstudio-bin
 pkgver=2022.12.0.353
 _pkgver=2022.12.0-353
-pkgrel=1
+pkgrel=2
 pkgdesc="An integrated development environment (IDE) for R (binary from RStudio official repository)"
 arch=('x86_64')
 license=('GPL')

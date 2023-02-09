@@ -1,7 +1,7 @@
 pkgbase = rstudio-bin
 	pkgdesc = An integrated development environment (IDE) for R (binary from RStudio official repository)
 	pkgver = 2022.12.0.353
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.rstudio.org/
 	install = rstudio-bin.install
 	arch = x86_64
