@@ -3,7 +3,7 @@
 _pkgname=8188eu
 pkgname="${_pkgname}-dkms"
 pkgver=v4.3.0.8_13968
-pkgrel=16
+pkgrel=17
 pkgdesc='Driver for Realtek RTL8188EUS (RTL8188EUS, RTL8188ETV) WLAN'
 arch=('any')
 url='http://www.realtek.com.tw/'
@@ -27,6 +27,9 @@ source=("https://www.dropbox.com/s/afs5d2yfgwurqm2/${_pkgname}-${pkgver}.tar.xz?
         linux-5.6.patch
         linux-5.8.patch
         linux-5.10.patch
+        linux-5.15.patch
+        linux-5.17.patch
+        linux-6.1.patch
         no_debug.patch)
 md5sums=('ca8736349079bc2bfedfb862d04a08bb'
          '8af5df9ed717b3bb48df59dac0c8a9c8'
@@ -46,6 +49,9 @@ md5sums=('ca8736349079bc2bfedfb862d04a08bb'
          'd3d112aec7a0cdccc7161ba1d66b8475'
          '96d4403315c7af254d2be5706b726317'
          '8906dbc463e885aa6aa95679e5c5f659'
+         'd1a376d74a61f09b7333f40a2ac9c594'
+         '7ae884b13d823469d7957a1a59dd2317'
+         '468076c497b7225d60cf622482ca7759'
          '0b14ee4517f78ada4d471654afd82b79')
 
 prepare() {
