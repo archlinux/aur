@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=mattermost-plugin-calls
-pkgver=0.12.1
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='enables voice calling and screen sharing functionality in Mattermost channels'
 arch=(x86_64)
@@ -13,7 +13,7 @@ options=(!strip)
 _plugin="com.mattermost.${pkgname##*-}"
 _archive="$_plugin-$pkgver"
 source=("$url/releases/download/v$pkgver/$_archive.tar.gz")
-sha256sums=('3ad3a9441a68b7be8f8364547bbc1a6955dd8d7bad4e61899adc75abefd5a81d')
+sha256sums=('66ae2f46e44affaeabcfae280ff1bffcc2d311da69f5ef21459de600a57211b4')
 
 # Note the intention of this package is to bulid from source, but I haven't
 # gotten it to work yet. Contributions welcome! Temporarily it is installing
