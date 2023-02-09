@@ -1,7 +1,7 @@
 # Maintainer: Ranadeep B < mail at rnbguy dot at >
 
 _orgname=akash-network
-_pkgname=akash
+_pkgname=${_orgname%-*}
 _reponame=node
 pkgname=${_pkgname}-bin
 pkgver=0.22.0
