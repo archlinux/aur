@@ -4,7 +4,7 @@ _pkgname=insight
 _pkgver=0.19.0
 pkgname=r-${_pkgname,,}
 pkgver=0.19.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Easy Access to Model Information for Various Model Objects'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -47,6 +47,7 @@ optdepends=(
   r-gbm
   r-gee
   r-geepack
+  r-geor
   r-glmmadaptive
   r-glmmtmb
   r-gmnl
@@ -75,6 +76,7 @@ optdepends=(
   r-mhurdle
   r-mice
   r-mlogit
+  r-mmrm
   r-multgee
   r-nlme
   r-nnet
@@ -104,6 +106,7 @@ optdepends=(
   r-survey
   r-survival
   r-testthat
+  r-tmb
   r-truncreg
   r-tweedie
   r-vgam
