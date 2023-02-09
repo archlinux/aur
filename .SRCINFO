@@ -7,18 +7,30 @@ pkgbase = runescape-launcher
 	arch = x86_64
 	license = custom
 	depends = cairo
+	depends = libcairo.so=2
 	depends = gcc-libs
 	depends = gdk-pixbuf2
+	depends = libgdk_pixbuf-2.0.so=0
 	depends = glib2
+	depends = libglib-2.0.so=0
+	depends = libgobject-2.0.so=0
 	depends = glibc
 	depends = gtk2
+	depends = libgdk-x11-2.0.so=0
+	depends = libgtk-x11-2.0.so=0
 	depends = libcap
 	depends = libglvnd
+	depends = libOpenGL.so=0
+	depends = libEGL.so=1
 	depends = libsm
 	depends = libx11
 	depends = libxxf86vm
 	depends = openssl-1.1
+	depends = libcrypto.so=1.1
+	depends = libssl.so=1.1
 	depends = pango
+	depends = libpango-1.0.so=0
+	depends = libpangocairo-1.0.so=0
 	depends = sdl2
 	depends = zlib
 	source = runescape-launcher_2.2.11_Release::https://content.runescape.com/downloads/ubuntu/dists/trusty/Release
