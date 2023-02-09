@@ -1,0 +1,16 @@
+pkgbase = rusthound-git
+	pkgdesc = RustHound is a cross-platform BloodHound collector tool written in Rust, making it compatible with Linux, Windows, and macOS.
+	pkgver = f79ea96
+	pkgrel = 1
+	url = https://github.com/OPENCYBER-FR/RustHound
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	makedepends = clang
+	provides = rusthound
+	conflicts = rusthound
+	source = rusthound::git+https://github.com/OPENCYBER-FR/RustHound.git
+	sha256sums = SKIP
+
+pkgname = rusthound-git
