@@ -1,13 +1,13 @@
 pkgbase = rime-ls
 	pkgdesc = A language server for Rime input method engine
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/wlh320/rime-ls
 	arch = x86_64
 	license = BSD3
 	makedepends = clang
 	depends = librime
-	source = rime-ls-0.1.2.tar.gz::https://github.com/wlh320/rime-ls/archive/refs/tags/v0.1.2.tar.gz
-	sha512sums = 5e127da44799a495127c6f6b7b215e4e1cccf53c0367608ec9c021a2620778547d5f94ce64584b1412d95acabe9ef55534ead73a67ed74c88460d3c377b1b7f0
+	source = rime-ls-0.1.3.tar.gz::https://github.com/wlh320/rime-ls/archive/refs/tags/v0.1.3.tar.gz
+	sha512sums = 2ba3eaebf68e5a1e593e0cded3b5574e2504a40660c4a98acdd104ac11561762ac69c96a34169bc07b90fb09ee513cf05d6b82f9c9e6c401972881bca777d4b7
 
 pkgname = rime-ls
