@@ -4,7 +4,7 @@
 pkgname=nekoray
 pkgver=2.14
 _releasedate=2023-02-04
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt based cross-platform GUI proxy configuration manager (backend: v2ray / sing-box)"
 arch=('x86_64')
 url="https://github.com/MatsuriDayo/nekoray"
@@ -29,7 +29,7 @@ sha256sums=(
 package() {
 	cd $srcdir
 	unzip "${pkgname}-${pkgver}.zip"
-	chown -R "$USER":"$USER" "nekoray"
+	chown -R "$USER":"$(id -g)" "nekoray"
 	install -dm700 "${pkgdir}${HOME}"
 	install -dm700 "${pkgdir}${HOME}/.local"
 	install -dm755 "${pkgdir}${HOME}/.local/opt"
