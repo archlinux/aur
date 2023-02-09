@@ -1,7 +1,10 @@
-# Maintainer: Steve Engledow <steve@engledow.me>
+# Maintainer: Janek Thomaschewski <janek@thomaschewski.dev>
+# Contributor: Steve Engledow <steve@engledow.me>
+
 pkgname=amazon-workspaces-bin
-pkgver=4.2.0.1665
+pkgver=4.5.0.2006
 pkgrel=1
+_aptdist=focal
 pkgdesc='Amazon Workspace Client'
 arch=('i686' 'x86_64')
 url="https://clients.amazonworkspaces.com/"
@@ -17,8 +20,8 @@ makedepends=(
   'tar'
 )
 source=(
-    "$pkgname-$pkgver.deb::https://d3nt0h4h6pmmc4.cloudfront.net/workspacesclient_amd64.deb"
-    "$pkgname-$pkgver.info::https://d3nt0h4h6pmmc4.cloudfront.net/ubuntu/dists/bionic/main/binary-amd64/Packages"
+    "$pkgname-$pkgver.deb::https://d3nt0h4h6pmmc4.cloudfront.net/workspacesclient_${_aptdist}_amd64.deb"
+    "$pkgname-$pkgver.info::https://d3nt0h4h6pmmc4.cloudfront.net/ubuntu/dists/${_aptdist}/main/binary-amd64/Packages"
 )
 
 sha256sums=(
