@@ -7,7 +7,7 @@ xplus_tfe=SamTFE-XPLUS.tar.xz
 xplus_tse=SamTSE-XPLUS.tar.xz
 pkgver=1.10.4
 _srcname="SeriousSamClassic-$pkgver"
-pkgrel=4
+pkgrel=5
 pkgdesc="Serious Sam Classic native Linux version with XPLUS Modification."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SeriousSamClassic"
@@ -29,7 +29,8 @@ source=("https://github.com/tx00100xt/SeriousSamClassic/archive/refs/tags/v$pkgv
     "serioussam-tfe.sh"
     "serioussam-tse.sh"
     "tfe-last-update.patch"
-    "tse-last-update.patch")
+    "tse-last-update.patch"
+    "fix-thunder.patch")
 noextract=("SamTFE-XPLUS.tar.xz.partaa"
 	"SamTFE-XPLUS.tar.xz.partab"
 	"SamTFE-XPLUS.tar.xz.partac"
@@ -49,7 +50,8 @@ sha256sums=('c42e1434e03f713ffc60aa627f0a24c64287598bc5ee7cdbd2cbe91aa363ef51'
             '649c2a4f2c0dfa1a096192cd6a24206fba19512a1b8094663b9cfb21a93a2d35'
             'd1938c4422ad9f4b00703b29edfb4bb39aa7e5c6b4ad64a38cd530d88cec46f3'
             '3e7556a71e8627ea0e94e1abd1112e493e12e27d8465aa3a7c37a138d08893b7'
-            '637b388f88a241ad7f140ed22cc49b92174cb9b8abe9bb8a876a9b40af7b3f16')
+            '637b388f88a241ad7f140ed22cc49b92174cb9b8abe9bb8a876a9b40af7b3f16'
+            'ad07c6b9d29a0d8a1a276b0c00d07e2d24d8c63c425efa21daa31ec3c1d366df')
 if [[ $CARCH = "i686" ]]; then
   _bits="32"
 else
@@ -60,6 +62,7 @@ prepare(){
   # Prepare patch
   cat tfe-last-update.patch > "$srcdir/$_srcname/tfe-last-update.patch"
   cat tse-last-update.patch > "$srcdir/$_srcname/tse-last-update.patch"
+  cat fix-thunder.patch > "$srcdir/$_srcname/fix-thunder.patch"
 
   # Prepare XPLUS archive
   cat "$xplus_tfe".part* > "$xplus_tfe"
@@ -95,6 +98,7 @@ prepare(){
   cd "$srcdir/$_srcname"
   patch -p1 < tfe-last-update.patch || return 1
   patch -p1 < tse-last-update.patch || return 1
+  patch -p1 < fix-thunder.patch || return 1
 }
 
 build(){
