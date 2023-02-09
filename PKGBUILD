@@ -28,7 +28,7 @@ pkgname=(regolith-i3 # (regolith-i3-gaps regolith-i3-gaps-session i3-snapshot i3
         regolith-desktop-config
 	remontoire-regolith)
 pkgver=1.6
-pkgrel=14
+pkgrel=15
 arch=('x86_64')
 url=https://github.com/regolith-linux/regolith-desktop
 url2=https://launchpad.net/~regolith-linux/+archive/ubuntu/release/+files
