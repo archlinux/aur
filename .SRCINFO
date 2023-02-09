@@ -1,4 +1,4 @@
-pkgbase = subtitld
+pkgbase = subtitld-git
 	pkgdesc = An open source software to create, edit and transcribe subtitles. It is able to work with SRT, SSA, TTML, SBV, DFXP, VTT, XML, SCC and SAMI file formats
 	pkgver = 2022
 	pkgrel = 1
@@ -23,4 +23,4 @@ pkgbase = subtitld
 	source = git+https://gitlab.com/jonata/subtitld.git
 	md5sums = SKIP
 
-pkgname = subtitld
+pkgname = subtitld-git

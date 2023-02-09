@@ -1,5 +1,5 @@
 # Maintainer: Jan Martin Reckel <jm dot reckel at t-online dot de>
-pkgname=subtitld
+pkgname=subtitld-git
 pkgver=2022
 pkgrel=1
 epoch=
@@ -15,7 +15,7 @@ source=("git+https://gitlab.com/jonata/subtitld.git")
 md5sums=('SKIP')
 
 prepare() {
-    cd "$pkgname"
+    cd "subtitld"
 }
 
 build() {
