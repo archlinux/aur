@@ -1,15 +1,15 @@
 pkgbase = postgresql-jdbc
 	pkgdesc = The official JDBC driver for PostgreSQL. Contains JDBC 4.2 drivers.
-	pkgver = 42.3.1
+	pkgver = 42.5.3
 	pkgrel = 1
 	url = http://jdbc.postgresql.org/
 	arch = any
 	license = Custom: BSD
 	depends = java-runtime
-	noextract = postgresql-42.3.1.jar
+	noextract = postgresql-42.5.3.jar
 	source = LICENSE
-	source = https://search.maven.org/remotecontent?filepath=org/postgresql/postgresql/42.3.1/postgresql-42.3.1.jar
+	source = https://search.maven.org/remotecontent?filepath=org/postgresql/postgresql/42.5.3/postgresql-42.5.3.jar
 	md5sums = da7e6f8b26deefe7c03b391454732a0d
-	md5sums = 30299cd5ee3f86eb748b6cc1157df484
+	md5sums = ff8425773fb40fdd34a96b34c775ddd4
 
 pkgname = postgresql-jdbc
