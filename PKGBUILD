@@ -15,9 +15,8 @@ _url="ssh://git@127.0.0.1:/home/git/${_repo}"
 url="https://github.com/${_namespace}/${_repo}"
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-depends=()
-makedepends=('git'
-             )
+depends=("nodejs-serve")
+makedepends=('git')
 license=("AGPL3")
 source=("${_pkgname}::git+${url}" 
         # "${_pkgname}::git+${_url}"
@@ -27,8 +26,13 @@ sha256sums=("SKIP"
             "73435fe2ed45016778b19787855bedb904130e99516fc2769ecdab627c3b9690"
             "SKIP")
 
+# pkgver() {
+#   cd $_pkgname
+#   git describe --tags | sed 's/-/+/g'
+# }
+
+# shellcheck disable=SC2154
 package() {
-  ls
   local _icon_path="${pkgdir}/usr/share/icons/hicolor/512x512/apps"
   local _launcher_path="${pkgdir}/usr/share/applications"
   mkdir -p "${_icon_path}"
