@@ -3,7 +3,7 @@
 
 _target="msp430-elf"
 pkgname=${_target}-libstdc++
-pkgver=11.2.0
+pkgver=12.2.0
 pkgrel=1
 pkgdesc="The GNU C++ Standard Library for the ${_target} target."
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ url="http://gcc.gnu.org"
 depends=("${_target}-newlib" "${_target}-binutils" "${_target}-gcc>=11.0.0" "${_target}-gcc<12.0.0" "libmpc" "elfutils" "zlib")
 options=('staticlibs' '!buildflags' '!libtool' '!emptydirs' 'zipman' 'docs' '!strip')
 source=(https://ftpmirror.gnu.org/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.xz)
-sha256sums=('d08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b')
+sha256sums=('e549cf9cf3594a00e27b6589d4322d70e0720cdd213f39beb4181e06926230ff')
 
 
 prepare() {
