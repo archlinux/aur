@@ -1,30 +1,47 @@
-# Maintainer: mrAppleXZ <mr.applexz@gmail.com> 
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
+# Contributor: mrAppleXZ <mr.applexz@gmail.com> 
 
 pkgname=blockbench
-pkgname_orig=Blockbench
-pkgver=4.0.3
+_pkgname=Blockbench
+pkgver=4.6.4
 pkgrel=1
-pkgdesc="A free, modern block model editor."
+pkgdesc="A low-poly 3D model editor"
 arch=('x86_64')
 url="https://blockbench.net/"
-license=('MIT')
-depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'libutil-linux' 'libappindicator-gtk3' 'libsecret')
-source=("https://github.com/JannisX11/blockbench/releases/download/v${pkgver}/Blockbench_${pkgver}.deb")
-sha512sums=('bbc6ccef6438d09e89dba276ee22c6ea8fb94171dbadecdce4dae5c0e35723236defa4bb5b2e25625c73b565cef9dd13253bf3c8acd6944c8dd6e0bcccbe7dbc')
+license=('GPL3')
+depends=('electron')
+provides=(blockbench)
+conflicts=(blockbench)
+
+_pkgname=blockbench
+_electron=electron
+_electronDist=/usr/lib/${_electron}
+_electronVersion=$(cat ${_electronDist}/version)
+
+depends=("${_electron}")
+makedepends=(git npm)
+source=("${_pkgname}::git+https://github.com/JannisX11/blockbench.git#tag=v${pkgver}"
+        "${_pkgname}.desktop")
+sha256sums=('SKIP'
+            '74731a9f68dbef112c93dafee1a1a8665b9de0816f94643169419ad838dbf66c')
+
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+  npm install
+}
+
+build() {
+  cd "${srcdir}/${_pkgname}"
+  npm run dist -- --linux --x64 --dir -c.electronDist=${_electronDist} -c.electronVersion=${_electronVersion}
+}
 
 package() {
-  msg2 "Extracting the data.tar.xz..."
-  bsdtar -xf data.tar.xz -C "$pkgdir/"
-
-  msg2 "Moving the files..."
-  mv "${pkgdir}/opt/${pkgname_orig}" "${pkgdir}/opt/${pkgname}"
-
-  mkdir -p "${pkgdir}/usr/share/pixmaps/"
-  mv "${pkgdir}/usr/share/icons/hicolor/0x0/apps/blockbench.png" "${pkgdir}/usr/share/pixmaps/"
-  rm -r "${pkgdir}/usr/share/icons"
-
-  sed -i "s:/opt/${pkgname_orig}:/opt/${pkgname}:" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-
-  mkdir -p "${pkgdir}/usr/bin"
-  ln -s "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -d "${pkgdir}/usr/"{bin,share/{pixmaps,applications}}
+  install -d "${pkgdir}/${_electronDist}/resources"
+  echo -e "#!/bin/bash\nexec ${_electron} ${_electronDist}/resources/${_pkgname}.asar \"\$@\"" > "${pkgdir}/usr/bin/${_pkgname}"
+  chmod 755 "${pkgdir}/usr/bin/${_pkgname}"
+  install "${srcdir}/${_pkgname}/icon.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+  install "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  install "${srcdir}/${_pkgname}/dist/linux-unpacked/resources/app.asar" "${pkgdir}/${_electronDist}/resources/${_pkgname}.asar"
+  cp -r "${srcdir}/${_pkgname}/dist/linux-unpacked/resources/app.asar.unpacked" "${pkgdir}/${_electronDist}/resources/${_pkgname}.asar.unpacked"
 }

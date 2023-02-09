@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Blockbench
+Exec=/usr/bin/blockbench %f
+Terminal=false
+Type=Application
+Icon=blockbench
+StartupWMClass=Blockbench
+Comment=Low-poly modeling and animation software
+Categories=Graphics|3DGraphics;
