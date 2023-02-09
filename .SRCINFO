@@ -1,7 +1,7 @@
 pkgbase = serioussam-vk
 	pkgdesc = Serious Sam Classic native Linux version with Vulkan support and XPLUS Modification.
 	pkgver = 1.10.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/tx00100xt/SeriousSamClassic-VK
 	arch = i686
 	arch = x86_64

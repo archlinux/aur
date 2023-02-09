@@ -7,7 +7,7 @@ xplus_tfe=SamTFE-XPLUS.tar.xz
 xplus_tse=SamTSE-XPLUS.tar.xz
 pkgver=1.10.4
 _srcname="SeriousSamClassic-VK-$pkgver"
-pkgrel=4
+pkgrel=5
 pkgdesc="Serious Sam Classic native Linux version with Vulkan support and XPLUS Modification."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SeriousSamClassic-VK"
@@ -29,7 +29,8 @@ source=("https://github.com/tx00100xt/SeriousSamClassic-VK/archive/refs/tags/v$p
     "serioussam-tfe.sh"
     "serioussam-tse.sh"
     "tfe-vk-last-update.patch"
-    "tse-vk-last-update.patch")
+    "tse-vk-last-update.patch"
+    "fix-thunder.patch")
 noextract=("SamTFE-XPLUS.tar.xz.partaa"
 	"SamTFE-XPLUS.tar.xz.partab"
 	"SamTFE-XPLUS.tar.xz.partac"
@@ -49,7 +50,8 @@ sha256sums=('951fea8274cf795c1bdcff708e1dffbef78cd7993585144b565aefba93433e08'
             '649c2a4f2c0dfa1a096192cd6a24206fba19512a1b8094663b9cfb21a93a2d35'
             'd1938c4422ad9f4b00703b29edfb4bb39aa7e5c6b4ad64a38cd530d88cec46f3'
             '08cb78b2c5a487e8d644971729dd391851ec476b3e92d683d9d4f256b229dbac'
-            'a82821d12ebadb5ecade4b0169ff9497b6d00d6b0a9c4a0112a5915be1057542')
+            'a82821d12ebadb5ecade4b0169ff9497b6d00d6b0a9c4a0112a5915be1057542'
+            'ad07c6b9d29a0d8a1a276b0c00d07e2d24d8c63c425efa21daa31ec3c1d366df')
 if [[ $CARCH = "i686" ]]; then
   _bits="32"
 else
@@ -60,6 +62,7 @@ prepare(){
   # Prepare patch
   cat tfe-vk-last-update.patch > "$srcdir/$_srcname/tfe-vk-last-update.patch"
   cat tse-vk-last-update.patch > "$srcdir/$_srcname/tse-vk-last-update.patch"
+  cat fix-thunder.patch > "$srcdir/$_srcname/fix-thunder.patch"
 
   # Prepare XPLUS archive
   cat "$xplus_tfe".part* > "$xplus_tfe"
@@ -95,6 +98,7 @@ prepare(){
   cd "$srcdir/$_srcname"
   patch -p1 < tfe-vk-last-update.patch || return 1
   patch -p1 < tse-vk-last-update.patch || return 1
+  patch -p1 < fix-thunder.patch || return 1
 }
 
 build(){
