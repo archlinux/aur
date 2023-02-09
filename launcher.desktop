@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=Sierra Death Generator
 Comment=Creates game over pictures
-Type=Link
-URL=file:///usr/share/sierra-death-generator
+Type=Application
+Exec=xdg-open file:///usr/share/sierra-death-generator
 Icon=io.github.foone.SierraDeathGenerator
 
 X-Desktop-File-Install-Version=0.26

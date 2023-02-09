@@ -25,7 +25,7 @@ source=("${_pkgname}::git+${url}"
         "launcher.desktop")
 sha256sums=("SKIP"
             "73435fe2ed45016778b19787855bedb904130e99516fc2769ecdab627c3b9690"
-            "24d33cb031b9ebb2825d30376acc2fa4746a55f56277b365e534fa8b261da8aa")
+            "SKIP")
 
 package() {
   ls

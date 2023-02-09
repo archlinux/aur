@@ -9,6 +9,10 @@ pkgbase = sierra-death-generator-git
 	provides = sierra-death-generator
 	conflicts = sierra-death-generator
 	source = sierra-death-generator::git+https://github.com/foone/SierraDeathGenerator
+	source = io.github.foone.SierraDeathGenerator.png
+	source = launcher.desktop
 	sha256sums = SKIP
+	sha256sums = 73435fe2ed45016778b19787855bedb904130e99516fc2769ecdab627c3b9690
+	sha256sums = 24d33cb031b9ebb2825d30376acc2fa4746a55f56277b365e534fa8b261da8aa
 
 pkgname = sierra-death-generator-git
