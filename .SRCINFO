@@ -1,6 +1,6 @@
 pkgbase = telepresence2
 	pkgdesc = Local development against a remote Kubernetes or OpenShift cluster
-	pkgver = 2.9.3
+	pkgver = 2.10.5
 	pkgrel = 1
 	url = https://github.com/telepresenceio/telepresence
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = telepresence2
 	makedepends = git
 	makedepends = make
 	makedepends = jq
-	source = telepresence2-2.9.3.tar.gz::https://github.com/telepresenceio/telepresence/archive/refs/tags/v2.9.3.tar.gz
-	md5sums = 302e547f0bafc71f81c52d69f6b1e6e8
+	source = telepresence2-2.10.5.tar.gz::https://github.com/telepresenceio/telepresence/archive/refs/tags/v2.10.5.tar.gz
+	md5sums = c543fbcb3ae59f96703e342397a4c573
 
 pkgname = telepresence2
