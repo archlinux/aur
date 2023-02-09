@@ -1,6 +1,6 @@
 pkgbase = pleaser
 	pkgdesc = please, a sudo like program with regex support written in rust, get involved!
-	pkgver = 0.5.3
+	pkgver = 0.5.4
 	pkgrel = 0
 	url = https://gitlab.com/edneville/please
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = pleaser
 	makedepends = git
 	depends = gcc-libs
 	backup = etc/please.ini,etc/pam.d/please,etc/pam.d/pleaseedit
-	source = https://gitlab.com/edneville/please/-/archive/v0.5.3/please-v0.5.3.tar.gz
-	sha512sums = 0a8438acbe5779cfd4bbff3ef569ff8139ab20613e32094b4b89a88deb10f4ec0d609cad54cc3b28e4b1b757b856cf0341f16d5cc4d4f17fd8fe91852041130c
+	source = https://gitlab.com/edneville/please/-/archive/v0.5.4/please-v0.5.4.tar.gz
+	sha512sums = 8a683d3709ac56a4d3c870420cae1af2ae65c5612cda01ae2877d80167cafaf15adf1865928bb65bdd271eaea8ca480e9cc9834ff4e24aa6d28b93cea52f838e
 
 pkgname = pleaser

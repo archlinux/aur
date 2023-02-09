@@ -1,7 +1,7 @@
 # Maintainer: Ed Neville <ed-archlinux@s5h.net>
 pkgname=pleaser
 _binary=please
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=0
 pkgdesc="please, a sudo like program with regex support written in rust, get involved!"
 url="https://gitlab.com/edneville/please"
@@ -10,7 +10,7 @@ license=(GPL3)
 depends=(gcc-libs)
 makedepends=(cargo git)
 source=("https://gitlab.com/edneville/${_binary}/-/archive/v${pkgver}/${_binary}-v${pkgver}.tar.gz")
-sha512sums=('0a8438acbe5779cfd4bbff3ef569ff8139ab20613e32094b4b89a88deb10f4ec0d609cad54cc3b28e4b1b757b856cf0341f16d5cc4d4f17fd8fe91852041130c')
+sha512sums=('8a683d3709ac56a4d3c870420cae1af2ae65c5612cda01ae2877d80167cafaf15adf1865928bb65bdd271eaea8ca480e9cc9834ff4e24aa6d28b93cea52f838e')
 backup=('etc/please.ini','etc/pam.d/please','etc/pam.d/pleaseedit')
 
 prepare() {
@@ -38,6 +38,8 @@ package() {
   install -Dt "$pkgdir/usr/share/man/man1" -m644 man/please.1
   install -Dt "$pkgdir/usr/share/man/man5" -m644 man/please.ini.5
   install -Dt "$pkgdir/etc" -m600 examples/please.ini
+  install -Dt "$pkgdir/etc/bash_completion.d" -m644 completions/bash/please
+  install -Dt "$pkgdir/usr/share/zsh/functions/Completion/Unix" -m644 completions/zsh/_please
 
   mkdir -m 700 -p "$pkgdir/etc/please.d"
 
