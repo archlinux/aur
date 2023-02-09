@@ -4,7 +4,7 @@
 pkgname=python-flake8-quotes
 _pkgname=flake8-quotes
 pkgver=3.3.2
-pkgrel=2
+pkgrel=1
 pkgdesc="Flake8 lint for quotes"
 arch=('any')
 url="https://github.com/zheller/${_pkgname}"
