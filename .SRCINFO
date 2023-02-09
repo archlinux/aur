@@ -1,13 +1,14 @@
 pkgbase = r-hmisc
 	pkgdesc = Harrell Miscellaneous
 	pkgver = 4.8.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=Hmisc
 	arch = x86_64
 	license = GPL
 	makedepends = gcc-fortran
 	depends = r
 	depends = r-base64enc
+	depends = r-colorspace
 	depends = r-data.table
 	depends = r-formula
 	depends = r-ggplot2
