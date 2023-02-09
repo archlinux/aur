@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ade4
-_pkgver=1.7-20
+_pkgver=1.7-22
 pkgname=r-${_pkgname,,}
-pkgver=1.7.20
+pkgver=1.7.22
 pkgrel=1
 pkgdesc='Analysis of Ecological Data: Exploratory and Euclidean Methods in Environmental Sciences'
 arch=('x86_64')
@@ -12,6 +12,8 @@ license=('GPL')
 depends=(
   r
   r-pixmap
+  r-rcpp
+  r-rcpparmadillo
   r-sp
 )
 optdepends=(
@@ -32,7 +34,7 @@ optdepends=(
   r-waveslim
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ddc75788b55902f17dabda209eb67c378aa0233767697e00fa3f8fc85e4bad7b')
+sha256sums=('007df54e83a2a6cb8d6da8006f0aace011e7eaa7744dc5f8230ac2c002b393b4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
