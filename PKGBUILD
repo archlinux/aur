@@ -3,10 +3,10 @@
 _java=17
 _pkgname=dragonwell
 pkgname=jdk$_java-$_pkgname-standard-bin
-pkgver=17.0.5.0.5
-_pkgver=17.0.5.0.5+8
-_pkgver_=17.0.5.0.5.8
-__pkgver=17.0.5
+pkgver=17.0.6.0.6
+_pkgver=17.0.6.0.6+9
+_pkgver_=17.0.6.0.6.9
+__pkgver=17.0.6
 pkgrel=1
 pkgdesc="an in-house OpenJDK implementation at Alibaba (Standard Edition)"
 arch=("x86_64" "aarch64")
@@ -23,8 +23,8 @@ provides=(
 )
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/alibaba/dragonwell17/releases/download/dragonwell-standard-${_pkgver}_jdk-${__pkgver}-ga/Alibaba_Dragonwell_Standard_${_pkgver_}_x64_linux.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/alibaba/dragonwell17/releases/download/dragonwell-standard-${_pkgver}_jdk-${__pkgver}-ga/Alibaba_Dragonwell_Standard_${_pkgver_}_aarch64_linux.tar.gz")
-sha256sums_x86_64=('a505dea63fd58925a1512dad77d5fdc9bc6c2ebb42f065001091eb31e30ed43f')
-sha256sums_aarch64=('929be7d0d0aa7c2bd196db4b6f3ead10dbeb240afc9db6c68974e79961c59003')
+sha256sums_x86_64=('d70c5feeb106c41f2481b92e214c1a9413db5697daafa754920e65bef24b9872')
+sha256sums_aarch64=('81eb71b50d81d5325820ac366e246d722973285bc74b66d564060156b8a6908f')
 
 package() {
     install -d $pkgdir/usr/lib/jvm/java-17-dragonwell-standard
