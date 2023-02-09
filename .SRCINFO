@@ -1,0 +1,15 @@
+pkgbase = mingw-w64-libva
+	pkgdesc = Video Acceleration (VA) API for Linux (mingw-w64)
+	pkgver = 2.17.0
+	pkgrel = 1
+	url = https://01.org/linuxmedia/vaapi
+	arch = any
+	license = MIT
+	makedepends = mingw-w64-meson
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = https://github.com/intel/libva/archive/refs/tags/2.17.0.tar.gz
+	sha256sums = 8940541980ef998a36cd8f6ad905e81838ea4ddf56dc479ed2bebd12711e6001
+
+pkgname = mingw-w64-libva
