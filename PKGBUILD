@@ -4,7 +4,7 @@ _pkgname=gap
 _pkgver=1.5-1
 pkgname=r-${_pkgname,,}
 pkgver=1.5.1
-pkgrel=1
+pkgrel=3
 pkgdesc='Genetic Analysis Package'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -18,6 +18,7 @@ depends=(
 )
 optdepends=(
   r-bdsmatrix
+  r-bookdown
   r-bradleyterry2
   r-calibrate
   r-circlize
@@ -44,7 +45,6 @@ optdepends=(
   r-mcmcglmm
   r-meta
   r-metafor
-  r-mets
   r-nlme
   r-pedigree
   r-pedigreemm

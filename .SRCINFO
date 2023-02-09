@@ -1,7 +1,7 @@
 pkgbase = r-gap
 	pkgdesc = Genetic Analysis Package
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=gap
 	arch = x86_64
 	license = GPL
@@ -12,6 +12,7 @@ pkgbase = r-gap
 	depends = r-ggplot2
 	depends = r-plotly
 	optdepends = r-bdsmatrix
+	optdepends = r-bookdown
 	optdepends = r-bradleyterry2
 	optdepends = r-calibrate
 	optdepends = r-circlize
@@ -38,7 +39,6 @@ pkgbase = r-gap
 	optdepends = r-mcmcglmm
 	optdepends = r-meta
 	optdepends = r-metafor
-	optdepends = r-mets
 	optdepends = r-nlme
 	optdepends = r-pedigree
 	optdepends = r-pedigreemm
