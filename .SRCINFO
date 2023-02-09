@@ -1,20 +1,21 @@
 pkgbase = r-questionr
 	pkgdesc = Functions to Make Surveys Processing Easier
 	pkgver = 0.7.8
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=questionr
 	arch = any
 	license = GPL
 	depends = r
+	depends = xclip
 	depends = r-classint
 	depends = r-highr
 	depends = r-htmltools
 	depends = r-labelled
 	depends = r-miniui
+	depends = r-rlang
 	depends = r-rstudioapi
 	depends = r-shiny
 	depends = r-styler
-	depends = xclip
 	optdepends = r-dplyr
 	optdepends = r-forcats
 	optdepends = r-ggplot2

@@ -5,22 +5,23 @@ _pkgname=questionr
 _pkgver=0.7.8
 pkgname=r-${_pkgname,,}
 pkgver=0.7.8
-pkgrel=1
+pkgrel=3
 pkgdesc='Functions to Make Surveys Processing Easier'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('GPL')
 depends=(
   r
+  xclip
   r-classint
   r-highr
   r-htmltools
   r-labelled
   r-miniui
+  r-rlang
   r-rstudioapi
   r-shiny
   r-styler
-  xclip
 )
 optdepends=(
   r-dplyr
