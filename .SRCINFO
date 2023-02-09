@@ -20,6 +20,7 @@ pkgbase = subtitld-git
 	depends = python-speechrecognition
 	depends = python-pysrt
 	provides = subtitld
+	conflicts = subtitld
 	source = git+https://gitlab.com/jonata/subtitld.git
 	md5sums = SKIP
 
