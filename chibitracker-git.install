@@ -1,26 +1,24 @@
 post_install() {
 cat << EOF
-=====================================================================
+=========================================================================
 Chibitracker comes with skins in /usr/share/chibitracker
 They are: Chibiness, FastBlue, Impulsive, and Oldie90s
 
-To use these skins, please copy and extra the skins to ~/.chibi/skins
-Each skin must be in its own directory
-Ex: ~/.chibi/skins/impulsive
-=====================================================================
+To use these skins, please copy the skins to ~/.chibi/skins with
+mkdir -p ~/.chibi/skins && cp -r /usr/share/chibitracker/* ~/.chibi/skins
+=========================================================================
 EOF
 }
 
 post_upgrade() {
 cat << EOF
-=====================================================================
+=========================================================================
 Chibitracker comes with skins in /usr/share/chibitracker
 They are: Chibiness, FastBlue, Impulsive, and Oldie90s
 
-To use these skins, please copy and extra the skins to ~/.chibi/skins
-Each skin must be in its own directory
-Ex: ~/.chibi/skins/impulsive
-=====================================================================
+To use these skins, please copy the skins to ~/.chibi/skins with
+mkdir -p ~/.chibi/skins && cp -r /usr/share/chibitracker/* ~/.chibi/skins
+=========================================================================
 EOF
 }
 

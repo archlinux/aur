@@ -2,7 +2,7 @@
 _pkgname=chibitracker
 pkgname=chibitracker-git
 pkgver=1.4.2.r28.735cf51
-pkgrel=3
+pkgrel=4
 install="${pkgname}.install"
 pkgdesc="A Classic Impulse Tracker Clone"
 arch=("x86_64" "i686")
@@ -24,18 +24,28 @@ pkgver() {
 }
 
 build() {
-	cd "$_pkgname"
+	cd "$srcdir/$_pkgname"
 	SCONSFLAGS="-j$(nproc)" scons target=release prefix="$pkgdir/usr"
 }
 
 package() {
-	cd "$_pkgname"
+	cd "$srcdir/$_pkgname"
 	scons target=release prefix="$pkgdir/usr" install
 
 	install -Dm644 "$srcdir/$_pkgname/program/cticon.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/chibitracker.png"
 	install -Dm644 "$srcdir/${_pkgname}.desktop" "$pkgdir/usr/share/applications/chibitracker.desktop"
-	for skin in {Chibiness,FastBlue,Impulsive,Oldie90s};
+	
+	cd "$srcdir/$_pkgname/skins"
+	
+	mkdir "$pkgdir/usr/share/$_pkgname" && echo temp > "$pkgdir/usr/share/$_pkgname/temp"
+	#mkdir -p "$pkdir/usr/share/$_pkgname"
+	for skin in {FastBlue,Impulsive,Chibiness};
 	do
-		install -Dm644 "$srcdir/$_pkgname/skins/${skin}.zip" "$pkgdir/usr/share/$_pkgname/${skin}.zip"
+		unzip -d ${skin} ${skin}.zip
+		cp -r "${skin}" "$pkgdir/usr/share/$_pkgname/"
 	done
+	unzip Oldie90s.zip
+	cp -r Oldie90s "$pkgdir/usr/share/chibitracker/"
+
+	rm "$pkgdir/usr/share/chibitracker/temp"
 }
