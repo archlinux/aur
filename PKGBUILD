@@ -4,7 +4,7 @@ _pkgname=Cubist
 _pkgver=0.4.2
 pkgname=r-${_pkgname,,}
 pkgver=0.4.2
-pkgrel=1
+pkgrel=3
 pkgdesc='Rule- And Instance-Based Regression Modeling'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -14,12 +14,14 @@ depends=(
   r-reshape2
 )
 optdepends=(
+  r-covr
   r-dplyr
   r-knitr
   r-mlbench
   r-modeldata
   r-rlang
   r-rmarkdown
+  r-testthat
   r-tidyrules
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
