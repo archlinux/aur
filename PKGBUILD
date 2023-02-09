@@ -20,4 +20,5 @@ package(){
     cd $pkgname-$pkgver
     cmake --install build --prefix $pkgdir/usr/
     mv $pkgdir/usr/share/cmake/gau2grid $pkgdir/usr/share
+    sed -r -i "s:\\${_IMPORT_PREFIX}/include:\\${_IMPORT_PREFIX}/usr/include:g" $pkgdir/usr/share/gau2gridTargets.cmake
 }
