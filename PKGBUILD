@@ -1,7 +1,7 @@
 # Maintainer: Pfych <contact at pfy dot ch>
 pkgname=lr2oraja
 pkgver=build1696491429
-pkgrel=7
+pkgrel=8
 pkgdesc="The latest build of beatoraja, but compiled using LR2 judges and gauges."
 arch=('x86_64')
 depends=('liberica-jre-8-full-bin')
@@ -49,7 +49,7 @@ package() {
   cp beatoraja.jar "$pkgdir/opt/beatoraja/beatoraja.jar" 
   cp -r skin "$pkgdir/opt/beatoraja"
   cp "bokutachiIR-2.2.0.jar" "$pkgdir/opt/beatoraja/ir"
-  chmod -R 777 "$pkgdir/opt/beatoraja"
+  chmod -R 755 "$pkgdir/opt/beatoraja"
 
   # Create Desktop entry
   cp lr2oraja-icon.png "$pkgdir/usr/share/pixmaps"
