@@ -1,6 +1,6 @@
 pkgbase = smartdenovo
 	pkgdesc = About Ultra-fast de novo assembler using long noisy reads
-	pkgver = r80.8488de9
+	pkgver = 2021.02.24
 	pkgrel = 1
 	url = https://github.com/ruanjue/smartdenovo
 	arch = x86_64

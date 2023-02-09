@@ -1,6 +1,6 @@
 # Maintainer: Guoyi
 pkgname=smartdenovo
-pkgver=r80.8488de9
+pkgver=2021.02.24
 pkgrel=1
 pkgdesc="About Ultra-fast de novo assembler using long noisy reads"
 arch=('x86_64')
@@ -13,8 +13,7 @@ source=(git+https://github.com/ruanjue/smartdenovo.git)
 sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    #git describe --long --tags | sed 's/-/+/g' # latest+0+g844215a
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf $(TZ=UTC git log --no-walk --pretty="%cd" --decorate=full --date=format-local:%Y.%m.%d | head -n 1)
 }
 build() {
   cd "${pkgname}"
