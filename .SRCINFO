@@ -1,6 +1,6 @@
 pkgbase = asus-touchpad-numpad-driver-git
 	pkgdesc = Linux newest feature-rich configurable driver for Asus numpad
-	pkgver = r395.a3e24c3
+	pkgver = r398.b2f20c7
 	pkgrel = 1
 	url = https://github.com/asus-linux-drivers/asus-touchpad-numpad-driver
 	install = asus-touchpad-numpad-driver-git.install
