@@ -2,12 +2,12 @@
 
 pkgname=postgresql-jdbc
 pkgver=42.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The official JDBC driver for PostgreSQL. Contains JDBC 4.2 drivers."
 arch=('any')
 url="http://jdbc.postgresql.org/"
 license=("Custom: BSD")
-depends=('java-runtime')
+depends=('java-runtime-headless')
 source=(LICENSE
         https://search.maven.org/remotecontent?filepath=org/postgresql/postgresql/${pkgver}/postgresql-${pkgver}.jar)
 md5sums=('da7e6f8b26deefe7c03b391454732a0d'
