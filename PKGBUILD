@@ -1,5 +1,5 @@
 pkgname=psi4-git
-pkgver=1.7.r2.gf0a2cc9f78
+pkgver=1.7.r22.g61c0b47982
 pkgrel=1
 pkgdesc="Open-Source Quantum Chemistry - an electronic structure package in C++ driven by Python"
 arch=("x86_64")
