@@ -5,7 +5,7 @@ _pkgname=Rmpfr
 _pkgver=0.9-1
 pkgname=r-${_pkgname,,}
 pkgver=0.9.1
-pkgrel=1
+pkgrel=3
 pkgdesc='R MPFR - Multiple Precision Floating-Point Reliable'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,8 +17,8 @@ depends=(
 optdepends=(
   r-bessel
   r-dfoptim
+  r-dpq
   r-mass
-  r-matrix
   r-polynom
   r-pracma
   r-sfsmisc
