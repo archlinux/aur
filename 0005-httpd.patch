@@ -1,0 +1,11 @@
+--- webui/CMakeLists.txt	2022-05-10 23:29:44.000000000 +0300
++++ webui/CMakeLists.txt	2022-05-11 00:05:05.698335917 +0300
+@@ -76,7 +76,7 @@
+ elseif(EXISTS ${sysconfdir}/apache2/conf-available)
+   set(HTTPD_CONF ${sysconfdir}/apache2/conf-available)
+ else()
+-  set(HTTPD_CONF ${sysconfdir}/httpd/conf.d)
++  set(HTTPD_CONF ${sysconfdir}/httpd/conf/extra )
+ endif()
+ 
+ configure_file(

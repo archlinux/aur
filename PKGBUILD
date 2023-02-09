@@ -6,14 +6,16 @@ pkgbase='bareos'
 
 pkgname=("bareos-bconsole"
          "bareos-common"
+         "bareos-contrib-director-python-plugins"
+         "bareos-contrib-filedaemon-python-plugins"
+         "bareos-contrib-tools"
          "bareos-database-common"
          "bareos-database-postgresql"
          "bareos-database-tools"
-         "bareos-director"
          "bareos-director-python-plugins-common"
          "bareos-director-python2-plugin"
          "bareos-director-python3-plugin"
-         "bareos-filedaemon"
+         "bareos-director"
          "bareos-filedaemon-glusterfs-plugin"
          "bareos-filedaemon-ldap-python-plugin"
          "bareos-filedaemon-libcloud-python-plugin"
@@ -23,8 +25,7 @@ pkgname=("bareos-bconsole"
          "bareos-filedaemon-python-plugins-common"
          "bareos-filedaemon-python2-plugin"
          "bareos-filedaemon-python3-plugin"
-         "bareos-storage"
-         "bareos-storage-ceph"
+         "bareos-filedaemon"
          "bareos-storage-droplet"
          "bareos-storage-fifo"
          "bareos-storage-glusterfs"
@@ -32,45 +33,40 @@ pkgname=("bareos-bconsole"
          "bareos-storage-python2-plugin"
          "bareos-storage-python3-plugin"
          "bareos-storage-tape"
+         "bareos-storage"
          "bareos-tools"
+         "bareos-traymonitor"
          "bareos-vmware-plugin"
          "bareos-webui"
          "bareos-devel"
-         "bareos-traymonitor"
-         "python2-bareos"
          "python-bareos"
+         "python2-bareos"
          )
+#         "bareos-vadp-dumper"
+#         "bareos-vmware-vix-disklib"
 
-pkgver=21.1.3
+pkgver=22.0.1
 pkgmajor=${pkgver%%.*}
-pkgrel=4
+pkgrel=1
 arch=(i686 x86_64 armv7h aarch64)
 groups=('bareos')
 pkgdesc="Bareos - Backup Archiving Recovery Open Sourced"
 url="http://www.bareos.org"
 license=('AGPL3')
-makedepends=('cmake' 'gcc' 'libmariadbclient' 'postgresql-libs' 'python2' 'python' 'rpcsvc-proto' 'git' 'lsb-release' 'qt5-base' 'glusterfs' 'jansson' 'pam_wrapper' 'ceph-libs')
+makedepends=('cmake' 'gcc' 'libmariadbclient' 'postgresql-libs' 'python' 'python2' 'python-setuptools' 'python2-setuptools' 'rpcsvc-proto' 'git' 'lsb-release' 'qt5-base' 'glusterfs' 'jansson' 'pam_wrapper')
 source=("git+https://github.com/bareos/bareos.git#tag=Release/${pkgver}"
         "0001-distver.patch"
-        "0002-libdroplet.patch"
-        "0003-zend.patch"
-        "0004-logspam.patch"
-        "0005-version.patch"
-        "0006-sqlspam.patch"
-        "0007-hostname.patch"
-        "0008-httpd.patch"
-        "009-fix-timer_thread.patch"
+        "0002-logspam.patch"
+        "0003-version.patch"
+        "0004-sqlspam.patch"
+        "0005-httpd.patch"
         "bootstrap-table-locale-all.min.js")
 md5sums=('SKIP'
          '419b0c64af750aa3e8ea668edf464d3e'
-         'f2a2a4e1a83d80ee3ba42b38b2062208'
-         'f9b885e18313d9c070372d313e1b422d'
          '39724df5903b712fb8d34209c7ac8f1e'
          '5bf1233d94dfecc9060746bfb39b9d2b'
          'ca4c929a2462cafaead8d0b49e3cebed'
-         'b0068e1a248ac0d0e83fb8ae1e034f62'
          '33d9c3a1d25b30ac2182aa8d874e28a5'
-         'c8d3568ddf543a576c6fdbe586d8d3d3'
          'e78b88f897cfc3e60129eec360521e3d')
 python3_ver="3.10"
 python2_ver="2.7"
@@ -120,7 +116,9 @@ build() {
     -Ddynamic-cats-backends=yes \
     -Ddynamic-storage-backends=yes \
     -Dpostgresql=yes \
-    -Dpython=yes \
+    -Dlmdb=yes \
+    -Dndmp=yes \
+    -Dacl=yes \
     -Dopenssl=yes \
     -Ddir-user=bareos \
     -Ddir-group=bareos \
@@ -135,8 +133,8 @@ build() {
   make DESTDIR="${srcdir}/install" install
 
   cd "${srcdir}/${pkgbase}/python-bareos"
-  python2 setup.py build
   python setup.py build
+  python2 setup.py build
 }
 
 #=========================================
@@ -144,29 +142,45 @@ build() {
 # - skip a line
 # directory - add recursively an arbitrary directory
 cp_pkgdir() {
+  mkdir -p "$pkgdir"
   if [ "${1:0:1}" = "-" ] ; then
      return
   elif [ "${1:0:1}" = "+" ] ; then
-     dir_name=$pkgdir/`echo "$1" | sed "s|+||"`
-     mkdir -p "$dir_name"
+     dir_out=$pkgdir/`echo "$1" | sed "s|+||"`
+     mkdir -p "$dir_out"
      return
   fi
-  for n in $2$1 \
+  for n in $1 \
   ; do
-    if [ -f "$n" ]; then
-       dir_name=$pkgdir/$(dirname "$n" | sed "s|$2||")
+    echo "Copied: $n"
+    if [[ "$n" =~ "*" ]]; then
+      res=1
+      ls -l $2/$n  > /dev/null 2>&1 && res=0
+      if [ ${res} -ne 0 ] ; then
+         echo -e "\033[41mError:\033[0m missing $2/$n";
+         return
+      fi
+      files=`find $2/$n -type f`
+      for f in $files \
+      ; do
+         new_dir=$(dirname $pkgdir`echo "$f" | sed "s|$2||"`)
+         mkdir -p $new_dir
+         cp -au $f "$new_dir"
+      done
+    elif [ -f $2/$n ]; then
+       # pacman LINT tool currently does not like spaces
+       #space_removal=`echo $f | tr ' ' '_'`
+       new_dir=$(dirname $pkgdir/`echo "$n" | sed "s|$2||"`)
+       new_file=$pkgdir/`echo "${n//\?/_}" | sed "s|$2||"`
+       mkdir -p $new_dir
+       cp -au $2/$n  $new_file
+    elif [ -d $2/$n ]; then
+       new_dir=$(dirname $pkgdir/`echo "$n" | sed "s|$2||"`)
+       mkdir -p $new_dir
+       cp -aR $2/$n "$new_dir"
     else
-       dir_name=$pkgdir/`echo "$n" | sed "s|$2||"`
-    fi
-    if [ "${dir_name:0:1}" == "." ]; then
-        return
-    else
-       mkdir -p "$dir_name"
-    fi
-    if [ -f "$n" ]; then
-       cp -a "$n" "$dir_name"
-    elif [ -d "$n" ]; then
-       cp -aR "$n" "$(dirname $dir_name)"
+       echo -e "\033[41mError:\033[0m missing $2/$n";
+       return
     fi
   done
 }
@@ -185,7 +199,7 @@ package_bareos-bconsole() {
      usr/share/man/man1/bconsole.1* \
      +etc/bareos \
   ; do
-    cp_pkgdir "$f" "$srcdir/install/"
+    cp_pkgdir "$f" "$srcdir/install"
   done
   install -m640 "${srcdir}/install/usr/share/bareos/config/bconsole.conf" \
           "${pkgdir}/etc/bareos/bconsole.conf"
@@ -217,16 +231,57 @@ package_bareos-common() {
      +run/bareos \
      +usr/share/licenses/${pkgname} \
   ; do
-    cp_pkgdir "$f" "$srcdir/install/"
+    cp_pkgdir "$f" "$srcdir/install"
   done
   install -Dm644 ${srcdir}/bareos/core/{AGPL-3.0.txt,LICENSE,README.*} "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
+#=========================================
+package_bareos-contrib-director-python-plugins() {
+  pkgdesc="${pkgdesc} - Backup Archiving Recovery Open Sourced - contributed Director plugins"
+  depends=("bareos-common=${pkgver}" "bareos-director-python-plugin=${pkgver}")
+
+  for f in \
+     usr/lib/bareos/plugins/BareosDirPluginNscaSender.py \
+     usr/lib/bareos/plugins/bareos-dir-nsca-sender.py \
+  ; do
+    cp_pkgdir "$f" "$srcdir/install"
+  done
+}
+
+#=========================================
+package_bareos-contrib-filedaemon-python-plugins() {
+  pkgdesc="${pkgdesc} - Backup Archiving Recovery Open Sourced - contributed File Daemon plugins"
+  depends=("bareos-common=${pkgver}" "bareos-filedaemon-python-plugin=${pkgver}")
+
+  for f in \
+     usr/lib/bareos/plugins/bareos_mysql_dump/* \
+     usr/lib/bareos/plugins/bareos_tasks/* \
+     usr/lib/bareos/plugins/openvz7/* \
+  ; do
+    cp_pkgdir "$f" "$srcdir/install"
+  done
+}
+
+#=========================================
+package_bareos-contrib-tools() {
+  arch=(any)
+  pkgdesc="${pkgdesc} - Backup Archiving Recovery Open Sourced - contributed tools"
+  depends=("python-bareos=${pkgver}" "bareos-filedaemon=${pkgver}")
+
+  for f in \
+     usr/bin/bareos-triggerjob.py \
+     usr/bin/bsmc \
+     etc/bareos/bsmc.conf \
+  ; do
+    cp_pkgdir "$f" "$srcdir/install"
+  done
+}
 
 #=========================================
 package_bareos-database-common() {
-  pkgdesc="${pkgdesc} - Generic abstration libs and tools for sql catalog"
-  depends=("bareos-common=${pkgver}" 'libcap' 'lzo' 'zlib' 'openssl' 'bash' 'jansson')
+  pkgdesc="${pkgdesc} - Backup Archiving Recovery Open Sourced - common catalog files"
+  depends=("bareos-common=${pkgver}" "bareos-database-postgresql=${pkgver}" 'libcap' 'lzo' 'zlib' 'openssl' 'bash' 'jansson')
   for f in \
      usr/lib/bareos/libbareossql.so* \
      usr/lib/bareos/libbareoscats.so* \
@@ -238,7 +293,7 @@ package_bareos-database-common() {
      usr/lib/bareos/scripts/update_bareos_tables \
      usr/lib/bareos/scripts/ddl/versions.map \
   ; do
-    cp_pkgdir "$f" "$srcdir/install/"
+    cp_pkgdir "$f" "$srcdir/install"
   done
 }
 
@@ -252,7 +307,7 @@ package_bareos-database-postgresql() {
      usr/lib/bareos/backends/libbareoscats-postgresql.so* \
      usr/lib/bareos/scripts/ddl/*/postgresql*.sql \
   ; do
-    cp_pkgdir "$f" "$srcdir/install/"
+    cp_pkgdir "$f" "$srcdir/install"
   done
 }
 
@@ -267,7 +322,7 @@ package_bareos-database-tools() {
      usr/share/man/man8/bareos-dbcheck.8* \
      usr/share/man/man8/bscan.8* \
   ; do
-    cp_pkgdir "$f" "$srcdir/install/"
+    cp_pkgdir "$f" "$srcdir/install"
   done
 }
 
@@ -320,9 +375,7 @@ package_bareos-director() {
      usr/share/man/man8/bareos.8* \
      usr/lib/systemd/system/bareos-dir.service \
   ; do
-    # pacman LINT tool currently does not like spaces
-    #space_removal=`echo $f | tr ' ' '_'`
-    cp_pkgdir "$f" "$srcdir/install/"
+    cp_pkgdir "$f" "$srcdir/install"
   done
 
   # Currently upstream systemd file does not automatically create run directory
@@ -331,6 +384,7 @@ package_bareos-director() {
 
 #=========================================
 package_bareos-director-python-plugins-common() {
+  arch=(any)
   pkgdesc="${pkgdesc} - This package contains the common files for the python 2 and python 3 director plugins"
   depends=("bareos-director=${pkgver}")
 
@@ -339,9 +393,10 @@ package_bareos-director-python-plugins-common() {
      usr/lib/bareos/plugins/BareosDirPluginBaseclass.py* \
      usr/lib/bareos/plugins/bareos-dir-class-plugin.py* \
   ; do
-    cp_pkgdir "$f" "$srcdir/install/"
+    cp_pkgdir "$f" "$srcdir/install"
   done
 }
+
 
 #=========================================
 package_bareos-director-python2-plugin() {
@@ -354,7 +409,7 @@ package_bareos-director-python2-plugin() {
      usr/lib/bareos/plugins/python-dir.so \
      usr/lib/python2.7/site-packages/bareosdir.so \
   ; do
-    cp_pkgdir "$f" "$srcdir/install/"
+    cp_pkgdir "$f" "$srcdir/install"
   done
 }
 
@@ -369,7 +424,7 @@ package_bareos-director-python3-plugin() {
      usr/lib/bareos/plugins/python3-dir.so \
      usr/lib/python${python3_ver}/site-packages/bareosdir.cpython*.so \
   ; do
-    cp_pkgdir "$f" "$srcdir/install/"
+    cp_pkgdir "$f" "$srcdir/install"
   done
 }
 
@@ -390,7 +445,7 @@ package_bareos-filedaemon() {
      usr/share/man/man8/bareos-fd.8* \
      usr/lib/systemd/system/bareos-fd.service \
   ; do
-    cp_pkgdir "$f" "$srcdir/install/"
+    cp_pkgdir "$f" "$srcdir/install"
   done
   # Currently upstream systemd file does not automatically create run directory
   sed -i '/\[Service\]/a RuntimeDirectory=bareos' ${pkgdir}/usr/lib/systemd/system/bareos-fd.service
@@ -407,12 +462,13 @@ package_bareos-filedaemon-glusterfs-plugin() {
      usr/share/bareos/config/bareos-dir.d/job/BackupGFAPI.conf.example \
      usr/share/bareos/config/bareos-dir.d/job/RestoreGFAPI.conf.example \
   ; do
-    cp_pkgdir "$f" "$srcdir/install/"
+    cp_pkgdir "$f" "$srcdir/install"
   done
 }
 
 #=========================================
 package_bareos-filedaemon-ldap-python-plugin() {
+  arch=(any)
   pkgdesc="${pkgdesc} - LDAP Python plugin for Bareos File daemon"
   depends=("bareos-filedaemon=${pkgver}"
            "bareos-filedaemon-python3-plugin=${pkgver}"
@@ -426,12 +482,13 @@ package_bareos-filedaemon-ldap-python-plugin() {
      usr/share/bareos/config/bareos-dir.d/job/backup-ldap.conf.example \
      usr/share/bareos/config/bareos-dir.d/job/restore-ldap.conf.example \
   ; do
-    cp_pkgdir "$f" "$srcdir/install/"
+    cp_pkgdir "$f" "$srcdir/install"
   done
 }
 
 #=========================================
 package_bareos-filedaemon-libcloud-python-plugin() {
+  arch=(any)
   pkgdesc="${pkgdesc} - Libcloud Python plugin for Bareos File daemon"
   depends=("bareos-filedaemon=${pkgver}"
            "python-apache-libcloud")
@@ -442,12 +499,13 @@ package_bareos-filedaemon-libcloud-python-plugin() {
      usr/lib/bareos/plugins/bareos_libcloud_api \
      usr/lib/bareos/plugins/bareos_libcloud_api/* \
   ; do
-    cp_pkgdir "$f" "$srcdir/install/"
+    cp_pkgdir "$f" "$srcdir/install"
   done
 }
 
 #=========================================
 package_bareos-filedaemon-mariabackup-python-plugin() {
+  arch=(any)
   pkgdesc="${pkgdesc} - MariaBackup plugin for Bareos File daemon"
   depends=("bareos-filedaemon=${pkgver}"
            "mariadb")
@@ -455,12 +513,13 @@ package_bareos-filedaemon-mariabackup-python-plugin() {
      usr/lib/bareos/plugins/bareos-fd-mariabackup.py* \
      usr/lib/bareos/plugins/BareosFdPluginMariabackup.py* \
   ; do
-    cp_pkgdir "$f" "$srcdir/install/"
+    cp_pkgdir "$f" "$srcdir/install"
   done
 }
 
 #=========================================
 package_bareos-filedaemon-percona-xtrabackup-python-plugin() {
+  arch=(any)
   pkgdesc="${pkgdesc} - XtraBackup plugin for Bareos File daemon"
   depends=("bareos-filedaemon=${pkgver}"
            "xtrabackup")
@@ -468,12 +527,13 @@ package_bareos-filedaemon-percona-xtrabackup-python-plugin() {
      usr/lib/bareos/plugins/bareos-fd-percona-xtrabackup.py* \
      usr/lib/bareos/plugins/BareosFdPluginPerconaXtraBackup.py* \
   ; do
-    cp_pkgdir "$f" "$srcdir/install/"
+    cp_pkgdir "$f" "$srcdir/install"
   done
 }
 
 #=========================================
 package_bareos-filedaemon-postgresql-python-plugin() {
+  arch=(any)
   pkgdesc="${pkgdesc} - PostgreSQL plugin for Bareos File daemon"
   depends=("bareos-filedaemon=${pkgver}"
            "postgresql")
@@ -481,12 +541,13 @@ package_bareos-filedaemon-postgresql-python-plugin() {
      usr/lib/bareos/plugins/bareos-fd-postgres.py* \
      usr/lib/bareos/plugins/BareosFdPluginPostgres.py* \
   ; do
-    cp_pkgdir "$f" "$srcdir/install/"
+    cp_pkgdir "$f" "$srcdir/install"
   done
 }
 
 #=========================================
 package_bareos-filedaemon-python-plugins-common() {
+  arch=(any)
   pkgdesc="${pkgdesc} - This package contains the common files for the python 2 and python 3 filedaemon plugins"
   depends=("bareos-filedaemon=${pkgver}")
   for f in \
@@ -496,7 +557,7 @@ package_bareos-filedaemon-python-plugins-common() {
      usr/lib/bareos/plugins/BareosFdPluginLocalFilesBaseclass.py* \
      usr/lib/bareos/plugins/BareosFdWrapper.py* \
   ; do
-    cp_pkgdir "$f" "$srcdir/install/"
+    cp_pkgdir "$f" "$srcdir/install"
   done
 }
 
@@ -511,7 +572,7 @@ package_bareos-filedaemon-python2-plugin() {
     usr/lib/bareos/plugins/python-fd.so \
     usr/lib/python${python2_ver}/site-packages/bareosfd.so \
   ; do
-    cp_pkgdir "$f" "$srcdir/install/"
+    cp_pkgdir "$f" "$srcdir/install"
   done
 }
 
@@ -526,7 +587,7 @@ package_bareos-filedaemon-python3-plugin() {
     usr/lib/bareos/plugins/python3-fd.so \
     usr/lib/python${python3_ver}/site-packages/bareosfd.cpython*.so \
   ; do
-    cp_pkgdir "$f" "$srcdir/install/"
+    cp_pkgdir "$f" "$srcdir/install"
   done
 }
 
@@ -549,7 +610,7 @@ package_bareos-storage() {
      usr/lib/systemd/system/bareos-sd.service \
      +var/lib/bareos/storage \
   ; do
-    cp_pkgdir "$f" "$srcdir/install/"
+    cp_pkgdir "$f" "$srcdir/install"
   done
 
   # Currently upstream systemd file does not automatically create run directory
@@ -557,26 +618,10 @@ package_bareos-storage() {
 }
 
 #=========================================
-package_bareos-storage-ceph() {
-  pkgdesc="${pkgdesc} - Backup Archiving Recovery Open Sourced - storage daemon CEPH backend"
-  depends=("bareos-storage=${pkgver}")
-  for f in \
-     usr/lib/bareos/backends/libbareossd-rados.so* \
-     usr/lib/bareos/backends/libbareossd-cephfs.so* \
-     usr/share/bareos/config/bareos-dir.d/storage/Rados.conf.example \
-     usr/share/bareos/config/bareos-sd.d/device/RadosStorage.conf.example \
-  ; do
-    cp_pkgdir "$f" "$srcdir/install/"
-  done
-}
-
-#=========================================
 package_bareos-storage-droplet() {
   pkgdesc="${pkgdesc} - Droplet support for storage daemon"
   depends=("bareos-storage=${pkgver}")
   for f in \
-     usr/lib/bareos/libbareosdroplet.so* \
-     usr/lib/bareos/backends/libbareossd-chunked.so* \
      usr/lib/bareos/backends/libbareossd-droplet.so* \
      usr/share/bareos/config/bareos-dir.d/storage/S3_Object.conf.example \
      usr/share/bareos/config/bareos-sd.d/device/S3_ObjectStorage.conf.example \
@@ -584,7 +629,7 @@ package_bareos-storage-droplet() {
      usr/share/bareos/config/bareos-sd.d/device/droplet/aws_eu-central-1.profile.example \
      usr/share/bareos/config/bareos-sd.d/device/droplet/ceph-rados-gateway.profile.example \
   ; do
-    cp_pkgdir "$f" "$srcdir/install/"
+    cp_pkgdir "$f" "$srcdir/install"
   done
 }
 
@@ -597,7 +642,7 @@ package_bareos-storage-fifo() {
     usr/share/bareos/config/bareos-dir.d/storage/NULL.conf.example \
     usr/share/bareos/config/bareos-sd.d/device/NULL.conf.example \
   ; do
-    cp_pkgdir "$f" "$srcdir/install/"
+    cp_pkgdir "$f" "$srcdir/install"
   done
 }
 
@@ -611,12 +656,13 @@ package_bareos-storage-glusterfs() {
      usr/share/bareos/config/bareos-dir.d/storage/Gluster.conf.example \
      usr/share/bareos/config/bareos-sd.d/device/GlusterStorage.conf.example \
   ; do
-    cp_pkgdir "$f" "$srcdir/install/"
+    cp_pkgdir "$f" "$srcdir/install"
   done
 }
 
 #=========================================
 package_bareos-storage-python-plugins-common() {
+  arch=(any)
   pkgdesc="${pkgdesc} - This package contains the common files for the python 2 and python 3 storage plugins"
   depends=("bareos-storage=${pkgver}")
   for f in \
@@ -624,7 +670,7 @@ package_bareos-storage-python-plugins-common() {
     usr/lib/bareos/plugins/BareosSdWrapper.py* \
     usr/lib/bareos/plugins/bareos-sd-class-plugin.py* \
   ; do
-    cp_pkgdir "$f" "$srcdir/install/"
+    cp_pkgdir "$f" "$srcdir/install"
   done
 }
 
@@ -639,7 +685,7 @@ package_bareos-storage-python2-plugin() {
     usr/lib/bareos/plugins/python-sd.so \
     usr/lib/python${python2_ver}/site-packages/bareossd.so \
   ; do
-    cp_pkgdir "$f" "$srcdir/install/"
+    cp_pkgdir "$f" "$srcdir/install"
   done
 }
 
@@ -654,7 +700,7 @@ package_bareos-storage-python3-plugin() {
     usr/lib/bareos/plugins/python3-sd.so \
     usr/lib/python${python3_ver}/site-packages/bareossd.cpython*.so \
   ; do
-    cp_pkgdir "$f" "$srcdir/install/"
+    cp_pkgdir "$f" "$srcdir/install"
   done
 }
 
@@ -664,21 +710,20 @@ package_bareos-storage-tape() {
   depends=("bareos-storage=${pkgver}" 'zlib' 'libcap' 'bash' 'openssl' 'jansson' 'lzo' "mtx")
   backup=(etc/bareos/mtx-changer.conf)
   for f in \
-     etc/bareos/mtx-changer.conf \
-     usr/share/bareos/config/bareos-dir.d/storage/Tape.conf.example \
-     usr/share/bareos/config/bareos-sd.d/autochanger/autochanger-0.conf.example \
-     usr/share/bareos/config/bareos-sd.d/device/tapedrive-0.conf.example \
-     usr/lib/bareos/backends/libbareossd-gentape.so* \
-     usr/lib/bareos/backends/libbareossd-tape.so* \
-     usr/lib/bareos/plugins/scsicrypto-sd.so \
-     usr/lib/bareos/plugins/scsitapealert-sd.so \
-     usr/lib/bareos/scripts/mtx-changer \
-     usr/share/man/man8/bscrypto.8* \
-     usr/share/man/man8/btape.8* \
-     usr/bin/bscrypto \
-     usr/bin/btape \
+      etc/bareos/mtx-changer.conf \
+      usr/share/bareos/config/bareos-dir.d/storage/Tape.conf.example \
+      usr/share/bareos/config/bareos-sd.d/autochanger/autochanger-0.conf.example \
+      usr/share/bareos/config/bareos-sd.d/device/tapedrive-0.conf.example \
+      usr/lib/bareos/backends/libbareossd-tape.so* \
+      usr/lib/bareos/plugins/scsicrypto-sd.so \
+      usr/lib/bareos/plugins/scsitapealert-sd.so \
+      usr/lib/bareos/scripts/mtx-changer \
+      usr/share/man/man8/bscrypto.8* \
+      usr/share/man/man8/btape.8* \
+      usr/bin/bscrypto \
+      usr/bin/btape \
   ; do
-    cp_pkgdir "$f" "$srcdir/install/"
+    cp_pkgdir "$f" "$srcdir/install"
   done
 }
 
@@ -702,7 +747,7 @@ package_bareos-tools() {
      usr/share/man/man8/bls.8* \
      usr/share/man/man8/bpluginfo.8* \
   ; do
-    cp_pkgdir "$f" "$srcdir/install/"
+    cp_pkgdir "$f" "$srcdir/install"
   done
 }
 
@@ -723,7 +768,7 @@ package_bareos-traymonitor() {
      usr/share/applications/bareos-tray-monitor.desktop \
      usr/share/pixmaps/bareos-tray-monitor.png \
   ; do
-    cp_pkgdir "$f" "$srcdir/install/"
+    cp_pkgdir "$f" "$srcdir/install"
   done
 
   # tray-monitor needs configuration files to run
@@ -731,16 +776,41 @@ package_bareos-traymonitor() {
 }
 
 #=========================================
+package_bareos-vadp-dumper() {
+  pkgdesc="${pkgdesc} - vStorage APIs for Data Protection Dumper program"
+
+  for f in \
+     usr/bin/bareos_vadp_dumper \
+     usr/bin/bareos_vadp_dumper_wrapper.sh \
+  ; do
+    cp_pkgdir "$f" "$srcdir/install"
+  done
+}
+
+#=========================================
+package_bareos-vmware-vix-disklib() {
+  pkgdesc="${pkgdesc} - VMware vix disklib distributable libraries"
+
+  for f in \
+     usr/lib/vmware-vix-disklib/lib64/* \
+  ; do
+    cp_pkgdir "$f" "$srcdir/install"
+  done
+}
+
+#=========================================
 package_bareos-vmware-plugin() {
+  arch=(any)
   pkgdesc="${pkgdesc} - Bareos VMware plugin"
-  depends=('python2')
+  depends=("bareos-vadp-dumper=${pkgver}" "bareos-common=${pkgver}" )
+  optdepends=("bareos-filedaemon-python3-plugin=${pkgver}" "bareos-filedaemon-python2-plugin=${pkgver}")
   for f in \
      usr/lib/bareos/plugins/BareosFdPluginVMware.py \
      usr/lib/bareos/plugins/bareos-fd-vmware.py \
      -usr/bin/vmware_cbt_tool.py \
      +usr/bin \
   ; do
-    cp_pkgdir "$f" "$srcdir/install/"
+    cp_pkgdir "$f" "$srcdir/install"
   done
   install -m755 "${srcdir}/bareos/core/src/vmware/vmware_cbt_tool/vmware_cbt_tool.py" "${pkgdir}/usr/bin/vmware_cbt_tool.py"
 }
@@ -754,23 +824,32 @@ package_bareos-webui() {
           'etc/bareos-webui/configuration.ini'
           'etc/bareos/bareos-dir.d/console/admin.conf.example'
           'etc/bareos/bareos-dir.d/profile/webui-admin.conf'
-          'etc/httpd/conf/extra/bareos-webui.conf')
-  #_cp ${srcdir}/install/usr/share/bareos-webui ${pkgdir}/usr/share/webapps/bareos-webui
+          'etc/httpd/conf.d/bareos-webui.conf')
+
   for f in \
      etc/bareos/bareos-dir.d/console/admin.conf.example \
      etc/bareos/bareos-dir.d/profile/webui-admin.conf \
      etc/bareos/bareos-dir.d/profile/webui-limited.conf.example \
      etc/bareos/bareos-dir.d/profile/webui-readonly.conf \
-     etc/httpd/conf/extra/bareos-webui.conf \
+     etc/httpd/conf.d/bareos-webui.conf \
      etc/bareos-webui/directors.ini \
      etc/bareos-webui/configuration.ini \
      usr/share/bareos-webui \
      +usr/share/licenses/${pkgname} \
   ; do
-    cp_pkgdir "$f" "$srcdir/install/"
+    cp_pkgdir "$f" "$srcdir/install"
   done
   cp ${srcdir}/bootstrap-table-locale-all.min.js ${pkgdir}/usr/share/bareos-webui/public/js/bootstrap-table-locale-all.min.js
   install -Dm644 ${srcdir}/bareos/webui/{README.md,LICENSE,doc/README-TRANSLATION.md} "${pkgdir}/usr/share/licenses/${pkgname}/"
+}
+
+#=========================================
+package_python-bareos() {
+  pkgdesc="${pkgdesc} - python-bareos is a Python module to access a backup system."
+  depends=('python' 'python-sslpsk' 'jansson')
+
+  cd "${srcdir}/${pkgbase}/python-bareos"
+  python setup.py install --skip-build --root="${pkgdir}" --optimize='1'
 }
 
 #=========================================
@@ -781,14 +860,4 @@ package_python2-bareos() {
 
   cd "${srcdir}/${pkgbase}/python-bareos"
   python2 setup.py install --skip-build --root="${pkgdir}" --optimize='1'
-}
-
-#=========================================
-package_python-bareos() {
-  pkgdesc="${pkgdesc} - python-bareos is a Python module to access a backup system."
-  depends=('python' 'python-sslpsk' 'jansson')
-  conflicts=("python2-bareos")
-
-  cd "${srcdir}/${pkgbase}/python-bareos"
-  python setup.py install --skip-build --root="${pkgdir}" --optimize='1'
 }

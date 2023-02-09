@@ -1,0 +1,31 @@
+--- core/src/lib/bsock.cc.orig	2021-12-23 08:56:38.194359400 +0100
++++ core/src/lib/bsock.cc	2021-12-23 10:22:09.320240831 +0100
+@@ -584,10 +584,10 @@ bool BareosSocket::DoTlsHandshake(TlsPol
+   if (!initiated_by_remote) {
+     if (tls_conn) {
+       tls_conn->TlsLogConninfo(jcr, host(), port(), who());
+-    } else {
++    } /* else {
+       Qmsg(jcr, M_INFO, 0, _("Connected %s at %s:%d, encryption: None\n"),
+            who(), host(), port());
+-    }
++    } */
+   }
+   return true;
+ }
+--- core/src/lib/tls_openssl.cc.orig	2021-12-23 08:56:38.204359200 +0100
++++ core/src/lib/tls_openssl.cc	2021-12-23 10:22:31.872857179 +0100
+@@ -107,11 +107,11 @@ void TlsOpenSsl::TlsLogConninfo(JobContr
+   if (!d_->openssl_) {
+     Qmsg(jcr, M_INFO, 0, _("No openssl to %s at %s:%d established\n"), who,
+          host, port);
+-  } else {
++  } /* else {
+     std::string cipher_name = TlsCipherGetName();
+     Qmsg(jcr, M_INFO, 0, _("Connected %s at %s:%d, encryption: %s\n"), who,
+          host, port, cipher_name.empty() ? "Unknown" : cipher_name.c_str());
+-  }
++  } */
+ }
+ 
+ /*
