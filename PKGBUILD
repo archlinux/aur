@@ -1,21 +1,22 @@
 # Maintainer: Yauhen Kirylau <actionless DOT loveless PLUS aur AT gmail MF com>
+# Maintainer: nomisge <nomisge @ live . de>
 # Contributor: Padraic Fanning <fanninpm AT miamioh DOT edu>
 
 _name=generic
 pkgname=python-${_name}
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="Library for Generic programming, also known as Multiple dispatch"
 arch=('any')
-url="https://github.com/gaphor/generic"
+url="https://github.com/gaphor/${_name}"
 license=('BSD')
 # Note: python-exceptiongroup is a requirement until we switch over to
 # Python 3.11
 depends=('python' 'python-exceptiongroup')
 makedepends=(python-build python-installer python-poetry-core)
 checkdepends=(python-pytest)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('8628d1bce4044e7664c149f785d7ad17a388e96c648ee09aef39d73578d52943')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('131843202f5580df2469ce6272fa99bd3ad62c36d7ab49088de4572e04dc13c3')
 
 build() {
 	cd "${_name}-${pkgver}"
