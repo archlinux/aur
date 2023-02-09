@@ -23,6 +23,6 @@ build() {
 }
 
 package() {
-	cd "$pkgname"
+	cd "subtitld"
 	python setup.py install --root="$pkgdir" --optimize=1
 }
