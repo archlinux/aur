@@ -4,7 +4,7 @@ _pkgname=tidybayes
 _pkgver=3.0.3
 pkgname=r-${_pkgname,,}
 pkgver=3.0.3
-pkgrel=1
+pkgrel=3
 pkgdesc="Tidy Data and 'Geoms' for Bayesian Models"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -36,7 +36,6 @@ optdepends=(
   r-dotwhisker
   r-emmeans
   r-forcats
-  r-gdtools
   r-gganimate
   r-ggrepel
   r-gifski

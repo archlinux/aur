@@ -1,7 +1,7 @@
 pkgbase = r-tidybayes
 	pkgdesc = Tidy Data and 'Geoms' for Bayesian Models
 	pkgver = 3.0.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=tidybayes
 	arch = any
 	license = GPL
@@ -29,7 +29,6 @@ pkgbase = r-tidybayes
 	optdepends = r-dotwhisker
 	optdepends = r-emmeans
 	optdepends = r-forcats
-	optdepends = r-gdtools
 	optdepends = r-gganimate
 	optdepends = r-ggrepel
 	optdepends = r-gifski
