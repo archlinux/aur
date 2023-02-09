@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-soifunc-git
 	pkgdesc = Plugin for Vapoursynth: soifunc (GIT version)
-	pkgver = 46.9c2fa23
+	pkgver = 52.88c6080
 	pkgrel = 1
 	url = https://github.com/shssoichiro/soifunc
 	arch = any
@@ -13,7 +13,6 @@ pkgbase = vapoursynth-plugin-soifunc-git
 	depends = vapoursynth-plugin-mvsfunc-git
 	depends = vapoursynth-plugin-kagefunc-git
 	depends = vapoursynth-plugin-havsfunc-git
-	depends = vapoursynth-plugin-vsdeband-git
 	depends = vapoursynth-plugin-neo_f3kdb-git
 	depends = vapoursynth-plugin-nnedi3_resample-git
 	depends = vapoursynth-plugin-znedi3-git

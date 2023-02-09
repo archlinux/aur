@@ -2,7 +2,7 @@
 
 _plug=soifunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=46.9c2fa23
+pkgver=52.88c6080
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -14,7 +14,6 @@ depends=('vapoursynth'
   'vapoursynth-plugin-mvsfunc-git'
   'vapoursynth-plugin-kagefunc-git'
   'vapoursynth-plugin-havsfunc-git'
-  'vapoursynth-plugin-vsdeband-git'
   'vapoursynth-plugin-neo_f3kdb-git'
   'vapoursynth-plugin-nnedi3_resample-git'
   'vapoursynth-plugin-znedi3-git'
