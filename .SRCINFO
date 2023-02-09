@@ -1,13 +1,13 @@
 pkgbase = infracost
 	pkgdesc = Cloud cost estimates for Terraform
-	pkgver = 0.10.16
+	pkgver = 0.10.17
 	pkgrel = 1
 	url = https://github.com/infracost/infracost
 	arch = x86_64
 	license = Apache
 	makedepends = go
 	depends = glibc
-	source = infracost-0.10.16.tar.gz::https://github.com/infracost/infracost/archive/v0.10.16.tar.gz
-	sha256sums = 414370ae48d95d3d9d46ef37a09e3d2d695b02497d970d1b74ea85e8c822ca3c
+	source = infracost-0.10.17.tar.gz::https://github.com/infracost/infracost/archive/v0.10.17.tar.gz
+	sha256sums = 034b8fa4ce467895190586953b5622bcff870d1bf868e55d13d1b1ffde37dce7
 
 pkgname = infracost
