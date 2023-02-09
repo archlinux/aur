@@ -1,10 +1,11 @@
 # Maintainer: Yauhen Kirylau <actionless DOT loveless PLUS aur AT gmail MF com>
 # Maintainer: Padraic Fanning <fanninpm AT miamioh DOT edu>
+# Maintainer: nomisge <nomisge @ live . de>
 
 _name=gaphas
 pkgname=python-${_name}
 pkgver=3.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Diagramming widget library for Python"
 arch=('any')
 url="https://github.com/gaphor/${_name}"
