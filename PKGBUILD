@@ -1,4 +1,6 @@
 # Maintainer: Hu Butui <hot123tea123@gmail.com>
+# Contributor: Matthijs Tadema <M dot J dot Tadema at pm dot me>
+# Contributor: Staal <staal1978@gmail.com>
 # Contributor: Jens Staal <staal1978@gmail.com>
 
 _pkgname=ugene
@@ -103,5 +105,3 @@ package_ugene-cuda() {
   ln -sf "/opt/${_pkgname}-${pkgver}/ugenecl" "${pkgdir}/usr/bin/ugenecl"
   mv -vf "${pkgdir}/opt/${_pkgname}-${pkgver}/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps"
 }
-# vim:set ts=2 sw=2 et:
-
