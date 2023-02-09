@@ -1,7 +1,7 @@
 pkgbase = speedify
 	pkgdesc = Use multiple internet connections in parallel
 	pkgver = 13.0.1.10802
-	pkgrel = 0
+	pkgrel = 2
 	url = https://speedify.com/
 	arch = x86_64
 	arch = aarch64

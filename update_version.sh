@@ -6,7 +6,7 @@ SHA5=$(echo "$PKG"|grep SHA512|head -1|cut -d" " -f2)
 SHA2=$(echo "$PKG"|grep SHA256|head -1|cut -d" " -f2)
 
 echo "Versions: '$NVERSION' '$CVERSION'"
-if [ $NVERSION == $CVERSION ]; then
+if [ $NVERSION != $CVERSION ]; then
     echo "Updating ..."
     sed -i "s/$CVERSION/$NVERSION/g" PKGBUILD
     sed -i "s/\(md5sums_x86_64=\).*/\1('$MD5')/" PKGBUILD
