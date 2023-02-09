@@ -64,6 +64,9 @@ package() {
   echo "Categories=Games;" >> "$desktopEntry"
   echo "Icon=lr2oraja-icon" >> "$desktopEntry"
 
+  # Create config symlink
+  ln -s "$pkgdir/opt/beatoraja" "$XDG_CONFIG_HOME/beatoraja"
+
   # Install LR2oraja
   install -D beatoraja.sh "$pkgdir/usr/bin/beatoraja"
 }
