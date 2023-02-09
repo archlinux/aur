@@ -8,6 +8,6 @@ pkgbase = noto-color-emoji-fontconfig-no-binding
 	provides = noto-color-emoji-fontconfig
 	conflicts = noto-color-emoji-fontconfig
 	source = 75-noto-color-emoji.conf
-	sha256sums = 0ef3c386c99d34c61e1e64f00c0140a373ce4e09899b9372a29e904afe0326ce
+	sha256sums = caabbd3f4706912c316c5ef77c6524953685ac087af279d420efa2dbe11514db
 
 pkgname = noto-color-emoji-fontconfig-no-binding
