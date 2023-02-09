@@ -17,7 +17,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 depends=("nodejs-serve")
 makedepends=('git')
-license=("AGPL3")
+license=("GPL3")
 _commit="68a811dc040a796069a407f533b34477c34da220"
 source=("${_pkgname}::git+${url}#commit=${_commit}" 
         # "${_pkgname}::git+${_url}"
