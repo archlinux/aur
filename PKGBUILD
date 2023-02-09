@@ -2,8 +2,8 @@
 _pkgname=chibitracker
 pkgname=chibitracker-git
 pkgver=1.4.2.r28.735cf51
-pkgrel=2
-epoch=
+pkgrel=3
+install="${pkgname}.install"
 pkgdesc="A Classic Impulse Tracker Clone"
 arch=("x86_64" "i686")
 url="https://github.com/reduz/chibitracker"
@@ -34,5 +34,8 @@ package() {
 
 	install -Dm644 "$srcdir/$_pkgname/program/cticon.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/chibitracker.png"
 	install -Dm644 "$srcdir/${_pkgname}.desktop" "$pkgdir/usr/share/applications/chibitracker.desktop"
-
+	for skin in {Chibiness,FastBlue,Impulsive,Oldie90s};
+	do
+		install -Dm644 "$srcdir/$_pkgname/skins/${skin}.zip" "$pkgdir/usr/share/$_pkgname/${skin}.zip"
+	done
 }
