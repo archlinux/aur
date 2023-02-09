@@ -1,6 +1,6 @@
 pkgbase = tree-sitter-r-git
 	pkgdesc = R grammar for tree-sitter
-	pkgver = r64.bcf381c
+	pkgver = r95.80efda5
 	pkgrel = 1
 	url = https://github.com/r-lib/tree-sitter-r
 	arch = x86_64
