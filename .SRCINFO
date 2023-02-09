@@ -21,6 +21,7 @@ pkgbase = anki-bin
 	depends = python-orjson
 	depends = python-protobuf
 	depends = python-pysocks
+	depends = qt6-svg
 	depends = python-certifi
 	optdepends = lame: record sound
 	optdepends = mpv: play sound. prefered over mplayer

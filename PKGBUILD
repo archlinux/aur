@@ -37,6 +37,9 @@ depends=(
 	# requests
 	'python-pysocks'
 
+	# pyqt6
+	'qt6-svg'
+
 	# workaround
 	'python-certifi'
 )
