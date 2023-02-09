@@ -5,7 +5,7 @@ _pkgname=ggiraph
 _pkgver=0.8.6
 pkgname=r-${_pkgname,,}
 pkgver=0.8.6
-pkgrel=1
+pkgrel=3
 pkgdesc="Make 'ggplot2' Graphics Interactive"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -28,6 +28,7 @@ depends=(
 )
 optdepends=(
   r-dplyr
+  r-gdtools
   r-ggrepel
   r-hexbin
   r-knitr

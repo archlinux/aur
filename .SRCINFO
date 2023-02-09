@@ -1,7 +1,7 @@
 pkgbase = r-ggiraph
 	pkgdesc = Make 'ggplot2' Graphics Interactive
 	pkgver = 0.8.6
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=ggiraph
 	arch = x86_64
 	license = GPL
@@ -19,6 +19,7 @@ pkgbase = r-ggiraph
 	depends = r-uuid
 	depends = r-vctrs
 	optdepends = r-dplyr
+	optdepends = r-gdtools
 	optdepends = r-ggrepel
 	optdepends = r-hexbin
 	optdepends = r-knitr
