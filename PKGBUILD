@@ -4,7 +4,7 @@ _pkgname=caretEnsemble
 _pkgver=2.0.2
 pkgname=r-${_pkgname,,}
 pkgver=2.0.2
-pkgrel=1
+pkgrel=3
 pkgdesc='Ensembles of Caret Models'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -36,7 +36,9 @@ optdepends=(
   r-randomforest
   r-rmarkdown
   r-rpart
+  r-sass
   r-testthat
+  r-usethis
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('d8fcf3742beddc723b68677682708408cc11dcb8b36a0f70f03e7c4763e04f4d')
