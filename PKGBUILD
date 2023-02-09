@@ -207,7 +207,7 @@ _stable=${_major}-${_rcver}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux BORE scheduler Kernel by CachyOS and with some other patches and other improvements'
-pkgrel=2
+pkgrel=1
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -397,13 +397,14 @@ prepare() {
             -d X86_64_ACPI_NUMA \
             -d NODES_SPAN_OTHER_NODES \
             -d NUMA_EMU \
-            -d NEED_MULTIPLE_NODES \
             -d USE_PERCPU_NUMA_NODE_ID \
             -d ACPI_NUMA \
             -d ARCH_SUPPORTS_NUMA_BALANCING \
             -d NODES_SHIFT \
             -u NODES_SHIFT \
-            -d NEED_MULTIPLE_NODES
+            -d NEED_MULTIPLE_NODES \
+            -d NUMA_BALANCING \
+            -d NUMA_BALANCING_DEFAULT_ENABLED
     fi
 
     ### Setting NR_CPUS
