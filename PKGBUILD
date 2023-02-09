@@ -6,11 +6,14 @@
 
 pkgname=notesnook
 pkgver=2.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Take private notes, capture ideas, make lists & sync them anywhere"
 arch=('x86_64')
 url="https://notesnook.com/"
 license=('GPLv3')
+options=(!strip)
+provides=(${pkgname})
+conflicts=(${pkgname})
 depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify' 'libappindicator-gtk3')
 makedepends=('nvm' 'git')
 source=(git+https://github.com/streetwriters/${pkgname}.git
