@@ -1,6 +1,6 @@
 pkgbase = matrix-synapse-git
 	pkgdesc = Matrix reference homeserver
-	pkgver = 1.69.0.r0.g6b097a3e17
+	pkgver = 1.76.0.r0.geafdb12dd8
 	pkgrel = 1
 	url = https://github.com/matrix-org/synapse
 	install = synapse.install
@@ -78,7 +78,7 @@ pkgbase = matrix-synapse-git
 	source = sysusers-synapse.conf
 	source = tmpfiles-synapse.conf
 	source = override-hardened.conf
-	source = 0001-Allow-poetry-core-1.3.2.patch
+	source = 0001-Allow-poetry-core-1.5.0.patch
 	md5sums = SKIP
 	md5sums = 2ef84c75b422b701d60abb0f07dfa7cb
 	md5sums = 86f5af69a6123d913c97acc6e1738aa1
@@ -87,6 +87,6 @@ pkgbase = matrix-synapse-git
 	md5sums = ecd9f66fb57fe1a2e1e2df07a460a35b
 	md5sums = e961c9ecad84a70345a57a7e9e6d5b09
 	md5sums = e93ce7c015b3617f71c0fe2a4879f0e5
-	md5sums = 29a91903e0601676fe2d1488ed98afe3
+	md5sums = fff51882ef8f578a6834f488c9687aa6
 
 pkgname = matrix-synapse-git
