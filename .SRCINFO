@@ -1,6 +1,6 @@
 pkgbase = annotator-git
 	pkgdesc = Image annotation for Elementary OS
-	pkgver = 1.1.1.r83.gc0d935b
+	pkgver = 1.1.1.r85.ge18f5eb
 	pkgrel = 1
 	url = https://github.com/phase1geo/Annotator
 	arch = aarch64
