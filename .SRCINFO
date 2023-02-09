@@ -6,7 +6,6 @@ pkgbase = spicetify-cli
 	arch = x86_64
 	arch = i686
 	license = GPL
-	makedepends = git
 	makedepends = go
         optdepends = xdg-utils: Allows for opening directories in default file manager
 	source = https://github.com/spicetify/spicetify-cli/archive/v2.16.1.tar.gz
