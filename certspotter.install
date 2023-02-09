@@ -1,0 +1,6 @@
+post_upgrade() {
+	if [ "$(vercmp $2 0.15.0)" -lt 0 ]; then
+		echo 'certspotter is now a daemon, read the changelog for more details:'
+		echo 'https://github.com/SSLMate/certspotter/blob/master/CHANGELOG.md'
+	fi
+}
