@@ -2,7 +2,7 @@
 # Maintainer : Sébastien Deligny <sebdeligny at gmail>
 
 pkgname=thunar-shares-plugin
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 epoch=1
 pkgdesc="Thunar plugin to quickly share a folder using Samba without requiring root access"
@@ -13,12 +13,10 @@ depends=('thunar>=1.7.0' 'samba')
 makedepends=('xfce4-dev-tools')
 install="${pkgname}.install"
 source=(
-  "https://git.xfce.org/thunar-plugins/${pkgname}/snapshot/${pkgname}-${pkgver}.tar.gz"
-  "shares.patch"
+  "https://archive.xfce.org/src/thunar-plugins/${pkgname}/0.3/${pkgname}-${pkgver}.tar.bz2"
 )
 sha1sums=(
-  "75498def2b21271d703ff9654d9e56cbe1b46f8c"
-  "a78952a65e43f0e2eaceb6db959970faccaa3474"
+  "fb41eae712bdf91ba52b7d10f6513444dd88569e"
 )
 
 prepare() {
@@ -27,8 +25,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -p1 -i "${srcdir}"/shares.patch
-  ./autogen.sh --prefix=/usr --enable-debug=no
+  ./configure --prefix=$(pkg-config --variable prefix thunarx-3)
   make
 }
 
