@@ -1,6 +1,6 @@
 pkgbase = ruby-debug
 	pkgdesc = Debugging functionality for Ruby
-	pkgver = 1.7.0
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://github.com/ruby/debug
 	arch = any
@@ -8,11 +8,11 @@ pkgbase = ruby-debug
 	makedepends = gcc
 	makedepends = make
 	depends = ruby>=2.6.0
-	depends = ruby-irb>=1.3.6
+	depends = ruby-irb>=1.5.0
 	depends = ruby-reline>=0.3.1
-	noextract = debug-1.6.1.gem
+	noextract = debug-1.7.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/debug-1.7.0.gem
-	sha256sums = 75aa5a95fae30aec7be9d6d50b980a920bfb3393df358831aba90d43757b7460
+	source = https://rubygems.org/downloads/debug-1.7.1.gem
+	sha256sums = d9bc6e6f6e23e5833e198890fa1f0d87ce1d17ab7ddf40910b2b132aa06f7fc2
 
 pkgname = ruby-debug

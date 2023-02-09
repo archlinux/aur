@@ -3,7 +3,7 @@
 
 _gemname=debug
 pkgname=ruby-$_gemname
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc='Debugging functionality for Ruby'
 arch=(any)
@@ -18,7 +18,7 @@ makedepends=('gcc' 'make')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('75aa5a95fae30aec7be9d6d50b980a920bfb3393df358831aba90d43757b7460')
+sha256sums=('d9bc6e6f6e23e5833e198890fa1f0d87ce1d17ab7ddf40910b2b132aa06f7fc2')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
