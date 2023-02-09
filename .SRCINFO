@@ -1,23 +1,22 @@
 pkgbase = jdk11-graalvm-ee-bin
 	pkgdesc = Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java 11 version
-	pkgver = 21.2.0.1
+	pkgver = 22.3.1
 	pkgrel = 1
 	url = https://www.graalvm.org/
 	install = jdk11-graalvm-ee-bin.install
 	arch = x86_64
 	arch = aarch64
-	license = custom
+	license = custom:OTN
 	depends = java-runtime-common
 	depends = java-environment-common
-	optdepends = graal-ee-nodejs-jdk11-bin: Node.js component (used to be bundled with this package before the 21.1.0 release)
 	provides = java-runtime=11
 	provides = java-environment=11
 	options = staticlibs
-	source = graalvm-rebuild-libpolyglot.hook
-	sha256sums = SKIP
-	source_x86_64 = https://web.archive.org/web/20210829041745if_/https://download.oracle.com/otn/utilities_drivers/oracle-labs/graalvm-ee-java11-linux-amd64-21.2.0.1.tar.gz?AuthParam=1630210751_ee6afcb9eadd190c7710ceb4a92e5f59
-	sha256sums_x86_64 = 6ae0571a23e69405b369444d469fedc4ed98a52a50089b158492d23467696fcf
-	source_aarch64 = https://web.archive.org/web/20210829042334if_/https://download.oracle.com/otn/utilities_drivers/oracle-labs/graalvm-ee-java11-linux-aarch64-21.2.0.1.tar.gz?AuthParam=1630211125_e853928e0878bc3a4573f291ce0ab5ec
-	sha256sums_aarch64 = c9ab81a2027e3754770497f6a7d593a25928b8723038bc4b31b74e0dae24e6ec
+	source = graalvm-ee-rebuild-libpolyglot.hook
+	sha256sums = 7dc37bd3703ebebcd6efa39534e6bb6e3ec9c8ee0d97e46d6df5349739c7d2ca
+	source_x86_64 = https://oca.opensource.oracle.com/gds/GRAALVM_EE_JAVA11_22_3_1/graalvm-ee-java11-linux-amd64-22.3.1.tar.gz
+	sha256sums_x86_64 = cf529eb5c65d17c79db7fe0a8f892f9b17501bdf219ea99c6e0eb5b4088ee028
+	source_aarch64 = https://oca.opensource.oracle.com/gds/GRAALVM_EE_JAVA11_22_3_1/graalvm-ee-java11-linux-aarch64-22.3.1.tar.gz
+	sha256sums_aarch64 = 847d535f11e8d0b56cb87bd61132bfc65d4ac3eb502d4da415a79aa5cb83d517
 
 pkgname = jdk11-graalvm-ee-bin

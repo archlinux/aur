@@ -45,3 +45,4 @@ pre_remove() {
     /usr/bin/archlinux-java unset
   fi
 }
+
