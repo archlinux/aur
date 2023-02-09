@@ -1,7 +1,7 @@
 pkgbase = mcscanx
 	pkgdesc = Multiple Collinearity Scan toolkit X version https://doi.org/10.1093/nar/gkr1293
-	pkgver = r53.b1ca533
-	pkgrel = 4
+	pkgver = 2022.11.01
+	pkgrel = 1
 	url = https://github.com/wyp1125/MCScanX
 	arch = x86_64
 	license = BSD

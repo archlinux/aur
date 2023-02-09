@@ -2,8 +2,8 @@
 
 pkgname=mcscanx
 _pkgname=MCScanX
-pkgver=r53.b1ca533
-pkgrel=4
+pkgver=2022.11.01
+pkgrel=1
 pkgdesc="Multiple Collinearity Scan toolkit X version https://doi.org/10.1093/nar/gkr1293"
 arch=('x86_64')
 url="https://github.com/wyp1125/MCScanX"
@@ -15,7 +15,7 @@ source=(git+https://github.com/wyp1125/MCScanX.git)
 sha256sums=('SKIP')
 pkgver(){
   cd $_pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf $(TZ=UTC git log --no-walk --pretty="%cd" --decorate=full --date=format-local:%Y.%m.%d | head -n 1)
 }
 
 build() {
