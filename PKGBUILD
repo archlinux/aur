@@ -3,7 +3,7 @@
 pkgname=speedify
 _pkgver=13.0.1-10802
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=0
 pkgdesc="Use multiple internet connections in parallel"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://speedify.com/"

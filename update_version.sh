@@ -3,13 +3,15 @@ NVERSION=`echo "$PKG"|grep Version|head -1|cut -d" " -f2`
 CVERSION=`cat PKGBUILD |grep _pkgver=|cut -d= -f2`
 MD5=$(echo "$PKG"|grep MD5sum|head -1|cut -d" " -f2)
 SHA5=$(echo "$PKG"|grep SHA512|head -1|cut -d" " -f2)
+SHA2=$(echo "$PKG"|grep SHA256|head -1|cut -d" " -f2)
 
 echo "Versions: '$NVERSION' '$CVERSION'"
-if [ $NVERSION != $CVERSION ]; then
+if [ $NVERSION == $CVERSION ]; then
     echo "Updating ..."
     sed -i "s/$CVERSION/$NVERSION/g" PKGBUILD
     sed -i "s/\(md5sums_x86_64=\).*/\1('$MD5')/" PKGBUILD
     sed -i "s/\(sha512sums_x86_64=\).*/\1('$SHA5')/" PKGBUILD
+    sed -i "s/\(sha256sums_x86_64=\).*/\1('$SHA2')/" PKGBUILD
     sed -i "s/pkgrel=.*/pkgrel=0/" PKGBUILD
     #to see if it build
     makepkg
