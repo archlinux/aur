@@ -1,11 +1,18 @@
 pkgbase = moderndeck-bin
 	pkgdesc = A beautiful, powerful Twitter client for desktop.
-	pkgver = 9.4.5
+	pkgver = 10.0.0
 	pkgrel = 1
 	url = https://moderndeck.org
 	arch = x86_64
+	arch = armv7h
+	arch = aarch64
 	license = MIT
-	source = ModernDeck_x86_64.AppImage::https://github.com/dangeredwolf/ModernDeck/releases/download/v9.4.5/ModernDeck_x86_64.AppImage
-	sha256sums = 6a90fdc5dbc0795edefa121f43329c4edd6d575abdcfa246b48acfabc9fa44e9
+	provides = moderndeck
+	source_x86_64 = ModernDeck-x86_64.AppImage::https://github.com/dangeredwolf/ModernDeck/releases/download/v10.0.0/ModernDeck-x86_64.AppImage
+	sha256sums_x86_64 = d74d395e03396137386b50a731799d98813fbd7b8fae37886c6f14a5b9c82517
+	source_armv7h = ModernDeck-arm64.AppImage::https://github.com/dangeredwolf/ModernDeck/releases/download/v10.0.0/ModernDeck-arm64.AppImage
+	sha256sums_armv7h = 22f5bcee1dfd809dfe0a267384c4a56141611d5d97d4e31b1f95999fb1c2b400
+	source_aarch64 = ModernDeck-arm64.AppImage::https://github.com/dangeredwolf/ModernDeck/releases/download/v10.0.0/ModernDeck-arm64.AppImage
+	sha256sums_aarch64 = 22f5bcee1dfd809dfe0a267384c4a56141611d5d97d4e31b1f95999fb1c2b400
 
 pkgname = moderndeck-bin
