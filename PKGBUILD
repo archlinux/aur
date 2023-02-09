@@ -3,15 +3,16 @@
 
 pkgname=python-flake8-quotes
 _pkgname=flake8-quotes
-pkgver=3.3.1
+pkgver=3.3.2
 pkgrel=2
 pkgdesc="Flake8 lint for quotes"
 arch=('any')
 url="https://github.com/zheller/${_pkgname}"
 license=('MIT')
 depends=('flake8')
-source=("https://github.com/zheller/${_pkgname}/archive/$pkgver.tar.gz")
-sha256sums=('64167f280031a5cce5499487a94ff023a058a70a7d9aba31d27f58e91b6703b8')
+makedepends=('python-setuptools')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zheller/${_pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('884d027b6126b6216bdb9fa95a9841c4f07f600569a4a41f3d0cdbf71afe6bcb')
 
 build() {
     cd "${_pkgname}-${pkgver}"
