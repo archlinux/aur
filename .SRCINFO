@@ -1,7 +1,7 @@
 pkgbase = r-screcover
 	pkgdesc = scRecover for imputation of single-cell RNA-seq data
 	pkgver = 1.14.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/scRecover
 	arch = any
 	license = GPL
@@ -15,7 +15,6 @@ pkgbase = r-screcover
 	depends = r-penalized
 	depends = r-preseqr
 	depends = r-pscl
-	depends = r-rmagic
 	depends = r-rsvd
 	depends = r-saver
 	optdepends = r-knitr

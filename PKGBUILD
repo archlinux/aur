@@ -4,7 +4,7 @@ _pkgname=scRecover
 _pkgver=1.14.1
 pkgname=r-${_pkgname,,}
 pkgver=1.14.1
-pkgrel=1
+pkgrel=3
 pkgdesc='scRecover for imputation of single-cell RNA-seq data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -20,7 +20,6 @@ depends=(
   r-penalized
   r-preseqr
   r-pscl
-  r-rmagic
   r-rsvd
   r-saver
 )
