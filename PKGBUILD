@@ -3,7 +3,7 @@
 
 pkgname=reposilite
 pkgver=3.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Reposilite (formerly NanoMaven) - lightweight repository manager for Maven artifacts. It is a simple solution to replace managers like Nexus, Archiva or Artifactory."
 arch=(any)
 url="https://github.com/dzikoysk/$pkgname"
@@ -23,7 +23,7 @@ sha256sums=('79e2cf65a507c33216b11358ec746459331c8157d4089606021f2ed51e66f29c'
             '7affcf3ef54c9c05326281c3496a8744221be312675fd7d4ab17fd50eb320521'
             'd06d5686dace4d74dd788ea9f755536678e614af481206969aa457ef79dec400')
 backup=('etc/reposilite/configuration.cdn'
-        'etc/reposilite/wrapper.env')
+        'etc/reposilite/default.env')
 
 build() {
   cd "$pkgname-$pkgver"
