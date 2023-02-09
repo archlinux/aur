@@ -16,7 +16,7 @@ options=(!strip)
 source=("git+https://github.com/OpenRA/OpenRA.git"
 "https://raw.githubusercontent.com/wiki/OpenRA/OpenRA/Changelog.md")
 sha256sums=('SKIP'
-            '5d07623dc97c88b07435f54857093ca41073d96b93a4c8b5bf8fd0768835a8ff')
+            '8761dff36894e3e07babf63d49dac3b19ad65ee4b3023893d78cfe0a5f20bdd6')
 
 pkgver() {
     cd $srcdir/OpenRA
