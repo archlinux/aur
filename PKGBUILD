@@ -3,7 +3,7 @@
 # shellcheck disable=SC2034
 _namespace="foone"
 _repo="SierraDeathGenerator"
-_appname="io.github.${_namespace}.${_repo}.png"
+_appname="io.github.${_namespace}.${_repo}"
 _pkgbase="sierra-death-generator"
 _pkgname="${_pkgbase}"
 pkgname="${_pkgbase}-git"
@@ -19,11 +19,16 @@ depends=()
 makedepends=('git'
              )
 license=("AGPL3")
-source=( "${_pkgname}::git+${url}" )
-         # "${_pkgname}::git+${_url}")
-sha256sums=("SKIP")
+source=("${_pkgname}::git+${url}" 
+        # "${_pkgname}::git+${_url}"
+        "${_appname}.png"
+        "launcher.desktop")
+sha256sums=("SKIP"
+            "73435fe2ed45016778b19787855bedb904130e99516fc2769ecdab627c3b9690"
+            "24d33cb031b9ebb2825d30376acc2fa4746a55f56277b365e534fa8b261da8aa")
 
 package() {
+  ls
   local _icon_path="${pkgdir}/usr/share/icons/hicolor/512x512/apps"
   local _launcher_path="${pkgdir}/usr/share/applications"
   mkdir -p "${_icon_path}"
