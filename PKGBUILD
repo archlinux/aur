@@ -4,7 +4,7 @@ _pkgname=performance
 _pkgver=0.10.2
 pkgname=r-${_pkgname,,}
 pkgver=0.10.2
-pkgrel=1
+pkgrel=3
 pkgdesc='Assessment of Regression Models Performance'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -37,6 +37,7 @@ optdepends=(
   r-ggplot2
   r-glmmtmb
   r-graphics
+  r-hmisc
   r-httr
   r-ics
   r-icsoutlier
@@ -45,7 +46,6 @@ optdepends=(
   r-lme4
   r-lmtest
   r-loo
-  r-magrittr
   r-mass
   r-matrix
   r-mclust

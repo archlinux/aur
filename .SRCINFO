@@ -1,7 +1,7 @@
 pkgbase = r-performance
 	pkgdesc = Assessment of Regression Models Performance
 	pkgver = 0.10.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=performance
 	arch = any
 	license = GPL
@@ -30,6 +30,7 @@ pkgbase = r-performance
 	optdepends = r-ggplot2
 	optdepends = r-glmmtmb
 	optdepends = r-graphics
+	optdepends = r-hmisc
 	optdepends = r-httr
 	optdepends = r-ics
 	optdepends = r-icsoutlier
@@ -38,7 +39,6 @@ pkgbase = r-performance
 	optdepends = r-lme4
 	optdepends = r-lmtest
 	optdepends = r-loo
-	optdepends = r-magrittr
 	optdepends = r-mass
 	optdepends = r-matrix
 	optdepends = r-mclust
