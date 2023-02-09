@@ -1,6 +1,6 @@
 pkgbase = jdk11-dragonwell-standard-bin
 	pkgdesc = an in-house OpenJDK implementation at Alibaba (Standard Edition)
-	pkgver = 11.0.17.13
+	pkgver = 11.0.18.14
 	pkgrel = 1
 	url = https://dragonwell-jdk.io/
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = jdk11-dragonwell-standard-bin
 	provides = java-runtime-openjdk=11
 	provides = java-runtime-headless=11
 	provides = java-runtime-headless-openjdk=11
-	source_x86_64 = jdk11-dragonwell-standard-bin-11.0.17.13-x86_64.tar.gz::https://github.com/alibaba/dragonwell11/releases/download/dragonwell-standard-11.0.17.13_jdk-11.0.17-ga/Alibaba_Dragonwell_Standard_11.0.17.13.8_x64_linux.tar.gz
-	sha256sums_x86_64 = 089e8e10956316a91ccb00ee64642df9b9182cc3da7a6354eaf5c4f87f39afb1
-	source_aarch64 = jdk11-dragonwell-standard-bin-11.0.17.13-aarch64.tar.gz::https://github.com/alibaba/dragonwell11/releases/download/dragonwell-standard-11.0.17.13_jdk-11.0.17-ga/Alibaba_Dragonwell_Standard_11.0.17.13.8_aarch64_linux.tar.gz
-	sha256sums_aarch64 = 14c4a17a65bf478b25410714433f5af8df0a0ffaaedf6d94b8901f8b7ecbfa8a
+	source_x86_64 = jdk11-dragonwell-standard-bin-11.0.18.14-x86_64.tar.gz::https://github.com/alibaba/dragonwell11/releases/download/dragonwell-standard-11.0.18.14_jdk-11.0.18-ga/Alibaba_Dragonwell_Standard_11.0.18.14.9_x64_linux.tar.gz
+	sha256sums_x86_64 = 2360b063f1099c0ab7def15ec83c7344ae21038e5a85139132dc4005a8d5a940
+	source_aarch64 = jdk11-dragonwell-standard-bin-11.0.18.14-aarch64.tar.gz::https://github.com/alibaba/dragonwell11/releases/download/dragonwell-standard-11.0.18.14_jdk-11.0.18-ga/Alibaba_Dragonwell_Standard_11.0.18.14.9_aarch64_linux.tar.gz
+	sha256sums_aarch64 = cc05189481c899c434e25320bf3de9c03b72ac7e1bc2950fe749ed9063340f65
 
 pkgname = jdk11-dragonwell-standard-bin
