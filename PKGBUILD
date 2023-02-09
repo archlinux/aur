@@ -3,7 +3,7 @@
 pkgname=python-inifile
 _pkgname=python-inifile
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Ini file library for Python."
 arch=(any)
 url="https://github.com/mitsuhiko/python-inifile"
@@ -11,8 +11,8 @@ license=('BSD')
 depends=(python)
 makedepends=(python-setuptools)
 options=(!emptydirs)
-source=("https://github.com/mitsuhiko/$_pkgname/archive/$pkgver.tar.gz")
-sha256sums=("b5fc578e078f7bfdc4cc9307692a9da42e4c25e9d6baea9ba70638029f2d0742")
+source=("https://github.com/mitsuhiko/$_pkgname/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=("3c411ad4454591df3bd07ca3b6c86a20a51480a0225bbebd2162eece3db63e8b")
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
