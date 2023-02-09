@@ -1,18 +1,19 @@
 pkgbase = certbot-dns-porkbun
 	pkgdesc = Plugin for certbot to obtain certificates using a DNS TXT record for Porkbun domains
-	pkgver = 0.6
+	pkgver = 0.7
 	pkgrel = 1
 	url = https://github.com/infinityofspace/certbot_dns_porkbun
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = certbot>=1.18.0
+	depends = python-dnspython
 	depends = python-pkb-client
 	depends = python-requests
-	depends = python-tldextract
-	source = https://github.com/infinityofspace/certbot_dns_porkbun/archive/refs/tags/v0.6.tar.gz
-	sha256sums = 00c0449f1012085d250d4d7af998511b1408c27f23879dea278c0bfccbcc4faa
+	source = https://github.com/infinityofspace/certbot_dns_porkbun/archive/refs/tags/v0.7.tar.gz
+	sha256sums = 3454939c79fb937e3e23891ae5ec606d732edf6d468ad9433985ec6d0138d90b
 
 pkgname = certbot-dns-porkbun
