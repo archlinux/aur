@@ -5,19 +5,23 @@ _pkgname=CeTF
 _pkgver=1.10.2
 pkgname=r-${_pkgname,,}
 pkgver=1.10.2
-pkgrel=1
+pkgrel=3
 pkgdesc='Coexpression for Transcription Factors using Regulatory Impact Factors and Partial Correlation and Information Theory analysis'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('GPL')
 depends=(
+  curl
+  gcc-fortran
+  libxml2
+  openssl
   r
+  zlib
   r-circlize
   r-clusterprofiler
   r-complexheatmap
   r-deseq2
   r-dplyr
-  r-genomictools
   r-genomictools.filehandler
   r-ggally
   r-ggnetwork
@@ -31,11 +35,6 @@ depends=(
   r-rcy3
   r-s4vectors
   r-summarizedexperiment
-  libxml2
-  gcc-fortran
-  curl
-  openssl
-  zlib
 )
 optdepends=(
   r-airway
