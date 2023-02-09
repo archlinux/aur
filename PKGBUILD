@@ -1,10 +1,11 @@
 # Maintainer: Yauhen Kirylau <actionless DOT loveless PLUS aur AT gmail MF com>
 # Maintainer: Padraic Fanning <fanninpm AT miamioh DOT edu>
+# Maintainer: nomisge <nomisge @ live . de>
 
 _name=gaphor
 pkgname=python-${_name}
-pkgver=2.9.2
-pkgrel=7
+pkgver=2.15.0
+pkgrel=1
 pkgdesc="Simple and easy to use modeling tool for UML using GTK3"
 arch=('any')
 url="https://github.com/gaphor/${_name}"
@@ -17,6 +18,7 @@ depends=(
 	'python-jedi'
 	'python-tinycss2'
 	'python-typing_extensions'
+	'python-better-exceptions'
 )
 makedepends=(
 	'gendesk'
@@ -30,13 +32,16 @@ checkdepends=(
 	'python-pytest-mock'
 	'python-sphinx'
 	'python-xdoctest'
+	'python-pydot'
+	'python-pytest-archon'
 	'xorg-server-xvfb'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('687f0f9a75e72daa9535bbbc6b8592e0ee37ae9451b9085bd2d972a1fb07b51f')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('1a33317cd3bb9758e88eaaf87be028927f414cba2f608f1a90562cc51bdd9214')
 
 build() {
 	cd "${_name}-${pkgver}"
+	python po/build-babel.py
 	# Note: set `GIT_CEILING_DIRECTORIES` to prevent poetry
 	# from incorrectly using a parent git checkout info.
 	# https://github.com/pypa/build/issues/384#issuecomment-947675975
@@ -45,7 +50,8 @@ build() {
 
 check() {
 	cd "${srcdir}/${_name}-${pkgver}"
-	xvfb-run --auto-servernum pytest
+#	xvfb-run --auto-servernum python -m pytest -k 'not' tests/
+	xvfb-run --auto-servernum python -m pytest tests/
 }
 
 prepare() {
