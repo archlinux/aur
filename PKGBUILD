@@ -4,7 +4,7 @@ _pkgname=doRNG
 _pkgver=1.8.6
 pkgname=r-${_pkgname,,}
 pkgver=1.8.6
-pkgrel=1
+pkgrel=3
 pkgdesc="Generic Reproducible Parallel Backend for 'foreach' Loops"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,13 +16,15 @@ depends=(
   r-rngtools
 )
 optdepends=(
-  r-bibtex
+  r-covr
   r-devtools
   r-dompi
   r-doparallel
   r-doredis
   r-knitr
+  r-pkgmaker
   r-rbenchmark
+  r-rbibutils
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
