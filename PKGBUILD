@@ -3,7 +3,7 @@
 
 _name=gaphas
 pkgname=python-${_name}
-pkgver=3.8.2
+pkgver=3.9.2
 pkgrel=1
 pkgdesc="Diagramming widget library for Python"
 arch=('any')
@@ -22,10 +22,11 @@ makedepends=(
 )
 checkdepends=(
 	'python-pytest'
+	'python-sphinx'
 	'xorg-server-xvfb'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('608b7aa248e477b97197754faced12fb7842bf8a9cdcb108b35d5dc9d367430d')
+sha256sums=('9063813534384e27a5637d23fc263ac53f53ec6a68ff495a8296dd6853ecb31e')
 
 build() {
 	cd "${_name}-${pkgver}"
@@ -37,7 +38,7 @@ build() {
 
 check() {
 	cd "${srcdir}/${_name}-${pkgver}"
-	xvfb-run --auto-servernum pytest
+	xvfb-run --auto-servernum python -m pytest tests/
 }
 
 package() {
