@@ -7,7 +7,7 @@ pkgname=spotify
 pkgver=1.1.84.716
 epoch=1
 _commit=gc5f8b819-2
-pkgrel=10
+pkgrel=11
 pkgdesc='A proprietary music streaming service'
 arch=('x86_64')
 license=('custom')
@@ -39,11 +39,6 @@ sha512sums=('999abe46766a4101e27477f5c9f69394a4bb5c097e2e048ec2c6cb93dfa1743eb43
             'SKIP'
             'b0ab27105fb6b51768b6831ec11d836ac30885ff4f7fc50dcdbf8888366656a8e7a3a777a969f9de50e42a4af80155b36f9f46c468216d44026a2aecb772a257')
 
-# Import current GPG key, if it is not already
-if [[ ! $(gpg -k E27409F51D1B66337F2D2F417A3A762FAFD4A51F 2>/dev/null) ]]; then
-    curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | gpg --import -i -
-fi
-
 validpgpkeys=('F9A211976ED662F00E59361E5E3C45D7B312C643' 'E27409F51D1B66337F2D2F417A3A762FAFD4A51F') # Spotify Public Repository Signing Key <tux@spotify.com>
 
 # Old Keys:
@@ -52,6 +47,11 @@ validpgpkeys=('F9A211976ED662F00E59361E5E3C45D7B312C643' 'E27409F51D1B66337F2D2F
 # 2EBF997C15BDA244B6EBF5D84773BD5E130D1D45
 
 prepare() {
+    echo -e "\nINSTALLATION NOTE:\n"
+    echo -e "If installation fails with 'One or more PGP signatures could not be verified', then install the key with:\n"
+    echo -e "  curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | gpg --import -\n"
+    echo -e "Then retry the installation.\n"
+
     # Validate hashes from the PGP signed "Release" file
     echo "$(grep non-free/binary-amd64/Packages ${pkgname}-${pkgver}-${pkgrel}-Release | tail -n 2 | head -n 1 | awk '{print $1}') ${pkgname}-${pkgver}-${pkgrel}-${CARCH}-Packages" \
         > "${pkgname}-${pkgver}-${CARCH}-Packages.sha256"
