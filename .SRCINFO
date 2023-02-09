@@ -1,7 +1,7 @@
 pkgbase = kodi-addon-vfs-sftp
 	pkgdesc = SFTP Addon for Kodi
-	pkgver = 19.0.1
-	pkgrel = 2
+	pkgver = 20.0.1
+	pkgrel = 1
 	url = https://github.com/xbmc/vfs.sftp
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = kodi-addon-vfs-sftp
 	depends = kodi
 	depends = p8-platform
 	depends = libssh
-	source = git+https://github.com/xbmc/vfs.sftp.git#branch=Matrix
+	source = git+https://github.com/xbmc/vfs.sftp.git#branch=Nexus
 	md5sums = SKIP
 
 pkgname = kodi-addon-vfs-sftp
