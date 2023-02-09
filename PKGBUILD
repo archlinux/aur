@@ -4,7 +4,7 @@ _pkgname=martini
 _pkgver=1.18.1
 pkgname=r-${_pkgname,,}
 pkgver=1.18.1
-pkgrel=1
+pkgrel=3
 pkgdesc='GWAS Incorporating Networks'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -23,7 +23,6 @@ optdepends=(
   r-httr
   r-iranges
   r-knitr
-  r-memoise
   r-readr
   r-rmarkdown
   r-s4vectors
