@@ -2,7 +2,7 @@
 
 pkgname=esdm-git
 _pkgname=esdm
-pkgver=0.4.0.29.g4eee9be
+pkgver=0.6.0.r188.gbfb31be
 pkgrel=1
 pkgdesc="Entropy Source and DRNG Manager"
 url="https://github.com/smuellerDD/esdm"
@@ -17,7 +17,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  git describe --long --tags | sed 's/^v//;s/-/./g'
+  _ver="$(cat meson.build | grep -m1 version: | grep -o "[[:digit:]]*" | paste -sd'.')"
+  printf "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
