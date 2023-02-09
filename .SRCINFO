@@ -1,0 +1,22 @@
+pkgbase = perl-marc-file-xml
+	pkgdesc = Work with MARC data encoded as XML
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://metacpan.org/release/MARC-File-XML
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-warn>=0
+	depends = perl-marc-charset>=0.98
+	depends = perl-marc-record>=2
+	depends = perl-xml-libxml>=1.66
+	provides = perl-marc-xml=1.0.5
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/G/GM/GMCHARLT/MARC-File-XML-1.0.5.tar.gz
+	source = https://salsa.debian.org/perl-team/modules/packages/libmarc-xml-perl/-/raw/master/debian/patches/XML-LibXML-2.0202.patch
+	md5sums = 44c5f6d4658a1a35624a58adb2575bb0
+	md5sums = 40b6418ab98ac7c661c04a1e1fd00fa8
+	sha512sums = 9a2ea2e3bb19a43cb4870cbc3a647c09ce02df91a91251e4646d7804efc47af45676c65ad4504ef7f16e49e2eae008866d0d72c69f8a684f079b8666ceb58dcc
+	sha512sums = face7d1a1edb686d3a762dd099e518a579ba1fff36a6d38b4115c2697871ccb423b9bafa1461c54ff3c8361b3ec956dc3ea0869a4853543ec9e76db97bd2b298
+
+pkgname = perl-marc-file-xml
