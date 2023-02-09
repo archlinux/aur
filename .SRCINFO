@@ -1,7 +1,7 @@
 pkgbase = r-pkgmaker
 	pkgdesc = Development Utilities for R Packages
-	pkgver = 0.32.2
-	pkgrel = 7
+	pkgver = 0.32.7
+	pkgrel = 1
 	url = https://cran.r-project.org/package=pkgmaker
 	arch = any
 	license = GPL
@@ -23,7 +23,7 @@ pkgbase = r-pkgmaker
 	optdepends = r-runit
 	optdepends = r-testthat
 	optdepends = r-yaml
-	source = https://cran.r-project.org/src/contrib/Archive/pkgmaker/pkgmaker_0.32.2.tar.gz
-	sha256sums = ce45b22def771a9c90a414093823e6befe7e23489c500eeccee5154b44d3ef91
+	source = https://cran.r-project.org/src/contrib/pkgmaker_0.32.7.tar.gz
+	sha256sums = c646a62ad63f5e41ee739cac5723d81c062f9c7cf4edc1613bf9eb113996f630
 
 pkgname = r-pkgmaker
