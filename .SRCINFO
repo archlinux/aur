@@ -1,0 +1,14 @@
+pkgbase = sierra-death-generator-git
+	pkgdesc = Creates 'game over' pictures.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/foone/SierraDeathGenerator
+	arch = any
+	license = AGPL3
+	makedepends = git
+	provides = sierra-death-generator
+	conflicts = sierra-death-generator
+	source = sierra-death-generator::git+https://github.com/foone/SierraDeathGenerator
+	sha256sums = SKIP
+
+pkgname = sierra-death-generator-git
