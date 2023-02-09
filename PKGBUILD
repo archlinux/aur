@@ -27,7 +27,7 @@ build() {
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+    -ldflags "-s -w -linkmode external -extldflags \"${LDFLAGS}\"" \
     -o $_binname "cmd/privatebin/main.go"
 }
 
