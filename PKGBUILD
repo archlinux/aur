@@ -196,7 +196,7 @@ prepare() {
 	)
 	for submodule in ${_submodules[@]} ; do
 		git submodule init "$submodule"
-		git submodule set-url "$submodule" "$srcdir/${submodule##*/}"
+		git submodule set-url "$submodule" "$srcdir/${submodule}"
 		git -c protocol.file.allow=always submodule update "$submodule"
 	done
 
