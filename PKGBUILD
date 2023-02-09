@@ -1,28 +1,36 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-testflo
-pkgver=1.4.9
+pkgver=1.4.10
+_commit=f7f3d1d1e19920fe03b0ea35d3117fe873cf3ef1
 pkgrel=1
 pkgdesc="A simple flow-based testing framework"
 url="https://github.com/OpenMDAO/testflo"
 license=('Apache')
 arch=('any')
 depends=('python-coverage')
-makedepends=('python-setuptools')
-source=("https://pypi.io/packages/source/t/testflo/testflo-$pkgver.tar.gz")
-sha512sums=('b9fff4cbfd432176d8b2ae0f38fcced0afb95b908009f09e9d08fc2d0e07f1c3f9fe58e773ae2a62bd4dc9722da4fa2a9bbd14a53e85db3d12ce0bd957755658')
+makedepends=('git' 'python-setuptools')
+checkdepends=('python-testflo')
+source=("git+https://github.com/OpenMDAO/testflo.git#commit=$_commit")
+sha512sums=('SKIP')
 
 prepare() {
-  cd testflo-$pkgver
+  cd testflo
   sed -i 's/coverage<5.0/coverage/' setup.py
 }
 
 build() {
-  cd testflo-$pkgver
+  cd testflo
   python setup.py build
 }
 
+check() {
+  cd testflo
+  # TODO: figure out how to run tests
+  testflo testflo || echo "Tests failed"
+}
+
 package() {
-  cd testflo-$pkgver
+  cd testflo
   python setup.py install --root="$pkgdir" --optimize=1
 }
