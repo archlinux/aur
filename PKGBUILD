@@ -1,92 +1,50 @@
-# Maintainer: XZS <d dot f dot fischer at web dot de>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: XZS <d dot f dot fischer at web dot de>
 # Contributor: sanduhrs <stefan.auditor@erdfisch.de>
-# This PKGBUILD is maintained on GitHub <https://github.com/dffischer/gnome-shell-extensions>.
-# You may find it convenient to file issues and pull requests there.
-
 pkgname=gnome-shell-extension-caffeine-git
-pkgver=37.r0.g1ae1625
+_uuid=caffeine@patapon.info
+pkgver=44.r4.gd4c4897
 pkgrel=1
-pkgdesc="Fill the cup to inhibit auto suspend and screensaver."
-arch=(any)
+pkgdesc="Disable the screensaver and auto suspend"
+arch=('any')
 url="https://github.com/eonpatapon/gnome-shell-extension-caffeine"
-license=(GPLv2)
+license=('GPL2')
+depends=('gnome-shell')
+makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("git+https://github.com/eonpatapon/gnome-shell-extension-caffeine.git")
+sha256sums=('SKIP')
 
-makedepends+=('git')
-source+=("${_gitname:=${pkgname%-git}}::${_giturl:-git+$url}")
-for integ in $(get_integlist)
-do
-  typeset -n array="${integ}sums"
-  array+=('SKIP')
-done
-provides+=("$_gitname=$pkgver")
-conflicts+=("$_gitname")
 pkgver() {
-  cd ${_gitname:-$pkgname}
+  cd "$srcdir/${pkgname%-git}"
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
-package() {
-  for function in $(declare -F | grep -Po 'package_[[:digit:]]+[[:alpha:]_]*$')
-  do
-    $function
-  done
-}
-package_01_locate() {
-  msg2 'Locating extension...'
-  cd "$(find -name 'metadata.json' -execdir test -e extension.js \; \
-    -printf '%C@ %h\n' | sort -nr | sed 's/^.* //;q' )"
-  extname=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
-  destdir="$pkgdir/usr/share/gnome-shell/extensions/$extname"
-}
-
-package_02_install() {
-  msg2 'Installing extension code...'
-  find -maxdepth 1 \( -iname '*.js*' -or -iname '*.css' -or -iname '*.ui' \) \
-    -exec install -Dm644 -t "$destdir" '{}' +
-}
-depends+=(gnome-shell-extensions)
 
 build() {
-  cd "$_gitname"
-  ./update-locale.sh
+  cd "$srcdir/${pkgname%-git}"
+  make build
+
+  cd "$_uuid"
+  gnome-extensions pack \
+    --extra-source=icons/ \
+    --extra-source=preferences/ \
+    --force
 }
 
-package_09_icons() {
-  cp -r --no-preserve=ownership,mode icons "$destdir"
-}
+package() {
+  cd "$srcdir/${pkgname%-git}"
+  install -d "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
+  bsdtar -xvf "$_uuid/$_uuid.shell-extension.zip" -C \
+    "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/"
 
-package_10_locale() {
-  msg2 'Installing translations...'
-  (
-    cd locale
-    for locale in */
-    do
-      install -Dm644 -t "$pkgdir/usr/share/locale/$locale/LC_MESSAGES" "$locale/LC_MESSAGES"/*.mo
+  install -Dm644 "$_uuid/schemas/org.gnome.shell.extensions.caffeine.gschema.xml" -t \
+    "$pkgdir/usr/share/glib-2.0/schemas/"
+  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/schemas/"
+
+  cd "$_uuid/locale"
+    for locale in */; do
+      install -Dm644 "${locale}/LC_MESSAGES"/*.mo -t \
+        "$pkgdir/usr/share/locale/${locale}/LC_MESSAGES/"
     done
-  )
-}
-if [ -z "$install" ]
-then
-  install=gschemas.install
-fi
-
-package_10_schemas() {
-  msg2 'Installing schemas...'
-  find -name '*.xml' -exec install -Dm644 -t "$pkgdir/usr/share/glib-2.0/schemas" '{}' +
-}
-depends[125]=gnome-shell
-
-package_20_version() {
-  local compatibles=($(\
-    find -path ./pkg -type d -prune -o \
-    -name metadata.json -exec cat '{}' \; | \
-    tr -d '\n' | grep -Po '(?<="shell-version": \[)[^\[\]]*(?=\])' | \
-    tr '\n," ' '\n' | sed 's/3\.//g;/^$/d' | sort -n -t. -k 1,1))
-  depends+=("gnome-shell>=3.${compatibles[0]}")
-  local max="${compatibles[-1]}"
-  if [ "$max" != $(
-    gnome-shell --version | grep -Po '(?<=GNOME Shell 3\.)[[:digit:]]+'
-  ) ]; then
-    depends+=("gnome-shell<3.$((${max%%.*} + 1))")
-  fi
-  unset depends[125]
 }
