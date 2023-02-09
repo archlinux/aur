@@ -1,7 +1,7 @@
 pkgbase = lr2oraja
 	pkgdesc = The latest build of beatoraja, but compiled using LR2 judges and gauges.
 	pkgver = build1696491429
-	pkgrel = 10
+	pkgrel = 11
 	arch = x86_64
 	license = GPL3
 	license = GPL3
@@ -19,7 +19,7 @@ pkgbase = lr2oraja
 	sha256sums = ef23b516537b4f52c306fd61ab9c4197192c06b7202b3b27b63481fec1042a26
 	sha256sums = 64bfa08c8f1f4518fe73281963fa3234bfb451551947f91270d2d14e9d621d5d
 	sha256sums = a65d1290d3ee7710f9327c040e6369bf7587eb3609835ed782caaf0ac02d84ed
-	sha256sums = 9c91742aac348b466f7614bb0e8073d85ebdf1efa16b906766082fa9af531a8b
+	sha256sums = a1c1d6ee606d042934ec1ee503a9300d5b225f3c4031be144a3c5bca24f0d042
 	sha256sums = 0ec1382690cd847055d1b8e6da36ad6846598b45b25acca5eb5e301a5048da03
 
 pkgname = lr2oraja
