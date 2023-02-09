@@ -1,0 +1,13 @@
+pkgbase = noto-color-emoji-fontconfig-no-binding
+	pkgdesc = Fontconfig to enable Noto Color Emoji fonts where emojis can be displayed, but without binding to prevent errors upon replacing some symbol fonts e.g. Segoe UI Symbol
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = noto-fonts-emoji
+	provides = noto-color-emoji-fontconfig
+	conflicts = noto-color-emoji-fontconfig
+	source = 75-noto-color-emoji.conf
+	sha256sums = 0ef3c386c99d34c61e1e64f00c0140a373ce4e09899b9372a29e904afe0326ce
+
+pkgname = noto-color-emoji-fontconfig-no-binding
