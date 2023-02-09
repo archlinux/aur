@@ -1,0 +1,2 @@
+#!/usr/bin/bash
+electron21 -r /usr/lib/learnX-companion/wrapper.js /usr/lib/learnX-companion/app.asar "$@"

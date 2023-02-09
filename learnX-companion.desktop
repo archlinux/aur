@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=Utility
+Exec=learnX-companion %u
+Icon=learnX-companion.png
+Name=learnX Companion
+Comment=清华大学网络学堂 App 助手，为 learnX 提供个性化的推送通知支持。
+StartupNotify=true
+Terminal=false
+Type=Application
