@@ -1,7 +1,7 @@
 pkgbase = speedifyui
 	pkgdesc = Use multiple internet connections in parallel
 	pkgver = 13.0.1.10802
-	pkgrel = 1
+	pkgrel = 2
 	url = https://speedify.com/
 	arch = x86_64
 	arch = aarch64
@@ -16,7 +16,6 @@ pkgbase = speedifyui
 	sha512sums_x86_64 = 4ae0941bdc46304a2d40aa55200961a67c0a9be5061509e75e0c474af07a26ca6a486062d015d07ac6b4a718c1bb722a47a447ac26982ccfbe8e5502520d46a5
 	source_aarch64 = http://apt.connectify.me/pool/main/s/speedifyui/speedifyui_13.0.1-10802_arm64.deb
 	md5sums_aarch64 = SKIP
-	source_armv7h = http://apt.connectify.me/pool/main/s/speedifyui/speedifyui_13.0.1-10802_armhf.deb
 	source_armv7h = http://apt.connectify.me/pool/main/s/speedifyui/speedifyui_13.0.1-10802_armhf.deb
 	md5sums_armv7h = SKIP
 
