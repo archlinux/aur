@@ -26,7 +26,7 @@ depends=('qt5-webengine' 'qt5-x11extras' 'libxinerama'
 # 'qt5-lottie' 'qt5-tools'  'qt5-networkauth' 'qt5-quickcontrols2'
 # 'qt5-remoteobjects' 'qt5-script' 'qt5-scxml' 'qt5-svg'
 # 'qt5-speech' 'qt5-wayland' 'qt5-websockets' 'qt5-webview' 'qt5-xmlpatterns'
-optdepends=('bubblewrap: Fix abnormal text color in dark mode.')
+optdepends=('bubblewrap: Fix abnormal text color in dark mode and prevent messing files.')
 makedepends=('patchelf')
 sha512sums=('2a9319f97a8c3066f0657ce261ef8e9aa0cef6acec00abe6a2a43a42f1414e48c0528cb74267c1b30279536abf26e217e80a406ebf7e4723af25badaa7106a6d'
     '48e40dfaf425f096802bfff081a9a1a3122f1f677227f1dbe67cfb37cef7ab8fe6060258161c79b07cd559c4022de6cea42245400ccfd1eac8456c7b42260550')
