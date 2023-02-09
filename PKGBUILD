@@ -25,6 +25,7 @@ build() {
 	cd movit
 	./autogen.sh
     sed -ie 's/libpng12/libpng/g' configure
+    sed -ie 's/CXXFLAGS="$CXXFLAGS -std=gnu++11/CXXFLAGS="$CXXFLAGS -std=gnu++14/' configure
 	./configure --prefix=/usr
 	make GTEST_DIR=/usr/src/googletest
 }
