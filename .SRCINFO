@@ -1,13 +1,14 @@
 pkgbase = r-statnet.common
 	pkgdesc = Common R Scripts and Utilities Used by the Statnet Project Software
 	pkgver = 4.8.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=statnet.common
 	arch = x86_64
 	license = GPL
 	depends = r
 	depends = r-coda
 	optdepends = r-covr
+	optdepends = r-rlang
 	source = https://cran.r-project.org/src/contrib/statnet.common_4.8.0.tar.gz
 	sha256sums = def999130673fbcb315fecf3620a2559864f51961a828625aa5cd5fded7946f0
 
