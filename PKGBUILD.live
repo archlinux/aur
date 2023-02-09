@@ -3,13 +3,14 @@
 # Contributor: archlinux.info:tdy
 
 pkgname=vitables
-pkgver=3.0.2.r6.gd3e6b4e
+pkgver=3.0.2.r14.g08709d4
 pkgrel=1
 pkgdesc="A GUI browser and editor for PyTables/HDF5 files"
 arch=(any)
 url=https://vitables.org
 license=(GPL3)
-depends=(
+depends=(python-{build,installer,wheel}
+         python-setuptools-scm
   'python-pyqt5'
   'python-qtpy'
   'python-pytables'
@@ -30,12 +31,12 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-  python setup.py build
+  python -m build -wn
 }
 
 package() {
   cd "$pkgname"
-  python setup.py install --root="$pkgdir" --optimize=1
+  python -m installer -d "$pkgdir" dist/*.whl
   install -d "$pkgdir"/usr/share/{applications,pixmaps,doc}
   install -m644 "$srcdir"/vitables.desktop "$pkgdir"/usr/share/applications/
   install -m644 "$srcdir"/vitables.svg "$pkgdir"/usr/share/pixmaps/

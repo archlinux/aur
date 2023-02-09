@@ -4,12 +4,13 @@
 
 pkgname=vitables
 pkgver=3.0.2
-pkgrel=4
+pkgrel=5
 pkgdesc="A GUI browser and editor for PyTables/HDF5 files"
 arch=(any)
 url=https://vitables.org
 license=(GPL3)
-depends=(
+depends=(python-{build,installer,wheel}
+         python-setuptools-scm
   'python-pyqt5'
   'python-qtpy'
   'python-pytables'
@@ -31,12 +32,12 @@ prepare() {
 
 build() {
   cd ViTables-"$pkgver"
-  python setup.py build
+  python -m build -wn
 }
 
 package() {
   cd ViTables-"$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1
+  python -m installer -d "$pkgdir" dist/*.whl
   install -d "$pkgdir"/usr/share/{applications,pixmaps,doc}
   install -m644 "$srcdir"/vitables.desktop "$pkgdir"/usr/share/applications/
   install -m644 "$srcdir"/vitables.svg "$pkgdir"/usr/share/pixmaps/

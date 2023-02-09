@@ -1,11 +1,15 @@
 pkgbase = vitables
 	pkgdesc = A GUI browser and editor for PyTables/HDF5 files
 	pkgver = 3.0.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://vitables.org
 	arch = any
 	license = GPL3
 	makedepends = python-sphinx
+	depends = python-build
+	depends = python-installer
+	depends = python-wheel
+	depends = python-setuptools-scm
 	depends = python-pyqt5
 	depends = python-qtpy
 	depends = python-pytables
