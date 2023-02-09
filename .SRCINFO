@@ -1,6 +1,6 @@
 pkgbase = davix
 	pkgdesc = A client for data and file management over the WebDav, Amazon S3, Microsoft Azure and HTTP protocols.
-	pkgver = 0.8.3
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://github.com/cern-fts/davix
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = davix
 	depends = boost-libs
 	depends = util-linux-libs
 	conflicts = davix-git
-	source = davix-0.8.3.tar.gz::https://github.com/cern-fts/davix/releases/download/R_0_8_3/davix-0.8.3.tar.gz
-	sha256sums = 7e30b5541e08d32dbf5ae03c6bcabeaec063aec10a6647787822227b4541ae3e
+	source = davix-0.8.4.tar.gz::https://github.com/cern-fts/davix/releases/download/R_0_8_4/davix-0.8.4.tar.gz
+	sha256sums = 519d56f746e86ea3fd615bc49e559b520df07e051e1ca3d8c092067958f3b2b7
 
 pkgname = davix

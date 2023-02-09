@@ -2,7 +2,7 @@
 # Contributor: Adam Ehlers Nyholm Thomsen<adament@adament.net>
 
 pkgname=davix
-pkgver=0.8.3
+pkgver=0.8.4
 _pkgver="R_${pkgver//./_}"
 pkgrel=1
 pkgdesc="A client for data and file management over the WebDav, Amazon S3, Microsoft Azure and HTTP protocols."
@@ -15,7 +15,7 @@ checkdepends=('gtest')
 optdepends=()
 conflicts=(davix-git)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/${_pkgver}/davix-${pkgver}.tar.gz")
-sha256sums=('7e30b5541e08d32dbf5ae03c6bcabeaec063aec10a6647787822227b4541ae3e')
+sha256sums=('519d56f746e86ea3fd615bc49e559b520df07e051e1ca3d8c092067958f3b2b7')
 
 build() {
 	cd "${pkgname}-${pkgver}"
