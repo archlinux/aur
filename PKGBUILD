@@ -26,6 +26,7 @@ package() {
 
   cp -r share "$pkgdir/usr/"
 
-  install -Dm755 "$srcdir/net.davidotek.pupgui2.sh" "$pkgdir/usr/bin/net.davidotek.pupgui2"
+  install -Dm755 "$srcdir/net.davidotek.pupgui2.sh" \
+    "$pkgdir/usr/bin/net.davidotek.pupgui2"
   ln -s /usr/bin/net.davidotek.pupgui2 "$pkgdir/usr/bin/$pkgname"
 }
