@@ -1,7 +1,7 @@
 pkgbase = r-prostar
 	pkgdesc = Provides a GUI for DAPAR
 	pkgver = 1.30.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/Prostar
 	arch = any
 	license = Artistic2.0
@@ -34,6 +34,7 @@ pkgbase = r-prostar
 	optdepends = r-gtools
 	optdepends = r-knitr
 	optdepends = r-r.utils
+	optdepends = r-rclipboard
 	optdepends = r-rcolorbrewer
 	optdepends = r-sass
 	optdepends = r-shinytree

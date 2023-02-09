@@ -4,7 +4,7 @@ _pkgname=Prostar
 _pkgver=1.30.3
 pkgname=r-${_pkgname,,}
 pkgver=1.30.3
-pkgrel=1
+pkgrel=3
 pkgdesc='Provides a GUI for DAPAR'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -41,6 +41,7 @@ optdepends=(
   r-gtools
   r-knitr
   r-r.utils
+  r-rclipboard
   r-rcolorbrewer
   r-sass
   r-shinytree
