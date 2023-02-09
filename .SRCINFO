@@ -1,7 +1,7 @@
 pkgbase = r-phangorn
 	pkgdesc = Phylogenetic Reconstruction and Analysis
 	pkgver = 2.11.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=phangorn
 	arch = x86_64
 	license = GPL
@@ -16,7 +16,6 @@ pkgbase = r-phangorn
 	optdepends = r-biostrings
 	optdepends = r-knitr
 	optdepends = r-magick
-	optdepends = r-prettydoc
 	optdepends = r-rgl
 	optdepends = r-rmarkdown
 	optdepends = r-seqinr

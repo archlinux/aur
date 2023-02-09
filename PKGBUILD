@@ -4,7 +4,7 @@ _pkgname=phangorn
 _pkgver=2.11.1
 pkgname=r-${_pkgname,,}
 pkgver=2.11.1
-pkgrel=1
+pkgrel=3
 pkgdesc='Phylogenetic Reconstruction and Analysis'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -23,7 +23,6 @@ optdepends=(
   r-biostrings
   r-knitr
   r-magick
-  r-prettydoc
   r-rgl
   r-rmarkdown
   r-seqinr
