@@ -15,7 +15,7 @@ options=()
 
 pkgver() {
     cd $srcdir/$pkgname
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=8 HEAD)"
 }
 
 build() {
