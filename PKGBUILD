@@ -1,12 +1,12 @@
 # Maintainer: ByteDream
 pkgname=vpuppr-bin
-pkgdesc="VTuber application made with Godot 3.4"
+pkgdesc="VTuber application made with Godot 3.5"
 arch=('x86_64')
 url="https://github.com/virtual-puppet-project/vpuppr"
 license=('MIT')
 
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 
 replaces=(
   'openseeface-gd'
