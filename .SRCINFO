@@ -1,0 +1,26 @@
+pkgbase = subtitld
+	pkgdesc = An open source software to create, edit and transcribe subtitles. It is able to work with SRT, SSA, TTML, SBV, DFXP, VTT, XML, SCC and SAMI file formats
+	pkgver = 2022
+	pkgrel = 1
+	url = https://gitlab.com/jonata/subtitld/-/tree/master/
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = python
+	depends = mpv
+	depends = pyside6
+	depends = python-opengl
+	depends = python-docx
+	depends = python-pycaption
+	depends = python-pysubs2
+	depends = python-pyffms2
+	depends = python-mpv
+	depends = python-libretranslate-git
+	depends = python-translate
+	depends = python-speechrecognition
+	depends = python-pysrt
+	provides = subtitld
+	source = git+https://gitlab.com/jonata/subtitld.git
+	md5sums = SKIP
+
+pkgname = subtitld
