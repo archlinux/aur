@@ -1,14 +1,13 @@
-diff --git a/util/grub.d/00_header.in b/util/grub.d/00_header.in
-index 6a316a5ba..4769004c3 100644
---- a/util/grub.d/00_header.in
-+++ b/util/grub.d/00_header.in
-@@ -33,6 +33,9 @@ for i in ${GRUB_PRELOAD_MODULES} ; do
-   echo "insmod $i"
- done
-
-+# HACK: always load argon2 module
-+echo "insmod argon2"
-+
- if [ "x${GRUB_DEFAULT}" = "x" ] ; then GRUB_DEFAULT=0 ; fi
- if [ "x${GRUB_DEFAULT}" = "xsaved" ] ; then GRUB_DEFAULT='${saved_entry}' ; fi
- if [ "x${GRUB_TIMEOUT}" = "x" ] ; then GRUB_TIMEOUT=5 ; fi
+diff --git a/util/grub-install.c b/util/grub-install.c
+index 53b464804..2bf02a3b6 100644
+--- a/util/grub-install.c
++++ b/util/grub-install.c
+@@ -446,6 +446,8 @@ probe_mods (grub_disk_t disk)
+     {
+       grub_util_cryptodisk_get_abstraction (disk,
+ 					    push_cryptodisk_module, NULL);
++      /* HACK: always push argon2 */
++      grub_install_push_module ("argon2");
+       have_abstractions = 1;
+       have_cryptodisk = 1;
+     }
