@@ -3,8 +3,8 @@
 _java=8
 _pkgname=dragonwell
 pkgname=jdk$_java-$_pkgname-extended-bin
-pkgver=8.13.14
-_pkgver=8u352
+pkgver=8.14.15
+_pkgver=8u362
 pkgrel=1
 pkgdesc="an in-house OpenJDK implementation at Alibaba (Extended Edition)"
 arch=("x86_64" "aarch64")
@@ -21,8 +21,8 @@ provides=(
 )
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/alibaba/dragonwell8/releases/download/dragonwell-extended-${pkgver}_jdk${_pkgver}-ga/Alibaba_Dragonwell_Extended_${pkgver}_x64_linux.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/alibaba/dragonwell8/releases/download/dragonwell-extended-${pkgver}_jdk${_pkgver}-ga/Alibaba_Dragonwell_Extended_${pkgver}_aarch64_linux.tar.gz")
-sha256sums_x86_64=('b9219b1b9d97069591b240a78003d0a8e782e84a8b7b1d08749afe7565d4e409')
-sha256sums_aarch64=('87546423fa952bfbf52a4f8aafa89ae579bc498c5d139d8e30063da625aa5a88')
+sha256sums_x86_64=('c3858ce1c7310fd0984b0c3906a273b27207e40fca426759dbdf570ae748454e')
+sha256sums_aarch64=('77556147af80cc1c0e65e311a01092cee73dd17f1085726ffaed7dffc1f8e1b3')
 
 package() {
     install -d $pkgdir/usr/lib/jvm/java-8-dragonwell-extended

@@ -1,6 +1,6 @@
 pkgbase = jdk8-dragonwell-extended-bin
 	pkgdesc = an in-house OpenJDK implementation at Alibaba (Extended Edition)
-	pkgver = 8.13.14
+	pkgver = 8.14.15
 	pkgrel = 1
 	url = https://dragonwell-jdk.io/
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = jdk8-dragonwell-extended-bin
 	provides = java-runtime-openjdk=8
 	provides = java-runtime-headless=8
 	provides = java-runtime-headless-openjdk=8
-	source_x86_64 = jdk8-dragonwell-extended-bin-8.13.14-x86_64.tar.gz::https://github.com/alibaba/dragonwell8/releases/download/dragonwell-extended-8.13.14_jdk8u352-ga/Alibaba_Dragonwell_Extended_8.13.14_x64_linux.tar.gz
-	sha256sums_x86_64 = b9219b1b9d97069591b240a78003d0a8e782e84a8b7b1d08749afe7565d4e409
-	source_aarch64 = jdk8-dragonwell-extended-bin-8.13.14-aarch64.tar.gz::https://github.com/alibaba/dragonwell8/releases/download/dragonwell-extended-8.13.14_jdk8u352-ga/Alibaba_Dragonwell_Extended_8.13.14_aarch64_linux.tar.gz
-	sha256sums_aarch64 = 87546423fa952bfbf52a4f8aafa89ae579bc498c5d139d8e30063da625aa5a88
+	source_x86_64 = jdk8-dragonwell-extended-bin-8.14.15-x86_64.tar.gz::https://github.com/alibaba/dragonwell8/releases/download/dragonwell-extended-8.14.15_jdk8u362-ga/Alibaba_Dragonwell_Extended_8.14.15_x64_linux.tar.gz
+	sha256sums_x86_64 = c3858ce1c7310fd0984b0c3906a273b27207e40fca426759dbdf570ae748454e
+	source_aarch64 = jdk8-dragonwell-extended-bin-8.14.15-aarch64.tar.gz::https://github.com/alibaba/dragonwell8/releases/download/dragonwell-extended-8.14.15_jdk8u362-ga/Alibaba_Dragonwell_Extended_8.14.15_aarch64_linux.tar.gz
+	sha256sums_aarch64 = 77556147af80cc1c0e65e311a01092cee73dd17f1085726ffaed7dffc1f8e1b3
 
 pkgname = jdk8-dragonwell-extended-bin
