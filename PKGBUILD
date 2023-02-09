@@ -7,13 +7,13 @@
 # The source is about 200 MiB, with an extra ~11 GiB of dependencies downloaded in Setup.sh, and may take several hours to compile.
 # If you want additional options, there are switches below.
 pkgname=unreal-engine
-pkgver=5.1.0
-pkgrel=25
+pkgver=5.1.1
+pkgrel=0
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
 makedepends=('git' 'openssh' 'sed' 'grep' 'glibc' 'wget')
-depends=('icu63' 'sdl2' 'python' 'lld' 'xdg-user-dirs' 'dos2unix' 'openssl-1.1' 'steam' 'coreutils' 'findutils')
+depends=('icu63' 'sdl2' 'python' 'lld' 'xdg-user-dirs' 'dos2unix' 'openssl' 'steam' 'coreutils' 'findutils')
 optdepends=('qt5-base: qmake build system for projects'
             'cmake: build system for projects'
             'qtcreator: IDE for projects'
