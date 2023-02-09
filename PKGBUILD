@@ -3,14 +3,14 @@
 
 pkgbase=wxwidgets
 pkgname=(wxwidgets-gtk3 wxwidgets-qt5 wxwidgets-common)
-pkgver=3.2.1
-pkgrel=2
+pkgver=3.2.2
+pkgrel=1
 arch=(x86_64)
 url='https://wxwidgets.org'
 license=(custom:wxWindows)
 makedepends=(cmake gst-plugins-base glu webkit2gtk libnotify qt5-base sdl2 libmspack)
 source=(https://github.com/wxWidgets/wxWidgets/releases/download/v$pkgver/wxWidgets-$pkgver.tar.bz2)
-sha256sums=('c229976bb413eb88e45cb5dfb68b27890d450149c09b331abd751e7ae0f5fa66')
+sha256sums=('8edf18672b7bc0996ee6b7caa2bee017a9be604aad1ee471e243df7471f5db5d')
 
 build() {
   cmake -B build-gtk3 -S wxWidgets-$pkgver \
@@ -82,7 +82,7 @@ package_wxwidgets-gtk3() {
 
 package_wxwidgets-qt5() {
   pkgdesc='Qt5 implementation of wxWidgets API for GUI'
-  depends=(qt5-base wxwidgets-common libmspack sdl2)
+  depends=(qt5-base wxwidgets-common libmspack sdl2 libtiff)
   provides=(wxwidgets)
 
   DESTDIR="$pkgdir" cmake --install build-qt5
