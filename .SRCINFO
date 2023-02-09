@@ -1,6 +1,6 @@
 pkgbase = quarto-cli-pre-release
 	pkgdesc = Quarto is an open-source scientific and technical publishing system built on [Pandoc](https://pandoc.org). This package tracks pre-release tags of Quarto.
-	pkgver = 1.3.186
+	pkgver = 1.3.189
 	pkgrel = 1
 	url = https://quarto.org/
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = quarto-cli-pre-release
 	conflicts = quarto-cli
 	conflicts = quarto-cli-git
 	options = !strip
-	source = quarto-cli-1.3.186.tar.gz::https://github.com/quarto-dev/quarto-cli/archive/refs/tags/v1.3.186.tar.gz
+	source = quarto-cli-1.3.189.tar.gz::https://github.com/quarto-dev/quarto-cli/archive/refs/tags/v1.3.189.tar.gz
 	source = https://github.com/b-fuze/deno-dom/archive/refs/tags/v0.1.35-alpha-artifacts.tar.gz
-	sha256sums = b4c706982b9017b68cc41816a7eeee8c282d82e1be1dc2e6b08a159a321d7ec3
+	sha256sums = 72409b3c1e64f47198fdbbc7fe3ed92c4de87e790812c178f4f5231b600b7e68
 	sha256sums = 14fb042a6912041b9fda91fd643cf278764d075bc9539aa1e107475915cd896c
 
 pkgname = quarto-cli-pre-release
