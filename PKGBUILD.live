@@ -7,7 +7,7 @@ pkgver=3.0.2.r6.gd3e6b4e
 pkgrel=1
 pkgdesc="A GUI browser and editor for PyTables/HDF5 files"
 arch=(any)
-url=http://vitables.org
+url=https://vitables.org
 license=(GPL3)
 depends=(
   'python-pyqt5'
@@ -22,15 +22,10 @@ source=(
   "vitables.desktop"
   "vitables.svg"
 )
-sha256sums=(
-  'SKIP'
-  'dd793f85d81591edd837a5fb94642dbf3ba488c69c605cbc2c87f74baea8676c'
-  '0be6fdeb2c1f40fe2c478b0a6b9f99bad170d69f1210300d736bb98a5b9edcd8'
-)
 
 pkgver() {
-    cd "$pkgname"
-    git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  cd "$pkgname"
+  git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
@@ -47,3 +42,6 @@ package() {
   mv "$pkgdir"/usr/'*' "$pkgdir"/usr/share/doc/"$pkgname"
 }
 
+sha256sums=('SKIP'
+            'dd793f85d81591edd837a5fb94642dbf3ba488c69c605cbc2c87f74baea8676c'
+            '0be6fdeb2c1f40fe2c478b0a6b9f99bad170d69f1210300d736bb98a5b9edcd8')
