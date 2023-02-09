@@ -1,0 +1,12 @@
+# Lines that start with '#' are comments.
+# For a project mostly in C, the following would be a good set of
+# exclude patterns (uncomment them if you want to use them):
+
+# ignore backups
+*~
+
+# specific paths
+/zram-hibernate/
+/src/
+/pkg/
+/zram-hibernate-git-r[0-9]*.pkg.tar.*
