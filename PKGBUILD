@@ -1,5 +1,5 @@
 # Maintainer: Felix Golatofski <contact@xdfr.de>
-# Maintainer: Nogweii <me@aether.earth>
+# Maintainer: Nogweii <me@nogweii.net>
 # Contributor:  Marcin (CTRL) Wieczorek <marcin@marcin.co>
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
@@ -7,7 +7,7 @@
 run_tests=false
 
 pkgname=certmonger
-pkgver=0.79.15
+pkgver=0.79.17
 pkgrel=1
 pkgdesc="Certificate status monitor and PKI enrollment client"
 arch=(i686 x86_64)
@@ -18,11 +18,11 @@ makedepends=(rpm-tools)
 checkdepends=(diffutils dos2unix expect)
 backup=(etc/certmonger/certmonger.conf)
 install="${pkgname}.install"
-source=("https://pagure.io/certmonger/archive/certmonger-${pkgver}/certmonger-certmonger-${pkgver}.tar.gz")
-sha512sums=("7304ce89736ca9d4dc170e39c43c1c2043dc76176fb4abe63558f2fbca277ee1988f1945e9e763db9e36a630837c436bb89965553059addb2620ee7aa9d652bf")
+source=("https://pagure.io/certmonger/archive/${pkgver}/certmonger-${pkgver}.tar.gz")
+sha512sums=('ed631cbfc0a757143af912549cecf65346994107f27651022ada8c70f0ed1bac7ee053a99b9a13290b844999710a3207aa0e7718428f3a3b6e5dd0d5db3a88a9')
 
 build() {
-  cd "${pkgname}-${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   unset KRB5_CONFIG
   ./autogen.sh
   ./configure \
@@ -41,13 +41,13 @@ build() {
 }
 
 check() {
-  cd "${pkgname}-${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   if [[ "${run_tests}" == "true" ]]; then
     make check
   fi
 }
 
 package() {
-  cd "${pkgname}-${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}/" install
 }
