@@ -11,7 +11,7 @@ pkgrel=1
 arch=('x86_64')
 url="http://www.etlegacy.com/"
 license=('GPL3' 'custom')
-makedepends=('cmake' 'zip' 'alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libvorbis' 'libtheora' 'minizip' 'openal>=1.14' 'sdl2')
+makedepends=('cmake' 'zip' 'alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libvorbis' 'libtheora' 'minizip' 'openal>=1.14' 'sdl2' 'cjson')
 source=("${_pkgbase}-${pkgver}.tar.gz::https://github.com/etlegacy/$_pkgbase/archive/v$pkgver.tar.gz"
         "${_pkgbase}-${pkgver}-${arch}-binary.tar.gz::http://www.etlegacy.com/download/file/${_binaryversion}")
 #noextract=("etl_bin_v$pkgver.pk3" "pak3_v$pkgver.pk3")
