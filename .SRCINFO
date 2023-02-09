@@ -1,8 +1,9 @@
 pkgbase = certspotter-git
 	pkgdesc = Certificate Transparency Log Monitor - git version
-	pkgver = 0.14.0.r0.g3d1bdb2
+	pkgver = 0.15.0.r0.gce81f90
 	pkgrel = 1
 	url = https://github.com/SSLMate/certspotter
+	install = certspotter.install
 	arch = x86_64
 	arch = i686
 	arch = arm
@@ -11,10 +12,13 @@ pkgbase = certspotter-git
 	arch = aarch64
 	license = MPL2
 	makedepends = git
-	makedepends = go>=1.17
+	makedepends = go>=1.19
+	makedepends = lowdown
 	provides = certspotter
 	conflicts = certspotter
 	source = certspotter-git::git+https://github.com/SSLMate/certspotter
+	source = certspotter-git-0.15.0.r0.gce81f90-1-fix-errorf.diff::https://github.com/SSLMate/certspotter/pull/67.diff
 	sha512sums = SKIP
+	sha512sums = 9a27893c2ddbb7634e4316b63f7b6ba4686a44d27b9d128f627514fface7251f154d4dbb1300ba39d1290149a3c0879d232f523681cf577ddcc9e8b519fae0eb
 
 pkgname = certspotter-git
