@@ -1,19 +1,16 @@
 pkgbase = libfvde-git
 	pkgdesc = Library and tools to access FileVault Drive Encryption (FVDE) encrypted volumes
-	pkgver = 20180108.r3.g53a2145
+	pkgver = 20220915.r5.g6cc326a
 	pkgrel = 1
 	url = https://github.com/libyal/libfvde/wiki
-	arch = i686
-	arch = x86_64
 	arch = any
 	license = LGPL3
 	makedepends = git
 	depends = libxml2
 	depends = openssl
-	provides = libfvde=20180108.r3.g53a2145
+	provides = libfvde=20220915.r5.g6cc326a
 	conflicts = libfvde
 	source = libfvde::git+https://github.com/libyal/libfvde.git
 	md5sums = SKIP
 
 pkgname = libfvde-git
-

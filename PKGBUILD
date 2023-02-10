@@ -1,11 +1,12 @@
-# Maintainer: James An <james@jamesan.ca>
+# Maintainer: Nichlas Severinsen <ns@nsz.no>
+# Contributor: James An <james@jamesan.ca>
 
 pkgname=libfvde-git
 _pkgname=${pkgname%-git}
-pkgver=20180108.r3.g53a2145
+pkgver=20220915.r5.g6cc326a
 pkgrel=1
 pkgdesc='Library and tools to access FileVault Drive Encryption (FVDE) encrypted volumes'
-arch=('i686' 'x86_64' 'any')
+arch=('any')
 url="https://github.com/libyal/$_pkgname/wiki"
 license=('LGPL3')
 depends=('libxml2' 'openssl')
