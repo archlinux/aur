@@ -2,7 +2,7 @@
 
 pkgname=intellij-idea-ce-eap
 _pkgname=idea-IC
-_buildver=231.6471.13
+_buildver=231.6890.12
 _veryear=2023
 _verrelease=1
 _verextra=
