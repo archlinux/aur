@@ -1,7 +1,7 @@
 pkgbase = gitmux-bin
 	pkgdesc = Git in your tmux status bar
 	pkgver = 0.7.10
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/arl/gitmux
 	arch = x86_64
 	arch = i686

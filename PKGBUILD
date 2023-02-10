@@ -3,7 +3,7 @@
 pkgname=gitmux-bin
 _pkgname="${pkgname%-bin}"
 pkgver=0.7.10
-pkgrel=3
+pkgrel=4
 pkgdesc="Git in your tmux status bar"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/arl/gitmux"
@@ -20,6 +20,6 @@ sha256sums_aarch64=('a7209f9ef368e5e723ddb5719bc05b09ce119af4a91965a5fb90f3ca503
 
 package() {
 	install -Dm 755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-	install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 	install -Dm 644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+	install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
