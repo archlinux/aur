@@ -7,7 +7,6 @@ pkgbase = lib32-pangox-compat
 	license = LGPL
 	makedepends = git
 	makedepends = gcc-multilib
-	makedepends = pkgconf
 	depends = pango
 	depends = lib32-pango
 	depends = pangox-compat

@@ -12,7 +12,7 @@ arch=('x86_64')
 url='http://www.pango.org/'
 license=('LGPL')
 depends=('pango' 'lib32-pango' "$_pkgname")
-makedepends=('git' 'gcc-multilib' 'pkgconf')
+makedepends=('git' 'gcc-multilib')
 source=("git+https://gitlab.gnome.org/Archive/$_pkgname#commit=edb9e0904d04d1da02bba7b78601a2aba05aaa47"
         '0001-Re-add-pango_x_get_shaper_map-it-is-still-used-in-th.patch'
         '0002-disable-shaper.patch')
