@@ -1,6 +1,6 @@
 pkgbase = pdmaner
 	pkgdesc = 一款多操作系统开源免费的桌面版关系数据库模型建模工具
-	pkgver = 4.1.4
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://gitee.com/robergroup/pdmaner
 	arch = x86_64
