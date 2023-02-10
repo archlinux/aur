@@ -1,8 +1,8 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Joshua Schmeder <joshua@schmeder.dev>
 
 _pkgname='moar'
 pkgname="${_pkgname}-git"
-pkgver=1.1.r0.geace381
+pkgver=v1.11.4.r1.g053e354
 pkgrel=1
 pkgdesc='Drop-in replacement for the less pager'
 arch=('x86_64')
@@ -32,7 +32,8 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   cd "${_pkgname}"
-  go build -v -o "${_pkgname}"
+  export VERSION="$(git describe --tags --dirty --always)"
+  go build -v -ldflags="-s -w -X main.versionString=$VERSION" -o "${_pkgname}"
 }
 
 package() {
@@ -40,6 +41,5 @@ package() {
   install -Dvm755 "${_pkgname}" -t "${pkgdir}/usr/bin"
   install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${_pkgname}"
   install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+  install -Dvm644 "${_pkgname}.1" -t "${pkgdir}/usr/share/man/man1"
 }
-
-# vim: ts=2 sw=2 et:
