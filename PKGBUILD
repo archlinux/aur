@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RPostgreSQL
-_pkgver=0.7-4
+_pkgver=0.7-5
 pkgname=r-${_pkgname,,}
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="R Interface to the 'PostgreSQL' Database System"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(
   postgresql-libs
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b6adf60094f2b03dff1959147cde7f61c2f4c4576d77b2a263c63f8e3cd556c6')
+sha256sums=('6b5401ee55bd948ae7bc84520d789ceb422533a7d5e5bd6e10e3b54447f29fa1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
