@@ -1,7 +1,7 @@
 pkgbase = otpclient
 	pkgdesc = A simple GTK+ v3 TOTP/HOTP client
 	pkgver = 3.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/paolostivanin/OTPClient
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = otpclient
 	depends = gtk3>=3.22
 	depends = jansson>=2.10
 	depends = libzip
-	depends = libcotp
+	depends = libcotp>=2.0.0
 	depends = zbar>=0.20
 	depends = protobuf>=3.6
 	depends = protobuf-c>=1.3.0
