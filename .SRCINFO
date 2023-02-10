@@ -1,0 +1,20 @@
+pkgbase = starfive-img-gpu
+	pkgdesc = This is a cut down version of the package provided from the github. Not including the base libgl and vulkan files to avoid conflics with mesa.
+	pkgver = 1.17.6210866
+	pkgrel = 1
+	url = https://github.com/starfive-tech/soft_3rdpart/tree/JH7110_VisionFive2_devel
+	arch = x86_64
+	license = custom
+	provides = libgl
+	provides = libegl
+	provides = libgles
+	provides = libEGL.so=1-64
+	provides = libGL.so=1-64
+	provides = libGLESv2.so=2-64
+	provides = libGLX.so=0-64
+	provides = libGLdispatch.so=0-64
+	provides = libOpenGL.so=0-64
+	source = https://github.com/starfive-tech/soft_3rdpart/raw/JH7110_VisionFive2_devel/IMG_GPU/out/img-gpu-powervr-bin-1.17.6210866.tar.gz
+	sha256sums = 8ef5eba77c776e0d4444d819e12c64bfa8eee0ae2cdf90b6eb7a3a9df7bd7ef2
+
+pkgname = starfive-img-gpu
