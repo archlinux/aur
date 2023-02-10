@@ -1,0 +1,13 @@
+pkgbase = litua
+	pkgdesc = Read a text document, receive its tree in Lua and manipulate it
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/typho/litua
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = https://github.com/typho/litua/archive/v1.1.1/litua-1.1.1.tar.gz
+	sha256sums = 99188b027de0274444e1b7cdf7518dcb153470164f338a2b8c729ef3f3ab60fa
+
+pkgname = litua
