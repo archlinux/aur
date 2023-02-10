@@ -1,10 +1,10 @@
 # Maintainer: Hu Butui <hot123tea123@gmail.com>
 
 _pkgname=report
-_pkgver=0.5.5
+_pkgver=0.5.6
 pkgname=r-${_pkgname,,}
-pkgver=0.5.5
-pkgrel=3
+pkgver=0.5.6
+pkgrel=1
 pkgdesc='Automated Reporting of Results and Statistical Models'
 arch=('any')
 url="https://github.com/easystats/report"
@@ -19,7 +19,6 @@ depends=(
   r-performance
 )
 optdepends=(
-  r-bayesfactor
   r-brms
   r-dplyr
   r-ivreg
@@ -31,8 +30,8 @@ optdepends=(
   r-survival
   r-testthat
 )
-source=("${_pkgname}_${pkgver}.tar.gz::https://github.com/easystats/report/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('4a6ae6cb6690a37b654d52d7ea5b25872655bb9a8d250ea934437a7fde74e829')
+source=("${_pkgname}_${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('59ccd95dcbba61c6f943b99707eba511a9506d68d4c5ed231264dc1827df392b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

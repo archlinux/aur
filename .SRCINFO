@@ -1,7 +1,7 @@
 pkgbase = r-report
 	pkgdesc = Automated Reporting of Results and Statistical Models
-	pkgver = 0.5.5
-	pkgrel = 3
+	pkgver = 0.5.6
+	pkgrel = 1
 	url = https://github.com/easystats/report
 	arch = any
 	license = GPL
@@ -12,7 +12,6 @@ pkgbase = r-report
 	depends = r-insight
 	depends = r-parameters
 	depends = r-performance
-	optdepends = r-bayesfactor
 	optdepends = r-brms
 	optdepends = r-dplyr
 	optdepends = r-ivreg
@@ -23,7 +22,7 @@ pkgbase = r-report
 	optdepends = r-rstanarm
 	optdepends = r-survival
 	optdepends = r-testthat
-	source = report_0.5.5.tar.gz::https://github.com/easystats/report/archive/refs/tags/0.5.5.tar.gz
-	sha256sums = 4a6ae6cb6690a37b654d52d7ea5b25872655bb9a8d250ea934437a7fde74e829
+	source = report_0.5.6.tar.gz::https://github.com/easystats/report/archive/refs/tags/v0.5.6.tar.gz
+	sha256sums = 59ccd95dcbba61c6f943b99707eba511a9506d68d4c5ed231264dc1827df392b
 
 pkgname = r-report
