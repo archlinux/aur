@@ -4,7 +4,7 @@ pkgname=btrfs-compress
 # compress is too generic a name!!! Also the script is unmaintained upstream but still works.
 _pkgname=compress
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="btrfs tool that makes it possible to change +c flags recursively on existing files"
 arch=('x86_64')
