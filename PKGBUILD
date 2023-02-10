@@ -17,7 +17,7 @@ noextract=(
 provides=("deepin-wine6-stable-i386=$pkgver" "deepin-wine6-stable-amd64=$pkgver")
 replaces=("deepin-wine6-stable-i386" "deepin-wine6-stable-amd64")
 conflicts=("deepin-wine6-stable-i386" "deepin-wine6-stable-amd64")
-sha256sums=('baa47abb47c37d4f1c60af279b713d00925870600511f6e997c0a7581cfacc8e')
+sha256sums=('8e4055cc56c70ad1d4dedff515714b625a6264c11e727e99f05bf4b936a77939')
 depends=(
         'alsa-plugins' 'glib2' 'glibc' 'libgphoto2'
         'gst-plugins-base-libs' 'lcms2' 'libldap' 'mpg123'
