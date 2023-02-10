@@ -1,4 +1,4 @@
-pkgbase = dwm-git
+pkgbase = idimitrov-dwm-git
 	pkgdesc = A dynamic window manager for X
 	pkgver = 6.0.41.g3d1090b
 	pkgrel = 1
@@ -17,5 +17,5 @@ pkgbase = dwm-git
 	source = dwm::git+http://git.suckless.org/dwm
 	options = zipman
 
-pkgname = dwm-git
+pkgname = idimitrov-dwm-git
 

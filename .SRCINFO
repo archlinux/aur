@@ -1,4 +1,4 @@
-pkgbase = dwm-git
+pkgbase = idimitrov-dwm-git
 	pkgdesc = A dynamic window manager for X
 	pkgver = 6.3.r0.d39e2f34
 	pkgrel = 1
@@ -21,4 +21,4 @@ pkgbase = dwm-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = dwm-git
+pkgname = idimitrov-dwm-git
