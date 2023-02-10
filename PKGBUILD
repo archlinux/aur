@@ -6,16 +6,16 @@ arch=(any)
 url='https://typecho.org/'
 license=(GPL)
 install="$pkgname.install"
-depends=("php7"
-	 "php7-fpm"
-	 "php7-cgi")
+depends=("php"
+	 "php-fpm"
+	 "php-cgi")
 optdepends=('apache: Web server'
 	    'nginx: Web server'
             'mariadb: Database server'
 	    'sqlite: Database server'
-	    'php7-sqlite: PHP extension for sqlite'
+	    'php-sqlite: PHP extension for sqlite'
 	    'postgresql: Database server'
-	    'php7-pgsql: PHP extension for postgresql'
+	    'php-pgsql: PHP extension for postgresql'
            )
 source=("https://github.com/typecho/typecho/archive/refs/tags/v${pkgver}.tar.gz")
 b2sums=('b711f50511f60ab228c880f57bc848c678b58a56e3d9b2f037d27308ca75d8212fc14fb1292646048bbe8afb0fc99edb7bf06f8a5386f72d29a8e2a4d59bed32')
