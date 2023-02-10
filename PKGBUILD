@@ -6,7 +6,7 @@
 pkgname=pa-applet-git
 _pkgname="${pkgname%-git}"
 pkgver=r19.3b4f8b3
-pkgrel=7
+pkgrel=8
 pkgdesc="PulseAudio control applet"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/fernandotcl/pa-applet"
@@ -32,9 +32,8 @@ build() {
 
 package() {
         cd "${_pkgname}"
-
 	make DESTDIR="${pkgdir}" install
 
-        install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+        install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm 644 README "${pkgdir}/usr/share/doc/${_pkgname}/README"
 }
