@@ -1,0 +1,13 @@
+pkgbase = bayarea
+	pkgdesc = Bayesian inference of historical biogeography for many discrete areas https://doi.org/10.1093/sysbio/syt040
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/mlandis/bayarea
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = git
+	source = git+https://github.com/mlandis/bayarea.git
+	md5sums = SKIP
+
+pkgname = bayarea
