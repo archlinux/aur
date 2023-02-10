@@ -1,0 +1,14 @@
+pkgbase = riichi-city
+	pkgdesc = Riichi City is a competitive urban-style Anime mahjong game.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://www.mahjong-jp.com
+	arch = x86_64
+	license = custom
+	depends = libsecret
+	source = https://d3qgi0t347dz44.cloudfront.net/release/linuxpack/Linux_default_2.0.0.zip
+	source = https://www.mahjong-jp.com/static/img/common/termsofService_en.png
+	sha256sums = 2f1eb475c9bdd60bab843458510ce6abf4cf957f740b66f9caf1dec16ffea135
+	sha256sums = 20983b5d5ed2dc4cfd6043f7f36eff2314be3e0e1664105fc2cb1301d2c3ddfd
+
+pkgname = riichi-city
