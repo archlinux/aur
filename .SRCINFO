@@ -14,9 +14,8 @@ pkgbase = lib32-pangox-compat
 	source = git+https://gitlab.gnome.org/Archive/pangox-compat#commit=edb9e0904d04d1da02bba7b78601a2aba05aaa47
 	source = 0001-Re-add-pango_x_get_shaper_map-it-is-still-used-in-th.patch
 	source = 0002-disable-shaper.patch
-	md5sums = SKIP
-	md5sums = e4ab908c4501116d492c7cc0b70ab305
-	md5sums = 8d78182e9747b425b223fa8a2b82d210
+	b2sums = SKIP
+	b2sums = 297fda421694ca8a540171d1f564d8fad8f57a771f89d41dead260591438415169167127e3bce32e011634e878bf6f4754c2f48357c6cf216b1f3235016c73ec
+	b2sums = cf719589e81f9c53814b2271555a59063008fa8ab6ab7081a2a7c76d568c3920f6957a4955ee7c27d30e06e3dfa2de47b898b52eb6fb77f188ad334610bd6452
 
 pkgname = lib32-pangox-compat
-
