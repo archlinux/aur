@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-pomodoro
 	pkgdesc = A time management utility for GNOME based on the pomodoro technique
-	pkgver = 0.22.0
+	pkgver = 0.22.1
 	pkgrel = 1
 	url = https://github.com/gnome-pomodoro/gnome-pomodoro
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = gnome-shell-pomodoro
 	depends = sqlite
 	depends = gstreamer
 	depends = libcanberra
-	source = gnome-shell-pomodoro-0.22.0.tar.gz::https://github.com/gnome-pomodoro/gnome-pomodoro/archive/0.22.0.tar.gz
-	sha256sums = d227abfd69e3de7b7301814171fb6f4e2a2841bd7b91fab3e51cc5ae9757afcf
+	source = gnome-shell-pomodoro-0.22.1.tar.gz::https://github.com/gnome-pomodoro/gnome-pomodoro/archive/0.22.1.tar.gz
+	sha256sums = a462e46c9aa73bbc26ad033c4d238e5f82efdf8ccfaaf830136b39dfbd3b007b
 
 pkgname = gnome-shell-pomodoro
