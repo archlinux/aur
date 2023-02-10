@@ -1,6 +1,6 @@
---- a/photutils/datasets/load.py	2022-07-13 11:03:16.000000000 +0800
-+++ b/photutils/datasets/load.py	2022-07-13 15:21:23.655360328 +0800
-@@ -105,8 +105,12 @@
+--- a/photutils/datasets/load.py	2022-12-10 03:03:25.000000000 +0800
++++ b/photutils/datasets/load.py	2022-12-30 22:38:36.700384089 +0800
+@@ -102,8 +102,12 @@
          hdu = load_spitzer_image()
          plt.imshow(hdu.data, origin='lower', vmax=50)
      """
@@ -12,9 +12,9 @@
 +    except (URLError, HTTPError):  # timeout or not found
 +        path = get_path('spitzer_example_image.fits', location='local',
 +                        show_progress=show_progress)
-     hdu = fits.open(path)[0]
  
-     return hdu
+     with fits.open(path) as hdulist:
+         data = hdulist[0].data
 @@ -149,8 +153,12 @@
          plt.xlim(18.39, 18.05)
          plt.ylim(0.13, 0.30)
@@ -39,10 +39,10 @@
 +        path = get_path(filepath, location='remote', show_progress=show_progress)
 +    except Exception:  # timeout or not found
 +        path = get_path(filepath, location='local', show_progress=show_progress)
-     hdu = fits.open(path)[0]
- 
-     return hdu
-@@ -287,8 +298,12 @@
+     with fits.open(path) as hdulist:
+         data = hdulist[0].data
+         header = hdulist[0].header
+@@ -288,8 +299,12 @@
          hdu = load_star_image()
          plt.imshow(hdu.data, origin='lower', interpolation='nearest')
      """
@@ -54,10 +54,10 @@
 +    except Exception:  # timeout or not found
 +        path = get_path('M6707HH.fits', location='local',
 +                        show_progress=show_progress)
-     hdu = fits.open(path)[0]
- 
-     return hdu
-@@ -322,9 +337,14 @@
+     with fits.open(path) as hdulist:
+         data = hdulist[0].data
+         header = hdulist[0].header
+@@ -325,9 +340,14 @@
          hdu = load_simulated_hst_star_image()
          plt.imshow(hdu.data, origin='lower', interpolation='nearest')
      """
@@ -72,6 +72,6 @@
 +        path = get_path('hst_wfc3ir_f160w_simulated_starfield.fits',
 +                        location='local',
 +                        show_progress=show_progress)
-     hdu = fits.open(path)[0]
- 
-     return hdu
+     with fits.open(path) as hdulist:
+         data = hdulist[0].data
+         header = hdulist[0].header

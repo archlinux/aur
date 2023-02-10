@@ -1,36 +1,41 @@
 pkgbase = python-photutils
 	pkgdesc = Astropy Affiliated package for image photometry utilities
-	pkgver = 1.5.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = http://photutils.readthedocs.io
 	arch = i686
 	arch = x86_64
 	license = BSD
-	checkdepends = python-pytest-astropy
+	checkdepends = python-pytest-astropy-header
+	checkdepends = python-pytest-doctestplus
+	checkdepends = python-pytest-remotedata
+	checkdepends = python-matplotlib
 	checkdepends = python-gwcs
-	makedepends = cython>=0.29.22
+	makedepends = cython>=0.29.30
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-extension-helpers
 	makedepends = python-numpy
+	makedepends = python-sphinx-astropy
 	makedepends = python-astropy
+	makedepends = python-scipy
 	makedepends = python-scikit-learn
 	makedepends = python-scikit-image
-	makedepends = python-sphinx-astropy
 	makedepends = graphviz
-	source = https://files.pythonhosted.org/packages/source/p/photutils/photutils-1.5.0.tar.gz
-	md5sums = c010166dc3ecf3f44a87c229aa5bc7bd
+	source = https://files.pythonhosted.org/packages/source/p/photutils/photutils-1.6.0.tar.gz
+	md5sums = 3d00daf11259b180cb7add9bd02c3b60
 
 pkgname = python-photutils
 	depends = python>=3.8
-	depends = python-numpy>=1.18
+	depends = python-numpy>=1.20
 	depends = python-astropy>=5.0
+	depends = python-setuptools
 	optdepends = python-scipy>=1.6.0: To power a variety of features in several modules (strongly recommended)
-	optdepends = python-scikit-image>=0.15.0: Used in deblend_sources for deblending segmented sources
-	optdepends = python-scikit-learn>=0.19: Used in DBSCANGroup to create star groups
-	optdepends = python-matplotlib>=3.1: To power a variety of plotting features (e.g. plotting apertures
+	optdepends = python-scikit-image>=0.18.0: Used in deblend_sources for deblending segmented sources
+	optdepends = python-scikit-learn>=1.0: Used in DBSCANGroup to create star groups
+	optdepends = python-matplotlib>=3.3.0: To power a variety of plotting features (e.g. plotting apertures
 	optdepends = python-gwcs>=0.16: Used in make_gwcs to create a simple celestial gwcs object
 	optdepends = python-photutils-doc: Documentation for python-photutils
 	optdepends = python-bottleneck: Improves the performance of sigma clipping and other functionality that may require computing statistics on arrays with NaN values
