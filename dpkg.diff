@@ -1,26 +1,46 @@
 diff --git a/Makefile b/Makefile
-index 8be4721..7933bdb 100644
+index 8be4721..ac34e08 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -33,8 +33,7 @@ $(BUILDDIR): keycodemapdb | submodule
+@@ -16,7 +16,7 @@ all: $(DEBS)
+ 
+ .PHONY: submodule
+ submodule:
+-	test -f "${SRCDIR}/configure" || git submodule update --init --recursive
++	test -f "${SRCDIR}/configure" || git -c protocol.file.allow=always submodule update --init --recursive
+ 
+ $(BUILDDIR): keycodemapdb | submodule
+ 	# check if qemu/ was used for a build
+@@ -33,8 +33,8 @@ $(BUILDDIR): keycodemapdb | submodule
  deb kvm: $(DEBS)
  $(DEB_DBG): $(DEB)
  $(DEB): $(BUILDDIR)
 -	cd $(BUILDDIR); dpkg-buildpackage -b -us -uc -j
 -	lintian $(DEBS)
 +	cd $(BUILDDIR); dpkg-buildpackage -b -us -uc -j -d
++#	lintian $(DEBS)
  
  .PHONY: update
  update:
 diff --git a/debian/rules b/debian/rules
-index 6814f42..6c47867 100755
+index 6d5f882..5bb108d 100755
 --- a/debian/rules
 +++ b/debian/rules
-@@ -180,7 +180,6 @@ binary-arch: build install
+@@ -72,7 +72,7 @@ ${BUILDDIR}/config.status: configure
+ 	--enable-linux-io-uring \
+ 	--enable-numa \
+ 	--enable-opengl \
+-	--enable-rbd \
++	--disable-rbd \
+ 	--enable-seccomp \
+ 	--enable-slirp \
+ 	--enable-spice \
+@@ -179,7 +179,7 @@ binary-arch: build install
  	dh_installdeb
  	# Debian >= Buster has libglusterfs0 and lots of libgfFOO, upstream has the libs in glusterfs-common
  	# pass -x to dpkg-shlibdeps and specify dependencies in d/control instead
 -	dh_shlibdeps -- -xlibglusterfs0 -xlibgfxdr0 -xlibgfrpc0 -xlibgfdb0 -xlibgfchangelog0 -xlibgfapi0
++#	dh_shlibdeps -- -xlibglusterfs0 -xlibgfxdr0 -xlibgfrpc0 -xlibgfdb0 -xlibgfchangelog0 -xlibgfapi0
  	dh_gencontrol
  	dh_md5sums
  	dh_builddeb

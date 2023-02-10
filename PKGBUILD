@@ -1,8 +1,8 @@
 # Maintainer: bobi
 
 pkgname=vma-git
-pkgver=6.2.0
-pkgrel=2
+pkgver=7.2.0
+pkgrel=1
 pkgdesc='Virtual Machine Archive format (VMA)'
 provides=('vma')
 
@@ -53,7 +53,7 @@ depends=(
 
 arch=('x86_64')
 sha256sums=('SKIP'
-            '258dd5223a28811fd5ad86ae2d22abafbab7f1d6a30d2aa41d0224f9af44069c'
+            'fc996fa25c79d307363986217de8d4f3a05f22eabbdd3a67ce09b732bd625a75'
             'SKIP')
 
 pkgver () {

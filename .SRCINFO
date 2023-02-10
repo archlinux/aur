@@ -1,7 +1,7 @@
 pkgbase = vma-git
 	pkgdesc = Virtual Machine Archive format (VMA)
-	pkgver = 6.2.0
-	pkgrel = 2
+	pkgver = 7.2.0
+	pkgrel = 1
 	url = https://pve.proxmox.com/wiki/VMA
 	arch = x86_64
 	license = AGPL
@@ -35,7 +35,7 @@ pkgbase = vma-git
 	source = dpkg.diff
 	source = git://git.proxmox.com/git/mirror_qemu.git
 	sha256sums = SKIP
-	sha256sums = 258dd5223a28811fd5ad86ae2d22abafbab7f1d6a30d2aa41d0224f9af44069c
+	sha256sums = fc996fa25c79d307363986217de8d4f3a05f22eabbdd3a67ce09b732bd625a75
 	sha256sums = SKIP
 
 pkgname = vma-git
