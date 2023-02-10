@@ -1,28 +1,19 @@
-# Contributor: Fabio 'Lolix' Loli <lolix@disroot.org>
+# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Peter <craven@gmx.net>
 
 pkgname=pktriggercord
-pkgver=0.84.04
+pkgver=0.85.00
 pkgrel=1
 pkgdesc="Remote control (tethering) for Pentax DSLR cameras"
 arch=(i686 x86_64 armv6h armv7h aarch64)
-url="http://pktriggercord.melda.info/"
+url="https://pktriggercord.melda.info/"
 license=(LGPL3)
 depends=(gtk2)
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/asalamon74/$pkgname/releases/download/v$pkgver/pkTriggerCord-$pkgver.src.tar.gz")
-md5sums=('626141d036e2f857ea6fc01b04cdf6db')
-
-prepare() {
-	cd "$pkgname-$pkgver"
-        sed -i 's|PREFIX ?=.*|PREFIX = /usr|' Makefile
-}
-
-build() {
-	cd "$pkgname-$pkgver"
-	make LDFLAGS=-lm PREFIX=/usr
-}
+source=("https://github.com/asalamon74/pktriggercord/releases/download/v${pkgver}/pkTriggerCord-${pkgver}.src.tar.gz")
+sha256sums=('9a6ee80e8b786f89a6ddb87e9afa14e2c72187e9614bbeda7ef6d7f383ffbe06')
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+  cd "${pkgname}-${pkgver}"
+  CFLAGS+=" -Isrc/external/js0n"
+  make LDFLAGS=-lm PREFIX=/usr DESTDIR="$pkgdir/" install
 }
