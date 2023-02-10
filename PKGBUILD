@@ -3,7 +3,7 @@
 pkgname=denaro
 _pkgname=nickvisionmoney
 _pkgid=org.nickvision.money
-pkgver=2023.1.1
+pkgver=2023.2.0
 pkgrel=1
 pkgdesc="A personal finance manager"
 arch=('aarch64' 'armv7h' 'x86_64' 'i686')
