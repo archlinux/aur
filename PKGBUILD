@@ -3,7 +3,7 @@
 pkgname=lowcharts-bin
 _pkgname="${pkgname%-bin}"
 pkgver=0.5.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool to draw low-resolution graphs in terminal"
 arch=('x86_64' 'i686')
 url="https://github.com/juan-leon/lowcharts"
@@ -17,5 +17,5 @@ sha256sums_i686=('bae75ea25bfe1b89ca0db42c8986f250a4ba392ff8192de70bf6e2eac0584a
 
 package() {
 	install -Dm 755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-	install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+	install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
