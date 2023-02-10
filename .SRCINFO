@@ -111,6 +111,7 @@ pkgname = gcc-objc-git
 	depends = libisl.so
 	provides = gcc-multilib
 	provides = gcc-multilib-git
+	provides = gcc-objc
 	conflicts = gcc-objc
 	replaces = gcc-multilib-git
 
