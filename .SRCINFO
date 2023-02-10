@@ -1,7 +1,7 @@
 pkgbase = projectm-presets-cream-of-the-crop
 	pkgdesc = Preset pack for projectM - jason fletcher's curated pack (git version)
 	pkgver = 2.4e0bf9f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/projectM-visualizer/presets-projectm-classic
 	arch = x86_64
 	arch = i686
@@ -14,6 +14,8 @@ pkgbase = projectm-presets-cream-of-the-crop
 	depends = poco
 	options = !buildflags
 	source = git+https://github.com/projectM-visualizer/presets-cream-of-the-crop.git
+	source = https://xannode.com/projectm-cream-of-the-crop-textures.tar.gz
 	sha256sums = SKIP
+	sha256sums = a178c997b12f0cf27e0edbe2ac45a99d076a8c2a67945f4de09c1f9a27a454ff
 
 pkgname = projectm-presets-cream-of-the-crop
