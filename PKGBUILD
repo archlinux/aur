@@ -3,7 +3,7 @@
 # Contributor: Jose Valecillos <valecillosjg (at) gmail (dot) com>
 
 pkgname=cmakeed
-pkgver=1.18.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc="CMake plugin for Eclipse"
 arch=('any')
@@ -12,7 +12,7 @@ license=('EPL')
 depends=('eclipse-cpp')
 source=("https://dl.cloudsmith.io/public/15knots/p2-zip/raw/files/CMakeEd-${pkgver}.zip")
 noextract=()
-md5sums=('d83281a6cb078860ca2a818ff27fb9ae')
+md5sums=('2b4ebac9390fda95104bb2c53d613871')
 
 package() {
   
