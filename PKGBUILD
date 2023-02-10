@@ -1,10 +1,10 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux
-_kernver=6.1.9
+_kernver=6.1.10
 _archver=arch1
-_pkgrel=2
+_pkgrel=1
 _pkgver="${_kernver}.${_archver}"
-_KERNNAME=6.1.9-arch1-2
+_KERNNAME=6.1.10-arch1-1
 pkgbase="${_pkgname}-versioned-bin"
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}"
 pkgname=("${_pkgname}-versioned-bin"
@@ -16,7 +16,7 @@ pkgname=("${_pkgname}-versioned-bin"
 pkgver=${_pkgver}
 pkgrel=${_pkgrel}
 pkgdesc="The Linux kernel and modules | repackaged with a unique package name for each version"
-url="https://github.com/archlinux/linux/commits/v6.1.9-arch1"
+url="https://github.com/archlinux/linux/commits/v6.1.10-arch1"
 arch=(x86_64)
 license=(GPL2)
 options=('!strip')
@@ -44,9 +44,9 @@ source=("${_kernsrc}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('409715acacb4bc675fa453b1b2622cb026c43ca5f8ef78a897ec8ac97bf34842'
-            '24844ad533c5ba1d6f71a09c951ef1866e377df505eea8b555d54cbb7b90fbaa'
-            '23dd824ca29a15ce8a44f8f651d5bb5dea846f55911e26443e4524f00de90419')
+sha256sums=('1d537e79676eb08908617fb2a933d34f7778a4f1f7ffa0b4207cc7b13cfedee4'
+            '9ac04c219805bb614acbd6ea0dad7e64d4044b357c6cc096ff291ca3c4716897'
+            'a645f4453ae6bee1eaf4c120425baeb1a30f5bbe9f9af7ae0fc11f0030ed91b1')
 
 package_linux-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -64,7 +64,7 @@ package_linux-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux6.1.9.arch1-2-bin() {
+package_linux6.1.10.arch1-1-bin() {
   pkgdesc="The Linux kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
@@ -82,7 +82,7 @@ package_linux6.1.9.arch1-2-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux6.1.9.arch1-2-headers-bin() {
+package_linux6.1.10.arch1-1-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${_KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -91,7 +91,7 @@ package_linux6.1.9.arch1-2-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux6.1.9.arch1-2-docs-bin() {
+package_linux6.1.10.arch1-1-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
