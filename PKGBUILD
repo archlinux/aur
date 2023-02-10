@@ -4,7 +4,7 @@ _pkgname=ISAnalytics
 _pkgver=1.8.1
 pkgname=r-${_pkgname,,}
 pkgver=1.8.1
-pkgrel=1
+pkgrel=3
 pkgdesc='Analyze gene therapy vector insertion sites data identified from genomics next generation sequencing reads for clonal tracking studies'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -15,7 +15,7 @@ depends=(
   r-data.table
   r-datamods
   r-dplyr
-  r-dt # manually added
+  r-dt
   r-forcats
   r-fs
   r-ggplot2

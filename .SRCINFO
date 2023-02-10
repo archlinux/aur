@@ -1,7 +1,7 @@
 pkgbase = r-isanalytics
 	pkgdesc = Analyze gene therapy vector insertion sites data identified from genomics next generation sequencing reads for clonal tracking studies
 	pkgver = 1.8.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/ISAnalytics
 	arch = any
 	license = CCPL:by-nc-sa
