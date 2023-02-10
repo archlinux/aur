@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=youtube-music
 pkgver=1.19.0
-pkgrel=1
+pkgrel=2
 _electronversion=20
 pkgdesc="YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ build() {
   cd "$pkgname-$pkgver"
   electronDist="/usr/lib/electron${_electronversion}"
   electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
-  yarn config set cache-folder "$srcdir/yarn-cache"
+  yarn config set cacheFolder "$srcdir/yarn-cache"
   yarn install
   yarn run clean
   HOME="$srcdir/.electron-gyp" ./node_modules/.bin/electron-builder --linux dir \
