@@ -1,0 +1,24 @@
+pkgbase = newcp-bin
+	pkgdesc = New Club Penguin Electron app
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = https://github.com/New-Club-Penguin/NewCP-App-Build/
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = libdrm
+	depends = mesa
+	depends = libxcb
+	depends = glib2
+	provides = newcp
+	options = !strip
+	options = staticlibs
+	source = https://github.com/New-Club-Penguin/NewCP-App-Build/releases/download/v1.5.2/newcp_1.5.2_amd64.deb
+	sha256sums = 23f08149246f18a26644449b607b2ab3336bb0f55225fb8134cbd20e22a44716
+
+pkgname = newcp-bin
