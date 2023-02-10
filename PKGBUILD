@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=longitudinalData
-_pkgver=2.4.1
+_pkgver=2.4.5
 pkgname=r-${_pkgname,,}
-pkgver=2.4.1
-pkgrel=3
+pkgver=2.4.5
+pkgrel=1
 pkgdesc='Longitudinal Data'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,7 +16,7 @@ depends=(
   r-rgl
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6d8b155726b5e1913711c84af3e0fc56bb3a1097e0471628572b88239f63db52')
+sha256sums=('e4bede523d45e706a4c362a74ffe1cbf2798fce0fef0184fd0827f13dbaf4e9a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
