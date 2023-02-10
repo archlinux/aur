@@ -4,12 +4,11 @@
 pkgname=blockbench
 _pkgname=Blockbench
 pkgver=4.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A low-poly 3D model editor"
 arch=('x86_64')
 url="https://blockbench.net/"
 license=('GPL3')
-depends=('electron')
 provides=(blockbench)
 conflicts=(blockbench)
 
@@ -18,7 +17,7 @@ _electron=electron
 _electronDist=/usr/lib/${_electron}
 _electronVersion=$(cat ${_electronDist}/version)
 
-depends=("${_electron}")
+depends=("${_electron}" 'giblib')
 makedepends=(git npm)
 source=("${_pkgname}::git+https://github.com/JannisX11/blockbench.git#tag=v${pkgver}"
         "${_pkgname}.desktop")
