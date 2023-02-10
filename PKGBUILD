@@ -1,14 +1,17 @@
 # IMG_GPU drivers for VisionFive2 RISC-V boards.
 
-pkgname=starfive-img-gpu
+pkgname=visionfive2-img-gpu
 pkgver=1.17.6210866
 pkgrel=1
-pkgdesc="This is a cut down version of the package provided from the github. Not including the base libgl and vulkan files to avoid conflics with mesa."
+pkgdesc="This is the GLES and Vullkan implementation provided by Starfive for the IMG_GPU"
 url="https://github.com/starfive-tech/soft_3rdpart/tree/JH7110_VisionFive2_devel"
 # Uhhh... pacman riscv pretends it's actually x86_64
 arch=(x86_64)
 license=(custom)
-provides=(libgl
+conflicts=(libglvnd mesa)
+
+provides=(opengl-driver
+          libgl
           libegl
           libgles
           libEGL.so=1-64
@@ -16,7 +19,10 @@ provides=(libgl
           libGLESv2.so=2-64
           libGLX.so=0-64
           libGLdispatch.so=0-64
-          libOpenGL.so=0-64)
+          libOpenGL.so=0-64
+          vulkan-driver
+          vulkan-icd-loader
+          libvulkan.so=1-64)
 source=("https://github.com/starfive-tech/soft_3rdpart/raw/JH7110_VisionFive2_devel/IMG_GPU/out/img-gpu-powervr-bin-${pkgver}.tar.gz")
 sha256sums=('8ef5eba77c776e0d4444d819e12c64bfa8eee0ae2cdf90b6eb7a3a9df7bd7ef2')
 
