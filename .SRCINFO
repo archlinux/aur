@@ -1,16 +1,16 @@
 pkgbase = spicetify-cli-git
 	pkgdesc = Command-line tool to customize Spotify client - Git master branch
-	pkgver = 2.6.1.r2.gc84c381
-	pkgrel = 2
-	url = https://github.com/khanhas/spicetify-cli
+	pkgver = 2.16.1.r1.gd5cc68f
+	pkgrel = 1
+	url = https://github.com/spicetify/spicetify-cli
 	arch = x86_64
 	arch = i686
-	license = GPL
+	license = LGPL2.1
 	makedepends = git
 	makedepends = go
 	provides = spicetify-cli
 	conflicts = spicetify-cli
-	source = git+https://github.com/khanhas/spicetify-cli.git
+	source = git+https://github.com/spicetify/spicetify-cli.git
 	sha256sums = SKIP
 
 pkgname = spicetify-cli-git
