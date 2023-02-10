@@ -1,15 +1,14 @@
 pkgbase = jackett
 	pkgdesc = Use many torrent trackers with software that supports torznab/potato feeds.
 	pkgver = 0.20.3017
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Jackett/Jackett
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
 	license = GPL
 	makedepends = dotnet-sdk>=6.0.0
-	depends = curl
-	depends = openssl
+	depends = dotnet-runtime
 	optdepends = flaresolverr: A proxy server to bypass Cloudflare protection
 	options = !strip
 	options = staticlibs

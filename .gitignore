@@ -1,3 +1,4 @@
+*.tar.zst
 *.xz
 *.gz
 *.log
