@@ -1,6 +1,6 @@
 pkgbase = r-lubridate
 	pkgdesc = Make Dealing with Dates a Little Easier
-	pkgver = 1.9.1
+	pkgver = 1.9.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=lubridate
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = r-lubridate
 	optdepends = r-testthat
 	optdepends = r-vctrs
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/lubridate_1.9.1.tar.gz
-	sha256sums = 0da9ce77291b6788ba313c62335448a6677344d2b76a1fb1c9c2da4551c032af
+	source = https://cran.r-project.org/src/contrib/lubridate_1.9.2.tar.gz
+	sha256sums = 8976431a4affe989261cbaa5e09cd44bb42a3b16eed59a42c1698da34c6544a7
 
 pkgname = r-lubridate
