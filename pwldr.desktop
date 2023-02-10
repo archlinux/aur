@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=PipeWire Loader
+Exec=artix-pipewire-loader
+Type=Application
+Terminal=false
+X-GNOME-AutoRestart=false
+X-GNOME-Autostart-Phase=Initialization
+X-GNOME-Autostart-Notify=false
+X-KDE-StartupNotify=false
+X-KDE-autostart-phase=1

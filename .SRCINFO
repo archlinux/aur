@@ -1,0 +1,13 @@
+pkgbase = artix-pipewire-loader
+	pkgdesc = Pipewire Loader for Artix based on Gentoo's Pipewire Loader
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	options = !strip
+	source = artix-pipewire-loader
+	source = pwldr.desktop
+	sha256sums = ae4900c8b68cd3594a9938220a3ef2ba56d6357129648f7976ae349d5e284599
+	sha256sums = 45e3b438d62f24c7ac4e16fc20afd19ef8f04a348eaa6cf3cb1716706c91b22a
+
+pkgname = artix-pipewire-loader
