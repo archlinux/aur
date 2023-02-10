@@ -4,16 +4,16 @@
 
 pkgname=jackett
 pkgver=0.20.3017
-pkgrel=2
+pkgrel=3
 pkgdesc='Use many torrent trackers with software that supports torznab/potato feeds.'
 arch=('x86_64' 'aarch64' 'armv7h')
 license=('GPL')
 url='https://github.com/Jackett/Jackett'
-depends=('dotnet-runtime')
+depends=('aspnet-runtime-6.0')
 optdepends=(
   'flaresolverr: A proxy server to bypass Cloudflare protection'
 )
-makedepends=('dotnet-sdk>=6.0.0')
+makedepends=('dotnet-sdk-6.0')
 options=('!strip' 'staticlibs')
 
 source=(
@@ -38,7 +38,7 @@ build() {
   esac
 
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
-  dotnet publish src/Jackett.Server -f net6.0 --self-contained -r linux-${_CARCH} -c Release -o build/ /p:AssemblyVersion=${pkgver} /p:FileVersion=${pkgver} /p:InformationalVersion=${pkgver} /p:Version=${pkgver}
+  dotnet publish src/Jackett.Server -f net6.0 --no-self-contained -r linux-${_CARCH} -c Release -o build/ /p:AssemblyVersion=${pkgver} /p:FileVersion=${pkgver} /p:InformationalVersion=${pkgver} /p:Version=${pkgver}
 }
 
 package() {
