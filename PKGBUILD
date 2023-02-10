@@ -1,29 +1,28 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=dune-foamgrid
-_tarver=2.9
-_tar="${_tarver}/${pkgname}-releases-${_tarver}.tar.gz"
+_tarver=2.9.1
+_tar="${_tarver}/${pkgname}-${_tarver}.tar.gz"
 pkgver="${_tarver}"
 pkgrel=1
 pkgdesc="Implementation of the dune-grid interface that implements one- and two-dimensional grids in a physical space of arbitrary dimension"
 arch=(x86_64)
 url="https://dune-project.org/modules/${pkgname}"
 license=('LGPL3' 'custom:GPL2 with runtime exception')
-depends=("dune-grid>=${pkgver}")
+depends=(dune-grid)
 makedepends=(doxygen graphviz)
 optdepends=('doxygen: Generate the class documentation from C++ sources'
   'graphviz: Graph visualization software')
-source=(https://gitlab.dune-project.org/extensions/${pkgname}/-/archive/releases/${_tar})
-sha512sums=('c9e474c7c958cb43ed5a7df91b044bb332654482a7630f2737a41ce1b8936801513a302d70b810c87c8a81167532524f3498873839d0514d796585cc12943c0d')
+source=(https://gitlab.dune-project.org/extensions/${pkgname}/-/archive/${_tar})
+sha512sums=('3c5fdb3576b84adda8f50fd0005b835fe8fac1e252d364335bce6ae06a52a0c03387e923e420d0baad84dab543aa2eab24cf56773f556650044b5541ba866cad')
 
 prepare() {
-  sed -i 's/^Version: '"${pkgver}"'-git/Version: '"${pkgver}"'/' ${pkgname}-releases-${pkgver}/dune.module
-  sed -i 's/^  dune_add_test(SOURCES foamgrid-test.cc)/  dune_add_test(SOURCES foamgrid-test.cc EXPECT_FAIL)/' ${pkgname}-releases-${pkgver}/dune/foamgrid/test/CMakeLists.txt
+  sed -i 's/^  dune_add_test(SOURCES foamgrid-test.cc)/  dune_add_test(SOURCES foamgrid-test.cc EXPECT_FAIL)/' ${pkgname}-${pkgver}/dune/foamgrid/test/CMakeLists.txt
 }
 
 build() {
   XDG_CACHE_HOME="${PWD}" \
     cmake \
-    -S ${pkgname}-releases-${pkgver} \
+    -S ${pkgname}-${pkgver} \
     -B build-cmake \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -46,6 +45,6 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --build build-cmake --target install
-  install -Dm644 ${pkgname}-releases-${pkgver}/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 ${pkgname}-${pkgver}/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   find "${pkgdir}" -type d -empty -delete
 }
