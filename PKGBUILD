@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=mpc-qt
-pkgver=22.02
+pkgver=23.02
 pkgrel=1
 pkgdesc='A clone of Media Player Classic reimplemented in Qt.'
 url='https://github.com/mpc-qt/mpc-qt'
@@ -14,11 +14,11 @@ optdepends=('libva-vdpau-driver: backend for Nvidia and AMD cards'
             'libva-intel-driver: backend for Intel cards'
             'udisks2: to detect available discs')
 source=("mpc-qt-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('fa6cffd6bde1304b6c0ec3aba8e98d03f4d73999fee4e4546026ec159530350d')
+sha256sums=('c7bb48e53cf43e6705e67ae7de598d50f442ea73131d17142ea027042befd14c')
 
 build() {
   cd "mpc-qt-${pkgver}"
-  qmake-qt5 PREFIX=/usr mpc-qt.pro \
+  qmake-qt5 "MPCQT_VERSION=${pkgver}" PREFIX=/usr mpc-qt.pro \
     QMAKE_CFLAGS_RELEASE="${CFLAGS}" \
     QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" \
     QMAKE_LFLAGS_RELEASE="${LDFLAGS}"
