@@ -1,10 +1,12 @@
 pkgbase = illarion-bin
 	pkgdesc = The Illarion Launcher that is used to download the actual game and start it
 	pkgver = 1.0.0.46
-	pkgrel = 1
+	pkgrel = 2
 	url = https://illarion.org
 	arch = x86_64
 	license = GPL
+	depends = java-runtime
+	depends = bash
 	provides = illarion
 	options = !strip
 	source = https://illarion.org/media/java/install/illarion-1.0.0.46-amd64.deb

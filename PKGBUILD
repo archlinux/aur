@@ -3,12 +3,13 @@
 pkgname=illarion-bin
 _pkgname=illarion
 pkgver=1.0.0.46
-pkgrel=1
+pkgrel=2
 pkgdesc='The Illarion Launcher that is used to download the actual game
  and start it'
 arch=('x86_64')
 url='https://illarion.org'
 license=('GPL')
+depends=('java-runtime' 'bash')
 provides=('illarion')
 options=('!strip')
 source=("https://${_pkgname}.org/media/java/install/${_pkgname}-${pkgver}-amd64.deb"
@@ -18,6 +19,8 @@ sha512sums=('ccb0b6067abf1368b7481ef31f263e251f597b7d545d12616c43f885a9afe65b777
 
 package() {
     tar -xf "${srcdir}/data.tar.bz2" -C "${pkgdir}"
+    rm -rf "${pkgdir}/opt/${_pkgname}/bin"
+    rm -rf "${pkgdir}/opt/${_pkgname}/jre/lib/applet"
 
     cd "${pkgdir}"
     install -dm755 "usr/bin"
