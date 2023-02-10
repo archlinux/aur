@@ -4,12 +4,13 @@ pkgname=flaresolverr
 _pkgname=flaresolverr
 __pkgname=FlareSolverr
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A proxy server to bypass Cloudflare protection'
-arch=('x86_64')
+arch=('any')
 url='https://github.com/FlareSolverr/FlareSolverr'
 license=('MIT')
-depends=('python>=3.10.0' 'chromium' 'python-bottle' 'python-waitress' 'python-selenium' 'python-func-timeout' 'python-requests' 'python-websockets' 'python-xvfbwrapper')
+depends=('chromium' 'python-bottle' 'python-waitress' 'python-selenium' 'python-func-timeout'
+         'python-requests' 'python-websockets' 'python-xvfbwrapper')
 # makedepends=('python-webtest')
 install='flaresolverr.install'
 source=("git+https://github.com/FlareSolverr/FlareSolverr.git#tag=v$pkgver"
@@ -17,11 +18,11 @@ source=("git+https://github.com/FlareSolverr/FlareSolverr.git#tag=v$pkgver"
         "flaresolverr.sysusers"
         "flaresolverr.tmpfiles"
         "flaresolverr.install")
-sha512sums=('SKIP'
-            'bf13516d2de87e10266367011add60287b2a68c5cdcd3da01de44ddc74a46174a04ec6a30252003dd8fd0ec7e4e17e8b0f4df565dac053ef8792783d86f3e33d'
-            '0423d10d964a187e5a153140597e7cee3a6112bf6569dfcda7848bfbce4e5660534db3bdbe4a4de9a63fbf0ecc2b874937afd94495691f76176243d2ac4b080d'
-            'f27805d81e19547862f5e8ebf18633dd400543ebd85566301386dc143ad2de1920dd6c37d1ae38623221dcb42edecdd6b753ccfd20ad33e92a4633cfb7a50548'
-            'e12ca34e2f66524d15da36cdebea300ae061a16c8a4d7147ab0cea11cb70879d0d3061c9c852dec9593f348bc8507055f1868cfe754e2e5f92db4466ca3ec2a1')
+sha256sums=('SKIP'
+            'c147d51e7fd78e5e2b4648db5d1052a36b151559bfa08aa7776bd34aa0897bd0'
+            '62f114d4e559cf9dae22bfd90759eff697e42da5f700a52988e70e78f3048ae2'
+            '4a61a6d9db1a9f4ec0812d86ef524a7f575a45f272404f0ebfc79376628feeb2'
+            'f3585f385fe8dd2d619144b8e666f1883d3501ce05d81e7c3ed4a57f0d093e85')
 
 
 # check() {
