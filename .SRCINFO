@@ -1,0 +1,19 @@
+pkgbase = cargo-dist-git
+	pkgdesc = Shippable application packaging for Rust (git)
+	pkgver = 0.0.2.r5.g45f8c57
+	pkgrel = 1
+	url = https://github.com/axodotdev/cargo-dist
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = xz
+	depends = bzip2
+	provides = cargo-dist
+	conflicts = cargo-dist
+	options = !lto
+	source = git+https://github.com/axodotdev/cargo-dist
+	sha512sums = SKIP
+
+pkgname = cargo-dist-git
