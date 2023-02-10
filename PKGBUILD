@@ -64,8 +64,8 @@ prepare() {
 
 build() {
     cd "$srcdir"
-    read -ra openssl_args < <(pkg-config --libs openssl)
-    read -ra libpulse_args < <(pkg-config --cflags --libs libpulse)
+    read -ra openssl_args < <(pkgconf --libs openssl)
+    read -ra libpulse_args < <(pkgconf --cflags --libs libpulse)
     # Comment out `-D WRAP_FORCE_SINK_HARDWARE` to disable the patch that forces wemeet detects sink as hardware sink
     "${CC:-cc}" $CFLAGS -fPIC -shared "${openssl_args[@]}" "${libpulse_args[@]}" -o libwemeetwrap.so wrap.c -D WRAP_FORCE_SINK_HARDWARE
 }
