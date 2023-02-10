@@ -1,0 +1,12 @@
+diff -urN a/src/compress b/src/compress
+--- a/src/compress	2019-02-21 06:44:17.000000000 -0500
++++ b/src/compress	2023-02-10 10:38:24.963134333 -0500
+@@ -52,7 +52,7 @@
+     result = subprocess.check_output(["lsattr", path]).strip()
+     if (result == ''):
+         raise Exception('lsattr returned nothing')
+-    result = result[:result.index(" ")]
++    result = result[:result.index(b' ')]
+     for f in result:
+         if (f == 'c'):
+             return True

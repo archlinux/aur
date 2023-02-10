@@ -4,13 +4,14 @@ pkg/
 src/
 *.gz
 *.bz2
+*.jar
 *.xz
 *.lzo
 *.xz4
+*.zst
+*.tar
 *.tgz
 *.tbz
 *.txz
-*.tar
-*.jar
+*.tzst
 *.zip
-compress
