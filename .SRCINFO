@@ -1,20 +1,20 @@
 pkgbase = webos-dev-manager
 	pkgdesc = Easy tool to manage developer mode and sideload applications on your webOS TV
-	pkgver = 1.8.2
+	pkgver = 1.9.6
 	pkgrel = 1
 	url = https://github.com/webosbrew/dev-manager-desktop
 	arch = x86_64
 	license = GPL
 	depends = zlib
-	noextract = webos-dev-manager-1.8.2.AppImage
+	noextract = webos-dev-manager-1.9.6.AppImage
 	options = !strip
 	source_x86_64 = webosbrew.png
 	source_x86_64 = webos-dev-manager.desktop
-	source_x86_64 = webos-dev-manager-1.8.2.AppImage::https://github.com/webosbrew/dev-manager-desktop/releases/download/v1.8.2/webos-dev-manager-1.8.2.AppImage
-	source_x86_64 = https://raw.githubusercontent.com/webosbrew/dev-manager-desktop/v1.8.2/LICENSE
+	source_x86_64 = webos-dev-manager-1.9.6.AppImage::https://github.com/webosbrew/dev-manager-desktop/releases/download/v1.9.6/web-os-dev-manager_1.9.6_amd64.AppImage
+	source_x86_64 = https://raw.githubusercontent.com/webosbrew/dev-manager-desktop/v1.9.6/LICENSE
 	sha256sums_x86_64 = 09ccc361b9f6ceee7613672dcbd46996432a283a1d94aa91bcd9aad4b3e7992d
 	sha256sums_x86_64 = 5a250a2408e5672b191190c25c7a651114680002c7a45c69c5b87e12ba2daea5
-	sha256sums_x86_64 = cb496ffdf455f526c0f8b9c4472cf680e732e616d9938f22e03c51ad512b9105
+	sha256sums_x86_64 = 10337aec7d29d76935037044a9db079e5de20800762a219fd81bc13311e8d13a
 	sha256sums_x86_64 = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
 
 pkgname = webos-dev-manager
