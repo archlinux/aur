@@ -12,7 +12,7 @@ depends=()
 makedepends=('git' 'make')
 source=("$_pkgname::git+https://github.com/SanderMertens/bake.git")
 conflicts=("$_pkgname")
-provides=("$pkgname")
+provides=("$_pkgname")
 sha256sums=('SKIP')
 
 pkgver() {
