@@ -1,0 +1,14 @@
+pkgbase = consel
+	pkgdesc = Assessing the confidence of phylogenetic tree selection https://doi.org/10.1093/bioinformatics/17.12.1246
+	pkgver = 2011.05.12
+	pkgrel = 0
+	url = http://stat.sys.i.kyoto-u.ac.jp/prog/consel/
+	arch = x86_64
+	license = GPL2
+	makedepends = make
+	makedepends = gcc
+	makedepends = git
+	source = git+https://github.com/shimo-lab/consel.git
+	md5sums = SKIP
+
+pkgname = consel
