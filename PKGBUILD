@@ -4,12 +4,12 @@
 
 pkgname=jackett-mono
 pkgver=0.20.3017
-pkgrel=1
+pkgrel=2
 pkgdesc='Use many torrent trackers with software that supports torznab/potato feeds.'
 arch=('any')
 license=('GPL')
 url='https://github.com/Jackett/Jackett'
-depends=('mono' 'curl' 'openssl')
+depends=('mono')
 optdepends=(
   'flaresolverr: A proxy server to bypass Cloudflare protection'
 )
