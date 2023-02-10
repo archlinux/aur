@@ -1,7 +1,7 @@
 pkgbase = r-igraph
 	pkgdesc = Network Analysis and Visualization
-	pkgver = 1.3.5
-	pkgrel = 3
+	pkgver = 1.4.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=igraph
 	arch = x86_64
 	license = GPL
@@ -23,7 +23,7 @@ pkgbase = r-igraph
 	optdepends = r-tcltk
 	optdepends = r-testthat
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/igraph_1.3.5.tar.gz
-	sha256sums = 9e615d67b6b5b57dfa54ec2bbc8c29da8f7c3fe82af1e35ab27273b1035b9bd4
+	source = https://cran.r-project.org/src/contrib/igraph_1.4.0.tar.gz
+	sha256sums = c3923e6fbb96104cabc31dc7fcb53e3956687fa2c83743c561a798c8e355fa6d
 
 pkgname = r-igraph
