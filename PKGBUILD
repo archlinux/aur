@@ -1,7 +1,7 @@
 # Maintainer: Vincent Cheung
 
 pkgname=pdmaner
-pkgver=4.1.4
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="一款多操作系统开源免费的桌面版关系数据库模型建模工具"
 arch=('x86_64')
