@@ -1,12 +1,13 @@
 pkgbase = ethq
-	pkgdesc = Displays an auto-updating per-second count of the number of packets and bytes being handled by each specified NIC
+	pkgdesc = Ethernet NIC Queue stats viewer
 	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/isc-projects/ethq
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = MPL
 	depends = ncurses
-	source = https://github.com/isc-projects/ethq/archive/v0_6_2.tar.gz
+	source = https://github.com/isc-projects/ethq/archive/refs/tags/v0_6_2.tar.gz
 	md5sums = 426489b4fb1cb218b967accc89acdece
 
 pkgname = ethq
