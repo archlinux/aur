@@ -1,16 +1,14 @@
 pkgbase = learnx-companion-git
 	pkgdesc = 清华大学网络学堂 App 助手，为 learnX 提供个性化的推送通知支持。
-	pkgver = 1.1.1.r17.gb909051
+	pkgver = 1.2.0.r0.gb1403cf
 	pkgrel = 1
-	url = https://github.com/AsakuraMizu/learnX-companion
+	url = https://github.com/robertying/learnX-companion
 	arch = x86_64
-	makedepends = asar
 	makedepends = nodejs
 	makedepends = git
-	makedepends = jq
 	provides = learnX-companion
 	conflicts = learnX-companion
-	source = learnX-companion::git+https://github.com/AsakuraMizu/learnX-companion#branch=main
+	source = learnX-companion::git+https://github.com/robertying/learnX-companion#branch=main
 	source = _learnX-companion
 	source = learnX-companion.desktop
 	source = icon_256.png

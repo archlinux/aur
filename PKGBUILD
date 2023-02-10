@@ -1,11 +1,11 @@
 pkgname=('learnx-companion-git' 'learnx-companion-electron-git')
-pkgver=1.1.1.r17.gb909051
+pkgver=1.2.0.r0.gb1403cf
 pkgrel=1
 pkgdesc='清华大学网络学堂 App 助手，为 learnX 提供个性化的推送通知支持。'
 depends=()
-makedepends=('asar' 'nodejs' 'git' 'jq')
+makedepends=('nodejs' 'git')
 arch=('x86_64')
-url='https://github.com/AsakuraMizu/learnX-companion'
+url='https://github.com/robertying/learnX-companion'
 provides=('learnX-companion')
 conflicts=('learnX-companion')
 source=("learnX-companion::git+${url}#branch=main"
@@ -18,7 +18,7 @@ _electron=electron21
 
 pkgver(){
     cd ${srcdir}/learnX-companion
-    echo $(jq .version package.json --raw-output).r$(git rev-list --count HEAD).g$(git describe --always)
+    git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./g'
 }
 
 build(){
