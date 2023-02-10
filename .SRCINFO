@@ -27,7 +27,6 @@ pkgbase = gcc-git
 	makedepends = zstd
 	options = !emptydirs
 	options = !lto
-	options = !debug
 	source = git://gcc.gnu.org/git/gcc.git
 	source = c89
 	source = c99
@@ -53,7 +52,6 @@ pkgname = gcc-git
 	replaces = gcc-multilib-git
 	options = !emptydirs
 	options = staticlibs
-	options = debug
 
 pkgname = gcc-libs-git
 	pkgdesc = Runtime libraries shipped by GCC (git version)
@@ -71,7 +69,7 @@ pkgname = gcc-libs-git
 	provides = libgphobos.so
 	conflicts = gcc-libs
 	replaces = gcc-multilib-git
-	replaces = libgphobos
+	replaces = libgphobos-git
 	options = !emptydirs
 	options = !strip
 
@@ -131,15 +129,12 @@ pkgname = gcc-ada-git
 pkgname = gcc-d-git
 	pkgdesc = D frontend for GCC (git version)
 	depends = gcc-git=13.0.0_r197401.g33be3ee36a7-1
-	depends = libisl.so
-	provides = gdc
 	provides = gcc-d
-	provides = gcc-d-git
+	provides = gdc
+	provides = gdc-git
 	conflicts = gcc-d
-	replaces = gdc
-	replaces = gcc-d
+	replaces = gdc-git
 	options = staticlibs
-	options = !debug
 
 pkgname = lto-dump-git
 	pkgdesc = Dump link time optimization object files (git version)
@@ -148,7 +143,6 @@ pkgname = lto-dump-git
 	provides = lto-dump
 	provides = lto-dump-git
 	conflicts = lto-dump
-	replaces = lto-dump
 
 pkgname = gcc-go-git
 	pkgdesc = Go front-end for GCC (git version)
@@ -166,3 +160,6 @@ pkgname = libgccjit-git
 	pkgdesc = Just-In-Time Compilation with GCC backend (git version)
 	depends = gcc-git=13.0.0_r197401.g33be3ee36a7-1
 	depends = libisl.so
+	provides = libgccjit
+	provides = libgccjit-git
+	conflicts = libgccjit

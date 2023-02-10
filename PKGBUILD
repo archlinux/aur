@@ -38,7 +38,7 @@ checkdepends=(
   python-pytest
   tcl
 )
-options=(!emptydirs !lto !debug)
+options=(!emptydirs !lto)
 _libdir=usr/lib/gcc/$CHOST/${pkgver%_*}
 source=(git://gcc.gnu.org/git/gcc.git
   c89 c99
@@ -163,7 +163,7 @@ package_gcc-libs-git() {
   provides=("gcc-libs-git=$pkgver-$pkgrel" gcc-libs gcc-multilib{,-git} libgo.so libgfortran.so
   libubsan.so libasan.so libtsan.so liblsan.so libgphobos.so)
   conflicts=(gcc-libs)
-  replaces=(gcc-multilib-git libgphobos)
+  replaces=(gcc-multilib-git libgphobos-git)
 
   cd gcc-build
   make -C $CHOST/libgcc DESTDIR="$pkgdir" install-shared
@@ -210,7 +210,7 @@ package_gcc-git() {
   provides=(gcc{,-multilib{,-git}})
   conflicts=(gcc)
   replaces=(gcc-multilib-git)
-  options=(!emptydirs staticlibs debug)
+  options=(!emptydirs staticlibs)
 
   cd gcc-build
 
@@ -452,10 +452,11 @@ package_lib32-gcc-libs-git() {
 
 package_gcc-d-git() {
   pkgdesc="D frontend for GCC (git version)"
-  depends=("gcc-git=$pkgver-$pkgrel" libisl.so)
-  provides=(gdc)
-  replaces=(gdc)
-  options=(staticlibs !debug)
+  depends=("gcc-git=$pkgver-$pkgrel")
+  provides=(gcc-d gdc{,-git})
+  conflicts=(gcc-d)
+  replaces=(gdc-git)
+  options=(staticlibs)
 
   cd gcc-build
   make -C gcc DESTDIR="$pkgdir" d.install-{common,man,info}
@@ -477,7 +478,6 @@ package_lto-dump-git() {
   pkgdesc="Dump link time optimization object files (git version)"
   depends=("gcc-git=$pkgver-$pkgrel" libisl.so)
   provides=(lto-dump lto-dump-git)
-  replaces=(lto-dump)
   conflicts=(lto-dump)
 
   cd gcc-build
@@ -491,6 +491,8 @@ package_lto-dump-git() {
 package_libgccjit-git() {
   pkgdesc="Just-In-Time Compilation with GCC backend (git version)"
   depends=("gcc-git=$pkgver-$pkgrel" libisl.so)
+  provides=(libgccjit libgccjit-git)
+  conflicts=(libgccjit)
 
   cd gcc-build
   make -C gcc DESTDIR="$pkgdir" jit.install-common jit.install-info
