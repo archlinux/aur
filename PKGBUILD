@@ -1,4 +1,4 @@
-# Maintainer: Mika Hyttinen <mika.hyttinen@gmail.com>
+# Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=cellframe-node
 pkgver=5.1.365
 pkgrel=1
