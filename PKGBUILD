@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=python-camb  
 _name=${pkgname#python-}
-pkgver=1.3.5
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Code for Anisotropies in the Microwave Background"
 arch=(any)
@@ -16,7 +16,8 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=(ac0f2834387fab653b0ea166e4f0614b6e721bb6839df60595554d445c292e8d)
+sha256sums=(a93953b2518118a6f512655b97358d1c2a91c67564661c0e20097f05dc545f47)
+
 build() {
     cd "$srcdir/$_name-$pkgver"
     python -m build --wheel --no-isolation
