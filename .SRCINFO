@@ -1,6 +1,6 @@
 pkgbase = stacks-wallet.mainnet-bin
 	pkgdesc = Stacks Wallet is everything you need to manage your tokens and collectibles and will protect your tokens when you use apps.
-	pkgver = 4.6.1
+	pkgver = 4.8.0
 	pkgrel = 3
 	url = https://github.com/hirosystems/stacks-wallet
 	install = stacks-wallet.mainnet-bin.install
@@ -11,9 +11,9 @@ pkgbase = stacks-wallet.mainnet-bin
 	depends = libsecret
 	depends = nss
 	depends = nodejs
-	source = https://github.com/hirosystems/stacks-wallet/releases/download/v4.6.1/stacks-wallet.mainnet.v4.6.1.deb
-	source = stacks-wallet.desktop
-	md5sums = 6380873c22a5735e0d89eef4735bc8fe
+	source = https://github.com/hirosystems/stacks-wallet/releases/download/v4.8.0/stacks-wallet.mainnet.v4.8.0.deb
+	source = file://stacks-wallet.desktop
+	md5sums = e9cb582bc41a3c8b012835518b6b7894
 	md5sums = a3b1f26d804c0af1b055a1c491c9bcb3
 
 pkgname = stacks-wallet.mainnet-bin
