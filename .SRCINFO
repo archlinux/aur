@@ -10,4 +10,3 @@ pkgbase = ccrypt
 	sha1sums = 6d20a4db9ef7caeea6ce432f3cffadf10172e420
 
 pkgname = ccrypt
-

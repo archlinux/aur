@@ -1,4 +1,6 @@
-# Maintainer: Max R. P. Grossmann <m@max.pm>
+# Maintainer: Rudy Matela <rudy@matela.com.br>
+# Contributor: Rudy Matela <rudy@matela.com.br>
+# Contributor: Max R. P. Grossmann <m@max.pm>
 # Contributor: Thorsten Töpper <atsutane-tu@freethoughts.de>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
