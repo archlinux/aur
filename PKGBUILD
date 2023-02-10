@@ -3,11 +3,11 @@
 resname=earth_wallpaper
 pkgname=earth-wallpaper-nightly
 name=earth-wallpaper
-pkgver=2.2.0.r1.g133dd50
+pkgver=2.2.0.r2.gfdda639
 pkgrel=0
 pkgdesc="Simple and easy to use multifunctional wallpaper software 简单好用的多功能壁纸软件"
 arch=('x86_64')
-url="https://jihulab.com/ambition-echo/earth_wallpaper"
+url="https://github.com/ambition-echo/earth_wallpaper"
 license=('GPL3')
 
 depends=('dbus-python' 'python' 'python-pillow' 'python-requests' 'pyside6' 'python-pysocks')
