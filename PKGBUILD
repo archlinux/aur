@@ -1,15 +1,15 @@
 # Maintainer: coffebar i8ehkvien@mozmail.com
 
 pkgname=hyprland-per-window-layout
-pkgver=1
+pkgver=2.1
 pkgrel=1
 pkgdesc='Per window keyboard layout (language) for Hyprland wayland compositor'
 arch=('x86_64')
 url="https://github.com/coffebar/$pkgname"
 license=('GPL')
-makedepends=()
-depends=(socat hyprland gojq bash)
-_commit=c544dec534
+makedepends=(cargo)
+depends=()
+_commit=1c653b1b
 source=("git+$url#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -18,7 +18,19 @@ pkgver(){
   git describe --tags | sed 's/^v//;s/-/+/g'
 }
 
+prepare() {
+    cd "$pkgname"
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
+build() {
+    cd "$pkgname"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release
+}
+
 package() {
-  cd "$pkgname"
-  install -Dm755 hyprland-per-window-xkblayout "$pkgdir"/usr/bin/hyprland-per-window-xkblayout
+    cd "$pkgname"
+  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
