@@ -11,10 +11,12 @@ pkgbase = idimitrov-dwm-git
 	makedepends = git
 	depends = libx11
 	depends = libxinerama
+	depends = xorg
+	depends = xorg-xinit
 	provides = dwm
 	conflicts = dwm
 	source = dwm.desktop
-	source = dwm::git+http://git.suckless.org/dwm
+	source = dwm::git+http://gitlab.com/ivandimitrov8080/dwm
 	options = zipman
 
 pkgname = idimitrov-dwm-git
