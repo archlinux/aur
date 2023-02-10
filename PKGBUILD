@@ -2,7 +2,7 @@
 # Contributor: prg <prg-archlinux@xannode.com>
 
 _gitname=presets-cream-of-the-crop
-pkgname=projectm-presets-cream-of-the-crop-git
+pkgname=projectm-presets-cream-of-the-crop
 pkgver=2.4e0bf9f
 pkgrel=1
 pkgdesc="Preset pack for projectM - jason fletcher's curated pack (git version)"

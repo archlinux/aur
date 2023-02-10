@@ -1,4 +1,4 @@
-pkgbase = projectm-presets-cream-of-the-crop-git
+pkgbase = projectm-presets-cream-of-the-crop
 	pkgdesc = Preset pack for projectM - jason fletcher's curated pack (git version)
 	pkgver = 2.4e0bf9f
 	pkgrel = 1
@@ -16,4 +16,4 @@ pkgbase = projectm-presets-cream-of-the-crop-git
 	source = git+https://github.com/projectM-visualizer/presets-cream-of-the-crop.git
 	sha256sums = SKIP
 
-pkgname = projectm-presets-cream-of-the-crop-git
+pkgname = projectm-presets-cream-of-the-crop
