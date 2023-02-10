@@ -3,9 +3,10 @@
 
 _gitname=frontend-sdl2
 pkgname=projectm-sdl2-git
-pkgver=11.0ea5b2c
+pkgver=57.a5152b3
 pkgrel=1
 provides=('projectm-sdl')
+conflicts=('projectm-sdl')
 pkgdesc="Music visualizer which uses 3D accelerated iterative image based rendering (git version)"
 arch=('x86_64' 'i686')
 url='https://github.com/projectM-visualizer/projectm'

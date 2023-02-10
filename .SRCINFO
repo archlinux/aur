@@ -1,6 +1,6 @@
 pkgbase = projectm-sdl2-git
 	pkgdesc = Music visualizer which uses 3D accelerated iterative image based rendering (git version)
-	pkgver = 11.0ea5b2c
+	pkgver = 57.a5152b3
 	pkgrel = 1
 	url = https://github.com/projectM-visualizer/projectm
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = projectm-sdl2-git
 	depends = glm
 	depends = poco
 	provides = projectm-sdl
+	conflicts = projectm-sdl
 	options = !buildflags
 	source = git+https://github.com/projectM-visualizer/frontend-sdl2.git
 	sha256sums = SKIP
