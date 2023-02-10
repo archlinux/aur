@@ -11,7 +11,7 @@ license=('custom')
 depends=('wps-office' 'bubblewrap')
 source=("wps-office-bwrap.desktop"
         "wps-bwrap")
-sha256sums=('c5807be6866bfff6efc471b4f1cb9d6e3df7b51bbca4c29792bc279241f37c06'
+sha256sums=('9bb5195bcbcf72621e5a1a7aeeb8a3c989378c54ad59617f6d068477114596d3'
             '6f449ba7f78365f81d6d8dd1f4624deb4c799e965773e75cd805ed37a31f6166')
 
 package() {
