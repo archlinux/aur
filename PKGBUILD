@@ -5,7 +5,7 @@
 pkgname=gnome-shell-extension-desktop-icons-ng
 _pkgname=desktop-icons-ng
 pkgver=47
-pkgrel=6
+pkgrel=7
 pkgdesc="A fork from the official desktop icons project, with several enhancements like Drag'n'Drop."
 arch=('x86_64' 'i686' 'aarch64')
 url="https://gitlab.com/rastersoft/desktop-icons-ng"
@@ -22,4 +22,7 @@ build() {
 
 package() {
 	meson install -C build --destdir "${pkgdir}"
+
+	cd "${_pkgname}-${pkgver}"
+	install -Dm 644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 }
