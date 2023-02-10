@@ -4,9 +4,9 @@
 
 pkgname=jackett-mono
 pkgver=0.20.3017
-pkgrel=2
+pkgrel=3
 pkgdesc='Use many torrent trackers with software that supports torznab/potato feeds.'
-arch=('any')
+arch=('x86_64')
 license=('GPL')
 url='https://github.com/Jackett/Jackett'
 depends=('mono')
