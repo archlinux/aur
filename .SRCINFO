@@ -1,16 +1,15 @@
 pkgbase = light-locker-settings
 	pkgdesc = A simple GUI configuration utility for light-locker
-	pkgver = 1.5.3
+	pkgver = 1.5.4
 	pkgrel = 1
-	url = https://github.com/Antergos/light-locker-settings
+	url = https://github.com/Froggo8311/light-locker-settings
 	arch = any
 	license = GPL
 	depends = intltool
 	depends = light-locker
 	depends = python-psutil
 	optdepends = xfce4-power-manager>=1.3.0: Sync settings with XFCE4
-	source = light-locker-settings-1.5.3.tar.gz::https://github.com/Antergos/light-locker-settings/archive/1.5.3.tar.gz
-	sha256sums = 9174ee896d9ea7f41cb14eed61bea473de4b57278858bbd32045f1ed64858fcd
-
+	source = light-locker-settings-1.5.4.tar.gz::https://github.com/Froggo8311/light-locker-settings/archive/1.5.4.tar.gz
+	sha256sums = 26c1b3cf2c6af0672d7fb15164902d09b431976658e252bcddf45b8f06d90f81
 pkgname = light-locker-settings
 

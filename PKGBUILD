@@ -11,7 +11,7 @@ license=('GPL')
 depends=('intltool' 'light-locker' 'python-psutil' 'python-gobject')
 optdepends=("xfce4-power-manager>=1.3.0: Sync settings with XFCE4")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Froggo8311/light-locker-settings/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('9174ee896d9ea7f41cb14eed61bea473de4b57278858bbd32045f1ed64858fcd')
+sha256sums=('26c1b3cf2c6af0672d7fb15164902d09b431976658e252bcddf45b8f06d90f81')
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
 	./configure --prefix=/usr
