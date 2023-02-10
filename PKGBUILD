@@ -4,12 +4,11 @@
 
 pkgname=jackett-bin
 pkgver=0.20.3017
-pkgrel=2
+pkgrel=3
 pkgdesc='Use many torrent trackers with software that supports torznab/potato feeds.'
 arch=('x86_64' 'aarch64' 'armv7h')
 license=('GPL')
 url='https://github.com/Jackett/Jackett'
-depends=('dotnet-runtime')
 optdepends=(
   'flaresolverr: A proxy server to bypass Cloudflare protection'
 )
