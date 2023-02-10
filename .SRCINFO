@@ -1,16 +1,15 @@
 pkgbase = python-pyregion-doc
 	pkgdesc = Documentation for Python pyregion module
-	pkgver = 2.1.1
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = http://pyregion.readthedocs.io
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MIT
-	makedepends = python-pyregion=2.1.1
-	makedepends = python-astropy
-	makedepends = python-astropy-helpers31
-	makedepends = python-sphinx-astropy
-	source = https://files.pythonhosted.org/packages/source/p/pyregion/pyregion-2.1.1.tar.gz
-	md5sums = bd46c4982eee451387df55432854407d
+	makedepends = python-pyregion=2.2.0
+	makedepends = python-sphinx-automodapi
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-matplotlib
+	source = https://files.pythonhosted.org/packages/source/p/pyregion/pyregion-2.2.0.tar.gz
+	md5sums = 54f9c062409892a95cd4fee46a6105bb
 
 pkgname = python-pyregion-doc
