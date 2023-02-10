@@ -4,7 +4,7 @@
 _gitname=frontend-sdl2
 pkgname=projectm-sdl2-git
 pkgver=57.a5152b3
-pkgrel=1
+pkgrel=2
 provides=('projectm-sdl')
 conflicts=('projectm-sdl')
 pkgdesc="Music visualizer which uses 3D accelerated iterative image based rendering (git version)"
@@ -34,6 +34,8 @@ package() {
   cd "${_gitname}/build"
   mkdir -p "$pkgdir/usr/bin"
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
+  mkdir -p "$pkgdir/usr/share/doc/$pkgname/"
   DESTDIR="$pkgdir" install -Dm755 "${srcdir}/${_gitname}/build/src/projectMSDL" "$pkgdir/usr/bin/"
+  DESTDIR="$pkgdir" install -Dm644 "${srcdir}/${_gitname}/build/src/projectMSDL.properties" "$pkgdir/usr/share/doc/$pkgname/"
   DESTDIR="$pkgdir" install -Dm644 "${srcdir}/${_gitname}/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/"
 }
