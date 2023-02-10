@@ -1,7 +1,7 @@
 # Contributer: abcfy2 <abcfy2@163.com>
 
 pkgname='deepin-wine6-stable'
-pkgver=6.0.0.39
+pkgver=6.0.0.42
 pkgrel=1
 pkgdesc="Deepin wine6 stable"
 arch=('x86_64')
