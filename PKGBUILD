@@ -1,7 +1,7 @@
 # Maintainer: Christer Solskogen <christer.solskogen@gmail.com>
 
 pkgname=sdl2-git
-pkgver=2.26.0.r190.g4f7f72c25
+pkgver=2.26.0.r206.g17515f4ae
 pkgrel=1
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -20,6 +20,7 @@ source=("git+https://github.com/libsdl-org/SDL#branch=SDL2")
 provides=("sdl2=$pkgver")
 conflicts=(sdl2 sdl2-minimal-hg)
 sha512sums=('SKIP')
+validpgpkeys=('1528635D8053A57F77D1E08630A59377A7763BE6') # Sam Lantinga
 
 pkgver() {
   cd SDL
@@ -39,7 +40,5 @@ build() {
 
 package() {
 	DESTDIR="${pkgdir}" cmake --install build
-
-	install -Dm644 SDL/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
