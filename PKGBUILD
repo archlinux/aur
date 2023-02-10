@@ -1,3 +1,5 @@
+# Maintainer: Triss Healy <th at trissyle dot gs>
+
 # IMG_GPU drivers for VisionFive2 RISC-V boards.
 
 pkgname=visionfive2-img-gpu
@@ -5,10 +7,9 @@ pkgver=1.17.6210866
 pkgrel=1
 pkgdesc="This is the GLES and Vullkan implementation provided by Starfive for the IMG_GPU"
 url="https://github.com/starfive-tech/soft_3rdpart/tree/JH7110_VisionFive2_devel"
-# Uhhh... pacman riscv pretends it's actually x86_64
-arch=(x86_64)
+arch=(riscv64)
 license=(custom)
-conflicts=(libglvnd mesa)
+conflicts=(libglvnd mesa ocl-icd vulkan-icd-loader)
 
 provides=(opengl-driver
           libgl
@@ -22,7 +23,9 @@ provides=(opengl-driver
           libOpenGL.so=0-64
           vulkan-driver
           vulkan-icd-loader
-          libvulkan.so=1-64)
+          libvulkan.so=1-64
+          opencl-icd-loader)
+
 source=("https://github.com/starfive-tech/soft_3rdpart/raw/JH7110_VisionFive2_devel/IMG_GPU/out/img-gpu-powervr-bin-${pkgver}.tar.gz")
 sha256sums=('8ef5eba77c776e0d4444d819e12c64bfa8eee0ae2cdf90b6eb7a3a9df7bd7ef2')
 
@@ -74,27 +77,27 @@ package() {
     install -Dm755 usr/local/bin/pvrhwperf "${pkgdir}/usr/bin/pvrhwperf"
 
     # Symbolic links
-    install usr/lib/libPVROCL.so "${pkgdir}/usr/lib/libPVROCL.so"
-    install usr/lib/libVK_IMG.so "${pkgdir}/usr/lib/libVK_IMG.so"
-    install usr/lib/libPVRScopeServices.so "${pkgdir}/usr/lib/libPVRScopeServices.so"
-    install usr/lib/libvulkan.so "${pkgdir}/usr/lib/libvulkan.so"
-    install usr/lib/libsutu_display.so "${pkgdir}/usr/lib/libsutu_display.so"
-    install usr/lib/libpvr_dri_support.so "${pkgdir}/usr/lib/libpvr_dri_support.so"
-    install usr/lib/libglslcompiler.so "${pkgdir}/usr/lib/libglslcompiler.so"
-    install usr/lib/libufwriter.so "${pkgdir}/usr/lib/libufwriter.so"
-    install usr/lib/libvulkan-1.so "${pkgdir}/usr/lib/libvulkan-1.so"
-    install usr/lib/libvulkan.so.1 "${pkgdir}/usr/lib/libvulkan.so.1"
-    install usr/lib/libGLESv1_CM_PVR_MESA.so "${pkgdir}/usr/lib/libGLESv1_CM_PVR_MESA.so"
-    install usr/lib/libGLESv2_PVR_MESA.so "${pkgdir}/usr/lib/libGLESv2_PVR_MESA.so"
-    install usr/lib/libvulkan.so.0 "${pkgdir}/usr/lib/libvulkan.so.0"
-    install usr/lib/libsrv_um.so "${pkgdir}/usr/lib/libsrv_um.so"
-    install usr/lib/libPVROCL.so.1 "${pkgdir}/usr/lib/libPVROCL.so.1"
-    install usr/lib/libGLESv1_CM.so.1 "${pkgdir}/usr/lib/libGLESv1_CM.so.1"
-    install usr/lib/libOpenCL.so "${pkgdir}/usr/lib/libOpenCL.so"
-    install usr/lib/libGLESv2.so.2 "${pkgdir}/usr/lib/libGLESv2.so.2"
-    install usr/lib/libGLESv1_CM.so "${pkgdir}/usr/lib/libGLESv1_CM.so"
-    install usr/lib/libOpenCL.so.1 "${pkgdir}/usr/lib/libOpenCL.so.1"
-    install usr/lib/libGLESv2.so "${pkgdir}/usr/lib/libGLESv2.so"
-    install usr/lib/libVK_IMG.so.1 "${pkgdir}/usr/lib/libVK_IMG.so.1"
-    install usr/lib/libusc.so "${pkgdir}/usr/lib/libusc.so"
+    cp --no-dereference usr/lib/libPVROCL.so "${pkgdir}/usr/lib/libPVROCL.so"
+    cp --no-dereference usr/lib/libVK_IMG.so "${pkgdir}/usr/lib/libVK_IMG.so"
+    cp --no-dereference usr/lib/libPVRScopeServices.so "${pkgdir}/usr/lib/libPVRScopeServices.so"
+    cp --no-dereference usr/lib/libvulkan.so "${pkgdir}/usr/lib/libvulkan.so"
+    cp --no-dereference usr/lib/libsutu_display.so "${pkgdir}/usr/lib/libsutu_display.so"
+    cp --no-dereference usr/lib/libpvr_dri_support.so "${pkgdir}/usr/lib/libpvr_dri_support.so"
+    cp --no-dereference usr/lib/libglslcompiler.so "${pkgdir}/usr/lib/libglslcompiler.so"
+    cp --no-dereference usr/lib/libufwriter.so "${pkgdir}/usr/lib/libufwriter.so"
+    cp --no-dereference usr/lib/libvulkan-1.so "${pkgdir}/usr/lib/libvulkan-1.so"
+    cp --no-dereference usr/lib/libvulkan.so.1 "${pkgdir}/usr/lib/libvulkan.so.1"
+    cp --no-dereference usr/lib/libGLESv1_CM_PVR_MESA.so "${pkgdir}/usr/lib/libGLESv1_CM_PVR_MESA.so"
+    cp --no-dereference usr/lib/libGLESv2_PVR_MESA.so "${pkgdir}/usr/lib/libGLESv2_PVR_MESA.so"
+    cp --no-dereference usr/lib/libvulkan.so.0 "${pkgdir}/usr/lib/libvulkan.so.0"
+    cp --no-dereference usr/lib/libsrv_um.so "${pkgdir}/usr/lib/libsrv_um.so"
+    cp --no-dereference usr/lib/libPVROCL.so.1 "${pkgdir}/usr/lib/libPVROCL.so.1"
+    cp --no-dereference usr/lib/libGLESv1_CM.so.1 "${pkgdir}/usr/lib/libGLESv1_CM.so.1"
+    cp --no-dereference usr/lib/libOpenCL.so "${pkgdir}/usr/lib/libOpenCL.so"
+    cp --no-dereference usr/lib/libGLESv2.so.2 "${pkgdir}/usr/lib/libGLESv2.so.2"
+    cp --no-dereference usr/lib/libGLESv1_CM.so "${pkgdir}/usr/lib/libGLESv1_CM.so"
+    cp --no-dereference usr/lib/libOpenCL.so.1 "${pkgdir}/usr/lib/libOpenCL.so.1"
+    cp --no-dereference usr/lib/libGLESv2.so "${pkgdir}/usr/lib/libGLESv2.so"
+    cp --no-dereference usr/lib/libVK_IMG.so.1 "${pkgdir}/usr/lib/libVK_IMG.so.1"
+    cp --no-dereference usr/lib/libusc.so "${pkgdir}/usr/lib/libusc.so"
 }
