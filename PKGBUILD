@@ -1,7 +1,8 @@
+# Maintainer: Nogweii <me@nogweii.net>
 # Mainteiner: Donald Webster <fryfrog@gmail.com>
 
 pkgname=runrestic
-pkgver=0.5.26.1
+pkgver=0.5.28
 pkgrel=1
 pkgdesc='A wrapper script for Restic backup software that inits, creates, prunes and checks backups'
 arch=(any)
@@ -11,13 +12,15 @@ depends=(
   'restic'
   'python-toml'
   'python-jsonschema'
-  'python-requests')
+  'python-requests'
+)
 
 checkdepends=('python-pytest')
+makedepends=('python-setuptools')
 
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 
-sha256sums=('225842a779536e8d945071403e652d9e4d8111a2615744427dcb8b093e8e88fe')
+sha256sums=('62cd131161379607d3fba1a43e71e57a24e1d747af064bd1b8bab207ec102542')
 
 check() {
   cd "${pkgname}-${pkgver}"
