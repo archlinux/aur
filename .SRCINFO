@@ -1,7 +1,7 @@
 pkgbase = vma-git
 	pkgdesc = Virtual Machine Archive format (VMA)
 	pkgver = 7.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pve.proxmox.com/wiki/VMA
 	arch = x86_64
 	license = AGPL
