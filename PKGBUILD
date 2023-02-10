@@ -4,13 +4,13 @@
 pkgname=soundsense-rs-git
 _pkgname=soundsense-rs
 pkgver=1.5.1.travis.r12.gf701020
-pkgrel=1
+pkgrel=2
 pkgdesc="A Rust version of SoundSense"
 arch=("x86_64")
 url="https://github.com/prixt/${_pkgname}"
 license=("MIT")
 makedepends=("git" "rust" "alsa-lib" "gtk3" "webkit2gtk")
-depends=("libasound.so" "libgtk-3.so" "libgdk-3.so" "libwebkit2gtk-4.0.so"
+depends=("libasound.so" "libgdk-3.so" "libwebkit2gtk-4.0.so"
          "libjavascriptcoregtk-4.0.so")
 source=("git+https://github.com/prixt/${_pkgname}.git"
         'soundsense-rs.desktop'
@@ -36,7 +36,7 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
   install -Dm755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "icons/icon.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 
   cd "${srcdir}"
