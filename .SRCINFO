@@ -1,0 +1,15 @@
+pkgbase = easierconnect
+	pkgdesc = Sangfor EasyConnect protocol reimplementation in Go
+	pkgver = TestBuild13.r0.7a1dc42
+	pkgrel = 1
+	url = https://github.com/lyc8503/EasierConnect
+	arch = x86_64
+	arch = aarch64
+	license = AGPL3
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = easierconnect::git+https://github.com/lyc8503/EasierConnect.git#tag=7a1dc4260786d22c2cdc852ce66dcbe55eb2e6a7
+	sha256sums = SKIP
+
+pkgname = easierconnect
