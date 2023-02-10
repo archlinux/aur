@@ -2,18 +2,18 @@
 # Contributor: Daniil Kovalev <daniil@kovalev.website>
 
 pkgname=libcotp
-pkgver=1.2.8
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='C library that generates TOTP and HOTP'
 url="https://github.com/paolostivanin/libcotp"
 license=('APACHE')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-depends=('libbaseencode' 'libgcrypt')
+depends=('libgcrypt')
 makedepends=('cmake')
 validpgpkeys=('060C6B7D3869F148C4C4ACD43C9BE9B64EC1EA64')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver/v$pkgver.tar.gz.asc")
-sha256sums=('78dab6a2ee08e73f1d052dcb7c1ad069cc37fdf600f3f660d8e6299e11218f0b'
+sha256sums=('9391244cdcbe5a871230bd9da434b415c25e3ed49fd53f482ef6c0721a12d405'
             'SKIP')
 
 build() {
