@@ -9,7 +9,7 @@
 _gitname=projectm
 pkgname=projectm-git
 pkgver=2502.a6b4771ad
-pkgrel=2
+pkgrel=3
 conflicts=('projectm')
 provides=('projectm')
 pkgdesc="Music visualizer which uses 3D accelerated iterative image based rendering (git version)"
@@ -18,7 +18,7 @@ url='https://github.com/projectM-visualizer/projectm'
 license=('LGPL')
 depends=('sdl2' 'libxext' 'glm')
 makedepends=('cmake')
-optdepends=('projectm-sdl2-git' 'projectm-presets-cream-of-the-crop')
+optdepends=('projectm-sdl2-git' 'projectm-presets-cream-of-the-crop' 'projectm-presets-classic-git')
 source=("git+https://github.com/projectM-visualizer/${_gitname}.git")
 sha256sums=(SKIP)
 options=('!buildflags')
