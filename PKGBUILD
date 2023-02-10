@@ -3,8 +3,8 @@
 
 pkgname=mingw-w64-zstd
 _pkgname=zstd
-pkgver=1.5.2
-pkgrel=3
+pkgver=1.5.4
+pkgrel=1
 pkgdesc="Zstandard - Fast real-time compression algorithm (mingw-w64)"
 url="http://www.zstd.net/"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('staticlibs' '!buildflags' '!strip')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/facebook/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f7de13462f7a82c29ab865820149e778cbfe01087b3a55b5332707abf9db4a6e')
+sha256sums=('35ad983197f8f8eb0c963877bf8be50490a0b3df54b4edeb8399ba8a8b2f60a4')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
