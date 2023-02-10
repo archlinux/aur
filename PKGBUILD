@@ -8,8 +8,8 @@
 
 _gitname=projectm
 pkgname=projectm-git
-pkgver=2281.17cfcda0d
-pkgrel=2
+pkgver=2502.a6b4771ad
+pkgrel=1
 conflicts=('projectm')
 provides=('projectm')
 pkgdesc="Music visualizer which uses 3D accelerated iterative image based rendering (git version)"
@@ -31,7 +31,7 @@ build() {
   cd "${_gitname}"
   mkdir -p build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_STATIC_LIB=OFF -DENABLE_SHARED_LINKING=ON ../
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_STATIC_LIB=OFF -DENABLE_SHARED_LINKING=ON -DCMAKE_BUILD_TYPE=Release ../
   make
 }
 
