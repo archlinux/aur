@@ -334,7 +334,7 @@ package_gcc-rust-git() {
 package_gcc-objc-git() {
   pkgdesc='Objective-C front-end for GCC (git version)'
   depends=("gcc-git=$pkgver-$pkgrel" libisl.so)
-  provides=(gcc-multilib{,-git})
+  provides=(gcc-multilib{,-git} gcc-objc)
   conflicts=(gcc-objc)
   replaces=(gcc-multilib-git)
 
