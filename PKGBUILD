@@ -1,7 +1,7 @@
 # Maintainer: Jayvee Enaguas <harvettfox96@tilde.club>
 
 pkgname=classic-colors
-pkgver=20220913
+pkgver=1.0.1.20221210
 pkgrel=1
 pkgdesc="A simple image drawing and editing program in a look similar to MS Paint"
 url="https://github.com/justinmeiners/classic-colors/"
@@ -11,7 +11,7 @@ depends=('openmotif' 'libxpm')
 source=("https://tilde.club/~harvettfox96/files/archive/pkg/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.xpm")
-sha512sums=('e6c17c235e185262050aba5206d185764f5f8a5d1595e663ec657f78d21581f306715b50ac99ca39e8ae6714cfb6a4f9101f7792fba63946af40846df0f3d4bd'
+sha512sums=('9f54e18afa39cc1cb33701749a1049125474baa3493af90c2b8041d1d48e1a2f6eb2b48365deae134f4a21c896598d0166a12e7ca8e910b80b2b28d8fc27c6e8'
             '3ea147b70e7c2246def29965e6cb1e97a849680c1c07f5e5e214df3fb905db508472c02364af62898896e94f349b5645477333a9111293eed9c89fb2d226695c'
             'eea5f2366398727bea12aa14b36eb16a5567b9d940dc4e2062bd70cbeeed6b957d64869407900d740d9d4627f17c5c5ef31215384e39640268bcba6fa1f48e8a')
 
