@@ -2,10 +2,10 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=blockbench-git
-pkgver=v4.5.2.r10.gc8bae884
+pkgver=v4.6.4.r0.gf5e43877
 pkgrel=1
 pkgdesc="A low-poly 3D model editor (git version)"
-arch=('any')
+arch=('x86_64' 'aarch64')
 url=https://github.com/JannisX11/blockbench
 license=('GPL3')
 provides=(blockbench)
@@ -16,7 +16,7 @@ _electron=electron
 _electronDist=/usr/lib/${_electron}
 _electronVersion=$(cat ${_electronDist}/version)
 
-depends=("${_electron}")
+depends=("${_electron}" 'giblib')
 makedepends=(git npm)
 source=("${_pkgname}::git+https://github.com/JannisX11/blockbench.git"
         "${_pkgname}.desktop")
