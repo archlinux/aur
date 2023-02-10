@@ -1,20 +1,29 @@
 # Maintainer: Łukasz Mariański <lmarianski dot protonmail dot com>
+
+function _ifmod {
+    lsmod | grep "$1" &> /dev/null
+}
+
 pkgname=alvr-git
 _pkgname=${pkgname%-git}
-pkgver=r2302.3ebcd207
+pkgver=r2338.55a377ee
 pkgrel=1
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
 url="https://github.com/alvr-org/ALVR"
 license=('MIT')
 groups=()
-depends=('vulkan-driver' 'ffmpeg' 'libunwind')
+depends=('vulkan-driver' 'libunwind')
+if _ifmod nvidia_drm; then
+    depends+=('ffmpeg')
+fi
 makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'jack' 'libxrandr')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!lto')
-source=("${_pkgname}"::'git+https://github.com/alvr-org/ALVR.git')
-md5sums=('SKIP')
+source=("${_pkgname}"::'git+https://github.com/alvr-org/ALVR.git' "${_pkgname}-nvidia.patch")
+md5sums=('SKIP'
+         'e03757b1ef3c152a340c08f23c7fe38b')
 
 pkgver() {
 	cd "$srcdir/${_pkgname}"
@@ -29,6 +38,10 @@ prepare() {
 
 	echo "[profile.release]
 lto=true" >> Cargo.toml
+
+    if _ifmod nvidia_drm; then
+        patch -p1 -i "$srcdir/$_pkgname-nvidia.patch"
+    fi
 
 	cargo update
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
@@ -45,6 +58,10 @@ build() {
 
 	export ALVR_OPENVR_DRIVER_ROOT_DIR=$ALVR_LIBRARIES_DIR/steamvr/alvr/
 	export ALVR_VRCOMPOSITOR_WRAPPER_DIR=$ALVR_LIBRARIES_DIR/alvr/
+
+    if ! _ifmod nvidia_drm; then
+        cargo xtask prepare-deps --no-nvidia
+    fi
 
 	cargo build \
 		--frozen \
