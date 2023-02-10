@@ -1,19 +1,19 @@
 # Maintainer: lstnbl <jialanxin1996@hotmail.com>
 
 pkgname=vaspkit-bin
-pkgver=1.2.5
+pkgver=1.4.0
 _swname=vaspkit.${pkgver}
 pkgrel=1
 pkgdesc="VASPKIT is a postprocessing tool for VASP code.(Warning! May overwrite your .vaspkit and utilities dir!)"
 arch=('x86_64')
 licence=('unknown')
 url=https://sourceforge.net/projects/vaspkit/files/
-source=('https://downloads.sourceforge.net/vaspkit/vaspkit.1.2.5.Linux.x64.tar.gz')
-sha1sums=(1a3b4092130a1614976f71d298c92296fec13f0c)
+source=('https://downloads.sourceforge.net/vaspkit/vaspkit.1.4.0.linux.x64.tar.gz')
+sha1sums=(5f4a917e319e12238c5b662e71c194e52e49653b)
 
 package(){
   install -d "${pkgdir}/usr/bin/${_swname}"
-  tar xf "${srcdir}/${_swname}.Linux.x64.tar.gz"
+  tar xf "${srcdir}/${_swname}.linux.x64.tar.gz"
   cp -r "${srcdir}/${_swname}/"*  "${pkgdir}/usr/bin/${_swname}" -R
   cd "${pkgdir}/usr/bin/${_swname}"
   if [[ ! -e ~/.vaspkit ]]; then
