@@ -2,8 +2,8 @@
 # shellcheck shell=bash
 # shellcheck disable=SC2034,SC2164
 pkgname=mpv-sponsorblock
-_pkgver=2.0.0-alpha.2
-pkgver=2.0.0alpha2
+_pkgver=2.0.0-alpha.3
+pkgver=2.0.0alpha3
 pkgrel=1
 pkgdesc='MPV plugin that allow you to skip sponsors while watching YouTube videos'
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('mpv')
 makedepends=('cargo-nightly')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$_pkgver.tar.gz")
-sha256sums=('9f9b1f383c505dfad86aaa90c3301fde04541cabc2e482c00586c0d36ff1707a')
+sha256sums=('486ce8a6a72f3ad00810bf66425d9fa67db8ee04bfc54eae5223622fff6c4980')
 
 prepare() {
     cd "$pkgname-$_pkgver"
