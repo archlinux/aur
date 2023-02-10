@@ -1,7 +1,7 @@
 pkgbase = projectm-presets-classic-git
 	pkgdesc = Classic preset pack for projectM (git version)
 	pkgver = 2.g14a6244.2.gff8edf2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/projectM-visualizer/presets-projectm-classic
 	arch = x86_64
 	arch = i686
