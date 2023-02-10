@@ -1,24 +1,26 @@
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: bipin kumar <bipin@ccmb.res.in>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: dibblethewrecker dibblethewrecker.at.jiwe.dot.org
 # Contributor: big_gie nbigaouette . at . gmail.com
 
 pkgname=gri
 pkgver=2.12.23
-pkgrel=9
+pkgrel=10
 pkgdesc="A script-based language for scientific graphics programming"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://gri.sourceforge.net/"
 depends=('perl')
-makedepends=('ghostscript' 'imagemagick6' 'texlive-core' 'perl-perl4-corelibs')
-source=("http://downloads.sourceforge.net/gri/$pkgname-$pkgver.tar.gz" htmldoc.patch)
-sha256sums=('a24e703f30250ed705c0a242aa59a24748259ea7355fca52152f367f45bfd2e7'
-            '29602e17d9a94e4ae2fe1bd9f550615c09295c984dc2a2c2a03e23179376cc96')
+makedepends=('ghostscript' 'imagemagick' 'texlive-core' 'perl-perl4-corelibs')
+source=("https://github.com/dankelley/gri/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('7199abb7be98a0de7cade63122112c57edeab6eea289b4c567ad171ba0a620ae')
 options=('!makeflags')
 
 prepare() {
   cd $pkgname-$pkgver
-  patch -Np1 < "$srcdir"/htmldoc.patch
+  aclocal
+	autoconf
+	automake --add-missing
 }
 
 build() {
