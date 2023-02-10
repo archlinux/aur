@@ -3,18 +3,27 @@
 
 pkgname=chatgpt-desktop-git
 _pkgname=ChatGPT
-pkgver=0.10.3+r1+gc293f07
-pkgrel=2
+pkgver=0.10.3+r5+g7836c12
+pkgrel=1
 pkgdesc="ChatGPT Desktop Application (Mac, Windows and Linux)"
-arch=('any')
+arch=('x86_64'
+      'i686' #ArchLinux32
+      'armv7h' #ArchLinuxARM
+      'aarch64') #ArchLinuxARM
 url="https://github.com/lencx/ChatGPT"
 license=("Apache")
 provides=("chatgpt-desktop")
-conflitct=("chatgpt-desktop")
-makedepends=("rust" "git" "imagemagick")
-depends=("openssl-1.1" "webkit2gtk")
-md5sums=("SKIP" "538f46d4c0285194f7c89c5c14969f7a")
-source=("git+https://github.com/lencx/ChatGPT.git" chatgpt.desktop)
+conflicts=("chatgpt-desktop")
+makedepends=("imagemagick"
+             "rust"
+             "git")
+depends=("hicolor-icon-theme"
+         "openssl"
+         "webkit2gtk")
+source=("git+https://github.com/lencx/ChatGPT.git"
+        chat-gpt.desktop)
+md5sums=('SKIP'
+         '522e34cab26f9bf9247567e48f625f6d')
 
 pkgver() {
 	cd "${_pkgname}"
@@ -22,7 +31,7 @@ pkgver() {
 }
 
 prepare() {
-	mkdir -p "${_pkgname}/dist"
+	mkdir "${_pkgname}/dist"
 }
 
 build() {
@@ -32,24 +41,17 @@ build() {
 
 package() {
 	# Install desktop file
-	install -Dm644 "${srcdir}/chatgpt.desktop" "${pkgdir}/usr/share/applications/chatgpt.desktop"
-	
+	install -Dm644 "${srcdir}/chat-gpt.desktop" -t "${pkgdir}/usr/share/applications"
+
 	# Install binary
-	install -Dm755 "${srcdir}/${_pkgname}/target/release/chatgpt" "${pkgdir}/usr/bin/chatgpt"
-	
+	install -Dm755 "${srcdir}/${_pkgname}/target/release/chatgpt" \
+		"${pkgdir}/usr/bin/chat-gpt"
+
 	# Generate and install Icons
-  for size in 32 64 128 256 512; do
-    mkdir -p ${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps
-    
-    convert -resize ${size}x${size} ${srcdir}/${_pkgname}/public/logo.png \
-      "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/chatgpt.png"
-  done
+	for size in 32 64 128 256 512; do
+		install -dm 755 "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps"
+
+		convert -resize ${size}x${size} "${srcdir}/${_pkgname}/public/logo.png" \
+			"${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/chat-gpt.png"
+	done
 }
-
-
-
-
-
-
-
-
