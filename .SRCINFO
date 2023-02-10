@@ -16,6 +16,7 @@ pkgbase = vmangos-git
 	depends = mariadb
 	depends = openssl
 	depends = zlib
+	optdepends = vmangos-setupdb: Pacman hook to (insecurely) set up MariaDB
 	provides = vmangos
 	conflicts = vmangos
 	backup = etc/vmangos/mangosd.conf

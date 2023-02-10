@@ -3,7 +3,7 @@
 _pkgname=vmangos
 pkgname=${_pkgname}-git
 pkgver=r5189.4cf93a964
-pkgrel=1
+pkgrel=2
 pkgdesc="World of Warcraft Vanilla server emulator"
 arch=('x86_64')
 url="https://github.com/vmangos/"
@@ -22,6 +22,8 @@ makedepends=(
     'git'
     'p7zip'
 )
+optdepends=(
+    'vmangos-setupdb: Pacman hook to (insecurely) set up MariaDB')
 backup=(
     'etc/vmangos/mangosd.conf'
     'etc/vmangos/realmd.conf'
