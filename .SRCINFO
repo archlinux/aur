@@ -1,0 +1,13 @@
+pkgbase = boxxy
+	pkgdesc = Put bad Linux applications in a box with only their files
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://github.com/queer/boxxy
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = boxxy-0.2.7.tar.gz::https://github.com/queer/boxxy/archive/v0.2.7.tar.gz
+	sha256sums = 01db73296aecea5ebdbbc976677bef92157ec37ca74b10f87b0a2b3d276ac535
+
+pkgname = boxxy
