@@ -1,0 +1,15 @@
+pkgbase = bake-git
+	pkgdesc = A build system that lets you clone, build and run C/C++ projects with a single command
+	pkgver = 2.5.1.r127.g34990d3
+	pkgrel = 1
+	url = https://github.com/SanderMertens/bake
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	provides = bake-git
+	conflicts = bake
+	source = bake::git+https://github.com/SanderMertens/bake.git
+	sha256sums = SKIP
+
+pkgname = bake-git
