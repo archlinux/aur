@@ -1,24 +1,13 @@
-diff --git a/other/wrapper/nzbhydra2wrapperPy3.py b/other/wrapper/nzbhydra2wrapperPy3.py
-index e64c80d4..bd9e57ba 100644
 --- a/other/wrapper/nzbhydra2wrapperPy3.py
 +++ b/other/wrapper/nzbhydra2wrapperPy3.py
-@@ -491,18 +491,7 @@ def startup():
+@@ -499,6 +499,10 @@
  
  
  def determineReleaseType():
--    if os.path.exists("lib"):
--        releaseType = ReleaseType.GENERIC
--        if os.path.exists("core") or os.path.exists("core.exe"):
--            logger.warning("lib folder and core(.exe) found. Either delete the executable to use the generic release type (using java and ignoring the executable) or delete the lib folder to use the executable and not require java")
--    elif os.path.exists("core") or os.path.exists("core.exe"):
--        releaseType = ReleaseType.NATIVE
--    else:
--        logger.critical(
--            "Unable to determine the release type. Neither lib folder nor core(.exe) found")
--        sys.exit(-1)
--    logger.info("Determined release type: " + releaseType)
--    return releaseType
-+    return ReleaseType.NATIVE
- 
- 
- def escape_parameter(is_windows, parameter):
++    forcedReleaseType = os.environ.get('NZBHYDRA_FORCE_GENERIC')
++    if forcedReleaseType is not None:
++        logger.info("Release type " + forcedReleaseType + " forced by environment variable ")
++        return forcedReleaseType
+     if os.path.exists("lib"):
+         releaseType = ReleaseType.GENERIC
+         if os.path.exists("core") or os.path.exists("core.exe"):

@@ -2,8 +2,8 @@
 # Co-Maintainer: Leon Möller <jkhsjdhjs at totally dot rip>
 
 pkgname="nzbhydra2-nojava-bin"
-pkgver=5.1.2
-pkgrel=2
+pkgver=5.1.5
+pkgrel=1
 pkgdesc="Search aggregator for newznab and torznab indexers."
 arch=('x86_64' 'aarch64')
 url="https://github.com/theotherp/nzbhydra2"
@@ -16,26 +16,20 @@ optdepends=('jackett: torrent indexer proxy')
 source=('nzbhydra2.service'
         'nzbhydra2.tmpfiles'
         'nzbhydra2.sysusers'
-        'nzbhydra2.sh'
-        'wrapper-remove-base-path-checks.patch'
-        'wrapper-remove-update-support.patch'
-        'wrapper-remove-release-type-detection.patch')
+        'wrapper-remove-release-type-detection.patch'
+        'nzbhydra2.sh')
 source_x86_64=("https://github.com/theotherp/nzbhydra2/releases/download/v${pkgver}/${pkgname%-nojava-bin}-${pkgver}-amd64-linux.zip")
 source_aarch64=("https://github.com/theotherp/nzbhydra2/releases/download/v${pkgver}/${pkgname%-nojava-bin}-${pkgver}-arm64-linux.zip")
 
 sha256sums=('2fae64a1c5979d9f7b508f1e15d0f013b7cca1f2bbbdae56f546f4c362146b68'
             'a9ceeed2b50d55c5e554c0d4c615e855fe4d3889eb118e37908fa04ffb7cb003'
             '8f91eb4f98f7f5c11590b29b1394dfa7ca62ad115feeac4f402c9ac094fb925a'
-            '8e9109dd0979bf9d8423bfe59ba63c0c22144881dfe16a82e4644e32f9e4bc01'
-            '5660f26303826a0b8bf3f7c198c39e345e87b799e2304a79db5a77992d09cda4'
-            '35100f4e7ab5a480f5554d9abd32e8abac20d56f873f82ecbc906d0b3fdadc73'
-            '73fe3e7d877f4f9f301deef9f699a357a9a1574148aedb565832f0375c99bdda')
-sha256sums_x86_64=('832b6bc1aecc2b1905e62727893a5a1b79d747a1c372204b772e1b7f2b4fe3ce')
-sha256sums_aarch64=('7abda7cd4ed8d6cf5100e5bbfd1d2db09d7ad4cfb289e5ab9b725afc2a1696f5')
+            'f322cfbfb360ede7b815ed63262032d48d459fc1f775ad4b95b6a585a97f2bdd'
+            '861e535862f41e958e53ce1c4fa31c5ee4477c5bf7c44442b1050cbbedbfef7a')
+sha256sums_x86_64=('36c96cad0b8afaa83a64d9a407925f9cd310fed912c330c63f8d07cdb2559869')
+sha256sums_aarch64=('c32d92a9a7aca0ea2971140e4c4313abcf36f4fe058a678fa31c5172fdde0f53')
 
 prepare() {
-    patch "${srcdir}/nzbhydra2wrapperPy3.py" < "${srcdir}/wrapper-remove-base-path-checks.patch"
-    patch "${srcdir}/nzbhydra2wrapperPy3.py" < "${srcdir}/wrapper-remove-update-support.patch"
     patch "${srcdir}/nzbhydra2wrapperPy3.py" < "${srcdir}/wrapper-remove-release-type-detection.patch"
 }
 
