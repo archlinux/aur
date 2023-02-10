@@ -1,7 +1,7 @@
 pkgbase = vmangos-setupdb
 	pkgdesc = Pacman hook to update vmangos databases in MariaDB
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	license = GPL2
 	depends = vmangos-git
