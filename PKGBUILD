@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libbacktrace-git
-pkgver=r69.8602fda
+pkgver=r73.ad106d5
 pkgrel=1
 pkgdesc="Library to produce symbolic backtraces"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ prepare() {
   cd "libbacktrace"
 
   patch -Np1 -i "$srcdir/0001-Provide-project-information-to-autotools.patch"
-  patch -Np1 -i "$srcdir/0002-Add-pkg-config-file.patch"
+  patch -Np1 -i "$srcdir/0002-Add-pkg-config-file.patch" || true
 }
 
 pkgver() {

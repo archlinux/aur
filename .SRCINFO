@@ -1,6 +1,6 @@
 pkgbase = libbacktrace-git
 	pkgdesc = Library to produce symbolic backtraces
-	pkgver = r69.8602fda
+	pkgver = r73.ad106d5
 	pkgrel = 1
 	url = https://github.com/ianlancetaylor/libbacktrace
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = libbacktrace-git
 	makedepends = libunwind
 	depends = gcc-libs
 	depends = zlib
-	provides = libbacktrace=r69.8602fda
+	provides = libbacktrace=r73.ad106d5
 	provides = libbacktrace.so
 	conflicts = libbacktrace
 	options = staticlibs
