@@ -1,0 +1,19 @@
+pkgbase = go1.19
+	pkgdesc = Core compiler tools for the Go programming language v1.19
+	pkgver = 1.19.5
+	pkgrel = 2
+	url = https://golang.org/
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = go
+	makedepends = perl
+	options = !strip
+	options = staticlibs
+	source = https://storage.googleapis.com/golang/go1.19.5.src.tar.gz
+	source = https://storage.googleapis.com/golang/go1.19.5.src.tar.gz.asc
+	validpgpkeys = EB4C1BFD4F042F6DDDCCEC917721F63BD38B4796
+	sha256sums = 8e486e8e85a281fc5ce3f0bedc5b9d2dbf6276d7db0b25d3ec034f313da0375f
+	sha256sums = SKIP
+
+pkgname = go1.19
