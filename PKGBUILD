@@ -1,18 +1,18 @@
 # Maintainer: wangzhichao <wangzhichao1990@126.com>
 pkgname=tbtools
 _pkgname=TBtools
-pkgver=1.112
+pkgver=1.113
 pkgrel=1
 pkgdesc='GUI/CommandLine Tool Box for biologistists to utilize NGS data. '
 arch=('x86_64')
 license=('custom:commercial')
 depends=('java-runtime>=1.8' 'bash')
 url='https://github.com/CJ-Chen/TBtools'
-source=("${_pkgname}-${pkgver}.zip::https://github.com/CJ-Chen/TBtools/archive/refs/tags/v${pkgver}.zip"
+source=("${_pkgname}-${pkgver}.zip::https://github.com/CJ-Chen/TBtools/archive/refs/tags/${pkgver}.zip"
     "${_pkgname}.desktop"
 )
 sha256sums=(
-    '32c209531143eb6955fc6a822b77b84f90545ec93043f73e415a17cfa839fb66'
+    'ada79591eefbe55da6999dda51b73bb9b60027b1afaf27df5d43592ae6f5a95e'
     '3c12fbf52a0e3fb96fe62302f6b3938e8e42a393468620091ca7d9259073af13'
 )
 options=(!strip)
