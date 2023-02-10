@@ -1,8 +1,8 @@
 # Maintainer: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=adwaita-for-steam
-pkgver=0.30
-pkgrel=2
+pkgver=0.31
+pkgrel=1
 pkgdesc='A skin to make Steam look more like a native GNOME app'
 arch=(any)
 url=https://github.com/tkashkin/$pkgname
