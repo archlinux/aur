@@ -1,0 +1,7 @@
+[Unit]
+PartOf=vmangos-mangosd.service
+
+[Socket]
+SocketUser=vmangos
+RemoveOnStop=true
+ListenFIFO=%t/vmangos-mangosd.stdin

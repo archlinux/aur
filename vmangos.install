@@ -1,0 +1,48 @@
+## arg 1:  the new package version
+post_install() {
+    cat << EOF
+
+** Mangosd expects game data files to be located in /var/lib/vmangos.
+** These can be extracted from the client.
+** The extraction takes multiple hours.
+    Procedure for extracting:
+        1. Copy config.json and offmesh.txt from
+           /usr/share/vmangos/extractors/mmap to your
+           WoW Vanilla installation directory
+        2. Cd to your WoW Vanilla installation directory
+        3. Extractors are installed system-wide. Run the extractors:
+            1. mapextractor
+            2. vmapextractor
+            3. vmap_assembler
+            4. MoveMapGen
+        4. Move the extracted data to /var/lib/vmangos:
+            1. ./dbc to /var/lib/vmangos/5875/dbc
+            2. ./maps, ./vmaps, ./mmaps to /var/lib/vmangos
+            3. ./Buildings, ./Cameras, config.json and offmesh.txt can be deleted.
+        5. Change ownership of the files:
+            # chown -R vmangos:vmangos /var/lib/vmangos 
+
+** Sql scripts to set up the databases can be found in /usr/share/vmangos/sql.
+** Use MariaDB to set up databases.
+
+** More info:
+** https://github.com/vmangos/wiki/wiki/Getting-it-working
+
+** To start the server, use
+**     # systemctl start vmangos-realmd vmangos-mangosd
+** Stdin of the console can be written to at /run/vmangos-mangosd.stdin
+
+EOF
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+    cat << EOF
+
+** Databases need to be updated.
+** Sql scripts can be found at /usr/share/vmangos/sql/migrations.
+
+EOF
+}
+

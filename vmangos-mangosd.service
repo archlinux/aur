@@ -1,0 +1,19 @@
+[Unit]
+Description=World of Warcraft Vanilla dedicated server
+Wants=network.target
+
+[Service]
+WorkingDirectory=/var/lib/vmangos
+User=vmangos
+Group=vmangos
+Sockets=vmangos-mangosd.socket
+StandardInput=socket
+StandardOutput=journal
+StandardError=journal
+
+Type=simple
+Restart=always
+ExecStart=/usr/bin/mangosd
+
+[Install]
+WantedBy=multi-user.target

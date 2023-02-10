@@ -1,0 +1,13 @@
+[Unit]
+Description=World of Warcraft Vanilla login daemon
+Wants=network.target
+
+[Service]
+Type=simple
+User=vmangos
+Group=vmangos
+Restart=always
+ExecStart=/usr/bin/realmd
+
+[Install]
+WantedBy=multi-user.target

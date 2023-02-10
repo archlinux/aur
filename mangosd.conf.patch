@@ -1,0 +1,9 @@
+--- mangosd.conf	2023-02-06 23:08:36.350337959 +0200
++++ mangosd.conf.new	2023-02-07 00:15:59.207088335 +0200
+@@ -72,4 +72,4 @@
+ RealmID = 1
+-DataDir = "."
+-LogsDir = ""
++DataDir = "/var/lib/vmangos"
++LogsDir = "/var/log/vmangos"
+ HonorDir = ""
