@@ -10,8 +10,8 @@ pkgbase = perl-compress-raw-lzma
 	depends = perl>=0
 	depends = xz>=5.4.1
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/P/PM/PMQS/Compress-Raw-Lzma-2.201.tar.gz
-	md5sums = 366a7fbb946cd2be6a60e69123b62f5e
-	sha512sums = df43f8ab1550a3522fde74da07c18b095155bd58b2797bf5408253489de70843768db925d27ba183f8c19170d780b69c1949ccfd4e2d83e0a740e834034ce360
+	source = http://search.cpan.org/CPAN/authors/id/P/PM/PMQS/Compress-Raw-Lzma-2.204.tar.gz
+	md5sums = d8aa6ba58eb64f9e0b4eef05783d388c
+	sha512sums = 7f5f6f6fc4012a1ee94ef87c198da10489ab10ce92e14ddce63e3eb9a590f22870d82028b0e97d785921ad48d06328b508cc983d19eafe2b6274eba7087deffa
 
 pkgname = perl-compress-raw-lzma
