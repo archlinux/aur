@@ -3,7 +3,7 @@
 
 pkgname='python-datasets'
 pkgver=2.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc='The largest hub of ready-to-use datasets for ML models with fast, easy-to-use and efficient data manipulation tools'
 arch=('x86_64')
 url='https://github.com/huggingface/datasets'
@@ -33,7 +33,7 @@ optdepends=(
 )
 groups=('huggingface')
 source=("datasets-${pkgver}.tar.gz::https://github.com/huggingface/datasets/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('40daa725c21659ad03758022e42c530654c6bf416a50fceb643ae78439e884e9')
+sha256sums=('151bd5c683756b74e7945da71442b9c837d6977e1a23541062dd6979c4a35cf4')
 
 build() {
     cd ${srcdir}/datasets-${pkgver}
