@@ -1,0 +1,12 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = vmangos-git
+Target = vmangos-setupdb
+
+[Action]
+Description = Setup MariaDB user and databases for the vmangos server
+Depends = mariadb
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/vmangos-setupdb.sh
