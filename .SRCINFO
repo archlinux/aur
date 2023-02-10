@@ -1,6 +1,6 @@
 pkgbase = zork++-git
 	pkgdesc = A modern C++ project manager and build system for modern C++
-	pkgver = 0.4.2.r2.g395dec5
+	pkgver = 0.4.2.r4.g2a3da32
 	pkgrel = 1
 	url = https://github.com/zerodaycode/Zork
 	arch = x86_64
