@@ -2,7 +2,7 @@
 
 pkgname=maliit-keyboard
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Virtual keyboard based on Maliit framework'
 arch=(x86_64)
 url='https://maliit.github.io/'
