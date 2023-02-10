@@ -1,0 +1,15 @@
+pkgbase = inpost-cli
+	pkgdesc = A CLI tool to interact with the Polish InPost postal company.
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/alufers/inpost-cli
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = go
+	source = inpost-cli-1.3.0.tar.gz::https://github.com/alufers/inpost-cli/archive/1.3.0.tar.gz
+	b2sums = d75e47425eb14453e65e7ff50078c90b80e66f36e12212b44ebbc66a28b52a7ee8577ceb09846ba9656ea140505d66bb15519ed7ab3075857a7f26858d48cebb
+
+pkgname = inpost-cli
