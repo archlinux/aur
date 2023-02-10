@@ -5,13 +5,13 @@
 pkgname=soundsense
 _pkgver="2016-1_196"
 pkgver=${_pkgver//-/_}
-pkgrel=1
-pkgdesc="SoundSense is a sound-engine tool for Dwarf Fortress."
+pkgrel=2
+pkgdesc="A sound-engine tool for Dwarf Fortress."
 arch=("any")
 url="http://df.zweistein.cz/soundsense/"
 license=("custom")
 install="soundsense.install"
-depends=("java-runtime")
+depends=("java-runtime" "bash")
 makedepends=("coreutils"
              "unzip")
 source=("http://df.zweistein.cz/soundsense/soundSense_${_pkgver}.zip"
