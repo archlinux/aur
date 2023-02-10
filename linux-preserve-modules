@@ -156,8 +156,24 @@ preserve-modules-unlink-all() {
     exit 0
 }
 
+preserve-modules-list() {
+    if [[ $# -gt 0 ]]; then
+        echo "usage: linux-preserve-modules list" >&2
+        exit 1
+    fi
+
+    # find kernels with .preserved marker file
+    LINKED_KERNELS=( $(find /usr/lib/modules -maxdepth 2 -type f -name .preserved | cut -d/ -f5) )
+    echo "info: found ${#LINKED_KERNELS[@]} kernels with linked modules" >&2
+
+    # list kernels
+    echo "${LINKED_KERNELS[@]}"
+
+    exit 0
+}
+
 usage() {
-    echo "usage: linux-preserve-modules <copy|link|unlink|unlink-all> [release]" >&2
+    echo "usage: linux-preserve-modules <copy|link|unlink|unlink-all|list> [release]" >&2
     exit 1
 }
 
@@ -180,6 +196,7 @@ main() {
         link) preserve-modules-link "$@";;
         unlink) preserve-modules-unlink "$@";;
         unlink-all) preserve-modules-unlink-all "$@";;
+        list) preserve-modules-list "$@";;
         *) usage;;
     esac
 }
