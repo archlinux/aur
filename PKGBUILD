@@ -2,7 +2,7 @@
 
 pkgname=hyprland-per-window-layout
 pkgver=2.1
-pkgrel=1
+pkgrel=2.1
 pkgdesc='Per window keyboard layout (language) for Hyprland wayland compositor'
 arch=('x86_64')
 url="https://github.com/coffebar/$pkgname"
