@@ -1,6 +1,6 @@
 pkgbase = moar-git
 	pkgdesc = Drop-in replacement for the less pager
-	pkgver = 1.1.r0.geace381
+	pkgver = 1.11.4.r1.g053e354
 	pkgrel = 1
 	url = https://github.com/walles/moar
 	arch = x86_64
@@ -14,4 +14,3 @@ pkgbase = moar-git
 	sha256sums = SKIP
 
 pkgname = moar-git
-
