@@ -5,7 +5,7 @@
 
 pkgname=unrar-free
 pkgver=0.1.3
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Free utility to extract files from RAR archives."
 arch=('x86_64' 'i686' 'aarch64')
@@ -30,4 +30,6 @@ build() {
 package() {
 	cd "${pkgname}-${pkgver}"
 	make DESTDIR="${pkgdir}" install
+
+	install -Dm 644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
