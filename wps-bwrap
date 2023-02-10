@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# 根据扩展名选择对应的 WPS 程序
+file=$1
+case $file in
+    *.doc | *.docx) exe=/usr/bin/wps ;;
+    *.xls | *.xlsx) exe=/usr/bin/et ;;
+    *.ppt | *.pptx) exe=/usr/bin/wpp ;;
+    *.pdf) exe=/usr/bin/wpspdf ;;
+    *) exe=/usr/bin/wps ;;
+esac
+
+binds=()
+for dir in fontconfig gtk-2.0 gtk-3.0 mimeapps.list Kingsoft; do
+    binds+=(--bind ~/.config/"$dir" ~/.config/"$dir")
+done
+binds+=(--bind ~/.local/share/Kingsoft ~/.local/share/Kingsoft)
+
+# bind mount 需要操作的文件
+if [[ -f "$file" ]]; then
+    path="$(realpath "$file")"
+    binds+=(--bind "$path" "$path")
+fi
+
+exec bwrap --unshare-all --share-net --die-with-parent \
+    --ro-bind / / \
+    --tmpfs /sys --tmpfs /home --tmpfs /tmp --tmpfs /run --proc /proc --dev /dev \
+    --ro-bind "$XDG_RUNTIME_DIR" "$XDG_RUNTIME_DIR" \
+    --ro-bind /tmp/.X11-unix /tmp/.X11-unix \
+    "${binds[@]}" \
+    --bind ~/Documents ~/Documents \
+    "$exe" "$@"
