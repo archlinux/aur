@@ -1,5 +1,7 @@
 #!/bin/bash
 
+IS_UPDATE=1
+
 database_status () {
     until systemctl is-active mariadb > /dev/null; do
         echo "-- MariaDB systemd service is not running."
@@ -26,6 +28,7 @@ update_db () {
     if [[ -z "${output}" ]]; then
         mysql --execute "CREATE DATABASE IF NOT EXISTS ${db}"
         mysql ${db} < ${dir}/build/${db}.sql && echo "-- Filled database ${db} with initial data"
+        IS_UPDATE=0
     fi
     mysql ${db} < ${dir}/migrations/${db}_db_updates.sql && echo "-- Applied migrations on ${db}" 
 }
@@ -38,3 +41,19 @@ update_db "realmd"
 update_db "mangos"
 update_db "characters"
 update_db "logs"
+
+if [[ ${IS_UPDATE} == 0 ]]; then
+    cat << EOF
+
+    Final steps to get your server working are creating a realm and an account.
+
+    To create a realm, in mariadb:
+        > USE realmd;
+        > INSERT INTO realmlist (name) VALUES ("testrealm");
+
+    To create an account with admin rights, in terminal (systemd services running):
+        $ echo "account create *username* *password*" > /run/vmangos-mangosd.stdin
+        $ echo "account set gmlevel *username* 6 > /run/vmangos-mangosd.stdin
+    
+EOF
+fi
