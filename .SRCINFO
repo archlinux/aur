@@ -1,7 +1,7 @@
 pkgbase = openssh-askpass
 	pkgdesc = A plasma-like passphrase dialog for ssh
 	pkgver = 2.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://hugo.pereira.free.fr/software/index.php?page=package&package_list=software_list_qt4&package=openssh-askpass&full=0
 	install = openssh-askpass.install
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = openssh-askpass
 	depends = openssh
 	depends = qt5-x11extras
 	depends = qt5-svg
-	depends = xcb-util-keysyms
 	provides = x11-ssh-askpass
 	source = http://hugo.pereira.free.fr/software/tgz/openssh-askpass-2.1.0.tar.gz
 	sha256sums = d7728ae61b49b2e390d9e2c1faba3441c0e9899a86be887e0686042ab302be4b
