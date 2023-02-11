@@ -34,7 +34,7 @@ build() {
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-    go build -o build ./cmd/...
+    go build -buildvcs=false -o build ./cmd/...
 }
 
 #check() {
