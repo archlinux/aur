@@ -1,0 +1,16 @@
+pkgbase = obs-nvfbc-high-fps-git
+	pkgdesc = OBS Studio 27 plugin for NVIDIA FBC API - patched for 120FPS+ capture
+	pkgver = r58.45bcec4
+	pkgrel = 1
+	url = https://gitlab.com/fzwoch/obs-nvfbc
+	arch = x86_64
+	license = LGPL2.0
+	makedepends = git
+	makedepends = meson
+	depends = obs-studio<28
+	provides = obs-nvfbc
+	conflicts = obs-nvfbc
+	source = git+https://gitlab.com/fzwoch/obs-nvfbc.git
+	sha256sums = SKIP
+
+pkgname = obs-nvfbc-high-fps-git
