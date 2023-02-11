@@ -2,7 +2,7 @@
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 
 pkgname=perl-system-command
-pkgver=1.121
+pkgver=1.122
 pkgrel=1
 pkgdesc="Object for running system commands"
 _dist=System-Command
@@ -12,8 +12,7 @@ options=(purge '!emptydirs')
 depends=(perl)
 url="https://metacpan.org/release/$_dist"
 source=("https://cpan.metacpan.org/authors/id/B/BO/BOOK/$_dist-$pkgver.tar.gz")
-md5sums=('b7d5c4df678bd8923464d5ab66613dba')
-sha256sums=('43de5ecd20c1da46e8a6f4fceab29e04697a2890a99bf6a91b3ca004a468a241')
+sha256sums=('d9b823b26619aa69f7a0616650a7810e895a8df062de9d2240d65dbe5cfe747a')
 
 build() {
   cd "$srcdir/$_dist-$pkgver"

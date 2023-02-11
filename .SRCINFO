@@ -1,6 +1,6 @@
 pkgbase = perl-system-command
 	pkgdesc = Object for running system commands
-	pkgver = 1.121
+	pkgver = 1.122
 	pkgrel = 1
 	url = https://metacpan.org/release/System-Command
 	arch = any
@@ -9,9 +9,7 @@ pkgbase = perl-system-command
 	depends = perl
 	options = purge
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/B/BO/BOOK/System-Command-1.121.tar.gz
-	md5sums = b7d5c4df678bd8923464d5ab66613dba
-	sha256sums = 43de5ecd20c1da46e8a6f4fceab29e04697a2890a99bf6a91b3ca004a468a241
+	source = https://cpan.metacpan.org/authors/id/B/BO/BOOK/System-Command-1.122.tar.gz
+	sha256sums = d9b823b26619aa69f7a0616650a7810e895a8df062de9d2240d65dbe5cfe747a
 
 pkgname = perl-system-command
-
