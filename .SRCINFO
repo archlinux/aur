@@ -1,0 +1,14 @@
+pkgbase = xnotes-git
+	pkgdesc = Simple notepad create in python
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://JoaoChamine@bitbucket.org/JoaoChamine/xnotes.git
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	provides = Xnotes
+	source = git+https://JoaoChamine@bitbucket.org/JoaoChamine/xnotes.git
+	md5sums = SKIP
+
+pkgname = xnotes-git
