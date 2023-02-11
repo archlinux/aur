@@ -1,44 +1,115 @@
+# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 # Contributor: Olivier Mehani <olivier.mehani@inria.fr>
 
-_archivename=gcc
-_target=mipsel-linux
-pkgname=$_target-${_archivename}3-initial
-pkgver=3.3.4
+# shellcheck disable=SC2034
+_pkg="gcc"
+target="mipsel-linux"
+pkgname="${target}-${_pkg}3-initial"
+pkgver=3.3.6
 pkgrel=1
-pkgdesc="mipsel-linux GNU (cross) C compiler to be used as a bootstrap when building a cross-compilation toolchain"
-url="http://www.gnu.org/software/$_archivename/"
-provides=($_target-gcc3)
-depends=(glibc $_target-binutils)
-source=(ftp://ftp.gnu.org/gnu/$_archivename/$_archivename-$pkgver/$_archivename-core-$pkgver.tar.bz2)
-md5sums=('102b390dbc919593f9b70d09b7d67469')
-options=(NOSTRIP)
+pkgdesc="GNU C compiler (bootstrap, mipsel-linux)"
+url="http://www.gnu.org/software/${_pkg}"
+arch=("x86_64")
+provides=("${target}-${_pkg}3")
+depends=("glibc" "${target}-binutils")
+source=("ftp://ftp.gnu.org/gnu/${_pkg}/${_pkg}-${pkgver}/${_pkg}-core-${pkgver}.tar.bz2")
+sha256sums=('4f9bee8ac57711508d6b8031d5ecfefc16fcf37ec81568b3f8344ef5f4cdfeb6')
+options=(!strip)
 
+_n_cpu="$(getconf _NPROCESSORS_ONLN)"
+_make_opts=(-j "${_n_cpu}")
+
+# shellcheck disable=SC2154
 build() {
-	cd $startdir/src/$_archivename-$pkgver
-	# Don't install libiberty
-	sed -i '/install_to_$(INSTALL_DEST)/d' libiberty/Makefile.in
+  local _target
 
-	mkdir -p $startdir/src/$_archivename-build
-	cd $startdir/src/$_archivename-build
- 	$startdir/src/$_archivename-$pkgver/configure --target=$_target \
- 		--prefix=/usr --with-gnu-as --with-gnu-ld \
- 		--disable-shared --disable-nls --disable-threads || return 1 
-	make || return 2
-	make DESTDIR=$startdir/pkg install || return 3
+  CFLAGS=""
+  CXXFLAGS=""
+  CPPFLAGS=""
+  LDFLAGS=""
+  export CFLAGS
+  export CXXFLAGS
+  export CPPFLAGS
+  export LDFLAGS
+  export PATH="${PATH}:${_bu_bin}"
+  export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/lib"
 
-	# Simulate libgcc_eh (built when --enable-shared is passed) to allow for
-	# shared glibc to be built
-	ln -s libgcc.a $startdir/pkg/usr/lib/gcc-lib/$_target/$pkgver/libgcc_eh.a
+  local _cflags=(-D_FORTIFY_SOURCE=0
+                 -O2
+                 -Wno-implicit-function-declaration
+                 -I/usr/include
+                 -L/usr/lib
+                 # -ldl
+                 -static)
 
-	mkdir -p $startdir/pkg/usr/$_target/bin/
-	for FILE in $startdir/pkg/usr/bin/$_target-*; do
-		ln -s ${FILE/*\//\/usr\/bin\/} \
-			$startdir/pkg/usr/$_target/bin/${FILE/*$_target-/}
-	done
-	for MANPAGE in cpp gcov; do
-		mv $startdir/pkg/usr/man/man1/${MANPAGE}.1 \
-			$startdir/pkg/usr/man/man1/$_target-${MANPAGE}.1
-	done
-	# already present in the system
-	rm -rf $startdir/pkg/usr/man/man7/
+  local _ldflags=(-I/usr/include
+                  # -rdynamic
+                  -L/usr/lib
+                  # -ldl
+                  -Bstatic
+                  -s)
+
+  local _libs=(-L/usr/lib)
+               # -ldl
+               # /usr/lib/libmpc.so
+               # /usr/lib/libmpfr.so
+               # /usr/lib/libgmp.so)
+
+  local _build_opts=(${_make_opts[@]}
+                     CFLAGS="${_cflags[*]}"
+                     CXXFLAGS="${_cflags[*]}"
+                     CPPFLAGS="${_cflags[*]}"
+                     LDFLAGS="${_ldflags[*]}"
+                     LIBS="${_libs[*]}")
+
+  cd "${srcdir}/${_pkg}-${pkgver}"
+
+  for _target in "${target}"; do
+    rm -rf "build-${_target}"
+    mkdir -p "build-${_target}"
+    cd "build-${_target}"
+    local _configure_opts=(--prefix="/usr"
+                           --target="${_target}"
+                           --host=${CHOST}
+                           --build=${CHOST}
+                           --infodir="/usr/${_target}/share/info"
+                           --mandir="/usr/${_target}/share/man"
+                           --with-gnu-as
+                           --with-gnu-ld
+                           --disable-shared
+                           --disable-nls
+                           --disable-threads)
+
+    LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/lib" \
+    CC="/usr/bin/gcc" \
+    CXX="/usr/bin/g++" \
+    CFLAGS="${_cflags[*]}" \
+    CXXFLAGS="${_cxxflags[*]}" \
+    LDFLAGS="${_ldflags[*]}" \
+    LIBS="${_libs[*]}" \
+    "../configure" ${_configure_opts[@]}
+
+    LD_LIBRARY_PATH=/usr/lib \
+    CC="/usr/bin/gcc" \
+    CXX="/usr/bin/g++" \
+    CFLAGS="${_cflags[*]}" \
+    CXXFLAGS="${_cxxflags[*]}" \
+    LDFLAGS="${_ldflags[*]}" \
+    LIBS="${_libs[*]}" \
+    make "${_build_opts[@]}" all
+
+    cd ..
+  done
+
+}
+
+package() {
+  local _target
+  cd "${srcdir}/${_pkg}-${pkgver}"
+  for _target in "${target}"; do
+    cd "build-${_target}"
+    make DESTDIR="${pkgdir}" "${_make_opts[@]}" install
+    rm -rf "${pkgdir}/usr/${target}/share/info/dir"
+    cd ..
+  done
 }

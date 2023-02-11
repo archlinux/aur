@@ -1,14 +1,14 @@
 pkgbase = mipsel-linux-gcc3-initial
-	pkgdesc = mipsel-linux GNU (cross) C compiler to be used as a bootstrap when building a cross-compilation toolchain
-	pkgver = 3.3.4
+	pkgdesc = GNU C compiler (bootstrap, mipsel-linux)
+	pkgver = 3.3.6
 	pkgrel = 1
-	url = http://www.gnu.org/software/gcc/
+	url = http://www.gnu.org/software/gcc
+	arch = x86_64
 	depends = glibc
 	depends = mipsel-linux-binutils
 	provides = mipsel-linux-gcc3
-	options = NOSTRIP
-	source = ftp://ftp.gnu.org/gnu/gcc/gcc-3.3.4/gcc-core-3.3.4.tar.bz2
-	md5sums = 102b390dbc919593f9b70d09b7d67469
+	options = !strip
+	source = ftp://ftp.gnu.org/gnu/gcc/gcc-3.3.6/gcc-core-3.3.6.tar.bz2
+	sha256sums = 4f9bee8ac57711508d6b8031d5ecfefc16fcf37ec81568b3f8344ef5f4cdfeb6
 
 pkgname = mipsel-linux-gcc3-initial
-
