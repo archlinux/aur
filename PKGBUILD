@@ -16,7 +16,7 @@ makedepends=('python-setuptools' 'python-distutils-extra')
 conflicts=()
 options=(!emptydirs)
 source=("${_url}/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('eb0f96943c32afebb2172d0bf992802fdc807be6a4461966a8bfeba84a800475f837cf4d35272216e933e41a3e25fdb173b8234fbb629a89d9c59113d047ae41')
+sha512sums=('b299e818ff542e179d00d41a42b1e40b4be73547c393a38e845b6b623cb20c5e0dbd8b5c3aeec3a82faf80ed9614f35a425afa44f53dbcfe7a58c3fb5e7da5e6')
 
 package_python-apt() {
   depends+=('python')
