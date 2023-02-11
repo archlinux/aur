@@ -1,4 +1,6 @@
-/cosmic-epoch*
+/cosmic*
 /pkg/
+/simple-wrapper/
 /src/
-
+/wayland-proxy-virtwl/
+/xdg-desktop-portal-cosmic/

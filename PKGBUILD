@@ -1,3 +1,4 @@
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Maintainer: soloturn@gmail.com
 
 pkgname=cosmic-epoch-git
@@ -8,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/pop-os/cosmic-epoch"
 license=(GPL)
 depends=(gtk4)
-makedepends=(just git meson cargo seatd mesa libpulse wayland libxkbcommon libinput dbus pop-launcher)
+makedepends=(cargo dbus git just libinput libpulse libxkbcommon mesa meson pop-launcher seatd wayland)
 provides=(cosmic-epoch)
 conflicts=(cosmic-epoch)
 options=(!lto)
@@ -28,19 +29,21 @@ source=(
   "git+https://github.com/talex5/wayland-proxy-virtwl.git"
 )
 
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+sha256sums=(
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+)
 
 pkgver() {
   cd cosmic-epoch
@@ -68,7 +71,11 @@ prepare() {
 
 build() {
   cd cosmic-epoch
-  just sysext
+  # note, consider rust build time optimisations: https://matklad.github.io/2021/09/04/fast-rust-builds.html, 
+  # later. for now, ignore warnings, and build with lower priority to not block user installing this pkg.
+  # to speed up build, use "mold" linker, see https://stackoverflow.com/questions/67511990/how-to-use-the-mold-linker-with-cargo
+  RUSTFLAGS="-A warnings -C link-arg=--ld-path=/usr/bin/mold"
+  nice just sysext
 }
 
 package() {
