@@ -3,8 +3,8 @@
 
 _pkgname=StormLib
 pkgname=stormlib
-pkgver=9.23
-pkgrel=2
+pkgver=9.24
+pkgrel=1
 pkgdesc="A C/C++ API to read and write MPQ files with support for merged archives, patch MPQs and more."
 arch=("i686" "x86_64")
 url="http://www.zezula.net/en/mpq/stormlib.html"
@@ -29,4 +29,4 @@ package() {
   make DESTDIR="$pkgdir" install
 }
 
-sha256sums=("d62ba42f1e02efcb2cbaa03bd2e20fbd18c45499ef5fe65ffb89ee52a7bd9c92")
+sha256sums=('33e43788f53a9f36ff107a501caaa744fd239f38bb5c6d6af2c845b87c8a2ee1')
