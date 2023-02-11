@@ -3,7 +3,7 @@
 
 _gemname=jira-ruby
 pkgname=ruby-${_gemname}
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='Ruby Gem for use with the Atlassian JIRA REST API'
 arch=(any)
@@ -13,7 +13,7 @@ depends=('ruby' 'ruby-activesupport' 'ruby-atlassian-jwt' 'ruby-multipart-post' 
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
 noextract=("${_gemname}-${pkgver}.gem")
-sha256sums=('5b86f35283463ce613f940f67b0e9a246f292e18f4098fecb29bafd80c79f6b8')
+sha256sums=('abf26e6bff4a8ea40bae06f7df6276a5776905c63fb2070934823ca54f62eb62')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
