@@ -1,6 +1,6 @@
 pkgbase = klicknmenu
 	pkgdesc = X11 based lightweight menu application
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/seokbeomKim/klicknmenu
 	arch = any
