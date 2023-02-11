@@ -3,31 +3,33 @@
 
 _framework='gnunet'
 pkgname='messenger-gtk'
-pkgver='0.7.0'
+pkgver='0.8.0'
 pkgrel=1
 pkgdesc='A graphical user interface for GNUnet Messenger'
 arch=('i686' 'x86_64')
 url="https://${_framework}.org"
 license=('AGPL')
+makedepends=('meson')
 depends=('gnunet' 'libgnunetchat' 'gtk3' 'libhandy' 'libnotify' 'qrencode'
          'zbar' 'gstreamer')
 conflicts=("${pkgname}-bin" "${pkgname}-git")
-source=("https://ftp.gnu.org/gnu/${_framework}/${pkgname}-${pkgver}.tar.gz"{,.sig})
+source=("https://ftp.gnu.org/gnu/${_framework}/${pkgname}-${pkgver}.tar.xz"{,.sig})
 validpgpkeys=('3D11063C10F98D14BD24D1470B0998EF86F59B6A')
-sha256sums=('b6ba577ca32766a52e8efddacd123e2390ca475ed8bd330336965989e61ff255'
+sha256sums=('51dc35b6106eddc06a979289b610be7d31b0c74edbbce7c414a2f2c8ad6bb54b'
             'SKIP')
+
+prepare() {
+	cd "${pkgname}-${pkgver}"
+	PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig" meson build
+}
 
 build() {
 	cd "${pkgname}-${pkgver}"
-	make release
+	meson compile -C build
 }
 
 package() {
 	cd "${pkgname}-${pkgver}"
-	install -dm755 "${pkgdir}/usr/bin"
-	make INSTALL_DIR="${pkgdir}/usr/" install
-
-	# To be removed upstream...
-	rm "${pkgdir}/usr/share/icons/hicolor/icon-theme.cache"
+	DESTDIR="$pkgdir" meson install -C build
 }
 
