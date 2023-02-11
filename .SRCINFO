@@ -1,20 +1,21 @@
 pkgbase = python-pyhanko-certvalidator
 	pkgdesc = Validates X.509 certificates and paths
 	pkgver = 0.20.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MatthiasValvekens/certvalidator
 	arch = any
 	license = MIT
-	checkdepends = python-oscrypto-tests
 	checkdepends = python-aiohttp
 	checkdepends = python-freezegun
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
 	makedepends = python-setuptools
-	depends = python-requests
 	depends = python-asn1crypto
-	depends = python-oscrypto
 	depends = python-cryptography
+	depends = python-oscrypto
+	depends = python-requests
 	depends = python-uritools
-	source = pyhanko-certvalidator-0.20.0.tar.gz::https://github.com/MatthiasValvekens/certvalidator/archive/refs/tags/0.20.0.tar.gz
+	source = python-pyhanko-certvalidator-0.20.0.tar.gz::https://github.com/MatthiasValvekens/certvalidator/archive/refs/tags/0.20.0.tar.gz
 	sha256sums = 3975e6732d37d9982b81a3cf89643b659e6d9d0077820b6ee483f5d41c5b042c
 
 pkgname = python-pyhanko-certvalidator
