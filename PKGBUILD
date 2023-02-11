@@ -1,6 +1,5 @@
 # Maintainer: Alisson Lauffer <alissonvitortc@gmail.com>
-# Contributor: txtsd <aur.archlinux@ihavea.quest>
-# Contributor: Dawson Dias <thexerothermicsclerodermoid@gmail.com>
+# Co-Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=gtkcord4-libadwaita-git
 _pkgname=gtkcord4
