@@ -6,9 +6,9 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 # Contributor: Julian Schacher <jspp@posteo.net>
 
-_electron=electron20
+_electron=electron21
 pkgname=schildichat-desktop
-pkgver=1.11.13.sc.1
+pkgver=1.11.22.sc.1
 pkgrel=1
 pkgdesc="A Matrix client based on Element with a more traditional instant messaging experience"
 arch=(x86_64)
