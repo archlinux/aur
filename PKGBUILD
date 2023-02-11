@@ -4,25 +4,15 @@
 
 pkgname=visionfive2-img-gpu
 pkgver=1.17.6210866
-pkgrel=1
+pkgrel=2
 pkgdesc="This is the GLES and Vullkan implementation provided by Starfive for the IMG_GPU"
 url="https://github.com/starfive-tech/soft_3rdpart/tree/JH7110_VisionFive2_devel"
 arch=(riscv64)
 license=(custom)
-conflicts=(libglvnd mesa)
-
-provides=(opengl-driver
-	  vulkan-driver
-          libgl
-          libegl
-          libgles
-          libEGL.so=1-64
-          libGL.so=1-64
-          libGLESv2.so=2-64
-          libGLX.so=0-64
-          libGLdispatch.so=0-64
-          libOpenGL.so=0-64)
-
+provides=(opengl-driver vulkan-driver)
+optdepends=('libglvnd: to use opengl'
+	    'vulkan-icd-loader: to use vulkan'
+	    'ocl-icd: to use opencl')
 source=("https://github.com/starfive-tech/soft_3rdpart/raw/JH7110_VisionFive2_devel/IMG_GPU/out/img-gpu-powervr-bin-${pkgver}.tar.gz")
 sha256sums=('8ef5eba77c776e0d4444d819e12c64bfa8eee0ae2cdf90b6eb7a3a9df7bd7ef2')
 
@@ -30,7 +20,7 @@ package() {
     cd "${srcdir}/img-gpu-powervr-bin-${pkgver}/target"
 
     # Config files
-    install -Dm644 etc/init.d/rc.pvr "${pkgdir}/etc/init.d/rc.pvr"
+    install -Dm755 etc/init.d/rc.pvr "${pkgdir}/etc/init.d/rc.pvr"
     install -Dm644 etc/OpenCL/vendors/IMG.icd "${pkgdir}/etc/OpenCL/vendors/IMG.icd"
     install -Dm644 etc/vulkan/icd.d/icdconf.json "${pkgdir}/etc/vulkan/icd.d/icdconf.json"
 
@@ -85,9 +75,7 @@ package() {
     cp --no-dereference usr/lib/libsrv_um.so "${pkgdir}/usr/lib/libsrv_um.so"
     cp --no-dereference usr/lib/libPVROCL.so.1 "${pkgdir}/usr/lib/libPVROCL.so.1"
     cp --no-dereference usr/lib/libGLESv1_CM.so.1 "${pkgdir}/usr/lib/libGLESv1_CM.so.1"
-    cp --no-dereference usr/lib/libGLESv2.so.2 "${pkgdir}/usr/lib/libGLESv2.so.2"
     cp --no-dereference usr/lib/libGLESv1_CM.so "${pkgdir}/usr/lib/libGLESv1_CM.so"
-    cp --no-dereference usr/lib/libGLESv2.so "${pkgdir}/usr/lib/libGLESv2.so"
     cp --no-dereference usr/lib/libVK_IMG.so.1 "${pkgdir}/usr/lib/libVK_IMG.so.1"
     cp --no-dereference usr/lib/libusc.so "${pkgdir}/usr/lib/libusc.so"
 }
