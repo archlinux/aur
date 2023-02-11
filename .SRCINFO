@@ -1,0 +1,13 @@
+pkgbase = python-xmind
+	pkgdesc = A one-stop solution for creating, parsing, and updating XMind files
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/zhuifengshen/xmind
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = python-xmind-1.2.0.tar.gz::https://github.com/zhuifengshen/xmind/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = 7524b447aa038e30c1b37b1a161494eb8af79b48629658493b4e0407dc50cc79
+
+pkgname = python-xmind
