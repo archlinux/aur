@@ -18,9 +18,13 @@ validpgpkeys=('3D11063C10F98D14BD24D1470B0998EF86F59B6A')
 sha256sums=('fa5463290b18cb2615c61860c0b13d44d55ed0bb13e2b4cd3aa2a22559005e92'
             'SKIP')
 
+prepare() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	meson build
+}
+
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	meson build --prefix="$pkgdir"
 	meson compile -C build
 }
 
@@ -31,5 +35,5 @@ check() {
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	meson install -C build
+	DESTDIR="$pkgdir" meson install -C build
 }
