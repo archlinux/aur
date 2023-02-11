@@ -1,0 +1,11 @@
+--- a/030-ffmpeg-add-svt-vp9-gd9ef3cc.patch
++++ b/030-ffmpeg-add-svt-vp9-gd9ef3cc.patch
+@@ -773,7 +773,7 @@ index 0000000000..a7da7023d2
+ +    .init             = eb_enc_init,
+ +    FF_CODEC_RECEIVE_PACKET_CB(eb_receive_packet),
+ +    .close            = eb_enc_close,
+-+    .p.capabilities   = AV_CODEC_CAP_DELAY | AV_CODEC_CAP_AUTO_THREADS,
+++    .p.capabilities   = AV_CODEC_CAP_DELAY | AV_CODEC_CAP_OTHER_THREADS,
+ +    .p.pix_fmts       = (const enum AVPixelFormat[]){ AV_PIX_FMT_YUV420P,
+ +                                                    AV_PIX_FMT_NONE },
+ +    .p.priv_class     = &class,

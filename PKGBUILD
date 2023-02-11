@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=ffmpeg-full-git
-pkgver=5.2.r109655.g20b96494de
+pkgver=5.2.r109824.g27315dc345
 pkgrel=1
 _svt_hevc_ver='7771d7c1ec60cf21d84894260a4b14e9034c7156'
 _svt_vp9_ver='d9ef3cc13159143b9afc776c04f67cdfa6284046'
@@ -126,6 +126,7 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
 conflicts=('ffmpeg')
 source=('git+https://git.ffmpeg.org/ffmpeg.git'
         "005-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"
+        "006-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
         "010-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/master-0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
         #"020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
         "030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
@@ -134,6 +135,7 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
         'LICENSE')
 sha256sums=('SKIP'
             '797fd82276b9c31267412105d663eca9c3dcef6d823b228487a14b70565b8563'
+            '6e2b0b2da4e7db2c3d66a2796c5eed2d986a9ef404ad0323e2581c02e5c6aeb7'
             'e9ae5d753169f56bbc7fe53615398032f985caaeae6b89bd952c4e4bc9ec8531'
             'e310eedb3dc88c8ad6ffcd6cb6bde1f593ded330ea99b0356724c9d22bcfde4c'
             '3f4d677da3efdc3d2a1cbd36257d626b7e4c05d685ed82bd1a7e2eb7e3ac6ee4'
@@ -144,7 +146,10 @@ prepare() {
     rm -f ffmpeg/libavcodec/libsvt_{hevc,vp9}.c
     cp --remove-destination "$(readlink "010-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch")" \
         "010-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"
+    cp --remove-destination "$(readlink "030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch")" \
+        "030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
     patch -Np1 -i "005-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"
+    patch -Np1 -i "006-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/010-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"
     #patch -d ffmpeg -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
