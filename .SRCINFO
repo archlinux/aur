@@ -1,7 +1,7 @@
 pkgbase = adl-git
 	pkgdesc = anime-downloader + trackma wrapper
-	pkgver = 0.r48.a0b864e
-	pkgrel = 1
+	pkgver = 0.r235.19c098b
+	pkgrel = 2
 	url = https://github.com/RaitaroH/adl
 	arch = any
 	license = GPL
@@ -12,10 +12,7 @@ pkgbase = adl-git
 	depends = mpv
 	optdepends = frece: support for frece (recently watched)
 	provides = adl
-	source = git://github.com/RaitaroH/adl.git
-	md5sums = SKIP
-	sha1sums = SKIP
+	source = git+https://github.com/RaitaroH/adl.git
 	sha256sums = SKIP
 
 pkgname = adl-git
-
