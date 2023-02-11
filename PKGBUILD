@@ -6,7 +6,7 @@ CONFIG_OPTIONS=-Dadw_1_2=true
 
 pkgname=spedread
 _pkgname=Spedread
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="GTK speed reading software: Read like a speedrunner!"
 arch=('x86_64' 'aarch64')
