@@ -3,83 +3,66 @@
 # Contributor: sxe <sxxe@gmx.de>
 
 pkgname=wine-git
-pkgver=7.20.r331.g384b0b35c35
+pkgver=8.1.r108.g9070f0d572e
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (git version)'
 arch=('x86_64')
 url='https://www.winehq.org/'
 license=('LGPL')
 depends=(
-    'fontconfig'            'lib32-fontconfig'
-    'lcms2'                 'lib32-lcms2'
-    'libxml2'               'lib32-libxml2'
-    'libxcursor'            'lib32-libxcursor'
-    'libxrandr'             'lib32-libxrandr'
-    'libxdamage'            'lib32-libxdamage'
-    'libxi'                 'lib32-libxi'
-    'gettext'               'lib32-gettext'
-    'freetype2'             'lib32-freetype2'
-    'glu'                   'lib32-glu'
-    'libsm'                 'lib32-libsm'
-    'gcc-libs'              'lib32-gcc-libs'
-    'libpcap'               'lib32-libpcap'
-    'faudio'                'lib32-faudio'
+    'fontconfig'      'lib32-fontconfig'
+    'libxcursor'      'lib32-libxcursor'
+    'libxrandr'       'lib32-libxrandr'
+    'libxi'           'lib32-libxi'
+    'gettext'         'lib32-gettext'
+    'freetype2'       'lib32-freetype2'
+    'gcc-libs'        'lib32-gcc-libs'
+    'libpcap'         'lib32-libpcap'
     'desktop-file-utils'
 )
-makedepends=('git' 'autoconf' 'bison' 'perl' 'fontforge' 'flex' 'mingw-w64-gcc'
+makedepends=('git' 'perl' 'mingw-w64-gcc'
     'giflib'                'lib32-giflib'
-    'libpng'                'lib32-libpng'
     'gnutls'                'lib32-gnutls'
     'libxinerama'           'lib32-libxinerama'
     'libxcomposite'         'lib32-libxcomposite'
-    'libxmu'                'lib32-libxmu'
     'libxxf86vm'            'lib32-libxxf86vm'
-    'libldap'               'lib32-libldap'
-    'mpg123'                'lib32-mpg123'
-    'openal'                'lib32-openal'
     'v4l-utils'             'lib32-v4l-utils'
-    'libpulse'              'lib32-libpulse'
     'alsa-lib'              'lib32-alsa-lib'
     'libxcomposite'         'lib32-libxcomposite'
     'mesa'                  'lib32-mesa'
-    'libgl'                 'lib32-libgl'
+    'mesa-libgl'            'lib32-mesa-libgl'
     'opencl-icd-loader'     'lib32-opencl-icd-loader'
-    'libxslt'               'lib32-libxslt'
+    'libpulse'              'lib32-libpulse'
+    'libva'                 'lib32-libva'
+    'gtk3'                  'lib32-gtk3'
     'gst-plugins-base-libs' 'lib32-gst-plugins-base-libs'
     'vulkan-icd-loader'     'lib32-vulkan-icd-loader'
-    'vkd3d'                 'lib32-vkd3d'
     'sdl2'                  'lib32-sdl2'
     'libcups'               'lib32-libcups'
-    'libgphoto2'
     'sane'
-    'gsm'
-    'vulkan-headers'
-    'opencl-headers'
+    'libgphoto2'
+    'ffmpeg'
     'samba'
+    'opencl-headers'
 )
 optdepends=(
     'giflib'                'lib32-giflib'
-    'libpng'                'lib32-libpng'
-    'libldap'               'lib32-libldap'
     'gnutls'                'lib32-gnutls'
-    'mpg123'                'lib32-mpg123'
-    'openal'                'lib32-openal'
     'v4l-utils'             'lib32-v4l-utils'
     'libpulse'              'lib32-libpulse'
     'alsa-plugins'          'lib32-alsa-plugins'
     'alsa-lib'              'lib32-alsa-lib'
-    'libjpeg-turbo'         'lib32-libjpeg-turbo'
     'libxcomposite'         'lib32-libxcomposite'
     'libxinerama'           'lib32-libxinerama'
     'opencl-icd-loader'     'lib32-opencl-icd-loader'
-    'libxslt'               'lib32-libxslt'
+    'libva'                 'lib32-libva'
+    'gtk3'                  'lib32-gtk3'
     'gst-plugins-base-libs' 'lib32-gst-plugins-base-libs'
     'vulkan-icd-loader'     'lib32-vulkan-icd-loader'
-    'vkd3d'                 'lib32-vkd3d'
     'sdl2'                  'lib32-sdl2'
-    'libgphoto2'
     'sane'
-    'gsm'
+    'libgphoto2'
+    'ffmpeg'
     'cups'
     'samba'
     'dosbox'
@@ -89,7 +72,7 @@ install="${pkgname}.install"
 provides=("wine=${pkgver}" "bin32-wine=${pkgver}" "wine-wow64=${pkgver}")
 conflicts=('wine' 'bin32-wine' 'wine-wow64')
 replaces=('bin32-wine')
-source=('git://source.winehq.org/git/wine.git'
+source=('git+https://gitlab.winehq.org/wine/wine.git'
         '30-win32-aliases.conf'
         'wine-binfmt.conf')
 sha256sums=('SKIP'
@@ -99,12 +82,6 @@ sha256sums=('SKIP'
 prepare() {
     rm -rf build-{32,64}
     mkdir -p build-{32,64}
-    
-    # fix path of opencl headers
-    sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i wine/configure*
-    
-    # fix openldap 2.5+ detection
-    sed 's/-lldap_r/-lldap/' -i wine/configure
 }
 
 pkgver() {
@@ -114,7 +91,7 @@ pkgver() {
 build() {
     # does not compile without remove these flags as of 4.10
     export CFLAGS="${CFLAGS/-fno-plt/}"
-    export LDFLAGS="${LDFLAGS/,-z,relro,-z,now/}"
+    export LDFLAGS="${LDFLAGS/,-z,now/}"
     
     # build wine 64-bit
     # (according to the wine wiki, this 64-bit/32-bit building order is mandatory)
