@@ -1,21 +1,22 @@
 pkgbase = messenger-cli
 	pkgdesc = A command line interface for GNUnet Messenger
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://gnunet.org
 	arch = i686
 	arch = x86_64
 	license = AGPL
+	makedepends = meson
 	depends = gnunet
 	depends = libgnunetchat
 	depends = ncurses
 	provides = messenger-cli
 	conflicts = messenger-cli-git
 	conflicts = messenger-cli-bin
-	source = ftp://ftp.gnu.org/gnu/gnunet/messenger-cli-0.1.0.tar.gz
-	source = ftp://ftp.gnu.org/gnu/gnunet/messenger-cli-0.1.0.tar.gz.sig
+	source = ftp://ftp.gnu.org/gnu/gnunet/messenger-cli-0.1.1.tar.xz
+	source = ftp://ftp.gnu.org/gnu/gnunet/messenger-cli-0.1.1.tar.xz.sig
 	validpgpkeys = 3D11063C10F98D14BD24D1470B0998EF86F59B6A
-	sha256sums = 576ca9ea7db461122454bf4a3fcd719fcb6dad77b804dcdd2574238e4adb6779
+	sha256sums = 8f667c005790263b27916a58f6aeb1e93279a1595d86e731e2229fa41013d68b
 	sha256sums = SKIP
 
 pkgname = messenger-cli

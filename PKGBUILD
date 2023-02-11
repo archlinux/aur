@@ -2,28 +2,33 @@
 
 _framework='gnunet'
 pkgname='messenger-cli'
-pkgver='0.1.0'
+pkgver='0.1.1'
 pkgrel=1
 pkgdesc='A command line interface for GNUnet Messenger'
 arch=('i686' 'x86_64')
 url="https://${_framework}.org"
 license=('AGPL')
+makedepends=('meson')
 depends=("${_framework}" 'libgnunetchat' 'ncurses')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git" "${pkgname}-bin")
-source=("ftp://ftp.gnu.org/gnu/${_framework}/${pkgname}-${pkgver}.tar.gz"{,.sig})
-sha256sums=('576ca9ea7db461122454bf4a3fcd719fcb6dad77b804dcdd2574238e4adb6779'
+source=("ftp://ftp.gnu.org/gnu/${_framework}/${pkgname}-${pkgver}.tar.xz"{,.sig})
+sha256sums=('8f667c005790263b27916a58f6aeb1e93279a1595d86e731e2229fa41013d68b'
             'SKIP')
 validpgpkeys=('3D11063C10F98D14BD24D1470B0998EF86F59B6A')
 
+prepare() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig" meson build
+}
+
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	make release
+	meson compile -C build
 }
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	install -dm755 "${pkgdir}/usr/bin"
-	make INSTALL_DIR="${pkgdir}/usr/" install
+	DESTDIR="$pkgdir" meson install -C build
 }
 
