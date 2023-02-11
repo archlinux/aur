@@ -1,0 +1,13 @@
+pkgbase = rimworld-royalty
+	pkgdesc = Expansion pack Royalty for the game Rimworld
+	pkgver = 1.4.3613
+	pkgrel = 1
+	url = http://rimworldgame.com/
+	arch = i686
+	arch = x86_64
+	license = custom: commercial
+	makedepends = tar
+	depends = rimworld
+
+pkgname = rimworld-royalty
+
