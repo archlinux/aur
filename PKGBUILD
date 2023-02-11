@@ -1,9 +1,9 @@
-# Maintainer: Ambition_echo <ambition_echo@outlook.com>
+# Maintainer: Pylogmon <pylogmon@outlook.com>
 
 resname=earth_wallpaper
 pkgname=earth-wallpaper-nightly
 name=earth-wallpaper
-pkgver=2.2.1
+pkgver=2.2.1.r1.gfd361c9
 pkgrel=0
 pkgdesc="Simple and easy to use multifunctional wallpaper software 简单好用的多功能壁纸软件"
 arch=('x86_64')

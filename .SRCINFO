@@ -1,6 +1,6 @@
 pkgbase = earth-wallpaper-nightly
 	pkgdesc = Simple and easy to use multifunctional wallpaper software 简单好用的多功能壁纸软件
-	pkgver = 2.2.1
+	pkgver = 2.2.1.r1.gfd361c9
 	pkgrel = 0
 	url = https://github.com/Pylogmon/earth_wallpaper
 	arch = x86_64
