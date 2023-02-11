@@ -2,7 +2,7 @@
 
 pkgbase=hexowl
 pkgname='hexowl'
-pkgver=1.2.3
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="hexowl is a Lightweight and flexible programmer's calculator with user variables and functions support written in Go."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('go')
 provides=('hexowl')
 conflicts=('hexowl')
 source=("hexowl-${pkgver}.tar.gz::https://github.com/DECE2183/hexowl/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('acba8fad95e1ad018f607ae91ad33ff083258fdbf76c0422d276c9c2f7ccf5a6')
+sha256sums=('bc105a5b2df6a78466d71cb50080d9c69d8ba819559f8787a06efd3699c7f737')
 
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
