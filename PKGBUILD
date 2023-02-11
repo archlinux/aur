@@ -4,7 +4,7 @@
 _framework='gnunet'
 pkgname='libgnunetchat'
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='GNUnet chat library'
 arch=('i686' 'x86_64')
 url="http://${_framework}.org"
