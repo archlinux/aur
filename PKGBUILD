@@ -3,7 +3,7 @@
 pkgname=intel-graphics-compiler-bin
 pkgver=1.0.12504.5
 _oclcommit=363a5262d8c7cff3fb28f3bdb5d85c8d7e91c1bb
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Intel Graphics Compiler for OpenCL (pre-compiled binaries)'
 arch=('x86_64')
@@ -24,10 +24,10 @@ noextract=("intel-igc-core_${pkgver}_amd64.deb"
            "intel-igc-media_${pkgver}_amd64.deb"
            "intel-igc-opencl-devel_${pkgver}_amd64.deb"
            "intel-igc-opencl_${pkgver}_amd64.deb")
-sha256sums=('36485a98340c6eb33e0f39a19e5fd1b459de8c4305be63e109e6cdcec5542666'
+sha256sums=('9471439bcd7a7a7e17ac96ff67db15a3028d8f755d5fae42221e73033b863bbb'
             'f68127aeacd4fde56f4ac2380f966aa0ae60ada40968b0d821119c1342e9edd7'
             '69eb8bbbc9ca48eecb0c851d78fee896a835c3c22dece0b5f08a10edde9a5674'
-            'a1f631d2efee50e46c8a8f8b39623954af8cb48e80a7611174937277321f2d79'
+            '51d95bb3844337d780cdd795a54dfc785e82eb9b32d295810d8c07e0ce4441ae'
             'SKIP'
             '72d9ed65b0068110b0dcef7e2b52cd32d90ceaeb743b7b6fb8ad07265f230716')
 
