@@ -1,7 +1,7 @@
 # Maintainer: Marius Hirt <marius-hirt@web.de>
 _pkgname=zork++
 pkgname=zork++-git
-pkgver=0.4.2.r4.g2a3da32
+pkgver=0.5.0.r0.g9572afd
 pkgrel=1
 pkgdesc="A modern C++ project manager and build system for modern C++"
 arch=('x86_64')
