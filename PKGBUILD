@@ -1,60 +1,64 @@
 # To build without ASM (uasm), set NO_ASM variable. For example:
 # NO_ASM=1 makepkg -si
 
-pkgname=7-zip-full
+_name=7-zip
+pkgname=${_name}-full
 pkgver=22.01
-pkgrel=3
-pkgdesc="File archiver with a high compression ratio. (Full package to replace p7zip.)"
-url="https://www.7-zip.org"
-license=(LGPL)
+pkgrel=4
+pkgdesc="File archiver with a high compression ratio (full package to replace p7zip)"
+url="https://7-zip.org/"
+license=('LGPL')
 arch=('x86_64' 'i686' 'aarch64')
-makedepends=()
-[ ! "${NO_ASM}" ] && makedepends+=('uasm')
-[ "${CC}" == 'clang' ] && makedepends+=('clang' 'lld')
-provides=("${pkgname%-full}" 'p7zip')
+provides=("${_name}" 'p7zip')
 conflicts=("${provides[@]}")
+makedepends=()
 
-_archive="7z${pkgver//./}-src.tar.xz"
+if [ ! "${NO_ASM}" ]; then
+    makedepends+=('uasm')
+fi
+
+if [ "${CC}" = 'clang' ]; then
+    makedepends+=('clang' 'lld')
+fi
 
 source=(
-    "${_archive}::${url}/a/${_archive}"
+    "${url}a/7z${pkgver//./}-src.tar.xz"
     'prepare.patch'
 )
 
 sha256sums=(
     '393098730c70042392af808917e765945dc2437dee7aae3cfcc4966eb920fbc5'
-    '4e010de2dce2eebbe72d0e9f72fbf953eb2f8cba7bffbae53bda1544e3879101'
+    'b597a0ced0b691c897bceb330ab410f6df58927b769bea3910188c8fcecce5aa'
 )
 
 prepare() {
-    cd "${srcdir}"
-    chmod -R a=r,a+X,u+w .
     patch -p0 --binary -i "${source[1]}"
 }
 
 build() {
-    local bundles="${srcdir}/CPP/7zip/Bundles"
     local targets=("Alone" "Alone2" "Alone7z" "Format7zF")
     local -A platforms=(['x86_64']='x64' ['i686']='x86' ['aarch64']='arm64')
-    local build_dir="${srcdir}/build"
-    mkdir -p "${build_dir}"
+    mkdir -p "build"
 
     (
         set -a
         PLATFORM="${platforms["${CARCH}"]}"
-        O="${build_dir}"
-        IS_X64=$([ "${PLATFORM}" == 'x64' ] && echo '1' || echo '')
-        IS_X86=$([ "${PLATFORM}" == 'x86' ] && echo '1' || echo '')
-        IS_ARM64=$([ "${PLATFORM}" == 'arm64' ] && echo '1' || echo '')
+        O="${srcdir}/build"
+        IS_X64=$([ "${CARCH}" = 'x86_64' ] && echo '1' || echo '')
+        IS_X86=$([ "${CARCH}" = 'i686' ] && echo '1' || echo '')
+        IS_ARM64=$([ "${CARCH}" = 'aarch64' ] && echo '1' || echo '')
         MY_ARCH=
         USE_ASM=$([ ! "${NO_ASM}" ] && echo '1' || echo '')
         CC="${CC:-gcc}"
         CXX="${CXX:-g++}"
         CFLAGS_WARN='-Wno-error'
+        CFLAGS_ADD="${CFLAGS}"
+        LDFLAGS_ADD="${LDFLAGS}"
+        CXXFLAGS_ADD="${CXXFLAGS}"
         set +a
 
         for target in "${targets[@]}"; do
-            make -C "${bundles}/${target}" -f 'makefile.gcc'
+            make -C "CPP/7zip/Bundles/${target}" -f 'makefile.gcc'
         done
     )
 }
@@ -62,14 +66,17 @@ build() {
 package() {
     local bin="${pkgdir}/usr/bin"
 
-    cd "${srcdir}/build"
-    install -Dm755 -t "${bin}" "7za" "7zz" "7zr"
-    ln -s "7zz" "${bin}/7z"
-    install -Dm644 -t "${pkgdir}/usr/lib" "7z.so"
+    install -Dm755 -t "${bin}" \
+        "build/"{"7za","7zz","7zr"}
 
-    cd "${srcdir}/DOC"
+    install -Dm644 -t "${pkgdir}/usr/lib" \
+        "build/7z.so"
+
+    ln -sT "7zz" "${bin}/7z"
+
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" \
-        "copying.txt" "License.txt" "unRarLicense.txt"
+        "DOC/"{"copying.txt","License.txt","unRarLicense.txt"}
+
     install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" \
-        "7zC.txt" "7zFormat.txt" "lzma.txt" "Methods.txt" "readme.txt" "src-history.txt"
+        "DOC/"{"7zC.txt","7zFormat.txt","lzma.txt","Methods.txt","readme.txt","src-history.txt"}
 }
