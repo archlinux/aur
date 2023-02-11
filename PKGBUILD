@@ -1,7 +1,7 @@
 # Maintainer: Stefan Ott <stefan@ott.net>
 pkgname=martoc
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Generate TOC for Audio CDs"
 arch=("x86_64")

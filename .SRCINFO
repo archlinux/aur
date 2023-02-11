@@ -1,13 +1,13 @@
 pkgbase = martoc
 	pkgdesc = Generate TOC for Audio CDs
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.ott.net/martoc/
 	arch = x86_64
 	license = GPL3
 	depends = taglib
 	depends = ffmpeg
-	depends = wavegain
+	depends = normalize
 	source = martoc-0.2.1.tar.gz::https://code.ott.net/martoc/downloads/martoc-0.2.1.tar.gz
 	sha256sums = e0f5ddd034975bba51f905cd34c29c776ff65c464a9dcc2f5aa98e56a36194f0
 
