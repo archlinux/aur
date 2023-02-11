@@ -2,8 +2,8 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=kodi-addon-pvr-vdr-vnsi
-pkgver=8.2.2
-_gitver=c040951f1ceda8a9d3169cff3f80319962a10bdc
+pkgver=20.4.0
+_gitver=5f01734c58badbc605f48e532bfd508067a07c35
 pkgrel=1
 url="https://github.com/kodi-pvr/pvr.vdr.vnsi"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
