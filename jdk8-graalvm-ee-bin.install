@@ -1,4 +1,4 @@
-THIS_JDK='java-8-graalvm'
+THIS_JDK='java-8-graalvm-ee'
 THIS_JDK_LEGACY='java-8-graal'
 
 fix_default() {

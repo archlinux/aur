@@ -23,8 +23,8 @@ sha256sums=('89d217d32aca938d1a83c08d77efa5e600e8ba92f90c83cf7f07cbd97e5e3f4e'
 
 package() {
     cd "graalvm-ee-java${java_}-${pkgver}"
-    mkdir -p "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/"
-    cp -a -t "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/" *
+    mkdir -p "$pkgdir/usr/lib/jvm/java-${java_}-graalvm-ee/"
+    cp -a -t "$pkgdir/usr/lib/jvm/java-${java_}-graalvm-ee/" *
     install -DTm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     sed "s/JAVA/${java_}/g" < "../graalvm-ee-rebuild-libpolyglot.hook" > "graalvm-ee-jdk${java_}-rebuild-libpolyglot.hook"
     install -DTm644 "graalvm-ee-jdk${java_}-rebuild-libpolyglot.hook" "$pkgdir/usr/share/libalpm/hooks/graalvm-ee-jdk${java_}-rebuild-libpolyglot.hook"
