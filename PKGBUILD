@@ -1,10 +1,11 @@
-# Maintainer: Manuel Palenzuela <sadshinobi@protonmail.com>
+# Contributor: <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Manuel Palenzuela <sadshinobi@protonmail.com>
 
 author=RaitaroH
 pkgname=adl-git
 _gitname=adl
-pkgver=0.r48.a0b864e
-pkgrel=1
+pkgver=0.r235.19c098b
+pkgrel=2
 pkgdesc='anime-downloader + trackma wrapper'
 url='https://github.com/RaitaroH/adl'
 arch=('any')
@@ -14,10 +15,8 @@ optdepends=('frece: support for frece (recently watched)')
 makedepends=('git')
 provides=('adl')
 
-source=("git://github.com/$author/$_gitname.git")
+source=("git+https://github.com/$author/$_gitname.git")
 
-md5sums=('SKIP')
-sha1sums=('SKIP')
 sha256sums=('SKIP')
 
 pkgver() {
