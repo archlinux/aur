@@ -17,7 +17,7 @@ sha512sums=('dc58f8deb5d9878bb76acba015c71e06e09000762e446110df680ba9654fb4848e8
 build() {
     cd "$pkgname-$pkgver"
     # Switch off gcc format-security (-Werror=format-security).
-    # It seems to be active by default when building via makepkg and gcc, which breaks the build.
+    # /ect/makepkg.conf includes -Werror=format-security in the default $CFLAGS. This breaks the build.
     # There are some places in localize.c where gcc is not able to check the format string.
     CFLAGS="$CFLAGS -Wno-format-security" ./configure --prefix=/usr
     make
