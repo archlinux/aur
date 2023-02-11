@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=netscripts-atzlinux-git
-pkgver=1.0.6.r0.g57a2ee9
+pkgver=1.0.7.r1.g559ed28
 pkgrel=1
 pkgdesc="some simple network scripts no need any parameter"
 arch=("any")
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
 pkgver()
 {
     cd "${srcdir}/${pkgname%-git}"
-    git describe --long --tags | sed 's|atzlinux/||g' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's|^debian/||g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
