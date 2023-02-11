@@ -4,6 +4,7 @@ pkgbase = ata
 	pkgrel = 0
 	url = https://github.com/rikhuijzer/ata
 	arch = x86_64
+	makedepends = git
 	makedepends = cargo
 	conflicts = ata-bin
 	conflicts = ata-git
