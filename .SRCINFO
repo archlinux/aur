@@ -1,12 +1,13 @@
 pkgbase = python-dataclass-wizard
 	pkgdesc = This library provides a set of simple, yet elegant wizarding tools for interacting with the Python dataclasses module.
 	pkgver = 0.22.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rnag/dataclass-wizard
 	arch = any
 	license = Apache-2.0
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	provides = python-dataclass-wizard
 	conflicts = python-dataclass-wizard
