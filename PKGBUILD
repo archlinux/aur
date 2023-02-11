@@ -30,6 +30,6 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 package() {
-	cd "$pkgname"
+	cd "xnotes"
 	sudo cp bin/linux/Xnotes /usr/bin/Xnotes
 }
