@@ -1,0 +1,14 @@
+pkgbase = gptcommit-git
+	pkgdesc = A git prepare-commit-msg hook for authoring commit messages with GPT-3.
+	pkgver = 0.1.16.108.g6ee5bc5
+	pkgrel = 1
+	url = https://github.com/zurawiki/gptcommit
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	conflicts = gptcommit
+	source = gptcommit::git+https://github.com/zurawiki/gptcommit.git
+	sha256sums = SKIP
+
+pkgname = gptcommit-git
