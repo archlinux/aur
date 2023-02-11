@@ -1,0 +1,14 @@
+pkgbase = gpxviewer-stable
+	pkgdesc = GPX Viewer
+	pkgver = 2.4
+	pkgrel = 1
+	url = https://osdn.net/projects/gpxviewer
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python-qcustomplot-pyqt5
+	depends = python-lxml
+	source = https://osdn.net/dl/gpxviewer/gpxviewer-2.4.tar.xz
+	sha256sums = 4e41bcea804171e4cdf9badd1534efa34765ffee8b01689e38e04ed329bdc3d4
+
+pkgname = gpxviewer-stable
