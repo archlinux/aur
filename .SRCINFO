@@ -1,15 +1,18 @@
 pkgbase = easytax-ag-2021
 	pkgdesc = Aargau tax declaration software.
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ag.ch/de/dfr/steuern/natuerliche_personen/steuererklaerung__easytax/steuererklaerung_easytax1.jsp
 	arch = any
 	license = custom
-	depends = java-environment
-	depends = bash
+	depends = jre8-openjdk
 	source = https://msg-easytax.ch/ag/2021/EasyTax2021AG_unix_1_3.tar.gz
+	source = https://upload.wikimedia.org/wikipedia/commons/d/d9/Wappen_Aargau.svg
 	source = easytax-ag-2021.desktop
+	source = easytax-ag.patch
 	sha256sums = 1dce65837fe258fda921035f11e724d6d19680c6ca6cab94e0551a8dd406be18
-	sha256sums = 1e2cb8dcefd5c891339d064997d2ffd4370bee8def3dee37b962e8e6b487f342
+	sha256sums = 253d315b20371cd9add777dc990f96545c60d5d07a3f34cd33720d5148e82486
+	sha256sums = 3a92fb4332f4e731ecb8f5394d0cc923b7edd761c25f32795517f2099c029d1b
+	sha256sums = 4341d0b441118509ec21539aed95e2a1ac33c88deba0a341af075db114cca8bd
 
 pkgname = easytax-ag-2021
