@@ -2,7 +2,7 @@
 # Contributor: Christoph Korn <christoph.korn at posteo dot de>
 _pkgname=chatty
 pkgname=${_pkgname}-beta
-pkgver=0.23b1
+pkgver=0.23b2
 _pkgver=${pkgver//b/-b}
 pkgrel=1
 pkgdesc='Twitch Chat Client for Desktop'
@@ -19,7 +19,7 @@ source=("${_pkgname}-${_pkgver}.tar.gz::https://github.com/chatty/${_pkgname}/ar
         "${_pkgname}.desktop"
         "${_pkgname}_script"
         'disable_version_check.patch')
-b2sums=('16b5a1cc7065ae8dbf37476465057d085e01cf27a68c29ea4be9017041583785e2fadcb0a6efb1230b006fd85ee20f30ef3a239bc0a29a5f2f80909a5cb2ccdd'
+b2sums=('e50fda96b0a06ebe9f7f5bd8b32aadd080711826c6332f8d266c79121772a7806bbe99cf64489e0adfb917062a71fffc25bc74ceb83c5a5dbe5701837f723786'
         '8eaa2a6a1f16b4c65c046b5d524b8237132f40c50bfd952f34e8296c8cc3c299c0eb8abf528aa167373bd844da9c0ad265181984d3dab04b86fc4efdd5100281'
         'ad27872651f6481b52721b286f3b22b5dde3c9d3a9f3bdf155a361f5733d20c0bd97515d283f0d038e96903e91e62e363dbb57aee25e018a4e7f4aa014ec715b'
         'fa6495c018023f244a924c2a37eafde6f26c13e4664480ca2ffdb3d7e97ba644f78db42bd75649825966ff70a3cfb1a4e9eff41087c501528f964f32ed0defe5')
