@@ -6,7 +6,7 @@ _module='libgnunetchat'
 
 pkgname="${_module}-git"
 pkgver='r120.c6ffad6'
-pkgrel=1
+pkgrel=2
 pkgdesc='GNUnet chat library'
 arch=('i686' 'x86_64')
 url="http://${_framework}.org"
@@ -27,9 +27,13 @@ pkgver() {
 }
 
 
+prepare() {
+	cd "${srcdir}/${_module}"
+	meson build
+}
+
 build() {
 	cd "${srcdir}/${_module}"
-	meson build --prefix="$pkgdir"
 	meson compile -C build
 }
 
@@ -40,5 +44,5 @@ check() {
 
 package() {
 	cd "${srcdir}/${_module}"
-	meson install -C build
+	DESTDIR="$pkgdir" meson install -C build
 }
