@@ -1,6 +1,6 @@
 pkgbase = pkg-listn
 	pkgdesc = Manage linux packages with a textfile
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/budRich/pkg-listn
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = pkg-listn
 	depends = sed
 	optdepends = yay: AUR helper
 	optdepends = paru: AUR helper
-	source = https://github.com/budRich/pkg-listn/archive/refs/tags/v0.1.2.tar.gz
+	source = https://github.com/budRich/pkg-listn/archive/refs/tags/v0.1.3.tar.gz
 	sha256sums = SKIP
 
 pkgname = pkg-listn
