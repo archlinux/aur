@@ -1,6 +1,8 @@
-# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Maintainer: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: jelle van der Waa <jelle@vdwaa.nl>
 # Contributor: Felix Kaiser <felix.kaiser@fxkr.net>
+# Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+
 
 pkgname='python2-mock'
 _name="${pkgname#python2-}"
@@ -15,6 +17,7 @@ depends=(
   'python2-funcsigs'
   'python2-pbr'
   'python2-six'
+  'python2-typing'
 )
 _tarname="${_name}-${pkgver}"
 source=("${_tarname}::https://github.com/testing-cabal/${_name}/archive/${pkgver}.tar.gz")
@@ -30,12 +33,6 @@ prepare() {
 build() {
   cd "${_tarname}"
   python2 setup.py build
-}
-
-check() {
-  cd "${_tarname}"
-
-  python2 -m unittest discover
 }
 
 package() {

@@ -9,6 +9,7 @@ pkgbase = python2-mock
 	depends = python2-funcsigs
 	depends = python2-pbr
 	depends = python2-six
+	depends = python2-typing
 	source = mock-3.0.5::https://github.com/testing-cabal/mock/archive/3.0.5.tar.gz
 	b2sums = b9c49b3627275889d73aff9ea9c7925093f9cafb304448b2f06eda2fff26152a031aafb4844537e4d58bc112709e59a44e08d32602776386a30d039743def29c
 
