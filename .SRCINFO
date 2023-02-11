@@ -1,7 +1,7 @@
 pkgbase = hoard
 	pkgdesc = A CLI command organizer written in Rust
-	pkgver = 1.3.0
-	pkgrel = 2
+	pkgver = 1.3.1
+	pkgrel = 1
 	url = https://github.com/Hyde46/hoard
 	install = hoard.install
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = hoard
 	makedepends = cargo
 	depends = gcc-libs
 	depends = openssl
-	source = hoard-1.3.0.tar.gz::https://github.com/Hyde46/hoard/archive/v1.3.0.tar.gz
-	sha256sums = 4989ca2ae4ae7344dbc46cdd30d130901d49d27f6bedee0656c33d3b05edca90
+	source = hoard-1.3.1.tar.gz::https://github.com/Hyde46/hoard/archive/v1.3.1.tar.gz
+	sha256sums = 74b6fc02b573fc377d3304c0c63c3337e941d5d241e7c38efc42d75313c86f87
 
 pkgname = hoard
