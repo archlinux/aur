@@ -1,7 +1,7 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=systemd-lock-handler
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Logind lock event to systemd target translation."
 arch=('any')
@@ -10,7 +10,7 @@ license=('ISC')
 makedepends=('go' 'git')
 source=("git+https://git.sr.ht/~whynothugo/systemd-lock-handler?signed#tag=v${pkgver}")
 md5sums=('SKIP')
-validpgpkeys=('13FF264E91839686966CA2AC388ADF1E2EEA7F1A')
+validpgpkeys=('1204CA9FC2FFADEEDC2961367880733B9D062837')
 
 build() {
   cd "$srcdir/$pkgname"
