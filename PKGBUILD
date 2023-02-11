@@ -4,7 +4,7 @@
 
 _pkg="apt"
 pkgname="python-${_pkg}"
-pkgver=2.5.1
+pkgver=2.5.2
 pkgrel=1
 pkgdesc="Python binding of lib${_pkg}-pkg"
 arch=('any')
