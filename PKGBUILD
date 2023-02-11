@@ -1,5 +1,7 @@
 # Maintainer: Ben Cooper <contactme at bengcooper dot co dot uk>
 # Co-Maintainer: Polarian <polarian@polarian.dev>
+_projectid=160
+_buildid=3271
 pkgname=onedev
 pkgver=7.9.4
 pkgrel=3
@@ -10,7 +12,7 @@ url="https://code.onedev.io/onedev/server"
 license=('MIT' 'BSD' 'Apache' 'LGPL2.1' 'MPL2' 'custom:Oracle Technology Network License'
          'custom:Microsoft Software License' 'custom:Sun Microsystems Inc Binary Code License'
          'custom:Jetty License')
-source=("https://code.onedev.io/~downloads/projects/160/builds/3271/artifacts/onedev-$pkgver.tar.gz"
+source=("https://code.onedev.io/~downloads/projects/$_projectid/builds/$_buildid/artifacts/onedev-$pkgver.tar.gz"
         "sysusers.conf"
         "onedev.service")
 sha256sums=('709f721d0df65f29bb1b1d8bef7a39b3afd77193ea14c1711681ed3ca00618f7'
