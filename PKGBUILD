@@ -4,7 +4,7 @@
 
 pkgname=openrsc-launcher
 pkgver=20230208.r7483.gadc5837a1
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source launcher for various Runescape Classic servers'
 arch=('any')
 url='https://rsc.vet'
@@ -17,7 +17,7 @@ source=(
   'launcher.sh'
 )
 b2sums=('SKIP'
-        'd3f8b9af516a7f4b94620767d971f12ad943f858367657819d156d917b3856a611ed9c0eb3f5da46c2c7ea6a1183cc39760de8f863cf81993bf21df4d498feb7')
+        'f761bdc177a80f739c777abb629e6e7ee66147914266d7505c5442fb627db57a29cbb891185ec896e39cf9afae2cdb592003f16af67fcfa421166ec84c0ec664')
 
 pkgver() {
   cd "$pkgname"

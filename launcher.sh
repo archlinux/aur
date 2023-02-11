@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
-LOCALDIR="${HOME}/.local/share/openrsc-launcher"
+ORSC_CACHE_DIR="${HOME}/.local/share/openrsc-launcher"
+ORSC_JAR="/usr/share/java/openrsc-launcher/OpenRSC.jar"
 
-if [ ! -d "$LOCALDIR" ]; then
-  mkdir -p "$LOCALDIR"
-  cp /usr/share/java/openrsc-launcher/OpenRSC.jar "$LOCALDIR"
+# create cache dir if it doesn't exist
+if [ ! -d "${ORSC_CACHE_DIR}" ]; then
+  mkdir -p "${ORSC_CACHE_DIR}"
 fi
 
-cd "$LOCALDIR"
-exec java -jar OpenRSC.jar "$@" >/dev/null
+cd "${ORSC_CACHE_DIR}"
+
+java -jar "${ORSC_JAR}"
