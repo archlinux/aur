@@ -1,8 +1,8 @@
 # Maintainer: Light Ning <lightning1141@gmail.com>
 
 pkgname=cproxy-bin
-pkgver=4.3.0
-pkgrel=1
+pkgver=4.3.1
+pkgrel=0
 pkgdesc="Easy per application transparent proxy built on cgroup, forked version."
 url="https://github.com/light4/cproxy"
 arch=(x86_64 aarch64)
@@ -14,8 +14,8 @@ conflicts=('cproxy')
 source_x86_64=("https://github.com/light4/cproxy/releases/download/v${pkgver}/${pkgname/-bin/}-v${pkgver}-x86_64-linux-gnu")
 source_aarch64=("https://github.com/light4/cproxy/releases/download/v${pkgver}/${pkgname/-bin/}-v${pkgver}-aarch64-linux-gnu")
 
-sha256sums_x86_64=('d1993e5d97f25b76f6e4f4e6b74aee47b593f0fc524344789e0e4f490ac42f96')
-sha256sums_aarch64=('a5c7d5995952f14eac0e61f37e9c8b06f7b8f3536ba9898c9033d8fb0cfc8bc3')
+sha256sums_x86_64=('5dca4b5340e241e978806692c144c9b6c1f379f1a981876eef29a75b509d18bf')
+sha256sums_aarch64=('156eb8561db7354b0c110ae5eac0bd1b0df2f139f4305a4c6f12b69fe4a3a6d2')
 
 package() {
   install -Dm4755 "${srcdir}/${pkgname/-bin/}-v${pkgver}-${CARCH}-linux-gnu" "$pkgdir/usr/bin/${pkgname/-bin/}"
