@@ -1,6 +1,6 @@
 pkgname="ata"
 pkgver=1.0.2
-pkgrel=0
+pkgrel=1
 pkgdesc="Ask the Terminal Anything"
 arch=('x86_64')
 url="https://github.com/rikhuijzer/ata"
