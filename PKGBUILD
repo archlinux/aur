@@ -9,7 +9,7 @@ arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'ppc64le')
 url="https://remove-to-waste.info"
 license=('GPL3')
 depends=('ncurses')
-makedepends=('meson' 'ninja' 'pkg-config')
+makedepends=('meson' 'ninja')
 optdepends=('gettext' 'canfigger')
 
 source=("https://github.com/theimpossibleastronaut/rmw/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
