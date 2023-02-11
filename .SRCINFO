@@ -9,7 +9,7 @@ pkgbase = hexowl
 	makedepends = go
 	provides = hexowl
 	conflicts = hexowl
-	source = hexowl-1.2.3.tar.gz::https://github.com/DECE2183/hexowl/archive/refs/tags/v1.3.0.tar.gz
+	source = hexowl-1.3.0.tar.gz::https://github.com/DECE2183/hexowl/archive/refs/tags/v1.3.0.tar.gz
 	sha256sums = bc105a5b2df6a78466d71cb50080d9c69d8ba819559f8787a06efd3699c7f737
 
 pkgname = hexowl
