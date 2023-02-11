@@ -1,6 +1,6 @@
 # Maintainer: Stefan Ott <stefan@ott.net>
 pkgname=synodl
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 epoch=
 pkgdesc="Command-line client for Synology's DownloadStation"
@@ -20,7 +20,7 @@ options=()
 install=
 changelog=
 source=("synodl-${pkgver}.tar.gz::https://code.ott.net/synodl/downloads/synodl-${pkgver}.tar.gz")
-sha256sums=("4967b702b476ed22de385592875e8c06d19a8e4f5ada62e5f8d2717d63fd42c9")
+sha256sums=("1f8ee55e27d29904bbcc5a164ee7e7e20ce746e2055b13050b2e70139da034a9")
 noextract=()
 md5sums=()
 validpgpkeys=()
