@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=hoard-git
-pkgver=1.3.0.r5.gbe38a20
+pkgver=1.3.1.r1.g0efbfb6
 pkgrel=1
 pkgdesc="A CLI command organizer written in Rust (git)"
 arch=('x86_64')
