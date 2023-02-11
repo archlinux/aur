@@ -2,7 +2,7 @@
 
 pkgname="rclone-mount-service"
 pkgver=07032022
-pkgrel=0
+pkgrel=1
 pkgdesc="Rclone systemd user service"
 arch=('any')
 depends=('systemd' 'rclone')
