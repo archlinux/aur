@@ -3,7 +3,7 @@
 
 _framework='gnunet'
 pkgname='libgnunetchat'
-pkgver='0.1.0'
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='GNUnet chat library'
 arch=('i686' 'x86_64')
@@ -11,23 +11,25 @@ url="http://${_framework}.org"
 license=('AGPL')
 conflicts=("${pkgname}-bin" "${pkgname}-git")
 depends=("${_framework}")
+makedepends=(meson check)
 options=('!makeflags' '!buildflags')
-source=("https://ftp.gnu.org/gnu/${_framework}/${pkgname}-${pkgver}.tar.gz"{,.sig})
+source=("https://ftp.gnu.org/gnu/${_framework}/${pkgname}-${pkgver}.tar.xz"{,.sig})
 validpgpkeys=('3D11063C10F98D14BD24D1470B0998EF86F59B6A')
-sha256sums=('828614072b860f539b5b1af6f77afe1ef38be4a53d0542827071f5b47eb5d04a'
+sha256sums=('fa5463290b18cb2615c61860c0b13d44d55ed0bb13e2b4cd3aa2a22559005e92'
             'SKIP')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	make
+	meson build --prefix="$pkgdir"
+	meson compile -C build
+}
+
+check() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	meson test -C build
 }
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	install -dm755 "${pkgdir}/usr"
-	install -dm755 "${pkgdir}/lib"
-	install -dm755 "${pkgdir}/include/gnunet"
-	make INSTALL_DIR="${pkgdir}/" install
-	mv "${pkgdir}/include" "${pkgdir}/usr"
-	mv "${pkgdir}/lib" "${pkgdir}/usr"
+	meson install -C build
 }
