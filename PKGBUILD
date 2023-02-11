@@ -2,7 +2,7 @@
 pkgname=gpxviewer-stable
 pkgver=2.4
 pkgrel=1
-pkgdesc="GPX Viewer"
+pkgdesc="Application for viewing and analyzing GPX and KML files"
 arch=('any')
 url="https://osdn.net/projects/gpxviewer"
 license=('GPL3')
