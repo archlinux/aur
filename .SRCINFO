@@ -1,6 +1,6 @@
 pkgbase = python-xxh
 	pkgdesc = Take your shell with you!
-	pkgver = 0.8.11
+	pkgver = 0.8.12
 	pkgrel = 1
 	url = https://pypi.org/project/xxh-xxh/
 	arch = x86_64
@@ -8,7 +8,8 @@ pkgbase = python-xxh
 	depends = python
 	depends = python-pexpect
 	depends = python-setuptools
-	source = python-xxh-0.8.11::https://github.com/xxh/xxh/archive/refs/tags/0.8.11.zip
-	md5sums = b7a5bb2e20b36aef60165f5c3c16e8ac
+	depends = python-yaml
+	source = python-xxh-0.8.12::https://github.com/xxh/xxh/archive/refs/tags/0.8.12.zip
+	md5sums = 63b834948c02976d82055218b41d3612
 
 pkgname = python-xxh
