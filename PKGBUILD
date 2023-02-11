@@ -1,7 +1,8 @@
-# Maintainer: Jean-Francois Chevrette <jfchevrette@gmail.com>
+# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Contributor: Jean-Francois Chevrette <jfchevrette@gmail.com>
 
 pkgname=ytt
-pkgver=0.30.0
+pkgver=0.44.3
 pkgrel=1
 pkgdesc="YAML templating tool that works on YAML structure instead of text"
 url="https://get-ytt.io/"
@@ -10,42 +11,27 @@ arch=('x86_64')
 depends=('glibc')
 makedepends=('git' 'go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/k14s/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('e58ea84a95922c890919452e93f6921f5416e6a0995b6c5a71cb8fde3027b77e')
+sha512sums=("bbc5170e4eacada904daf02e65657cfe3afe2c94c2ff2964ece5e54827c641c8dd92bc56eebdb6b169c87bc4c5e1a8cce63d080906c1a411f95fd02dec676305")
 
 prepare() {
-	rm -rf "${srcdir}/src/github.com/k14s/${pkgname}"
-	mkdir -p "${srcdir}/src/github.com/k14s/${pkgname}"
-	mv -T "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/src/github.com/k14s/${pkgname}"
+    rm -rf "${srcdir}/src/github.com/k14s/${pkgname}"
+    mkdir -p "${srcdir}/src/github.com/k14s/${pkgname}"
+    mv -T "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/src/github.com/k14s/${pkgname}"
 }
 
 build() {
-	cd "${srcdir}/src/github.com/k14s/${pkgname}"
-
-	export GOPATH="${srcdir}"
-
-	# Build ytt without website assets
-	go build -o ytt ./cmd/ytt/...
-
-	# Use ytt to build website assets
-	mkdir -p tmp
-	build_values_path="../../${BUILD_VALUES:-./hack/build-values-default.yml}"
-	(
-		cd pkg/website
-		./../../ytt \
-			-f . \
-			-f ../../examples/playground/basics \
-			-f ../../examples/playground/getting-started \
-			-f $build_values_path \
-			--file-mark 'alt-example**/*:type=data' \
-			--file-mark 'example**/*:type=data' \
-			--file-mark 'generated.go.txt:exclusive-for-output=true' \
-			--dangerous-emptied-output-directory ../../tmp/
-	)
-	mv tmp/generated.go.txt pkg/website/generated.go
-
-	# Rebuild ytt with website assets
-	rm -f ./ytt
-	go build -o ytt ./cmd/ytt/...
+    cd "${srcdir}/src/github.com/k14s/${pkgname}"
+    
+    export GOPATH="${srcdir}"
+    export LDFLAGS="-X github.com/vmware/tanzu/carvel-ytt/pkg/version.Version=$pkgver"
+    rm -f website/generated.go
+    go fmt $(go list ./... | grep -v yaml.v2)
+    go mod vendor
+    go mod tidy
+    rm -f pkg/website/generated.go
+    go build -ldflags="${LDFLAGS}" -trimpath -o "ytt" "./cmd/ytt/..."
+    ./ytt version
+    go build -ldflags="${LDFLAGS}" -trimpath -o "./tmp/main" "./cmd/ytt-lambda-website/..."
 }
 
 package() {
@@ -53,4 +39,3 @@ package() {
 	install -Dm755 "${pkgname}" "${pkgdir}"/usr/bin/${pkgname}
 	install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
-sha256sums=('15d030b661dd16714625f514703b6b2706692070dee94277623a0dfe7ad36ae6')
