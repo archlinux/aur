@@ -1,80 +1,79 @@
-# Maintainer: Alireza Ayinmehr <alireza.darksun@gmail.com>
+# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Contributor: Alireza Ayinmehr <alireza.darksun@gmail.com>
+# Contributor: David Runge <dvzrv@archlinux.org>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Dan McGee <dan@archlinux.org>
+# Contributor: Eli Schwartz <eschwartz@archlinux.org>
+# Contributor: Sebastien Binet <binet@lblbox>
 
-pkgname=('python-pip-git' 'python2-pip-git')
-pkgver=19.0.3.r119.gd4264dc3
+_py="python"
+_name="pip"
+pkgname="${_py}-${_name}-git"
+pkgver=23.0.r34.g852deddb9
 pkgrel=1
 pkgdesc="The PyPA recommended tool for installing Python packages"
-url='https://github.com/pypa/pip/'
+_pypi="https://github.com/pypa"
+url="${_pypi}/${_name}"
 arch=('any')
 license=('MIT')
-_deps=('setuptools' 'appdirs' 'cachecontrol' 'colorama' 'distlib' 'distro' 'html5lib' 'lockfile'
-       'msgpack' 'six' 'packaging' 'pep517' 'progress' 'pytoml' 'retrying' 'requests' 'urllib3'
-       'webencodings')
-makedepends=("${_deps[@]/#/python-}" "${_deps[@]/#/python2-}" 'python2-ipaddress' 'python-sphinx')
-checkdepends=('python-pytest-runner' 'python-scripttest' 'python-virtualenv' 'python-pretend'
-              'python-yaml' 'python-mock' 'python-freezegun')
-conflicts=('python-pip' 'python2-pip')
-source=("pip-git::git+https://github.com/pypa/pip.git")
+depends=(
+  python
+  python-attrs  # for vendored rich
+  python-cryptography  # for vendored requests and urllib3
+  python-wheel  # for internal misc utils
+)
+makedepends=(
+  python-build
+  python-installer
+  python-myst-parser
+  python-setuptools
+  python-sphinx
+  python-sphinx-copybutton
+  python-sphinx-inline-tabs
+  python-sphinxcontrib-towncrier
+)
+checkdepends=(
+  git
+  python-freezegun
+  python-pytest
+  python-pytest-rerunfailures
+  python-pytest-xdist
+  python-scripttest
+  python-tomli-w
+  python-virtualenv
+  python-werkzeug
+  subversion
+)
+conflicts=("${_py}-${_name}")
+source=("${_name}::git+${url}")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "pip-git"
+  cd "${_name}"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/pip-git"
-
-  python setup.py build
-  python2 setup.py build
+  cd "${_name}"
+  python -m build --wheel --no-isolation
 
   cd docs/
-  PYTHONPATH="$srcdir/pip-git/src/" sphinx-build -W -b man -d build/doctrees/man man build/man -c html
-  mkdir -p build/man-pip2
-  cd build/man
-  for manfile in *; do
-    sed 's/pip/pip2/g;s/PIP/PIP2/g' $manfile > ../man-pip2/${manfile/pip/pip2}
-  done
+  PYTHONPATH="$srcdir/${_name}/src/" python pip_sphinxext.py
+  PYTHONPATH="$srcdir/${_name}/src/" sphinx-build -b man -d build/doctrees/man man build/man -c html
 }
 
-check() {
-  cd "$srcdir/pip-git"
-  python setup.py pytest || warning "Tests failed"
-}
+package() {
+  local _site_packages
 
-package_python-pip-git() {
-  depends=("${_deps[@]/#/python-}")
+  cd "${_name}"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
-  cd "$srcdir/pip-git"
-  python setup.py install --prefix=/usr --root="$pkgdir"
+  install -vDm 644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -vDm 644 docs/build/man/*.1 -t "$pkgdir/usr/share/man/man1/"
+  install -vDm 644 {NEWS,README}.rst -t "$pkgdir/usr/share/doc/$pkgname/"
+  _site_packages="$(python -c "from distutils import sysconfig; print(sysconfig.get_python_lib())")"
 
-  install -D -m644 LICENSE.txt \
-	  "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  install -Dm644 -t "$pkgdir"/usr/share/man/man1 docs/build/man/*
-
-  PYTHONPATH="$pkgdir"/usr/lib/python3.7/site-packages "$pkgdir"/usr/bin/pip completion --bash \
-    | install -Dm644 /dev/stdin "$pkgdir"/usr/share/bash-completion/completions/pip
-}
-
-package_python2-pip-git() {
-  depends=("${_deps[@]/#/python2-}" 'python2-ipaddress')
-  conflicts=('python-pyinstall' 'python2-pip')
-  replaces=('python-pyinstall')
-
-  cd "$srcdir/pip-git"
-  python2 setup.py install --prefix=/usr --root="$pkgdir"
-
-  mv "$pkgdir/usr/bin/pip" "$pkgdir/usr/bin/pip2"
-  sed -i "s|#!/usr/bin/env python$|#!/usr/bin/env python2|" \
-    ${pkgdir}/usr/lib/python2.7/site-packages/pip/__init__.py
-  python2 -m compileall ${pkgdir}/usr/lib/python2.7/site-packages/pip/__init__.py
-
-  install -D -m644 LICENSE.txt \
-	  "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  install -Dm644 -t "$pkgdir"/usr/share/man/man1 docs/build/man-pip2/*
-
-  PYTHONPATH="$pkgdir"/usr/lib/python2.7/site-packages "$pkgdir"/usr/bin/pip2 completion --bash \
-    | install -Dm644 /dev/stdin "$pkgdir"/usr/share/bash-completion/completions/pip2
+  # NOTE: zsh completion does not work: https://bugs.archlinux.org/task/65349#comment187166
+  PYTHONPATH="$pkgdir/$_site_packages" "$pkgdir"/usr/bin/pip completion --bash | install -vDm 644 /dev/stdin "$pkgdir"/usr/share/bash-completion/completions/pip
+  PYTHONPATH="$pkgdir/$_site_packages" "$pkgdir"/usr/bin/pip completion --fish | install -vDm 644 /dev/stdin "$pkgdir"/usr/share/fish/vendor_completions.d/pip.fish
 }
