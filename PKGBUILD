@@ -11,7 +11,7 @@ pkgdesc='A microblogging server software that can federate other servers that su
 url='https://git.pleroma.social/pleroma/pleroma'
 license=('AGPL' 'CCPL:cc-by-4.0' 'CCPL:cc-by-sa-4.0')
 arch=(any)
-makedepends=(elixir erlang cmake rebar)
+makedepends=(elixir erlang cmake rebar git)
 depends=(ncurses file libxcrypt-compat openssl-1.1)
 optdepends=('postgresql: local postgresql database support'
             'imagemagick: Pleroma.Upload.Filters.Mogrify, Pleroma.Upload.Filters.Mogrifun support'
@@ -38,6 +38,7 @@ build() {
     cd $_pkgname
     mix local.hex --force
     mix local.rebar --force
+    mix deps.get
     mix deps.get --only prod
 }
 package() { 
