@@ -2,13 +2,13 @@
 
 _pkgname=mauiman
 pkgname=$_pkgname-git
-pkgver=1.0.1.r0.ga53a589
+pkgver=1.0.1.r17.gd0407bd
 pkgrel=1
 pkgdesc='Maui Manager Library. Server and public library API.'
 url='https://invent.kde.org/maui/mauiman'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 license=(GPL3)
-depends=(qt5-base)
+depends=(qt5-base qt5-systems)
 makedepends=(git extra-cmake-modules)
 groups=(maui)
 provides=($_pkgname)
