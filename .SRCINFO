@@ -1,15 +1,14 @@
 pkgbase = pypy3-pip
-	pkgdesc = An easy_install replacement for installing pypi python packages
-	pkgver = 20.0.2
+	pkgdesc = The PyPA recommended tool for installing Python packages
+	pkgver = 23.0
 	pkgrel = 1
-	url = https://pip.pypa.io/
+	url = https://pip.pypa.io
 	arch = any
 	license = MIT
 	depends = pypy3
 	depends = pypy3-setuptools
-	source = https://files.pythonhosted.org/packages/8e/76/66066b7bc71817238924c7e4b448abdb17eb0c92d645769c223f9ace478f/pip-20.0.2.tar.gz
-	md5sums = 7d42ba49b809604f0df3d55df1c3fd86
-	sha256sums = 7db0c8ea4c7ea51c8049640e8e6e7fde949de672bfa4949920675563a5a6967f
+	source = https://github.com/pypa/pip/archive/23.0/pip-23.0.tar.gz
+	sha512sums = 9b791ed15b4e5dd768351043929dc6ee18eeab251a26fb2b0d712dec578101f1620a13d5914d44f2761ecb95e64bc47e6b07096126404ca70345268028524d43
+	b2sums = 693623292e498ec939ce931063bccc8079fc313a0a9f30d406a99a2084fcd84b5b5a17566602c53bb96090920bc2d0615f28b8f9c165022c2b0de62fa9355b21
 
 pkgname = pypy3-pip
-
