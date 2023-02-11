@@ -1,6 +1,6 @@
 pkgbase = toybox
 	pkgdesc = All-in-one Linux command line
-	pkgver = 0.8.8
+	pkgver = 0.8.9
 	pkgrel = 1
 	url = https://landley.net/toybox
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = toybox
 	arch = armv7h
 	license = BSD
 	depends = attr
-	source = https://landley.net/toybox/downloads/toybox-0.8.8.tar.gz
-	sha256sums = dafd41978d40f02a61cf1be99a2b4a25812bbfb9c3157e679ee7611202d6ac58
+	source = https://landley.net/toybox/downloads/toybox-0.8.9.tar.gz
+	sha256sums = 06913dde3de7139b40f947bd7f23869dfc8796e9c6ff39de02719f8b7b2d47ad
 
 pkgname = toybox
