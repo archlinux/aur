@@ -1,14 +1,14 @@
 pkgbase = gnustep-back
 	pkgdesc = The GNUstep GUI Backend
-	pkgver = 0.29.0
+	pkgver = 0.30.0
 	pkgrel = 1
-	url = http://www.gnustep.org/
+	url = https://github.com/gnustep/libs-back
 	arch = x86_64
 	groups = gnustep-core
 	license = LGPL
 	makedepends = gnustep-make
 	makedepends = gnustep-base
-	makedepends = gnustep-gui>=0.28.0
+	makedepends = gnustep-gui>=0.30.0
 	makedepends = libffi
 	makedepends = gcc-objc
 	depends = libgl
@@ -17,11 +17,10 @@ pkgbase = gnustep-back
 	depends = freetype2
 	depends = cairo
 	conflicts = gnustep-back-svn
-	source = https://github.com/gnustep/libs-back/releases/download/back-0_29_0/gnustep-back-0.29.0.tar.gz
-	source = https://github.com/gnustep/libs-back/releases/download/back-0_29_0/gnustep-back-0.29.0.tar.gz.sig
+	source = https://github.com/gnustep/libs-back/releases/download/back-0_30_0/gnustep-back-0.30.0.tar.gz
+	source = https://github.com/gnustep/libs-back/releases/download/back-0_30_0/gnustep-back-0.30.0.tar.gz.sig
 	validpgpkeys = 83AAE47CE829A4146EF83420CA868D4C99149679
-	sha256sums = 18dd4e9200abef16570b331e8725d2ecf808fa86d125a927cc9776e8b88a9892
+	sha256sums = 60177d44beebd0216be4aa7eea6cf009cf9ff844bc35f0eacd622bf710372cff
 	sha256sums = SKIP
 
 pkgname = gnustep-back
-
