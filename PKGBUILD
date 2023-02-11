@@ -1,24 +1,17 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=chruby-fish
-pkgver=0.8.2
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="Thin wrapper around chruby to make it work with the Fish shell"
+pkgdesc="A compatible implementation of chruby for the Fish shell"
 arch=(any)
 url="https://github.com/JeanMertz/chruby-fish"
 license=('MIT')
-depends=('chruby' 'fish')
+depends=('fish')
 install=${pkgname}.install
 
-source=("https://github.com/JeanMertz/chruby-fish/archive/v${pkgver}.tar.gz"
-        chruby-root.patch)
-sha256sums=('e3726d39da219f5339f86302f7b5d7b62ca96570ddfcc3976595f1d62e3b34e1'
-            'a2f186f1dd1e7adc62d8315617443e0771f5d5ff7c3dee9794bcf0327c2d33fd')
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -p0 -i ../chruby-root.patch
-}
+source=("https://github.com/JeanMertz/chruby-fish/archive/v${pkgver}.tar.gz")
+sha256sums=('db1023255fa55c9a01b06404cd394cccf790d42985cf85706211e5a0dda4fd9f')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"

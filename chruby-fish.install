@@ -1,21 +1,9 @@
-post_install() {
-  echo "
-Add the following line to your config.fish file:
-  source /usr/share/chruby/chruby.fish
-To enable auto-switching, also add the auto.fish file:
-  source /usr/share/chruby/auto.fish
-"
-}
-
 post_upgrade() {
-  post_install
-}
-
-post_remove() {
   echo "
-Please do not forget to delete the following line from your config.fish file:
-  source /usr/share/chruby/chruby.fish
-If auto-switching is enabled, also delete the following line:
-  source /usr/share/chruby/auto.fish
+chruby-fish no longer depends on chruby and is loaded automatically.
+
+You can remove chruby if you don't need it, and you should remove any source
+references from your config.fish file as chruby-fish automatically registers
+itself.
 "
 }
