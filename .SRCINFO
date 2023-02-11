@@ -1,6 +1,6 @@
 pkgbase = r-spicyr
 	pkgdesc = Spatial analysis of in situ cytometry data
-	pkgver = 1.10.5
+	pkgver = 1.10.6
 	pkgrel = 1
 	url = https://bioconductor.org/packages/spicyR
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = r-spicyr
 	optdepends = r-knitr
 	optdepends = r-pkgdown
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/spicyR_1.10.5.tar.gz
-	sha256sums = ca2266cd45d6ee1e96e1662966a903d071c6c2bc610d42ce8c01c666fe20369b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/spicyR_1.10.6.tar.gz
+	sha256sums = 3c577bb06bdaaa450926d1eef96fff2c7a35e7ca382b734e54621b4e5fb46567
 
 pkgname = r-spicyr
