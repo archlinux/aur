@@ -5,27 +5,14 @@ _gamepkg=RimWorldBiotech1-4-${_pkg_subver}Linux.tar.gz
 
 pkgname=rimworld-biotech
 pkgver=1.4.${_pkg_subver}
-pkgrel=1
-pkgdesc="A sci-fi colony simulation game driven by an intelligent AI storyteller."
+pkgrel=2
+pkgdesc="Expansion pack Biotech for the game Rimworld"
 arch=('i686' 'x86_64')
 url="http://rimworldgame.com/"
 license=('custom: commercial')
 depends=('rimworld')
 makedepends=('tar')
 source=()
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 _pkgpaths_tries=("$startdir"
                  "$HOME/Downloads")

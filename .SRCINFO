@@ -1,7 +1,7 @@
 pkgbase = rimworld-biotech
-	pkgdesc = A sci-fi colony simulation game driven by an intelligent AI storyteller.
+	pkgdesc = Expansion pack Biotech for the game Rimworld
 	pkgver = 1.4.3613
-	pkgrel = 1
+	pkgrel = 2
 	url = http://rimworldgame.com/
 	arch = i686
 	arch = x86_64
