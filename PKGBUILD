@@ -1,10 +1,10 @@
 pkgname="ata-git"
-pkgver=r2.3ac8785
+pkgver=r4.e7a58f3
 pkgrel=1
 pkgdesc="Ask the Terminal Anything"
 arch=('x86_64')
 url="https://github.com/rikhuijzer/ata"
-makedepends=('cargo')
+makedepends=('git' 'cargo')
 source=(
     "git+https://github.com/rikhuijzer/ata.git"
 )
