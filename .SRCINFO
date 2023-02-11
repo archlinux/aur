@@ -1,6 +1,6 @@
 pkgbase = gnumail.app
 	pkgdesc = A mailclient built using GNUstep and a clone of NeXT Mail.app
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = http://wiki.gnustep.org/index.php/GNUMail
 	arch = i686
@@ -15,8 +15,7 @@ pkgbase = gnumail.app
 	depends = gnustep-back
 	depends = pantomime
 	depends = addresses.app
-	source = http://download.savannah.nongnu.org/releases/gnustep-nonfsf/GNUMail-1.3.0.tar.gz
-	sha256sums = c4611bdfd43e84fb133f41747e9ac1078efbc398166af271b15e590eeefcdb76
+	source = http://download.savannah.nongnu.org/releases/gnustep-nonfsf/GNUMail-1.4.0.tar.gz
+	sha256sums = a4f58bd613a92e59e8e5e1b78a566b036b9d813be9e9bc5afd391a6d6d8a9824
 
 pkgname = gnumail.app
-
