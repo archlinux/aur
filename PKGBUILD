@@ -1,35 +1,34 @@
+# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 # Contributor: Andrew Sun <adsun701@gmail.com>
 
-pkgname=lib32-mpfr
-_pkgbasename=mpfr
-_pkgver=4.1.0
-_patchver=13
+_pkg="mpfr"
+pkgname="lib32-${_pkg}"
+_pkgver=4.2.0
+# _patchver=13
 pkgrel=1
-pkgver=${_pkgver}.p${_patchver}
+pkgver="${_pkgver}"
 pkgdesc='Multiple-precision floating-point library'
 arch=(x86_64)
-url='https://www.mpfr.org/'
+url="https://www.${_pkg}.org"
 license=(LGPL)
 depends=('lib32-gmp')
 makedepends=('autoconf-archive' 'gcc-multilib')
 source=(
-    "https://www.mpfr.org/mpfr-$_pkgver/mpfr-$_pkgver.tar.xz"
-    patches.diff
-)
+    "${url}/${_pkg}-${_pkgver}/${_pkg}-${_pkgver}.tar.xz")
+    # patches.diff)
 sha256sums=(
-    '0c98a3f1732ff6ca4ea690552079da9c597872d30e96ec28414ee23c95558a7f'
-    '75af77904037442fcd3061a4fee2394194716c542e96989dcfac2445c842daf1'
-)
+    '06a378df13501248c1b2db5aa977a2c8126ae849a9d9b7be2546fb4a9c26d993' )
+    # '75af77904037442fcd3061a4fee2394194716c542e96989dcfac2445c842daf1')
 
 prepare() {
-  cd "${srcdir}/${_pkgbasename}-${_pkgver}"
+  cd "${srcdir}/${_pkg}-${_pkgver}"
 
-  patch -p1 < "$srcdir"/patches.diff
+  # patch -p1 < "$srcdir"/patches.diff
   autoreconf -fiv
 }
 
 build() {
-  cd "${srcdir}/${_pkgbasename}-${_pkgver}"
+  cd "${srcdir}/${_pkg}-${_pkgver}"
   
   export CC='gcc -m32'
   export CXX='g++ -m32'
@@ -46,7 +45,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_pkgbasename}-${_pkgver}"
+  cd "${srcdir}/${_pkg}-${_pkgver}"
   make DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}"/usr/{bin,include,share}
   rm -f "${pkgdir}/usr/lib32/"*.py
