@@ -1,8 +1,7 @@
 pkgbase = pop-launcher
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pop-os/launcher
-	changelog = pop-launcher-changelog
 	arch = x86_64
 	arch = aarch64
 	license = MPL2
@@ -11,6 +10,7 @@ pkgbase = pop-launcher
 	depends = fd
 	depends = libqalculate
 	depends = sh
+	options = !lto
 	source = pop-launcher-1.2.1.tar.gz::https://github.com/pop-os/launcher/archive/refs/tags/1.2.1.tar.gz
 	sha256sums = 00f6386851a770d988eab58b367a592a7df3b69c17c99f9daea2bd40a1f69d5a
 

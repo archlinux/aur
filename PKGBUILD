@@ -2,21 +2,19 @@
 pkgname=('pop-launcher' 'pop-shell-plugin-system76-power')
 pkgbase=pop-launcher
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/launcher"
 license=('MPL2')
 depends=('fd' 'libqalculate' 'sh')
 makedepends=('cargo' 'just')
-changelog="$pkgname-changelog"
+options=('!lto')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('00f6386851a770d988eab58b367a592a7df3b69c17c99f9daea2bd40a1f69d5a')
 
 prepare() {
   cd "launcher-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$CARCH-unknown-linux-gnu"
-
   just vendor
 
   sed -i 's|{{bin_path}}|/usr/bin/pop-launcher|g' justfile
