@@ -12,6 +12,7 @@ pkgbase = pleroma
 	makedepends = erlang
 	makedepends = cmake
 	makedepends = rebar
+	makedepends = git
 	depends = ncurses
 	depends = file
 	depends = libxcrypt-compat
