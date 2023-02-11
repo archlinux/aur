@@ -1,47 +1,52 @@
 post_install() {
-  	if [ ! -d '/opt/pleroma' ]; then
-    	mkdir -p '/opt/pleroma'
-  	fi
+    username="pleroma"
+    home_dir="/opt/${username}"
+    uploads_dir="/var/lib/${username}/uploads"
+    static_dir="/var/lib/${username}/static"
+    config_dir="/etc/${username}"
+    tmp_psql="/tmp/setup_otp_db.psql"
 
-  	if ! getent group pleroma >/dev/null; then
-    	groupadd pleroma
-  	fi
+    chown -R pleroma "$home_dir"
+    chown -R pleroma "$config_dir"
 
-	if ! getent passwd pleroma >/dev/null; then
-		useradd -c 'Pleroma User' -g pleroma -d '/opt/pleroma' -s /bin/bash pleroma
-    	passwd -l pleroma >/dev/null
-	fi
+    instance_gen_params="instance gen\
+ --output \"${config_dir}/config.exs\"\
+ --output-psql \"$tmp_psql\"\
+ --uploads-dir \"$uploads_dir\"\
+ --static-dir \"$static_dir\"\
+ --dbname \"$username\"\
+ --dbuser \"$username\"\
+"
 
-	if [ ! -d '/var/lib/pleroma/uploads' ]; then
-    	mkdir -p '/var/lib/pleroma/uploads'
-  	fi
+    printf "\n"
+    printf "A local installation of postgresql is strongly recommended unless you know what you are doing. Use:\n    $ sudo pacman -S postgresql\nto install postgresql locally.\n\n"
+	printf "If postgresql is installed locally, the user should run the following commands to initialize pleroma:\n"
 
-	if [ ! -d '/var/lib/pleroma/static' ]; then
-    	mkdir -p '/var/lib/pleroma/static'
-  	fi
+	printf ">>> sudo -Hu $username ${home_dir}/bin/pleroma_ctl ${instance_gen_params}\n"
+	printf ">>> sudo -Hu postgres psql -f \"${tmp_psql}\"\n"
+	printf ">>> sudo -Hu $username ${home_dir}/bin/pleroma_ctl migrate\n\n"
 
-	if [ ! -d '/var/lib/pleroma/static' ]; then
-    	mkdir -p '/var/lib/pleroma/static'
-  	fi
+    printf "If the user is using a remote postgresql instance, they should ensure \"${tmp_psql}\" be executed remotely after the first command:\n"
+    printf ">>> sudo -Hu $username -s /bin/bash ${home_dir}/bin/pleroma_ctl ${instance_gen_params}\n"
+    printf ">>> # Now execute \"$tmp_psql\" remotely.\n"
+	printf ">>> sudo -Hu $username -s /bin/bash ${home_dir}/bin/pleroma_ctl migrate\n\n"
 
-	if [ ! -d '/etc/pleroma' ]; then
-    	mkdir -p '/etc/pleroma'
-  	fi
+    printf "After initializing pleroma, you may start it with:\n"
+    printf ">>> sudo systemctl start pleroma\n\n"
 
-	chown -R pleroma '/opt/pleroma'
-	chown -R pleroma '/var/lib/pleroma'
-	chown -R pleroma /etc/pleroma
+	printf "Check https://docs-develop.pleroma.social/backend/installation/otp_en/#post-installation for post-installation steps.\n"
+}
 
-	printf "\n"
-	printf "The user should run the following commands, the second two only if postgres is installed\n\n"
-
-	printf '>>> sudo -Hu pleroma -s /bin/bash /opt/pleroma/bin/pleroma_ctl instance gen --output /etc/pleroma/config.exs --output-psql /tmp/setup_db.psql\n'
-	printf '>>> sudo -Hu postgres -s /bin/bash psql -f /tmp/setup_db.psql\n'
-	printf '>>> sudo -Hu pleroma -s /bin/bash /opt/pleroma/bin/pleroma_ctl migrate\n\n'
-
-	printf 'To set up NGINX and LetsEncrypt install nginx/certbot and see https://docs-develop.pleroma.social/backend/installation/otp_en/#setting-up-nginx-and-getting-lets-encrypt-ssl-certificaties\n'
+pre_upgrade() {
+    systemctl stop pleroma.service
 }
 
 post_upgrade() {
-  post_install $1
+    printf "\nYou will need to migrate your database as the above upgrade notes state.\n"
+    printf "Ensure your postgresql database, whether local or remote, is up,  and run the following command:\n"
+    printf ">>> cd /opt/pleroma\n"
+    printf ">>> sudo -Hu pleroma /opt/pleroma/bin/pleroma_ctl migrate\n"
+
+    printf "\nAfter all these, you may start pleroma with:\n"
+    printf ">>> sudo systemctl start pleroma\n"
 }

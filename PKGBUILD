@@ -1,52 +1,49 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
+# Maintainer: Guoyi Zhang <myname at malacology dot net>
+# Contributor: xerus <27f at pm dot me>
+# Contributor: gudzpoz <gudzpoz ant live dot com>
+# Contributor: Bjoern Franke <bjo+aur@schafweide.org>
 
-# Maintainer: Faye Jackson <justalittleepsilon@gmail.com>
 pkgname=pleroma
-pkgver=2.1.2
+pkgver=2.5.0
 pkgrel=1
-_tagver="v$pkgver"
-pkgdesc="The Pleroma Server (ActivityPub Compatible)"
-arch=(x86_64 aarch64 armv7l)
-license=('AGPL')
-depends=(ncurses)
-optdepends=('postgresql: Pleroma Database for storage' 'nginx: HTTPS proxy server' 'certbot: For Lets Encrypt Certificates')
-makedepends=(unzip curl)
-provides=(pleroma)
-conflicts=(pleroma-git)
-
-FLAVOUR=$(arch="$(uname -m)";if [ "$arch" = "x86_64" ];then arch="amd64";elif [ "$arch" = "armv7l" ];then arch="arm";elif [ "$arch" = "aarch64" ];then arch="arm64";else echo "Unsupported arch: $arch">&2;fi;echo "$arch")
-
-if [ "$FLAVOUR" = "amd64" ]
-then
-	download_url="https://git.pleroma.social/pleroma/pleroma/-/jobs/154862/artifacts/download";
-	zip_sum="407a758fc5546942e3b9abb1004ab6ce";
-elif [ "$FLAVOUR" = "arm" ]
-then
-	download_url="https://git.pleroma.social/pleroma/pleroma/-/jobs/154864/artifacts/download";
-	zip_sum="48bc29ba97166640e23741e9e6220686";
-elif [ "$FLAVOUR" = "arm64" ]
-then
-	download_url="https://git.pleroma.social/pleroma/pleroma/-/jobs/154866/artifacts/download";
-	zip_sum="2c2440bef65826d1529f3085bbb245a5";
-fi
-
-
-
-source=("pleroma.zip::$download_url" "pleroma.sysusers")
-md5sums=("$zip_sum" '0026c871dbffef09159f5fae7426868c')
+pkgdesc='A microblogging server software that can federate other servers that support ActivityPub'
+url='https://git.pleroma.social/pleroma/pleroma'
+license=('AGPL' 'CCPL:cc-by-4.0' 'CCPL:cc-by-sa-4.0')
+arch=(any)
+makedepends=(elixir erlang cmake rebar)
+depends=(ncurses file libxcrypt-compat openssl-1.1)
+optdepends=('postgresql: local postgresql database support'
+            'imagemagick: Pleroma.Upload.Filters.Mogrify, Pleroma.Upload.Filters.Mogrifun support'
+            'ffmpeg: media preview proxy support for videos'
+            'perl-image-exiftool: supporting stripping location (GPS) data from uploaded images with Pleroma.Upload.Filters.Exiftool')
+backup=('etc/pleroma/config.exs')
 install=pleroma.install
-
-prepare() {
-	cd $srcdir
+source=('pleroma.sysusers'
+        'pleroma.tmpfiles'
+        'pleroma.service'
+        'COPYING'
+        "git+${url}.git#tag=v$pkgver")
+sha256sums=('4df8a0099dada9bf652fb07677a9c6a66cad1f26498f08a55d8acb0186b78979'
+            'b6e6ad0f2c3caea38a30dddb303728271d6b56c13a2f4d82959b871844811f4c'
+            '268952ef036ef65ab146a38ff20bbba35759c0f33510fe6ca15d6765285938ed'
+            'e299229268576c559d0155baccccf682c97b51bebab40a0b7ff3ab562ec62104'
+            'SKIP')
+build() {
+    cd "${pkgname}"
+    mix local.hex --force
+    mix local.rebar --force
+    mix deps.get --only prod
+}
+package() { 
+    cd "$srcdir"
+    install -Dm 755 pleroma.sysusers "${pkgdir}/usr/lib/sysusers.d/pleroma.conf"
+    install -Dm 755 pleroma.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/pleroma.conf"
+    install -Dm 755 pleroma.service "${pkgdir}/usr/lib/systemd/system/pleroma.service"
+    install -Dm 644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    
+    mkdir -p $pkgdir/opt/pleroma
+    cd $pkgname
+    mix release --path $pkgdir/opt/pleroma 
 }
 
-package() {
-	cd $srcdir
 
-	mkdir -p "${pkgdir}/opt/pleroma"
-	cp -r release/* "${pkgdir}/opt/pleroma"
-	install -Dm 644 pleroma.sysusers "${pkgdir}/usr/lib/sysusers.d/pleroma.conf"
-}

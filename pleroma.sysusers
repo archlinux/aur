@@ -1,1 +1,3 @@
-u pleroma - "Pleroma User" /opt/pleroma /bin/false
+u pleroma - "Pleroma OTP User" /opt/pleroma /bin/false
+g pleroma -
+m pleroma pleroma

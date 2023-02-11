@@ -1,0 +1,4 @@
+d /etc/pleroma 0750 pleroma pleroma -
+d /var/lib/pleroma/uploads 0750 pleroma pleroma -
+d /var/lib/pleroma/static 0755 pleroma pleroma -
+d /opt/pleroma 0750 pleroma pleroma -
