@@ -12,6 +12,7 @@ license=(custom)
 conflicts=(libglvnd mesa)
 
 provides=(opengl-driver
+	  vulkan-driver
           libgl
           libegl
           libgles
@@ -20,9 +21,7 @@ provides=(opengl-driver
           libGLESv2.so=2-64
           libGLX.so=0-64
           libGLdispatch.so=0-64
-          libOpenGL.so=0-64
-          vulkan-driver
-          opencl-icd-loader)
+          libOpenGL.so=0-64)
 
 source=("https://github.com/starfive-tech/soft_3rdpart/raw/JH7110_VisionFive2_devel/IMG_GPU/out/img-gpu-powervr-bin-${pkgver}.tar.gz")
 sha256sums=('8ef5eba77c776e0d4444d819e12c64bfa8eee0ae2cdf90b6eb7a3a9df7bd7ef2')
@@ -86,10 +85,8 @@ package() {
     cp --no-dereference usr/lib/libsrv_um.so "${pkgdir}/usr/lib/libsrv_um.so"
     cp --no-dereference usr/lib/libPVROCL.so.1 "${pkgdir}/usr/lib/libPVROCL.so.1"
     cp --no-dereference usr/lib/libGLESv1_CM.so.1 "${pkgdir}/usr/lib/libGLESv1_CM.so.1"
-    cp --no-dereference usr/lib/libOpenCL.so "${pkgdir}/usr/lib/libOpenCL.so"
     cp --no-dereference usr/lib/libGLESv2.so.2 "${pkgdir}/usr/lib/libGLESv2.so.2"
     cp --no-dereference usr/lib/libGLESv1_CM.so "${pkgdir}/usr/lib/libGLESv1_CM.so"
-    cp --no-dereference usr/lib/libOpenCL.so.1 "${pkgdir}/usr/lib/libOpenCL.so.1"
     cp --no-dereference usr/lib/libGLESv2.so "${pkgdir}/usr/lib/libGLESv2.so"
     cp --no-dereference usr/lib/libVK_IMG.so.1 "${pkgdir}/usr/lib/libVK_IMG.so.1"
     cp --no-dereference usr/lib/libusc.so "${pkgdir}/usr/lib/libusc.so"

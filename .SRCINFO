@@ -6,6 +6,7 @@ pkgbase = visionfive2-img-gpu
 	arch = riscv64
 	license = custom
 	provides = opengl-driver
+	provides = vulkan-driver
 	provides = libgl
 	provides = libegl
 	provides = libgles
@@ -15,8 +16,6 @@ pkgbase = visionfive2-img-gpu
 	provides = libGLX.so=0-64
 	provides = libGLdispatch.so=0-64
 	provides = libOpenGL.so=0-64
-	provides = vulkan-driver
-	provides = opencl-icd-loader
 	conflicts = libglvnd
 	conflicts = mesa
 	source = https://github.com/starfive-tech/soft_3rdpart/raw/JH7110_VisionFive2_devel/IMG_GPU/out/img-gpu-powervr-bin-1.17.6210866.tar.gz
