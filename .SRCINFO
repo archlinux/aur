@@ -1,18 +1,17 @@
 pkgbase = openrsc-launcher
-	pkgdesc = Authentic, Open Source Runescape Classic Game (Launcher)
-	pkgver = 20211006.185500
+	pkgdesc = Open-source launcher for various Runescape Classic servers
+	pkgver = 20230208.r7483.gadc5837a1
 	pkgrel = 1
 	url = https://rsc.vet
-	arch = x86_64
-	license = GPL
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = ant
 	depends = jre-openjdk
-	source = https://rsc.vet/downloads/OpenRSC.jar
-	source = openrsc-launcher.desktop
-	source = openrsc-launcher
-	source = openrsc.png
-	sha256sums = a9f263b2616e2cb942cb224c2ce39daf9a2b8f3fdd2268db37030079c2e7cfbb
-	sha256sums = a30273d914d91bee40935f9327a3c4f8223a6a433dccbf8e156f52856376af04
-	sha256sums = 51afc18c2c230da28c9af132960723e78f246483d02e6d38e28c828ca5597173
-	sha256sums = 2df32fac0b96310f3075bc201a95be3903fd2927d7f8ba77300a948243de96e1
+	depends = hicolor-icon-theme
+	source = openrsc-launcher::git+https://gitlab.com/open-runescape-classic/core.git#commit=adc5837a16c098b08672e6fa97029cece54543e3
+	source = launcher.sh
+	b2sums = SKIP
+	b2sums = d3f8b9af516a7f4b94620767d971f12ad943f858367657819d156d917b3856a611ed9c0eb3f5da46c2c7ea6a1183cc39760de8f863cf81993bf21df4d498feb7
 
 pkgname = openrsc-launcher

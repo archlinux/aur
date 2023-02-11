@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=OpenRSC Launcher
-GenericName=OpenRSC
-Comment=An open-source Runescape classic.
-Exec=openrsc-launcher
-Icon=openrsc
-Terminal=false
-Type=Application
-Categories=Game;

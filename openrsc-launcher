@@ -1,7 +1,0 @@
-#!/bin/bash
-
-mkdir -p "${HOME}/.local/share/openrsc-launcher"
-cd "${HOME}/.local/share/openrsc-launcher"
-cp /usr/share/java/openrsc-launcher/OpenRSC.jar .
-
-exec java -jar OpenRSC.jar "$@" >/dev/null
