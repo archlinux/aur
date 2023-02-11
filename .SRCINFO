@@ -1,0 +1,13 @@
+pkgbase = roundcubemail-plugin-twofactor-webauthn
+	pkgdesc = Roundcube plugin for FIDO2/WebAuthn 2-factor authentication
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/bartnv/twofactor_webauthn
+	arch = any
+	license = GPL3
+	depends = roundcubemail
+	options = !strip
+	source = roundcubemail-plugin-twofactor-webauthn-v1.2.0.tar.gz::https://github.com/bartnv/twofactor_webauthn/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = 09e29d57a67fe1d9d1dc5db948693f33ade393f2e17c52bcf631ae999a39bbd2
+
+pkgname = roundcubemail-plugin-twofactor-webauthn
