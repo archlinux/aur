@@ -11,11 +11,14 @@ pkgbase = vfu
 	license = GPL
 	depends = ncurses
 	depends = pcre2
+	depends = yascreen>=1.95
 	optdepends = perl: for the rx_* archiving utilities
 	optdepends = rpmextract: for rx_rpm
 	optdepends = unrar: for rx_rar
 	optdepends = unzip: for rx_zip
 	source = http://cade.noxrun.com/projects/vfu/vfu-5.02.tar.gz
+	source = vfu-libexec_2_lib.patch
 	sha256sums = cd10f00a86ba71150203582d50783e30ab31b76adfe4b7fb88d1ae88325f0d9e
+	sha256sums = 9c2f50b78e9fc4b9fbd7c457bf8c14976fe7c245fd0472512d609ef3b2d68512
 
 pkgname = vfu
