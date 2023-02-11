@@ -4,7 +4,7 @@ _pkgname=${pkgname/-bin/}
 _githuborg=skycoin
 pkgdesc="Skywire: Building a new Internet. Skycoin.com"
 pkgver='1.3.3'
-pkgrel=2
+pkgrel=3
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
@@ -21,10 +21,12 @@ _script=("skywire-autoconfig")
 _desktop=("skywire.desktop" "skywirevpn.desktop")
 _icon=("skywirevpn.png" "skywire.png")
 _service=("skywire.service" "skywire-autoconfig.service")
+_key=("skycoin")
 _source=("${_script[@]}"
 "${_desktop[@]}"
 "${_icon[@]}"
 "${_service[@]}"
+"${_key[@]}"
 )
 source=("${_source[@]}")
 sha256sums=('c46efba8ed1146c10ab5aa85e9b2ca00aa28ee758c005195c2eae997b65c6922'
@@ -33,7 +35,8 @@ sha256sums=('c46efba8ed1146c10ab5aa85e9b2ca00aa28ee758c005195c2eae997b65c6922'
             'ec24750a99f5cda8d8a8dc94743943218e1b2088c2b2c7dc1644ee78d954fe7e'
             'a6941680b5858ca3e0c85d9bf5824455a0c95524b61e42352462f2abbb750495'
             '9c94295df9dadbdbd5b891c6669c112e69ede97922791579ffdf415130a084da'
-            '8519d027325dcb34877bb5b0fb0c3c035d7589c0046b53935e2b949d436c4be3')
+            '8519d027325dcb34877bb5b0fb0c3c035d7589c0046b53935e2b949d436c4be3'
+            '41c0a4a42ae64479b008392053f4a947618acd6bb9c3ed2672dafdb2453caa14')
 sha256sums_x86_64=('aeff9a2800e9a5272d4a5db01aa46f292f4389134e2f0bcfc9945c493a1d56ef')
 sha256sums_aarch64=('1a7035b418f0f681cf482aaaf3e41e3be516e2cdd10a0a79a4f4a12b844fa141')
 sha256sums_armv8=('1a7035b418f0f681cf482aaaf3e41e3be516e2cdd10a0a79a4f4a12b844fa141')
@@ -101,6 +104,8 @@ _msg2 'Symlink skywire-visor to skywire'
 ln -rTsf "${_pkgdir}/${_bin}/${_pkgname}-visor" "${_pkgdir}/usr/bin/${_pkgname}"
 _msg2 'installing dmsghttp-config.json'
 install -Dm644 "${srcdir}/dmsghttp-config.json" "${_pkgdir}/${_dir}/dmsghttp-config.json" || install -Dm644 "${srcdir}/skywire/dmsghttp-config.json" "${_pkgdir}/${_dir}/dmsghttp-config.json"
+_msg2 'installing skycoin.asc'
+install -Dm644 "${srcdir}/skycoin" "${_pkgdir}/${_dir}/skycoin.asc" || install -Dm644 "${srcdir}/skywire/skycoin.asc" "${_pkgdir}/${_dir}/skycoin.asc"
 _msg2 'Installing systemd services'
 for _i in "${_service[@]}" ; do
   _msg3 ${_i}
