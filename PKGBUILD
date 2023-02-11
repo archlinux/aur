@@ -4,19 +4,20 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _pkgname=filehash
-_pkgver=2.4-3
+_pkgver=2.4-5
 pkgname=r-${_pkgname,,}
-pkgver=2.4.3
-pkgrel=8
+pkgver=2.4.5
+pkgrel=1
 pkgdesc='Simple Key-Value Database'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('GPL')
 depends=(
   r
+  r-digest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f394e2c93233e8ad1c104562ea9349855dc8e303131f559cd59834f9aa3e41bd')
+sha256sums=('3b1ee2794dd61e525ee44db16611c65957691d77bb26ae481eba988bb55da22c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
