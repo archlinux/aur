@@ -1,7 +1,7 @@
 pkgbase = r-treekor
 	pkgdesc = Cytometry Cluster Hierarchy and Cellular-to-phenotype Associations
-	pkgver = 1.6.0
-	pkgrel = 3
+	pkgver = 1.6.1
+	pkgrel = 1
 	url = https://bioconductor.org/packages/treekoR
 	arch = any
 	license = GPL
@@ -25,7 +25,7 @@ pkgbase = r-treekor
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/treekoR_1.6.0.tar.gz
-	sha256sums = 365617084a30e77b99ab8e852515c8d9950721a75372814ed49c7d305a2e26c6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/treekoR_1.6.1.tar.gz
+	sha256sums = a30d262978dbb4f5792fa0e790799edcd4643acb8b9362a4d413e74623c7038a
 
 pkgname = r-treekor
