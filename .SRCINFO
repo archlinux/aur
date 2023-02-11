@@ -1,0 +1,14 @@
+pkgbase = cosmic-epoch-git
+	pkgdesc = pop-os cosmic desktop, version from git
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/pop-os/cosmic-epoch
+	arch = x86_64
+	license = GPL
+	makedepends = just
+	depends = gtk4
+	provides = cosmic-epoch-git
+	source = git+https://github.com/pop-os/cosmic-epoch
+	md5sums = SKIP
+
+pkgname = cosmic-epoch-git
