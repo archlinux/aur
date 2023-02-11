@@ -1,0 +1,22 @@
+pkgbase = jdk19-graalvm-ee-bin
+	pkgdesc = Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java 19 version
+	pkgver = 22.3.1
+	pkgrel = 1
+	url = https://www.graalvm.org/
+	install = jdk19-graalvm-ee-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = custom:OTN
+	depends = java-runtime-common
+	depends = java-environment-common
+	provides = java-runtime=19
+	provides = java-environment=19
+	options = staticlibs
+	source = graalvm-ee-rebuild-libpolyglot.hook
+	sha256sums = 7dc37bd3703ebebcd6efa39534e6bb6e3ec9c8ee0d97e46d6df5349739c7d2ca
+	source_x86_64 = https://web.archive.org/web/20230210121435/https://download.oracle.com/otn/utilities_drivers/oracle-labs/graalvm-ee-java19-linux-amd64-22.3.1.tar.gz?AuthParam=1676031374_e770a327c875d6085c0328e472f6b2ad
+	sha256sums_x86_64 = 9ac9c4e0d94772527950efb0d3b2630d5161e9b5659289e02cda8246530024c8
+	source_aarch64 = https://web.archive.org/web/20230210122242/https://download.oracle.com/otn/utilities_drivers/oracle-labs/graalvm-ee-java19-linux-aarch64-22.3.1.tar.gz?AuthParam=1676031867_cb5783ae7e43a80ed98ea8d7646b2761
+	sha256sums_aarch64 = 59ec396dd68143efc0d3199711aea1e50883e269473cbaaaea32b66090433007
+
+pkgname = jdk19-graalvm-ee-bin
