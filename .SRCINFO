@@ -16,6 +16,7 @@ pkgbase = eric
 	depends = python-black
 	depends = python-isort
 	depends = python-tomlkit
+	depends = python-coverage
 	conflicts = eric-common
 	replaces = eric-common
 	source = https://downloads.sourceforge.net/eric-ide/eric7-23.2.tar.gz
