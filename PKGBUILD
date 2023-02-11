@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=9.8.beta7.r0.g047281e0287
+pkgver=9.8.rc0.r0.g9116c5584f9
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -50,7 +50,8 @@ optdepends=('cython: to compile cython code'
   'python-database-knotinfo: interface to the KnotInfo and LinkInfo databases'
   'python-phitigra: graph editor'
   'topcom: to compute triangulations of point configurations'
-  'python-database-cubic-hecke: cubic Hecke algebras')
+  'python-database-cubic-hecke: cubic Hecke algebras'
+  'msolve: polynomial system solving via msolve')
 makedepends=(cython boost python-jinja sirocco mcqd coxeter bliss tdlib python-pkgconfig shared_meataxe git)
 conflicts=(sagemath)
 provides=(sagemath)
@@ -63,10 +64,10 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-tachyon-0.99.patch
         sagemath-gap-4.12.patch
         sagemath-tdlib-0.9.patch
-        sagemath-pari-2.15.patch
-        sagemath-singular-4.3.1.p3.patch)
+        sagemath-singular-4.3.1.p3.patch
+        sagemath-numpy-1.24.patch)
 sha256sums=('SKIP'
-            'e54bc8f9c08773e8bc72e068eba97e0095c5fc0af44f7cc19ec0f3564c0fba3d'
+            '34dead10f1fa9c9dd5e88ceba663d718e5b11767c5db7d52726178ead5098fd3'
             'bd188af45ce31579b82407adee8e9bf6033a996f7ea6e328fabca526f31c08ba'
             '9d042070df3dfd53a1248659677798da888f733548eda91a6d5169c7aa1907e1'
             'eacea27b214d32cb886a75695153dfc36b5bad2fd2517e8e4eee18e74220e9e3'
@@ -74,8 +75,8 @@ sha256sums=('SKIP'
             '9760db6c6ec40cc16ab8a0cbf3d019df7f6a69ff292e35622f282b7c888aac77'
             '89e9ade86131a5989ae2f2c2cee6a12f2c71df35d1ef7a84d6176dd3de0f2889'
             '56a83abecf2ff5a500442adc7a50abbb70006037dd39c39dcdb04b3ca9fb51e2'
-            'f5a0258335dd4005c664a3c3d025c3d1df236abbffcfb6a66516f781c8c22526'
-            'c2685c8a1fb272eef58f830897fda9e6f6671fde1ced59cc55bd5cddb2da7b19')
+            'c2685c8a1fb272eef58f830897fda9e6f6671fde1ced59cc55bd5cddb2da7b19'
+            '800b2704c73b7d48602b69edb9f128a20ef5e1ad6860779bd3ef25583464e6f9')
 
 pkgver() {
   cd sage
@@ -94,8 +95,8 @@ prepare(){
   patch -p1 -i ../sagemath-tachyon-0.99.patch
 # Port to GAP 4.12 https://trac.sagemath.org/ticket/34391
   patch -p1 -i ../sagemath-gap-4.12.patch
-# Update to PARI 2.15 https://trac.sagemath.org/ticket/34537
-  patch -p1 -i ../sagemath-pari-2.15.patch
+# Fix tests with numpy 1.24 https://trac.sagemath.org/ticket/34816
+  patch -p1 -i ../sagemath-numpy-1.24.patch
 
 # Arch-specific patches
 # assume all optional packages are installed
