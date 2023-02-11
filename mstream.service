@@ -1,12 +1,16 @@
 [Unit]
-Description=mStream
+Description=mStream Daemon
 After=network.target
 
 [Service]
-User=mstream
 Type=simple
+
+ExecStart=/usr/bin/mstream --json=/etc/mstream.json
 WorkingDirectory=/var/lib/mstream
-ExecStart=/usr/bin/mstream -j /etc/mstream.json
+Restart=on-success
+
+User=mstream
+Group=mstream
 
 [Install]
 WantedBy=multi-user.target

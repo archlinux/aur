@@ -1,27 +1,27 @@
 pkgbase = mstream-git
-	pkgdesc = Music player server with a web-based interface
-	pkgver = 4.7.0.r20.gb52fdde
+	pkgdesc = Music streaming server
+	pkgver = 5.11.4.r21.g01d63ed
 	pkgrel = 1
-	url = https://mstream.io
-	install = mstream.install
+	url = https://github.com/IrosTheBeggar/mStream
 	arch = any
 	license = GPL3
-	makedepends = npm
 	makedepends = git
+	makedepends = jq
+	makedepends = npm
 	depends = nodejs
 	provides = mstream
-	conflicts = nodejs-mstream
+	conflicts = mstream
 	options = !strip
 	backup = etc/mstream.json
-	source = git+https://github.com/d10n/mStream.git#branch=d10n-master
+	source = mstream-git::git+https://github.com/IrosTheBeggar/mStream.git
 	source = mstream.json
 	source = mstream.service
 	source = mstream.sysusers
 	source = mstream.tmpfiles
 	sha256sums = SKIP
-	sha256sums = fb95db00a269d0e7f5d6b7e23e037d319176ad8e7a8332ab61f87ed2e82842a7
-	sha256sums = 833f86daaffb12857612ef5b1264e944b0a48a077d5a8bb8d217ec6565ed90c3
+	sha256sums = 1d6faa9e1a76d13f3ab8558a3640158b1f0a54f624a4e37ddc3ef41ed4191058
+	sha256sums = 9f8baaad75e3152685043da8f74a09d19c2290820f12f5c3ca5022afd2e97b14
 	sha256sums = 5f2e6aced1707f64ca4ae3ae647fb6a8420f5c2a747ba06fa9174920fd821437
-	sha256sums = a584c25700c57ffe9df9a1902e44fe2f0ad9b508af748eca540734e3df44bb0f
+	sha256sums = 97b4f92b8abba82224b3fc0e8cd179aaa9ba282e7466ab96acb75a9d627f6b23
 
 pkgname = mstream-git
