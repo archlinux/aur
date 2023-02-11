@@ -2,7 +2,7 @@
 
 pkgname=gtkcord4-git
 _pkgname=gtkcord4
-pkgver=r162.70a823b
+pkgver=r176.e20b928
 pkgrel=1
 pkgdesc='Discord client written in go and gtk4'
 arch=('x86_64' 'aarch64')
@@ -20,25 +20,25 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+    cd "${_pkgname}"
+    mkdir -p build
+}
+
 build() {
-    # add config flags per https://wiki.archlinux.org/index.php/Go_package_guidelines
+    cd "${_pkgname}"
+    # https://wiki.archlinux.org/index.php/Go_package_guidelines
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
-
-    # check if user has already set their GoLang path
-    if [[ -z "${GOPATH}" ]]; then
-        export GOPATH="${srcdir}/go"
-    fi
-    cd "${_pkgname}"
-    go mod tidy
-    go build -trimpath
+    export GOPATH="${srcdir}/go"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    go build -o build
 }
 
 package() {
-    cd "${_pkgname}"
+    cd "${_pkgname}/build"
     install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 "${srcdir}/${_pkgname}/LICENSE.md" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
     sed -i "s/Chat;/Chat;InstantMessaging;/" "${srcdir}/${_pkgname}/nix/xyz.diamondb.gtkcord4.desktop"
