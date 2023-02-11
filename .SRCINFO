@@ -1,6 +1,6 @@
 pkgbase = vdr-vnsiserver
 	pkgdesc = VDR plugin to handle Kodi clients
-	pkgver = 1.8.2
+	pkgver = 1.8.3
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/vdr-projects/vdr-plugin-vnsiserver
@@ -14,9 +14,9 @@ pkgbase = vdr-vnsiserver
 	depends = vdr-api=2.6.3
 	backup = etc/vdr/conf.avail/50-vnsiserver.conf
 	backup = var/lib/vdr/plugins/vnsiserver/allowed_hosts.conf
-	source = vdr-vnsiserver-1.8.2.tar.gz::https://github.com/vdr-projects/vdr-plugin-vnsiserver/archive/refs/tags/1.8.2.tar.gz
+	source = vdr-vnsiserver-1.8.3.tar.gz::https://github.com/vdr-projects/vdr-plugin-vnsiserver/archive/refs/tags/1.8.3.tar.gz
 	source = 50-vnsiserver.conf
-	sha256sums = e981ddc7adaa5824707081029a4f4e9990bb633dd612885034973132b4838bec
+	sha256sums = 74b4339f7c7edfc5a218722503afea79259d11dd4b910d7acb43cbe173863d62
 	sha256sums = 0e03e0df28b8210e3813536c7945b94e4c13ac775eb2c8d25403f90aa8f3c74c
 
 pkgname = vdr-vnsiserver
