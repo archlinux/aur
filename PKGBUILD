@@ -1,13 +1,15 @@
 # Maintainer: grufo <madmurphy333 AT gmail DOT com>
+# Contributor: TheJackiMonster <thejackimonster AT gmail DOT com>
 
 _appname='messenger-gtk'
 pkgname="${_appname}-git"
-pkgver='r107.8e8f7bf'
+pkgver='r185.b1ed454'
 pkgrel=1
 pkgdesc='A graphical user interface for GNUnet Messenger'
 arch=('i686' 'x86_64')
 url="https://gnunet.org"
 license=('GPL')
+makedepends=('meson')
 depends=('gnunet' 'libgnunetchat' 'gtk3' 'libhandy' 'libnotify' 'qrencode'
          'zbar' 'gstreamer')
 provides=("${_appname}")
@@ -22,18 +24,17 @@ pkgver() {
 
 prepare() {
 	cd "${_appname}"
-	git submodule init
-	git submodule update
+	git submodule update --init
+	PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig" meson build
 }
 
 build() {
 	cd "${srcdir}/${_appname}"
-	make release
+	meson compile -C build
 }
 
 package() {
 	cd "${srcdir}/${_appname}"
-	install -dm755 "${pkgdir}/usr/bin"
-	make INSTALL_DIR="${pkgdir}/usr/" install
+	DESTDIR="$pkgdir" meson install -C build
 }
 
