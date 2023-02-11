@@ -2,7 +2,7 @@
 # https://github.com/dnaka91/pkgbuilds
 
 pkgname=otti
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="The one-time password manager for the terminal, with interactive and fancy TUI"
 arch=('aarch64' 'i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('AGPL3')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('926b3c295a9ad51233175fd283b089a5b7e95e75e3bba6968def3a4eddf498b774e64af188cb69092f95305a6586f3c7d96fd73bb7fae125634b2b5d2373087e')
+b2sums=('4dffb7c6564622a227a32cbf0dc435d20f5a5c699f5ddb0f8f46df972cbc08732f9ad91f474ba69e00b738daa9a9bd1589fd2e58ff06dbbba6000942c9f39c46')
 
 prepare() {
   cd "$pkgname-$pkgver"
