@@ -2,11 +2,11 @@
 
 pkgname=gtt-bin
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc='Translate TUI in Golang'
-url='https://github.com/eeeXun/GTT'
+url='https://github.com/eeeXun/gtt'
 license=('MIT')
-source_x86_64=("gtt-$pkgver-linux-amd64.tar.gz::${url}/releases/download/v${pkgver}/gtt-linux-amd64.tar.gz")
+source_x86_64=("gtt-${pkgver}-linux-amd64.tar.gz::${url}/releases/download/v${pkgver}/gtt-linux-amd64.tar.gz")
 arch=('x86_64')
 depends=('alsa-lib')
 optdepends=('xclip: for clipboard support on X11' 'wl-clipboard: for clipboard support on Wayland')
