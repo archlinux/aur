@@ -1,7 +1,7 @@
 pkgbase = 7-zip-full
 	pkgdesc = File archiver with a high compression ratio (full package to replace p7zip)
 	pkgver = 22.01
-	pkgrel = 4
+	pkgrel = 5
 	url = https://7-zip.org/
 	arch = x86_64
 	arch = i686
@@ -15,6 +15,6 @@ pkgbase = 7-zip-full
 	source = https://7-zip.org/a/7z2201-src.tar.xz
 	source = prepare.patch
 	sha256sums = 393098730c70042392af808917e765945dc2437dee7aae3cfcc4966eb920fbc5
-	sha256sums = b597a0ced0b691c897bceb330ab410f6df58927b769bea3910188c8fcecce5aa
+	sha256sums = e79922f6c7d686a941011dc27472ce66c872f2f706251f060225d1bd2da40c6a
 
 pkgname = 7-zip-full

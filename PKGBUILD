@@ -4,7 +4,7 @@
 _name=7-zip
 pkgname=${_name}-full
 pkgver=22.01
-pkgrel=4
+pkgrel=5
 pkgdesc="File archiver with a high compression ratio (full package to replace p7zip)"
 url="https://7-zip.org/"
 license=('LGPL')
@@ -28,7 +28,7 @@ source=(
 
 sha256sums=(
     '393098730c70042392af808917e765945dc2437dee7aae3cfcc4966eb920fbc5'
-    'b597a0ced0b691c897bceb330ab410f6df58927b769bea3910188c8fcecce5aa'
+    'e79922f6c7d686a941011dc27472ce66c872f2f706251f060225d1bd2da40c6a'
 )
 
 prepare() {
