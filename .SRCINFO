@@ -1,7 +1,7 @@
 pkgbase = xnotes-git
 	pkgdesc = Simple notepad create in python
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://JoaoChamine@bitbucket.org/JoaoChamine/xnotes.git
 	arch = x86_64
 	arch = i686

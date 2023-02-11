@@ -6,7 +6,7 @@
 # Maintainer: Joao Chamine <jchamine@outlook.pt>
 pkgname=xnotes-git
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Simple notepad create in python"
 arch=(x86_64 i686)
