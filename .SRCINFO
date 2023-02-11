@@ -1,6 +1,6 @@
 pkgbase = kdenlive-release-git
 	pkgdesc = A non-linear video editor. Following latest released branch in git.
-	pkgver = 22.08.0.r16446
+	pkgver = 22.12.2.r17139
 	pkgrel = 1
 	url = http://www.kdenlive.org/
 	install = kdenlive-release-git.install

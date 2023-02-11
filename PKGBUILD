@@ -8,7 +8,7 @@
 
 
 pkgname=kdenlive-release-git
-pkgver=22.08.0.r16446
+pkgver=22.12.2.r17139
 pkgrel=1
 pkgdesc="A non-linear video editor. Following latest released branch in git."
 arch=('i686' 'x86_64')
