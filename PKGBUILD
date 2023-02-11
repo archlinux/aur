@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Prostar
-_pkgver=1.30.3
+_pkgver=1.30.4
 pkgname=r-${_pkgname,,}
-pkgver=1.30.3
-pkgrel=3
+pkgver=1.30.4
+pkgrel=1
 pkgdesc='Provides a GUI for DAPAR'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -50,7 +50,7 @@ optdepends=(
   r-xml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f72d5d6fd38648964c6cb0b4bad5b1847e0ebd1083479199c9af39d4bf7241e4')
+sha256sums=('46e2ffbffdf7901e105fe5848554879786b12e6de733cebbc0a8e3b0bce762fa')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
