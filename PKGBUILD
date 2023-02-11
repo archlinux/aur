@@ -3,8 +3,8 @@
 # Contributor: svalo <me@valo.space>
 
 pkgname=dino-notification-sounds-git
-pkgver=v0.3.0.r55.gcdd22e40
-pkgrel=2
+pkgver=v0.4.0.r0.g5568bbc6
+pkgrel=1
 pkgdesc="Simple and modern Jabber/XMPP client written in vala"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://dino.im/"
@@ -13,7 +13,7 @@ depends=('glib2>=2.38' 'glib-networking' 'gtk4' 'gpgme'
 	 'libgee>=0.10' 'libgcrypt' 'libsoup3' 'sqlite' 'qrencode'
 	 'libsignal-protocol-c' 'gspell' 'gst-plugins-base'
 	 'gst-plugins-good' 'gst-plugin-gtk' 'webrtc-audio-processing'
-	 'libnice' 'libsrtp')
+	 'libnice' 'libsrtp' 'libadwaita')
 makedepends=('git' 'cmake' 'vala>=0.34' 'ninja')
 optdepends=('libcanberra: audio notification support')
 provides=("${pkgname%-notification-sounds-git}")
