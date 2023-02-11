@@ -2,7 +2,7 @@
 # Contributor: budRich
 
 pkgname=pkg-listn
-pkgver=0.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Manage linux packages with a textfile'
 arch=('any')
