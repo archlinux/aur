@@ -1,5 +1,5 @@
 pkgbase = gpxviewer-stable
-	pkgdesc = GPX Viewer
+	pkgdesc = Application for viewing and analyzing GPX and KML files
 	pkgver = 2.4
 	pkgrel = 1
 	url = https://osdn.net/projects/gpxviewer
