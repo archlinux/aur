@@ -1,6 +1,6 @@
-pkgbase = sddm-git
-	pkgdesc = The Simple Desktop Display Manager
-	pkgver = 0.19.0.170.g3e48649
+pkgbase = sddm-sasasu-git
+	pkgdesc = The Simple Desktop Display Manager (Sasasu's fork)
+	pkgver = 0.17.0.296.g36e1594
 	pkgrel = 1
 	url = https://github.com/sddm/sddm
 	arch = x86_64
@@ -20,11 +20,11 @@ pkgbase = sddm-git
 	backup = etc/pam.d/sddm
 	backup = etc/pam.d/sddm-autologin
 	backup = etc/pam.d/sddm-greeter
-	source = git+https://github.com/sddm/sddm.git#branch=develop
+	source = git+https://github.com/Sasasu/sddm.git#branch=develop
 	source = sddm.sysusers
 	source = sddm.tmpfiles
 	sha256sums = SKIP
 	sha256sums = 9fce66f325d170c61caed57816f4bc72e9591df083e89da114a3bb16b0a0e60f
 	sha256sums = db625f2a3649d6d203e1e1b187a054d5c6263cadf7edd824774d8ace52219677
 
-pkgname = sddm-git
+pkgname = sddm-sasasu-git

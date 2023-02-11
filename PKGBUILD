@@ -1,11 +1,10 @@
-# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
-# Contributor: Jerome Leclanche <jerome@leclan.ch>
+# Maintainer: Victor Bonnelle <victor.bonnelle@proton.me>
 
 _pkgbase="sddm"
-pkgname="$_pkgbase-git"
-pkgver=0.19.0.170.g3e48649
+pkgname="$_pkgbase-sasasu-git"
+pkgver=0.17.0.296.g36e1594
 pkgrel=1
-pkgdesc="The Simple Desktop Display Manager"
+pkgdesc="The Simple Desktop Display Manager (Sasasu's fork)"
 arch=("x86_64")
 url="https://github.com/sddm/sddm"
 license=("GPL")
@@ -18,7 +17,7 @@ backup=('usr/share/sddm/scripts/Xsetup'
         'etc/pam.d/sddm'
         'etc/pam.d/sddm-autologin'
         'etc/pam.d/sddm-greeter')
-source=("git+https://github.com/sddm/sddm.git#branch=develop"
+source=("git+https://github.com/Sasasu/sddm.git#branch=develop"
 sddm.sysusers sddm.tmpfiles)
 sha256sums=('SKIP'
             '9fce66f325d170c61caed57816f4bc72e9591df083e89da114a3bb16b0a0e60f'
