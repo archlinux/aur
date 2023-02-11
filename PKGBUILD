@@ -32,6 +32,7 @@ build() {
     cd "${pkgname}"
     mix local.hex --force
     mix local.rebar --force
+    mix deps.get
     mix deps.get --only prod
 }
 package() { 
