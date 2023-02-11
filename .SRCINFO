@@ -9,6 +9,7 @@ pkgbase = ueberzugpp
 	makedepends = ninja
 	makedepends = cli11
 	depends = opencv
+	depends = libvips
 	depends = xcb-util-image
 	depends = nlohmann-json
 	provides = ueberzug
