@@ -1,7 +1,7 @@
 # Maintainer: Marius Hirt <marius-hirt@web.de>
 pkgname=zork++-bin
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern C++ project manager and build system for modern C++"
 arch=('x86_64')
 url='https://github.com/zerodaycode/Zork'
