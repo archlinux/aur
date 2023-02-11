@@ -1,8 +1,8 @@
 pkgbase = rtl8821cu-morrownr-dkms-git
 	pkgdesc = rtl8821cu chipset driver (morrownr fork)
-	pkgver = 5.8.1.7.22.88bf0e5
-	pkgrel = 2
-	url = https://github.com/morrownr/8821cu-20210118
+	pkgver = 5.12.0.4.120.7d16a68
+	pkgrel = 1
+	url = https://github.com/morrownr/8821cu-20210916
 	arch = i686
 	arch = x86_64
 	arch = armv7h
@@ -13,7 +13,7 @@ pkgbase = rtl8821cu-morrownr-dkms-git
 	depends = dkms
 	conflicts = rtl8821cu-git
 	conflicts = rtl8821cu-dkms-git
-	source = git+https://github.com/morrownr/8821cu-20210118#branch=main
+	source = git+https://github.com/morrownr/8821cu-20210916
 	source = dkms.conf
 	sha256sums = SKIP
 	sha256sums = a0552ddb8658b5416ae373db569f7fef9a111c9b995a85071bd89fd4cf8c804f
