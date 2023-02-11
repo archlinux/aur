@@ -2,10 +2,10 @@
 
 _reponame=obs-ptz
 pkgname=$_reponame-controls
-pkgver=0.13.1
+pkgver=0.14.1
 pkgrel=1
 pkgdesc="Plugin for OBS Studio to add a PTZ Camera control dock"
-arch=("i686" "x86_64" "aarch64")
+arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/ptz-controls.1284/"
 license=("GPL2")
 depends=("obs-studio>=28" "qt6-serialport") # "qt5-gamepad"
