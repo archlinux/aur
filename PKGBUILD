@@ -2,7 +2,7 @@
 #
 pkgname=tidyp
 pkgver="1.04"
-pkgrel=1
+pkgrel=2
 pkgdesc="Validates and outputs cleaned-up HTML."
 arch=('i686' 'x86_64')
 url="http://tidyp.com"
@@ -16,7 +16,10 @@ sha512sums=('dc58f8deb5d9878bb76acba015c71e06e09000762e446110df680ba9654fb4848e8
 
 build() {
     cd "$pkgname-$pkgver"
-    ./configure --prefix=/usr
+    # Switch off gcc format-security (-Werror=format-security).
+    # It seems to be active by default when building via makepkg and gcc, which breaks the build.
+    # There are some places in localize.c where gcc is not able to check the format string.
+    CFLAGS="$CFLAGS -Wno-format-security" ./configure --prefix=/usr
     make
 }
 
@@ -31,5 +34,5 @@ package() {
 
     cd "$pkgname-$pkgver"
     make DESTDIR="$pkgdir/" install
-
 }
+

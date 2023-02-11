@@ -1,7 +1,7 @@
 pkgbase = tidyp
 	pkgdesc = Validates and outputs cleaned-up HTML.
 	pkgver = 1.04
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tidyp.com
 	arch = i686
 	arch = x86_64
