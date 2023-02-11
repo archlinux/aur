@@ -1,0 +1,5 @@
+plyfile-*.tar.gz
+python-plyfile-*-any.pkg.tar*
+src/
+pkg/
+*.log
