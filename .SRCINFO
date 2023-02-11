@@ -1,8 +1,8 @@
 pkgbase = gnustep-gui
 	pkgdesc = The GNUstep GUI class library
-	pkgver = 0.29.0
+	pkgver = 0.30.0
 	pkgrel = 1
-	url = http://www.gnustep.org/
+	url = https://github.com/gnustep/libs-gui
 	arch = x86_64
 	groups = gnustep-core
 	license = LGPL
@@ -21,8 +21,10 @@ pkgbase = gnustep-gui
 	optdepends = libao
 	conflicts = gnustep-gui-svn
 	options = !makeflags
-	source = https://github.com/gnustep/libs-gui/releases/download/gui-0_29_0/gnustep-gui-0.29.0.tar.gz
-	sha256sums = 7bf12b29b12a2886003d3b251e8076ad284f41780c7322531676fcd54e1d6df5
+	source = https://github.com/gnustep/libs-gui/releases/download/gui-0_30_0/gnustep-gui-0.30.0.tar.gz
+	source = https://github.com/gnustep/libs-gui/releases/download/gui-0_30_0/gnustep-gui-0.30.0.tar.gz.sig
+	validpgpkeys = 83AAE47CE829A4146EF83420CA868D4C99149679
+	sha256sums = 469dcaa54ed05b2520a704c30c0761a75b3ade8428e2e64645fb7b38a15c3cc3
+	sha256sums = SKIP
 
 pkgname = gnustep-gui
-

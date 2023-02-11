@@ -1,10 +1,10 @@
 # Maintainer: <mumei AT airmail DOT cc>
 pkgname=gnustep-gui
-pkgver=0.29.0
+pkgver=0.30.0
 pkgrel=1
 pkgdesc="The GNUstep GUI class library"
 arch=('x86_64')
-url="http://www.gnustep.org/"
+url="https://github.com/gnustep/libs-gui"
 license=('LGPL')
 depends=('gcc-libs' 'libjpeg' 'libtiff')
 makedepends=('gcc-objc' 'gnustep-base' 'gnustep-make')
@@ -12,8 +12,10 @@ optdepends=('aspell' 'audiofile' 'flite1: required for speech synthesis' 'giflib
 conflicts=('gnustep-gui-svn')
 groups=('gnustep-core')
 options=('!makeflags')
-source=(https://github.com/gnustep/libs-gui/releases/download/gui-${pkgver//./_}/gnustep-gui-$pkgver.tar.gz)
-sha256sums=('7bf12b29b12a2886003d3b251e8076ad284f41780c7322531676fcd54e1d6df5')
+source=(https://github.com/gnustep/libs-gui/releases/download/gui-${pkgver//./_}/$pkgname-$pkgver.tar.gz{,.sig})
+sha256sums=('469dcaa54ed05b2520a704c30c0761a75b3ade8428e2e64645fb7b38a15c3cc3'
+            'SKIP')
+validpgpkeys=('83AAE47CE829A4146EF83420CA868D4C99149679')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
