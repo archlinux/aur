@@ -23,12 +23,10 @@ install=pleroma.install
 source=('pleroma.sysusers'
         'pleroma.tmpfiles'
         'pleroma.service'
-        'COPYING'
         "git+${url}.git")
 sha256sums=('4df8a0099dada9bf652fb07677a9c6a66cad1f26498f08a55d8acb0186b78979'
             'b6e6ad0f2c3caea38a30dddb303728271d6b56c13a2f4d82959b871844811f4c'
             '268952ef036ef65ab146a38ff20bbba35759c0f33510fe6ca15d6765285938ed'
-            'e299229268576c559d0155baccccf682c97b51bebab40a0b7ff3ab562ec62104'
             'SKIP')
 pkgver() {
     cd $_pkgname
@@ -46,8 +44,9 @@ package() {
     install -Dm 755 pleroma.sysusers "${pkgdir}/usr/lib/sysusers.d/pleroma.conf"
     install -Dm 755 pleroma.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/pleroma.conf"
     install -Dm 755 pleroma.service "${pkgdir}/usr/lib/systemd/system/pleroma.service"
-    install -Dm 644 COPYING ${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE
-    
+    install -Dm 644 $srcdir/$pkgname/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+
     mkdir -p $pkgdir/opt/pleroma
     cd ${_pkgname}
     mix release --path $pkgdir/opt/pleroma 
