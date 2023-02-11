@@ -2,12 +2,12 @@
 
 pkgname=cproxy-bin
 pkgver=4.3.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Easy per application transparent proxy built on cgroup, forked version."
 url="https://github.com/light4/cproxy"
 arch=(x86_64 aarch64)
 license=(AGPL)
-depends=()
+depends=(iptables iproute2)
 provides=('cproxy')
 conflicts=('cproxy')
 
