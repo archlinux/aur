@@ -1,6 +1,6 @@
 pkgbase = lv2-c++-tools
 	pkgdesc = Tools and libraries that may come in handy when writing LV2 plugins.
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = http://ll-plugins.nongnu.org/hacking.html
 	arch = i686
@@ -8,8 +8,7 @@ pkgbase = lv2-c++-tools
 	license = GPL3
 	makedepends = boost
 	options = staticlibs
-	source = https://download-mirror.savannah.gnu.org/releases/ll-plugins/lv2-c++-tools-1.0.5.tar.bz2
-	md5sums = 4707f2507f86d6c7bbaa809bb52eed9b
+	source = https://download-mirror.savannah.gnu.org/releases/ll-plugins/lv2-c++-tools-1.0.7.tar.bz2
+	md5sums = 464955e219a87b27b5e951e1b37c68fe
 
 pkgname = lv2-c++-tools
-
