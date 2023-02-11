@@ -1,6 +1,6 @@
 # Maintainer: Sematre <sematre at gmx dot de>
 pkgname=pico-sdk
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 
 pkgdesc="Libraries and tools for C/C++ development on RP2040 microcontrollers."
