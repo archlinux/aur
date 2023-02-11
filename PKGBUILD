@@ -9,7 +9,7 @@ pkgdesc="This is the GLES and Vullkan implementation provided by Starfive for th
 url="https://github.com/starfive-tech/soft_3rdpart/tree/JH7110_VisionFive2_devel"
 arch=(riscv64)
 license=(custom)
-conflicts=(libglvnd mesa ocl-icd vulkan-icd-loader)
+conflicts=(libglvnd mesa)
 
 provides=(opengl-driver
           libgl
@@ -22,8 +22,6 @@ provides=(opengl-driver
           libGLdispatch.so=0-64
           libOpenGL.so=0-64
           vulkan-driver
-          vulkan-icd-loader
-          libvulkan.so=1-64
           opencl-icd-loader)
 
 source=("https://github.com/starfive-tech/soft_3rdpart/raw/JH7110_VisionFive2_devel/IMG_GPU/out/img-gpu-powervr-bin-${pkgver}.tar.gz")
@@ -39,7 +37,6 @@ package() {
 
     # Library files with version
     install -Dm755 usr/lib/libglslcompiler.so.1.17.6210866 "${pkgdir}/usr/lib/libglslcompiler.so.1.17.6210866"
-    install -Dm755 usr/lib/libvulkan.so.1.17.6210866 "${pkgdir}/usr/lib/libvulkan.so.1.17.6210866"
     install -Dm755 usr/lib/libpvr_dri_support.so.1.17.6210866 "${pkgdir}/usr/lib/libpvr_dri_support.so.1.17.6210866"
     install -Dm755 usr/lib/libsrv_um.so.1.17.6210866 "${pkgdir}/usr/lib/libsrv_um.so.1.17.6210866"
     install -Dm755 usr/lib/libsutu_display.so.1.17.6210866 "${pkgdir}/usr/lib/libsutu_display.so.1.17.6210866"
@@ -80,16 +77,12 @@ package() {
     cp --no-dereference usr/lib/libPVROCL.so "${pkgdir}/usr/lib/libPVROCL.so"
     cp --no-dereference usr/lib/libVK_IMG.so "${pkgdir}/usr/lib/libVK_IMG.so"
     cp --no-dereference usr/lib/libPVRScopeServices.so "${pkgdir}/usr/lib/libPVRScopeServices.so"
-    cp --no-dereference usr/lib/libvulkan.so "${pkgdir}/usr/lib/libvulkan.so"
     cp --no-dereference usr/lib/libsutu_display.so "${pkgdir}/usr/lib/libsutu_display.so"
     cp --no-dereference usr/lib/libpvr_dri_support.so "${pkgdir}/usr/lib/libpvr_dri_support.so"
     cp --no-dereference usr/lib/libglslcompiler.so "${pkgdir}/usr/lib/libglslcompiler.so"
     cp --no-dereference usr/lib/libufwriter.so "${pkgdir}/usr/lib/libufwriter.so"
-    cp --no-dereference usr/lib/libvulkan-1.so "${pkgdir}/usr/lib/libvulkan-1.so"
-    cp --no-dereference usr/lib/libvulkan.so.1 "${pkgdir}/usr/lib/libvulkan.so.1"
     cp --no-dereference usr/lib/libGLESv1_CM_PVR_MESA.so "${pkgdir}/usr/lib/libGLESv1_CM_PVR_MESA.so"
     cp --no-dereference usr/lib/libGLESv2_PVR_MESA.so "${pkgdir}/usr/lib/libGLESv2_PVR_MESA.so"
-    cp --no-dereference usr/lib/libvulkan.so.0 "${pkgdir}/usr/lib/libvulkan.so.0"
     cp --no-dereference usr/lib/libsrv_um.so "${pkgdir}/usr/lib/libsrv_um.so"
     cp --no-dereference usr/lib/libPVROCL.so.1 "${pkgdir}/usr/lib/libPVROCL.so.1"
     cp --no-dereference usr/lib/libGLESv1_CM.so.1 "${pkgdir}/usr/lib/libGLESv1_CM.so.1"
