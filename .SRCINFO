@@ -1,0 +1,15 @@
+pkgbase = buoh
+	pkgdesc = Online strips comics reader for GNOME
+	pkgver = 0.8.2
+	pkgrel = 15
+	url = http://buoh.steve-o.org/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = meson
+	depends = gtk3
+	depends = libsoup
+	source = git+https://gitlab.gnome.org/GNOME/buoh.git#commit=f4bd061683b5dfccd31748dff43b3710185628c8
+	sha256sums = SKIP
+
+pkgname = buoh
