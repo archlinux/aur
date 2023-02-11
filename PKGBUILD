@@ -42,7 +42,7 @@ build() {
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
-    go build -o build -ldflags="-linkmode=external -X='github.com/sensu/sensu-go/version.Version=${pkgver}' -X='github.com/sensu/sensu-go/version.BuildDate=$(date -I)' -X='github.com/sensu/sensu-go/version.BuildSHA=${_pkgtagsha}'" ./cmd/...
+    go build -buildvcs=false -o build -ldflags="-linkmode=external -X='github.com/sensu/sensu-go/version.Version=${pkgver}' -X='github.com/sensu/sensu-go/version.BuildDate=$(date -I)' -X='github.com/sensu/sensu-go/version.BuildSHA=${_pkgtagsha}'" ./cmd/...
 }
 
 package_sensu-go-agent() {
