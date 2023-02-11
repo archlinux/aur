@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=WebOS Dev Manager
+Comment=Easy tool to manage developer mode and sideload applications on your webOS TV
+Exec=/usr/bin/webos-dev-manager
+Icon=webos-dev-manager
+StartupWMClass=dev-manager-desktop
+Type=Application
+Categories=Development;
