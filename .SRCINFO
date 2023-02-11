@@ -1,7 +1,7 @@
 pkgbase = nvidia-utils-beta-nvlax
 	pkgdesc = NVIDIA drivers utilities (beta version) with NVENC and NvFBC patched with nvlax
-	pkgver = 525.85.05
-	pkgrel = 2
+	pkgver = 525.89.02
+	pkgrel = 1
 	url = https://github.com/illnyang/nvlax/
 	install = nvidia-utils-beta.install
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = nvidia-utils-beta-nvlax
 	depends = xorg-server
 	depends = libglvnd
 	depends = egl-wayland
-	optdepends = nvidia-settings-beta=525.85.05: configuration tool
+	optdepends = nvidia-settings-beta=525.89.02: configuration tool
 	optdepends = xorg-server-devel: nvidia-xconfig
-	optdepends = opencl-nvidia-beta=525.85.05: OpenCL support
-	provides = nvidia-utils-beta=525.85.05
-	provides = nvidia-utils=525.85.05
+	optdepends = opencl-nvidia-beta=525.89.02: OpenCL support
+	provides = nvidia-utils-beta=525.89.02
+	provides = nvidia-utils=525.89.02
 	provides = nvidia-utils-nvlax
 	provides = vulkan-driver
 	provides = opengl-driver
@@ -30,13 +30,13 @@ pkgbase = nvidia-utils-beta-nvlax
 	source = nvidia-drm-outputclass.conf
 	source = nvidia-utils-beta.sysusers
 	source = nvidia.rules
-	source = NVIDIA-Linux-x86_64-525.85.05.run::https://us.download.nvidia.com/XFree86/Linux-x86_64/525.85.05/NVIDIA-Linux-x86_64-525.85.05.run
+	source = NVIDIA-Linux-x86_64-525.89.02.run::https://us.download.nvidia.com/XFree86/Linux-x86_64/525.89.02/NVIDIA-Linux-x86_64-525.89.02.run
 	source = nvlax::git+https://github.com/illnyang/nvlax.git#commit=b3699ad40c4dfbb9d46c53325d63ae8bf4a94d7f
 	source = nvlax_cpm.patch
 	sha512sums = de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770
 	sha512sums = 4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499
 	sha512sums = a0ceb0a6c240cf97b21a2e46c5c212250d3ee24fecef16aca3dffb04b8350c445b9f4398274abccdb745dd0ba5132a17942c9508ce165d4f97f41ece02b0b989
-	sha512sums = db30b9186cdcf22b2dde267c08a10cadfc3d37190c57a26a71e282b0f661b187b5b28764418eacf8b2344ebfa8feb7480ae1de31b3bc3026feaf9482a3b51741
+	sha512sums = a991c5a843957aa81cf619c39d699100ff69fc723fb195c68fd50cd69ee9d5651a223d3b5d254c8c1b7c8cad09e24846ba4e64869a8b3777e85cd3e5ba515bb5
 	sha512sums = SKIP
 	sha512sums = 3188b66c6a158ac97a9200ce96d8ada5da2f39eb6eae19e710e7c0d7e3d1b9189beb92c1446fa4b0aa937d2b0c08a2fc9a3b4b3f821566a4e629478addf9d098
 
