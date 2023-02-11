@@ -1,21 +1,15 @@
 pkgbase = projectcenter
 	pkgdesc = GNUstep's integrated development environment (IDE).
-	pkgver = 0.6.2
+	pkgver = 0.7.0
 	pkgrel = 1
-	url = http://www.gnustep.org/experience/ProjectCenter.html
+	url = https://github.com/gnustep/apps-projectcenter
 	install = projectcenter.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = gcc-objc
 	makedepends = gnustep-make
-	depends = gnustep-base
-	depends = gnustep-gui
-	depends = gnustep-back
-	source = http://ftpmain.gnustep.org/pub/gnustep/dev-apps/ProjectCenter-0.6.2.tar.gz
-	source = projectcenter.install
-	sha256sums = c5104ae18511260f900c6de6cca0bcf39361da1866499102bf2a90e2f05d9473
-	sha256sums = f703f8de14eb277dc72cc837086fbd55f5d772049a44200686c8ae76348f6614
+	source = https://github.com/gnustep/apps-projectcenter/releases/download/projectcenter-0_7_0/ProjectCenter-0.7.0.tar.gz
+	sha256sums = 39f673c8c353f85c257191cc8d0c280ef49a2daa7f7150284cbe1608db792587
 
 pkgname = projectcenter
-
