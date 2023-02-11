@@ -77,6 +77,7 @@ build() {
                            --with-gnu-as
                            --with-gnu-ld
                            --disable-shared
+                           --disable-libiberty
                            --disable-nls
                            --disable-threads)
 
@@ -96,7 +97,7 @@ build() {
     CXXFLAGS="${_cxxflags[*]}" \
     LDFLAGS="${_ldflags[*]}" \
     LIBS="${_libs[*]}" \
-    make "${_build_opts[@]}" all
+    make "${_build_opts[@]}"
 
     cd ..
   done
@@ -109,6 +110,7 @@ package() {
   for _target in "${target}"; do
     cd "build-${_target}"
     make DESTDIR="${pkgdir}" "${_make_opts[@]}" install
+    rm -rf "${pkgdir}/usr/lib/libiberty.a"
     rm -rf "${pkgdir}/usr/${target}/share/info/dir"
     cd ..
   done
