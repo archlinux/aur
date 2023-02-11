@@ -1,14 +1,14 @@
-# Maintainer: ambition-echo <ambition_echo@outlook.com>
+# Maintainer: Pylogmon <ambition_echo@outlook.com>
 
 pkgname=earth-wallpaper-bin
 appid=cn.huguoyang.earthwallpaper
 name=earth-wallpaper
 resname=earth_wallpaper
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=0
 pkgdesc="Simple and easy to use multifunctional wallpaper software 简单好用的多功能壁纸软件"
 arch=('x86_64')
-url="https://github.com/ambition-echo/earth_wallpaper"
+url="https://github.com/Pylogmon/earth_wallpaper"
 license=('GPL3')
 depends=('dbus-python' 'python' 'python-pillow' 'python-requests' 'pyside6' 'python-pysocks')
 
