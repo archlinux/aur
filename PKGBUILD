@@ -1,9 +1,9 @@
-# Maintainer: Andy Alt <andy400-dev at yahoo dot com>
+# Maintainer: Andy Alt <arch_stanton5995 at proton dot me>
 # Contributor: Evgeny Grablyk <evgeny.grablyk@gmail.com>
 
 pkgname=vfu
-pkgver=4.23
-pkgrel=2
+pkgver=5.02
+pkgrel=1
 pkgdesc="Versatile text-based file-manager"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'ppc64le')
 url="http://cade.noxrun.com/projects/vfu"
@@ -13,15 +13,12 @@ optdepends=('perl: for the rx_* archiving utilities'
             'rpmextract: for rx_rpm'
             'unrar: for rx_rar'
             'unzip: for rx_zip')
-backup=('etc/vfu.conf' 'etc/vfu/vfu.conf')
 source=("http://cade.noxrun.com/projects/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('cb118813fd9b629731e96d70098319193b3415aa60e796596bacc6c482960779')
+sha256sums=('cd10f00a86ba71150203582d50783e30ab31b76adfe4b7fb88d1ae88325f0d9e')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  cp ../../pcre2_parallel.patch .
-  patch -p1 < pcre2_parallel.patch
-  make CCDEF="$CFLAGS -D_FILE_OFFSET_BITS=64"
+  ./build.sh
   ./build.docs
 }
 
