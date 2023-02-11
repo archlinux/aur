@@ -3,7 +3,7 @@
 
 pkgname=perl-struct-dumb
 _dist='Struct-Dumb'
-pkgver=0.13
+pkgver=0.14
 pkgrel=1
 pkgdesc="Make simple lightweight record-like structures"
 arch=('any')
@@ -11,11 +11,11 @@ url="http://search.cpan.org/dist/$_dist"
 license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0')
 makedepends=('perl-data-dump' 'perl-module-build')
-checkdepends=('perl-test-fatal' 'perl-test-pod')
+checkdepends=('perl-test2-suite')
 optdepends=('perl-data-dump: print in serialised format')
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/P/PE/PEVANS/$_dist-$pkgver.tar.gz")
-sha256sums=('2e40af8daac08f743e7d7c29a6d61484d3081a5928aeac23a70fa7e0b79dcde4')
+sha256sums=('13c148536b10e28c6e0b4e132f29e4ca6e69b5749059c44157a27e84a5459436')
 
 build() {
 	cd $_dist-$pkgver
