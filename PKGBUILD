@@ -14,7 +14,7 @@ source=(
 	"$pkgname-$pkgver-src.zip::https://github.com/zerodaycode/Zork/archive/refs/tags/v${pkgver}.zip"
 )
 sha256sums=(
-	'ec9f06e9d5fdff29c9d35d443c1b92f4ac71e81976d273b7f3a510a78649f280'
+	'eebf301720a943c0240afefad2167f9db4c97076b0464139d6e8085660e524b3'
 )
 
 prepare() {
