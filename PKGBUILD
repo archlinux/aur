@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RhpcBLASctl
-_pkgver=0.21-247.1
+_pkgver=0.23-42
 pkgname=r-${_pkgname,,}
-pkgver=0.21.247.1
-pkgrel=4
+pkgver=0.23.42
+pkgrel=1
 pkgdesc="Control the Number of Threads on 'BLAS'"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5be55fd5ddd8173167a48b9f072835a34062ad0268308f2b3fbd1781a5c99769')
+sha256sums=('5c889d5b69e264060b9f1f0383c447f594855b8afc15b7d76d39e4d62b946615')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
