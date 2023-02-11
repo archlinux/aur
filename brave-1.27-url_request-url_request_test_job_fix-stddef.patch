@@ -1,0 +1,12 @@
+diff --git a/brave/chromium_src/net/url_request/url_request_test_job.cc b/brave/chromium_src/net/url_request/url_request_test_job.cc
+index bf6cb35f30..b1f9e762cf 100644
+--- a/brave/chromium_src/net/url_request/url_request_test_job.cc
++++ b/brave/chromium_src/net/url_request/url_request_test_job.cc
+@@ -7,6 +7,7 @@
+ // declared and defined earlier than EraseIf that's used in Erase. Putting a
+ // forward declaration here helps get around that. XCode 11.4.1 doesn't have
+ // this problem.
++#include <cstddef>
+ #include <list>
+ 
+ namespace base {

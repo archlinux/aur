@@ -28,78 +28,53 @@
 : "${COMPONENT:=4}"
 
 pkgname=brave
-pkgver=1.47.186
+pkgver=1.48.158
 pkgrel=1
-pkgdesc='A web browser that stops ads and trackers by default'
+pkgdesc='Web browser that blocks ads and trackers by default'
 arch=(x86_64)
 url='https://www.brave.com/download'
 license=(BSD MPL custom:chromium)
-depends=(alsa-lib
-         dbus
-         desktop-file-utils
-         gtk3
-         hicolor-icon-theme
-         libcups
-         libgcrypt
-         libpulse
-         libva
-         libxss
-         nss
-         pciutils
-         systemd
-         ttf-liberation
-         xdg-utils)
-makedepends=(cargo-audit
-             cbindgen
-             clang
-             cxxbridge
-             git
-             gn
-             gperf
-             java-runtime-headless
-             jq
-             lld
-             llvm
-             ninja
-             npm
-             pipewire
-             qt5-base
-             python-protobuf)
+depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
+         'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'libva'
+         'libffi' 'desktop-file-utils' 'hicolor-icon-theme')
+makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'nodejs' 'pipewire'
+             'qt5-base' 'java-runtime-headless' 'git' 'cargo-audit' 'cbindgen'
+             'cxxbridge' 'jq' 'llvm' 'npm')
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
-            'org.freedesktop.secrets: password storage backend'
-            'qt5-base: enable Qt5 with --enable-features=AllowQt')
+            'qt5-base: enable Qt5 with --enable-features=AllowQt'
+            'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
+            'kwallet: support for storing passwords in KWallet on Plasma')
 options=('!lto') # Chromium adds its own flags for ThinLTO
-_chromium_ver=109.0.5414.119
-_gcc_patchset=2
+_chromium_ver=110.0.5481.77
+_gcc_patchset=4
 _patchset_name="chromium-${_chromium_ver%%.*}-patchset-$_gcc_patchset"
 _launcher_ver=8
-_brave_base_ver="1.28"
-_brave_patchset="1"
-_brave_patchset_name="brave-$_brave_base_ver-patches-$_brave_patchset"
 source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v$pkgver"
         "brave::git+https://github.com/brave/brave-core.git#tag=v$pkgver"
         "chromium::git+https://chromium.googlesource.com/chromium/src.git#tag=$_chromium_ver"
         'depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git'
         "https://github.com/foutrelis/chromium-launcher/archive/refs/tags/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz"
         "https://github.com/stha09/chromium-patches/releases/download/$_patchset_name/$_patchset_name.tar.xz"
-        "https://gitlab.com/hadogenes/brave-patches/-/archive/$_brave_patchset_name/brave-patches-$_brave_patchset_name.zip"
         chromium-launcher-electron-app.patch
         chromium-launcher-vendor.patch
         system-rust-utils.patch
+        brave-1.11-bat-native-ledger-header_fix-ctime.patch
+        brave-1.17-ipfs-ipfs_utils-header_fix-algorithm.patch
+        brave-1.19-BUILD.gn.patch
+        brave-1.27-url_request-url_request_test_job_fix-stddef.patch
         brave-1.43-bat-native-ads-hash_vectorizer_fix-cstring.patch
         brave-1.43-bat-native-ads-vector_data_fix-cmath.patch
         brave-1.43-bitcoin-core_remove-serialize.h.patch
-        brave-1.43-brave_today-base_utf_string_conversions.patch
         brave-1.43-debounce-debounce_navigation_throttle_fix.patch
-        brave-1.43-ntp_background_images-std-size_t.patch)
-_arch_revision=af67369c3290d89ff1939728249b3cfd1e91c9ed
-_patches=(v8-enhance-Date-parser-to-take-Unicode-SPACE.patch
-          fix-the-way-to-handle-codecs-in-the-system-icu.patch
+        brave-1.43-ntp_background_images-std-size_t.patch
+        brave-1.48-partitioned_host_state_map-cstring.patch)
+_arch_revision=4e362eccaf5b0391053136a28ec0afb6a04d9b09
+_patches=(fix-the-way-to-handle-codecs-in-the-system-icu.patch
+          v8-move-the-Stack-object-from-ThreadLocalTop.patch
           REVERT-roll-src-third_party-ffmpeg-m102.patch
           REVERT-roll-src-third_party-ffmpeg-m106.patch
           disable-GlobalMediaControlsCastStartStop.patch
-          angle-wayland-include-protocol.patch
           use-oauth2-client-switches-as-default.patch)
 for _patch in "${_patches[@]}"; do
   source+=("https://raw.githubusercontent.com/archlinux/svntogit-packages/$_arch_revision/trunk/$_patch")
@@ -109,23 +84,25 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            '75b7c781f1df70b056ce1bc651318b8e0377d7b177e51b2ac3aed9b2b9c01afb'
-            'c63c8eeac709293991418a09ac7d8c0adde10c151495876794e025bd2b0fb8fe'
+            '8c7f93037cc236024cc8be815b2c2bd84f6dc9e32685299e31d4c6c42efde8b7'
             '9235485adc4acbfaf303605f4428a6995a7b0b3b5a95181b185afbcb9f1f6ae5'
             '404bf09df39310a1e374c5e7eb9c7311239798adf4e8cd85b7ff04fc79647f88'
             'a8b119138c7157a71f2d1240bea5a2af9593d6b774586f5cc337b344cd9a18b8'
+            '1f7c9e7f15876bf3a6611971dc10ad0311fdcc92bc4d369ff077c984b395b802'
+            'af7ca7f5d395b5cba8f47e3e20144a49d327b9d930ca3a77e9e3ad198ea509bf'
+            '12a3d37ffca4c0fa25f89f02efdf79d24f6412ee29ec35e8a00f9086dba4e822'
+            '1678dd14d73be905fcfbb674fd74ae44ea7314c9ef2755d9520a4297ea5e74d4'
             'a4ed0ad8f4931bae08c42a20266b8e2f934f21811fe0892960798f14a1fcfd0b'
             '5c1e562b25d4fe614f3a77e00accc53001541b7b3f308fb7512cce1138878d7e'
             '0b5764355b9201d201b1e08f700bbb5a7fa238bef127b95d36cbf8ce2afa73a6'
-            'ca7f3edbf17aeca84ec595b0cedcca47fb098fa8600651dcea6b396af3af8d93'
             '30a6a9ca2a6dd965cb2d9f02639079130948bf45d483f0c629f2cf8394a1c22f'
             'ea0cd714ccaa839baf7c71e9077264016aa19415600f16b77d5398fd49f5a70b'
-            'b83406a881d66627757d9cbc05e345cbb2bd395a48b6d4c970e5e1cb3f6ed454'
+            '3864fcb12aaec849fd0e5423c9c5dfb1fdd7805e298a52125776bb24abe71e3c'
             'a5d5c532b0b059895bc13aaaa600d21770eab2afa726421b78cb597a78a3c7e3'
+            '49c3e599366909ddac6a50fa6f9420e01a7c0ffd029a20567a41d741a15ec9f7'
             '30df59a9e2d95dcb720357ec4a83d9be51e59cc5551365da4c0073e68ccdec44'
             '4c12d31d020799d31355faa7d1fe2a5a807f7458e7f0c374adf55edb37032152'
             '7f3b1b22d6a271431c1f9fc92b6eb49c6d80b8b3f868bdee07a6a1a16630a302'
-            'cd0d9d2a1d6a522d47c3c0891dabe4ad72eabbebc0fe5642b9e22efa3d5ee572'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -141,7 +118,7 @@ declare -gA _system_libs=(
     [icu]=icu
     [jsoncpp]=jsoncpp
     [libaom]=aom
-    [libavif]=libavif
+    #[libavif]=libavif # https://github.com/AOMediaCodec/libavif/commit/4d2776a3
     [libdrm]=
     [libjpeg]=libjpeg
     [libpng]=libpng
@@ -249,8 +226,12 @@ prepare() {
   patch -Np1 -i "${srcdir}/use-oauth2-client-switches-as-default.patch"
 
   # Upstream fixes
-  patch -Np1 -d v8 <"${srcdir}/v8-enhance-Date-parser-to-take-Unicode-SPACE.patch"
   patch -Np1 -i "${srcdir}/fix-the-way-to-handle-codecs-in-the-system-icu.patch"
+
+  # https://crbug.com/v8/13630
+  # https://crrev.com/c/4200636
+  # https://github.com/nodejs/node/pull/46125#issuecomment-1407721276
+  patch -Np1 -d v8 <"${srcdir}/v8-move-the-Stack-object-from-ThreadLocalTop.patch"
 
   # Revert ffmpeg roll requiring new channel layout API support
   # https://crbug.com/1325301
@@ -262,11 +243,11 @@ prepare() {
   # https://crbug.com/1314342
   patch -Np1 -i "${srcdir}/disable-GlobalMediaControlsCastStartStop.patch"
 
-  # https://crbug.com/angleproject/7582
-  patch -Np0 -i "${srcdir}/angle-wayland-include-protocol.patch"
-
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i "${srcdir}/patches/chromium-103-VirtualCursor-std-layout.patch"
+  patch -Np1 -i "${srcdir}/patches/chromium-110-NativeThemeBase-fabs.patch"
+  patch -Np1 -i "${srcdir}/patches/chromium-110-CredentialUIEntry-const.patch"
+  patch -Np1 -i "${srcdir}/patches/chromium-110-DarkModeLABColorSpace-pow.patch"
 
   # Hacky patching
   sed -e 's/\(enable_distro_version_check =\) true/\1 false/g' -i chrome/installer/linux/BUILD.gn
@@ -276,17 +257,7 @@ prepare() {
     sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
       tools/generate_shim_headers/generate_shim_headers.py
 
-    echo "Add patches for custom build"
-    rm "$srcdir/brave-patches-$_brave_patchset_name"/brave-*logging*.patch
-    rm "$srcdir/brave-patches-$_brave_patchset_name"/brave-*ads-dismissed*.patch
-    rm "$srcdir/brave-patches-$_brave_patchset_name"/brave-*ads-hash*.patch
-    rm "$srcdir/brave-patches-$_brave_patchset_name"/brave-*ads-vector*.patch
-    rm "$srcdir/brave-patches-$_brave_patchset_name"/brave-*ads-ad*.patch
-    rm "$srcdir/brave-patches-$_brave_patchset_name"/brave-*ads-eligible*.patch
-    rm "$srcdir/brave-patches-$_brave_patchset_name"/brave-*bitcoin*.patch
-    for _patch in "$srcdir/brave-patches-$_brave_patchset_name"/*.patch; do
-      patch -Np1 -i "$_patch"
-    done
+    echo "Add patches for Brave custom build"
     for _patch in "$srcdir/brave"*.patch; do
       patch -Np1 -i "$_patch"
     done
@@ -331,6 +302,7 @@ build() {
     echo "sccache = /usr/bin/sccache" >> .npmrc
   fi
 
+  # TODO: Upstream re-distribute permissions, see https://community.brave.com/t/does-brave-allow-the-distribution-of-self-compiled-or-distro-compiled-binaries
   echo "brave_services_key = qjVKcxtUybh8WpKNoQ7EbgbkJTMu7omjDHKk=VrPApb8PwJyPE9eqchxedTsMEWg" > .npmrc
   echo "brave_variations_server_url = https://variations.brave.com/seed" >> .npmrc
   echo "brave_stats_updater_url = https://laptop-updates.brave.com" >> .npmrc
@@ -370,8 +342,7 @@ build() {
       'link_pulseaudio=true'
       'use_gnome_keyring=false'
       'use_sysroot=false'
-      'use_system_libwayland=true'
-      'use_system_wayland_scanner=true'
+      'use_system_libffi=true'
       'use_custom_libcxx=false'
       'enable_hangout_services_extension=true'
       'enable_widevine=true'

@@ -1,0 +1,10 @@
+--- a/brave/components/ipfs/ipfs_utils.cc
++++ b/brave/components/ipfs/ipfs_utils.cc
+@@ -6,6 +6,7 @@
+ #include "brave/components/ipfs/ipfs_utils.h"
+ 
+ #include <vector>
++#include <algorithm>
+ 
+ #include "url/gurl.h"
+ #include "extensions/common/url_pattern.h"

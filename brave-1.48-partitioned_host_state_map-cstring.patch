@@ -1,0 +1,12 @@
+diff --git a/brave/net/http/partitioned_host_state_map.h b/brave/net/http/partitioned_host_state_map.h
+index 891b141dd9..0a39f5f042 100644
+--- a/brave/net/http/partitioned_host_state_map.h
++++ b/brave/net/http/partitioned_host_state_map.h
+@@ -8,6 +8,7 @@
+ 
+ #include <array>
+ #include <string>
++#include <cstring>
+ 
+ #include "base/auto_reset.h"
+ #include "base/containers/span.h"

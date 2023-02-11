@@ -1,0 +1,52 @@
+--- a/brave/BUILD.gn
++++ b/brave/BUILD.gn
+@@ -2,6 +2,7 @@ import("//brave/build/cargo.gni")
+ import("//brave/build/config.gni")
+ import("//brave/components/brave_rewards/browser/buildflags/buildflags.gni")
+ import("//build/config/locales.gni")
++import("//build/config/sysroot.gni")
+ import("//build/config/zip.gni")
+ import("//build/util/process_version.gni")
+ import("//extensions/buildflags/buildflags.gni")
+@@ -216,10 +217,12 @@ group("create_dist") {
+     }
+   }
+   if (is_linux) {
++    if (use_sysroot) {
++        deps += [ "//chrome/installer/linux:$linux_channel" ]
++    }
+     deps += [
+       ":theme_files",
+       "//brave/app/linux:dist_resources",
+-      "//chrome/installer/linux:$linux_channel",
+     ]
+   }
+ }
+@@ -304,9 +307,12 @@ if (!is_android && !is_ios) {
+       ":packed_resources",
+       "build/$target_os:brave",
+       "//chrome:packed_resources",
+-      "//third_party/icu:icudata",
+     ]
+ 
++    if (icu_use_data_file) {
++      deps += [ "//third_party/icu:icudata" ]
++    }
++
+     if (!is_mac) {
+       sources += [
+         "$root_out_dir/$brave_exe",
+@@ -315,9 +321,12 @@ if (!is_android && !is_ios) {
+         "$root_out_dir/brave_resources.pak",
+         "$root_out_dir/chrome_100_percent.pak",
+         "$root_out_dir/chrome_200_percent.pak",
+-        "$root_out_dir/icudtl.dat",
+         "$root_out_dir/resources.pak",
+       ]
+ 
++      if (icu_use_data_file) {
++        sources += [ "$root_out_dir/icudtl.dat" ]
++      }
++
+       if (v8_use_external_startup_data) {
+         deps += [ "//v8" ]
