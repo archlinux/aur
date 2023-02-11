@@ -15,7 +15,7 @@
 
 #
 _pkg_name="codelite"
-_pkg_ver="17.0.0"
+_pkg_ver="17.1.0"
 #_commit="636e07593842da6f6f52e805c7429cb9b05cfd45"
 
 # ctags submodule
@@ -32,6 +32,11 @@ _wxdap_pkg_name_ident="${_wxdap_pkg_name}-${_wxdap_pkg_ident:0:7}"
 _wxcfg_pkg_name="eranif-wxcfg"
 _wxcfg_pkg_ident="fe65daf2a49e2a1f218ea3106a26d5ae7c4235fb"
 _wxcfg_pkg_name_ident="${_wxcfg_pkg_name}-${_wxcfg_pkg_ident:0:7}"
+
+# yaml-cpp https://github.com/jbeder/yaml-cpp
+#_yaml_pkg_name="yaml-cpp"
+#_yaml_pkg_ident="1b50109f7bea60bd382d8ea7befce3d2bd67da5f"
+#_yaml_pkg_name_ident="${_yaml_pkg_name}-${_yaml_pkg_ident:0:7}"
 
 
 # pkg
@@ -93,13 +98,15 @@ source=(
     "codelite-ctags.tar.gz::https://github.com/eranif/ctags/tarball/${_ctags_pkg_ident}"
     "codelite-wxdap.tar.gz::https://github.com/eranif/wxdap/tarball/${_wxdap_pkg_ident}"
     "codelite-wxcfg.tar.gz::https://github.com/eranif/wx-config-msys2/tarball/${_wxcfg_pkg_ident}"
+    #"jbeder-yaml-cpp.tar.gz::https://github.com/jbeder/yaml-cpp/tarball/${_yaml_pkg_ident}"
     "http://repos.codelite.org/wxCrafterLibs/wxgui.zip"
   )
 
-sha256sums=('ce07be2399c5b3907e5f713ce7ba2182aa8d90c44f90214f7ec841086f20fd0c'
+sha256sums=('5376ad423e3b31b15af600730763e8175eb2a21973434d48789c2ec02ff53068'
             '77cd02b001f8d677ce0842eb3d93675a5762c7cedc96e5a915b247be1eaaa075'
             '3aa515f4dd9bffa55f4293651cb687b682208dc361e88b89e33eb98ef0d616d9'
             '70aca36b95e2245740c17fc9a164fd6edabfd9c631184ea66cc5ee03ff54c028'
+            #'57f06c89f41cc2cd250b8b1db582fe27a0da67eb7a480cd8eb3d35cde64b58cd'
             '498c39ad3cc46eab8232d5fa37627c27a27f843cbe9521f05f29b19def436e12')
 
 noextract=('wxgui.zip')
@@ -137,6 +144,10 @@ prepare()
   # submodule eranif-wx-config-msys2 to wx-config-msys2
   rmdir wx-config-msys2
   ln -s ../${_wxcfg_pkg_name_ident} wx-config-msys2
+
+  # submodule jbeder/yaml-cpp
+  #rmdir yaml-cpp
+  #ln -s ../${_yaml_pkg_name_ident} yaml-cpp
 
   # apply patches
 
