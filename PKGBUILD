@@ -8,7 +8,7 @@ pkgdesc="Versatile text-based file-manager"
 arch=('any')
 url="http://cade.noxrun.com/projects/vfu"
 license=('GPL')
-depends=('ncurses' 'pcre2')
+depends=('ncurses' 'pcre2' 'yascreen>=1.95')
 optdepends=('perl: for the rx_* archiving utilities'
             'rpmextract: for rx_rpm'
             'unrar: for rx_rar'
@@ -18,7 +18,7 @@ sha256sums=('cd10f00a86ba71150203582d50783e30ab31b76adfe4b7fb88d1ae88325f0d9e')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./build.sh
+  make V=1
   ./build.docs
 }
 
@@ -28,6 +28,6 @@ package() {
   gzip vfu.1
   install -Dm644 vfu.1.gz -t "$pkgdir/usr/share/man/man1"
   install -Dm644 vfu.conf -t "$pkgdir/etc"
-  install rx/rx_* "$pkgdir/usr/bin/"
+  install -Dm755 rx/rx_* -t "$pkgdir/usr/lib/vfu/"
 }
 
