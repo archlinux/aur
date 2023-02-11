@@ -1,11 +1,13 @@
 pkgbase = libgnunetchat-git
 	pkgdesc = GNUnet chat library
-	pkgver = r79.4df66ae
+	pkgver = r120.c6ffad6
 	pkgrel = 1
 	url = http://gnunet.org
 	arch = i686
 	arch = x86_64
 	license = AGPL
+	makedepends = meson
+	makedepends = check
 	depends = gnunet-git
 	provides = libgnunetchat
 	conflicts = libgnunetchat

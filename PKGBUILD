@@ -1,10 +1,11 @@
 # Maintainer: grufo <madmurphy333 AT gmail DOT com>
+# Contributor: TheJackiMonster <thejackimonster AT gmail DOT com>
 
 _framework='gnunet'
 _module='libgnunetchat'
 
 pkgname="${_module}-git"
-pkgver='r79.4df66ae'
+pkgver='r120.c6ffad6'
 pkgrel=1
 pkgdesc='GNUnet chat library'
 arch=('i686' 'x86_64')
@@ -13,6 +14,7 @@ license=('AGPL')
 conflicts=("${_module}" "${_module}-bin")
 provides=("${_module}")
 depends=("${_framework}-git")
+makedepends=(meson check)
 options=('!makeflags' '!buildflags')
 source=("git+https://git.${_framework}.org/${_module}.git")
 sha256sums=('SKIP')
@@ -27,15 +29,16 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_module}"
-	make
+	meson build --prefix="$pkgdir"
+	meson compile -C build
+}
+
+check() {
+	cd "${srcdir}/${_module}"
+	meson test -C build
 }
 
 package() {
 	cd "${srcdir}/${_module}"
-	install -dm755 "${pkgdir}/usr"
-	install -dm755 "${pkgdir}/lib"
-	install -dm755 "${pkgdir}/include/gnunet"
-	make INSTALL_DIR="${pkgdir}/" install
-	mv "${pkgdir}/include" "${pkgdir}/usr"
-	mv "${pkgdir}/lib" "${pkgdir}/usr"
+	meson install -C build
 }
