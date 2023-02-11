@@ -25,12 +25,10 @@ pkgbase = pleroma
 	source = pleroma.sysusers
 	source = pleroma.tmpfiles
 	source = pleroma.service
-	source = COPYING
 	source = git+https://git.pleroma.social/pleroma/pleroma.git#tag=v2.5.0
 	sha256sums = 4df8a0099dada9bf652fb07677a9c6a66cad1f26498f08a55d8acb0186b78979
 	sha256sums = b6e6ad0f2c3caea38a30dddb303728271d6b56c13a2f4d82959b871844811f4c
 	sha256sums = 268952ef036ef65ab146a38ff20bbba35759c0f33510fe6ca15d6765285938ed
-	sha256sums = e299229268576c559d0155baccccf682c97b51bebab40a0b7ff3ab562ec62104
 	sha256sums = SKIP
 
 pkgname = pleroma
