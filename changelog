@@ -1,16 +1,9 @@
-## Version 0.26.0
+## Version 0.26.1
 
-### Important changes in this release
+### What's Changed
 
-#### This release includes changing our metrics collection policy to opt-out instead of opt-in. This means app data (non-user data), or telemetry, is gathered by default when running the application. Note that you can still disable the collection of telemetry in the settings page. For more information, see the following:
-
-    https://github.com/ipfs-shipyard/ignite-metrics/blob/main/docs/telemetry/COLLECTION_POLICY.md
-    ipfs-shipyard/ignite-metrics#76
-    ipfs/ipfs-gui#117
-
-#### What's Changed
-
-    feat: kubo 0.18 with /quic-v1 and /webtransport by @galargh in #2363
-    feat: Updating ipfs-webui CID to v2.22.0 by @djmcquillan in #2387
+- chore(docs): v0.26.0 by @SgtPooki in #2389
+- Update Kubo: v0.18.1 by @galargh in #2396
+- Update ci.yml by @galargh in #2413
 
 
