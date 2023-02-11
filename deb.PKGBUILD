@@ -49,5 +49,5 @@ cd $pkgdir
 dpkg-deb --build -z9 ${_debpkgdir}
 mv *.deb ../../
 }
-sha256sums=('9f7fa70836b58be7719c957e30cf658dba4bfdd5f7b7a8119ab7e0cb494e9664'
+sha256sums=('e9307498412921b04b53a9d5bba312d425a2239039bb78266dc4ba03c32ebff2'
             'SKIP')
