@@ -5,7 +5,7 @@
 # Contributor: nullableVoidPtr <nullableVoidPtr _ gmail _ com>
 
 pkgname=ghidra-git
-pkgver=10.2.2.r620.e5a8f2634
+pkgver=10.2.3.r655.601ab94c1
 pkgrel=1
 pkgdesc='Software reverse engineering framework (git)'
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ conflicts=(
 )
 depends=(
   'bash'
-  'java-environment=17'
+  'java-environment>=17'
   'polkit'
 )
 makedepends=(
@@ -57,8 +57,8 @@ prepare() {
 
   # Check Java version (thanks @ignapk)
   JDK_VERSION=$(java -version 2>&1)
-  if [[ ! $JDK_VERSION =~ 17\.0 ]]; then
-    echo "FAILURE: You seem to have jdk17 installed correctly but your system defaults to another java version. To enable jdk17 please type: sudo archlinux-java set java-17-openjdk"
+  if [[ ! $JDK_VERSION =~ 1[7|9]\.0 ]]; then
+    echo "FAILURE: You seem to have jdk17 or jdk19 installed correctly but your system defaults to another java version. To enable it please type: sudo archlinux-java set java-17-openjdk"
     exit 1
   fi
 
