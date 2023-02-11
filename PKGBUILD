@@ -4,7 +4,7 @@
 
 pkgname=mupdf-git
 _pkgname=mupdf
-pkgver=20221220.a76b4ed0d
+pkgver=20230207.1ca88ef11
 pkgrel=1
 pkgdesc='Lightweight PDF, XPS, and E-book viewer'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -16,11 +16,13 @@ source=('git://git.ghostscript.com/mupdf.git'
         'git://git.ghostscript.com/thirdparty-extract.git'
         'git://git.ghostscript.com/thirdparty-freeglut.git'
         'git://git.ghostscript.com/thirdparty-lcms2.git#branch=lcms2mt'
+        'output-jpeg.patch'
         'desktop')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'bf9b2349d4adda7118bc32005ade1d52c545dba980765443f2aeba198c2f85df'
             '3240d4ebda002cb2c4f42cd42793c6160f1701d349d0acb797819dfd10d4fedd')
 
 conflicts=("${_pkgname}"{,-gl,-tools})
@@ -33,6 +35,7 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
+	patch -p1 -i ../output-jpeg.patch source/fitz/output-jpeg.c
 	for lib in extract freeglut lcms2; do
 		rm -fr thirdparty/$lib
 		cp -a ../thirdparty-$lib thirdparty/$lib
