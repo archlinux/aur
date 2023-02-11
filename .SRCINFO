@@ -1,0 +1,21 @@
+pkgbase = dspdfviewer-git
+	pkgdesc = Viewer for latex-beamer presentations that are built with the «show notes on second screen»-option
+	pkgver = 20221021_65fffb40
+	pkgrel = 1
+	url = https://github.com/dannyedel/dspdfviewer
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = boost
+	makedepends = qt5-tools
+	depends = boost-libs
+	depends = qt5-base
+	depends = poppler-qt5
+	provides = dspdfviewer
+	conflicts = dspdfviewer
+	source = https://github.com/dannyedel/dspdfviewer/archive/65fffb4053642ae6923dd1cb1d9092b23f663a29.tar.gz
+	sha256sums = 311112972bb20836be7717bc25949c2d5fe383b8bb87018c3d87380156c8d293
+	b2sums = 11461d8aebc098ca77c75825212c631f3e3cec0b462594546d850dd4c2cd5782d3a73126c34e76cbc74645c939ed96d614a0c92bf97d57d55b3e0cd494283971
+
+pkgname = dspdfviewer-git
