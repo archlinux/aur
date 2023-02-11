@@ -11,10 +11,14 @@ case $file in
 esac
 
 binds=()
-for dir in fontconfig gtk-2.0 gtk-3.0 mimeapps.list Kingsoft; do
+for dir in fontconfig gtk-2.0 gtk-3.0 gtk-4.0 kingsoft Kingsoft; do
+    if [ ! -d ~/.config/"$dir" ]; then mkdir ~/.config/"$dir"; fi
     binds+=(--bind ~/.config/"$dir" ~/.config/"$dir")
 done
+binds+=(--bind ~/.config/mimeapps.list ~/.config/mimeapps.list)
 binds+=(--bind ~/.local/share/Kingsoft ~/.local/share/Kingsoft)
+DOC_DIR=$(xdg-user-dir DOCUMENTS)
+binds+=(--bind $DOC_DIR $DOC_DIR)
 
 # bind mount 需要操作的文件
 if [[ -f "$file" ]]; then
@@ -28,5 +32,4 @@ exec bwrap --unshare-all --share-net --die-with-parent \
     --ro-bind "$XDG_RUNTIME_DIR" "$XDG_RUNTIME_DIR" \
     --ro-bind /tmp/.X11-unix /tmp/.X11-unix \
     "${binds[@]}" \
-    --bind ~/Documents ~/Documents \
     "$exe" "$@"
