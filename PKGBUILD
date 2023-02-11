@@ -14,7 +14,7 @@ pkgdesc="A Matrix client based on Element with a more traditional instant messag
 arch=(x86_64)
 url="https://schildi.chat"
 license=(Apache)
-makedepends=(npm git yarn python rust tcl nvm make)
+makedepends=(npm git yarn python rust tcl nvm make libxcrypt-compat)
 depends=(${_electron})
 source=(git+https://github.com/SchildiChat/schildichat-desktop.git#tag=v${pkgver/.sc./-sc.}
         git+https://github.com/SchildiChat/matrix-js-sdk.git
