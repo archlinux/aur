@@ -27,7 +27,6 @@ pkgver()
 
 build() {
     arch-meson $_srcname build
-    meson compile -C build
 }
 
 package() {
