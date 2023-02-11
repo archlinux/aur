@@ -2,8 +2,8 @@
 # Contributor: Andrea Feletto <andrea@andreafeletto.com>
 
 pkgname=river
-pkgver=0.2.3
-pkgrel=2
+pkgver=0.2.4
+pkgrel=1
 pkgdesc='A dynamic tiling wayland compositor'
 arch=('x86_64')
 url='https://github.com/riverwm/river'
@@ -21,7 +21,7 @@ makedepends=('scdoc'
 optdepends=('polkit: access seat through systemd-logind')
 source=("https://github.com/riverwm/river/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"{,.sig})
 validpgpkeys=('5FBDF84DD2278DB2B8AD8A5286DED400DDFD7A11') # Isaac Freund <mail@isaacfreund.com>
-sha256sums=('7acdd2b929e16a20006b4baf1f29e7a8dc7f70cf5747e1503a610a90d1637132'
+sha256sums=('26c1c41a65ce3804069afad6988410515cf478d2b76303ebc699766d3d4dc69f'
             'SKIP')
 
 build() {
@@ -30,7 +30,7 @@ build() {
   DESTDIR="build" zig build \
     --prefix /usr \
     --search-prefix /usr \
-    -Dtarget=native-linux.5.15-gnu \
+    -Dtarget=native-linux.5.15-gnu.2.37 \
     -Dcpu=baseline \
     -Dpie \
     -Drelease-safe \
@@ -43,7 +43,7 @@ check() {
   zig build test \
     --prefix /usr \
     --search-prefix /usr \
-    -Dtarget=native-linux.5.15-gnu \
+    -Dtarget=native-linux.5.15-gnu.2.37 \
     -Dcpu=baseline \
     -Dpie \
     -Drelease-safe \
