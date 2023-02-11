@@ -22,7 +22,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DBuildTests=OFF \
     -DCMAKE_CXX_FLAGS_INIT="-Wno-error=deprecated-declarations" \
-    -DDSPDFVIEWER_VERSION="${pkgver}"
+    -DDSPDFVIEWER_VERSION="${pkgver}" .
   make
 }
 
