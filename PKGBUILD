@@ -2,7 +2,7 @@
 
 pkgname=listen1-electron
 _pkgname=listen1
-pkgver=2.27.0
+pkgver=null
 pkgrel=1
 pkgdesc="  One for all free music in China with electron13"
 arch=("x86_64")
@@ -13,7 +13,7 @@ provides=('listen1')
 conflicts=('listen1')
 source=(
   https://github.com/$_pkgname/$_pkgname\_desktop/releases/download/v$pkgver/$_pkgname\_$pkgver\_linux_amd64.deb)
-sha256sums=('acbf7abc05d34f11e826a4e0b69e27b57d7462faa188a9b9cfabde57c29fa563')
+sha256sums=('31fd195ef7ad2b1a48c9864b49467170554284774e3ce6b1f6e2cfa15cb43356')
 
 build() {
   mkdir -p "${srcdir}/dpkgdir"
