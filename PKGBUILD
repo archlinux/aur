@@ -3,14 +3,14 @@
 
 pkgname=pkg-listn
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Manage linux packages with a textfile'
 arch=('any')
 url='https://github.com/budRich/pkg-listn'
 # url='file:///home/bud/git/bud/pkg-listn'
 license=('Unlicense')
 depends=('bash>=4.0.0' 'sed')
-makedepends=(m4)
+makedepends=(m4 gawk)
 optdepends=('yay: AUR helper' 'paru: AUR helper')
 conflicts=()
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
