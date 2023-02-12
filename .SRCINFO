@@ -1,12 +1,11 @@
 pkgbase = powershell
 	pkgdesc = A cross-platform automation and configuration tool/framework (latest release)
 	pkgver = 7.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PowerShell/PowerShell
 	install = powershell.install
 	arch = x86_64
 	license = MIT
-	makedepends = git
 	makedepends = cmake
 	makedepends = dotnet-sdk>=7.0.0
 	depends = krb5
@@ -18,11 +17,15 @@ pkgbase = powershell
 	depends = icu
 	options = staticlibs
 	options = !strip
-	source = powershell::git+https://github.com/PowerShell/PowerShell.git#tag=v7.3.3
-	source = powershell-native::git+https://github.com/PowerShell/PowerShell-Native.git
+	source = powershell-7.3.3::https://github.com/PowerShell/PowerShell/archive/refs/tags/v7.3.3.tar.gz
+	source = powershell-native-7.3.2::https://github.com/PowerShell/PowerShell-Native/archive/refs/tags/v7.3.2.tar.gz
 	source = Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = googletest-4e4df226fc197c0dda6e37f5c8c3845ca1e73a49.tar.gz::https://github.com/google/googletest/archive/4e4df226fc197c0dda6e37f5c8c3845ca1e73a49.tar.gz
+	source = version-from-environment-variable.patch
+	sha256sums = ad5f4533414b91abe67c46194aec81985313d6b54cf7c0019169cf62c1cb7bbd
+	sha256sums = 1fcf21213a47f9554297f5cf3fc9adc866e037bde9a8d71c1c5889a2f5d79918
 	sha256sums = 8d10afb45883813f805bdf74ec445ae3f2fdbd4d30ab2ce7ce3a55df80693696
+	sha256sums = eebf7507efcfe7a4dff5d69dcbe52ee090e99548c1407714fe10821ba359bf32
+	sha256sums = 50c7265492cd5cd87d81df29fa737d06dacd97586b0fafb3a0f3af8451b8c052
 
 pkgname = powershell

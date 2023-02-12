@@ -1,8 +1,6 @@
-googletest/
-pester/
-pkg/
-*.pkg.tar
-powershell/
-powershell-native/
-src/
-*.pkg.tar.zst
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets
+!version-from-environment-variable.patch
