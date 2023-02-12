@@ -1,6 +1,6 @@
 pkgbase = jd-tool-bin
 	pkgdesc = JSON diff and patch
-	pkgver = 1.6.1
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/josephburnett/jd
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = jd-tool-bin
 	license = MIT
 	provides = jd-tool
 	conflicts = jd-tool
-	source = jd-tool-bin-1.6.1-LICENSE::https://raw.githubusercontent.com/josephburnett/jd/v1.6.1/LICENSE
+	source = jd-tool-bin-1.7.0-LICENSE::https://raw.githubusercontent.com/josephburnett/jd/v1.7.0/LICENSE
 	sha256sums = 7db445fe94ae6fb0c5ab69a6b47ec38a0e4b6d5a38f9d1493c0d8cb7c8ad2516
-	source_x86_64 = jd-tool-bin-1.6.1::https://github.com/josephburnett/jd/releases/download/v1.6.1/jd-amd64-linux
-	sha256sums_x86_64 = 040f23db971a40e796d53011ab87db12744d0b861a1f0d4058fde4487cfbc715
-	source_aarch64 = jd-tool-bin-1.6.1::https://github.com/josephburnett/jd/releases/download/v1.6.1/jd-arm64-linux
-	sha256sums_aarch64 = a537a0f83bbffaea18230ac061e3372f7dee5a690f95a713ee2cd9ba64ccdf50
+	source_x86_64 = jd-tool-bin-1.7.0::https://github.com/josephburnett/jd/releases/download/v1.7.0/jd-amd64-linux
+	sha256sums_x86_64 = 2d087e5ef0be6b0a2649185c5395615be08ff17d82c03348d57a597c08b4ace7
+	source_aarch64 = jd-tool-bin-1.7.0::https://github.com/josephburnett/jd/releases/download/v1.7.0/jd-arm64-linux
+	sha256sums_aarch64 = 2ecfae4a8f5f6ffc786d6a0a0362d576d6f926ac850474e19eb22fbf7c9d5ba7
 
 pkgname = jd-tool-bin
