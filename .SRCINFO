@@ -8,6 +8,8 @@ pkgbase = neowofetch-git
 	makedepends = go
 	makedepends = git
 	depends = wmctrl
+	depends = bash
+	depends = lspci
 	source = git+https://github.com/exhq/neOwOfetch.git
 	sha256sums = SKIP
 
