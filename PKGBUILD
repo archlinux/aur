@@ -3,8 +3,8 @@
 # Contributor: Evgeny Grablyk <evgeny.grablyk@gmail.com>
 
 pkgname=vfu
-pkgver=5.02
-pkgrel=3
+pkgver=5.04
+pkgrel=1
 pkgdesc="Versatile text-based file-manager"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'ppc64le')
 url="http://cade.noxrun.com/projects/vfu"
@@ -15,7 +15,7 @@ optdepends=('perl: for the rx_* archiving utilities'
             'unrar: for rx_rar'
             'unzip: for rx_zip')
 source=("http://cade.noxrun.com/projects/${pkgname}/${pkgname}-${pkgver}.tar.gz" "vfu-libexec_2_lib.patch")
-sha256sums=('82fd63285a582bccd265c35182d3a844496bdb9aab84c81515ec02a9f2c4b12b'
+sha256sums=('8657466fadfce65850e08c6586868be1b4c5be02affd9f4e80bd80275d997a68'
             '05226413626342c610df02640abaebce5becc9d69b2297498a57e22abfd85b9c')
 
 prepare() {
