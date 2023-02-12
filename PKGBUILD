@@ -7,6 +7,7 @@ url="https://github.com/L4ki/Dexy-Plasma-Themes/"
 license=('GPL3')
 source=("git+https://github.com/L4ki/Dexy-Plasma-Themes.git")
 sha256sums=('SKIP')
+makedepends=('git')
 options=('!strip')
 
 pkgver() {

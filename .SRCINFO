@@ -5,6 +5,7 @@ pkgbase = dexy-theme-git
 	url = https://github.com/L4ki/Dexy-Plasma-Themes/
 	arch = any
 	license = GPL3
+	makedepends = git
 	options = !strip
 	source = git+https://github.com/L4ki/Dexy-Plasma-Themes.git
 	sha256sums = SKIP
