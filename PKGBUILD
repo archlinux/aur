@@ -4,12 +4,12 @@
 
 pkgname=vfu
 pkgver=5.02
-pkgrel=1
+pkgrel=2
 pkgdesc="Versatile text-based file-manager"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'ppc64le')
 url="http://cade.noxrun.com/projects/vfu"
 license=('GPL')
-depends=('ncurses' 'pcre2' 'yascreen>=1.95')
+depends=('ncurses' 'pcre2')
 optdepends=('perl: for the rx_* archiving utilities'
             'rpmextract: for rx_rpm'
             'unrar: for rx_rar'
