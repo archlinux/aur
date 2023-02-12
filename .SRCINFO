@@ -7,6 +7,7 @@ pkgbase = neowofetch-git
 	license = GPL3
 	makedepends = go
 	makedepends = git
+	depends = wmctrl
 	source = git+https://github.com/exhq/neOwOfetch.git
 	sha256sums = SKIP
 
