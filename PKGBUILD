@@ -13,7 +13,7 @@ provides=("treq")
 conflicts=("treq")
 optdepends=("vim")
 source=("https://github.com/talis-fb/TReq/releases/download/v$pkgver/treq-$pkgver-x86_64.tar.gz")
-sha256sums=("06e7f8d480a73fce76790d20df739176d18cf3c555df936c7bd8d0f72e3572df")
+sha256sums=("26309ffa89b147f7208ad6456b79378ca643baa5e7ee2d6b53d3795f9be2eab4")
 
 package() {
     install -Dm755 treq -t "$pkgdir/usr/bin"
