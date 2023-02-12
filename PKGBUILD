@@ -1,4 +1,4 @@
-# Maintainer: 
+# Maintainer: Edmund Lodewijks <e.lodewijks@gmail.com>
 # Contributor: T.J. Townsend <blakkheim@archlinux.org>
 # Contributor: Yuuta Liang <yuuta@yuuta.moe>
 
