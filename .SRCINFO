@@ -1,0 +1,11 @@
+pkgbase = pnginfo-git
+	pkgdesc = The pnginfo utility explores the content of PNG files.
+	pkgver = 0.47b50b4
+	pkgrel = 1
+	url = https://github.com/tleguern/pnginfo
+	arch = x86_64
+	license = ISC
+	source = git+https://github.com/tleguern/pnginfo
+	sha512sums = SKIP
+
+pkgname = pnginfo-git
