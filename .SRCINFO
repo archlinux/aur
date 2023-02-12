@@ -1,7 +1,7 @@
 pkgbase = chainner-rpm
 	pkgdesc = Node-based image processing and AI upscaling GUI
 	pkgver = 0.17.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/chaiNNer-org/chaiNNer/
 	arch = x86_64
 	license = GPL3

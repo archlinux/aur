@@ -2,9 +2,9 @@
 
 _pkgauthor="chainner-org"
 _pkgname="chainner"
-pkgname="${_pkgname%}-rpm"
+pkgname="${_pkgname}-rpm"
 pkgver=0.17.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Node-based image processing and AI upscaling GUI'
 arch=('x86_64')
 url="https://github.com/chaiNNer-org/chaiNNer/"
@@ -13,7 +13,7 @@ groups=()
 depends=('libxcrypt-compat')
 makedepends=()
 optdepends=()
-provides=("${_pkgname%}")
+provides=("${_pkgname}")
 conflicts=()
 replaces=()
 backup=()
