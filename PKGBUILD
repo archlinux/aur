@@ -1,17 +1,17 @@
 # Maintainer: 0b100100 <0b100100 at protonmail dot ch>
 
 pkgname=orage
-pkgver=4.16.0
+pkgver=4.18.0
 pkgrel=1
 pkgdesc="A simple calendar application with reminders for Xfce"
 arch=("i686" "x86_64")
 license=('GPL2')
 url="https://docs.xfce.org/apps/orage/start"
 groups=('xfce4-goodies')
-depends=('xfce4-panel' 'libnotify' 'dbus-glib' 'libical')
+depends=('libxfce4ui' 'libnotify' 'libical')
 makedepends=('xfce4-dev-tools')
 source=("https://archive.xfce.org/src/apps/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.bz2")
-sha512sums=('00f5dd069a90f5398cc6789006ba503097b5246111f88e28952de4fe7927deba8e8cfb136ed1ebe8a90e1bd656116259204f25af852aa0e502be38f37459243b')
+sha512sums=('7760219f64ac3e2ba6d73541a626a0c9411b93268c007f2af5d8080a3a3c0b2a08e00dd96b7794b688aa83c567150c02033b9ba46bf38cd71d3d890e8d1e45ad')
 
 build() {
   cd "$pkgname-$pkgver"
