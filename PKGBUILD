@@ -6,7 +6,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=compass-status-git
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="made for someone i love"
 arch=('x86_64')
 url="https://github.com/l1mey112/compass-status"
