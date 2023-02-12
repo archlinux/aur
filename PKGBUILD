@@ -1,5 +1,5 @@
 # Maintainer: Kevin Schoon <me@kevinschoon.com>
-pkgname=go-capnproto2
+pkgname=go-capnproto2-git
 provides=('go-capnproto2-git')
 conflicts=('go-capnproto2')
 pkgver=0.0.0

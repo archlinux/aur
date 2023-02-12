@@ -1,4 +1,4 @@
-pkgbase = go-capnproto2
+pkgbase = go-capnproto2-git
 	pkgdesc = Cap'n Proto library and code generator for Go
 	pkgver = 0.0.0
 	pkgrel = 1
@@ -12,4 +12,4 @@ pkgbase = go-capnproto2
 	source = git+https://github.com/capnproto/go-capnproto2.git
 	sha256sums = SKIP
 
-pkgname = go-capnproto2
+pkgname = go-capnproto2-git
