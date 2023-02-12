@@ -2,7 +2,7 @@
 
 pkgname=gitmux-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.7.11
+pkgver=0.7.12
 pkgrel=1
 pkgdesc="Git in your tmux status bar"
 arch=('x86_64' 'i686' 'aarch64')
@@ -14,9 +14,9 @@ conflicts=("${_pkgname}")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_linux_amd64.tar.gz")
 source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_linux_386.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('28946241984047bd1dea426e28106223b200050e7e559dbf9c2c4125e4339e3c')
-sha256sums_i686=('6b5cd529682788822e94a3ebc24d2978a1ef2ceade8fe1bb119c6a0693f9ebf5')
-sha256sums_aarch64=('48253fb1ac848d4074bedfab3f4e127a17de8f650cfb280e2f8aef2a63f95b8c')
+sha256sums_x86_64=('005952e58675aada77989149f06abca972dd4b5c57e45b020b75fb42425cbc61')
+sha256sums_i686=('f1bcf7578f6a1d0301b7e572418a9f7667659d9c43c25c803e30d665d0239f49')
+sha256sums_aarch64=('0335b7c7a84fb2889521887af07aa0674393bfcc8cd026fdca1cd08499f8366f')
 
 package() {
 	install -Dm 755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
