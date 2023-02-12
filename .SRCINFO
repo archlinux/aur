@@ -1,7 +1,7 @@
 pkgbase = fcitx5-mozc-ext-neologd
-	pkgdesc = Fcitx5 Module of A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input) with external generated dictionaries (NEologd only.)
+	pkgdesc = Fcitx5 Module of Mozc (Google Japanese Input OSS) with external generated dictionaries (NEologd and Sudachi.)
 	pkgver = 2.26.4632.102.g4d2e3bd
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/google/mozc
 	arch = x86_64
 	license = custom
@@ -29,6 +29,7 @@ pkgbase = fcitx5-mozc-ext-neologd
 	conflicts = fcitx-mozc-neologd-ut
 	conflicts = fcitx-mozc-ut-unified
 	conflicts = fcitx-mozc-ut-unified-full
+	conflicts = fcitx5-mozc
 	source = git+https://github.com/fcitx/mozc.git#commit=4d2e3bd
 	source = https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-202110.zip
 	source = https://osdn.net/projects/ponsfoot-aur/storage/mozc/x-ken-all-202110.zip
@@ -39,7 +40,7 @@ pkgbase = fcitx5-mozc-ext-neologd
 	source = git+https://github.com/open-source-parsers/jsoncpp.git#commit=11086dd
 	source = git+https://github.com/google/protobuf.git#commit=cc7b1b5
 	source = git+https://github.com/abseil/abseil-cpp.git#commit=2151058
-	source = git+https://github.com/reasonset/mozcdict-ext.git
+	source = git+https://github.com/reasonset/mozcdict-ext.git#commit=ace134b
 	validpgpkeys = 2CC8A0609AD2A479C65B6D5C8E8B898CBF2412F9
 	sha512sums = SKIP
 	sha512sums = 606f45d48a9dad0e80a566cab0001910de3c6b2f634ec52c6ef6f44745b55ae8e181b3e3cdf90525a08be1f180eb35900672c90c6ab4f43679a178e863378bbc

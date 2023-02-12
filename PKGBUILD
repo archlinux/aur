@@ -1,4 +1,5 @@
-# Maintainer: Jiachen Yang <farseerfc@archlinux.org>
+# Maintainer: Masaki Haruka <yek@reasonset.net>
+# Contributor: Jiachen Yang <farseerfc@archlinux.org>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 # Contributor: UTUMI Hirosi <utuhiro78 at yahoo dot co dot jp>
@@ -15,22 +16,22 @@ _gyp_commit=caa6002
 _japanese_usage_dictionary_commit=e5b3425
 _jsoncpp_commit=11086dd
 _protobuf_commit=cc7b1b5
+_dictext_commit=ace134b
 
 ## the latest release from https://osdn.net/projects/ponsfoot-aur/storage/mozc/
 _zipcode_rel=202110
 
 _pkgbase=mozc
 pkgname=fcitx5-mozc-ext-neologd
-pkgdesc="Fcitx5 Module of A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input) with external generated dictionaries (NEologd only.)"
+pkgdesc="Fcitx5 Module of Mozc (Google Japanese Input OSS) with external generated dictionaries (NEologd and Sudachi.)"
 pkgver=2.26.4632.102.g4d2e3bd
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/google/mozc"
 license=('custom')
 depends=('qt5-base' 'fcitx5')
 makedepends=('pkg-config' 'python' 'curl' 'gtk2' 'mesa' 'subversion' 'bazel' 'git' 'clang' 'python-six' 'zsh' 'ruby' 'xz')
-#replaces=('mozc-fcitx')
-conflicts=('mozc' 'mozc-server' 'mozc-utils-gui' 'mozc-fcitx' 'fcitx-mozc' 'fcitx5-mozc-ut' 'fcitx-mozc-neologd-ut' 'fcitx-mozc-ut-unified' 'fcitx-mozc-ut-unified-full')
+conflicts=('mozc' 'mozc-server' 'mozc-utils-gui' 'mozc-fcitx' 'fcitx-mozc' 'fcitx5-mozc-ut' 'fcitx-mozc-neologd-ut' 'fcitx-mozc-ut-unified' 'fcitx-mozc-ut-unified-full' 'fcitx5-mozc')
 source=(git+https://github.com/fcitx/mozc.git#commit=${_mozc_commit}
         https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-${_zipcode_rel}.zip
         https://osdn.net/projects/ponsfoot-aur/storage/mozc/x-ken-all-${_zipcode_rel}.zip
@@ -41,7 +42,7 @@ source=(git+https://github.com/fcitx/mozc.git#commit=${_mozc_commit}
         git+https://github.com/open-source-parsers/jsoncpp.git#commit=${_jsoncpp_commit}
         git+https://github.com/google/protobuf.git#commit=${_protobuf_commit}
         git+https://github.com/abseil/abseil-cpp.git#commit=${_abseil_cpp_commit}
-        git+https://github.com/reasonset/mozcdict-ext.git
+        git+https://github.com/reasonset/mozcdict-ext.git#commit=${_dictext_commit}
 	)
 sha512sums=('SKIP'
             '606f45d48a9dad0e80a566cab0001910de3c6b2f634ec52c6ef6f44745b55ae8e181b3e3cdf90525a08be1f180eb35900672c90c6ab4f43679a178e863378bbc'
@@ -82,11 +83,15 @@ prepare() {
   PYTHONPATH="$PWD:$PYTHONPATH" python dictionary/gen_zip_code_seed.py --zip_code="${srcdir}/x-ken-all.csv" --jigyosyo="${srcdir}/JIGYOSYO.CSV" >> data/dictionary_oss/dictionary09.txt
   echo "Done."
 
-  # Include Neologd
+  # Include NEologd
   cd "$srcdir/mozcdict-ext"
-  cd neologd
   echo "Generating extra dictionaries..."
-  MOZC_ID_FILE="$srcdir/mozc/src/data/dictionary_oss/id.def" zsh mkdict.zsh >> "$srcdir/mozc/src/data/dictionary_oss/dictionary09.txt"
+  (
+    cd neologd
+    MOZC_ID_FILE="$srcdir/mozc/src/data/dictionary_oss/id.def" zsh mkdict.zsh
+    cd ../sudachi
+    MOZC_ID_FILE="$srcdir/mozc/src/data/dictionary_oss/id.def" zsh mkdict.zsh
+  ) | ruby .dev.utils/uniqword.rb 2> /dev/null >> "$srcdir/mozc/src/data/dictionary_oss/dictionary09.txt"
 
   cd "$srcdir/mozc"
   cd src
