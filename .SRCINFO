@@ -1,6 +1,6 @@
 pkgbase = sunvox
 	pkgdesc = Small, fast and powerful modular synthesizer with pattern-based sequencer (tracker).
-	pkgver = 2.1b
+	pkgver = 2.1.b
 	pkgrel = 1
 	url = http://warmplace.ru/soft/sunvox/
 	arch = i686
