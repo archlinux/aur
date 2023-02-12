@@ -36,7 +36,6 @@ package()
   echo 'g webvirt - -' > "$pkgdir/usr/lib/sysusers.d/webvirt.conf"
   echo 'u webvirt /var/lib/webvirt "webvirtd user" /var/lib/webvirt' >> "$pkgdir/usr/lib/sysusers.d/webvirt.conf"
   echo 'm webvirt webvirt' >> "$pkgdir/usr/lib/sysusers.d/webvirt.conf"
-  echo 'm webvirt shadow' >> "$pkgdir/usr/lib/sysusers.d/webvirt.conf"
   echo 'd /var/lib/webvirt 0755 webvirt webvirt ' > "$pkgdir/usr/lib/tmpfiles.d/webvirt.conf"
 
   cd "$pkgname"/build
