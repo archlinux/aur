@@ -20,9 +20,11 @@ backup=('etc/nethackrc'
         'usr/games/nethack/sysconf')
 source=("https://nethack.org/download/${pkgver}/nethack-${pkgver//./}-src.tgz"
         'nethack-x11.patch'
+        'warn_unused.patch'
         'nethack-x11.png::http://bugs.gentoo.org/attachment.cgi?id=86458')
 sha256sums=('cfde0c3ab6dd7c22ae82e1e5a59ab80152304eb23fb06e3129439271e5643ed2'
             '685d68cbbd2c9854b52d71e53ca2c73c95adef43b79e7d36b6c244dc86f796e5'
+            '6bbfb4cba6baa3b112cf5ae98593210736946f5778e8c252a925e699c02bbf2b'
             'e1e0b059c617af04ee88bed4b03b73c02f022663e001c5485fe9900ca2d76295')
 
 prepare() {
@@ -48,7 +50,8 @@ prepare() {
   ###
   ####
 
-  patch -Np1 -i ../nethack-x11.patch
+  patch -Np1 -i "$srcdir/warn_unused.patch"
+  patch -Np1 -i "$srcdir/nethack-x11.patch"
 
   # Create /etc/nethackrc with OPTIONS=windowtype:X11
   setconf -a nethackrc OPTIONS 'windowtype:X11'
