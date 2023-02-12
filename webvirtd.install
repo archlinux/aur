@@ -1,0 +1,30 @@
+#!/bin/bash
+ssh_path=/var/lib/webvirt/.ssh
+
+post_install() {
+  if [ ! -f ${ssh_path}/id_ecdsa ]; then
+    sudo -u webvirt mkdir -p $ssh_path
+    sudo -u webvirt ssh-keygen -t ecdsa -N '' -f ${ssh_path}/id_ecdsa
+
+cat << EOF
+webvirtd ssh keys have been generated.
+
+1. Copy ${ssh_path}/id_ecdsa.pub to /etc/ssh/authorized_keys
+2. Put 'AuthorizedKeysFile /etc/ssh/authorized_keys .ssh/authorized_keys' in /etc/ssh/sshd_config
+3. Run 'systemctl restart sshd'
+
+EOF
+  fi
+
+  echo "NOTE: Users accessing webvirtd must be added to the 'webvirt' group."
+  echo
+}
+
+post_upgrade() {
+  post_install $1
+}
+ 
+op=$1
+shift
+ 
+$op $*
