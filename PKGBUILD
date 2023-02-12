@@ -1,5 +1,5 @@
-# Maintainer: Andy Alt <arch_stanton5995 at proton dot me>
-# Co-maintainer: Boian Bonev <bbonev@ipacct.com>
+# Maintainer: Boian Bonev <bbonev@ipacct.com>
+# Contributor: Andy Alt <arch_stanton5995 at proton dot me>
 # Contributor: Evgeny Grablyk <evgeny.grablyk@gmail.com>
 
 pkgname=vfu
