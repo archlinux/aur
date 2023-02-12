@@ -1,13 +1,28 @@
 #!/bin/bash
 
+dir=/var/lib/webvirt_api
+
 post_install() {
-  cd /usr/lib/webvirt_api
-  virtualenv -p python /usr/lib/webvirt_api/venv
-  source /usr/lib/webvirt_api/venv/bin/activate
+  cd "$dir"
+  virtualenv -p python "$dir"/venv
+  source "$dir"/venv/bin/activate
   poetry install
   python manage.py migrate
   python manage.py collectstatic --noinput
-  chown -R webvirt:webvirt /usr/lib/webvirt_api
+  chown -R webvirt:webvirt "$dir"
+
+  cat << EOF
+
+A UWSGI configuration is provided at /etc/uwsgi/webvirt_api.ini.
+
+To start the API server:
+
+    $ systemctl start uwsgi@webvirt_api
+
+By default, the API is accessible at http://localhost:9080.
+
+EOF
+
 }
 
 post_upgrade() {

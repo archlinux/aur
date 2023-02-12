@@ -1,5 +1,5 @@
 pkgname='webvirt-api-git'
-pkgver=1.0.0.r6.gbf93d0b
+pkgver=1.0.0.r6.gf6b4d01
 pkgrel=1
 pkgdesc='PAM-athenticated HTTP proxy to webvirtd'
 license=('Apache')
@@ -28,7 +28,12 @@ pkgver() {
 
 package()
 {
-  find "$pkgname" -type f -exec install -vDm644 {} "$pkgdir"/usr/lib/{} \;
-  mv "$pkgdir"/usr/lib/"${pkgname}" "$pkgdir"/usr/lib/webvirt_api
-  install -Dm644 "$pkgname"/res/webvirt_api.ini "$pkgdir"/etc/uwsgi/webvirt_api.ini
+  cd "$pkgname"
+
+  # Install application to /var/lib/webvirt_api
+  find . -type f -exec install -vDm644 {} "$pkgdir"/var/lib/webvirt_api/{} \;
+
+  # Install UWSGI configuration to /etc/uwsgi
+  # Enable via: systemctl start uwsgi@webvirt_api
+  install -Dm644 res/webvirt_api.ini "$pkgdir"/etc/uwsgi/webvirt_api.ini
 }
