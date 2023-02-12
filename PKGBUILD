@@ -1,7 +1,7 @@
 # Maintainer: zoe <chp321 AT gmail DOT com>
 
 pkgname=tv_grab_fr_telerama
-pkgver=2.8
+pkgver=2.9
 pkgrel=1
 pkgdesc="Grab TV listings for France, XMLTV Grabber using telerama data"
 arch=(any)
@@ -9,9 +9,9 @@ url="https://github.com/beavis69/${pkgname}"
 license=("GPL")
 depends=('xmltv' 'perl-digest-hmac')
 makedepends=('git')
-source=("https://github.com/beavis69/${pkgname}/archive/refs/tags/${pkgver}.tar.gz"
+source=("https://github.com/beavis69/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
         "http://www.number6.ch/tools/logos.tar.gz")
-md5sums=('8dd69ebfd08d2d50bdfb0f39829b1149' '9a5c99e77a58358188b16301d7e0872b')
+md5sums=('ec2a774a60c56edc23b264310d071d82' '9a5c99e77a58358188b16301d7e0872b')
 
 package() {
   mkdir -p ${pkgdir}/usr/bin/vendor_perl/

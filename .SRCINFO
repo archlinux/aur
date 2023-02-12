@@ -1,6 +1,6 @@
 pkgbase = tv_grab_fr_telerama
 	pkgdesc = Grab TV listings for France, XMLTV Grabber using telerama data
-	pkgver = 2.8
+	pkgver = 2.9
 	pkgrel = 1
 	url = https://github.com/beavis69/tv_grab_fr_telerama
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = tv_grab_fr_telerama
 	makedepends = git
 	depends = xmltv
 	depends = perl-digest-hmac
-	source = https://github.com/beavis69/tv_grab_fr_telerama/archive/refs/tags/2.8.tar.gz
+	source = https://github.com/beavis69/tv_grab_fr_telerama/archive/refs/tags/v2.9.tar.gz
 	source = http://www.number6.ch/tools/logos.tar.gz
-	md5sums = 8dd69ebfd08d2d50bdfb0f39829b1149
+	md5sums = ec2a774a60c56edc23b264310d071d82
 	md5sums = 9a5c99e77a58358188b16301d7e0872b
 
 pkgname = tv_grab_fr_telerama
