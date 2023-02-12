@@ -4,7 +4,7 @@
 
 _pkgname=feather
 pkgname="monero-${_pkgname}-bin"
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="A free Monero desktop wallet"
 arch=('x86_64')
