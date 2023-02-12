@@ -1,7 +1,7 @@
 pkgbase = r-alpsnmr
 	pkgdesc = Automated spectraL Processing System for NMR
-	pkgver = 4.0.2
-	pkgrel = 3
+	pkgver = 4.0.3
+	pkgrel = 1
 	url = https://bioconductor.org/packages/AlpsNMR
 	arch = any
 	license = MIT
@@ -48,7 +48,7 @@ pkgbase = r-alpsnmr
 	optdepends = r-testthat
 	optdepends = r-writexl
 	optdepends = r-zip
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/AlpsNMR_4.0.2.tar.gz
-	sha256sums = f41e5f7db7f55cdf91ad2781274965dfd4e959e5f2734cb42d9b3a440dc398f8
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/AlpsNMR_4.0.3.tar.gz
+	sha256sums = 3677f5d58ef1ce929946527968e9b5e5d8e311ef6d4adc7736b538e22d1679e9
 
 pkgname = r-alpsnmr
