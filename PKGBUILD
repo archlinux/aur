@@ -1,23 +1,17 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Sean Anderson <seanga2@gmail.com>
 _oname='sawja'
 pkgname="ocaml-$_oname"
-pkgver='1.5.3'
+pkgver='1.5.12'
 pkgrel=1
 pkgdesc="Provides a high level representation of Java .class files in OCaml"
 arch=('i686' 'x86_64')
-url="http://sawja.inria.fr/"
-license=('LGPL2')
+url="https://github.com/javalib-team/sawja/"
+license=('GPL3')
 depends=('ocaml>=4.0.0' 'ocaml-javalib>=2.3.3' 'perl' 'camlp4')
 makedepends=('ocaml-findlib')
 options=(!strip)
-changelog=
-source=("https://gforge.inria.fr/frs/download.php/file/37403/sawja-$pkgver.tar.bz2")
-md5sums=('25ff421a3f932881234ed5b05b94ac8d')
+source=("https://github.com/javalib-team/$_oname/archive/$pkgver.tar.gz")
+sha256sums=('2ddc9e07d949b5f4ad41542acbde337cb1222f452076bfd06376ca3cb50f7f65')
 
 prepare() {
 	cd "$_oname-$pkgver"

@@ -1,19 +1,18 @@
 pkgbase = ocaml-sawja
 	pkgdesc = Provides a high level representation of Java .class files in OCaml
-	pkgver = 1.5.3
+	pkgver = 1.5.12
 	pkgrel = 1
-	url = http://sawja.inria.fr/
+	url = https://github.com/javalib-team/sawja/
 	arch = i686
 	arch = x86_64
-	license = LGPL2
+	license = GPL3
 	makedepends = ocaml-findlib
 	depends = ocaml>=4.0.0
 	depends = ocaml-javalib>=2.3.3
 	depends = perl
 	depends = camlp4
 	options = !strip
-	source = https://gforge.inria.fr/frs/download.php/file/37403/sawja-1.5.3.tar.bz2
-	md5sums = 25ff421a3f932881234ed5b05b94ac8d
+	source = https://github.com/javalib-team/sawja/archive/1.5.12.tar.gz
+	sha256sums = 2ddc9e07d949b5f4ad41542acbde337cb1222f452076bfd06376ca3cb50f7f65
 
 pkgname = ocaml-sawja
-
