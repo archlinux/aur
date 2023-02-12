@@ -1,0 +1,18 @@
+pkgbase = pd-else-git
+	pkgdesc = ELSE externals for Pd, git version
+	pkgver = v1.0.rc6.r91.ge6822cff
+	pkgrel = 1
+	url = https://github.com/porres/pd-else
+	arch = i686
+	arch = x86_64
+	license = WTFPL
+	depends = pd
+	depends = fluidsynth
+	provides = pd-else
+	conflicts = pd-else
+	source = git+https://github.com/porres/pd-else.git
+	source = git+https://github.com/pure-data/pure-data.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = pd-else-git
