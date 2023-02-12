@@ -1,0 +1,15 @@
+pkgbase = generand
+	pkgdesc = Simple and fast tool for generating random genomic data in common formats for testing and benchmarking purposes
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/auerlab/generand
+	arch = i686
+	arch = x86_64
+	license = BSD-2
+	makedepends = biolibc
+	makedepends = libxtend
+	depends = glibc
+	source = generand-0.1.2.tar.gz::https://github.com/auerlab/generand/archive/refs/tags/0.1.2.tar.gz
+	sha256sums = 4d728b8dee36381a081022de25d3665297d625479b140fcb05dca87abc382d65
+
+pkgname = generand
