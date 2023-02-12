@@ -6,9 +6,26 @@ pkgdesc="The GNUstep GUI class library"
 arch=('x86_64')
 url="https://github.com/gnustep/libs-gui"
 license=('LGPL')
-depends=('gcc-libs' 'libjpeg' 'libtiff')
-makedepends=('gcc-objc' 'gnustep-base' 'gnustep-make')
-optdepends=('aspell' 'audiofile' 'flite1: required for speech synthesis' 'giflib' 'libcups' 'libsndfile' 'libao')
+depends=(
+	'gcc-libs'
+        'libjpeg'
+        'libpng'
+        'libtiff'
+)
+makedepends=(
+	'gcc-objc'
+        'gnustep-base'
+        'gnustep-make'
+)
+optdepends=(
+	'aspell'
+        'audiofile'
+        'flite1: required for speech synthesis'
+        'giflib'
+        'libao'
+        'libcups'
+        'libsndfile'
+)
 conflicts=('gnustep-gui-svn')
 groups=('gnustep-core')
 options=('!makeflags')
