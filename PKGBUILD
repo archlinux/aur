@@ -1,16 +1,16 @@
 # Maintainer: Polarian <polarian@polarian.dev>
 
 pkgname="davis"
-pkgver="0.1.0"
+pkgver="0.1.2"
 pkgrel=1
 pkgdesc="CLI client for mpd, written in rust"
 arch=("x86_64")
 url="https://github.com/SimonPersson/davis"
 license=("GPL3")
-depends=("mpd")
 makedepends=("cargo")
+optdepends=("mpd: Music daemon davis interfaces with")
 source=("davis-$pkgver.tar.gz::https://github.com/SimonPersson/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('2ee37d3e1439e74713dab6efc449007224f4457993001943ab93f47d579eb25b')
+sha256sums=('8fb044fbd96f8ab31e84589b71b2a48bd5a67777e5e03263d1fa61e959a5b0d4')
 
 prepare() {
     cd "davis-$pkgver" && cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
