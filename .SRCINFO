@@ -1,0 +1,19 @@
+pkgbase = webvirt-react-git
+	pkgdesc = React web front-end to webvirt_api
+	pkgver = 1.0.0.r1.g6cbf3c1
+	pkgrel = 1
+	url = https://github.com/kevr/webvirt_react
+	install = webvirt-react-git.install
+	arch = any
+	license = Apache
+	makedepends = nodejs
+	depends = webvirt-api
+	depends = nginx
+	provides = webvirt-react
+	conflicts = webvirt-react
+	source = webvirt-react-git::git+https://github.com/kevr/webvirt_react
+	source = Config.json.patch
+	sha256sums = SKIP
+	sha256sums = 6baf5067cff704dee99c010b5086d74c8eba2bac4714068269fd113d3a8ec36f
+
+pkgname = webvirt-react-git

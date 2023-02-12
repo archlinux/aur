@@ -1,0 +1,21 @@
+#!/bin/bash
+
+post_install() {
+  cat << EOF
+
+By default, webvirt.service runs an instance of nginx on localhost:8080.
+This can be modified in the nginx config at /var/lib/webvirt_react/nginx.conf.
+
+To start the website, start webvirt.service and browse to http://localhost:8080.
+
+EOF
+}
+
+post_upgrade() {
+  post_install $1
+}
+ 
+op=$1
+shift
+ 
+$op $*

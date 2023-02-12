@@ -1,0 +1,11 @@
+diff --git a/src/Config.json b/src/Config.json
+index 3bc01c4..962d65c 100644
+--- a/src/Config.json
++++ b/src/Config.json
+@@ -1,5 +1,5 @@
+ {
+-  "apiPrefix": "http://localhost:8000",
++  "apiPrefix": "http://localhost:9080",
+   "stateColors": {
+     "background": {
+       "None": "",
