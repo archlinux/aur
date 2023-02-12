@@ -6,8 +6,8 @@ _gitbranch="main"
 
 pkgname="${_pkgname}-git"
 pkgver=v1.3.0.r3.g369fe50
-pkgrel=1
-pkgdesc="Encrypted backup and synchronization tool."
+pkgrel=2
+pkgdesc="Encrypted backup and synchronization tool"
 arch=('any')
 url="https://github.com/${_gitauthor}/${_pkgname}"
 license=('MIT')
@@ -16,7 +16,7 @@ depends=('bash' 'borg' 'gocryptfs' 'rclone' 'rsync' 'systemd')
 makedepends=('git')
 optdepends=('pass: standard password manager'
             'gopass: improved password manager')
-provides=("${_pkgname%}")
+provides=("${_pkgname}")
 conflicts=()
 replaces=()
 backup=()
@@ -40,8 +40,8 @@ pkgver() {
 # }
 
 package() {
-  cd "${pkgname%-git}"
+  cd "${_pkgname}"
   make DESTDIR="${pkgdir}/" install
-  install -vDm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
-  install -vDm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname%-git}"
+  install -vDm 644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -vDm 644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}"
 }
