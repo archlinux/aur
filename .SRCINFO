@@ -1,0 +1,17 @@
+pkgbase = jeff-qt
+	pkgdesc = Extensible chatbot and automation tool
+	pkgver = 2.1.1.1.r1.g39a2973
+	pkgrel = 1
+	url = https://github.com/markcda/jeff
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = python
+	depends = qt5-base
+	options = strip
+	source = git+https://github.com/markcda/jeff.git?signed#tag=39a297350ad1cb69b48e4b76200ff1d99cdfe998
+	sha256sums = SKIP
+
+pkgname = jeff-qt
