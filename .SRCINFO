@@ -1,12 +1,12 @@
 pkgbase = keepass-zh-cn
 	pkgdesc = Chinese Simplified locale for keepass
-	pkgver = 2.46
+	pkgver = 2.51
 	pkgrel = 1
 	url = http://keepass.info/translations.html
 	arch = any
 	license = GPL2
-	depends = keepass>=2.46
-	source = https://downloads.sourceforge.net/keepass/KeePass-2.46-Chinese_Simplified.zip
-	sha256sums = 3db8169b35d2565453f0fb942666d1ca28db6f263f2e9dbd9fbada126a252adf
+	depends = keepass>=2.51
+	source = https://downloads.sourceforge.net/keepass/KeePass-2.51-Chinese_Simplified.zip
+	sha1sums = fc74707ee688ab196cfa8ecfb88aaed7776f960a
 
 pkgname = keepass-zh-cn
