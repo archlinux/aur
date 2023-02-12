@@ -2,7 +2,7 @@ pkgname='webvirt-api-git'
 pkgver=1.0.0.r6.gf6b4d01
 pkgrel=1
 pkgdesc='PAM-athenticated HTTP proxy to webvirtd'
-groups=('webvirt')
+groups=('webvirt-git')
 license=('Apache')
 url='https://github.com/kevr/webvirt_api'
 
