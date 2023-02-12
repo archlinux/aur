@@ -2,14 +2,18 @@ source deb.PKGBUILD
 pkgdesc="Skywire Mainnet Node implementation. Debian package; cross-compile."
 _pkgarches=('armhf' 'arm64' 'amd64')
 ##STATIC CROSS-COMPILATION DEPENDENCIES NOT SATISFIABLE!!!
-makedepends=("${makedepends[@]}" "aarch64-linux-musl" "arm-linux-gnueabihf-musl") # 'arm-linux-gnueabihf-binutils' 'aarch64-binutils')
+makedepends=("${makedepends[@]}" "aarch64-linux-musl-cross-bin" "muslcc-arm-linux-musleabihf-cross-bin" "muslcc-arm-linux-musleabi-cross-bin")
 
 prepare() {
 for _i in ${_pkgarches[@]}; do
-_msg2 "$_i"
+_msg2 "preparing $_i"
+[[ -d ${srcdir}/go/bin.${_i} ]] && rm -rf ${srcdir}/go/bin.${_i}
+mkdir -p ${srcdir}/go/bin.${_i}
+[[ -d ${srcdir}/go/bin.${_i} ]] && rm -rf ${srcdir}/go/apps.${_i}
+mkdir -p ${srcdir}/go/apps.${_i}
 done
+mkdir -p ${srcdir}/go/src/github.com/${_githuborg}/
 # https://wiki.archlinux.org/index.php/Go_package_guidelines
-mkdir -p ${srcdir}/go/src/github.com/${_githuborg}/ ${srcdir}/go/bin.${_i} ${srcdir}/go/apps.${_i}
 ln -rTsf ${srcdir}/${pkgname}-${pkgver}${_rc} ${srcdir}/go/src/${_pkggopath}
 cd ${srcdir}/go/src/${_pkggopath}/
 }
@@ -29,7 +33,7 @@ export GOOS=linux
 #static cross-compilation
 [[ $_pkgarch == "amd64" ]] && export GOARCH=amd64 && export CC=musl-gcc
 [[ $_pkgarch == "arm64" ]] && export GOARCH=arm64 && export CC=aarch64-linux-musl-gcc
-[[ $_pkgarch == "armhf" ]] && export GOARCH=arm && export GOARM=6 && export CC=arm-linux-gnueabihf-musl-gcc
+[[ $_pkgarch == "armhf" ]] && export GOARCH=arm && export GOARM=6 && export CC=arm-linux-musleabihf-gcc && source /etc/profile.d/arm-linux-musleabihf-cross.sh /etc/profile.d/arm-linux-musleabi-cross.sh
 #_ldflags=('-linkmode external -extldflags "-static" -buildid=')
 _build
  done
