@@ -1,6 +1,6 @@
 pkgbase = cdhist
 	pkgdesc = Linux shell cd history
-	pkgver = 3.5.2
+	pkgver = 3.6
 	pkgrel = 1
 	url = https://github.com/bulletmark/cdhist
 	install = install.sh
@@ -11,7 +11,7 @@ pkgbase = cdhist
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python>=3.7
-	source = cdhist-3.5.2.tar.gz::https://github.com/bulletmark/cdhist/archive/3.5.2.tar.gz
-	sha1sums = 2b86cb73cc733ea3db70bdb3cff66ca565b5beea
+	source = cdhist-3.6.tar.gz::https://github.com/bulletmark/cdhist/archive/3.6.tar.gz
+	sha1sums = 386bee11faffabdcc49dfd27b49fc341d518612a
 
 pkgname = cdhist
