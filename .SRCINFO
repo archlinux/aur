@@ -1,6 +1,6 @@
 pkgbase = yarr-git
-	pkgdesc = yet another rss reader.
-	pkgver = v2.3.r27.g91da774
+	pkgdesc = Self-hosted RSS reader with Vue.js front and Go/SQLite back.
+	pkgver = v2.3.r41.g95ebbb9
 	pkgrel = 4
 	url = https://github.com/nkanaev/yarr
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = yarr-git
 	makedepends = go
 	makedepends = make
 	makedepends = git
-	source = git+https://github.com/nkanaev/yarr
+	source = git+https://github.com/nkanaev/yarr.git#branch=main
 	sha1sums = SKIP
 
 pkgname = yarr-git
