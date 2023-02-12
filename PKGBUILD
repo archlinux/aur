@@ -2,7 +2,7 @@
 pkgname=go-capnproto2-git
 provides=('go-capnproto2-git')
 conflicts=('go-capnproto2')
-pkgver=0.0.0
+pkgver=v3.0.0.alpha.24.r13.g1613bb0
 pkgrel=1
 pkgdesc="Cap'n Proto library and code generator for Go"
 arch=('x86_64' 'aarch64')
@@ -11,6 +11,11 @@ license=('MIT')
 depends=('go')
 source=('git+https://github.com/capnproto/go-capnproto2.git')
 sha256sums=('SKIP')
+
+pkgver() {
+  cd go-capnproto2
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   cd go-capnproto2/capnpc-go

@@ -1,6 +1,6 @@
 pkgbase = go-capnproto2-git
 	pkgdesc = Cap'n Proto library and code generator for Go
-	pkgver = 0.0.0
+	pkgver = v3.0.0.alpha.24.r13.g1613bb0
 	pkgrel = 1
 	url = https://github.com/capnproto/go-capnproto2
 	arch = x86_64
