@@ -20,8 +20,7 @@ md5sums=('SKIP')
 
 # Compile the source code 
 build () {
-    mkdir -p $pkgname
-    cd $pkgname
+    cd assert-fortran/
     make compile
 }
 
@@ -32,6 +31,6 @@ package() {
     mkdir -p usr
     mkdir -p usr/lib
     mkdir -p usr/include
-    cd ../../src/$pkgname
+    cd ../../src/assert-fortran/
     make ROOT_DIR=$pkgdir install
 }
