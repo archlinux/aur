@@ -11,6 +11,10 @@ post_install() {
   python manage.py collectstatic --noinput
   chown -R webvirt:webvirt "$dir"
 
+  # Set /etc/shadow permissions.
+  chown root:shadow /etc/shadow
+  chmod 640 /etc/shadow
+
   cat << EOF
 
 A UWSGI configuration is provided at /etc/uwsgi/webvirt_api.ini.
@@ -22,7 +26,6 @@ To start the API server:
 By default, the API is accessible at http://localhost:9080.
 
 EOF
-
 }
 
 post_upgrade() {

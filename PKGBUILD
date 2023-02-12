@@ -28,6 +28,15 @@ pkgver() {
 
 package()
 {
+  mkdir -p "$pkgdir"/usr/lib/sysusers.d
+
+  # Add the shadow group, used for /etc/shadow read access to utilize
+  # PAM authentication.
+  echo 'g shadow - -' > "$pkgdir/usr/lib/sysusers.d/webvirt-api.conf"
+
+  # Add webvirt to the shadow group
+  echo 'm webvirt shadow' >> "$pkgdir/usr/lib/sysusers.d/webvirt-api.conf"
+
   cd "$pkgname"
 
   # Install application to /var/lib/webvirt_api
