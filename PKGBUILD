@@ -6,7 +6,7 @@ _commit=f887fa45dfaeeddfe20c9835ae7ca3a0823b661b
 _chromiumver=102.0.5005.167
 _gcc_patchset=6
 # shellcheck disable=SC2034
-pkgrel=3
+pkgrel=4
 
 _major_ver=${pkgver%%.*}
 if [[ ${_use_suffix} != 0 ]]; then
@@ -53,6 +53,7 @@ source=('git+https://github.com/electron/electron.git'
         'jinja-python-3.10.patch'
         'use-system-libraries-in-node.patch'
         'std-vector-non-const.patch'
+        'skia-freetype-2.13.patch'
         'roll-src-third_party-ffmpeg.patch'
         'chromium-libxml-unbundle.patch'
         'sql-make-VirtualCursor-standard-layout-type.patch'
@@ -68,6 +69,7 @@ sha256sums=('SKIP'
             '55dbe71dbc1f3ab60bf1fa79f7aea7ef1fe76436b1d7df48728a1f8227d2134e'
             'c70652a8b24c237bcfd27469de32797a2cb46d9f0d63d897bb6418314a25644c'
             '76b969e1534e8c355b8b524a686cbf3b24136eaa6bd40b0c09fdd9866049f159'
+            '3a2876e54755df12aacd0575d9d2ff345fabaca6a0dddc72208787dbb2f34fcb'
             '30df59a9e2d95dcb720357ec4a83d9be51e59cc5551365da4c0073e68ccdec44'
             'fd3bf124aacc45f2d0a4f1dd86303fa7f2a3d4f4eeaf33854631d6cb39e12485'
             'b94b2e88f63cfb7087486508b8139599c89f96d7a4181c61fec4b4e250ca327a'
@@ -165,6 +167,9 @@ EOF
   echo "Applying local patches..."
   # Remove '-Xclang -no-opaque-pointers' flag not supported by our clang
   patch -Np1 -i ../remove-no-opaque-pointers-flag.patch
+
+  # Upstream fixes
+  patch -Np1 -d third_party/skia <../skia-freetype-2.13.patch
 
   # Revert ffmpeg roll requiring new channel layout API support
   # https://crbug.com/1325301
