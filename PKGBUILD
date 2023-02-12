@@ -1,6 +1,6 @@
 # Maintainer: Mark CDA <aclo.create@gmail.com>
 
-pkgname=jeff-qt
+pkgname=jeff
 
 _tag=39a297350ad1cb69b48e4b76200ff1d99cdfe998
 source=(git+https://github.com/markcda/jeff.git?signed#tag=$_tag)
