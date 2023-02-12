@@ -1,7 +1,7 @@
 pkgbase = openbgpd
 	pkgdesc = A FREE implementation of the Border Gateway Protocol, Version 4
 	pkgver = 7.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openbgpd.org
 	arch = x86_64
 	license = ISC

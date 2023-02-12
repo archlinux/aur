@@ -4,7 +4,7 @@
 
 pkgname=openbgpd
 pkgver=7.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A FREE implementation of the Border Gateway Protocol, Version 4"
 arch=(x86_64)
 url="https://www.openbgpd.org"
