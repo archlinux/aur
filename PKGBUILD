@@ -2,8 +2,13 @@
 # Contributor: Lucki
 
 pkgbase=asf
-pkgname=('asf-plugin-steamtokendumper' 'asf-plugin-itemsmatcher'  'asf')
-pkgver="5.4.2.13"
+pkgname=('asf-plugin-steamtokendumper'
+         'asf-plugin-itemsmatcher'
+         'asf-plugin-mobileauthenticator'
+         'asf-plugin-periodicgc'
+         'asf-plugin-signinwithsteam'
+         'asf')
+pkgver="5.4.3.1"
 pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/JustArchiNET/ArchiSteamFarm"
@@ -34,7 +39,11 @@ build() {
 
     export DOTNET_FLAGS="-c Release -f net7.0 -p:ContinuousIntegrationBuild=true -p:UseAppHost=false --nologo"
     export PUBLISH_FLAGS="-r "$(uname -s)"-"$(uname -m)" --no-self-contained"
+    #dotnet publish "ArchiSteamFarm.OfficialPlugins.ItemsMatcher" -o "out/result/plugins/ArchiSteamFarm.OfficialPlugins.ItemsMatcher" $DOTNET_FLAGS $PUBLISH_FLAGS
     dotnet publish "ArchiSteamFarm.OfficialPlugins.SteamTokenDumper" -o "out/result/plugins/ArchiSteamFarm.OfficialPlugins.SteamTokenDumper" $DOTNET_FLAGS $PUBLISH_FLAGS
+    dotnet publish "ArchiSteamFarm.OfficialPlugins.MobileAuthenticator" -o "out/result/plugins/ArchiSteamFarm.OfficialPlugins.MobileAuthenticator" $DOTNET_FLAGS $PUBLISH_FLAGS
+    dotnet publish "ArchiSteamFarm.CustomPlugins.PeriodicGC" -o "out/result/plugins/ArchiSteamFarm.CustomPlugins.PeriodicGC" $DOTNET_FLAGS $PUBLISH_FLAGS
+    dotnet publish "ArchiSteamFarm.CustomPlugins.SignInWithSteam" -o "out/result/plugins/ArchiSteamFarm.CustomPlugins.SignInWithSteam" $DOTNET_FLAGS $PUBLISH_FLAGS
 }
 
 package_asf-plugin-steamtokendumper() {
@@ -53,11 +62,36 @@ package_asf-plugin-itemsmatcher() {
     mv asf/out/result/plugins/ArchiSteamFarm.OfficialPlugins.ItemsMatcher "${pkgdir}/usr/lib/asf/plugins/"
 }
 
+package_asf-plugin-mobileauthenticator() {
+    pkgdesc="MobileAuthenticator plugin for ArchiSteamFarm."
+    depends=('asf')
+
+    install -d -m 755 ${pkgdir}/usr/lib/asf/plugins/ArchiSteamFarm.OfficialPlugins.MobileAuthenticator
+    mv asf/out/result/plugins/ArchiSteamFarm.OfficialPlugins.MobileAuthenticator "${pkgdir}/usr/lib/asf/plugins/"
+}
+
+package_asf-plugin-periodicgc() {
+    pkgdesc="PeriodicGC plugin for ArchiSteamFarm."
+    depends=('asf')
+
+    install -d -m 755 ${pkgdir}/usr/lib/asf/plugins/ArchiSteamFarm.CustomPlugins.PeriodicGC
+    mv asf/out/result/plugins/ArchiSteamFarm.CustomPlugins.PeriodicGC "${pkgdir}/usr/lib/asf/plugins/"
+}
+
+package_asf-plugin-signinwithsteam() {
+    pkgdesc="SignInWithSteam plugin for ArchiSteamFarm."
+    depends=('asf')
+
+    install -d -m 755 ${pkgdir}/usr/lib/asf/plugins/ArchiSteamFarm.CustomPlugins.SignInWithSteam
+    mv asf/out/result/plugins/ArchiSteamFarm.CustomPlugins.SignInWithSteam "${pkgdir}/usr/lib/asf/plugins/"
+}
+
 package_asf() {
     pkgdesc="Steam cards farmer."
     depends=('aspnet-runtime>=7.0')
     optdepends=('asf-ui: standalone web interface for ASF'
                 'asf-plugin-itemsmatcher'
+                'asf-plugin-mobileauthenticator'
                 'asf-plugin-steamtokendumper')
     backup=('var/lib/asf/config/ASF.json' 'usr/lib/asf/NLog.config')
 
