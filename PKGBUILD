@@ -64,8 +64,4 @@ package_onedev-new() {
   install -D -m 0644 "$srcdir/$pkgbase-$pkgver/3rdparty-licenses/sun-license.txt" "$pkgdir/usr/share/licenses/$pkgname/sun/LICENSE"
 }
 
-pre_upgrade() {
-  exec "$pkgdir/opt/onedev/bin/upgrade.sh /opt/onedev"
-}
-
 # vim:set ts=2 sw=2 et:
