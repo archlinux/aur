@@ -1,8 +1,9 @@
 pkgbase = libxtend
 	pkgdesc = A library of miscellaneous generic C functions
 	pkgver = 0.1.7
-	pkgrel = 3
+	pkgrel = 5
 	url = https://github.com/outpaddling/libxtend
+	arch = i686
 	arch = x86_64
 	license = BSD-2
 	depends = glibc
