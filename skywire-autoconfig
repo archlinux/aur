@@ -176,8 +176,20 @@ fi
 #attempt to import config if none exists - i.e. import skybian config or restore config
 if [[ ! -f /opt/skywire/skywire.json ]]; then
 	if [[ -f /etc/skywire-config.json ]]; then
-  		_warnmsg1 "Importing configuration from /etc/skywire-config.json"
+  		_warnmsg1 "Importing configuration from /etc/skywire-config.json to /opt/skywire/skywire.json"
   		cp -b  /etc/skywire-config.json /opt/skywire/skywire.json
+	fi
+fi
+if [[ ! -f /opt/skywire/local/reward.txt ]]; then
+	if [[ -f /etc/reward.txt ]]; then
+  		_warnmsg1 "Importing reward address from /etc/reward.txt to /opt/skywire/local/reward.txt"
+  		cp -b  /etc/reward.txt /opt/skywire/local/reward.txt
+	fi
+fi
+if [[ ! -f /opt/skywire/users.db ]]; then
+	if [[ -f /etc/users.db ]]; then
+  		_warnmsg1 "Importing hypervisor UI login credentials from /etc/users.db to /opt/skywire/users.db"
+  		cp -b  /etc/users.db /opt/skywire/users.db
 	fi
 fi
 #config generation

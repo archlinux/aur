@@ -4,7 +4,7 @@ _pkgname=${pkgname/-bin/}
 _githuborg=skycoin
 pkgdesc="Skywire: Building a new Internet. Skycoin.com"
 pkgver='1.3.3'
-pkgrel=3
+pkgrel=4
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
@@ -29,7 +29,7 @@ _source=("${_script[@]}"
 "${_key[@]}"
 )
 source=("${_source[@]}")
-sha256sums=('c46efba8ed1146c10ab5aa85e9b2ca00aa28ee758c005195c2eae997b65c6922'
+sha256sums=('28cfaf8fb5c17e0d2952d8834d24952a1e402fccb3a575371cea37366d8d7b00'
             'f0300bcde06b6818b637ccc23fa8206a40e67f63815781d265bd10d2cda93e65'
             '0c20dd44eca0266a3a10fab24c657295a833eba9f78c6b1cf06132b093ac3ba8'
             'ec24750a99f5cda8d8a8dc94743943218e1b2088c2b2c7dc1644ee78d954fe7e'

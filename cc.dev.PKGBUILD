@@ -14,7 +14,7 @@ source=("git+${url}.git#branch=develop"
 "${_source[@]}"
 )
 sha256sums=('SKIP'
-            'c46efba8ed1146c10ab5aa85e9b2ca00aa28ee758c005195c2eae997b65c6922'
+            '28cfaf8fb5c17e0d2952d8834d24952a1e402fccb3a575371cea37366d8d7b00'
             'f0300bcde06b6818b637ccc23fa8206a40e67f63815781d265bd10d2cda93e65'
             '0c20dd44eca0266a3a10fab24c657295a833eba9f78c6b1cf06132b093ac3ba8'
             'ec24750a99f5cda8d8a8dc94743943218e1b2088c2b2c7dc1644ee78d954fe7e'
