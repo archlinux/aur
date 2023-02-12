@@ -7,7 +7,7 @@ _outdir="_output/linux"
 
 pkgname="${_pkgname}-git"
 pkgver=v2.3.r41.g95ebbb9
-pkgrel=2
+pkgrel=3
 pkgdesc="Self-hosted RSS reader with Vue.js front and Go/SQLite back."
 arch=("any")
 url="https://github.com/${_gitauthor}/${_pkgname}"
@@ -16,7 +16,7 @@ groups=()
 depends=()
 makedepends=("go" "make" "git")
 optdepends=()
-provides=("${_pkgname%}")
+provides=("${_pkgname}")
 conflicts=()
 replaces=()
 backup=()
