@@ -4,15 +4,15 @@ Date: Sun, 25 Dec 2022 22:05:14 +0000
 Subject: [PATCH] Tentative fix for NVIDIA 470.161.03 driver for Linux 6.2-rc1
 
 ---
- nvidia-drm/nvidia-drm-connector.c | 22 ++++++++++++++++++++++
- nvidia-drm/nvidia-drm-drv.c       |  4 ++++
- nvidia/nv-acpi.c                  | 19 ++++++++++++++++---
+ kernel/nvidia-drm/nvidia-drm-connector.c | 22 ++++++++++++++++++++++
+ kernel/nvidia-drm/nvidia-drm-drv.c       |  4 ++++
+ kernel/nvidia/nv-acpi.c                  | 19 ++++++++++++++++---
  3 files changed, 42 insertions(+), 3 deletions(-)
 
-diff --git a/nvidia-drm/nvidia-drm-connector.c b/nvidia-drm/nvidia-drm-connector.c
+diff --git a/kernel/nvidia-drm/nvidia-drm-connector.c b/kernel/nvidia-drm/nvidia-drm-connector.c
 index 6fbcd63..a5ab9e9 100644
---- a/nvidia-drm/nvidia-drm-connector.c
-+++ b/nvidia-drm/nvidia-drm-connector.c
+--- a/kernel/nvidia-drm/nvidia-drm-connector.c
++++ b/kernel/nvidia-drm/nvidia-drm-connector.c
 @@ -20,6 +20,8 @@
   * DEALINGS IN THE SOFTWARE.
   */
@@ -56,10 +56,10 @@ index 6fbcd63..a5ab9e9 100644
  
      if (!nvKms->getDynamicDisplayInfo(nv_dev->pDevice, pDetectParams)) {
          NV_DRM_DEV_LOG_ERR(
-diff --git a/nvidia-drm/nvidia-drm-drv.c b/nvidia-drm/nvidia-drm-drv.c
+diff --git a/kernel/nvidia-drm/nvidia-drm-drv.c b/kernel/nvidia-drm/nvidia-drm-drv.c
 index 6d007b1..d08ab4c 100644
---- a/nvidia-drm/nvidia-drm-drv.c
-+++ b/nvidia-drm/nvidia-drm-drv.c
+--- a/kernel/nvidia-drm/nvidia-drm-drv.c
++++ b/kernel/nvidia-drm/nvidia-drm-drv.c
 @@ -20,6 +20,7 @@
   * DEALINGS IN THE SOFTWARE.
   */
@@ -81,10 +81,10 @@ index 6d007b1..d08ab4c 100644
  
  #if defined(NV_DRM_CRTC_STATE_HAS_ASYNC_FLIP) || \
      defined(NV_DRM_CRTC_STATE_HAS_PAGEFLIP_FLAGS)
-diff --git a/nvidia/nv-acpi.c b/nvidia/nv-acpi.c
+diff --git a/kernel/nvidia/nv-acpi.c b/kernel/nvidia/nv-acpi.c
 index 07501eb..1fdf71c 100644
---- a/nvidia/nv-acpi.c
-+++ b/nvidia/nv-acpi.c
+--- a/kernel/nvidia/nv-acpi.c
++++ b/kernel/nvidia/nv-acpi.c
 @@ -8,6 +8,7 @@
   * _NVRM_COPYRIGHT_END_
   */
