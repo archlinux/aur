@@ -1,6 +1,6 @@
 pkgbase = ruby-google-apis-core
 	pkgdesc = Common utility and base classes for legacy Google REST clients
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://rubygems.org/gems/google-apis-core
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = ruby-google-apis-core
 	depends = ruby-retriable
 	depends = ruby-rexml
 	depends = ruby-webrick
-	noextract = google-apis-core-0.10.0.gem
+	noextract = google-apis-core-0.11.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/google-apis-core-0.10.0.gem
-	sha512sums = 7aa00270d56197853743e84c2346c44001417e5ccb1c35f2b372a3c6651617b970ed3829ec37957654444c89725d60b7d41570e65da29bf7a689e276a09bc98a
+	source = https://rubygems.org/downloads/google-apis-core-0.11.0.gem
+	sha512sums = f0843defa1b7c844d41156faaf9ee05f0f62b87c8120db3918898e4415e23c30b401b00ad4d39f21e8389b71c712d0f01d46018a4c58e2caf4afa9fe339e224a
 
 pkgname = ruby-google-apis-core
