@@ -1,0 +1,16 @@
+pkgbase = excalidraw-cli
+	pkgdesc = Experimental Excalidraw CLI tool
+	pkgver = r131.2d6f180
+	pkgrel = 1
+	url = https://github.com/tommywalkie/excalidraw-cli
+	arch = any
+	license = MIT
+	checkdepends = npm
+	makedepends = git
+	makedepends = yarn
+	depends = nodejs
+	provides = excalidraw-cli
+	source = excalidraw-cli::git+https://github.com/tommywalkie/excalidraw-cli
+	md5sums = SKIP
+
+pkgname = excalidraw-cli
