@@ -1,10 +1,11 @@
+# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 # Maintainer: Rikarnto Bariampa <richard1996ba@gmail.com>
 # Maintainer: Kyle Sferrazza <kyle.sferrazza@gmail.com>
 # Contributor: Max Liebkies <mail@maxliebkies.de>
 
 pkgname=powershell
 _binaryname=pwsh
-_pkgver=7.2.6
+_pkgver=7.3.2
 _pkgnum=${_pkgver:0:1}
 pkgver=${_pkgver/-/.}
 pkgrel=1
@@ -12,14 +13,14 @@ pkgdesc='A cross-platform automation and configuration tool/framework (latest re
 arch=('x86_64')
 url='https://github.com/PowerShell/PowerShell'
 license=('MIT')
-makedepends=('git' 'cmake' 'dotnet-sdk>=6.0.0')
+makedepends=('git' 'cmake' 'dotnet-sdk>=7.0.0')
 depends=('krb5' 'gcc-libs' 'glibc' 'lttng-ust' 'zlib' 'openssl>=1.0' 'icu')
 source=($pkgname::"git+https://github.com/PowerShell/PowerShell.git#tag=v$_pkgver"
         'powershell-native::git+https://github.com/PowerShell/PowerShell-Native.git'
         'Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets')
 sha256sums=('SKIP'
             'SKIP'
-            'SKIP')
+            '8d10afb45883813f805bdf74ec445ae3f2fdbd4d30ab2ce7ce3a55df80693696')
 install=powershell.install
 options=(staticlibs !strip)
 
@@ -80,7 +81,7 @@ check() {
 
 package() {
   mkdir -pv "$pkgdir/opt/microsoft/$pkgname/$_pkgnum"
-  cd "$srcdir/$pkgname/src/powershell-unix/bin/Linux/net6.0/linux-x64/"
+  cd "$srcdir/$pkgname/src/powershell-unix/bin/Linux/net7.0/linux-x64/"
 
   cp -ar ./ "$pkgdir/opt/microsoft/$pkgname/$_pkgnum/"
 
