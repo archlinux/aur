@@ -9,7 +9,7 @@ url="https://airspy.com"
 license=(custom)
 depends=(mono portaudio rtl-sdr alsa-lib)
 makedepends=(unzip)
-source=("sdrsharp.zip::https://ftp.desolve.ru/ftp/viktor/sdrsharp/SDRSharp_v${pkgver:(-4)}.zip"
+source=("sdrsharp.zip::https://ftp.desolve.ru/pub/sdrsharp/SDRSharp_v${pkgver:(-4)}.zip"
         "sdrsharp.png"
         "sdrsharp.desktop"
         "adsbspy.png"
