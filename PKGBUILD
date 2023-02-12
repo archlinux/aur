@@ -6,7 +6,7 @@
 
 pkgname=st
 pkgver=0.9
-pkgrel=3
+pkgrel=4
 pkgdesc='A simple virtual terminal emulator for X.'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 license=('MIT')
@@ -46,11 +46,11 @@ prepare() {
     cp "$BUILDDIR/config.h" "$_sourcedir"
   elif [ ! -e "$BUILDDIR/config.def.h" ]
   then
-    msg='This package can be configured in config.h. Copy the config.def.h '
-    msg+='that was just placed into the package directory to config.h and '
-    msg+='modify it to change the configuration. Or just leave it alone to '
-    msg+='continue to use default values.'
-    echo "$msg"
+    echo \
+      'This package can be configured in config.h. Copy the config.def.h that' \
+      'was just placed into the package directory to config.h and modify it' \
+      'to change the configuration. Or just leave it alone to continue to use' \
+      'default values.'
   fi
   cp "$_sourcedir/config.def.h" "$BUILDDIR"
 }
