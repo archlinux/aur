@@ -3,7 +3,7 @@
 pkgname=jupyterlab-execute-time
 pkgdesc="JupyterLab extension to show execution time for each cell"
 url='https://github.com/deshaw/jupyterlab-execute-time'
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 license=('BSD')
 arch=('any')
@@ -18,12 +18,13 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
 )
 sha256sums=(
-  '652126f4fbb897bfcae0c528ab49d928348af1a050a714ebdd45436cc5d7e7e5'
+  'db97e6e7ea80841db524fb8c656e1e2a9533998c5a6082dc63fe818b8f216130'
 )
 
 build() {
   cd "$_pypi-$pkgver"
-  python -m build --no-isolation --wheel
+  export NODE_OPTIONS=--openssl-legacy-provider
+  python -m build --no-isolation --wheel -x
 }
 
 package() {
