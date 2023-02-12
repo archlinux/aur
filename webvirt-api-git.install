@@ -17,7 +17,7 @@ A UWSGI configuration is provided at /etc/uwsgi/webvirt_api.ini.
 
 To start the API server:
 
-    $ systemctl start uwsgi@webvirt_api
+    # systemctl start uwsgi@webvirt_api
 
 By default, the API is accessible at http://localhost:9080.
 
