@@ -36,10 +36,10 @@ prepare() {
   #                         configuration changes. The package is built using
   #                         default values.
   # present                 The user has supplied his or her configuration. The
-  #                         file will be copied to $srcdir and used during
+  #                         file will be copied to $_sourcedir and used during
   #                         build.
   #
-  # After this test, config.def.h is copied from $srcdir to $BUILDDIR to
+  # After this test, config.def.h is copied from $_sourcedir to $BUILDDIR to
   # provide an up to date template for the user.
   if [ -e "$BUILDDIR/config.h" ]
   then
