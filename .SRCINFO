@@ -1,0 +1,15 @@
+pkgbase = ion-jl
+	pkgdesc = A CLI toolbox for Julia developers
+	pkgver = 0.1.14
+	pkgrel = 1
+	url = https://github.com/Roger-luo/Ion
+	arch = x86_64
+	arch = x86
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	provides = ion
+	source = https://github.com/Roger-luo/Ion/archive/refs/tags/v0.1.14.tar.gz
+	md5sums = aeb05f4e44bb370c5293e12584cceae9
+
+pkgname = ion-jl
