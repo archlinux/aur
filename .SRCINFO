@@ -14,6 +14,6 @@ pkgbase = st
 	source = README.terminfo.rst
 	sha256sums = f36359799734eae785becb374063f0be833cf22f88b4f169cd251b99324e08e7
 	sha256sums = f9deea445a5c6203a0e8e699f3c3b55e27275f17fb408562c4dd5d649edeea23
-	sha256sums = 0ebcbba881832adf9c98ce9fe7667c851d3cc3345077cb8ebe32702698665be2
+	sha256sums = 95be3197f7de77a0fe2e4f527202e17e910ee24e1ed6bc39beb320a1304bb7e1
 
 pkgname = st
