@@ -6,7 +6,7 @@ _commit=80d0d340c71644749bd6d14de4bfe2983aeb95ad
 _chromiumver=104.0.5112.124
 _gcc_patchset=2
 # shellcheck disable=SC2034
-pkgrel=1
+pkgrel=2
 
 _major_ver=${pkgver%%.*}
 if [[ ${_use_suffix} != 0 ]]; then
@@ -53,6 +53,7 @@ source=('git+https://github.com/electron/electron.git'
         'jinja-python-3.10.patch'
         'use-system-libraries-in-node.patch'
         'std-vector-non-const.patch'
+        'skia-freetype-2.13.patch'
         'x11-ozone-fix-X11-screensaver-suspension.patch'
         'roll-src-third_party-ffmpeg.patch'
         'chromium-tflite-system-zlib.patch'
@@ -68,6 +69,7 @@ sha256sums=('SKIP'
             '55dbe71dbc1f3ab60bf1fa79f7aea7ef1fe76436b1d7df48728a1f8227d2134e'
             'c70652a8b24c237bcfd27469de32797a2cb46d9f0d63d897bb6418314a25644c'
             '76b969e1534e8c355b8b524a686cbf3b24136eaa6bd40b0c09fdd9866049f159'
+            '3a2876e54755df12aacd0575d9d2ff345fabaca6a0dddc72208787dbb2f34fcb'
             '9956a843bc8a765c130080616ccd3ebc46ea95c3a2324c4b403bc293a8705eb2'
             '30df59a9e2d95dcb720357ec4a83d9be51e59cc5551365da4c0073e68ccdec44'
             '588c166bf748793758a7df438cfa665b32e09ca8fbd6380be28bc5984a33523c'
@@ -170,6 +172,7 @@ EOF
   patch -Np1 -i ../chromium-tflite-system-zlib.patch
 
   # Upstream fixes
+  patch -Np1 -d third_party/skia <../skia-freetype-2.13.patch
   patch -Np1 -i ../x11-ozone-fix-X11-screensaver-suspension.patch
 
   # Revert ffmpeg roll requiring new channel layout API support

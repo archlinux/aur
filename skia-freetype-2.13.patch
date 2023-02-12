@@ -1,0 +1,48 @@
+From c1373396b85792ee6cf7fcc16870bd3d7e9d0c93 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dominik=20R=C3=B6ttsches?= <drott@chromium.org>
+Date: Tue, 21 Jun 2022 17:33:38 +0300
+Subject: [PATCH] Prepare for FreeType change from FT_F2Dot14 to FT_Fixed for
+ stop_offset
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+In order to support a larger range for stop offsets in variable fonts, I
+plan to resize the stop_offset field to 16.16 in FreeType. Prepare Skia
+for handling that change.
+
+Bug: chromium:1311241
+Change-Id: I1da46a3e4c79f2f3d091e65005c19d16dc382669
+Reviewed-on: https://skia-review.googlesource.com/c/skia/+/551638
+Reviewed-by: Florin Malita <fmalita@google.com>
+Commit-Queue: Dominik Röttsches <drott@google.com>
+---
+ src/ports/SkFontHost_FreeType_common.cpp | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/src/ports/SkFontHost_FreeType_common.cpp b/src/ports/SkFontHost_FreeType_common.cpp
+index ffcb3fd23f..d45cbfd958 100644
+--- a/src/ports/SkFontHost_FreeType_common.cpp
++++ b/src/ports/SkFontHost_FreeType_common.cpp
+@@ -93,6 +93,12 @@ const char* SkTraceFtrGetError(int e) {
+ bool operator==(const FT_OpaquePaint& a, const FT_OpaquePaint& b) {
+     return a.p == b.p && a.insert_root_transform == b.insert_root_transform;
+ }
++
++// The stop_offset field is being upgraded to a larger representation in FreeType, and changed from
++// 2.14 to 16.16. Adjust the shift factor depending on size type.
++static_assert(sizeof(FT_Fixed) != sizeof(FT_F2Dot14));
++constexpr float kColorStopShift =
++    sizeof(FT_ColorStop::stop_offset) == sizeof(FT_F2Dot14) ? 1 << 14 : 1 << 16;
+ #endif
+ 
+ namespace {
+@@ -551,7 +557,7 @@ bool colrv1_configure_skpaint(FT_Face face,
+         FT_ColorStopIterator mutable_color_stop_iterator = colorStopIterator;
+         while (FT_Get_Colorline_Stops(face, &color_stop, &mutable_color_stop_iterator)) {
+             FT_UInt index = mutable_color_stop_iterator.current_color_stop - 1;
+-            colorStopsSorted[index].pos = color_stop.stop_offset / float(1 << 14);
++            colorStopsSorted[index].pos = color_stop.stop_offset / kColorStopShift;
+             FT_UInt16& palette_index = color_stop.color.palette_index;
+             if (palette_index == kForegroundColorPaletteIndex) {
+                 U8CPU newAlpha = SkColorGetA(foregroundColor) *
