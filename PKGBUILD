@@ -1,5 +1,6 @@
 # Maintainer: <mumei AT airmail DOT cc>
 
+_pkgname=Gorm
 pkgname=gorm
 pkgrel=1
 pkgver=1.3.1
