@@ -1,7 +1,7 @@
 pkgbase = pnpm-shell-completion
 	pkgdesc = Complete your pnpm command fastly.
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/g-plane/pnpm-shell-completion
 	arch = x86_64
 	license = MIT
