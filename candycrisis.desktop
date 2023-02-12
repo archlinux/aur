@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Candy Crisis
+Comment=An exciting combination of pure action and puzzle gaming!
+Icon=candycrisis
+Exec=/usr/lib/candycrisis/CandyCrisis
+Path=/usr/lib/candycrisis
+Terminal=false
+Categories=Game;
+Encoding=UTF-8

@@ -1,0 +1,19 @@
+pkgbase = candycrisis
+	pkgdesc = An exciting combination of pure action and puzzle gaming!
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/jorio/CandyCrisis
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = hicolor-icon-theme
+	depends = sdl2
+	source = candycrisis::git+https://github.com/jorio/CandyCrisis#commit=ae730c8d493b92bcc630806267532f063bad35f4
+	source = candycrisis.sh
+	source = candycrisis.desktop
+	b2sums = SKIP
+	b2sums = ac4a7de030218677da4daade536267e1346d2de9451c448c929179acfd4893cfa95b10abddc0cea5dabfaf24983a560744304b554b5795a9118664b4bd77bc26
+	b2sums = 71ea5321357b32402aabb1bef074d90e275d4b640c6f90d1363da126aac99b013602daea289430f5e5be9a90343bef6ac46ebf1155a430eacb7a872856f544ed
+
+pkgname = candycrisis
