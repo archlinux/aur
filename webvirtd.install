@@ -12,10 +12,10 @@ webvirtd ssh keys have been generated.
 1. Copy ${ssh_path}/id_ecdsa.pub to /etc/ssh/authorized_keys
 2. Put 'AuthorizedKeysFile /etc/ssh/authorized_keys .ssh/authorized_keys' in /etc/ssh/sshd_config
 3. Run 'systemctl restart sshd'
-
 EOF
   fi
 
+  echo
   echo "NOTE: Users accessing webvirtd must be added to the 'webvirt' group."
   echo
 }

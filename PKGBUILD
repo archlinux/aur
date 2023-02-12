@@ -1,13 +1,13 @@
 pkgname='webvirtd-git'
-pkgver=1.0.1.r1.g247e1ea
+pkgver=1.0.1.r3.g1d9c9bd
 pkgrel=1
 pkgdesc='A libvirt JSON API'
 license=('Apache')
 url='https://github.com/kevr/webvirtd'
 
 arch=('i686' 'x86_64')
-makedepends=('meson' 'ninja' 'libvirt' 'boost-libs' 'jsoncpp' 'pugixml' 'fmt')
-depends=('libvirt' 'boost-libs' 'jsoncpp' 'pugixml' 'fmt')
+makedepends=('meson' 'ninja' 'libvirt' 'boost-libs')
+depends=('libvirt' 'boost-libs')
 provides=('webvirtd')
 conflicts=('webvirtd')
 
