@@ -2,7 +2,7 @@
 
 pkgname=xcursor-genshin-nahida
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cursor theme of Nahida from Genshin Impact."
 url="https://github.com/SamToki/IconDesign---Sam-Toki-Mouse-Cursors"
 arch=('any')
@@ -15,4 +15,4 @@ package() {
   cp -r "$srcdir"/$pkgname "$pkgdir"/usr/share/icons/
 }
 
-sha256sums=('f2c2d2e6954407d2f2bd5a152a356eb975218738d396a5a3b0ce027380722ef1')
+sha256sums=('8b7de90d5cb766e538f9ce194f89f0be8f18a6c83068e9f3d3799368a3168811')
