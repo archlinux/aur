@@ -1,0 +1,20 @@
+#!/bin/bash
+
+post_install() {
+  cd /usr/lib/webvirt_api
+  virtualenv -p python /usr/lib/webvirt_api/venv
+  source /usr/lib/webvirt_api/venv/bin/activate
+  poetry install
+  python manage.py migrate
+  python manage.py collectstatic --noinput
+  chown -R webvirt:webvirt /usr/lib/webvirt_api
+}
+
+post_upgrade() {
+  post_install $1
+}
+ 
+op=$1
+shift
+ 
+$op $*
