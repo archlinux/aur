@@ -31,12 +31,7 @@ build() {
 
 package() {
   cd jeff
-  mkdir "$pkgdir/usr"
-  mkdir "$pkgdir/usr/bin"
-  mkdir "$pkgdir/usr/share"
-  mkdir "$pkgdir/usr/share/applications"
-  mkdir "$pkgdir/usr/share/pixmaps"
-  cp arts/icons/2000/icon.png "$pkgdir/usr/share/pixmaps/jeff.png"
-  cp arts/jeff.desktop "$pkgdir/usr/share/applications/jeff.desktop"
-  cp jeff-qt/target/jeff-qt "$pkgdir/usr/bin/jeff"
+  install -Dm644 arts/icons/2000/icon.png "$pkgdir/usr/share/pixmaps/jeff.png"
+  install -Dm644 arts/jeff.desktop "$pkgdir/usr/share/applications/jeff.desktop"
+  install -Dm755 jeff-qt/target/jeff-qt "$pkgdir/usr/bin/jeff"
 }
