@@ -1,17 +1,16 @@
 # Maintainer: <mumei AT airmail DOT cc>
 
 pkgname=gorm
-_pkgname=Gorm
 pkgrel=1
-pkgver=1.2.28
+pkgver=1.3.1
 pkgdesc="GNUstep's easy-to-use interface designer"
 arch=('i686' 'x86_64')
 url="http://www.gnustep.org/experience/Gorm.html"
 license=('GPL')
 depends=('gnustep-base' 'gnustep-gui')
 makedepends=('gcc-objc' 'gnustep-make')
-source=(ftp://ftp.gnustep.org/pub/gnustep/dev-apps/gorm-${pkgver}.tar.gz)
-sha256sums=('1384900a32838a60e152cc9e83495125e47f34f484adc6cc411b43e7d3b5b6dd')
+source=(https://github.com/gnustep/apps-gorm/releases/download/$pkgname-${pkgver//./_}/$pkgname-$pkgver.tar.gz)
+sha256sums=('75ee9e3ee4b76820423e04deb3116bf01bcc26a28c4db85d3a67979673041c9e')
 
 build() {
   cd "gorm-$pkgver"
