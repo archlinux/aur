@@ -1,6 +1,6 @@
-diff -ruNp vfu-5.02/rx/rx_auto vfu-5.02p/rx/rx_auto
---- vfu-5.02/rx/rx_auto	2023-02-11 01:09:01.000000000 +0200
-+++ vfu-5.02p/rx/rx_auto	2023-02-11 14:50:42.476502737 +0200
+diff -ruNp vfu-5.02.orig/rx/rx_auto vfu-5.02/rx/rx_auto
+--- vfu-5.02.orig/rx/rx_auto	2023-02-11 01:09:01.000000000 +0200
++++ vfu-5.02/rx/rx_auto	2023-02-12 21:27:31.819143617 +0200
 @@ -27,7 +27,7 @@ for( glob "/tmp/*.rx.cache" )
  
  my $rx = choose( $file ) or die "$0: this file type is not known to me, sorry\n";
@@ -10,9 +10,9 @@ diff -ruNp vfu-5.02/rx/rx_auto vfu-5.02p/rx/rx_auto
  exec_if_exists( "$ENV{HOME}/bin/$rx", @ARGV );
  die "$0: cannot find and/or execute [$rx]\n";
  
-diff -ruNp vfu-5.02/rx/rx_deb vfu-5.02p/rx/rx_deb
---- vfu-5.02/rx/rx_deb	2021-11-19 03:04:19.000000000 +0200
-+++ vfu-5.02p/rx/rx_deb	2023-02-11 14:50:34.236503035 +0200
+diff -ruNp vfu-5.02.orig/rx/rx_deb vfu-5.02/rx/rx_deb
+--- vfu-5.02.orig/rx/rx_deb	2021-11-19 03:04:19.000000000 +0200
++++ vfu-5.02/rx/rx_deb	2023-02-12 21:27:18.379144106 +0200
 @@ -51,7 +51,7 @@ if( $cmd eq "l" || $cmd eq "v" || $cmd e
          }  
        }
@@ -22,48 +22,20 @@ diff -ruNp vfu-5.02/rx/rx_deb vfu-5.02p/rx/rx_deb
    }
  else
    {
-diff -ruNp vfu-5.02/vfu/vfuarc.cpp vfu-5.02p/vfu/vfuarc.cpp
---- vfu-5.02/vfu/vfuarc.cpp	2023-02-11 00:51:33.000000000 +0200
-+++ vfu-5.02p/vfu/vfuarc.cpp	2023-02-11 14:51:26.366501137 +0200
-@@ -34,7 +34,7 @@ void vfu_read_archive_files( int a_recur
-   shell_escape( ap );
+diff -ruNp vfu-5.02.orig/vfu/vfuarc.cpp vfu-5.02/vfu/vfuarc.cpp
+--- vfu-5.02.orig/vfu/vfuarc.cpp	2023-02-12 18:00:15.000000000 +0200
++++ vfu-5.02/vfu/vfuarc.cpp	2023-02-12 21:28:37.639141223 +0200
+@@ -20,7 +20,6 @@
  
-   VString s;
--  s = "/usr/libexec/vfu/rx_auto ";
-+  s = "/usr/lib/vfu/rx_auto ";
-   s += ( a_recursive ) ? "v" : "l";
-   s += " " + an + " " + ap + " 2> /dev/null";
- 
-@@ -135,7 +135,7 @@ void vfu_browse_archive_file()
-   shell_escape( fn );
- 
-   VString s;
--  s = "/usr/libexec/vfu/rx_auto x " + wp + an + " " + fn + " 2> /dev/null";
-+  s = "/usr/lib/vfu/rx_auto x " + wp + an + " " + fn + " 2> /dev/null";
- 
-   vfu_shell( s, "" );
- 
-@@ -179,7 +179,7 @@ void vfu_user_external_archive_exec( VSt
-   shell_escape( fn );
- 
-   VString s;
--  s = "/usr/libexec/vfu/rx_auto x " + wp + an + " " + fn + " 2> /dev/null";
-+  s = "/usr/lib/vfu/rx_auto x " + wp + an + " " + fn + " 2> /dev/null";
- 
-   vfu_shell( s, "" );
- 
-@@ -252,7 +252,7 @@ void vfu_extract_files( int one )
-   shell_escape( an );
- 
-   VString s;
--  s = "/usr/libexec/vfu/rx_auto x " + wp + an + " @" + tmpfile + " 2> /dev/null";
-+  s = "/usr/lib/vfu/rx_auto x " + wp + an + " @" + tmpfile + " 2> /dev/null";
- 
-   vfu_shell( s, "" );
- 
-diff -ruNp vfu-5.02/vfu/vfusetup.h vfu-5.02p/vfu/vfusetup.h
---- vfu-5.02/vfu/vfusetup.h	2023-02-11 00:51:33.000000000 +0200
-+++ vfu-5.02p/vfu/vfusetup.h	2023-02-11 14:51:08.629835116 +0200
+ VString find_rx_auto()
+ {
+-  if( file_exist( "/usr/libexec/vfu/rx_auto" ) ) return VString( "/usr/libexec/vfu/rx_auto" );
+   if( file_exist( "/usr/lib/vfu/rx_auto"     ) ) return VString( "/usr/lib/vfu/rx_auto"     );
+   return VString( "rx_auto" );
+ }
+diff -ruNp vfu-5.02.orig/vfu/vfusetup.h vfu-5.02/vfu/vfusetup.h
+--- vfu-5.02.orig/vfu/vfusetup.h	2023-02-11 00:51:33.000000000 +0200
++++ vfu-5.02/vfu/vfusetup.h	2023-02-12 21:28:02.539142500 +0200
 @@ -45,7 +45,7 @@
  #endif
  

@@ -1,7 +1,7 @@
 pkgbase = vfu
 	pkgdesc = Versatile text-based file-manager
 	pkgver = 5.02
-	pkgrel = 2
+	pkgrel = 3
 	url = http://cade.noxrun.com/projects/vfu
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = vfu
 	optdepends = unzip: for rx_zip
 	source = http://cade.noxrun.com/projects/vfu/vfu-5.02.tar.gz
 	source = vfu-libexec_2_lib.patch
-	sha256sums = cd10f00a86ba71150203582d50783e30ab31b76adfe4b7fb88d1ae88325f0d9e
-	sha256sums = 9c2f50b78e9fc4b9fbd7c457bf8c14976fe7c245fd0472512d609ef3b2d68512
+	sha256sums = 82fd63285a582bccd265c35182d3a844496bdb9aab84c81515ec02a9f2c4b12b
+	sha256sums = 05226413626342c610df02640abaebce5becc9d69b2297498a57e22abfd85b9c
 
 pkgname = vfu
