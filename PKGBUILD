@@ -6,7 +6,7 @@ _commit=45a450257999175dce6d5d8fb83f43397220e9f8
 _chromiumver=98.0.4758.141
 _gcc_patchset=5
 # shellcheck disable=SC2034
-pkgrel=4
+pkgrel=5
 
 _major_ver=${pkgver%%.*}
 if [[ ${_use_suffix} != 0 ]]; then
@@ -61,6 +61,7 @@ source=('git+https://github.com/electron/electron.git'
         'sandbox-build-if-glibc-2.34-dynamic-stack-size-is-en.patch'
         'breakpad-fix-for-non-constant-SIGSTKSZ.patch'
         'use-FT_Done_MM_Var-in-CFX_Font-AdjustMMParams.patch'
+        'skia-freetype-2.13.patch'
         'sql-make-VirtualCursor-standard-layout-type.patch'
        )
 # shellcheck disable=SC2034
@@ -80,6 +81,7 @@ sha256sums=('SKIP'
             'f910be9370c880de6e1d61cc30383c069e421d7acf406166e4fbfad324fc7d61'
             'b4d28867c1fabde6c50a2cfa3f784730446c4d86e5191e0f0000fbf7b0f91ecf'
             '9c9c280be968f06d269167943680fb72a26fbb05d8c15f60507e316e8a9075d5'
+            '8679ad2313b9ddbd896262f6f79d849c4a82d2189d52042809e7cf4b1fc7d8e3'
             'b94b2e88f63cfb7087486508b8139599c89f96d7a4181c61fec4b4e250ca327a'
            )
 
@@ -182,6 +184,7 @@ prepare() {
   patch -Np1 -i ../sandbox-build-if-glibc-2.34-dynamic-stack-size-is-en.patch
   patch -Np1 -d third_party/breakpad/breakpad <../breakpad-fix-for-non-constant-SIGSTKSZ.patch
   patch -Np1 -d third_party/pdfium <../use-FT_Done_MM_Var-in-CFX_Font-AdjustMMParams.patch
+  patch -Np1 -d third_party/skia <../skia-freetype-2.13.patch
 
   # https://chromium-review.googlesource.com/c/chromium/src/+/2862724
   patch -Np1 -i ../sql-make-VirtualCursor-standard-layout-type.patch
@@ -235,6 +238,10 @@ build() {
   # Do not warn about unknown warning options
   CFLAGS+='   -Wno-unknown-warning-option'
   CXXFLAGS+=' -Wno-unknown-warning-option'
+
+  # Let Chromium set its own symbol level
+  CFLAGS=${CFLAGS/-g }
+  CXXFLAGS=${CXXFLAGS/-g }
 
   cd src || exit
   export CHROMIUM_BUILDTOOLS_PATH="${PWD}/buildtools"
