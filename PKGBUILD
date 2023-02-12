@@ -2,6 +2,7 @@ pkgname='webvirtd-git'
 pkgver=1.0.1.r3.g1d9c9bd
 pkgrel=1
 pkgdesc='A libvirt JSON API'
+groups=('webvirt-git')
 license=('Apache')
 url='https://github.com/kevr/webvirtd'
 

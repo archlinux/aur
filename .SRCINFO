@@ -6,6 +6,7 @@ pkgbase = webvirtd-git
 	install = webvirtd.install
 	arch = i686
 	arch = x86_64
+	groups = webvirt-git
 	license = Apache
 	makedepends = meson
 	makedepends = ninja
