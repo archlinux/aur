@@ -3,12 +3,12 @@
 pkgname=gpu-viewer
 _pkgname=GPU-Viewer
 pkgver=2.22
-pkgrel=2
+pkgrel=3
 pkgdesc="A frontend to glxinfo and vulkaninfo."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/arunsivaramanneo/GPU-Viewer/"
 license=('GPL3')
-depends=('gtk4' 'libadwaita' 'python' 'python-gobject' 'python-click' 'vulkan-tools' 'clinfo' 'mesa-utils' 'vdpauinfo' 'xorg-xdpyinfo' 'lsb-release')
+depends=('gtk4' 'libadwaita' 'python' 'python-gobject' 'python-click' 'vulkan-tools' 'clinfo' 'mesa-utils' 'mesa-demos' 'vdpauinfo' 'xorg-xdpyinfo' 'lsb-release')
 makedepends=('meson' 'ninja')
 checkdepends=('appstream-glib')
 optdepends=('nvidia: Vulkan nvidia driver'
