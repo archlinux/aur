@@ -1,6 +1,6 @@
 pkgbase = r-tpp
 	pkgdesc = Analyze thermal proteome profiling (TPP) experiments
-	pkgver = 3.26.0
+	pkgver = 3.26.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/TPP
 	arch = any
@@ -35,7 +35,7 @@ pkgbase = r-tpp
 	depends = r-vgam
 	optdepends = r-biocstyle
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/TPP_3.26.0.tar.gz
-	sha256sums = ce4c2cc0863af7b9c9a1673ad03af133243541a0751c7a97814be14c92d3fbed
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TPP_3.26.1.tar.gz
+	sha256sums = e1dff5a81d663bd6e467855f6455c8eb59d44c04a6811590d86fd2f48f8dc7a8
 
 pkgname = r-tpp
