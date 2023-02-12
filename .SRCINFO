@@ -1,6 +1,6 @@
 pkgbase = cavecube-sdl2
 	pkgdesc = An in-development Minecraft/Infiniminer clone
-	pkgver = 0.5.5
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/PQCraft/CaveCube
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = cavecube-sdl2
 	conflicts = cavecube
 	conflicts = cavecube-bin
 	conflicts = cavecube-sdl2-bin
-	source = cavecube-sdl2-0.5.5-1.tar.gz::https://github.com/PQCraft/CaveCube/archive/refs/tags/0.5.5.tar.gz
+	source = cavecube-sdl2-0.6.0-1.tar.gz::https://github.com/PQCraft/CaveCube/archive/refs/tags/0.6.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = cavecube-sdl2
