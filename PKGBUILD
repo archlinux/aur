@@ -2,9 +2,9 @@
 
 pkgname=biolibc
 pkgver=0.2.4
-pkgrel=3
+pkgrel=5
 pkgdesc="High-performance, memory-efficient bioinformatics library"
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url="https://github.com/auerlab/biolibc"
 license=('BSD-2')
 depends=('glibc')
