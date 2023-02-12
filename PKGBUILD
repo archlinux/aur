@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DAPAR
-_pkgver=1.30.3
+_pkgver=1.30.4
 pkgname=r-${_pkgname,,}
-pkgver=1.30.3
+pkgver=1.30.4
 pkgrel=1
 pkgdesc='Tools for the Differential Analysis of Proteins Abundance with R'
 arch=('any')
@@ -67,7 +67,7 @@ optdepends=(
   r-vsn
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('623b7ab0a3d626a35c36343c065f02a3e656cb9ea0e82cac322df0c6932a2336')
+sha256sums=('ec536211e58edcccb159c06a85359ab80bcfcfcb712315c3a24aeab6a0b99d75')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
