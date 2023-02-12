@@ -6,7 +6,7 @@
 
 pkgname=st
 pkgver=0.9
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple virtual terminal emulator for X.'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 license=('MIT')
@@ -21,7 +21,7 @@ sha256sums=('f36359799734eae785becb374063f0be833cf22f88b4f169cd251b99324e08e7'
 _sourcedir=$pkgname-$pkgver
 
 prepare() {
-  patch --directory="$_sourcedir" --strip=0 < terminfo.patch
+  patch -d "$_sourcedir" -p 0 < terminfo.patch
 
   # This package provides a mechanism to provide a custom config.h. Multiple
   # configuration states are determined by the presence of two files in

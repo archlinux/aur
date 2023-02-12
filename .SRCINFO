@@ -1,7 +1,7 @@
 pkgbase = st
 	pkgdesc = A simple virtual terminal emulator for X.
 	pkgver = 0.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://st.suckless.org
 	arch = i686
 	arch = x86_64
