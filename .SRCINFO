@@ -1,0 +1,16 @@
+pkgbase = pd-else
+	pkgdesc = ELSE externals for Pd
+	pkgver = 1.0_rc6
+	pkgrel = 1
+	url = https://github.com/porres/pd-else
+	arch = i686
+	arch = x86_64
+	license = WTFPL
+	depends = pd
+	depends = fluidsynth
+	source = pd-else-1.0-rc6.tar.gz::https://github.com/porres/pd-else/archive/refs/tags/v1.0-rc6.tar.gz
+	source = pure-data-0.53-1.tar.gz::https://github.com/pure-data/pure-data/archive/refs/tags/0.53-1.tar.gz
+	md5sums = 6f5005da4d15a45885f117838b08c7ac
+	md5sums = f4cbd9dd37aa3f13f42bbb17476b5c55
+
+pkgname = pd-else
