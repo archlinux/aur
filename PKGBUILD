@@ -3,20 +3,21 @@
 
 pkgname=jd-tool
 _pkgname=jd
-pkgver=1.6.1
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="JSON diff and patch"
-arch=('x86_64' 'aarch64')
+arch=(x86_64 aarch64)
 url="https://github.com/josephburnett/jd"
-license=('MIT')
-makedepends=('go')
+license=(MIT)
+makedepends=(go)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('d23e67e1ff6a3752a558bcc00e76cf270189b8a39569cca3aebfe0b172c32d43')
 
-sha256sums=('3e81a8dadb125628430a31e3ea67b8b3053c346d684b74784c6bf0451cc2def0')
+_archive="$_pkgname-$pkgver"
 
 build() {
-  cd $_pkgname-$pkgver
+  cd "$_archive"
 
   mkdir -p build/
 
@@ -24,13 +25,19 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -modcacherw"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   go build -v -o build/jd main.go
 }
 
+check() {
+  cd "$_archive"
+
+  go test ./lib/...
+}
+
 package() {
-  cd $_pkgname-$pkgver
+  cd "$_archive"
 
   install -Dm755 "build/jd" "$pkgdir/usr/bin/jd"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/jd/LICENSE"
