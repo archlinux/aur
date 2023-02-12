@@ -1,8 +1,8 @@
 # Maintainer Pol Marcet Sardà <polmarcetsarda@gmail.com>
 
 pkgname=k8vavoom-git
-_pkgver_base=build560718
-pkgver=build560718.r15184.ec66b0680
+_pkgver_base=build570509
+pkgver=build570509.r16102.208236227
 pkgrel=1
 epoch=1
 pkgdesc="Source port of Doom"

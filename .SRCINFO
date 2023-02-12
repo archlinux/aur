@@ -16,7 +16,7 @@ pkgbase = k8vavoom-git
 	depends = sdl2_mixer
 	depends = openal
 	optdepends = libmad
-	source = k8vavoom-git::git+https://repo.or.cz/k8vavoom.git#tag=build560718
+	source = k8vavoom-git::git+https://repo.or.cz/k8vavoom.git#tag=build570509
 	sha256sums = SKIP
 
 pkgname = k8vavoom-git
