@@ -1,0 +1,20 @@
+pkgbase = imwheel-patched
+	pkgdesc = Mouse wheel configuration tool for XFree86/Xorg (have patches from debian, fixed @Exclude command)
+	pkgver = 1.0.0pre12
+	pkgrel = 16
+	url = https://salsa.debian.org/debian/imwheel
+	install = imwheel.install
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libxtst
+	depends = libxmu
+	provides = imwheel
+	backup = etc/X11/imwheel/imwheelrc
+	backup = etc/X11/imwheel/startup.conf
+	source = git+https://salsa.debian.org/debian/imwheel.git/#commit=1d6940c1630c05292039a75e4b3de3b3e5dab518
+	source = etcdir-install.patch
+	sha256sums = SKIP
+	sha256sums = 602a466e5537e7edb53247648fef62ea5bfa51e56f68dfd9f4fcb4b19e38fd16
+
+pkgname = imwheel-patched
