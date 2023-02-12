@@ -1,0 +1,16 @@
+pkgbase = dexy-theme-git
+	pkgdesc = Dexy Themes For Plasma Desktop
+	pkgver = 20230211
+	pkgrel = 1
+	url = https://github.com/L4ki/Dexy-Plasma-Themes/
+	arch = any
+	license = GPL3
+	options = !strip
+	source = git+https://github.com/L4ki/Dexy-Plasma-Themes.git
+	sha256sums = SKIP
+
+pkgname = dexy-theme-git
+	depends = kvantum
+	optdepends = dexy-icons-git: Matching icon theme
+
+pkgname = dexy-icons-git
