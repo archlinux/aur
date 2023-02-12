@@ -10,7 +10,7 @@ pkgrel=1
 epoch=
 pkgdesc="This is my personal data structure library for c, it has an avl, map, stack structures and more"
 arch=(x86_64)
-url="https://github.com/alecksandr26/datastructure-lib-for-c-git"
+url="https://github.com/alecksandr26/datastructure-lib-for-c"
 license=('Apache License 2.0')
 depends=()
 makedepends=(gcc git make binutils coreutils)
@@ -20,8 +20,7 @@ md5sums=('SKIP')
 
 # Compile the source code 
 build () {
-    mkdir -p $pkgname
-    cd $pkgname
+    cd datastructure-lib-for-c/
     make compile
 }
 
@@ -31,6 +30,6 @@ package() {
     cd $pkgdir
     mkdir -p usr
     mkdir -p usr/lib
-    cp ../../src/$pkgname/lib/libds.a usr/lib/
-    cp -r ../../src/$pkgname/include usr/
+    cp ../../src/datastructure-lib-for-c/lib/libds.a usr/lib/
+    cp -r ../../src/datastructure-lib-for-c/include usr/
 }
