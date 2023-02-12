@@ -1,6 +1,6 @@
 pkgbase = timeswitch
 	pkgdesc = Power off, reboot, suspend or send a notification on timer.
-	pkgver = 2022.12.18
+	pkgver = 2023.01.28
 	pkgrel = 1
 	url = https://github.com/fsobolev/timeswitch
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = timeswitch
 	depends = libadwaita
 	depends = python
 	depends = python-gobject
-	source = git+https://github.com/fsobolev/timeswitch#commit=a493dae1421c5a6a205690641c717365cb225e77
+	source = git+https://github.com/fsobolev/timeswitch#commit=2764ee5e942c375f495ba370c7a75ef1714293a6
 	sha256sums = SKIP
 
 pkgname = timeswitch
