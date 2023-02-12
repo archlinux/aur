@@ -1,6 +1,6 @@
 pkgbase = lib32-nvidia-390xx-utils
 	pkgver = 390.157
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nvidia.com/
 	arch = x86_64
 	license = custom
