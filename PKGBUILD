@@ -3,7 +3,7 @@
 pkgname=kicad-library-espressif-git
 _repo=kicad-libraries
 pkgver=r68.a8a536c
-pkgrel=1
+pkgrel=2
 pkgdesc="KiCad libraries for Espressif chips and modules"
 arch=('any')
 url="https://github.com/espressif/$_repo"
@@ -32,8 +32,8 @@ package() {
     install -d "$pkgdir/usr/share/kicad/footprints"
     cp -r footprints "$pkgdir/usr/share/kicad"
 
-    install -d "$pkgdir/usr/share/kicad/3dmodules/Espressif.pretty"
-    cp -r 3d/* "$pkgdir/usr/share/kicad/3dmodules/Espressif.pretty"
+    install -d "$pkgdir/usr/share/kicad/3dmodels/Espressif.pretty"
+    cp -r 3d/* "$pkgdir/usr/share/kicad/3dmodels/Espressif.pretty"
 
     install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
