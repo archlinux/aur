@@ -5,6 +5,7 @@ pkgbase = webvirt-react-git
 	url = https://github.com/kevr/webvirt_react
 	install = webvirt-react-git.install
 	arch = any
+	groups = webvirt-git
 	license = Apache
 	makedepends = nodejs
 	depends = webvirt-api

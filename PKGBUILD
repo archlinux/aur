@@ -2,6 +2,7 @@ pkgname='webvirt-react-git'
 pkgver=1.0.0.r1.g6cbf3c1
 pkgrel=1
 pkgdesc='React web front-end to webvirt_api'
+groups=('webvirt-git')
 license=('Apache')
 url='https://github.com/kevr/webvirt_react'
 
