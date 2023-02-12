@@ -1,6 +1,6 @@
 pkgbase = o
 	pkgdesc = Text editor and minimalistic IDE
-	pkgver = 2.59.3
+	pkgver = 2.59.5
 	pkgrel = 1
 	url = https://github.com/xyproto/o
 	arch = x86_64
@@ -50,7 +50,7 @@ pkgbase = o
 	optdepends = vte3: for the ko GUI frontend
 	optdepends = yasm: for compiling Assembly
 	optdepends = zig: for compiling and formatting Zig
-	source = git+https://github.com/xyproto/o#commit=ce8699324ae38922ada08caa2c841a7630e558ae
+	source = git+https://github.com/xyproto/o#commit=d0c3f579573c4452400fc874b23b8ddf67348fe6
 	b2sums = SKIP
 
 pkgname = o
