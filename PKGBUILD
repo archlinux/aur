@@ -1,0 +1,18 @@
+# Maintainer: Estela ad Astra <i at estela dot cn>
+
+pkgname=xcursor-genshin-nahida
+pkgver=1.0
+pkgrel=1
+pkgdesc="Cursor theme of Nahida from Genshin Impact."
+url="https://github.com/SamToki/IconDesign---Sam-Toki-Mouse-Cursors"
+arch=('any')
+license=('GPL')
+depends=('libxcursor')
+source=("xcursor-genshin-nahida.tar.gz")
+
+package() {
+  install -dm755 "$pkgdir"/usr/share/icons/
+  cp -r "$srcdir"/$pkgname "$pkgdir"/usr/share/icons/
+}
+
+sha256sums=('f2c2d2e6954407d2f2bd5a152a356eb975218738d396a5a3b0ce027380722ef1')
