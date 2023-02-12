@@ -1,6 +1,6 @@
 pkgbase = doomseeker
 	pkgdesc = A cross-platform Doom server browser
-	pkgver = 1.3.3.r0.g793919c7
+	pkgver = 1.4.r0.gd47a5362
 	pkgrel = 1
 	epoch = 1
 	url = https://doomseeker.drdteam.org/
@@ -14,14 +14,10 @@ pkgbase = doomseeker
 	depends = qt5-tools
 	depends = qt5-base
 	depends = qt5-multimedia
-	optdepends = qt4: A cross-platform application and UI framework
 	optdepends = zandronum: GZDoom fork supporting client/server multiplayer
 	optdepends = odamex: Classic client/server multiplayer fork
 	optdepends = chocolate-doom: Doom source port accurately reproducing the original DOS versions of Doom
-	optdepends = srb2: A 3D Sonic fan game based off of Doom Legacy (aka "Sonic Robo Blast 2")
-	source = doomseeker::git+https://bitbucket.org/Doomseeker/doomseeker#tag=1.3.3
-	source = doomseeker-blobs::git+https://bitbucket.org/Doomseeker/doomseeker-blobs#commit=919add0
-	sha256sums = SKIP
+	source = doomseeker::git+https://bitbucket.org/Doomseeker/doomseeker#tag=1.4.0
 	sha256sums = SKIP
 
 pkgname = doomseeker
