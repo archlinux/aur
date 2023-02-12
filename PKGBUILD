@@ -2,7 +2,7 @@
 # Contributor: Thiago Almeida <echo "dGhpYWdvYWxtZWlkYXNhQGdtYWlsLmNvbQo=" | base64 -d>
 
 pkgname=cloud-nuke
-pkgver=0.20.0
+pkgver=0.25.0
 pkgrel=1
 pkgdesc="AWS cloud account cleaning tool"
 url="https://github.com/gruntwork-io/cloud-nuke"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d616b2d28e189a591e777ded4ee52556f632830b410b07830dfd488abbd6e5f2')
+sha256sums=('a5e461a884c5fc4905fdc8903a0e45c76e45a38a7ffb302e4eb2a6d8d925d348')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -36,7 +36,7 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	install -D "$pkgname" -t "$pkgdir/usr/bin/"
-	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dv "$pkgname" -t "$pkgdir/usr/bin/"
+	install -Dvm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
