@@ -2,13 +2,13 @@
 
 pkgname=pnpm-shell-completion
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete your pnpm command fastly.'
 arch=('x86_64')
 url='https://github.com/g-plane/pnpm-shell-completion'
 license=('MIT')
 source=("https://github.com/g-plane/pnpm-shell-completion/releases/download/v$pkgver/pnpm-shell-completion_$arch-unknown-linux-gnu.tar.gz")
-sha256sums=('3976a533cc14aeaaec6d105799330fb9e9d2d8f998c8cc3598063c1ce284d8b1')
+sha256sums=('b041b2d2dcc642f6139a3da31fa42ec25afaa4ff940d3ce4d5bfbf8e70c95e86')
 
 package() {
   install -Dm755 pnpm-shell-completion $pkgdir/usr/bin/pnpm-shell-completion
