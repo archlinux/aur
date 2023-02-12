@@ -3,11 +3,10 @@ Description=A self-hosted Git Server with CI/CD and Kanban
 After=syslog.target
 
 [Service]
-Type=forking
+Type=simple
 User=onedev
 Group=onedev
-ExecStart=/opt/onedev/bin/server.sh start sysd
-ExecStop=/opt/onedev/bin/server.sh stop sysd
+ExecStart=/opt/onedev/bin/server.sh console
 KillMode=control-group
 Environment=SYSTEMD_KILLMODE_WARNING=true
 
