@@ -6,7 +6,7 @@ _githuborg=${FORK:-$_projectname}
 pkgdesc="Skywire Mainnet Node implementation. Skycoin.com"
 _pkggopath=github.com/${_githuborg}/${_pkgname}
 pkgver='1.3.4'
-pkgrel=4
+pkgrel=5
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
@@ -135,7 +135,7 @@ done
 _msg2 'Symlink skywire-visor to skywire'
 ln -rTsf "${_pkgdir}/${_bin}/${_pkgname}-visor" "${_pkgdir}/usr/bin/${_pkgname}"
 _msg2 'installing dmsghttp-config.json'
-install -Dm644 "${srcdir}/dmsghttp-config.json" "${_pkgdir}/${_dir}/dmsghttp-config.json" || install -Dm644 "${srcdir}/skywire/dmsghttp-config.json" "${_pkgdir}/${_dir}/dmsghttp-config.json"
+install -Dm644 "${srcdir}/dmsghttp-config.json" "${_pkgdir}/${_dir}/dmsghttp-config.json" || install -Dm644 "${srcdir}/skywire/dmsghttp-config.json" "${_pkgdir}/${_dir}/dmsghttp-config.json" || install -Dm644 "${srcdir}/skywire-${_pkgver}/dmsghttp-config.json" "${_pkgdir}/${_dir}/dmsghttp-config.json"
 _msg2 'installing skycoin.asc'
 install -Dm644 "${srcdir}/skycoin" "${_pkgdir}/${_dir}/skycoin.asc" || install -Dm644 "${srcdir}/skywire/skycoin.asc" "${_pkgdir}/${_dir}/skycoin.asc"
 _msg2 'Installing systemd services'
