@@ -1,0 +1,24 @@
+pkgbase = python-jaxlib-cuda
+	pkgdesc = XLA library for JAX
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/google/jax/
+	arch = x86_64
+	license = Apache
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = absl-py
+	depends = cuda
+	depends = cudnn
+	depends = nccl
+	depends = python
+	depends = python-flatbuffers
+	depends = python-numpy
+	depends = python-scipy
+	provides = python-jaxlib
+	conflicts = python-jaxlib
+	source = jaxlib-0.4.3.tar.gz::https://github.com/google/jax/archive/refs/tags/jaxlib-v0.4.3.tar.gz
+	sha256sums = 2104735dc22be2b105e5517bd5bc6ae97f40e8e9e54928cac1585c6112a3d910
+
+pkgname = python-jaxlib-cuda
