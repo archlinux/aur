@@ -3,13 +3,14 @@
 pkgname=gpu-viewer
 _pkgname=GPU-Viewer
 pkgver=2.22
-pkgrel=1
+pkgrel=2
 pkgdesc="A frontend to glxinfo and vulkaninfo."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/arunsivaramanneo/GPU-Viewer/"
 license=('GPL3')
-depends=('gtk4' 'libadwaita' 'python' 'python-gobject' 'python-click' 'vulkan-tools' 'clinfo' 'mesa-utils' 'vdpauinfo' 'xorg-xdpyinfo')
+depends=('gtk4' 'libadwaita' 'python' 'python-gobject' 'python-click' 'vulkan-tools' 'clinfo' 'mesa-utils' 'vdpauinfo' 'xorg-xdpyinfo' 'lsb-release')
 makedepends=('meson' 'ninja')
+checkdepends=('appstream-glib')
 optdepends=('nvidia: Vulkan nvidia driver'
             'mesa'
             'orchis-theme: Preferred GTK theme'
@@ -18,13 +19,19 @@ optdepends=('nvidia: Vulkan nvidia driver'
 source=("https://github.com/arunsivaramanneo/$_pkgname/archive/v$pkgver.tar.gz")
 
 build() {
-	cd "$_pkgname-$pkgver"
-	meson setup -D prefix=/usr _build
+    cd "$_pkgname-$pkgver"
+    meson setup -D prefix=/usr _build
+}
+
+check() {
+    cd GPU-Viewer-$pkgver
+    appstream-util validate-relax --nonet data/*.metainfo.xml
+    desktop-file-validate data/*.desktop
 }
 
 package() {
-	cd "$_pkgname-$pkgver/_build"
-	DESTDIR="$pkgdir" ninja install
+    cd "$_pkgname-$pkgver/_build"
+    DESTDIR="$pkgdir" ninja install
 }
 
 md5sums=('85856e61b1bca7954dd3549ee075d602')
