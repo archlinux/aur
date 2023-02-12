@@ -22,6 +22,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_CXX_STANDARD=17 \
     -DCMAKE_CXX_COMPILER=g++ \
+    -DCMAKE_CXX_FLAGS="-fPIC" \
     -DQT_VERSION=6 \
     -Wno-dev
   cmake --build build --target all
