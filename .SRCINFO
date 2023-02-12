@@ -1,0 +1,12 @@
+pkgbase = palera1n-c
+	pkgdesc = A tool to jailbreak the iPhone X and older devices on iOS/iPadOS 15 and 16
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://palera.in
+	arch = x86_64
+	source = https://github.com/palera1n/palera1n-c/releases/download/v2.0.0-beta.1/palera1n-linux-x86_64
+	source = https://github.com/palera1n/palera1n-c/releases/download/v2.0.0-beta.1/palera1n.1
+	sha256sums = ed5871a79c891b2a71e1a689ea90e7390c53c30b909f3d64dd9ac0dfd4ab5e01
+	sha256sums = ad67f4bd682e321d5f15c04884c4599066bf48bf8b682519dc0ce705d4116183
+
+pkgname = palera1n-c
