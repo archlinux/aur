@@ -6,7 +6,7 @@ _githuborg=${FORK:-$_projectname}
 pkgdesc="Skywire Mainnet Node implementation. Skycoin.com"
 _pkggopath=github.com/${_githuborg}/${_pkgname}
 pkgver='1.3.4'
-pkgrel=3
+pkgrel=4
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
@@ -26,7 +26,7 @@ _source=("skywire-bin::git+https://aur.archlinux.org/skywire-bin")
 source=("skywire-${_tag_ver}.tar.gz::${url}/archive/refs/tags/${_tag_ver}.tar.gz"
 "${_source[@]}"
 )
-sha256sums=('e9307498412921b04b53a9d5bba312d425a2239039bb78266dc4ba03c32ebff2'
+sha256sums=('335b70a41159e8711d962907343c1d46e22dcb3fae49872bd5975bc4fd5e3efe'
             'SKIP')
 _binary=("skywire-cli" "skywire-visor")
 _appbinary=("skychat" "skysocks" "skysocks-client" "vpn-client" "vpn-server")
