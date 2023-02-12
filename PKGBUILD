@@ -2,9 +2,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-ng
-pkgver=28.1.50
-_fix_commit=d5c8bdf
-pkgrel=4
+pkgver=30.0.50
+_fix_commit=487968c
+pkgrel=1
 pkgdesc="A new approach to Emacs - Including TypeScript, Threading, Async I/O, and WebRender"
 arch=('x86_64')
 url="https://emacs-ng.github.io/emacs-ng"
@@ -17,7 +17,7 @@ depends=('jansson' 'ncurses' 'libgccjit' 'librsvg' 'libxpm' 'libjpeg-turbo' 'lib
 	 )
 makedepends=('rustup' 'python' 'texlive-core')
 source=("$pkgname-$pkgver_${_fix_commit}.tar.gz::https://github.com/emacs-ng/emacs-ng/archive/refs/tags/v0.0.${_fix_commit}.tar.gz")
-sha256sums=('49b1edfb915d6ab8a5fa5943c3220c0994b40ca107173311dab6d6ccd1261318')
+sha256sums=('733510d7101725f3997a498b5ec2849bde3e7dff237dc702be3ccab652822b2d')
  
 prepare() {
     cd ${pkgname}-0.0.${_fix_commit}
