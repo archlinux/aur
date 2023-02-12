@@ -4,8 +4,8 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-freetype2
-pkgver=2.12.1
-pkgrel=3
+pkgver=2.13.0
+pkgrel=1
 pkgdesc='Font rasterization library (mingw-w64)'
 arch=('any')
 url='https://www.freetype.org/'
@@ -17,13 +17,15 @@ source=(https://download-mirror.savannah.gnu.org/releases/freetype/freetype-$pkg
         0001-Enable-table-validation-modules.patch
         0002-Enable-subpixel-rendering.patch
         0003-Enable-infinality-subpixel-hinting.patch
-        0004-Enable-long-PCF-family-names.patch)
-sha256sums=('4766f20157cc4cf0cd292f80bf917f92d1c439b243ac3018debf6b9140c41a7f'
+        0004-Enable-long-PCF-family-names.patch
+        0005-builds-meson-parse_modules_cfg.py-Handle-gxvalid-and.patch)
+sha256sums=('5ee23abd047636c24b2d43c6625dcafc66661d1aca64dec9e0d05df29592624c'
             'SKIP'
-            '12c869eeba212c74d07d3d7815848b047ecb5282d5463dffb3bb6d219315d4da'
-            '2497dcb3650271db9bb7ad4f3379b5b3c6a19f5ca5388dd9ba7d42b5c15c8c4f'
-            'caa0bc7d3dfa3b4c6b9beecda6141405dafe540f99a655dc83d1704fa232ac20'
-            '8bf978cd1abd73f54c53f7d214c368b1fd8921cd9800d2cc84427c662ffbbdcb')
+            'd279a9d4b2c146722dbc03f9a33009846efe8bbbe3ada52beb4a1aa4d4dfaa38'
+            'f2e8a16126723458b413e58da267fb30332d0b42fef972f951e3e9fc081fa492'
+            '8e61d12ebdbbcb764a38d4798ee728074bac0aa20978d538b6e7045a63949ab8'
+            'cc364cc0ca21b8b30f29d90ab394d82f3303ca7d9813d866e6bf14f9bccd9564'
+            '08cf087d7d612b4228e24d74df95cf1f397f7c41054c42837c63c1f33ffaee09')
 validpgpkeys=(E30674707856409FF1948010BE6C3AAC63AD8E3F) # Werner Lemberg <wl@gnu.org>
 
 if [[ $pkgname = 'mingw-w64-freetype2-bootstrap' ]]; then
@@ -46,6 +48,7 @@ prepare() {
   patch -Np1 -i ../0002-Enable-subpixel-rendering.patch
   patch -Np1 -i ../0003-Enable-infinality-subpixel-hinting.patch
   patch -Np1 -i ../0004-Enable-long-PCF-family-names.patch
+  patch -Np1 -i ../0005-builds-meson-parse_modules_cfg.py-Handle-gxvalid-and.patch
 }
 
 build() {
