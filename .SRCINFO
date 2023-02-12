@@ -1,0 +1,15 @@
+pkgbase = compass-status-git
+	pkgdesc = made for someone i love
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/l1mey112/compass-status
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	makedepends = vlang
+	source = compass-status::git+https://github.com/l1mey112/compass-status
+	sha512sums = SKIP
+
+pkgname = compass-status-git
