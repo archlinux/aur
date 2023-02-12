@@ -6,11 +6,11 @@ pkgver=1.2.0b1.r82.gedabfce1
 pkgrel=1
 pkgdesc="Python dependency management and packaging made easy"
 arch=(any)
-url="https://python-poetry.org"
+url="https://python-${_pkgname}.org"
 license=(MIT)
 _deps=(cachecontrol
-  cachy
-  cleo-git
+  cleo
+  crashtest
   dulwich
   html5lib
   keyring
@@ -18,17 +18,19 @@ _deps=(cachecontrol
   packaging
   pexpect
   pkginfo
+  platformdirs
   poetry-core-git
+  poetry-plugin-export
   requests
   requests-toolbelt
   shellingham
   tomlkit
-  virtualenv)
+  urllib3
+  trove-classifiers
+  virtualenv) # cachy pyprojects-hook
 depends=("${_deps[@]/#/python-}")
 makedepends=(python-{build,installer} git)
-checkdepends=(python-httpretty
-  python-pytest
-  python-pytest-mock)
+# checkdepends=(python-httpretty python-pytest python-pytest-mock)
 provides=(poetry python-poetry)
 conflicts=(poetry python-poetry)
 source=(git+https://github.com/python-${_pkgname}/${_pkgname}.git
