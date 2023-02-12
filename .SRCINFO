@@ -16,6 +16,6 @@ pkgbase = gnumail.app
 	depends = pantomime
 	depends = addresses.app
 	source = http://download.savannah.nongnu.org/releases/gnustep-nonfsf/GNUMail-1.4.0.tar.gz
-	sha256sums = a4f58bd613a92e59e8e5e1b78a566b036b9d813be9e9bc5afd391a6d6d8a9824
+	sha256sums = 2d90ed91669cdbc77506860f0157dfb8170258b479b436941d8172ec7a9dcc0b
 
 pkgname = gnumail.app

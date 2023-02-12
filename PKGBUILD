@@ -12,7 +12,7 @@ groups=('gnustep-apps')
 depends=('gnustep-base' 'gnustep-gui' 'gnustep-back' 'pantomime' 'addresses.app')
 makedepends=('gcc-objc' 'gnustep-make')
 source=("http://download.savannah.nongnu.org/releases/gnustep-nonfsf/$_pkgname-$pkgver.tar.gz")
-sha256sums=('a4f58bd613a92e59e8e5e1b78a566b036b9d813be9e9bc5afd391a6d6d8a9824')
+sha256sums=('2d90ed91669cdbc77506860f0157dfb8170258b479b436941d8172ec7a9dcc0b')
 
 build() {
   cd "$_pkgname-$pkgver"
