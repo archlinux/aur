@@ -8,6 +8,7 @@ pkgbase = cmake-language-server-git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = git
+	makedepends = python-pdm
 	depends = python-pygls
 	depends = python-pyparsing
 	depends = cmake
