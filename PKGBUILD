@@ -3,7 +3,7 @@
 # Contributor: Evgeny Grablyk <evgeny.grablyk@gmail.com>
 
 pkgname=vfu
-pkgver=5.05
+pkgver=5.07
 pkgrel=1
 pkgdesc="Versatile text-based file-manager"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'ppc64le')
@@ -15,7 +15,7 @@ optdepends=('perl: for the rx_* archiving utilities'
             'unrar: for rx_rar'
             'unzip: for rx_zip')
 source=("http://cade.noxrun.com/projects/${pkgname}/${pkgname}-${pkgver}.tar.gz" "vfu-libexec_2_lib.patch")
-sha256sums=('3c2dc49f5e51d4e907b439e7ef3586e93854396e9fc70b5d08510bd6ddb373c1'
+sha256sums=('b16b2ad125ae58f18789bb1384385748b5ccbce231c88ddc1d99ef2bcef171ab'
             '05226413626342c610df02640abaebce5becc9d69b2297498a57e22abfd85b9c')
 
 prepare() {
@@ -24,7 +24,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  make V=1
+  make V=1 YASCREEN_LD=
   ./build.docs
 }
 
