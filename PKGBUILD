@@ -1,6 +1,6 @@
 # Maintainer: igo95862 <address at domain dot tld>
 pkgname=bubblejail-git
-pkgver=r400.9fa986f
+pkgver=r423.1820189
 pkgrel=1
 pkgdesc="Bubblewrap based sandboxing utility"
 arch=('any')
@@ -23,6 +23,7 @@ conflicts=('bubblejail')
 optdepends=(
 	'bash-completion: completions for bash shell'
 	'fish: completions for fish shell'
+	'slirp4netns: Namespaced networking stack'
 	)
 makedepends=('git' 'meson' 'python-jinja' 'scdoc')
 source=("$pkgname"::"git+https://github.com/igo95862/bubblejail")
