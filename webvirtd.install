@@ -15,9 +15,17 @@ webvirtd ssh keys have been generated.
 EOF
   fi
 
-  echo
-  echo "NOTE: Users accessing webvirtd must be added to the 'webvirt' group."
-  echo
+cat << EOF
+
+NOTE: Users accessing webvirtd must be added to the 'webvirt' group.
+
+To start webvirtd, utilize its systemd service:
+
+  # systemctl start webvirtd.service
+
+By default, webvirtd's API is accessible at /var/run/webvirtd/webvirtd.sock.
+
+EOF
 }
 
 post_upgrade() {
