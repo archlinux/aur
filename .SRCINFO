@@ -1,6 +1,6 @@
 pkgbase = holocure-bin
 	pkgdesc = A free unofficial fan game with Hololive members
-	pkgver = 0.5.1676079090
+	pkgver = 0.5.1676187876
 	pkgrel = 1
 	url = https://kay-yu.itch.io/holocure
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = holocure-bin
 	source = holocure
 	source = holocure.desktop
 	source = holocure.png
-	source = holocure-bin-0.5.1676079090.zip::https://w3g3a5v6.ssl.hwcdn.net/upload2/game/1576684/7328041?GoogleAccessId=uploader@moonscript2.iam.gserviceaccount.com&Expires=1676081428&Signature=RyMaCM6N9o%2Bv0pFiFs5BGMq5QEOj2L4gmPlwyNEEBy0aM%2B3djvRDhioJuF2WwYOt9CPPEFWzNIcczWDtSe4MxvVj%2B7gWGqlwGKoGSMpmYAYR%2FGDVxhA3uTIU4M5bStvr%2F5Q6ytpyxVobpSdf70FXYKC3HHYTTxIlgWix7BJjPTnS9%2BEE5hbL1Kluc5Jsj7uS%2FHOXukA571fyCXNmvWByrK%2FPkXtKkN1RpZ0f9Addnp7Z3AW6Z5X1QYEHvZe%2BSvl5%2BgvajykeoUxsUcWzPAfdlkCltYEl4bD9fUR7qoTEtv4%2BzPTNFVQa2gRL7ueJffgq2jlZawhzfPCazeGEavJ%2BcQ==&hwexp=1676081688&hwsig=d0cbab54d9ebe3da830c5bcc6b9773eb
+	source = holocure-bin-0.5.1676187876.zip::https://w3g3a5v6.ssl.hwcdn.net/upload2/game/1576684/7335355?GoogleAccessId=uploader@moonscript2.iam.gserviceaccount.com&Expires=1676236366&Signature=ivITsEOGRb2iXCqkCsJcvQ3CZlAgLGkP9GpS57gxwLJzMEN8NwF5XG76zKkf8kd40X2qOgHx4qz6epnSthkIx4R3mNo4c7j8EjbAFt8atSSTPm0FOYakBmx9sctzdCk%2F5VNXDZwaDcCjHxnH8T1g9PF%2F6LfLuISXCELxpHCDbe%2FZayTaJkODLiukkUxgRGS3LNwItb7bBkbHMVzVDn5c9TYZUTMi7ew9P2NxDf1cepoWnSFr8fK1Pwea2V1scKIyIhS1x6qcDih%2BCMfJPQAzNRzQLo1dDzZsR8RmMhv9xN4El72zEyKJLmAefsNlMAZUi%2BecokDh9W%2B4bL13ehi8ug==&hwexp=1676236626&hwsig=57a4fae765cdb9f3aff23101483c5a73
 	b2sums = 4301db2ba2d8bd5e9ccddf617c07846323b002eb5aa0e1fdc8df84e2d90d4ce7167fa0097fbcd3f159d209d1950c63afa8ac3d70a18161723566c48d69a8ee08
 	b2sums = b7260f800bf63a8f058b7df9965190583a4b3f6ad3d85aa752e5e9e8aa6f5a17742affe347ee70aee74f781657767ed9c845cbe1c48bc752cb0e7988e1532d92
 	b2sums = ede12f7c2bedcf077dd6da495f5aa2c45b95db128eb28af562b11fc13dcf21db18d98aa818b6b81514049696d9e622364d1f5044282950faa6c64499b2c613c5
-	b2sums = bef5d459591a8fa404f3fcfad5756fb4b0c43fe0ec65fef1d65d192c632afaa268222a5049873ae7824acf56e99dae02ea94a2bd23b438e033081a9fccd26593
+	b2sums = 502a21678bd67582dabe8fd3a738443cb9c70a60fde12f015e9fce24a19a9d5cee261487c9d515bee46bcbdb6da22e9a4b252d5b61361bd2298d5524e028b5c9
 
 pkgname = holocure-bin
