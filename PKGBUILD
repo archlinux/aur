@@ -6,7 +6,7 @@
 #   curl https://keybase.io/threema/pgp_keys.asc | gpg --import
 #   gpg --lsign E7ADD9914E260E8B35DFB50665FDE935573ACDA6
 pkgname=threema-web
-pkgver=2.4.4
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="The Threema Web client, packaged to run locally on port 4242"
 arch=('any')
@@ -24,7 +24,7 @@ source=(
     "launch.py"
 )
 sha256sums=(
-    '82177443edd3203e24cb7078e4a4bc5fe357b235b4af761219cb9bace69fd11b'
+    '45ec4e7d78c0e6eb7326bc73eda5b22e4ad1f2615378c86cdc19e8d4884c47c7'
     'SKIP'
     '1fbf9c4af5548138f75b00d2bd3de462c658db0c14e9897d09b79f8aa235db9e'
     '0968289ce31f750834b8f495951e1a29a2971d38e9d4d20213bb2a1f174a2fb1'
@@ -33,21 +33,21 @@ validpgpkeys=('E7ADD9914E260E8B35DFB50665FDE935573ACDA6')
 install=threema-web.install
 
 build() {
-  cd ${srcdir}/threema-web-${pkgver}-gh/
+  cd "${srcdir}/threema-web-${pkgver}-gh/"
 
   # Update version
-  find ${srcdir} \
+  find "${srcdir}" \
     -type f \
     -exec sed -i "s/${pkgver}-gh/${pkgver}-gh-aur/g" {} +
 }
 
 package() {
   # Create directories
-  mkdir -p ${pkgdir}/opt/ ${pkgdir}/etc/systemd/system/
+  mkdir -p "${pkgdir}/opt/" "${pkgdir}/etc/systemd/system/"
 
   # Install code
-  cp -R threema-web-${pkgver}-gh/ ${pkgdir}/opt/threema-web
-  chown -R root:http ${pkgdir}/opt/threema-web
+  cp -R "threema-web-${pkgver}-gh/" "${pkgdir}/opt/threema-web"
+  chown -R root:http "${pkgdir}/opt/threema-web"
   find "${pkgdir}/opt/threema-web" -type f -exec chmod 640 {} \;
   find "${pkgdir}/opt/threema-web" -type d -exec chmod 750 {} \;
 
