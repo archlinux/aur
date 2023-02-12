@@ -1,0 +1,14 @@
+pkgbase = fasda
+	pkgdesc = Fast And Simple Differential Analysis of transcriptomic data
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/auerlab/fasda
+	arch = i686
+	arch = x86_64
+	license = BSD-2
+	depends = biolibc
+	depends = libxtend
+	source = fasda-0.1.2.tar.gz::https://github.com/auerlab/fasda/archive/refs/tags/0.1.2.tar.gz
+	sha256sums = ea6003795b462286d4b7ea11924f424cdea418a345ceeccd1a04d679edf2374e
+
+pkgname = fasda
