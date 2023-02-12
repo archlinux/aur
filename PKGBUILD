@@ -1,14 +1,14 @@
 pkgname=ueberzugpp
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Command line util which allows to display images in combination with X11 written in C++"
 arch=("x86_64")
 url="https://github.com/jstkdng/ueberzugpp"
 license=("GPL3")
 makedepends=("cmake" "ninja" "cli11")
-depends=("opencv" "libvips" "xcb-util-image" "nlohmann-json")
+depends=("opencv" "libvips" "xcb-util-image" "nlohmann-json" "libsixel")
 source=("https://github.com/jstkdng/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('5ffe6e165839aba9d60daeb55dde79b9bcbc809e036704b12d63696c4a7d137f')
+sha256sums=('6f01a15920fa1d5a530626bca6a0f29b40cc65f71930e77950d52ab0d6af8ee0')
 provides=("ueberzug")
 conflicts=("ueberzug")
 
