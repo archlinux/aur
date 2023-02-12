@@ -13,7 +13,7 @@ makedepends=(git)
 provides=(imhex)
 conflicts=(imhex)
 source=("$url/releases/download/v$pkgver/imhex-$pkgver-ArchLinux-x86_64.pkg.tar.zst")
-md5sums=()
+md5sums=(767ef9bd5cd86de4deb7b1662d527c31)
 
 package() {
     install -Dm755 "$srcdir/usr/bin/imhex" "$pkgdir/usr/bin/imhex"
