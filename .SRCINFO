@@ -1,6 +1,6 @@
 pkgbase = dockle
 	pkgdesc = Container Image Linter for Security, Helping build the Best-Practice Docker Image
-	pkgver = 0.4.10
+	pkgver = 0.4.11
 	pkgrel = 1
 	url = https://github.com/goodwithtech/dockle
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = dockle
 	makedepends = go
 	makedepends = git
 	makedepends = btrfs-progs
-	source = dockle-0.4.10-1.tar.gz::https://github.com/goodwithtech/dockle/archive/refs/tags/v0.4.10.tar.gz
-	sha256sums = ee9865cfe7f3ec7562da1022139bc87e898debc8d3db2321361cf1d73b47b54a
+	source = dockle-0.4.11-1.tar.gz::https://github.com/goodwithtech/dockle/archive/refs/tags/v0.4.11.tar.gz
+	sha256sums = 1a96fee36a1e5b2691f087738a3da1a57e5d8b6f7e3515697e446ad32bcd99cf
 
 pkgname = dockle
