@@ -1,7 +1,7 @@
 # Maintainer: PQCraft <0456523@gmail.com>
 
 pkgname=cavecube-sdl2-bin
-pkgver=0.5.5
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="An in-development Minecraft/Infiniminer clone"
 arch=(x86_64 i686)

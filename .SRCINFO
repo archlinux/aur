@@ -1,6 +1,6 @@
 pkgbase = cavecube-sdl2-bin
 	pkgdesc = An in-development Minecraft/Infiniminer clone
-	pkgver = 0.5.5
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/PQCraft/CaveCube
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = cavecube-sdl2-bin
 	conflicts = cavecube
 	conflicts = cavecube-bin
 	conflicts = cavecube-sdl2
-	source = cavecube-sdl2-bin_data_0.5.5-1.zip::https://github.com/PQCraft/CaveCube/releases/download/0.5.5/cavecube_data.zip
+	source = cavecube-sdl2-bin_data_0.6.0-1.zip::https://github.com/PQCraft/CaveCube/releases/download/0.6.0/cavecube_data.zip
 	sha256sums = SKIP
-	source_x86_64 = cavecube-sdl2-bin_game_sdl2_0.5.5-1.tar.gz::https://github.com/PQCraft/CaveCube/releases/download/0.5.5/cavecube_game_sdl2_linux_x86_64.tar.gz
+	source_x86_64 = cavecube-sdl2-bin_game_sdl2_0.6.0-1.tar.gz::https://github.com/PQCraft/CaveCube/releases/download/0.6.0/cavecube_game_sdl2_linux_x86_64.tar.gz
 	sha256sums_x86_64 = SKIP
-	source_i686 = cavecube-sdl2-bin_game_sdl2_0.5.5-1.tar.gz::https://github.com/PQCraft/CaveCube/releases/download/0.5.5/cavecube_game_sdl2_linux_i686.tar.gz
+	source_i686 = cavecube-sdl2-bin_game_sdl2_0.6.0-1.tar.gz::https://github.com/PQCraft/CaveCube/releases/download/0.6.0/cavecube_game_sdl2_linux_i686.tar.gz
 	sha256sums_i686 = SKIP
 
 pkgname = cavecube-sdl2-bin
