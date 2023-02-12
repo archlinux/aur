@@ -16,10 +16,10 @@ pkgbase = qbittorrent-qt5
 	optdepends = python: needed for torrent search tab
 	provides = qbittorrent
 	conflicts = qbittorrent
-	source = https://downloads.sourceforge.net/sourceforge/qbittorrent/qbittorrent-4.5.0.tar.xz
-	source = https://downloads.sourceforge.net/sourceforge/qbittorrent/qbittorrent-4.5.0.tar.xz.asc
+	source = https://downloads.sourceforge.net/sourceforge/qbittorrent/qbittorrent-4.5.1.tar.xz
+	source = https://downloads.sourceforge.net/sourceforge/qbittorrent/qbittorrent-4.5.1.tar.xz.asc
 	validpgpkeys = D8F3DA77AAC6741053599C136E4A2D025B7CC9A2
-	sha256sums = b084b3c9e55c1f36c9cc3e8858905b7ae0eb2eaa3fad37f8b055c37d82d01388
+	sha256sums = 0527a5887454d6a5f386846f3c73029a6fbeec3d1a4c92e1dc485c485c16add0
 	sha256sums = SKIP
 
 pkgname = qbittorrent-qt5
