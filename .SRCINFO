@@ -1,18 +1,22 @@
 pkgbase = universal-gcode-sender
 	pkgdesc = Java based GRBL compatible cross-platform G-Code sender
-	pkgver = 2.0.7
+	pkgver = 2.0.14
 	pkgrel = 1
 	url = https://github.com/winder/Universal-G-Code-Sender
 	arch = any
 	license = GPL3
-	makedepends = java-environment-jdk=8
+	makedepends = jdk13-openjdk-bin
 	makedepends = npm
 	makedepends = maven
-	depends = java-environment-jdk=8
+	depends = jdk13-openjdk-bin
 	depends = npm
 	provides = universal-gcode-sender
 	conflicts = universal-gcode-sender-git
-	source = universal-gcode-sender-2.0.7.tar.gz::https://github.com/winder/Universal-G-Code-Sender/archive/v2.0.7.tar.gz
-	sha256sums = fa181573087c414fbb29cdb94dcf0a324e3d96948a1334f2e698785a69e35b02
+	source = universal-gcode-sender-2.0.14.tar.gz::https://github.com/winder/Universal-G-Code-Sender/archive/v2.0.14.tar.gz
+	source = universal-gcode-sender.desktop
+	source = ugs_logo_square.svg
+	sha256sums = 798544adf14c39ac1f2aac0fe1c84e99d3781a89613c2f928218570ca19f49c3
+	sha256sums = bb2c016d343490bdbf666aeb1c7de479af21d9cb1c37d506e289fc9122e00b7d
+	sha256sums = 821f25d7fb74e6fc831a05d3220e1a70561833f725cd43b8566854ca05290d9a
 
 pkgname = universal-gcode-sender
