@@ -1,7 +1,7 @@
 # Maintainer: Cedric Girard <cgirard [dot] archlinux [at] valinor [dot] fr>
 
 pkgname=scaphandre
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Electrical power consumption metrology agent"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=(Apache)
 depends=('gcc-libs' 'zlib' 'openssl')
 makedepends=('rust')
 source=($pkgname-$pkgver.tar.gz::https://github.com/hubblo-org/scaphandre/archive/v${pkgver}.tar.gz)
-sha512sums=('c730842981b74d5f2edc7f44fe90047402181e7e7ab89828eb7a4775fb754301bd32078a11218a67c24b907f1ffe4beabd60d2687f218e4815bd9cdd7eab098c')
+sha512sums=('d6ad365a07d2270f47ee37e05e618c12d8ea66c1f1d8c2e9cab59a5b1790ec44af031729a0fe3c59f8fa5087b457dffe78681d70bc61a9228ff562e6c01af2a9')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
