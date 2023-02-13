@@ -3,23 +3,23 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kcmutils-git
-pkgver=5.240.0_r722.gc440652
+pkgver=5.240.0_r731.g029d52a
 pkgrel=1
 pkgdesc='Utilities for interacting with KCModules'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(kdeclarative-git)
-makedepends=(git extra-cmake-modules-git doxygen qt5-tools)
+makedepends=(git extra-cmake-modules-git doxygen qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-groups=(kf5-git)
+groups=(kf6-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  _ver="$(grep -m1 'set(KF5\?_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  _ver="$(grep -m1 'set(KF_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
   echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
