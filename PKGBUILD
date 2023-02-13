@@ -2,23 +2,23 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=syntax-highlighting-git
-pkgver=5.240.0_r2119.g85141223
+pkgver=5.240.0_r2122.g06d7258d
 pkgrel=1
 pkgdesc='Syntax highlighting engine for structured text and code'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(GPL2)
-depends=(qt5-base)
-makedepends=(git extra-cmake-modules-git qt5-xmlpatterns qt5-tools doxygen)
+depends=(qt6-base)
+makedepends=(git extra-cmake-modules-git qt6-xmlpatterns qt6-tools doxygen)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-groups=(kf5-git)
+groups=(kf6-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  _ver="$(grep -m1 'set(KF5\?_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  _ver="$(grep -m1 'set(KF_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
   echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
