@@ -1,40 +1,45 @@
-# Maintainer: Bruno Pagani <archange@archlinux.org>
-# Contributor: Felix Yan <felixonmars@archlinux.org>
-# Contributor: Andrea Scarpino <andrea@archlinux.org>
-
-_pkgname=ktextwidgets
-pkgname=${_pkgname}-light
-pkgver=5.39.0
+_name=ktextwidgets
+pkgname=${_name}-light
+pkgver=5.103.0
 pkgrel=1
-pkgdesc="Advanced text editing widgets, light version without Text-to-Speech"
-arch=('i686' 'x86_64')
-url="https://community.kde.org/Frameworks"
+pkgdesc='Advanced text editing widgets (stripped from unnecessary dependencies)'
+arch=('x86_64')
+url='https://community.kde.org/Frameworks'
 license=('LGPL')
-depends=('kcompletion' 'kservice' 'kiconthemes' 'sonnet')
-makedepends=('extra-cmake-modules' 'python')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+depends=('kcompletion' 'kconfigwidgets' 'sonnet')
+makedepends=('extra-cmake-modules' 'qt5-tools')
 groups=('kf5')
-source=("https://download.kde.org/stable/frameworks/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz"{,.sig})
-sha256sums=('5849d104e99be94d554bff229646df8fde84e3396c82e21a3e390ee08b09d05c' 'SKIP')
+
+conflicts=("${_name}")
+provides=("${_name}")
+
+_snapshot="${_name}-${pkgver}"
+source=("https://download.kde.org/stable/frameworks/${pkgver%.*}/${_snapshot}.tar.xz"{,.sig})
+
+sha256sums=(
+    '95e029aaae1b80669c9e1b241797645dabf562c5a1ceb68e398d0a06d969b5e7'
+    'SKIP'
+)
+
 validpgpkeys=('53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB') # David Faure <faure@kde.org>
 
-prepare() {
-    mkdir -p build
-}
+_disable=(
+    'Qt5TextToSpeech'
+)
+
+_disable=("${_disable[@]/#/"-DCMAKE_DISABLE_FIND_PACKAGE_"}")
+_disable=("${_disable[@]/%/"=ON"}")
 
 build() {
-    cd build
-    cmake ../${_pkgname}-${pkgver} \
-        -DCMAKE_BUILD_TYPE=Release \
+    cmake -B build -S "${_snapshot}" \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DKDE_INSTALL_LIBDIR=lib \
         -DBUILD_TESTING=OFF \
-        -DQt5TextToSpeech_FOUND=OFF
-    make
+        -DBUILD_QCH=OFF \
+        "${_disable[@]}"
+
+    cmake --build "build"
 }
 
 package() {
-    cd build
-    make DESTDIR="${pkgdir}" install
+    DESTDIR="${pkgdir}" cmake --install "build"
 }
