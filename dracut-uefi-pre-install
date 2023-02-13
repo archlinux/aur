@@ -1,0 +1,7 @@
+#!/bin/bash -e
+
+ESP_PATH=$(bootctl --print-esp-path)
+
+# Trigger some IO on ESP path to be sure it's mounted by autofs if it's the case
+# Otherwise upgrading systemd may cause ESP partition not mounted at the time dracut attempt to write new image
+stat "$ESP_PATH" >/dev/null

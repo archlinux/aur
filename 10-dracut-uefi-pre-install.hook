@@ -1,0 +1,16 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Target = usr/lib/modules/*/pkgbase
+Target = usr/lib/dracut/*
+Target = usr/lib/systemd/systemd
+Target = usr/lib/systemd/boot/efi/*.efi.stub
+Target = usr/share/libalpm/hooks/90-dracut-uefi-install.hook
+Target = usr/share/libalpm/scripts/dracut-uefi-install
+Target = usr/src/*/dkms.conf
+
+[Action]
+Description = Ensure ESP is mounted...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/dracut-uefi-pre-install
