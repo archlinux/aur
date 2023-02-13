@@ -1,0 +1,7 @@
+post_install() {
+  sed -i -e "s|'https::/usr/bin/curl -qgb \"\" -fLC - --retry 3 --retry-delay 3 -o %o %u'|'https::/opt/aur-accelerate-cn/start.sh %o %u'|" /etc/makepkg.conf
+}
+
+pre_remove() {
+   sed -i -e "s|'https::/opt/aur-accelerate-cn/start.sh %o %u'|'https::/usr/bin/curl -qgb \"\" -fLC - --retry 3 --retry-delay 3 -o %o %u'|" /etc/makepkg.conf
+}
