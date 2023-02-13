@@ -1,7 +1,7 @@
 # Maintainer: vvxxp8 <concatenate[g] the characters[x] in square[b] brackets[1] in[5] order[3] at gmail dot com>
 
 pkgname=siyuan-appimage
-pkgver=2.7.3
+pkgver=2.7.4
 pkgrel=1
 pkgdesc="A local-first personal knowledge management system, support fine-grained block-level reference and Markdown WYSIWYG"
 arch=("x86_64")
@@ -14,7 +14,7 @@ provides=("siyuan")
 depends=('fuse2')
 optdepends=('pandoc: docx export')
 source=("https://release.b3log.org/siyuan/${_pkgname}")
-sha512sums=("292ef6c7c17583a5048b6af07a2f12f38121aa8d7513ba94f9fbd33b7978181ede85a1a1dc3c26d944e09d5b2bd2c325f5e854f280c0c30e668b6dc94e5076e1")
+sha512sums=("3bda22f4ae9e4ce4e4161ea6e5b30d3a645c9130adb2f877f06b172f007d991f07bc9fa6681782acce518e6117f43b23be1ce5849400474f1876fd51d56413c9")
 
 _installdir=/opt/appimages
 
