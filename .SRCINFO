@@ -5,11 +5,11 @@ pkgbase = r-wdi
 	url = https://cran.r-project.org/package=WDI
 	arch = any
 	license = GPL3
-	makedepends = r-testthat
-	makedepends = r-curl
-	makedepends = r-tidyr>=0.8.0
 	depends = r>=3.5.0
 	depends = r-jsonlite
+	optdepends = r-testthat
+	optdepends = r-curl
+	optdepends = r-tidyr>=0.8.0
 	source = https://cran.microsoft.com/snapshot/2022-09-26/src/contrib/WDI_2.7.8.tar.gz
 	sha256sums = acf56a705d38cadda108a1b9f3a8ce22090bac57c44f1b6ffd23c43d3c39ede0
 
