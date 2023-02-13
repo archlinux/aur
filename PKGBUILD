@@ -3,7 +3,7 @@
 pkgname=tauon-music-box
 _pkgname=tauonmb
 _gitname=TauonMusicBox
-pkgver=7.4.7
+pkgver=7.5.0
 pkgrel=1
 _kissfftver=131.1.0
 _miniaudiocommit=1778a5e839514f35f41d31449f3573e3adffc51a
@@ -45,13 +45,15 @@ depends=('python-pillow'
          )
          
 optdepends=('noto-fonts-cjk: Matching font for CJK characters'
+            'picard: Recommended tag editor'
             'p7zip: 7z archive extraction support'
             'unrar: RAR archive extraction support'
-            'python-plexapi: Plex streaming'
+            'python-plexapi: Plex streaming support'
             'python-pypresence: Discord status support'
-            'python-pychromecast: Chromecast stream support' 
-            'picard: Recommended tag editor'
-            'python-jxlpy: JPEG XL image support' # AUR
+            'python-pychromecast: Chromecast stream support'
+            'python-jxlpy: JPEG XL image support'    # AUR
+            'python-tekore: Spotify feature support' # AUR 
+            'librespot: Spotify audio playback'      # AUR
             )
             
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Taiko2k/TauonMusicBox/archive/v$pkgver.tar.gz"
@@ -75,7 +77,7 @@ package() {
     
     cp -r  assets templates theme t_modules lib "$pkgdir/opt/$pkgname"
  
-    for t in de es fr_FR hu id ja_JP nb_NO pl pt pt_BR pt_PT ru sv zh_CN tr; do
+    for t in cs de es fr_FR hu id ja_JP nb_NO pl pt pt_BR pt_PT ru sv tr zh_CN; do
         install -Dm644 locale/${t}/LC_MESSAGES/*.mo -t "$pkgdir/usr/share/locale/${t}/LC_MESSAGES"
     done
  
@@ -86,6 +88,6 @@ package() {
     install -Dm755 "extra/tauonmb.sh" "$pkgdir/usr/bin/tauon"
 }
 
-md5sums=('052ebe4247df48186f65f5489c0a4458'
+md5sums=('abb4f5e10a5f2dbdf4e76f68fb97bf9d'
          '981ad3e496fbd8edb99704fc0e2aa939'
          '5739102b8a42d944b1d5cb6e2c95b44c')
