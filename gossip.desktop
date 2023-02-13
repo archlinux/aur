@@ -1,7 +1,11 @@
 #!/usr/bin/env xdg-open
 [Desktop Entry]
 Categories=Internet applications;
+Comment=Desktop client for Nostr.
 Exec=/usr/bin/gossip-git
 Icon=gossip-git
+Keywords=messaging;nostr;
+MimeType=x-scheme-handler/nostr;
 Name=gossip-git
 Type=Application
+

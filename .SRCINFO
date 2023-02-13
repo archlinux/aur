@@ -12,6 +12,6 @@ pkgbase = gossip
 	source = gossip-0.3.91.tar.gz::https://github.com/mikedilger/gossip/archive/refs/tags/v0.3.91.tar.gz
 	source = gossip.desktop
 	sha256sums = 69e9858e90a32c9b439b2840b58c7e3d77a4b3b2c6c223c7ac984371c0391ec6
-	sha256sums = 7b2e3b0e1d442f190f0fe28ecba0d4eac7023a51cf066a73ceb7c76eedb4ec67
+	sha256sums = d63b5a204cde01e74c9d1feeef393e30d8aa9ca48715951387e647340f444f55
 
 pkgname = gossip
