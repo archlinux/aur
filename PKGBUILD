@@ -1,9 +1,9 @@
 # Maintainer: Zach Himsel <zach at himsel dot net>
 pkgname='mqtt-explorer'
 pkgver=0.3.5
-pkgrel=10
+pkgrel=11
 pkgdesc="A comprehensive and easy-to-use MQTT Client"
-arch=('any')
+arch=('x86_64')
 url="https://mqtt-explorer.com/"
 license=('CCPL:by-nd')
 depends=(
