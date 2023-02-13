@@ -1,6 +1,6 @@
 pkgbase = wpgtk
 	pkgdesc = A gui wallpaper chooser that changes your WM theme, GTK theme and more
-	pkgver = 6.5.6
+	pkgver = 6.5.7
 	pkgrel = 6
 	url = https://github.com/deviantfero/wpgtk/
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = wpgtk
 	optdepends = feh: set wallpaper
 	optdepends = nitrogen: set wallpaper
 	optdepends = xsettingsd: live reload GTK+ theme
-	source = wpgtk-6.5.6.tar.gz::https://github.com/deviantfero/wpgtk/archive/6.5.6.tar.gz
+	source = wpgtk-6.5.7.tar.gz::https://github.com/deviantfero/wpgtk/archive/6.5.7.tar.gz
 	source = wpgtk.png::https://github.githubassets.com/images/icons/emoji/unicode/1f3b4.png
 	sha256sums = SKIP
 	sha256sums = SKIP
