@@ -2,7 +2,7 @@
 # Contributor: Vyacheslav Artemiev <artemiev.vyacheslav a gmail d com>
 _pkgname=nagstamon
 pkgname=$_pkgname-git
-pkgver=3.11.20230205.r2711.81f9c9c7
+pkgver=3.11.20230212.r2717.de57807a
 pkgrel=1
 pkgdesc="Nagios status monitor for the desktop"
 depends=('python-pyqt6' 'qt6-multimedia' 'qt6-svg' 'python-requests' 'python-beautifulsoup4' 'python-keyring' 'python-psutil' 'python-requests-kerberos' 'python-lxml' 'python-dbus' 'python-dateutil' 'python-pysocks')
@@ -33,7 +33,7 @@ package() {
   # to avoid the issue setup.py is rewritten here to resolve the need for the AppInfo import
   name=$(sed '0,/class AppInfo/d' Nagstamon/Config.py  | grep "NAME " | sed -e "s/^[\t ]*NAME = '//" -e "s/'$//")
   version=$(sed '0,/class AppInfo/d' Nagstamon/Config.py  | grep "VERSION " | sed -e "s/^[\t ]*VERSION = '//" -e "s/'$//")
-  sed -i setup.py -e "s/from Nagstamon.Config import AppInfo.*//" -e "s/AppInfo.NAME/'${name}'/" -e "s/AppInfo.VERSION/'${version}'/" -e "s/  *OS$/OS = 'Linux'/" -e "s/ + '.' + DIST + DIST_VERSION$//"
+  sed -i setup.py -e "s/from Nagstamon.Config import AppInfo.*//" -e "s/AppInfo.NAME/'${name}'/" -e "s/AppInfo.VERSION/'${version}'/" -e "s/  *OS$/OS = 'Linux'/"
   python setup.py install --prefix=/usr --root="$pkgdir"
   mv "$pkgdir/usr/bin/nagstamon.py" "$pkgdir/usr/bin/nagstamon"
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
