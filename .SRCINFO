@@ -1,0 +1,15 @@
+pkgbase = gossip-git
+	pkgdesc = gossip nostr client, rust, egui based.
+	pkgver = r725.e39e48e
+	pkgrel = 1
+	url = https://github.com/pop-os/cosmic-epoch
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	provides = gossip-git
+	conflicts = gossip-git
+	options = !lto
+	source = gossip-git::git+https://github.com/mikedilger/gossip.git
+	sha256sums = SKIP
+
+pkgname = gossip-git
