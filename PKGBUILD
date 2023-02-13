@@ -1,6 +1,6 @@
 # Maintainer: Mehmet Ümit Özden<ozdenmehmetumit@gmail.com>
 pkgname=k380-swap-keys
-pkgver=1.2.1.r0.g304595f
+pkgver=1.3.0.r0.g5ddb97d
 pkgrel=1
 pkgdesc="Convenient way to swap upper fn keys on Logitech K380"
 arch=(any)
