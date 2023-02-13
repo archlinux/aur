@@ -3,7 +3,7 @@
 
 _pkgname=ImHex
 pkgname=${_pkgname,,}
-pkgver=1.26.2
+pkgver=1.27.0
 pkgrel=1
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://imhex.werwolv.net'
@@ -23,7 +23,6 @@ source=("$pkgname::git+https://github.com/WerWolv/ImHex.git#tag=v$pkgver"
         "capstone::git+https://github.com/capstone-engine/capstone#branch=next"
         "pattern_language::git+https://github.com/WerWolv/PatternLanguage#tag=ImHex-v$pkgver"
         0001-makepkg-Fix-compiler-check.patch
-        0002-fix-Deduplicate-resources-directories.patch
         pl-0001-Use-C-23-standard.patch
         pl-0002-makepkg-Remove-extraneous-compiler-flags.patch)
 sha256sums=('SKIP'
@@ -32,20 +31,18 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '7b0bb2b80d345bde38e58c920ea26df8b468b379dd0ec6f13d41ba847eb46706'
-            '91d97b57b1c9e9e61b7b7be4a7ec8dbc2c007cd231dc26064d1adbb7c88eda35'
-            'fc44726aceb321516e8edb3ae25d6bb1e00e0e49b8f2e65ec1388db455b3a382'
-            '3e32d967b19b7fc5000888afcc611844977b4758aa73eba816fffb707c37fa5a')
+            '20c9a17e11315abea3353dc1a52c1c21ce30d460e0d6768d1d978a7b8447e119'
+            '0f166b46b24685a05da759d3cfbc0dc68562e55b41fd3eea1eb16dd933af5139'
+            'd00327b4c033a4d48dbc3cea9bff00a06bff705aa6c989755a84249d68fc8a62')
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        '6a74adf75063bf725fa80a4498a768d155ede519ec305a2008e423824305b9ec4fa5046c8c9c328e18b61a4ce592e75789e5b2a623805b4499cd440589510ae4'
-        '69febb21f4898a5571e4fc87e84da2f3345484c816dd176a629ed8c8cd5fd55193c89c371ced1c732b8aa666019c47bb1df884e4245838de7ea56d5410e723b4'
-        '5e15df92849d3068f04959c45bc8b8d678a2b4ca72ccb3c5e87f733c169919b4b5722eb9991398ecffd4a8b2709011fb0c49b684306981b1fb89888b1794b30c'
-        'a215980d4e5faf4ab509b35a34e6c15da1ee8ab649ea1e98539129a43dd11a38906d1a178b6667662614cb48c2192f8e869cf602ede7b7aabe4baa6312dce56b')
+        '4f24df945269ed0a2812228a09693dee525b53ca014cdc2b5f00ab1d295e21f39893704f89e0fa4f9e5b80893c6ebc119c296f001692909a1c3cb06f772b2315'
+        '331b37ff21071e77e423e20525ab126b8d1610ba0788bc84cfc2a8107786c4095c5a6fa9888cbb78d7866e7eaa0c354731bf506c1ee33fb02ae3b4de5aec5952'
+        'c5e243c24a10c0b60072022077e6f627b086ebb1b837862159adf35b9747debebae01951cc43781206f84a8420d6508b4f7c03a57737e759861275b1f05a0925')
 options=(!lto !strip)
 
 prepare() {
@@ -61,8 +58,7 @@ prepare() {
   git -c protocol.file.allow=always submodule update
 
   git apply \
-    "$srcdir/0001-makepkg-Fix-compiler-check.patch" \
-    "$srcdir/0002-fix-Deduplicate-resources-directories.patch"
+    "$srcdir/0001-makepkg-Fix-compiler-check.patch"
 
   git -C lib/external/pattern_language apply \
     "$srcdir/pl-0001-Use-C-23-standard.patch" \
