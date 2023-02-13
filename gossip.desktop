@@ -1,0 +1,7 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Categories=Internet applications;
+Exec=/usr/bin/gossip-git
+Icon=gossip-git
+Name=gossip-git
+Type=Application
