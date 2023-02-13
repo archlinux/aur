@@ -1,18 +1,17 @@
 pkgbase = kquickcharts-git
 	pkgdesc = A QtQuick plugin providing high-performance charts
-	pkgver = 5.83.0_r454.g4023aa6
+	pkgver = 5.240.0_r560.geecc063
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
-	groups = kf5-git
+	groups = kf6-git
 	license = LGPL
 	makedepends = git
 	makedepends = extra-cmake-modules-git
-	depends = qt5-quickcontrols2
+	depends = qt6-quickcontrols2
 	provides = kquickcharts
 	conflicts = kquickcharts
 	source = git+https://github.com/KDE/kquickcharts.git
 	sha256sums = SKIP
 
 pkgname = kquickcharts-git
-
