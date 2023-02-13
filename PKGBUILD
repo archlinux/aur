@@ -4,7 +4,7 @@ pkgname=bililive-recorder-bin
 _pkgname=bililive-recorder
 provides=($_pkgname)
 conflicts=($_pkgname)
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc='B站录播姬 | BiliBili Stream Recorder | 哔哩哔哩直播录制'
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('GPL3')
 provides=("$_pkgname")
 depends=()
 source=($pkgname-$pkgver.zip::https://github.com/Bililive/BililiveRecorder/releases/download/v$pkgver/BililiveRecorder-CLI-linux-x64.zip)
-sha256sums=('159ca14c80a86adc92c0964538294497770163cc52b4a0eed3539f31622c721d')
+sha256sums=('e1087eabcd8771ab186f1d3297444335c0114481819dfda906e23b3835058812')
 
 package() {
 	cd $srcdir
