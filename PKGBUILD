@@ -1,8 +1,8 @@
 # Maintainer: Can Ozokur <canozokur[at]gmail[dot]com>
 pkgname=beyond-identity-bin
 _pkgname=beyond-identity
-pkgver=2.72.1_0
-_pkgver=2.72.1-0
+pkgver=2.73.0_0
+_pkgver=2.73.0-0
 pkgrel=1
 pkgdesc="Beyond Identity Linux authenticator (official binary)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ provides=('beyond-identity')
 conflicts=('beyond-identity')
 install="${pkgname}.install"
 source=("https://packages.beyondidentity.com/public/linux-authenticator/raw/versions/${_pkgver}/${_pkgname}-${_pkgver}.${CARCH}.tar.gz")
-sha512sums=('dbb2d41ff55a3a7236a763cd18051242f637061d94f6a49d291709f8c06fa5d9b2f753b2ec1438752747e64128ed5313f2d6eec4b72aed0c745eb145973f8e9a')
+sha512sums=('5c66fbc4d08586e99c18e91286832c6c1daf71a5029ca0d7a00229dfd4ca233b82680f5115f6c4fe75b09735be73aee90b59e83abca0e2b29a0f0c3e5dafef3c')
 
 package() {
   cp -R "${srcdir}/etc" "${pkgdir}/etc"
