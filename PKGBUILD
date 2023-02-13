@@ -1,7 +1,7 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=sibs-git
-pkgver=r312.2348c9f
+pkgver=r313.cc0eb46
 pkgrel=1
 pkgdesc='A simple cross-platform build system and package manager for c, c++ and zig. Inspired by rusts cargo'
 arch=('x86_64')
@@ -13,8 +13,8 @@ optdepends=(
 )
 provides=('sibs')
 conflicts=('sibs')
-source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/sibs.git.r312.2348c9f.tar.gz")
-sha512sums=('c631705e8b7c8b861a19d84be1c36d2a0597ab07fbb063fe5deef0a3d2cdd3d41856f3ba8d3ba5180016d94c69d9aedd937a79a3643a0554bebd05d43ec37578')
+source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/sibs.git.${pkgver}.tar.gz")
+sha512sums=('44de4868863c274db9375e26ae39a36a093a2cb86939c5d44da905e120e7e49a90b5f480b60a2d8b8b5320ab1be3632d3e4e302a64f4722a4ea28808156961bd')
 
 build() {
   cd "$srcdir/cmake"
