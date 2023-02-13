@@ -2,7 +2,7 @@
 
 pkgname=clipboard
 _pkgname=Clipboard
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Cut, copy, and paste anything in your terminal."
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -13,7 +13,7 @@ optdepends=('libx11: X11 support'
 	    'wayland: Wayland support'
 	    'wayland-protocols: Wayland support')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Slackadays/Clipboard/archive/${pkgver}.tar.gz")
-sha256sums=('c00580e60c7c402bb0b8e87133fdc511b25205200adb2c17e96c5811cc79c37d')
+sha256sums=('6784aac212307cd7e6957e2ae9f71b4a98c1ce520351d8ca86c8a414b723c899')
 
 build () {
         export CFLAGS="${CFLAGS} -DNDEBUG"
@@ -28,10 +28,8 @@ build () {
 
 package() {
 	DESTDIR="${pkgdir}" cmake --install build
-	ln -s "/usr/bin/${pkgname}" "${pkgdir}/usr/bin/cb"
 
 	cd "${_pkgname}-${pkgver}"
-	install -Dm 644 documentation/manpages/man.1 "${pkgdir}/usr/share/man/man1/${pkgname}.1"
 	install -Dm 644 documentation/manpages/man.md "${pkgdir}/usr/share/doc/${pkgname}/man.md"
 	install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
