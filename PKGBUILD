@@ -3,7 +3,7 @@
 pkgname=snapcast
 _pkgname_snapos=snapos
 pkgver=0.27.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Synchronous multi-room audio player"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/badaix/snapcast"
@@ -32,7 +32,7 @@ build() {
           -DCMAKE_BUILD_TYPE=None \
           -DCMAKE_INSTALL_PREFIX=/usr \
           -Wno-dev
-    make -C build
+    cmake --build build
 }
 
 package() {
