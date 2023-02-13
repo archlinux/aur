@@ -2,8 +2,8 @@
 # Maintainer:  Tjaart van der Walt <archlinux@tjaart.co.za>
 
 pkgname=fgallery
-pkgver=1.8.2
-pkgrel=3
+pkgver=1.9.1
+pkgrel=1
 arch=('any')
 pkgdesc='a modern, minimalist javascript photo gallery'
 url='https://www.thregr.org/~wavexx/software/fgallery/'
@@ -14,11 +14,11 @@ optdepends=('facedetect-git: to center thumbnails on subject face'
     'p7zip: for faster compression'
     'pngcrush: to optimize PNG files'
     'python-pyqt4: to use fcaption')
-source=("https://github.com/wavexx/fgallery/archive/fgallery-${pkgver}.tar.gz")
-sha256sums=('3c9f558b97db57d66ad26885d9fb0738a771d775a40648df6afa4d212dd35750')
+source=("https://www.thregr.org/~wavexx/software/fgallery/releases/fgallery-${pkgver}.zip")
+sha256sums=('16f174c2445edf04cf506f7f18407191ac6f675078c0477d908f6b5111cac67d')
 
 package() {
-  cd "${pkgname}-${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
   # Data files
   install -d "${pkgdir}/usr/share/fgallery"
@@ -33,6 +33,6 @@ package() {
   # Desktop file
   install -Dm644 "utils/fcaption.desktop" "${pkgdir}/usr/share/applications/fcaption.desktop"
 
-  # Man page
+  # # Man page
   install -Dm 644 "fgallery.1" "${pkgdir}/usr/share/man/man1/fgallery.1"
 }
