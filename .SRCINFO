@@ -1,12 +1,12 @@
 pkgbase = parallel-disk-usage
 	pkgdesc = Summarize disk usage of the set of files, recursively for directories.
-	pkgver = 0.8.3
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://github.com/KSXGitHub/parallel-disk-usage
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cargo
-	source = parallel-disk-usage-0.8.3.tar.gz::https://github.com/KSXGitHub/parallel-disk-usage/archive/0.8.3.tar.gz
+	source = parallel-disk-usage-0.8.4.tar.gz::https://github.com/KSXGitHub/parallel-disk-usage/archive/0.8.4.tar.gz
 	sha1sums = SKIP
 
 pkgname = parallel-disk-usage
