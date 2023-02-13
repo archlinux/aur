@@ -5,8 +5,8 @@
 
 _pkgname=nibabel
 pkgname=python-$_pkgname
-pkgver=5.0.0
-pkgrel=4
+pkgver=5.0.1
+pkgrel=1
 pkgdesc='Python library for reading and writing of some common neuroimaging file formats'
 arch=('any')
 url='http://nipy.org/nibabel'
@@ -26,7 +26,7 @@ optdepends=('python-scipy: for full SPM-ANALYZE support'
             'python-indexed-gzip: for faster reading of NIFTI files')
 checkdepends=('python-pytest-httpserver')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('2275be8a6ef7a48d69dfc23c159da6afabde2c57bb50e6966c8ffd0d5cd7f73e9d81635c83ff910a302c8c7d8d394c023783357678c616e14a83b5996c109061')
+sha512sums=('e3b37b114cb7f1bc417d95fd7cbdc8b2ce6640ee783b3b56551b7300d5f643fca6a06876e44189b3eac541eb59b0ca64a610f1fab700d615caf34f0d618443f5')
 
 build()
 {
