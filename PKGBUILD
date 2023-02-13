@@ -6,7 +6,7 @@
 # Contributor: Marcel O'Neil <marcel@marceloneil.com>
 
 pkgname=electrum-git
-pkgver=4.3.2.r226.g4784d933f
+pkgver=4.3.2.r576.g292ce3594
 pkgrel=1
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
@@ -54,23 +54,26 @@ optdepends=('desktop-file-utils: update desktop icon'
             'xdg-utils: update desktop icon'
             'python-amodem: air-gapped transaction signing over audio modem'
             'zbar: QR code reading support')
-source=(git+https://github.com/spesmilo/electrum)
-sha256sums=('SKIP')
+source=(git+https://github.com/spesmilo/electrum
+        git+https://github.com/spesmilo/electrum-locale)
+sha256sums=('SKIP'
+            'SKIP')
 provides=('electrum')
 conflicts=('electrum')
 install=electrum.install
 
 pkgver() {
   cd ${pkgname%-git}
-#  git log -1 --format="%cd" --date=short --no-show-signature | sed "s|-||g"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
+prepare() {
   cd ${pkgname%-git}
 
   echo 'Initializing git submodule...'
   git submodule init
+  git config submodule.contrib/deterministic-build/electrum-locale.url "$srcdir/electrum-locale"
+  git -c protocol.file.allow=always submodule update
 
   echo 'Compiling protobuf description file...'
   protoc \
@@ -80,7 +83,10 @@ build() {
 
   echo 'Creating translations...'
   python contrib/pull_locale
+}
 
+build() {
+  cd ${pkgname%-git}
   echo 'Building...'
   python setup.py build
 }
