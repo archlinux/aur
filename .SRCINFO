@@ -1,14 +1,14 @@
 pkgbase = r-kml
 	pkgdesc = K-Means for Longitudinal Data
-	pkgver = 2.4.1
-	pkgrel = 3
+	pkgver = 2.4.6
+	pkgrel = 1
 	url = https://cran.r-project.org/package=kml
 	arch = x86_64
 	license = GPL
 	depends = r
 	depends = r-clv
 	depends = r-longitudinaldata
-	source = https://cran.r-project.org/src/contrib/kml_2.4.1.tar.gz
-	sha256sums = c2c3523d163d3f4fd746c480b67d01be6324b31e59320f6f340cc71b337bc9d7
+	source = https://cran.r-project.org/src/contrib/kml_2.4.6.tar.gz
+	sha256sums = 120d02118c372e51b28a0476e65597756145559d0b559e31fe4ea7bc5989aab6
 
 pkgname = r-kml
