@@ -1,20 +1,19 @@
 pkgbase = karchive-git
 	pkgdesc = Qt 5 addon providing access to numerous types of archives
-	pkgver = 5.83.0_r482.gfe6334a
+	pkgver = 5.240.0_r612.g3c179ae
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
-	groups = kf5-git
+	groups = kf6-git
 	license = LGPL
 	makedepends = git
 	makedepends = extra-cmake-modules-git
 	makedepends = doxygen
-	makedepends = qt5-tools
-	depends = qt5-base
+	makedepends = qt6-tools
+	depends = qt6-base
 	provides = karchive
 	conflicts = karchive
 	source = git+https://github.com/KDE/karchive.git
 	sha256sums = SKIP
 
 pkgname = karchive-git
-
