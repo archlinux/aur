@@ -4,15 +4,12 @@ _pkgname='dev_one'
 _typesuffix='-dkms'
 _vcssuffix='-git'
 pkgname="${_pkgname}${_typesuffix}${_vcssuffix}"
-pkgver=r8.20230110.466ec1b
-pkgrel=2
+pkgver=r15.20230110.0171589
+pkgrel=1
 pkgdesc="Linux kernel module that creates a device '/dev/one', similar to '/dev/zero' but outputting one-bits (0xFF-bytes)."
 url='https://github.com/tinmarino/dev_one'
 arch=(
-  'armv7h'
-  'aarch64'
-  'i686'
-  'x86_64'
+  'any' # It builds binaries via DKMS _after_ module installation, for whatever architecture the current system runs on, so this package is regarded to be architecture independent.
 )
 license=('GPL2')
 provides=(
@@ -37,20 +34,14 @@ install='dev_one-dkms.install'
 source=(
   "${_pkgname}::git+${url}.git"
   "${_pkgname}-dkms.conf.in"
-  "create_devnode.patch"
-  "commentout_read_debug_information.patch"
-  "makefile_install.patch"
   "one.modules-load.conf"
   "${install}"
 )
 sha256sums=(
-  'SKIP'
-  'eaf701216794a46b55ca01a2a28c2349535c92ea1c63558c3b230ba4f866b047'
-  '17f5357a0640b7ca464c37f008817737bc76d327738186f3e937004eb77a39f0'
-  '42d98c348039ed88f70211ffb60ac6a5e0178bae8923c3da93ea7109f10c55a7'
-  '28072e7459c39a9cb01f9727617e01e406d325012d2fa44f7ec8666de92c8606'
-  '2c8b08da5ce60398e1f19af0e5dccc744df274b826abe585eaba68c525434806'
-  '788c11d95b3e9b4967f4d53b62366209a7af825e26a867ed4a76fc49cf290b05'
+  'SKIP'                                                             # Main source (latest git checkout from https://github.com/tinmarino/dev_one.git)
+  'eaf701216794a46b55ca01a2a28c2349535c92ea1c63558c3b230ba4f866b047' # ${_pkgname}-dkms.conf.in (dev_one-dkms.conf.in)
+  '2c8b08da5ce60398e1f19af0e5dccc744df274b826abe585eaba68c525434806' # one.modules-load.conf
+  '788c11d95b3e9b4967f4d53b62366209a7af825e26a867ed4a76fc49cf290b05' # ${install} (dev_one-dkms.install)
 )
 
 prepare() {
@@ -58,14 +49,12 @@ prepare() {
 
   ## Apply patches:
 
-  printf '%s\n' "  -> Applying patch to make the kernel create information for creating device nodes ..."
-  patch -N -p1 --follow-symlinks -i "${srcdir}/create_devnode.patch"
-
-  printf '%s\n' "  -> Applying patch that comments out writing debug information to the kernel log at every read ..."
-  patch -N -p1 --follow-symlinks -i "${srcdir}/commentout_read_debug_information.patch"
-
-  printf '%s\n' "  -> Applying patch to add 'make install' ..."
-  patch -N -p1 --follow-symlinks -i "${srcdir}/makefile_install.patch"
+  if stat "${srcdir}"/*.patch > /dev/null 2>&1; then # Do only if at least one patch file is present
+    for _patch in "${srcdir}"/*.patch; do
+      printf '%s\n' "  -> Applying patch '${_patch}' ..."
+      patch -N -p1 --follow-symlinks -i "${_patch}"
+    done
+  fi
 
 
   ## Create further documentation files:
