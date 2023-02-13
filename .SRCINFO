@@ -1,18 +1,19 @@
 pkgbase = vapoursynth-editor
 	pkgdesc = Cross-platform editor for VapourSynth scripts
-	pkgver = r19_mod_5.5
+	pkgver = r19_mod_6
 	pkgrel = 1
 	url = https://github.com/YomikoR/VapourSynth-Editor
 	arch = x86_64
 	license = CCPL
+	license = LGPL
 	license = MIT
 	depends = qt6-5compat
 	depends = qt6-base
 	depends = qt6-websockets
-	depends = vapoursynth
-	source = https://github.com/YomikoR/VapourSynth-Editor/archive/refs/tags/r19-mod-5.5.tar.gz
+	depends = vapoursynth>=R58
+	source = https://github.com/YomikoR/VapourSynth-Editor/archive/refs/tags/r19-mod-6.tar.gz
 	source = vsedit.desktop
-	sha256sums = 7b7b0f413800b94445330a9864999a0c5f0cc837d62db8208229786e7412b776
+	sha256sums = e13497cccd730b75b44f1f15277e1729a68bb6b01dec97dc670666e05706844c
 	sha256sums = b6d24441cf5746ea4dc08ecf379c67695bac663deb394db4334ba6aba9474c0f
 
 pkgname = vapoursynth-editor
