@@ -4,7 +4,6 @@ pkgbase = isomount
 	pkgrel = 1
 	arch = any
 	license = GPL
-	makedepends = git
 	depends = fuseiso
 	source = src.tar.gz
 	sha256sums = 3e4654b19a8fd793d1353016f168ef34ea3f4888d591baae48d647fb885eb75e
