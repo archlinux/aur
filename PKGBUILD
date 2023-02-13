@@ -1,7 +1,7 @@
 # Maintainer: flippantwalrus <aur at hexoasm dot net>
 
 pkgname=nabud-git
-pkgver=v0.9.1
+pkgver=v1.1
 pkgrel=1
 epoch=
 pkgdesc="A server for the NABU PC"
