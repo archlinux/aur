@@ -1,0 +1,18 @@
+pkgbase = qianxin-browser-stable
+	pkgdesc = 奇安信可信浏览器国密开发者专版
+	pkgver = 1.0.41603.7
+	pkgrel = 1
+	url = https://www.qianxin.com/product/detail/pid/333
+	arch = x86_64
+	license = custom:development
+	depends = libxkbcommon
+	depends = alsa-lib
+	depends = gtk2
+	depends = mesa
+	depends = nss
+	depends = at-spi2-core
+	provides = QiAnXin
+	source = https://dl.qianxin.com/c8a52014-99d3-57ff/41603/qaxbrowser-safe-stable_1.0.41603.7-1_amd64.deb
+	md5sums = b3f0722b495a6dabdf0e9e989960333e
+
+pkgname = qianxin-browser-stable
