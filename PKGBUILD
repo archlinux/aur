@@ -1,7 +1,7 @@
 # Maintainer: Harish Rajagopal <harish dot rajagopals at gmail dot com>
 
 _pkgname=regreet
-pkgname="greetd-$_pkgname-git"
+pkgname="$_pkgname-git"
 pkgver=r75.b0b21d1
 pkgrel=1
 pkgdesc="Clean and customizable greeter for greetd"
