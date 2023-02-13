@@ -4,25 +4,25 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kio-git
-pkgver=5.240.0_r6115.gf69f60d89
+pkgver=5.240.0_r6124.g46a1d6df2
 pkgrel=1
 pkgdesc='Resource and network access abstraction'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(solid-git kjobwidgets-git kbookmarks-git libxslt kwallet-git ktextwidgets-git kded-git)
-makedepends=(git extra-cmake-modules-git kdoctools-git doxygen qt5-tools)
+makedepends=(git extra-cmake-modules-git kdoctools-git doxygen qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 optdepends=('kio-extras-git: extra protocols support (sftp, fish and more)' 'kdoctools-git: for the help kioslave'
             'kio-fuse-git: to mount remote filesystems via FUSE')
-groups=(kf5-git)
+groups=(kf6-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  _ver="$(grep -m1 'set(KF5\?_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  _ver="$(grep -m1 'set(KF_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
   echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
