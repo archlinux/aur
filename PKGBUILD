@@ -9,7 +9,7 @@
 _name=powerdevil
 pkgname=${_name}-light
 pkgver=5.26.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Manages the power consumption settings of a Plasma Shell. Light version without NetworkManager and Bluez support/dependencies.'
 arch=('x86_64')
 url='https://kde.org/plasma-desktop/'
@@ -40,12 +40,20 @@ validpgpkeys=(
     '1FA881591C26B276D7A5518EEAAF29B42A678C20' # Marco Martin <notmart@gmail.com>
 )
 
+_disable=(
+    'KF5BluezQt'
+    'KF5NetworkManagerQt'
+)
+
+_disable=("${_disable[@]/#/"-DCMAKE_DISABLE_FIND_PACKAGE_"}")
+_disable=("${_disable[@]/%/"=ON"}")
+
 build() {
     cmake -B "build" -S "${_snapshot}" \
-        -DKF5NetworkManagerQt_FOUND=OFF \
-        -DKF5BluezQt_FOUND=OFF \
+        -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBEXECDIR=lib \
-        -DBUILD_TESTING=OFF
+        -DBUILD_TESTING=OFF \
+        "${_disable[@]}"
 
     cmake --build "build"
 }
