@@ -1,40 +1,48 @@
-# Maintainer: Bruno Pagani <archange@archlinux.org>
-# Contributor: Felix Yan <felixonmars@archlinux.org>
-# Contributor: Andrea Scarpino <andrea@archlinux.org>
-
-_pkgname=knotifications
-pkgname=${_pkgname}-light
-pkgver=5.39.0
+_name=knotifications
+pkgname=${_name}-light
+pkgver=5.103.0
 pkgrel=1
-pkgdesc="Abstraction for system notifications, light version without Text-to-Speech"
-arch=('i686' 'x86_64')
-url="https://community.kde.org/Frameworks"
+pkgdesc='Abstraction for system notifications (stripped from unnecessary dependencies)'
+arch=('x86_64')
+url='https://community.kde.org/Frameworks'
 license=('LGPL')
-depends=('phonon-qt5' 'libdbusmenu-qt5' 'kwindowsystem' 'kconfig' 'kcodecs' 'kcoreaddons')
-makedepends=('extra-cmake-modules' 'qt5-tools' 'python')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+depends=('kwindowsystem' 'kconfig' 'kcoreaddons' 'libxtst')
+makedepends=('extra-cmake-modules' 'qt5-tools')
 groups=('kf5')
-source=("https://download.kde.org/stable/frameworks/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz"{,.sig})
-sha256sums=('b21daed46b95f7d109c5c0e8d3d43e9f435ac497e33912420b495c9080626838' 'SKIP')
+
+conflicts=("${_name}")
+provides=("${_name}")
+
+_snapshot="${_name}-${pkgver}"
+source=("https://download.kde.org/stable/frameworks/${pkgver%.*}/${_snapshot}.tar.xz"{,.sig})
+
+sha256sums=(
+    '8f3ccd6a0303408fecb1e5d9ceb22cbdbf9b1ceb08a92d32b7167dd5e2a8d936'
+    'SKIP'
+)
+
 validpgpkeys=('53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB') # David Faure <faure@kde.org>
 
-prepare() {
-    mkdir -p build
-}
+_disable=(
+    'Qt5Qml'
+    'Qt5TextToSpeech'
+    'Canberra'
+    'dbusmenu-qt5'
+)
+
+_disable=("${_disable[@]/#/"-DCMAKE_DISABLE_FIND_PACKAGE_"}")
+_disable=("${_disable[@]/%/"=ON"}")
 
 build() {
-    cd build
-    cmake ../${_pkgname}-${pkgver} \
-        -DCMAKE_BUILD_TYPE=Release \
+    cmake -B build -S "${_snapshot}" \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DKDE_INSTALL_LIBDIR=lib \
         -DBUILD_TESTING=OFF \
-        -DQt5TextToSpeech_FOUND=OFF
-    make
+        -DBUILD_QCH=OFF \
+        "${_disable[@]}"
+
+    cmake --build "build"
 }
 
 package() {
-    cd build
-    make DESTDIR="${pkgdir}" install
+    DESTDIR="${pkgdir}" cmake --install "build"
 }

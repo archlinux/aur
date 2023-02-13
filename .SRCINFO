@@ -1,28 +1,23 @@
 pkgbase = knotifications-light
-	pkgdesc = Abstraction for system notifications, light version without Text-to-Speech
-	pkgver = 5.39.0
+	pkgdesc = Abstraction for system notifications (stripped from unnecessary dependencies)
+	pkgver = 5.103.0
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
-	arch = i686
 	arch = x86_64
 	groups = kf5
 	license = LGPL
 	makedepends = extra-cmake-modules
 	makedepends = qt5-tools
-	makedepends = python
-	depends = phonon-qt5
-	depends = libdbusmenu-qt5
 	depends = kwindowsystem
 	depends = kconfig
-	depends = kcodecs
 	depends = kcoreaddons
+	depends = libxtst
 	provides = knotifications
 	conflicts = knotifications
-	source = https://download.kde.org/stable/frameworks/5.39/knotifications-5.39.0.tar.xz
-	source = https://download.kde.org/stable/frameworks/5.39/knotifications-5.39.0.tar.xz.sig
+	source = https://download.kde.org/stable/frameworks/5.103/knotifications-5.103.0.tar.xz
+	source = https://download.kde.org/stable/frameworks/5.103/knotifications-5.103.0.tar.xz.sig
 	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
-	sha256sums = b21daed46b95f7d109c5c0e8d3d43e9f435ac497e33912420b495c9080626838
+	sha256sums = 8f3ccd6a0303408fecb1e5d9ceb22cbdbf9b1ceb08a92d32b7167dd5e2a8d936
 	sha256sums = SKIP
 
 pkgname = knotifications-light
-
