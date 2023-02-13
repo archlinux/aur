@@ -1,16 +1,16 @@
 pkgbase = krunner-git
 	pkgdesc = Framework for providing different actions given a string query
-	pkgver = 5.83.0_r627.gf60ec40
+	pkgver = 5.240.0_r862.g15bcf5b
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
-	groups = kf5-git
+	groups = kf6-git
 	license = LGPL
 	makedepends = git
 	makedepends = extra-cmake-modules-git
 	makedepends = kdoctools-git
 	makedepends = doxygen
-	makedepends = qt5-tools
+	makedepends = qt6-tools
 	depends = plasma-framework-git
 	depends = threadweaver-git
 	provides = krunner
@@ -19,4 +19,3 @@ pkgbase = krunner-git
 	sha256sums = SKIP
 
 pkgname = krunner-git
-

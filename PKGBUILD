@@ -5,15 +5,15 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=krunner-git
-pkgver=5.83.0_r627.gf60ec40
+pkgver=5.240.0_r862.g15bcf5b
 pkgrel=1
 pkgdesc='Framework for providing different actions given a string query'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
-groups=(kf5-git)
+groups=(kf6-git)
 depends=(plasma-framework-git threadweaver-git)
-makedepends=(git extra-cmake-modules-git kdoctools-git doxygen qt5-tools)
+makedepends=(git extra-cmake-modules-git kdoctools-git doxygen qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
@@ -21,12 +21,13 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  _ver="$(grep -m1 'set(KF5\?_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  _ver="$(grep -m1 'set(KF_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
   echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=ON
   cmake --build build
