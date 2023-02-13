@@ -2,7 +2,7 @@
 # Contributor: Kitsu mail@kitsu.me
 
 pkgname=yofi
-pkgver=0.1.5
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Minimalistic menu for Wayland-based compositors."
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('fontconfig' 'expat' 'graphite' 'pcre' 'wayland-protocols' 'libxkbcommon')
 makedepends=('cargo')
 source=("https://github.com/l4l/yofi/archive/$pkgver.tar.gz")
-sha256sums=('7ed1acc7570179baebefe8359db7e23e52f46bfcda1fe01eca6f53eda3120383')
+sha256sums=('343541731f5fe771e47e4516eb95dd057e7d3c0837f7ba7e529fc663f77ba074')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -24,4 +24,3 @@ package() {
 
   install -Dm755 "target/release/yofi" "$pkgdir/usr/bin/yofi"
 }
-
