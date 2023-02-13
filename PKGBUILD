@@ -3,8 +3,8 @@
 
 _pkgname=citra
 pkgname=$_pkgname-canary-git
-pkgver=r9391.f16706288
-pkgrel=2
+pkgver=r9420.373786e5b
+pkgrel=1
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 arch=('i686' 'x86_64')
 url='https://github.com/citra-emu/citra-canary'
@@ -19,10 +19,62 @@ depends=('shared-mime-info'
          'libxkbcommon-x11'
          'ffmpeg'
          'libfdk-aac'
-         'libusb')
-makedepends=('git' 'cmake' 'python' 'doxygen')
-source=("$_pkgname::git+https://github.com/citra-emu/citra-canary.git")
-md5sums=('SKIP')
+         'libusb'
+         'boost-libs')
+makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson')
+source=("$_pkgname::git+https://github.com/citra-emu/citra-canary.git"
+        "boost::git+https://github.com/citra-emu/ext-boost.git"
+        "nihstro::git+https://github.com/neobrain/nihstro.git"
+        "soundtouch::git+https://github.com/citra-emu/ext-soundtouch.git"
+        "catch2::git+https://github.com/catchorg/Catch2"
+        "dynarmic::git+https://github.com/merryhime/dynarmic.git"
+        "git+https://github.com/herumi/xbyak.git"
+        "git+https://github.com/fmtlib/fmt.git"
+        "git+https://github.com/lsalzman/enet.git"
+        "git+https://github.com/benhoyt/inih.git"
+        "libressl::git+https://github.com/citra-emu/ext-libressl-portable.git"
+        "git+https://github.com/libusb/libusb.git"
+        "git+https://github.com/mozilla/cubeb"
+        "git+https://github.com/discord/discord-rpc.git"
+        "git+https://github.com/arun11299/cpp-jwt.git"
+        "git+https://github.com/wwylele/teakra.git"
+        "git+https://github.com/lvandeve/lodepng.git"
+        "git+https://github.com/facebook/zstd.git"
+        "git+https://github.com/lemenkov/libyuv.git"
+        "sdl2::git+https://github.com/libsdl-org/SDL"
+        "git+https://github.com/abdes/cryptopp-cmake.git"
+        "git+https://github.com/weidai11/cryptopp.git"
+        # cubeb's submodule
+        "git+https://github.com/google/googletest"
+        "git+https://github.com/arsenm/sanitizers-cmake"
+        #dynarmic's zydis submodule
+        "zycore::git+https://github.com/zyantific/zycore-c"
+        )
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
@@ -31,8 +83,20 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$_pkgname"
+    for submodule in {boost,nihstro,soundtouch,catch2,dynarmic,xbyak,fmt,enet,libressl,cubeb,discord-rpc,cpp-jwt,teakra,zstd,libyuv,cryptopp-cmake,cryptopp,sdl2,lodepng,libusb,inih};
+    do
+    git config --file=.gitmodules submodule.${submodule}.url "$srcdir/${submodule}"
+    done
+    git -c protocol.file.allow=always submodule update --init
 
-    git submodule update --init --recursive
+    cd "$srcdir/$_pkgname/externals/cubeb"
+    git config --file=.gitmodules submodule.googletest.url "$srcdir/googletest"
+    git config --file=.gitmodules submodule."cmake/sanitizers-cmake".url "$srcdir/sanitizers-cmake"
+    git -c protocol.file.allow=always submodule update --init
+
+    cd "$srcdir/$_pkgname/externals/dynarmic/externals/zydis"
+    git config --file=.gitmodules submodule.dependencies/zycore.url "$srcdir/zycore"
+    git -c protocol.file.allow=always submodule update --init
 }
 
 build() {
@@ -61,7 +125,7 @@ build() {
       -DUSE_DISCORD_PRESENCE=ON \
       -DENABLE_FFMPEG_VIDEO_DUMPER=ON \
       -DENABLE_FFMPEG_AUDIO_DECODER=ON \
-      -DUSE_SYSTEM_BOOST=OFF \
+      -DUSE_SYSTEM_BOOST=ON \
       -DUSE_SYSTEM_SDL2=ON
     make
 }
