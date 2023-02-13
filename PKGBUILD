@@ -1,6 +1,6 @@
 # Maintainer: tercean <cg@zknt.org>
 pkgname=deltachat-desktop
-pkgver=1.34.2
+pkgver=1.34.4
 pkgrel=1
 pkgdesc="A privacy oriented chat application built on e-mail"
 arch=("any")
@@ -15,10 +15,10 @@ source=(
     "deltachat-desktop.sh"
     "static_build_info.patch"
 )
-sha256sums=('058a58b30e5c52ac31603a5fd9607c7492b3c9c71b5450697f2e2d1521b02577'
+sha256sums=('1f244303fac9a2fadf657936017d45c17a32395b5c0175a17c6f8abcabc9328b'
             '39bae164c234b3c89e7ae2bde89753c90065df7f37fece084f7f5acccbb9f1f1'
             '9b581cb127a74a7d6bcf67a1f0637dbcd00dca531db890e7a8be99919aaaa04d'
-            'f28d7783f45e4ddc496029ce961ad2c30a777adbdccd66817599f9d422d24b7d')
+            '8e9dd09930d509a9c77ed23f527cd1818182c5e6063c0aa511c10b1833f4820e')
 
 prepare() {
     cd "$srcdir/${pkgname}-${pkgver}"
