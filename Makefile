@@ -21,5 +21,4 @@ clean:
 		sanitizers-cmake \
 		websocketpp \
 		magic_enum \
-		miniaudio \
-		googletest
+		miniaudio
