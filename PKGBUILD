@@ -23,4 +23,5 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   install -Dm755 "target/release/yofi" "$pkgdir/usr/bin/yofi"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
