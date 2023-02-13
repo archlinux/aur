@@ -1,7 +1,7 @@
 # Maintainer: Vitaliy Berdinskikh <ur6lad at gmail dot com>
 pkgname=jedit-pkgbuild 
 pkgver=4.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc='jEdit PKGBUILD edit mode'
 arch=('any')
 url='https://gitlab.com/radio_rogal/jedit-pkgbuild'
