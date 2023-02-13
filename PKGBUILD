@@ -1,3 +1,4 @@
+# Maintainer: Michael Dilger <mike@mikedilger.com>
 # Maintainer: soloturn@gmail.com
 
 _basename=gossip
@@ -18,7 +19,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  '7b2e3b0e1d442f190f0fe28ecba0d4eac7023a51cf066a73ceb7c76eedb4ec67'
+  '3629a8d3fbe5ea9e7e008b28b0c108e03dfdeb5a0747df6a3728989dc8477a00'
 )
 
 pkgver() {

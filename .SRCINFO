@@ -13,6 +13,6 @@ pkgbase = gossip-git
 	source = gossip-git::git+https://github.com/mikedilger/gossip.git
 	source = gossip-git.desktop
 	sha256sums = SKIP
-	sha256sums = 7b2e3b0e1d442f190f0fe28ecba0d4eac7023a51cf066a73ceb7c76eedb4ec67
+	sha256sums = 3629a8d3fbe5ea9e7e008b28b0c108e03dfdeb5a0747df6a3728989dc8477a00
 
 pkgname = gossip-git
