@@ -3,23 +3,23 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kxmlgui-git
-pkgver=5.240.0_r1003.g6f0c9c72
+pkgver=5.240.0_r1004.gd27a8a92
 pkgrel=1
 pkgdesc='User configurable main windows'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(kglobalaccel-git kiconthemes-git attica-git)
-makedepends=(git extra-cmake-modules-git doxygen qt5-tools)
+makedepends=(git extra-cmake-modules-git doxygen qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-groups=(kf5-git)
+groups=(kf6-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  _ver="$(grep -m1 'set(KF5\?_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  _ver="$(grep -m1 'set(KF_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
   echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
