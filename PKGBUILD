@@ -2,7 +2,7 @@
 
 pkgname=clipboard-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Cut, copy, and paste anything in your terminal (binary version)."
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -13,12 +13,12 @@ optdepends=('libx11: X11 support'
 	    'wayland-protocols: Wayland support')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source_x86_64=("${_pkgname}-${pkgver}-amd64.zip::https://github.com/Slackadays/Clipboard/releases/download/${pkgver}/${_pkgname}-linux-gcc12-amd64.zip")
-source_aarch64=("${_pkgname}-${pkgver}-aarch64.zip::https://github.com/Slackadays/Clipboard/releases/download/${pkgver}/${_pkgname}-linux-gcc12-arm64.zip")
-source_riscv64=("${_pkgname}-${pkgver}-riscv64.zip::https://github.com/Slackadays/Clipboard/releases/download/${pkgver}/${_pkgname}-linux-gcc12-riscv64.zip")
-sha256sums_x86_64=('fc86a8c34fa7160e0fd4002212d36bbbd3fcbf62a7cabb44ca24c2cebfa26bde')
-sha256sums_aarch64=('c2001492a47dedc5d241e467a43c6f27493db789f7c66c019343ebaa134627fe')
-sha256sums_riscv64=('27b86049ced8562a0eee5cd1d75b2fd2fb25ef336fe7d90554d24ced7243a8ad')
+source_x86_64=("${_pkgname}-${pkgver}-amd64.zip::https://github.com/Slackadays/Clipboard/releases/download/${pkgver}/${_pkgname}-linux-amd64.zip")
+source_aarch64=("${_pkgname}-${pkgver}-aarch64.zip::https://github.com/Slackadays/Clipboard/releases/download/${pkgver}/${_pkgname}-linux-arm64.zip")
+source_riscv64=("${_pkgname}-${pkgver}-riscv64.zip::https://github.com/Slackadays/Clipboard/releases/download/${pkgver}/${_pkgname}-linux-riscv64.zip")
+sha256sums_x86_64=('9b129e53cc050f2d9a71dfecba315e8e3dc83433612ae7ad132545acff5751e8')
+sha256sums_aarch64=('e97a3b4e4da48670783ed40e28f32658297cf7fa7a6c6996be05a41ccbebada0')
+sha256sums_riscv64=('20012a7ec6d75ec516b9eefef76c0dc08ac567b9d3e0f2313c715a76c9fffa4f')
 
 package() {
 
