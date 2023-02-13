@@ -62,7 +62,7 @@ zfs_decrypt_fs() {
                 udevadm settle
 
                 # Wait for udev up to 10 seconds
-                if [ ! -r "${keyfile}" ]; then 
+                if [ ! -r "${keyfile}" ]; then
                     echo "Waiting for key ${keyfile} for ${encryptionroot}..."
                     for _ in $(seq 1 20); do
                         sleep 0.5s

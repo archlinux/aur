@@ -1,31 +1,41 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
+# Contributor: Jonathon Fernyhough <jonathon"m2x+dev>
 # Contributor: Eli Schwartz <eschwartz@archlinux.org>
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
+#
+# Based on aur/zfs-utils by Kevin Stolp <kevinstolp@gmail.com>
+# Based on archzfs/zfs-utils-git by Jan Houben <jan@nexttrex.de>
 #
 # PRs are welcome: https://github.com/yurikoles-aur/zfs-utils-git
 #
 
 pkgname=zfs-utils-git
-pkgver=2.1.99.r1548.gc23738c70e
+pkgver=2.1.99.r1726.g7883ea2234
 pkgrel=1
 epoch=2
 pkgdesc="Userspace utilities for the Zettabyte File System."
-arch=('x86_64')
+arch=("i686" "x86_64" "aarch64")
 url='https://zfsonlinux.org/'
 license=('CDDL')
 groups=('zfs-git')
 makedepends=('python' 'python-setuptools' 'python-cffi' 'git')
-optdepends=('python: pyzfs and extra utilities', 'python-cffi: pyzfs')
+optdepends=('python: pyzfs and extra utilities' 'python-cffi: pyzfs')
 provides=("${pkgname%-git}=${pkgver}")
 conflicts=("${pkgname%-git}")
+backup=('etc/default/zfs'
+        'etc/zfs/zed.d/zed.rc')
 source=('git+https://github.com/openzfs/zfs.git'
         'zfs.initcpio.install'
         'zfs.initcpio.hook'
         'zfs.initcpio.zfsencryptssh.install')
 sha256sums=('SKIP'
-            'd19476c6a599ebe3415680b908412c8f19315246637b3a61e811e2e0961aea78'
-            '569089e5c539097457a044ee8e7ab9b979dec48f69760f993a6648ee0f21c222'
+            '2f09c742287f4738c7c09a9669f8055cd63d3b9474cd1f6d9447152d11a1b913'
+            '15b5acea44225b4364ec6472a08d3d48666d241fe84c142e1171cd3b78a5584f'
             '93e6ac4e16f6b38b2fa397a63327bcf7001111e3a58eb5fb97c888098c932a51')
+b2sums=('SKIP'
+        'cb774227f157573f960bdb345e5b014c043a573c987d37a1db027b852d77a5eda1ee699612e1d8f4a2770897624889f1a3808116a171cc4c796a95e3caa43012'
+        '779c864611249c3f21d1864508d60cfe5e0f5541d74fb3093c6bdfa56be2c76f386ac1690d363beaee491c5132f5f6dbc01553aa408cda579ebca74b0e0fd1d0'
+        '04e2af875e194df393d6cff983efc3fdf02a03a745d1b0b1e4a745f873d910b4dd0a45db956c1b5b2d97e9d5bf724ef12e23f7a2be3d5c12be027eaccf42349a')
 
 pkgver() {
     cd zfs
@@ -36,10 +46,16 @@ pkgver() {
 prepare() {
     cd zfs
 
-    autoreconf -fi
+    ./autogen.sh
 }
 
 build() {
+    # Disable tree vectorization. Related issues:
+    # https://github.com/openzfs/zfs/issues/13605
+    # https://github.com/openzfs/zfs/issues/13620
+    export CFLAGS="$CFLAGS -fno-tree-vectorize"
+    export CXXFLAGS="$CXXFLAGS -fno-tree-vectorize"
+
     cd zfs
 
     ./configure \
@@ -52,10 +68,11 @@ build() {
         --includedir=/usr/include \
         --with-udevdir=/usr/lib/udev \
         --libexecdir=/usr/lib/zfs \
-        --enable-pyzfs \
-        --enable-systemd \
         --with-config=user \
-        --with-zfsexecdir=/usr/lib/zfs
+        --enable-systemd \
+        --enable-pyzfs \
+        --with-zfsexecdir=/usr/lib/zfs \
+        --localstatedir=/var
     make
 }
 
