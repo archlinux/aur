@@ -1,20 +1,19 @@
 pkgbase = kplotting-git
 	pkgdesc = Lightweight plotting framework
-	pkgver = 5.83.0_r281.g41f6e16
+	pkgver = 5.240.0_r351.g7619b1e
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
-	groups = kf5-git
+	groups = kf6-git
 	license = LGPL
 	makedepends = git
 	makedepends = extra-cmake-modules-git
 	makedepends = doxygen
-	makedepends = qt5-tools
-	depends = qt5-base
+	makedepends = qt6-tools
+	depends = qt6-base
 	provides = kplotting
 	conflicts = kplotting
 	source = git+https://github.com/KDE/kplotting.git
 	sha256sums = SKIP
 
 pkgname = kplotting-git
-
