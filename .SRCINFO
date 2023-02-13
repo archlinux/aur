@@ -1,7 +1,7 @@
 pkgbase = fgallery
 	pkgdesc = a modern, minimalist javascript photo gallery
-	pkgver = 1.8.2
-	pkgrel = 3
+	pkgver = 1.9.1
+	pkgrel = 1
 	url = https://www.thregr.org/~wavexx/software/fgallery/
 	arch = any
 	license = GPL2
@@ -17,8 +17,7 @@ pkgbase = fgallery
 	optdepends = p7zip: for faster compression
 	optdepends = pngcrush: to optimize PNG files
 	optdepends = python-pyqt4: to use fcaption
-	source = https://github.com/wavexx/fgallery/archive/fgallery-1.8.2.tar.gz
-	sha256sums = 3c9f558b97db57d66ad26885d9fb0738a771d775a40648df6afa4d212dd35750
+	source = https://www.thregr.org/~wavexx/software/fgallery/releases/fgallery-1.9.1.zip
+	sha256sums = 16f174c2445edf04cf506f7f18407191ac6f675078c0477d908f6b5111cac67d
 
 pkgname = fgallery
-
