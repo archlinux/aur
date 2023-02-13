@@ -1,6 +1,6 @@
 pkgbase = baloo-widgets-git
 	pkgdesc = Widgets for Baloo (Git)
-	pkgver = 22.12.0.r20.gf00fb2d
+	pkgver = 22.12.0.r22.g2c05adc
 	pkgrel = 1
 	url = https://community.kde.org/Baloo
 	arch = i686
@@ -13,6 +13,8 @@ pkgbase = baloo-widgets-git
 	provides = baloo-widgets
 	conflicts = baloo-widgets
 	source = git+https://invent.kde.org/libraries/baloo-widgets.git
+	source = port_kf6.sh
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = baloo-widgets-git
