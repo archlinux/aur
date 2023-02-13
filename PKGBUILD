@@ -34,7 +34,7 @@ prepare() {
   git cherry-pick -n b68d0c7c0c6d124cbcb0e79eb9791c556af451cb
 
   # sodepends: Fix soname detection
-  git cherry-pick -n 2c2c64260d8ab878623bd7f65399a9daecf15c66
+  git cherry-pick -n 6a38ddb3516ccc2841eed9cf5e1659a87bb50269
 }
 
 build() {
