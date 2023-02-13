@@ -1,7 +1,7 @@
 # Maintainer: Andrey Kolchenko <andrey@kolchenko.me>
 
 pkgname=mirrord-bin
-pkgver=3.20.0
+pkgver=3.24.0
 pkgrel=1
 pkgdesc='Run your service in the context of your cloud environment.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=(
     'grep'
 )
 source=("mirrord_${pkgver}::https://github.com/metalbear-co/mirrord/releases/download/${pkgver}/mirrord_linux_x86_64")
-sha256sums=('28aa5acabe2031123ee49c9a754cf4e3d2a3c377d1e10ad5bc510ef4083568aa')
+sha256sums=('a213d8d31ef9ff4e7039c04dca144bd48d00d9b0f00b8db3084379b7696fe3ab')
 
 pkgver() {
     curl -fsSL https://github.com/metalbear-co/mirrord/raw/latest/Cargo.toml | grep -m 1 version | cut -d' ' -f3 | tr -d '"'
