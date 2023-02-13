@@ -1,0 +1,16 @@
+pkgbase = python-jmp
+	pkgdesc = A mixed precision library for JAX
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/deepmind/dm-haiku
+	arch = x86_64
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python-jax
+	depends = python-numpy
+	source = jmp-0.0.4.tar.gz::https://github.com/deepmind/jmp/archive/refs/tags/v0.0.4.tar.gz
+	sha256sums = 830a802144e66d27a3acb54d203efcf47067f7c5f4b6312d29d3b65a89a4cba1
+
+pkgname = python-jmp
