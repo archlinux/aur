@@ -1,0 +1,14 @@
+pkgbase = pg-spgist_hamming-git
+	pkgdesc = Fast hamming-distance range searches via native GiST Indexing facility in PostgreSQL
+	pkgver = r42.9fa70b0
+	pkgrel = 1
+	url = https://github.com/fake-name/pg-spgist_hamming
+	arch = x86_64
+	license = BSD
+	makedepends = clang
+	depends = postgresql
+	provides = pg-spgist_hamming
+	source = git+https://github.com/fake-name/pg-spgist_hamming.git
+	sha256sums = SKIP
+
+pkgname = pg-spgist_hamming-git
