@@ -1,23 +1,22 @@
 pkgbase = kholidays-git
 	pkgdesc = KDE library for regional holiday information
-	pkgver = 5.83.0_r932.g2cd577b
+	pkgver = 5.240.0_r1105.g9d961eb
 	pkgrel = 1
 	epoch = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
-	groups = kf5-git
+	groups = kf6-git
 	license = LGPL
 	makedepends = git
 	makedepends = extra-cmake-modules-git
-	makedepends = qt5-declarative
-	makedepends = qt5-tools
+	makedepends = qt6-declarative
+	makedepends = qt6-tools
 	makedepends = doxygen
-	depends = qt5-base
-	optdepends = qt5-declarative: QML bindings
+	depends = qt6-base
+	optdepends = qt6-declarative: QML bindings
 	provides = kholidays
 	conflicts = kholidays
 	source = git+https://github.com/KDE/kholidays.git
 	sha256sums = SKIP
 
 pkgname = kholidays-git
-
