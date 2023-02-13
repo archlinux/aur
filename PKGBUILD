@@ -22,13 +22,13 @@ sha256sums=(
 )
 
 build() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   RUSTFLAGS="-C link-arg=--ld-path=/usr/bin/mold -C target-cpu=native --cfg tokio_unstable"
   nice cargo build --release
 }
 
 package() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "gossip.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
