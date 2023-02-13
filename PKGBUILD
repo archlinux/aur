@@ -10,7 +10,7 @@
 
 pkgname=sudo-selinux
 _sudover=1.9.12p2
-pkgrel=1
+pkgrel=2
 pkgver=${_sudover/p/.p}
 pkgdesc="Give certain users the ability to run some commands as root - SELinux support"
 arch=('x86_64' 'aarch64')

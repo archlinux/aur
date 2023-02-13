@@ -1,7 +1,7 @@
 pkgbase = sudo-selinux
 	pkgdesc = Give certain users the ability to run some commands as root - SELinux support
 	pkgver = 1.9.12.p2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.sudo.ws/sudo/
 	install = sudo.install
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = sudo-selinux
 	depends = libldap
 	depends = zlib
 	depends = libselinux
-	provides = sudo=1.9.12.p2-1
-	provides = selinux-sudo=1.9.12.p2-1
+	provides = sudo=1.9.12.p2-2
+	provides = selinux-sudo=1.9.12.p2-2
 	conflicts = sudo
 	conflicts = selinux-sudo
 	backup = etc/pam.d/sudo
