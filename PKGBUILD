@@ -2,14 +2,14 @@
 
 pkgname=lefthook
 pkgdesc="git hooks manager"
-pkgver=1.2.7
+pkgver=1.2.9
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/evilmartians/lefthook"
 license=('MIT')
 makedepends=('go' 'rsync')
 source=("https://github.com/evilmartians/lefthook/archive/v${pkgver}.tar.gz")
-sha256sums=('d23ccd5b944cdd2e3050850097e424cfbff75376add89dd3abb63ba99fc00869')
+sha256sums=('77b396c516366db5ef2d0f4d49b5bdb543c340b60e1e63b777a781b99634d750')
 
 build() {
   cd "$pkgname-$pkgver"
