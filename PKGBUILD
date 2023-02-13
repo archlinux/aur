@@ -35,5 +35,5 @@ pkgver() {
 
 package() {
 	cd "$srcdir/$pkgname"
-	make DESTDIR="$pkgdir/usr" ETC_DIR="$pkgdir/etc" UWUFETCH_VERSION="\"AUR: $pkgname $pkgver\"" install
+	make DESTDIR="$pkgdir/usr" ETC_DIR="$pkgdir/etc" UWUFETCH_VERSION="\"aur-$pkgname $pkgver\"" install
 }
