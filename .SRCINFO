@@ -1,22 +1,21 @@
 pkgbase = frameworkintegration-git
 	pkgdesc = Framework providing components to allow applications to integrate with a KDE Workspace
-	pkgver = 5.83.0_r584.gfdc29c8
+	pkgver = 5.240.0_r674.g6d87885
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
-	groups = kf5-git
+	groups = kf6-git
 	license = LGPL
 	makedepends = git
 	makedepends = extra-cmake-modules-git
 	makedepends = appstream-qt
-	makedepends = packagekit-qt5
+	makedepends = packagekit-qt6
 	depends = knewstuff-git
 	optdepends = appstream-qt: dependency resolving via AppStream
-	optdepends = packagekit-qt5: dependency resolving via AppStream
+	optdepends = packagekit-qt6: dependency resolving via AppStream
 	provides = frameworkintegration
 	conflicts = frameworkintegration
 	source = git+https://github.com/KDE/frameworkintegration.git
 	sha256sums = SKIP
 
 pkgname = frameworkintegration-git
-
