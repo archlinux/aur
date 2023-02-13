@@ -3,28 +3,24 @@
 
 pkgname=google-calendar-nativefier-dark
 pkgver=2023.02.13
-pkgrel=1
+pkgrel=2
 pkgdesc='Google Calendar in shared Electron runtime with dark theme (by pyxelr)'
 arch=('x86_64')
 url='https://calendar.google.com'
 license=('MIT')
-_nativefier=50
-_electron=19
-depends=("electron${_electron}")
+depends=("electron")
 makedepends=(
   'curl'
   'gendesk'
-  'yarn'
+  'nodejs-nativefier'
 )
-source=("${pkgname}.js")
-sha256sums=('866be0e5f2ba37c0256530568c18c01ac9fcba25d5037c9f0be5b415be6506e9')
 
 _name='Google Calendar Dark'
 
 prepare() {
   cat > "${pkgname}" <<EOF
 #!/usr/bin/env bash
-exec electron${_electronv} /usr/share/${pkgname} "\$@"
+exec electron /usr/share/${pkgname} "\$@"
 EOF
   gendesk \
     --pkgname "${pkgname}" \
@@ -36,20 +32,22 @@ EOF
   curl \
     https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Calendar_icon_%282020%29.svg/512px-Google_Calendar_icon_%282020%29.svg.png \
     > "${pkgname}.png"
+  curl \
+    https://raw.githubusercontent.com/pyxelr/dark-google-calendar/master/Google-DarkCalendar.user.css \
+    > "${pkgname}.css"
 }
 
 build() {
   cd "${srcdir}"
-  yarn add "nativefier@${_nativefier}"
-  yarn nativefier \
+  nativefier \
+    https://calendar.google.com \
     --name "${_name}" \
     --icon "${pkgname}.png" \
     --maximize \
-    --user-agent safari \
+    --user-agent firefox \
     --single-instance \
     --verbose \
-    --inject "${pkgname}.js" \
-    https://calendar.google.com
+    --inject "${pkgname}.css"
 }
 
 package() {
