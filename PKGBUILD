@@ -2,7 +2,7 @@
 
 pkgname=dataexplorer
 pkgver=3.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical tool to analyze data, gathered from various hardware devices."
 url="http://savannah.nongnu.org/projects/dataexplorer"
 arch=("i686" "x86_64")
@@ -20,6 +20,8 @@ source=("http://download.savannah.gnu.org/releases/dataexplorer/dataexplorer-$pk
         "http://download.savannah.gnu.org/releases/dataexplorer/udev_rules/40-ProfilicTechnology.rules.sig"
         "http://download.savannah.gnu.org/releases/dataexplorer/udev_rules/40-SiliconLabs.rules"
         "http://download.savannah.gnu.org/releases/dataexplorer/udev_rules/40-SiliconLabs.rules.sig"
+        "dataexplorer.sh"
+        "deviceproperties-editor.sh"
         )
 noextract=("dataexplorer-$pkgver-src.tar.gz.sig"
            "40-FTDI.rules"
@@ -39,7 +41,9 @@ sha512sums=("63d20037542efc6686bf9156ce5782676fd3468e903f8b873239999aa2288123272
             "3174d20d0de4b8cf0756b1fe69563ca4c3133b108bdda2bd90a8b0163d3f35c826c1356544735181023f2cbaee71a3a7224f88221ad57fa187a52c4d04fe023a"
             "e18675e1e020bf03a5a05621b1dfbc5847f2a5d881715fda59bb5662b53a2a6ddd846cab8878edc3f71da838b3760909338cd9bdaaf7871ec06bdd64e9ae1dfe"
             "8d969524ae67b5170976efd408ab4c28b23d8a33bc0d671d1b968a6cab4ebfbc80067561f1837470c8cd92e711df136851fec85e683ddf7fd1a33f93b6e39210"
-            "4d392d1e673e68b7ae14d0c696bee762587ddc5f188c03f47f920f5d474b4f9dd9d50854fbc331755fb56d6d5ca5b55306fa5109881961c1b913bb8260f0d0e4")
+            "4d392d1e673e68b7ae14d0c696bee762587ddc5f188c03f47f920f5d474b4f9dd9d50854fbc331755fb56d6d5ca5b55306fa5109881961c1b913bb8260f0d0e4"
+            "274c77d924c7deb6ec5f5526a71b51e814d0b055348cf575b1803a5b3b53985273a510e37efcde0cf9a134253d2726eec243bcfbaab2ebdca22c51f4e3e68055"
+            "11d632807f02ef4bcc5ffb4898ee6667920124049ef96d10df331c77f91de09f513e3e111744661b5eae0c23a2596f1a964c220341a6d47b8604de51ab5c1413")
 
 validpgpkeys=("3F0CC709ECF91C5CC0BE9E601D295C19C9C06AF6") # Winfried Bruegmann
 
