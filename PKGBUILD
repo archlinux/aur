@@ -1,7 +1,7 @@
 # Maintainer: Samsagax <samsagax at gmail dot com>
 _pkgbase=chimeraos-device-quirks
 pkgname=${_pkgbase}-git
-pkgver=r11.cd57cbf
+pkgver=r13.ee69c36
 pkgrel=1
 pkgdesc="A collection of device specific configuration files"
 arch=('any')
@@ -49,7 +49,7 @@ package() {
 	install -m644 -D -t "${pkgdir}/usr/lib/sysctl.conf.d/" usr/lib/sysctl.conf.d/*
 
 	# Install bin and scripts
-	install -m644 -D -t "${pkgdir}/usr/lib/device-quirks/" usr/bin/device-quirks/*
+	install -m755 -D -t "${pkgdir}/usr/share/device-quirks/scripts/ayaneo/air" usr/share/device-quirks/scripts/ayaneo/air/*
 
 	# Install license
 	install -m644 -D -t "${pkgdir}/usr/share/licenses/${_pkgbase}/" LICENSE
