@@ -1,23 +1,23 @@
 pkgbase = kfilemetadata-git
 	pkgdesc = A library for extracting file metadata
-	pkgver = 5.83.0_r791.g27c7d9c
+	pkgver = 5.240.0_r925.g5086970
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
-	groups = kf5-git
+	groups = kf6-git
 	license = LGPL
 	makedepends = git
 	makedepends = extra-cmake-modules-git
 	makedepends = catdoc
 	makedepends = doxygen
-	makedepends = qt5-tools
+	makedepends = qt6-tools
 	makedepends = libappimage
 	depends = ki18n-git
 	depends = karchive-git
 	depends = kconfig-git
 	depends = kcoreaddons-git
 	depends = exiv2
-	depends = poppler-qt5
+	depends = poppler-qt6
 	depends = taglib
 	depends = ffmpeg
 	depends = ebook-tools
@@ -28,4 +28,3 @@ pkgbase = kfilemetadata-git
 	sha256sums = SKIP
 
 pkgname = kfilemetadata-git
-
