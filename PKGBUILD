@@ -9,18 +9,18 @@ pkgdesc='Advanced internationalization framework'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
-depends=(qt5-declarative)
-makedepends=(git extra-cmake-modules-git qt5-declarative python-pyqt5 clang doxygen qt5-tools sip4)
+depends=(qt6-declarative)
+makedepends=(git extra-cmake-modules-git qt6-declarative python-pyqt6 clang doxygen qt6-tools sip4)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-optdepends=('python-pyqt5: for the Python bindings' 'python: to compile .ts files')
-groups=(kf5-git)
+optdepends=('python-pyqt6: for the Python bindings' 'python: to compile .ts files')
+groups=(kf6-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  _ver="$(grep -m1 'set(KF5\?_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  _ver="$(grep -m1 'set(KF_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
   echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
