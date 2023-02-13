@@ -1,7 +1,7 @@
 pkgbase = mqtt-explorer
 	pkgdesc = A comprehensive and easy-to-use MQTT Client
 	pkgver = 0.3.5
-	pkgrel = 8
+	pkgrel = 9
 	url = https://mqtt-explorer.com/
 	arch = any
 	license = CCPL:by-nd
@@ -14,7 +14,6 @@ pkgbase = mqtt-explorer
 	backup = ~/.config/MQTT-Explorer/settings.json
 	source = mqtt-explorer-0.3.5.tar.gz::https://github.com/thomasnordquist/MQTT-Explorer/archive/v0.3.5.tar.gz
 	source = mqtt-explorer-0.3.5-desktop.tar.gz::https://github.com/dave12311/mqtt-explorer.desktop/archive/1.1.tar.gz
-	validpgpkeys = 4AEE18F83AFDEB23
 	md5sums = 66b04e6991416cf8be67c0d8c3706477
 	md5sums = 306a5ee73ab04fee5eb0f8202d2d90a1
 

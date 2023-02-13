@@ -1,7 +1,7 @@
 # Maintainer: Zach Himsel <zach at himsel dot net>
 pkgname='mqtt-explorer'
 pkgver=0.3.5
-pkgrel=8
+pkgrel=9
 pkgdesc="A comprehensive and easy-to-use MQTT Client"
 arch=('any')
 url="https://mqtt-explorer.com/"
@@ -17,7 +17,6 @@ makedepends=(
 conflicts=('mqtt-explorer-beta') # currently, both programs cannot use the same config file
 backup=("~/.config/MQTT-Explorer/settings.json")
 options=(!strip)
-validpgpkeys=("4AEE18F83AFDEB23")
 source=(
     "$pkgname-${pkgver}.tar.gz::https://github.com/thomasnordquist/MQTT-Explorer/archive/v$pkgver.tar.gz"
     "$pkgname-${pkgver}-desktop.tar.gz::https://github.com/dave12311/mqtt-explorer.desktop/archive/1.1.tar.gz"
