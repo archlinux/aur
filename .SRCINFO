@@ -8,6 +8,11 @@ pkgbase = rk3588-uboot-git
 	license = GPL3
 	makedepends = wget
 	makedepends = dtc
+	makedepends = git
+	makedepends = swig
+	makedepends = bc
+	makedepends = python3
+	makedepends = python-setuptools
 	backup = boot/extlinux/extlinux.conf
 	source = git+https://github.com/radxa/u-boot.git#branch=stable-5.10-rock5
 	source = src/rk3588_ddr.bin::https://github.com/radxa/rkbin/raw/9840e87723eef7c41235b89af8c049c1bcd3d133/bin/rk35/rk3588_ddr_lp4_2112MHz_lp5_2736MHz_v1.08.bin

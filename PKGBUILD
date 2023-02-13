@@ -9,7 +9,7 @@ arch=('aarch64')
 url='https://github.com/radxa/u-boot'
 license=(GPL3)
 depends=()
-makedepends=('wget' 'dtc')
+makedepends=('wget' 'dtc' 'git' 'swig' 'bc' 'python3' 'python-setuptools')
 #_binsite="https://github.com/rockchip-linux/rkbin/raw"
 #_bincommit="6e4ecc820bf15d47f06e67b5ddb2eab224e485b6"
 _binsite="https://github.com/radxa/rkbin/raw"
@@ -58,9 +58,9 @@ CONFIG_VIDEO_ROCKCHIP_MAX_YRES=1080
 EOT
     unset CFLAGS CXXFLAGS CPPFLAGS LDFLAGS
 
-    make rk3588_my_defconfig
+    ARCH=aarch64 make rk3588_my_defconfig
     export KCFLAGS='-Wno-error=address'
-    make BL31="${srcdir}/rk3588_bl31.elf" spl/u-boot-spl.bin u-boot.dtb u-boot.itb
+    ARCH=aarch64 make BL31="${srcdir}/rk3588_bl31.elf" spl/u-boot-spl.bin u-boot.dtb u-boot.itb
 
 ls ..
     
