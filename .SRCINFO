@@ -1,0 +1,16 @@
+pkgbase = notepad---bin
+	pkgdesc = Notepad-- 是一个简单的国产跨平台文本编辑器，是替换 Notepad++ 的一种选择。其内置强大的代码对比功能，让你丢掉付费的 Beyond Compare。
+	pkgver = 1.22.1
+	pkgrel = 1
+	url = https://github.com/cxasm/notepad--
+	arch = x86_64
+	license = GPL3
+	depends = gcc-libs
+	depends = qt5-base
+	depends = libGL.so=1
+	provides = notepad--
+	conflicts = notepad--
+	source = https://github.com/cxasm/notepad--/releases/download/Notepad--v1.22/com.hmja.notepad_1.22.1_amd64.deb
+	sha256sums = 0d460747a5c3da0cf5b9fa59f4c36b7a589cdd241c8d4f2ede22d96c19773535
+
+pkgname = notepad---bin
