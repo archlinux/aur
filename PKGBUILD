@@ -6,7 +6,7 @@ arch=('any')
 pkgdesc="Mount ISOs simple over dolphin and userspace"
 license=('GPL')
 depends=(fuseiso)
-makedepends=(git)
+makedepends=()
 source=("src.tar.gz")
 sha256sums=('3e4654b19a8fd793d1353016f168ef34ea3f4888d591baae48d647fb885eb75e')
 
