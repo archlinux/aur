@@ -1,23 +1,22 @@
 pkgbase = bluez-qt-git
 	pkgdesc = Qt wrapper for Bluez 5 DBus API
-	pkgver = 5.83.0_r659.ga9b57fe
+	pkgver = 5.240.0_r742.g6bffe17
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
-	groups = kf5-git
+	groups = kf6-git
 	license = GPL2
 	makedepends = git
 	makedepends = extra-cmake-modules-git
 	makedepends = doxygen
-	makedepends = qt5-tools
-	makedepends = qt5-declarative
-	depends = qt5-base
+	makedepends = qt6-tools
+	makedepends = qt6-declarative
+	depends = qt6-base
 	depends = bluez
-	optdepends = qt5-declarative: QML bindings
+	optdepends = qt6-declarative: QML bindings
 	provides = bluez-qt
 	conflicts = bluez-qt
 	source = git+https://github.com/KDE/bluez-qt.git
 	sha256sums = SKIP
 
 pkgname = bluez-qt-git
-
