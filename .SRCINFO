@@ -1,6 +1,6 @@
 pkgbase = gossip-git
 	pkgdesc = gossip nostr client, rust, egui based.
-	pkgver = r731.4204a56
+	pkgver = 0.3.91.r6.g4204a56
 	pkgrel = 1
 	url = https://github.com/mikedilger/gossip
 	arch = x86_64
