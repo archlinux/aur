@@ -9,18 +9,18 @@ pkgdesc='Addons to QtGui'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
-depends=(qt5-x11extras qt5-wayland)
-makedepends=(git extra-cmake-modules-git clang python-pyqt5 doxygen qt5-tools sip4)
+depends=(qt6-x11extras qt6-wayland)
+makedepends=(git extra-cmake-modules-git clang python-pyqt6 doxygen qt6-tools sip4)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-optdepends=('python-pyqt5: for the Python bindings')
-groups=(kf5-git)
+optdepends=('python-pyqt6: for the Python bindings')
+groups=(kf6-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  _ver="$(grep -m1 'set(KF5\?_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  _ver="$(grep -m1 'set(KF_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
   echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
