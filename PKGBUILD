@@ -15,6 +15,7 @@ provides=('chatterino')
 conflicts=('chatterino')
 install=$pkgname.install
 source=("git+https://github.com/Chatterino/chatterino2"
+        "git+https://github.com/arsenm/sanitizers-cmake"
         "git+https://github.com/Chatterino/libcommuni#branch=chatterino-cmake"
         "git+https://github.com/getsentry/crashpad"
         "git+https://github.com/mohabouje/WinToast"
@@ -22,7 +23,6 @@ source=("git+https://github.com/Chatterino/chatterino2"
         "git+https://github.com/pajlada/signals"
         "git+https://github.com/pajlada/serialize"
         "git+https://github.com/Tencent/rapidjson"
-        "git+https://github.com/arsenm/sanitizers-cmake"
         "git+https://github.com/zaphoyd/websocketpp"
         "git+https://github.com/Neargye/magic_enum"
         "git+https://github.com/mackron/miniaudio"
@@ -52,18 +52,19 @@ pkgver() {
 prepare () {
     cd "$srcdir/$_pkgname"
     git submodule init
-    git config submodule.libcommuni $srcdir/$_pkgname/lib/libcommuni
+    git config submodule.cmake/sanitizers-cmake.url "$srcdir/sanitizers-cmake"
+    git config submodule.lib/libcommuni.url "$srcdir/libcommuni"
     git config submodule.lib/crashpad.url "$srcdir/crashpad"
-    git config submodule.WinToast $srcdir/$_pkgname/lib/WinToast
-    git config submodule.settings $srcdir/$_pkgname/lib/settings
-    git config submodule.signals $srcdir/$_pkgname/lib/signals
-    git config submodule.serialize $srcdir/$_pkgname/lib/serialize
-    git config submodule.rapidjson $srcdir/$_pkgname/lib/rapidjson
-    git config submodule.sanitizers-cmake $srcdir/$_pkgname/lib/sanitizers-cmake
-    git config submodule.websocketpp $srcdir/$_pkgname/lib/websocketpp
-    git config submodule.miniaudio $srcdir/$_pkgname/lib/miniaudio
-    git config submodule.magicenum $srcdir/$_pkgname/lib/magic_enum
-    git config submodule.googletest $srcdir/$_pkgname/lib/googletest
+    # TODO: crashpad contains its own submodules, this needs to be resolved
+    git config submodule.lib/WinToast.url "$srcdir/WinToast"
+    git config submodule.lib/settings.url "$srcdir/settings"
+    git config submodule.lib/signals.url "$srcdir/signals"
+    git config submodule.lib/serialize.url "$srcdir/serialize"
+    git config submodule.lib/rapidjson.url "$srcdir/rapidjson"
+    git config submodule.lib/websocketpp.url "$srcdir/websocketpp"
+    git config submodule.lib/miniaudio.url "$srcdir/miniaudio"
+    git config submodule.lib/magicenum.url "$srcdir/magicenum"
+    git config submodule.lib/googletest.url "$srcdir/googletest"
     git -c protocol.file.allow=always submodule update
 }
 

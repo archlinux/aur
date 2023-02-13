@@ -21,6 +21,7 @@ pkgbase = chatterino2-git
 	provides = chatterino
 	conflicts = chatterino
 	source = git+https://github.com/Chatterino/chatterino2
+	source = git+https://github.com/arsenm/sanitizers-cmake
 	source = git+https://github.com/Chatterino/libcommuni#branch=chatterino-cmake
 	source = git+https://github.com/getsentry/crashpad
 	source = git+https://github.com/mohabouje/WinToast
@@ -28,7 +29,6 @@ pkgbase = chatterino2-git
 	source = git+https://github.com/pajlada/signals
 	source = git+https://github.com/pajlada/serialize
 	source = git+https://github.com/Tencent/rapidjson
-	source = git+https://github.com/arsenm/sanitizers-cmake
 	source = git+https://github.com/zaphoyd/websocketpp
 	source = git+https://github.com/Neargye/magic_enum
 	source = git+https://github.com/mackron/miniaudio
