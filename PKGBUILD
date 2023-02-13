@@ -12,7 +12,7 @@
 #   git -C dbus remote set-url origin https://gitlab.freedesktop.org/dbus/dbus.git
 pkgbase=dbus-selinux
 pkgname=(dbus-selinux dbus-docs-selinux)
-pkgver=1.14.4
+pkgver=1.14.6
 pkgrel=1
 pkgdesc="Freedesktop.org message bus system with SELinux support"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
@@ -35,7 +35,7 @@ prepare() {
   cd dbus
 
   # Allow us to enable checks without them being fatal
-  patch -Np1 -i ../no-fatal-warnings.diff
+  git apply -3 ../no-fatal-warnings.diff
 
   NOCONFIGURE=1 ./autogen.sh
 }
