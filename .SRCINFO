@@ -1,6 +1,6 @@
 pkgbase = opustags
 	pkgdesc = Opus tags editor
-	pkgver = 1.6.0
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/fmang/opustags
 	arch = i686
@@ -11,8 +11,7 @@ pkgbase = opustags
 	license = BSD3
 	makedepends = cmake
 	depends = libogg
-	source = https://github.com/fmang/opustags/archive/1.6.0.tar.gz
-	sha256sums = 0f82703a49b35d44503c53bb596129e89ec061fb1f6e82363f982d1e35377dce
+	source = https://github.com/fmang/opustags/archive/1.7.0.tar.gz
+	sha256sums = 385502967bda75ac1df4619dc5a4992d3c2ea0dabbe5c6fcbfe98bfc9614f9bf
 
 pkgname = opustags
-
