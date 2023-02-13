@@ -2,7 +2,7 @@
 # Contributor: Marius Lindvall <(firstname) {cat} varden {dog} info>
 
 pkgname=jellyfin-mpv-shim
-pkgver=2.2.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Cast media from Jellyfin Mobile and Web apps to MPV"
 arch=('any')
@@ -17,22 +17,29 @@ optdepends=('python-pystray: systray support'
 	'mpv-shim-default-shaders: default shader pack'
 	'python-pypresence: Discord Rich Presence integration')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jellyfin/jellyfin-mpv-shim/archive/v$pkgver.tar.gz")
-b2sums=('48109d9b6d75086ff9c256a6898cb4b55c9e6825c625faffe0abde4340839088e4f1db7d8377d08b8f7ac2e3165a18b462c0fa282fb6326ce2aa7fdcb53c3086')
+b2sums=('0ced6b84e0ad9b42a5233698420dad99ea6818675e9977d1f8b7882085d5245648bff25c0c3c5d9cd71b95e44ae2e5a13118be0c71be8a85afb5f70532b5aa42')
 
 build() {
-	cd "${srcdir}/jellyfin-mpv-shim-${pkgver}"
-	find -iname '*.po' | while read -r _file
-	do
-		msgfmt "$_file" -o "${_file%.*}.mo"
-	done
-	python setup.py build
+    cd "${srcdir}/jellyfin-mpv-shim-${pkgver}"
+    find -iname '*.po' | while read -r _file; do
+        msgfmt "$_file" -o "${_file%.*}.mo"
+    done
+    python setup.py build
 }
 
 package() {
-	cd "${srcdir}/jellyfin-mpv-shim-${pkgver}"
-	install -Dm 644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	cd "${pkgdir}"
-	_sitepkg="usr/lib/$(ls usr/lib/ | grep python)/site-packages/jellyfin_mpv_shim"
-	ln -s "/usr/share/mpv-shim-default-shaders" "$_sitepkg/default_shader_pack"
+    cd "${srcdir}/jellyfin-mpv-shim-${pkgver}"
+    install -Dm644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+
+    for i in 16 32 48 64 128 256; do
+        install -Dvm644 jellyfin_mpv_shim/integration/jellyfin-$i.png \
+            "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/com.github.iwalton3.jellyfin-mpv-shim.png"
+    done
+
+    install -Dm644 jellyfin_mpv_shim/integration/com.github.iwalton3.jellyfin-mpv-shim.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
+
+    cd "${pkgdir}"
+    _sitepkg="usr/lib/$(ls usr/lib/ | grep python)/site-packages/jellyfin_mpv_shim"
+    ln -s "/usr/share/mpv-shim-default-shaders" "$_sitepkg/default_shader_pack"
 }
