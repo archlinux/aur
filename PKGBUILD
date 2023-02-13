@@ -8,7 +8,7 @@ pkgdesc="gossip nostr client, rust, egui based."
 arch=('x86_64')
 url="https://github.com/mikedilger/gossip"
 license=(MIT)
-makedepends=(cargo)
+makedepends=(cargo git)
 provides=($pkgname)
 conflicts=($pkgname)
 options=(!lto)
@@ -25,14 +25,13 @@ build() {
   cd $pkgname
   RUSTFLAGS="-C link-arg=--ld-path=/usr/bin/mold -C target-cpu=native --cfg tokio_unstable"
   nice cargo build --release
-  strip ./target/release/gossip
 }
 
 package() {
   cd $pkgname
-  install -Dm755 "./target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 "./LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "./gossip.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
+  install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "gossip.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
   mkdir -p "$pkgdir"/usr/share/applications/
   install -Dm644 "${srcdir}/${pkgname}.desktop" "$pkgdir/usr/share/applications/"
 }
