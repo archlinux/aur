@@ -1,13 +1,15 @@
 pkgbase = obs-vertical-canvas
 	pkgdesc = Add vertical canvas to OBS
-	pkgver = 1.0.6
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://aitum.tv/#vertical
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
 	depends = obs-studio
-	source = obs-vertical-canvas-1.0.6.tar.gz::https://github.com/Aitum/obs-vertical-canvas/archive/refs/tags/1.0.6.tar.gz
-	b2sums = a0b5d0de37334d6a4f75def0b964d7ad77b7911a8171688308680d49dac6e2df1246708d6ef94f731ff54257c25502570f3809cd7846c6e66a92aecfb451dab3
+	source = obs-vertical-canvas-1.1.0.tar.gz::https://github.com/Aitum/obs-vertical-canvas/archive/refs/tags/1.1.0.tar.gz
+	source = type-fix.patch
+	b2sums = e4c369cb3e6c342a94112d1fcf01ef0095d064bfba154dc38eee00afc539f6155f730eff5d018a59b060acef33ca49cce3b61d0b0873ed17deecf11e1af80a8e
+	b2sums = 1ad9b113cacf4036d2b536f3991a05349d9d7d907d9ef4ff46e4b0d8ebbf399dd47934cee272185ce656e9c381930e4b9a8be0689388ddd969fa33e1b9eda165
 
 pkgname = obs-vertical-canvas
