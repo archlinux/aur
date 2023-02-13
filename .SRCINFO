@@ -1,6 +1,6 @@
 pkgbase = transmission4
 	pkgver = 4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.transmissionbt.com/
 	arch = x86_64
 	license = GPL
@@ -21,13 +21,15 @@ pkgbase = transmission4
 	makedepends = libnatpmp
 	makedepends = cmake
 	makedepends = ninja
-	makedepends = yarn
+	makedepends = npm
 	source = https://github.com/transmission/transmission/releases/download/4.0.0/transmission-4.0.0.tar.xz
 	source = transmission-cli.sysusers
 	source = transmission-cli.tmpfiles
+	source = 0001-build-install-rebuilt-web-if-available.patch
 	sha256sums = af4f023c0b3f2417f62b314d84ea7f329ca080f86664f24b44246a8c50c6b10a
 	sha256sums = 641310fb0590d40e00bea1b5b9c843953ab78edf019109f276be9c6a7bdaf5b2
 	sha256sums = 1266032bb07e47d6bcdc7dabd74df2557cc466c33bf983a5881316a4cc098451
+	sha256sums = cefc852b5ab4d45a3f4df2073011cd28519655e300bbb29ac084cee3a21a6173
 
 pkgname = transmission4-cli
 	pkgdesc = Fast, easy, and free BitTorrent client (CLI tools, daemon and web client) (version 4)

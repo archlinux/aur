@@ -7,7 +7,7 @@ _pkgbase=transmission
 pkgname=(transmission4-cli transmission4-gtk transmission4-qt libtransmission4)
 pkgver=4.0.0
 _pkgver=$pkgver
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="http://www.transmissionbt.com/"
 license=(GPL)
@@ -29,15 +29,22 @@ makedepends=(
 	libnatpmp
 	cmake
 	ninja
-	yarn
+	npm
 )
 source=(https://github.com/transmission/transmission/releases/download/${_pkgver%+*}/transmission-${_pkgver}.tar.xz
         transmission-cli.sysusers
         transmission-cli.tmpfiles
+        0001-build-install-rebuilt-web-if-available.patch
 )
 sha256sums=('af4f023c0b3f2417f62b314d84ea7f329ca080f86664f24b44246a8c50c6b10a'
             '641310fb0590d40e00bea1b5b9c843953ab78edf019109f276be9c6a7bdaf5b2'
-            '1266032bb07e47d6bcdc7dabd74df2557cc466c33bf983a5881316a4cc098451')
+            '1266032bb07e47d6bcdc7dabd74df2557cc466c33bf983a5881316a4cc098451'
+            'cefc852b5ab4d45a3f4df2073011cd28519655e300bbb29ac084cee3a21a6173')
+
+prepare() {
+  cd $_pkgbase-$_pkgver
+  patch -p1 < "$srcdir"/0001-build-install-rebuilt-web-if-available.patch
+}
 
 build() {
   cd $_pkgbase-$_pkgver

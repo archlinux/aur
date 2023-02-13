@@ -1,0 +1,40 @@
+From d77619e0c45263831d6c69ef5b3832b5b09c6f0a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Thomas=20Wei=C3=9Fschuh?= <thomas@t-8ch.de>
+Date: Mon, 13 Feb 2023 15:08:52 +0000
+Subject: [PATCH] build: install rebuilt web if available
+
+---
+ CMakeLists.txt     | 2 +-
+ web/CMakeLists.txt | 4 ++++
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ac2985510501..a54c493684a7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -772,7 +772,7 @@ foreach(P cli daemon gtk mac qt utils)
+     endif()
+ endforeach()
+ 
+-if(ENABLE_DAEMON OR ENABLE_GTK OR ENABLE_QT)
++if(NOT REBUILD_WEB AND (ENABLE_DAEMON OR ENABLE_GTK OR ENABLE_QT))
+     tr_install_web(${CMAKE_INSTALL_DATAROOTDIR}/${TR_NAME})
+ endif()
+ 
+diff --git a/web/CMakeLists.txt b/web/CMakeLists.txt
+index f26fc0f38f8b..4900348ddf05 100644
+--- a/web/CMakeLists.txt
++++ b/web/CMakeLists.txt
+@@ -87,3 +87,7 @@ add_custom_target("${TR_NAME}-web"
+         "${CMAKE_CURRENT_BINARY_DIR}/public_html/transmission-app.js.LICENSE.txt"
+     SOURCES
+         ${WEB_SOURCES})
++
++install(
++    DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/public_html
++    DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${TR_NAME})
+
+base-commit: a2faaabe693e051fb3b51ab24870a16273e7d940
+-- 
+2.39.1
+
