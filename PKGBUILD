@@ -1,13 +1,13 @@
 _name=spectacle
 pkgname=${_name}-no-purpose
 pkgver=22.12.2
-pkgrel=2
+pkgrel=3
 pkgdesc='KDE screenshot capture utility, without the dependency on purpose.'
 arch=('x86_64')
 url='https://apps.kde.org/spectacle/'
 license=('GPL')
 depends=('xcb-util-cursor' 'knewstuff' 'kwayland' 'qt5-tools' 'kimageannotator')
-makedepends=('extra-cmake-modules' 'kdoctools')
+makedepends=('extra-cmake-modules')
 groups=('kde-applications' 'kde-graphics')
 provides=("${_name}")
 conflicts=("${_name}")
@@ -26,10 +26,21 @@ validpgpkeys=(
     'D81C0CB38EB725EF6691C385BB463350D6EF31EF' # Heiko Becker <heiko.becker@kde.org>
 )
 
+options=('!docs' '!emptydirs')
+
+_disable=(
+    'KF5DocTools'
+    'KF5Purpose'
+)
+
+_disable=("${_disable[@]/#/"-DCMAKE_DISABLE_FIND_PACKAGE_"}")
+_disable=("${_disable[@]/%/"=ON"}")
+
 build() {
     cmake -B "build" -S "${_snapshot}" \
-        -DKDEExperimentalPurpose_FOUND=OFF \
-        -DBUILD_TESTING=OFF
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DBUILD_TESTING=OFF \
+        "${_disable[@]}"
 
     cmake --build "build"
 }
