@@ -3,7 +3,7 @@
 
 pkgname=gossip
 pkgver=0.3.91
-pkgrel=1
+pkgrel=2
 pkgdesc="gossip nostr client, rust, egui based."
 arch=('x86_64')
 url="https://github.com/mikedilger/gossip"

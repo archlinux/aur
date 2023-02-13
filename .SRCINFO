@@ -1,7 +1,7 @@
 pkgbase = gossip
 	pkgdesc = gossip nostr client, rust, egui based.
 	pkgver = 0.3.91
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mikedilger/gossip
 	arch = x86_64
 	license = MIT
