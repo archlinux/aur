@@ -1,7 +1,7 @@
 #Maintainer: Nicroxio <Nic _at_ nicroxio dot co dot uk>
 pkgname=shronk-cli-utils-git
 pkgver=1.0.4
-pkgrel=0
+pkgrel=1
 pkgdesc="A compilation of my own CLI Utils"
 arch=("x86_64")
 url="https://github.com/nicroxio/cli_utils"
