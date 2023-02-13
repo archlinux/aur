@@ -1,6 +1,6 @@
 pkgbase = vkd3d-proton-mingw-git
 	pkgdesc = Fork of VKD3D. Development branches for Protons Direct3D 12 implementation
-	pkgver = 2.7.r0.g4df36617
+	pkgver = 2.8.r4.ge8d00f70
 	pkgrel = 1
 	url = https://github.com/HansKristian-Work/vkd3d-proton
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = vkd3d-proton-mingw-git
 	depends = bash
 	provides = vkd3d-proton
 	provides = d3d12.dll
-	provides = vkd3d-proton=2.7.r0.g4df36617
+	provides = vkd3d-proton=2.8.r4.ge8d00f70
 	conflicts = vkd3d-proton
 	conflicts = d3d12.dll
 	options = !lto
