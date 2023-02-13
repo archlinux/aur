@@ -2,12 +2,13 @@
 
 pkgname=kenku-fm-bin
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Online tabletop audio sharing for Discord"
 arch=('x86_64')
 license=('GPL3')
-depends=()
+depends=('libnotify' 'gtk3' 'nss' 'xdg-utils' 'libdrm' 'libxcb' 'gvfs')
 makedepends=()
+optdepends=()
 provides=('kenku-fm')
 conflicts=('kenku-fm-bin')
 url="https://github.com/owlbear-rodeo/kenku-fm"
