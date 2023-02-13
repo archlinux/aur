@@ -1,13 +1,13 @@
 _name=gwenview
 pkgname=${_name}-light
 pkgver=22.12.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A fast and easy to use image viewer (stripped from unnecessary dependencies)'
 url="https://apps.kde.org/${_name}/"
 arch=('x86_64')
 license=('GPL' 'LGPL' 'FDL')
 groups=('kde-applications' 'kde-graphics')
-depends=('kactivities' 'kparts' 'kitemmodels' 'phonon-qt5' 'kimageannotator')
+depends=('kparts' 'kitemmodels' 'phonon-qt5')
 makedepends=('extra-cmake-modules')
 
 optdepends=(
@@ -35,14 +35,25 @@ validpgpkeys=(
 
 options=('!docs' '!emptydirs')
 
+_disable=(
+    'KF5Activities'
+    'KF5DocTools'
+    'KF5Purpose'
+    'CFitsio'
+    'TIFF'
+    'KF5Baloo'
+    'KF5KDcraw'
+    'kImageAnnotator'
+)
+
+_disable=("${_disable[@]/#/"-DCMAKE_DISABLE_FIND_PACKAGE_"}")
+_disable=("${_disable[@]/%/"=ON"}")
+
 build() {
     cmake -B "build" -S "${_snapshot}" \
-        -DKDEExperimentalPurpose_FOUND=OFF \
-        -DKDEExperimentalBaloo_FOUND=OFF \
-        -DKDEExperimentalKDcraw_FOUND=OFF \
-        -DKDEExperimentalCFITSIO_FOUND=OFF \
-        -DKDEExperimentalDocTools_FOUND=OFF \
-        -DBUILD_TESTING=OFF
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DBUILD_TESTING=OFF \
+        "${_disable[@]}"
 
     cmake --build "build"
 }
