@@ -1,23 +1,17 @@
-# Maintainer: Olegs Jeremejevs <olegs@jeremejevs.com>
+# Maintainer: Alec Mev <alec@mev.earth>
 
 _pkgname=rofi-bluetooth
 pkgname="${_pkgname}-git"
-pkgver=r18.3b85658
-pkgrel=3
+pkgver=r33.9d91c04
+pkgrel=1
 pkgdesc='A script that generates a rofi menu that uses bluetoothctl to connect to bluetooth devices and display status info'
 arch=('any')
-url='https://github.com/ClydeDroid/rofi-bluetooth'
+url='https://github.com/nickclyde/rofi-bluetooth'
 license=('GPL-3.0')
 depends=('rofi' 'bluez-utils')
 makedepends=('git')
-source=("${_pkgname}::git+https://github.com/ClydeDroid/rofi-bluetooth.git")
+source=("${_pkgname}::git+https://github.com/nickclyde/rofi-bluetooth.git")
 md5sums=('SKIP')
-
-prepare() {
-  cd "${_pkgname}"
-  # Rationale: https://aur.archlinux.org/packages/rofi-bluetooth-git#comment-845300
-  sed -i 's/rofi_command=.*/rofi_command="rofi -dmenu -p"/' rofi-bluetooth
-}
 
 pkgver() {
   cd "${_pkgname}"
