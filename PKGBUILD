@@ -5,7 +5,7 @@ _pkgbase=systemd
 pkgbase=${_pkgbase}-git
 pkgname=('systemd-git' 'systemd-libs-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
 pkgdesc='systemd (git version)'
-pkgver=252.r61997.42c042cfd1
+pkgver=253.r62451.ec96dad2f4
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
@@ -15,7 +15,7 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'python-jinja' 'python-lxml' 'quota-tools' 'shadow' 'gnu-efi-libs' 'git'
              'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
              'bash-completion' 'p11-kit' 'systemd' 'libfido2' 'tpm2-tss' 'rsync'
-             'bpf' 'libbpf' 'clang' 'llvm')
+             'bpf' 'libbpf' 'clang' 'llvm' 'curl' 'gnutls')
 options=('strip')
 source=('git+https://github.com/systemd/systemd'
         '0001-Use-Arch-Linux-device-access-groups.patch'
@@ -151,7 +151,8 @@ package_systemd-git() {
               'quota-tools: kernel-level quota management'
               'systemd-sysvcompat: symlink package to provide sysvinit binaries'
               'polkit: allow administration as unprivileged user'
-              'curl: machinectl pull-tar and pull-raw'
+              'curl: systemd-journal-upload, machinectl pull-tar and pull-raw'
+              'gnutls: systemd-journal-gatewayd and systemd-journal-remote'
               'libbpf: support BPF programs'
               'libfido2: unlocking LUKS2 volumes with FIDO2 token'
               'tpm2-tss: unlocking LUKS2 volumes with TPM2')
