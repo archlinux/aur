@@ -6,7 +6,7 @@ Create the Mastodon PostgreSQL user and grant it the ability to create databases
 Then, run:
 # cd /var/lib/mastodon
 # sudo chown mastodon:mastodon -R .
-# sudo -u mastodon RAILS_ENV=production bundle exec rails mastodon:setup
+# sudo -u mastodon RAILS_ENV=production NODE_OPTIONS=--openssl-legacy-provider bundle exec rails mastodon:setup
 Finally, enable and start all the required services:
 # systemctl enable --now mastodon.target"
 }
