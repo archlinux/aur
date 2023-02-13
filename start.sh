@@ -1,20 +1,27 @@
 #!/bin/bash
 
 USER_RUN_DIR="/run/user/$(id -u)"
+XAUTHORITY="${XAUTHORITY:-$HOME/.Xauthority}"
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 FONTCONFIG_HOME="${XDG_CONFIG_HOME}/fontconfig"
 QQ_APP_DIR="${XDG_CONFIG_HOME}/QQ"
-DOWNLOAD_DIR="$(xdg-user-dir DOWNLOAD)"
+if [ -z "${QQ_DOWNLOAD_DIR}" ]; then
+    if [ -z "${XDG_DOWNLOAD_DIR}"]; then
+        XDG_DOWNLOAD_DIR="$(xdg-user-dir DOWNLOAD)"
+    fi
+    QQ_DOWNLOAD_DIR="${XDG_DOWNLOAD_DIR:-$HOME/Downloads}"
+fi
 
 QQ_HOTUPDATE_DIR="${QQ_APP_DIR}/versions"
 QQ_HOTUPDATE_VERSION="3.0.0-571"
 QQ_PREVIOUS_VERSIONS=("2.0.1-429" "2.0.1-453" "2.0.2-510" "2.0.3-543" "3.0.0-565")
 
 
-if [ "${DOWNLOAD_DIR%*/}" == "${HOME}" ]; then
-    DOWNLOAD_DIR="${HOME}/Downloads"
-    if [ ! -e "${DOWNLOAD_DIR}" ]; then mkdir -p "${DOWNLOAD_DIR}"; fi
+if [ "${QQ_DOWNLOAD_DIR%*/}" == "${HOME}" ]; then
+    QQ_DOWNLOAD_DIR="${HOME}/Downloads"
+    if [ ! -e "${QQ_DOWNLOAD_DIR}" ]; then mkdir -p "${QQ_DOWNLOAD_DIR}"; fi
 fi
+
 if [ ! -e "${QQ_APP_DIR}" ]; then mkdir -p "${QQ_APP_DIR}"; fi
 if [ ! -e "${QQ_HOTUPDATE_DIR}/${QQ_HOTUPDATE_VERSION}" ]; then ln -sfd "/opt/QQ/resources/app" "${QQ_HOTUPDATE_DIR}/${QQ_HOTUPDATE_VERSION}"; fi
 rm -rf "${QQ_HOTUPDATE_DIR}/"**".zip"
@@ -55,7 +62,7 @@ bwrap --new-session --cap-drop ALL --unshare-user-try --unshare-pid --unshare-cg
     --dev-bind /tmp /tmp \
     --bind-try "${HOME}/.pki" "${HOME}/.pki" \
     --ro-bind-try "${XAUTHORITY}" "${XAUTHORITY}" \
-    --bind-try "${DOWNLOAD_DIR}" "${DOWNLOAD_DIR}" \
+    --bind-try "${QQ_DOWNLOAD_DIR}" "${QQ_DOWNLOAD_DIR}" \
     --bind "${QQ_APP_DIR}" "${QQ_APP_DIR}" \
     --ro-bind-try "${FONTCONFIG_HOME}" "${FONTCONFIG_HOME}" \
     --ro-bind-try "${HOME}/.icons" "${HOME}/.icons" \
@@ -66,7 +73,11 @@ bwrap --new-session --cap-drop ALL --unshare-user-try --unshare-pid --unshare-cg
 
 # 移除无用崩溃报告和日志
 # 如果需要向腾讯反馈 bug，请注释掉如下几行
-rm -rf "${QQ_APP_DIR}/crash_files"
+if [ -d "${QQ_APP_DIR}/crash_files" ]; then
+    rm -rf "${QQ_APP_DIR}/crash_files"
+fi
 rm "${QQ_APP_DIR}/log/app_launcher-"*".log"
 rm "${QQ_APP_DIR}/nt_qq_"*"/nt_data/log/"*
-rm "${QQ_APP_DIR}/Crashpad/pending/"*
+if [ -d "${QQ_APP_DIR}/Crashpad" ]; then
+    rm -rf "${QQ_APP_DIR}/Crashpad"
+fi

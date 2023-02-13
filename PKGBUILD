@@ -2,7 +2,7 @@
 _pkgname=linuxqq
 pkgname=linuxqq-nt-bwrap
 pkgver=3.0.0_571
-pkgrel=5
+pkgrel=6
 pkgdesc="New Linux QQ based on Electron, with bubblewrap sandbox and some tweaks"
 arch=('x86_64' 'aarch64')
 url='https://im.qq.com/linuxqq/index.shtml'
@@ -13,7 +13,7 @@ optdepends=('libappindicator-gtk3: 以显示托盘图标' 'gjs: 提供 GNOME Way
 provides=('qq' 'linuxqq')
 conflicts=('linuxqq')
 options=('!strip' '!emptydirs')
-install=${_pkgname}.install
+#install=${_pkgname}.install
 source_x86_64=("https://dldir1.qq.com/qqfile/qq/QQNT/c005c911/linuxqq_3.0.0-571_amd64.deb")  # 底包
                # "https://qqpatch.gtimg.cn/hotUpdate_new/release/linux-x64/${pkgver//_/-}/${pkgver//_/-}.zip.zip")  # 热更新补丁
 source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/c005c911/linuxqq_3.0.0-571_arm64.deb")  # 底包
@@ -23,7 +23,7 @@ sha256sums_x86_64=('f0a714859c20785cc6cab4084d69c953310f1993828f42c81cb991b8aaa4
                    # '814ddc3eea99bf2e291e2eeff0c3805928e3059e23b12d41cc8bf75bb8cd5fd3')  # 热更新补丁
 sha256sums_aarch64=('2ef13e3ebcaae0a2eef8115856b1a24f005d80eac182e3c741def730c1657e26')  # 底包
                     # 'f2f61581a5c09e4a7bfb23922a667e8df327d58fed9601034c4b60a08ad29049')  # 热更新补丁
-sha256sums=('ee4e8dac9c6208acefbcb773e838b88d1f313bc346bda2725545677ae0418f3a'  # start.sh
+sha256sums=('5d660062a87e2e6eda732c61db9ab07af3e5cc431fe6acb67ccd235aced92c0c'  # start.sh
             '82182e49c883e16c7ff38e4722c3950e2758b4342c51521147423026965196a9'  # config.json
             '78a573867355fb4c3e728d0c8ac0746d47fa7d64f90ee2b62ee9f0ccae095edb')  # xdg-open.sh
 
