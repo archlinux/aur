@@ -1,22 +1,21 @@
 pkgbase = kdav-git
 	pkgdesc = A DAV protocol implemention with KJobs
-	pkgver = 5.83.0_r1283.gf01e7af
+	pkgver = 5.240.0_r1388.g9c20e3d
 	pkgrel = 1
 	epoch = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
-	groups = kf5-git
+	groups = kf6-git
 	license = LGPL
 	makedepends = git
 	makedepends = extra-cmake-modules-git
 	makedepends = doxygen
-	makedepends = qt5-tools
+	makedepends = qt6-tools
 	depends = kio-git
-	depends = qt5-xmlpatterns
+	depends = qt6-xmlpatterns
 	provides = kdav
 	conflicts = kdav
 	source = git+https://github.com/KDE/kdav.git
 	sha256sums = SKIP
 
 pkgname = kdav-git
-
