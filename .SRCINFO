@@ -1,0 +1,19 @@
+pkgbase = r-gtrendsr
+	pkgdesc = Perform and Display Google Trends Queries
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=gtrendsR
+	arch = any
+	license = GPL
+	depends = r>=3.5.0
+	depends = r-ggplot2
+	depends = r-jsonlite
+	depends = r-anytime
+	depends = r-curl
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-tinytest
+	source = https://cran.microsoft.com/snapshot/2022-05-24/src/contrib/gtrendsR_1.5.1.tar.gz
+	sha256sums = 5d5c4e534e33c8a1908cee0a983675ac534d743e9b023a106d56bc750e636e15
+
+pkgname = r-gtrendsr
