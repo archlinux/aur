@@ -3,29 +3,30 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kcrash-git
-pkgver=5.83.0_r385.gdf59acb
+pkgver=5.240.0_r474.g33df047
 pkgrel=1
 pkgdesc='Support for application crash analysis and bug report from apps'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(kcoreaddons-git kwindowsystem-git)
-makedepends=(git extra-cmake-modules-git doxygen qt5-tools)
+makedepends=(git extra-cmake-modules-git doxygen qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 optdepends=('drkonqi-git: KDE crash handler application')
-groups=(kf5-git)
+groups=(kf6-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  _ver="$(grep -m1 'set(KF5\?_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  _ver="$(grep -m1 'set(KF_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
   echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=ON
