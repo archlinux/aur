@@ -1,7 +1,7 @@
 pkgbase = pycppad
 	pkgdesc = CppAD python bindings
-	pkgver = 1.2.0
-	pkgrel = 2
+	pkgver = 1.2.2
+	pkgrel = 1
 	url = https://github.com/Simple-Robotics/pycppad
 	arch = i686
 	arch = x86_64
@@ -15,11 +15,11 @@ pkgbase = pycppad
 	depends = cppad
 	depends = cppadcodegen
 	optdepends = doxygen
-	source = https://github.com/Simple-Robotics/pycppad/releases/download/v1.2.0/pycppad-1.2.0.tar.gz
-	source = https://github.com/Simple-Robotics/pycppad/releases/download/v1.2.0/pycppad-1.2.0.tar.gz.sig
+	source = https://github.com/Simple-Robotics/pycppad/releases/download/v1.2.2/pycppad-1.2.2.tar.gz
+	source = https://github.com/Simple-Robotics/pycppad/releases/download/v1.2.2/pycppad-1.2.2.tar.gz.sig
 	validpgpkeys = A031AD35058955293D54DECEC45D22EF408328AD
 	validpgpkeys = F182CC432A4752C7A3E4FE02001EB2069D785C81
-	sha256sums = SKIP
+	sha256sums = 31c042a132a9f6cc17d15b9a12a90f7118126707c4e5d5eff677644ae746c345
 	sha256sums = SKIP
 
 pkgname = pycppad
