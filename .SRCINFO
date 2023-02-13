@@ -1,6 +1,6 @@
 pkgbase = networkmanager-iwd
 	pkgdesc = Network connection manager and user applications; using iwd backend instead of wpa_supplicant
-	pkgver = 1.40.12
+	pkgver = 1.42.0
 	pkgrel = 1
 	url = https://networkmanager.dev/
 	arch = x86_64
@@ -38,7 +38,7 @@ pkgbase = networkmanager-iwd
 	makedepends = vala
 	makedepends = vala
 	makedepends = wpa_supplicant
-	source = git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=4a41ba460e45ca872af97fb2bb23c71a563399a9
+	source = git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=119ed52038f8b6e8cebb92314acf6e6bb5813fb0
 	source = networkmanager-iwd.install
 	sha256sums = SKIP
 	sha256sums = 6f77a626ec3fd7583beb45ffcac236cdc1fe2b5e5b8ccc5d90983312a265e818
