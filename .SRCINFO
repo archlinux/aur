@@ -1,0 +1,12 @@
+pkgbase = prodinfo-git
+	pkgdesc = CLI for getting product information. Info is returned in JSON and printed to the console.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/dangarbri/prodinfo
+	arch = any
+	license = MIT
+	makedepends = rust
+	source = git+https://github.com/dangarbri/prodinfo
+	md5sums = SKIP
+
+pkgname = prodinfo-git
