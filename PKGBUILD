@@ -29,13 +29,6 @@ build() {
 package() {
   DESTDIR="$pkgdir" cmake --install build
 
-  #FIXME: drop in the next update, as the fix has been upstreamed
-  # Fixup desktop file
-  sed \
-    -e 's/Exec=hdrview/Exec=HDRView/' \
-    -e 's/Icon=hdrview.png/Icon=hdrview/' \
-    -i "$pkgdir"/usr/share/applications/hdrview.desktop
-
   # Project installs a copy of its own deps as well
   for dep in Imath
   do
