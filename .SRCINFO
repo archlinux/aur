@@ -16,4 +16,3 @@ pkgbase = universal-gcode-sender
 	sha256sums = fa181573087c414fbb29cdb94dcf0a324e3d96948a1334f2e698785a69e35b02
 
 pkgname = universal-gcode-sender
-
