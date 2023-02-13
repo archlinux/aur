@@ -10,5 +10,5 @@ index 6744236593..a038006449 100755
 -                  if is_package_installed_and_updated(pkg)]
 +                  for pkg in optional_packages_with_extensions]
  log.warn('distributions = {0}'.format(distributions))
- from sage_setup.find import find_python_sources
+ from sage_setup.find import find_python_sources, find_extra_files
  python_packages, python_modules, cython_modules = find_python_sources(

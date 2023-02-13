@@ -1,6 +1,6 @@
 --- a/src/sage/interfaces/tachyon.py
 +++ b/src/sage/interfaces/tachyon.py
-@@ -140,14 +140,14 @@ written in the sequence they are listed in the examples in this section.
+@@ -74,14 +74,14 @@ written in the sequence they are listed in the examples in this section.
  The ``PROJECTION`` keyword must be followed by one of the supported
  camera projection mode identifiers ``PERSPECTIVE``, ``PERSPECTIVE_DOF``,
  ``ORTHOGRAPHIC``, or ``FISHEYE``. The ``FISHEYE`` projection mode

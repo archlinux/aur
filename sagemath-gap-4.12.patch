@@ -38,7 +38,7 @@ diff --git a/src/sage/coding/linear_code.py b/src/sage/coding/linear_code.py
 index e8e32f82c9..9d45160f44 100644
 --- a/src/sage/coding/linear_code.py
 +++ b/src/sage/coding/linear_code.py
-@@ -466,27 +466,27 @@ class AbstractLinearCode(AbstractLinearCodeNoMetric):
+@@ -465,27 +465,27 @@ class AbstractLinearCode(AbstractLinearCodeNoMetric):
              0
              sage: C = codes.HammingCode(GF(4, 'z'), 3)
              sage: C.automorphism_group_gens()
@@ -74,7 +74,7 @@ index e8e32f82c9..9d45160f44 100644
                  Defn: z |--> z),
                ((1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1); (2,13)(3,14)(4,20)(5,11)(8,18)(9,19)(10,15)(16,21), Ring endomorphism of Finite Field in z of size 2^2
                  Defn: z |--> z)],
-@@ -692,10 +692,10 @@ class AbstractLinearCode(AbstractLinearCodeNoMetric):
+@@ -691,10 +691,10 @@ class AbstractLinearCode(AbstractLinearCodeNoMetric):
              sage: C_iso == aut_group_can_label.get_canonical_form()
              True
              sage: aut_group_can_label.get_autom_gens()
@@ -92,7 +92,7 @@ diff --git a/src/sage/combinat/root_system/hecke_algebra_representation.py b/src
 index bde2823421..bffcc85f6e 100644
 --- a/src/sage/combinat/root_system/hecke_algebra_representation.py
 +++ b/src/sage/combinat/root_system/hecke_algebra_representation.py
-@@ -355,7 +355,7 @@ class HeckeAlgebraRepresentation(WithEqualityById, SageObject):
+@@ -357,7 +357,7 @@ class HeckeAlgebraRepresentation(WithEqualityById, SageObject):
              sage: q1, q2 = K.gens()
              sage: KW = W.algebra(K)
              sage: x = KW.an_element(); x
@@ -228,7 +228,7 @@ diff --git a/src/sage/groups/perm_gps/permgroup.py b/src/sage/groups/perm_gps/pe
 index 7723ec2526..aa60cc6874 100644
 --- a/src/sage/groups/perm_gps/permgroup.py
 +++ b/src/sage/groups/perm_gps/permgroup.py
-@@ -927,7 +927,7 @@ class PermutationGroup_generic(FiniteGroup):
+@@ -926,7 +926,7 @@ class PermutationGroup_generic(FiniteGroup):
             sage: f = PG._coerce_map_from_(MG)
             sage: mg = MG.an_element()
             sage: p = f(mg); p
@@ -237,7 +237,7 @@ index 7723ec2526..aa60cc6874 100644
             sage: PG(p._gap_()) == p
             True
  
-@@ -973,12 +973,12 @@ class PermutationGroup_generic(FiniteGroup):
+@@ -972,12 +972,12 @@ class PermutationGroup_generic(FiniteGroup):
              sage: P = G.as_permutation_group(algorithm='smaller', seed=5)
              sage: P1 = G.as_permutation_group()
              sage: P == P1
@@ -253,7 +253,7 @@ index 7723ec2526..aa60cc6874 100644
  
          Another check for :trac:`5583`::
  
-@@ -1303,7 +1303,7 @@ class PermutationGroup_generic(FiniteGroup):
+@@ -1302,7 +1302,7 @@ class PermutationGroup_generic(FiniteGroup):
              sage: G.gens_small() # random
              [('b','c'), ('a','c','b')] ## (on 64-bit Linux)
              [('a','b'), ('a','c','b')] ## (on Solaris)
@@ -262,7 +262,7 @@ index 7723ec2526..aa60cc6874 100644
              True
          """
          gens = self._libgap_().SmallGeneratingSet()
-@@ -4371,17 +4371,23 @@ class PermutationGroup_generic(FiniteGroup):
+@@ -4370,17 +4370,23 @@ class PermutationGroup_generic(FiniteGroup):
  
          ::
  
@@ -290,7 +290,7 @@ index 7723ec2526..aa60cc6874 100644
          Note that this differs from the definition in GAP, where
          ``IsTransitive`` returns whether the group is transitive on the
          set of points moved by the group.
-@@ -4437,12 +4443,16 @@ class PermutationGroup_generic(FiniteGroup):
+@@ -4436,12 +4442,16 @@ class PermutationGroup_generic(FiniteGroup):
              sage: G = PermutationGroup([[(1,2,3,4)],[(2,4)]])
              sage: G.is_primitive([1..4])
              False

@@ -2,7 +2,7 @@ diff --git a/src/sage/doctest/control.py b/src/sage/doctest/control.py
 index 2d93841e50..937e20cd2e 100644
 --- a/src/sage/doctest/control.py
 +++ b/src/sage/doctest/control.py
-@@ -400,11 +400,6 @@ class DocTestController(SageObject):
+@@ -414,10 +414,6 @@ class DocTestController(SageObject):
                  # that the package is actually installed).
                  if 'optional' in options.optional:
                      options.optional.discard('optional')
@@ -10,7 +10,7 @@ index 2d93841e50..937e20cd2e 100644
 -                    for pkg in list_packages('optional', local=True).values():
 -                        if pkg.is_installed() and pkg.installed_version == pkg.remote_version:
 -                            options.optional.add(pkg.name)
--
+ 
                      from sage.features import package_systems
                      options.optional.update(system.name
  

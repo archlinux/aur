@@ -1,6 +1,6 @@
 pkgbase = sagemath-git
 	pkgdesc = Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab
-	pkgver = 9.8.rc0.r0.g9116c5584f9
+	pkgver = 10.0.beta0.r1.g49a0aed2e5
 	pkgrel = 1
 	url = http://www.sagemath.org
 	arch = x86_64
@@ -99,7 +99,7 @@ pkgbase = sagemath-git
 	optdepends = msolve: polynomial system solving via msolve
 	provides = sagemath
 	conflicts = sagemath
-	source = git://git.sagemath.org/sage.git#branch=develop
+	source = git+https://github.com/sagemath/sage#branch=develop
 	source = sagemath-optional-packages.patch
 	source = latte-count.patch
 	source = test-optional.patch
@@ -108,18 +108,16 @@ pkgbase = sagemath-git
 	source = sagemath-tachyon-0.99.patch
 	source = sagemath-gap-4.12.patch
 	source = sagemath-tdlib-0.9.patch
-	source = sagemath-singular-4.3.1.p3.patch
 	source = sagemath-numpy-1.24.patch
 	sha256sums = SKIP
-	sha256sums = 34dead10f1fa9c9dd5e88ceba663d718e5b11767c5db7d52726178ead5098fd3
+	sha256sums = 8a5b935d2fd8815489713db6497e9d44aefd61e8553e8cd4acc2cb1adf625ccc
 	sha256sums = bd188af45ce31579b82407adee8e9bf6033a996f7ea6e328fabca526f31c08ba
-	sha256sums = 9d042070df3dfd53a1248659677798da888f733548eda91a6d5169c7aa1907e1
-	sha256sums = eacea27b214d32cb886a75695153dfc36b5bad2fd2517e8e4eee18e74220e9e3
-	sha256sums = 3e1f866944235b999d2d727ed1ced431bd67405b053701c21068607ec76f23c3
-	sha256sums = 9760db6c6ec40cc16ab8a0cbf3d019df7f6a69ff292e35622f282b7c888aac77
-	sha256sums = 89e9ade86131a5989ae2f2c2cee6a12f2c71df35d1ef7a84d6176dd3de0f2889
+	sha256sums = 4484bd38b273e7fcc3d54bcd38e1ed3cdade12f3e9dc79235b011ef69e17c10c
+	sha256sums = fbc87b62c73d20aa12fced28f5d68dc2b3ec7cc9123be424226321195bf2b3b4
+	sha256sums = 1a578528bab7be3970954fdfa033afa69fe753da1bab3f41693b0e05e3c849cd
+	sha256sums = dfdc071e96dcd12b7e7e05953039f3d67aebb757f459c5e29a413ffac6354a9e
+	sha256sums = 43dda8c7a8f9331155bdb831cdeb419953ddcb9b72d71d7c1f84f22530e753da
 	sha256sums = 56a83abecf2ff5a500442adc7a50abbb70006037dd39c39dcdb04b3ca9fb51e2
-	sha256sums = c2685c8a1fb272eef58f830897fda9e6f6671fde1ced59cc55bd5cddb2da7b19
 	sha256sums = 800b2704c73b7d48602b69edb9f128a20ef5e1ad6860779bd3ef25583464e6f9
 
 pkgname = sagemath-git

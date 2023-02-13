@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=9.8.rc0.r0.g9116c5584f9
+pkgver=10.0.beta0.r1.g49a0aed2e5
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -55,7 +55,7 @@ optdepends=('cython: to compile cython code'
 makedepends=(cython boost python-jinja sirocco mcqd coxeter bliss tdlib python-pkgconfig shared_meataxe git)
 conflicts=(sagemath)
 provides=(sagemath)
-source=(git://git.sagemath.org/sage.git#branch=develop
+source=(git+https://github.com/sagemath/sage#branch=develop
         sagemath-optional-packages.patch
         latte-count.patch
         test-optional.patch
@@ -64,18 +64,16 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-tachyon-0.99.patch
         sagemath-gap-4.12.patch
         sagemath-tdlib-0.9.patch
-        sagemath-singular-4.3.1.p3.patch
         sagemath-numpy-1.24.patch)
 sha256sums=('SKIP'
-            '34dead10f1fa9c9dd5e88ceba663d718e5b11767c5db7d52726178ead5098fd3'
+            '8a5b935d2fd8815489713db6497e9d44aefd61e8553e8cd4acc2cb1adf625ccc'
             'bd188af45ce31579b82407adee8e9bf6033a996f7ea6e328fabca526f31c08ba'
-            '9d042070df3dfd53a1248659677798da888f733548eda91a6d5169c7aa1907e1'
-            'eacea27b214d32cb886a75695153dfc36b5bad2fd2517e8e4eee18e74220e9e3'
-            '3e1f866944235b999d2d727ed1ced431bd67405b053701c21068607ec76f23c3'
-            '9760db6c6ec40cc16ab8a0cbf3d019df7f6a69ff292e35622f282b7c888aac77'
-            '89e9ade86131a5989ae2f2c2cee6a12f2c71df35d1ef7a84d6176dd3de0f2889'
+            '4484bd38b273e7fcc3d54bcd38e1ed3cdade12f3e9dc79235b011ef69e17c10c'
+            'fbc87b62c73d20aa12fced28f5d68dc2b3ec7cc9123be424226321195bf2b3b4'
+            '1a578528bab7be3970954fdfa033afa69fe753da1bab3f41693b0e05e3c849cd'
+            'dfdc071e96dcd12b7e7e05953039f3d67aebb757f459c5e29a413ffac6354a9e'
+            '43dda8c7a8f9331155bdb831cdeb419953ddcb9b72d71d7c1f84f22530e753da'
             '56a83abecf2ff5a500442adc7a50abbb70006037dd39c39dcdb04b3ca9fb51e2'
-            'c2685c8a1fb272eef58f830897fda9e6f6671fde1ced59cc55bd5cddb2da7b19'
             '800b2704c73b7d48602b69edb9f128a20ef5e1ad6860779bd3ef25583464e6f9')
 
 pkgver() {
@@ -107,8 +105,6 @@ prepare(){
   patch -p1 -i ../latte-count.patch
 # update to tdlib 0.9 (Fedora)
   patch -p1 -i ../sagemath-tdlib-0.9.patch
-# fix build with singular 4.3.1.p3
-  patch -p1 -i ../sagemath-singular-4.3.1.p3.patch
 
   cd build/pkgs/sagelib
   ./bootstrap

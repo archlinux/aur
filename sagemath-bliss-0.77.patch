@@ -109,9 +109,9 @@ index 921bc6a765..1f1f502558 100644
  
  cdef int encoding_numbits(int n):
      r"""
-@@ -124,9 +125,6 @@ cdef void add_gen(void *user_param, unsigned int n, const unsigned int *aut):
- 
+@@ -125,9 +126,6 @@ cdef void add_gen(void *user_param, unsigned int n, const unsigned int *aut):
      sig_free(done)
+ 
  
 -cdef void empty_hook(void *user_param, unsigned int n, const unsigned int *aut):
 -    return
@@ -119,7 +119,7 @@ index 921bc6a765..1f1f502558 100644
  #####################################################
  # constructing bliss graphs from edge lists
  #####################################################
-@@ -345,10 +343,10 @@ cdef canonical_form_from_edge_list(int Vnr, list Vout, list Vin, int Lnr=1, list
+@@ -346,10 +344,10 @@ cdef canonical_form_from_edge_list(int Vnr, list Vout, list Vin, int Lnr=1, list
  
      if directed:
          d = bliss_digraph_from_labelled_edges(Vnr, Lnr, Vout, Vin, labels, partition)
@@ -132,7 +132,7 @@ index 921bc6a765..1f1f502558 100644
  
      for i in range(len(Vout)):
          x = Vout[i]
-@@ -640,11 +638,11 @@ cdef automorphism_group_gens_from_edge_list(int Vnr, Vout, Vin, int Lnr=1, label
+@@ -643,11 +641,11 @@ cdef automorphism_group_gens_from_edge_list(int Vnr, Vout, Vin, int Lnr=1, label
  
      if directed:
          d = bliss_digraph_from_labelled_edges(Vnr, Lnr, Vout, Vin, labels, partition)
