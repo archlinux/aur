@@ -1,7 +1,7 @@
 pkgbase = mtsieve
 	pkgdesc = Library for sieving various types of numbers
 	pkgver = 2.4.2.r257
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/mtsieve/
 	arch = x86_64
 	license = GPL

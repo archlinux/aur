@@ -2,7 +2,7 @@
 
 pkgname=mtsieve
 pkgver=2.4.2.r257
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for sieving various types of numbers'
 url='https://sourceforge.net/projects/mtsieve/'
 license=('GPL')
@@ -41,6 +41,7 @@ package() {
 	  cd "${srcdir}/${pkgname}-svn"
 	  install -Dm755 afsieve "${pkgdir}"/usr/bin/afsieve
 	  install -Dm755 afsievecl "${pkgdir}"/usr/bin/afsievecl
+	  install -Dm755 ccsieve "${pkgdir}"/usr/bin/ccsieve
 	  install -Dm755 cksieve "${pkgdir}"/usr/bin/cksieve
 	  install -Dm755 dmdsieve "${pkgdir}"/usr/bin/dmdsieve
 	  install -Dm755 gcwsieve "${pkgdir}"/usr/bin/gcwsieve
