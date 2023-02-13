@@ -7,6 +7,7 @@ pkgbase = gossip
 	license = MIT
 	makedepends = cargo
 	makedepends = git
+	makedepends = mold
 	provides = gossip
 	conflicts = gossip
 	options = !lto
