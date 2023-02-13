@@ -1,7 +1,7 @@
 # Maintainer: loooph <loooph@gmx.de>
 pkgname=fairtris-git
 _basename=Fairtris
-pkgver=v3.0.0.2.beta.r23.g13f5c4f
+pkgver=3.0.0.2.beta.r23.g13f5c4f
 pkgrel=1
 pkgdesc="PC clone of the official classic Nintendo Tetris® game for the NES console, Linux fork"
 url="https://github.com/chronoscz/Fairtris"
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_basename"
-    git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --tags | sed 's/v\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
