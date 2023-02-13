@@ -2,7 +2,7 @@
 
 pkgname=('mtxx-bin')
 _pkgname="mtxx"
-pkgver=2.0.2
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="美图秀秀, An image editing software that is mostly used in Mainland China"
 provides=($_pkgname)
@@ -15,7 +15,7 @@ makedepends=('patchelf')
 source_x86_64=("${_pkgname}-${pkgver}-amd64.deb::https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.meitu.mtxx/com.meitu.mtxx_${pkgver}_amd64.deb"
 )
 # source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::https://xiuxiu.dl.meitu.com/com.meitu.mtxx_${pkgver}_aarch64.deb")
-sha512sums_x86_64=('18eaf1cdaecbbfb7da1b482d3fa97f1b2bef91dfa90185f31e53f241ae196ee93c7c4a51f3021b7f629af053e09a4a40389edfc5335820659d48a2dd3051245a')
+sha512sums_x86_64=('6c9bb0ae54914a5366413c74c3637b6f30917922e1b4d6f5935a5e8a3df81fcb17e111b6b2033bde2481b9162b02e6435384d3d58b831dc3a5883ffaa25b74c8')
 # sha512sums_aarch64=('14daff100f015854076def6ab7a6a05e2e18b08f5536479d5d022589294de2a402c8905cc3600d1c89339443245abb3093300b59919ba57ea46d32dcd5e669ef')
 options=(!strip)
 prepare(){
