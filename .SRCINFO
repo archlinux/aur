@@ -1,0 +1,16 @@
+pkgbase = generator-mozu-actions
+	pkgdesc = Yeoman generator for Mozu Actions scaffolding
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/Mozu/generator-mozu-actions
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = generator-mozu-actions-1.3.0.tar.gz
+	options = !strip
+	source = generator-mozu-actions-1.3.0.tar.gz::https://github.com/Mozu/generator-mozu-actions/archive/v1.3.0.tar.gz
+	md5sums = d004b8ebaebf6574ab1d8b0a84c4c832
+	sha256sums = a19a5210279cb83412a26ca9083c0472adbe77135eebf6390856e414bdb8c565
+
+pkgname = generator-mozu-actions
