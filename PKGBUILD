@@ -15,7 +15,6 @@ makedepends=(
     'sed'
     )
 conflicts=('mqtt-explorer-beta') # currently, both programs cannot use the same config file
-backup=("~/.config/MQTT-Explorer/settings.json")
 options=(!strip)
 source=(
     "$pkgname-${pkgver}.tar.gz::https://github.com/thomasnordquist/MQTT-Explorer/archive/v$pkgver.tar.gz"
