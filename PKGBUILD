@@ -1,13 +1,13 @@
 _name=gwenview
 pkgname=${_name}-light
 pkgver=22.12.2
-pkgrel=3
+pkgrel=4
 pkgdesc='A fast and easy to use image viewer (stripped from unnecessary dependencies)'
 url="https://apps.kde.org/${_name}/"
 arch=('x86_64')
 license=('GPL' 'LGPL' 'FDL')
 groups=('kde-applications' 'kde-graphics')
-depends=('kparts' 'kitemmodels' 'phonon-qt5')
+depends=('kparts' 'kitemmodels' 'phonon-qt5' 'kimageannotator')
 makedepends=('extra-cmake-modules')
 
 optdepends=(
@@ -43,7 +43,6 @@ _disable=(
     'TIFF'
     'KF5Baloo'
     'KF5KDcraw'
-    'kImageAnnotator'
 )
 
 _disable=("${_disable[@]/#/"-DCMAKE_DISABLE_FIND_PACKAGE_"}")
