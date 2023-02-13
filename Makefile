@@ -12,7 +12,7 @@ clean:
 	rm -rf pkg src chatterino2/ chatterino2-*.pkg.tar.xz \
 		libcommuni \
 		humanize \
-		qBreakpad \
+		crashpad \
 		WinToast \
 		settings \
 		signals \

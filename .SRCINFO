@@ -22,7 +22,7 @@ pkgbase = chatterino2-git
 	conflicts = chatterino
 	source = git+https://github.com/Chatterino/chatterino2
 	source = git+https://github.com/Chatterino/libcommuni#branch=chatterino-cmake
-	source = git+https://github.com/jiakuan/qBreakpad
+	source = git+https://github.com/getsentry/crashpad
 	source = git+https://github.com/mohabouje/WinToast
 	source = git+https://github.com/pajlada/settings
 	source = git+https://github.com/pajlada/signals

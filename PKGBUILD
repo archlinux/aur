@@ -16,7 +16,7 @@ conflicts=('chatterino')
 install=$pkgname.install
 source=("git+https://github.com/Chatterino/chatterino2"
         "git+https://github.com/Chatterino/libcommuni#branch=chatterino-cmake"
-        "git+https://github.com/jiakuan/qBreakpad"
+        "git+https://github.com/getsentry/crashpad"
         "git+https://github.com/mohabouje/WinToast"
         "git+https://github.com/pajlada/settings"
         "git+https://github.com/pajlada/signals"
@@ -53,7 +53,7 @@ prepare () {
     cd "$srcdir/$_pkgname"
     git submodule init
     git config submodule.libcommuni $srcdir/$_pkgname/lib/libcommuni
-    git config submodule.qBreakpad $srcdir/$_pkgname/lib/qBreakpad
+    git config submodule.lib/crashpad.url "$srcdir/crashpad"
     git config submodule.WinToast $srcdir/$_pkgname/lib/WinToast
     git config submodule.settings $srcdir/$_pkgname/lib/settings
     git config submodule.signals $srcdir/$_pkgname/lib/signals
@@ -64,7 +64,7 @@ prepare () {
     git config submodule.miniaudio $srcdir/$_pkgname/lib/miniaudio
     git config submodule.magicenum $srcdir/$_pkgname/lib/magic_enum
     git config submodule.googletest $srcdir/$_pkgname/lib/googletest
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
