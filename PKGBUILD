@@ -45,6 +45,4 @@ package() {
   install -d "${pkgdir}/usr/local/lib/avalanchego"
   install -d "${pkgdir}/usr/local/lib/avalanchego/plugins"
   install -Dm755 avalanchego ${pkgdir}/usr/local/bin/avalanchego
-  install -Dm755 plugins/evm ${pkgdir}/usr/local/lib/avalanchego/evm
-
 }
