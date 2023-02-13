@@ -1,14 +1,15 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=kitchencalendar
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='Generate weekly calendar PDF files that can be hung up in the Kitchen'
 arch=(x86_64)
 url='https://github.com/xyproto/kitchencalendar'
+source=("git+$url#commit=9e772cb426bc81c6acbd5b871682d4196f65a8a6") # tag: v1.0.3
 license=(BSD)
 makedepends=(git go)
-source=("git+$url#commit=f9961370ca9c7cdbeb6b25e42a14b4d0d2854b5f") # tag: v1.0.2
+
 b2sums=('SKIP')
 
 build() {

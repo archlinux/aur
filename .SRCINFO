@@ -1,13 +1,13 @@
 pkgbase = kitchencalendar
 	pkgdesc = Generate weekly calendar PDF files that can be hung up in the Kitchen
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/xyproto/kitchencalendar
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	makedepends = go
-	source = git+https://github.com/xyproto/kitchencalendar#commit=f9961370ca9c7cdbeb6b25e42a14b4d0d2854b5f
+	source = git+https://github.com/xyproto/kitchencalendar#commit=9e772cb426bc81c6acbd5b871682d4196f65a8a6
 	b2sums = SKIP
 
 pkgname = kitchencalendar
