@@ -24,7 +24,6 @@ pkgbase = chatterino2-git
 	source = git+https://github.com/arsenm/sanitizers-cmake
 	source = git+https://github.com/Chatterino/libcommuni#branch=chatterino-cmake
 	source = git+https://github.com/getsentry/crashpad
-	source = git+https://github.com/mohabouje/WinToast
 	source = git+https://github.com/pajlada/settings
 	source = git+https://github.com/pajlada/signals
 	source = git+https://github.com/pajlada/serialize
@@ -33,7 +32,6 @@ pkgbase = chatterino2-git
 	source = git+https://github.com/Neargye/magic_enum
 	source = git+https://github.com/mackron/miniaudio
 	source = git+https://github.com/google/googletest.git
-	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP

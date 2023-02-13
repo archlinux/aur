@@ -13,7 +13,6 @@ clean:
 		libcommuni \
 		humanize \
 		crashpad \
-		WinToast \
 		settings \
 		signals \
 		serialize \

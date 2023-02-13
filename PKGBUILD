@@ -18,7 +18,6 @@ source=("git+https://github.com/Chatterino/chatterino2"
         "git+https://github.com/arsenm/sanitizers-cmake"
         "git+https://github.com/Chatterino/libcommuni#branch=chatterino-cmake"
         "git+https://github.com/getsentry/crashpad"
-        "git+https://github.com/mohabouje/WinToast"
         "git+https://github.com/pajlada/settings"
         "git+https://github.com/pajlada/signals"
         "git+https://github.com/pajlada/serialize"
@@ -28,7 +27,6 @@ source=("git+https://github.com/Chatterino/chatterino2"
         "git+https://github.com/mackron/miniaudio"
         "git+https://github.com/google/googletest.git")
 md5sums=('SKIP'
-         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -56,7 +54,6 @@ prepare () {
     git config submodule.lib/libcommuni.url "$srcdir/libcommuni"
     git config submodule.lib/crashpad.url "$srcdir/crashpad"
     # TODO: crashpad contains its own submodules, this needs to be resolved
-    git config submodule.lib/WinToast.url "$srcdir/WinToast"
     git config submodule.lib/settings.url "$srcdir/settings"
     git config submodule.lib/signals.url "$srcdir/signals"
     git config submodule.lib/serialize.url "$srcdir/serialize"
