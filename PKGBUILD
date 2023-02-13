@@ -3,7 +3,7 @@
 # Maintainer: Andrey Kolchenko <andrey@kolchenko.me>
 
 pkgname=kontur-plugin
-pkgver=4.0.5.221
+pkgver=4.0.6.244
 pkgrel=1
 pkgdesc='Kontur.Plugin is an extension for web browsers that allows users to perform cryptographic operations in SKB Kontur services.'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
 )
 url='https://help.kontur.ru/plugin/'
 source=('https://help.kontur.ru/plugin/dist/kontur.plugin_amd64.deb')
-sha256sums=('1b28697024255d3a43699ca4618a1a0023117569a9dad8b89631e593484bcb32')
+sha256sums=('efa0d0f0f7fa5a3ddc827508249e629da85bd143088d766ec8dd0c4cd0b658f3')
 
 pkgver() {
     bsdtar -xf control.tar.gz
