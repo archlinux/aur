@@ -2,25 +2,14 @@
 # Contributor: Aetf <aetf at unlimitedcodeworks dot xyz>
 
 pkgname=globus-cli
-pkgver=3.8.0
+pkgver=3.11.0
 pkgrel=1
 pkgdesc='CLI for Globus'
 arch=('any')
 url='https://github.com/globus/globus-cli'
 license=('Apache')
-depends=(
-	'python>=3.7'
-	'python-globus-sdk=3.11.0'
-	'python-click'
-	'python-jmespath'
-	'python-requests'
-	'python-cryptography')
-makedepends=(
-	'git'
-	'python-build'
-	'python-installer'
-	'python-setuptools'
-	'python-wheel')
+depends=('python-click' 'python-cryptography' 'python-globus-sdk=3.16.0' 'python-jmespath' 'python-requests')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 replaces=('python-globus-cli')
 changelog=changelog.adoc
 source=("$pkgname::git+$url#tag=$pkgver?signed")
@@ -39,5 +28,5 @@ build() {
 
 package() {
 	cd "$pkgname"
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
+	python -m installer --destdir "$pkgdir" dist/*.whl
 }

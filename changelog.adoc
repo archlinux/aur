@@ -2,9 +2,134 @@
 
 // scriv-insert-here
 
-== 3.8.0 (2022-08-31)
+== 3.11.0 (2023-02-08)
 
 ## Enhancements
+
+* Add `--policy` option to `globus session update` which takes a comma
+  delimited list of Globus Auth policy IDs and starts an auth flow to
+  meet the policies.
+
+* Whenever an error is hit due to not meeting a Globus Auth policy, helptext
+  is displayed with a `globus session update` command to resolve the error.
+
+* Support `--user-message` and `--user-message-link` for
+  `globus endpoint update` and `globus gcp create mapped`
+
+## Other
+
+* Improve the uniformity of endpoint and collection option parsing.
+** The `--sharing-restrict-paths` option to `globus collection update` now
+   checks for invalid types (non-dict, non-null data)
+** `globus endpoint update` now treats the empty string as null for the
+   following options: `--contact-email`, `--contact-info`,
+   `--default-directory`, `--department`, `--description`, `--info-link`,
+   and `--organization`. This behavior matches `globus collection update`.
+   `--no-default-directory` is still supported, but is equivalent to
+   `--default-directory ""`
+** `globus gcp create guest` and `globus gcp create mapped` now accept
+   `--verify [force|disable|default]` for verification options. This replaces
+   `--disable-verify/--no-disable-verify`, which is now deprecated
+
+== 3.10.1 (2022-12-06)
+
+Bugfixes:
+
+* Fix a typo in the `globus endpoint permission update` command
+
+* Fixed an AttributeError preventing text output of `globus session show`
+
+== 3.10.0 (2022-12-05)
+
+Bugfixes:
+
+* Fix a bug which caused `globus list-commands` not to show proper information
+
+Enhancements:
+
+* Add the `globus api flows` command for direct interactions with the Globus
+  Flows service
+
+* Added commands for interacting with GCSv5 user credentials
+** `globus endpoint user-credential list`
+** `globus endpoint user-credential show`
+** `globus endpoint user-credential delete`
+** `globus endpoint user-credential create`
+*** `globus endpoint user-credential create from-json`
+*** `globus endpoint user-credential create posix`
+*** `globus endpoint user-credential create s3`
+
+* Added `globus endpoint storage-gateway list`
+
+* Add `globus flows delete` to delete a flow by ID
+
+* Add a new command, `globus flows show` which displays information about a
+  single flow
+
+* Add `globus flows start` as a new command for starting a flow.
+
+* Add `globus login --flow <flow_id>` to trigger a login that asks for consent to start a flow.
+
+* `globus ls` has improved behavior when the `--filter` and `--recursive` options
+   are used in combination
+
+** directory names are not matched against the filter, allowing the operation to
+   traverse directories regardless of their names
+
+** the `--filter` is still applied to filenames in all directories traversed by
+   the `ls` operation
+
+** directory names can be filtered out of the text output by eliminating
+   lines which end in `/`
+
+** the behaviors of `globus ls` commands with `--recursive` or `--filter`, but not
+   both, are unchanged
+
+Other:
+
+* `globus endpoint create` is now hidden and displays a deprecation warning
+  when used
+
+* Support Python 3.11.
+
+* Endpointish now uses `entity_type` for determining EntityType
+
+== 3.9.0 (2022-10-13)
+
+Bugfixes:
+
+* Fix a bug in text output for `globus transfer --dry-run` which crashed with a
+  `KeyError` if `--external-checksum` was omitted
+
+Enhancements:
+
+* A new command, `globus flows list`, allows users to list Flow objects in
+  Globus Flows
+
+* New commands for creating Globus Connect Personal endpoints and collections
+** `globus gcp create mapped` creates a GCP Mapped Collection
+** `globus gcp create guest` creates a GCP Guest Collection
+
+In GCP, the Mapped Collection and Endpoint are synonymous. Therefore,
+`globus gcp create mapped` replaces the functionality previously only available
+via `globus endpoint create --personal`.
+
+NOTE: Neither of the `globus gcp create` commands automatically installs Globus
+Connect Personal on the local machine. These commands complement and interact with
+an existing installation.
+
+Other:
+
+* `globus endpoint create` is now documented as deprecated. Users are
+  encouraged to use `globus gcp create` for Globus Connect Personal,
+  and the Globus Connect Server CLI for Globus Connect Server
+
+* `globus endpoint create` no longer accepts `--no-default-directory` as an
+  option. It previously did nothing when used.
+
+== 3.8.0 (2022-08-31)
+
+Enhancements:
 
 * The globus CLI is now faster to start in many cases. Tab completions are most
   significantly improved, but other commands may demonstrate an improvement as
@@ -18,11 +143,11 @@
 
 == 3.7.0 (2022-08-05)
 
-## Bugfixes
+Bugfixes:
 
 * Fix `globus session update` help text not handling missing domain errors from Transfer
 
-## Enhancements
+Enhancements:
 
 * `globus group member invite` now supports provisioning new identities in
   Globus Auth in order to support inviting new users who have not created
