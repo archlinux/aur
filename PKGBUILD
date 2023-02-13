@@ -1,6 +1,6 @@
-# Maintainer: Chi_Tang <chitang@duck.com>
+# Maintainer: Chi_Tang <me@chitang.dev>
 pkgname='nekoray-git'
-pkgver=2.9
+pkgver=2.15.r2.gfbffd4e
 pkgrel=1
 pkgdesc='Qt based cross-platform GUI proxy configuration manager (backend: v2ray / sing-box)'
 arch=('x86_64')
@@ -37,7 +37,6 @@ build() {
    	git submodule init
    	git submodule update
     bash libs/get_source.sh
-    NKR_PACKAGE=1 bash libs/build_deps_all.sh
     mkdir build
     cd build
     cmake -GNinja -DQT_VERSION_MAJOR=5 -DNKR_PACKAGE=ON ..
