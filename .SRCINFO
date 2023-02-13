@@ -6,6 +6,7 @@ pkgbase = gossip-git
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
+	makedepends = git
 	makedepends = mold
 	provides = gossip-git
 	conflicts = gossip-git
