@@ -1,0 +1,5 @@
+libvirt-ocaml/
+ocaml-libvirt-git-*.pkg.tar*
+pkg/
+src/
+
