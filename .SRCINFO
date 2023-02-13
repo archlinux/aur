@@ -1,7 +1,7 @@
 pkgbase = python-m-loop
 	pkgdesc = Rapidly optimize the parameters of a scientific experiment or computer controller system
 	pkgver = 3.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/michaelhush/M-LOOP/
 	arch = any
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = python-m-loop
 	depends = python-tensorflow
 	depends = python-scikit-learn
 	depends = python-pytest
-	source = https://github.com/michaelhush/M-LOOP/archive/refs/tags/v3.3.1.tar.gz
-	sha256sums = 4a81ad691ffb7b97b08296489430caeffc36ab64a7ac3e3708caaab20cbd130a
+	source = https://github.com/zakv/M-LOOP/archive/refs/heads/157-numpy-float-deprecated.zip
+	sha256sums = 2b9bb11e0c8adfb0500cc9175ff16871915a59f57ef07839cc3dc83639999d16
 
 pkgname = python-m-loop
