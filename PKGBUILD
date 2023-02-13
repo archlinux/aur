@@ -3,18 +3,18 @@
 pkgname='python-dm-haiku'
 _pkgname=${pkgname#python-}
 pkgver=0.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A library for building neural networks in JAX'
 arch=('x86_64')
 url='https://github.com/deepmind/dm-haiku'
 license=('Apache')
 depends=('python-absl'
+         'python-jax'
          'python-jmp'
          'python-numpy'
          'python-typing_extensions'
          'python-tabulate')
 makedepends=('python-build' 'python-installer' 'python-setuptools')
-optdepends=('python-jax: Numerical computing library')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/deepmind/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('d550f07f5891ede30ada5faafde98f549ed1b8ceadb7a601cca3d81db7d82414')
 
