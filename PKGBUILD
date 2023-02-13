@@ -3,10 +3,10 @@
 pkgname='python-jmp'
 _pkgname=${pkgname#python-}
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A mixed precision library for JAX'
 arch=('x86_64')
-url='https://github.com/deepmind/dm-haiku'
+url='https://github.com/deepmind/jmp'
 license=('Apache')
 group=('deepmind' 'jax')
 depends=('python-jax' 'python-numpy')

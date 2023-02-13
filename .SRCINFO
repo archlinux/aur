@@ -1,8 +1,8 @@
 pkgbase = python-jmp
 	pkgdesc = A mixed precision library for JAX
 	pkgver = 0.0.4
-	pkgrel = 1
-	url = https://github.com/deepmind/dm-haiku
+	pkgrel = 2
+	url = https://github.com/deepmind/jmp
 	arch = x86_64
 	license = Apache
 	makedepends = python-build
