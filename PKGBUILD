@@ -31,10 +31,10 @@ else
   pkgname=(mutter-performance mutter-performance-docs)
 fi
 pkgver=43.2+r3+g97dd7fb10
-pkgrel=2
+pkgrel=3
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
-arch=(x86_64)
+arch=(x86_64 aarch64)
 license=(GPL)
 depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
          libcanberra startup-notification libsm gnome-desktop libxkbcommon-x11
