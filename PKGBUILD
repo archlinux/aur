@@ -3,8 +3,8 @@
 # Original Maintainer: raininja <dandenkijin@gmail.com>
 pkgname=slimjet
 pkgver=38.0.2.0
-pkgrel=1
-pkgver_libffmpeg=0.71.1
+pkgrel=2
+pkgver_libffmpeg=0.72.0
 pkgdesc="Fast, smart and powerful browser based on Blink"
 arch=('x86_64')
 url="http://www.slimjet.com"
@@ -15,9 +15,10 @@ conflicts=('slimjet-git')
 options=('!emptydirs' '!strip')
 _channel=release
 source_x86_64=("${pkgname}-${pkgver}_amd64.deb::http://www.slimjetbrowser.com/${_channel}/${pkgname}_amd64.deb")
-source=('LICENSE' "libffmpeg.zip::https://github.com/ahmedmoselhi/nwjs-ffmpeg-prebuilt/releases/download/${pkgver_libffmpeg}/${pkgver_libffmpeg}-linux-x64.zip")
+#source=('LICENSE' "libffmpeg.zip::https://github.com/ahmedmoselhi/nwjs-ffmpeg-prebuilt/releases/download/${pkgver_libffmpeg}/${pkgver_libffmpeg}-linux-x64.zip")
+source=('LICENSE' "libffmpeg.zip::https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases/download/${pkgver_libffmpeg}/${pkgver_libffmpeg}-linux-x64.zip")
 md5sums=('e2f3d75bbf4ea8cef106adb30c6b4c83'
-         'efb7eab92dbda0b4f25343ead437a09a')
+         '0f779690a7b54085c9c312e9d8c5355c')
 md5sums_x86_64=('2faf9e4269c7cd3a400df8a39bd2eb07')
 
 prepare() {
