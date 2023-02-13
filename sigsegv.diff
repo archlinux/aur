@@ -1,0 +1,11 @@
+diff -Naur a/P0267_RefImpl/Tests/main.cpp b/P0267_RefImpl/Tests/main.cpp
+--- a/P0267_RefImpl/Tests/main.cpp	2023-02-13 04:00:13.624990832 -0500
++++ b/P0267_RefImpl/Tests/main.cpp	2023-02-13 04:01:24.948610417 -0500
+@@ -4,6 +4,7 @@
+ #include <exception>
+ #include <iostream>
+ #include <system_error>
++#include <sigsegv.h>
+ 
+ #if __has_include(<filesystem>)
+ 	#include <filesystem>

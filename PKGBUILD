@@ -9,9 +9,11 @@ depends=('boost-libs' 'cairo' 'libpng')
 #optdepends=('')
 makedepends=('git' 'cmake' 'boost' 'graphicsmagick' 'cairomm' 'libpng')
 source=('git+https://github.com/cpp-io2d/P0267_RefImpl.git'
-				'libpngPatch.diff')
+				'libpngPatch.diff'
+				'sigsegv.diff')
 sha512sums=('SKIP'
-						'acb4bc932bc9249b53f31dcc0c07b3705ba4c685eab49b6d20bce4773a8aa8deda2bb51ed6232dbdeaedbcc1bdb2fc676fa407962d310431f4c216bb3d735d66')
+				'acb4bc932bc9249b53f31dcc0c07b3705ba4c685eab49b6d20bce4773a8aa8deda2bb51ed6232dbdeaedbcc1bdb2fc676fa407962d310431f4c216bb3d735d66'
+				'SKIP')
 _gitdir="P0267_RefImpl"
 
 pkgver() {
@@ -25,6 +27,9 @@ build() {
 
 	# Fix the path for libpng so it looks for libpng16 instead
 	patch ./P0267_RefImpl/Tests/CMakeLists.txt ../libpngPatch.diff
+
+	# Fix the compile error caused by the missing header
+	patch ./P0267_RefImpl/Tests/main.cpp ../sigsegv.diff
 
 	# Update submodule for external/svgpp
 	#   Boost 1.71.0 and up broke broke the version of svgpp that

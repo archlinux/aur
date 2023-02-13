@@ -5,6 +5,7 @@ pkgbase = cpp-io2d-git
 	url = https://github.com/cpp-io2d/
 	arch = x86_64
 	license = boost
+	makedepends = git
 	makedepends = cmake
 	makedepends = boost
 	makedepends = graphicsmagick
@@ -15,7 +16,9 @@ pkgbase = cpp-io2d-git
 	depends = libpng
 	source = git+https://github.com/cpp-io2d/P0267_RefImpl.git
 	source = libpngPatch.diff
+	source = sigsegv.diff
 	sha512sums = SKIP
 	sha512sums = acb4bc932bc9249b53f31dcc0c07b3705ba4c685eab49b6d20bce4773a8aa8deda2bb51ed6232dbdeaedbcc1bdb2fc676fa407962d310431f4c216bb3d735d66
+	sha512sums = SKIP
 
 pkgname = cpp-io2d-git
