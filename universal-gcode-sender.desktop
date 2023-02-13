@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Universal G-Code Sender
+Comment=A Java based, cross platform G-Code sender, compatible with GRBL, TinyG, g2core and Smoothieware.
+Exec=ugs
+Icon=/opt/universal-gcode-sender/ugs_logo_square.svg
+Terminal=false
+Type=Application
+Categories=Utility;
