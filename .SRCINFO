@@ -1,7 +1,7 @@
 pkgbase = desktop-naotu-bin
 	pkgdesc = 桌面版脑图 (百度脑图离线版，思维导图) 跨平台支持 Windows/Linux/Mac OS. (A cross-platform multilingual Mind Map Tool)
 	pkgver = 3.2.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/NaoTu/DesktopNaotu
 	arch = x86_64
 	license = GPL2

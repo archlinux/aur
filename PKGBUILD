@@ -2,7 +2,7 @@
 pkgname=desktop-naotu-bin
 _name=DesktopNaoTu
 pkgver=3.2.3
-pkgrel=4
+pkgrel=5
 pkgdesc="桌面版脑图 (百度脑图离线版，思维导图) 跨平台支持 Windows/Linux/Mac OS. (A cross-platform multilingual Mind Map Tool)"
 arch=('x86_64')
 url="https://github.com/NaoTu/DesktopNaotu"
@@ -21,10 +21,11 @@ md5sums=('cfdc8b6ab74266ebff808abd92ae10e5'
 
 package() {
     msg2 "Start Copying"
-    install -d "$pkgdir/opt/DesktopNaoTu"
-    cp -a ${srcdir}/DesktopNaotu-linux-x64 ${pkgdir}/opt/DesktopNaoTu
+    mkdir -p "$pkgdir/opt/DesktopNaoTu"
+    cp -r ${srcdir}/DesktopNaotu-linux-x64 ${pkgdir}/opt/DesktopNaoTu
     msg2 "Copying Over"
 	install -Dm644 "$srcdir/favicon.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/desktop-naotu.png"
 	install -Dm755 "$srcdir/desktop-naotu.sh" "$pkgdir/usr/bin/desktop-naotu"
 	install -Dm644 "$srcdir/desktop-naotu.desktop" "$pkgdir/usr/share/applications/desktop-naotu.desktop"
+    chmod +x ${pkgdir}/opt/DesktopNaoTu/DesktopNaotu-linux-x64/DesktopNaotu
 }
