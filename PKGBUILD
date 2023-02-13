@@ -9,7 +9,7 @@ arch=('armv7h')
 url='https://github.com/u-boot/u-boot'
 license=(GPL3)
 depends=()
-makedepends=('dtc')
+makedepends=('wget' 'dtc' 'git' 'swig' 'bc' 'python3' 'python-setuptools')
 _binsite="https://github.com/rockchip-linux/rkbin/blob"
 _bincommit="c02d94aba0d42212bf343785f080f1fc1085f947"
 source=(
@@ -53,8 +53,8 @@ EOT
     unset LDFLAGS
     unset CFLAGS
 
-    make rk3288_my_defconfig
-    make
+    ARCH=arm make rk3288_my_defconfig
+    ARCH=arm make
     if [ "$rkdev" == "miqi" ]; then # Miqi always gets processed before Openhour
       _DTS="arch/arm/dts"
       cp -vf $_DTS/rk3288-miqi.dtb $_DTS/rk3288-openhour.dtb
