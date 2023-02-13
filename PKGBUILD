@@ -199,7 +199,7 @@ fi
 _major=6.2
 _minor=0
 #_minorc=$((_minor+1))
-_rcver=rc7
+_rcver=rc8
 pkgver=${_major}.${_rcver}
 #_stable=${_major}.${_minor}
 #_stable=${_major}
@@ -215,7 +215,7 @@ license=('GPL2')
 options=('!strip')
 makedepends=('bc' 'libelf' 'pahole' 'cpio' 'perl' 'tar' 'xz' 'zstd' 'gcc' 'gcc-libs' 'glibc' 'binutils' 'make' 'patch')
 # LLVM makedepends
-if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]]; then
+if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] || [ -n "$_use_kcfi" ]; then
     makedepends+=(clang llvm lld python)
     BUILD_FLAGS=(
         CC=clang
@@ -224,21 +224,19 @@ if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]]; then
         LLVM_IAS=1
     )
 fi
-# ZFS makedepends
-if [ -n "$_build_zfs" ]; then
-    makedepends+=(git)
-
-fi
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
 source=(
     "https://github.com/torvalds/linux/archive/refs/tags/v${_major}-${_rcver}.tar.gz"
     "config"
     "auto-cpu-optimization.sh"
     "${_patchsource}/all/0001-cachyos-base-all.patch")
-## ZFS Support
+
+# ZFS support
 if [ -n "$_build_zfs" ]; then
+    makedepends+=(git)
     source+=("git+https://github.com/cachyos/zfs.git#commit=92e0d9d183ce6752cd52f7277c8321d81df9ffee")
 fi
+
 ## Latency NICE Support
 if [ -n "$_latency_nice" ]; then
     if [[ "$_cpusched" = "bore"  || "$_cpusched" = "cfs" || "$_cpusched" = "hardened" ]]; then
@@ -259,14 +257,6 @@ case "$_cpusched" in
                  "${_patchsource}/misc/0001-hardened.patch");;
 esac
 
-## Kernel CFI Patch
-if [ -n "$_use_kcfi" ]; then
-    BUILD_FLAGS=(
-        CC=clang
-        LD=ld.lld
-        LLVM=1
-    )
-fi
 ## bcachefs Support
 if [ -n "$_bcachefs" ]; then
     source+=("${_patchsource}/misc/0001-bcachefs.patch")
@@ -408,12 +398,14 @@ prepare() {
     fi
 
     ### Setting NR_CPUS
-    if [ -n "$_nr_cpus" ]; then
+    if [[ "$_nr_cpus" -ge 2 && "$_nr_cpus" -le 512 ]]; then
         echo "Setting custom NR_CPUS..."
         scripts/config --set-val NR_CPUS "$_nr_cpus"
-    else
+    elif [ -z "$_nr_cpus" ]; then
         echo "Setting default NR_CPUS..."
         scripts/config --set-val NR_CPUS 320
+    else
+        _die "The value '$_nr_cpus' is invalid. Please select a numerical value from 2 to 512..."
     fi
 
     ### Disable MQ Deadline I/O scheduler
@@ -703,21 +695,15 @@ build() {
     if [ -n "$_build_zfs" ]; then
         cd ${srcdir}/"zfs"
 
-        if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]]; then
-            ./autogen.sh
-            sed -i "s|\$(uname -r)|${pkgver}-${pkgsuffix}|g" configure
-            ./configure KERNEL_LLVM=1 --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
-                --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
-                --libexecdir=/usr/lib/zfs --with-config=kernel \
-                --with-linux=${srcdir}/$_srcname
-        else
-            ./autogen.sh
-            sed -i "s|\$(uname -r)|${pkgver}-${pkgsuffix}|g" configure
-            ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
-                --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
-                --libexecdir=/usr/lib/zfs --with-config=kernel \
-                --with-linux=${srcdir}/$_srcname
-        fi
+        local CONFIGURE_FLAGS=()
+        [ "$_use_llvm_lto" != "none" ] && CONFIGURE_FLAGS+=("KERNEL_LLVM=1")
+
+        ./autogen.sh
+        sed -i "s|\$(uname -r)|${pkgver}-${pkgsuffix}|g" configure
+        ./configure ${CONFIGURE_FLAGS[*]} --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin \
+            --libdir=/usr/lib --datadir=/usr/share --includedir=/usr/include \
+            --with-udevdir=/lib/udev --libexecdir=/usr/lib/zfs --with-config=kernel \
+            --with-linux=${srcdir}/$_srcname
         make ${BUILD_FLAGS[*]}
     fi
 }
@@ -859,9 +845,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('ea49401b0f89d2eb32639e5d4cc6ffade51b0286c9761786ffa62f346cfb4b03'
-            '328c914f8a35b61a2e44d770195bee381904914a68139746d5c531afbccee18d'
+sha256sums=('747d729e089bfe37d0c0713338d09c48fe155681acc485949bb001026397a732'
+            '44e53082f7f88b62c0b4402a00db0797850de1d90adc2a803b1432fc7efe51bb'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
-            '36e45fea2f5f5510534a977e0b6f10a53c15efb08f282ffe25df40ac74269233'
+            '6e5f1b79869f8fe46165571abc1f51e69e63057c99a58b2531a9092634e18d7c'
             '9b8da83a416041b7dfec2a83066022bba9a1b24b05c68713546ab199a3c4888b'
             'b78828363b80104e8905966f35f32f6a90d5ab7fe544a04e44ef5d13a8404346')
