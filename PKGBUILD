@@ -19,7 +19,7 @@ pkgname=(
 
   lib32-gstreamer-vaapi-git
 )
-pkgver=1.22.0+r153+g9a300fc501
+pkgver=1.22.0+r419+gaeb262a7e1
 pkgrel=1
 pkgdesc="Multimedia graph framework (32-bit)"
 url="https://gstreamer.freedesktop.org/"
@@ -138,6 +138,7 @@ build() {
     -D gst-plugins-bad:openmpt=disabled # due to no lib32-openmpt support
     -D gst-plugins-bad:qroverlay=disabled # due to no lib32-qrencode support
     -D gst-plugins-bad:svthevcenc=disabled # due to no lib32-svthevcenc support
+    -D gst-plugins-bad:svtav1=disabled # due to no lib32-svt-av1
     -D gst-plugins-bad:wpe=disabled # due to no lib32-wpe support
     -D gst-plugins-bad:zxing=disabled # due to no lib32-zxing support
     -D gst-plugins-bad:amfcodec=disabled # only support windows
@@ -165,14 +166,14 @@ build() {
   meson compile -C build
 }
 
-# check() (
-#   mkdir -p -m 700 "${XDG_RUNTIME_DIR:=$PWD/runtime-dir}"
-#   export XDG_RUNTIME_DIR
+check() (
+  mkdir -p -m 700 "${XDG_RUNTIME_DIR:=$PWD/runtime-dir}"
+  export XDG_RUNTIME_DIR
 
-#   # Flaky due to timeouts
-#   xvfb-run -s '-nolisten local' \
-#     meson test -C build --print-errorlogs || :
-# )
+  # Flaky due to timeouts
+  xvfb-run -s '-nolisten local' \
+    meson test -C build --print-errorlogs || :
+)
 
 _install() {
   local src dir
