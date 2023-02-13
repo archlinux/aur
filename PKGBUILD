@@ -1,12 +1,14 @@
 # Maintainer: Gregory Land
+# Contributor: Fabian Bornschein <fabiscafe-cat-mailbox-dog-com>
+
 pkgname=supergfxctl
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility for Linux graphics switching on Intel/AMD iGPU + nVidia dGPU laptops"
 arch=('x86_64')
 url="https://gitlab.com/asus-linux/supergfxctl"
 license=('MPL2')
-depends=('gcc-libs')
+depends=('gcc-libs' 'systemd')
 makedepends=('rust')
 provides=('supergfxctl')
 conflicts=('supergfxctl-git'
