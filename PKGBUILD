@@ -2,7 +2,7 @@
 
 pkgname=vmware-host-modules-dkms-git
 _pkgname=vmware-host-modules
-pkgver=w17.0.0.r12.g78b7781
+pkgver=w17.0.1.r12.g78b7781
 _pkgver=$(echo $pkgver | cut -c 2-7)
 url='https://github.com/mkubecek/vmware-host-modules'
 pkgrel=1
