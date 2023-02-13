@@ -1,16 +1,18 @@
 pkgbase = python-dohq-artifactory
 	pkgdesc = Python interface library for JFrog Artifactory
 	pkgver = 0.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/devopshq/artifactory
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	depends = python
+	makedepends = python-wheel
 	depends = python-requests
 	depends = python-pyjwt
 	depends = python-dateutil
-	source = https://files.pythonhosted.org/packages/69/5d/cb24a440d7a39aa9fa4e62df591d27fce17301adecf5b822e54b1a3fbeb9/dohq-artifactory-0.8.4.tar.gz
+	source = python-dohq-artifactory-0.8.4.tar.gz::https://files.pythonhosted.org/packages/source/d/dohq-artifactory/dohq-artifactory-0.8.4.tar.gz
 	sha256sums = 4c4e31153a771341cd6d21d766e095701aeddcb2da431b502f357258070b443f
 
 pkgname = python-dohq-artifactory

@@ -1,22 +1,28 @@
-# Maintainer: Mikhail felixoid Shiryaev <mr dot felixoid on gmail>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Mikhail felixoid Shiryaev <mr dot felixoid on gmail>
 
-_name=dohq-artifactory
-pkgname=python-${_name}
+pkgname=python-dohq-artifactory
+_pkg="${pkgname#python-}"
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Python interface library for JFrog Artifactory'
+license=('MIT')
 arch=('any')
 url="https://github.com/devopshq/artifactory"
-makedepends=('python-setuptools')
-depends=('python' 'python-requests' 'python-pyjwt' 'python-dateutil')
-license=('MIT')
-source=("https://files.pythonhosted.org/packages/69/5d/cb24a440d7a39aa9fa4e62df591d27fce17301adecf5b822e54b1a3fbeb9/${_name}-${pkgver}.tar.gz")
+depends=('python-requests' 'python-pyjwt' 'python-dateutil')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/d/$_pkg/$_pkg-$pkgver.tar.gz")
 sha256sums=('4c4e31153a771341cd6d21d766e095701aeddcb2da431b502f357258070b443f')
 
-package() {
-  cd "${srcdir}/${_name}-${pkgver}"
-  python setup.py install --root="${pkgdir}"
-  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-  cp LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
+build() {
+	cd "$_pkg-$pkgver"
+	python -m build --wheel --no-isolation
 }
 
+package() {
+	cd "$_pkg-$pkgver"
+	python -m installer --destdir "$pkgdir" dist/*.whl
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -sv "$_site/${_pkg/-/_}-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+}
