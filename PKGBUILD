@@ -27,6 +27,12 @@ validpgpkeys=("4AEE18F83AFDEB23")
 
 build() {
 	cd "MQTT-Explorer-${pkgver}"
+
+	sed -i 's/"heapdump": "^0.3.12",//' app/package.json
+	sed -i 's/if (!/\/*if (!/' app/src/components/Demo/index.tsx
+	sed -i 's/return path/\*\/return path/' app/src/components/Demo/index.tsx
+
+  export NODE_OPTIONS=--openssl-legacy-provider
 	yarn || sed -i 's/node-gyp rebuild/node-gyp rebuild --openssl_fips=X/' app/package.json
 	yarn build
 }
