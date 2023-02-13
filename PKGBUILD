@@ -1,26 +1,20 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
+#
+# There is no way to get notifications on the binary update at the moment but
+# one can do it manually with the following request.
+#
+#    curl "https://storage.yandexcloud.net/yandexcloud-yc/release/stable"
 
 pkgname=yandex-cloud-bin
 pkgver=0.102.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Yandex.Cloud CLI'
 arch=('x86_64')
 url='https://cloud.yandex.ru/docs/cli/'
-license=()
-depends=()
-makedepends=()
+license=('unknown')
 provides=('yandex-cloud')
 source=("yc-$pkgver::https://storage.yandexcloud.net/yandexcloud-yc/release/${pkgver}/linux/amd64/yc")
 sha256sums=('3ec39264adefb6459423ea091b95657a582ade2477e7d53fca0d7d24a7f4c5a7')
-
-# TODO: Get the latest stable version.
-#pkgver() {
-#    curl "https://storage.yandexcloud.net/yandexcloud-yc/release/stable"
-#}
-
-build() {
-    cd "$srcdir"
-}
 
 package() {
     mkdir -p "$pkgdir/usr/bin"
