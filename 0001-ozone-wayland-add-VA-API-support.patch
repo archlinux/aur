@@ -17,10 +17,10 @@ by Wayland later.
 
 ---
 diff --git a/media/gpu/vaapi/vaapi_picture_factory.cc b/media/gpu/vaapi/vaapi_picture_factory.cc
-index 7f44de0..618dcd6 100644
+index 5dadd7c..c82b0a7 100644
 --- a/media/gpu/vaapi/vaapi_picture_factory.cc
 +++ b/media/gpu/vaapi/vaapi_picture_factory.cc
-@@ -106,7 +106,7 @@ uint32_t VaapiPictureFactory::GetGLTextureTarget() {
+@@ -101,7 +101,7 @@ uint32_t VaapiPictureFactory::GetGLTextureTarget() {
  }
  
  gfx::BufferFormat VaapiPictureFactory::GetBufferFormat() {
@@ -30,7 +30,7 @@ index 7f44de0..618dcd6 100644
  #else
    return gfx::BufferFormat::YUV_420_BIPLANAR;
 diff --git a/media/gpu/vaapi/vaapi_picture_native_pixmap.cc b/media/gpu/vaapi/vaapi_picture_native_pixmap.cc
-index 18c6c22..fe614b6 100644
+index 6c40d52..265196f 100644
 --- a/media/gpu/vaapi/vaapi_picture_native_pixmap.cc
 +++ b/media/gpu/vaapi/vaapi_picture_native_pixmap.cc
 @@ -4,6 +4,7 @@
@@ -40,8 +40,8 @@ index 18c6c22..fe614b6 100644
 +#include "media/gpu/macros.h"
  #include "media/gpu/vaapi/va_surface.h"
  #include "media/gpu/vaapi/vaapi_wrapper.h"
- #include "ui/gfx/buffer_format_util.h"
-@@ -40,7 +41,21 @@ VaapiPictureNativePixmap::~VaapiPictureNativePixmap() = default;
+ 
+@@ -34,7 +35,21 @@ VaapiPictureNativePixmap::~VaapiPictureNativePixmap() = default;
  bool VaapiPictureNativePixmap::DownloadFromSurface(
      scoped_refptr<VASurface> va_surface) {
    DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
@@ -65,7 +65,7 @@ index 18c6c22..fe614b6 100644
  
  bool VaapiPictureNativePixmap::AllowOverlay() const {
 diff --git a/media/gpu/vaapi/vaapi_video_decode_accelerator.cc b/media/gpu/vaapi/vaapi_video_decode_accelerator.cc
-index e01a3dd..94b2bfa 100644
+index 4e3a55f..bac0b48 100644
 --- a/media/gpu/vaapi/vaapi_video_decode_accelerator.cc
 +++ b/media/gpu/vaapi/vaapi_video_decode_accelerator.cc
 @@ -560,12 +560,12 @@ void VaapiVideoDecodeAccelerator::InitiateSurfaceSetChange(
@@ -113,10 +113,10 @@ index 5555c11..844e1d8 100644
  
  }  // namespace ui
 diff --git a/ui/ozone/platform/wayland/ozone_platform_wayland.cc b/ui/ozone/platform/wayland/ozone_platform_wayland.cc
-index 0228a26..3c938c1 100644
+index b3190c6..a3e0af3 100644
 --- a/ui/ozone/platform/wayland/ozone_platform_wayland.cc
 +++ b/ui/ozone/platform/wayland/ozone_platform_wayland.cc
-@@ -296,6 +296,9 @@ class OzonePlatformWayland : public OzonePlatform,
+@@ -309,6 +309,9 @@ class OzonePlatformWayland : public OzonePlatform,
        properties->supports_global_screen_coordinates =
            features::IsWaylandScreenCoordinatesEnabled();
  
