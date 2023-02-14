@@ -10,6 +10,7 @@ pkgbase = kiconthemes-git
 	makedepends = extra-cmake-modules-git
 	makedepends = doxygen
 	makedepends = qt6-tools
+	depends = qt6-5compat
 	depends = qt6-svg
 	depends = kconfigwidgets-git
 	depends = kitemviews-git
