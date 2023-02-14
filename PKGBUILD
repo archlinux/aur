@@ -9,7 +9,7 @@ url="https://github.com/openmsr/CAD_to_OpenMC"
 license=('MIT')
 depends=(
    python
- 	 python-pip
+   python-pip
 )
 
 makedepends=(
