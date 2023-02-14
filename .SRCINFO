@@ -1,6 +1,6 @@
 pkgbase = mpboot
 	pkgdesc = Fast phylogenetic maximum parsimony tree inference and bootstrap approximation https://doi.org/10.1186/s12862-018-1131-3
-	pkgver = 1.1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/diepthihoang/mpboot
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = mpboot
 	depends = eigen
 	depends = gcc-libs
 	depends = zlib
-	source = git+https://github.com/diepthihoang/mpboot.git#tag=v1.1.1
+	source = git+https://github.com/diepthihoang/mpboot.git#tag=v1.2
 	md5sums = SKIP
 
 pkgname = mpboot

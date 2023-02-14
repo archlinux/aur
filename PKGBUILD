@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <myname at malacology dot net>
 
 pkgname=mpboot
-pkgver=1.1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Fast phylogenetic maximum parsimony tree inference and bootstrap approximation https://doi.org/10.1186/s12862-018-1131-3"
 arch=(x86_64)
