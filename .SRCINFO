@@ -1,7 +1,7 @@
 pkgbase = gdm-tools
-	pkgdesc = Tools(set-gdm-theme,gnomeconf2gdm) for theming/personlizing Gnome Login Manager (GDM)
+	pkgdesc = Command-line tools for GNOME's login manager, GDM
 	pkgver = 1.2
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/realmazharhussain/gdm-tools
 	arch = any
 	license = GPL3
