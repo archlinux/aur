@@ -4,30 +4,44 @@
 pkgname=robotstxt
 # No released version yet, so versioned based on the number of commits.
 # Zeros to preserve numbering for any future version available.
-pkgver=0.0.0.68
+pkgver=0.0.0.94
 pkgrel=1
 pkgdesc="Google's robots.txt parser and matcher as a C++ library (compliant to C++11)."
 arch=('x86_64')
 url="https://github.com/google/robotstxt"
 license=('Apache')
 depends=('gcc-libs')
-makedepends=('bazel')
-_git_commit='3677dc912c56d14df2126a125583e3763e5799e8'
+makedepends=('cmake' 'git')
+_git_commit='455b1583103d13ad88fe526bc058d6b9f3309215'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/google/robotstxt/archive/$_git_commit.tar.gz")
-sha256sums=('07ecf3bf54828fc94666325d593a81a2454a61f333e45cfa77e02393e466120d')
+sha256sums=('618cdd42d4662dcfc6ff2da25854cc0039e664df1a5caff7026acb4074c8e269')
 
 build() {
-  cd "$srcdir/robotstxt-$_git_commit"
-  bazel build :robots_main
+  mkdir -p "$srcdir/robotstxt-$_git_commit/c-build"
+  cd "$srcdir/robotstxt-$_git_commit/c-build"
+  cmake .. \
+    -DCMAKE_BUILD_TYPE='None' \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -Wno-dev
+  make
 }
 
 package() {
   install -dm0755 "$pkgdir/usr/bin"
+  install -dm0755 "$pkgdir/usr/lib"
 
-  install -m0755 "$srcdir/robotstxt-$_git_commit/bazel-bin/robots_main" "$pkgdir/usr/bin/robotstxt"
+  install -m0644 "$srcdir/robotstxt-$_git_commit/c-build/librobots.so" "$pkgdir/usr/lib/librobots.so"
+  install -m0755 "$srcdir/robotstxt-$_git_commit/c-build/robots" "$pkgdir/usr/bin/robotstxt"
 }
 
 check() {
-  cd "$srcdir/robotstxt-$_git_commit"
-  bazel test :robots_test
+  mkdir -p "$srcdir/robotstxt-$_git_commit/c-build"
+  cd "$srcdir/robotstxt-$_git_commit/c-build"
+  cmake .. \
+    -DROBOTS_BUILD_TESTS=ON \
+    -DCMAKE_BUILD_TYPE='None' \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -Wno-dev
+  make
+  make test
 }
