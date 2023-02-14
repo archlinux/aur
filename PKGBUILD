@@ -197,7 +197,7 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.1
-_minor=11
+_minor=12
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -215,7 +215,7 @@ license=('GPL2')
 options=('!strip')
 makedepends=('bc' 'libelf' 'pahole' 'cpio' 'perl' 'tar' 'xz' 'zstd' 'gcc' 'gcc-libs' 'glibc' 'binutils' 'make' 'patch')
 # LLVM makedepends
-if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]]; then
+if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] || [ -n "$_use_kcfi" ]; then
     makedepends+=(clang llvm lld python)
     BUILD_FLAGS=(
         CC=clang
@@ -224,21 +224,19 @@ if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]]; then
         LLVM_IAS=1
     )
 fi
-# ZFS makedepends
-if [ -n "$_build_zfs" ]; then
-    makedepends+=(git)
-
-fi
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
 source=(
     "https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz"
     "config"
     "auto-cpu-optimization.sh"
     "${_patchsource}/all/0001-cachyos-base-all.patch")
-## ZFS Support
+
+# ZFS support
 if [ -n "$_build_zfs" ]; then
+    makedepends+=(git)
     source+=("git+https://github.com/cachyos/zfs.git#commit=92e0d9d183ce6752cd52f7277c8321d81df9ffee")
 fi
+
 ## Latency NICE Support
 if [ -n "$_latency_nice" ]; then
     if [[ "$_cpusched" = "bore"  || "$_cpusched" = "cfs" || "$_cpusched" = "hardened" ]]; then
@@ -259,14 +257,6 @@ case "$_cpusched" in
                  "${_patchsource}/misc/0001-hardened.patch");;
 esac
 
-## Kernel CFI Patch
-if [ -n "$_use_kcfi" ]; then
-    BUILD_FLAGS=(
-        CC=clang
-        LD=ld.lld
-        LLVM=1
-    )
-fi
 ## bcachefs Support
 if [ -n "$_bcachefs" ]; then
     source+=("${_patchsource}/misc/0001-bcachefs.patch")
@@ -408,12 +398,14 @@ prepare() {
     fi
 
     ### Setting NR_CPUS
-    if [ -n "$_nr_cpus" ]; then
+    if [[ "$_nr_cpus" -ge 2 && "$_nr_cpus" -le 512 ]]; then
         echo "Setting custom NR_CPUS..."
         scripts/config --set-val NR_CPUS "$_nr_cpus"
-    else
+    elif [ -z "$_nr_cpus" ]; then
         echo "Setting default NR_CPUS..."
         scripts/config --set-val NR_CPUS 320
+    else
+        _die "The value '$_nr_cpus' is invalid. Please select a numerical value from 2 to 512..."
     fi
 
     ### Disable MQ Deadline I/O scheduler
@@ -703,21 +695,15 @@ build() {
     if [ -n "$_build_zfs" ]; then
         cd ${srcdir}/"zfs"
 
-        if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]]; then
-            ./autogen.sh
-            sed -i "s|\$(uname -r)|${pkgver}-${pkgsuffix}|g" configure
-            ./configure KERNEL_LLVM=1 --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
-                --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
-                --libexecdir=/usr/lib/zfs --with-config=kernel \
-                --with-linux=${srcdir}/$_srcname
-        else
-            ./autogen.sh
-            sed -i "s|\$(uname -r)|${pkgver}-${pkgsuffix}|g" configure
-            ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
-                --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
-                --libexecdir=/usr/lib/zfs --with-config=kernel \
-                --with-linux=${srcdir}/$_srcname
-        fi
+        local CONFIGURE_FLAGS=()
+        [ "$_use_llvm_lto" != "none" ] && CONFIGURE_FLAGS+=("KERNEL_LLVM=1")
+
+        ./autogen.sh
+        sed -i "s|\$(uname -r)|${pkgver}-${pkgsuffix}|g" configure
+        ./configure ${CONFIGURE_FLAGS[*]} --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin \
+            --libdir=/usr/lib --datadir=/usr/share --includedir=/usr/include \
+            --with-udevdir=/lib/udev --libexecdir=/usr/lib/zfs --with-config=kernel \
+            --with-linux=${srcdir}/$_srcname
         make ${BUILD_FLAGS[*]}
     fi
 }
@@ -859,8 +845,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('581b0560077863c5116512c0b5fd93b97814092c80e6ebebabe88101949af7a1'
+sha256sums=('d47aa675170904dcc93eeaa7c96db54d476a11c5d3e8cf3d3b96e364e2a0edea'
             '509bde973c87ce534f047ef4bdcd8b07dce606ea8e2fd91af1af0641db21eb37'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
-            'b432d83476b893c2f46b5284bacdf0d760f3708c87dc57905740ad21dc8fc540'
-            'b40bd5d425701f9d0d4ba3cc9e6f4fac73e80a94e640b16ad2e1fb0183217a49')
+            '750aafca9b47da4a30fe55b5ffbbe6bbba7129bb7c9fd46621cce80a7ac66401'
+            'a9566828cf8b62edfd961d4f5309dd1c414697122835e75c5141fe467ca8c7c0')
