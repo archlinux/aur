@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=sunshine-git
-pkgver=0.18.3.r0.g9563419
+pkgver=nightly.dev.r214.g032680c
 pkgrel=1
 pkgdesc="Game Stream server for Moonlight, latest git"
 arch=('x86_64')
@@ -46,7 +46,7 @@ provides=(sunshine)
 conflicts=(sunshine sunshine-nox)
 
 source=(
-git+https://github.com/LizardByte/Sunshine.git
+git+https://github.com/LizardByte/Sunshine.git#branch=nightly
 git+https://github.com/moonlight-stream/moonlight-common-c.git
 git+https://gitlab.com/eidheim/Simple-Web-Server.git
 git+https://github.com/ViGEm/ViGEmClient.git
