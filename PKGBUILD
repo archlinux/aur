@@ -33,21 +33,17 @@ prepare() {
   rm -fr src/{avs*,avi*}
   sed '1i#include <algorithm>' -i src/VMAF.cpp
   sed -e "/vmaf_install\/include/d" \
-      -e '/x86_64-linux-gnu/d' \
-      -e '/libavisynth.so/d' \
+      -e '/x86_64-linux-gnu/c \ \ \ \ \ \ \ \ libvmaf.so' \
       -i CMakeLists.txt
-
 }
 
 build() {
-
   cd "${_plug}"
-
-  CXXFLAGS+=" $(pkg-config --cflags avisynth) $(pkg-config --libs libvmaf avisynth)"
 
   cmake -S . -B build \
    -DCMAKE_BUILD_TYPE=None \
-   -DCMAKE_INSTALL_PREFIX=/usr
+   -DCMAKE_INSTALL_PREFIX=/usr \
+   -DCMAKE_CXX_FLAGS="${CXXFLAGS} $(pkg-config --cflags avisynth libvmaf)"
 
   cmake --build build
 
