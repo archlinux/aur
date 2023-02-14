@@ -1,6 +1,6 @@
 pkgbase = fairtris-git
 	pkgdesc = PC clone of the official classic Nintendo Tetris® game for the NES console, Linux fork
-	pkgver = v3.0.0.2.beta.r23.g13f5c4f
+	pkgver = 3.0.0.4
 	pkgrel = 1
 	url = https://github.com/chronoscz/Fairtris
 	arch = any

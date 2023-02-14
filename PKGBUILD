@@ -1,7 +1,7 @@
 # Maintainer: loooph <loooph@gmx.de>
 pkgname=fairtris-git
 _basename=Fairtris
-pkgver=3.0.0.2.beta.r23.g13f5c4f
+pkgver=3.0.0.4
 pkgrel=1
 pkgdesc="PC clone of the official classic Nintendo Tetris® game for the NES console, Linux fork"
 url="https://github.com/chronoscz/Fairtris"
