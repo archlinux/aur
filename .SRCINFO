@@ -1,7 +1,7 @@
 pkgbase = runrestic
 	pkgdesc = A wrapper script for Restic backup software that inits, creates, prunes and checks backups
 	pkgver = 0.5.28
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/runrestic
 	arch = any
 	license = GPL3
@@ -12,6 +12,10 @@ pkgbase = runrestic
 	depends = python-jsonschema
 	depends = python-requests
 	source = https://files.pythonhosted.org/packages/source/r/runrestic/runrestic-0.5.28.tar.gz
+	source = runrestic.service
+	source = runrestic.timer
 	sha256sums = 62cd131161379607d3fba1a43e71e57a24e1d747af064bd1b8bab207ec102542
+	sha256sums = 682930a812495e973764fc02e2afbc2ed5d075da445292a725823a23c1c60a98
+	sha256sums = 73b08193d7022f538c326bb4674712f2e2a827ccc557d48bd36416f7d08c598e
 
 pkgname = runrestic

@@ -1,0 +1,6 @@
+[Unit]
+Description=runrestic backup
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/runrestic
