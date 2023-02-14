@@ -1,6 +1,6 @@
 # Maintainer: German Lashevich <german.lashevich@gmail.com>
 
-pkgver=0.3.2
+pkgver=0.4.0
 
 _binname=totp
 
