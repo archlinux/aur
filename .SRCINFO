@@ -30,6 +30,7 @@ pkgbase = sunshine-nox
 	optdepends = libdrm
 	provides = sunshine
 	conflicts = sunshine
+	conflicts = sunshine-git
 	source = git+https://github.com/LizardByte/Sunshine.git#tag=v0.18.2
 	source = git+https://github.com/moonlight-stream/moonlight-common-c.git
 	source = git+https://gitlab.com/eidheim/Simple-Web-Server.git

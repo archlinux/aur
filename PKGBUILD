@@ -39,7 +39,7 @@ optdepends=(
 )
 
 provides=(sunshine)
-conflicts=(sunshine)
+conflicts=(sunshine sunshine-git)
 
 source=(
 git+https://github.com/LizardByte/Sunshine.git#tag=v${pkgver}
