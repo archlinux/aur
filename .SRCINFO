@@ -1,13 +1,14 @@
 pkgbase = mnemosyne
 	pkgdesc = A flash-card tool with a sophisticated card review algorithm
-	pkgver = 2.9
+	pkgver = 2.10.1
 	pkgrel = 1
 	url = https://www.mnemosyne-proj.org
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
-	depends = python-pyqt5
-	depends = qt5-webengine
+	depends = python-pyqt6
+	depends = qt6-webengine
+	depends = qt6-multimedia
 	depends = python-argon2_cffi
 	depends = python-pillow
 	depends = python-matplotlib
@@ -23,7 +24,7 @@ pkgbase = mnemosyne
 	optdepends = python-google_trans_new: support for google translate
 	optdepends = python-gtts: support for text-to-speech
 	conflicts = mnemosyne-bzr
-	source = https://downloads.sourceforge.net/mnemosyne-proj/Mnemosyne-2.9.tar.gz
-	sha256sums = 190587c4dc935bd717a16b3f9710d7cc3e7ed6e2124e22e39315e562a929033a
+	source = https://downloads.sourceforge.net/mnemosyne-proj/Mnemosyne-2.10.1.tar.gz
+	sha256sums = cc8efd8ae4576f94b463ceca7dd1be1ca7345d535038070147b66dfce75a04fe
 
 pkgname = mnemosyne

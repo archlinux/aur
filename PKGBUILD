@@ -4,13 +4,13 @@
 # Contributor: Nuno Araujo <nuno.araujo@russo79.com>
 
 pkgname=mnemosyne
-pkgver=2.9
+pkgver=2.10.1
 pkgrel=1
 pkgdesc="A flash-card tool with a sophisticated card review algorithm"
 arch=('any')
 url='https://www.mnemosyne-proj.org'
 license=('GPL')
-depends=('python-pyqt5' 'qt5-webengine' 'python-argon2_cffi'
+depends=('python-pyqt6' 'qt6-webengine' 'qt6-multimedia' 'python-argon2_cffi'
          'python-pillow' 'python-matplotlib' 'python-cherrypy' 'python-webob'
          'python-pyqtwebengine')
 makedepends=('python-setuptools')
@@ -26,7 +26,7 @@ conflicts=('mnemosyne-bzr')
 
 _dlurl="https://github.com/mnemosyne-proj/mnemosyne"
 source=("https://downloads.sourceforge.net/mnemosyne-proj/Mnemosyne-${pkgver}.tar.gz")
-sha256sums=('190587c4dc935bd717a16b3f9710d7cc3e7ed6e2124e22e39315e562a929033a')
+sha256sums=('cc8efd8ae4576f94b463ceca7dd1be1ca7345d535038070147b66dfce75a04fe')
 
 prepare() {
   cd "Mnemosyne-${pkgver}/"
