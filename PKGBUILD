@@ -1,5 +1,5 @@
 # Maintainers: (refer to the github page)
-pkgname="raat-server"
+pkgname=raat-server
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Remote Archlinux Android Tool (server)"

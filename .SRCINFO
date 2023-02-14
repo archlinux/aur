@@ -1,5 +1,5 @@
 pkgbase = raat-server
-	pkgdesc = Remote Archlinux Android Tool (server) 
+	pkgdesc = Remote Archlinux Android Tool (server)
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/Student-Team-Projects/RAAT-Server
