@@ -13,7 +13,7 @@
 # You can pass parameters to `ninja` via MAKEFLAGS
 
 pkgname=telegram-desktop-dev
-pkgver=4.6.1
+pkgver=4.6.2
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -175,24 +175,19 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/tdesktop"
-
+    CXXFLAGS+=' -ffat-lto-objects'
     # Turns out we're allowed to use the official API key that telegram uses for their snap builds:
     # https://github.com/telegramdesktop/tdesktop/blob/8fab9167beb2407c1153930ed03a4badd0c2b59f/snap/snapcraft.yaml#L87-L88
     # Thanks @primeos!
-    cmake \
-        -B build \
-        -G Ninja \
+    cmake -B build -S tdesktop -G Ninja \
+        -DCMAKE_VERBOSE_MAKEFILE=ON \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_BUILD_TYPE=Release \
         -DTDESKTOP_API_ID=611335 \
         -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c
-    ninja -C build $MAKEFLAGS
+    cmake --build build -- $MAKEFLAGS
 }
 
 package() {
-    cd "$srcdir/tdesktop"
-    DESTDIR="$pkgdir" ninja -C build install
-    # They botched the release and put a lot of stuff here.
-    rm -rf "$pkgdir/build"
+    DESTDIR="$pkgdir" cmake --install build
 }
