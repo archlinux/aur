@@ -5,6 +5,7 @@ _pkgname=idris2
 pkgname=$_pkgname-git
 pkgver=latest
 pkgrel=1
+epoch=1  # HACK: remove when adding to AUR
 pkgdesc='A purely functional programming language with first class types'
 url='https://www.idris-lang.org/'
 license=('custom')
