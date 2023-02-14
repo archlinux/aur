@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-smoothuv-git
 	pkgdesc = Plugin for Vapoursynth: smoothuv (GIT version)
-	pkgver = 2.1.gd75886e
+	pkgver = 3.0.g30a2851
 	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=175520
 	arch = x86_64

@@ -2,7 +2,7 @@
 
 _plug=smoothuv
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=2.1.gd75886e
+pkgver=3.0.g30a2851
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -31,9 +31,9 @@ prepare() {
 
 build() {
   cd build
-    CXXFLAGS+=' -fpeel-loops' \
+    CXXFLAGS="${CXXFLAGS//-march=x86-64 -mtune=generic/-march=native} -fpeel-loops" \
     arch-meson "../${_plug}" \
-    --libdir /usr/lib/vapoursynth
+      --libdir /usr/lib/vapoursynth
 
   ninja
 }
