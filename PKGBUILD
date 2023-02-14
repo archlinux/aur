@@ -9,7 +9,7 @@ arch=('any')
 url='https://gist.github.com/4re'
 license=('GPL')
 depends=('ffms2'
-         'vapoursynth-plugin-lsmashsource-git'
+         'vapoursynth-plugin-lsmashsource'
          'vapoursynth-plugin-fmtconv-git'
          'vapoursynth-plugin-removedirtvs-git'
          )
