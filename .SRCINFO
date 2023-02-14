@@ -1,7 +1,7 @@
 pkgbase = ptyspawn
-	pkgdesc = Tool for executing a command in a new PTY (pseudo-terminal)
+	pkgdesc = Tool for executing a command in a new PTY (pseudo-terminal) with new PGID and SID
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/VHSgunzo/ptyspawn
 	arch = x86_64
 	provides = ptyspawn
