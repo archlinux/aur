@@ -1,7 +1,7 @@
 pkgbase = aliyundrive-wine
 	pkgdesc = Wine 阿里云盘
-	pkgver = 2.3.4
-	pkgrel = 1
+	pkgver = 3.17.0
+	pkgrel = 0
 	url = https://www.aliyundrive.com
 	install = aliyundrive-wine.install
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = aliyundrive-wine
 	provides = aliyundrive-wine
 	conflicts = aliyundrive-wine
 	options = !strip
-	source = aDrive-2.3.4.exe::https://yunpan.aliyun.com/downloads/apps/desktop/aDrive.exe
+	source = aDrive-3.17.0.exe::https://yunpan.aliyun.com/downloads/apps/desktop/aDrive.exe
 	source = aliyundrive-wine.install
-	sha256sums = 5ac6ec57ede7c4b31aaeb4b193507f95cd3f6ac8bc51b78b9140aa4fd42dcb14
+	sha256sums = b9d4d43ab05690cf778cb3eafc814ff390208b65cb2c4a027618704f600655a8
 	sha256sums = f5674719ec03e4f2d701241338f967d740b31f5c0173ba85882c3f1342350d63
 
 pkgname = aliyundrive-wine

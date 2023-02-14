@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=aliyundrive-wine
-pkgver=2.3.4
-pkgrel=1
+pkgver=3.17.0
+pkgrel=0
 pkgdesc="Wine 阿里云盘"
 arch=('any')
 url="https://www.aliyundrive.com"
@@ -18,7 +18,7 @@ options=('!strip')
 install=${pkgname}.install
 source=("aDrive-${pkgver}.exe::https://yunpan.aliyun.com/downloads/apps/desktop/aDrive.exe"
         "${pkgname}.install")
-sha256sums=('5ac6ec57ede7c4b31aaeb4b193507f95cd3f6ac8bc51b78b9140aa4fd42dcb14'
+sha256sums=('b9d4d43ab05690cf778cb3eafc814ff390208b65cb2c4a027618704f600655a8'
             'f5674719ec03e4f2d701241338f967d740b31f5c0173ba85882c3f1342350d63')
 noextract=()
 
