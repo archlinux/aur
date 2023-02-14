@@ -1,8 +1,7 @@
 [Desktop Entry]
 Name=Nekoray
 Comment=Qt based cross-platform GUI proxy configuration manager (backend: v2ray / sing-box)
-Path=~/.local/opt/nekoray
-Exec=/usr/bin/nekoray
+Exec=nekoray -- -appdata
 Icon=nekoray
 Type=Application
 StartupNotify=true
