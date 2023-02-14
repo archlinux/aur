@@ -1,7 +1,7 @@
 # Maintainer: Naya Verdier <n at yaverdier dot com>
 pkgname=instater
 pkgver=0.11.0
-pkgrel=3
+pkgrel=4
 pkgdesc='An easy solution for system/dotfile configuration'
 arch=('any')
 url=https://github.com/nayaverdier/instater
@@ -19,7 +19,7 @@ build() {
 
 package() {
   cd "instater-$pkgver"
-  python -m installer --optimize=1 --destdir="$pkgdir" dist/*.whl
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   chmod +x "$pkgdir"/usr/bin/*
 
