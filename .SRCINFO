@@ -1,0 +1,13 @@
+pkgbase = subctl
+	pkgdesc = The subctl command-line utility simplifies the deployment and maintenance of Submariner by automating interactions with the Submariner Operator and providing diagnostic features.
+	pkgver = 0.13.3
+	pkgrel = 1
+	url = https://github.com/submariner-io/subctl
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	source = subctl-0.13.3.tar.gz::https://github.com/submariner-io/subctl/archive/refs/tags/v0.13.3.tar.gz
+	sha256sums = SKIP
+
+pkgname = subctl
