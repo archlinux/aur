@@ -1,6 +1,6 @@
 pkgbase = gdm-tools
 	pkgdesc = Tools(set-gdm-theme,gnomeconf2gdm) for theming/personlizing Gnome Login Manager (GDM)
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 2
 	url = https://github.com/realmazharhussain/gdm-tools
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = gdm-tools
 	depends = gdm
 	backup = etc/gdm-tools/set-gdm-theme.conf
 	backup = etc/gdm-tools/custom.css
-	source = gdm-tools-1.1.tar.gz::https://github.com/realmazharhussain/gdm-tools/archive/refs/tags/v1.1.tar.gz
-	md5sums = 32fb7d739c46ee1df909e766a5298a6b
+	source = gdm-tools-1.2.tar.gz::https://github.com/realmazharhussain/gdm-tools/archive/refs/tags/v1.2.tar.gz
+	sha256sums = fe19e031c3030e4cc6b460edf5e52acbed5a47e43e51b6d05978970cb70fc31c
 
 pkgname = gdm-tools
