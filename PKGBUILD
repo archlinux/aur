@@ -5,22 +5,25 @@
 
 _name=wkhtmltopdf
 pkgname=${_name}-static
-pkgver=0.12.6.1_r2
-pkgrel=2
+
+_version=0.12.6.1-2
+pkgver=${_version%-*}_r${_version##*-}
+pkgrel=3
+
 pkgdesc='Shell utility to convert HTML to PDF using Webkit and Qt (upstream static build)'
 url='https://github.com/wkhtmltopdf/packaging'
 license=('GPL3')
+
 provides=("$_name")
 conflicts=("$_name")
+
 depends=(
 	'bzip2' 'expat' 'fontconfig' 'freetype2' 'gcc-libs' 'glibc' 'glib2'
 	'graphite' 'harfbuzz' 'libjpeg6-turbo' 'libpng' 'libx11' 'libxau'
 	'libxcb' 'libxcrypt' 'libxdmcp' 'libxext' 'libxrender' 'openssl-1.1'
 	'pcre' 'zlib'
 )
-optdepends=(
-	'icu48: Rendering from HTML uses unicode character encoding'
-)
+
 # debian packages are already stripped, so don't bother re-attempting
 options=('!strip')
 
@@ -34,7 +37,6 @@ options=('!strip')
 #   Stretch     2017
 #
 _release='bullseye'
-_version=${pkgver%_*}-${pkgver##*r}
 _source=(
 	"${_name}-${_version}-@ARCH@.deb::${url}/releases/download/${_version}/wkhtmltox_${_version}.${_release}_@SRCARCH@.deb"
 )
