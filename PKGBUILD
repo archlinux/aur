@@ -27,8 +27,6 @@ depends=(
 	)
 provides=("${pkgname%}")
 
-md5sums=('8e13c995e52b64dc768c12afde3a35da')
-
 declare -a _csChosen=()
 declare -a _depChosen=()
 _path_set=false

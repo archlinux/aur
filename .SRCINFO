@@ -8,6 +8,5 @@ pkgbase = nuclear-data
 	makedepends = cmake
 	depends = wget
 	provides = nuclear-data
-	md5sums = 8e13c995e52b64dc768c12afde3a35da
 
 pkgname = nuclear-data
