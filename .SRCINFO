@@ -1,7 +1,7 @@
 pkgbase = spoofax3-jvm-bin
 	pkgdesc = Spoofax 3 is a modular and incremental textual language workbench running on the JVM
 	pkgver = 0.19.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.spoofax.dev/spoofax-pie/develop/
 	arch = x86_64
 	license = EPL

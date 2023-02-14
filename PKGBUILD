@@ -2,7 +2,7 @@
 
 pkgname=spoofax3-jvm-bin
 pkgver=0.19.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Spoofax 3 is a modular and incremental textual language workbench running on the JVM"
 arch=('x86_64')
 url="https://www.spoofax.dev/spoofax-pie/develop/"
