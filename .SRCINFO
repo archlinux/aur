@@ -28,6 +28,6 @@ pkgbase = plask-bin
 	replaces = plask
 	noextract = plask-2023.02.12.tar.zst
 	source = plask-2023.02.12.tar.zst::https://get.plask.app/packages/plask-2023.02.12-1-x86_64.pkg.tar.zst
-	sha256sums = 65b0c92ec9e403cbbff4223c99ccaead52aa08273a145a361974dbe1633a4a0b
+	sha256sums = 816ae065d314b5c55c42003ebb96f4f76cd7cc82638c30ef1d026adae16c4e13
 
 pkgname = plask-bin
