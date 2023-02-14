@@ -20,6 +20,9 @@ makedepends=(
 	gcc-fortran
 	eigen
 )
+optdepends=(
+        Doxygen
+)
 
 provides=("${pkgname%-$pkgver}")
 source=("${pkgname}::git+${url}.git")
@@ -27,7 +30,7 @@ pkgver() {
   cd "$pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-md5sums=('65e054e1d32c79a80222d2398876cb4b')
+md5sums=('SKIP')
 
 build() {
 	cd $srcdir/$pkgname
