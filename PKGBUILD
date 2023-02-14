@@ -4,35 +4,25 @@
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 pkgname='fcitx5-mozc-ut'
-pkgver=2.28.4990.102
+pkgver=2.28.5008.102
 pkgrel=1
 pkgdesc='Mozc module for Fcitx5'
 arch=('x86_64')
 url='https://github.com/fcitx/mozc'
 license=('Apache' 'GPL' 'LGPL' 'MIT' 'custom')
-depends=('fcitx5' 'mozc>=2.28.4990.102')
+depends=('fcitx5' 'mozc>=2.28.5008.102')
 makedepends=('bazel' 'git' 'python' 'qt5-base')
 optdepends=('fcitx5-configtool')
-provides=('fcitx5-mozc=2.28.4990.102')
+provides=('fcitx5-mozc=2.28.5008.102')
 conflicts=('fcitx5-mozc')
 options=(!distcc !ccache)
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=811cb8c7606a4732a83abb89752664eb23728623"
-        "fcitx5.patch")
-sha256sums=('SKIP'
-            'bfe2c5a10122cb20397744653191300c79f58bf6e82f1e99688d39cf0da37fba')
+source=("${pkgname}-git::git+https://github.com/fcitx/mozc.git#commit=66526519bdc9b9f3f7ce38f89b9042f662ca0777")
+sha256sums=('SKIP')
 
 prepare() {
     cd ${pkgname}-git/src
 
     git submodule update --init --recursive
-
-    # Restore the workspace to its original state
-    [[ -f BUILD.fcitx5.bazel ]] && rm BUILD.fcitx5.bazel
-    [[ -d unix/fcitx5 ]] && rm -r unix/fcitx5
-    git restore .
-
-    # Patch in the out-of-source fcitx5 target (pulled from https://github.com/fcitx/mozc)
-    patch -Np2 -i ${srcdir}/fcitx5.patch
 }
 
 build() {
