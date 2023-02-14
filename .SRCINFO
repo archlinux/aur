@@ -12,8 +12,8 @@ pkgbase = python-cad_to_openmc
 	makedepends = python-wheel
 	depends = python
 	depends = python-pip
-	provides = python-cad_to_openmc
+	provides = CAD_to_OpenMC-0.2.2.r121.g70562a6
 	source = git+https://github.com/openmsr/CAD_to_OpenMC.git
-	md5sums = d7344ec12c0cef2fa7cbf8eddc2f7de3
+	md5sums = SKIP
 
 pkgname = python-cad_to_openmc
