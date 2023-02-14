@@ -1,0 +1,14 @@
+pkgbase = deepin-wine-bandizip
+	pkgdesc = Bandizip is a powerful archiver which provides an ultrafast processing speed and convenient features. Available free of charge, and its paid editions support a variety of advanced features.
+	pkgver = 7.23
+	pkgrel = 1
+	url = http://www.bandisoft.com/bandizip/
+	arch = x86_64
+	license = custom
+	depends = deepin-wine6-stable
+	depends = xdg-utils
+	provides = BANDISOFT
+	source = https://mirrors.sdu.edu.cn/spark-store-repository/store/tools/com.deepin.bandizip/com.deepin.bandizip_7.23_amd64.deb
+	sha256sums = e8f04a4870dbd7e4398b8d3a92a19f451b8756df58f30cdd8cbc0b2bdf629b7a
+
+pkgname = deepin-wine-bandizip
