@@ -1,7 +1,7 @@
 pkgbase = xorg-xwayland-hidpi-xprop
 	pkgdesc = run X clients under wayland, with !733 HiDPI patch
-	pkgver = 22.1.7
-	pkgrel = 2
+	pkgver = 22.1.8
+	pkgrel = 1
 	url = https://xorg.freedesktop.org
 	arch = x86_64
 	license = custom
@@ -31,11 +31,11 @@ pkgbase = xorg-xwayland-hidpi-xprop
 	conflicts = xorg-xwayland
 	replaces = xorg-server-xwayland
 	options = debug
-	source = https://xorg.freedesktop.org/archive/individual/xserver/xwayland-22.1.7.tar.xz
-	source = https://xorg.freedesktop.org/archive/individual/xserver/xwayland-22.1.7.tar.xz.sig
+	source = https://xorg.freedesktop.org/archive/individual/xserver/xwayland-22.1.8.tar.xz
+	source = https://xorg.freedesktop.org/archive/individual/xserver/xwayland-22.1.8.tar.xz.sig
 	source = hidpi.patch
 	validpgpkeys = 67DC86F2623FC5FD4BB5225D14706DBE1E4B4540
-	sha512sums = dc4187d4e9e1bbf5f431a4a71da01b773be3a8870c3f82da599739d9f72756ac69c1fb8cc3b6c96c88da3c1dd40ce42429a3a003c08f90fc337ebaf6200de649
+	sha512sums = f52c6f99d8ef7605bc1c651d5ee5e306c12af30649a2d712b1c4c3cf4c7c80246ae24bd9ac39461d47aafc78f5d659446a459cd6259e05ef3128b204981d114a
 	sha512sums = SKIP
 	sha512sums = 7132c44d9bbf1c5f93906ef301a6e946f0909da0b9273f397281e681ad0da77d62b960a9dd0a640c7209548192fefba9bde03c493f3a89d08cd73a12844bb518
 
