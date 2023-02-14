@@ -1,5 +1,5 @@
 # Maintainers: (refer to the github page)
-pkgname=raat-server
+pkgname="raat-server"
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Remote Archlinux Android Tool (server)"
@@ -7,6 +7,7 @@ arch=('any')
 url="https://github.com/Student-Team-Projects/RAAT-Server"
 license=('GPL')
 depends=('cinnamon' 'tigervnc' 'openssh')
+
 source=(
 	"https://github.com/Student-Team-Projects/RAAT-Server/releases/download/v${pkgver}/raat-server-v${pkgver}.tar.gz"
 	"https://github.com/Student-Team-Projects/RAAT/releases/download/v${pkgver}/raat-client-v${pkgver}.apk"
