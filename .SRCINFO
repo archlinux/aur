@@ -1,0 +1,13 @@
+pkgbase = nuclear-data
+	pkgdesc = Evaluated nuclear data files for OpenMC
+	pkgver = 0
+	pkgrel = 1
+	arch = x86_64
+	makedepends = git
+	makedepends = python
+	makedepends = cmake
+	depends = wget
+	provides = nuclear-data
+	md5sums = 8e13c995e52b64dc768c12afde3a35da
+
+pkgname = nuclear-data
