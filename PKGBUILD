@@ -32,16 +32,18 @@ prepare() {
   # unbundled
   rm -fr include/{VapourSynth,VSHelper,avisynth}.h
   rm -fr include/avs
-  
+
   mkdir -p build
 }
 
 build() {
   cd "${_plug}/build"
+
   cmake -S .. -B . \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_CXX_FLAGS="${CXXFLAGS} $(pkg-config --cflags vapoursynth avisynth)"
+    -DCMAKE_CXX_FLAGS="${CXXFLAGS//-march=x86-64 -mtune=generic/-march=native} $(pkg-config --cflags vapoursynth avisynth)"
+
 
   cmake --build .
 }
