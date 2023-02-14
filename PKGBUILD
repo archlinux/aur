@@ -1,6 +1,6 @@
 pkgname="techmino-git"
 pkgver=0.17.12.r4777.5b1eef89
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of various modern block game rules, more ways to play, and awesome features added for a new experience."
 arch=('x86_64')
 url="https://github.com/26F-Studio/Techmino"
@@ -37,11 +37,12 @@ pkgver() {
 }
 package() {
 	cd ${srcdir}/Techmino
+	cp ../TechminoDevelopment.png ./media/image/icon.png
 	zip -rq9 ../game.love media parts Zframework conf.lua main.lua version.lua
 
 	cd ${srcdir}
-	install -Dm644 "TechminoDevelopment.png" "${pkgdir}/usr/share/TechminoDevelopment/media/image/icon.png"
-	install -Dm644 "game.love" "${pkgdir}/usr/share/TechminoDevelopment/Techmino.love"
+	cat TechminoDevelopment.png game.love >game_icon.love
+	install -Dm644 "game_icon.love" "${pkgdir}/usr/share/TechminoDevelopment/Techmino.love"
 	install -Dm644 "./x64/CCloader.so" "${pkgdir}/usr/share/TechminoDevelopment/CCloader.so"
 	install -Dm644 "TechminoDevelopment.desktop" "${pkgdir}/usr/share/applications/TechminoDevelopment.desktop"
 }
