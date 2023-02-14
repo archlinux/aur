@@ -2,7 +2,7 @@
 # Maintainer: Takumi <dGFrdW9oQHR1dGEuaW8K | base64 -d>
 pkgname=newflasher-git
 _pkgname=newflasher
-pkgver=194
+pkgver=r196.3ee92ee
 pkgrel=1
 pkgdesc='This experimental software allows you to flash firmwares acquired through XperiFirm to Sony phones including and newer than the XZ Premium.'
 arch=('x86_64')
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd ${srcdir}/${_pkgname}
-  git rev-list --count HEAD
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
