@@ -1,7 +1,7 @@
 # Maintainer: VHSgunzo <vhsgunzo.github.io>
 pkgname='ptyspawn'
-pkgver='0.0.2'
-pkgrel='2'
+pkgver='0.0.3'
+pkgrel='1'
 pkgdesc='Tool for executing a command in a new PTY (pseudo-terminal) with new PGID and SID'
 arch=("x86_64")
 url='https://github.com/VHSgunzo/ptyspawn'
