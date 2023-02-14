@@ -26,7 +26,7 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-md5sums=('9fb5936ca6cd1c58937442fe1b891ddf')
+md5sums=('SKIP')
 
 build() {
 	cd $srcdir/$pkgname

@@ -12,6 +12,6 @@ pkgbase = dagmc-git
 	depends = moab
 	provides = dagmc-git
 	source = dagmc-git::git+https://github.com/svalinn/DAGMC.git
-	md5sums = 9fb5936ca6cd1c58937442fe1b891ddf
+	md5sums = SKIP
 
 pkgname = dagmc-git
