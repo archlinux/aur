@@ -1,6 +1,6 @@
 pkgbase = nrich-bin
 	pkgdesc = A command-line tool to quickly analyze all IPs in a file and see which ones have open ports/ vulnerabilities.
-	pkgver = 0.3.1
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://gitlab.com/shodan-public/nrich
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = nrich-bin
 	depends = openssl-1.1
 	depends = glibc
 	provides = nrich
-	source = https://gitlab.com/api/v4/projects/33695681/packages/generic/nrich/0.3.1/nrich-linux-amd64
-	source = https://gitlab.com/shodan-public/nrich/-/raw/0.3.1/README.md
-	sha256sums = 6f223ac20f7fb6e959bdcaec22eb3373d1b4ab27ac0a9d678a3cad99a5ab564a
+	source = https://gitlab.com/api/v4/projects/33695681/packages/generic/nrich/0.4.1/nrich-linux-amd64
+	source = https://gitlab.com/shodan-public/nrich/-/raw/0.4.1/README.md
+	sha256sums = 6d28a23be5c787fa1e99a8fa9c9af56480da62a8fba06a009f6ac00b7cd3e62d
 	sha256sums = SKIP
 
 pkgname = nrich-bin
