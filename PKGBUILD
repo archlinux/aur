@@ -9,6 +9,7 @@ license=('MIT')
 
 depends=(
 	moab
+        embree
 )
 makedepends=(
 	git
@@ -26,7 +27,7 @@ pkgver() {
   cd "$pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-md5sums=('c75cdd029fe8b4f2650c3eccefc3d6d5')
+md5sums=('65e054e1d32c79a80222d2398876cb4b')
 
 build() {
 	cd $srcdir/$pkgname
