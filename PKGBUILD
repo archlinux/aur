@@ -25,7 +25,7 @@ source=(
 )
 
 sha256sums=('62cd131161379607d3fba1a43e71e57a24e1d747af064bd1b8bab207ec102542'
-            '682930a812495e973764fc02e2afbc2ed5d075da445292a725823a23c1c60a98'
+            'd636f96922c1c018c8cd359c3cedc72ac3764c8ee0aace3265ddc6538a56be5d'
             '73b08193d7022f538c326bb4674712f2e2a827ccc557d48bd36416f7d08c598e')
 
 check() {
@@ -37,7 +37,6 @@ package() {
   cd "${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}/" --optimize=1
 
-  sed -i 's%/usr/local%/usr%' sample/systemd/runrestic.service
-  install -D -m 644 sample/systemd/runrestic.service ${pkgdir}/usr/lib/systemd/system/runrestic.service
-  install -D -m 644 sample/systemd/runrestic.timer   ${pkgdir}/usr/lib/systemd/system/runrestic.timer
+  install -D -m 644 "${srcdir}/runrestic.service" ${pkgdir}/usr/lib/systemd/system/runrestic.service
+  install -D -m 644 "${srcdir}/runrestic.timer"   ${pkgdir}/usr/lib/systemd/system/runrestic.timer
 }
