@@ -1,0 +1,14 @@
+post_install() {
+    echo ". /usr/share/shell-mommy/shell-mommy.sh" >> "$(getent passwd $SUDO_USER | cut -d: -f6)/.bashrc"
+    printf "Installed -- Don't forget to restart your shell!\n"
+}
+
+post_upgrade() {
+    echo ". /usr/share/shell-mommy/shell-mommy.sh" >> "$(getent passwd $SUDO_USER | cut -d: -f6)/.bashrc"
+    printf "Installed -- Don't forget to restart your shell!\n"
+}
+
+post_remove() {
+    sed -i "/. \/usr\/share\/shell-mommy\/shell-mommy.sh/d" "$(getent passwd $SUDO_USER | cut -d: -f6)/.bashrc"
+    printf "Removed -- Don't forget to restart your shell!\n"
+}
