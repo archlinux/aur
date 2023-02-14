@@ -3,7 +3,7 @@
 pkgname=watt-toolkit-bin
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
 pkgver=2.8.6
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url=https://steampp.net/
 license=('GPL3')
@@ -17,7 +17,7 @@ source=('watt-toolkit.desktop' 'set-cap.hook' 'icon.png::https://github.com/Beyo
 source_aarch64=("Steam++_${pkgver}_aarch64.tar.zst::https://github.com/BeyondDimension/SteamTools/releases/download/${pkgver}/Steam++_linux_arm64_v${pkgver}.tar.zst")
 source_x86_64=("Steam++_${pkgver}_x86_64.tar.zst::https://github.com/BeyondDimension/SteamTools/releases/download/${pkgver}/Steam++_linux_x64_v${pkgver}.tar.zst")
 sha256sums=('251dceba9814b53e56e175d60965ffab8160b5cc58640c3069f927dae5b7a46f'
-            '495418217e895deed32c8166c5d85718b23676e52b91d1bb412d69d5f945b2e9'
+            'f863c3941aa82baccfe7a900f15644a911be5ea7f04faac7ca5f0073ce8d48b0'
             '1c7e2b167b6b457c685d0d4890147edf70eb2a3eeefb12aa42ddd0c721b2f49d')
 sha256sums_x86_64=('b96e029631f66fd5194d9f31565027053dc80c20a9e6f3bcbfe1a5224db18b40')
 sha256sums_aarch64=('8232f9a3025c28a69453819fa729c7b63ff04fef9ad16d0d45ab3cb858bab30a')

@@ -2,7 +2,7 @@
 Type = Package
 Operation = Install
 Operation = Upgrade
-Target=watt-toolkit-git
+Target=watt-toolkit-bin
 
 [Action]
 Description = Setting capability for program executable...

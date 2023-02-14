@@ -1,7 +1,7 @@
 pkgbase = watt-toolkit-bin
 	pkgdesc = 一个开源跨平台的多功能Steam工具箱。
 	pkgver = 2.8.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://steampp.net/
 	arch = x86_64
 	arch = aarch64
@@ -20,7 +20,7 @@ pkgbase = watt-toolkit-bin
 	source = set-cap.hook
 	source = icon.png::https://github.com/BeyondDimension/SteamTools/raw/develop/resources/AppIcon/Logo_64.png
 	sha256sums = 251dceba9814b53e56e175d60965ffab8160b5cc58640c3069f927dae5b7a46f
-	sha256sums = 495418217e895deed32c8166c5d85718b23676e52b91d1bb412d69d5f945b2e9
+	sha256sums = f863c3941aa82baccfe7a900f15644a911be5ea7f04faac7ca5f0073ce8d48b0
 	sha256sums = 1c7e2b167b6b457c685d0d4890147edf70eb2a3eeefb12aa42ddd0c721b2f49d
 	source_x86_64 = Steam++_2.8.6_x86_64.tar.zst::https://github.com/BeyondDimension/SteamTools/releases/download/2.8.6/Steam++_linux_x64_v2.8.6.tar.zst
 	sha256sums_x86_64 = b96e029631f66fd5194d9f31565027053dc80c20a9e6f3bcbfe1a5224db18b40
