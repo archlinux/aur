@@ -1,6 +1,6 @@
 # Maintainer: trilader <trilader@schroedingers-bit.net>
 pkgname=termpaint-git
-pkgver=r454.fc373ad
+pkgver=r497.dc29355
 pkgrel=1
 pkgdesc="low level terminal interface library"
 arch=("x86_64")

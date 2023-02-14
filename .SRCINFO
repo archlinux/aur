@@ -1,6 +1,6 @@
 pkgbase = termpaint-git
 	pkgdesc = low level terminal interface library
-	pkgver = r454.fc373ad
+	pkgver = r497.dc29355
 	pkgrel = 1
 	url = https://github.com/termpaint/termpaint
 	arch = x86_64
@@ -11,4 +11,3 @@ pkgbase = termpaint-git
 	md5sums = SKIP
 
 pkgname = termpaint-git
-
