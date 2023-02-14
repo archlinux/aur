@@ -1,15 +1,15 @@
 pkgbase = mozwire
 	pkgdesc = A cross-platform client for MozillaVPN
-	pkgver = 0.7.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/NilsIrl/MozWire
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = cargo
 	depends = gcc-libs
-	source = mozwire-0.7.0.tar.gz::https://github.com/NilsIrl/MozWire/archive/v0.7.0.tar.gz
-	sha512sums = 67c11037c6ae2f8e9153678a9c390d57e2abf724081ed7b8a461eb0905b7346a614e4cace2c5a08f54c9e953ea6ff71f1a57f0a1330d5536f5750b0c0a57dcc1
-	b2sums = 6a6f1a7cafd04bf382efa4ef4208768ecb98d24f670090e72b78e61152b67d1f7029d4fbc8c429f26970d56fa6fea689af90027063a8fc7a8cdd7928ce9ba97b
+	source = mozwire-0.8.1.tar.gz::https://github.com/NilsIrl/MozWire/archive/v0.8.1.tar.gz
+	sha512sums = 6d761f430795b7ea6f8e3f8aefbd7f5abbd6e1a0fef0e5cd5d26e378d7f894d7fb19e531b5ce7115d6cc6cfaa814e4cb9fba5e3f3af3dc115bac9d96207831d4
+	b2sums = 0b6fc2f8d78dc4728cc6c372c9f6b349e9c18e6375ca8a78acba8cb787d20688259122903fc7003f70a288658c4d2d0dc22a66ceb9f6f1261d8cfef52d351d44
 
 pkgname = mozwire
-
