@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=mfem
-pkgver=4.4
+pkgver=4.5
 pkgrel=1
 pkgdesc="Lightweight, general, scalable C++ library for finite element methods"
 arch=('x86_64')
@@ -9,10 +9,10 @@ url='https://github.com/mfem/mfem'
 license=('BSD')
 depends=('gcc-libs')
 makedepends=('cmake')
-provides=('libmfem.so=4.4.0-64')
+provides=('libmfem.so=4.5.0-64')
 changelog=CHANGELOG
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0325a57854d9268dfe3f8d9b03836eb01b00a966d93162e6249857e9fab9c61f')
+sha256sums=('ee0e640286ea370aaf5c973e8f08eb648fa650e3e30f296e68bfc10c3dcfa9b8')
 
 build() {
 	cmake \
@@ -22,12 +22,12 @@ build() {
 		-Wno-dev \
 		-B build \
 		-S "$pkgname-$pkgver"
-	make -C build
+	cmake --build build
 }
 
 package() {
-	make -C build install DESTDIR="$pkgdir/"
+	DESTDIR="$pkgdir" cmake --install build
 	cd "$pkgname-$pkgver"
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm644 README NOTICE -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dvm644 README.md NOTICE -t "$pkgdir/usr/share/doc/$pkgname/"
 }
