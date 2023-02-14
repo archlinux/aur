@@ -9,8 +9,7 @@ pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/sekrit-twc/timecube'
 license=('GPL2')
-depends=('vapoursynth'
-         )
+depends=('vapoursynth')
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -43,12 +42,13 @@ prepare() {
   sed -e "s| -Ivsxx/vapoursynth||g" \
       -e '/VSConstants4.h/d' \
       -e '/VapourSynth4.h/d' \
+      -e '/VapourSynth.h/d' \
       -e '/VSHelper4.h/d'\
       -i Makefile
 }
 
 build() {
-  CPPFLAGS+=" $(pkg-config --cflags vapoursynth)"
+  CXXFLAGS+=" $(pkg-config --cflags vapoursynth)"
 
   make -C "${_plug}" X86=1
 }
