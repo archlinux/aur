@@ -1,0 +1,1 @@
+"EdgeGPT", upstream website: https://github.com/acheong08/EdgeGPT, had no licensing information shipped as of 2023-02-14.
