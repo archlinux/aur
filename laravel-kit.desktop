@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Laravel Kit
+Comment=A desktop Laravel admin panel app
+Exec=laravel-kit
+Terminal=false
+Type=Application
+Icon=laravel-kit
+Categories=Development
+StartupWMClass=laravel-kit

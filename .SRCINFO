@@ -1,0 +1,17 @@
+pkgbase = laravel-kit
+	pkgdesc = Laravel Kit - A desktop Laravel admin panel app
+	pkgver = 2.0.7
+	pkgrel = 1
+	url = https://github.com/tmdh/laravel-kit
+	arch = any
+	license = GPL2
+	makedepends = yarn
+	depends = electron
+	source = laravel-kit-2.0.7.tar.gz::https://github.com/tmdh/laravel-kit/archive/refs/tags/v2.0.7.tar.gz
+	source = laravel-kit
+	source = laravel-kit.desktop
+	sha256sums = ea1dd81bb9cc42fb24399107f35f018479187d4ca1eaf7ecdb647c213c11d2b8
+	sha256sums = e8520282f50069bb016fbc3f655acba09601719fe81ab093dcddea52ff64ac43
+	sha256sums = e90daafe30277cf296083260c0df0f46e9fb162e5b38ac861aaa20e1ec115552
+
+pkgname = laravel-kit

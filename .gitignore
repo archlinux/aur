@@ -1,0 +1,6 @@
+*
+!.gitignore
+!PKGBUILD
+!laravel-kit
+!laravel-kit.desktop
+!.SRCINFO
