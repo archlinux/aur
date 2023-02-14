@@ -3,7 +3,7 @@
 
 pkgname=python-cipheycore
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Some cryptanalysis tidbits written in a proper language"
 arch=("any")
 url="https://github.com/Ciphey/CipheyCore"
@@ -15,8 +15,8 @@ makedepends=(
     "make"
     "swig"
     "patch"
-    "python-setuptools"
     "python-poetry"
+    "python-installer"
 )
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
@@ -42,15 +42,11 @@ build() {
 
     cmake --build . -t ciphey_core_py --config Release
     poetry build
-
-    cd dist
-    tar xf "cipheycore-$pkgver.tar.gz"
-    cd "cipheycore-$pkgver"
-    python setup.py build
 }
 
 package() {
-    cd "$srcdir/CipheyCore-$pkgver/build/dist/cipheycore-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    cd "$srcdir/CipheyCore-$pkgver/build"
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 "$srcdir/CipheyCore-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
