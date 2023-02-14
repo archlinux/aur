@@ -1,6 +1,6 @@
 pkgbase = sunshine-nox
 	pkgdesc = Game Stream server for Moonlight with no X11 deps
-	pkgver = 0.18.1
+	pkgver = 0.18.2
 	pkgrel = 1
 	url = https://github.com/LizardByte/Sunshine
 	install = sunshine-nox.install
@@ -34,7 +34,7 @@ pkgbase = sunshine-nox
 	optdepends = libdrm
 	provides = sunshine
 	conflicts = sunshine
-	source = git+https://github.com/LizardByte/Sunshine.git#tag=v0.18.1
+	source = git+https://github.com/LizardByte/Sunshine.git#tag=v0.18.2
 	source = git+https://github.com/moonlight-stream/moonlight-common-c.git
 	source = git+https://gitlab.com/eidheim/Simple-Web-Server.git
 	source = git+https://github.com/ViGEm/ViGEmClient

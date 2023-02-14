@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=sunshine-nox
-pkgver=0.18.1
+pkgver=0.18.2
 pkgrel=1
 pkgdesc="Game Stream server for Moonlight with no X11 deps"
 arch=('x86_64')
