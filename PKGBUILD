@@ -1,6 +1,6 @@
 # Maintainer: Alexander Sulfrian <asulfrian@zedat.fu-berlin.de>
 pkgname=webex-bin
-pkgver=42.12.0.24485
+pkgver=43.2.0.25211
 pkgrel=1
 pkgdesc="Webex for Linux"
 arch=('x86_64')
@@ -32,10 +32,10 @@ depends=('alsa-lib'
          'xcb-util-renderutil'
          'xcb-util-wm'
          'xdg-utils')
-source=("$pkgname-$pkgver.deb::https://binaries.webex.com/WebexDesktop-Ubuntu-Gold/20221206141837/Webex.deb"
+source=("$pkgname-$pkgver.deb::https://binaries.webex.com/WebexDesktop-Ubuntu-Gold/20230214022524/Webex.deb"
         'webex.xml'
         'https://archive.archlinux.org/packages/l/libsecret/libsecret-0.20.4-1-x86_64.pkg.tar.zst')
-sha256sums=('c119963483717f37c26785c9abf3e6170c048b6ee728df4f7727b4135a26d82e'
+sha256sums=('e8815709a451d9a9c6381f7a407eda55dc99bcd30ea35a6118708d0d7d2749a4'
             '736a3ee2f30c947493eb01787205fc650f08a664a2c6a4a17c4189b8e2420c5a'
             '7bc3f4e27d141cf8d1979cd49adc58ee599686f6c1a898a013ef84ac22fd1f90')
 options=('!strip')
