@@ -1,14 +1,14 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=gss-ntlmssp
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="A GSSAPI Mechanism that implements NTLMSSP"
 url="https://github.com/gssapi/gss-ntlmssp"
 arch=(i686 x86_64)
 license=(custom:ISC)
 depends=(krb5 libunistring libwbclient openssl)
 makedepends=(docbook-xsl doxygen git)
-_commit=80520459a6ce850042fa2fc38793b6e65f20a3d9
+_commit=3c3077e2a24b47db1b4c459fb3173ba7f75b9b44
 source=("git+https://github.com/gssapi/gss-ntlmssp.git#commit=$_commit")
 sha256sums=('SKIP')
 
