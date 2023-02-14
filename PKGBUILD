@@ -3,12 +3,12 @@
 pkgname='foxitpdfeditor-bin'
 _pkgname='foxitpdfeditor'
 pkgver=12.0.2.1118
-pkgrel=1
+pkgrel=2
 pkgdesc="Foxit PDF editor 福昕高级PDF编辑器"
 arch=('x86_64')
 license=('unknown')
 url="https://www.foxitsoftware.cn"
-depends=('qt5-base' 'qt5-webengine' 'qt5-speech' 'icu66')
+depends=('qt5-base' 'qt5-webengine' 'qt5-speech' 'icu66' 'openssl-1.1' 'libwebp052' )
 makedepends=('patchelf')
 provides=("${_pkgname}")
 source_x86_64=("${_pkgname}-${pkgver}-${arch}.deb::https://cdn07.foxitsoftware.cn/pub/foxit/phantomPDF/desktop/win/${pkgver:0:2}.x/${pkgver:0:4}/zh_cn/${pkgver:0:6}/com.foxit.foxitpdfeditor_${pkgver}_amd64.deb"
@@ -45,14 +45,14 @@ package(){
     cd  $srcdir/opt/apps/com.foxit.${_pkgname}
     cp -rf files/* ${pkgdir}/opt/${_pkgname}
 
+    # icons
+    install -d ${pkgdir}/usr/share/
+    cp -r entries/icons ${pkgdir}/usr/share/
+
     cd ${pkgdir}/opt/${_pkgname}
 
     install -d ${pkgdir}/usr/share/mime/packages
     mv resource/mime/*  ${pkgdir}/usr/share/mime/packages
-
-    # icons
-    install -d ${pkgdir}/usr/share/icons/hicolor
-    mv resource/icons/* ${pkgdir}/usr/share/icons/hicolor
 
     install -Dm644 images/FoxitPDFEditorActivate.png -t ${pkgdir}/usr/share/icons/hicolor/64x64/apps/
     install -Dm644 *.desktop -t ${pkgdir}/usr/share/applications
