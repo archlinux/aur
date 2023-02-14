@@ -1,0 +1,21 @@
+pkgbase = kodi-peripheral-joystick
+	pkgdesc = This add-on provides joystick drivers and button mapping services for Kodi. It uses the Peripheral API added to Kodi as part of PR 8807
+	pkgver = 20.1.0
+	pkgrel = 1
+	url = https://github.com/xbmc/peripheral.joystick
+	arch = armv7h
+	arch = aarch64
+	groups = kodi-addons
+	groups = kodi-peripheral
+	license = GPL2
+	makedepends = cmake
+	makedepends = kodi-dev
+	makedepends = tinyxml
+	options = !lto
+	options = debug
+	source = kodi-peripheral-joystick-20.1.0.tar.gz::https://github.com/xbmc/peripheral.joystick/archive/refs/tags/20.1.0-Nexus.tar.gz
+	sha512sums = c5016f74bee316e5b25686420125397cb1840de72be4e9a11390a1338ad920b93d2e8cf36e845feb82aba826a425152dcb621a9ef1b6aea6259d9423283957d9
+
+pkgname = kodi-peripheral-joystick
+	depends = kodi-rpi
+	depends = tinyxml
