@@ -29,7 +29,8 @@ prepare() {
 
 build() {
   cd build
-  CXXFLAGS+=' -fpeel-loops' arch-meson "../${_plug}" \
+  CXXFLAGS="${CXXFLAGS//-march=x86-64 -mtune=generic/-march=native} -fpeel-loops" \
+  arch-meson "../${_plug}" \
     --libdir /usr/lib/vapoursynth
 
   ninja
