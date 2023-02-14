@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=PureVPN
+Exec=PATH=/opt/PureVPN:$PATH purevpn %U
+Terminal=false
+Type=Application
+Icon=purevpn
+StartupWMClass=PureVPN
+Comment=PureVPN Client
+MimeType=x-scheme-handler/purevpn;
+Categories=Utility;
