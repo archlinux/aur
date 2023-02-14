@@ -1,12 +1,12 @@
 pkgbase = ptyspawn
 	pkgdesc = Tool for executing a command in a new PTY (pseudo-terminal)
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/VHSgunzo/ptyspawn
 	arch = x86_64
 	provides = ptyspawn
 	conflicts = ptyspawn
-	source = ptyspawn::https://github.com/VHSgunzo/ptyspawn/releases/download/v0.0.1/ptyspawn
+	source = ptyspawn::https://github.com/VHSgunzo/ptyspawn/releases/download/v0.0.2/ptyspawn
 	sha256sums = SKIP
 
 pkgname = ptyspawn

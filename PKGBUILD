@@ -1,6 +1,6 @@
 # Maintainer: VHSgunzo <vhsgunzo.github.io>
 pkgname='ptyspawn'
-pkgver='0.0.1'
+pkgver='0.0.2'
 pkgrel='1'
 pkgdesc='Tool for executing a command in a new PTY (pseudo-terminal)'
 arch=("x86_64")
