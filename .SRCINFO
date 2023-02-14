@@ -1,0 +1,17 @@
+pkgbase = carbonyl-bin
+	pkgdesc = Chromium-based browser built to run in a terminal
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/fathyb/carbonyl
+	arch = x86_64
+	license = BSD
+	provides = carbonyl
+	conflicts = carbonyl
+	noextract = carbonyl-0.0.2.zip
+	options = !strip
+	source = carbonyl-0.0.2.zip::https://github.com/fathyb/carbonyl/releases/download/v0.0.2/carbonyl.linux-amd64.zip
+	source = carbonyl.sh
+	sha256sums = 53ab641cfa6c31c239db9304e562a68e586f4f522a9156eba84225d1751f17a9
+	sha256sums = 07d6361edfa45d58a2d81e527f1a976fef9ba5417daa0ff8b4acfdfc95f8032e
+
+pkgname = carbonyl-bin

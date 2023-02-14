@@ -1,0 +1,8 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!.SRCINFO
+!carbonyl.sh
+!PKGBUILD
