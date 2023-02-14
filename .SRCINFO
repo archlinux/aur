@@ -1,0 +1,18 @@
+pkgbase = libdovi
+	pkgdesc = Library to read and write Dolby Vision metadata (C-API)
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = https://github.com/quietvoid/dovi_tool/tree/main/dolby_vision
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	makedepends = cargo-c
+	depends = gcc-libs
+	depends = glibc
+	provides = libdovi.so
+	conflicts = libdovi.so
+	source = git+https://github.com/quietvoid/dovi_tool.git#tag=libdovi-3.1.1
+	sha256sums = SKIP
+
+pkgname = libdovi
