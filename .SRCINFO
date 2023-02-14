@@ -1,6 +1,6 @@
 pkgbase = cartridges-git
 	pkgdesc = A GTK4 + Libadwaita game launcher
-	pkgver = 0.1.2.r12.g01d1c48
+	pkgver = 0.1.2.r16.g1acca57
 	pkgrel = 1
 	url = https://github.com/kra-mo/cartridges
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = cartridges-git
 	makedepends = blueprint-compiler
 	makedepends = meson
 	depends = libadwaita
+	depends = python-gobject
 	depends = python-pyaml
 	optdepends = steam: Valve's digital software delivery system
 	optdepends = heroic-games-launcher: Native GOG and Epic Games launcher for Linux

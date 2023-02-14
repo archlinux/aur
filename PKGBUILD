@@ -1,13 +1,13 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=cartridges-git
-pkgver=0.1.2.r12.g01d1c48
+pkgver=0.1.2.r16.g1acca57
 pkgrel=1
 pkgdesc="A GTK4 + Libadwaita game launcher"
 arch=('any')
 url="https://github.com/kra-mo/cartridges"
 license=('GPL3')
-depends=('libadwaita' 'python-pyaml')
+depends=('libadwaita' 'python-gobject' 'python-pyaml')
 makedepends=('git' 'blueprint-compiler' 'meson')
 checkdepends=('appstream-glib')
 optdepends=(
