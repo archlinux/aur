@@ -2,12 +2,12 @@
 
 pkgname=cartridges
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK4 + Libadwaita game launcher"
 arch=('any')
 url="https://github.com/kra-mo/cartridges"
 license=('GPL3')
-depends=('libadwaita' 'python-pyaml')
+depends=('libadwaita' 'python-gobject' 'python-pyaml')
 makedepends=('blueprint-compiler' 'meson')
 checkdepends=('appstream-glib')
 optdepends=(
