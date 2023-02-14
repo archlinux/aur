@@ -1,0 +1,15 @@
+pkgbase = go-xmlstruct-git
+	pkgdesc = Generate Go structs from multiple XML documents.
+	pkgver = e7d40b8
+	pkgrel = 1
+	url = https://github.com/twpayne/go-xmlstruct
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = go
+	provides = go-xmlstruct-git
+	conflicts = go-xmlstruct
+	source = git+https://github.com/twpayne/go-xmlstruct
+	sha256sums = SKIP
+
+pkgname = go-xmlstruct-git
