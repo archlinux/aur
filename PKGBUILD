@@ -2,7 +2,7 @@
 
 _plug=iccconvert
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=4.0.1.gf8ff065
+pkgver=5.0.2.g184b0e4
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -15,6 +15,7 @@ depends=('vapoursynth'
          )
 makedepends=('git'
              'meson'
+             'gcc-objc'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -37,7 +38,8 @@ prepare() {
   cd "${_plug}"
 
   git config submodule.src/libp2p.url "${srcdir}/libp2p"
-  git submodule update --init src/libp2p
+  git -c protocol.file.allow=always submodule update --init \
+    src/libp2p
 
   rm -fr src/vapoursynth
 }

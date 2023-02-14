@@ -1,12 +1,13 @@
 pkgbase = vapoursynth-plugin-iccconvert-git
 	pkgdesc = Plugin for Vapoursynth: iccconvert (GIT version)
-	pkgver = 4.0.1.gf8ff065
+	pkgver = 5.0.2.g184b0e4
 	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=183115
 	arch = x86_64
 	license = LGPL
 	makedepends = git
 	makedepends = meson
+	makedepends = gcc-objc
 	depends = vapoursynth
 	depends = libmagick
 	depends = libxrandr
