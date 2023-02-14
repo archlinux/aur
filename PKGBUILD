@@ -5,8 +5,8 @@ _fontname=spleen
 
 pkgname=spleen-font
 pkgver=1.9.1
-pkgrel=2
-pkgdesc="Monospaced bitmap fonts"
+pkgrel=3
+pkgdesc="Monospaced bitmap fonts for user interface including console (OTB, OTF, PSFU)"
 arch=('any')
 license=('BSD')
 url="https://www.cambus.net/spleen-monospaced-bitmap-fonts/"
