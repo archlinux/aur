@@ -1,0 +1,14 @@
+post_install() {
+    vncinitconfig --install-defaults
+    echo 'To use VNC Connect, visit https://www.realvnc.com/en/products/vnc/#licensing for a subscription.'
+}
+
+post_remove() {
+    rm -fv /usr/bin/vncserver
+    rm -fv /etc/pam.d/vncserver
+    rm -fv /etc/vnc/config
+    rm -fv /etc/vnc/xstartup
+    rm -fv /etc/vnc/get_primary_ip4
+    rm -fv /etc/vnc/vncelevate
+    rm -fv /etc/vnc/vncelevatecfg
+}
