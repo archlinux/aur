@@ -19,10 +19,9 @@ makedepends=(
 	make
 	gcc-fortran
 	eigen
-)
-optdepends=(
         Doxygen
 )
+
 
 provides=("${pkgname%-$pkgver}")
 source=("${pkgname}::git+${url}.git")
