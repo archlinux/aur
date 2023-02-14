@@ -36,8 +36,6 @@ build() {
 
   export CC=clang
   export CXX=clang++
-  export CFLAGS="${CFLAGS/-fvar-tracking-assignments/}"
-  export CXXFLAGS="${CXXFLAGS/-fvar-tracking-assignments/}"
 
   cd build
   arch-meson "../${_plug}" \
