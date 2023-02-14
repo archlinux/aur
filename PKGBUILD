@@ -13,7 +13,7 @@ depends=(
   hicolor-icon-theme
     )
 optdepends=( )
-conflicts=()
+conflicts=(deepin-wine-formatfactory)
 provides=("PCGESHI")
 install=
 source=("https://mirrors.sdu.edu.cn/spark-store-repository/store/tools/${_pkgname}/${_pkgname}_${pkgver}_amd64.deb")
