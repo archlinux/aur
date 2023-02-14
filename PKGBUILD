@@ -6,7 +6,7 @@ CONFIG_OPTIONS=-Dadw_1_2=true
 
 pkgname=spedread
 _pkgname=Spedread
-pkgver=2.3.3
+pkgver=2.3.4
 pkgrel=1
 pkgdesc="GTK speed reading software: Read like a speedrunner!"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ depends=('libadwaita')
 makedepends=('meson' 'vala')
 checkdepends=('appstream-glib')
 source=("${url}/archive/v${pkgver}.tar.gz")
-b2sums=('f5d0afc4ea116f297f10519abe659a1f464d06b70618381b3fdc82c25ae7bd62c7b8bcdf36813edbb140187144af489bd11b24217ab4074152f0598a58a90538')
+b2sums=('9313f7d9bce69a565b523f3a01506c51003597ea751fc68f182840cb905e3441287c0abf582d90708d2f7e06ab1abb3f2d17fb97fb4ecc42824d8ffce7917ff3')
 
 build() {
   arch-meson "$_pkgname-$pkgver" build $CONFIG_OPTIONS
