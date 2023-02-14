@@ -1,7 +1,7 @@
 pkgbase = kiconthemes-git
 	pkgdesc = Support for icon themes
 	pkgver = 5.240.0_r679.g4bdcd81
-	pkgrel = 1
+	pkgrel = 2
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
 	groups = kf6-git

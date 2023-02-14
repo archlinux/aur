@@ -4,7 +4,7 @@
 
 pkgname=kiconthemes-git
 pkgver=5.240.0_r679.g4bdcd81
-pkgrel=1
+pkgrel=2
 pkgdesc='Support for icon themes'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
