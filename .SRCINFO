@@ -1,0 +1,24 @@
+pkgbase = riseup-vpn-configurator
+	pkgdesc = a simple command line tool to get RiseupVPN up and running
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/kmille/riseup-vpn-configurator
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = openvpn
+	depends = openvpn-reconnect
+	depends = python
+	depends = python-jinja
+	depends = python-requests
+	depends = python-pyyaml
+	depends = python-pyasn1
+	depends = python-pyasn1-modules
+	depends = python-psutil
+	depends = python-ping3
+	source = https://github.com/kmille/riseup-vpn-configurator/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 6fdeb7583d7fc0e2ae326c0ba90a30834e8d2942f3f55f8517710889bf900c1d
+
+pkgname = riseup-vpn-configurator
