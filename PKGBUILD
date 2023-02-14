@@ -2,7 +2,7 @@
 
 pkgname=d2-bin
 _gitname=d2
-pkgver=0.1.6
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A modern diagram scripting language that turns text to diagrams'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gcc-libs')
 options=('!lto')
 source=("https://github.com/terrastruct/${_gitname}/releases/download/v${pkgver}/${_gitname}-v${pkgver}-linux-amd64.tar.gz")
 sha256sums=(
-  "750941b76cd27881f229e278a569e76c17d7235a40e07bee2e8cfa164686142c"
+  "1191f6e1438d14c11fd03a0543573bf58ac1e2b23887c8df91902c8ae78f6581"
 )
 conflicts=('d2')
 
