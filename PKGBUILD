@@ -4,7 +4,7 @@
 _pkgname=skypeforlinux
 pkgname="$_pkgname-preview-bin"
 pkgver=8.94.76.419
-pkgrel=1
+pkgrel=2
 pkgdesc="Skype for Linux - Preview/Insider Version"
 arch=("x86_64")
 url="http://www.skype.com"
