@@ -30,12 +30,12 @@ build() {
 	cd $srcdir
 	mkdir build && cd build
 	cmake ../$pkgname-$pkgver -DENABLE_HDF5=ON \
-	         	  -DENABLE_NETCDF=ON \
-	         	  -DENABLE_FORTRAN=OFF \
-	         	  -DENABLE_BLASLAPACK=OFF \
-			 	  -DENABLE_PYMOAB=ON \
-				  -DBUILD_SHARED_LIBS=ON \
-			 	  -DCMAKE_INSTALL_PREFIX=${pkgdir}/opt/MOAB
+							  -DENABLE_NETCDF=ON \
+							  -DENABLE_FORTRAN=OFF \
+							  -DENABLE_BLASLAPACK=OFF \
+							  -DENABLE_PYMOAB=ON \
+							  -DBUILD_SHARED_LIBS=ON \
+							  -DCMAKE_INSTALL_PREFIX=${pkgdir}/opt/MOAB
 	make
 }
 
@@ -46,6 +46,3 @@ package() {
 	bash install.sh
 	python setup.py install --user
 }
-
-md5sums=('935d18f8edf7dc3df625d9426a2d59e1')
-md5sums=('935d18f8edf7dc3df625d9426a2d59e1')
