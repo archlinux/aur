@@ -1,7 +1,7 @@
 pkgbase = kryptor
 	pkgdesc = A simple, modern, and secure encryption and signing tool that aims to be a better version of age and Minisign.
 	pkgver = 4.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kryptor.co.uk/
 	arch = x86_64
 	arch = aarch64

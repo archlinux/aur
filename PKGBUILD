@@ -4,7 +4,7 @@
 
 pkgname=kryptor
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 _srcpath="Kryptor-$pkgver/src"
 pkgdesc='A simple, modern, and secure encryption and signing tool that aims to be a better version of age and Minisign.'
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ build() {
   if [ $CARCH = 'aarch64' ]; then build_arch=linux-arm64;
   else build_arch=linux-x64; fi
   echo "Build for $build_arch"
-  dotnet publish -c Release -r $build_arch --self-contained -p:PublishReadyToRun=true -p:PublishSingleFile=true
+  dotnet publish -c Release -r $build_arch -p:PublishSingleFile=true -p:PublishTrimmed=true -p:PublishReadyToRun=true -p:IncludeNativeLibrariesForSelfExtract=true --self-contained true
 }
 
 package() {
