@@ -1,16 +1,18 @@
 pkgbase = browser360-bin
 	pkgdesc = 360 Browser stable version
-	pkgver = 10.4.1032.22
+	pkgver = 13.2.1026.36
 	pkgrel = 1
 	url = https://browser.360.cn
 	arch = x86_64
 	license = custom
-	depends = nss
-	depends = libxss
 	depends = alsa-lib
-	depends = libxtst
-	depends = libcups
-	source = https://down.360safe.com/gc/signed_com.360.browser-stable_10.4.1032.22-1_amd64.deb
-	sha256sums = SKIP
+	depends = at-spi2-core
+	depends = nss
+	depends = gtk3
+	depends = gtk2
+	provides = 360.net
+	conflicts = browser360-stable-bin
+	source = https://down.360safe.com/gc/signed_com.360.browser-stable_13.2.1026.36-1_amd64.deb
+	sha256sums = 1e33160c51b3c19dc82fe9bd497640f95d1358353809e15f45871ca484796337
 
 pkgname = browser360-bin
