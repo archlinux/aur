@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-inputstream-rtmp-git
 	pkgdesc = librtmp support for Kodi 20+
-	pkgver = 20.3.0.Nexus.r0.g61f7ff3
+	pkgver = 20.3.0.Nexus.r2.g9ab6dfc
 	pkgrel = 1
 	url = https://github.com/xbmc/inputstream.rtmp
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = kodi-addon-inputstream-rtmp-git
 	depends = rtmpdump
 	provides = kodi-addon-inputstream-rtmp
 	conflicts = kodi-addon-inputstream-rtmp
-	source = kodi-addon-inputstream-rtmp-git::git+https://github.com/xbmc/inputstream.rtmp.git#branch=Nexus
+	source = kodi-addon-inputstream-rtmp-git::git+https://github.com/xbmc/inputstream.rtmp.git#branch=Omega
 	md5sums = SKIP
 
 pkgname = kodi-addon-inputstream-rtmp-git
