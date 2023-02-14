@@ -9,7 +9,7 @@ arch=('x86_64')
 url='https://github.com/Asd-g/AviSynth-VMAF'
 license=('GPL')
 depends=('libavisynth.so'
-         'libvmaf'
+         'vmaf'
          )
 makedepends=('git'
              'cmake'
