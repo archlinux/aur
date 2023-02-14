@@ -1,6 +1,6 @@
 pkgbase = python-fusesoc
 	pkgdesc = Package manager and build abstraction tool for FPGA/ASIC development.
-	pkgver = 1.11
+	pkgver = 2.0
 	pkgrel = 0
 	url = http://github.com/olofk/fusesoc/
 	arch = any
@@ -18,8 +18,7 @@ pkgbase = python-fusesoc
 	provides = python-fusesoc
 	conflicts = python-fusesoc-git
 	options = !emptydirs
-	source = git+https://github.com/olofk/fusesoc#tag=1.11
+	source = git+https://github.com/olofk/fusesoc#tag=2.0
 	md5sums = SKIP
 
 pkgname = python-fusesoc
-

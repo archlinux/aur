@@ -1,6 +1,6 @@
 # Maintainer: csantosb <csantosb dot inventati dot org>
 pkgname=python-fusesoc
-pkgver=1.11
+pkgver=2.0
 pkgrel=0
 pkgdesc="Package manager and build abstraction tool for FPGA/ASIC development."
 arch=('any')
