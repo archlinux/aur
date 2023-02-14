@@ -1,31 +1,31 @@
-# Maintainer: Mihai Bisog <mihai.bisog@gmail.com>
+# Maintainer: kyngs
 pkgname=xfstk-dldr
-pkgver=1.8.1
-pkgrel=2
+pkgver=1.8.6
+pkgrel=3
 pkgdesc="Update Intel SoC firmware over USB using the DNX protocol"
 arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/xfstk/"
+url="https://github.com/edison-fw/xFSTK"
 license=('LGPL')
 depends=('qt4' 'libusb-compat' 'boost')
 makedepends=('doxygen' 'graphviz' 'cmake')
 provides=('xfstk-dldr' 'xfstk-dldr-gui')
 conflicts=('xfstk-dldr' 'xfstk-dldr-gui')
-source=("http://sourceforge.net/projects/xfstk/files/$pkgname-linux-source-$pkgver.tar.gz")
-md5sums=("c076b3bbbe9907ef2eb7958e17b152bd")
+source=("git+${url}#tag=v$pkgver")
+sha256sums=('SKIP')
 
 prepare() {
-    cd "xfstk-build/linux-source-package"
+    cd "xFSTK"
     mkdir -p build
     cd build
     BUILD_VERSION=$pkgver cmake .. -DCMAKE_INSTALL_PREFIX:PATH=/usr
 }
 
 build() {
-    cd "xfstk-build/linux-source-package/build"
+    cd "xFSTK/build"
     make
 }
 
 package() {
-    cd "xfstk-build/linux-source-package/build"
+    cd "xFSTK/build"
     make DESTDIR="$pkgdir/" install
 }
