@@ -1,7 +1,7 @@
 pkgbase = devscripts
 	pkgdesc = Scripts to make the life of a Debian Package maintainer easier
 	pkgver = 2.23.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tracker.debian.org/pkg/devscripts
 	arch = i686
 	arch = x86_64
@@ -35,6 +35,7 @@ pkgbase = devscripts
 	optdepends = perl-moo: Required for uscan
 	optdepends = perl-ipc-run: Required for uscan
 	optdepends = perl-lwp-protocol-https: Required for uscan
+	provides = checkbashism
 	options = !makeflags
 	source = https://deb.debian.org/debian/pool/main/d/devscripts/devscripts_2.23.1.tar.xz
 	source = fixes.patch

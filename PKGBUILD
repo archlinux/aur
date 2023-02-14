@@ -6,7 +6,7 @@
 
 pkgname=devscripts
 pkgver=2.23.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Scripts to make the life of a Debian Package maintainer easier"
 arch=('i686' 'x86_64')
 url="https://tracker.debian.org/pkg/devscripts"
@@ -37,6 +37,8 @@ optdepends=(
     'perl-ipc-run: Required for uscan'
     'perl-lwp-protocol-https: Required for uscan'
 )
+provides=(checkbashism)
+conflicst=(checkbashism)
 options=('!makeflags')
 source=(
     "https://deb.debian.org/debian/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver}.tar.xz"
@@ -58,6 +60,12 @@ build() {
 package() {
     cd "$pkgname"
     make DESTDIR="$pkgdir" install
+
+    # Install the script manpages appropriately
+    for script_manpage in scripts/*.1
+    do
+        cp -v $script_manpage "$pkgdir/usr/share/man/man1"
+    done
 
     # Create dch symlink to debchange
     ln -s /usr/bin/debchange "$pkgdir/usr/bin/dch"
