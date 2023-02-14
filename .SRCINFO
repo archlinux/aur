@@ -1,0 +1,15 @@
+pkgbase = hypershift-git
+	pkgdesc = Hyperscale OpenShift - clusters with hosted control planes - CLI
+	pkgver = r3267.b9f9d94
+	pkgrel = 1
+	url = https://hypershift-docs.netlify.app/
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	makedepends = git
+	provides = hypershift
+	conflicts = hypershift
+	source = git+https://github.com/openshift/hypershift.git
+	sha256sums = SKIP
+
+pkgname = hypershift-git
