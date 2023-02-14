@@ -1,6 +1,4 @@
 post_install() {
-	# Link to the binary
-	ln -sf '/opt/PureVPN/purevpn' '/usr/bin/purevpn'
 
 	# SUID chrome-sandbox for Electron 5+
 	chmod 4755 '/opt/PureVPN/chrome-sandbox' || true
@@ -21,13 +19,10 @@ post_upgrade() {
 }
 
 post_remove() {
-	# Delete the link to the binary
-	rm -f '/usr/bin/purevpn'
-
 	# Delete service if exists
-	systemctl stop pured || true &> /dev/null
-	systemctl disable pured || true &> /dev/null
-	rm /etc/systemd/system/pured.service || true &> /dev/null
+	systemctl stop pured > /dev/null 2>&1 || true
+	systemctl disable pured > /dev/null 2>&1 || true
+	rm /etc/systemd/system/pured.service > /dev/null 2>&1 || true
 	systemctl daemon-reload
 
 }
