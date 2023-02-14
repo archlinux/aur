@@ -4,7 +4,7 @@
 _pkgname=skypeforlinux
 pkgname="$_pkgname-stable-bin"
 pkgver=8.93.0.408
-pkgrel=1
+pkgrel=2
 pkgdesc="Skype for Linux - Stable/Release Version"
 arch=("x86_64")
 url="http://www.skype.com"
