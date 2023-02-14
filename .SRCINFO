@@ -1,0 +1,15 @@
+pkgbase = python-fisx
+	pkgdesc = Quantitative X-Ray Fluorescence Analysis Support Library
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/vasole/fisx
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-numpy
+	makedepends = cython
+	depends = python-numpy
+	source = fisx-1.2.1.tar.gz::https://files.pythonhosted.org/packages/source/f/fisx/fisx-1.2.1.tar.gz
+	sha256sums = 384a9abaf883a15273cebd8ba9195543a06e3ad60c4d02cd7dd84da2e9822ba9
+
+pkgname = python-fisx
