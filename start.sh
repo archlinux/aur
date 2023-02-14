@@ -12,6 +12,10 @@ if [ -z "${QQ_DOWNLOAD_DIR}" ]; then
     QQ_DOWNLOAD_DIR="${XDG_DOWNLOAD_DIR:-$HOME/Downloads}"
 fi
 
+if [ "${XDG_SESSION_TYPE}" == "wayland" ]; then
+    QQ_ELECTRON_FLAGS="--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations ${QQ_ELECTRON_FLAGS}"
+fi
+
 QQ_HOTUPDATE_DIR="${QQ_APP_DIR}/versions"
 QQ_HOTUPDATE_VERSION="3.0.0-571"
 QQ_PREVIOUS_VERSIONS=("2.0.1-429" "2.0.1-453" "2.0.2-510" "2.0.3-543" "3.0.0-565")
@@ -69,15 +73,24 @@ bwrap --new-session --cap-drop ALL --unshare-user-try --unshare-pid --unshare-cg
     --ro-bind-try "${HOME}/local/share/.icons" "${HOME}/local/share/.icons" \
     --ro-bind-try "${XDG_CONFIG_HOME}/gtk-3.0" "${XDG_CONFIG_HOME}/gtk-3.0" \
     --setenv IBUS_USE_PORTAL 1 \
-    /opt/QQ/qq "$@"
+    /opt/QQ/electron "${QQ_ELECTRON_FLAGS}" "$@" /opt/QQ/resources/app
 
 # 移除无用崩溃报告和日志
 # 如果需要向腾讯反馈 bug，请注释掉如下几行
 if [ -d "${QQ_APP_DIR}/crash_files" ]; then
     rm -rf "${QQ_APP_DIR}/crash_files"
 fi
-rm "${QQ_APP_DIR}/log/app_launcher-"*".log"
-rm "${QQ_APP_DIR}/nt_qq_"*"/nt_data/log/"*
+if [ -d "${QQ_APP_DIR}/log" ]; then
+    rm -rf "${QQ_APP_DIR}/log"
+fi
+for nt_qq_userdata in "${QQ_APP_DIR}/nt_qq_"*; do
+    if [ -d "${nt_qq_userdata}/log" ]; then
+        rm -rf "${nt_qq_userdata}/log"
+    fi
+    if [ -d "${nt_qq_userdata}/log-cache" ]; then
+        rm -rf "${nt_qq_userdata}/log-cache"
+    fi
+done
 if [ -d "${QQ_APP_DIR}/Crashpad" ]; then
     rm -rf "${QQ_APP_DIR}/Crashpad"
 fi
