@@ -35,7 +35,8 @@ build() {
 	cd $srcdir/$pkgname
 	mkdir build && cd build
 	cmake .. -DMOAB_DIR=/opt/MOAB \
-		 -DCMAKE_INSTALL_PREFIX=${pkgdir}/opt/double-down
+		 -DCMAKE_INSTALL_PREFIX=${pkgdir}/opt/double-down \
+		 -DMOAB_INCLUDE_DIRS=${pkgdir}/opt/MOAB/include
 }
 
 package() {
