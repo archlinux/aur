@@ -14,8 +14,9 @@ pkgbase = double-down-git
 	makedepends = eigen
 	depends = moab
 	depends = embree
+	optdepends = Doxygen
 	provides = double-down-git
 	source = double-down-git::git+https://github.com/pshriwise/double-down.git
-	md5sums = 65e054e1d32c79a80222d2398876cb4b
+	md5sums = SKIP
 
 pkgname = double-down-git
