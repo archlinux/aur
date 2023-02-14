@@ -10,7 +10,7 @@ url='https://gist.github.com/4re'
 license=('GPL')
 depends=('vapoursynth-plugin-vshelpers-git'
          'vapoursynth-plugin-nnedi3-git'
-         'vapoursynth-plugin-sangnom'
+         'vapoursynth-plugin-sangnom-git'
          'vapoursynth-plugin-msmoosh-git'
          'vapoursynth-plugin-genericfilters-git'
          )
