@@ -59,6 +59,7 @@ pkgbase = ffmpeg-v4l2-request-git
 	depends = openjpeg2
 	depends = opus
 	depends = sdl2
+	depends = sndio
 	depends = speex
 	depends = srt
 	depends = v4l-utils

@@ -62,6 +62,7 @@ depends=(
   openjpeg2
   opus
   sdl2
+  sndio
   speex
   srt
   v4l-utils
