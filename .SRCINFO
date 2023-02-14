@@ -1,6 +1,6 @@
 pkgbase = techmino-git
 	pkgdesc = A collection of various modern block game rules, more ways to play, and awesome features added for a new experience.
-	pkgver = 0.17.10.r4732.4631a2f4
+	pkgver = 0.17.12.r4777.5b1eef89
 	pkgrel = 1
 	url = https://github.com/26F-Studio/Techmino
 	arch = x86_64
