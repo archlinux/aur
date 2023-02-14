@@ -1,83 +1,121 @@
-# Maintainer: Jacek Szafarkiewicz <szafar at linux dot pl>
-# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=sunshine-git
-pkgver=0.13.0.957.4b658cd
+pkgver=0.18.3.r0.g9563419
 pkgrel=1
-pkgdesc="Open source implementation of NVIDIA's GameStream, as used by the NVIDIA Shield"
-url="https://github.com/SunshineStream/sunshine"
-arch=('x86_64' 'i686')
+pkgdesc="Game Stream server for Moonlight, latest git"
+arch=('x86_64')
+url=https://github.com/LizardByte/Sunshine
 license=('GPL3')
+install=sunshine-git.install
 
-depends=('boost-libs' 'ffmpeg4.4' 'openssl' 'libpulse' 'opus' 'libxtst' 'libx11' 'libxfixes' 'libevdev' 'libxcb' 'libxrandr' 'udev')
-makedepends=('git' 'cmake' 'boost' 'make')
+depends=(
+avahi
+boost-libs
+curl
+libevdev
+libmfx
+libpulse
+libva
+libvdpau
+libx11
+libxcb
+libxfixes
+libxrandr
+libxtst
+numactl
+openssl
+opus
+udev
+)
+makedepends=(
+git
+boost
+cmake
+ninja
+nodejs
+npm
+)
+optdepends=(
+'cuda: NvFBC capture support'
+'libcap'
+'libdrm'
+)
 
-provides=('sunshine')
-conflicts=("sunshine")
+provides=(sunshine)
+conflicts=(sunshine sunshine-nox)
 
-source=("$pkgname::git+https://github.com/SunshineStream/sunshine.git"
-        "systemd-user-config.patch"
-        "udev.rules")
+source=(
+git+https://github.com/LizardByte/Sunshine.git
+git+https://github.com/moonlight-stream/moonlight-common-c.git
+git+https://gitlab.com/eidheim/Simple-Web-Server.git
+git+https://github.com/ViGEm/ViGEmClient.git
+git+https://github.com/miniupnp/miniupnp.git
+git+https://github.com/FFmpeg/nv-codec-headers.git
+git+https://github.com/michaeltyson/TPCircularBuffer.git
+git+https://github.com/LizardByte/build-deps.git
+git+https://github.com/sleepybishop/nanors.git
+git+https://github.com/cgutman/enet.git
+)
 sha256sums=('SKIP'
-            '1642eb8672b137e94aa16e4aadde37f68bf1920dfadd1325cca480d7731f38c9'
-            '5ce01689247cb01d3f119cac32c731607d99bb875dcdd39c92b547f76d2befa0')
-install=sunshine.install
-
-_assets_path=/usr/share/sunshine
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
-    cd "$pkgname"
-    printf "%s.%s.%s" "$(git describe --tags $(git rev-list --tags --max-count=1) | sed 's/^v//')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd Sunshine
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "$pkgname"
-    git submodule update --recursive --init
+  cd Sunshine
+  git rm -f third-party/ffmpeg-windows-x86_64
+  git rm -f third-party/ffmpeg-macos-x86_64
+  git rm -f third-party/ffmpeg-macos-aarch64
+  git rm -f third-party/ffmpeg-linux-aarch64
+  git submodule init
+  git config submodule.third-party/moonlight-common-c.url "${srcdir}/moonlight-common-c"
+  git config submodule.third-party/Simple-Web-Server.url "${srcdir}/Simple-Web-Server"
+  git config submodule.third-party/ViGEmClient.url "${srcdir}/ViGEmClient"
+  git config submodule.third-party/miniupnp.url "${srcdir}/miniupnp"
+  git config submodule.third-party/nv-codec-headers.url "${srcdir}/nv-codec-headers"
+  git config submodule.third-party/TPCircularBuffer.url "${srcdir}/TPCircularBuffer"
+  git config submodule.third-party/ffmpeg-linux-x86_64.url "${srcdir}/build-deps"
+  git config submodule.third-party/nanors.url "${srcdir}/nanors"
+  git -c protocol.file.allow=always submodule update
 
-    patch -p1 < ../systemd-user-config.patch
+  pushd third-party/moonlight-common-c
+  git submodule init
+  git config submodule.enet.url "${srcdir}/enet"
+  git -c protocol.file.allow=always submodule update
+  popd
 }
 
 build() {
-    export CFLAGS="${CFLAGS/-Werror=format-security/}"
-    export CXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
+  pushd Sunshine
+  npm install
+  popd
 
-    cmake \
-        -S "$pkgname" \
-        -B build \
-        -Wno-dev \
-        -D SUNSHINE_EXECUTABLE_PATH=/usr/bin/sunshine \
-        -D SUNSHINE_ASSETS_DIR="$_assets_path" \
-        \
-        -D LIBAVCODEC_INCLUDE_DIR=/usr/include/ffmpeg4.4 \
-        -D LIBAVCODEC_LIBRARIES=/usr/lib/ffmpeg4.4/libavcodec.so \
-        -D LIBAVDEVICE_INCLUDE_DIR=/usr/include/ffmpeg4.4 \
-        -D LIBAVDEVICE_LIBRARIES=/usr/lib/ffmpeg4.4/libavdevice.so \
-        -D LIBAVFORMAT_INCLUDE_DIR=/usr/include/ffmpeg4.4 \
-        -D LIBAVFORMAT_LIBRARIES=/usr/lib/ffmpeg4.4/libavformat.so \
-        -D LIBAVUTIL_INCLUDE_DIR=/usr/include/ffmpeg4.4 \
-        -D LIBAVUTIL_LIBRARIES=/usr/lib/ffmpeg4.4/libavutil.so \
-        -D LIBSWSCALE_INCLUDE_DIR=/usr/include/ffmpeg4.4 \
-        -D LIBAVUTIL_LIBRARIES=/usr/lib/ffmpeg4.4/libavutil.so \
-        -D LIBSWSCALE_INCLUDE_DIR=/usr/include/ffmpeg4.4 \
-        -D LIBSWSCALE_LIBRARIES=/usr/lib/ffmpeg4.4/libswscale.so
+  export CFLAGS="${CFLAGS/-Werror=format-security/}"
+  export CXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
 
-    make -C build
+  cmake -B build_dir -S Sunshine -W no-dev -G Ninja \
+    -D CMAKE_BUILD_TYPE=None \
+    -D SUNSHINE_ENABLE_CUDA=1 \
+    -D SUNSHINE_ENABLE_X11=1 \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -D SUNSHINE_EXECUTABLE_PATH=/usr/bin/sunshine \
+    -D SUNSHINE_ASSETS_DIR="share/sunshine"
+
+  cmake --build build_dir
 }
 
 package() {
-    pushd "$pkgname/assets"
-        install -Dvm644 sunshine.conf "$pkgdir/$_assets_path/sunshine.conf"
-        install -Dvm644 apps_linux.json "$pkgdir/$_assets_path/apps_linux.json"
-
-        find web shaders/opengl -type f -print0 | xargs -0 -I {} install -Dvm644 {} "$pkgdir/$_assets_path/{}"
-    popd
-
-    pushd build
-        install -Dvm755 sunshine "$pkgdir/usr/bin/sunshine"
-        install -Dvm644 sunshine.service "$pkgdir/usr/lib/systemd/user/sunshine.service"
-    popd
-
-    install -Dvm644 udev.rules "$pkgdir/usr/lib/udev/rules.d/85-sunshine.rules"
+  DESTDIR="${pkgdir}" cmake --install build_dir
 }
-
-# vim: ts=2 sw=2 et:
