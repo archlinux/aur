@@ -2,13 +2,13 @@
 
 pkgname=subctl
 pkgver=0.13.3
-pkgrel=1
+pkgrel=2
 pkgdesc='The subctl command-line utility simplifies the deployment and maintenance of Submariner by automating interactions with the Submariner Operator and providing diagnostic features.'
 arch=(x86_64)
 url='https://github.com/submariner-io/subctl'
 license=(Apache)
 depends=()
-makedepends=('git' 'go')
+makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/submariner-io/subctl/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
@@ -22,9 +22,6 @@ build() {
     local -a x=(
         github.com/submariner-io/subctl/pkg/version.Version=v${pkgver}
     )
-    # export GOPATH="$srcdir"
-    # cd "$pkgname-$pkgver"
-    # cd "$GOPATH/src/submariner-io/subctl"
     cd "${pkgname}-${pkgver}"
     export CGO_LDFLAGS="$LDFLAGS"
     export CGO_CFLAGS="$CFLAGS -fno-lto"
@@ -33,7 +30,6 @@ build() {
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
     go build -o ./subctl -ldflags "${x[*]/#/-X=} -linkmode=external" ./cmd/
-    # go build -o $srcdir cmd/ 
 }
 
 package() {
