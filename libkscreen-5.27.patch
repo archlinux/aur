@@ -1,0 +1,87 @@
+diff --git a/screen/confighandler.cpp b/screen/confighandler.cpp
+index b4838d1..5375b62 100644
+--- a/screen/confighandler.cpp
++++ b/screen/confighandler.cpp
+@@ -65,7 +65,7 @@ void ConfigHandler::setConfig(KScreen::ConfigPtr config)
+     connect(m_config.data(), &KScreen::Config::outputRemoved, this, [this]() {
+         Q_EMIT outputConnect(false);
+     });
+-    connect(m_config.data(), &KScreen::Config::primaryOutputChanged, this, &ConfigHandler::primaryOutputChanged);
++    connect(m_config.data(), &KScreen::Config::prioritiesChanged, this, &ConfigHandler::primaryOutputChanged);
+ 
+     Q_EMIT outputModelChanged();
+ }
+@@ -219,9 +219,8 @@ void ConfigHandler::primaryOutputSelected(int index)
+     // TODO
+ }
+ 
+-void ConfigHandler::primaryOutputChanged(const KScreen::OutputPtr &output)
++void ConfigHandler::primaryOutputChanged()
+ {
+-    Q_UNUSED(output)
+ }
+ 
+ Control::OutputRetention ConfigHandler::getRetention() const
+diff --git a/screen/confighandler.h b/screen/confighandler.h
+index cc6956a..9705c73 100644
+--- a/screen/confighandler.h
++++ b/screen/confighandler.h
+@@ -84,7 +84,7 @@ private:
+     QSize screenSize() const;
+     Control::OutputRetention getRetention() const;
+     void primaryOutputSelected(int index);
+-    void primaryOutputChanged(const KScreen::OutputPtr &output);
++    void primaryOutputChanged();
+     void initOutput(const KScreen::OutputPtr &output);
+     void resetScale(const KScreen::OutputPtr &output);
+ 
+diff --git a/screen/outputmodel.cpp b/screen/outputmodel.cpp
+index 39ece45..4e16013 100644
+--- a/screen/outputmodel.cpp
++++ b/screen/outputmodel.cpp
+@@ -223,7 +223,7 @@ void OutputModel::add(const KScreen::OutputPtr &output)
+     }
+     m_outputs.insert(i, Output(output, pos));
+ 
+-    connect(output.data(), &KScreen::Output::isPrimaryChanged,
++    connect(output.data(), &KScreen::Output::priorityChanged,
+             this, [this, output](){
+         roleChanged(output->id(), PrimaryRole);
+     });
+@@ -603,7 +603,7 @@ bool OutputModel::setReplicationSourceIndex(int outputIndex, int sourceIndex)
+             return false;
+         }
+         m_config->setReplicationSource(output.ptr, nullptr);
+-        output.ptr->setLogicalSize(QSizeF());
++        output.ptr->setExplicitLogicalSize(QSizeF());
+         resetPosition(output);
+     } else {
+         const auto source = m_outputs[sourceIndex].ptr;
+@@ -614,7 +614,7 @@ bool OutputModel::setReplicationSourceIndex(int outputIndex, int sourceIndex)
+         m_config->setReplicationSource(output.ptr, source);
+         output.posReset = output.ptr->pos();
+         output.ptr->setPos(source->pos());
+-        output.ptr->setLogicalSize(source->logicalSize());
++        output.ptr->setExplicitLogicalSize(source->explicitLogicalSize());
+     }
+ 
+     reposition();
+diff --git a/screen/outputmodel.h b/screen/outputmodel.h
+index 49cd5bb..ad2429d 100644
+--- a/screen/outputmodel.h
++++ b/screen/outputmodel.h
+@@ -18,6 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ #ifndef OUTPUTMODEL_H
+ #define OUTPUTMODEL_H
+ 
++#include <kscreen/mode.h>
+ #include <kscreen/config.h>
+ #include <kscreen/output.h>
+ 
+@@ -151,4 +152,4 @@ private:
+     ConfigHandler *m_config;
+ };
+ 
+-#endif
+\ No newline at end of file
++#endif
