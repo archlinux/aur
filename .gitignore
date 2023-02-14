@@ -7,3 +7,5 @@
 !.SRCINFO
 !config.json
 !sing-box.service
+!sing-box@.service
+!sing-box-bin.install
