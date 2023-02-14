@@ -2,7 +2,7 @@
 # Contributor: Dustin Falgout <dustin@antergos.com>
 
 pkgname=obs-service-tar_scm-git
-pkgver=0.10.32.r777
+pkgver=0.10.34.r781
 pkgrel=1
 pkgdesc="Source Service for the OpenSUSE Build Service (OBS)"
 arch=('any')
