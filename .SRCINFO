@@ -1,0 +1,15 @@
+pkgbase = minetest-devtest-git
+	pkgdesc = Minetest Development Test game (git version, -dev)
+	pkgver = 5.6.0.r314.g4cd6b773b
+	pkgrel = 1
+	url = https://www.minetest.net/
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = minetest-common
+	provides = minetest-devtest
+	conflicts = minetest-devtest
+	source = git+https://github.com/minetest/minetest.git
+	sha1sums = SKIP
+
+pkgname = minetest-devtest-git
