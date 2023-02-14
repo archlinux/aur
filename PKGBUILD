@@ -18,7 +18,7 @@ place-names
 )
 
 pkgname='mozc-ut'
-pkgver=2.28.4990.102.20230127
+pkgver=2.28.5008.102.20230214
 pkgrel=1
 pkgdesc='The Open Source edition of Google Japanese Input bundled with the UT dictionary'
 arch=('x86_64')
@@ -30,17 +30,17 @@ optdepends=('fcitx5-mozc-ut: Fcitx5 integration'
             'fcitx-mozc-ut: Fcitx integration'
             'ibus-mozc: IBus integration'
             'emacs-mozc: Emacs integration')
-provides=('mozc=2.28.4990.102')
+provides=('mozc=2.28.5008.102')
 conflicts=('mozc')
 options=(!distcc !ccache)
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=811cb8c7606a4732a83abb89752664eb23728623"
-        'git+https://github.com/utuhiro78/merge-ut-dictionaries.git#commit=37499de5f66a2329c1293ac791f90029728e0eb9'
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=913bb5b968944b9100497698789a65b3f2a5c177"
+        'git+https://github.com/utuhiro78/merge-ut-dictionaries.git#commit=ffaf40e56c3a7b317a6b432bf167415fcfb9077b'
         'git+https://github.com/utuhiro78/mozcdic-ut-alt-cannadic.git#commit=f59287e569db3e226378380a34e71275654b46d0'
         'git+https://github.com/utuhiro78/mozcdic-ut-edict2.git#commit=99b4f5a1bd132816a1088c553458ab640e368cdb'
         'git+https://github.com/utuhiro78/mozcdic-ut-jawiki.git#commit=86480c134bac7991977110191a3f5a93cee3690d'
         'git+https://github.com/utuhiro78/mozcdic-ut-neologd.git#commit=f881c1c55c73a53341f9a970487e9a7546070333'
-        'git+https://github.com/utuhiro78/mozcdic-ut-personal-names.git#commit=b942640853441f4295c9ec17193a7e7896afd9ad'
-        'git+https://github.com/utuhiro78/mozcdic-ut-place-names.git#commit=88f49c2fb711c71d41fcd8390939ae97470714c2'
+        'git+https://github.com/utuhiro78/mozcdic-ut-personal-names.git#commit=781213c4573d2e4f93d358a08bf581df51387d77'
+        'git+https://github.com/utuhiro78/mozcdic-ut-place-names.git#commit=0297d6a941a6cc3ebe78b46bb67fe6d62fddf7ab'
         'git+https://github.com/utuhiro78/mozcdic-ut-skk-jisyo.git#commit=2cbf5b4652ab0f253880258af4aeaf3dd9d7ae09'
         'git+https://github.com/utuhiro78/mozcdic-ut-sudachidict.git#commit=18b1a7710f2e819129c9f5c86a471c881725e26a')
 sha256sums=('SKIP'
