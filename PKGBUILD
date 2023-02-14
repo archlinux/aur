@@ -6,8 +6,8 @@
 pkgname=pyinstaller-hooks-contrib
 _pkgbase="${pkgname%-git}"
 _pkgname="${_pkgbase#python-}"
-pkgver=2022.15
-pkgrel=3
+pkgver=2023.0
+pkgrel=1
 pkgdesc="Community maintained hooks for PyInstaller"
 arch=('any')
 license=('GPL2' 'Apache' 'custom:PyInstaller')
@@ -51,8 +51,8 @@ optdepends=(
 
 url="https://github.com/pyinstaller/$_pkgname"
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('0a04bec45edd8e13496c7ea717c730577b9b1fc8118a9bc5a1fdedd37de963afd7259c0c4c9e57211a8681b2f5d140122b1ee15b459f55643615cfb8f03b2954')
-b2sums=('a43f38d2425abf96090471a281a4a20aa96f51c5f678fc97982e9cb56c971428436784e8372eb6fc8beec37595ff3538006426465343e6da678ed7d3274be989')
+sha512sums=('ae99459e8f57c8ef67ac8249bf5289359050bacea82a1a63f39c71ba701bbe7da25892857b91fc3477b82eb0a52b1230538cc4ac8e988d8adabd16b3eb26bffd')
+b2sums=('d1932992b428a17405fb5c4ab5d86d6d7dfcd03c6a615f703d5b2f9e0de28e03b9c067c0978c05c7f976d0440c4fe523225eef3f681644badf7ea05e402eee65')
 
 prepare() {
   local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
