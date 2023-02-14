@@ -21,6 +21,7 @@ pkgbase = hotspot
 	depends = kitemmodels
 	depends = kconfigwidgets
 	depends = kparts
+	depends = perf
 	depends = solid
 	depends = rustc-demangle>=0.1.18-2
 	provides = hotspot

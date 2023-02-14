@@ -7,7 +7,7 @@ pkgdesc="The Linux perf GUI for performance analysis"
 arch=('x86_64')
 url="https://github.com/KDAB/hotspot"
 license=('GPL2')
-depends=('qt5-base>=5.15.0' 'libelf' 'elfutils' 'threadweaver' 'kddockwidgets' 'ki18n' 'kconfig' 'kio' 'kitemviews' 'kcoreaddons' 'kitemmodels' 'kconfigwidgets' 'kparts' 'solid' 'rustc-demangle>=0.1.18-2')
+depends=('qt5-base>=5.15.0' 'libelf' 'elfutils' 'threadweaver' 'kddockwidgets' 'ki18n' 'kconfig' 'kio' 'kitemviews' 'kcoreaddons' 'kitemmodels' 'kconfigwidgets' 'kparts' 'perf' 'solid' 'rustc-demangle>=0.1.18-2')
 makedepends=('cmake>=3.16.0' 'extra-cmake-modules' 'desktop-file-utils')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
