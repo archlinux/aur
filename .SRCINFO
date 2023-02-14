@@ -1,6 +1,6 @@
 pkgbase = python-picotool-git
 	pkgdesc = Tools and Python libraries for manipulating Pico-8 game files.
-	pkgver = 0.1
+	pkgver = r199.49808e5
 	pkgrel = 1
 	url = https://github.com/dansanderson/picotool
 	arch = any
