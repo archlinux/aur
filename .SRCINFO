@@ -1,7 +1,7 @@
 pkgbase = libccp4
 	pkgdesc = Protein X-ray crystallography toolkit - Libraries
 	pkgver = 6.5.1
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.ccp4.ac.uk/
 	arch = i686
 	arch = x86_64
