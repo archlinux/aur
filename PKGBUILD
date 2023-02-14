@@ -1,18 +1,18 @@
 # Maintainer: éclairevoyant
+
 _pkgname=pympv
-pkgname=python-$_pkgname
+pkgname="python-$_pkgname"
 pkgver=0.7.1
 pkgrel=1
-pkgdesc='A python wrapper for libmpv'
+pkgdesc='Python wrapper for libmpv'
 arch=('x86_64')
-url='https://github.com/marcan/pympv'
+url="https://github.com/marcan/$_pkgname"
 license=('GPL3')
 depends=('mpv' 'python')
 makedepends=('cython' 'python-setuptools')
-conflicts=('python-mpv' 'python-mpv-git' 'python-pympv-git')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/marcan/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-validpgpkeys=('86F34540412F345D65819BD58E60A76DDEF26276') # Hector Martin <marcan at marcan dot st>
-sha256sums=('1d262e7fb2531d27633bdc2334fbc1c3ce094457a6a8f3cfc1c6c9799c1ef202')
+conflicts=('python-mpv')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+b2sums=('57f9f0dbbf8d14714729642f0a646c0e9227134057b30c73c377c598c4c0b6e56147ec5a6ccc980e8b223775edd31072c2842f3d249a3698db5e83bbdc3f05ef')
 
 build() {
 	cd $_pkgname-$pkgver

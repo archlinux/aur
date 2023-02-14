@@ -1,5 +1,5 @@
 pkgbase = python-pympv
-	pkgdesc = A python wrapper for libmpv
+	pkgdesc = Python wrapper for libmpv
 	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/marcan/pympv
@@ -10,10 +10,7 @@ pkgbase = python-pympv
 	depends = mpv
 	depends = python
 	conflicts = python-mpv
-	conflicts = python-mpv-git
-	conflicts = python-pympv-git
 	source = python-pympv-0.7.1.tar.gz::https://github.com/marcan/pympv/archive/refs/tags/v0.7.1.tar.gz
-	validpgpkeys = 86F34540412F345D65819BD58E60A76DDEF26276
-	sha256sums = 1d262e7fb2531d27633bdc2334fbc1c3ce094457a6a8f3cfc1c6c9799c1ef202
+	b2sums = 57f9f0dbbf8d14714729642f0a646c0e9227134057b30c73c377c598c4c0b6e56147ec5a6ccc980e8b223775edd31072c2842f3d249a3698db5e83bbdc3f05ef
 
 pkgname = python-pympv
