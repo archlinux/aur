@@ -1,12 +1,12 @@
 pkgbase = instater
 	pkgdesc = An easy solution for system/dotfile configuration
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nayaverdier/instater
 	arch = any
 	license = MIT
 	makedepends = python-build
-	makedepends = python-install
+	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
