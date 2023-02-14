@@ -2,7 +2,7 @@
 
 _pkgname='moar'
 pkgname="${_pkgname}-git"
-pkgver=v1.11.4.r1.g053e354
+pkgver=1.11.4.r1.g053e354
 pkgrel=1
 pkgdesc='Drop-in replacement for the less pager'
 arch=('x86_64')
@@ -21,7 +21,7 @@ prepare() {
 }
 
 pkgver() {
-  git -C "${_pkgname}" describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C "${_pkgname}" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
