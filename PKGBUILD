@@ -1,8 +1,8 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=dfmderainbow
-pkgname="vapoursynth-plugin-${_plug}-git"
-pkgver=2.1.g61bafd9
+pkgname=vapoursynth-plugin-${_plug}-git
+pkgver=2.2.g44dc654
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -10,10 +10,10 @@ url="https://github.com/dubhater/vapoursynth-${_plug}"
 license=('GPL')
 depends=('vapoursynth-plugin-temporalmedian-git'
          'vapoursynth-plugin-temporalsoften2-git'
-         'vapoursynth-plugin-fluxsmooth-git'
+         'vapoursynth-plugin-fluxsmooth'
          'vapoursynth-plugin-msmoosh-git'
          'vapoursynth-plugin-minideen-git'
-         'vapoursynth-plugin-mvtools-git'
+         'vapoursynth-plugin-mvtools'
          'vapoursynth-plugin-fft3dfilter-git'
            )
 makedepends=('git')
