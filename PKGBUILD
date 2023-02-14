@@ -18,17 +18,13 @@ libmfx
 libpulse
 libva
 libvdpau
-libx11
-libxcb
-libxfixes
-libxrandr
-libxtst
 numactl
 openssl
 opus
 udev
 )
 makedepends=(
+patch
 git
 boost
 cmake
@@ -70,6 +66,10 @@ sha256sums=('SKIP'
 
 prepare() {
   cd Sunshine
+
+  # nox build fix
+  curl -q https://github.com/greyltc/Sunshine/commit/45f101d5f6f84816d7c4e2194939e2ead778b186.patch | patch -p1
+
   git rm -f third-party/ffmpeg-windows-x86_64
   git rm -f third-party/ffmpeg-macos-x86_64
   git rm -f third-party/ffmpeg-macos-aarch64
@@ -100,11 +100,10 @@ build() {
   export CFLAGS="${CFLAGS/-Werror=format-security/}"
   export CXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
 
-  # upstream bug means SUNSHINE_ENABLE_X11=0 doesn't work yet
   cmake -B build_dir -S Sunshine -W no-dev -G Ninja \
     -D CMAKE_BUILD_TYPE=None \
     -D SUNSHINE_ENABLE_CUDA=1 \
-    -D SUNSHINE_ENABLE_X11=1 \
+    -D SUNSHINE_ENABLE_X11=0 \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D SUNSHINE_EXECUTABLE_PATH=/usr/bin/sunshine \
     -D SUNSHINE_ASSETS_DIR="share/sunshine"
