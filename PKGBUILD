@@ -5,13 +5,13 @@
 
 _pkgname=phpunit
 pkgname=${_pkgname}
-pkgver=9.5.26
-pkgrel=2
+pkgver=10.0.7
+pkgrel=1
 pkgdesc="PHPUnit is a programmer-oriented testing framework for PHP."
 url="https://phpunit.de"
 arch=("any")
 license=("BSD")
-depends=("php>=7.0.0")
+depends=("php>=8.1.0")
 install="${_pkgname}.install"
 source=("https://phar.phpunit.de/phpunit-${pkgver}.phar"
         "https://phar.phpunit.de/phpunit-${pkgver}.phar.asc"
@@ -19,9 +19,9 @@ source=("https://phar.phpunit.de/phpunit-${pkgver}.phar"
 # To add the key use gpg
 #  gpg --keyserver pgp.uni-mainz.de --recv-keys 4AA394086372C20A
 validpgpkeys=('D8406D0D82947747293778314AA394086372C20A')
-sha256sums=('e36595f47bb81f244e03fc437328cfaa123e99ffd183c3217235926ff0978397'
+sha256sums=('0c63ad22fbf986db76a8ef60d9d436fcc08da44efd618b2cffaffd55e17399dc'
             'SKIP'
-            '8ac0ab7512c00e7d1afc208ec3a199a09182621bc2a537cf7d41b70a978fc05d')
+            '3f62dc64839f2fbf8aebfee011cdc34b66aaf403f2b43f5cf5803e242048688d')
 
 package() {
   install -D -m 644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
