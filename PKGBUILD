@@ -2,7 +2,7 @@
 DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 
 pkgname=pulse-secure
-pkgver=22.2r1.0_b1295
+pkgver=22.3r1.0_b18209
 pkgrel=1
 pkgdesc='Ivanti Secure Access Client'
 arch=(x86_64)
@@ -11,9 +11,9 @@ url='https://www.pulsesecure.net/'
 depends=(gcc-libs libgnome-keyring openssl curl dbus libbsd)
 install=${pkgname}.install
 source=(EULA.txt)
-source_x86_64=("https://webdev.web3.technion.ac.il/docs/cis/public/ssl-vpn/v.22.2R1.0/ps-pulse-linux-22.2r1.0-b1295-64bit-installer.rpm")
+source_x86_64=("https://gml.noaa.gov/aftp/pub/cornwall/VPN%20Client/old/ps-pulse-linux-22.3r1.0-b18209-64bit-installer.rpm")
 md5sums=('261848a28201e5386ec4bf587473a48b')
-md5sums_x86_64=('2f042fe88a17f8f0956a454d820d81df')
+md5sums_x86_64=('d9560c398dd1e7f2cf2d304a1e9d04f8')
 optdepends=('psmisc: for pulsesvc -K', 'gtkmm3: for pulseUi', 'webkit2gtk: for pulseUi')
 conflicts=(pulse-connect-secure)
 
@@ -41,6 +41,8 @@ package() {
     mkdir -p "$pkgdir"/var/lib/pulsesecure/pulse
     ln -s /opt/pulsesecure/resource/pulse.desktop "$pkgdir"/usr/share/applications/pulse.desktop
     ln -s /opt/pulsesecure/lib/JUNS/net.psecure.pulse.conf "$pkgdir"/usr/share/dbus-1/system.d/net.psecure.pulse.conf
+    mkdir -p "$pkgdir"/etc/pki/ca-trust/extracted/openssl
+    ln -sf /etc/ca-certificates/extracted/ca-bundle.trust.crt "$pkgdir"/etc/pki/ca-trust/extracted/openssl/ca-bundle.trust.crt
     for f in $(find opt/pulsesecure/lib/JUNS/interfaces -type l); do
         ln -s $(readlink $f) "$pkgdir"/"$f" ;
     done

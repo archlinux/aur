@@ -1,6 +1,6 @@
 pkgbase = pulse-secure
 	pkgdesc = Ivanti Secure Access Client
-	pkgver = 22.2r1.0_b1295
+	pkgver = 22.3r1.0_b18209
 	pkgrel = 1
 	url = https://www.pulsesecure.net/
 	install = pulse-secure.install
@@ -18,7 +18,7 @@ pkgbase = pulse-secure
 	conflicts = pulse-connect-secure
 	source = EULA.txt
 	md5sums = 261848a28201e5386ec4bf587473a48b
-	source_x86_64 = https://webdev.web3.technion.ac.il/docs/cis/public/ssl-vpn/v.22.2R1.0/ps-pulse-linux-22.2r1.0-b1295-64bit-installer.rpm
-	md5sums_x86_64 = 2f042fe88a17f8f0956a454d820d81df
+	source_x86_64 = https://gml.noaa.gov/aftp/pub/cornwall/VPN%20Client/old/ps-pulse-linux-22.3r1.0-b18209-64bit-installer.rpm
+	md5sums_x86_64 = d9560c398dd1e7f2cf2d304a1e9d04f8
 
 pkgname = pulse-secure
