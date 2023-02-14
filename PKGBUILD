@@ -3,12 +3,14 @@
 _plug=lc
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=1.1.g9cea098
-pkgrel=3
+pkgrel=4
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/MoePus/VapourSynth-LC'
 license=('GPL')
-depends=('vapoursynth')
+depends=('vapoursynth'
+         'libc++'
+         )
 makedepends=('git'
              'clang'
              )
