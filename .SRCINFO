@@ -13,8 +13,9 @@ pkgbase = double-down-git
 	makedepends = gcc-fortran
 	makedepends = eigen
 	depends = moab
+	depends = embree
 	provides = double-down-git
 	source = double-down-git::git+https://github.com/pshriwise/double-down.git
-	md5sums = c75cdd029fe8b4f2650c3eccefc3d6d5
+	md5sums = 65e054e1d32c79a80222d2398876cb4b
 
 pkgname = double-down-git
