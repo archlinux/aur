@@ -6,7 +6,7 @@
 
 pkgname=chirp-next
 pkgver=20230214
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI tool for programming ham radios, built from daily build"
 arch=('any')
 url="https://chirp.danplanet.com"
@@ -17,9 +17,9 @@ options=(!emptydirs)
 conflicts=('chirp' 'chirp-daily')
 provides=(chirp)
 install=$pkgname.install
-source=("${pkgname}-${pkgver}.tar.gz::https://trac.chirp.danplanet.com/chirp_next/next-$pkgver/chirp-$pkgver.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://trac.chirp.danplanet.com/chirp_next/next-$pkgver/chirp-$pkgver.tar.gz" "https://trac.chirp.danplanet.com/chirp_next/next-${pkgver}/chirp-next-${pkgver}-win32.zip")
 # Checksum: https://trac.chirp.danplanet.com/chirp_next/next-$pkgver/SHA1SUM
-sha1sums=('4c30b18d39af9b2776c0fb6fe34c49255f3ed1c8')
+sha1sums=('4c30b18d39af9b2776c0fb6fe34c49255f3ed1c8' '581129a7cc1fedff54092c8b5fc275b3ccb5c30d')
 
 build() {
   cd "chirp-$pkgver"
@@ -32,4 +32,5 @@ package() {
   install -D -m644 "${srcdir}/chirp-${pkgver}/chirp/share/chirpw.1" "${pkgdir}/usr/share/man/man1/chirpw.1"
   install -D -m644 "${srcdir}/chirp-${pkgver}/chirp/share/chirp.desktop" "${pkgdir}/usr/share/applications/chirp.desktop"
   install -D -m644 "${srcdir}/chirp-${pkgver}/chirp/share/chirp.png" "${pkgdir}/usr/share/pixmaps/chirp.png"
+  cp -dr --preserve=mode,timestamp "${srcdir}/chirp/locale/" "${pkgdir}/usr/lib/python3.10/site-packages/chirp/locale"
 }
