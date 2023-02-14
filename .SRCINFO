@@ -1,0 +1,20 @@
+pkgbase = double-down-git
+	pkgdesc = double-down: A double precision interface to Embree
+	pkgver = v1.0.0.r8.g74ab1f9
+	pkgrel = 1
+	url = https://github.com/pshriwise/double-down
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python
+	makedepends = cmake
+	makedepends = binutils
+	makedepends = make
+	makedepends = gcc-fortran
+	makedepends = eigen
+	depends = moab
+	provides = double-down-git
+	source = double-down-git::git+https://github.com/pshriwise/double-down.git
+	md5sums = c75cdd029fe8b4f2650c3eccefc3d6d5
+
+pkgname = double-down-git
