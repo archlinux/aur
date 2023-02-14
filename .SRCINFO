@@ -1,0 +1,16 @@
+pkgbase = supermemo18.05-git
+	pkgdesc = A program that makes learning fun and easy.
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://supermemopedia.com/wiki/Main_Page
+	arch = x86_64
+	license = proprietary
+	options = !strip
+	source = git+https://github.com/Zacharia2/SuperMemo18-ON-Wine.git
+	source = git+https://github.com/L-M-Sherlock/sm18-lazy-package.git
+	source = https://github.com/Hackerl/Wine_Appimage/releases/download/v3.0/Wine-x86_64-ubuntu.latest.AppImage
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = 4b632d356ea230f439ae6df6c858ec33b96d9c28141b336fc8bab06f883a0e8594d8856330936787220f43a9b81b70d8b99bdde5d04dd8ec1b0d9eff96a4fbf7
+
+pkgname = supermemo18.05-git
