@@ -1,4 +1,4 @@
-# Maintainer: ambition-echo <ambition_echo@outlook.com>
+# Maintainer: Pylogmon <pylogmon@outlook.com>
 
 pkgname=clash-verge-bin
 _pkgname=clash-verge
