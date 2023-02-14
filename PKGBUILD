@@ -1,7 +1,7 @@
 # Maintainer: Tareque Md Hanif <tarequemd dot hanif at yahoo dot com>
 
 pkgname=laravel-kit
-pkgver=2.0.7
+pkgver=2.0.8
 pkgrel=1
 pkgdesc='Laravel Kit - A desktop Laravel admin panel app'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('yarn')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         laravel-kit
         laravel-kit.desktop)
-sha256sums=('ea1dd81bb9cc42fb24399107f35f018479187d4ca1eaf7ecdb647c213c11d2b8'
+sha256sums=('e9372e311c9df3ffb4f49afb8437774c09e3c0de91a385cdfeea357720365226'
             'e8520282f50069bb016fbc3f655acba09601719fe81ab093dcddea52ff64ac43'
             'e90daafe30277cf296083260c0df0f46e9fb162e5b38ac861aaa20e1ec115552')
 
