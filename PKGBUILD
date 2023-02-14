@@ -9,7 +9,7 @@
 
 pkgname=ffmpeg-v4l2-request-git
 _srcname=FFmpeg
-pkgver=4.4.1.r204003
+pkgver=5.1.2.r322505
 pkgrel=1
 epoch=2
 pkgdesc='FFmpeg with v4l2-request and drmprime'
@@ -92,15 +92,15 @@ sha256sums=(
   SKIP
 )
 
-_version='4.4.1'
-_branch1='v4l2-request-hwaccel-'$_version'-Nexus-Alpha1'
-_branch2='v4l2-drmprime-v6-'$_version'-Nexus-Alpha1'
-_branch3=''
+#_version='4.4.1'
+#_branch1='v4l2-request-hwaccel-'$_version'-Nexus-Alpha1'
+#_branch2='v4l2-drmprime-v6-'$_version'-Nexus-Alpha1'
+#_branch3=''
 
-# _version='5.1.2'
-# _branch1='v4l2-request-n'$_version
-# _branch2='v4l2-drmprime-n'$_version
-# _branch3='vf-deinterlace-v4l2m2m-n'$_version
+ _version='5.1.2'
+ _branch1='v4l2-request-n'$_version
+ _branch2='v4l2-drmprime-n'$_version
+ _branch3='vf-deinterlace-v4l2m2m-n'$_version
 
 prepare() {
   cd ${_srcname}

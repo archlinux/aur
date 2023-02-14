@@ -1,6 +1,6 @@
 pkgbase = ffmpeg-v4l2-request-git
 	pkgdesc = FFmpeg with v4l2-request and drmprime
-	pkgver = 4.4.1.r204003
+	pkgver = 5.1.2.r322505
 	pkgrel = 1
 	epoch = 2
 	url = https://ffmpeg.org/
