@@ -1,8 +1,8 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=astdr
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=3.1.g29c34ac
+pkgver=4.0.g9cd2154
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -10,14 +10,14 @@ url="https://github.com/dubhater/vapoursynth-${_plug}"
 license=('GPL')
 depends=('vapoursynth-plugin-awarpsharp2-git'
          'vapoursynth-plugin-decross-git'
-         'vapoursynth-plugin-fluxsmooth-git'
+         'vapoursynth-plugin-fluxsmooth'
          'vapoursynth-plugin-hqdn3d-git'
          'vapoursynth-plugin-temporalsoften2-git'
          'vapoursynth-plugin-fft3dfilter-git'
          'vapoursynth-plugin-motionmask-git'
          'vapoursynth-plugin-adjust-git'
          )
-optdepends=('vapoursynth-plugin-mvtools-git'
+optdepends=('vapoursynth-plugin-mvtools'
             'vapoursynth-plugin-ctmf-git'
             )
 makedepends=('git')
