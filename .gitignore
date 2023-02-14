@@ -4,3 +4,4 @@
 *.zip
 /src
 /pkg
+/*.log
