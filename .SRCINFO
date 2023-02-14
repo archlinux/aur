@@ -1,6 +1,6 @@
 pkgbase = python-tmdbv3api
 	pkgdesc = A lightweight Python library for The Movie Database (TMDb) API.
-	pkgver = 1.5.1
+	pkgver = 1.7.7
 	pkgrel = 0
 	url = https://pypi.org/project/tmdbv3api
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = python-tmdbv3api
 	depends = python-idna
 	depends = python-requests
 	depends = python-urllib3
-	source = https://pypi.python.org/packages/source/t/tmdbv3api/tmdbv3api-1.5.1.tar.gz
-	sha256sums = 1ecf28212e1f0d46cfeed0ea1e7668c7186033f82449b50b0756524d324ece31
+	source = https://pypi.python.org/packages/source/t/tmdbv3api/tmdbv3api-1.7.7.tar.gz
+	sha256sums = 95c8987e9e0d3b0b0263e3f3c1cb6e594eecf2627564830123652b18f7b64469
 
 pkgname = python-tmdbv3api
-
