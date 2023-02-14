@@ -1,6 +1,6 @@
 pkgbase = coolercontrol
 	pkgdesc = A program to monitor and control your cooling devices
-	pkgver = 0.14.3
+	pkgver = 0.14.4
 	pkgrel = 1
 	url = https://gitlab.com/coolercontrol/coolercontrol
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = coolercontrol
 	checkdepends = appstream-glib
 	checkdepends = desktop-file-utils
 	makedepends = python-build
+	makedepends = python-wheel
 	makedepends = python-installer
 	makedepends = python-poetry
 	makedepends = cargo
@@ -31,7 +32,7 @@ pkgbase = coolercontrol
 	provides = coolercontrol
 	conflicts = coolercontrol
 	conflicts = coolero
-	source = https://gitlab.com/coolercontrol/coolercontrol/-/archive/0.14.3/coolercontrol-0.14.3.tar.gz
-	sha256sums = 79dace2d5fa25b10338cb633fed5d03154c8a85d05bebada69cebb8a76a29fcf
+	source = https://gitlab.com/coolercontrol/coolercontrol/-/archive/0.14.4/coolercontrol-0.14.4.tar.gz
+	sha256sums = d060c81aadbaa5977e17acaa00d5d9e334c92973952b63b29d2065d0522a2f55
 
 pkgname = coolercontrol

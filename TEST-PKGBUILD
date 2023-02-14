@@ -2,7 +2,8 @@
 
 pkgname=coolercontrol
 _app_id="org.$pkgname.CoolerControl"
-pkgver=0.14.4
+pkgver=0.14.3
+branch="92-error-communicating-with-nvidia-setti"
 pkgrel=1
 pkgdesc="A program to monitor and control your cooling devices"
 arch=('any')
@@ -10,48 +11,50 @@ url="https://gitlab.com/coolercontrol/coolercontrol"
 license=('GPL3')
 depends=('hicolor-icon-theme' 'polkit' 'python' 'liquidctl' 'pyside6' 'qt6-svg' 'python-apscheduler'
          'python-matplotlib' 'python-numpy' 'python-setproctitle' 'python-jeepney' 'python-requests'
-         'python-fastapi' 'uvicorn' 'python-orjson' 'python-dataclass-wizard')
+         'python-fastapi' 'uvicorn' 'python-orjson' 'python-dataclass-wizard'
+         'openssl')
 makedepends=('python-build' 'python-wheel' 'python-installer' 'python-poetry' 'cargo')
 checkdepends=('appstream-glib' 'desktop-file-utils')
 optdepends=('nvidia-utils: NVIDIA GPU support')
 provides=("$pkgname")
 conflicts=("$pkgname" coolero)
-source=("https://gitlab.com/coolercontrol/coolercontrol/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('d060c81aadbaa5977e17acaa00d5d9e334c92973952b63b29d2065d0522a2f55')
+#source=("https://gitlab.com/coolercontrol/coolercontrol/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+source=("https://gitlab.com/coolercontrol/coolercontrol/-/archive/$branch/$pkgname-$branch.tar.gz")
+#sha256sums=('580d787b4bb174bb073f06d8f362f50ad5ece8d236094d0b5b77949912b6f878')
 
 build() {
-  cd "${srcdir}/$pkgname-$pkgver/coolercontrol-gui"
+  cd "${srcdir}/$pkgname-$branch/coolercontrol-gui"
   python -m build --wheel --no-isolation
-  cd "${srcdir}/$pkgname-$pkgver/coolercontrol-liqctld"
+  cd "${srcdir}/$pkgname-$branch/coolercontrol-liqctld"
   python -m build --wheel --no-isolation
-  cd "${srcdir}/$pkgname-$pkgver/coolercontrold"
+  cd "${srcdir}/$pkgname-$branch/coolercontrold"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --release --locked
 }
 
 check() {
-  cd "${srcdir}/$pkgname-$pkgver"
+  cd "${srcdir}/$pkgname-$branch"
   desktop-file-validate "packaging/metadata/$_app_id.desktop"
   appstream-util validate-relax "packaging/metadata/$_app_id.metainfo.xml"
-  cd "${srcdir}/$pkgname-$pkgver/coolercontrol-gui"
+  cd "${srcdir}/$pkgname-$branch/coolercontrol-gui"
   python -m coolercontrol -v
-  cd "${srcdir}/$pkgname-$pkgver/coolercontrol-liqctld"
+  cd "${srcdir}/$pkgname-$branch/coolercontrol-liqctld"
   python -m coolercontrol-liqctld -v
-  cd "${srcdir}/$pkgname-$pkgver/coolercontrold"
+  cd "${srcdir}/$pkgname-$branch/coolercontrold"
   export RUSTUP_TOOLCHAIN=stable
   cargo test --release --locked
 }
 
 package() {
-  cd "${srcdir}/$pkgname-$pkgver/coolercontrol-gui"
+  cd "${srcdir}/$pkgname-$branch/coolercontrol-gui"
   python -m installer --destdir="$pkgdir" dist/*.whl
-  cd "${srcdir}/$pkgname-$pkgver/coolercontrol-liqctld"
+  cd "${srcdir}/$pkgname-$branch/coolercontrol-liqctld"
   python -m installer --destdir="$pkgdir" dist/*.whl
-  cd "${srcdir}/$pkgname-$pkgver/coolercontrold"
+  cd "${srcdir}/$pkgname-$branch/coolercontrold"
   install -Dm755 "target/release/coolercontrold" -t "$pkgdir/usr/bin"
 
-  cd "${srcdir}/$pkgname-$pkgver"
+  cd "${srcdir}/$pkgname-$branch"
   # systemd service files
   install -Dm644 "packaging/systemd/${pkgname}d.service" -t "$pkgdir/usr/lib/systemd/system/"
   install -Dm644 "packaging/systemd/${pkgname}-liqctld.service" -t "$pkgdir/usr/lib/systemd/system/"
