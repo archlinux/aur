@@ -3,7 +3,7 @@ pkgname=moab
 pkgver=5.3.1
 pkgrel=1
 pkgdesc="The Mesh-Oriented datABase MOAB is a component for representing and evaluating mesh data"
-arch=('any')
+arch=('x86_64')
 url="https://bitbucket.org/fathomteam/moab"
 license=('GPL3')
 
