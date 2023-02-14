@@ -1,6 +1,6 @@
 pkgbase = libdovi-git
-	pkgdesc = Library to read and write Dolby Vision metadata (C-API)
-	pkgver = 3.0.0.r0.gf2683ac
+	pkgdesc = Library to read and write Dolby Vision metadata (C-API) - git version
+	pkgver = 3.1.1.r0.geb8a664
 	pkgrel = 1
 	url = https://github.com/quietvoid/dovi_tool/tree/main/dolby_vision
 	arch = any
