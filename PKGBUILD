@@ -1,41 +1,49 @@
-# Maintainer: Filip Graliński <filipg@amu.edu.pl>
+# Contributor: Filip Graliński <filipg@amu.edu.pl>
 
 pkgname=python-transformers
-pkgver=4.25.1
+pkgver=4.26.1
 pkgrel=1
 pkgdesc="State-of-the-art Natural Language Processing for Jax, PyTorch and TensorFlow"
-arch=('i686' 'x86_64')
-url="https://pypi.org/project/transformers"
-license=('Apache License 2.0')
-depends=('python-filelock'
-         'python-tokenizers'
-         'python-huggingface-hub'
-         'python-numpy'
-         'python-packaging'
-         'python-yaml'
-         'python-regex'
-         'python-requests'
-         'python-tqdm')
+arch=('any')
+_url='https://pypi.org/project/transformers'
+url='https://github.com/huggingface/transformers'
+license=('Apache')
+depends=(
+  'python-beautifulsoup4'
+  'python-huggingface-hub'
+  'python-more-itertools'
+  'python-msgpack'
+  'python-numpy'
+  'python-psutil'
+  'python-pydantic'
+  'python-regex'
+  'python-tokenizers'
+)
 optdepends=(
-       'python-pytorch: PyTorch support'
-       'python-tensorflow: TensorFlow support'
-       'python-onnxconverter-common: TensorFlow support'
-       'python-tf2onn: TensorFlow support'
-       'python-jax: JAX support'
-       'python-jaxlib: JAX support'
-       'python-flax: JAX support'
-       'python-optax: JAX support'
+  'python-flax: JAX support'
+  'python-jax: JAX support'
+  'python-jaxlib: JAX support'
+  'python-onnxconverter-common: TensorFlow support'
+  'python-optax: JAX support'
+  'python-pytorch: PyTorch support'
+  'python-tensorflow: TensorFlow support'
+  'python-tf2onn: TensorFlow support'
+)
+makedepends=('python-setuptools')
+
+source=(
+  "python-transformers-$pkgver.tar.gz"::"https://github.com/huggingface/transformers/archive/refs/tags/v$pkgver.tar.gz"
+)
+sha256sums=(
+  '4423aa7afb1aa5de56517097331096a8e2ea8e52023b8bc89bc5c19517a3e89e'
 )
 
-source=("https://github.com/huggingface/transformers/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d3ee551c133bac19ea76cbed4a860d875bed4a08e080b85be2e1eb38f874ee17')
-
 build() {
-    cd transformers-$pkgver
-    python setup.py build
+  cd "transformers-$pkgver"
+  python setup.py build
 }
 
 package() {
-    cd transformers-$pkgver
-    python setup.py install --root="$pkgdir" --optimize=1
+  cd "transformers-$pkgver"
+  python setup.py install --root="$pkgdir" --optimize=1
 }
