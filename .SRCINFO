@@ -1,7 +1,7 @@
 pkgbase = purevpn-gui
 	pkgdesc = PureVPN Linux Application (GUI)
 	pkgver = 2.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.purevpn.com/download/linux-vpn
 	install = purevpn-gui.install
 	arch = x86_64
