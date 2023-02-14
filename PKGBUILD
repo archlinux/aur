@@ -8,7 +8,9 @@ pkgdesc="Plugin for Avisynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/Asd-g/AviSynth-VMAF'
 license=('GPL')
-depends=('libavisynth.so')
+depends=('libavisynth.so'
+         'libvmaf'
+         )
 makedepends=('git'
              'cmake'
              'avisynthplus'
