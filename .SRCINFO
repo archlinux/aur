@@ -29,6 +29,6 @@ pkgbase = openmc-git
 	provides = openmc-git
 	conflicts = openmc-git
 	source = openmc-git::git+https://github.com/openmc-dev/openmc.git
-	md5sums = b1d793bbb7d0568c8d2e86b867dd12df
+	md5sums = SKIP
 
 pkgname = openmc-git

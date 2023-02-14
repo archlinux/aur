@@ -14,7 +14,7 @@ pkgver() {
   cd "$pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-md5sums=('b1d793bbb7d0568c8d2e86b867dd12df')
+md5sums=('SKIP')
 
 depends=(
 	python-lxml
