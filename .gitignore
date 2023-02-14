@@ -1,0 +1,6 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!0001-Fix-build-failure-missing-include-of-optional.patch
+!pkgfile.install

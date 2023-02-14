@@ -1,0 +1,32 @@
+From ebd4011c0f931935ed592f0ffe64364e4deb05f8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C5=A0t=C4=9Bp=C3=A1n=20N=C4=9Bmec?= <stepnem@gmail.com>
+Date: Thu, 18 Aug 2022 12:07:44 +0200
+Subject: [PATCH] Fix build failure (missing include of <optional>)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+E.g.:
+../src/pkgfile.hh:76:8: error: ‘optional’ in namespace ‘std’ does not name a template type
+   76 |   std::optional<pkgfile::Result> ProcessRepo(const std::filesystem::path repo,
+      |        ^~~~~~~~
+../src/pkgfile.hh:9:1: note: ‘std::optional’ is defined in header ‘<optional>’; did you forget to ‘#include <optional>’?
+---
+ src/pkgfile.hh | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/pkgfile.hh b/src/pkgfile.hh
+index 8ef6781..23d6f9a 100644
+--- a/src/pkgfile.hh
++++ b/src/pkgfile.hh
+@@ -2,6 +2,7 @@
+ 
+ #include <filesystem>
+ #include <map>
++#include <optional>
+ 
+ #include "archive_reader.hh"
+ #include "filter.hh"
+-- 
+2.39.1
+

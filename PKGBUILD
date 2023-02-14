@@ -1,44 +1,47 @@
-# Contributor: Dave Reisner <d@falconindy.com>
+# Maintainer: éclairevoyant
+# Contributor: Dave Reisner <d at falconindy dot com>
 
-pkgname=pkgfile-git
-pkgver=21.38.gaa06367
+_pkgname=pkgfile
+pkgname="$_pkgname-git"
+pkgver=21.52.g9c45690
 pkgrel=1
 pkgdesc="a pacman .files metadata explorer"
 arch=('x86_64' 'i686')
-url="http://github.com/falconindy/pkgfile"
+url="https://github.com/falconindy/$_pkgname"
 license=('MIT')
-depends=('libarchive' 'curl' 'pcre' 'pacman' 'systemd-libs')
-makedepends=('git' 'perl' 'meson')
-checkdepends=('python' 'gtest' 'gmock')
-conflicts=('pkgfile')
-provides=('pkgfile')
-install=pkgfile.install
-source=("git+https://github.com/falconindy/pkgfile")
-md5sums=('SKIP')
+depends=('curl' 'libarchive' 'pacman' 'pcre' 'systemd-libs')
+makedepends=('git' 'meson' 'perl')
+checkdepends=('gmock' 'gtest' 'python')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+install="$_pkgname.install"
+source=("git+$url.git"
+        0001-Fix-build-failure-missing-include-of-optional.patch)
+b2sums=('SKIP'
+        'eb2bc196cbd1c084ed81c4664bbffa2c57f5aa743a9928347003ed062479bb78cc9bfed6fd9346067f0e2fae062d9707f90662a70a93d6d6b9706380339c2f75')
 
 pkgver() {
-  cd pkgfile
+	cd $_pkgname
+	git describe | sed 's/^v//;s/-/./g'
+}
 
-  git describe | sed 's/^v//;s/-/./g'
+prepare() {
+	cd $_pkgname
+	patch -Np1 -i ../0001-Fix-build-failure-missing-include-of-optional.patch
 }
 
 build() {
-  cd pkgfile
-
-  arch-meson build
-  ninja -C build
+	cd $_pkgname
+	arch-meson build
+	ninja -C build
 }
 
 check() {
-  cd pkgfile
-
-  meson test -C build
+	cd $_pkgname
+	meson test -C build
 }
 
 package() {
-  cd pkgfile
-
-  DESTDIR="$pkgdir" ninja -C build install
+	cd $_pkgname
+	DESTDIR="$pkgdir" ninja -C build install
 }
-
-# vim: ft=sh syn=sh et
