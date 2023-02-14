@@ -2,8 +2,8 @@
 
 pkgname=morewaita
 _reponame=MoreWaita
-pkgver=43.2
-_commit=c7de6e8e2fa6569633fc1b1cb00cb7ea1082fe23 # tag/v43.2
+pkgver=43.3
+_commit=32b3de8b86864d5380924534413227ad51081c92 # tag/v43.3
 pkgrel=1
 pkgdesc='An Adwaita style extra icons theme for Gnome Shell.'
 arch=(any)
