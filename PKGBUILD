@@ -3,7 +3,7 @@
 
 pkgname=memsource-editor
 _pkg=Phrase
-pkgver=23.5.0
+pkgver=23.10.0
 pkgrel=1
 pkgdesc="A CAT translation tool, requires Phrase subscription"
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=("https://download.memsource.com/production/updates/memsource-editor/linu
         "memsource"
         "license.desktop")
 
-sha256sums=('4114cc7b62ec26059f9f529c477f3369d13d4150a954f6a9181bf4c3649deae6'
+sha256sums=('05449cd5547250502e21f6129357c9ad54811c8084adb4a1ef61b7cc59347739'
             'bc4baa1a91cfa2778972d760e2708fed1ab736838c3b118669f47a5360c7f65c'
             '8a40f0172dc948dfadec126b5ab9a4f983216034aa8fbf19a41b9466e6253866'
             '4802b77ffefd2cdd7526fec28a690f8dc560fef74501806b3485648dcac830fe'
