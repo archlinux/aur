@@ -1,8 +1,8 @@
 pkgbase = xfstk-dldr
 	pkgdesc = Update Intel SoC firmware over USB using the DNX protocol
-	pkgver = 1.8.1
-	pkgrel = 1
-	url = http://sourceforge.net/projects/xfstk/
+	pkgver = 1.8.6
+	pkgrel = 3
+	url = https://github.com/edison-fw/xFSTK
 	arch = i686
 	arch = x86_64
 	license = LGPL
@@ -16,8 +16,7 @@ pkgbase = xfstk-dldr
 	provides = xfstk-dldr-gui
 	conflicts = xfstk-dldr
 	conflicts = xfstk-dldr-gui
-	source = http://sourceforge.net/projects/xfstk/files/xfstk-dldr-linux-source-1.8.1.tar.gz
-	md5sums = c076b3bbbe9907ef2eb7958e17b152bd
+	source = git+https://github.com/edison-fw/xFSTK#tag=v1.8.6
+	sha256sums = SKIP
 
 pkgname = xfstk-dldr
-
