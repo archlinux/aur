@@ -2,7 +2,11 @@
 
 set -euo pipefail
 
-pkgver="$(curl -fsSL https://api.github.com/repos/zebradil/cloudflare-dynamic-dns/releases/latest | jq -r '.tag_name')"
+pkgver="$(curl \
+  -fsSL \
+  https://api.github.com/repos/zebradil/cloudflare-dynamic-dns/releases/latest \
+  --header "Authorization: Bearer $GITHUB_TOKEN" \
+  | jq -r '.tag_name')"
 
 cat <<EOF
 # Maintainer: German Lashevich <german.lashevich@gmail.com>
