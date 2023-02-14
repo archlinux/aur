@@ -1,0 +1,16 @@
+pkgbase = commits
+	pkgdesc = A tool to make patterned (conventional) commit messages
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://gitub.com/alt-art/commit
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = git
+	source = commits-0.4.1.tar.gz::https://github.com/alt-art/commit/archive/refs/tags/0.4.1.tar.gz
+	sha256sums = 8685f0cd187980f980a7b6f26613bf32983e180eede1e0de09ef5e168b768328
+
+pkgname = commits
