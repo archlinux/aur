@@ -20,9 +20,8 @@ makedepends=(
 	python-wheel
 )
 
-provides=("CAD_to_OpenMC-${pkgver}")
-
 _name="CAD_to_OpenMC"
+provides=("${_name%-pkgver}")
 source=("git+https://github.com/openmsr/CAD_to_OpenMC.git")
 md5sums=('SKIP')
 
