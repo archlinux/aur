@@ -1,10 +1,10 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
-# Maintainer: ValHue <vhuelamo at gmail dot com>
+# Contributor: ValHue <vhuelamo at gmail dot com>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Daniel Isenmann <daniel@archlinux.org>
 pkgname="python2-gimp"
 _pkgname="gimp"
-pkgver="2.10.30"
+pkgver="2.10.32"
 pkgrel="1"
 pkgdesc='Python 2 plugins support for GIMP'
 url='https://www.gimp.org/'
@@ -13,7 +13,7 @@ license=('LGPL')
 depends=('gimp' 'pygtk')
 makedepends=('gtk-doc' 'intltool' 'autoconf')
 source=("https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
-sha512sums=('02ca9e8846dc2ae856f720b92f3c6af69984cf0b3ce85ba5a67479e5c3c813315a0551b7d011dcf7a6c83dc771e550cc31041126bbea0be3fd483176e0eb2851')
+sha512sums=('aa999c1ec388154965f84d995a9b5517e9c38608d03a0d0bb6ec9fa55de946f9da106e7d6f7c02052b61d2b6806e7a378e786539f0de5b5ffaa2fcd1bbd9c7f1')
 
 
 
