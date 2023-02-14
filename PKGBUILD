@@ -19,7 +19,7 @@ makedepends=(
 	make
 	gcc-fortran
 	eigen
-        Doxygen
+        doxygen
 )
 
 
