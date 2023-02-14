@@ -1,6 +1,6 @@
 pkgbase = discord-electron-bin
 	pkgdesc = Discord using system provided electron (v13) for increased security and performance
-	pkgver = 0.0.24
+	pkgver = 0.0.25
 	pkgrel = 1
 	url = https://discord.com
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = discord-electron-bin
 	provides = discord
 	conflicts = discord
 	options = !strip
-	source = https://dl.discordapp.net/apps/linux/0.0.24/discord-0.0.24.tar.gz
-	sha512sums = 9e1aa15bc1b1d8ebd2819ba88e7c012c47966d7f150264e732c849d4f15023729f8de4e5a5eb999603fa6102a02313dbf7d178b33cfacca58018dcd214ed4e40
+	source = https://dl.discordapp.net/apps/linux/0.0.25/discord-0.0.25.tar.gz
+	sha512sums = 21a3e6dff2fd33fe0cd5b1c9c340cbeebc6fd214d9f0be8c05ac9faad2f287d17726bd45bebb4ecebe90533da20f501ad1156ac8097318d7545f78811ebe1224
 
 pkgname = discord-electron-bin
