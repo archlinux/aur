@@ -2,7 +2,7 @@
 
 pkgname=commits
 _pkgname=commit
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A tool to make patterned (conventional) commit messages"
 arch=('x86_64' 'i686')
