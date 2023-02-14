@@ -1,6 +1,6 @@
 # Maintainer: German Lashevich <german.lashevich@gmail.com>
 
-pkgver=0.3.2
+pkgver=0.4.0
 
 _binname=totp
 
@@ -15,7 +15,7 @@ license=('MIT')
 # depends=('libx11' 'libxkbfile')
 makedepends=('rust' 'cargo')
 source=("${pkgname}-${pkgver}::https://github.com/zebradil/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('6bbbcc20608ff1bf22cb38bc50e6e9f7c3b5883d0b898293f95478e2d3941868')
+sha256sums=('929eee7e8b3c7a8abfb4fb5aef70743ba6073feb288b0f508d1f6f078d95b0a9')
 
 build() {
   cd "${pkgname}-${pkgver}"
