@@ -4,18 +4,19 @@
 _pkgname=idris2
 pkgname=$_pkgname-git
 pkgver=latest
-pkgrel=1
-epoch=1  # HACK: remove when adding to AUR
+pkgrel=2
 pkgdesc='A purely functional programming language with first class types'
 url='https://www.idris-lang.org/'
 license=('custom')
 arch=('x86_64')
 depends=('chez-scheme')
 makedepends=('git')
+checkdepends=('nodejs' 'racket')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+https://github.com/idris-lang/${_pkgname^}.git")
 sha256sums=('SKIP')
+options=(staticlibs)
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
@@ -55,6 +56,7 @@ check() {
 }
 
 package() {
+	options=(staticlibs)
 	cd "$srcdir/$_pkgname"
 
 	export MAKEFLAGS+=' -j1 '
@@ -68,7 +70,8 @@ package() {
 
 	make install
 	make install-libdocs
-	make install-api
+	make install-with-src-libs
+	make install-with-src-api
 
 	mkdir -p "$pkgdir/usr/bin"
 	mv "$pkgdir/usr/lib/bin/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
@@ -77,13 +80,6 @@ package() {
 	mv "$pkgdir/usr/lib/bin/${_pkgname}_app" \
 		"$pkgdir/usr/lib/${_pkgname}_app"
 	rmdir "$pkgdir/usr/lib/bin"
-
-	mv "$pkgdir/usr/lib/lib/"* "$pkgdir/usr/lib/"
-	rmdir "$pkgdir/usr/lib/lib"
-
-	rm "$pkgdir/usr/lib/libidris2_support.so"
-	install "support/c/libidris2_support.a" \
-		"$pkgdir/usr/lib/$_pkgname-"*"/lib"
 
 	install -Dm644 <(idris2 --bash-completion-script idris2) \
 		"$pkgdir/usr/share/bash-completion/completions/$_pkgname"
