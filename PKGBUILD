@@ -10,14 +10,14 @@ pkgname=(
 
 # Follow handbrakes most current stable branch 1.6.x
 # https://github.com/HandBrake/HandBrake/commits/1.6.x
-readonly _commit=3f3b7e7a2e1ff2c5f7605e06a01a8744c427e732
+readonly _commit=854df8231fc3cd42200f172972a658b8edcac93b
 
 pkgver() {
   git -C HandBrake/ gc --auto --prune=now
   git -C HandBrake/ describe ${_commit} | sed -e 's/^v//g' -e 's/-/.r/' -e 's/-/./'
 }
 
-pkgver=1.6.1.r8.g3f3b7e7a2
+pkgver=1.6.1.r15.g854df8231
 pkgrel=1
 arch=('x86_64')
 url="https://handbrake.fr/"
@@ -59,12 +59,11 @@ _guideps=(
   'pango'
 )
 makedepends=(
+  'base-devel'
   'intltool'
   'python'
   'nasm'
   'wget'
-  'automake'
-  'autoconf'
   'cmake'
   'meson'
   'git'
@@ -84,7 +83,7 @@ prepare() {
   :
 }
 
-setup_llvm() {
+setup_compiler() {
   export CC="/usr/bin/clang"
   unset CFLAGS
   export CXX="/usr/bin/clang++"
@@ -103,7 +102,7 @@ setup_llvm() {
 }
 
 build() {
-  setup_llvm
+  setup_compiler
 
   cd "${srcdir}/HandBrake"
   ./configure \
