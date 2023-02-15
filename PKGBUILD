@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Tom Manion atypicalmail at protonmail d0t com
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Andrew Rabert <draje@nullsum.net>
 
