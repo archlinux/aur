@@ -1,19 +1,19 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 # Contributor: Yufan You <ouuansteve at gmail>
 
-_name=volar
+_name=language-tools
 pkgname=vue-language-server
-pkgver=1.0.24
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Fast Vue Language Support Extension'
 arch=('any')
-url=https://github.com/johnsoncodehk/volar/tree/master/vue-language-tools/vue-language-server
+url=https://github.com/vuejs/language-tools/tree/master/packages/vue-language-server
 license=('MIT')
 depends=('nodejs')
 makedepends=('npm' 'pnpm' 'typescript')
 optdepends=('typescript: for use in typescript.tsdk')
-source=("https://github.com/johnsoncodehk/$_name/archive/v$pkgver/$_name-$pkgver.tar.gz")
-b2sums=('a5ef37882b58424cefdd851fc8dba266b8465a6cc9bd0ebd3cbde8da703767218d0f0b1dc2f97f54f04f0c395f7394562d08ff7b7d4f85c3fcca1d88af38afa9')
+source=("https://github.com/vuejs/language-tools/archive/v$pkgver/vuejs_$_name-$pkgver.tar.gz")
+b2sums=('bc3280fee559fd4d3cab374f0f13648f74ab7ffc4ec9d5d80b10d14fa60271eaec0e5a06d7457bb98b677f9429982831c607d180e38beda0fbe519351c863fbc')
 
 prepare() {
   cd $_name-$pkgver
@@ -31,8 +31,8 @@ check() {
 }
 
 package() {
-  cd $_name-$pkgver/vue-language-tools/$pkgname
-  local _npmdir=/usr/lib/node_modules/@$_name/$pkgname
+  cd $_name-$pkgver/packages/$pkgname
+  local _npmdir=/usr/lib/node_modules/@volar/$pkgname
   install -d "$pkgdir"{/usr/bin,"$_npmdir"}
   ln -s "$_npmdir"/bin/$pkgname.js "$pkgdir"/usr/bin/$pkgname
 
