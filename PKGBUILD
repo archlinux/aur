@@ -1,5 +1,5 @@
 pkgname="ata"
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Ask the Terminal Anything"
 arch=('x86_64')
