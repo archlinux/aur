@@ -9,7 +9,7 @@ arch=('any')
 url='https://gist.github.com/4re'
 license=('GPL')
 depends=('vapoursynth-plugin-tcanny-git'
-         'vapoursynth-plugin-mvtools-git'
+         'vapoursynth-plugin-mvtools'
          )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
