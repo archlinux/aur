@@ -8,6 +8,7 @@ pkgver=110.0.5481.77
 pkgrel=2
 _launcher_ver=8
 _gcc_patchset=4
+_manual_clone=0
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
@@ -41,6 +42,11 @@ sha256sums=('e348ab2dc4311083e729d714a81e95dd9db108ff71437dde451c97ac939881ce'
             '4c12d31d020799d31355faa7d1fe2a5a807f7458e7f0c374adf55edb37032152'
             '7f3b1b22d6a271431c1f9fc92b6eb49c6d80b8b3f868bdee07a6a1a16630a302'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
+
+if (( _manual_clone )); then
+  source[0]=fetch-chromium-release
+  makedepends+=('python-httplib2' 'python-pyparsing' 'python-six')
+fi
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -83,6 +89,9 @@ depends+=(${_system_libs[@]})
 _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 
 prepare() {
+  if (( _manual_clone )); then
+    ./fetch-chromium-release $pkgver
+  fi
   cd chromium-$pkgver
 
   # Allow building against system libraries in official builds
