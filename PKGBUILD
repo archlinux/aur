@@ -3,7 +3,7 @@
 
 pkgname=mpv-shim-default-shaders
 pkgver='2.0.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="Preconfigured set of MPV shaders and configurations for MPV Shim media clients."
 arch=('any')
 url='https://github.com/iwalton3/default-shader-pack'
@@ -39,5 +39,5 @@ package() {
 
 	cd "${srcdir}/default-shader-pack-${pkgver}"
 	install -Dm 644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/"
-	cp -r shaders pack.json "$pkgdir/usr/share/$pkgname/"
+	cp -r shaders pack.json pack-hq.json pack-next.json "$pkgdir/usr/share/$pkgname/"
 }

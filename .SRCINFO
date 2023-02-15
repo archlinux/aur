@@ -1,7 +1,7 @@
 pkgbase = mpv-shim-default-shaders
 	pkgdesc = Preconfigured set of MPV shaders and configurations for MPV Shim media clients.
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iwalton3/default-shader-pack
 	arch = any
 	license = custom
