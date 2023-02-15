@@ -1,0 +1,16 @@
+pkgbase = deepin-wine-douyin
+	pkgdesc = douyin,record beautify life
+	pkgver = 1.7.1
+	pkgrel = 1
+	url = https://www.douyin.com/
+	install = deepin-wine-douyin.install
+	arch = x86_64
+	license = custom
+	depends = deepin-wine6-stable
+	depends = spark-dwine-helper-git
+	depends = xdg-utils
+	provides = douyin
+	source = https://mirrors.sdu.edu.cn/spark-store-repository/store/video/com.douyin.spark/com.douyin.spark_1.7.1spark2_i386.deb
+	sha256sums = ddb6e863b45e4eddee273119866e73de27b10efa5e57054933153fb442f1ce10
+
+pkgname = deepin-wine-douyin
