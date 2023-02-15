@@ -1,15 +1,15 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=stsci.stimage
 pkgname=python-${_pyname}-doc
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="Documentation for STScI Image"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://stscistimage.readthedocs.io"
 license=('BSD')
 makedepends=("python-${_pyname}=${pkgver}" 'python-sphinx-automodapi' 'python-sphinx_rtd_theme')
 source=("https://github.com/spacetelescope/${_pyname}/archive/${pkgver}.tar.gz")
-md5sums=('52bd531b7bf762f11a814ad209bcd80d')
+md5sums=('aa841c50d2d18a2f194948106bc3b19c')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}/doc
