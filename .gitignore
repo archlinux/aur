@@ -4,3 +4,4 @@ pkg
 *.tar.gz
 *.log
 *.log.*
+docker-color-output
