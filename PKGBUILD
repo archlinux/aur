@@ -66,8 +66,8 @@ package() {
 
   install -d                        "$pkgdir/usr/lib/node_modules/mstream/"{bin,save}
 
-  # Avoid "warning: directory permissions differ on /var/lib/mstream/"
-  # (match permissions set in mstream.tmpfiles)
+  # Avoid message "warning: directory permissions differ on /var/lib/mstream/"
+  # by matching the permissions to the ones set in mstream.tmpfiles
   install -dm750 "$pkgdir/var/lib/mstream"
 
   install -d     "$pkgdir/var/lib/mstream/"{album-art,bin/ffmpeg,conf,db,media,sync}
