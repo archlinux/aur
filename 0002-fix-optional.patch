@@ -1,0 +1,12 @@
+diff --git a/Telegram/SourceFiles/payments/stripe/stripe_card_validator.h b/Telegram/SourceFiles/payments/stripe/stripe_card_validator.h
+index 0cc6e5013..68fdf5ad1 100644
+--- a/Telegram/SourceFiles/payments/stripe/stripe_card_validator.h
++++ b/Telegram/SourceFiles/payments/stripe/stripe_card_validator.h
+@@ -9,6 +9,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
+ 
+ #include "stripe/stripe_card.h"
+ #include <vector>
++#include <optional>
+ 
+ class QDate;
+ 
