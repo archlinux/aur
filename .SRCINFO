@@ -1,7 +1,7 @@
 pkgbase = r-jaspprophet
 	pkgdesc = Prophet Module (Beta) for JASP
-	pkgver = 0.17.0
-	pkgrel = 6
+	pkgver = 0.17.1
+	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspProphet
 	arch = any
 	groups = r-jasp
@@ -14,7 +14,7 @@ pkgbase = r-jaspprophet
 	depends = r-prophet
 	depends = r-scales
 	depends = r-rstan
-	source = jaspProphet_0.17.0.tar.gz::https://github.com/jasp-stats/jaspProphet/archive/refs/tags/v0.17.0.tar.gz
-	sha256sums = abb12e8fe247039c22aa2f2a768d2a8093649fde3e6e7b57395f13f530913358
+	source = jaspProphet_0.17.1.tar.gz::https://github.com/jasp-stats/jaspProphet/archive/refs/tags/v0.17.1.tar.gz
+	sha256sums = 5c7ea91f01bd8cc133055b1fbaa548039a30e41f3d98b202afcd6587b04e1e5c
 
 pkgname = r-jaspprophet
