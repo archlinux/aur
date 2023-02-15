@@ -1,0 +1,16 @@
+pkgbase = bakadict-git
+	pkgver = r16.b064240
+	pkgrel = 1
+	url = https://github.com/flaribbit/bakadict
+	arch = any
+	license = unknown
+	makedepends = git
+	makedepends = cargo
+	makedepends = rust
+	provides = dict
+	source = git+https://github.com/flaribbit/bakadict.git#branch=master
+	source = jp.db::https://github.com/flaribbit/bakadict/releases/download/databases/jp.db
+	md5sums = SKIP
+	md5sums = 2d3b1ed834c3b36e31eef515400d7160
+
+pkgname = bakadict-git
