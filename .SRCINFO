@@ -14,4 +14,4 @@ pkgbase = raat-server
 	sha256sums = ded6bcbd0c03f851ed61c936e59447bdbfce3b763679465f661060cd1183e8cb
 	sha256sums = 94e6e654558984f92227927c6a48988bd37de0a0ebd767a1b3d06716ce38955f
 
-pkgname = raat
+pkgname = raat-server
