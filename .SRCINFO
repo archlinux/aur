@@ -1,6 +1,6 @@
 pkgbase = python-fitsblender
 	pkgdesc = FITS header merging from multiple images
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/spacetelescope/fitsblender
 	arch = any
@@ -10,16 +10,15 @@ pkgbase = python-fitsblender
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-astropy
 	makedepends = python-sphinx
+	makedepends = python-astropy
 	makedepends = python-stsci.tools
-	source = https://files.pythonhosted.org/packages/source/f/fitsblender/fitsblender-0.4.2.tar.gz
-	md5sums = a955307217215f3c34c04ebe2887684e
+	source = https://files.pythonhosted.org/packages/source/f/fitsblender/fitsblender-0.4.3.tar.gz
+	md5sums = 041fa126f37e54fe926367ca347650d5
 
 pkgname = python-fitsblender
 	depends = python-astropy>=5.0.4
 	depends = python-stsci.tools
-	depends = python-six
 	optdepends = python-fitsblender-doc: Documentation for Python FITS blender
 
 pkgname = python-fitsblender-doc
