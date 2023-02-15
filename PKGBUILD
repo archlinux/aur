@@ -1,7 +1,7 @@
 # Maintainer: Alberto Sánchez Molero <alsamolero@gmail.com>
 pkgname=kitsas
 _reponame=kitupiikki
-pkgver=3.3
+pkgver=4.0.2
 _repover="${pkgver//_/-}"
 pkgrel=1
 epoch=
@@ -25,7 +25,7 @@ source=(
 	"https://github.com/artoh/$_reponame/archive/v$_repover.tar.gz"
 )
 noextract=()
-sha256sums=('f4e84f33241a2f00c0230452f4723290bd07fc66c80479c3aa1ac966d28d034b')
+sha256sums=('2c133c27e42162ca20afe7cc6e0e9f55968564f99f8dd78a645ca00671f90b7a')
 validpgpkeys=()
 
 prepare() {
