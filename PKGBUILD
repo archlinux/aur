@@ -1,11 +1,11 @@
 # Maintainer: Anima <contact@animafps.xyz>
 pkgname=teres
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Easily and efficiently add motion blur and or framerate to videos through interpolation and frameblending"
-depends=('vapoursynth-plugin-mvtools' 'vapoursynth-plugin-havsfunc' 'vapoursynth' 'ffmpeg' 'vapoursynth-plugin-svpflow1' 'ffms2' 'vapoursynth-plugin-svpflow2-bin' 'vapoursynth-plugin-mvsfunc-git' 'vapoursynth-plugin-frameblender')
-optdepends=('vapoursynth-plugin-rife-ncnn-vulkan-git: RIFE-NCNN Vulkan support'
-'vapoursynth-plugin-vsrife-git: RIFE CUDA support')
+depends=('vapoursynth-plugin-mvtools' 'vapoursynth-plugin-havsfunc' 'vapoursynth' 'ffmpeg' 'vapoursynth-plugin-svpflow1' 'ffms2' 'vapoursynth-plugin-svpflow2-bin' 'vapoursynth-plugin-mvsfunc' 'vapoursynth-plugin-frameblender')
+optdepends=('vapoursynth-plugin-rife-ncnn-vulkan: RIFE-NCNN Vulkan support'
+'vapoursynth-plugin-vsrife: RIFE CUDA support')
 makedepends=('rust' 'cargo' 'python' 'gtk3')
 arch=('x86_64')
 license=('GPL3')
