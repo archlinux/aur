@@ -5,7 +5,7 @@
 pkgname=sogo
 pkgdesc="groupware server built around OpenGroupware.org (OGo) and the SOPE application server"
 pkgver=5.8.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.sogo.nu/"
 license=('GPL')
