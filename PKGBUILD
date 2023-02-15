@@ -4,7 +4,7 @@ _gitbranch=main
 _gitauthor=devemio
 pkgname=docker-color-output-git
 pkgver=2.2.0
-pkgrel=13
+pkgrel=14
 pkgdesc="Colors for Docker CLI"
 arch=('x86_64')
 license=('MIT')
@@ -30,7 +30,6 @@ build() {
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_CPPFLAGS="$CPPFLAGS"
-  export GOCACHE=/tmp/
   make EXT_LDFLAGS="-linkmode external" GOFLAGS="-buildmode=pie -trimpath"
 }
 
