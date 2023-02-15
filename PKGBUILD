@@ -1,7 +1,7 @@
 # Maintainer: Mistle <tehmistle [at] gmx.com>
 pkgname=stash
-pkgver=0.18.0
-pkgrel=2
+pkgver=0.19.0
+pkgrel=1
 pkgdesc="Locally hosted web-based app written in Go which organizes and serves your Adult Video"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/stashapp/stash"
