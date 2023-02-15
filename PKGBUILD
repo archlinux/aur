@@ -2,14 +2,14 @@
 
 _pkgname=edgegpt
 pkgname="${_pkgname}-git"
-pkgver=0.0.30+2.r71.20230214.ed1c425
+pkgver=0.0.40+4.r81.20230215.3421236
 pkgrel=1
 pkgdesc="The reverse engineering the chat feature of the new version of Bing."
 arch=(
   'any'
 )
 url="https://github.com/acheong08/EdgeGPT"
-license=('custom: unknown')
+license=('custom: public domain')
 depends=(
   'python>=3'
   'python-argparse'
@@ -36,12 +36,10 @@ replaces=()
 source=(
   "${_pkgname}::git+${url}.git"
   'edgegpt.sh'
-  'license-unknown.txt'
 )
 sha256sums=(
   'SKIP'
   'ede2493e322666e51e97462c9ad5542f9f618fadb371672e4c2526f400e984b7'
-  'd16e8c8e41fb360a449c3718122980cf2c1c0e6b8e517383f0ad05b7cc3dc8c2'
 )
 
 pkgver() {
@@ -80,11 +78,9 @@ package() {
 
   install -D -v -m755 "${srcdir}/edgegpt.sh"          "${pkgdir}/usr/bin/edgegpt"
 
-  # install -D -v -m644 LICENSE                       "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -D -v -m644 "${srcdir}/license-unknown.txt" "${pkgdir}/usr/share/licenses/${pkgname}/license-unknown.txt"
+  install -D -v -m644 LICENSE                       "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   for _docfile in example.env README.md; do
     install -D -v -m644 "${_docfile}"               "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
   done
-  # ln -svf "/usr/share/licenses/${pkgname}/LICENSE"  "${pkgdir}/usr/share/doc/${_pkgname}/LICENSE"
-  ln -svf "/usr/share/licenses/${pkgname}/license-unknown.txt"  "${pkgdir}/usr/share/doc/${_pkgname}/license-unknown.txt"
+  ln -svf "/usr/share/licenses/${pkgname}/LICENSE"  "${pkgdir}/usr/share/doc/${_pkgname}/LICENSE"
 }
