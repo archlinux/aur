@@ -1,6 +1,7 @@
 # Maintainer: flaribbit <1149761294@qq.com>
 # Maintainer: asukaminato <asukaminato@nyan.eu.org>
 pkgname=bakadict-git
+pkgdesc=离线的命令行日语词典
 _name=bakadict
 pkgver=r19.1fa4f69
 pkgrel=1
