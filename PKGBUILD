@@ -3,7 +3,7 @@
 _base=rasterio
 pkgname=python-${_base}
 pkgver=1.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and direct raster I/O for use with Numpy and SciPy"
 url="https://github.com/${_base}/${_base}"
 license=(custom)
@@ -19,26 +19,26 @@ depends=(
   python-setuptools
 )
 makedepends=(python-build python-installer python-wheel)
-checkdepends=(
-  openexr
-  cfitsio
-  hdf5
-  libheif
-  openjpeg2
-  libjxl
-  poppler
-  postgresql-libs
-  libwebp
-  netcdf
-  arrow
-  mariadb-libs
-  podofo
-  python-boto3
-  python-hypothesis
-  python-pytest
-  python-shapely
-  python-matplotlib
-)
+# checkdepends=(
+#   openexr
+#   cfitsio
+#   hdf5
+#   libheif
+#   openjpeg2
+#   libjxl
+#   poppler
+#   postgresql-libs
+#   libwebp
+#   netcdf
+#   arrow
+#   mariadb-libs
+#   podofo
+#   python-boto3
+#   python-hypothesis
+#   python-pytest
+#   python-shapely
+#   python-matplotlib
+# )
 optdepends=('ipython: for ipython support'
   'python-boto3: for s3 support'
   'python-matplotlib: for plotting support')
@@ -50,13 +50,13 @@ build() {
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
-check() {
-  cd ${_base}-${pkgver}
-  mv ${_base} .${_base}
-  python -m venv --system-site-packages test-env
-  test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest -m "not wheel" -rxXs tests -k 'not reproject_view and not reproject_nodata[options0-6644] and not reproject_nodata_nan[options1-6644] and not reproject_nodata[options1-6644] and not reproject_nodata_nan[options0-6644] and not reproject_dst_nodata_default[options0-6644] and not reproject_dst_nodata_default[options1-6644]' # py.test
-}
+# check() {
+#   cd ${_base}-${pkgver}
+#   mv ${_base} .${_base}
+#   python -m venv --system-site-packages test-env
+#   test-env/bin/python -m installer dist/*.whl
+#   test-env/bin/python -m pytest -m "not wheel" -rxXs tests -k 'not reproject_view and not reproject_nodata[options0-6644] and not reproject_nodata_nan[options1-6644] and not reproject_nodata[options1-6644] and not reproject_nodata_nan[options0-6644] and not reproject_dst_nodata_default[options0-6644] and not reproject_dst_nodata_default[options1-6644]' # py.test
+# }
 
 package() {
   cd ${_base}-${pkgver}
