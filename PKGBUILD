@@ -38,5 +38,5 @@ package() {
   install -Dm755 "target/release/$_basename" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "gossip.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
-  install -Dm644 "${srcdir}/${pkgname}.desktop" "$pkgdir/usr/share/applications"
+  install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
