@@ -1,6 +1,6 @@
 pkgbase = python-soundfile
 	pkgdesc = A Python library to read and write audio files using libsndfile, CFFI and NumPy
-	pkgver = 0.12.0
+	pkgver = 0.12.1
 	pkgrel = 1
 	url = https://github.com/bastibe/python-soundfile
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-soundfile
 	depends = python-cffi
 	depends = libsndfile
 	depends = python-numpy
-	source = https://github.com/bastibe/python-soundfile/releases/download/0.12.0/soundfile-0.12.0.tar.gz
-	sha256sums = e50c42733ff5396e49a6a689722fa362387b2c403273bcc195994bf4a8e2df3f
+	source = https://github.com/bastibe/python-soundfile/releases/download/0.12.1/soundfile-0.12.1.tar.gz
+	sha256sums = e8e1017b2cf1dda767aef19d2fd9ee5ebe07e050d430f77a0a7c66ba08b8cdae
 
 pkgname = python-soundfile
