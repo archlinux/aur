@@ -4,7 +4,7 @@ _gitbranch=main
 _gitauthor=devemio
 pkgname=docker-color-output-git
 pkgver=2.2.0
-pkgrel=14
+pkgrel=15
 pkgdesc="Colors for Docker CLI"
 arch=('x86_64')
 license=('MIT')
@@ -30,13 +30,12 @@ build() {
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_CPPFLAGS="$CPPFLAGS"
+  export GOCACHE="off"
   make EXT_LDFLAGS="-linkmode external" GOFLAGS="-buildmode=pie -trimpath"
 }
 
 package() {
   install -vDm 755 "$srcdir/${pkgname%-git}-${pkgver}/bin/${pkgname%-git}" -t "${pkgdir}/usr/bin"
   install -vDm 644 "$srcdir/${pkgname%-git}-${pkgver}/README.md" -t "${pkgdir}/usr/share/doc/${pkgname%-git}"
-  rm -rf $srcdir
-  rm 
   #install -vDm 644 COPYING "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
