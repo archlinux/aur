@@ -1,0 +1,19 @@
+pkgbase = hledger-utils
+	pkgdesc = Utilities extending the hledger plaintextaccounting tool
+	pkgver = 1.12.1
+	pkgrel = 1
+	url = https://gitlab.com/nobodyinperson/hledger-utils
+	arch = any
+	license = GPL
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	depends = hledger
+	depends = python
+	depends = python-psutil
+	depends = python-rich
+	source = https://files.pythonhosted.org/packages/source/h/hledger-utils/hledger-utils-1.12.1.tar.gz
+	sha256sums = fafeb6ef38f0cb9b793148d0262a0d9112eb70e808f4bc4076c72f6ab3a2907c
+
+pkgname = hledger-utils
