@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-notification-timeout-git
+	pkgdesc = Gnome Shell extension for configuring notification timeout.
+	pkgver = r16.3e653e9
+	pkgrel = 1
+	url = https://github.com/vchlum/notification-timeout
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = gnome-shell
+	provides = gnome-shell-extension-notification-timeout
+	conflicts = gnome-shell-extension-notification-timeout
+	source = gnome-shell-extension-notification-timeout-git::git+https://github.com/vchlum/notification-timeout
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-notification-timeout-git
