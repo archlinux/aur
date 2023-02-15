@@ -58,5 +58,5 @@ check() {
 package() {
   cd "$srcdir"/build/src/github.com/linuxdeepin/go-dbus-factory
   install -dm755 "$pkgdir"/usr/share/gocode/src/github.com/linuxdeepin/go-dbus-factory
-  cp -a com.* org.* object_manager "$pkgdir"/usr/share/gocode/src/github.com/linuxdeepin/go-dbus-factory/
+  cp -a com.* org.* object_manager session system "$pkgdir"/usr/share/gocode/src/github.com/linuxdeepin/go-dbus-factory/
 }
