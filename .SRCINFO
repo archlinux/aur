@@ -1,7 +1,7 @@
 pkgbase = python-ntfs
 	pkgdesc = Python module to manipulate NTFS junctions and hardlinks
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sunshowers-code/py-ntfs
 	arch = any
 	license = MIT

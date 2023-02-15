@@ -4,7 +4,7 @@
 pkgname=python-ntfs
 _pkgname=${pkgname/thon-/-}
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Python module to manipulate NTFS junctions and hardlinks'
 arch=(any)
 url="https://github.com/sunshowers-code/$_pkgname"
@@ -24,4 +24,6 @@ package() {
 	cd "$_archive"
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+	local _py3_ver=$(python --version | cut -d " " -f2)
+	rm -rf "$pkgdir/usr/lib/python${_py3_ver%.*}/site-packages/tests"
 }
