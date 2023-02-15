@@ -1,0 +1,35 @@
+From 7a0ef8d8c0b2b6ace82c85cdb4e8ae56d5ad17d7 Mon Sep 17 00:00:00 2001
+From: Basil Hess <bhe@zurich.ibm.com>
+Date: Tue, 3 Jan 2023 20:10:55 +0100
+Subject: [PATCH] fix: initialize context after reset in ossl_sha3x4
+
+---
+ src/common/sha3/ossl_sha3x4.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/src/common/sha3/ossl_sha3x4.c b/src/common/sha3/ossl_sha3x4.c
+index a68b2913c..1fcfdb75b 100644
+--- a/src/common/sha3/ossl_sha3x4.c
++++ b/src/common/sha3/ossl_sha3x4.c
+@@ -122,6 +122,10 @@ void OQS_SHA3_shake128_x4_inc_ctx_reset(OQS_SHA3_shake128_x4_inc_ctx *state) {
+ 	EVP_MD_CTX_reset(s->mdctx1);
+ 	EVP_MD_CTX_reset(s->mdctx2);
+ 	EVP_MD_CTX_reset(s->mdctx3);
++	EVP_DigestInit_ex(s->mdctx0, EVP_shake128(), NULL);
++	EVP_DigestInit_ex(s->mdctx1, EVP_shake128(), NULL);
++	EVP_DigestInit_ex(s->mdctx2, EVP_shake128(), NULL);
++	EVP_DigestInit_ex(s->mdctx3, EVP_shake128(), NULL);
+ 	s->n_out = 0;
+ }
+ 
+@@ -236,6 +240,10 @@ void OQS_SHA3_shake256_x4_inc_ctx_reset(OQS_SHA3_shake256_x4_inc_ctx *state) {
+ 	EVP_MD_CTX_reset(s->mdctx1);
+ 	EVP_MD_CTX_reset(s->mdctx2);
+ 	EVP_MD_CTX_reset(s->mdctx3);
++	EVP_DigestInit_ex(s->mdctx0, EVP_shake256(), NULL);
++	EVP_DigestInit_ex(s->mdctx1, EVP_shake256(), NULL);
++	EVP_DigestInit_ex(s->mdctx2, EVP_shake256(), NULL);
++	EVP_DigestInit_ex(s->mdctx3, EVP_shake256(), NULL);
+ 	s->n_out = 0;
+ }
+ 
