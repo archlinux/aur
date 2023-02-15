@@ -1,0 +1,36 @@
+pkgbase = r-crunch
+	pkgdesc = Crunch.io Data Tools
+	pkgver = 1.30.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=crunch
+	arch = any
+	license = LGPL
+	depends = r>=3.0.0
+	depends = r-abind
+	depends = r-crayon
+	depends = r-curl
+	depends = r-grdevices
+	depends = r-httr>=1.0.0
+	depends = r-httpcache>=0.1.4
+	depends = r-jsonlite>=0.9.15
+	depends = r-methods
+	optdepends = r-base64enc
+	optdepends = r-covr
+	optdepends = r-crunchy
+	optdepends = r-devtools
+	optdepends = r-haven
+	optdepends = r-httptest>=3.0.0
+	optdepends = r-knitr
+	optdepends = r-lintr
+	optdepends = r-magrittr
+	optdepends = r-mime
+	optdepends = r-rmarkdown
+	optdepends = r-rstudioapi
+	optdepends = r-spelling
+	optdepends = r-styler
+	optdepends = r-testthat>=2.0.0
+	optdepends = r-withr
+	source = https://cran.microsoft.com/snapshot/2022-11-17/src/contrib/crunch_1.30.1.tar.gz
+	sha256sums = deb1ecdcc50f62dec9d5cdd59c4a19245b69ea4accc46eff2c7de0a55ac309e3
+
+pkgname = r-crunch
