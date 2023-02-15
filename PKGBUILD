@@ -11,17 +11,17 @@ pkgdesc='A Bang-like card game'
 depends=('qt6-declarative' 'qt6-multimedia' 'qt6-5compat'
   'qt6-shadertools' 'libgit2' 'lua' 'sqlite' 'openssl'
   'readline' )
-makedepends=('cmake' 'flex' 'bison' 'qt6-tools' 'swig')
+makedepends=('cmake' 'flex' 'bison' 'qt6-tools' 'swig' 'clang')
 source=("${url}/releases/download/v${pkgver}/FreeKill-${pkgver}-source.tar.gz")
-sha256sums=('18d1474413b730cc8a5ebdbd4948c63e51fb42026d3baf058b1cfcd894eb2c7c')
+sha256sums=('0363cf37a2957ab41604e95b80d24d8c13ce942a15b67f97af7d10ca189a44e3')
 
 prepare() {
-  cd ${srcdir}/${_upper_pkgname}
+  cd ${srcdir}/${_upper_pkgname}-${pkgver}
   rm -rf build
 }
 
 build() {
-  cd ${srcdir}/${_upper_pkgname}
+  cd ${srcdir}/${_upper_pkgname}-${pkgver}
   mkdir build && cd build
   cmake ..
   make
@@ -33,7 +33,7 @@ package() {
   mkdir -p ${pkgdir}/usr/share/applications
   mkdir -p ${pkgdir}/usr/bin
   mkdir -p ${pkgdir}/usr/lib
-  cd ${srcdir}/${_upper_pkgname}
+  cd ${srcdir}/${_upper_pkgname}-${pkgver}
   cmake --install build --prefix ${pkgdir}/usr --config Release
 
   cp -r audio fonts image lua packages qml server build/zh_CN.qm \
