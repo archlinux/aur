@@ -1,6 +1,6 @@
 pkgbase = o3de-nightly-bin
 	pkgdesc = Open 3D Engine - An open-source, real-time 3D development engine (Nightly build)
-	pkgver = 2210.0_20221026
+	pkgver = 2210.0_20230214
 	pkgrel = 1
 	url = https://o3de.org/
 	install = o3de.install
@@ -25,7 +25,7 @@ pkgbase = o3de-nightly-bin
 	depends = libxkbcommon-x11
 	depends = mesa
 	depends = openexr
-	depends = openssl
+	depends = openssl-1.1
 	depends = qt5-base
 	depends = sdl2
 	depends = zlib
