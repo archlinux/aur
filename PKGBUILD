@@ -4,7 +4,7 @@ _gitbranch=main
 _gitauthor=devemio
 pkgname=docker-color-output-git
 pkgver=2.2.0
-pkgrel=10
+pkgrel=11
 pkgdesc="Colors for Docker CLI"
 arch=('x86_64')
 license=('MIT')
@@ -12,9 +12,10 @@ url="https://github.com/${_gitauthor}/${pkgname%-git}"
 source=("${pkgname%-git}.tar.gz::https://github.com/${_gitauthor}/${pkgname%-git}/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=('SKIP')
 depends=('go')
-makedepends=(git)
+makedepends=("go" "git")
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
+options=("!lto")
 
 prepare() {
   cd "$srcdir/${pkgname%-git}-${pkgver}"
@@ -31,7 +32,7 @@ build() {
   export CGO_CPPFLAGS="$CPPFLAGS"
   export GOCACHE=/tmp/
   make EXT_LDFLAGS="-linkmode external" GOFLAGS="-buildmode=pie -trimpath" 
-  cp bin/docker-color-output dco
+  mv bin/docker-color-output dco
 }
 
 package() {
