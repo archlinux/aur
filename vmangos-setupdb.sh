@@ -30,14 +30,9 @@ is_update () {
 }
 
 database_status () {
-    systemctl is-active mariadb > /dev/null || echo "MariaDB systemd service not running"
     until systemctl is-active mariadb > /dev/null; do
-        echo -n "Waiting for database connection"
-        for i in {1..4}; do
-            sleep 0.5
-            echo -n "."
-        done
-        echo -ne "\r\033[K"
+        echo -e "MariaDB systemd service not running\nWaiting for database connection..."
+        sleep 5
     done
 }
 
