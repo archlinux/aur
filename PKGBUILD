@@ -2,7 +2,7 @@
 
 _plug=fmtconv
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=28.11.g70414b2
+pkgver=30.17.g3eec42f
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
