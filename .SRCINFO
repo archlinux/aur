@@ -1,7 +1,7 @@
 pkgbase = iptvnator-appimage
 	pkgdesc = Cross-platform IPTV player app, supports m3u+m3u8 playlists, favorites, TV guide, TV archive/catchup and more
 	pkgver = 0.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/4gray/iptvnator/
 	arch = x86_64
 	arch = aarch64
@@ -12,8 +12,6 @@ pkgbase = iptvnator-appimage
 	conflicts = iptvnator-appimage
 	conflicts = iptvnator-bin
 	options = !strip
-	source = iptvnator.sh
-	sha256sums = 759c6ebedf7483aa1211599f7c088fd716ddecc6aae571d20cc63c5d3fe29d0a
 	source_x86_64 = https://github.com/4gray/iptvnator/releases/download/v0.11.1/IPTVnator-0.11.1.AppImage
 	sha256sums_x86_64 = c940068a1d40f5a032fa416d1e707a608935e97a43b1315f403e2ef8848a12b5
 	source_aarch64 = https://github.com/4gray/iptvnator/releases/download/v0.11.1/IPTVnator-0.11.1-arm64.AppImage
