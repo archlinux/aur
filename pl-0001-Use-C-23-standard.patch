@@ -1,4 +1,4 @@
-From 8f6972b942ea4e6f8a4aef27feccaf93d21a56a3 Mon Sep 17 00:00:00 2001
+From 59c08b21717f3f5a22117b2f4f415f890b9228c2 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Thu, 18 Aug 2022 00:57:02 +0200
 Subject: [PATCH 1/2] Use C++23 standard

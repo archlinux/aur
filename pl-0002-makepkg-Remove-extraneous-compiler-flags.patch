@@ -1,4 +1,4 @@
-From 8c8d1dcf38e4d6d61afd5710e8156cb613d733c0 Mon Sep 17 00:00:00 2001
+From b6b11e11956f02660fc67836ec718fd96c185abd Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Sat, 17 Sep 2022 16:27:17 +0200
 Subject: [PATCH 2/2] makepkg: Remove extraneous compiler flags
