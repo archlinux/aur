@@ -1,9 +1,9 @@
 #Maintainer: sukanka <su975853527 AT gmail.com>
 _pkgname=jaspAnova
-_pkgver=0.17.0
+_pkgver=0.17.1
 pkgname=r-${_pkgname,,}
-pkgver=0.17.0
-pkgrel=8
+pkgver=0.17.1
+pkgrel=1
 pkgdesc="ANOVA Module for JASP"
 arch=('any')
 url="https://github.com/jasp-stats/${_pkgname}"
@@ -32,7 +32,7 @@ depends=(r
 groups=(r-jasp r-jaspcommon)
 optdepends=()
 source=("${_pkgname}_${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('6b82d6006fe9de8d10c16cbc5e2ad802b0e7d59d17e2acb4392b70502e95bc6f')
+sha256sums=('8fde3b3965318c3a2cf4a7502a4e893b260e1603bd62f07f425190a4de63a834')
 
 
 build() {
