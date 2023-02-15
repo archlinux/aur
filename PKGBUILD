@@ -1,14 +1,14 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=fvsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r24.2f5b28d
+pkgver=r29.076dbde
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Irrational-Encoding-Wizardry/fvsfunc'
 license=('GPL')
-depends=('vapoursynth-plugin-havsfunc-git'
+depends=('vapoursynth-plugin-havsfunc'
          'vapoursynth-plugin-mvsfunc-git'
          'vapoursynth-plugin-muvsfunc-git'
          'vapoursynth-plugin-edi_rpow2-git'
@@ -18,7 +18,7 @@ depends=('vapoursynth-plugin-havsfunc-git'
          'vapoursynth-plugin-dfttest-git'
          'vapoursynth-plugin-ffms2'
          'vapoursynth-plugin-fft3dfilter-git'
-         'vapoursynth-plugin-mvtools-git'
+         'vapoursynth-plugin-mvtools'
          'vapoursynth-plugin-sangnom-git'
          'vapoursynth-plugin-yadifmod-git'
          )
