@@ -1,0 +1,16 @@
+diff '--color=auto' --unified --recursive --text pixelserv-tls-2.4/pixelserv.c pixelserv-tls-2.4-fix/pixelserv.c
+--- pixelserv-tls-2.4/pixelserv.c	2023-02-15 15:39:19.168783894 +0600
++++ pixelserv-tls-2.4-fix/pixelserv.c	2023-02-15 15:38:40.247906442 +0600
+@@ -820,10 +820,9 @@
+                     break;
+                   /* fall through */
+               default:
+-                  log_msg(LGG_WARNING, "handshake failed: client %s:%s server %s. Lib(%d) Func(%d) Reason(%d)",
++                  log_msg(LGG_WARNING, "handshake failed: client %s:%s server %s. Lib(%d) Reason(%d)",
+                       ip_buf, port_buf, t->servername,
+-                          ERR_GET_LIB(ERR_peek_last_error()), ERR_GET_FUNC(ERR_peek_last_error()),
+-                              ERR_GET_REASON(ERR_peek_last_error()));
++                          ERR_GET_LIB(ERR_peek_last_error()), ERR_GET_REASON(ERR_peek_last_error()));
+           }
+           break;
+         case SSL_ERROR_SYSCALL:
