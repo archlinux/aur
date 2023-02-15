@@ -1,11 +1,11 @@
 # Maintainer: 7Ji <pugokughin@gmail.com>
 
 _desc="flippy's AArch64-focused fork aiming to increase usability"
-_pkgver_main=6.1.11
+_pkgver_main=6.1.12
 _pkgver_suffix=flippy
 _pkgver_uname="${_pkgver_main}-${_pkgver_suffix}"
 _flippy_repo='linux-6.1.y'
-_flippy_commit='f337c22c7a6b2059c8de70f813f290fef4e308bc'
+_flippy_commit='29c263d9c3e5ce3c9099bd35d79dcb1eedbca99c'
 _srcname="${_flippy_repo}-${_flippy_commit}"
 
 pkgbase=linux-aarch64-flippy
@@ -26,13 +26,13 @@ makedepends=( # Since we don't build the doc, most of the makedeps for other lin
 )
 options=(!strip)
 source=(
-  "${url}/archive/${_flippy_commit}.tar.gz"
+  "${_srcname}.tar.gz:::${url}/archive/${_flippy_commit}.tar.gz"
   'config'
   'linux.preset'
 )
 sha256sums=(
-  'd0c94aac39d8f5ef38a12827f2563cd053babf7df7397e6a9a8fa8bf70713603'
-  '4ce82a108aa3bb0ba47c3aefec25ec54780258bf27741fa945bdd31a91a5b9dd'
+  '2b287393501be50f6574a43f6eb56b3e001b11ab2aa8d43219de6de3fec18e51'
+  '9d71748237b52a5ac977fdfb7589224194dfc396fe5f13c5f32355ace5efde5c'
   'bdcd6cbf19284b60fac6d6772f1e0ec2e2fe03ce7fe3d7d16844dd6d2b5711f3'
 )
 
