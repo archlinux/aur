@@ -2,7 +2,7 @@
 # Maintainer: soloturn@gmail.com
 
 pkgname=cosmic-epoch-git
-pkgver=r29.18469b8
+pkgver=r37.74091a9
 pkgrel=1
 pkgdesc="pop-os cosmic desktop, version from git"
 arch=('x86_64')
@@ -71,14 +71,18 @@ prepare() {
 
 build() {
   cd cosmic-epoch
+  CARGO_TARGET_DIR=target
   # note, consider rust build time optimisations: https://matklad.github.io/2021/09/04/fast-rust-builds.html, 
   # later. for now, ignore warnings, and build with lower priority to not block user installing this pkg.
   # to speed up build, use "mold" linker, see https://stackoverflow.com/questions/67511990/how-to-use-the-mold-linker-with-cargo
-  RUSTFLAGS="-A warnings -C link-arg=--ld-path=/usr/bin/mold"
+  RUSTFLAGS="-A warnings -C link-arg=-fuse-ld=mold"
   nice just sysext
 }
 
 package() {
   cd cosmic-epoch
-  DESTDIR="$pkgdir" just install
+  cp -r cosmic-sysext/* "$pkgdir/"
+
+  mv "$pkgdir/usr/libexec/xdg-desktop-portal-cosmic" "$pkgdir/usr/lib/"
+  rm -rf "$pkgdir/usr/libexec/"
 }
