@@ -1,3 +1,4 @@
+# Maintainer: ArcanusNEO <admin@transcliff.top>
 pkgname=gnome-shell-extension-notification-timeout-git
 pkgver=r16.3e653e9
 pkgrel=1
