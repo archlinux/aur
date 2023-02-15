@@ -1,11 +1,13 @@
 pkgbase = python-prospector
 	pkgdesc = Python static analysis tool
 	pkgver = 1.6.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/PyCQA/prospector/
 	arch = any
 	license = GPL2
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-pylint
 	depends = python-pylint-celery
 	depends = python-pylint-django

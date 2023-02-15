@@ -4,7 +4,7 @@
 pkgname='python-prospector'
 _name='prospector'
 pkgver='1.6.0'
-pkgrel=4
+pkgrel=5
 pkgdesc="Python static analysis tool"
 url="https://github.com/PyCQA/prospector/"
 depends=('python-pylint'
@@ -27,18 +27,20 @@ optdepends=('python-bandit: security linter'
             'mypy: optional type checking'
             'python-pyroma: check setup.py'
             'python-vulture: find dead code')
-makedepends=('python-setuptools')
+makedepends=('python-build'
+             'python-installer'
+             'python-wheel')
 license=('GPL2')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('1ca0da95a2d1a151ae578f02d6fc78300a9150af8f2c2c201097213016cc92ee')
 
 build() {
-    cd "${_name}-${pkgver}"
-    python setup.py build
+    cd "$_name-$pkgver"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${_name}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1
+    cd "$_name-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
