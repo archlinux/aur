@@ -1,6 +1,7 @@
-/cosmic*
-/pkg/
-/simple-wrapper/
-/src/
-/wayland-proxy-virtwl/
-/xdg-desktop-portal-cosmic/
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO

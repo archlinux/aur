@@ -1,86 +1,96 @@
-# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
-# Maintainer: soloturn@gmail.com
+# Maintainer: soloturn <soloturn@gmail.com>
+# Co-Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=cosmic-epoch-git
 pkgver=r37.74091a9
-pkgrel=1
-pkgdesc="pop-os cosmic desktop, version from git"
+pkgrel=2
+pkgdesc="Next generation Cosmic desktop environment (Currently an incomplete pre-alpha)"
 arch=('x86_64')
 url="https://github.com/pop-os/cosmic-epoch"
-license=(GPL)
-depends=(gtk4)
-makedepends=(cargo dbus git just libinput libpulse libxkbcommon mesa meson pop-launcher seatd wayland)
-provides=(cosmic-epoch)
-conflicts=(cosmic-epoch)
-options=(!lto)
-source=(
-  "git+https://github.com/pop-os/cosmic-epoch.git"
-  "git+https://github.com/pop-os/cosmic-session.git"
-  "git+https://github.com/pop-os/cosmic-comp.git"
-  "git+https://github.com/pop-os/cosmic-panel.git"
-  "git+https://github.com/pop-os/cosmic-applets.git"
-  "git+https://github.com/pop-os/cosmic-applibrary.git"
-  "git+https://github.com/pop-os/cosmic-launcher.git"
-  "git+https://github.com/pop-os/simple-wrapper.git"
-  "git+https://github.com/pop-os/cosmic-settings-daemon.git"
-  "git+https://github.com/pop-os/xdg-desktop-portal-cosmic.git"
-  "git+https://github.com/pop-os/cosmic-osd.git"
-  "git+https://github.com/pop-os/cosmic-bg.git"
-  "git+https://github.com/talex5/wayland-proxy-virtwl.git"
-)
-
-sha256sums=(
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-)
+license=('GPL3')
+depends=('gtk4' 'libinput' 'libpulse' 'libxkbcommon' 'mesa' 'pipewire'
+         'systemd-libs' 'wayland')
+makedepends=('cargo' 'clang' 'desktop-file-utils' 'git' 'just' 'llvm' 'meson'
+             'mold' 'seatd')
+provides=("${pkgname%-git}" 'cosmic-applets' 'cosmic-applibrary' 'cosmic-bg'
+          'cosmic-comp' 'cosmic-launcher' 'cosmic-osd' 'cosmic-panel'
+          'cosmic-session' 'cosmic-settings-daemon' 'xdg-desktop-portal-cosmic')
+conflicts=("${pkgname%-git}" 'cosmic-applets' 'cosmic-applibrary' 'cosmic-bg'
+           'cosmic-comp' 'cosmic-launcher' 'cosmic-osd' 'cosmic-panel'
+           'cosmic-session' 'cosmic-settings-daemon' 'xdg-desktop-portal-cosmic')
+options=('!lto')
+source=('git+https://github.com/pop-os/cosmic-epoch.git'
+        'git+https://github.com/pop-os/cosmic-applets.git'
+        'git+https://github.com/pop-os/cosmic-applibrary.git'
+        'git+https://github.com/pop-os/cosmic-bg.git'
+        'git+https://github.com/pop-os/cosmic-comp.git'
+        'git+https://github.com/pop-os/cosmic-launcher.git'
+        'git+https://github.com/pop-os/cosmic-osd.git'
+        'git+https://github.com/pop-os/cosmic-panel.git'
+        'git+https://github.com/pop-os/cosmic-session.git'
+        'git+https://github.com/pop-os/cosmic-settings-daemon.git'
+        'git+https://github.com/pop-os/xdg-desktop-portal-cosmic.git')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
-  cd cosmic-epoch
+  cd "$srcdir/${pkgname%-git}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+_submodules=(
+  cosmic-applets
+  cosmic-applibrary
+  cosmic-bg
+  cosmic-comp
+  cosmic-launcher
+  cosmic-osd
+  cosmic-panel
+  cosmic-session
+  cosmic-settings-daemon
+  xdg-desktop-portal-cosmic
+)
+
 prepare() {
-  cd cosmic-epoch
-  git submodule init
-  git config submodule.cosmic-session.url "$srcdir/cosmic-session"
-  git config submodule.cosmic-comp.url "$srcdir/cosmic-comp"
-  git config submodule.cosmic-panel.url "$srcdir/cosmic-panel"
-  git config submodule.cosmic-applets.url "$srcdir/cosmic-applets"
-  git config submodule.cosmic-applibrary.url "$srcdir/cosmic-applibrary"
-  git config submodule.cosmic-launcher.url "$srcdir/cosmic-launcher"
-  git config submodule.simple-wrapper.url "$srcdir/simple-wrapper"
-  git config submodule.cosmic-settings-daemon.url "$srcdir/cosmic-settings-daemon"
-  git config submodule.xdg-desktop-portal-cosmic.url "$srcdir/xdg-desktop-portal-cosmic"
-  git config submodule.cosmic-osd.url "$srcdir/cosmic-osd"
-  git config submodule.cosmic-bg.url "$srcdir/cosmic-bg"
-  git config submodule.wayland-proxy-virtwl.url "$srcdir/wayland-proxy-virtwl"
-  git -c protocol.file.allow=always submodule update
+  cd "$srcdir/${pkgname%-git}"
+  for submodule in "${_submodules[@]}"; do
+    git submodule init "${submodule#*::}"
+    git config submodule."${submodule#*::}".url "$srcdir"/"${submodule%::*}"
+    git -c protocol.file.allow=always submodule update "${submodule#*::}"
+  done
+
+  export RUSTUP_TOOLCHAIN=stable
+  for submodule in "${_submodules[@]}"; do
+    pushd "${submodule#*::}"
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
+    popd
+  done
 }
 
-
 build() {
-  cd cosmic-epoch
-  CARGO_TARGET_DIR=target
-  # note, consider rust build time optimisations: https://matklad.github.io/2021/09/04/fast-rust-builds.html, 
-  # later. for now, ignore warnings, and build with lower priority to not block user installing this pkg.
-  # to speed up build, use "mold" linker, see https://stackoverflow.com/questions/67511990/how-to-use-the-mold-linker-with-cargo
+  cd "$srcdir/${pkgname%-git}"
+  export RUSTUP_TOOLCHAIN=stable
+  # note, consider rust build time optimisations: 
+  # https://matklad.github.io/2021/09/04/fast-rust-builds.html, 
+  # later. for now, ignore warnings, and build with lower priority 
+  # to not block user installing this pkg. to speed up build, use "mold" linker, see 
+  # https://stackoverflow.com/questions/67511990/how-to-use-the-mold-linker-with-cargo
   RUSTFLAGS="-A warnings -C link-arg=-fuse-ld=mold"
   nice just sysext
 }
 
 package() {
-  cd cosmic-epoch
+  cd "$srcdir/${pkgname%-git}"
   cp -r cosmic-sysext/* "$pkgdir/"
 
   mv "$pkgdir/usr/libexec/xdg-desktop-portal-cosmic" "$pkgdir/usr/lib/"
