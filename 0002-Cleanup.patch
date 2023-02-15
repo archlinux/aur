@@ -1,7 +1,7 @@
-From 65cd4f0bea509989fd93258bee62769cd00b5ef1 Mon Sep 17 00:00:00 2001
+From 5d788ca53658aa41cb76589b42664a7392f4ea2d Mon Sep 17 00:00:00 2001
 From: Aviana Cruz <gwencroft@proton.me>
 Date: Sun, 6 Nov 2022 13:33:14 +0800
-Subject: [PATCH] Cleanup
+Subject: [PATCH 2/2] Cleanup
 
 Co-authored-by: zhaose <weiliang1503@outlook.com>
 Signed-off-by: Aviana Cruz <gwencroft@proton.me>
@@ -16,7 +16,7 @@ Signed-off-by: Aviana Cruz <gwencroft@proton.me>
  .../hmcl/ui/account/CreateAccountPane.java    |  16 --
  .../jackhuang/hmcl/ui/main/FeedbackPage.java  |  80 ------
  .../hmcl/ui/main/LauncherSettingsPage.java    |  22 +-
- .../org/jackhuang/hmcl/ui/main/MainPage.java  | 117 +-------
+ .../org/jackhuang/hmcl/ui/main/MainPage.java  | 121 +--------
  .../org/jackhuang/hmcl/ui/main/RootPage.java  |  17 --
  .../jackhuang/hmcl/ui/main/SettingsPage.java  |  60 ----
  .../jackhuang/hmcl/ui/main/SettingsView.java  |  58 ----
@@ -29,7 +29,7 @@ Signed-off-by: Aviana Cruz <gwencroft@proton.me>
  .../jackhuang/hmcl/upgrade/UpdateChecker.java | 125 ---------
  .../jackhuang/hmcl/upgrade/UpdateHandler.java | 257 ------------------
  .../jackhuang/hmcl/util/CrashReporter.java    |   5 -
- 23 files changed, 3 insertions(+), 1615 deletions(-)
+ 23 files changed, 3 insertions(+), 1619 deletions(-)
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/setting/ConfigUpgrader.java
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/ui/UpgradeDialog.java
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/ui/main/FeedbackPage.java
@@ -522,10 +522,10 @@ index d6c11595..d7586282 100644
      public ReadOnlyObjectProperty<State> stateProperty() {
          return state.getReadOnlyProperty();
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java
-index 111fb82d..add45e23 100644
+index dc15b1d1..7cc36a80 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java
-@@ -52,9 +52,6 @@ import org.jackhuang.hmcl.ui.construct.TwoLineListItem;
+@@ -53,9 +53,6 @@ import org.jackhuang.hmcl.ui.construct.TwoLineListItem;
  import org.jackhuang.hmcl.ui.decorator.DecoratorPage;
  import org.jackhuang.hmcl.ui.versions.GameItem;
  import org.jackhuang.hmcl.ui.versions.Versions;
@@ -535,7 +535,7 @@ index 111fb82d..add45e23 100644
  import org.jackhuang.hmcl.util.javafx.BindingMapping;
  import org.jackhuang.hmcl.util.javafx.MappedObservableList;
  import org.jackhuang.hmcl.util.platform.JavaVersion;
-@@ -76,14 +73,11 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -77,14 +74,11 @@ public final class MainPage extends StackPane implements DecoratorPage {
      private final JFXPopup popup = new JFXPopup(menu);
  
      private final StringProperty currentGame = new SimpleStringProperty(this, "currentGame");
@@ -550,7 +550,7 @@ index 111fb82d..add45e23 100644
      private final JFXButton menuButton;
  
      {
-@@ -113,44 +107,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -114,44 +108,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
  
          announcementPane = new VBox(16);
  
@@ -595,7 +595,7 @@ index 111fb82d..add45e23 100644
          StackPane launchPane = new StackPane();
          launchPane.getStyleClass().add("launch-pane");
          launchPane.setMaxWidth(230);
-@@ -220,7 +176,7 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -221,7 +177,7 @@ public final class MainPage extends StackPane implements DecoratorPage {
              launchPane.getChildren().setAll(launchButton, separator, menuButton);
          }
  
@@ -604,7 +604,7 @@ index 111fb82d..add45e23 100644
  
          menu.setMaxHeight(365);
          menu.setMaxWidth(545);
-@@ -234,40 +190,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -235,44 +191,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
          Bindings.bindContent(menu.getContent(), versionNodes);
      }
  
@@ -628,24 +628,28 @@ index 111fb82d..add45e23 100644
 -    }
 -
 -    private void doAnimation(boolean show) {
--        Duration duration = Duration.millis(320);
--        Timeline nowAnimation = new Timeline();
--        nowAnimation.getKeyFrames().addAll(
--                new KeyFrame(Duration.ZERO,
--                        new KeyValue(updatePane.translateXProperty(), show ? 260 : 0, SINE)),
--                new KeyFrame(duration,
--                        new KeyValue(updatePane.translateXProperty(), show ? 0 : 260, SINE)));
--        if (show) nowAnimation.getKeyFrames().add(
--                new KeyFrame(Duration.ZERO, e -> updatePane.setVisible(true)));
--        else nowAnimation.getKeyFrames().add(
--                new KeyFrame(duration, e -> updatePane.setVisible(false)));
--        nowAnimation.play();
+-        if (AnimationUtils.isAnimationEnabled()) {
+-            Duration duration = Duration.millis(320);
+-            Timeline nowAnimation = new Timeline();
+-            nowAnimation.getKeyFrames().addAll(
+-                    new KeyFrame(Duration.ZERO,
+-                            new KeyValue(updatePane.translateXProperty(), show ? 260 : 0, SINE)),
+-                    new KeyFrame(duration,
+-                            new KeyValue(updatePane.translateXProperty(), show ? 0 : 260, SINE)));
+-            if (show) nowAnimation.getKeyFrames().add(
+-                    new KeyFrame(Duration.ZERO, e -> updatePane.setVisible(true)));
+-            else nowAnimation.getKeyFrames().add(
+-                    new KeyFrame(duration, e -> updatePane.setVisible(false)));
+-            nowAnimation.play();
+-        } else {
+-            updatePane.setVisible(show);
+-        }
 -    }
 -
      private void launch() {
          Versions.launch(Profiles.getSelectedProfile());
      }
-@@ -276,19 +198,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -281,19 +199,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
          popup.show(menuButton, JFXPopup.PopupVPosition.BOTTOM, JFXPopup.PopupHPosition.RIGHT, 0, -menuButton.getHeight());
      }
  
@@ -665,7 +669,7 @@ index 111fb82d..add45e23 100644
      @Override
      public ReadOnlyObjectWrapper<State> stateProperty() {
          return state;
-@@ -306,30 +215,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -311,30 +216,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
          this.currentGame.set(currentGame);
      }
  
@@ -924,7 +928,7 @@ index af9a3477..44b6dfed 100644
  }
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SponsorPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SponsorPage.java
 deleted file mode 100644
-index ff685971..00000000
+index 07716990..00000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SponsorPage.java
 +++ /dev/null
 @@ -1,174 +0,0 @@
@@ -957,10 +961,10 @@ index ff685971..00000000
 -import javafx.scene.control.Label;
 -import javafx.scene.layout.*;
 -import javafx.scene.text.TextAlignment;
--import org.apache.commons.lang3.mutable.MutableObject;
 -import org.jackhuang.hmcl.task.Schedulers;
 -import org.jackhuang.hmcl.task.Task;
 -import org.jackhuang.hmcl.ui.FXUtils;
+-import org.jackhuang.hmcl.util.Holder;
 -import org.jackhuang.hmcl.util.io.HttpRequest;
 -
 -import java.math.BigDecimal;
@@ -1015,16 +1019,16 @@ index ff685971..00000000
 -            StackPane pane = new StackPane();
 -            pane.getStyleClass().add("card");
 -            listView = new JFXListView<>();
--            MutableObject<Object> lastCell = new MutableObject<>();
+-            Holder<Object> lastCell = new Holder<>();
 -            listView.setCellFactory((listView) -> new JFXListCell<Sponsor>() {
 -                @Override
 -                public void updateItem(Sponsor item, boolean empty) {
 -                    super.updateItem(item, empty);
 -
 -                    // https://mail.openjdk.org/pipermail/openjfx-dev/2022-July/034764.html
--                    if (this == lastCell.getValue() && !isVisible())
+-                    if (this == lastCell.value && !isVisible())
 -                        return;
--                    lastCell.setValue(this);
+-                    lastCell.value = this;
 -
 -                    if (!empty) {
 -                        setText(item.getName());
