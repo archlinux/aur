@@ -3,7 +3,7 @@
 
 _pkgname=revchatgpt
 pkgname="${_pkgname}-git"
-pkgver=2.2.2+5.r930.20230214.4e70b6a
+pkgver=2.2.7.r954.20230215.192201a
 pkgrel=1
 pkgdesc="Lightweight package for interacting with ChatGPT's API by OpenAI. Uses reverse engineered official API."
 arch=(
