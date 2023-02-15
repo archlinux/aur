@@ -18,7 +18,13 @@ provides=("${pkgname%-git}")
 
 build() {
   cd "$srcdir/${pkgname%-git}-${pkgver}"
-  GOCACHE=/tmp/dco make
+
+  export CGO_LDFLAGS="$LDFLAGS"
+  export CGO_CFLAGS="$CFLAGS"
+  export CGO_CXXFLAGS="$CXXFLAGS"
+  export CGO_CPPFLAGS="$CPPFLAGS"
+  export GOCACHE=/tmp/
+  make EXT_LDFLAGS="-linkmode external" GOFLAGS="-buildmode=pie -trimpath" 
   cp bin/docker-color-output dco
 }
 
