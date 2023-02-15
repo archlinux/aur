@@ -3,7 +3,7 @@
 
 _pipname=isbnlib
 pkgname=python-$_pipname
-pkgver=3.10.11
+pkgver=3.10.13
 pkgrel=1
 pkgdesc='Extract, clean, transform, hyphenate and metadata for ISBNs'
 arch=(any)
@@ -15,7 +15,7 @@ makedepends=(python-{build,installer}
              python-wheel)
 _archive="$_pipname-$pkgver"
 source=("$_archive.tar.gz::https://github.com/xlcnd/$_pipname/archive/v$pkgver.tar.gz")
-sha256sums=('914fe71b97c1de04df2d15c7590b28d65b22bab2ff4871ee287cfc3cb9fe25f4')
+sha256sums=('ed27bf2023e7f2f212d4ff147fdb29335008a7fa5a576501c58f9c40ffac34e4')
 
 build() {
 	cd "$_archive"
