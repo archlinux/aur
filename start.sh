@@ -7,10 +7,10 @@ case "$domin" in
     "github.com")
     url="https://ghproxy.com/https://github.com/"$others;
     echo "download from github mirror $url";
-    /usr/bin/aria2c -x 16 -s 8 -k 1M -o $1 $url;
+    /usr/bin/aria2c -x 16 -s 16 -k 1M -o $1 $url;
     ;;
     *)
     url=$2;
-    /usr/bin/aria2c -x 16 -s 8 -k 1M -o $1 $url;
+    /usr/bin/aria2c -x 16 -s 16 -k 1M -o $1 $url;
     ;;
 esac
