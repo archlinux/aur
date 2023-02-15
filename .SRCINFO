@@ -1,12 +1,12 @@
 pkgbase = vapoursynth-plugin-muvsfunc-git
 	pkgdesc = Plugin for Vapoursynth: muvsfunc (GIT version)
-	pkgver = 0.4.0.9.g8023d21
+	pkgver = 0.4.0.26.gba5e7c6
 	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=171956
 	arch = any
 	license = GPL
 	makedepends = git
-	depends = vapoursynth-plugin-havsfunc-git
+	depends = vapoursynth-plugin-havsfunc
 	depends = vapoursynth-plugin-mvsfunc-git
 	depends = vapoursynth-plugin-nnedi3_resample-git
 	depends = vapoursynth-plugin-awarpsharp2-git
@@ -17,7 +17,7 @@ pkgbase = vapoursynth-plugin-muvsfunc-git
 	depends = vapoursynth-plugin-dfttest-git
 	depends = vapoursynth-plugin-eedi2-git
 	depends = vapoursynth-plugin-misc-git
-	depends = vapoursynth-plugin-mvtools-git
+	depends = vapoursynth-plugin-mvtools
 	depends = vapoursynth-plugin-nnedi3-git
 	depends = vapoursynth-plugin-removegrain-git
 	depends = vapoursynth-plugin-sangnom-git
