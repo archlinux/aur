@@ -3,16 +3,20 @@
 
 pkgname=hledger-utils
 pkgver=1.12.1
-pkgrel=1
-epoch=
+pkgrel=2
 pkgdesc='Utilities extending the hledger plaintextaccounting tool'
 arch=(any)
 url="https://gitlab.com/nobodyinperson/$pkgname"
 license=(GPL)
+_pydeps=(asteval
+         matplotlib
+         pandas
+         psutil
+         rich
+         scipy)
 depends=(hledger
          python
-         python-psutil
-         python-rich)
+        "${_pydeps[@]/#/python-}")
 makedepends=(python-{build,installer,wheel}
              python-setuptools-scm)
 _archive="$pkgname-$pkgver"
