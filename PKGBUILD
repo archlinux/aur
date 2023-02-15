@@ -1,12 +1,12 @@
-# Maintainer: Jonas DOREL <jonas at dorel dot me>
+# Maintainer: jmcb <joelsgp@protonmail.com>
+# Contributor: Jonas DOREL <jonas at dorel dot me>
 
-pkgbase='python-prospector'
-pkgname=('python-prospector')
-_module='prospector'
+pkgname='python-prospector'
+_name='prospector'
 pkgver='1.6.0'
-pkgrel=3
+pkgrel=4
 pkgdesc="Python static analysis tool"
-url="http://prospector.readthedocs.io"
+url="https://github.com/PyCQA/prospector/"
 depends=('python-pylint'
          'python-pylint-celery'
          'python-pylint-django'
@@ -28,19 +28,17 @@ optdepends=('python-bandit: security linter'
             'python-pyroma: check setup.py'
             'python-vulture: find dead code')
 makedepends=('python-setuptools')
-license=('GPL')
+license=('GPL2')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('1ca0da95a2d1a151ae578f02d6fc78300a9150af8f2c2c201097213016cc92ee')
 
 build() {
-    cd "${srcdir}/${_module}-${pkgver}"
+    cd "${_name}-${pkgver}"
     python setup.py build
 }
 
 package() {
-    depends+=()
-    cd "${srcdir}/${_module}-${pkgver}"
-    PIP_CONFIG_FILE=/dev/null
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    cd "${_name}-${pkgver}"
+    python setup.py install --root="${pkgdir}" --optimize=1
 }
