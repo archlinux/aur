@@ -1,43 +1,55 @@
-# Maintainer: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani@gmail.com>
-# Contributor: Antonio Rojas <arojas@archlinux.org>
-# Contributor: Felix Yan <felixonmars@archlinux.org>
-
-_pkgname=plasma-integration
-pkgname=${_pkgname}-light
-pkgver=5.11.0
+_name=plasma-integration
+pkgname=${_name}-light
+pkgver=5.27.0
 pkgrel=1
-pkgdesc="Qt Platform Theme integration plugins for the Plasma workspaces without font dependencies"
-arch=('i686' 'x86_64')
-url="https://www.kde.org/workspaces/plasmadesktop/"
+pkgdesc='Qt Platform Theme integration plugins for the Plasma workspaces (stripped from unnecessary dependencies)'
+arch=('x86_64')
+url='https://kde.org/plasma-desktop/'
 license=('LGPL')
-conflicts=("${_pkgname}")
-provides=("${_pkgname}")
-depends=('kio' 'kwayland' 'libxcursor' 'qqc2-desktop-style')
-makedepends=('extra-cmake-modules' 'python' 'breeze')
 groups=('plasma')
-source=("https://download.kde.org/stable/plasma/${pkgver}/${_pkgname}-${pkgver}.tar.xz"{,.sig})
-sha256sums=('e010989088feefe26240036edbe423be0e16622b402720c26a0d3d0c4ade32c3' 'SKIP')
-validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell
-              '348C8651206633FD983A8FC4DEACEA00075E1D76'  # KDE Neon
-              'D07BD8662C56CB291B316EB2F5675605C74E02CF') # David Edmundson
+conflicts=("${_name}")
+provides=("${_name}")
+depends=('libxcursor' 'qqc2-desktop-style' 'perl')
+makedepends=('extra-cmake-modules' 'breeze' 'plasma-wayland-protocols')
 
-prepare() {
-    mkdir -p build
-}
+optdepends=(
+    'xdg-desktop-portal-kde: kde portal implementation'
+    'noto-fonts: default plasma fonts'
+    'ttf-hack: default monospace font'
+)
+
+_snapshot="${_name}-${pkgver}"
+source=("https://download.kde.org/stable/plasma/${pkgver}/${_snapshot}.tar.xz"{,.sig})
+
+sha256sums=(
+    '3cb091a677bfbfacbdffdd1a2c0e76afded539db3a48b2d5358236face8b4655'
+    'SKIP'
+)
+
+validpgpkeys=(
+    'E0A3EB202F8E57528E13E72FD7574483BB57B18D' # Jonathan Esk-Riddell <jr@jriddell.org>
+    '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D' # Bhushan Shah <bshah@kde.org>
+    'D07BD8662C56CB291B316EB2F5675605C74E02CF' # David Edmundson <davidedmundson@kde.org>
+    '1FA881591C26B276D7A5518EEAAF29B42A678C20' # Marco Martin <notmart@gmail.com>
+)
+
+_disable=(
+    'FontNotoSans'
+    'FontHack'
+)
+
+_disable=("${_disable[@]/#/"-DCMAKE_DISABLE_FIND_PACKAGE_"}")
+_disable=("${_disable[@]/%/"=ON"}")
 
 build() {
-    cd build
-    cmake ../${_pkgname}-${pkgver} \
-        -DCMAKE_BUILD_TYPE=Release \
+    cmake -B "build" -S "${_snapshot}" \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib \
-        -DCMAKE_DISABLE_FIND_PACKAGE_FontNotoSans=true \
-        -DCMAKE_DISABLE_FIND_PACKAGE_FontHack=true \
-        -DBUILD_TESTING=OFF
-    make
+        -DBUILD_TESTING=OFF \
+        "${_disable[@]}"
+
+    cmake --build "build"
 }
 
 package() {
-    cd build
-    make DESTDIR="${pkgdir}" install
+    DESTDIR="${pkgdir}" cmake --install "build"
 }
