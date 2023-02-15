@@ -3,8 +3,8 @@
 
 pkgname='python-prospector'
 _name='prospector'
-pkgver='1.6.0'
-pkgrel=5
+pkgver='1.9.0'
+pkgrel=1
 pkgdesc="Python static analysis tool"
 url="https://github.com/PyCQA/prospector/"
 depends=('python-pylint'
@@ -13,7 +13,6 @@ depends=('python-pylint'
          'python-pylint-plugin-utils'
          'python-pylint-flask'
          'python-requirements-detector'
-         'python-setoptconf'
          'python-yaml'
          'python-mccabe'
          'python-pyflakes'
@@ -21,9 +20,11 @@ depends=('python-pylint'
          'python-pep8-naming'
          'python-pydocstyle'
          'python-dodgy'
-         'python-toml')
+         'python-toml'
+         'python-setoptconf'
+         'python-gitpython'
+         'python-packaging')
 optdepends=('python-bandit: security linter'
-            'python-frosted: checker'
             'mypy: optional type checking'
             'python-pyroma: check setup.py'
             'python-vulture: find dead code')
@@ -33,7 +34,7 @@ makedepends=('python-build'
 license=('GPL2')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('1ca0da95a2d1a151ae578f02d6fc78300a9150af8f2c2c201097213016cc92ee')
+sha256sums=('599f31516f857d785058773875e9358702ad653e65461e8cad44134d8ee17b1f')
 
 build() {
     cd "$_name-$pkgver"
