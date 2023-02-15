@@ -1,7 +1,7 @@
 # Maintainer: Janne Veteläinen <janne.p.w.vetelainen@gmail.com>
 
 pkgname=vmangos-git
-pkgver=r5193.859f627e3
+pkgver=r5195.0872c82ed
 pkgrel=1
 pkgdesc="World of Warcraft Vanilla server emulator"
 arch=('x86_64')
@@ -62,7 +62,7 @@ prepare() {
 }
 
 build() {
-    export PATH="/usr/lib/ccache/bin/:$PATH"
+    #export PATH="/usr/lib/ccache/bin/:$PATH"
     cmake -B build -S "${pkgname}" \
         -DSUPPORTED_CLIENT_BUILD=5875 \
         -DUSE_EXTRACTORS=1 \
@@ -82,7 +82,6 @@ package() {
     # Edit default directories in mangosd.conf
     sed -i -E 's/(DataDir.+").+(")/\1\/var\/lib\/vmangos\2/' ${pkgdir}/etc/vmangos/mangosd.conf
     sed -i -E 's/(LogsDir.+").+(")/\1\/var\/log\/vmangos\2/' ${pkgdir}/etc/vmangos/mangosd.conf
-    patch -u ${pkgdir}/etc/vmangos/mangosd.conf -i ${srcdir}/mangosd.conf.patch
 
     # Install vmangos sysuser and systemd service
     install -Dm644 ${srcdir}/user.conf ${pkgdir}/usr/lib/sysusers.d/vmangos.conf
