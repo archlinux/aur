@@ -1,7 +1,7 @@
 pkgbase = lua-i3ipc-git
 	pkgdesc = A lua library for controlling i3wm & Sway
-	pkgver = r41.4c983f3
-	pkgrel = 2
+	pkgver = r43.49455db
+	pkgrel = 1
 	url = https://github.com/kraftwerk28/lua-i3ipc.git
 	arch = any
 	license = MIT
@@ -10,6 +10,8 @@ pkgbase = lua-i3ipc-git
 	depends = lua51-luv
 	depends = lua51-cjson
 	source = lua-i3ipc::git+https://github.com/kraftwerk28/lua-i3ipc.git
+	source = git+https://github.com/openresty/lua-cjson.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = lua-i3ipc-git
