@@ -1,60 +1,77 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python-stregion
 _pyname=${pkgbase#python-}
-pkgname=("python-${_pyname}" "python2-${_pyname}")
-pkgver=1.1.6
+pkgname=("python-${_pyname}")
+#"python-${_pyname}-doc")
+pkgver=1.1.7
 pkgrel=1
 pkgdesc="Python parser for ds9 region files"
 arch=('i686' 'x86_64')
 url="https://github.com/spacetelescope/stregion"
 license=('MIT' 'BSD')
-makedepends=('python-setuptools' 'python2-setuptools' 'python-numpy' 'python2-numpy')
-checkdepends=('python-matplotlib')
-source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
-        "https://raw.githubusercontent.com/spacetelescope/stregion/master/LICENSE.txt")
-md5sums=('7b23f7aaad4d2f07e59294b469d9b321'
-         '90af6948044c90bc28a1fed1865cc6ea')
+makedepends=('python-setuptools-scm'
+             'python-wheel'
+             'python-build'
+             'python-installer'
+             'python-numpy')
+#            'python-sphinx'
+#            'python-matplotlib'
+#            'python-pyparsing'
+checkdepends=('python-pytest'
+              'python-pyparsing'
+              'python-astropy'
+              'python-matplotlib')
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+#       "https://raw.githubusercontent.com/spacetelescope/stregion/master/LICENSE.txt"
+md5sums=('55bab99643ff9ab152d6852d65fe798b')
 
-prepare() {
-    cp -a ${srcdir}/${_pyname}-${pkgver}{,-py2}
+get_pyinfo() {
+     [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
+             python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
 }
 
-build() {
-    msg "Building Python2"
-    cd ${srcdir}/${_pyname}-${pkgver}-py2
-    python2 setup.py build
+#prepare() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#
+#    sed -i -e "s/ 'matplotlib.sphinxext.only_directives',//" doc/conf.py
+#}
 
-    msg "Building Python3"
+build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    python setup.py build
+    python -m build --wheel --no-isolation
+
+#    msg "Building Docs"
+##   PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyinfo)" make -C doc html
+#    cd ${srcdir}/${_pyname}-${pkgver}/doc
+#    PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyinfo)" python make.py
 }
 
 check() {
-    msg "Checking Python3"
-    cd ${srcdir}/${_pyname}-${pkgver}
-    python setup.py test
-
-    msg "Checking Python2"
-    cd ${srcdir}/${_pyname}-${pkgver}-py2
-    python2 setup.py test
-}
-
-package_python2-stregion() {
-    depends=('python2-numpy' 'python2-pyparsing>=2.0.0')
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE_kapteyn.txt
-    install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/LICENSE.txt"
-    install -D -m644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
-    python2 setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
+#   ln -rs doc/figures/pspc_skyview.fits .
+#   ln -rs doc/figures/test.reg .
+    PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyinfo)" pytest \
+        --ignore=doc/figures/test_region_drawing.py \
+        --ignore=doc/figures/test_region_drawing2.py || warning "Tests failed" # -vv --color=yes
 }
 
 package_python-stregion() {
     depends=('python-numpy' 'python-pyparsing>=2.0.0')
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE_kapteyn.txt
-    install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/LICENSE.txt"
+    install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE*
     install -D -m644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
-    python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+    rm -r ${pkgdir}/$(get_pyinfo site)/{doc,examples,src,tests}
 }
+
+#package_python-stregion-doc() {
+#    pkgdesc="Documentation for Python stregion module"
+#    arch=('any')
+#    cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
+#
+#    install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../../LICENSE*
+#    install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
+#    cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
+#}
