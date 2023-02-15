@@ -1,7 +1,7 @@
 _name=plasma-desktop
 pkgname=${_name}-light
 pkgver=5.27.0
-pkgrel=2
+pkgrel=3
 pkgdesc='KDE Plasma Desktop (stripped from unnecessary dependencies)'
 arch=('x86_64')
 url='https://kde.org/plasma-desktop/'
@@ -9,10 +9,7 @@ license=('LGPL')
 groups=('plasma')
 conflicts=("${_name}")
 provides=("${_name}")
-depends=(
-    'gawk' 'kdelibs4support' 'polkit-kde-agent' 'kmenuedit' 'xdg-user-dirs'
-    'plasma-workspace' 'knewstuff' 'knotifications' 'kdeclarative' 'kded'
-)
+depends=('plasma-workspace' 'knewstuff' 'knotifications' 'kdeclarative' 'kded' 'kdelibs4support')
 
 makedepends=(
     'extra-cmake-modules' 'kdoctools' 'xf86-input-evdev' 'xf86-input-synaptics' 'xf86-input-libinput' 'xorg-server-devel'
