@@ -1,9 +1,9 @@
 # Maintainer: 7Ji <pugokughin@gmail.com>
 
-_commit='32853b00ae54aad725c57fd619a2db8027963292'
+_commit='2b2de425986ce01010e3ebaddfa5c9ebce711c42'
 
 pkgname=linux-firmware-amlogic-ophub
-pkgver=20230119
+pkgver=20230129
 pkgrel=1
 pkgdesc="Firmware files for Linux - for AArch64 Amlogic platform, collected by ophub"
 arch=('aarch64')
@@ -12,11 +12,11 @@ license=('GPL2' 'GPL3' 'custom')
 conflicts=('linux-firmware')
 options=(!strip)
 source=(
-  "${url}/archive/${_commit}.tar.gz"
+  "firmware-${_commit}.tar.gz:::${url}/archive/${_commit}.tar.gz"
 )
 
 sha256sums=(
-  'f82437303282a5174a37f8a393bc1cc111891e266d035944faf9ec9b0aa1c5dc'
+  '958946decac205484b5c2256180898612338a2969169af5801a6dd106b797cb3'
 )
 
 package() {
@@ -25,8 +25,6 @@ package() {
   
   # Optimize wifi/bluetooth module, adapted from https://github.com/ophub/amlogic-s9xxx-armbian/blob/d324aad263106aa218f9ada5c01b1ca6f285c121/rebuild#L803
   pushd "${pkgdir}/usr/lib/firmware/brcm"
-  # Organize broadcom firmwares in one place
-  mv -f ../*.hcd .
 
   # gtking/gtking pro is bcm4356 wifi/bluetooth, wifi5 module AP6356S
   sed -e "s/macaddr=.*/macaddr=${random_macaddr}:00/" "brcmfmac4356-sdio.txt" >"brcmfmac4356-sdio.azw,gtking.txt"
