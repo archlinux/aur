@@ -1,29 +1,29 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=ruby-bake-modernize
-pkgver=0.14.4
+pkgver=0.15.1
+_commit=3b5f52f85ba3786d5e7d15dbb08446e503eabf52
 pkgrel=1
 pkgdesc='Automatically modernize parts of your project/gem'
 arch=(any)
 url='https://github.com/ioquatix/bake-modernize'
 license=(MIT)
 depends=(ruby-async-http ruby-bake ruby-build-files ruby-markly ruby-rugged)
-checkdepends=(ruby-rspec ruby-bake-test git)
+makedepends=(git)
+checkdepends=(ruby-sus ruby-bake-test git)
 options=(!emptydirs)
-source=(https://github.com/ioquatix/bake-modernize/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('77847398fc805a23286a3df8626efcc3075580e0f20881d45c55082e42ca5af1')
+source=(git+https://github.com/ioquatix/bake-modernize.git#commit=$_commit)
+sha256sums=('SKIP')
 
 prepare() {
-  cd bake-modernize-$pkgver
+  cd bake-modernize
   sed -i -e '/signing_key/d' -e 's/~>/>=/' bake-modernize.gemspec
   echo -e 'gemspec\ngem "bake-test"' > gems.rb
-  # Only works in git tree
-  sed -i "/subject.call('modernize')/d" spec/bake/modernize_spec.rb
 }
 
 build() {
   local _gemdir="$(gem env gemdir)"
-  cd bake-modernize-$pkgver
+  cd bake-modernize
   gem build bake-modernize.gemspec
   gem install \
     --local \
@@ -49,12 +49,12 @@ build() {
 
 check() {
   local _gemdir="$(gem env gemdir)"
-  cd bake-modernize-$pkgver
+  cd bake-modernize
   GEM_HOME="tmp_install/$_gemdir" bake test
 }
 
 package() {
-  cd bake-modernize-$pkgver
+  cd bake-modernize
   cp -a tmp_install/* "$pkgdir"/
   install -Dm644 license.md -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
