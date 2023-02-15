@@ -9,7 +9,7 @@ pkgdesc="Colors for Docker CLI"
 arch=('x86_64')
 license=('MIT')
 url="https://github.com/${_gitauthor}/${pkgname%-git}"
-source=("git://github.com/${_gitauthor}/${pkgname%-git}#branch=${_gitbranch}")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_gitauthor}/${pkgname%-git}/archive/refs/tags/${pkgver}.tar.gz")
 sha512sums=('SKIP')
 depends=('go')
 makedepends=(git)
