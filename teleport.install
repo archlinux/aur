@@ -1,3 +1,20 @@
+#!/bin/false
+# vim: set ft=sh ts=4 sw=4 et:
+
+. /usr/share/makepkg/util/message.sh
+
+_notify_tsh_and_tctl_moved() {
+	msg 'NOTE: The "tsh" and "tctl" commands have been moved to the "teleport-client"'
+	msg 'package. This package now contains only the server components.'
+}
+
 post_install() {
-	echo 'Please follow the instructions on https://gravitational.com/teleport/docs/quickstart/ to set things up.'
+	msg 'Please follow the instructions at the following page to set things up:'
+	msg '  https://gravitational.com/teleport/docs/quickstart/ to set things up.'
+
+    _notify_tsh_and_tctl_moved
+}
+
+post_upgrade() {
+    _notify_tsh_and_tctl_moved
 }
