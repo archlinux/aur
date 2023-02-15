@@ -1,7 +1,7 @@
 pkgbase = neovim-telescope-file-browser-git
 	pkgdesc = File Browser extension for telescope.nvim
-	pkgver = r126.g304508f
-	pkgrel = 1
+	pkgver = r130.g9c2ff3b
+	pkgrel = 2
 	url = https://github.com/nvim-telescope/telescope-file-browser.nvim
 	arch = any
 	groups = neovim-plugins
