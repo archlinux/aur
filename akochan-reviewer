@@ -1,0 +1,5 @@
+#!/bin/sh
+/usr/bin/mjai-reviewer -e akochan \
+    --akochan-dir /opt/akochan \
+    --akochan-tactics /opt/mjai-reviewer/tactics.json \
+    "$@"
