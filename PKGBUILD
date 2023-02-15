@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=gomp-git
-pkgver=r351.52e1f02
+pkgver=r362.0ef7646
 pkgrel=1
 pkgdesc='MPD client inspired by ncmpcpp written in GO.'
 arch=('x86_64')
@@ -25,7 +25,7 @@ prepare() {
 build() {
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
     cd "$pkgname"
-    go build -o build
+    go build -v -o build
 }
 
 package() {
