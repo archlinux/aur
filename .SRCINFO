@@ -1,13 +1,12 @@
 pkgbase = r-jaspnetwork
 	pkgdesc = Network Module for JASP
-	pkgver = 0.17.0
-	pkgrel = 4
+	pkgver = 0.17.1
+	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspNetwork
 	arch = any
 	groups = r-jasp
 	groups = r-jaspextra
 	license = GPL
-	makedepends = git
 	depends = r
 	depends = r-bootnet
 	depends = r-bdgraph
@@ -25,7 +24,7 @@ pkgbase = r-jaspnetwork
 	depends = r-reshape2
 	depends = r-snow
 	depends = r-stringr
-	source = git+https://github.com/jasp-stats/jaspNetwork.git
-	sha256sums = SKIP
+	source = jaspNetwork_0.17.1.tar.gz::https://github.com/jasp-stats/jaspNetwork/archive/refs/tags/v0.17.1.tar.gz
+	sha256sums = c06c20bdd001c9910874072689977afdc95eabe7583ae7a3896a60c08bd5ed71
 
 pkgname = r-jaspnetwork
