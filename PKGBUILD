@@ -28,8 +28,9 @@ pkgver() {
 
 build() {
   cd $pkgname
+  CARGO_TARGET_DIR=target
   RUSTFLAGS="-C link-arg=-fuse-ld=mold -C target-cpu=native --cfg tokio_unstable"
-  nice cargo build --release
+  nice cargo build
 }
 
 package() {
