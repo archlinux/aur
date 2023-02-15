@@ -1,6 +1,6 @@
 pkgbase = deepin-wine-douyin
 	pkgdesc = douyin,record beautify life
-	pkgver = 1.7.1
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://www.douyin.com/
 	install = deepin-wine-douyin.install
@@ -11,6 +11,12 @@ pkgbase = deepin-wine-douyin
 	depends = xdg-utils
 	provides = douyin
 	source = https://mirrors.sdu.edu.cn/spark-store-repository/store/video/com.douyin.spark/com.douyin.spark_1.7.1spark2_i386.deb
+	source = douyin-1.8.0.exe::https://www.douyin.com/download/pc/obj/douyin-pc-client/7044145585217083655/releases/9818478/1.8.0/win32-ia32/douyin-v1.8.0-win32-ia32-douyinDownload1.exe
+	source = deepin-wine-douyin.install
+	source = run.sh
 	sha256sums = ddb6e863b45e4eddee273119866e73de27b10efa5e57054933153fb442f1ce10
+	sha256sums = 322ea0649362f110cd88e5ea5f5b68b0a599837332ddfa112e385c933bf36521
+	sha256sums = ccc3f54e20200ec7c03974baa4d67bd8d1af48560c4e87a26da94608f6930862
+	sha256sums = ac1ca15434abfc4b3349481c0499d796f99e704367baf010d5e972f8e2f6df6e
 
 pkgname = deepin-wine-douyin
