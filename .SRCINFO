@@ -1,0 +1,15 @@
+pkgbase = teamwork-timer
+	pkgdesc = Timer app - the perfect complement to Teamwork.
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://www.teamwork.com/
+	arch = x86_64
+	license = unknown
+	depends = fuse2
+	depends = zlib
+	depends = hicolor-icon-theme
+	options = !strip
+	source = https://s3.amazonaws.com/tw-open/timer/Teamwork+Timer-2.1.1.AppImage
+	sha256sums = ae9a04a2394117ad9daa212b83efe17b5189b8c4e15346467296ffcb8aba0f59
+
+pkgname = teamwork-timer
