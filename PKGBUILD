@@ -75,6 +75,9 @@ package() {
     find $srcdir/$_installpath/ccs/eclipse/configuration/org.eclipse.osgi/*/data/cache.timestamps -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##"
     find $srcdir/$_installpath/ccs/eclipse/configuration/ccs.properties -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
 
+    # Bug corrections
+    find $srcdir/$_installpath/ccs/eclipse/ccstudio.ini -print0 | xargs -0 sed -i '1,2d'
+
     install -D -m0755 "$srcdir/$_installpath/$_desktop" $pkgdir/usr/share/applications/$pkgname.desktop
 
     # Hardlink to avoid time and space overhead
