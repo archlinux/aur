@@ -1,19 +1,20 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: Silvan Gümüsdere <silvan@trollbox.org>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 # Contributor: Vlad M. <vlad@archlinux.net>
 # Contributor: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=elasticdump
-pkgver=6.31.1
+pkgver=6.97.0
 pkgrel=1
 pkgdesc="Import and export tools for Elasticsearch"
 arch=(any)
 url="https://github.com/taskrabbit/elasticsearch-dump"
 license=("Apache")
 depends=('nodejs>=8.0')
-makedepends=('npm')
-source=("http://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-sha256sums=('4c4e7f45ef251acc005d3de0a99acfb2b09152c0a62f10fe51e6e043ba97f6f6')
+makedepends=('npm' 'jq')
+source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
+sha256sums=('a7ee53bc0484ebfa05ec4f9717f4c2acaa4528eb16872e790fa59920a0c60ad9')
 noextract=("$pkgname-$pkgver.tgz")
 
 package() {
