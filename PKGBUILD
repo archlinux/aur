@@ -2,8 +2,8 @@
 
 
 pkgname=vmangos-setupdb
-pkgver=1
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc="Pacman hook to update vmangos databases in MariaDB"
 arch=('x86_64')
 license=('GPL2')
