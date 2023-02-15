@@ -1,9 +1,9 @@
 #Maintainer: sukanka <su975853527 AT gmail.com>
 _pkgname=jaspJags
-_pkgver=0.17.0
+_pkgver=0.17.1
 pkgname=r-${_pkgname,,}
-pkgver=0.17.0
-pkgrel=7
+pkgver=0.17.1
+pkgrel=1
 pkgdesc="JAGS Module for JASP"
 arch=('any')
 url="https://github.com/jasp-stats/${_pkgname}"
@@ -21,7 +21,7 @@ depends=(r
 groups=(r-jasp r-jaspextra)
 optdepends=()
 source=("${_pkgname}_${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('d5fb2391358b652a4e93b8367855566f51ebc7fae8a3f7c5adb9f1feae07785d')
+sha256sums=('29fb2b2badf76fb9a36eb151320d5afa22f8b6ab74614635f56d480ff3f11037')
 
 
 build() {
