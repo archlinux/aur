@@ -10,9 +10,9 @@
 # Contributor: anthrit <anthrit [at] anthware [dot] com>
 
 pkgname=lightworks
-lwksver=2022.2
-lwksreldir=2022.2
-lwksbuild=135077
+lwksver=2023.1
+lwksreldir=2023.1
+lwksbuild=139188
 pkgver=$lwksver
 pkgrel=1
 pkgdesc="Lightworks is a professional video editing suite"
@@ -20,7 +20,7 @@ arch=('x86_64')
 options=('!strip')
 url="http://www.lwks.com/"
 license=('custom')
-depends=('cairo' 'gdk-pixbuf2' 'glib2' 'libjpeg-turbo' 'pango' 'curl' 'gtk3' 'portaudio' 'openssl' 'libgl' 'libtiff' 'libutil-linux' 'ffmpeg' 'glu' 'libedit' 'nvidia-cg-toolkit' 'openssl-1.0')
+depends=('cairo' 'gdk-pixbuf2' 'glib2' 'libjpeg-turbo' 'pango' 'curl' 'gtk3' 'portaudio' 'openssl' 'libgl' 'libtiff' 'libutil-linux' 'ffmpeg' 'glu' 'libedit' 'nvidia-cg-toolkit')
 optdepends=('nvidia-utils: only for nVidia users' 'libc++: only for BlackMagic RAW support (BRAW)' 'libc++abi: only for BlackMagic RAW support (BRAW)')
 provides=('lightworks')
 conflicts=('lwks-beta')
@@ -30,7 +30,7 @@ source=(
     )
 
 sha512sums=(
-    'fabb9badfd17cc344706e1c86d779bdba9e6ceda2859201c751f32b48a066a946737650e6bd06182d9c2487a30238d7d7a243cf5cd22a6f398793b899347e613'
+    'f61c1fdd799b5b221bc9dcbc0ff9da1ba4ea67f93a2ea4bbfa72d0e0aaaee125df607da5edcdaf135ced0aae80856f2c5ea31ec6b104e1df3354d7f2acbe007f'
     )
 
 package() {
