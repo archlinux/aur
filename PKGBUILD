@@ -1,6 +1,6 @@
 # Maintainer: Marco R. <thomasschmidt45@gmx.net>
 pkgname=friendiqa
-pkgver=0.6.5
+pkgver=0.6.7
 pkgrel=1
 pkgdesc="Client for social network Friendica"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL3')
 makedepends=('cmake')
 depends=('qt5-base' 'qt5-declarative' 'qt5-multimedia' 'qt5-quickcontrols2' )
 source=("$pkgname-$pkgver.tar.gz::https://git.friendi.ca/lubuwest/Friendiqa/archive/v${pkgver}.tar.gz")
-md5sums=('61fa2ba182d1efcb3e03eb53b54f31cb') #generate with 'makepkg -g'
+md5sums=('ce9b3ebad5b729dd5ac15fc2f189599a') #generate with 'makepkg -g'
 
 build() {
   cmake -B build -S "friendiqa\source-linux" \
