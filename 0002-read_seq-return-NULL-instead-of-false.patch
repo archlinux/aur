@@ -1,0 +1,39 @@
+From: =?utf-8?q?Fabian_Kl=C3=B6tzl?= <fabian@kloetzl.info>
+Date: Tue, 23 Feb 2016 18:45:48 +0000
+Subject: read_seq: return NULL instead of false
+
+GCC6 spills with an error on this and thus FTBFS.
+---
+ seq.cc | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/seq.cc b/seq.cc
+index 7782d0d..be8bdb6 100644
+--- a/seq.cc
++++ b/seq.cc
+@@ -83,14 +83,14 @@ read_seq(istream & in)
+ 
+     // find first line starting with >
+     while((i = in.get()) && i != EOF && i != '>') { }
+-    if(i == EOF) return false;
++    if(i == EOF) return NULL;
+ 
+     // read the name
+     while((i = in.get()) && i != EOF && !isspace(i))
+     {
+         seq->name += (char)i;
+     }
+-    if(i == EOF) return false; 
++    if(i == EOF) return NULL;
+ 
+     if(seq->name.length() == 0) 
+     {
+@@ -109,7 +109,7 @@ read_seq(istream & in)
+         }
+     }
+ 
+-    if(i == EOF) return false;
++    if(i == EOF) return NULL;
+ 
+     // allocate initial buffer of 1Mb for seq
+     size_t bufsize = INIT_SEQ_ALLOC;

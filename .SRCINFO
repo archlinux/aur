@@ -1,0 +1,25 @@
+pkgbase = transtermhp
+	pkgdesc = Find rho-independent transcription terminators in bacterial genomes
+	pkgver = 2.09
+	pkgrel = 1
+	url = http://transterm.cbcb.umd.edu/index.php
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = quilt
+	depends = gcc-libs
+	provides = 2ndscore
+	source = http://transterm.cbcb.umd.edu/transterm_hp_v2.09.zip
+	source = series
+	source = 0002-read_seq-return-NULL-instead-of-false.patch
+	source = 2to3.patch
+	source = 0003-Don-t-overwrite-CXXFLAGS.patch
+	source = hardening.patch
+	b2sums = c4553c96dac3c3b06a050d540fca15ad0688cb10e905b3b63c33734e398521a692c759b9d79476acf9241cebb0534b40b96d8a015ccb50edbc59f1888769f470
+	b2sums = f17b2afc1ae28d37d1b09de546b992e7064f8aff3400c251242b24bf51fc3ac7eb9abad9043b066655490c0ccab9939320e30d38115c81c2819e0d10f608ad6e
+	b2sums = eb798aa12ac2ecc129675cc40c08d0db09a9e66b693aaf04f9ab6b71b6e87eb111187af548b28a6d51068611565c056699e7531d909774e74eaf3f1c696b7ed1
+	b2sums = e028abf8bc84dafd879b1a0a9c1281624ee5bc2a6248012a4841c4ad6a782e3bc9c1ec97b31bedeee83bcbc71b6fc966aa3858120cabafd9ca1fc5b65de78cdb
+	b2sums = efd9062df280d010277147853f9ebb61fec1985355535746c26b7d9055498a24242dfb5001a2fb4dc7e3a217755b70242f4dd882678bcf2c6986ced8de5522d3
+	b2sums = 013afe630df1ef74dc569f938619ff5b7174f8aabd20cb2362b308ab3684462a9c65f03e78fb29430626b4ca6760f7a99afe1b37e22f5fe3edae83cc9e85bf24
+
+pkgname = transtermhp

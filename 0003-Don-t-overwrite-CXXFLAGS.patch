@@ -1,0 +1,21 @@
+From: =?utf-8?q?Fabian_Kl=C3=B6tzl?= <fabian@kloetzl.info>
+Date: Tue, 23 Feb 2016 19:21:54 +0000
+Subject: Don't overwrite CXXFLAGS
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 4e3ea8c..95ed625 100644
+--- a/Makefile
++++ b/Makefile
+@@ -40,7 +40,7 @@ OTHERFILES = USAGE.txt \
+ 
+ # These options are for GCC/G++ --- you may have to change them if you
+ # use a different compiler
+-CXXFLAGS = -g -O3 -Wall -pedantic
++CXXFLAGS+= -g -O3 -Wall -pedantic
+ 
+ all: transterm 2ndscore
+ 

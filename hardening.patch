@@ -1,0 +1,19 @@
+Author: Andreas Tille <tille@debian.org>
+LastChanged: Mon, 18 Nov 2013 15:29:48 +0100
+Description: Propagate hardening flags
+
+--- a/Makefile
++++ b/Makefile
+@@ -45,10 +45,10 @@ CXXFLAGS = -g -O3 -Wall -pedantic
+ all: transterm 2ndscore
+ 
+ transterm: $(OBJ) 
+-	$(CXX) $(CXXFLAGS) -o $@ $^
++	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
+ 
+ 2ndscore: $(SECONDARY_OBJ)
+-	$(CXX) $(CXXFLAGS) -o $@ $^
++	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
+ 
+ clean: no_obj
+ 	rm -f transterm 2ndscore core.*

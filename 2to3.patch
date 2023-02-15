@@ -1,0 +1,115 @@
+Author: Nilesh Patra <npatra974@gmail.com>
+Description: Remove python-2 relevant code, use python3 support.
+Last Changed: August 20, 2020
+--- a/make_expterm.py
++++ b/make_expterm.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ import sys
+ 
+@@ -73,11 +73,11 @@
+         j = int((tail - min_tail[at])/dy)
+         
+         if i == 0 or j == 0:
+-            print >> sys.stderr, at, i, j, hp, tail, min_hp[at], min_tail[at], dx, dy
++            print(at, i, j, hp, tail, min_hp[at], min_tail[at], dx, dy, file=sys.stderr)
+         
+         if not (0 <= i < num_bins and 0 <= j < num_bins):
+-            print >> sys.stderr, "WARNING: out of range values:", i, j, at, hp, tail
+-            print >> sys.stderr, "Ranges=", min_hp[at], max_hp[at], min_tail[at], max_tail[at]
++            print("WARNING: out of range values:", i, j, at, hp, tail, file=sys.stderr)
++            print("Ranges=", min_hp[at], max_hp[at], min_tail[at], max_tail[at], file=sys.stderr)
+             continue
+ 
+         D[at][i][j] += 1
+@@ -90,12 +90,12 @@
+ def warn_if_out_of_range(value, rng, title):
+     if value <= rng[0] or value >= rng[1]:
+         if title not in warned:
+-            print >> sys.stderr, "@" * 60
+-            print >> sys.stderr, """WARNING: random %s generated with energy lower than supplied range.
++            print("@" * 60, file=sys.stderr)
++            print("""WARNING: random %s generated with energy lower than supplied range.
+             Such examples are ignored. I suggest you re-run calibrate.sh after changing
+-            the lowerbound in the range variable therein.""" % (title)
+-            print >> sys.stderr, "Range = ", rng, "Seen = ", value
+-            print >> sys.stderr, "@" * 60
++            the lowerbound in the range variable therein.""" % (title), file=sys.stderr)
++            print("Range = ", rng, "Seen = ", value, file=sys.stderr)
++            print("@" * 60, file=sys.stderr)
+             warned[title] = True
+         return True
+     return False
+@@ -105,8 +105,8 @@
+     """Write out the matrix (transposed)"""
+     for j in range(len(A)):
+         for i in range(len(A)):
+-            print A[i][j],
+-        print
++            print(A[i][j], end=' ')
++        print()
+ 
+ 
+ def main():
+@@ -118,14 +118,14 @@
+     #tail_range = (float(sys.argv[6]), float(sys.argv[7]))
+ 
+     # print the header
+-    print seqlen, num_bins # hp_range[0], hp_range[1], tail_range[0], tail_range[1]
++    print(seqlen, num_bins) # hp_range[0], hp_range[1], tail_range[0], tail_range[1]
+ 
+     set_ranges_from_file(infile, num_bins)
+     D = hist2d_from_file(infile, num_bins) #, hp_range, tail_range)
+ 
+     # for every at value, compute and print the matrix
+     for at in sorted(D):
+-        print at, min_hp[at], max_hp[at], min_tail[at], max_tail[at]
++        print(at, min_hp[at], max_hp[at], min_tail[at], max_tail[at])
+         print_matrix(D[at])
+ 
+ if __name__ == '__main__': main()
+--- a/random_fasta.py
++++ b/random_fasta.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # generate a FASTA file with length random characters
+ import random, sys
+@@ -11,7 +11,7 @@
+ 
+ def random_fasta(fasta, length, at):
+     fasta = open(fasta, 'w')
+-    print >> fasta, ">random uniform length=", length
++    print(">random uniform length=", length, file=fasta)
+ 
+     for i in range(1,length+1):
+         fasta.write(random_base(at))
+@@ -26,7 +26,7 @@
+         i += random.randint(5, 500)
+         j = i + random.randint(200, 2000)
+         if(j < length):
+-            print >> coords, "UNK", i, j, "random"
++            print("UNK", i, j, "random", file=coords)
+         i = j
+     coords.close()
+ 
+--- a/calibrate.sh
++++ b/calibrate.sh
+@@ -52,11 +52,11 @@
+ MAKE_EXPTERM=`findprog make_expterm.py`
+ 
+ #==============================
+-# Ensure python is avialable
++# Ensure python3 is avialable
+ #==============================
+ 
+-if [ ! -x "`which python`" ] ; then
+-    echo "`basename $0`: python must be installed to run calibration scripts" > /dev/stderr
++if [ ! -x "`which python3`" ] ; then
++    echo "`basename $0`: python3 must be installed to run calibration scripts" > /dev/stderr
+     exit 3
+ fi
+ 
