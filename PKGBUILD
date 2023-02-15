@@ -4,7 +4,7 @@ _gitbranch=main
 _gitauthor=devemio
 pkgname=docker-color-output-git
 pkgver=v2.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Colors for Docker CLI"
 arch=('x86_64')
 license=('MIT')
@@ -17,13 +17,13 @@ conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/${pkgname}-${pkgver}"
   # Use last tag
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/${pkgname}-${pkgver}"
   make
   mv bin/dco-linux-amd64 dco
   install -vDm 755 dco -t "${pkgdir}/usr/bin"
