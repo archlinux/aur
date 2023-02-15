@@ -3,7 +3,7 @@
 
 pkgname=gossip
 pkgver=0.3.91
-pkgrel=2
+pkgrel=3
 pkgdesc="gossip nostr client, rust, egui based."
 arch=('x86_64')
 url="https://github.com/mikedilger/gossip"
@@ -23,7 +23,7 @@ sha256sums=(
 
 build() {
   cd $pkgname-$pkgver
-  RUSTFLAGS="-C link-arg=--ld-path=/usr/bin/mold -C target-cpu=native --cfg tokio_unstable"
+  RUSTFLAGS="-C link-arg=-fuse-ld=mold -C target-cpu=native --cfg tokio_unstable"
   nice cargo build --release
 }
 
