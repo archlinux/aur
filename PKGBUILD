@@ -62,8 +62,9 @@ prepare() {
 }
 
 build() {
-    #export PATH="/usr/lib/ccache/bin/:$PATH"
     cmake -B build -S "${pkgname}" \
+        -DCMAKE_C_COMPILER_LAUNCHER=ccache \
+        -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
         -DSUPPORTED_CLIENT_BUILD=5875 \
         -DUSE_EXTRACTORS=1 \
         -DCMAKE_INSTALL_PREFIX='/usr' \
@@ -80,8 +81,8 @@ package() {
     mv ${pkgdir}/etc/vmangos/mangosd.conf.dist ${pkgdir}/etc/vmangos/mangosd.conf
 
     # Edit default directories in mangosd.conf
-    sed -i -E 's/(DataDir.+").+(")/\1\/var\/lib\/vmangos\2/' ${pkgdir}/etc/vmangos/mangosd.conf
-    sed -i -E 's/(LogsDir.+").+(")/\1\/var\/log\/vmangos\2/' ${pkgdir}/etc/vmangos/mangosd.conf
+    sed -i 's/^DataDir.*/DataDir = "\/var\/lib\/vmangos"/' ${pkgdir}/etc/vmangos/mangosd.conf
+    sed -i 's/^LogsDir.*/LogsDir = "\/var\/log\/vmangos"/' ${pkgdir}/etc/vmangos/mangosd.conf
 
     # Install vmangos sysuser and systemd service
     install -Dm644 ${srcdir}/user.conf ${pkgdir}/usr/lib/sysusers.d/vmangos.conf
