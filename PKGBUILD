@@ -5,7 +5,7 @@ pkgname="stm32cubeide"
 pkgver=1.11.2
 _pkgver_ext=1.11.2_14494_20230119_0724.unsigned
 _pkg_file_name=en.st-stm32cubeide_1.11.2_14494_20230119_0724.unsigned_amd64.sh.zip
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
 makedepends=('imagemagick')
@@ -16,20 +16,33 @@ url="https://www.st.com/en/development-tools/stm32cubeide.html"
 license=('Commercial')
 options=(!strip)
 
-if [ ! -f ${PWD}/${_pkg_file_name} ]; then
-	msg2 ""
-	msg2 "Package not found!"
-	msg2 "The ${pkgname} can be downloaded here: ${url}"
-	msg2 "Please remember to put a downloaded package ${_pkg_file_name} into the build directory before build here: ${PWD}"
-	msg2 ""
-fi
+# Big thanks to user "yjun" for direct download link advice.
+# cURL inspiration from davinci-resolve package maintained by "Alex S".
+_curl_useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
+                        AppleWebKit/537.36 (KHTML, like Gecko) \
+                        Chrome/77.0.3865.75 \
+                        Safari/537.36"
+_curl_useragent="$(printf '%s' "$_curl_useragent" | sed 's/[[:space:]]\+/ /g')"
+_useragent_escaped="${_curl_useragent// /\\ }"
+_curl_req_url="https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-ides/stm32cubeide/_jcr_content/get-software/get-software-table-body.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html"
 
-source=("local://${_pkg_file_name}"
+_curl_req="$(curl -s --compressed -H "$_curl_useragent" "$_curl_req_url")"
+_curl_req="$(grep -m 1 "${_pkg_file_name}" <<< "$_curl_req")"
+_download_path="https://www.st.com""$(awk -F'"' '{print $4}' <<< "$_curl_req")"
+
+DLAGENTS=("https::/usr/bin/curl \
+              -gqb '' --retry 3 --retry-delay 3 \
+              -H ${_useragent_escaped} \
+              -o %o --compressed %u")
+
+source=("${_pkg_file_name}"::"$_download_path"
 #	"99-jlink.rules.patch"
-	"https://www.st.com/resource/en/license_agreement/dm00218346.pdf")
+	"https://www.st.com/resource/en/license/SLA0048_STM32CubeIDE.pdf"
+	)
 sha256sums=('86043ab98b5f0ee54ad50b23148a47a635881f4c616e6face9dba7b6133d51f4'
 #	'0f3f69f7c980a701bf814e94595f5acb51a5d91be76b74e5b632220cfb0e7bb3'
-	'SKIP')
+	'SKIP'
+)
 
 prepare(){
 	mkdir -p build
