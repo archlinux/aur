@@ -1,6 +1,6 @@
 pkgbase = linux-aarch64-flippy
 	pkgver = 6.1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/unifreq/linux-6.1.y
 	arch = aarch64
 	license = GPL2
@@ -9,7 +9,7 @@ pkgbase = linux-aarch64-flippy
 	makedepends = dtc
 	makedepends = uboot-tools
 	options = !strip
-	source = linux-6.1.y-29c263d9c3e5ce3c9099bd35d79dcb1eedbca99c.tar.gz:::https://github.com/unifreq/linux-6.1.y/archive/29c263d9c3e5ce3c9099bd35d79dcb1eedbca99c.tar.gz
+	source = linux-6.1.y-29c263d9c3e5ce3c9099bd35d79dcb1eedbca99c.tar.gz::https://github.com/unifreq/linux-6.1.y/archive/29c263d9c3e5ce3c9099bd35d79dcb1eedbca99c.tar.gz
 	source = config
 	source = linux.preset
 	sha256sums = 2b287393501be50f6574a43f6eb56b3e001b11ab2aa8d43219de6de3fec18e51

@@ -17,7 +17,7 @@ pkgname=(
   "${pkgbase}-dtb-rockchip"
 )
 pkgver="${_pkgver_main}"
-pkgrel=1
+pkgrel=2
 arch=('aarch64')
 url="https://github.com/unifreq/${_flippy_repo}"
 license=('GPL2')
@@ -26,7 +26,7 @@ makedepends=( # Since we don't build the doc, most of the makedeps for other lin
 )
 options=(!strip)
 source=(
-  "${_srcname}.tar.gz:::${url}/archive/${_flippy_commit}.tar.gz"
+  "${_srcname}.tar.gz::${url}/archive/${_flippy_commit}.tar.gz"
   'config'
   'linux.preset'
 )
