@@ -1,0 +1,25 @@
+pkgbase = freekill
+	pkgdesc = A Bang-like card game
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Notify-ctrl/FreeKill
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = flex
+	makedepends = bison
+	makedepends = qt6-tools
+	makedepends = swig
+	depends = qt6-declarative
+	depends = qt6-multimedia
+	depends = qt6-5compat
+	depends = qt6-shadertools
+	depends = libgit2
+	depends = lua
+	depends = sqlite
+	depends = openssl
+	depends = readline
+	source = https://github.com/Notify-ctrl/FreeKill/releases/download/v0.0.1/FreeKill-0.0.1-source.tar.gz
+	sha256sums = 18d1474413b730cc8a5ebdbd4948c63e51fb42026d3baf058b1cfcd894eb2c7c
+
+pkgname = freekill
