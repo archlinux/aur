@@ -3,7 +3,7 @@
 
 pkgname=gossip
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="gossip nostr client, rust, egui based."
 arch=('x86_64')
 url="https://github.com/mikedilger/gossip"
@@ -11,7 +11,6 @@ license=(MIT)
 makedepends=(cargo git mold)
 provides=($pkgname)
 conflicts=($pkgname)
-options=(!lto)
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/mikedilger/gossip/archive/refs/tags/v${pkgver}.tar.gz"
   "$pkgname.desktop"
@@ -21,10 +20,16 @@ sha256sums=(
   'cf28c5863c0f5f6766d98cb18189761f95f2a0a7c166a39afa4ffa2578a703af'
 )
 
+#prepare() {
+#  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+#}
+
 build() {
   cd $pkgname-$pkgver
+  export CARGO_TARGET_DIR=target
   RUSTFLAGS="-C link-arg=-fuse-ld=mold -C target-cpu=native --cfg tokio_unstable"
-  nice cargo build --release
+ # nice cargo build --frozen --release --all-features
+  nice cargo build --release --all-features
 }
 
 package() {
@@ -32,6 +37,5 @@ package() {
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "gossip.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
-  mkdir -p "$pkgdir"/usr/share/applications/
-  install -Dm644 "${srcdir}/${pkgname}.desktop" "$pkgdir/usr/share/applications/"
+  install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }

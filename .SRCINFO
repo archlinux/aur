@@ -1,7 +1,7 @@
 pkgbase = gossip
 	pkgdesc = gossip nostr client, rust, egui based.
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mikedilger/gossip
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,6 @@ pkgbase = gossip
 	makedepends = mold
 	provides = gossip
 	conflicts = gossip
-	options = !lto
 	source = gossip-0.4.0.tar.gz::https://github.com/mikedilger/gossip/archive/refs/tags/v0.4.0.tar.gz
 	source = gossip.desktop
 	sha256sums = 0778b57f59955698591351098772efa0fc3f88f1b2839393fc7ebd61a176874f
