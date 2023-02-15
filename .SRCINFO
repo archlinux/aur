@@ -11,6 +11,7 @@ pkgbase = chimeraos-device-quirks-git
 	makedepends = python-setuptools
 	makedepends = git
 	depends = systemd
+	depends = swh-plugins
 	depends = ryzenadj-controller-git
 	source = chimeraos-device-quirks::git+https://github.com/ChimeraOS/device-quirks.git
 	md5sums = SKIP

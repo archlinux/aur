@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/ChimeraOS/device-quirks"
 license=('MIT')
 depends=('systemd'
+         'swh-plugins'
          'ryzenadj-controller-git')
 makedepends=('python-build'
              'python-installer'
