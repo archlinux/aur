@@ -25,7 +25,7 @@ prepare() {
 build() {
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
     cd "$pkgname"
-    go build -o build
+    go build -v -o build
 }
 
 package() {
