@@ -1,7 +1,7 @@
 _name=plasma-desktop
 pkgname=${_name}-light
 pkgver=5.27.0
-pkgrel=1
+pkgrel=2
 pkgdesc='KDE Plasma Desktop (stripped from unnecessary dependencies)'
 arch=('x86_64')
 url='https://kde.org/plasma-desktop/'
@@ -9,11 +9,14 @@ license=('LGPL')
 groups=('plasma')
 conflicts=("${_name}")
 provides=("${_name}")
-depends=('gawk' 'kdelibs4support' 'polkit-kde-agent' 'kmenuedit' 'systemsettings' 'xdg-user-dirs')
+depends=(
+    'gawk' 'kdelibs4support' 'polkit-kde-agent' 'kmenuedit' 'xdg-user-dirs'
+    'plasma-workspace' 'knewstuff' 'knotifications' 'kdeclarative' 'kded'
+)
 
 makedepends=(
     'extra-cmake-modules' 'kdoctools' 'xf86-input-evdev' 'xf86-input-synaptics' 'xf86-input-libinput' 'xorg-server-devel'
-    'kdesignerplugin' 'kaccounts-integration' 'intltool' 'kinit' 'wayland-protocols'
+    'kdesignerplugin' 'kaccounts-integration' 'intltool' 'kinit' 'wayland-protocols' 'krunner'
 )
 
 optdepends=(
@@ -21,6 +24,7 @@ optdepends=(
     'plasma-pa: applet for audio volume management using PulseAudio'
     'powerdevil: power management, suspend and hibernate support'
     'kscreen: screen management'
+    'krunner: launch and search applications'
 )
 
 _snapshot="${_name}-${pkgver}"
