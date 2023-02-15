@@ -11,10 +11,21 @@ if [ -z "${QQ_DOWNLOAD_DIR}" ]; then
     fi
     QQ_DOWNLOAD_DIR="${XDG_DOWNLOAD_DIR:-$HOME/Downloads}"
 fi
+set -euo pipefail
 
-if [ "${XDG_SESSION_TYPE}" == "wayland" ]; then
-    QQ_ELECTRON_FLAGS="--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations ${QQ_ELECTRON_FLAGS}"
+flags_file="${XDG_CONFIG_HOME}/qq-electron-flags.conf"
+
+declare -a flags
+
+if [[ -f "${flags_file}" ]]; then
+    mapfile -t < "${flags_file}"
 fi
+
+for line in "${MAPFILE[@]}"; do
+    if [[ ! "${line}" =~ ^[[:space:]]*#.* ]]; then
+        flags+=("${line}")
+    fi
+done
 
 QQ_HOTUPDATE_DIR="${QQ_APP_DIR}/versions"
 QQ_HOTUPDATE_VERSION="3.0.0-571"
@@ -73,7 +84,7 @@ bwrap --new-session --cap-drop ALL --unshare-user-try --unshare-pid --unshare-cg
     --ro-bind-try "${HOME}/local/share/.icons" "${HOME}/local/share/.icons" \
     --ro-bind-try "${XDG_CONFIG_HOME}/gtk-3.0" "${XDG_CONFIG_HOME}/gtk-3.0" \
     --setenv IBUS_USE_PORTAL 1 \
-    /opt/QQ/electron "${QQ_ELECTRON_FLAGS}" "$@" /opt/QQ/resources/app
+    /opt/QQ/electron "${flags[@]}" "$@" /opt/QQ/resources/app
 
 # 移除无用崩溃报告和日志
 # 如果需要向腾讯反馈 bug，请注释掉如下几行
