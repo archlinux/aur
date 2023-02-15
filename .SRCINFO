@@ -1,6 +1,6 @@
 pkgbase = uacme
 	pkgdesc = An ACMEv2 client written in plain C with minimal dependencies
-	pkgver = 1.7.3
+	pkgver = 1.7.4
 	pkgrel = 1
 	url = https://github.com/ndilieto/uacme/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = uacme
 	depends = curl
 	depends = gnutls
 	optdepends = libev: for ualpn
-	source = uacme-1.7.3::git+https://github.com/ndilieto/uacme.git#tag=8bea677e43dbc6301f4d94cdb29478bf8fabb54a?signed
+	source = uacme-1.7.4::git+https://github.com/ndilieto/uacme.git#tag=5ed512372499aefe9f431b4a6fcb3ed2faa6d841?signed
 	validpgpkeys = 243828049BB5F549446516E24142E3D6318A7874
 	sha256sums = SKIP
 
