@@ -5,7 +5,7 @@
 
 pkgname=nheko
 pkgver=0.11.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop client for the Matrix protocol"
 arch=('x86_64')
 url="https://github.com/Nheko-Reborn/nheko"
@@ -17,9 +17,8 @@ optdepends=('qt-jdenticon: Auto-generated profile pictures (identicons)'
             'gst-plugins-good: VoIP/Video calls'
             'gst-plugins-bad: VoIP/Video calls'
             'libnice: VoIP/Video calls'
-            'gst-plugin-qmlgl: Screen sharing')
+            'gst-plugin-qmlgl: Video calls and Screen sharing')
 makedepends=(cmake ninja boost qt5-tools fontconfig nlohmann-json asciidoc lmdbxx spdlog)
-checkdepends=(gtest gmock)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Nheko-Reborn/nheko/archive/v$pkgver.tar.gz")
 sha512sums=('3ccaa859ff76a78c024ea2159e666316a3505bc3a3220020a4805ee93351865868b56219ab8421c70ed9922c3f38fbb39370c7f98b702836bd3bb3665c712fda')
 
@@ -36,7 +35,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_INSTALL_LIBDIR='lib' \
     -DBUILD_SHARED_LIBS=ON \
-    -DBUILD_LIB_TESTS=ON \
+    -DBUILD_LIB_TESTS=OFF \
     -DBUILD_LIB_EXAMPLES=OFF \
     -Wno-dev
   cmake --build build --verbose
