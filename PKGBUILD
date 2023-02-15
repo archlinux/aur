@@ -4,7 +4,7 @@ _commit='2b2de425986ce01010e3ebaddfa5c9ebce711c42'
 
 pkgname=linux-firmware-amlogic-ophub
 pkgver=20230129
-pkgrel=1
+pkgrel=2
 pkgdesc="Firmware files for Linux - for AArch64 Amlogic platform, collected by ophub"
 arch=('aarch64')
 url="https://github.com/ophub/firmware"
@@ -12,7 +12,7 @@ license=('GPL2' 'GPL3' 'custom')
 conflicts=('linux-firmware')
 options=(!strip)
 source=(
-  "firmware-${_commit}.tar.gz:::${url}/archive/${_commit}.tar.gz"
+  "firmware-${_commit}.tar.gz::${url}/archive/${_commit}.tar.gz"
 )
 
 sha256sums=(

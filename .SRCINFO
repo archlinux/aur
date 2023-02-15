@@ -1,7 +1,7 @@
 pkgbase = linux-firmware-amlogic-ophub
 	pkgdesc = Firmware files for Linux - for AArch64 Amlogic platform, collected by ophub
 	pkgver = 20230129
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ophub/firmware
 	arch = aarch64
 	license = GPL2
@@ -9,7 +9,7 @@ pkgbase = linux-firmware-amlogic-ophub
 	license = custom
 	conflicts = linux-firmware
 	options = !strip
-	source = firmware-2b2de425986ce01010e3ebaddfa5c9ebce711c42.tar.gz:::https://github.com/ophub/firmware/archive/2b2de425986ce01010e3ebaddfa5c9ebce711c42.tar.gz
+	source = firmware-2b2de425986ce01010e3ebaddfa5c9ebce711c42.tar.gz::https://github.com/ophub/firmware/archive/2b2de425986ce01010e3ebaddfa5c9ebce711c42.tar.gz
 	sha256sums = 958946decac205484b5c2256180898612338a2969169af5801a6dd106b797cb3
 
 pkgname = linux-firmware-amlogic-ophub
