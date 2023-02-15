@@ -1,9 +1,9 @@
-# Maintainer: Daniel Souza <danisztls@gmail.com>
+# Maintainer: Danilo Carolino <danilogcarolino@gmail.com>
 
 _gitbranch=main
 _gitauthor=devemio
 pkgname=docker-color-output-git
-pkgver=v2.0.0.r4.g9b9d14a
+pkgver=v2.2.0
 pkgrel=3
 pkgdesc="Colors for Docker CLI"
 arch=('x86_64')
