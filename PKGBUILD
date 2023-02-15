@@ -1,10 +1,10 @@
-# Maintainer: Jean Lucas <jean@4ray.co>
+# Contributor: Jean Lucas <jean@4ray.co>
 # Contributor: Ondrej Jirman <megous@megous.com>
 
 pkgname=megatools
-pkgver=1.11.0+20220519
+pkgver=1.11.1+20230212
 _pkgver=${pkgver/+/.}
-pkgrel=2
+pkgrel=1
 pkgdesc='CLI for MEGA'
 arch=(i686 x86_64 armv6h armv7h aarch64)
 url=https://megatools.megous.com
@@ -12,7 +12,7 @@ license=(GPL2)
 depends=(curl glib2)
 makedepends=(asciidoc docbook2x meson)
 source=(https://megatools.megous.com/builds/$pkgname-$_pkgver.tar.gz)
-sha512sums=('5c379a5a8da150d6d95a84f6bcf0c9be5b725c2c0e799e8d1e3358ac6081579eacc853f6b3d369c06006d3bdb3917dc20cf39ca5c69f153dc38de9daab74cea1')
+sha512sums=('8d96533c6ae117f38e095b16f4c3241a9170397174befaff9caf81b598addbe60c89c05d29b20efead462a8f263f799107653cab1ad429ab2ba2fe0dc4fbbb39')
 
 build() {
   arch-meson $pkgname-$_pkgver build -D symlinks=true -D man=true
