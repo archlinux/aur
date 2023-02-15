@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-types-docutils
 _name=${pkgname#python-}
-pkgver=0.19.1.3
+pkgver=0.19.1.4
 pkgrel=1
 pkgdesc="Typing stubs for docutils"
 arch=('any')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('36fe30de56f1ece1a9f7a990d47daa781b5af831d2b3f2dcb7dfd01b857cc3d4')
+sha256sums=('1b64b21b609ff1fc7791d3d930f14b56b36ad09029fd97e45e34cc889d671b5f')
 
 build() {
   cd "$_name-$pkgver"
