@@ -1,8 +1,8 @@
 # Maintainer: Sean Ho <holishing at ccns dot ncku dot edu dot tw>
 
 pkgname=ibus-libzhuyin
-pkgver=1.10.0
-pkgrel=2
+pkgver=1.10.2
+pkgrel=1
 pkgdesc="New Zhuyin engine based on libzhuyin for IBus"
 arch=('x86_64')
 license=('GPL2')
@@ -11,7 +11,7 @@ url="https://github.com/libzhuyin/ibus-libzhuyin"
 depends=('ibus' 'opencc' 'python-xdg' 'libpinyin')
 makedepends=('git' 'intltool' 'gnome-common' 'wget')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/libzhuyin/ibus-libzhuyin/archive/$pkgver.tar.gz")
-sha512sums=('9b37b02ebaeb1f3e67eabc6b04d7f68ed5dad4c44097c585eebc48d4245ef3f39ab65cc57e374a07eddd74d83fa87a42ca7a2c138994ba0d9fa27748c29fb380')
+sha512sums=('ff71f881973d18c1b8b9aa8a9b1a5814383b9a3a88135163820241a0b5d28abc8d3bf0715b83878e32526df84eeb6a6f5a864062f0be89dec63b2c6ece34645e')
 
 build() {
   cd $pkgname-$pkgver
