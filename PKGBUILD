@@ -43,6 +43,7 @@ prepare () {
 build () {
     cd "${srcdir}/${_pkgname}"
     export CGO_LDFLAGS="${LDFLAGS}"
+    export LDFLAGS="${LDFLAGS} -Wl,-z,relro,-z,now"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
