@@ -1,8 +1,8 @@
 # Maintainer: DingYuan <justforlxz@gmail.com>
 
 pkgname=golang-github-linuxdeepin-go-dbus-factory-git
-pkgver=1.11.2.r1.ge45a34e
-pkgrel=2
+pkgver=2.0.2.r1.gbda82fd
+pkgrel=1
 pkgdesc='GO DBus factory for DDE'
 arch=('any')
 url="https://github.com/linuxdeepin/go-dbus-factory"
@@ -58,5 +58,5 @@ check() {
 package() {
   cd "$srcdir"/build/src/github.com/linuxdeepin/go-dbus-factory
   install -dm755 "$pkgdir"/usr/share/gocode/src/github.com/linuxdeepin/go-dbus-factory
-  cp -a com.* org.* net.* object_manager "$pkgdir"/usr/share/gocode/src/github.com/linuxdeepin/go-dbus-factory/
+  cp -a com.* org.* object_manager "$pkgdir"/usr/share/gocode/src/github.com/linuxdeepin/go-dbus-factory/
 }
