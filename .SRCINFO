@@ -1,6 +1,6 @@
 pkgbase = gossip-git
 	pkgdesc = gossip nostr client, rust, egui based.
-	pkgver = 0.3.91.r6.g4204a56
+	pkgver = 0.3.91.r13.g1cda929
 	pkgrel = 1
 	url = https://github.com/mikedilger/gossip
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = gossip-git
 	makedepends = mold
 	provides = gossip-git
 	conflicts = gossip-git
-	options = !lto
 	source = gossip-git::git+https://github.com/mikedilger/gossip.git
 	source = gossip-git.desktop
 	sha256sums = SKIP
