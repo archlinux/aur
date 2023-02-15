@@ -1,0 +1,23 @@
+pkgbase = r-rtexttools
+	pkgdesc = Automatic Text Classification via Supervised Learning
+	pkgver = 1.4.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=RTextTools
+	arch = x86_64
+	license = GPL3
+	depends = r>=3.6.0
+	depends = r-sparsem
+	depends = r-randomforest
+	depends = r-methods
+	depends = r-tree
+	depends = r-nnet
+	depends = r-tm
+	depends = r-e1071
+	depends = r-ipred
+	depends = r-catools
+	depends = r-glmnet
+	depends = r-tau
+	source = https://cran.microsoft.com/snapshot/2020-04-27/src/contrib/RTextTools_1.4.3.tar.gz
+	sha256sums = ffd34254d07a2aad27d8dd5cfd877b3fc9ffa94771fd8e6c36609ac170dcb23b
+
+pkgname = r-rtexttools
