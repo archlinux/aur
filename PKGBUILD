@@ -28,8 +28,8 @@ build() {
   cd $pkgname-$pkgver
   export CARGO_TARGET_DIR=target
   RUSTFLAGS="-C link-arg=-fuse-ld=mold -C target-cpu=native --cfg tokio_unstable"
- # nice cargo build --frozen --release --all-features
-  nice cargo build --release --all-features
+  # cargo build --frozen --release --all-features
+  cargo build --release --all-features
 }
 
 package() {
