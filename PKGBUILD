@@ -16,6 +16,12 @@ makedepends=(git)
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 
+prepare() {
+  cd "$srcdir/${pkgname%-git}-${pkgver}"
+
+  go mod tidy -compat=1.17
+}
+
 build() {
   cd "$srcdir/${pkgname%-git}-${pkgver}"
 
