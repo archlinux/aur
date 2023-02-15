@@ -11,6 +11,6 @@ post_upgrade() {
     info
 }
 pre_remove() {
-    echo "deleting the WeChat bottle..."
+    echo "deleting the douyin bottle..."
     find /home -maxdepth 2 -name ".deepinwine" -exec rm -rf \{\}/Spark-douyin/ \;
 }

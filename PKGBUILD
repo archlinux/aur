@@ -25,7 +25,7 @@ source=("https://mirrors.sdu.edu.cn/spark-store-repository/store/video/${_pkgnam
     run.sh)
 sha256sums=('ddb6e863b45e4eddee273119866e73de27b10efa5e57054933153fb442f1ce10'
             '322ea0649362f110cd88e5ea5f5b68b0a599837332ddfa112e385c933bf36521'
-            'ccc3f54e20200ec7c03974baa4d67bd8d1af48560c4e87a26da94608f6930862'
+            '848e0cf20cd7d123171a02764ad311fc1b1a050df361ebad45ea2efd16dfee07'
             'ac1ca15434abfc4b3349481c0499d796f99e704367baf010d5e972f8e2f6df6e')
 
 prepare() {
