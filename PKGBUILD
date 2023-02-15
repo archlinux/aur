@@ -2,7 +2,7 @@
 
 _pkgname=ntfy
 pkgname=${_pkgname}sh-bin
-pkgver=1.30.1
+pkgver=1.31.0
 pkgrel=1
 pkgdesc="Send push notifications to your phone or desktop using PUT/POST"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -12,11 +12,11 @@ depends=()
 makedepends=()
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_x86_64.tar.gz"
+source=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_${arch}.tar.gz"
         "${_pkgname}.sysusers")
 backup=('etc/ntfy/server.yml' 'etc/ntfy/client.yml')
 
-sha256sums=('daf6845317adbb951c470b0d08b43b7b077ef669617934e0eddb5d719f0706e1'
+sha256sums=('17fb41d037bc4193f9954be8d164eafe11657c4b3a8770deb926d2e534497fed'
             '0799a140256072b350b56c1b2db5fc21c94c6992277d6d1364c28ddf7058cc8f')
 
 package() {
