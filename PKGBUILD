@@ -115,7 +115,7 @@ END
 	
 	msg2 'Installation of license file'
 	install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}/"
-	install -D -o root -g root -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" "${srcdir}/dm00218346.pdf"
+	install -D -o root -g root -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" "${srcdir}/SLA0048_STM32CubeIDE.pdf"
 }
 
 #
