@@ -1,28 +1,18 @@
 # Maintainer: Yann Büchau <nobodyinperson@posteo.de>
 pkgname=python-hledger-utils-git
-pkgver=1.0.0.r1.g647eb22
+pkgver=1.12.1.r8.gf662c41
 pkgrel=1
-epoch=
 pkgdesc="Utilities extending the hledger plaintextaccounting tool"
-arch=(x86_64 aarch64)
+arch=(any)
 url="https://gitlab.com/nobodyinperson/hledger-utils"
-license=('GPL')
-groups=()
-depends=(python python-rich python-psutil hledger)
-makedepends=(python-setuptools python-build python-setuptools-scm python-wheel git)
-checkdepends=()
+license=(GPL)
+depends=(python-{asteval,rich,psutil,pandas,matplotlib,scipy} hledger)
+makedepends=(git python-{setuptools,build,setuptools-scm,wheel})
 optdepends=()
-provides=("${pkgname%-git}")
+provides=("${pkgname%-git}" hledger-utils)
 conflicts=("${pkgname%-git}")
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=("${pkgname%-git}::git+$url")
-noextract=()
-md5sums=(SKIP)
-validpgpkeys=()
+sha256sums=(SKIP)
 
 pkgver () {
     cd "$srcdir/${pkgname%-git}"
@@ -37,6 +27,5 @@ build () {
 
 package () {
     cd "$srcdir/${pkgname%-git}"
-    export PYTHONHASHSEED=0
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
