@@ -1,7 +1,7 @@
 #!/bin/bash
 # vim: set ft=sh ts=4 sw=4 et:
 
-major_version=11
+major_version=12
 
 set -e
 . /usr/share/makepkg/util/util.sh
