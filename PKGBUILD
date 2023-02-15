@@ -9,7 +9,7 @@ arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://github.com/melix99/telegrand'
 license=(GPL3)
 depends=(gtk4-telegrand libadwaita-git libtd-dev libtdjson.so)
-makedepends=(git meson rust)
+makedepends=(git meson rust blueprint-compiler)
 provides=(telegrand)
 conflicts=(telegrand)
 

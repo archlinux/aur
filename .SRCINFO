@@ -11,6 +11,7 @@ pkgbase = telegrand-git
 	makedepends = git
 	makedepends = meson
 	makedepends = rust
+	makedepends = blueprint-compiler
 	depends = gtk4-telegrand
 	depends = libadwaita-git
 	depends = libtd-dev
