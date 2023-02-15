@@ -5,7 +5,7 @@ _typesuffix='-dkms'
 _vcssuffix='-git'
 pkgname="${_pkgname}${_typesuffix}${_vcssuffix}"
 pkgver=r15.20230110.0171589
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux kernel module that creates a device '/dev/one', similar to '/dev/zero' but outputting one-bits (0xFF-bytes)."
 url='https://github.com/tinmarino/dev_one'
 arch=(
@@ -39,7 +39,7 @@ source=(
 )
 sha256sums=(
   'SKIP'                                                             # Main source (latest git checkout from https://github.com/tinmarino/dev_one.git)
-  'eaf701216794a46b55ca01a2a28c2349535c92ea1c63558c3b230ba4f866b047' # ${_pkgname}-dkms.conf.in (dev_one-dkms.conf.in)
+  'b31b4d876b2d2b0a27f1eaa1ffa3e746f9692743827702c2dcc77fc360f85d9a' # ${_pkgname}-dkms.conf.in (dev_one-dkms.conf.in)
   '2c8b08da5ce60398e1f19af0e5dccc744df274b826abe585eaba68c525434806' # one.modules-load.conf
   '788c11d95b3e9b4967f4d53b62366209a7af825e26a867ed4a76fc49cf290b05' # ${install} (dev_one-dkms.install)
 )

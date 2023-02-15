@@ -1,7 +1,7 @@
 pkgbase = dev_one-dkms-git
 	pkgdesc = Linux kernel module that creates a device '/dev/one', similar to '/dev/zero' but outputting one-bits (0xFF-bytes).
 	pkgver = r15.20230110.0171589
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tinmarino/dev_one
 	install = dev_one-dkms.install
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = dev_one-dkms-git
 	source = one.modules-load.conf
 	source = dev_one-dkms.install
 	sha256sums = SKIP
-	sha256sums = eaf701216794a46b55ca01a2a28c2349535c92ea1c63558c3b230ba4f866b047
+	sha256sums = b31b4d876b2d2b0a27f1eaa1ffa3e746f9692743827702c2dcc77fc360f85d9a
 	sha256sums = 2c8b08da5ce60398e1f19af0e5dccc744df274b826abe585eaba68c525434806
 	sha256sums = 788c11d95b3e9b4967f4d53b62366209a7af825e26a867ed4a76fc49cf290b05
 
