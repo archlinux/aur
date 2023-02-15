@@ -1,7 +1,7 @@
 # Maintainer: Philipp Lenk <philipplenk at codemetas dot de>
 
 pkgname="fernanda"
-pkgver="0.18.4_beta42"
+pkgver="0.22.0_beta47"
 pkgrel="1"
 
 pkgdesc="Editor for drafting long-form fiction"
@@ -15,15 +15,15 @@ makedepends=(cmake git)
 license=("GPL3")
 
 _repo="https://github.com/fairybow/fernanda"
-_commit="f0dd480b9e89d1078af395cca9777802702dec94"
+_commit="76b9665300b3f0fd887555f1777a0666248fbf29"
 source=("git+${_repo}.git#commit=${_commit}")
 
 sha256sums=('SKIP')
 
 build()
 {
-	mkdir -p "${srcdir}/${pkgname}/fernanda/build"
-	cd "${srcdir}/${pkgname}/fernanda/build"
+	mkdir -p "${srcdir}/${pkgname}/Fernanda/build"
+	cd "${srcdir}/${pkgname}/Fernanda/build"
 	mv ../../CMakeLists.txt ../
 	cmake -DCMAKE_INSTALL_PREFIX=/usr ../
 	make
@@ -31,7 +31,7 @@ build()
 
 package()
 {
-	cd "${srcdir}/${pkgname}/fernanda/build"
+	cd "${srcdir}/${pkgname}/Fernanda/build"
 	make DESTDIR="${pkgdir}/" install
 }
 
