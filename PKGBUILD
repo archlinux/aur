@@ -1,9 +1,9 @@
 #Maintainer: sukanka <su975853527 AT gmail.com>
 _pkgname=jaspSem
-_pkgver=0.17.0
+_pkgver=0.17.1
 pkgname=r-${_pkgname,,}
-pkgver=0.17.0
-pkgrel=7
+pkgver=0.17.1
+pkgrel=1
 pkgdesc="SEM Module for JASP"
 arch=('any')
 url="https://github.com/jasp-stats/${_pkgname}"
@@ -24,7 +24,7 @@ depends=(r
 )
 groups=(r-jasp r-jaspextra)
 source=("${_pkgname}_${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('24ebd60882a906bf5cbfaecfdd84ad947edd9ed41853de41c3dbcbaf48a7878a')
+sha256sums=('dee595dc2001026392113e878d650a589c2cb8589341e79198b42d55ca126017')
 
 
 build() {
