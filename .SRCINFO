@@ -1,7 +1,7 @@
 pkgbase = r-jaspmixedmodels
 	pkgdesc = Mixed Models Module for JASP
-	pkgver = 0.17.0
-	pkgrel = 6
+	pkgver = 0.17.1
+	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspMixedModels
 	arch = any
 	groups = r-jasp
@@ -20,7 +20,7 @@ pkgbase = r-jaspmixedmodels
 	depends = r-rstan
 	depends = r-rstanarm
 	depends = r-stanova
-	source = jaspMixedModels_0.17.0.tar.gz::https://github.com/jasp-stats/jaspMixedModels/archive/refs/tags/v0.17.0.tar.gz
-	sha256sums = e16eebc01ceb29e6ece309de4ff9abac4f1d28ef62aa9195a9b1dfd733b08771
+	source = jaspMixedModels_0.17.1.tar.gz::https://github.com/jasp-stats/jaspMixedModels/archive/refs/tags/v0.17.1.tar.gz
+	sha256sums = c3e8c02d90a6d7005039ba3a4b683e2de8f766653e52cf9452c474d4b71b7a56
 
 pkgname = r-jaspmixedmodels

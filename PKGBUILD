@@ -1,9 +1,9 @@
 #Maintainer: sukanka <su975853527 AT gmail.com>
 _pkgname=jaspMixedModels
-_pkgver=0.17.0
+_pkgver=0.17.1
 pkgname=r-${_pkgname,,}
-pkgver=0.17.0
-pkgrel=6
+pkgver=0.17.1
+pkgrel=1
 pkgdesc="Mixed Models Module for JASP"
 arch=('any')
 url="https://github.com/jasp-stats/${_pkgname}"
@@ -24,7 +24,7 @@ depends=(r
 )
 groups=(r-jasp r-jaspcommon)
 source=("${_pkgname}_${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('e16eebc01ceb29e6ece309de4ff9abac4f1d28ef62aa9195a9b1dfd733b08771')
+sha256sums=('c3e8c02d90a6d7005039ba3a4b683e2de8f766653e52cf9452c474d4b71b7a56')
 
 
 build() {
