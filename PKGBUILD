@@ -1,8 +1,8 @@
-# Maintainer: Marcin Mielniczuk <marmistrz dot dev at zoho dot eu>
+# Maintainer: Sean Ho <holishing at ccns dot ncku dot edu dot tw>
 
 pkgname=ibus-libzhuyin
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="New Zhuyin engine based on libzhuyin for IBus"
 arch=('x86_64')
 license=('GPL2')
