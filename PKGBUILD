@@ -3,7 +3,7 @@
 
 pkgname=ots
 pkgver=9.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenType fonts sanitiser. Supports TTF, WOFF, WOFF2 and other formats'
 arch=(x86_64 i686)
 url=https://github.com/khaledhosny/ots
@@ -19,7 +19,7 @@ sha256sums=('5982233f167266c6fa4d89bdd3aaddfaf7aad2f19053bc63abf901847d4403fa')
 
 build() {
 	cd "$pkgname-$pkgver"
-	arch-meson build -Dgraphite=true
+	arch-meson build -Dgraphite=true -Dcpp_std=c++14
 	ninja -C build
 }
 

@@ -1,7 +1,7 @@
 pkgbase = ots
 	pkgdesc = OpenType fonts sanitiser. Supports TTF, WOFF, WOFF2 and other formats
 	pkgver = 9.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/khaledhosny/ots
 	arch = x86_64
 	arch = i686
