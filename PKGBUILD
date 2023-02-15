@@ -18,10 +18,7 @@ provides=("${pkgname%-git}")
 
 build() {
   cd "$srcdir/${pkgname%-git}-${pkgver}"
-
-  export GOCACHE=/tmp/
-
-  make
+  GOCACHE=/tmp/dco make
   cp bin/docker-color-output dco
 }
 
