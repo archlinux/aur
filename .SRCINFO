@@ -1,0 +1,26 @@
+pkgbase = krunner-light
+	pkgdesc = Framework for providing different actions given a string query (stripped from unnecessary dependencies)
+	pkgver = 5.103.0
+	pkgrel = 1
+	url = https://community.kde.org/Frameworks
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	depends = plasma-framework
+	depends = threadweaver
+	depends = kconfig
+	depends = kcoreaddons
+	depends = kwindowsystem
+	depends = milou
+	provides = krunner
+	conflicts = krunner
+	options = !docs
+	source = https://download.kde.org/stable/frameworks/5.103/krunner-5.103.0.tar.xz
+	source = https://download.kde.org/stable/frameworks/5.103/krunner-5.103.0.tar.xz.sig
+	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
+	sha256sums = 05e89ea5f996caf8bc7df13f340eb33066edb98b29c8e367ede261eacc15ca72
+	sha256sums = SKIP
+
+pkgname = krunner-light
