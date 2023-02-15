@@ -2,13 +2,13 @@
 
 _pkgname=clp
 pkgname="${_pkgname}-git"
-pkgver=r51.ad1e053
+pkgver=r66.8b7069b
 pkgrel=1
 pkgdesc='writes input files to stdout with syntax highlighting'
 arch=('x86_64' 'aarch64')
 url="https://git.sr.ht/~eskin/clp"
 license=('custom')
-depends=('luajit' 'lua-lpeg')
+depends=('luajit' 'lua51-lpeg' 'lua51-luautf8')
 makedepends=('git')
 source=("git+${url}")
 sha256sums=('SKIP')
