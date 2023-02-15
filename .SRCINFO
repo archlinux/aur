@@ -1,6 +1,6 @@
 pkgbase = zsteg
 	pkgdesc = detect stegano-hidden data in PNG & BMP
-	pkgver = 0.2.11
+	pkgver = 0.2.12
 	pkgrel = 1
 	url = https://github.com/zed-0xff/zsteg
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = zsteg
 	depends = ruby
 	depends = ruby-zpng
 	depends = ruby-iostruct
-	source = zsteg.tar.gz::https://github.com/zed-0xff/zsteg/archive/refs/tags/v0.2.11.tar.gz
-	sha256sums = 0cf2ccf9ec563bda2d26772723a9dffa7c0ae093d0c4a428eb3f72356a844167
+	source = zsteg.tar.gz::https://github.com/zed-0xff/zsteg/archive/refs/tags/v0.2.12.tar.gz
+	sha256sums = d5bc52b3dcfb750ef4d429c888d7f95452eac25f523063341561d4343b48995f
 
 pkgname = zsteg
