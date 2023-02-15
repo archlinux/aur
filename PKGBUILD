@@ -1,12 +1,12 @@
 # Maintainer: Joseph Ryan <josephryan3.14@gmail.com>
 pkgname=mms-git
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Graphical Micromouse simulator"
 arch=('any')
 url="https://github.com/mackorone/mms"
 license=('MIT')
-makedepends=('gendesk')
+makedepends=('git' 'gendesk')
 depends=('qt5-base' 'hicolor-icon-theme')
 source=('git+https://github.com/mackorone/mms.git'
     'git+https://github.com/micromouseonline/mazefiles.git'
@@ -18,7 +18,8 @@ _name='mms'
 _categories='Simulator'
 
 prepare() {
-    gendesk -n -f ../PKGBUILD
+    gendesk -n -f --pkgname mms --pkgdesc "$pkgdesc" --categories "$_categories"
+    sed -i 's/openglwidgets/opengl/' $srcdir/mms/src/mms.pro
 }
 
 build() {
@@ -30,8 +31,7 @@ package() {
     mkdir -p $pkgdir/usr/share/mms
     mkdir -p $pkgdir/usr/bin/
     mkdir -p $pkgdir/usr/share/icons/hicolor/64x64/apps/
-    install -Dm644 "${srcdir}/mms.desktop" \
-        "$pkgdir/usr/share/applications/mms.desktop"
+    install -Dm644 $srcdir/mms.desktop $pkgdir/usr/share/applications/mms.desktop
     cp $srcdir/icon.png $pkgdir/usr/share/icons/hicolor/64x64/apps/mms.png
     cp $srcdir/mazefiles/classic/* $pkgdir/usr/share/mms
     cp $srcdir/mms/bin/mms $pkgdir/usr/bin/mms
