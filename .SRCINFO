@@ -1,7 +1,7 @@
 pkgbase = hledger-utils
 	pkgdesc = Utilities extending the hledger plaintextaccounting tool
 	pkgver = 1.12.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.com/nobodyinperson/hledger-utils
 	arch = any
 	license = GPL
