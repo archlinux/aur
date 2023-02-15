@@ -1,6 +1,7 @@
-_pkgname=washingtondc
+_pkgname=washdc
+_previousname=washingtondc
 pkgname=${_pkgname}-git
-pkgver=r2193.781d8327
+pkgver=r2627.cd565102
 pkgrel=1
 pkgdesc='Open-source Sega Dreamcast emulator'
 arch=('x86_64')
@@ -9,10 +10,10 @@ license=('GPL3')
 makedepends=('git' 'cmake')
 conflicts=("${_pkgname}")
 install="${_pkgname}.install"
-source=("git+https://github.com/${_pkgname}-emu/${_pkgname}.git"
+source=("git+https://gitlab.com/washemu/${_pkgname}.git"
         "${_pkgname}.install")
 md5sums=('SKIP'
-         '210bf6305e0dddbdd03338e069f769d7')
+         '0dc7fd8f2618c05371d66dc1882a5725')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
@@ -32,11 +33,12 @@ build() {
 	cmake .. \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release \
+		-DINVARIANTS=Off \
 		-DENABLE_DEBUGGER=Off
 	make
 }
 
 package() {
-	install -Dm755 "${srcdir}/${_pkgname}/build/src/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+	install -Dm755 "${srcdir}/${_pkgname}/build/src/${_previousname}/${_previousname}" "${pkgdir}/usr/bin/${_pkgname}"
 	install -Dm644 "${srcdir}/${_pkgname}/COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
 }
