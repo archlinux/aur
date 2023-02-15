@@ -1,17 +1,17 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=damo
-pkgver=1.2.8
+pkgver=1.6.7
 pkgrel=1
 pkgdesc="DAMON user-space tool"
 arch=('any')
 url='https://damonitor.github.io'
 license=('GPL2')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/awslabs/damo/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b3ac946fc8858cbdb67417f881b0d08abe8f02f0db60cf7fdf4aa8e07a06f7c1')
-b2sums=('cc2f3c06c0333a69ffebe16813f9a3eedcd4c38774a660f17507915327cae335aa64e7d69a6d735308b5f8abc99eca1aa93337c28d183b30fb04e9e7f126dd16')
+sha256sums=('61c72dcea43a76ff729a3a06f28d8bf6dedc1b66902b9fc830ac4f355177af60')
+b2sums=('903f17f95df7657281c22e6f0d2b0d43a5ac7a16389472325a1dbae0f71400903d62aa988b80ede709817dbe115aa4ac6b3082056695363af288a9b064958f8a')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -34,13 +34,14 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver/build"
 
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$pkgname-$pkgver/build"
 
-  python setup.py install --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
     ../LICENSE
 }
