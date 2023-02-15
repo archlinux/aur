@@ -1,0 +1,13 @@
+pkgbase = akochan
+	pkgdesc = Artificial Intelligence for Japanese mahjong
+	pkgver = r87.53188a0
+	pkgrel = 1
+	url = https://github.com/critter-mj/akochan
+	arch = any
+	license = custom
+	makedepends = git
+	depends = boost
+	source = git+https://github.com/critter-mj/akochan
+	md5sums = SKIP
+
+pkgname = akochan
