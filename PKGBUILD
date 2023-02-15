@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
 pkgname=cargo-wapm
-pkgver=0.2.1
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Cargo sub-command for publishing Rust crates to the WebAssembly Package Manager"
 url="https://github.com/Michael-F-Bryan/cargo-wapm"
@@ -11,8 +11,8 @@ depends_x86_64=('gcc-libs')
 depends_i686=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Michael-F-Bryan/cargo-wapm/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8d1d17d8c0eb3cff25cab7769c6f37cc73d47c3495ad743f4fb3c8b1fd370a83')
-b2sums=('3ee081e894ae58451306944074a00ea5d1b4435441dcd53848598954460e47ede03800af68581861fb014a6f628a6e8ac352f1f65f945f3159f232e4b05e2f78')
+sha256sums=('e8a3e571c282aaaa26eb26a0684998b8621383c7f6ae879e3f110963ca614c28')
+b2sums=('b303c6957431cccd93daef510a38359516e1e8ce72e0f420d2ede89a7c7b33f647da0d18e91af0cedcbb1e2d91bf3ccd1bb1e74c4ac5cc6d9857bf8560e81405')
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
 
