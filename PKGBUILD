@@ -2,7 +2,7 @@
 # Contributor: Bjoern Franke <bjo+aur@schafweide.org>
 
 pkgname=pywws
-pkgver=22.10.0
+pkgver=23.2.0
 pkgrel=1
 pkgdesc="Python software for USB Wireless WeatherStations"
 arch=('any')
@@ -26,7 +26,7 @@ source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$
         "$pkgname.sysusers"
         "$pkgname.tmpfiles"
         "$pkgname.udev")
-sha256sums=('c3d2edcc2cc703039adff6a40fec21f6ad844c92afee4b6ba1f7a50a24070ecf'
+sha256sums=('1a1a1fe2b0b766d94e6c66fd5d099322bfa11319256d2d497bf4b5f797252f44'
             '295a6d5c213556b587d9c8067257a13333b82bb809dc3a604fb50f3187bc91f5'
             'f65e849c1b1e59384c9a57fd8ccac43722302817a82b25e3479eabf4bf802931'
             '48adb8621d7561de665987d4883568923f73bb90a71d9bc9e9d119e0b71ef047'
