@@ -1,0 +1,35 @@
+pkgbase = electron24-bin
+	pkgdesc = Build cross platform desktop apps with web technologies - binary version 24
+	pkgver = 24.0.0.alpha.2
+	pkgrel = 1
+	url = https://electronjs.org/
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = c-ares
+	depends = ffmpeg
+	depends = gtk3
+	depends = libevent
+	depends = libxslt
+	depends = minizip
+	depends = nss
+	depends = re2
+	depends = snappy
+	optdepends = kde-cli-tools: file deletion support (kioclient5)
+	optdepends = libappindicator-gtk3: StatusNotifierItem support
+	optdepends = pipewire: WebRTC desktop sharing under Wayland
+	optdepends = trash-cli: file deletion support (trash-put)
+	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
+	provides = electron24=24.0.0.alpha.2
+	provides = electron=24.0.0.alpha.2
+	conflicts = electron24
+	source_x86_64 = electron24-bin-chromedriver-24.0.0.alpha.2-1-x86_64.zip::https://github.com/electron/electron/releases/download/v24.0.0-alpha.2/chromedriver-v24.0.0-alpha.2-linux-x64.zip
+	source_x86_64 = electron24-bin-24.0.0.alpha.2-1-x86_64.zip::https://github.com/electron/electron/releases/download/v24.0.0-alpha.2/electron-v24.0.0-alpha.2-linux-x64.zip
+	sha256sums_x86_64 = ef9bd9f8d4e89bfb0a55eadaaf950c261c654b8921b78c54fdcbfde73af61b78
+	sha256sums_x86_64 = cca9040d6c079f1f7626fbf28f32968994834821d29cf3d3d75089e7f3368815
+	source_aarch64 = electron24-bin-chromedriver-24.0.0.alpha.2-1-aarch64.zip::https://github.com/electron/electron/releases/download/v24.0.0-alpha.2/chromedriver-v24.0.0-alpha.2-linux-arm64.zip
+	source_aarch64 = electron24-bin-24.0.0.alpha.2-1-aarch64.zip::https://github.com/electron/electron/releases/download/v24.0.0-alpha.2/electron-v24.0.0-alpha.2-linux-arm64.zip
+	sha256sums_aarch64 = 1469a8a49d90adf8143c5afdf4f2a408daa2c0218aec5b8d00cebad1e0ed535f
+	sha256sums_aarch64 = 228674272b2750c057e3ab8668a52cdcb64f543943b5bd0b2fad6905f120feed
+
+pkgname = electron24-bin
