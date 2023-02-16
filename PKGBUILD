@@ -5,7 +5,7 @@
 # Upstream: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-vfio
-pkgver=6.1.11.arch1
+pkgver=6.1.12.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -32,7 +32,7 @@ validpgpkeys=(
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
 sha256sums=('SKIP'
-            '2851b2b8475f1afae7d4f82b58cf7563adf99e39ebe2c1ffce2dd002e2f91b39'
+            '81a9379fd2eac51bb2dc69d83737d7fbdd41fcaca5af4873e3666d3c706760d1'
             '46de3d90603a18762819a21605865e4b4a563744ff3ca73f7b2916c971b1188c'
             '2e383fe0b5e1ba907a4d50e8e04d233f2b5442bba97449e867ae6949ec14c190')
 
@@ -77,7 +77,6 @@ _package() {
   optdepends=('wireless-regdb: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
-  replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
   cd $_srcname
   local kernver="$(<version)"
