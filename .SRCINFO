@@ -1,6 +1,6 @@
 pkgbase = photonvision-bin
 	pkgdesc = free, fast, and easy-to-use computer vision solution for the FIRST Robotics Competition
-	pkgver = v2023.2.2
+	pkgver = v2023.4.0
 	pkgrel = 1
 	url = https://photonvision.org/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = photonvision-bin
 	depends = jre11-openjdk-headless
 	depends = avahi
 	depends = networkmanager
-	noextract = photonvision-bin-v2023.2.2.jar
-	source = photonvision-bin-v2023.2.2.jar::https://github.com/PhotonVision/photonvision/releases/download/v2023.2.2/photonvision-v2023.2.2-linuxx64.jar
-	sha256sums = 5e86b70ad427bd051cf0bfb0125ab6b44520532e6d6d419b988b17d7b16e2390
+	noextract = photonvision-bin-v2023.4.0.jar
+	source = photonvision-bin-v2023.4.0.jar::https://github.com/PhotonVision/photonvision/releases/download/v2023.4.0/photonvision-v2023.4.0-linuxx64.jar
+	sha256sums = 8c707352b8af8c4499959f5d33b08824ae7e944f4396d4785bf176bdf708445c
 
 pkgname = photonvision-bin

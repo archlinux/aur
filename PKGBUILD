@@ -1,6 +1,6 @@
 # Maintainer: Isaac Ruben <isaac at rubenfamily dot com>
 pkgname='photonvision-bin'
-pkgver="v2023.2.2"
+pkgver="v2023.4.0"
 pkgrel=1
 pkgdesc="free, fast, and easy-to-use computer vision solution for the FIRST Robotics Competition"
 arch=("x86_64")
@@ -8,7 +8,7 @@ url="https://photonvision.org/"
 license=('GPL3')
 source=("$pkgname-$pkgver.jar::https://github.com/PhotonVision/photonvision/releases/download/$pkgver/photonvision-$pkgver-linuxx64.jar")
 noextract=("$pkgname-$pkgver.jar")
-sha256sums=('5e86b70ad427bd051cf0bfb0125ab6b44520532e6d6d419b988b17d7b16e2390')
+sha256sums=('8c707352b8af8c4499959f5d33b08824ae7e944f4396d4785bf176bdf708445c')
 depends=('jre11-openjdk-headless' 'avahi' 'networkmanager')
 
 prepare() {
