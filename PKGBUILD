@@ -2,7 +2,7 @@
 pkgname="applet-window-buttons-git"
 _pkgname="applet-window-buttons"
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="This is a Plasma 5 applet that shows window buttons in your panels"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ depends=(
   'kdecoration'
 )
 source=(
-  "$pkgname::git+https://github.com/psifidotos/applet-window-buttons.git"
+  "$pkgname::git+https://github.com/psifidotos/applet-window-buttons.git#commit=924994e10402921bf22fefc099bca2914989081c"
 )
 _sourcename="applet-window-buttons"
 noextract=()
