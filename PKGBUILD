@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
 pkgname=autokernel-git
-pkgver=v2.0.1.r2.gee75705
+pkgver=2.0.1.r2.gee75705
 pkgrel=1
 pkgdesc='A tool for managing your kernel configuration that guarantees semantic correctness'
 url='https://github.com/oddlama/autokernel'
@@ -23,7 +23,7 @@ esac
 pkgver() {
   cd "$pkgname"
 
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

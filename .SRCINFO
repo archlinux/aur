@@ -1,6 +1,6 @@
 pkgbase = autokernel-git
 	pkgdesc = A tool for managing your kernel configuration that guarantees semantic correctness
-	pkgver = v2.0.1.r2.gee75705
+	pkgver = 2.0.1.r2.gee75705
 	pkgrel = 1
 	url = https://github.com/oddlama/autokernel
 	arch = x86_64
