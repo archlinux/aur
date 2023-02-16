@@ -1,0 +1,21 @@
+pkgbase = sparks-fonts
+	pkgdesc = A typeface for creating sparklines in text
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/aftertheflood/sparks
+	arch = any
+	license = custom:OFL
+	source = sparks-fonts-2.0.zip::https://github.com/aftertheflood/sparks/releases/download/v2.0/Sparks-font-complete.zip
+	source = LICENSE::https://raw.githubusercontent.com/aftertheflood/sparks/master/OFL.txt
+	sha512sums = e937f16d0dae0e2758fe7bfb40d4aa9ffc3aa9d47983278baaa00f1cd3f74ebaead1149fc8f7dbc4c33142f82dd091e0cfa3b01f4c7770fffb4d1f9fb8fef0dd
+	sha512sums = ebb9c3dbb42626cb8b92f8426daea12f90424ac4a798a310aace5f18feb5c756ae216e07a5299ed78a82574bd4ff17e8d2ef0a5197e48452e352601b8f2fcfc3
+
+pkgname = ttf-sparks-fonts
+
+pkgname = woff-sparks-fonts
+
+pkgname = woff2-sparks-fonts
+
+pkgname = eot-sparks-fonts
+
+pkgname = otf-sparks-fonts
