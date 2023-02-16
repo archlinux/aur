@@ -3,12 +3,12 @@
 
 pkgname=pakku
 pkgver=0.17
-pkgrel=1
+pkgrel=2
 pkgdesc='Pacman wrapper and AUR helper with a pacman-like user interface'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/zqqw/$pkgname"
 license=('GPL3')
-depends=('libcurl.so' 'git')
+depends=('libcurl.so' 'git' 'pcre')
 makedepends=('nim' 'git' 'asciidoc')
 backup=('etc/pakku.conf')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")

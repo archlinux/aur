@@ -1,7 +1,7 @@
 pkgbase = pakku
 	pkgdesc = Pacman wrapper and AUR helper with a pacman-like user interface
 	pkgver = 0.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zqqw/pakku
 	arch = i686
 	arch = x86_64
@@ -14,8 +14,9 @@ pkgbase = pakku
 	makedepends = asciidoc
 	depends = libcurl.so
 	depends = git
+	depends = pcre
 	backup = etc/pakku.conf
 	source = https://github.com/zqqw/pakku/archive/refs/tags/v0.17.tar.gz
-	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+	sha256sums = d5fa76ae92892cb12edcda36fe1b5e8f6fb6ca4b0247bb3b13236754b35f833f
 
 pkgname = pakku
