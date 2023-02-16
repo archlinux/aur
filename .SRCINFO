@@ -1,13 +1,12 @@
 pkgbase = apachetop
 	pkgdesc = A curses-based top-like display for Apache information, including requests per second, bytes per second, most popular URLs, etc.
-	pkgver = 0.19.7
+	pkgver = 0.23.2
 	pkgrel = 1
 	url = http://github.com/tessus/apachetop
 	arch = x86_64
 	license = BSD
 	depends = ncurses
-	source = https://github.com/tessus/apachetop/releases/download/0.19.7/apachetop-0.19.7.tar.gz
-	sha256sums = 7f0ad1cd11cd1f86052bbfd63f27ecb6cb74012a17321354af70abf05998c4eb
+	source = https://github.com/tessus/apachetop/releases/download/0.23.2/apachetop-0.23.2.tar.gz
+	sha256sums = f94a34180808c3edb24c1779f72363246dd4143a89f579ef2ac168a45b04443f
 
 pkgname = apachetop
-
