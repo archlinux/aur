@@ -3,8 +3,8 @@
 # Contributor: peter feigl <peter.feigl@gmail.com>
 
 pkgname=mit-scheme
-pkgver=11.2
-pkgrel=4
+pkgver=12.1
+pkgrel=1
 pkgdesc='MIT/GNU Scheme'
 url='https://www.gnu.org/software/mit-scheme/'
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('openssl: support for openssl')
 provides=('x11-shim.so')
 source=("https://ftp.gnu.org/gnu/mit-scheme/stable.pkg/$pkgver/$pkgname-$pkgver-x86-64.tar.gz"
         "https://ftp.gnu.org/gnu/mit-scheme/stable.pkg/$pkgver/$pkgname-$pkgver-x86-64.tar.gz.sig")
-sha256sums=('7ca848cccf29f2058ab489b41c5b3a101fb5c73dc129b1e366fb009f3414029d'
+sha256sums=('8cfbb21b0e753ab8874084522e4acfec7cadf83e516098e4ab788368b748ae0c'
             'SKIP')
 validpgpkeys=('8F664EF430167B808170D35AC9E40BAAFD0CB132') # Chris Hanson <cph@chris-hanson.org>
 

@@ -1,7 +1,7 @@
 pkgbase = mit-scheme
 	pkgdesc = MIT/GNU Scheme
-	pkgver = 11.2
-	pkgrel = 4
+	pkgver = 12.1
+	pkgrel = 1
 	url = https://www.gnu.org/software/mit-scheme/
 	arch = x86_64
 	license = GPL
@@ -12,10 +12,10 @@ pkgbase = mit-scheme
 	depends = libx11
 	optdepends = openssl: support for openssl
 	provides = x11-shim.so
-	source = https://ftp.gnu.org/gnu/mit-scheme/stable.pkg/11.2/mit-scheme-11.2-x86-64.tar.gz
-	source = https://ftp.gnu.org/gnu/mit-scheme/stable.pkg/11.2/mit-scheme-11.2-x86-64.tar.gz.sig
+	source = https://ftp.gnu.org/gnu/mit-scheme/stable.pkg/12.1/mit-scheme-12.1-x86-64.tar.gz
+	source = https://ftp.gnu.org/gnu/mit-scheme/stable.pkg/12.1/mit-scheme-12.1-x86-64.tar.gz.sig
 	validpgpkeys = 8F664EF430167B808170D35AC9E40BAAFD0CB132
-	sha256sums = 7ca848cccf29f2058ab489b41c5b3a101fb5c73dc129b1e366fb009f3414029d
+	sha256sums = 8cfbb21b0e753ab8874084522e4acfec7cadf83e516098e4ab788368b748ae0c
 	sha256sums = SKIP
 
 pkgname = mit-scheme
