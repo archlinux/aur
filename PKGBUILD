@@ -1,8 +1,9 @@
 # Maintainer: Filip Matzner <filip.matzner@iterait.com>
 
 pkgname=inertial-sense-sdk
-pkgver=1.8.7
+pkgver=1.9.0
 pkgrel=1
+pkgsuffix=".d"
 pkgdesc="Quick integration for communication with the Inertial Sense product line."
 arch=('any')
 url="https://github.com/inertialsense/inertial-sense-sdk"
@@ -11,20 +12,20 @@ makedepends=('cmake' 'ninja')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=(
-    "https://github.com/inertialsense/${pkgname}/archive/refs/tags/${pkgver}.tar.gz"
+    "https://github.com/inertialsense/${pkgname}/archive/refs/tags/${pkgver}${pkgsuffix}.tar.gz"
 )
 sha256sums=(
-    'e44cf1c44dd22b3abb0213b99b8282cb852ce35d4e56d42605d72ce29df2a805'
+    'b948c955b4230608ea141c9db3c5a92eea0b20b545264c1ce9bbddf04418af92'
 )
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}-${pkgver}${pkgsuffix}"
     cmake . -GNinja -Bbuild
     ninja -C build cltool InertialSense
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}-${pkgver}${pkgsuffix}"
     mkdir -p "${pkgdir}/usr/include/inertial-sense-sdk/"
     install -Dm644 src/*.h "${pkgdir}/usr/include/inertial-sense-sdk/"
     install -Dm644 build/libInertialSense.a "${pkgdir}/usr/lib/libInertialSense.a"
