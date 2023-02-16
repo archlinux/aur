@@ -6,7 +6,7 @@ pkgver=7.5.0
 # A rebuild is needed each time boost has its version updated.
 # Note: cpprestsdk itself doesn't link with and boost library files. But
 # azure-storeage-cpp will.
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url='https://github.com/Azure/azure-storage-cpp'
 license=('APACHE')
@@ -32,6 +32,14 @@ depends=(
 makedepends=(
     'cmake'
 )
+# We need to find a proper way of generating debug info before we allow this
+# option. By far we are not sure how debug option affects the packaging process
+# since we only know they'll add `DEBUG_XXXFLAGS` environment variable. `zstd`
+# doesn't seems to contain anything unexpected though. Is is possible that the
+# created debug package are collected from the original "packaging XXX" process?
+# Header only libraries in this repo such as `thrust-rapidsai` and `rmm` will
+# not do a debug packaging. Not sure if it means something.
+options=(!debug)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Azure/azure-storage-cpp/archive/v${pkgver}.tar.gz")
 sha256sums=('446a821d115949f6511b7eb01e6a0e4f014b17bfeba0f3dc33a51750a9d5eca5')
 
