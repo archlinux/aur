@@ -1,6 +1,6 @@
 pkgbase = rmw
 	pkgdesc = safe-remove utility for the command line
-	pkgver = 0.8.1
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://remove-to-waste.info
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = rmw
 	depends = ncurses
 	optdepends = gettext
 	optdepends = canfigger
-	source = https://github.com/theimpossibleastronaut/rmw/releases/download/v0.8.1/rmw-0.8.1.tar.gz
-	sha256sums = abad25d8c0b2d6593fe426ca2c2d064207630e6a827a7d769f4991cbb583337b
+	source = https://github.com/theimpossibleastronaut/rmw/releases/download/v0.9.0/rmw-0.9.0.tar.xz
+	sha256sums = cc9d20733c9f9945054041ee6aeac7f4a4b7a675f297ffe388e4863fb84ed4a1
 
 pkgname = rmw

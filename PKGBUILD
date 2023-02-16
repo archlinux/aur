@@ -1,8 +1,8 @@
-# Maintainer: Andy Alt <arch_stanton5995 at protonmail.com>
+# Maintainer: Andy Alt <arch_stanton5995 at proton.me>
 # Contributor: Oliver Jaksch <arch-aur at com-in dot de>
 
 pkgname=rmw
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="safe-remove utility for the command line"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'ppc64le')
@@ -12,8 +12,8 @@ depends=('ncurses')
 makedepends=('meson' 'ninja')
 optdepends=('gettext' 'canfigger')
 
-source=("https://github.com/theimpossibleastronaut/rmw/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('abad25d8c0b2d6593fe426ca2c2d064207630e6a827a7d769f4991cbb583337b')
+source=("https://github.com/theimpossibleastronaut/rmw/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('cc9d20733c9f9945054041ee6aeac7f4a4b7a675f297ffe388e4863fb84ed4a1')
 
 build() {
   arch-meson $pkgname-$pkgver build
