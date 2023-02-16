@@ -1,13 +1,14 @@
-# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 _pkgname='tint'
 pkgname="${_pkgname}-git"
-pkgver=r27.6c2c107
+pkgver=r10.f3f757f
 pkgrel=1
+epoch=1
 pkgdesc='Tetris clone for the terminal'
 arch=('x86_64')
-url='https://salsa.debian.org/games-team/tint'
+url='https://github.com/DavidGriffith/tint'
 license=('BSD')
 depends=('hicolor-icon-theme' 'ncurses')
 makedepends=('gendesk' 'git' 'imagemagick')
@@ -51,8 +52,6 @@ package() {
   cd "${_pkgname}"
   install -Dvm755 "${_pkgname}" -t "${pkgdir}/usr/bin"
   install -Dvm644 "${_pkgname}.6" -t "${pkgdir}/usr/share/man/man6"
-  install -Dvm644 {'NOTES','CREDITS'} -t "${pkgdir}/usr/share/doc/${_pkgname}"
+  install -Dvm644 {'NOTES','README.md'} -t "${pkgdir}/usr/share/doc/${_pkgname}"
   install -Dvm644 'debian/copyright' "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
-
-# vim: ts=2 sw=2 et:
