@@ -1,0 +1,11 @@
+post_install(){
+		printf "===> run systemctl daemon-reload\n"
+		printf "===> run systemctl enable deeplx\n"
+		printf "===> installed successfully, listening at 0.0.0.0:1188\n"
+}
+
+post_upgrade() {
+		post_install
+}
+
+# vim: ts=2 sw=2 et:
