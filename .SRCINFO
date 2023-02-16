@@ -1,15 +1,15 @@
 pkgbase = ruby-zpng
 	pkgdesc = pure ruby PNG file manipulation & validation
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/zed-0xff/zpng
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = ruby-rainbow
-	noextract = zpng-0.4.3.gem
+	noextract = zpng-0.4.4.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/zpng-0.4.3.gem
-	sha256sums = 1216d4df982a6978365c73d459228fd73e647945325a7369763b22b206cf1292
+	source = https://rubygems.org/downloads/zpng-0.4.4.gem
+	sha256sums = 8aa0dbf0be608c4001f925fd839627de1eca30505f4646b557b4f45f03a2f99c
 
 pkgname = ruby-zpng

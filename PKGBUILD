@@ -2,7 +2,7 @@
 
 _gemname=zpng
 pkgname=ruby-$_gemname
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="pure ruby PNG file manipulation & validation"
 arch=(any)
@@ -12,7 +12,7 @@ depends=('ruby' 'ruby-rainbow')
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('1216d4df982a6978365c73d459228fd73e647945325a7369763b22b206cf1292')
+sha256sums=('8aa0dbf0be608c4001f925fd839627de1eca30505f4646b557b4f45f03a2f99c')
 
 package() {
   local _gemdir="$(ruby -rrubygems -e'puts Gem.default_dir')"
