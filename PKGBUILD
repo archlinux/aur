@@ -4,7 +4,7 @@
 _pkgname=idris2
 pkgname=$_pkgname-git
 pkgver=latest
-pkgrel=3
+pkgrel=4
 pkgdesc='A purely functional programming language with first class types'
 url='https://www.idris-lang.org/'
 license=('custom')
@@ -12,6 +12,9 @@ arch=('x86_64')
 depends=('chez-scheme' 'sh')
 makedepends=('git')
 checkdepends=('nodejs' 'racket')
+optdepends=('nodejs: javascript backend'
+            'racket: racket backend'
+            'cc: refc backend')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+https://github.com/idris-lang/${_pkgname^}.git")
