@@ -9,7 +9,7 @@ license=("MIT")
 arch=("i686" "pentium4" "x86_64" "arm" "armv7h" "armv6h" "aarch64")
 makedepends=("cargo")
 provides=("pfetch")
-source=("$_cargp_pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$_cargo_pkgname/$_cargo_pkgname-$pkgver.crate")
+source=("$_cargo_pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$_cargo_pkgname/$_cargo_pkgname-$pkgver.crate")
 b2sums=('5630a0de9011beaf618f8f72f4cff66ea7772db92a552f18389a9a59234d94c2574c7f8c7d0f30082cac4e6c536f5505588ee4e28645c5e2448c7d82a1f1532c')
 
 prepare() {

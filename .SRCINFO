@@ -13,7 +13,7 @@ pkgbase = pfetch-rs
 	license = MIT
 	makedepends = cargo
 	provides = pfetch
-	source = -0.1.0.tar.gz::https://static.crates.io/crates/pfetch/pfetch-0.1.0.crate
+	source = pfetch-0.1.0.tar.gz::https://static.crates.io/crates/pfetch/pfetch-0.1.0.crate
 	b2sums = 5630a0de9011beaf618f8f72f4cff66ea7772db92a552f18389a9a59234d94c2574c7f8c7d0f30082cac4e6c536f5505588ee4e28645c5e2448c7d82a1f1532c
 
 pkgname = pfetch-rs
