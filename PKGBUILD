@@ -1,6 +1,6 @@
 # Maintainer: kumen
 pkgname="nrfconnect-appimage"
-pkgver=3.12.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Cross-platform development software for Bluetooth Low Energy and cIoT"
 arch=("x86_64")
@@ -14,7 +14,7 @@ options=(!strip)
 _file_name="nrfconnect-${pkgver}-x86_64.AppImage"
 
 source=("https://github.com/NordicSemiconductor/pc-nrfconnect-launcher/releases/download/v${pkgver}/${_file_name}")
-sha256sums=('371fd873f987a5e967b77ba169e98fc195dfe8cd2b4317fd87fef9499f0b4015')
+sha256sums=('6f23af9d4626929bd82bf370b61d6bf9292c5aeb1d41a2f13cf1c5c3ab61231a')
 
 prepare(){
 	# mark as executable
