@@ -1,4 +1,5 @@
-139a140,147
+139a140,148
+> install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 > install(TARGETS uvwasi_a EXPORT uvwasiConfig
 >         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
 > install(TARGETS uvwasi EXPORT uvwasiConfig
