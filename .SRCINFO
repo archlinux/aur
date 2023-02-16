@@ -1,14 +1,19 @@
 pkgbase = lutris-formatfactory-spark
 	pkgdesc = the world's advanced video and image format conversion client
-	pkgver = 5.7.5.1
+	pkgver = 5.13.0
 	pkgrel = 1
 	url = http://www.pcgeshi.com/index.html
 	arch = x86_64
 	license = custom
-	depends = bash
-	depends = hicolor-icon-theme
+	depends = p7zip
+	depends = zenity
+	depends = unixodbc
+	depends = libwbclient
 	provides = PCGESHI
-	source = https://mirrors.sdu.edu.cn/spark-store-repository/store/tools/com.sugarcane.formatfactory/com.sugarcane.formatfactory_5.7.5.1_amd64.deb
+	conflicts = deepin-wine-formatfactory
+	source = com.sugarcane.formatfactory_5.13.0_amd64.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/tools/com.sugarcane.formatfactory/com.sugarcane.formatfactory_5.7.5.1_amd64.deb
+	source = FormatFactory-5.13.0.zip::https://wt.downg.com:486/software1/FormatFactorynoad-v5.13.0.0.zip
 	sha256sums = 9e7c1c55b374ece7432398c3dd02491937dfd60e500ac79d414c9555180d70da
+	sha256sums = 2df99307e2a9762e767f7f8dce74e486719aad6ab5c68d7914abdd678b7a8584
 
 pkgname = lutris-formatfactory-spark
