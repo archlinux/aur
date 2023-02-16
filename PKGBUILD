@@ -4,7 +4,7 @@
 pkgname=forkgram
 _pkgname=frk
 pkgver=4.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Fork of Telegram Desktop messaging app.'
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/Forkgram/tdesktop"
@@ -25,9 +25,7 @@ sha512sums=('004c9e3afd32d73bb812ae61d8f2a8f504e6be66e011d221f15c1bace191ebbb0bf
 build() {
     CXXFLAGS+=' -ffat-lto-objects'
     cd "${srcdir}/$_pkgname-v$pkgver-full"
-    cmake \
-        -B build \
-        -G Ninja \
+    cmake -B build $_pkgname-v$pkgver-full -G Ninja \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_BUILD_TYPE=Release \
         -DDESKTOP_APP_DISABLE_AUTOUPDATE=ON \
