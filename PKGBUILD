@@ -5,20 +5,16 @@
 
 pkgbase=infnoise
 pkgname=(infnoise libinfnoise infnoise-tools)
-pkgver=0.3.2
-_commit=e80ddd7
-pkgrel=2
+pkgver=0.3.3
+pkgrel=1
 pkgdesc="Infinite Noise TRNG"
 arch=('x86_64')
 url="https://github.com/leetronics/infnoise"
 license=('custom:CC0 1.0 Universal')
 depends=('libftdi')
 makedepends=('git' 'sed')
-source=("$pkgbase-$pkgver::git+$url#commit=$_commit?signed")
-sha512sums=('SKIP')
-# GitHub (web-flow commit signing) <noreply@github.com> [this is NOT the authors key!]
-# gpg --keyserver hkps://pgp.surf.nl --recv-keys 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
-validpgpkeys=('5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/leetronics/infnoise/archive/$pkgver.tar.gz")
+b2sums=('f0d72df3dfd53f1f13f4a5c3f96cb911f4dad6268e3c6faf7772294019ab9f959edcbe2d30be387afdc41087e83a201df5aa8c6d0558c8d75dbd8a8f08c530a1')
 
 build() {
   cd $pkgbase-$pkgver/software
