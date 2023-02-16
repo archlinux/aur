@@ -35,8 +35,7 @@ build() {
 				  -DENABLE_BLASLAPACK=OFF \
 				  -DENABLE_PYMOAB=ON \
 				  -DBUILD_SHARED_LIBS=ON \
-				  -DCMAKE_INSTALL_PREFIX=${pkgdir}/opt/MOAB \
-				  -DMOAB_INCLUDE_DIRS=/opt/MOAB/include
+				  -DCMAKE_INSTALL_PREFIX=${pkgdir}/opt/MOAB
 	make
 }
 
