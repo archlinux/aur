@@ -2,8 +2,8 @@
 # Maintainer: chengxuncc <chengxuncc@gmail.com>
 
 pkgname=prysm
-pkgver=3.2.0
-pkgrel=3
+pkgver=3.2.1
+pkgrel=1
 pkgdesc="Prysm is an Ethereum proof-of-stake client written in Go."
 arch=('x86_64' 'arm64')
 url="https://prysmaticlabs.com/"
