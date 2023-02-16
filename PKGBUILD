@@ -1,17 +1,18 @@
-# Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
+# Maintainer: Pawel Makles <me@insrt.uk>
+# Contributor: Sefa Eyeoglu <contact@scrumplex.net>
 # Contributor: Jonathan Steel <jsteel at archlinux.org>
 # Contributor: Benjamin Klettbach <b.klettbach@gmail.com>
 
 _pkgname=obs-studio
 pkgname=obs-studio-ftl
-pkgver=27.2.0
+pkgver=29.0.2
 pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording (with FTL protocol support)"
 arch=('x86_64')
 url="https://obsproject.com"
 license=('GPL2')
 depends=('ffmpeg' 'jansson' 'libxinerama' 'libxkbcommon-x11' 'mbedtls' 'rnnoise' 'pciutils'
-         'qt5-svg' 'curl' 'jack' 'gtk-update-icon-cache' 'pipewire' 'libxcomposite' 'ftl-sdk')
+         'qt6-svg' 'curl' 'jack' 'gtk-update-icon-cache' 'pipewire' 'libxcomposite' 'ftl-sdk')
 makedepends=('cmake' 'libfdk-aac' 'x264' 'swig' 'python' 'luajit' 'sndio')
 optdepends=('libfdk-aac: FDK AAC codec support'
             'libva-intel-driver: hardware encoding'
@@ -22,32 +23,35 @@ optdepends=('libfdk-aac: FDK AAC codec support'
             'v4l2loopback-dkms: virtual camera support')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=($_pkgname-$pkgver.tar.gz::https://github.com/jp9000/obs-studio/archive/$pkgver.tar.gz
-	fix_python_binary_loading.patch)
-md5sums=('2b57d1a86dee33786f36b0effa153083'
-         '051b90f05e26bff99236b8fb1ad377d1')
+source=($pkgname-$pkgver.tar.gz::https://github.com/jp9000/obs-studio/archive/$pkgver.tar.gz
+        fix_python_binary_loading.patch
+        ignore_unused_submodules.patch)
+sha256sums=('0e6260800b80c3fc9f67c4c3fb12ffae740ab1dd188e526a55e0fc8949168db2'
+            'bdfbd062f080bc925588aec1989bb1df34bf779cc2fc08ac27236679cf612abd'
+            '60b0ee1f78df632e1a8c13cb0a7a5772b2a4b092c4a2a78f23464a7d239557c3')
 
 prepare() {
   cd $_pkgname-$pkgver
   patch -Np1 < "$srcdir"/fix_python_binary_loading.patch
+  patch -Np1 < "$srcdir"/ignore_unused_submodules.patch
 }
 
 build() {
-  cd $_pkgname-$pkgver
-
-  mkdir -p build; cd build
-
-  cmake -DCMAKE_INSTALL_PREFIX="/usr" \
-    -DBUILD_BROWSER=OFF \
-    -DBUILD_VST=OFF \
-    -DDISABLE_VLC=ON \
-    -DOBS_VERSION_OVERRIDE="$pkgver-$pkgrel" ..
-
-  make
+  cmake -B build -S $_pkgname-$pkgver \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DENABLE_BROWSER=OFF \
+    -DENABLE_VST=ON \
+    -DENABLE_VLC=OFF \
+    -DENABLE_NEW_MPEGTS_OUTPUT=OFF \
+    -DENABLE_AJA=OFF \
+    -DENABLE_JACK=ON \
+    -DENABLE_LIBFDK=ON \
+    -DOBS_VERSION_OVERRIDE="$pkgver-$pkgrel" \
+    -Wno-dev
+  
+  cmake --build build
 }
 
 package() {
-  cd $_pkgname-$pkgver/build
-
-  make install DESTDIR="$pkgdir"
+  DESTDIR="$pkgdir" cmake --install build
 }
