@@ -4,12 +4,12 @@
 pkgname=mingw-w64-libuv
 _pkgname=libuv
 pkgver=1.44.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-platform support library with a focus on asynchronous I/O (mingw-w64)"
 arch=('any')
 url="https://github.com/libuv/libuv"
 license=('custom')
-makedepends=('mingw-w64-configure')
+makedepends=('mingw-w64-cmake')
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://github.com/libuv/libuv/archive/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
@@ -17,16 +17,11 @@ sha512sums=('d21c890787b0b364fafa5fc0cbbff296bc2ca269e1991d2f7f35fcb37b8634da377
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
-prepare() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  ./autogen.sh
-}
-
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure ..
+    ${_arch}-cmake -B . -S ..
     make
     popd
   done
