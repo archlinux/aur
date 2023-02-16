@@ -1,7 +1,7 @@
 pkgbase = mtxx-bin
 	pkgdesc = 美图秀秀, An image editing software that is mostly used in Mainland China
 	pkgver = 2.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xiuxiu.web.meitu.com/
 	arch = x86_64
 	license = unknown

@@ -3,7 +3,7 @@
 pkgname=('mtxx-bin')
 _pkgname="mtxx"
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="美图秀秀, An image editing software that is mostly used in Mainland China"
 provides=($_pkgname)
 url="https://xiuxiu.web.meitu.com/"
@@ -30,7 +30,7 @@ prepare(){
 package(){
     cd ${srcdir}/opt/apps/com.meitu.mtxx
     mkdir ${pkgdir}/opt
-    install -Dm755 files/mtxx/libMT*  -t ${pkgdir}/usr/lib/${_pkgname}
+    install -Dm755 files/mtxx/{libMT*,libavro.so.23}  -t ${pkgdir}/usr/lib/${_pkgname}
     cp -rf entries          ${pkgdir}/usr/share
     rm -rf files/mtxx/lib*
     cp -rf files/mtxx        ${pkgdir}/opt/${_pkgname}
