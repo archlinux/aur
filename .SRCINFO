@@ -1,12 +1,12 @@
 pkgbase = sadv
 	pkgdesc = CLI Viewer for the SAD format
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/FelixEcker/sad
 	arch = x86_64
 	license = BSD-3
 	depends = fpc>=3.2.2-5
-	source = sadv-1.2.1.tar.gz::https://github.com/FelixEcker/sad/archive/refs/tags/1.2.1.tar.gz
-	sha256sums = 40ff6773da030d026f02659df6770c1f20ffedf524a7676e441879ed3bb79a32
+	source = sadv-1.2.2.tar.gz::https://github.com/FelixEcker/sad/archive/refs/tags/1.2.2.tar.gz
+	sha256sums = 7427196846c1380eacf8fa0c80bed1b8d56c545bf7faa89f7f000568dbbfee37
 
 pkgname = sadv
