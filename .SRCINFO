@@ -1,6 +1,6 @@
 pkgbase = httpx-bin
 	pkgdesc = Fast and multi-purpose HTTP toolkit
-	pkgver = 1.2.6
+	pkgver = 1.2.7
 	pkgrel = 1
 	url = https://github.com/projectdiscovery/httpx
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = httpx-bin
 	provides = httpx
 	conflicts = httpx
 	options = !strip
-	source_x86_64 = httpx-1.2.6-x86_64.zip::https://github.com/projectdiscovery/httpx/releases/download/v1.2.6/httpx_1.2.6_linux_amd64.zip
-	sha256sums_x86_64 = 7c89d5c94690acc2c276f677fa007eb6f1e1a6324f35d1e8d1e3fc62a7f15282
-	source_armv6h = httpx-1.2.6-armv6.zip::https://github.com/projectdiscovery/httpx/releases/download/v1.2.6/httpx_1.2.6_linux_armv6.zip
-	sha256sums_armv6h = 446717faca21ea93295c1981aa185181b1623318b142940c095d2bc0d5e0a738
-	source_aarch64 = httpx-1.2.6-aarch64.zip::https://github.com/projectdiscovery/httpx/releases/download/v1.2.6/httpx_1.2.6_linux_arm64.zip
-	sha256sums_aarch64 = bf99b7bcf161ca69adc13df50f7f5bc803f5e4afaad2ee4412dde744af519383
+	source_x86_64 = httpx-1.2.7-x86_64.zip::https://github.com/projectdiscovery/httpx/releases/download/v1.2.7/httpx_1.2.7_linux_amd64.zip
+	sha256sums_x86_64 = 6b646843459556c5b0bca747d848365b62027af225c5babb81acde0392db3d14
+	source_armv6h = httpx-1.2.7-armv6.zip::https://github.com/projectdiscovery/httpx/releases/download/v1.2.7/httpx_1.2.7_linux_armv6.zip
+	sha256sums_armv6h = 0f93d67650a81eb8942df4b22f2766364cac194feb9cfd0cfc5491be9f943d11
+	source_aarch64 = httpx-1.2.7-aarch64.zip::https://github.com/projectdiscovery/httpx/releases/download/v1.2.7/httpx_1.2.7_linux_arm64.zip
+	sha256sums_aarch64 = afe653ad8e1ec41c7d9858c4ed5b35506355ef445cfc2670818862a9f2eb0c87
 
 pkgname = httpx-bin
