@@ -15,10 +15,11 @@ depends=(
     'spark-dwine-helper'
     'spark-transhell'
     'xdg-utils'
+    )
+optdepends=(
     'wqy-microhei'
     'wqy-zenhei'
     )
-optdepends=( )
 conflicts=()
 provides=("Huawei")
 install="${pkgname}.install"
