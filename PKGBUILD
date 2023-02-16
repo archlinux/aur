@@ -2,7 +2,7 @@
 
 pkgname=vmangos-git
 pkgver=r5197.738d4ae99
-pkgrel=1
+pkgrel=2
 pkgdesc="World of Warcraft Vanilla server emulator"
 arch=('x86_64')
 url="https://github.com/vmangos/"
@@ -11,7 +11,6 @@ depends=(
     'ace'
     'tbb'
     'mariadb'
-    'zlib'
 )
 makedepends=(
     'gcc'
