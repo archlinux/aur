@@ -5,15 +5,15 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=powerstat
-pkgver=0.03.00
+pkgver=0.03.01
 pkgrel=1
 pkgdesc='A tool for measuring a laptops power usage via the battery.'
 arch=('i686' 'x86_64')
-url="https://launchpad.net/powerstat"
+url="https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/powerstat"
 license=('GPL2')
 depends=('glibc')
-source=("https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/$pkgname/${pkgver}-1/${pkgname}_${pkgver}.orig.tar.gz")
-sha256sums=('cb35735c7a632409491181a68d893fd5bb274be6cc62c5181517c17995d6c1ed')
+source=("https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/$pkgname/${pkgver}-1/${pkgname}_${pkgver}.orig.tar.xz")
+sha256sums=('fc4366de93b68c030cf6c88ae3bdd3ac49560f64f3c8b3545dba40fa3293b327')
 
 build() {
   cd $pkgname-$pkgver
