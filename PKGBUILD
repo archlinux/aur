@@ -1,26 +1,27 @@
-# Maintainer: Stefan Tatschner <stefan@rumpelsepp.org>
+# Maintainer: Radu Potop <radu@wooptoo.com>
+# Contributor: Stefan Tatschner <stefan@rumpelsepp.org>
 
-pkgname=python-msgspec
-_pkgname=msgspec
-pkgver=0.11.0
+pkgname=msgspec
+pkgver=0.13.1
 pkgrel=1
-pkgdesc='A fast and friendly JSON/MessagePack library, with optional schema validation'
+pkgdesc='A fast serialization and validation library for Python, with builtin support for JSON, MessagePack, YAML, and TOML'
 arch=(any)
-url="https://github.com/Fraunhofer-AISEC/gallia"
+url="https://github.com/jcrist/msgspec"
 license=("BSD")
-depends=(
-    "python"
-)
+depends=("python")
+conflicts=("python-msgspec")
+provides=("python-msgspec")
 makedepends=("python-build" "python-installer" "git")
-source=("https://github.com/jcrist/msgspec/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('875aea77824173ce083755124ab9db1a58f43615af7fb882969c0c3c279234db')
+source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
 
 build() {
-    cd "$_pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$_pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
+
+sha256sums=('afc9d3abdce45acbb26a9dedafafd614a7f12e1f09edbe45f751b4bb914674bd')
