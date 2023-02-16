@@ -4,7 +4,7 @@ TEST_GPU=0
 
 pkgname=python-kornia-git
 _name=kornia
-pkgver=0.6.8.r9.g1d6923db
+pkgver=0.6.9.r74.g9329a5bed
 pkgrel=1
 arch=(any)
 url='https://github.com/kornia/kornia'
@@ -12,6 +12,7 @@ pkgdesc='Open Source Differentiable Computer Vision Library for PyTorch'
 license=(Apache)
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-pytest-runner')
 depends=('python-pytorch')
+optdepends=('python-accelerate: To be able to train')
 checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-mypy' 'python-pytest-flake8' 'python-scipy' 'python-opencv')
 provides=('python-kornia')
 conflicts=('python-kornia')
@@ -31,9 +32,9 @@ build() {
 
 check() {
   cd "${srcdir}/${_name}"
-  make test-cpu
+  pytest -v --device cpu --dtype float32,float64 --cov=kornia test/
   if ! [ "$TEST_GPU" -eq "0" ] ; then
-    make test-cuda
+    pytest -v --device cuda --dtype all --cov=kornia test/
   fi
 }
 

@@ -1,6 +1,6 @@
 pkgbase = python-kornia-git
 	pkgdesc = Open Source Differentiable Computer Vision Library for PyTorch
-	pkgver = 0.6.8.r9.g1d6923db
+	pkgver = 0.6.9.r74.g9329a5bed
 	pkgrel = 1
 	url = https://github.com/kornia/kornia
 	arch = any
@@ -17,6 +17,7 @@ pkgbase = python-kornia-git
 	makedepends = python-wheel
 	makedepends = python-pytest-runner
 	depends = python-pytorch
+	optdepends = python-accelerate: To be able to train
 	provides = python-kornia
 	conflicts = python-kornia
 	options = !emptydirs
