@@ -1,0 +1,12 @@
+# Default args: print to stdout every 60 seconds, forever
+SCAPHANDRE_ARGS=stdout --step 60 --timeout 0
+
+# Prometheus example - be sure to change the default port
+#SCAPHANDRE_ARGS=prometheus --port=8080
+# When using network scraping, consider
+# $ systemctl edit scaphandre
+#IPAddressAllow=2.3.4.5
+#IPAddressDeny=any
+
+# If desired, limit the source hosts for incoming connections
+SCAPHANDRE_IP_ALLOW=any
