@@ -6,14 +6,16 @@ _electron=electron19
 # _nodejs="16.14"
 
 pkgname=${_pkgname}-electron
-pkgver=1.74.3.23010
+pkgver=1.75.1.23040
 pkgrel=1
 pkgdesc="VS Code without MS branding/telemetry/licensing. - System-wide Electron edition"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/VSCodium/vscodium"
 license=('MIT')
 depends=("$_electron" 'libsecret' 'libx11' 'libxkbfile' 'ripgrep')
-optdepends=('x11-ssh-askpass: SSH authentication')
+optdepends=('x11-ssh-askpass: SSH authentication'
+	    'gvfs: For move to trash functionality'
+	    'libdbusmenu-glib: For KDE global menu')
 makedepends=('git' 'gulp' 'python' 'yarn' 'nvm' 'imagemagick')
 conflicts=('vscodium')
 source=("git+https://github.com/VSCodium/vscodium.git#tag=${pkgver}"
