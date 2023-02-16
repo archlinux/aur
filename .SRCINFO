@@ -1,15 +1,15 @@
 pkgbase = guacamole-client
 	pkgdesc = Java and Maven components of Guacamole
 	pkgver = 1.4.0
-	pkgrel = 1
-	url = http://guacamole.sourceforge.net/
+	pkgrel = 3
+	url = https://guacamole.apache.org/
 	install = guacamole-client.install
 	arch = any
 	license = GPL3
 	makedepends = maven
-	makedepends = java-environment-openjdk<=17
+	makedepends = java-environment-openjdk<=19
 	depends = java-runtime
-	depends = java-environment<=17
+	depends = java-environment<=19
 	optdepends = tomcat8: open source Java Servlet container
 	optdepends = tomcat9: open source Java Servlet container
 	replaces = guacamole

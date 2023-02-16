@@ -3,14 +3,14 @@
 
 pkgname=guacamole-client
 pkgver=1.4.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Java and Maven components of Guacamole"
 arch=('any')
-url="http://guacamole.sourceforge.net/"
+url="https://guacamole.apache.org/"
 license=('GPL3')
 replaces=('guacamole')
-depends=('java-runtime' 'java-environment<=17')
-makedepends=('maven' 'java-environment-openjdk<=17')
+depends=('java-runtime' 'java-environment<=19')
+makedepends=('maven' 'java-environment-openjdk<=19')
 optdepends=('tomcat8: open source Java Servlet container'
             'tomcat9: open source Java Servlet container')
 source=("http://apache.org/dyn/closer.cgi?action=download&filename=guacamole/${pkgver}/source/${pkgname}-${pkgver}.tar.gz"
@@ -23,15 +23,21 @@ md5sums=('8ec56d5e2e0ca2c5d0e4f7961b136e73'
 backup=('etc/guacamole/guacamole.properties' 'etc/guacamole/user-mapping.xml')
 
 export JAVA_HOME=/usr/lib/jvm/default
+export LC_ALL=C
+export LANG=en-US.UTF-8
 
-build() {
-  if [ "$(archlinux-java get | grep -Po '\d+')" -lt "17" ]; then
-    cd "$srcdir"/$pkgname-$pkgver
-    mvn package
-  else
+prepare() {
+  if [ "$(archlinux-java get | grep -Po '\d+')" -gt "17" ]; then
     echo "ERROR: Java environment needs to be set to any <=17. Java 8 and 11 are fine."
     exit 1
   fi
+  cd "$srcdir"/$pkgname-$pkgver
+  #mkdir -p guacamole/src/main/frontend/dist
+}
+
+build() {
+    cd "$srcdir"/$pkgname-$pkgver
+    mvn -DskipTests=true package
 }
  
 package() {
