@@ -38,7 +38,7 @@ WHITE='\033[1;37m'
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 post_upgrade() {
-	echo -e "It is ${RED}strongly recommended${NOCOLOR} that you logout with this update, in order to refresh the app and get the latest improvements to work for you at their full potential.
+	echo -e "It is ${RED}strongly recommended${NOCOLOR} that you logout if updating from 1.0.4 or previous, in order to refresh the app and get the latest improvements to work for you at their full potential.
 To do so, run ${YELLOW}rm ~/.config/Harvest\ Timer\ Qt/*${NOCOLOR} or alternatively ${YELLOW}click on the File menu (depending on your language) and select "Logout"${NOCOLOR}"
 }
 
