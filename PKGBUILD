@@ -2,7 +2,7 @@
 # Contributor: Antoine Pierlot-Garcin <antoine@bokbox.com>
 
 pkgname=debsig-verify
-pkgver=0.22
+pkgver=0.28
 pkgrel=1
 pkgdesc="Debian package signature verification tool"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('dpkg' 'expat')
 makedepends=()
 source=("http://deb.debian.org/debian/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=("cb064c0d369522eca595ebdcd22940bc71e62a6605ededfb48e20f70eae08c94")
+sha256sums=('b9f8764968be997cfb00a25e8b26cf10dc9b80a562efd51a1d8a61738bf53e09')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
