@@ -1,9 +1,8 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: asukaminato <asukaminato@nyan.eu.org>
 pkgname=deeplx-bin
 pkgver=0.6.0
 pkgrel=1
-epoch=
-pkgdesc=""
+pkgdesc="Permanently free DeepL API written in Golang"
 arch=('x86_64' 'i386' 'aarch64' 'mips')
 url="https://github.com/OwO-Network/DeepLX"
 license=('MIT')
@@ -18,7 +17,6 @@ replaces=()
 backup=()
 options=()
 install=${pkgname}.install
-changelog=
 source=('https://raw.githubusercontent.com/OwO-Network/DeepLX/main/deeplx.service')
 source_x86_64=("deeplx::https://github.com/OwO-Network/DeepLX/releases/download/v$pkgver/deeplx_linux_amd64")
 source_aarch64=("deeplx::https://github.com/OwO-Network/DeepLX/releases/download/v$pkgver/deeplx_linux_arm64")
