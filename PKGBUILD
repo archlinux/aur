@@ -1,4 +1,5 @@
 # $Id$
+# shellcheck disable=SC2034,SC2148,SC2154
 # Maintainer: BrLi <brli at chakralinux dot org>
 # Contributor: Jiachen Yang <farseerfc@archlinux.org>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
@@ -7,11 +8,11 @@
 
 ## Mozc compile option
 _bldtype='Release'
-_mozc_commit=d42831f
+_mozc_commit=5fe3662
 _zipcode_rel=202110
 
 # Ut Dictionary
-_utdicdate=20230113
+_utdicdate=20230115
 _dict=(alt-cannadic
        edict2
        jawiki
@@ -21,10 +22,9 @@ _dict=(alt-cannadic
        skk-jisyo
        sudachidict)
 
-_pkgbase=mozc-ut
-pkgbase=$_pkgbase-full
+pkgbase=mozc-ut-full
 pkgname=("$pkgbase-common" "ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
-pkgver=2.28.4990.102.20230113
+pkgver=2.28.5008.102.20230115
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
@@ -87,10 +87,9 @@ prepare() {
   git -c protocol.file.allow=always submodule update --init --recursive
 
   cd src || exit
-  # Generate zip code seed
-  echo "Generating zip code seed..."
+  echo 'Generating zip code seed...'
   PYTHONPATH="$PWD:$PYTHONPATH" python dictionary/gen_zip_code_seed.py --zip_code="${srcdir}/x-ken-all.csv" --jigyosyo="${srcdir}/JIGYOSYO.CSV" >> data/dictionary_oss/dictionary09.txt
-  echo "Done."
+  echo 'Done.'
 
   # disable fcitx4 target
   rm unix/fcitx/fcitx.gyp
@@ -107,16 +106,18 @@ prepare() {
   # use libstdc++ instead of libc++
   sed '/stdlib=libc++/d;/-lc++/d' -i gyp/common.gypi
 
+  # UT Dictionary steps, rewrite of `sh make.sh`
   msg 'UT Dictionary steps, rewrite of `sh make.sh`'
   cd "${srcdir}/merge-ut-dictionaries/src" || exit
   msg '1. Append dictionaries'
   for dict in "${_dict[@]}"; do
     cat "$srcdir/mozcdic-ut-${dict}.txt" >> mozcdic-ut.txt
   done
-  msg '2. Patch ruby scripts out from downloading'
+
+  msg '2. Patch ruby scripts to avoid downloading'
   sed '/^`wget*/d' -i count_word_hits.rb
   sed "s,https://raw.githubusercontent.com/google/mozc/master,$srcdir/mozc," -i remove_duplicate_ut_entries.rb
-  cp -v "$srcdir/jawiki-latest-all-titles-in-ns0.gz" ./
+  mv -v "$srcdir/jawiki-latest-all-titles-in-ns0.gz" ./
   msg '3. Run the ruby scripts as in original make.sh, it may take some time...'
   ruby remove_duplicate_ut_entries.rb mozcdic-ut.txt
   ruby count_word_hits.rb
