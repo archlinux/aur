@@ -30,7 +30,8 @@ build() {
   mkdir -p  "${srcdir}/dpkgdir/usr/share/applications"
   mv ${srcdir}/dpkgdir/temp/app.asar ${srcdir}/dpkgdir/usr/lib/electronic-wechat/
   mv ${srcdir}/dpkgdir/temp/icon.png ${srcdir}/dpkgdir/usr/share/icons/hicolor/512x512/apps/electronic-wechat.png
-  echo -e '#!/bin/bash \nelectron13 /usr/lib/electronic-wechat/app.asar' > ${srcdir}/dpkgdir/usr/lib/electronic-wechat/wechat
+  echo -e '#!/bin/bash
+  exec electron /usr/lib/electronic-wechat/app.asar' > ${srcdir}/dpkgdir/usr/lib/electronic-wechat/wechat
   echo -e "#!/bin/bash 
   exec electron /usr/lib/electronic-wechat/app.asar" > ${srcdir}/dpkgdir/usr/bin/wechat
   echo -e "[Desktop Entry]
