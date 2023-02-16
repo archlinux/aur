@@ -49,6 +49,11 @@ build() {
     dotnet publish "ArchiSteamFarm.CustomPlugins.SignInWithSteam" -o "out/result/plugins/ArchiSteamFarm.CustomPlugins.SignInWithSteam" $DOTNET_FLAGS $PUBLISH_FLAGS
 }
 
+check() {
+    cd asf
+    dotnet test ArchiSteamFarm.Tests $DOTNET_FLAGS
+}
+
 package_asf-plugin-steamtokendumper() {
     pkgdesc="SteamTokenDumper plugin for ArchiSteamFarm."
     depends=('asf')
