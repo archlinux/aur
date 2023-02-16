@@ -1,8 +1,9 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=thunderbird-eas-4-tbsync
-_name=EAS-4-TbSync
-pkgver=4.1.5
+_file=1021719
+_name=provider_fur_exchange_activesync
+pkgver=4.2
 pkgrel=1
 pkgdesc='Provider for Exchange ActiveSync Version History'
 arch=('any')
@@ -14,11 +15,12 @@ depends=(
   'thunderbird<103'
 )
 source=("${_name}-${pkgver}.xpi::https://github.com/jobisoft/${_name}/releases/download/v${pkgver}/${_name}.xpi")
-noextract=("${_name}-${pkgver}.xpi")
-sha512sums=('aaa700fc1e03108ad8cb401c947068c65b441a0444a88d88d48113c997ff17a763e0ba8e577f36bae840ee216be00565311569c8bd2f98f2576cedf7e7f05be2')
+source=("https://addons.thunderbird.net/thunderbird/downloads/file/${_file}/${_name}-${pkgver}-tb.xpi")
+noextract=("${_name}-${pkgver}-tb.xpi")
+sha512sums=('22627731e54d7eaa2377398a94d2a6653c239229c56c9e4e73e5a3d86aece1f9d3ecf4570b11de98d8f88a7f1929237328e5a6e2c26c1e1b75ec5e2f33596855')
 
 package() {
   _extension_id="eas4tbsync@jobisoft.de"
   _extension_dest="${pkgdir}/usr/lib/thunderbird/extensions/${_extension_id}"
-  install -Dm644 "${srcdir}/${_name}-${pkgver}.xpi" "${_extension_dest}.xpi"
+  install -Dm644 "${srcdir}/${_name}-${pkgver}-tb.xpi" "${_extension_dest}.xpi"
 }
