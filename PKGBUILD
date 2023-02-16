@@ -1,10 +1,10 @@
-# Maintainer: Pylogmon <ambition_echo@outlook.com>
+# Maintainer: Pylogmon <pylogmon@outlook.com>
 
 pkgname=earth-wallpaper-bin
 appid=cn.huguoyang.earthwallpaper
 name=earth-wallpaper
 resname=earth_wallpaper
-pkgver=2.2.1
+pkgver=null
 pkgrel=0
 pkgdesc="Simple and easy to use multifunctional wallpaper software 简单好用的多功能壁纸软件"
 arch=('x86_64')
