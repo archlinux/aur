@@ -2,7 +2,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=zola
-pkgver=0.16.1
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="An opinionated static site generator"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cargo')
 license=('MIT')
 options=(!lto)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/getzola/zola/archive/v${pkgver}.tar.gz")
-sha256sums=('c153fd0cc1435930a4871165e6ad4865e3528465f3f41d0671a9837121688ac7')
+sha256sums=('a7254554e61f2c737bc3981a6278e0fbac5dc685e5d90c014fc60eced99bf55c')
 
 prepare() {
   cd zola-$pkgver
@@ -31,11 +31,12 @@ check() {
 
 package() {
   cd zola-$pkgver
-  install -Dm755 target/release/zola "$pkgdir"/usr/bin/zola
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-  install -Dm644 completions/zola.bash "$pkgdir"/usr/share/bash-completion/completions/$pkgname.bash
-  install -Dm644 completions/zola.fish "$pkgdir"/usr/share/fish/vendor_completions.d/$pkgname.fish
-  install -Dm644 completions/_zola "$pkgdir"/usr/share/zsh/site-functions/_$pkgname
+  local _target="target/release/$pkgname"
+  install -Dm0755 -t "$pkgdir/usr/bin/" $_target
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+  $_target completion bash | install -Dm0644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$pkgname.bash"
+  $_target completion fish | install -Dm0644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
+  $_target completion zsh  | install -Dm0644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 }
 
 # vim:set ts=2 sw=2 et:
