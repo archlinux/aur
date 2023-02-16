@@ -17,11 +17,12 @@ makedepends=('git' 'dotnet-sdk>=7.0' 'aspnet-runtime>=7.0')
 dotnet_framework='net7.0'
 changelog=changelog
 install=install
-source=("asf::git+https://github.com/JustArchiNET/ArchiSteamFarm.git#tag=${pkgver}"
+source=("asf::git+https://github.com/JustArchiNET/ArchiSteamFarm.git#tag=${pkgver}?signed"
         "service.patch"
         "asf.env"
         "ASF.json"
         "NLog.config")
+validpgpkeys=('1268A81616AFDC20C55779ED6B138B4C64555AEA')
 sha256sums=('SKIP'
             'cc6828798785b6b5e53b0b231ba7167c727295dfc95a307cdeb16b7c703d197e'
             'ec82f54a9b362e2305a775eb1473522636ab724f18d846828410c39344801db4'
