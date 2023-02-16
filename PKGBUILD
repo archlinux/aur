@@ -3,8 +3,8 @@
 
 pkgbase=qbittorrent-enhanced-ua
 pkgname=(qbittorrent-enhanced-ua qbittorrent-enhanced-ua-nox)
-pkgver=4.5.0.10
-pkgrel=2
+pkgver=4.5.1.10
+pkgrel=1
 pkgdesc="An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar (Enhanced Edition with original user-agent)"
 arch=('x86_64')
 _repo="qBittorrent-Enhanced-Edition"
@@ -23,7 +23,7 @@ source=(
 )
 
 sha256sums=(
-    '8126a54815bd9b323c9fdfb775cceed5911ed660078d83227d2f31de0983b6a0'
+    '72ced8ceeda7d96310e97bfec895bc21dc3b44c4f38c37cc578dc670022f435d'
     'f39dcbcd65216310e99d6006aa43e479b8cbf7028e173ac602d643651d19c7f1'
 )
 
@@ -45,13 +45,13 @@ prepare() {
 }
 
 build() {
-    cmake -B "build" "${_snapshot}" \
+    cmake -B "build" -S "${_snapshot}" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DQT6="${USE_QT6}"
 
     cmake --build "build"
 
-    cmake -B "build-nox" "${_snapshot}" \
+    cmake -B "build-nox" -S "${_snapshot}" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DQT6="${USE_QT6}" \
         -DGUI=OFF \
@@ -66,9 +66,7 @@ package_qbittorrent-enhanced-ua() {
     conflicts=('qbittorrent')
 
     DESTDIR="${pkgdir}" cmake --install "build"
-
-    cd "${_snapshot}"
-    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "COPYING"
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_snapshot}/COPYING"
 }
 
 package_qbittorrent-enhanced-ua-nox() {
@@ -76,7 +74,5 @@ package_qbittorrent-enhanced-ua-nox() {
     conflicts=('qbittorrent-nox')
 
     DESTDIR="${pkgdir}" cmake --install "build-nox"
-
-    cd "${_snapshot}"
-    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "COPYING"
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_snapshot}/COPYING"
 }
