@@ -11,7 +11,7 @@ pkgbase = ultrakill-demo
 	depends = xorg-server
 	depends = xorg-server-common
 	depends = xorg-xinit
-	optdepends = xorg-wayland: play the game when on a wayland compositor
+	optdepends = xorg-xwayland: play the game when on a wayland compositor
 	optdepends = firejail: launch game with --net=none to block telemetry to Unity servers.
 	provides = ultrakill-demo
 	conflicts = ultrakill-demo

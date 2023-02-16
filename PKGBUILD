@@ -7,7 +7,7 @@ url="https://hakita.itch.io/ultrakill-prelude"
 arch=('x86_64')
 license=('GPL3')
 depends=('mesa' 'glu' 'xorg-server' 'xorg-server-common' 'xorg-xinit')
-optdepends=('xorg-wayland: play the game when on a wayland compositor' 'firejail: launch game with --net=none to block telemetry to Unity servers.')
+optdepends=('xorg-xwayland: play the game when on a wayland compositor' 'firejail: launch game with --net=none to block telemetry to Unity servers.')
 conflicts=("$pkgname")
 provides=("$pkgname")
 source=("$pkgname-$pkgver.zip::https://archive.org/download/ultrakill-prelude-v-104c-linux/ULTRAKILL%20Prelude%20v$pkgver%20Linux.zip")
