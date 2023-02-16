@@ -1,0 +1,32 @@
+pkgbase = linux-aarch64-orangepi5
+	pkgver = 5.10.110
+	pkgrel = 1
+	url = https://github.com/orangepi-xunlong/linux-orangepi
+	arch = aarch64
+	license = GPL2
+	makedepends = kmod
+	makedepends = bc
+	makedepends = dtc
+	makedepends = uboot-tools
+	options = !strip
+	source = linux-orangepi-161606b049488da100e5d7ec95c8997d3b59b20d.tar.gz::https://github.com/orangepi-xunlong/linux-orangepi/archive/161606b049488da100e5d7ec95c8997d3b59b20d.tar.gz
+	source = gcc12-fixups.patch::https://github.com/7Ji/linux-orangepi/compare/161606b049488da100e5d7ec95c8997d3b59b20d...5ed23c49bee59e066cdaa3ea2f540bb545aa1afe.patch
+	source = config
+	source = linux.preset
+	sha256sums = e35af8b8631c64083c992d697cc7b91613af69daab4670bfe0ce704e3a6db592
+	sha256sums = 211d3b30c81d9369dda18d0c891cd1846d9a5b447aeceea49ed0cf2b01e613b5
+	sha256sums = 1049189e20fbd9a514da524f25118399bcb0b1a73d3ac08486be82bed32bd57c
+	sha256sums = bdcd6cbf19284b60fac6d6772f1e0ec2e2fe03ce7fe3d7d16844dd6d2b5711f3
+
+pkgname = linux-aarch64-orangepi5
+	pkgdesc = The Linux Kernel and module - AArch64 vendor kernel for Orange Pi 5
+	depends = coreutils
+	depends = initramfs
+	depends = kmod
+	optdepends = uboot-legacy-initrd-hooks: to generate uboot legacy initrd images
+	optdepends = linux-firmware: firmware images needed for some devices
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
+	backup = etc/mkinitcpio.d/linux-aarch64-orangepi5.preset
+
+pkgname = linux-aarch64-orangepi5-headers
+	pkgdesc = Header files and scripts for building modules for linux kernel - AArch64 vendor kernel for Orange Pi 5
