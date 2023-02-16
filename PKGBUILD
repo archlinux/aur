@@ -1,4 +1,4 @@
-# Maintainer: Connor Reeder <connor.reeder@ymail.com>
+# Maintainer: Connor Reeder <connor dot reeder at ymail dot com>
 
 pkgname=aio-remote
 pkgrel=2
