@@ -1,7 +1,7 @@
 # Maintainer: shulhan <ms@kilabit.info>
 
 pkgname=google-cloud-ops-agent-git
-pkgver=2.23.0.r33.gdeaa7dec7
+pkgver=2.25.1.r18.g4f5c90bc5
 pkgrel=1
 
 pkgdesc="Ops Agents that are part of the Google Cloud Operations product suite (specifically Cloud Logging and Cloud Monitoring)"
@@ -36,13 +36,15 @@ source=(
 	"fluent-bit::git+https://github.com/fluent/fluent-bit.git"
 	"opentelemetry-operations-collector::git+https://github.com/GoogleCloudPlatform/opentelemetry-operations-collector.git"
 	"opentelemetry-java-contrib::git+https://github.com/open-telemetry/opentelemetry-java-contrib.git"
+	"0001-build-sh.patch"
 )
-md5sums=(
+sha256sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
+	'a4ec5040542b3b7b33b995f8357fd81dac901975f7d52955b713f8cccc756501'
 )
 
 pkgver() {
@@ -72,6 +74,13 @@ build() {
 	echo "destdir: $_destdir"
 
 	cd "${pkgname}"
+
+	CGO_ENABLED=1 ./builds/otel.sh "$_destdir"
+	./builds/fluent_bit.sh "$_destdir"
+	./builds/systemd.sh "$_destdir"
+	./builds/ops_agent_diagnostics.sh "$_destdir"
+
+	git apply "${srcdir}/0001-build-sh.patch"
 	BUILD_DISTRO=arch CODE_VERSION="${pkgver}" DESTDIR="$_destdir" \
 		./build.sh
 }

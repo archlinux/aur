@@ -1,0 +1,35 @@
+diff --git a/build.sh b/build.sh
+index 4a97050f7..041b3ac72 100755
+--- a/build.sh
++++ b/build.sh
+@@ -40,19 +40,15 @@ if [ -z "$DESTDIR" ]; then
+ fi
+ 
+ function build_opsagentengine() {
+-  if [[ ! -f /work/google_cloud_ops_agent_engine ]]; then
+-  go build -buildvcs=false -o "/work/google_cloud_ops_agent_engine" \
+-    -ldflags "$LD_FLAGS" \
+-    github.com/GoogleCloudPlatform/ops-agent/cmd/google_cloud_ops_agent_engine
++  if [[ ! -f "$DESTDIR$prefix/libexec/google_cloud_ops_agent_engine" ]]; then
++    mkdir -p "$DESTDIR$prefix/libexec"
++    go build -buildvcs=false -o "$DESTDIR$prefix/libexec/google_cloud_ops_agent_engine" \
++      -ldflags "$LD_FLAGS" \
++      github.com/GoogleCloudPlatform/ops-agent/cmd/google_cloud_ops_agent_engine
+   fi
+-  mkdir -p "$DESTDIR$prefix/libexec"
+-  cp /work/google_cloud_ops_agent_engine "$DESTDIR$prefix/libexec/google_cloud_ops_agent_engine"
+ }
+ 
+ (build_opsagentengine)
+ 
+-# Copy the cached compilations from docker to the destination
+-cp -r /work/cache/* $DESTDIR
+-
+ # N.B. Don't include $DESTDIR itself in the tarball, since mktemp -d will create it mode 0700.
+ (cd "$DESTDIR" && tar -czf /tmp/google-cloud-ops-agent.tgz *)
+diff --git a/submodules/fluent-bit b/submodules/fluent-bit
+--- a/submodules/fluent-bit
++++ b/submodules/fluent-bit
+@@ -1 +1 @@
+-Subproject commit 97a5e9dcf3f9d2e2107660cf73f6ef253fd227cd
++Subproject commit 97a5e9dcf3f9d2e2107660cf73f6ef253fd227cd-dirty
