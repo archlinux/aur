@@ -5,7 +5,7 @@ _officalname=douyin
 _providername=ByteDance
 pkgver=1.8.0
 sparkver=1.7.1spark2
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="douyin,record beautify life;抖音，记录美好生活"
 arch=("x86_64")
@@ -23,14 +23,16 @@ optdepends=(
 conflicts=()
 provides=("ByteDance")
 install="deepin-wine-douyin.install"
-source=("https://mirrors.sdu.edu.cn/spark-store-repository/store/video/${_pkgname}/${_pkgname}_${sparkver}_i386.deb"
+source=(
+    "${_pkgname}_${sparkver}_i386.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/video/${_pkgname}/${_pkgname}_${sparkver}_i386.deb"
 	"${_officalname}-${pkgver}.exe::https://www.douyin.com/download/pc/obj/${_officalname}-pc-client/7044145585217083655/releases/9818478/${pkgver}/win32-ia32/${_officalname}-v${pkgver}-win32-ia32-douyinDownload1.exe"
 	deepin-wine-douyin.install
-    run.sh)
+    run.sh
+    )
 sha256sums=('ddb6e863b45e4eddee273119866e73de27b10efa5e57054933153fb442f1ce10'
             '322ea0649362f110cd88e5ea5f5b68b0a599837332ddfa112e385c933bf36521'
             'e476028b1c94fe6a4d1a24e4b603667a39276c21dfbe76433c42cf64a73d16be'
-            '8a2d62594c1cd12f6d73b574375b850d650a7da1b432412192cdadf7f50c1bbb')
+            '55a7959b8511646d1dcaeb3876dc08afe2c775361b5dbbb28b0ff34201b16219')
 
 prepare() {
     bsdtar -xf data.tar.xz
@@ -42,7 +44,7 @@ prepare() {
     msg "Copying latest ${_officalname} installer to ${srcdir}/tmp/drive_c/Program Files/${_providername}/${_officalname} ..."
     rm -r "${srcdir}/tmp/drive_c/Program Files/${_providername}/${_officalname}"
     mkdir -p "${srcdir}/tmp/drive_c/Program Files/${_providername}/${_officalname}"
-    install -m644 "${_officalname}-${pkgver}.exe" "${srcdir}/tmp/drive_c/Program Files/${_providername}/${_officalname}-${pkgver}.exe"
+    install -m644 "${_officalname}-${pkgver}.exe" "${srcdir}/tmp/drive_c/Program Files/${_providername}/${_officalname}/${_officalname}-${pkgver}.exe"
     
     msg "Repackaging app archive ..."
     rm -r "${srcdir}/opt/apps/${pkgname}/files/files.7z"
