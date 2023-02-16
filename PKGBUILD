@@ -12,7 +12,7 @@ url="https://www.huaweicloud.com/product/welink.html"
 license=('custom')
 depends=(
     'deepin-wine6-stable'
-    'spark-dwine-helper'
+    'spark-dwine-helper-git'
     'spark-transhell'
     'xdg-utils'
     )
