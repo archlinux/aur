@@ -1,0 +1,13 @@
+pkgbase = ntix
+	pkgdesc = This hierarchical note-talking application syncs with Git for version control. The user-friendly command-line interface makes organizing notes easy.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://git.sr.ht/~klahr/ntix
+	arch = any
+	license = GPL2
+	optdepends = tree
+	optdepends = bash-completion
+	source = https://git.sr.ht/~klahr/ntix/archive/9fa67d4d808b476fec915b50f14d9166330b0fba.tar.gz
+	sha256sums = 8e26f2c3273b88048743a20ea7a3261a96ddc1de577dccd6a69a8bf3c581eda2
+
+pkgname = ntix
