@@ -1,7 +1,7 @@
 # Maintainer: Marco Kage <marco.kage at outlook dot com>
 
 pkgname=stash-bin
-pkgver=0.18.0
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="An organizer for your porn, written in Go"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -12,9 +12,9 @@ depends=('ffmpeg')
 source_x86_64=("${pkgname}-${pkgver}::https://github.com/stashapp/stash/releases/download/v${pkgver}/stash-linux")
 source_aarch64=("${pkgname}-${pkgver}::https://github.com/stashapp/stash/releases/download/v${pkgver}/stash-linux-arm64v8")
 source_armv7h=("${pkgname}-${pkgver}::https://github.com/stashapp/stash/releases/download/v${pkgver}/stash-linux-arm32v7")
-sha256sums_x86_64=('c35c2ceb7418a9bb16c66e414c2a92dec973edea265ba877d45634ae79c4791f')
-sha256sums_aarch64=('2a37d2ca6fe3d0732c0529c9e1054000c1a3b23412b3642cd9bbc668041da032')
-sha256sums_armv7h=('358fdf7b6ffc4d1c85ee5f2616415d1b01c4de5447dd0e03f9b3765171348917')
+sha256sums_x86_64=('6957cba1c4e8f73fdcdbbd8b3347c69b63b0fe10a545b4ed4ad005252614c7dd')
+sha256sums_aarch64=('0c6576f37c9aec5c463ba9a4441bc7abac607830c4837dfb057da450211f373d')
+sha256sums_armv7h=('5c197da682d6b59eda32035cd9bd46c819641d1ae97ea81fcec5fe5c32dfe386')
 
 package() {
   install -Dm755 ${pkgname}-${pkgver} "${pkgdir}/usr/bin/stash"
