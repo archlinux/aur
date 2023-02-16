@@ -4,12 +4,12 @@
 _pkgname=idris2
 pkgname=$_pkgname-git
 pkgver=latest
-pkgrel=2
+pkgrel=3
 pkgdesc='A purely functional programming language with first class types'
 url='https://www.idris-lang.org/'
 license=('custom')
 arch=('x86_64')
-depends=('chez-scheme')
+depends=('chez-scheme' 'sh')
 makedepends=('git')
 checkdepends=('nodejs' 'racket')
 provides=("$_pkgname")
@@ -32,10 +32,11 @@ build() {
 	BOOTSTRAP="$srcdir/bootstrap"
 	export PATH="$BOOTSTRAP/bin:$PATH"
 	export LD_LIBRARY_PATH="$BOOSTRAP/lib:$LD_LIBRARY_PATH"
+	export PREFIX="$BOOTSTRAP"
 
 	mkdir -p "$BOOTSTRAP"
-	PREFIX="$BOOTSTRAP" make bootstrap
-	PREFIX="$BOOTSTRAP" make install
+	make bootstrap
+	make install
 
 	make clean
 	PREFIX="/usr/lib" make all
@@ -50,9 +51,11 @@ check() {
 	BOOTSTRAP="$srcdir/bootstrap"
 	PATH="$BOOTSTRAP/bin:$PATH"
 	LD_LIBRARY_PATH="$BOOSTRAP/lib:$PATH"
+	export PREFIX="$BOOTSTRAP"
+	export IDRIS2_PREFIX="$PREFIX"
 
-	PREFIX="$BOOTSTRAP" IDRIS2_PREFIX="$PREFIX" make install
-	PREFIX="$BOOTSTRAP" IDRIS2_PREFIX="$PREFIX" make test
+	make install
+	make test
 }
 
 package() {
@@ -63,10 +66,13 @@ package() {
 	export SCHEME='chez'
 
 	BOOTSTRAP="$srcdir/bootstrap"
-	export PREFIX="$pkgdir/usr/lib"
-	export IDRIS2_PREFIX="$PREFIX"
 	PATH="/usr/lib/bin:$PREFIX/bin:$BOOTSTRAP/bin:$PATH"
 	LD_LIBRARY_PATH="/usr/lib/lib:$PREFIX/lib:$BOOSTRAP/lib:$LD_LIBRARY_PATH"
+	export PREFIX="$pkgdir/usr/lib"
+	export IDRIS2_PREFIX="$PREFIX"
+
+	PREFIX="/usr/lib" IDRIS2_PREFIX="$PREFIX" make src/IdrisPaths.idr
+	sed -i 's|src/IdrisPaths.idr: FORCE|src/IdrisPaths.idr:|g' Makefile
 
 	make install
 	make install-libdocs
