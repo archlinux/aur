@@ -1,6 +1,6 @@
 pkgbase = gitmux-bin
 	pkgdesc = Git in your tmux status bar
-	pkgver = 0.7.12
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/arl/gitmux
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = gitmux-bin
 	depends = tmux
 	provides = gitmux
 	conflicts = gitmux
-	source_x86_64 = https://github.com/arl/gitmux/releases/download/v0.7.12/gitmux_v0.7.12_linux_amd64.tar.gz
-	sha256sums_x86_64 = 005952e58675aada77989149f06abca972dd4b5c57e45b020b75fb42425cbc61
-	source_i686 = https://github.com/arl/gitmux/releases/download/v0.7.12/gitmux_v0.7.12_linux_386.tar.gz
-	sha256sums_i686 = f1bcf7578f6a1d0301b7e572418a9f7667659d9c43c25c803e30d665d0239f49
-	source_aarch64 = https://github.com/arl/gitmux/releases/download/v0.7.12/gitmux_v0.7.12_linux_arm64.tar.gz
-	sha256sums_aarch64 = 0335b7c7a84fb2889521887af07aa0674393bfcc8cd026fdca1cd08499f8366f
+	source_x86_64 = https://github.com/arl/gitmux/releases/download/v0.9.0/gitmux_v0.9.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = b3aa245c86561202e2fa8110a93c2864bf712c6467ebf0024e8a10ea0c69786f
+	source_i686 = https://github.com/arl/gitmux/releases/download/v0.9.0/gitmux_v0.9.0_linux_386.tar.gz
+	sha256sums_i686 = 17435b54aac9917d0f65bd93208508e0fa3964531e235c58bb7f61f5533d7c20
+	source_aarch64 = https://github.com/arl/gitmux/releases/download/v0.9.0/gitmux_v0.9.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 97f0909aea96a33b473066474a2dd0a770cfe93b94f7af9d2f1d179a68bcafa5
 
 pkgname = gitmux-bin
