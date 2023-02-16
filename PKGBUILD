@@ -1,7 +1,7 @@
 # Maintainer: kumen
 
 pkgname="embedded-studio-arm"
-pkgver=6.40
+pkgver=7.10a
 pkgrel=1
 pkgdesc="Segger Embedded Studio for ARM"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ options=(!strip)
 source_x86_64=("Setup_EmbeddedStudio_ARM_v${pkgver/./}_linux_x64.tar.gz::https://www.segger.com/downloads/embedded-studio/Setup_EmbeddedStudio_ARM_v${pkgver/./}_linux_x64.tar.gz")
 source_aarch64=("Setup_EmbeddedStudio_ARM_v${pkgver/./}_linux_arm64.tar.gz::https://www.segger.com/downloads/embedded-studio/Setup_EmbeddedStudio_ARM_v${pkgver/./}_linux_arm64.tar.gz")
 
-md5sums_x86_64=('669ed4a3eb2e771c36f7ecf45322592a')
-md5sums_aarch64=('e6249032e5b405858c37ab410112c871')
+md5sums_x86_64=('8bc4c0d066ab4ca19a3dcfe2d7faa9ae')
+md5sums_aarch64=('42dd17c7330f86e42a58433c3a3c2847')
 
 prepare(){
 	# Delete potential previous build
@@ -42,6 +42,7 @@ package() {
 
         msg2 'Installing Embedded Studio ARM'
         "$srcdir"/embedded-studio-arm/install_segger_embedded_studio --copy-files-to ${pkgdir}/opt/SEGGER/Embedded-Studio-ARM/  --accept-license --no-upgrade
+	chmod 755 "${pkgdir}/opt/SEGGER/Embedded-Studio-ARM/lib"
 
         msg2 'Instalation of binary files'
         ln -s /opt/SEGGER/Embedded-Studio-ARM/bin/emStudio "${pkgdir}/usr/bin/emStudio-ARM"
