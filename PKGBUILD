@@ -5,13 +5,13 @@ _arch=aarch64
 _target=$_arch-unknown-linux-gnu
 pkgname=$_arch-binutils
 pkgver=2.40
-pkgrel=2
-_commit=ab87a96bab7b216ef1079461ab333e75768525b9
+pkgrel=3
+_commit="2dae374deda43a48d2241779fbf23f0e5fb3d527"
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the ARM64 target'
 arch=('x86_64')
 url='https://www.gnu.org/software/binutils/'
 license=(GPL)
-depends=('glibc' 'zlib' 'elfutils')
+depends=('libelf' 'jansson' 'perl')
 makedepends=('git')
 source=(git+https://sourceware.org/git/binutils-gdb.git#commit=${_commit})
 sha256sums=('SKIP')
@@ -20,7 +20,7 @@ validpgpkeys=('EAF1C276A747E9ED86210CBAC3126D3B4AE55E93'  # Tristan Gingold <gin
               '3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F') # Nick Clifton (Chief Binutils Maintainer) <nickc@redhat.com>
 
 prepare() {
-		  mkdir -p binutils-build
+	mkdir -p binutils-build
 }
 
 build() {
@@ -30,8 +30,8 @@ build() {
    --target=$_target \
    --with-sysroot=/usr/$_target/sys-root \
    --prefix=/usr \
-	--enable-colored-disassembly \
-	--enable-default-execstack=no \
+   --enable-colored-disassembly \
+   --enable-default-execstack=no \
    --enable-deterministic-archives \
    --enable-gold \
    --enable-install-libiberty \
@@ -40,7 +40,6 @@ build() {
    --enable-new-dtags \
    --enable-plugins \
    --enable-relro \
-   --enable-shared \
    --enable-threads \
    --disable-gdb \
    --disable-gdbserver \
