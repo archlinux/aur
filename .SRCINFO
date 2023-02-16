@@ -1,0 +1,19 @@
+pkgbase = autokernel-git
+	pkgdesc = A tool for managing your kernel configuration that guarantees semantic correctness
+	pkgver = v2.0.1.r2.gee75705
+	pkgrel = 1
+	url = https://github.com/oddlama/autokernel
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = gcc-libs
+	depends = sqlite
+	source = autokernel-git::git+https://github.com/oddlama/autokernel.git
+	sha256sums = SKIP
+	b2sums = SKIP
+
+pkgname = autokernel-git
