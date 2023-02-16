@@ -2,7 +2,7 @@
 
 pkgname=clash-verge-bin
 _pkgname=clash-verge
-pkgver=null
+pkgver=1.2.3
 pkgrel=0
 pkgdesc="A Clash GUI based on tauri."
 arch=('x86_64')
