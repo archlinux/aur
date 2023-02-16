@@ -11,7 +11,6 @@ depends=(
     'ace'
     'tbb'
     'mariadb'
-    'openssl'
     'zlib'
 )
 makedepends=(
