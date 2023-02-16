@@ -1,8 +1,8 @@
 # Maintainer: DeedleFake <deedlefake@users.noreply.github.com>
 
 pkgname=trayscale
-pkgver=0.7.7
-pkgrel=3
+pkgver=0.7.8
+pkgrel=1
 pkgdesc="An unofficial GUI wrapper for the Tailscale CLI client."
 arch=(i686 x86_64)
 url="https://github.com/DeedleFake/trayscale"
@@ -11,14 +11,12 @@ depends=('gtk4' 'libadwaita')
 makedepends=('go>=2:1.18' 'gobject-introspection')
 optdepends=('tailscale: provides daemon that manages connection')
 provides=(trayscale)
-source=("https://github.com/DeedleFake/trayscale/archive/refs/tags/v${pkgver}.tar.gz"
-        default.pgo)
-sha256sums=('23007bac633f2532874420f23d6fd2a85af547756236d32f6f78ac55a6a849d4'
-            'b07bf09d98cb61c50f800baab2685b93f9591a7a25a9d207ad2243d1f39f5a0c')
+source=("https://github.com/DeedleFake/trayscale/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('a37c80930216ec594e0bec36edf9ce962cc9f30af8a490634bb91cf62da17834')
 
 build() {
 	cd "$pkgname-$pkgver"
-	go build -v -x -trimpath -pgo "$srcdir/default.pgo" -ldflags="-X 'deedles.dev/trayscale/internal/version.version=v${pkgver}'" -o trayscale ./cmd/trayscale
+	go build -v -x -trimpath -ldflags="-X 'deedles.dev/trayscale/internal/version.version=v${pkgver}'" -o trayscale ./cmd/trayscale
 }
 
 package() {
