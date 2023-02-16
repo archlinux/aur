@@ -5,13 +5,14 @@
 
 pkgname=nheko
 pkgver=0.11.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Desktop client for the Matrix protocol"
 arch=('x86_64')
 url="https://github.com/Nheko-Reborn/nheko"
 license=(GPL3)
 depends=(qt5-svg qt5-quickcontrols2 qt5-graphicaleffects qt5-multimedia qtkeychain-qt5 \
-        coeurl mtxclient lmdb cmark libolm hicolor-icon-theme gst-plugins-bad-libs)
+        coeurl mtxclient lmdb cmark libolm hicolor-icon-theme gst-plugins-bad-libs\
+        'org.freedesktop.secrets')
 optdepends=('qt-jdenticon: Auto-generated profile pictures (identicons)'
             'gst-plugins-base-libs: VoIP/Video calls' 
             'gst-plugins-good: VoIP/Video calls'
