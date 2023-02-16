@@ -13,6 +13,9 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 b2sums=('48f63e256713dff6a4bf163c8ac1a8a93d170932d6f87d5601b277bd5724f23567c775747039f31ae2c6351440628f12fcd2a783687d1e6867bbd391927b1248')
 
 prepare() {
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+
 	cd $pkgname-$pkgver
 	cargo update
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
@@ -20,8 +23,6 @@ prepare() {
 
 build() {
 	cd $pkgname-$pkgver
-	export RUSTUP_TOOLCHAIN=stable
-	export CARGO_TARGET_DIR=target
 	cargo build --frozen --release --all-features
 }
 
