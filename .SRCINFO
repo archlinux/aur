@@ -13,7 +13,7 @@ pkgbase = earth-wallpaper-bin
 	depends = python-pysocks
 	source = earth-wallpaper-2.2.1.tar.gz::https://github.com/Pylogmon/earth_wallpaper/archive/refs/tags/2.2.1.tar.gz
 	source = earth-wallpaper.desktop
-	sha256sums = SKIP
+	sha256sums = 557542ca60cc189df5dc7d9b466925dfd556b39f6fd35aecb60cd890d9eca2da
 	sha256sums = 13d8de079c942b804123b8eea64034bb2e7bb8bcc6563b5a4406ee7089dd1db5
 
 pkgname = earth-wallpaper-bin
