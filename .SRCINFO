@@ -1,13 +1,13 @@
 pkgbase = python-colcon-defaults
 	pkgdesc = An extension for colcon-core to provide custom default values for the command line arguments from a configuration file.
-	pkgver = 0.2.7
+	pkgver = 0.2.8
 	pkgrel = 1
 	url = https://pypi.org/project/colcon-defaults
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	depends = python-colcon-core
-	source = https://files.pythonhosted.org/packages/source/c/colcon-defaults/colcon-defaults-0.2.7.tar.gz
-	sha256sums = fa63aa81a4076da835ecd1d08c28d554a58a6ce7a10074c1cc6325aec6bd3205
+	source = https://files.pythonhosted.org/packages/source/c/colcon-defaults/colcon-defaults-0.2.8.tar.gz
+	sha256sums = 053e8a18fbae04cf182a2968d7f7ed474c5125bf3b306b8049250574f4096fa1
 
 pkgname = python-colcon-defaults
