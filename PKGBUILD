@@ -11,7 +11,7 @@ depends=('python' 'python-oci' 'python-arrow' 'python-certifi' 'python-click' 'p
 makedepends=('python-setuptools')
 optdepends=('python-cx_oracle: Used by the database service')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('d70546efbb66feac6d387dbd1d2eb1480bd9e4397387645b81b3da06e2971112')
+sha256sums=('4786d4b0df43a22ff5224664477d2a3c4e8e04bc3815f48ff976cc8eb943794b')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
