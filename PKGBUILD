@@ -3,7 +3,7 @@
 pkgname=gnome-shell-extension-todotxt-git
 _pkgname="${pkgname%-*}"
 _pkgdir=todo-txt
-pkgver=39.r5.gf61feb3
+pkgver=39.r11.gcc29307
 pkgrel=1
 pkgdesc="Todo.txt GUI for gnome-shell. Git version"
 arch=('any')
@@ -29,7 +29,8 @@ pkgver() {
 build() {
   cd "$srcdir/${_pkgdir}"
   python tools/json2schema.py
-  python preferences/createPrefsTemplate.py 
+  python preferences/createPrefsTemplate.py
+  glib-compile-schemas schemas
   jq '.version="'${pkgver}'"' metadata.json | sponge metadata.json
 }
 
@@ -37,9 +38,9 @@ package() {
   cd "${_pkgdir}"
   _extname=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
   _destdir="${pkgdir}/usr/share/gnome-shell/extensions/${_extname}"
-  for f in `cat dist_files.lst` ; do 
-    if [ ! -d $f ] ; then
-      install -DTm 644 $f ${_destdir}/$f;
+  while IFS= read -r f ; do
+    if [ ! -d "$f" ] ; then
+      install -DTm 644 "$f" "${_destdir}/$f"
     fi  
-  done 
+  done < tools/dist_files.lst
 }
