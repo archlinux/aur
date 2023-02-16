@@ -1,6 +1,6 @@
 pkgbase = pcoip-client
 	pkgdesc = Teradici PCOIP client
-	pkgver = 22.09.4
+	pkgver = 23.01.1
 	pkgrel = 1
 	url = https://teradici.com/
 	install = pcoip-client.install
@@ -15,9 +15,9 @@ pkgbase = pcoip-client
 	depends = protobuf3.12
 	depends = hiredis0.14
 	depends = ffmpeg4.4
-	source = https://dl.teradici.com/DeAdBCiUYInHcSTy/pcoip-client/deb/ubuntu/pool/jammy/main/p/pc/pcoip-client_22.09.4-22.04/pcoip-client_22.09.4-22.04_amd64.deb
+	source = https://dl.teradici.com/DeAdBCiUYInHcSTy/pcoip-client/deb/ubuntu/pool/jammy/main/p/pc/pcoip-client_23.01.1-22.04/pcoip-client_23.01.1-22.04_amd64.deb
 	source = LICENSE.pdf::https://docs.teradici.com/sites/default/files/documents/2022-02/EULA%20%28Feb%202022%29.pdf
-	sha256sums = a315601a1164418a7debe503a97486c0551c3f219db2ca6d9a7e8975702560f8
+	sha256sums = bbaf1e643e77e239968ec108e9dbee9ade17f47bb4694c8bbf97fdc229a9903f
 	sha256sums = c1ce23848fb8d3b08cfcb87ab9fc0572e14e274740e8142ebd07a18c050dd16e
 
 pkgname = pcoip-client

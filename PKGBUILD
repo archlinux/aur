@@ -1,7 +1,7 @@
 # Maintainer: Ashley Whetter <(firstname) @ awhetter.co.uk>
 # Contributor: Patrik Pira
 pkgname=('pcoip-client' 'pcoip-client-clipboard')
-pkgver=22.09.4
+pkgver=23.01.1
 pkgrel=1
 _ubuntuver=22.04
 pkgdesc='Teradici PCOIP client'
@@ -18,7 +18,7 @@ source=(
 	'LICENSE.pdf::https://docs.teradici.com/sites/default/files/documents/2022-02/EULA%20%28Feb%202022%29.pdf'
 )
 sha256sums=(
-	'a315601a1164418a7debe503a97486c0551c3f219db2ca6d9a7e8975702560f8'
+	'bbaf1e643e77e239968ec108e9dbee9ade17f47bb4694c8bbf97fdc229a9903f'
 	'c1ce23848fb8d3b08cfcb87ab9fc0572e14e274740e8142ebd07a18c050dd16e'
 )
 
