@@ -24,7 +24,6 @@ sha512sums=('004c9e3afd32d73bb812ae61d8f2a8f504e6be66e011d221f15c1bace191ebbb0bf
 
 build() {
     CXXFLAGS+=' -ffat-lto-objects'
-    cd "${srcdir}/$_pkgname-v$pkgver-full"
     cmake -B build $_pkgname-v$pkgver-full -G Ninja \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_BUILD_TYPE=Release \
