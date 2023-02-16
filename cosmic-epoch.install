@@ -6,6 +6,9 @@ post_install() {
   echo "Refresh the systemd-sysext overlay file system:"
   echo "sudo systemd-sysext refresh"
   echo ""
+  echo "NOTE: You may have to unmerge the overlay file system temporarily"
+  echo "to update your system as /usr/ may be mounted as read-only:"
+  echo "sudo systemd-sysext unmerge"
 }
 
 post_upgrade() {
@@ -17,8 +20,8 @@ post_upgrade() {
 
 post_remove() {
   echo ""
-  echo "Refresh the systemd-sysext overlay file system:"
-  echo "sudo systemd-sysext refresh"
+  echo "Unmerge the systemd-sysext overlay file system:"
+  echo "sudo systemd-sysext unmerge"
   echo ""
   echo "Disable and stop the systemd-sysext service if you no longer require it:"
   echo "systemctl disable --now systemd-sysext"
