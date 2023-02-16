@@ -1,0 +1,13 @@
+pkgbase = python-lac
+	pkgdesc = A chinese lexical analysis tool by Baidu NLP
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://github.com/baidu/lac
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = paddlepaddle-bin
+	source = https://files.pythonhosted.org/packages/source/l/lac/LAC-2.1.2.tar.gz
+	sha256sums = 22fcde0d5082d2044205ea6f6a7a9cd1f0d63e7b21b2dd5c9c73f27e7c0a3ef1
+
+pkgname = python-lac
