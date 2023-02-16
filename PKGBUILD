@@ -1,6 +1,6 @@
 # Maintainer: Clément Martinez <me at moverest dot xyz>
 pkgname=sway-interactive-screenshot
-pkgver=2.0
+pkgver=2.0.1
 pkgrel=1
 url="https://github.com/moverest/sway-interactive-screenshot"
 pkgdesc="Interactively take screenshot within Sway."
@@ -14,7 +14,7 @@ optdepends=(
 	'wf-recorder: capture screencasts'
 )
 source=("https://github.com/moverest/sway-interactive-screenshot/archive/$pkgver.tar.gz")
-sha256sums=('663e1d956074e0418e52696b15fb1882ba9f6cea2b1b2b7fe9c583d3ec3bf6ab')
+sha256sums=('06608db421ba5c463334813379b29869e2036a0fb8af411c025eca8922e88e15')
 
 package() {
 	cd "sway-interactive-screenshot-$pkgver"
