@@ -1,6 +1,6 @@
 pkgbase = ctool-bin
 	pkgdesc = 程序开发常用工具 chrome /edge/firefox /utools/windows /linux/mac
-	pkgver = v2.2.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/baiy/Ctool
 	arch = x86_64
