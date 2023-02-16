@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Version=1.0.2
+Name=Digital Logic Sim
+Comment=Simple digital logic simulator by Sebastian Lague
+Exec=/opt/digital-logic-sim/out.x86_64
+Path=/opt/digital-logic-sim
+Icon=digital-logic-sim
+
+Terminal=false
+Categories=education
