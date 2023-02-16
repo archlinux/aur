@@ -1,6 +1,6 @@
 pkgbase = emacs-git
 	pkgdesc = GNU Emacs. Development master branch.
-	pkgver = 30.0.50.162754
+	pkgver = 30.0.50.165017
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	install = emacs-git.install
@@ -29,7 +29,7 @@ pkgbase = emacs-git
 	depends = tree-sitter
 	depends = sqlite3
 	provides = emacs
-	replaces = emacs
+	conflicts = emacs
 	options = !strip
 	source = emacs-git::git+https://git.savannah.gnu.org/git/emacs.git
 	source = nemacs
