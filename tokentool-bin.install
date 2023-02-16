@@ -1,0 +1,15 @@
+post_install() {
+    echo "there is a problem with the current version of tokentools, in the Card overlays folder you will need to convert the .jpgs to .png"
+    echo "run these commands(you will need imagemagick)"
+    echo "cd ~/.tokentool-rptools/overlays/Cards/"
+    echo "mogrify -format png *.jpg"
+    echo "rm *.jpg"
+}
+
+post_upgrade() {
+    echo "there is a problem with the current version of tokentools, in the Card overlays folder you will need to convert the .jpgs to .png"
+    echo "run these commands(you will need imagemagick)"
+    echo "cd ~/.tokentool-rptools/overlays/Cards/"
+    echo "mogrify -format png *.jpg"
+    echo "rm *.jpg"
+}
