@@ -1,7 +1,7 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 
 pkgname=crosvm-git
-pkgver=r5467.760d739c1
+pkgver=r5881.4a740f380
 pkgrel=1
 pkgdesc="The Chrome OS Virtual Machine Monitor"
 url="https://chromium.googlesource.com/crosvm/crosvm"
@@ -31,11 +31,6 @@ prepare() {
   git config submodule."third_party/depot_tools".url "$srcdir/depot_tools"
   git config submodule."third_party/vmm_vhost".url "$srcdir/vhost"
   git -c protocol.file.allow=always submodule update
-
-  # The in-tree minijail is too old to use, upstream crosvm builds seem to use ebuild shenanigans to patch this out of
-  # the .toml and use the chromeos minijail version.  Short of pulling random ebuild repos to find their preferred
-  # revision, this is the closest approximation of what upstream dev builds do.
-  ( cd third_party/minijail && git checkout --detach origin/main)
 }
 
 pkgver() {
@@ -52,7 +47,7 @@ package() {
   cd crosvm
   install -Dm755 target/release/crosvm "$pkgdir/usr/bin/crosvm"
   install -d "$pkgdir/usr/share/policy/crosvm/"
-  cp -r seccomp/x86_64/* "$pkgdir/usr/share/policy/crosvm/"
+  cp -r jail/seccomp/x86_64/* "$pkgdir/usr/share/policy/crosvm/"
   install -m644 -D LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
   install -m644 -D README.md "$pkgdir"/usr/share/licenses/$pkgname/README.md
 }
