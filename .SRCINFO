@@ -1,6 +1,6 @@
 pkgbase = chatgpt-cli-bin
 	pkgdesc = ChatGPT Console client in Golang
-	pkgver = v0.2.1
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/kkdai/chatgpt
 	arch = x86_64
