@@ -1,0 +1,7 @@
+#!/bin/sh
+_GAMEDIR="/usr/share/games/ultrakill-demo"
+
+post_install() {
+    printf "\nTo avoid having the infinite falling loop bug after finishing the intro level, change the owner of the $_GAMEDIR directory to your regular non-root user. You should execute something like this:\n\n"
+    printf "sudo chown -R \$USER:\$USER $_GAMEDIR\n\n"
+}

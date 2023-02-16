@@ -1,0 +1,7 @@
+#!/bin/sh
+FIREJAIL_CMD="$(command -v firejail)"
+if test ! -z "$FIREJAIL_CMD"; then
+    firejail --net=none /usr/share/games/ultrakill-demo/Linux\ Test\ Build.x86_64
+else
+    /usr/share/games/ultrakill-demo/Linux\ Test\ Build.x86_64
+fi

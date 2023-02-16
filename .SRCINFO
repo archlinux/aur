@@ -1,0 +1,21 @@
+pkgbase = ultrakill-demo
+	pkgdesc = ULTRAKILL video game demo.
+	pkgver = 104c
+	pkgrel = 1
+	url = https://hakita.itch.io/ultrakill-prelude
+	install = ultrakill-demo.install
+	arch = x86_64
+	license = GPL3
+	depends = mesa
+	depends = glu
+	depends = xorg-server
+	depends = xorg-server-common
+	depends = xorg-xinit
+	optdepends = xorg-wayland: play the game when on a wayland compositor
+	optdepends = firejail: launch game with --net=none to block telemetry to Unity servers.
+	provides = ultrakill-demo
+	conflicts = ultrakill-demo
+	source = ultrakill-demo-104c.zip::https://archive.org/download/ultrakill-prelude-v-104c-linux/ULTRAKILL%20Prelude%20v104c%20Linux.zip
+	sha256sums = 9aacc46106b6e3a9d7ea22fe43d3eb1368d6027cc88d0c85d8a6e34fa26a1171
+
+pkgname = ultrakill-demo
