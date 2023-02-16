@@ -2,7 +2,7 @@
 
 _name=bincopy
 pkgname=python-bincopy
-pkgver=17.14.0
+pkgver=17.14.3
 pkgrel=1
 pkgdesc="Mangling of various file formats that conveys binary information"
 arch=(any)
@@ -11,9 +11,11 @@ license=(MIT)
 depends=(python-argparse-addons python-humanfriendly python-pyelftools)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
-source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha512sums=('ca542248b110d3b47a5a396f0191026ed1dd685c301e7bf68ce470afa9661a7244520428a43b744bd2beb0267c838536cb48837613f102104bbc11db459f203a')
-b2sums=('3e9020de8f61d4180a17eea876d11c6294cc81cbdc38298e949e163f3cbed59149b5942a6f02f113ebdfe18326573d7583925c9a423fef5eb06c0319c00f6d89')
+# sdist tarball on pypi.org does not contain all required files: https://github.com/eerimoq/bincopy/issues/33
+# source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
+source=($url/archive/$pkgver/$_name-$pkgver.tar.gz)
+sha512sums=('c97580a6805a3d0ec6184c6e97dc0b4b51443cadbb7deb52d69b5b11ba43a0778b993e303f68a20d71959fa3d07ff85078a49fbd4103a5a1ceeb85961c076dab')
+b2sums=('3abaa4b5140dfe5944ecf2804c6b1ae75544e819fb258d79b78d049188fdd6584c0f9ecbecb11bd0746748a0a1ab8fcfedb866cd5035ec3b985b2140e298bedb')
 
 build() {
   cd $_name-$pkgver
