@@ -1,14 +1,16 @@
 pkgbase = bob
 	pkgdesc = A version manager for neovim
-	pkgver = 1.2.1
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/MordechaiHadad/bob
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
 	options = !lto
-	source = bob-1.2.1.tar.gz::https://github.com/MordechaiHadad/bob/archive/v1.2.1.tar.gz
-	sha256sums = 72da51273782ea83849448e592fb786490fc1d28cbaa80dcc1884d43b6fa7bd8
+	source = bob-2.0.0.tar.gz::https://github.com/MordechaiHadad/bob/archive/v2.0.0.tar.gz
+	source = bob-2.0.0-cargo-lock.patch::https://github.com/MordechaiHadad/bob/commit/014f3977e2af09c5f8519d46f64aac354f39da99.patch
+	sha256sums = 309f26ce15b03f71c06045f46159a99e7e6a77056a9263b7a11a1ed1742fca2a
+	sha256sums = ec26a6488eb2b28a5876b61ec212c438d8d5dc582e21b6f627307160985a8b83
 
 pkgname = bob
