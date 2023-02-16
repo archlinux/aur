@@ -14,6 +14,7 @@ arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/JustArchiNET/ArchiSteamFarm"
 license=('Apache')
 makedepends=('git' 'dotnet-sdk>=7.0' 'aspnet-runtime>=7.0')
+dotnet_framework='net7.0'
 changelog=changelog
 install=install
 source=("asf::git+https://github.com/JustArchiNET/ArchiSteamFarm.git#tag=${pkgver}"
@@ -35,11 +36,13 @@ prepare() {
 build() {
     cd asf
     export DOTNET_CLI_TELEMETRY_OPTOUT=1
-    ./cc.sh --no-pull --no-asf-ui
-
-    export DOTNET_FLAGS="-c Release -f net7.0 -p:ContinuousIntegrationBuild=true -p:UseAppHost=false --nologo"
-    export PUBLISH_FLAGS="-r "$(uname -s)"-"$(uname -m)" --no-self-contained"
-    #dotnet publish "ArchiSteamFarm.OfficialPlugins.ItemsMatcher" -o "out/result/plugins/ArchiSteamFarm.OfficialPlugins.ItemsMatcher" $DOTNET_FLAGS $PUBLISH_FLAGS
+    [[ "$CARCH" == "x86_64" ]] && architecture="x64"
+    [[ "$CARCH" == "armv7h" ]] && architecture="arm"
+    [[ "$CARCH" == "aarch64" ]] && architecture="arm64"
+    export DOTNET_FLAGS="--configuration Release --framework "${dotnet_framework}" -p:UseAppHost=false --nologo"
+    export PUBLISH_FLAGS="--runtime linux-"${architecture}" --no-self-contained"
+    dotnet publish "ArchiSteamFarm" -o "out/result" $DOTNET_FLAGS $PUBLISH_FLAGS
+    dotnet publish "ArchiSteamFarm.OfficialPlugins.ItemsMatcher" -o "out/result/plugins/ArchiSteamFarm.OfficialPlugins.ItemsMatcher" $DOTNET_FLAGS $PUBLISH_FLAGS
     dotnet publish "ArchiSteamFarm.OfficialPlugins.SteamTokenDumper" -o "out/result/plugins/ArchiSteamFarm.OfficialPlugins.SteamTokenDumper" $DOTNET_FLAGS $PUBLISH_FLAGS
     dotnet publish "ArchiSteamFarm.OfficialPlugins.MobileAuthenticator" -o "out/result/plugins/ArchiSteamFarm.OfficialPlugins.MobileAuthenticator" $DOTNET_FLAGS $PUBLISH_FLAGS
     dotnet publish "ArchiSteamFarm.CustomPlugins.PeriodicGC" -o "out/result/plugins/ArchiSteamFarm.CustomPlugins.PeriodicGC" $DOTNET_FLAGS $PUBLISH_FLAGS
