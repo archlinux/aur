@@ -4,22 +4,28 @@
 
 pkgname=cosmic-epoch-git
 pkgver=r37.74091a9
-pkgrel=2
+pkgrel=3
 pkgdesc="Next generation Cosmic desktop environment (Currently an incomplete pre-alpha)"
 arch=('x86_64')
 url="https://github.com/pop-os/cosmic-epoch"
 license=('GPL3')
-depends=('gtk4' 'libinput' 'libpulse' 'libxkbcommon' 'mesa' 'pipewire'
-         'systemd-libs' 'wayland')
+depends=('fontconfig' 'gtk4' 'libinput' 'libpulse' 'libxkbcommon' 'mesa' 'pipewire'
+         'pop-icon-theme' 'systemd-libs' 'wayland')
 makedepends=('cargo' 'clang' 'desktop-file-utils' 'git' 'just' 'llvm' 'meson'
              'mold' 'seatd')
+checkdepends=('appstream-glib')
 provides=("${pkgname%-git}" 'cosmic-applets' 'cosmic-applibrary' 'cosmic-bg'
           'cosmic-comp' 'cosmic-launcher' 'cosmic-osd' 'cosmic-panel'
-          'cosmic-session' 'cosmic-settings-daemon' 'xdg-desktop-portal-cosmic')
+          'cosmic-session' 'cosmic-settings-daemon' 'xdg-desktop-portal-cosmic'
+          'cosmic-settings')
 conflicts=("${pkgname%-git}" 'cosmic-applets' 'cosmic-applibrary' 'cosmic-bg'
            'cosmic-comp' 'cosmic-launcher' 'cosmic-osd' 'cosmic-panel'
-           'cosmic-session' 'cosmic-settings-daemon' 'xdg-desktop-portal-cosmic')
+           'cosmic-session' 'cosmic-settings-daemon' 'xdg-desktop-portal-cosmic'
+           'cosmic-settings')
+backup=('var/lib/extensions/cosmic-sysext/etc/cosmic-comp/config.ron')
 options=('!lto')
+install="${pkgname%-git}.install"
+_commit=efdd934e6219acbfccb60e6fc65a9a064a323471
 source=('git+https://github.com/pop-os/cosmic-epoch.git'
         'git+https://github.com/pop-os/cosmic-applets.git'
         'git+https://github.com/pop-os/cosmic-applibrary.git'
@@ -30,8 +36,10 @@ source=('git+https://github.com/pop-os/cosmic-epoch.git'
         'git+https://github.com/pop-os/cosmic-panel.git'
         'git+https://github.com/pop-os/cosmic-session.git'
         'git+https://github.com/pop-os/cosmic-settings-daemon.git'
-        'git+https://github.com/pop-os/xdg-desktop-portal-cosmic.git')
+        'git+https://github.com/pop-os/xdg-desktop-portal-cosmic.git'
+        "git+https://github.com/pop-os/cosmic-settings.git#commit=$_commit")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -75,6 +83,20 @@ prepare() {
     cargo fetch --target "$CARCH-unknown-linux-gnu"
     popd
   done
+
+  pushd xdg-desktop-portal-cosmic
+
+  # libexec > lib
+  sed -i 's|libexecdir = $(prefix)/libexec|libexecdir = $(libdir)|g' Makefile
+
+  popd
+
+  cd "$srcdir/cosmic-settings"
+
+  # Use mold linker instead of lld
+  sed -i 's/lld/mold/g' justfile
+
+  just vendor
 }
 
 build() {
@@ -87,12 +109,34 @@ build() {
   # https://stackoverflow.com/questions/67511990/how-to-use-the-mold-linker-with-cargo
   RUSTFLAGS="-A warnings -C link-arg=-fuse-ld=mold"
   nice just sysext
+
+  cd "$srcdir/cosmic-settings"
+  nice just build-vendored
+}
+
+check() {
+  cd "$srcdir/${pkgname%-git}"
+  appstream-util validate-relax --nonet cosmic-sysext/usr/share/metainfo/*.metainfo.xml || :
+  desktop-file-validate cosmic-sysext/usr/share/applications/*.desktop || :
+
+  cd "$srcdir/cosmic-settings"
+  export RUSTUP_TOOLCHAIN=stable
+  nice just test
 }
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  cp -r cosmic-sysext/* "$pkgdir/"
 
-  mv "$pkgdir/usr/libexec/xdg-desktop-portal-cosmic" "$pkgdir/usr/lib/"
-  rm -rf "$pkgdir/usr/libexec/"
+  # Test installing as system-extension
+  # https://github.com/pop-os/cosmic-epoch#testing
+  install -d "$pkgdir/var/lib/extensions"
+  cp -r cosmic-sysext "$pkgdir/var/lib/extensions/"
+
+  # Keybinding config
+  # https://github.com/pop-os/cosmic-epoch/issues/71#issuecomment-1431670834
+  install -Dm644 cosmic-comp/config.ron -t \
+    "$pkgdir/var/lib/extensions/cosmic-sysext/etc/cosmic-comp/"
+
+  cd "$srcdir/cosmic-settings"
+  just rootdir="$pkgdir/var/lib/extensions/cosmic-sysext" install
 }
