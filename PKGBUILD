@@ -1,7 +1,7 @@
 # Maintainer: kumen
 
 pkgname="embedded-studio-risc-v"
-pkgver=6.40
+pkgver=7.10a
 pkgrel=1
 pkgdesc="Segger Embedded Studio for RISC-V"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ options=(!strip)
 source_x86_64=("Setup_EmbeddedStudio_RISCV_v${pkgver/./}_linux_x64.tar.gz::https://www.segger.com/downloads/embedded-studio/Setup_EmbeddedStudio_RISCV_v${pkgver/./}_linux_x64.tar.gz")
 source_aarch64=("Setup_EmbeddedStudio_RISCV_v${pkgver/./}_linux_arm64.tar.gz::https://www.segger.com/downloads/embedded-studio/Setup_EmbeddedStudio_RISCV_v${pkgver/./}_linux_arm64.tar.gz")
 
-md5sums_x86_64=('adb91b4700515f3cb65b64e398d18d2f')
-md5sums_aarch64=('5c09d7c45687e4fa6a8df58d589e56ac')
+md5sums_x86_64=('07c98e4bb3e86de3006cb64aa191a49a')
+md5sums_aarch64=('4fa4e5374a4289f593656f963389616b')
 
 prepare(){
 	# Delete potential previous build
@@ -34,11 +34,13 @@ prepare(){
 
 package() {
 	install -dm755 "${pkgdir}/opt/SEGGER/Embedded-Studio-RISC-V" \
+                    "${pkgdir}/opt/SEGGER/Embedded-Studio-RISC-V/lib" \
 		    "${pkgdir}/usr/share/licenses/${pkgname}" \
 		    "${pkgdir}/usr/bin/" \
 
 	msg2 'Installing Embedded Studio RISC-V'
 	"$srcdir"/embedded-studio-risc-v/install_segger_embedded_studio --copy-files-to ${pkgdir}/opt/SEGGER/Embedded-Studio-RISC-V/  --accept-license --no-upgrade
+	chmod 755 "${pkgdir}/opt/SEGGER/Embedded-Studio-RISC-V/lib"
 
 	msg2 'Instalation of binary file'
 	ln -s /opt/SEGGER/Embedded-Studio-RISC-V/bin/emStudio "${pkgdir}/usr/bin/emStudio-RISC-V"
