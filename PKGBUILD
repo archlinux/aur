@@ -35,13 +35,13 @@ build() {
 				  -DENABLE_BLASLAPACK=OFF \
 				  -DENABLE_PYMOAB=ON \
 				  -DBUILD_SHARED_LIBS=ON \
-				  -DCMAKE_INSTALL_PREFIX=${pkgdir}/opt/MOAB
+				  -DCMAKE_INSTALL_PREFIX=/opt/MOAB
 	make
 }
 
 package() {
 	cd $srcdir/build
-	make install
+	make DESTDIR="$pkgdir/opt/MOAB" install
 	cd pymoab 
 	bash install.sh
 	python setup.py install --user
