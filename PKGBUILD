@@ -4,7 +4,7 @@ TEST_GPU=0
 
 pkgname=python-kornia
 _name=kornia
-pkgver=0.6.8
+pkgver=0.6.9
 pkgrel=1
 arch=(any)
 url='https://github.com/kornia/kornia'
@@ -12,11 +12,12 @@ pkgdesc='Open Source Differentiable Computer Vision Library for PyTorch'
 license=(Apache)
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-pytest-runner')
 depends=('python-pytorch')
+optdepends=('python-accelerate: To be able to train')
 checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-mypy' 'python-pytest-flake8' 'python-scipy' 'python-opencv')
 options=(!emptydirs)
 # because kornia does not ship `pytest.ini` with their release, we have to get a fat copy of full repo
 source=("${_name}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip")
-sha256sums=('61949be65328ee5da8562bc453c2989c009fab34ac57a430a8304d1834b5ba5e')
+sha256sums=('8186c470cb9f8cbec1e87da4c87e97fe5a113e785aab392c055aa21ac98385ec')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
@@ -25,9 +26,9 @@ build() {
 
 check() {
   cd "${srcdir}/${_name}-${pkgver}"
-  make test-cpu
+  pytest -v --device cpu --dtype float32,float64 --cov=kornia test/
   if ! [ "$TEST_GPU" -eq "0" ] ; then
-    make test-cuda
+    pytest -v --device cuda --dtype all --cov=kornia test/
   fi
 }
 
