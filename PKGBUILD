@@ -5,25 +5,25 @@ _arch=aarch64
 _target=$_arch-unknown-linux-gnu
 pkgname=$_arch-gcc-bootstrap
 pkgver=12.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc='The GNU Compiler Collection - cross compiler for ARM64 target - bootstrap compiler'
 arch=(x86_64)
 url='https://gcc.gnu.org/'
 license=(GPL LGPL FDL)
-depends=(libmpc zstd libisl)
-makedepends=($_arch-binutils)
+depends=('libmpc' 'zstd' 'libisl')
+makedepends=($_arch-binutils git)
 provides=($_arch-gcc)
 conflicts=($_arch-gcc)
 options=(!emptydirs !strip staticlibs)
-_commit=d31bd7138610a883310dce212bb0bdaaa8da7304
+_commit='86caa970dddfac124a2bbbfe3e695348d00eb926'
 source=(git+https://sourceware.org/git/gcc.git#commit=${_commit})
 
 sha256sums=('SKIP')
 
-validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
-              86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
-              13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
-              D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62) # Jakub Jelinek <jakub@redhat.com>
+validpgpkeys=('F3691687D867B81B51CE07D9BBE43771487328A9'  # bpiotrowski@archlinux.org
+              '86CFFCA918CF3AF47147588051E8B148A9999C34'  # evangelos@foutrelis.com
+              '13975A70E63C361C73AE69EF6EEB81F8981C74C7'  # richard.guenther@gmail.com
+              'D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62') # Jakub Jelinek <jakub@redhat.com>
 
 prepare() {
   [[ ! -d gcc ]] && ln -s gcc-${pkgver/+/-} gcc
