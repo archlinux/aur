@@ -15,7 +15,7 @@
 
 pkgname=mutter-x11-scaling
 pkgver=43.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Window manager and compositor for GNOME with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -74,6 +74,10 @@ pkgver() {
 
 prepare() {
   cd mutter
+
+  # Fix broken focus handling with XWayland
+  # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2848
+  git cherry-pick -n 12ce58dba4f96f6a948c1d166646d263253e3ee0
 
   # Add scaling support using randr under x11 and dynamic triple buffering support
   patch -p1 -i "${srcdir}/x11-Add-support-for-fractional-scaling-using-Randr.patch"
