@@ -1,7 +1,7 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 _pkgname=esp-idf
 pkgname=${_pkgname}-git
-pkgver=5.1.dev.r2509.cfef24863f
+pkgver=5.1.dev.r3405.8ba96ab873
 pkgrel=1
 pkgdesc='Espressif IoT Development Framework. Official development framework for ESP32.'
 arch=('i686' 'x86_64' 'aarch' 'aarch64' 'armv7h')
@@ -22,7 +22,9 @@ pkgver() {
 
 prepare() {
 	cd $srcdir/${_pkgname}
-	git submodule update --init
+	git submodule init
+	./tools/set-submodules-to-github.sh
+	git submodule update --recursive
 }
 
 package() {
