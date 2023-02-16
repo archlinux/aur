@@ -2,7 +2,7 @@
 # Contributor: Bjoern Franke <bjo+aur@schafweide.org>
 
 pkgname=heisenbridge
-pkgver=1.14.1
+pkgver=1.14.2
 pkgrel=1
 pkgdesc="a bouncer-style Matrix IRC bridge"
 url="https://github.com/hifi/heisenbridge"
@@ -12,7 +12,7 @@ makedepends=('python-setuptools' 'python-pytest-runner')
 license=('MIT')
 arch=('any')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz" "${pkgname}.service" "${pkgname}.sysusers" "${pkgname}.tmpfiles")
-sha256sums=('ec7848b550c4cb00563276508a8924d731da658bb0f961ccbb886514e3a817f2'
+sha256sums=('363d33fe1cb8794e0181174b7aa8a59e03cba6703f1b7a9a96e2384ce5248ad9'
             '67487b221bff329952f5c95186c4ea794c7e7a3e25e6d213075fd306c68cfa95'
             'b3bc4328ead7afd186d5a191fabc347543c0fad17dc01047a4cf0532d999f255'
             '24bd23e4427aaf635a91b170c07abe8a6b1c62cbad47e50a161c12807641d351')
