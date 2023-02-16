@@ -1,5 +1,5 @@
 pkgname=('learnx-companion-git' 'learnx-companion-electron-git')
-pkgver=1.2.0.r0.gb1403cf
+pkgver=1.2.0.r3.g969fe62
 pkgrel=1
 pkgdesc='清华大学网络学堂 App 助手，为 learnX 提供个性化的推送通知支持。'
 depends=()
@@ -10,11 +10,12 @@ provides=('learnX-companion')
 conflicts=('learnX-companion')
 source=("learnX-companion::git+${url}#branch=main"
         '_learnX-companion' 'learnX-companion.desktop' 'icon_256.png' 'wrapper.js')
-sha256sums=('SKIP' 'SKIP'
+sha256sums=('SKIP'
+            'd6f270d68c23a13c4c172ce6c748ae7882f21991dfa684f6b99e64d16522c5aa'
             '7eb285ce156cbbe7521beb29d04646f41e228c33b4284146dfa6aef53ec2a858'
             '70c21e11ef3eb0ebc4eaf86aed83875b6d4792b57656133c64f9cf90e6dd7a5a'
             '09988b40d54beebfd27f975c9862e7962461b7e15e7b1d66dca39acd4b48f03d')
-_electron=electron21
+_electron=electron23
 
 pkgver(){
     cd ${srcdir}/learnX-companion
@@ -24,7 +25,7 @@ pkgver(){
 build(){
     cd ${srcdir}/learnX-companion
     node /usr/lib/node_modules/corepack/dist/pnpm.js install
-    node /usr/lib/node_modules/corepack/dist/pnpm.js run build --no-pack
+    node /usr/lib/node_modules/corepack/dist/pnpm.js run build
     node /usr/lib/node_modules/corepack/dist/pnpm.js electron-builder --dir
 }
 
