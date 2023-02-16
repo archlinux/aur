@@ -6,14 +6,14 @@ pkgver=0.4.4.r13.g6a1bfc0
 pkgrel=1
 pkgdesc="ZSH Completions for Nix"
 arch=(any)
-url="https://github.com/spwhitt/nix-zsh-completions"
+url="https://github.com/nix-community/nix-zsh-completions"
 license=(BSD)
 depends=(zsh)
 makedepends=(git)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
-source=("${_pkgname}::git+https://github.com/spwhitt/nix-zsh-completions.git")
+source=("${_pkgname}::git+https://github.com/nix-community/nix-zsh-completions.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -30,7 +30,6 @@ package() {
 	# Misc.
 	install -m0644 -Dt "${pkgdir}/usr/share/doc/${_pkgname}" README.md
 	install -m0644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" LICENSE
-
 }
 
 # vim: set noet ff=unix:
