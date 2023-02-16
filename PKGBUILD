@@ -17,7 +17,7 @@ source=(
   "transforms3d-$pkgver.tar.gz::https://github.com/matthew-brett/transforms3d/archive/${pkgver}.tar.gz"
 )
 sha256sums=(
-  '87626eed57297082e6a8e4e885eb2a62265423b3072e46486609cccfaacbe4b7'
+  '27ff96c6dcc12bebc6faddea15916c29727fb33be0f85dda7dc7d8b376c0deed'
 )
 
 build() {

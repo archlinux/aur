@@ -15,6 +15,6 @@ pkgbase = python-transforms3d
 	depends = python-numpy
 	optdepends = python-sympy: to run the algebraic derivations of some algorithms
 	source = transforms3d-0.4.1.tar.gz::https://github.com/matthew-brett/transforms3d/archive/0.4.1.tar.gz
-	sha256sums = 87626eed57297082e6a8e4e885eb2a62265423b3072e46486609cccfaacbe4b7
+	sha256sums = 27ff96c6dcc12bebc6faddea15916c29727fb33be0f85dda7dc7d8b376c0deed
 
 pkgname = python-transforms3d
