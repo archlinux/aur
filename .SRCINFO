@@ -1,0 +1,13 @@
+pkgbase = indicators
+	pkgdesc = Activity Indicators for Modern C++
+	pkgver = 2.3
+	pkgrel = 1
+	url = https://github.com/p-ranav/indicators
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = python
+	source = indicators-2.3.tar.gz::https://github.com/p-ranav/indicators/archive/v2.3.tar.gz
+	b2sums = d81ba95908302c74830bef4aff5b07fe0352c88630bcb5480f7b2701efe20f3d32fc3c2279cbba558be40ece98cbbd8f9f02c1008c915149eb698ac517b58abd
+
+pkgname = indicators
