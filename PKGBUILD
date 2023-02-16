@@ -10,6 +10,7 @@ url='https://github.com/deepmind/optax'
 license=('Apache')
 groups=('jax')
 depends=('python-absl'
+         'python-chex'
          'python-jax'
          'python-numpy'
          'python-typing_extensions>=3.10.0')
