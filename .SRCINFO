@@ -1,6 +1,6 @@
 pkgbase = repetier-host
 	pkgdesc = almost complete 3d-printing workflow
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = http://www.repetier.com/
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = repetier-host
 	depends = mono
 	optdepends = slic3r
 	optdepends = skeinforge
-	source = http://download.repetier.com/files/host/linux/repetierHostLinux_2_3_0.tgz
+	source = http://download.repetier.com/files/host/linux/repetierHostLinux_2_3_1.tgz
 	source = repetier-host_fix-desktop-file.diff
-	sha256sums = f9035edd3e091fd1874dbd40fc128a299103d783a73d6c3d26315be89f85a816
+	sha256sums = 722873f101ecf35281ded79f6cd005f8b6afebbb50621dff46f52ab9da456494
 	sha256sums = 2a76d65261e43ad75a6032be326cc4e5eaa21de0ca3ce9b3f97ad33fb8f2c7be
 
 pkgname = repetier-host
