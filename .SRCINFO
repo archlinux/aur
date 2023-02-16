@@ -1,14 +1,14 @@
 pkgbase = swayhide
 	pkgdesc = Window swallower for sway
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = https://github.com/NomisIV/swayhide
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
 	makedepends = rust
 	depends = sway
-	source = swayhide-0.2.0.tar.gz::https://github.com/NomisIV/swayhide/archive/refs/tags/v0.2.0.tar.gz
-	b2sums = 330a422aabd0345d9678e957f0694cb0388c22f62b7185911078263913ee08459933de21cbaf9200c3dcc284a2f22359e677cc16971ef772df95f3352efd58b8
+	source = swayhide-0.2.1.tar.gz::https://github.com/NomisIV/swayhide/archive/refs/tags/v0.2.1.tar.gz
+	b2sums = 48f63e256713dff6a4bf163c8ac1a8a93d170932d6f87d5601b277bd5724f23567c775747039f31ae2c6351440628f12fcd2a783687d1e6867bbd391927b1248
 
 pkgname = swayhide
