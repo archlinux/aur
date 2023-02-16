@@ -2,7 +2,7 @@
 
 pkgname=nix-zsh-completions-git
 _pkgname=nix-zsh-completions
-pkgver=0.4.3.r4.g275114f
+pkgver=0.4.4.r13.g6a1bfc0
 pkgrel=1
 pkgdesc="ZSH Completions for Nix"
 arch=(any)
@@ -13,8 +13,8 @@ makedepends=(git)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
-source=('git://github.com/spwhitt/nix-zsh-completions.git')
-md5sums=('SKIP')
+source=("${_pkgname}::git+https://github.com/spwhitt/nix-zsh-completions.git")
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
@@ -23,8 +23,14 @@ pkgver() {
 
 package() {
 	cd "${srcdir}/${_pkgname}"
+	# Main completion functions (standalone, automatically loaded by compinit)
 	install -m0644 -Dt "${pkgdir}/usr/share/zsh/site-functions" _*
-	install -m0644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+	# OMZ plugin for extra functionalities (can be sourced from zshrc)
+	install -m0644 -Dt "${pkgdir}/usr/share/zsh/plugins/${_pkgname}" "${_pkgname}.plugin.zsh"
+	# Misc.
+	install -m0644 -Dt "${pkgdir}/usr/share/doc/${_pkgname}" README.md
+	install -m0644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" LICENSE
+
 }
 
 # vim: set noet ff=unix:
