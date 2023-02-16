@@ -4,8 +4,8 @@
 _fontname=spleen
 
 pkgname=spleen-font
-pkgver=1.9.1
-pkgrel=3
+pkgver=1.9.2
+pkgrel=1
 pkgdesc="Monospaced bitmap fonts for user interface including console (OTB, OTF, PSFU)"
 arch=('any')
 license=('BSD')
@@ -37,3 +37,4 @@ package() {
   install -Dm644 ChangeLog "${pkgdir}/usr/share/doc/${pkgname}/ChangeLog"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+sha256sums=('00e1a01892f27b4620dd04e53593e045db518a6f1ab67f99226f1a3e95278af6')
