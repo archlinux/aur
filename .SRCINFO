@@ -1,5 +1,5 @@
 pkgbase = alacritty-smooth-cursor-git
-	pkgdesc = A cross-platform, GPU-accelerated terminal emulator
+	pkgdesc = A cross-platform, GPU-accelerated terminal emulator (basic cursor smoothing patch)
 	pkgver = 0.13.0.2084.g255a1e5
 	pkgrel = 1
 	epoch = 1
