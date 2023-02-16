@@ -3,13 +3,14 @@
 pkgname=teracli
 _pkgname=tera-cli
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A utility on top of the tera templating engine, takes json|yaml|toml|ENV as input'
 arch=(x86_64)
 url="https://github.com/chevdor/$_pkgname"
 license=(MIT)
 depends=(gcc-libs)
 makedepends=(cargo)
+conflicts=($_pkgname) # different project
 _archive="$_pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
 sha256sums=('04a14c5c8573bbbefec8694469de59d58b01a5b0b01b1393076ff73a113df1b9')
