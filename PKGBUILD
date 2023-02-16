@@ -4,7 +4,7 @@
 pkgname=nekoray
 pkgver=2.16
 _releasedate=2023-02-14
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt based cross-platform GUI proxy configuration manager (backend: v2ray / sing-box)"
 arch=('x86_64')
 url="https://github.com/MatsuriDayo/nekoray"
@@ -23,11 +23,13 @@ install=notice.install
 source=(
 	"${pkgname}-${pkgver}.zip::${url}/releases/download/${pkgver}/nekoray-${pkgver}-${_releasedate}-linux64.zip"
 	"nekoray.desktop"
+  "nekoray.sh"
 )
 
 sha256sums=(
 	'aab1aa542daf3351de6267a88108a7230374b2c4020d6b5106d39263cd891995'
 	'86f1332c81be2c346a4cdc80a3550f6484ef89e4ee8d4f23afada0c2d0a184e2'
+	'5a7cbb61608137924fb1ba3ecb057adb7973f5775f64758736b447041fa15377'
 )
 
 package() {
@@ -38,8 +40,7 @@ package() {
   install -Dt ${pkgdir}/usr/lib/${pkgname}/ -m755 ./nekoray/nekobox_core
   install -Dt ${pkgdir}/usr/lib/${pkgname}/ -m755 ./nekoray/nekoray_core
   install -Dt ${pkgdir}/usr/lib/${pkgname}/ -m755 ./nekoray/nekoray
-
-	ln -s /usr/lib/${pkgname}/nekoray ${pkgdir}/usr/bin/nekoray
+	install -Dm755 ./nekoray.sh ${pkgdir}/usr/bin/nekoray 
 
 	install -Dt ${pkgdir}/usr/share/applications/ -m644 ./nekoray.desktop
 	install -Dt ${pkgdir}/usr/share/icons/hicolor/128x128/apps/ -m644 ./nekoray/nekoray.png
