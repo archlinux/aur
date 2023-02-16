@@ -1,18 +1,31 @@
-# Maintainer: Javier Vasquez <je-vv@e.email>
-_pythonmod=pyszn
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Javier Vasquez <je-vv@e.email>
+
 pkgname=python-pyszn
-pkgver=1.3.0
+_pkg="${pkgname#python-}"
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="A Python package for the Simplified Zone Notation standard"
 arch=('any')
-url="http://pypi.python.org/pypi/${_pythonmod}"
+url='https://github.com/hpenetworking/pyszn'
 license=('Apache')
-depends=('python' 'python-pyparsing')
-makedepends=('python-setuptools')
-source=("https://github.com/HPENetworking/${_pythonmod}/archive/${pkgver}.tar.gz")
-sha256sums=('71b437e0ab1110d947587cf77bbcee636eb36a1569300ee97aeaaa8ff3ef5bf3')
+depends=('python-pyparsing')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+checkdepends=('python-pytest' 'python-deepdiff')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('3bd28b0b060fe066dc20168b89169416996a721e79d0fd0f48c239555f878635')
+
+build() {
+	cd "$_pkg-$pkgver"
+	python -m build --wheel --no-isolation
+}
+
+check() {
+	cd "$_pkg-$pkgver"
+	PYTHONPATH="$PWD/lib/" pytest -x
+}
 
 package() {
-  cd ${srcdir}/${_pythonmod}-$pkgver
-  python setup.py install --root="$pkgdir/" --prefix="/usr" --optimize=1
+	cd "$_pkg-$pkgver"
+	python -m installer --destdir "$pkgdir" dist/*.whl
 }
