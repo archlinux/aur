@@ -1,8 +1,8 @@
 # Maintainer: Baal <weiss.sebastian@gmx.net
 
 pkgname=theforceengine
-pkgver=1.08.100
-pkgrel=2
+pkgver=1.09.000
+pkgrel=1
 pkgdesc="Modern \"Jedi Engine\" replacement supporting Dark Forces, Outlaws and the mods"
 arch=('x86_64')
 url="https://theforceengine.github.io/"
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=("libgl" "sdl2" "devil" "glew" "rtaudio" "rtmidi" "hicolor-icon-theme")
 makedepends=("cmake" "ninja" "git")
 optdepends=()
-_tag=5f40f6864aa2e3a6c4b3f48d240b6d5eb95a00f9
+_tag=3b216b52286bff7176b131cfa692475f2aae09eb
 source=("TheForceEngine::git+https://github.com/luciusDXL/TheForceEngine.git#tag=$_tag")
 sha256sums=(SKIP)
 
@@ -20,8 +20,8 @@ pkgver() {
 }
 
 build() {
-	cd TheForceEngine
-	mkdir build
+  cd TheForceEngine
+  mkdir build
   cd build
   cmake -S .. \
     -G Ninja\
@@ -31,7 +31,7 @@ build() {
 }
 
 package() {
-	cd TheForceEngine/build
-	DESTDIR="$pkgdir" ninja install
+  cd TheForceEngine/build
+  DESTDIR="$pkgdir" ninja install
 }
 
