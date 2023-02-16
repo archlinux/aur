@@ -1,12 +1,11 @@
 # Maintainer: éclairevoyant
-# Contributor: Hugo Osvaldo Barrera <hugo at barrera dot io>
 
 pkgname=swayhide
 pkgver=0.2.0
-pkgrel=1
-pkgdesc="Window swallower for swaywm"
+pkgrel=2
+pkgdesc="Window swallower for sway"
 url="https://github.com/NomisIV/$pkgname"
-license=("ISC")
+license=("GPL3")
 arch=("x86_64" "aarch64")
 depends=("sway")
 makedepends=("rust")
@@ -29,4 +28,7 @@ build() {
 package() {
 	cd $pkgname-$pkgver
 	install -Dm755 target/release/$pkgname -t "$pkgdir/usr/bin/"
+	install -Dm644 completions/$pkname.bash "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+	install -Dm644 completions/$pkgname.zsh "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+	install -Dm644 completions/$pkgname.fish -t "$pkgdir/usr/share/fish/vendor_completions.d/"
 }
