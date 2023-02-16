@@ -1,0 +1,18 @@
+diff --unified --recursive speedometer-release-2.9.orig/speedometer.py speedometer-release-2.9.new/speedometer.py
+--- speedometer-release-2.9.orig/speedometer.py	2022-05-24 03:02:26.000000000 +0200
++++ speedometer-release-2.9.new/speedometer.py	2023-02-16 10:07:26.999771340 +0100
+@@ -23,13 +23,8 @@
+ import threading
+ import subprocess
+ import select
+-import pkg_resources
+ 
+-try:
+-    __version__ = pkg_resources.get_distribution('speedometer').version
+-except pkg_resources.DistributionNotFound:
+-    # Not installed yet.
+-    __version__ = 'develop'
++__version__ = ''
+ 
+ __usage__ = """Usage: speedometer [options] tap [[-c] tap]...
+ Monitor network traffic or speed/progress of a file transfer.  At least one
