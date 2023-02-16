@@ -1,6 +1,6 @@
 pkgbase = perl-data-printer
 	pkgdesc = colored pretty-print of Perl data structures and objects
-	pkgver = 1.000004
+	pkgver = 1.001000
 	pkgrel = 1
 	url = https://metacpan.org/release/Data-Printer
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = perl-data-printer
 	depends = perl-package-stash>=0.3
 	depends = perl-sort-naturally
 	options = !emptydirs
-	source = http://cpan.metacpan.org/authors/id/G/GA/GARU/Data-Printer-1.000004.tar.gz
-	sha512sums = a1edce61cef6010aa4bbc90d60b221c0bbb8a88f8808217955b72b5fc51a221c0d10051fd2fb8cbc4b2d5a18c5eea7b81f167b2f85f8ce0e144b5b995a702bb0
+	source = http://cpan.metacpan.org/authors/id/G/GA/GARU/Data-Printer-1.001000.tar.gz
+	sha512sums = bb10b42305d6c3f9672037979c3de55d07633a05c2e630c7649c148fd162c1fcd23eff7e5c7f564af182366181715c413844a0904d91000604360602e752ba5a
 
 pkgname = perl-data-printer
-

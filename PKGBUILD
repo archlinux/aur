@@ -5,7 +5,7 @@
 _distname='Data-Printer'
 
 pkgname='perl-data-printer'
-pkgver='1.000004'
+pkgver='1.001000'
 pkgrel='1'
 pkgdesc="colored pretty-print of Perl data structures and objects"
 arch=('any')
@@ -14,7 +14,7 @@ options=('!emptydirs')
 depends=('perl-clone-pp' 'perl-file-homedir>=0.91' 'perl-package-stash>=0.3' 'perl-sort-naturally')
 url="https://metacpan.org/release/${_distname}"
 source=("http://cpan.metacpan.org/authors/id/G/GA/GARU/${_distname}-${pkgver}.tar.gz")
-sha512sums=('a1edce61cef6010aa4bbc90d60b221c0bbb8a88f8808217955b72b5fc51a221c0d10051fd2fb8cbc4b2d5a18c5eea7b81f167b2f85f8ce0e144b5b995a702bb0')
+sha512sums=('bb10b42305d6c3f9672037979c3de55d07633a05c2e630c7649c148fd162c1fcd23eff7e5c7f564af182366181715c413844a0904d91000604360602e752ba5a')
 
 _distdir="${_distname}-${pkgver}"
 
