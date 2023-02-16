@@ -3,8 +3,8 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=cosmic-epoch-git
-pkgver=r37.74091a9
-pkgrel=3
+pkgver=r39.76b23c5
+pkgrel=1
 pkgdesc="Next generation Cosmic desktop environment (Currently an incomplete pre-alpha)"
 arch=('x86_64')
 url="https://github.com/pop-os/cosmic-epoch"
@@ -14,17 +14,16 @@ depends=('fontconfig' 'gtk4' 'libinput' 'libpulse' 'libxkbcommon' 'mesa' 'pipewi
 makedepends=('cargo' 'clang' 'desktop-file-utils' 'git' 'just' 'llvm' 'meson'
              'mold' 'seatd')
 checkdepends=('appstream-glib')
-provides=("${pkgname%-git}" 'cosmic-applets' 'cosmic-applibrary' 'cosmic-bg'
+provides=('cosmic-epoch' 'cosmic-applets' 'cosmic-applibrary' 'cosmic-bg'
           'cosmic-comp' 'cosmic-launcher' 'cosmic-osd' 'cosmic-panel'
           'cosmic-session' 'cosmic-settings-daemon' 'xdg-desktop-portal-cosmic'
           'cosmic-settings')
-conflicts=("${pkgname%-git}" 'cosmic-applets' 'cosmic-applibrary' 'cosmic-bg'
+conflicts=('cosmic-epoch' 'cosmic-applets' 'cosmic-applibrary' 'cosmic-bg'
            'cosmic-comp' 'cosmic-launcher' 'cosmic-osd' 'cosmic-panel'
            'cosmic-session' 'cosmic-settings-daemon' 'xdg-desktop-portal-cosmic'
            'cosmic-settings')
-backup=('var/lib/extensions/cosmic-sysext/etc/cosmic-comp/config.ron')
+backup=('etc/cosmic-comp/config.ron')
 options=('!lto')
-install="${pkgname%-git}.install"
 _commit=efdd934e6219acbfccb60e6fc65a9a064a323471
 source=('git+https://github.com/pop-os/cosmic-epoch.git'
         'git+https://github.com/pop-os/cosmic-applets.git'
@@ -52,7 +51,7 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/cosmic-epoch"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -70,7 +69,7 @@ _submodules=(
 )
 
 prepare() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/cosmic-epoch"
   for submodule in "${_submodules[@]}"; do
     git submodule init "${submodule#*::}"
     git config submodule."${submodule#*::}".url "$srcdir"/"${submodule%::*}"
@@ -100,7 +99,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/cosmic-epoch"
   export RUSTUP_TOOLCHAIN=stable
   # note, consider rust build time optimisations: 
   # https://matklad.github.io/2021/09/04/fast-rust-builds.html, 
@@ -115,7 +114,7 @@ build() {
 }
 
 check() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/cosmic-epoch"
   appstream-util validate-relax --nonet cosmic-sysext/usr/share/metainfo/*.metainfo.xml || :
   desktop-file-validate cosmic-sysext/usr/share/applications/*.desktop || :
 
@@ -125,18 +124,13 @@ check() {
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
-
-  # Test installing as system-extension
-  # https://github.com/pop-os/cosmic-epoch#testing
-  install -d "$pkgdir/var/lib/extensions"
-  cp -r cosmic-sysext "$pkgdir/var/lib/extensions/"
+  cd "$srcdir/cosmic-epoch"
+  cp -r cosmic-sysext/* "$pkgdir/"
 
   # Keybinding config
   # https://github.com/pop-os/cosmic-epoch/issues/71#issuecomment-1431670834
-  install -Dm644 cosmic-comp/config.ron -t \
-    "$pkgdir/var/lib/extensions/cosmic-sysext/etc/cosmic-comp/"
+  install -Dm644 cosmic-comp/config.ron -t "$pkgdir/etc/cosmic-comp/"
 
   cd "$srcdir/cosmic-settings"
-  just rootdir="$pkgdir/var/lib/extensions/cosmic-sysext" install
+  just rootdir="$pkgdir" install
 }
