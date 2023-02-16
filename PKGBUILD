@@ -1,13 +1,9 @@
 # Maintainer: Jonian Guveli <jonian@hardpixel.eu>
 # Contributor: Giusy Digital <kurmikon@libero.it>
 
-_pkgver=1.101.0
-_pkgtag=beta
-_pkgrel="${_pkgver}-${_pkgtag}"
-
 pkgname="pulsar-bin"
-pkgver="${_pkgver}${_pkgtag}"
-pkgrel=2
+pkgver=1.102.0
+pkgrel=1
 pkgdesc="A community-led hyper-hackable text editor, built on electron"
 arch=("x86_64")
 url="https://github.com/pulsar-edit/pulsar"
@@ -20,8 +16,8 @@ optdepends=(
 )
 provides=("pulsar")
 conflicts=("pulsar")
-source=("pulsar-${pkgver}.deb::$url/releases/download/v${_pkgrel}/Linux.pulsar_${_pkgrel}_amd64.deb")
-sha256sums=('d73d3c4a43fa1c86690ad6b13861d0eaf7a436015e327b960e1d821453c3fa39')
+source=("pulsar-${pkgver}.deb::$url/releases/download/v${pkgver}/Linux.${pkgver}.deb")
+sha256sums=('5c0505f65a697f58629f3bb05cb2254b7e8360a0bc23baea48ee62b0f4a0eedc')
 
 prepare() {
   bsdtar xf data.tar.xz
