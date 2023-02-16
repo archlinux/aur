@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=python-ezdxf
-pkgver=1.0.1b1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Python interface to DXF"
 arch=('x86_64')
@@ -21,7 +21,7 @@ python-nurbs
 python-pytest
 )
 source=("${pkgname}-${pkgver}.tar.gz"::https://github.com/mozman/ezdxf/archive/v${pkgver}.tar.gz)
-sha256sums=('f7d72e00585dd532ad3c369b7af63a17c305c583f44b3f113ea8888861ddea95')
+sha256sums=('81af57302c8ef69c35795f20697128917a83bb7417e8e7eb13daf7b6256a623a')
 
 prepare() {
   cd ezdxf-${pkgver}
