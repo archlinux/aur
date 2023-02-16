@@ -31,8 +31,9 @@ build() {
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_BUILD_TYPE=Release \
         -DDESKTOP_APP_DISABLE_AUTOUPDATE=ON \
-        -DCMAKE_VERBOSE_MAKEFILE=ON
-	cmake --build build
+        -DCMAKE_VERBOSE_MAKEFILE=ON \
+        -DTDESKTOP_API_TEST=ON
+        cmake --build build
 }
 
 package() {
