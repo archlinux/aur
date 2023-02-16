@@ -5,7 +5,7 @@ _pkgbase=systemd
 pkgbase=${_pkgbase}-git
 pkgname=('systemd-git' 'systemd-libs-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
 pkgdesc='systemd (git version)'
-pkgver=253.r62451.ec96dad2f4
+pkgver=253.r62798.7c78a19322
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
@@ -39,13 +39,13 @@ source=('git+https://github.com/systemd/systemd'
 sha512sums=('SKIP'
             '3ccf783c28f7a1c857120abac4002ca91ae1f92205dcd5a84aff515d57e706a3f9240d75a0a67cff5085716885e06e62597baa86897f298662ec36a940cf410e'
             'f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73'
-            'aeefb607471cffb5ed4c3d9f36dc0954a9a08cee4b7b4ff55468b561e089e3d8448398906a7df328049ba51b712e4d50698b96bc152bdb03a35ce39c3f51a7cb'
+            'c6c30042b9f11c04e4430a4f45cce09c2dcc706bac567d7f8ec93b92ef791cd726d81c5b7d5468b350377f6338fa24d39c1ee8f4e8ce5826a61f4a9d4de4b25b'
             'a8c7e4a2cc9c9987e3c957a1fc3afe8281f2281fffd2e890913dcf00cf704024fb80d86cb75f9314b99b0e03bac275b22de93307bfc226d8be9435497e95b7e6'
             '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
             'c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5'
             '5a1d78b5170da5abe3d18fdf9f2c3a4d78f15ba7d1ee9ec2708c4c9c2e28973469bc19386f70b3cf32ffafbe4fcc4303e5ebbd6d5187a1df3314ae0965b25e75'
             'b90c99d768dc2a4f020ba854edf45ccf1b86a09d2f66e475de21fe589ff7e32c33ef4aa0876d7f1864491488fd7edb2682fc0d68e83a6d4890a0778dc2d6fe19'
-            '217a9dc3f9d8cd0c9fee54f777396f5a270c2e8a30c572ce5f635165adadcec275af0dae1456019cedb9cc93b7cef0862e5070aeb99a19e496625200e8dfac93'
+            'a586f62b92268ae1e8a9310b02693548fb114292e1252953b4c9475d29e2817b5042a612f3b3ef09fb5b18126e2c3486ff49dd764d97644f0c510ae0200e075b'
             '299dcc7094ce53474521356647bdd2fb069731c08d14a872a425412fcd72da840727a23664b12d95465bf313e8e8297da31259508d1c62cc2dcea596160e21c5'
             '0d6bc3d928cfafe4e4e0bc04dbb95c5d2b078573e4f9e0576e7f53a8fab08a7077202f575d74a3960248c4904b5f7f0661bf17dbe163c524ab51dd30e3cb80f7'
             '2b50b25e8680878f7974fa9d519df7e141ca11c4bfe84a92a5d01bb193f034b1726ea05b3c0030bad1fbda8dbb78bf1dc7b73859053581b55ba813c39b27d9dc'
@@ -140,8 +140,8 @@ package_systemd-git() {
            'iptables' 'kbd' 'kmod' 'libkmod.so' 'hwdata' 'libcap' 'libcap.so'
            'libgcrypt' 'libxcrypt' 'libcrypt.so' 'systemd-libs-git' 'libidn2' 'lz4' 'pam'
            'libelf' 'libseccomp' 'libseccomp.so' 'util-linux' 'libblkid.so'
-           'libmount.so' 'xz' 'pcre2' 'audit' 'libaudit.so' 'libp11-kit'
-           'libp11-kit.so' 'openssl' 'libcrypto.so' 'libssl.so')
+           'libmount.so' 'xz' 'pcre2' 'audit' 'libaudit.so' 
+           'openssl' 'libcrypto.so' 'libssl.so')
   provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver")
   provides+=("systemd=$pkgver")
   replaces=('nss-myhostname' 'systemd-tools' 'udev')
@@ -151,10 +151,12 @@ package_systemd-git() {
               'quota-tools: kernel-level quota management'
               'systemd-sysvcompat: symlink package to provide sysvinit binaries'
               'polkit: allow administration as unprivileged user'
+              'python: Unified Kernel Image with ukify'
               'curl: systemd-journal-upload, machinectl pull-tar and pull-raw'
               'gnutls: systemd-journal-gatewayd and systemd-journal-remote'
               'libbpf: support BPF programs'
               'libfido2: unlocking LUKS2 volumes with FIDO2 token'
+              'libp11-kit: support PKCS#11'
               'tpm2-tss: unlocking LUKS2 volumes with TPM2')
   backup=(etc/pam.d/systemd-user
           etc/systemd/coredump.conf
@@ -229,7 +231,7 @@ package_systemd-git() {
 package_systemd-libs-git() {
   pkgdesc='systemd client libraries'
   pkgdesc+=' (git version)'
-  depends=('glibc' 'libcap' 'libgcrypt' 'libp11-kit' 'lz4' 'xz' 'zstd')
+  depends=('glibc' 'gcc-libs' 'libcap' 'libgcrypt' 'lz4' 'xz' 'zstd')
   license=('LGPL2.1')
   provides=('libsystemd' 'libsystemd.so' 'libudev.so')
   provides+=("systemd-libs=$pkgver")
