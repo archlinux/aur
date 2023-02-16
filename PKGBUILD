@@ -2,7 +2,7 @@
 
 _pkgname=libheif
 pkgname=mingw-w64-${_pkgname}
-pkgver=1.14.2
+pkgver=1.15.1
 pkgrel=1
 pkgdesc='HEIF file format decoder and encoder (mingw-w64)'
 url='https://github.com/strukturag/libheif'
@@ -13,15 +13,16 @@ depends=(
 	'mingw-w64-libjpeg-turbo'
 	'mingw-w64-aom'
 	'mingw-w64-x265'
+	'mingw-w64-libde265'
 	'mingw-w64-rav1e'
 	'mingw-w64-dav1d'
-	'mingw-w64-svt-av1'
+	'mingw-w64-svt-av1' # Only for x86_64
 )
 makedepends=('mingw-w64-cmake')
 arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
-sha256sums=('e9c88e75e3b7fad9df32e42d28646752de2679df57efddfb3f63cd25110ce9d9')
+sha256sums=('0333924bf63d2cd09a021d18d02860eb218cf81b8e6f57d490c505207a59285b')
 source=(
 	"$_pkgname-$pkgver.tar.gz::https://github.com/strukturag/libheif/archive/v${pkgver}.tar.gz"
 )
@@ -40,12 +41,13 @@ _flags=(
 
 prepare() {
 	cd "${_srcdir}"
-	sed -i 's/int input_value = pow2_value;/[[maybe_unused]] int input_value = pow2_value;/' 'libheif/plugins/heif_encoder_svt.cc'
+	sed -i 's/int nPlugins = 0;//' 'libheif/plugins_windows.cc'
 }
 
 build() {
 	for _arch in ${_architectures}; do
-		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" -DBUILD_SHARED_LIBS=OFF \
+		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" \
+			-DBUILD_SHARED_LIBS=OFF \
 			-DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
 		cmake --build "build-${_arch}-static"
 		
