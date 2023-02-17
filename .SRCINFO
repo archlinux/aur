@@ -1,6 +1,6 @@
 pkgbase = eigenmath-git
 	pkgdesc = Symbolic math app
-	pkgver = r2380.4b00787
+	pkgver = r2386.058d263
 	pkgrel = 1
 	url = https://github.com/georgeweigt/eigenmath
 	arch = any
@@ -10,6 +10,6 @@ pkgbase = eigenmath-git
 	source = git+https://github.com/georgeweigt/eigenmath.git
 	source = https://georgeweigt.github.io/eigenmath.pdf
 	md5sums = SKIP
-	md5sums = 564095e39c563a7b7e03a218e448b8bd
+	md5sums = 5bd1ac29f2546e9677ea3adfc51b4aa2
 
 pkgname = eigenmath-git

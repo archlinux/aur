@@ -1,0 +1,6 @@
+*.pdf
+pkg
+src
+*.zst
+eigenmath
+

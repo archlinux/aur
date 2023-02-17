@@ -1,6 +1,6 @@
 # Maintainer: asukaminato <asukaminato@nyan.eu.org>
 pkgname=eigenmath-git
-pkgver=r2380.4b00787
+pkgver=r2386.058d263
 pkgrel=1
 pkgdesc="Symbolic math app"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('git')
 source=("git+https://github.com/georgeweigt/eigenmath.git"
         "https://georgeweigt.github.io/eigenmath.pdf")
 md5sums=('SKIP'
-         '564095e39c563a7b7e03a218e448b8bd')
+         '5bd1ac29f2546e9677ea3adfc51b4aa2')
 pkgver(){
         cd eigenmath
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
@@ -30,12 +30,12 @@ check(){
 }
 package(){
         pushd eigenmath
-        install -Dm755 eigenmath $pkgdir/usr/bin/eigenmath
-        install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+        install -Dm755 eigenmath -t "${pkgdir}/usr/bin/"
+        install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
         for f in doc/*;
         do
-                install -Dm644 $f -t $pkgdir/usr/share/doc/$pkgname/
+                install -Dm644 "${f}" -t "${pkgdir}/usr/share/doc/${pkgname}/"
         done
         popd
-        install -Dm644 eigenmath.pdf -t $pkgdir/usr/share/doc/$pkgname/
+        install -Dm644 eigenmath.pdf -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
