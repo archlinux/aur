@@ -1,0 +1,22 @@
+pkgbase = kodi-addon-game-libretro-atari800
+	pkgdesc = This add-on provides a wrapper that allows Libretro cores to be loaded as game add-ons
+	pkgver = 3.1.0.21
+	pkgrel = 1
+	url = https://github.com/kodi-game/game.libretro.atari800
+	arch = aarch64
+	arch = armv7h
+	groups = kodi-addons
+	groups = kodi-addons-game
+	license = GPL2
+	makedepends = cmake
+	makedepends = kodi-dev
+	makedepends = kodi-addon-game-libretro
+	makedepends = libretro-atari800-git
+	options = !lto
+	options = debug
+	source = kodi-addon-game-libretro-atari800-3.1.0.21.tar.gz::https://github.com/kodi-game/game.libretro.atari800/archive/refs/tags/3.1.0.21-Matrix.tar.gz
+	sha512sums = fd15752183d80398bc42aa75df12a6ccba7663eb326634250fafa5c5c009da16581a8aec36e3e42e02565cdeea43c4f43ac3cd212ba481ca37ec1414e2cbf9a4
+
+pkgname = kodi-addon-game-libretro-atari800
+	depends = kodi-addon-game-libretro
+	depends = libretro-atari800-git
