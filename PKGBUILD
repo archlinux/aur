@@ -2,8 +2,8 @@
 
 pkgname=('panamax-git')
 _gitname=('panamax')
-pkgver=r163.fc5d081
-pkgrel=2
+pkgver=r188.f18494e
+pkgrel=1
 pkgdesc="Mirror rustup and crates.io repositories, for offline Rust and cargo usage"
 url="https://github.com/panamax-rs/panamax"
 license=('Apache' 'MIT')
@@ -29,13 +29,13 @@ build() {
 	cd "${_gitname}"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cargo build --frozen --release --all-features
+	cargo build --frozen --release
 }
 
 check() {
 	cd "${_gitname}"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo test --frozen --all-features
+	cargo test --frozen
 }
 
 package() {
