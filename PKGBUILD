@@ -1,8 +1,9 @@
-# Maintainer: Swift Geek
+# Contributor: Swift Geek
+# Maintainer: AI5C <ai5c@ai5c.com>
 
 pkgname=seamly2d
 _pkgname=Seamly2D
-pkgver=0.6.0.1
+pkgver=2023.2.13.238
 pkgrel=1
 pkgdesc="Open source patternmaking software"
 arch=('i686' 'x86_64')
@@ -10,7 +11,8 @@ url="https://seamly.net/"
 license=('GPL3')
 depends=('qt5-svg' 'qt5-xmlpatterns' 'desktop-file-utils')
 source=("https://github.com/FashionFreedom/Seamly2D/archive/v$pkgver.tar.gz")
-md5sums=('f315ef83cc462d89395af03c0528dc2c')
+
+sha512sums=('83e8e006078949ec3c378e06d4655d8c6c330c8c8a144fefec36f1557b87584a59916c2abee910c4cc8ee0f7d5b04450749b0e9566d8f3ee37198705ee6e0bc1')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
