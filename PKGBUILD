@@ -1,5 +1,5 @@
 pkgname=python-symfit
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 pkgdesc='Symbolic fitting for python - fitting as it should be'
 arch=('any')
@@ -8,7 +8,7 @@ depends=('python' 'python-numpy' 'python-sympy' 'python-toposort')
 makedepends=('python-setuptools' 'python-pbr')
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tBuLi/symfit/archive/$pkgver.tar.gz")
-md5sums=('33e26437d279cf518275e25a7e2c1f67')
+md5sums=('11612179ab1c6f5c9a8dd8058518d689')
 
 package() {
     cd "$srcdir/symfit-$pkgver"
