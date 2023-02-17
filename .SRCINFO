@@ -1,0 +1,16 @@
+pkgbase = basic-battery-stat
+	pkgdesc = Simple utility to show battery state
+	pkgver = r2.6dc834c
+	pkgrel = 1
+	url = https://github.com/niksingh710/basic-battery-stat
+	arch = x86_64
+	license = WTFPL
+	makedepends = git
+	optdepends = qt5-tools: Mobile Battery Support (qdbus)
+	optdepends = kdeconnect: Connecting with Mobile Device
+	provides = basic-battery-stat
+	conflicts = basic-battery-stat
+	source = git+https://github.com/niksingh710/basic-battery-stat.git
+	md5sums = SKIP
+
+pkgname = basic-battery-stat
