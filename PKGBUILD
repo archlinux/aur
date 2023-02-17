@@ -4,7 +4,7 @@ _orgname=informalsystems
 _basename=hermes
 _pkgname=${_basename}-relayer
 pkgname=${_pkgname}-bin
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Hermes IBC Relayer"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=(${_pkgname})
 source=("https://raw.githubusercontent.com/${_orgname}/${_basename}/v${pkgver}/LICENSE")
 source_x86_64=("https://github.com/${_orgname}/${_basename}/releases/download/v${pkgver}/${_basename}-v${pkgver}-${arch}-unknown-linux-gnu.tar.gz")
 sha256sums=('1816dfba29b8182ddffbc675e228906b2acaa338fcaada5e330065e650092689')
-sha256sums_x86_64=('b270343df97ef683700ac43a8e0881ef1b6b9cd67fe7500d6653da6134b64218')
+sha256sums_x86_64=('0e92f1c1507fb90b4129bc09f32742057b2fdd59f9142d6d0e9f90e434a20853')
 
 package() {
     install -Dt "${pkgdir}/usr/local/bin" "${_basename}"
