@@ -1,7 +1,7 @@
 pkgbase = opencl-amd
 	pkgdesc = ROCr OpenCL stack, supports Vega 10 and later products - Legacy OpenCL stack (Proprietary), supports legacy products older than Vega 10 - This package is intended to work along with the free amdgpu stack.
 	pkgver = 5.4.3
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://www.amd.com
 	arch = x86_64
@@ -40,7 +40,7 @@ pkgbase = opencl-amd
 	provides = rocm-cmake
 	provides = rocm-utils
 	provides = rocm-smi-lib
-	conflicts = opencl-driver
+	conflicts = rocm-opencl-runtime
 	conflicts = rocm-core
 	conflicts = hip
 	conflicts = hip-dev
