@@ -3,7 +3,7 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=vcpkg-git
-pkgver=2022.02.02.r64.g8dbd66f5a7
+pkgver=2023.01.09.r416.g31a159c1ca
 pkgrel=1
 pkgdesc='C++ library manager for Windows, Linux, and MacOS'
 depends=('curl' 'zip' 'unzip')
@@ -45,7 +45,7 @@ package() {
     # vcpkg root
     install -Dm755 "$srcdir/$pkgname/vcpkg" "$pkgdir/$VCPKG_ROOT/vcpkg"
     cp --preserve=mode -r \
-        "$srcdir/$pkgname"/{docs,ports,scripts,triplets,.vcpkg-root} \
+        "$srcdir/$pkgname"/{ports,scripts,triplets,.vcpkg-root} \
         "$pkgdir/$VCPKG_ROOT/"
 
     # default downloads root directory
