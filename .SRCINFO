@@ -1,6 +1,6 @@
 pkgbase = shadowsocks-go
 	pkgdesc = A versatile and efficient proxy platform for secure communications
-	pkgver = 1.5.2
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/database64128/shadowsocks-go
 	arch = x86_64
@@ -12,7 +12,8 @@ pkgbase = shadowsocks-go
 	backup = etc/shadowsocks-go/config.json
 	backup = etc/shadowsocks-go/server.json
 	backup = etc/shadowsocks-go/client.json
-	source = shadowsocks-go-1.5.2.tar.gz::https://github.com/database64128/shadowsocks-go/archive/refs/tags/v1.5.2.tar.gz
-	b2sums = c7b1435074a91a7cbb894e45895bf77f435356ab702899703313c82b9b2021cba92944dd6da4e77537faf4966274b3e867362affb3290ea84d7bcf24778cdb47
+	backup = etc/shadowsocks-go/upsks.json
+	source = shadowsocks-go-1.6.0.tar.gz::https://github.com/database64128/shadowsocks-go/archive/refs/tags/v1.6.0.tar.gz
+	b2sums = c0e364e4b7e9aec1ce69545ccd1e5bb103f7dc2eca427f1afd05681e9f38643e7e9bd3a2c27b2248e585db9aa18b3c52bd5de1cd45f81ebe6980a8cdcda9e48f
 
 pkgname = shadowsocks-go
