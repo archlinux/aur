@@ -3,7 +3,7 @@
 # Contributor: Daniel Haß <aur@hass.onl>
 pkgname=standardnotes-desktop
 pkgver=3.149.5
-pkgrel=1
+pkgrel=2
 _electronversion=22
 pkgdesc="An end-to-end encrypted notes app for digitalists and professionals."
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ source=("standardnotes-$pkgver.tar.gz::https://github.com/standardnotes/app/arch
         "standard-notes.sh")
 sha256sums=('6f82cc5bc066532d909e7046f991af3f7bb376d5c3d3a9c8dfea66bfba7a7734'
             '274cd3914ff2a6a0999485a26cbded3ad597763482a90eee8ee34490ddffda00'
-            '14343c62b46201de2a9e14b90b3de253530f4e6790c61487531ae6c1fcd62e3c')
+            '5fa1b6ed3cedfbf233d8e7f34edd7d643d43d7299d19645d098ae6cd2bd3f8d6')
 
 _ensure_local_nvm() {
   # let's be sure we are starting clean
