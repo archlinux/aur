@@ -2,6 +2,7 @@
 
 pkgbase=sunxi-livesuite-git
 pkgname=($pkgbase sunxi-livesuite-dkms-git)
+epoch=1
 pkgver=r5.20140913.1a0b52a
 pkgrel=1
 arch=('x86_64' 'i686')
