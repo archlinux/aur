@@ -6,7 +6,7 @@ pkgbase = jellyfin-web-intro-skipper
 	arch = any
 	license = GPL2
 	makedepends = npm
-	provides = jellyfin-web
+	provides = jellyfin-web=10.8.9
 	conflicts = jellyfin-web
 	source = git+https://github.com/ConfusedPolarBear/jellyfin-web.git
 	sha256sums = SKIP

@@ -7,7 +7,7 @@ pkgdesc="Modified jellyfin web client to use with the 'Intro Skipper' plugin"
 arch=('any')
 url="https://github.com/ConfusedPolarBear/jellyfin-web"
 license=('GPL2')
-provides=("${pkgname%-intro-skipper}")
+provides=("${pkgname%-intro-skipper}=10.8.9")
 conflicts=("${pkgname%-intro-skipper}")
 makedepends=('npm')
 source=("git+$url.git")
