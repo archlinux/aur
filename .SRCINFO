@@ -1,0 +1,12 @@
+pkgbase = rime-cli
+	pkgdesc = A command line tool to add customized vocabulary for Rime IME
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/puddinging/rime-cli
+	arch = x86_64
+	license = Apache
+	depends = librime
+	source = https://github.com/puddinging/rime-cli/archive/v0.0.3.tar.gz
+	sha256sums = 75b866f251ff098d360b070d9dd93faa20cc5e1ad17f254a47e06197b74a9d30
+
+pkgname = rime-cli
