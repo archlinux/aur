@@ -16,7 +16,7 @@ _gyp_commit=caa6002
 _japanese_usage_dictionary_commit=e5b3425
 _jsoncpp_commit=11086dd
 _protobuf_commit=cc7b1b5
-_dictext_commit=ace134b
+_dictext_commit=1041a9c
 
 ## the latest release from https://osdn.net/projects/ponsfoot-aur/storage/mozc/
 _zipcode_rel=202110
@@ -25,7 +25,7 @@ _pkgbase=mozc
 pkgname=fcitx5-mozc-ext-neologd
 pkgdesc="Fcitx5 Module of Mozc (Google Japanese Input OSS) with external generated dictionaries (NEologd and Sudachi.)"
 pkgver=2.26.4632.102.g4d2e3bd
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://github.com/google/mozc"
 license=('custom')
