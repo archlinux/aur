@@ -7,7 +7,6 @@ pkgbase = vmangos-git
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
-	makedepends = ccache
 	makedepends = git
 	makedepends = p7zip
 	depends = ace

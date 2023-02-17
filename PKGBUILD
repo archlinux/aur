@@ -14,7 +14,6 @@ depends=(
 )
 makedepends=(
     'cmake'
-    'ccache'
     'git'
     'p7zip'
 )
@@ -60,8 +59,6 @@ prepare() {
 
 build() {
     cmake -B build -S "${pkgname}" \
-        -DCMAKE_C_COMPILER_LAUNCHER=ccache \
-        -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
         -DSUPPORTED_CLIENT_BUILD=5875 \
         -DUSE_EXTRACTORS=1 \
         -DCMAKE_INSTALL_PREFIX='/usr' \
