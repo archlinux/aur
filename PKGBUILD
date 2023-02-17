@@ -2,7 +2,7 @@
 
 pkgname=terraform-ls
 pkgver=0.30.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Terraform Language Server'
 arch=('x86_64' 'aarch64')
 url='https://github.com/hashicorp/terraform-ls'
@@ -19,7 +19,7 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-    go build -ldflags "-X main.version=$pkgver -X main.prerelease="
+    go build -ldflags "-X  main.rawVersion=$pkgver -X main.prerelease="
 }
 
 package() {
