@@ -1,10 +1,9 @@
 # Maintainer: Piotr Rogoża <rogoza dot piotr at gmail dot com>
 # Contributor: Laszlo Papp <djszapi @ gmail at com>
-# vim:set ts=2 sw=2 et ft=sh tw=100: expandtab
 
 pkgname=vim-manpageview
 _pkgname=manpageview
-pkgver=25o
+pkgver=25w
 pkgrel=1
 pkgdesc='Viewer for manpages, gnu info,  perldoc, and php (unix/linux/cygwin)'
 arch=('any')
@@ -18,7 +17,7 @@ $_pkgname-$pkgver.vba.gz::http://www.drchip.org/astronaut/vim/vbafiles/manpagevi
 license.txt
 manpageview.vim.diff
 )
-sha256sums=('5611fd67a743c7b2fa25e8822e092443219d5d70921e008eb65bd4038771edd8'
+sha256sums=('2f30233d462ea42ad50864d4485cfb0ec3472a0eda3207ce7e8d0d5a141a169c'
             'bce42e8c4290de3b4262045a48e0d794436b57f0c666f811b4b8021db4c1c603'
             '631b1740fe13d016d234a2475ef0d0f8665a2e967b1a92b32291468a5b3d3713')
 options=(!strip)
