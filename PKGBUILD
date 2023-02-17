@@ -1,11 +1,11 @@
 # Maintainer: fenuks
 
 _pkgver=0.22
-_pkgrel=05
+_pkgrel=06
 _file=gtk-wave-cleaner-${_pkgver}-${_pkgrel}
 pkgname=gwc
 pkgver=${_pkgver}_${_pkgrel}
-pkgrel=2
+pkgrel=1
 pkgdesc="Gtk Wave Cleaner is a digital audio editor to denoise, dehiss and amplify audio files"
 arch=("i686" "x86_64")
 url="http://gwc.sourceforge.net/"
@@ -18,7 +18,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 # install=$pkgname.install
 source=("https://github.com/AlisterH/gwc/releases/download/${_pkgver}-${_pkgrel}/${_file}.tar.gz")
-sha256sums=('6e7cd392b56925ed07d118eedf967b154679e66dbbc84316ae1a35ab0f3c1517')
+sha256sums=('0c5e58c195ac2aff5822703796a136d1cff5fffd1e5d787eddbae98ebf179854')
 
 prepare() {
     cd "${srcdir}/${_file}"
