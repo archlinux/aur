@@ -1,6 +1,6 @@
 pkgbase = fscryptctl-git
 	pkgdesc = Small C tool for Linux filesystem encryption
-	pkgver = 1.0.0.r2.ge863642
+	pkgver = 1.1.0.r0.g7c80c73
 	pkgrel = 1
 	url = https://github.com/google/fscryptctl
 	arch = x86_64

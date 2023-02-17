@@ -1,7 +1,7 @@
 # Maintainer: Eric Biggers <ebiggers3 at gmail dot com>
 
 pkgname=fscryptctl-git
-pkgver=1.0.0.r2.ge863642
+pkgver=1.1.0.r0.g7c80c73
 pkgrel=1
 pkgdesc='Small C tool for Linux filesystem encryption'
 arch=('x86_64')
@@ -26,5 +26,5 @@ build() {
 package() {
   cd fscryptctl
   make DESTDIR="$pkgdir" PREFIX=/usr install
-  install -Dm644 -t "$pkgdir/usr/share/doc/fscryptctl/" README.md
+  install -Dm644 -t "$pkgdir/usr/share/doc/fscryptctl/" README.md NEWS.md
 }
