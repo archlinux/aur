@@ -1,7 +1,7 @@
 # Maintainer: Stas Rudakou <stas@garage22.net>
 
 pkgname=happy-hacking-gnu
-pkgver=0.1.1
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='A free, open-source alternative to the HHKB Keymap Tool provided by PFU'
 arch=(x86_64)
