@@ -2,8 +2,8 @@
 
 pkgbase=sunxi-livesuite-git
 pkgname=($pkgbase sunxi-livesuite-dkms-git)
-pkgver=1a0b52a
-pkgrel=4
+pkgver=r5.20140913.1a0b52a
+pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/linux-sunxi/sunxi-livesuite"
 license=('GPLv2')
@@ -23,7 +23,16 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "${srcdir}/${pkgbase%-git}"
-    git describe --always | sed 's|-|.|g'
+    _rev="$(git rev-list --count HEAD)"
+    _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
+    _hash="$(git rev-parse --short HEAD)"
+
+    if [ -z "${_rev}" ]; then
+        error "Could not determine commit count."
+    return 1
+    else
+        printf '%s' "r${_rev}.${_date}.${_hash}"
+    fi
 }
 
 package_sunxi-livesuite-git() {
