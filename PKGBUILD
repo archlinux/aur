@@ -14,7 +14,8 @@ source=("https://github.com/SebLague/Digital-Logic-Sim/archive/refs/heads/main.z
   "https://raw.githubusercontent.com/Oman395/digital-logic-sim-aur/master/digital-logic-sim.png")
 sha256sums=('09c35316ea16a36100e97f0db02fa15dea4f06d4139a5fa59d298fb1e4f011b7'
             'dd510a341964ef57e74bf28b7427d1da934a7a5295cf15531790709be3cc117e'
-            'ba743a270af732c1fb54145a5f699006e38d2226daeb87da7e653d8e1a354658')
+            '0c7203b6978d98b1885c62c995210059ad58d66c530f7d0c6a6da38e52a775d0')
+
 
 
 
