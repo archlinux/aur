@@ -1,22 +1,23 @@
-# Maintainer: minmo com <dot> gmail <at> mike <dot> maroboro
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: minmo com <dot> gmail <at> mike <dot> maroboro
 
 pkgname=detekt-bin
 pkgdesc="Static code analysis for Kotlin"
-pkgver=1.20.0
-rc=2
+pkgver=1.22.0
 pkgrel=1
-arch=('i686' 'x86_64' 'arm' 'arm64')
+arch=('any')
 url="https://github.com/detekt/detekt"
 license=('Apache')
-provides=("detekt-cli")
-realversion="$pkgver-RC$rc"
-source=($url/releases/download/v$realversion/detekt-cli-$realversion.zip)
 depends=('java-runtime')
-sha256sums=('f14d872c69203dbcfab8fcd7374d4495504db2fe4790b5e537503339ffb522ad')
+provides=("detekt-cli")
+source=("$pkgname-$pkgver.zip::$url/releases/download/v$pkgver/detekt-cli-$pkgver.zip")
+sha256sums=('7c3bc8e2b89493eb645e050a70186ecb34ecc14205381ad2e4110807d334413e')
+
+PURGE_TARGETS=('*.bat')
 
 package() {
-  mkdir -p "$pkgdir/opt/detekt-cli"
-  mkdir -p "$pkgdir/usr/bin"
-  cp -R "${srcdir}/detekt-cli-$realversion/." "$pkgdir/opt/detekt-cli"
-  ln -s "/opt/detekt-cli/bin/detekt-cli" "${pkgdir}/usr/bin/detekt-cli"
+	install -dv "$pkgdir/opt/detekt-cli/"
+	install -dv "$pkgdir/usr/bin/"
+	cp -av --no-preserve=ownership "detekt-cli-$pkgver/." "$pkgdir/opt/detekt-cli"
+	ln -sv "/opt/detekt-cli/bin/detekt-cli" "$pkgdir/usr/bin/detekt-cli"
 }
