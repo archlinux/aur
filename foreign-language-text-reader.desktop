@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.4.0
+Name=Foreign Language Text Reader
+Exec=/bin/java -jar /opt/foreign-language-text-reader/FLTR.jar
+Icon=foreign-language-text-reader
+Terminal=false
+Type=Application
+Comment=Learn new languages by reading text in them
+Keywords=Language

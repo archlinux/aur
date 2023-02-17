@@ -1,0 +1,16 @@
+pkgbase = foreign-language-text-reader-bin
+	pkgdesc = ◆ A handy Java Application for Language Learning ◆
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://sourceforge.net/projects/foreign-language-text-reader/
+	arch = any
+	license = custom
+	depends = java-runtime-common
+	source = https://sourceforge.net/projects/foreign-language-text-reader/files/foreign_language_text_reader_1_4_0_complete.zip/download
+	source = foreign-language-text-reader.desktop
+	source = https://github.com/magnus-ISU/foreign-language-text-reader/raw/master/resources/icon512.png
+	sha256sums = b44d164d3503eef0fe6ff3d9889437a83aba3ef24dbad675b831fc5ceed570da
+	sha256sums = fc7d78c78bad9c73e1514fc2dc498a079e7181f0a7b4830ad5a6c769925a0d79
+	sha256sums = 98def68082dba6be8c22f5dac9d6e14ab63fcb82e3ed48047f0b707cf225abaa
+
+pkgname = foreign-language-text-reader-bin
