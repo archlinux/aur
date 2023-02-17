@@ -15,7 +15,7 @@ pkgbase = qbittorrent-enhanced-ua
 	optdepends = python: needed for torrent search tab
 	source = qBittorrent-Enhanced-Edition-release-4.5.1.10.tar.gz::https://github.com/c0re100/qBittorrent-Enhanced-Edition/archive/release-4.5.1.10.tar.gz
 	source = revert-ua.patch
-	sha256sums = 72ced8ceeda7d96310e97bfec895bc21dc3b44c4f38c37cc578dc670022f435d
+	sha256sums = 97b459e0e4f51f5a8fbd32baeb2f3a24a857893146c4e64381cbdfd2301c06a6
 	sha256sums = f39dcbcd65216310e99d6006aa43e479b8cbf7028e173ac602d643651d19c7f1
 
 pkgname = qbittorrent-enhanced-ua
