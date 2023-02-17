@@ -1,18 +1,17 @@
 # Maintainer: CuVoodoo <pcb-rnd@cuvoodoo.info>
 pkgname=sch-rnd
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
-pkgdesc="free/open source, flexible, modular Printed Circuit Board editor"
+pkgdesc="simple, modular, scriptable schematics editor"
 url="http://www.repo.hu/projects/pcb-rnd/"
 arch=('i686' 'x86_64')
 license=('GPL2')
-depends=('librnd3>=3.2.0'
+depends=('librnd4>=4.0.0'
          'libxml2')
-optdepends=('gd: gd based exports and pixmap imports (png, gif, jpeg)'
-            'freetype2: import_ttf plugin'
+optdepends=('freetype2: import_ttf plugin'
             'fungw')
 source=("http://www.repo.hu/projects/$pkgname/releases/$pkgname-$pkgver.tar.gz")
-sha256sums=('42445fae1f10a3822e3a6ef9c099c2b5dbf4599eb4cf46b33d9d94816a5d7d01')
+sha256sums=('fbb5c43c6e9efebb983660fb21f0df2dd5484d5d40ceac297d921ceb1b1f862e')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/"
