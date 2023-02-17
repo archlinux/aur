@@ -54,12 +54,12 @@ build() {
              -DDAGMC_ROOT=/opt/DAGMC \
              -DOPENMC_USE_MPI=ON \
              -DHDF5_PREFER_PARALLEL=ON \
-	     -DCMAKE_INSTALL_PREFIX=${pkgdir}/opt/openmc
+	     -DCMAKE_INSTALL_PREFIX=/opt/openmc
     make
 }
 
 package() {
 	cd $srcdir/${pkgname}/build 
-	make install
+	make DESTDIR="$pkgdir/" install
 	pip install ../
 }
