@@ -3,7 +3,7 @@
 _name=maturin
 pkgname="python-${_name}"
 pkgver=0.14.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Build and publish crates with pyo3, rust-cpython, cffi and uniffi bindings"
 arch=("x86_64")
 url="https://www.maturin.rs/"
@@ -23,6 +23,10 @@ build() {
 package() {
     cd "$_name-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
+
+    mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+    cp license-apache license-mit "$pkgdir/usr/share/licenses/$pkgname/"
+
     # The `maturin` binary is provided separately by the maturin package.
     rm "$pkgdir/usr/bin/maturin"
 }
