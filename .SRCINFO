@@ -1,7 +1,7 @@
 pkgbase = digital-logic-sim-git
 	pkgdesc = Simple digital logic simulator made by Sebastian Lague for his series on digital logic
 	pkgver = 1.0.2
-	pkgrel = 1.0
+	pkgrel = 1.1
 	url = https://github.com/SebLague/Digital-Logic-Sim
 	arch = x86_64
 	license = CC BY-NC-SA 4.0

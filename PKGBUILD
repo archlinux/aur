@@ -3,7 +3,7 @@
 pkgname="digital-logic-sim-git"
 license=('CC BY-NC-SA 4.0')
 pkgver=1.0.2
-pkgrel=1.0
+pkgrel=1.1
 pkgdesc="Simple digital logic simulator made by Sebastian Lague for his series on digital logic"
 arch=('x86_64')
 makedepends=("unzip"
