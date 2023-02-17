@@ -1,0 +1,3 @@
+post_install() {
+     xdg-mime default f1multiviewer.desktop x-scheme-handler/multiviewer
+}

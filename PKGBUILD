@@ -1,20 +1,20 @@
 # Maintainer: AntiCompositeNumber <anticompositenumber+aur@gmail.com>
 pkgname=f1multiviewer-bin
-pkgver=1.12.3
+pkgver=1.12.4
 pkgrel=1
 pkgdesc="Unofficial desktop client for F1TV"
 arch=('x86_64')
-url="https://beta.f1mv.com/"
+url="https://multiviewer.app"
 license=('unknown')  # Licenses in the dist apply to Electron, not f1multiviewer
-depends=('nss' 'alsa-lib' 'gtk3' 'at-spi2-core')
+depends=('nss' 'alsa-lib' 'gtk3' 'at-spi2-core' 'xdg-utils')
 provides=('f1multiviewer')
 conflicts=('f1multiviewer')
-install=
-source=("https://releases.f1mv.com/download/93467083/MultiViewer.for.F1-linux-x64-1.12.3.zip"
+install=f1multiviewer-bin.install
+source=("https://releases.multiviewer.app/download/95605757/MultiViewer.for.F1-linux-x64-1.12.4.zip"
     "f1multiviewer.desktop")
 noextract=()
-sha256sums=('7d1005ecc749c2a78553a9d08b2bae3611dbf7b46f3833834ad29043b44cd0c0'
-            'f6245ecb0392c1f863ce46d61865995be9f226769e54fbce3e407e979e72bbf7')
+sha256sums=('17491237df52c04a5e6ba2fa311767ba4175af80e21417d87cae50eb3daf3982'
+            '00dd9ca8d94a729b80125f6f9ee2287ccd3f86975338c5ce1d12575130d73a6a')
 
 package() {
     install -d "$pkgdir/opt/$pkgname"
