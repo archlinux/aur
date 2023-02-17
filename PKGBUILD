@@ -3,7 +3,7 @@
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=codelobster
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='Free cross-platform IDE for PHP/HTML/CSS/JavaScript development'
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
         'LICENSE'
        )
 sha256sums=(
-            'c912e614d4c325753177dbec20ebf858c0b2a0e53d803b684864c61abb01d73c'
+            '0f701e33236ae8631b2ff0bfb5e95af98311586191b0df815e3cf401f3464f89'
             '70ce1193a0036cff727f29e1c94bd3ddd61599993ba5d130491037b91158a73a'
            )
 
