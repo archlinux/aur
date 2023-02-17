@@ -1,6 +1,6 @@
 pkgbase = qucsator-git
 	pkgdesc = An integrated circuit simulator
-	pkgver = 0.0.20
+	pkgver = 0.0.20.r4.g22126bb
 	pkgrel = 1
 	url = http://qucs.sourceforge.net
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = qucsator-git
 	makedepends = gperf
 	depends = gcc-libs
 	depends = adms
+	provides = qucsator=0.0.20.r4.g22126bb
+	conflicts = qucsator
 	source = git+https://github.com/Qucs/qucsator.git#branch=develop
 	md5sums = SKIP
 
