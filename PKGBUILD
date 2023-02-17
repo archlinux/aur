@@ -3,13 +3,13 @@
 # Based on https://aur.archlinux.org/packages/monero-feather-git/
 
 pkgname='monero-feather'
-pkgver=2.2.3
+pkgver=2.4.1
 pkgrel=1
 pkgdesc='A free Monero desktop wallet'
 license=('BSD')
 arch=('x86_64')
 url="https://featherwallet.org"
-depends=('boost-libs' 'expat' 'hidapi' 'libgcrypt' 'libsodium' 'libudev.so' 'libunwind' 'libusb' 'libzip'
+depends=('boost-libs' 'expat' 'hidapi' 'libgcrypt' 'libsodium' 'libunwind' 'libusb' 'libzip'
          'openssl' 'protobuf' 'qrencode' 'qt6-base' 'qt6-multimedia' 'qt6-svg' 'qt6-websockets' 'tor' 'unbound' 'zbar')
 makedepends=('git' 'cmake' 'boost')
 provides=('monero-feather')
