@@ -1,20 +1,20 @@
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
 
 pkgname=picacg-qt
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="PicACG Comic PC Client For Linux"
 arch=('any')
 url="https://github.com/tonquer/picacg-qt"
 license=('LGPL3')
 # https://github.com/tonquer/picacg-qt/blob/main/src/requirements.txt
-depends=('python-pyqt5'
-         'pyside6'
+depends=('pyside6'
          'python-websocket-client'
          'python-requests'
          'python-urllib3'
          'python-pillow'
          'python-pysocks'
+         'python-natsort'
 )
 optdepends=('python-waifu2x-vulkan: Waifu2x-Vulkan support')
 provides=('bika')
@@ -23,7 +23,7 @@ source=(${pkgname}-${pkgver}.tar.gz::"${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgname}.desktop"
         "${pkgname}.sh"
 )
-sha256sums=('f6ad86f9b8142bb40fa29892f7339e0c7882c42c84b18601e42929a66fd924dc'
+sha256sums=('f21167c188c8b61fd08c9a589e89397df225320dcf3ddd814ee462c74451bd76'
             '2da544814d26a95d1b4f88e19b2957059d9bd3c074424cb6553eaf84ed71c765'
             '9c35b0e474517cbbf1b88dde5a5333e273a531e53657a839bd193a2f05842361')
 
