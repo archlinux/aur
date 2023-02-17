@@ -1,6 +1,6 @@
 pkgbase = xsct
 	pkgdesc = Improved sct (set screen color temperature)
-	pkgver = 1.8
+	pkgver = 1.9
 	pkgrel = 1
 	url = https://github.com/faf0/sct
 	arch = i686
@@ -10,6 +10,6 @@ pkgbase = xsct
 	makedepends = libx11
 	makedepends = libxrandr
 	source = https://github.com/faf0/sct/archive/refs/tags/1.8.tar.gz
-	md5sums = dfc7cb20e65c350c5858ee93d155445b
+	md5sums = 5483876b5a7fb291a7d1aabac41d3c7f
 
 pkgname = xsct
