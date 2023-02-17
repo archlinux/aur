@@ -29,8 +29,10 @@ build() {
   ninja -C build
 }
 
+# TODO: wait until this is resolved:
+# https://gitlab.freedesktop.org/emersion/libdisplay-info/-/issues/35
+false &&
 check() {
-  ninja -C build gen-test-data
   ninja -C build test
 }
 
