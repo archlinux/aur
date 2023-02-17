@@ -7,7 +7,7 @@
 pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
-pkgver=109.0.1
+pkgver=110.0
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
@@ -73,7 +73,7 @@ options=(
   !strip
 )
 install=cachy-browser.install
-backup=('usr/lib/cachy-browser/cachy.cfg'
+backup=('usr/lib/cachy-browser/cachyos.cfg'
         'usr/lib/cachy-browser/distribution/policies.json')
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
         $pkgname.desktop
@@ -81,7 +81,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         "git+https://github.com/cachyos/cachyos-browser-common.git"
         "match.patch"
         "libwebrtc-screen-cast-sync.patch")
-sha256sums=('5e43fdfb3923ee3a7ae7bc91ef3377a3fc6f8a0c1b87436c19b29458b0d731d9'
+sha256sums=('d3882492190e4fdcfa142772cf35de5403effb011d24357b315d643ed9168a39'
             'SKIP'
             'c0786df2fd28409da59d0999083914a65e2097cda055c9c6c2a65825f156e29f'
             'SKIP'
@@ -258,9 +258,12 @@ END
     patch -Np1 -i ${_patches_dir}/unity_kde/unity-menubar.patch
     msg2 "mozilla-nongnome-proxies"
     patch -Np1 -i ${_patches_dir}/kde/mozilla-nongnome-proxies.patch
-    msg2  " some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)"
+    msg2  "some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)"
     patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
-
+    msg2  "RFP Performance API - should be merged in 111"
+    patch -Np1 -i ${_patches_dir}/librewolf/rfp-performance-api.patch
+    msg2  "unified-extensions-dont-show-recommendations.patch"
+    patch -Np1 -i ${_patches_dir}/librewolf/unified-extensions-dont-show-recommendations.patch
     # https://bugs.archlinux.org/task/76231
     # https://bugzilla.mozilla.org/show_bug.cgi?id=1790496
     # https://src.fedoraproject.org/rpms/firefox/blob/rawhide/f/libwebrtc-screen-cast-sync.patch
