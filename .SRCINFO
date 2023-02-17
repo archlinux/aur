@@ -1,7 +1,7 @@
 pkgbase = dsp56300-emulator
 	pkgdesc = Emulates musical devices that used the Motorola 56300 DSPs
-	pkgver = 1.2.25
-	pkgrel = 2
+	pkgver = 1.2.29
+	pkgrel = 1
 	url = https://github.com/dsp56300/gearmulator
 	install = dsp56300-emulator.install
 	arch = x86_64
@@ -24,14 +24,13 @@ pkgbase = dsp56300-emulator
 	depends = alsa-lib
 	optdepends = vst3-host: for VST3 plugin
 	optdepends = clap-host: for CLAP plugin
-	source = dsp56300-emulator::git+https://github.com/dsp56300/gearmulator#commit=929df1d81e0fa58021cb6968f7dee895d7b2aed1
+	source = dsp56300-emulator::git+https://github.com/dsp56300/gearmulator#commit=5124f5e4ec9efa0adabb6ce57be2652e35c70b77
 	source = github.com-dsp56300-dsp56300::git+https://github.com/dsp56300/dsp56300
 	source = github.com-dsp56300-JUCE::git+https://github.com/dsp56300/JUCE
 	source = github.com-asmjit-asmjit::git+https://github.com/asmjit/asmjit
 	source = github.com-free-audio-clap::git+https://github.com/free-audio/clap
 	source = github.com-free-audio-clap-helpers::git+https://github.com/free-audio/clap-helpers
 	source = github.com-free-audio-clap-juce-extensions::git+https://github.com/free-audio/clap-juce-extensions
-	source = fix-submodule-url.patch
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
@@ -39,6 +38,5 @@ pkgbase = dsp56300-emulator
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = 99550e55c34c872134eeab01a659f10e70d7e9bd1d08d36eafc55d4a215ba14155e539baa4b60806a03c87c9c9473b3725520b810f2a82ea6eb884e56ebc88f7
 
 pkgname = dsp56300-emulator

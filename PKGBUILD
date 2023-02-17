@@ -1,8 +1,8 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=dsp56300-emulator
-pkgver=1.2.25
-pkgrel=2
+pkgver=1.2.29
+pkgrel=1
 pkgdesc='Emulates musical devices that used the Motorola 56300 DSPs'
 arch=('x86_64')
 url='https://github.com/dsp56300/gearmulator'
@@ -30,7 +30,7 @@ optdepends=(
   'clap-host: for CLAP plugin'
 )
 install=dsp56300-emulator.install
-_commit='929df1d81e0fa58021cb6968f7dee895d7b2aed1'
+_commit='5124f5e4ec9efa0adabb6ce57be2652e35c70b77'
 source=(
   "$pkgname::git+$url#commit=$_commit"
   'github.com-dsp56300-dsp56300::git+https://github.com/dsp56300/dsp56300'
@@ -39,7 +39,6 @@ source=(
   'github.com-free-audio-clap::git+https://github.com/free-audio/clap'
   'github.com-free-audio-clap-helpers::git+https://github.com/free-audio/clap-helpers'
   'github.com-free-audio-clap-juce-extensions::git+https://github.com/free-audio/clap-juce-extensions'
-  'fix-submodule-url.patch'
 )
 b2sums=('SKIP'
         'SKIP'
@@ -47,20 +46,16 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        'SKIP'
-        '99550e55c34c872134eeab01a659f10e70d7e9bd1d08d36eafc55d4a215ba14155e539baa4b60806a03c87c9c9473b3725520b810f2a82ea6eb884e56ebc88f7')
+        'SKIP')
 
 pkgver() {
   cd "$pkgname"
 
-  git describe --tags | sed 's/^osirus_//'
+  git describe --tags | sed 's/^v//'
 }
 
 prepare() {
   cd "$pkgname"
-
-  # convert relative to absolute submodule URL
-  patch -p1 -i "$srcdir/fix-submodule-url.patch"
 
   # prepare git submodules
   git submodule init
@@ -99,8 +94,8 @@ package() {
 
   # VST3 plugin
   install -vd "$pkgdir/usr/lib/vst3"
-  cp -vr VST3/DSP56300Emu.vst3 "$pkgdir/usr/lib/vst3"
+  cp -vr VST3/*.vst3 "$pkgdir/usr/lib/vst3"
 
   # CLAP plugin
-  install -vDm755 CLAP/DSP56300Emu.clap -t "$pkgdir/usr/lib/clap"
+  install -vDm755 CLAP/*.clap -t "$pkgdir/usr/lib/clap"
 }
