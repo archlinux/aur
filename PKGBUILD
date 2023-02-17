@@ -3,7 +3,7 @@
 _pkgname=nvidia-utils-beta
 pkgname=${_pkgname}-nvlax
 pkgver=525.89.02
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA drivers utilities (beta version) with NVENC and NvFBC patched with nvlax"
 arch=('x86_64')
 license=('custom')
@@ -118,6 +118,7 @@ package() {
   install -Dm755 "libnvidia-glsi.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-glsi.so.${pkgver}"
 
   # misc
+  install -Dm755 "libnvidia-api.so.1" "${pkgdir}/usr/lib/libnvidia-api.so.1"
   install -Dm755 "libnvidia-cfg.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-cfg.so.${pkgver}"
   install -Dm755 "libnvidia-ml.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-ml.so.${pkgver}"
   install -Dm755 "libnvidia-glvkspirv.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-glvkspirv.so.${pkgver}"
