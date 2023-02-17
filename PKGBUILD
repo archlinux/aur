@@ -19,6 +19,7 @@ source=("https://installers.privateinternetaccess.com/download/pia-linux-${_pkgv
 options=(!strip)
 sha256sums=('eee140e511adfac4d74b059ed9d673f1b910163b5b92ac35642a65592fef639d')
 
+# == You need to enable and start piavpn.service. Run sudo systemctl enable --now piavpn.service ==
 prepare() {
 	if [ $arch == "aarch64" ] ;then
 		sha256sums=('7cde46390c69104f6d21a7729f90222c3ff88dab6c8bef33c4d41dedcf2df783')
@@ -70,3 +71,4 @@ package() {
 EOF
 
 }
+# == You need to enable and start piavpn.service. Run sudo systemctl enable --now piavpn.service ==
