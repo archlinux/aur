@@ -35,11 +35,11 @@ build() {
 	cd $srcdir/$pkgname
 	mkdir build && cd build
 	cmake .. -DMOAB_DIR=/opt/MOAB \
-		 -DCMAKE_INSTALL_PREFIX=${pkgdir}/opt/double-down
+		 -DCMAKE_INSTALL_PREFIX=/opt/double-down
 }
 
 package() {
 	cd $srcdir/$pkgname/build
 	make
-	make install
+	make DESTDIR="$pkgdir/" install
 }
