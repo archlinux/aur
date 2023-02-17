@@ -1,6 +1,6 @@
 pkgbase = texmacs-svn
 	pkgdesc = Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG editor and CAS-interface.
-	pkgver = 20230129.14108
+	pkgver = 20230201.14110
 	pkgrel = 1
 	url = http://www.texmacs.org/
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = texmacs-svn
 	depends = qt5-svg
 	depends = hicolor-icon-theme
 	depends = gawk
+	depends = python-lxml
 	optdepends = transfig: convert images using fig2ps
 	optdepends = ghostscript: rendering ps files
 	optdepends = imagemagick: convert images
