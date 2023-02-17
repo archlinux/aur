@@ -2,25 +2,27 @@
 
 pkgname=mesa-rusticl-git
 pkgdesc="An open-source implementation of the OpenGL specification, with Rusticl"
-pkgver=23.0.0_devel.163990.bc60eca1d95.d41d8cd98f00b204e9800998ecf8427e
+pkgver=23.1.0_devel.166744.4f5ec8a279d.d41d8cd98f00b204e9800998ecf8427e
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence' 'libxxf86vm'
              'libxdamage' 'libvdpau' 'libva' 'wayland' 'wayland-protocols' 'zstd' 'elfutils' 'llvm'
              'libomxil-bellagio' 'libclc' 'clang' 'libglvnd' 'libunwind' 'lm_sensors' 'libxrandr'
              'systemd' 'valgrind' 'glslang' 'vulkan-icd-loader' 'cmake' 'meson'
-             'git' 'ninja'
-             'directx-headers-git' 'rust' 'rust-bindgen')
-depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
-         'libomxil-bellagio' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc' 'vulkan-icd-loader' 'zstd' 'expat'
-         'libxcb' 'python' 'libclc' 'clang' 'libx11' 'systemd-libs' 'llvm-libs' 'compiler-rt'
-         'spirv-llvm-translator')
+             'directx-headers-git' 'git' 'ninja' 
+             'rust' 'rust-bindgen' 'spirv-tools' 'spirv-llvm-translator')
+depends=('libdrm' 'libxcb' 'wayland' 'python'
+         'libclc' 'clang' 'expat' 'spirv-llvm-translator'
+         'wayland' 'libx11' 'libxshmfence' 'zstd' 'systemd-libs'
+         'libelf' 'llvm-libs'
+         'libunwind'
+         'libxxf86vm' 'libxdamage' 'libomxil-bellagio' 'lm_sensors' 'libglvnd' 'vulkan-icd-loader')
 optdepends=('opencl-headers: headers necessary for OpenCL development'
             'opengl-man-pages: for the OpenGL API man pages')
-provides=('mesa' 'opencl-mesa' 'vulkan-radeon' 'vulkan-intel' 'vulkan-swrast' 'vulkan-mesa-layers' 'libva-mesa-driver' 'mesa-vdpau'
-          'vulkan-mesa-layer' 'mesa-libgl' 'opengl-driver' 'opencl-driver' 'vulkan-driver')
-conflicts=('mesa' 'opencl-mesa' 'vulkan-radeon' 'vulkan-intel' 'vulkan-swrast' 'vulkan-mesa-layers' 'libva-mesa-driver' 'mesa-vdpau'
-           'vulkan-mesa-layer' 'mesa-libgl' 'vulkan-mesa')
+provides=('vulkan-mesa-layers' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-swrast' 'vulkan-virtio' 'libva-mesa-driver' 'mesa-vdpau' 'mesa'
+          'vulkan-mesa-layer' 'mesa-libgl' 'opencl-driver' 'vulkan-driver' 'libva-driver' 'vdpau-driver' 'opengl-driver')
+conflicts=('vulkan-mesa-layers' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-swrast' 'vulkan-virtio' 'libva-mesa-driver' 'mesa-vdpau' 'mesa'
+           'vulkan-mesa-layer' 'vulkan-mesa' 'mesa-libgl')
 
 url="https://www.mesa3d.org"
 license=('custom')
@@ -84,11 +86,11 @@ build () {
        -D prefix=/usr \
        -D sysconfdir=/etc \
        -D buildtype=release \
-       -D b_lto=true \
        -D b_ndebug=true \
+       -D b_lto=true \
        -D platforms=auto \
-       -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,i915,zink,d3d12 \
-       -D vulkan-drivers=amd,intel,intel_hasvk,swrast,virtio-experimental \
+       -D gallium-drivers=r300,r600,radeonsi,i915,crocus,iris,nouveau,d3d12,zink,svga,virgl,swrast \
+       -D vulkan-drivers=amd,intel_hasvk,intel,microsoft-experimental,virtio-experimental,swrast \
        -D vulkan-layers=device-select,intel-nullhw,overlay \
        -D dri3=enabled \
        -D egl=enabled \
@@ -99,20 +101,21 @@ build () {
        -D gallium-vdpau=enabled \
        -D gallium-xa=enabled \
        -D gbm=enabled \
+       -D gles1=enabled \
        -D gles2=enabled \
        -D glvnd=true \
        -D glx=dri \
        -D libunwind=enabled \
+       -D llvm=enabled \
        -D lmsensors=enabled \
        -D osmesa=true \
        -D shared-glapi=enabled \
-       -D valgrind=disabled \
        -D video-codecs=vc1dec,h264dec,h264enc,h265dec,h265enc \
+       -D valgrind=disabled \
        -D gallium-rusticl=true \
+       -D rust_std=2021 \
        -D opencl-spirv=true \
-       -D shader-cache=enabled \
-       -D llvm=enabled \
-       -D rust_std=2021
+       -D shader-cache=enabled
 
     meson configure --no-pager _build
     
