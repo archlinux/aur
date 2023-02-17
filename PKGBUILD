@@ -1,7 +1,7 @@
 # Maintainer: Janne Veteläinen <janne.p.w.vetelainen@gmail.com>
 
 pkgname=vmangos-git
-pkgver=r5198.56a7e74db
+pkgver=r5203.aa73bd1ca
 pkgrel=1
 pkgdesc="World of Warcraft Vanilla server emulator"
 arch=('x86_64')
