@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="CLI to make one-off Tera templating easier"
 depends=('gcc-libs')
 makedepends=('cargo')
+conflicts=('teracli')
 arch=('x86_64')
 url="https://github.com/guangie88/tera-cli"
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/v${pkgver}.tar.gz")
