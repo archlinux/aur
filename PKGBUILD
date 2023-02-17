@@ -34,6 +34,7 @@ depends=('bluez-libs'
          'python-protobuf'
          'python-pyserial'
          'python-numpy'
+         'python-websockets'
          'sqlite'
          'systemd'
          'zlib')
