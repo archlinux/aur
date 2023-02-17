@@ -5,12 +5,12 @@ pkgver=1.0
 pkgrel=2
 pkgdesc="A utility to install and run packages in chroot environments"
 arch=(x86_64 i686 i486 pentium4 arm armv6h armv7h aarch64)
-url="https://gitlab.com/ia-projekt-zespolowy-2021-2022/box-installer"
+url="https://gitlab.com/tomekb234/box-installer"
 license=("MIT")
 depends=("pacman")
 optdepends=("git: downloading from AUR")
 makedepends=(git)
-source=("git+https://gitlab.com/ia-projekt-zespolowy-2021-2022/box-installer.git#tag=v${pkgver}")
+source=("git+https://gitlab.com/tomekb234/box-installer.git#tag=v${pkgver}")
 sha256sums=("SKIP")
 
 build() {
