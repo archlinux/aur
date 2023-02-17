@@ -3,7 +3,7 @@
 _reponame=flycast
 _pkgname=libretro-$_reponame
 pkgname=$_pkgname-git
-pkgver=2.0.r223.g92fa4c04
+pkgver=2.1.r1.g253301ba4
 pkgrel=1
 pkgdesc="Sega Dreamcast/NAOMI/NAOMI 2/Atomiswave core (fork of reicast)"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -40,13 +40,14 @@ b2sums=(
 
 pkgver() {
 	cd $_reponame
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//i;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
 	cd $_reponame
 	git config submodule.core/deps/VulkanMemoryAllocator.url ../VulkanMemoryAllocator
 	git -c protocol.file.allow=always submodule update
+	git revert -n 8d0654c323028d9d31f67c51d65e99b410a91750
 	patch -Np1 < ../unbundle-libs.patch
 	rm -r core/deps/libretro-common/include/libchdr
 }
