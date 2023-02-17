@@ -1,0 +1,10 @@
+pkgbase = helixbinhx
+	pkgdesc = Link /usr/bin/hx to helix
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = GPL
+	conflicts = hex
+
+pkgname = helixbinhx
+	depends = helix
