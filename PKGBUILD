@@ -15,10 +15,11 @@ PKGEXT='.pkg.tar'
 
 pkgname=chromium-no-extras
 _pkgname=chromium
-pkgver=110.0.5481.77
+pkgver=110.0.5481.100
 pkgrel=1
 _launcher_ver=8
 _gcc_patchset=4
+_manual_clone=1
 pkgdesc="Chromium without hangout services, widevine, or chromedriver"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
@@ -45,7 +46,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         REVERT-roll-src-third_party-ffmpeg-m106.patch
         disable-GlobalMediaControlsCastStartStop.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('e348ab2dc4311083e729d714a81e95dd9db108ff71437dde451c97ac939881ce'
+sha256sums=('55ce77ff9b965f44b14c4b8461ad50963536cff80488af0c144652e923c88ac3'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '8c7f93037cc236024cc8be815b2c2bd84f6dc9e32685299e31d4c6c42efde8b7'
             'a5d5c532b0b059895bc13aaaa600d21770eab2afa726421b78cb597a78a3c7e3'
@@ -54,6 +55,11 @@ sha256sums=('e348ab2dc4311083e729d714a81e95dd9db108ff71437dde451c97ac939881ce'
             '4c12d31d020799d31355faa7d1fe2a5a807f7458e7f0c374adf55edb37032152'
             '7f3b1b22d6a271431c1f9fc92b6eb49c6d80b8b3f868bdee07a6a1a16630a302'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
+
+if (( _manual_clone )); then
+  source[0]=fetch-chromium-release
+  makedepends+=('python-httplib2' 'python-pyparsing' 'python-six')
+fi
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -96,6 +102,9 @@ depends+=(${_system_libs[@]})
 _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 
 prepare() {
+  if (( _manual_clone )); then
+    ./fetch-chromium-release $pkgver
+  fi
   cd "$_pkgname-$pkgver"
 
   # Allow building against system libraries in official builds
