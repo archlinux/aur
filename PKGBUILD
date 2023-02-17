@@ -2,7 +2,7 @@
 
 _name=pyhmmer
 pkgname=python-${_name}
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Cython bindings and Python interface to HMMER3"
 url="https://github.com/althonos/pyhmmer"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'cython' 'python-build' 'python-installer')
 depends=('python' 'python-psutil')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=(e746cfc3b352656757286106fd210763f835ac20cf8466141bca5588567bcb5c)
+sha256sums=(11336e2192d7f26e41d826e429cf8fedd3358b2d6e3b9f43a402966d1825eb7e)
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
