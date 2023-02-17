@@ -1,0 +1,12 @@
+pkgbase = i3gocks
+	pkgdesc = Minimal status line generator for i3/sway written in Go
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/alexcoder04/i3gocks
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	source = https://github.com/alexcoder04/i3gocks/archive/refs/tags/v1.2.1.tar.gz
+	md5sums = fd4f5282ede6de2d82ec2598370140b5
+
+pkgname = i3gocks
