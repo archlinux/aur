@@ -27,12 +27,13 @@ depends=(
 	)
 provides=("${pkgname%}")
 
+
+build() {
 declare -a _csChosen=()
 declare -a _depChosen=()
 _path_set=false
 _cpath=""
-# determine which data to download
-prepare() {
+
 _csChoices=(endfb71 endfb80 jeff33 fendl32)
 _depChoices=(chain_endfb71_pwr chain_endfb71_fast chain_casl_pwr chain_casl_sfr)
 
@@ -112,19 +113,6 @@ for range in "${ranges_dep[@]}"; do
          done
 done
 
-echo ""
-echo "end of prepare function"
-echo ""
-echo "${_csChosen[0]}"
-echo ""
-}
-
-build() {
-echo ""
-echo "at start of build function"
-echo ""
-echo $_csChosen
-echo ""
 cd $srcdir	
 # since source() does not support multiple tarballs, sources need to be fetched manually
 lenCS=${#_csChosen[@]}
