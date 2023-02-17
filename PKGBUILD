@@ -5,26 +5,56 @@
 
 pkgbase=mutter-dynamic-buffering
 pkgname=(mutter-dynamic-buffering)
-pkgver=43.2
-pkgrel=2
-pkgdesc="A window manager for GNOME (with dynamic triple/double buffering)"
+pkgver=43.3
+pkgrel=1
+pkgdesc="Window manager and compositor for GNOME (with dynamic triple/double buffering)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
 license=(GPL)
-depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
-         libcanberra startup-notification libsm gnome-desktop libxkbcommon-x11
-         gnome-settings-daemon libgudev libinput pipewire xorg-xwayland graphene
-         libxkbfile libsysprof-capture lcms2 colord)
-makedepends=(gobject-introspection git egl-wayland meson xorg-server
-             wayland-protocols sysprof gi-docgen)
-#checkdepends=(xorg-server-xvfb wireplumber python-dbusmock zenity)
-#options=(debug)
-_commit=46f4143619734ec2b95503ba96e444f61f27e18e  # tags/43.2^0
-source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
-        'mr1441.patch')
-
-sha256sums=('SKIP'
-            '29a4b90fca3aeb124b70de7b645f5aa744fcbb11183aaba91cc777b5ac6706da')
+depends=(
+  colord
+  dconf
+  gnome-desktop
+  gnome-settings-daemon
+  graphene
+  gsettings-desktop-schemas
+  lcms2
+  libcanberra
+  libgudev
+  libinput
+  libsm
+  libsysprof-capture
+  libxkbcommon-x11
+  libxkbfile
+  pipewire
+  startup-notification
+  xorg-xwayland
+)
+makedepends=(
+  egl-wayland
+  gi-docgen
+  git
+  gobject-introspection
+  meson
+  sysprof
+  wayland-protocols
+  xorg-server
+)
+_checkdepends=(
+  python-dbusmock
+  wireplumber
+  xorg-server-xvfb
+  zenity
+)
+_commit=a63755bdad7d8bffdbbc649178d759c37dacce01  # tags/43.3^0
+source=(
+  "$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
+  'mr1441.patch'
+)
+sha256sums=(
+  'SKIP'
+  '29a4b90fca3aeb124b70de7b645f5aa744fcbb11183aaba91cc777b5ac6706da'
+)
 
 pkgver() {
   cd $pkgname
@@ -33,6 +63,11 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
+
+  # Fix broken focus handling with XWayland
+  # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2848
+  # git cherry-pick -n d5e75bccdee7ea0e30cd860ca08ae109dcb311c8
+
   patch -p1 < "$srcdir/mr1441.patch"
 }
 
@@ -83,7 +118,6 @@ _pick() {
 package_mutter-dynamic-buffering() {
   conflicts=(mutter)
   provides=(mutter libmutter-11.so)
-  groups=(gnome)
 
   meson install -C build --destdir "$pkgdir"
 
