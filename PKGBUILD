@@ -11,7 +11,7 @@ pkgver=r406.43534e8
 pkgrel=1
 pkgdesc="Latest snapshot of lcov, a front-end for GCC's coverage testing tool gcov"
 arch=('any')
-url="http://ltp.sourceforge.net/coverage/lcov.php"
+url="https://github.com/linux-test-project/lcov"
 license=('GPL')
 depends=(
   'perl'
