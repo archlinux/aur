@@ -1,0 +1,13 @@
+pkgbase = prosemd-lsp
+	pkgdesc = An experimental proofreading and linting language server for markdown files.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/kitten/prosemd-lsp
+	arch = x86_64
+	license = LGPL
+	makedepends = cargo
+	depends = gcc-libs
+	source = prosemd-lsp-0.1.0.tar.gz::https://static.crates.io/crates/prosemd-lsp/prosemd-lsp-0.1.0.crate
+	sha512sums = b5663be663a8c9dff90f728d223bdb0744e26c098f0f55f2e02a0340c0375c844f12d56d0474da1816df7f246e2da05c1a5f70b103b0a19033a7aa372aca9ade
+
+pkgname = prosemd-lsp
