@@ -1,65 +1,44 @@
-# Maintainer: lsf
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: lsf
 # Contributor: Daniel Haß <aur@hass.onl>
 pkgname=standardnotes-desktop
-_pkgname=app
-pkgver=3.102.5
+pkgver=3.149.5
 pkgrel=1
-pkgdesc="A standard notes app with an un-standard focus on longevity, portability, and privacy."
+_electronversion=22
+pkgdesc="An end-to-end encrypted notes app for digitalists and professionals."
 arch=('x86_64' 'aarch64')
-url="https://standardnotes.org/"
+url="https://standardnotes.com"
 license=('GPL3')
-conflicts=('sn-bin')
-depends=('electron' 'libsecret')
-makedepends=('npm' 'node-gyp' 'git' 'jq' 'yarn' 'nvm')
-source=("git+https://github.com/standardnotes/app.git#tag=@standardnotes/desktop@${pkgver}"
-        'webpack.patch'
-        'standardnotes-desktop.desktop'
-        'standardnotes-desktop.sh')
-sha256sums=('SKIP'
-            '5627cb64b1f8557d6f9a73030e9cd5164707516fec92b24ded1cff48f23b844d'
-            '8008f4fdf47d72c526f1929863f415d343929db47a2d79e34e19fbd6d7021113'
-            'ef0561661ae828222c040c023f586c8a072c05e828d14f8886138fe12cdd9455')
+depends=("electron${_electronversion}" 'libsecret')
+makedepends=('libxcrypt-compat' 'nvm' 'yarn')
+source=("standardnotes-$pkgver.tar.gz::https://github.com/standardnotes/app/archive/refs/tags/@standardnotes/desktop@${pkgver}.tar.gz"
+        "standard-notes.desktop"
+        "standard-notes.sh")
+sha256sums=('6f82cc5bc066532d909e7046f991af3f7bb376d5c3d3a9c8dfea66bfba7a7734'
+            '274cd3914ff2a6a0999485a26cbded3ad597763482a90eee8ee34490ddffda00'
+            '14343c62b46201de2a9e14b90b3de253530f4e6790c61487531ae6c1fcd62e3c')
+
+_ensure_local_nvm() {
+  # let's be sure we are starting clean
+  which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+  export NVM_DIR="${srcdir}/.nvm"
+
+  # The init script returns 3 if version specified
+  # in ./.nvrc is not (yet) installed in $NVM_DIR
+  # but nvm itself still gets loaded ok
+  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+}
 
 prepare() {
-  cd $_pkgname
-  export npm_config_cache="${srcdir}/npm_cache"
+  cd "app--$pkgname-$pkgver"
   _ensure_local_nvm
-  nvm install # ${_nodeversion}
-
-  export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-
-  if [[ $CARCH == 'aarch64' ]]; then
-    export npm_config_target_arch=arm64
-    export npm_config_arch=arm64
-    export npm_config_host_arch=arm64
-  fi
-
-  cd ${srcdir}/${_pkgname}/packages/desktop
-
-  cp .env.public.production .env
-
-  # Set system Electron version for ABI compatibility
-  electronDist="/usr/lib/electron"
-  electronVer="$(cat /usr/lib/electron/version)"
-  sed -r 's#("electron": ").*"#\1'${electronVer}'"#' -i package.json
-  sed -r 's#("electronVersion": ").*"#\1'${electronVer}'"#' -i package.json
-
-  # fix electron-builder complaints
-  sed -r 's#("productName": "Standard Notes",)#\1\n  "version": "'${pkgver}'",#' -i app/package.json
-
-  patch -Np1 -i ${srcdir}/webpack.patch
-
-  cd ${srcdir}/${_pkgname}
-  yarn install
-  yarn build:desktop
+  nvm install
 }
 
 build() {
-  cd $srcdir/$_pkgname/
-  export npm_config_cache="${srcdir}/npm_cache"
-  _ensure_local_nvm
-  nvm use # ${_nodeversion}
-
+  cd "app--$pkgname-$pkgver"
+  electronDist="/usr/lib/electron${_electronversion}"
+  electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 
   if [[ $CARCH == 'aarch64' ]]; then
@@ -68,47 +47,34 @@ build() {
     export npm_config_host_arch=arm64
   fi
 
-  electronDist="/usr/lib/electron"
-  electronVer="$(sed s/^v// /usr/lib/electron/version)"
+  _ensure_local_nvm
+  yarn install
+  yarn build:desktop
 
-  case "$CARCH" in
-          aarch64)
-                  _electronbuilderarch='arm64'
-          ;;
-          *)
-                  _electronbuilderarch='x64'
-          ;;
-  esac
+  cd packages/desktop
+  yarn run webpack --config desktop.webpack.prod.js --env deb
 
-  cd ${srcdir}/${_pkgname}/packages/desktop
-
-  yarn electron-builder --linux=dir --${_electronbuilderrarch} \
-    --dir dist \
-    --c.electronDist=${_electronDist} \
-    --c.electronVersion=${_electronVer} \
-    --c.linux.target=dir \
-    --publish=never \
-    --c.extraMetadata.version=${pkgver}
+  if [ "$CARCH" == "aarch64" ]; then
+    yarn run electron-builder --linux --arm64 -c.linux.target=deb \
+      ${dist} -c.electronDist=${electronDist} -c.electronVersion=${electronVer} \
+      --publish=never --c.extraMetadata.version=${pkgver}
+  else
+  yarn run electron-builder --linux --x64 -c.linux.target=deb \
+    ${dist} -c.electronDist=${electronDist} -c.electronVersion=${electronVer} \
+    --publish=never --c.extraMetadata.version=${pkgver}
+  fi
 }
 
-
 package() {
-  case "$CARCH" in
-          aarch64)
-                  _unpackedPath='linux-arm64-unpacked'
-          ;;
-          *)
-                  _unpackedPath='linux-unpacked'
-          ;;
-  esac
+  cd "app--$pkgname-$pkgver/packages/desktop"
 
-  cd ${srcdir}/${_pkgname}/packages/desktop
-
-  install -Dm644 dist/${_unpackedPath}/resources/app.asar -t \
-    "$pkgdir/usr/lib/standard-notes/resources/"
-
-  install -D -m644 ${srcdir}/$pkgname.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -D -m755 ${srcdir}/$pkgname.sh "${pkgdir}/usr/bin/${pkgname}"
+  if [ "$CARCH" == "aarch64" ]; then
+    install -Dm644 dist/linux-arm64-unpacked/resources/app.asar -t \
+      "$pkgdir/usr/lib/standard-notes/resources/"
+  else
+    install -Dm644 dist/linux-unpacked/resources/app.asar -t \
+      "$pkgdir/usr/lib/standard-notes/resources/"
+  fi
 
   for icon_size in 16x16 32x32 128x128 256x256 512x512; do
     install -Dm644 build/icon.iconset/icon_${icon_size}.png \
@@ -116,16 +82,7 @@ package() {
     install -Dm644 build/icon.iconset/icon_${icon_size}@2x.png \
       "$pkgdir/usr/share/icons/hicolor/${icon_size}@2x/apps/standard-notes.png"
   done
-}
 
-# https://wiki.archlinux.org/title/Node.js_package_guidelines#Using_nvm
-_ensure_local_nvm() {
-    # let's be sure we are starting clean
-    which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
-    export NVM_DIR="${srcdir}/.nvm"
-
-    # The init script returns 3 if version specified
-    # in ./.nvrc is not (yet) installed in $NVM_DIR
-    # but nvm itself still gets loaded ok
-    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+  install -Dm755 "$srcdir/standard-notes.sh" "$pkgdir/usr/bin/standard-notes"
+  install -Dm644 "$srcdir/standard-notes.desktop" -t "$pkgdir/usr/share/applications/"
 }

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Standard Notes
+Exec=standard-notes
+Terminal=false
+Type=Application
+Icon=standard-notes
+StartupWMClass=standard notes
+Comment=An end-to-end encrypted notes app for digitalists and professionals.
+MimeType=x-scheme-handler/standardnotes
+Categories=Office;
+Hidden=false
