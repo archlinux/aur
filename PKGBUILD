@@ -104,4 +104,8 @@ package() {
     install -Dm644 ${srcdir}/${pkgname}/sql/migrations/world_db_updates.sql -T ${pkgdir}/usr/share/vmangos/sql/migrations/mangos_db_updates.sql
     install -Dm644 ${srcdir}/${pkgname}/sql/migrations/characters_db_updates.sql -t ${pkgdir}/usr/share/vmangos/sql/migrations
     install -Dm644 ${srcdir}/${pkgname}/sql/migrations/logs_db_updates.sql -t ${pkgdir}/usr/share/vmangos/sql/migrations
+
+    for file in $(find ${srcdir}/${pkgname}/sql/custom -name '*.sql'); do
+        install -Dm644 ${file} -t ${pkgdir}/usr/share/vmangos/sql/custom
+    done
 }
