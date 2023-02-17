@@ -3,16 +3,16 @@
 
 pkgname=lapce-git
 _pkgbase=lapce
-pkgver=0.1.2.r137.g9e68a8c
+pkgver=0.2.5.r119.g5ee7ede
 pkgrel=1
 pkgdesc="Lightning-fast and Powerful Code Editor (Git version)"
 arch=('x86_64')
 url="https://lapce.dev"
 license=('Apache')
-provide=("lapce=$pkgver")
+provide=("lapce")
 conflicts=('lapce')
-depends=('gcc-libs' 'libxcb' 'expat' 'freetype2' 'libxkbcommon' 'fontconfig')
-makedepends=('rust' 'python' 'cmake')
+depends=('gcc-libs' 'libxcb' 'expat' 'freetype2' 'libxkbcommon' 'fontconfig' 'gtk3')
+makedepends=('rust' 'python' 'cmake' 'git')
 options=('!lto')
 source=("$_pkgbase::git+https://github.com/lapce/lapce.git")
 sha512sums=('SKIP')
