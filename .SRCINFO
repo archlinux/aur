@@ -1,6 +1,6 @@
 pkgbase = backintime
 	pkgver = 1.3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bit-team/backintime
 	arch = any
 	license = GPL
@@ -9,9 +9,10 @@ pkgbase = backintime
 	checkdepends = rsync
 	checkdepends = systemd
 	checkdepends = python-pyfakefs
+	checkdepends = oxygen-icons
 	makedepends = python
-	source = backintime-1.3.3.tar.gz::https://github.com/bit-team/backintime/archive/8495f9dc3953343a0352bb3ffbdcfab7f93c10ad.tar.gz
-	b2sums = 5900c265718d3d3fad1ce3e38719c6e12cb435105d0b714a4602e1a541d3610d8cb552e13a1c59acf2bfc67290637fc2aacae971865d67fcfad92ad85a64d161
+	source = backintime-1.3.3.tar.gz::https://github.com/bit-team/backintime/archive/refs/tags/v1.3.3.tar.gz
+	b2sums = d9fc2434e5accf957c0fe0ed7daf7e1a2acb8c1d683612889b277e02be159ec15ed606e7e551e5955e3aa73af7e26f01c26c734d6882cfb926f2d6de2ae79d46
 
 pkgname = backintime
 	pkgdesc = Simple backup system inspired from the Flyback Project and TimeVault. QT5 GUI version.
