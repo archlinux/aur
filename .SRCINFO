@@ -1,14 +1,15 @@
 pkgbase = valentina
-	pkgdesc = Open source pattern-making software
+	pkgdesc = Open source patternmaking software
 	pkgver = 0.7.52
-	pkgrel = 1
+	pkgrel = 2
 	url = https://smart-pattern.com.ua/en/
 	arch = x86_64
 	license = GPL3
-	depends = zlib
-	noextract = valentina-0.7.52.AppImage
-	options = !strip
-	source_x86_64 = valentina-0.7.52.AppImage::https://bitbucket.org/valentinaproject/valentinaproject.bitbucket.io/downloads/valentina_0.7.52_glibc2.14-x86_64.AppImage
-	sha512sums_x86_64 = 233f4585b9f8626972bf20bcf8cce4d876c15ae740972d00313dc7ca9d52020623d16b1c16448a316b71edb4e33fb29729439494b207180ace4184b9e2398d80
+	depends = qt5-svg
+	depends = qt5-xmlpatterns
+	depends = desktop-file-utils
+	conflicts = valentina-appimage
+	source = https://github.com/dismine/valentina/archive/refs/tags/v0.7.52.tar.gz
+	sha512sums = 5f1f1ea46a3085aa4f6e5e9266f1bcc5696c07118b31679cb7e29c9a287e93b8c73e084dedf30593cc124217075113a68bf443b107009b795a449956a96e90d9
 
 pkgname = valentina
