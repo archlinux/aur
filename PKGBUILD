@@ -2,16 +2,16 @@
 
 pkgname=localsend-git
 _pkgname=localsend
-pkgver=v1.6.2.r151.g8edd3c7
+pkgver=v1.6.2.r188.gd2aa1d5
 pkgrel=1
 pkgdesc='An open source cross-platform alternative to AirDrop '
 url=https://github.com/localsend/localsend
 arch=(x86_64)
 license=(MIT)
-depends=(zenity)
+depends=(zenity xdg-user-dirs)
 conflicts=('localsend-bin')
 provides=('localsend')
-makedepends=('flutter')
+makedepends=('flutter' 'git')
 source=("git+https://github.com/localsend/localsend" "${_pkgname}.desktop")
 sha256sums=('SKIP' 'SKIP')
 

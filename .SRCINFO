@@ -1,12 +1,14 @@
 pkgbase = localsend-git
 	pkgdesc = An open source cross-platform alternative to AirDrop
-	pkgver = v1.6.2.r151.g8edd3c7
+	pkgver = v1.6.2.r188.gd2aa1d5
 	pkgrel = 1
 	url = https://github.com/localsend/localsend
 	arch = x86_64
 	license = MIT
 	makedepends = flutter
+	makedepends = git
 	depends = zenity
+	depends = xdg-user-dirs
 	provides = localsend
 	conflicts = localsend-bin
 	source = git+https://github.com/localsend/localsend
