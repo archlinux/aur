@@ -7,6 +7,7 @@ pkgbase = tera-cli
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
+	conflicts = teracli
 	source = tera-cli-0.5.0.tar.gz::https://github.com/guangie88/tera-cli/archive/v0.5.0.tar.gz
 	sha256sums = 6a9bcb8cc0cdb65fa2ec5100d94be495859534abb19b6b08fe182f3825779744
 
