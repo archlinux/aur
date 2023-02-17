@@ -1,16 +1,18 @@
 pkgbase = lcov-git
 	pkgdesc = Latest snapshot of lcov, a front-end for GCC's coverage testing tool gcov
-	pkgver = r346.b9d6727
+	pkgver = r406.43534e8
 	pkgrel = 1
 	url = http://ltp.sourceforge.net/coverage/lcov.php
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = perl
+	depends = perl-capture-tiny
+	depends = perl-datetime
+	depends = perl-json-xs
 	provides = lcov
 	conflicts = lcov
-	source = git://github.com/linux-test-project/lcov.git
+	source = git+https://github.com/linux-test-project/lcov.git
 	md5sums = SKIP
 
 pkgname = lcov-git
-
