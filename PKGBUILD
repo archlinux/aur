@@ -114,6 +114,11 @@ done
 }
 
 build() {
+echo ""
+echo "at start of build function"
+echo ""
+echo $_csChosen
+echo ""
 cd $srcdir	
 # since source() does not support multiple tarballs, sources need to be fetched manually
 lenCS=${#_csChosen[@]}
