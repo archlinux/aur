@@ -1,0 +1,55 @@
+#!/bin/bash
+
+SERVICE_DIR=~/.config/systemd/user/default.target.wants/
+
+config_svc=$SERVICE_DIR/"ibus-config@$DISPLAY.service"
+daemon_svc=$SERVICE_DIR/"ibus-daemon@$DISPLAY.service"
+
+case "$1" in
+-d)
+  [ -e "$config_svc" ] && rm -f "$config_svc"
+  [ -e "$daemon_svc" ] && rm -f "$daemon_svc"
+  exit 0
+  ;;
+esac
+
+mkdir -p $SERVICE_DIR
+
+case "$XDG_CURRENT_DESKTOP" in
+KDE | XFCE | LXDE | MATE | LXQT | Deepin | DEEPIN | deepin) : "${XDG_CURRENT_DESKTOP,,}" ;;
+*Cinnamon) : "cinnamon" ;;
+GNOME* | *Pantheon | Unity) : "gnome" ;;
+*) : "generic" ;;
+esac
+CURRENT_DE=$_
+
+cat <<EOF >"$daemon_svc"
+[Unit]
+Description=Intelligent Input Bus Config Daemon
+
+[Service]
+Slice=ibus.slice
+ExecStartPre=/bin/sleep 2
+ExecStart=/usr/lib/ibus/ibus-dconf
+Environment=DISPLAY="%I" GTK_IM_MODULE=ibus QT_IM_MODULE=ibus XMODIFIERS="@im=ibus"
+EOF
+
+cat <<EOF >"$daemon_svc"
+[Unit]
+Description=Intelligent Input Bus - SystemD service
+Documentation=man:ibus-daemon(1)
+Conflicts=fcitx.service
+Before=ibus-config@$DISPLAY.service
+Requires=ibus-config@$DISPLAY.service
+
+[Service]
+ExecStart=/usr/bin/ibus-daemon -rx -n $CURRENT_DE
+ExecReload=/usr/bin/ibus restart
+ExecStop=/usr/bin/ibus exit
+Environment=DISPLAY="%I" GTK_IM_MODULE=ibus QT_IM_MODULE=ibus XMODIFIERS="@im=ibus"
+
+[Install]
+WantedBy=default.target
+EOF
+
+chmod +775 "$daemon_svc" "$daemon_svc"

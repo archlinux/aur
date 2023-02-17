@@ -1,0 +1,16 @@
+pkgbase = ibus-daemon-de
+	pkgdesc = SystemD user service for IBus
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/shadichy/ibus-daemon.git
+	arch = any
+	license = MIT
+	depends = systemd
+	depends = ibus
+	depends = bash
+	source = enable-ibus-daemon
+	source = LICENSE.md
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = ibus-daemon-de
