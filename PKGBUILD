@@ -1,17 +1,17 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=eartag
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Simple music tag editor"
 arch=('any')
-url="https://github.com/knuxify/eartag"
+url="https://gitlab.gnome.org/knuxify/eartag"
 license=('MIT')
 depends=('libadwaita' 'python-gobject' 'python-pillow' 'python-mutagen' 'python-magic')
 makedepends=('meson')
 checkdepends=('appstream-glib' 'python-pytest')
-source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-b2sums=('0f41cdc86dff145c84951f4de1b954a205cfa48a41b3ee29c93e8840181c1554db633334b94392aaabad0020a664b8088f9a74e405634a4fa964cd7fbd72f4b9')
+source=($url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
+b2sums=('89774c279048e4aab2478cfdf3444dd24583944e12375d044f2424df0f5a95a0ead47641f996824eb7cb5007d29bb8f6605b594c2f710f7be1aaf01109b7a6a7')
 
 build() {
   arch-meson $pkgname-$pkgver build
