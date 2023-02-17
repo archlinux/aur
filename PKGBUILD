@@ -6,7 +6,7 @@ pkgdesc="Super application for managing Cellframe node"
 arch=('x86_64' 'aarch64')
 url="https://cellframe.net"
 license=('GPL3')
-depends=(cellframe-node qt5-graphicaleffects qt5-base qt5-quickcontrols2 qt5-quickcontrols2)
+depends=(cellframe-node qt5-graphicaleffects qt5-base qt5-quickcontrols2)
 makedepends=(git qt5-base qt5-declarative)
 options=()
 source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=50ab34941438c86e043094e92b50516874016bb4)

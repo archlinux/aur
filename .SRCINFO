@@ -14,7 +14,6 @@ pkgbase = cellframe-dashboard
 	depends = qt5-graphicaleffects
 	depends = qt5-base
 	depends = qt5-quickcontrols2
-	depends = qt5-quickcontrols2
 	source = git+https://gitlab.demlabs.net/cellframe/cellframe-dashboard.git#commit=50ab34941438c86e043094e92b50516874016bb4
 	md5sums = SKIP
 
