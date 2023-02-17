@@ -13,8 +13,7 @@ groups=('kodi-addons' 'kodi-addons-game')
 makedepends=('cmake' 'kodi-dev' 'kodi-addon-game-libretro' 'libretro-gambatte')
 options=(!lto debug)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kodi-game/game.libretro.gambatte/archive/$pkgver-$_codename.tar.gz")
-sha512sums=('b929941de7eb0e1bd93d15599bcba0260aabbadfd2605a183eadf809f26fa4b7ca9293b660f44927e659a3847d3e81a59fa94df7f2c72224cdad5722a8f479feO
-')
+sha512sums=('b929941de7eb0e1bd93d15599bcba0260aabbadfd2605a183eadf809f26fa4b7ca9293b660f44927e659a3847d3e81a59fa94df7f2c72224cdad5722a8f479fe')
 
 build() {
     cd "game.libretro.gambatte-$pkgver-$_codename"
