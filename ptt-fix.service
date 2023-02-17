@@ -1,8 +1,0 @@
-[Unit]
-Description=PTT Fix for Wayland
-
-[Service]
-ExecStart=/usr/bin/ptt-fix -key 51 -sym comma
-
-[Install]
-WantedBy=gnome-session-wayland.target
