@@ -2,7 +2,7 @@
 
 pkgname=brother-mfcj430w-lpr-bin
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="LPR driver for Brother MFC-J430W printer"
 arch=("i686" "x86_64")
 url="https://support.brother.com/g/b/downloadend.aspx?c=us&lang=en&prod=mfcj430w_all&os=128&dlid=dlf006570_000&flang=4&type3=559"
@@ -13,5 +13,6 @@ md5sums=("4bb897213f9088aaffb4c69b4df5d93c")
 
 package() {
 	tar -xf data.tar.gz -C "${pkgdir}"
+	/opt/brother/Printers/mfcj430w/inf/setupPrintcapij
 }
 

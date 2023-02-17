@@ -1,7 +1,7 @@
 pkgbase = brother-mfcj430w-lpr-bin
 	pkgdesc = LPR driver for Brother MFC-J430W printer
 	pkgver = 3.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://support.brother.com/g/b/downloadend.aspx?c=us&lang=en&prod=mfcj430w_all&os=128&dlid=dlf006570_000&flang=4&type3=559
 	arch = i686
 	arch = x86_64
