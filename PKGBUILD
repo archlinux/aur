@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=libdisplay-info-git
-pkgver=r163.ac857e8985
+pkgver=0.1.1+3.g5a4a28e226
 pkgrel=1
 pkgdesc='EDID and DisplayID library'
 url='https://gitlab.freedesktop.org/emersion/libdisplay-info'
