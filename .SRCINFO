@@ -1,0 +1,19 @@
+pkgbase = pg_flame
+	pkgdesc = A flamegraph generator for Postgres EXPLAIN ANALYZE output.
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/mgartner/pg_flame
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = APACHE
+	makedepends = go
+	depends = glibc
+	source = pg_flame-1.2.tar.gz::https://github.com/mgartner/pg_flame/archive/v1.2.tar.gz
+	sha256sums = 913c25aa960b5542f94064ee15b77494e7d39adcddacdde31886f1891bb1a30a
+
+pkgname = pg_flame
