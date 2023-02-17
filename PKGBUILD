@@ -1,8 +1,8 @@
 # Maintainer: Janne Veteläinen <janne.p.w.vetelainen@gmail.com>
 
 pkgname=vmangos-git
-pkgver=r5197.738d4ae99
-pkgrel=2
+pkgver=r5198.56a7e74db
+pkgrel=1
 pkgdesc="World of Warcraft Vanilla server emulator"
 arch=('x86_64')
 url="https://github.com/vmangos/"
@@ -13,7 +13,6 @@ depends=(
     'mariadb'
 )
 makedepends=(
-    'gcc'
     'cmake'
     'ccache'
     'git'
