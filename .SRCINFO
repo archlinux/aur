@@ -1,0 +1,23 @@
+pkgbase = pw-capture-git
+	pkgdesc = Vulkan/OpenGL (game) capture for PipeWire
+	pkgver = r14.7a8f851
+	pkgrel = 1
+	url = https://github.com/EHfive/pw-capture
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = git
+	makedepends = meson
+	makedepends = rust
+	makedepends = clang
+	makedepends = pipewire
+	depends = libpipewire-0.3.so
+	optdepends = lib32-pw-capture: Capture 32-bit graphics applications
+	optdepends = vulkan-icd-loader
+	optdepends = libglvnd
+	provides = pw-capture
+	options = !debug
+	source = git+https://github.com/EHfive/pw-capture.git
+	sha256sums = SKIP
+
+pkgname = pw-capture-git
