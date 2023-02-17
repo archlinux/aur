@@ -6,6 +6,7 @@ pkgbase = localsend-bin
 	arch = x86_64
 	license = MIT
 	depends = zenity
+	depends = xdg-user-dirs
 	provides = localsend
 	conflicts = localsend-git
 	options = !strip
