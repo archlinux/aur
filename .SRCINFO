@@ -1,9 +1,9 @@
 pkgbase = urldozer
 	pkgdesc = Perform operations on URLs
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/offensivedev/urldozer
-	arch = x86_64
+	arch = any
 	license = Unknown
 	makedepends = go
 	provides = urldozer
@@ -11,4 +11,3 @@ pkgbase = urldozer
 	sha256sums = bdae68f064c54690a91213195f6078a28c4379995831a4fdbc5e9b63861f8aa8
 
 pkgname = urldozer
-

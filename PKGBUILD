@@ -1,10 +1,11 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='urldozer'
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Perform operations on URLs'
-arch=('x86_64')
+arch=('any')
 url='https://github.com/offensivedev/urldozer'
 license=('Unknown')
 makedepends=('go')
@@ -25,7 +26,7 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   cd "${pkgname}-${pkgver}"
-  go build -v -o "${pkgname}" .
+  go build -v -o "${pkgname}" main.go
 }
 
 package() {
