@@ -20,6 +20,7 @@ pkgbase = ccstudio
 	depends = libsecret
 	depends = libcanberra
 	depends = gconf
+	depends = binutils
 	optdepends = ttf-dejavu
 	options = !strip
 	options = libtool
