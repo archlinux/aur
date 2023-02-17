@@ -1,11 +1,10 @@
 pkgbase = libdisplay-info-git
 	pkgdesc = EDID and DisplayID library
-	pkgver = 0.1.1+3.g5a4a28e226
+	pkgver = 0.1.1+9.g83ae3f5515
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/emersion/libdisplay-info
 	arch = x86_64
 	license = MIT
-	checkdepends = edid-decode
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja

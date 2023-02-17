@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=libdisplay-info-git
-pkgver=0.1.1+3.g5a4a28e226
+pkgver=0.1.1+9.g83ae3f5515
 pkgrel=1
 pkgdesc='EDID and DisplayID library'
 url='https://gitlab.freedesktop.org/emersion/libdisplay-info'
@@ -10,7 +10,6 @@ license=('MIT')
 source=("git+$url")
 sha1sums=('SKIP')
 makedepends=(git meson ninja python)
-checkdepends=(edid-decode)
 depends=(hwdata)
 conflicts=(libdisplay-info)
 provides=(libdisplay-info)
@@ -24,9 +23,6 @@ build() {
   ninja -C build
 }
 
-# TODO: wait until this is resolved:
-# https://gitlab.freedesktop.org/emersion/libdisplay-info/-/issues/35
-false &&
 check() {
   ninja -C build test
 }
