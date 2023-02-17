@@ -3,7 +3,7 @@
 
 pkgname=rmw
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="safe-remove utility for the command line"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'ppc64le')
 url="https://remove-to-waste.info"
@@ -16,7 +16,7 @@ source=("https://github.com/theimpossibleastronaut/rmw/releases/download/v${pkgv
 sha256sums=('cc9d20733c9f9945054041ee6aeac7f4a4b7a675f297ffe388e4863fb84ed4a1')
 
 build() {
-  arch-meson $pkgname-$pkgver build
+  arch-meson $pkgname-$pkgver build -Db_sanitize=none
   meson compile -C build
 }
 

@@ -1,7 +1,7 @@
 pkgbase = rmw
 	pkgdesc = safe-remove utility for the command line
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://remove-to-waste.info
 	arch = i686
 	arch = x86_64
