@@ -2,6 +2,61 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [0.8.0] - 2023-02-13
+
+### Changed
+
+- Change the (still experimental) `Page/utils.extract_text(layout=True)` approach so that it pads, to the degree necessary, the ends of lines with spaces and the end of the text with blank lines to acheive better mimicry of page layout. ([d3662de](https://github.com/jsvine/pdfplumber/commit/d3662de))
+- Refactor handling of `pts` attribute and, in doing so, deprecate the `curve_obj["points"]` attribute, and fix `PageImage.draw_line(...)`'s handling of diagonal lines. ([216bedd](https://github.com/jsvine/pdfplumber/commit/216bedd))
+- Breaking change: In `Page.extract_table[s](...)`, `keep_blank_chars` must now be passed as `text_keep_blank_chars`, for consistency's sake. ([c4e1b29](https://github.com/jsvine/pdfplumber/commit/c4e1b29))
+
+### Added
+
+- Add `Page.extract_table[s](...)` support for all `Page.extract_text(...)` keyword arguments. ([c4e1b29](https://github.com/jsvine/pdfplumber/commit/c4e1b29))
+- Add `height` and `width` keyword arguemnts to `Page.to_image(...)`. ([#798](https://github.com/jsvine/pdfplumber/issues/798) + [93f7dbd](https://github.com/jsvine/pdfplumber/commit/93f7dbd))
+- Add `layout_width`, `layout_width_chars`, `layout_height`, and `layout_width_chars` parameters to `Page/utils.extract_text(layout=True)`. ([d3662de](https://github.com/jsvine/pdfplumber/commit/d3662de))
+- Add CITATION.cff. ([#755](https://github.com/jsvine/pdfplumber/issues/755)) [h/t @joaoccruz]
+
+### Fixed
+
+- Fix simple edge-case for when page rotation is (incorrectly) set to `None`. ([#811](https://github.com/jsvine/pdfplumber/pull/811)) [h/t @toshi1127]
+
+### Development Changes
+
+- Convert `utils.py` into `utils/` submodules. Retains same interface, just an improvement in organization. ([6351d97](https://github.com/jsvine/pdfplumber/commit/6351d97))
+- Fix typing hints to include io.BytesIO. ([d4107f6](https://github.com/jsvine/pdfplumber/commit/d4107f6)) [h/t @conitrade-as]
+- Refactor text-extraction utilities, paving way for better consistency across various entrypoints to text extraction (e.g., via `utils.extract_text(...)`, via `Page.extract_text(...)`, via `Page.extract_table(...)`). ([3424b57](https://github.com/jsvine/pdfplumber/commit/3424b57))
+
+## [0.7.6] - 2022-11-22
+
+### Changed
+
+- Bump pinned `pdfminer.six` version to `20221105`. ([e63a038](https://github.com/jsvine/pdfplumber/commit/e63a038))
+
+### Fixed
+
+- Restore `text` attribute to `.textboxhorizontal`/etc., regression introduced in `9587cc7` / `v0.6.2`. ([8a0c126](https://github.com/jsvine/pdfplumber/commit/8a0c126))
+- Fix `lru_cache` usage, which are [discouraged for class methods](https://rednafi.github.io/reflections/dont-wrap-instance-methods-with-functoolslru_cache-decorator-in-python.html) due to garbage-collection issues. ([e3142a0](https://github.com/jsvine/pdfplumber/commit/e3142a0))
+
+### Development Changes
+
+- Upgrade `nbexec` development requirement from `0.1.0` to `0.2.0`. ([30dac25](https://github.com/jsvine/pdfplumber/commit/30dac25))
+
+## [0.7.5] - 2022-10-01
+
+### Added
+
+- Add `PageImage.show()` as alias for `PageImage.annotated.show()`. ([#715](https://github.com/jsvine/pdfplumber/discussions/715) + [5c7787b](https://github.com/jsvine/pdfplumber/commit/5c7787b))
+
+### Fixed
+
+- Fixed issue where `py.typed` file was not included in PyPi distribution. ([#698](https://github.com/jsvine/pdfplumber/issues/698) + [#703](https://github.com/jsvine/pdfplumber/pull/703) + [6908487](https://github.com/jsvine/pdfplumber/commit/6908487)) [h/t @jhonatan-lopes]
+- Reinstated the ability to call `utils.cluster_objects(...)` with any hashable value (`str`, `int`, `tuple`, etc.) as the `key_fn` parameter, reverting breaking change in [58b1ab1](https://github.com/jsvine/pdfplumber/commit/58b1ab1). ([#691](https://github.com/jsvine/pdfplumber/issues/691) + [1e97656](https://github.com/jsvine/pdfplumber/commit/1e97656)) [h/t @jfuruness]
+
+### Development Changes
+
+- Update Wand version in `requirements.txt` from `>=0.6.7` to `>=0.6.10`. ([#713](https://github.com/jsvine/pdfplumber/issues/713) + [3457d79](https://github.com/jsvine/pdfplumber/commit/3457d79))
+
 ## [0.7.4] - 2022-07-19
 
 ### Added
@@ -18,7 +73,7 @@ All notable changes to this project will be documented in this file. The format 
 
 ### Fixed
 
-- Quick fix for transparency issue in visual debugging mode. [b98dd7c](https://github.com/jsvine/pdfplumber/commit/b98dd7c)
+- Quick fix for transparency issue in visual debugging mode. ([b98dd7c](https://github.com/jsvine/pdfplumber/commit/b98dd7c))
 
 ## [0.7.2] - 2022-07-17
 
@@ -62,6 +117,7 @@ All notable changes to this project will be documented in this file. The format 
 ### Removed
 
 - Remove `utils.collate_chars(...)`, the old name (and then alias) for `utils.extract_text(...)`. ([24f3532](https://github.com/jsvine/pdfplumber/commit/24f3532))
+- Remove `utils._itemgetter(...)`, an internal-use method previously used by `utils.cluster_objects(...)`. ([58b1ab1](https://github.com/jsvine/pdfplumber/commit/58b1ab1))
 
 ### Fixed
 
