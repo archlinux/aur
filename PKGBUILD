@@ -36,13 +36,13 @@ build() {
 	         -DDOUBLE_DOWN=ON \
 	         -DBUILD_STATIC_EXE=OFF \
 	         -DBUILD_STATIC_LIBS=OFF \
-	         -DCMAKE_INSTALL_PREFIX=$pkgdir/opt/DAGMC \
+	         -DCMAKE_INSTALL_PREFIX=/opt/DAGMC \
 	         -DDOUBLE_DOWN_DIR=/opt/double-down/lib/cmake/dd 
 }
 
 package() {
 	cd $srcdir/$pkgname/build
 	make
-	make install
+	make DESTDIR="$pkgdir/" install
 }
 
