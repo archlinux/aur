@@ -5,7 +5,7 @@
 # Contributor: Erez Raviv (erezraviv@gmail.com)
 
 pkgname=chirp-next
-pkgver=20230216
+pkgver=20230217
 pkgrel=1
 pkgdesc="GUI tool for programming ham radios, built from daily build"
 arch=('any')
@@ -13,22 +13,36 @@ url="https://chirp.danplanet.com"
 license=('GPL3')
 depends=('python-six' 'python-pyserial' 'python-future' 'python-requests' 'python-suds' 'python-yattag' 'python-wxpython')
 optdepends=('hamradio-menus: XDG menus for ham radio software')
+makedepends=(python-build python-installer python-wheel)
 options=(!emptydirs)
 conflicts=('chirp' 'chirp-daily')
 provides=(chirp)
 install=$pkgname.install
 source=("${pkgname}-${pkgver}.tar.gz::https://trac.chirp.danplanet.com/chirp_next/next-$pkgver/chirp-$pkgver.tar.gz" "https://trac.chirp.danplanet.com/chirp_next/next-${pkgver}/chirp-next-${pkgver}-win32.zip")
-# Checksum: https://trac.chirp.danplanet.com/chirp_next/next-$pkgver/SHA1SUM
-sha1sums=('ae493cfb64f40348d62225fe77d88da6ac6a765d' 'c71bce10fd45903f5b4fcf13ec53a5eed50b8dc8')
+# Checksums: https://trac.chirp.danplanet.com/chirp_next/next-$pkgver/SHA1SUM
+sha1sums=('9c27b570743c6bfcdc9afb280bbe3c1cc5d52a64' '82ea907243839b526db311b11de08d86c29fbc5c')
 
+#build() {
+#  cd "chirp-$pkgver"
+#  python setup.py build
+#}
+
+#package() {
+#  cd "chirp-$pkgver"
+#  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+#  install -D -m644 "${srcdir}/chirp-${pkgver}/chirp/share/chirpw.1" "${pkgdir}/usr/share/man/man1/chirpw.1"
+#  install -D -m644 "${srcdir}/chirp-${pkgver}/chirp/share/chirp.desktop" "${pkgdir}/usr/share/applications/chirp.desktop"
+#  install -D -m644 "${srcdir}/chirp-${pkgver}/chirp/share/chirp.png" "${pkgdir}/usr/share/pixmaps/chirp.png"
+#  cp -dr --preserve=mode,timestamp "${srcdir}/chirp/locale/" "${pkgdir}/usr/lib/python3.10/site-packages/chirp/locale"
+#}
 build() {
-  cd "chirp-$pkgver"
-  python setup.py build
+    cd "chirp-$pkgver"
+    python -m build --wheel --no-isolation
 }
 
 package() {
   cd "chirp-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -D -m644 "${srcdir}/chirp-${pkgver}/chirp/share/chirpw.1" "${pkgdir}/usr/share/man/man1/chirpw.1"
   install -D -m644 "${srcdir}/chirp-${pkgver}/chirp/share/chirp.desktop" "${pkgdir}/usr/share/applications/chirp.desktop"
   install -D -m644 "${srcdir}/chirp-${pkgver}/chirp/share/chirp.png" "${pkgdir}/usr/share/pixmaps/chirp.png"
