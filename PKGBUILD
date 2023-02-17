@@ -1,33 +1,53 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=goawk-git
-pkgver=r396.3bbb652
+pkgver=r558.01e7dd0
 pkgrel=1
-pkgdesc="An AWK interpreter written in Go."
+pkgdesc='An AWK interpreter written in Go.'
+url='https://github.com/benhoyt/goawk'
+license=('MIT')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="https://github.com/benhoyt/goawk"
 makedepends=('git' 'go')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-_gourl=github.com/benhoyt/goawk
+source=("$pkgname::git+$url")
+md5sums=('SKIP')
 
 pkgver() {
-	GOPATH="$srcdir" go get -d ${_gourl}
-	cd "$srcdir/src/${_gourl}"
+	cd "$srcdir/$pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	GOPATH="$srcdir" go get -fix -v ${_gourl}
+	cd "$srcdir/$pkgname"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+
+	go build \
+		-trimpath \
+		-buildmode=pie \
+		-mod=readonly \
+		-modcacherw \
+		-ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+		-o "${pkgname%-*}" .
 }
 
-#check() {
-#  GOPATH="$srcdir" go test -v -x ${_gourl}
-#}
+check() {
+	cd "$srcdir/$pkgname"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	go test ./...
+}
 
 package() {
-	cd "$srcdir"
-	install -D -m755 bin/${pkgname%-*} "$pkgdir/usr/bin/${pkgname%-*}"
-	install -D -m644 src/${_gourl}/README.md $pkgdir/usr/share/doc/${pkgname%-*}/README.md
-	install -D -m644 src/${_gourl}/LICENSE.txt $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
-	cp -r src/${_gourl}/examples $pkgdir/usr/share/doc/${pkgname%-*}
+	cd "$srcdir/$pkgname"
+	install -D -m755 goawk "$pkgdir/usr/bin/goawk"
+	install -D -m644 LICENSE.txt "$pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE"
+	cd docs/
+	mkdir -p "$pkgdir/usr/share/doc/${pkgname%-*}/"
+	install -D -m644 csv.md cover.md "$pkgdir/usr/share/doc/${pkgname%-*}/"
 }
