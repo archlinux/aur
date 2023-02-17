@@ -1,6 +1,6 @@
 pkgbase = python-maturin
 	pkgdesc = Build and publish crates with pyo3, rust-cpython, cffi and uniffi bindings
-	pkgver = 0.14.7
+	pkgver = 0.14.13
 	pkgrel = 1
 	url = https://www.maturin.rs/
 	arch = x86_64
@@ -8,11 +8,14 @@ pkgbase = python-maturin
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-tomli
+	makedepends = python-setuptools-rust
 	depends = python
 	depends = python-tomli
 	depends = maturin
 	optdepends = python-pypatchelf
-	source = https://files.pythonhosted.org/packages/source/m/maturin/maturin-0.14.7.tar.gz
-	b2sums = 13b91ee6df28b43b2a0d79672a7ff73c47eedfb094d862dcebf7c8ac17b39741ebf61613418eade609a4eb46fb32a3c5938da0901c567ed50d9ffbba6192b5af
+	source = https://files.pythonhosted.org/packages/source/m/maturin/maturin-0.14.13.tar.gz
+	b2sums = 4218f272ce76b8b2d17db82282552b82ab51d45165bbafb4f2c9b54c872af9716b19d6ebc7dc87a65f615061fcb23d002b855391a3e8aa6142ead58934e766b9
 
 pkgname = python-maturin
