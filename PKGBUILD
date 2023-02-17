@@ -1,7 +1,7 @@
 # Maintainer: networkException <git@nwex.de>
 
 pkgname=ungoogled-chromium-bin
-pkgver=110.0.5481.77
+pkgver=110.0.5481.100
 pkgrel=1
 pkgdesc="A lightweight approach to removing Google web service dependency"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/ungoogled-software/ungoogled-chromium"
 license=('BSD')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'libva'
-         'desktop-file-utils' 'hicolor-icon-theme')
+         'libffi' 'desktop-file-utils' 'hicolor-icon-theme')
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
             'qt5-base: enable Qt5 with --enable-features=AllowQt'
@@ -18,7 +18,7 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
 provides=('chromium')
 conflicts=('chromium')
 source=(https://github.com/ungoogled-software/ungoogled-chromium-archlinux/releases/download/$pkgver-$pkgrel/ungoogled-chromium-$pkgver-$pkgrel-x86_64.pkg.tar.zst)
-sha256sums=('d1e01eb16509e4d02cbbc0b10e62f49fca95b20984ac85813b66ccde41ce94aa')
+sha256sums=('d6649de305526a9e0d551c866f7b00cb95341827806f35fe24db8b6152234fa3')
 
 declare -gA _system_libs=(
     [brotli]=brotli
@@ -31,7 +31,7 @@ declare -gA _system_libs=(
     [icu]=icu
     [jsoncpp]=jsoncpp
     [libaom]=aom
-    [libavif]=libavif
+    #[libavif]=libavif # https://github.com/AOMediaCodec/libavif/commit/4d2776a3
     [libdrm]=
     [libjpeg]=libjpeg
     [libpng]=libpng
