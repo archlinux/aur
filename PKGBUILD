@@ -1,7 +1,7 @@
 # Maintainer: Eric Biggers <ebiggers3 at gmail dot com>
 
 pkgname=fscrypt-git
-pkgver=0.3.0.4.g677ae75
+pkgver=0.3.4.0.gf91f8e4
 pkgrel=1
 pkgdesc='A tool for managing Linux filesystem encryption'
 arch=('x86_64')
@@ -31,5 +31,5 @@ package() {
   cd fscrypt
   make DESTDIR="$pkgdir" PREFIX=/usr PAM_CONFIG_DIR="" install
   install -Dm644 ../pam_config "${pkgdir}/etc/pam.d/fscrypt"
-  install -Dm644 -t "$pkgdir/usr/share/doc/fscrypt/" README.md
+  install -Dm644 -t "$pkgdir/usr/share/doc/fscrypt/" README.md NEWS.md
 }
