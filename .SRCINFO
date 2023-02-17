@@ -1,0 +1,19 @@
+pkgbase = oxfuse-gdc
+	pkgdesc = High-level binding to libfuse3 for the D programming language, version for GDC
+	pkgver = 0.1.0
+	pkgrel = 0
+	url = https://gitlab.com/os-18/oxfuse
+	arch = x86_64
+	license = Boost or LGPL3
+	makedepends = bash
+	makedepends = chrpath
+	makedepends = lsb-release
+	makedepends = fuse3
+	makedepends = pkgconf
+	makedepends = gcc-d
+	depends = fuse3
+	depends = gcc-d
+	source = oxfuse-gdc-0.1.0.tar.gz::https://gitlab.com/os-18/oxfuse/-/archive/v0.1.0/oxfuse-v0.1.0.tar.gz
+	sha256sums = 87e0fdb48bf8c19c7f95f36ebac02947bbb441f739cacf8345db1f031da05222
+
+pkgname = oxfuse-gdc
