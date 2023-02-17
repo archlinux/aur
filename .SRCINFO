@@ -1,6 +1,6 @@
 pkgbase = python-vunit_hdl
 	pkgdesc = Unit Testing Framework for VHDL/SystemVerilog
-	pkgver = 4.6.0
+	pkgver = 4.6.1
 	pkgrel = 1
 	url = https://vunit.github.io/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-vunit_hdl
 	depends = python
 	depends = python-colorama
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/v/vunit_hdl/vunit_hdl-4.6.0.tar.gz
-	md5sums = e32e50a3ec5ff805b1cae7ced7020171
+	source = https://files.pythonhosted.org/packages/source/v/vunit_hdl/vunit_hdl-4.6.1.tar.gz
+	md5sums = aa07a0c75bceccf69c1a7027ed93c4bf
 
 pkgname = python-vunit_hdl
