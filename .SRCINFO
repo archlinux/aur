@@ -1,7 +1,7 @@
 pkgbase = sioyek-appimage
 	pkgdesc = A PDF viewer designed for reading research papers and technical books
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ahrm/sioyek
 	arch = x86_64
 	depends = fuse2

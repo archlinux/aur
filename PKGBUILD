@@ -1,7 +1,7 @@
 # Maintainer: Dhruva Sambrani <dhruvasambrani19@gmail.com>
 pkgname=sioyek-appimage
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A PDF viewer designed for reading research papers and technical books"
 arch=('x86_64')
 url="https://github.com/ahrm/sioyek"
@@ -28,7 +28,7 @@ package() {
   echo Extracting icons and .desktop
   ./${_filename} --appimage-extract "usr/share/pixmaps" > /dev/null 2>&1
   ./${_filename} --appimage-extract "sioyek.desktop" > /dev/null 2>&1
-  sed -i -E "s|Exec=sioyek|Exec=env DESKTOPINTEGRATION=0 APPIMAGELAUNCHER_DISABLE=1 sioyek|" "squashfs-root/sioyek.desktop"
+  sed -i -E "s|^Exec=sioyek|Exec=env DESKTOPINTEGRATION=0 APPIMAGELAUNCHER_DISABLE=1 sioyek|" "squashfs-root/sioyek.desktop"
 
   # Install icons
   echo Installing icons...
