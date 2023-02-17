@@ -12,6 +12,7 @@ pkgbase = moab
 	makedepends = cython
 	makedepends = python-setuptools
 	makedepends = glibc>=2.34
+	makedepends = cmake
 	depends = python-numpy
 	depends = blas
 	depends = lapack

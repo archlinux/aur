@@ -20,6 +20,7 @@ makedepends=(
 	cython
 	python-setuptools
 	"glibc>=2.34"
+	cmake
 )
 
 provides=("${pkgname%-pkgver}")
@@ -35,13 +36,13 @@ build() {
 				  -DENABLE_BLASLAPACK=OFF \
 				  -DENABLE_PYMOAB=ON \
 				  -DBUILD_SHARED_LIBS=ON \
-				  -DCMAKE_INSTALL_PREFIX=/opt/MOAB
+				  -DCMAKE_INSTALL_PREFIX=/opt/MOAB	
 	make
 }
 
 package() {
 	cd $srcdir/build
-	make DESTDIR="$pkgdir/opt/MOAB" install
+	make DESTDIR="$pkgdir/" install
 	cd pymoab 
 	bash install.sh
 	python setup.py install --user
