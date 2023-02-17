@@ -3,7 +3,7 @@
 # Contributor: Morten Linderud <foxboron@archlinux.org>
 
 pkgname=rclone-aliyundrive-git
-pkgver=1.59.0.r93.gd3d843a11
+pkgver=1.59.0.beta.6199.08f5f7d56
 pkgrel=1
 pkgdesc="Rclone with aliyundrive support."
 arch=("x86_64")
@@ -11,26 +11,18 @@ url="https://rclone.org/"
 license=("MIT")
 depends=("glibc")
 optdepends=('fuse2: for rclone mount')
-makedepends=('python' 'pandoc' 'go' 'git' 'fuse2' 'git')
+makedepends=('python' 'pandoc' 'go' 'git' 'fuse2')
 provides=("rclone")
 conflicts=("rclone")
 source=(
-    "git+https://github.com/rclone/rclone.git"
-    "aliyundrive-backend.patch"
-    # Take and rebase from https://github.com/K265/rclone/tree/aliyundrive-backend
+    "git+https://github.com/K265/rclone.git#branch=aliyundrive-backend"
 )
-sha256sums=('SKIP'
-            '680f8f2cd08718fbd87dbf0bc069a423e4a336d7688c2d0ed8a15740e89ad4a4')
+sha256sums=('SKIP')
 options=(!lto)
 
-prepare(){
-    cd "${srcdir}/rclone"
-    git apply "${srcdir}/aliyundrive-backend.patch"
-    make tidy
-}
 pkgver(){
     cd "${srcdir}/rclone"
-    git describe --tags --long | sed 's/v//;s/-/.r/;s/-/./g'
+    make version | sed 's/v//;s/.makepkg$//;s/-/./g'
 }
 build(){
     cd "${srcdir}/rclone"

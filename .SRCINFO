@@ -1,6 +1,6 @@
 pkgbase = rclone-aliyundrive-git
 	pkgdesc = Rclone with aliyundrive support.
-	pkgver = 1.59.0.r93.gd3d843a11
+	pkgver = 1.59.0.beta.6199.08f5f7d56
 	pkgrel = 1
 	url = https://rclone.org/
 	arch = x86_64
@@ -10,15 +10,12 @@ pkgbase = rclone-aliyundrive-git
 	makedepends = go
 	makedepends = git
 	makedepends = fuse2
-	makedepends = git
 	depends = glibc
 	optdepends = fuse2: for rclone mount
 	provides = rclone
 	conflicts = rclone
 	options = !lto
-	source = git+https://github.com/rclone/rclone.git
-	source = aliyundrive-backend.patch
+	source = git+https://github.com/K265/rclone.git#branch=aliyundrive-backend
 	sha256sums = SKIP
-	sha256sums = 680f8f2cd08718fbd87dbf0bc069a423e4a336d7688c2d0ed8a15740e89ad4a4
 
 pkgname = rclone-aliyundrive-git
