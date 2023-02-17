@@ -1,3 +1,5 @@
+# Maintainer: Nick <wirlaburla@worlio.com>
+# Contibutor: arojas <arojas@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: damir <damir@archlinux.org>
 
