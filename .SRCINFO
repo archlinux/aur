@@ -1,0 +1,17 @@
+pkgbase = sddm-catppuccin-git
+	pkgdesc = Theme for SDDM with catppuccin backgrounds and styling.
+	pkgver = r33.7b7a86e
+	pkgrel = 1
+	url = https://github.com/khaneliman/sddm-catppuccin
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = sddm
+	depends = qt5-graphicaleffects
+	depends = qt5-svg
+	depends = qt5-quickcontrols2
+	backup = usr/share/sddm/themes/catppuccin/theme.conf
+	source = git+https://github.com/khaneliman/sddm-catppuccin
+	sha256sums = SKIP
+
+pkgname = sddm-catppuccin-git
