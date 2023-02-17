@@ -9,7 +9,7 @@ pkgbase = xsct
 	makedepends = git
 	makedepends = libx11
 	makedepends = libxrandr
-	source = https://github.com/faf0/sct/archive/refs/tags/1.8.tar.gz
+	source = https://github.com/faf0/sct/archive/refs/tags/1.9.tar.gz
 	md5sums = 5483876b5a7fb291a7d1aabac41d3c7f
 
 pkgname = xsct
