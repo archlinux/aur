@@ -1,8 +1,8 @@
 pkgbase = eartag-git
 	pkgdesc = Simple music tag editor
-	pkgver = 0.3.0.r1.g5959d7b
+	pkgver = 0.3.2.r0.gb0fcc50
 	pkgrel = 1
-	url = https://github.com/knuxify/eartag
+	url = https://gitlab.gnome.org/knuxify/eartag
 	arch = any
 	license = MIT
 	checkdepends = appstream-glib
@@ -16,7 +16,7 @@ pkgbase = eartag-git
 	depends = python-magic
 	provides = eartag
 	conflicts = eartag
-	source = git+https://github.com/knuxify/eartag.git
+	source = git+https://gitlab.gnome.org/knuxify/eartag.git
 	b2sums = SKIP
 
 pkgname = eartag-git

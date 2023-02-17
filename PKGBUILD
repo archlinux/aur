@@ -1,11 +1,11 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=eartag-git
-pkgver=0.3.0.r1.g5959d7b
+pkgver=0.3.2.r0.gb0fcc50
 pkgrel=1
 pkgdesc="Simple music tag editor"
 arch=('any')
-url="https://github.com/knuxify/eartag"
+url="https://gitlab.gnome.org/knuxify/eartag"
 license=('MIT')
 depends=('libadwaita' 'python-gobject' 'python-pillow' 'python-mutagen' 'python-magic')
 makedepends=('git' 'meson')
