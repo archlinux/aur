@@ -16,12 +16,7 @@ conflicts=(libdisplay-info)
 provides=(libdisplay-info)
 
 pkgver() {
-  cd libdisplay-info
-  set -o pipefail
-  git describe --tags --abbrev=10 | sed 's/^v//; s/-/+/; s/-/./' 2>/dev/null ||
-  printf 'r%d.%s' \
-    $(git rev-list --count HEAD) \
-    $(git rev-parse --short=10 HEAD)
+  git -C libdisplay-info describe --tags --abbrev=10 | sed 's/^v//; s/-/+/; s/-/./'
 }
 
 build() {
