@@ -2,7 +2,7 @@
 
 pkgname=wallhaven-desktop-bin
 _pkgname=wallhaven-desktop
-pkgver=null
+pkgver=0.0.1
 pkgrel=0
 pkgdesc="Unofficial desktop client for wallhaven.cc"
 arch=('x86_64')

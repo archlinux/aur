@@ -1,6 +1,6 @@
 pkgbase = wallhaven-desktop-bin
 	pkgdesc = Unofficial desktop client for wallhaven.cc
-	pkgver = null
+	pkgver = 0.0.1
 	pkgrel = 0
 	url = https://github.com/Pylogmon/wallhaven-desktop
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = wallhaven-desktop-bin
 	depends = webkit2gtk
 	depends = gtk3
 	depends = libayatana-appindicator
-	source = wallhaven-desktop-null-x86_64.deb::https://github.com/Pylogmon/wallhaven-desktop/releases/download/null/wallhaven-desktop_null_amd64.deb
+	source = wallhaven-desktop-0.0.1-x86_64.deb::https://github.com/Pylogmon/wallhaven-desktop/releases/download/0.0.1/wallhaven-desktop_0.0.1_amd64.deb
 	sha512sums = 5ed16a7bac59addfebfeeba3f3b940e00b0e0e346e3307301a6884805c48ae5d05886a7d97344bb6d35e42f37f55675981e6de2b3fae7351822831d5c351223f
 
 pkgname = wallhaven-desktop-bin
