@@ -1,11 +1,12 @@
-# Maintainer: BlackEagle <ike.devolder@gmail.com>>
+# Maintainer: mcarni <michele DOT carnaghi AT googlemail DOT com>
+# Maintainer: BlackEagle <ike DOT devolder AT gmail DOT com>
 
 pkgname=kodi-addon-game-libretro-mgba
 pkgver=0.10.0.37
 _codename=Matrix
 pkgrel=1
 pkgdesc="Libretro wrapper for Kodi's Game API"
-arch=('x86_64')
+arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/kodi-game/game.libretro.mgba'
 license=('GPL')
 groups=('kodi-addons' 'kodi-addons-game')
