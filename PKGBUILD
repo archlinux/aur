@@ -2,7 +2,7 @@
 
 pkgname=happy-hacking-gnu
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A free, open-source alternative to the HHKB Keymap Tool provided by PFU'
 arch=(x86_64)
 url='https://gitlab.com/dom/happy-hacking-gnu'
@@ -21,7 +21,7 @@ prepare() {
   git submodule init
   git config submodule.deps/argparse.url "$srcdir/argparse"
   git config submodule.hidapi.url "$srcdir/hidapi"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
