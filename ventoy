@@ -1,2 +1,0 @@
-#!/bin/sh
-exec /opt/ventoy/Ventoy2Disk.sh "$@"
