@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: asukaminato <asukaminato@nyan.eu.org>
 pkgname=foreign-language-text-reader-bin
 pkgver=1.4
 pkgrel=1
