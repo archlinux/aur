@@ -111,6 +111,12 @@ for range in "${ranges_dep[@]}"; do
 				fi	
          done
 done
+
+echo ""
+echo "end of prepare function"
+echo ""
+echo _csChosen[0]
+echo ""
 }
 
 build() {
