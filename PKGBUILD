@@ -115,7 +115,7 @@ done
 echo ""
 echo "end of prepare function"
 echo ""
-echo _csChosen[0]
+echo "${_csChosen[0]}"
 echo ""
 }
 
