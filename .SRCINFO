@@ -1,0 +1,22 @@
+pkgbase = kodi-addon-game-libretro-mrboom
+	pkgdesc = This add-on provides a wrapper that allows Libretro cores to be loaded as game add-ons
+	pkgver = 5.2.0.145
+	pkgrel = 1
+	url = https://github.com/kodi-game/game.libretro.mrboom
+	arch = aarch64
+	arch = armv7h
+	groups = kodi-addons
+	groups = kodi-addons-game
+	license = GPL2
+	makedepends = cmake
+	makedepends = kodi-dev
+	makedepends = kodi-addon-game-libretro
+	makedepends = libretro-mrboom
+	options = !lto
+	options = debug
+	source = kodi-addon-game-libretro-mrboom-5.2.0.145.tar.gz::https://github.com/kodi-game/game.libretro.mrboom/archive/refs/tags/5.2.0.145-Matrix.tar.gz
+	sha512sums = 41e1c119b3fff46e330c8f02f303abb8a09ef7ae1fa966a050cbca6f569b16eaff9c05a7ea52e65d922e6a5674245d748d9ea6c64d8e4fcc1af1ab2154c7f377
+
+pkgname = kodi-addon-game-libretro-mrboom
+	depends = kodi-addon-game-libretro
+	depends = libretro-mrboom
