@@ -1,0 +1,22 @@
+pkgbase = kodi-addon-game-libretro-stella
+	pkgdesc = This add-on provides a wrapper that allows Libretro cores to be loaded as game add-ons
+	pkgver = 3.9.3.35
+	pkgrel = 1
+	url = https://github.com/kodi-game/game.libretro.stella
+	arch = aarch64
+	arch = armv7h
+	groups = kodi-addons
+	groups = kodi-addons-game
+	license = GPL2
+	makedepends = cmake
+	makedepends = kodi-dev
+	makedepends = kodi-addon-game-libretro
+	makedepends = libretro-stella2014
+	options = !lto
+	options = debug
+	source = kodi-addon-game-libretro-stella-3.9.3.35.tar.gz::https://github.com/kodi-game/game.libretro.stella/archive/refs/tags/3.9.3.35-Matrix.tar.gz
+	sha512sums = 4f4cc26bda2b1235727b8b1a1ddfe7758e83823650751c597840c2e769463249788ed04a3088078ff98f00824dbf79af7f2f980a2ba5d8781a1b02f874dac6a8
+
+pkgname = kodi-addon-game-libretro-stella
+	depends = kodi-addon-game-libretro
+	depends = libretro-stella2014
