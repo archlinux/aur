@@ -1,14 +1,14 @@
 # Maintainer: AtticFinder65536 <atticfinder -AT- rocklabs -DOT- xyz>
 
 pkgname=('discordchatexporter-cli')
-pkgver=2.37.2
+pkgver=2.38
 pkgrel=1
 pkgdesc="Exports Discord chat logs to a file"
 url="https://github.com/Tyrrrz/DiscordChatExporter"
 license=('GPL')
 source=("${pkgname}-${pkgver}".tar.gz::https://github.com/Tyrrrz/DiscordChatExporter/archive/refs/tags/${pkgver}.tar.gz
 	'discordchatexporter-cli')
-b2sums=('3b94aaa21226832c7c6d51d8d6f963ae79cfda0eaecfb89fdd11c96fae91fc766a9a45e57af16784e5634db8002a61c3154aee8c821e6d48f886d10da33c2f45'
+b2sums=('82b0fc3e0d617275e100e9497de5444bd5af97d722fc7fd571672290921ac8d16b4cdd4d51e63692091c1270012b2de8b9d29938b8f37cc3816d6054cf15d3f4'
 	'763d7ac60315aa945557096ccaea9ded7050e75aa183860d6f5749bbcd3c2fe565aad9dec7e320673725a4213f00915c5f1c3ce1c48626fde612e765b7d1dd80')
 arch=('any')
 depends=('dotnet-runtime-7.0')
