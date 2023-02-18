@@ -1,0 +1,16 @@
+pkgbase = g403-led-git
+	pkgdesc = Logitech G203/G403 Prodigy Mouse LED control for Linux
+	pkgver = r15.721388c
+	pkgrel = 1
+	url = https://github.com/stelcheck/g403-led
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python>=3.5,
+	depends = python-pyusb>=1.0.2
+	provides = g403-led
+	conflicts = g403-led
+	source = git+https://github.com/stelcheck/g403-led.git
+	sha256sums = SKIP
+
+pkgname = g403-led-git
