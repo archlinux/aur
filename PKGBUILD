@@ -6,19 +6,13 @@ pkgver=0.0.1
 pkgrel=1
 pkgdesc='YAML + JQ Based End-To-End API Testing.'
 url='https://github.com/abhimanyu003/probe'
-arch=('aarch64' 'i686' 'x86_64')
+arch=('x86_64')
 license=('MIT')
 provides=('probe')
 conflicts=('probe')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/abhimanyu003/probe/releases/download/v0.0.1/probe_0.0.1_linux_arm64.tar.gz")
-sha256sums_aarch64=('008dfe879c7fa5859e5c1fd05878c24782f2e69cab7a2e0492fc4043f0190521')
-
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/abhimanyu003/probe/releases/download/v0.0.1/probe_0.0.1_linux_386.tar.gz")
-sha256sums_i686=('b3da4e870c5bf2fe64cc91ad43f233a305bb785390e92c0b50017f0661c36612')
-
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/abhimanyu003/probe/releases/download/v0.0.1/probe_0.0.1_linux_amd64.tar.gz")
-sha256sums_x86_64=('1da032266f15c99e7f46ded8f8eb8eac4c95d7acf22ec23056960935d309d291')
+sha256sums_x86_64=('fc5189759187e1b090cdac98940fc3ec6ed39e396d0127c248035b003897897b')
 
 package() {
   install -Dm755 "./probe" "${pkgdir}/usr/bin/probe"
