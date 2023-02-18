@@ -4,9 +4,9 @@
 # Contributor: slact
 
 # BEGIN AUTOMATICALLY UPDATED SECTION
-_tlpui_ver=1.5.0-5
-_pkgrel=2
-_sha256=57e769db744908b394aa594ee0b53836ca3fd625cb95044fa49a68dfe0c911fe
+_tlpui_ver=1.5.0-6
+_pkgrel=1
+_sha256=879ebeea2684edda738209d3623f36b923f2e902140fc442e352ccc5f4f19adf
 # END AUTOMATICALLY UPDATED SECTION
 
 pkgname=tlpui
