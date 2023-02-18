@@ -1,11 +1,11 @@
 # Maintainer: Will Marler <will@wmarler.com>
 pkgname=kodi-addon-pvr-nextpvr
-pkgver=19.0.6
+pkgver=20.4.0
 pkgrel=1
 pkgdesc='NextPVR PVR client addon for Kodi'
-_koditarget=Matrix
+_koditarget=Nexus
 _gitname=pvr.nextpvr
-_kodiver=19.5
+_kodiver=20.0
 arch=('x86_64')
 url="https://github.com/kodi-pvr/${_gitname}"
 license=('GPL2')
@@ -15,8 +15,8 @@ depends=('kodi')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kodi-pvr/${_gitname}/archive/refs/tags/${pkgver}-${_koditarget}.tar.gz"
         "kodi-${_kodiver}_${_koditarget}.tar.gz::https://github.com/xbmc/xbmc/archive/refs/tags/${_kodiver}-${_koditarget}.tar.gz"
 )
-sha256sums=('45ad0def6bbdb50fc42dc0b8a997e0db758fda42421fa7eb7643466ea512134f'
-            '56e0074f27f08496b2a21af5704a15378a2f0979ae3e9fa9a50a2630d0313d19')
+sha256sums=('9b9ae55b126ee0ca42a94d2a447167c0d61be36de336a4b236c0879b9b0832e3'
+            '4c75add8b9ea44924b6ee45f94439545676033f35f5993908871e3dded527b79')
 
 build() {
     mkdir -p "${_gitname}-${pkgver}-${_koditarget}/build"

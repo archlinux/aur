@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-pvr-nextpvr
 	pkgdesc = NextPVR PVR client addon for Kodi
-	pkgver = 19.0.6
+	pkgver = 20.4.0
 	pkgrel = 1
 	url = https://github.com/kodi-pvr/pvr.nextpvr
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = kodi-addon-pvr-nextpvr
 	makedepends = git
 	makedepends = kodi-dev
 	depends = kodi
-	source = kodi-addon-pvr-nextpvr-19.0.6.tar.gz::https://github.com/kodi-pvr/pvr.nextpvr/archive/refs/tags/19.0.6-Matrix.tar.gz
-	source = kodi-19.5_Matrix.tar.gz::https://github.com/xbmc/xbmc/archive/refs/tags/19.5-Matrix.tar.gz
-	sha256sums = 45ad0def6bbdb50fc42dc0b8a997e0db758fda42421fa7eb7643466ea512134f
-	sha256sums = 56e0074f27f08496b2a21af5704a15378a2f0979ae3e9fa9a50a2630d0313d19
+	source = kodi-addon-pvr-nextpvr-20.4.0.tar.gz::https://github.com/kodi-pvr/pvr.nextpvr/archive/refs/tags/20.4.0-Nexus.tar.gz
+	source = kodi-20.0_Nexus.tar.gz::https://github.com/xbmc/xbmc/archive/refs/tags/20.0-Nexus.tar.gz
+	sha256sums = 9b9ae55b126ee0ca42a94d2a447167c0d61be36de336a4b236c0879b9b0832e3
+	sha256sums = 4c75add8b9ea44924b6ee45f94439545676033f35f5993908871e3dded527b79
 
 pkgname = kodi-addon-pvr-nextpvr
