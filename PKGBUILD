@@ -2,7 +2,7 @@
 
 pkgname=python-copier
 _name=${pkgname#python-}
-pkgver=6.1.0
+pkgver=7.0.1
 pkgrel=1
 pkgdesc='Library and command-line utility for rendering projects templates'
 arch=('any')
@@ -16,11 +16,14 @@ depends=('python-yaml'
          'python-pydantic'
          'python-colorama'
          'python-packaging'
+         'python-dunamai'
+         'python-importlib-metadata'
+         'python-iteration-utilities'
          'python-pytest-xdist'
          'python-pyyaml-include')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('d3b399285763e97a1c3c49cbc7e0d3b3cea2f05b680f652ff58d59a5b59f3a3c')
+sha256sums=('3d81916dad27d003674070b365bfcd965eb69d5a97920b226d6db88a6e7193d6')
 
 prepare() {
 	cd "$srcdir/$_name-$pkgver"
