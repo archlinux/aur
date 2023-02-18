@@ -8,7 +8,7 @@
 readonly _pkgname="NBXplorer"
 
 pkgname="nbxplorer"
-pkgver="2.3.61"
+pkgver="2.3.62"
 pkgrel="1"
 pkgdesc="A minimalist UTXO tracker for HD wallets."
 arch=("x86_64")
@@ -17,7 +17,7 @@ license=("MIT")
 depends=("aspnet-runtime-6.0" "bash" "bitcoin-daemon" "dotnet-sdk-6.0" "postgresql")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh")
-sha512sums=("f55b01181da32422ee86b9619d3011297759e7709065d99d714140f3e0bec1f324228367f1355800cd38f84df2175da601b3aad2239138215274c7ceac6e02eb"
+sha512sums=("a4df032d8831ba11bac1307c584ae3a33154631c93d61aff62916770e322cf1542ba28e19f37a10670456caa173d5b624bc7c44bcae0c2610798b4667b3ac074"
     "ce7e68b099de73f0a09d231e6c3ada98c5440b58c57d229fcc20fd4e3b18e2bd445c810960e828893be1a3bb8f6c954ba7c4b40f82caa84a9115bb5e752a1453")
 
 build()
