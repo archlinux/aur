@@ -1,7 +1,7 @@
 #Maintainer: Simon Eriksson <simon.eriksson.1187+aur AT gmail.com>
 
 pkgname=('libdragon-unstable-git' 'libdragon-tools-unstable-git')
-pkgver=r1511.ea7ab1a5
+pkgver=r1598.b8badbb4
 pkgrel=1
 url="http://www.dragonminded.com/n64dev/libdragon"
 arch=('x86_64')
@@ -18,7 +18,7 @@ pkgver() {
 
 build(){
   cd libdragon
-  CFLAGS="" LDFLAGS="" ASFLAGS="" N64_INST=/usr make
+  CFLAGS="" CXXFLAGS="" LDFLAGS="" ASFLAGS="" N64_INST=/usr make
   N64_INST=/usr make tools
 }
 
