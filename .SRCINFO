@@ -1,0 +1,17 @@
+pkgbase = pantum-driver
+	pkgdesc = Linux driver for all M series and most P seriers Pantum printers V1.1.99
+	pkgver = 1.1.99
+	pkgrel = 1
+	arch = x86_64
+	arch = x86
+	arch = i686
+	arch = i386
+	arch = arm
+	arch = aarch64
+	license = proprietary
+	depends = sane
+	depends = cups
+	source = https://drivers.pantum.com/userfiles/files/download/%E9%A9%B1%E5%8A%A8%E6%96%87%E4%BB%B6/2013/Pantum%20Ubuntu%20Driver%20V1_1_99-1.zip
+	sha256sums = 64767c41223cb10f86fdbce37122580b00483233143fd703fe7d225f34df85c8
+
+pkgname = pantum-driver
