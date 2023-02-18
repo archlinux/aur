@@ -1,7 +1,7 @@
 _name=dolphin
 pkgname=${_name}-light
 pkgver=22.12.2
-pkgrel=2
+pkgrel=3
 pkgdesc='KDE File Manager (stripped from unnecessary dependencies)'
 arch=('x86_64')
 url='https://apps.kde.org/dolphin/'
@@ -13,7 +13,8 @@ depends=('knewstuff' 'kcmutils' 'kparts' 'kconfig' 'kcoreaddons' 'kwindowsystem'
 makedepends=('extra-cmake-modules')
 
 optdepends=(
-    'kio-extras: additional components to increase the functionality'
+    'kio-extras: extra protocols support (sftp, fish and more)'
+    'kio-fuse: to mount remote filesystems via FUSE'
     'kde-cli-tools: for editing file type options'
     'ffmpegthumbs: video thumbnails'
     'kdegraphics-thumbnailers: PDF and PS thumbnails'
