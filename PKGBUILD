@@ -3,7 +3,7 @@
 _pkgname=flake8-bandit
 pkgname=python-$_pkgname
 
-pkgver=3.0.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="Automated security testing using bandit and flake8."
 
@@ -14,7 +14,7 @@ license=('MIT')
 depends=('python' 'bandit')
 
 source=("https://github.com/tylerwince/$_pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('c60054dd869cb4b756cfa33a89630915a36c324f8b93b639c840d0ef9fda523af259d4bda3ba39fcc1317291b70293d727bebe845b55f1c3650ffe093afd6b0e')
+sha512sums=('7e5f81661f93664aaa5fee79e6eb19c17212f8a70d702d5b9507902411bb131997a27d3f1cd794867755b141596c94961970c094eb039dcb5b6b1fbc35e6bb57')
 
 package() {
     cd "$_pkgname-$pkgver"
