@@ -1,7 +1,7 @@
 #Maintainer: Simon Eriksson <simon.eriksson.1187+aur AT gmail.com>
 
 pkgname=('libdragon-git' 'libdragon-tools-git')
-pkgver=r421.f0de312
+pkgver=r566.8b10174b
 pkgrel=1
 url="http://www.dragonminded.com/n64dev/libdragon"
 arch=('x86_64')
@@ -18,7 +18,7 @@ pkgver() {
 
 build(){
   cd libdragon
-  CFLAGS="" LDFLAGS="" ASFLAGS="" N64_INST=/usr make
+  CFLAGS="" CXXFLAGS="" LDFLAGS="" ASFLAGS="" N64_INST=/usr make
   N64_INST=/usr make tools
 }
 
