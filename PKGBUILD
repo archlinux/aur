@@ -6,6 +6,7 @@ pkgdesc="Please CLI - Minimalistic New Tab Page CLI Tool with a greeting, date a
 arch=(any)
 url="https://github.com/NayamAmarshe/please"
 license=('MIT')
+depends=("python-typer")
 makedepends=("python-setuptools")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/NayamAmarshe/please/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('SKIP')
