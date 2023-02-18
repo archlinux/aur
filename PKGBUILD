@@ -2,7 +2,7 @@
 
 pkgname=sing-box-beta
 _pkgname=sing-box
-_version="1.2-beta1"
+_version="1.2-beta2"
 pkgver="${_version//[v-]/}"
 pkgrel=1
 
@@ -14,7 +14,7 @@ license=('GPL3')
 makedepends=('go')
 
 source=("${_pkgname}-${_version}.tar.gz::https://github.com/SagerNet/sing-box/archive/v${_version}.tar.gz")
-sha256sums=('dcf36bc8cacea19a2e47bcfc691059680d6691898327b2317085711e88ff45cb')
+sha256sums=('3419691b7cb84a9b79fca117dc690c2b2ac3c3891002a0b4d8b394d1383a6468')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -44,8 +44,6 @@ build(){
         ./cmd/sing-box
 
     sed -i "/^\[Service\]$/a User=${_pkgname}
-            s|CapabilityBoundingSet=\(.*\)$|CapabilityBoundingSet=\1 CAP_SYS_PTRACE CAP_DAC_READ_SEARCH|
-            s|AmbientCapabilities=\(.*\)$|AmbientCapabilities=\1 CAP_SYS_PTRACE CAP_DAC_READ_SEARCH|
             s|WorkingDirectory=\(.*\)$|WorkingDirectory=-\1\nExecStartPre=+install -o ${_pkgname} -g ${_pkgname} -d -m 0700 \1|" release/config/${_pkgname}*.service
 
     echo "u ${_pkgname} - \"Sing-box Service\" - -" > "release/config/${_pkgname}.sysusers"
