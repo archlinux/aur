@@ -1,0 +1,15 @@
+pkgbase = newgg-git
+	pkgdesc = 佳佳象棋-传统引擎
+	pkgver = 22.fb435ef
+	pkgrel = 1
+	url = https://github.com/leedavid/NewGG
+	arch = x86_64
+	license = unknown
+	makedepends = clang
+	makedepends = libc++
+	provides = newgg
+	conflicts = newgg
+	source = NewGG::git+https://github.com/leedavid/NewGG
+	md5sums = SKIP
+
+pkgname = newgg-git
