@@ -1,34 +1,54 @@
 pkgbase = ocp
-	pkgdesc = Open Cubic Player
-	pkgver = 0.2.102
-	pkgrel = 2
+	pkgdesc = Open Cubic Player (GIT Version)
+	pkgver = 0.2.103
+	pkgrel = 1
 	url = https://stian.cubic.org/project-ocp.php
-	install = ocp.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = xa
 	makedepends = desktop-file-utils
-	depends = hicolor-icon-theme
-	depends = libxxf86vm
-	depends = libxpm
-	depends = alsa-lib
-	depends = sdl2
-	depends = flac
-	depends = libvorbis
-	depends = libmad
-	depends = libjpeg-turbo
-	depends = libpng
-	depends = freetype2
-	depends = ttf-unifont
-	depends = libdiscid
-	depends = cjson
-	depends = shared-mime-info
-	depends = libancient
-	provides = ocp=0.2.102
-	conflicts = ocp-git
-	source = ocp::git+https://github.com/mywave82/opencubicplayer.git#tag=v0.2.102
-	md5sums = SKIP
+	makedepends = alsa-lib
+	makedepends = sdl2
+	makedepends = freetype2
+	makedepends = flac
+	makedepends = cjson
+	makedepends = libancient
+	makedepends = libdiscid
+	makedepends = libmad
+	makedepends = libjpeg-turbo
+	makedepends = libpng
+	makedepends = libvorbis
+	makedepends = ttf-unifont
+	optdepends = libvorbis: Vorbis codec support
+	optdepends = libmad: MPEG codec support
+	optdepends = flac: FLAC codec support
+	source = ocp::git+https://github.com/mywave82/opencubicplayer.git#tag=v0.2.103
+	sha256sums = SKIP
 
 pkgname = ocp
+	depends = alsa-lib
+	depends = cjson
+	depends = libancient
+	depends = libdiscid
+	provides = ocp=0.2.103
+	provides = ocp-curses=0.2.103
+	conflicts = ocp-curses
+	conflicts = ocp-sdl2
+
+pkgname = ocp-sdl2
+	install = ocp.install
+	depends = alsa-lib
+	depends = cjson
+	depends = freetype2
+	depends = hicolor-icon-theme
+	depends = sdl2
+	depends = shared-mime-info
+	depends = libancient
+	depends = libdiscid
+	depends = libjpeg-turbo
+	depends = libpng
+	provides = ocp-sdl2=0.2.103
+	conflicts = ocp
+	conflicts = ocp-curses
