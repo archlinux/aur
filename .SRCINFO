@@ -1,0 +1,17 @@
+pkgbase = python-jinja2-ansible-filters
+	pkgdesc = A port of the ansible filters provided by Ansible's templating engine
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://gitlab.com/dreamer-labs/libraries/jinja2-ansible-filters
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	optdepends = python-jinja
+	optdepends = python-yaml
+	optdepends = python-pytest
+	optdepends = python-pytest-cov
+	source = https://files.pythonhosted.org/packages/source/j/jinja2-ansible-filters/jinja2-ansible-filters-1.3.2.tar.gz
+	sha256sums = 07c10cf44d7073f4f01102ca12d9a2dc31b41d47e4c61ed92ef6a6d2669b356b
+
+pkgname = python-jinja2-ansible-filters
