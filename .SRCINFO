@@ -1,0 +1,11 @@
+pkgbase = dmenu-ntix
+	pkgdesc = Dmenu front-end to ntix.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://git.sr.ht/~klahr/dmenu-ntix
+	arch = any
+	license = GPL2
+	source = https://git.sr.ht/~klahr/dmenu-ntix/archive/39a719b34545ee2b01b7f5ab2a3a4554892ee03d.tar.gz
+	sha256sums = 3e1f70b53d8eaf6189ee01313165e87393bf6fa1807b567b9522355095bb55d1
+
+pkgname = dmenu-ntix
