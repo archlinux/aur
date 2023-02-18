@@ -1,7 +1,7 @@
 # Maintainer: Ckat <ckat@teknik.io>
 pkgname=chatterino2-git
 _pkgname=chatterino2
-pkgver=v2.4.0.r99.g56adaf81a
+pkgver=v2.4.0.r112.g2629e3baa
 pkgrel=1
 pkgdesc='Second installment of the Twitch chat client series "Chatterino", dev/git version'
 arch=('any')
@@ -66,7 +66,11 @@ build() {
     cd "$srcdir/chatterino2"
     mkdir -p build
     cd build
-    cmake -DCMAKE_BUILD_TYPE=Release -DUSE_SYSTEM_QTKEYCHAIN=ON ..
+    cmake \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DUSE_SYSTEM_QTKEYCHAIN=ON \
+        -DUSE_PRECOMPILED_HEADERS=OFF \
+        ..
     if [ -z "$CCACHE_SLOPPINESS" ]; then
         # We need to set the ccache sloppiness for the chatterino build to use it properly
         # This is due to our use of precompiled headers
