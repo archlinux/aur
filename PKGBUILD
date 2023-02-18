@@ -1,8 +1,8 @@
 # Maintainer: Alexander Konarev (avkonarev) <AVKonarev@gmail.com>
 
 pkgname=dmusic
-pkgver=0.3
-pkgrel=7
+pkgver=0.4
+pkgrel=1
 pkgdesc="Compact and native Yandex Music client"
 arch=('i686' 'x86_64')
 url="https://github.com/levovix0/DMusic"
@@ -10,7 +10,7 @@ license=('GPL3')
 arch=('x86_64')
 source=("https://github.com/levovix0/DMusic/archive/refs/tags/$pkgver.zip"
         "DMusic.desktop")
-sha256sums=('1f82e732584257246162201bc59b339adca71a90dcd811b775a6b681f067d7f2'
+sha256sums=('c79b524655bea77016cb57f449c08cf68db4169d10f33fe6932a8cbd01ef525e'
             '5aa2b3210f93963c825373195aae8adaa75edf9c82c59d657c0c3250a37c3a8a')
 depends=(
   'taglib' 
