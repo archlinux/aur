@@ -1,0 +1,26 @@
+pkgbase = monobit-git
+	pkgdesc = Tools for working with monochrome bitmap fonts
+	pkgver = 0.35.0.r0.gd4d2519
+	pkgrel = 1
+	url = https://github.com/robhagemans/monobit
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python
+	depends = python-reportlab
+	depends = python-pillow
+	depends = python-python-bidi
+	depends = python-arabic-reshaper
+	depends = python-hatchling
+	depends = python-uniseg
+	depends = python-fonttools
+	provides = monobit
+	conflicts = monobit
+	source = monobit-git::git+https://github.com/robhagemans/monobit.git
+	sha256sums = SKIP
+
+pkgname = monobit-git
