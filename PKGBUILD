@@ -1,5 +1,5 @@
 # Maintainer: Trevor Satori <trevor@satoridigital.co>
-pkgname=kronos-git 
+pkgname=satori-kronos-git 
 pkgver=0.1.0.r87.3693586
 pkgrel=1
 url="https://github.com/TrevorSatori/kronos.git"
