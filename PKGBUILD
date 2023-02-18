@@ -3,8 +3,8 @@
 
 _pkgbase=ocp
 pkgname=('ocp-git' 'ocp-sdl2-git')
-pkgver=0.2.102.r25.be056b7
-pkgrel=2
+pkgver=0.2.102.r27.7fcbda1
+pkgrel=1
 pkgdesc="Open Cubic Player (GIT Version)"
 arch=('i686' 'x86_64')
 url="https://stian.cubic.org/project-ocp.php"

@@ -1,7 +1,7 @@
 pkgbase = ocp-git
 	pkgdesc = Open Cubic Player (GIT Version)
-	pkgver = 0.2.102.r25.be056b7
-	pkgrel = 2
+	pkgver = 0.2.102.r27.7fcbda1
+	pkgrel = 1
 	url = https://stian.cubic.org/project-ocp.php
 	arch = i686
 	arch = x86_64
@@ -34,8 +34,8 @@ pkgname = ocp-git
 	depends = ncurses
 	depends = libancient
 	depends = libdiscid
-	provides = ocp=0.2.102.r25.be056b7
-	provides = ocp-curses=0.2.102.r25.be056b7
+	provides = ocp=0.2.102.r27.7fcbda1
+	provides = ocp-curses=0.2.102.r27.7fcbda1
 	conflicts = ocp-curses
 	conflicts = ocp-sdl2
 
@@ -53,6 +53,6 @@ pkgname = ocp-sdl2-git
 	depends = libjpeg-turbo
 	depends = libpng
 	depends = ttf-unifont
-	provides = ocp-sdl2=0.2.102.r25.be056b7
+	provides = ocp-sdl2=0.2.102.r27.7fcbda1
 	conflicts = ocp
 	conflicts = ocp-curses
