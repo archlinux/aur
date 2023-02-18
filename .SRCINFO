@@ -1,6 +1,6 @@
 pkgbase = python-inventree
 	pkgdesc = Python interface for InvenTree inventory management system
-	pkgver = 0.7.3
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/inventree/inventree-python/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-inventree
 	makedepends = python-setuptools
 	depends = python
 	depends = python-requests
-	source = https://files.pythonhosted.org/packages/source/i/inventree/inventree-0.7.3.tar.gz
-	sha256sums = 8bd3891c352814901037edf315f95ababbbf1572b73f2c0cea4c6475b53fdc5a
+	source = https://files.pythonhosted.org/packages/source/i/inventree/inventree-0.10.0.tar.gz
+	sha256sums = cbd099b254168cb38eed5d614626d592d427fba43ffca1cc8e7bfcfadbb6f418
 
 pkgname = python-inventree
