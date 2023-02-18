@@ -1,0 +1,16 @@
+pkgbase = python-iteration-utilities
+	pkgdesc = Utilities based on Pythons iterators and generators.
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/MSeifert04/iteration_utilities
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	optdepends = python-pytest
+	optdepends = python-sphinx
+	optdepends = python-numpydoc
+	source = https://files.pythonhosted.org/packages/source/i/iteration_utilities/iteration_utilities-0.11.0.tar.gz
+	sha256sums = f91f41a2549e9a7e40ff5460fdf9033b6ee5b305d9be77943b63a554534c2a77
+
+pkgname = python-iteration-utilities
