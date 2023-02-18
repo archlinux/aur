@@ -1,14 +1,14 @@
 pkgbase = u-boot-qemu-bin
 	pkgdesc = U-Boot for qemu
-	pkgver = 2022.10
+	pkgver = 2023.01
 	pkgrel = 1
 	url = https://www.denx.de/wiki/U-Boot/
 	arch = any
 	license = GPL2
 	options = !strip
-	source = https://deb.debian.org/debian/pool/main/u/u-boot/u-boot-qemu_2022.10+dfsg-1_all.deb
-	sha256sums = a916bdc2d522e5ce38c6f6fc7268cf09102108a690c4354d2da0c9de2b87cbff
-	sha512sums = 92388fdb4a910e889f35cec274509416a01a2c1b387af703fe0769354ad59fc8ec32543db05e1bc5c18cdb56606bc4c6259d84b8087ea7129229537c57e658fb
-	b2sums = 1317e4fc70606d604d0c60394e104ffe98028f104b2b8fb17dc5af1d9facc886c24bb4c0eafde12605487992546c5d77caacc060ec1360a544722926d4817e02
+	source = https://deb.debian.org/debian/pool/main/u/u-boot/u-boot-qemu_2023.01+dfsg-2_all.deb
+	sha256sums = 3db349c5543d10b28a29dfef4a361abaced7402f4d48407304422acc3472cd44
+	sha512sums = ab105b0326a4f17232687bdfb85ef2788389aa653b4bb4dfccc99213306b09975f3d884799d5511fa7e3aac4cad1f5b33ed6cf7129db74756ab4490fc684751c
+	b2sums = 803602a2fed0e2af316ba17c0f3d256e1457e40e5783359320b66191128041a2681c45728477edd17ececd4acc1c1c1a588d2b991aa4523a7a3f9b963f12168b
 
 pkgname = u-boot-qemu-bin
