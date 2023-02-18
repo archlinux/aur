@@ -11,10 +11,7 @@ pkgbase = stacer-bin
 	conflicts = stacer
 	conflicts = stacer-git
 	options = !strip
-	source = stacer-bin.desktop
-	sha512sums = c1935570166c402295d92dad30fe7b4e8189a869561d56bd8d5244138de11d4fa16145ad017f9e7b22733fb7de8a6b79708aba595a80bce7bbe0a037da63260f
 	source_x86_64 = https://github.com/oguzhaninan/Stacer/releases/download/v1.1.0/stacer_1.1.0_amd64.deb
 	sha512sums_x86_64 = 19bcb87f3d99ce090ab1fb917f65f7dd74f0b1e4fc19272eae0ad8d5c66d3dbe53cbdb50841bbd9a0e16f03201cd6cc5f0bc1a57eda41fd096ed275cf762d84a
 
 pkgname = stacer-bin
-
