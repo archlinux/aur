@@ -2,7 +2,7 @@
 
 pkgname=waybar-module-pacman-updates-git
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Waybar module for Arch to show system updates available'
 arch=('x86_64')
 url="https://github.com/coffebar/waybar-module-pacman-updates"
@@ -19,7 +19,7 @@ pkgver(){
 
 prepare() {
     cd "waybar-module-pacman-updates"
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
