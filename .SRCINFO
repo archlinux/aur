@@ -1,0 +1,15 @@
+pkgbase = steam-devices-git
+	pkgdesc = List of devices Steam and SteamVR will want read/write permissions on. Useful when using the Flatpak version of Steam.
+	pkgver = v1.0.0.61.r38.d87ef55
+	pkgrel = 1
+	url = https://github.com/ValveSoftware/steam-devices
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = steam-devices
+	conflicts = steam-devices
+	conflicts = steam
+	source = git+https://github.com/ValveSoftware/steam-devices.git
+	md5sums = SKIP
+
+pkgname = steam-devices-git
