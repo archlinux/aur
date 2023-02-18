@@ -3,24 +3,29 @@
 pkgname=python-copier
 _name=${pkgname#python-}
 pkgver=7.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Library and command-line utility for rendering projects templates'
 arch=('any')
 url='https://github.com/pykong/copier'
 license=('MIT')
-depends=('python-yaml'
-         'python-jinja'
-         'python-regex'
-         'python-plumbum'
-         'python-pathspec'
-         'python-pydantic'
-         'python-colorama'
-         'python-packaging'
-         'python-dunamai'
-         'python-importlib-metadata'
-         'python-iteration-utilities'
-         'python-pytest-xdist'
-         'python-pyyaml-include')
+depends=(
+  'python-backports.cached_property'
+  'python-colorama'
+  'python-dunamai'
+  'python-importlib-metadata'
+  'python-iteration-utilities'
+  'python-jinja'
+  'python-jinja2-ansible-filters'
+  'python-packaging'
+  'python-pathspec'
+  'python-plumbum'
+  'python-pydantic'
+  'python-pygments'
+  'python-pyyaml-include'
+  'python-questionary'
+  'python-typing_extensions'
+  'python-yaml'
+)
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('3d81916dad27d003674070b365bfcd965eb69d5a97920b226d6db88a6e7193d6')
