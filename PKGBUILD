@@ -1,7 +1,7 @@
 _name=plasma-workspace
 pkgname=${_name}-light
 pkgver=5.27.0
-pkgrel=2
+pkgrel=3
 pkgdesc='KDE Plasma Workspace (stripped from unnecessary dependencies)'
 arch=('x86_64')
 url='https://kde.org/plasma-desktop/'
@@ -13,7 +13,7 @@ provides=("${_name}")
 depends=(
     'xorg-xrdb' 'xorg-xsetroot' 'xorg-xmessage'
     'knotifyconfig' 'ksystemstats' 'ktexteditor'
-    'kactivitymanagerd' 'kactivities-stats'
+    'kactivitymanagerd' 'kactivities-stats' 'kquickcharts'
     'kwin' 'kpipewire' 'prison' 'accountsservice'
 )
 

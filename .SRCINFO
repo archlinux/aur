@@ -1,7 +1,7 @@
 pkgbase = plasma-workspace-light
 	pkgdesc = KDE Plasma Workspace (stripped from unnecessary dependencies)
 	pkgver = 5.27.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
 	groups = plasma
@@ -21,6 +21,7 @@ pkgbase = plasma-workspace-light
 	depends = ktexteditor
 	depends = kactivitymanagerd
 	depends = kactivities-stats
+	depends = kquickcharts
 	depends = kwin
 	depends = kpipewire
 	depends = prison
