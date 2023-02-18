@@ -1,13 +1,16 @@
 pkgbase = python-flake8-rst-docstrings
 	pkgdesc = flake8 plugin to validate Python docstrings as reStructuredText (RST)
-	pkgver = 0.2.5
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/peterjc/flake8-rst-docstrings
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = python-restructuredtext_lint
-	source = https://github.com/peterjc/flake8-rst-docstrings/archive/v0.2.5.tar.gz
-	sha512sums = 7be16023db379e24fd6f13a3ae59add3e0f52f3df0c16c7ccd9cec44ac1b861fc85db7597409619ef628d27ddaf3702640edda9e9d9a8f6aade4c43c78b2ef69
+	source = https://github.com/peterjc/flake8-rst-docstrings/archive/v0.3.0.tar.gz
+	sha512sums = 30f4bc0eb2c3465fcf19333f0bd9feb7a4c6472faae7d4e7db9a380d530426a3aea34f6671f7442b9285a5a37b11fabbf00ae41d4260503449d51dc2039f549c
 
 pkgname = python-flake8-rst-docstrings

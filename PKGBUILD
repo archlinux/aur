@@ -3,7 +3,7 @@
 _pkgname=flake8-rst-docstrings
 pkgname=python-$_pkgname
 
-pkgver=0.2.5
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="flake8 plugin to validate Python docstrings as reStructuredText (RST)"
 
@@ -12,12 +12,17 @@ arch=('any')
 license=('MIT')
 
 depends=('python' 'python-restructuredtext_lint')
+makedepends=(python-build python-installer python-wheel)
 
 source=("https://github.com/peterjc/$_pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('7be16023db379e24fd6f13a3ae59add3e0f52f3df0c16c7ccd9cec44ac1b861fc85db7597409619ef628d27ddaf3702640edda9e9d9a8f6aade4c43c78b2ef69')
+sha512sums=('30f4bc0eb2c3465fcf19333f0bd9feb7a4c6472faae7d4e7db9a380d530426a3aea34f6671f7442b9285a5a37b11fabbf00ae41d4260503449d51dc2039f549c')
+
+build() {
+    cd "$_pkgname-$pkgver"
+    python -m build --wheel --no-isolation
+}
 
 package() {
     cd "$_pkgname-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
-
