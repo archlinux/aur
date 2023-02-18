@@ -1,0 +1,15 @@
+pkgbase = please_cli
+	pkgdesc = Please CLI - Minimalistic New Tab Page CLI Tool with a greeting, date and time, inspirational quotes and your personal tasks and to-do list
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/NayamAmarshe/please
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	optdepends = 
+	provides = please
+	conflicts = please
+	source = please_cli-0.3.1.tar.gz::https://github.com/NayamAmarshe/please/releases/download/0.3.1/please_cli-0.3.1.tar.gz
+	md5sums = SKIP
+
+pkgname = please_cli
