@@ -1,9 +1,10 @@
-# Maintainer: David Thurstenson <thurstylark@gmail.com>
+# Maintainer: Dan Johansen <strit@strits.dk>
+# Contributor: David Thurstenson <thurstylark@gmail.com>
 # Contributor: Kiril Vladimiroff <kiril@vladimiroff.org>
 
 pkgname=onlykey-udev
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="OnlyKey udev rules"
 arch=('x86_64')
 url="https://onlykey.io/"
@@ -12,5 +13,5 @@ source=("https://raw.githubusercontent.com/trustcrypto/trustcrypto.github.io/b53
 sha256sums=('aa3398b13113c48a9214bdfe625e55317b06da8b1ce3d0c701e43470218949de')
 
 package() {
-  install -Dm 644 "${srcdir}/49-onlykey.rules" "${pkgdir}/usr/lib/udev/rules.d"
+  install -Dm 644 "${srcdir}/49-onlykey.rules" -t "${pkgdir}/usr/lib/udev/rules.d/"
 }

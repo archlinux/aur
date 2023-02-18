@@ -1,7 +1,7 @@
 pkgbase = onlykey-udev
 	pkgdesc = OnlyKey udev rules
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://onlykey.io/
 	arch = x86_64
 	license = unknown
