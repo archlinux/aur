@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=downzemall
-pkgver=3.0.0
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="A mass download manager that helps you to select, organize, prioritize and run your downloads in parallel."
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('libnotify: desktop notifications'
             'libappindicator-gtk3: tray icon')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/setvisible/DownZemAll/archive/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('e025928d1a601bd53feb04064372f99715a0a2aa0fcc612e404f21e7c7bb0994'
+sha256sums=('459098ea3107e22fc26ecdda2dc42753f868cf4404d61da885b385ceaeb6a013'
             '3cb8f2eefbd9f04dd4b3a706058d8ab82c42514db81fbfbdf213fc833ca01eff')
 
 prepare() {
@@ -30,8 +30,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_SKIP_RPATH='YES' \
     -DBUILD_TESTS='OFF' \
-    -DLibtorrentRasterbar_ROOT='/usr' \
-    -DOpenSSL_ROOT_DIR='/usr' \
+    -DLibtorrentRasterbar_LIBRARIES='/usr/lib/libtorrent-rasterbar.so' \
     -DOPENSSL_INCLUDE_DIRS='/usr/include/openssl' \
     -DOPENSSL_CRYPTO_LIBRARY='/usr/lib/libcrypto.so' \
     -DOPENSSL_SSL_LIBRARY='/usr/lib/libssl.so' \
