@@ -1,7 +1,7 @@
 _name=dolphin
 pkgname=${_name}-light
 pkgver=22.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc='KDE File Manager (stripped from unnecessary dependencies)'
 arch=('x86_64')
 url='https://apps.kde.org/dolphin/'
@@ -9,14 +9,16 @@ license=(LGPL)
 groups=('kde-applications' 'kde-system')
 conflicts=("${_name}")
 provides=("${_name}")
-depends=('knewstuff' 'kio-extras' 'kcmutils' 'kparts' 'kconfig' 'kcoreaddons' 'kwindowsystem')
+depends=('knewstuff' 'kcmutils' 'kparts' 'kconfig' 'kcoreaddons' 'kwindowsystem')
 makedepends=('extra-cmake-modules')
 
 optdepends=(
+    'kio-extras: additional components to increase the functionality'
     'kde-cli-tools: for editing file type options'
     'ffmpegthumbs: video thumbnails'
     'kdegraphics-thumbnailers: PDF and PS thumbnails'
-    'konsole: terminal panel' 'purpose: share context menu'
+    'konsole: terminal panel'
+    'purpose: share context menu'
 )
 
 _snapshot="${_name}-${pkgver}"
