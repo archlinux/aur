@@ -16,7 +16,7 @@ source=("${_pkgname}::git+${url}.git"
 sha512sums=('SKIP'
             'SKIP')
 _core_deps=(glibc gcc-libs libx11 libxrandr libxext libxinerama xorgproto libxtst libxi openssl)
-_gui_deps=(glibc gcc-libs libx11 openssl avahi qt5-base)
+_gui_deps=(glibc gcc-libs libx11 openssl avahi qt5-base qt5-tools)
 makedepends=(${_core_deps[@]} ${_gui_deps[@]}
              # referenced in CMakeLists.txt but does not seem to be actually used
              curl libsm libice
