@@ -1,67 +1,81 @@
-# Maintainer: Sigvald Marholm <marholm@marebakken.com>
-# Maintainer: Nick Winovich <nw2190@gmail.com>
-# Maintainer: Georg S. Voelker <voelker@maibox.org>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: eDgar <eDgar [at/at] openmail.cc>
+# Contributor: Nick Winovich <nw2190@gmail.com>
+# Contributor: Sigvald Marholm <marholm@marebakken.com>
+# Contributor: Georg S. Voelker <voelker@maibox.org>
 # Based on dolfin-git, maintained by Lucas H. Gabrielli <heitzmann@gmail.com> and submitted by myles
 
-_base=dolfin
-pkgname=${_base}
-pkgdesc="The C++ interface of FEniCS, providing a consistent PSE (Problem Solving Environment) for ordinary and partial differential equations (stable)."
+pkgname=dolfin
+pkgdesc="C++ interface of FEniCS"
 pkgver=2019.1.0.post0
-pkgrel=4
-arch=('i686' 'x86_64')
-url="https://bitbucket.org/fenics-project/${_base}"
+pkgrel=5
+arch=('x86_64')
+url="https://bitbucket.org/fenics-project/${pkgname}"
 license=('LGPL3')
-groups=('fenics')
-conflicts=('dolfin-git')
-depends=('boost' 'cppunit' 'eigen' 'gl2ps' 'petsc'
-         'python-ffc=2019.1.0' 'suitesparse')
-optdepends=('scotch: libraries for graph, mesh and hypergraph partitioning'
-            'slepc: eigenvalue problem solvers'
-            'hdf5<=1.12.0-1: for reading/writing hdf5 files')
-makedepends=('cmake')
+depends=('boost' 'cppunit' 'eigen' 'gl2ps' 'petsc' 'python-ffc' 'scotch' 'suitesparse')
+optdepends=('slepc: eigenvalue problem solvers'
+  'hdf5-openmpi: for reading/writing hdf5 files')
+makedepends=('cmake' 'doxygen' 'graphviz' 'texlive-latexextra')
+checkdepends=('openssh')
 options=(!emptydirs)
-source=(${pkgname}-${pkgver}.tar.gz::https://bitbucket.org/fenics-project/${_base}/downloads/${_base}-${pkgver}.tar.gz min_element.patch hdf5.patch endian.patch)
-sha256sums=('61abdcdb13684ba2a3ba4afb7ea6c7907aa0896a46439d3af7e8848483d4392f'
-            '80cdfc689854cc4cada1a2bdbde298a27f4456ac1495dceeac030b5a9b02b27e'
-            '2e718c5586228fa2031da4b95ef9bb54266fed4c15e195ef47470fddb3a99c36'
-            '19dc90d5fa8139ed3311a1df89f74093478dd578833a898e901860349da45284')
-
-export MAKEFLAGS="-j1"
+source=(${pkgname}-${pkgver}.tar.gz::${url}/downloads/${pkgname}-${pkgver}.tar.gz
+  pkg-config.patch::${url}/issues/attachments/1120/fenics-project/${pkgname}/1618190046.28/1120/0001-cmake-PETSc-SLEPc-match-lowercase-.pc-pkg-config-fil.patch
+  endian.patch::${url}/issues/attachments/1116/fenics-project/dolfin/1602778118.04/1116/0001-Use-__BYTE_ORDER__-instead-of-removed-Boost-endian.h.patch
+  catch.patch::https://salsa.debian.org/science-team/fenics/${pkgname}/-/raw/master/debian/patches/catch_SIGSTKSZ_libc6_2.34.patch)
+sha512sums=('0677245d2537d6e3b25bc8c47700a4d10690f35a49a544456456601505703e0b21ddec510f456146edef3d0beea366092a54a23ac29bd165c9c97cede6d6ca10'
+  'cc0892fe899361e855ace1d831ca9f56761bc3b60d015107faa3f459dfc9c19ba7eaf9a7bdacd890763d66b7151b1be848704b8bdf82a0964239e0079548c182'
+  '87013c1eb1770432d98f0934d3607d428d68f68e0ed1196c1c98070cdf764a930482b95a6996042b3b2e90a336d7404bb8c91a7d4ee6e940873ef4591482a772'
+  'ad327c6d916ef120919f5d2a177e10da02d14941ce283d3bfbeddd2caadda3ab67a96c3f6ad937e4bc2add00974ba9115d8db3638a094ef2d9358c25ba2b06ae')
 
 prepare() {
-    cd "$pkgname-$pkgver"
-    patch --forward --strip=1 --input="${srcdir}/min_element.patch"
-    patch --forward --strip=0 --input="${srcdir}/hdf5.patch"
-    patch --forward --strip=1 --input="${srcdir}/endian.patch"
+  # https://bitbucket.org/fenics-project/dolfin/issues/1128/ftbfs-min_element-is-not-a-member-of-std
+  sed -i '20 a #include <algorithm>' ${pkgname}-${pkgver}/${pkgname}/geometry/IntersectionConstruction.cpp
+  sed -i '26 a #include <algorithm>' ${pkgname}-${pkgver}/${pkgname}/mesh/MeshFunction.h
+  cd ${pkgname}-${pkgver}
+  patch -p1 -i ../endian.patch
+  patch -p1 -i ../pkg-config.patch
+  patch -p1 -i ../catch.patch
 }
 
 build() {
-    _build_dir="${srcdir}"/build
+  local py_interp=$(python -c "import os,sys; print(os.path.realpath(sys.executable))")
 
-	local py_interp=`python -c "import os,sys; print(os.path.realpath(sys.executable))"`
+  [ -n "$PETSC_DIR" ] && source /etc/profile.d/petsc.sh
+  [ -n "$SLEPC_DIR" ] && source /etc/profile.d/slepc.sh
 
-	[ -n "$PETSC_DIR" ] && source /etc/profile.d/petsc.sh
-	[ -n "$SLEPC_DIR" ] && source /etc/profile.d/slepc.sh
+  cmake -S ${pkgname}-${pkgver} \
+    -B build \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DBUILD_SHARED_LIBS=TRUE \
+    -DPYTHON_EXECUTABLE="${py_interp}" \
+    -DCMAKE_SKIP_BUILD_RPATH=TRUE \
+    -DCMAKE_SKIP_RPATH=TRUE \
+    -DDOLFIN_ENABLE_TRILINOS=FALSE \
+    -DDOLFIN_ENABLE_SUNDIALS=FALSE \
+    -Wno-dev
+  cmake --build build --target all
+  # Build documentation
+  # See Doxyfile
+  cd ${pkgname}-${pkgver}/doc
+  doxygen
+  cd latex
+  make
+}
 
-	cmake -S "${srcdir}"/"${_base}"-"${pkgver}" \
-          -B "${_build_dir}" \
-		  -DCMAKE_INSTALL_PREFIX="${pkg}"/usr \
-          -DCMAKE_INSTALL_LIBDIR=lib \
-		  -DPYTHON_EXECUTABLE="${py_interp}" \
-		  -DCMAKE_SKIP_BUILD_RPATH=TRUE \
-		  -DCMAKE_SKIP_RPATH=TRUE \
-          -DDOLFIN_ENABLE_TRILINOS=FALSE \
-          -DDOLFIN_ENABLE_SUNDIALS=FALSE \
-		  -DCMAKE_BUILD_TYPE="Release"
-
-    cd "${_build_dir}"
-	make
-
-    # Build documentation
-    # See Doxyfile
+check() {
+  if [ -z "$(ldconfig -p | grep libcuda.so.1)" ]; then
+    export OMPI_MCA_opal_warn_on_missing_libcuda=0
+  fi
+  cmake --build build --target unittests
+  LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${srcdir}/build/dolfin/" ./build/test/unit/cpp/unittests
 }
 
 package() {
-	cd ${srcdir}/${_base}-${pkgver}/build
-	make install DESTDIR="${pkgdir}"
+  DESTDIR="${pkgdir}" cmake --build build --target install
+  install -Dm 644 ${pkgname}-${pkgver}/COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d ${pkgdir}/usr/share/doc/${pkgname}
+  mv ${pkgname}-${pkgver}/doc/html ${pkgdir}/usr/share/doc/${pkgname}
+  install ${pkgname}-${pkgver}/doc/latex/refman.pdf ${pkgdir}/usr/share/doc/${pkgname}
 }
