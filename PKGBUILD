@@ -1,7 +1,6 @@
 # Maintainer: Xavier (sapphirus at azorium dot net)
 # Original Contributor: Mikael Eriksson <mikael_eriksson@miffe.org>
 
-
 _pkgbase=ocp
 pkgname=('ocp' 'ocp-sdl2')
 pkgver=0.2.103
@@ -97,7 +96,7 @@ package_ocp() {
 		 'libancient'
 		 'libdiscid')
 	cd $_pkgbase
-	./configure --prefix=/usr --sysconfdir=/etc  --with-builtin=core\
+	./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core\
 		    --without-x11 --without-sdl2\
 		    --without-update-desktop-database\
                     --without-update-mime-database
