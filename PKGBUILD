@@ -7,7 +7,7 @@ arch=('x86_64')
 license=('custom')
 groups=('xorg')
 url="https://xorg.freedesktop.org"
-pkgdesc="run X clients under wayland"
+pkgdesc="run X clients under wayland (patched specifically to run osu! under Wine correctly)"
 depends=('nettle' 'libepoxy' 'systemd-libs' 'libxfont2' 
          'pixman' 'xorg-server-common' 'libxcvt' 'mesa')
 makedepends=('meson' 'xorgproto' 'xtrans' 'libxkbfile' 'dbus'
