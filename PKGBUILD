@@ -1,39 +1,34 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=python-taskipy
 _pkgname="${pkgname#python-}"
-pkgver=1.10.1
+pkgver=1.10.3
 pkgrel=1
 pkgdesc="The complementary task runner for Python"
 arch=('any')
 url="https://github.com/illBeRoy/taskipy"
 license=('MIT')
-depends=('python' 'python-toml' 'python-psutil' 'python-colorama')
-makedepends=('python-build' 'python-poetry' 'python-install')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('ad392ba5522560bfd42a5541d3e2ae5f512eb33c302ab9f3772ffc9c79ddefa72fc549af292e6f54c221def6e58e36be302194f3e1d50ba1feba2edfcdc5f11f')
+depends=('python-tomli' 'python-psutil' 'python-colorama')
+makedepends=('python-build' 'python-poetry' 'python-installer' 'python-wheel')
+# checkdepends=('python-parameterized' 'python-pytest')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/t/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha256sums=('112beaf21e3d5569950b99162a1de003fa885fabee9e450757a6b874be914877')
 
 build() {
-  cd "$_pkgname-$pkgver"
-
-  python \
-    -m build \
-    --wheel \
-    --skip-dependency-check \
-    --no-isolation
+	cd "$_pkgname-$pkgver"
+	python -m build --wheel --no-isolation --skip-dependency-check
 }
 
+# check() {
+# 	cd "$_pkgname-$pkgver"
+# 	PYTHONPATH="$PWD" pytest -x
+# }
+
 package() {
-  cd "$_pkgname-$pkgver"
-
-  python \
-    -m install \
-    --optimize=1 \
-    --destdir="$pkgdir" \
-    dist/*.whl
-
-  # python sucks
-  chmod 755 "$pkgdir"/usr/bin/*
-
-  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+	cd "$_pkgname-$pkgver"
+	python -m installer --destdir "$pkgdir" dist/*.whl
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -sv "$_site/$_pkgname-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
