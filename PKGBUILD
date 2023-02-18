@@ -2,7 +2,7 @@
 _target='compass-beta'
 _edition=' Beta'
 pkgname="mongodb-$_target"
-_pkgver='1.35.1-beta.3'
+_pkgver='1.35.1-beta.5'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - beta version'
@@ -22,7 +22,7 @@ source=(
 	'hadron-build.diff'
 	'fix-argv.diff'
 )
-sha512sums=('0bc0c596adbb7936664075744f78e9513560e28fce08bf3b8c16ad56dc026a2b5c3e9cd3fc3008846f857ea5052bba4a75a1ca3816b09940f224015209a3856c'
+sha512sums=('1aef825fea8e39ccbd6c2824730813b06457ea481854228f40f206045fa8dbf612cffef4b40c8915e37dfe58ed1df22e59d029b95ce929d2bdc8c5cf52994640'
             '18029ff1479cbacb413f7154d5ca7589855273c559ee15bb5b5006eed65b8edcb58fac64cc8deabd20c36e06f298dc4b7152f61391975d2a3ecb6351b787fae7'
             '1a2345b90196d3c856d0288d9406cfd667d0ebcce400e6886c7eba2825fa52d7813d45f2c375fcaf4e28d116b68107219e6f662b5bdbb12bf0e402ca61194cf7')
 
