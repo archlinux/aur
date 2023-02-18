@@ -1,6 +1,6 @@
 pkgbase = i2pd-git
 	pkgdesc = A full-featured C++ implementation of the I2P router (git version)
-	pkgver = 2.42.0.r1.ge2ef8822
+	pkgver = 2.46.0.r5.gce05cce3
 	pkgrel = 1
 	url = https://i2pd.website/
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = i2pd-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = boost
+	makedepends = check
 	depends = boost-libs
 	depends = libminiupnpc.so
 	depends = openssl

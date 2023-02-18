@@ -5,14 +5,14 @@
 # Contributor: DDoSolitary <DDoSolitary@gmail.com>
 
 pkgname=i2pd-git
-pkgver=2.42.0.r1.ge2ef8822
+pkgver=2.46.0.r5.gce05cce3
 pkgrel=1
 pkgdesc='A full-featured C++ implementation of the I2P router (git version)'
 arch=('x86_64')
 url='https://i2pd.website/'
 license=('BSD')
 depends=('boost-libs' 'libminiupnpc.so' 'openssl' 'zlib')
-makedepends=('git' 'cmake' 'boost')
+makedepends=('git' 'cmake' 'boost' 'check')
 provides=('i2pd' 'i2p-router')
 conflicts=('i2pd')
 backup=('etc/i2pd/i2pd.conf'
@@ -46,49 +46,50 @@ pkgver() {
 
 build() {
     cmake \
-        -B i2pd/build \
+        -B build \
         -S i2pd/build \
+        -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DBUILD_SHARED_LIBS:BOOL='ON' \
         -DWITH_UPNP:BOOL='ON' \
+        -DBUILD_TESTING:BOOL='ON' \
         -Wno-dev
-    make -C i2pd/build
+    cmake --build build
 }
 
 check() {
-    make -C i2pd/tests
+    ctest --test-dir build --output-on-failure
 }
 
 package() {
-    cd i2pd
-    make -C build DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake --install build
     
     # config
-    install -D -m644 contrib/{i2pd,tunnels}.conf -t "${pkgdir}/etc/i2pd"
+    install -D -m644 i2pd/contrib/{i2pd,tunnels}.conf -t "${pkgdir}/etc/i2pd"
     install -d -m755 "${pkgdir}/etc/i2pd/tunnels.d"
     
     # certificates
     install -d -m755 "${pkgdir}/usr/share/i2pd"
-    cp -dr --no-preserve='ownership' contrib/certificates "${pkgdir}/usr/share/i2pd"
+    cp -dr --no-preserve='ownership' i2pd/contrib/certificates "${pkgdir}/usr/share/i2pd"
     
     # systemd
-    install -D -m644 contrib/i2pd.service   -t "${pkgdir}/usr/lib/systemd/system"
-    install -D -m644 "${srcdir}/i2pd.sysusers" "${pkgdir}/usr/lib/sysusers.d/i2pd.conf"
-    install -D -m644 "${srcdir}/i2pd.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/i2pd.conf"
+    install -D -m644 i2pd/contrib/i2pd.service -t "${pkgdir}/usr/lib/systemd/system"
+    install -D -m644 i2pd.sysusers "${pkgdir}/usr/lib/sysusers.d/i2pd.conf"
+    install -D -m644 i2pd.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/i2pd.conf"
     
     # logrotate
-    install -D -m644 contrib/i2pd.logrotate "${pkgdir}/etc/logrotate.d/i2pd"
+    install -D -m644 i2pd/contrib/i2pd.logrotate "${pkgdir}/etc/logrotate.d/i2pd"
     
     # tunnels.d examples
-    install -D -m644 contrib/tunnels.d/{*.conf,README} -t "${pkgdir}/usr/share/doc/i2pd/tunnels.d"
+    install -D -m644 i2pd/contrib/tunnels.d/{*.conf,README} -t "${pkgdir}/usr/share/doc/i2pd/tunnels.d"
     
     # headers
-    install -D -m644 {i18n,libi2pd{,_client}}/*.h -t "${pkgdir}/usr/include/i2pd"
+    install -D -m644 i2pd/{i18n,libi2pd{,_client}}/*.h -t "${pkgdir}/usr/include/i2pd"
     
     # man page
-    install -D -m644 debian/i2pd.1 -t "${pkgdir}/usr/share/man/man1"
+    install -D -m644 i2pd/debian/i2pd.1 -t "${pkgdir}/usr/share/man/man1"
     
     # license
-    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 i2pd/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
