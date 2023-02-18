@@ -59,7 +59,7 @@ build() {
 		    --with-unifont-ttf=/usr/share/fonts/Unifont/Unifont.ttf\
 		    --with-unifont-csur-ttf=/usr/share/fonts/Unifont/Unifont_CSUR.ttf\
 		    --with-unifont-upper-ttf=/usr/share/fonts/Unifont/Unifont_Upper.ttf
-	make subdirs ocp ocp.hlp DESTDIR="$pkgdir"
+	make DESTDIR="$pkgdir" subdirs ocp ocp.hlp 
 }
 
 package_ocp-sdl2-git() {
@@ -67,13 +67,15 @@ package_ocp-sdl2-git() {
 	conflicts=('ocp' 'ocp-curses')
 	install=${_pkgbase}.install	
 	depends=('alsa-lib'
+		 'bzip2'
 		 'cjson'
 		 'freetype2'
 		 'hicolor-icon-theme'
 		 'ncurses'
 	   	 'sdl2'
 	 	 'shared-mime-info'
-	 	 'libancient'
+		 'zlib'
+		 'libancient'
 		 'libdiscid'
 		 'libjpeg-turbo' 
 	 	 'libpng'
@@ -94,9 +96,11 @@ package_ocp-git() {
 	provides=(${_pkgbase}=${pkgver}
 		  ${_pkgbase}-curses=${pkgver})
 	conflicts=('ocp-curses' 'ocp-sdl2')
-	depends=('alsa-lib' 
+	depends=('alsa-lib'
+	         'bzip2'
                  'cjson'
 		 'ncurses'
+		 'zlib'
 		 'libancient'
 		 'libdiscid')
 	cd $_pkgbase
