@@ -106,7 +106,7 @@ ac_add_options --enable-jack
 ac_add_options --disable-crashreporter
 ac_add_options --disable-updater
 ac_add_options --disable-tests
-#ac_add_options --disable-eme
+ac_add_options --disable-eme
 
 ac_add_options --with-app-basename=icecat
 ac_add_options --with-app-name=icecat
