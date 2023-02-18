@@ -1,32 +1,30 @@
 pkgbase = gedit-menubar
 	pkgdesc = GNOME Text Editor (Patched to show menubar)
-	pkgver = 44.0
+	pkgver = 44.2
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Gedit
 	arch = x86_64
 	groups = gnome
 	license = GPL
-	makedepends = yelp-tools
-	makedepends = vala
-	makedepends = gobject-introspection
-	makedepends = git
-	makedepends = gtk-doc
-	makedepends = meson
 	makedepends = appstream-glib
 	makedepends = desktop-file-utils
-	makedepends = libxml2
-	depends = gtksourceview4
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	makedepends = meson
+	makedepends = vala
+	makedepends = yelp-tools
+	depends = amtk
 	depends = gsettings-desktop-schemas
-	depends = libpeas
 	depends = gspell
+	depends = libpeas
 	depends = python-gobject
-	depends = dconf
 	depends = tepl
 	optdepends = gedit-plugins: Additional features
 	provides = gedit
 	conflicts = gedit-code-assistance<=3.16.0+4+gd19b879-1
 	conflicts = gedit
-	source = git+https://gitlab.gnome.org/GNOME/gedit.git#tag=44.0
+	source = git+https://gitlab.gnome.org/GNOME/gedit.git#tag=44.2
 	source = git+https://gitlab.gnome.org/GNOME/libgd.git
 	source = menubar.patch
 	sha256sums = SKIP

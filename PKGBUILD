@@ -4,16 +4,30 @@
 # match! alpha[0-9]*$
 
 pkgname=gedit-menubar
-pkgver=44.0
+pkgver=44.2
 pkgrel=1
 pkgdesc="GNOME Text Editor (Patched to show menubar)"
 url="https://wiki.gnome.org/Apps/Gedit"
 arch=(x86_64)
 license=(GPL)
-depends=(gtksourceview4 gsettings-desktop-schemas libpeas gspell python-gobject
-         dconf tepl)
-makedepends=(yelp-tools vala gobject-introspection git gtk-doc meson
-             appstream-glib desktop-file-utils libxml2)
+depends=(
+	amtk
+	gsettings-desktop-schemas
+	gspell
+	libpeas
+	python-gobject
+	tepl
+)
+makedepends=(
+	appstream-glib
+	desktop-file-utils
+	git
+	gobject-introspection
+	gtk-doc
+	meson
+	vala
+	yelp-tools
+)
 optdepends=('gedit-plugins: Additional features')
 conflicts=('gedit-code-assistance<=3.16.0+4+gd19b879-1' 'gedit')
 provides=('gedit')
@@ -51,5 +65,5 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }
