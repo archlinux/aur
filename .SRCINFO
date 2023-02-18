@@ -1,6 +1,6 @@
 pkgbase = libvirt-xen
 	pkgdesc = API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)
-	pkgver = 8.10.0
+	pkgver = 9.0.0
 	pkgrel = 1
 	url = https://libvirt.org/
 	arch = x86_64
@@ -41,7 +41,6 @@ pkgbase = libvirt-xen
 	optdepends = lvm2: Logical Volume Manager support
 	optdepends = open-iscsi: iSCSI support via iscsiadm
 	optdepends = swtpm: TPM emulator support
-	options = debug
 	backup = etc/libvirt/libvirt-admin.conf
 	backup = etc/libvirt/libvirt.conf
 	backup = etc/libvirt/libvirtd.conf
@@ -95,14 +94,14 @@ pkgbase = libvirt-xen
 	backup = etc/libvirt/libxl-lockd.conf
 	backup = etc/libvirt/virtxend.conf
 	backup = etc/logrotate.d/libvirtd.libxl
-	source = https://libvirt.org/sources/libvirt-8.10.0.tar.xz
-	source = https://libvirt.org/sources/libvirt-8.10.0.tar.xz.asc
+	source = https://libvirt.org/sources/libvirt-9.0.0.tar.xz
+	source = https://libvirt.org/sources/libvirt-9.0.0.tar.xz.asc
 	validpgpkeys = 453B65310595562855471199CA68BE8010084C9C
-	sha256sums = bb07b7b00f08f826dd4f623f8b233e4e8b221b8859bb5937ff45355f0ae29952
+	sha256sums = deca5cff1b7baac297bca9663907c61f71a47183371dc7ac019c107806d5435a
 	sha256sums = SKIP
 
 pkgname = libvirt-xen
-	provides = libvirt=8.10.0
+	provides = libvirt=9.0.0
 	provides = libvirt.so
 	provides = libvirt-admin.so
 	provides = libvirt-lxc.so
