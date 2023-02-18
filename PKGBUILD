@@ -2,29 +2,29 @@
 
 _pkgname=OpenMRac
 pkgname="${_pkgname,,}"
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='OpenMRac, a split-screen racing game'
 arch=('x86_64' 'aarch64')
 url="https://github.com/Franticware/${_pkgname}"
 license=('BSD')
-depends=('openmrac-data' 'sdl' 'sdl_image' 'openal')
+depends=('openmrac-data' 'sdl2' 'sdl2_image' 'openal' 'glm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('19fa7e74f4f09501c61ee79c72ae5ba09399f6001453ef3703087195db4e6f46')
+sha256sums=('f1af5baf644ba296ba7cd619315deceaa7ad743cd1d402f7e61f2debd51a1fad')
 conflicts=(${pkgname}-git)
 
 prepare() {
-	cd "${_pkgname}-${pkgver}/src"
+  cd "${_pkgname}-${pkgver}/src"
   mv Makefile.linux Makefile
 }
 
 build() {
-	cd "${_pkgname}-${pkgver}/src"
-	make
+  cd "${_pkgname}-${pkgver}/src"
+  make
 }
 
 package() {
-	cd "${_pkgname}-${pkgver}/src"
+  cd "${_pkgname}-${pkgver}/src"
   install -Dm755 ${pkgname} "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 ${pkgname}.ico "${pkgdir}/usr/share/pixmaps/${pkgname}.ico"
   install -Dm644 ${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
