@@ -1,6 +1,6 @@
 pkgbase = navidrome
 	pkgdesc = Modern Music Server and Streamer compatible with Subsonic/Airsonic
-	pkgver = 0.48.0
+	pkgver = 0.49.3
 	pkgrel = 1
 	url = https://www.navidrome.org
 	arch = x86_64
@@ -12,12 +12,12 @@ pkgbase = navidrome
 	depends = ffmpeg
 	depends = taglib
 	backup = etc/navidrome/navidrome.toml
-	source = navidrome-0.48.0.tar.gz::https://github.com/navidrome/navidrome/archive/refs/tags/v0.48.0.tar.gz
+	source = navidrome-0.49.3.tar.gz::https://github.com/navidrome/navidrome/archive/refs/tags/v0.49.3.tar.gz
 	source = navidrome.service
 	source = navidrome.toml
 	source = sysusers.conf
-	sha256sums = 2f596ceefcc40849554ad633d288ffd7fe1f0fe6aed7e79d03e54a5fb44b66d6
-	sha256sums = 1a155be78b109b5e6d18eaae5c35f1ff0f084d48e44ab5cf8e0a87c9d6bcd9fc
+	sha256sums = ab48eadeb74f64456b612655941bac4eb95a0f546bfee473baa316319fb4a17a
+	sha256sums = 950dda50114152a2e1fc7346429093cc61a6762106db2bd7906951856708a9f1
 	sha256sums = 23e62c707f3518f917e578979407cb26af2fd021fe88e580b920ccd05458ce13
 	sha256sums = ee74a732f807e314f97e22b907882d16d125512d6ee23a36251fde2b3b7e608c
 

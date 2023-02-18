@@ -1,6 +1,7 @@
 [Unit]
 Description=Navidrome Music Server and Streamer compatible with Subsonic/Airsonic
 After=remote-fs.target network.target
+AssertPathExists=/var/lib/navidrome
 
 [Install]
 WantedBy=multi-user.target
@@ -46,6 +47,6 @@ UMask=0066
 # /var/lib/navidrome.
 ProtectSystem=full
 
-# You can comment the following line if you don't have any media in /home/*.
+# You can uncomment the following line if you don't have any media in /home/*.
 # This will prevent navidrome from ever reading/writing anything there.
 ProtectHome=true
