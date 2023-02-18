@@ -2,7 +2,7 @@
 pkgname='lockbook-desktop'
 _pkgname="lockbook-desktop"
 pkgver=0.5.11
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'i686')
 url="https://github.com/lockbook/lockbook"
 pkgdesc="The best place to store and share thoughts."
@@ -28,6 +28,6 @@ build() {
 
 package() {
   install -D -m755 "$srcdir/lockbook/target/release/lockbook-egui" "$pkgdir/usr/bin/lockbook-desktop"
-  install -D -m644 "$srcdir/lockbook/graphics/SVGs/light-1.svg" "$pkgdir/usr/share/pixmaps/light-1.svg"
+  install -D -m644 "$srcdir/aur-lockbook-desktop/light-1.svg" "$pkgdir/usr/share/pixmaps/light-1.svg"
   install -D -m644 "$srcdir/aur-lockbook-desktop/lockbook-desktop.desktop" "$pkgdir/usr/share/applications/lockbook-desktop.desktop"
 }
