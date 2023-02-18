@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=v1.7.4108.r0.g0284c35f4
+pkgver=v1.7.4110.r0.gef31c733e
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -16,12 +16,6 @@ license=(
 )
 
 install=post.install
-
-OPTIONS+=(
-  epoch = 1
-)
-
-depends=('rapidyaml>=0.4')
 
 depends=(
   libaio
@@ -70,20 +64,19 @@ git+https://github.com/PCSX2/pcsx2.git
 
 prepare()
 {
-  cd $srcdir/pcsx2
+  cd pcsx2
   git submodule update --init --recursive
   git apply -3 "${srcdir}/0001-Fix-resources-Fix-CMake.patch"
 }
 
 pkgver()
 {
-  cd $srcdir/pcsx2
+  cd pcsx2
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build()
 {
-  cd $srcdir
   mkdir -p build
   cd build
 
@@ -110,11 +103,7 @@ build()
 package()
 {
     DESTDIR="${pkgdir}" cmake --install build
-
-    mkdir -p ${pkgdir}/usr/share/icons/hicolor/64x64/apps
-
-    cp ${srcdir}/pcsx2/pcsx2/Resources/AppIcon64.png ${pkgdir}/usr/share/icons/hicolor/64x64/apps/PCSX2.png
-
+    install -Dm644 pcsx2/pcsx2/Resources/AppIcon64.png "$pkgdir/usr/share/icons/hicolor/64x64/apps/PCSX2.png"
 }
 
 # vim: ts=2 sw=2 et:
