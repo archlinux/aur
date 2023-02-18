@@ -1,4 +1,4 @@
-pkgbase = kronos-git
+pkgbase = satori-kronos-git
 	pkgdesc = A Lightweight Terminal Music Player For Offline Listening
 	pkgver = 0.1.0.r87.3693586
 	pkgrel = 1
