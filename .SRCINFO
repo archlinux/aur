@@ -1,6 +1,6 @@
 pkgbase = satori-kronos-git
 	pkgdesc = A Lightweight Terminal Music Player For Offline Listening
-	pkgver = 0.1.0.r87.3693586
+	pkgver = 0.1.0.r88.64a4e7b
 	pkgrel = 1
 	url = https://github.com/TrevorSatori/kronos
 	arch = x86_64

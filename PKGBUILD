@@ -1,6 +1,6 @@
 # Maintainer: Trevor Satori <trevor@satoridigital.co>
 pkgname=satori-kronos-git 
-pkgver=0.1.0.r87.3693586
+pkgver=0.1.0.r88.64a4e7b
 pkgrel=1
 url="https://github.com/TrevorSatori/kronos.git"
 pkgdesc="A Lightweight Terminal Music Player For Offline Listening"
@@ -12,7 +12,7 @@ makedepends=('rust' 'cargo' 'git')
 provides=("${pkgname%-git}")
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
-
+name=kronos-git
 
 pkgver() {
 	cd $pkgname
@@ -24,5 +24,5 @@ build() {
 }
 
 package() {
-	install -Dm755 "target/release/${pkgname%-git}" -t "$pkgdir/usr/bin"
+	install -Dm755 "target/release/${name%-git}" -t "$pkgdir/usr/bin"
 }
