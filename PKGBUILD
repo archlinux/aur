@@ -4,7 +4,7 @@
 _pkgbase=ocp
 pkgname=('ocp' 'ocp-sdl2')
 pkgver=0.2.103
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Cubic Player"
 arch=('i686' 'x86_64')
 url="https://stian.cubic.org/project-ocp.php"
@@ -14,14 +14,15 @@ optdepends=('libvorbis: Vorbis codec support'
 	    'libmad: MPEG codec support'
 	    'flac: FLAC codec support')
 
-makedepends=('git'
-             'xa'
-	     'desktop-file-utils'
-	     'alsa-lib'  
-	     'sdl2'
-             'freetype2'
-	     'flac'
+makedepends=('alsa-libs'
 	     'cjson'
+	     'desktop-file-utils'
+	     'freetype2'
+	     'flac'
+	     'git'
+	     'ncurses'
+	     'sdl2'
+	     'xa'
 	     'libancient'
 	     'libdiscid' 
 	     'libmad'
@@ -69,12 +70,14 @@ package_ocp-sdl2() {
 		 'cjson'
 		 'freetype2'
 		 'hicolor-icon-theme'
+		 'ncurses'
 	   	 'sdl2'
 	 	 'shared-mime-info'
 	 	 'libancient'
 		 'libdiscid'
 		 'libjpeg-turbo' 
-	 	 'libpng')
+	 	 'libpng'
+		 'ttf-unifont')
 	cd $_pkgbase
 	./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core\
                     --without-update-desktop-database\
@@ -93,6 +96,7 @@ package_ocp() {
 	conflicts=('ocp-curses' 'ocp-sdl2')
 	depends=('alsa-lib' 
                  'cjson'
+		 'ncurses'
 		 'libancient'
 		 'libdiscid')
 	cd $_pkgbase
