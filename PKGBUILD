@@ -8,7 +8,7 @@
 __pkgname=firedragon
 pkgname=$__pkgname-unsigned-extensions
 _pkgname=FireDragon
-pkgver=109.0.1
+pkgver=110.0
 pkgrel=1
 pkgdesc="FireDragon modified to allow installation of unsigned extensions"
 arch=(x86_64 x86_64_v3 aarch64)
@@ -44,7 +44,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
   "librewolf-source::git+https://gitlab.com/librewolf-community/browser/source.git"
   "librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git"
   "cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git")
-sha256sums=('5e43fdfb3923ee3a7ae7bc91ef3377a3fc6f8a0c1b87436c19b29458b0d731d9'
+sha256sums=('d3882492190e4fdcfa142772cf35de5403effb011d24357b315d643ed9168a39'
             'SKIP'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
             'SKIP'
@@ -171,13 +171,19 @@ END
   # PGO improvements
   patch -Np1 -i "${_cachyos_patches_dir}"/gentoo/0016-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
 
+  # https://bugs.archlinux.org/task/76231
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1790496
+  # https://src.fedoraproject.org/rpms/firefox/blob/rawhide/f/libwebrtc-screen-cast-sync.patch
+  patch -Np1 -i "${_patches_dir}"/custom/libwebrtc-screen-cast-sync.patch
+
   # Remove some pre-installed addons that might be questionable
   patch -Np1 -i "${_librewolf_patches_dir}"/remove_addons.patch
 
   # KDE menu and unity menubar
-  patch -Np1 -i "${_librewolf_patches_dir}"/unity_kde/mozilla-kde.patch
-  patch -Np1 -i "${_librewolf_patches_dir}"/unity_kde/firefox-kde.patch
-  patch -Np1 -i "${_librewolf_patches_dir}"/unity_kde/unity-menubar.patch
+  patch -Np1 -i "${_cachyos_patches_dir}"/unity_kde/mozilla-kde.patch
+  patch -Np1 -i "${_cachyos_patches_dir}"/unity_kde/firefox-kde.patch
+  patch -Np1 -i "${_cachyos_patches_dir}"/unity_kde/unity-menubar.patch
+  patch -Np1 -i "${_cachyos_patches_dir}"/kde/mozilla-nongnome-proxies.patch
 
   # Disabling Pocket
   patch -Np1 -i "${_librewolf_patches_dir}"/sed-patches/disable-pocket.patch
@@ -232,11 +238,17 @@ END
   # Update handler links
   patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/handlers.patch
 
-  # Hide the annoying Firefox view feature introduced in 106
-  # patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/firefox-view.patch
+  # Remove unified extensions recommendations
+  patch -Np1 -i "${_librewolf_patches_dir}"/unified-extensions-dont-show-recommendations.patch
+
+  # RFP Performance API - should be merged in 111
+  patch -Np1 -i "${_librewolf_patches_dir}"/rfp-performance-api.patch
 
   # Fix telemetry removal, see https://gitlab.com/librewolf-community/browser/linux/-/merge_requests/17, for example
   patch -Np1 -i "${_librewolf_patches_dir}"/disable-data-reporting-at-compile-time.patch
+
+  # Hide Firefox view
+  patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/firefox-view.patch
 
   # Allows hiding the password manager (from the lw pref pane) / via a pref
   patch -Np1 -i "${_librewolf_patches_dir}"/hide-passwordmgr.patch
