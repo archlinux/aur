@@ -1,5 +1,5 @@
 pkgbase = ocp
-	pkgdesc = Open Cubic Player (GIT Version)
+	pkgdesc = Open Cubic Player
 	pkgver = 0.2.103
 	pkgrel = 1
 	url = https://stian.cubic.org/project-ocp.php
