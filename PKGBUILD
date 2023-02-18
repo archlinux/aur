@@ -1,7 +1,7 @@
 _name=plasma-workspace
 pkgname=${_name}-light
 pkgver=5.27.0
-pkgrel=1
+pkgrel=2
 pkgdesc='KDE Plasma Workspace (stripped from unnecessary dependencies)'
 arch=('x86_64')
 url='https://kde.org/plasma-desktop/'
@@ -11,22 +11,27 @@ conflicts=("${_name}")
 provides=("${_name}")
 
 depends=(
-    'knotifyconfig' 'ksystemstats' 'ktexteditor' 'libqalculate' 'kde-cli-tools'
-    'xorg-xrdb' 'xorg-xsetroot' 'kactivitymanagerd' 'xorg-xmessage' 'prison' 'kwin'
-    'kpeople' 'kactivities-stats' 'kquickcharts' 'kpipewire'
-    'accountsservice' 'qt5-tools'
+    'xorg-xrdb' 'xorg-xsetroot' 'xorg-xmessage'
+    'knotifyconfig' 'ksystemstats' 'ktexteditor'
+    'kactivitymanagerd' 'kactivities-stats'
+    'kwin' 'kpipewire' 'prison' 'accountsservice'
 )
 
-makedepends=('extra-cmake-modules' 'gpsd' 'plasma-wayland-protocols' 'wayland-protocols' 'kunitconversion')
+makedepends=(
+    'extra-cmake-modules' 'qt5-tools'
+    'plasma-wayland-protocols' 'wayland-protocols'
+    'kunitconversion' 'kpeople' 'libqalculate'
+)
 
 optdepends=(
     'plasma-workspace-wallpapers: additional wallpapers'
-    'gpsd: GPS based geolocation'
     'kdepim-addons: displaying PIM events in the calendar'
     'appmenu-gtk-module: global menu support for GTK2 and some GTK3 applications'
     'kio-extras: show thumbnails in wallpaper selection'
     'kio-fuse: provide KIO support to legacy applications'
     'iso-codes: translation of country names in digital clock applet'
+    'libqalculate: calculator for search/KRunner'
+    'kpeople: access to contacts'
 )
 
 backup=('etc/pam.d/kde')
