@@ -1,34 +1,54 @@
 pkgbase = ocp-git
 	pkgdesc = Open Cubic Player (GIT Version)
-	pkgver = 0.2.102.r2.0065417
+	pkgver = 0.2.102.r25.be056b7
 	pkgrel = 1
 	url = https://stian.cubic.org/project-ocp.php
-	install = ocp.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = xa
 	makedepends = desktop-file-utils
-	depends = hicolor-icon-theme
-	depends = libxxf86vm
-	depends = libxpm
-	depends = alsa-lib
-	depends = sdl2
-	depends = flac
-	depends = libvorbis
-	depends = libmad
-	depends = libjpeg-turbo
-	depends = libpng
-	depends = shared-mime-info
-	depends = freetype2
-	depends = ttf-unifont
-	depends = libdiscid
-	depends = cjson
-	depends = libancient
-	provides = ocp=0.2.102.r2.0065417
-	conflicts = ocp
+	makedepends = alsa-lib
+	makedepends = sdl2
+	makedepends = freetype2
+	makedepends = flac
+	makedepends = cjson
+	makedepends = libancient
+	makedepends = libdiscid
+	makedepends = libmad
+	makedepends = libjpeg-turbo
+	makedepends = libpng
+	makedepends = libvorbis
+	makedepends = ttf-unifont
+	optdepends = libvorbis: Vorbis codec support
+	optdepends = libmad: MPEG codec support
+	optdepends = flac: FLAC codec support
 	source = ocp::git+https://github.com/mywave82/opencubicplayer.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = ocp-git
+	depends = alsa-lib
+	depends = cjson
+	depends = libancient
+	depends = libdiscid
+	provides = ocp=0.2.102.r25.be056b7
+	provides = ocp-curses=0.2.102.r25.be056b7
+	conflicts = ocp-curses
+	conflicts = ocp-sdl2
+
+pkgname = ocp-sdl2-git
+	install = ocp.install
+	depends = alsa-lib
+	depends = cjson
+	depends = freetype2
+	depends = hicolor-icon-theme
+	depends = sdl2
+	depends = shared-mime-info
+	depends = libancient
+	depends = libdiscid
+	depends = libjpeg-turbo
+	depends = libpng
+	provides = ocp-sdl2=0.2.102.r25.be056b7
+	conflicts = ocp
+	conflicts = ocp-curses
