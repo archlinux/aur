@@ -1,0 +1,19 @@
+pkgbase = probe-bin
+	pkgdesc = YAML + JQ Based End-To-End API Testing.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/abhimanyu003/probe
+	license = MIT
+	conflicts = probe
+	provides = probe
+	arch = aarch64
+	source_aarch64 = https://github.com/abhimanyu003/probe/releases/download/v0.0.1/probe_0.0.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 008dfe879c7fa5859e5c1fd05878c24782f2e69cab7a2e0492fc4043f0190521
+	arch = i686
+	source_i686 = https://github.com/abhimanyu003/probe/releases/download/v0.0.1/probe_0.0.1_linux_386.tar.gz
+	sha256sums_i686 = b3da4e870c5bf2fe64cc91ad43f233a305bb785390e92c0b50017f0661c36612
+	arch = x86_64
+	source_x86_64 = https://github.com/abhimanyu003/probe/releases/download/v0.0.1/probe_0.0.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 1da032266f15c99e7f46ded8f8eb8eac4c95d7acf22ec23056960935d309d291
+	
+pkgname = probe-bin
