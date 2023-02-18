@@ -3,7 +3,7 @@
 
 pkgname=chatgpt-desktop-git
 _pkgname=ChatGPT
-pkgver=0.10.3+r3+g8a0b859
+pkgver=0.11.0+r15+gb36a4ce
 pkgrel=1
 pkgdesc="ChatGPT Desktop Application (Mac, Windows and Linux)"
 arch=('x86_64'
@@ -43,7 +43,8 @@ prepare() {
 
 build() {
 	cd "${_pkgname}"
-	cargo build --release --frozen
+	cargo build --release # --frozen removed because some csv failed to download althought everything required was already download
+	# will debug later
 }
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = chatgpt-desktop-git
 	pkgdesc = ChatGPT Desktop Application (Mac, Windows and Linux)
-	pkgver = 0.10.3+r3+g8a0b859
+	pkgver = 0.11.0+r15+gb36a4ce
 	pkgrel = 1
 	url = https://github.com/lencx/ChatGPT
 	arch = x86_64
