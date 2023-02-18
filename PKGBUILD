@@ -1,8 +1,8 @@
 # Maintainer: Yidaozhan Ya <yidaozhan_ya@outlook.com>
 _pkgname=linuxqq
 pkgname=linuxqq-nt-bwrap
-pkgver=3.0.0_571
-pkgrel=8
+pkgver=3.1.0_9332
+pkgrel=1
 pkgdesc="New Linux QQ based on Electron, with bubblewrap sandbox and some tweaks"
 arch=('x86_64' 'aarch64')
 url='https://im.qq.com/linuxqq/index.shtml'
@@ -21,11 +21,11 @@ source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/0186a650/QQ-v2.0.1-453_arm
                 "https://qqpatch.gtimg.cn/hotUpdate_new/release/linux-arm64/${pkgver//_/-}/${pkgver//_/-}.zip.zip" )  # 热更新补丁
 source=('start.sh' 'config.json' 'xdg-open.sh')
 sha256sums_x86_64=('e3aa15ff6ae089b655df3913c6020ca56726bd676995aaf29b313fbd0643ea42'  # 底包
-                   'bfebcd22346b32bce2a8f9e494898b336aa0fc9bd7065f085c7d281b98a740fe')  # 热更新补丁
+                   'd59e5d3092fcaf03c1e680daa4f292c895ad6d62867a597bea8650b2ab929ded')  # 热更新补丁
 sha256sums_aarch64=('70c286006dae10da06c191b5f0718d17d686a8ef792f6f72215734773f01498b'  # 底包
-                    'c25c6aab9a79781b290f70900af44ed58a3c17c96d1762db09059461eb6aec66')  # 热更新补丁
-sha256sums=('d4b5d55823da0a9c0b48987af0620ffb2a6d4275d83c11ddf8c411b1b0587053'  # start.sh
-            '82182e49c883e16c7ff38e4722c3950e2758b4342c51521147423026965196a9'  # config.json
+                    '89ea597bcce5167e79a544b3fe55f0e8d41f331c97e3036130f3fa2856b16fa9')  # 热更新补丁
+sha256sums=('ddf2fe80551ab39bce80d7c43a45a6490e36a1249c528693633dfb6721c6d82f'  # start.sh
+            '2eb04e0b226e0da87bfcbdafdce2f7f46362261892d2b1ca66479061ac960a20'  # config.json
             '78a573867355fb4c3e728d0c8ac0746d47fa7d64f90ee2b62ee9f0ccae095edb')  # xdg-open.sh
 
 package() {
