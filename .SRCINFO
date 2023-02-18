@@ -1,0 +1,14 @@
+pkgbase = hangar-bin
+	pkgdesc = mirror multi-arch container images & generate image-list for Rancher.
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/cnrancher/hangar
+	arch = x86_64
+	license = Apache
+	depends = docker
+	depends = docker-buildx
+	depends = skopeo
+	source = https://github.com/cnrancher/hangar/releases/download/v1.4.1/hangar-linux-amd64-v1.4.1
+	sha256sums = 7f3a46a23fde15ad2a9632ba01fb0b790a718aeb5364ceaeccdfa9bbc98957bf
+
+pkgname = hangar-bin
