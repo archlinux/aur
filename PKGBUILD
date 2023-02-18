@@ -2,7 +2,7 @@
 # from: git
 
 pkgname=tldr-sh
-pkgver=r98.1cc18d7
+pkgver=r100.d03a25a
 pkgrel=1
 pkgdesc="A fully-functional POSIX shell client for tldr."
 arch=(any)
