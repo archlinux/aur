@@ -72,7 +72,7 @@ build() {
   _ensure_local_nvm
   nvm use ${_node_version}
 
-  _electron_dist=/usr/lib/electron
+  _electron_dist=/usr/lib/electron21
   _electron_ver=$(cat ${_electron_dist}/version)
 
   # npm run build
