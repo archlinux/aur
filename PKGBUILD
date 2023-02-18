@@ -5,8 +5,8 @@
 # Based on: https://aur.archlinux.org/packages/simulide
 
 pkgname=simulide-bzr
-pkgver=1.0.1.r1316
-_realver=${pkgver//.r*/}
+pkgver=r1540
+#_realver=${pkgver//.r*/}
 pkgrel=1
 pkgdesc="Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers). Development version."
 arch=("x86_64")
@@ -28,17 +28,9 @@ depends=(
   "qt5-svg"
   "qt5-script"
   "qt5-tools"
-  "libelf>=0.181"
-)
-
-optdepends=(
-  "gpsim: needed for PIC simulation"
-  "simavr: needed for AVR simulation"
 )
 
 makedepends=(
-  "avr-libc"
-  "avr-gcc"
   "python-dulwich"
 )
 
@@ -68,8 +60,7 @@ package() {
 }
 
 pkgver() {
-  VERSION=$(grep -ohP '(?<=VERSION = \")(.*)(?=\")' "${srcdir}/${pkgname}/SimulIDE.pro")
   cd "${pkgname}"
   REVISON=$(bzr revno)
-  echo "${VERSION}.r${REVISON}"
+  echo "r${REVISON}"
 }

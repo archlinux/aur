@@ -1,12 +1,10 @@
 pkgbase = simulide-bzr
 	pkgdesc = Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers). Development version.
-	pkgver = 1.0.1.r1316
+	pkgver = r1540
 	pkgrel = 1
 	url = https://launchpad.net/simulide
 	arch = x86_64
 	license = GPL3
-	makedepends = avr-libc
-	makedepends = avr-gcc
 	makedepends = python-dulwich
 	depends = qt5-base>=5.15.1
 	depends = qt5-multimedia
@@ -14,9 +12,6 @@ pkgbase = simulide-bzr
 	depends = qt5-svg
 	depends = qt5-script
 	depends = qt5-tools
-	depends = libelf>=0.181
-	optdepends = gpsim: needed for PIC simulation
-	optdepends = simavr: needed for AVR simulation
 	provides = simulide
 	conflicts = simulide
 	source = simulide-bzr::bzr+https://launchpad.net/simulide/trunk
