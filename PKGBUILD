@@ -4,7 +4,7 @@
 
 pkgname=realvnc-vnc-server-6
 pkgver=6.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='VNC remote desktop server software by RealVNC'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://www.realvnc.com/'
@@ -12,7 +12,7 @@ license=('custom')
 depends=('libsm' 'libxtst' 'xorg-xauth')
 optdepends=('cups: Printer support')
 install='realvnc-vnc-server.install'
-conflicts=('tightvnc' 'tigervnc' 'turbovnc')
+conflicts=('tightvnc' 'tigervnc' 'turbovnc' 'realvnc-vnc-server')
 source_x86_64=("https://www.realvnc.com/download/file/vnc.files/VNC-Server-${pkgver}-Linux-x64.deb")
 source_i686=("https://www.realvnc.com/download/file/vnc.files/VNC-Server-${pkgver}-Linux-x86.deb")
 source_armv7h=("https://www.realvnc.com/download/file/vnc.files/VNC-Server-${pkgver}-Linux-ARM.deb")
