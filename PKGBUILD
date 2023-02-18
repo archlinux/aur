@@ -2,7 +2,7 @@
 
 name=woke
 pkgname=woke
-pkgver=0.18.2
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="Detect non-inclusive language in your source code."
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('go')
 conflicts=('woke-bin')
 source=("https://github.com/get-woke/woke/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("c0becedded5567d93f9e5275d706a0d9ddb6dee6f0138b5e2b494cb1e10eb240")
+sha256sums=("d17c7e4e846a409af14e65a001d2ddb1657fd82f562704e0c10ced4dadcfd31c")
 
 build() {
   cd $name-$pkgver
