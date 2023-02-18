@@ -1,24 +1,33 @@
 # Maintainer: Grzegorz Koperwas <admin@grzegorzkoperwas.site>
 pkgname=swww
-pkgver=0.7.1
-pkgrel=2
+pkgver=0.7.2
+pkgrel=0
 pkgdesc="Efficient animated wallpaper daemon for wayland, controlled at runtime."
 arch=('x86_64' 'aarch64')
 url="https://github.com/Horus645/swww"
 license=('GPL')
 depends=('gcc-libs' 'lz4' 'libxkbcommon')
-makedepends=('cargo')
+makedepends=('cargo' 'scdoc')
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Horus645/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 
 prepare() {
+    export RUSTUP_TOOLCHAIN=stable
     cd "$pkgname-$pkgver"
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
+
 build() {
   cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
   cargo build --release 
+  # manpages
+  ./doc/gen.sh
+  for page in $(ls ./doc/generated/*.1)
+  do 
+    gzip -f "$page"
+  done
 }
 
 package() {
@@ -29,8 +38,14 @@ package() {
   install -Dm644 "completions/swww.bash" "$pkgdir/usr/share/bash-completion/completions/swww"
   install -Dm644 "completions/swww.fish" "$pkgdir/usr/share/fish/vendor_completions.d/swww.fish"
   install -Dm644 "completions/_swww" "$pkgdir/usr/share/zsh/site-functions/_swww"
-
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+
+  # manpages
+  cd ./doc/generated 
+  for page in $(ls *.1.gz)
+  do 
+    install -Dm644 "$page" "$pkgdir/usr/share/man/man1/$page"
+  done
 }
-sha256sums=('efea61f80381334b8e97863d0a42925a0dd776430d2b8bd57de4d583bbafb918')
+sha256sums=('bb961577387aefd64b54090b3a7d0db5a393120edc24fe71d149e77fe132025c')
