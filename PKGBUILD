@@ -4,11 +4,12 @@
 _pkgname=gitchangelog
 pkgname=python-gitchangelog
 pkgver=3.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Creates a changelog from git log history."
 url="https://github.com/vaab/gitchangelog"
 license=("BSD")
 depends=('python')
+optdepends=('python-pystache')
 makedepends=('python-setuptools')
 arch=("x86_64")
 source=("git+https://github.com/vaab/${_pkgname}#tag=${pkgver}")

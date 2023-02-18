@@ -1,14 +1,14 @@
 pkgbase = python-gitchangelog
 	pkgdesc = Creates a changelog from git log history.
 	pkgver = 3.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vaab/gitchangelog
 	arch = x86_64
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
+	optdepends = python-pystache
 	source = git+https://github.com/vaab/gitchangelog#tag=3.0.4
 	md5sums = SKIP
 
 pkgname = python-gitchangelog
-
