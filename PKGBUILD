@@ -2,26 +2,25 @@
 
 _name=Ryujinx
 pkgname=ryujinx
-pkgver=1.1.614
-_commit=5f38086f9494a4ffbcb4b0ce4b7727ad8ac18b3e
-pkgrel=3
+pkgver=1.1.625
+_commit=6bf460e1041b969a453dc40ee6fb83164739bf9c
+pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 arch=(x86_64)
 url="https://github.com/Ryujinx/Ryujinx"
 license=('MIT')
 depends=('dotnet-runtime')
 makedepends=('dotnet-sdk' 'git')
-provides=($_name)
-conflicts=($_name)
+conflicts=(ryujinx-git)
 options=(!strip)
 source=("git+$url#commit=$_commit")
 b2sums=('SKIP')
 
 # pkgver() {
-#	cd $_name
-#	# changelog is $url/wiki/Changelog, needs python-html2text
-#	_commit_msg=$(git log -1 --pretty=%B | awk '{$NF=""}1') # remove PR number in parentheses
-#	html2text ../Changelog | grep -B 4 "${_commit_msg::length - 1}" | head -n 1 | awk '{print $2}'
+# 	cd $_name
+# 	# changelog is $url/wiki/Changelog, needs python-html2text
+# 	_commit_msg=$(git log -1 --pretty=%B | awk '{$NF=""}1') # remove PR number in parentheses
+# 	html2text ../Changelog | grep -B 4 "${_commit_msg::length - 1}" | head -n 1 | awk '{print $2}'
 # }
 
 build() {
