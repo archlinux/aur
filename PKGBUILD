@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=cemu
 pkgname=$_pkgname-git
-pkgver=2.0.22.r0.g058d11b4
+pkgver=2.0.26.r4.gdaf3ef0
 pkgrel=1
 pkgdesc="Nintendo Wii U emulator"
 arch=('x86_64')
@@ -31,7 +31,7 @@ makedepends=(
 	'openssl'
 	'rapidjson'
 	'sdl2'
-	'vulkan-headers>=1.3.225'
+	'vulkan-headers>=1:1.3.225'
 	'wayland'
 	'zarchive>=0.1.2'
 	'zlib'
@@ -50,7 +50,7 @@ b2sums=(
 
 pkgver() {
 	cd $_pkgname
-	git describe --abbrev=8 --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
