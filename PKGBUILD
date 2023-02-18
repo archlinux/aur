@@ -1,7 +1,7 @@
 # Maintainer: Andrej Radović <r.andrej@gmail.com>
 
 pkgname=kipart
-pkgver=1.0.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Python package for generating multi-unit schematic symbols for KiCad from a CSV file"
 url="https://github.com/devbisme/KiPart"
