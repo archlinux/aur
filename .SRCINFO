@@ -21,6 +21,7 @@ pkgbase = input-leap-git
 	makedepends = openssl
 	makedepends = avahi
 	makedepends = qt5-base
+	makedepends = qt5-tools
 	makedepends = curl
 	makedepends = libsm
 	makedepends = libice
@@ -59,6 +60,7 @@ pkgname = input-leap-git
 	depends = openssl
 	depends = avahi
 	depends = qt5-base
+	depends = qt5-tools
 	provides = input-leap=2.4.0+436+g47d94944
 	provides = barrier=2.4.0+436+g47d94944
 	conflicts = input-leap
