@@ -1,7 +1,7 @@
 pkgbase = python-jaxtyping
 	pkgdesc = Type annotations and runtime checking for shape and dtype of JAX arrays, and PyTrees.
 	pkgver = 0.2.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/jaxtyping
 	arch = any
 	groups = jax
@@ -9,6 +9,7 @@ pkgbase = python-jaxtyping
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-numpy
 	depends = python-typeguard
 	depends = python-typing_extensions
