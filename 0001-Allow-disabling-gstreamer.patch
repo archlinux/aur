@@ -1,27 +1,18 @@
-From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
-From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
-Date: Mon, 6 Jun 2022 00:29:08 +0200
-Subject: [PATCH] meson: Allow building with system orc
----
- meson.build | 2 +-
- meson_options.txt | 1 +
- 2 file changed, 2 insertions(+), 1 deletion(-)
-
 diff --git a/meson.build b/meson.build
-index 83eae5a482..31a12d7c7a 100644
+index 1c33e18084..8612d88e04 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -92,7 +92,7 @@ endif
+@@ -85,7 +85,7 @@ endif
  
  # Ordered list of subprojects (dict has no ordering guarantees)
  subprojects = [
--  ['gstreamer', {'build-hotdoc': true}],
-+  ['gstreamer', {'option': get_option('gstreamer'), 'build-hotdoc': true}],
+-  ['gstreamer', {'build-hotdoc': true, 'subproject_options': tools_option}],
++  ['gstreamer', {'option': get_option('gstreamer'), 'build-hotdoc': true, 'subproject_options': tools_option}],
    ['gst-plugins-base', {'option': get_option('base'), 'build-hotdoc': true}],
    ['gst-plugins-good', {'option': get_option('good'), 'build-hotdoc': true}],
    ['libnice', { 'option': get_option('libnice'), 'match_gst_version': false}],
 diff --git a/meson_options.txt b/meson_options.txt
-index 7a43f34430..522e6662a7 100644
+index 49c20a0705..66ff309b1f 100644
 --- a/meson_options.txt
 +++ b/meson_options.txt
 @@ -3,6 +3,7 @@ option('python', type : 'feature', value : 'auto')
@@ -32,3 +23,16 @@ index 7a43f34430..522e6662a7 100644
  option('good', type : 'feature', value : 'enabled')
  option('ugly', type : 'feature', value : 'auto')
  option('bad', type : 'feature', value : 'auto')
+diff --git a/meson.build b/meson.build
+index 8612d88e04..7fa8b5724d 100644
+--- a/meson.build
++++ b/meson.build
+@@ -162,7 +162,7 @@ foreach sp : subprojects
+     subproj = subproject(project_name, required: is_required, default_options: default_options)
+   endif
+ 
+-  if project_name == 'gst-plugins-base'
++  if project_name == 'gst-plugins-base' and not is_required.disabled()
+     gst_base_orc_req = subproj.get_variable('orc_req', '')
+     if gst_base_orc_req != orc_req
+       error('orc_req is "@0@" but it should be "@1@" from subprojects/gst-plugins-base/meson.build'

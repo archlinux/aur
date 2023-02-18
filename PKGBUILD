@@ -8,8 +8,8 @@ pkgname=(
     lib32-gst-plugins-bad-libs
     lib32-gst-plugins-bad
 )
-pkgver=1.20.5
-pkgrel=4
+pkgver=1.22.0
+pkgrel=1
 pkgdesc="Multimedia graph framework (32-bit)"
 url="https://gstreamer.freedesktop.org/"
 arch=(x86_64)
@@ -36,15 +36,13 @@ makedepends=(
 checkdepends=(xorg-server-xvfb)
 options=(!debug)
 source=(
-  "git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git#tag=$pkgver"
+  "git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git?signed#tag=$pkgver"
   0001-Allow-disabling-gstreamer.patch
   0002-HACK-meson-Disable-broken-tests.patch
-  0003-HACK-meson-Work-around-broken-detection-of-underscor.patch
 )
 sha256sums=('SKIP'
-            '79b4d76bdb1ccf05099eff677d72cdf9df50788261891be41065aca21b4ea8b6'
-            '11971a978e37fda3822f95fb61b59ba3ded6487066dc59fcbde7b72a3a9cfe70'
-            '79d3038a0ba0c3958ffa8b5aec8431336b372906c07c0c878c3767bec0acb46f')
+            '0cfce6cad2d9fc55fe36e4ca48ec8aa33106cc1f778ddf0ae47362d230e5539b'
+            '9fda6342fb1cbb29dab7ac46e277eee7272b119efee770e72e7d972621fc1e7e')
 validpgpkeys=(D637032E45B8C6585B9456565D2EEE6F6F349D7C) # Tim Müller <tim@gstreamer-foundation.org>
 
 pkgver() {
@@ -60,15 +58,16 @@ prepare() {
 
   # Disable broken tests
   git apply -3 ../0002-HACK-meson-Disable-broken-tests.patch
-
-  # Workaround broken detection of underscore prefixes
-  # https://github.com/mesonbuild/meson/issues/5482
-  git apply -3 ../0003-HACK-meson-Work-around-broken-detection-of-underscor.patch
 }
 
 _fix_pkgconf() {
   if $PKG_CONFIG --variable=libexecdir "$1" | grep -q /usr/libexec; then
+	mkdir -p pc
     sed 's@/libexec@/lib32@' "/usr/lib32/pkgconfig/$1.pc" > "$srcdir/pc/$1.pc"
+    case ":${PKG_CONFIG_PATH}:" in
+      *:"$srcdir/pc":*) return;;
+      *) export PKG_CONFIG_PATH="${PKG_CONFIG_PATH}${PKG_CONFIG_PATH+:}${srcdir}/pc";;
+    esac
   fi
 }
 
@@ -76,8 +75,6 @@ build() {
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export PKG_CONFIG='i686-pc-linux-gnu-pkg-config'
-  export PKG_CONFIG_PATH="$srcdir/pc"
-  mkdir -p pc
   _fix_pkgconf gstreamer-1.0
   _fix_pkgconf gstreamer-base-1.0
 
@@ -128,6 +125,7 @@ build() {
     -D gst-plugins-bad:wasapi=disabled
     -D gst-plugins-bad:opencv=disabled # due to no lib32-opencv
     -D gst-plugins-bad:msdk=disabled # due to no msdk (32-bit) support
+    -D gst-plugins-bad:qsv=disabled # due to no x86 support
     -D gst-plugins-bad:ldac=disabled # due to no lib32-libdac support
     -D gst-plugins-bad:microdns=disabled # due to no lib32-microdns support
     -D gst-plugins-bad:openaptx=disabled # due to no lib32-Xaptx support
@@ -135,8 +133,11 @@ build() {
     -D gst-plugins-bad:openmpt=disabled # due to no lib32-openmpt support
     -D gst-plugins-bad:qroverlay=disabled # due to no lib32-qrencode support
     -D gst-plugins-bad:svthevcenc=disabled # due to no lib32-svthevcenc support
+#    -D gst-plugins-bad:svtav1=disabled # due to no lib32-svt-av1
     -D gst-plugins-bad:wpe=disabled # due to no lib32-wpe support
     -D gst-plugins-bad:zxing=disabled # due to no lib32-zxing support
+    -D gst-plugins-bad:amfcodec=disabled # only support windows
+    -D gst-plugins-bad:directshow=disabled # only support windows
 
     -D gst-plugins-ugly:gobject-cast-checks=disabled
     -D gst-plugins-ugly:package-name="Arch Linux gst-plugins-ugly $pkgver-$pkgrel"

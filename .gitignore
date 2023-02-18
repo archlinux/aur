@@ -2,6 +2,5 @@
 !PKGBUILD
 !.SRCINFO
 !0002-HACK-meson-Disable-broken-tests.patch
-!0003-HACK-meson-Work-around-broken-detection-of-underscor.patch
 !.gitignore
 !0001-Allow-disabling-gstreamer.patch
