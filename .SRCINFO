@@ -1,12 +1,15 @@
 pkgbase = python-dolfin
-	pkgdesc = The Python interface of FEniCS, providing a consistent PSE (Problem Solving Environment) for ordinary and partial differential equations (stable).
+	pkgdesc = The Python interface of FEniCS
 	pkgver = 2019.1.0.post0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/fenics-project/dolfin
-	arch = i686
 	arch = x86_64
-	groups = fenics
 	license = LGPL3
+	checkdepends = openssh
+	checkdepends = python-pytest
+	checkdepends = python-decorator
+	makedepends = cmake
+	makedepends = python-mpi4py
 	depends = dolfin=2019.1.0.post0
 	depends = python-pkgconfig
 	depends = python-ply
@@ -14,9 +17,8 @@ pkgbase = python-dolfin
 	optdepends = petsc4py: interface with PETSc from python
 	optdepends = slepc4py: interface with SLEPc from python
 	optdepends = python-matplotlib: plotting support
-	conflicts = python-dolfin-git
 	options = !emptydirs
-	source = python-dolfin-2019.1.0.post0.tar.gz::https://bitbucket.org/fenics-project/dolfin/downloads/dolfin-2019.1.0.post0.tar.gz
-	sha256sums = 61abdcdb13684ba2a3ba4afb7ea6c7907aa0896a46439d3af7e8848483d4392f
+	source = dolfin-2019.1.0.post0.tar.gz::https://bitbucket.org/fenics-project/dolfin/downloads/dolfin-2019.1.0.post0.tar.gz
+	sha512sums = 0677245d2537d6e3b25bc8c47700a4d10690f35a49a544456456601505703e0b21ddec510f456146edef3d0beea366092a54a23ac29bd165c9c97cede6d6ca10
 
 pkgname = python-dolfin
