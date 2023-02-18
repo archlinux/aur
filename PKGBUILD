@@ -1,14 +1,14 @@
 # Maintainer: Tarn W. Burton <twburton@gmail.com>
 pkgname=clasp-cl-git
-pkgver=2.1.0_21_ge9ee50e55
+pkgver=2.1.0_124_gb0f9e4c33
 pkgrel=1
 pkgdesc="Bringing Common Lisp and C++ Together"
 arch=('x86_64')
 url="https://github.com/clasp-developers/clasp"
 license=('LGPL')
 options+=(!strip)
-depends=('boost' 'expat' 'fmt' 'gmp' 'libbsd' 'libedit' 'clang14'
-         'libelf' 'libffi' 'llvm14' 'ncurses' 'zlib')
+depends=('boost' 'expat' 'fmt' 'gmp' 'libbsd' 'libedit' 'clang'
+         'libelf' 'libffi' 'llvm' 'ncurses' 'zlib')
 makedepends=('git' 'sbcl' 'ninja' 'pkg-config')
 provides=('cclasp-boehm' 'common-lisp' 'clasp-cl')
 conflicts=('cando' 'cando-git' 'clasp-cl')
@@ -17,7 +17,7 @@ sha512sums=('SKIP')
 
 prepare() {
   cd clasp
-  ./koga --reproducible-build --broken-stdlib --package-path=$pkgdir -bin-path=/usr/bin/ --share-path=/usr/share/clasp/ --lib-path=/usr/lib/clasp/
+  ./koga --reproducible-build --package-path=$pkgdir -bin-path=/usr/bin/ --share-path=/usr/share/clasp/ --lib-path=/usr/lib/clasp/
   ./koga --skip-sync --update-version
 }
 
