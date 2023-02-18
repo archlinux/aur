@@ -2,7 +2,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppxlib'
 pkgname="ocaml-$_projectname"
-pkgver='0.29.0'
+pkgver='0.29.1'
 pkgrel='1'
 pkgdesc='Standard library for ppx rewriters'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ depends=('ocaml>=4.08.0' 'ocaml-base>=0.15.0' 'ocaml-compiler-libs-repackaged>=0
 makedepends=('dune>=2.7.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('34babcea63b952ca610b5b9841a7d045e3973870014968d5abfff259de8d0f383e79f799fa3522830e0da5a7ff02fa52764b7cad64c8ac0da5a37f8897314c80')
+sha512sums=('9bfd52709a63399ff35697b442de6818e2a61b9a2ccf33638f2da6295e3e034e2ae6108a2b8567402e80d928636cdee1572cc14d228a47fbda50625219e411f9')
 
 _sourcedirectory="$_projectname-$pkgver"
 
