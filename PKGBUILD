@@ -3,23 +3,23 @@
 _pkgname=OpenMRac-data
 _pkgname2=${_pkgname%-*}
 pkgname="${_pkgname,,}"
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc='Data for OpenMRac'
 arch=('x86_64' 'aarch64')
-url="https://github.com/Franticware/${_pkgname}"
+url="${pkgname}-${pkgver}.tar.gz::https://github.com/Franticware/${_pkgname}"
 license=('CC0')
 makedepends=('sox')
 depends=('gsm')
 source=("${pkgname}-${pkgver}::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('16e2f4c8cb3a499a6738de6d8dc384628297677734761fb571e3cd83b93dc0f3')
+sha256sums=('4e47ea2c9f2090af5e0085a67b0b360e449d531a3539dd4e7313449d79066356')
 
 build() {
-	cd "${_pkgname}-${pkgver}"
-	make
+  cd "${_pkgname}-${pkgver}"
+  make
 }
 
 package() {
-	cd "${_pkgname}-${pkgver}"
+  cd "${_pkgname}-${pkgver}"
   install -Dm644 "${_pkgname2,,}.dat" "${pkgdir}/usr/share/${_pkgname2,,}/${_pkgname2,,}.dat"
 }
