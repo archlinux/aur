@@ -7,7 +7,7 @@ pkgbase = stardict-tr-2011
 	license = custom:public domain
 	optdepends = stardict: view the dictionary
 	optdepends = sdcv: view the dictionary in CLI
-	source = https://github.com/kunamech/stardict-con/raw/master/dist/guncel-turkce-sozluk_turk-dil-kurumu-2011/stardict-guncel-turkce-sozluk_turk-dil-kurumu-2011.tar.gz
+	source = https://github.com/logoskosmos/stardict-con/raw/master/dist/guncel-turkce-sozluk_turk-dil-kurumu-2011/stardict-guncel-turkce-sozluk_turk-dil-kurumu-2011.tar.gz
 	md5sums = 1647f6ddf7a42b16253f2bb2fba4bb7d
 
 pkgname = stardict-tr-2011
