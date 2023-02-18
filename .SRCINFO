@@ -1,6 +1,6 @@
 pkgbase = r-rsqlite
 	pkgdesc = SQLite Interface for R
-	pkgver = 2.2.20
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=RSQLite
 	arch = i686
@@ -9,13 +9,13 @@ pkgbase = r-rsqlite
 	checkdepends = r-dbitest
 	checkdepends = r-testthat
 	makedepends = boost
+	makedepends = r-cpp11
 	makedepends = r-plogr
 	depends = r-bit64
 	depends = r-blob
 	depends = r-dbi
 	depends = r-memoise
 	depends = r-pkgconfig
-	depends = r-rcpp
 	depends = sqlite
 	optdepends = r-callr
 	optdepends = r-dbitest
@@ -29,7 +29,7 @@ pkgbase = r-rsqlite
 	optdepends = r-testthat
 	optdepends = r-withr
 	optdepends = r-xml2
-	source = https://cran.r-project.org/src/contrib/RSQLite_2.2.20.tar.gz
-	sha256sums = 52b5d572dcecca59e4c06d3d3dfdf4159dae83e1d7d34bcf97958ee7c5cba7ce
+	source = https://cran.r-project.org/src/contrib/RSQLite_2.3.0.tar.gz
+	sha256sums = 442e19a1d08ed072e795e2c968cd7e9e2cf9e1a7412bf6b30d21d34ffe175d33
 
 pkgname = r-rsqlite

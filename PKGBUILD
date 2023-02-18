@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _cranname=RSQLite
-_cranver=2.2.20
+_cranver=2.3.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -15,10 +15,9 @@ depends=(
     r-dbi
     r-memoise
     r-pkgconfig
-    r-rcpp
     sqlite
 )
-makedepends=(boost r-plogr)
+makedepends=(boost r-cpp11 r-plogr)
 checkdepends=(r-dbitest r-testthat)
 optdepends=(
     r-callr
@@ -35,7 +34,7 @@ optdepends=(
     r-xml2
 )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('52b5d572dcecca59e4c06d3d3dfdf4159dae83e1d7d34bcf97958ee7c5cba7ce')
+sha256sums=('442e19a1d08ed072e795e2c968cd7e9e2cf9e1a7412bf6b30d21d34ffe175d33')
 
 prepare() {
   cd "${_cranname}"
