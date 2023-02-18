@@ -1,4 +1,5 @@
-# Maintainer: Chih-Hsuan Yen <base64_decode("eWFuMTIxMjUgQVQgYXJjaGxpbnV4IERPVCBvcmc=")>
+# Maintainer: Lahfa Samy <akechishiro-aur@lahfa.xyz>
+# Contributor: Chih-Hsuan Yen <base64_decode("eWFuMTIxMjUgQVQgYXJjaGxpbnV4IERPVCBvcmc=")>
 # Forked from aur/barrier-git
 # Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 
