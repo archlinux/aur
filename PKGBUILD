@@ -4,8 +4,8 @@
 # from: git
 
 pkgname=anbox-git
-pkgver=r1364.7a0bee7
-pkgrel=2
+pkgver=r1366.ddf4c57
+pkgrel=1
 epoch=1
 arch=('x86_64')
 url="http://anbox.io/"
