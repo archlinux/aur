@@ -1,6 +1,6 @@
 # Maintainer: Daniel Wilhelm <concat(shield, wed) @ outlook.com>
 pkgname=easytaxag
-pkgver=2022.1.1
+pkgver=2022.1.2
 pkgrel=1
 pkgdesc="EasyTax Applikation zur Steuererklärung 2022 für den Kanton Aargau"
 arch=('any')
@@ -23,7 +23,7 @@ source=(
 )
 
 sha256sums=(
-  '0a6c7bcbc8179364da3b4b6772a17b7296b5687a1612e93501ccb3f7c4a99cd4'
+  '4fd2a2015c2ec5b573319f97790158e9d96f690f539fc155e06220fb35999651'
   '15671aacfbf5975c133847e531f0796bb97773946d6ca5cd7cee78b5354ee1b5'
   '4341d0b441118509ec21539aed95e2a1ac33c88deba0a341af075db114cca8bd'
 )
