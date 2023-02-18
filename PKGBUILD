@@ -1,7 +1,7 @@
 _name=kio
 pkgname=${_name}-light
 pkgver=5.103.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Resource and network access abstraction (stripped from unnecessary dependencies)'
 arch=('x86_64')
 url='https://community.kde.org/Frameworks'
@@ -13,7 +13,7 @@ depends=('solid' 'kjobwidgets' 'kbookmarks' 'libxslt' 'ktextwidgets' 'kconfig' '
 makedepends=('extra-cmake-modules' 'qt5-tools')
 
 optdepends=(
-    'kio-extras: extra protocols support (sftp, fish and more)' 'kdoctools: for the help kioslave'
+    'kio-extras: extra protocols support (sftp, fish and more)'
     'kio-fuse: to mount remote filesystems via FUSE'
     'kded: proxy management and cookie storage'
 )
