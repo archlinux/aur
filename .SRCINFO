@@ -1,21 +1,20 @@
 pkgbase = jflap-beta
 	pkgdesc = Software for learning the basic concepts of Formal Languages and Automata Theory, latest version with custom SVG icon and GTK theming.
-	pkgver = 8.0
-	pkgrel = 3
-	url = http://www.jflap.org/
+	pkgver = 7.1
+	pkgrel = 4
+	url = https://jflap.org/jflaptmp/
 	install = jflap.install
 	arch = any
 	license = CCPL
 	depends = java-runtime
-	noextract = JFLAP8_beta.jar, JFLAP.jar
-	source = http://www.jflap.org/jflaptmp/jan24-15/JFLAP8_beta.jar
+	noextract = JFLAP7.1.jar, JFLAP.jar
+	source = https://jflap.org/jflaptmp/july27-18/JFLAP7.1.jar
 	source = jflap-beta.sh
 	source = jflap-beta.desktop
 	source = swyter-jflap-icon.svg
-	md5sums = 61f817d40e813176dc09b4aa0f5d6370
+	md5sums = 25a862c1dd2f07ffdb0ad602ab3ae2a0
 	md5sums = 2fc85ec1b403128a6e806ee42ecd3f51
-	md5sums = d492591086c0d565bebaa5621777aa58
+	md5sums = 6e3534e28f17b79f99e59afca71bc29c
 	md5sums = 6925236e7c32342045a7ad1b31984cfb
 
 pkgname = jflap-beta
-
