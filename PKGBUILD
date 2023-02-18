@@ -3,7 +3,7 @@
 _pkgname=flake8-commas
 pkgname=python-$_pkgname
 
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Flake8 extension for enforcing trailing commas in python"
 
@@ -11,10 +11,10 @@ url='https://github.com/PyCQA/flake8-commas'
 arch=('any')
 license=('MIT')
 
-depends=('python')
+depends=('python' 'python-setuptools')
 
 source=("https://github.com/PyCQA/$_pkgname/archive/$pkgver.tar.gz")
-sha512sums=('92c352aa6e85b18b6f4fa53c92291e206d94fb83ea6284e48a663fd1969bb45a0b72b2a5d3bd5d36bd296055dfd4fdd1875f4eddf9534c785f07dccc763f0f21')
+sha512sums=('beec3bd687c90dafbe88702218dc56bc7a8adfcd7f597d96a1c350850298593cd5062243e75d9bae6b7476be8f28ff09b7f729d7d818c7250a8bf61cc20e7d08')
 
 package() {
     cd "$_pkgname-$pkgver"
