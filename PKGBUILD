@@ -1,7 +1,7 @@
 # Maintainer: Shohei Maruyama <cheat.sc.linux@outlook.com>
 
 pkgname='turbo'
-pkgver=1.7.4
+pkgver=1.8.1
 pkgrel=1
 pkgdesc='Incremental bundler and build system optimized for JavaScript and TypeScript, written in Rust – including Turbopack and Turborepo.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('turbopack' 'turborepo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vercel/turbo/archive/refs/tags/v${pkgver}.tar.gz")
 depends=()
 makedepends=('cargo-nightly' 'protobuf' 'protoc-gen-go' 'protoc-gen-go-grpc' 'go')
-sha256sums=('9dd01394bf2ed456af10a9b9fa7f6007be0c0a817deefe4d02aa0c0042b70cd5')
+sha256sums=('cd0fa7e38bcbb9ad240982ed769dcd55be0ae1444d3cbd6eef414eb35caf263b')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
