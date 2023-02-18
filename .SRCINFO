@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-uvwasi
 	pkgdesc = WASI syscall API built atop libuv (mingw-w64)
 	pkgver = 0.0.14
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/nodejs/uvwasi
 	arch = any
 	license = MIT

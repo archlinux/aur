@@ -3,7 +3,7 @@
 pkgname=mingw-w64-uvwasi
 _pkgname=uvwasi
 pkgver=0.0.14
-pkgrel=3
+pkgrel=4
 pkgdesc="WASI syscall API built atop libuv (mingw-w64)"
 arch=('any')
 url="https://github.com/nodejs/uvwasi"
@@ -30,6 +30,7 @@ build() {
     ${_arch}-cmake -B . -S .. \
 	-DWITH_SYSTEM_LIBUV=1 \
 	-DCMAKE_INSTALL_INCLUDEDIR:PATH=include \
+	-DCMAKE_INSTALL_BINDIR:PATH=bin \
 	-DUVWASI_BUILD_TESTS=0
     make
     popd
@@ -40,7 +41,7 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/${_pkgname}-${pkgver}/build-${_arch}"
     make DESTDIR="${pkgdir}" install
-    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/lib/*.dll
-    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+    ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
+    ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
   done
 }
