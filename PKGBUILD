@@ -25,7 +25,7 @@ _dict=(alt-cannadic
 pkgbase=mozc-ut-full
 pkgname=("$pkgbase-common" "ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.28.5008.102.20230115
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
@@ -58,13 +58,13 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '53e45c34f76b9202fb4afef985b442b9c25c8ffcaf004e0fa848a9bd85f9b413afc1feee3789f9b9802f0288137e54caa9929ace94561799e3d5c1f283d4ec72'
+            'e9ec9d604152c939bae001f21db35e2c775fa21b784e4ac17340c86a3dd763efd476487e8b0890f636a6064a8702bc5ac4448aacaba90412d8bd933bf73edced'
             '30019a9ce73456046f67edd6fe8f4661bd9a8e9ca201f3bdf22d2fa70dad9544bd595a8820fbed402a0709809d02cabbdea9dc79ee1f5bf30f8ef722ba4a2c17'
             '8ce42d2eb8bda0e79dbe97467621d48615d6cf0296c99d4d99a4dfc755753d6c99392606a0dc94c9472a23d72feb1c8179d0baf601f01a0e85938125887935b2'
             '33beeb84c5fe7ff8717e2e7e8650f2b33a1920564e363776ff357b94c6eb4f9b8d7c34decb8a3549075a1cc41a2a8d406cd2b07f34cdf5cfe3491cfedf2312d5'
             '990525bad91b47c39775a407f07c2ab00610b9380e0dae200e27665ae7c558885ffe4d7a8666813faf59fc9280e57b666c1edf328e03fbd6492357e25899ce4e'
-            'af436f5795abab05392456cf489ced282c268d1345095a6e414f47f440b899638aec482a862c1b6c7d331ab724a0e9c02165dfac4bc61d11f11858a0326cf0da'
-            '6c19befc6ad34d4924d1fb9f00704337274b19a8c34dc1124167f5c57d3c50d89d2f7382aeadb19a076c13d5e4ba5079f57b488854a6ad80df08e429c93ddb2c'
+            'c2fcc1f0ad25caebacf5d1c924dfb067a9da472000ad45036740256f2bf08a0ff8d28c1787f0f70c2f09a5de9fc85c2afbeeb3164254ace9442dd455db3b00e1'
+            '5bb7274238f163aab469754cc92f881933da396a2400b86715adf28e2b2fa4ec0ed4f4d96a65ac4c7c32ea85457e254dc0dc4c1507f07a5466f17c88c0c50d59'
             '5fc21d5d60fb504eb8474d1b72082c9d14c8864ffc4fa77e157219d2504ebd18778c4f268f12798b2cf03980b9c3bf1c39dfc5a3e63abf929bf586de1375ebb7'
             'dd2ff7e4ee3e6ef4ffc415a506ceb4a2f47976be8afda6bdb60a2830890e8b09c6c456b8ac67aa6aa8327bf0a11fb22039a80621e4cbbb145099b86ef87d7359')
 
@@ -76,15 +76,14 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/mozc" || exit
-  git submodule init
-  git config submodule.src/third_party/abseil-cpp.url "$srcdir/abseil-cpp"
-  git config submodule.src/third_party/breakpad.url "$srcdir/breakpad"
-  git config submodule.src/third_party/gtest.url "$srcdir/googletest"
-  git config submodule.src/third_party/gyp.url "$srcdir/gyp"
-  git config submodule.src/third_party/japanese_usage_dictionary.url "$srcdir/japanese-usage-dictionary"
-  git config submodule.src/third_party/jsoncpp.url "$srcdir/jsoncpp"
-  git config submodule.src/third_party/protobuf.url "$srcdir/protobuf"
-  git -c protocol.file.allow=always submodule update --init --recursive
+  git config -f .gitmodules submodule.src/third_party/abseil-cpp.url "$srcdir/abseil-cpp"
+  git config -f .gitmodules submodule.src/third_party/breakpad.url "$srcdir/breakpad"
+  git config -f .gitmodules submodule.src/third_party/gtest.url "$srcdir/googletest"
+  git config -f .gitmodules submodule.src/third_party/gyp.url "$srcdir/gyp"
+  git config -f .gitmodules submodule.src/third_party/japanese_usage_dictionary.url "$srcdir/japanese-usage-dictionary"
+  git config -f .gitmodules submodule.src/third_party/jsoncpp.url "$srcdir/jsoncpp"
+  git config -f .gitmodules submodule.src/third_party/protobuf.url "$srcdir/protobuf"
+  git -c protocol.file.allow=always submodule update --init
 
   cd src || exit
   echo 'Generating zip code seed...'
@@ -134,11 +133,10 @@ build() {
   cd mozc/src || exit
 
   _targets="unix/fcitx5:fcitx5-mozc.so server:mozc_server gui/tool:mozc_tool renderer:mozc_renderer unix/ibus:ibus_mozc unix/emacs:mozc_emacs_helper"
-  _options="-c opt --copt=-fPIC --config oss_linux"
 
   export JAVA_HOME='/usr/lib/jvm/java-11-openjdk/'
   export QT_BASE_PATH=/usr/include/qt
-  bazel build "$_targets" "$_options"
+  bazel build --copt=-fPIC --compilation_mode opt --config oss_linux $_targets
 
   # Extract license part of mozc
   head -n 29 server/mozc_server.cc > LICENSE
