@@ -1,38 +1,43 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=pika-backup
-pkgver=0.4.2
+pkgver=0.5.0
 pkgrel=1
 epoch=1
-pkgdesc="Simple backups based on borg"
+pkgdesc="Keep your data safe"
 arch=('x86_64' 'aarch64')
 url="https://apps.gnome.org/app/org.gnome.World.PikaBackup"
-license=('GPL')
+license=('GPL3')
 depends=('borg' 'libadwaita' 'libsecret' 'python-llfuse')
-makedepends=('cargo' 'itstool' 'meson')
+makedepends=('cargo' 'git' 'itstool' 'meson')
 checkdepends=('appstream-glib')
 #checkdepends+=('xorg-server-xvfb')
-source=("https://gitlab.gnome.org/World/pika-backup/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz"
-        'remove-install_script.patch')
-sha256sums=('21d4ae041b7a923a87e091e5232c696b10b17a65d318aaa6de8342218f9238e0'
-            'b03e99403c43d82c0257d652f516321b024a9f1abedbdb11ae2d06f8e767994c')
+_commit=e8220017eb4064f2935d5a0eab882689b12c15a3  # tags/v0.5.0^0
+source=("git+https://gitlab.gnome.org/World/pika-backup.git#commit=$_commit")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/$pkgname"
+  git describe --tags | sed 's/^v//;s/-/+/g'
+}
 
 prepare() {
-  cd "$pkgname-v$pkgver"
-
-  # Disable update-desktop-database & gtk-update-icon-cache
-  patch -Np1 -i ../remove-install_script.patch
-
+  cd "$srcdir/$pkgname"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
+
+  # Remove single process limit since we're not running the tests
+  sed -i '/codegen-units/d' Cargo.toml
 }
 
 build() {
+  cd "$srcdir/$pkgname"
   export RUSTUP_TOOLCHAIN=stable
-  arch-meson "$pkgname-v$pkgver" build
+  arch-meson . build
   meson compile -C build
 }
 
 check() {
+  cd "$srcdir/$pkgname"
 
   # cargo-test fails
 #  export RUSTUP_TOOLCHAIN=stable
@@ -45,5 +50,6 @@ check() {
 }
 
 package() {
+  cd "$srcdir/$pkgname"
   meson install -C build --destdir "$pkgdir"
 }

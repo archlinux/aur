@@ -1,23 +1,22 @@
 pkgbase = pika-backup
-	pkgdesc = Simple backups based on borg
-	pkgver = 0.4.2
+	pkgdesc = Keep your data safe
+	pkgver = 0.5.0
 	pkgrel = 1
 	epoch = 1
 	url = https://apps.gnome.org/app/org.gnome.World.PikaBackup
 	arch = x86_64
 	arch = aarch64
-	license = GPL
+	license = GPL3
 	checkdepends = appstream-glib
 	makedepends = cargo
+	makedepends = git
 	makedepends = itstool
 	makedepends = meson
 	depends = borg
 	depends = libadwaita
 	depends = libsecret
 	depends = python-llfuse
-	source = https://gitlab.gnome.org/World/pika-backup/-/archive/v0.4.2/pika-backup-v0.4.2.tar.gz
-	source = remove-install_script.patch
-	sha256sums = 21d4ae041b7a923a87e091e5232c696b10b17a65d318aaa6de8342218f9238e0
-	sha256sums = b03e99403c43d82c0257d652f516321b024a9f1abedbdb11ae2d06f8e767994c
+	source = git+https://gitlab.gnome.org/World/pika-backup.git#commit=e8220017eb4064f2935d5a0eab882689b12c15a3
+	sha256sums = SKIP
 
 pkgname = pika-backup
