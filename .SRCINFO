@@ -1,7 +1,7 @@
 pkgbase = python-jax
 	pkgdesc = Differentiate, compile, and transform Numpy code.
 	pkgver = 0.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/jax/
 	arch = any
 	groups = jax
@@ -9,6 +9,7 @@ pkgbase = python-jax
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-absl
 	depends = python-jaxlib
 	depends = python-numpy>=1.20
