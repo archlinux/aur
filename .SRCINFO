@@ -1,15 +1,16 @@
 pkgbase = jinx
 	pkgdesc = A meta-build-system for building OS distributions
-	pkgver = 0.0.30
+	pkgver = 0.0.31
 	pkgrel = 1
 	url = https://github.com/mintsuki/jinx
 	arch = any
 	license = BSD
 	depends = bash
+	depends = findutils
 	depends = libarchive
 	depends = git
 	depends = curl
-	source = jinx-0.0.30.tar.gz::https://github.com/mintsuki/jinx/archive/refs/tags/v0.0.30.tar.gz
-	b2sums = 51fe91c7725781efcc9133fcba503cbd448aa4fb3a80f516916f0ffbc8056862a3eeb300228bea12bf1a2b769129650328c6953fcf86ff2c69c584d2812bde85
+	source = jinx-0.0.31.tar.gz::https://github.com/mintsuki/jinx/archive/refs/tags/v0.0.31.tar.gz
+	b2sums = 12c1e4e83e91b06d4f1c0a417bbe32d902a06a8848560c302469d08c710c0b91d724cb5f4cb22d5b21c27f7dc049a319a87f3a4ec27826ef511264024c1667ab
 
 pkgname = jinx
