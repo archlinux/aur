@@ -5,7 +5,7 @@
 
 # Maintainer: Leo <i@setuid0.dev>
 pkgname=qbittorrent-enhanced-qt5
-pkgver=4.5.0.10
+pkgver=4.5.1.10
 pkgrel=1
 epoch=
 pkgdesc="A bittorrent client powered by C++, Qt and the good libtorrent library (Enhanced Edition), Built against Qt5"
@@ -30,7 +30,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-	'8126a54815bd9b323c9fdfb775cceed5911ed660078d83227d2f31de0983b6a0'
+	'97b459e0e4f51f5a8fbd32baeb2f3a24a857893146c4e64381cbdfd2301c06a6'
 	'SKIP'
 )
 
