@@ -1,0 +1,13 @@
+pkgbase = pass-context
+	pkgdesc = A pass extension to easily switch between pass contexts
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://gitlab.com/onemoresuza-pass/pass-context
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = pass
+	source = pass-context-0.4.3.tar.gz::https://gitlab.com/api/v4/projects/43562293/packages/generic/pass-context/0.4.3/pass-context-0.4.3.tar.gz
+	sha512sums = 3b1a40d182cdc69106bcc5c95b4044052c38d4e0ad8627f4c86607f406a00fe415643a29caed870e27bca37dc34707eee546ce3c390764dd42be7f36c67a8c27
+
+pkgname = pass-context
