@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
 pkgname=bkmr
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='Ultrafast Bookmark Manager and Launcher'
 url='https://github.com/sysid/bkmr'
@@ -10,14 +10,11 @@ arch=('x86_64' 'i686' 'arm' 'aarch64')
 depends=('gcc-libs' 'openssl' 'sqlite')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sysid/bkmr/archive/refs/tags/v$pkgver.tar.gz"
-        0001-makepkg-Fix-Cargo.toml.patch
         Cargo.lock)
-sha256sums=('228e9c5acb554ad24fcaf3f78a9e8ce1955f34a646f56133f7d8c2919ed9d4c7'
-            '207f34b092c8a864cecfb4bfe813ebd929221fe0a6062fdb95c8fcce63788061'
-            'aaadf2e0d11fa731da18d32d2c317155e1b13291783c57ee9b1565360ed21cde')
-b2sums=('cbae8dba39de1152eda52392fc6f81b37770752d8c49b44ccebef4a710db3ae9f668ff453aec5989e0e4b0b11661cbdb867cba274cb43b1b2f1c796fdf9196a2'
-        '6a6f5b7833963956fe45f37dc48d3a15824df33d46f7e248b0780bcf4cc65302e29cddafbe56ea3d7de575e468a762e53f112bc1ef4bdcf0d0f122655e727d66'
-        '2b8111de1ef659d4a522ebcdfc1533d390715110fe502324dd7c82bc5ae0817c45b321e45b75549ffeb7361ad5a1dbe868eaba41a2f45f629c283a077c50e5ae')
+sha256sums=('78f362d45e614bae09f7a9acb0a1fc91cd8ccec32b2946a48eac90a3ea3a071f'
+            '701b1620c34919b15eb7283d5a34e00f4802c8000a134fdc625a644bac85f36a')
+b2sums=('0ef75c79cf6040b0aaa9ef6b8c67c4d2d52b0820e92dcc53205b6952be6f070a3df7bcf055af86901d5ed1045f930f4d7a1241ee966c3d74e7ee8986f44a67a2'
+        'a3e9c6b13c42f2da3cb2bb3e9eb95e2cb5cc2824c5a8b90a3b993089e6e38a92baeeb2d5e68fef4e35024ddf5f9bbbb81ca295bd2acd713c12bc9069cb89fc26')
 
 case $CARCH in
   x86_64|i686|aarch64)
@@ -29,7 +26,6 @@ esac
 prepare() {
   cd "$pkgname-$pkgver"
 
-  patch -Np1 -i "$srcdir/0001-makepkg-Fix-Cargo.toml.patch"
   ln -sf "$srcdir/Cargo.lock" bkmr/Cargo.lock
 
   cargo fetch --manifest-path bkmr/Cargo.toml --locked --target $_target
