@@ -1,7 +1,7 @@
 _name=plasma-desktop
 pkgname=${_name}-light
 pkgver=5.27.0
-pkgrel=3
+pkgrel=4
 pkgdesc='KDE Plasma Desktop (stripped from unnecessary dependencies)'
 arch=('x86_64')
 url='https://kde.org/plasma-desktop/'
@@ -9,11 +9,18 @@ license=('LGPL')
 groups=('plasma')
 conflicts=("${_name}")
 provides=("${_name}")
-depends=('plasma-workspace' 'knewstuff' 'knotifications' 'kdeclarative' 'kded' 'kdelibs4support')
+
+depends=(
+    'plasma-workspace' 'plasma-integration'
+    'knewstuff' 'knotifications' 'kdeclarative'
+    'kded' 'kdelibs4support' 'kde-cli-tools'
+)
 
 makedepends=(
-    'extra-cmake-modules' 'kdoctools' 'xf86-input-evdev' 'xf86-input-synaptics' 'xf86-input-libinput' 'xorg-server-devel'
-    'kdesignerplugin' 'kaccounts-integration' 'intltool' 'kinit' 'wayland-protocols' 'krunner'
+    'extra-cmake-modules' 'xorg-server-devel'
+    'xf86-input-evdev' 'xf86-input-synaptics' 'xf86-input-libinput'
+    'kdoctools' 'kdesignerplugin' 'kaccounts-integration' 'kinit' 'krunner'
+    'intltool' 'wayland-protocols'
 )
 
 optdepends=(
@@ -22,6 +29,8 @@ optdepends=(
     'powerdevil: power management, suspend and hibernate support'
     'kscreen: screen management'
     'krunner: launch and search applications'
+    'kinit: process launcher to speed up launching KDE applications'
+    'kaccounts-integration: online account management system'
 )
 
 _snapshot="${_name}-${pkgver}"
