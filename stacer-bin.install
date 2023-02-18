@@ -1,0 +1,10 @@
+post_install() {
+	printf "===> creating link\n"
+	ln -sf "/usr/share/stacer/stacer" "/usr/bin/stacer"
+}
+
+post_remove() {
+	printf "===> deleting link\n"
+	unlink /usr/bin/stacer
+	rm -rf /usr/share/stacer
+}
