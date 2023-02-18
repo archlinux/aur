@@ -1,14 +1,14 @@
 pkgbase = nginx-unit
 	pkgdesc = Lightweight, dynamic, open-source server for diverse web applications.
 	pkgver = 1.29.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://unit.nginx.org/
 	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = php-embed
+	makedepends = php-legacy-embed
 	makedepends = python
-	makedepends = python2
 	makedepends = go
 	makedepends = ruby
 	makedepends = perl
@@ -28,9 +28,9 @@ pkgname = nginx-unit-python
 	depends = nginx-unitd
 	depends = python
 
-pkgname = nginx-unit-python2
+pkgname = nginx-unit-php-legacy
 	depends = nginx-unitd
-	depends = python2
+	depends = php-legacy-embed
 
 pkgname = nginx-unit-php
 	depends = nginx-unitd
