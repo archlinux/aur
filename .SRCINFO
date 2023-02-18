@@ -7,6 +7,7 @@ pkgbase = please_cli
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-typer
+	depends = python-rich
 	provides = please
 	conflicts = please
 	source = please_cli-0.3.1.tar.gz::https://github.com/NayamAmarshe/please/releases/download/0.3.1/please_cli-0.3.1.tar.gz
