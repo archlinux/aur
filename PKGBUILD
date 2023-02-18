@@ -1,4 +1,5 @@
-# Maintainer: lsf
+# Maintainer: samsapti <aur at sapti dot mailer dot me>
+# Contributor: lsf
 # Contributer: Sam Whited <sam@samwhited.com>
 # Contributor: Roman Kupriyanov <mr.eshua@gmail.com>
 
