@@ -1,9 +1,9 @@
 pkgbase = helixbinhx
 	pkgdesc = Link /usr/bin/hx to helix
 	pkgver = 2
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
-	license = GPL
+	license = MPL2
 	depends = helix
 	conflicts = hex
 
