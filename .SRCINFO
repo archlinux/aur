@@ -1,14 +1,13 @@
 pkgbase = vim-puppet
 	pkgdesc = Puppet language syntax highlighting for vim.
-	pkgver = 20190916
+	pkgver = 20220521
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/rodjek/vim-puppet
 	arch = any
 	license = Apache
 	depends = vim
-	source = https://github.com/rodjek/vim-puppet/archive/fc6e9efef797c505b2e67631ad2517d7d6e8f00d.zip
-	sha256sums = d30822a4996713a6c9911e773c4b652bd1e5a0d5371f9b56f932e7d7f4a029d3
+	source = https://github.com/rodjek/vim-puppet/archive/81943d532dee24f8518f855dfb17160809abfdfb.zip
+	sha256sums = 54a63e74e2b251b2e5ed25aeb72f18e92be17c79be215fea822ffebd50f2106e
 
 pkgname = vim-puppet
-
