@@ -4,14 +4,16 @@
 pkgname=vapoursynth-plugin-svpflow
 pkgver=4.5.210
 _pkgver=$pkgver-1
-pkgrel=2
+pkgrel=3
 pkgdesc='SmoothVideo plugin for Vapoursynth'
 arch=('x86_64')
 url='https://www.svp-team.com/wiki/SVP:Linux'
 license=('GPL2' 'custom:svp-team')
 depends=('vapoursynth')
 makedepends=('p7zip' 'qt6-base' 'nasm')
-conflicts=('svp-bin' 'vapoursynth-plugin-svpflow1' 'vapoursynth-plugin-svpflow2-bin')
+provides=("vapoursynth-plugin-svpflow1" # version of svpflow1 may be different with svpflow2
+    "vapoursynth-plugin-svpflow2=${pkgver}")
+conflicts=('vapoursynth-plugin-svpflow1' 'vapoursynth-plugin-svpflow2')
 source=("svpflow1-src-$pkgver.zip::https://www.svp-team.com/files/gpl/svpflow1-src.zip"
     "https://www.svp-team.com/files/svp4-linux.$_pkgver.tar.bz2")
 sha256sums=('c384b3b969d66f2e22003f87b644fa79ce9093a8af326f7fc79cc305239d05f3'
