@@ -5,4 +5,4 @@ Comment=A secure, private, minimal, cross-platform document editor.
 Terminal=false
 Exec=/usr/bin/lockbook-desktop
 Name=Lockbook
-Icon=dark-1.svg
+Icon=light-1.svg
