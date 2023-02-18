@@ -1,6 +1,6 @@
 pkgbase = openbangla-keyboard-git
 	pkgdesc = An OpenSource, Unicode compliant Bengali Input Method
-	pkgver = 2.0.0.r56.gffa3c9a
+	pkgver = 2.0.0.r58.gc85f4f3
 	pkgrel = 1
 	url = https://openbangla.github.io
 	arch = x86_64
@@ -20,28 +20,28 @@ pkgbase = openbangla-keyboard-git
 
 pkgname = openbangla-keyboard-git
 	depends = qt5-base
-	depends = openbangla-im=2.0.0.r56.gffa3c9a
+	depends = openbangla-im=2.0.0.r58.gc85f4f3
 	depends = hicolor-icon-theme
 	depends = zstd
-	provides = openbangla-keyboard=2.0.0.r56.gffa3c9a
+	provides = openbangla-keyboard=2.0.0.r58.gc85f4f3
 	conflicts = openbangla-keyboard
 
 pkgname = ibus-openbangla-git
 	install = ibus-openbangla.install
 	depends = ibus
 	depends = qt5-base
-	depends = openbangla-keyboard-git=2.0.0.r56.gffa3c9a
-	provides = ibus-openbangla=2.0.0.r56.gffa3c9a
-	provides = openbangla-im=2.0.0.r56.gffa3c9a
+	depends = openbangla-keyboard-git=2.0.0.r58.gc85f4f3
+	provides = ibus-openbangla=2.0.0.r58.gc85f4f3
+	provides = openbangla-im=2.0.0.r58.gc85f4f3
 	conflicts = ibus-openbangla
 
 pkgname = fcitx5-openbangla-git
 	install = fcitx5-openbangla.install
 	depends = fcitx5
 	depends = gcc-libs
-	depends = openbangla-keyboard-git=2.0.0.r56.gffa3c9a
+	depends = openbangla-keyboard-git=2.0.0.r58.gc85f4f3
 	optdepends = fcitx5-gtk: Fcitx5 Gtk support
 	optdepends = fcitx5-configtool: Fcitx5 Configuration Utility
-	provides = fcitx5-openbangla=2.0.0.r56.gffa3c9a
-	provides = openbangla-im=2.0.0.r56.gffa3c9a
+	provides = fcitx5-openbangla=2.0.0.r58.gc85f4f3
+	provides = openbangla-im=2.0.0.r58.gc85f4f3
 	conflicts = fcitx5-openbangla
