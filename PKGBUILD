@@ -1,4 +1,4 @@
-# Maintainer: Yohann D'ANELLO <ynerant@crans.org>
+# Maintainer: Emmy D'Anello <ynerant@crans.org>
 
 name=woke
 pkgname=woke
