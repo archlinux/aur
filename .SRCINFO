@@ -1,13 +1,13 @@
 pkgbase = shadow-tls
 	pkgdesc = A proxy to expose real tls handshake to the firewall.
-	pkgver = 0.2.12
+	pkgver = 0.2.17
 	pkgrel = 1
 	url = https://github.com/ihciah/shadow-tls
 	arch = x86_64
 	license = MIT
 	license = Apache
 	makedepends = rustup
-	source = shadow-tls-0.2.12.tar.gz::https://github.com/ihciah/shadow-tls/archive/v0.2.12.tar.gz
-	sha256sums = df7bcd85a838a79826dfba1773229741b0946f30ec9c92bbd41407b0ddda1152
+	source = shadow-tls-0.2.17.tar.gz::https://github.com/ihciah/shadow-tls/archive/v0.2.17.tar.gz
+	sha256sums = e638b073fe765570a8c6ab1a20c9ff2492c235c24a0b16d9bc1d4d57432a0e81
 
 pkgname = shadow-tls
