@@ -14,7 +14,7 @@ optdepends=('libvorbis: Vorbis codec support'
 	    'libmad: MPEG codec support'
 	    'flac: FLAC codec support')
 
-makedepends=('alsa-libs'
+makedepends=('alsa-lib'
 	     'cjson'
 	     'desktop-file-utils'
 	     'freetype2'
@@ -30,7 +30,6 @@ makedepends=('alsa-libs'
 	     'libpng'
 	     'libvorbis'
 	     'ttf-unifont')
-
 
 source=(${_pkgbase}::git+https://github.com/mywave82/opencubicplayer.git)
 sha256sums=('SKIP')
