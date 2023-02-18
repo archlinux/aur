@@ -14,7 +14,7 @@ optdepends=('libvorbis: Vorbis codec support'
 	    'libmad: MPEG codec support'
 	    'flac: FLAC codec support')
 
-makedepends=('alsa-libs'
+makedepends=('alsa-lib'
 	     'cjson'
 	     'desktop-file-utils'
 	     'freetype2'
