@@ -1,5 +1,2 @@
-/*.zip
-/*.zst
-/*.gz
-/src/
-/pkg/
+# Require every item to be force added
+*
