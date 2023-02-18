@@ -1,6 +1,6 @@
 pkgbase = openstego
 	pkgdesc = Steganography application that provides data hiding and watermarking functionality
-	pkgver = 0.8.5
+	pkgver = 0.8.6
 	pkgrel = 1
 	url = https://www.openstego.com
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = openstego
 	makedepends = unzip
 	depends = bash
 	depends = java-runtime
-	source = https://github.com/syvaidya/openstego/releases/download/openstego-0.8.5/openstego-0.8.5.zip
+	source = https://github.com/syvaidya/openstego/releases/download/openstego-0.8.6/openstego-0.8.6.zip
 	source = openstego.desktop
 	source = openstego.svg
-	sha256sums = 278d0934e1132a352cde6f89a86018ffc35037c9cfacf1ebdfdadf1508d5ad36
+	sha256sums = 402ba4190d329564996a1250b9096f0402452042469f517545c312527cedc41f
 	sha256sums = 0749d41ac197897b2604c6617a012194f5efa793aed036c1a797412038ccebcf
 	sha256sums = 2e8eb54202cf0fe8130c9b284ba26ae196746cf299872efc401257c487101956
 
