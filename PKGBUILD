@@ -4,7 +4,7 @@
 # Contributer: Arnaud
 
 pkgname=edgetx-companion
-pkgver=2.8.0
+pkgver=2.8.1
 pkgrel=1
 pkgdesc="EEPROM Editor and Simulator for EdgeTX RC radio transmitter firmwares"
 arch=('x86_64')
@@ -42,6 +42,8 @@ sha256sums=('SKIP'
             'efa51cbbff6cb466a6a9bd681b04b158fce6e48d2db4c5cc235c1a871037f6c8')
 
 prepare() {
+  export EDGETX_VERSION_TAG=$pkgver
+
   cd $_pkgbase
   patch ./tools/build-companion.sh < $srcdir/install.patch
   

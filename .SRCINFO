@@ -1,6 +1,6 @@
 pkgbase = edgetx-companion
 	pkgdesc = EEPROM Editor and Simulator for EdgeTX RC radio transmitter firmwares
-	pkgver = 2.8.0
+	pkgver = 2.8.1
 	pkgrel = 1
 	url = https://edgetx.org/
 	arch = x86_64
@@ -31,8 +31,24 @@ pkgbase = edgetx-companion
 	optdepends = dfu-util: tool for flashing stm32 based radios
 	provides = companion
 	conflicts = companion
-	source = git+https://github.com/EdgeTX/edgetx.git#tag=v2.8.0
+	source = git+https://github.com/EdgeTX/edgetx.git#tag=v2.8.1
+	source = git+https://github.com/jbeder/yaml-cpp.git
+	source = git+https://github.com/raphaelcoeffic/AccessDenied.git
+	source = git+https://github.com/FreeRTOS/FreeRTOS-Kernel.git
+	source = git+https://github.com/edgetx/libopenui.git
+	source = git+https://github.com/FreeRTOS/FreeRTOS-Kernel-Community-Supported-Ports.git
+	source = git+https://github.com/FreeRTOS/FreeRTOS-Kernel-Partner-Supported-Ports.git
+	source = git+https://github.com/EdgeTX/lvgl.git
+	source = git+https://github.com/nothings/stb.git
 	source = install.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = efa51cbbff6cb466a6a9bd681b04b158fce6e48d2db4c5cc235c1a871037f6c8
 
