@@ -1,0 +1,11 @@
+pkgbase = ttf-apple-fontpack
+	pkgdesc = A 1992 collection of fonts from Apple
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.macintoshrepository.org/37914-apple-font-pack
+	arch = any
+	license = custom
+	source = https://filedn.com/lHGef0SOQKnBTotcJeEfshJ/Fonts/AppleFontPack.zip
+	md5sums = a810992b68c37f988c772fa4765e9402
+
+pkgname = ttf-apple-fontpack
