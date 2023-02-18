@@ -30,6 +30,7 @@ pkgbase = ocp
 
 pkgname = ocp
 	depends = alsa-lib
+	depends = bzip2
 	depends = cjson
 	depends = ncurses
 	depends = zlib

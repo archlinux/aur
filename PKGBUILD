@@ -97,7 +97,8 @@ package_ocp() {
 		  ${_pkgbase}-curses=${pkgver})
 	conflicts=('ocp-curses' 'ocp-sdl2')
 	depends=('alsa-lib' 
-                 'cjson'
+		 'bzip2'
+		 'cjson'
 		 'ncurses'
 		 'zlib'
 		 'libancient'
