@@ -1,7 +1,7 @@
 # Maintainer: Wren Baxter <aur [at] wren.dev>
 
 pkgname=astap-bin-qt5
-pkgver=2023.01.21
+pkgver=2023.02.17
 pkgrel=1
 pkgdesc="Astrometric (plate) solver, stacking of images, photometry and FITS viewer"
 provides=('astap')
@@ -9,8 +9,8 @@ conflicts=('astap-bin')
 arch=('x86_64') # no 32-bit version provided
 url="https://www.hnsky.org/astap.htm"
 license=('LGPL3')
-source=("astap-${pkgver}.tar.gz::https://github.com/wrenby/astap-backups/raw/147641e3c33655a4dd0ae116e335c6eaaa64a3dc/astap_amd64_qt5.tar.gz")
-md5sums=('2c952d7d2f1b0378a82e03a7d3685505')
+source=("astap-${pkgver}.tar.gz::https://github.com/wrenby/astap-backups/raw/9bf755408a008b5416a010fe3e453a9fc939dfff/astap_amd64_qt5.tar.gz")
+md5sums=('4970f6f99f5d752daad753b2352fa134')
 
 noextract=("astap-${pkgver}.tar.gz") # bsdtar can't handle this archive because it contains a self-referential hardlink
 makedepends=('tar') # but gnu tar is just fine
