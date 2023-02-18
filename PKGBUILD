@@ -1,7 +1,7 @@
 # Maintainer: Clarence <xjh.azzbcc@gmail.com>
 _pkgname=spandsp
 pkgname=${_pkgname}-fs
-pkgver=3.0.0.ge59ca8f
+pkgver=3.0.0.r513.67d2455
 pkgrel=1
 pkgdesc="A DSP library for telephony (FreeSWITCH version)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  printf "%s.g%s" `awk '/^Version:/ { print $2 }' spandsp.spec` `git describe --always`
+  printf "%s.r%s.%s" "$(awk '/^Version:/ { print $2 }' spandsp.spec)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
