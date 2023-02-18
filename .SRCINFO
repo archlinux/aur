@@ -1,6 +1,6 @@
 pkgbase = celeste
 	pkgdesc = GUI file synchronization client that can sync with any cloud provider
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/hwittenborn/celeste
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = celeste
 	optdepends = libayatana-appindicator: option for tray icon
 	optdepends = libappindicator-gtk3: option for tray icon
 	options = !lto
-	source = celeste-0.4.0.tar.gz::https://github.com/hwittenborn/celeste/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = af7b1b757dfd17282c6959c314ec622a6ae7d7843200a634b7325ccb5939cc38
+	source = celeste-0.4.1.tar.gz::https://github.com/hwittenborn/celeste/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = 1ec8e1fac989de77878d3c71433bd305c398038c3d079de90af9305540c4c8cc
 
 pkgname = celeste
