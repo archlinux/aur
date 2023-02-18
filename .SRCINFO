@@ -9,8 +9,8 @@ pkgbase = satori-kronos-git
 	makedepends = cargo
 	makedepends = git
 	depends = alsa-lib
-	provides = kronos
-	source = kronos-git::git+https://github.com/TrevorSatori/kronos
+	provides = satori-kronos
+	source = satori-kronos-git::git+https://github.com/TrevorSatori/kronos
 	md5sums = SKIP
 
-pkgname = kronos-git
+pkgname = satori-kronos-git
