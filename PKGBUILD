@@ -4,6 +4,7 @@ _pkgname=idris2-lsp
 pkgname="$_pkgname-git"
 pkgver=latest
 pkgrel=2
+epoch=1
 pkgdesc='Language Server for Idris2'
 arch=('x86_64')
 url="https://github.com/idris-community/$_pkgname"
