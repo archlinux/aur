@@ -1,6 +1,6 @@
 pkgbase = python-aesara
 	pkgdesc = Library for defining, optimizing, and efficiently evaluating mathematical expressions involving multi-dimensional arrays
-	pkgver = 2.8.10
+	pkgver = 2.8.11
 	pkgrel = 1
 	url = https://github.com/aesara-devs/aesara
 	arch = any
@@ -8,6 +8,8 @@ pkgbase = python-aesara
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
 	depends = python-cons
 	depends = python-etuples
 	depends = python-filelock
@@ -17,7 +19,7 @@ pkgbase = python-aesara
 	depends = python-typing_extensions
 	optdepends = python-numba: for graph transpilation compilation
 	optdepends = python-jax: for graph transpilation compilation
-	source = python-aesara-2.8.10.tar.gz::https://github.com/aesara-devs/aesara/archive/refs/tags/rel-2.8.10.tar.gz
-	sha256sums = 1668ea3151e9931cd3ddf44ea9147f0fe5554be2a83eb44c82801304eeb14af1
+	source = python-aesara-2.8.11.tar.gz::https://github.com/aesara-devs/aesara/archive/refs/tags/rel-2.8.11.tar.gz
+	sha256sums = 87e7a9dda5cba1d0c6287af809c0d3431379da2fdfdbe7864209da3c3d2e8a2f
 
 pkgname = python-aesara

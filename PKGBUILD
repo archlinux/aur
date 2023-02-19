@@ -2,13 +2,19 @@
 
 pkgname=python-aesara
 _name=${pkgname#python-}
-pkgver=2.8.10
+pkgver=2.8.11
 pkgrel=1
 pkgdesc="Library for defining, optimizing, and efficiently evaluating mathematical expressions involving multi-dimensional arrays"
 arch=(any)
 url="https://github.com/aesara-devs/aesara"
 license=(custom)
-makedepends=(python-{build,installer,wheel})
+makedepends=(
+  python-build
+  python-installer
+  python-wheel
+  python-hatchling
+  python-hatch-vcs
+)
 depends=(
   python-cons
   python-etuples
@@ -24,20 +30,9 @@ optdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/rel-${pkgver}.tar.gz")
-sha256sums=('1668ea3151e9931cd3ddf44ea9147f0fe5554be2a83eb44c82801304eeb14af1')
+sha256sums=('87e7a9dda5cba1d0c6287af809c0d3431379da2fdfdbe7864209da3c3d2e8a2f')
 
 _archive="$_name-rel-$pkgver"
-
-prepare() {
-  cd "$_archive"
-
-  {
-    echo "node: ????????????????????????????????????????"
-    echo "node-date: ?????????????????????????"
-    echo "describe-name: rel-$pkgver"
-    echo "ref-names: ???? -> ???, tag: rel-$pkgver"
-  } > .git_archival.txt
-}
 
 build() {
   cd "$_archive"
@@ -49,5 +44,5 @@ package() {
   cd "$_archive"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 doc/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
