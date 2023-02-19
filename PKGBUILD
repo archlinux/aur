@@ -52,6 +52,7 @@ check() {
 package() {
 	pushd "${_pkgname}"
 	install -Dm755 sassafras -t "${pkgdir}/usr/bin/"
+	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
 	for f in doc/*;
 	do
 	    install -Dm644 "${f}" -t "${pkgdir}/usr/share/doc/${_pkgname}/"
