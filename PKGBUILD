@@ -1,7 +1,7 @@
 pkgbase="python-images-upload-cli"
 pkgname=("python-images-upload-cli")
-_module="images-upload-cli"
-pkgver="1.0.7"
+_module="images_upload_cli"
+pkgver="1.0.9"
 pkgrel=1
 pkgdesc="Upload images via APIs"
 url="https://github.com/DeadNews/images-upload-cli"
@@ -16,8 +16,8 @@ depends=(
 makedepends=("python-setuptools")
 license=("MIT")
 arch=("any")
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('6886986f118be4443d6bd46013afc64994c15b503e0f706940ec50ac760b3958')
+source=("https://files.pythonhosted.org/packages/source/${_module::1}/${_module}/${_module}-${pkgver}.tar.gz")
+sha256sums=('93db1a00819527df8b96358bd8e37576c466eeabc8fffb580ab945f6bc5d2e55')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
