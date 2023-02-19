@@ -1,0 +1,15 @@
+pkgbase = sassafras-git
+	pkgdesc = Data analysis tool
+	pkgver = r233.3aacfa2
+	pkgrel = 1
+	url = https://github.com/georgeweigt/sassafras
+	arch = any
+	license = BSD
+	makedepends = git
+	provides = sassafras
+	source = git+https://github.com/georgeweigt/sassafras.git
+	source = https://georgeweigt.github.io/sassafras/anova.pdf
+	sha256sums = SKIP
+	sha256sums = 5ce13f8454de66fd4e93cd58d2b9009870f89023922c35cd374beb03dba0dc59
+
+pkgname = sassafras-git
