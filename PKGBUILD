@@ -19,7 +19,7 @@ prepare() {
 
     git submodule init
     git config submodule.native/inotify_simple.url "$srcdir/inotify_simple"
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 
     # fix lib64/lib issue
     sed 's/lib64/lib/g' -i Makefile
