@@ -43,16 +43,16 @@ prepare() {
 	git -C sysbox config submodule.sysbox-libs.url "$srcdir/sysbox-libs"
 	git -C sysbox config submodule.sysbox-mgr.url "$srcdir/sysbox-mgr"
 	git -C sysbox config submodule.sysbox-runc.url "$srcdir/sysbox-runc"
-	git -C sysbox submodule update
+	git -C sysbox -c protocol.file.allow=always submodule update
 
 	git -C sysbox/sysbox-fs submodule init
 	git -C sysbox/sysbox-fs config submodule.bazil.url "$srcdir/fuse"
-	git -C sysbox/sysbox-fs submodule update
+	git -C sysbox/sysbox-fs -c protocol.file.allow=always submodule update
 
 	git -C sysbox/sysbox-libs submodule init
 	git -C sysbox/sysbox-libs config submodule.libseccomp.url "$srcdir/libseccomp"
 	git -C sysbox/sysbox-libs config submodule.libseccomp-golang.url "$srcdir/libseccomp-golang"
-	git -C sysbox/sysbox-libs submodule update
+	git -C sysbox/sysbox-libs -c protocol.file.allow=always submodule update
 
 	# Get some non-binary files from the Debian package as they don't seem to be uploaded anywhere else
 	mkdir -p data
