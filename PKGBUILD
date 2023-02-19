@@ -38,5 +38,5 @@ package() {
     cd "$pkgname"
     cargo install --root "${pkgdir}"/usr --path "${srcdir}/${pkgname}"
     # Random metadata file created by cargo. See https://github.com/rust-lang/cargo/issues/6797
-    rm "${pkgdir}"/usr/.crates.toml
+    rm "${pkgdir}"/usr/.crates.toml "${pkgdir}"/usr/.crates2.json
 }
