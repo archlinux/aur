@@ -6,6 +6,7 @@ pkgbase = python-fenics-plotly
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
+	checkdepends = openssh
 	makedepends = python-setuptools
 	depends = python-dolfin
 	depends = python-ipywidgets

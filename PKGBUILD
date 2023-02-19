@@ -9,7 +9,7 @@ url="https://github.com/finsberg/${_base}"
 license=(MIT)
 depends=(python-dolfin python-ipywidgets python-plotly)
 makedepends=(python-setuptools)
-checkdepends=(python-pytest)
+checkdepends=(python-pytest openssh)
 source=(${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('456fa4e617b233a5bd28768c0e99812c730ae01a2c9937ef3ffa0f529cf82372b5e3d8596cb4bab7630d835e8f4abdfc58e30d26e08576c83333c58b9859e016')
 
