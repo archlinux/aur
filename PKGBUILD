@@ -1,7 +1,7 @@
 # Maintainer: Aru Sahni <aru@arusahni.net>
 pkgname=autohide-tdrop-git
 pkgver=1.02
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="100% pure rust implementation that can automatically hide terminals or other applications managed by tdrop when they lose focus"
 arch=('x86_64')
