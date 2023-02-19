@@ -1,4 +1,4 @@
-# Maintainer: Luigi311 <luigi311.lg@gmail.com>
+# Maintainer: Luigi311 <aur@luigi311.com>
 pkgname=megapixels-ppp-git
 pkgver=r1.03dc718a
 pkgrel=1
