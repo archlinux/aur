@@ -1,6 +1,6 @@
 # Maintainer: rhssk
 pkgname=when-changed-git
-pkgver=0.r62.7a2df66
+pkgver=0.3.0.r37.g85d7acc
 pkgrel=1
 pkgdesc="Execute a command when a file is changed."
 arch=('any')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd when-changed
-  echo "0.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {

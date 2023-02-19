@@ -1,6 +1,6 @@
 pkgbase = when-changed-git
 	pkgdesc = Execute a command when a file is changed.
-	pkgver = 0.r62.7a2df66
+	pkgver = 0.3.0.r37.g85d7acc
 	pkgrel = 1
 	url = https://github.com/joh/when-changed
 	arch = any
@@ -15,4 +15,3 @@ pkgbase = when-changed-git
 	sha256sums = SKIP
 
 pkgname = when-changed-git
-
