@@ -1,10 +1,10 @@
 # Maintainer: Ben Cooper <contactme at bengcooper dot co dot uk>
 # Co-Maintainer: Polarian <polarian@polarian.dev>
 _projectid=160
-_buildid=3440
+_buildid=3451
 pkgname=('onedev' 'onedev-new')
 pkgbase=onedev
-pkgver=8.0.0
+pkgver=8.0.3
 pkgrel=1
 arch=('x86_64')
 depends=('java-runtime-headless>11.0.0' 'git>2.11.1' 'curl' 'fontconfig' 'ttf-dejavu')
@@ -16,7 +16,7 @@ license=('MIT' 'BSD' 'Apache' 'LGPL2.1' 'MPL2' 'custom:Oracle Technology Network
 source=("https://code.onedev.io/~downloads/projects/$_projectid/builds/$_buildid/artifacts/onedev-$pkgver.tar.gz"
         "sysusers.conf"
         "onedev.service")
-sha256sums=('3a0103a63f861afb79390e25b2491eb504c02c5e57b92ac66e711cd1c3c8a991'
+sha256sums=('7605755783fdf7e6679d0c4625a342e8777f64947b68c8de4fc400c32529558e'
             'ed8573826c9c89d7a35e3f8b52d4de69c9377fc713b5227bf30f12a45f0c2c82'
             '56c7dea1e61cf81d6dddc34fa098fa5a7ed892b1d3e506cf003b0c2c71bb5866')
 backup=(opt/onedev/conf/hibernate.properties
