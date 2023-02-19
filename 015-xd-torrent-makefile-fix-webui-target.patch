@@ -1,0 +1,26 @@
+--- a/Makefile
++++ b/Makefile
+@@ -46,10 +46,10 @@ CLI ?= XD-CLI$(BINEXT)
+ build: $(CLI)
+ 
+ 
+-$(XD): webui
++$(XD): $(WEBUI_CORE)
+ 	$(GO) build -a -ldflags "-X xd/lib/version.Git=$(GIT_VERSION) -linkmode external -extldflags '${LDFLAGS}'" -tags='$(TAGS)' -o $(XD)
+ 
+-dev: webui
++dev: $(WEBUI_CORE)
+ 	$(GO) build -race -v -a -ldflags "-X xd/lib/version.Git=$(GIT_VERSION) -linkmode external -extldflags '${LDFLAGS}'" -tags='$(TAGS)' -o $(XD)
+ 
+ $(CLI): $(XD)
+@@ -80,9 +80,9 @@ $(WEBUI_LOGO):
+ 
+ $(WEBUI_CORE): $(WEBUI_LOGO)
+ 	$(MAKE) -C $(WEBUI)
++	$(CP) $(WEB_FILES) $(REPO)/lib/rpc/assets/
+ 
+ webui: $(WEBUI_CORE)
+-	$(CP) $(WEB_FILES) $(REPO)/lib/rpc/assets/
+ 
+ no-webui:
+ 	$(GO) build -ldflags "-X xd/lib/version.Git=$(GIT_VERSION) -linkmode external -extldflags '${LDFLAGS}'" -o $(XD)

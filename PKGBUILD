@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=xd-torrent
-pkgver=0.4.2
-pkgrel=2
+pkgver=0.4.3
+pkgrel=1
 pkgdesc='An I2P BitTorrent client'
 arch=('x86_64')
 url='https://xd-torrent.github.io/'
@@ -12,14 +12,16 @@ makedepends=('go')
 backup=('etc/xd.conf')
 source=("https://github.com/majestrate/XD/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         '010-xd-torrent-use-arch-ldflags.patch'
+        '015-xd-torrent-makefile-fix-webui-target.patch'
         '020-xd-torrent-rename-service-paths.patch'
         '030-xd-torrent-service-hardening.patch'
         'xd-torrent.sysusers'
         'xd-torrent.tmpfiles'
         'xd.conf')
 options=('!lto')
-sha256sums=('77490f37ea979d559490611f874acbb618072e3685f15d7b6254bedfe31a0b03'
-            '0eb00a6df35028549286fce92cb158d3c84ec49fad72e1e437de5b5e309719d2'
+sha256sums=('9ff34058e093208e22870253370d17d725dd3783a147c651fd0b9b9e6b51cafe'
+            '57fe19f7092d257c11aba66757bc37382dc3d793f01417c8e3d463fabdbfa7e0'
+            '1e1ae60af989131ba5cfb6a23c736f9e6a1557d830c93c0778e4cdaf224f4aaa'
             '6b3d959b55623c3f907be0e1c53c7092e9328cb0b10c336102d012d716438a14'
             '77f50344dc028eac9ee229faf2fcda4807b5fbe4872a23513c271dd0e4964e53'
             '5f2fb392c2fec68bb3861ece85b5bbdd4929c4ccccf3caeb835060213c309761'
@@ -28,6 +30,7 @@ sha256sums=('77490f37ea979d559490611f874acbb618072e3685f15d7b6254bedfe31a0b03'
 
 prepare() {
     patch -d "XD-${pkgver}" -Np1 -i "${srcdir}/010-xd-torrent-use-arch-ldflags.patch"
+    patch -d "XD-${pkgver}" -Np1 -i "${srcdir}/015-xd-torrent-makefile-fix-webui-target.patch"
     patch -d "XD-${pkgver}" -Np1 -i "${srcdir}/020-xd-torrent-rename-service-paths.patch"
     patch -d "XD-${pkgver}" -Np1 -i "${srcdir}/030-xd-torrent-service-hardening.patch"
 }
