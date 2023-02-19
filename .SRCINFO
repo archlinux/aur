@@ -1,7 +1,7 @@
 pkgbase = libtrash
 	pkgdesc = A shared, preloaded library that implements a trash can under Linux
 	pkgver = 3.7
-	pkgrel = 2
+	pkgrel = 3
 	url = http://pages.stern.nyu.edu/~marriaga/software/libtrash/
 	install = libtrash.install
 	arch = i686

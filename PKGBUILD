@@ -8,7 +8,7 @@
 _pkgname=libtrash
 pkgname="${_pkgname}"
 pkgver=3.7
-pkgrel=2
+pkgrel=3
 pkgdesc="A shared, preloaded library that implements a trash can under Linux"
 arch=('i686' 'x86_64')
 url="http://pages.stern.nyu.edu/~marriaga/software/libtrash/"
@@ -28,7 +28,7 @@ sha256sums=(
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  ./autogen.sh
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
