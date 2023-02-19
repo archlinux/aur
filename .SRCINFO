@@ -1,0 +1,28 @@
+pkgbase = rmg
+	pkgdesc = Rosalie's Mupen GUI
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = https://github.com/Rosalie241/rmg
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	makedepends = pkg-config
+	makedepends = nasm
+	makedepends = cmake
+	makedepends = cargo
+	makedepends = ninja
+	depends = hidapi
+	depends = libsamplerate
+	depends = minizip
+	depends = sdl2
+	depends = zlib
+	depends = freetype2
+	depends = qt6-base
+	depends = qt6-svg
+	depends = xdg-user-dirs
+	provides = rmg
+	conflicts = rmg
+	source = git+https://github.com/Rosalie241/rmg.git#tag=v0.3.5
+	sha256sums = SKIP
+
+pkgname = rmg
