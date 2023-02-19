@@ -26,16 +26,14 @@ sha256sums=('3ce6de32bce048d12429d9431b36d8437c1934266475b6a9f5235b3dff54f918')
 # TODO: What about `adduser.local`? What even is that?
 # TODO: Locale/translation files should also be included
 package() {
-  install -D -m755 ${_pkgname}-${pkgver}/adduser "${pkgdir}/usr/bin/adduser"
-  install -D -m755 ${_pkgname}-${pkgver}/deluser "${pkgdir}/usr/bin/deluser"
+  cd ${_pkgname}-${pkgver}
+  install -Dm755 adduser "${pkgdir}/usr/bin/adduser"
+  install -Dm755 deluser "${pkgdir}/usr/bin/deluser"
   ln -s adduser "${pkgdir}/usr/bin/addgroup"
   ln -s deluser "${pkgdir}/usr/bin/delgroup"
   # TODO: Do the policies defined in these files match Arch policy? Do I need
   # to develop any patches for them?
-  install -D -m755 ${_pkgname}-${pkgver}/adduser.conf "${pkgdir}/etc/adduser.conf"
-  install -D -m755 ${_pkgname}-${pkgver}/deluser.conf "${pkgdir}/etc/deluser.conf"
-  install -D -m755 ${_pkgname}-${pkgver}/AdduserCommon.pm "${pkgdir}/usr/share/perl5/vendor_perl/Debian/AdduserCommon.pm"
-  # TODO: Patching should be done in `prepare()` step
-  sed -i "s/'-w',$gecos_work/'-p',$gecos_work/" ${pkgdir}/usr/bin/adduser
-  sed -i "s/'-r', $gecos_room/'-o', $gecos_room/" ${pkgdir}/usr/bin/adduser
+  install -Dm755 adduser.conf "${pkgdir}/etc/adduser.conf"
+  install -Dm755 deluser.conf "${pkgdir}/etc/deluser.conf"
+  install -Dm755 AdduserCommon.pm "${pkgdir}/usr/share/perl5/vendor_perl/Debian/AdduserCommon.pm"
 }
