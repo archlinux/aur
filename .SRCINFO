@@ -1,0 +1,17 @@
+pkgbase = orz
+	pkgdesc = A high performance, general purpose data compressor
+	pkgver = 1.6.2
+	pkgrel = 1
+	url = https://github.com/richox/orz
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = orz-1.6.2.tar.gz::https://github.com/richox/orz/archive/refs/tags/v1.6.2.tar.gz
+	sha256sums = ff9f8d77084f0510cfb4966be7cf02a00c4a17715879dfdb85eaa1380023a7c7
+	b2sums = ec85794b1d835d055b2e146746ae2c4534fedc222f12db50c0025f668f4d261b69bb0aefe39b83c225d60d69e42a82ea77d21764cf82585b7f8f0212d040435e
+
+pkgname = orz
