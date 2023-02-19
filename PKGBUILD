@@ -1,36 +1,42 @@
-# Maintainer: Filipe Bertelli <filipebertelli@tutanota.com>
-# Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
+# Contributor: Balló György <ballogyor+arch at gmail dot com>
 
-_pkgname=dooble
-_repourl="https://github.com/textbrowser/dooble"
 pkgname=dooble-bin
-pkgver=2022.12.25
+_pkgname=dooble
+pkgver=2023.02.20
 pkgrel=1
-pkgdesc="Dooble is the scientific browser"
-arch=('x86_64')
+pkgdesc="Web browser based on QtWebEngine"
+arch=(x86_64)
 url="https://textbrowser.github.io/dooble/"
 license=('BSD')
-conflicts=('dooble')
-options=('!strip')
-depends=('gmime3' 'libxkbcommon-x11' 'nspr' 'nss' 'xcb-util-image' 'xcb-util-keysyms' 'xcb-util-renderutil' 'xcb-util-wm')
-source=(
-  "https://github.com/textbrowser/dooble/releases/download/${pkgver}/Dooble-${pkgver}_amd64.deb"
-  "LICENSE-${pkgver}::${_repourl}/raw/${pkgver}/LICENSE"
+depends=(
+    'unixodbc'
+    'at-spi2-core'
+    'gtk3'
+    'qt6-webengine'
+    'qt6-svg'
 )
-noextract=("Dooble-${pkgver}_amd64.deb")
-sha256sums=('82b9e322810dc7c8d6c3ad4fb017c9685b5857e90aa17ea9e386c0f61016837b'
+optdepends=()
+conflicts=('dooble')
+source=(
+    "${_pkgname}-${pkgver}.tar.gz::https://github.com/textbrowser/${_pkgname}/releases/download/${pkgver}/Dooble-${pkgver}.tar.gz"
+    "${_pkgname}.desktop"
+    "LICENSE::https://github.com/textbrowser/dooble/raw/master/LICENSE"
+    )
+sha256sums=('f0efbb0b2137669338bf232b4ec881cef7478c445b2e797ed45f4206d7971f7b'
+            '0451898ad6b3864601d4406956558153b9518b1695545440e91bf26465c1dbe4'
             'c60bf2d6a8bfdf7c7418bba91c6767cbb4b48dccae36dd5d9ffdb48f756815dd')
 
+prepare() {
+    mkdir -p "${pkgdir}/opt/${_pkgname}"
+}
+
 package() {
-  bsdtar -O -xf "Dooble-${pkgver}_amd64.deb" data.tar.zst | bsdtar -C "${pkgdir}" -xf -
-
-  # Permission fix
-  find "${pkgdir}" -type d -exec chmod 755 {} +
-
-  # Documentation
-  install -d "${pkgdir}/usr/share/doc"
-  ln -s "/opt/dooble/Documentation" "${pkgdir}/usr/share/doc/${_pkgname}"
-
-  # License
-  install -D -m644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    mkdir -p "${pkgdir}/opt/${_pkgname}/"
+    #Use system libc.so.6
+    rm -r "${srcdir}/${_pkgname}/Lib/libc.so.6"
+    cp -r "${srcdir}/${_pkgname}/" "${pkgdir}/opt/"
+    install -Dm755 "${srcdir}/${_pkgname}/Dooble" "${pkgdir}/opt/${_pkgname}/Dooble"
+    install -Dm644 "${srcdir}/${_pkgname}/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.png"
+    install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

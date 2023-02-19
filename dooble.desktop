@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=Network;WebBrowser;
+Comment=Dooble Web Browser
+Exec=/opt/dooble/dooble.sh
+GenericName=Dooble Web Browser
+Icon=dooble
+Name=Dooble Web Browser
+StartupNotify=true
+Terminal=false
+Type=Application
