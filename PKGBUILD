@@ -1,4 +1,4 @@
-# Maintainer: Luigi311 <git@luigi311.com>
+# Maintainer: Luigi311 <aur@luigi311.com>
 pkgname=svt-hevc-git
 pkgver=r368.eb24a06
 pkgrel=1
