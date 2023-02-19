@@ -1,7 +1,7 @@
 pkgbase = python-openaiauth-git
 	pkgdesc = OpenAI Authentication Library for ChatGPT.
 	pkgver = 0.3.2.r51.20230219.4dbb23e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/acheong08/OpenAIAuth
 	arch = any
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = python-openaiauth-git
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
+	depends = python-requests
 	depends = python-tls-client
 	provides = python-openaiauth=0.3.2.r51.20230219.4dbb23e
 	conflicts = python-openaiauth

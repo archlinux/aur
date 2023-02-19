@@ -3,7 +3,7 @@
 _pkgname=python-openaiauth
 pkgname="${_pkgname}-git"
 pkgver=0.3.2.r51.20230219.4dbb23e
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenAI Authentication Library for ChatGPT."
 arch=(
   'any'
@@ -12,6 +12,7 @@ url="https://github.com/acheong08/OpenAIAuth"
 license=('MIT')
 depends=(
   'python'
+  'python-requests'
   'python-tls-client'
 )
 makedepends=(
