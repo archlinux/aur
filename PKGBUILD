@@ -1,13 +1,13 @@
 #!/bin/bash
 
 pkgname=dpatch
-_pkgver="2.0.40"
+_pkgver="2.0.41"
 _deblevel=""
 pkgver="${_pkgver}${_deblevel}"
 pkgrel=2
 
 pkgdesc="A easy to use patch system for Debian packages, somewhat similar to the dbs package, but much simpler to use."
-url="http://packages.debian.org/unstable/dpatch"
+url="https://packages.debian.org/stable/dpatch"
 license=('GPL2')
 
 arch=(
@@ -37,7 +37,7 @@ source=(
 )
 
 sha256sums=(
-  'a79ca01f1a7e90c3e969d7bba204fe92a7e6832a3bd07f7ee153678bd34f3453'
+  '267461f5998ad7472aeb50f7d66708518d51923ca79bb16a3726e24e5ab3a8b2'
 )
 
 noextract=(
