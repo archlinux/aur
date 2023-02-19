@@ -1,0 +1,34 @@
+#!/bin/bash
+
+function main(){
+    if [[ ${XDG_SESSION_DESKTOP} = KDE ]] && [[ ${XDG_SESSION_TYPE} = wayland ]]; then
+        probeKwinVersion
+    else
+        electron /opt/electronic-wechat-uos-bin/resources/app.asar "$@"
+    fi
+}
+
+function probeKwinVersion(){
+    _kwinVersion=`kwin_wayland --version | cut -c 6- | cut -c -4`
+    if [[ `echo "${_kwinVersion} > 5.27" | bc` = 1 ]]; then
+        waylandLaunch
+    elif [[ ${_kwinVersion} = '5.27' ]]; then
+        waylandLaunch
+    else
+        electron /opt/electronic-wechat-uos-bin/resources/app.asar "$@"
+    fi
+}
+
+function waylandLaunch(){
+    _electronVer=`electron --version | cut -c 2-`
+
+    if [[ `echo "${_electronVer} > 20" | bc` = 1 ]]; then
+        waylandFlag="--ozone-playform-hint=auto"
+    else
+        waylandFlag="--ozone-platform=wayland"
+    fi
+    electron /opt/electronic-wechat-uos-bin/resources/app.asar ${waylandFlag} --ignore-gpu-blocklist --enable-gpu-rasterization --enable-zero-copy --enable-wayland-ime --disable-gpu-driver-bug-workarounds --enable-features=VaapiVideoDecoder,VaapiIgnoreDriverChecks --disable-features=UseChromeOSDirectVideoDecoder "$@"
+}
+
+
+main

@@ -12,8 +12,7 @@ function note() {
 
 function post_install(){
     note '如果桌面通知无法送达, 请检查是否正确设置 libnotify'
-    note '若要启用 Wayland 支持, 请在 ~/.config/electron-flags.conf 添加 --enable-features=WaylandWindowDecorations 与 --ozone-platform-hint=auto'
-    note '请注意: 启用 Wayland 支持后将无法使用 Fcitx5 输入法以及任何 Electron 应用的全局菜单'
+    note '由于 KWin 5.27 支持 text_input_v1, Electronic WeChat 将会在 KDE 桌面上自动切换到 Wayland 后端'
     note '在Xwayland下请勿添加--use-gl=egl, 否则会导致程序卡顿'
     note "警告! 使用此软件可能导致暂时性或永久性的封号"
 }
