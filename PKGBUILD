@@ -1,5 +1,6 @@
-# Maintainer: Matthew of Boswell <mattboswell at lockmail dot us>
-# Previous Maintainer: Sébastien Luttringer <seblu@aur.archlinux.org>
+# Maintainer: Arne Brücher <archlinux@arne-bruecher.de>
+# Contributor: Matthew of Boswell <mattboswell at lockmail dot us>
+# Contributor: Sébastien Luttringer <seblu@aur.archlinux.org>
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 
 pkgname=xbl
