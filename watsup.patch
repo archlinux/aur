@@ -1,0 +1,22 @@
+diff -Naur watsup.orig/watsup.desktop watsup.new/watsup.desktop
+--- watsup.orig/watsup.desktop	2023-01-02 15:09:08.000000000 +0100
++++ watsup.new/watsup.desktop	2023-02-19 20:24:55.597981676 +0100
+@@ -6,4 +6,4 @@
+ Type=Application
+ Terminal=false
+ Exec=watsup
+-Icon=/usr/share/watsup/icons/watsup.png
++Icon=watsup
+diff -Naur watsup.orig/zfuncs.cc watsup.new/zfuncs.cc
+--- watsup.orig/zfuncs.cc	2023-01-02 15:09:08.000000000 +0100
++++ watsup.new/zfuncs.cc	2023-02-19 20:25:43.660922542 +0100
+@@ -6222,9 +6222,6 @@
+    Plog(1,"start %s %s \n",zappname,ch_time);
+    fflush(0);
+ 
+-   err = stat(zdatadir,&statB);                                                  //  missing files from .../appname/data
+-   if (! err) zshell("log","cp -R -n %s/* %s",zdatadir,zhomedir);                //    --> user appname home folder
+-
+    tid_main = pthread_self();                                                    //  thread ID of main() process
+    
+    //  GTK initialization
