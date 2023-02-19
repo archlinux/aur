@@ -1,6 +1,6 @@
 # Maintainer: Luis Garcia <luigi311.lg@gmail.com>
 pkgname=svt-hevc-git
-pkgver=r111.54cb2f4
+pkgver=r368.eb24a06
 pkgrel=1
 pkgdesc="The Scalable Video Technology for HEVC Encoder (SVT-HEVC Encoder) is an HEVC-compliant encoder library core."
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ makedepends=('cmake' 'gcc' 'yasm' 'git')
 checkdepends=()
 optdepends=()
 provides=('svt-hevc')
-conflicts=()
+conflicts=('svt-hevc')
 replaces=('svt-hevc')
 backup=()
 options=()
