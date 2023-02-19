@@ -1,0 +1,20 @@
+pkgbase = devilscalw-flasher-git
+	pkgdesc = LG CD/DVD/BluRay drive firmware dumping and flashing software
+	pkgver = r22.864b3ee
+	pkgrel = 1
+	url = https://github.com/devilsclaw/flasher
+	arch = i486
+	arch = i686
+	arch = pentium4
+	arch = armv7h
+	arch = aarch64
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = glibc
+	provides = devilscalw-flasher
+	conflicts = devilscalw-flasher
+	source = git+https://github.com/devilsclaw/flasher.git
+	sha256sums = SKIP
+
+pkgname = devilscalw-flasher-git
