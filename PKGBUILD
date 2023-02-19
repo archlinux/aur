@@ -3,7 +3,7 @@
 pkgname=libsignal-client
 _pkgname=libsignal
 _libname=libsignal_jni
-pkgver=0.21.1
+pkgver=0.22.0
 pkgrel=1
 pkgdesc='Library for the Signal Protocol.'
 url="https://github.com/signalapp/${_pkgname}"
@@ -16,7 +16,7 @@ source=(
     "${_pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${_pkgname}/archive/refs/tags/v$pkgver.tar.gz"
 )
 
-sha512sums=('d2c13bf0d96eb706afe018c0ef9b377f3f50d2a82690f6ccb7260efa7cc620fb5c52ae775d598d6ebcaa581acfaab244dfe6f7f1738755604bf860cd548a62b6')
+sha512sums=('9483c8d302728d6caa123f1fb9a977c7cb3aea09ecd1d2cfb3b19f2f2c66f884c41e37642c89db4eeeb0d607fddf281ba27ba4bd0a90e43b972d0cbc607e1483')
 
 prepare() {
   tar xf "${_pkgname}-$pkgver.tar.gz"
@@ -26,7 +26,7 @@ prepare() {
   # rm -f rust-toolchain
 
   # Do not build the android library
-  sed -i "s/include ':android'//" java/settings.gradle
+  sed -i "s/include ':android', ':android:benchmarks'//" java/settings.gradle
   sed -i "s/cargo build/cargo build --frozen/" java/build_jni.sh
 
   cargo fetch --locked --target "$(rustc -vV | awk '/^host: / {print $2}')"
