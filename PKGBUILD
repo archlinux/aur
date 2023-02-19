@@ -5,10 +5,10 @@
 
 # Maintainer: Joao Chamine <jchamine@outlook.pt>
 pkgname=xnotes-git
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 epoch=
-pkgdesc="Simple notepad create in python"
+pkgdesc="Simple notepad created in python."
 arch=(x86_64 i686)
 url="https://JoaoChamine@bitbucket.org/JoaoChamine/xnotes.git"
 license=('GPL')
@@ -32,4 +32,7 @@ validpgpkeys=()
 package() {
 	cd "xnotes"
 	sudo cp bin/linux/Xnotes /usr/bin/Xnotes
+	sudo mkdir -p /usr/share/applications/Xnotes
+	sudo cp res/*.desktop /usr/share/applications/Xnotes/.
+	sudo cp -r img/ /usr/share/applications/Xnotes/.
 }
