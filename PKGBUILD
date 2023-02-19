@@ -1,7 +1,7 @@
 pkgname=memtest86+-6-git
-pkgver=v6.00.beta3.r23.gddbee66
-pkgrel=2
-pkgdesc='Memtest86+ is a stand-alone memory tester for x86 and x86-64 architecture computers. It can be loaded and run either directly by a PC BIOS (legacy or UEFI) or via an intermediate bootloader. v6 is NOT READY for production yet!'
+pkgver=v6.10.r12.g66bd82f
+pkgrel=1
+pkgdesc='Memtest86+ is a free, open-source, stand-alone memory tester for x86 and x86-64 architecture computers. It provides a much more thorough memory check than that provided by BIOS memory tests.'
 arch=('x86_64')
 url=https://github.com/memtest86plus/memtest86plus
 license=('GPL2')
