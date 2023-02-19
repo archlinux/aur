@@ -1,4 +1,4 @@
-# Maintainer: Luigi311 <luigi311.lg@gmail.com>
+# Maintainer: Luigi311 <aur@luigi311.com>
 pkgname=millipixels-git
 pkgver=r0.21d8a94a1e
 pkgrel=1
