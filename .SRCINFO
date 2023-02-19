@@ -1,7 +1,7 @@
 pkgbase = dolfin
 	pkgdesc = C++ interface of FEniCS
 	pkgver = 2019.1.0.post0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://bitbucket.org/fenics-project/dolfin
 	arch = x86_64
 	license = LGPL3

@@ -8,7 +8,7 @@
 pkgname=dolfin
 pkgdesc="C++ interface of FEniCS"
 pkgver=2019.1.0.post0
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 url="https://bitbucket.org/fenics-project/${pkgname}"
 license=('LGPL3')
@@ -31,6 +31,8 @@ prepare() {
   # https://bitbucket.org/fenics-project/dolfin/issues/1128/ftbfs-min_element-is-not-a-member-of-std
   sed -i '20 a #include <algorithm>' ${pkgname}-${pkgver}/${pkgname}/geometry/IntersectionConstruction.cpp
   sed -i '26 a #include <algorithm>' ${pkgname}-${pkgver}/${pkgname}/mesh/MeshFunction.h
+  # https://bitbucket.org/fenics-project/dolfin/pull-requests/540/fix-hdf5-and-boost-deprecation-errors
+  sed -i 's/ \ \ \ \ \ \ \ \ \ \ \ lapl_id);/ \ \ \ \ \ \ \ \ \ \ \ H5O_INFO_BASIC, lapl_id);/' ${pkgname}-${pkgver}/${pkgname}/io/HDF5Interface.cpp
   cd ${pkgname}-${pkgver}
   patch -p1 -i ../endian.patch
   patch -p1 -i ../pkg-config.patch
