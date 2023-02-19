@@ -6,7 +6,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=cmcl
 pkgver=2.1
-pkgrel=1
+pkgrel=15
 epoch=
 pkgdesc="A Launcher for Minecraft Java Edition Running On The Console"
 arch=('any')

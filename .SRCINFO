@@ -1,7 +1,7 @@
 pkgbase = cmcl
 	pkgdesc = A Launcher for Minecraft Java Edition Running On The Console
 	pkgver = 2.1
-	pkgrel = 1
+	pkgrel = 15
 	url = https://github.com/MrShieh-X/console-minecraft-launcher
 	arch = any
 	license = GPL3
