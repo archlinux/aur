@@ -1,14 +1,15 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer:  RogueGirl <3a33oxx40 at mozmail dot com>
+
 
 pkgname=green-tunnel
 pkgver=1.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc='An anti-censorship utility designed to bypass the DPI system that is put in place by various ISPs to block access to certain websites (CLI)'
 arch=('any')
 url="https://github.com/SadeghHayeri/GreenTunnel"
 license=('MIT')
 depends=('nodejs')
-makedepends=('tar' 'jq')
+makedepends=('tar' 'jq' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/SadeghHayeri/GreenTunnel/archive/v${pkgver}.tar.gz")
 sha256sums=('a543e48e5421e7a5e0a078bb339413d50ceae3dd393ef9bb3046b6bfb35715f5')
 
