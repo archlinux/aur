@@ -1,12 +1,7 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Sean Anderson <seanga2@gmail.com>
 _pkgname=arch-test
 pkgname=${_pkgname}-bin
-pkgver=0.19
+pkgver=0.20
 _debrel=1
 pkgrel=2
 epoch=
@@ -27,7 +22,7 @@ install=
 changelog=
 source=("http://ftp.debian.org/debian/pool/main/a/arch-test/${_pkgname}_$pkgver-${_debrel}_all.deb")
 noextract=()
-md5sums=('28261cc07df4c119e916b7ae29a965e4')
+sha256sums=('f8b4659feef23095e3c9f678d5607f34f3db6972ae6619c53ff9b28dc920a72e')
 validpgpkeys=()
 
 prepare() {
