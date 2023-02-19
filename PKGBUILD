@@ -4,9 +4,9 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=DescTools
-_pkgver=0.99.47
+_pkgver=0.99.48
 pkgname=r-${_pkgname,,}
-pkgver=0.99.47
+pkgver=0.99.48
 pkgrel=1
 pkgdesc='Tools for Descriptive Statistics'
 arch=('x86_64')
@@ -35,7 +35,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('32b4fa3f60cc79b25eb6aae13226c3ce7155213846625dab6e1a41cf9bb0a135')
+sha256sums=('dbe058c0ae9ad15ed07cab4baf690f315ec73e5274ddcc6dae9f33b49f4eb62b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
