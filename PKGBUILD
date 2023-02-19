@@ -14,12 +14,12 @@ url="https://bitbucket.org/fenics-project/${_base}"
 license=('LGPL3')
 depends=('dolfin=2019.1.0.post0'
   'python-pkgconfig'
-  'python-ply')
-makedepends=('cmake' 'python-mpi4py')
+  'python-ply'
+  'python-mpi4py')
+makedepends=('cmake')
 checkdepends=('openssh' 'python-pytest' 'python-decorator')
-optdepends=('python-mpi4py: MPI library for python'
-  'petsc4py: interface with PETSc from python'
-  'slepc4py: interface with SLEPc from python'
+optdepends=('petsc: interface with PETSc from python'
+  'slepc: interface with SLEPc from python'
   'python-matplotlib: plotting support')
 options=(!emptydirs)
 source=(${_base}-${pkgver}.tar.gz::${url}/downloads/${_base}-${pkgver}.tar.gz)

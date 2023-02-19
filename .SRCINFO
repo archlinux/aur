@@ -9,13 +9,12 @@ pkgbase = python-dolfin
 	checkdepends = python-pytest
 	checkdepends = python-decorator
 	makedepends = cmake
-	makedepends = python-mpi4py
 	depends = dolfin=2019.1.0.post0
 	depends = python-pkgconfig
 	depends = python-ply
-	optdepends = python-mpi4py: MPI library for python
-	optdepends = petsc4py: interface with PETSc from python
-	optdepends = slepc4py: interface with SLEPc from python
+	depends = python-mpi4py
+	optdepends = petsc: interface with PETSc from python
+	optdepends = slepc: interface with SLEPc from python
 	optdepends = python-matplotlib: plotting support
 	options = !emptydirs
 	source = dolfin-2019.1.0.post0.tar.gz::https://bitbucket.org/fenics-project/dolfin/downloads/dolfin-2019.1.0.post0.tar.gz
