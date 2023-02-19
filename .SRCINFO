@@ -1,0 +1,20 @@
+pkgbase = lgx2userspace-git
+	pkgdesc = This is a Linux userspace driver for the AverMedia LGX2 (GC551) and AverMedia LGX (GC550)
+	pkgver = 0.3.0.0adb6fd
+	pkgrel = 1
+	url = https://github.com/ChrisAJS/lgx2userspace
+	install = lgx2userspace.install
+	arch = any
+	license = custom:MIT
+	makedepends = cmake
+	makedepends = conan
+	depends = libao
+	depends = libusb
+	depends = sdl2
+	depends = sdl2_gfx
+	depends = v4l2loopback-dkms
+	depends = v4l2loopback-utils
+	source = lgx2userspace::git+https://github.com/ChrisAJS/lgx2userspace.git
+	md5sums = SKIP
+
+pkgname = lgx2userspace-git
