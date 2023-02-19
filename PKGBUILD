@@ -1,8 +1,8 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=sysbox-ce-git
-pkgver=r1530.cf2cfe0
+pkgver=r1598.4fa4718
 miscfiles_pkgver=0.5.2
-pkgrel=4
+pkgrel=1
 pkgdesc="Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)"
 url="https://github.com/nestybox/sysbox"
 arch=('x86_64')
