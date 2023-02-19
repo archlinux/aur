@@ -1,6 +1,6 @@
 pkgbase = apk-editor-studio-bin
 	pkgdesc = Powerful yet easy to use APK editor
-	pkgver = 1.7.0
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://github.com/kefir500/apk-editor-studio
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = apk-editor-studio-bin
 	depends = android-sdk-platform-tools
 	optdepends = libsecret: Enable password manager backend
 	provides = apk-editor-studio
-	source = https://github.com/kefir500/apk-editor-studio/releases/download/v1.7.0/apk-editor-studio_linux_1.7.0.AppImage
-	sha256sums = 0255cae22e5fb4e80e479d1417b70d190d4213063c1f2c2a7824130df319eef5
+	source = https://github.com/kefir500/apk-editor-studio/releases/download/v1.7.1/apk-editor-studio_linux_1.7.1.AppImage
+	sha256sums = 548cdee09e9951b577c0f2b9818ba90dbedef13ca4d57a7e20eab488c5ab1892
 
 pkgname = apk-editor-studio-bin
