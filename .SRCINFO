@@ -1,7 +1,7 @@
 pkgbase = revchatgpt-git
 	pkgdesc = Lightweight package for interacting with ChatGPT's API by OpenAI. Uses reverse engineered official API.
 	pkgver = 2.3.3+3.r980.20230219.39b7fee
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/acheong08/ChatGPT
 	install = revchatgpt.install
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = revchatgpt-git
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
+	depends = python-argparse
 	depends = python-httpx
 	depends = python-openaiauth
 	depends = python-requests

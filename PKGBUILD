@@ -4,7 +4,7 @@
 _pkgname=revchatgpt
 pkgname="${_pkgname}-git"
 pkgver=2.3.3+3.r980.20230219.39b7fee
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight package for interacting with ChatGPT's API by OpenAI. Uses reverse engineered official API."
 arch=(
   'any'
@@ -14,6 +14,7 @@ url="https://github.com/acheong08/ChatGPT"
 license=('GPL2')
 depends=(
   'python'
+  'python-argparse'
   'python-httpx'
   'python-openaiauth'
   'python-requests'
