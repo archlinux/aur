@@ -3,12 +3,12 @@
 
 pkgname=hypnotix-wayland
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An IPTV streaming application. (With Wayland support)."
 arch=(any)
 url="https://github.com/linuxmint/hypnotix"
 license=(GPL3)
-depends=(dconf hicolor-icon-theme python-cairo python-imdbpy python-requests python-setproctitle mpv xapp python-unidecode)
+depends=(dconf hicolor-icon-theme mpv python-cairo python-gobject python-imdbpy python-requests python-setproctitle python-unidecode xapp)
 conflicts=(hypnotix hypnotix-git)
 source=(https://github.com/linuxmint/hypnotix/archive/refs/tags/${pkgver}.tar.gz)
 sha256sums=('c69906318dfbfd10df055d085afbe271f2e89372faa4c47a649b4827b3a7903c')
