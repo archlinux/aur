@@ -1,6 +1,6 @@
 pkgbase = nwg-panel
 	pkgdesc = GTK3-based panel for sway Wayland compositor
-	pkgver = 0.7.16
+	pkgver = 0.7.17
 	pkgrel = 1
 	url = https://github.com/nwg-piotr/nwg-panel
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = nwg-panel
 	provides = nwg-panel
 	conflicts = nwg-panel
 	conflicts = nwg-panel-git
-	source = nwg-panel-0.7.16.tar.gz::https://github.com/nwg-piotr/nwg-panel/archive/v0.7.16.tar.gz
-	md5sums = 7ca4255f5415dac0f6b47fc34348b902
+	source = nwg-panel-0.7.17.tar.gz::https://github.com/nwg-piotr/nwg-panel/archive/v0.7.17.tar.gz
+	md5sums = 5300a9df07a16f01d3aab1dc831a6207
 
 pkgname = nwg-panel

@@ -1,6 +1,6 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-panel')
-pkgver=0.7.16
+pkgver=0.7.17
 pkgrel=1
 pkgdesc="GTK3-based panel for sway Wayland compositor"
 arch=('x86_64')
@@ -15,12 +15,14 @@ optdepends=('wlr-randr: for non-sway Wayland WMs support'
             'ddcutil: for external displays brightness control')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/nwg-panel/archive/v"$pkgver".tar.gz")
 
-md5sums=('7ca4255f5415dac0f6b47fc34348b902')
+md5sums=('5300a9df07a16f01d3aab1dc831a6207')
 
 package() {
   cd "${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1
   install -D -t "$pkgdir"/usr/share/pixmaps nwg-panel.svg
   install -D -t "$pkgdir"/usr/share/pixmaps nwg-shell.svg
+  install -D -t "$pkgdir"/usr/share/pixmaps nwg-processes.svg
   install -D -t "$pkgdir"/usr/share/applications nwg-panel-config.desktop
+  install -D -t "$pkgdir"/usr/share/applications nwg-processes.desktop
 }
