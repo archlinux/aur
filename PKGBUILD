@@ -3,7 +3,7 @@
 _pkgname='pdd'
 pkgname="${_pkgname}-git"
 pkgver=r143.9c6a3b7
-pkgrel=2
+pkgrel=1
 pkgdesc='Tiny date, time diff calculator with piggybacked timers.'
 arch=('any')
 url='https://github.com/jarun/pdd'
@@ -12,23 +12,20 @@ depends=('python' 'python-dateutil')
 makedepends=('git' 'python-setuptools')
 provides=("pdd")
 conflicts=("pdd")
-source=("git+${url}.git")
-sha256sums=('SKIP')
+source=("git+${url}.git" 
+	"patch-1::${url}/pull/35.patch" 
+	"patch-2::${url}/pull/34.patch")
+sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
-    cd "${srcdir}/${_pkgname}"
-    make
-}
-
 package() {
     cd "${srcdir}/${_pkgname}"
-    make PREFIX=/usr DESTDIR="${pkgdir}" install-bin
-    gzip -c -9 "${_pkgname}".1 > "${_pkgname}".1.gz
-    install -Dm644 "${_pkgname}".1 "${pkgdir}/usr/share/man/man1"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    patch -p1 < "${srcdir}/patch-1"
+    patch -p1 < "${srcdir}/patch-2"
+    make PREFIX=/usr DESTDIR="${pkgdir}" install
+    #make PREFIX=${pkgdir}/usr install
 }
