@@ -1,12 +1,13 @@
+# Maintainer: Azure Zeng <weedycn@outlook.com>
 # Contributor: Sam Guymer <sam at guymer dot me>
 # Contributor: so1ar <so1ar114514@gmail.com>
-# Maintainer: Macnolo0x7D4 <yosoymacnolo@gmail.com>
+# Contributor: Macnolo0x7D4 <yosoymacnolo@gmail.com>
 
 _java_ver=17
 _jdkname="zulu-jdk-fx"
-_zulu_build="${_java_ver}.30.15-ca"
+_zulu_build="${_java_ver}.40.19-ca"
 pkgname="zulu-jdk-fx-bin"
-pkgver="${_java_ver}.0.1"
+pkgver="${_java_ver}.0.6"
 pkgrel=1
 pkgdesc='Azul Zulu builds of OpenJDK are open source, TCK-tested and certified builds of OpenJDK.'
 arch=('x86_64')
@@ -23,10 +24,11 @@ provides=(
   "java-runtime-openjdk=$_java_ver"
   "java-openjfx=$_java_ver"
 )
+options=(!strip)
 install="$pkgname.install"
 _tarballname="zulu${_zulu_build}-fx-jdk${pkgver}-linux_x64"
 source=("https://cdn.azul.com/zulu/bin/${_tarballname}.tar.gz")
-sha256sums=('93c30f6d09140abef265f4c65223f18880eabfe6e4dcd873373e2b067a4b0001')
+sha256sums=('3411bdda7eb80d55779b032bf5ae985ee35cc91753e0b8871fe58b1061cfd8cc')
 
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
@@ -51,14 +53,14 @@ package() {
   rm -r "${pkgdir}/${_jvmdir}/legal"
   ln -s "/usr/share/licenses/${_jdkname}" "${pkgdir}/${_jvmdir}/legal"
 
-#  # Man pages
-#  for f in bin/*; do
-#    f=$(basename "${f}")
-#    _man=man/man1/"${f}.1"
-#    test -f "${_man}" && install -Dm 644 "${_man}" "${pkgdir}/usr/share/man/man1/${f}-${_jdkname}.1"
-#  done
-#  rm -r "${pkgdir}/${_jvmdir}/man"
-#  ln -s /usr/share/man "${pkgdir}/${_jvmdir}/man"
+  # Man pages
+  for f in bin/*; do
+    f=$(basename "${f}")
+    _man=man/man1/"${f}.1"
+    test -f "${_man}" && install -Dm 644 "${_man}" "${pkgdir}/usr/share/man/man1/${f}-${_jdkname}.1"
+  done
+  rm -r "${pkgdir}/${_jvmdir}/man"
+  ln -s /usr/share/man "${pkgdir}/${_jvmdir}/man"
 
   # Link JKS keystore from ca-certificates-utils
   rm -f "${pkgdir}/${_jvmdir}/lib/security/cacerts"
