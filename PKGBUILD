@@ -4,7 +4,7 @@
 _pkgbase=ocp
 pkgname=('ocp' 'ocp-sdl2')
 pkgver=0.2.103
-pkgrel=3
+pkgrel=4
 pkgdesc="Open Cubic Player"
 arch=('i686' 'x86_64')
 url="https://stian.cubic.org/project-ocp.php"
@@ -67,7 +67,7 @@ package_ocp-sdl2() {
 	conflicts=('ocp' 'ocp-curses')
 	install=${_pkgbase}.install	
 	depends=('alsa-lib'
-		 'bizp2'
+		 'bzip2'
 		 'cjson'
 		 'freetype2'
 		 'hicolor-icon-theme'
