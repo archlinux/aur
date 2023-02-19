@@ -23,7 +23,7 @@ function waylandLaunch(){
     _electronVer=`electron --version | cut -c 2-`
 
     if [[ `echo "${_electronVer} > 20" | bc` = 1 ]]; then
-        waylandFlag="--ozone-platform-hint=auto"
+        waylandFlag="--ozone-playform-hint=auto"
     else
         waylandFlag="--ozone-platform=wayland"
     fi
