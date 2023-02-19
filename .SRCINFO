@@ -1,7 +1,7 @@
 pkgbase = sysbox-ce
 	pkgdesc = Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nestybox/sysbox
 	install = install.sh
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = sysbox-ce
 	makedepends = git
 	makedepends = go
 	makedepends = protobuf
-	makedepends = protobuf-go
+	makedepends = protoc-gen-go-grpc
 	makedepends = lsb-release
 	makedepends = inetutils
 	depends = rsync
