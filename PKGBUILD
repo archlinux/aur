@@ -2,7 +2,7 @@
 
 pkgname=spoofax3-jvm-bin
 pkgver=0.19.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Spoofax 3 is a modular and incremental textual language workbench running on the JVM"
 arch=('x86_64')
 url="https://www.spoofax.dev/spoofax-pie/develop/"
@@ -14,7 +14,7 @@ makedepends=(git curl)
 pkgurl="https://artifacts.metaborg.org/service/local/artifact/maven/redirect?r=snapshots&g=org.metaborg&a=spoofax.lwb.eclipse.repository&c=spoofax3-linux-x86_64-jvm&p=zip&v=LATEST"
 
 source=(
-    "$pkgname-$pkgver.zip::$pkgurl"
+    "$pkgname-$pkgver-$pkgrel.zip::$pkgurl"
         "spoofax3.desktop"
 )
 sha256sums=('SKIP'
