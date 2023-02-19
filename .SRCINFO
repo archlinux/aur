@@ -1,6 +1,6 @@
 pkgbase = mopidy-soundcloud
 	pkgdesc = Mopidy extension for playing music from SoundCloud
-	pkgver = 3.0.1
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://github.com/mopidy/mopidy-soundcloud
 	arch = any
@@ -12,8 +12,9 @@ pkgbase = mopidy-soundcloud
 	depends = python-requests
 	depends = python-pykka
 	depends = python-setuptools
+	depends = python-beautifulsoup4
 	depends = mopidy>=3.0
-	source = mopidy-soundcloud-3.0.1::https://github.com/mopidy/mopidy-soundcloud/archive/v3.0.1.tar.gz
-	sha512sums = fb119464d7f9e5d7c89fcb8bbd9465ca7af452ec62a6b65477cdf58a87b192bea2dfdbf9e3708de904042fb6b79eed9091f90d8f42d07b7982687bb4e5ec9cc4
+	source = mopidy-soundcloud-3.0.2::https://github.com/mopidy/mopidy-soundcloud/archive/v3.0.2.tar.gz
+	sha512sums = 75c9c023370df6b3cb3c2b16aad66e3662f25372d4dc701c16c96db29853fcb77a25eed932f4f48f4e317995c504c2b00fe3d5ee816385ad1f7daa012917f2cc
 
 pkgname = mopidy-soundcloud
