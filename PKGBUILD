@@ -1,18 +1,18 @@
 # Maintainer: Florian Pritz <bluewind@xinu.at>
 
 pkgname=perl-function-parameters
-pkgver=2.001003
-pkgrel=6
+pkgver=2.001005
+pkgrel=1
 pkgdesc='define functions and methods with parameter lists ("subroutine signatures")'
 arch=(x86_64)
 license=(PerlArtistic GPL)
 options=(!emptydirs)
 depends=('perl>=5.14.0')
-checkdepends=(perl-dir-self perl-test-fatal)
+checkdepends=(perl-test-fatal)
 url=https://metacpan.org/release/Function-Parameters
-source=("https://search.cpan.org/CPAN/authors/id/M/MA/MAUKE/Function-Parameters-$pkgver.tar.gz")
-md5sums=(da36fb4c1a50c7d43ffd77889b0d2547)
-sha512sums=(47fd5e1e4b4d62b4576cc7439ba6f2636cef96f851e668bbd2274f79f2c4ee11fd9aa2e5739bbdfdf3ed0b3c373dc1c8d63920fd390a1d56592fbdc9be90db59)
+source=("https://cpan.metacpan.org/authors/id/M/MA/MAUKE/Function-Parameters-$pkgver.tar.gz")
+md5sums=(288935f5883cff32a5ea235832508ef4)
+sha512sums=(96962e03f85ed0d2d1c6cbb781118724a905a31bb531b8fb94634183042ae8f069269af565b9be592771be5a1e06ffb855bbb7b8171faf27f1bb470771b7687d)
 _ddir="Function-Parameters-$pkgver"
 
 build()
