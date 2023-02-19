@@ -1,17 +1,17 @@
 pkgname=nextcloud-app-forms
 _name=forms
-pkgver=3.0.1
+pkgver=3.0.4
 pkgrel=1
 pkgdesc="Poll app for Nextcloud"
 arch=('any')
 url="https://github.com/nextcloud/forms"
 license=('AGPL3')
 depends=('nextcloud')
-makedepends=('nextcloud' 'php7' 'ripgrep' 'yq')
+makedepends=('nextcloud' 'php-legacy' 'ripgrep' 'yq')
 groups=('nextcloud-apps')
 #source=("forms-${pkgver}.tar.gz::https://github.com/nextcloud-releases/forms/releases/download/v$pkgver/forms-v$pkgver.tar.gz")
 source=("forms-${pkgver}.tar.gz::https://github.com/nextcloud/forms/releases/download/v$pkgver/forms.tar.gz")
-sha512sums=('bd804e0afd823a2010cb698cf10e567c8746547590e93b02ed8030635cfca14270d1cf91c11ddd589260bb7e471a88332f99b2eb1258e43ceb837856c6f3faca')
+sha512sums=('7bb00bc4615b961755edf864eff79733480e80f4d352171ff7d377c5a00da7fe6bf468812af228befea79cee93d7d97f88692a1c2d04f76c484314b7534e4900')
 
 _get_nextcloud_versions() {
   _app_min_major_version="$(xq '.info.dependencies.nextcloud["@min-version"]' "${_name}/appinfo/info.xml"| sed 's/"//g')"
@@ -20,7 +20,7 @@ _get_nextcloud_versions() {
 }
 
 _get_php_versions() {
-  local _phps=(php7 php)
+  local _phps=(php7 php-legacy php)
 
   _app_min_php="$(xq '.info.dependencies.php["@min-version"]' "$_name/appinfo/info.xml"| sed 's/"//g')"
   _app_max_php="$(xq '.info.dependencies.php["@max-version"]' "$_name/appinfo/info.xml"| sed 's/"//g')"
