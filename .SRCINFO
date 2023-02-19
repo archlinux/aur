@@ -1,0 +1,14 @@
+pkgbase = hex2dfu-git
+	pkgdesc = Simple command line tool to convert file format from Intel HEX to STM32 DFU.
+	pkgver = r27.472b703
+	pkgrel = 1
+	url = https://github.com/encedo/hex2dfu
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	depends = glibc
+	source = hex2dfu-git::git+https://github.com/encedo/hex2dfu.git
+	md5sums = SKIP
+
+pkgname = hex2dfu-git
