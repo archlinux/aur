@@ -1,7 +1,7 @@
 pkgbase = librewolf
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
-	pkgver = 109.0.1
-	pkgrel = 1
+	pkgver = 110.0
+	pkgrel = 2
 	url = https://librewolf.net/
 	install = librewolf.install
 	arch = x86_64
@@ -55,23 +55,23 @@ pkgbase = librewolf
 	options = !strip
 	backup = usr/lib/librewolf/librewolf.cfg
 	backup = usr/lib/librewolf/distribution/policies.json
-	source = https://archive.mozilla.org/pub/firefox/releases/109.0.1/source/firefox-109.0.1.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/109.0.1/source/firefox-109.0.1.source.tar.xz.asc
+	source = https://archive.mozilla.org/pub/firefox/releases/110.0/source/firefox-110.0.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/110.0/source/firefox-110.0.source.tar.xz.asc
 	source = librewolf.desktop
-	source = git+https://gitlab.com/librewolf-community/browser/source.git#commit=80357551854ed1e05d599dd06973d4ba2aa79257
-	source = git+https://gitlab.com/librewolf-community/settings.git#commit=6fe09c63cbfb83ebfb6a17f5e624248f2501b97e
+	source = git+https://gitlab.com/librewolf-community/browser/source.git#commit=19d2fe15c83e448e0b11e0530a576875e408ceeb
+	source = git+https://gitlab.com/librewolf-community/settings.git#commit=ebec9c7db23ec1d1407da547b05207f49ff9c575
 	source = default192x192.png
 	source = 0018-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
-	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/8eebdfaa9f99b93684cef9a2a6737cc7f56473e4/trunk/0001-libwebrtc-screen-cast-sync.patch
+	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/15a316eae92227054a924561172c8271bee7fc9c/trunk/0001-libwebrtc-screen-cast-sync.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = 5e43fdfb3923ee3a7ae7bc91ef3377a3fc6f8a0c1b87436c19b29458b0d731d9
+	sha256sums = d3882492190e4fdcfa142772cf35de5403effb011d24357b315d643ed9168a39
 	sha256sums = SKIP
 	sha256sums = 21054a5f41f38a017f3e1050ccc433d8e59304864021bef6b99f0d0642ccbe93
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1
 	sha256sums = 1d713370fe5a8788aa1723ca291ae2f96635b92bc3cb80aea85d21847c59ed6d
-	sha256sums = b1ce6936749ab1614bbce4fddc87058341ed207dde77af609fdc5ac83538517a
+	sha256sums = 43c83101b7ad7dba6f5fffeb89b70a661a547d506a031ea2beada42ccf04eec7
 	source_aarch64 = 0001-libwebrtc-screen-cast-sync_additional_aarch64.patch
 	sha256sums_aarch64 = 358655062957b12255977714f3d04123857e562679cd35efb2b67b2e182a464a
 

@@ -2,8 +2,8 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=109.0.1
-pkgrel=1
+pkgver=110.0
+pkgrel=2
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 url="https://librewolf.net/"
 arch=(x86_64 aarch64)
@@ -70,9 +70,9 @@ _arch_git=https://raw.githubusercontent.com/archlinux/svntogit-packages/packages
 _arch_git_blob=https://raw.githubusercontent.com/archlinux/svntogit-packages
 # _source_tag="${pkgver}-${pkgrel%.*}"
 # _source_tag="${pkgver}-${pkgrel}"
-_source_commit='80357551854ed1e05d599dd06973d4ba2aa79257'
+_source_commit='19d2fe15c83e448e0b11e0530a576875e408ceeb'
 # _settings_tag='7.4'
-_settings_commit='6fe09c63cbfb83ebfb6a17f5e624248f2501b97e'
+_settings_commit='ebec9c7db23ec1d1407da547b05207f49ff9c575'
 
 install='librewolf.install'
 source=(
@@ -82,25 +82,27 @@ source=(
   "git+https://gitlab.com/${pkgname}-community/settings.git#commit=${_settings_commit}"
   "default192x192.png"
   "0018-bmo-1516081-Disable-watchdog-during-PGO-builds.patch"
-  "${_arch_git_blob}/8eebdfaa9f99b93684cef9a2a6737cc7f56473e4/trunk/0001-libwebrtc-screen-cast-sync.patch"
+  "${_arch_git_blob}/15a316eae92227054a924561172c8271bee7fc9c/trunk/0001-libwebrtc-screen-cast-sync.patch"
 )
 
 source_aarch64=("0001-libwebrtc-screen-cast-sync_additional_aarch64.patch") # include scoped_glib.cc for aarch64 as well; breaks x86_64 build though?
 
-sha256sums=('5e43fdfb3923ee3a7ae7bc91ef3377a3fc6f8a0c1b87436c19b29458b0d731d9'
+sha256sums=('d3882492190e4fdcfa142772cf35de5403effb011d24357b315d643ed9168a39'
             'SKIP'
             '21054a5f41f38a017f3e1050ccc433d8e59304864021bef6b99f0d0642ccbe93'
             'SKIP'
             'SKIP'
             '959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1'
             '1d713370fe5a8788aa1723ca291ae2f96635b92bc3cb80aea85d21847c59ed6d'
-            'b1ce6936749ab1614bbce4fddc87058341ed207dde77af609fdc5ac83538517a')
+            '43c83101b7ad7dba6f5fffeb89b70a661a547d506a031ea2beada42ccf04eec7')
 sha256sums_aarch64=('358655062957b12255977714f3d04123857e562679cd35efb2b67b2e182a464a')
 
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
-# change this to false if you do not want to run a PGO build for aarch64 as well
-_build_profiled_aarch64=true
+# change this to true if you do want to run a PGO build for aarch64 or x86_64
+# seems to be broken since 109.somethingsomething, so disabled by default in the AUR PKGBUILD for now
+_build_profiled_aarch64=false
+_build_profiled_x86_64=false
 
 prepare() {
   mkdir -p mozbuild
@@ -246,8 +248,10 @@ fi
   # Assorted patches
   patch -Np1 -i ${_patches_dir}/context-menu.patch
   patch -Np1 -i ${_patches_dir}/urlbarprovider-interventions.patch
+  patch -Np1 -i ${_patches_dir}/rfp-performance-api.patch
+  patch -Np1 -i ${_patches_dir}/unified-extensions-dont-show-recommendations.patch
 
-# allow enabling JPEG XL in non-nightly browser
+  # allow enabling JPEG XL in non-nightly browser
   patch -Np1 -i ${_patches_dir}/allow-JXL-in-non-nightly-browser.patch
 
   # change some hardcoded directory strings that could lead to unnecessarily
@@ -336,74 +340,70 @@ build() {
   ulimit -n 4096
 
   # Do 3-tier PGO
-####  echo "Building instrumented browser..."
-####
-####  if [[ $CARCH == 'aarch64' ]]; then
-####
-####    cat >.mozconfig ../mozconfig - <<END
-####ac_add_options --enable-profile-generate
-####END
-####
-####    else
-####
-####    cat >.mozconfig ../mozconfig - <<END
-####ac_add_options --enable-profile-generate=cross
-####END
-####
-####  fi
-####
-####  ./mach build
-####
-####  echo "Profiling instrumented browser..."
-####
-####  ./mach package
-####
-####  LLVM_PROFDATA=llvm-profdata \
-####    JARLOG_FILE="$PWD/jarlog" \
-####    xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
-####    ./mach python build/pgo/profileserver.py
-####
-####  stat -c "Profile data found (%s bytes)" merged.profdata
-####  test -s merged.profdata
-####
-####  stat -c "Jar log found (%s bytes)" jarlog
-####  test -s jarlog
-####
-####  echo "Removing instrumented browser..."
-####  ./mach clobber
-####
-####  echo "Building optimized browser..."
-####
-####   if [[ $CARCH == 'aarch64' ]]; then
-#### 
-####     cat >.mozconfig ../mozconfig - <<END
-#### ac_add_options --enable-lto
-#### ac_add_options --enable-profile-use
-#### ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
-#### ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
-#### END
-#### 
-####   else
-#### 
-####     cat >.mozconfig ../mozconfig - <<END
-#### ac_add_options --enable-lto=cross
-#### ac_add_options --enable-profile-use=cross
-#### ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
-#### ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
-#### END
-#### 
-####   fi
+  echo "Building instrumented browser..."
 
-  # cat >>.mozconfig <<END
-# ac_add_options --enable-linker=lld
-# ac_add_options --disable-bootstrap
-# END
+  if [[ $CARCH == 'aarch64' && $_build_profiled_aarch64 == true ]]; then
 
+    cat >.mozconfig ../mozconfig - <<END
+ac_add_options --enable-profile-generate
+END
 
+  elif [[ $CARCH == 'x86_64' && $_build_profiled_x86_64 == true ]]; then
 
-#### TEMP
-  cat >.mozconfig ../mozconfig
-####
+    cat >.mozconfig ../mozconfig - <<END
+ac_add_options --enable-profile-generate=cross
+END
+
+  fi
+
+  if [[ $CARCH == 'aarch64' && $_build_profiled_aarch64 == true || $CARCH == 'x86_64' && $_build_profiled_x86_64 == true ]]; then
+
+    ./mach build
+
+    echo "Profiling instrumented browser..."
+
+    ./mach package
+
+    LLVM_PROFDATA=llvm-profdata \
+      JARLOG_FILE="$PWD/jarlog" \
+      xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
+      ./mach python build/pgo/profileserver.py
+
+    stat -c "Profile data found (%s bytes)" merged.profdata
+    test -s merged.profdata
+
+    stat -c "Jar log found (%s bytes)" jarlog
+    test -s jarlog
+
+    echo "Removing instrumented browser..."
+    ./mach clobber
+
+    echo "Building optimized browser..."
+
+    if [[ $CARCH == 'aarch64' ]]; then
+
+      cat >.mozconfig ../mozconfig - <<END
+ac_add_options --enable-lto
+ac_add_options --enable-profile-use
+ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
+ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
+END
+
+    else
+
+      cat >.mozconfig ../mozconfig - <<END
+ac_add_options --enable-lto=cross
+ac_add_options --enable-profile-use=cross
+ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
+ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
+END
+
+    fi
+  fi
+
+  if [[ $CARCH == 'aarch64' && $_build_profiled_aarch64 == false || $CARCH == 'x86_64' && $_build_profiled_x86_64 == false ]]; then
+    cat >.mozconfig ../mozconfig
+  fi
 
   ./mach build
 
