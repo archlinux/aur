@@ -3,8 +3,8 @@
 _pkgname=grapejuice
 _repository=https://gitlab.com/brinkervii/grapejuice.git
 pkgname="${_pkgname}-git"
-pkgver=7.8.2
-pkgrel=1
+pkgver=v7.8.3.r0.g605e381
+pkgrel=2
 pkgdesc='A Wine+Roblox management tool'
 arch=('x86_64')
 url="${_repository}"
@@ -54,7 +54,10 @@ pkgver() {
   
   _grapejuice_version=$(python3 -c 'from grapejuice import __version__; print(__version__)')
 
-  echo "${_grapejuice_version}"
+  ( set -o pipefail
+    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "%s.r%s.%s" "${_grapejuice_version} $(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  )
 }
 
 package() {
