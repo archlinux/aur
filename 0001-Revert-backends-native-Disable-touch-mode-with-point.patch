@@ -1,8 +1,8 @@
 diff --git a/src/backends/native/meta-seat-impl.c b/src/backends/native/meta-seat-impl.c
-index 624b2fe6f..d130d634b 100644
+index a394e6b9f..f9cffcae9 100644
 --- a/src/backends/native/meta-seat-impl.c
 +++ b/src/backends/native/meta-seat-impl.c
-@@ -1559,30 +1559,6 @@ has_touchscreen (MetaSeatImpl *seat_impl)
+@@ -1630,30 +1630,6 @@ has_touchscreen (MetaSeatImpl *seat_impl)
    return FALSE;
  }
  
@@ -33,7 +33,7 @@ index 624b2fe6f..d130d634b 100644
  static gboolean
  device_is_tablet_switch (MetaInputDeviceNative *device_native)
  {
-@@ -1622,14 +1598,11 @@ update_touch_mode (MetaSeatImpl *seat_impl)
+@@ -1693,14 +1669,11 @@ update_touch_mode (MetaSeatImpl *seat_impl)
    /* If we have a tablet mode switch, honor it being unset */
    else if (seat_impl->has_tablet_switch && !seat_impl->tablet_mode_switch_state)
      touch_mode = FALSE;
@@ -51,7 +51,7 @@ index 624b2fe6f..d130d634b 100644
  
    if (seat_impl->touch_mode != touch_mode)
      {
-@@ -1649,7 +1622,7 @@ evdev_add_device (MetaSeatImpl           *seat_impl,
+@@ -1720,7 +1693,7 @@ evdev_add_device (MetaSeatImpl           *seat_impl,
  {
    ClutterInputDeviceType type;
    ClutterInputDevice *device;
@@ -60,7 +60,7 @@ index 624b2fe6f..d130d634b 100644
  
    device = meta_input_device_native_new_in_impl (seat_impl, libinput_device);
  
-@@ -1663,13 +1636,11 @@ evdev_add_device (MetaSeatImpl           *seat_impl,
+@@ -1734,13 +1707,11 @@ evdev_add_device (MetaSeatImpl           *seat_impl,
    is_touchscreen = type == CLUTTER_TOUCHSCREEN_DEVICE;
    is_tablet_switch =
      device_is_tablet_switch (META_INPUT_DEVICE_NATIVE (device));
@@ -74,8 +74,8 @@ index 624b2fe6f..d130d634b 100644
 +  if (is_touchscreen || is_tablet_switch)
      update_touch_mode (seat_impl);
  
-   return device;
-@@ -1681,7 +1652,7 @@ evdev_remove_device (MetaSeatImpl          *seat_impl,
+   if (type == CLUTTER_KEYBOARD_DEVICE)
+@@ -1764,7 +1735,7 @@ evdev_remove_device (MetaSeatImpl          *seat_impl,
  {
    ClutterInputDevice *device;
    ClutterInputDeviceType device_type;
@@ -84,7 +84,7 @@ index 624b2fe6f..d130d634b 100644
  
    device = CLUTTER_INPUT_DEVICE (device_native);
    seat_impl->devices = g_slist_remove (seat_impl->devices, device);
-@@ -1690,16 +1661,13 @@ evdev_remove_device (MetaSeatImpl          *seat_impl,
+@@ -1773,16 +1744,13 @@ evdev_remove_device (MetaSeatImpl          *seat_impl,
  
    is_touchscreen = device_type == CLUTTER_TOUCHSCREEN_DEVICE;
    is_tablet_switch = device_is_tablet_switch (device_native);
@@ -103,7 +103,7 @@ index 624b2fe6f..d130d634b 100644
  
    if (seat_impl->repeat_source && seat_impl->repeat_device == device)
 diff --git a/src/backends/native/meta-seat-impl.h b/src/backends/native/meta-seat-impl.h
-index d3e2ab860..14ec75dc1 100644
+index ff614586a..3fd05ae12 100644
 --- a/src/backends/native/meta-seat-impl.h
 +++ b/src/backends/native/meta-seat-impl.h
 @@ -100,7 +100,6 @@ struct _MetaSeatImpl
@@ -114,4 +114,3 @@ index d3e2ab860..14ec75dc1 100644
    gboolean touch_mode;
    gboolean input_thread_initialized;
  
--- 

@@ -37,6 +37,6 @@ pkgbase = mutter-auto-rotation
 	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=a63755bdad7d8bffdbbc649178d759c37dacce01
 	source = 0001-Revert-backends-native-Disable-touch-mode-with-point.patch
 	sha256sums = SKIP
-	sha256sums = fce87093b2f162114cd438a4aa5d3969a709a00416d179f76411a566e5403dae
+	sha256sums = b11e3e1c9a14b9d9a3941e4495f7f16cfe84c53c6b8e571df049546840a91a46
 
 pkgname = mutter-auto-rotation

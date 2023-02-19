@@ -52,7 +52,7 @@ source=(
 
 sha256sums=(
   'SKIP'
-  'fce87093b2f162114cd438a4aa5d3969a709a00416d179f76411a566e5403dae'
+  'b11e3e1c9a14b9d9a3941e4495f7f16cfe84c53c6b8e571df049546840a91a46'
 )
 
 pkgver() {
@@ -62,11 +62,12 @@ pkgver() {
 
 prepare() {
   cd mutter
-  git apply ../0001-Revert-backends-native-Disable-touch-mode-with-point.patch
 
   # Fix broken focus handling with XWayland
   # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2848
-  git cherry-pick -n d5e75bccdee7ea0e30cd860ca08ae109dcb311c8
+  # git cherry-pick -n d5e75bccdee7ea0e30cd860ca08ae109dcb311c8
+
+  git apply ../0001-Revert-backends-native-Disable-touch-mode-with-point.patch
 }
 
 build() {
