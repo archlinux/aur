@@ -19,7 +19,7 @@ build() {
 
 package() {
 	cd "Local-DNS"
-	make libcrafter
+	make DESTDIR="$pkgdir" libcrafter
 	make main
-	make install
+	make DESTDIR="$pkgdir" install
 }
