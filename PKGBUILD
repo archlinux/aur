@@ -11,14 +11,8 @@ pkgdesc="DanMoShui Calligraphy on deepin wine 6.基于Deepin Wine 6的淡墨水�
 arch=("x86_64")
 url="https://danmoshui.com"
 license=('custom')
-depends=(
-    'deepin-wine6-stable'
-    'xdg-utils'
-    )
-optdepends=(
-    'wqy-microhei'
-    'wqy-zenhei'
-    )
+depends=('deepin-wine6-stable')
+optdepends=()
 conflicts=()
 provides=("danmoshui")
 install="${pkgname}.install"
@@ -50,7 +44,7 @@ prepare() {
     mv "${srcdir}/tmp/drive_c/Program Files/淡墨水字帖_x64" "${srcdir}/tmp/drive_c/Program Files/${_pkgname}"
     mv "${srcdir}/tmp/drive_c/Program Files/${_pkgname}/淡墨水字帖.exe" "${srcdir}/tmp/drive_c/Program Files/${_pkgname}/${_pkgname}.exe"
     7z a -t7z -r "${srcdir}/opt/apps/${pkgname}/files/files.7z" "${srcdir}/tmp/*"
-    rm -rf ${srcdir}/opt/apps/${_pkgname}/info
+    rm -rf ${srcdir}/opt/apps/${pkgname}/info
 }
      
 package() {
