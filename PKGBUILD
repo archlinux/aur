@@ -2,7 +2,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=browser360-bin
 _pkgname=com.360.browser-stable
-pkgver=13.2.1026.36
+pkgver=13.2.1028.33
 pkgrel=1
 epoch=
 pkgdesc="360 Browser stable version"
@@ -15,7 +15,7 @@ provides=(360.net)
 conflicts=(browser360-stable-bin)
 install=
 source=("https://down.360safe.com/gc/signed_${_pkgname}_${pkgver}-${pkgrel}_amd64.deb")
-sha256sums=('1e33160c51b3c19dc82fe9bd497640f95d1358353809e15f45871ca484796337')
+sha256sums=('b02e06dddb0ffd40bcd291094067885acf7bef6c582a2887493d9e6b5f574822')
 
 prepare() {
     bsdtar -xf data.tar.xz
