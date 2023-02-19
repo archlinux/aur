@@ -3,7 +3,7 @@
 
 pkgname=jd-tool
 _pkgname=jd
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="JSON diff and patch"
 arch=(x86_64 aarch64)
@@ -12,7 +12,7 @@ license=(MIT)
 makedepends=(go)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d23e67e1ff6a3752a558bcc00e76cf270189b8a39569cca3aebfe0b172c32d43')
+sha256sums=('3d0b693546891bab41ca5c3be859bc760631608c9add559aa561fb751cdd1c92')
 
 _archive="$_pkgname-$pkgver"
 
