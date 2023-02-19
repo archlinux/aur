@@ -1,6 +1,6 @@
 pkgbase = elk-zone-bin
 	pkgdesc = Native version of Elk, a nimble Mastodon web client.
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/elk-zone/elk-native
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = elk-zone-bin
 	depends = librsvg
 	depends = libvips
 	conflicts = elk-zone-git
-	source = https://github.com/elk-zone/elk-native/releases/download/elk-native-v0.3.0/Elk_0.3.0_linux_x86_64.deb
-	sha256sums = b2110315044b9abbd7bc1c7be5b38605dd9081ecb08469d229f473dc18e6f1a0
+	source = https://github.com/elk-zone/elk-native/releases/download/elk-native-v0.4.0/Elk_0.4.0_linux_x86_64.deb
+	sha256sums = 40c27e67ee7adc002e7b3ce95c5f9ba6166182da516e4e0a86f89c484f9d3652
 
 pkgname = elk-zone-bin
