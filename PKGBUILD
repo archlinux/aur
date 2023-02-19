@@ -1,14 +1,14 @@
 # Mantainer: Alesar1
 # Contributor: KspLite <ksplite@outlook.com>
 pkgname=64gram-desktop-bin
-pkgver=1.0.69
+pkgver=1.0.70
 pkgrel=1
 epoch=1
 pkgdesc="Unofficial desktop version of Telegram messaging app - binary version"
 arch=(x86_64)
 url="https://github.com/TDesktop-x64/tdesktop"
 license=(GPL3)
-depends=(desktop-file-utils glib2 hicolor-icon-theme libdbus libx11)
+depends=(desktop-file-utils glib2 hicolor-icon-theme libdbus libx11 libglvnd fontconfig)
 optdepends=('ttf-opensans: default Open Sans font family')
 conflicts=(telegram-desktop 64gram-desktop)
 provides=(telegram-desktop 64gram-desktop)
@@ -27,7 +27,7 @@ sha256sums=('9df3688f1647de70cf00556295bb1fbb2f01c7a727806ddd4dfb2540ab584b80'
             '731431e47a5bc91c697d25c3a54fe7ba004752f5b66e0f282c47588ff7a314e6'
             '3fb1400c7dc9bbc3b5cb3ffedcbf4a9b09c53e28b57a7ff33a8a6b9048864090'
             'e297771c75bd2f81d637a3234f83568be62092f67d16946be23895fa92fa7119'
-            '5c3a95267c67eb04642fc26f9d0a4e5201bf819bc00c9e23a6f9fcbf71986a5f')
+            '9b4916bc1838e7cb6b435ba3428a3520416522aa1443f70788a6e92eafb0deec')
 
 package() {
 
