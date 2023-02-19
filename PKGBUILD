@@ -2,7 +2,7 @@
 pkgname=murex
 replaces=('murex-git')
 pkgver=3.1.3100
-pkgrel=1
+pkgrel=2
 pkgdesc="Bash-like shell designed for greater commandline productivity and safer shell scripts"
 arch=('i686' 'x86_64')
 url="https://github.com/lmorg/murex"
@@ -30,7 +30,7 @@ build() {
 check() {
   cd "$pkgname-$pkgver"
   go test ./... || true
-  build/murex -c 'g: behavioural/* -> foreach: f { source $f }; try {test: run *}'
+  build/murex -c 'g: behavioural/*.mx -> foreach: f { source $f }; try {test: run *}'
 }
 
 package() {
