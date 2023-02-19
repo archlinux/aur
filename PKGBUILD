@@ -2,7 +2,7 @@
 
 _pkgname='pyTooling'
 pkgname=python-${_pkgname,,}
-pkgver=2.11.0
+pkgver=2.12.3
 pkgrel=1
 pkgdesc="A powerful collection of arbitrary useful classes, decorators, meta-classes and exceptions"
 arch=(any)
@@ -19,7 +19,7 @@ checkdepends=(
 )
 replaces=('python-pytooling-packaging' 'python-pymetaclasses' 'python-pyexceptions')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f5828d88be41df3086a476b1f82b68b247a9fbbf882614ccc7d6d827c6ecd99f')
+sha256sums=('03c7d042500490f21ddebcc65a158e749208e9af2f9a551274d39e04957c8bbc')
 
 build() {
   cd "$_pkgname-$pkgver"
