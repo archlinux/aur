@@ -1,7 +1,7 @@
 pkgbase = murex
 	pkgdesc = Bash-like shell designed for greater commandline productivity and safer shell scripts
 	pkgver = 3.1.3100
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lmorg/murex
 	arch = i686
 	arch = x86_64
