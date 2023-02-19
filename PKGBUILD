@@ -1,4 +1,4 @@
-# Maintainer: Dreieck
+# Maintainer: dreieck (https://aur.archlinux.org/account/dreieck)
 # Contributor: Xnopyt <billy@xnopyt.info>
 # Contributor: Jack Chen <redchenjs at live dot com>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
@@ -6,7 +6,7 @@
 
 pkgname=anbox-image-houdini-magisk-xposed
 pkgver=2018.07.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Android image for running in Anbox, with Houdini, Xposed Framework and Magisk (Bootless)"
 arch=('x86_64')
 url="https://anbox.io"
@@ -17,7 +17,7 @@ provides=("anbox-image=${pkgver}")
 conflicts=('anbox-image')
 
 source=(
-    "https://build.anbox.io/android-images/${pkgver//./\/}/android_amd64.img"
+    "https://web.archive.org/web/20210607055240if_/https://build.anbox.io/android-images/${pkgver//./\/}/android_amd64.img"
     "https://github.com/redchenjs/aur-packages/releases/download/anbox-image/houdini_y.sfs"
     "https://github.com/redchenjs/aur-packages/releases/download/anbox-image/houdini_z.sfs"
     "https://github.com/topjohnwu/Magisk/releases/download/v20.4/Magisk-v20.4.zip"

@@ -1,7 +1,7 @@
 pkgbase = anbox-image-houdini-magisk-xposed
 	pkgdesc = Android image for running in Anbox, with Houdini, Xposed Framework and Magisk (Bootless)
 	pkgver = 2018.07.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://anbox.io
 	arch = x86_64
 	license = custom
@@ -13,7 +13,7 @@ pkgbase = anbox-image-houdini-magisk-xposed
 	provides = anbox-image=2018.07.19
 	conflicts = anbox-image
 	noextract = XposedInstaller_3.1.5.apk
-	source = https://build.anbox.io/android-images/2018/07/19/android_amd64.img
+	source = https://web.archive.org/web/20210607055240if_/https://build.anbox.io/android-images/2018/07/19/android_amd64.img
 	source = https://github.com/redchenjs/aur-packages/releases/download/anbox-image/houdini_y.sfs
 	source = https://github.com/redchenjs/aur-packages/releases/download/anbox-image/houdini_z.sfs
 	source = https://github.com/topjohnwu/Magisk/releases/download/v20.4/Magisk-v20.4.zip
