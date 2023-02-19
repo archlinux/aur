@@ -1,7 +1,7 @@
-From 77be0d9f3e1077031c51d65ac1eb576312a4b1a0 Mon Sep 17 00:00:00 2001
+From 73ca5997137f14a01be8a3a369101b8b3d93ca3e Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Mon, 12 May 2014 14:57:18 +0200
-Subject: [PATCH 1/4] Restore transparency
+Subject: [PATCH 01/16] Restore transparency
 
 The transparency settings were removed as a side effect of
 2bff4b63ed3ceef6055e35563e9b0b33ad57349d
@@ -155,7 +155,7 @@ index 61f1305e..c33723bf 100644
  #define TERMINAL_SETTING_CONTEXT_INFO_KEY               "context-info"
  #define TERMINAL_SETTING_DEFAULT_SHOW_MENUBAR_KEY       "default-show-menubar"
 diff --git a/src/terminal-screen.cc b/src/terminal-screen.cc
-index 54e10223..bae9c0cf 100644
+index a559f7f9..16f98c9d 100644
 --- a/src/terminal-screen.cc
 +++ b/src/terminal-screen.cc
 @@ -1059,7 +1059,9 @@ terminal_screen_profile_changed_cb (GSettings     *profile,
@@ -234,13 +234,13 @@ index 36eb7ce7..a41d2de2 100644
    uuid_unparse (u, uuidstr);
    priv->uuid = g_strdup (uuidstr);
 -- 
-2.38.1
+2.39.1
 
 
-From 4d5c621761a10d51a2c1e8d53010b8295fe97ef2 Mon Sep 17 00:00:00 2001
+From 8892f7cf3fc715457bd822f27393b156ef82e3d0 Mon Sep 17 00:00:00 2001
 From: Lars Uebernickel <lars.uebernickel@canonical.com>
 Date: Wed, 28 May 2014 14:11:02 +0200
-Subject: [PATCH 2/4] window: Make the drawing robust across all themes
+Subject: [PATCH 02/16] window: Make the drawing robust across all themes
 
 There are lots of themes out there in the wild that do not specify a
 background-color for all widgets and the default is transparent. This
@@ -296,13 +296,13 @@ index a41d2de2..11d93419 100644
    widget_class->screen_changed = terminal_window_screen_changed;
    widget_class->style_updated = terminal_window_style_updated;
 -- 
-2.38.1
+2.39.1
 
 
-From 99fda9a926a907f58a679797cc83708af77af48d Mon Sep 17 00:00:00 2001
+From d0bdf90b9523b9484ab5425494635323b535ee40 Mon Sep 17 00:00:00 2001
 From: "Owen W. Taylor" <otaylor@fishsoup.net>
 Date: Fri, 13 Nov 2015 15:16:42 +0100
-Subject: [PATCH 3/4] screen, window: Extra padding around transparent
+Subject: [PATCH 03/16] screen, window: Extra padding around transparent
  terminals in Wayland
 
 https://bugzilla.redhat.com/show_bug.cgi?id=1207943
@@ -312,7 +312,7 @@ https://bugzilla.redhat.com/show_bug.cgi?id=1207943
  2 files changed, 49 insertions(+), 10 deletions(-)
 
 diff --git a/src/terminal-screen.cc b/src/terminal-screen.cc
-index bae9c0cf..85f0fbcf 100644
+index 16f98c9d..51fdc20b 100644
 --- a/src/terminal-screen.cc
 +++ b/src/terminal-screen.cc
 @@ -156,6 +156,8 @@ static void terminal_screen_system_font_changed_cb (GSettings *,
@@ -384,7 +384,7 @@ index bae9c0cf..85f0fbcf 100644
  }
  
  static void
-@@ -1752,6 +1778,13 @@ terminal_screen_do_popup (TerminalScreen *screen,
+@@ -1755,6 +1781,13 @@ terminal_screen_do_popup (TerminalScreen *screen,
    terminal_screen_popup_info_unref (info);
  }
  
@@ -431,108 +431,109 @@ index 11d93419..61857bfe 100644
  
    return GTK_WIDGET_CLASS (terminal_window_parent_class)->draw (widget, cr);
 -- 
-2.38.1
+2.39.1
 
 
-From 712e6f6229bd75415d48f5e383d6322a87f146b1 Mon Sep 17 00:00:00 2001
+From 49963765569cedf8780c829a912bae05e67d7eb0 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Tue, 17 Feb 2015 17:06:17 +0100
-Subject: [PATCH 4/4] Restore translations for setting a title and transparency
+Subject: [PATCH 11/16] Restore translations for setting a title and
+ transparency
 
 ---
- po/am.po          |  8 ++++----
- po/an.po          | 12 ++++++------
- po/ar.po          | 16 ++++++++--------
- po/as.po          | 16 ++++++++--------
- po/ast.po         |  8 ++++----
- po/az.po          |  8 ++++----
- po/be.po          |  3 +++
- po/be@latin.po    |  8 ++++----
- po/bg.po          |  9 +++++++++
- po/bn.po          |  8 ++++----
- po/bn_IN.po       | 11 +++++++----
- po/br.po          |  6 +++---
- po/bs.po          | 10 ++++++++++
- po/ca.po          | 11 +++++++++++
- po/ca@valencia.po | 12 ++++++++++++
- po/cs.po          | 12 ++++++++++++
- po/cy.po          |  8 ++++----
- po/da.po          | 12 ++++++++++++
- po/de.po          | 12 ++++++++++++
- po/dz.po          |  8 ++++----
- po/el.po          | 15 +++++++++------
- po/en@shaw.po     |  8 ++++----
- po/en_CA.po       |  8 ++++----
- po/en_GB.po       | 16 ++++++++--------
- po/eo.po          |  8 ++++----
- po/es.po          | 16 ++++++++--------
- po/et.po          |  3 +++
- po/eu.po          | 12 ++++++++++++
- po/fa.po          | 15 +++++++++------
- po/fi.po          | 12 ++++++++++++
- po/fr.po          | 24 ++++++++++++++++++++++++
- po/fur.po         | 11 +++++++++--
- po/ga.po          |  3 +++
- po/gl.po          | 12 ++++++++++++
- po/gu.po          | 16 ++++++++--------
- po/he.po          | 16 ++++++++--------
- po/hi.po          | 17 ++++++++---------
- po/hr.po          | 10 ++++++++++
- po/hu.po          | 12 ++++++++++++
- po/hy.po          |  8 ++++----
- po/id.po          | 12 ++++++++++++
- po/it.po          | 12 ++++++++++++
- po/ja.po          | 12 ++++++++++++
- po/ka.po          |  5 +++++
- po/kk.po          | 12 ++++++++++++
- po/km.po          |  4 ++--
- po/kn.po          | 15 +++++++++------
- po/ko.po          | 12 ++++++++++++
- po/ku.po          |  8 ++++----
- po/lt.po          | 12 ++++++++++++
- po/lv.po          | 16 ++++++++++++++++
- po/mai.po         |  8 ++++----
- po/mg.po          |  8 ++++----
- po/mk.po          |  8 ++++----
- po/ml.po          |  3 +++
- po/mn.po          |  8 ++++----
- po/mr.po          | 16 ++++++++--------
- po/ms.po          |  4 ++--
- po/nb.po          | 12 ++++++++++++
- po/nds.po         |  8 ++++----
- po/ne.po          | 11 +++++++----
- po/nl.po          | 12 ++++++++++++
- po/nn.po          |  8 ++++----
- po/oc.po          | 12 ++++++------
- po/or.po          |  4 ++--
- po/pa.po          | 23 +++++++++++------------
- po/ps.po          |  8 ++++----
- po/pt.po          | 16 ++++++++--------
- po/pt_BR.po       | 12 ++++++++++++
- po/ro.po          |  4 ++--
- po/ru.po          | 16 ++++++++++++++++
- po/rw.po          |  3 +--
- po/si.po          |  8 ++++----
- po/sk.po          | 12 ++++++++++++
- po/sl.po          | 12 ++++++++++++
- po/sq.po          |  8 ++++----
- po/sr.po          | 22 ++++++++++++----------
- po/sr@latin.po    | 22 ++++++++++++----------
- po/sv.po          | 12 ++++++++++++
- po/ta.po          | 27 +++++++++++++--------------
- po/te.po          | 27 +++++++++++++--------------
- po/tg.po          | 16 ++++++++--------
- po/th.po          | 20 ++++++++++----------
- po/tr.po          | 12 ++++++++++++
- po/ug.po          |  4 ++--
- po/uk.po          | 15 +++++++++++++++
- po/vi.po          | 15 +++++++++------
- po/wa.po          | 12 ++++++------
- po/xh.po          | 12 ++++++------
- po/zh_CN.po       | 15 +++++++++------
- po/zh_HK.po       | 15 +++++++++------
- po/zh_TW.po       | 15 +++++++++------
- 92 files changed, 739 insertions(+), 326 deletions(-)
+ po/am.po          |  8 +++---
+ po/an.po          | 12 ++++----
+ po/ar.po          | 16 +++++------
+ po/as.po          | 16 +++++------
+ po/ast.po         |  8 +++---
+ po/az.po          |  8 +++---
+ po/be.po          |  3 ++
+ po/be@latin.po    |  8 +++---
+ po/bg.po          |  9 ++++++
+ po/bn.po          |  8 +++---
+ po/bn_IN.po       | 11 +++++---
+ po/br.po          |  6 ++--
+ po/bs.po          | 10 +++++++
+ po/ca.po          | 11 ++++++++
+ po/ca@valencia.po | 12 ++++++++
+ po/cs.po          | 12 ++++++++
+ po/cy.po          |  8 +++---
+ po/da.po          | 12 ++++++++
+ po/de.po          | 12 ++++++++
+ po/dz.po          |  8 +++---
+ po/el.po          | 15 ++++++----
+ po/en@shaw.po     |  8 +++---
+ po/en_CA.po       |  8 +++---
+ po/en_GB.po       | 16 +++++------
+ po/eo.po          |  8 +++---
+ po/es.po          | 16 +++++------
+ po/et.po          |  3 ++
+ po/eu.po          | 12 ++++++++
+ po/fa.po          | 18 ++++++++----
+ po/fi.po          | 12 ++++++++
+ po/fr.po          | 24 ++++++++++++++++
+ po/fur.po         | 11 ++++++--
+ po/ga.po          |  3 ++
+ po/gl.po          | 15 ++++++----
+ po/gu.po          | 16 +++++------
+ po/he.po          | 16 +++++------
+ po/hi.po          | 17 ++++++------
+ po/hr.po          | 10 +++++++
+ po/hu.po          | 12 ++++++++
+ po/hy.po          |  8 +++---
+ po/id.po          | 12 ++++++++
+ po/it.po          | 12 ++++++++
+ po/ja.po          | 12 ++++++++
+ po/ka.po          |  5 ++++
+ po/kk.po          | 12 ++++++++
+ po/km.po          |  4 +--
+ po/kn.po          | 15 ++++++----
+ po/ko.po          | 12 ++++++++
+ po/ku.po          |  8 +++---
+ po/lt.po          | 12 ++++++++
+ po/lv.po          | 16 +++++++++++
+ po/mai.po         |  8 +++---
+ po/mg.po          |  8 +++---
+ po/mk.po          |  8 +++---
+ po/ml.po          |  3 ++
+ po/mn.po          |  8 +++---
+ po/mr.po          | 16 +++++------
+ po/ms.po          |  4 +--
+ po/nb.po          | 12 ++++++++
+ po/nds.po         |  8 +++---
+ po/ne.po          | 11 +++++---
+ po/nl.po          | 12 ++++++++
+ po/nn.po          |  8 +++---
+ po/oc.po          | 12 ++++----
+ po/or.po          |  4 +--
+ po/pa.po          | 23 ++++++++--------
+ po/ps.po          |  8 +++---
+ po/pt.po          | 16 +++++------
+ po/pt_BR.po       | 12 ++++++++
+ po/ro.po          |  4 +--
+ po/ru.po          | 16 +++++++++++
+ po/rw.po          |  3 +-
+ po/si.po          |  8 +++---
+ po/sk.po          | 12 ++++++++
+ po/sl.po          | 12 ++++++++
+ po/sq.po          |  8 +++---
+ po/sr.po          | 22 ++++++++-------
+ po/sr@latin.po    | 22 ++++++++-------
+ po/sv.po          | 12 ++++++++
+ po/ta.po          | 27 +++++++++---------
+ po/te.po          | 27 +++++++++---------
+ po/tg.po          | 16 +++++------
+ po/th.po          | 20 +++++++-------
+ po/tr.po          | 12 ++++++++
+ po/ug.po          |  4 +--
+ po/uk.po          | 70 +++++++----------------------------------------
+ po/vi.po          | 15 ++++++----
+ po/wa.po          | 12 ++++----
+ po/xh.po          | 12 ++++----
+ po/zh_CN.po       | 15 ++++++----
+ po/zh_HK.po       | 15 ++++++----
+ po/zh_TW.po       | 15 ++++++----
+ 92 files changed, 734 insertions(+), 392 deletions(-)
 
 diff --git a/po/am.po b/po/am.po
 index 3445d96d..ee992f07 100644
@@ -1040,10 +1041,10 @@ index d97e6102..a768fe4a 100644
  #: ../src/profile-preferences.glade.h:78
  #, fuzzy
 diff --git a/po/el.po b/po/el.po
-index a82659e6..d814147c 100644
+index 5fdb4c72..015e397c 100644
 --- a/po/el.po
 +++ b/po/el.po
-@@ -2915,17 +2915,17 @@ msgstr "Αποτυχία ανάλυσης των ορισμάτων: %s\n"
+@@ -2917,17 +2917,17 @@ msgstr "Αποτυχία ανάλυσης των ορισμάτων: %s\n"
  #~ msgid "Default size:"
  #~ msgstr "Προεπιλεγμένο μέγεθος:"
  
@@ -1067,7 +1068,7 @@ index a82659e6..d814147c 100644
  
  #~ msgid "Current Locale"
  #~ msgstr "Τρέχουσα τοπική ρύθμιση"
-@@ -2963,3 +2963,6 @@ msgstr "Αποτυχία ανάλυσης των ορισμάτων: %s\n"
+@@ -2965,3 +2965,6 @@ msgstr "Αποτυχία ανάλυσης των ορισμάτων: %s\n"
  
  #~ msgid "_Input Methods"
  #~ msgstr "_Μέθοδοι εισαγωγής"
@@ -1271,21 +1272,24 @@ index 56f3f1df..6d9680dc 100644
 +msgid "Transparent background"
 +msgstr "Atzeko plano gardena"
 diff --git a/po/fa.po b/po/fa.po
-index 70ffa07d..8b746710 100644
+index 33213f05..c657f57e 100644
 --- a/po/fa.po
 +++ b/po/fa.po
-@@ -2793,8 +2793,8 @@ msgstr "تجزیهٔ آرگومان‌ها ممکن نبود: %s\n"
- #~ msgid "Use custom default terminal si_ze"
- #~ msgstr "استفاده از اندازه‌ی _سفارشی پایانه‌ی پیش‌فرض"
+@@ -2794,8 +2794,11 @@ msgstr "تجزیهٔ آرگومان‌ها ممکن نبود: %s\n"
+ #~ msgid "_Font:"
+ #~ msgstr "_قلم:"
  
 -#~ msgid "Title"
 -#~ msgstr "عنوان"
++#~ msgid "Use custom default terminal si_ze"
++#~ msgstr "استفاده از اندازه‌ی _سفارشی پایانه‌ی پیش‌فرض"
++
 +msgid "Title"
 +msgstr "عنوان"
  
  #~ msgid "When terminal commands set their o_wn titles:"
  #~ msgstr "وقتی که فرمان‌های پایانه عنوان‌های _خودشان را تنظیم می‌کنند:"
-@@ -2808,8 +2808,8 @@ msgstr "تجزیهٔ آرگومان‌ها ممکن نبود: %s\n"
+@@ -2809,8 +2812,8 @@ msgstr "تجزیهٔ آرگومان‌ها ممکن نبود: %s\n"
  #~ msgid "_Unlimited"
  #~ msgstr "_نامحدود"
  
@@ -1296,7 +1300,7 @@ index 70ffa07d..8b746710 100644
  
  #~ msgid "Switch to Tab 3"
  #~ msgstr "تعویض به زبانه‌ی ۳"
-@@ -2850,5 +2850,8 @@ msgstr "تجزیهٔ آرگومان‌ها ممکن نبود: %s\n"
+@@ -2851,5 +2854,8 @@ msgstr "تجزیهٔ آرگومان‌ها ممکن نبود: %s\n"
  #~ msgid "_Input Methods"
  #~ msgstr "روش‌های _ورودی"
  
@@ -1366,10 +1370,10 @@ index 3a9ee71e..64d56414 100644
 +msgid "Set Title"
 +msgstr "Définir le titre"
 diff --git a/po/fur.po b/po/fur.po
-index edbba329..87755fc1 100644
+index 09946141..0f1e81e3 100644
 --- a/po/fur.po
 +++ b/po/fur.po
-@@ -557,6 +557,10 @@ msgstr ""
+@@ -483,6 +483,10 @@ msgstr ""
  msgid "Which encoding to use"
  msgstr "Codifiche di doprâ"
  
@@ -1380,7 +1384,7 @@ index edbba329..87755fc1 100644
  #: src/org.gnome.Terminal.gschema.xml:350
  msgid ""
  "Whether ambiguous-width characters are narrow or wide when using UTF-8 "
-@@ -3576,6 +3580,9 @@ msgstr "Analisi dai argoments falide: %s\n"
+@@ -3588,6 +3592,9 @@ msgstr "Analisi dai argoments falide: %s\n"
  #~ msgid "The text you clicked on doesn't seem to be a valid OTP challenge."
  #~ msgstr "Il test fracât nol samee jessi un OTP challenge."
  
@@ -1390,7 +1394,7 @@ index edbba329..87755fc1 100644
  #~ msgid "Switch to Tab 3"
  #~ msgstr "Passe a la schede 3"
  
-@@ -3631,8 +3638,8 @@ msgstr "Analisi dai argoments falide: %s\n"
+@@ -3643,8 +3650,8 @@ msgstr "Analisi dai argoments falide: %s\n"
  #~ msgid "_Input Methods"
  #~ msgstr "_Cemût inserî test"
  
@@ -1399,8 +1403,8 @@ index edbba329..87755fc1 100644
 +msgid "_Title:"
 +msgstr "_Titul:"
  
- #~ msgid ""
- #~ "text/plain dropped on terminal had wrong format (%d) or length (%d)\n"
+ #~ msgid "text/plain dropped on terminal had wrong format (%d) or length (%d)\n"
+ #~ msgstr ""
 diff --git a/po/ga.po b/po/ga.po
 index 93d5fa9d..feb87dce 100644
 --- a/po/ga.po
@@ -1413,20 +1417,25 @@ index 93d5fa9d..feb87dce 100644
 +msgid "Transparent background"
 +msgstr "Cúlra trédhearcach"
 diff --git a/po/gl.po b/po/gl.po
-index 00325496..8c6f3472 100644
+index c0dc3349..adea6024 100644
 --- a/po/gl.po
 +++ b/po/gl.po
-@@ -2480,3 +2480,15 @@ msgstr "P_echar a xanela"
- #, c-format
+@@ -2500,11 +2500,14 @@ msgstr "P_echar a xanela"
  msgid "Failed to parse arguments: %s\n"
  msgstr "Produciuse un erro ao analizar os argumentos: %s\n"
-+
+ 
+-#~ msgid "org.gnome.Terminal"
+-#~ msgstr "org.gnome.Terminal"
 +msgid "Title"
 +msgstr "Título"
-+
+ 
+-#~ msgid "Armenian"
+-#~ msgstr "Armenio"
 +msgid "_Title:"
 +msgstr "_Título:"
-+
+ 
+-#~ msgid "Georgian"
+-#~ msgstr "Xeorxiano"
 +msgid "Set Title"
 +msgstr "Definir o título"
 +
@@ -1569,10 +1578,10 @@ index 2d7dc5b1..8d3d0529 100644
  #~ msgid "S/Key Challenge Response"
  #~ msgstr "एस/कुंजी चैलेंज प्रतिक्रिया"
 diff --git a/po/hr.po b/po/hr.po
-index 0c65eca2..1472cbb1 100644
+index aa384812..4a28d9ae 100644
 --- a/po/hr.po
 +++ b/po/hr.po
-@@ -2763,3 +2763,13 @@ msgstr "Greška u obradi argumenata: %s\n"
+@@ -2771,3 +2771,13 @@ msgstr "Greška u obradi argumenata: %s\n"
  
  #~ msgid "Use transparency from system theme"
  #~ msgstr "Koristi prozirnost iz teme sustava"
@@ -1827,10 +1836,10 @@ index bc2bb7f0..d2a83a00 100644
  #: ../src/gnome-terminal.glade2.h:87
  msgid "_Update login records when command is launched"
 diff --git a/po/lt.po b/po/lt.po
-index c2729c2f..55165274 100644
+index 59d8bf7a..df3411a0 100644
 --- a/po/lt.po
 +++ b/po/lt.po
-@@ -2770,3 +2770,15 @@ msgstr "Nepavyko apdoroti argumentų: %s\n"
+@@ -2773,3 +2773,15 @@ msgstr "Nepavyko apdoroti argumentų: %s\n"
  
  #~ msgid "Whether to use a dark theme variant"
  #~ msgstr "Ar naudoti tamsų temos variantą"
@@ -2177,10 +2186,10 @@ index 5aa43b11..f892290c 100644
  #: ../src/profile-preferences.glade.h:74
  msgid "_Update login records when command is launched"
 diff --git a/po/oc.po b/po/oc.po
-index d7cddaec..7eab4a47 100644
+index fff47e6f..67380961 100644
 --- a/po/oc.po
 +++ b/po/oc.po
-@@ -3031,8 +3031,8 @@ msgstr "Impossible d'analisar los paramètres : %s\n"
+@@ -3034,8 +3034,8 @@ msgstr "Impossible d'analisar los paramètres : %s\n"
  #~ msgid "Save as..."
  #~ msgstr "Enregistrar jos..."
  
@@ -2191,7 +2200,7 @@ index d7cddaec..7eab4a47 100644
  
  #~ msgid "_Detach tab"
  #~ msgstr "Des_tacar l'onglet"
-@@ -3492,8 +3492,8 @@ msgstr "Impossible d'analisar los paramètres : %s\n"
+@@ -3495,8 +3495,8 @@ msgstr "Impossible d'analisar los paramètres : %s\n"
  #~ msgid "_Use the system fixed width font"
  #~ msgstr "_Utilizar la poliça de chassa fixa del sistèma"
  
@@ -2353,10 +2362,10 @@ index 1ff7e2f3..6078ee79 100644
  #~ msgid "S_hade transparent or image background:"
  #~ msgstr "Transparente som_breado ou imagem de fundo:"
 diff --git a/po/pt_BR.po b/po/pt_BR.po
-index dbdfda9e..f44ff3e7 100644
+index 4fac562a..117f63bb 100644
 --- a/po/pt_BR.po
 +++ b/po/pt_BR.po
-@@ -2482,3 +2482,15 @@ msgstr "_Fechar janela"
+@@ -2423,3 +2423,15 @@ msgstr "_Fechar janela"
  #, c-format
  msgid "Failed to parse arguments: %s\n"
  msgstr "Falha ao analisar os argumentos: %s\n"
@@ -2900,26 +2909,85 @@ index 313f76b9..be608976 100644
  #~ msgid ""
  #~ "You already have a profile called “%s”. Do you want to create another "
 diff --git a/po/uk.po b/po/uk.po
-index 925bc11a..7fdd9477 100644
+index 925bc11a..c7ac1919 100644
 --- a/po/uk.po
 +++ b/po/uk.po
-@@ -2456,3 +2456,18 @@ msgstr "Не вдається визначити аргументи: %s\n"
+@@ -2392,67 +2392,17 @@ msgstr "Закр_ити вікно"
+ msgid "Failed to parse arguments: %s\n"
+ msgstr "Не вдається визначити аргументи: %s\n"
  
- #~ msgid "Georgian"
- #~ msgstr "Грузинське"
-+
+-#~ msgid "org.gnome.Terminal.Nautilus"
+-#~ msgstr "org.gnome.Terminal.Nautilus"
 +msgid "Title"
 +msgstr "Заголовок"
-+
+ 
+-#~ msgid "org.gnome.Nautilus.desktop"
+-#~ msgstr "org.gnome.Nautilus.desktop"
 +msgid "_Title:"
 +msgstr "За_головок:"
-+
+ 
+-#~ msgid "GPL-3.0+ or GFDL-1.3-only"
+-#~ msgstr "GPL-3.0+ або GFDL-1.3-only"
 +msgid "Set Title"
 +msgstr "Встановлення заголовка"
-+
+ 
+-#~ msgid "GPL-3.0+"
+-#~ msgstr "GPL-3.0+"
 +msgid "_Set Title…"
 +msgstr "_Встановити заголовок…"
-+
+ 
+-#~ msgid "https://wiki.gnome.org/Apps/Terminal"
+-#~ msgstr "https://wiki.gnome.org/Apps/Terminal"
+-
+-#~ msgid "https://wiki.gnome.org/Apps/Terminal/ReportingBugs"
+-#~ msgstr "https://wiki.gnome.org/Apps/Terminal/ReportingBugs"
+-
+-#~ msgid "gnome-terminal"
+-#~ msgstr "gnome-terminal"
+-
+-#~ msgid "org.gnome.Terminal"
+-#~ msgstr "org.gnome.Terminal"
+-
+-#~ msgid "org.gnome.Terminal.desktop"
+-#~ msgstr "org.gnome.Terminal.desktop"
+-
+-#~| msgid "Linux console"
+-#~ msgid "console"
+-#~ msgstr "консоль"
+-
+-#~ msgid "keyboard"
+-#~ msgstr "клавіатура"
+-
+-#~ msgid "pointing"
+-#~ msgstr "зазначення"
+-
+-#~ msgid ""
+-#~ "https://help.gnome.org/users/gnome-terminal/stable/figures/gnome-terminal."
+-#~ "png"
+-#~ msgstr ""
+-#~ "https://help.gnome.org/users/gnome-terminal/stable/figures/gnome-terminal."
+-#~ "png"
+-
+-#~ msgid "HiDpiIcon"
+-#~ msgstr "HiDpiIcon"
+-
+-#~ msgid "HighContrast"
+-#~ msgstr "HighContrast"
+-
+-#~ msgid "ModernToolkit"
+-#~ msgstr "ModernToolkit"
+-
+-#~ msgid "SearchProvider"
+-#~ msgstr "SearchProvider"
+-
+-#~ msgid "UserDocs"
+-#~ msgstr "UserDocs"
+-
+-#~ msgid "Armenian"
+-#~ msgstr "Американське"
+-
+-#~ msgid "Georgian"
+-#~ msgstr "Грузинське"
 +msgid "Transparent background"
 +msgstr "Прозоре тло"
 diff --git a/po/vi.po b/po/vi.po
@@ -3146,5 +3214,4 @@ index 80cb2343..20e2a93c 100644
 +msgid "Transparent background"
 +msgstr "透明背景"
 -- 
-2.38.1
-
+2.39.1
