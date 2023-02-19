@@ -2,14 +2,14 @@
 
 _pkgname=wayfarer
 pkgname=wayfarer-git
-pkgver=r33.77452bc
+pkgver=r42.b848247
 pkgrel=1
-pkgdesc='Screen recorder for GNOME / Wayland / Pipewire / XDG Portal'
+pkgdesc='Screen recorder for GNOME / Wayland or X11 / Pipewire / XDG Portal'
 arch=('i686' 'x86_64' 'arm' 'aarch64' 'armv7h' 'pentium4')
 url='https://github.com/stronnag/wayfarer.git'
-license=('GPLv3')
-makedepends=('git' 'vala' 'meson' 'gobject-introspection')
-depends=('gtk4' 'gstreamer' 'libportal')
+license=('GPL3')
+makedepends=('git' 'vala' 'meson' 'gobject-introspection' 'blueprint-compiler')
+depends=('gtk4' 'libportal')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url")
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd $_pkgname
-  meson build --prefix=/usr --buildtype=release --strip
+  meson setup build --prefix=/usr --buildtype=release --strip
   meson compile -C build
 }
 
