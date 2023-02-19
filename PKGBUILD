@@ -2,8 +2,8 @@
 
 _pkgname='pdd'
 pkgname="${_pkgname}-git"
-pkgver=r143.9c6a3b7
-pkgrel=3
+pkgver=r148.3def901
+pkgrel=1
 pkgdesc='Tiny date, time diff calculator with piggybacked timers.'
 arch=('any')
 url='https://github.com/jarun/pdd'
@@ -12,10 +12,8 @@ depends=('python' 'python-dateutil')
 makedepends=('git' 'python-setuptools')
 provides=("pdd")
 conflicts=("pdd")
-source=("git+${url}.git" 
-	"patch-1::${url}/pull/35.patch" 
-	"patch-2::${url}/pull/34.patch")
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
@@ -24,7 +22,5 @@ pkgver() {
 
 package() {
     cd "${srcdir}/${_pkgname}"
-    patch -p1 < "${srcdir}/patch-1"
-    patch -p1 < "${srcdir}/patch-2"
     make PREFIX=/usr DESTDIR="${pkgdir}" install
 }
