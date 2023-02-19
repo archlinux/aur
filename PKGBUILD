@@ -3,7 +3,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=cosmic-epoch-git
-pkgver=r39.76b23c5
+pkgver=r40.a29ba71
 pkgrel=1
 pkgdesc="Next generation Cosmic desktop environment (Currently an incomplete pre-alpha)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/pop-os/cosmic-epoch"
 license=('GPL3')
 depends=('fontconfig' 'gtk4' 'libinput' 'libpulse' 'libxkbcommon' 'mesa' 'pipewire'
          'pop-icon-theme' 'systemd-libs' 'wayland')
-makedepends=('cargo' 'clang' 'desktop-file-utils' 'git' 'just' 'llvm' 'meson'
+makedepends=('cargo' 'clang' 'desktop-file-utils' 'git' 'just' 'meson'
              'mold' 'seatd')
 checkdepends=('appstream-glib')
 provides=('cosmic-epoch' 'cosmic-applets' 'cosmic-applibrary' 'cosmic-bg'

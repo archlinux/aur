@@ -1,6 +1,6 @@
 pkgbase = cosmic-epoch-git
 	pkgdesc = Next generation Cosmic desktop environment (Currently an incomplete pre-alpha)
-	pkgver = r39.76b23c5
+	pkgver = r40.a29ba71
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-epoch
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = cosmic-epoch-git
 	makedepends = desktop-file-utils
 	makedepends = git
 	makedepends = just
-	makedepends = llvm
 	makedepends = meson
 	makedepends = mold
 	makedepends = seatd
