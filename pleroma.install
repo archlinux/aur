@@ -31,6 +31,10 @@ post_install() {
     printf "After initializing pleroma, you may start it with:\n"
     printf ">>> sudo systemctl start pleroma\n\n"
 
+	printf "nginx is recommended to serve Pleroma over HTTP.\n"
+	printf "If using a different HTTP server,\n"
+	printf "you should remove nginx from the pleroma.service file.\n"
+
 	printf "Check https://docs-develop.pleroma.social/backend/installation/otp_en/#post-installation for post-installation steps.\n"
 }
 
