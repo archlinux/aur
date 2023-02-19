@@ -1,0 +1,13 @@
+pkgbase = keep-presence
+	pkgdesc = Moves the mouse on inactivity to emulate activity
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/carrot69/keep-presence/
+	arch = any
+	license = custom
+	depends = python
+	depends = python-pynput
+	source = git+https://github.com/carrot69/keep-presence.git#commit=a6cf97405d154d2c0decbdb155aeb3c1bb305648
+	sha256sums = SKIP
+
+pkgname = keep-presence
