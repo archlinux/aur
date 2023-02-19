@@ -53,3 +53,36 @@ diff '--color=auto' -rupN adduser-debian-3.131.orig/adduser.conf adduser-debian-
  
  # Specify a file or a directory containing UID and GID pool.
  #UID_POOL=/etc/adduser-pool.conf
+diff '--color=auto' -rupN adduser-debian-3.131.orig/doc/adduser.conf.5 adduser-debian-3.131/doc/adduser.conf.5
+--- adduser-debian-3.131.orig/doc/adduser.conf.5        2023-02-19 22:33:00.353721720 +1030
++++ adduser-debian-3.131/doc/adduser.conf.5     2023-02-19 23:00:31.581333495 +1030
+@@ -62,17 +62,17 @@ Defaults to \fIusers\fP.
+ .B FIRST_SYSTEM_GID " and " LAST_SYSTEM_GID
+ specify an inclusive range of GIDs from which GIDs
+ for system groups can be dynamically allocated.
+-Defaults to \fI100\fP - \fI999\fP.
++Defaults to \fI500\fP - \fI999\fP.
+ .TP
+ .B FIRST_GID " and " LAST_GID
+ specify an inclusive range of GIDs from which GIDs
+ for non-system groups can be dynamically allocated.
+-Defaults to \fI1000\fP - \fI59999\fP.
++Defaults to \fI1000\fP - \fI60000\fP.
+ .TP
+ .B FIRST_SYSTEM_UID " and " LAST_SYSTEM_UID
+ specify an inclusive range of UIDs from which UIDs
+ for system users can be dynamically allocated.
+-Defaults to \fI100\fP - \fI999\fP.
++Defaults to \fI500\fP - \fI999\fP.
+ Please note that system software,
+ such as the users allocated by the \fIbase-passwd\fP package,
+ may assume that UIDs less than 100 are unallocated.
+@@ -80,7 +80,7 @@ may assume that UIDs less than 100 are u
+ .B FIRST_UID " and " LAST_UID
+ specify an inclusive range of UIDs from which UIDs
+ for non-system users can be dynamically allocated.
+-Defaults to \fI1000\fP - \fI59999\fP.
++Defaults to \fI1000\fP - \fI60000\fP.
+ .TP
+ .B GID_POOL
+ See \fBUID_POOL\fP.
