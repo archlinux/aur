@@ -1,16 +1,25 @@
 # Maintainer: Fabian Bornschein <fabiscafe-cat-mailbox-dog-org>
 
 pkgbase=czkawka
-pkgname=('czkawka-cli' 'czkawka-gui')
-pkgver=5.0.2
+pkgname=(
+  czkawka-cli
+  czkawka-gui
+)
+pkgver=5.1.0
 pkgrel=1
 pkgdesc='Multi functional app to find duplicates, empty folders, similar images etc.'
 url='https://github.com/qarmin/czkawka'
 arch=('x86_64')
 license=('MIT')
-makedepends=('cargo' 'rust' 'git' 'gtk4' 'libheif')
+makedepends=(
+  cargo
+  git
+  gtk4
+  libheif
+  rust
+)
 checkdepends=(xorg-server-xvfb)
-_commit=f16818dc8eb544a68e2f73f87d01ecb3d0192257 # tags/5.0.2^0
+_commit=c6c4230699715ee6a91fdf153cc5b6255bbf5ad0 # tags/5.1.0^0
 source=("git+https://github.com/qarmin/czkawka.git#commit=${_commit}")
 sha512sums=('SKIP')
 
@@ -33,7 +42,10 @@ check() {
 }
 
 package_czkawka-cli() {
-  depends=('bzip2' 'libheif')
+  depends=(
+    bzip2
+    libheif
+  )
   pkgdesc+=" (CLI)"
 
   install -Dm644 "${srcdir}/czkawka/LICENSE" \
@@ -43,7 +55,10 @@ package_czkawka-cli() {
 }
 
 package_czkawka-gui() {
-  depends=('gtk4' 'libheif')
+  depends=(
+    gtk4
+    libheif
+  )
   pkgdesc+=" (Desktop App)"
 
   install -Dm644 "${srcdir}/czkawka/LICENSE" \
