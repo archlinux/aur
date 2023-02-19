@@ -1,7 +1,7 @@
 pkgbase = git-req
 	pkgdesc = Switch between merge/pull requests in your GitLab and GitHub repositories with just the request ID.
 	pkgver = 2.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://arusahni.github.io/git-req/
 	arch = x86_64
 	license = MIT
