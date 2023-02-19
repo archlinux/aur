@@ -3,8 +3,8 @@
 
 pkgname=python-textx
 _srcname=textX
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.1.1
+pkgrel=1
 pkgdesc="Python library for building Domain-Specific Languages and parsers"
 arch=('any')
 url="https://textx.github.io/textX/"
@@ -14,7 +14,7 @@ optdepends=('python-click: textX CLI support')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest-runner' 'python-pip' 'python-jinja' 'python-click' 'python-html5lib')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/textX/$_srcname/archive/$pkgver.tar.gz")
-md5sums=('6d868822583d86f66cda71f40b1bebb5')
+sha256sums=('18ecd288aaba27d361fd421986088a139773ca7ed29cbddf9f7d6f8003314b6e')
 
 build() {
   cd $_srcname-$pkgver
