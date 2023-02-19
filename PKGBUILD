@@ -6,7 +6,7 @@ DC=gdc
 DC_PKG=gcc-d
 makedepends=("bash" "chrpath" "lsb-release" "fuse3" "pkgconf" "gcc-d")
 depends=("fuse3" "gcc-d")
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=0
 license=("Boost or LGPL3")
 
@@ -16,7 +16,7 @@ arch=("x86_64")
 url="https://gitlab.com/os-18/${PROJECT}"
 TARBALL=$pkgname-$pkgver.tar.gz
 source=("$TARBALL::$url/-/archive/v$pkgver/${PROJECT}-v$pkgver.tar.gz")
-sha256sums=("87e0fdb48bf8c19c7f95f36ebac02947bbb441f739cacf8345db1f031da05222")
+sha256sums=("c010987a3869f6dafbfd469ed5bfa719f364db83a7d3f04607abf639c73233ed")
 
 build() {
     cd "${PROJECT}-v$pkgver"
