@@ -3,7 +3,7 @@
 _pkgname='pdd'
 pkgname="${_pkgname}-git"
 pkgver=r143.9c6a3b7
-pkgrel=1
+pkgrel=3
 pkgdesc='Tiny date, time diff calculator with piggybacked timers.'
 arch=('any')
 url='https://github.com/jarun/pdd'
@@ -27,5 +27,4 @@ package() {
     patch -p1 < "${srcdir}/patch-1"
     patch -p1 < "${srcdir}/patch-2"
     make PREFIX=/usr DESTDIR="${pkgdir}" install
-    #make PREFIX=${pkgdir}/usr install
 }
