@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/denisandroid/uPD72020x-Firmware"
 license=('custom')
 source=(
-  "https://github.com/denisandroid/uPD72020x-Firmware/archive/refs/tags/$pkgver.tar.gz"
+  "$pkgver.tar.gz::https://codeload.github.com/denisandroid/uPD72020x-Firmware/tar.gz/refs/tags/$pkgver"
   "remove.hook"
 )
 sha512sums=(
