@@ -1,12 +1,12 @@
 _name=knotifications
 pkgname=${_name}-light
 pkgver=5.103.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Abstraction for system notifications (stripped from unnecessary dependencies)'
 arch=('x86_64')
 url='https://community.kde.org/Frameworks'
 license=('LGPL')
-depends=('kwindowsystem' 'kconfig' 'kcoreaddons' 'libxtst')
+depends=('kwindowsystem' 'kconfig' 'kcoreaddons' 'libxtst' 'libdbusmenu-qt5')
 makedepends=('extra-cmake-modules' 'qt5-tools')
 groups=('kf5')
 
@@ -27,7 +27,6 @@ _disable=(
     'Qt5Qml'
     'Qt5TextToSpeech'
     'Canberra'
-    'dbusmenu-qt5'
 )
 
 _disable=("${_disable[@]/#/"-DCMAKE_DISABLE_FIND_PACKAGE_"}")
