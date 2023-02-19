@@ -1,6 +1,6 @@
 # Maintainer: Douglas Chimento <dchimento @ gmail.com>
 pkgname=elements-project-bin
-pkgver=22.0.2
+pkgver=22.1
 pkgrel=1
 arch=('aarch64' 'x86_64')
 pkgdesc="Elements blockchain platform, a collection of feature experiments and extensions to the Bitcoin protocol"
@@ -18,8 +18,8 @@ source=(elements.conf
         elements-core-01-systemd-sysusers.hook
 	elements-core-02-chown.hook)
 
-sha256sums_x86_64=('0278017429236f2cc651bb746e8ae826b740811d73789d07d1682649f2414465')
-sha256sums_aarch64=('a1a78f1214a4b549affcddd33012b5251e6f73987b9f533b811babb04101ab7c')
+sha256sums_x86_64=('16ff1289c42de87dd2b5aefd6729d894e631b7b524370e01963ec492b269a2f3')
+sha256sums_aarch64=('41c1084d5d8f218bf094de69f2736a10da0e0dda06ace6ce40bc8a1036113db5')
 sha256sums=('SKIP'
 	    'SKIP'
 	    'SKIP'
