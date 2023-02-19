@@ -2,14 +2,14 @@
 # Contributor: qing <qing at he dot email>
 pkgname=electronic-wechat-uos-bin
 pkgver=2.3.2
-pkgrel=4
+pkgrel=3
 epoch=
 pkgdesc="Linux下更好用的微信客户端. 更多功能, 更少bug. 使用系统Electron并利用UOS请求头修复了登陆问题."
 arch=('x86_64')
 url="https://github.com/Riceneeder/electronic-wechat"
 license=('MIT')
 groups=()
-depends=('nss' 'xdg-utils' 'libxss' 'electron' 'bc')
+depends=('nss' 'xdg-utils' 'libxss' 'electron')
 makedepends=()
 checkdepends=()
 optdepends=(
@@ -23,15 +23,13 @@ conflicts=(electronic-wechat-uos-bin)
 replaces=()
 install=${pkgname}.install
 source=(
-	electronic-wechat-uos-bin
 	electronic-wechat-uos-bin.desktop
 	wechat.svg
 	wechat-${pkgver}.deb::"https://github.com/Riceneeder/electronic-wechat/releases/download/v2.3.2-6/electronic-wechat_2.3.2_amd64.deb"
 )
 noextract=()
 md5sums=(
-	'b97c4f72fc6b4ebd71e631f00359ff20'
-	'691c13f94f762b092571c728d108df2e'
+	'd3e16fb968b3127a7e1d0c337f8849a7'
 	'600e74549ce2258c045d5c2f7689ea63'
 	'53d796e5a7c8c488998afdf5fb9020fe'
 )
@@ -48,8 +46,9 @@ package() {
 	cp -r ${srcdir}/usr/lib/electronic-wechat/resources ${pkgdir}/opt/electronic-wechat-uos-bin
 	cp ${srcdir}/wechat.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps
 	cp ${srcdir}/electronic-wechat-uos-bin.desktop ${pkgdir}/usr/share/applications
-	info '复制可执行文件...'
-	cp ${srcdir}/electronic-wechat-uos-bin ${pkgdir}/usr/bin
+	info '创建可执行文件...'
+	echo '#!/bin/bash
+exec electron /opt/electronic-wechat-uos-bin/resources/app.asar' >${pkgdir}/usr/bin/electronic-wechat-uos-bin
 	chmod -R 755 ${pkgdir}/*
 	chmod 644 ${pkgdir}/usr/share/applications/electronic-wechat-uos-bin.desktop
 }

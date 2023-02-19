@@ -2,14 +2,12 @@
 Comment=A better WeChat on Linux
 Exec=electronic-wechat-uos-bin %u
 Icon=wechat
-Name=WeChat
-Name[zh_CN]=微信
-Categories=Utility;Network;
+Name=微信
+Categories=Utility;
 StartupNotify=true
 Terminal=false
 Type=Application
-Keywords=wechat;weixin;electronic;we;
-Keywords[zh_CN]=微;微信;wechat;weixin;electronic;we;
+Keywords=wechat;weixin;electronic;
 StartupWMClass=electronic-wechat
 X-KDE-SubstituteUID=false
 X-KDE-Username=
