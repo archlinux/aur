@@ -2,17 +2,15 @@
 # Contributor: osch <oliver@luced.de>
 
 pkgname=audacity-local-git
-pkgver=3.3.0.0.r16566
+pkgver=3.3.0.0.r16569
 pkgrel=1
 pkgdesc="Record and edit audio files - Built with package versions as recommended by Audacity team"
 arch=('x86_64')
 url="https://audacityteam.org"
 license=('GPL2' 'CCPL')
 groups=('pro-audio')
-depends=('libmad' 'libid3tag' 'gtk2' 'glib2' 'soundtouch' 'ffmpeg' 'vamp-plugin-sdk'
-'portsmf' 'portmidi' 'twolame' 'suil' 'lilv' 'lv2' 'serd' 'sord' 'sratom' 'python'
-'flac' 'libvorbis' 'libogg' 'vamp-plugin-sdk' 'portaudio' 'libsoxr' 'libsndfile' 'lame'
-'expat' 'alsa-lib' 'jack' 'util-linux' 'util-linux-libs' 'curl' 'zlib')
+depends=('gtk3' 'gtk2' 'ffmpeg' 'portmidi' 'python' 'vst3sdk'
+'portaudio' 'jack')
 makedepends=('cmake' 'autoconf' 'automake' 'libtool' 'git' 'conan' 'catch2')
 provides=("audacity")
 conflicts=("audacity")
