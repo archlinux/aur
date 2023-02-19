@@ -2,7 +2,7 @@
 # Author: Jonathan Lebon
 
 pkgname=firefox-extension-textern-native-git
-pkgver=0.6.876a83b
+pkgver=0.7.r6.g5e10500
 pkgrel=1
 url="https://github.com/jlebon/textern"
 license=('GPL')
@@ -32,5 +32,10 @@ package() {
 
     # correct the json file - refers to pkgbuild dir, should be installed dir
     sed -i -e "s|$pkgdir||g" "$pkgdir/usr/lib/mozilla/native-messaging-hosts/textern.json"
+}
+
+pkgver() {
+    cd "$srcdir/textern"
+    git describe --long | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
