@@ -1,0 +1,10 @@
+[Unit]
+Description=Set screen brightness
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/brightness %i
+
+[Install]
+WantedBy=multi-user.target

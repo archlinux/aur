@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if ! [[ "$1" =~ ^[0-9]+$ ]]; then
+  echo "Error: Input must be an integer."
+  exit 1
+fi
+
+sudo ddcutil setvcp 10 "$1" --bus 6 --noverify &
+sudo ddcutil setvcp 10 "$1" --bus 8 --noverify &
