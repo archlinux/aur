@@ -1,0 +1,15 @@
+pkgbase = autohide-tdrop-git
+	pkgdesc = 100% pure rust implementation that can automatically hide terminals or other applications managed by tdrop when they lose focus
+	pkgver = 1.02
+	pkgrel = 1
+	url = https://github.com/I-Want-ToBelieve/autohide-tdrop/
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = git
+	provides = autohide-tdrop
+	conflicts = autohide-tdrop
+	source = autohide-tdrop-git::git+http://github.com/I-Want-ToBelieve/autohide-tdrop.git
+	sha256sums = SKIP
+
+pkgname = autohide-tdrop-git
