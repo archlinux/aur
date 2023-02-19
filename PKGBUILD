@@ -1,7 +1,7 @@
 # Maintainer: Daniel Wilhelm <concat(shield, wed) @ outlook.com>
 pkgname=easytaxag
 pkgver=2022.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="EasyTax Applikation zur Steuererklärung 2022 für den Kanton Aargau"
 arch=('any')
 url="https://msg-easytax.ch/ag/"
@@ -9,7 +9,7 @@ license=('unknown')
 depends=(
   'sh'
   'hicolor-icon-theme'
-  'jre8-openjdk'
+  'jre17-openjdk'
 )
 makedepends=(
   'libicns'
@@ -17,6 +17,7 @@ makedepends=(
 )
 source=(
   https://msg-easytax.ch/ag/${pkgver%%.*}/EasyTax${pkgver%%.*}AG_unix_$(echo ${pkgver#*.} | sed 's/\./_/').tar.gz
+  https://upload.wikimedia.org/wikipedia/commons/d/d9/Wappen_Aargau.svg
 
   easytaxag.desktop
   EasyTax_AG.patch
@@ -24,8 +25,9 @@ source=(
 
 sha256sums=(
   '4fd2a2015c2ec5b573319f97790158e9d96f690f539fc155e06220fb35999651'
+  '253d315b20371cd9add777dc990f96545c60d5d07a3f34cd33720d5148e82486'
   '15671aacfbf5975c133847e531f0796bb97773946d6ca5cd7cee78b5354ee1b5'
-  '4341d0b441118509ec21539aed95e2a1ac33c88deba0a341af075db114cca8bd'
+  'ae25c2210ddb59098400c5cc70896e8a696b209da3061931d633d04d05dee477'
 )
 
 package() {
@@ -42,6 +44,7 @@ package() {
   icns2png -x -s 128x128 -d 32 "${srcdir}"/EasyTax${pkgver%%.*}AG/.install4j/easytaxag.icns -o "${srcdir}"/EasyTax${pkgver%%.*}AG/.install4j
   optipng -o9 "${srcdir}"/EasyTax${pkgver%%.*}AG/.install4j/easytaxag_128x128x32.png
   install -Dp "${srcdir}"/EasyTax${pkgver%%.*}AG/.install4j/easytaxag_128x128x32.png usr/share/icons/hicolor/128x128/apps/easytaxag.png
+  install -Dp "${srcdir}"/Wappen_Aargau.svg usr/share/icons/hicolor/scalable/apps/easytaxag.svg
 
   install -Dp "${srcdir}"/easytaxag.desktop usr/share/applications/easytaxag.desktop
 }
