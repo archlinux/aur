@@ -1,6 +1,6 @@
 # Maintainer: github.com/lmorg
 pkgname=murex-git
-pkgver=r2623.8c2476e6
+pkgver=r2751.28de804d
 pkgrel=1
 pkgdesc="Bash-like shell designed for greater commandline productivity and safer shell scripts (git development branch)"
 arch=('i686' 'x86_64')
@@ -52,7 +52,7 @@ check() {
   mkdir -p "$GOPATH/src/github.com/lmorg/"
   ln -s "$srcdir/murex" "$GOPATH/src/github.com/lmorg/" || true
   go test ./... || true
-  ./murex -c 'g: behavioural/* -> foreach: f { source $f }; try {test: run *}'
+  ./murex -c 'g: behavioural/*.mx -> foreach: f { source $f }; try {test: run *}'
 }
 
 package() {
