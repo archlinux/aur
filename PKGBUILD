@@ -1,6 +1,5 @@
 # Maintainer:  Devorlon <root[at]devorlon[dot]xyz>
 
-pkgbase=brightness
 pkgname=brightness
 pkgver=1.0
 pkgrel=1
