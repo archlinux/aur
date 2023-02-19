@@ -4,9 +4,8 @@ pkgbase = rmg
 	pkgrel = 1
 	url = https://github.com/Rosalie241/rmg
 	arch = x86_64
-	license = GPLv3
+	license = GPL3
 	makedepends = git
-	makedepends = pkg-config
 	makedepends = nasm
 	makedepends = cmake
 	makedepends = cargo
@@ -20,8 +19,6 @@ pkgbase = rmg
 	depends = qt6-base
 	depends = qt6-svg
 	depends = xdg-user-dirs
-	provides = rmg
-	conflicts = rmg
 	source = git+https://github.com/Rosalie241/rmg.git#tag=v0.3.6
 	sha256sums = SKIP
 
