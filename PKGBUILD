@@ -14,7 +14,7 @@ depends=(ncurses file libxcrypt-compat openssl-1.1)
 optdepends=('postgresql: local postgresql database support'
             'imagemagick: Pleroma.Upload.Filters.Mogrify, Pleroma.Upload.Filters.Mogrifun support'
             'ffmpeg: media preview proxy support for videos'
-            'perl-image-exiftool: supporting stripping location (GPS) data from uploaded images with Pleroma.Upload.Filters.Exiftool')
+            'perl-image-exiftool: supporting stripping location (GPS) data from uploaded images with Pleroma.Upload.Filter.Exiftool.StripLocation')
 provides=(pleroma)
 conflicts=(pleroma)
 backup=('etc/pleroma/config.exs')
