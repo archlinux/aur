@@ -1,13 +1,12 @@
 pkgbase = brightness
 	pkgdesc = Adjust monitor brightness using ddcutil
-	pkgver = 1.0
+	pkgver = 2.0
 	pkgrel = 1
 	arch = any
 	license = GPL
 	depends = ddcutil
+	depends = parallel
 	source = brightness
-	source = brightness.service
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = brightness
