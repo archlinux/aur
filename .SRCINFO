@@ -1,6 +1,6 @@
 pkgbase = clang-prefixed-release
-	pkgver = 16.0.0rc1
-	pkgrel = 3
+	pkgver = 16.0.0rc2
+	pkgrel = 1
 	url = https://llvm.org/
 	arch = x86_64
 	license = custom:Apache 2.0 with LLVM Exception
@@ -25,7 +25,7 @@ pkgbase = clang-prefixed-release
 	makedepends = z3
 	makedepends = jsoncpp
 	makedepends = clang
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.0-rc1/llvm-project-16.0.0rc1.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.0-rc2/llvm-project-16.0.0rc2.src.tar.xz
 	sha512sums = SKIP
 
 pkgname = clang-prefixed-release
