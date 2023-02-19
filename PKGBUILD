@@ -6,13 +6,13 @@
 # Contributor: Chloe Kudryavtsev <toast@toastin.space>
 
 pkgname=vlang-git
-pkgver=0.3.r275.gd6b594c4e8
-pkgrel=2
+pkgver=0.3.r276.gfd1b6efea6
+pkgrel=1
 pkgdesc='Simple, fast, safe, compiled language for developing maintainable software (development version)'
 arch=('x86_64' 'aarch64')
 url='https://vlang.io'
 license=('MIT')
-depends=('glibc')
+depends=('glibc' 'libx11')
 makedepends=('git')
 optdepends=('glfw: Needed for graphics support'
             'freetype2: Needed for graphics support'
