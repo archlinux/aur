@@ -20,7 +20,7 @@ source_x86_64=(https://github.com/PufferPanel/PufferPanel/releases/download/v${p
 source=(https://raw.githubusercontent.com/PufferPanel/PufferPanel/v${pkgver//_/-}/systemd/servicefiles/pufferpanel.service
                https://raw.githubusercontent.com/PufferPanel/PufferPanel/v${pkgver//_/-}/config.linux.json)
 b2sums=('ed744c35200b918c3107ea6191e3c6c38b3a731183b5cf7ed8b066550a6038fd712429b24264b0b00c52f9533b8503462962d2bfdb45c49724be49a2b9b39141'
-        '87d5cbcd6652209913527fc595ec457659ff05c759b6b4ff4d0154e856adc2056640b4dceff9216b0a118751e24bf1b43b80ff6fe3ad74e0ce45f5c82bc59f7e')
+        'bfc43954775e7795376cb86b7d2599031d576640fb6e13a5d5e8d915b5eb7bf36079600e5acc07c672b77e22b1b19799074defeced96a9638c5420733c9eb096')
 b2sums_x86_64=('e39d2bd544a820ad47ee14ff4ce3655f39f97f86a9048a2c9311a53dea4f8542b5e9ddab71e4b0dfe15727390a9534ed535bdebfb8695423d91df32321da93d9')
 b2sums_aarch64=('bc67ec643608a4d6156401b6ed1005ded643f920ce5e16b04cd152e72836b714a9fd1ba4ef12ee52fbfd4fb775867afc166a753871482deeaed6656ee5450c40')
 package() {
