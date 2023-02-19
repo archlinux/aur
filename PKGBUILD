@@ -1,7 +1,7 @@
 # Maintainer: ProFfeSsoRr <evvsoft at gmail dot com>
 
 pkgname=wal2json
-pkgver=2_3
+pkgver=2_5
 pkgrel=1
 pkgdesc="Output plugin for logical decoding PostgreSQL WAL's"
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ makedepends=('llvm')
 install="wal2json.install"
 source=("https://github.com/eulerto/wal2json/archive/${pkgname}_${pkgver}.tar.gz"
         "wal2json.install")
-sha256sums=('2ebf71ace3c9f4b66703bcf6e3fa6ef7b6b026f9e31db4cf864eb3deb4e1a5b3'
+sha256sums=('b516653575541cf221b99cf3f8be9b6821f6dbcfc125675c85f35090f824f00e'
             '4dcef8c4e2c6badb3c68af16235632b042e867cbef0beecac4734acb53f7915c')
 
 build() {
