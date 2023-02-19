@@ -1,8 +1,8 @@
 pkgbase = asciiquarium-transparent-git
 	pkgdesc = An aquarium/sea animation in ASCII art (with option of transparent background)
-	pkgver = r14.fd96f95
+	pkgver = r15.653cd99
 	pkgrel = 1
-	url = https://gist.github.com/nothub/91ff81bd945eb8f1e6af08492a13ff75
+	url = https://github.com/nothub/asciiquarium
 	arch = any
 	license = GPL2
 	makedepends = git
@@ -10,7 +10,7 @@ pkgbase = asciiquarium-transparent-git
 	depends = perl-term-animation
 	provides = asciiquarium
 	conflicts = asciiquarium
-	source = git+https://gist.github.com/nothub/91ff81bd945eb8f1e6af08492a13ff75.git
+	source = git+https://github.com/nothub/asciiquarium.git
 	md5sums = SKIP
 
 pkgname = asciiquarium-transparent-git
