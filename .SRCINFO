@@ -1,19 +1,19 @@
 pkgbase = probe-bin
 	pkgdesc = YAML + JQ Based End-To-End API Testing.
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/abhimanyu003/probe
 	license = MIT
 	conflicts = probe
 	provides = probe
 	arch = aarch64
-	source_aarch64 = https://github.com/abhimanyu003/probe/releases/download/v0.0.1/probe_0.0.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 83be588ed030aa9e69da3263c7706205a60d0c634dd0ddffab34d87a112c5059
+	source_aarch64 = https://github.com/abhimanyu003/probe/releases/download/v0.0.2/probe_0.0.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 60395bcc3517722e9899f94170f3cc6cade8e37410179a97c4e49edfa2d24bdd
 	arch = i686
-	source_i686 = https://github.com/abhimanyu003/probe/releases/download/v0.0.1/probe_0.0.1_linux_386.tar.gz
-	sha256sums_i686 = 4c96ff496a044dd5210eae1a62bc6784af8ba11d2ea76bf9bb465d9d22f5a2e9
+	source_i686 = https://github.com/abhimanyu003/probe/releases/download/v0.0.2/probe_0.0.2_linux_386.tar.gz
+	sha256sums_i686 = cee33e894e65c3ac5f502c1af89f680f6d8e395f9e9337bc7f5b627f6995dda2
 	arch = x86_64
-	source_x86_64 = https://github.com/abhimanyu003/probe/releases/download/v0.0.1/probe_0.0.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = b78256d1636dd06d0d1b64475d7eecb658a5fdf72fd6f7ebbf1e85f703d55fd0
+	source_x86_64 = https://github.com/abhimanyu003/probe/releases/download/v0.0.2/probe_0.0.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 84c2e012958b7e8d273db8f3f5dc59c2442d80ebda1044914b53a62ee80b7302
 	
 pkgname = probe-bin
