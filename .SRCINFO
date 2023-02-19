@@ -1,6 +1,6 @@
 pkgbase = regreet-git
 	pkgdesc = Clean and customizable greeter for greetd
-	pkgver = r75.b0b21d1
+	pkgver = r89.07b553b
 	pkgrel = 1
 	url = https://github.com/rharish101/ReGreet
 	install = regreet-git.install

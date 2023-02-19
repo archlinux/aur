@@ -2,7 +2,7 @@
 
 _pkgname=regreet
 pkgname="$_pkgname-git"
-pkgver=r75.b0b21d1
+pkgver=r89.07b553b
 pkgrel=1
 pkgdesc="Clean and customizable greeter for greetd"
 arch=('x86_64')
@@ -38,6 +38,6 @@ build() {
 package() {
     cd "$_pkgname"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"
-    install -Dm0644 -t "$pkgdir/usr/share/$_pkgname/" "$_pkgname.sample.toml"
+    install -Dm0644 -t "$pkgdir/usr/share/doc/$_pkgname/" "$_pkgname.sample.toml"
     install -Dm0644 "systemd-tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
 }

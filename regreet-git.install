@@ -1,4 +1,4 @@
 post_install() {
     _pkgname=regreet
-    echo "Sample configuration file installed at /usr/share/$_pkgname/$_pkgname.sample.toml"
+    echo "Sample configuration file installed at /usr/share/doc/$_pkgname/$_pkgname.sample.toml"
 }
