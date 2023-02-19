@@ -8,7 +8,7 @@ url="https://github.com/auyer/Protonup-rs"
 license=("Apache")
 arch=('any')
 source=(https://github.com/auyer/Protonup-rs/releases/download/v$pkgver/protonup-rs-linux-amd64.tar.gz)
-sha256sums=('5d9719204409b0ec88232f79022f83f39031ceab068984616eb0d9e3c31e267e')
+sha256sums=('dc9f81517a7156d8398006daa8c9ae9e701809a613ab876a9faeba0774ace08a')
 
 package() {
 	install -D protonup-rs	"$pkgdir"/usr/bin/protonup-rs
