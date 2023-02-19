@@ -1,13 +1,13 @@
 # Maintainer: Luigi311 <aur@luigi311.com>
 pkgname=libaperture-libcamera-git
-pkgver=r125.7a4b422
+pkgver=r122.c66e4ed
 pkgrel=1
 pkgdesc='A camera library for GTK3 with libcamera patches from mobian'
 arch=('x86_64' 'aarch64')
 url="https://salsa.debian.org/Mobian-team/packages/libaperture-0/-/tree/mobian/"
 license=('LGPL')
 depends=('gtk3' 'vala')
-makedepends=('git' 'meson')
+makedepends=('git' 'meson' 'quilt')
 checkdepends=()
 optdepends=()
 provides=('libaperture')
@@ -22,9 +22,9 @@ pkgver() {
 }
 
 prepare() {
-    cd "$srcdir/${pkgname}"
+	cd "$srcdir/${pkgname}"
 	# Install patches from debian/patches/series
-	git am --3way --ignore-whitespace debian/patches/*.patch
+	QUILT_PATCHES='debian/patches' quilt push -a
 }
 
 build() {

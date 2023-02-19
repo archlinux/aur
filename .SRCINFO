@@ -1,6 +1,6 @@
 pkgbase = libaperture-libcamera-git
 	pkgdesc = A camera library for GTK3 with libcamera patches from mobian
-	pkgver = r125.7a4b422
+	pkgver = r122.c66e4ed
 	pkgrel = 1
 	url = https://salsa.debian.org/Mobian-team/packages/libaperture-0/-/tree/mobian/
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = libaperture-libcamera-git
 	license = LGPL
 	makedepends = git
 	makedepends = meson
+	makedepends = quilt
 	depends = gtk3
 	depends = vala
 	provides = libaperture
