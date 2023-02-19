@@ -1,6 +1,6 @@
 pkgbase = r-censcyt
 	pkgdesc = Differential abundance analysis with a right censored covariate in high-dimensional cytometry
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/censcyt
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = r-censcyt
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/censcyt_1.6.0.tar.gz
-	sha256sums = 3c9e4c24bd0645bdc98e3017f8989710e5b5d658f023ccb646ed80a940692936
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/censcyt_1.6.1.tar.gz
+	sha256sums = cc7b283ceaff0c1cae78dc2958fa51e8a927496ccdee44a62d865a1e112a1ca7
 
 pkgname = r-censcyt
