@@ -22,7 +22,7 @@ sha256sums=('f13fc0e156f72c6f8bd48e206c59482f83f19acc229701c74e0f23baafa724d8'
             'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 install=install.sh
 depends=('rsync' 'fuse2')
-makedepends=('git' 'go' 'protobuf' 'protobuf-go')
+makedepends=('git' 'go' 'protobuf' 'protoc-gen-go-grpc')
 # Those next makedepends are not *actually* needed but the build process tries to launch them anyway
 makedepends+=('lsb-release' 'inetutils')
 optdepends=('shiftfs: For uid-mapping on very old kernels without idmapped-mounts')
@@ -50,6 +50,12 @@ prepare() {
 	# Get some non-binary files from the Debian package as they don't seem to be uploaded anywhere else
 	mkdir -p data
 	tar xf data.tar.xz -C data
+
+	# Migrate to the new protoc-gen-go-grpc generator. Set require_unimplemented_servers=false for compatibility:
+	# https://github.com/grpc/grpc-go/blob/abff344ead8f49f3a89ae8be68b1538611950ec4/cmd/protoc-gen-go-grpc/README.md
+	sed -i 's/--go_out=plugins=grpc:./--go_out=. --go-grpc_out=. --go-grpc_opt=require_unimplemented_servers=false/g' \
+		sysbox/sysbox-ipc/sysboxFsGrpc/sysboxFsProtobuf/Makefile \
+		sysbox/sysbox-ipc/sysboxMgrGrpc/sysboxMgrProtobuf/Makefile
 }
 
 build() {
