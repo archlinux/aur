@@ -3,7 +3,7 @@
 _pkgname=python-tls-client
 pkgname="${_pkgname}-git"
 pkgver=0.1.8.r79.20230105.d724121
-pkgrel=2
+pkgrel=3
 pkgdesc="An advanced HTTP library based on requests and tls-client."
 arch=(
   'any'
@@ -28,7 +28,9 @@ provides=(
 conflicts=(
   "${_pkgname}"
 )
-replaces=()
+replaces=(
+  'python-tls-client-bin-git'
+)
 source=(
   "${_pkgname}::git+https://github.com/FlorianREGAZ/Python-Tls-Client"
 )
