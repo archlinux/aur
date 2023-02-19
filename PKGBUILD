@@ -1,6 +1,6 @@
 # Maintainer: John Beard <john.j.beard@gmail.com>
 pkgname=goldendict-cc-cedict-content
-pkgver=1.0_r20200514
+pkgver=1.0_r20230219
 pkgrel=1
 pkgdesc="CC-CEDICT Chinese-English Dictionary for Goldendict"
 arch=("any")
@@ -9,7 +9,7 @@ license=("custom:cc-by-sa-4.0" "custom")
 install=$pkgname.install
 optdepends=(
 "goldendict: for using this dictionary"
-"goldendict-qt5-git: for using this dictionary"
+"goldendict-git: for using this dictionary"
 )
 makedepends=(
 "pyglossary"
