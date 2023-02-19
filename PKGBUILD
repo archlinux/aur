@@ -1,4 +1,4 @@
-# Maintainer: David Seus <cryptointerest@posteo.de>
+# Maintainer: David Seus <cryptointerest at posteo dot de>
 # Contributor: lis
 # Contributor: Robert Kubosz <kubosz.robert@gmail.com>
 # Contributor: David Runge <dvzrv@archlinux.org>
@@ -10,9 +10,9 @@
 
 pkgname=lilypond-devel
 _pkgname=lilypond
-pkgver=2.25.1
+pkgver=2.25.2
 pkgrel=1
-pkgdesc="Music engraving program (development version)"
+pkgdesc="Lilypond music engraving program (development release)"
 arch=('x86_64')
 url="https://lilypond.org"
 license=('FDL1.3' 'GPL3' 'custom:OFL')
@@ -30,8 +30,8 @@ optdepends=(
 provides=('lilypond=${pkgver}')
 conflicts=('lilypond')
 source=("https://lilypond.org/downloads/sources/v${pkgver%.*}/$_pkgname-$pkgver.tar.gz")
-sha512sums=('1d00666f47eaff70b21b04dada67683c125d9d2f0b676c227fb7ee645a22ce8134d6b0cef80ed0f27149b6fb0e57ed0a6961146ec76ff3b6f57687324fd364c7')
-b2sums=('49b1b57d1feb7ca2b1bd5b4637711181ae47edc8031e0ad3f61e1d1c53e7c875f2e303a9b9ea9abc1377e1ecbabd435b258c10bcd50f99314aa6b156d8f2ddb1')
+sha512sums=('c03ba919b81a64d7b7f550ed60b558141f8f91739dc5926b1f12bfa132cf8d69dbb367361977e692eff781b47c1905762f9a30fa3483bb6a3a48d8bf318d7817')
+b2sums=('28c6d70c72403d4f45a6f8f0138b016f0154b99ce22c39b088515340b55e016763e10791f1f4a4fa004577b9c2392f1a4808650f01ff7c74799d6bff88e37300')
 
 prepare() {
   cd "$_pkgname-$pkgver"
