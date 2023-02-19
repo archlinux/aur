@@ -5,7 +5,7 @@
 # Contributor: Julian Paul Dasmarinas <julian.dasma at gmail dot com>
 
 pkgname=buku
-pkgver=4.7
+pkgver=4.8
 pkgrel=1
 pkgdesc="Bookmark manager like a text-based mini-web"
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=('wl-clipboard: to copy text in wayland'
   'xclip: to copy text in xorg')
 conflicts=('buku-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('11d0860e66e0eea6c2ce566962ae0f8e34c76dc2317d108a4ae4e5a47097d468')
+sha256sums=('a0b94210e80e9f9f359e5308323837d41781cf8dba497341099d5c59e27fa52c')
 
 package() {
   cd "$pkgname-$pkgver" 2> /dev/null || {

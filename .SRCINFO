@@ -1,6 +1,6 @@
 pkgbase = buku
 	pkgdesc = Bookmark manager like a text-based mini-web
-	pkgver = 4.7
+	pkgver = 4.8
 	pkgrel = 1
 	url = https://github.com/jarun/buku
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = buku
 	optdepends = xsel: to copy text in xorg
 	optdepends = xclip: to copy text in xorg
 	conflicts = buku-git
-	source = buku-4.7.tar.gz::https://github.com/jarun/buku/archive/refs/tags/v4.7.tar.gz
-	sha256sums = 11d0860e66e0eea6c2ce566962ae0f8e34c76dc2317d108a4ae4e5a47097d468
+	source = buku-4.8.tar.gz::https://github.com/jarun/buku/archive/refs/tags/v4.8.tar.gz
+	sha256sums = a0b94210e80e9f9f359e5308323837d41781cf8dba497341099d5c59e27fa52c
 
 pkgname = buku
