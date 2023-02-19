@@ -2,7 +2,7 @@
 # Co-Maintainer:    Misaka13514 <Misaka13514 at gmail dot com>
 pkgname=bbg
 pkgver=20230219
-pkgrel=1
+pkgrel=2
 pkgdesc="A static blog generator built with electron"
 arch=('any')
 url="https://github.com/bbg-contributors/bbg"
@@ -16,7 +16,7 @@ source=(
 	"app-${pkgver}.asar"::"${url}/releases/download/${pkgver}/app.asar"
 )
 sha256sums=(
-	'57ce50ce74ddfe30d0c62e497a20c05b0e650bdf5039a65e17bc8090b62ff7a6'
+	'ce202744ff0a187a86df620d29c4780757340071e6d4c27f80e55cdfbf103977'
 	'd5f8f191d914a140ab11999a176b226523dd78e6865a75b483013846503a5228'
 	'f503d93639c1f4d4e050eceb11adf64d369908e5941cfdbda3af30b2f3c73d96'
 	'1a1f173273157a156a77a34d5819854abb22ca9ea79a158453ea85012251abf3'
