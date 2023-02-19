@@ -1,4 +1,4 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Arne Brücher <archlinux@arne-bruecher.de>
 
 pkgname=fspviewer
 pkgver=2.1.0
