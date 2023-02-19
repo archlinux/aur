@@ -1,7 +1,7 @@
 pkgbase = mutter-auto-rotation
 	pkgdesc = Window manager and compositor for GNOME, with touch-mode auto-rotation (reverts MR 1710)
 	pkgver = 43.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
 	license = GPL
