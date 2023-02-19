@@ -1,6 +1,6 @@
 pkgbase = pd-else-git
 	pkgdesc = ELSE externals for Pd, git version
-	pkgver = v1.0.rc6.r91.ge6822cff
+	pkgver = v1.0.rc6.r146.g024732cb
 	pkgrel = 1
 	url = https://github.com/porres/pd-else
 	arch = i686

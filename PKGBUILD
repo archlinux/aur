@@ -2,7 +2,7 @@
 # Maintainer: Albert Graef <aggraef at gmail dot com>
 
 pkgname=pd-else-git
-pkgver=v1.0.rc6.r91.ge6822cff
+pkgver=v1.0.rc6.r146.g024732cb
 pkgrel=1
 pkgdesc="ELSE externals for Pd, git version"
 arch=("i686" "x86_64")
@@ -22,13 +22,11 @@ pkgver() {
 
 build() {
     cd $srcdir/pd-else
-    make pdincludepath=$srcdir/pure-data/src
-    make -C sfont~ pdincludepath=$srcdir/pure-data/src
+    make all sfont plaits pdincludepath=$srcdir/pure-data/src
 }
 
 package() {
     cd $srcdir/pd-else
-    make DESTDIR="$pkgdir" PDLIBDIR=/usr/lib/pd/extra install
-    make -C sfont~ DESTDIR="$pkgdir" installpath="$pkgdir/usr/lib/pd/extra/else" install
+    make DESTDIR="$pkgdir" PDLIBDIR=/usr/lib/pd/extra install sfont-install plaits-install
     install -vDm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
