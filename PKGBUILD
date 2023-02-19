@@ -2,7 +2,7 @@
 pkgname=murex
 replaces=('murex-git')
 pkgver=3.1.3100
-pkgrel=2
+pkgrel=3
 pkgdesc="Bash-like shell designed for greater commandline productivity and safer shell scripts"
 arch=('i686' 'x86_64')
 url="https://github.com/lmorg/murex"
