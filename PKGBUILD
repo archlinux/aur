@@ -29,7 +29,6 @@ sha256sums=("3ce6de32bce048d12429d9431b36d8437c1934266475b6a9f5235b3dff54f918"
 # * Automatically chosen system user/group IDs start at 500 instead of 100
 # * Automatically chosen regular user/group IDs end at 60000 instead of 59999
 # Sources: useradd(8) and /etc/login.defs
-# TODO: Patch the manpages as well
 # TODO: Improve user name regex. According to useradd(8) Arch allows uppercase
 # characters, underscores and numbers in the first character (but not dashes)
 # and additionally has an overall character limit of 32 characters. None of
@@ -40,18 +39,23 @@ prepare() {
   patch -Np0 -d . -i arch-policy.patch
 }
 
-# Translated manpages have to be generated using `po4a`.
+# Translated manpages have to be generated using `po4a`. A Makefile is provided
+# to prepare the translation files for the scripts.
 # TODO: Most of the translations are being rejected by `po4a` for being
 # incomplete. I believe this is an upstream problem, but am documenting it in
 # case it really is a problem with my environment.
 build() {
+  # Manpages
   cd ${_pkgname}-${pkgver}/doc/po4a
   po4a po4a.conf
+
+  # Script string translations
+  cd ../../po
+  make
 }
 
 # TODO: Run tests, but only in isolation from main system
 # TODO: What about `adduser.local`? What even is that?
-# TODO: Locale/translation files should also be included
 package() {
   cd ${_pkgname}-${pkgver}
 
@@ -95,4 +99,8 @@ package() {
   install -Dm644 deluser.fr.8 "${pkgdir}/usr/share/man/fr/man8/deluser.8"
   install -Dm644 deluser.nl.8 "${pkgdir}/usr/share/man/nl/man8/deluser.8"
   install -Dm644 deluser.pt.8 "${pkgdir}/usr/share/man/pt/man8/deluser.8"
+
+  # Locale/translation files
+  cd ../po
+  make DESTDIR="${pkgdir}" install
 }
