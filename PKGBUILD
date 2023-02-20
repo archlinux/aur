@@ -2,7 +2,7 @@
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=libplacebo-git
-pkgver=5.229.1.181.g77e101a7
+pkgver=5.229.1.246.g2f48906f
 pkgrel=1
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives. (GIT version)'
 url='https://code.videolan.org/videolan/libplacebo'
@@ -17,6 +17,7 @@ depends=('libvulkan.so'
          'libavcodec.so'
          'libavutil.so'
          'libavformat.so'
+         'libdovi.so'
          )
 makedepends=('git'
              'meson'
@@ -30,6 +31,7 @@ makedepends=('git'
              'shaderc'
              'glad'
              'nuklear'
+             'libdovi'
              )
 _pkgver=$(echo $pkgver | cut -d . -f 1-3)
 provides=("libplacebo=${_pkgver}"
