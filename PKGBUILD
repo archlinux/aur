@@ -6,8 +6,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=p7zip
-pkgver=17.04
-pkgrel=4
+pkgver=17.05
+pkgrel=1
 epoch=1
 pkgdesc="Command-line file archiver with high compression ratio"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(https://github.com/p7zip-project/p7zip/archive/v$pkgver/$pkgname-v$pkgve
         oemcp-cygwin.patch::https://github.com/p7zip-project/p7zip/commit/0e0a1a8316b6.patch
         oemcp-apple.patch::https://github.com/p7zip-project/p7zip/commit/334a01e3f8bc.patch
         do-not-gzip-man-pages.patch)
-sha256sums=('ea029a2e21d2d6ad0a156f6679bd66836204aa78148a4c5e498fe682e77127ef'
+sha256sums=('9473e324de6a87d89cb7ff65b0fec4ae3f147f03ffc138189c336a4650d74804'
             '50f2068124c1c6adc2d9ccf455e9816eccd39d31920b953ab8fcb853232d452c'
             '789789216ca46e5ea9b6780e353f964a1f46e9a2bcaa6b16413adcf9a89eb374'
             'dfe1a625f80078c3ec68038f0aae8ba3a82ea96d0aeb97cb3586dc7fb3ef9650'
