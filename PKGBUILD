@@ -5,7 +5,7 @@
 # Contributor: Erez Raviv (erezraviv@gmail.com)
 
 pkgname=chirp-next
-pkgver=20230217
+pkgver=20230219
 pkgrel=1
 pkgdesc="GUI tool for programming ham radios, built from daily build"
 arch=('any')
@@ -20,7 +20,7 @@ provides=(chirp)
 install=$pkgname.install
 source=("${pkgname}-${pkgver}.tar.gz::https://trac.chirp.danplanet.com/chirp_next/next-$pkgver/chirp-$pkgver.tar.gz" "https://trac.chirp.danplanet.com/chirp_next/next-${pkgver}/chirp-next-${pkgver}-win32.zip")
 # Checksums: https://trac.chirp.danplanet.com/chirp_next/next-$pkgver/SHA1SUM
-sha1sums=('9c27b570743c6bfcdc9afb280bbe3c1cc5d52a64' '82ea907243839b526db311b11de08d86c29fbc5c')
+sha1sums=('3b321053d3375ab9459ba099c2ce4fd48657434b' 'd9aaf866e2570200015b669c193b2ce0c68322c4')
 
 build() {
     cd "chirp-$pkgver"
