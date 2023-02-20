@@ -2,7 +2,7 @@
 
 _plug=rekt
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.0.0.r0.g2fbd63b
+pkgver=1.0.0.r6.gc9fc755
 pkgrel=1
 pkgdesc='Plugin for VapourSynth: rekt (GIT version)'
 arch=('x86_64')
@@ -10,7 +10,8 @@ url='https://github.com/OpusGang/rekt'
 license=('MIT')
 depends=('vapoursynth-plugin-vsutil')
 makedepends=('git'
-             'python-pip'
+             'python-build'
+             'python-installer'
              'python-wheel')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -24,13 +25,13 @@ pkgver() {
 
 build() {
     cd "${_plug}"
-    pip wheel --no-deps . -w dist
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "${_plug}"
 
-    pip install -I --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/tools/${_plug}/README.md"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
