@@ -1,6 +1,8 @@
-# Maintainer: Donn <me@donn.website>
+# Maintainer: lod <aur@cyber-anlage.de>
+# Contributer: Donn <me@donn.website>
+
 pkgname=cemu-bin
-pkgver=2.0.25
+pkgver=2.0.27
 pkgrel=1
 pkgdesc="Nintendo Wii U Emulator"
 arch=('x86_64')
@@ -16,7 +18,7 @@ source=(
   "cemu.desktop::https://raw.githubusercontent.com/cemu-project/Cemu/main/dist/linux/info.cemu.Cemu.desktop"
   "cemu.png::https://github.com/cemu-project/Cemu/raw/main/dist/linux/info.cemu.Cemu.png"
 )
-sha256sums=('c1f4c7438752c876bb6cadaf74bee1c783edad41ebd2402bed2c0fb046240bb6'
+sha256sums=('2afd679310cc51d13c785d3bf8e1f391ebd84cf8aa2416c9e33f6ccf246b3f70'
             '3e9380eb47646fede56c0de59ddab872627c00629820ef5f974be0d07e4f3490'
             '6458a99b8bd54e44857efa0f82bfd6035e7e072e7e080e3330e4e2cfe89cbd33')
             
