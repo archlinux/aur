@@ -1,16 +1,14 @@
 pkgbase = tailwindcss
-	pkgdesc = Standalone version of Tailwind CLI
-	pkgver = 3.0.24
-	pkgrel = 1
-	url = https://tailwindcss.com
-	arch = x86_64
-	license = MIT
-	makedepends = git
-	makedepends = nodejs-lts-gallium
-	makedepends = npm
-	depends = gcc-libs
-	options = !strip
-	source = tailwindcss::git+https://github.com/tailwindlabs/tailwindcss.git#commit=23a6d3ff8498bb3f63592810b2677e4773a3f7a4
-	md5sums = SKIP
+        pkgdesc = A utility-first CSS framework for rapidly building custom user interfaces.
+        pkgver = 3.2.7
+        pkgrel = 1
+        url = https://tailwindcss.com
+        arch = any
+        license = MIT
+        depends = nodejs>=16.0.0
+        depends = npm
+        noextract = tailwindcss-3.2.7.tgz
+        source = https://registry.npmjs.org/tailwindcss/-/tailwindcss-3.2.7.tgz
+        sha1sums = 5936dd08c250b05180f0944500c01dce19188c07
 
 pkgname = tailwindcss
