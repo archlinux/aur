@@ -1,8 +1,8 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=orbiton-bin
-pkgver=2.60.0
-pkgrel=2
+pkgver=2.60.1
+pkgrel=1
 pkgdesc='Text editor, IDE and gdb frontend (CLI only)'
 arch=(aarch64 armv6 armv7 riscv64 x86_64)
 url='https://github.com/xyproto/orbiton'
@@ -10,7 +10,7 @@ license=(BSD)
 conflicts=(o o-bin orbiton)
 replaces=(o-bin)
 provides=(o)
-source=("https://github.com/xyproto/orbiton/releases/download/v$pkgver/o-$pkgver-linux_${CARCH}_static.tar.xz")
+source=("https://github.com/xyproto/orbiton/releases/download/v$pkgver/orbiton-$pkgver-linux_${CARCH}_static.tar.xz")
 optdepends=('asciidoctor: for writing man pages'
             'agda: for compiling Agda'
             'astyle: for formatting C#'
@@ -52,11 +52,11 @@ optdepends=('asciidoctor: for writing man pages'
             'vlang: for compiling and formatting V'
             'yasm: for compiling Assembly'
             'zig: for compiling and formatting Zig')
-sha256sums=('63bb1567e7fcb54fb068a6a5c7c84be3fc520e8e45e90aab6ca772be1f3f6bc3')
-b2sums=('b6d68ec9dad131a8f55385cb69db2f7a6817adb919f5308d741f46aad660ecdf75e92fd0dafd6fcb6e6a5732b6595add0cf36955c6e487a6e2d74b23db55197f')
+sha256sums=('e44520efb731f8f44e390983cf36c89eab18a2f3015e9ff443791df79b449bfa')
+b2sums=('1e1665e50d19613ef554fe78e389d6bd81da9f557a49c666719d78b512fedf34fcba88fd75136b0cb0dca340caafc78a71f647ea6cbfc3a2fd94e12887b5b073')
 
 package() {
-  cd o-$pkgver-linux_${CARCH}_static
+  cd orbiton-$pkgver-linux_${CARCH}_static
 
   install -Dm755 o "$pkgdir/usr/bin/o"
   install -Dm644 o.1.gz "$pkgdir/usr/share/man/man1/o.1.gz"
