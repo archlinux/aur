@@ -2,7 +2,7 @@
 pkgname=python-orbax
 _pkgname=${pkgname#python-}
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Orbax is a library providing common utilities for JAX users.'
 arch=('any')
 url='https://github.com/google/orbax'
@@ -16,8 +16,8 @@ depends=(
     'python-importlib_resources'
     'python-jax'
     'python-numpy'
-    'python-pyyaml'
     'python-tensorstore'
+    'python-yaml'
 )
 makedepends=('python-build' 'python-flit-core' 'python-installer')
 optdepends=('python-flax: Deep learning library from Google')
