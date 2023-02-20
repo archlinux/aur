@@ -1,3 +1,4 @@
+
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 # Helpful url: https://prowlarr.servarr.com/v1/update/develop?version=0.0.0.0&os=linux&runtime=netcore&arch=x64
 
