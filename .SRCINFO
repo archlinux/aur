@@ -1,0 +1,17 @@
+pkgbase = xgboost
+	pkgdesc = An optimized distributed gradient boosting library.
+	pkgver = 1.7.4
+	pkgrel = 1
+	url = https://github.com/dmlc/xgboost
+	arch = x86_64
+	makedepends = cuda
+	source = git+https://github.com/dmlc/xgboost.git#tag=v1.7.4
+	source = git+https://github.com/rapidsai/gputreeshap.git#commit=787259b
+	source = git+https://github.com/NVlabs/cub.git#commit=af39ee2
+	source = git+https://github.com/dmlc/dmlc-core.git#commit=dfd9365
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = xgboost
