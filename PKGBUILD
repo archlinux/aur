@@ -1,4 +1,5 @@
 # Maintainer: A.T.W.A. <arch.atwa@gmail.com>
+# Contributor: Erik Johnson <palehose at gmail dot com>
 
 pkgname=libucl
 pkgver=0.8.2
