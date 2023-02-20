@@ -1,31 +1,39 @@
-# Maintainer: siers <wimuan@gmail.com>
+# Maintainer: Firegem <mrfiregem@protonmail.ch>
+# Contributor: siers <wimuan@gmail.com>
 # vim: ts=2 sw=2
 pkgname=massren
-pkgver=20160913
+pkgver=1.5.6
 pkgrel=1
-pkgdesc="Bash wrapper for pacman and aur"
 pkgdesc="Easily rename multiple files using your text editor"
 url="https://github.com/laurent22/massren"
 license=("MIT")
-arch=('any')
-makedepends=('git' 'go')
-depends=()
-optdepends=()
-source=()
-md5sums=()
+arch=('x86_64')
+makedepends=('go')
+_url="https://github.com/laurent22/${pkgname}"
+source=("${pkgname}-${pkgver}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('49758b477a205f3fbf5bbe72c2575fff8b5536f8c6b45f8f6bd2fdde023ce874')
+
+prepare() {
+	cd "$pkgname-$pkgver"
+	mkdir -p build/
+
+	go mod init "${_url#https://}"
+	go mod tidy
+}
 
 build() {
-  export GOPATH="$srcdir"
-  export GOBIN="$srcdir/bin"
-  export PATH=$PATH:$GOPATH/bin
-
-  go get github.com/laurent22/massren
-  cd src/github.com/laurent22/massren
-  go build
+	cd "$pkgname-$pkgver"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	go build -o build .
 }
 
 package() {
-  sed -n '/## License/,$p' "$srcdir/src/github.com/laurent22/massren/README.md" > "$srcdir/LICENSE"
-  install -Dm644 "$srcdir/LICENSE" ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-  install -Dm755 "bin/massren" "$pkgdir/usr/bin/massren"
+	cd "$pkgname-$pkgver"
+  sed -n '/## License/,$p' README.md > LICENSE
+  install -Dm755 "build/$pkgname" "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
