@@ -7,8 +7,8 @@
 # This was originally written by Daniel Bermond in blackmagic-decklink-sdk pkgbuild
 # It is sufficient to just replace _downloadid to correspond new release version
 # It can be obtained from chromium -> Developer Tools -> Network -> XHR -> click latest-version and copy downloadId
-_downloadid='1ea37eaee99740fe8a063783f4afe636'
-_referid='7a1a0b5ffaf34f9588fd46683d40da75'
+_downloadid='748bf78ca717474cbc4fb792ac896e4c'
+_referid='cbfe7c09b9a44ed08ab0e14f29bc262d'
 _siteurl="https://www.blackmagicdesign.com/api/register/us/download/${_downloadid}"
 
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
@@ -48,27 +48,27 @@ _srcurl="$(curl \
             "$_siteurl")"
 
 DLAGENTS=("https::/usr/bin/curl \
-              -gqb '' -C - --retry 3 --retry-delay 3 \
-              -H Host:\ sw.blackmagicdesign.com \
-              -H Upgrade-Insecure-Requests:\ 1 \
-              -H ${_useragent_escaped} \
-              -H Accept:\ text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8 \
-              -H Accept-Language:\ en-US,en;q=0.9 \
-              -o %o \
-              --compressed \
-              %u")
+            -gqb '' -C - --retry 3 --retry-delay 3 \
+            -H Host:\ sw.blackmagicdesign.com \
+            -H Upgrade-Insecure-Requests:\ 1 \
+            -H ${_useragent_escaped} \
+            -H Accept:\ text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8 \
+            -H Accept-Language:\ en-US,en;q=0.9 \
+            -o %o \
+            --compressed \
+            %u")
 
 pkgname=davinci-resolve-studio
 _pkgname=resolve
 resolve_app_name=com.blackmagicdesign.resolve
-pkgver=18.1.2
+pkgver=18.1.3
 pkgrel=1
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
 license=('Commercial')
-depends=('glu' 'gtk2' 'gstreamer' 'libpng12' 'ocl-icd' 'fuse2'
-         'opencl-driver' 'qt5-base' 'qt5-svg' 'qt5-webkit' 'qt5-webengine' 'qt5-websockets' 'libxcrypt-compat'
-         'shared-mime-info' 'gtk-update-icon-cache')
+depends=('glu' 'gtk2' 'libpng12' 'fuse2' 'opencl-driver' 'qt5-x11extras' 'qt5-svg' 'qt5-webkit' 'qt5-webengine' 'qt5-websockets'
+'qt5-quickcontrols2' 'qt5-multimedia' 'libxcrypt-compat' 'xmlsec' 'java-runtime' 'ffmpeg4.4' 'gst-plugins-bad-libs''python-numpy' 
+'tbb' 'apr-util' 'luajit')
 makedepends=('libarchive' 'xdg-user-dirs' 'patchelf')
 options=('!strip')
 
@@ -76,13 +76,13 @@ if [ ${pkgname} == "davinci-resolve-studio" ]; then
 # Variables for STUDIO edition
 	pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.'
 	_archive_name=DaVinci_Resolve_Studio_${pkgver}_Linux
-	sha256sums=('f6af12b67010d798e15fc38778a9c0067d7c27d396f44ab80fe75d1ffde72571')
+	sha256sums=('2592e676e2df34d99b10456ceca398d827a8b419440d7c444f0d1e4d61e6d149')
 	conflicts=('davinci-resolve' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
 else
 # Variables for FREE edition
 	pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
 	_archive_name=DaVinci_Resolve_${pkgver}_Linux
-	sha256sums=('c81475ec8e159a06b96f7790641bc690cd588594bf9184fc2fbdea8f4cf81799')
+	sha256sums=('37a66cec936c104e11a1a87921228b89f92d521a8315ecc42a328f8f363e860a')
 	conflicts=('davinci-resolve-studio' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
 fi
 
