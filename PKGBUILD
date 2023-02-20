@@ -3,7 +3,7 @@
 
 pkgname=saml2aws-bin
 _pkgname="${pkgname%-bin}"
-pkgver=2.36.2
+pkgver=2.36.3
 pkgrel=1
 pkgdesc='CLI tool which enables you to login and retrieve AWS temporary credentials using a SAML IDP'
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h')
@@ -15,10 +15,10 @@ source_x86_64=("${url}/releases/download/v$pkgver/${_pkgname}_${pkgver}_linux_am
 source_aarch64=("${url}/releases/download/v$pkgver/${_pkgname}_${pkgver}_linux_arm64.tar.gz")
 source_armv7h=("${url}/releases/download/v$pkgver/${_pkgname}_${pkgver}_linux_armv6.tar.gz")
 source_armv6h=("${url}/releases/download/v$pkgver/${_pkgname}_${pkgver}_linux_armv6.tar.gz")
-sha256sums_x86_64=('f415ae8476cf8c3814a74f9377bed5e9eca189a3c6013030cbe709ac45cf2e45')
-sha256sums_aarch64=('e403386e519204760fa4352aafa29586bc40d8bf679d4d7e06fcc44c4a207e1e')
-sha256sums_armv7h=('219c54b5026b311171ddb724e9d8246eefc882e2b20a4833f9daefb9d3781ee8')
-sha256sums_armv6h=('219c54b5026b311171ddb724e9d8246eefc882e2b20a4833f9daefb9d3781ee8')
+sha256sums_x86_64=('6f4388dc80f26f375b4c39957a76e6a90c1f93c625959fc04df6bf65a68031ca')
+sha256sums_aarch64=('25c9b1a04ec693ec925c274c35ac24aa1beb00e28c6a9f888132d84598ad8a3f')
+sha256sums_armv7h=('839db99bc919d2aa47412914dad590f0f37226c7e48599fcaf1cb8125c920d9b')
+sha256sums_armv6h=('839db99bc919d2aa47412914dad590f0f37226c7e48599fcaf1cb8125c920d9b')
 
 package() {
     install -Dm 755 "${_pkgname}" -t "${pkgdir}/usr/bin"
