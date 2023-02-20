@@ -5,11 +5,11 @@
 # Packager :  Alem swaj <alemswaj@tutanota.com>
 
 pkgname=lelivrescolaire
-pkgver='3.1.10'
+pkgver='4.1.6'
 pkgrel=1
 pkgdesc="Lelivrescolaire.fr Éditions : application innovante pour consulter vos manuels scolaires de la 6e à la Terminale !"
 arch=('x86_64')
-url="lelivrescolaire.fr"
+url="https://www.lelivrescolaire.fr"
 license=('MIT')
 depends=(gtk3 libnotify libnss_nis libxss libxtst xdg-utils python-atspi libappindicator-gtk3 libsecret)
 source=("https://ci.lls.fr/build/latest/linux/Lelivrescolaire.fr.deb")
