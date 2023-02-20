@@ -1,7 +1,7 @@
 pkgbase = notesnook-bin
 	pkgdesc = Open source zero knowledge private note taking
 	pkgver = 2.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://notesnook.com
 	arch = x86_64
 	license = GPL

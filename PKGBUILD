@@ -3,7 +3,7 @@
 _pkgname=notesnook
 pkgname=${_pkgname}-bin
 pkgver="2.4.3"
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source zero knowledge private note taking"
 arch=('x86_64')
 url="https://notesnook.com"
