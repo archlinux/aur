@@ -3,30 +3,27 @@
 
 _srcname=ts
 pkgname=task-spooler
-pkgver=1.0.1
-pkgrel=4
+pkgver=1.0.2
+pkgrel=1
 #pkgdesc="Personal job scheduler"
 pkgdesc="Queue up tasks from the shell for batch execution"
 arch=('x86_64')
+#url="https://tracker.debian.org/pkg/task-spooler/"
 #url="https://vicerveza.homeunix.net/~viric/soft/ts/"
-#url="https://viric.name/soft/ts/"
-url="https://tracker.debian.org/pkg/task-spooler/"
+url="https://viric.name/soft/ts/"
 license=('GPL')
+#source=(https://ftp.debian.org/debian/pool/main/t/$pkgname/${pkgname}_$pkgver+dfsg1.orig.tar.xz)
 #source=(https://vicerveza.homeunix.net/~viric/soft/$_srcname/$_srcname-$pkgver.tar.gz)
-source=(https://ftp.debian.org/debian/pool/main/t/$pkgname/${pkgname}_$pkgver+dfsg1.orig.tar.xz)
-md5sums=('6cd744c43f36d432f303957d60474570')
+source=(https://viric.name/soft/$_srcname/$_srcname-$pkgver.tar.gz)
+sha256sums=('f73452aed80e2f9a7764883e9353aa7f40e65d3c199ad1f3be60fd58b58eafec')
 
 build() {
-  cd $_srcname-$pkgver
-  make
+  make -C $_srcname-$pkgver
 }
 
 package() {
-  cd $_srcname-$pkgver
-
-  install -Dm644 TRICKS "$pkgdir/usr/share/doc/$pkgname/TRICKS"
-
-  make PREFIX="$pkgdir/usr" install
+  install -Dm644 $_srcname-$pkgver/TRICKS -t "$pkgdir/usr/share/doc/$pkgname"
+  make -C $_srcname-$pkgver PREFIX="$pkgdir/usr" install
 
   # Rename ts to tsp, which is also done in other distros.
   # File /usr/bin/ts is owned by package community/moreutils.
