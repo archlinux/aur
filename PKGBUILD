@@ -1,36 +1,33 @@
 # Contributor: Filip Graliński <filipg@amu.edu.pl>
+# Contributor: Daniel Bershatsky <bepshatsky@yandex.ru>
 
 pkgname=python-transformers
+_pkgname=${pkgname#python-}
 pkgver=4.26.1
-pkgrel=1
+pkgrel=2
 pkgdesc="State-of-the-art Natural Language Processing for Jax, PyTorch and TensorFlow"
 arch=('any')
-_url='https://pypi.org/project/transformers'
 url='https://github.com/huggingface/transformers'
 license=('Apache')
 depends=(
-  'python-beautifulsoup4'
+  'python-filelock'
   'python-huggingface-hub'
-  'python-more-itertools'
-  'python-msgpack'
   'python-numpy'
-  'python-psutil'
-  'python-pydantic'
+  'python-packaging'
   'python-regex'
+  'python-requests'
   'python-tokenizers'
+  'python-tqdm'
+  'python-yaml'
 )
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=(
   'python-flax: JAX support'
-  'python-jax: JAX support'
-  'python-jaxlib: JAX support'
   'python-onnxconverter-common: TensorFlow support'
-  'python-optax: JAX support'
   'python-pytorch: PyTorch support'
   'python-tensorflow: TensorFlow support'
-  'python-tf2onn: TensorFlow support'
+  'python-tf2onnx: TensorFlow support'
 )
-makedepends=('python-setuptools')
-
 source=(
   "python-transformers-$pkgver.tar.gz"::"https://github.com/huggingface/transformers/archive/refs/tags/v$pkgver.tar.gz"
 )
@@ -40,10 +37,13 @@ sha256sums=(
 
 build() {
   cd "transformers-$pkgver"
-  python setup.py build
+  python -m build -n -w
 }
 
 package() {
   cd "transformers-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1
+  python -m installer \
+    --compile-bytecode 1 \
+    --destdir $pkgdir \
+    $srcdir/$_pkgname-$pkgver/dist/transformers-$pkgver-*-*.whl
 }
