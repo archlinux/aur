@@ -1,0 +1,13 @@
+diff --git a/build-aux/cargo.sh b/build-aux/cargo.sh
+index b37435f..5b666ae 100644
+--- a/build-aux/cargo.sh
++++ b/build-aux/cargo.sh
+@@ -9,7 +9,7 @@ export BUILDTYPE="$4"
+ export APP_BIN="$5"
+ 
+ 
+-if [ $BUILDTYPE = "release" ]
++if [ $BUILDTYPE = "plain" ]
+ then
+     echo "RELEASE MODE"
+     cargo build --manifest-path \
