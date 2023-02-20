@@ -1,0 +1,13 @@
+pkgbase = clyde-aur-git
+	pkgdesc = Simple AUR helper written in Bash
+	pkgver = 30.42d76d8
+	pkgrel = 1
+	url = https://github.com/StandingPadAnimations/clyde
+	arch = any
+	makedepends = git
+	depends = bash-completion
+	depends = jq
+	source = git+https://github.com/StandingPadAnimations/clyde
+	sha256sums = SKIP
+
+pkgname = clyde-aur-git
