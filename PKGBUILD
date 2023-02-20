@@ -2,7 +2,7 @@
 
 pkgname=xorg-fonts-web-otb
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Xorg bitmap fonts - small sizes only, so that anti-aliased fonts can serve as fallback for larger sizes. Works best in web browsers and desktop environments / window managers that do not use large fonts (eg, in screen lockers)"
 arch=('any')
 url="https://gitlab.freedesktop.org/"
