@@ -1,6 +1,9 @@
 # Maintainer: Triss Healy <th@trissyle.gs>
 # Contributor: Alessandro Guido <alexguido@gmail.com>
 
+# I backed up the original file to archive.org:
+# https://archive.org/details/cnijfilter-mx720series-3.90-1-deb
+
 pkgname=cnijfilter-mx720series
 pkgver=3.90
 pkgrel=1
