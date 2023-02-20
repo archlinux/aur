@@ -1,14 +1,17 @@
 # Maintainer: dreieck (https://aur.archlinux.org/account/dreieck)
 
-_gitserver='github.com'
+_pkgbase=tls-client
+
+_gitservice='github'
+_gittld='com'
+_gitserver="${_gitservice}.${_gittld}"
 _gitauthor='bogdanfinn'
 _gitproject="${_pkgbase}"
 
-_pkgbase=tls-client
 pkgbase="${_pkgbase}-git"
-pkgname=("golang-${_gitauthor}-${_pkgbase}-git" "lib-${_pkgbase}-git")
+pkgname=("golang-${_gitservice}-${_gitauthor}-${_pkgbase}-git" "lib-${_pkgbase}-git")
 pkgver=1.3.4.r163.20230218.46e88e3
-pkgrel=3
+pkgrel=6
 pkgdesc="An advanced HTTP library based on requests and tls-client."
 arch=(
   'aarch64'
@@ -54,7 +57,8 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgbase}"
-  export GOPATH="${srcdir}/go"
+  #export GOPATH="${srcdir}/go"
+  export GOPATH="${srcdir}/go:/usr/share/gocode:/usr/share/gocode/src"
 
   git log > "${srcdir}/git.log"
 
@@ -71,7 +75,8 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgbase}"
-  export GOPATH="${srcdir}/go"
+  #export GOPATH="${srcdir}/go"
+  export GOPATH="${srcdir}/go:/usr/share/gocode:/usr/share/gocode/src"
 
   # go build -x -v -o build ./... # This would only build examples and ??
 
@@ -91,24 +96,32 @@ build() {
 #   # go test -x -v
 # }
 
-package_golang-bogdanfinn-tls-client-git() {
+package_golang-github-bogdanfinn-tls-client-git() {
   pkgdesc="An advanced HTTP library based on requests and tls-client (Go module)."
   arch=(
     'any'
   )
-  depends=()
+  depends=(
+    'golang-golang-x-crypto'
+    'golang-golang-x-net'
+    'golang-golang-x-sys'
+    'golang-golang-x-term'
+    'golang-golang-x-text'
+    'golang-golang-x-tools'
+  )
   optdepends=(
     'bash: For build scripts.'
     'go: To compile software using this module, and for examples.'
   )
   provides=(
-    "golang-bogdanfinn-tls-client=${pkgver}"
+    "golang-github-bogdanfinn-tls-client=${pkgver}"
   )
   conflicts=(
-    "golang-bogdanfinn-tls-client"
+    "golang-github-bogdanfinn-tls-client"
   )
   replaces=(
     'golang-tls-client-git'
+    'golang-bogdanfinn-tls-client-git'
   )
 
   cd "${srcdir}/${_pkgbase}"
@@ -118,16 +131,16 @@ package_golang-bogdanfinn-tls-client-git() {
   rm -rv "${pkgdir}/usr/share/gocode/src/${_gitserver}/${_gitauthor}/${_gitproject}"/cffi_dist/{*.so,*.h,dist,Dockerfile*,example*}
 
   for _docfile in "Readme.md"; do
-    install -D -v -m644 "${_docfile}"               "${pkgdir}/usr/share/doc/golang-tls-client/${_docfile}"
+    install -D -v -m644 "${_docfile}"                  "${pkgdir}/usr/share/doc/golang-github-bogdanfinn-tls-client/${_docfile}"
   done
-  install -D -v -m644 "${srcdir}/git.log"           "${pkgdir}/usr/share/doc/golang-tls-client/git.log"
-  install -d -v -m755                               "${pkgdir}/usr/share/doc/golang-tls-client/examples"
-  cp -rv example/*                                  "${pkgdir}/usr/share/doc/golang-tls-client/examples"/
+  install -D -v -m644 "${srcdir}/git.log"              "${pkgdir}/usr/share/doc/golang-github-bogdanfinn-tls-client/git.log"
+  install -d -v -m755                                  "${pkgdir}/usr/share/doc/golang-github-bogdanfinn-tls-client/examples"
+  cp -rv example/*                                     "${pkgdir}/usr/share/doc/golang-github-bogdanfinn-tls-client/examples"/
 
-  install -D -v -m644 "${srcdir}/license-dontcare.txt" "${pkgdir}/usr/share/licenses/golang-tls-client-git/license-dontcare.txt"
-  ln -svf "/usr/share/licenses/golang-tls-client-git/license-dontcare.txt"  "${pkgdir}/usr/share/doc/golang-tls-client/license-dontcare.txt"
-  # install -D -v -m644 LICENSE                       "${pkgdir}/usr/share/licenses/${golang-tls-client-git}/LICENSE"
-  # ln -svf "/usr/share/licenses/${golang-tls-client-git}/LICENSE"  "${pkgdir}/usr/share/doc/${golang-tls-client}/LICENSE"
+  install -D -v -m644 "${srcdir}/license-dontcare.txt" "${pkgdir}/usr/share/licenses/golang-github-bogdanfinn-tls-client-git/license-dontcare.txt"
+  ln -svf "/usr/share/licenses/golang-github-bogdanfinn-tls-client-git/license-dontcare.txt"  "${pkgdir}/usr/share/doc/golang-github-bogdanfinn-tls-client/license-dontcare.txt"
+  # install -D -v -m644 LICENSE                          "${pkgdir}/usr/share/licenses/golang-github-bogdanfinn-tls-client-git/LICENSE"
+  # ln -svf "/usr/share/licenses/golang-github-bogdanfinn-tls-client-git/LICENSE"  "${pkgdir}/usr/share/doc/golang-github-bogdanfinn-tls-client/LICENSE"
 }
 
 package_lib-tls-client-git() {

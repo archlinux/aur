@@ -1,28 +1,34 @@
 pkgbase = tls-client-git
 	pkgdesc = An advanced HTTP library based on requests and tls-client.
 	pkgver = 1.3.4.r163.20230218.46e88e3
-	pkgrel = 3
-	url = https://github.com/bogdanfinn/
+	pkgrel = 6
+	url = https://github.com/bogdanfinn/tls-client
 	arch = aarch64
 	arch = amd64
 	arch = x86_64
 	license = custom: dontcare
 	makedepends = git
 	makedepends = go>=1.18
-	source = tls-client::git+https://github.com/bogdanfinn/.git
+	source = tls-client::git+https://github.com/bogdanfinn/tls-client.git
 	source = license-dontcare.txt
 	sha256sums = SKIP
 	sha256sums = 8b45a1a51ac8989701a6119ef5ce0aa081dc4edd88132cf82f29d741a423a8f9
 
-pkgname = golang-bogdanfinn-tls-client-git
+pkgname = golang-github-bogdanfinn-tls-client-git
 	pkgdesc = An advanced HTTP library based on requests and tls-client (Go module).
 	arch = any
-	depends = 
+	depends = golang-golang-x-crypto
+	depends = golang-golang-x-net
+	depends = golang-golang-x-sys
+	depends = golang-golang-x-term
+	depends = golang-golang-x-text
+	depends = golang-golang-x-tools
 	optdepends = bash: For build scripts.
 	optdepends = go: To compile software using this module, and for examples.
-	provides = golang-bogdanfinn-tls-client=1.3.4.r163.20230218.46e88e3
-	conflicts = golang-bogdanfinn-tls-client
+	provides = golang-github-bogdanfinn-tls-client=1.3.4.r163.20230218.46e88e3
+	conflicts = golang-github-bogdanfinn-tls-client
 	replaces = golang-tls-client-git
+	replaces = golang-bogdanfinn-tls-client-git
 
 pkgname = lib-tls-client-git
 	pkgdesc = An advanced HTTP library based on requests and tls-client (shared library and include file).
