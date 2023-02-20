@@ -105,7 +105,7 @@ package_ocp-git() {
 		 'libancient'
 		 'libdiscid')
 	cd $_pkgbase
-	./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core cross_compiling=yes\
+	./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core\
 		    --without-x11 --without-sdl --without-sdl2\
 		    --without-update-desktop-database\
                     --without-update-mime-database
