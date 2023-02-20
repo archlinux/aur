@@ -5,7 +5,6 @@ pkgbase = clyde-aur-git
 	url = https://github.com/StandingPadAnimations/clyde
 	arch = any
 	makedepends = git
-	depends = bash-completion
 	depends = jq
 	source = git+https://github.com/StandingPadAnimations/clyde
 	sha256sums = SKIP
