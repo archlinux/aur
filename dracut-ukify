@@ -115,9 +115,14 @@ function gen_image() {
   echo "==> Building initrd image $kernel ($version)"
   dracut -q -f --no-hostonly-cmdline --kver "${version}" "$initrd"
 
+  os_release=$(mktemp)
+  grep -v '^BUILD_ID=' /etc/os-release > "$os_release"
+  echo "BUILD_ID=\"$version\"" >> "$os_release"
+  echo "VERSION_ID=\"$pkgbase\"" >> "$os_release"
+
   declare -a ukify_args=("${ukify_global_args[@]}")
   ukify_args+=(--uname "$version")
-  ukify_args+=(--os-release "@/etc/os-release")
+  ukify_args+=(--os-release "@$os_release")
   ukify_args+=(--output "$image")
   ukify_args+=("$vmlinuz" "$initrd")
 
@@ -125,8 +130,9 @@ function gen_image() {
 
   /usr/lib/systemd/ukify "${ukify_args[@]}"
 
-  # Remove temporary initrd file
+  # Remove temporary files
   rm "$initrd"
+  rm "$os_release"
 
   # Mark image as default if needed
   if [[ "$pkgbase" == "$default_kernel_package" ]]; then
