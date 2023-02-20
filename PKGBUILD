@@ -19,12 +19,12 @@ pkgver() {
 
 package () {
 	# Uncomment if you use Doas
-	# sed 's/sudo/doas'
+	# sed 's/sudo/doas' "$_pkgname/clyde"
 
 	# Standard install
 	install -D -t "$pkgdir/usr/bin" "$_pkgname/clyde"
 	install -D -t "$pkgdir/usr/share/bash_completions" "$_pkgname/clyde-completion.bash"
 
 	# Uncomment if you use Zsh
-	#install -D -t "$pkgdir/usr/local/share/zsh/site-functions" "$_pkgname/clyde-completion.bash"  
+	# install -D -t "$pkgdir/usr/local/share/zsh/site-functions" "$_pkgname/clyde-completion.bash"  
 }
