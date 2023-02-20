@@ -2,27 +2,27 @@
 # Contributor: John Andrews <theunderdog09 at gmail dot com>
 # Contributor: Timo Kramer <fw minus aur at timokramer dot de>
 pkgname=mullvad-vpn-cli
-pkgver=2022.5
-pkgrel=6
+pkgver=2023.1
+pkgrel=1
 pkgdesc="The Mullvad VPN CLI client"
 arch=('x86_64')
 url="https://www.mullvad.net"
 license=('GPL3')
-depends=('dbus' 'iputils')
-makedepends=('cargo' 'git' 'go')
+depends=('dbus' 'iputils' 'libnftnl')
+makedepends=('cargo' 'git' 'go' 'protobuf')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 options=('!lto')
 install="${pkgname%-*}.install"
-_tag=5bcd2533633d76b1deaf5875b24a2c83bec6fc49 # tags/2022.5^0
+_tag=afc2c272831e465c79fab3f84893e4b1357315e5  # tags/2023.1^0
 _commit=f6dca66645c82501a330416ad39c7e63bcdae57d
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#commit=${_tag}?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed")
 sha256sums=('SKIP'
             'SKIP')
 validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87' # Linus Färnstrand (code signing key) <linus@mullvad.net>
-              '8339C7D2942EB854E3F27CE5AEE9DECFD582E984' # David Lönnhager (code signing) <david.l@mullvad.net>
-              '4B986EF5222BA1B810230C602F391DE6B00D619C' # Oskar Nyberg (code signing) <oskar@mullvad.net>
+#              '8339C7D2942EB854E3F27CE5AEE9DECFD582E984' # David Lönnhager (code signing) <david.l@mullvad.net>
+#              '4B986EF5222BA1B810230C602F391DE6B00D619C' # Oskar Nyberg (code signing) <oskar@mullvad.net>
               )
 
 pkgver() {
@@ -52,6 +52,7 @@ prepare() {
 build() {
   cd "$srcdir/mullvadvpn-app"
   local RUSTC_VERSION=$(rustc --version)
+  local PRODUCT_VERSION=$(cargo run -q --bin mullvad-version)
 
   echo "Building Mullvad VPN ${PRODUCT_VERSION}..."
 

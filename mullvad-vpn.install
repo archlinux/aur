@@ -16,8 +16,9 @@ pre_install() {
 post_install() {
   chmod u+s "/usr/bin/mullvad-exclude"
 
-  echo 'Enabling Mullvad VPN daemon...'
+  echo 'Starting & enabling Mullvad VPN daemon...'
   systemctl enable --now mullvad-daemon
+  echo 'Enabling Mullvad early boot blocking service...'
   systemctl enable mullvad-early-boot-blocking
 }
 
@@ -26,13 +27,9 @@ pre_upgrade() {
 }
 
 post_upgrade() {
-  echo 'Starting & enabling Mullvad VPN daemon...'
   systemctl daemon-reload
-  systemctl enable --now mullvad-daemon
-  echo 'Enabling Mullvad early boot blocking service...'
-  systemctl enable mullvad-early-boot-blocking
 
-  chmod u+s "/usr/bin/mullvad-exclude"
+  post_install
 }
 
 pre_remove() {
