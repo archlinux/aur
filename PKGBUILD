@@ -5,7 +5,7 @@
 pkgname=cosmic-epoch-git
 pkgver=r40.a29ba71
 pkgrel=1
-pkgdesc="Next generation Cosmic desktop environment (Currently an incomplete pre-alpha)"
+pkgdesc="Rust, Iced based desktop desktop environment, GNOME inspired, by System76, Pop! OS."
 arch=('x86_64')
 url="https://github.com/pop-os/cosmic-epoch"
 license=('GPL3')
