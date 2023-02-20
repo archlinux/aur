@@ -50,21 +50,21 @@ _disable_debug=y
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20230208.r0.g38d2b86a665b
+pkgver=20230220.r0.gd2af0fa4bfa4
 _srcname=linux-next
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux NEXT'
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 options=('!strip')
 makedepends=('bc' 'libelf' 'git' 'pahole' 'cpio' 'perl' 'tar' 'xz')
-_lucjanver=6.1
+_lucjanver=6.2
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_lucjanver}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver}"
 
 source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/next/${_srcname}.git"
-        "${_lucjanpath}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v2-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
          # the main kernel config files
         'config')
 
@@ -321,5 +321,5 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha512sums=('SKIP'
-            '3ccb02d9e7a09651351cf379aca5cb66a5402c8e9e890cfaebf8d869b82858eb7e1be5a49f8dcd918ebe4b70cfffd39f6591d30752d7e8c9d1d9bddfe70fb0fd'
-            'f1d1d414e0e3b04846bc17a6bf1d9c91d8a629a8ee5882c7aece723ce690ae899729937b9e15aefec63cf2f943eb8a00c5b0616c938cdc3994e755f0e2c57ac6')
+            '28dc56be7060b2398c33d936ec44527fa9efb042b314c96c1568a6d10ca051a1880672deeb57112aa4f5cf72064d67c1494cd1fb52c4e9dfa33a761d6b3692d1'
+            '02100aa3d72b9f1fe8aed2f941d0e25ce31e297fb61226426b898096de030cafa22f862f64307d1682fb424391b8eaca3be28644718636c48dd9b6b63dd044e4')
