@@ -3,23 +3,23 @@
 
 pkgname=geany-themes-git
 _gitname=geany-themes
-pkgver=1.22.82.g480a7bd
+pkgver=1.24.57.gc174137
 pkgrel=1
 pkgdesc='A collection of color schemes for geany.'
 arch=('any')
-url="https://github.com/codebrainz/${_gitname}"
+url="https://git.geany.org/${_gitname}"
 license=('GPL')
 depends=('geany')
 conflicts=('geany-themes')
 makedepends=('git')
 provides=('geany-themes')
-source=("git://github.com/codebrainz/${_gitname}.git")
+source=("git+https://git.geany.org/${_gitname}")
 md5sums=('SKIP')
 
 pkgver()
 {
 	cd "${srcdir}/${_gitname}"
-	git describe --always | sed 's|-|.|g'
+	git describe --always --tags | sed 's|-|.|g'
 }
 
 package()
