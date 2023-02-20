@@ -2,7 +2,7 @@
 
 _plug=awsmfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.3.2.r3.g41cf38e
+pkgver=1.3.3.r6.ge2f9904
 pkgrel=1
 pkgdesc='Plugin for VapourSynth: awsmfunc (GIT version)'
 arch=('x86_64')
@@ -14,7 +14,8 @@ depends=('python-numpy'
          'vapoursynth-plugin-remapframes'
          'vapoursynth-plugin-fillborders')
 makedepends=('git'
-             'python-pip'
+             'python-build'
+             'python-installer'
              'python-wheel')
 optdepends=('vapoursynth-plugin-placebo: VapourSynth placebo plugin'
             'vapoursynth-plugin-descale: VapourSynth descale plugin'
@@ -32,13 +33,13 @@ pkgver() {
 
 build() {
     cd "${_plug}"
-    pip wheel --no-deps . -w dist
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "${_plug}"
 
-    pip install -I --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/tools/${_plug}/README.md"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
