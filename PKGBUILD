@@ -2,8 +2,8 @@
 # Contributor: Black_Codec <orso.f.regna@gmail.com>
 
 pkgname=guacamole-client
-pkgver=1.4.0
-pkgrel=3
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="Java and Maven components of Guacamole"
 arch=('any')
 url="https://guacamole.apache.org/"
@@ -17,7 +17,7 @@ source=("http://apache.org/dyn/closer.cgi?action=download&filename=guacamole/${p
         "guacamole.properties")
 install=guacamole-client.install
 
-md5sums=('8ec56d5e2e0ca2c5d0e4f7961b136e73'
+md5sums=('d5495668bf3d76a7bcba70ebf4b8e9d3'
          '1f3ec0a32cc3c6b4f7aeb8a3b2e7531b')
 
 backup=('etc/guacamole/guacamole.properties' 'etc/guacamole/user-mapping.xml')
@@ -38,6 +38,7 @@ prepare() {
 build() {
     cd "$srcdir"/$pkgname-$pkgver
     mvn -DskipTests=true package
+    #mvn package
 }
  
 package() {
