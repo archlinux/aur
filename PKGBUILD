@@ -2,14 +2,14 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=gnome-shell-extension-gtile-git
-pkgver=50.r5.gc59e79d
+pkgver=51.r17.ga252d2b
 pkgrel=1
 pkgdesc="A window tiling extension for GNOME"
 arch=('any')
 url="https://github.com/gTile/gTile"
 license=('GPL2')
 depends=('gnome-shell')
-makedepends=('git' 'bazel' 'python' 'yarn')
+makedepends=('bazel' 'git' 'pnpm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://github.com/gTile/gTile.git")
@@ -22,17 +22,19 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
   bazel --output_user_root="$srcdir/bazel-cache" build :install-extension
 }
 
 package() {
   cd "$srcdir/${pkgname%-git}"
   install -d "$pkgdir/usr/share/gnome-shell/extensions/gTile@vibou"
-  bsdtar -xvf bazel-bin/install-extension.runfiles/gtile/dist.tar.gz -C \
+#  bsdtar -xvf bazel-bin/install-extension.runfiles/gtile/dist.tar.gz -C \
+
+  # Temporary workaround for tarball not being copied properly from cache
+  bsdtar -xvf "$srcdir/bazel-cache/0b5fc7d4bbd34f8962010e75d3c172c0/execroot/_main/bazel-out/k8-fastbuild/bin/dist.tar.gz" -C \
     "$pkgdir/usr/share/gnome-shell/extensions/gTile@vibou/"
 
-  install -d "$pkgdir/usr/share/glib-2.0/schemas"
-  ln -s /usr/share/gnome-shell/extensions/gTile@vibou/schemas/org.gnome.shell.extensions.gtile.gschema.xml \
+  install -Dm644 schemas/org.gnome.shell.extensions.gtile.gschema.xml -t \
     "$pkgdir/usr/share/glib-2.0/schemas/"
+  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/gTile@vibou/schemas"
 }
