@@ -3,14 +3,13 @@
 
 pkgname=plasma-meta
 pkgver=5.27
-pkgrel=1
+pkgrel=2
 pkgdesc='Meta package to install KDE Plasma'
 arch=(any)
 license=(None)
 url='https://kde.org/plasma-desktop/'
 depends=(bluedevil
          drkonqi
-         flatpak-kcm
          kde-gtk-config
          kdeplasma-addons
          khotkeys
@@ -41,4 +40,5 @@ depends=(bluedevil
          xdg-desktop-portal-kde
 )
 optdepends=('breeze-grub: Breeze theme for GRUB'
+            'flatpak-kcm: Manage Flatpak applications from systemsettings'
             'plasma-sdk: Development tools')
