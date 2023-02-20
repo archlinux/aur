@@ -3,7 +3,7 @@
 # Contributor: João Fernandes <joaofnds@joaofnds.com>
 
 pkgname='asdf-install-latest-bin'
-pkgver=0.0.10
+pkgver=0.0.11
 pkgrel=1
 pkgdesc='asdf utility to update plugins to their latest version, for all you update freaks'
 url='https://github.com/joaofnds/asdf-install-latest'
@@ -12,14 +12,14 @@ license=('MIT')
 provides=('asdf-install-latest')
 conflicts=('asdf-install-latest')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/joaofnds/asdf-install-latest/releases/download/0.0.10/asdf-install-latest_0.0.10_linux_arm64.tar.gz")
-sha256sums_aarch64=('7bdb776c595d87c33efeacdc2373552b7a7a115bbc0834e4685de28039e0720f')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/joaofnds/asdf-install-latest/releases/download/0.0.11/asdf-install-latest_0.0.11_linux_arm64.tar.gz")
+sha256sums_aarch64=('5548f5a65d73f4ff878d469b9fa43fbbcadfc1eabf8fc85ba0f5b71b7127987f')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/joaofnds/asdf-install-latest/releases/download/0.0.10/asdf-install-latest_0.0.10_linux_386.tar.gz")
-sha256sums_i686=('a0ad69e415d13c01c661bc9fba0ff3de00ec381a12b31c39616679ca4fbb9dc8')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/joaofnds/asdf-install-latest/releases/download/0.0.11/asdf-install-latest_0.0.11_linux_386.tar.gz")
+sha256sums_i686=('d38fb747b0d9f652aa449dce97df05dab05c27f5f0dbcecdc666b0af4e9060e5')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/joaofnds/asdf-install-latest/releases/download/0.0.10/asdf-install-latest_0.0.10_linux_amd64.tar.gz")
-sha256sums_x86_64=('7fbd4cada8894e071f109ce06a3deb6cbc54660e504c551fd0adf500cab93302')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/joaofnds/asdf-install-latest/releases/download/0.0.11/asdf-install-latest_0.0.11_linux_amd64.tar.gz")
+sha256sums_x86_64=('7045952d8d11c89449f27aed8b52a95629f11e9cfb8fc1738ed35528cea2da23')
 
 package() {
   install -Dm755 "./asdf-install-latest" "${pkgdir}/usr/bin/asdf-install-latest"
