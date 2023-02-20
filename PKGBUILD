@@ -8,7 +8,8 @@ url="https://github.com/lencx/ChatGPT"
 makedepends=("binutils"
              "tar")
 depends=("openssl-1.1"
-         "webkit2gtk")
+         "webkit2gtk"
+         "libayatana-appindicator")
 provides=("chatgpt-desktop=${pkgver}")
 conflicts=('chatgpt-desktop')
 license=("Apache")
