@@ -1,0 +1,14 @@
+pkgbase = python-intellimouse-ctl
+	pkgdesc = A cross-platform command line tool and library for Microsoft's IntelliMouse devices.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/k-visscher/intellimouse-ctl
+	arch = any
+	license = MIT
+	makedepends = python-build
+	depends = python
+	depends = python-hidapi
+	source = https://files.pythonhosted.org/packages/source/i/intellimouse-ctl/intellimouse-ctl-1.0.0.tar.gz
+	sha256sums = 04dfaaed03b0756d35907834325e7017133cdb9912a1753ebec08bf70d668c7e
+
+pkgname = python-intellimouse-ctl
