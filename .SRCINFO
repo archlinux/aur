@@ -1,7 +1,7 @@
 pkgbase = kikoplay-bin
 	pkgdesc = linux danmaku player
 	pkgver = 0.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KikoPlayProject/KikoPlay
 	arch = x86_64
 	license = GPL3
