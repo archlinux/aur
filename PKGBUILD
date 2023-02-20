@@ -49,7 +49,7 @@ sha256sums=(
 package() {
   cd "${srcdir}"
 
-  install -Dvm644 phc-intel.conf.default         "${pkgdir}/etc/default/phc-intel"
+  install -Dvm644 phc-intel.conf.default    "${pkgdir}/etc/default/phc-intel"
   install -Dvm755 phc-intel.sh              "${pkgdir}/usr/bin/phc-intel"
   install -Dvm755 phc-intel.sleep.pm-utils  "${pkgdir}/usr/lib/pm-utils/sleep.d/00phc-intel"
   install -Dvm755 phc-intel.sleep.systemd   "${pkgdir}/usr/lib/systemd/system-sleep/phc-intel"
