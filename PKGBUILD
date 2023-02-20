@@ -3,7 +3,7 @@
 pkgname=devuan-keyring
 pkgver=2017.10.03
 pkgrel=2
-pkgdesc="GnuPG archive keys of the Devuan archive"
+pkgdesc="GnuPG archive keys of the Devuan archive. Suggested for use with debootstrap."
 arch=('any')
 url="https://pkgmaster.devuan.org/devuan/pool/main/d/devuan-keyring/"
 license=('GPL')

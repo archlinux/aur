@@ -1,5 +1,5 @@
 pkgbase = devuan-keyring
-	pkgdesc = GnuPG archive keys of the Devuan archive
+	pkgdesc = GnuPG archive keys of the Devuan archive. Suggested for use with debootstrap.
 	pkgver = 2017.10.03
 	pkgrel = 2
 	url = https://pkgmaster.devuan.org/devuan/pool/main/d/devuan-keyring/
