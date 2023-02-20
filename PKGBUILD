@@ -10,9 +10,8 @@ arch=('x86_64')
 url="https://github.com/pop-os/cosmic-epoch"
 license=('GPL3')
 depends=('fontconfig' 'gtk4' 'libinput' 'libpulse' 'libxkbcommon' 'mesa' 'pipewire'
-         'pop-icon-theme' 'systemd-libs' 'wayland')
-makedepends=('cargo' 'clang' 'desktop-file-utils' 'git' 'just' 'meson'
-             'mold' 'seatd')
+         'pop-icon-theme' 'seatd' 'systemd-libs' 'wayland')
+makedepends=('cargo' 'clang' 'desktop-file-utils' 'git' 'just' 'meson' 'mold')
 checkdepends=('appstream-glib')
 provides=('cosmic-epoch' 'cosmic-applets' 'cosmic-applibrary' 'cosmic-bg'
           'cosmic-comp' 'cosmic-launcher' 'cosmic-osd' 'cosmic-panel'
