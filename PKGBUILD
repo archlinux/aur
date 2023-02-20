@@ -6,8 +6,8 @@
 
 _pkgname=8188fu
 pkgname="$_pkgname-supremegamers-dkms-git"
-pkgver=r117.26d05db
-pkgrel=3
+pkgver=r120.40d4a49
+pkgrel=1
 pkgdesc='Kernel driver module for Realtek RTL8188FU and RTL8188FTV Wireless 802.11n USB 2.0 adapters (device id 0bda:f179)'
 arch=('any')
 url="https://github.com/supremegamers/rtl8188fu"
