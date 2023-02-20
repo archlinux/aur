@@ -4,7 +4,7 @@
 
 pkgname=stacer-bin
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Linux System Optimizer and Monitoring"
 arch=('x86_64')
 url="https://github.com/oguzhaninan/Stacer"

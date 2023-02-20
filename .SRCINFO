@@ -1,7 +1,7 @@
 pkgbase = stacer-bin
 	pkgdesc = Linux System Optimizer and Monitoring
 	pkgver = 1.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/oguzhaninan/Stacer
 	install = stacer-bin.install
 	arch = x86_64
