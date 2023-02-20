@@ -31,6 +31,7 @@ pkgbase = gargoyle
 	provides = gargoyle
 	conflicts = gargoyle-mod
 	replaces = gargoyle-mod
+	backup = etc/garglk.ini
 	source = gargoyle-2023.1.tar.gz::https://github.com/garglk/garglk/archive/2023.1.tar.gz
 	sha512sums = d8624f8a8492f64adfdb638811419ebef5b77457708a5d07a3891faf97966237839170914af4d416f42aca7e6d9d0643384ef60be30a2ba22ed52fee4938683a
 
