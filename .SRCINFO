@@ -1,6 +1,6 @@
 pkgbase = theforceengine
 	pkgdesc = Modern "Jedi Engine" replacement supporting Dark Forces, Outlaws and the mods
-	pkgver = 1.09.000
+	pkgver = 1.09.100
 	pkgrel = 1
 	url = https://theforceengine.github.io/
 	arch = x86_64
@@ -15,7 +15,9 @@ pkgbase = theforceengine
 	depends = rtaudio
 	depends = rtmidi
 	depends = hicolor-icon-theme
-	source = TheForceEngine::git+https://github.com/luciusDXL/TheForceEngine.git#tag=3b216b52286bff7176b131cfa692475f2aae09eb
+	source = TheForceEngine::git+https://github.com/luciusDXL/TheForceEngine.git#tag=00c87198486cb9ccf10fa4f4ac1980435f0837a6
+	source = theforceengine.install
 	sha256sums = SKIP
+	sha256sums = 3970ca1539bfdfd0f87c5bdcca7ba6847037f1d72614b2a8067d35dd1ad0b5bb
 
 pkgname = theforceengine
