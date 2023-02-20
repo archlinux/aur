@@ -1,0 +1,13 @@
+diff --unified --recursive --text xkeysnail-0.4.0/xkeysnail/output.py xkeysnail-0.4.0.new/xkeysnail/output.py
+--- xkeysnail-0.4.0/xkeysnail/output.py	2020-10-25 17:37:41.000000000 +0300
++++ xkeysnail-0.4.0.new/xkeysnail/output.py	2023-02-21 01:09:27.194867284 +0300
+@@ -28,7 +28,7 @@
+ _keyboard_codes.update(mouse_btns)
+ 
+ _uinput = UInput(events={ecodes.EV_KEY: _keyboard_codes,
+-                         ecodes.EV_REL: set([0,1,6,8,9]),
++                         ecodes.EV_REL: set([0,1,9]),
+                          })
+ 
+ _pressed_modifier_keys = set()
+Только в xkeysnail-0.4.0.new/xkeysnail: output.py~
