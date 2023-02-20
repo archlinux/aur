@@ -24,7 +24,8 @@ pkgbase = davinci-resolve
 	depends = xmlsec
 	depends = java-runtime
 	depends = ffmpeg4.4
-	depends = gst-plugins-bad-libspython-numpy
+	depends = gst-plugins-bad-libs
+	depends = python-numpy
 	depends = tbb
 	depends = apr-util
 	depends = luajit
@@ -32,7 +33,7 @@ pkgbase = davinci-resolve
 	conflicts = davinci-resolve-beta
 	conflicts = davinci-resolve-studio-beta
 	options = !strip
-	source = DaVinci_Resolve_18.1.3_Linux.zip::https://sw.blackmagicdesign.com/DaVinciResolve/v18.1.3/DaVinci_Resolve_18.1.3_Linux.zip?Key-Pair-Id=APKAJTKA3ZJMJRQITVEA&Signature=bzUNxz7h8vEg+TZUe4HijKbvGG1gqPfIqrpm1huRv5xva+/N3t9tXQ81KEcoSiyXtfj0kFjQxU6iTX+etMm7gILoi09NJbYgWjc8gRRDfswW3l2ZfDYJ9wTP+YairerypRfrqfGp7q0BSTC57/+2oDDuzr6pLqnzTX+vlTpnSaNdJWyoeln3zteyYiXq3lsJDgYH+kT6zGyzaN/eL/Xgc/ZtImIUUq+L6kCe1Pz7LRNWoERPTAvfM/XOUXTKvGLSZ0PL1w6gtFPfufH0BxN9ligs7X2wk2Du78NGjPAAjb+Ky3aWKyhqXqTb+iDfyyfNbpiVGGQIwblHYZSZW8xBkw==&Expires=1676940165
+	source = DaVinci_Resolve_18.1.3_Linux.zip::https://sw.blackmagicdesign.com/DaVinciResolve/v18.1.3/DaVinci_Resolve_18.1.3_Linux.zip?Key-Pair-Id=APKAJTKA3ZJMJRQITVEA&Signature=USR+tUPHox+kpYSwXyiMznwCZbxERW6AnBsvBp6YZFxgQeB3G0qYkHKkYfP/Q/DMt4LJrED6WgVfdJAap8qKH7GKZvzIr4wA0WaJNfXM2+m4ejzqmot10KaiXT9NzzbNSiXMfhKu6fjL85NGyVmS0ZdfV94xVSztp9+T5bT4ajMcBeugN9pEZKjUhHPPQcPLXQln3dh1g0AYPtP5Z+BpwCAxaxb66yKelsgDIXTJnDzgRN+w4MWas7Nb6zS2HvdAeQPQbJSyXhVHUXAO3IniIT+BM8XbGL+hgBFOxL0YYb+e4s0fCv7FkBZGBUW9bd5Y1+sDek75U9wl1MSB2xwCMQ==&Expires=1676940904
 	sha256sums = 37a66cec936c104e11a1a87921228b89f92d521a8315ecc42a328f8f363e860a
 
 pkgname = davinci-resolve
