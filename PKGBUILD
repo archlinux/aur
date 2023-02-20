@@ -1,6 +1,6 @@
 # Maintainer: Frederik “Freso” S. Olesen <archlinux at freso.dk>
 pkgname=obs-vertical-canvas
-pkgver=1.1.0
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='Add vertical canvas to OBS'
 arch=('x86_64')
@@ -8,15 +8,8 @@ url='https://aitum.tv/#vertical'
 license=('GPL2')
 depends=('obs-studio')
 makedepends=('cmake')
-source=($pkgname-$pkgver.tar.gz::https://github.com/Aitum/$pkgname/archive/refs/tags/$pkgver.tar.gz
-        'type-fix.patch')
-b2sums=('e4c369cb3e6c342a94112d1fcf01ef0095d064bfba154dc38eee00afc539f6155f730eff5d018a59b060acef33ca49cce3b61d0b0873ed17deecf11e1af80a8e'
-        '1ad9b113cacf4036d2b536f3991a05349d9d7d907d9ef4ff46e4b0d8ebbf399dd47934cee272185ce656e9c381930e4b9a8be0689388ddd969fa33e1b9eda165')
-
-prepare() {
-  cd $pkgname-$pkgver
-  patch < "$srcdir"/type-fix.patch
-}
+source=($pkgname-$pkgver.tar.gz::https://github.com/Aitum/$pkgname/archive/refs/tags/$pkgver.tar.gz)
+b2sums=('84c516f62a1dcfd6216394f3c937280e4f8646a6f41ab6ba29e5047c14d539052a38939b6a0be523b7f4fc1b157a1a8733c675ef88d783bded9e07777fab4242')
 
 build() {
   cd $pkgname-$pkgver
