@@ -1,7 +1,7 @@
 pkgbase = orbiton
 	pkgdesc = Text editor and minimalistic IDE
-	pkgver = 2.60.0
-	pkgrel = 2
+	pkgver = 2.60.1
+	pkgrel = 1
 	url = https://github.com/xyproto/orbiton
 	arch = x86_64
 	license = BSD
@@ -53,7 +53,7 @@ pkgbase = orbiton
 	provides = o
 	conflicts = o
 	replaces = o
-	source = git+https://github.com/xyproto/orbiton#commit=fee17303c2588cd00e83dad3359b65fd47eb0e91
+	source = git+https://github.com/xyproto/orbiton#commit=6d02169bbeb9de0fd4bd11002933321d91699279
 	b2sums = SKIP
 
 pkgname = orbiton
