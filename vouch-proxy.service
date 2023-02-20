@@ -5,8 +5,10 @@ After=network.target
 [Service]
 Type=exec
 DynamicUser=yes
+RuntimeDirectory=vouch-proxy
 StateDirectory=vouch-proxy
 Environment=VOUCH_ROOT=/var/lib/vouch-proxy
+ExecStartPre=mkdir -p ${VOUCH_ROOT}/config
 ExecStart=/usr/bin/vouch-proxy -config /etc/vouch-proxy/config.yaml
 Restart=on-failure
 RestartSec=5
