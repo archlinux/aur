@@ -6,8 +6,8 @@
 # Contributer: nightuser <nightuser.android at gmail.com>
 
 pkgname=lxd
-pkgver=5.10
-pkgrel=2
+pkgver=5.11
+pkgrel=1
 pkgdesc="Daemon based on liblxc offering a REST API to manage containers"
 arch=('x86_64')
 url="https://linuxcontainers.org/lxd"
@@ -25,12 +25,13 @@ optdepends=(
     'systemd-libs: unix device hotplug support'
     'apparmor: apparmor support'
 )
+options=('!debug')
 source=("https://linuxcontainers.org/downloads/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.asc}
         "lxd.socket"
         "lxd.service"
         "lxd.sysusers")
 validpgpkeys=('602F567663E593BCBD14F338C638974D64792D67')
-sha256sums=('b182643ebfed136db12448ca5fb7cc8ce2d0f730439b9d948ea6d52eb9b7f735'
+sha256sums=('eb3e82d675a69c72dd2ed2dfee5d5fe2b88686e3f62769adf2655664889e81ed'
             'SKIP'
             'b89a725223ef72b25eab25184084d069af312f8c23612c57fdb75427a510232e'
             '102d1d54186e0fc606a58f030231d76df6bd662b16dfd8f946e1f48e2b473b54'
