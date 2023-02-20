@@ -2,7 +2,7 @@
 
 pkgname=python-pytensor
 _name=${pkgname#python-}
-pkgver=2.10.0
+pkgver=2.10.1
 pkgrel=1
 pkgdesc="Fork of Aesara -- Library for defining, optimizing, and efficiently evaluating mathematical expressions involving multi-dimensional arrays"
 arch=(any)
@@ -26,7 +26,7 @@ optdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/rel-${pkgver}.tar.gz")
-sha256sums=('39c2daa3c9e69059e16bce88d54654b6814cb6e05895f423c1fd946e03fe3946')
+sha256sums=('6e3c6fc6c9d3f0e7d1b41f468c08fefe19015843668535a9ec0ea37e3eac6d0e')
 
 _archive="$_name-rel-$pkgver"
 
