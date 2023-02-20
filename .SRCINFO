@@ -1,13 +1,17 @@
 pkgbase = calcure
 	pkgdesc = Modern TUI calendar and task manager
-	pkgver = 1.7
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://github.com/anufrievroman/calcure
-	arch = x86_64
-	license = GPL
-	makedepends = git
-	depends = python
-	source = calcure-1.7.tar.gz::https://github.com/anufrievroman/calcure/archive/1.7.tar.gz
-	md5sums = 34c4f8424839d73d387f8b9f55d90bfe
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-holidays
+	depends = python-jdatetime
+	depends = python-ics
+	source = https://files.pythonhosted.org/packages/source/c/calcure/calcure-2.7.1.tar.gz
+	sha256sums = 201ade9360d3298c51614887772489f450a42faa80f2ee0918f256aebbb3bd5e
 
 pkgname = calcure
