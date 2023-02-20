@@ -11,7 +11,7 @@ pkgbase = 8188fu-supremegamers-dkms-git
 	conflicts = 8188fu-dkms-git
 	conflicts = 8188fu-kelebek333-dkms-git
 	source = 8188fu::git+https://github.com/supremegamers/rtl8188fu.git#branch=master
-	source = blacklist-r8188fu.conf
+	source = blacklist-rtl8xxxu.conf
 	source = dkms.conf
 	sha256sums = SKIP
 	sha256sums = 48bc8d2270ea8db1e5c0be51012419753b22a106028e153919b37d583c422cc6
