@@ -7,7 +7,7 @@ pkgbase = mingw-w64-gst-plugins-good-git
 	license = LGPL
 	makedepends = git
 	makedepends = mingw-w64-meson
-	makedepends = mingw-w64-libsoup
+	makedepends = mingw-w64-libsoup3
 	makedepends = mingw-w64-cairo
 	makedepends = mingw-w64-gdk-pixbuf2
 	makedepends = mingw-w64-libvpx
@@ -38,4 +38,3 @@ pkgbase = mingw-w64-gst-plugins-good-git
 	sha256sums = SKIP
 
 pkgname = mingw-w64-gst-plugins-good-git
-
