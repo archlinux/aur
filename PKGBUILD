@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=antconc
-pkgver=4.0.5
+pkgver=4.2.0
 _pkgver=${pkgver//./}
 _appname=AntConc
 pkgrel=1
