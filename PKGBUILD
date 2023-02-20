@@ -1,6 +1,6 @@
 # Maintainer: pandada8 <pandada8@gmail.com>
 pkgname=jsonnet-language-server-bin
-pkgver=0.9.1
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='A Language Server Protocol (LSP) server for Jsonnet'
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('jsonnet-language-server')
 source=(
   "${pkgname}-${pkgver}::https://github.com/grafana/jsonnet-language-server/releases/download/v${pkgver}/jsonnet-language-server_${pkgver}_linux_amd64"
 )
-sha512sums=('9ed99326bc42ab1acb4712c6efba22c80c2f64f80b2996cf5c998652a30e3b98399418f3b5eaa716476c50dccc30fcc3a2778c3bb9b02c0c0a91230761ea0ee6')
+sha512sums=('d90f791b6226bdeb22de2c9e45e1e1e8713763dd9b4824602c6f85025d3ebe56cf26c34fcb32491925bf9f5cf7c8a0178d1b6aa4fe269d4f114d159dade9f799')
 
 package() {
   install -D "${srcdir}/${pkgname}-${pkgver}" "${pkgdir}/usr/bin/jsonnet-language-server"
