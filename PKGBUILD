@@ -7,7 +7,7 @@ pkgdesc="Daemon that sends local hardware information to Home Assistant"
 url="https://github.com/${_reponame}"
 license=('MIT')
 
-pkgver=1.0.5
+pkgver=1.0.7
 pkgrel=1
 arch=('any')
 
@@ -22,7 +22,7 @@ source=("${_pkgname}::git+https://github.com/${_reponame}.git#tag=v${pkgver}"
         "0001-Save-registration-file-to-var-lib-hacompanion.patch")
 sha256sums=('SKIP'
             '8d0bdc24a666302edb64759dcc82ba10f70de2fa06e489cd663362907aaf7c92'
-            '2d00d05d5f39769f9285d473b787b847ea82b918252f4c960a2dacd4cdb259ac'
+            'c23ba0d97c345eee311e0950e36309e88890245b978538fde3b85a734ad2cc4b'
             'a6cf94385c30eee6de74caa6b63a5ca6ebcbf9451a95bcff7765d9972434af5d'
             'b4242c4051c71ea275376d8a753a36c9816a1bab08eed8205ce97b2d958a9b4b'
             'ae0d021f4b08f36151ff5c0c2497b8ab55cf5f101e29100b04a2d8b39b90fe9d')

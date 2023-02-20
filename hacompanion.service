@@ -1,5 +1,6 @@
 [Unit]
-Description=Daemon that sends local hardware information to Home Assistant
+Description=Home Assistant Desktop Companion
+Documentation=https://github.com/tobias-kuendig/hacompanion
 After=network.target
 
 [Service]
@@ -9,4 +10,4 @@ ExecStart=/usr/bin/hacompanion -config /etc/hacompanion/config.toml
 Restart=on-failure
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
