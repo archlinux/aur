@@ -2,8 +2,9 @@
 
 _pkgname=xgboost
 pkgname=python-$_pkgname
-pkgver=1.7.3
-pkgrel=5
+pkgver=1.7.4
+_dmlc_ver=0.5
+pkgrel=1
 pkgdesc='Gradient Boosting Library for Python'
 arch=('x86_64')
 url='https://xgboost.ai'
@@ -14,26 +15,30 @@ makedepends=('cmake' 'python-setuptools')
 optdepends=('apache-spark: Distributed XGBoost with PySpark')
 provides=("python-$_pkgname")
 conflicts=("python-$_pkgname-git")
-source=($_pkgname-$pkgver.tar.gz::"https://github.com/dmlc/xgboost/releases/download/v$pkgver/$_pkgname.tar.gz")
-sha256sums=('0b6aa86b93aec2b3e7ec6f53a696f8bbb23e21a03b369dc5a332c55ca57bc0c4')
+source=($_pkgname-$pkgver.tar.gz::"https://github.com/dmlc/xgboost/archive/refs/tags/v$pkgver.tar.gz"
+        dmlc-core-$_dmlc_ver.tar.gz::"https://github.com/dmlc/dmlc-core/archive/refs/tags/v$_dmlc_ver.tar.gz")
+sha256sums=('bedf9b61564c80f28a7ca8e74d71357539b6c81a0e5a548db10a48530a07424a'
+            'cd97475ae1ecf561a1cb1129552f9889d52b11b3beb4c56e5345d007d5020ece')
 
 prepare() {
   mkdir -p "$srcdir/build"
+  rm -rf "$srcdir/$_pkgname-$pkgver/dmlc-core"
+  ln -sf "$srcdir/dmlc-core-$_dmlc_ver" \
+    "$srcdir/$_pkgname-$pkgver/dmlc-core"
 }
 
 build() {
   cd "$srcdir/build"
-  cmake ../$_pkgname \
+  cmake ../$_pkgname-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DPLUGIN_DENSE_PARSER=ON \
     -DPLUGIN_FEDERATED=ON \
-    -DDMLC_HDFS_SHARED=ON \
     -DUSE_OPENMP=ON
   make
 }
 
 package() {
-  cd "$srcdir/$_pkgname/python-package"
+  cd "$srcdir/$_pkgname-$pkgver/python-package"
   python setup.py install \
     --prefix=/usr \
     --root="$pkgdir" \
