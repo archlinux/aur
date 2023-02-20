@@ -1,0 +1,11 @@
+pkgbase = ttf-monterey-fonts-en
+	pkgdesc = Fonts extracted from the MacOS Monterey image
+	pkgver = 1
+	pkgrel = 1
+	url = https://archive.org/details/macos_iso
+	arch = any
+	license = custom
+	source = https://filedn.com/lHGef0SOQKnBTotcJeEfshJ/Fonts/Monterey.tar.zst
+	md5sums = b3ae9a1235048c2d67506a583108450c
+
+pkgname = ttf-monterey-fonts-en
