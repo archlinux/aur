@@ -16,11 +16,11 @@ source=(${url}/xorg/font/adobe-75dpi/-/archive/master/adobe-75dpi-master.tar.gz
         ${url}/xorg/font/bh-75dpi/-/archive/master/bh-75dpi-master.tar.gz
         ${url}/xorg/font/bh-lucidatypewriter-75dpi/-/archive/master/bh-lucidatypewriter-75dpi-master.tar.gz
         ${url}/xorg/font/bitstream-75dpi/-/archive/master/bitstream-75dpi-master.tar.gz)
-md5sums=('0cba842df3c423f4e297e1b538f3c533'
-         'c9fc3977d1b52566588dcbb4ddaaf49e'
-         '0aebf329ab88ad11c6222a793892100c'
-         '9763ec6ee2e3629f0c371cb2aa4f0633'
-         '5735aaf5395840732382f1864a0e33d8')
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
 
 build() {
   cd "${srcdir}"
