@@ -1,4 +1,3 @@
-# current freetype package header:
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
@@ -14,64 +13,83 @@
 # * https://github.com/bohoomil/fontconfig-ultimate/blob/master/freetype/03-infinality-2.6.3-2016.04.16.patch#L2092
 # * https://www.reddit.com/r/archlinux/comments/5qkvqb/best_way_to_approximate_infinalitys_ultimate5
 
-__arch_pkg_commit="943d7dcb1d33b6d05dfa4d10c1b7286c0d1753e0"
+__arch_pkg_commit="74eded8ecf7ea281ebb75573989dfc67261ee700"
 
 pkgname=freetype2-ultimate5
-pkgver=2.12.1
+pkgver=2.13.0
 pkgrel=1
 pkgdesc="FreeType patched for effect similar to Infinality's ultimate5 preset."
 url="https://www.freetype.org/"
 conflicts=(freetype2)
 provides=(freetype2=$pkgver libfreetype.so)
 install=freetype2-ultimate5.install
+backup=(etc/profile.d/freetype2.sh)
 arch=(x86_64)
-license=('GPL')
-makedepends=(libx11 qt5-base meson librsvg)
-options=(debug)
-source=(
-	# Patch file.
-	"like-ultimate5.patch"
-   "upstream_01.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/$__arch_pkg_commit/trunk/0001-Enable-table-validation-modules.patch"
-   "upstream_02.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/$__arch_pkg_commit/trunk/0002-Enable-subpixel-rendering.patch"
-   "upstream_03.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/$__arch_pkg_commit/trunk/0003-Enable-infinality-subpixel-hinting.patch"
-   "upstream_04.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/$__arch_pkg_commit/trunk/0004-Enable-long-PCF-family-names.patch"
-
-	# Arch Linux package files.
-
-	# FreeType source code.
-	https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.xz
+license=(GPL)
+# adding harfbuzz for improved OpenType features auto-hinting
+# introduces a cycle dep to harfbuzz depending on freetype wanted by upstream
+depends=(
+  brotli
+  bzip2
+  harfbuzz
+  libpng
+  sh
+  zlib
 )
-sha256sums=('9554d3a23619a46cf48e512e5b6336afd0802f42fdaf9b2e47ba0c718143f1dd'
-            '12c869eeba212c74d07d3d7815848b047ecb5282d5463dffb3bb6d219315d4da'
-            '2497dcb3650271db9bb7ad4f3379b5b3c6a19f5ca5388dd9ba7d42b5c15c8c4f'
-            'caa0bc7d3dfa3b4c6b9beecda6141405dafe540f99a655dc83d1704fa232ac20'
-            '8bf978cd1abd73f54c53f7d214c368b1fd8921cd9800d2cc84427c662ffbbdcb'
-            '4766f20157cc4cf0cd292f80bf917f92d1c439b243ac3018debf6b9140c41a7f')
+makedepends=(
+  librsvg
+  libx11
+  meson
+  qt5-base
+)
+source=(
+  https://download-mirror.savannah.gnu.org/releases/freetype/freetype-$pkgver.tar.xz{,.sig}
+  0001-Enable-table-validation-modules.patch
+  0002-Enable-subpixel-rendering.patch
+  0003-Enable-infinality-subpixel-hinting.patch
+  0004-Enable-long-PCF-family-names.patch
+  0005-builds-meson-parse_modules_cfg.py-Handle-gxvalid-and.patch
+  freetype2.sh
+	"like-ultimate5.patch"
+)
+sha256sums=('5ee23abd047636c24b2d43c6625dcafc66661d1aca64dec9e0d05df29592624c'
+            'SKIP'
+            'd279a9d4b2c146722dbc03f9a33009846efe8bbbe3ada52beb4a1aa4d4dfaa38'
+            'f2e8a16126723458b413e58da267fb30332d0b42fef972f951e3e9fc081fa492'
+            '8e61d12ebdbbcb764a38d4798ee728074bac0aa20978d538b6e7045a63949ab8'
+            'cc364cc0ca21b8b30f29d90ab394d82f3303ca7d9813d866e6bf14f9bccd9564'
+            '08cf087d7d612b4228e24d74df95cf1f397f7c41054c42837c63c1f33ffaee09'
+            'f7f8e09c44f7552c883846e9a6a1efc50377c4932234e74adc4a8ff750606467'
+            '9554d3a23619a46cf48e512e5b6336afd0802f42fdaf9b2e47ba0c718143f1dd')
+validpgpkeys=(E30674707856409FF1948010BE6C3AAC63AD8E3F) # Werner Lemberg <wl@gnu.org>
 
-prepare()
-{
-	cd freetype-$pkgver
-
-	# Apply Arch Linux patches.
-	for upstream_patch in $srcdir/upstream_*.patch; do
-		patch -Np1 -i "$upstream_patch"
-	done
-
-	# Apply this patch.
-	patch -p 1 -i "$srcdir/like-ultimate5.patch"
+prepare() {
+  cd freetype-$pkgver
+  patch -Np1 -i ../0001-Enable-table-validation-modules.patch
+  patch -Np1 -i ../0002-Enable-subpixel-rendering.patch
+  patch -Np1 -i ../0003-Enable-infinality-subpixel-hinting.patch
+  patch -Np1 -i ../0004-Enable-long-PCF-family-names.patch
+  patch -Np1 -i ../0005-builds-meson-parse_modules_cfg.py-Handle-gxvalid-and.patch
+	# apply ultimate5 patch
+	patch -Np1 -i ../like-ultimate5.patch
 }
 
-build()
-{
-	cd freetype-$pkgver
+build() {
+  local meson_options=(
+    -D default_library=both
+  )
 
-	./configure --prefix=/usr --disable-static
-	make
+  cd freetype-$pkgver
+  arch-meson build "${meson_options[@]}"
+  meson compile -C build
 }
 
 package()
 {
-	cd freetype-$pkgver
-
-	make DESTDIR="${pkgdir}" install
+  cd freetype-$pkgver
+  meson install -C build --destdir="$pkgdir"
+  install -Dt "$pkgdir/etc/profile.d" -m644 ../freetype2.sh
+  install -Dt "$pkgdir/usr/share/aclocal" -m644 \
+    ./builds/unix/freetype2.m4
 }
+# vim:set sw=2 sts=-1 et:
