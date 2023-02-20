@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'cython' 'python-build' 'python-installer')
 depends=('python')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=(591c78889ec4f53aab198ec8199f8c3f6a2d297fea79bc7150e4150fddde6fef)
+sha256sums=(dcc7603ea0a8087110da04848b6843b34d866cae1980fd089c4b1c4c163c0bf2)
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
@@ -21,7 +21,7 @@ build() {
 }
 
 check() {
-    local pyver=$(python -c 'import sys; print("{}{}".format(*sys.version_info[:2]))')
+    local pyver=$(python -c 'import sys; print("{}.{}".format(*sys.version_info[:2]))')
     local impl=$(python -c 'import platform; print(platform.python_implementation().lower())')
     local machine=$(python -c 'import platform; print(platform.machine())')
     cd "${srcdir}/${_name}-${pkgver}/build/lib.linux-${machine}-${impl}-${pyver}"
