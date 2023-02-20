@@ -1,16 +1,16 @@
 pkgbase = sing-geoip
 	pkgdesc = sing-geoip database
-	pkgver = 20221112
+	pkgver = 20230112
 	pkgrel = 1
 	url = https://github.com/SagerNet/sing-geoip
 	arch = any
 	license = GPL3
 	optdepends = sing-box: The universal proxy platform
-	source = 20221112.geoip-cn.db::https://github.com/SagerNet/sing-geoip/releases/download/20221112/geoip-cn.db
-	source = 20221112.geoip.db::https://github.com/SagerNet/sing-geoip/releases/download/20221112/geoip.db
-	source = 20221112.LICENSE::https://raw.githubusercontent.com/SagerNet/sing-geoip/20221112/LICENSE
-	sha256sums = 91fd07cd964e938f1f2ae5b7e0d9f4a22784295adba7374c35cbc00a9b303b0c
-	sha256sums = 1429f6f81323537cef22aac3fa38352503ac7e0f0d7bc7d4a9095e729222395a
+	source = 20230112.geoip-cn.db::https://github.com/SagerNet/sing-geoip/releases/download/20230112/geoip-cn.db
+	source = 20230112.geoip.db::https://github.com/SagerNet/sing-geoip/releases/download/20230112/geoip.db
+	source = 20230112.LICENSE::https://raw.githubusercontent.com/SagerNet/sing-geoip/20230112/LICENSE
+	sha256sums = c1832e5a14e532f67784c1d4acdce7d123d871f80837649300806d515f053b84
+	sha256sums = 06155d3109b6aa6e4b6de2ef87ef372227eafb896520af7ddc353cffbcfec813
 	sha256sums = 2f02b7486bcfa90d115c71a20437f3906b6fd5bef81c5dc0efd341399e89d0fd
 
 pkgname = sing-geoip
