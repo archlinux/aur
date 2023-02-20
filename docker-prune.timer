@@ -3,6 +3,7 @@ Description=Run docker-prune daily
 
 [Timer]
 OnCalendar=daily
+OnBootSec=1m
 Persistent=true
 
 [Install]
