@@ -3,7 +3,7 @@
 
 pkgname=gnome-shell-extension-gtile-git
 pkgver=51.r17.ga252d2b
-pkgrel=1
+pkgrel=2
 pkgdesc="A window tiling extension for GNOME"
 arch=('any')
 url="https://github.com/gTile/gTile"
@@ -33,8 +33,4 @@ package() {
   # Temporary workaround for tarball not being copied properly from cache
   bsdtar -xvf "$srcdir/bazel-cache/0b5fc7d4bbd34f8962010e75d3c172c0/execroot/_main/bazel-out/k8-fastbuild/bin/dist.tar.gz" -C \
     "$pkgdir/usr/share/gnome-shell/extensions/gTile@vibou/"
-
-  install -Dm644 schemas/org.gnome.shell.extensions.gtile.gschema.xml -t \
-    "$pkgdir/usr/share/glib-2.0/schemas/"
-  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/gTile@vibou/schemas"
 }
