@@ -19,7 +19,7 @@ pkgver() {
 
 package () {
 	# Uncomment if you use Doas
-	# sed 's/sudo/doas/' "$_pkgname/clyde"
+	# sed 's/sudo/doas/' "$_pkgname/clyde" > "$_pkgname/clyde"
 
 	# Standard install
 	install -D -t "$pkgdir/usr/bin" "$_pkgname/clyde"
