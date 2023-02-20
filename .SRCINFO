@@ -1,6 +1,6 @@
 pkgbase = solana-bin
 	pkgdesc = Solana CLI tools
-	pkgver = 1.14.11
+	pkgver = 1.14.16
 	pkgrel = 1
 	url = https://solana.com
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = solana-bin
 	provides = solana
 	conflicts = solana
 	options = !strip
-	source = solana-1.14.11.tar.bz2::https://github.com/solana-labs/solana/releases/download/v1.14.11/solana-release-x86_64-unknown-linux-gnu.tar.bz2
+	source = solana-1.14.16.tar.bz2::https://github.com/solana-labs/solana/releases/download/v1.14.16/solana-release-x86_64-unknown-linux-gnu.tar.bz2
 	source = solana.sysusers
 	source = solana.tmpfiles
 	sha256sums = a44f3bbf5839525fadec8245e6b4cbb7e31bec14dd79c3bd35a0dbe59df476a2
