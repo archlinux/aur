@@ -1,7 +1,7 @@
 # Maintainer: quietvoid <tcChlisop0@gmail.com>
 
 pkgname=libdovi-git
-pkgver=3.1.1.r0.geb8a664
+pkgver=3.1.1.r2.g346437f
 pkgrel=1
 pkgdesc='Library to read and write Dolby Vision metadata (C-API) - git version'
 arch=('x86_64')
@@ -22,7 +22,6 @@ pkgver() {
 
 prepare() {
   cargo fetch \
-    --locked \
     --manifest-path dovi_tool/dolby_vision/Cargo.toml
 }
 
