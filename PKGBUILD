@@ -36,34 +36,34 @@ source=(${url}/xorg/font/adobe-75dpi/-/archive/master/adobe-75dpi-master.tar.gz
         ${url}/xorg/font/misc-cyrillic/-/archive/master/misc-cyrillic-master.tar.gz
         ${url}/xorg/font/screen-cyrillic/-/archive/master/screen-cyrillic-master.tar.gz
         ${url}/xorg/font/winitzki-cyrillic/-/archive/master/winitzki-cyrillic-master.tar.gz)
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP')
+md5sums=(SKIP
+         SKIP
+         SKIP
+         SKIP
+         SKIP
+         SKIP
+         SKIP
+         SKIP
+         SKIP
+         SKIP
+         SKIP
+         SKIP
+         SKIP
+         SKIP
+         SKIP
+         SKIP
+         SKIP
+         SKIP
+         SKIP
+         SKIP
+         SKIP
+         SKIP
+         SKIP
+         SKIP
+         SKIP
+         SKIP
+         SKIP
+         SKIP)
 
 build() {
   cd "${srcdir}"
