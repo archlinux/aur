@@ -4,7 +4,7 @@
 _pkgbase=ocp
 pkgname=('ocp' 'ocp-sdl2')
 pkgver=0.2.103
-pkgrel=4
+pkgrel=5
 pkgdesc="Open Cubic Player"
 arch=('i686' 'x86_64')
 url="https://stian.cubic.org/project-ocp.php"
@@ -28,16 +28,10 @@ makedepends=('alsa-lib'
 	     'libmad'
 	     'libjpeg-turbo'
 	     'libpng'
-	     'libvorbis'
-	     'ttf-unifont')
+	     'libvorbis')
 
 source=(${_pkgbase}::git+https://github.com/mywave82/opencubicplayer.git#tag=v${pkgver})
 sha256sums=('SKIP')
-
-pkgver() {
-    	cd $_pkgbase
-	echo "$(git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./')"
-}
 
 prepare() {
 	echo -e "\033[1;31m##!! NOTICE !!##\033[0m"
@@ -52,19 +46,20 @@ prepare() {
 
 build() {
   	cd $_pkgbase	
-	./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core\
+	./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core cross_compiling=yes\
 	    	    --without-update-desktop-database\
 		    --without-update-mime-database\
 		    --with-unifontdir=/usr/share/fonts/Unifont\
 		    --with-unifont-ttf=/usr/share/fonts/Unifont/Unifont.ttf\
 		    --with-unifont-csur-ttf=/usr/share/fonts/Unifont/Unifont_CSUR.ttf\
 		    --with-unifont-upper-ttf=/usr/share/fonts/Unifont/Unifont_Upper.ttf
-	make DESTDIR="$pkgdir" subdirs ocp ocp.hlp
+	make DESTDIR="$pkgdir" subdirs ocp ocp.hlp 
 }
 
 package_ocp-sdl2() {
-	provides=(${_pkgbase}-sdl2=${pkgver})
-	conflicts=('ocp' 'ocp-curses')
+	provides=(${_pkgbase}=${pkgver}
+		  ${_pkgbase}-sdl2=${pkgver})
+	conflicts=('ocp' 'ocp-sdl2' 'ocp-curses')
 	install=${_pkgbase}.install	
 	depends=('alsa-lib'
 		 'bzip2'
@@ -81,7 +76,7 @@ package_ocp-sdl2() {
 	 	 'libpng'
 		 'ttf-unifont')
 	cd $_pkgbase
-	./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core\
+	./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core cross_compiling=yes\
                     --without-update-desktop-database\
                     --without-update-mime-database\
                     --with-unifontdir=/usr/share/fonts/Unifont\
@@ -96,15 +91,15 @@ package_ocp() {
 	provides=(${_pkgbase}=${pkgver}
 		  ${_pkgbase}-curses=${pkgver})
 	conflicts=('ocp-curses' 'ocp-sdl2')
-	depends=('alsa-lib' 
-		 'bzip2'
-		 'cjson'
+	depends=('alsa-lib'
+	         'bzip2'
+                 'cjson'
 		 'ncurses'
 		 'zlib'
 		 'libancient'
 		 'libdiscid')
 	cd $_pkgbase
-	./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core\
+	./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core cross_compiling=yes\
 		    --without-x11 --without-sdl2\
 		    --without-update-desktop-database\
                     --without-update-mime-database
