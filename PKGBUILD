@@ -19,4 +19,5 @@ pkgver() {
 
 package () {
 	install -D -t "$pkgdir/usr/bin" "$_pkgname/clyde"
+	install -D -t "$pkgdir/usr/share/bash_completions" "$_pkgname/clyde-completion.bash"
 }
