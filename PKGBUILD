@@ -9,15 +9,14 @@ url="https://github.com/laurent22/massren"
 license=("MIT")
 arch=('x86_64')
 makedepends=('go')
-_url="https://github.com/laurent22/${pkgname}"
-source=("${pkgname}-${pkgver}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('49758b477a205f3fbf5bbe72c2575fff8b5536f8c6b45f8f6bd2fdde023ce874')
 
 prepare() {
 	cd "$pkgname-$pkgver"
 	mkdir -p build/
 
-	go mod init "${_url#https://}"
+	go mod init "${url#https://}"
 	go mod tidy
 }
 
