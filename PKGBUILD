@@ -6,11 +6,11 @@
 
 pkgname=buku
 pkgver=4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Bookmark manager like a text-based mini-web"
 arch=('any')
 url="https://github.com/jarun/buku"
-license=('GPL')
+license=('GPL3')
 depends=('ca-certificates'
   'python-beautifulsoup4'
   'python-cryptography'
@@ -18,18 +18,13 @@ depends=('ca-certificates'
   'python-urllib3')
 makedepends=('python-setuptools')
 optdepends=('wl-clipboard: to copy text in wayland'
-  'wl-clipboard-rs: to copy text in wayland'
   'xsel: to copy text in xorg'
   'xclip: to copy text in xorg')
-conflicts=('buku-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('a0b94210e80e9f9f359e5308323837d41781cf8dba497341099d5c59e27fa52c')
 
 package() {
-  cd "$pkgname-$pkgver" 2> /dev/null || {
-    printf "%s\n" "unable to cd to $pkgname-$pkgver"
-    exit 1
-  }
+  cd "$pkgname-$pkgver"
   export PYTHONHASHSEED=0
   python setup.py install --root="$pkgdir" --prefix=/usr --optimize=1
 

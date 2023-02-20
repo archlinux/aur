@@ -1,10 +1,10 @@
 pkgbase = buku
 	pkgdesc = Bookmark manager like a text-based mini-web
 	pkgver = 4.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jarun/buku
 	arch = any
-	license = GPL
+	license = GPL3
 	makedepends = python-setuptools
 	depends = ca-certificates
 	depends = python-beautifulsoup4
@@ -12,10 +12,8 @@ pkgbase = buku
 	depends = python-html5lib
 	depends = python-urllib3
 	optdepends = wl-clipboard: to copy text in wayland
-	optdepends = wl-clipboard-rs: to copy text in wayland
 	optdepends = xsel: to copy text in xorg
 	optdepends = xclip: to copy text in xorg
-	conflicts = buku-git
 	source = buku-4.8.tar.gz::https://github.com/jarun/buku/archive/refs/tags/v4.8.tar.gz
 	sha256sums = a0b94210e80e9f9f359e5308323837d41781cf8dba497341099d5c59e27fa52c
 
