@@ -1,7 +1,7 @@
 # Maintainer: David Haller <davidhaller@mailbox.org>
 
 pkgname=apache-drill
-pkgver=1.20.2
+pkgver=1.20.3
 pkgrel=1
 pkgdesc="Schema-free SQL Query Engine for Hadoop, NoSQL and Cloud Storage"
 arch=(any)
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('java-runtime')
 source=("https://dlcdn.apache.org/drill/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "drill-embedded")
-sha256sums=('2d4c7d85211b214b057d2bd4c081fdcf3c3898e866f7690e3f4a6ab25d1a4bed'
+sha256sums=('1520cd2524cf8e0ce45fcf02e8e5e3e044465c6dacad853f9fadf9c918863cad'
             '017be05204b343c7dd3308370fc607f36934ab201a1b525fc51cff75b96b3a16')
 
 package()
