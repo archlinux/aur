@@ -2,7 +2,7 @@
 maintainer=mh4ckwascut
 pkgname_orig=gobuster
 pkgname=gobuster-bin
-pkgver=3.4.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="A Directory/File, DNS and VHost busting tool"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source_x86_64=(
 	"${binname}.tar.gz::${url}/releases/download/v${pkgver}/${dirname}.tar.gz"
 )
 sha256sums_x86_64=(
-	'31c07a966a150a081d173fdeaa73754db12474bf869dd7b2b366b2fe2d7a3469'
+	'32bfc55ab6abb4a956ae7195dcccf8e31b26a2b765159ead6d1f1bfed2f6f3ae'
 )
 
 package(){
