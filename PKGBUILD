@@ -1,6 +1,6 @@
 # Maintainer: iamawacko <iamawacko@protonmail.com>
 pkgname='synth-git'
-pkgver=0.6.1.r2.r84.g8b3b738
+pkgver=0.6.9.r10.g8b3b738
 pkgrel=1
 pkgdesc='The Open Source Data Generator'
 url='https://getsynth.com/'
@@ -15,7 +15,7 @@ depends=('sqlite')
 
 pkgver() {
   cd "synth-git"
-  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --abbrev=7 --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 
