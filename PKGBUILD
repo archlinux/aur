@@ -4,7 +4,7 @@ _pkgbase=tls-client
 pkgbase="${_pkgbase}-git"
 pkgname=("golang-${_pkgbase}-git" "lib-${_pkgbase}-git")
 pkgver=1.3.4.r163.20230218.46e88e3
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced HTTP library based on requests and tls-client."
 arch=(
   'aarch64'
@@ -98,6 +98,7 @@ package_golang-tls-client-git() {
   depends=()
   optdepends=(
     'bash: For build scripts.'
+    'go: To compile software using this module, and for examples.'
   )
   provides=(
     "golang-tls-client=${pkgver}"
@@ -136,6 +137,8 @@ package_lib-tls-client-git() {
     'glibc'
   )
   optdepends=(
+    'nodejs: For some examples.'
+    'python: For some examples.'
     'python-psutil: For some examples.'
   )
   provides=(

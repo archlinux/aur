@@ -1,7 +1,7 @@
 pkgbase = tls-client-git
 	pkgdesc = An advanced HTTP library based on requests and tls-client.
 	pkgver = 1.3.4.r163.20230218.46e88e3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bogdanfinn/tls-client
 	arch = aarch64
 	arch = amd64
@@ -19,6 +19,7 @@ pkgname = golang-tls-client-git
 	arch = any
 	depends = 
 	optdepends = bash: For build scripts.
+	optdepends = go: To compile software using this module, and for examples.
 	provides = golang-tls-client=1.3.4.r163.20230218.46e88e3
 	conflicts = golang-tls-client
 
@@ -28,6 +29,8 @@ pkgname = lib-tls-client-git
 	arch = amd64
 	arch = x86_64
 	depends = glibc
+	optdepends = nodejs: For some examples.
+	optdepends = python: For some examples.
 	optdepends = python-psutil: For some examples.
 	provides = lib-tls-client=1.3.4.r163.20230218.46e88e3
 	provides = tls-client.so
