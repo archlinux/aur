@@ -5,7 +5,7 @@
 # Contributor: DDoSolitary <DDoSolitary@gmail.com>
 
 pkgname=i2pd-git
-pkgver=2.46.0.r5.gce05cce3
+pkgver=2.46.1.r0.g200ad552
 pkgrel=1
 pkgdesc='A full-featured C++ implementation of the I2P router (git version)'
 arch=('x86_64')
@@ -19,6 +19,7 @@ backup=('etc/i2pd/i2pd.conf'
         'etc/i2pd/tunnels.conf'
         'etc/logrotate.d/i2pd')
 source=('git+https://github.com/PurpleI2P/i2pd.git#branch=openssl'
+        '005-i2pd-tests-use-arch-flags.conf'
         '010-i2pd-config.patch'
         '020-i2pd-do-not-override-config.patch'
         '030-i2pd-systemd-service-hardening.patch'
@@ -26,6 +27,7 @@ source=('git+https://github.com/PurpleI2P/i2pd.git#branch=openssl'
         'i2pd.sysusers'
         'i2pd.tmpfiles')
 sha256sums=('SKIP'
+            '2ddf15f1c1cdf5d747a0af667145238023fd126ab00c65f2897cacae935015b1'
             '45dae1e2f798d23df92c996c233fccb07349d62992d0f625be7fd913719875af'
             'e98eaa783fcd8e1ab84980f68158e3bb9eb5ec101f26c748946a313152643f11'
             '2b84d85d4234eb3b640925d0dd244c8abe3b48bc69c8456629af923de17acf10'
@@ -34,6 +36,7 @@ sha256sums=('SKIP'
             'fe8cc2ec83cb5b5c2b2ec8cce9a989e0cb6fd347e00b84e03a17b12efd152fac')
 
 prepare() {
+    patch -d i2pd -Np1 -i "${srcdir}/005-i2pd-tests-use-arch-flags.conf"
     patch -d i2pd -Np1 -i "${srcdir}/010-i2pd-config.patch"
     patch -d i2pd -Np1 -i "${srcdir}/020-i2pd-do-not-override-config.patch"
     patch -d i2pd -Np1 -i "${srcdir}/030-i2pd-systemd-service-hardening.patch"
