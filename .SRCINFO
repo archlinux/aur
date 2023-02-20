@@ -1,6 +1,6 @@
 pkgbase = vue-language-server
 	pkgdesc = Fast Vue Language Support Extension
-	pkgver = 1.1.3
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://github.com/vuejs/language-tools/tree/master/packages/vue-language-server
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = vue-language-server
 	makedepends = typescript
 	depends = nodejs
 	optdepends = typescript: for use in typescript.tsdk
-	source = https://github.com/vuejs/language-tools/archive/v1.1.3/vuejs_language-tools-1.1.3.tar.gz
-	b2sums = 236cba4aefbf26040b241b52893f58a0355cb11a42e96e2976848f0c02648e757b25d12b3cf31083ac27b5fdc9a0b1352faf7a1465cda9b11b8d8c42d1e49e2a
+	source = https://github.com/vuejs/language-tools/archive/v1.1.5/vuejs_language-tools-1.1.5.tar.gz
+	b2sums = ecaf8554b7d39c239d00af12df7d159364733483774ff44706e516247fed17d60597cd2ca6a20a74e4711b640064e166f647bca8184ea32c5a65e9c432efeb0b
 
 pkgname = vue-language-server
