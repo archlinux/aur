@@ -1,19 +1,20 @@
 # Maintainer: dreieck (https://aur.archlinux.org/account/dreieck)
 
+_gitserver='github.com'
+_gitauthor='bogdanfinn'
+_gitproject="${_pkgbase}"
+
 _pkgbase=tls-client
 pkgbase="${_pkgbase}-git"
-pkgname=("golang-${_pkgbase}-git" "lib-${_pkgbase}-git")
+pkgname=("golang-${_gitauthor}-${_pkgbase}-git" "lib-${_pkgbase}-git")
 pkgver=1.3.4.r163.20230218.46e88e3
-pkgrel=2
+pkgrel=3
 pkgdesc="An advanced HTTP library based on requests and tls-client."
 arch=(
   'aarch64'
   'amd64'
   'x86_64'
 )
-_gitserver='github.com'
-_gitauthor='bogdanfinn'
-_gitproject="${_pkgbase}"
 url="https://${_gitserver}/${_gitauthor}/${_gitproject}"
 license=('custom: dontcare')
 makedepends=(
@@ -90,7 +91,7 @@ build() {
 #   # go test -x -v
 # }
 
-package_golang-tls-client-git() {
+package_golang-bogdanfinn-tls-client-git() {
   pkgdesc="An advanced HTTP library based on requests and tls-client (Go module)."
   arch=(
     'any'
@@ -101,10 +102,13 @@ package_golang-tls-client-git() {
     'go: To compile software using this module, and for examples.'
   )
   provides=(
-    "golang-tls-client=${pkgver}"
+    "golang-bogdanfinn-tls-client=${pkgver}"
   )
   conflicts=(
-    "golang-tls-client"
+    "golang-bogdanfinn-tls-client"
+  )
+  replaces=(
+    'golang-tls-client-git'
   )
 
   cd "${srcdir}/${_pkgbase}"
