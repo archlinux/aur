@@ -1,0 +1,7 @@
+PACKAGE_NAME="phc-intel"
+PACKAGE_VERSION=%%VERSION%%
+AUTOINSTALL="yes"
+
+BUILT_MODULE_NAME[0]="phc-intel"
+DEST_MODULE_LOCATION[0]="/extra"
+MAKE[0]="make KERNELSRC=$kernel_source_dir"
