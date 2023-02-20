@@ -1,0 +1,534 @@
+diff '--color=auto' -rupN adduser-debian-3.131.orig/adduser adduser-debian-3.131/adduser
+--- adduser-debian-3.131.orig/adduser	2023-02-20 17:15:50.375613060 +1030
++++ adduser-debian-3.131/adduser	2023-02-20 17:21:43.830834709 +1030
+@@ -1252,7 +1252,8 @@ your option) any later version.
+ This program is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+-General Public License, /usr/share/common-licenses/GPL, for more details.
++General Public License, /usr/share/licenses/common/GPL2/license.txt,
++for more details.
+ ");
+ }
+ 
+diff '--color=auto' -rupN adduser-debian-3.131.orig/deluser adduser-debian-3.131/deluser
+--- adduser-debian-3.131.orig/deluser	2023-02-20 17:15:50.378946505 +1030
++++ adduser-debian-3.131/deluser	2023-02-20 17:22:56.186603271 +1030
+@@ -465,7 +465,8 @@ your option) any later version.
+ This program is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+-General Public License, /usr/share/common-licenses/GPL, for more details.
++General Public License, /usr/share/licenses/common/GPL2/license.txt,
++for more details.
+ ");
+ }
+ 
+diff '--color=auto' -rupN adduser-debian-3.131.orig/po/adduser.pot adduser-debian-3.131/po/adduser.pot
+--- adduser-debian-3.131.orig/po/adduser.pot	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.131/po/adduser.pot	2023-02-20 17:23:11.157107172 +1030
+@@ -452,7 +452,8 @@ msgid ""
+ "This program is distributed in the hope that it will be useful, but\n"
+ "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
+-"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
++"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"for more details.\n"
+ msgstr ""
+ 
+ #: ../adduser:1261
+diff '--color=auto' -rupN adduser-debian-3.131.orig/po/ca.po adduser-debian-3.131/po/ca.po
+--- adduser-debian-3.131.orig/po/ca.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.131/po/ca.po	2023-02-20 17:30:59.979410435 +1030
+@@ -500,7 +500,8 @@ msgid ""
+ "This program is distributed in the hope that it will be useful, but\n"
+ "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
+-"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
++"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"for more details.\n"
+ msgstr ""
+ "Aquest és programari lliure; podeu redistribuir-lo i/o modificar-lo sota "
+ "els\n"
+@@ -514,7 +515,7 @@ msgstr ""
+ "CAP GARANTIA; ni tan sols la garantia implícita de COMERCIABILITAT o "
+ "ADEQUACIÓ\n"
+ "PER UN PROPÒSIT PARTICULAR.  Vegeu la Llicència Pública General GNU,\n"
+-"/usr/share/common-licenses/GPL, per obtenir-ne més detalls.\n"
++"/usr/share/licenses/common/GPL2/license.txt, per obtenir-ne més detalls.\n"
+ 
+ #: ../adduser:1261
+ msgid ""
+diff '--color=auto' -rupN adduser-debian-3.131.orig/po/cs.po adduser-debian-3.131/po/cs.po
+--- adduser-debian-3.131.orig/po/cs.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.131/po/cs.po	2023-02-20 17:31:41.407433593 +1030
+@@ -488,7 +488,8 @@ msgid ""
+ "This program is distributed in the hope that it will be useful, but\n"
+ "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
+-"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
++"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"for more details.\n"
+ msgstr ""
+ "Tento program je svobodný software; můžete jej šířit a/nebo upravovat\n"
+ "podle podmínek GNU General Public License verze 2 nebo (dle vašeho\n"
+@@ -496,7 +497,7 @@ msgstr ""
+ "\n"
+ "Tento program je distribuovaný v naději, že bude užitečný, ale BEZ\n"
+ "JAKÉKOLIV ZÁRUKY. Pro více podrobností si přečtěte GNU General\n"
+-"Public License v /usr/share/common-licenses/GPL.\n"
++"Public License v /usr/share/licenses/common/GPL2/license.txt.\n"
+ 
+ #: ../adduser:1261
+ msgid ""
+diff '--color=auto' -rupN adduser-debian-3.131.orig/po/da.po adduser-debian-3.131/po/da.po
+--- adduser-debian-3.131.orig/po/da.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.131/po/da.po	2023-02-20 17:33:05.970210379 +1030
+@@ -490,7 +490,8 @@ msgid ""
+ "This program is distributed in the hope that it will be useful, but\n"
+ "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
+-"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
++"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"for more details.\n"
+ msgstr ""
+ "Dette program er fri software. Du kan redistribuere og/eller modificere\n"
+ "det under de betingelser som er angivet i GNU General Public License, som\n"
+@@ -500,8 +501,8 @@ msgstr ""
+ "Dette program distribueres i håb om at det vil vise sig nyttigt, men UDEN\n"
+ "NOGEN FORM FOR GARANTI, uden selv de underforståede garantier omkring\n"
+ "SALGBARHED eller EGNETHED TIL ET BESTEMT FORMÅL. Yderligere detaljer kan\n"
+-"læses i GNU General Public License. Se /usr/share/common-licenses/GPL, for\n"
+-"yderligere detaljer.\n"
++"læses i GNU General Public License. Se\n"
++"/usr/share/licenses/common/GPL2/license.txt, for yderligere detaljer.\n"
+ 
+ #: ../adduser:1261
+ msgid ""
+diff '--color=auto' -rupN adduser-debian-3.131.orig/po/de.po adduser-debian-3.131/po/de.po
+--- adduser-debian-3.131.orig/po/de.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.131/po/de.po	2023-02-20 17:33:49.204967098 +1030
+@@ -507,7 +507,8 @@ msgid ""
+ "This program is distributed in the hope that it will be useful, but\n"
+ "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
+-"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
++"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"for more details.\n"
+ msgstr ""
+ "Dieses Programm ist freie Software. Sie können es unter den Bedingungen der\n"
+ "GNU General Public License, wie von der Free Software Foundation\n"
+@@ -520,7 +521,7 @@ msgstr ""
+ "implizite\n"
+ "Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN BESTIMMTEN ZWECK.\n"
+ "Details finden Sie in der GNU General Public License\n"
+-"(/usr/share/common-licenses/GPL).\n"
++"(/usr/share/licenses/common/GPL2/license.txt).\n"
+ 
+ #: ../adduser:1261
+ msgid ""
+diff '--color=auto' -rupN adduser-debian-3.131.orig/po/es.po adduser-debian-3.131/po/es.po
+--- adduser-debian-3.131.orig/po/es.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.131/po/es.po	2023-02-20 17:34:57.527220887 +1030
+@@ -531,7 +531,8 @@ msgid ""
+ "This program is distributed in the hope that it will be useful, but\n"
+ "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
+-"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
++"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"for more details.\n"
+ msgstr ""
+ "Este programa es software libre. Puede redistribuirlo y/o modificarlo\n"
+ "bajo los términos de la Licencia Pública General de GNU según es\n"
+@@ -542,8 +543,8 @@ msgstr ""
+ "Este programa se distribuye con la esperanza de que sea útil, pero SIN\n"
+ "NINGUNA GARANTÍA, incluso sin la garantía MERCANTIL implícita o sin\n"
+ "garantizar la CONVENIENCIA PARA UN PROPÓSITO PARTICULAR. Véase la\n"
+-"Licencia Pública General de GNU, en /usr/share/common-licenses/GPL,\n"
+-"para más detalles.\n"
++"Licencia Pública General de GNU, en\n"
++"/usr/share/licenses/common/GPL2/license.txt, para más detalles.\n"
+ 
+ #: ../adduser:1261
+ msgid ""
+diff '--color=auto' -rupN adduser-debian-3.131.orig/po/eu.po adduser-debian-3.131/po/eu.po
+--- adduser-debian-3.131.orig/po/eu.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.131/po/eu.po	2023-02-20 17:35:35.138463713 +1030
+@@ -504,7 +504,8 @@ msgid ""
+ "This program is distributed in the hope that it will be useful, but\n"
+ "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
+-"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
++"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"for more details.\n"
+ msgstr ""
+ "Programa hau software librea da; birbana eta/edo alda dezakezu\n"
+ "Free Software Foundation-ek argitaratutako GNU Lizentzia Publiko\n"
+diff '--color=auto' -rupN adduser-debian-3.131.orig/po/fr.po adduser-debian-3.131/po/fr.po
+--- adduser-debian-3.131.orig/po/fr.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.131/po/fr.po	2023-02-20 17:36:10.522967545 +1030
+@@ -541,7 +541,8 @@ msgid ""
+ "This program is distributed in the hope that it will be useful, but\n"
+ "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
+-"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
++"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"for more details.\n"
+ msgstr ""
+ "Ce programme est un logiciel libre, vous pouvez le redistribuer ou le\n"
+ " modifier selon les termes de la Licence Publique Générale GNU (GPL) telle\n"
+@@ -552,7 +553,7 @@ msgstr ""
+ "SANS AUCUNE GARANTIE, sans même la garantie implicite de son caractère\n"
+ "COMMERCIALISABLE ou APPROPRIÉ POUR UN USAGE PRÉCIS. Pour de plus amples\n"
+ "détails, merci de vous référer à la Licence Publique Générale GNU,\n"
+-"/usr/share/common-licenses/GPL.\n"
++"/usr/share/licenses/common/GPL2/license.txt.\n"
+ 
+ #: ../adduser:1261
+ msgid ""
+diff '--color=auto' -rupN adduser-debian-3.131.orig/po/gl.po adduser-debian-3.131/po/gl.po
+--- adduser-debian-3.131.orig/po/gl.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.131/po/gl.po	2023-02-20 17:37:02.044673851 +1030
+@@ -510,7 +510,8 @@ msgid ""
+ "This program is distributed in the hope that it will be useful, but\n"
+ "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
+-"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
++"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"for more details.\n"
+ msgstr ""
+ "Este programa é libre; pódese redistribuír e/ou modificar segundo\n"
+ "os termos da Licencia Xeral Pública de GNU, publicada pola \n"
+@@ -520,8 +521,8 @@ msgstr ""
+ "Este programa distribúese co obxectivo de resultar de utilidade, pero\n"
+ "SEN NINGUNHA GARANTÍA, nin sequera coa garantía implícita de\n"
+ "SER AXEITADO PARA NINGÚN MERCADO ou OBXECTIVO INDIVIDUAL.  Consulte\n"
+-"a Licencia Xeral Pública de GNU, /usr/share/common-licenses/GPL, para máis "
+-"información.\n"
++"a Licencia Xeral Pública de GNU,\n"
++"/usr/share/licenses/common/GPL2/license.txt, para máis información.\n"
+ 
+ #: ../adduser:1261
+ msgid ""
+diff '--color=auto' -rupN adduser-debian-3.131.orig/po/hu.po adduser-debian-3.131/po/hu.po
+--- adduser-debian-3.131.orig/po/hu.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.131/po/hu.po	2023-02-20 17:37:36.469148487 +1030
+@@ -506,7 +506,8 @@ msgid ""
+ "This program is distributed in the hope that it will be useful, but\n"
+ "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
+-"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
++"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"for more details.\n"
+ msgstr ""
+ "Ez a program egy szabad szoftver; a Free Software Foundation \n"
+ "által kiadott GNU General Public License 2. verziójának vagy \n"
+@@ -517,7 +518,8 @@ msgstr ""
+ "de minden EGYÉB GARANCIA NÉLKÜL, az eladhatóságra vagy valamely célra\n"
+ "való alkalmazhatóságra való származtatott garanciát is beleértve.\n"
+ "További részletekért lásd a GNU General Public License\n"
+-"dokumentumot vagy az /usr/share/common-licenses/GPL állományt.\n"
++"dokumentumot vagy az /usr/share/licenses/common/GPL2/license.txt\n"
++"állományt.\n"
+ 
+ #: ../adduser:1261
+ msgid ""
+diff '--color=auto' -rupN adduser-debian-3.131.orig/po/it.po adduser-debian-3.131/po/it.po
+--- adduser-debian-3.131.orig/po/it.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.131/po/it.po	2023-02-20 17:38:11.196967429 +1030
+@@ -498,7 +498,8 @@ msgid ""
+ "This program is distributed in the hope that it will be useful, but\n"
+ "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
+-"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
++"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"for more details.\n"
+ msgstr ""
+ "Questo programma è software libero; è possibile ridistribuirlo e/o\n"
+ "modificarlo secondo i termini della licenza GNU General Public License,\n"
+@@ -509,7 +510,7 @@ msgstr ""
+ "SENZA ALCUNA GARANZIA, nemmeno la garanzia implicita di COMMERCIABILITÀ o\n"
+ "APPLICABILITÀ PER UNO SCOPO PARTICOLARE. Per maggiori dettagli consultare "
+ "la\n"
+-"GNU General Public License (/usr/share/common-licenses/GPL).\n"
++"GNU General Public License (/usr/share/licenses/common/GPL2/license.txt).\n"
+ 
+ #: ../adduser:1261
+ msgid ""
+diff '--color=auto' -rupN adduser-debian-3.131.orig/po/ja.po adduser-debian-3.131/po/ja.po
+--- adduser-debian-3.131.orig/po/ja.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.131/po/ja.po	2023-02-20 17:38:53.655044029 +1030
+@@ -506,7 +506,8 @@ msgid ""
+ "This program is distributed in the hope that it will be useful, but\n"
+ "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
+-"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
++"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"for more details.\n"
+ msgstr ""
+ "This program is free software; you can redistribute it and/or modify\n"
+ "it under the terms of the GNU General Public License as published by\n"
+@@ -516,7 +517,8 @@ msgstr ""
+ "This program is distributed in the hope that it will be useful, but\n"
+ "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
+-"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
++"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"for more details.\n"
+ 
+ #: ../adduser:1261
+ msgid ""
+diff '--color=auto' -rupN adduser-debian-3.131.orig/po/ko.po adduser-debian-3.131/po/ko.po
+--- adduser-debian-3.131.orig/po/ko.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.131/po/ko.po	2023-02-20 17:39:16.442467903 +1030
+@@ -460,7 +460,8 @@ msgid ""
+ "This program is distributed in the hope that it will be useful, but\n"
+ "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
+-"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
++"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"for more details.\n"
+ msgstr ""
+ 
+ #: ../adduser:1261
+diff '--color=auto' -rupN adduser-debian-3.131.orig/po/nb.po adduser-debian-3.131/po/nb.po
+--- adduser-debian-3.131.orig/po/nb.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.131/po/nb.po	2023-02-20 17:39:56.280459132 +1030
+@@ -498,7 +498,8 @@ msgid ""
+ "This program is distributed in the hope that it will be useful, but\n"
+ "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
+-"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
++"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"for more details.\n"
+ msgstr ""
+ "Dette programmet er fri programvare.  Du kan redistribuerer det og/eller\n"
+ "endre det under betingelsene gitt i «GNU General Public License» som\n"
+@@ -508,7 +509,7 @@ msgstr ""
+ "Dette programmet er distribuert under håp om at det vil være nyttig,\n"
+ "men UTEN NOEN GARANTIER, heller ikke impliserte om SALGBARHET eller\n"
+ "EGNETHET FOR NOEN SPESIELL ANVENDELSE.  Se «GNU General Public License»,\n"
+-"/usr/share/common-licenses/GPL, for flere detaljer.\n"
++"/usr/share/licenses/common/GPL2/license.txt, for flere detaljer.\n"
+ 
+ #: ../adduser:1261
+ msgid ""
+diff '--color=auto' -rupN adduser-debian-3.131.orig/po/nl.po adduser-debian-3.131/po/nl.po
+--- adduser-debian-3.131.orig/po/nl.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.131/po/nl.po	2023-02-20 17:40:29.331558743 +1030
+@@ -514,7 +514,8 @@ msgid ""
+ "This program is distributed in the hope that it will be useful, but\n"
+ "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
+-"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
++"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"for more details.\n"
+ msgstr ""
+ "Dit programma is vrije software; u kunt het distribueren en/of veranderen\n"
+ "onder de bepalingen van de GNU General Public License, uitgegeven door\n"
+@@ -524,7 +525,8 @@ msgstr ""
+ "Dit programma wordt verspreid in de hoop dat het bruikbaar is, maar\n"
+ "ZONDER ENIGE GARANTIE; zelfs zonder de garantie dat\n"
+ "HET WERKT of HET GESCHIKT IS VOOR EEN DOEL. Bekijk de GNU\n"
+-"General Public License, /usr/share/common-licenses/GPL, voor meer details.\n"
++"General Public License, /usr/share/licenses/common/GPL2/license.txt, voor\n"
++"meer details.\n"
+ 
+ #: ../adduser:1261
+ msgid ""
+diff '--color=auto' -rupN adduser-debian-3.131.orig/po/pl.po adduser-debian-3.131/po/pl.po
+--- adduser-debian-3.131.orig/po/pl.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.131/po/pl.po	2023-02-20 17:41:51.924309127 +1030
+@@ -494,7 +494,8 @@ msgid ""
+ "This program is distributed in the hope that it will be useful, but\n"
+ "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
+-"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
++"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"for more details.\n"
+ msgstr ""
+ "Ten program jest darmowy; możesz go redystrybuować i/lub modyfikować\n"
+ "zgodnie z warunkami Ogólnej Licencji Publicznej GNU opublikowanej przez\n"
+@@ -504,7 +505,8 @@ msgstr ""
+ "Ten program jest dystrybuowany w nadziei, że będzie użyteczny, ale\n"
+ "autorzy NIE DAJĄ ŻADNYCH GWARANCJI; w tym gwarancji PRZYDATNOŚCI\n"
+ "DO SPRZEDAŻY ani DO KONKRETNYCH CELÓW. Szczegóły można znaleźć w Ogólnej\n"
+-"Licencji Publicznej GNU w pliku /usr/share/common-licenses/GPL.\n"
++"Licencji Publicznej GNU w pliku\n"
++"/usr/share/licenses/common/GPL2/license.txt.\n"
+ 
+ #: ../adduser:1261
+ msgid ""
+diff '--color=auto' -rupN adduser-debian-3.131.orig/po/pt_BR.po adduser-debian-3.131/po/pt_BR.po
+--- adduser-debian-3.131.orig/po/pt_BR.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.131/po/pt_BR.po	2023-02-20 17:42:19.238552762 +1030
+@@ -512,7 +512,8 @@ msgid ""
+ "This program is distributed in the hope that it will be useful, but\n"
+ "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
+-"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
++"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"for more details.\n"
+ msgstr ""
+ "Este programa é software livre; você pode redistribuí-lo e/ou\n"
+ "modificá-lo sob os termos da Licença Pública Geral GNU conforme\n"
+@@ -522,7 +523,8 @@ msgstr ""
+ "Este programa é distribuído na expectativa de que seja útil, porém,\n"
+ "SEM NENHUMA GARANTIA; nem mesmo a garantia implícita de COMERCIABILIDADE\n"
+ "OU ADEQUAÇÃO A UMA FINALIDADE ESPECÍFICA. Consulte a Licença Pública\n"
+-"Geral do GNU, /usr/share/common-licenses/GPL, para mais detalhes.\n"
++"Geral do GNU, /usr/share/licenses/common/GPL2/license.txt, para mais\n"
++"detalhes.\n"
+ 
+ #: ../adduser:1261
+ msgid ""
+diff '--color=auto' -rupN adduser-debian-3.131.orig/po/pt.po adduser-debian-3.131/po/pt.po
+--- adduser-debian-3.131.orig/po/pt.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.131/po/pt.po	2023-02-20 17:42:54.403058503 +1030
+@@ -521,7 +521,8 @@ msgid ""
+ "This program is distributed in the hope that it will be useful, but\n"
+ "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
+-"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
++"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"for more details.\n"
+ msgstr ""
+ "Este programa é software livre; você pode redistribuí-lo e/ou modifica-lo\n"
+ "sob os termos da GNU General Public License conforme publicada pela Free\n"
+@@ -531,7 +532,7 @@ msgstr ""
+ "Este programa é distribuído com a esperança de que seja útil, mas SEM\n"
+ "QUALQUER GARANTIA; mesmo sem a garantia implícita de COMERCIALIZAÇÃO OU\n"
+ "ADEQUAÇÃO A UM DETERMINADO PROPÓSITO. Para mais detalhes, veja a\n"
+-"GNU General Public License em /usr/share/common-licenses/GPL.\n"
++"GNU General Public License em /usr/share/licenses/common/GPL2/license.txt.\n"
+ 
+ #: ../adduser:1261
+ msgid ""
+diff '--color=auto' -rupN adduser-debian-3.131.orig/po/ru.po adduser-debian-3.131/po/ru.po
+--- adduser-debian-3.131.orig/po/ru.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.131/po/ru.po	2023-02-20 17:43:19.077214796 +1030
+@@ -498,7 +498,8 @@ msgid ""
+ "This program is distributed in the hope that it will be useful, but\n"
+ "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
+-"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
++"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"for more details.\n"
+ msgstr ""
+ "This program is free software; you can redistribute it and/or modify\n"
+ "it under the terms of the GNU General Public License as published by\n"
+@@ -508,7 +509,8 @@ msgstr ""
+ "This program is distributed in the hope that it will be useful, but\n"
+ "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
+-"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
++"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"for more details.\n"
+ 
+ #: ../adduser:1261
+ msgid ""
+diff '--color=auto' -rupN adduser-debian-3.131.orig/po/sk.po adduser-debian-3.131/po/sk.po
+--- adduser-debian-3.131.orig/po/sk.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.131/po/sk.po	2023-02-20 17:43:40.344590985 +1030
+@@ -493,7 +493,8 @@ msgid ""
+ "This program is distributed in the hope that it will be useful, but\n"
+ "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
+-"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
++"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"for more details.\n"
+ msgstr ""
+ "Tento program je slobodný softvér; môžete ho šíriť a/alebo meniť\n"
+ "za podmienok GNU General Public License (GNU GPL), ktorú publikovala\n"
+diff '--color=auto' -rupN adduser-debian-3.131.orig/po/sv.po adduser-debian-3.131/po/sv.po
+--- adduser-debian-3.131.orig/po/sv.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.131/po/sv.po	2023-02-20 17:44:15.082416936 +1030
+@@ -501,7 +501,8 @@ msgid ""
+ "This program is distributed in the hope that it will be useful, but\n"
+ "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
+-"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
++"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"for more details.\n"
+ msgstr ""
+ "Följande text är en informell översättning som enbart tillhandahålls i\n"
+ "informativt syfte. För alla juridiska tolkningar gäller den engelska\n"
+@@ -515,8 +516,8 @@ msgstr ""
+ "Detta program distribueras i hopp om att det ska vara användbart,\n"
+ "men UTAN NÅGON SOM HELST GARANTI, även utan underförstådd garanti\n"
+ "om SÄLJBARHET eller LÄMPLIGHET FÖR NÅGOT SPECIELLT ÄNDAMÅL. Se GNU\n"
+-"General Public License, /usr/share/common-licenses/GPL för ytterligare "
+-"information.\n"
++"General Public License, /usr/share/licenses/common/GPL2/license.txt\n"
++"för ytterligare information.\n"
+ 
+ #: ../adduser:1261
+ msgid ""
+diff '--color=auto' -rupN adduser-debian-3.131.orig/po/uk.po adduser-debian-3.131/po/uk.po
+--- adduser-debian-3.131.orig/po/uk.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.131/po/uk.po	2023-02-20 17:45:01.610637021 +1030
+@@ -490,7 +490,8 @@ msgid ""
+ "This program is distributed in the hope that it will be useful, but\n"
+ "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
+-"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
++"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"for more details.\n"
+ msgstr ""
+ "Ця програма - вільне програмне забезпечення; Ви можете розповсюджувати\n"
+ "її та/або вносити зміни відповідно до умов Загальної Публічної\n"
+@@ -502,7 +503,7 @@ msgstr ""
+ "корисною, але БЕЗ БУДЬ-ЯКОЇ ҐАРАНТІЇ, без навіть УЯВНОЇ ҐАРАНТІЇ\n"
+ "КОМЕРЦІЙНОЇ ПРИДАТНОСТІ чи ВІДПОВІДНОСТІ БУДЬ-ЯКОМУ ПЕВНОМУ\n"
+ "ЗАСТОСУВАННЮ. Зверніться до Загальної Публічної Ліцензії GNU,\n"
+-"/usr/share/common-licenses/GPL, за подробицями.\n"
++"/usr/share/licenses/common/GPL2/license.txt, за подробицями.\n"
+ 
+ #: ../adduser:1261
+ msgid ""
+diff '--color=auto' -rupN adduser-debian-3.131.orig/po/vi.po adduser-debian-3.131/po/vi.po
+--- adduser-debian-3.131.orig/po/vi.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.131/po/vi.po	2023-02-20 17:46:00.562606214 +1030
+@@ -503,7 +503,8 @@ msgid ""
+ "This program is distributed in the hope that it will be useful, but\n"
+ "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
+-"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
++"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"for more details.\n"
+ msgstr ""
+ "Chương trình này là phần mềm tự do; bạn có thể phát hành lại nó\n"
+ "và/hoặc sửa đổi nó với điều kiện của Giấy Phép Công Cộng GNU\n"
+@@ -513,8 +514,8 @@ msgstr ""
+ "Chương trình này được phát hành vì mong muốn nó có ích,\n"
+ "nhưng KHÔNG CÓ BẢO HÀNH GÌ CẢ, THẬM CHÍ KHÔNG CÓ BẢO ĐẢM\n"
+ "ĐƯỢC NGỤ Ý KHẢ NĂNG BÁN HAY KHẢ NĂNG LÀM ĐƯỢC VIỆC DỨT KHOÁT.\n"
+-"Xem Giấy Phép Công Cộng GNU (/usr/share/common-licenses/GPL)\n"
+-"để biết thêm chi tiết.\n"
++"Xem Giấy Phép Công Cộng GNU\n"
++"(/usr/share/licenses/common/GPL2/license.txt) để biết thêm chi tiết.\n"
+ 
+ #: ../adduser:1261
+ msgid ""
+diff '--color=auto' -rupN adduser-debian-3.131.orig/po/zh_CN.po adduser-debian-3.131/po/zh_CN.po
+--- adduser-debian-3.131.orig/po/zh_CN.po	2023-02-20 17:15:50.382279951 +1030
++++ adduser-debian-3.131/po/zh_CN.po	2023-02-20 17:47:04.898089689 +1030
+@@ -479,14 +479,15 @@ msgid ""
+ "This program is distributed in the hope that it will be useful, but\n"
+ "WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
+-"General Public License, /usr/share/common-licenses/GPL, for more details.\n"
++"General Public License, /usr/share/licenses/common/GPL2/license.txt,\n"
++"for more details.\n"
+ msgstr ""
+ "本程序是自由软件；您可以在自由软件基金会的GNU公共授权条款版本2，或(随您选择)"
+ "任何更高版本下分发和修改它。\n"
+ "\n"
+ "本程序期望其会有用，但没有任何的保证；甚至不对任何商业能力或其特殊目的的适用"
+-"性有隐含的保证。关于GNU公共条款详细信息请参见/usr/share/common-licenses/"
+-"GPL。\n"
++"性有隐含的保证。关于GNU公共条款详细信息请参见"
++"/usr/share/licenses/common/GPL2/license.txt。\n"
+ 
+ #: ../adduser:1261
+ msgid ""
