@@ -3,6 +3,10 @@ post_install() {
 	ln -sf "/usr/share/stacer/stacer" "/usr/bin/stacer"
 }
 
+post_upgrade() {
+	post_install
+}
+
 post_remove() {
 	printf "===> deleting link\n"
 	unlink /usr/bin/stacer
