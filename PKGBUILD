@@ -23,5 +23,5 @@ package() {
   cp -r ${_appname} "$pkgdir"/opt/
   install -Dm755 "$srcdir"/$pkgname.sh $pkgdir/usr/bin/$pkgname
   install -Dm644 "$srcdir"/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
-  install -Dm644 ${_appname}/license.pdf $pkgdir/usr/share/licenses/$pkgname}/license.pdf
+  install -Dm644 ${_appname}/app_resources/license.pdf $pkgdir/usr/share/licenses/$pkgname/license.pdf
 }
