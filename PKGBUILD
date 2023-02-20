@@ -22,7 +22,7 @@ _clangbuild=
 
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r62191.378fd55feac
+pkgver=r62347.b96206569e2
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -180,7 +180,7 @@ package_kodi-git() {
     'bluez-libs' 'curl' 'dav1d' 'desktop-file-utils' 'hicolor-icon-theme' 'fmt'
     'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec' 'libmicrohttpd' 'libnfs'
     'libplist' 'libpulse' 'libva' 'libvdpau' 'libxslt' 'lirc' 'mariadb-libs'
-    'mesa' 'pipewire' 'python-pillow' 'python-pycryptodomex'
+    'mesa' 'libpipewire' 'python-pillow' 'python-pycryptodomex'
     'python-simplejson' 'shairplay' 'smbclient' 'sndio' 'spdlog' 'sqlite'
     'taglib' 'tinyxml' 'libxrandr' 'libxkbcommon' 'waylandpp' 'libinput'
     'pcre'
@@ -192,6 +192,7 @@ package_kodi-git() {
     'bluez: Blutooth support'
     'python-pybluez: Bluetooth support'
     'pulseaudio: PulseAudio support'
+    'pipewire: PipeWire support'
     'upower: Display battery level'
   )
   provides=("kodi=${pkgver}" 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
@@ -208,8 +209,9 @@ package_kodi-git() {
     -DCMAKE_INSTALL_COMPONENT="$_cmp" \
      -P cmake_install.cmake
   done
-  
+
   # avoid error <general>: GetDirectory - Error getting /usr/lib/kodi/addons
+  # https://bugs.archlinux.org/task/77366
   mkdir -p "$pkgdir"/usr/lib/kodi/addons
 }
 
