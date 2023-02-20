@@ -1,6 +1,6 @@
 # Maintainer: Alex Xu (Hello71) <alex_y_xu@yahoo.ca>
 pkgname=freemarker
-pkgver=2.3.31
+pkgver=2.3.32
 pkgrel=1
 pkgdesc="a generic tool to generate text output based on templates"
 arch=(any)
@@ -12,7 +12,7 @@ source=("https://downloads.apache.org/freemarker/engine/$pkgver/binaries/apache-
 validpgpkeys=(
     13AC2213964ABE1D1C147C0E1939A2520BAB1D90 # Daniel Dekany <ddekany@apache.org>
 )
-sha256sums=('8723ec9ffe006e8d376b6c7dbe7950db34ad1fa163aef4026e6477151a1a0deb'
+sha256sums=('13154d4dfd7cb8ca6f8afcb5fffcfc9f358d6967986707a9a81d450d5438ec86'
             'SKIP')
 
 package() {
