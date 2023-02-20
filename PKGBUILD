@@ -23,7 +23,7 @@ package () {
 
 	# Standard install
 	install -D -t "$pkgdir/usr/bin" "$_pkgname/clyde"
-	install -D -t "$pkgdir/usr/share/bash_completion/completions" "$_pkgname/clyde-completion.bash"
+	install -D -t "$pkgdir/usr/share/bash-completion/completions" "$_pkgname/clyde-completion.bash"
 
 	# Uncomment if you use Zsh
 	# install -D -t "$pkgdir/usr/local/share/zsh/site-functions" "$_pkgname/_clyde"  
