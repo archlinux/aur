@@ -3,7 +3,7 @@
 
 pkgname=cemu-bin
 pkgver=2.0.27
-pkgrel=1
+pkgrel=2
 pkgdesc="Nintendo Wii U Emulator"
 arch=('x86_64')
 url="https://cemu.info"
@@ -13,15 +13,18 @@ makedepends=('patchelf')
 provides=('cemu')
 conflicts=('cemu' 'cemu-git')
 options=(!strip !docs libtool emptydirs)
-source=("https://github.com/cemu-project/Cemu/releases/download/v${pkgver%.*}-${pkgver##*.}/cemu-${pkgver%.*}-${pkgver##*.}-ubuntu-20.04-x64.zip"
-        "cemu.desktop::https://raw.githubusercontent.com/cemu-project/Cemu/main/dist/linux/info.cemu.Cemu.desktop"
-        "cemu.png::https://github.com/cemu-project/Cemu/raw/main/dist/linux/info.cemu.Cemu.png")
+_srcver=${pkgver%.*}-${pkgver##*.}
+source=("https://github.com/cemu-project/Cemu/releases/download/v$_srcver/cemu-$_srcver-ubuntu-20.04-x64.zip"
+        "https://raw.githubusercontent.com/cemu-project/Cemu/main/dist/linux/info.cemu.Cemu.desktop"
+        "https://github.com/cemu-project/Cemu/raw/main/dist/linux/info.cemu.Cemu.png"
+        "https://raw.githubusercontent.com/cemu-project/Cemu/main/dist/linux/info.cemu.Cemu.metainfo.xml")
 sha256sums=('2afd679310cc51d13c785d3bf8e1f391ebd84cf8aa2416c9e33f6ccf246b3f70'
             '3e9380eb47646fede56c0de59ddab872627c00629820ef5f974be0d07e4f3490'
-            '6458a99b8bd54e44857efa0f82bfd6035e7e072e7e080e3330e4e2cfe89cbd33')
+            '6458a99b8bd54e44857efa0f82bfd6035e7e072e7e080e3330e4e2cfe89cbd33'
+            '3c0ffba6874ebabb4341911b401d4b7062fefeb527badc5caa93355e5968848b')
             
 prepare() {
-  cd $srcdir/Cemu_${pkgver%.*}-${pkgver##*.}
+  cd $srcdir/Cemu_$_srcver
 
   _libs=('libpcre.so.3' 'libffi.so.7' 'libicuuc.so.71' 'libicui18n.so.71' 'libicudata.so.71')
   for lib in ${_libs[@]} 
@@ -34,14 +37,15 @@ prepare() {
 }
 
 package() {
-  cd $srcdir/Cemu_${pkgver%.*}-${pkgver##*.}
+  cd $srcdir/Cemu_$_srcver
   
   install -Dm 755 ./Cemu $pkgdir/usr/bin/cemu
 
-  install -d $pkgdir/usr/share/cemu
-  cp -r ./{gameProfiles,resources,shaderCache} $pkgdir/usr/share/cemu
+  install -d $pkgdir/usr/share/Cemu
+  cp -r ./{gameProfiles,resources,shaderCache} $pkgdir/usr/share/Cemu
 
-  sed -i -e '/^Icon=/cIcon=cemu' -e '/^Exec=Cemu/cExec=cemu' $srcdir/cemu.desktop
-  install -Dm 644 -t $pkgdir/usr/share/applications $srcdir/cemu.desktop
-  install -Dm 644 -t $pkgdir/usr/share/icons/hicolor/128x128/apps $srcdir/cemu.png
+  sed -i -e '/^Exec=Cemu/cExec=cemu' $srcdir/info.cemu.Cemu.desktop
+  install -Dm 644 -t $pkgdir/usr/share/applications $srcdir/info.cemu.Cemu.desktop
+  install -Dm 644 -t $pkgdir/usr/share/icons/hicolor/128x128/apps $srcdir/info.cemu.Cemu.png
+  install -Dm 644 -t $pkgdir/usr/share/metainfo $srcdir/info.cemu.Cemu.metainfo.xml
 }
