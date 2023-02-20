@@ -6,12 +6,12 @@
 # Contributor: Eric Forgeot < http://ifiction.free.fr >
 
 pkgname=gargoyle
-pkgver=2022.1
-pkgrel=3
+pkgver=2023.1
+pkgrel=1
 pkgdesc="Interactive Fiction multi-interpreter that supports all major IF formats."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://ccxvii.net/gargoyle/"
-license=('GPL2' 'custom:BSD-2-Clause' 'custom:BSD-3-Clause' 'Artistic2.0' 'MIT' 'custom:OFL-1.1')
+license=('GPL2' 'GPL3' 'custom:BSD-2-Clause' 'custom:BSD-3-Clause' 'Artistic2.0' 'MIT' 'custom:OFL-1.1')
 depends=('sdl2_mixer' 'sdl2' 'freetype2' 'qt5-base' 'fontconfig' 'libjpeg' 'libpng' 'zlib'
          'hicolor-icon-theme')
 makedepends=('cmake' 'pkgconfig' 'desktop-file-utils')
@@ -20,15 +20,8 @@ provides=('gargoyle')
 conflicts=('gargoyle-mod')
 replaces=('gargoyle-mod')
 #groups=(inform)
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/garglk/garglk/archive/${pkgver}.tar.gz"
-	"libspeechd-dlopen.patch")
-sha512sums=('10b9ccc4bb6bed83780f8d7bf2d36650c8f7c4e14204fe5372e972f8d6900c69846d601670db55ec369e313a75c34ef88fd873f158729af0d4d9a6d8c5c6a1e1'
-            'd1381db41a973ccd4ae7bfccb089a48ca851a3c6a4ba8c1e07e8e195e7429b1d96d3bacec6a651aa108e8ecc17d9bc3eb78d368309cf134f80af9b699c3c2d4d')
-
-prepare() {
-	cd "${srcdir}/garglk-${pkgver}"
-	patch -Np1 -i "${srcdir}/libspeechd-dlopen.patch"
-}
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/garglk/garglk/archive/${pkgver}.tar.gz")
+sha512sums=('d8624f8a8492f64adfdb638811419ebef5b77457708a5d07a3891faf97966237839170914af4d416f42aca7e6d9d0643384ef60be30a2ba22ed52fee4938683a')
 
 build() {
 	cd "${srcdir}/garglk-${pkgver}"
