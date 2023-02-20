@@ -2,16 +2,16 @@
 
 pkgname=ecal
 pkgver=5.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="enhanced Communication Abstraction Layer"
 arch=('x86_64' 'armv7h')
 url="https://github.com/eclipse-ecal/ecal"
 license=('Apache')
-depends=('curl' 'protobuf' 'qt5-base' 'qwt' 'hdf5')
+depends=('curl' 'protobuf' 'qt5-base' 'qwt' 'hdf5' 'yaml-cpp')
 makedepends=('cmake' 'doxygen' 'git' 'graphviz')
 optdepends=()
 source=("https://github.com/eclipse-ecal/ecal/releases/download/v${pkgver}/ecal-fat-source.tar.gz")
-sha256sums=('3d80dc37364474e3a9cf52ac0b05a3cd256e407d547ae0417545f0947f9fd558')
+sha256sums=('95e5ce6b490d155d5e8e6a1f349803b0ea374a89356c79067d17fb67bb3f7386')
 backup=('etc/ecal/ecal.ini' 'etc/ecal/ecaltime.ini')
 
 prepare() {
@@ -23,6 +23,7 @@ build() {
     cd "${pkgname}"
     mkdir -p _build
     cd _build
+    cmake -E env CXXFLAGS="-Wno-error=restrict" \
     cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
              -DCMAKE_BUILD_TYPE=Release \
              -DECAL_THIRDPARTY_BUILD_PROTOBUF=OFF \
