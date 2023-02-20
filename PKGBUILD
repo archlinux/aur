@@ -16,11 +16,11 @@ source=(${url}/xorg/font/adobe-100dpi/-/archive/master/adobe-100dpi-master.tar.g
         ${url}/xorg/font/bh-100dpi/-/archive/master/bh-100dpi-master.tar.gz
         ${url}/xorg/font/bh-lucidatypewriter-100dpi/-/archive/master/bh-lucidatypewriter-100dpi-master.tar.gz
         ${url}/xorg/font/bitstream-100dpi/-/archive/master/bitstream-100dpi-master.tar.gz)
-md5sums=('a123d7677bd4dd6c3962f6bee81770e9'
-         '93631f400edfdf199baef8fdf6756316'
-         '4e0c07a09e5c1297c8b9490073a928f3'
-         '23b51799bd440e92e7f70a97943a0272'
-         '01533309f836494a2bf7c09ca64c1212')
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
 
 build() {
   cd "${srcdir}"
