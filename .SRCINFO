@@ -1,7 +1,7 @@
 pkgbase = orbiton-bin
 	pkgdesc = Text editor, IDE and gdb frontend (CLI only)
 	pkgver = 2.60.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xyproto/orbiton
 	arch = aarch64
 	arch = armv6
@@ -50,6 +50,7 @@ pkgbase = orbiton-bin
 	optdepends = vlang: for compiling and formatting V
 	optdepends = yasm: for compiling Assembly
 	optdepends = zig: for compiling and formatting Zig
+	provides = o
 	conflicts = o
 	conflicts = o-bin
 	conflicts = orbiton

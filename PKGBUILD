@@ -2,13 +2,14 @@
 
 pkgname=orbiton-bin
 pkgver=2.60.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Text editor, IDE and gdb frontend (CLI only)'
 arch=(aarch64 armv6 armv7 riscv64 x86_64)
 url='https://github.com/xyproto/orbiton'
 license=(BSD)
-replaces=(o-bin)
 conflicts=(o o-bin orbiton)
+replaces=(o-bin)
+provides=(o)
 source=("https://github.com/xyproto/orbiton/releases/download/v$pkgver/o-$pkgver-linux_${CARCH}_static.tar.xz")
 optdepends=('asciidoctor: for writing man pages'
             'agda: for compiling Agda'
