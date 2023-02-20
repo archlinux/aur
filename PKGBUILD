@@ -1,13 +1,13 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=i2pd-tools-git
-pkgver=r237.g86f1bf9
-pkgrel=2
+pkgver=r242.gaadc780
+pkgrel=1
 pkgdesc='Useful tools for I2P (git version)'
 arch=('x86_64')
 url='https://github.com/PurpleI2P/i2pd-tools/'
 license=('BSD')
-depends=('i2pd-git' 'openssl')
+depends=('i2pd' 'openssl')
 makedepends=('git' 'boost')
 provides=('i2pd-tools')
 conflicts=('i2pd-tools')
