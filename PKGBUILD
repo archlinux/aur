@@ -5,9 +5,9 @@ _buildid=3451
 pkgname=('onedev' 'onedev-new')
 pkgbase=onedev
 pkgver=8.0.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
-depends=('java-runtime-headless>11.0.0' 'git>2.11.1' 'curl' 'fontconfig' 'ttf-dejavu')
+depends=('java-runtime-headless>11.0.0' 'git>2.11.1' 'fontconfig' 'ttf-dejavu')
 makedepends=('gzip' 'tar' 'java-environment-openjdk=11')
 url="https://code.onedev.io/onedev/server"
 license=('MIT' 'BSD' 'Apache' 'LGPL2.1' 'MPL2' 'custom:Oracle Technology Network License'
@@ -24,11 +24,6 @@ backup=(opt/onedev/conf/hibernate.properties
         opt/onedev/conf/server.properties
         opt/onedev/conf/wrapper.conf
         opt/onedev/conf/wrapper-license.conf)
-
-build() {
-  cd "$srcdir"
-  tar -xvzf "onedev-$pkgver.tar.gz"
-}
 
 package_onedev() {
   pkgdesc="A self-hosted Git server with CI/CD and Kanban"
