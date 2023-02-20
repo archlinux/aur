@@ -1,37 +1,34 @@
-# Maintainer: Sergey Shatunov <me@prok.pw>
+# Maintainer: Sergey Shatunov <me@aur.rocks>
 
-pkgname=dracut-uefi-hook
-pkgver=7
+pkgname=dracut-ukify
+pkgver=1
 pkgrel=1
-pkgdesc="Install/update/removal hooks for dracut unifed uefi image generation"
-url="https://aur.archlinux.org/packages/dracut-uefi-hook/"
+pkgdesc="Integration layer for dracut and systemd's ukify tool for Arch Linux"
+url="https://aur.archlinux.org/packages/dracut-ukify"
 arch=(any)
 license=('MIT')
-depends=(dracut systemd binutils util-linux)
-source=('10-dracut-uefi-pre-install.hook'
-        '90-dracut-uefi-install.hook'
-        '60-dracut-uefi-remove.hook'
-        'dracut-uefi-pre-install'
-        'dracut-uefi-install'
-        'dracut-uefi-remove'
-        'dracut-uefi-hook.conf')
-sha256sums=('757c1df6fae821ce9efb3fcc6f710951486042d9b1d993eccdfd9cf6cb491bf3'
-            '7c6aae6a733582fd16852e949565493bb6af1a555ab755f1bf86b136df74244c'
-            'e2a04362ed1b0d462a33444921c5e15e4a82ed34f9848b4fbad554e51fd10207'
-            '0d22ae4428965a65b2d392d8b71486ad591c81f760c929ce15e7f2c908afe875'
-            'eaafe8afd0727b24861d4f98702294d9ab8c0658f5d62c24aa3858b4b7e892dd'
-            '8af469ab5647cd15c9370b4c44af422df99887105aca30531c0d4c7b92889f9d'
-            '86a65fe822bff87a51e7fece85159a62a77a8f71f015d6400f6693d44dba9464')
-backup=(etc/dracut-uefi-hook.conf)
+depends=(dracut 'systemd>=253' python util-linux)
+optdepends=(
+	'sbsigntools: secureboot support'
+)
+source=('10-dracut-ukify-pre-install.hook'
+        '90-dracut-ukify-install.hook'
+        '60-dracut-ukify-remove.hook'
+        'dracut-ukify'
+        'dracut-ukify.conf')
+sha256sums=('6778d79ce5542155cdf9d1b12e8e36b7b9b090b8f4b5d0c0ab8f9c21f9b79fe6'
+            '08225b2c3f5e2a734561b5fa9a3e84060dfffd85b2898adb0fff0ce3b068b4d0'
+            '341cd01546d840e7401f7bec868a78e2f6ca12563e93d993a07bc51efe674ed0'
+            '2fcda98d08251b9ff9a4117a42bcc618d92cf1d241791750fd1e63c637cb7960'
+            'b2c523dc3b5dbda2a01ea43df3b9ab00bb48f70376445165cfdb2cf38e751eab')
+backup=(etc/dracut-ukify.conf)
 provides=(dracut-hook)
-conflicts=(dracut-hook-uefi)
+conflicts=(dracut-hook-uefi dracut-uefi-hook)
 
 package() {
-  install -Dm644 "${srcdir}/10-dracut-uefi-pre-install.hook" "${pkgdir}/usr/share/libalpm/hooks/10-dracut-uefi-pre-install.hook"
-  install -Dm644 "${srcdir}/60-dracut-uefi-remove.hook"  "${pkgdir}/usr/share/libalpm/hooks/60-dracut-uefi-remove.hook"
-  install -Dm644 "${srcdir}/90-dracut-uefi-install.hook" "${pkgdir}/usr/share/libalpm/hooks/90-dracut-uefi-install.hook"
-  install -Dm755 "${srcdir}/dracut-uefi-install"         "${pkgdir}/usr/share/libalpm/scripts/dracut-uefi-install"
-  install -Dm755 "${srcdir}/dracut-uefi-remove"          "${pkgdir}/usr/share/libalpm/scripts/dracut-uefi-remove"
-  install -Dm755 "${srcdir}/dracut-uefi-pre-install"         "${pkgdir}/usr/share/libalpm/scripts/dracut-uefi-pre-install"
-  install -Dm644 "${srcdir}/dracut-uefi-hook.conf"       "${pkgdir}/etc/dracut-uefi-hook.conf"
+  install -Dm644 "${srcdir}/10-dracut-ukify-pre-install.hook" "${pkgdir}/usr/share/libalpm/hooks/10-dracut-ukify-pre-install.hook"
+  install -Dm644 "${srcdir}/60-dracut-ukify-remove.hook"      "${pkgdir}/usr/share/libalpm/hooks/60-dracut-ukify-remove.hook"
+  install -Dm644 "${srcdir}/90-dracut-ukify-install.hook"     "${pkgdir}/usr/share/libalpm/hooks/90-dracut-ukify-install.hook"
+  install -Dm755 "${srcdir}/dracut-ukify"                     "${pkgdir}/usr/bin/dracut-ukify"
+  install -Dm644 "${srcdir}/dracut-ukify.conf"                "${pkgdir}/etc/dracut-ukify.conf"
 }

@@ -1,0 +1,142 @@
+#!/bin/bash -e
+
+function usage {
+  echo "$(basename "$0") [OPTIONS]"
+  echo "  -h            shows usage"
+  echo "  -g <version>  generate UKI image for specified kernel version"
+  echo "  -a            generate UKI images for all available kernels"
+}
+
+function check_root {
+  [ $EUID -eq 0 ] && return
+  echo "dracut-ukify requires root privileges to work" >&2
+  exit 1
+}
+
+if [[ ${#} -eq 0 ]]; then
+   usage
+fi
+
+declare -a ukify_global_args=()
+
+[ -f "/etc/dracut-ukify.conf" ] && source /etc/dracut-ukify.conf
+
+ESP_PATH=$(bootctl --print-esp-path)
+MACHINE_ID=$(</etc/machine-id)
+# shellcheck source=/etc/os-release
+source <(grep '^BUILD_ID=' /etc/os-release)
+
+declare -A kernels
+update_all=0
+
+while getopts ":hag:xyz" arg; do
+  case ${arg} in
+    g)
+      found=0
+      for line in $(pacman -Qql "$OPTARG"); do
+        if [[ $line =~ ^/usr/lib/modules/([^/]+)/pkgbase$ ]]; then
+          read -r pkgbase < "/${line}"
+          kernels["${pkgbase}"]="${BASH_REMATCH[1]}"
+          found=1
+          break
+        fi
+      done
+      if (( ! found )); then
+        echo "Error occurred during '$OPTARG' package traversal" >&2
+        exit 1
+      fi
+      ;;
+    a)
+      update_all=1
+      ;;
+    x)
+      check_root
+      # Trigger some IO on ESP path to be sure it's mounted by autofs if it's the case
+      # Otherwise upgrading systemd may cause ESP partition not mounted at the time dracut attempt to write new image
+      stat "$ESP_PATH" >/dev/null
+      ;;
+    y)
+      check_root
+      while read -r line; do
+        if [[ "$line" == 'usr/lib/modules/'+([^/])'/pkgbase' ]]; then
+          read -r pkgbase < "/${line}"
+          path="$(grep -lE "^${pkgbase}\$" /usr/lib/modules/*/pkgbase)"
+          version=$(basename "${path%/pkgbase}")
+          IMAGE="${ESP_PATH}/EFI/Linux/linux-${version}-${MACHINE_ID}-${BUILD_ID}.efi"
+          if [ -f "$IMAGE" ]; then
+            echo "==> Removing $IMAGE..."
+            rm -f "$IMAGE"
+          fi
+        fi
+      done
+      ;;
+    z)
+      check_root
+      while read -r line; do
+        if [[ $line =~ ^usr/lib/modules/([^/]+)/pkgbase$ ]]; then
+          read -r pkgbase < "/${line}"
+          kernels["${pkgbase}"]="${BASH_REMATCH[1]}"
+        else
+          update_all=1
+          break 
+        fi
+      done
+      ;;
+    h)
+      usage
+      ;;
+    *)
+      usage
+      ;;
+  esac
+done
+
+if (( update_all )); then
+  for candidate in /usr/lib/modules/*; do
+    [ -f "$candidate/pkgbase" ] || continue
+    if read -r pkgbase &> /dev/null < "$candidate/pkgbase"; then
+      kernels["${pkgbase}"]="$(basename "$candidate")"
+    fi
+  done
+fi
+
+function gen_image() {
+  check_root
+  kernel="$1"
+  version="$2"
+  path="/usr/lib/modules/${version}/pkgbase"
+  vmlinuz="/usr/lib/modules/${version}/vmlinuz"
+  image="${ESP_PATH}/EFI/Linux/linux-${version}-${MACHINE_ID}-${BUILD_ID}.efi"
+
+  read -r pkgbase < "$path"
+
+  initrd=$(mktemp)
+
+  echo "==> Building initrd image $kernel ($version)"
+  dracut -q -f --no-hostonly-cmdline --kver "${version}" "$initrd"
+
+  declare -a ukify_args=("${ukify_global_args[@]}")
+  ukify_args+=(--uname "$version")
+  ukify_args+=(--os-release "@/etc/os-release")
+  ukify_args+=(--output "$image")
+  ukify_args+=("$vmlinuz" "$initrd")
+
+  echo "==> Ukify image $kernel ($version)"
+
+  /usr/lib/systemd/ukify "${ukify_args[@]}"
+
+  # Remove temporary initrd file
+  rm "$initrd"
+
+  # Mark image as default if needed
+  if [[ "$pkgbase" == "$default_kernel_package" ]]; then
+    echo "===> Mark linux image $kernel ($version) as default"
+    bootctl set-default "linux-${version}-${MACHINE_ID}-${BUILD_ID}.efi" || {
+    	echo "==> Unable to mark linux image $kernel ($version) as default due to error" >&2
+    }
+  fi
+}
+
+for kernel in "${!kernels[@]}"; do
+  gen_image "$kernel" "${kernels[$kernel]}"
+done
