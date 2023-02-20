@@ -6,7 +6,7 @@ pkgdesc="Graph editor for Linux"
 arch=(x86_64)
 url="https://github.com/Student-Team-Projects/Graph-Editor-Linux"
 license=('GPL')
-makedepends=('git' 'make' 'gradle' 'autoconf' 'jdk')
+makedepends=('git' 'make' 'gradle' 'autoconf' 'jdk' 'java-runtime>11')
 source=("git+$url#branch=main")
 md5sums=('SKIP')
 
