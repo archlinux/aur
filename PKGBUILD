@@ -22,7 +22,7 @@ _clangbuild=
 
 pkgbase=kodi-nexus-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r61967.93376f096b9
+pkgver=r61969.246fd7f19fc
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -80,7 +80,6 @@ source=(
   "https://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   "https://mirrors.kodi.tv/build-deps/sources/libudfread-$_libudfread_version.tar.gz"
   cheat-sse-build.patch
-  "https://github.com/xbmc/xbmc/pull/22658.patch"  # FS#77390
   "https://github.com/xbmc/xbmc/pull/22714.patch"  # FS#77565
 )
 noextract=(
@@ -103,7 +102,6 @@ b2sums=('SKIP'
         'ccd827a43da39cf831727b439beed0cea216cdf50dbfe70954854bbe388b2c47ed4e78cc87e3fc0d5568034b13baa2ea96480914cc8129747bccbf8ea928847c'
         '1801d84a0ca38410a78f23e7d44f37e6d53346753c853df2e7380d259ce1ae7f0c712825b95a5753ad0bc6360cfffe1888b9e7bc30da8b84549e0f1198248f61'
         '6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0'
-        '931d330fba1504dd457f3da3c062e0f1c4187f43121231e3c6504bd636aacfb553e1de9873666d060b4569cc04c9e3eefadc34efc64813cb48e30f0ec0cc41e3'
         'bc092d345bd32f9425f92485da2f6bdecceffa37dce06cd8e750de467702e402c134a6b07a5132da70722bc215c0232e4d9c49484370ba2274542925e41d4733')
 
 pkgver() {
@@ -119,18 +117,14 @@ prepare() {
 
   [[ "$_sse_workaround" -eq 1 ]] && patch -p1 -i "$srcdir/cheat-sse-build.patch"
 
+  # NFSv4 fix
+  # https://bugs.archlinux.org/task/77565
+  patch -p1 -i "$srcdir/22714.patch"
+
   if [[ -n "$_clangbuild" ]]; then
     msg "Building with clang"
     export CC=clang CXX=clang++
   fi
-
-   # Fix a crash when browsing unicode glyphs
-￼  # https://bugs.archlinux.org/task/77390
-￼  patch -p1 -i "$srcdir/22658.patch"
-￼
-￼  # NFSv4 fix
-￼  # https://bugs.archlinux.org/task/77565
-￼  patch -p1 -i "$srcdir/22714.patch"
 }
 
 build() {
