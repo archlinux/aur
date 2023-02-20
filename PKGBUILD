@@ -14,8 +14,8 @@ groups=(
 )
 pkgver=0.4.0.rev43.r51.20221212.9e5391b
 _phcver="$(awk -F. '{print $1"."$2"."$3}' <<<"${pkgver}")"
-pkgrel=1
-pkgdesc="Frequency driver for Intel CPUs with undervolting feature. DKMS-based kernel module, stable branch."
+pkgrel=2
+pkgdesc="Frequency driver for Intel CPUs with undervolting feature. DKMS-based kernel module, testing branch."
 url="https://gitlab.com/linux-phc/phc-intel"
 arch=('any')
 license=('GPL2')
