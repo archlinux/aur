@@ -13,7 +13,7 @@ license=('custom')
 options=("!strip")
 source=($pkgname-$pkgver.tar.gz::https://www.laurenceanthony.net/software/antconc/releases/AntConc${_pkgver}/AntConc.tar.gz
 	${pkgname}.png ${pkgname}.desktop $pkgname.sh)
-sha256sums=('f1c12334e07c2da4feb56c87efc43b629fb4c7fc92ee25ba10657e52114a10ac'
+sha256sums=('3ba127173843414ca15229f379dd378688122adeec103bfb0b070d917489e48f'
             '2961431f1dd2c11a7af92e5ab594ddfd43e42ccc582cddca70128c781101525e'
             'ebb24e265e303ebca7bb771b8f01569a010cb68895bdb3ad940acbecd78acd2b'
             'c529e3d8230f19e604c646d804278d9b0ca1dae4d3b97ade838ab10a32ff06f7')
