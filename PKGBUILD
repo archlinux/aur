@@ -1,35 +1,35 @@
-# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: Michael Lass <bevan@bi-co.net>
+# Contributor: Fabio 'Lolix' Loli <lolix@disroot.org>
 # Contributor: Alesh Slovak <aleshslovak@gmail.com>
 # Contributor: Niels Martignène <niels.martignene@gmail.com>
 
-pkgname=pycrc
-pkgver=0.9.2
-pkgrel=3
-pkgdesc="A free, easy to use Cyclic Redundancy Check (CRC) calculator and C source code generator"
-arch=(any)
-url="http://www.tty1.net/pycrc/"
-license=('MIT')
-depends=('python')
-options=(!emptydirs)
-source=("https://pycrc.org/download/pycrc-${pkgver}.tar.gz")
-sha256sums=('84aebcd36304c0fd28ecf64df3888d69a2b9895759c83cf90f55afc9eff4e352')
+# This PKGBUILD is maintained on github:
+# https://github.com/michaellass/AUR
 
-_sitedir=`python -c "import site; print(site.getsitepackages()[0])"`
+pkgname=pycrc
+pkgver=0.10.0
+pkgrel=1
+pkgdesc="Free, easy to use Cyclic Redundancy Check (CRC) calculator and C source code generator"
+arch=(any)
+url="https://pycrc.org"
+license=('MIT')
+depends=(python)
+makedepends=(python-build python-installer python-wheel)
+source=("https://pycrc.org/download/pycrc-${pkgver}.tar.gz")
+sha256sums=('bf3b414dde3f5c1c2b331ba300a5550da5ba280b1611bc7c0ccf9780499fc041')
+
+build() {
+    cd "$pkgname-$pkgver"
+    python -m build --wheel --no-isolation
+
+    cd doc
+    gzip pycrc.1
+}
 
 package() {
-  cd "pycrc-${pkgver}"
+    cd "$pkgname-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 
-  mkdir -p "${pkgdir}${_sitedir}/pycrc"
-  cp -r pycrc/*.py "${pkgdir}${_sitedir}/pycrc"
-  chmod -R +r "${pkgdir}${_sitedir}/pycrc"
-
-  mkdir -p "${pkgdir}/usr/bin"
-  cp pycrc.py "${pkgdir}/usr/bin/pycrc"
-  chmod +x "${pkgdir}/usr/bin/pycrc"
-
-  mkdir -p "${pkgdir}/usr/share/man/man1"
-  install -m644 doc/pycrc.1 "${pkgdir}/usr/share/man/man1/"
-
-  mkdir -p "${pkgdir}/usr/share/licenses/pycrc/"
-  install -m644 AUTHORS COPYING "${pkgdir}/usr/share/licenses/pycrc/"
+    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
+    install -Dm644 doc/pycrc.1.gz "$pkgdir"/usr/share/man/man1/pycrc.1.gz
 }
