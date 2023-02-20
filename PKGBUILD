@@ -3,7 +3,7 @@
 # Contributor: David Stark <david@starkers.org>
 
 pkgname=saml2aws
-pkgver=2.36.2
+pkgver=2.36.3
 pkgrel=1
 pkgdesc='CLI tool which enables you to login and retrieve AWS temporary credentials using a SAML IDP'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ makedepends=('git' 'go')
 provides=("${pkgname}")
 conflicts=("${pkgname}-bin")
 source=("saml2aws_${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d9b7ec9bfe512526492244eab120e98890546287f7c931ffcd3f7b69912d02a4')
+sha256sums=('bb922fc773801de3d4865f9ac6707c3ff198dbfdebfa8ba3fec10ef40ad55c34')
 
 export CGO_CPPFLAGS="${CPPFLAGS}"
 export CGO_CFLAGS="${CFLAGS}"
