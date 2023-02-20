@@ -82,7 +82,8 @@ package_ocp-sdl2-git() {
 		 'ttf-unifont')
 	cd $_pkgbase
 	./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core cross_compiling=yes\
-                    --without-update-desktop-database\
+		    --without-sdl\
+		    --without-update-desktop-database\
                     --without-update-mime-database\
                     --with-unifontdir=/usr/share/fonts/Unifont\
                     --with-unifont-ttf=/usr/share/fonts/Unifont/Unifont.ttf\
