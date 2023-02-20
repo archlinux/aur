@@ -1,8 +1,9 @@
 pkgbase = theforceengine
 	pkgdesc = Modern "Jedi Engine" replacement supporting Dark Forces, Outlaws and the mods
 	pkgver = 1.09.100
-	pkgrel = 1
+	pkgrel = 2
 	url = https://theforceengine.github.io/
+	install = theforceengine.install
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
