@@ -1,7 +1,7 @@
 # Maintainer: iamawacko <iamawacko@protonmail.com>
 pkgname='synth'
 pkgver='0.6.9'
-pkgrel=1
+pkgrel=2
 pkgdesc='The Open Source Data Generator'
 url='https://getsynth.com/'
 arch=('any')
@@ -26,7 +26,7 @@ prepare() {
 build() {
 	cd "$pkgname-$pkgver"
 	export CARGO_TARGET_DIR=target
-	cargo build +nightly --frozen --release --bin synth
+	cargo +nightly build --frozen --release --bin synth
 }
 
 check() {
