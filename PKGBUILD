@@ -14,10 +14,10 @@ source=(${url}/xorg/font/cronyx-cyrillic/-/archive/master/cronyx-cyrillic-master
         ${url}/xorg/font/misc-cyrillic/-/archive/master/misc-cyrillic-master.tar.gz
         ${url}/xorg/font/screen-cyrillic/-/archive/master/screen-cyrillic-master.tar.gz
         ${url}/xorg/font/winitzki-cyrillic/-/archive/master/winitzki-cyrillic-master.tar.gz)
-md5sums=('5a799bab6b679de660740c70adac78d8'
-         'f34c5292f5e12ea4b045baf4c723a2bf'
-         '7ec6f2e510314b0ddbf6526997f7ac4b'
-         '0e4554730f898dd6dc0e05d1047c7840')
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
 
 build() {
   cd "${srcdir}"
