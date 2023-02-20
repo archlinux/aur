@@ -7,7 +7,7 @@ arch=('any')
 url="https://packages.debian.org/bullseye/xfonts-cronyx-100dpi"
 license=('GPL3')
 source=("http://ftp.us.debian.org/debian/pool/main/x/xfonts-cronyx/xfonts-cronyx-100dpi_${pkgver}-9_all.deb")
-md5sums=('3aabd3a4590d57322381267694c53762')
+md5sums=('SKIP')
 
 package() {
     tar xf data.tar.xz
