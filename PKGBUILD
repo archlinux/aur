@@ -1,4 +1,5 @@
 # Maintainer: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
+# Contributor: Ferdinand Bachmann <theferdi265@gmail.com>
 # Contributor: Jochen Schalanda <jochen+aur@schalanda.name>
 # Contributor: Charles Pigott <charlespigott@googlemail.com>
 # Contributor: André Klitzing <aklitzing@online.de>
@@ -6,7 +7,7 @@
 
 pkgname=devscripts
 pkgver=2.23.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Scripts to make the life of a Debian Package maintainer easier"
 arch=('i686' 'x86_64')
 url="https://tracker.debian.org/pkg/devscripts"
@@ -37,8 +38,8 @@ optdepends=(
     'perl-ipc-run: Required for uscan'
     'perl-lwp-protocol-https: Required for uscan'
 )
-provides=(checkbashism)
-conflicst=(checkbashism)
+provides=(checkbashisms)
+conflicts=(checkbashisms)
 options=('!makeflags')
 source=(
     "https://deb.debian.org/debian/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver}.tar.xz"
@@ -50,6 +51,9 @@ sha256sums=('54eb392b18818460e56c052e40602bc9a1ba33c5349a58017c57b1d312b3ed9a'
 prepare(){
     cd "$pkgname"
     patch -p1 -i "$srcdir/fixes.patch"
+
+    # Ensure the local folder is recognized as a package and used appropriately.
+    touch "$srcdir/devscripts/scripts/devscripts/__init__.py"
 }
 
 build() {
