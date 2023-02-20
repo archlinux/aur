@@ -3,8 +3,8 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=cosmic-epoch-git
-pkgver=r40.a29ba71
-pkgrel=2
+pkgver=r41.75cb3ab
+pkgrel=1
 pkgdesc="Rust, Iced based desktop desktop environment, GNOME inspired, by System76, Pop! OS."
 arch=('x86_64')
 url="https://github.com/pop-os/cosmic-epoch"
@@ -15,15 +15,14 @@ makedepends=('cargo' 'clang' 'desktop-file-utils' 'git' 'just' 'meson' 'mold')
 checkdepends=('appstream-glib')
 provides=('cosmic-epoch' 'cosmic-applets' 'cosmic-applibrary' 'cosmic-bg'
           'cosmic-comp' 'cosmic-launcher' 'cosmic-osd' 'cosmic-panel'
-          'cosmic-session' 'cosmic-settings-daemon' 'xdg-desktop-portal-cosmic'
-          'cosmic-settings')
+          'cosmic-session' 'cosmic-settings' 'cosmic-settings-daemon'
+          'xdg-desktop-portal-cosmic')
 conflicts=('cosmic-epoch' 'cosmic-applets' 'cosmic-applibrary' 'cosmic-bg'
            'cosmic-comp' 'cosmic-launcher' 'cosmic-osd' 'cosmic-panel'
-           'cosmic-session' 'cosmic-settings-daemon' 'xdg-desktop-portal-cosmic'
-           'cosmic-settings')
+           'cosmic-session' 'cosmic-settings' 'cosmic-settings-daemon'
+           'xdg-desktop-portal-cosmic')
 backup=('etc/cosmic-comp/config.ron')
 options=('!lto')
-_commit=efdd934e6219acbfccb60e6fc65a9a064a323471
 source=('git+https://github.com/pop-os/cosmic-epoch.git'
         'git+https://github.com/pop-os/cosmic-applets.git'
         'git+https://github.com/pop-os/cosmic-applibrary.git'
@@ -33,9 +32,9 @@ source=('git+https://github.com/pop-os/cosmic-epoch.git'
         'git+https://github.com/pop-os/cosmic-osd.git'
         'git+https://github.com/pop-os/cosmic-panel.git'
         'git+https://github.com/pop-os/cosmic-session.git'
+        'git+https://github.com/pop-os/cosmic-settings.git'
         'git+https://github.com/pop-os/cosmic-settings-daemon.git'
-        'git+https://github.com/pop-os/xdg-desktop-portal-cosmic.git'
-        "git+https://github.com/pop-os/cosmic-settings.git#commit=$_commit")
+        'git+https://github.com/pop-os/xdg-desktop-portal-cosmic.git')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -63,6 +62,7 @@ _submodules=(
   cosmic-osd
   cosmic-panel
   cosmic-session
+  cosmic-settings
   cosmic-settings-daemon
   xdg-desktop-portal-cosmic
 )
@@ -82,19 +82,17 @@ prepare() {
     popd
   done
 
+  pushd cosmic-settings
+
+  # Use mold linker instead of lld
+  sed -i 's/lld/mold/g' justfile
+  popd
+
   pushd xdg-desktop-portal-cosmic
 
   # libexec > lib
   sed -i 's|libexecdir = $(prefix)/libexec|libexecdir = $(libdir)|g' Makefile
-
   popd
-
-  cd "$srcdir/cosmic-settings"
-
-  # Use mold linker instead of lld
-  sed -i 's/lld/mold/g' justfile
-
-  just vendor
 }
 
 build() {
@@ -107,9 +105,6 @@ build() {
   # https://stackoverflow.com/questions/67511990/how-to-use-the-mold-linker-with-cargo
   RUSTFLAGS="-A warnings -C link-arg=-fuse-ld=mold"
   nice just sysext
-
-  cd "$srcdir/cosmic-settings"
-  nice just build-vendored
 }
 
 check() {
@@ -117,9 +112,11 @@ check() {
   appstream-util validate-relax --nonet cosmic-sysext/usr/share/metainfo/*.metainfo.xml || :
   desktop-file-validate cosmic-sysext/usr/share/applications/*.desktop || :
 
-  cd "$srcdir/cosmic-settings"
-  export RUSTUP_TOOLCHAIN=stable
-  nice just test
+#  export RUSTUP_TOOLCHAIN=stable
+#  for p in cosmic-applibrary cosmic-bg cosmic-settings do;
+#  pushd ${p}
+#  nice just test
+#  popd
 }
 
 package() {
@@ -129,7 +126,4 @@ package() {
   # Keybinding config
   # https://github.com/pop-os/cosmic-epoch/issues/71#issuecomment-1431670834
   install -Dm644 cosmic-comp/config.ron -t "$pkgdir/etc/cosmic-comp/"
-
-  cd "$srcdir/cosmic-settings"
-  just rootdir="$pkgdir" install
 }
