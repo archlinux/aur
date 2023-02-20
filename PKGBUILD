@@ -1,23 +1,24 @@
-# Maintainer: berocs <brandweineric at gmail dot com>
+# Maintainer: A.T.W.A. <arch.atwa@gmail.com>
+
 pkgname=python-simperium
-_pkgname=Simperium3
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
-pkgdesc="Python 3 client for the Simperium synchronization platform"
-arch=(any)
-url="https://github.com/swalladge/simperium-python3"
-license=("MIT")
+pkgdesc="Simperium client library for Python"
+arch=('any')
+url="https://git.sr.ht/~swalladge/python-simperium3"
+license=('MIT')
 depends=('python-requests')
-makedepends=('python' 'python-setuptools')
-source=("https://files.pythonhosted.org/packages/13/d8/a330c0b50fd4d25eb34ac7bd5a846e1f0f5e1b6d4d56552e0f94efe61a4b/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=("647022946dcfe17d074c543c564c924a760276e269074b04df8a90b99bf5e100")
+makedepends=('python-setuptools')
+source=("${pkgname}-${pkgver}.tar.gz::https://git.sr.ht/~swalladge/python-simperium3/archive/v${pkgver}.tar.gz")
+sha256sums=('f4088c97f6cbccfc46b35caf28c228769f2bb4504bb32eb20f722d24e195fa76')
 
 build() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "${pkgname}3-v${pkgver}"
     python setup.py build
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+    cd "${pkgname}3-v${pkgver}"
+    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    install -D -m 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
