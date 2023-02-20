@@ -1,7 +1,7 @@
 # Maintainer: Duncan Russell <duncan at anomalocaris dot xyz>
 
 pkgname=handlr-regex
-pkgver=0.7.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Fork of handlr with regex support"
 arch=('x86_64')
@@ -12,34 +12,35 @@ makedepends=('cargo')
 provides=(handlr)
 conflicts=(handlr)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('888cf8d2371ad80a24f93c6d27e299054d3778d8aba0c81f9b82cfb49915d8a5654539ee518104e9a9f44bac23e40fe34758aa5d76d5c7fdb5d9fa2492df11d5')
+b2sums=('1e3dfe72bbc05b934a4266b387a63304a2bb4e93936430fe4eb5d227755b0e075909a99980f49d9240460db66db7a9c5db6ee62290ca6597d5bad91ae368bda8')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	cd "${pkgname}-${pkgver}"
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
+	cd "${pkgname}-${pkgver}"
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release --all-features
 }
 
 check() {
-  cd "${pkgname}-${pkgver}"
-  export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen --all-features
+	cd "${pkgname}-${pkgver}"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo test --frozen --all-features
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  install -Dm 755 "target/release/handlr" -t "${pkgdir}/usr/bin"
-  install -Dm 755 "completions/handlr" -t "${pkgdir}/usr/share/bash-completion/completions"
-  install -Dm 755 "completions/handlr.fish" -t "${pkgdir}/usr/share/fish/vendor_completions.d"
-  install -Dm 755 "completions/_handlr" -t "${pkgdir}/usr/share/zsh/site-functions"
-  install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	cd "$pkgname-$pkgver"
+	install -Dm 755 "target/release/handlr" -t "${pkgdir}/usr/bin"
+	install -Dm 755 "assets/completions/handlr" -t "${pkgdir}/usr/share/bash-completion/completions"
+	install -Dm 755 "assets/completions/handlr.fish" -t "${pkgdir}/usr/share/fish/vendor_completions.d"
+	install -Dm 755 "assets/completions/_handlr" -t "${pkgdir}/usr/share/zsh/site-functions"
+	install -Dm 644 assets/manual/man1/* -t "${pkgdir}/usr/share/man/man1"
+	install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+	install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
