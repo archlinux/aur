@@ -1,0 +1,11 @@
+post_install() {
+  printf '\n'
+  printf '%s\n' 'You can enter the desired voltage IDs in /etc/default/phc-intel.'
+  printf '%s\n' 'The `phc-intel` command should apply them.'
+  printf '%s\n' 'Booting with the `nophc` kernel parameter skips setting of VIDs by that script; use it in case of failure.'
+  printf '\n'
+}
+
+post_upgrade() {
+  post_install "$@"
+}
