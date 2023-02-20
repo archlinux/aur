@@ -2,7 +2,7 @@
 
 pkgname=orbiton
 pkgver=2.60.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Text editor and minimalistic IDE'
 arch=(x86_64)
 url='https://github.com/xyproto/orbiton'
@@ -10,6 +10,7 @@ license=(BSD)
 makedepends=(git go vte3)
 conflicts=(o)
 replaces=(o)
+provides=(o)
 source=("git+$url#commit=fee17303c2588cd00e83dad3359b65fd47eb0e91") # tag: v2.60.0
 optdepends=('asciidoctor: for writing man pages'
             'agda: for compiling Agda'

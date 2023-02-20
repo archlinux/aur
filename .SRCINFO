@@ -1,7 +1,7 @@
 pkgbase = orbiton
 	pkgdesc = Text editor and minimalistic IDE
 	pkgver = 2.60.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xyproto/orbiton
 	arch = x86_64
 	license = BSD
@@ -50,6 +50,7 @@ pkgbase = orbiton
 	optdepends = vte3: for the ko GUI frontend
 	optdepends = yasm: for compiling Assembly
 	optdepends = zig: for compiling and formatting Zig
+	provides = o
 	conflicts = o
 	replaces = o
 	source = git+https://github.com/xyproto/orbiton#commit=fee17303c2588cd00e83dad3359b65fd47eb0e91
