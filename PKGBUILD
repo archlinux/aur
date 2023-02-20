@@ -14,7 +14,7 @@ groups=(
 )
 pkgver=0.3.2.rev43.r51.20221212.9e5391b
 _phcver="$(awk -F. '{print $1"."$2"."$3}' <<<"${pkgver}")"
-pkgrel=1
+pkgrel=3
 pkgdesc="Frequency driver for Intel CPUs with undervolting feature. DKMS-based kernel module, stable branch."
 url="https://gitlab.com/linux-phc/phc-intel"
 arch=('any')
@@ -56,6 +56,9 @@ prepare() {
 
   ## Switch to stable branch:
   make canny
+
+  ## Generate GIT log
+  git log > "${srcdir}/git.log"
 }
 
 pkgver() {
@@ -88,12 +91,13 @@ package() {
   umask 022
   install -dvm755                        "${pkgdir}/usr/src/phc-intel-${pkgver}"
   install -Dvm644 "${srcdir}/dkms.conf"  "${pkgdir}/usr/src/phc-intel-${pkgver}/dkms.conf"
-  
+  # install -Dvm644 "dkms.conf"            "${pkgdir}/usr/src/phc-intel-${pkgver}/dkms.conf"
+
   install -Dvm644 "phc-intel.modprobe"   "${pkgdir}/usr/lib/modprobe.d/phc-intel.conf"
   cp -Rv inc Makefile                    "${pkgdir}/usr/src/phc-intel-${pkgver}"/
 
-  for _docfile in changelog README.1st; do
-    install -Dvm644 "${_docfile}"        "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
+  for _docfile in changelog README.1st "${srcdir}/git.log"; do
+    install -Dvm644 "${_docfile}"        "${pkgdir}/usr/share/doc/${_pkgname}/$(basename "${_docfile}")"
   done
   install -dvm755                        "${pkgdir}/usr/share/doc/${_pkgname}/docs"
   cp -rv docs/*                          "${pkgdir}/usr/share/doc/${_pkgname}/docs"/
