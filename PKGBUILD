@@ -3,7 +3,7 @@
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 pkgname=suricata
 pkgver=6.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A high performance Network IDS, IPS and Network Security Monitoring engine"
 arch=('i686' 'x86_64')
 url="https://suricata.io/"
@@ -11,7 +11,7 @@ license=('GPL2')
 makedepends=('rust' 'clang' 'cbindgen')
 depends=('hyperscan' 'jansson' 'libcap-ng' 'libmagic.so' 'libmaxminddb' 'libnet' 'libpcap' 'libyaml' 'lua' 'pcre' 'python-yaml')
 optdepends=('geoipupdate: GeoIP2 databases')
-conflicts=('suricata-nfqueue' 'rustup')
+conflicts=('suricata-nfqueue')
 install=suricata.install
 backup=('etc/suricata/suricata.yaml'
         'etc/suricata/local.yaml'

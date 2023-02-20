@@ -1,7 +1,7 @@
 pkgbase = suricata
 	pkgdesc = A high performance Network IDS, IPS and Network Security Monitoring engine
 	pkgver = 6.0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://suricata.io/
 	install = suricata.install
 	arch = i686
@@ -23,7 +23,6 @@ pkgbase = suricata
 	depends = python-yaml
 	optdepends = geoipupdate: GeoIP2 databases
 	conflicts = suricata-nfqueue
-	conflicts = rustup
 	backup = etc/suricata/suricata.yaml
 	backup = etc/suricata/local.yaml
 	backup = etc/suricata/classification.config
