@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=circadian
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Linux auto-suspend/wake power management daemon"
 arch=('x86_64' 'aarch64')
@@ -15,9 +15,10 @@ makedepends=('cargo')
 optdepends=('xssstate: for monitoring x11 input'
     'xprintidle: for monitoring x11 input'
     'procps: for monitoring tty input, uptime or processes'
-    'net-tools: for monitoring nfs, smb or ssh')
+    'net-tools: for monitoring nfs, smb or ssh'
+    'pulseaudio: audio detection support via pacmd')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('ffee3d713b27f39f52a9deb6c1e5c86ff376211fde5efbc54de68aa7e5395010e7eeab4eab6d167665e3c4c1a73fe80570282bfba8a4485189c698c0c119b8e9')
+b2sums=('c80c523c4438d6dddb1441deecf98c54eb401f7f764bb47fda18490e4a2dcb3da98b5268025950dd78caab2d9ac152ec73cb030a25c77168818871017df8171c')
 backup=('etc/circadian.conf')
 
 prepare() {
