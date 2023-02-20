@@ -1,4 +1,5 @@
 # Maintainer: Leonid Kuzin <dg.inc.lcf@gmail.com>
+# Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=tailwindcss
 pkgver=3.2.7
