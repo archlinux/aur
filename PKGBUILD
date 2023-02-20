@@ -26,5 +26,5 @@ package () {
 	install -D -t "$pkgdir/usr/share/bash_completions" "$_pkgname/clyde-completion.bash"
 
 	# Uncomment if you use Zsh
-	# install -D -t "$pkgdir/usr/local/share/zsh/site-functions" "$_pkgname/clyde-completion.zsh"  
+	# install -D -t "$pkgdir/usr/local/share/zsh/site-functions" "$_pkgname/_clyde"  
 }
