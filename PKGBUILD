@@ -1,8 +1,8 @@
 # Maintainer: coffebar i8ehkvien@mozmail.com
 
 pkgname=waybar-module-pacman-updates-git
-pkgver=0.1
-pkgrel=4
+pkgver=0.2
+pkgrel=5
 pkgdesc='Waybar module for Arch to show system updates available'
 arch=('x86_64')
 url="https://github.com/coffebar/waybar-module-pacman-updates"
