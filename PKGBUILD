@@ -11,9 +11,9 @@ makedepends=('fonttosfnt-git')
 conflicts=('otb-unifont')
 source=("https://ftp.gnu.org/gnu/unifont/unifont-${pkgver}/unifont-${pkgver}.bdf.gz"{,.sig} "https://unifoundry.com/LICENSE.txt")
 validpgpkeys=('95D2E9AB8740D8046387FD151A09227B1F435A33') # Paul Hardy
-md5sums=('2907ccbd46da1d1053bb6effeede024f'
+md5sums=('SKIP'
          'SKIP'
-         '4cba5a7530b5f046a1305d520cde8c2b')
+         'SKIP')
 
 build() {
 	cd "${srcdir}"
