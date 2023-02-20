@@ -9,7 +9,7 @@ pkgbase = graph-editor-linux
 	makedepends = make
 	makedepends = gradle
 	makedepends = autoconf
-	makedepends = java>=8
+	makedepends = java
 	source = git+https://github.com/Student-Team-Projects/Graph-Editor-Linux#branch=main
 	md5sums = SKIP
 
