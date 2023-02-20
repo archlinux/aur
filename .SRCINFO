@@ -1,0 +1,15 @@
+pkgbase = zix-git
+	pkgdesc = A lightweight C library of portability wrappers and data structures
+	pkgver = r473.262d4a1
+	pkgrel = 1
+	url = https://github.com/drobilla/zix
+	arch = any
+	license = ISC
+	makedepends = git
+	makedepends = meson
+	provides = zix
+	conflicts = zix
+	source = git+https://github.com/drobilla/zix
+	md5sums = SKIP
+
+pkgname = zix-git
