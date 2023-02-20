@@ -1,6 +1,6 @@
 pkgbase = sing-geoip-git
 	pkgdesc = sing-geoip database
-	pkgver = 20220912
+	pkgver = 20230212
 	pkgrel = 1
 	url = https://github.com/SagerNet/sing-geoip
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = sing-geoip-git
 	optdepends = sing-box: The universal proxy platform
 	provides = sing-geoip
 	conflicts = sing-geoip
-	source = src.20220912.tar.gz::https://codeload.github.com/SagerNet/sing-geoip/tar.gz/refs/heads/main
+	source = src.20230212.tar.gz::https://codeload.github.com/SagerNet/sing-geoip/tar.gz/refs/heads/main
 	sha256sums = SKIP
 
 pkgname = sing-geoip-git

@@ -2,7 +2,7 @@
 
 pkgname=sing-geoip-git
 _pkgname=sing-geoip
-pkgver=20220916160215
+pkgver=20230212
 pkgrel=1
 
 pkgdesc='sing-geoip database'
@@ -28,7 +28,7 @@ pkgver() {
 _builddir="${_pkgname}-${_branch}"
 build () {
   cd "$_builddir"
-  NO_SKIP=true go run -v .
+  NO_SKIP=true ASSUME_NO_MOVING_GC_UNSAFE_RISK_IT_WITH=go1.20 go run -v .
 }
 
 package() {
