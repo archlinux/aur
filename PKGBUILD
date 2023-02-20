@@ -3,7 +3,7 @@
 pkgname=fluent-kde-theme-git
 _themeName=Fluent
 _gitname="$_themeName-kde"
-pkgver=r90.d14b688
+pkgver=r91.d7576a7
 pkgrel=1
 pkgdesc="Fluent design theme for kde plasma"
 arch=('any')
