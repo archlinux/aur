@@ -3,7 +3,7 @@
 
 _pkgbase=ocp
 pkgname=('ocp-git' 'ocp-sdl2-git')
-pkgver=0.2.102.r27.7fcbda1
+pkgver=0.2.102.r40.3e1a320
 pkgrel=1
 pkgdesc="Open Cubic Player (GIT Version)"
 arch=('i686' 'x86_64')
@@ -28,8 +28,7 @@ makedepends=('alsa-lib'
 	     'libmad'
 	     'libjpeg-turbo'
 	     'libpng'
-	     'libvorbis'
-	     'ttf-unifont')
+	     'libvorbis')
 
 source=(${_pkgbase}::git+https://github.com/mywave82/opencubicplayer.git)
 sha256sums=('SKIP')
@@ -52,7 +51,7 @@ prepare() {
 
 build() {
   	cd $_pkgbase	
-	./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core\
+	./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core cross_compiling=yes\
 	    	    --without-update-desktop-database\
 		    --without-update-mime-database\
 		    --with-unifontdir=/usr/share/fonts/Unifont\
@@ -63,8 +62,9 @@ build() {
 }
 
 package_ocp-sdl2-git() {
-	provides=(${_pkgbase}-sdl2=${pkgver})
-	conflicts=('ocp' 'ocp-curses')
+	provides=(${_pkgbase}=${pkgver}
+		  ${_pkgbase}-sdl2=${pkgver})
+	conflicts=('ocp' 'ocp-sdl2' 'ocp-curses')
 	install=${_pkgbase}.install	
 	depends=('alsa-lib'
 		 'bzip2'
@@ -81,7 +81,7 @@ package_ocp-sdl2-git() {
 	 	 'libpng'
 		 'ttf-unifont')
 	cd $_pkgbase
-	./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core\
+	./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core cross_compiling=yes\
                     --without-update-desktop-database\
                     --without-update-mime-database\
                     --with-unifontdir=/usr/share/fonts/Unifont\
@@ -104,7 +104,7 @@ package_ocp-git() {
 		 'libancient'
 		 'libdiscid')
 	cd $_pkgbase
-	./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core\
+	./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core cross_compiling=yes\
 		    --without-x11 --without-sdl2\
 		    --without-update-desktop-database\
                     --without-update-mime-database
