@@ -1,28 +1,26 @@
 # Maintainer: Rihards Skuja <rhssk at posteo dot eu>
 # Contributor: Andrejs Mivreņiks <gim at fastmail dot fm>
 # Contributor: ArmandasJ <armandas@gmail.com>
+
 pkgname=aspell-lv
-pkgver=0.5.5
-pkgrel=4
+pkgver=0.9.3
+pkgrel=1
 pkgdesc='Latvian aspell dictionary'
 arch=('any')
 depends=('aspell')
-url='https://ftp.gnu.org/gnu/aspell/dict/0index.html'
-source=("https://ftp.gnu.org/gnu/aspell/dict/lv/aspell6-lv-$pkgver-1.tar.bz2"
-        "https://ftp.gnu.org/gnu/aspell/dict/lv/aspell6-lv-$pkgver-1.tar.bz2.sig")
+url='http://dict.dv.lv/download.php?prj=lv'
+source=("http://dict.dv.lv/download/aspell6-lv-$pkgver.tar.bz2")
 license=('GPL2')
-sha256sums=('3c30e206ea562b2e759fb7467680e1a01d5deec5edbd66653c83184550d1fb8a'
-            'SKIP')
-validpgpkeys=('31A768B0808E4BA619B48F81B6D9D0CC38B327D7')
+sha256sums=('f14cdaf36a676e966cfe4ba9071c2b14c06d66153763eae13dc0e53838f74097')
 
 build() {
-  cd "$srcdir/aspell6-lv-$pkgver-1"
+  cd "$srcdir/aspell6-lv-$pkgver"
   ./configure
   make
 }
 
 package() {
-  cd "$srcdir/aspell6-lv-$pkgver-1"
+  cd "$srcdir/aspell6-lv-$pkgver"
   make DESTDIR="$pkgdir" install
   install -Dm655 COPYING "$pkgdir/usr/share/licenses/custom/$pkgname/COPYING"
 }

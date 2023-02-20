@@ -1,16 +1,12 @@
 pkgbase = aspell-lv
 	pkgdesc = Latvian aspell dictionary
-	pkgver = 0.5.5
-	pkgrel = 4
-	url = https://ftp.gnu.org/gnu/aspell/dict/0index.html
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = http://dict.dv.lv/download.php?prj=lv
 	arch = any
 	license = GPL2
 	depends = aspell
-	source = https://ftp.gnu.org/gnu/aspell/dict/lv/aspell6-lv-0.5.5-1.tar.bz2
-	source = https://ftp.gnu.org/gnu/aspell/dict/lv/aspell6-lv-0.5.5-1.tar.bz2.sig
-	validpgpkeys = 31A768B0808E4BA619B48F81B6D9D0CC38B327D7
-	sha256sums = 3c30e206ea562b2e759fb7467680e1a01d5deec5edbd66653c83184550d1fb8a
-	sha256sums = SKIP
+	source = http://dict.dv.lv/download/aspell6-lv-0.9.3.tar.bz2
+	sha256sums = f14cdaf36a676e966cfe4ba9071c2b14c06d66153763eae13dc0e53838f74097
 
 pkgname = aspell-lv
-
