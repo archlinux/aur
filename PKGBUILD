@@ -16,7 +16,6 @@ sha256sums=(SKIP)
 
 prepare() {
   cargo fetch \
-    --locked \
     --manifest-path dovi_tool/dolby_vision/Cargo.toml
 }
 
