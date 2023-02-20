@@ -1,0 +1,17 @@
+pkgbase = python-pathpy2
+	pkgdesc = An OpenSource python package for the analysis and visualisation of time series data on complex networks with higher- and multi-order graphical models.
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://www.pathpy.net
+	arch = any
+	license = AGPL
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.5
+	depends = python-numpy
+	depends = python-scipy
+	noextract = pathpy2-2.2.0-py2.py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py2.py3/p/pathpy2/pathpy2-2.2.0-py2.py3-none-any.whl
+	sha256sums = 76a749426af0952b8f16cc80dccfef16f0553490b13f1a649069081508ce5ddf
+
+pkgname = python-pathpy2
