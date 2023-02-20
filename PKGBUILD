@@ -1,4 +1,5 @@
 # Maintainer: A.T.W.A. <arch.atwa@gmail.com>
+# Contributor: berocs <brandweineric at gmail dot com>
 
 pkgname=python-simperium
 pkgver=0.1.5
