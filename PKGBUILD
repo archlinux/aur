@@ -2,7 +2,7 @@
 
 pkgbase=otf-monocraft
 pkgname=(otf-monocraft ttf-monocraft)
-pkgver=2.4
+pkgver=2.5
 pkgrel=1
 pkgdesc="A programming font based on the typeface used in Minecraft"
 arch=(any)
@@ -10,7 +10,7 @@ url="https://github.com/IdreesInc/Monocraft"
 license=("custom:OFL")
 makedepends=("fontforge")
 source=("Monocraft-$pkgver.tar.gz::https://github.com/IdreesInc/Monocraft/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a05898e1e27470ae5f0d552ea6661838872e5628de2b5ba56d3001560466766e')
+sha256sums=('9528d2b823a4fbcf439b502a2bbd67ec911f3f1d7b830eaca15d8f71929eb620')
 
 
 build() {
