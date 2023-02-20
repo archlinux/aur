@@ -1,7 +1,7 @@
 pkgbase = buildstream
 	pkgdesc = A powerful and flexible software integration toolset
-	pkgver = 2.0.0
-	pkgrel = 3
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = https://buildstream.build
 	arch = x86_64
 	license = Apache
@@ -21,6 +21,7 @@ pkgbase = buildstream
 	depends = python-psutil
 	depends = python-pyroaring
 	depends = python-ruamel-yaml
+	depends = python-ruamel.yaml.clib
 	depends = python-setuptools
 	depends = python-ujson
 	depends = bzip2
@@ -31,7 +32,7 @@ pkgbase = buildstream
 	optdepends = buildstream-plugins: Official BuildStream plugins like “git”
 	optdepends = buildstream-plugins-container: Official BuildStream plugin for Docker images
 	optdepends = buildstream-plugins-experimental: Official experimental BuildStream plugins
-	source = git+https://github.com/apache/buildstream.git#tag=2.0.0&commit=f27bc3bed2bdbb3dfd72fdbfa59a7607d74123a7
+	source = git+https://github.com/apache/buildstream.git#tag=2.0.1&commit=23c432e81c0e5fb1850637b583808df99e5eed5b
 	sha256sums = SKIP
 
 pkgname = buildstream
