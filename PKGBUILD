@@ -11,8 +11,9 @@ _gitproject="${_pkgbase}"
 pkgbase="${_pkgbase}-git"
 pkgname=("golang-${_gitservice}-${_gitauthor}-${_pkgbase}-git" "lib-${_pkgbase}-git")
 pkgver=1.3.4.r163.20230218.46e88e3
-pkgrel=6
-pkgdesc="An advanced HTTP library based on requests and tls-client."
+_releasever="$(awk -F. '{print $1"."$2"."$3}' <<<"${pkgver}")"
+pkgrel=8
+pkgdesc="Go module and shared library providing a TLS Client is built upon https://github.com/Carcraftz/fhttp and https://github.com/Carcraftz/utls."
 arch=(
   'aarch64'
   'amd64'
@@ -32,11 +33,13 @@ makedepends=(
 # )
 source=(
   "${_pkgbase}::git+${url}.git"
+  "${_pkgbase}.pc.in"
   'license-dontcare.txt'
 )
 sha256sums=(
-  'SKIP'
-  '8b45a1a51ac8989701a6119ef5ce0aa081dc4edd88132cf82f29d741a423a8f9'
+  'SKIP'                                                             # main source: git+${url}.git
+  '082b1fb28aa31320960d5f523dc2419f09958602577ed3f5184f5bb55896a2bc' # ${_pkgbase}.pc.in
+  '8b45a1a51ac8989701a6119ef5ce0aa081dc4edd88132cf82f29d741a423a8f9' # license-dontcare.txt
 )
 
 pkgver() {
@@ -57,8 +60,8 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgbase}"
-  #export GOPATH="${srcdir}/go"
-  export GOPATH="${srcdir}/go:/usr/share/gocode:/usr/share/gocode/src"
+  export GOPATH="${srcdir}/go"
+  # export GOPATH="${srcdir}/go:/usr/share/gocode:/usr/share/gocode/src"
 
   git log > "${srcdir}/git.log"
 
@@ -75,8 +78,10 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgbase}"
-  #export GOPATH="${srcdir}/go"
-  export GOPATH="${srcdir}/go:/usr/share/gocode:/usr/share/gocode/src"
+  export GOPATH="${srcdir}/go"
+  # export GOPATH="${srcdir}/go:/usr/share/gocode:/usr/share/gocode/src"
+
+  sed -E -e "s|%%LIBVER%%|${_releasever}|g" "${srcdir}/${_pkgbase}.pc.in" > "${srcdir}/${_pkgbase}.pc"
 
   # go build -x -v -o build ./... # This would only build examples and ??
 
@@ -97,18 +102,11 @@ build() {
 # }
 
 package_golang-github-bogdanfinn-tls-client-git() {
-  pkgdesc="An advanced HTTP library based on requests and tls-client (Go module)."
+  pkgdesc="Go module providing a TLS Client is built upon https://github.com/Carcraftz/fhttp and https://github.com/Carcraftz/utls."
   arch=(
     'any'
   )
-  depends=(
-    'golang-golang-x-crypto'
-    'golang-golang-x-net'
-    'golang-golang-x-sys'
-    'golang-golang-x-term'
-    'golang-golang-x-text'
-    'golang-golang-x-tools'
-  )
+  depends=()
   optdepends=(
     'bash: For build scripts.'
     'go: To compile software using this module, and for examples.'
@@ -144,7 +142,7 @@ package_golang-github-bogdanfinn-tls-client-git() {
 }
 
 package_lib-tls-client-git() {
-  pkgdesc="An advanced HTTP library based on requests and tls-client (shared library and include file)."
+  pkgdesc="Shared library providing a TLS Client is built upon https://github.com/Carcraftz/fhttp and https://github.com/Carcraftz/utls."
   arch=(
     'aarch64'
     'amd64'
@@ -152,6 +150,13 @@ package_lib-tls-client-git() {
   )
   depends=(
     'glibc'
+    ### Even if the below mentioned `golang-` packages are installed and `$GOPATH` contains `/usr/share/gocode` and `/usr/share/gocode/src`, they are beeing downloaded nevertheless.
+    # 'golang-golang-x-crypto'
+    # 'golang-golang-x-net'
+    # 'golang-golang-x-sys'
+    # 'golang-golang-x-term'
+    # 'golang-golang-x-text'
+    # 'golang-golang-x-tools'
   )
   optdepends=(
     'nodejs: For some examples.'
@@ -168,8 +173,10 @@ package_lib-tls-client-git() {
 
   cd "${srcdir}/${_pkgbase}"
 
-  install -D -v -m644 "cffi_dist/tls-client.so" "${pkgdir}/usr/lib/tls-client.so"
-  install -D -v -m644 "cffi_dist/tls-client.h" "${pkgdir}/usr/include/tls-client.h"
+  install -D -v -m644 "cffi_dist/tls-client.so"     "${pkgdir}/usr/lib/tls-client.so"
+  install -D -v -m644 "cffi_dist/tls-client.h"      "${pkgdir}/usr/include/tls-client.h"
+
+  install -D -v -m644 "${srcdir}/${_pkgbase}.pc"    "${pkgdir}/usr/share/pkgconfig/${_pkgbase}.pc"
 
   for _docfile in "Readme.md"; do
     install -D -v -m644 "${_docfile}"               "${pkgdir}/usr/share/doc/lib-tls-client/${_docfile}"

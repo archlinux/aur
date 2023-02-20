@@ -1,0 +1,9 @@
+prefix=/usr
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: tls-client
+Description: Shared library providing a TLS Client is built upon https://github.com/Carcraftz/fhttp and https://github.com/Carcraftz/utls.
+Version: %%LIBVER%%
+Cflags: -I${includedir}
+Libs: -L${libdir} -ltls-client
