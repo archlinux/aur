@@ -1,7 +1,7 @@
 # Maintainer: Pete Alexandrou <pete@ozmartians.com>
 pkgname=openvpn-xor-git
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenVPN with XOR patch to bypass DPI monitoring in places like China (also known as OpenVPN stealth/scramble mode)'
 arch=('x86_64')
 url='https://github.com/openvpn/openvpn'
@@ -23,7 +23,7 @@ source=("https://github.com/${pkgname%-xor-git}/${pkgname%-xor-git}/archive/v${p
 sha256sums=('31a22d9746b6509c70e4de1be983917425730a4093f43dfe86ff57dc36824a69'
             'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
             '6e1d0147076ce0221e4e22e0a10d70c17eaa3740fe21461aff931c107416564f'
-            '1f3455ed9dbfa7e98799e5e5c7ca1cdeee0745f2759db8eb8111142a9eff73ac')
+            '3f69857f9b2c27c3a391a4592b6a264d4cffe4d35166f1fcdfddac632f2b7970')
 prepare() {
     cd "${pkgname%-xor-git}-${pkgver}"/
 
@@ -39,7 +39,7 @@ prepare() {
     git apply "${startdir}/10-route-gateway-dhcp.diff"
 
     # apply XOR watermark patch to "brand" binary with XOR signature in version header
-    # git apply "${startdir}/openvpn-xor-watermark.diff"
+    git apply "${startdir}/openvpn-xor-watermark.diff"
 }
 
 build() {

@@ -1,7 +1,7 @@
 pkgbase = openvpn-xor-git
 	pkgdesc = OpenVPN with XOR patch to bypass DPI monitoring in places like China (also known as OpenVPN stealth/scramble mode)
 	pkgver = 2.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openvpn/openvpn
 	arch = x86_64
 	license = custom
@@ -44,6 +44,6 @@ pkgbase = openvpn-xor-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 6e1d0147076ce0221e4e22e0a10d70c17eaa3740fe21461aff931c107416564f
-	sha256sums = 1f3455ed9dbfa7e98799e5e5c7ca1cdeee0745f2759db8eb8111142a9eff73ac
+	sha256sums = 3f69857f9b2c27c3a391a4592b6a264d4cffe4d35166f1fcdfddac632f2b7970
 
 pkgname = openvpn-xor-git

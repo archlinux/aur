@@ -1,8 +1,10 @@
 --- a/src/openvpn/options.c
 +++ b/src/openvpn/options.c
-@@ -109,3 +109,4 @@ const char title_string[] =
+@@ -107,6 +107,7 @@ const char title_string[] =
+ #endif
+ #endif
      " [AEAD]"
 +    " [XOR]"
-     " built on " __DATE__
- ;
-
+ #ifdef ENABLE_DCO
+     " [DCO]"
+ #endif
