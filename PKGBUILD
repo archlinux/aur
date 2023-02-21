@@ -5,7 +5,7 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}-legacyrenderer"
-pkgver="0.21.0beta"
+pkgver="0.22.0beta"
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (Legacy Renderer)"
 arch=(x86_64 aarch64)
@@ -51,7 +51,7 @@ makedepends=(
 	wayland-protocols
 	xorgproto)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hyprwm/Hyprland/releases/download/v${pkgver}/source-v${pkgver}.tar.gz")
-sha256sums=('fba4902f39fe549ecf829c23b1c086cbe02cd068c6f65c2571c357226fa915fd')
+sha256sums=('4f8d20a12080926761913a2c7de136f77b718949667f4f2a4974ad34708fe524')
 conflicts=("${_pkgname}")
 provides=(hyprland)
 options=(!makeflags !buildflags !strip)
