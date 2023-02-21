@@ -1,0 +1,22 @@
+pkgbase = bilibili-electron
+	pkgdesc = A Linux bilibili GUI. Using existing electron
+	pkgver = 1.9.1
+	pkgrel = 3
+	url = https://github.com/msojocs/bilibili-linux
+	install = bilibili-electron.install
+	arch = any
+	license = MIT
+	makedepends = asar
+	depends = electron
+	depends = ffmpeg
+	optdepends = 
+	provides = bilibili-electron
+	conflicts = bilibili-bin
+	source = bilibili-electron.desktop
+	source = bilibili-electron.svg
+	source = bilibili-electron
+	sha256sums = 772934b365c0dffa836d463fa8600fceb2a2b789cb8eb9d3d51ee6fddad1d21c
+	sha256sums = 256fb103121107cf757ecd89caecffb792fd448ae139a1f18d017171ac8a3a06
+	sha256sums = 5bd642f412a7b182fe5c371a0382f5e232df30048735a60fec935df159ff8933
+
+pkgname = bilibili-electron

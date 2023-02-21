@@ -1,0 +1,3 @@
+#!/bin/sh
+cd /usr/share/bilibili-electron
+electron app.asar "$@" --no-sandbox

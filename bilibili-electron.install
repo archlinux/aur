@@ -1,0 +1,7 @@
+post_install() {
+    echo 'Thanks for installing bilibili-electron.'
+    echo 'Hope there's no more different electrons.'
+}
+post_upgrade(){
+    post_install
+}

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=pkgver
+Name=bilibili
+Comment=Linux version of bilibili
+Exec=bilibili-electron
+Icon=bilibili-electron
+Terminal=false
+Keywords=bilibili;bilibili-electron
+Categories=Utility;Video
