@@ -1,8 +1,9 @@
-# Maintainer: Bennett Piater <bennett at piater dot name>
+# Maintainer: Frank Ebel <aur at ebel dot page>
+# Contributor: Bennett Piater <bennett at piater dot name>
 
 _npmname=hueadm
 pkgname=nodejs-$_npmname # All lowercase
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="CLI to control Philips HUE lights"
 arch=(any)
@@ -13,7 +14,7 @@ depends=('nodejs' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-md5sums=('e24218e23cd1456f6314f0b21147732d')
+md5sums=('6bbc53650b4c2f33eeab536a440c75fd')
 
 package() {
   cd "$srcdir"
