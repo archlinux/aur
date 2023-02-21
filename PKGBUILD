@@ -16,7 +16,7 @@ depends=(
     'libxss'
 )
 optdepends=()
-provides=(xushengfeng)
+provides=(ashishBharadwaj)
 conflicts=('flawesome-appimage')
 install=
 source=(
