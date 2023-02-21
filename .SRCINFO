@@ -1,11 +1,15 @@
 pkgbase = jellex-git
 	pkgdesc = TUI to filter JSON data with Python syntax
-	pkgver = 0.2.3.r0.gc2bb101
-	pkgrel = 2
+	pkgver = 0.5.6.r1.gac8bf3d
+	pkgrel = 1
 	url = https://github.com/kellyjonbrazil/jellex
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = jello
 	depends = python-pygments
 	depends = python-prompt_toolkit
