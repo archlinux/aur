@@ -3,8 +3,7 @@ pkgname=zettlr-appimage
 _pkgname=Zettlr
 pkgver=2.3.0
 pkgrel=1
-pkgdesc="csBooks is the best epub reader, pdf reader, mobi book reader and djvu reader for windows, linux and mac os.
-        It solves your problems if you need ebook manager, library manager on linux, best comic book reader, cbz file reader, cbr file reader etc."
+pkgdesc="A Markdown Editor for the 21st century."
 arch=('x86_64')
 url="https://www.zettlr.com"
 _githuburl="https://github.com/Zettlr/Zettlr"
