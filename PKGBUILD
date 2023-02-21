@@ -3,7 +3,7 @@
 pkgname=d-stdx-allocator
 _pkgname=stdx-allocator
 pkgver=3.0.2
-pkgrel=20
+pkgrel=21
 pkgdesc='Extracted std.experimental.allocator'
 arch=('x86_64')
 url='https://github.com/dlang-community/stdx-allocator'
@@ -26,7 +26,7 @@ build() {
   cd $_pkgname-$pkgver/build
 
   export DC=ldc
-  export LDFLAGS="$(echo -ne $LDFLAGS | sed -e 's/-flto=auto/--flto=full/')"
+  export LDFLAGS="$(echo -ne $LDFLAGS | sed -e 's/-flto=auto/-flto=full/')"
 
   arch-meson ..
 
