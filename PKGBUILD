@@ -2,7 +2,7 @@
 
 projname=flynt
 pkgname=python-$projname
-pkgver=0.76
+pkgver=0.77
 pkgrel=1
 epoch=
 pkgdesc="automatically convert old string literal formatting to f-strings"
@@ -11,7 +11,7 @@ url="https://github.com/ikamensh/flynt"
 license=("MIT")
 groups=()
 depends=("python" "python-astor")
-makedepends=("python-setuptools")
+makedepends=("python-build" "python-installer")
 checkdepends=()
 optdepends=()
 provides=()
@@ -24,15 +24,15 @@ changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ikamensh/flynt/archive/refs/tags/$pkgver.tar.gz")
 noextract=()
 validpgpkeys=()
-b2sums=("e1f43f75435350907e783cd5ee2749d5bf966c741883ab2093ea8edcebe8d95f9169a9655c9b5d1a3c865d8531522b5c9f5c2f4637afebb847bbda1321982d05")
+b2sums=("a02016bf370916744e9666fac2628137a4dfdabeb4843fc717a945ffad3a80762d28cdd791b4da0b9a79577e395cfcd8ae6e6c8f7d66ef5b5bc7ce1499c70a65")
 
 build() {
   cd "${srcdir}/${projname}-${pkgver}"
-  python3 setup.py build
+  python3 -m build
 }
 
 package() {
   cd "${srcdir}/${projname}-${pkgver}"
-  python3 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python3 -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
