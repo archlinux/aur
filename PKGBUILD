@@ -112,7 +112,7 @@ prepare() {
   # Download Unreal Engine source or update if the folder exists
   if [[ ! -d "${pkgname}" ]]
   then
-    git clone --depth=1 --branch=${pkgver} git@github.com:EpicGames/UnrealEngine "${pkgname}"
+    git clone --depth=1 tags/${pkgver}-release git@github.com:EpicGames/UnrealEngine "${pkgname}"
     cd "${pkgname}" || return
   else
     cd "${pkgname}" || return
