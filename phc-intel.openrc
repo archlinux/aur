@@ -1,0 +1,41 @@
+#!/usr/bin/openrc-run
+# OpenRC phc-intel init script
+
+_NAME=phc-intel
+_DESCRIPTION='Intel CPU undervolting'
+_SCRIPT=/usr/bin/phc-intel
+
+extra_started_commands="status set"
+
+depend() {
+  want modules
+}
+
+start() {
+  ebegin "${_NAME}: Setting ${_DESCRIPTION} parameters."
+  "${_SCRIPT}" start
+  eend "$?"
+}
+
+stop() {
+  ebegin "${_NAME}: Unsetting ${_DESCRIPTION} parameters."
+  "${_SCRIPT}" stop
+  eend "$?"
+}
+
+reload() {
+  "$0" stop
+  "$0" start
+}
+
+status() {
+  ebegin "${_NAME}: Querying status of ${_DESCRIPTION} parameters."
+  "${_SCRIPT}" status
+  eend "$?"
+}
+
+set() {
+  ebegin "${_NAME}: Setting ${_DESCRIPTION} parameters."
+  "${_SCRIPT}" set
+  eend "$?"
+}

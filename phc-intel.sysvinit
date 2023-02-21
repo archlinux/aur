@@ -1,0 +1,61 @@
+#!/bin/bash
+
+# phc-intel System-V-init script
+
+_NAME=phc-intel
+_DESCRIPTION='Intel CPU undervolting'
+_SCRIPT=/usr/bin/phc-intel
+
+. /etc/rc.conf
+. /etc/rc.d/functions
+
+case "$1" in
+  start)
+    stat_busy "${_NAME}: Setting ${_DESCRIPTION} parameters."
+    "${_SCRIPT}" start
+    if [ $? -gt 0 ]; then
+      stat_fail
+    else
+      add_daemon "${_NAME}"
+      stat_done
+    fi
+  ;;
+  stop)
+    stat_busy "${_NAME}: Unsetting ${_DESCRIPTION} parameters."
+    "${_SCRIPT}" stop
+    if [ $? -gt 0 ]; then
+      stat_fail
+    else
+      rm_daemon "${_NAME}"
+      stat_done
+    fi
+  ;;
+  restart)
+    "$0" stop
+    "$0" start
+    ;;
+  reload)
+    "$0" restart
+  ;;
+  status)
+    stat_busy "${_NAME}: Querying status of ${_DESCRIPTION} parameters."
+    "${_SCRIPT}" status
+    if [ $? -gt 0 ]; then
+      stat_fail
+    else
+      stat_done
+    fi
+  ;;
+  set)
+    stat_busy "${_NAME}: Setting ${_DESCRIPTION} parameters."
+    "${_SCRIPT}" set
+    if [ $? -gt 0 ]; then
+      stat_fail
+    else
+      stat_done
+    fi
+  ;;
+  *)
+    echo "usage: $0 {start|stop|restart|reload|status|set}"  
+  ;;
+esac

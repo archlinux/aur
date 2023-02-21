@@ -1,0 +1,16 @@
+# phc-intel init script for systemd.
+
+[Unit]
+Description=Intel CPU undervolting
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+User=root
+ExecStart=/usr/bin/phc-intel start
+ExecStop=/usr/bin/phc-intel stop
+ExecReload=/usr/bin/phc-intel stop; /usr/bin/phc-intel start
+ExecStatus=/usr/bin/phc-intel status
+
+[Install]
+# WantedBy=multi-user.target
