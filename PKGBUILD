@@ -2,14 +2,14 @@
 # Contributor: Edgar Luque <git@edgarluque.com>
 
 pkgname=ddnet-git
-pkgver=16.6.r206.gfb2ec3f93
+pkgver=16.7.2.r100.gd347bfcbe
 pkgrel=1
 pkgdesc="A Teeworlds modification with a unique cooperative gameplay."
 arch=('x86_64')
 url="https://ddnet.org"
 license=('custom:BSD' 'CCPL:by-nc-sa')
 depends=('freetype2' 'opusfile' 'curl' 'glew' 'wavpack' 'ffmpeg' 'libnotify' 'miniupnpc' 'sqlite' 'mariadb-libs' 'vulkan-icd-loader')
-makedepends=('git' 'rust' 'cmake' 'ninja' 'python' 'vulkan-headers' 'glslang' 'spirv-tools' 'discord-game-sdk')
+makedepends=('git' 'cargo' 'cmake' 'ninja' 'python' 'vulkan-headers' 'glslang' 'spirv-tools' 'discord-game-sdk')
 checkdepends=('gmock')
 optdepends=('ddnet-maps-git: All the maps used on the official DDNet Servers.'
             'discord-game-sdk: Enable rich presence in Discord desktop client.')
