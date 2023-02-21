@@ -1,4 +1,5 @@
 post_install() {
+    source /etc/profile
     systemctl daemon-reload
     systemctl is-enabled --quiet cellframe-node.service && systemctl start cellframe-node.service
 
@@ -33,9 +34,6 @@ post_install() {
     ########################################################################
 
 EOF
-
-    source /etc/profile
-
 }
 
 pre_upgrade() {
