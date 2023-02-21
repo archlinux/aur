@@ -4,7 +4,7 @@ _pkgname=nnTensor
 _pkgver=1.1.12
 pkgname=r-${_pkgname,,}
 pkgver=1.1.12
-pkgrel=1
+pkgrel=3
 pkgdesc='Non-Negative Tensor Decomposition'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -18,6 +18,8 @@ depends=(
   r-tagcloud
 )
 optdepends=(
+  r-knitr
+  r-rmarkdown
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")

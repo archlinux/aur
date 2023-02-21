@@ -1,7 +1,7 @@
 pkgbase = r-nntensor
 	pkgdesc = Non-Negative Tensor Decomposition
 	pkgver = 1.1.12
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=nnTensor
 	arch = any
 	license = Artistic2.0
@@ -11,6 +11,8 @@ pkgbase = r-nntensor
 	depends = r-plot3d
 	depends = r-rtensor
 	depends = r-tagcloud
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/nnTensor_1.1.12.tar.gz
 	sha256sums = 412655b028128610da5b2da89a2aae8519255fb4dbef2263608b228682f478ba
