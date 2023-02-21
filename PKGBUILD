@@ -1,43 +1,37 @@
 # Maintainer: éclairevoyant
-# Generator  : CPANPLUS::Dist::Arch 1.32
 
+_dist=Future-IO
 pkgname=perl-future-io
-pkgver=0.11
-pkgrel=2
+pkgver=0.13
+pkgrel=1
 pkgdesc="Future-returning IO methods"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-future' 'perl-struct-dumb' 'perl>=5.010')
 makedepends=('perl-module-build')
-checkdepends=('perl-test-identity' 'perl-test-pod')
-url='https://metacpan.org/release/Future-IO'
-source=('http://search.cpan.org/CPAN/authors/id/P/PE/PEVANS/Future-IO-0.11.tar.gz')
-sha512sums=('8ee111cc1f0a0bfba84005de3e3bf0dadedf8be635f0a0a3b8423702db35fa1f76f7a0d47e32f5ed91163943d5acc788827e87233e11d0a4125a8f1d192c9a22')
-_distdir="Future-IO-0.11"
+checkdepends=('perl-test2-suite')
+url="https://metacpan.org/release/$_dist"
+source=("https://cpan.metacpan.org/authors/id/P/PE/PEVANS/$_dist-$pkgver.tar.gz")
+b2sums=('f165fab97da297a0202e8a323bc731438957d248270e4a95ad9374b770c18a287aaa7aef2bb27948832ffde5b14dbde5e0c9fbb3d81225c473bfa8c6637e6557')
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
-
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Build.PL
-    /usr/bin/perl Build
-  )
+  cd $_dist-$pkgver
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
+  /usr/bin/perl Build.PL
+  ./Build
 }
 
 check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    /usr/bin/perl Build test
-  )
+  cd $_dist-$pkgver
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1
+  ./Build test
 }
 
 package() {
-  cd "$srcdir/$_distdir"
-  /usr/bin/perl Build install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  cd $_dist-$pkgver
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  ./Build install --installdirs=vendor --destdir="$pkgdir"
 }
