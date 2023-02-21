@@ -2,16 +2,17 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=jello-git
-pkgver=1.4.5.r0.g9115ec4
+_pkg="${pkgname%-git}"
+pkgver=1.5.5.r0.ge8055fb
 pkgrel=1
 pkgdesc='Filter JSON and JSON Lines data with Python syntax'
 arch=('any')
 url='https://github.com/kellyjonbrazil/jello'
 license=('MIT')
 depends=('python-pygments')
-makedepends=('git' 'python-setuptools')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+provides=("$_pkg")
+conflicts=("$_pkg")
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
@@ -26,7 +27,7 @@ prepare() {
 
 build() {
   cd "$pkgname"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -36,10 +37,12 @@ check() {
 
 package() {
   cd "$pkgname"
-  PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dm644 man/jello.1 -t "$pkgdir/usr/share/man/man1/"
+  python -m installer --destdir "$pkgdir" dist/*.whl
+  install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -Dvm644 man/jello.1 -t "$pkgdir/usr/share/man/man1/"
+  local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+  install -dv "$pkgdir/usr/share/licenses/$pkgname/"
+  ln -sv "$_site/$_pkg-${pkgver%.r*}.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 # vim: ts=2 sw=2 et:
