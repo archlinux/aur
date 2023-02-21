@@ -25,7 +25,7 @@ makedepends=(
 
 provides=("${pkgname%-pkgver}")
 source=('https://ftp.mcs.anl.gov/pub/fathom/moab-5.4.0.tar.gz')
-md5sums=('935d18f8edf7dc3df625d9426a2d59e1')
+md5sums=('b3857a791130569701b8fca788c2ed7c')
 
 build() {
 	cd $srcdir
