@@ -1,30 +1,39 @@
-# Maintainer: Stephen Gregoratto <dev@sgregoratto.me>
-_pkgname=terminal-typeracer
+# Maintainer: orhun <orhunparmaksiz@gmail.com>
+# Contributor: Stephen Gregoratto <dev@sgregoratto.me>
+
+# https://github.com/orhun/pkgbuilds
+
 pkgname=typeracer
-pkgver=2.0.4
+_pkgname=terminal-typeracer
+pkgver=2.1.2
 pkgrel=1
-pkgdesc="terminal typing speed tester"
+pkgdesc="Terminal typing speed tester"
+arch=('x86_64')
 url=https://gitlab.com/ttyperacer/terminal-typeracer
 license=('GPL')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-depends=('openssl' 'zlib' 'sqlite')
+depends=('zlib' 'gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/terminal-typeracer-v$pkgver.tar.gz")
-sha256sums=('7733458cdab604caed669ca59f2d74840ce35617d37ded7a29f8cadf184805ef')
+sha256sums=('aaf9206d1949fa04169336e3e4dcc22647fe8025473fda220e5905fa8b3c7b98')
+
+prepare() {
+  cd "$_pkgname-v$pkgver"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
   cd "$_pkgname-v$pkgver"
-  cargo build --release --locked --all-features
+  CFLAGS+=" -ffat-lto-objects"
+  cargo build --release --frozen
 }
 
 check() {
   cd "$_pkgname-v$pkgver"
-  cargo test --release --locked
+  cargo test --frozen
 }
 
 package() {
   cd "$_pkgname-v$pkgver"
-  mkdir -p "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm755 "target/release/typeracer" "$pkgdir/usr/bin/typeracer"
-  cp -a docs/* "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
