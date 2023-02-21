@@ -3,6 +3,6 @@ Encoding=UTF-8
 Type=Application
 Name=AntConc
 Comment=A freeware corpus analysis toolkit for concordancing and text analysis.
-Exec=/opt/Antconc
+Exec=antconc
 Icon=antconc
 Categories=Education;Languages;

@@ -15,7 +15,7 @@ source=($pkgname-$pkgver.tar.gz::https://www.laurenceanthony.net/software/antcon
 	${pkgname}.png ${pkgname}.desktop $pkgname.sh)
 sha256sums=('3ba127173843414ca15229f379dd378688122adeec103bfb0b070d917489e48f'
             '2961431f1dd2c11a7af92e5ab594ddfd43e42ccc582cddca70128c781101525e'
-            'ebb24e265e303ebca7bb771b8f01569a010cb68895bdb3ad940acbecd78acd2b'
+            '56fa958a9100000a16bf95c0d7d082aee166ac376ec007ab1746def1adafa3f1'
             'c529e3d8230f19e604c646d804278d9b0ca1dae4d3b97ade838ab10a32ff06f7')
 
 package() {
