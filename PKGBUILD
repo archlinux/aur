@@ -19,7 +19,7 @@ depends=(
 )
 optdepends=()
 provides=(xushengfeng)
-conflicts=()
+conflicts=('esearch-appimage')
 install=
 source=(
     "${_pkgname}-${pkgver}-linux-x64.tar.gz::${_githuburl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-x64.tar.gz"

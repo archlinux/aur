@@ -12,6 +12,7 @@ pkgbase = esearch-bin
 	depends = gtkmm3
 	depends = at-spi2-core
 	provides = xushengfeng
+	conflicts = esearch-appimage
 	source = eSearch-1.9.8-linux-x64.tar.gz::https://github.com/xushengfeng/eSearch/releases/download/1.9.8/eSearch-1.9.8-linux-x64.tar.gz
 	sha256sums = a50f55bf0c34869b394ee7ad0ca187bbe3ab595926cf31befdb70c9a017c7238
 
