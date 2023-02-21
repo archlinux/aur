@@ -2,7 +2,7 @@
 
 pkgname=gir-to-d
 pkgver=0.22.0
-pkgrel=8
+pkgrel=9
 pkgdesc='Create D bindings from GObject introspection files'
 arch=('x86_64')
 url='https://github.com/gtkd-developers/gir-to-d'
@@ -23,7 +23,7 @@ build() {
   cd $pkgname-$pkgver/build
 
   export DC=ldc
-  export LDFLAGS="$(echo -ne $LDFLAGS | sed -e 's/-flto=auto/--flto=full/')"
+  export LDFLAGS="$(echo -ne $LDFLAGS | sed -e 's/-flto=auto/-flto=full/')"
   # Instanciate all templates. Fixes:
   # undefined reference to `_D6object__T8opEqualsTxC3gtd11GirFunctionQnTxQwZQBkFxQBexQBiZb'
   export DFLAGS="--allinst"
