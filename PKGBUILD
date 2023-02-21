@@ -7,8 +7,8 @@ arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/LinusDierheimer/fastfetch"
 license=('MIT')
 depends=('gcc-libs')
-makedepends=('chafa' 'cmake' 'dbus' 'dconf' 'imagemagick' 'libnm' 'libpulse' 'libxcb'
-             'libxrandr' 'mesa' 'ocl-icd' 'opencl-headers' 'pciutils'
+makedepends=('chafa' 'cmake' 'dbus' 'dconf' 'imagemagick' 'libnm' 'libpulse'
+             'libxcb' 'libxrandr' 'mesa' 'ocl-icd' 'opencl-headers' 'pciutils'
              'vulkan-headers' 'vulkan-icd-loader' 'wayland' 'xfconf' 'zlib')
 optdepends=(
   'chafa: Image output as ascii art'
