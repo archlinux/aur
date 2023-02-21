@@ -1,4 +1,5 @@
-# Maintainer: BlackEagle <ike.devolder@gmail.com>>
+# Maintainer: mcarni <michele DOT carnaghi AT googlemail DOT com>
+# Contributor: BlackEagle <ike DOT devolder AT gmail DOT com>
 
 pkgname=kodi-addon-game-libretro
 pkgver=20.1.0
