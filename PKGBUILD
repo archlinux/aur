@@ -16,7 +16,7 @@ depends=('vulkan-driver' 'libunwind')
 if _ifmod nvidia_drm; then
     depends+=('ffmpeg')
 fi
-makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'jack' 'libxrandr')
+makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'jack' 'libxrandr' 'nasm')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 options=('!lto')
@@ -58,7 +58,7 @@ build() {
 	export ALVR_VRCOMPOSITOR_WRAPPER_DIR="$ALVR_LIBRARIES_DIR/alvr/"
 
     if ! _ifmod nvidia_drm; then
-        cargo xtask prepare-deps --no-nvidia
+        cargo xtask prepare-deps --platform linux --no-nvidia
     fi
 
 	cargo build \
