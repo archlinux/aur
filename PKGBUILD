@@ -2,7 +2,7 @@
 pkgname=esearch-bin
 _pkgname=eSearch
 pkgver=1.9.8
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="截屏 离线OCR 搜索翻译 以图搜图 贴图 录屏 滚动截屏 Screenshot OCR search translate search for picture paste the picture on the screen screen recorder"
 arch=("x86_64")
@@ -18,7 +18,7 @@ depends=(
     'at-spi2-core'
 )
 optdepends=()
-provides=(filecxx)
+provides=(xushengfeng)
 conflicts=()
 install=
 source=(
