@@ -2,7 +2,7 @@
 
 pkgname=albert-git
 _pkgname=${pkgname%-git}
-pkgver=0.20.0.r0.g30b78147
+pkgver=0.20.8.r0.gddc61720
 pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher"
 arch=('x86_64')
