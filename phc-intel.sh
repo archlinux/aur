@@ -33,7 +33,8 @@ check_kernel_cmdline() {
   for i in $(< /proc/cmdline); do
     if [ $i = nophc ]; then
       errmsg "=> 'nophc' kernel option set, not setting PHC VIDs."
-      errmsg "   Use '$0 set' to override."
+      errmsg "   Use '$0 force-set' to override."
+      exit 0
       return 1
     fi
   done
@@ -78,11 +79,19 @@ case "$1" in
   ;;
 
   set)
+    "$0" start
+  ;;
+
+  force-set)
     check_conf_and_set "$@"
   ;;
 
+  reset)
+    "$0" stop
+  ;;
+
   *)
-    echo "usage: $0 {start|stop|status|set|reset}"
+    echo "usage: $0 {start|stop|status|set|force-set|reset}"
   ;;
 
 esac
