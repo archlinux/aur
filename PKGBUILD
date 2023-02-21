@@ -1,13 +1,13 @@
 # Maintainer: Nriver <6752679+Nriver@users.noreply.github.com>
 pkgname="trilium-server-cn"
-pkgver=0.58.8_20230215
+pkgver=0.59.0_20230221
 pkgrel=1
 pkgdesc="Trilium Notes 服务端 中文版"
 arch=('x86_64')
 url="https://github.com/Nriver/trilium-translation"
 license=('AGPL3')
 source=("https://github.com/Nriver/trilium-translation/releases/download/v$pkgver/trilium-cn-linux-x64-server.zip")
-sha256sums=('ec9c1fd176340becbb82c23ac132cf59f17ed4b915de475b1efb53919dbba30e')
+sha256sums=('16b3940cd7c60a481321e49b5bd610493dd90d9481aa698ab798cf5ad4e057b6')
 
 package()
 {
