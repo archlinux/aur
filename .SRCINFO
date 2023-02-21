@@ -1,7 +1,7 @@
 pkgbase = yanone-kaffeesatz-font
 	pkgdesc = Reminiscent of 1920s coffee house typography, bridges the gap to present times
 	pkgver = 2.001
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.yanone.de/fonts/kaffeesatz
 	arch = any
 	license = OFL
@@ -24,6 +24,7 @@ pkgname = otf-yanone-kaffeesatz-infinality
 	groups = infinality-bundle-fonts-extra
 	depends = otf-yanone-kaffeesatz
 	provides = otf-yanone-kaffeesatz-ibx
+	conflicts = ttf-yanone-kaffeesatz-infinality
 	replaces = otf-yanone-kaffeesatz-ibx
 
 pkgname = ttf-yanone-kaffeesatz
@@ -36,5 +37,5 @@ pkgname = ttf-yanone-kaffeesatz-infinality
 	groups = infinality-bundle-fonts-extra
 	depends = ttf-yanone-kaffeesatz
 	provides = ttf-yanone-kaffeesatz-ibx
+	conflicts = otf-yanone-kaffeesatz-infinality
 	replaces = ttf-yanone-kaffeesatz-ibx
-
