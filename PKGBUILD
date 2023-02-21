@@ -1,34 +1,29 @@
 # Maintainer: Kirill Pshenichnyi <pshcyrill@mail.ru>
+# Maintainer: Antonio Bartalesi <antonio.bartalesi@gmail.com>
 # Contributor: The Tango Controls community
 #              (https://tango-controls.org) <info@tango-controls.org>
 
-pkgname=python-pytango
-_pkgname=pytango
-pkgver=9.3.6
-pkgrel=1
-pkgdesc="Python binding for Tango, a library dedicated to distributed control systems."
-groups=('tango-controls')
-arch=('x86_64' 'armv7h')
-url="http://pytango.readthedocs.io/"
-license=('GPL3')
-depends=('python' 'python-six>=1.10' 'python-numpy>=1.1' 'python-setuptools'
-	 'python-gevent' 'boost-libs' 'tango-cpp' 'boost')
-conflicts=('python-pytango-git')
-source=("https://gitlab.com/tango-controls/pytango/-/archive/v${pkgver}/pytango-v${pkgver}.tar.gz")
-sha256sums=('d5df7c01a5bb55c388ff83e478666dc3ac51dcd266e08ba3f51812dc90cd77f6')
 
+_name=pytango
+pkgname=python-$_name
+pkgver=9.4.0
+pkgrel=1
+pkgdesc="A python binding for the Tango control system"
+arch=('x86_64' 'armv7h' 'aarch64')
+url='https://pytango.readthedocs.io/en/stable/'
+license=('LGPL3')
+depends=('tango-cpp>=9.4.0' 'boost' 'python-numpy' 'python-six'
+	 'python-gevent' 'python-pytest' 'python-psutil')
+makedepends=(python-setuptools python-sphinx python-sphinx_rtd_theme)
+source=("$_name-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('bc22fe5f06ac0e0ff4affcbd18b65b2d1367f34e20b8b2f11e1182b376737a68')
 
 build() {
-  cd "$_pkgname-v$pkgver"
+  cd "$_name-$pkgver"
   python setup.py build
 }
 
-check() {
-  cd "$_pkgname-v$pkgver"
-  python setup.py check -mr
-}
-
 package() {
-  cd "$_pkgname-v$pkgver"
-  python setup.py install --root=$pkgdir/
+  cd "$_name-$pkgver"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
