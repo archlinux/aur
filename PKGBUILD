@@ -14,7 +14,7 @@ groups=(
 )
 pkgver=0.4.0.rev44.r52.20230220.f0f42bd
 _phcver="$(awk -F. '{print $1"."$2"."$3}' <<<"${pkgver}")"
-pkgrel=1
+pkgrel=2
 pkgdesc="Frequency driver for Intel CPUs with undervolting feature. DKMS-based kernel module, testing branch, latest git checkout."
 url="https://gitlab.com/linux-phc/phc-intel"
 arch=('any')
@@ -39,16 +39,13 @@ conflicts=(
   "${_pkgname}"
   "phc-intel-dkms"
 )
-install='phc-intel-dkms.install'
 source=(
   "${_pkgbase}::git+${url}.git"
   dkms.conf.in
-  "${install}"
 )
 sha256sums=(
   'SKIP'
   '9162c25d0df436a00d8b45d9e97c24a1f2999f5b8a4f78f2995df15d2d31baa7' # dkms.conf.in
-  'efedbbfc97a02cc446bfbafacb1e07e1dda63b78b5df7d3ed8b052b280787f5c' # ${install}
 )
 
 prepare() {
