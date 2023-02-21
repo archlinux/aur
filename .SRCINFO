@@ -1,15 +1,19 @@
 pkgbase = jellex
 	pkgdesc = TUI to filter JSON data with Python syntax
-	pkgver = 0.5.5
+	pkgver = 0.5.6
 	pkgrel = 1
 	url = https://github.com/kellyjonbrazil/jellex
 	changelog = CHANGELOG
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = jello
 	depends = python-pygments
 	depends = python-prompt_toolkit
-	source = jellex-0.5.5.tar.gz::https://github.com/kellyjonbrazil/jellex/archive/v0.5.5.tar.gz
-	sha256sums = ca108f05cced8a2cd50720322e232753bf74dc79a73054c4f0de0ca3b76ec5da
+	source = jellex-0.5.6.tar.gz::https://files.pythonhosted.org/packages/source/j/jellex/jellex-0.5.6.tar.gz
+	sha256sums = 67bc27369febff0eb5dc55104f176d547901bf5f9de93c5988e119a76c294272
 
 pkgname = jellex

@@ -1,5 +1,8 @@
 jellex changelog
 
+20220731 v0.5.6
+- Add `__main__.py` for `python -m jellex` use cases
+
 20211228 v0.5.5
 - Fix non-JSON file loading error
 - Minor updates
