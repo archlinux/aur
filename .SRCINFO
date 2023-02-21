@@ -1,23 +1,19 @@
 pkgbase = chatterino2-appimage
 	pkgdesc = Second installment of the Twitch chat client series "Chatterino", release appimage
-	pkgver = 2.4.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://chatterino.com
 	install = chatterino2-appimage.install
 	arch = x86_64
 	license = MIT
-	depends = qt5-multimedia
-	depends = qt5-base
-	depends = qt5-tools
-	depends = boost-libs
-	depends = openssl
+	depends = fuse2
 	optdepends = streamlink: For piping streams to video players
 	optdepends = pulseaudio: For audio output
 	optdepends = gst-plugins-good: For audio output
 	provides = chatterino
 	conflicts = chatterino
 	options = !strip
-	source = https://github.com/Chatterino/chatterino2/releases/download/v2.4.0/Chatterino-x86_64.AppImage
-	sha256sums = 67b8b090ac00b90a9391b2264fd45d103ed6e87b252de11dc58ffc9eb2ec1519
+	source = https://github.com/Chatterino/chatterino2/releases/download/v2.4.1/Chatterino-x86_64.AppImage
+	sha256sums = 925ed745004bc0aa6a8fed4c4db9a3d6976b58838f28560b5cff62d0402b1359
 
 pkgname = chatterino2-appimage
