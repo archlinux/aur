@@ -1,22 +1,22 @@
 
 pkgname='lockbook'
 _pkgname="lockbook"
-pkgver=0.5.10
+pkgver=0.6.0
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/lockbook/lockbook"
-pkgdesc="A secure, private, minimal, cross-platform document editor."
+pkgdesc="The private, polished note-taking platform."
 license=('BSD-3-Clause')
 makedepends=('rust' 'cargo' 'git')
 provides=('lockbook')
 conflicts=('lockbook')
-source=("git+https://github.com/lockbook/lockbook.git#tag=v$pkgver")
+source=("git+https://github.com/lockbook/lockbook.git#tag=$pkgver")
 sha256sums=('SKIP')
 groups=('lockbook')
 
 pkgver() {
   cd $srcdir/lockbook/clients/cli
-  echo "0.5.10"
+  echo "0.6.0"
 }
 
 build() {
