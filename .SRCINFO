@@ -1,6 +1,6 @@
 pkgbase = doh-proxy
 	pkgdesc = A DNS-over-HTTP server proxy written in Rust by jedisct1
-	pkgver = 0.9.7
+	pkgver = 0.9.8
 	pkgrel = 1
 	url = https://github.com/jedisct1/doh-server
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = doh-proxy
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = https://github.com/jedisct1/doh-server/archive/0.9.7.tar.gz
-	sha512sums = 3411618b8f1242eb3eca5cd5a4f79fbdfb81946499ae475c6d376114c854bb731ab8ff4346f0f19234bb81cdff11be93d9bcf40a75e561821889e11ca75a971c
+	source = https://github.com/jedisct1/doh-server/archive/0.9.8.tar.gz
+	sha512sums = b23685aecd83cdf747ad099d64a6840f7cf192372a9aaa2a2f166cf71fb8fb6737814bc1d4ade7bc2367b2b6e110510a05b599ad4a28b2080fc1770de28244b7
 
 pkgname = doh-proxy

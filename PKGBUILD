@@ -3,7 +3,7 @@
 # Package contributors: mys_721tx, dreieck
 pkgname=doh-proxy
 reponame=doh-server
-pkgver=0.9.7
+pkgver=0.9.8
 pkgrel=1
 pkgdesc="A DNS-over-HTTP server proxy written in Rust by jedisct1"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$url/archive/$pkgver.tar.gz")
-sha512sums=('3411618b8f1242eb3eca5cd5a4f79fbdfb81946499ae475c6d376114c854bb731ab8ff4346f0f19234bb81cdff11be93d9bcf40a75e561821889e11ca75a971c')
+sha512sums=('b23685aecd83cdf747ad099d64a6840f7cf192372a9aaa2a2f166cf71fb8fb6737814bc1d4ade7bc2367b2b6e110510a05b599ad4a28b2080fc1770de28244b7')
 
 prepare() {
 	cd "$reponame-$pkgver"
