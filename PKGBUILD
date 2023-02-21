@@ -16,7 +16,7 @@ pkgname=(
   gst-plugin-pipewire-common-git
   pipewire-common-roc-git
 )
-pkgver=0.3.65.r27.g2681d7e3
+pkgver=0.3.66.r13.g0b69f37a
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -116,6 +116,7 @@ package_pipewire-common-git() {
     'hsphfpd: hsphfpd Bluetooth HSP/HFP support'
   )
   provides=(
+    "libpipewire=$_short_pkgver"
     "pipewire=$_short_pkgver"
     pipewire-audio alsa-card-profiles libpipewire-$_ver.so
   )
