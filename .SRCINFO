@@ -1,0 +1,16 @@
+pkgbase = geekbench5
+	pkgdesc = A cross-platform benchmark that measures processor and memory performance
+	pkgver = 5.5.1
+	pkgrel = 1
+	url = http://www.primatelabs.ca/geekbench/
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	license = custom
+	depends = zlib
+	depends = gcc-libs
+	options = !strip
+	source = https://cdn.geekbench.com/Geekbench-5.5.1-Linux.tar.gz
+	sha512sums = 0fd90d55eaaf178e4c981ef6ef54808d1ff86edc92c907a5d8e2a3a379c2289e614d917db330a3d748c818bcedb2dc69cad250b1b98ba80287c6d9a66382bcc4
+
+pkgname = geekbench5
