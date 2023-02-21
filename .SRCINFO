@@ -1,7 +1,7 @@
 pkgbase = plasma-desktop-light
 	pkgdesc = KDE Plasma Desktop (stripped from unnecessary dependencies)
-	pkgver = 5.27.0
-	pkgrel = 4
+	pkgver = 5.27.1
+	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
 	groups = plasma
@@ -36,13 +36,13 @@ pkgbase = plasma-desktop-light
 	provides = plasma-desktop
 	conflicts = plasma-desktop
 	options = !docs
-	source = https://download.kde.org/stable/plasma/5.27.0/plasma-desktop-5.27.0.tar.xz
-	source = https://download.kde.org/stable/plasma/5.27.0/plasma-desktop-5.27.0.tar.xz.sig
+	source = https://download.kde.org/stable/plasma/5.27.1/plasma-desktop-5.27.1.tar.xz
+	source = https://download.kde.org/stable/plasma/5.27.1/plasma-desktop-5.27.1.tar.xz.sig
 	validpgpkeys = E0A3EB202F8E57528E13E72FD7574483BB57B18D
 	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
 	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
-	sha256sums = 1880308ee3d4ff9ea20827d51b2b1a0339556e1d258cb49481ca4fd91451a234
+	sha256sums = 2e7b705297fd35d7938518338c6cfc75550910334fa6802b654e940421ffc05d
 	sha256sums = SKIP
 
 pkgname = plasma-desktop-light

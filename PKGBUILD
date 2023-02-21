@@ -1,7 +1,7 @@
 _name=plasma-desktop
 pkgname=${_name}-light
-pkgver=5.27.0
-pkgrel=4
+pkgver=5.27.1
+pkgrel=1
 pkgdesc='KDE Plasma Desktop (stripped from unnecessary dependencies)'
 arch=('x86_64')
 url='https://kde.org/plasma-desktop/'
@@ -37,7 +37,7 @@ _snapshot="${_name}-${pkgver}"
 source=("https://download.kde.org/stable/plasma/${pkgver}/${_snapshot}.tar.xz"{,.sig})
 
 sha256sums=(
-    '1880308ee3d4ff9ea20827d51b2b1a0339556e1d258cb49481ca4fd91451a234'
+    '2e7b705297fd35d7938518338c6cfc75550910334fa6802b654e940421ffc05d'
     'SKIP'
 )
 
