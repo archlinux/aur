@@ -16,7 +16,7 @@
 _phpbase="74"
 _suffix=""
 pkgver="7.4.33"
-pkgrel="3"
+pkgrel="4"
 pkgbase="php74"
 pkgdesc="PHP 7.4.33 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1  -DU_DEFINE_FALSE_AND_TRUE=1 "
