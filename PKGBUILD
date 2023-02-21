@@ -2,13 +2,14 @@
 # Contributor: Jaan Toots <jaan@jaantoots.org>
 pkgname=goobook
 pkgver=3.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Access your Google contacts from the command line"
 arch=('any')
 url="https://gitlab.com/goobook/goobook"
 license=('GPL3')
 depends=('python-google-api-python-client'
          'python-oauth2client'
+         'python-pyparsing'
          'python-pyxdg'
          'python-setuptools'
          'python-simplejson')

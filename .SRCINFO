@@ -1,7 +1,7 @@
 pkgbase = goobook
 	pkgdesc = Access your Google contacts from the command line
 	pkgver = 3.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/goobook/goobook
 	arch = any
 	license = GPL3
@@ -11,6 +11,7 @@ pkgbase = goobook
 	makedepends = python-poetry
 	depends = python-google-api-python-client
 	depends = python-oauth2client
+	depends = python-pyparsing
 	depends = python-pyxdg
 	depends = python-setuptools
 	depends = python-simplejson
