@@ -1,0 +1,3 @@
+post_upgrade() {
+  echo "Make sure to rebuild sway after updating this."
+}
