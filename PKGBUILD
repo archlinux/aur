@@ -16,7 +16,7 @@ depends=(
     'libxss'
 )
 optdepends=()
-provides=(ashishBharadwaj)
+provides=(flawesome)
 conflicts=(flawesome)
 install=
 source=(
