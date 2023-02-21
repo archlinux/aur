@@ -2,7 +2,7 @@
 
 pkgname=xvolkolak
 pkgver=0.22
-pkgrel=2
+pkgrel=3
 pkgdesc="Xvolkolak is an unpacker emulator"
 arch=(x86_64)
 url="http://n10info.blogspot.com/"

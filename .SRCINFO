@@ -1,7 +1,7 @@
 pkgbase = xvolkolak
 	pkgdesc = Xvolkolak is an unpacker emulator
 	pkgver = 0.22
-	pkgrel = 2
+	pkgrel = 3
 	url = http://n10info.blogspot.com/
 	install = xvolkolak.install
 	arch = x86_64
