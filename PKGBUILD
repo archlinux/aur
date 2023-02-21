@@ -1,10 +1,10 @@
-# Maintainer: k8ieone <rostik.medved@gmail.com>
+# Maintainer: a13xie <rostik.medved@gmail.com>
 pkgname=flamenco-worker
-pkgver=3.1
-pkgrel=2
+pkgver=3.2
+pkgrel=1
 pkgdesc="Worker for Blender's Flamenco Render System"
 arch=('x86_64' 'aarch64')
-url="https://developer.blender.org/diffusion/F/"
+url="https://projects.blender.org/studio/flamenco"
 options=(!lto)
 license=('GPL3')
 depends=(
@@ -13,7 +13,7 @@ depends=(
 makedepends=(
 	'go'
 )
-source=("${pkgname}::git+https://git.blender.org/flamenco.git#tag=v${pkgver}")
+source=("${pkgname}::git+https://projects.blender.org/studio/flamenco.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
