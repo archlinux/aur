@@ -7,7 +7,7 @@ _pkgname=DescTools
 _pkgver=0.99.48
 pkgname=r-${_pkgname,,}
 pkgver=0.99.48
-pkgrel=1
+pkgrel=3
 pkgdesc='Tools for Descriptive Statistics'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -29,6 +29,7 @@ optdepends=(
   r-r.rsp
   r-rdcomclient
   r-tcltk
+  r-testthat
   r-vgam
 )
 makedepends=(
