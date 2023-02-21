@@ -203,7 +203,7 @@ _stable=${_major}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux BMQ scheduler Kernel by CachyOS with other patches and improvements'
-pkgrel=3
+pkgrel=4
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -600,8 +600,8 @@ prepare() {
     [ -z "$_zstd_level_value" ] && _die "The value is empty. Choose the correct one again."
 
     case "$_zstd_level_value" in
-        ultra) scripts/config --set-val MODULE_COMPRESS_ZSTD_LEVEL 19 -e MODULE_COMPRESS_ZSTD_ULTRA --set-val MODULE_COMPRESS_ZSTD_LEVEL_ULTRA 22 --set-val ZSTD_COMP_VAL 22;;
-        normal) scripts/config --set-val MODULE_COMPRESS_ZSTD_LEVEL 9 -d MODULE_COMPRESS_ZSTD_ULTRA --set-val ZSTD_COMP_VAL 19;;
+        ultra) scripts/config --set-val MODULE_COMPRESS_ZSTD_LEVEL 19 -e MODULE_COMPRESS_ZSTD_ULTRA --set-val MODULE_COMPRESS_ZSTD_LEVEL_ULTRA 22 --set-val ZSTD_COMPRESSION_LEVEL 22;;
+        normal) scripts/config --set-val MODULE_COMPRESS_ZSTD_LEVEL 9 -d MODULE_COMPRESS_ZSTD_ULTRA --set-val ZSTD_COMPRESSION_LEVEL 19;;
         *) _die "The value '$_zstd_level_value' is invalid. Choose the correct one again.";;
     esac
 
@@ -842,7 +842,7 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha256sums=('74862fa8ab40edae85bb3385c0b71fe103288bce518526d63197800b3cbdecb1'
-            '7f0b634e7b02a7a7dafd5fcb9c2be4f4bcacfa972c2be2ff1505ecaaf7c2c71a'
+            'b33cf9e4f29262a9992ad71d1aa87ed2655d3430048ad81f5e4a2a32966a7571'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
-            'a1c60f813230da4ee5beb6c2dbab12c9fd9a7e84a4021dd3ccb08d9c32ee6543'
+            '7bb11fde3c16933b84059ae69333232426ff8e5280a3e13ec354156f06cc5b2f'
             '4dd5aa6f0d16e6e5e12a8a8408a3ac071a505767b5fda80b9a88b935282f6c0d')
