@@ -4,13 +4,14 @@ _pkgname=rms
 _pkgver=6.5-0
 pkgname=r-${_pkgname,,}
 pkgver=6.5.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Regression Modeling Strategies'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('GPL')
 depends=(
   r
+  r-colorspace
   r-digest
   r-ggplot2
   r-hmisc

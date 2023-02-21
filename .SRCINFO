@@ -1,12 +1,13 @@
 pkgbase = r-rms
 	pkgdesc = Regression Modeling Strategies
 	pkgver = 6.5.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=rms
 	arch = x86_64
 	license = GPL
 	makedepends = gcc-fortran
 	depends = r
+	depends = r-colorspace
 	depends = r-digest
 	depends = r-ggplot2
 	depends = r-hmisc
