@@ -1,0 +1,33 @@
+pkgbase = plan9port-wayland-git
+	pkgdesc = A port of many Plan 9 libraries and programs to Unix with devdraw Wayland patches.
+	pkgver = r3866.80fbccc8
+	pkgrel = 1
+	url = http://swtch.com/plan9port/
+	install = plan9.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = gendesk
+	depends = xorg-server
+	depends = libxt
+	depends = libxext
+	depends = fuse
+	optdepends = python2: for the codereview script
+	provides = plan9port
+	conflicts = 9base
+	conflicts = plan9port
+	options = !zipman
+	options = staticlibs
+	source = plan9port-wayland-git::git+https://github.com/hdonnay/plan9port#branch=wayland
+	source = plan9.sh
+	source = acme.sh
+	source = acme.png
+	source = acme.desktop
+	md5sums = SKIP
+	md5sums = c884c3c90a107f1a178718c304c67d30
+	md5sums = 0a3d8aaabd7cac1b8189a5551515d63f
+	md5sums = 266d160d71a2b4f1ec9859b5232c36da
+	md5sums = 682e9acb44074a4b49b3c2552d6a0a39
+
+pkgname = plan9port-wayland-git
