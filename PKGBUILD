@@ -21,9 +21,9 @@ sha256sums=('SKIP')
 
 prepare() {
     cd "$pkgname"
-  git rm -f third-party/ffmpeg-windows-x86_64
-  git rm -f third-party/ffmpeg-macos-x86_64
-  git rm -f third-party/ffmpeg-macos-aarch64
+    git rm -f third-party/ffmpeg-windows-x86_64
+    git rm -f third-party/ffmpeg-macos-x86_64
+    git rm -f third-party/ffmpeg-macos-aarch64
 
     git submodule update --recursive --init
 }
