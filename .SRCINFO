@@ -1,6 +1,6 @@
 pkgbase = ffuf-git
 	pkgdesc = A fast web fuzzer written in Go.
-	pkgver = 1.5.0.r3.g2ce2217
+	pkgver = 2.0.0.r1.gb2c1f94
 	pkgrel = 1
 	arch = x86_64
 	license = MIT

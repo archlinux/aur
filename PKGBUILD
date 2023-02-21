@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=ffuf-git
-pkgver=1.5.0.r3.g2ce2217
+pkgver=2.0.0.r1.gb2c1f94
 pkgrel=1
 pkgdesc="A fast web fuzzer written in Go."
 arch=('x86_64')
@@ -34,8 +34,7 @@ build() {
 
     export GOPATH="${srcdir}/go" GO111MODULE="auto"
 
-    go build \
-        -trimpath -modcacherw -ldflags "-s -w" \
+    go build -trimpath -modcacherw -ldflags "-s -w" \
         -o build/ffuf .
 }
 
