@@ -31,72 +31,6 @@ index 654968b..d78d2f4 100644
  ; This directive allows you to disable certain functions for security reasons.
 diff --git a/ext/dba/config.m4 b/ext/dba/config.m4
 index ced02de..64e1661 100644
---- a/ext/dba/config.m4
-+++ b/ext/dba/config.m4
-@@ -312,61 +312,13 @@
-   dbdp4="/usr/local/BerkeleyDB.4."
-   dbdp5="/usr/local/BerkeleyDB.5."
-   for i in $PHP_DB4 ${dbdp5}1 ${dbdp5}0 ${dbdp4}8 ${dbdp4}7 ${dbdp4}6 ${dbdp4}5 ${dbdp4}4 ${dbdp4}3 ${dbdp4}2 ${dbdp4}1 ${dbdp}0 /usr/local /usr; do
--    if test -f "$i/db5/db.h"; then
--      THIS_PREFIX=$i
--      THIS_INCLUDE=$i/db5/db.h
--      break
--    elif test -f "$i/db4/db.h"; then
--      THIS_PREFIX=$i
--      THIS_INCLUDE=$i/db4/db.h
--      break
--    elif test -f "$i/include/db5.3/db.h"; then
--      THIS_PREFIX=$i
--      THIS_INCLUDE=$i/include/db5.3/db.h
--      break
--    elif test -f "$i/include/db5.1/db.h"; then
--      THIS_PREFIX=$i
--      THIS_INCLUDE=$i/include/db5.1/db.h
--      break
--    elif test -f "$i/include/db5.0/db.h"; then
--      THIS_PREFIX=$i
--      THIS_INCLUDE=$i/include/db5.0/db.h
--      break
--    elif test -f "$i/include/db4.8/db.h"; then
--      THIS_PREFIX=$i
--      THIS_INCLUDE=$i/include/db4.8/db.h
--      break
--    elif test -f "$i/include/db4.7/db.h"; then
--      THIS_PREFIX=$i
--      THIS_INCLUDE=$i/include/db4.7/db.h
--      break
--    elif test -f "$i/include/db4.6/db.h"; then
--      THIS_PREFIX=$i
--      THIS_INCLUDE=$i/include/db4.6/db.h
--      break
--    elif test -f "$i/include/db4.5/db.h"; then
--      THIS_PREFIX=$i
--      THIS_INCLUDE=$i/include/db4.5/db.h
--      break
--    elif test -f "$i/include/db4/db.h"; then
--      THIS_PREFIX=$i
--      THIS_INCLUDE=$i/include/db4/db.h
--      break
--    elif test -f "$i/include/db/db4.h"; then
--      THIS_PREFIX=$i
--      THIS_INCLUDE=$i/include/db/db4.h
--      break
--    elif test -f "$i/include/db4.h"; then
--      THIS_PREFIX=$i
--      THIS_INCLUDE=$i/include/db4.h
--      break
--    elif test -f "$i/include/db.h"; then
-+    if test -f "$i/include/db.h"; then
-       THIS_PREFIX=$i
-       THIS_INCLUDE=$i/include/db.h
-       break
-     fi
-   done
--  PHP_DBA_DB_CHECK(4, db-5.3 db-5.1 db-5.0 db-4.8 db-4.7 db-4.6 db-4.5 db-4.4 db-4.3 db-4.2 db-4.1 db-4.0 db-4 db4 db, [(void)db_create((DB**)0, (DB_ENV*)0, 0)])
-+  PHP_DBA_DB_CHECK(4, db, [(void)db_create((DB**)0, (DB_ENV*)0, 0)])
- fi
- PHP_DBA_STD_RESULT(db4,Berkeley DB4)
- 
 diff --git a/ext/dba/dba.c b/ext/dba/dba.c
 index a36c679..b2de3b2 100644
 --- a/ext/dba/dba.c
@@ -175,19 +109,6 @@ index 1ce958f..b8c7492 100644
  .PHONY: $(ALWAYS) snapshot
 diff --git a/ext/dba/config.m4 b/ext/dba/config.m4
 index 64e1661..edc7d11 100644
---- a/ext/dba/config.m4
-+++ b/ext/dba/config.m4
-@@ -113,6 +113,10 @@
-       THIS_PREFIX=$i
-       THIS_INCLUDE=$i/include/depot.h
-       break
-+    elif test -f "$i/include/qdbm/depot.h"; then
-+      THIS_PREFIX=$i
-+      THIS_INCLUDE=$i/include/qdbm/depot.h
-+      break
-     fi
-   done
- 
 diff --git a/sapi/fpm/php-fpm.8.in b/sapi/fpm/php-fpm.8.in
 index 86edaa8..19e66a0 100644
 --- a/sapi/fpm/php-fpm.8.in
