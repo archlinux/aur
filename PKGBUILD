@@ -3,7 +3,7 @@
 # Contributor: NicoHood <archlinux {cat} nicohood {dog} de>
 _projectname='spot'
 pkgname="$_projectname-client-git"
-pkgver='0.3.3.r19.geb347ae'
+pkgver='r698.4b1209d'
 pkgrel='2'
 pkgdesc='Gtk/Rust native Spotify client - git version'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -35,7 +35,7 @@ prepare() {
 
 pkgver() {
 	cd "$srcdir/$_sourcedirectory/"
-	git describe --long --tags | sed -e 's/^v//' -e 's/-\([^-]*-g[^-]*\)$/-r\1/' -e 's/-/./g'
+	echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
