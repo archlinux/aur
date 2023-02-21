@@ -8,7 +8,7 @@
 pkgname=lib32-fluidsynth
 _name=fluidsynth
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A real-time software synthesizer based on the SoundFont 2 specifications'
 arch=(x86_64)
 url="https://www.fluidsynth.org/"
@@ -28,8 +28,8 @@ makedepends=(
   lib32-jack
   lib32-ladspa
   lib32-libinstpatch
+  lib32-libpipewire
   lib32-libsndfile
-  lib32-pipewire
   lib32-portaudio
 )
 source=($pkgname-$pkgver.tar.gz::https://github.com/$_name/$_name/archive/v$pkgver.tar.gz)
@@ -67,8 +67,8 @@ package() {
     lib32-glib2 libglib-2.0.so libgmodule-2.0.so libgobject-2.0.so
     lib32-jack libjack.so
     lib32-libinstpatch libinstpatch-1.0.so
+    lib32-libpipewire libpipewire-0.3.so
     lib32-libsndfile libsndfile.so
-    lib32-pipewire libpipewire-0.3.so
     lib32-portaudio libportaudio.so
   )
 
