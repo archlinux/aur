@@ -6,7 +6,7 @@ function _ifmod {
 
 pkgname=alvr-git
 _pkgname=${pkgname%-git}
-pkgver=r2338.55a377ee
+pkgver=r2361.1845b3ba
 pkgrel=1
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=('vulkan-driver' 'libunwind')
 if _ifmod nvidia_drm; then
     depends+=('ffmpeg')
 fi
-makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'jack' 'libxrandr')
+makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'jack' 'libxrandr' 'nasm')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!lto')
@@ -60,7 +60,7 @@ build() {
 	export ALVR_VRCOMPOSITOR_WRAPPER_DIR=$ALVR_LIBRARIES_DIR/alvr/
 
     if ! _ifmod nvidia_drm; then
-        cargo xtask prepare-deps --no-nvidia
+        cargo xtask prepare-deps --platform linux --no-nvidia
     fi
 
 	cargo build \
