@@ -1,5 +1,5 @@
 pkgbase = bilibili-electron
-	pkgdesc = A Linux bilibili GUI. Using existing electron
+	pkgdesc = A Linux bilibili GUI. Use installed electron.
 	pkgver = 1.9.1
 	pkgrel = 3
 	url = https://github.com/msojocs/bilibili-linux
