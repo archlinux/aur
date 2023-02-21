@@ -2,19 +2,19 @@
 ## Valid numbers between: 0 to 99
 ## Default is: 0 => generic
 ## Good option if your package is for one machine: 98 (Intel native) or 99 (AMD native)
-_microarchitecture=98
+_microarchitecture=0
 
 ## Major kernel version
-_major=6.0
+_major=6.2
 ## Minor kernel version
-_minor=9
+_minor=0
 
 ## PKGBUILD ##
 
 pkgbase=linux-multimedia
-#pkgver=${_major}
-pkgver=${_major}.${_minor}
-pkgrel=2
+pkgver=${_major}
+#pkgver=${_major}.${_minor}
+pkgrel=1
 pkgdesc='Linux Multimedia Optimized'
 url="https://www.kernel.org/"
 arch=(x86_64)
@@ -38,7 +38,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
-sha256sums=('6114a208e82739b4a1ab059ace35262be2a83be34cd1ae23cb8a09337db831c7'
+sha256sums=('74862fa8ab40edae85bb3385c0b71fe103288bce518526d63197800b3cbdecb1'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -70,8 +70,6 @@ prepare() {
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0006-add-acs-overrides_iommu.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-fsync1_via_futex_waitv.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-winesync.patch
-  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0008-${_major}-bcachefs.patch
-  #patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0010-lru_${_major}.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0012-misc-additions.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0013-optimize_harder_O3.patch
 
