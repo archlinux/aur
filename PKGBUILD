@@ -4,7 +4,7 @@
 
 pkgname=tango-database
 _pkgname=TangoDatabase
-pkgver=5.17
+pkgver=5.20
 pkgrel=1
 groups=('tango-controls')
 pkgdesc="TANGO distributed control system - database server"
@@ -18,20 +18,15 @@ source=("https://gitlab.com/tango-controls/TangoDatabase/-/archive/Database-Rele
         "tango-database.service"
         "tango-database-init.sh"
         "tango-database-init.sql")
-sha256sums=('c1b744ed82b668b4218d8ac9504ab7061692f1a8af7380a914eb8029bde1eac4'
+sha256sums=('beb0c79f9db361e5c49ae30f2601e27eb79b89500c088e29dc2328de88bd2c3d'
             '61a616f03e872b8fad260a0f5a02954e772afbcfd81c8cbd2b3f4ac57e1af049'
             'f4ab8368deb1f912de8ad142330cfae12cb267c4c598282c1739b6f1bf5c4c7c'
             '2ae4a19136373c6a97da8e920e9f61db341df4cf42f8a9388cfaf30a0142306e')
 _dir="${_pkgname}-Database-Release-${pkgver}"
 
-prepare() {
-  mkdir -p ${_dir}/build
-}
-
 build() {
-  cd ${_dir}/build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr/ ../
-  make
+  cmake -B build -S ${_dir} -DCMAKE_INSTALL_PREFIX=/usr/
+  make -C build
 }
 
 package() {
@@ -42,6 +37,5 @@ package() {
   mkdir -p ${pkgdir}/usr/share/tango/db
   install -Dm 644 tango-database-init.sql ${pkgdir}/usr/share/tango/db
 
-  cd ${_dir}/build
-  make DESTDIR=${pkgdir} install
+  make -C build DESTDIR=${pkgdir} install
 }
