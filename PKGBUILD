@@ -1,19 +1,20 @@
 # Maintainer: Crawcik <crawcik@gmail.com>
 
 pkgname=flax
-pkgver=1.4.6334
-pkgrel=2
+pkgver=1.5.6338
+pkgrel=1
 pkgdesc="Flax Engine – multi-platform 3D game engine"
-arch=(any)
+arch=('x86_64')
 url="https://flaxengine.com"
 license=('Flax EULA')
-depends=('glibc' 'libx11' 'libxcursor' 'libxinerama' 'zlib' 'libvorbis')
+depends=('glibc' 'libx11' 'libxcursor' 'libxinerama' 'zlib' 'libvorbis' 'mono')
 optdepends=('portaudio: PortAudio audio driver'
             'libpulse: PulseAudio audio driver'
             'jack: JACK audio driver')
-source=(https://vps2.flaxengine.com/store/builds/Package_1_04_06334/{FlaxEditorLinux,Linux}.zip)
+source=(https://vps2.flaxengine.com/store/builds/Package_1_05_06338/{FlaxEditorLinux,Linux}.zip)
 noextract=({FlaxEditorLinux,Linux}.zip)
-sha256sums=('658a7453d411f4ebc82754f5cd12cd89a6803a74ea636af19df16b8bc4c9f307' '1c8149a357f81a433412739633f50693b794fcb61780f8b507ad5a773b9a8c1f')
+conflicts=(flax-git)
+sha256sums=('05474b3a460f1b78aa64e7a3b00b99c7d03aca0632bb0465048343033377930e' 'f34f7df613b7692b0db44aa8dc65879904f5373582d48beeb3a7acd7bc5da80d')
 
 package() {
 	cd "$srcdir"
