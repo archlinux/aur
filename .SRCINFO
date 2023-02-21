@@ -1,0 +1,26 @@
+pkgbase = deepin-wine-pandaocr.pro
+	pkgdesc = 多功能多引擎OCR文字识别、翻译、朗读、语音合成、日漫游戏机翻汉化、验证码识别、图床上传、以图搜图、扫码工具
+	pkgver = 5.46
+	pkgrel = 1
+	url = https://github.com/miaomiaosoft/PandaOCR.Pro
+	install = deepin-wine-pandaocr.pro.install
+	arch = x86_64
+	license = custom
+	depends = deepin-wine6-stable
+	depends = spark-dwine-helper-git
+	depends = xdg-utils
+	optdepends = wqy-microhei
+	optdepends = wqy-zenhei
+	provides = miaomiaosoft
+	source = com.pandaocr.pro.spark_1.0.0_i386.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/reading/com.pandaocr.pro.spark/com.pandaocr.pro.spark_1.0.0_i386.deb
+	source = PandaOCR.Pro_5.46.zip::https://github.com/miaomiaosoft/PandaOCR.Pro/releases/download/5.46/PandaOCR.Pro_5.46.zip
+	source = deepin-wine-pandaocr.pro.install
+	source = deepin-wine-pandaocr.pro.desktop
+	source = run.sh
+	sha256sums = f21c8dd02ee531e32a6f8b4b9cf8c49a21d6c85d422063673ff172e07deeb98f
+	sha256sums = 1cecdaec9f3c6c58a591e72c8eaab145fbfc59b961201e0ee55a358bcfac5746
+	sha256sums = fba9300589f8e39390cbbd82e3042d494f70b166881460e4e8ce8b75265da481
+	sha256sums = 21fc8ca36649a1085d71f7391c2ec1378d2322a12a1713ce00eefc1072c90f3b
+	sha256sums = ec46ba753145c6e03bd78251c20457e891a08d2daec20ce09c35ab3395f387a8
+
+pkgname = deepin-wine-pandaocr.pro
