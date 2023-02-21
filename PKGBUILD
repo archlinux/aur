@@ -1,7 +1,7 @@
 # Maintainer: Crawcik <crawcik@gmail.com>
 
 pkgname=flax-git
-pkgver=1.4.6334.r218
+pkgver=1.5.6338.r1
 pkgrel=1
 pkgdesc="Flax Engine – multi-platform 3D game engine "
 arch=('x86_64')
