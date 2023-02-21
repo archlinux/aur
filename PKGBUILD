@@ -1,15 +1,15 @@
-#Maintainer: Skykey <zcxzxlc@163.com>
+#Maintainer: kro007 <mula.gabriel.fr@gmail.com>
 #Contributer: NN777 <NN777@NN777.com>
 
 pkgname=('kingstvis')
-pkgver=3.5.4
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Kingst Virtual Instruments - Logic Analyzer"
 provides=("kingstvis")
 url='http://www.qdkingst.com'
 arch=('x86_64')
 depends=('qt5-base' 'qt5-svg')
-source=("${pkgname}.tar.gz::http://res.kingst.site/kfs/KingstVIS_v${pkgver}.tar.gz"
+source=("${pkgname}.tar.gz::http://www.qdkingst.com/download/vis_linux"
 kingstvis.desktop
 logo-0.png
 logo-1.png
@@ -17,7 +17,7 @@ logo-2.png
 logo-3.png
 logo-4.png
 )
-md5sums=('182ce951f4a5535d7011dfb4357c6a5b'
+md5sums=('1aa82fc8454d239cf424bdbea2862fa4'
 SKIP
 SKIP
 SKIP
