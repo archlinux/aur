@@ -14,19 +14,22 @@ groups=(
 )
 pkgver=0.2
 # _phcver="$(pacman -Q phc-intel | awk '{print $2}')" # Version of the installed package `phc-intel`.
-pkgrel=2
+pkgrel=5
 pkgdesc="Helper scripts for phc-intel, a frequency driver for Intel CPUs with undervolting feature."
 url="https://gitlab.com/linux-phc/phc-intel"
 arch=('any')
 license=('GPL2')
 depends=(
   'bash'
-  'PHC-INTEL-MODULE'
+  'PHC-INTEL-MODULE' # This means kernel-side support; packages providing kernel module, but also kernel packages which have that builtin, can set this.
 )
 makedepends=()
 optdepends=()
 provides=()
 conflicts=()
+replaces=(
+  "phc-intel<=0.3.2.rev44"
+)
 backup=(
   'etc/default/phc-intel'
 )
