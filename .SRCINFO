@@ -1,0 +1,21 @@
+pkgbase = gbar-git
+	pkgdesc = Blazingly fast status bar written with GTK
+	pkgver = r53.3d2129c
+	pkgrel = 1
+	url = https://github.com/scorpion-26/gBar
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = gcc
+	depends = gtk-layer-shell
+	depends = pulseaudio
+	optdepends = bluez-utils: Bluetooth support
+	optdepends = hyprland: Workspace widgets
+	optdepends = nvidia-utils: Nvidia GPU support
+	provides = gbar
+	source = gBar::git+https://github.com/scorpion-26/gBar
+	sha256sums = SKIP
+
+pkgname = gbar-git
