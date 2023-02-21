@@ -11,7 +11,7 @@ pkgbase = browser360-bin
 	depends = gtk3
 	depends = gtk2
 	conflicts = browser360-stable-bin
-	source = https://down.360safe.com/gc/signed_com.360.browser-stable_13.2.1028.33-2_amd64.deb
+	source = https://down.360safe.com/gc/signed_com.360.browser-stable_13.2.1028.33-1_amd64.deb
 	sha256sums = b02e06dddb0ffd40bcd291094067885acf7bef6c582a2887493d9e6b5f574822
 
 pkgname = browser360-bin

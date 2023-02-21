@@ -14,7 +14,7 @@ optdepends=()
 provides=()
 conflicts=(browser360-stable-bin)
 install=
-source=("https://down.360safe.com/gc/signed_${_pkgname}_${pkgver}-${pkgrel}_amd64.deb")
+source=("https://down.360safe.com/gc/signed_${_pkgname}_${pkgver}-1_amd64.deb")
 sha256sums=('b02e06dddb0ffd40bcd291094067885acf7bef6c582a2887493d9e6b5f574822')
 
 prepare() {
