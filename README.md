@@ -1,24 +1,12 @@
-# <p align="center">kernel-modules-hook</p>
+# kernel-modules-hook
 
-Tired of missing modules when updating the kernel?<br/>
-Annoyed by `modprobe: FATAL: Module smth not found in directory /lib/modules/new-kernel`?<br/>
-Losing uptime after reboots due to kernel update?
+This is an alpm hook for Archlinux (or other pacman-based distribution) to keep the kernel modules of the running kernel available during a kernel upgrade.
 
-*The solution is here.*
-
-* Save.<br/>
-![Save](https://i.imgur.com/3YHtBRB.png)<br/>
-* Update.<br/>
-![Update](https://i.imgur.com/uxySEMY.png)<br/>
-* Restore.<br/>
-![Restore](https://i.imgur.com/AJeBw0n.png)<br/>
-* Enjoy.<br/>
-![Enjoy](https://i.imgur.com/WQAYSSR.png)
-
-Do not worry, backups are automatically cleaned.
+It relies on hardlinks and bind mount for saving and restoring, and systemd-tmpfiles for cleanup.
 
 ## Installation
-[Community](https://archlinux.org/packages/community/any/kernel-modules-hook/)
-```bash
-$ pacman -S kernel-modules-hook
-```
+
+### Archlinux
+[AUR](https://aur.archlinux.org/packages/kernel-modules-hook-hardlinks/)
+
+Use your AUR helper of choise, or use makepkg.
