@@ -3,7 +3,7 @@
 # Contributor: Adrian Perez de Castro <aperez@igalia.com>
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-hidpi-xprop-git
-pkgver=0.17.0.20230221.103530
+pkgver=0.17.0.20230221.115526
 pkgrel=1
 license=(MIT)
 pkgdesc='Modular Wayland compositor library (git version, with patches)'
@@ -38,9 +38,11 @@ makedepends=(
 	wayland-protocols
 	xorgproto)
 source=("${pkgname}::git+${url}.git"
-        0001-xwayland-support-HiDPI-scale.patch)
+        0001-xwayland-support-HiDPI-scale.patch
+        0002-Fix-configure_notify-event.patch)
 sha512sums=('SKIP'
-            'e03a3c9ac99645b46d583e6c00b7001bdc05738c1ac906e3e3f60e5893490f8c6da23a45e66a000a208e6ea8987294edd6cb13037b32a48d4e921492dcf0bb36')
+            'e03a3c9ac99645b46d583e6c00b7001bdc05738c1ac906e3e3f60e5893490f8c6da23a45e66a000a208e6ea8987294edd6cb13037b32a48d4e921492dcf0bb36'
+            '65d50ed5a1cb5b976e02da69280944bdcc924827ac16106750170b28d96aea42ce723366a44dd0b9c27fe6b2b862b9e7c7502570c05690bbcc46f78ac1c22324')
 install=wlroots-hidpi-xprop-git.install
 pkgver () {
   cd "${pkgname}"
@@ -55,6 +57,7 @@ prepare () {
   cd "${pkgname}"
   git revert -n 18595000f3a21502fd60bf213122859cc348f9af 
   patch -Np1 < ../0001-xwayland-support-HiDPI-scale.patch
+  patch -Np1 < ../0002-Fix-configure_notify-event.patch
 }
 
 build () {
