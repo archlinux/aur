@@ -1,14 +1,14 @@
 pkgbase = auto-cpufreq
 	pkgdesc = Automatic CPU speed & power optimizer
 	pkgver = 1.9.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AdnanHodzic/auto-cpufreq
 	install = auto-cpufreq.install
 	arch = any
 	license = LGPL3
-	makedepends = python-setuptools
 	makedepends = python-pip
 	makedepends = python-wheel
+	depends = python-setuptools
 	depends = python-distro
 	depends = python-psutil
 	depends = python-click
