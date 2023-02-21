@@ -23,7 +23,7 @@ source=('unreal-engine-4.sh'
         'clang_path_fix.patch'
         'ccache_executor.patch'
         'unreal-engine-4-pacman-cache.hook')
-sha256sums=('4180b39fe5ec3aa64a4b22171ddc677670190b011dc5a9457d0387959ec60e54'
+sha256sums=('9556a3d1cf20c479244d2186ab24cdd0bda9ef26a173ff658d17a8b9f0f008ed'
             'c04c03b2c5c933b7eb1af283d607934ad95fd57f44d62b83719061b555a85dca'
             '960c5a100e0c3732f3c73fb645d3989d39acf4576d74615bbef38ebeee008b90'
             '33982486f7fafac35a33dfa37c85cfba8543aa78b5fe13c395d9cccf691ef4b3'
