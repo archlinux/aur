@@ -1,8 +1,8 @@
 # Maintainer: Tony <tony@libpcap.net>
 
 pkgname=rocksdb-lite
-pkgver=7.8.3
-pkgrel=2
+pkgver=7.9.2
+pkgrel=1
 pkgdesc='Embedded key-value store for fast storage (lite version)'
 arch=(i686 x86_64)
 url='http://rocksdb.org'
@@ -13,7 +13,7 @@ conflicts=('rocksdb')
 provides=('rocksdb')
 source=("https://github.com/facebook/rocksdb/archive/v${pkgver}.tar.gz"
         "fix-uninitialized-read_req.patch")
-sha256sums=('b85408a374770897332bf15e51620a5f35720dd416a4749e3899057f9cfaf84d'
+sha256sums=('886378093098a1b2521b824782db7f7dd86224c232cf9652fcaf88222420b292'
             '244fdbe8e4a07dbf54da0f1e90322585eb1d5fbd1906cc09fd154bb200cb694b')
 
 build() {
