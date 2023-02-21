@@ -16,13 +16,14 @@
 _phpbase="70"
 _suffix=""
 pkgver="7.0.33"
-pkgrel="10"
+pkgrel="12"
 pkgbase="php70"
 pkgdesc="PHP 7.0.33 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1  -DU_DEFINE_FALSE_AND_TRUE=1 "
 _build_apache_cfg="etc/httpd/conf/extra"
 _build_bundled_gd="0"
 _build_conf_d="etc/php70/conf.d"
+_build_forced_openssl_11="1"
 _build_fpm_name="php-fpm70"
 _build_fpm_service_name="php70-fpm"
 _build_icu_src_dir="icu/source"
@@ -133,7 +134,6 @@ source=(
     "php-apache.conf"
     "https://php.net/distributions/php-${pkgver}.tar.xz"
     "php55-phar-names.patch"
-    "openssl-sslv3-consts.patch"
     "fpm-numeric-uid-gid.patch"
     "fpm-reload-sighup.patch"
     "mysql-socket-php5.3.patch"
@@ -148,8 +148,6 @@ source=(
     "timezonedb-php7.0.patch"
 )
 depends=(
-)
-checkdepends=(
 )
 makedepends=(
     "acl"
@@ -176,9 +174,9 @@ makedepends=(
     "coreutils"
     "findutils"
     "libxslt"
-    "openssl"
     "e2fsprogs"
-    "db"
+    "openssl-1.1"
+    "db5.3"
     "postgresql-libs"
     "unixodbc"
     "libfbclient"
@@ -211,7 +209,6 @@ arch=(
 )
 _patches=(
     "php55-phar-names.patch"
-    "openssl-sslv3-consts.patch"
     "fpm-numeric-uid-gid.patch"
     "fpm-reload-sighup.patch"
     "mysql-socket-php5.3.patch"
@@ -233,11 +230,11 @@ _sapi_depends=(
 _ext_depends_snmp=(
     "php70=7.0.33"
     "net-snmp"
-    "openssl"
+    "openssl-1.1"
 )
 _ext_depends_ftp=(
     "php70=7.0.33"
-    "openssl"
+    "openssl-1.1"
 )
 _ext_depends_intl=(
     "php70=7.0.33"
@@ -249,7 +246,7 @@ _ext_depends_imap=(
     "krb5"
     "c-client"
     "libxcrypt"
-    "openssl"
+    "openssl-1.1"
 )
 _ext_depends_gd=(
     "php70=7.0.33"
@@ -262,7 +259,7 @@ _ext_depends_mysql=(
 )
 _ext_depends_dba=(
     "php70=7.0.33"
-    "db"
+    "db5.3"
 )
 _ext_depends_odbc=(
     "php70=7.0.33"
@@ -291,7 +288,7 @@ _ext_depends_openssl=(
     "php70=7.0.33"
     "krb5"
     "e2fsprogs"
-    "openssl"
+    "openssl-1.1"
 )
 _phpconfig="\
     --prefix=/usr \
@@ -527,6 +524,10 @@ build() {
     export EXTENSION_DIR="/usr/lib/${pkgbase}/modules"
     if ((_build_openssl_v10_patch)); then
         export PHP_OPENSSL_DIR="/usr/lib/openssl-1.0"
+        export PKG_CONFIG_PATH="/usr/lib/openssl-1.0/pkgconfig"
+    elif ((_build_forced_openssl_11)); then
+        export PHP_OPENSSL_DIR="/usr/lib/openssl-1.1"
+        export PKG_CONFIG_PATH="/usr/lib/openssl-1.1/pkgconfig"
     fi
     if [[ ! -z "${_cppflags}" ]]; then
         CPPFLAGS+=" $_cppflags "
@@ -1546,7 +1547,6 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
             'ab8c5be6e32b1f8d032909dedaaaa4bbb1a209e519abb01a52ce3914f9a13d96'
             '70e3cc00d954fa2b466a0e8f356c68bbb1e92b36304deaffd34c53cb6ae5e979'
-            'aecd8dff7022e956718407a5b98dec19acdceef08b0a58e7266b483bc3845de6'
             'd175f0c14fdb22855090c93f76e18f04320d7bf15afc057ffde947f9bb361242'
             'f5ae925036744a5e88cea2698879aea0498e1e23aee7801923d90f16be383908'
             '12f4e3aeab72e7d24221c07b64106c496c2e300518682bd301351dc9fa6ab3cf'
@@ -1555,7 +1555,7 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             'e07ebf146cea8e734c7704ba94f18279642df2b2f09d868781746d165041b8d5'
             'ed3184d5a6f7a3bf35ee32169f8dc3b6cba09c38f60e868e24652fe9a7dd844d'
             'c9f3b0dff07a7e9688f60b92a2a15817bd7cd59a8c5278cae629d856be66de5c'
-            '159bbf8c7657352ed6d6086e2b03011722d339659c586a56965b157ed9c7c8f9'
+            '526ff10b94dd352a086a42a1d1e2f9cee956ee1a84308784976e0e5cec11681f'
             '558e780e93dfa861a366c49b4d156d8fc43f17898f001ae6033ec63c33d5d41c'
             '40bcc1e5058602302198d0925e431495391d8469499593af477f59d84d32f764'
             'e221c918a75bcd851ee9d32d50370aa430a4a9ef94eaf2f4e8cbcc53483f8d31')
