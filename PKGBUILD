@@ -11,8 +11,8 @@ groups=(
 )
 _downloadver=rev44 # Set this to specify what to download.
 pkgver=0.3.2.rev44
-pkgrel=3
-pkgdesc=pkgdesc="Frequency driver for Intel CPUs with undervolting feature. DKMS-based kernel module, stable branch."
+pkgrel=4
+pkgdesc="Frequency driver for Intel CPUs with undervolting feature. DKMS-based kernel module, stable branch."
 url="https://gitlab.com/linux-phc/phc-intel"
 arch=('any')
 license=('GPL2')
