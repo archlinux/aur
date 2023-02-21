@@ -9,10 +9,13 @@ url="https://www.papercut.com/support/resources/manuals/ng-mf/clienttool/topics/
 depends=('java-runtime>=11' 'gtk3')
 install="$pkgname.install"
 
-pkgver=21.1.1
-pkgrel=3
-_version_prefix="21.x"
-_build="57910"
+pkgver=22.0.8
+pkgrel=1
+_version_prefix="22.x"
+_build="65201"
+
+# Latest release URL can be found with this redirect
+# curl -LIs https://www.papercut.com/api/product/ng/latest/linux-x64/ | sed -n 's/^location: //p'
 
 source=("papercut-client"
 "config.properties.tmpl"
@@ -22,7 +25,7 @@ noextract=("pcng-setup-$pkgver.$_build.sh")
 
 sha256sums=('3096295e90a23594e34ee3ff394e070ebabe15df42740cd95b27cf04adbd7ba3'
             '55e2e1ea938d8a74846b29237f66ee97a80987f2a66ff54530f31bd84b727c00'
-            '5cabf5a3936693a5f355fc4ec51d12c708703409346ced02a047a17ad3a2cac7')
+            'c5d5839b139e08a2cd28c373211d2aca3a7a81375a620d5467e4775f9b7e7e26')
 
 # App Configuration
 # Either edit here or in $HOME/.config/papercut-client/config.properties
