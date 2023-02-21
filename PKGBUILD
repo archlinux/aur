@@ -1,10 +1,11 @@
 pkgname=sunshine
 pkgver=0.18.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A self-hosted game stream host for Moonlight."
 arch=('x86_64' 'aarch64')
 url=https://app.lizardbyte.dev
 license=('GPL3')
+install=sunshine.install
 
 depends=('avahi' 'boost-libs' 'curl' 'libevdev' 'libmfx' 'libpulse' 'libva' 'libvdpau' 'libx11' 'libxcb' 'libxfixes' 'libxrandr' 'libxtst' 'numactl' 'openssl' 'opus' 'udev')
 makedepends=('boost' 'cmake' 'git' 'make' 'nodejs' 'npm')
