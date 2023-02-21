@@ -1,43 +1,37 @@
 # Maintainer: éclairevoyant
-# Generator  : CPANPLUS::Dist::Arch 1.32
 
+_dist=Metrics-Any
 pkgname='perl-metrics-any'
-pkgver=0.08
+pkgver=0.09
 pkgrel=1
 pkgdesc="Abstract collection of monitoring metrics"
 arch=('any')
+url="https://metacpan.org/release/$_dist"
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=5.014')
 makedepends=('perl-module-build')
 checkdepends=('perl-test-fatal>=0')
-url='https://metacpan.org/release/Metrics-Any'
-source=("http://search.cpan.org/CPAN/authors/id/P/PE/PEVANS/Metrics-Any-$pkgver.tar.gz")
-sha512sums=('407346619b3837c4b952b4254a9d68e31d61170aedecbea9346675b843945999960e395ab372ea8cd57d3cc95989c492582c72ebd6d0d8c118a565e8e167443b')
-_distdir="Metrics-Any-$pkgver"
+source=("https://cpan.metacpan.org/authors/id/P/PE/PEVANS/$_dist-$pkgver.tar.gz")
+b2sums=('b1b40c48d0a6d405f73f1a78dcab1e59c79c5195665ebef96b85531c39ab2f0cd90a495881a4b6e6cbcb114c0bf88479e8ce68310e72496a86f78a268962c50d')
 
 build() {
-	( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-	    PERL_AUTOINSTALL=--skipdeps                            \
-	    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-	    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-	    MODULEBUILDRC=/dev/null
-
-	  cd "$srcdir/$_distdir"
-	  /usr/bin/perl Build.PL
-	  /usr/bin/perl Build
-	)
+  cd $_dist-$pkgver
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
+  /usr/bin/perl Build.PL
+  ./Build
 }
 
 check() {
-	cd "$srcdir/$_distdir"
-	( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-	  /usr/bin/perl Build test
-	)
+  cd $_dist-$pkgver
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1
+  ./Build test
 }
 
 package() {
-	cd "$srcdir/$_distdir"
-	/usr/bin/perl Build install
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  cd $_dist-$pkgver
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  ./Build install --installdirs=vendor --destdir="$pkgdir"
 }
