@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=0.35.0.135.g9b59d39a3a
+pkgver=0.35.0.249.gc0807e98fb
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
@@ -67,6 +67,7 @@ makedepends=(
              'nuklear'
              'glad'
              'jbigkit'
+             'libpipewire'
              )
 optdepends=(
             'nvidia-utils: for hardware accelerated video decoding with CUDA'
@@ -111,7 +112,8 @@ prepare() {
   cd mpv-build
   # use arch-meson
   sed -e 's|meson setup|arch-meson|g' \
-      -e 's|-Dbuildtype=release|--auto-features disabled -Ddefault_library=shared|g' \
+      -e 's|-Dbuildtype=release|--auto-features disabled|g' \
+      -e '/LDFLAGS=/s/^/#/' \
       -i scripts/{mpv,libplacebo}-config
 
   git clone "${srcdir}/mpv"
@@ -144,6 +146,7 @@ _ffmpeg_options=(
     )
 
   _mpv_options=(
+    '-Ddefault_library=shared'
     '-Dlibmpv=true'
     '-Dbuild-date=false'
 
@@ -206,7 +209,7 @@ _ffmpeg_options=(
     '-Dhtml-build=enabled'
 
     # Fix Build
-    '-Dc_link_args=-lstdc++ -Wl,-Bsymbolic'
+    '-Dc_link_args=-Wl,-Bsymbolic -lstdc++'
     )
 
 if [ -f /usr/lib/libavisynth.so.*.*.* ]; then
@@ -225,12 +228,12 @@ fi
 
 build() {
   cd mpv-build
-  BUILDSYSTEM=meson ./build
+  ./build
 }
 
 package() {
   cd mpv-build
-  BUILDSYSTEM=meson DESTDIR="${pkgdir}" ./install
+  DESTDIR="${pkgdir}" ./install
 
   install -Dm755 mpv/TOOLS/mpv_identify.sh "${pkgdir}/usr/bin/mpv-identify"
   install -Dm755 mpv/TOOLS/idet.sh "${pkgdir}/usr/bin/mpv-idet"
@@ -246,5 +249,5 @@ package() {
   (cd mpv/TOOLS/lua; for i in $(find . -type f); do install -Dm644 "${i}" "${pkgdir}/usr/share/mpv/scripts/${i}"; done)
 
   install -Dm644 mpv/LICENSE.GPL "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.GPL"
-  install -Dm644 mpv/LICENSE.GPL "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.LGPL"
+  install -Dm644 mpv/LICENSE.LGPL "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.LGPL"
 }
