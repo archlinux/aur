@@ -2,14 +2,14 @@
 
 _pkgname=olive
 pkgname=$_pkgname-git
-pkgver=continuous.r2477.gaa6b77f80
+pkgver=continuous.r2518.g2d83beb2c
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Free non-linear video editor"
 url="https://www.olivevideoeditor.org/"
 license=('GPL3')
-depends=('ffmpeg4.4' 'libolivecore' 'openimageio' 'opentimelineio0.14' 'portaudio' 'qt6-base')
-makedepends=('cmake' 'git' 'ninja' 'qt6-svg' 'qt6-tools')
+depends=('ffmpeg4.4' 'openimageio' 'opentimelineio0.14' 'portaudio' 'qt5-x11extras')
+makedepends=('cmake' 'git' 'ninja' 'qt5-svg' 'qt5-tools')
 
 # Temporarily, the "olive-git" package is incompatible
 # with the dependency "olive-community-effects-git".
@@ -19,8 +19,12 @@ makedepends=('cmake' 'git' 'ninja' 'qt6-svg' 'qt6-tools')
 
 provides=('olive')
 conflicts=('olive')
-source=('git+https://github.com/olive-editor/olive.git')
-sha512sums=('SKIP')
+source=('git+https://github.com/olive-editor/olive.git'
+        'git+https://github.com/KDAB/KDDockWidgets.git'
+        'git+https://github.com/olive-editor/core.git')
+sha512sums=('SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
   cd $_pkgname
@@ -30,6 +34,12 @@ pkgver() {
 prepare(){
   # Fix link problem with Imath library
   echo "target_link_libraries(Imath::Imath INTERFACE OpenEXR::OpenEXR)" >> $_pkgname/cmake/FindOpenEXR.cmake
+
+  cd $_pkgname
+  git submodule init
+  git config submodule.ext/core.url "$srcdir"/core
+  git config submodule.ext/KDDockWidgets.url "$srcdir"/KDDockWidgets
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
@@ -38,7 +48,6 @@ build() {
         -Bbuild \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DQT_VERSION_MAJOR=6 \
         -DOTIO_DEPS_INCLUDE_DIR=/usr/include/opentimelineio \
         -DCMAKE_PREFIX_PATH="/usr/lib/ffmpeg4.4;/usr/include/ffmpeg4.4"
   ninja -C build/
