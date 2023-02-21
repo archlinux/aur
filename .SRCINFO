@@ -1,0 +1,16 @@
+pkgbase = vivlio-bin
+	pkgdesc = Vivlio is an eBook reader in ePub and PDF format for PC (Windows or Linux) or Mac.
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://app.vivlio.com
+	arch = x86_64
+	license = unknow
+	depends = alsa-lib
+	depends = libxss
+	depends = at-spi2-core
+	depends = nss
+	depends = gtk3
+	source = Vivlio-2.2.1.deb::https://app.vivlio.com/download/linux64/deb
+	sha512sums = 5c0ec550ea5e9e7aa0711e9892d5808fa05e6bfadae0129a737f50c01aec57e5709adb50c2e281c1a599c5eb77d60c746fde30360d5837615847adedc4087a00
+
+pkgname = vivlio-bin
