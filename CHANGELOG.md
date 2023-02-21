@@ -6,9 +6,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 <!-- # [x.x.x] (unreleased) - 2022-mm-dd
 
-> Important: X breaking changes below, indicated by **❗ BREAKING ❗**
-
-## ❗ BREAKING ❗
+> Important: x potentially breaking changes below, indicated by **❗ BREAKING ❗**
 
 ## 🚀 Features
 
@@ -16,11 +14,209 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## 🛠 Maintenance
 
-- **Link directly to API Keys page in Studio - @abernix, #1202**
-
-  The `rover config auth` command will now provide a link that takes you directly to the "API Keys" page where you can create a Personal API Key, rather than a page that requires you to click through to another page.
-
 ## 📚 Documentation -->
+
+# [0.12.1] - 2023-02-17
+
+## 🐛 Fixes
+
+- **Updates the output of a skipped operation check to match regular checks - @EverlastingBugstopper, #1519**
+
+  A bit of polish to the output of the feature just released in 0.12.0.
+
+# [0.12.0] - 2023-02-17
+
+## 🚀 Features
+
+- **Allow `rover subgraph check` to execute without operation check results - @jsegaran, #1490**
+
+  Apollo Studio now allows you to disable operation checks for a graph variant. Older versions of Rover will fail to parse the result of a check without a result for an operation check and return an error. Running the same check in versions of Rover after 0.12.0 will succeed when operation checks are disabled.
+
+## 🛠 Maintenance
+
+- **Fix up xtask test runner - @EverlastingBugstopper, #1505**
+
+  `cargo xtask test` detects failed tests and reruns them with some arguments. Unfortunately the code to insert `--target` arguments was in the wrong order and resulted in confusing internal error messages on failed tests, this is now fixed.
+
+## 📚 Documentation
+
+- **Adds Gitlab CI/CD Instructions - @ugurcemozturk, #1513 fixes #429**
+
+# [0.11.1] - 2023-02-08
+
+## 🐛 Fixes
+
+- **Updates router config in `rover dev` to match newer versions - @dbanty, #1500**
+
+  The default configuration for the router in `rover dev` disables the health check. The router configuration recently renamed this check from `health-check` to `health_check`, which is now reflected in `rover dev`'s default router configuration.
+
+# [0.11.0] - 2023-01-24
+
+## 🚀 Features
+
+- **Manage contract configuration - @sachindshinde, #1475 fixes #1421**
+ 
+  Rover now includes two commands for creating, modifying, and reading contracts: `rover contract publish` and `rover contract describe`. Further documentation can be found [here](https://www.apollographql.com/docs/rover/commands/contracts).
+
+- **Easier file output with new `--output` argument - @gocamille, #1413 fixes #1212**
+
+  This change adds the new option, `--format`, to allow users to define the format type for messages printed to `stdout` (either by passing `plain` or `json` as an argument to `--format`). This replaces the use of `--output` for defining format types. The `--output` option will be available to define the output file type instead, following [Command Line Interface Guidelines for file outputs](https://clig.dev/#:~:text=%2Do%2C%20%2D%2Doutput%3A%20Output%20file.%20For%20example%2C%20sort%2C%20gcc.). This is an additive, non-breaking change and using the `--output` option will continue to be valid. Further documentation can be found [here](https://www.apollographql.com/docs/rover/conventions#output-to-a-file).
+
+- **Adds `--router-config` to `rover dev` - @EverlastingBugstopper, #1446 fixes #1373, #1345, and #1468**
+
+  The new `--router-config` argument for `rover dev` allows you to pass a [router configuration file]() on startup that can configure settings such as header propagaion and CORS policies. Further documentation can be found [here](https://www.apollographql.com/docs/rover/commands/dev/#advanced-configuration).
+
+- **Auto-update router versions in `rover dev` - @EverlastingBugstopper, #1432**
+
+  `rover dev` will automatically use the version of the router specified in [this plugin file](https://github.com/apollographql/rover/blob/main/latest_plugin_versions.json) instead of a hard coded version.
+
+## 🛠 Maintenance
+
+- **Better error and help text for ELv2 license argument - @DoumanAsh, #1456 fixes #1455**
+
+  The help text for the `--elv2-license` argument now includes the expected value for the argument, in addition to the error message returned when the argument is needed but not passed.
+
+- **Updates the Ariadne template URL - @patrick91, #1439**
+
+- **Updates `./examples/supergraph-demo` to `@apollo/server` v4, and removes `./examples/dev` - @EverlastingBugsttopper, #1442 fixes #1440 and #1441**
+
+- **Updates dependencies - @EverlastingBugstopper, #1481, #1450**
+
+  `apollo-parser` 0.3 -> 0.4
+  `base64` 0.13 -> 0.21
+  `git2` 0.15 -> 0.16
+  `graphql_client` 0.11.0 -> 0.12
+  `serial_test` 0.9 -> 1.0
+  `os_info` 3.4 -> 3.5
+  `os_type` 2.4 -> 2.6
+  `termcolor` 1.1 -> 1.2
+  `tokio` 1.21 -> 1.24
+
+## 📚 Documentation
+
+- **Fixes a link to schema check example - @MayCXC, #1431**
+
+# [0.10.0] - 2022-11-10
+
+> Important: 1 potentially breaking change below, indicated by **❗ BREAKING ❗**
+
+## ❗ BREAKING ❗
+
+- **Fix implementation of `--header` argument - @EverlastingBugstopper, #1369 fixes #1365**
+
+  This change tightens up usage of the `--header` argument used for `introspect` commands by disallowing previously valid (but undocumented) usage like this: `--header "Header-1: value" "Header-2: value"`. After this change, you _must_ conform to what we have in the documentation, which indicates separate instances of the `--header` argument for each header, like so: `--header "Header-1: value" --header "Header-2: value"`.
+
+## 🚀 Features
+
+- **Provide prebuilt binaries for ARM devices - @EverlastingBugstopper, #1356 fixes #582**
+
+  As of this release, [`rover.apollo.dev`](https://rover.apollo.dev) delivers prebuilt binaries from our GitHub release for ARM devices. Most notably this means that Docker on M1 devices should work out of the box. You should be able to replace any custom builds in your tooling pipeline with a call to the [official curl installer](https://www.apollographql.com/docs/rover/getting-started/#linux--macos-installer).
+
+- **Report downstream check task results - @sachindshinde, #1385**
+
+  When running `rover subgraph check` commands, if the proposed schema would cause downstream failures (i.e. with contracts), those failures are now reported in the check response.
+
+- **Faster `rover supergraph compose` - @EverlastingBugstopper, #1392 fixes #992**
+
+  Rover now resolves all subgraph schemas in parallel when running `rover supergraph compose` on a `supergraph.yaml` file. This should improve the speed to compose large supergraphs significantly. This change also drastically improves error handling by reporting _all_ issues with resolving subgraph schemas (and informing you which schema(s) failed to resolve) rather than exiting on the first failed schema resolution.
+
+- **Add `--polling-interval` to `rover dev` - @patrick91, #1377 fixes #1221**
+
+  You can now set `--polling-interval` when running `rover dev` to change the frequency of introspection poll requests for subgraphs that don't provide the schema from the file system with the `--schema` argument.
+
+- **Adds `--skip-update-check` to skip the once-per-day update check - @tsing, #1396 fixes #1394**
+
+  Once per day, Rover checks if there is a new version available for update and notifies the user if there is. There is now a flag you can pass to disable this check: `--skip-update-check`. 
+
+- **Respect the `NO_COLOR` environment variable - @chnn, #1360**
+
+  `rover` will not use color in any output when executed with the `NO_COLOR` environment variable set to `true`.
+
+## 🛠 Maintenance
+
+- **Updates from clap v3 to clap v4 - @EverlatingBugstopper, #1404 fixes #1400**
+
+  This release updated the command line argument parsing library to major version 4. There should be no noticeable compatibility issues with this update, only lighter binaries. The look and feel of the main `rover --help` output has changed to a neutral color palette along with this change.
+
+- **Updates Rust to 1.65.0 - @EverlastingBugstopper, #1399**
+
+- **Updates node.js to v18 - @renovate, #1389**
+
+- **Updates node dev-dependencies - @renovate, #1204 and zs#1398**
+
+- **Remove dependency on the `saucer` crate - @EverlastingBugstopper, #1402**
+
+- **Updates `introspector-gadget` to 0.2.0 - @EverlastingBugstopper, #1386**
+
+- **Only cache dependencies in CI, not whole `/target` - @EverlastingBugstopper, #1387**
+
+- **Use `engine@main` instead of `engine@current` to fetch the API schema - @EverlastingBugstopper, #1368**
+
+- **Use `lychee` as a link checker instead of npm - @ptondereau, #1328 fixes #1306**
+
+  We now use a Rust-based link checker to check the links in the Rover repository instead of a node-based link checker (that was much more flaky).
+
+- **Describe latest federation versions in `./latest_plugin_versions.json` - @EverlastingBugstopper, #1363**
+
+  When you run `rover supergraph compose`, the latest version of composition is automatically downloaded to your machine, these latest version numbers are now stored in `./latest_plugin_versions.json` in the Rover repo.
+
+- **Rename `apollo-` headers to `apollographql-` headers - @jsegaran, #1411**
+
+- **Update npm to v9 - @renovate, #1412**
+
+## 📚 Documentation
+
+- **Update studio algolia key to graphos - @trevorblades, #1384**
+
+- **Fix some broken links - @StephenBarlow, #1376**
+
+- **Fix a typo in the migration guide instructing the use of `check` instead of `publish` - @EverlastingBugstopper, #1364 fixes #1361**
+
+# [0.9.1] - 2022-09-30
+
+## 🚀 Features
+
+- **Add templates for TypeScript, Go, Kotlin, and Java - @dbanty, #1347**
+
+  The `rover template` commands now include four more languages.
+
+## 🐛 Fixes
+
+- **Properly report errors when the first `rover dev` process starts up - @EverlastingBugstopper, #1342**
+
+  If something went wrong while starting the first `rover dev` process, it would attempt to start an attached process, which would fail with an inscrutable `the main rover dev session is no longer active` error message. Now, Rover properly reports issues with starting up the first `rover dev` session.
+
+- **Properly report plugin installation errors on `rover dev` startup - @EverlastingBugstopper, #1357**
+  
+  If a plugin failed to install when starting `rover dev`, the error wouldn't be reported properly. Now, if something goes wrong, the error message will be printed properly.
+
+- **Replace some misleading error suggestions regarding ports with `rover dev` - @EverlastingBugstopper, #1340**
+
+  Some errors suggested retrying the `rover dev` command with a different `--port` argument, which doesn't exist. In these cases, `rover dev` will suggest that you specify a different `--supergraph-port` argument instead.
+
+- **Don't exclude certain git remotes from `GitContext` - @EverlastingBugstopper, #1350 fixes #1349**
+
+  In v0.8.2, we started normalizing git remotes for anonymized telemetry. Unfortunately we started excluding git remotes that were not one of BitBucket, GitLab, or GitHub. We now record all of these properly.
+
+## 🛠 Maintenance
+
+- **Fix typo in `rover subgraph publish` output - @EverlastingBugstopper, #1358 fixes #1337**
+
+  Instead of saying "Monitor your schema delivery progresson studio", `rover subgraph publish` outputs "You can monitor this launch in Apollo Studio".
+
+- **Improve caching in CI - @EverlastingBugstopper, #1351 and #1352**
+
+  In CI builds, we now cache `/target` _and_ `~/.cargo`, instead of just `/target`. 
+
+- **Specify all dependencies in root `Cargo.toml` - @EverlastingBugstopper, #1344**
+
+  All of Rover's dependencies can now be viewed and updated in the root `Cargo.toml`, rather than needing to hunt around the workspace to update crates.
+
+- **Updates dependencies - @EverlastingBugstopper, #1346**
+
+  - assert_cmd 1 -> 2
+  - git2 0.14 -> 0.15
+  - online 3.0.1 -> 4.0.0
 
 # [0.9.0] - 2022-09-22
 

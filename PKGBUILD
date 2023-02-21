@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=apollo-rover
-pkgver=0.9.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="CLI for Apollo's suite of GraphQL developer productivity tools"
 arch=('x86_64')
@@ -13,8 +13,8 @@ replaces=('apollo-rover-fed2')
 options=('!lto')
 install=rover.install
 changelog=CHANGELOG.md
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ba3dd64340176bdd418261ad4c05e9f4cd32531bfcb0b9fcec10c2a7b1bc6eb7')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('f2cbfbc80360903d734ee9f8e513465ee91d08cb4671924521978bd20138e10c')
 
 prepare() {
 	cd "rover-$pkgver"
@@ -37,7 +37,7 @@ check() {
 
 package() {
 	cd "rover-$pkgver"
-	install -D "target/release/rover" -t "$pkgdir/usr/bin/"
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dv "target/release/rover" -t "$pkgdir/usr/bin/"
+	install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
