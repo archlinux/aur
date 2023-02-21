@@ -2,23 +2,23 @@
 pkgname=freac-appimage
 _pkgname=freac
 pkgver=1.1.6
-_pkgver=continuous
-pkgrel=2
+pkgrel=3
 pkgdesc="Audio converter and CD ripper with support for various popular formats and encoders."
 arch=('x86_64')
 url="https://www.freac.org/"
+_githuburl="https://github.com/enzo1982/freac"
 license=('GPL2')
 conflicts=('freac')
 provides=('freac')
 depends=(zlib hicolor-icon-theme)
 options=(!strip)
 source=(
-  "${_pkgname}-${pkgver}-x86_64.AppImage::https://github.com/enzo1982/${_pkgname}/releases/download/${_pkgver}/${_pkgname}-${_pkgver}-linux-x86_64.AppImage"
-  "LICENSE::https://github.com/enzo1982/${_pkgname}/raw/master/COPYING"
-  "${pkgname}.svg::https://github.com/enzo1982/freac/raw/master/icons/freac.svg"
+  "${_pkgname}-${pkgver}-x86_64.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.AppImage"
+  "LICENSE::${_githuburl}/raw/master/COPYING"
+  "${pkgname}.svg::${_githuburl}/raw/master/icons/freac.svg"
   "${pkgname}.desktop"
 )
-md5sums=('SKIP'
+md5sums=('13ae29576120712bcbd7c1a39b441745'
          '4d699aa6a6c6b7bebeadeb886de76e55'
          '9c7d78a4f879a7ccba7ceb1013aaef00'
          '5c72bba204ba9f38e584e7618e7b15e3')
