@@ -12,9 +12,9 @@ groups=(
   'linux-phc'
   'phc-intel'
 )
-pkgver=0.3.2.rev43.r51.20221212.9e5391b
+pkgver=0.3.2.rev44.r52.20230220.f0f42bd
 _phcver="$(awk -F. '{print $1"."$2"."$3}' <<<"${pkgver}")"
-pkgrel=6
+pkgrel=1
 pkgdesc="Frequency driver for Intel CPUs with undervolting feature. DKMS-based kernel module, stable branch, latest git checkout."
 url="https://gitlab.com/linux-phc/phc-intel"
 arch=('any')
@@ -32,8 +32,8 @@ provides=(
   'linux-phc'
   "${_pkgname}=${pkgver}"
   "phc-intel-dkms=${pkgver}"
-  "phc-intel-patch=${pkgver}"
-  "PHC-INTEL-MODULE" # This means kernel-side support; packages providing kernel module, but also kernel packages which have that builtin, can set this.
+  "phc-intel-patch=${pkgver}" # It provides also the kernel patches.
+  "PHC-INTEL-MODULE"          # This means kernel-side support; packages providing kernel module, but also kernel packages which have that builtin, can set this.
 )
 conflicts=(
   "${_pkgname}"
@@ -76,7 +76,6 @@ pkgver() {
   else
     printf '%s' "${_ver}.${_upstreamrev}.r${_rev}.${_date}.${_hash}"
   fi
-
 }
 
 build() {
@@ -91,7 +90,6 @@ package() {
   umask 022
   install -dvm755                        "${pkgdir}/usr/src/phc-intel-${pkgver}"
   install -Dvm644 "${srcdir}/dkms.conf"  "${pkgdir}/usr/src/phc-intel-${pkgver}/dkms.conf"
-  # install -Dvm644 "dkms.conf"            "${pkgdir}/usr/src/phc-intel-${pkgver}/dkms.conf"
 
   install -Dvm644 "phc-intel.modprobe"   "${pkgdir}/usr/lib/modprobe.d/phc-intel.conf"
   cp -Rv inc Makefile                    "${pkgdir}/usr/src/phc-intel-${pkgver}"/
@@ -104,5 +102,4 @@ package() {
 
   install -Dvm644 gpl-2.0.txt            "${pkgdir}/usr/share/licenses/${pkgname}/gpl-2.0.txt"
   ln -svf "/usr/share/licenses/${pkgname}/gpl-2.0.txt"  "${pkgdir}/usr/share/doc/${_pkgname}/LICENSE"
-
 }
