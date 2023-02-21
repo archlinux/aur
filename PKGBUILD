@@ -3,7 +3,7 @@
 # Contributor: Nils Czernia <nils at czserver dot de>
 
 pkgname=grav
-pkgver=1.7.39.1
+pkgver=1.7.39.2
 pkgrel=1
 pkgdesc='Modern, Crazy Fast, Ridiculously Easy and Amazingly Powerful Flat-File CMS'
 arch=('any')
@@ -28,7 +28,7 @@ source=("${pkgname}-${pkgver}.zip::https://github.com/getgrav/grav/releases/down
         "grav.php-fpm.ini"
         "grav.php-fpm.d.grav.conf"
         "grav.php-fpm.service.d.override.conf")
-sha256sums=('aa9610824bda64ca60d0810469298193e9cf125e2d851fb968ac31fb5013f0ee'
+sha256sums=('1091de4f3547377d066829c82f48dde802b859fb9fed9673ac86f87f09c6a65d'
             '773b4015af1eca07e154f8d555e08e021f7d8b6c19ea5d8905ec472e8e18d2bf'
             '125e08820ed477582d7ae716dac6495bca4eac485fa4d4263b11f2505fc355db'
             'ced168231a98be4816afc0a1928b54218c4ce4081be7b49acd704e2a9325f9db'
