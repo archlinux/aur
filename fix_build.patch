@@ -1,0 +1,24 @@
+diff --git a/src/fft.cpp b/src/fft.cpp
+index f00dd4f..d5fa4c2 100644
+--- a/src/fft.cpp
++++ b/src/fft.cpp
+@@ -6,6 +6,7 @@
+  */
+ #include "fft.hpp"
+ 
++#include <algorithm>
+ #include <cassert>
+ #include <cstring>
+ #include <cmath>
+diff --git a/src/value-map.cpp b/src/value-map.cpp
+index 51e3944..2e1138a 100644
+--- a/src/value-map.cpp
++++ b/src/value-map.cpp
+@@ -5,6 +5,7 @@
+  * it under the terms of the MIT license. See LICENSE for details.
+  */
+ #include "value-map.hpp"
++#include <algorithm>
+ #include <cmath>
+ 
+ ValueMap::ValueMap(double lower, double upper, const std::string& unit) : lower_(lower), upper_(upper), unit_(unit)
