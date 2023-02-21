@@ -118,11 +118,6 @@ prepare() {
     cd "${pkgname}" || return
     CURRENT_CLONED_VERSION="$(git describe --tags)"
     if [ "${CURRENT_CLONED_VERSION}" != "${pkgver}-release" ]; then
-      cd ..
-      rm -rf "${pkgname}"
-      git clone --depth=1 --branch=${pkgver}-release git@github.com:EpicGames/UnrealEngine "${pkgname}"
-      cd "${pkgname}" || return
-    else
       rm -f .git/index.lock
       git fetch --depth=1 origin tag ${pkgver}-release
       git reset --hard ${pkgver}-release
