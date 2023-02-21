@@ -1,0 +1,15 @@
+pkgbase = toughcookies-appimage
+	pkgdesc = Tough Cookies is a modern flash cards study and management app that runs cross-platform on Windows, Mac, and Linux.
+	pkgver = 0.45.0
+	pkgrel = 2
+	url = https://www.toughcookies.net/
+	arch = x86_64
+	license = Freeware
+	depends = zlib
+	depends = hicolor-icon-theme
+	conflicts = toughcookies
+	options = !strip
+	source = toughcookies-0.45.0.AppImage::https://downloads.toughcookies.net/v0.45.0/Tough-Cookies-0.45.0.AppImage
+	sha256sums = 767dcd1fafa142e9178c7fe55f77a6d7f3f995d167bf4a2e0df978af377b59cf
+
+pkgname = toughcookies-appimage
