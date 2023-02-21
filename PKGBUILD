@@ -8,7 +8,7 @@ url="https://github.com/${pkgname/calculix-/}/${pkgname/precice/adapter}"
 license=(GPL3)
 arch=('x86_64')
 depends=(calculix-ccx precice yaml-cpp) # pastix
-makedepends=(gcc-fortran pandoc)        # mono
+makedepends=(gcc-fortran pandoc-cli)    # mono
 optdepends=('man-db: manual pages for ccx_preCICE')
 source=(${pkgname/precice/adapter}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
   http://dhondt.de/ccx_${pkgver::4}.src.tar.bz2)
