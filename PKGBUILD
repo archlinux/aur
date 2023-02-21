@@ -14,8 +14,8 @@ groups=(
 )
 pkgver=0.4.0.rev43.r51.20221212.9e5391b
 _phcver="$(awk -F. '{print $1"."$2"."$3}' <<<"${pkgver}")"
-pkgrel=4
-pkgdesc="Frequency driver for Intel CPUs with undervolting feature. DKMS-based kernel module, testing branch."
+pkgrel=5
+pkgdesc="Frequency driver for Intel CPUs with undervolting feature. DKMS-based kernel module, testing branch, latest git checkout."
 url="https://gitlab.com/linux-phc/phc-intel"
 arch=('any')
 license=('GPL2')
@@ -32,7 +32,7 @@ provides=(
   'linux-phc'
   "${_pkgname}=${pkgver}"
   "phc-intel-dkms=${pkgver}"
-  "PHC-INTEL-MODULE"         # This means kernel-side support; packages providing kernel module, but also kernel packages which have that builtin, can set this.
+  "PHC-INTEL-MODULE" # This means kernel-side support; packages providing kernel module, but also kernel packages which have that builtin, can set this.
 )
 conflicts=(
   "${_pkgname}"
