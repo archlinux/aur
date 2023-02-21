@@ -1,6 +1,6 @@
 pkgname=sunshine
 pkgver=0.18.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A self-hosted game stream host for Moonlight."
 arch=('x86_64' 'aarch64')
 url=https://app.lizardbyte.dev
@@ -21,6 +21,10 @@ sha256sums=('SKIP')
 
 prepare() {
     cd "$pkgname"
+  git rm -f third-party/ffmpeg-windows-x86_64
+  git rm -f third-party/ffmpeg-macos-x86_64
+  git rm -f third-party/ffmpeg-macos-aarch64
+
     git submodule update --recursive --init
 }
 
