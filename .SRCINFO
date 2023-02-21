@@ -1,0 +1,18 @@
+pkgbase = ansiweather-git
+	pkgdesc = Weather in terminal, with ANSI colors and Unicode symbols (git version)
+	pkgver = 1.19.0.r2.g8443fe3
+	pkgrel = 1
+	url = https://github.com/fcambus/ansiweather
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = bc
+	depends = curl
+	depends = jq
+	optdepends = wget: alternative fetch command
+	provides = ansiweather
+	conflicts = ansiweather
+	source = git+https://github.com/fcambus/ansiweather
+	md5sums = SKIP
+
+pkgname = ansiweather-git
