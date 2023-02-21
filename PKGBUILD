@@ -4,7 +4,7 @@
 # TODO: The package is called `adduser-deb` for historical reasons. Merging it
 # into `adduser-debian` would simplify the logic involved in pulling and
 # extracting the upstream archives, but would require adding `replaces` and
-# `conflicts` directives. Neither is ideal.
+# `conflicts` directives. Neither scenario is ideal, so just use the old name.
 pkgname=adduser-deb
 _pkgname=adduser-debian
 pkgver=3.131
@@ -13,9 +13,30 @@ pkgdesc="Debian's 'adduser' and 'deluser' commands for creating and removing use
 arch=("any")
 url="https://salsa.debian.org/debian/adduser"
 license=("GPL2")
-# TODO: Aren't `shadow` and `perl-locale-gettext` also dependencies?
-depends=("gawk")
+
+# findutils: provides the `find` back-end command used during traversal of the
+#            skeleton user directory
+# perl: provides the `perl` interpreter and standard libraries needed to
+#       actually run the `adduser` and `deluser` scripts
+# shadow: provides the back-end commands `useradd`, `usermod`, `groupadd` and
+#         `gpasswd` used throughout the script
+# util-linux: provides the `chfn` back-end command as well as the `nologin`
+#             dummy shell for disabling login for users
+# perl-locale-gettext: not required for the script to run, but if installed,
+#                      you'll get localised/translated output based on your
+#                      system locale
+# quota-tools: provides the `edquota` back-end tool which is only needed if
+#              the `QUOTAUSER` config option is used - see adduser.conf(5)
+# tar: provides the `tar` back-end tool which is only needed if any of the
+#      `BACKUP*` options are used or if passing any of the `--backup*`
+#      arguments to `deluser` - see deluser(8) and deluser.conf(5)
+# po4a: used during the packaging process to generate translated manpages
+depends=("findutils" "perl" "shadow" "util-linux")
+optdepends=("perl-locale-gettext: needed for localised/non-English output"
+            "quota-tools: needed if enabling the \`QUOTAUSER\` option in \`adduser.conf\`"
+            "tar: needed for \`deluser --backup\` or if enabling the \`BACKUP*\` options in \`deluser.conf\`")
 makedepends=("po4a")
+
 conflicts=("adduser")
 backup=("etc/adduser.conf" "etc/deluser.conf")
 source=("https://salsa.debian.org/debian/adduser/-/archive/debian/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
@@ -32,12 +53,13 @@ prepare() {
   # * Automatically chosen system user/group IDs start at 500 instead of 100
   # * Automatically chosen regular user/group IDs end at 60000 instead of 59999
   # Sources: useradd(8) and /etc/login.defs
-  # TODO: Patch manpage translations (even though none are complete enough to
-  # be part of the package)
+  # TODO: The translated manpages also need to be updated with the new default
+  # options. I've neglected this for now because all of the translations for
+  # adduser.conf(5) are currently rejected by `po4a` for being incomplete.
   # TODO: Improve user name regex. According to useradd(8) Arch allows
   # uppercase characters, underscores and numbers in the first character (but
-  # not dashes) and additionally has an overall character limit of 32
-  # characters. None of this is currently checked.
+  # not dashes). It may be sufficient to just remove the regex entirely as the
+  # script includes additional non-configurable checks which seem to suffice.
   # TODO: That covers all of the policy differences I've noticed, but there may
   # be more that I didn't notice.
   patch -Np0 -d . -i arch-policy.patch
@@ -69,8 +91,28 @@ build() {
   make
 }
 
-# TODO: Run tests, but only in isolation from main system
-# TODO: What about `adduser.local`? What even is that?
+# TODO: Automatic testing. This is difficult for four reasons:
+# * It is not safe to run the tests on a real system, because a large number of
+#   user accounts will be created and removed during the test runs, possibly
+#   conflicting with real users. The tests should only be run in a user
+#   namespace with it's own root filesystem, e.g. by using `makechrootpkg`
+#   instead of `makepkg` or an AUR helper. Thus, we would need a way to prevent
+#   the tests from being run automatically unless the user has signalled that
+#   they understand this. This could be done, for example, by requiring them to
+#   set an environment variable before running `makechrootpkg`.
+# * The tests require the package to have been installed (i.e. the config files
+#   have to be in /etc and the binaries in /usr/bin). I'll either have to work
+#   around that within the PKGBUILD somehow, or patch the tests to use files
+#   from the `$srcdir` directory.
+# * The main test runner script attempts to run the test suite twice - once
+#   with shadow passwords enabled, and once without. Arch does not seem to
+#   support disabling shadow passwords, so the script will need to be patched
+#   to avoid testing that.
+# * The basic Arch root created using `mkarchroot` is missing the `users` and
+#   `nogroup` groups which are required for most of the tests. So I would have
+#   to create them manually (on a real system, `systemd-sysusers` would create
+#   the `users` group automatically, but not `nogroup`)
+
 package() {
   cd ${_pkgname}-${pkgver}
 
@@ -93,9 +135,6 @@ package() {
   # Manpages
   # TODO: There's probably a way of doing this which is more concise and
   # future-proofed, but probably more complicated.
-  # TODO: Some manpage directories on my system are specifically named after
-  # their locales. Is this something I should be worried about?
-  # TODO: Test in clean chroot with all necessary locales generated
   cd ../doc
   install -Dm644 adduser.8 "${pkgdir}/usr/share/man/man8/adduser.8"
   install -Dm644 adduser.conf.5 "${pkgdir}/usr/share/man/man5/adduser.conf.5"
