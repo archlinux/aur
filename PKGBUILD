@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=hackrf-git
-pkgver=2022.09.1.r30.g3d39660b
+pkgver=2023.01.1.r4.gae71cb5b
 pkgrel=1
 pkgdesc="Driver for HackRF, allowing general purpose software defined radio (SDR)."
 arch=('i686' 'x86_64')
