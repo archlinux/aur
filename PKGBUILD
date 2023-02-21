@@ -2,7 +2,7 @@
 # Maintainer: Maas Lalani <maas@charm.sh>
 
 pkgname='vhs-bin'
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='A tool for recording terminal GIFs'
 url='https://charm.sh/'
@@ -12,17 +12,17 @@ provides=('vhs')
 conflicts=('vhs')
 depends=('ffmpeg' 'ttyd')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.2.0/vhs_0.2.0_Linux_arm64.tar.gz")
-sha256sums_aarch64=('5fdc221389031b8a5a2efd2cf3b0e0d0c077a66f1f9acedab46d2cd62816c962')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.3.0/vhs_0.3.0_Linux_arm64.tar.gz")
+sha256sums_aarch64=('753a65cacfa8d0d1dd5fc65456ef5adbd6d2c5f0f885bc9101e9c3da31f8a8bf')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.2.0/vhs_0.2.0_Linux_armv7.tar.gz")
-sha256sums_armv7h=('0c501abf3318b6602b19bc38008e522edd5d6d358ef8c261433f45d4800c1537')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.3.0/vhs_0.3.0_Linux_armv7.tar.gz")
+sha256sums_armv7h=('c3e45d6b11346e79237c82226796ccf6541533e7b183f8c5fb1b67f53a0fb0d1')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.2.0/vhs_0.2.0_Linux_i386.tar.gz")
-sha256sums_i686=('55656d3d3a898bd392711197c9999f4d22619aaac3110118784ed166ec8b57a5')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.3.0/vhs_0.3.0_Linux_i386.tar.gz")
+sha256sums_i686=('77b648894045d908ef53a97a1bb2958971ca7eef7f24d3efcb7347daafc73e9c')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.2.0/vhs_0.2.0_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('e5f339b7a65fd5b3de6f02e87aa71d50354a52e7253192d26eadc858597efb49')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.3.0/vhs_0.3.0_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('d362f1ad4586a331936e6b1f5de68275dbdd01a61a25b56e79a14e47ca94d2f6')
 
 package() {
   # bin
