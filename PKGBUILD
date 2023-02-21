@@ -6,13 +6,13 @@
 
 _pkgbase=phc-intel-scripts
 pkgbase="${_pkgbase}"
-pkgname=("${pkgbase}" "phc-intel-openrc" "phc-intel-sysvinit" "phc-intel-systemd")
+pkgname=("phc-intel-scripts" "phc-intel-openrc" "phc-intel-sysvinit" "phc-intel-systemd")
 groups=(
   'linux-phc'
   'phc-intel'
 )
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Helper and init scripts for phc-intel, a frequency driver for Intel CPUs with undervolting feature."
 url="https://gitlab.com/linux-phc/phc-intel"
 arch=('any')

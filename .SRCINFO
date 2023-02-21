@@ -1,7 +1,7 @@
 pkgbase = phc-intel-scripts
 	pkgdesc = Helper and init scripts for phc-intel, a frequency driver for Intel CPUs with undervolting feature.
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/linux-phc/phc-intel
 	arch = any
 	groups = linux-phc
