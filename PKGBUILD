@@ -1,12 +1,14 @@
-# Maintainer: Artoria Pendragon <saber-nyan@ya.ru>
-# Hooks: https://www.reddit.com/r/archlinux/comments/4zrsc3/keep_your_system_fully_functional_after_a_kernel/d6yin0r/
-pkgname=kernel-modules-hook
+# Maintainer: Max Gautier <mg+archlinux@max.gautier.name>
+# Contributor: Artoria Pendragon <saber-nyan@ya.ru>
+_pkgname=kernel-modules-hook
+pkgname=${_pkgname}-hardlinks
 pkgver=0.2.0
 pkgrel=1
 pkgdesc="Keeps your system fully functional after a kernel upgrade"
 arch=('any')
-url="https://github.com/saber-nyan/kernel-modules-hook"
-license=('Unlicense')
+provides=("$_pkgname")
+url="https://github.com/VannTen/$_pkgname"
+license=('GPL3')
 source=("linux-modules-cleanup.conf"
         "10-linux-modules-post.hook"
         "10-linux-modules-pre.hook"
