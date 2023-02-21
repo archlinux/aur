@@ -1,0 +1,10 @@
+pkgbase = akaza-default-model
+	pkgver = v0.4.0
+	pkgrel = 1
+	url = https://github.com/akaza-im/akaza-default-model/
+	arch = any
+	license = MIT
+	source = https://github.com/akaza-im/akaza-default-model/releases/download/v0.4.0/akaza-default-model.tar.gz
+	md5sums = SKIP
+
+pkgname = akaza-default-model
