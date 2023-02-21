@@ -1,42 +1,35 @@
 # Maintainer: Kirill Pshenichnyi <pshcyrill@mail.ru>
+# Maintainer: Antonio Bartalesi <antonio.bartalesi@gmail.com>
 # Contributor: The Tango Controls community
 #              (https://tango-controls.org) <info@tango-controls.org>
 
 pkgname=tango-cpp
 _pkgname=cppTango
-pkgver=9.3.5
-pkgrel=3
+pkgver=9.4.1
+pkgrel=1
 groups=('tango-controls')
 pkgdesc="TANGO distributed control system - shared library"
 arch=('x86_64' 'armv7h')
 url="https://www.tango-controls.org/"
 license=('GPL3')
-depends=('tango-idl' 'omniorb>=4.2.1' 'zeromq' 'doxygen' 'cmake>=3.7')
+depends=('tango-idl' 'omniorb>=4.2.2' 'zeromq' 'libjpeg-turbo')
+makedepends=('doxygen' 'cmake')
 conflicts=('tango')
 source=("https://gitlab.com/tango-controls/${_pkgname}/-/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('7542cd898c67cfb077465b00303e00c93e9ecf7562d2e6fb5646bcff4cd5d11a')
+sha256sums=('12f275fb5edc90a397655bec9a059215b5f7904c596c0f86270cbaa593de4f2a')
 _dir="${_pkgname}-${pkgver}"
 
-prepare() {
-  mkdir -p ${_dir}/build
-}
 
 build() {
-  cd ${_dir}/build
-
-  if [[ $CARCH == "x86_64" ]]
-  then
-    PKG_CONFIG_PATH=/usr/local/lib/pkgconfig cmake -DTANGO_IDL_BASE=/usr/local -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/usr/ ../
-  fi
-
-  # Disable mmmx (for jpeg) instruction for arm architecture
+  # Disable mmx (for jpeg) instruction for arm architecture
   if [[ $CARCH == "armv7h" ]]
   then
-    PKG_CONFIG_PATH=/usr/local/lib/pkgconfig cmake -DTANGO_JPEG_MMX=0 -DTANGO_IDL_BASE=/usr/local -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/usr/ ../
+    _MMX=-DTANGO_JPEG_MMX=OFF
   fi
+  cmake -B build -S "${_pkgname}-${pkgver}" $_MMX -DTANGO_IDL_BASE=/usr -DBUILD_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/usr
+  make -C build
 }
 
 package() {
-  cd ${_dir}/build
-  make DESTDIR=${pkgdir} install
+  make -C build DESTDIR=${pkgdir} install
 }
