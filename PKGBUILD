@@ -1,7 +1,7 @@
 # Maintainer: xgjmibzr <xgjmibzr@gmail.com>
 
 pkgname=httm-bin
-pkgver=0.21.3
+pkgver=0.21.4
 pkgrel=1
 pkgdesc="Prints the size, date and locations of available unique versions (deduplicated by modify time and size) of files residing on ZFS or BTRFS snapshots. (binary .deb)"
 arch=('x86_64')
@@ -9,9 +9,11 @@ url="https://github.com/kimono-koans/httm"
 license=('MPL-2.0')
 provides=('httm')
 conflicts=('httm' 'httm-git')
+optdepends=('btrfs-progs: BTRFS support'
+            'zfs-utils: ZFS support')
 options=('!strip' '!emptydirs')
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/${pkgver}/httm_${pkgver}_amd64.deb")
-sha512sums=('e09d3d8068b608a1f524f6bf2f70e7cb06eb5e14b082e6c3989a2e3cb35e3e3807af74e6775abc3443716e94175c296d960cbdbb1ec9453766471fe15ee5132b')
+sha512sums=('a9925f4a8da4cf205a62000a99478b9fb96af68d34595da55e3d777efa2d3de835ca83d3c6e3b99990aeae750a203bd24eff06084f361076385468813087ca8e')
 
 prepare() {
 	tar -xf data.tar.xz
