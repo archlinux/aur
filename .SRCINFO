@@ -1,0 +1,43 @@
+pkgbase = linux-amd-drm-next
+	pkgdesc = Linux kernel next with bleeding edge AMD DRM drivers
+	pkgver = 6.3.2023.02.17
+	pkgrel = 1
+	url = https://kernel.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = libelf
+	makedepends = pahole
+	makedepends = cpio
+	makedepends = perl
+	makedepends = tar
+	makedepends = xz
+	makedepends = xmlto
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = texlive-latexextra
+	makedepends = git
+	options = !strip
+	source = linux-amd-drm-next::git+https://gitlab.freedesktop.org/agd5f/linux#tag=amd-drm-next-6.3-2023-02-17
+	source = config::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/linux/trunk/config
+	sha256sums = SKIP
+	sha256sums = 81a9379fd2eac51bb2dc69d83737d7fbdd41fcaca5af4873e3666d3c706760d1
+
+pkgname = linux-amd-drm-next
+	pkgdesc = The Linux kernel next with bleeding edge AMD DRM drivers kernel and modules
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+
+pkgname = linux-amd-drm-next-headers
+	pkgdesc = Headers and scripts for building modules for the Linux kernel next with bleeding edge AMD DRM drivers kernel
+	depends = pahole
+
+pkgname = linux-amd-drm-next-docs
+	pkgdesc = Documentation for the Linux kernel next with bleeding edge AMD DRM drivers kernel
