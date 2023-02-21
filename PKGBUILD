@@ -2,7 +2,7 @@
 
 pkgname=plane-icon-theme-git
 pkgver=r198.80e970e
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern icon theme for gnome linux versions."
 arch=('any')
 url="https://github.com/wfpaisa/plane-icon-theme"
