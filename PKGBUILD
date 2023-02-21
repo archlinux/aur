@@ -1,20 +1,20 @@
 # Maintainer: Mirko Scholz <srtlg>
 pkgname=gmat
-pkgver=R2020a
-pkgrel=2
+pkgver=R2022a
+pkgrel=1
 pkgdesc="General Mission Analysis Tool: An open-source space mission analysis tool"
 arch=('x86_64')
 url="https://sourceforge.net/projects/gmat/"
 license=('Apache')
 conflicts=('gmat-bin')
 makedepends=('cspice' 'cmake' 'swig' 'patchelf' 'f2c')
-depends=('xerces-c' 'python' 'wxgtk30' 'glu')
+depends=('xerces-c' 'wxgtk30' 'glu')
 source=("GMAT.in"
 	"010-fix-f2c-typedefs.patch"
-	"https://sourceforge.net/projects/gmat/files/GMAT/GMAT-${pkgver}/GMAT-src_and_data-${pkgver}.zip")
+	"https://sourceforge.net/projects/gmat/files/GMAT/GMAT-${pkgver}/gmat-src_and_data-${pkgver}.zip")
 sha256sums=('3d98cc2892c5b29cdf84a6d027842debfdb1a8472b0e67c7682c2ee24d4938ec'
             'd6971947454142b12ec8d4d237c6f33b348be424f758c2e5351b1a92d9e779dc'
-            '5ef0b434b026d907027b99db44a82750442a4b50b577f382ff3ea77e0d6b71b9')
+            'b83cd0f052c74531c629be00404499fd003a4d3bca09b034f941ed6d55eae9dd')
 options=(!strip)
 
 prepare() {
@@ -61,6 +61,8 @@ package() {
 		| sed -e "s|#\s*PLUGIN\s*=\s*../plugins/lib|PLUGIN = ../plugins/lib|" \
 		| sed -e "/libMatlabInterface/ d" -e "/libFminconOptimizer/ d" \
 		| sed -e "/libOpenFramesInterface/ d" \
+		| sed -e "/libPythonInterface/ d" \
+		| sed -e "/libExternalForceModel/ d" \
 		| sed -e "s|../plugins/|/opt/GMAT-${pkgver}/plugins/|" \
 		| sed -e "s|OUTPUT_PATH\s*=.*|OUTPUT_PATH = /tmp/|" \
 	>"${pkgdir}/opt/GMAT-${pkgver}/bin/gmat_startup_file.txt"
@@ -75,9 +77,8 @@ package() {
 	patchelf --set-rpath "/opt/GMAT-${pkgver}/bin" "${pkgdir}/opt/GMAT-${pkgver}/bin/GMAT-${pkgver}"
 	patchelf --set-rpath "/opt/GMAT-${pkgver}/bin" "${pkgdir}/opt/GMAT-${pkgver}/bin/GmatConsole-${pkgver}"
 	patchelf --set-rpath "/opt/GMAT-${pkgver}/bin" "${pkgdir}/opt/GMAT-${pkgver}/bin/libGmatBase.so.${pkgver}"
-	patchelf --set-rpath "/opt/GMAT-${pkgver}/bin" "${pkgdir}/opt/GMAT-${pkgver}/bin/libCInterface.so.${pkgver}"
 	for lib in ScriptTools ProductionPropagators Formation SaveCommand Station GmatFunction PolyhedronGravity \
-	           PythonInterface DataInterface YukonOptimizer EphemPropagator EventLocator NewParameters GmatEstimation \
+	           DataInterface YukonOptimizer EphemPropagator EventLocator NewParameters GmatEstimation \
                    ExtraPropagators
 	do
 		patchelf --set-rpath "/opt/GMAT-${pkgver}/bin" "${pkgdir}/opt/GMAT-${pkgver}/plugins/lib${lib}.so.${pkgver}"
@@ -85,5 +86,9 @@ package() {
 	for lib in EKF ThrustFile
 	do
 		patchelf --set-rpath "/opt/GMAT-${pkgver}/bin:/opt/GMAT-${pkgver}/plugins" "${pkgdir}/opt/GMAT-${pkgver}/plugins/lib${lib}.so.${pkgver}"
+	done
+	for lib in TLEPropagator 
+	do
+		patchelf --set-rpath "/opt/GMAT-${pkgver}/bin:/opt/GMAT-${pkgver}/plugins" "${pkgdir}/opt/GMAT-${pkgver}/plugins/thinksys/lib${lib}.so.${pkgver}"
 	done
 }
