@@ -2,7 +2,7 @@
 # Contributor: little_sheepycn <little_sheepycn@redstonebuild.onmicrosoft.com>
 
 pkgname=xdroid-bin
-pkgver=9.0.15
+pkgver=11.0.20
 pkgrel=1
 epoch=
 pkgdesc="卓懿,让安卓应用融入Linux平台应用生态体系，卓懿 x86_64 版（个人免费下载使用，不得用于商业用途）。"
@@ -23,7 +23,7 @@ install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::https://d6.injdk.cn/xdroid/xDroidInstall-${arch}-v${pkgver}.run.tar.gz")
 noextract=(${pkgname}-${pkgver}.tar.gz)
-sha256sums=('a95a03125b69dc1fac80dd2a54c1f8c3d784d124aa001242255c7eded3b27a0e')
+sha256sums=('5e7d113dde5e7e92b45c559a40e31b51b980a403e064615c3d4c780bb276f64f')
 #validpgpkeys=()
 
 package() {
@@ -33,7 +33,7 @@ package() {
                     "${pkgdir}/usr/share/applications"
 
     bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.tar.gz" --no-same-owner  --no-same-permissions -C "${pkgdir}/opt/${pkgname}"
-    mv -v "${pkgdir}"/opt/${pkgname}/xDroidInstall-${arch}-v${pkgver}*.run "${pkgdir}/opt/${pkgname}/xDroidInstall-${arch}-v${pkgver}.run"
+    #mv -v "${pkgdir}"/opt/${pkgname}/xDroidInstall-${arch}-v${pkgver}*.run "${pkgdir}/opt/${pkgname}/xDroidInstall-${arch}-v${pkgver}.run"
 
     ln -sf "/opt/${pkgname%-bin}/xAppCenter.png" "${pkgdir}/usr/share/icons/xAppCenter.png"
     ln -sf "/opt/${pkgname%-bin}/xAppCenter.desktop" "${pkgdir}/usr/share/applications/xAppCenter.desktop"
