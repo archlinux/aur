@@ -2,14 +2,16 @@
 
 pkgname=virusgotal-git
 pkgver=1.0.2.r5.g295d2dc
-pkgrel=4
-pkgdesc='VirusTotal zero dependency command line client.'
-arch=(x86_64)
+pkgrel=5
+pkgdesc="VirusTotal zero dependency command line client."
+arch=('x86_64')
 url="https://github.com/moldabekov/virusgotal"
-license=(MIT)
-makedepends=(go)
-conflicts=(virusgotal)
-provides=(virusgotal)
+license=('MIT')
+depends=()
+makedepends=('go' 'git')
+optdepends=()
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 
@@ -22,13 +24,23 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/${pkgname}"
 
-	install -m755 -d "${srcdir}/go/src/github.com/moldabekov/"
+	mkdir -p "${srcdir}/go/src/github.com/moldabekov"
 	ln -sf "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/moldabekov/virusgotal"
 
 	cd "${srcdir}/go/src/github.com/moldabekov/virusgotal"
-
 	export GOPATH="${srcdir}/go" GOFLAGS="-modcacherw"
-	go get -v ./...
+
+	if ! go get -v -t ./...; then
+	test -f "go.mod" || go mod init
+
+	sed -i -e '/.*kingpin.v2/c\\t"github.com/alecthomas/kingpin/v2"' main.go
+	go mod tidy
+
+	GO111MODULE=auto go get \
+		github.com/alecthomas/kingpin/v2 \
+		github.com/fatih/color \
+		github.com/moldabekov/spinner
+	fi
 }
 
 build() {
