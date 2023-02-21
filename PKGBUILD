@@ -2,8 +2,8 @@
 
 pkgname=kitchencalendar
 pkgver=1.0.3
-pkgrel=1
-pkgdesc='Generate weekly calendar PDF files that can be hung up in the Kitchen'
+pkgrel=2
+pkgdesc='Generate weekly calendars that can be printed out and hung up in the kitchen'
 arch=(x86_64)
 url='https://github.com/xyproto/kitchencalendar'
 source=("git+$url#commit=9e772cb426bc81c6acbd5b871682d4196f65a8a6") # tag: v1.0.3
