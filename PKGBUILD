@@ -2,7 +2,7 @@
 
 pkgname=gleam
 pkgver="0.26.2"
-pkgrel=1
+pkgrel=2
 pkgdesc="A friendly language for building type-safe, scalable systems!"
 arch=('any')
 url="http://github.com/gleam-lang/gleam"
@@ -30,6 +30,6 @@ check() {
 
 package() {
     cd "$pkgname-$pkgver"
-    local basedir="${pkgdir}/usr/local/bin"
+    local basedir="${pkgdir}/usr/bin"
     install -Dm755 "target/release/gleam" "${basedir}/gleam"
 }

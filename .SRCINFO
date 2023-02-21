@@ -1,7 +1,7 @@
 pkgbase = gleam
 	pkgdesc = A friendly language for building type-safe, scalable systems!
 	pkgver = 0.26.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/gleam-lang/gleam
 	arch = any
 	license = Apache2
