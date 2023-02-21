@@ -33,7 +33,7 @@ source=(
 	"vita3k.desktop"
 
 	# submodules for vita3k
-	'LibAtrac9'::'git+https://github.com/Thealexbarney/LibAtrac9'
+	'LibAtrac9'::'git+https://github.com/Vita3K/LibAtrac9'
 	'SPIRV-Cross'::'git+https://github.com/KhronosGroup/SPIRV-Cross'
 	'Vulkan-Headers'::'git+https://github.com/KhronosGroup/Vulkan-Headers'
 	'VulkanMemoryAllocator-Hpp'::'git+https://github.com/Macdu/VulkanMemoryAllocator-Hpp'
@@ -196,7 +196,7 @@ prepare() {
 	)
 	for submodule in ${_submodules[@]} ; do
 		git submodule init "$submodule"
-		git submodule set-url "$submodule" "$srcdir/${submodule}"
+		git submodule set-url "$submodule" "$srcdir/${submodule##*/}"
 		git -c protocol.file.allow=always submodule update "$submodule"
 	done
 

@@ -1,6 +1,6 @@
 pkgbase = vita3k-git
 	pkgdesc = Experimental PlayStation Vita emulator
-	pkgver = r3001.964dd536
+	pkgver = r3002.4dfc3911
 	pkgrel = 1
 	url = https://github.com/Vita3K/Vita3K
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = vita3k-git
 	conflicts = vita3k
 	source = vita3k::git+https://github.com/Vita3K/Vita3K
 	source = vita3k.desktop
-	source = LibAtrac9::git+https://github.com/Thealexbarney/LibAtrac9
+	source = LibAtrac9::git+https://github.com/Vita3K/LibAtrac9
 	source = SPIRV-Cross::git+https://github.com/KhronosGroup/SPIRV-Cross
 	source = Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers
 	source = VulkanMemoryAllocator-Hpp::git+https://github.com/Macdu/VulkanMemoryAllocator-Hpp
