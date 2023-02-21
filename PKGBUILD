@@ -31,5 +31,5 @@ package() {
   mkdir -p "${pkgdir}"/etc/guacamole/
   install -D guacamole-${pkgver}.war "${pkgdir}"/usr/share/guacamole/guacamole.war
   install -D user-mapping.xml "${pkgdir}"/etc/guacamole/
-  install -D ../guacamole.properties "${pkgdir}"/etc/guacamole/
+  install -D guacamole.properties "${pkgdir}"/etc/guacamole/
 }
