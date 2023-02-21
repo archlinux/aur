@@ -34,7 +34,7 @@ post_install() {
 
 EOF
 
-    source /etc/profile.d/cellframe-node.sh
+    source /etc/profile
 
 }
 
