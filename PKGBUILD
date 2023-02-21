@@ -1,6 +1,6 @@
 # Maintainer: Mistle <tehmistle [at] gmx.com>
 pkgname=stash
-pkgver=0.19.0
+pkgver=0.19.1
 pkgrel=1
 pkgdesc="Locally hosted web-based app written in Go which organizes and serves your Adult Video"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -9,6 +9,7 @@ license=('AGPL3')
 depends=('glibc' 'ffmpeg')
 makedepends=('go>=2:1.19' 'golangci-lint' 'yarn')
 conflicts=('stash-bin')
+backup=(etc/conf.d/${pkgname})
 source=("$pkgname::git+$url.git#tag=v${pkgver}"
 "0001-Fix-build-with-extldflags.patch"
 "0002-Add-Arch-specific-build-flags.patch"
