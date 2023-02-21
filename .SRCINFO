@@ -1,6 +1,6 @@
 pkgbase = bcftools
 	pkgdesc = A program for variant calling and manipulating files in the Variant Call Format (VCF) and its binary counterpart BCF
-	pkgver = 1.16
+	pkgver = 1.17
 	pkgrel = 1
 	url = https://samtools.github.io/bcftools
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = bcftools
 	depends = htslib
 	depends = python-matplotlib
 	depends = python
-	source = https://github.com/samtools/bcftools/releases/download/1.16/bcftools-1.16.tar.bz2
-	sha256sums = 90bf647c9ad79e10a243b8058c873de057fd7012e250d5ae6574839787a2ecd6
+	source = https://github.com/samtools/bcftools/releases/download/1.17/bcftools-1.17.tar.bz2
+	sha256sums = 01f75d8e701d85b2c759172412009cc04f29b61616ace2fa75116123de4596cc
 
 pkgname = bcftools
