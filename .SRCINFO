@@ -1,10 +1,11 @@
-pkgbase = kernel-modules-hook
+pkgbase = kernel-modules-hook-hardlinks
 	pkgdesc = Keeps your system fully functional after a kernel upgrade
-	pkgver = 0.1.7
+	pkgver = 0.2.0
 	pkgrel = 1
-	url = https://github.com/saber-nyan/kernel-modules-hook
+	url = https://github.com/VannTen/kernel-modules-hook
 	arch = any
-	license = Unlicense
+	license = GPL3
+	provides = kernel-modules-hook
 	source = linux-modules-cleanup.conf
 	source = 10-linux-modules-post.hook
 	source = 10-linux-modules-pre.hook
@@ -16,4 +17,4 @@ pkgbase = kernel-modules-hook
 	sha256sums = 7cf080b0d0d5a07ccb414ffb793525e554ca95447201f22b917f0be04ff48d2a
 	sha256sums = 3168ea6c2740dbde4229d718e44f6262f2d10aef529fb446cdb4f1778b8b6424
 
-pkgname = kernel-modules-hook
+pkgname = kernel-modules-hook-hardlinks
