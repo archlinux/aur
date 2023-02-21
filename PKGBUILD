@@ -4,7 +4,7 @@ _pkgname=MicrobiotaProcess
 _pkgver=1.10.3
 pkgname=r-${_pkgname,,}
 pkgver=1.10.3
-pkgrel=1
+pkgrel=3
 pkgdesc='an R package for analysis, visualization and biomarker discovery of microbiome'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -13,6 +13,7 @@ depends=(
   r
   r-ape
   r-biostrings
+  r-cli
   r-coin
   r-data.table
   r-dplyr
@@ -41,7 +42,6 @@ depends=(
 optdepends=(
   r-aplot
   r-biomformat
-  r-cli
   r-corrr
   r-decipher
   r-dirichletmultinomial
