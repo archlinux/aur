@@ -1,94 +1,55 @@
-# Maintainer: Eric Woudstra <ericwouds@gmail.com>
-
-# gsctool is only available in certein branches. It is not in the main/master branch.
-
+# Maintainer: Eric Woudstra ericwouds AT gmail DOT com
+ 
 _gitname="arm-trusted-firmware"
-_gitroot="https://github.com/mtk-openwrt/${_gitname}"
-#_gitbranch="mtksoc"   # v2.7 DOES NOT REBOOT!
-_gitbranch="mtksoc-20210508"
+_gitroot=https://github.com/ericwoud/${_gitname}
+_gitbranch="bpir64"
 pkgname=bpir64-atf-git
-pkgver=r20210508214220.d2c75b2
-pkgrel=2
+epoch=2
+pkgver=v2.8r12062.65943cb2c
+pkgrel=1
 pkgdesc='ATF bpir64 images including fiptool'
 url='https://github.com/mtk-openwrt/arm-trusted-firmware.git'
 arch=(aarch64)
 depends=(linux)
 makedepends=(git bpir64-mkimage)
 license=(GPL)
-source=('bl31-inside-bl2-image.patch'
-        'mmc-high-speed.patch'
-        'move-bl33-base.patch'
-        'incr-fip-decomp-size.patch'
-        'no-uboot-bl2.patch'
-        'no-uboot-bl31.patch'
+source=("git+${_gitroot}.git#branch=${_gitbranch}"
         '95-atf.hook'
         'bpir64-writefip'
 )
-sha256sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
+sha256sums=(SKIP SKIP SKIP)
 install=${pkgname}.install
-
+ 
 pkgver() {
-  cd "${srcdir}/${_gitname}/"
-  printf "r%s.%s" "$(git show -s --format=%cd --date=format:%Y%m%d%H%M%S HEAD)" "$(git rev-parse --short HEAD)"
-
+  cd "${srcdir}/${_gitname}"
+  printf "v%s.%sr%s.%s" \
+      $(grep '^VERSION_MAJOR' Makefile | cut -b 19-) \
+      $(grep '^VERSION_MINOR' Makefile | cut -b 19-) \
+      "$(git rev-list --count HEAD)" \
+      "$(git rev-parse --short HEAD)"
 }
-
-_patch () {
-  patch -p1 -N -r - < "${srcdir}/bl31-inside-bl2-image.patch"
-  patch -p1 -N -r - < "${srcdir}/mmc-high-speed.patch"
-  patch -p1 -N -r - < "${srcdir}/move-bl33-base.patch"
-  patch -p1 -N -r - < "${srcdir}/no-uboot-bl2.patch"
-  patch -p1 -N -r - < "${srcdir}/no-uboot-bl31.patch"
-  if [ ! -z "$(cat ${srcdir}/${_gitname}/plat/mediatek/mt7622/include/platform_def.h | \
-            grep FIP_DECOMP_TEMP_SIZE)" ]; then
-    patch -p1 -N -r - < "${srcdir}/incr-fip-decomp-size.patch"
-  fi
-}
-
-prepare() {
-  if [[ -d "${srcdir}/${_gitname}/" ]]; then
-    cd "${srcdir}/${_gitname}/"
-    git fetch
-    echo "LOCAL  HEAD: $(git rev-parse HEAD)"
-    echo "REMOTE HEAD: $(git rev-parse @{u})"
-    if [ "$(git rev-parse HEAD)" != "$(git rev-parse @{u})" ]; then
-      git reset --hard
-      git fetch --depth 1 origin "${_gitbranch}:${_gitbranch}"
-      git checkout "${_gitbranch}"
-      _patch
-    fi
-    echo
-  else
-    cd "${srcdir}/"
-    git clone --branch "${_gitbranch}" --depth=1 "${_gitroot}" "${srcdir}/${_gitname}/"
-    cd "${srcdir}/${_gitname}/"
-    _patch
-    echo
-  fi
-}
-
+ 
 build() {
   cd "${srcdir}/${_gitname}/tools/fiptool"
   sed -i '/-Werror/d' ./Makefile
   make HOSTCCFLAGS+="-D'SHA256(x,y,z)=nop'" LDLIBS=""
   cd "${srcdir}/${_gitname}"
-  for _atfdev in sdmmc emmc; do
-    _ATFBUILDARGS="PLAT=mt7622 BOOT_DEVICE=$_atfdev DDR3_FLYBY=1 LOG_LEVEL=40"
+  for _atfdev in sdmmc; do
+    _ATFBUILDARGS="PLAT=mt7622 BOOT_DEVICE=$_atfdev DDR3_FLYBY=1 LOG_LEVEL=40 MTK_BL33_IS_64BIT=1"
      sed -i 's/.*entry = get_partition_entry.*/\tentry = get_partition_entry("bpir64-'${_atfdev}'-fip");/' \
            plat/mediatek/mt7622/bl2_boot_mmc.c
     _makeatf="make $_ATFBUILDARGS USE_MKIMAGE=1 MKIMAGE=$(which bpir64-mkimage) DEVICE_HEADER_OFFSET=0"
     touch plat/mediatek/mt7622/platform.mk
-    unset LDFLAGS
-    unset CFLAGS
+    unset CFLAGS CXXFLAGS CPPFLAGS LDFLAGS
     # PRELOADED_BL33_BASE is not being used in mt7622 atf code, so we use it as binairy flags:
     # 0b0001 : incbin BL31.bin inside of BL2 image, disable it during BL31 build because of common code!
-    $_makeatf PRELOADED_BL33_BASE=0b0000 bl31
-    $_makeatf PRELOADED_BL33_BASE=0b0001 bl2 ${srcdir}/${_gitname}/build/mt7622/release/bl2.img
+    CFLAGS=-Wno-error $_makeatf PRELOADED_BL33_BASE=0b0000 bl31
+    CFLAGS=-Wno-error $_makeatf PRELOADED_BL33_BASE=0b0001 bl2 ${srcdir}/${_gitname}/build/mt7622/release/bl2.img
     dd of=build/mt7622/release/bpir64-atf-${_atfdev}-header.bin bs=1 count=440 if=build/mt7622/release/bl2.img
     dd of=build/mt7622/release/bpir64-atf-${_atfdev}-atf.bin         skip=34   if=build/mt7622/release/bl2.img
   done
 }
-
+ 
 package() {
   cd "${srcdir}"
   install -m755 -vDt "$pkgdir/usr/bin" bpir64-writefip
@@ -98,10 +59,3 @@ package() {
   cd "${srcdir}/${_gitname}/build/mt7622/release"
   install -Dt "$pkgdir/boot" -m644 bpir64-atf-*.bin
 }
-
-# Writing:
-#    _device="/dev/"$(lsblk -no pkname /dev/disk/by-partlabel/bpir64-${_atfdev}-atf)
-#    _atfdev="/dev/disk/by-partlabel/bpir64-${_atfdev}-atf"
-#  echo dd of="$atfdev"        if=/dev/zero 2>/dev/null
-#  echo dd of="${device}" bs=1 if=bpir64-atf-${_atfdev}-header
-#  echo dd of="$atfdev"        if=bpir64-atf-${_atfdev}-atf
