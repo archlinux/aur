@@ -1,0 +1,13 @@
+pkgbase = php82-xdebug
+	pkgdesc = Xdebug is an extension for PHP to assist with debugging and development for php82
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://xdebug.org/
+	arch = x86_64
+	license = Xdebug
+	depends = php82
+	backup = etc/php82/conf.d/xdebug.ini
+	source = http://pecl.php.net/get/xdebug-3.2.0.tgz
+	sha256sums = 7769b20eecdadf5fbe9f582512c10b394fb575b6f7a8c3a3a82db6883e0032b7
+
+pkgname = php82-xdebug
