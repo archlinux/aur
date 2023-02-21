@@ -2,19 +2,18 @@
 
 pkgbase=pipewire-git
 pkgname=('pipewire-git'
+         'libpipewire-git'
          'pipewire-docs-git'
          'pipewire-audio-git'
          'pipewire-jack-git'
          'pipewire-alsa-git'
          'pipewire-pulse-git'
-         'pipewire-ffmpeg-git'
          'pipewire-zeroconf-git'
          'pipewire-v4l2-git'
          'pipewire-roc-git'
-         'pipewire-libcamera-git'
          'pipewire-x11-bell-git'
          )
-pkgver=0.3.64.11.g5b42c07b1
+pkgver=0.3.66.13.g0b69f37a7
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
@@ -22,41 +21,44 @@ url='https://pipewire.org'
 license=('MIT')
 makedepends=('git'
              'meson'
-             'libpulse'
              'alsa-lib'
-             'sbc'
-             'rtkit'
-             'dbus'
-             'systemd'
-             'glib2'
-             'sdl2'
-             'ncurses'
-             'libsndfile'
+             'avahi'
              'bluez-libs'
+             'dbus'
+             'doxygen'
+             'glib2'
+             'graphviz'
              'ffmpeg'
-             'libldac'
-             'opus'
+             'libcamera'
+             'libcanberra'
+             'libfdk-aac'
              'libfreeaptx'
              'liblc3'
-             'libfdk-aac'
-             'libcamera'
-             'vulkan-headers'
-             'vulkan-icd-loader'
-             'avahi'
-             'webrtc-audio-processing'
-             'lilv'
-             'roc-toolkit'
+             'libldac'
+             'libmysofa'
+             'libpulse'
+             'libsndfile'
+             'libusb'
              'libx11'
              'libxfixes'
-             'libcanberra'
-             'chrpath'
-             'doxygen'
-             'graphviz'
+             'lilv'
+             'ncurses'
+             'opus'
              'python-docutils'
+             'readline'
+             'roc-toolkit'
+             'rtkit'
+             'sbc'
+             'sdl2'
+             'systemd'
+             'tinycompress'
+             'valgrind'
+             'vulkan-headers'
+             'vulkan-icd-loader'
+             'webrtc-audio-processing'
+             'chrpath'
              )
-checkdepends=('desktop-file-utils'
-              'valgrind'
-              )
+checkdepends=('desktop-file-utils')
 source=('git+https://gitlab.freedesktop.org/pipewire/pipewire.git')
 sha256sums=('SKIP')
 options=('debug')
@@ -84,12 +86,15 @@ build() {
     -D gstreamer-device-provider=disabled \
     -D roc=enabled \
     -D ffmpeg=enabled \
+    -D pw-cat-ffmpeg=enabled \
     -D vulkan=enabled \
     -D jack-devel=true \
     -D libjack-path=/usr/lib \
+    -D rlimits-install=false \
     -D session-managers=[] \
     -D bluez5-codec-lc3=enabled \
     -D bluez5-codec-lc3plus=disabled \
+    -D compress-offload=enabled \
     -D volume=enabled
 
   meson compile -C build
@@ -112,9 +117,14 @@ _pick() {
 _ver=${pkgver:0:3}
 
 package_pipewire-git() {
-  depends=('libdbus-1.so'
+  depends=("libpipewire-git=${pkgver}"
+           "libpipewire-${_ver}.so"
+           'libcamera-base.so'
+           'libcamera.so'
+           'libdbus-1.so'
            'libglib-2.0.so'
            'libncursesw.so'
+           'libreadline.so'
            'libsystemd.so'
            'libudev.so'
            'libvulkan.so'
@@ -124,21 +134,19 @@ package_pipewire-git() {
               'pipewire-alsa-git: ALSA support'
               'pipewire-audio-git: Audio support'
               'pipewire-pulse-git: PulseAudio support'
-              'pipewire-ffmpeg-git: ffmpeg support'
               'pipewire-session-manager: Session manager'
               'gst-plugin-pipewire-git: gstreamer support'
               'pipewire-zeroconf-git: Zeroconf support'
               'pipewire-v4l2-git: V4L2 interceptor'
               'pipewire-roc-git: ROC support'
-              'pipewire-libcamera-git: libcamera support'
               'pipewire-x11-bell-git: X11 bell'
               'realtime-privileges: realtime privileges with rt module'
               'rtkit: realtime privileges with rtkit module'
               )
-  provides=("pipewire=${pkgver}"
-            "libpipewire-${_ver}.so"
-            )
-  conflicts=('pipewire')
+  provides=("pipewire=${pkgver}")
+  conflicts=('pipewire'
+             'pipewire-libcamera-git'
+             )
   backup=('usr/share/pipewire/client.conf'
           'usr/share/pipewire/client-rt.conf'
           'usr/share/pipewire/pipewire.conf'
@@ -151,23 +159,31 @@ package_pipewire-git() {
   # directories for overrides
   mkdir -p "${pkgdir}/etc/pipewire/"{client-rt,client,minimal,pipewire}.conf.d
 
-  rm -fr "${srcdir}"/{audio,alsa,camera,docs,ffmpeg,jack,pulse,roc,v4l2,x11-bell,zeroconf}
+  rm -fr "${srcdir}"/{audio,alsa,docs,jack,pulse,roc,v4l2,x11-bell,zeroconf}
 
   (cd "${pkgdir}"
 
+  _pick lib usr/include/{pipewire-${_ver},spa-0.2}
+  _pick lib usr/lib/libpipewire-${_ver}.so*
+  _pick lib usr/lib/pkgconfig/lib{pipewire-${_ver},spa-0.2}.pc
+
+  _pick audio usr/bin/pipewire-{aes67,avb}
   _pick audio usr/bin/pw-{cat,play,record,midi{play,record},dsdplay}
   _pick audio usr/bin/pw-{loopback,mididump}
   _pick audio usr/bin/spa-{acp-tool,resample}
+  _pick audio "usr/lib/pipewire-${_ver}/libpipewire-module-avb.so"
   _pick audio "usr/lib/pipewire-${_ver}/libpipewire-module-echo-cancel.so"
   _pick audio "usr/lib/pipewire-${_ver}/libpipewire-module-fallback-sink.so"
   _pick audio "usr/lib/pipewire-${_ver}/libpipewire-module-filter-chain.so"
   _pick audio "usr/lib/pipewire-${_ver}/libpipewire-module-loopback.so"
   _pick audio "usr/lib/pipewire-${_ver}/libpipewire-module-pipe-tunnel.so"
   _pick audio "usr/lib/pipewire-${_ver}/libpipewire-module-protocol-simple.so"
-  _pick audio usr/lib/spa-0.2/{aec,audio*,bluez5,volume}
+  _pick audio "usr/lib/pipewire-${_ver}/"libpipewire-module-rtp-*.so
+  _pick audio usr/lib/spa-0.2/{aec,audio*,avb,ffmpeg,bluez5,volume}
   _pick audio usr/lib/systemd/user/filter-chain.service
   _pick audio usr/share/man/man1/pw-{cat,mididump}.1
   _pick audio usr/share/pipewire/filter-chain*
+  _pick audio usr/share/pipewire/pipewire-{aes67,avb}.conf
   _pick audio usr/share/spa-0.2/bluez5
 
   _pick docs usr/share/doc
@@ -177,23 +193,21 @@ package_pipewire-git() {
   _pick jack usr/lib/libjack*
   _pick jack usr/lib/pkgconfig/jack.pc
   _pick jack usr/lib/spa-0.2/jack
-  _pick jack usr/share/pipewire/jack.conf
   _pick jack usr/share/man/man1/pw-jack.1
+  _pick jack usr/share/pipewire/jack.conf
 
   _pick pulse usr/bin/pipewire-pulse
   _pick pulse "usr/lib/pipewire-${_ver}/libpipewire-module-protocol-pulse.so"
   _pick pulse "usr/lib/pipewire-${_ver}/libpipewire-module-pulse-tunnel.so"
   _pick pulse usr/lib/systemd/user/pipewire-pulse.*
-  _pick pulse usr/share/pipewire/pipewire-pulse.conf
   _pick pulse usr/share/man/man1/pipewire-pulse.1
+  _pick pulse usr/share/pipewire/pipewire-pulse.conf
   _pick pulse usr/lib/udev
   _pick pulse usr/share/alsa-card-profile
 
   _pick alsa usr/lib/alsa-lib
   _pick alsa usr/lib/spa-0.2/alsa
   _pick alsa usr/share/alsa
-
-  _pick ffmpeg usr/lib/spa-0.2/ffmpeg
 
   _pick zeroconf "usr/lib/pipewire-${_ver}/libpipewire-module-zeroconf-discover.so"
   _pick zeroconf "usr/lib/pipewire-${_ver}/libpipewire-module-raop-discover.so"
@@ -205,13 +219,38 @@ package_pipewire-git() {
   _pick roc "usr/lib/pipewire-${_ver}/libpipewire-module-roc-sink.so"
   _pick roc "usr/lib/pipewire-${_ver}/libpipewire-module-roc-source.so"
 
-  _pick camera usr/lib/spa-0.2/libcamera
-
   _pick x11-bell "usr/lib/pipewire-${_ver}/libpipewire-module-x11-bell.so"
 
   )
 
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-access.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-adapter.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-client-device.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-client-node.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-combine-stream.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-link-factory.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-metadata.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-portal.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-profiler.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-protocol-native.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-raop-sink.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-rt.so"
   chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-rtkit.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-session-manager.so"
+
+
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
+}
+
+package_libpipewire-git() {
+  pkgdesc+=" - client library (GIT Version)"
+  depends=('gcc-libs')
+  provides=("libpipewire=${pkgver}"
+            "libpipewire-$_ver.so"
+            )
+  conflicts=('libpipewire')
+
+  mv lib/* "${pkgdir}"
 
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
 }
@@ -232,95 +271,50 @@ package_pipewire-audio-git() {
   depends=("libpipewire-${_ver}.so"
            'alsa-card-profiles'
            'libasound.so'
+           'libavformat.so'
+           'libavcodec.so'
            'libbluetooth.so'
            'libfdk-aac.so'
            'libfreeaptx.so'
            'liblc3.so'
            'libldacBT_enc.so'
            'liblilv-0.so'
+           'libmysofa.so'
            'libopus.so'
            'libsbc.so'
            'libsndfile.so'
            'libusb-1.0.so'
            'libwebrtc_audio_processing.so'
-           'pipewire-git'
+           "pipewire-git=${pkgver}"
            )
   provides=("pipewire-audio=${pkgver}")
-  conflicts=('pipewire-audio')
+  conflicts=('pipewire-audio'
+             'pipewire-ffmpeg-git'
+             )
 
   mv audio/* "${pkgdir}"
 
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-echo-cancel.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-fallback-sink.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-filter-chain.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-loopback.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-pipe-tunnel.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-protocol-simple.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-rtp-sink.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-rtp-source.so"
+
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 pipewire/COPYING
-}
-
-package_pipewire-jack-git() {
-  pkgdesc+=" - JACK support (GIT version)"
-  license+=('GPL2')  # libjackserver
-  depends=('pipewire-session-manager'
-           "libpipewire-${_ver}.so"
-           'sh'
-           )
-  backup=('usr/share/pipewire/jack.conf')
-  provides=("pipewire-jack=${pkgver}"
-            'jack'
-            'libjack.so'
-            'libjackserver.so'
-            'libjacknet.so'
-            )
-  conflicts=('pipewire-jack'
-             'jack'
-             'jack2'
-            )
-  optdepends=('jack-example-tools: for official JACK example-clients and tools')
-
-  mv jack/* "${pkgdir}"
-
-  # directories for overrides
-  mkdir -p "${pkgdir}/etc/pipewire/jack.conf.d"
-
-  install -Dm644 /dev/null "${pkgdir}/usr/share/pipewire/media-session.d/with-jack"
-
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
-}
-
-package_pipewire-pulse-git() {
-  pkgdesc+=" - PulseAudio replacement (GIT version)"
-  depends=('pipewire-session-manager'
-           "libpipewire-${_ver}.so"
-           'libpulse.so'
-           'libavahi-client.so'
-           'libavahi-common.so'
-           )
-  backup=('usr/share/pipewire/pipewire-pulse.conf')
-  provides=("pipewire-pulse=${pkgver}"
-            'pulseaudio'
-            'pulseaudio-bluetooth'
-            'alsa-card-profiles'
-            )
-  conflicts=('pipewire-pulse'
-             'pulseaudio'
-             'pulseaudio-bluetooth'
-             'alsa-card-profiles'
-             )
-  install=pipewire-pulse.install
-
-  mv pulse/* "${pkgdir}"
-
-  # directories for overrides
-  mkdir -p "${pkgdir}/etc/pipewire/pipewire-pulse.conf.d"
-
-  install -Dm644 /dev/null "${pkgdir}/usr/share/pipewire/media-session.d/with-pulseaudio"
-
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
 }
 
 package_pipewire-alsa-git() {
   pkgdesc+=" - ALSA configuration (GIT version)"
   depends=("pipewire-git=${pkgver}"
+           "pipewire-audio-git=${pkgver}"
            "libpipewire-${_ver}.so"
-           'libasound.so'
            'pipewire-session-manager'
-          )
+           'libasound.so'
+           'libtinycompress.so'
+           )
   backup=('usr/share/alsa/alsa.conf.d/50-pipewire.conf'
           'usr/share/alsa/alsa.conf.d/99-pipewire-default.conf'
           )
@@ -342,16 +336,90 @@ package_pipewire-alsa-git() {
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
 }
 
-package_pipewire-ffmpeg-git() {
-  pkgdesc+=" - FFmpeg SPA plugin (GIT version)"
+package_pipewire-jack-git() {
+  pkgdesc+=" - JACK support (GIT version)"
+  license+=('GPL2')  # libjackserver
   depends=("pipewire-git=${pkgver}"
            "libpipewire-${_ver}.so"
-           'ffmpeg'
+           "pipewire-audio-git=${pkgver}"
+           'pipewire-session-manager'
+           'sh'
            )
-  provides=("pipewire-ffmpeg=${pkgver}")
-  conflicts=('pipewire-ffmpeg')
+  optdepends=('jack-example-tools: for official JACK example-clients and tools')
+  provides=("pipewire-jack=${pkgver}"
+            'jack'
+            'libjack.so'
+            'libjackserver.so'
+            'libjacknet.so'
+            )
+  conflicts=('pipewire-jack'
+             'jack'
+             'jack2'
+            )
+  backup=('usr/share/pipewire/jack.conf')
 
-  mv ffmpeg/* "${pkgdir}"
+  mv jack/* "${pkgdir}"
+
+  # directories for overrides
+  mkdir -p "${pkgdir}/etc/pipewire/jack.conf.d"
+
+  install -Dm644 /dev/null "${pkgdir}/usr/share/pipewire/media-session.d/with-jack"
+
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
+}
+
+package_pipewire-pulse-git() {
+  pkgdesc+=" - PulseAudio replacement (GIT version)"
+  depends=("pipewire-git=${pkgver}"
+           "libpipewire-${_ver}.so"
+           "pipewire-audio-git=${pkgver}"
+           'pipewire-session-manager'
+           'libavahi-client.so'
+           'libavahi-common.so'
+           'libglib-2.0.so'
+           'libpulse.so'
+           )
+  backup=('usr/share/pipewire/pipewire-pulse.conf')
+  provides=("pipewire-pulse=${pkgver}"
+            'pulseaudio'
+            'pulseaudio-bluetooth'
+            'alsa-card-profiles'
+            )
+  conflicts=('pipewire-pulse'
+             'pulseaudio'
+             'pulseaudio-bluetooth'
+             'alsa-card-profiles'
+             )
+  install=pipewire-pulse.install
+
+  mv pulse/* "${pkgdir}"
+
+  # directories for overrides
+  mkdir -p "${pkgdir}/etc/pipewire/pipewire-pulse.conf.d"
+
+  install -Dm644 /dev/null "${pkgdir}/usr/share/pipewire/media-session.d/with-pulseaudio"
+
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-protocol-pulse.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-pulse-tunnel.so"
+
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
+}
+
+package_pipewire-roc-git() {
+  pkgdesc+=" - ROC support (GIT version)"
+  depends=("pipewire-git=${pkgver}"
+           "libpipewire-${_ver}.so"
+           "pipewire-audio-git=${pkgver}"
+           'roc-toolkit'
+           'libroc.so'
+           )
+  provides=("pipewire-roc=${pkgver}")
+  conflicts=('pipewire-roc')
+
+  mv roc/* "${pkgdir}"
+
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-roc-sink.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-roc-source.so"
 
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
 }
@@ -362,11 +430,15 @@ package_pipewire-zeroconf-git() {
            "libpipewire-${_ver}.so"
            'libavahi-client.so'
            'libavahi-common.so'
+           'openssl'
            )
   provides=("pipewire-zeroconf=${pkgver}")
   conflicts=('pipewire-zeroconf')
 
   mv zeroconf/* "${pkgdir}"
+
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-raop-discover.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-zeroconf-discover.so"
 
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
 }
@@ -374,8 +446,8 @@ package_pipewire-zeroconf-git() {
 package_pipewire-v4l2-git() {
   pkgdesc+=" - V4L2 interceptor (GIT version)"
   depends=("pipewire-git=${pkgver}"
-           'pipewire-session-manager'
            "libpipewire-${_ver}.so"
+           'pipewire-session-manager'
            'sh'
            )
   provides=("pipewire-v4l2=${pkgver}")
@@ -386,46 +458,21 @@ package_pipewire-v4l2-git() {
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
 }
 
-package_pipewire-roc-git() {
-  pkgdesc+=" - ROC support (GIT version)"
-  depends=("pipewire-git=${pkgver}"
-           "libpipewire-${_ver}.so"
-           'libroc.so'
-           )
-  provides=("pipewire-roc=${pkgver}")
-  conflicts=('pipewire-roc')
-
-  mv roc/* "${pkgdir}"
-
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
-}
-
-package_pipewire-libcamera-git() {
-  pkgdesc+=" - libcamera support (GIT version)"
-  depends=("pipewire-git=${pkgver}"
-           "libpipewire-${_ver}.so"
-           'libcamera.so'
-           'libcamera-base.so'
-           'gcc-libs'
-           )
-  provides=("pipewire-libcamera=${pkgver}")
-  conflicts=('pipewire-libcamera')
-
-  mv camera/* "${pkgdir}"
-
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
-}
-
 package_pipewire-x11-bell-git() {
   pkgdesc+=" - X11 bell (GIT version)"
-  depends=('libcanberra.so'
+  depends=("pipewire-git=${pkgver}"
            "libpipewire-${_ver}.so"
+           "pipewire-audio-git=${pkgver}"
+           'libcanberra.so'
            'libxfixes'
+           'libx11'
            )
   provides=("pipewire-x11-bell=${pkgver}")
   conflicts=('pipewire-x11-bell')
 
   mv x11-bell/* "${pkgdir}"
+
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-x11-bell.so"
 
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
 }
