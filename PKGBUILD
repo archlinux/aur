@@ -14,14 +14,14 @@ groups=(
 )
 pkgver=0.2
 # _phcver="$(pacman -Q phc-intel | awk '{print $2}')" # Version of the installed package `phc-intel`.
-pkgrel=1
+pkgrel=2
 pkgdesc="Helper scripts for phc-intel, a frequency driver for Intel CPUs with undervolting feature."
 url="https://gitlab.com/linux-phc/phc-intel"
 arch=('any')
 license=('GPL2')
 depends=(
   'bash'
-  'phc-intel'
+  'PHC-INTEL-MODULE'
 )
 makedepends=()
 optdepends=()
