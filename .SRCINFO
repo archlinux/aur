@@ -1,0 +1,20 @@
+pkgbase = baidu-translate-client
+	pkgdesc = 百度翻译桌面端,轻·快的多语种翻译工具
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://fanyi.baidu.com/
+	arch = x86_64
+	license = custom
+	depends = libxtst
+	depends = libxkbcommon-x11
+	depends = hicolor-icon-theme
+	provides = Baidu
+	conflicts = baidu-translate-client-bin
+	source = baidu-translate-client-1.6.0.exe::https://webcdn.m.qq.com/spcmgr/download/BDFY_Setup_1.6.0.exe
+	source = baidu-translate-client.svg
+	source = baidu-translate-client.desktop
+	md5sums = 19f4c9cc1f64a33fccc0f0fc753474a6
+	md5sums = 3421a1b152f45d0b31930709209ade2f
+	md5sums = a346a32eb76c25a86cde7b7d6ca2e155
+
+pkgname = baidu-translate-client
