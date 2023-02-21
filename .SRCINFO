@@ -7,6 +7,7 @@ pkgbase = toughcookies-appimage
 	license = Freeware
 	depends = zlib
 	depends = hicolor-icon-theme
+	provides = toughcookies
 	conflicts = toughcookies
 	options = !strip
 	source = toughcookies-0.45.0.AppImage::https://downloads.toughcookies.net/v0.45.0/Tough-Cookies-0.45.0.AppImage
