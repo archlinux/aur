@@ -10,6 +10,7 @@ pkgbase = httm-git
 	depends = gcc-libs
 	optdepends = btrfs-progs: BTRFS support
 	optdepends = zfs-utils: ZFS support
+	optdepends = nilfs-utils: NILFS2 support
 	provides = httm
 	conflicts = httm
 	conflicts = httm-bin

@@ -1,7 +1,7 @@
 # Maintainer: xgjmibzr <xgjmibzr@gmail.com>
 
 pkgname=httm-git
-pkgver=r2167.8bd326f
+pkgver=r2286.67c7ce3
 pkgrel=1
 pkgdesc="Prints the size, date and locations of available unique versions (deduplicated by modify time and size) of files residing on ZFS or BTRFS snapshots."
 arch=('x86_64')
@@ -12,7 +12,8 @@ conflicts=('httm' 'httm-bin')
 options=('!strip' '!emptydirs')
 depends=('gcc-libs')
 optdepends=('btrfs-progs: BTRFS support'
-	    'zfs-utils: ZFS support')
+	    'zfs-utils: ZFS support'
+            'nilfs-utils: NILFS2 support')
 makedepends=('cargo' 'git')
 source=("git+https://github.com/kimono-koans/httm.git")
 sha512sums=('SKIP')
