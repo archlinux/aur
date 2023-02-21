@@ -1,13 +1,13 @@
 pkgbase = termscp
 	pkgdesc = termscp is a SCP/SFTP/FTPS client for command line with an integrated UI to explore the remote file system. Basically WinSCP on a terminal.
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/veeso/termscp
 	arch = x86_64
 	license = MIT
 	provides = termscp
 	options = strip
-	source = https://github.com/veeso/termscp/archive/refs/tags/v0.10.0.tar.gz
-	sha256sums = 4da797c1b85c53406944c1f921354dffa57a041f9ce5ce6d557efd1c0befe84b
+	source = https://github.com/veeso/termscp/archive/refs/tags/v0.11.0.tar.gz
+	sha256sums = 5b8d5aaf1f4710dd8f5ae49202dac78e15269f77d3d514a3dde55cb2e1daea1f
 
 pkgname = termscp
