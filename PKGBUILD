@@ -4,7 +4,7 @@
 pkgname=glibd
 _pkgname=GlibD
 pkgver=2.3.0
-pkgrel=7
+pkgrel=8
 pkgdesc='D bindings for the GLib C Utility Library'
 arch=('x86_64')
 url='https://github.com/gtkd-developers/GlibD'
@@ -32,7 +32,7 @@ build() {
 
   # Force build with LDC
   export DC=ldc
-  export LDFLAGS="$(echo -ne $LDFLAGS | sed -e 's/-flto=auto/--flto=full/')"
+  export LDFLAGS="$(echo -ne $LDFLAGS | sed -e 's/-flto=auto/-flto=full/')"
 
   arch-meson ..
 
