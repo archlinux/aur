@@ -1,11 +1,11 @@
 
 pkgname='lockbook-desktop'
 _pkgname="lockbook-desktop"
-pkgver=0.5.11
-pkgrel=3
+pkgver=0.6.0
+pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/lockbook/lockbook"
-pkgdesc="The best place to store and share thoughts."
+pkgdesc="The private, polished note-taking platform."
 license=('BSD-3-Clause')
 makedepends=('rust' 'cargo' 'git')
 depends=()
@@ -16,7 +16,7 @@ sha256sums=('SKIP' 'SKIP')
 groups=('lockbook')
 
 pkgver() {
-  echo "0.5.11"
+  echo "0.6.0"
 }
 
 build() {
