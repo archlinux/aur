@@ -1,13 +1,14 @@
 pkgbase = r-alpsnmr
 	pkgdesc = Automated spectraL Processing System for NMR
 	pkgver = 4.0.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/AlpsNMR
 	arch = any
 	license = MIT
 	depends = r
 	depends = r-baseline
 	depends = r-biocparallel
+	depends = r-cli
 	depends = r-dplyr
 	depends = r-fs
 	depends = r-future
