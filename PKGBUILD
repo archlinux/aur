@@ -2,7 +2,7 @@
 
 pkgname=ant-nebula-theme-git
 _pkgname=Ant-Nebula
-pkgver=1.3.0.r116.ge695600
+pkgver=1.3.0.r129.gbdfc515
 pkgrel=1
 pkgdesc="Nebula variant of the Ant theme"
 arch=("any")
