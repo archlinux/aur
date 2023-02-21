@@ -1,6 +1,3 @@
-# Edit on github: https://github.com/LizardByte/Sunshine/tree/nightly/packaging/linux/aur/PKGBUILD
-# Reference: https://wiki.archlinux.org/title/PKGBUILD
-
 pkgname=sunshine
 pkgver=0.18.4
 pkgrel=1
