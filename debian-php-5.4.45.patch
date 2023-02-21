@@ -94,19 +94,6 @@ index 3eb2616..98e55ea 100644
  .PHONY: $(ALWAYS) snapshot
 diff --git a/ext/dba/config.m4 b/ext/dba/config.m4
 index 1e8d51b..d2e6fd9 100644
---- a/ext/dba/config.m4
-+++ b/ext/dba/config.m4
-@@ -113,6 +113,10 @@
-       THIS_PREFIX=$i
-       THIS_INCLUDE=$i/include/depot.h
-       break
-+    elif test -f "$i/include/qdbm/depot.h"; then
-+      THIS_PREFIX=$i
-+      THIS_INCLUDE=$i/include/qdbm/depot.h
-+      break
-     fi
-   done
- 
 diff --git a/sapi/fpm/php-fpm.8.in b/sapi/fpm/php-fpm.8.in
 index cb1224e..794f508 100644
 --- a/sapi/fpm/php-fpm.8.in
