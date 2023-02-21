@@ -3,7 +3,7 @@
 pkgname=browser360-bin
 _pkgname=com.360.browser-stable
 pkgver=13.2.1028.33
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="360 Browser stable version"
 arch=("x86_64")
@@ -11,7 +11,7 @@ url="https://browser.360.cn"
 license=('custom')
 depends=(alsa-lib at-spi2-core nss gtk3 gtk2)
 optdepends=()
-provides=(360.net)
+provides=()
 conflicts=(browser360-stable-bin)
 install=
 source=("https://down.360safe.com/gc/signed_${_pkgname}_${pkgver}-${pkgrel}_amd64.deb")
