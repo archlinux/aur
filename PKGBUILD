@@ -1,31 +1,34 @@
 # Maintainer: Kirill Pshenichnyi <pshcyrill@mail.ru>
+# Maintainer: Antonio Bartalesi <antonio.bartalesi@gmail.com>
 # Contributor: The Tango Controls community
 #              (https://tango-controls.org) <info@tango-controls.org>
 
 pkgname=tango-idl
-pkgver=5.1.0
+pkgver=5.1.2
 pkgrel=1
 groups=('tango-controls')
 pkgdesc="This is the Tango CORBA IDL file."
 arch=('x86_64' 'armv7h')
 url="https://www.tango-controls.org/"
 license=('GPL3')
-depends=('cmake>=2.8.9')
+depends=('cmake>=3.7')
 conflicts=('tango-idl-git')
-source=("https://gitlab.com/tango-controls/tango-idl/-/archive/${pkgver}/tango-idl-${pkgver}.tar.gz")
-sha256sums=('864dc73510fea5d71c8d7120ecb0d0df13510b37319120367305b94490b5751e')
+source=("https://gitlab.com/tango-controls/tango-idl/-/archive/${pkgver}/tango-idl-${pkgver}.tar.gz"
+	"version-fix.patch")
+sha256sums=('b0a955d14c6c88fe331e2323205522a3710a4aa1909c1e7f3ee3acc371a5a77d'
+            'fd4734107be21dcfc3388efef6ac1ebc3645956756c10ced0b956edee9cddb2d')
 _dir="${pkgname}-${pkgver}"
 
+
 prepare() {
-  mkdir -p ${_dir}/build
+  cd "${pkgname}-${pkgver}"
+  patch -N --input="${srcdir}/version-fix.patch"
 }
 
 build() {
-  cd ${_dir}/build
-  cmake ../
+  cmake -B build -S "${pkgname}-${pkgver}" -DCMAKE_INSTALL_PREFIX=/usr
 }
 
 package() {
-  cd ${_dir}/build
-  make DESTDIR=${pkgdir} install
+  DESTDIR="$pkgdir" cmake --install build
 }

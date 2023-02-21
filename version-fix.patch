@@ -1,0 +1,13 @@
+--- CMakeLists.txt	2023-01-18 22:04:01.000000000 +0300
++++ CMakeLists-new.txt	2023-02-21 11:49:17.941427610 +0300
+@@ -4,8 +4,8 @@
+ 
+ #need to define the version of the library
+ set(MAJOR_VERSION "5")
+-set(MINOR_VERSION "0")
+-set(PATCH_VERSION "1")
++set(MINOR_VERSION "1")
++set(PATCH_VERSION "2")
+ 
+ #convenient versions
+ set(LIBRARY_VERSION "${MAJOR_VERSION}.${MINOR_VERSION}.${PATCH_VERSION}")
