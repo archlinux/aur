@@ -1,4 +1,5 @@
 # Maintainer: Yang Jeong Hun (Nevuly) <onyxclover9931@gmail.com>
+# Maintainer: Jonathon Fernyhough <jonathon"m2x+dev>
 # Contributor: Sam Guymer <sam at guymer dot me>
 
 # This PKGBUILD adapted from zulu-8-bin
