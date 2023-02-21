@@ -1,36 +1,32 @@
-## Maintainer: realasking
+# Maintainer: AtticFinder65536 <atticfinder -AT- rocklabs -DOT- xyz>
+## Contributor: realasking
+
 pkgname=python-genanki-git
-pkgver=0.4.0
+_gitname=genanki
+pkgver=0.13.0.r7.g0fa4f74
 pkgrel=1
-pkgdesc='Generate Anki decks programmatically'
+pkgdesc='Python 3 library for programatically generating Anki decks'
 arch=(x86_64 i686)
-url='http://github.com/kerrickstaley/genanki'
+url='https://github.com/kerrickstaley/genanki'
 license=('MIT')
-depends=('python' 'python-cached-property' 'python-frozendict' 'python-pystache' 'python-yaml' 'python-setuptools')
-provides=('genanki')
-source=()
-md5sums=()
+depends=('python' 'python-cached-property' 'python-frozendict' 'python-chevron' 'python-yaml')
+makedepends=('git' 'python-setuptools' 'python-pytest-runner')
+provides=('genanki' 'python-genanki')
+conflicts=('genanki' 'python-genanki')
+source=('git+https://github.com/kerrickstaley/genanki.git')
+b2sums=('SKIP')
 
-_proj=https://github.com/kerrickstaley/genanki.git
-_name=genanki
+pkgver(){
+	cd "${_gitname}"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
-build() {
-	cd "$srcdir" 
-	msg "Starting Git..."
-	if [[ -d "$_proj" ]]; then
-	    cd "$_proj" 
-	    git pull origin
-	else
-	    git clone "$_proj" "$_name"
-	fi
-	msg "Project synchronization Finished."
-	msg "Starting build..."
-	
-	cd "$_name"
-	python setup.py build || return 1
+build(){
+	cd "${_gitname}"
+	python setup.py build
 }
 
 package() {
-	cd "$srcdir/$_name"
-	python setup.py install --root="$pkgdir" --optimize=1 || return 1 
+	cd "${_gitname}"
+	python setup.py install --root="$pkgdir" --optimize=1
 }
