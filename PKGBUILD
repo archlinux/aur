@@ -2,7 +2,7 @@
 
 pkgname=mpv-full
 pkgver=0.35.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('x86_64')
 license=('GPL')
@@ -14,7 +14,7 @@ depends=(
         'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'mujs'
         'libdvdnav' 'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive'
         'zlib' 'vapoursynth' 'openal' 'vulkan-icd-loader' 'shaderc'
-        'libplacebo' 'libxpresent' 'pipewire' 'zimg' 'sndio' 'libsixel'
+        'libplacebo' 'libxpresent' 'libpipewire' 'zimg' 'sndio' 'libsixel'
     # AUR:
         'spirv-cross'
 )
