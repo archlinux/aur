@@ -1,7 +1,7 @@
 # Maintainer:
 
 pkgname=virtiofsd
-pkgver=1.4.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='A virtio-fs vhost-user device daemon written in Rust'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache' 'BSD')
 depends=('gcc-libs' 'libcap-ng' 'libseccomp')
 makedepends=('git' 'rust')
 options=('!lto')
-_commit='0ce2b1181088e7285750851bacca9577d4a8700d'
+_commit='e9d7275892abd49e838d0fa9a8805fed063f782d'
 source=("$pkgname::git+$url.git#commit=$_commit")
 b2sums=('SKIP')
 
