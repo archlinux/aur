@@ -1,6 +1,6 @@
 _name=plasma-integration
 pkgname=${_name}-light
-pkgver=5.27.0
+pkgver=5.27.1
 pkgrel=1
 pkgdesc='Qt Platform Theme integration plugins for the Plasma workspaces (stripped from unnecessary dependencies)'
 arch=('x86_64')
@@ -22,7 +22,7 @@ _snapshot="${_name}-${pkgver}"
 source=("https://download.kde.org/stable/plasma/${pkgver}/${_snapshot}.tar.xz"{,.sig})
 
 sha256sums=(
-    '3cb091a677bfbfacbdffdd1a2c0e76afded539db3a48b2d5358236face8b4655'
+    '07f54e9313d912c13a9eb70d1df0aaee37ff87cc5f77af7c2b6b0995209b00b4'
     'SKIP'
 )
 
