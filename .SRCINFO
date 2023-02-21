@@ -1,7 +1,7 @@
 pkgbase = r-officer
 	pkgdesc = Manipulation of Microsoft Word and PowerPoint Documents
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=officer
 	arch = any
 	license = GPL
@@ -11,7 +11,6 @@ pkgbase = r-officer
 	depends = r-uuid
 	depends = r-xml2
 	depends = r-zip
-	optdepends = r-base64enc
 	optdepends = r-devemf
 	optdepends = r-doconv
 	optdepends = r-ggplot2
