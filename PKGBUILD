@@ -2,7 +2,7 @@ pkgname=sunshine
 pkgver=0.18.4
 pkgrel=1
 pkgdesc="A self-hosted game stream host for Moonlight."
-arch=('x86_64' 'i686')
+arch=('x86_64' 'aarch64')
 url=https://app.lizardbyte.dev
 license=('GPL3')
 
