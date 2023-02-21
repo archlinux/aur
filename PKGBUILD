@@ -2,26 +2,24 @@
 
 pkgname=technitium-dns-server-bin
 _pkgname=technitium-dns-server
-pkgver=10.0.1
+pkgver=11.0
 pkgrel=1
 pkgdesc="Open source authoritative and recursive DNS server focused on privacy and security"
 arch=('any')
 url="https://technitium.com/dns/"
 license=('GPL3')
-depends=('dotnet-runtime')
+depends=('dotnet-runtime' 'aspnet-runtime')
 conflicts=('technitium-dns-server')
 provides=('technitium-dns-server')
 source=("$_pkgname-$pkgver.tar.gz::https://download.technitium.com/dns/archive/$pkgver/DnsServerPortable.tar.gz"
         "$_pkgname.service"
         "$_pkgname.sysuser")
-md5sums=("f6a57858899d582a66b845e501b31567"
+md5sums=("eaf29b52db359b61fda77f27148123b3"
         "d3efcfd93a76ead9d48b8b721d37275d"
         "94d2dc7076d37fec30115f407cb2948f")
 
 prepare() {
     cd "$srcdir"
-    sed -i "s!/etc/dns!/opt/$_pkgname!g" systemd.service
-    sed -i "/^# Restart/d" systemd.service
 }
 
 package() {
@@ -39,7 +37,6 @@ package() {
     install -Dm 0644 DnsServerCore.dll "$pkgdir/opt/$_pkgname/DnsServerCore.dll"
     install -Dm 0644 DnsServerCore.pdb "$pkgdir/opt/$_pkgname/DnsServerCore.pdb"
     install -Dm 0644 named.root "$pkgdir/opt/$_pkgname/named.root"
-    install -Dm 0644 Newtonsoft.Json.dll "$pkgdir/opt/$_pkgname/Newtonsoft.Json.dll"
     install -Dm 0644 root-anchors.xml "$pkgdir/opt/$_pkgname/root-anchors.xml"
     install -Dm 0644 TechnitiumLibrary.ByteTree.dll "$pkgdir/opt/$_pkgname/TechnitiumLibrary.ByteTree.dll"
     install -Dm 0644 TechnitiumLibrary.ByteTree.pdb "$pkgdir/opt/$_pkgname/TechnitiumLibrary.ByteTree.pdb"
