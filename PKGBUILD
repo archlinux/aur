@@ -1,4 +1,5 @@
 # Maintainer: Attila Greguss <floyd0122[at]gmail[dot]com>
+# armv7h and aarch64 Comaintainers needed
 
 pkgbase=dotnet-core-6.0-bin
 pkgname=(
@@ -8,20 +9,20 @@ pkgname=(
   'dotnet-targeting-pack-6.0-bin'
   'aspnet-targeting-pack-6.0-bin'
  )
-pkgver=6.0.13.sdk405
-_runtimever=6.0.13
-_sdkver=6.0.405
+pkgver=6.0.14.sdk406
+_runtimever=6.0.14
+_sdkver=6.0.406
 pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.microsoft.com/net/core'
 license=('MIT')
 options=('staticlibs')
-source_armv7h=('https://download.visualstudio.microsoft.com/download/pr/0cd0c511-c215-48d4-a2a6-e2c94b208605/56b7da0b2c8240ec30001df55d1891d8/dotnet-sdk-6.0.405-linux-arm.tar.gz')
-source_aarch64=('https://download.visualstudio.microsoft.com/download/pr/c05dfb39-64d7-42cb-8caa-d669c0509c9b/d498099b33fd336d01e28c38515cb21d/dotnet-sdk-6.0.405-linux-arm64.tar.gz')
-source_x86_64=('https://download.visualstudio.microsoft.com/download/pr/c7f21771-9b09-4c81-883b-90dff8760c1e/fe992d38a94cc6f301c0236db3920c0a/dotnet-sdk-6.0.405-linux-x64.tar.gz')
-sha512sums_armv7h=('c35fb905495f6eaf8b26ea6d61bcc59a56da8e7f3ac70dc8e620553d4baea81f65412bbed1099a724b22a118e09c4e290510434ac593d2cf6cf18db7cf370268')
-sha512sums_aarch64=('6c31666a95817a7049bd47717c9cf9ab159e94e90987f46883e272dc6dee92fb0d890f4e590faca4458cd2b3943133fb2fa58c2fc175db98d4c6c531f6b2c3c3')
-sha512sums_x86_64=('44e719c67dd06c73a8736ab63423d735850bc607adf4b8a9f4123945b13014f8144b4fb2c4cfe790d323106b7ce604388cc5d617bc153fd7820878b9187a2cd4')
+source_armv7h=('https://download.visualstudio.microsoft.com/download/pr/57c99686-6bce-48c7-b69c-91e0be60165c/69e812835ab62d1f1773a71ee943d9a7/dotnet-sdk-6.0.406-linux-arm.tar.gz')
+source_aarch64=('https://download.visualstudio.microsoft.com/download/pr/0a569135-1e0d-4273-ab56-f732a11f6199/6fb7eb4813c1cc1a7354cb665d2389c3/dotnet-sdk-6.0.406-linux-arm64.tar.gz')
+source_x86_64=('https://download.visualstudio.microsoft.com/download/pr/265a56e6-bb98-4b17-948b-bf9884ee3bb3/e2a2587b9a964d155763b706dffaeb8b/dotnet-sdk-6.0.406-linux-x64.tar.gz')
+sha512sums_armv7h=('dbbe12b5b3760817d097c5cb3984540a0ddccb4a06f8dbbfa0cb94b2292bf251d8a76b63fa5030e3a895f772371bf99e2ce81a0476401b04968a968140980b26')
+sha512sums_aarch64=('7653939414bfbd06b4a218fe17c0c8e0af20f7b5e6929949a0adc23ac515a76622fa863bd6c46bbcc0128238f4c1aba6b7ff5ace331fde43e89921737a20eeee')
+sha512sums_x86_64=('4553aed8455501e506ee7498a07bff56e434249406266f9fd50eb653743e8fc9c032798f75e34c2a2a2c134ce87a8f05a0288fc8f53ddc1d7a91826c36899692')
 
 package_dotnet-runtime-6.0-bin() {
   pkgdesc='The .NET Core runtime (binary)'
@@ -74,7 +75,9 @@ package_dotnet-sdk-6.0-bin() {
 
 package_dotnet-targeting-pack-6.0-bin() {
   pkgdesc='The .NET Core targeting pack (binary)'
-  depends=(netstandard-targeting-pack-bin)
+  depends=(
+    'netstandard-targeting-pack'
+  )
   provides=(dotnet-targeting-pack=${_runtimever} dotnet-targeting-pack-6.0)
   conflicts=(dotnet-targeting-pack=${_runtimever} dotnet-targeting-pack-6.0)
 
@@ -89,7 +92,9 @@ package_dotnet-targeting-pack-6.0-bin() {
 
 package_aspnet-targeting-pack-6.0-bin() {
   pkgdesc='The ASP.NET Core targeting pack (binary)'
-  depends=(dotnet-targeting-pack-6.0-bin)
+  depends=(
+    'dotnet-targeting-pack-6.0-bin'
+  )
   provides=(aspnet-targeting-pack=${_runtimever} aspnet-targeting-pack-6.0)
   conflicts=(aspnet-targeting-pack=${_runtimever} aspnet-targeting-pack-6.0)
 
