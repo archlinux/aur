@@ -1,6 +1,6 @@
 pkgbase = mounch
 	pkgdesc = A simple rofi based launcher based on yaml config
-	pkgver = 0.9.2
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/chmouel/mounch
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = mounch
 	depends = python>=3.6
 	depends = python-yaml
 	depends = rofi
-	source = mounch_0.9.2-1.tar.gz::https://github.com/chmouel/mounch/archive/refs/tags/0.9.2.tar.gz
-	sha512sums = 3b5899d2d05db8cafb3791ea81fa1bdfbfa13ba5304d5979f22de4cd843fa5c6d1ecf51900acf1af34e81681ae42c90a76a32863e22015d5361087ddacdaa449
+	source = mounch_0.10.0-1.tar.gz::https://github.com/chmouel/mounch/archive/refs/tags/0.10.0.tar.gz
+	sha512sums = a277d7e62ef9675813b400c7066ce4556a52d783dda3f6ea54aa1f11ec8f2d5dbaf0727b2514f041190b5afad9c9a99a369d7ab9023e550aa91ba831ea605505
 
 pkgname = mounch
