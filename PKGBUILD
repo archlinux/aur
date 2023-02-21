@@ -1,7 +1,7 @@
 _name=plasma-workspace
 pkgname=${_name}-light
-pkgver=5.27.0
-pkgrel=3
+pkgver=5.27.1
+pkgrel=1
 pkgdesc='KDE Plasma Workspace (stripped from unnecessary dependencies)'
 arch=('x86_64')
 url='https://kde.org/plasma-desktop/'
@@ -43,7 +43,7 @@ source=(
 )
 
 sha256sums=(
-    '01244ed2df75960192cf810a263410a7b2c9b34c3c237b14429d028ba10b073b'
+    '67883cd78115c4b71710ba79dc7986adc929d3bd04227f62b84a3129c275fe01'
     'SKIP'
     '00090291204baabe9d6857d3b1419832376dd2e279087d718b64792691e86739'
 )

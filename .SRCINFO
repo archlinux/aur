@@ -1,7 +1,7 @@
 pkgbase = plasma-workspace-light
 	pkgdesc = KDE Plasma Workspace (stripped from unnecessary dependencies)
-	pkgver = 5.27.0
-	pkgrel = 3
+	pkgver = 5.27.1
+	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
 	groups = plasma
@@ -38,14 +38,14 @@ pkgbase = plasma-workspace-light
 	conflicts = plasma-workspace
 	options = !docs
 	backup = etc/pam.d/kde
-	source = https://download.kde.org/stable/plasma/5.27.0/plasma-workspace-5.27.0.tar.xz
-	source = https://download.kde.org/stable/plasma/5.27.0/plasma-workspace-5.27.0.tar.xz.sig
+	source = https://download.kde.org/stable/plasma/5.27.1/plasma-workspace-5.27.1.tar.xz
+	source = https://download.kde.org/stable/plasma/5.27.1/plasma-workspace-5.27.1.tar.xz.sig
 	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/0628834a3baa9e1446e43d4f90fa8091243dd23d/trunk/kde.pam
 	validpgpkeys = E0A3EB202F8E57528E13E72FD7574483BB57B18D
 	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
 	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
-	sha256sums = 01244ed2df75960192cf810a263410a7b2c9b34c3c237b14429d028ba10b073b
+	sha256sums = 67883cd78115c4b71710ba79dc7986adc929d3bd04227f62b84a3129c275fe01
 	sha256sums = SKIP
 	sha256sums = 00090291204baabe9d6857d3b1419832376dd2e279087d718b64792691e86739
 
