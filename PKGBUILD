@@ -8,12 +8,15 @@
 
 _name=powerdevil
 pkgname=${_name}-light
-pkgver=5.27.0
+pkgver=5.27.1
 pkgrel=1
-pkgdesc='Manages the power consumption settings of a Plasma Shell. Light version without NetworkManager and Bluez support/dependencies.'
+pkgdesc='Manages the power consumption settings of a Plasma Shell (stripped from unnecessary dependencies)'
 arch=('x86_64')
 url='https://kde.org/plasma-desktop/'
-license=(LGPL)
+license=('LGPL')
+groups=('plasma')
+conflicts=("${_name}")
+provides=("${_name}")
 depends=('plasma-workspace')
 makedepends=('extra-cmake-modules' 'kdoctools')
 
@@ -22,14 +25,11 @@ optdepends=(
     'power-profiles-daemon: power profiles support'
 )
 
-conflicts=("${_name}")
-provides=("${_name}")
-
 _snapshot="${_name}-${pkgver}"
 source=("https://download.kde.org/stable/plasma/${pkgver}/${_snapshot}.tar.xz"{,.sig})
 
 sha256sums=(
-    '2f27b4fabe84e6cad22dfd49aabf075c166c7a4a475e92099d3f98d3f517b73d'
+    '53b64b15140c1146fa1d95f51c2061b60f25361684a82b52c5ccd5240ca64e27'
     'SKIP'
 )
 
@@ -39,6 +39,13 @@ validpgpkeys=(
     'D07BD8662C56CB291B316EB2F5675605C74E02CF' # David Edmundson <davidedmundson@kde.org>
     '1FA881591C26B276D7A5518EEAAF29B42A678C20' # Marco Martin <notmart@gmail.com>
 )
+
+options=('!docs')
+
+prepare() {
+    echo -n '' > "${_snapshot}/doc/CMakeLists.txt"
+    rm -r "${_snapshot}/po/"*"/docs"
+}
 
 _disable=(
     'KF5BluezQt'
