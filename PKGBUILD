@@ -1,25 +1,23 @@
-pkgname=gimp-stripped
-pkgver=2.10.32
-pkgrel=2
+_name=gimp
+pkgname=${_name}-stripped
+pkgver=2.10.34
+pkgrel=1
 pkgdesc='GNU Image Manipulation Program (stripped from most unnecessary dependencies)'
 url='https://www.gimp.org/'
 arch=('x86_64')
 license=('GPL' 'LGPL')
+conflicts=("${_name}")
+provides=("${_name}")
 depends=('gtk2' 'babl' 'gegl' 'glib-networking' 'mypaint-brushes1' 'poppler-glib' 'poppler-data' 'libgexiv2')
 makedepends=('intltool' 'iso-codes')
 options=('!emptydirs' '!docs')
 
-_name="${pkgname%-stripped}"
 _snapshot="${_name}-${pkgver}"
-
-conflicts=("${_name}")
-provides=("${_name}")
-
-source=("${_snapshot}.tar.bz2::https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_snapshot}.tar.bz2")
-sha256sums=('3f15c70554af5dcc1b46e6dc68f3d8f0a6cc9fe56b6d78ac08c0fd859ab89a25')
+source=("https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_snapshot}.tar.bz2")
+sha256sums=('84004642d351b398a4293cd7fd3592044a944f05bb52850ee6068f247c657aa3')
 
 build() {
-    cd "${srcdir}/${_snapshot}"
+    cd "${_snapshot}"
 
     ./configure \
         --prefix=/usr \
@@ -61,7 +59,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${_snapshot}"
+    cd "${_snapshot}"
     make DESTDIR="${pkgdir}" install
     rm -r "${pkgdir}/usr/share/man"
     ln -s "gimptool-2.0" "${pkgdir}/usr/bin/gimptool"

@@ -1,7 +1,7 @@
 pkgbase = gimp-stripped
 	pkgdesc = GNU Image Manipulation Program (stripped from most unnecessary dependencies)
-	pkgver = 2.10.32
-	pkgrel = 2
+	pkgver = 2.10.34
+	pkgrel = 1
 	url = https://www.gimp.org/
 	arch = x86_64
 	license = GPL
@@ -20,7 +20,7 @@ pkgbase = gimp-stripped
 	conflicts = gimp
 	options = !emptydirs
 	options = !docs
-	source = gimp-2.10.32.tar.bz2::https://download.gimp.org/pub/gimp/v2.10/gimp-2.10.32.tar.bz2
-	sha256sums = 3f15c70554af5dcc1b46e6dc68f3d8f0a6cc9fe56b6d78ac08c0fd859ab89a25
+	source = https://download.gimp.org/pub/gimp/v2.10/gimp-2.10.34.tar.bz2
+	sha256sums = 84004642d351b398a4293cd7fd3592044a944f05bb52850ee6068f247c657aa3
 
 pkgname = gimp-stripped
