@@ -246,7 +246,7 @@ package_libpipewire-git() {
   pkgdesc+=" - client library (GIT Version)"
   depends=('gcc-libs')
   provides=("libpipewire=${pkgver}"
-            "libpipewire-$_ver.so"
+            "libpipewire-${_ver}.so"
             )
   conflicts=('libpipewire')
 
@@ -268,11 +268,14 @@ package_pipewire-docs-git() {
 
 package_pipewire-audio-git() {
   pkgdesc+=" - Audio support (GIT Version)"
-  depends=("libpipewire-${_ver}.so"
+  depends=("pipewire-git=${pkgver}"
+           "libpipewire-${_ver}.so"
            'alsa-card-profiles'
            'libasound.so'
-           'libavformat.so'
            'libavcodec.so'
+           'libavformat.so'
+           'libavutil.so'
+           'libswresample.so'
            'libbluetooth.so'
            'libfdk-aac.so'
            'libfreeaptx.so'
@@ -285,7 +288,6 @@ package_pipewire-audio-git() {
            'libsndfile.so'
            'libusb-1.0.so'
            'libwebrtc_audio_processing.so'
-           "pipewire-git=${pkgver}"
            )
   provides=("pipewire-audio=${pkgver}")
   conflicts=('pipewire-audio'

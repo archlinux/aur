@@ -97,11 +97,14 @@ pkgname = pipewire-docs-git
 
 pkgname = pipewire-audio-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version) - Audio support (GIT Version)
+	depends = pipewire-git=0.3.66.13.g0b69f37a7
 	depends = libpipewire-0.3.so
 	depends = alsa-card-profiles
 	depends = libasound.so
-	depends = libavformat.so
 	depends = libavcodec.so
+	depends = libavformat.so
+	depends = libavutil.so
+	depends = libswresample.so
 	depends = libbluetooth.so
 	depends = libfdk-aac.so
 	depends = libfreeaptx.so
@@ -114,7 +117,6 @@ pkgname = pipewire-audio-git
 	depends = libsndfile.so
 	depends = libusb-1.0.so
 	depends = libwebrtc_audio_processing.so
-	depends = pipewire-git=0.3.66.13.g0b69f37a7
 	provides = pipewire-audio=0.3.66.13.g0b69f37a7
 	conflicts = pipewire-audio
 	conflicts = pipewire-ffmpeg-git
