@@ -16,13 +16,14 @@
 _phpbase="53"
 _suffix=""
 pkgver="5.3.29"
-pkgrel="16"
+pkgrel="18"
 pkgbase="php53"
 pkgdesc="PHP 5.3.29 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1  -DOPENSSL_NO_SSL3=1  -DOPENSSL_NO_SSL2=1  -DU_DEFINE_FALSE_AND_TRUE=1 "
 _build_apache_cfg="etc/httpd/conf/extra"
 _build_bundled_gd="1"
 _build_conf_d="etc/php53/conf.d"
+_build_forced_openssl_11="0"
 _build_fpm_name="php-fpm53"
 _build_fpm_service_name="php53-fpm"
 _build_icu_src_dir="icu/source"
@@ -177,10 +178,9 @@ makedepends=(
     "findutils"
     "autoconf2.13"
     "libxslt"
-    "openssl"
     "e2fsprogs"
     "openssl-1.0"
-    "db"
+    "db5.3"
     "postgresql-libs"
     "unixodbc"
     "libfbclient"
@@ -265,7 +265,7 @@ _ext_depends_mysql=(
 )
 _ext_depends_dba=(
     "php53=5.3.29"
-    "db"
+    "db5.3"
 )
 _ext_depends_odbc=(
     "php53=5.3.29"
@@ -518,6 +518,10 @@ build() {
     export EXTENSION_DIR="/usr/lib/${pkgbase}/modules"
     if ((_build_openssl_v10_patch)); then
         export PHP_OPENSSL_DIR="/usr/lib/openssl-1.0"
+        export PKG_CONFIG_PATH="/usr/lib/openssl-1.0/pkgconfig"
+    elif ((_build_forced_openssl_11)); then
+        export PHP_OPENSSL_DIR="/usr/lib/openssl-1.1"
+        export PKG_CONFIG_PATH="/usr/lib/openssl-1.1/pkgconfig"
     fi
     if [[ ! -z "${_cppflags}" ]]; then
         CPPFLAGS+=" $_cppflags "
@@ -1552,5 +1556,5 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             'c9b3c4153596b605a41456e8242d98e474be6391d6fb4b6ce70a21c4c23b5203'
             '7e59ff3e1669d55f2a26ccdd748bfed6bbfd85d5d9206c1241cfd4443994f42c'
             '616ec8aa12070fb058be511abdae703a62d1c99387dd6d2a7bb47cb1b5bbda5f'
-            'eb70c67b4d76ae7936489fc050affdacddbe3792970850091cfd922893419e54'
+            '576d301ad50cf71782773f970b418ec9a569e8e4fccb2ae982895f3553309794'
             '558e780e93dfa861a366c49b4d156d8fc43f17898f001ae6033ec63c33d5d41c')
