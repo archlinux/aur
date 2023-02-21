@@ -1,7 +1,7 @@
 pkgbase = tachidesk-jui-bin
 	pkgdesc = A free and open source manga reader to read manga from a Tachidesk-Server instance.
 	pkgver = 1.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Suwayomi/Tachidesk-JUI
 	arch = x86_64
 	license = MPL2
