@@ -2,7 +2,7 @@
 # Contributor: adiprasetya <ignilium.inc@gmail.com>
 
 pkgname=clash-meta-bin
-pkgver=1.14.1
+pkgver=1.14.2
 pkgrel=1
 pkgdesc="Another Clash Kernel by MetaCubeX"
 arch=("x86_64")
@@ -24,7 +24,7 @@ source=("${pkgname}-amd64-v${pkgver}.gz::${url}/releases/download/v${pkgver}/Cla
         "clash-meta.service"
         "clash-meta@.service"
         "config.yaml")
-sha256sums=('e216eb0fa1f45a11b6580ce2b0d370a86b5811e29948138e9e9d164bccf5ea13'
+sha256sums=('19d49590661ffa2514bd89ccb8f2f33b3f4d98f01a450065dee05286cb218789'
             '9e8a28e22c159d7d70c258b65f47bc734543e54cb0cd3957ce19349aca145af8'
             '29c73ac66d6fe60bea4359ac1857e3452f26c2af792efd8dd16d558462472efb'
             'c4af03523b8006d206440163406ee9b4de1a10bb5023fb3194490b8225a5e481')
