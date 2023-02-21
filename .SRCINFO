@@ -1,6 +1,6 @@
 pkgbase = onedev-docs
 	pkgdesc = Static site documentation for Onedev for offline browsing
-	pkgver = 20230211
+	pkgver = 20230221
 	pkgrel = 1
 	url = https://code.onedev.io/onedev/docs
 	arch = any
