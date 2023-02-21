@@ -1,7 +1,7 @@
 # Maintainer: trickybestia <trickybestia@gmail.com>
 
 pkgname=linux-discord-rich-presence
-pkgver=3.1.3
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Customizable Discord Rich Presence client for Linux"
 arch=(x86_64)
@@ -9,7 +9,7 @@ url=https://github.com/trickybestia/linux-discord-rich-presence
 license=(GPL3)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=(7a5cbecf75f38848e67b742941ccd9a403f2b9d1d3c23211d8cf90c76fb07afb)
+sha256sums=(2974140d145c454b3d10df346022856a327a37ff696c16619ecf37b9bcbd8ab9)
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
