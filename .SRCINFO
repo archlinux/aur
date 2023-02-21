@@ -1,0 +1,14 @@
+pkgbase = bazel-compilation-database
+	pkgdesc = Tool to generate compile_commands.json from the Bazel build system
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/grailbio/bazel-compilation-database
+	arch = any
+	license = APACHE
+	checkdepends = clang
+	depends = bazel
+	depends = python
+	source = 0.5.2.tar.gz::https://github.com/grailbio/bazel-compilation-database/archive/0.5.2.tar.gz
+	sha256sums = d32835b26dd35aad8fd0ba0d712265df6565a3ad860d39e4c01ad41059ea7eda
+
+pkgname = bazel-compilation-database
