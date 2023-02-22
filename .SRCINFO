@@ -14,7 +14,7 @@ pkgbase = surfshark-client
 	depends = wireguard-tools
 	options = !strip
 	options = !emptydirs
-	source = https://ocean.surfshark.com/debian/pool/main/s/surfshark/surfshark_1.2.6-1508_amd64.deb
-	sha512sums = 0e2996cbca953b48e024c09414bd90aa61ec8089ec4c0d28e750cf3e16134034168b24ccbfda0dd84349b71af1678d19f7408ccfa1dd7fafbbbfde6cb529e9ef
+	source = https://ocean.surfshark.com/debian/pool/main/s/surfshark/surfshark_1.2.7-1545_amd64.deb
+	sha512sums = a733550218cbe7209974870a78667ce378a10b4e76034d067c1ae1695acdce6872b0225b15cdefbc8fc488e3f1b2ad4af5f2aef977c555b670d30c4c91885eff
 
 pkgname = surfshark-client
