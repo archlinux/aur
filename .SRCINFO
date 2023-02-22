@@ -1,6 +1,7 @@
 pkgbase = kipr
+	pkgdesc = Command Line Password Manager
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = MIT
 	makedepends = cargo

@@ -1,9 +1,9 @@
 # Maintainer: iamawacko <iamawacko@protonmail.com>
 pkgname=kipr
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
+pkgdesc='Command Line Password Manager'
 license=('MIT')
-pkgdesc=""
 arch=('any')
 source=("https://github.com/grahamking/kipr/archive/refs/tags/v${pkgver}.tar.gz")
 makedepends=(cargo)
