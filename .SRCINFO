@@ -1,8 +1,8 @@
 pkgbase = hipsycl-cpu
-	pkgdesc = Implementation of SYCL 1.2.1 over AMD HIP/NVIDIA CUDA
-	pkgver = 0.9.3
+	pkgdesc = Multi-backend implementation of SYCL for CPUs and GPUs
+	pkgver = 0.9.4
 	pkgrel = 1
-	url = https://github.com/illuhad/hipSYCL
+	url = https://github.com/OpenSYCL/OpenSYCL
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
@@ -14,7 +14,7 @@ pkgbase = hipsycl-cpu
 	depends = openmp
 	provides = hipsycl
 	provides = sycl
-	source = hipsycl-cpu-0.9.3::https://github.com/illuhad/hipSYCL/archive/v0.9.3.tar.gz
-	sha256sums = 7a1d6c39dd73d8b84e7506003f20918aa3763850e7a5ea3d6add5bd67f6ec0da
+	source = hipsycl-cpu-0.9.4::https://github.com/OpenSYCL/OpenSYCL/archive/v0.9.4.tar.gz
+	sha256sums = 6262533191c812966e2f8b67e6ae510ae5ad2cf7e0caecc9957e8a69423e51c4
 
 pkgname = hipsycl-cpu
