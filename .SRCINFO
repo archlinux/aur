@@ -1,16 +1,14 @@
 pkgbase = php73-xdebug
-	pkgdesc = PHP debugging extension
-	pkgver = 3.0.4
+	pkgdesc = php73 Xdebug extension
+	pkgver = 3.1.5
 	pkgrel = 1
 	url = https://xdebug.org/
 	arch = x86_64
+	arch = i686
 	license = Xdebug
-	depends = php73
-	backup = etc/php73/conf.d/xdebug.ini
-	source = https://xdebug.org/files/xdebug-3.0.4.tgz
-	source = xdebug.ini
-	sha256sums = b27290491f4634b0cd3badfc3a2be98fb1e3c0c3710a706724d8b195baad72af
-	sha256sums = 7c66883dc2ade69069ef84e30188b25630748aa9c8b0dd123727c00505421205
+	makedepends = php73
+	source = http://pecl.php.net/get/xdebug-3.1.5.tgz
+	sha256sums = 55f6ef381245da079b2fc5ce1cfbcb7961197d0c0e04f9d977613cf9aa969a79
 
 pkgname = php73-xdebug
-
+	backup = 
