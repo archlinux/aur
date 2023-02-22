@@ -11,6 +11,7 @@ depends=("xsct" "libayatana-common")
 makedepends=("intltool" "cmake-extras" "glib2" "systemd" "hicolor-icon-theme")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("73c4c2164ae617aefabc8fc872cf2144")
+conflicts=("redshift")
 
 build()
 {

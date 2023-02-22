@@ -14,6 +14,7 @@ pkgbase = ayatana-indicator-display
 	makedepends = hicolor-icon-theme
 	depends = xsct
 	depends = libayatana-common
+	conflicts = redshift
 	source = ayatana-indicator-display-22.9.4.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-display/archive/22.9.4.tar.gz
 	md5sums = 73c4c2164ae617aefabc8fc872cf2144
 
