@@ -4,7 +4,7 @@
 # Contributor: V0K3 <v0k3@inventati.org>
 
 pkgname=sasm
-pkgver=3.13.3
+pkgver=3.13.4
 pkgrel=1
 pkgdesc="Simple crossplatform IDE for NASM, GAS, FASM assembly languages"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url="http://dman95.github.io/SASM/english.html"
 license=('GPL3')
 depends=('qt5-base' 'nasm' 'gdb' 'gcc' 'fasm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Dman95/SASM/archive/v${pkgver}.tar.gz")
-sha256sums=('01a04a67eab4fbd71fd27ce14f438f7b752a41e772a58d67be13c79744a29ae7')
+sha256sums=('a49d2cbf55ebf35e262e1e22105f4903368ed5bd656e095f7e75900e41b8510c')
 
 build() {
     cd "${pkgname^^}-${pkgver}"
