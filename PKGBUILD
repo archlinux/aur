@@ -2,8 +2,8 @@
 # Contributor: BlackEagle <ike DOT devolder AT gmail DOT com>
 
 pkgname=kodi-addon-game-libretro-snes9x
-pkgver=1.61.0.36
-_codename=Matrix
+pkgver=1.61.0.38
+_codename=Nexus
 pkgrel=1
 pkgdesc="This add-on provides a wrapper that allows Libretro cores to be loaded as game add-ons"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -13,7 +13,7 @@ groups=('kodi-addons' 'kodi-addons-game')
 makedepends=('cmake' 'kodi-dev' 'kodi-addon-game-libretro' 'libretro-snes9x')
 options=(!lto debug)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kodi-game/game.libretro.snes9x/archive/$pkgver-$_codename.tar.gz")
-sha512sums=('b95d2bd775b10493ad386bd18cb009d9404f31211aae99282c7b9289eddd521f8111d910b466a119da67ccc49f3efacf2a4b25d8ee5890d48a4b8277be5fb0be')
+sha512sums=('08d0f22e6caf9d9a883b22a14f91fa07790a4d477265fcc20d945d8c21398b6e08a9fe6dcd625ca463e86f063b48c7814eeb71e7199e7f096d84424a29a56891')
 
 build() {
     cd "game.libretro.snes9x-$pkgver-$_codename"
