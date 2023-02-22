@@ -1,4 +1,4 @@
-pkgbase = iio-hyprland-git
+pkgbase = iio-hyprland
 	pkgdesc = Reads iio-proxy-sensor output to enable automatic screen rotation in Hyprland
 	pkgver = r19.28de3de
 	pkgrel = 1
