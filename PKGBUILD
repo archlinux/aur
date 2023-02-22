@@ -6,7 +6,7 @@
 # will be on config.extra file.
 
 pkgbase=linux-mainline-git
-pkgver=v5.18.r2752.fdaf9a5840ac
+pkgver=v6.2.r3026.69308402ca6f
 pkgrel=1
 pkgdesc="Linus Torvalds' Mainline Linux"
 url="https://www.kernel.org"
@@ -21,7 +21,7 @@ backup=(
 "${_userpatches##/}"
 )
 makedepends=(
-  bc kmod libelf pahole cpio perl tar xz
+  bc libelf pahole cpio perl tar xz gettext
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
   git
 )
@@ -40,8 +40,8 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 sha256sums=('SKIP'
-            '5088714ec20c9c5b063decbf2210f5b153a908a71678aa156f5f3e81394e9c38'
-            '6e41a729c2f2946d3606ca2c0cb3a058c9700b0f73110eed36dcba91a271e50f'
+            'a80dfd64eca60673422052ac4d1444b0f9495a588c2595d413fd0687f3786586'
+            'fc79857b9e1ee563db99f29db6cb8ae31e72b35965dd551fc8dd77705630ccf8'
             'b5ced6ad1f03a5cfe6dccc0b2b31f91420cfe97823e5d15d5b94b7224362daa9'
             'b5560bc5fb8967aec989b757af8eb4d2f5166a830abb732c8c880fb953dcb52f'
             '986e39ee1cb41d342b19f1c5af8016d48afa1e182237dbdcc3f222ae4203ef2d')
@@ -129,9 +129,9 @@ build() {
 _package() {
   pkgdesc="The $pkgdesc kernel and modules"
   depends=(coreutils kmod initramfs)
-  optdepends=('crda: to set the correct wireless channels of your country'
+  optdepends=('wireless-regdb: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
-  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
   replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
   cd $_srcname
@@ -147,7 +147,8 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
@@ -220,7 +221,7 @@ _package-headers() {
   echo "Stripping build tools..."
   local file
   while read -rd '' file; do
-    case "$(file -bi "$file")" in
+    case "$(file -Sbi "$file")" in
       application/x-sharedlib\;*)      # Libraries (.so)
         strip -v $STRIP_SHARED "$file" ;;
       application/x-archive\;*)        # Libraries (.a)
