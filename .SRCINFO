@@ -1,0 +1,14 @@
+pkgbase = extfstools-git
+	pkgdesc = Tools for extracting files from ext2,3,4 filesystem images
+	pkgver = r64.dc7c547
+	pkgrel = 1
+	url = https://github.com/nlitsme/extfstools
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = gcc-libs
+	source = git+https://github.com/nlitsme/extfstools.git
+	md5sums = SKIP
+
+pkgname = extfstools-git
