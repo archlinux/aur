@@ -1,16 +1,16 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 _name=numcodecs
 pkgname=python-numcodecs
-pkgver=0.10.2
-pkgrel=3
+pkgver=0.11.0
+pkgrel=1
 pkgdesc='A Python package providing buffer compression and transformation codecs for use in data storage and communication applications'
 arch=(any)
 url="https://github.com/zarr-developers/$_name"
 license=(MIT)
-depends=(python-numpy python-msgpack)
-makedepends=(cython python-setuptools python-setuptools-scm python-build python-installer python-wheel)
+depends=(python-numpy python-entrypoints python-msgpack)
+makedepends=(cython python-py-cpuinfo python-setuptools python-setuptools-scm python-build python-installer python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('22838c6b3fd986bd9c724039b88870057f790e22b20e6e1cbbaa0de142dd59c4')
+sha256sums=('6c058b321de84a1729299b0eae4d652b2e48ea1ca7f9df0da65cb13470e635eb')
 
 build() {
 	cd "$_name-$pkgver"
