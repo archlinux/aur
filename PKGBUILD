@@ -2,7 +2,7 @@
 # Maintainer: Fabien LEFEBVRE <contact@d1ceward.com>
 
 pkgname=nodenv-node-build
-pkgver=4.9.106
+pkgver=4.9.107
 pkgrel=1
 pkgdesc='Install NodeJS versions'
 arch=('any')
@@ -10,7 +10,7 @@ url='https://github.com/nodenv/node-build'
 license=('MIT')
 source=("${url}/archive/v${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/nodenv/node-build/master/LICENSE")
-sha256sums=('091a8e7a868bf532f1226bc12a2e98081ac5b51e1e53a53e32075080a8e141cd'
+sha256sums=('2d72b60dd6d0fe37cdae3c6716a88a838af05a25809b646ca6667b6158aabdfc'
             '8549b8425f7e169ea9bd6bd02f3c97f57a74792609485b0c868bb53d5bf0cb9d')
 conflicts=("${pkgname}-git"
            "node-build")
