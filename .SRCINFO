@@ -1,6 +1,6 @@
 pkgbase = openrocket-git
 	pkgdesc = A free and fully featured rocket flight simulator - 6 degrees of freedom
-	pkgver = r4192.f2aed8a74
+	pkgver = r4823.d67f7aa94
 	pkgrel = 1
 	url = https://github.com/openrocket/openrocket
 	arch = any
