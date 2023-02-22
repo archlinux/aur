@@ -1,7 +1,7 @@
 # Maintainer: Ferdinand B <theferdi265@gmail.com>
 
 pkgname=linux-preserve-modules
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="a pacman hook that preserves linux kernel modules until reboot"
 url="https://aur.archlinux.org/packages/linux-preserve-modules"
@@ -12,7 +12,7 @@ source=(linux-preserve-modules.hook
         linux-preserve-modules.script
         linux-preserve-modules)
 sha256sums=('666c8f92f798a006b83740afae4dc832e4d38209eb866b2019cb32b8798bfdbf'
-            '206fb01f2740fc6359fea93f2280b43e18613a15b629f94581eb1f9f4e53e1d6'
+            '445bb6acf68dbb64f4b2651b3d2a39e607ebbc7e87faa078dea7880f8b2a6302'
             'bbaacbb5171931770bb4d202519db4b73d66f6b35a51008592ca2454badb647d')
 
 package() {
