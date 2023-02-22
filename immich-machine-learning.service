@@ -15,7 +15,7 @@ Restart=on-failure
 EnvironmentFile=/etc/immich.conf
 Environment=NODE_ENV=production
 SyslogIdentifier=immich-machine-learning
-ExecStart=node dist/main.js
+ExecStart=python main.py
 
 PrivateDevices=true
 ProtectHome=true
@@ -32,7 +32,7 @@ CapabilityBoundingSet=
 NoNewPrivileges=yes
 
 WorkingDirectory=/var/lib/immich/app/machine-learning
-ReadWritePaths=/tmp /var/tmp /var/lib/immich/upload
+ReadWritePaths=/tmp /var/tmp /var/lib/immich/upload /var/lib/immich/.cache
 
 [Install]
 WantedBy=multi-user.target
