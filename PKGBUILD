@@ -19,7 +19,7 @@ provides=("glibc=2.35")
 conflicts=("glibc")
 pkgver=2.35
 _commit=28ea43f8d64f0dd1f2de75525157730e1532e600
-pkgrel=5.1
+pkgrel=5.2
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.gnu.org/software/libc'
 license=(GPL LGPL)
@@ -31,9 +31,12 @@ source=(git+https://sourceware.org/git/glibc.git#commit=${_commit}
         sdt.h sdt-config.h
         disable-clone3.diff
         0001-sys-libs-glibc-add-support-for-SHT_RELR-sections.patch
-        0002-tls-libwidevinecdm.so-since-4.10.2252.0-has-TLS-with.patch)
+        0002-tls-libwidevinecdm.so-since-4.10.2252.0-has-TLS-with.patch
+        0003-glibc-2.35-make-4.4-MAKEFLAGS.patch
+       )
 validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8 # Carlos O'Donell
               BC7C7372637EC10C57D7AA6579C43DFBF1CF2187) # Siddhesh Poyarekar
+
 b2sums=('SKIP'
         '46d533d25c7a2ce4ae75d452eee7ebb8e3ce4d191af9be3daa43718b78cb81d33cfd8046a117a15d87de9f5e940448c66005b0490515bf731c9e4691c53908d6'
         '1f6d927b4972220b1c00abee5329c5d6bc01ed5bee57b20db0c7d7433292f7d666b02baf9968267f8e378b1f3bb273e8eef0ccbf22d21400ac36949d7615a474'
@@ -41,7 +44,8 @@ b2sums=('SKIP'
         '214e995e84b342fe7b2a7704ce011b7c7fc74c2971f98eeb3b4e677b99c860addc0a7d91b8dc0f0b8be7537782ee331999e02ba48f4ccc1c331b60f27d715678'
         'edef5f724f68ea95c6b0127bd13a10245f548afc381b2d0a6d1d06ee9f87b7dd89c6becd35d5ae722bf838594eb870a747f67f07f46e7d63f8c8d1a43cce4a52'
         '7da85639771d4972e913b0458906bbccf1b30143940669e1b58b0ceab2e8dffc3a6c4b641a842e63b49a9b7ff01dddc3f1296d35ab505f67b6e625e208d01a8c'
-        'b10f7479a283fdb1916f72e9d8cc9304e068d87f3805a9d2c51e748c79c9547735405e1e86a438ffe87d5ba0adece555740c221fe3bf84990c21e2737d3bb197')
+        'b10f7479a283fdb1916f72e9d8cc9304e068d87f3805a9d2c51e748c79c9547735405e1e86a438ffe87d5ba0adece555740c221fe3bf84990c21e2737d3bb197'
+        '7b5d512df13ba1747a5a099bc7b9ff7d44ba94176c18d65fe37ab0145214f43949597bdffb3ee8c46954f7cedd0d1e708a237ccdb491a163493f5b43eac7bdda')
 
 prepare() {
   mkdir -p glibc-build
@@ -58,9 +62,11 @@ prepare() {
   # sys-libs: Add support for SHT_RELR sections
   patch -p1 -i "$srcdir"/0001-sys-libs-glibc-add-support-for-SHT_RELR-sections.patch
 
- # dl-tls: libwidevinecdm 64Byte alignment
+  # dl-tls: libwidevinecdm 64Byte alignment
   patch -p1 -i "$srcdir"/0002-tls-libwidevinecdm.so-since-4.10.2252.0-has-TLS-with.patch
 
+  # patch for make-4.4 in combination with older glibc
+  patch -p1 -i "$srcdir"/0003-glibc-2.35-make-4.4-MAKEFLAGS.patch
 }
 
 build() {
