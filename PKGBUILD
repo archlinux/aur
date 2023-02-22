@@ -10,14 +10,14 @@ url="http://enlightenment.org"
 license=('GPLv2')
 depends=('gcc8' 'imlib')
 optdepends=()
-# makedepends=('git' 'scons' 'cmake') # 'libqt4-dev' 'libssl-dev')
+makedepends=('git' 'scons' 'cmake' 'libxext-dev' 'libpng-dev' 'libgif-dev' 'libjpeg-dev') # 'libqt4-dev' 'libssl-dev')
 source=("enl_BETA-0.13.3.tar.gz"::"http://www.somekool.net/HTML/smk2k3/stuff/enl_BETA-0.13.3.tar.gz" "enl-0.13-themes.tar.gz"::"http://www.somekool.net/HTML/smk2k3/stuff/enl-0.13-themes.tar.gz")
 md5sums=('11c482bd9cd360ec6c7110629f1759f4' '817a338117d52505bb50cfb63a18a96a')
 
 build() {
   cd ${srcdir}/enl-0.13.3
   sed -i 's/MAX_HEIGHT 1536/&\n#define VERSION "0.13.3"/' enlightenment.h
-  gcc-8 -o e *.c -lImlib -lX11 -lXext
+  gcc-8 -o e *.c -lImlib -lX11 -lXext -ltiff -ljpeg -lgif -lpng
   echo ======================== build completed ========================
 }
 
