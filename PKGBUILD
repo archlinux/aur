@@ -3,7 +3,7 @@
 pkgname=backblaze-b2
 _pkgname=b2
 pkgver=3.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Backblaze B2 Command Line Client'
 url='https://github.com/Backblaze/B2_Command_Line_Tool'
 depends=('python'
@@ -15,8 +15,10 @@ depends=('python'
          'python-tabulate>=0.8.10'
         )
 makedepends=('python-pip'
-             'python-setuptools'
+             'python-build'
+             'python-installer'
              'python-setuptools-scm'
+             'python-wheel'
             )
 
 # MIT or Creative Commons: https://www.backblaze.com/using_b2_code.html
@@ -33,13 +35,14 @@ build() {
     sed -i -e 's:\(arrow>=.*\),.*:\1:' requirements.txt
     sed -i -e 's:\(docutils==.*\):docutils>=0.16:' requirements.txt
     sed -i -e 's:\(tabulate==.*\):tabulate<0.10:' requirements.txt
+    sed -i -e "s:'\(setuptools_scm\)<.*':'\1':" setup.py
 
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd ${srcdir}/${_pkgname}-${pkgver}
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
 
     # uu-coreutils messes up the directory permissions (644, expect 755)
     #install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
