@@ -1,0 +1,18 @@
+pkgbase = commifs-git
+    pkgdesc = This is filesystem that uses a lot of memory
+    pkgver = 1.0.0
+    pkgrel = 1
+    url = https://github.com/Student-Team-Projects/CommiFS.git
+    arch = x86_64
+    arch = i686
+    license = MIT
+    makedepends = git
+    makedepends = gcc
+    depends = fuse2
+    depends = glibc
+    provides = commifs-git
+    conflicts = commifs-git
+    source = git+https://github.com/Student-Team-Projects/CommiFS.git
+    md5sums = SKIP
+
+pkgname = commifs-git
