@@ -1,8 +1,8 @@
 # Maintainer: Gnarflord <aur@gnarf.link>
 pkgname=mqtt2prometheus
 _pkgname=mqtt2prometheus
-pkgver=06cde09
-pkgrel=2
+pkgver=509fda8
+pkgrel=1
 pkgdesc="Prometheus exporter that can be used to scrape topics from MQTT"
 arch=("x86_64" "i686" "armv6h" "armv7h" "aarch64")
 url="https://github.com/hikhvar/mqtt2prometheus"
