@@ -6,7 +6,7 @@
 # will be on config.extra file.
 
 pkgbase=linux-mainline-git
-pkgver=v6.2.r3026.69308402ca6f
+pkgver=v6.2.r5251.5b7c4cabbb65
 pkgrel=1
 pkgdesc="Linus Torvalds' Mainline Linux"
 url="https://www.kernel.org"
@@ -177,7 +177,9 @@ _package-headers() {
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
   # required when DEBUG_INFO_BTF_MODULES is enabled
-  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
+  if [[ -f "$builddir/tools/bpf/resolve_btfids" ]]; then
+    install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
+  fi
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
