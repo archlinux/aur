@@ -1,0 +1,14 @@
+pkgbase = php53-xdebug
+	pkgdesc = php53 Xdebug extension
+	pkgver = 2.2.7
+	pkgrel = 1
+	url = https://xdebug.org/
+	arch = x86_64
+	arch = i686
+	license = Xdebug
+	makedepends = php53
+	source = http://pecl.php.net/get/xdebug-2.2.7.tgz
+	sha256sums = 4fce7fc794ccbb1dd0b961191cd0323516e216502fe7209b03711fc621642245
+
+pkgname = php53-xdebug
+	backup = 
