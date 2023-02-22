@@ -2,7 +2,7 @@
 # Contributor: Guillaume Hayot < ghayot at postblue dot info >
 pkgname=emulationstation
 _gitname=EmulationStation
-pkgver=2.11.0
+pkgver=2.11.1
 pkgrel=1
 pkgdesc="Emulation Station is a flexible emulator front-end supporting keyboardless navigation and custom system themes."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -25,7 +25,7 @@ source=("${url}/archive/v$pkgver.tar.gz"
         "pugixml.patch"
         "emulationstation.desktop"
         "emulationstation.png")
-sha256sums=('f7937d19b6d323830eb7953d7e803eab3ab01a81ca88494a44856e5db43b5c28'
+sha256sums=('9c2a7433bbd30138467429f779351fee577f7874d7795134bc1c82cd82a767e6'
             '2608b7de63be4d4d117c2712517e3c40df872f6619f08ac9356f13bdc8c179ab'
             'e6cb6a134117cb734c69ed86eecd31cfe29b5d52aa3e00b71a614809c1d7e0fe'
             '56a68a60577d015224d721ab169f1439d1545a0fdcf1c23eeee599dc49ea51c6'
