@@ -2,7 +2,7 @@
 
 _name=adjustText
 pkgname=python-adjusttext
-pkgver=0.7.3
+pkgver=0.8
 pkgrel=1
 pkgdesc='Iteratively adjust text position in matplotlib plots to minimize overlaps'
 arch=(any)
@@ -15,7 +15,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::https://pypi.io/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz"
 	"https://raw.githubusercontent.com/Phlya/$_name/$pkgver/LICENSE"
 )
-sha256sums=('b90e275a95b4d980cbbac7967914b8d66477c09bc346a0b3c9e2125bba664b06'
+sha256sums=('bb0682bb53abb626d6afc9c1db108ccb67f2c35ddc8d20ac6a802c756c07ee17'
             '443687f058d5f541952ab9bcd6f836d9843ac13b93b8a6b1097eb0832d2314fa')
 
 build() {
