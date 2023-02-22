@@ -3,13 +3,13 @@
 pkgname=directx-shader-compiler-git
 _pkgname=DirectXShaderCompiler
 pkgdesc="A compiler for HLSL to DXIL (DirectX Intermediate Language)."
-pkgver=r2338.f8d0271d4
+pkgver=r3839.740dd0951
 pkgrel=1
 epoch=1
 arch=('x86_64')
 url="https://github.com/microsoft/${_pkgname}"
 license=('BSD')  # NCSA
-makedepends=('cmake' 'git')
+makedepends=('cmake' 'git' 'python' 'ninja')
 source=("git+https://github.com/microsoft/${_pkgname}.git")
 sha256sums=('SKIP')
 
@@ -30,13 +30,15 @@ build() {
   mkdir -p "$srcdir/${_pkgname}/build"
   cd "$srcdir/${_pkgname}/build"
 
-  cmake .. -DCMAKE_BUILD_TYPE=Release $(cat ../utils/cmake-predefined-config-params) -DCMAKE_INSTALL_LIBDIR=/opt/directx-shader-compiler/lib -DCMAKE_INSTALL_PREFIX=/opt/directx-shader-compiler
-  make
+  export CXXFLAGS="$CXXFLAGS -Wno-error=restrict"
+  cmake .. -G"Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -C ../cmake/caches/PredefinedParams.cmake -DCMAKE_INSTALL_LIBDIR=/opt/directx-shader-compiler/lib -DCMAKE_INSTALL_PREFIX=/opt/directx-shader-compiler CFLAGS="$CFLAGS -Wno-error=restrict" -DLLVM_BUILD_TOOLS=OFF
+  make -j$(nproc)
 }
 
 package() {
   cd "$srcdir/${_pkgname}"
   make -C build DESTDIR="$pkgdir" install
+  #DESTDIR="$pkgdir" cmake --install build
 
   # TODO install license install -Dm 644 -t $pkgdir/usr/lib/systemd/system $srcdir/anbox-container-manager.service
 }
