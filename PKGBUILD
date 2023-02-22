@@ -34,6 +34,8 @@ build() {
 
     export GOPATH="${srcdir}/gopath"
     go build --ldflags "-extldflags "static"" -o bin/mqtt2prometheus ./cmd
+
+    go clean -modcache
 }
 
 package() {
