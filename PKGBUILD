@@ -1,6 +1,6 @@
 # Maintainer: Natty4 <natty.sh.git at gmail dot com>
 pkgname="wleave-git"
-pkgver=0.1.0
+pkgver=0.1.0.r2.gf71538e
 pkgrel=1
 pkgdesc="A Wayland-native logout menu, fork of Wlogout"
 arch=("x86_64")
@@ -26,6 +26,9 @@ prepare() {
 }
 
 build() {
+    scdoc < "${srcdir}/${pkgname}/man/wleave.1.scd" | gzip > "${srcdir}/${pkgname}/wleave.1.gz"
+    scdoc < "${srcdir}/${pkgname}/man/wleave.5.scd" | gzip > "${srcdir}/${pkgname}/wleave.5.gz"
+
     cd "${srcdir}/${pkgname}"
 
     export RUSTUP_TOOLCHAIN=stable
@@ -45,4 +48,7 @@ package() {
 
 	install -Dm644 -t "$pkgdir/usr/share/wleave/assets" "$srcdir/$pkgname/assets"/*
 	install -Dm644 -t "$pkgdir/usr/share/wleave/icons" "$srcdir/$pkgname/icons"/*
+
+  install -Dm644 -t "$pkgdir/usr/share/man/man1" "${srcdir}/${pkgname}/wleave.1.gz"
+  install -Dm644 -t "$pkgdir/usr/share/man/man5" "${srcdir}/${pkgname}/wleave.5.gz"
 }
