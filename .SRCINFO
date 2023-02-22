@@ -1,0 +1,19 @@
+pkgbase = dimanys111-devel-meta-package
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	depends = autoconf
+	depends = automake
+	depends = bison
+	depends = cmake
+	depends = flex
+	depends = gcc
+	depends = gdb
+	depends = make
+	depends = ninja
+	depends = pkgconf
+	depends = python-pip
+	provides = dimanys111-devel-meta-package
+	conflicts = dimanys111-devel-meta-package
+
+pkgname = dimanys111-devel-meta-package

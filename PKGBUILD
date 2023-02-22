@@ -1,0 +1,21 @@
+#Maintainer: dimanys111 <dimanys111@mail.ru>
+_pkgname=dimanys111-devel-meta-package
+pkgname=$_pkgname
+pkgver=1
+pkgrel=1
+arch=('any')
+depends=(
+autoconf
+automake
+bison
+cmake
+flex
+gcc
+gdb
+make
+ninja
+pkgconf
+python-pip
+)
+provides=("$_pkgname")
+conflicts=("$_pkgname")
