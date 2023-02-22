@@ -2,7 +2,7 @@
 
 pkgname=ptt-fix
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A somewhat hacky workaround for push-to-talk in Discord and other apps in Wayland."
 arch=(i686 x86_64)
 url="https://github.com/DeedleFake/ptt-fix"
@@ -22,7 +22,7 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	install -D ptt-fix "$pkgdir/usr/bin/ptt-fix"
-  install -D ptt-fix.service "$pkgdir/usr/lib/systemd/user/ptt-fix.service"
+  install -Dm0644 ptt-fix.service "$pkgdir/usr/lib/systemd/user/ptt-fix.service"
 }
 
 # vim: ts=2 sw=2 et
