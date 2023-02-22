@@ -1,7 +1,7 @@
 # Maintainer: Laura Demkowicz-Duffy <laura@demkowiczduffy.co.uk>
 pkgname=openrocket-git
 _pkgname=openrocket
-pkgver=r4192.f2aed8a74
+pkgver=r4823.d67f7aa94
 pkgrel=1
 pkgdesc="A free and fully featured rocket flight simulator - 6 degrees of freedom"
 arch=('any')
@@ -30,7 +30,7 @@ prepare() {
   cd $_pkgname
   git submodule init
   git config submodule.swing/resources-src/datafiles/components.url "$srcdir/openrocket-database"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
