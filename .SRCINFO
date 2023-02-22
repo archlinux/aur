@@ -1,6 +1,6 @@
 pkgbase = kernel-modules-hook-hardlinks
 	pkgdesc = Keeps your system fully functional after a kernel upgrade
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/VannTen/kernel-modules-hook
 	arch = any

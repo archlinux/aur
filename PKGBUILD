@@ -2,7 +2,7 @@
 # Contributor: Artoria Pendragon <saber-nyan@ya.ru>
 _pkgname=kernel-modules-hook
 pkgname=${_pkgname}-hardlinks
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Keeps your system fully functional after a kernel upgrade"
 arch=('any')
