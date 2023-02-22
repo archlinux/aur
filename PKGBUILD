@@ -1,8 +1,7 @@
 # Author: Roman Gilg <subdiff@gmail.com>
 
 pkgname=wrapland-kwinft
-pkgver=5.26.5.r1816.g0f130e9
-_ver=5.26.5
+pkgver=5.27
 pkgrel=1
 pkgdesc='Qt/C++ library wrapping libwayland'
 arch=(x86_64 aarch64)
@@ -13,20 +12,15 @@ provides=("wrapland")
 conflicts=("wrapland")
 makedepends=(doxygen extra-cmake-modules git qt5-doc qt5-tools wayland-protocols)
 source=("git+https://gitlab.com/kwinft/wrapland.git")
-md5sums=('SKIP')
-
-pkgver() {
-  _ver=5.26.5
-  cd wrapland
-  echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
-}
-
+sha256sums=('SKIP')
 
 prepare() {
-  mkdir -p build
+  cd wrapland
+  git checkout Plasma/$pkgver
 }
 
 build() {
+  mkdir -p build
   cd build
   cmake ../wrapland \
     -DCMAKE_BUILD_TYPE=Release \
