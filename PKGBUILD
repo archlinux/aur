@@ -3,7 +3,7 @@
 _name=taurus
 pkgname=python-$_name
 pkgver=5.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A framework for scientific/industrial CLIs and GUIs"
 arch=('any')
 url='http://taurus-scada.org/'
