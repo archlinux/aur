@@ -1,6 +1,6 @@
 pkgbase = kdisplay-kwinft
 	pkgdesc = App and daemon for display managing
-	pkgver = 5.26.5.r1520.g2c74b7e
+	pkgver = 5.27
 	pkgrel = 1
 	url = https://gitlab.com/kwinft/kdisplay
 	arch = x86_64

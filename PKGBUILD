@@ -1,7 +1,7 @@
 # Author: Roman Gilg <subdiff@gmail.com>
 
 pkgname=kdisplay-kwinft
-pkgver=5.26.5.r1520.g2c74b7e
+pkgver=5.27
 pkgrel=1
 pkgdesc='App and daemon for display managing'
 arch=(x86_64 aarch64)
@@ -14,17 +14,13 @@ makedepends=(extra-cmake-modules git kdoctools qt5-tools)
 source=("git+https://gitlab.com/kwinft/kdisplay.git")
 sha256sums=('SKIP')
 
-pkgver() {
-  _ver=5.26.5
-  cd kdisplay
-  echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
-}
-
 prepare() {
-  mkdir -p build
+  cd kdisplay
+  git checkout Plasma/$pkgver
 }
 
 build() {
+  mkdir -p build
   cd build
   cmake ../kdisplay \
     -DCMAKE_BUILD_TYPE=Release \
