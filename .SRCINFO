@@ -1,6 +1,6 @@
 pkgbase = tomato.c-git
 	pkgdesc = A pomodoro timer written in pure C
-	pkgver = r230.50f2b82
+	pkgver = r241.a758f48
 	pkgrel = 1
 	url = https://github.com/gabrielzschmitz/Tomato.C.git
 	arch = x86_64
