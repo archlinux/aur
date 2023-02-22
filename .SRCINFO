@@ -1,6 +1,6 @@
 pkgbase = mqtt2prometheus
 	pkgdesc = Prometheus exporter that can be used to scrape topics from MQTT
-	pkgver = 06cde09
+	pkgver = 509fda8
 	pkgrel = 2
 	url = https://github.com/hikhvar/mqtt2prometheus
 	arch = x86_64
