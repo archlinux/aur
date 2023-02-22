@@ -1,7 +1,7 @@
 # Author: Roman Gilg <subdiff@gmail.com>
 
 pkgname=disman-kwinft
-pkgver=5.26.5.r1847.g8f7345c
+pkgver=5.27
 pkgrel=1
 pkgdesc='Qt/C++ display management library'
 arch=(x86_64 aarch64)
@@ -14,17 +14,13 @@ makedepends=(extra-cmake-modules git kdoctools qt5-tools)
 source=("git+https://gitlab.com/kwinft/disman.git")
 sha256sums=('SKIP')
 
-pkgver() {
-  _ver=5.26.5
-  cd disman
-  echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
-}
-
 prepare() {
-  mkdir -p build
+  cd disman
+  git checkout Plasma/$pkgver
 }
   
 build() {
+  mkdir -p build
   cd build
   cmake ../disman \
     -DCMAKE_BUILD_TYPE=Release \

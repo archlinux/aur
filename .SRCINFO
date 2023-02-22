@@ -1,6 +1,6 @@
 pkgbase = disman-kwinft
 	pkgdesc = Qt/C++ display management library
-	pkgver = 5.26.5.r1847.g8f7345c
+	pkgver = 5.27
 	pkgrel = 1
 	url = https://gitlab.com/kwinft/disman
 	arch = x86_64
