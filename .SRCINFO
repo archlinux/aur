@@ -1,15 +1,15 @@
 pkgbase = portal-bin
 	pkgdesc = Quick and easy command-line file transfer utility from any computer to another
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/ZinoKader/portal
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	provides = portal
-	source_x86_64 = https://github.com/ZinoKader/portal/releases/download/v1.1.1/portal_1.1.1_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = c5b72fb2c32851cdf88eaffff693737bdb53fa43f88c353acd104db2d8d0b4f4
-	source_aarch64 = https://github.com/ZinoKader/portal/releases/download/v1.1.1/portal_1.1.1_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 3ad64ba58ea9b7673bb9267842913d709095818cba94e3933dee91b444c29d60
+	source_x86_64 = https://github.com/ZinoKader/portal/releases/download/v1.1.2/portal_1.1.2_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 8ed2dc2c2c81dbd17c3ca3325ec1cefac5830dcde63e03f01206385b9ecb5aa3
+	source_aarch64 = https://github.com/ZinoKader/portal/releases/download/v1.1.2/portal_1.1.2_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 9fa7ff5a03a68d26f6fca5ea0210cd112d43b13bf464169cfc7184d249858709
 
 pkgname = portal-bin
