@@ -36,4 +36,5 @@ package() {
 	mkdir -p "$pkgdir/usr/share/inkscape/extensions/"
 	cp sendto_silhouette.* "$pkgdir/usr/share/inkscape/extensions/"
 	cp -R silhouette "$pkgdir/usr/share/inkscape/extensions/"
+	cp silhouette-udev.rules "$pkgdir/etc/udev/rules.d/"
 }
