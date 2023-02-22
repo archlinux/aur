@@ -137,6 +137,7 @@ source=(
     "openssl-1.0.patch"
     "openssl-sslv3.patch"
     "openssl-sslv3-consts.patch"
+    "dba-5.3-support.patch"
     "php-gd-vpx.patch"
     "fpm-numeric-uid-gid.patch"
     "fpm-reload-sighup.patch"
@@ -214,6 +215,7 @@ _patches=(
     "openssl-1.0.patch"
     "openssl-sslv3.patch"
     "openssl-sslv3-consts.patch"
+    "dba-5.3-support.patch"
     "php-gd-vpx.patch"
     "fpm-numeric-uid-gid.patch"
     "fpm-reload-sighup.patch"
@@ -1551,6 +1553,7 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             '8a5e1a2a563c38f237b0ed735918ecf82c30edd3f7beae5d99be041585901d27'
             'e49744c78d6413ab6e93e3786d70c2d1cbdbb62e5bcfdb85c05efcf16fecfb96'
             'aecd8dff7022e956718407a5b98dec19acdceef08b0a58e7266b483bc3845de6'
+            'd2f6f8e71c99247c798451a56d5b3e0817d404dfc41175b2e9735e38ecfaa6d6'
             '2c2991ad44432d65580a05b7ca8f84b6f795fd3dcc5c926e8a26242dd3b27036'
             'd175f0c14fdb22855090c93f76e18f04320d7bf15afc057ffde947f9bb361242'
             'f5ae925036744a5e88cea2698879aea0498e1e23aee7801923d90f16be383908'
