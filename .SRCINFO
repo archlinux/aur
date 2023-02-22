@@ -6,7 +6,7 @@ pkgbase = graph-editor-bin
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	source = git+https://github.com/Student-Team-Projects/Graph-Editor-Android-bin#branch=main
+	source = https://github.com/Student-Team-Projects/Graph-Editor-Android-bin/releases/download/final/graph-editor-for-android.apk
 	md5sums = SKIP
 
 pkgname = graph-editor-bin

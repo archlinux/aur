@@ -7,10 +7,10 @@ arch=(x86_64)
 url="https://github.com/Student-Team-Projects/Graph-Editor-Android-bin"
 license=('GPL')
 makedepends=('git')
-source=("git+$url#branch=main")
+source=("https://github.com/Student-Team-Projects/Graph-Editor-Android-bin/releases/download/final/graph-editor-for-android.apk")
 md5sums=('SKIP')
 
 package() {
 	mkdir -p "${pkgdir}/usr/opt"
-	cp "${srcdir}/graph-editor-for-android.apk" "${pkgdir}/usr/opt/graph-editor-for-android.apk"
+	cp "${srcdir}/releases/download/final/graph-editor-for-android.apk" "${pkgdir}/usr/opt/graph-editor-for-android.apk"
 }
