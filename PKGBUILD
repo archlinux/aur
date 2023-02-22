@@ -18,9 +18,9 @@ optdepends=('python2: compiling self-created maps'
             'gtkglext: compiling the map-editor'
             'openal: compiling the map-editor')
 conflicts=('ufoai' 'ufoai-data')
-source=(git+git://git.code.sf.net/p/ufoai/code "0001-Fix-compilation-errors-on-format-security.patch")
+source=(git+git://git.code.sf.net/p/ufoai/code)
 #source=('git+file:///home/kouta-kun/ufo')
-sha256sums=('SKIP' "18a4cc6cfed138c58f02fd733d19250749ba31d6eaa9078dffb6537bca92eb25")
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${_gitname}
@@ -30,7 +30,6 @@ pkgver() {
 
 prepare() {
     cd ${_gitname}
-    patch --forward --strip=1 --input="${srcdir}/0001-Fix-compilation-errors-on-format-security.patch"
     # uncomment the '--enable-uforadiant' line for ufo-radiant (map editor)
     ./configure --prefix=/usr --datadir=/usr/share/ufoai \
 		--enable-release --localedir=/usr/share/ufoai/base/i18n/ \

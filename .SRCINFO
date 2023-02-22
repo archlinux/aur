@@ -31,8 +31,6 @@ pkgbase = ufoai-git
 	conflicts = ufoai
 	conflicts = ufoai-data
 	source = git+git://git.code.sf.net/p/ufoai/code
-	source = 0001-Fix-compilation-errors-on-format-security.patch
 	sha256sums = SKIP
-	sha256sums = 18a4cc6cfed138c58f02fd733d19250749ba31d6eaa9078dffb6537bca92eb25
 
 pkgname = ufoai-git
