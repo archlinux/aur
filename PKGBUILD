@@ -1,7 +1,7 @@
 # Maintainer: mcarni <michele DOT carnaghi AT googlemail DOT com>
 
 pkgname=kodi-addon-game-libretro-atari800
-pkgver=3.1.0.22
+pkgver=3.1.0.23
 _codename=Matrix
 pkgrel=1
 pkgdesc="This add-on provides a wrapper that allows Libretro cores to be loaded as game add-ons"
@@ -12,7 +12,7 @@ groups=('kodi-addons' 'kodi-addons-game')
 makedepends=('cmake' 'kodi-dev' 'kodi-addon-game-libretro' 'libretro-atari800-git')
 options=(!lto debug)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kodi-game/game.libretro.atari800/archive/refs/tags/$pkgver-$_codename.tar.gz")
-sha512sums=('fd15752183d80398bc42aa75df12a6ccba7663eb326634250fafa5c5c009da16581a8aec36e3e42e02565cdeea43c4f43ac3cd212ba481ca37ec1414e2cbf9a4')
+sha512sums=('57024ba32f2816f5c8cc672a2eb085fcc289df17d609dd3e88671d9e7c0d1867b77edea74e23b95e080f3c8e9da76b25a554c3f9c1ee8d4775eb2c00c9fa1662')
 
 build() {
     cd "game.libretro.atari800-$pkgver-$_codename"
