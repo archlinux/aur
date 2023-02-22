@@ -1,0 +1,15 @@
+pkgbase = ytermusic
+	pkgdesc = A terminal based Youtube Music Player. It's aims to be as fast and simple as possible. Writtten in Rust.
+	pkgver = 0.0.10
+	pkgrel = 1
+	url = https://github.com/ccgauche/ytermusic
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = Apache
+	makedepends = cargo
+	depends = alsa-lib
+	source = ytermusic-0.0.10.tar.gz::https://github.com/ccgauche/ytermusic/archive/refs/tags/alpha-0.0.10.tar.gz
+	sha256sums = fa90f7bb4a04c881e84d84eb9a2f08f66d8da45f5f1378a24d3cabfad7c11b5e
+
+pkgname = ytermusic
