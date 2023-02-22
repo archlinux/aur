@@ -4,7 +4,8 @@
 
 pkgname=tango-jtango
 _pkgname=JTango
-pkgver=9.6.8
+pkgver=9.7.0
+_subver=9.6.9
 pkgrel=1
 pkgdesc="TANGO kernel Java implementation."
 arch=('x86_64' 'armv7h')
@@ -14,7 +15,7 @@ groups=('tango-controls')
 depends=('jdk11-openjdk' 'maven')
 conflicts=('tango')
 source=("https://gitlab.com/tango-controls/${_pkgname}/-/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('64928e1dd38ea80a2b873737599b400dba7469c581bfb07e017a21c8bafe5ab7')
+sha256sums=('e1b8031ad439b47466cb19c3e18d15d01fb09e62adf5b6176dad06539738314d')
 
 _java_home='/usr/lib/jvm/java-11-openjdk/'
 _install_path='/usr/share/java'
@@ -27,23 +28,23 @@ build() {
 package() {
   cd "$srcdir/$_pkgname-$pkgver/"
 
-  install -Dm 644 "${srcdir}/${_pkgname}-${pkgver}/assembly/target/JTango-${pkgver}-SNAPSHOT.jar" \
-	  "${pkgdir}${_install_path}/JTango-${pkgver}.jar"
-  ln -s "${_install_path}/JTango-${pkgver}.jar" "${pkgdir}${_install_path}/JTango.jar"
+  install -Dm 644 "${srcdir}/${_pkgname}-${pkgver}/assembly/target/JTango-${_subver}-SNAPSHOT.jar" \
+	  "${pkgdir}${_install_path}/JTango-${_subver}.jar"
+  ln -s "${_install_path}/JTango-${_subver}.jar" "${pkgdir}${_install_path}/JTango.jar"
 
-  install -Dm 644 "${srcdir}/${_pkgname}-${pkgver}/dao/target/TangORB-${pkgver}-SNAPSHOT.jar" \
-	  "${pkgdir}${_install_path}/TangORB-${pkgver}.jar"
-  ln -s "${_install_path}/TangORB-${pkgver}.jar" "${pkgdir}${_install_path}/TangORB.jar"
+  install -Dm 644 "${srcdir}/${_pkgname}-${pkgver}/dao/target/TangORB-${_subver}-SNAPSHOT.jar" \
+	  "${pkgdir}${_install_path}/TangORB-${_subver}.jar"
+  ln -s "${_install_path}/TangORB-${_subver}.jar" "${pkgdir}${_install_path}/TangORB.jar"
 
-  install -Dm 644 "${srcdir}/${_pkgname}-${pkgver}/common/target/JTangoCommons-${pkgver}-SNAPSHOT.jar" \
-	  "${pkgdir}${_install_path}/JTangoCommons-${pkgver}.jar"
-  ln -s "${_install_path}/JTangoCommons-${pkgver}.jar" "${pkgdir}${_install_path}/JTangoCommons.jar"
+  install -Dm 644 "${srcdir}/${_pkgname}-${pkgver}/common/target/JTangoCommons-${_subver}-SNAPSHOT.jar" \
+	  "${pkgdir}${_install_path}/JTangoCommons-${_subver}.jar"
+  ln -s "${_install_path}/JTangoCommons-${_subver}.jar" "${pkgdir}${_install_path}/JTangoCommons.jar"
 
-  install -Dm 644 "${srcdir}/${_pkgname}-${pkgver}/client/target/JTangoClientLang-${pkgver}-SNAPSHOT.jar" \
-	  "${pkgdir}${_install_path}/JTangoClientLang-${pkgver}.jar"
-  ln -s "${_install_path}/JTangoClientLang-${pkgver}.jar" "${pkgdir}${_install_path}/JTangoClientLang.jar"
+  install -Dm 644 "${srcdir}/${_pkgname}-${pkgver}/client/target/JTangoClientLang-${_subver}-SNAPSHOT.jar" \
+	  "${pkgdir}${_install_path}/JTangoClientLang-${_subver}.jar"
+  ln -s "${_install_path}/JTangoClientLang-${_subver}.jar" "${pkgdir}${_install_path}/JTangoClientLang.jar"
 
-  install -Dm 644 "${srcdir}/${_pkgname}-${pkgver}/server/target/JTangoServer-${pkgver}-SNAPSHOT.jar" \
-	  "${pkgdir}${_install_path}/JTangoServer-${pkgver}.jar"
-  ln -s "${_install_path}/JTangoServer-${pkgver}.jar" "${pkgdir}${_install_path}/JTangoServer.jar"
+  install -Dm 644 "${srcdir}/${_pkgname}-${pkgver}/server/target/JTangoServer-${_subver}-SNAPSHOT.jar" \
+	  "${pkgdir}${_install_path}/JTangoServer-${_subver}.jar"
+  ln -s "${_install_path}/JTangoServer-${_subver}.jar" "${pkgdir}${_install_path}/JTangoServer.jar"
 }
