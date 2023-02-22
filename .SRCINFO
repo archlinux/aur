@@ -1,0 +1,18 @@
+pkgbase = alloy-git
+	pkgdesc = A fast and minimalistic image viewer forked from the now discontinued emulsion.
+	pkgver = 1.0.0.606.g7a954e8
+	pkgrel = 1
+	url = https://github.com/ardaku/alloy
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = libxi
+	provides = alloy
+	conflicts = alloy
+	source = alloy-git::git+https://github.com/ardaku/alloy.git
+	sha256sums = SKIP
+
+pkgname = alloy-git
