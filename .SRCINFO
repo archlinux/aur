@@ -1,0 +1,12 @@
+pkgbase = graph-editor-bin
+	pkgdesc = apk of graph-editor-for-android application, built from https://github.com/Student-Team-Projects/Graph-Editor-Android, https://github.com/Student-Team-Projects/Graph-Editor-Core
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Student-Team-Projects/Graph-Editor-Android-bin
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	source = git+https://github.com/Student-Team-Projects/Graph-Editor-Android-bin#branch=main
+	md5sums = SKIP
+
+pkgname = graph-editor-bin
