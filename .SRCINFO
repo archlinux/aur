@@ -1,0 +1,15 @@
+pkgbase = tango-pogo
+	pkgdesc = A standalone JAVA application designed to browse and edit the static TANGO database
+	pkgver = 9.8.2
+	pkgrel = 1
+	url = https://gitlab.com/tango-controls/Pogo
+	arch = any
+	license = GPL3
+	depends = java-runtime=11
+	depends = sh
+	source = https://repo1.maven.org/maven2/org/tango-controls/Pogo/9.8.2/Pogo-9.8.2.jar
+	source = launcher
+	sha256sums = dca0d02ce7b4148369db401636486a152df650b07a9d4cc19b6b5ccc18e47cf9
+	sha256sums = ac00d9dd4e3ed83af078296585b3201f03b0c0a2c0b23fe1705ce3abe648a713
+
+pkgname = tango-pogo
