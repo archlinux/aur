@@ -1,8 +1,8 @@
 # Maintainer: DeedleFake <deedlefake@users.noreply.github.com>
 
 pkgname=ptt-fix
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.7.1
+pkgrel=1
 pkgdesc="A somewhat hacky workaround for push-to-talk in Discord and other apps in Wayland."
 arch=(i686 x86_64)
 url="https://github.com/DeedleFake/ptt-fix"
@@ -12,7 +12,7 @@ makedepends=('go>=2:1.20')
 optdepends=()
 provides=()
 source=("https://github.com/DeedleFake/ptt-fix/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8d303630485a2609b89a5a241b29956e184d941c979aa466f43f4469fb66f37e')
+sha256sums=('47a1c57de707319df88ca06b5e8ac49d53e45fa4ff10a84f79b0a50f0c34b968')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -21,7 +21,7 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	install -D ptt-fix "$pkgdir/usr/bin/ptt-fix"
+	install -D -m u=rwx,g=srx,o=rx --group input ptt-fix "$pkgdir/usr/bin/ptt-fix"
   install -Dm0644 ptt-fix.service "$pkgdir/usr/lib/systemd/user/ptt-fix.service"
 }
 
