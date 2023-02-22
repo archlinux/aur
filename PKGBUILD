@@ -1,12 +1,12 @@
 # Maintainer: iamawacko <iamawacko@protonmail.com>
 pkgname='synth'
 pkgver='0.6.9'
-pkgrel=2
+pkgrel=3
 pkgdesc='The Open Source Data Generator'
 url='https://getsynth.com/'
 arch=('any')
 license=('Apache-2.0')
-source=("https://github.com/shuttle-hq/synth/archive/refs/tags/v${version}.tar.gz")
+source=("https://github.com/shuttle-hq/synth/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('f89fc355dc0e311a6e5e0e8047f4721f23e35cdcb3355e85c7c66e8e2e67da91')
 makedepends=('cargo-nightly' 'sqlite')
 depends=('sqlite')
