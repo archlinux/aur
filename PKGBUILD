@@ -3,8 +3,8 @@
 pkgname=python-lvis-git
 _pkgname=lvis
 _pkgver=0.5.3
-pkgver=0.5.3.r19.35f09cd
-pkgrel=2
+pkgver=0.5.3.r21.da5f65d
+pkgrel=1
 pkgdesc='Python API for LVIS Dataset'
 arch=('any')
 url='https://github.com/lvis-dataset/lvis-api'
@@ -35,6 +35,11 @@ conflicts=(python-lvis)
 
 source=("${_pkgname}::git+https://github.com/lvis-dataset/lvis-api.git")
 sha512sums=('SKIP')
+
+prepare() {
+  # fix https://github.com/lvis-dataset/lvis-api/issues/37
+  sed -i "s,np.float,float,g" "${_pkgname}/lvis/eval.py"
+}
 
 pkgver() {
   cd "${_pkgname}"
