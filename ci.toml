@@ -1,0 +1,6 @@
+[source]
+type = "github_release"
+repo = "Robosturm/Commander_Wars"
+
+[check]
+pkgver_regex = '^0(\.[0-9]+)+$'

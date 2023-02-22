@@ -1,9 +1,15 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
+_pkgtag=Beta_29_1_Build1 #auto updated by CI
+#tags are sadly not very consistent #current tag    (original tag)      -> new tag
+pkgver=${_pkgtag/Beta_/0_}          #Beta_25_5      (Beta_25_5)         -> 0_25_5
+pkgver=${pkgver/Beta/0_}            #Beta28_Build2  (Beta28_Build2)     -> 0_28_Build2
+pkgver=${pkgver/_Build-/_Build}     #0_26_1_Build-5 (Beta_26_1_Build-5) -> 0_26_1_Build5
+pkgver=${pkgver/_Build/_}           #0_27_Build3    (Beta27_Build3)     -> 0_27_3
+pkgver=${pkgver//_/.}               #0_26_1_5       (Beta_26_1_Build-5) -> 0.26.1.5
+
 pkgname=commander-wars
-pkgver=0.28.2
-_pkgtag="Beta28_Build2"
-pkgrel=2
+pkgrel=1
 pkgdesc="Advance Wars Clone with a lot of additions customizations and modding support"
 arch=("$CARCH")
 url="https://github.com/Robosturm/Commander_Wars"
@@ -13,7 +19,7 @@ depends=('qt6-declarative' 'qt6-multimedia')
 makedepends=('ninja' 'qt6-tools')
 source=("https://github.com/Robosturm/Commander_Wars/archive/$_pkgtag.tar.gz"
         '0001-fix-QStandardPaths-include.patch')
-sha512sums=('56eba5f3de984a4912f0984f067a8daf9107b48c74162918c42024fd14c871da91d529663d7d6c65d197173750368b72ad1b2c1b77bd47c76dcf2cd2a6db1fe6'
+sha512sums=('7e6c55a21ea39dd5d07b28c305bf9ccfbc75679399ae25dbb722928993c6fec166e851f5b82846b8ce5df954402cf58404316cc64416a6a60bf90e608de3bf58'
             '2de911786944e44a18f524508827805992a02a6890638a0e24bfcbac02374df90e8334376973263492ea04454b9ac368e71d3aa91d4b7b33a0bbc5af661bfcc2')
 
 prepare()
