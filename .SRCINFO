@@ -1,0 +1,21 @@
+pkgbase = wleave-git
+	pkgdesc = A Wayland-native logout menu, fork of Wlogout
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/AMNatty/wleave
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = scdoc
+	depends = gtk3
+	depends = gtk-layer-shell
+	optdepends = swaylock: default buttons
+	optdepends = systemd: default buttons
+	backup = etc/wleave/style.css
+	backup = etc/wleave/layout
+	source = wleave-git::git+https://github.com/AMNatty/wleave?signed
+	validpgpkeys = 4F9434A2EAC21BEC148F3656BF6CB659ADEE60EC
+	sha1sums = SKIP
+
+pkgname = wleave-git
