@@ -68,21 +68,21 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=6.2
+pkgver=6.1.13
 pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=(GPL2)
 makedepends=(
-  bc libelf pahole cpio perl tar xz gettext
+  bc libelf pahole cpio perl tar xz
 )
 [[ -n "$_clangbuild" ]] && makedepends+=(clang llvm lld python)
 options=('!strip')
 
 # https://ck-hack.blogspot.com/2021/08/514-and-future-of-muqss-and-ck-once.html
 # acknowledgment to xanmod for initially keeping the hrtimer patches up to date
-_ckhrtimer=linux-6.2.y
-_commit=f6a7d5ea0cbb04b6a00caee62ece1d76270ea922
+_ckhrtimer=linux-6.1.y
+_commit=fdbdf7e0ec56cd59e11d024c473e766429271a5c
 
 _gcc_more_v=20221217
 source=(
@@ -96,11 +96,11 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('74862fa8ab40edae85bb3385c0b71fe103288bce518526d63197800b3cbdecb1'
+sha256sums=('48841319f4b0077da15e4176e624032d8332d961ee660e1b85e1ce73ded17a67'
             'SKIP'
-            'a80dfd64eca60673422052ac4d1444b0f9495a588c2595d413fd0687f3786586'
+            '81a9379fd2eac51bb2dc69d83737d7fbdd41fcaca5af4873e3666d3c706760d1'
             'f1d586e111932890ad5e0df15d092fb9b3f87bae4ea17812aae9b0ec98fe2db0'
-            'f238716793ef806f6a10df3d21ffce9d32ca3b81dff1d6fe165a1fc9320be17f'
+            '6d3b9cb4639c1c5eb4e2697aed0dbffa5b4a37d63a0861dec8315dd052723e0e'
             'a730917aa1ab33e79c094b69c3eb3ce080e6f9f4cb7a5b64c3e6b9ef0c53e631')
 
 prepare() {
