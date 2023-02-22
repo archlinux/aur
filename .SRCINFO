@@ -1,0 +1,13 @@
+pkgbase = bash-bats-assert-git
+	pkgdesc = Common assertions for Bats
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/bats-core/bats-assert
+	install = bash-bats-assert-git.install
+	arch = any
+	license = CCPL
+	depends = bash-bats
+	source = https://github.com/bats-core/bats-assert/archive/v2.1.0/bash-bats-assert-git-2.1.0.tar.gz
+	sha256sums = 98ca3b685f8b8993e48ec057565e6e2abcc541034ed5b0e81f191505682037fd
+
+pkgname = bash-bats-assert-git
