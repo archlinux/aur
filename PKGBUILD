@@ -1,7 +1,7 @@
 # Maintainer: everyx <lunt.luo#gmail.com>
 
 pkgname=sing-box
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 
 pkgdesc='The universal proxy platform.'
@@ -12,7 +12,7 @@ license=('GPL3')
 makedepends=('go')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/SagerNet/sing-box/archive/v$pkgver.tar.gz")
-sha256sums=('a1e642362f41bd0e362cd9c8d2f0d29d2eca6a55a948677f6f03cfb81c4f0657')
+sha256sums=('2fdf93fd49c9375cd14b2fe2e2163cbad4b65d0cfa422c592855e7810036ef56')
 
 conflicts=("${pkgname}-git" "${pkgname}-beta")
 optdepends=('sing-geosite: sing-geosite database'
@@ -40,8 +40,6 @@ build(){
         ./cmd/sing-box
 
     sed -i "/^\[Service\]$/a User=${pkgname}
-            s|CapabilityBoundingSet=\(.*\)$|CapabilityBoundingSet=\1 CAP_SYS_PTRACE CAP_DAC_READ_SEARCH|
-            s|AmbientCapabilities=\(.*\)$|AmbientCapabilities=\1 CAP_SYS_PTRACE CAP_DAC_READ_SEARCH|
             s/WorkingDirectory=\(.*\)$/WorkingDirectory=-\1\nExecStartPre=+install -o ${pkgname} -g ${pkgname} -d -m 0700 \1/" release/config/${pkgname}*.service
 
     echo "u ${pkgname} - \"Sing-box Service\" - -" > "release/config/${pkgname}.sysusers"
