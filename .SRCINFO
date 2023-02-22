@@ -1,0 +1,16 @@
+pkgbase = php81-amqp
+	pkgdesc = PHP 8.1 extension compatible with AMQP 0-9-1 message brokers
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = https://pecl.php.net/package/amqp
+	arch = i686
+	arch = x86_64
+	license = PHP
+	makedepends = php81
+	depends = glibc
+	depends = librabbitmq-c
+	backup = etc/php81/conf.d/30-amqp.ini
+	source = http://pecl.php.net/get/amqp-1.11.0.tgz
+	sha256sums = dc5212b4785f59955118a219bbfbcedb7aa6ab2a91e8038a0ad1898f331c2f08
+
+pkgname = php81-amqp
