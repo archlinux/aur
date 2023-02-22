@@ -1,19 +1,19 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=hipsycl-rocm
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
-pkgdesc="Implementation of SYCL 1.2.1 over AMD HIP/NVIDIA CUDA"
+pkgdesc="Multi-backend implementation of SYCL for CPUs and GPUs"
 arch=("x86_64")
-url="https://github.com/illuhad/hipSYCL"
+url="https://github.com/OpenSYCL/OpenSYCL"
 license=("BSD")
 provides=(hipsycl sycl)
 makedepends=(cmake)
 depends=(llvm clang python boost hipcpu openmp hip-runtime-amd rocm-hip-sdk)
-source=("$pkgname-$pkgver::https://github.com/illuhad/hipSYCL/archive/v$pkgver.tar.gz")
-sha256sums=('7a1d6c39dd73d8b84e7506003f20918aa3763850e7a5ea3d6add5bd67f6ec0da')
+source=("$pkgname-$pkgver::https://github.com/OpenSYCL/OpenSYCL/archive/v$pkgver.tar.gz")
+sha256sums=('6262533191c812966e2f8b67e6ae510ae5ad2cf7e0caecc9957e8a69423e51c4')
 
-_pkgname=hipSYCL
+_pkgname=OpenSYCL
 
 prepare() {
     # Delete the install lines for contrib hip and hipcpu
