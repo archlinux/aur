@@ -1,11 +1,12 @@
-# Maintainer: Ashley Whetter <(firstname) @ awhetter.co.uk>
+# Maintainer: acxz <akashpatel2008 at yahoo dot com>
+# Contributor: Ashley Whetter <(firstname) @ awhetter.co.uk>
 # Contributor: Deon Spengler <deon at spengler dot co dot za>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: William Rea <sillywilly@gmail.com>
 # Contributor: Hans Janssen <hans@janserv.xs4all.nl>
 
 pkgname='flightgear'
-pkgver=2020.3.13
+pkgver=2020.3.17
 _pkgver=${pkgver%.*}
 pkgrel=1
 pkgdesc="An open-source, multi-platform flight simulator"
@@ -19,7 +20,7 @@ license=("GPL")
 url="http://www.flightgear.org/"
 options=('makeflags')
 source=("http://downloads.sourceforge.net/project/flightgear/release-${_pkgver}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('661abfaf475abc8cfd1bab57559469efa662bc6d03f58e8d977385003fe5aa8c')
+sha256sums=('6670dedeaca2683aca77f9f06bf9d1d8062ae32a2a5459dddc8aa0989c5f1854')
 
 prepare() {
   cd "$srcdir"/flightgear-$pkgver
