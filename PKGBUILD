@@ -1,5 +1,4 @@
-#Maintainer: Christoph Steinacker <archologist.linuxATgooglemailDOTcom>
-#Maintainer: Heiko Nickerl <devATheiko-nickerlDOTcom>
+# Maintainer: Antonio Bartalesi <antonio.bartalesi@gmail.com>
 _name="Astor"
 pkgname=${_name,,}
 pkgver=7.5.1
@@ -28,6 +27,4 @@ package() {
   install -D -m755 ${srcdir}/${_jarfile} ${pkgdir}/usr/share/java/${pkgname}/${_jarfile}
   
   install -D -m755 ${srcdir}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
-  # Installing the icons
-  #install -D -m644 ${pkgname}.png ${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname}.png
 }
