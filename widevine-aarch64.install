@@ -1,0 +1,16 @@
+#!/bin/sh
+
+post_install() {
+  echo ":: IMPORTANT: In order to register the widevine component with chromium and/or firefox"
+  echo "   run the relevant scripts below for every user that needs widevine enabled."
+  echo "       - register_widevine_firefox"
+  echo "       - register_widevine_chromium"
+  echo "   These scripts will add the needed entries into the user dirs for either"
+  echo "   browser.  This action has to be performed only once; the registering will"
+  echo "   persist after package upgrades."
+  echo ":: IMPORTANT (2): When running chromium or firefox, one needs to prepend the"
+  echo "   following to the command line:"
+  echo "       LD_PRELOAD=/opt/WidevineCdm/libgcc_hide.so"
+  echo ":: IMPORTANT (3): WidevineCDM on ARM now requires patches to glibc.  Therefore"
+  echo "   a dependency to the AUR package glibc-widevine has been added."
+}
