@@ -1,5 +1,5 @@
 pkgbase = tango-pogo
-	pkgdesc = A standalone JAVA application designed to browse and edit the static TANGO database
+	pkgdesc = The TANGO code generator. It allows to define a TANGO class model
 	pkgver = 9.8.2
 	pkgrel = 1
 	url = https://gitlab.com/tango-controls/Pogo
