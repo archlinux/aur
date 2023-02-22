@@ -1,0 +1,26 @@
+pkgbase = python-flet
+	pkgdesc = Easily build realtime web, mobile and desktop apps in your favorite language and securely share them with your team.
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://flet.dev/
+	arch = any
+	license = Apache
+	makedepends = goreleaser
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = flutter
+	depends = python-repath
+	depends = python-typing-extensions
+	depends = python-websocket-client
+	depends = python-watchdog
+	depends = python-oauthlib
+	depends = python-websockets
+	depends = python-httpx
+	depends = python-packaging
+	source = flet-0.4.2.tar.gz::https://github.com/flet-dev/flet/archive/refs/tags/v0.4.2.tar.gz
+	source = flet-linux.patch
+	sha256sums = dc17c75588221f35f3dc969952e70ddc3d19f64a0db28315624249c1906b4642
+	sha256sums = ec5a4520958aa116f99666463a0c8b871dbbd908f9fe7674777c470f72edead9
+
+pkgname = python-flet
