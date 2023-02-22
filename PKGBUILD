@@ -197,7 +197,7 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.1
-_minor=12
+_minor=13
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -604,8 +604,8 @@ prepare() {
     [ -z "$_zstd_level_value" ] && _die "The value is empty. Choose the correct one again."
 
     case "$_zstd_level_value" in
-        ultra) scripts/config --set-val MODULE_COMPRESS_ZSTD_LEVEL 19 -e MODULE_COMPRESS_ZSTD_ULTRA --set-val MODULE_COMPRESS_ZSTD_LEVEL_ULTRA 22 --set-val ZSTD_COMP_VAL 22;;
-        normal) scripts/config --set-val MODULE_COMPRESS_ZSTD_LEVEL 9 -d MODULE_COMPRESS_ZSTD_ULTRA --set-val ZSTD_COMP_VAL 19;;
+        ultra) scripts/config --set-val MODULE_COMPRESS_ZSTD_LEVEL 19 -e MODULE_COMPRESS_ZSTD_ULTRA --set-val MODULE_COMPRESS_ZSTD_LEVEL_ULTRA 22 --set-val ZSTD_COMPRESSION_LEVEL 22;;
+        normal) scripts/config --set-val MODULE_COMPRESS_ZSTD_LEVEL 9 -d MODULE_COMPRESS_ZSTD_ULTRA --set-val ZSTD_COMPRESSION_LEVEL 19;;
         *) _die "The value '$_zstd_level_value' is invalid. Choose the correct one again.";;
     esac
 
@@ -845,9 +845,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('d47aa675170904dcc93eeaa7c96db54d476a11c5d3e8cf3d3b96e364e2a0edea'
-            '509bde973c87ce534f047ef4bdcd8b07dce606ea8e2fd91af1af0641db21eb37'
+sha256sums=('48841319f4b0077da15e4176e624032d8332d961ee660e1b85e1ce73ded17a67'
+            'b00fb5dc7c5079c3efa1d0ee3b419376cf053c4b90ed623405096ce880e3dc8c'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
-            '750aafca9b47da4a30fe55b5ffbbe6bbba7129bb7c9fd46621cce80a7ac66401'
+            '907fb084dde7634e1bfbcbef21b90b9bf4d98ee8553ab15234021b17c9c80c4d'
             'a9566828cf8b62edfd961d4f5309dd1c414697122835e75c5141fe467ca8c7c0'
             '07dd83252dba452113f2a1f7650117edb725ca92a149ec4fec03fd389abbc81c')
