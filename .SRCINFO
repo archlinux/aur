@@ -1,19 +1,14 @@
 pkgbase = php54-xdebug
-	pkgdesc = PHP debugging extension (for php54)
-	pkgver = 2.2.5
+	pkgdesc = php54 Xdebug extension
+	pkgver = 2.4.1
 	pkgrel = 1
-	url = http://www.xdebug.org
-	arch = i686
+	url = https://xdebug.org/
 	arch = x86_64
-	license = GPL
-	depends = php54
-	provides = xdebug
-	conflicts = xdebug
-	backup = etc/php/conf.d/xdebug.ini
-	source = http://xdebug.org/files/xdebug-2.2.5.tgz
-	source = xdebug.ini
-	md5sums = 7e571ce8eb6fa969fd8263969019849d
-	md5sums = 6a1f2ef91c632d4c9b7b218cd2e278ef
+	arch = i686
+	license = Xdebug
+	makedepends = php54
+	source = http://pecl.php.net/get/xdebug-2.4.1.tgz
+	sha256sums = 23c8786e0f5aae67b1e5035972bfff282710fb84c483887cebceb8ef5bbdf8ef
 
 pkgname = php54-xdebug
-
+	backup = 

@@ -1,37 +1,36 @@
-pkgname=php54-xdebug
-pkgver=2.2.5
+ext_name=xdebug
+phpbase=54
+suffix=
+pkgname="php${phpbase}-${ext_name}${suffix}"
+pkgver=2.4.1
+source=("http://pecl.php.net/get/$ext_name-$pkgver.tgz")
 pkgrel=1
-pkgdesc="PHP debugging extension (for php54)"
-arch=('i686' 'x86_64')
-url="http://www.xdebug.org"
-license=('GPL')
-depends=('php54')
-backup=('etc/php/conf.d/xdebug.ini')
-conflicts=('xdebug')
-provides=('xdebug')
-source=("http://xdebug.org/files/xdebug-${pkgver}.tgz" 'xdebug.ini')
+pkgdesc="php${phpbase}${suffix} Xdebug extension"
+arch=("x86_64" "i686")
+url="https://xdebug.org/"
+license=('Xdebug')
+makedepends=("php${phpbase}${suffix}")
+backup=()
 
 build() {
-  cd $srcdir/xdebug-$pkgver
-  phpize
-  ./configure --prefix=/usr --enable-xdebug
-  make
-
-  cd debugclient
-  ./configure --prefix=/usr
-  make
+    cd "${ext_name}-${pkgver}"
+    phpize${phpbase}${suffix}
+    ./configure \
+        --with-php-config=php-config${phpbase}${suffix}
+    make
 }
 
 package() {
-  local PHPVER=`php -r 'echo phpversion();'`
-
-  cd $srcdir/xdebug-$pkgver/debugclient
-  make DESTDIR=$pkgdir install
-
-  cd $srcdir/xdebug-$pkgver
-  make INSTALL_ROOT=$pkgdir install
-  install -D -m 644 $srcdir/xdebug.ini $pkgdir/etc/php/conf.d/xdebug.ini
+    cd "$ext_name-$pkgver"
+    _priority=40
+    ext_dir="$(php-config${phpbase}${suffix} --extension-dir)"
+    _ini_dir="/etc/php${phpbase}${suffix}/conf.d"
+    _ini_file="${_ini_dir}/${_priority}-${ext_name}.ini"
+    backup+=("${_ini_file}")
+    install -m0755 -d "${pkgdir}/${_ini_dir}"
+    echo "zend_extension=${ext_name}.so" > "${pkgdir}/${_ini_file}"
+    chmod 0644 "${pkgdir}/${_ini_file}"
+    install -m0755 -D ".libs/${ext_name}.so" "${pkgdir}/${ext_dir}/${ext_name}.so"
 }
 
-md5sums=('7e571ce8eb6fa969fd8263969019849d'
-         '6a1f2ef91c632d4c9b7b218cd2e278ef')
+sha256sums=('23c8786e0f5aae67b1e5035972bfff282710fb84c483887cebceb8ef5bbdf8ef')
