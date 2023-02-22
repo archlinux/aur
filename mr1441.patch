@@ -1,8 +1,8 @@
 Author: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Source: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1441
-Editor: Mingi Sung <FiestaLake@protonmail.com>
-Commit: 01f700fc1c5bd9f6265577d0b86f2f407e256cc4
-Last Updated: 10/27/22 (Mutter 43.0+r87+g986d3be7a-1)
+Editor: Mingi Sung <fiestalake@disroot.org>
+Commit: a6f23c151c94912c8fc074facd07b0d6aa70f939
+Last Updated: 2/22/23 (Mutter 43.3-1)
 ---
 
 Use triple buffering if and when the previous frame is running late.
@@ -2783,3 +2783,82 @@ index 6595eb5a290e02f91c8968085f424bbd3afef816..42f7e62760416ded2c7c7bcb146f617f
  
    g_signal_handler_disconnect (stage, before_update_handler_id);
    g_signal_handler_disconnect (stage, before_paint_handler_id);
+
+diff --git a/src/backends/native/meta-onscreen-native.c b/src/backends/native/meta-onscreen-native.c
+index 6c8245f8cb..79cf789634 100644
+--- a/src/backends/native/meta-onscreen-native.c
++++ b/src/backends/native/meta-onscreen-native.c
+@@ -71,8 +71,8 @@ typedef struct _MetaOnscreenNativeSecondaryGpuState
+ 
+   struct {
+     MetaDrmBufferDumb *current_dumb_fb;
+-    MetaDrmBufferDumb *dumb_fbs[2];
+-    MetaDrmBuffer *source_fbs[2];
++    MetaDrmBufferDumb *dumb_fbs[3];
++    MetaDrmBuffer *source_fbs[3];
+   } cpu;
+ 
+   gboolean noted_primary_gpu_copy_ok;
+@@ -717,12 +717,17 @@ static MetaDrmBufferDumb *
+ secondary_gpu_get_next_dumb_buffer (MetaOnscreenNativeSecondaryGpuState *secondary_gpu_state)
+ {
+   MetaDrmBufferDumb *current_dumb_fb;
++  const int n_dumb_fbs = G_N_ELEMENTS (secondary_gpu_state->cpu.dumb_fbs);
++  int i;
+ 
+   current_dumb_fb = secondary_gpu_state->cpu.current_dumb_fb;
+-  if (current_dumb_fb == secondary_gpu_state->cpu.dumb_fbs[0])
+-    return secondary_gpu_state->cpu.dumb_fbs[1];
+-  else
+-    return secondary_gpu_state->cpu.dumb_fbs[0];
++  for (i = 0; i < n_dumb_fbs; i++)
++    {
++      if (current_dumb_fb == secondary_gpu_state->cpu.dumb_fbs[i])
++        return secondary_gpu_state->cpu.dumb_fbs[(i + 1) % n_dumb_fbs];
++    }
++
++  return secondary_gpu_state->cpu.dumb_fbs[0];
+ }
+ 
+ static MetaDrmBuffer *
+
+diff --git a/clutter/clutter/clutter-frame-clock.c b/clutter/clutter/clutter-frame-clock.c
+index 1a16b048bf..78f8dde9b4 100644
+--- a/clutter/clutter/clutter-frame-clock.c
++++ b/clutter/clutter/clutter-frame-clock.c
+@@ -457,7 +457,7 @@ calculate_next_update_time_us (ClutterFrameClock *frame_clock,
+   int64_t refresh_interval_us;
+   int64_t min_render_time_allowed_us;
+   int64_t max_render_time_allowed_us;
+-  int64_t next_presentation_time_us;
++  int64_t next_presentation_time_us = 0;
+   int64_t next_update_time_us;
+ 
+   now_us = g_get_monotonic_time ();
+@@ -501,7 +501,24 @@ calculate_next_update_time_us (ClutterFrameClock *frame_clock,
+    *
+    */
+   last_presentation_time_us = frame_clock->last_presentation_time_us;
+-  next_presentation_time_us = last_presentation_time_us + refresh_interval_us;
++  switch (frame_clock->state)
++    {
++    case CLUTTER_FRAME_CLOCK_STATE_INIT:
++    case CLUTTER_FRAME_CLOCK_STATE_IDLE:
++    case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
++      next_presentation_time_us = last_presentation_time_us +
++                                  refresh_interval_us;
++      break;
++    case CLUTTER_FRAME_CLOCK_STATE_DISPATCHED_ONE:
++    case CLUTTER_FRAME_CLOCK_STATE_DISPATCHED_ONE_AND_SCHEDULED:
++      next_presentation_time_us = last_presentation_time_us +
++                                  2 * refresh_interval_us;
++      break;
++    case CLUTTER_FRAME_CLOCK_STATE_DISPATCHED_TWO:
++      next_presentation_time_us = last_presentation_time_us +
++                                  3 * refresh_interval_us;
++      break;
++    }
+ 
+   /*
+    * However, the last presentation could have happened more than a frame ago.
+--

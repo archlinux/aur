@@ -30,8 +30,8 @@ if [ -n "$_disable_docs" ]; then
 else
   pkgname=(mutter-performance mutter-performance-docs)
 fi
-pkgver=43.2+r3+g97dd7fb10
-pkgrel=3
+pkgver=43.3
+pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64 aarch64)
@@ -50,17 +50,19 @@ source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit
         'mr1441.patch'
         'mr1880.patch'
         'mr2702.patch'
-        'mr2763.patch')
+        'mr2763.patch'
+        'backport-for-43_2.patch')
 sha256sums=('SKIP'
-            'd7a014965cbb90892ccbe65d0de49ddce50191dbd7521467d7f11c2f4825045c'
+            'c0fc6220d9b07de4b0ee16570aa4a4fef5a02c9b97a5012b34895277a5435e87'
             '20a90016dab0de9fb8e9cd7b38644e41d2006796f332b7a2d7c92bdf71bc3a4a'
             '1b0647ab0d39db3b334e86c39dbb81b80030339c8d1a9cd43ff88003e966dec2'
-            'ecb0360b5e517a4d6204c71634025ae2c7333ff0f8f33fbcc8a6566ac7acec2f')
+            'caded43b8a9ffd3e946be205396b7be61a29735c151717bd516fa683fb3a1d96'
+            '4bf8048982e846145a514e9edf0aab5b6296c876accde8ba805ee976c3a8bc39')
 
-pkgver() {
-  cd $pkgname
-  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
-}
+# pkgver() {
+#   cd $pkgname
+#   git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
+# }
 
 pick_mr() {
   for mr in "${_merge_requests_to_use[@]}"; do
@@ -146,6 +148,10 @@ prepare() {
   # Type: 1
   # Status: 2 & 3
   pick_mr '2763' 'mr2763.patch' 'patch'
+
+  # Title: Backports for 43.2^3
+  # Collector: Mingi Sung <fiestalake@disroot.org>
+  pick_mr '2763' 'backport-for-43_2.patch' 'patch'
 
   # Title: Draft: Dynamic triple/double buffering (v4)
   # Author: Daniel van Vugt <daniel.van.vugt@canonical.com>

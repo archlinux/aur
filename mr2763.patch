@@ -1,8 +1,8 @@
 Author: Robert Mader <robert.mader@posteo.de>
 Source: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2763
-Editor: Mingi Sung <FiestaLake@protonmail.com>
-Commit: 93dbad3f376787a9e402bbf38745f3ed30bd575c
-Last Updated: 12/30/22 (Mutter 43.2+r3+g97dd7fb10-2)
+Editor: Mingi Sung <fiestalake@disroot.org>
+Commit: 4b97f45a5ab0883c12d0a20359b36cc8dbf9d5e0
+Last Updated: 1/22/23 (Mutter 43.3-1)
 ---
 
 !2677 (merged)
@@ -20,6 +20,7 @@ Revert 74dd9037
 !2766 (merged)
 !2750 (merged)
 !2778 (merged)
+!2763 (merged)
 
 ---
 diff --git a/clutter/clutter/clutter-actor-private.h b/clutter/clutter/clutter-actor-private.h
@@ -839,3 +840,63 @@ index 9d066b19cb4d555b720f908b3f099ee8fbab4235..b3888650a18c62ca80e77a1ac0cb28e4
          continue;
  
        actor_surface = META_WAYLAND_ACTOR_SURFACE (surface->role);
+
+diff --git a/src/backends/meta-input-mapper.c b/src/backends/meta-input-mapper.c
+index cc75f14e8c..71d193e5f3 100644
+--- a/src/backends/meta-input-mapper.c
++++ b/src/backends/meta-input-mapper.c
+@@ -455,7 +455,7 @@ guess_candidates (MetaInputMapper     *mapper,
+ 
+       g_assert (META_IS_MONITOR (l->data));
+ 
+-      if (match_edid (input, l->data, &edid_match))
++      if (integrated && match_edid (input, l->data, &edid_match))
+         match.score |= 1 << edid_match;
+ 
+       if (integrated && match_size (input, l->data))
+
+diff --git a/src/backends/meta-input-mapper.c b/src/backends/meta-input-mapper.c
+index 71d193e5f3..10d67dd99c 100644
+--- a/src/backends/meta-input-mapper.c
++++ b/src/backends/meta-input-mapper.c
+@@ -425,6 +425,8 @@ guess_candidates (MetaInputMapper     *mapper,
+   GList *monitors, *l;
+   gboolean builtin = FALSE;
+   gboolean integrated = TRUE;
++  gboolean automatic;
++  g_autoptr (GVariant) user_value = NULL;
+ 
+ #ifdef HAVE_LIBWACOM
+   if (clutter_input_device_get_device_type (input->device) != CLUTTER_TOUCHSCREEN_DEVICE)
+@@ -446,6 +448,9 @@ guess_candidates (MetaInputMapper     *mapper,
+     }
+ #endif
+ 
++  user_value = g_settings_get_user_value (input->settings, "output");
++  automatic = user_value == NULL;
++
+   monitors = meta_monitor_manager_get_monitors (mapper->monitor_manager);
+ 
+   for (l = monitors; l; l = l->next)
+@@ -455,16 +460,16 @@ guess_candidates (MetaInputMapper     *mapper,
+ 
+       g_assert (META_IS_MONITOR (l->data));
+ 
+-      if (integrated && match_edid (input, l->data, &edid_match))
++      if (automatic && integrated && match_edid (input, l->data, &edid_match))
+         match.score |= 1 << edid_match;
+ 
+-      if (integrated && match_size (input, l->data))
++      if (automatic && integrated && match_size (input, l->data))
+         match.score |= 1 << META_MATCH_SIZE;
+ 
+-      if (builtin && match_builtin (mapper, l->data))
++      if (automatic && builtin && match_builtin (mapper, l->data))
+         match.score |= 1 << META_MATCH_IS_BUILTIN;
+ 
+-      if (match_config (input, l->data))
++      if (!automatic && match_config (input, l->data))
+         match.score |= 1 << META_MATCH_CONFIG;
+ 
+       if (match.score > 0)
+--
