@@ -43,6 +43,10 @@ package() {
   #DESTDIR="$pkgdir" cmake --install build
   mkdir -p "$pkgdir/usr/bin"
   ln -s "/opt/directx-shader-compiler/bin/dxc" "$pkgdir/usr/bin/dxc"
+  ln -s "/opt/directx-shader-compiler/bin/dxa" "$pkgdir/usr/bin/dxa"
+  ln -s "/opt/directx-shader-compiler/bin/dxl" "$pkgdir/usr/bin/dxl"
+  ln -s "/opt/directx-shader-compiler/bin/dxv" "$pkgdir/usr/bin/dxv"
+  ln -s "/opt/directx-shader-compiler/bin/dxopt" "$pkgdir/usr/bin/dxopt"
 
   # TODO install license install -Dm 644 -t $pkgdir/usr/lib/systemd/system $srcdir/anbox-container-manager.service
 }
