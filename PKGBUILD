@@ -33,12 +33,15 @@ build() {
   export CXXFLAGS="$CXXFLAGS -Wno-error=restrict"
   cmake .. -G"Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -C ../cmake/caches/PredefinedParams.cmake -DCMAKE_INSTALL_LIBDIR=/opt/directx-shader-compiler/lib -DCMAKE_INSTALL_PREFIX=/opt/directx-shader-compiler CFLAGS="$CFLAGS -Wno-error=restrict" -DLLVM_BUILD_TOOLS=OFF
   make -j$(nproc)
+  #cmake --build .
 }
 
 package() {
   cd "$srcdir/${_pkgname}"
   make -C build DESTDIR="$pkgdir" install
   #DESTDIR="$pkgdir" cmake --install build
+  mkdir -p "$pkgdir/usr/bin"
+  ln -s "$pkgdir/opt/directx-shader-compiler/bin/dxc" "$pkgdir/usr/bin/dxc"
 
   # TODO install license install -Dm 644 -t $pkgdir/usr/lib/systemd/system $srcdir/anbox-container-manager.service
 }
