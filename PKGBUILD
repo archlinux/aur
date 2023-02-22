@@ -16,7 +16,7 @@ _gitbranch="${_TOOLKIT}"
 pkgname="${_pkgname}-${_pkgvariant}-git"
 epoch=0
 pkgver=3.19.0+86.r11603.20221020.15c070cb3
-pkgrel=2
+pkgrel=3
 pkgdesc='A GTK based e-mail client. Latest git checkout of GTK2 branch. Patched to use charset supersets to decode titles'
 arch=(
   'i686'
@@ -131,7 +131,7 @@ fi
 prepare() {
   cd "${srcdir}/${_pkgname}"
 
-  ls -1 "${srcdir}"/*.diff "${srcdir}"/*.patch | sort -V | while read _patch; do
+  ls -1 "${srcdir}"/*.diff "${srcdir}"/*.patch 2>/dev/null | sort -V | while read _patch; do
     msg2 "Applying patch '${_patch}' ..."
     patch -N -p1 --follow-symlinks -i "${_patch}"
   done
