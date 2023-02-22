@@ -1,6 +1,6 @@
 # Maintainer: AntiCompositeNumber <anticompositenumber+aur@gmail.com>
 pkgname=f1multiviewer-bin
-pkgver=1.12.4
+pkgver=1.12.5
 pkgrel=1
 pkgdesc="Unofficial desktop client for F1TV"
 arch=('x86_64')
@@ -10,10 +10,10 @@ depends=('nss' 'alsa-lib' 'gtk3' 'at-spi2-core' 'xdg-utils')
 provides=('f1multiviewer')
 conflicts=('f1multiviewer')
 install=f1multiviewer-bin.install
-source=("https://releases.multiviewer.app/download/95605757/MultiViewer.for.F1-linux-x64-1.12.4.zip"
+source=("https://releases.multiviewer.app/download/96665703/MultiViewer.for.F1-linux-x64-1.12.5.zip"
     "f1multiviewer.desktop")
 noextract=()
-sha256sums=('17491237df52c04a5e6ba2fa311767ba4175af80e21417d87cae50eb3daf3982'
+sha256sums=('a0f5c7934968d44fe4c3688922bffcb9efd43061d8da8db479b5aa5119d66631'
             '00dd9ca8d94a729b80125f6f9ee2287ccd3f86975338c5ce1d12575130d73a6a')
 
 package() {
