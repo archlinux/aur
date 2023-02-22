@@ -1,6 +1,6 @@
 # Maintainer: zjuyk <ownbyzjuyk@gmail.com>
 pkgname=mdbook-toc
-pkgver=0.11.0
+pkgver=0.11.2
 pkgrel=2
 pkgdesc="A preprocessor for mdbook to add inline Table of Contents support."
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/badboy/mdbook-toc"
 license=('MPL')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz"::$url/archive/refs/tags/$pkgver.tar.gz)
-sha256sums=('065f4183238240074b4443466b50157be58dd69995a3297784032c77c4ed6b70')
+sha256sums=('39a1cbf3d50d19c0a304c41408439b6f3a053bcfedb1958af00cf20b8daa8cc7')
 
 build() {
 	cd "$pkgname-$pkgver"
