@@ -11,13 +11,13 @@ source=("git+$url#branch=main")
 md5sums=('SKIP')
 
 build() {
-        cd "graph-editor-linux"
+        cd "Graph-Editor-Linux"
         git submodule init
         git submodule update
 }
 
 package() {
-        cd "graph-editor-linux"
+        cd "Graph-Editor-Linux"
     gradle run
 }
 
