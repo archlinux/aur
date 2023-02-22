@@ -3,12 +3,12 @@
 pkgname='elk-zone-git'
 pkgdesc='Native version of Elk, a nimble Mastodon web client.'
 url='https://github.com/elk-zone/elk-native'
-pkgver=r167.6439cff
+pkgver=r187.55080d2
 pkgrel=1
 arch=('any')
 license=('MIT')
 
-makedepends=('rust' 'cargo' 'cargo-tauri' 'pnpm' 'jq' 'openssl' 'appmenu-gtk-module' 'webkit2gtk' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libvips')
+makedepends=('rust' 'cargo' 'cargo-tauri' 'pnpm' 'jq' 'openssl' 'appmenu-gtk-module' 'webkit2gtk' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libvips' 'git')
 depends=('webkit2gtk' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libvips')
 
 source=("$pkgname::git+https://github.com/elk-zone/elk-native.git"
@@ -39,7 +39,7 @@ build() {
 }
 
 package() {
-  install -Dm775 elk-native/target/release/elk "$pkgdir"/usr/bin/elk-zone
-  install -Dm755 elk-native/logo-dev.png "$pkgdir"/usr/share/icons/elk-zone.png
+  install -Dm775 elk-zone-git/target/release/elk "$pkgdir"/usr/bin/elk-zone
+  install -Dm755 elk-zone-git/logo-dev.png "$pkgdir"/usr/share/icons/elk-zone.png
   install -Dm755 elk-zone.desktop "$pkgdir"/usr/share/applications/elk-zone.desktop
 }
