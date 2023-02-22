@@ -1,11 +1,11 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=better-adb-sync-git
-pkgver=r61.6b1e982
+pkgver=r69.72ccbab
 pkgrel=1
 pkgdesc='Synchronize files between a PC and an Android device using the ADB (Android Debug Bridge)'
 arch=('any')
-url='https://github.com/SelfAdjointOperator/better-adb-sync'
+url='https://github.com/jb2170/better-adb-sync'
 license=('Apache')
 depends=('android-tools' 'android-udev' 'python')
 makedepends=('git')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
