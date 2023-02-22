@@ -14,7 +14,7 @@ groups=(
 )
 pkgver=0.4.0.rev44.r52.20230220.f0f42bd
 _phcver="$(awk -F. '{print $1"."$2"."$3}' <<<"${pkgver}")"
-pkgrel=2
+pkgrel=3
 pkgdesc="Frequency driver for Intel CPUs with undervolting feature. DKMS-based kernel module, testing branch, latest git checkout."
 url="https://gitlab.com/linux-phc/phc-intel"
 arch=('any')
@@ -41,10 +41,12 @@ conflicts=(
 )
 source=(
   "${_pkgbase}::git+${url}.git"
-  dkms.conf.in
+  'testing.makefile.patch'
+  'dkms.conf.in'
 )
 sha256sums=(
   'SKIP'
+  '082229d12993de097ed60339dd7b3ba36c9cb3d92abf1722516b2921cc07ebc6' # testing.makefile.patch
   '9162c25d0df436a00d8b45d9e97c24a1f2999f5b8a4f78f2995df15d2d31baa7' # dkms.conf.in
 )
 
@@ -52,7 +54,10 @@ prepare() {
   cd "${srcdir}/${_pkgbase}"
 
   ## Switch to testing branch:
-  make brave
+  #make brave # This will error out if the currently running kernel's headers are not installed -- which is likely after an upgrade.
+  ## Manually change Makefile to testing variant:
+  printf '%s\n' "Patching 'Makefile' to build testing variant ..."
+  patch -N --follow-symlinks -i "${srcdir}/testing.makefile.patch" Makefile
 
   ## Generate GIT log
   git log > "${srcdir}/git.log"
