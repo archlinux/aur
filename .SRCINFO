@@ -1,0 +1,19 @@
+pkgbase = nemini-git
+	pkgdesc = Nemini is a simple to configure Gemini server with virtual host, alias, headers/footers and redirect support
+	pkgver = 5557575
+	pkgrel = 1
+	url = https://codeberg.org/pswilde/nemini.git
+	install = install.sh
+	arch = any
+	license = AGPLv3
+	makedepends = git
+	makedepends = make
+	makedepends = nim
+	makedepends = nimble
+	depends = openssl
+	provides = nemini
+	conflicts = nemini
+	source = nemini::git+https://codeberg.org/pswilde/nemini
+	sha256sums = SKIP
+
+pkgname = nemini-git
