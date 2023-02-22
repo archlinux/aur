@@ -1,0 +1,5 @@
+post_install() {
+	echo "
+	Make sure that the github-cli is authenticated ('\$ gh auth login') before running git-conflict.sh
+"
+}

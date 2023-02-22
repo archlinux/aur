@@ -1,0 +1,16 @@
+pkgbase = git-conflict-git
+	pkgdesc = Check which open pull requests conflict with local branch.
+	pkgver = r15.d002313
+	pkgrel = 1
+	url = https://github.com/gibbz00/conflict
+	install = git-conflict.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = jq
+	depends = ripgrep
+	depends = github-cli
+	source = git-conflict-git::git+https://github.com/gibbz00/conflict
+	md5sums = SKIP
+
+pkgname = git-conflict-git
