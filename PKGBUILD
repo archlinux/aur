@@ -1,7 +1,7 @@
 # Maintainer: Matthew Hiles <matthew.hiles@gmail.com>
 pkgname=inkscape-silhouette-git
 pkgver=r469.c3e1fa4
-pkgrel=1
+pkgrel=2
 pkgdesc="inkscape plugin to control Silhouette vinyl cutters"
 arch=(any)
 url="https://github.com/fablabnbg/inkscape-silhouette"
