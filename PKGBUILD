@@ -16,7 +16,7 @@ url='https://www.kernel.org'
 license=('GPL2')
 makedepends=(
     'xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools'
-    'vboot-utils' 'dtc'
+    'dtc'
 )
 options=('!strip')
 source=(
