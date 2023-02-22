@@ -6,7 +6,7 @@ _mainpkgname="$_projectname-emu"
 _noguipkgname="$_projectname-emu-nogui"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git")
-pkgver='5.0.r18344.g6db2171fd0'
+pkgver='5.0.r18714.g3c4a21315d'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -15,8 +15,8 @@ url="https://$_mainpkgname.org"
 license=('GPL2')
 depends=(
 	'alsa-lib' 'bluez-libs' 'cubeb' 'enet' 'hidapi' 'libevdev' 'libgl' 'libmgba'
-	'libpulse' 'libx11' 'libxi' 'libxrandr' 'lzo' 'mbedtls' 'minizip-ng' 'pugixml'
-	'qt6-base' 'sfml' 'zlib'
+	'libpulse' 'libspng' 'libx11' 'libxi' 'libxrandr' 'lzo' 'mbedtls' 'minizip-ng'
+	'pugixml' 'qt6-base' 'sfml' 'zlib'
 	'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libcurl.so' 'libfmt.so'
 	'libminiupnpc.so' 'libswscale.so' 'libudev.so' 'libusb-1.0.so'
 )
@@ -26,18 +26,16 @@ source=(
 	"$pkgname::git+https://github.com/$_mainpkgname/$_projectname"
 	"$pkgname-spirvcross::git+https://github.com/KhronosGroup/SPIRV-Cross.git"
 	"$pkgname-zlibng::git+https://github.com/zlib-ng/zlib-ng.git"
-	"$pkgname-libspng::git+https://github.com/randy408/libspng.git"
 	"$pkgname-vma::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
 	"$pkgname-implot::git+https://github.com/epezent/implot.git"
-	"$pkgname-gtest::git+https://github.com/google/googletest.git"
+	'minizip-ng.diff'
 )
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'SKIP')
+            'b469597fe9b4e9be6ae9ab0330fe5e3d6b944a73505775ff75f9895ae4843768f3815d4b5b8e227d6d2e87c3f4882d6d7262f9df85be0aaddf46730a7afa16dd')
 
 _sourcedirectory="$pkgname"
 
@@ -45,6 +43,9 @@ prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 	if [ -d 'build/' ]; then rm -rf 'build/'; fi
 	mkdir 'build/'
+
+	# Fix minizip-ng name for Arch
+	patch --forward -p1 < "$srcdir/minizip-ng.diff"
 
 	# Provide SPIRV-Cross submodule
 	_spirvcrosspath='Externals/spirv_cross/SPIRV-Cross'
@@ -58,12 +59,6 @@ prepare() {
 	git config "submodule.$_zlibngpath.url" "$srcdir/$pkgname-zlibng/"
 	git -c protocol.file.allow=always submodule update "$_zlibngpath"
 
-	# Provide libspng submodule
-	_libspngpath='Externals/libspng/libspng'
-	git submodule init "$_libspngpath"
-	git config "submodule.$_libspngpath.url" "$srcdir/$pkgname-libspng/"
-	git -c protocol.file.allow=always submodule update "$_libspngpath"
-
 	# Provide vma submodule
 	_vmapath='Externals/VulkanMemoryAllocator'
 	git submodule init "$_vmapath"
@@ -75,12 +70,6 @@ prepare() {
 	git submodule init "$_implotpath"
 	git config "submodule.$_implotpath.url" "$srcdir/$pkgname-implot/"
 	git -c protocol.file.allow=always submodule update "$_implotpath"
-
-	# Provide gtest submodule
-	_gtestpath='Externals/gtest'
-	git submodule init "$_gtestpath"
-	git config "submodule.$_gtestpath.url" "$srcdir/$pkgname-gtest/"
-	git -c protocol.file.allow=always submodule update "$_gtestpath"
 }
 
 pkgver() {
@@ -94,6 +83,7 @@ build() {
 		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX='/usr' \
 		-DDISTRIBUTOR=archlinux.org \
+		-DENABLE_TESTS=OFF \
 		-DUSE_SHARED_ENET=ON \
 		-Wno-dev
 	cmake --build 'build/'
