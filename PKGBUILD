@@ -1,35 +1,41 @@
-# Maintainer: b10n <b10n@dittes.nl>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: b10n <b10n@dittes.nl>
+
 pkgname=powermate-git
-pkgver=v5.r20.g3f6459f
-pkgrel=2
-pkgdesc="A small Linux userspace driver for the Griffin PowerMate."
-arch=("x86_64")
-url="https://github.com/stefansundin/powermate-linux"
-license=("GPL3")
-depends=("libpulse")
-source=("git+https://github.com/stefansundin/powermate-linux.git"
-		"git+https://github.com/cktan/tomlc99.git")
-md5sums=("SKIP" "SKIP")
+_pkgname=powermate-linux
+pkgver=8.r0.ga5aed40
+pkgrel=1
+pkgdesc='A small Linux userspace driver for the Griffin PowerMate'
+arch=(x86_64)
+url="https://github.com/stefansundin/$_pkgname"
+license=(GPL3)
+depends=(libpulse)
+makedepends=(git)
+source=("git+$url.git"
+		'git+https://github.com/cktan/tomlc99.git')
+sha256sums=('SKIP'
+            'SKIP')
 
 prepare() {
-	cd "$srcdir/powermate-linux"
+	cd "$_pkgname"
 	git submodule init
 	git config submodule.tomlc99.url "$srcdir/tomlc99"
-	git submodule update
+	git -c protocol.file.allow=always submodule update
 }
 
 pkgver() {
-	cd "$srcdir/powermate-linux"
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$_pkgname"
+	git describe --long --abbrev=7 --tags |
+		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$srcdir/powermate-linux"
+	cd "$_pkgname"
 	make
 }
 
 package() {
-	cd "$srcdir/powermate-linux"
-	install -D -m755 powermate "$pkgdir/usr/bin/powermate"
-	install -D -m644 60-powermate.rules "$pkgdir/etc/udev/rules.d/60-powermate.rules"
+	cd "$_pkgname"
+	install -Dm0755 -t "$pkgdir/usr/bin/" powermate
+	install -Dm0644 -t "$pkgdir/etc/udev/rules.d/" 60-powermate.rules
 }
