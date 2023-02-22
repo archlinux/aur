@@ -1,7 +1,7 @@
 # Maintainer:Integral<luckys68@126.com>
 pkgname=shimo-bin
 _pkgname=shimo
-pkgver=3.0.4
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="石墨文档 Shimo document (An online collaborative office software)."
 arch=('x86_64')
@@ -9,9 +9,9 @@ url="https://shimo.im/"
 license=('custom')
 depends=('nss' 'alsa-lib' 'java-runtime' 'libnet' 'gtk3' 'libxkbcommon-x11')
 source=(
-	"https://as.smvm.cn/panther/shimo/release/linux/x64/shimo_v${pkgver}-release.98ec8bb.shimo_linux-amd64.deb"
+	"https://oas.shimonote.com/panther/shimo/release/linux/x64/${_pkgname}_v${pkgver}-release.32738d1.shimo_linux-amd64.deb"
 )
-sha512sums=('ccebe1e6e8be1b6292a59c21aee5b24fae8ced93e6abb4f60850af9bb74696f816368224d886a979c245963ee2a20c737c89677c552af3c2574f7827b7e62aec')
+sha512sums=('74b8c4bef2c385874075a89a08aa5286adceb32d4ea614365849138d0454445a086523fcbf3a4645dfdcb1d7b4e91c838335d49b0f7b0a494bd5ca0f7f521403')
 
 package() {
 	echo "  -> Extracting the data.tar.gz..."
