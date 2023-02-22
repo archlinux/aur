@@ -8,4 +8,4 @@ Target = usr/lib/modules/*/vmlinuz
 Description = Saving Linux kernel modules directory (hardlinks)...
 When = PreTransaction
 Exec = /usr/share/libalpm/scripts/linux-modules-save
-NeedsTarget
+NeedsTargets

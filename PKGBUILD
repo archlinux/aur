@@ -16,8 +16,8 @@ source=("linux-modules-cleanup.conf"
         "linux-modules-save"
 )
 sha256sums=('950f851eba08dac4d0b93ff62b3fb16ddacd4f8ebb98a2435f80bf05f2ea5a29'
-            '0492722850f90066d33baf7896eb4625fd812890bdb03f025184c8b4bf0ef94f'
-            '2b86a037a9a394f57279408745bf5b19542f26b0ad862fd514470cd145108c10'
+            'fc4d53dec520c80fe97dfda65b238c7d678e7ef26aaebffc5b43f924477ea4f4'
+            '087e5ed70b2fc512d814fbded9e873955b1da5b6bf1e31975174d704ad143156'
             '7cf080b0d0d5a07ccb414ffb793525e554ca95447201f22b917f0be04ff48d2a'
             '3168ea6c2740dbde4229d718e44f6262f2d10aef529fb446cdb4f1778b8b6424')
 

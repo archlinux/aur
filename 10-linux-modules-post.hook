@@ -7,4 +7,4 @@ Target = usr/lib/modules/*/vmlinuz
 Description = Restoring Linux kernel modules...
 When = PostTransaction
 Exec = /usr/share/libalpm/scripts/linux-modules-restore
-NeedsTarget
+NeedsTargets
