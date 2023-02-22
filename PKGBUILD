@@ -1,18 +1,29 @@
 # Maintainer: matt kasun <matt  at netmaker.io>
 pkgname=netclient
-pkgver=0.17.1
+pkgver=0.18.0
 pkgrel=0
 pkgdesc="netclient daemon - a platform for modern, blazing fast wireguard virtual networks"
 arch=(x86_64)
-url='https://github.com/gravitl/netmaker'
-license=("custom:SSPL")
-depends=('wireguard-tools')
+url='https://github.com/gravitl/netclient'
+license=('Apache')
+makedepends=(go)
 
-source=("${pkgver}-${pkgrel}.tar.zst::${url}/releases/download/v${pkgver}/netclient-${pkgver}-1-x86_64.pkg.tar.zst")
-sha256sums=('be8e5fc8acc2f558d50a59a2b41ab754a3c578ca5bca22458990b0a1f9aa48f1')
+source=("${pkgver}-${pkgrel}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('3a4cb996a8d9a7255dff8f76ff2e71345432039018074f923f30b0ada52a5fa4')
 
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  CGO_ENABLED=0
+
+  go build \
+    -gcflags "all=-trimpath=${PWD}" \
+    -asmflags "all=-trimpath=${PWD}" \
+    -ldflags "-s -w  -extldflags ${LDFLAGS}" \
+    -tags headless \
+    .
+}
 
 package() {
-	install -Dm755 "${srcdir}/usr/bin/netclient" "$pkgdir/usr/bin/netclient"
-	install -Dm644 "${srcdir}/usr/lib/systemd/system/netclient.service" "$pkgdir/usr/lib/systemd/system/netclient.service"
+	install -Dm755 "${srcdir}/netclient" "$pkgdir/usr/bin/netclient"
+	install -Dm644 "${srcdir}/build/netclient.service" "$pkgdir/usr/lib/systemd/system/netclient.service"
 }
