@@ -9,7 +9,8 @@ epoch=1
 arch=('x86_64')
 url="https://github.com/microsoft/${_pkgname}"
 license=('BSD')  # NCSA
-makedepends=('cmake' 'git' 'python' 'ninja')
+makedepends=('cmake' 'git' 'python')
+# package 'ninja' not needed actually
 source=("git+https://github.com/microsoft/${_pkgname}.git")
 sha256sums=('SKIP')
 
