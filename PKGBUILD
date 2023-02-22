@@ -1,29 +1,35 @@
-# $Id$
-# Maintainer: Ruben Van Boxem <vanboxem.ruben@gmail.com>
+# Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: Ruben Van Boxem <vanboxem.ruben@gmail.com>
 # Contributor: Allan McRae <allan@archlinux.org>
 
-pkgname=('gcc49')
-_pkgver=4.9
-_pkgver_minor=4
-pkgver=${_pkgver}.${_pkgver_minor}
-_islver=0.12.2
-_cloogver=0.18.1
-pkgrel=3
-pkgdesc="The GNU Compiler Collection"
+set -u
+_pkgver='4.9'
+pkgname="gcc${_pkgver//\./}"
+pkgver="${_pkgver}.4"
+_islver='0.12.2'
+_cloogver='0.18.1'
+pkgrel='3'
+pkgdesc="The GNU Compiler Collection (${_pkgver}.x)"
 arch=('i686' 'x86_64')
+url='http://gcc.gnu.org'
 license=('GPL' 'LGPL' 'FDL' 'custom')
-url="http://gcc.gnu.org"
+depends=('zlib')
 makedepends=('binutils>=2.25' 'libmpc' 'doxygen')
 checkdepends=('dejagnu' 'inetutils')
-options=('!emptydirs')
-source=("ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2"
-        "ftp://gcc.gnu.org/pub/gcc/infrastructure/isl-${_islver}.tar.bz2"
-        "ftp://gcc.gnu.org/pub/gcc/infrastructure/cloog-${_cloogver}.tar.gz"
-        "0000-gcc-4.9.ucontext.patch"
-        "0001-gcc-4.9-SIGSEGV.patch"
-        "0002-gcc-4.9-__res_state.patch"
-        "0003-gcc-4.9-ustate.patch"
-        "0004-glibc-2.31-libsanitizer.patch")
+options=('!emptydirs' '!strip' '!buildflags')
+source=(
+  "ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2"
+  #ftp://gcc.gnu.org/pub/gcc/snapshots/${_snapshot}/gcc-${_snapshot}.tar.bz2
+  #"http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
+  "ftp://gcc.gnu.org/pub/gcc/infrastructure/isl-${_islver}.tar.bz2"
+  #"http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz"
+  "ftp://gcc.gnu.org/pub/gcc/infrastructure/cloog-${_cloogver}.tar.gz"
+  '0000-gcc-4.9.ucontext.patch'
+  '0001-gcc-4.9-SIGSEGV.patch'
+  '0002-gcc-4.9-__res_state.patch'
+  '0003-gcc-4.9-ustate.patch'
+  '0004-glibc-2.31-libsanitizer.patch'
+)
 md5sums=('87c24a4090c1577ba817ec6882602491'
          'e039bfcfb6c2ab039b8ee69bf883e824'
          'e34fca0540d840e5d0f6427e98c92252'
@@ -32,28 +38,34 @@ md5sums=('87c24a4090c1577ba817ec6882602491'
          'c64d1e20274ff4fbfacdd11bef2e1273'
          'b27134678242f358c9b81cd73a1bcba1'
          '931ee06584a47f3bdb5ea57fa2d5f76f')
+sha256sums=('6c11d292cd01b294f9f84c9a59c230d80e9e4a47e5c6355f046bb36d4f358092'
+            'f4b3dbee9712850006e44f0db2103441ab3d13b406f77996d1df19ee89d11fb4'
+            '02500a4edd14875f94fe84cbeda4290425cb0c1c2474c6f75d75a303d64b4196'
+            '44ea987c9ee1ab3234f20eca51f8d6c68910b579e63ec58ff7a0dde38093f6ba'
+            'eb59578cbf32da94d7a11fabf83950c580f0f6fb58f893426d6a258b7e44351e'
+            '9ce8a94aad61a26839687734b48f0628e610663cd0d5ad9edfc6e571cf294bac'
+            '11f2adf34c32ec2d121a14cd10751d79c77aebe7e4592d4cfaa7190953bdf782'
+            '526568532a879f2755fb7e834c1c55caae53252713562e21a51c861463cb5931')
 
-_basedir=gcc-${pkgver}
-_libdir="usr/lib/gcc/$CHOST/$pkgver"
+if [ -n "${_snapshot:-}" ]; then
+  _basedir="gcc-${_snapshot}"
+else
+  _basedir="gcc-${pkgver}"
+fi
+
+#_libdir="usr/lib/gcc/${CHOST}/${pkgver}"
 
 prepare() {
-  cd ${srcdir}/${_basedir}
+  set -u
+  cd "${_basedir}"
 
   # link isl/cloog for in-tree builds
-  ln -s ../isl-${_islver} isl
-  ln -s ../cloog-${_cloogver} cloog
+  ln -s "../isl-${_islver}" 'isl'
+  ln -s "../cloog-${_cloogver}" 'cloog'
 
   # Do not run fixincludes
-  sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
-  
-  # Arch Linux installs x86_64 libraries /lib
-  [[ $CARCH == "x86_64" ]] && sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
+  sed -e 's@\./fixinc\.sh@-c true@' -i 'gcc/Makefile.in'
 
-  echo ${pkgver} > gcc/BASE-VER
-
-  # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
-  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
-  
   # fix build with glibc 2.26
   #diff -pNau5 libsanitizer/sanitizer_common/sanitizer_linux.h{.orig,} > '../0000-gcc-4.9.ucontext.patch'
   patch -Nbup0 -i "${srcdir}/0000-gcc-4.9.ucontext.patch" # https://gcc.gnu.org/bugzilla/attachment.cgi?id=41921
@@ -69,85 +81,119 @@ prepare() {
     echo 'Failed to remove ^struct ucontext_t'
     false
   fi
-  
+
+  # Arch Linux installs x86_64 libraries /lib
+  case "${CARCH}" in
+  'x86_64') sed -e '/m64=/ s/lib64/lib/' -i 'gcc/config/i386/t-linux64' ;;
+  esac
+
   patch -Nbup0 -i "${srcdir}/0003-gcc-4.9-ustate.patch"
   patch -p1 -i "${srcdir}/0004-glibc-2.31-libsanitizer.patch"
 
-  mkdir -p ${srcdir}/gcc-build
+  if ! grep -qFxe "${pkgver%%_*}" 'gcc/BASE-VER'; then
+    echo "Version has changed from ${pkgver%%_*} to"
+    cat 'gcc/BASE-VER'
+    set +u
+    false
+  fi
+
+  # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
+  #sed -e '/ac_cpp=/s/$CPPFLAGS/$CPPFLAGS -O2/' -i {libiberty,gcc}/configure
+
+  rm -rf 'gcc-build'
+  mkdir 'gcc-build'
+
+  set +u
 }
 
 build() {
-  cd ${srcdir}/gcc-build
+  set -u
+  cd "${_basedir}/gcc-build"
 
-  # using -pipe causes spurious test-suite failures
-  # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
-  CFLAGS=${CFLAGS/-pipe/}
-  CXXFLAGS=${CXXFLAGS/-pipe/}
-  
-  # GCC 4.9 doesn't understand -fno-plt
-  CFLAGS=${CFLAGS/-fno-plt/}
-  CXXFLAGS=${CXXFLAGS/-fno-plt/}
-  
-  # The GCC 4.9 library is otherwise found incorrectly zhen invoking host tools
-  export LD_PRELOAD=/usr/lib/libstdc++.so
-
-  ${srcdir}/${_basedir}/configure --prefix=/usr \
-      --build=${CHOST} \
-      --libdir=/usr/lib --libexecdir=/usr/lib \
-      --mandir=/usr/share/man --infodir=/usr/share/info \
-      --with-bugurl=https://bugs.archlinux.org/ \
-      --enable-languages=c,c++,fortran,go,lto,objc,obj-c++ \
-      --enable-shared --enable-threads=posix \
-      --with-system-zlib --enable-__cxa_atexit \
-      --disable-libunwind-exceptions --enable-clocale=gnu \
-      --disable-libstdcxx-pch --disable-libssp \
-      --enable-gnu-unique-object --enable-linker-build-id \
-      --enable-cloog-backend=isl \
-      --enable-lto --enable-plugin --enable-install-libiberty \
-      --with-linker-hash-style=gnu \
-      --disable-multilib --disable-werror \
-      --program-suffix=-${_pkgver} --enable-version-specific-runtime-libs \
-      --enable-checking=release
-      
+  if [ ! -s 'Makefile' ]; then
+    # The following options are one per line, mostly sorted so they are easy to diff compare to other gcc packages.
+    local _conf=(
+      --build="${CHOST}"
+      --disable-libssp
+      --disable-libstdcxx-pch
+      --disable-libunwind-exceptions
+      --disable-multilib
+      --disable-werror
+      --enable-__cxa_atexit
+      --enable-checking='release'
+      --enable-clocale='gnu'
+      --enable-cloog-backend='isl'
+      --enable-gnu-unique-object
+      --enable-install-libiberty
+      --enable-languages='c,c++,fortran,go,lto,objc,obj-c++'
+      --enable-linker-build-id
+      --enable-lto
+      --enable-plugin
+      --enable-shared
+      --enable-threads='posix'
+      --enable-version-specific-runtime-libs
+      --infodir='/usr/share/info'
+      --libdir='/usr/lib'
+      --libexecdir='/usr/lib'
+      --mandir='/usr/share/man'
+      --program-suffix="-${_pkgver}"
+      --with-bugurl='https://bugs.archlinux.org/'
+      --with-linker-hash-style='gnu'
+      --with-system-zlib
+      --prefix='/usr'
+      # CXX='g++-6.3' CC='gcc-6.3'
 # gcc-5.0 changes
 #      --with-default-libstdcxx-abi=c++98    - before gcc-5.0 c++ rebuild
 #      --enable-gnu-indirect-function
 #      --with-isl    - cloog no longer needed
+    )
+    ../configure "${_conf[@]}"
 
-  export LD_PRELOAD=/usr/lib/libstdc++.so
-  make
-  
+    sed -e 's/^STAGE1_CXXFLAGS.*$/& -std=gnu++11/' -i 'Makefile'
+  fi
+
+  # The GCC 4.9 library is otherwise found incorrectly when invoking host tools
+  LD_PRELOAD='/usr/lib/libstdc++.so' \
+  nice make -s
+
+  set +u; msg 'Compile complete'; set -u
+
   # make documentation
-  make -C $CHOST/libstdc++-v3/doc doc-man-doxygen
+  make -s -j1 -C "${CHOST}/libstdc++-v3/doc" 'doc-man-doxygen'
+  set +u
 }
 
-package()
-{
-  cd ${srcdir}/gcc-build
+package() {
+  set -u
+  cd "${_basedir}/gcc-build"
 
   # The GCC 4.9 library is otherwise found incorrectly zhen invoking host tools
-  export LD_PRELOAD=/usr/lib/libstdc++.so
-  
-  make -j1 DESTDIR=${pkgdir} install
-  
-  ## Lazy way of dealing with conflicting man and info pages and locales...
-  rm -rf ${pkgdir}/usr/share/
-  rm -rf ${pkgdir}/usr/include/
-  find ${pkgdir}/ -name \*iberty\* | xargs rm
-  
-  # Move potentially conflicting stuff to version specific subdirectory
-  $(ls "$pkgdir"/usr/lib/gcc/$CHOST/lib* &> /dev/null) && mv "$pkgdir"/usr/lib/gcc/$CHOST/lib* "$pkgdir/usr/lib/gcc/$CHOST/$pkgver/"
-  
-  # Install Runtime Library Exception
-  install -Dm644 ${srcdir}/gcc-${pkgver}/COPYING.RUNTIME \
-    ${pkgdir}/usr/share/licenses/$pkgname/RUNTIME.LIBRARY.EXCEPTION
+  LD_PRELOAD='/usr/lib/libstdc++.so' \
+  make -j1 DESTDIR="${pkgdir}" install
 
-  # create symlinks
-  cd ${pkgdir}/usr/bin
-  rm ${CHOST}-gcc-${pkgver}
-  for ii in c++ cpp g++ gcc gcc-ar gcc-nm gcc-ranlib gfortran; do
-    ln -s ${ii}-${_pkgver} ${ii}-${pkgver}
-    ln -s ${CHOST}-${ii}-${_pkgver} ${CHOST}-${ii}-${pkgver}
+  ## Lazy way of dealing with conflicting man and info pages and locales...
+  rm -rf "${pkgdir}/usr"/{share,include}/
+  find "${pkgdir}/" -name '*iberty*' -delete
+
+  # Move potentially conflicting stuff to version specific subdirectory
+  case "${CARCH}" in
+  'x86_64') mv "${pkgdir}/usr/lib/gcc/${CHOST}"/lib*/ "${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver%%_*}/" ;;
+  esac
+  #mv "${pkgdir}/usr/lib"/lib* "${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver%%_*}/"
+
+  # Install Runtime Library Exception
+  install -Dpm644 '../COPYING.RUNTIME' \
+    "${pkgdir}/usr/share/licenses/${pkgname}/RUNTIME.LIBRARY.EXCEPTION" || :
+
+  # create 3 version symlinks (gcc-4.9.4 to gcc-4.9)
+  cd "${pkgdir}/usr/bin"
+  rm "${CHOST}-gcc-${pkgver}"
+  local _i
+  for _i in c++ cpp g++ gcc gcc-ar gcc-nm gcc-ranlib gfortran; do
+    ln -s "${_i}-${_pkgver}" "${_i}-${pkgver}"
+    ln -s "${CHOST}-${_i}-${_pkgver}" "${CHOST}-${_i}-${pkgver}"
   done
-  ln -s gcov-${_pkgver} gcov-${pkgver}
+  ln -s "gcov-${_pkgver}" "gcov-${pkgver}"
+  set +u
 }
+set +u
