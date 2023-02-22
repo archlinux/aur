@@ -2,23 +2,23 @@
 # Maintainer: Abhimanyu Sharma <abhimanyusharma003@gmail.com>
 
 pkgname='probe-bin'
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
-pkgdesc='YAML + JQ Based End-To-End API Testing.'
+pkgdesc='Simplified Integration Testing Using YAML and JQ.'
 url='https://github.com/abhimanyu003/probe'
 arch=('aarch64' 'i686' 'x86_64')
 license=('MIT')
 provides=('probe')
 conflicts=('probe')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/abhimanyu003/probe/releases/download/v0.0.2/probe_0.0.2_linux_arm64.tar.gz")
-sha256sums_aarch64=('60395bcc3517722e9899f94170f3cc6cade8e37410179a97c4e49edfa2d24bdd')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/abhimanyu003/probe/releases/download/v0.0.3/probe_0.0.3_linux_arm64.tar.gz")
+sha256sums_aarch64=('c32a282d1caf503875d6e29be0ecf67d981604323cfd5e86f8965d72f612821d')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/abhimanyu003/probe/releases/download/v0.0.2/probe_0.0.2_linux_386.tar.gz")
-sha256sums_i686=('cee33e894e65c3ac5f502c1af89f680f6d8e395f9e9337bc7f5b627f6995dda2')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/abhimanyu003/probe/releases/download/v0.0.3/probe_0.0.3_linux_386.tar.gz")
+sha256sums_i686=('e1be6981f47a559a0b216ec917430f77dc0b0a907cf362db0ed5d56a17b2a002')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/abhimanyu003/probe/releases/download/v0.0.2/probe_0.0.2_linux_amd64.tar.gz")
-sha256sums_x86_64=('84c2e012958b7e8d273db8f3f5dc59c2442d80ebda1044914b53a62ee80b7302')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/abhimanyu003/probe/releases/download/v0.0.3/probe_0.0.3_linux_amd64.tar.gz")
+sha256sums_x86_64=('3053568eff40b834c5f90c6e1fe7ff516b59b88c992000d9553fee831d050c9f')
 
 package() {
   install -Dm755 "./probe" "${pkgdir}/usr/bin/probe"
