@@ -1,27 +1,43 @@
 # Maintainer: robertfoster
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
+
 pkgname=onetagger
 pkgver=1.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform music tagger with Beatport, Discogs, Musicbrainz, Spotify, Traxsource and many other services support."
 arch=('aarch64' 'x86_64')
 url="https://onetagger.github.io/"
 license=('GPL3')
-depends=('alsa-lib' 'libsndfile' 'openssl' 'webkit2gtk')
-makedepends=('cargo' 'npm')
+depends=('alsa-lib' 'libsndfile' 'webkit2gtk')
+makedepends=('cargo' 'pnpm')
+options=('!lto')
 source=(
   "https://github.com/Marekkon5/onetagger/archive/refs/tags/${pkgver}.tar.gz"
   "${pkgname}.desktop"
 )
 
+prepare() {
+  cd "$pkgname-$pkgver"
+
+  pushd client
+  pnpm config set cache-dir "$srcdir/pnpm-cache"
+  pnpm i
+  popd
+
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
 build() {
-  cd "${pkgname}-${pkgver}"/client
+  cd "${pkgname}-${pkgver}"
 
-  npm i
-  npm run build
+  pushd client
+  pnpm run build
+  popd
 
-  cd ..
-
-  cargo build --release
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release --all-features
 }
 
 package() {
