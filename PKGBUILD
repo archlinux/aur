@@ -9,7 +9,7 @@ via the asynchronous generalized island model (git version)"
 arch=('i686' 'x86_64')
 url="https://github.com/esa/pagmo2"
 license=('GPLv3')
-depends=('boost' 'intel-tbb' 'coin-or-ipopt' 'eigen' 'nlopt')
+depends=('boost' 'tbb' 'coin-or-ipopt' 'eigen' 'nlopt')
 makedepends=('git' 'cmake')
 _name=pagmo2
 provides=('pagmo')

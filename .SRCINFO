@@ -9,7 +9,7 @@ pkgbase = pagmo-git
 	makedepends = git
 	makedepends = cmake
 	depends = boost
-	depends = intel-tbb
+	depends = tbb
 	depends = coin-or-ipopt
 	depends = eigen
 	depends = nlopt
@@ -19,4 +19,3 @@ pkgbase = pagmo-git
 	sha256sums = SKIP
 
 pkgname = pagmo-git
-
