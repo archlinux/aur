@@ -2,7 +2,7 @@
 
 pkgname=kodi-addon-game-libretro-atari800
 pkgver=3.1.0.23
-_codename=Matrix
+_codename=Nexus
 pkgrel=1
 pkgdesc="This add-on provides a wrapper that allows Libretro cores to be loaded as game add-ons"
 arch=('aarch64' 'armv7h')
