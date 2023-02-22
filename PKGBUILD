@@ -2,7 +2,7 @@
 
 _pkgname=xtext
 pkgname=${_pkgname}-git
-pkgver=20190813.9815e2a
+pkgver=20210105.7aa1c14
 pkgrel=1
 pkgdesc="Display Text w/ X11"
 arch=('any')
@@ -10,7 +10,7 @@ url="www.github.com/resloved/xtext"
 license=('GPL3')
 depends=('pango' 'cairo' 'xorg-server')
 makedepends=('git')
-source=("git://github.com/resloved/${_pkgname}.git")
+source=("git+https://github.com/resloved/${_pkgname}.git")
 md5sums=(SKIP)
 
 provides() {
