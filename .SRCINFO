@@ -1,6 +1,6 @@
 pkgbase = kwinft
 	pkgdesc = Wayland compositor and X11 window manager
-	pkgver = 5.26.5.r21667.gf4bd30d37
+	pkgver = 5.27
 	pkgrel = 1
 	url = https://gitlab.com/kwinft/kwinft
 	install = kwinft.install
@@ -23,7 +23,7 @@ pkgbase = kwinft
 	depends = wayland
 	depends = xorg-xwayland
 	depends = wlroots
-	depends = kdecoration-kwinft
+	depends = kdecoration
 	optdepends = qt5-virtualkeyboard: virtual keyboard support for kwin-wayland
 	provides = kwin
 	conflicts = kwin

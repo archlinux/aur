@@ -1,11 +1,11 @@
 pkgname=kwinft
-pkgver=5.26.5.r21667.gf4bd30d37
+pkgver=5.27
 pkgrel=1
 pkgdesc='Wayland compositor and X11 window manager'
 arch=(x86_64 aarch64)
 url="https://gitlab.com/kwinft/kwinft"
 license=(LGPL)
-depends=(breeze kdisplay-kwinft kinit kscreenlocker plasma-framework python qt5-script wrapland xcb-util-cursor wayland xorg-xwayland wlroots kdecoration-kwinft)
+depends=(breeze kdisplay-kwinft kinit kscreenlocker plasma-framework python qt5-script wrapland xcb-util-cursor wayland xorg-xwayland wlroots kdecoration)
 makedepends=(extra-cmake-modules git qt5-tools kdoctools)
 optdepends=('qt5-virtualkeyboard: virtual keyboard support for kwin-wayland')
 provides=("kwin")
@@ -14,18 +14,13 @@ source=("git+https://gitlab.com/kwinft/kwinft.git")
 sha256sums=('SKIP')
 install=kwinft.install
 
-pkgver() {
-  _ver=5.26.5
-  cd kwinft
-  echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
-#  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 prepare() {
-  mkdir -p build
+  cd kwinft
+  git checkout Plasma/$pkgver
 }
 
 build() {
+  mkdir -p build
   cd build
   cmake ../kwinft \
     -DCMAKE_BUILD_TYPE=Release \
