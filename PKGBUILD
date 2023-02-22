@@ -1,6 +1,6 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='certspotter'
-pkgver='0.15.1'
+pkgver='0.16.0'
 pkgrel='1'
 pkgdesc='Certificate Transparency Log Monitor'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -9,7 +9,7 @@ license=('MPL2')
 makedepends=('go>=1.19' 'lowdown')
 install="$pkgname.install"
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('b814b09385666b5269fc5b09131f9917a85ad7489954ea2a5451f272d9c623f29983c63f4d33377f4a936a9324003db4877e786b6029a7e3467e8e4f67a8648c')
+sha512sums=('418647a317b240bf7bf6589b7596045e2ef18001a97badc1f2eedd962f841696292792c005e6c3b75198e8457679e78f3f95380805b335f28038eb25f929052b')
 
 _sourcedirectory="$pkgname-$pkgver"
 _bindir="$pkgname-$pkgver-$pkgrel-bin"
@@ -48,9 +48,12 @@ check() {
 
 package() {
 	cd "$srcdir/"
+
+	# Binaries
 	install -dm755 "$pkgdir/usr/bin/"
 	install -Dm755 "$_bindir/"* "$pkgdir/usr/bin/"
 
+	# Man pages
 	install -dm755 "$pkgdir/usr/share/man/man8/"
 	install -Dm644 "$_sourcedirectory/man/"*'.8' "$pkgdir/usr/share/man/man8/"
 }
