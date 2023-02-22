@@ -9,7 +9,7 @@ license=('GPL3')
 url='https://github.com/sim590/dpaste'
 source=('git+https://github.com/sim590/dpaste#tag=0.4.0')
 depends=('gnutls' 'libb64' 'libcurlpp>=0.8.1' 'opendht' 'glibmm')
-makedepends=('git' 'nlohmann-json-git')
+makedepends=('git' 'nlohmann-json-git' 'msgpack-cxx')
 sha256sums=('SKIP')
 
 prepare () {
