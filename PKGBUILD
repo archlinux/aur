@@ -2,7 +2,7 @@
 
 pkgname=libation
 _pkgname=Libation
-pkgver=9.2.2
+pkgver=9.3.3
 pkgrel=1
 pkgdesc="Audible Audiobook Manager: Liberate your Library"
 arch=("any")
@@ -10,7 +10,7 @@ url="https://github.com/rmcrackan/Libation"
 license=("GPL-3.0")
 makedepends=("dotnet-sdk")
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("8ffe5b41708c0c8c66851b29f717d69d48c127be2d105ccd29caae7a7d739e4d")
+sha256sums=("a81b9327a96a977f70df5c96803f1dd312a03c2319db40330ac17ae8b2dfc34d")
 
 build() {
   cd $_pkgname-$pkgver
@@ -27,8 +27,8 @@ package() {
   mkdir -p "$pkgdir/usr/lib"
   mkdir -p "$pkgdir/usr/bin"
 
-  cp -v build/glass-with-glow_256.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/libation.svg"
-  cp -v build/Libation.desktop "$pkgdir/usr/share/applications/Libation.desktop"
+  cp -v Images/libation_glass.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/libation.svg"
+  cp -v Source/LoadByOS/LinuxConfigApp/Libation.desktop "$pkgdir/usr/share/applications/Libation.desktop"
   mv -v build "$pkgdir/usr/lib/libation"
 
   chmod +666 "$pkgdir/usr/share/icons/hicolor/scalable/apps/libation.svg"
