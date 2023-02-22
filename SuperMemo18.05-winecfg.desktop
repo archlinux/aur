@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=SuperMemo 18.05-winecfg
+Exec=/opt/apps/supermemo18/config.sh
+Type=Application
+Categories=Education;
+StartupNotify=true
+Comment=打开supermemo18-wine的配置窗口。
+Icon=supermemo18

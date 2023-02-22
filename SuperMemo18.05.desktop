@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=SuperMemo18.05
+Exec=/opt/apps/supermemo18/run.sh
+Type=Application
+Categories=Education;
+StartupNotify=true
+Comment=组织你的知识，以尽可能快的速度学习。
+Icon=supermemo18

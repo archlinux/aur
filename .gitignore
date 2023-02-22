@@ -1,0 +1,6 @@
+src
+pkg
+*.zst
+*.AppImage
+sm18-lazy-package
+SuperMemo18-ON-Wine

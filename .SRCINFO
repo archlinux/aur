@@ -1,7 +1,7 @@
 pkgbase = supermemo18.05-git
 	pkgdesc = A program that makes learning fun and easy.
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://supermemopedia.com/wiki/Main_Page
 	arch = x86_64
 	license = proprietary
@@ -9,8 +9,16 @@ pkgbase = supermemo18.05-git
 	source = git+https://github.com/Zacharia2/SuperMemo18-ON-Wine.git
 	source = git+https://github.com/L-M-Sherlock/sm18-lazy-package.git
 	source = https://github.com/Hackerl/Wine_Appimage/releases/download/v3.0/Wine-x86_64-ubuntu.latest.AppImage
+	source = config.sh
+	source = run.sh
+	source = SuperMemo18.05.desktop
+	source = SuperMemo18.05-winecfg.desktop
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = 4b632d356ea230f439ae6df6c858ec33b96d9c28141b336fc8bab06f883a0e8594d8856330936787220f43a9b81b70d8b99bdde5d04dd8ec1b0d9eff96a4fbf7
+	sha512sums = 314289d7abe7f1e188c37c03b92d3b968ba82aa85a270af6cf61f548f7696845b174cdcca4b935bd6c9270f47b8178edcb55052a9a534bf6ec123766c2e0be77
+	sha512sums = a7eb83a5da1bb381db9750865edf8d6ba6ef27c0857d961675ef2182a0a33c3e45bd8a614f9c1deb4b3b73716fd754cda75232e31405485f11c84fe2e20c08d8
+	sha512sums = c9c911af51222ee1f94743b7c7c331c177b63882894982fae28b23f0b37c51fef44bd61bcfe3aad00cebb647c5ba1b4f6d4f4e7297527ad76ef9899dcd6ecc7b
+	sha512sums = b6efdd0bba4190a7ec6695e61eff8d517902a5ccf49cbf9cc5210c819efeeee25aacf8770ddcc97c22f7df6d98fadfba547213d55e6a6f41868d04baa37acec3
 
 pkgname = supermemo18.05-git
