@@ -15,11 +15,11 @@ build() {
 	cd "Local-DNS"
 	git submodule init
 	git submodule update
+	sudo make libcrafter
+	sudo make main
 }
 
 package() {
 	cd "Local-DNS"
-	sudo make DESTDIR="$pkgdir" libcrafter
-	sudo make main
 	sudo make DESTDIR="$pkgdir" install
 }
