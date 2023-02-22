@@ -4,8 +4,8 @@
 
 pkgname=doublecmd-gtk2-alpha-bin
 _pkgname=doublecmd
-pkgver=1.1.0.svn.r10595
-_pkgver=1.1.0+svn10595+git6cf2d25-578.1
+pkgver=1.1.0.svn.r10596
+_pkgver=1.1.0+svn10596+git8b9ac49-579.1
 pkgrel=1
 pkgdesc="A file manager with two panels side by side"
 arch=('x86_64')
@@ -20,7 +20,7 @@ license=('GPL2')
 options=('!strip')
 
 source=("https://download.opensuse.org/repositories/home:/Alexx2000:/doublecmd-svn/Fedora_37/x86_64/${_pkgname}-gtk-${_pkgver}.x86_64.rpm")
-sha512sums=('66362ea6d12fbd72e7fb4acb4f2b609822d9f0681494e42d0d16bc538e9b6de572f0f688d89d329db56da7166d9a7e4524dcd6058473e48c8303a0ed0f33fa41')
+sha512sums=('ab4454a134ef2f65ea3edba185673f041c08335aeaa121858624d1000a08b00af1b2fb79e0bfd81fe4fde6b89244369532626cc92d453e587dc54e23337084d9')
 
 
 prepare() {
