@@ -1,7 +1,7 @@
 pkgbase = brother-mfc-j985dw
 	pkgdesc = LPR and CUPS driver for the Brother MFC-J985DW printer
 	pkgver = 1.0.0
-	pkgrel = 0
+	pkgrel = 1
 	url = http://solutions.brother.com/linux/en_us/
 	arch = i686
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = brother-mfc-j985dw
 	depends = grep
 	optdepends = ttf-dejavu: Printing text files from lpr
 	optdepends = brscan4: Scanner support
-	source = http://download.brother.com/welcome/dlf102747/mfcj985dwcupswrapper-1.0.0-0.i386.rpm
-	source = http://download.brother.com/welcome/dlf102746/mfcj985dwlpr-1.0.0-0.i386.rpm
-	source = http://download.brother.com/welcome/dlf102750/mfcj985dw_cupswrapper_GPL_source_1.0.0-0.tar.gz
+	source = https://download.brother.com/welcome/dlf102747/mfcj985dwcupswrapper-1.0.0-1.i386.rpm
+	source = https://download.brother.com/welcome/dlf102746/mfcj985dwlpr-1.0.0-1.i386.rpm
+	source = https://download.brother.com/welcome/dlf102750/mfcj985dw_cupswrapper_GPL_source_1.0.0-1.tar.gz
 	source = cupswrapper-license.txt
 	source = lpr-license.txt
 	md5sums = 4f1c504c42e457771f4398cda38759a4
@@ -27,4 +27,3 @@ pkgbase = brother-mfc-j985dw
 	depends_x86_64 = lib32-glibc
 
 pkgname = brother-mfc-j985dw
-

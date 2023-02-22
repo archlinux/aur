@@ -10,7 +10,7 @@ _brotherlnd="${_brotherl//-/}" # mfc0000dw
 _brotherund="${_brotheru//-/}" # MFC0000DW
 pkgname="brother-${_brotherl}"
 pkgver='1.0.0'
-pkgrel='0'
+pkgrel='1'
 pkgdesc="LPR and CUPS driver for the Brother ${_brotheru} printer"
 arch=('i686' 'x86_64')
 url='http://solutions.brother.com/linux/en_us/'
@@ -33,9 +33,9 @@ optdepends=(
 # The cups wrapper uses the lpr driver.
 _brsource="${_brotherlnd}_cupswrapper_GPL_source_${pkgver}-${pkgrel}"
 source=(
-  "http://download.brother.com/welcome/dlf102747/${_brotherlnd}cupswrapper-$pkgver-$pkgrel.i386.rpm"
-  "http://download.brother.com/welcome/dlf102746/${_brotherlnd}lpr-$pkgver-$pkgrel.i386.rpm"
-  "http://download.brother.com/welcome/dlf102750/${_brsource}.tar.gz"
+  "https://download.brother.com/welcome/dlf102747/${_brotherlnd}cupswrapper-$pkgver-$pkgrel.i386.rpm"
+  "https://download.brother.com/welcome/dlf102746/${_brotherlnd}lpr-$pkgver-$pkgrel.i386.rpm"
+  "https://download.brother.com/welcome/dlf102750/${_brsource}.tar.gz"
   'cupswrapper-license.txt'
   'lpr-license.txt'
 )
