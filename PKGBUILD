@@ -10,7 +10,7 @@
 
 pkgname=thunderbird-localized-beta-bin
 _pkgname=thunderbird-beta
-pkgver=103.0b4
+pkgver=110.0b4
 pkgrel=1
 pkgdesc='Standalone mail and news reader from mozilla.org — localized beta version'
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ depends=(
   libffi.so nspr gcc-libs libx11 libxrender libxfixes libxext libxcomposite
   libxdamage pango libpango-1.0.so cairo gdk-pixbuf2 icu libicui18n.so
   libicuuc.so freetype2 libfreetype.so fontconfig libfontconfig.so glib2
-  libglib-2.0.so pixman libpixman-1.so gnupg
+  libglib-2.0.so pixman libpixman-1.so gnupg json-c
 )
 optdepends=(
   'libotr: OTR support for active one-to-one chats'
