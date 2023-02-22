@@ -2,7 +2,7 @@
 
 pkgname=dracut-ukify
 pkgver=2
-pkgrel=2
+pkgrel=3
 pkgdesc="Integration layer for dracut and systemd's ukify tool for Arch Linux"
 url="https://aur.archlinux.org/packages/dracut-ukify"
 arch=(any)
@@ -16,7 +16,7 @@ source=('10-dracut-ukify-pre-install.hook'
         '60-dracut-ukify-remove.hook'
         'dracut-ukify'
         'dracut-ukify.conf')
-sha256sums=('6778d79ce5542155cdf9d1b12e8e36b7b9b090b8f4b5d0c0ab8f9c21f9b79fe6'
+sha256sums=('e9592f4f738e8ac70044db1e3f0c4839bc07f37662d5dbc221230cf1617a6b4d'
             '08225b2c3f5e2a734561b5fa9a3e84060dfffd85b2898adb0fff0ce3b068b4d0'
             '341cd01546d840e7401f7bec868a78e2f6ca12563e93d993a07bc51efe674ed0'
             '793353048a655b67f5f6e47831493a1c62339b4b204b64d24fa44cdd493ae21f'

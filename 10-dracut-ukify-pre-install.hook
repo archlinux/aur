@@ -12,5 +12,5 @@ Target = usr/src/*/dkms.conf
 
 [Action]
 Description = Ensure ESP is mounted...
-When = PostTransaction
+When = PreTransaction
 Exec = /usr/bin/dracut-ukify -x
