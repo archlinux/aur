@@ -6,9 +6,9 @@
 
 _pkgname=8188fu
 pkgname="$_pkgname-kelebek333-dkms-git"
-pkgver=r84.b01ebdf
-pkgrel=2
-pkgdesc='Kernel driver module for Realtek RTL8188FU and RTL8188FTV Wireless 802.11n USB 2.0 adapters (device id 0bda:f179)'
+pkgver=r115.751882b
+pkgrel=1
+pkgdesc='Kernel driver module for Realtek RTL8188FU and RTL8188FTV Wireless 802.11n USB 2.0 adapters (device id 0bda:f179). Does not work with kernel 6.x and up, see package 8188fu-supremegamers-dkms-git for one that does'
 arch=('any')
 url="https://github.com/kelebek333/rtl8188fu"
 license=('GPL3')
