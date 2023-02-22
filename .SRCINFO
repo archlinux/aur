@@ -1,0 +1,12 @@
+pkgbase = iio-hyprland-git
+	pkgdesc = Reads iio-proxy-sensor output to enable automatic screen rotation in Hyprland
+	pkgver = r19.28de3de
+	pkgrel = 1
+	url = https://github.com/JeanSchoeller/iio-hyprland/
+	arch = any
+	makedepends = meson
+	depends = iio-sensor-proxy
+	source = iio-hyprland::git+https://github.com/JeanSchoeller/iio-hyprland/
+	sha1sums = SKIP
+
+pkgname = iio-hyprland-git
