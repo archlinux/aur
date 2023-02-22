@@ -1,7 +1,7 @@
 pkgbase = phc-intel-dkms-stable
 	pkgdesc = Frequency driver for Intel CPUs with undervolting feature. DKMS-based kernel module, stable branch.
 	pkgver = 0.3.2.rev44
-	pkgrel = 5
+	pkgrel = 6
 	url = https://gitlab.com/linux-phc/phc-intel
 	arch = any
 	groups = linux-phc

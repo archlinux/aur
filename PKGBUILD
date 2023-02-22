@@ -11,7 +11,7 @@ groups=(
 )
 _downloadver=rev44 # Set this to specify what to download.
 pkgver=0.3.2.rev44
-pkgrel=5
+pkgrel=6
 pkgdesc="Frequency driver for Intel CPUs with undervolting feature. DKMS-based kernel module, stable branch."
 url="https://gitlab.com/linux-phc/phc-intel"
 arch=('any')
@@ -41,12 +41,12 @@ sha256sums=(
   '9162c25d0df436a00d8b45d9e97c24a1f2999f5b8a4f78f2995df15d2d31baa7' # dkms.conf.in
 )
 
-prepare() {
-  cd "phc-intel-${_downloadver}"
-
-  ## Switch to stable branch:
-  make canny
-}
+# prepare() {
+#   cd "phc-intel-${_downloadver}"
+# 
+#   # ## Switch to stable branch -- not needed, since stable is the default, and when doing it here then it would fail if the currently running kernel headers are not installed (e.g. due to a recent upgrade):
+#   # make canny
+# }
 
 pkgver() {
   cd "phc-intel-${_downloadver}"
