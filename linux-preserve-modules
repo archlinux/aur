@@ -25,6 +25,13 @@ set-vars() {
     fi
 }
 
+check-root() {
+    if [[ "$(id -u)" -ne 0 ]]; then
+        echo "error: this script needs to run as root" >&2
+        usage
+    fi
+}
+
 preserve-modules-copy() {
     if [[ $# -gt 1 ]]; then
         echo "usage: linux-preserve-modules copy [release]" >&2
@@ -32,6 +39,9 @@ preserve-modules-copy() {
     elif [[ $# -eq 1 ]]; then
         set-vars "$1"
     fi
+
+    # copying needs root
+    check-root
 
     # exit early if the target directory does not exist
     if [[ ! -f "$TARGET_DIR/modules.builtin" ]]; then
@@ -68,6 +78,9 @@ preserve-modules-link() {
     elif [[ $# -eq 1 ]]; then
         set-vars "$1"
     fi
+
+    # linking needs root
+    check-root
 
     # exit early if no kernel modules copied
     if [[ ! -f "$PRESERVE_DIR/modules.builtin" ]]; then
@@ -117,6 +130,9 @@ preserve-modules-unlink() {
         set-vars "$1"
     fi
 
+    # unlinking needs root
+    check-root
+
     # exit early if kernel modules not already copied
     if [[ ! -f "$TARGET_DIR/.preserved" ]]; then
         echo "info: not linked" >&2
@@ -144,6 +160,9 @@ preserve-modules-unlink-all() {
         exit 1
     fi
 
+    # unlinking needs root
+    check-root
+
     # find kernels with .preserved marker file
     LINKED_KERNELS=( $(find /usr/lib/modules -maxdepth 2 -type f -name .preserved | cut -d/ -f5) )
     echo "info: found ${#LINKED_KERNELS[@]} kernels with linked modules" >&2
@@ -162,6 +181,8 @@ preserve-modules-list() {
         exit 1
     fi
 
+    # listing does not need root
+
     # find kernels with .preserved marker file
     LINKED_KERNELS=( $(find /usr/lib/modules -maxdepth 2 -type f -name .preserved | cut -d/ -f5) )
     echo "info: found ${#LINKED_KERNELS[@]} kernels with linked modules" >&2
@@ -178,11 +199,6 @@ usage() {
 }
 
 main() {
-    if [[ "$(id -u)" -ne 0 ]]; then
-        echo "error: this script needs to run as root" >&2
-        usage
-    fi
-
     set-vars "$(uname -r)"
 
     if [[ "$#" -eq 0 ]]; then
