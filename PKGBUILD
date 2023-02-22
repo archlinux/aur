@@ -10,12 +10,7 @@ makedepends=('git')
 source=("git+$url#branch=main")
 md5sums=('SKIP')
 
-build() {
-	cd "Graph-Editor-Android-bin"
-}
-
 package() {
-	cd "Graph-Editor-Android-bin"
-	adb install -t graph-editor-for-android.apk
-	adb shell am start -n "com.example.graph_editor/com.example.graph_editor.menu.MenuActivity" -a android.intent.action.MAIN -c android.intent.category.LAUNCHER
+	mkdir -p "${pkgdir}/usr/opt"
+	cp "${srcdir}/graph-editor-for-android.apk" "${pkgdir}/usr/opt/graph-editor-for-android.apk"
 }
