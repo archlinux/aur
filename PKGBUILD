@@ -1,5 +1,4 @@
-#Maintainer: Christoph Steinacker <archologist.linuxATgooglemailDOTcom>
-#Maintainer: Heiko Nickerl <devATheiko-nickerlDOTcom>
+# Maintainer: Antonio Bartalesi <antonio.bartalesi@gmail.com>
 _name="Jive"
 pkgname=${_name,,}
 pkgver=7.38
