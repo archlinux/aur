@@ -1,0 +1,19 @@
+pkgbase = dimanys111-other-meta-package
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	depends = filezilla
+	depends = jstest-gtk-git
+	depends = lampa
+	depends = qt5-sensors
+	depends = qt5-websockets
+	depends = rabbitvcs-nautilus
+	depends = selectdefaultapplication-git
+	depends = simplescreenrecorder
+	depends = torrserver-bin
+	depends = yarn
+	depends = zoom
+	provides = dimanys111-other-meta-package
+	conflicts = dimanys111-other-meta-package
+
+pkgname = dimanys111-other-meta-package

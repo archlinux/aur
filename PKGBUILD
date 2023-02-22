@@ -1,0 +1,21 @@
+#Maintainer: dimanys111 <dimanys111@mail.ru>
+_pkgname=dimanys111-other-meta-package
+pkgname=$_pkgname
+pkgver=1
+pkgrel=1
+arch=('any')
+depends=(
+filezilla
+jstest-gtk-git
+lampa
+qt5-sensors
+qt5-websockets
+rabbitvcs-nautilus
+selectdefaultapplication-git
+simplescreenrecorder
+torrserver-bin
+yarn
+zoom
+)
+provides=("$_pkgname")
+conflicts=("$_pkgname")
