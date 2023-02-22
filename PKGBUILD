@@ -1,14 +1,15 @@
-# Maintainer: Hydranix <Hydranix@gmx.com>
+# Maintainer: acxz <akashpatel2008 at yahoo dot com>
+# Contributor: Hydranix <Hydranix@gmx.com>
 pkgname=rapidxml
 pkgver=1.13
-pkgrel=3
+pkgrel=4
 pkgdesc="RapidXml is an attempt to create the fastest XML parser possible, written in modern C++."
 arch=("any")
-url=""
+url="https://github.com/hydranix/RapidXml"
 license=('Boost/MIT')
 provides=("rapidxml")
 _pkgname="RapidXml"
-source=("git://github.com/hydranix/RapidXml"
+source=("git+https://github.com/hydranix/RapidXml"
         "0001-fix-for-a-bug-in-gcc-that-won-t-let-rapidxml-compile.patch")
 
 md5sums=('SKIP'
@@ -18,7 +19,6 @@ build()
 {
   cd "${srcdir}"
   patch -p1 --binary < "${srcdir}/0001-fix-for-a-bug-in-gcc-that-won-t-let-rapidxml-compile.patch"
-
 }
 
 package()
