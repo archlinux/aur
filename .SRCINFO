@@ -10,7 +10,6 @@ pkgbase = ffmpeg-nonvidia
 	makedepends = nasm
 	makedepends = opencl-headers
 	makedepends = vulkan-headers
-	makedepends = decklink-sdk
 	depends = alsa-lib
 	depends = aom
 	depends = aribb24

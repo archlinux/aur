@@ -27,7 +27,7 @@ depends=('alsa-lib' 'aom' 'aribb24' 'avisynthplus' 'bzip2' 'celt' 'codec2'
          'chromaprint-fftw' 'davs2' 'flite1' 'libklvanc-git' 'librist' 'pocketsphinx'
          'shine' 'uavs3d-git' 'vo-amrwbenc' 'xavs' 'xavs2')
 makedepends=('clang' 'amf-headers' 'nasm' 'opencl-headers'
-             'vulkan-headers' 'decklink-sdk')
+             'vulkan-headers')
 
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libswscale.so' 'libswresample.so'
@@ -179,7 +179,7 @@ build() {
         --enable-libzvbi \
         --enable-lv2 \
         --enable-lzma \
-        --enable-decklink \
+        --disable-decklink \
         --disable-mbedtls \
         --enable-libmysofa \
         --enable-openal \
