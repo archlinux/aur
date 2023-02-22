@@ -16,7 +16,7 @@ _gitbranch="${_TOOLKIT}"
 pkgname="${_pkgname}-${_pkgvariant}-git"
 epoch=0
 pkgver=3.19.0+86.r11603.20221020.15c070cb3
-pkgrel=3
+pkgrel=4
 pkgdesc='A GTK based e-mail client. Latest git checkout of GTK2 branch. Patched to use charset supersets to decode titles'
 arch=(
   'i686'
@@ -140,10 +140,10 @@ prepare() {
   git log > "${srcdir}/git.log"
 
   # Generate ./configure
+  # if [ ! -e configure ]; then
   msg2 "Generating './configure' ..."
-  if [ ! -e configure ]; then
-    NOCONFIGURE=1 ./autogen.sh
-  fi
+  NOCONFIGURE=1 ./autogen.sh
+  # fi
 }
 
 pkgver() {
