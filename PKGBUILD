@@ -2,10 +2,10 @@
 
 pkgbase=csky-toolchain-900-series-bin
 pkgname=($pkgbase csky-riscv64-linux-900-series-bin csky-riscv64-elf-900-series-bin csky-toolchain-900-series-guide-bin)
-pkgver=2.6.0
+pkgver=2.6.1
 pkgrel=0
 arch=('x86_64')
-_id=4073475960903634944
+_id=4090445921563774976
 url=https://occ.t-head.cn/community/download?id=${_id}
 license=('Apache')
 provides=()
@@ -14,31 +14,31 @@ depends=('filesystem')
 makedepends=('libarchive')
 _url="https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource"
 _dwurl="${_url}/"
-source=("csky-riscv64-linux-900-series-bin-${pkgver}.tar.gz::${_dwurl}/1659325511536/Xuantie-900-gcc-linux-5.10.4-glibc-x86_64-V2.6.0-20220715.tar.gz"
-        "csky-riscv64-elf-900-series-bin-${pkgver}.tar.gz::${_dwurl}/1659318201401/Xuantie-900-gcc-elf-newlib-x86_64-V2.6.0-20220715.tar.gz"
-        "ReleaseNote ${pkgver}.pdf::${_dwurl}/1659317870882/ReleaseNote.pdf"
-        "Xuantie 900 Series Assembler Manual ${pkgver}.pdf::${_dwurl}/1659317892387/Xuantie+900+Series+Assembler+Manual.pdf"
-        "Xuantie 900 Series Binutils Manual ${pkgver}.pdf::${_dwurl}/1659317907807/Xuantie+900+Series+Binutils+Manual.pdf"
-        "Xuantie 900 Series Compiler Manual ${pkgver}.pdf::${_dwurl}/1659317928978/Xuantie+900+Series+Compiler+Manual.pdf"
-        "Xuantie 900 Series GDB Manual ${pkgver}.pdf::${_dwurl}/1659317946456/Xuantie+900+Series+GDB+Manual.pdf"
-        "Xuantie 900 Series Linker Manual ${pkgver}.pdf::${_dwurl}/1659317964191/Xuantie+900+Series+Linker+Manual.pdf"
-        "Xuantie 900 Series P-0.9.4 Intrinsic Manual ${pkgver}.pdf::${_dwurl}/1659317981912/Xuantie+900+Series+P-0.9.4+Intrinsic+Manual.pdf"
-        "Xuantie 900 Series RVV-0.7.1 Intrinsic Manual ${pkgver}.pdf::${_dwurl}/1659318003104/Xuantie+900+Series+RVV-0.7.1+Intrinsic+Manual.pdf"
-        "Xuantie 900 Series RVV-1.0 Intrinsic Manual ${pkgver}.pdf::${_dwurl}/1659318016898/Xuantie+900+Series+RVV-1.0+Intrinsic+Manual.pdf"
+source=("csky-riscv64-linux-900-series-bin-${pkgver}.tar.gz::${_dwurl}/1663142514282/Xuantie-900-gcc-linux-5.10.4-glibc-x86_64-V2.6.1-20220906.tar.gz"
+        "csky-riscv64-elf-900-series-bin-${pkgver}.tar.gz::${_dwurl}/1663142243961/Xuantie-900-gcc-elf-newlib-x86_64-V2.6.1-20220906.tar.gz"
+        "ReleaseNote ${pkgver}.pdf::${_dwurl}/1663141844161/ReleaseNote.pdf"
+        "Xuantie 900 Series Assembler Manual ${pkgver}.pdf::${_dwurl}/1663142059243/Xuantie+900+Series+Assembler+Manual.pdf"
+        "Xuantie 900 Series Binutils Manual ${pkgver}.pdf::${_dwurl}/1663142073120/Xuantie+900+Series+Binutils+Manual.pdf"
+        "Xuantie 900 Series Compiler Manual ${pkgver}.pdf::${_dwurl}/1663142090280/Xuantie+900+Series+Compiler+Manual.pdf"
+        "Xuantie 900 Series GDB Manual ${pkgver}.pdf::${_dwurl}/1663142125276/Xuantie+900+Series+GDB+Manual.pdf"
+        "Xuantie 900 Series Linker Manual ${pkgver}.pdf::${_dwurl}/1663142138954/Xuantie+900+Series+Linker+Manual.pdf"
+        "Xuantie 900 Series P-0.9.4 Intrinsic Manual ${pkgver}.pdf::${_dwurl}/1663142166499/Xuantie+900+Series+P-0.9.4+Intrinsic+Manual.pdf"
+        "Xuantie 900 Series RVV-0.7.1 Intrinsic Manual ${pkgver}.pdf::${_dwurl}/1663142187133/Xuantie+900+Series+RVV-0.7.1+Intrinsic+Manual.pdf"
+        "Xuantie 900 Series RVV-1.0 Intrinsic Manual ${pkgver}.pdf::${_dwurl}/1663142200670/Xuantie+900+Series+RVV-1.0+Intrinsic+Manual.pdf"
         "玄铁CPU软件开发指南V2.2 ${pkgver}.pdf::${_url}//1659515330848/%E7%8E%84%E9%93%81CPU%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97V2.2.pdf"
         "XuanTie Linux 开发平台使用说明 ${pkgver}.pdf::${_url}//1668484121020/XuanTie+Linux+%E5%BC%80%E5%8F%91%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E_20221111.pdf")
 
-sha256sums=('d0ea2415d7bacccf0c5f042d25c81d388fd98c414657dfc8ca48a92430871762'
-            '0704df809c40ea067b470fe4b09460806e3afedab8cb8a99bdaf9d32718661dd'
-            'e178330e43ccedfd70fa5d9d34f7e4fc4acbc7fb1d96f62591c407f49ddd525c'
-            '2170f34aee30b98e19e759b7145c9970ab90d7bd20e7de167be0a7f85dc85b8f'
-            '1c3e12db1dcccf9311673a72e6fc4db6c27aa0065eac9637679da15a23c7f5a8'
-            '41c3e2c862bfdcb9b6f3a738e92499751a6e0f63915780b61e4d4dc1baad25cb'
-            '6160960b874fddae813f554f6cb56745a2955478708075d02acdea8db1529b38'
-            '39f33c79d9977a030c2c015aae41cbe5e783fd87f4a7609e675324cf08fdccae'
+sha256sums=('25235dc82fd3d794422747e65e5c8b6bfd7d8f5335e23597c57b8f0de895fa7c'
+            'cdff169b09e9424f127a71300ce2e62ab059291a1b3fbc56c115dfb91c29b991'
+            'cbdff4a656ce2e5f9ce440a48316ab84cdc7a40f9a9df6595089bd78982c0039'
+            '7f126bc7ef65eeaa60b861e83a3e8c4f63cd86718068c9a64f49121055fad55f'
+            'd8d36938fe14de25d84aa3926bc05e395179168d47988387a81f8af0ed446464'
+            '0bf2986193eea7bbd5d4e6616ee692e195d1a4a6ffaf69b96f63da94f110ad1b'
+            '27d1e24771695bd2aaef995a95f70e9422d7f67a6b3b14f864090a97641aae13'
+            '489a87040fa05d5b0f2dcd3d06756c1030d318349c39f1c4f59a0238c65c1364'
             '595aece3631d8c82429c2f95a91bbf8cd908eb89b173b2d2e7f99fd0e45f2076'
-            '50a58087d844bb5976dbc33729a3e5d4f7aebcbc09820c348a84e5a2e70396ba'
-            '082cbcf77e870f5ca43893bbb0463267970842db60dfc96949ca4aee828c8e5c'
+            'e7eadbd8ac086fd259d6aeccca02138b5de9fc0a62bef776eccffec01fa04d1d'
+            'f88c962482b09f29d75ff911fc983b07a1e88e85bc28522137c5e52d78b02809'
             '459643494c06d46fb329d5fb39e68e6741fae713610faeeb8fae4026be751b2c'
             '77bf95d0126a4401b6685aa93225181ed49dc55e5c0b04bbbae624a582722452')
 
