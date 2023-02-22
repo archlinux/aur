@@ -1,0 +1,14 @@
+pkgbase = python-itango
+	pkgdesc = Instrument control and data acquisition system
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://gitlab.com/tango-controls/itango
+	arch = any
+	license = LGPL
+	makedepends = python-setuptools
+	depends = python-pytango
+	depends = python-qtconsole
+	source = itango-0.1.9.tar.gz::https://files.pythonhosted.org/packages/source/i/itango/itango-0.1.9.tar.gz
+	sha256sums = 51d13c51fb5205037acd959674dcfab495b8043c87ab1ae4f0b8cdf05698589b
+
+pkgname = python-itango
