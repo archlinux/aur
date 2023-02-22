@@ -1,8 +1,8 @@
 # Maintainer: erdii <me@erdii.engineering
 
 pkgname=mage-bin
-pkgver=1.13.0
-pkgrel=3
+pkgver=1.14.0
+pkgrel=2
 pkgdesc="A Make/rake-like build tool using Go"
 arch=("x86_64")
 url="https://magefile.org"
@@ -10,7 +10,7 @@ license=("Apache")
 provides=("mage")
 conflicts=("mage")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/magefile/mage/releases/download/v${pkgver}/mage_${pkgver}_Linux-64bit.tar.gz")
-sha256sums=('d9608a1b018ccf8929783e838a4e1f9d74b96ba0d317c814661d6d50e36a4a82')
+sha256sums=('a9eb55344ccf6728ab40fe55f809fb7cc0f1085858afd9e594753ed82e59b73f')
 
 package() {
   install -Dm755 "${srcdir}/mage" "${pkgdir}/usr/bin/mage"
