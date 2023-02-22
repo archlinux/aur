@@ -2,8 +2,8 @@
 # Maintainer: daskol (Daniel Bershatsky) < bepshatsky at yandex dot ru >
 
 pkgname='python-datasets'
-pkgver=2.9.0
-pkgrel=3
+pkgver=2.10.0
+pkgrel=1
 pkgdesc='The largest hub of ready-to-use datasets for ML models with fast, easy-to-use and efficient data manipulation tools'
 arch=('x86_64')
 url='https://github.com/huggingface/datasets'
@@ -24,7 +24,7 @@ depends=(
     'python-tqdm>=4.62.1'
     'python-xxhash'
 )
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=(
     'python-librosa: Audio datasets'
     'python-pillow: Vision datasets'
@@ -33,15 +33,15 @@ optdepends=(
 )
 groups=('huggingface')
 source=("datasets-${pkgver}.tar.gz::https://github.com/huggingface/datasets/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('151bd5c683756b74e7945da71442b9c837d6977e1a23541062dd6979c4a35cf4')
+sha256sums=('0afa8b2415b96aafc5cfd232bbd6a3049e93c3d0f5da04229d658791752758ed')
 
 build() {
     cd ${srcdir}/datasets-${pkgver}
-    python setup.py build
+    python -m build -n -w
 }
 
 package() {
     cd ${srcdir}/datasets-${pkgver}
     install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
-    python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1 --skip-build
+    python -m installer --compile-bytecode 1 --destdir $pkgdir dist/*.whl
 }
