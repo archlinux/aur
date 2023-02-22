@@ -1,31 +1,37 @@
-pkgname=php72-xdebug
-_phpbase=72
-_extname=xdebug
-pkgver=3.1.1
-pkgrel=2
-pkgdesc="Xdebug is an extension for PHP to assist with debugging and development."
-arch=("x86_64")
+ext_name=xdebug
+phpbase=72
+suffix=
+pkgname="php${phpbase}-${ext_name}${suffix}"
+pkgver=3.1.5
+source=("http://pecl.php.net/get/$ext_name-$pkgver.tgz")
+pkgrel=1
+pkgdesc="php${phpbase}${suffix} Xdebug extension"
+arch=("x86_64" "i686")
 url="https://xdebug.org/"
 license=('Xdebug')
-depends=('php72')
-makedepends=()
-source=("http://pecl.php.net/get/$_extname-$pkgver.tgz")
-backup=("etc/php${_phpbase}/conf.d/$_extname.ini")
+makedepends=("php${phpbase}${suffix}")
+backup=()
 
 build() {
-    cd "$srcdir/$_extname-$pkgver"
-    phpize${_phpbase}
-    ./configure --with-php-config=php-config${_phpbase}
+    cd "${ext_name}-${pkgver}"
+    phpize${phpbase}${suffix}
+    ./configure \
+        --with-php-config=php-config${phpbase}${suffix}
     make
 }
 
 package() {
-    cd "$srcdir/$_extname-$pkgver"
-    install -m0755 -d "$pkgdir/etc/php${_phpbase}/conf.d/"
-    install -m0644 -D "LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
-    echo ";zend_extension=$_extname.so" > "$pkgdir/etc/php${_phpbase}/conf.d/$_extname.ini"
-    chmod 0644 "$pkgdir/etc/php${_phpbase}/conf.d/$_extname.ini"
-    install -m0755 -D ".libs/$_extname.so" "$pkgdir$(php-config${_phpbase} --extension-dir)/$_extname.so"
+    cd "$ext_name-$pkgver"
+    _priority=40
+    ext_dir="$(php-config${phpbase}${suffix} --extension-dir)"
+    _ini_dir="/etc/php${phpbase}${suffix}/conf.d"
+    _ini_file="${_ini_dir}/${_priority}-${ext_name}.ini"
+    backup+=("${_ini_file}")
+    install -m0755 -d "${pkgdir}/${_ini_dir}"
+    echo "zend_extension=${ext_name}.so" > "${pkgdir}/${_ini_file}"
+    chmod 0644 "${pkgdir}/${_ini_file}"
+    install -m0755 -D ".libs/${ext_name}.so" "${pkgdir}/${ext_dir}/${ext_name}.so"
 }
 
-sha256sums=('9be3ae0fdb4dc4a4c68084626cddc56f12396487e309a8c8dd318f0f900d1a68')
+sha256sums=('55f6ef381245da079b2fc5ce1cfbcb7961197d0c0e04f9d977613cf9aa969a79')
+
