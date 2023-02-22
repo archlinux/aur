@@ -4,7 +4,7 @@
 # from: git
 
 pkgname=trackma-git
-pkgver=0.8.5.r17.g22e9326
+pkgver=0.8.5.r25.g85936ee
 pkgrel=1
 pkgdesc="A lightweight and simple program for updating and using lists on several media tracking websites."
 arch=('any')
@@ -13,9 +13,14 @@ license=('GPL3')
 depends=('python'
          'python-pyinotify')
 
-makedepends=('python-setuptools'
-    'desktop-file-utils'
-    'git')
+makedepends=(
+  desktop-file-utils
+  git
+  python-poetry-core
+  python-build
+  python-installer
+  python-wheel
+)
 optdepends=('python-cairo:   GTK frontend'
     'python-gobject: GTK frontend/MPRIS tracker'
     'python-pillow:  thumbnail images for GUI frontends'
@@ -58,11 +63,18 @@ prepare() {
   git -c protocol.file.allow=always submodule update
 }
 
-package() {
-  cd ${pkgname}
-  python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
+build() {
+  python -m build --no-isolation --wheel "$srcdir/$pkgname"
+}
 
-  install -Dvm644 "${pkgname%-git}/data/icon.png" \
+package() {
+  _py=$(python --version)
+  _py=${_py%%.*}
+
+  python -m installer --destdir="$pkgdir" \
+    "$srcdir/$pkgname/dist/${pkgname%-git}-${pkgver%.r*}-py${_py##* }-none-any.whl"
+
+  install -Dvm644 "$srcdir/$pkgname/trackma/data/icon.png" \
   "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
 
   install -Dvm644 "${srcdir}/trackma-curses.desktop" \
