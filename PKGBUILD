@@ -25,5 +25,5 @@ build() {
 
 package() {
 	install -Dm755 "${srcdir}/${pkgname}-${pkgver}/netclient" "$pkgdir/usr/bin/netclient"
-	install -Dm644 "${srcdir}/${pkgname}-${pkgver}build/netclient.service" "$pkgdir/usr/lib/systemd/system/netclient.service"
+	install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/netclient.service" "$pkgdir/usr/lib/systemd/system/netclient.service"
 }
