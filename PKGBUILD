@@ -30,12 +30,16 @@ options=('!emptydirs' '!strip' '!buildflags')
 source=(
   "ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2"
   #ftp://gcc.gnu.org/pub/gcc/snapshots/${_snapshot}/gcc-${_snapshot}.tar.bz2
-  "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
-  "http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz"
+  #"http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
+  "ftp://gcc.gnu.org/pub/gcc/infrastructure/isl-${_islver}.tar.bz2"
+  #"http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz"
+  "ftp://gcc.gnu.org/pub/gcc/infrastructure/cloog-${_cloogver}.tar.gz"
   'gcc-4.9-fix-build-with-gcc-6.patch'
   '0000-gcc-4.9.ucontext.patch'
   '0001-gcc-4.9-SIGSEGV.patch'
   '0002-gcc-4.9-__res_state.patch'
+  '0003-gcc-4.9-ustate.patch'
+  '0004-glibc-2.31-libsanitizer.patch'
 )
 md5sums=('87c24a4090c1577ba817ec6882602491'
          'e039bfcfb6c2ab039b8ee69bf883e824'
@@ -43,14 +47,18 @@ md5sums=('87c24a4090c1577ba817ec6882602491'
          '91f27a8002df38cf2ca971ca80feb9d7'
          '4a0dc704f1d92ceb4dd8608811241cec'
          'e787a03f0c38434490515a5823eca0b8'
-         'c64d1e20274ff4fbfacdd11bef2e1273')
+         'c64d1e20274ff4fbfacdd11bef2e1273'
+         'b27134678242f358c9b81cd73a1bcba1'
+         '931ee06584a47f3bdb5ea57fa2d5f76f')
 sha256sums=('6c11d292cd01b294f9f84c9a59c230d80e9e4a47e5c6355f046bb36d4f358092'
             'f4b3dbee9712850006e44f0db2103441ab3d13b406f77996d1df19ee89d11fb4'
             '02500a4edd14875f94fe84cbeda4290425cb0c1c2474c6f75d75a303d64b4196'
             'd775a053fad367f5490111038fde7c875b4e842919d2d197f95b915e1ae562a9'
             '44ea987c9ee1ab3234f20eca51f8d6c68910b579e63ec58ff7a0dde38093f6ba'
             'eb59578cbf32da94d7a11fabf83950c580f0f6fb58f893426d6a258b7e44351e'
-            '9ce8a94aad61a26839687734b48f0628e610663cd0d5ad9edfc6e571cf294bac')
+            '9ce8a94aad61a26839687734b48f0628e610663cd0d5ad9edfc6e571cf294bac'
+            '11f2adf34c32ec2d121a14cd10751d79c77aebe7e4592d4cfaa7190953bdf782'
+            '526568532a879f2755fb7e834c1c55caae53252713562e21a51c861463cb5931')
 
 if [ -n "${_snapshot:-}" ]; then
   _basedir="gcc-${_snapshot}"
@@ -95,6 +103,9 @@ prepare() {
   'x86_64') sed -e '/m64=/ s/lib64/lib/' -i 'gcc/config/i386/t-linux64' ;;
   esac
 
+  patch -Nbup0 -i "${srcdir}/0003-gcc-4.9-ustate.patch"
+  patch -p1 -i "${srcdir}/0004-glibc-2.31-libsanitizer.patch"
+
   if ! grep -qFxe "${pkgver%%_*}" 'gcc/BASE-VER'; then
     echo "Version has changed from ${pkgver%%_*} to"
     cat 'gcc/BASE-VER'
@@ -103,7 +114,7 @@ prepare() {
   fi
 
   # remove -V and -qversion as their aren't supported in gcc7
-  sed -e 's/ -V -qversion/ /g' -i $(grep --include='configure' -lrFe '-V -qversion')
+  #sed -e 's/ -V -qversion/ /g' -i $(grep --include='configure' -lrFe '-V -qversion')
 
   rm -rf 'gcc-build'
   mkdir 'gcc-build'
@@ -122,7 +133,6 @@ build() {
       --disable-libssp
       --disable-libstdcxx-pch
       --disable-libunwind-exceptions
-      --disable-libsanitizer
       --enable-multilib
       --disable-werror
       --enable-__cxa_atexit
@@ -155,9 +165,10 @@ build() {
     )
     ../configure "${_conf[@]}"
 
-     sed -e 's/^STAGE1_CXXFLAGS.*$/& -std=gnu++11/' -i 'Makefile'
+    sed -e 's/^STAGE1_CXXFLAGS.*$/& -std=gnu++11/' -i 'Makefile'
   fi
 
+  # The GCC 4.9 library is otherwise found incorrectly when invoking host tools
   LD_PRELOAD='/usr/lib/libstdc++.so' \
   nice make -s
 
@@ -186,12 +197,13 @@ package() {
   set -u
   cd "${_basedir}/gcc-build"
 
+  # The GCC 4.9 library is otherwise found incorrectly zhen invoking host tools
   LD_PRELOAD='/usr/lib/libstdc++.so' \
   make -j1 DESTDIR="${pkgdir}" install
 
   ## Lazy way of dealing with conflicting man and info pages and locales...
   rm -rf "${pkgdir}/usr"/{share,include}/
-  find "${pkgdir}/" -name '*iberty*' -exec rm '{}' '+'
+  find "${pkgdir}/" -name '*iberty*' -delete
 
   # Move potentially conflicting stuff to version specific subdirectory
   case "${CARCH}" in
