@@ -1,6 +1,6 @@
 pkgbase = r-oncosimulr
 	pkgdesc = Forward Genetic Simulation of Cancer Progression with Epistasis
-	pkgver = 4.0.0
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/OncoSimulR
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = r-oncosimulr
 	optdepends = r-pander
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/OncoSimulR_4.0.0.tar.gz
-	sha256sums = b6e520e709837fe8cb029e796ba073afeb935c5935252d2dd141ef40d1a1bfff
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/OncoSimulR_4.0.1.tar.gz
+	sha256sums = 4bf6d6f3096dc35725feafb36b25b33c77bc58c726815605a026719996dc074d
 
 pkgname = r-oncosimulr
