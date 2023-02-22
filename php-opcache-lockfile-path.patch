@@ -1,0 +1,94 @@
+diff --git a/ext/opcache/README b/ext/opcache/README
+index d5513c5..78df179 100644
+--- a/ext/opcache/README
++++ b/ext/opcache/README
+@@ -228,3 +228,6 @@
+ 	processes have to map shared memory into the same address space. This
+ 	directive allows to manually fix the "Unable to reattach to base address"
+ 	errors.
++
++opcache.lockfile_path (default "/tmp")
++	Absolute path used to store shared lockfiles.
+diff --git a/ext/opcache/ZendAccelerator.h b/ext/opcache/ZendAccelerator.h
+index a13c15c..2c659b1 100644
+--- a/ext/opcache/ZendAccelerator.h
++++ b/ext/opcache/ZendAccelerator.h
+@@ -249,6 +249,7 @@
+ 	long           interned_strings_buffer;
+ #endif
+ 	char          *restrict_api;
++	char          *lockfile_path;
+ } zend_accel_directives;
+ 
+ typedef struct _zend_accel_globals {
+diff --git a/ext/opcache/zend_accelerator_module.c b/ext/opcache/zend_accelerator_module.c
+index 5705ed7..430892c 100644
+--- a/ext/opcache/zend_accelerator_module.c
++++ b/ext/opcache/zend_accelerator_module.c
+@@ -288,6 +288,7 @@
+ 	STD_PHP_INI_BOOLEAN("opcache.enable_cli"             , "0"   , PHP_INI_SYSTEM, OnUpdateBool,              accel_directives.enable_cli,                zend_accel_globals, accel_globals)
+ 	STD_PHP_INI_ENTRY("opcache.error_log"                , ""    , PHP_INI_SYSTEM, OnUpdateString,	         accel_directives.error_log,                 zend_accel_globals, accel_globals)
+ 	STD_PHP_INI_ENTRY("opcache.restrict_api"             , ""    , PHP_INI_SYSTEM, OnUpdateString,	         accel_directives.restrict_api,              zend_accel_globals, accel_globals)
++	STD_PHP_INI_ENTRY("opcache.lockfile_path"             , "/tmp"    , PHP_INI_SYSTEM, OnUpdateString,           accel_directives.lockfile_path,              zend_accel_globals, accel_globals)
+ 
+ #ifdef ZEND_WIN32
+ 	STD_PHP_INI_ENTRY("opcache.mmap_base", NULL, PHP_INI_SYSTEM,	OnUpdateString,	                             accel_directives.mmap_base,                 zend_accel_globals, accel_globals)
+@@ -696,6 +697,7 @@
+ 	add_assoc_bool(directives,   "opcache.fast_shutdown",          ZCG(accel_directives).fast_shutdown);
+ 	add_assoc_bool(directives,   "opcache.enable_file_override",   ZCG(accel_directives).file_override_enabled);
+ 	add_assoc_long(directives, 	 "opcache.optimization_level",     ZCG(accel_directives).optimization_level);
++	add_assoc_string(directives, "opcache.lockfile_path",          STRING_NOT_NULL(ZCG(accel_directives).lockfile_path), 1);
+ 
+ 	add_assoc_zval(return_value, "directives", directives);
+ 
+diff --git a/ext/opcache/zend_shared_alloc.c b/ext/opcache/zend_shared_alloc.c
+index cde8114..66c901c 100644
+--- a/ext/opcache/zend_shared_alloc.c
++++ b/ext/opcache/zend_shared_alloc.c
+@@ -38,7 +38,6 @@
+ # include "sys/mman.h"
+ #endif
+ 
+-#define TMP_DIR "/tmp"
+ #define SEM_FILENAME_PREFIX ".ZendSem."
+ #define S_H(s) g_shared_alloc_handler->s
+ 
+@@ -56,7 +55,7 @@
+ static MUTEX_T zts_lock;
+ #endif
+ int lock_file;
+-static char lockfile_name[sizeof(TMP_DIR) + sizeof(SEM_FILENAME_PREFIX) + 8];
++static char lockfile_name[MAXPATHLEN];
+ #endif
+ 
+ static const zend_shared_memory_handler_entry handler_table[] = {
+@@ -76,7 +75,7 @@
+ };
+ 
+ #ifndef ZEND_WIN32
+-void zend_shared_alloc_create_lock(void)
++void zend_shared_alloc_create_lock(char *lockfile_path)
+ {
+ 	int val;
+ 
+@@ -84,7 +83,7 @@
+     zts_lock = tsrm_mutex_alloc();
+ #endif
+ 
+-	sprintf(lockfile_name, "%s/%sXXXXXX", TMP_DIR, SEM_FILENAME_PREFIX);
++	snprintf(lockfile_name, sizeof(lockfile_name), "%s/%sXXXXXX", lockfile_path, SEM_FILENAME_PREFIX);
+ 	lock_file = mkstemp(lockfile_name);
+ 	fchmod(lock_file, 0666);
+ 
+@@ -165,7 +164,11 @@
+ 	smm_shared_globals = &tmp_shared_globals;
+ 	ZSMMG(shared_free) = requested_size; /* goes to tmp_shared_globals.shared_free */
+ 
++#ifndef ZEND_WIN32
++	zend_shared_alloc_create_lock(ZCG(accel_directives).lockfile_path);
++#else
+ 	zend_shared_alloc_create_lock();
++#endif
+ 
+ 	if (ZCG(accel_directives).memory_model && ZCG(accel_directives).memory_model[0]) {
+ 		char *model = ZCG(accel_directives).memory_model;
