@@ -8,13 +8,13 @@ pkgbase = dpaste
 	license = GPL3
 	makedepends = git
 	makedepends = nlohmann-json-git
+	makedepends = msgpack-cxx
 	depends = gnutls
 	depends = libb64
 	depends = libcurlpp>=0.8.1
 	depends = opendht
 	depends = glibmm
-	source = git://github.com/sim590/dpaste#tag=0.4.0
+	source = git+https://github.com/sim590/dpaste#tag=0.4.0
 	sha256sums = SKIP
 
 pkgname = dpaste
-
