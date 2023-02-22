@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=lokern
-_pkgver=1.1-9
+_pkgver=1.1-10
 pkgname=r-${_pkgname,,}
-pkgver=1.1.9
-pkgrel=4
+pkgver=1.1.10
+pkgrel=1
 pkgdesc='Kernel Regression Smoothing with Local or Global Plug-in Bandwidth'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,7 +17,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3edb44213f0dca45047b91dd970e6aaf8b023f21855dd8ebf7d978b2563ababa')
+sha256sums=('00bc823c6c377c4d7d23218254b7e45c2f606a9e74e21d985aeb6382ffddf992')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
