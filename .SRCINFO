@@ -1,6 +1,6 @@
 pkgbase = harec-git
 	pkgdesc = The Hare compiler
-	pkgver = r1502.b84c8ba
+	pkgver = r1382.ef3e7d0
 	pkgrel = 1
 	url = https://harelang.org
 	arch = x86_64
@@ -12,8 +12,6 @@ pkgbase = harec-git
 	provides = harec
 	conflicts = harec
 	source = harec::git+https://git.sr.ht/~sircmpwn/harec
-	source = 0001-make-sure-eval_binarithm-vars-are-initialized.patch
-	sha256sums = SKIP
-	sha256sums = 465656dcea4e98d0b4a845b11d0b6bffee8b35f89bcaf51de56211fcb8ec8793
+	sha512sums = SKIP
 
 pkgname = harec-git
