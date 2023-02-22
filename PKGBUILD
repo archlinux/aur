@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=hipsycl-rocm
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="Implementation of SYCL 1.2.1 over AMD HIP/NVIDIA CUDA"
 arch=("x86_64")
@@ -11,7 +11,7 @@ provides=(hipsycl sycl)
 makedepends=(cmake)
 depends=(llvm clang python boost hipcpu openmp hip-runtime-amd rocm-hip-sdk)
 source=("$pkgname-$pkgver::https://github.com/illuhad/hipSYCL/archive/v$pkgver.tar.gz")
-sha256sums=('086cd259345627cd1205a2fbb96fb1f3d1c4f3a13f9520753a4f4df313445c6d')
+sha256sums=('7a1d6c39dd73d8b84e7506003f20918aa3763850e7a5ea3d6add5bd67f6ec0da')
 
 _pkgname=hipSYCL
 
