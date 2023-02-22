@@ -1,7 +1,7 @@
 pkgbase = wleave-git
 	pkgdesc = A Wayland-native logout menu, fork of Wlogout
 	pkgver = 0.1.0.r2.gf71538e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AMNatty/wleave
 	arch = x86_64
 	license = MIT
