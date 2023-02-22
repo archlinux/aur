@@ -2,10 +2,10 @@
 # Contributor: Gabriel Morrison Lima Dantas <gabrielmldantas@gmail.com>
 # Contributor: Aleksey Kamenskikh <aleksey.kamenskikh@gmail.com>
 pkgname=mssql-server
-pkgver=15.0.4261.1
-_remRevision=2
+pkgver=15.0.4298.1
+_remRevision=1
 _prodver=${pkgver}-${_remRevision}
-pkgrel=8
+pkgrel=1
 pkgdesc="Microsoft SQL Server for Linux"
 arch=('x86_64')
 url="https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-overview?view=sql-server-ver15"
@@ -29,9 +29,11 @@ depends=(
 optdepends=(
 	'python-pyodbc'
 );
+
+#This is a local azure instance that resolves as an alias of "packages.microsoft.com/rhel/7/mssql-server-2019" as some regions have different dir structures
 source=("http://csd-apt-sea-d-4.southeastasia.cloudapp.azure.com/rhel/7/mssql-server-2019/${pkgname}-${_prodver}.x86_64.rpm")
 
-sha256sums=('db9a757b85b218c2c091d716c2ece28e5c0c9aee713eadc61827393b2c1d51b8')
+sha256sums=('d5e6c61b59c86ee9003956d5d8cba3de7d59b456fa1a60deac6aa15fc1e1d922')
 
 install=$pkgname.install
 
