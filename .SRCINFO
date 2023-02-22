@@ -1,6 +1,6 @@
 pkgbase = anki
 	pkgdesc = Helps you remember facts (like words/phrases in a foreign language) efficiently
-	pkgver = 2.1.58
+	pkgver = 2.1.60
 	pkgrel = 1
 	url = https://apps.ankiweb.net/
 	arch = x86_64
@@ -37,7 +37,7 @@ pkgbase = anki
 	conflicts = anki-official-binary-bundle
 	conflicts = anki-qt5
 	options = !lto
-	source = anki-2.1.58::git+https://github.com/ankitects/anki#tag=2.1.58
+	source = anki::git+https://github.com/ankitects/anki#tag=2.1.60
 	source = no-update.patch
 	sha256sums = SKIP
 	sha256sums = 137827586d2a72adddaaf98599afa9fc80cdd73492d7f5cbcf4d2f6082e5f797

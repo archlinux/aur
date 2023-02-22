@@ -7,7 +7,7 @@
 # Contributor: Dave Pretty <david dot pretty at gmail dot com>
 
 pkgname=anki
-pkgver=2.1.58
+pkgver=2.1.60
 pkgrel=1
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="https://apps.ankiweb.net/"
@@ -55,7 +55,7 @@ optdepends=(
 )
 # using the tag tarballs does not work with the new (>= 2.1.55) build process.
 # the '.git' folder is not included in those but is required for a sucessful build
-source=("anki-${pkgver}::git+https://github.com/ankitects/anki#tag=${pkgver}"
+source=("anki::git+https://github.com/ankitects/anki#tag=${pkgver}"
 "no-update.patch"
 )
 sha256sums=('SKIP'
@@ -63,19 +63,19 @@ sha256sums=('SKIP'
 )
 
 prepare(){
-    cd "anki-$pkgver"
+    cd "anki"
     # pro-actively prevent "module not found" error (TODO: verify whether still required)
     [ -d ts/node_modules ] && rm -r ts/node_modules
     patch -p1 < "$srcdir/no-update.patch"
 }
 
 build() {
-    cd "anki-$pkgver"
+    cd "anki"
     ./tools/build
 }
 
 package() {
-    cd "anki-$pkgver"
+    cd "anki"
     for file in out/wheels/*.whl; do
     	python -m installer --destdir="$pkgdir" $file
     done
