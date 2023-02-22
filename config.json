@@ -2,18 +2,28 @@
   "dns": {
     "servers": [
       {
-        "tag": "cloudflare",
-        "address": "https://1.1.1.1/dns-query"
+        "tag": "google",
+        "address": "tls://8.8.8.8"
       },
       {
         "tag": "local",
-        "address": "8.8.8.8",
+        "address": "223.5.5.5",
         "detour": "direct"
+      },
+      {
+        "tag": "block",
+        "address": "rcode://success"
       }
     ],
     "rules": [
       {
+        "geosite": "category-ads-all",
+        "server": "block",
+        "disable_cache": true
+      },
+      {
         "domain": "mydomain.com",
+        "geosite": "cn",
         "server": "local"
       }
     ],
@@ -24,6 +34,7 @@
       "type": "tun",
       "inet4_address": "172.19.0.1/30",
       "auto_route": true,
+      "strict_route": false,
       "sniff": true
     }
   ],
@@ -56,7 +67,15 @@
         "outbound": "dns-out"
       },
       {
-        "domain_suffix": "facebook.com",
+        "geosite": "cn",
+        "geoip": [
+          "private",
+          "cn"
+        ],
+        "outbound": "direct"
+      },
+      {
+        "geosite": "category-ads-all",
         "outbound": "block"
       }
     ],
