@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _pkgname='certspotter'
 pkgname="$_pkgname-git"
-pkgver='0.15.1.r0.g223bf93'
+pkgver='0.16.0.r0.g4ca81ab'
 pkgrel='1'
 pkgdesc='Certificate Transparency Log Monitor - git version'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -56,9 +56,12 @@ check() {
 
 package() {
 	cd "$srcdir/"
+
+	# Binaries
 	install -dm755 "$pkgdir/usr/bin/"
 	install -Dm755 "$_bindir/"* "$pkgdir/usr/bin/"
 
+	# Man pages
 	install -dm755 "$pkgdir/usr/share/man/man8/"
 	install -Dm644 "$_sourcedirectory/man/"*'.8' "$pkgdir/usr/share/man/man8/"
 }
