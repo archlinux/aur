@@ -1,11 +1,18 @@
 pkgbase = signal-account-switcher
 	pkgdesc = a simple tool to run multiple instances of signal-desktop
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kmille/signal-account-switcher
 	arch = x86_64
 	license = GPL3
 	makedepends = go
+	makedepends = libxcursor
+	makedepends = libxrandr
+	makedepends = libxinerama
+	makedepends = libxi
+	depends = libxcb
+	depends = libx11
+	depends = libglvnd
 	source = https://github.com/kmille/signal-account-switcher/archive/refs/tags/v0.1.0.tar.gz
 	sha256sums = 7bf3c729f433335cdc64818a2bbc2c0b1dc31675c395aa7ac1bfb8377d12ee06
 
