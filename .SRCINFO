@@ -1,0 +1,16 @@
+pkgbase = openscad-appimage
+	pkgdesc = The programmers solid 3D CAD modeller
+	pkgver = 2021.01
+	pkgrel = 1
+	url = http://openscad.org
+	arch = x86_64
+	license = GPL2
+	depends = hicolor-icon-theme
+	depends = zlib
+	provides = openscad
+	conflicts = openscad
+	options = !strip
+	source = openscad-2021.01.AppImage::https://files.openscad.org/OpenSCAD-2021.01-x86_64.AppImage
+	sha256sums = f758528f2cd213f773c7a105fb63bf3b45bf754b0f586fbb7c9cd653ffcd0882
+
+pkgname = openscad-appimage
