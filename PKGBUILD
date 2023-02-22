@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _cranname=tinytest
-_cranver=1.3.1
+_cranver=1.4.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -11,7 +11,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL3)
 depends=(r)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('9af45103cf9c2cec45eb58b27754feae2b8062a87026fadf5ce5b3bf8e0b03d7')
+sha256sums=('f6fc13887d096ba444fb722ef34cc88e079fc18be9668ffead1ba586a30b1c74')
 
 build() {
   mkdir -p build
