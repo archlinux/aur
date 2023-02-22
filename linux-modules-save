@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-kver = $(uname -r)
+kver=$(uname -r)
 while read -r line; do
     # We only care about the running kernel
     if [[ "$line" == "usr/lib/modules/$kver/vmlinuz" ]];then
