@@ -2,3 +2,5 @@
 /*.tar.gz
 /*.tar.zst
 /*.log
+/src
+/pkg

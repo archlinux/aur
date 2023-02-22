@@ -3,7 +3,7 @@
 pkgname=python-b2sdk
 _pkgname=b2sdk
 pkgver=1.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python library to access B2 cloud storage.'
 arch=('any')
 url='https://github.com/Backblaze/b2-sdk-python'
@@ -15,8 +15,11 @@ depends=('python'
          'python-setuptools'
          'python-tqdm>=4.5.0'
         )
-makedepends=('python-setuptools-scm'
+makedepends=('python-build'
+             'python-installer'
              'python-pip'
+             'python-setuptools-scm'
+             'python-wheel'
             )
 
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
@@ -27,13 +30,14 @@ build() {
 
   # This requriement seems overly complex, losen
   sed -i -e 's:\(arrow>=.*\),.*:\1:' requirements.txt
+  sed -i -e "s:'\(setuptools_scm\)<.*':'\1':" setup.py
 
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd ${srcdir}/${_pkgname}-${pkgver}
-  python setup.py install --root=${pkgdir} --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
