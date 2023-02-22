@@ -14,6 +14,7 @@ pkgbase = ufoai-git
 	makedepends = gtkglext
 	makedepends = openal
 	makedepends = python-urllib3
+	makedepends = gtest
 	depends = libjpeg
 	depends = libgl
 	depends = libpng

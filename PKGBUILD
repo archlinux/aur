@@ -12,7 +12,7 @@ url="http://ufoai.org/wiki/News"
 license=('GPL')
 arch=('aarch64' 'x86_64')
 depends=('libjpeg' 'libgl' 'libpng' 'curl' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'libtheora' 'xvidcore' 'glu')
-makedepends=('git' 'python2' 'zip' 'gtksourceview2' 'gtkglext' 'openal' 'python-urllib3')
+makedepends=('git' 'python2' 'zip' 'gtksourceview2' 'gtkglext' 'openal' 'python-urllib3' 'gtest')
 optdepends=('python2: compiling self-created maps'
             'gtksourceview2: compiling the map-editor'
             'gtkglext: compiling the map-editor'
