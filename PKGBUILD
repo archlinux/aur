@@ -14,7 +14,7 @@ groups=(
 )
 pkgver=0.3.2.rev44.r52.20230220.f0f42bd
 _phcver="$(awk -F. '{print $1"."$2"."$3}' <<<"${pkgver}")"
-pkgrel=2
+pkgrel=3
 pkgdesc="Frequency driver for Intel CPUs with undervolting feature. DKMS-based kernel module, stable branch, latest git checkout."
 url="https://gitlab.com/linux-phc/phc-intel"
 arch=('any')
@@ -51,8 +51,8 @@ sha256sums=(
 prepare() {
   cd "${srcdir}/${_pkgbase}"
 
-  ## Switch to stable branch:
-  make canny
+  # ## Switch to stable branch -- not needed, since stable is the default, and when doing it here then it would fail if the currently running kernel headers are not installed (e.g. due to a recent upgrade):
+  # make canny
 
   ## Generate GIT log
   git log > "${srcdir}/git.log"
