@@ -1,54 +1,26 @@
 # Maintainer: sukanka <su975853527 at gmail dot com>
 
 pkgname='gstarcad-bin'
-_pkgname='gstarcad'
-pkgver=2.4_2022.3.16
-_pkgver=22sp1
+_pkgname="com.gstarcad2023.cad"
+pkgver=23.0.2
 pkgrel=1
-epoch=1
+epoch=
 pkgdesc="浩辰 CAD"
-arch=('x86_64' 'aarch64')
-license=('custom')
+arch=('x86_64')
+license=('unknown')
 url="https://www.gstarcad.com/cad_linux/"
-provides=(${_pkgname})
-depends=('qt5-svg' 'qt5-imageformats' 'hicolor-icon-theme')
-optdepends=('deepin-qt5integration: deepin DE integration')
-makedepends=('patchelf')
-source=('gcad.sh')
-source_x86_64=("${pkgname}-${pkgver}-x86-64.deb::https://hccad.gstarcad.cn/linux${pkgver:4:4}/v${pkgver}/uos/com.gstarcad${pkgver:4:4}.cad_${_pkgver}_amd64.deb")
-sha512sums=('f7d6c9af07a570c00c48d51ba6d248c34c880a402cebe3c6d0e0b5458a0b12055164b1fc057250807ec45fc0bdd34696c15169b3fc37240832d98f6fffa289e4')
-sha512sums_x86_64=('9150289f84fce3476aa27f2301c4a5d2387ae95b8a945db6acd348a3a515e8994a174d84adf18db5b8254cd61c74674c17075e21066818d85f15e91cc9bd596f')
-sha512sums_aarch64=('9150289f84fce3476aa27f2301c4a5d2387ae95b8a945db6acd348a3a515e8994a174d84adf18db5b8254cd61c74674c17075e21066818d85f15e91cc9bd596f')
-source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::https://hccad.gstarcad.cn/linux${pkgver:4:4}/v${pkgver}/uos/com.gstarcad${pkgver:4:4}.cad_${_pkgver}_amd64.deb")
-# options=(!strip)
-prepare(){
-    cd $srcdir
-    tar -xJvf data.tar.xz -C "${srcdir}"
-    cd $srcdir/opt/apps/com.gstarcad${pkgver:4:4}.cad/entries
-    sed -i "s|^Exec=.*|Exec=gcad %F|g;s|^Icon=.*|Icon=gcad|g" applications/*.desktop
-}
-
+provides=(gstarcad)
+depends=(openssl-1.0 qt5-svg hicolor-icon-theme)
+optdepends=()
+source=(
+    "${pkgname}-${pkgver}.deb::https://hccad.gstarcad.cn/linux2023/v${pkgver}/uos/signed_${_pkgname}_${_pkgname}_amd64.deb"
+)
+sha256sums=('1aaa224365cc439a98a1071eecde9834b79999a52e76f2f6fbf60ad7c4c3aafd')
 package(){
-    
-    mkdir -p ${pkgdir}/usr/
-    cp -rf  $srcdir/opt/apps/com.gstarcad${pkgver:4:4}.cad/entries ${pkgdir}/usr/share
-    rmdir ${pkgdir}/usr/share/autostart 
-    
-    mkdir -p "$pkgdir"/opt/
-    cp -rf  $srcdir/opt/apps/com.gstarcad${pkgver:4:4}.cad/files   "$pkgdir"/opt/${_pkgname}
-    mkdir -p ${pkgdir}/usr/lib/${_pkgname}
-    
-    mv "$pkgdir"/opt/${_pkgname}/{*.so,*.tx,*.txv,drivers/*.so}  ${pkgdir}/usr/lib/${_pkgname}/
-
-    # create executable
-    install -Dm755 ${srcdir}/gcad.sh ${pkgdir}/usr/bin/gcad
-    
-#     patchelf --set-rpath '$ORIGIN/drivers:/usr/lib/gstarcad' "$pkgdir"/opt/${_pkgname}/gcad
-#     strip ${pkgdir}/usr/lib/gstarcad/* || true
-#     patchelf --add-rpath '$ORIGIN' "$pkgdir"/opt/${_pkgname}/gcad
-    
-    install -Dm644 "$pkgdir"/opt/${_pkgname}/*.xml -t ${pkgdir}/usr/share/mime/application
-    # remove unused files
-    rm -rf "$pkgdir"/opt/${_pkgname}/{platforminputcontexts,qtplugins,systemlibs,properties-xml-new/*.txt}
-    rm -rf "$pkgdir"/opt/${_pkgname}/{gcad.{png,log,ico},qt.conf,*.xml,*.sh,Qt*}
+    tar -xvf data.tar.xz -C "${pkgdir}"
+    chmod 644 "${pkgdir}/opt/apps/${_pkgname}/files/libcurl.a"
+    install -Dm644 "${pkgdir}/opt/apps/${_pkgname}/entries/applications/${_pkgname}.desktop" \
+        "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "${pkgdir}/opt/apps/${_pkgname}/entries/icons/hicolor/scalable/apps/gcad.svg" \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/gcad.svg"
 }
