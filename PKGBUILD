@@ -1,11 +1,11 @@
 pkgname=qnetwalk
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Connect all the terminals to the server, in as few turns as possible"
 arch=('x86_64')
 url="https://github.com/AMDmi3/qnetwalk"
 license=('GPL')
-depends=('qt6-base' 'sdl2_mixer' 'hicolor-icon-theme')
+depends=('qt6-multimedia')
 makedepends=('cmake' 'qt6-tools')
 source=("https://github.com/AMDmi3/qnetwalk/archive/$pkgver.tar.gz")
 
@@ -20,8 +20,8 @@ package() {
   DESTDIR="$pkgdir/" cmake --install .
 }
 
-md5sums=('c1941d44c93d6a395bb9620423f05967')
-sha1sums=('3a9defbc181c58d0b1b8ed7ac84d6bcc8f0533db')
-sha256sums=('1cf0a74c5c7ba2d54a35fe14672a7479cfb698b466864ae5aa7a79fc7356635f')
-sha384sums=('b4a791c76f395da8b012e199aa51703f4fa52100f31b66e060ecc6b10fb83f275cb2055538fa7a8ceb2b930365c083f7')
-sha512sums=('2cb8a14e5cd1826b2b6595b18a7d1742de59ec69fbff57f1f814ec38b427c10c7a8528c7b1993baa0b8f7cdb0d3ba165ee03394b30968191d5346c3e08dc371e')
+md5sums=('f50cfda130b1e1ee965e69b5c343974e')
+sha1sums=('cf8547a0efe9d4ed7657b971e221980032c7c43a')
+sha256sums=('d5c1a9fb088c60d6dc622d52c302b5ad69e89a4ec63adbd058c2c942191b753e')
+sha384sums=('b3e428788fbc6383868ea5262ca501e82c6cec6343a9852426f3b38cca08d4fb40fb38518a69988bbacfa116b1be30a9')
+sha512sums=('544ce8c4828a16c9b25f76b8e8f1da9e6fb61358c49215583daed958d160e1c8dd18aec258364348cc506017a446f7838f482247ae8240a3441e28e43402368b')
