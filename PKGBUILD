@@ -1,7 +1,7 @@
 # Maintainer: matt kasun <matt  at netmaker.io>
 pkgname=netclient
 pkgver=0.18.0
-pkgrel=0
+pkgrel=1
 pkgdesc="netclient daemon - a platform for modern, blazing fast wireguard virtual networks"
 arch=(x86_64)
 url='https://github.com/gravitl/netclient'
@@ -24,6 +24,6 @@ build() {
 }
 
 package() {
-	install -Dm755 "${srcdir}/netclient" "$pkgdir/usr/bin/netclient"
-	install -Dm644 "${srcdir}/build/netclient.service" "$pkgdir/usr/lib/systemd/system/netclient.service"
+	install -Dm755 "${srcdir}/${pkgname}-${pkgver}/netclient" "$pkgdir/usr/bin/netclient"
+	install -Dm644 "${srcdir}/${pkgname}-${pkgver}build/netclient.service" "$pkgdir/usr/lib/systemd/system/netclient.service"
 }
