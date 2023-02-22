@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=isa2
-_pkgver=0.3.5
+_pkgver=0.3.6
 pkgname=r-${_pkgname,,}
-pkgver=0.3.5
-pkgrel=4
+pkgver=0.3.6
+pkgrel=1
 pkgdesc='The Iterative Signature Algorithm'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,7 +17,7 @@ optdepends=(
   r-igraph
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9b9d41747b14b0e5ddd7b7abb143ab7fc9e818df24995ea680197e6d4002759f')
+sha256sums=('6256da84dd9a10499f802838c2065ee6e4dcc012b07d21116496ff8aebb65c66')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
