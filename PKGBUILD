@@ -1,7 +1,7 @@
 # Maintainer: Polarian <polarian@polarian.dev>
 pkgname=onedev-docs
 pkgver=20230222
-pkgrel=1
+pkgrel=2
 pkgdesc="Static site documentation for Onedev for offline browsing"
 arch=('any')
 url="https://code.onedev.io/onedev/docs"
@@ -20,7 +20,7 @@ prepare() {
   fi
 
   # Checkout the commit designed to build
-  git checkout 9e2acb12e1d3957852a1b90e95a4931b24c956a4
+  git checkout 06fbb9ec919244516b110828c18b6570e666d15a
 
   # Pull dependencies before building, allows offline building
   yarn
