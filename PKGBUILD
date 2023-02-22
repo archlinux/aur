@@ -1,5 +1,5 @@
 # Maintainer: sukanka <su975853527 at gmail dot com>
-
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname='gstarcad-bin'
 _pkgname="com.gstarcad2023.cad"
 pkgver=23.0.2
