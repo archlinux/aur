@@ -2,7 +2,7 @@
 # Maintainer: BlackEagle <ike DOT devolder AT gmail DOT com>
 
 pkgname=kodi-addon-game-libretro-mgba
-pkgver=0.10.0.40
+pkgver=0.11.0.40
 _codename=Nexus
 pkgrel=1
 pkgdesc="Libretro wrapper for Kodi's Game API"
