@@ -1,8 +1,8 @@
 pkgbase = hipsycl-rocm-git
-	pkgdesc = Implementation of SYCL 1.2.1 over AMD HIP/NVIDIA CUDA
-	pkgver = r1897.7102e5ee
+	pkgdesc = Multi-backend implementation of SYCL for CPUs and GPUs
+	pkgver = r2006.d9b45cd4
 	pkgrel = 1
-	url = https://github.com/illuhad/hipSYCL
+	url = https://github.com/OpenSYCL/OpenSYCL
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
@@ -18,7 +18,7 @@ pkgbase = hipsycl-rocm-git
 	provides = hipsycl-rocm
 	provides = hipsycl
 	provides = sycl
-	source = hipsycl::git+https://github.com/illuhad/hipSYCL.git
+	source = opensycl::git+https://github.com/OpenSYCL/OpenSYCL.git
 	sha256sums = SKIP
 
 pkgname = hipsycl-rocm-git

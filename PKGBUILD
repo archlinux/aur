@@ -2,17 +2,17 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=hipsycl-rocm-git
-pkgver=r1916.4d068906
+pkgver=r2006.d9b45cd4
 pkgrel=1
-pkgdesc="Implementation of SYCL 1.2.1 over AMD HIP/NVIDIA CUDA"
+pkgdesc="Multi-backend implementation of SYCL for CPUs and GPUs"
 arch=("x86_64")
-url="https://github.com/illuhad/hipSYCL"
+url="https://github.com/OpenSYCL/OpenSYCL"
 license=("BSD")
 provides=(hipsycl-rocm hipsycl sycl)
 makedepends=(cmake git)
 depends=(llvm clang python boost hipcpu openmp hip-runtime-amd rocm-hip-sdk)
-_pkgname=hipsycl
-source=("${_pkgname}::git+https://github.com/illuhad/hipSYCL.git")
+_pkgname=opensycl
+source=("${_pkgname}::git+https://github.com/OpenSYCL/OpenSYCL.git")
 sha256sums=('SKIP')
 
 pkgver() {
