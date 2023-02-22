@@ -1,6 +1,6 @@
 pkgbase = python-types-docutils
 	pkgdesc = Typing stubs for docutils
-	pkgver = 0.19.1.5
+	pkgver = 0.19.1.6
 	pkgrel = 1
 	url = https://github.com/python/typeshed
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-types-docutils
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/t/types-docutils/types-docutils-0.19.1.5.tar.gz
-	sha256sums = b8b489c2a0d1dd3e65bbd8b41e05f6bf1307553515dcda30197d63d1b576a5ee
+	source = https://files.pythonhosted.org/packages/source/t/types-docutils/types-docutils-0.19.1.6.tar.gz
+	sha256sums = a334a703a8688910d0869464f1f6f8bd330d75843bdab4f893547bfb29417a01
 
 pkgname = python-types-docutils
