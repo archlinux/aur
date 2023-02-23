@@ -1,7 +1,7 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 pkgname=jitsi-videobridge-git
-pkgver=2.2+63+g252d14bc3
+pkgver=2.2+81+g99b20c621
 pkgrel=1
 pkgdesc="Jitsi Meet Videobridge git build"
 arch=('any')
@@ -72,6 +72,6 @@ package() {
 sha256sums=('SKIP'
             'ce0b5f8bbbdf8a8eca1ba2e918447e13974ca26dc96558a6856df157417d67d2'
             'cc9fbf77497bce3c9673b2d144928f11cdd0c0823940c2b60c8369a2f086b9b7'
-            '8bc789915a3701ffbf6b4179892dfcdeb8b448a2a84b59dcde720fe481007457'
+            'e5c2a0eaa67dc7cf0a97ba51c62d616d6b0acdb266218e9d53f9b877c335fe35'
             '998cbc64def56ab98080ff7150dd0913a5e10325cd2b038cf3db14baf8cb19fc'
             '54318c8c90b4b519b05f80a3241f0bae3da8a4478f68e47ba268355ff6ddf383')
