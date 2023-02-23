@@ -10,7 +10,7 @@ license=('MIT')
 conflicts=(chrome-token-signing)
 depends=('openssl' 'qt6-base' 'qt6-svg' 'pcsclite' 'hicolor-icon-theme')
 makedepends=('git' 'qt6-tools' 'gtest' 'gmock' 'cmake')
-source=("$pkgname::git+https://github.com/web-eid/web-eid-app.git?signed#tag=$_rls_tag"
+source=("$pkgbase::git+https://github.com/web-eid/web-eid-app.git?signed#tag=$_rls_tag"
         "web-eid-libelectronic-id::git+https://github.com/web-eid/libelectronic-id.git"
         "web-eid-libpcsc-cpp::git+https://github.com/web-eid/libpcsc-cpp.git"
         "web-eid-libpcsc-mock::git+https://github.com/web-eid/libpcsc-mock.git")
@@ -20,27 +20,27 @@ validpgpkeys=(
 )
 
 prepare() {
-    cd "$srcdir/$pkgname"
-    [[ -d "$pkgname-build" ]] && rm -r "$pkgname-build"
-    mkdir "$pkgname-build"
+    cd "$srcdir/$pkgbase"
+    [[ -d "$pkgbase-build" ]] && rm -r "$pkgbase-build"
+    mkdir "$pkgbase-build"
 
     git submodule init
     git config submodule.lib/libelectronic-id.url $srcdir/web-eid-libelectronic-id
     git -c protocol.file.allow=always submodule update lib/libelectronic-id
     
-    cd "$srcdir/$pkgname/lib/libelectronic-id"
+    cd "$srcdir/$pkgbase/lib/libelectronic-id"
     git submodule init
     git config submodule.lib/libpcsc-cpp.url $srcdir/web-eid-libpcsc-cpp
     git -c protocol.file.allow=always submodule update
 
-    cd "$srcdir/$pkgname/lib/libelectronic-id/lib/libpcsc-cpp"
+    cd "$srcdir/$pkgbase/lib/libelectronic-id/lib/libpcsc-cpp"
     git submodule init
     git config submodule.tests/lib/libpcsc-mock.url $srcdir/web-eid-libpcsc-mock
     git -c protocol.file.allow=always submodule update
 }
 
 build() {
-    cd "$srcdir/$pkgname/$pkgname-build"
+    cd "$srcdir/$pkgbase/$pkgbase-build"
     export BUILD_NUMBER=${pkgver##*.}
     cmake .. -DCMAKE_BUILD_TYPE=Release \
              -DCMAKE_C_FLAGS:STRING="${CFLAGS} -ffile-prefix-map=$srcdir=." \
@@ -67,7 +67,7 @@ package_web-eid-native() {
 }
 
 package_web-eid-firefox() {
-    pkgdesc="WEB eID Firefox extension (signed)"
+    pkgdesc="Web eID Firefox extension (signed)"
     depends=(web-eid-native)
     arch=('any')
     cd "$srcdir/$pkgbase/$pkgbase-build"
@@ -79,7 +79,7 @@ package_web-eid-firefox() {
 }
 
 package_web-eid-chrome() {
-    pkgdesc="WEB eID extension from Chrome Web Store"
+    pkgdesc="Web eID extension from Chrome Web Store"
     depends=(web-eid-native)
     arch=('any')
     cd "$srcdir/$pkgbase/$pkgbase-build"
