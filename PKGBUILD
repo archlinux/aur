@@ -6,7 +6,7 @@
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-next-viewer-git
 pkgver=6.9.50471.6252c244f0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Second Life client with focus on performance and code correctness. - Git Source build"
 arch=('x86_64')
 url=https://www.alchemyviewer.org
@@ -36,7 +36,7 @@ sha256sums=('SKIP'
 pkgver() {
     cd "${pkgname}" || exit 1
     ( set -o pipefail
-        printf "%s.%s.%s" "$(cat indra/newview/VIEWER_VERSION.txt)" "$(git rev-list --count HEAD)" "$(git rev-parse --short main)"
+        printf "%s.%s.%s" "$(cat indra/newview/VIEWER_VERSION.txt)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     )
 }
 

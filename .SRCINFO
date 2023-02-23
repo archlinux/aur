@@ -1,7 +1,7 @@
 pkgbase = alchemy-next-viewer-git
 	pkgdesc = A Second Life client with focus on performance and code correctness. - Git Source build
 	pkgver = 6.9.50471.6252c244f0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.alchemyviewer.org
 	install = alchemy.install
 	arch = x86_64
