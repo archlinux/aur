@@ -8,7 +8,7 @@ url="http://agrum.gitlab.io/"
 depends=('python-pydot' 'python-matplotlib' 'python-six' 'ipython' 'python-ipykernel' 'python-pandas' 'python-scikit-learn' 'python-cairosvg' 'unixodbc')
 makedepends=('cmake')
 source=("https://gitlab.com/agrumery/aGrUM/-/archive/${pkgver}/aGrUM-${pkgver}.tar.bz2")
-sha256sums=('f5e9eec99d77b7f3e718464a8373b10e3a1d31d795281b402b0945f5864b9a2c')
+sha256sums=('95cae2656e35ef6a20193331c4fb92e1ecac3024ab15e871b2dbfe5da61e9f79')
 
 build() {
   cd "$srcdir/aGrUM-$pkgver"
