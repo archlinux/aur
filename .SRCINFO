@@ -1,6 +1,6 @@
 pkgbase = crypto-tracker-git
 	pkgdesc = This program allows you to track the value of multiple cryptocurrencies and output a JSON object that you can use in Waybar or similar programs.
-	pkgver = 0.1.r5.9b9862f
+	pkgver = 0.1.r7.737d7c0
 	pkgrel = 1
 	url = https://github.com/Nox04/crypto-tracker.git
 	arch = x86_64

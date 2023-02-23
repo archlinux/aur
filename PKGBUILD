@@ -1,6 +1,6 @@
 # Maintainer: Nox04 <contact@juanangarita.com>
 pkgname=crypto-tracker-git
-pkgver=0.1.r5.9b9862f
+pkgver=0.1.r7.737d7c0
 pkgrel=1
 epoch=
 pkgdesc="This program allows you to track the value of multiple cryptocurrencies and output a JSON object that you can use in Waybar or similar programs."
@@ -31,7 +31,7 @@ pkgver() {
 
 build() {
 	cd crypto-tracker
-	go build -o crypto-tracker
+	go build -o crypto-tracker -ldflags "-s -w"
 }
 
 package() {
