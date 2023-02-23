@@ -1,0 +1,22 @@
+pkgbase = libretro-mesen-s-git
+	pkgdesc = Super Nintendo Entertainment System core
+	pkgver = 0.4.0.r201.g32a7adf
+	pkgrel = 1
+	url = https://www.mesen.ca/
+	arch = aarch64
+	arch = armv7h
+	arch = i486
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	groups = libretro
+	license = GPL3
+	makedepends = git
+	depends = gcc-libs
+	depends = libretro-core-info
+	provides = libretro-mesen-s
+	conflicts = libretro-mesen-s
+	source = libretro-mesen-s::git+https://github.com/libretro/Mesen-S.git
+	b2sums = SKIP
+
+pkgname = libretro-mesen-s-git
