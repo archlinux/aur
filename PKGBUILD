@@ -14,8 +14,8 @@ pkgname=()
 [ "$_build_no_opt" -eq 1 ] && pkgname+=(tensorflow-rocm python-tensorflow-rocm)
 [ "$_build_opt" -eq 1 ] && pkgname+=(tensorflow-opt-rocm python-tensorflow-opt-rocm)
 
-pkgver=2.10.0
-_pkgver=2.10.0
+pkgver=2.11.0
+_pkgver=2.11.0
 pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
@@ -23,18 +23,18 @@ license=('APACHE')
 arch=('x86_64')
 depends=('c-ares' 'pybind11' 'openssl' 'lmdb' 'libpng' 'curl' 'giflib' 'icu' 'libjpeg-turbo' 'openmp')
 makedepends=('bazel' 'python-numpy' 'rocm-hip-sdk' 'rccl' 'git' 'miopen' 'python-pip' 'python-wheel'
-             'python-setuptools' 'python-h5py' 'python-keras-applications' 'python-keras-preprocessing'
-             'cython' 'patchelf' 'python-requests')
+             'python-installer' 'python-setuptools' 'python-h5py' 'python-keras-applications'
+             'python-keras-preprocessing' 'cython' 'patchelf' 'python-requests')
 optdepends=('tensorboard: Tensorflow visualization toolkit')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tensorflow/tensorflow/archive/v${_pkgver}.tar.gz"
+        https://github.com/bazelbuild/bazel/releases/download/5.4.0/bazel_nojdk-5.4.0-linux-x86_64
         fix-c++17-compat.patch
-        fix-cusolver-version.patch
-        "rocblas-version.patch::https://github.com/tensorflow/tensorflow/commit/322fe678e5b4c3b865774bf84c880030fc9eba24.patch")
+        fix-cusolver-version.patch)
 
-sha512sums=('bf8a6f16393499c227fc70f27bcfb6d44ada53325aee2b217599309940f60db8ee00dd90e3d82b87d9c309f5621c404edab55e97ab8bfa09e4fc67859b9e3967'
+sha512sums=('cda16db72a0ede72ac9f5e76c3a745ea9d72421fa40021303032f8fc3ac2755f64524f97a4629c18cf888f259027439b49ec921e0f5fd329a6ba060235a658d5'
+            'e2adb747cd1fe3c90686831703618af3f8bc8197a96d9e1e90e66db38dbc4e7a94d88dac755b25e288002983a87fcffbfb0d7c2e356d979d4635301c3daf9281'
             'f682368bb47b2b022a51aa77345dfa30f3b0d7911c56515d428b8326ee3751242f375f4e715a37bb723ef20a86916dad9871c3c81b1b58da85e1ca202bc4901e'
-            '6f42455db1db0a5cd58ab5fe5554317e9ff648c046bb81cef9b4c61cce8380da08b681f825544b5388f02da863ff19f642efa9459691cbcf8852a21bd0dc7447'
-            'SKIP')
+            '6f42455db1db0a5cd58ab5fe5554317e9ff648c046bb81cef9b4c61cce8380da08b681f825544b5388f02da863ff19f642efa9459691cbcf8852a21bd0dc7447')
 
 # consolidate common dependencies to prevent mishaps
 _common_py_depends=(python-termcolor python-astor python-gast03 python-numpy python-protobuf
@@ -71,21 +71,18 @@ prepare() {
   # Allow any bazel version
   echo "*" > tensorflow-${_pkgver}/.bazelversion
 
+  # Since Tensorflow is currently imcompatible with Bazel 6, we're going to use
+  # a local Bazel 5 to fix that. Stupid problems call for stupid solutions.
+  install -Dm755 "${srcdir}"/bazel_nojdk-5.4.0-linux-x86_64 bazel/bazel
+  export PATH="${srcdir}/bazel:$PATH"
+  bazel --version
+
   # Get rid of hardcoded versions. Not like we ever cared about what upstream
   # thinks about which versions should be used anyway. ;) (FS#68772)
   sed -i -E "s/'([0-9a-z_-]+) .= [0-9].+[0-9]'/'\1'/" tensorflow-${_pkgver}/tensorflow/tools/pip_package/setup.py
 
   # manually specify cusolver .so version
   patch -Np1 -i "${srcdir}/fix-cusolver-version.patch" -d tensorflow-${_pkgver}
-
-  cd "${srcdir}/tensorflow-${_pkgver}"
-  patch -Np1 -i "${srcdir}/rocblas-version.patch"
-
-  # change rocblas.h to rocblas/rocblas.h
-  sed -i 's/rocblas.h"/rocblas\/rocblas.h"/g' tensorflow/stream_executor/rocm/rocm_blas.h
-  sed -i 's/rocm\/include\/rocblas.h"/rocblas\/rocblas.h"/g' tensorflow/stream_executor/rocm/rocblas_wrapper.h
-
-  cd "${srcdir}"
 
   cp -r tensorflow-${_pkgver} tensorflow-${_pkgver}-rocm
   cp -r tensorflow-${_pkgver} tensorflow-${_pkgver}-opt-rocm
@@ -123,7 +120,7 @@ prepare() {
   # Does tensorflow really need the compiler overridden in 5 places? Yes.
   export CC=gcc-11
   export CXX=g++-11
-  export GCC_HOST_COMPILER_PATH=/usr/bin/${CC}
+  export GCC_HOST_COMPILER_PATH=/opt/cuda/bin/gcc
   export HOST_C_COMPILER=/usr/bin/${CC}
   export HOST_CXX_COMPILER=/usr/bin/${CXX}
   export TF_CUDA_CLANG=0  # Clang currently disabled because it's not compatible at the moment.
@@ -134,8 +131,8 @@ prepare() {
   # https://github.com/tensorflow/tensorflow/blob/1ba2eb7b313c0c5001ee1683a3ec4fbae01105fd/third_party/gpus/cuda_configure.bzl#L411-L446
   # according to the above, we should be specifying CUDA compute capabilities as 'sm_XX' or 'compute_XX' from now on
   # add latest PTX for future compatibility
-  export
-  TF_CUDA_COMPUTE_CAPABILITIES=sm_52,sm_53,sm_60,sm_61,sm_62,sm_70,sm_72,sm_75,sm_80,sm_86,sm_87,compute_87
+  # Valid values can be discovered from nvcc --help
+  export TF_CUDA_COMPUTE_CAPABILITIES=sm_52,sm_53,sm_60,sm_61,sm_62,sm_70,sm_72,sm_75,sm_80,sm_86,sm_87,compute_87
 
   export BAZEL_ARGS="--config=mkl -c opt"
 }
@@ -183,7 +180,7 @@ _package() {
   cp -r bazel-bin/tensorflow/include/* "${pkgdir}"/usr/include/tensorflow/
   # install python-version to get all extra headers
   WHEEL_PACKAGE=$(find "${srcdir}"/$1 -name "tensor*.whl")
-  pip install --ignore-installed --upgrade --root "${pkgdir}"/ $WHEEL_PACKAGE --no-dependencies
+  python -m installer --destdir="$pkgdir" $WHEEL_PACKAGE
   # move extra headers to correct location
   local _srch_path="${pkgdir}/usr/lib/python$(get_pyver)"/site-packages/tensorflow/include
   check_dir "${_srch_path}"  # we need to quit on broken search paths
@@ -228,7 +225,7 @@ _package() {
 
 _python_package() {
   WHEEL_PACKAGE=$(find "${srcdir}"/$1 -name "tensor*.whl")
-  pip install --ignore-installed --upgrade --root "${pkgdir}"/ $WHEEL_PACKAGE --no-dependencies
+  python -m installer --destdir="$pkgdir" $WHEEL_PACKAGE
 
   # create symlinks to headers
   local _srch_path="${pkgdir}/usr/lib/python$(get_pyver)"/site-packages/tensorflow/include/
