@@ -1,0 +1,23 @@
+pkgbase = php80-openswoole
+	pkgdesc = swoole PECL extension for PHP80
+	pkgver = 22.0.0
+	pkgrel = 1
+	url = http://pecl.php.net/package/openswoole
+	arch = i686
+	arch = x86_64
+	license = PHP
+	makedepends = php80
+	makedepends = brotli
+	makedepends = openssl
+	makedepends = c-ares
+	makedepends = gcc-libs
+	depends = php80
+	depends = brotli
+	depends = openssl
+	depends = c-ares
+	depends = gcc-libs
+	backup = etc/php80/conf.d/openswoole.ini
+	source = http://pecl.php.net/get/openswoole-22.0.0.tgz
+	sha256sums = bf1ebf241bd4a52b5b39102a37da8cfa4b3dfcbd2be4104adf408873dac89034
+
+pkgname = php80-openswoole
