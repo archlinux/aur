@@ -4,7 +4,7 @@
 # If you want to turn on additional patches there are switches below.
 pkgname=unreal-engine-4
 pkgver=4.27.2
-pkgrel=10
+pkgrel=11
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
@@ -112,13 +112,8 @@ prepare() {
   # Download Unreal Engine source or update if the folder exists
   if [[ ! -d "${pkgname}" ]]
   then
-    base_pkgver=$(echo ${pkgver} | cut -d '.' -f 1-2)
-    git clone --depth=1 --branch="${base_pkgver}-release" git@github.com:EpicGames/UnrealEngine "${pkgname}"
+    git clone --depth=1 --branch ${pkgver}-release git@github.com:EpicGames/UnrealEngine "${pkgname}"
     cd "${pkgname}" || return
-    rm -f .git/index.lock
-    git fetch --depth=1 origin tag ${pkgver}-release
-    git reset --hard ${pkgver}-release
-    
   else
     cd "${pkgname}" || return
     CURRENT_CLONED_VERSION="$(git describe --tags)"
