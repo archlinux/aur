@@ -1,13 +1,13 @@
 pkgname="techmino-git"
-pkgver=0.17.12.r4777.5b1eef89
-pkgrel=2
+pkgver=0.17.12.r4814.f5137601
+pkgrel=1
 pkgdesc="A collection of various modern block game rules, more ways to play, and awesome features added for a new experience."
 arch=('x86_64')
 url="https://github.com/26F-Studio/Techmino"
 license=('LGPL3')
 depends=('love')
 options=(!strip)
-makedepends=('git' 'zip' 'sed')
+makedepends=('git' 'zip' 'sed' 'lua')
 source=("git+https://github.com/26F-Studio/Techmino.git"
 	"git+https://github.com/26F-Studio/Zframework.git"
 	"CC_2022-12-13.zip::https://github.com/26F-Studio/cold_clear_ai_love2d_wrapper/releases/download/11.4/Linux.zip"
@@ -31,8 +31,12 @@ pkgver() {
 	cd ${srcdir}/Techmino
 	commit_id=$(git rev-parse --short HEAD)
 	commit_count=$(git rev-list --all --count)
-	version=$(sed -n '4p' version.lua)
-	version=${version:17:-7}
+	version=$(lua -e '
+	local version=require("version")["string"]
+	local len=string.len(version)
+	if string.find(version, "@") then len=len-5 end
+	print(string.sub(version, 2, len))
+	')
 	printf '%s.r%d.%s' $version $commit_count $commit_id
 }
 package() {
