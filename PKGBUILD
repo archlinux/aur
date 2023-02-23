@@ -18,12 +18,13 @@ _accent=1
 
 pkgname=catppuccin-kde-theme-git
 pkgver=0.2.3.r0.g06c8e8f
-pkgrel=1
+pkgrel=2
 pkgdesc="Soothing pastel theme for KDE"
 url="https://github.com/catppuccin/kde"
 license=('MIT')
 arch=('any')
 makedepends=('git' 'kpackage')
+provides=('catppuccin-kde-theme')
 source=("$pkgname::git+https://github.com/catppuccin/kde.git"
         color.sh)
 sha256sums=('SKIP'
