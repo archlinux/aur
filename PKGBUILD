@@ -1,7 +1,7 @@
 # Maintainer: Morteza NourelahiAlamdari <m@0t1.me>
 
 pkgname=tctl
-pkgver=1.17.2
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="Temporal CLI"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/temporalio/tctl/"
 license=('MIT')
 makedepends=('go' 'make')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ad887002f36d67a03739d08b098c474f4120008207316c987741395ce0b30889')
+sha256sums=('46d9bcd8c011205b81f4564023267638ddc1be64a28c61d5c531d0c60af1ad43')
 
 build() {
   cd "$pkgname-$pkgver"

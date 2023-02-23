@@ -1,13 +1,13 @@
 pkgbase = tctl
 	pkgdesc = Temporal CLI
-	pkgver = 1.17.2
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://github.com/temporalio/tctl/
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	makedepends = make
-	source = https://github.com/temporalio/tctl//archive/refs/tags/v1.17.2.tar.gz
-	sha256sums = ad887002f36d67a03739d08b098c474f4120008207316c987741395ce0b30889
+	source = https://github.com/temporalio/tctl//archive/refs/tags/v1.18.0.tar.gz
+	sha256sums = 46d9bcd8c011205b81f4564023267638ddc1be64a28c61d5c531d0c60af1ad43
 
 pkgname = tctl
