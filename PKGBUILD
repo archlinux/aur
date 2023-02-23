@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=imgbrd-grabber
 pkgver=7.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Very customizable imageboard/booru downloader with powerful filenaming features."
 arch=('x86_64')
 url="https://github.com/Bionus/imgbrd-grabber"
@@ -35,21 +35,21 @@ build() {
 
     npm install --no-optional
 
-    mkdir -p "$srcdir/build" && cd "$srcdir/build"
+    cd "$srcdir" 
 
-    cmake "$srcdir/${pkgname%}/src" \
+    cmake -S $pkgname/src -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DUSE_QSCINTILLA=0 \
     -DUSE_BREAKPAD=O \
     -Wno-dev
 
-    make
+    cmake --build build
 }
 
 package() {
-    cd "$srcdir/build"
+    cd "$srcdir"
 
-    make DESTDIR="$pkgdir/" install
+    DESTDIR="$pkgdir/" cmake --install build
 
     touch "$pkgdir/usr/share/Grabber/settings.ini"
 }
