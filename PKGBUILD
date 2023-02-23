@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=celeste
-pkgver=0.4.1
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="GUI file synchronization client that can sync with any cloud provider"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('libayatana-appindicator: option for tray icon'
             'libappindicator-gtk3: option for tray icon')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1ec8e1fac989de77878d3c71433bd305c398038c3d079de90af9305540c4c8cc')
+sha256sums=('7697447c9c10c9459f63fa0a9eb8c894518382a05b525909c7144f9f4c9ab798')
 
 prepare() {
   cd "$pkgname-$pkgver"
