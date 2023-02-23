@@ -1,0 +1,24 @@
+pkgbase = chatgpt-nativefier
+	pkgdesc = ChatGPT desktop built with nativefier (electron)
+	pkgver = 1
+	pkgrel = 1
+	url = https://chat.openai.com/
+	arch = armv7l
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	makedepends = unzip
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	optdepends = libindicator-gtk3
+	source = chatgpt-nativefier.png
+	source = chatgpt-nativefier.desktop
+	source = chatgpt-nativefier-inject.js
+	sha256sums = 9c55eca10f08761429d2b7b977c7aafc3c09789a9d1ec945d814d7de9d2b0203
+	sha256sums = 82655f9bff4a43d38234ae0dc8881e98a7773d5c78488db50c3cf84426012dec
+	sha256sums = 9a5703c6a8eafae1933108cbe04e8e829e1c83284323724147d7ca28bf356dd0
+
+pkgname = chatgpt-nativefier

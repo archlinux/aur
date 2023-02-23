@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=ChatGPT Nativefier
+Comment=ChatGPT desktop built with nativefier (electron)
+Exec=chatgpt-nativefier
+Icon=chatgpt-nativefier
+Encoding=UTF-8
+#StartupWMClass=whatsapp-nativefier-d40211
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Network;Chat;Application;
