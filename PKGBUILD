@@ -2,47 +2,54 @@
 
 pkgbase=libfive-git
 pkgname=('libfive-git' 'libfive-studio-git')
-pkgver=rip.rdmc.719.g5050cc0b
+pkgver=rip.dmc.r2166.g248c15c
 pkgrel=1
 arch=("i686" "x86_64")
-license=("GPL2")
 url="https://libfive.com"
-makedepends=("git" "cmake" "pkg-config" "boost" "eigen")
-source=("git+https://github.com/libfive/libfive.git" "libfive-studio.desktop")
-sha256sums=("SKIP" "cc241ab16395381a8f259e3567e3840b471e6f309b2af8ef4b567f312b5ab3de")
+license=("GPL2")
+makedepends=("git" "cmake" "boost" "eigen" "pkgconf")
+source=("git+https://github.com/libfive/libfive.git#commit=248c15c57abd2b1b9ea0e05d0a40f579d225f00f"
+        "libfive-studio.desktop")
+sha256sums=('SKIP'
+            'c0abfad437a3e658f1f81981ee5c79df2573440833a611b3e07de8b3f5c3b732')
 
 _pkgname=libfive
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
-    git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./g'
+    # https://wiki.archlinux.org/title/VCS_package_guidelines#Git
+    git -C "$srcdir/$_pkgname" describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    mkdir -p "$srcdir/$_pkgname/build"
-    cd "$srcdir/$_pkgname/build"
-    cmake ..
-    make
+    cmake \
+        -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+        -S "$srcdir/$_pkgname" \
+        -B "$srcdir/$_pkgname/build"
+
+    make -C "$srcdir/$_pkgname/build"
 }
 
 package_libfive-git() {
     pkgdesc="A software library and set of tools for solid modeling"
-    depends=("boost-libs" "guile" "libpng")
+    depends=("libpng" "python")
     provides=("libfive")
     conflicts=("libfive")
+    options=("!strip")
 
-    cd "$srcdir/$_pkgname/build"
-    DESTDIR="$pkgdir" cmake -DCMAKE_INSTALL_PREFIX=/usr -P libfive/cmake_install.cmake
+    DESTDIR="$pkgdir" cmake \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -P "$srcdir/$_pkgname/build/libfive/cmake_install.cmake"
 }
 
 package_libfive-studio-git() {
     pkgdesc="A minimalist GUI for solid modeling with the libfive kernel"
-    depends=("libfive-git" "qt5-base")
+    depends=("libfive-git" "qt5-base" "python" "guile")
     provides=("libfive-studio")
     conflicts=("libfive-studio")
 
-    cd "$srcdir/$_pkgname/build"
-    DESTDIR="$pkgdir" cmake -DCMAKE_INSTALL_PREFIX=/usr -P studio/cmake_install.cmake
+    DESTDIR="$pkgdir" cmake \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -P "$srcdir/$_pkgname/build/studio/cmake_install.cmake"
 
     # Rename Studio binary for uniqueness.
     mv "$pkgdir/usr/bin/Studio" "$pkgdir/usr/bin/libfive-studio"
