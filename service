@@ -19,6 +19,7 @@ Restart=on-failure
 RestartSec=2
 
 SuccessExitStatus=143
+RestartPreventExitStatus=78
 
 # more threads for this process
 TasksMax=65000
