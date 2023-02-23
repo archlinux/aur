@@ -1,0 +1,16 @@
+pkgbase = clamtk-gnome-git
+	pkgdesc = A simple plugin for clamtk for the Nautilus file manager.
+	pkgver = 6.15.r0.g3c6b582
+	pkgrel = 1
+	url = https://github.com/dave-theunsub/clamtk-gnome
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = clamtk
+	depends = python-nautilus
+	provides = clamtk-gnome
+	conflicts = clamtk-gnome
+	source = clamtk-gnome-git::git+https://github.com/dave-theunsub/clamtk-gnome.git
+	sha256sums = SKIP
+
+pkgname = clamtk-gnome-git
