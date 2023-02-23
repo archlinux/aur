@@ -15,7 +15,7 @@
 # ExecStop=/usr/bin/screen -X -S bridgedaemon quit
 
 pkgname=protonmail-bridge-nogui
-pkgver=2.3.0
+pkgver=3.0.16
 pkgrel=1
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=('x86_64')
@@ -50,5 +50,5 @@ package() {
     cd "${srcdir}"/proton-bridge/
     install -Dm644 ./LICENSE -t "${pkgdir}"/usr/share/licenses/"${pkgname}"/
     install -Dm644 ./Changelog.md -t "${pkgdir}"/usr/share/doc/"${pkgbame}"/
-    install -Dm755 ./proton-bridge "${pkgdir}"/usr/bin/protonmail-bridge
+    install -Dm755 ./bridge "${pkgdir}"/usr/bin/protonmail-bridge
 }
