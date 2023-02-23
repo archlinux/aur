@@ -6,14 +6,14 @@
 _quake=vkQuake
 pkgname=vkquake
 pkgver=1.22.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A modern Quake 1 engine. Forked from Fitzquake. This version contains Vulkan API support."
 arch=('x86_64')
 provides=('vkquake')
 url="https://github.com/Novum/vkquake"
 license=('GPL2')
-depends=('flac' 'glibc' 'libgl' 'libmad' 'libmikmod' 
-	 'libvorbis' 'libx11' 'opusfile' 'sdl2')
+depends=('flac' 'libmad'
+	 'libvorbis' 'opusfile' 'sdl2')
 makedepends=('vulkan-validation-layers' 'meson' 'vulkan-headers' 'zopfli' 'glslang' 'spirv-tools')
 install=$pkgname.install
 source=("https://github.com/Novum/vkQuake/archive/${pkgver}.tar.gz"
@@ -29,10 +29,7 @@ sha512sums=('f69e4341cef53b7e72ce37283d2ffff574325aa0b898c923ee3074b92bb917dcbe7
 build() {
   
   cd "$srcdir/$_quake-$pkgver"
-  if [[ -d build ]]
-  then
-    rm -rf build
-  fi
+  [[ -d build ]] || rm -rf build
   mkdir build && cd build
 
   export CFLAGS="$CFLAGS -DDO_USERDIRS=1"
