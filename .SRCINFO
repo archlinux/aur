@@ -1,0 +1,14 @@
+pkgbase = xnview-xnsketch-bin
+	pkgdesc = Allows you to turn your photos into cartoon or sketch images.
+	pkgver = 1.20
+	pkgrel = 1
+	url = https://www.xnview.com/en/xnsketch/
+	arch = x86_64
+	license = unknown
+	depends = gtk2
+	depends = qt5-sensors
+	depends = at-spi2-core
+	source = XnSketch-1.20.tgz::https://download.xnview.com/XnSketch-linux-x64.tgz
+	sha512sums = 56365b3977241a60f6b592c3dc41bb6e2d829aabc3061aaad10a660b9b070d33035f387c57ebfa8630ee796d80bcdef23b231608689821f0107eb9fa5ace62f7
+
+pkgname = xnview-xnsketch-bin
