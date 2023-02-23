@@ -2,7 +2,7 @@
 
 pkgname='geant4-full'
 pkgver=11.1.0
-pkgrel=8
+pkgrel=9
 pkgdesc="A simulation toolkit for particle physics interactions - includes all the optional libraries"
 depends=(
   'cmake>=3.16'
@@ -57,7 +57,7 @@ build() {
 
   cd $srcdir
   echo "
-export PATH=$PATH:/opt/Geant4/Geant4-v11.1.0/bin
+export PATH=\$PATH:/opt/Geant4/Geant4-v11.1.0/bin
 export G4NEUTRONHPDATA=/opt/Geant4/Libraries/G4NDL4.7
 export G4LEDATA=/opt/Geant4/Libraries/G4EMLOW8.2
 export G4LEVELGAMMADATA=/opt/Geant4/Libraries/PhotonEvaporation5.7
@@ -69,10 +69,11 @@ export G4SAIDXSDATA=/opt/Geant4/Libraries/G4SAIDDATA2.0
 export G4ABLADATA=/opt/Geant4/Libraries/G4ABLA3.1
 export G4INCLDATA=/opt/Geant4/Libraries/G4INCL1.0
 export G4TENDLDATA=/opt/Geant4/Libraries/G4TENDL1.4/
-export G4ENSDFSTATEDATA=/opt/Geant4/Libraries/G4ENSDFSTATE2.3" >> Geant4.sh
+export G4ENSDFSTATEDATA=/opt/Geant4/Libraries/G4ENSDFSTATE2.3
+export G4PARTICLEHPDATA=/opt/Geant4/Libraries/G4TENDL1.4" > Geant4.sh
 
   echo "
-setenv PATH $PATH:/opt/Geant4/Geant4-v11.1.0/bin
+setenv PATH \$PATH:/opt/Geant4/Geant4-v11.1.0/bin
 setenv G4NEUTRONHPDATA /opt/Geant4/data/G4NDL4.7
 setenv G4LEDATA /opt/Geant4/Libraries/G4EMLOW8.2
 setenv G4LEVELGAMMADATA /opt/Geant4/Libraries/PhotonEvaporation5.7
@@ -84,7 +85,8 @@ setenv G4SAIDXSDATA /opt/Geant4/Libraries/G4SAIDDATA2.0
 setenv G4ABLADATA /opt/Geant4/Libraries/G4ABLA3.1
 setenv G4INCLDATA /opt/Geant4/Libraries/G4INCL1.0
 setenv G4TENDLDATA /opt/Geant4/Libraries/G4TENDL1.4/
-setenv G4ENSDFSTATEDATA /opt/Geant4/Libraries/G4ENSDFSTATE2.3" >> Geant4.csh
+setenv G4ENSDFSTATEDATA /opt/Geant4/Libraries/G4ENSDFSTATE2.3
+setenv G4PARTICLEHPDATA /opt/Geant4/Libraries/G4TENDL1.4" > Geant4.csh
 
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
