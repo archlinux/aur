@@ -6,9 +6,9 @@
 
 major=22.40
 major_short=22.40
-minor=1518373
+minor=1538781
 ubuntu_ver=22.04
-repo_folder_ver=5.4.1
+repo_folder_ver=5.4.3
 
 pkgbase=amdgpu-pro-installer
 pkgname=(
@@ -45,22 +45,22 @@ source=(progl::https://raw.githubusercontent.com/Ashark/archlinux-amdgpu-pro/mas
 	https://repo.radeon.com/amdgpu/${repo_folder_ver}/ubuntu/pool/proprietary/v/vulkan-amdgpu-pro/vulkan-amdgpu-pro_${major_short}-${minor}.${ubuntu_ver}_amd64.deb)
 sha256sums=(feb74796c3152cbafaba89d96e68a152f209bd3058c7eb0413cbe1ab0764e96f
 	e32801c38b475cd8df17a407726b86db3de26410f563d688325b4d4314fc5354
-	9b7814d8f3b32aef4bf4550b51b38096b5cc28e1a1cf6d3318e42c044070ef6e
-	02bdb1eb1cae28794e6892b0892ce9d3e43ef6f7dd7d853b74a91f2ba49fab1c
-	343f98824a01e3a40081eba37b58d8e7bd611bd63b4a0e36a8dbc6a246e5283f
-	9b4cd2b0efd710c1679ca121b13eb18a36950c2342ef5fe8e3eb804e43341c0f
-	ec57ad22fa0bc100d13bcde32a556dc5868040ad684ebee2607661722e3d6a8a
-	49220c52a6c1d76ee8dc96a9874fdf2459b873e3df6523d6a9d63751101f94c7
-	df7032f54121147b8948413648e6d05dcac6fd657c36df95b44cbdccad79f771
-	a5349f7ea40034c72bd4b60541c20c5acbe3ebb93c906b421748808ac27c9e96
-	5e5410a0f53111c1af45a58360c17cdf3d97367ed3defd1deb8c07f67373b0ea
-	087f6044498c6e61650a7eee29248da2c913992bd271612145c4cc816cc9d884
-	d292baef8495b73300bb671532a8ea92916ed9f367ae130dcacc479c56ecc3ba
-	49db99f83d753d18b076fcf9dc1a1633f2a11ba2110268e7f7c0defdfd809301
-	b6c856043dddfb9af2af733a0972a4b5ceafa380496f1db9339875b730ea3ba9
-	d9a8a0c8e0a92a8031fceb1307723a5ac86db0f0bb471026aa750b6f881dab2f
-	68e025b363aa97b9dde6c957d7906157fdaf11f28ee2a94d4ee98cc3fd93234a
-	1754591537448202728d592c7f9af7f1acf5ccf8cbbca413ef9a00206e248267)
+	00511cf24beab5454613add6c36fffb2a3fd301b14269abdb62f542b472da529
+	72d206c2ea7557367fdf8bb5141df52940aa2683ce42ce8686ecea7927536f83
+	945a097b669e715396548088716c7d5eedb56a6c4dd07bb0d98abfd7bf60ade3
+	0c21f9f36369d01251da16f236552504060ab53c648b3b4bef8d9a750f186b37
+	695f997da0a5df7330f032676294a14e861b9448a444f49c23b1fc3ca79b9c28
+	ee11c56c88b166abf24bc6412503b36792de194083b661966b77288523d5e841
+	d4f931ff3b00aa42d676b77c277180d3432aac871081201c4e61a525a3651432
+	9a8cecaab9fe8ccf1a08d8ee3f9f7dbe781b7c9e51f09c23b3d14c6e18fc6128
+	efd66e55de7f79c43b67865ce8fe61196b1da352afc3e83d1c9adf74b80e649e
+	9069d508bedeb3ff3cfe0369bf21955b6cd9b74a503ecd46a9b9c492bcf5e5d3
+	513f68b08ddfb685dee15ff408858a43f0e63db72fa0820c83734e6434fab8b8
+	d147d180a0e9b6817550bd86d15e8bb2ac220685e3223d82aa608997767fe579
+	d3e131fec8060fe7d4d958e7481a45718d29bc9037e61893cf0ac80e48594deb
+	52f5d14478b7cba08bac97cbd6a84af54fc8c7c702101545f7396d179e8ab459
+	0890e600ad59017059567fad972c9fd0a45cb92101df54ca8bf9702d5e469b9c
+	56d4389d29788b22b852b5f3655f9c3bb1174649ef564d364348d3c295a49be6)
 
 
 
@@ -166,7 +166,7 @@ package_vulkan-amdgpu-pro () {
     license=('custom: AMDGPU-PRO EULA')
     provides=('vulkan-driver')
     depends=("vulkan-icd-loader" "wayland" "zlib")
-    optdepends=("openssl-1.1: Warning unspecified optdep description")
+    optdepends=("libssl1.1: Warning unspecified optdep description")
 
     extract_deb "${srcdir}"/vulkan-amdgpu-pro_${major_short}-${minor}.${ubuntu_ver}_amd64.deb
     move_libdir "opt/amdgpu-pro/lib/x86_64-linux-gnu" "usr/lib"
@@ -185,7 +185,7 @@ package_lib32-vulkan-amdgpu-pro () {
     license=('custom: AMDGPU-PRO EULA')
     provides=('lib32-vulkan-driver')
     depends=("lib32-vulkan-icd-loader" "lib32-wayland" "lib32-zlib")
-    optdepends=("lib32-openssl-1.1: Warning unspecified optdep description")
+    optdepends=("lib32-libssl1.1: Warning unspecified optdep description")
 
     extract_deb "${srcdir}"/vulkan-amdgpu-pro_${major_short}-${minor}.${ubuntu_ver}_i386.deb
     move_libdir "opt/amdgpu-pro/lib/i386-linux-gnu" "usr/lib32"
