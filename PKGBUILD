@@ -3,13 +3,13 @@
 pkgbase=python-reproject
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.9
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Python-based Astronomical image reprojection"
 arch=('i686' 'x86_64')
 url="http://reproject.readthedocs.io"
 license=('BSD')
-makedepends=('cython'
+makedepends=('cython>=0.29.32'
              'python-setuptools-scm'
              'python-extension-helpers'
              'python-wheel'
@@ -28,7 +28,7 @@ checkdepends=('python-pytest-arraydiff'
               'python-gwcs'
               'python-shapely')     # astropy-healpix scipy already in makedep
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('7ca84f61b5185e58c8dced85bae84356')
+md5sums=('97919e12687f55063c1fd47c9be9e965')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -39,6 +39,7 @@ prepare() {
 
     sed -i -e "/cython/s/==/>=/" -e "/oldest-supported-numpy/d" pyproject.toml
 #   sed -i "/NaNs/a \	ignore:Subclassing validator classes is not intended:DeprecationWarning" setup.cfg
+#   patch -Np1 -i "${srcdir}/doc-use-local-fits.patch"
 }
 
 build() {
@@ -46,14 +47,13 @@ build() {
     python -m build --wheel --no-isolation
 
     msg "Building Docs"
-    cd ${srcdir}/${_pyname}-${pkgver}/docs
-    PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make html
+    PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make -C docs html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed"
+    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv --color=yes
 }
 
 package_python-reproject() {
