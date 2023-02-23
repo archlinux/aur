@@ -54,8 +54,8 @@ package() {
 	cp -R "etc/device-quirks/" "${pkgdir}/etc/device-quirks/"
 
 	# Install firmware files
-	mkdir -p "${pkgdir}/usr/lib"
-	cp -R "usr/lib/firmware" "${pkgdir}/usr/lib/firmware/"
+	install -m644 -D -t  "${pkgdir}/usr/lib/firmware/dsdt/" usr/lib/firmware/dsdt/*
+	install -m644 -D -t  "${pkgdir}/usr/lib/firmware/edid/" usr/lib/firmware/edid/*
 
 	# Install license
 	install -m644 -D -t "${pkgdir}/usr/share/licenses/${_pkgbase}/" LICENSE
