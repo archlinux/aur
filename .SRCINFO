@@ -1,0 +1,15 @@
+pkgbase = huawei-wmi-dkms-git
+	pkgdesc = Huawei WMI laptop extras driver (DKMS master branch)
+	pkgver = r112.18c40de
+	pkgrel = 1
+	url = https://github.com/aymanbagabas/Huawei-WMI
+	arch = x86_64
+	license = GPLv2
+	makedepends = git
+	depends = dkms
+	provides = huawei-wmi-dkms
+	conflicts = huawei-wmi-dkms
+	source = huawei-wmi::git+https://github.com/aymanbagabas/Huawei-WMI#branch=master
+	sha256sums = SKIP
+
+pkgname = huawei-wmi-dkms-git
