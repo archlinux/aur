@@ -1,7 +1,7 @@
 pkgbase = python-mmpycocotools
 	pkgdesc = Official APIs for the MS-COCO dataset (openmm lab fork)
 	pkgver = 12.0.3
-	pkgrel = 1
+	pkgrel = 4
 	url = https://pypi.org/project/mmpycocotools
 	arch = x86_64
 	license = BSD
@@ -18,4 +18,3 @@ pkgbase = python-mmpycocotools
 	sha512sums = b0dc48c4d0fa9eaa101bf94dd75df4b23a9281ba714b0c1f01204d2d48c6f1de14cbe093590b16ef614168621146c9f708f6af2543561a56c76c81b66113c435
 
 pkgname = python-mmpycocotools
-
