@@ -1,0 +1,15 @@
+pkgbase = imagine-appimage
+	pkgdesc = PNG/JPEG optimization app
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = https://github.com/meowtec/Imagine
+	arch = x86_64
+	license = MIT
+	depends = hicolor-icon-theme
+	depends = zlib
+	conflicts = imagine-git
+	options = !strip
+	source = imagine-0.7.3.AppImage::https://github.com/meowtec/Imagine/releases/download/v0.7.3/Imagine-0.7.3.AppImage
+	sha256sums = 01f76a3d0863a675b837fe572dfd022547e5c30aac22af118354a6c3d3ff4578
+
+pkgname = imagine-appimage
