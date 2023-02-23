@@ -4,7 +4,7 @@
 # Contributor: Konstantinos Sideris <siderisk at auth dot gr>
 
 pkgname=nheko
-pkgver=0.11.2
+pkgver=0.11.3
 pkgrel=1
 pkgdesc="Desktop client for the Matrix protocol"
 arch=('x86_64')
@@ -21,11 +21,7 @@ optdepends=('qt-jdenticon: Auto-generated profile pictures (identicons)'
             'gst-plugin-qmlgl: Video calls and Screen sharing')
 makedepends=(cmake ninja boost qt5-tools fontconfig nlohmann-json asciidoc lmdbxx spdlog)
 source=("$pkgname-$pkgver.tar.gz::https://nheko.im/nheko-reborn/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha512sums=('67a634b9987afe34ce13ebf79c67464c9dcb2d72479937093ce1d1c8213e55ba7b4f3ff36684b71e7498bb133ab77d70cb5a8df538a42564cb78b604d65e0da9')
-
-prepare() {
-  mkdir -p build
-}
+sha512sums=('b305c1f9045469d8163ea9d851b74f524578cecfd4463e1c2f1a62206b7bf308e4cf537930e03f7f565edc1f72ef12ad9fc8d3950a73fdd11c35ae4fc62f8d2d')
 
 build() {
   cmake \
