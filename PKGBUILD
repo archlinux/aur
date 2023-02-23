@@ -1,19 +1,19 @@
 # Maintainer: Charlie Waters <cawiii at me dot com>
 
 pkgname=runelite-launcher-appimage
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc='Open source Old School RuneScape client. (AppImage Launcher)'
 arch=('x86_64' 'aarch64')
 license=('BSD')
 url='https://github.com/runelite/launcher'
-_appimage="RuneLite-${CARCH}_${pkgver}.AppImage"
+_appimage="RuneLite.AppImage"
 source=(runelite-launcher.desktop)
 source_x86_64+=("${_appimage}::${url}/releases/download/${pkgver}/RuneLite.AppImage")
 source_aarch64+=("${_appimage}::${url}/releases/download/${pkgver}/RuneLite-aarch64.AppImage")
 sha256sums=('SKIP')
-sha256sums_x86_64+=('173314f43950d4f50f56fed689989a60ec0e8a09504241b8ea7b8981dcc1bf0a')
-sha256sums_aarch64+=('19ec06e232e778f784c566e08cb3495b091d161193a81db0524e4ea5c3dee983')
+sha256sums_x86_64+=('2bfa2ef0175fc61bf604c0a5b6dab31e38b3cc9a14f69ce6913f71c70316a992')
+sha256sums_aarch64+=('650a911be9f855d5c1b53a2fbedd001bc1b598143ab820096002102db53c5d98')
 options=(!strip)
 optdepends=('gvfs: enable links')
 conflicts=('runelite-launcher')
@@ -38,4 +38,3 @@ package() {
         "${srcdir}/${_appimage}" \
         "${pkgdir}/usr/bin/runelite-launcher"
 }
-
