@@ -1,4 +1,4 @@
-# Maintainer: Julien Nicoulaud <julien.nicoulaud@gmail.com>
+# Submitter: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 # Maintainer: Mahor1221<mahor1221@gmail.com>
 
 pkgname=python-github-backup
