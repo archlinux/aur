@@ -17,7 +17,7 @@ sha256sums=('cc9d20733c9f9945054041ee6aeac7f4a4b7a675f297ffe388e4863fb84ed4a1')
 
 build() {
   arch-meson $pkgname-$pkgver build -Db_sanitize=none
-  meson compile -C build
+  meson compile -v -C build
 }
 
 package() {
