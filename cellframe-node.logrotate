@@ -1,7 +1,7 @@
 "/opt/cellframe-node/var/log/*.log" {
   copytruncate
-  hourly
-  maxsize 10M
+  daily
+  maxsize 1G
   rotate 4
   compress
   missingok
