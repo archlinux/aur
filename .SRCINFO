@@ -1,6 +1,6 @@
 pkgbase = earth-wallpaper-bin
 	pkgdesc = Simple and easy to use multifunctional wallpaper software 简单好用的多功能壁纸软件
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 0
 	url = https://github.com/Pylogmon/earth_wallpaper
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = earth-wallpaper-bin
 	depends = python-requests
 	depends = pyside6
 	depends = python-pysocks
-	source = earth-wallpaper-2.2.1.tar.gz::https://github.com/Pylogmon/earth_wallpaper/archive/refs/tags/2.2.1.tar.gz
+	source = earth-wallpaper-2.2.2.tar.gz::https://github.com/Pylogmon/earth_wallpaper/archive/refs/tags/2.2.2.tar.gz
 	source = earth-wallpaper.desktop
-	sha256sums = 557542ca60cc189df5dc7d9b466925dfd556b39f6fd35aecb60cd890d9eca2da
+	sha256sums = 6f4e88580bc72d479c8530431a4cba68acead72eb93c5d4799fc5bfebc3a157a
 	sha256sums = 13d8de079c942b804123b8eea64034bb2e7bb8bcc6563b5a4406ee7089dd1db5
 
 pkgname = earth-wallpaper-bin

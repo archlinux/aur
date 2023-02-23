@@ -4,7 +4,7 @@ pkgname=earth-wallpaper-bin
 appid=cn.huguoyang.earthwallpaper
 name=earth-wallpaper
 resname=earth_wallpaper
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=0
 pkgdesc="Simple and easy to use multifunctional wallpaper software 简单好用的多功能壁纸软件"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
     "$name-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
     "$name.desktop"
     )
-sha256sums=('557542ca60cc189df5dc7d9b466925dfd556b39f6fd35aecb60cd890d9eca2da'
+sha256sums=('6f4e88580bc72d479c8530431a4cba68acead72eb93c5d4799fc5bfebc3a157a'
             '13d8de079c942b804123b8eea64034bb2e7bb8bcc6563b5a4406ee7089dd1db5')
 
 package() {
