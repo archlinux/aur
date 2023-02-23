@@ -5,7 +5,7 @@
 
 pkgname=python-mbstrdecoder
 _pkg="${pkgname#python-}"
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='Multi-byte character string decoder'
 arch=('any')
@@ -16,9 +16,9 @@ makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel
 # checkdepends=(
 # 'python-pytest' 'python-pytest-runner' 'python-pytest-md-report'
 # 'python-faker')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/m/mbstrdecoder/mbstrdecoder-$pkgver.tar.gz"
-        "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/m/mbstrdecoder/mbstrdecoder-$pkgver.tar.gz.asc")
-sha256sums=('0a99413b92bbaddda89d376f496d710dc7131417e98414a756ebcd41374e068d'
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/m/$_pkg/$_pkg-$pkgver.tar.gz"
+        "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/m/$_pkg/$_pkg-$pkgver.tar.gz.asc")
+sha256sums=('c3a258e5e00192281eb774c00637f68d2d460854cea0c5c820aa241732aa0b51'
             'SKIP')
 validpgpkeys=('BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367') ## Tsuyoshi Thombashi
 
@@ -36,11 +36,11 @@ build() {
 
 package() {
   cd "$_pkg-$pkgver"
-  PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
+  python -m installer --destdir="$pkgdir/" dist/*.whl
   install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname"
   local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-  install -d "$pkgdir/usr/share/licenses/$pkgname/"
-  ln -s "$_site/$_pkg-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+  install -dv "$pkgdir/usr/share/licenses/$pkgname/"
+  ln -sv "$_site/$_pkg-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 # vim: ts=2 sw=2 et:

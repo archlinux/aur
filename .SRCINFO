@@ -1,6 +1,6 @@
 pkgbase = python-mbstrdecoder
 	pkgdesc = Multi-byte character string decoder
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/thombashi/mbstrdecoder
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = python-mbstrdecoder
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python-chardet
-	source = python-mbstrdecoder-1.1.1.tar.gz::https://files.pythonhosted.org/packages/source/m/mbstrdecoder/mbstrdecoder-1.1.1.tar.gz
-	source = python-mbstrdecoder-1.1.1.tar.gz.asc::https://files.pythonhosted.org/packages/source/m/mbstrdecoder/mbstrdecoder-1.1.1.tar.gz.asc
+	source = python-mbstrdecoder-1.1.2.tar.gz::https://files.pythonhosted.org/packages/source/m/mbstrdecoder/mbstrdecoder-1.1.2.tar.gz
+	source = python-mbstrdecoder-1.1.2.tar.gz.asc::https://files.pythonhosted.org/packages/source/m/mbstrdecoder/mbstrdecoder-1.1.2.tar.gz.asc
 	validpgpkeys = BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367
-	sha256sums = 0a99413b92bbaddda89d376f496d710dc7131417e98414a756ebcd41374e068d
+	sha256sums = c3a258e5e00192281eb774c00637f68d2d460854cea0c5c820aa241732aa0b51
 	sha256sums = SKIP
 
 pkgname = python-mbstrdecoder
