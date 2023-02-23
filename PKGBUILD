@@ -1,11 +1,10 @@
-# Maintainer: Zanny <lordzanny@gmail.com>
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: Rustmilian <######[@]######[.]me>
 
 pkgname=kcodecs-git
 pkgver=5.240.0_r481.gb52a6dc
 pkgrel=1
 pkgdesc='Plugins allowing Qt applications to access further types of images'
-arch=(x86_64)
+arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(qt6-base)
