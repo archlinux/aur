@@ -6,7 +6,7 @@ _gitbranch="bpir64"
 pkgname=bpir64-atf-git
 epoch=2
 pkgver=v2.8r12062.65943cb2c
-pkgrel=1
+pkgrel=2
 pkgdesc='ATF bpir64 images including fiptool'
 url='https://github.com/mtk-openwrt/arm-trusted-firmware.git'
 arch=(aarch64)
@@ -34,7 +34,7 @@ build() {
   sed -i '/-Werror/d' ./Makefile
   make HOSTCCFLAGS+="-D'SHA256(x,y,z)=nop'" LDLIBS=""
   cd "${srcdir}/${_gitname}"
-  for _atfdev in sdmmc; do
+  for _atfdev in sdmmc emmc; do
     _ATFBUILDARGS="PLAT=mt7622 BOOT_DEVICE=$_atfdev DDR3_FLYBY=1 LOG_LEVEL=40 MTK_BL33_IS_64BIT=1"
      sed -i 's/.*entry = get_partition_entry.*/\tentry = get_partition_entry("bpir64-'${_atfdev}'-fip");/' \
            plat/mediatek/mt7622/bl2_boot_mmc.c
