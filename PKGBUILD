@@ -11,8 +11,8 @@
 
 ### PACKAGE OPTIONS
 ## MERGE REQUESTS SELECTION
-# Merge Requests List: ('579' '1441' '1880' '2702' '2763')
-_merge_requests_to_use=('1441' '1880' '2702' '2763')
+# Merge Requests List: ('579' '1441' '1880' '2702')
+_merge_requests_to_use=('1441' '1880' '2702')
 
 ## Disable building the DOCS package (Enabled if not set)
 # Remember to unset this variable when producing .SRCINFO
@@ -30,7 +30,7 @@ if [ -n "$_disable_docs" ]; then
 else
   pkgname=(mutter-performance mutter-performance-docs)
 fi
-pkgver=43.3
+pkgver=43.3+r2+g12ce58dba
 pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -45,24 +45,20 @@ makedepends=(gobject-introspection git egl-wayland meson xorg-server
 if [ -n "$_enable_check" ]; then
   checkdepends=(xorg-server-xvfb pipewire-session-manager python-dbusmock zenity)
 fi
-_commit=97dd7fb106ea2ea2e6a1d61a2693a6ae76359688  # tags/43.2^3
+_commit=12ce58dba4f96f6a948c1d166646d263253e3ee0  # tags/43.3^2
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr1441.patch'
         'mr1880.patch'
-        'mr2702.patch'
-        'mr2763.patch'
-        'backport-for-43_2.patch')
+        'mr2702.patch')
 sha256sums=('SKIP'
-            'c0fc6220d9b07de4b0ee16570aa4a4fef5a02c9b97a5012b34895277a5435e87'
-            '20a90016dab0de9fb8e9cd7b38644e41d2006796f332b7a2d7c92bdf71bc3a4a'
-            '1b0647ab0d39db3b334e86c39dbb81b80030339c8d1a9cd43ff88003e966dec2'
-            '47cafca62343fac0f6828b28b20cb463b888264e58cfc171dee0c3b7210db523'
-            '4bf8048982e846145a514e9edf0aab5b6296c876accde8ba805ee976c3a8bc39')
+            'ca6ea6aaa7d8fb2089d110a5ba48906caa29e6f240e1debd19bf62ea3a74c824'
+            '37586730b26c476175d508288d537a38e3e828467163c2e7d91f1df76fd12cd2'
+            '917a3117a3f56245df47a4bac7affeb4bd91f0db2c6726e37b10e89fba9faf9d')
 
-# pkgver() {
-#   cd $pkgname
-#   git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
-# }
+pkgver() {
+  cd $pkgname
+  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
+}
 
 pick_mr() {
   for mr in "${_merge_requests_to_use[@]}"; do
@@ -141,17 +137,6 @@ prepare() {
   # Comment: Was reverted: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/833
   #          If you use stenography software or play hardcore rhythm games like Lunatic Rave 2/osumania, use it.
   pick_mr '579' ce86f90efbaa51522ba14c5b4cad933c2106de42 'revert'
-
-  # Title: Backports for 43.3
-  # Author: Robert Mader <robert.mader@posteo.de>
-  # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2763
-  # Type: 1
-  # Status: 4
-  pick_mr '2763' 'mr2763.patch' 'patch'
-
-  # Title: Backports for 43.2^3
-  # Collector: Mingi Sung <fiestalake@disroot.org>
-  pick_mr '2763' 'backport-for-43_2.patch' 'patch'
 
   # Title: Draft: Dynamic triple/double buffering (v4)
   # Author: Daniel van Vugt <daniel.van.vugt@canonical.com>
