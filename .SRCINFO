@@ -1,0 +1,16 @@
+pkgbase = xmmplayer
+	pkgdesc = plugin for XMMS that allows you to play video files from within XMMS using MPlayer as a back-end
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://www.xmms.org
+	arch = x86_64
+	license = GPL
+	makedepends = python2
+	depends = xmms
+	depends = mplayer
+	source = https://manualinux.eu/archivos/xmmplayer-0.3.3.tar.bz2
+	source = https://manualinux.eu/parches/xmmplayer-0.3.3_MKV.diff
+	md5sums = 4103a72283590474a98fe6ab60439efe
+	md5sums = f02ff73c496d0b5d3d51525fcd3e53bb
+
+pkgname = xmmplayer
