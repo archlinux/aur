@@ -1,6 +1,6 @@
 pkgbase = crosswords-puzzle-sets-xword-dl
 	pkgdesc = English puzzles from xword-dl for the app Crosswords
-	pkgver = 0.4.1
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://gitlab.gnome.org/jrb/puzzle-sets-xword-dl
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = crosswords-puzzle-sets-xword-dl
 	makedepends = meson
 	depends = crosswords
 	depends = xword-dl
-	source = https://gitlab.gnome.org/jrb/puzzle-sets-xword-dl/-/archive/0.4.1/puzzle-sets-xword-dl-0.4.1.tar.gz
-	b2sums = 67e56219c075e4c6a25e7d67c58ae31cd276ac45a432d05cf84a94a9f6fb54337b45da4814ae007963c1aafd7353f8fca9cc97b99a294a5862cedf44182d6069
+	source = https://gitlab.gnome.org/jrb/puzzle-sets-xword-dl/-/archive/0.4.3/puzzle-sets-xword-dl-0.4.3.tar.gz
+	b2sums = 0f8f5b378ac323cb26f2eb4f71efc4af168243a1c320366538bb38c6ffb670db98fe296901b5de65342e757292bde5c08fbf15d122256536a28ba3d6cd6988c5
 
 pkgname = crosswords-puzzle-sets-xword-dl
