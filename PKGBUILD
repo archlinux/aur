@@ -3,6 +3,7 @@ pkgname=kipr-git
 pkgver=0.3.0
 pkgrel=2
 pkgdesc='Command Line Password Manager'
+url='https://github.com/grahamking/kipr'
 license=('MIT')
 arch=('any')
 source=("$pkgname::git+https://github.com/grahamking/kipr")
