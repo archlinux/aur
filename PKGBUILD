@@ -2,8 +2,8 @@
 
 _basename=jitsi
 _pkgname=videobridge
-_tag=2.2-70-g0aa0b1f6
-_version=2.2+70+g0aa0b1f6
+_tag=2.2-81-g99b20c62
+_version=2.2+81+g99b20c62
 
 pkgname=${_basename}-${_pkgname}-nightly
 pkgver=${_version}
@@ -71,6 +71,6 @@ package() {
 sha256sums=('SKIP'
             '0bd385d7444211b5f28d332dad263e9b3683fc27942926ac614cfa32f4a3f2f8'
             'cc9fbf77497bce3c9673b2d144928f11cdd0c0823940c2b60c8369a2f086b9b7'
-            '10ff637b922a28774ac83e0ec4b0a9bdadef2c9ad85588e3ff3829c12bdad71b'
+            '70412a3894300f86a997ee926db87bb6148990a73dd71119f29a50286f919699'
             '998cbc64def56ab98080ff7150dd0913a5e10325cd2b038cf3db14baf8cb19fc'
             '5d168a9155a46b72cd26b921b185be20f5c2e1d27ee098feaad5a941dd554d43')
