@@ -1,11 +1,10 @@
 --- a/csr	2018-08-23 23:44:33.000000000 +0200
 +++ b/csr	2023-02-17 12:39:38.186297609 +0100
-@@ -66,6 +66,18 @@ while [ ! "$SAN" = "" ]; do
+@@ -66,6 +66,17 @@ while [ ! "$SAN" = "" ]; do
          SANAMES="$SANAMES,DNS:$SAN"
      fi
  done
 +SAN=1        # bogus value to begin the loop
-+SANAMES=""   # sanitize
 +while [ ! "$SAN" = "" ]; do
 +    printf "SubjectAltName: IP:"
 +    read SAN

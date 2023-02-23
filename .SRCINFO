@@ -1,7 +1,7 @@
 pkgbase = cacert-csr
 	pkgdesc = CAcert Certificate Signing Request Generator
 	pkgver = 0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.cacert.org/CSRGenerator
 	arch = any
 	license = MIT
@@ -9,6 +9,6 @@ pkgbase = cacert-csr
 	source = cacert-csr-0.1::http://svn.cacert.org/CAcert/Software/CSRGenerator/csr
 	source = san-ip.patch
 	sha256sums = 4b17e7cb6bc53cc704f1c3877f5eb0fd7df0f639f930d2013f018a00eeca191f
-	sha256sums = 89ea5fe1ecfb12c55c3fc9a2f49c429f3df4cbe0778925eba56c87204740162c
+	sha256sums = c96fc13f3184f6c8a0217643e9c1c5a2ab3231e63c47276aa1baa98edd72159a
 
 pkgname = cacert-csr
