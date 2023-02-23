@@ -6,7 +6,7 @@
 pkgname=weewx
 _MAJOR=4
 _MINOR=10
-_PATCH=1
+_PATCH=2
 pkgver=$_MAJOR.$_MINOR.$_PATCH
 
 function _dl_url {
@@ -41,7 +41,7 @@ source=("$pkgname-$pkgver.tar.xz::$(_dl_url $_MAJOR $_MINOR $_PATCH)"
         "weewxd"
         "wunderfixer"
         "weewx.service")
-sha512sums=('14faab47b453db05a753026731d226647e8c5dd72d85b72cd41e1e6230e47ad342b9cc71efc529375be33f151275afd06c3bf4587526682b4a677612145ca5f2'
+sha512sums=('8fca9cd7720a29687a0d900e4d89ec2ce5ca5d2aa36bc5b5909ea14ecb849cdbdb6e699cf1c3a0d5505c89ad8c309517db32fd8dc4a0ae4704dfd5ed0cc5747f'
             'SKIP'
             'SKIP'
             'SKIP'
