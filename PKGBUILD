@@ -29,6 +29,7 @@ build() {
       -DPARAVIEW_PLUGIN_DISABLE_XML_DOCUMENTATION=ON \
       -DPARAVIEW_USE_VTKM=OFF \
       -DPARAVIEW_BUILD_WITH_EXTERNAL=ON \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_exprtk=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_ioss=OFF \
       ..
     WINEPATH="/usr/${_arch}/bin;${PWD}/bin" make
