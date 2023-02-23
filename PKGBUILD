@@ -9,13 +9,14 @@ BUILDENV+=(!check)
 _pyname=fontPens
 pkgname=python-${_pyname,,}
 pkgver=0.2.4
-pkgrel=3
-pkgdesc='A collection of classes implementing the pen protocol for manipulating glyphs.'
+pkgrel=4
+pkgdesc='A collection of classes implementing the pen protocol for manipulating glyphs'
 arch=(any)
-url='https://github.com/robotools/$_pyname'
+url="https://github.com/robotools/$_pyname"
 license=(BSD)
 depends=(python-fonttools)
-makedepends=(python-setuptools)
+makedepends=(python-{build,installer,wheel}
+            python-setuptools)
 checkdepends=(python-fontparts
               python-pytest)
 _archive="$_pyname-$pkgver"
@@ -24,7 +25,7 @@ sha256sums=('a6d9a14573b3450f3313d69523f9006028c21fc7aef5d35333b87aab7f2b41fd')
 
 build() {
 	cd "$_archive"
-	python setup.py build
+	python -m build -wn
 }
 
 check() {
@@ -34,7 +35,7 @@ check() {
 
 package() {
 	cd "$_archive"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer -d "$pkgdir" dist/*.whl
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.txt
 }
 
