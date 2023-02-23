@@ -1,7 +1,7 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 pkgname=jitsi-meet-turnserver-git
-pkgver=1.0.6836+0+g48a6472b3
+pkgver=1.0.7009+0+gc641835d0
 pkgrel=1
 pkgdesc="Jitsi Meet Prosody Plugins git build"
 arch=('any')
