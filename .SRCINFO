@@ -1,7 +1,7 @@
 pkgbase = lb-planner-git
 	pkgdesc = a Planning tool for students at the TGM Vienna (unstable version)
 	pkgver = r644.75110dc
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/necodeIT/lb_planner
 	arch = any
 	license = CC-NC-SA 4.0
@@ -16,7 +16,7 @@ pkgbase = lb-planner-git
 	depends = xz
 	depends = xdg-user-dirs
 	provides = lb-planner
-	source = lb-planner::git+https://github.com/necodeIT/lb_planner.git
+	source = lb-planner::git+https://github.com/necodeIT/lb_planner.git#branch=app
 	source = lb-planner.desktop
 	sha256sums = SKIP
 	sha256sums = 3cdcb4b0c0a92711f2e3c2db94e6a18915df375de0a7265487fa4372136397f1
