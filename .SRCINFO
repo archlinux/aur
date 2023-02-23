@@ -1,5 +1,5 @@
 pkgbase = libfive-git
-	pkgver = rip.rdmc.719.g5050cc0b
+	pkgver = rip.dmc.r2166.g248c15c
 	pkgrel = 1
 	url = https://libfive.com
 	arch = i686
@@ -7,19 +7,18 @@ pkgbase = libfive-git
 	license = GPL2
 	makedepends = git
 	makedepends = cmake
-	makedepends = pkg-config
 	makedepends = boost
 	makedepends = eigen
-	source = git+https://github.com/libfive/libfive.git
+	makedepends = pkgconf
+	source = git+https://github.com/libfive/libfive.git#commit=248c15c57abd2b1b9ea0e05d0a40f579d225f00f
 	source = libfive-studio.desktop
 	sha256sums = SKIP
-	sha256sums = cc241ab16395381a8f259e3567e3840b471e6f309b2af8ef4b567f312b5ab3de
+	sha256sums = c0abfad437a3e658f1f81981ee5c79df2573440833a611b3e07de8b3f5c3b732
 
 pkgname = libfive-git
 	pkgdesc = A software library and set of tools for solid modeling
-	depends = boost-libs
-	depends = guile
 	depends = libpng
+	depends = python
 	provides = libfive
 	conflicts = libfive
 
@@ -27,6 +26,8 @@ pkgname = libfive-studio-git
 	pkgdesc = A minimalist GUI for solid modeling with the libfive kernel
 	depends = libfive-git
 	depends = qt5-base
+	depends = python
+	depends = guile
 	provides = libfive-studio
 	conflicts = libfive-studio
 
