@@ -3,7 +3,7 @@
 _pkgname=qmplay2
 _pkgname2=QMPlay2
 pkgname=$_pkgname-appimage
-pkgver=22.08.21
+pkgver=23.02.05
 pkgrel=1
 _srcpkgver=$pkgver-1
 _appimage=${_pkgname}-${_srcpkgver}.AppImage
@@ -17,7 +17,7 @@ provides=('qmplay2')
 optdepends=('pulseaudio: PulseAudio support')
 source=($_appimage::https://github.com/zaps166/QMPlay2/releases/download/$pkgver/QMPlay2-$_srcpkgver-x86_64.AppImage)
 noextract=("${_appimage}")
-sha512sums=(7515a6660a2694fb81d19e74717dad6916ce90633ecb39e622f8e1988cae44b63cb5ff1fdbf2591d4b03031ae8ebb0587f4441b0b5aa8898288bd7633f5def5d) 
+sha512sums=(b92389aad9ad729965b6593ebd3b80fd53e877ce9317822e042a02481285558e140bb5358ceb2799dc67f436382d8fe35c45d9892f7783440b9b389baf2e9ea6) 
 options=("!strip")
 _desktopfile=QMPlay2.desktop
 _installdir=/opt/$pkgname
