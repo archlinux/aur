@@ -1,6 +1,6 @@
 pkgbase = jitsi-videobridge-git
 	pkgdesc = Jitsi Meet Videobridge git build
-	pkgver = 2.2+63+g252d14bc3
+	pkgver = 2.2+81+g99b20c621
 	pkgrel = 1
 	url = https://jitsi.org/jitsi-meet/
 	install = install
