@@ -1,7 +1,7 @@
 # Maintainer: Samsagax <samsagax at gmail dot com>
 _pkgbase=chimeraos-device-quirks
 pkgname=${_pkgbase}-git
-pkgver=r23.7370e02
+pkgver=r24.34bf651
 pkgrel=1
 pkgdesc="A collection of device specific configuration files"
 arch=('any')
@@ -50,12 +50,12 @@ package() {
 	install -m644 -D -t "${pkgdir}/usr/lib/sysctl.d/" usr/lib/sysctl.d/*
 
 	# Install device scripts
-	mkdir "${pkgdir}/etc"
-	cp -R "etc/device-quirks" "${pkgdir}/etc/device-quirks"
+	mkdir -p "${pkgdir}/etc"
+	cp -R "etc/device-quirks/" "${pkgdir}/etc/device-quirks/"
 
 	# Install firmware files
-	mkdir -p "${pkgdir}/lib/firmware"
-	cp -R "lib/firmware" "${pkgdir}/lib/firmware"
+	mkdir -p "${pkgdir}usr/lib"
+	cp -R "usr/lib/firmware" "${pkgdir}usr/lib/firmware/"
 
 	# Install license
 	install -m644 -D -t "${pkgdir}/usr/share/licenses/${_pkgbase}/" LICENSE
