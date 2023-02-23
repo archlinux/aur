@@ -4,7 +4,7 @@
 
 pkgname=ncnn-git
 _pkgname=ncnn
-pkgver=20220729.r43.gc33cbc924
+pkgver=20230223.r0.gff80ac295
 pkgrel=1
 pkgdesc="High-performance neural network inference framework optimized for the mobile platform"
 url="https://github.com/Tencent/ncnn"
@@ -29,21 +29,15 @@ prepare() {
     cd "${srcdir}/ncnn"
 
     # init submodules
-    git config submodule.glslang.url "$srcdir/glslang"
-    git config submodule.python/pybind11.url "$srcdir/pybind11"
+    git config --file=.gitmodules submodule.glslang.url "$srcdir/glslang"
+    git config --file=.gitmodules submodule.python/pybind11.url "$srcdir/pybind11"
 
     git -c protocol.file.allow=always submodule update --init
 }
 
 build() {
-    cd "${srcdir}/ncnn"
-    if [[ ! -d build ]]
-    then
-        mkdir build && cd build
-    else
-        cd build
-    fi
-    cmake \
+    cd "${srcdir}"
+    cmake -S $_pkgname -B build \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE='Release' \
         -DNCNN_BUILD_EXAMPLES=OFF \
@@ -55,13 +49,12 @@ build() {
         -DNCNN_STRING=ON \
         -DNCNN_BUILD_TOOLS=1 \
         -DGLSLANG_TARGET_DIR=/usr/lib/cmake \
-        -Wno-dev \
-        ..
-    make
+        -Wno-dev
+    cmake --build build
 }
 
 package() {
-    cd "${srcdir}/ncnn/build"
-    make DESTDIR="${pkgdir}" install
+    cd "${srcdir}"
+    DESTDIR="${pkgdir}" cmake --install build
     install -Dm644 "${srcdir}/ncnn/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
