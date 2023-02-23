@@ -1,0 +1,14 @@
+pkgbase = avidemux2-appimage
+	pkgdesc = Simple video editor
+	pkgver = 2.8.1
+	pkgrel = 1
+	url = http://www.avidemux.org
+	arch = x86_64
+	license = GPL2
+	depends = hicolor-icon-theme
+	depends = zlib
+	options = !strip
+	source = avidemux-2.8.1.AppImage::https://github.com/mean00/avidemux2/releases/download/2.8.1/avidemux_2.8.1.appImage
+	sha256sums = 4e685fbad0b59d007c5a23ab5fd47948ea5979601e693521f7b842edd4d768a3
+
+pkgname = avidemux2-appimage
