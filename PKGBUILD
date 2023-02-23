@@ -2,8 +2,8 @@
 
 pkgbase=purc
 pkgname=purc
-pkgver=0.9.5
-pkgrel=1
+pkgver=0.9.6
+pkgrel=0
 pkgdesc="The prime HVML interpreter for C Language."
 arch=('x86_64' 'aarch64' 'mips64' 'powerpc' 'powerpc64le')
 url="https://github.com/HVML/PurC"
@@ -21,7 +21,7 @@ backup=()
 options=('!strip')
 #install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/ver-${pkgver}.tar.gz")
-sha256sums=('aa5bc58dc0475f2defe5638f6e12d8edf4a739d6bc2bc6fb28e6d87ef4f37894')
+sha256sums=('3b648e546bb8b43ef32f15b8dfd3fe37d1cfe22202f1230697be51469b6fdf5c')
 
 build() {
     cd "${srcdir}/PurC-ver-${pkgver}/"
