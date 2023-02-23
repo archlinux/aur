@@ -1,0 +1,22 @@
+pkgbase = chr-editor-git
+	pkgdesc = Console-based editor designed for simplified use like gedit
+	pkgver = r492.cd6cac3
+	pkgrel = 1
+	url = https://github.com/istoph/editor
+	arch = x86_64
+	license = Boost
+	makedepends = meson
+	makedepends = git
+	depends = tuiwidgets-git
+	depends = qt5-base
+	depends = icu
+	depends = gcc-libs
+	provides = chr-editor
+	conflicts = chr-editor
+	options = !strip
+	source = git+https://github.com/istoph/editor.git
+	source = meson-install.patch
+	sha512sums = SKIP
+	sha512sums = 10f3b013970d7e82f885facd4d666251ed1f0df35ee50d746ff9c5c3a91db92fd43a60deac50e1c376291236a3798630923d81e880bb4aea2c50511ef06545dd
+
+pkgname = chr-editor-git
