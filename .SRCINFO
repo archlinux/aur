@@ -8,6 +8,7 @@ pkgbase = linux-usermode
 	makedepends = bc
 	makedepends = inetutils
 	depends = coreutils
+	options = !debug
 	source = https://www.kernel.org/pub/linux/kernel/v6.x/linux-6.2.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v6.x/linux-6.2.tar.sign
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/6.2/um-patches/0001-um-Support-LTO.patch
