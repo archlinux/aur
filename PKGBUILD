@@ -20,7 +20,7 @@
 
 pkgname=ffmpeg-mpp
 pkgver=5.1.2
-pkgrel=6
+pkgrel=7
 epoch=2
 pkgdesc='Complete solution to record, convert and stream audio and video supporting rockchip MPP hardware decoder'
 arch=(aarch64 arm7f)
@@ -61,7 +61,6 @@ depends=(
   libvorbisenc.so
   libvorbis.so
   libvpx.so
-  libvulkan.so
   libwebp
   libx11
   libx264.so
@@ -93,7 +92,6 @@ makedepends=(
   mesa
   nasm
   opencl-headers
-  vulkan-headers
   mpp-git
 )
 optdepends=(
@@ -193,6 +191,7 @@ build() {
     --enable-opengl \
     --enable-shared \
     --enable-version3 \
+    --disable-vulkan \
     --enable-rkmpp $CONFIG
   make -j$(nproc)
   make tools/qt-faststart
