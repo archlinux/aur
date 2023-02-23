@@ -1,13 +1,13 @@
 # Maintainer: hzf <888iagiag888@gmail.com>
 pkgname=linux-wallpaperengine-git
 _pkgname=linux-wallpaperengine
-pkgver=r245.2a6f7b7
+pkgver=r334.5e384d9
 pkgrel=1
 pkgdesc="use steam's wallpaperengine on linux"
 arch=('x86_64')
 url="https://github.com/Almamu/linux-wallpaperengine"
 license=('GPL3')
-depends=('lz4'  'ffmpeg' 'freeimage' 'xorg-xrandr' 'glfw-x11' 'glew' 'freeglut' )
+depends=('lz4'  'ffmpeg' 'mpv' 'freeimage' 'xorg-xrandr' 'glfw-x11' 'glew' 'freeglut' )
 makedepends=('git' 'cmake' 'sdl_image' 'sdl_mixer' 'sdl_sound' 'glm')
 source=("${pkgname}::git+https://github.com/Almamu/linux-wallpaperengine.git#branch=main")
 sha512sums=('SKIP')
