@@ -3,7 +3,7 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=r23233.cd3a0a737
+pkgver=r23282.7afa8eb0f
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
@@ -12,25 +12,12 @@ license=('GPL2')
 provides=('yuzu' 'yuzu-cmd')
 conflicts=('yuzu-git' 'yuzu-canary-git' 'yuzu')
 options=("!lto") #ThinLTO is already set
-depends=('desktop-file-utils'
-         'fmt'
-         'glslang'
-         'libfdk-aac'
-         'libusb'
-         'libxkbcommon-x11'
-         'lz4'
+depends=('fmt'
          'mbedtls'
-         'openssl'
-         'opus'
-         'qt5-base'
+         'libinih'
          'qt5-multimedia'
-         'qt5-tools'
-         'qt5-wayland'
          'qt5-webengine'
          'sdl2'
-         'shared-mime-info'
-         'zlib'
-         'zstd'
          'enet'
          'boost-libs')
 makedepends=('boost'
@@ -42,6 +29,7 @@ makedepends=('boost'
              'git'
              'ninja'
              'nlohmann-json'
+             'qt5-tools'
              'robin-map')
 source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu-mainline"
         'git+https://github.com/lsalzman/enet.git'
@@ -116,13 +104,12 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/$_pkgname"
+    cd "$srcdir"
     
-    if [[ -d build ]]; then
-        rm -rf build
-    fi
-    mkdir -p build && cd build
-    cmake .. -GNinja \
+    [[ -d build ]] && rm -rf build
+
+    cmake -S $_pkgname -B build \
+      -GNinja \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_C_COMPILER=clang \
       -DCMAKE_CXX_COMPILER=clang++ \
@@ -143,17 +130,11 @@ build() {
       -DYUZU_USE_BUNDLED_FFMPEG=OFF \
       -DYUZU_USE_BUNDLED_QT=OFF \
       -DYUZU_TESTS=OFF \
-      -DBUILD_TESTS=OFF \
       -Wno-dev
-    ninja
-}
-
-check() {
-    cd "$srcdir/$_pkgname/build"
-    ninja test
+    cmake --build build
 }
 
 package() {
-    cd "$srcdir/$_pkgname/build"
-    DESTDIR="$pkgdir" ninja install
+    cd "$srcdir"
+    DESTDIR="$pkgdir" cmake --install build
 }
