@@ -2,8 +2,8 @@
 # Contributor: Jan Dolinar <dolik.rce@gmail.com>
 # Contributor: Andre Klitzing <andre () incubo () de>
 pkgname=dput
-pkgver=1.1.2
-pkgrel=4
+pkgver=1.1.3
+pkgrel=1
 pkgdesc="Debian package upload tool"
 arch=('any')
 url="http://packages.qa.debian.org/dput"
@@ -14,8 +14,8 @@ source=(
   http://http.debian.net/debian/pool/main/d/${pkgname}/${pkgname}_${pkgver}.tar.xz
   pyxdg-compatibility.patch
 )
-sha256sums=('cfdf60ab70806095b90dd6b266c9e397b30b2a8ac69e3660e4cb70db18636432'
-            '2e19cb96d405f25b42ff2e4b1ac4651e4c6a6f96693d200170a8f69f55b33117')
+sha256sums=('ef92187cc843b9703b4fb94b5c06a31399ff714ba7ebbcc637358757613fede2'
+            'a6d350af5eba4cf5b5d3cd9e784a77f0a7b3b5fcdacd304245713c1a85540abf')
 
 prepare() {
   cd "$pkgname-$pkgver"
