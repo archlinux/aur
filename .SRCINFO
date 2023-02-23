@@ -1,6 +1,6 @@
 pkgbase = jicofo-nightly
 	pkgdesc = JItsi Meet COnference FOcus nightly build
-	pkgver = 1.0+987
+	pkgver = 1.0+996
 	pkgrel = 1
 	url = https://jitsi.org/jitsi-meet/
 	install = install
@@ -17,14 +17,14 @@ pkgbase = jicofo-nightly
 	backup = etc/jicofo-nightly/config
 	backup = etc/jicofo-nightly/logging.properties
 	backup = etc/jicofo-nightly/jicofo.conf
-	source = jicofo-nightly::git+https://github.com/jitsi/jicofo#tag=987
+	source = jicofo-nightly::git+https://github.com/jitsi/jicofo#tag=996
 	source = config
 	source = service
 	source = sysusers.conf
 	source = tmpfiles.conf
 	sha256sums = SKIP
 	sha256sums = c258808de5031c0d72df0aedfd521d07e6c442cd152e75737bdc1d758545521e
-	sha256sums = 61babe0697e85e37606686cdc205cedb4a4f53eff82d29d3351ae16c5771f286
+	sha256sums = 548d307aa9f4ffae64b4c9c3e891f4332a8454bd7b271e5b76932c705697ee74
 	sha256sums = 0681e97ca1e06d8ea7bdec0a874c6fc7a6ea84628923005130cd444547a1b440
 	sha256sums = a8e5ff30f3737da564f61e7d00cc6e0a8b243da54aa02f94095deaa2f4cceb66
 
