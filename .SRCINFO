@@ -1,6 +1,6 @@
 pkgbase = libvtflib-git
 	pkgdesc = Library to handle Valve's Texture Format
-	pkgver = r42.a6e3084
+	pkgver = r44.eaca22d
 	pkgrel = 1
 	url = https://github.com/panzi/VTFLib
 	arch = x86_64
