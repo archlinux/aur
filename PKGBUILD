@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=libvtflib-git
 pkgver=r44.eaca22d
-pkgrel=1
+pkgrel=2
 pkgdesc="Library to handle Valve's Texture Format"
 arch=('x86_64')
 url="https://github.com/panzi/VTFLib"
@@ -18,17 +18,16 @@ printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "$srcdir/VTFLib"
+	cd "$srcdir"
 
-	mkdir build && cd build
-	cmake -DCMAKE_BUILD_TYPE=Release \
-	-DCMAKE_INSTALL_PREFIX="/usr" \
-	../
+	cmake -S VTFLib -B build \
+	-DCMAKE_BUILD_TYPE=Release \
+	-DCMAKE_INSTALL_PREFIX="/usr"
 
-	make
+	cmake --build build
 }
 
 package() {
-	cd "$srcdir/VTFLib/build"
-	make install DESTDIR="$pkgdir"
+	cd "$srcdir"
+	DESTDIR="$pkgdir" cmake --install build
 }
