@@ -6,10 +6,10 @@
 # Conttributor: xiretza <xiretza+aur@gmail.com>
 # Contributor: heavysink <winstonwu91 at gmail>
 pkgname=wine-valve
-epoch=3
-pkgver=7.0.6
-_pkgver='7.0-6'
-pkgrel=1
+epoch=4
+pkgver=7.0.6e
+_pkgver='7.0-6e'
+pkgrel=2
 pkgdesc='A compatibility layer for running Windows programs (Valve version)'
 arch=('i686' 'x86_64')
 url='https://github.com/ValveSoftware/wine.git'
@@ -82,7 +82,7 @@ optdepends=(
     'samba'
     'dosbox'
 )
-options=('staticlibs' '!lto')
+options=('staticlibs' '!lto' '!debug' 'strip')
 install="$pkgname.install"
 source=("https://github.com/ValveSoftware/wine/archive/proton-wine-${_pkgver}.tar.gz"
         '30-win32-aliases.conf'
@@ -213,7 +213,7 @@ package() {
     done
 }
 
-sha256sums=('3b5b9c39eadf546ee0a5b7d496fc6d062cdae780180c4f1a28142994ecc21d57'
+sha256sums=('51a028c216f0be4c7bafa853a3c2a2ef6abf379ea1ea99fb0dd8635dc0d28512'
             '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
             '6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4'
             '7c73a0fd35d8905d5d0fc33f5cf1558f77b4d70e544c92034ffe41a9d50d8c40'
