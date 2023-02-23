@@ -1,19 +1,20 @@
-# Maintainer : Yamada Hayao <hayao@fascode.net>
-# Contributer: David Birks <david@birks.dev>
-
 _name="material-shell"
 pkgname="gnome-shell-extension-${_name}"
-pkgver="42"
+pkgver="43b"
 pkgrel="1"
-pkgdesc='Tiling window extension for GNOME, following Material Design guidelines'
-arch=('x86_64')
+pkgdesc='A modern desktop interface for Linux extending GNOME Shell.'
+arch=('any')
 url="https://github.com/${_name}/${_name}"
-license=('MIT')
+license=('GPL3')
 conflicts=("${pkgname}-git")
-depends=('gnome-shell>=3.34')
+depends=('gnome-shell')
 makedepends=("npm")
+optdepends=('plata-theme: gtk and shell theme'
+            'tela-icon-theme-git: icon theme'
+            'ttf-roboto: font')
+groups=('gnome-shell-extensions')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=("SKIP")
+b2sums=("c5968f0696737be31a2026814eef31e43b197e4e8e9d9eedc2fee92097b312dcb9455962b81408e007d7dcc8fba0a54747f9adabba87ba296ab46ed26a4ece68")
 
 _dir="material-shell-${pkgver}"
 _uuid="material-shell@papyelgringo"
@@ -27,5 +28,5 @@ build() {
 package() {
     cd "${srcdir}/${_dir}"
     install -d "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/"
-    cp -r "dist/"* "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/"
+    cp -r dist/* "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/"
 }
