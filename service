@@ -17,6 +17,7 @@ ConfigurationDirectoryMode=0700
 
 Restart=on-failure
 SuccessExitStatus=143
+RestartPreventExitStatus=78
 
 # Hardening
 NoNewPrivileges=yes
