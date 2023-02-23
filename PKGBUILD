@@ -2,13 +2,16 @@
 
 pkgname=dell-h825cdw-s2825cdn
 pkgver=1.0_3
-pkgrel=6
+pkgrel=7
 pkgdesc="Proprietary driver for Dell's H825cdw and S2825 Printers"
 arch=('x86_64')
 url="https://www.dell.com/support/home/en-us/product-support/product/dell-h825cdw-printer/drivers"
 license=('custom')
 depends=('cups')
-makedepends=('unzip' 'wget')
+DLAGENTS=("http::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
+source=("http://dl.dell.com/FOLDER03385341M/1/Printer_H825cdw_Driver_Dell_A00_Linux.zip")
+makedepends=('unzip')
+sha256sums=('e993d3ebbcbfa7dfa7f74d00096bab57bafbdb4b9415f5b69169cd7485a1b18c')
 
 #_rpmfile="S2825cdn-H825cdw/Dell-Color-MFP-S2825cdn-H825cdw-${pkgver//_/-}.$CARCH.rpm"
 _rpmfile="Dell-Color-MFP-S2825cdn-H825cdw-${pkgver//_/-}.$CARCH.rpm"
@@ -17,8 +20,7 @@ _rpmfile="Dell-Color-MFP-S2825cdn-H825cdw-${pkgver//_/-}.$CARCH.rpm"
 prepare() {
     cd "$srcdir/"
 
-    wget https://dl.dell.com/FOLDER03385341M/1/Printer_H825cdw_Driver_Dell_A00_Linux.zip
-    unzip Printer_H825cdw_Driver_Dell_A00_Linux.zip
+    unzip -n Printer_H825cdw_Driver_Dell_A00_Linux.zip
 
     cd "$srcdir/S2825cdn-H825cdw"
     bsdtar -f $_rpmfile -x
