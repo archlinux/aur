@@ -1,0 +1,9 @@
+[Desktop Entry]
+Exec=/usr/local/bin/qr_code_creator
+Icon=/usr/share/pixmaps/qr_code_creator_icon.png
+Name=QR Code creator
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;Utility;
+Encoding=UTF-8
+Comment=QR Code creator written in Rust

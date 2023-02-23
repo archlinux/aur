@@ -1,0 +1,15 @@
+pkgbase = qr_code_creator
+	pkgdesc = QR Code creator written in Rust
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/denix666/qr_code_creator
+	arch = x86_64
+	license = MIT
+	source = https://github.com/denix666/qr_code_creator/releases/download/v0.1.1/qr_code_creator_linux_x86_64.tar.gz
+	source = qr_code_creator_icon.png
+	source = qr_code_creator.desktop
+	sha256sums = 81cc086e50a08a3e8a79ab106021c8bc5db99b1eccf4cafec26b188719a4c849
+	sha256sums = e51f5a779d01b88528d49f63cb0375ad002768ac2bf61beb3451ac67af26a95f
+	sha256sums = 797f42566dbd802a2b0b06cacb29afdcc888d36c636f6adf12ef526397eb5e91
+
+pkgname = qr_code_creator
