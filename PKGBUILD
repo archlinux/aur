@@ -3,8 +3,8 @@
 
 _pkgname=citra
 pkgname=$_pkgname-canary-git
-pkgver=r9420.373786e5b
-pkgrel=2
+pkgver=r9426.726c74840
+pkgrel=1
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 arch=('i686' 'x86_64')
 url='https://github.com/citra-emu/citra-canary'
@@ -110,7 +110,7 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/$_pkgname"
+    cd "$srcdir/"
     
     # Trick the compiler into thinking we're building from a continuous
     # integration tool so the build number is correctly shown in the title
@@ -122,11 +122,9 @@ build() {
     # Fix to help cmake find libusb
     CXXFLAGS+=" -I/usr/include/libusb-1.0"
     
-    if [[ -d build ]]; then
-        rm -rf build
-    fi
-    mkdir -p build && cd build
-    cmake .. \
+    [[ -d build ]] && rm -rf build
+
+    cmake -B build -S "$_pkgname" \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release \
       -DENABLE_QT_TRANSLATION=ON \
@@ -136,18 +134,19 @@ build() {
       -DENABLE_FFMPEG_VIDEO_DUMPER=ON \
       -DENABLE_FFMPEG_AUDIO_DECODER=ON \
       -DUSE_SYSTEM_BOOST=ON \
-      -DUSE_SYSTEM_SDL2=ON
-    make
+      -DUSE_SYSTEM_SDL2=ON \
+      -Wno-dev
+
+    cmake --build build   
 }
 
 check() {
-    cd "$srcdir/$_pkgname/build"
-    make test
+    ctest --test-dir build
 }
 
 package() {
-    cd "$srcdir/$_pkgname/build"
-    make DESTDIR="$pkgdir/" install
+    cd "$srcdir/"
+    DESTDIR="$pkgdir/" cmake --install build
     rm -rf "$pkgdir/usr/include"
     rm -rf "$pkgdir/usr/lib"
     rm -rf "$pkgdir/usr/share/cmake"
