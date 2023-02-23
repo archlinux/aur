@@ -1,8 +1,8 @@
 pkgbase = wsjtx-bin
 	pkgdesc = Software for Amateur Radio Weak-Signal Communication (JT9 and JT65)
-	pkgver = 2.5.4
+	pkgver = 2.6.1
 	pkgrel = 1
-	url = http://pulsar.princeton.edu/wsjtx.html
+	url = https://wsjt.sourceforge.io/wsjtx.html
 	arch = i686
 	arch = x86_64
 	arch = armv7h
@@ -19,7 +19,7 @@ pkgbase = wsjtx-bin
 	depends = fftw
 	provides = wsjtx
 	conflicts = wsjtx
-	source = https://sourceforge.net/projects/wsjt/files/wsjtx-2.5.4/wsjtx_2.5.4_amd64.deb
-	sha256sums = 44d3b35b72dc8b3cb35dbc83d2dbebf4fd628d94350ffa6befb62d85762d37aa
+	source = https://sourceforge.net/projects/wsjt/files/wsjtx-2.6.1/wsjtx_2.6.1_amd64.deb
+	sha256sums = f7825425496ba4e6d4018ab65f5f3e07d619a9da29b751e753c72912bcdd511c
 
 pkgname = wsjtx-bin
