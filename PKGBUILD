@@ -16,7 +16,7 @@
 
 pkgbase=llvm-minimal-git
 pkgname=('llvm-minimal-git' 'llvm-libs-minimal-git' 'spirv-llvm-translator-minimal-git')
-pkgver=16.0.0_r448874.60b989792411
+pkgver=17.0.0_r452740.1c2280264058
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -25,14 +25,18 @@ makedepends=('git' 'cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2'
              'libxcrypt' 'python' 'python-setuptools' 'spirv-headers-git' 'spirv-tools-git')
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
                 'local://llvm-config.h'
-                "git+https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git")
+                "git+https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git"
+                '0001-IPSCCP-Remove-legacy-pass.patch'
+                )
                 
 md5sums=('SKIP'
          '295c343dcd457dc534662f011d7cff1a'
-         'SKIP')
+         'SKIP'
+         '245054bc67dec3eb30329bbdeed171b1')
 sha512sums=('SKIP'
             '75e743dea28b280943b3cc7f8bbb871b57d110a7f2b9da2e6845c1c36bf170dd883fca54e463f5f49e0c3effe07fbd0db0f8cf5a12a2469d3f792af21a73fcdd'
-            'SKIP')
+            'SKIP'
+            '4c1e8a455163ceb1e7d3f09f5e68f731e47f2346a2f62e1fe97b19f54c16781efc0b75d52304fe9d4aa62512fd6f32b7bd6e12b319cbe72e7831f1a056ffbfd0')
 options=('staticlibs' '!lto')
 # explicitly disable lto to reduce number of build hangs / test failures
 
@@ -57,6 +61,13 @@ pkgver() {
              END { print "\n" }' \
              CMakeLists.txt)_r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
     echo "${_pkgver}"
+}
+
+prepare() {
+    
+    # reverting commit b677d0753c0a771c6203607f5dbb56189193a14c , see https://gitlab.freedesktop.org/mesa/mesa/-/issues/8297
+    patch --directory="llvm-project" --reverse --strip=1 --input="${srcdir}/0001-IPSCCP-Remove-legacy-pass.patch"
+    
 }
 
 build() {
@@ -97,6 +108,7 @@ build() {
         -D LLVM_EXTERNAL_SPIRV_LLVM_TRANSLATOR_SOURCE_DIR="$srcdir"/SPIRV-LLVM-Translator \
         -D LLVM_EXTERNAL_SPIRV_HEADERS_SOURCE_DIR=/usr/include/spirv/ \
         -D LLVM_SPIRV_INCLUDE_TESTS=ON \
+        -D BASE_LLVM_VERSION=17.0.0 \
         -D LLVM_LIT_ARGS="$LITFLAGS"" -sv --ignore-fail" \
         -Wno-dev
 
