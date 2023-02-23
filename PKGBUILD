@@ -1,4 +1,4 @@
-# Maintainer: Stephen Gregoratto <dev@sgregoratto.me>
+# Maintainer: Primalmotion <primalmotion@pm.me>
 # Contributor: gilbus <aur@tinkershell.eu>
 pkgname=swaylock-git
 pkgver=v1.7.2.r2.gac3b49b
