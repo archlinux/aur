@@ -1,0 +1,15 @@
+pkgbase = python-pygments-pasp
+	pkgdesc = Pygments syntax highlighting for probabilistic ASP
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/RenatoGeh/pygments-pasp
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-pygments
+	depends = python
+	depends = python-pygments
+	source = https://files.pythonhosted.org/packages/bd/c4/bfd8e25e790f11eb3202dc33ceaddd9380b40f3b75404fead67fb4ab0398/pygments_pasp-0.0.2.tar.gz
+	sha256sums = 2cdcde1279408c594ae673a34e58002317334676668f946cead6eb87b6e0a949
+
+pkgname = python-pygments-pasp
