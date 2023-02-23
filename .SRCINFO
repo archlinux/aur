@@ -1,6 +1,6 @@
 pkgbase = r-geometries
 	pkgdesc = Convert Between R Objects and Geometric Structures
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=geometries
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = r-geometries
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-tinytest
-	source = https://cran.r-project.org/src/contrib/geometries_0.2.0.tar.gz
-	md5sums = efeccd6972b857d760e3985583c6ad15
+	source = https://cran.r-project.org/src/contrib/geometries_0.2.1.tar.gz
+	b2sums = 2c7ee75e0cfb67077b45285b998fa993c2c58918199ac4734bbb6b2a0c27ab35a5aa6e8b14b02f39263078c8dc317914cc1f9c0b844024327025b175a99e621a
 
 pkgname = r-geometries
