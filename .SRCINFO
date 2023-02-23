@@ -1,6 +1,6 @@
 pkgbase = fish-git
 	pkgdesc = User friendly shell intended mostly for interactive use.
-	pkgver = 3.6.0.r217.g59fe124c4
+	pkgver = 3.6.0.r228.g3b60bc1de
 	pkgrel = 1
 	epoch = 2
 	url = http://fishshell.com
@@ -26,6 +26,7 @@ pkgbase = fish-git
 	provides = fish-shell
 	conflicts = fish
 	conflicts = fish-shell
+	options = !lto
 	backup = etc/fish/config.fish
 	source = git+https://github.com/fish-shell/fish-shell.git
 	b2sums = SKIP
