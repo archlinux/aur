@@ -1,0 +1,15 @@
+pkgbase = python-github-backup
+	pkgdesc = Backup a github user or organization.
+	pkgver = 0.42.0
+	pkgrel = 1
+	url = https://github.com/josegonzalez/python-github-backup
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	provides = github-backup
+	conflicts = github-backup
+	source = https://files.pythonhosted.org/packages/source/g/github-backup/github-backup-0.42.0.tar.gz
+	sha512sums = 1e60efffaa2c0d986eabfd5fcb8e005a80a7750c996456096d7b35d5a28faac0e9f00c26468767bf06e98e7359842104c55d056b813d3ef3c0d61ed09001e298
+
+pkgname = python-github-backup
