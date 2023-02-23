@@ -1,7 +1,7 @@
 pkgbase = python-dbx
 	pkgdesc = DataBricks CLI eXtensions - aka dbx is a CLI tool for advanced Databricks jobs management.
 	pkgver = 0.8.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.databricks.com/dev-tools/dbx.html
 	arch = any
 	license = CUSTOM
@@ -31,7 +31,7 @@ pkgbase = python-dbx
 	depends = python-jinja>=2.11.2
 	depends = python-aiohttp>=3.8.1
 	depends = python-pathspec>=0.9.0
-	depends = python-watchdog-git>=2.1.0
+	depends = python-watchdog>=2.1.0
 	source = python-dbx-0.8.8.tar.gz::https://github.com/databrickslabs/dbx/archive/refs/tags/v0.8.8.tar.gz
 	sha512sums = 947273ab60ae877b0931cddf881c42cf84a2f8ad4d90cfc4bf2078e515b7cc7968625a64651b9c4017e5c06f10044c6e7124fa39b31b9acf49697bbac6cd0fd4
 

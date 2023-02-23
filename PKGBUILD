@@ -2,7 +2,7 @@
 pkgname=python-dbx
 _name=dbx
 pkgver=0.8.8
-pkgrel=1
+pkgrel=2
 pkgdesc="DataBricks CLI eXtensions - aka dbx is a CLI tool for advanced Databricks jobs management."
 arch=(any)
 url="https://docs.databricks.com/dev-tools/dbx.html"
@@ -23,7 +23,7 @@ depends=(
 	"python-jinja>=2.11.2"
 	"python-aiohttp>=3.8.1"
 	"python-pathspec>=0.9.0"
-	"python-watchdog-git>=2.1.0" # The community package is stuck at 0.10.7-3
+	"python-watchdog>=2.1.0"
 )
 makedepends=(python-build python-installer)
 source=($pkgname-$pkgver.tar.gz::https://github.com/databrickslabs/dbx/archive/refs/tags/v$pkgver.tar.gz)
