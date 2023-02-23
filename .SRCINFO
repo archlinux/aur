@@ -1,6 +1,6 @@
 pkgbase = lib32-sdl12-compat-git
 	pkgdesc = An SDL-1.2 compatibility layer that uses SDL 2.0 behind the scenes.
-	pkgver = 1.2.54.r6.g4d814ba
+	pkgver = 1.2.60.r35.g0adf9aa
 	pkgrel = 1
 	url = https://github.com/libsdl-org/sdl12-compat
 	arch = x86_64

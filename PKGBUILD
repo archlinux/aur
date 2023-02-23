@@ -2,7 +2,7 @@
 
 pkgname=lib32-sdl12-compat-git
 _pkgbase=sdl12-compat
-pkgver=1.2.54.r6.g4d814ba
+pkgver=1.2.60.r35.g0adf9aa
 pkgrel=1
 pkgdesc="An SDL-1.2 compatibility layer that uses SDL 2.0 behind the scenes."
 arch=("x86_64" "i686")
@@ -23,30 +23,22 @@ pkgver() {
   git describe --long --tags | sed 's/^release-//;s/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^prerelease.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare(){
-	if test -e "$srcdir/$_pkgbase/build32"
-	then
-		:
-	else
-	mkdir "$srcdir/$_pkgbase/build32"
-	fi
-}
 
 build() {
-	cd "$srcdir/$_pkgbase/build32"
+	cd "$srcdir"
 
-	cmake ../ \
+	cmake -S $_pkgbase -B build \
 	-DCMAKE_C_FLAGS="$CFLAGS -m32" \
 	-DCMAKE_INSTALL_PREFIX="/usr" \
 	-DCMAKE_INSTALL_LIBDIR="lib32" \
 	-DSDL12TESTS=0 \
 	-DSDL12DEVEL=1
-	make
+	cmake --build build
 }
 
 package() {
-	cd "$srcdir/$_pkgbase/build32"
-	make DESTDIR="$pkgdir/" install
+	cd "$srcdir"
+	DESTDIR="$pkgdir/" cmake --install build
 
 	cd "$pkgdir/usr/"
 	rm -rf share/ bin/ include/
