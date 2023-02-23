@@ -3,7 +3,7 @@
 pkgname=sdrangel-bin
 pkgver=7.10.0
 _subver=1984
-pkgrel=4
+pkgrel=1
 conflicts=(sdrangel-git)
 pkgdesc='Qt5/OpenGL SDR and signal analyzer frontend.'
 url="https://github.com/f4exb/sdrangel"
