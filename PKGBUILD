@@ -1,6 +1,6 @@
 
 
-pkgname=lychee
+pkgname=lychee-photo-management
 pkgver=4.3.0
 pkgrel=1
 pkgdesc="Lychee is an easy to use and great looking photo-management-system."
@@ -16,12 +16,6 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/LycheeOrg/Lychee/archive/v$
 	'apache.example.conf')
 sha256sums=('d905cfee8c670e42566b9681d189a0714fa2f29b3e212cd9022ee9244288f1ed'
             '0a68524551049320c6a58177baeb4592041970b3892ae0eeca405a3f75706701')
-
-pkgver() {
-    curl -Is https://github.com/LycheeOrg/Lychee/releases/latest | awk -F'/' '/^location/ {print $NF}' | sed 's/v//' | sed 's/[^[:print:]]//'
-
-}
-
 
 package() {
   # install project
