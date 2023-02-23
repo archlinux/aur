@@ -1,6 +1,6 @@
 pkgbase = swaylock-git
 	pkgdesc = Screen locker for Wayland
-	pkgver = 1.4.r15.gdee0021
+	pkgver = v1.7.2.r2.gac3b49b
 	pkgrel = 1
 	url = https://github.com/swaywm/swaylock
 	arch = i686
@@ -23,4 +23,3 @@ pkgbase = swaylock-git
 	sha1sums = SKIP
 
 pkgname = swaylock-git
-
