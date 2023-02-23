@@ -5,7 +5,7 @@
 pkgname=goneovim-bin
 _pkgname="${pkgname%-bin}"
 pkgver=0.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Neovim GUI written in Golang, using a Golang qt backend'
 arch=(x86_64)
 url="https://github.com/akiyosi/$_pkgname"
@@ -18,6 +18,7 @@ depends=(expat
          gtk3
          libglvnd
          libspeechd
+         libtiff5
          libx11
          libxcb
          neovim
