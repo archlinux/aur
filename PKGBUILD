@@ -13,7 +13,7 @@
 pkgbase=mesa-minimal-git
 pkgname=('mesa-minimal-git' 'rusticl-mesa-minimal-git')
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=23.1.0_devel.165926.56158bd0c0a
+pkgver=23.1.0_devel.167082.22c1f4be8c1
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'meson' 'ninja' 'libglvnd' 'python-mako' 'xorgproto' 'libxml2' 'libx11'  'libva' 'elfutils' 'libxrandr'
@@ -43,14 +43,6 @@ pkgver() {
     cd mesa
     read -r _ver <VERSION
     echo ${_ver/-/_}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-}
-
-prepare() {
-    # although removing _build folder in build() function feels more natural,
-    # that interferes with the spirit of makepkg --noextract
-    if [  -d _build ]; then
-        rm -rf _build
-    fi
 }
 
 build () {
