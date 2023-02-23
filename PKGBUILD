@@ -1,78 +1,64 @@
-# Maintainer: Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
+# Maintainer: Mauricio Morales <mocomauricio@gmail.com>
 
 pkgname=xmms
 pkgver=1.2.11
-pkgrel=7
-pkgdesc="The X MultiMedia System - a multimedia player"
-arch=('i686' 'x86_64')
-url="http://legacy.xmms2.org/"
+pkgrel=1
+pkgdesc="X Multimedia System (XMMS) is an audio player for Unix-like systems released under a free software license."
+arch=('x86_64')
+url="https://www.xmms.org"
 license=('GPL')
-depends=('gtk' 'libxxf86vm' 'libsm' 'zlib' 'desktop-file-utils')
-makedepends=('mesa' 'libmikmod' 'libvorbis' 'alsa-lib' 'libgl')
-optdepends=('libmikmod: for the MikMod input plugin' \
-            'libvorbis: for the Ogg Vorbis input plugin' \
-            'alsa-lib: for the alsa output plugin' \
-            'libgl: for the OpenGL Spectrum analyser visualization plugin')
-install=xmms.install
-source=(http://legacy.xmms2.org/${pkgname}-${pkgver}.tar.bz2 \
-	xmms-menu.patch xmms-1.2.10-crossfade-0.3.9.patch xmms-fix.diff \
-        xmms-1.2.11-CVE-2007-0653.0654.patch xmms-1.2.11-fix-http-title-mpg123.patch \
-        xmms-1.2.11-3dse.patch xmms-1.2.10-recode-id3.patch xmms-1.2.11-fix-mikmod-driver.patch \
-        xmms-1.2.10-fonts.patch xmms.16.png xmms.32.png xmms.48.png)
-sha1sums=('9d1eae4baab25fd35c9ddfb49321ca60222f672d'
-          '27fb6e21bd6db923a425a8df8bd07a2a93867ddb'
-          'ff5c172752c8bee708d9a9ecd53864cc95a4bcc5'
-          'c227284955f2cc16f027dade670155c0f0fbc4ff'
-          '4ef47c34b27b6c868d4301b7a078b257c8604471'
-          '0c060385561ea2a4b1c7ad3bd35d3646ae9554f5'
-          '6f6db13c780ba4cbddb8613f0abd2db2823f3021'
-          '2a3b1bf17054b6bd8b1e5937de5c0ad49af8dc92'
-          '155e11b344af1ba594b4e339640bcca37c8909af'
-          '31abd37c9c57bd13b2088eb11a1e54e5aa312bf3'
-          '0089d11aa3bce67f3496592d68ee65837406e220'
-          'f24071ae484d9b55e61dba076801fa8e7976ff2f'
-          '485c67cb8c8d4678bb3b0b280d2e233b14153b22')
+depends=('esound' 'gtk' 'libmikmod' 'libogg' 'libvorbis' 'mesa' 'zlib')
+optdepends=('xmms-skins: skins for XMMS' 
+            'xmmplayer: plugin for XMMS that allows you to play video files from within XMMS using MPlayer as a back-end')
+
+install="${pkgname}.install"
+source=(http://www.xmms.org/files/1.2.x/$pkgname-$pkgver.tar.bz2
+    $pkgname.png
+    $pkgname.desktop
+    gtkrc.utf8)
+
+md5sums=('f3e6dbaf0b3f571a532ab575656be506'
+         '201642b2ccf7cfd7b53ee354430f23dd'
+         '8ea0b9669adda795beefb0816050c20d'
+         'bb5b05ad8c14edf2798be22df7585505')
+
 
 prepare() {
-  cd ${pkgname}-${pkgver}
-# Fix xmms.desktop
-  patch -p0 < ../xmms-menu.patch
-# Patch for hang with xmms-crossfade 
-  patch -p1 < ../xmms-1.2.10-crossfade-0.3.9.patch
-# fix xmms not able to be shown double size,at least needed for x86_64
-  patch -p1 < ../xmms-fix.diff
-# Several patches from Mandriva
-  patch -p1 < ../xmms-1.2.11-fix-http-title-mpg123.patch
-  patch -p0 < ../xmms-1.2.10-recode-id3.patch
-  patch -p1 < ../xmms-1.2.11-3dse.patch
-  patch -p1 < ../xmms-1.2.10-fonts.patch
-  patch -p1 < ../xmms-1.2.11-CVE-2007-0653.0654.patch
-  patch -p1 < ../xmms-1.2.11-fix-mikmod-driver.patch
+	cd xmms-${pkgver}
+	sed -i '4192a\\tputenv("XLIB_SKIP_ARGB_VISUALS=1");' xmms/main.c
 }
 
 build() {
-  cd ${pkgname}-${pkgver}
-  if [ "$CARCH" == "i686" ]; then
-    SIMDOPT="--enable-simd"
-  else
-    SIMDOPT="--disable-simd"
-  fi
-  ./configure --prefix=/usr --mandir=/usr/share/man $SIMDOPT
-  make
+	cd xmms-${pkgver}
+  	./configure --prefix=/usr --mandir=/usr/share/man \
+	--disable-static
+  	make
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
-  make DESTDIR="${pkgdir}" install
-
-  install -D -m644 xmms/xmms.desktop "${pkgdir}/usr/share/applications/xmms.desktop"
-  install -D -m644 xmms/xmms_mini.xpm "${pkgdir}/usr/share/pixmaps/xmms_mini.xpm"
-  install -D -m644 ../xmms.16.png "${pkgdir}/usr/share/pixmaps/xmms16.png"
-  install -D -m644 ../xmms.32.png "${pkgdir}/usr/share/pixmaps/xmms32.png"
-  install -D -m644 ../xmms.48.png "${pkgdir}/usr/share/pixmaps/xmms48.png"
-  ln -s /usr/share/pixmaps/xmms48.png "${pkgdir}/usr/share/pixmaps/xmms.png"
-
-  # don't want wmxmms
-  rm -rf "${pkgdir}/usr/bin/wmxmms" "${pkgdir}/usr/share/xmms"
-  rm -f "${pkgdir}"/usr/share/man/man1/{gnomexmms.1,wmxmms.1}
+	cd xmms-${pkgver}
+	make DESTDIR="${pkgdir}" install-strip
+    install -Dm644 $srcdir/$pkgname.png "$pkgdir"/usr/share/pixmaps/$pkgname.png
+    install -Dm644 $srcdir/$pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
+    
+	install -Dm644 $srcdir/gtkrc.utf8 "$pkgdir"/etc/gtk/gtkrc.es_AR.utf8
+	install -Dm644 $srcdir/gtkrc.utf8 "$pkgdir"/etc/gtk/gtkrc.es_BO.utf8
+	install -Dm644 $srcdir/gtkrc.utf8 "$pkgdir"/etc/gtk/gtkrc.es_CL.utf8
+	install -Dm644 $srcdir/gtkrc.utf8 "$pkgdir"/etc/gtk/gtkrc.es_CO.utf8
+	install -Dm644 $srcdir/gtkrc.utf8 "$pkgdir"/etc/gtk/gtkrc.es_CU.utf8
+	install -Dm644 $srcdir/gtkrc.utf8 "$pkgdir"/etc/gtk/gtkrc.es_DO.utf8
+	install -Dm644 $srcdir/gtkrc.utf8 "$pkgdir"/etc/gtk/gtkrc.es_EC.utf8
+	install -Dm644 $srcdir/gtkrc.utf8 "$pkgdir"/etc/gtk/gtkrc.es_ES.utf8
+	install -Dm644 $srcdir/gtkrc.utf8 "$pkgdir"/etc/gtk/gtkrc.es_GT.utf8
+	install -Dm644 $srcdir/gtkrc.utf8 "$pkgdir"/etc/gtk/gtkrc.es_HN.utf8
+	install -Dm644 $srcdir/gtkrc.utf8 "$pkgdir"/etc/gtk/gtkrc.es_MX.utf8
+	install -Dm644 $srcdir/gtkrc.utf8 "$pkgdir"/etc/gtk/gtkrc.es_NI.utf8
+	install -Dm644 $srcdir/gtkrc.utf8 "$pkgdir"/etc/gtk/gtkrc.es_PA.utf8
+	install -Dm644 $srcdir/gtkrc.utf8 "$pkgdir"/etc/gtk/gtkrc.es_PE.utf8
+	install -Dm644 $srcdir/gtkrc.utf8 "$pkgdir"/etc/gtk/gtkrc.es_PR.utf8
+	install -Dm644 $srcdir/gtkrc.utf8 "$pkgdir"/etc/gtk/gtkrc.es_PY.utf8
+	install -Dm644 $srcdir/gtkrc.utf8 "$pkgdir"/etc/gtk/gtkrc.es_SV.utf8
+	install -Dm644 $srcdir/gtkrc.utf8 "$pkgdir"/etc/gtk/gtkrc.es_US.utf8
+	install -Dm644 $srcdir/gtkrc.utf8 "$pkgdir"/etc/gtk/gtkrc.es_UY.utf8
+	install -Dm644 $srcdir/gtkrc.utf8 "$pkgdir"/etc/gtk/gtkrc.es_VE.utf8	
 }

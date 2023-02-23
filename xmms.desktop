@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=XMMS
+GenericName=X MultiMedia System
+Comment=Multimedia player for Unix systems
+Exec=xmms
+Icon=xmms
+Categories=Application;AudioVideo;Player
+MimeType=audio/x-scpls;audio/x-mpegurl;audio/mpegurl;audio/mp3;audio/x-mp3;audio/mpeg;audio/x-mpeg;audio/x-wav;application/x-ogg
+Type=Application
