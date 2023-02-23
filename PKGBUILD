@@ -4,38 +4,39 @@
 _plug=havsfunc
 pkgname=vapoursynth-plugin-${_plug}
 pkgver=r33
-pkgrel=2
+pkgrel=3
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('any')
 url='https://github.com/HomeOfVapourSynthEvolution/havsfunc'
 license=('GPL')
 depends=('vapoursynth'
-         'vapoursynth-plugin-adjust-git'
-         'vapoursynth-plugin-mvsfunc-git')
-optdepends=('vapoursynth-plugin-addgrain-git'
-            'vapoursynth-plugin-awarpsharp2-git'
-            'vapoursynth-plugin-bilateral-git'
-            'vapoursynth-plugin-ctmf-git'
-            'vapoursynth-plugin-dctfilter-git'
-            'vapoursynth-plugin-dfttest-git'
-            'vapoursynth-plugin-eedi2-git'
+         'vapoursynth-plugin-vsutil'
+         'vapoursynth-plugin-mvsfunc')
+optdepends=('vapoursynth-plugin-adjust'
+            'vapoursynth-plugin-addgrain'
+            'vapoursynth-plugin-awarpsharp2'
+            'vapoursynth-plugin-bilateral'
+            'vapoursynth-plugin-ctmf'
+            'vapoursynth-plugin-dctfilter'
+            'vapoursynth-plugin-dfttest'
+            'vapoursynth-plugin-eedi2'
             'vapoursynth-plugin-deblock'
-            'vapoursynth-plugin-eedi3cl-git'
-            'vapoursynth-plugin-fft3dfilter-git'
+            'vapoursynth-plugin-eedi3m'
+            'vapoursynth-plugin-fft3dfilter'
             'vapoursynth-plugin-f3kdb'
             'vapoursynth-plugin-fluxsmooth'
             'vapoursynth-plugin-fmtconv'
             'vapoursynth-plugin-knlmeanscl'
             'vapoursynth-plugin-mvtools'
-            'vapoursynth-plugin-nnedi3_resample-git'
-            'vapoursynth-plugin-nnedi3-git'
-            'vapoursynth-plugin-nnedi3cl-git'
-            'vapoursynth-plugin-sangnom-hg'
+            'vapoursynth-plugin-nnedi3_resample'
+            'vapoursynth-plugin-nnedi3'
+            'vapoursynth-plugin-nnedi3cl'
+            'vapoursynth-plugin-sangnom'
             'vapoursynth-plugin-svpflow1'
             'vapoursynth-plugin-svpflow2-bin'
-            'vapoursynth-plugin-ttempsmooth-git'
-            'vapoursynth-plugin-znedi3-git')
-makedepends=('git')
+            'vapoursynth-plugin-ttempsmooth'
+            'vapoursynth-plugin-znedi3')
+
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}-git")
 source=("${_plug}-${pkgver}.tar.gz::https://github.com/HomeOfVapourSynthEvolution/havsfunc/archive/${pkgver}.tar.gz")
