@@ -2,7 +2,7 @@
 
 pkgname=fleet-orbit
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Eases the deployment of osquery connected with a Fleet server.'
 arch=(x86_64)
 url='https://github.com/fleetdm/fleet/tree/main/orbit'
@@ -41,7 +41,7 @@ build() {
   ldflags="${ldflags} -X ${importpath}.Commit=${commitsha}"
   ldflags="${ldflags} -X ${importpath}.Date=${isodate}"
 
-  CGO_ENABLED=0 go build \
+  CGO_ENABLED=1 go build \
     -o build/ \
     -trimpath \
     -buildvcs=false \
