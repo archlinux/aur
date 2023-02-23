@@ -1,10 +1,10 @@
 pkgbase = minecraft-legacy-launcher
 	pkgdesc = Minecraft Legacy Java Launcher
 	pkgver = 1.6.93.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://bugs.mojang.com/browse/MCL-11993
 	arch = x86_64
-	license = All rights reserved
+	license = custom
 	depends = glibc
 	depends = libx11
 	depends = freetype2
