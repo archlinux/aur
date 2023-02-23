@@ -6,6 +6,6 @@ pkgbase = pluto-bin
 	arch = x86_64
 	license = Apache
 	source = pluto-bin-5.15.1.tar.gz::https://github.com/FairwindsOps/pluto/releases/download/v5.15.1/pluto_5.15.1_linux_amd64.tar.gz
-	sha256sums = ce448626873983021f79b7219bc39df4a0cdf13339c095ccdd96b80fa67e77ec
+	sha256sums = fe523bf36868d6c25dff7833f4efcc3699213578e835b6304d6e5e4346517dbd
 
 pkgname = pluto-bin
