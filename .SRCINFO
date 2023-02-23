@@ -1,0 +1,16 @@
+pkgbase = poketex-git
+	pkgdesc = Simple Pokedex based on TUI (git)
+	pkgver = 1.0.1.r4.g18d0d1a
+	pkgrel = 1
+	url = https://github.com/ckaznable/poketex
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = poketex
+	conflicts = poketex
+	source = git+https://github.com/ckaznable/poketex
+	sha512sums = SKIP
+
+pkgname = poketex-git
