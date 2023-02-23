@@ -1,6 +1,6 @@
 pkgbase = godot4-bin
 	pkgdesc = Godot Game Engine: An advanced, feature packed, multi-platform 2D and 3D game engine.
-	pkgver = rc3
+	pkgver = rc4
 	pkgrel = 1
 	url = http://www.godotengine.org
 	arch = i686
@@ -20,9 +20,9 @@ pkgbase = godot4-bin
 	sha512sums = a32864067fcd034cc95b0a39ba575dafe62ca8f67b93f1cc0ede5a471d12d73ba525032e1ba1b411f1ca550a106498b5e71a9d491663a39c67175740f07cad87
 	sha512sums = 3598100251a74a6595ffc002df0adac18c37c9367a4ef148ef7f057d547ed15aaaa07140705d4185394b888c0f5fd8446de35f97625a80d1c3a2132a0418b71e
 	sha512sums = d38569e26e77b238cd9bf60d0ba7dc76367b5f25f68e5d45185d10fdf4de20c696431ab4eed815b7ad611e997d5ddadd96d70f1f6d4388c18b1553b81d4b6738
-	source_i686 = godot4-rc3-32bit.zip::https://downloads.tuxfamily.org/godotengine/4.0/rc3/Godot_v4.0-rc3_linux.x86_32.zip
-	sha512sums_i686 = 1cdb85ebb4fb0ce0454e31fbfd7502e0deb31b08342fee096fec5dc0e05f47fd69744f522195cbdd4cf401ff93ea83c7f37ef66dddb69b44b1400ec77e88abd7
-	source_x86_64 = godot4-rc3-64bit.zip::https://downloads.tuxfamily.org/godotengine/4.0/rc3/Godot_v4.0-rc3_linux.x86_64.zip
-	sha512sums_x86_64 = f620bf271f7ff44d1ba1a30c6853cd3abf7b24614552ebcdec1708511582ee4ba80521ff5aac05be7f6946e73ae4284e765dc50a5951dfd77eaddebc81b5877e
+	source_i686 = godot4-rc4-32bit.zip::https://downloads.tuxfamily.org/godotengine/4.0/rc4/Godot_v4.0-rc4_linux.x86_32.zip
+	sha512sums_i686 = 52f54a37b38ceebe78c82406efd99fbe78bd2da87068229d4184ebb07acd601198049f198c47f6b0ae6605444be60d93f03a97566f9f263949f92bd1b5a23401
+	source_x86_64 = godot4-rc4-64bit.zip::https://downloads.tuxfamily.org/godotengine/4.0/rc4/Godot_v4.0-rc4_linux.x86_64.zip
+	sha512sums_x86_64 = c4072cf64f37bed7dc51bd0a320aa11d6e08667c101cb2f91116ee55b33861a94f1f70bff724047fef58c05315485053e47525671921a74686ea62e02fb5ec0e
 
 pkgname = godot4-bin
