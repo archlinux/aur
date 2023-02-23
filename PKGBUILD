@@ -146,7 +146,7 @@ prepare() {
   # Author: Robert Mader <robert.mader@posteo.de>
   # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2763
   # Type: 1
-  # Status: 2 & 3
+  # Status: 4
   pick_mr '2763' 'mr2763.patch' 'patch'
 
   # Title: Backports for 43.2^3
