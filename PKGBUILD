@@ -3,7 +3,7 @@
 
 pkgname=hledger-utils
 pkgver=1.13.2
-pkgrel=0
+pkgrel=1
 pkgdesc='Utilities extending the hledger plaintextaccounting tool'
 arch=(any)
 url="https://gitlab.com/nobodyinperson/$pkgname"
