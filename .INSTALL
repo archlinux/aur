@@ -10,24 +10,5 @@
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 
-post_upgrade() {
-  if [[ $(vercmp $2 0.6.2) -lt 0 ]]
-  then
-    cat <<EOF
-
-- Made HTTP method configurable for endpoints 'auth_http_method' nad
-'token_http_method' in 'service.yaml'
-
-- Changed '_postmode' to '_params_mode' in 'service.yaml'
-
-- Debug mode to print HTTP traffic to stdout
-
-See details in README.md and in the config templates.
-
-EOF
-  fi
-}
-
-# test
-#echo $@
-#post_upgrade $1 $2
+#post_upgrade() {
+#}
