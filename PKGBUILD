@@ -15,8 +15,8 @@ PKGEXT='.pkg.tar'
 
 pkgname=chromium-no-extras
 _pkgname=chromium
-pkgver=110.0.5481.100
-pkgrel=1
+pkgver=110.0.5481.177
+pkgrel=0
 _launcher_ver=8
 _gcc_patchset=4
 _manual_clone=1
