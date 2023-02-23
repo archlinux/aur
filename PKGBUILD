@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=qvtf-git
 pkgver=r19.fd0c317
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="QImageIO plugin to load Valve Texture Files in QT 5 Programs (View VTF in QT 5 Programs)"
 arch=('x86_64')
@@ -29,18 +29,18 @@ prepare() {
 }
 
 build() {
-	cd qvtf && mkdir build && cd build
+	cd "$srcdir"
 
-	cmake ../ \
+	cmake -S qvtf -B build \
 	-DCMAKE_BUILD_TYPE=Release \
 	-DCMAKE_INSTALL_PREFIX="/usr"
 
-	make
+	cmake --build build
 }
 
 package() {
-	cd "$srcdir/qvtf/build"
-	make install DESTDIR="$pkgdir"
+	cd "$srcdir"
+	DESTDIR="$pkgdir" cmake --install build
 	cd "$pkgdir/usr/lib"
 	mv qt5 qt
 }
