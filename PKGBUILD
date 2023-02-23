@@ -4,11 +4,11 @@ pkgname=realesrgan-ncnn-vulkan
 _pkgname=Real-ESRGAN-ncnn-vulkan
 pkgver=0.2.0
 _pkgver="v$pkgver"
-pkgrel=5
+pkgrel=6
 pkgdesc="NCNN implementation of Real-ESRGAN"
 url="https://github.com/xinntao/Real-ESRGAN-ncnn-vulkan"
 license=('MIT')
-depends=('vulkan-driver' 'libwebp' 'gcc-libs' 'ncnn')
+depends=('vulkan-driver' 'libwebp' 'ncnn')
 makedepends=('git' 'cmake' 'vulkan-headers' 'glslang')
 conflicts=('realesrgan-ncnn-vulkan-bin')
 provides=('realesrgan-ncnn-vulkan')
@@ -49,4 +49,6 @@ package() {
 
     mkdir -p "$pkgdir/usr/share/realesrgan-ncnn-vulkan/"
     cp -r models "$pkgdir/usr/share/realesrgan-ncnn-vulkan/models"
+
+    install -Dm644 "$srcdir/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
