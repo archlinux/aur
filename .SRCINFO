@@ -1,6 +1,6 @@
 pkgbase = jicofo-git
 	pkgdesc = JItsi Meet COnference FOcus git build
-	pkgver = 1.0.959+0+g47e9dbbe
+	pkgver = 1.0.996+0+gaafb61b5
 	pkgrel = 1
 	url = https://jitsi.org/jitsi-meet/
 	install = install
