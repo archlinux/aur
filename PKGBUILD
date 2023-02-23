@@ -1,7 +1,7 @@
 # Maintainer: Agampreet
 # Contributor: Agampreet
 pkgname=ms-365-electron-bin
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Unofficial Microsoft 365 Web Desktop Wrapper made with Electron"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=("${url}/releases/download/v${pkgver}/MS-365-Electron-v${pkgver}-linux-am
 sha512sums=('SKIP')
 
 package() {
-	bsdtar -xf "${srcdir}/MS-365-Electron-v${pkgver}-linux-amd64.deb" -C "${srcdir}" --include data.tar.xz
+    bsdtar -xf "${srcdir}/MS-365-Electron-v${pkgver}-linux-amd64.deb" -C "${srcdir}" --include data.tar.xz
     bsdtar -xf ${srcdir}/data.tar.xz -C ${pkgdir}
     install -d ${pkgdir}/usr/bin/
     ln -s /opt/MS-365-Electron/ms-365-electron ${pkgdir}/usr/bin/ms-365-electron
