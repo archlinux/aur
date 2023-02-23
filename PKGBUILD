@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 _modulename=anesthetic
 pkgname=python-$_modulename-git
-pkgver=r354.48d6bc4
+pkgver=r393.06cb594
 pkgrel=1
 pkgdesc="nested sampling visualisation"
 arch=(any)
@@ -25,7 +25,12 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build() {
+    cd "$srcdir/${pkgname%-git}/"
+    python -m build --wheel --no-isolation
+}
+
 package() {
-  cd "$srcdir/${pkgname%-git}/"
-  python setup.py install --root="$pkgdir/" --optimize=1
+    cd "$srcdir/${pkgname%-git}/"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
