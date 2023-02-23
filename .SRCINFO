@@ -1,0 +1,13 @@
+pkgbase = xmms-skins
+	pkgdesc = skins for XMMS
+	pkgver = 1.2.11
+	pkgrel = 1
+	url = https://www.xmms.org
+	arch = any
+	license = GPL
+	depends = xmms
+	noextract = xmms-pieles.tar.bz2
+	source = https://manualinux.eu/archivos/xmms-pieles.tar.bz2
+	md5sums = d214397c4a3fd2b2cf8e9781ab0392bc
+
+pkgname = xmms-skins
