@@ -1,8 +1,8 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 _basename=jicofo
-_tag=987
-_version=1.0.987
+_tag=996
+_version=1.0.996
 
 pkgname=${_basename}
 pkgver=${_version}
@@ -65,6 +65,6 @@ package() {
 }
 sha256sums=('SKIP'
             'b69f9485ba55b53fe6d1a8b5e4a37c542641cb205c6f5c0b2cf89d236cc6b562'
-            '0b28a97f02b21991c46e05a3546d466a73492c88218121e68aa3ea28f848091b'
+            '902229d135e9b949da318f539cbe8f266bdd4e32e514f37d8782ad4562dc791b'
             '0681e97ca1e06d8ea7bdec0a874c6fc7a6ea84628923005130cd444547a1b440'
             '9f6fb4759099feefaee6fd44cac5854401e58f7ce929949cbc3994faaa3487d3')
