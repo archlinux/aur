@@ -2,28 +2,31 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kcodecs-git
-_name=${pkgname%-git}
-pkgver=v5.71.0.rc1.r6.g982b8e6
+pkgver=5.240.0_r481.gb52a6dc
 pkgrel=1
 pkgdesc='Plugins allowing Qt applications to access further types of images'
 arch=(x86_64)
-url='https://projects.kde.org/projects/frameworks/kcodecs'
+url='https://community.kde.org/Frameworks'
 license=(LGPL)
-depends=(qt5-base)
-makedepends=(extra-cmake-modules gperf git qt5-tools)
-groups=(kf5)
-conflicts=(kcodecs)
-provides=(kcodecs)
-source=("git+https://invent.kde.org/frameworks/$_name.git")
+depends=(qt6-base)
+makedepends=(extra-cmake-modules gperf git qt6-tools)
+groups=(kf6-git)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd $_name
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 'set(KF_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cmake -B build -S $_name
+  cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=ON
   cmake --build build
 }
 
