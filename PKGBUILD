@@ -9,6 +9,7 @@ url="http://www.android-x86.org/"
 license=('Apache' 'GPL2' 'custom:Creative Commons 3.0 Attribution Unported')
 depends=('rxvt-unicode' 'zenity' 'qemu' 'hicolor-icon-theme')
 makedepends=('inkscape')
+conflicts=('qemu-android-x86' 'qemu-android-oreo-x86')
 install="qemu-android-cm-x86.install"
 source=("cm-x86-${_pkgver}.${arch}.rpm::https://osdn.net/frs/redir.php?m=constant&f=android-x86%2F68670%2Fcm-x86-${_pkgver}.${arch}.rpm"
 		"https://upload.wikimedia.org/wikipedia/commons/d/d7/Android_robot.svg"
