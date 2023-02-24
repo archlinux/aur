@@ -1,6 +1,6 @@
 pkgbase = linux-drm-next-git
 	pkgdesc = Linux kernel with bleeding-edge GPU drivers
-	pkgver = 6.2.r1156054.aebd8f0c6f82
+	pkgver = 6.2.r1156403.a48bba98380c
 	pkgrel = 1
 	url = https://cgit.freedesktop.org/drm/drm
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = linux-drm-next-git
 	source = linux-drm-next-git::git+https://anongit.freedesktop.org/git/drm/drm#branch=drm-next
 	source = config
 	sha256sums = SKIP
-	sha256sums = 2851b2b8475f1afae7d4f82b58cf7563adf99e39ebe2c1ffce2dd002e2f91b39
+	sha256sums = a80dfd64eca60673422052ac4d1444b0f9495a588c2595d413fd0687f3786586
 
 pkgname = linux-drm-next-git
 	pkgdesc = The Linux kernel with bleeding-edge GPU drivers kernel and modules
