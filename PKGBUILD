@@ -1,11 +1,11 @@
 # Maintainer: benwaffle <vala@iofel.me>
 # Maintainer: Prince781 <princetonferro@gmail.com>
 pkgname=vala-language-server-git
-pkgver=0.48.4.r44.484465d6
+pkgver=0.48.6.r0.7577ffb2
 pkgrel=1
 pkgdesc='Language Server for Vala'
 arch=('x86_64')
-url="https://github.com/prince781/vala-language-server"
+url="https://github.com/vala-lang/vala-language-server"
 license=('LGPL-2.1')
 depends=('libgee' 'jsonrpc-glib' 'vala' 'meson')
 makedepends=('git' 'scdoc')
@@ -19,15 +19,13 @@ pkgver() {
     printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
-#prepare() {
-#	cd "$srcdir/${pkgname%-git}"
-#}
+prepare() {
+	cd "$srcdir/${pkgname%-git}"
+}
 
 build() {
     cd "$srcdir/${pkgname%-git}"
     arch-meson build
-    # disable gnome-builder plugin
-    meson configure -Dbuilder_abi=42.1 build
     ninja -C build
 }
 

@@ -1,8 +1,8 @@
 pkgbase = vala-language-server-git
 	pkgdesc = Language Server for Vala
-	pkgver = 0.48.4.r44.484465d6
+	pkgver = 0.48.6.r0.7577ffb2
 	pkgrel = 1
-	url = https://github.com/prince781/vala-language-server
+	url = https://github.com/vala-lang/vala-language-server
 	arch = x86_64
 	license = LGPL-2.1
 	makedepends = git
@@ -13,7 +13,7 @@ pkgbase = vala-language-server-git
 	depends = meson
 	provides = vala-language-server
 	conflicts = vala-language-server
-	source = git+https://github.com/prince781/vala-language-server.git
+	source = git+https://github.com/vala-lang/vala-language-server.git
 	sha256sums = SKIP
 
 pkgname = vala-language-server-git
