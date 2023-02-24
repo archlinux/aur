@@ -1,8 +1,8 @@
 pkgbase = deepin-wine-tencent-edu
-	pkgdesc = Tencent Classroom on Deepin Wine 6
+	pkgdesc = Tencent Classroom on Deepin Wine 6.腾讯课堂
 	pkgver = 4.2.2.8
 	pkgrel = 1
-	url = https://work.weixin.qq.com/
+	url = https://ke.qq.com/
 	install = deepin-wine-tencent-edu.install
 	arch = x86_64
 	license = custom
