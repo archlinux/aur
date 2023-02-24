@@ -2,7 +2,7 @@
 # Co-Maintainer: Leon Möller <jkhsjdhjs at totally dot rip>
 
 pkgname="nzbhydra2-nojava-bin"
-pkgver=5.1.5
+pkgver=5.1.6
 pkgrel=1
 pkgdesc="Search aggregator for newznab and torznab indexers."
 arch=('x86_64' 'aarch64')
@@ -25,9 +25,9 @@ sha256sums=('2fae64a1c5979d9f7b508f1e15d0f013b7cca1f2bbbdae56f546f4c362146b68'
             'a9ceeed2b50d55c5e554c0d4c615e855fe4d3889eb118e37908fa04ffb7cb003'
             '8f91eb4f98f7f5c11590b29b1394dfa7ca62ad115feeac4f402c9ac094fb925a'
             'f322cfbfb360ede7b815ed63262032d48d459fc1f775ad4b95b6a585a97f2bdd'
-            '861e535862f41e958e53ce1c4fa31c5ee4477c5bf7c44442b1050cbbedbfef7a')
-sha256sums_x86_64=('36c96cad0b8afaa83a64d9a407925f9cd310fed912c330c63f8d07cdb2559869')
-sha256sums_aarch64=('c32d92a9a7aca0ea2971140e4c4313abcf36f4fe058a678fa31c5172fdde0f53')
+            'd1c40c40c1ec75d37e8dec0b250179f6a88fedb49ad335ae53625e159a730019')
+sha256sums_x86_64=('351e764201b5b83da777ed199c672a7f86956f379c8eb490fb5c938bd105ea77')
+sha256sums_aarch64=('21013a25eb1c2a51dbe4219f4f4649f620070bdf4381b4b339bc78bf9c7dae88')
 
 prepare() {
     patch "${srcdir}/nzbhydra2wrapperPy3.py" < "${srcdir}/wrapper-remove-release-type-detection.patch"
