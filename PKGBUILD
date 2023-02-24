@@ -16,7 +16,7 @@ url="https://github.com/Robosturm/Commander_Wars"
 license=('LGPL3')
 options=(!emptydirs)
 depends=('qt6-declarative' 'qt6-multimedia')
-makedepends=('ninja' 'qt6-tools')
+makedepends=('cmake' 'ninja' 'qt6-tools')
 source=("https://github.com/Robosturm/Commander_Wars/archive/$_pkgtag.tar.gz"
         '0001-fix-QStandardPaths-include.patch')
 sha512sums=('7e6c55a21ea39dd5d07b28c305bf9ccfbc75679399ae25dbb722928993c6fec166e851f5b82846b8ce5df954402cf58404316cc64416a6a60bf90e608de3bf58'
