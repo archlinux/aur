@@ -5,7 +5,7 @@
 
 # Maintainer: Stephen <stephenvdw.social@gmail.com>
 pkgname=ytbgmplayer-git
-pkgver=1.2.13.r4.e7296c3
+pkgver=1.3.0.r5.82c629b
 pkgrel=1
 # epoch=
 pkgdesc="A lightweight youtube background music player"
@@ -14,7 +14,7 @@ url="https://github.com/WeebNetsu/yt-playlist-bgm-player.git"
 license=('GPL-3.0')
 # groups=()
 depends=(mpv yt-dlp)
-makedepends=(git nim)
+makedepends=(git nim mpv)
 # checkdepends=()
 optdepends=()
 provides=()
@@ -34,7 +34,7 @@ md5sums=("SKIP")
 
 pkgver(){
 	cd "${_pkgname}"
-	printf "1.2.13.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "1.3.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -51,5 +51,5 @@ package() {
 	cp -rf ytbgmplayer ${pkgdir}/usr/bin/ytbgmplayer
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	# TODO: Add readme and license https://youtu.be/iUz28vbWgVw
-	echo "NOTICE: You need yt-dlp to play music from YouTube."
+	# echo "NOTICE: You need yt-dlp to play music from YouTube."
 }
