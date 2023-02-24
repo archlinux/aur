@@ -6,11 +6,18 @@ pkgdesc='Shell integration of iTerm2, useful when SSH from macOS.'
 arch=('any')
 url="https://iterm2.com"
 license=('GPL')
-source=("https://github.com/gnachman/iTerm2/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('bf8a6583bb2796f25d66f708b27103f7aaf0b78896284daa649450cfc3730d3f')
+
+_commit=e4115113df7704497e3d1d01dd02c11710931063  # git rev-parse "v$pkgver"
+source=(git+https://github.com/gnachman/iTerm2.git#commit=$_commit)
+sha256sums=('SKIP')
+
+prepare() {
+	cd 'iTerm2'
+	git submodule update --init submodules/iTerm2-shell-integration
+}
 
 package() {
-	cd "iTerm2-${pkgver}/Resources/shell_integration"
-	install -D --mode=644 iterm2_shell_integration.zsh \
+	cd 'iTerm2/submodules/iTerm2-shell-integration'
+	install -D --mode=644 shell_integration/zsh \
 		"${pkgdir}/usr/share/zsh/plugins/iterm2_shell_integration.zsh"
 }

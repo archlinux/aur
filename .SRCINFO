@@ -5,7 +5,7 @@ pkgbase = iterm2-shell-integration
 	url = https://iterm2.com
 	arch = any
 	license = GPL
-	source = https://github.com/gnachman/iTerm2/archive/refs/tags/v3.4.19.tar.gz
-	sha256sums = bf8a6583bb2796f25d66f708b27103f7aaf0b78896284daa649450cfc3730d3f
+	source = git+https://github.com/gnachman/iTerm2.git#commit=e4115113df7704497e3d1d01dd02c11710931063
+	sha256sums = SKIP
 
 pkgname = iterm2-shell-integration
