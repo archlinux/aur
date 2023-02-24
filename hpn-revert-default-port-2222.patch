@@ -130,7 +130,7 @@ diff --git a/ssh.c b/ssh.c
 index 24758239d15..e1162dc54d2 100644
 --- a/ssh.c
 +++ b/ssh.c
-@@ -1549,36 +1549,10 @@ main(int ac, char **av)
+@@ -1562,36 +1562,10 @@ main(int ac, char **av)
  		timeout_ms = options.connection_timeout * 1000;
  
  	/* Open a connection to the remote host. */
@@ -140,9 +140,9 @@ index 24758239d15..e1162dc54d2 100644
 -	 * -cjr 8/17/2022
 -	 */
 -tryagain:
- 	if (ssh_connect(ssh, host, host_arg, addrs, &hostaddr, options.port,
--	    options.connection_attempts, &timeout_ms,
--	    options.tcp_keep_alive) != 0) {
+ 	if (ssh_connect(ssh, host, options.host_arg, addrs, &hostaddr,
+ 	    options.port, options.connection_attempts,
+-	    &timeout_ms, options.tcp_keep_alive) != 0) {
 -		/* could not connect. If the port requested is the same as
 -		 * hpnssh default port then fallback. Otherwise, exit */
 -		if ((options.port == default_ssh_port()) && options.fallback) {
@@ -162,7 +162,6 @@ index 24758239d15..e1162dc54d2 100644
 -		} else {
 -			exit(255);
 -		}
-+	    options.connection_attempts,
 +	    &timeout_ms, options.tcp_keep_alive) != 0)
  		exit(255);
 -	}
