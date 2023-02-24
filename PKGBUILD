@@ -1,4 +1,5 @@
 # Maintainer: Denis Benato <benato.denis96 [at] gmail dot com>
+# Contributor: Robert Manner <the_manni at users.sf.net>
 
 pkgname=directx-shader-compiler-git
 _pkgname=DirectXShaderCompiler
