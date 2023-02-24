@@ -1,6 +1,6 @@
 pkgbase = linux-aarch64-flippy
-	pkgver = 6.1.12
-	pkgrel = 2
+	pkgver = 6.1.13
+	pkgrel = 1
 	url = https://github.com/unifreq/linux-6.1.y
 	arch = aarch64
 	license = GPL2
@@ -9,11 +9,13 @@ pkgbase = linux-aarch64-flippy
 	makedepends = dtc
 	makedepends = uboot-tools
 	options = !strip
-	source = linux-6.1.y-29c263d9c3e5ce3c9099bd35d79dcb1eedbca99c.tar.gz::https://github.com/unifreq/linux-6.1.y/archive/29c263d9c3e5ce3c9099bd35d79dcb1eedbca99c.tar.gz
+	source = linux-6.1.y-d90ddfc6e81dc376224f1cc214a11a7be4e2bc2a.tar.gz::https://github.com/unifreq/linux-6.1.y/archive/d90ddfc6e81dc376224f1cc214a11a7be4e2bc2a.tar.gz
+	source = support-amlogic-proprietary-partition.patch::https://github.com/7Ji/linux-6.1.y/compare/54968e71b3d75d34117442db5fd1fc3f0761439e%5E...f51821c5dc09619495172afeeab2fd19d9d38787.patch
 	source = config
 	source = linux.preset
-	sha256sums = 2b287393501be50f6574a43f6eb56b3e001b11ab2aa8d43219de6de3fec18e51
-	sha256sums = 9d71748237b52a5ac977fdfb7589224194dfc396fe5f13c5f32355ace5efde5c
+	sha256sums = 7c65d89d66b71623402bbd306ea678c0ddbce1743137570d86d311c7472f0aef
+	sha256sums = 1501981431887686895a05e920b8954d93cfaca4d37116bd58d7c2ef9e6b6302
+	sha256sums = 5c18dc58fcd1e0201b035971cea49b972374cf60ddb53a1743885cff46c7bd9c
 	sha256sums = bdcd6cbf19284b60fac6d6772f1e0ec2e2fe03ce7fe3d7d16844dd6d2b5711f3
 
 pkgname = linux-aarch64-flippy
@@ -35,12 +37,12 @@ pkgname = linux-aarch64-flippy-headers
 
 pkgname = linux-aarch64-flippy-dtb-allwinner
 	pkgdesc = DTB files for Allwinner SoCs for flippy's AArch64 kernel
-	provides = linux-aarch64-flippy-dtb=6.1.12
+	provides = linux-aarch64-flippy-dtb=6.1.13
 
 pkgname = linux-aarch64-flippy-dtb-amlogic
 	pkgdesc = DTB files for Amlogic SoCs for flippy's AArch64 kernel
-	provides = linux-aarch64-flippy-dtb=6.1.12
+	provides = linux-aarch64-flippy-dtb=6.1.13
 
 pkgname = linux-aarch64-flippy-dtb-rockchip
 	pkgdesc = DTB files for Rockchip SoCs for flippy's AArch64 kernel
-	provides = linux-aarch64-flippy-dtb=6.1.12
+	provides = linux-aarch64-flippy-dtb=6.1.13
