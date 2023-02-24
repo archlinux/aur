@@ -1,18 +1,17 @@
 pkgbase = paleta
 	pkgdesc = Extract the dominant colors from any image.
-	pkgver = 0.23
-	pkgrel = 2
+	pkgver = 0.30
+	pkgrel = 1
 	url = https://github.com/nate-xyz/paleta
-	arch = any
+	arch = x86_64
 	license = GPL3
 	checkdepends = appstream-glib
+	makedepends = cargo
 	makedepends = git
 	makedepends = meson
 	depends = libadwaita
-	depends = python-colorthief
-	depends = python-pillow
-	depends = python-pyxdg
-	source = git+https://github.com/nate-xyz/paleta.git#commit=cef94f4f54fd19652c727749d0fd8b3b0e88f055
+	options = !lto
+	source = git+https://github.com/nate-xyz/paleta.git#commit=85d754ed5d1e0e8e40dcd19c1914f638f45dbf0d
 	sha256sums = SKIP
 
 pkgname = paleta
