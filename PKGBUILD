@@ -2,12 +2,13 @@
 # Contributor: Harsh Barsaiyan <hbarsaiyan at gmail dot com>
 pkgname=youtube-music-bin
 pkgver=1.19.0
-pkgrel=2
+pkgrel=3
 pkgdesc="YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)"
 arch=('x86_64')
 url="https://th-ch.github.io/youtube-music"
 license=('MIT')
 depends=('gtk3' 'libsecret' 'nss')
+makedepends=('setconf')
 optdepends=('libnotify: desktop notifications'
             'libappindicator-gtk3: tray icon')
 provides=("${pkgname%-bin}")
@@ -22,6 +23,8 @@ sha256sums=('f8bebf16cd24463dd830bdf3dbd59cc6a4f44a5422a2b995f1ef8bb260325beb'
 
 package(){
   bsdtar xfv data.tar.xz -C "$pkgdir"
+
+  setconf "$pkgdir/usr/share/applications/${pkgname%-bin}.desktop" Exec "${pkgname%-bin} %U"
 
   install -Dm755 "${pkgname%-bin}.sh" "$pkgdir/usr/bin/${pkgname%-bin}"
 
