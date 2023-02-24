@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+CHROOT="./buildroot"
+sudo mount --mkdir -t tmpfs -o defaults,size=20G tmpfs "${CHROOT}"
+mkarchroot "${CHROOT}/root" base-devel
+
+cleanup() {
+    sudo umount "${CHROOT}"
+    rmdir "${CHROOT}"
+}
+trap cleanup EXIT
+
+arch-nspawn "${CHROOT}/root" pacman -Syu
+sudo makechrootpkg -c -r "${CHROOT}"
