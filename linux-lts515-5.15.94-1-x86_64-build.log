@@ -1,0 +1,136 @@
+cat: /etc/os-release: No such file or directory
+  SYSHDR  arch/x86/include/generated/uapi/asm/unistd_32.h
+  SYSHDR  arch/x86/include/generated/uapi/asm/unistd_64.h
+  SYSHDR  arch/x86/include/generated/uapi/asm/unistd_x32.h
+  SYSTBL  arch/x86/include/generated/asm/syscalls_32.h
+  SYSHDR  arch/x86/include/generated/asm/unistd_32_ia32.h
+  SYSHDR  arch/x86/include/generated/asm/unistd_64_x32.h
+  SYSTBL  arch/x86/include/generated/asm/syscalls_64.h
+  HYPERCALLS arch/x86/include/generated/asm/xen-hypercalls.h
+  SPHINX  htmldocs --> file:///build/linux-lts515/src/linux-5.15.94/Documentation/output
+  WRAP    arch/x86/include/generated/uapi/asm/bpf_perf_event.h
+  WRAP    arch/x86/include/generated/uapi/asm/errno.h
+  WRAP    arch/x86/include/generated/uapi/asm/fcntl.h
+  WRAP    arch/x86/include/generated/uapi/asm/ioctl.h
+  PARSE   include/uapi/linux/dvb/ca.h
+  PARSE   include/uapi/linux/dvb/dmx.h
+  WRAP    arch/x86/include/generated/uapi/asm/ioctls.h
+  WRAP    arch/x86/include/generated/uapi/asm/ipcbuf.h
+  WRAP    arch/x86/include/generated/uapi/asm/param.h
+  WRAP    arch/x86/include/generated/uapi/asm/poll.h
+  WRAP    arch/x86/include/generated/uapi/asm/resource.h
+  WRAP    arch/x86/include/generated/uapi/asm/socket.h
+  WRAP    arch/x86/include/generated/uapi/asm/sockios.h
+  WRAP    arch/x86/include/generated/uapi/asm/termbits.h
+  WRAP    arch/x86/include/generated/uapi/asm/termios.h
+  WRAP    arch/x86/include/generated/uapi/asm/types.h
+  PARSE   include/uapi/linux/dvb/frontend.h
+  PARSE   include/uapi/linux/dvb/net.h
+  PARSE   include/uapi/linux/videodev2.h
+  PARSE   include/uapi/linux/media.h
+  PARSE   include/uapi/linux/cec.h
+  HOSTCC  arch/x86/tools/relocs_32.o
+  PARSE   include/uapi/linux/lirc.h
+  HOSTCC  arch/x86/tools/relocs_64.o
+  HOSTCC  arch/x86/tools/relocs_common.o
+  HOSTLD  arch/x86/tools/relocs
+  UPD     include/config/kernel.release
+  WRAP    arch/x86/include/generated/asm/early_ioremap.h
+  WRAP    arch/x86/include/generated/asm/export.h
+  WRAP    arch/x86/include/generated/asm/irq_regs.h
+  WRAP    arch/x86/include/generated/asm/mcs_spinlock.h
+  WRAP    arch/x86/include/generated/asm/kmap_size.h
+  WRAP    arch/x86/include/generated/asm/local64.h
+  WRAP    arch/x86/include/generated/asm/mmiowb.h
+  WRAP    arch/x86/include/generated/asm/module.lds.h
+  WRAP    arch/x86/include/generated/asm/rwonce.h
+  WRAP    arch/x86/include/generated/asm/unaligned.h
+  UPD     include/generated/uapi/linux/version.h
+  UPD     include/generated/utsrelease.h
+  HOSTCC  scripts/bin2c
+  HOSTCC  scripts/selinux/genheaders/genheaders
+  HOSTCC  scripts/kallsyms
+  DESCEND objtool
+  HOSTCC  scripts/selinux/mdp/mdp
+  HOSTCC  /build/linux-lts515/src/linux-5.15.94/tools/objtool/fixdep.o
+  HOSTCC  scripts/sorttable
+  HOSTLD  /build/linux-lts515/src/linux-5.15.94/tools/objtool/fixdep-in.o
+  LINK    /build/linux-lts515/src/linux-5.15.94/tools/objtool/fixdep
+  CC      /build/linux-lts515/src/linux-5.15.94/tools/objtool/exec-cmd.o
+  DESCEND bpf/resolve_btfids
+  HOSTCC  scripts/asn1_compiler
+  MKDIR     /build/linux-lts515/src/linux-5.15.94/tools/bpf/resolve_btfids//libbpf
+  CC      /build/linux-lts515/src/linux-5.15.94/tools/objtool/help.o
+  HOSTCC  /build/linux-lts515/src/linux-5.15.94/tools/bpf/resolve_btfids/fixdep.o
+  HOSTLD  /build/linux-lts515/src/linux-5.15.94/tools/bpf/resolve_btfids/fixdep-in.o
+  LINK    /build/linux-lts515/src/linux-5.15.94/tools/bpf/resolve_btfids/fixdep
+  MKDIR     /build/linux-lts515/src/linux-5.15.94/tools/bpf/resolve_btfids//libsubcmd
+  CC      /build/linux-lts515/src/linux-5.15.94/tools/bpf/resolve_btfids/main.o
+  CC      /build/linux-lts515/src/linux-5.15.94/tools/objtool/pager.o
+  HOSTCC  scripts/sign-file
+  CC      /build/linux-lts515/src/linux-5.15.94/tools/bpf/resolve_btfids/rbtree.o
+  CC      /build/linux-lts515/src/linux-5.15.94/tools/objtool/parse-options.o
+  CC      /build/linux-lts515/src/linux-5.15.94/tools/bpf/resolve_btfids/zalloc.o
+  CC      /build/linux-lts515/src/linux-5.15.94/tools/bpf/resolve_btfids/string.o
+  CC      /build/linux-lts515/src/linux-5.15.94/tools/bpf/resolve_btfids/ctype.o
+  CC      /build/linux-lts515/src/linux-5.15.94/tools/bpf/resolve_btfids/str_error_r.o
+  HOSTCC  scripts/extract-cert
+  LD      /build/linux-lts515/src/linux-5.15.94/tools/bpf/resolve_btfids/resolve_btfids-in.o
+./kernel/signal.c:1839: warning: Function parameter or member 'force_coredump' not described in 'force_sig_seccomp'
+  CC      /build/linux-lts515/src/linux-5.15.94/tools/objtool/run-command.o
+  GEN     /build/linux-lts515/src/linux-5.15.94/tools/bpf/resolve_btfids/libbpf/bpf_helper_defs.h
+  CC      /build/linux-lts515/src/linux-5.15.94/tools/objtool/sigchain.o
+  MKDIR   /build/linux-lts515/src/linux-5.15.94/tools/bpf/resolve_btfids/libbpf/staticobjs/
+  CC      /build/linux-lts515/src/linux-5.15.94/tools/bpf/resolve_btfids/libbpf/staticobjs/libbpf.o
+./include/linux/damon.h:65: warning: wrong kernel-doc identifier on line:
+ * struct damon_primitive       Monitoring primitives for given use cases.
+  CC      /build/linux-lts515/src/linux-5.15.94/tools/objtool/subcmd-config.o
+  MKDIR   /build/linux-lts515/src/linux-5.15.94/tools/bpf/resolve_btfids/libbpf/staticobjs/
+  CC      /build/linux-lts515/src/linux-5.15.94/tools/bpf/resolve_btfids/libbpf/staticobjs/bpf.o
+  LD      /build/linux-lts515/src/linux-5.15.94/tools/objtool/libsubcmd-in.o
+  AR      /build/linux-lts515/src/linux-5.15.94/tools/objtool/libsubcmd.a
+  CC      /build/linux-lts515/src/linux-5.15.94/tools/objtool/arch/x86/special.o
+  MKDIR   /build/linux-lts515/src/linux-5.15.94/tools/objtool/arch/x86/lib/
+  GEN     /build/linux-lts515/src/linux-5.15.94/tools/objtool/arch/x86/lib/inat-tables.c
+  CC      /build/linux-lts515/src/linux-5.15.94/tools/objtool/arch/x86/decode.o
+  CC      /build/linux-lts515/src/linux-5.15.94/tools/bpf/resolve_btfids/libbpf/staticobjs/nlattr.o
+make[4]: *** Deleting file '/build/linux-lts515/src/linux-5.15.94/tools/bpf/resolve_btfids/libbpf/staticobjs/nlattr.o'
+make[4]: *** [/build/linux-lts515/src/linux-5.15.94/tools/build/Makefile.build:97: /build/linux-lts515/src/linux-5.15.94/tools/bpf/resolve_btfids/libbpf/staticobjs/libbpf.o] Interrupt
+make[4]: *** [/build/linux-lts515/src/linux-5.15.94/tools/build/Makefile.build:97: /build/linux-lts515/src/linux-5.15.94/tools/bpf/resolve_btfids/libbpf/staticobjs/nlattr.o] Interrupt
+make[4]: *** [/build/linux-lts515/src/linux-5.15.94/tools/build/Makefile.build:97: /build/linux-lts515/src/linux-5.15.94/tools/objtool/arch/x86/decode.o] Interrupt
+make[3]: *** [Makefile:158: /build/linux-lts515/src/linux-5.15.94/tools/bpf/resolve_btfids/libbpf/staticobjs/libbpf-in.o] Interrupt
+make[3]: *** [/build/linux-lts515/src/linux-5.15.94/tools/build/Makefile.build:139: arch/x86] Interrupt
+Exception ignored in: <function _releaseLock at 0x7ff773907250>
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/logging/__init__.py", line 228, in _releaseLock
+make[2]: *** [Makefile:56: /build/linux-lts515/src/linux-5.15.94/tools/objtool/objtool-in.o] Interrupt
+make[2]: *** [Makefile:48: /build/linux-lts515/src/linux-5.15.94/tools/bpf/resolve_btfids//libbpf/libbpf.a] Interrupt
+    def _releaseLock():
+KeyboardInterrupt: 
+make[1]: *** [Makefile:69: objtool] Interrupt
+make[1]: *** [Makefile:72: bpf/resolve_btfids] Interrupt
+make: *** [Makefile:1406: tools/bpf/resolve_btfids] Interrupt
+make: *** [Makefile:1406: tools/objtool] Interrupt
+/build/linux-lts515/src/linux-5.15.94/Documentation/admin-guide/device-mapper/writecache.rst:23: ERROR: Unexpected indentation.
+/build/linux-lts515/src/linux-5.15.94/Documentation/admin-guide/hw-vuln/cross-thread-rsb.rst:92: ERROR: Unexpected indentation.
+/build/linux-lts515/src/linux-5.15.94/Documentation/arm64/tagged-address-abi.rst:52: ERROR: Unexpected indentation.
+/build/linux-lts515/src/linux-5.15.94/Documentation/vm/damon/index.rst:24: WARNING: toctree contains reference to nonexisting document 'vm/damon/plans'
+
+Sphinx parallel build error:
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/build/linux-lts515/src/linux-5.15.94/./scripts/jobserver-exec", line 60, in <module>
+    rc = subprocess.call(sys.argv[1:])
+  File "/usr/lib/python3.10/subprocess.py", line 347, in call
+    return p.wait(timeout=timeout)
+  File "/usr/lib/python3.10/subprocess.py", line 1209, in wait
+    return self._wait(timeout=timeout)
+  File "/usr/lib/python3.10/subprocess.py", line 1943, in _wait
+    (pid, sts) = self._try_wait(0)
+  File "/usr/lib/python3.10/subprocess.py", line 1901, in _try_wait
+    (pid, sts) = os.waitpid(self.pid, wait_flags)
+KeyboardInterrupt
+make[1]: *** [Documentation/Makefile:91: htmldocs] Interrupt
+make: *** [Makefile:1747: htmldocs] Interrupt
+
+[1m[31m==> ERROR:(B[m[1m Aborted by user! Exiting...(B[m
