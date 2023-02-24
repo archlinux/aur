@@ -1,0 +1,20 @@
+pkgbase = deepin-wine-tencent-edu
+	pkgdesc = Tencent Classroom on Deepin Wine 6
+	pkgver = 4.2.2.8
+	pkgrel = 1
+	url = https://work.weixin.qq.com/
+	install = deepin-wine-tencent-edu.install
+	arch = x86_64
+	license = custom
+	depends = deepin-wine6-stable
+	depends = xdg-utils
+	source = com.tencent.edu.deepin_3.0.3.55deepin6.deb::https://com-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.edu.deepin/com.tencent.edu.deepin_3.0.3.55deepin6_i386.deb
+	source = TXEDU-4.2.2.8.exe::https://down.qq.com/txedupc/EduInstall_4.2.2.8_10180.exe
+	source = run.sh
+	source = deepin-wine-tencent-edu.install
+	md5sums = e8cee4d0d9ca70eb239847e22aac045f
+	md5sums = 74def420c9ea17e3b92ef9fc4988f66d
+	md5sums = 9d023740585add41cc2398256e49f779
+	md5sums = d42fb9118bc2c1cdc2470cd24cbe564c
+
+pkgname = deepin-wine-tencent-edu
