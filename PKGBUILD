@@ -15,7 +15,7 @@ provides=('gotz')
 
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+sha256sums=('1e203cae6f16b26300bbb9ba11af40b09e9c11b1a8f6f19ec5cc8a6b721638f0')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
