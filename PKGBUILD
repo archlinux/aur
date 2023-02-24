@@ -46,6 +46,6 @@ build() {
 package() {
 	cd $srcdir/build
 	make DESTDIR="$pkgdir/" install
-	cd pymoab
+	cd $srcdir/"$pkgname-$pkgver"/pymoab
 	pip install .
 }
