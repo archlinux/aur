@@ -1,24 +1,38 @@
 # Maintainer: robertfoster
 
 pkgname=simonpi
-pkgver=1.0.16
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A quick & dirty script to emulate Raspberry PI family devices on your laptop"
 arch=(any)
 url="https://github.com/M0Rf30/simonpi"
 license=('GPL3')
-depends=('coreutils' 'dnsmasq' 'dosfstools' 'e2fsprogs' 'edk2-avmf' 'file' 'grep' 'iproute2' 'iptables' 'libarchive' 'procps-ng' 'qemu-headless-arch-extra' 'sudo' 
-'util-linux' 'wget')
-makedepends=('git')
+depends=(
+  'coreutils'
+  'dnsmasq'
+  'dosfstools'
+  'e2fsprogs'
+  'edk2-aarch64'
+  'edk2-arm'
+  'file'
+  'grep'
+  'iproute2'
+  'iptables'
+  'libarchive'
+  'procps-ng'
+  'qemu-system-aarch64'
+  'qemu-system-arm'
+  'sudo'
+  'util-linux'
+  'wget'
+)
 install=simonpi.install
-source=("https://github.com/M0Rf30/simonpi/archive/$pkgver.tar.gz")
+source=("${url}/archive/$pkgver.tar.gz")
 
 package() {
-	cd $srcdir/$pkgname-$pkgver
-	install -Dm755 simonpi $pkgdir/usr/bin/simonpi
-	install -dm755 $pkgdir/opt/simonpiemu/
-	cp -r simonpiemu/* $pkgdir/opt/simonpiemu/
-	sed -i "s/OPT=./OPT=\/opt/g" $pkgdir/usr/bin/simonpi
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  install -Dm755 "${pkgname}" \
+    "${pkgdir}/usr/bin/${pkgname}"
 }
 
-md5sums=('d31d9c6a5f1cc3e9bf8cda892b78a6b7')
+sha256sums=('7c258c4dc2791a42e9b773934a285d4970673caf5a6d9a1bd28b6d8a8a36fd11')
