@@ -1,19 +1,16 @@
 pkgbase = btdu-bin
-	pkgdesc = Sampling disk usage profiler for btrfs
-	pkgver = 0.5.0
-	pkgrel = 2
-	url = https://github.com/CyberShadow/btdu
+	pkgdesc = sampling disk usage profiler for btrfs
+	pkgver = v0.5.0
+	pkgrel = 1
+	url = https://github.com/CyberShadow/btdu/
 	arch = x86_64
 	arch = aarch64
-	license = GPL2
-	depends = ncurses
-	provides = btdu=0.5.0
+	license = GNU General Public License v2.0
+	provides = btdu
 	conflicts = btdu
-	source = btdu-bin-0.5.0.man1::https://github.com/CyberShadow/btdu/raw/v0.5.0/btdu.1
-	b2sums = 27fdc27646a09bd2822d5f6b2acfa15c6caaaeaa1115e91f60f2460231bec4a5843caeb4770311f75cd4c3d3153e025ccf7347f3ecf7c35bc95d74e501a87e27
-	source_x86_64 = btdu-bin-0.5.0::https://github.com/CyberShadow/btdu/releases/download/v0.5.0/btdu-static-x86_64
-	b2sums_x86_64 = e35e33764e9473ec2aca0096ff6315d3f142c3f9a7556ba3c8529447cdb85d6b92de9620478094f2d405aa1f9b69605faac741905d3cb63eb309d6f24f1f00ac
-	source_aarch64 = btdu-bin-0.5.0::https://github.com/CyberShadow/btdu/releases/download/v0.5.0/btdu-glibc-aarch64
-	b2sums_aarch64 = 48f113ffdc4770237cdc92d092a77b3b3a397795a48040717a4ed31008065c7ef4dad2fd4c61d521c1da9c5a59e6584f7985c7c4f34747f4b0f0c58809318e91
+	source_x86_64 = btdu::https://github.com/CyberShadow/btdu/releases/download/v0.5.0/btdu-static-x86_64
+	sha256sums_x86_64 = c7296034fdfd8d1d08b495e7159658a41e1fce9a70f8aa3458e1ca0b21807278
+	source_aarch64 = btdu::https://github.com/CyberShadow/btdu/releases/download/v0.5.0/btdu-glibc-aarch64
+	sha256sums_aarch64 = 7ac3cca106b7f83759bd4c9b112e729ad44371440c9ebe14ae37288565a31f52
 
 pkgname = btdu-bin

@@ -1,24 +1,22 @@
-# Maintainer: éclairevoyant
+# Maintainer: bluetail  <a minus development plus archpkg at posteo dot de>
 
-_pkgname=btdu
-pkgname="$_pkgname-bin"
-pkgver=0.5.0
-pkgrel=2
-pkgdesc='Sampling disk usage profiler for btrfs'
+pkgname=btdu-bin
+pkgver=v0.5.0
+pkgrel=1
+pkgdesc="sampling disk usage profiler for btrfs"
 arch=('x86_64' 'aarch64')
-url="https://github.com/CyberShadow/$_pkgname"
-license=('GPL2')
-depends=('ncurses')
-provides=("$_pkgname=$pkgver")
-conflicts=("$_pkgname")
-source=("$pkgname-$pkgver.man1::$url/raw/v$pkgver/btdu.1")
-source_x86_64=("$pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname-static-x86_64")
-source_aarch64=("$pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname-glibc-aarch64")
-b2sums=('27fdc27646a09bd2822d5f6b2acfa15c6caaaeaa1115e91f60f2460231bec4a5843caeb4770311f75cd4c3d3153e025ccf7347f3ecf7c35bc95d74e501a87e27')
-b2sums_x86_64=('e35e33764e9473ec2aca0096ff6315d3f142c3f9a7556ba3c8529447cdb85d6b92de9620478094f2d405aa1f9b69605faac741905d3cb63eb309d6f24f1f00ac')
-b2sums_aarch64=('48f113ffdc4770237cdc92d092a77b3b3a397795a48040717a4ed31008065c7ef4dad2fd4c61d521c1da9c5a59e6584f7985c7c4f34747f4b0f0c58809318e91')
+url="https://github.com/CyberShadow/btdu/"
+license=('GNU General Public License v2.0')
+provides=("${pkgname%-*}")
+conflicts=("${pkgname%-*}")
+source_x86_64=("btdu::https://github.com/CyberShadow/btdu/releases/download/${pkgver}/btdu-static-x86_64")
+source_aarch64=("btdu::https://github.com/CyberShadow/btdu/releases/download/${pkgver}/btdu-glibc-aarch64")
+
+sha256sums_x86_64=('c7296034fdfd8d1d08b495e7159658a41e1fce9a70f8aa3458e1ca0b21807278')
+sha256sums_aarch64=('7ac3cca106b7f83759bd4c9b112e729ad44371440c9ebe14ae37288565a31f52')
+
 
 package() {
-	install -Dm755 $pkgname-$pkgver "$pkgdir/usr/bin/$_pkgname"
-	install -Dm644 $pkgname-$pkgver.man1 "$pkgdir/usr/share/man/man1/$_pkgname.1"
+        cd "$srcdir" || exit
+        install -D -m+x btdu "$pkgdir/usr/bin/btdu"
 }
