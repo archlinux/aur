@@ -1,13 +1,15 @@
 pkgbase = python-yattag
-	pkgdesc = Yattag is a Python library for generating HTML or XML in a pythonic way
-	pkgver = 1.14.0
+	pkgdesc = Python library for generating HTML or XML in a pythonic way.
+	pkgver = 1.15.0
 	pkgrel = 1
 	url = http://yattag.org
 	arch = any
 	license = LGPL
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
-	source = https://pypi.python.org/packages/source/y/yattag/yattag-1.14.0.tar.gz
-	sha256sums = 5731a31cb7452c0c6930dd1a284e0170b39eee959851a2aceb8d6af4134a5fa8
+	source = https://pypi.python.org/packages/source/y/yattag/yattag-1.15.0.tar.gz
+	sha256sums = 6a9ff3fd330a60287804ea7370a84166b624ebf4b7ad9ed788b7c57779b65263
 
 pkgname = python-yattag
