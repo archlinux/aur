@@ -1,20 +1,20 @@
 pkgbase = lychee-photo-management
-	pkgdesc = Lychee is an easy to use and great looking photo-management-system.
-	pkgver = 4.3.0
+	pkgdesc = Easy to use and great looking photo management system
+	pkgver = 4.7.0
 	pkgrel = 1
 	url = https://lycheeorg.github.io/
 	arch = any
 	license = MIT
-	depends = php
+	depends = php>=8.1
 	depends = php-gd
 	depends = mariadb
 	optdepends = php-apache: to use the Apache web server
 	options = !strip
 	options = emptydirs
 	backup = etc/webapps/lychee/apache.example.conf
-	source = lychee-photo-management-4.3.0.tar.gz::https://github.com/LycheeOrg/Lychee/archive/v4.3.0.tar.gz
+	source = lychee-photo-management-4.7.0.tar.gz::https://github.com/LycheeOrg/Lychee/archive/v4.7.0.tar.gz
 	source = apache.example.conf
-	sha256sums = d905cfee8c670e42566b9681d189a0714fa2f29b3e212cd9022ee9244288f1ed
-	sha256sums = 0a68524551049320c6a58177baeb4592041970b3892ae0eeca405a3f75706701
+	b2sums = 00a0c4e353f8186f5c46da3691e4f67bdd124ca485ee3c9667755151e010af0eeb015dd28d99de7f04a463559289a405919db0559c7f65a1ef324dd6e633312d
+	b2sums = d989b2940b26787315d08ea40bf23184de09b66c4d400da4022cedf24daa09596eb8841afee3aa7f984d28dc15968b76f0048a1c436b0cf2a27f1cbfa0bde31e
 
 pkgname = lychee-photo-management
