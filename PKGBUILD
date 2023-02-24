@@ -3,7 +3,7 @@
 pkgname=sdl2-csgo-wayland-bin
 pkgver=2.0.14
 pkgrel=1
-pkgdesc='A version of SDL2 that is tested to work with CS:GO on Wayland.'
+pkgdesc='A version of SDL2 that is tested to work with CS:GO on Wayland. WARNING: You might get VAC banned by using a different SDL2 version in CS:GO.'
 arch=('x86_64')
 url='https://www.libsdl.org'
 license=('MIT')
