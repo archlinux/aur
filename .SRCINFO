@@ -13,6 +13,8 @@ pkgbase = qemu-android-cm-x86
 	depends = zenity
 	depends = qemu
 	depends = hicolor-icon-theme
+	conflicts = qemu-android-x86
+	conflicts = qemu-android-oreo-x86
 	source = cm-x86-14.1-r5.x86_64.rpm::https://osdn.net/frs/redir.php?m=constant&f=android-x86%2F68670%2Fcm-x86-14.1-r5.x86_64.rpm
 	source = https://upload.wikimedia.org/wikipedia/commons/d/d7/Android_robot.svg
 	source = qemu-android
