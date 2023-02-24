@@ -1,8 +1,8 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="apprise"
-pkgver=1.2.1
-pkgrel=3
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="Push Notifications that work with just about every platform"
 url="https://github.com/caronc/apprise"
 license=("MIT")
@@ -24,7 +24,7 @@ makedepends=(
         "python-wheel")
 options=("!strip")
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('67e0c227eecee260000980dbbf8ba1e5eebdbe494f4730808297c9e645c03579')
+sha256sums=('2c50c19a5dd41317b1f659c52b21a990febe6c15e08464228a1ce8e6098f11bf')
 
 build(){
  cd "$pkgname-$pkgver"
