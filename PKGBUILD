@@ -10,14 +10,14 @@ pkgname=(
 
 # Follow handbrakes most current stable branch 1.6.x
 # https://github.com/HandBrake/HandBrake/commits/1.6.x
-readonly _commit=854df8231fc3cd42200f172972a658b8edcac93b
+readonly _commit=5c2b5d2d0e667cc86dc403ceca81137cf7610e67
 
 pkgver() {
   git -C HandBrake/ gc --auto --prune=now
   git -C HandBrake/ describe ${_commit} | sed -e 's/^v//g' -e 's/-/.r/' -e 's/-/./'
 }
 
-pkgver=1.6.1.r15.g854df8231
+pkgver=1.6.1.r19.g5c2b5d2d0
 pkgrel=1
 arch=('x86_64')
 url="https://handbrake.fr/"
@@ -71,7 +71,7 @@ makedepends=(
   'lld'
   'llvm'
   # AMD VCE encoding on Linux requires Vulkan
-  'vulkan-headers'
+  'vulkan-headers=1:1.3.235'
   "${_commondeps[@]}"
   "${_guideps[@]}"
 )
@@ -104,19 +104,22 @@ setup_compiler() {
 build() {
   setup_compiler
 
-  cd "${srcdir}/HandBrake"
-  ./configure \
-    --launch-jobs=0 \
-    --prefix=/usr \
-    --cc="${CC}" \
-    --ar="${AR}" \
-    --ranlib="${RANLIB}" \
-    --strip="${STRIP}" \
-    --optimize=speed \
-    --cpu=native \
-    --lto=on \
-    --enable-qsv \
+  local -a CONFIGURE_OPTIONS=(
+    --launch-jobs=0
+    --prefix=/usr
+    --cc="${CC}"
+    --ar="${AR}"
+    --ranlib="${RANLIB}"
+    --strip="${STRIP}"
+    --optimize=speed
+    --cpu=native
+    --lto=on
+    --enable-qsv
     --enable-vce
+  )
+
+  cd "${srcdir}/HandBrake" || exit
+  ./configure "${CONFIGURE_OPTIONS[@]}"
   make -C build
 }
 
