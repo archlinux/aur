@@ -4,9 +4,6 @@ Documentation=https://github.com/tobias-kuendig/hacompanion
 After=network.target
 
 [Service]
-User=hacompanion
-Group=hacompanion
-EnvironmentFile=%E/hacompanion/env
 ExecStart=/usr/bin/hacompanion -config %E/hacompanion/config.toml
 Restart=on-failure
 
