@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=cyberscript
-pkgver=r432.g5c57431
+pkgver=0.2
 pkgrel=1
 pkgdesc='A fast, efficient, and concurrent scripting language'
 arch=('x86_64')
@@ -10,20 +10,24 @@ license=('MIT')
 depends=('glibc')
 makedepends=('git' 'zigup')
 options=('!debug')
-_commit='5c57431cecdf9b93f68b58d3f8c0f43662b38038'
+_zigver="0.11.0-dev.1580+a5b34a61a"
+_commit='7e529c5c79d13b6c803d0528b43433c6a0ac095c'
 source=("$pkgname::git+https://github.com/fubark/cyber#commit=$_commit")
 b2sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
 
-  printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  # delete "latest" tag
+  git tag -d latest >& /dev/null
+
+  git describe --tags | sed 's/^v//'
 }
 
 prepare() {
   cd "$pkgname"
 
-  zigup fetch master
+  zigup fetch "$_zigver"
 }
 
 build() {
@@ -33,8 +37,8 @@ build() {
   export BUILD="$(git rev-list --count HEAD)"
   export COMMIT="$(git rev-parse --short HEAD)"
 
-  zigup run master build cli \
-    -Drelease-fast \
+  zigup run "$_zigver" build cli \
+    -Doptimize=ReleaseFast \
     -Dtarget="$CARCH-linux-gnu" \
     -Dcpu=baseline
 }
