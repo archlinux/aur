@@ -71,7 +71,7 @@ package() {
   # bin + manpage + .pc file
   install -m755 -Dt "${pkgdir}"/usr/bin build/hw/xwayland/Xwayland
   install -m644 -Dt "${pkgdir}"/usr/share/man/man1 build/hw/xwayland/Xwayland.1
-  install -m644 -Dt "${pkgdir}"/usr/lib/pkgconfig build/hw/xwayland/xwayland.pc
+  install -m644 -Dt "${pkgdir}"/usr/lib/pkgconfig build/meson-private/xwayland.pc
 
   # license
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xserver/COPYING
