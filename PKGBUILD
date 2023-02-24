@@ -37,17 +37,17 @@ build() {
 }
 
 package() {
-	install -Dm755 "$srcdir/$pkgname/target/release/wleave" "$pkgdir/usr/bin/wleave"
-	install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm755 "$srcdir/$pkgname/target/release/wleave" "$pkgdir/usr/bin/wleave"
+    install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-	install -Dm644 -t "$pkgdir/etc/wleave" "$srcdir/$pkgname/"{"style.css","layout"}
+    install -Dm644 -t "$pkgdir/etc/wleave" "$srcdir/$pkgname/"{"style.css","layout"}
 
-	install -Dm644 "$srcdir/$pkgname/completions/wleave.bash" "$pkgdir/usr/share/bash-completion/completions/wleave"
-	install -Dm644 "$srcdir/$pkgname/completions/_wleave" "$pkgdir/usr/share/zsh/site-functions/_wleave"
-	install -Dm644 "$srcdir/$pkgname/completions/wleave.fish" "$pkgdir/usr/share/fish/vendor_completions.d/wleave.fish"
+    install -Dm644 "$srcdir/$pkgname/completions/wleave.bash" "$pkgdir/usr/share/bash-completion/completions/wleave"
+    install -Dm644 "$srcdir/$pkgname/completions/_wleave" "$pkgdir/usr/share/zsh/site-functions/_wleave"
+    install -Dm644 "$srcdir/$pkgname/completions/wleave.fish" "$pkgdir/usr/share/fish/vendor_completions.d/wleave.fish"
 
-	install -Dm644 -t "$pkgdir/usr/share/wleave/icons" "$srcdir/$pkgname/icons"/*
+    install -Dm644 -t "$pkgdir/usr/share/wleave/icons" "$srcdir/$pkgname/icons"/*
 
-  install -Dm644 -t "$pkgdir/usr/share/man/man1" "${srcdir}/${pkgname}/wleave.1.gz"
-  install -Dm644 -t "$pkgdir/usr/share/man/man5" "${srcdir}/${pkgname}/wleave.5.gz"
+    install -Dm644 -t "$pkgdir/usr/share/man/man1" "${srcdir}/${pkgname}/wleave.1.gz"
+    install -Dm644 -t "$pkgdir/usr/share/man/man5" "${srcdir}/${pkgname}/wleave.5.gz"
 }
