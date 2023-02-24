@@ -1,7 +1,7 @@
 pkgbase = r-posterior
 	pkgdesc = Tools for Working with Posterior Distributions
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=posterior
 	arch = any
 	license = BSD
@@ -19,6 +19,7 @@ pkgbase = r-posterior
 	optdepends = r-dplyr
 	optdepends = r-e1071
 	optdepends = r-gbm
+	optdepends = r-ggplot2
 	optdepends = r-knitr
 	optdepends = r-randomforest
 	optdepends = r-rmarkdown
