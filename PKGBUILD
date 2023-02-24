@@ -32,7 +32,7 @@ build() {
     cd "${srcdir}/${pkgname%-git}"
 
 # Ninja build
-    cmake -DCMAKE_BUILD_TYPE=Debug \
+    cmake -DCMAKE_BUILD_TYPE=Release \
         -DPORT=Linux \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
