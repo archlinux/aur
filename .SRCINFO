@@ -1,6 +1,6 @@
 pkgbase = moab
 	pkgdesc = The Mesh-Oriented datABase MOAB is a component for representing and evaluating mesh data
-	pkgver = 5.4.0
+	pkgver = 5.3.0
 	pkgrel = 1
 	url = https://bitbucket.org/fathomteam/moab
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = moab
 	depends = blas
 	depends = lapack
 	provides = moab
-	source = https://ftp.mcs.anl.gov/pub/fathom/moab-5.4.0.tar.gz
-	md5sums = b3857a791130569701b8fca788c2ed7c
+	source = https://ftp.mcs.anl.gov/pub/fathom/moab-5.3.0.tar.gz
+	md5sums = 7ae3967f297f7d6fddf38de576e98758
 
 pkgname = moab

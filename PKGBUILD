@@ -1,6 +1,6 @@
 # Maintainer: Luke Labrie-Cleary <luke dot cleary at copenhagenatomics dot com>
 pkgname=moab
-pkgver=5.4.0
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="The Mesh-Oriented datABase MOAB is a component for representing and evaluating mesh data"
 arch=('x86_64')
@@ -24,11 +24,11 @@ makedepends=(
 )
 
 provides=("${pkgname%-pkgver}")
-source=('https://ftp.mcs.anl.gov/pub/fathom/moab-5.4.0.tar.gz')
-md5sums=('b3857a791130569701b8fca788c2ed7c')
+source=('https://ftp.mcs.anl.gov/pub/fathom/moab-5.3.0.tar.gz')
+md5sums=('7ae3967f297f7d6fddf38de576e98758')
 prepare() {
 cd "$pkgname-$pkgver"
-patch --forward --input="../../moab-5.4.0-p.1.patch"
+patch --forward --input="../../moab-5.3.0-p.1.patch"
 }
 build() {
 	cd $srcdir
@@ -47,5 +47,5 @@ package() {
 	cd $srcdir/build
 	make DESTDIR="$pkgdir/" install
 	cd pymoab
-	/usr/sbin/python setup.py install --prefix=$pkgdir/opt/MOAB/lib/python3.10/site-packages/
+	python setup.py install --prefix=$pkgdir/opt/MOAB
 }
