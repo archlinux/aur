@@ -5,9 +5,10 @@
 # Contributor: Raphael Scholer <rscholer@gmx.de>
 # Contributor: kjslag <kjslag at gmail dot com>
 # Contributor: teratomata <teratomat@gmail.com>
+# Contributor: Maxim Mikityanskiy <maxtram95@gmail.com>
 
 pkgname=mathematica
-pkgver=13.2.0
+pkgver=13.2.1
 pkgrel=1
 pkgdesc="A computational software program used in scientific, engineering, and mathematical fields and other areas of technical computing with offline documentation."
 arch=('x86_64')
@@ -70,8 +71,14 @@ optdepends=(
     'tesseract'
     'zlib'
 )
-source=("local://Mathematica_${pkgver}_BNDL_LINUX.sh")
-md5sums=('05a0eaaafef2e4478454cb28e0ab4bc8')
+source=(
+    "local://Mathematica_${pkgver}_BNDL_LINUX.sh"
+    "remove-xdg-scripts.patch"
+)
+md5sums=(
+    'f796e96f6faeb441a8b24fb180d44e47'
+    '14df424ec93fad057604378c2b5c24c2'
+)
 options=("!strip")
 
 ## To build this package you need to place the mathematica-installer into your
@@ -96,18 +103,29 @@ prepare() {
         exit 1
     fi
 
-    chmod +x ${srcdir}/Mathematica_${pkgver}_BNDL_LINUX.sh
+    msg2 "Extracting Mathematica installer..."
+    sh "${srcdir}/Mathematica_${pkgver}_BNDL_LINUX.sh" \
+      --keep \
+      --target "${srcdir}/bundle" \
+      -- \
+      -help >/dev/null
+
+    patch -p1 -d "${srcdir}/bundle" < "${srcdir}/remove-xdg-scripts.patch"
 }
 
 package() {
     msg2 "Running Mathematica installer"
     # https://reference.wolfram.com/language/tutorial/InstallingMathematica.html#650929293
-    sh ${srcdir}/Mathematica_${pkgver}_BNDL_LINUX.sh -- \
-             -execdir=${pkgdir}/usr/bin \
-             -targetdir=${pkgdir}/opt/Mathematica \
+    sh "${srcdir}/bundle/Unix/Installer/MathInstaller" \
+             -execdir="${pkgdir}/usr/bin" \
+             -targetdir="${pkgdir}/opt/Mathematica" \
              -auto
-    msg2 "Errors related to 'xdg-icon-resource' and 'xdg-desktop-menu' are to be expected during Mathematica's installation."
-    rm ${pkgdir}/opt/Mathematica/InstallErrors
+
+    if [ -s "${pkgdir}/opt/Mathematica/InstallErrors" ]; then
+        msg2 "Review installation errors:"
+        cat "${pkgdir}/opt/Mathematica/InstallErrors"
+    fi
+    rm -f "${pkgdir}/opt/Mathematica/InstallErrors"
 
     msg2 "Fixing symbolic links"
     cd ${pkgdir}/opt/Mathematica/Executables
