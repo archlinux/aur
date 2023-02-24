@@ -1,0 +1,14 @@
+pkgbase = criticality_score
+	pkgdesc = Gives criticality score for an open source project
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/ossf/criticality_score
+	arch = i686
+	arch = x86_64
+	license = apache
+	makedepends = go
+	depends = glibc
+	source = criticality_score-2.0.0-src.tar.gz::https://github.com/ossf/criticality_score/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 99f5bbc51e3660d1fc2ec88794fea4b3e535e4bb8681584264bcfd116ac36a5e
+
+pkgname = criticality_score
