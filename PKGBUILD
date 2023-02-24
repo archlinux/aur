@@ -1,7 +1,7 @@
 # Maintainer: 7Ji <pugokughin@gmail.com>
 
 pkgname=ampart-git
-pkgver=1.2
+pkgver=1.2.r9.4c4e736
 pkgrel=1
 pkgdesc="A partition tool to modify Amlogic's proprietary eMMC partition format and FDT"
 arch=('x86_64' 'aarch64')
