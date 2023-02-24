@@ -3,12 +3,13 @@
 pkgname=osbuild-composer
 pkgdesc='An HTTP service for building bootable OS images'
 pkgver=75
-pkgrel=1
+pkgrel=2
 url="https://www.osbuild.org"
 arch=(x86_64)
 license=(Apache)
 depends=('dnf' 'qemu' 'osbuild' 'systemd')
 makedepends=('go' 'systemd')
+checkdepends=('go')
 optdepends=()
 source=($pkgname-$pkgver.tar.gz::https://github.com/osbuild/osbuild-composer/archive/refs/tags/v${pkgver}.tar.gz)
 sha256sums=('90c91ddbef4ec82aa68a20786cc23808d0dc94cec09e42890f6a8701c565a3ff')
@@ -61,4 +62,23 @@ package() {
 
   # license
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+check() {
+  cd $pkgname-$pkgver
+
+  # Some dnf-json tests require an initialised rpmdb (at the default location
+  # /var/lib/rpm) but we need root to initialise it.
+  # Skip dnf-json tests that require it if it's not found.
+  skips=""
+  if ! rpm -qa &> /dev/null; then
+    skips="TestErrorRepoInfo|TestDepsolver"
+  fi
+
+  export LDFLAGS=""  # clear ldflags for test
+  export GOFLAGS="-buildmode=pie -trimpath -mod=vendor -modcacherw ${LDFLAGS}"
+  go test -skip "${skips}" ./...
+  if [[ ! -z "${skips}" ]]; then
+    echo "WARNING: Some tests were skipped because they require an initialised rpmdb"
+  fi
 }
