@@ -1,0 +1,158 @@
+#!/bin/bash
+# By Sam Mulvey <archlinux@sammulvey.com>
+# based on script from Chih-Wei Huang <cwhuang@linux.org.tw>
+# License: GNU Generic Public License v2
+
+# Sanity checks
+if [ `id -u` -eq 0 ]; then
+	echo "Don't run this as root.  It'll call sudo if it needs it."
+	exit 1
+fi
+if [ -z ${HOME+x} ]; then echo "HOME isn't set!" ; exit 1 ; fi
+[ ! -z ${1+x} ] && [ $1 == "gui" ] && GUI=1 || GUI=0
+
+
+# Things needed for early checks
+# Package depends on these, so I won't test for them (for now.)
+# But hey, someone might want to replace them with their terminal of choice or whatever.
+
+
+URXVT="/usr/bin/urxvt"
+ZENITY="/usr/bin/zenity"
+
+
+nope() {
+	if [ $GUI -eq 1 ]; then
+		$ZENITY --width=240 --error --text="$1" --title="Android-x86 Error"
+	else
+		echo "$1"
+	fi
+	exit 1
+}
+
+
+# Check for config file, source
+if [ -e $HOME/.config/android-x86/config ]; then
+	. $HOME/.config/android-x86/config
+else
+	nope "Copy /usr/share/android-x86/config to ${HOME}/.config/android-x86 and modify.  It explains things."
+fi
+
+# Set meaningful defaults
+IN_SUDO=0
+IN_TERMINAL=0
+RAM=${RAM:-2048}
+CORES=${CORES:-2}
+DATA=${DATA:-"${HOME}/.config/android-x86/data.img"}
+DATASIZE=${DATASIZE:-2048}
+CPU=${CPU:-"host"}
+NETPORT=${NETPORT:-47000}
+# TODO figure out why GTK doesn't work on all my machines.  Might obviate the need to URXVT for serial console
+VGALINE=${VGALINE:-"-device virtio-vga-gl -display sdl,gl=on"}
+
+# Test for system images:
+# TODO add ability for r/w system image
+SYSTEMIMG=${SYSTEMIMG:-"/usr/share/android-x86/system.sfs"}
+INITRD=${INITRD:-"/usr/share/android-x86/initrd.img"}
+RAMDISK=${RAMDISK:-"/usr/share/android-x86/ramdisk.img"}
+KERNEL=${KERNEL:-"/usr/share/android-x86/kernel"}
+
+if [ ! -e $SYSTEMIMG ] || [ ! -e $INITRD ] || [ ! -e $RAMDISK ] || [ ! -e $KERNEL ]; then
+	nope "System images aren't installed.  Check your android-x86 package."
+fi
+
+#QEMU=qemu-system-${QEMU_ARCH}
+# Archlinux is x86_64 only
+QEMU="/usr/bin/qemu-system-x86_64"
+if [ ! -x $QEMU ]; then
+	nope "Please install the 'qemu' package to run Android-x86."
+fi
+
+if [ $DATA == "none" ]; then
+	DATA_QEMULINE=""
+	DATA_CMDLINE=""
+elif [ -d $DATA ]; then
+	echo "9p mode selected."
+	IN_SUDO=1
+	DATA_QEMULINE="-virtfs local,id=data,path=${DATA},security_model=passthrough,mount_tag=data"
+	DATA_CMDLINE="DATA=9p"
+else
+	# sudo should only be needed for 9p, if KVM is set up right
+	# so a data partition sparse file will always be owned by the calling user
+
+	if [ ! -e $DATA ]; then
+		if [ ! -w `dirname $DATA` ]; then
+			nope "Location for $DATA doesn't exist or isn't writeable."
+		fi
+
+		if [ $GUI -eq 1 ]; then
+			$URXVT -title "Android-x86 Data Partition Create" -e \
+				bash -c "/usr/bin/truncate -s ${DATASIZE}M $DATA && \
+					/usr/bin/mkfs.ext4 $DATA && \
+					echo && echo Hit enter to continue. && read"
+		else
+			truncate -s ${DATASIZE}M $DATA
+			mkfs.ext4 $DATA
+		fi
+
+	elif [ ! -w $DATA ]; then
+		nope "Data partition $DATA isn't writeable."
+	fi
+
+	DATA_QEMULINE="-drive index=2,if=virtio,id=data,file=${DATA},format=raw"
+	DATA_CMDLINE="DATA=vdc"
+
+fi
+
+
+
+VIDEO_CMDLINE=""
+if [ ! -z ${VIDEO+x} ]; then
+	VIDEO_CMDLINE="video=$VIDEO"
+fi
+
+SERIAL_QEMULINE=""
+if [ ! -z ${SERIAL:+x} ]; then
+	SERIAL_QEMULINE="-serial $SERIAL"
+
+	[ $SERIAL == "mon:stdio" ] && IN_TERMINAL=1
+fi
+
+#echo -e "CPU: $CPU\nRAM: $RAM\nCORES: $CORES\nDATA: $DATA\n"
+#echo -e "DATASIZE: $DATASIZE\nSERIAL: $SERIAL\nVIDEO: $VIDEO\n"
+#echo -e "VGALINE: $VGALINE\nBRIDGE: $BRIDGE"
+
+
+
+do_qemu() {
+
+	if [ -z $BRIDGE ]; then
+		NET_QEMULINE="-netdev user,id=anet0,hostfwd=tcp::$NETPORT-:5000 -device virtio-net-pci,netdev=anet0"
+	else
+		NET_QEMULINE="-netdev bridge,br=$BRIDGE,id=anet0 -device virtio-net-pci,netdev=anet0"
+	fi
+
+	DO_CMD=""
+
+	[ $IN_TERMINAL -eq 1 ] && [ $GUI -eq 1 ] && DO_CMD+="$URXVT -title Android-x86_Console -e "
+	[ $IN_SUDO -eq 1 ] && DO_CMD+="/usr/bin/sudo "
+	DO_CMD+=$QEMU
+
+
+	exec $DO_CMD -enable-kvm \
+	-kernel $KERNEL \
+	-append "root=/dev/ram0 androidboot.selinux=permissive console=ttyS0 RAMDISK=vdb $DATA_CMDLINE $VIDEO_CMDLINE" \
+	-initrd $INITRD \
+	-m $RAM -smp $CORES -cpu $CPU \
+	-device qemu-xhci,id=xhci0 -device usb-tablet,bus=xhci0.0 -machine vmport=off \
+	-device intel-hda -device hda-duplex \
+	-boot menu=on \
+	-drive index=0,if=virtio,id=system,file=$SYSTEMIMG,format=raw,readonly \
+	-drive index=1,if=virtio,id=ramdisk,file=$RAMDISK,format=raw,readonly \
+	$NET_QEMULINE $DATA_QEMULINE $SERIAL_QEMULINE $VGALINE
+}
+
+while [ $NETPORT -lt 48000 ]; do
+	do_qemu && break
+	let $NETPORT++
+done
