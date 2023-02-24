@@ -1,7 +1,7 @@
 _pkgname=aiohttp-jinja2
 pkgname="python-${_pkgname}"
-pkgver=1.5
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 pkgdesc="jinja2 template renderer for aiohttp.web"
 url="https://github.com/aio-libs/aiohttp_jinja2/"
 arch=('any')
@@ -16,4 +16,4 @@ package() {
   python3 setup.py install --prefix=/usr --root="${pkgdir}"
 }
 
-md5sums=('5041d8eecdad423c61d5dd309d463869')
+md5sums=('a229eff04e9cd49deca30007cc6d58e3')
