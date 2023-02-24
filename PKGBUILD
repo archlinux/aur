@@ -26,7 +26,7 @@ depends=(
   'util-linux'
   'wget'
 )
-install=simonpi.install
+install="${pkgname}.install"
 source=("${url}/archive/$pkgver.tar.gz")
 
 package() {
