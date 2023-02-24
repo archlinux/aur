@@ -39,15 +39,15 @@ build() {
 }
 
 package() {
-    cd "$pkgname-$pkgver"
-
     # Systemd files
     install -Dm640 "movim.env" "$pkgdir/etc/movim.env"
     install -Dm644 "movim.service" "$pkgdir/usr/lib/systemd/system/movim.service"
     install -Dm644 "sysuser.conf" "$pkgdir/usr/lib/sysusers.d/movim.conf"
     install -Dm644 "tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/movim.conf"
 
+
     install -m755 -d "$pkgdir/usr/share/webapps/$pkgname"
+    cd "$pkgname-$pkgver"
 
     cp -r app database lib locales public src vendor \
         "$pkgdir/usr/share/webapps/$pkgname"
