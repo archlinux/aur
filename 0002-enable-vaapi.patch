@@ -1,0 +1,20 @@
+diff -up firefox-104.0/gfx/thebes/gfxPlatformGtk.cpp.firefox-enable-vaapi firefox-104.0/gfx/thebes/gfxPlatformGtk.cpp
+diff -up firefox-104.0/widget/gtk/GfxInfo.cpp.firefox-enable-vaapi firefox-104.0/widget/gtk/GfxInfo.cpp
+--- firefox-104.0/widget/gtk/GfxInfo.cpp.firefox-enable-vaapi	2022-08-16 15:14:53.014042400 +0200
++++ firefox-104.0/widget/gtk/GfxInfo.cpp	2022-08-16 15:15:30.482301677 +0200
+@@ -873,15 +873,6 @@ const nsTArray<GfxDriverInfo>& GfxInfo::
+         nsIGfxInfo::FEATURE_BLOCKED_DEVICE, DRIVER_COMPARISON_IGNORED,
+         V(0, 0, 0, 0), "FEATURE_HARDWARE_VIDEO_DECODING_NO_LINUX_AMD", "");
+ 
+-    // Disable on Release/late Beta
+-#if !defined(EARLY_BETA_OR_EARLIER)
+-    APPEND_TO_DRIVER_BLOCKLIST(OperatingSystem::Linux, DeviceFamily::All,
+-                               nsIGfxInfo::FEATURE_HARDWARE_VIDEO_DECODING,
+-                               nsIGfxInfo::FEATURE_BLOCKED_DEVICE,
+-                               DRIVER_COMPARISON_IGNORED, V(0, 0, 0, 0),
+-                               "FEATURE_HARDWARE_VIDEO_DECODING_DISABLE", "");
+-#endif
+-
+     ////////////////////////////////////
+     // FEATURE_WEBRENDER_PARTIAL_PRESENT
+     APPEND_TO_DRIVER_BLOCKLIST_EXT(
