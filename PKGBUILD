@@ -3,7 +3,7 @@
 pkgname=hyperplay
 _pkgver=v0.0.5
 pkgver=${_pkgver#v}
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source Web3 gaming platform."
 arch=('x86_64')
 url="https://github.com/HyperPlay-Gaming/hyperplay-desktop-client"
