@@ -11,6 +11,7 @@ pkgbase = jdk17-graalvm-ee-bin
 	depends = java-environment-common
 	provides = java-runtime=17
 	provides = java-environment=17
+	provides = jdk17-graalvm-bin
 	options = staticlibs
 	source = graalvm-ee-rebuild-libpolyglot.hook
 	sha256sums = 7dc37bd3703ebebcd6efa39534e6bb6e3ec9c8ee0d97e46d6df5349739c7d2ca

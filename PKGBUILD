@@ -13,7 +13,8 @@ depends=('java-runtime-common'
          'java-environment-common')
 makedepends=()
 provides=("java-runtime=${java_}"
-          "java-environment=${java_}")
+          "java-environment=${java_}"
+          "jdk${java_}-graalvm-bin")
 options=('staticlibs')
 install="$pkgname.install"
 source=('graalvm-ee-rebuild-libpolyglot.hook')
