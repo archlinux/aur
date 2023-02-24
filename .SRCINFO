@@ -1,13 +1,13 @@
 pkgbase = vr2normal
 	pkgdesc = C++ QT Program that converts virtual reality videos into normal videos for viewing on any screen
-	pkgver = 1.5
+	pkgver = 1.6
 	pkgrel = 1
 	url = https://gitlab.com/vongooB9/vr2normal
 	arch = x86_64
 	license = GPL3
 	depends = ffmpeg>=5.0
 	depends = qt5-base>=5.15.0
-	source = vr2normal-1.5.tar.gz::https://gitlab.com/vongooB9/vr2normal/-/archive/1.5/vr2normal-1.5.tar.gz
-	sha256sums = 8b145304b716e4abafdae1c0f9214e535b8db4b0ffbcc01df0364eb245a65f62
+	source = vr2normal-1.6.tar.gz::https://gitlab.com/vongooB9/vr2normal/-/archive/1.6/vr2normal-1.6.tar.gz
+	sha256sums = 2ae5ff89da9dd5bd52cefebc091f2cff5d59fe1e054b3e4f3117f65a9cb717b4
 
 pkgname = vr2normal
