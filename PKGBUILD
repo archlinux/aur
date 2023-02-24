@@ -12,7 +12,7 @@ makedepends=('git')
 depends=('dkms' 'tbs-firmware')
 conflicts=("${_pkgbase}" 'tbs-dvb-drivers' 'tbs-linux_media-git-dkms' 'tbs-linux_media-git')
 provides=("${_pkgbase}")
-source=('git+https://github.com/AlexanderS/tbsecp3-driver.git'
+source=('git+https://github.com/cookog/tbsecp3-driver.git'
         'dkms.conf')
 sha256sums=('SKIP'
             '0922468d347729a427a3f3584574d9fad03c0ac68e7adc186344c402545a3503')
