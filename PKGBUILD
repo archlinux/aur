@@ -1,7 +1,7 @@
 # Maintainer: Bruce Cutler <bruce@sumebrius.net>
 _pkgname=django-ninja
 pkgname=python-django-ninja
-pkgver=0.20.0
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="Fast Django REST Framework"
 arch=('any')
@@ -11,8 +11,10 @@ depends=('python-django>=2.2'
          'python-pydantic>=1.6')
 makedepends=('python-flit'
              'python-installer')
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/vitalik/django-ninja/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('17aad1846e5db8db7320724d47998a332250e5a3af66581dcf91f501ce8a08c2')
+# Upstream is inconsistent with package version tagging
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/vitalik/django-ninja/archive/refs/tags/v.$pkgver.tar.gz")
+#source=("$_pkgname-$pkgver.tar.gz::https://github.com/vitalik/django-ninja/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('6db363e8bc308eba89a1501b61a40082948001d7574e31fbba8d05a46292a19c')
 
 build() {
   cd "$_pkgname-$pkgver"
