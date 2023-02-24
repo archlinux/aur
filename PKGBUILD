@@ -34,7 +34,7 @@ sha256sums=('SKIP'
             '79c738b22f5a4417b9f63ac15010ad2195ea8eb5be78535fee60a481ba3e6ac1')
 
 build() {
-    cd "$movim-$pkgver"
+    cd "$pkgname-$pkgver"
     XDG_CACHE_HOME="$srcdir/cache" composer install \
         --no-interaction --no-dev
 }
