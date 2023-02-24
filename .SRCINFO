@@ -1,14 +1,17 @@
 pkgbase = pyp
 	pkgdesc = Easily run Python at the shell! Magical, but never mysterious.
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/hauntsaninja/pyp
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-flit-core
 	depends = python
 	depends = python-astunparse
-	source = https://github.com/hauntsaninja/pyp/archive/v1.0.0.tar.gz
-	sha256sums = da403d16d3a7c6d2f6648ebb782ebd322fb6725366e2622f4ef3ea5f933449c7
+	source = https://github.com/hauntsaninja/pyp/archive/v1.1.0.tar.gz
+	sha256sums = 1c6a843ee6eb85304f4ad170958ba5decd72964d1936ed4460a72d02b696f543
 
 pkgname = pyp
