@@ -5,5 +5,6 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
+!youtube-music.install
 !youtube-music.sh
 !youtube-music.desktop

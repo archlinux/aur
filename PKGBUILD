@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=youtube-music-git
-pkgver=1.19.0.r74.g7bdbab5
+pkgver=1.19.0.r99.g8bfbbca
 pkgrel=1
 _electronversion=22
 pkgdesc="YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)"
@@ -12,11 +12,12 @@ makedepends=('git' 'nodejs>=16.0.0' 'npm' 'yarn')
 optdepends=('libnotify: desktop notifications')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+install="${pkgname%-git}.install"
 source=('git+https://github.com/th-ch/youtube-music.git'
         "${pkgname%-git}.sh"
         "${pkgname%-git}.desktop")
 sha256sums=('SKIP'
-            '66acb7f000ec69c5b22b3bb7f49f020820595ae8ccaa688d28de35924c1c241f'
+            'bb948add1316b4b5e42dc0d72e4866fff3fe42ae013969489ab19121d4e98e48'
             '07af59376e13e5dae2e7e38fa09d734a5147d5c344b3aed84c2f3afe22b8af79')
 
 pkgver() {
