@@ -1,0 +1,6 @@
+pkg/
+src/
+doukutsu-save-editor-rs
+
+*.pkg.*
+
