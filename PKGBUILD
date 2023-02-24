@@ -12,7 +12,7 @@ groups=(
   'phc-intel'
 )
 pkgver=0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Helper and init scripts for phc-intel, a frequency driver for Intel CPUs with undervolting feature."
 url="https://gitlab.com/linux-phc/phc-intel"
 arch=('any')
@@ -116,5 +116,5 @@ package_phc-intel-systemd() {
 
   cd "${srcdir}"
 
-  install -Dvm755 'phc-intel.systemd' "${pkgdir}/usr/lib/systemd/system/phc-intel.service"
+  install -Dvm644 'phc-intel.systemd' "${pkgdir}/usr/lib/systemd/system/phc-intel.service"
 }
