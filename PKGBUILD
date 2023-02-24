@@ -3,7 +3,7 @@
 # Maintainer: Johnpoint <me at lvcshu.com>
 
 pkgname=clash-for-windows-bin
-pkgver=0.20.16
+pkgver=0.20.17
 pkgrel=1
 pkgdesc="A Windows/macOS/Linux GUI based on Clash and Electron."
 arch=("x86_64" "aarch64")
@@ -38,8 +38,8 @@ source_aarch64=(
 sha256sums=('0d48a2ea1ee05ad4579b6e6996889548fa8a61a5ff6c85a32f7622cddfcb5782'
             '86e462ebb44a29d1df1c4f45e2eb26aa34468c56b4625d5eba2f14714737abf9'
             'd2e4a78f2360b271f7c7e803e84707a71a8a386ccaf95c2bb0b5fa263b43d318')
-sha256sums_x86_64=('a5ce793dad8bc0f180a5d01c2ea9a70d9f522ab4fa859e39b2c06916ead3e0fb')
-sha256sums_aarch64=('e137673bbdf9b2e44fadd961547ed1016d0ad50f4d4f03b56ae8211262f72887')
+sha256sums_x86_64=('61aeee98468418be99c89343198157be3313077c9829734515c7bf1092b1e1e9')
+sha256sums_aarch64=('2f053c2fee80a3c45c3214665314becc8f836712426f8d52f7c9ac34dcec596b')
 
 package() {
     local parch=$(echo ${CARCH} | sed "s/x86_64/x64/;s/aarch64/arm64/")
