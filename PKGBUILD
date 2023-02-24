@@ -2,8 +2,8 @@
 # Contributor: zhullyb <zhullyb@outlook.com>
 
 pkgname=python-bsdiff4
-pkgver=1.2.2
-pkgrel=2
+pkgver=1.2.3
+pkgrel=1
 pkgdesc="Binary diff and patch using the BSDIFF4-format"
 arch=('x86_64')
 url="https://github.com/ilanschnell/${pkgname##*-}"
@@ -14,7 +14,7 @@ makedepends=('python-build'
              'python-setuptools'
              'python-wheel')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha512sums=('a263143ebd5316b7eb92b454a865d3c74491f075d12bc177e52031dc9a9f5e926e073de795ed6d67b91ad7c10fd18b28f55b24a1cc7ce59c2e968b8ac78521ee')
+sha512sums=('266d2f0ef1dfd97370e80f272eb0818a8f0c3cbecb15c07069242bedb15e1c3d019b36910a33afa364945a4b0993113a4ea02e22f63ab109b196d364ea7dbf0e')
 
 build() {
   cd "${pkgname##*-}-${pkgver}"
