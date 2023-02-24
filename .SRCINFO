@@ -1,14 +1,14 @@
 pkgbase = nodejs-svelte-language-server
 	pkgdesc = A language server for Svelte.
-	pkgver = 0.15.3
+	pkgver = 0.15.4
 	pkgrel = 1
 	url = https://github.com/sveltejs/language-tools/tree/master/packages/language-server
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = svelte-language-server-0.15.3.tgz
-	source = https://registry.npmjs.org/svelte-language-server/-/svelte-language-server-0.15.3.tgz
-	sha256sums = bc93a5829c14895d0ab01293700ae34be1deb071e927ec6189de85edda1ce45e
+	noextract = svelte-language-server-0.15.4.tgz
+	source = https://registry.npmjs.org/svelte-language-server/-/svelte-language-server-0.15.4.tgz
+	sha256sums = a1ffa3160c13173aaca83404d46d246d03776e47fe0a3093dbbb7dc599dee405
 
 pkgname = nodejs-svelte-language-server
