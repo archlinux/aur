@@ -4,14 +4,14 @@
 
 _pkgname=sonarqube
 pkgname=sonarqube-bin
-pkgver=9.8.0.63668
-pkgrel=2
+pkgver=9.9.0.65466
+pkgrel=1
 pkgdesc="An open source platform for continuous inspection of code quality"
 arch=('x86_64')
 url="http://www.sonarqube.org/"
 license=('LGPL3')
 
-depends=('java-runtime=11')
+depends=('java-runtime=17')
 
 optdepends=('apache: a fully featured webserver'
             'maven: a java project management and project comprehension tool'
@@ -31,7 +31,7 @@ source=("https://binaries.sonarsource.com/Distribution/${_pkgname}/${_pkgname}-$
         "${_pkgname}-user.conf"
         "99-${_pkgname}.conf")
 
-sha256sums=('5898eea6176e777b2af5656618cf679d235cb895c383c2cbd0b7bbf852d0f632'
+sha256sums=('f5b3045ac40b99dfc2ab45c0990074f4b15e426bdb91533d77f3b94b73d3d411'
             'cbea7066125c5e1b1ca093b73ccfaa4a477dc8a8431c4619de356bd36a6a44a9'
             '2d908a2965df90a74feb0e734dabb27543f5a375ce94ce2a26b4682f462e3ea5'
             '43ff10bbb495827e952225dce79da79bb800627eaa6f1d933f8f7fb408aafe6d'
@@ -68,5 +68,3 @@ package() {
     ln -s "/run/${_pkgname}" "${pkgdir}/usr/share/webapps/${_pkgname}/run"
     ln -s "/etc/webapps/${_pkgname}" "${pkgdir}/usr/share/webapps/${_pkgname}/conf"
 }
-
-
