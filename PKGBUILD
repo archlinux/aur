@@ -26,7 +26,10 @@ makedepends=(
 provides=("${pkgname%-pkgver}")
 source=('https://ftp.mcs.anl.gov/pub/fathom/moab-5.4.0.tar.gz')
 md5sums=('b3857a791130569701b8fca788c2ed7c')
-
+prepare() {
+cd "$pkgname-$pkgver"
+patch --forward --input="../../moab-5.4.0-p.1.patch"
+}
 build() {
 	cd $srcdir
 	mkdir build && cd build
