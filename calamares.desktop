@@ -1,13 +1,13 @@
 [Desktop Entry]
 Type=Application
 Version=1.0
-Name=Install Oxidation Linux
-Name[da]=Installer Oxidation Linux
+Name=Install Linux
+Name[da]=Installer Linux
 GenericName=Live Installer
 GenericName[da]=Live-installationsprogram
 Comment=Install the operating system to disk
 Comment[da]=Installer styresystemet på disk
-Comment[de]=Oxidation Linux installieren
+Comment[de]=Linux installieren
 Exec=/usr/bin/calamares_polkit %f
 Icon=calamares
 Terminal=false
