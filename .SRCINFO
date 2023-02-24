@@ -1,13 +1,14 @@
 pkgbase = ip2geo
 	pkgdesc = Import ipgeo data to files for nginx geoip module
-	pkgver = 1.1.5
+	pkgver = 1.1.6
 	pkgrel = 1
 	url = https://github.com/m-messiah/ip2geo
 	arch = x86_64
 	arch = i686
+	arch = aarch64
 	license = MIT
 	makedepends = go
-	source = https://github.com/m-messiah/ip2geo/archive/v1.1.5.tar.gz
-	sha256sums = cee63b8f9658e38b265c4c3dcf4b8c31de863f137c63106cd9111a8d37428a48
+	source = https://github.com/m-messiah/ip2geo/archive/v1.1.6.tar.gz
+	sha256sums = 48328309e27bb9a65907ff8a1ef27883bf47bb0bd39feb7e081b91509cae37af
 
 pkgname = ip2geo
