@@ -1,7 +1,7 @@
 pkgbase = hyperplay
 	pkgdesc = An open source Web3 gaming platform
 	pkgver = 0.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/HyperPlay-Gaming/hyperplay-desktop-client
 	arch = x86_64
 	license = GPL3
