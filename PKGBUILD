@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Stalder <n+archlinux@stalder.io>
 pkgname=lpc55
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc='NXP LPC55 host-side utilities'
 arch=('x86_64')
 url="https://github.com/lpc55/lpc55-host"
@@ -15,7 +15,7 @@ source=(
 	"70-raw-lpc55-mcuboot.rules"
 )
 sha256sums=(
-    "51161130560bb466ef23722119c45b026fe3834adc67cb18ba7dd21a2e555e54"
+    "4342ddfa569af9d14a6066d3481c0d1c76f2c64329f2d7f925127b0b75507c57"
     "4175fee2145e3e085d2cbf2b67ec3c8ec7fb641a08b97fb65da1bd5cf52d4f88"
 )
 
