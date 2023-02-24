@@ -19,11 +19,11 @@ optdepends=('postgresql: to use the postgresql database backend'
             'apache: reverse proxy'
             'php-fpm: PHP FactCGI process manager')
 makedepends=('composer')
-source=("$pkgname.tar.gz::https://github.com/movim/movim/archive/refs/tags/v$pkgver.tar.gz")
-        movim.env
-        movim.service
-        sysuser.conf
-        tmpfiles.conf)
+source=("$pkgname.tar.gz::https://github.com/movim/movim/archive/refs/tags/v$pkgver.tar.gz"
+        'movim.env'
+        'movim.service'
+        'sysuser.conf'
+        'tmpfiles.conf')
 install=movim.install
 backup=("etc/webapps/$pkgname/db.inc.php"
         "etc/movim.env")
