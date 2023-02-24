@@ -1,17 +1,16 @@
 pkgbase = pocketsphinx
-	pkgdesc = Lightweight speech recognition engine
-	pkgver = 5prealpha
-	pkgrel = 13
-	url = http://cmusphinx.sourceforge.net
+	pkgdesc = A small speech recognizer
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://cmusphinx.github.io
 	arch = i686
 	arch = x86_64
-	license = BSD
-	makedepends = swig
-	makedepends = python
-	depends = sphinxbase=5prealpha
-	depends = gst-plugins-base-libs
-	options = !libtool
-	source = https://downloads.sourceforge.net/cmusphinx/pocketsphinx-5prealpha.tar.gz
-	sha256sums = ef5bb5547e2712bdf571f256490ef42a47962033892efd9d7df8eed7fe573ed9
+	license = custom
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = gst-plugins-base-libs
+	optdepends = gst-plugins-base-libs: GStreamer plugin
+	source = https://github.com/cmusphinx/pocketsphinx/archive/refs/tags/v5.0.0.tar.gz
+	sha256sums = 78ffe5b60b6981b08667435dd26c5a179b612b8ca372bd9c23c896a8b2239a20
 
 pkgname = pocketsphinx
