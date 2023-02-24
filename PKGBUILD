@@ -6,7 +6,7 @@
 
 pkgname=bind-development
 _pkgname=bind
-pkgver=9.19.4
+pkgver=9.19.10
 pkgrel=1
 pkgdesc='A complete, highly portable implementation of the DNS protocol (development version)'
 url='https://www.isc.org/bind/'
@@ -53,7 +53,7 @@ backup=(
   'var/named/localhost.zone'
   'var/named/localhost.ip6.zone'
 )
-_commit='a33f2df30bb75ddfe2e921e7bbeacbb353e48ed0'
+_commit='789be8ef6203c288018dddb22218921e71c130c7'
 source=(
   "git+https://gitlab.isc.org/isc-projects/bind9.git#commit=$_commit"
   'tmpfiles.conf'
@@ -95,6 +95,8 @@ build() {
   CFLAGS+=' -DDIG_SIGCHASE'
   # compile with gcc10, https://gcc.gnu.org/gcc-10/porting_to.html
   CFLAGS+=' -fcommon'
+  # https://archlinux.org/todo/lto-fat-objects/
+  CFLAGS+=' -ffat-lto-objects'
 
   autoreconf -fiv
 
