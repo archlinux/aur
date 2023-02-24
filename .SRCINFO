@@ -1,0 +1,19 @@
+pkgbase = notmuch-mailmover-git
+	pkgdesc = notmuch-mailmover is a tool to move notmuch tagged mails into Maildir folders
+	pkgver = v0.1.0.r12.gad4f9e6
+	pkgrel = 1
+	url = https://github.com/michaeladler/notmuch-mailmover
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = Apache
+	makedepends = git
+	makedepends = cargo
+	depends = notmuch-runtime
+	provides = notmuch-mailmover
+	conflicts = notmuch-mailmover
+	source = notmuch-mailmover::git+https://github.com/michaeladler/notmuch-mailmover
+	sha256sums = SKIP
+
+pkgname = notmuch-mailmover-git
