@@ -15,7 +15,7 @@ options=(!lto)
 source=("https://gitlab.gnome.org/GNOME/vte/-/archive/$pkgver/vte-$pkgver.tar.bz2"
   fix-exit-regression.patch)
 sha256sums=('94d0b6776d55252bc1f15995c1ade7eb44b4a2c99531487eba9b8bded1a0fe2f'
-  'b7175b365c87b4014725a690448db716e22c27636fc03c08c5a4bc516798871e')
+  '7c2e392a6178c6926458a7c79bfdbacac911632f799a98d581b69d2c5d1f9b86')
 
 provides=("vte3=$pkgver" libvte-2.91.so)
 conflicts=(vte3)

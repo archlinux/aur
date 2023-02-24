@@ -1,4 +1,4 @@
-From a8f9b3299a2f996070ae8242eb5546083b648639 Mon Sep 17 00:00:00 2001
+From 76bbbf8486d73bb830c5c513eefc3ba0d0656481 Mon Sep 17 00:00:00 2001
 From: Felipe Contreras <felipe.contreras@gmail.com>
 Date: Sun, 23 Jan 2022 23:36:44 -0600
 Subject: [PATCH] Fix exit regression
@@ -28,10 +28,10 @@ Signed-off-by: Felipe Contreras <felipe.contreras@gmail.com>
  1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/src/vte.cc b/src/vte.cc
-index 8b75883f..da296daf 100644
+index 7cc26c48..80f26454 100644
 --- a/src/vte.cc
 +++ b/src/vte.cc
-@@ -10124,7 +10124,6 @@ Terminal::emit_pending_signals()
+@@ -10273,7 +10273,6 @@ Terminal::emit_pending_signals()
                  m_bell_pending = false;
          }
  
@@ -39,7 +39,7 @@ index 8b75883f..da296daf 100644
          if (m_eos_pending) {
                  queue_eof();
                  m_eos_pending = false;
-@@ -10132,7 +10131,7 @@ Terminal::emit_pending_signals()
+@@ -10281,7 +10280,7 @@ Terminal::emit_pending_signals()
                  unset_pty();
          }
  
