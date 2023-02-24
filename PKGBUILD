@@ -10,10 +10,10 @@ url="https://wiki.gnome.org/Apps/Terminal/VTE"
 arch=(x86_64)
 license=(LGPL)
 depends=(gtk3 pcre2 gnutls fribidi systemd)
-makedepends=(gobject-introspection vala git gtk-doc gperf meson)
-source=("git+https://gitlab.gnome.org/GNOME/vte.git#tag=$pkgver"
+makedepends=(gobject-introspection vala gtk-doc gperf meson)
+source=("https://gitlab.gnome.org/GNOME/vte/-/archive/$pkgver/vte-$pkgver.tar.bz2"
   fix-exit-regression.patch)
-sha256sums=('SKIP'
+sha256sums=('cfb6fe3a11967de4f1ac5f7e0606d821036dca3171f9eddf35183956f7879e55'
   'b7175b365c87b4014725a690448db716e22c27636fc03c08c5a4bc516798871e')
 
 depends+=(vte-common)
@@ -21,12 +21,12 @@ provides=("vte3=$pkgver" libvte-2.91.so)
 conflicts=(vte3)
 
 prepare() {
-  cd vte || exit 1
+  cd "vte-$pkgver" || exit 1
   patch -p1 -i "$srcdir/fix-exit-regression.patch"
 }
 
 build() {
-  arch-meson vte build -D docs=true -D b_lto=false
+  arch-meson "vte-$pkgver" build -D docs=true -D b_lto=false
   meson compile -C build
 }
 

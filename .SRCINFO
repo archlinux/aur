@@ -7,7 +7,6 @@ pkgbase = vte3-nohang
 	license = LGPL
 	makedepends = gobject-introspection
 	makedepends = vala
-	makedepends = git
 	makedepends = gtk-doc
 	makedepends = gperf
 	makedepends = meson
@@ -20,9 +19,9 @@ pkgbase = vte3-nohang
 	provides = vte3=0.68.0
 	provides = libvte-2.91.so
 	conflicts = vte3
-	source = git+https://gitlab.gnome.org/GNOME/vte.git#tag=0.68.0
+	source = https://gitlab.gnome.org/GNOME/vte/-/archive/0.68.0/vte-0.68.0.tar.bz2
 	source = fix-exit-regression.patch
-	sha256sums = SKIP
+	sha256sums = cfb6fe3a11967de4f1ac5f7e0606d821036dca3171f9eddf35183956f7879e55
 	sha256sums = b7175b365c87b4014725a690448db716e22c27636fc03c08c5a4bc516798871e
 
 pkgname = vte3-nohang
