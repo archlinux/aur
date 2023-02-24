@@ -5,9 +5,9 @@
 pkgbase=transmission4
 _pkgbase=transmission
 pkgname=(transmission4-cli transmission4-gtk transmission4-qt libtransmission4)
-pkgver=4.0.0
+pkgver=4.0.1
 _pkgver=$pkgver
-pkgrel=2
+pkgrel=1
 arch=(x86_64)
 url="http://www.transmissionbt.com/"
 license=(GPL)
@@ -34,16 +34,13 @@ makedepends=(
 source=(https://github.com/transmission/transmission/releases/download/${_pkgver%+*}/transmission-${_pkgver}.tar.xz
         transmission-cli.sysusers
         transmission-cli.tmpfiles
-        0001-build-install-rebuilt-web-if-available.patch
 )
-sha256sums=('af4f023c0b3f2417f62b314d84ea7f329ca080f86664f24b44246a8c50c6b10a'
+sha256sums=('8fc5aef23638c983406f6a3ee9918369e4cdc84e3228bd2fb3d01dd55cdad900'
             '641310fb0590d40e00bea1b5b9c843953ab78edf019109f276be9c6a7bdaf5b2'
-            '1266032bb07e47d6bcdc7dabd74df2557cc466c33bf983a5881316a4cc098451'
-            'cefc852b5ab4d45a3f4df2073011cd28519655e300bbb29ac084cee3a21a6173')
+            '1266032bb07e47d6bcdc7dabd74df2557cc466c33bf983a5881316a4cc098451')
 
 prepare() {
   cd $_pkgbase-$_pkgver
-  patch -p1 < "$srcdir"/0001-build-install-rebuilt-web-if-available.patch
 }
 
 build() {
@@ -58,7 +55,7 @@ build() {
           -DUSE_GTK_VERSION=4 \
           -DENABLE_QT=ON \
           -DUSE_QT_VERSION=6 \
-          -DENABLE_WEB=ON
+          -DREBUILD_WEB=ON
   cmake --build build --config Release
 }
 
