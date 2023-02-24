@@ -1,0 +1,14 @@
+pkgbase = python-aranet4
+	pkgdesc = Python client for Aranet4 CO2 sensors
+	pkgver = 2.1.3
+	pkgrel = 1
+	url = https://github.com/Anrijs/Aranet4-Python
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-bleak
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/a/aranet4/aranet4-2.1.3.tar.gz
+	sha256sums = d9750ced22c5ffd6bc9f67f450ad5c8767ab3247fe247971740e34566c6e10e1
+
+pkgname = python-aranet4
