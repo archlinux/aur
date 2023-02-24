@@ -3,14 +3,14 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwindowsystem-git
-pkgver=5.240.0_r763.gd3e2209
+pkgver=5.240.0_r764.g132ec70
 pkgrel=1
 pkgdesc='Access to the windowing system'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
-depends=(qt6-x11extras)
-makedepends=(git extra-cmake-modules-git qt6-tools doxygen)
+depends=(qt6-base)
+makedepends=(git extra-cmake-modules-git qt6-tools doxygen qt6-declarative plasma-wayland-protocols)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kf6-git)
