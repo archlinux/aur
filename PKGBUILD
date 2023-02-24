@@ -4,7 +4,7 @@
 # Originally contributed by champus, madeye, Ranguvar and ninja_pt
 
 pkgname=ipmiutil
-pkgver=3.1.7
+pkgver=3.1.8
 pkgrel=1
 pkgdesc="A simple program that lists results from the hardware detection library."
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('openssl')
 conflicts=('renameutils')
 options=('!emptydirs')
 source=("http://prdownloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('fab260bc834a0f3f9324a6365fc26eca')
+md5sums=('b38ef567b6bb8a24418e448f23115190')
 
 build()
 {
