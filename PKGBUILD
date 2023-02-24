@@ -5,14 +5,14 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=python-enamlx
 epoch=
-pkgver=0.4.5
+pkgver=0.6.2
 pkgrel=00
 pkgdesc='Additional Qt Widgets for Enaml'
 arch=(any)
 url=https://github.com/frmdstryr/enamlx
 license=(MIT)
 depends=(python python-enaml)
-## EXTRA_DEPENDS ##
+depends+=(python-numpy)
 makedepends=(python-pip)
 checkdepends=()
 provides=()
@@ -20,9 +20,9 @@ conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
 md5sums=(SKIP)
 noextract=()
-source+=(https://files.pythonhosted.org/packages/d2/2b/8a43e7ca191aa61522b3d441397aa74872f975f03d89852d470773b02d00/enamlx-0.4.5-py2.py3-none-any.whl)
-md5sums+=(56f4580e0c134b0399578e99cc76d470)
-noextract+=(enamlx-0.4.5-py2.py3-none-any.whl)
+source+=(https://files.pythonhosted.org/packages/06/c6/f8d5f93c772fa8d847493f2de4e3ed5edbcead6ae6c2ae2eab26c825bc0a/enamlx-0.6.2-py2.py3-none-any.whl)
+md5sums+=(1de3b48bcdee55c7640a439db992344b)
+noextract+=(enamlx-0.6.2-py2.py3-none-any.whl)
 source+=(LICENSE)
 md5sums+=(794244867fb0e2662f4faaca995758f9)
 
