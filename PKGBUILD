@@ -2,41 +2,33 @@
 # Contributor: eagleeyetom <eagleeyetom@gmail.com>
 # Original Maintainer: raininja <dandenkijin@gmail.com>
 pkgname=slimjet
-pkgver=38.0.2.0
+pkgver=38.0.3.0
 pkgrel=2
-pkgver_libffmpeg=0.72.0
+pkgver_libffmpeg=0.73.0
 pkgdesc="Fast, smart and powerful browser based on Blink"
 arch=('x86_64')
 url="http://www.slimjet.com"
 license=('custom:freeware')
-depends=('gtk3' 'harfbuzz-icu' 'libxss' 'nss' 'ttf-font')
+depends=('nss' 'ttf-font' 'alsa-lib' 'at-spi2-core' 'hicolor-icon-theme' 'libxkbcommon' 'pango' 'mesa' 'libcups' 'libxcomposite' 'libxrandr')
 optdepends=('kdialog: needed for file dialogs in KDE' 'ttf-liberation: fix fonts for some PDFs')
 conflicts=('slimjet-git')
 options=('!emptydirs' '!strip')
-_channel=release
-source_x86_64=("${pkgname}-${pkgver}_amd64.deb::http://www.slimjetbrowser.com/${_channel}/${pkgname}_amd64.deb")
-#source=('LICENSE' "libffmpeg.zip::https://github.com/ahmedmoselhi/nwjs-ffmpeg-prebuilt/releases/download/${pkgver_libffmpeg}/${pkgver_libffmpeg}-linux-x64.zip")
-source=('LICENSE' "libffmpeg.zip::https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases/download/${pkgver_libffmpeg}/${pkgver_libffmpeg}-linux-x64.zip")
-md5sums=('e2f3d75bbf4ea8cef106adb30c6b4c83'
-         '0f779690a7b54085c9c312e9d8c5355c')
-md5sums_x86_64=('2faf9e4269c7cd3a400df8a39bd2eb07')
-
-prepare() {
-    bsdtar -xf data.tar.xz
-    unzip -o libffmpeg.zip
-}
+source=(
+    "${pkgname}-${pkgver}_amd64.deb::http://www.slimjetbrowser.com/release/${pkgname}_amd64.deb"
+    "libffmpeg.zip::https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases/download/${pkgver_libffmpeg}/${pkgver_libffmpeg}-linux-x64.zip"
+    "LICENSE"    
+    )
+md5sums=('3ea6928579dadc4892c4cc3b484376e3'
+         '03fbed3bfdf5120ed9060cc099367edf'
+         'e2f3d75bbf4ea8cef106adb30c6b4c83')
 
 package() {
-    cp --parents -a {opt,usr/bin,usr/share} "${pkgdir}"
-
-    # install license
-    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-    install  "/${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install  "/${srcdir}/libffmpeg.so" "${pkgdir}/opt/slimjet/libffmpeg.so"
-
-    # install icons
+    bsdtar -xf data.tar.xz -C "${pkgdir}"
+    bsdtar -xf libffmpeg.zip -C "${pkgdir}/opt/${pkgname}/"
+    find "${pkgdir}" -type d -exec chmod 755 {} \;
+    install  -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     for i in 16x16 22x22 24x24 32x32 48x48 64x64 128x128 256x256; do
         install -Dm644 "${pkgdir}"/opt/slimjet/product_logo_${i/x*}.png \
-                       "${pkgdir}"/usr/share/icons/hicolor/${i}/apps/flashpeak-slimjet.png
+            "${pkgdir}"/usr/share/icons/hicolor/${i}/apps/flashpeak-slimjet.png
     done
 }
