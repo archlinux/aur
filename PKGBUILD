@@ -9,8 +9,8 @@ license=('GPL3')
 conflicts=("${pkgname}-git")
 depends=('gnome-shell')
 makedepends=("npm")
-optdepends=('plata-theme: gtk and shell theme'
-            'tela-icon-theme-git: icon theme'
+optdepends=('plata-theme: GTK and shell theme'
+            'tela-icon-theme: icon theme'
             'ttf-roboto: font')
 groups=('gnome-shell-extensions')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
