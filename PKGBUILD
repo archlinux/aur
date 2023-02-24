@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=0.35.0.249.gc0807e98fb
+pkgver=0.35.0.255.g16f0cd546d
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
@@ -16,6 +16,7 @@ depends=(
          'libcaca'
          'libcdio-paranoia'
          'libdav1d.so'
+         'libdovi.so'
          'libdvdnav' #'libdvdnav.so'
          'libgme'
          'libmysofa'
@@ -68,6 +69,7 @@ makedepends=(
              'glad'
              'jbigkit'
              'libpipewire'
+             'libdovi'
              )
 optdepends=(
             'nvidia-utils: for hardware accelerated video decoding with CUDA'
