@@ -20,7 +20,6 @@ pkgbase = subtitlecomposer
 	depends = ki18n
 	depends = ffmpeg
 	depends = openal
-	optdepends = pocketsphinx: Pocketsphinx speech recognition backend
 	optdepends = ruby: scripting
 	optdepends = python: scripting
 	source = https://download.kde.org/stable/subtitlecomposer/subtitlecomposer-0.7.1.tar.xz

@@ -26,9 +26,11 @@ makedepends=('extra-cmake-modules' 'jack' 'blas' 'xorg-server-xvfb')
 #makedepends+=('pocketsphinx')
 
 # For consistency, also enable/disable the corresponding optdepends
-optdepends=('pocketsphinx: Pocketsphinx speech recognition backend'
-            'ruby: scripting'
-            'python: scripting')
+#  'pocketsphinx: Pocketsphinx speech recognition backend'
+optdepends=(
+  'ruby: scripting'
+  'python: scripting'
+)
 
 _tar=${pkgname}-${pkgver}
 source=("https://download.kde.org/stable/${pkgname}/${_tar}.tar.xz"
