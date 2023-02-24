@@ -1,19 +1,18 @@
 pkgbase = python-flake8-pytest-style
 	pkgdesc = A flake8 extension that checks issues with pytest tests
-	pkgver = 1.6.0
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://github.com/m-burst/flake8-pytest-style
 	arch = any
 	license = MIT
-	checkdepends = python-pytest-deadfixtures
+	makedepends = git
 	makedepends = python-build
-	makedepends = python-install
+	makedepends = python-installer
 	makedepends = python-poetry-core
 	depends = python
 	depends = flake8
 	depends = python-flake8-plugin-utils
-	source = python-flake8-pytest-style-1.6.0.tar.gz::https://github.com/m-burst/flake8-pytest-style/archive/v1.6.0.tar.gz
-	sha512sums = 6d66d75b3e94974ea5a45e688ecc96b74f9a3187f0aefef542747e54d534a783093f08d165d01ba6ea6bdef07e45d3aeaeb9799945be38b7921c5e8e51ea5b30
-	b2sums = a14b01eb397de0c35dc55aaecdda661b271418538161f4955c0daffeceb89e4ba24fa8b16c7c4b856f10059172873b303a0c76ccf651459eaf58f4ecd683adb7
+	source = python-flake8-pytest-style::git+https://github.com/m-burst/flake8-pytest-style#commit=01a4c8eaf64292363bcbae4c93bfdd6722a494ff
+	b2sums = SKIP
 
 pkgname = python-flake8-pytest-style
