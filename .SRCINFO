@@ -1,6 +1,6 @@
 pkgbase = stream-url-bin
 	pkgdesc = A command line tool to get stream urls written in rust.
-	pkgver = 0.2.9
+	pkgver = 0.2.10
 	pkgrel = 1
 	url = https://github.com/tkit1994/stream-url
 	arch = aarch64
@@ -8,11 +8,11 @@ pkgbase = stream-url-bin
 	license = MIT
 	depends = gcc-libs
 	provides = stream-url
-	source = https://raw.githubusercontent.com/tkit1994/stream-url/v0.2.9/LICENSE
+	source = https://raw.githubusercontent.com/tkit1994/stream-url/v0.2.10/LICENSE
 	sha256sums = 5d733fd59ba3db2ef7350a9f2e2551982614720ad557da02657102c22d3b9f0e
-	source_aarch64 = https://github.com/tkit1994/stream-url/releases/download/v0.2.9/stream-url-v0.2.9.aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = d83190834ff0762d182fb08cd18d812e676d59ce09b50ea8b388d4a115082af5
-	source_x86_64 = https://github.com/tkit1994/stream-url/releases/download/v0.2.9/stream-url-v0.2.9.x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = bcfb408db56b45061b3eaa8e21eb3a97533bffc96be186b4acd4aae28405f8b6
+	source_aarch64 = https://github.com/tkit1994/stream-url/releases/download/v0.2.10/stream-url-v0.2.10.aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 900cf9ddc4dcea500447e01321eeff15dcd14c2245908f7e656ab31b38319225
+	source_x86_64 = https://github.com/tkit1994/stream-url/releases/download/v0.2.10/stream-url-v0.2.10.x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 540a7b0ba2153a9ed177e96759ce2178e1a3de12aeeb9c23f413baad27d2da47
 
 pkgname = stream-url-bin
