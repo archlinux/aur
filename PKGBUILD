@@ -34,24 +34,25 @@ sha256sums=('SKIP'
             '79c738b22f5a4417b9f63ac15010ad2195ea8eb5be78535fee60a481ba3e6ac1')
 
 build() {
-    cd "$pkgname-$pkgver"
-    XDG_CACHE_HOME="$srcdir/cache" composer install \
+        cd "$pkgname-$pkgver" && XDG_CACHE_HOME="$srcdir/cache" composer install \
         --no-interaction --no-dev
 }
 
 package() {
+    cd "$pkgname-$pkgver"
+
     # Systemd files
-    install -Dm640 "$srcdir/movim.env" "$pkgdir/etc/movim.env"
-    install -Dm644 "$srcdir/movim.service" "$pkgdir/usr/lib/systemd/system/movim.service"
-    install -Dm644 "$srcdir/sysuser.conf" "$pkgdir/usr/lib/sysusers.d/movim.conf"
-    install -Dm644 "$srcdir/tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/movim.conf"
+    install -Dm640 "movim.env" "$pkgdir/etc/movim.env"
+    install -Dm644 "movim.service" "$pkgdir/usr/lib/systemd/system/movim.service"
+    install -Dm644 "sysuser.conf" "$pkgdir/usr/lib/sysusers.d/movim.conf"
+    install -Dm644 "tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/movim.conf"
 
     install -m755 -d "$pkgdir/usr/share/webapps/$pkgname"
 
     cp -r app database lib locales public src vendor \
         "$pkgdir/usr/share/webapps/$pkgname"
-    install -Dm644 CHANGELOG.md doap.xml INSTALL.md linker.php phinx.php \
-        README.md VERSION "$pkgdir/usr/share/webapps/$pkgname"
+    install -Dm644 CHANGELOG.md doap.xml linker.php phinx.php \
+        VERSION "$pkgdir/usr/share/webapps/$pkgname"
     install -Dm755 daemon.php "$pkgdir/usr/share/webapps/$pkgname"
 
     # Configuration file
