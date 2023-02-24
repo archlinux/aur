@@ -1,15 +1,15 @@
 pkgbase = tvision-git
 	pkgdesc = Modern port of Turbo Vision 2.0 with cross-platform and Unicode support
-	pkgver = 586.r319.g3a36472
-	pkgrel = 2
+	pkgver = 586.r553.gbb98e5f
+	pkgrel = 1
 	url = https://github.com/magiblot/tvision
 	arch = x86_64
 	license = MIT
-	license = custom:public-domain
+	license = custom:publicdomain
 	makedepends = git
-	makedepends = cmake>=3.5
+	makedepends = cmake
 	depends = ncurses
-	optdepends = gpm: Linux console mouse support (requires recompile)
+	depends = gpm
 	provides = tvision
 	provides = libtvision.a
 	conflicts = tvision
@@ -17,4 +17,3 @@ pkgbase = tvision-git
 	sha256sums = SKIP
 
 pkgname = tvision-git
-

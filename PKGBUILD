@@ -1,39 +1,38 @@
-# Maintainer: lmartinez-mirror
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+
 pkgname=tvision-git
-pkgver=586.r319.g3a36472
-pkgrel=2
+pkgver=586.r553.gbb98e5f
+pkgrel=1
 pkgdesc="Modern port of Turbo Vision 2.0 with cross-platform and Unicode support"
 arch=('x86_64')
 url="https://github.com/magiblot/tvision"
-license=('MIT' 'custom:public-domain')
-depends=('ncurses')
-makedepends=('git' 'cmake>=3.5')
-optdepends=('gpm: Linux console mouse support (requires recompile)')
+license=('MIT' 'custom:publicdomain')
+depends=('ncurses' 'gpm')
+makedepends=('git' 'cmake')
 provides=('tvision' 'libtvision.a')
 conflicts=('tvision')
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
-  git describe --long --tags | sed 's/^r//;s/-/.r/;s/-/./'
+	git -C "$pkgname" describe --long --tags | sed 's/^r//;s/-/.r/;s/-/./'
 }
 
 build() {
-  cd "$pkgname"
-  mkdir -p build
-  cd build
-  cmake \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DTV_REDUCE_APP_SIZE=OFF \
-    ..
-  make
+	cmake \
+		-B build \
+		-S "$pkgname" \
+		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DTV_BUILD_EXAMPLES=OFF \
+		-DTV_REDUCE_APP_SIZE=ON \
+		-Wno-dev
+	cmake --build build
 }
 
 package() {
-  cd "$pkgname"
-  make DESTDIR="$pkgdir/" install -C build
-  install -Dm 644 COPYRIGHT -t "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	DESTDIR="$pkgdir" cmake --install build
+	cd "$pkgname"
+	install -Dvm644 COPYRIGHT -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
