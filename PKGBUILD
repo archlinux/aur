@@ -1,7 +1,7 @@
 # Maintainer: Schorsch <wsixcde+aur at gmail dot com>
 # Thanks to <mti at tillenius dot com> whose packages the ps7b packages were based on
 pkgname=ps7b_libps2000a
-pkgver=2.1.107_5r3387
+pkgver=2.1.108_5r3405
 pkgrel=1
 pkgdesc="Library for PicoScope 2000a series in PicoScope 7 Beta"
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=(!strip)
 install=
 changelog=
 source=("https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libps2000a/libps2000a_${pkgver//_/-}_amd64.deb")
-md5sums=('48960caded2551507b008e72d7b0b008')
+md5sums=('709fc9615d19a102d31773accf6ce653')
 
 package() {
   tar -xf data.tar.xz -C "${pkgdir}"
