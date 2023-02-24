@@ -1,8 +1,8 @@
 #Maintainer: dimanys111 <dimanys111@mail.ru>
 _pkgname=dimanys111-other-meta-package
 pkgname=$_pkgname
-pkgver=1
-pkgrel=1
+pkgver=2
+pkgrel=2
 arch=('any')
 depends=(
 filezilla
@@ -14,7 +14,6 @@ rabbitvcs-nautilus
 selectdefaultapplication-git
 simplescreenrecorder
 torrserver-bin
-yarn
 zoom
 )
 provides=("$_pkgname")

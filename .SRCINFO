@@ -1,6 +1,6 @@
 pkgbase = dimanys111-other-meta-package
-	pkgver = 1
-	pkgrel = 1
+	pkgver = 2
+	pkgrel = 2
 	arch = any
 	depends = filezilla
 	depends = jstest-gtk-git
@@ -11,7 +11,6 @@ pkgbase = dimanys111-other-meta-package
 	depends = selectdefaultapplication-git
 	depends = simplescreenrecorder
 	depends = torrserver-bin
-	depends = yarn
 	depends = zoom
 	provides = dimanys111-other-meta-package
 	conflicts = dimanys111-other-meta-package
