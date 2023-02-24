@@ -1,6 +1,6 @@
 pkgbase = bricscad-fr_fr
 	pkgdesc = Logiciel de CAO DWG
-	pkgver = 23.1.07
+	pkgver = 23.1.08
 	pkgrel = 1
 	url = https://www.bricsys.com
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = bricscad-fr_fr
 	depends = lib32-gtk2
 	provides = bricscad
 	source = dlagent.py
-	source = BricsCAD-V23.1.07-1-fr_FR.x86_64.rpm::https://www.bricsys.com
+	source = BricsCAD-V23.1.08-1-fr_FR.x86_64.rpm::https://www.bricsys.com
 	md5sums = d2cb8b0f09448d0d2c2a8762d11a9aca
-	md5sums = 30af1047c6de1b2e208335b23b8f29c7
+	md5sums = 5b4984667181174bdad23e181d1b13ca
 
 pkgname = bricscad-fr_fr
