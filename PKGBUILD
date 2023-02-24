@@ -2,7 +2,7 @@
 
 pkgbase=im-emoji-picker-git
 pkgname=('fcitx5-im-emoji-picker-git' 'ibus-im-emoji-picker-git')
-pkgver=1.0.1.r1.gd0208ff
+pkgver=1.0.1.r5.g06b140b
 pkgrel=1
 pkgdesc='Qt 5-based emoji picker'
 arch=('x86_64')
@@ -37,7 +37,7 @@ build() {
 }
 
 package_fcitx5-im-emoji-picker-git() {
-    pkgdesc+=' (Fcitx5)'
+    pkgdesc+=' (Fcitx5 module)'
     depends+=('fcitx5')
 
     cd im-emoji-picker
@@ -47,8 +47,6 @@ package_fcitx5-im-emoji-picker-git() {
 
     install -Dm644 fcitx5-addon.conf \
          "$pkgdir/usr/share/fcitx5/addon/fcitx5imemojipicker.conf"
-    install -Dm644 fcitx5-inputmethod.conf \
-         "$pkgdir/usr/share/fcitx5/inputmethod/fcitx5imemojipicker.conf"
     install -Dm644 build-fcitx5/fcitx5imemojipicker.so -t "$pkgdir/usr/lib/fcitx5/"
 }
 
