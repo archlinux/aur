@@ -1,15 +1,15 @@
 pkgbase = wireguard-vanity-keygen
 	pkgdesc = WireGuard vanity key generator
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/axllent/wireguard-vanity-keygen
 	arch = any
 	license = custom
 	makedepends = go>=1.11
 	depends = glibc
-	source = https://raw.githubusercontent.com/axllent/wireguard-vanity-keygen/0.0.3/LICENSE
-	source = wireguard-vanity-keygen-0.0.3::https://github.com/axllent/wireguard-vanity-keygen/archive/refs/tags/0.0.3.tar.gz
+	source = https://raw.githubusercontent.com/axllent/wireguard-vanity-keygen/0.0.4/LICENSE
+	source = wireguard-vanity-keygen-0.0.4::https://github.com/axllent/wireguard-vanity-keygen/archive/refs/tags/0.0.4.tar.gz
 	sha256sums = 2cb653ca639b18430adce010d0e294db83c120c83fa32d13ea1abb17cca98c32
-	sha256sums = 4b78b5635e621e6d1935b8e30db71ec48864170b53c821308f008d0191bef471
+	sha256sums = ba6c7975ff99c64bcb98e23d3ad3c4746242e0c228031d19f50f0f1801fd1e03
 
 pkgname = wireguard-vanity-keygen
