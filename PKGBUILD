@@ -3,7 +3,7 @@
 # Based obs/linux-pf-edge by Oleksandr Natalenko aka post-factum <oleksandr@natalenko.name>
 
 pkgbase=linux-pf-git
-pkgver=6.2rc8.r48.ge9ee90b7a34e
+pkgver=6.2pf1.r10.g12e18157704f
 pkgrel=1
 pkgdesc='Linux pf-kernel (git version)'
 _kernel_rel=6.2
@@ -24,7 +24,7 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            '22eee3afb95d0de333a2730aae377f106fc1e30d0551566f80216bc56693ae3a')
+            'dc8e90629585d87cd82ea6456c252bddf10b9c46bb16454a1728132e768fc14f')
 
 pkgver() {
   cd $_srcname
