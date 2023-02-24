@@ -1,6 +1,6 @@
 pkgbase = linux-clear-headers-bin
 	pkgdesc = Header files and scripts for Clear Linux kernel and modules
-	pkgver = 6.1.12.1271
+	pkgver = 6.2.0.1275
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/clearlinux-pkgs/linux
@@ -8,11 +8,11 @@ pkgbase = linux-clear-headers-bin
 	license = GPL2
 	conflicts = linux-clear-headers
 	options = !strip
-	source = Manifest.linux-dev.38290::https://cdn.download.clearlinux.org/update/38290/Manifest.linux-dev
-	source = pack-linux-dev-from-0.38290.tar::https://cdn.download.clearlinux.org/update/38290/pack-linux-dev-from-0.tar
-	source = https://cdn.download.clearlinux.org/update/38290/files/c5807a84b90ebba3e4d09cbfac99453bef45de0ee34c6035821b45c529413725.tar
-	b2sums = 60b5bbdba21dbb5e0388f5467610409b5a086a6a5c2089f2fa9c6aa114f7726db33fa54ac0e85d4b6d834977017e2446c1f44681944e717f5d6edfd27d9e4492
-	b2sums = b1ed94534700930ebd7e1ee2edf8f6c3def260cc9f41cd83c26da00cdb3df9e862fe94fce2b3a8659d67e3b0d053489208f456388396a7858856dfa043c2d3db
-	b2sums = 4a2986e93340da3df73fa086cc323894a8330c581d94814e553b0c2bbab3cd8caa6ab9727047d4fd48e9b57007b119d2a8c8f3eabb4819b382c257e2bbbe8de8
+	source = Manifest.linux-dev.38330::https://cdn.download.clearlinux.org/update/38330/Manifest.linux-dev
+	source = pack-linux-dev-from-0.38330.tar::https://cdn.download.clearlinux.org/update/38330/pack-linux-dev-from-0.tar
+	source = https://cdn.download.clearlinux.org/update/38330/files/1aca0f13574a71973a6fc529692b9f3f1a3ebb23bc5376a91bdb14c11e0e475c.tar
+	b2sums = 921d6a140325413ab3e8a36a1eb21d5ab65980aca4dd1f02e8316146302092cdc4820c572c9604e3b7354482d65b4ffe97aa1cfb7f4f767851316826e42af7fc
+	b2sums = 2a1faff0a503da23b5583ad5ee7469daf1cd3e46c6a2f52160898a986f1378128e8f883779bbd132c3e94bc5c4424b80f708c43c723f18c091a61fcca96d55c1
+	b2sums = 036946744f48eeb6d1f031a0b468fea3cf1bfb7a80765259d737a0e5e8de53907edaa5f4fdbb8615e5680e78f932974cecb71c8691a9e63fa3725c2f4805dd8e
 
 pkgname = linux-clear-headers-bin
