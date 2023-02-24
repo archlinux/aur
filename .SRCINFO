@@ -1,7 +1,7 @@
 pkgbase = r-rslurm
 	pkgdesc = Submit R Calculations to a 'Slurm' Cluster
-	pkgver = 0.6.1
-	pkgrel = 4
+	pkgver = 0.6.2
+	pkgrel = 1
 	url = https://cran.r-project.org/package=rslurm
 	arch = any
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = r-rslurm
 	optdepends = r-parallel
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/rslurm_0.6.1.tar.gz
-	sha256sums = 8ef52e87a22297e2476ce129b065445814d7320cf9fe5bd792561fe8580c85a4
+	source = https://cran.r-project.org/src/contrib/rslurm_0.6.2.tar.gz
+	sha256sums = 540158ece7d838c9630886f37e0960353038fefa4f9cc374004240b767f6b47c
 
 pkgname = r-rslurm

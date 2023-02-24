@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rslurm
-_pkgver=0.6.1
+_pkgver=0.6.2
 pkgname=r-${_pkgname,,}
-pkgver=0.6.1
-pkgrel=4
+pkgver=0.6.2
+pkgrel=1
 pkgdesc="Submit R Calculations to a 'Slurm' Cluster"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -21,7 +21,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8ef52e87a22297e2476ce129b065445814d7320cf9fe5bd792561fe8580c85a4')
+sha256sums=('540158ece7d838c9630886f37e0960353038fefa4f9cc374004240b767f6b47c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
