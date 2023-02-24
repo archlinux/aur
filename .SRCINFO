@@ -1,6 +1,6 @@
 pkgbase = nfs4-acl-tools
 	pkgdesc = commandline ACL utilities for the Linux NFSv4 client
-	pkgver = 0.3.7
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = http://linux-nfs.org
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = nfs4-acl-tools
 	makedepends = autoconf
 	makedepends = automake
 	depends = attr
-	source = nfs4-acl-tools-0.3.7.tar.gz::https://git.linux-nfs.org/?p=bfields/nfs4-acl-tools.git;a=snapshot;h=refs/tags/nfs4-acl-tools-0.3.7;sf=tgz
-	sha256sums = aab3eb6a60f319c95d7e1abe6ddbd81fdd4a7ec03161d3c59209c82e09e4fd60
+	source = nfs4-acl-tools-0.3.7.tar.gz::https://git.linux-nfs.org/?p=steved/nfs4-acl-tools.git;a=snapshot;h=refs/tags/nfs4-acl-tools-0.3.7;sf=tgz
+	sha256sums = 327dbc968f1112a0680ca953a88d8f95a5c5697b54a8cafb405953c501d7486b
 
 pkgname = nfs4-acl-tools

@@ -1,8 +1,9 @@
+# Maintainer: Wallun <wallun AT disroot DOT org>
 # Maintainer: Jacek Szafarkiewicz <szafar at linux dot pl>
 # Contributor: Michael Seiwald <michael@mseiwald.at>
 
 pkgname=nfs4-acl-tools
-pkgver=0.3.7
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="commandline ACL utilities for the Linux NFSv4 client"
 arch=('i686' 'x86_64')
@@ -12,8 +13,8 @@ license=('custom')
 depends=('attr')
 makedepends=('autoconf' 'automake')
 
-source=("$pkgname-$pkgver.tar.gz::https://git.linux-nfs.org/?p=bfields/$pkgname.git;a=snapshot;h=refs/tags/$pkgname-$pkgver;sf=tgz")
-sha256sums=('aab3eb6a60f319c95d7e1abe6ddbd81fdd4a7ec03161d3c59209c82e09e4fd60')
+source=("$pkgname-$pkgver.tar.gz::https://git.linux-nfs.org/?p=steved/$pkgname.git;a=snapshot;h=refs/tags/$pkgname-$pkgver;sf=tgz")
+sha256sums=('327dbc968f1112a0680ca953a88d8f95a5c5697b54a8cafb405953c501d7486b')
 
 build() {
     cd "$srcdir/$pkgname-$pkgname-$pkgver"
