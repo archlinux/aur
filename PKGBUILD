@@ -1,6 +1,6 @@
 # Maintainer: Sameer Puri <aur@purisa.me>
 pkgname=python-or-tools
-pkgver=9.4
+pkgver=9.5
 pkgrel=1
 pkgdesc="Google's Operations Research tools"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -11,11 +11,11 @@ makedepends=('cmake' 'wget' 'lsb-release' 'automake' 'python-wheel' 'python-pip'
 optdepends=('cplex: CPLEX solver support' 'python-pandas: used by some examples' 'python-matplotlib: used by some examples')
 options=(!emptydirs)
 source=("https://github.com/google/or-tools/archive/v${pkgver}.tar.gz")
-b2sums=('9fe09798071f8ed2aa9634ad566ef00a68fd64892cf7169762108c2dc86a4fd144cfa70d78b69d73f645802318b1a20f2f8fc0ded32638260a122cdc857e6a7f')
+b2sums=('4052f36286258b6715b75dc577193f3d930febb56df5eeed02bf5f3a69f0d4bf73342b17c70ea44c93f4c955109bc5de31e2533d272bda98ea1f7d63987fe165')
 
 build() {
     cd "${srcdir}/or-tools-${pkgver}"
-    if [ `pacman -Qi cpelx &>/dev/null` ]; then
+    if [ `pacman -Qi cplex &>/dev/null` ]; then
         cmake -S. -Bbuild -DBUILD_PYTHON:BOOL=ON -DUSE_CPLEX:BOOL=ON -DCPLEX_ROOT=/usr/lib/cplex
     else
 	cmake -S. -Bbuild -DBUILD_PYTHON:BOOL=ON
