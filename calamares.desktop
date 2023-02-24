@@ -1,0 +1,16 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Install Oxidation Linux
+Name[da]=Installer Oxidation Linux
+GenericName=Live Installer
+GenericName[da]=Live-installationsprogram
+Comment=Install the operating system to disk
+Comment[da]=Installer styresystemet på disk
+Comment[de]=Oxidation Linux installieren
+Exec=/usr/bin/calamares_polkit %f
+Icon=calamares
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Qt;System;

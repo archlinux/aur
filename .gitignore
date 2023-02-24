@@ -1,0 +1,4 @@
+calamares/
+pkg
+src
+*.tar.*
