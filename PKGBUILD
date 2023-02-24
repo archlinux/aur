@@ -12,7 +12,7 @@ makedepends=('git')
 checkdepends=('parallel' 'diffutils')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+$url.git")
+source=("git+$url")
 md5sums=('SKIP')
 
 pkgver() {
