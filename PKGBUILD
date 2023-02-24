@@ -8,7 +8,7 @@ url="https://github.com/${_reponame}"
 license=('MIT')
 
 pkgver=1.0.7
-pkgrel=2
+pkgrel=3
 arch=('any')
 
 conflicts=('hacompanion-git')
@@ -24,7 +24,7 @@ source=("${_pkgname}::git+https://github.com/${_reponame}.git#tag=v${pkgver}"
 sha256sums=('SKIP'
             '8d0bdc24a666302edb64759dcc82ba10f70de2fa06e489cd663362907aaf7c92'
             '85331900cd5457dfffbcc7e4ebfde5d2049ce38aae27b21eecbc9b06c31fc48c'
-            'c3bc5ae2d7ca5b53696c5d0a0e12799e344d5cf00a399cfe402ab3066eb8ca7b'
+            '1dfb8eb05c64b111124b05cc8f3137ebad69f3397e08b5b45bcdef77b053aca4'
             'a6cf94385c30eee6de74caa6b63a5ca6ebcbf9451a95bcff7765d9972434af5d'
             'b4242c4051c71ea275376d8a753a36c9816a1bab08eed8205ce97b2d958a9b4b'
             'ae0d021f4b08f36151ff5c0c2497b8ab55cf5f101e29100b04a2d8b39b90fe9d')
