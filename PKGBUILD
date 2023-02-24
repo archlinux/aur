@@ -3,7 +3,7 @@
 pkgname=vaa3d-bin
 _pkgname=${pkgname%-bin}
 pkgver=v3.601
-pkgrel=1
+pkgrel=2
 pkgdesc="3D Visualization-Assisted Analysis"
 arch=("any")
 url="https://www.vaa3d.org"
@@ -29,7 +29,7 @@ package() {
   cat>"${_pkgname}"<<EOF
 #!/bin/sh
 export LD_LIBRARY_PATH=/opt/${pkgname}
-/opt/${pkgname}/${_pkgname}
+/opt/${pkgname}/${_pkgname} \$@
 EOF
   install -Dm755 -t ${pkgdir}/usr/bin ${_pkgname}
 }
