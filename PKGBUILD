@@ -1,6 +1,6 @@
 # Maintainer: Natty4 <natty.sh.git at gmail dot com>
 pkgname="wleave-git"
-pkgver=0.2.0.r0.ga40d59e
+pkgver=0.3.0.r0.ge2a7f50
 pkgrel=1
 pkgdesc="A Wayland-native logout menu, fork of Wlogout"
 arch=("x86_64")
@@ -46,7 +46,6 @@ package() {
 	install -Dm644 "$srcdir/$pkgname/completions/_wleave" "$pkgdir/usr/share/zsh/site-functions/_wleave"
 	install -Dm644 "$srcdir/$pkgname/completions/wleave.fish" "$pkgdir/usr/share/fish/vendor_completions.d/wleave.fish"
 
-	install -Dm644 -t "$pkgdir/usr/share/wleave/assets" "$srcdir/$pkgname/assets"/*
 	install -Dm644 -t "$pkgdir/usr/share/wleave/icons" "$srcdir/$pkgname/icons"/*
 
   install -Dm644 -t "$pkgdir/usr/share/man/man1" "${srcdir}/${pkgname}/wleave.1.gz"
