@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=10.0.beta1.r0.g05329f6e39
+pkgver=10.0.beta2.r0.g8f5bbd278a
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -63,8 +63,7 @@ source=(git+https://github.com/sagemath/sage#branch=develop
         sagemath-bliss-0.77.patch
         sagemath-tachyon-0.99.patch
         sagemath-gap-4.12.patch
-        sagemath-tdlib-0.9.patch
-        sagemath-numpy-1.24.patch)
+        sagemath-tdlib-0.9.patch)
 sha256sums=('SKIP'
             '8a5b935d2fd8815489713db6497e9d44aefd61e8553e8cd4acc2cb1adf625ccc'
             'bd188af45ce31579b82407adee8e9bf6033a996f7ea6e328fabca526f31c08ba'
@@ -73,8 +72,7 @@ sha256sums=('SKIP'
             '1a578528bab7be3970954fdfa033afa69fe753da1bab3f41693b0e05e3c849cd'
             'dfdc071e96dcd12b7e7e05953039f3d67aebb757f459c5e29a413ffac6354a9e'
             '43dda8c7a8f9331155bdb831cdeb419953ddcb9b72d71d7c1f84f22530e753da'
-            '56a83abecf2ff5a500442adc7a50abbb70006037dd39c39dcdb04b3ca9fb51e2'
-            'ee39c3ada37fe3c39fe56a11bf2bf0837a7bd88267fee98040855a69726f6d8a')
+            '56a83abecf2ff5a500442adc7a50abbb70006037dd39c39dcdb04b3ca9fb51e2')
 
 pkgver() {
   cd sage
@@ -93,8 +91,6 @@ prepare(){
   patch -p1 -i ../sagemath-tachyon-0.99.patch
 # Port to GAP 4.12 https://trac.sagemath.org/ticket/34391
   patch -p1 -i ../sagemath-gap-4.12.patch
-# Fix tests with numpy 1.24 https://trac.sagemath.org/ticket/34816
-  patch -p1 -i ../sagemath-numpy-1.24.patch
 
 # Arch-specific patches
 # assume all optional packages are installed
