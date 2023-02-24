@@ -7,8 +7,8 @@ pkgbase = python-qt-reactor
 	license = MIT
 	makedepends = python-pip
 	depends = python
-	depends = python-twisted
 	depends = python-qtpy
+	depends = python-twisted
 	noextract = qt_reactor-0.6-py2.py3-none-any.whl
 	source = PKGBUILD_EXTRAS
 	source = https://files.pythonhosted.org/packages/83/77/506a082b80c43fc50509f13c1aed9b63716295f3f0f983035b8bb49f6e23/qt_reactor-0.6-py2.py3-none-any.whl
@@ -18,4 +18,3 @@ pkgbase = python-qt-reactor
 	md5sums = fee9e9036ceaa3835700c4d98b50251a
 
 pkgname = python-qt-reactor
-

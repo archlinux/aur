@@ -11,7 +11,7 @@ pkgdesc='Twisted Qt Integration for Qt4 and Qt5 using qtpy'
 arch=(any)
 url=https://github.com/frmdstryr/qt-reactor
 license=(MIT)
-depends=(python python-twisted python-qtpy)
+depends=(python python-qtpy python-twisted)
 ## EXTRA_DEPENDS ##
 makedepends=(python-pip)
 checkdepends=()
