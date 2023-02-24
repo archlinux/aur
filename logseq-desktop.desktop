@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Logseq
-Exec=/usr/bin/logseq %U --ozone-platform-hint=auto --enable-features=WaylandWindowDecorations
+Exec=/usr/bin/logseq %U --ozone-platform-hint=auto --enable-features=WaylandWindowDecorations --gtk-version=4
 MimeType=x-scheme-handler/logseq
 Terminal=false
 Type=Application
