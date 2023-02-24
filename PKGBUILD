@@ -13,7 +13,7 @@ depends=('fuse2' 'gawk')
 _filename=hyperplay-${pkgver}.pacman
 source=("$url/releases/download/${_pkgver}/${_filename}")
 noextract=("${_filename}")
-md5sums=('a949808d92d41a0d5d8fb5ad64dc3876')
+md5sums=('2c359fbe20980f3dfbfd5bc235233ed6')
 options=(!strip)
 
 package() {

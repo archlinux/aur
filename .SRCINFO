@@ -10,7 +10,7 @@ pkgbase = hyperplay
 	noextract = hyperplay-0.0.5.pacman
 	options = !strip
 	source = https://github.com/HyperPlay-Gaming/hyperplay-desktop-client/releases/download/v0.0.5/hyperplay-0.0.5.pacman
-	md5sums = a949808d92d41a0d5d8fb5ad64dc3876
+	md5sums = 2c359fbe20980f3dfbfd5bc235233ed6
 
 pkgname = hyperplay
 
