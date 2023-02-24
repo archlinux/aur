@@ -2,20 +2,19 @@
 
 _pkgname=pyclip
 pkgname=python-${_pkgname}
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc='Cross-platform clipboard utilities supporting both binary and text data'
 arch=(any)
 url="https://pypi.org/project/${_pkgname}/"
 license=(Apache)
-depends=(python)
+depends=(python-argparse)
 makedepends=(python-setuptools)
-optdepends=(
-	'xclip: Support for X11'
-	'wl-clipboard: Support for Wayland'
+optdepends=('xclip: Support for X11'
+			'wl-clipboard: Support for Wayland'
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/spyoungtech/pyclip/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('eb67f5f832f80d69ac985a9c16fd1e01edf016c278fc48329af81aa48a98f634835ba018a4d1a278a4117e9550f9d09a2776c353d7a37c77dc3d1f146a7d3af2')
+b2sums=('281a2dacd82d7501e01750134d82fc0b66ac1d41a631b9573160262c94cfb97ad463036e8ec523674580fdfb71849175e58836530d761462a72ba9ba3f2fd618')
 
 build() {
 	cd "${_pkgname}-${pkgver}"
