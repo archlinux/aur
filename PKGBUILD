@@ -46,6 +46,7 @@ build() {
 package() {
 	cd $srcdir/build
 	make DESTDIR="$pkgdir/" install
-	cd $srcdir/"$pkgname-$pkgver"/pymoab
-	pip install -e .
+	#cd pymoab
+	#python --version
+	#/usr/sbin/python setup.py install --prefix=$pkgdir/opt/MOAB/lib/python3.10/site-packages/
 }
