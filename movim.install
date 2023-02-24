@@ -6,7 +6,6 @@ pre_upgrade() {
     install -m755 -d /var/cache/webapps/movim
     mv /usr/share/webapps/movim/{cache,users} /var/cache/webapps/movim/
     chmod -R u+rwX,g+rwX,o-rwx /var/cache/webapps/movim
-    chown -R root:http /var/cache/webapps/movim
   fi
 }
 
