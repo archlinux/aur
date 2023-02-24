@@ -2,8 +2,8 @@
 # Contributor: Saulius Lukauskas <luksaulius@gmail.com>
 # Contributor: Thiago L. A. Miller <thiago_leisrael@hotmail.com>
 pkgname=salmon
-pkgver=1.9.0
-pkgrel=2
+pkgver=1.10.0
+pkgrel=1
 pkgdesc="Highly-accurate & wicked fast transcript-level quantification from RNA-seq reads using lightweight alignments"
 arch=('x86_64')
 url="https://combine-lab.github.io/$pkgname/"
@@ -12,7 +12,7 @@ depends=('intel-tbb'  'jemalloc' 'boost-libs' 'bzip2')
 makedepends=('boost>=1.55' 'cmake' 'unzip' 'cereal')
 options=('!emptydirs')
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/COMBINE-lab/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('450d953a5c43fe63fd745733f478d3fbaf24d926cb52731fd38ee21c4990d613')
+sha256sums=('fd8039c20f8dc717d414c89d32ce80a37b1cf4fda2eb9dba839adedd33a4fa3a')
 
 prepare() {
   cd "$pkgname-$pkgver"
