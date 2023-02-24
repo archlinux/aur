@@ -84,7 +84,7 @@ fi
 pkgbase=linux-manjaro-xanmod
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 _major=6.1
-pkgver=${_major}.9
+pkgver=${_major}.13
 _branch=6.x
 xanmod=1
 pkgrel=1
@@ -92,7 +92,7 @@ pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="64a402c034cd942aa01c6e47ceebd73392ee47c9" # 6.1.9
+__commit="ff7339729e3abafecd13b43b9755290aab9b1563" # 6.1.13
 
 license=(GPL2)
 makedepends=(
@@ -121,9 +121,9 @@ done
         
 sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'  # kernel tar.xz
             'SKIP'                                                              #        tar.sign
-            '513cff79c38da265b2552521ce9d33b148eea6d60180c9a80764ca0935173b97'  # xanmod
+            '5f1e9f33d9b4f623953740f346340f77a1317b9b01eb9106f7fa1825a2986812'  # xanmod
             '5c84bfe7c1971354cff3f6b3f52bf33e7bbeec22f85d5e7bfde383b54c679d30'  # choose-gcc-optimization.sh
-            'c8580abbccadd83e02a589e23ebc9bf057ea9394186e2b2e568459e15d33009b') # manjaro
+            '2036d8406cf9da13185d41c3b33ed2a521f0eacce7339f2146b9e5cbea767a9b') # manjaro
 
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -329,7 +329,7 @@ _package-headers() {
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
   # required when DEBUG_INFO_BTF_MODULES is enabled
-  if [ -f "$builddir/tools/bpf/resolve_btfids" ]; then install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids ; fi
+  if [ -f "tools/bpf/resolve_btfids/resolve_btfids" ]; then install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids ; fi
 
   msg2 "Installing headers..."
   cp -t "$builddir" -a include
