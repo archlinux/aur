@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('go' 'git')
 provides=(crypto-tracker)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Nox04/crypto-tracker/archive/v$pkgver.tar.gz")
-md5sums=('SKIP')
+sha512sums=('07106c167ffda5fe356a5467b2c94de54b8d291c68899fa142d7831af9a1d44eb1e2cf11a411efc4affe71bffc12f9d98abe69f1408abf9fd2f8afbfb2ca6546')
 
 build() {
 	cd "$pkgname-$pkgver"
