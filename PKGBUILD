@@ -5,10 +5,10 @@
 # Contributor: archtux <antonio.arias99999@gmail.com>
 
 pkgname=ncdc
-pkgver=1.23
-pkgrel=2
+pkgver=1.23.1
+pkgrel=1
 pkgdesc='Modern and lightweight direct connect client with a friendly ncurses interface'
-arch=('i686' 'x86_64' 'arm' 'armv6h')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='http://dev.yorhel.nl/ncdc'
 license=('MIT')
 depends=('gnutls' 'sqlite' 'glib2' 'libmaxminddb')
@@ -28,6 +28,6 @@ package() {
 }
 
 sha512sums=(
-	'c1b2098df517631a64b24efaeb328a796ed716dca08b61248bb39bba866055ce1e017f33cc594197824476ec65ada53b13bfb56878b5b8aa330288017ad15df2'
+	'9e38387ac816499c25a28bf70e548d560265c84d12b9bfd1701decea642c4ab33b3bb5ea9c015c3048e491f9f208c6c26a63d2ce722e831f84f703a6c9f2b86c'
 	'SKIP'
 )
