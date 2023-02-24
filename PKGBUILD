@@ -2,7 +2,7 @@
 # Contributor: AndyRTR <andyrtr@archlinux.org>
 
 pkgname=xorg-xwayland-git
-pkgver=21.1.2.901.r270.gccffe90c3
+pkgver=23.0.99.901.r3.g546812382
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -28,7 +28,7 @@ replaces=('xorg-server-xwayland-git')
 
 pkgver() {
   cd xserver
-  local branch=origin/xwayland-21.1
+  local branch=origin/xwayland-23.1
   local head=$(git rev-parse --short HEAD)
   local tag=$(git describe --abbrev=0 "$branch")
   local revisions=$(git rev-list "${tag}..HEAD" --count)
