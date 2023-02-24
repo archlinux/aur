@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-pano-git
 pkgver=10.r14.gdc3fc6f
-pkgrel=1
+pkgrel=2
 pkgdesc="Next-gen Clipboard Manager"
 arch=('any')
 url="https://github.com/oae/gnome-shell-pano"
@@ -16,7 +16,8 @@ depends=('gnome-shell>=42'
 makedepends=('git'
              'glib2'
              'yarn'
-             'appstream')
+             'appstream'
+             'gsound')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+${url}.git")
