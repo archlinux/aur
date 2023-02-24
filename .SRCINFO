@@ -1,13 +1,13 @@
 pkgbase = hare-ssh
 	pkgdesc = SSH library for Hare
-	pkgver = r69.ec25df7
+	pkgver = r85.7664482
 	pkgrel = 1
 	url = https://git.sr.ht/~sircmpwn/hare-ssh
 	arch = any
 	license = MPL2
 	makedepends = git
 	depends = hare
-	source = hare-ssh::git+https://git.sr.ht/~sircmpwn/hare-ssh#commit=ec25df752665d10a3b47714b6cf63db2c54366cd
+	source = hare-ssh::git+https://git.sr.ht/~sircmpwn/hare-ssh#commit=76644828c55f803ae14aee6319fa603888dcdf67
 	md5sums = SKIP
 
 pkgname = hare-ssh
