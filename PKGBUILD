@@ -2,7 +2,7 @@
 
 _name=nvim-treesitter
 pkgname=neovim-nvim-treesitter
-pkgver=0.8.3
+pkgver=0.8.5.2
 pkgrel=1
 pkgdesc="Nvim Treesitter configurations and abstraction layer"
 arch=(any)
@@ -11,12 +11,13 @@ license=(Apache)
 groups=(neovim-plugins)
 depends=(curl gcc neovim tar)
 install=$pkgname.install
-source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha512sums=('b47f39ed3fe71e43b591c8d0a6c25bf14718e20b7f38788e130dd0e2dc25e76f73043e9889e125b7ea315702e69b25c757be6b6adc5ccbb1febcde0ebe9cc4f9')
-b2sums=('b7a26e426d375400578b644465eed1120182458f466db03ee665fcde5df1d6fd6ad6b1a0f1389b51cf7a2f5177810850a4ce7d13eec3abdc4b6f89310ca874af')
+source=($url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz)
+sha512sums=('411d15176173156eb911427a8ad5ed6b6b6f592f526d28f77a3ff2e1d940e6b5f3ef8c63a6d08a3d63596e402ad383af59407911b38c57186024831367d9e435')
+b2sums=('b3e9ca4a7efbf449822933a9e7baeb21600686af7bcf47a95a7d9d900bdd5fc3d3909a98b9cd5ad5ae79a0f6ee4b353c2a5c655b108d66690d85e3b5fecfd4e6')
 
 package() {
   local dirs=(autoload doc lua plugin queries)
+
   cd $_name-$pkgver
   find "${dirs[@]}" -type f -exec install -vDm 644 {} "$pkgdir/usr/share/nvim/site/pack/dist/start/$_name/{}" \;
   install -vdm 755 "$pkgdir/usr/share/nvim/site/pack/dist/start/$_name/parser"
