@@ -592,3 +592,14 @@ Fixes:
 
 === Morgen 2.6.6
 According to the official Changelog, this update only consists of feature changes in the mobile version of Morgen.
+
+
+
+=== Morgen 2.6.7
+New Features:
+- Reorder Task Lists on Desktop: Following the same update on mobile, task lists can now be reordered on desktop as well. Changes made to task list ordering on desktop will sync with the Morgen mobile app, and vice versa.
+
+Fixes:
+- We fixed a problem that caused multiple events to be created when dragging a task into the calendar.
+- We improved the event panel layout to prevent events with long notes from overflowing beyond the app window, which made some information inaccessible.
+- We reduced the sensitivity of events when being dragged across weeks to avoid accidental triggering on large screens.
