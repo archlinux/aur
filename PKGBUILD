@@ -8,7 +8,7 @@
 
 pkgname=subtitlecomposer
 pkgver=0.7.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Video subtitle editor'
 arch=('i686' 'x86_64')
 url="https://invent.kde.org/multimedia/${_name}"
@@ -18,7 +18,12 @@ makedepends=('extra-cmake-modules' 'jack' 'blas' 'xorg-server-xvfb')
 
 # Comment/uncomment the following dependency to disable/enable
 # building the pocketsphinx plugin
-makedepends+=('pocketsphinx')
+# Currently commented-out by default as the library is not even detected as of the 5.0.0 release:
+#  ```
+#  -- Could NOT find PocketSphinx (missing: POCKETSPHINX_INCLUDE_DIR) (found suitable version "5.0.0", minimum required is "5")
+#  -- Have NOT Found PocketSphinx - Speech plugin will not be built
+#  ```
+#makedepends+=('pocketsphinx')
 
 # For consistency, also enable/disable the corresponding optdepends
 optdepends=('pocketsphinx: Pocketsphinx speech recognition backend'
