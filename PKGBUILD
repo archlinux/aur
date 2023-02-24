@@ -13,7 +13,7 @@ makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-hatc
 checkdepends=('python-pytest' 'python-pytest-cov')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+$url.git")
+source=("git+$url")
 md5sums=('SKIP')
 
 pkgver() {
