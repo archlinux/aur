@@ -2,7 +2,7 @@
 
 pkgname=tarantool
 pkgver=2.10.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Lua application server integrated with a database management system'
 arch=(x86_64)
 url='https://www.tarantool.org'
@@ -29,7 +29,8 @@ source=(git+https://github.com/tarantool/tarantool.git#tag=$pkgver
         git+https://github.com/tarantool/nghttp2.git
         git+https://github.com/tarantool/libunwind.git#branch=libunwind-1.6.2-tarantool
         git+https://github.com/tarantool/tz.git
-        tarantool.sysusers)
+        tarantool.sysusers
+        tarantool.service.override)
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -49,7 +50,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '2feccda75effbd44b40e43608e56395376ea7b9039a09aada91a05f9559b12fe')
+            '2feccda75effbd44b40e43608e56395376ea7b9039a09aada91a05f9559b12fe'
+            '93a8dd3a172a676d6850f624b19d832bac03b2658ae17d37638118b25c72a190')
 
 prepare() {
   cd tarantool
@@ -106,7 +108,8 @@ package() {
   cd tarantool
   make install DESTDIR="$pkgdir"
 
-  sed 's|/var/run/|/run/|' -i "$pkgdir"/usr/lib/tmpfiles.d/tarantool.conf # https://github.com/tarantool/tarantool/issues/5227
+  rm "$pkgdir"/usr/lib/tmpfiles.d/tarantool.conf
+  install -D -m644 "$srcdir"/tarantool.service.override "$pkgdir/usr/lib/systemd/system/tarantool@.service.d/override.conf"
 
   install -D -m644 "$srcdir"/tarantool.sysusers "$pkgdir/usr/lib/sysusers.d/tarantool.conf"
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
