@@ -1,4 +1,4 @@
-From 07c04ece7c0eb6644112c84454dc617d6b45458b Mon Sep 17 00:00:00 2001
+From a8f9b3299a2f996070ae8242eb5546083b648639 Mon Sep 17 00:00:00 2001
 From: Felipe Contreras <felipe.contreras@gmail.com>
 Date: Sun, 23 Jan 2022 23:36:44 -0600
 Subject: [PATCH] Fix exit regression
@@ -15,45 +15,39 @@ It can be triggered by simply doing:
   exit
 
 The maintainers of vte clearly have no intention fixing the issue that
-was reported more than one year ago.
+was reported more than three years ago.
 
   https://gitlab.gnome.org/GNOME/vte/-/issues/204
 
-We know the child has exited, the client does not. It's up to the client
-to decide if it wants to wait for the rest of the input, or exit
-immediately.
-
-So send the signal as soon as we receive it.
+We need to send the CHILD_EXITED signal regardless of whether or not
+there's a pending EOS.
 
 Signed-off-by: Felipe Contreras <felipe.contreras@gmail.com>
 ---
- src/vte.cc | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ src/vte.cc | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/src/vte.cc b/src/vte.cc
-index 103dc4d5..c47c10af 100644
+index 8b75883f..da296daf 100644
 --- a/src/vte.cc
 +++ b/src/vte.cc
-@@ -3200,6 +3200,9 @@ Terminal::child_watch_done(pid_t pid,
- 
-         m_pty_pid = -1;
- 
-+        if (widget())
-+                widget()->emit_child_exited(status);
-+
-         /* If we still have a PTY, or data to process, defer emitting the signals
-          * until we have EOF on the PTY, so that we can process all pending data.
-          */
-@@ -3210,9 +3213,6 @@ Terminal::child_watch_done(pid_t pid,
-                 m_child_exited_eos_wait_timer.schedule_seconds(2); // FIXME: better value?
-         } else {
-                 m_child_exited_after_eos_pending = false;
--
--                if (widget())
--                        widget()->emit_child_exited(status);
+@@ -10124,7 +10124,6 @@ Terminal::emit_pending_signals()
+                 m_bell_pending = false;
          }
- }
  
+-        auto const eos = m_eos_pending;
+         if (m_eos_pending) {
+                 queue_eof();
+                 m_eos_pending = false;
+@@ -10132,7 +10131,7 @@ Terminal::emit_pending_signals()
+                 unset_pty();
+         }
+ 
+-        if (m_child_exited_after_eos_pending && eos) {
++        if (m_child_exited_after_eos_pending) {
+                 /* The signal handler could destroy the terminal, so send the signal on idle */
+                 queue_child_exited();
+                 m_child_exited_after_eos_pending = false;
 -- 
-2.34.1
+2.39.2
 

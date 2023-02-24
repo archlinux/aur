@@ -14,7 +14,7 @@ makedepends=(gobject-introspection vala git gtk-doc gperf meson)
 source=("git+https://gitlab.gnome.org/GNOME/vte.git#tag=$pkgver"
   fix-exit-regression.patch)
 sha256sums=('SKIP'
-  '5e5715a928b3667e7dd15d2766b45e8fe159768ab949f0badd5c47d190ceb211')
+  'b7175b365c87b4014725a690448db716e22c27636fc03c08c5a4bc516798871e')
 
 depends+=(vte-common)
 provides=("vte3=$pkgver" libvte-2.91.so)
