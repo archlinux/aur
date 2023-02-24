@@ -1,20 +1,21 @@
-# Maintainer: Shayne Hartford <shayneehartford@gmail.com>
+# Maintainer: Nicolas Marot <nicolas dot marot at gmail dot com>
+# Contributor: Shayne Hartford <shayneehartford at gmail dot com>
 
 pkgname=raptoreum-bin
 _pkgname=raptoreum
-pkgver=1.2.15.3
+pkgver=1.3.17.02
 pkgrel=1
 pkgdesc="The Raptoreum Wallet"
 arch=("any")
 url="https://github.com/Raptor3um/$_pkgname"
 license=("MIT")
 provides=("raptoreum")
-_filename="raptoreum_${pkgver}_ubuntu20_64"
+_filename="raptoreum-ubuntu22-${pkgver}"
 source=(
     "https://github.com/Raptor3um/raptoreum/releases/download/$pkgver/$_filename.tar.gz"
 )
-sha512sums=(
-    "1a3aeeb6b46b634a6fc3fa13466b53fb180fe801043c5192bb1b157e083ed17ba9c20c27053e4ffb8f0345f485c3a0aa60aea145c8df35538c29ad15474f1f2f"
+sha256sums=(
+    "4731206f121f9015ef4cb302ca138ab6b83670bcd81b6f73f38724ffdc3d2ec3"
 )
 
 package() {

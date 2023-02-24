@@ -1,12 +1,12 @@
 pkgbase = raptoreum-bin
 	pkgdesc = The Raptoreum Wallet
-	pkgver = 1.2.15.3
+	pkgver = 1.3.17.02
 	pkgrel = 1
 	url = https://github.com/Raptor3um/raptoreum
 	arch = any
 	license = MIT
 	provides = raptoreum
-	source = https://github.com/Raptor3um/raptoreum/releases/download/1.2.15.3/raptoreum_1.2.15.3_ubuntu20_64.tar.gz
-	sha512sums = 1a3aeeb6b46b634a6fc3fa13466b53fb180fe801043c5192bb1b157e083ed17ba9c20c27053e4ffb8f0345f485c3a0aa60aea145c8df35538c29ad15474f1f2f
+	source = https://github.com/Raptor3um/raptoreum/releases/download/1.3.17.02/raptoreum-ubuntu22-1.3.17.02.tar.gz
+	sha256sums = 4731206f121f9015ef4cb302ca138ab6b83670bcd81b6f73f38724ffdc3d2ec3
 
 pkgname = raptoreum-bin
