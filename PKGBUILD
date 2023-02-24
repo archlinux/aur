@@ -1,28 +1,26 @@
 # Maintainer: Zach Himsel <zach at himsel dot net>
 pkgname='mqtt-explorer'
 pkgver=0.3.5
-pkgrel=11
+pkgrel=12
 pkgdesc="A comprehensive and easy-to-use MQTT Client"
 arch=('x86_64')
 url="https://mqtt-explorer.com/"
 license=('CCPL:by-nd')
-depends=(
-    'nodejs'
-    )
+depends=('nodejs')
 makedepends=(
     'git'
     'npm'
     'sed'
-    'yarn'
-    )
+    'yarn')
 conflicts=('mqtt-explorer-beta') # currently, both programs cannot use the same config file
 options=(!strip)
 source=(
     "$pkgname-${pkgver}.tar.gz::https://github.com/thomasnordquist/MQTT-Explorer/archive/v$pkgver.tar.gz"
-    )
-md5sums=(
-    '66b04e6991416cf8be67c0d8c3706477'
-    )
+    "mqtt-explorer.desktop"
+    "mqtt-explorer-run.sh")
+md5sums=('66b04e6991416cf8be67c0d8c3706477'
+         '191b5beaddfa840771619ef35aad30ae'
+         'ac7b4f2e887c368e68c211ce47207e7b')
 
 build() {
   cd "MQTT-Explorer-${pkgver}"
@@ -40,6 +38,6 @@ package() {
   mkdir -p "${pkgdir}/usr/share/$pkgname"
   cp -rT "MQTT-Explorer-${pkgver}" "${pkgdir}/usr/share/$pkgname"
 
-  install -Dm 0644 "${srcdir}/../mqtt-explorer.desktop" "${pkgdir}/usr/share/applications/mqtt-explorer.desktop"
-  install -Dm 0755 "${srcdir}/../mqtt-explorer-run.sh" "${pkgdir}/usr/bin/mqtt-explorer"
+  install -Dm 0644 "${srcdir}/mqtt-explorer.desktop" "${pkgdir}/usr/share/applications/mqtt-explorer.desktop"
+  install -Dm 0755 "${srcdir}/mqtt-explorer-run.sh" "${pkgdir}/usr/bin/mqtt-explorer"
 }
