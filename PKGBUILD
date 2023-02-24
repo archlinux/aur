@@ -5,13 +5,13 @@
 
 pkgname=kdbusaddons-git
 pkgver=5.240.0_r467.g455e1e3
-pkgrel=1
+pkgrel=2
 pkgdesc='Addons to QtDBus'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
-depends=(qt6-x11extras)
-makedepends=(git extra-cmake-modules-git qt6-tools clang python-pyqt6 doxygen sip4)
+depends=(qt6-base)
+makedepends=(git extra-cmake-modules-git qt6-tools clang python-pyqt6 doxygen sip4 plasma-wayland-protocols)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 optdepends=('python-pyqt6: for the Python bindings')
