@@ -5,14 +5,14 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=inkcut
 epoch=
-pkgver=2.1.3
+pkgver=2.1.5
 pkgrel=00
 pkgdesc='An application for controlling 2D plotters, cutters, engravers, and CNC machines.'
 arch=(any)
 url=https://github.com/codelv/inkcut/
 license=(custom:GPLv3)
-depends=(python python-qtconsole python-enamlx python-pycups python-lxml python-qt-reactor python-pyqtgraph python-twisted python-pyserial python-enaml python-jsonpickle)
-## EXTRA_DEPENDS ##
+depends=(python python-enaml python-enamlx python-jsonpickle python-lxml python-pycups python-pyqtgraph python-pyserial python-qt-reactor python-qtconsole python-twisted)
+depends+=(python-pyqt5-webengine python-setuptools)
 makedepends=(python-pip)
 checkdepends=()
 provides=()
@@ -20,9 +20,9 @@ conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
 md5sums=(SKIP)
 noextract=()
-source+=(https://files.pythonhosted.org/packages/82/01/e462c1ca492e43001b505838c90d5a77a435fea325da9bc4da6cdfc08126/inkcut-2.1.3-py2.py3-none-any.whl)
-md5sums+=(1ff4a45ba6c51f2c5c2cfebbe2f8afa8)
-noextract+=(inkcut-2.1.3-py2.py3-none-any.whl)
+source+=(https://files.pythonhosted.org/packages/11/d2/485dcbe344d98b97b8dc2ab0c48b5375ef7427694216847b466d8c76e5ab/inkcut-2.1.5-py2.py3-none-any.whl)
+md5sums+=(7feb837b61317590e1abf676719ebc6f)
+noextract+=(inkcut-2.1.5-py2.py3-none-any.whl)
 source+=(LICENSE)
 md5sums+=(d32239bcb673463ab874e80d47fae504)
 
