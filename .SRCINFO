@@ -1,6 +1,6 @@
 pkgbase = rust-df-git
 	pkgdesc = Simple df like utility in Rust
-	pkgver = r39.d49914d
+	pkgver = v0.1.0.6.g2da7ca8
 	pkgrel = 1
 	url = https://github.com/mfs/rust-df
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = rust-df-git
 	makedepends = cargo
 	makedepends = git
 	provides = rdf
-	source = git://github.com/mfs/rust-df/#branch=master
+	source = rust-df::git+https://github.com/mfs/rust-df.git
 	sha256sums = SKIP
 
 pkgname = rust-df-git

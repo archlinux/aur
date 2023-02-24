@@ -1,40 +1,40 @@
-# Maintainer: Autumnal <friedrich122112 At me DOT com>
+# Maintainer: Sven Friedrich <sven AT autumnal DOT de>
 
 pkgname=rust-df-git
 _pkgname=rust-df
-pkgver=r39.d49914d
+pkgver=v0.1.0.6.g2da7ca8
 pkgrel=1
 pkgdesc="Simple df like utility in Rust"
 arch=('x86_64' 'i686')
 url="https://github.com/mfs/rust-df"
+_git="https://github.com/mfs/${_pkgname}.git"
 license=('MIT')
 depends=()
 makedepends=('rust' 'cargo' 'git')
 provides=('rdf')
 conflicts=()
-source=("git://github.com/mfs/rust-df/#branch=master")
+source=("${_pkgname}::git+${_git}")
 sha256sums=('SKIP')
 
+_bin=rdf
+
 pkgver() {
-    cd "${srcdir}/${_pkgname}"
-    (
-        set -o pipefail
-        git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
+    cd "${_pkgname}"
+    git describe --tags | sed 's/-/./g'
+}
+
+prepare() {
+    cd "${_pkgname}"
+    cargo fetch --locked --target $CARCH-unknown-linux-gnu
 }
 
 build() {
-    cd  "${srcdir}/${_pkgname}"
-    cargo build --release --target-dir "./target"
+    cd "${_pkgname}"
+    cargo build --release --frozen
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}"
-
-    # Install binary.
-    install -Dm 755 "target/release/rdf" "${pkgdir}/usr/bin/rdf"
-
-    # Install MIT license
-    install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/rdf/LICENSE-MIT"
+    cd "${_pkgname}"
+    install -Dm 0755 "target/release/${_bin}" "${pkgdir}/usr/bin/${_bin}"
+    install -Dm 0644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
