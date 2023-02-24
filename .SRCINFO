@@ -1,13 +1,12 @@
 pkgbase = termcolor
 	pkgdesc = A header-only C++ library for printing colored messages to the terminal
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/ikalnytskyi/termcolor
 	arch = x86_64
-	license = MIT
+	license = BSD
 	makedepends = cmake
-	source = termcolor-2.0.0.tar.gz::https://github.com/ikalnytskyi/termcolor/archive/v2.0.0.tar.gz
-	sha256sums = 4a73a77053822ca1ed6d4a2af416d31028ec992fb0ffa794af95bd6216bb6a20
+	source = termcolor-2.1.0.tar.gz::https://github.com/ikalnytskyi/termcolor/archive/v2.1.0.tar.gz
+	sha256sums = 435994c32557674469404cb1527c283fdcf45746f7df75fd2996bb200d6a759f
 
 pkgname = termcolor
-
