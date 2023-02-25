@@ -1,6 +1,6 @@
 pkgbase = ocaml-libvirt-git
 pkgdesc = OCaml bindings for libvirt
-pkgver = r173.3cff17d
+pkgver = r177.53bf916
 pkgrel = 1
 url = https://libvirt.org/
 arch = i686

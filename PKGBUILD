@@ -1,7 +1,7 @@
 # Maintainer: solsTiCe d'Hiver <solstice.dhiver@gmail.com>
 pkgname=ocaml-libvirt-git
 _pkgname=libvirt-ocaml
-pkgver=r173.3cff17d
+pkgver=r177.53bf916
 pkgrel=1
 pkgdesc="OCaml bindings for libvirt"
 arch=('i686' 'x86_64')
@@ -29,8 +29,6 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  # remove that file that makes `make install` fail
-  rm ./libvirt/META.libvirt
 
   make DESTDIR="${pkgdir}" install
 
