@@ -2,7 +2,7 @@
 pkgname=xivlauncher-cn-git
 pkgver=1.0.2.2.178bd80
 pkgrel=1
-pkgdesc="Custom Launcher for Final Fantasy XIV Online CN (git version)"
+pkgdesc="Custom Launcher for Final Fantasy XIV Online CN"
 arch=('x86_64')
 url='https://github.com/ottercorp/XIVLauncher.Core'
 license=('GPL')
