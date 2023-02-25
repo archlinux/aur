@@ -1,0 +1,237 @@
+From 629e6738b6633bd89bc2ba0065c2bb490accdcdf Mon Sep 17 00:00:00 2001
+From: Debarshi Ray <debarshir@gnome.org>
+Date: Wed, 7 Jan 2015 16:01:00 +0100
+Subject: [PATCH] Add sequences and signals for desktop notification
+
+Add sequences
+  OSC 777 ; notify ; SUMMARY ; BODY BEL
+  OSC 777 ; notify ; SUMMARY BEL
+  OSC 777 ; notify ; SUMMARY ; BODY ST
+  OSC 777 ; notify ; SUMMARY ST
+
+that let terminal applications send a notification to the desktop
+environment.
+
+Based on Enlightenment's Terminology:
+https://phab.enlightenment.org/T1765
+
+https://bugzilla.gnome.org/show_bug.cgi?id=711059
+---
+ src/marshal.list      |  1 +
+ src/vte.cc            | 10 ++++++++++
+ src/vte/vteterminal.h |  4 +++-
+ src/vtegtk.cc         | 25 +++++++++++++++++++++++++
+ src/vtegtk.hh         |  3 +++
+ src/vteinternal.hh    | 14 ++++++++++++++
+ src/vteseq.cc         | 37 +++++++++++++++++++++++++++++++++++++
+ 7 files changed, 93 insertions(+), 1 deletion(-)
+
+diff --git a/src/marshal.list b/src/marshal.list
+index 241128c3..4412cf3d 100644
+--- a/src/marshal.list
++++ b/src/marshal.list
+@@ -1,3 +1,4 @@
+ VOID:STRING,BOXED
++VOID:STRING,STRING
+ VOID:STRING,UINT
+ VOID:UINT,UINT
+diff --git a/src/vte.cc b/src/vte.cc
+index 80f26454..fcb9356d 100644
+--- a/src/vte.cc
++++ b/src/vte.cc
+@@ -10181,6 +10181,16 @@ Terminal::emit_pending_signals()
+ 
+ 	emit_adjustment_changed();
+ 
++#if _VTE_GTK == 3
++        if (m_pending_changes & vte::to_integral(PendingChanges::NOTIFICATION)) {
++                _vte_debug_print (VTE_DEBUG_SIGNALS,
++                                  "Emitting `notification-received'.\n");
++                g_signal_emit(freezer.get(), signals[SIGNAL_NOTIFICATION_RECEIVED], 0,
++                              m_notification_summary.c_str(),
++                              m_notification_body.c_str());
++        }
++#endif
++
+ 	if (m_pending_changes & vte::to_integral(PendingChanges::TITLE)) {
+                 if (m_window_title != m_window_title_pending) {
+                         m_window_title.swap(m_window_title_pending);
+diff --git a/src/vte/vteterminal.h b/src/vte/vteterminal.h
+index 78176f97..ac762498 100644
+--- a/src/vte/vteterminal.h
++++ b/src/vte/vteterminal.h
+@@ -109,9 +109,11 @@ struct _VteTerminalClass {
+ 	void (*bell)(VteTerminal* terminal);
+ 
+ #if _VTE_GTK == 3
++	void (*notification_received)(VteTerminal* terminal, const gchar *summary, const gchar *body);
++
+         /* Compatibility padding due to fedora patches intruding on our ABI */
+         /*< private >*/
+-        gpointer _extra_padding[3];
++        gpointer _extra_padding[2];
+ #endif /* _VTE_GTK == 3 */
+ 
+         /* Add new vfuncs here, and subtract from the padding below. */
+diff --git a/src/vtegtk.cc b/src/vtegtk.cc
+index 591c127e..25268735 100644
+--- a/src/vtegtk.cc
++++ b/src/vtegtk.cc
+@@ -1251,6 +1251,9 @@ vte_terminal_class_init(VteTerminalClass *klass)
+ 	klass->child_exited = NULL;
+ 	klass->encoding_changed = NULL;
+ 	klass->char_size_changed = NULL;
++#if _VTE_GTK == 3
++	klass->notification_received = NULL;
++#endif
+ 	klass->window_title_changed = NULL;
+ 	klass->icon_title_changed = NULL;
+ 	klass->selection_changed = NULL;
+@@ -1334,6 +1337,28 @@ vte_terminal_class_init(VteTerminalClass *klass)
+                                    G_OBJECT_CLASS_TYPE(klass),
+                                    g_cclosure_marshal_VOID__INTv);
+ 
++#if _VTE_GTK == 3
++        /**
++         * VteTerminal::notification-received:
++         * @vteterminal: the object which received the signal
++         * @summary: The summary
++         * @body: (allow-none): Extra optional text
++         *
++         * Emitted when a process running in the terminal wants to
++         * send a notification to the desktop environment.
++         */
++        signals[SIGNAL_NOTIFICATION_RECEIVED] =
++                g_signal_new(I_("notification-received"),
++                             G_OBJECT_CLASS_TYPE(klass),
++                             G_SIGNAL_RUN_LAST,
++                             G_STRUCT_OFFSET(VteTerminalClass, notification_received),
++                             NULL,
++                             NULL,
++                             _vte_marshal_VOID__STRING_STRING,
++                             G_TYPE_NONE,
++                             2, G_TYPE_STRING, G_TYPE_STRING);
++#endif
++
+         /**
+          * VteTerminal::window-title-changed:
+          * @vteterminal: the object which received the signal
+diff --git a/src/vtegtk.hh b/src/vtegtk.hh
+index 6b7a1ea2..d5379b16 100644
+--- a/src/vtegtk.hh
++++ b/src/vtegtk.hh
+@@ -52,6 +52,9 @@ enum {
+         SIGNAL_RESIZE_WINDOW,
+         SIGNAL_RESTORE_WINDOW,
+         SIGNAL_SELECTION_CHANGED,
++#if _VTE_GTK == 3
++        SIGNAL_NOTIFICATION_RECEIVED,
++#endif
+         SIGNAL_WINDOW_TITLE_CHANGED,
+         LAST_SIGNAL
+ };
+diff --git a/src/vteinternal.hh b/src/vteinternal.hh
+index 0d454649..8dba726c 100644
+--- a/src/vteinternal.hh
++++ b/src/vteinternal.hh
+@@ -662,6 +662,12 @@ public:
+         gboolean m_cursor_moved_pending;
+         gboolean m_contents_changed_pending;
+ 
++#if _VTE_GTK == 3
++        /* desktop notification */
++        std::string m_notification_summary;
++        std::string m_notification_body;
++#endif
++
+         std::string m_window_title{};
+         std::string m_current_directory_uri{};
+         std::string m_current_file_uri{};
+@@ -675,6 +681,9 @@ public:
+                 TITLE = 1u << 0,
+                 CWD   = 1u << 1,
+                 CWF   = 1u << 2,
++#if _VTE_GTK == 3
++                NOTIFICATION = 1u << 3,
++#endif
+         };
+         unsigned m_pending_changes{0};
+ 
+@@ -1506,6 +1515,11 @@ public:
+                              int osc) noexcept;
+ 
+         /* OSC handlers */
++#if _VTE_GTK == 3
++        void handle_urxvt_extension(vte::parser::Sequence const& seq,
++                                    vte::parser::StringTokeniser::const_iterator& token,
++                                    vte::parser::StringTokeniser::const_iterator const& endtoken) noexcept;
++#endif
+         void set_color(vte::parser::Sequence const& seq,
+                        vte::parser::StringTokeniser::const_iterator& token,
+                        vte::parser::StringTokeniser::const_iterator const& endtoken,
+diff --git a/src/vteseq.cc b/src/vteseq.cc
+index 874d2405..dda487c4 100644
+--- a/src/vteseq.cc
++++ b/src/vteseq.cc
+@@ -1376,6 +1376,35 @@ Terminal::delete_lines(vte::grid::row_t param)
+         m_text_deleted_flag = TRUE;
+ }
+ 
++#if _VTE_GTK == 3
++void
++Terminal::handle_urxvt_extension(vte::parser::Sequence const& seq,
++                                 vte::parser::StringTokeniser::const_iterator& token,
++                                 vte::parser::StringTokeniser::const_iterator const& endtoken) noexcept
++{
++        if (token == endtoken)
++                return;
++
++        if (*token == "notify") {
++                ++token;
++
++                if (token == endtoken)
++                        return;
++
++                m_notification_summary = *token;
++                m_notification_body.clear();
++                m_pending_changes |= vte::to_integral(PendingChanges::NOTIFICATION);
++                ++token;
++
++                if (token == endtoken)
++                        return;
++
++                m_notification_body = *token;
++                return;
++        }
++}
++#endif
++
+ bool
+ Terminal::get_osc_color_index(int osc,
+                                         int value,
+@@ -6541,6 +6570,12 @@ Terminal::OSC(vte::parser::Sequence const& seq)
+                 reset_color(VTE_HIGHLIGHT_FG, VTE_COLOR_SOURCE_ESCAPE);
+                 break;
+ 
++#if _VTE_GTK == 3
++        case VTE_OSC_URXVT_EXTENSION:
++                handle_urxvt_extension(seq, it, cend);
++                break;
++#endif
++
+         case VTE_OSC_XTERM_SET_ICON_TITLE:
+         case VTE_OSC_XTERM_SET_XPROPERTY:
+         case VTE_OSC_XTERM_SET_COLOR_MOUSE_CURSOR_FG:
+@@ -6582,7 +6617,9 @@ Terminal::OSC(vte::parser::Sequence const& seq)
+         case VTE_OSC_URXVT_SET_FONT_BOLD_ITALIC:
+         case VTE_OSC_URXVT_VIEW_UP:
+         case VTE_OSC_URXVT_VIEW_DOWN:
++#if _VTE_GTK != 3
+         case VTE_OSC_URXVT_EXTENSION:
++#endif
+         case VTE_OSC_YF_RQGWR:
+         default:
+                 break;
+-- 
+2.39.2
+
