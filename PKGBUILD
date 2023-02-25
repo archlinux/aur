@@ -4,7 +4,7 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgname='refind-git'
-pkgver=0.13.1.4.r754.g99771d8
+pkgver=0.13.3.7.r832.gcce5cdc
 pkgrel=1
 pkgdesc='rEFInd Boot Manager - git version'
 url='https://www.rodsbooks.com/refind/'
@@ -41,6 +41,8 @@ prepare() {
 	sed -e 's|../Styles/||g' -i "docs/${pkgname%-git}/"*.html
 	# hardcode RefindDir, so that refind-install can find refind_x64.efi
 	sed -e 's|RefindDir=\"\$ThisDir/refind\"|RefindDir="/usr/share/refind/"|g' -i refind-install
+	# add vendor line to the sbat file
+	printf 'refind.%s,%s,%s,refind,%s,%s\n' 'arch' '1' 'Arch Linux' "${epoch:+${epoch}:}${pkgver}-${pkgrel}" 'https://aur.archlinux.org/packages/refind-git' >> refind-sbat.csv
 }
 
 build() {
