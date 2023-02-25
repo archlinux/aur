@@ -6,8 +6,8 @@
 
 _pkgname='gnome-terminal'
 pkgname="${_pkgname}-fedora"
-pkgver=3.45.90
-pkgrel=2
+pkgver=3.46.8
+pkgrel=1
 pkgdesc='The GNOME Terminal Emulator with Fedora patches'
 url='https://wiki.gnome.org/Apps/Terminal'
 license=('GPL')
@@ -16,7 +16,7 @@ arch=(
   'x86_64'
 )
 depends=(
-  'vte3-notification>=0.70.0'
+  'vte3-notification>=0.71.0'
   'gsettings-desktop-schemas'
 )
 makedepends=(
@@ -39,21 +39,18 @@ groups=('gnome')
 # Fedora patches: https://src.fedoraproject.org/cgit/rpms/gnome-terminal.git/tree/
 _frepourl='https://src.fedoraproject.org/rpms/gnome-terminal'
 _frepobranch='rawhide'
-_fcommit='26c20042c6b151a6f05b961fe57998086f274d5f'
+_fcommit='07fad51112cadde640d1f19f00db8cdb4c51d305'
 _fpatchfile100='gnome-terminal-cntr-ntfy-autottl-ts.patch'
-_fpatchfile101='gnome-terminal-3.45.90-nautilus-extension.patch'
 _fgsoverridefile='org.gnome.Terminal.gschema.override'
 
 source=(
   "git+https://gitlab.gnome.org/GNOME/gnome-terminal.git#tag=${pkgver}"
   "${_fpatchfile100}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fpatchfile100}"
-  "${_fpatchfile101}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fpatchfile101}"
   "${_fgsoverridefile}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fgsoverridefile}"
 )
 sha256sums=(
   'SKIP'
-  'e0146a0022cd3a0f6e154d771cdd3ea5b73987370c9c67423abe7f308e6f742c'
-  'SKIP'
+  '9bb0b2058dfa2b99a59058b7aed5b1cb96010f43763dec2190b7cf59c32d03fa'
   'a4a22834d6524fb697a8edf91c9489617d5ab2e513413fc84c6b8575320938f9'
 )
 
@@ -62,7 +59,6 @@ prepare () {
 
   # Apply patches
   patch -p1 -i "../${_fpatchfile100}-${_fcommit}"
-  patch -p1 -i "../${_fpatchfile101}-${_fcommit}"
 }
 
 build() {
