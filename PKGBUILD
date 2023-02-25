@@ -3,7 +3,7 @@
 _name="arttime"
 pkgname="${_name}-git"
 pkgver=2.0.0.r454
-pkgrel=3
+pkgrel=4
 pkgdesc="Arttime brings curated text-art to otherwise artless terminal emulators of starving developers and other users who can use terminal."
 arch=('any')
 url="https://github.com/poetaman/${_name}"
