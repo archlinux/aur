@@ -5,14 +5,10 @@ pkgbase = omnisharp-roslyn-bin
 	url = https://github.com/OmniSharp/omnisharp-roslyn
 	arch = x86_64
 	license = MIT
-	depends = mono
-	depends = mono-msbuild
-	depends = mono-msbuild-sdkresolver
+	depends = dotnet-sdk
 	provides = omnisharp-roslyn
 	conflicts = omnisharp-roslyn
-	source = omnisharp-mono-1.39.4.tar.gz::https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.39.4/omnisharp-mono.tar.gz
-	source = omnisharp.sh
-	sha256sums = bd5382615b26be2c8c33bcc16a72e6c027d4bba28d934a53331b9e79c68d5c37
-	sha256sums = 784a5643fde85bbec73f329b0bff1589451f7d976df3087e6667ad60a1768da9
+	source = omnisharp-linux-x64-net6.0-1.39.4.tar.gz::https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.39.4/omnisharp-linux-x64-net6.0.tar.gz
+	sha256sums = 84299e917cdfdbd9540da9506bee6e7b9a35ca3958e12ec12c19a3ec36a51ff5
 
 pkgname = omnisharp-roslyn-bin
