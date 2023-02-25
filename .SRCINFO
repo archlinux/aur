@@ -1,7 +1,7 @@
 pkgbase = deeplx-bin
 	pkgdesc = Permanently free DeepL API written in Golang
 	pkgver = 0.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OwO-Network/DeepLX
 	install = deeplx-bin.install
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = deeplx-bin
 	provides = deeplx
 	source = https://raw.githubusercontent.com/OwO-Network/DeepLX/main/deeplx.service
 	sha256sums = 4254690f52328eeb9f4c7a83485947ca024d66d6358b1cc3bf9554c8d870d434
-	source_x86_64 = deeplx-x86_64::https://github.com/OwO-Network/DeepLX/releases/download/v0.7.3/deeplx_linux_amd64
+	source_x86_64 = deeplx-x86_64-0.7.3::https://github.com/OwO-Network/DeepLX/releases/download/v0.7.3/deeplx_linux_amd64
 	sha256sums_x86_64 = e4a9bb2c479b703ae3c7685e0a13bbdb1b5762478528ce5d72719a19010326f4
-	source_i686 = deeplx-i686::https://github.com/OwO-Network/DeepLX/releases/download/v0.7.3/deeplx_linux_386
+	source_i686 = deeplx-i686-0.7.3::https://github.com/OwO-Network/DeepLX/releases/download/v0.7.3/deeplx_linux_386
 	sha256sums_i686 = a8d7b517145fb341e71bc6de3f24fdd4222b18f2f6464618adc52a1a5d185212
-	source_aarch64 = deeplx-aarch64::https://github.com/OwO-Network/DeepLX/releases/download/v0.7.3/deeplx_linux_arm64
+	source_aarch64 = deeplx-aarch64-0.7.3::https://github.com/OwO-Network/DeepLX/releases/download/v0.7.3/deeplx_linux_arm64
 	sha256sums_aarch64 = 59b8c968490f42eddb102f483ad07005a2bf069fcecdf47a0ed9acdde0527706
-	source_mips = deeplx-mips::https://github.com/OwO-Network/DeepLX/releases/download/v0.7.3/deeplx_linux_mips
+	source_mips = deeplx-mips-0.7.3::https://github.com/OwO-Network/DeepLX/releases/download/v0.7.3/deeplx_linux_mips
 	sha256sums_mips = 9255be34e5b7f7a26205cabc85013c89ee7cf98f828de497637fdc5b0a4ad1f2
 
 pkgname = deeplx-bin

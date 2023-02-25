@@ -18,10 +18,10 @@ backup=()
 options=()
 install=${pkgname}.install
 source=('https://raw.githubusercontent.com/OwO-Network/DeepLX/main/deeplx.service')
-source_x86_64=("deeplx-x86_64::https://github.com/OwO-Network/DeepLX/releases/download/v$pkgver/deeplx_linux_amd64")
-source_aarch64=("deeplx-aarch64::https://github.com/OwO-Network/DeepLX/releases/download/v$pkgver/deeplx_linux_arm64")
-source_i686=("deeplx-i686::https://github.com/OwO-Network/DeepLX/releases/download/v$pkgver/deeplx_linux_386")
-source_mips=("deeplx-mips::https://github.com/OwO-Network/DeepLX/releases/download/v$pkgver/deeplx_linux_mips")
+source_x86_64=("deeplx-x86_64-${pkgver}::https://github.com/OwO-Network/DeepLX/releases/download/v$pkgver/deeplx_linux_amd64")
+source_aarch64=("deeplx-aarch64-${pkgver}::https://github.com/OwO-Network/DeepLX/releases/download/v$pkgver/deeplx_linux_arm64")
+source_i686=("deeplx-i686-${pkgver}::https://github.com/OwO-Network/DeepLX/releases/download/v$pkgver/deeplx_linux_386")
+source_mips=("deeplx-mips-${pkgver}::https://github.com/OwO-Network/DeepLX/releases/download/v$pkgver/deeplx_linux_mips")
 noextract=()
 sha256sums=('4254690f52328eeb9f4c7a83485947ca024d66d6358b1cc3bf9554c8d870d434')
 sha256sums_x86_64=('e4a9bb2c479b703ae3c7685e0a13bbdb1b5762478528ce5d72719a19010326f4')
@@ -32,6 +32,6 @@ validpgpkeys=()
 
 
 package() {
-		install -Dm755 "deeplx-${CARCH}" ${pkgdir}/usr/bin/deeplx
+		install -Dm755 "deeplx-${CARCH}-${pkgver}" ${pkgdir}/usr/bin/deeplx
 		install -Dm644 deeplx.service -t ${pkgdir}/etc/systemd/system/
 }
