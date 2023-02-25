@@ -1,6 +1,6 @@
 pkgbase = guitarix-git
 	pkgdesc = virtual guitar amplifier for Jack/Linux
-	pkgver = 0.43.1.r7.g9a1147fd
+	pkgver = 0.44.1.r28.g84b097bf
 	pkgrel = 1
 	url = https://guitarix.org
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgbase = guitarix-git
 	provides = libgxwmm.so
 	conflicts = guitarix
 	replaces = guitarix2
-	source = guitarix::git+https://git.code.sf.net/p/guitarix/git
+	source = guitarix::git+https://github.com/brummer10/guitarix
 	md5sums = SKIP
 
 pkgname = guitarix-git

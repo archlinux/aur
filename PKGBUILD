@@ -5,7 +5,7 @@
 # Contributor: David Runge <dvzrv@archlinux.org
 
 pkgname=guitarix-git
-pkgver=0.43.1.r7.g9a1147fd
+pkgver=0.44.1.r28.g84b097bf
 pkgrel=1
 pkgdesc="virtual guitar amplifier for Jack/Linux"
 arch=('x86_64')
@@ -18,7 +18,7 @@ makedepends=('git' 'boost' 'eigen' 'gperf' 'intltool' 'ladspa' 'lv2' 'waf' 'sass
 provides=('guitarix' 'libgxw.so' 'libgxwmm.so')
 conflicts=('guitarix')
 replaces=('guitarix2')
-source=("${pkgname%-*}::git+https://git.code.sf.net/p/guitarix/git")
+source=("${pkgname%-*}::git+https://github.com/brummer10/guitarix")
 md5sums=('SKIP')
 
 pkgver() {
