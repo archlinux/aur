@@ -3,15 +3,15 @@
 
 pkgname=picard-tools
 _pkgname=picard
-pkgver=2.27.5
-pkgrel=4
+pkgver=3.0.0
+pkgrel=1
 pkgdesc='set of tools for working with next generation sequencing data in the BAM format'
-arch=(x86_64)
+arch=(any)
 url="https://github.com/broadinstitute/picard"
 license=(MIT)
-depends=('java-runtime=8')
-makedepends=('ant' 'git' 'java-environment=8')
-source=("git+https://github.com/broadinstitute/picard.git#tag=${pkgver}")
+depends=('java-runtime=17')
+makedepends=('ant' 'git' 'java-environment=17')
+source=("git+${url}.git#tag=${pkgver}")
 sha256sums=('SKIP')
 build(){
   cd $_pkgname
