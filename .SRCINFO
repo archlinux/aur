@@ -1,0 +1,15 @@
+pkgbase = luski-beta-bin
+	pkgdesc = Simple open source chat app
+	pkgver = 1.1.0.0
+	pkgrel = 1
+	url = https://www.jacobtech.com/Luski
+	arch = x86_64
+	license = GPL
+	depends = dotnet-runtime-6.0
+	depends = curl
+	provides = luski-beta
+	conflicts = luski-beta-contained-bin
+	source = luski-beta.tar.gz::https://www.jacobtech.com/Updater/GetPKG?directory=Luski&branch=Beta&selfcontained=false&platform=linux-x64
+	md5sums = SKIP
+
+pkgname = luski-beta-bin
