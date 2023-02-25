@@ -1,16 +1,17 @@
-# Maintainer: tirip01 <tirip01@yahoo.com>
+# Maintainer: Ali Molaei <ali dot molaei at protonmail com>
+# Contributor: tirip01 <tirip01 at yahoo dot com>
 
 _pkgname=icu
 pkgname=${_pkgname}56
-pkgver=56.1
+pkgver=56.2
 pkgrel=1
 pkgdesc="International Components for Unicode library"
 arch=('i686' 'x86_64')
 url="http://www.icu-project.org/"
 license=('custom:"icu"')
 depends=('gcc-libs>=4.7.1-5')
-source=(http://download.icu-project.org/files/${_pkgname}4c/${pkgver}/${_pkgname}4c-${pkgver//./_}-src.tgz)
-sha256sums=('3a64e9105c734dcf631c0b3ed60404531bce6c0f5a64bfe1a6402a4cc2314816')
+source=(https://github.com/unicode-org/icu/releases/download/release-56-2/icu4c-56_2-src.tgz)
+sha256sums=('187faf495133f4cffa22d626896e7288f43d342e6af5eb8b214a1bf37bad51a6')
 
 build() {
   cd ${srcdir}/${_pkgname}/source
