@@ -121,5 +121,5 @@ package() {
   DESTDIR="${pkgdir}" cmake --install build_dir
   install -D -m 644 sunshine.sysusers "${pkgdir}/usr/lib/sysusers.d/sunshine.conf"
   install -D -m 644 udev.rules "${pkgdir}/etc/udev/rules.d/41-sunshine.rules"
-  cp sunshine.service /usr/lib/systemd/user/sunshine.service
+  cp sunshine.service "${pkgdir}/usr/lib/systemd/user/sunshine.service"
 }
