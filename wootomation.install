@@ -1,0 +1,13 @@
+# This file was taken from Shayne Hartford's Wootility AUR package (https://aur.archlinux.org/packages/wootility-lekker-appimage) and modified
+post() {
+    echo "You must add yourself to the 'input' group for wootomation to work correctly, 'sudo usermod -aG input <username>'"
+    echo "You must restart your login session to apply group changes (logout or reboot)"
+}
+
+post_install() {
+    post
+}
+
+post_upgrade() {
+    post
+}
