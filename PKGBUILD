@@ -3,7 +3,7 @@
 _name=matrixcli
 pkgname=matrixcli-git
 pkgver=2020.02.26
-pkgrel=2
+pkgrel=3
 pkgdesc='simple matrix client based on the matrix-python-sdk'
 arch=('any')
 url='https://github.com/saadsolimanxyz/matrixcli'
@@ -33,5 +33,9 @@ package() {
 	cd "${srcdir}/${_name}/python-sdk/"
 	python setup.py install --root="$pkgdir"
 	install -Dm644 "${srcdir}"/"${_name}"/LICENSE -t "${pkgdir}"/usr/share/licenses/"${_name}"/
+	# remove generic, non package-specific files:
+	rm -rv "${pkgdir}/usr/lib"/python*/site-packages/test/*
+	rmdir "${pkgdir}/usr/lib"/python*/site-packages/test
+
 }
 
