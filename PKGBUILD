@@ -1,9 +1,12 @@
 # Maintainer: <max at swk-web.com>
 
-pkgname=php-stan
+_pkgname=phpstan
+pkgname=${_pkgname}-bin
 pkgver=1.10.3
 pkgrel=1
 pkgdesc="PHP Static Analysis Tool - finding errors in your code without actually running it"
+provides=('phpstan' 'php-stan')
+conflicts=('phpstan' 'php-stan')
 arch=('any')
 url="https://github.com/phpstan/phpstan"
 license=('MIT')
@@ -17,7 +20,7 @@ sha256sums=('5928f101be8614c5c6657f4ff16c9461315e1a474efddb8a982f0366132ae316'
             'c4fa9cc466f14e40ce3011670ca4eb2596e107007e83aa6f5c139cf8adcb776f')
 
 package() {
-  install -D -m 644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m 644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
   install -D -m 755 "${srcdir}/phpstan-${pkgver}.phar" "${pkgdir}/usr/share/webapps/bin/phpstan.phar"
 
   install -d "${pkgdir}/usr/bin"
