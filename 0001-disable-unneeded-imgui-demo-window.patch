@@ -1,0 +1,37 @@
+From 92789d8a0848af83cec0fc286ea94cb0c2446dd5 Mon Sep 17 00:00:00 2001
+From: Mole Shang <135e2@135e2.dev>
+Date: Sat, 25 Feb 2023 23:25:10 +0800
+Subject: [PATCH] disable unneeded imgui demo window
+
+This commit disables the demo window in ImPlay to eliminate a warning produced by makepkg on Arch Linux:
+
+==> WARNING: Package contains reference to $srcdir
+usr/bin/ImPlay
+
+After investigating for quite a while, a reference to third_party/imgui/imgui_debug.cpp was found to be the cause:
+
+strings pkg/implay/usr/bin/ImPlay | grep -F src
+src/implay/third_party/imgui/source/imgui_demo.cpp
+
+To address the issue, this commit uses the IMGUI_DISABLE_DEMO_WINDOWS
+macro to suppress demo calls, which are mostly not needed by end users like us on arch.
+---
+ third_party/imgui/include/imconfig.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/third_party/imgui/include/imconfig.h b/third_party/imgui/include/imconfig.h
+index 11ce672..b769eda 100644
+--- a/third_party/imgui/include/imconfig.h
++++ b/third_party/imgui/include/imconfig.h
+@@ -33,7 +33,7 @@
+ //---- Disable all of Dear ImGui or don't implement standard windows/tools.
+ // It is very strongly recommended to NOT disable the demo windows and debug tool during development. They are extremely useful in day to day work. Please read comments in imgui_demo.cpp.
+ //#define IMGUI_DISABLE                                     // Disable everything: all headers and source files will be empty.
+-//#define IMGUI_DISABLE_DEMO_WINDOWS                        // Disable demo windows: ShowDemoWindow()/ShowStyleEditor() will be empty.
++#define IMGUI_DISABLE_DEMO_WINDOWS                        // Disable demo windows: ShowDemoWindow()/ShowStyleEditor() will be empty.
+ //#define IMGUI_DISABLE_DEBUG_TOOLS                         // Disable metrics/debugger and other debug tools: ShowMetricsWindow(), ShowDebugLogWindow() and ShowStackToolWindow() will be empty (this was called IMGUI_DISABLE_METRICS_WINDOW before 1.88).
+ 
+ //---- Don't implement some functions to reduce linkage requirements.
+-- 
+2.39.2
+
