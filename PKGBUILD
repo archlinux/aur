@@ -1,7 +1,7 @@
 # Maintainer: Dennis Wölfing <denniswoelfing at gmx dot de>
 
 pkgname=dxcompress
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Compression and decompression utility"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('xz' 'zlib')
 provides=('gzip' 'ncompress')
 conflicts=('gzip' 'ncompress')
 source=("https://github.com/dennis95/dxcompress/releases/download/dxcompress-$pkgver/dxcompress-$pkgver.tar.xz")
-sha256sums=('28ef275fff1ac2c126cd5bc3d7319038266274db8efe6bdc1f33ba6d5e235f4e')
+sha256sums=('89c1331a860467a58e0c69e54238fb29c7bdeb436672009efd61964fb6840dc6')
 
 build() {
 	cd "dxcompress-$pkgver"
