@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-compute-runtime-git
-pkgver=22.35.24055.r102.gc8975e14f
+pkgver=22.43.24558.r1148.ge1dbc98531
 pkgrel=1
 pkgdesc='Intel(R) Graphics Compute Runtime for oneAPI Level Zero and OpenCL(TM) Driver (git version)'
 arch=('x86_64')
@@ -23,6 +23,7 @@ pkgver() {
 
 build() {
     cmake -B build -S compute-runtime \
+        -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -DCMAKE_INSTALL_LIBDIR='lib' \
@@ -31,11 +32,11 @@ build() {
         -DNEO_VERSION_BUILD="$(echo "$pkgver" | cut -d '.' -f3)" \
         -DSUPPORT_DG1='ON' \
         -Wno-dev
-    make -C build
+    cmake --build build
 }
 
 package() {
-    make -C build DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake --install build
     install -D -m755 build/bin/libocloc.so -t "${pkgdir}"/usr/lib/intel-opencl
     install -D -m644 compute-runtime/LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
     ln -s "$(find "${pkgdir}/usr/lib" -regex '.*libze_intel_gpu.so.[0-9]*' -exec basename {} +)" "${pkgdir}/usr/lib/libze_intel_gpu.so"
