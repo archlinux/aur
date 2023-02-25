@@ -1,6 +1,6 @@
 pkgbase = xcaddy-bin
 	pkgdesc = Build Caddy with plugins
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/caddyserver/xcaddy
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = xcaddy-bin
 	license = Apache-2.0
 	provides = xcaddy
 	conflicts = xcaddy
-	source_x86_64 = https://github.com/caddyserver/xcaddy/releases/download/v0.3.1/xcaddy_0.3.1_linux_amd64.tar.gz
-	sha512sums_x86_64 = bffe075ac254111ead0238c330a33c7f39f9cc5f7d2b4b3fce48256d79c3f5fb94aec23d816c9ea0e21cd51bda058c05336cfa2849a0d25d821c9280962f9a53
-	source_aarch64 = https://github.com/caddyserver/xcaddy/releases/download/v0.3.1/xcaddy_0.3.1_linux_arm64.tar.gz
-	sha512sums_aarch64 = 97f3d83124846a22080dd1136d066141c0972a31abc4d54aefd9e7c7a4ad0b3deeede5df4e24b190291235c337c06c340bcdc29e302c253a667494c6825d2a0c
+	source_x86_64 = https://github.com/caddyserver/xcaddy/releases/download/v0.3.2/xcaddy_0.3.2_linux_amd64.tar.gz
+	sha512sums_x86_64 = 2538d080f065cf1c5a41c9c14dd6acd55783e004c7ea3fdd6e1bc07c4d846a85b78d5de1111391fda71d48cad9d542a0741593e5b25ea9826faaee74577d8a98
+	source_aarch64 = https://github.com/caddyserver/xcaddy/releases/download/v0.3.2/xcaddy_0.3.2_linux_arm64.tar.gz
+	sha512sums_aarch64 = afbf26528c4238a7d6eaa375c1367d213f7d3359e97193b996a896b89fb852531d33581b8cef6432bd866d1488f5f98ed43a198732c45d5b9d008eb9316d36ab
 
 pkgname = xcaddy-bin
