@@ -1,6 +1,6 @@
 # Maintainer: asukaminato <asukaminato at nyan dot eu dot org>
 pkgname=speedtest-rs-bin
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 epoch=
 pkgdesc="speedtest-cli in Rust."
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("speedtest-rs-${pkgver}.tar.gz::https://github.com/nelsonjchen/speedtest-rs/releases/download/v${pkgver}/speedtest-rs-linux-x86_64.tar.gz")
 noextract=()
-sha256sums=('fc21977a0312f41af145a896a655f4f72b81c8e873aa249c94f0f98d9a492ee5')
+sha256sums=('589fdbf218b0b0f3bd5a2290b581aef17a5fd94baad19bf818aaee48bc8aa1b0')
 validpgpkeys=()
 
 package() {
