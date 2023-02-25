@@ -9,7 +9,6 @@ pkgbase = cemu-bin
 	depends = glu
 	depends = graphite
 	depends = gtk3
-	depends = libice
 	depends = libsm
 	depends = pcre
 	depends = vulkan-driver
