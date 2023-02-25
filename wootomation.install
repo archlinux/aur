@@ -2,6 +2,7 @@
 post() {
     echo "You must add yourself to the 'input' group for wootomation to work correctly, 'sudo usermod -aG input <username>'"
     echo "You must restart your login session to apply group changes (logout or reboot)"
+    echo "Please note that Wootomation is currently broken for some Linux users. Please check https://github.com/WootingKb/wooting-macros/issues/54 for the current status."
 }
 
 post_install() {
