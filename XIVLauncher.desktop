@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=XIVLauncherCN.Core-CN
-Comment=Custom Launcher for Final Fantasy XIV Online CN (Crossplatform rewrite)
+Comment=Custom Launcher for Final Fantasy XIV Online CN
 Exec=XIVLauncher.Core
 Icon=xivlauncher
 Terminal=false
