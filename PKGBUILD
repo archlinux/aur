@@ -2,7 +2,7 @@
 pkgname=xivlauncher-cn-git
 pkgver=1.0.2.2.178bd80
 pkgrel=1
-pkgdesc="Custom Launcher for Final Fantasy XIV Online CN (Crossplatform rewrite)"
+pkgdesc="Custom Launcher for Final Fantasy XIV Online CN"
 arch=('x86_64')
 url='https://github.com/ottercorp/XIVLauncher.Core'
 license=('GPL')
@@ -37,7 +37,7 @@ source=(
 )
 sha512sums=(
     'SKIP'
-    '5b737d8575b74e5dacbf96cf40ff57d4b334c2c63f0253768690d7d0f64b2dd8c4807f2e3e7a41944559d87e6089a5356b1dd5d5a4f43fa90ae25258adc85bc8'
+    '6c9a1f783969f293c07f06d167ab830f77ddaffdd8ce1df5f4e736056bd7c10c169c8c2411499493fb39659ca10643590998fccdaf4978dacb671ecfa2872949'
 )
 
 prepare() {
