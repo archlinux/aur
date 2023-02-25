@@ -16,7 +16,7 @@ pkgname=vmware-workstation11
 pkgver=11.1.4
 _buildver=3848939
 _pkgver=${pkgver}_${_buildver}
-pkgrel=24
+pkgrel=25
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -136,7 +136,9 @@ _isoimages=(freebsd linux netware solaris windows winPre2k)
 
 if [ -n "$_enable_macOS_guests" ]; then
 
-_vmware_fusion_ver=7.1.3_3204469
+_vmware_fusion_ver=7.1.3
+_vmware_fusion_buildver=3204469
+_vmware_fusion_ver_full=${_vmware_fusion_ver}_${_vmware_fusion_buildver}
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
 makedepends+=(
@@ -147,7 +149,7 @@ makedepends+=(
 )
 
 source+=(
-  "https://download3.vmware.com/software/fusion/file/VMware-Fusion-${_vmware_fusion_ver/_/-}.dmg"
+  "https://download3.vmware.com/software/fusion/file/VMware-Fusion-${_vmware_fusion_ver_full/_/-}.dmg"
   "unlocker.py"
   "efi-patches.txt"
 )
@@ -173,13 +175,13 @@ _create_database_file() {
   for isoimage in ${_isoimages[@]}
   do
 	local version=$(cat "$srcdir/extracted/vmware-tools-$isoimage/manifest.xml" | grep -oPm1 "(?<=<version>)[^<]+")
-	sqlite3 "$database_filename" "INSERT INTO components(name,version,buildNumber,component_core_id,longName,description,type) VALUES(\"vmware-tools-$isoimage\",\"$version\",\"${_pkgver#*_}\",1,\"$isoimage\",\"$isoimage\",1);"
+	sqlite3 "$database_filename" "INSERT INTO components(name,version,buildNumber,component_core_id,longName,description,type) VALUES('vmware-tools-$isoimage','$version',${_pkgver#*_},1,'$isoimage','$isoimage',1);"
   done
 
 if [ -n "$_enable_macOS_guests" ]; then
   for isoimage in ${_fusion_isoimages[@]}
   do
-	sqlite3 "$database_filename" "INSERT INTO components(name,version,buildNumber,component_core_id,longName,description,type) VALUES(\"vmware-tools-$isoimage\",\"1\",\"${_vmware_fusion_ver#*_}\",1,\"$isoimage\",\"$isoimage\",1);"
+	sqlite3 "$database_filename" "INSERT INTO components(name,version,buildNumber,component_core_id,longName,description,type) VALUES('vmware-tools-$isoimage','1',${_vmware_fusion_ver_full#*_},1,'$isoimage','$isoimage',1);"
   done
 fi
 }
@@ -193,8 +195,8 @@ prepare() {
     --extract "$extracted_dir"
 
 if [ -n "$_enable_macOS_guests" ]; then
-  dmg2img -s VMware-Fusion-${_vmware_fusion_ver/_/-}.dmg VMware-Fusion-${_vmware_fusion_ver/_/-}.iso
-  7z e -y VMware-Fusion-${_vmware_fusion_ver/_/-}.iso VMware\ Fusion/VMware\ Fusion.app/Contents/Library/isoimages/\* -o"fusion-isoimages" > /dev/null 2>&1 || true
+  dmg2img -s VMware-Fusion-${_vmware_fusion_ver_full/_/-}.dmg VMware-Fusion-${_vmware_fusion_ver_full/_/-}.iso
+  7z e -y VMware-Fusion-${_vmware_fusion_ver_full/_/-}.iso VMware\ Fusion/VMware\ Fusion.app/Contents/Library/isoimages/\* -o"fusion-isoimages" > /dev/null 2>&1 || true
 
   sed -i -e "s|/usr/lib/vmware/|${pkgdir}/usr/lib/vmware/|" "$srcdir/unlocker.py"
 fi
