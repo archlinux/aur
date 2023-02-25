@@ -3,8 +3,8 @@
 _pkgauthor="chainner-org"
 _pkgname="chainner"
 pkgname="${_pkgname}-rpm"
-pkgver=0.17.1
-pkgrel=3
+pkgver=0.18.1
+pkgrel=1
 pkgdesc='Node-based image processing and AI upscaling GUI'
 arch=('x86_64')
 url="https://github.com/chaiNNer-org/chaiNNer/"
