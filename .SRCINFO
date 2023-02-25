@@ -1,0 +1,13 @@
+pkgbase = odin4-cli
+	pkgdesc = an Odin4 binary for flashing Samsung firmware
+	pkgver = 1.2.1.dc05e3ea0
+	pkgrel = 1
+	url = https://forum.xda-developers.com/t/official-samsung-odin-v4-1-2-1-dc05e3ea-for-linux.4453423/
+	arch = x86_64
+	license = custom:Samsung
+	depends = glibc
+	options = !strip
+	source = odin4-cli-1.2.1.dc05e3ea0.zip::https://web.archive.org/web/20230225072710if_/https://forum.xda-developers.com/attachments/odin-zip.5629297/
+	sha256sums = d918f132b0b2ee5cbeef27fb61f6aeee3734cdb202b2dc8e3845a955303002c5
+
+pkgname = odin4-cli
