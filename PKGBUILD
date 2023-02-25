@@ -2,7 +2,7 @@
 # I copied some things over from Shayne Hartford's PKGBUILD for Wootility: https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=wootility-lekker-appimage
 pkgname=wootomation-appimage
 pkgver=1.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A macro application by Wooting. (AppImage version)"
 arch=('x86_64')
 url="https://github.com/WootingKb/wooting-macros"
@@ -32,7 +32,7 @@ source=(
 #noextract=()
 md5sums=(
 	"8ad1843421d29c20d46c1e62a442cf6f"
-	"10a101af0f9b1c08996eade78f8e30e7"
+	"defcfc94f57a12c877fcd840f7f8140c"
 )
 #validpgpkeys=()
 

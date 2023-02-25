@@ -1,7 +1,7 @@
 pkgbase = wootomation-appimage
 	pkgdesc = A macro application by Wooting. (AppImage version)
 	pkgver = 1.0.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/WootingKb/wooting-macros
 	install = wootomation.install
 	arch = x86_64
@@ -10,6 +10,6 @@ pkgbase = wootomation-appimage
 	source = https://github.com/WootingKb/wooting-macros/releases/download/v1.0.2/wootomation_1.0.2_amd64.AppImage
 	source = wootomation.install
 	md5sums = 8ad1843421d29c20d46c1e62a442cf6f
-	md5sums = 10a101af0f9b1c08996eade78f8e30e7
+	md5sums = defcfc94f57a12c877fcd840f7f8140c
 
 pkgname = wootomation-appimage
