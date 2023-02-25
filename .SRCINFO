@@ -1,6 +1,6 @@
 pkgbase = wine-staging-git
 	pkgdesc = A compatibility layer for running Windows programs (staging branch, git version)
-	pkgver = 8.1.r3.g87f33695
+	pkgver = 8.2.r7.g7b0d44f8
 	pkgrel = 1
 	url = https://www.wine-staging.com/
 	install = wine-staging-git.install
@@ -50,6 +50,7 @@ pkgbase = wine-staging-git
 	makedepends = ffmpeg
 	makedepends = samba
 	makedepends = opencl-headers
+	makedepends = python
 	depends = attr
 	depends = lib32-attr
 	depends = fontconfig
@@ -103,8 +104,8 @@ pkgbase = wine-staging-git
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine-staging=8.1.r3.g87f33695
-	provides = wine=8.1
+	provides = wine-staging=8.2.r7.g7b0d44f8
+	provides = wine=8.2
 	provides = wine-wow64
 	conflicts = wine
 	conflicts = wine-wow64

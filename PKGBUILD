@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=wine-staging-git
-pkgver=8.1.r3.g87f33695
+pkgver=8.2.r7.g7b0d44f8
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (staging branch, git version)'
 arch=('x86_64')
@@ -43,6 +43,7 @@ makedepends=('git' 'perl' 'mingw-w64-gcc'
     'ffmpeg'
     'samba'
     'opencl-headers'
+    'python'
 )
 optdepends=(
     'giflib'                'lib32-giflib'
@@ -91,11 +92,11 @@ prepare() {
     # change back to the wine upstream commit that this version of wine-staging is based in
     printf '%s\n' '  -> Changing wine HEAD to the wine-staging base commit...'
     git -C wine config --local advice.detachedHead false
-    git -C wine checkout "$(wine-staging/patches/patchinstall.sh --upstream-commit)"
+    git -C wine checkout "$(wine-staging/staging/patchinstall.py --upstream-commit)"
     
     # apply all wine-staging patches
     printf '%s\n' '  -> Applying wine-staging patches...'
-    wine-staging/patches/patchinstall.sh DESTDIR="${srcdir}/wine" --all
+    wine-staging/staging/patchinstall.py DESTDIR="${srcdir}/wine" --all
 }
 
 pkgver() {
