@@ -4,6 +4,7 @@ pkgver=3.4.19
 pkgrel=1
 pkgdesc='Shell integration of iTerm2, useful when SSH from macOS.'
 arch=('any')
+conflict=('imgcat')
 url="https://iterm2.com"
 license=('GPL')
 
@@ -19,5 +20,9 @@ prepare() {
 package() {
 	cd 'iTerm2/submodules/iTerm2-shell-integration'
 	install -D --mode=644 shell_integration/zsh \
-		"${pkgdir}/usr/share/zsh/plugins/iterm2_shell_integration.zsh"
+		"$pkgdir/usr/share/zsh/plugins/iterm2_shell_integration.zsh"
+	mkdir --parents "$pkgdir/usr/bin"
+	for exe in imgcat it2git it2ssh
+	do install --mode=655 "utilities/$exe" "$pkgdir/usr/bin/$exe"
+	done
 }
