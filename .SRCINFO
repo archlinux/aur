@@ -1,0 +1,17 @@
+pkgbase = neovim-telescope-coc-git
+	pkgdesc = coc.nvim integration for telescope.nvim
+	pkgver = r52.ga1aaabd
+	pkgrel = 1
+	url = https://github.com/fannheyward/telescope-coc.nvim
+	arch = any
+	groups = neovim-plugins
+	license = MIT
+	makedepends = git
+	depends = neovim
+	depends = neovim-telescope
+	provides = neovim-telescope-coc
+	conflicts = neovim-telescope-coc
+	source = neovim-telescope-coc-git::git+https://github.com/fannheyward/telescope-coc.nvim.git
+	sha256sums = SKIP
+
+pkgname = neovim-telescope-coc-git
