@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-ibus-switcher-git
+	pkgdesc = A gnome shell extension to use d-bus to switch ibus source.
+	pkgver = r5.20e8280
+	pkgrel = 1
+	url = https://github.com/kevinhwang91/gnome-shell-ibus-switcher
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = gnome-shell
+	provides = gnome-shell-extension-ibus-switcher
+	conflicts = gnome-shell-extension-ibus-switcher
+	source = gnome-shell-extension-ibus-switcher-git::git+https://github.com/kevinhwang91/gnome-shell-ibus-switcher
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-ibus-switcher-git
