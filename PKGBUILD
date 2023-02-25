@@ -17,7 +17,7 @@ pkgname=(
   "${pkgbase}-dtb-rockchip"
 )
 pkgver="${_pkgver_main}"
-pkgrel=1
+pkgrel=2
 arch=('aarch64')
 url="https://github.com/unifreq/${_flippy_repo}"
 license=('GPL2')
@@ -27,13 +27,13 @@ makedepends=( # Since we don't build the doc, most of the makedeps for other lin
 options=(!strip)
 source=(
   "${_srcname}.tar.gz::${url}/archive/${_flippy_commit}.tar.gz"
-  "support-amlogic-proprietary-partition.patch::https://github.com/7Ji/${_flippy_repo}/compare/54968e71b3d75d34117442db5fd1fc3f0761439e%5E...f51821c5dc09619495172afeeab2fd19d9d38787.patch"
+  "support-amlogic-proprietary-partition.patch::https://github.com/7Ji/linux/commit/049bddc86d7e2d1a7727bbc6d268be9cf5e779d2.patch"
   'config'
   'linux.preset'
 )
 sha256sums=(
   '7c65d89d66b71623402bbd306ea678c0ddbce1743137570d86d311c7472f0aef'
-  '1501981431887686895a05e920b8954d93cfaca4d37116bd58d7c2ef9e6b6302'
+  '66fdfc1425098410eef699fdf29bcc9867de4b81e47a0129613b32a0f1e94019'
   '5c18dc58fcd1e0201b035971cea49b972374cf60ddb53a1743885cff46c7bd9c'
   'bdcd6cbf19284b60fac6d6772f1e0ec2e2fe03ce7fe3d7d16844dd6d2b5711f3'
 )

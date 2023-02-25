@@ -1,6 +1,6 @@
 pkgbase = linux-aarch64-flippy
 	pkgver = 6.1.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/unifreq/linux-6.1.y
 	arch = aarch64
 	license = GPL2
@@ -10,11 +10,11 @@ pkgbase = linux-aarch64-flippy
 	makedepends = uboot-tools
 	options = !strip
 	source = linux-6.1.y-d90ddfc6e81dc376224f1cc214a11a7be4e2bc2a.tar.gz::https://github.com/unifreq/linux-6.1.y/archive/d90ddfc6e81dc376224f1cc214a11a7be4e2bc2a.tar.gz
-	source = support-amlogic-proprietary-partition.patch::https://github.com/7Ji/linux-6.1.y/compare/54968e71b3d75d34117442db5fd1fc3f0761439e%5E...f51821c5dc09619495172afeeab2fd19d9d38787.patch
+	source = support-amlogic-proprietary-partition.patch::https://github.com/7Ji/linux/commit/049bddc86d7e2d1a7727bbc6d268be9cf5e779d2.patch
 	source = config
 	source = linux.preset
 	sha256sums = 7c65d89d66b71623402bbd306ea678c0ddbce1743137570d86d311c7472f0aef
-	sha256sums = 1501981431887686895a05e920b8954d93cfaca4d37116bd58d7c2ef9e6b6302
+	sha256sums = 66fdfc1425098410eef699fdf29bcc9867de4b81e47a0129613b32a0f1e94019
 	sha256sums = 5c18dc58fcd1e0201b035971cea49b972374cf60ddb53a1743885cff46c7bd9c
 	sha256sums = bdcd6cbf19284b60fac6d6772f1e0ec2e2fe03ce7fe3d7d16844dd6d2b5711f3
 
