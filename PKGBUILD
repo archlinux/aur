@@ -26,9 +26,9 @@ provides=('libalpm.so=13.0.2' "pacman=${pkgver%.*.*}")
 backup=(etc/pacman.conf
         etc/makepkg.conf)
 options=('strip')
-validpgpkeys=('6645B0A8C7005E78DB1D7864F99FFE0FEAE999BD'  # Allan McRae <allan@archlinux.org>
-              'B8151B117037781095514CA7BBDFFC92306B1121') # Andrew Gregory (pacman) <andrew@archlinux.org>
-source=(https://sources.archlinux.org/other/pacman/${_pkgname}-${pkgver}.tar.xz{,.sig}
+validpgpkeys=('6645B0A8C7005E78DB1D7864F99FFE0FEAE999BD'
+              'B8151B117037781095514CA7BBDFFC92306B1121')
+source=(https://sources.archlinux.org/other/pacman/"${_pkgname}-${pkgver}".tar.xz{,.sig}
         pacman-always-create-directories-from-debugedit.patch::https://gitlab.archlinux.org/pacman/pacman/-/commit/efd0c24c07b86be014a4edb5a8ece021b87e3900.patch
         pacman-always-create-directories-from-debugedit-fixup.patch::https://gitlab.archlinux.org/pacman/pacman/-/commit/86981383a2f4380bda26311831be94cdc743649b.patch
         pacman-fix-unique-source-paths.patch::https://gitlab.archlinux.org/pacman/pacman/-/commit/478af273dfe24ded197ec54ae977ddc3719d74a0.patch
