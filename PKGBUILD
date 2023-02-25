@@ -13,21 +13,21 @@ source=('SAM::git+https://github.com/s-macke/SAM/#branch=master' '2cb53f.patch::
 md5sums=('SKIP' '328fde18fcc7706f02453a56d0f4e316')
 
 prepare() {
-  cd "${srcdir}"/SAM || exit
-  git am ${srcdir}/2cb53f.patch
+	cd "${srcdir}"/SAM || exit
+	patch -p1 <"${srcdir}/2cb53f.patch"
 }
 
 pkgver() {
-  cd SAM || exit
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd SAM || exit
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${srcdir}/SAM" || exit
-  make
+	cd "${srcdir}/SAM" || exit
+	make
 }
 
 package() {
-  cd "${srcdir}/SAM" || exit
-  install -Dm755 sam "${pkgdir}"/usr/bin/sam
+	cd "${srcdir}/SAM" || exit
+	install -Dm755 sam "${pkgdir}"/usr/bin/sam
 }
