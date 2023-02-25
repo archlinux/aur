@@ -1,7 +1,7 @@
 # Maintainer: asukaminato <asukaminato@nyan.eu.org>
 pkgname=deeplx-bin
-pkgver=0.7.2
-pkgrel=2
+pkgver=0.7.3
+pkgrel=1
 pkgdesc="Permanently free DeepL API written in Golang"
 arch=('x86_64' 'i686' 'aarch64' 'mips')
 url="https://github.com/OwO-Network/DeepLX"
