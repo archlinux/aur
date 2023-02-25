@@ -6,9 +6,9 @@
 
 _pkgname=8188fu
 pkgname="$_pkgname-dkms-git"
-pkgver=r8.1d12cae
-pkgrel=3
-pkgdesc='Kernel driver module for Realtek RTL8188FU and RTL8188FTV Wireless 802.11n USB 2.0 adapters (device id 0bda:f179)'
+pkgver=r13.586d795
+pkgrel=1
+pkgdesc='Kernel driver module for Realtek RTL8188FU and RTL8188FTV Wireless 802.11n USB 2.0 adapters (device id 0bda:f179), for kernel versions less than 5.8'
 arch=('any')
 url="https://github.com/corneal64/Realtek-USB-Wireless-Adapter-Drivers"
 license=('GPL3')
