@@ -1,0 +1,25 @@
+pkgbase = stitchmd-bin
+	pkgdesc = Stitch multiple Markdown files together into a single document.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/abhinav/stitchmd
+	license = MIT
+	conflicts = stitchmd
+	provides = stitchmd
+	arch = aarch64
+	source_aarch64 = https://github.com/abhinav/stitchmd/releases/download/v0.1.0/stitchmd-linux-arm64.tar.gz
+	sha256sums_aarch64 = 519c90394bba281f35cb8a90f77ecb5c8044d0cc638b8df584d210223d0ff1e7
+	arch = armv6h
+	source_armv6h = https://github.com/abhinav/stitchmd/releases/download/v0.1.0/stitchmd-linux-armv6.tar.gz
+	sha256sums_armv6h = 348c07725aa44429539efbf8cb2dd73a495a2aca727f96a12ff6cab57fe14109
+	arch = armv7h
+	source_armv7h = https://github.com/abhinav/stitchmd/releases/download/v0.1.0/stitchmd-linux-armv7.tar.gz
+	sha256sums_armv7h = 862b6ad3974c474c28cec78101273b3683618cc997aabd9e55ee56edfd22ff3d
+	arch = i686
+	source_i686 = https://github.com/abhinav/stitchmd/releases/download/v0.1.0/stitchmd-linux-386.tar.gz
+	sha256sums_i686 = 6df0b8205d02d50f0e8e0a8f7579f22ce34e967ccb1dd7eaf1e95703519ea079
+	arch = x86_64
+	source_x86_64 = https://github.com/abhinav/stitchmd/releases/download/v0.1.0/stitchmd-linux-amd64.tar.gz
+	sha256sums_x86_64 = a0ddf61658e5d74ee75bdc04eaab465b1a0d8418a10ead0dad962b2566e81ae9
+	
+pkgname = stitchmd-bin
