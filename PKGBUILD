@@ -3,7 +3,7 @@
 _pkgname=conflicted
 _pkgver=1.2.0
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='An Alternative Conflict Resolution Strategy'
 arch=('any')
