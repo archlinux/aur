@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-g-kpe
-pkgver=5.1.2
+pkgver=5.1.3
 pkgrel=0
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE and primary support for webextensions"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gtk3' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'ffmpeg'
          'ttf-font' 'hicolor-icon-theme' 'glibc' 'libpulse' 'nss' 'nspr')
 makedepends=('unzip' 'zip' 'diffutils' 'yasm' 'mesa' 'imake' 'inetutils' 'xorg-server-xvfb'
              'autoconf2.13' 'rust' 'clang' 'llvm' 'alsa-lib' 'jack' 'cbindgen' 'nasm'
-             'nodejs' 'lld' 'bc' 'python-setuptools' 'python-psutil' 'python-zstandard' 'python-dulwich' 'python-typing_extensions' 'pciutils' 'dump_syms'
+             'nodejs' 'lld' 'bc' 'python' 'pciutils' 'dump_syms'
              'wasi-compiler-rt' 'wasi-libc' 'wasi-libc++' 'wasi-libc++abi'
              'git')
 replaces=("waterfox-g4-kpe" "waterfox-g3-kpe")
@@ -130,7 +130,7 @@ build() {
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export LDFLAGS+=" -Wl,--no-keep-memory -Wl,--no-mmap-output-file"
-  export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
+  export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
 
   export WF_VERSION="G$pkgver"
   echo "$WF_VERSION" > ./browser/config/version_display.txt
@@ -209,7 +209,7 @@ package_waterfox-g-kpe() {
 
   cd Waterfox
 
-  export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
+  export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
 
   DESTDIR="$pkgdir" ./mach install
 
