@@ -1,6 +1,6 @@
 pkgbase = lldap-git
 	pkgdesc = Light LDAP implementation
-	pkgver = r585.98acd68
+	pkgver = 0.4.1.r80.g98acd68
 	pkgrel = 1
 	url = https://github.com/nitnelave/lldap
 	arch = x86_64

@@ -1,6 +1,6 @@
-# Maintainer: Peio Borthelle <pborthelle at hadoly dot fr>
+# Maintainer: lapinot <lapinot@sbi.re>
 pkgname=lldap-git
-pkgver=r585.98acd68
+pkgver=0.4.1.r80.g98acd68
 pkgrel=1
 pkgdesc="Light LDAP implementation"
 arch=('x86_64')
@@ -13,7 +13,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 prepare() {
