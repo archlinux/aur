@@ -3,7 +3,7 @@
 
 pkgname=ffmpeg-full
 pkgver=5.1.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
@@ -21,7 +21,7 @@ depends=('alsa-lib' 'aom' 'aribb24' 'avisynthplus' 'bzip2' 'celt' 'codec2' 'cuda
          'sndio' 'speex' 'spirv-tools' 'srt' 'svt-av1' 'svt-hevc' 'svt-vp9' 'tesseract'
          'twolame' 'v4l-utils' 'vapoursynth' 'vid.stab' 'vmaf' 'vulkan-icd-loader' 'x264'
          'x265' 'xvidcore' 'xz' 'zeromq' 'zimg' 'zlib' 'zvbi'
-         'chromaprint-fftw' 'davs2' 'libklvanc-git' 'librist' 'pocketsphinx'
+         'chromaprint-fftw' 'davs2' 'flite1' 'libklvanc-git' 'librist'
          'rockchip-mpp' 'shine' 'uavs3d-git' 'vo-amrwbenc' 'xavs' 'xavs2')
 makedepends=('clang' 'amf-headers' 'ffnvcodec-headers' 'nasm' 'opencl-headers'
              'vulkan-headers' 'decklink-sdk')
@@ -105,7 +105,7 @@ build() {
         --enable-libdavs2 \
         --enable-libdc1394 \
         --enable-libfdk-aac \
-        --disable-libflite \
+        --enable-libflite \
         --enable-fontconfig \
         --enable-libfreetype \
         --enable-libfribidi \
@@ -182,7 +182,7 @@ build() {
         --enable-opencl \
         --enable-opengl \
         --disable-openssl \
-        --enable-pocketsphinx \
+        --disable-pocketsphinx \
         --enable-sndio \
         --enable-sdl2 \
         --enable-vapoursynth \
