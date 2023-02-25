@@ -1,14 +1,14 @@
 pkgbase = ruby-google-apis-iamcredentials_v1
 	pkgdesc = simple REST client for IAM Service Account Credentials API V1
-	pkgver = 0.16.0
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://rubygems.org/gems/google-apis-iamcredentials_v1
 	arch = any
 	license = Apache-2.0
 	depends = ruby-google-apis-core
-	noextract = google-apis-iamcredentials_v1-0.16.0.gem
+	noextract = google-apis-iamcredentials_v1-0.17.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/google-apis-iamcredentials_v1-0.16.0.gem
-	sha256sums = 8bf009c7fac542b0bb87ea4050c93998323aafc7d2953fff4a5539e22e62a61d
+	source = https://rubygems.org/downloads/google-apis-iamcredentials_v1-0.17.0.gem
+	sha256sums = 9a6525cfd6ef1c9a355f593bfef11bd0fb30e1d785ef9e5c9da51c3817a0517b
 
 pkgname = ruby-google-apis-iamcredentials_v1
