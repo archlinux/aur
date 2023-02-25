@@ -44,6 +44,7 @@ conflicts=(sunshine sunshine-git)
 source=(
 sunshine.sysusers
 udev.rules
+sunshine.service
 git+https://github.com/LizardByte/Sunshine.git#tag=v${pkgver}
 git+https://github.com/moonlight-stream/moonlight-common-c.git
 git+https://gitlab.com/eidheim/Simple-Web-Server.git
@@ -57,6 +58,7 @@ git+https://github.com/cgutman/enet.git
 )
 sha256sums=('f596fd4b30bd9f81aac136366666491aa401ee420155d6c4368016088cf19caa'
             '5ce01689247cb01d3f119cac32c731607d99bb875dcdd39c92b547f76d2befa0'
+            'f50093f1d8bb917afdb954534776fd3c2f32a78989f1a5e2fe4f38c86dd350b7'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -119,4 +121,5 @@ package() {
   DESTDIR="${pkgdir}" cmake --install build_dir
   install -D -m 644 sunshine.sysusers "${pkgdir}/usr/lib/sysusers.d/sunshine.conf"
   install -D -m 644 udev.rules "${pkgdir}/etc/udev/rules.d/41-sunshine.rules"
+  cp sunshine.service /usr/lib/systemd/user/sunshine.service
 }

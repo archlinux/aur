@@ -1,0 +1,9 @@
+[Unit]
+Description=Sunshine game stream server
+
+[Service]
+ExecStart=sunshine
+Restart=always
+RestartSec=3
+PrivateTmp=true
+NoNewPrivileges=true
