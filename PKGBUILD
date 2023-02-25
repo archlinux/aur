@@ -2,7 +2,7 @@
 
 pkgname='kikoplay-bin'
 pkgver=0.9.2
-pkgrel=2
+pkgrel=3
 pkgdesc="linux danmaku player"
 arch=('x86_64')
 license=('GPL3')
@@ -23,5 +23,10 @@ package() {
     install -Dm755 KikoPlay "$pkgdir/usr/bin/KikoPlay"
     install -Dm644 kikoplay.png "$pkgdir/usr/share/pixmaps/kikoplay.png"
     install -Dm644 kikoplay.desktop "${pkgdir}/usr/share/applications/kikoplay.desktop"
+
+    rm script/LICENSE script/*.md script/*.png
+    mkdir -p "${pkgdir}/usr/share/kikoplay"
+    cp -r script "${pkgdir}/usr/share/kikoplay"
+
     ln -sf KikoPlay "$pkgdir/usr/bin/kikoplay"
 }
