@@ -3,7 +3,7 @@
 
 pkgname=sing-box-git
 _pkgname=sing-box
-pkgver=1.1.6.r0.gef73c6f
+pkgver=1.2beta5.r1.ga8f13bd
 pkgrel=1
 
 pkgdesc='The universal proxy platform (git version).'
@@ -20,7 +20,7 @@ optdepends=('sing-geosite:  sing-geosite database'
 
 backup=("etc/${_pkgname}/config.json")
 
-source=("$_pkgname::git+https://github.com/SagerNet/sing-box.git#branch=main-next")
+source=("$_pkgname::git+https://github.com/SagerNet/sing-box.git#branch=dev-next")
 sha256sums=(SKIP)
 
 pkgver() {
