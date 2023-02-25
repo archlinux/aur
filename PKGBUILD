@@ -1,7 +1,7 @@
 # Maintainer: Gnarflord <aur@gnarf.link>
 pkgname=mqtt2prometheus
 _pkgname=mqtt2prometheus
-pkgver=509fda8
+pkgver=c9296a9
 pkgrel=2
 pkgdesc="Prometheus exporter that can be used to scrape topics from MQTT"
 arch=("x86_64" "i686" "armv6h" "armv7h" "aarch64")
@@ -39,6 +39,7 @@ build() {
 }
 
 package() {
+    backup=("etc/${_pkgname}/config.yaml")
     cd "${srcdir}/${_pkgname}"
 
     install -Dm0755 "bin/mqtt2prometheus" "${pkgdir}/usr/bin/mqtt2prometheus"
