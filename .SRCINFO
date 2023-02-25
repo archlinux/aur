@@ -1,6 +1,6 @@
 pkgbase = rustotpony
 	pkgdesc = RusTOTPony — CLI manager of one-time password generators like Google Authenticator
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 2
 	url = https://github.com/zebradil/rustotpony
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = rustotpony
 	makedepends = cargo
 	provides = totp
 	conflicts = rustotpony-bin
-	source = rustotpony-0.4.0::https://github.com/zebradil/rustotpony/archive/0.4.0.tar.gz
-	sha256sums = 929eee7e8b3c7a8abfb4fb5aef70743ba6073feb288b0f508d1f6f078d95b0a9
+	source = rustotpony-0.4.1::https://github.com/zebradil/rustotpony/archive/0.4.1.tar.gz
+	sha256sums = b513d1404ee58bc10196b68a46ad2a5117a15bff45edc4e2565965a3dde87970
 
 pkgname = rustotpony
