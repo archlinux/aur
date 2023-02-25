@@ -1,5 +1,4 @@
 # Symfony CLI AUR Package
-[![Build Status](https://app.travis-ci.com/famoser/symfony-cli-bin-aur.svg?branch=master)](https://app.travis-ci.com/famoser/symfony-cli-bin-aur)
 
 ## Update package
 
