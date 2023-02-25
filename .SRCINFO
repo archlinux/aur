@@ -1,0 +1,17 @@
+pkgbase = ssdfs-tools
+	pkgdesc = SSDFS file system utilities
+	pkgver = 4.09
+	pkgrel = 1
+	url = https://github.com/dubeyko/ssdfs-tools
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = linux-api-headers
+	makedepends = util-linux
+	depends = libblkid.so
+	depends = libuuid.so
+	depends = zlib
+	source = ssdfs-tools-4.09-src.tar.gz::https://github.com/dubeyko/ssdfs-tools/archive/refs/tags/v4.09.tar.gz
+	sha256sums = 06a283e8883aed9d4c9a38684ac54bcb6a73a0873fc162595ddbf3ff4f74f729
+
+pkgname = ssdfs-tools
