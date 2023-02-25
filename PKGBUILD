@@ -4,7 +4,7 @@
 # Contributor: Hugo Doria <hugodoria at gmail.com>
 
 pkgname=translate-toolkit
-pkgver=3.8.3
+pkgver=3.8.4
 pkgrel=1
 pkgdesc="A toolkit to convert between various different translation formats, help process and validate localisations"
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=('gaupol: for po2sub'
             'python-levenshtein: faster matching'
             'python-cheroot: for TM Server')
 source=($pkgname-$pkgver.tar.gz::https://github.com/translate/translate/archive/$pkgver.tar.gz)
-sha256sums=('1b1d8a5c2211fd82ddbe57f6f34fd3b253f4f91086f6b74db69e8f417bc764f9')
+sha256sums=('f9f33cb5e2e8789a7fc1b77db670f68761ca9f811071696b1c1f9bc4db84f325')
 
 package() {
   cd translate-$pkgver
