@@ -25,7 +25,7 @@ depends=('glibc'
          'systemd'
          'freeimage')
 optdepends=('sni-qt: fix systray issue on KDE and LXQt')
-source=("${url}/linux/repo/Arch_Extra/x86_64/megasync-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
+source=("https://mega.nz/linux/repo/Arch_Extra/x86_64/megasync-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 sha256sums=('b62d0d5135af45deeb7ec3bf7e425718b8080288655872e84250a817e62ad488')
 
 package() {
