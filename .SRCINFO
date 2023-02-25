@@ -1,23 +1,17 @@
 pkgbase = libva-utils-git
 	pkgdesc = Intel VA-API media applications and scripts for libva (git version)
-	pkgver = 2.2.1.pre1.20180921.r15.gfbb1720
+	pkgver = 2.17.1.r7.gffc0b0d
 	pkgrel = 1
-	url = https://github.com/01org/libva-utils/
-	arch = i686
+	url = https://github.com/intel/libva-utils/
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = meson
-	makedepends = libdrm
-	makedepends = libxext
-	makedepends = libxfixes
+	makedepends = mesa
 	depends = libva
-	depends = libx11
-	depends = wayland
 	provides = libva-utils
 	conflicts = libva-utils
 	source = git+https://github.com/intel/libva-utils.git
 	sha256sums = SKIP
 
 pkgname = libva-utils-git
-

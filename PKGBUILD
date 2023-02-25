@@ -1,37 +1,33 @@
-# Maintainer: Daniel Bermond < gmail-com: danielbermond >
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=libva-utils-git
-pkgver=2.2.1.pre1.20180921.r15.gfbb1720
+pkgver=2.17.1.r7.gffc0b0d
 pkgrel=1
 pkgdesc='Intel VA-API media applications and scripts for libva (git version)'
-arch=('i686' 'x86_64')
-url='https://github.com/01org/libva-utils/'
+arch=('x86_64')
+url='https://github.com/intel/libva-utils/'
 license=('MIT')
-depends=('libva' 'libx11' 'wayland')
-makedepends=('git' 'meson' 'libdrm' 'libxext' 'libxfixes')
+depends=('libva')
+makedepends=('git' 'meson' 'mesa')
 provides=('libva-utils')
 conflicts=('libva-utils')
 source=('git+https://github.com/intel/libva-utils.git')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd libva-utils
-    
-    # git, tags available
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    local _version
+    _version="$(git -C libva-utils tag --list --sort='-v:refname' | grep -E '^[0-9]+\.[0-9]+(\.[0-9]+)*$' | sort -rV | head -n1)"
+    printf '%s.r%s.g%s' "$_version" \
+                        "$(git -C libva-utils rev-list --count "${_version}..HEAD")" \
+                        "$(git -C libva-utils rev-parse --short HEAD)"
 }
 
 build() {
-    cd libva-utils
-    
-    arch-meson . build
-    ninja -C build
+    arch-meson libva-utils build
+    meson compile -C build
 }
 
 package() {
-    cd libva-utils
-    
-    DESTDIR="$pkgdir" ninja -C build install
-    
-    install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    meson install -C build --destdir "$pkgdir"
+    install -D -m644 libva-utils/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 } 
