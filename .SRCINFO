@@ -1,7 +1,7 @@
 pkgbase = pacman-saltedcoffii
 	pkgdesc = A version of pacman specifically designed for use by saltedcoffii (me).
 	pkgver = 6.0.2
-	pkgrel = 5
+	pkgrel = 5.1
 	url = https://www.archlinux.org/pacman/
 	arch = x86_64
 	groups = base-devel
