@@ -1,7 +1,7 @@
 pkgbase = arttime-git
 	pkgdesc = Arttime brings curated text-art to otherwise artless terminal emulators of starving developers and other users who can use terminal.
 	pkgver = 2.0.0.r454
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/poetaman/arttime
 	arch = any
 	license = GPLv3

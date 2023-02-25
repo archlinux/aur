@@ -3,7 +3,7 @@
 _name="arttime"
 pkgname="${_name}-git"
 pkgver=2.0.0.r454
-pkgrel=5
+pkgrel=6
 pkgdesc="Arttime brings curated text-art to otherwise artless terminal emulators of starving developers and other users who can use terminal."
 arch=('any')
 url="https://github.com/poetaman/${_name}"
@@ -34,9 +34,9 @@ package() {
     #srcdir="$installdir/share/arttime/src"
 
     install -D -t "$pkgdir/usr/local/bin/" "./bin/artprint" "./bin/arttime"
-    find "./share/arttime/keypoems/" -type f -exec install -D -t "$pkgdir/usr/share/arttime/keypoems/" {} \;
-    find "./share/arttime/src/" -type f -exec install -D -t "$pkgdir/usr/share/arttime/src/" {} \;
-    find "./share/arttime/textart/" -type f -exec install -D -t "$pkgdir/usr/share/arttime/textart/" {} \;
+    find "./share/arttime/keypoems/" -type f -exec install -D -t "$pkgdir/usr/local/share/arttime/keypoems/" {} \;
+    find "./share/arttime/src/" -type f -exec install -D -t "$pkgdir/usr/local/share/arttime/src/" {} \;
+    find "./share/arttime/textart/" -type f -exec install -D -t "$pkgdir/usr/local/share/arttime/textart/" {} \;
 
     install -D -t "$pkgdir/usr/share/zsh/site-functions/" "./share/zsh/functions/_artprint"
     install -D -t "$pkgdir/usr/share/zsh/site-functions/" "./share/zsh/functions/_arttime"
