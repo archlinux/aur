@@ -1,0 +1,12 @@
+diff --git a/scripts/libmakepkg/buildenv.sh.in b/scripts/libmakepkg/buildenv.sh.in
+index 6605788b..dcf08853 100644
+--- a/scripts/libmakepkg/buildenv.sh.in
++++ b/scripts/libmakepkg/buildenv.sh.in
+@@ -38,5 +38,6 @@ prepare_buildenv() {
+	done
+
+	# ensure all necessary build variables are exported
+-	export CPPFLAGS CFLAGS CXXFLAGS LDFLAGS RUSTFLAGS MAKEFLAGS CHOST
++	#export CPPFLAGS CFLAGS CXXFLAGS LDFLAGS RUSTFLAGS MAKEFLAGS CHOST
++	export {CPP,C,CXX,FC,F,LD,RUST,MAKE}FLAGS CHOST CARGO_PROFILE_RELEASE_LTO GOAMD64
+ }
