@@ -7,7 +7,7 @@ _localepurge=
 
 _pkgname=sigil
 pkgname="$_pkgname-git"
-pkgver=1.9.20.r27.gf8c39038c
+pkgver=1.9.20.r46.ga2898308c
 pkgrel=1
 pkgdesc='multi-platform EPUB2/EPUB3 ebook editor'
 arch=('x86_64')
@@ -39,23 +39,24 @@ provides=("$_pkgname")
 conflicts=(${provides[@]})
 source=(
   "$_pkgname"::"git+$url"
-  default_nav_css.patch
-  skip_ver_mod_tags.patch
-  skip_version_check.patch
+  'default_nav_css.patch'
+  'skip_epub_version_check.patch'
+  'skip_version_mod_tags.patch'
 )
+
 sha256sums=(
   'SKIP'
-  '298928226e4e5cf9d2cf5298d2fe8c87357b92c8962c09c0683bc9af4ed9516c'
-  '9414dfd43a18d83f82c099838faca1bba8e70fe9e66e5691e652345c5d2286ab'
-  'ad10e067885809f0fab8aebcbc907f317ad7a43251d1cf9ffd0802dfb77cc540'
+  '3478ff361a34fd7cd7811d5103cbace91ecc790463684aaab9e21687b5553a28'
+  'fc2bdc23d13b2e917f08608b516495b744f991642f73c1f6d943cf322a25fc11'
+  'c74be3af315c9ffe181df6b465d0037f152f6078b953e6eeaab7b2932ae4c729'
 )
 
 prepare() {
   cd "$srcdir/$_pkgname"
 
-  patch -Np1 -i "$srcdir/default_nav_css.patch"
-  patch -Np1 -i "$srcdir/skip_ver_mod_tags.patch"
-  patch -Np1 -i "$srcdir/skip_version_check.patch"
+  for p in "$srcdir"/*.patch ; do
+    patch -Np1 -i "$p"
+  done
 
   if [[ "${_localepurge}" != "" ]]; then
     for trans in src/Resource_Files/ts/*; do
@@ -90,8 +91,7 @@ build() {
 }
 
 package() {
-  depends=(
-    ${depends[@]}
+  depends+=(
     'python-cchardet'
     'python-certifi'
     'python-css-parser'

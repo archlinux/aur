@@ -1,4 +1,6 @@
-description: skip epub version check
+Subject: [PATCH] skip epub version check
+Description: allows changing from epub2 to epub3 by directly editing the opf
+  some data is lost and needs to be recreated (eg, table of contents)
 
 --- sigil.old/src/ResourceObjects/OPFResource.cpp
 +++ sigil.new/src/ResourceObjects/OPFResource.cpp

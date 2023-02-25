@@ -1,4 +1,6 @@
-description: don't write version and modified tags
+Subject: [PATCH] don't write version and modified tags
+Description: Don't write version and modification tags to the opf.
+  Results in a somewhat cleaner opf.
 
 --- sigil.old/src/ResourceObjects/OPFResource.cpp
 +++ sigil.new/src/ResourceObjects/OPFResource.cpp

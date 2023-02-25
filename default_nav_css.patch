@@ -1,4 +1,4 @@
-description: modify default navigation css
+Subject: [PATCH] modify default navigation css
 
 --- old/src/BookManipulation/Book.cpp
 +++ new/src/BookManipulation/Book.cpp
