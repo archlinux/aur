@@ -2,7 +2,7 @@
 
 pkgname=mailctl-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.8.3
+pkgver=0.8.4
 release_bin="${_pkgname}-${pkgver}-Linux-x86_64"
 pkgrel=1
 pkgdesc="Provide OAuth2 renewal and authorization capabilities"
@@ -16,14 +16,14 @@ makedepends=()
 optdepends=(
             'msmtp: an SMTP client'
             'fdm: fetch and deliver mail'
-            'crond: daemon to execute scheduled commands'
+            'cronie: cron daemon to execute scheduled commands'
             'pass: stores, retrieves, generates, and synchronizes passwords securely'
             'gnome-keyring: Stores passwords and encryption keys'
            )
 provides=(${_pkgname})
 conflicts=(${_pkgname} ${_pkgname}-git)
 source=(https://git.sr.ht/~petrus/mailctl/refs/download/${pkgver}/$_pkgname-$pkgver.tgz)
-sha256sums=('2a7f6d3f3650817105a5ff2ea7914679d98d059daf6634768d181774bcf59312')
+sha256sums=('be204de053be1bd780402cf83b16a5bb173e638efbd164ad6920a533065d9d2e')
 
 install=.INSTALL
 
@@ -33,10 +33,11 @@ package() {
 
   install -Dm644 LICENSE ${pkgdir}/usr/share/${_pkgname}/LICENSE
   install -Dm644 README.md ${pkgdir}/usr/share/${_pkgname}
+  install -Dm644 cabal.project.freeze ${pkgdir}/usr/share/${_pkgname}
   cp -r configs ${pkgdir}/usr/share/${_pkgname}
 
-  #install -Dm644 completions/${_pkgname}.bash ${pkgdir}/usr/share/bash-completion/completions/${_pkgname}.bash
-  #install -Dm644 completions/${_pkgname}.fish ${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish
-  #install -Dm644 completions/${_pkgname}.zsh ${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}
+  install -Dm644 completions/${_pkgname}.bash ${pkgdir}/usr/share/bash-completion/completions/${_pkgname}.bash
+  install -Dm644 completions/${_pkgname}.fish ${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish
+  install -Dm644 completions/${_pkgname}.zsh ${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}
 }
 

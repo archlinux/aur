@@ -1,6 +1,6 @@
 pkgbase = mailctl-bin
 	pkgdesc = Provide OAuth2 renewal and authorization capabilities
-	pkgver = 0.8.3
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://sr.ht/~petrus/mailctl
 	install = .INSTALL
@@ -9,13 +9,13 @@ pkgbase = mailctl-bin
 	depends = gnupg
 	optdepends = msmtp: an SMTP client
 	optdepends = fdm: fetch and deliver mail
-	optdepends = crond: daemon to execute scheduled commands
+	optdepends = cronie: cron daemon to execute scheduled commands
 	optdepends = pass: stores, retrieves, generates, and synchronizes passwords securely
 	optdepends = gnome-keyring: Stores passwords and encryption keys
 	provides = mailctl
 	conflicts = mailctl
 	conflicts = mailctl-git
-	source = https://git.sr.ht/~petrus/mailctl/refs/download/0.8.3/mailctl-0.8.3.tgz
-	sha256sums = 2a7f6d3f3650817105a5ff2ea7914679d98d059daf6634768d181774bcf59312
+	source = https://git.sr.ht/~petrus/mailctl/refs/download/0.8.4/mailctl-0.8.4.tgz
+	sha256sums = SKIP
 
 pkgname = mailctl-bin
