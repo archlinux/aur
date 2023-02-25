@@ -1,7 +1,7 @@
 # Maintainer: Baltazár Radics <baltazar.radics@gmail.com>
 _pkgname=compressure
 pkgname=$_pkgname-git
-pkgver=r413.3794731
+pkgver=r416.74f702b
 pkgrel=1
 pkgdesc='Puzzle game about designing complex computation units powered by high pressure steam'
 arch=(x86_64)
@@ -31,7 +31,7 @@ prepare() {
 	cd $_pkgname
   git submodule init
   git config submodule.clip.url ../clip
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
