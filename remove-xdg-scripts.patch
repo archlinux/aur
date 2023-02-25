@@ -1,0 +1,11 @@
+--- a/Unix/Installer/MathInstaller
++++ b/Unix/Installer/MathInstaller
+@@ -1985,6 +1985,8 @@
+ 			xdgScripts="${FullTargetDirectory}/SystemFiles/Installation"
+ 		fi
+ 
++		rm "${xdgScripts}"/{xdg-icon-resource,xdg-desktop-menu,xdg-mime,xdg-desktop-icon}
++
+ 		if [ "${InstallerType}" != "App" ] && 
+ 			[ "${InstallerType}" != "DOC" ] &&
+ 			[ "${InstallerType}" != "gridMath" ]; then
