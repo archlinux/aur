@@ -11,7 +11,7 @@ depends=('ffmpeg')
 license=('GPL3 or any later version')
 provides=('ffmpeg-audio-thumbnailer')
 conflicts=('ffmpeg-audio-thumbnailer')
-conflicts+=('ffmpegthumbnailer-mp3') # The files don't conflict, but the functions, do (this package does it better ;) )
+conflicts+=('ffmpegthumbnailer-mp3') # The files don't conflict, but the functions do (this package does it better ;) )
 source=("git+$url.git")
 sha512sums=('SKIP')
 
