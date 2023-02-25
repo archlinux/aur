@@ -5,11 +5,11 @@ _pkgname="iio-hyprland"
 
 pkgname="${_pkgname}-git"
 
-pkgver=r19.28de3de
+pkgver=1.0.1
 
-pkgrel=1
+pkgrel=2
 
-pkgdesc="Reads iio-proxy-sensor output to enable automatic screen rotation in Hyprland"
+pkgdesc="Reads iio-proxy-sensor output to enable automatic touchscreen rotation in Hyprland"
 
 arch=("any")
 
