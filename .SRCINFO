@@ -13,7 +13,7 @@ pkgbase = vte3-nohang
 	depends = gnutls
 	depends = gtk3
 	depends = pcre2
-	depends = systemd
+	depends = systemd-libs
 	depends = vte-common
 	provides = vte3=0.70.3
 	provides = libvte-2.91.so
