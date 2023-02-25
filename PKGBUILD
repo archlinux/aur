@@ -1,6 +1,6 @@
 # Maintainer: Arnab Bose <hirak99+arch@gmail.com>
 pkgname=dupefi
-pkgver=1.0
+pkgver=1.01
 pkgrel=1
 pkgdesc="A command-line duplicate file finder for linux."
 arch=('any')
@@ -10,7 +10,7 @@ depends=()
 makedepends=('go>=1.18')
 provides=('dupefi')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('e54a64734ab3950f06b33828d1e99910')
+md5sums=('22ca1a83882a1ae0a3ef6e4fc9ade056')
 
 check() {
   cd "$pkgname"-$pkgver
