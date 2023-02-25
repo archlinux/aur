@@ -1,0 +1,18 @@
+pkgbase = liamstask-goose-git
+	pkgdesc = Goose is a database migration tool.
+	pkgver = 0.0.1.r0.8488cc4
+	pkgrel = 1
+	url = https://bitbucket.org/liamstask/goose
+	arch = x86_64
+	arch = armv7l
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	provides = goose
+	conflicts = goose
+	conflicts = goose-bin
+	source = goose::git+https://bitbucket.org/liamstask/goose.git#branch=master
+	sha256sums = SKIP
+
+pkgname = liamstask-goose-git
