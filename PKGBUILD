@@ -3,7 +3,7 @@
 
 pkgname=caddy-trojan
 pkgver=2.6.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Caddy web server with trojan support"
 arch=('x86_64' 'aarch64')
 url="https://github.com/imgk/caddy-trojan"
@@ -43,6 +43,7 @@ build() {
         github.com/mholt/caddy-webdav
         github.com/imgk/caddy-trojan
         github.com/imgk/caddy-pprof
+        github.com/WeidiDeng/caddy-cloudflare-ip
     )
     xcaddy build v${pkgver} ${MODULES[@]/#/--with }
 
