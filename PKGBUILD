@@ -7,7 +7,7 @@ pkgdesc="Game Stream server for Moonlight with no X11 deps"
 arch=('x86_64')
 url=https://github.com/LizardByte/Sunshine
 license=('GPL3')
-install=sunshine-nox.install
+install="sunshine-nox.install"
 
 depends=(
 avahi
