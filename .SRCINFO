@@ -1,0 +1,23 @@
+pkgbase = r-conflicted
+	pkgdesc = An Alternative Conflict Resolution Strategy
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=conflicted
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-cli
+	depends = r-memoise
+	depends = r-rlang
+	optdepends = r-callr
+	optdepends = r-covr
+	optdepends = r-dplyr
+	optdepends = r-matrix
+	optdepends = r-methods
+	optdepends = r-pkgload
+	optdepends = r-testthat
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/conflicted_1.2.0.tar.gz
+	sha256sums = c99b86bb52da3e7d1f4d96d70c77304d0434db5bd906edd8d743e89ac9223088
+
+pkgname = r-conflicted
