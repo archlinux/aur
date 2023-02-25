@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=ffmpeg-full-git
-pkgver=5.2.r109824.g27315dc345
+pkgver=5.2.r109920.gac6eec1fc2
 pkgrel=1
 _svt_hevc_ver='7771d7c1ec60cf21d84894260a4b14e9034c7156'
 _svt_vp9_ver='d9ef3cc13159143b9afc776c04f67cdfa6284046'
@@ -19,6 +19,7 @@ depends=(
     'codec2'
     'cuda'
     'dav1d'
+    'flite1'
     'fontconfig'
     'freetype2'
     'frei0r-plugins'
@@ -110,7 +111,6 @@ depends=(
     'davs2'
     'libklvanc-git'
     'librist'
-    'pocketsphinx'
     'rockchip-mpp'
     'shine'
     'uavs3d-git'
@@ -138,7 +138,7 @@ sha256sums=('SKIP'
             '6e2b0b2da4e7db2c3d66a2796c5eed2d986a9ef404ad0323e2581c02e5c6aeb7'
             'e9ae5d753169f56bbc7fe53615398032f985caaeae6b89bd952c4e4bc9ec8531'
             'e310eedb3dc88c8ad6ffcd6cb6bde1f593ded330ea99b0356724c9d22bcfde4c'
-            '3f4d677da3efdc3d2a1cbd36257d626b7e4c05d685ed82bd1a7e2eb7e3ac6ee4'
+            'd1ad786df86354d218a70b306a50961736c0a6e2d2716bf8de3db31d79957df9'
             'bf563193f450ece58a93db6840c0db33875df945fa81477b9b02fb209d3bf57a'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
@@ -206,7 +206,7 @@ build() {
         --enable-libdavs2 \
         --enable-libdc1394 \
         --enable-libfdk-aac \
-        --disable-libflite \
+        --enable-libflite \
         --enable-fontconfig \
         --enable-libfreetype \
         --enable-libfribidi \
@@ -283,7 +283,7 @@ build() {
         --enable-opencl \
         --enable-opengl \
         --disable-openssl \
-        --enable-pocketsphinx \
+        --disable-pocketsphinx \
         --enable-sndio \
         --enable-sdl2 \
         --enable-vapoursynth \
