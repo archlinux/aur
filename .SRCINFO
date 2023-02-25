@@ -1,7 +1,7 @@
 pkgbase = flite1
 	pkgdesc = A lighweight speech synthesis engine (version 1.x)
 	pkgver = 1.4
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.speech.cs.cmu.edu/flite/
 	arch = x86_64
 	license = custom
