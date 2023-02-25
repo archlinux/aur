@@ -2,7 +2,7 @@
 
 _gemname_="timeout"
 pkgname="ruby-${_gemname_}"
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Auto-terminate potentially long-running operations in Ruby."
 arch=("any")
@@ -20,4 +20,4 @@ package() {
 	rm "${pkgdir}/${_gemdir_}/cache/${_gemname_}-${pkgver}.gem"
 }
 
-sha256sums=('eaab5f7da498d573b7b177b42ca4d23f07aadd7b5b0af6250b751077f204d052')
+sha256sums=('269b765ea2fb052fc2bfb8d3be2c90d60fe1161f92bf971c91d6151b8a6bcddd')
