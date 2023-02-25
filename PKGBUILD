@@ -1,7 +1,7 @@
 # Maintainer: Jerome Gravel-Niquet <jeromegn@gmail.com>
 
 pkgname="flyctl-bin"
-pkgver="0.0.469"
+pkgver="0.0.470"
 pkgrel="1"
 pkgdesc="Command line tools for fly.io services"
 arch=("x86_64")
@@ -11,7 +11,7 @@ depends=()
 provides=("flyctl")
 conflicts=("flyctl")
 source=("$pkgname-$pkgver.tgz::https://github.com/superfly/flyctl/releases/download/v${pkgver}/flyctl_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums=('6a542de1cf1101dcf2f0df4f1c3b52cf3193bf81e6f99f51253d9e0fbde87861')
+sha256sums=('a1eeb83355f1a80beb717f0bffa84f19de0a728bfdc0aceea99211b6f512f8d0')
 
 package() {
     mkdir -p "$pkgdir/usr/bin"
