@@ -2,7 +2,7 @@
 
 pkgname=ttf-maple
 pkgver=6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source monospace/Nerd Font font with round corner for IDE and command line"
 arch=("any")
 url="https://gitee.com/subframe7536/Maple/"
