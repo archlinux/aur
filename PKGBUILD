@@ -66,10 +66,11 @@
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-_major=5.10
-_minor=115
-_rtpatchver=67
-_clr=${_major}.59-83
+_major=6.1
+_minor=13
+_rtpatchver=7
+_clr=${_major}.13-84
+_gcc_more_v='20230105'
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-clear-preempt-rt
 pkgver=${_major}.${_minor}.${_rtpatchver}
@@ -80,11 +81,10 @@ url="https://github.com/clearlinux-pkgs/linux-preempt-rt"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'libelf' 'pahole' 'xmlto')
 options=('!strip')
-_gcc_more_v='20211114'
 source=(
-  "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.${_minor}.tar.xz"
-  "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.${_minor}.tar.sign"
-  "https://cdn.kernel.org/pub/linux/kernel/projects/rt/${_major}/patch-${_major}.${_minor}-rt${_rtpatchver}.patch.xz"
+  "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_major}.${_minor}.tar.xz"
+  "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_major}.${_minor}.tar.sign"
+  "https://cdn.kernel.org/pub/linux/kernel/projects/rt/${_major}/patch-${_major}.12-rt${_rtpatchver}.patch.xz"
   "$pkgbase::git+https://github.com/clearlinux-pkgs/linux-preempt-rt.git#tag=${_clr}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
 )
@@ -98,7 +98,7 @@ prepare() {
 
     ### Add upstream patches
     echo "Add upstream patches"
-    patch -Np1 -i ../patch-${_major}.${_minor}-rt${_rtpatchver}.patch
+    patch -Np1 -i ../patch-${_major}.12-rt${_rtpatchver}.patch
 
     ### Setting version
     echo "Setting version..."
@@ -108,7 +108,7 @@ prepare() {
 
     ### Add Clearlinux patches
     for i in $(grep '^Patch' ${srcdir}/$pkgbase/linux-preempt-rt.spec |\
-        grep -Ev '^Patch0000|^Patch0123' | sed -n 's/.*: //p'); do
+        grep -Ev '^Patch0000|^Patch0110|^Patch0112|^Patch0114|^Patch0123|^Patch0127' | sed -n 's/.*: //p'); do
         echo "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/$pkgbase/${i}"
     done
@@ -134,8 +134,8 @@ prepare() {
 
     # Enable loadable module support
     scripts/config --undefine MODULE_SIG_FORCE \
-                   --enable MODULE_COMPRESS \
-                   --enable MODULE_COMPRESS_XZ
+                   --undefine MODULE_COMPRESS_NONE \
+                   --enable MODULE_COMPRESS_ZSTD
 
     # Networking support
     scripts/config --enable NETFILTER_INGRESS \
@@ -175,7 +175,7 @@ prepare() {
     # https://github.com/graysky2/kernel_compiler_patch
     # make sure to apply after olddefconfig to allow the next section
     echo "Patching to enable GCC optimization for other uarchs..."
-    patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-5.8-5.14.patch"
+    patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-5.17+.patch"
 
     if [ -n "$_subarch" ]; then
         # user wants a subarch so apply choice defined above interactively via 'yes'
@@ -303,7 +303,7 @@ _package-headers() {
     echo "Stripping build tools..."
     local file
     while read -rd '' file; do
-        case "$(file -bi "$file")" in
+        case "$(file -Sib "$file")" in
             application/x-sharedlib\;*)      # Libraries (.so)
                 strip -v $STRIP_SHARED "$file" ;;
             application/x-archive\;*)        # Libraries (.a)
@@ -331,11 +331,11 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('f5e417b32f89318b6d0a230109a592ffd68997817463dc4692fa49ec7fe42f71'
+sha256sums=('48841319f4b0077da15e4176e624032d8332d961ee660e1b85e1ce73ded17a67'
             'SKIP'
-            '1230deb8fecf012567ee78c0cced7521872692d949e77951721f5b8471bb2f9a'
+            '01e5b497cdb1cb75fcac14526dc4a00aed4e400d595e8b859adc8b0cad0dc828'
             'SKIP'
-            'fffcd3b2c139e6a0b80c976a4ce407d450cf8f454e697d5ed39d85e8232ddeba')
+            '802946f623c69ae1a636b63697c23ca48af31a099415ed837d2c1e168a272d23')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
