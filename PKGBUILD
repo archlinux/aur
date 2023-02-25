@@ -1,7 +1,7 @@
 # Maintainer: Marie Ramlow <me[at]nycode.dev>
 
 pkgname=cargo-leptos
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Build tool for the rust framework leptos."
 url='https://github.com/leptos-rs/cargo-leptos'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('cargo' 'openssl' 'cargo-generate' 'binaryen')
 optdepends=('dart-sass: sass support')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('b94d3118031f7de281c78d103ca8095f01af11534acdd7f1966f4ebc14798d50')
+sha256sums=('54d64dd97cdc278a291b19ba029c6b5f734881f2c56da544cfe679d89f03e7e3')
 
 prepare() {
   cd "$pkgname-$pkgver"
