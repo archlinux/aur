@@ -12,7 +12,6 @@ pkgbase = guitarix.vst-git
 	makedepends = eigen
 	makedepends = gperf
 	makedepends = intltool
-	makedepends = ladspa
 	makedepends = lv2
 	makedepends = waf
 	makedepends = sassc
