@@ -15,6 +15,7 @@ depends=(
   'python-proto-plus'
   'python-google-api-core'
   # 'python-google-cloud-core'
+  'python-grpcio'
   'python-packaging'
 )
 makedepends=(
