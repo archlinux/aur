@@ -2,7 +2,7 @@
 # Contributor: lsf
 # Contributor: Daniel Haß <aur@hass.onl>
 pkgname=standardnotes-desktop
-pkgver=3.149.10
+pkgver=3.150.0
 pkgrel=1
 _electronversion=22
 pkgdesc="An end-to-end encrypted notes app for digitalists and professionals."
@@ -14,7 +14,7 @@ makedepends=('libxcrypt-compat' 'nvm' 'yarn')
 source=("standardnotes-$pkgver.tar.gz::https://github.com/standardnotes/app/archive/refs/tags/@standardnotes/desktop@${pkgver}.tar.gz"
         "standard-notes.desktop"
         "standard-notes.sh")
-sha256sums=('fd445b3307f11ec572d47010d868055f092641a5cc7b7249144aa91db24a8ffe'
+sha256sums=('d6afb4c3fa2a59d08e2878c13ad0370773270f2f0fc2539709bc9309bd2ff3a7'
             '274cd3914ff2a6a0999485a26cbded3ad597763482a90eee8ee34490ddffda00'
             '5fa1b6ed3cedfbf233d8e7f34edd7d643d43d7299d19645d098ae6cd2bd3f8d6')
 
@@ -59,9 +59,9 @@ build() {
       ${dist} -c.electronDist=${electronDist} -c.electronVersion=${electronVer} \
       --publish=never --c.extraMetadata.version=${pkgver}
   else
-  yarn run electron-builder --linux --x64 -c.linux.target=deb \
-    ${dist} -c.electronDist=${electronDist} -c.electronVersion=${electronVer} \
-    --publish=never --c.extraMetadata.version=${pkgver}
+    yarn run electron-builder --linux --x64 -c.linux.target=deb \
+      ${dist} -c.electronDist=${electronDist} -c.electronVersion=${electronVer} \
+      --publish=never --c.extraMetadata.version=${pkgver}
   fi
 }
 
