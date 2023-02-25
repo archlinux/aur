@@ -38,7 +38,7 @@ build() {
   meson compile -C build
 }
 
-_check() {
+check() {
   ( cd openh264/test/encoder_binary_comparison ; CFLAGS=-Werror ./run_PrepareAllTestData.sh 64 )
   meson test -C build -v
   cd openh264
