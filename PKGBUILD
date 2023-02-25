@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-g-bin
-pkgver=5.1.2
+pkgver=5.1.3
 pkgrel=0
 pkgdesc="Fifth generation of customizable privacy-conscious web browser."
 arch=('x86_64')
@@ -67,4 +67,4 @@ END
 }
 
 sha256sums=('25e0253dc235e42654708542cbec92bd82e0d48b5f7f3d689d8d54daa004f747'
-            '0a570f0eae2d623980a72bba5bf1d9ee1d80be31732e33784988e19b3fa16187')
+            '1f0d188950765ed2be0e619dc9327306d09247474e3ad6c9addd230956d48ce8')
