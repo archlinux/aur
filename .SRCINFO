@@ -1,6 +1,6 @@
 pkgbase = creekey-git
 	pkgdesc = Story your Private Keys on your Phone!
-	pkgver = 0.1.0_r113.cc39ffd
+	pkgver = 0.1.0_r143.30b1d39
 	pkgrel = 1
 	url = https://creekey.io
 	arch = i686

@@ -1,6 +1,6 @@
 # Maintainer: Opencreek Technogoly UG <hannes@opencreek.tech>
 pkgname=creekey-git
-pkgver=0.1.0_r113.cc39ffd
+pkgver=0.1.0_r143.30b1d39
 pkgrel=1
 makedepends=('git' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
