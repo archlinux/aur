@@ -1,7 +1,8 @@
-# Maintainer: Philip Goto <philip.goto@gmail.com>
+# Maintainer: Thomas Booker (CoderThomasB) <tw.booker@outlook.com>
+# Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=callaudiod
-pkgver=0.1.4
+pkgver=0.1.7
 pkgrel=1
 pkgdesc='Call audio routing daemon'
 arch=(x86_64 aarch64)
@@ -10,7 +11,7 @@ license=(GPL3)
 depends=(alsa-lib glib2 libpulse)
 makedepends=(meson)
 source=("${url}/-/archive/${pkgver}/callaudiod-${pkgver}.tar.gz")
-b2sums=('27315e27b3f7d2485a811ee9c2d32bfb09fa970626791cbdd20307bdb3a183493b1985814030ab9668444134c6c1369630251ac82f191c5b3185bf449d20ac1f')
+b2sums=('ae7a30bd41c9614460c8ad58548f8d5fea98746e789d771c8a16449aff36328035e0b2046929d8b5886f18cf00f9a56abfb2bee9ed312f1f6e60aa4259d51dfe')
 
 build() {
 	arch-meson callaudiod-${pkgver} build
