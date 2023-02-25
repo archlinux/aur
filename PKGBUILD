@@ -2,7 +2,7 @@
 
 pkgbase=level-zero-git
 pkgname=('level-zero-headers-git' 'level-zero-loader-git')
-pkgver=1.4.1.r2.gb8a433d
+pkgver=1.9.4.r0.g4ed13f3
 pkgrel=1
 pkgdesc='API for accessing low level interfaces in oneAPI platform devices (git version)'
 arch=('x86_64')
@@ -18,10 +18,11 @@ pkgver() {
 
 build() {
     cmake -B build -S level-zero \
+        -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -Wno-dev
-    make -C build
+    cmake --build build
 }
 
 package_level-zero-headers-git() {
@@ -30,7 +31,7 @@ package_level-zero-headers-git() {
     provides=('level-zero-headers')
     conflicts=('level-zero-headers')
     
-    make -C build DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake --install build
     install -D -m644 level-zero/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     
     # remove loader files
