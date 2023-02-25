@@ -33,7 +33,7 @@ package() {
     #keypoemdir="$installdir/share/arttime/keypoems"
     #srcdir="$installdir/share/arttime/src"
 
-    install -D -t "$pkgdir/usr/local/" "./bin/artprint" "./bin/arttime"
+    install -D -t "$pkgdir/usr/local/bin/" "./bin/artprint" "./bin/arttime"
     find "./share/arttime/keypoems/" -type f -exec install -D -t "$pkgdir/usr/share/arttime/keypoems/" {} \;
     find "./share/arttime/src/" -type f -exec install -D -t "$pkgdir/usr/share/arttime/src/" {} \;
     find "./share/arttime/textart/" -type f -exec install -D -t "$pkgdir/usr/share/arttime/textart/" {} \;
