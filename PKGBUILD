@@ -1,11 +1,11 @@
 # Maintainer: Bruno Renié <brutasse@gmail.com>
 pkgname=vaudtax
-pkgver=2021
-_pkgver=1.3.1-production
-pkgrel=2
+pkgver=2022
+_pkgver=1.0-production
+pkgrel=1
 pkgdesc="VaudTax"
-url="https://www.vd.ch/themes/etat-droit-finances/impots/impots-pour-les-individus/remplir-ma-declaration-dimpot/vaudtax-2021/"
-depends=('webkitgtk2' 'jre11-openjdk' 'gnome-vfs')
+url="https://www.vd.ch/themes/etat-droit-finances/impots/impots-pour-les-individus/remplir-ma-declaration-dimpot/vaudtax-1"
+depends=('webkit2gtk' 'jre11-openjdk' 'gnome-vfs')
 arch=(x86_64)
 license=('custom')
 source=("$pkgname-$pkgver-$_pkgver.tar.gz::https://vaudtax-dl.vd.ch/vaudtax$pkgver/telechargement/linux/64bit/VaudTax_$pkgver.tar.gz" 'vaudtax')
@@ -34,5 +34,6 @@ package() {
 	install -m755 ${srcdir}/${pkgname} "${pkgdir}"${_app_home}/bin/${pkgname}
 	ln -s ${_app_home}/bin/${pkgname} "${pkgdir}"/usr/bin/${pkgname}
 }
-md5sums=('4f802dd88df214942fa58f06feb64182'
-         '877950620de61664340112f413a685c9')
+
+sha256sums=('9b2bcd0107b8ffbcec782537169b62a36e32563f65c907bae5089633b97ba9a8'
+        'e92996587a65052a528cc93f4eab7f95b025935f79fffbe40131e91d2540edba')
