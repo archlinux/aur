@@ -1,12 +1,8 @@
 # makepkg directories
 /src/*
 /pkg/*
+/phpunit/*
 
 # Built packages
 *.tar.xz
 *.tar.zst
-
-# Downloaded sources
-*.phar
-*.phar.asc
-LICENSE*

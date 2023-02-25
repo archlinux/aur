@@ -6,26 +6,42 @@
 _pkgname=phpunit
 pkgname=${_pkgname}
 pkgver=10.0.12
-pkgrel=1
+pkgrel=2
 pkgdesc="PHPUnit is a programmer-oriented testing framework for PHP."
+conflicts=('phpunit-bin')
 url="https://phpunit.de"
 arch=("any")
 license=("BSD")
 depends=("php>=8.1.0")
+makedepends=('ant' 'git' 'composer')
 install="${_pkgname}.install"
-source=("https://phar.phpunit.de/phpunit-${pkgver}.phar"
-        "https://phar.phpunit.de/phpunit-${pkgver}.phar.asc"
-        "LICENSE-${pkgver}::https://raw.githubusercontent.com/sebastianbergmann/phpunit/${pkgver}/LICENSE")
-# To add the key use gpg
-#  gpg --keyserver pgp.uni-mainz.de --recv-keys 4AA394086372C20A
-validpgpkeys=('D8406D0D82947747293778314AA394086372C20A')
-sha256sums=('8efa47496220e5b490dc2cb45b11b4d8195be4e5db9c569a7cef8c69686262e5'
-            'SKIP'
-            '3f62dc64839f2fbf8aebfee011cdc34b66aaf403f2b43f5cf5803e242048688d')
+source=("git+https://github.com/sebastianbergmann/phpunit.git#tag=${pkgver}"
+        "composer.lock")
+sha256sums=('SKIP'
+            'f30e3c7e14f92fe4031ffd766be364edac9e61584ee67dfa891d24e1c88c69ee')
+
+prepare() {
+  cd ${_pkgname}
+  cp ../composer.lock .
+  composer install
+}
+
+build() {
+  cd ${_pkgname}
+  ant phar
+}
 
 package() {
-  install -D -m 644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-  install -D -m 755 "${srcdir}/${_pkgname}-${pkgver}.phar" "${pkgdir}/usr/share/webapps/bin/${_pkgname}.phar"
-  install -d "${pkgdir}/usr/bin"
+  install -Dm 644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm 755 "${srcdir}/${_pkgname}/build/artifacts/${_pkgname}-${pkgver}.phar" "${pkgdir}/usr/share/webapps/bin/${_pkgname}.phar"
+
+  install -dm 755 "${pkgdir}/usr/bin"
   ln -s "/usr/share/webapps/bin/${_pkgname}.phar" "${pkgdir}/usr/bin/${_pkgname}"
+}
+
+updlockfiles() {
+  cd ${_pkgname}
+  rm -f composer.lock
+  composer update
+  cp composer.lock "${outdir}/"
 }
