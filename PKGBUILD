@@ -4,10 +4,12 @@
 # Contributor: Attila Bukor <r1pp3rj4ck [at] w4it [dot] eu>
 
 _pkgname=phpunit
-pkgname=${_pkgname}
+pkgname=${_pkgname}-bin
 pkgver=10.0.12
 pkgrel=1
 pkgdesc="PHPUnit is a programmer-oriented testing framework for PHP."
+provides=('phpunit')
+conflicts=('phpunit')
 url="https://phpunit.de"
 arch=("any")
 license=("BSD")
