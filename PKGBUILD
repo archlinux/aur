@@ -4,7 +4,7 @@ pkgname=liamstask-goose-git
 _pkgname=goose
 pkgdesc="Goose is a database migration tool."
 pkgver=0.0.1.r0.8488cc4
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="https://bitbucket.org/liamstask/goose"
 _namespace="bitbucket.org/liamstask"
@@ -44,6 +44,9 @@ prepare() {
 }
 
 pkgver() {
+    export GOROOT=/usr/lib/go
+    export GOPATH=${srcdir}/usr/lib/go
+
     cd ${GOPATH}/src/${_namespace}/$_pkgname
     echo "0.0.1.r0.$(git describe --always)"
 }
