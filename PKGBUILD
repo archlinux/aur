@@ -1,8 +1,8 @@
 # Maintainer: Christian Schendel (doppelhelix@gmail.com)
 
 pkgname=gnome-shell-extension-pano-git
-pkgver=10.r14.gdc3fc6f
-pkgrel=3
+pkgver=10.r23.gac43c48
+pkgrel=1
 pkgdesc="Next-gen Clipboard Manager"
 arch=('any')
 url="https://github.com/oae/gnome-shell-pano"
