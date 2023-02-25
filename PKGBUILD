@@ -1,6 +1,6 @@
 # Maintainer: Magnus Anderson <magnus@iastate.edu>
 pkgname=rust-lolcat-git
-pkgver=r61.9e957b7
+pkgver=r66.9621f62
 pkgrel=1
 pkgdesc="A rust implementation of lolcat"
 arch=('i686' 'x86_64')
