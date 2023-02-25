@@ -1,7 +1,7 @@
 _name=kio
 pkgname=${_name}-light
 pkgver=5.103.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Resource and network access abstraction (stripped from unnecessary dependencies)'
 arch=('x86_64')
 url='https://community.kde.org/Frameworks'
@@ -40,6 +40,7 @@ _disable=("${_disable[@]/%/"=ON"}")
 build() {
     cmake -B "build" -S "${_snapshot}" \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBEXECDIR=lib \
         -DBUILD_TESTING=OFF \
         -DBUILD_QCH=OFF \
         "${_disable[@]}"

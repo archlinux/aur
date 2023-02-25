@@ -1,7 +1,7 @@
 pkgbase = kio-light
 	pkgdesc = Resource and network access abstraction (stripped from unnecessary dependencies)
 	pkgver = 5.103.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
 	groups = kf5
