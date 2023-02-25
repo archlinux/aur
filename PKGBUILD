@@ -2,8 +2,8 @@
 
 _name="arttime"
 pkgname="${_name}-git"
-pkgver=1.0.453
-pkgrel=1
+pkgver=2.0.0.r453
+pkgrel=2
 pkgdesc="Arttime brings curated text-art to otherwise artless terminal emulators of starving developers and other users who can use terminal."
 arch=('any')
 url="https://github.com/poetaman/${_name}"
@@ -21,7 +21,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_name}"
-  printf "1.0.%s" "$(git rev-list --count HEAD)"
+  echo "$(git describe --tags $(git rev-list --tags --max-count=1)| grep -o '[0-9.]*'
+).r$(git rev-list --count HEAD)"
 }
 
 package() {
