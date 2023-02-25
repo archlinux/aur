@@ -1,17 +1,18 @@
 pkgbase = rankmirrors
-	pkgdesc = Read a list of mirrors from a file and rank them by speed.
-	pkgver = r9.f161c0c
+	pkgdesc = Read a list of archlinux mirrors from a file and rank them by speed.
+	pkgver = r2.60f7568
 	pkgrel = 1
-	url = https://github.com/metis-os/metis-rankmirrors
+	url = https://github.com/whoisYoges/rankmirrors
 	arch = any
-	license = GPL3
+	license = AGPL3
 	makedepends = git
 	depends = bash
+	depends = pacman
 	provides = rankmirrors
 	conflicts = rankmirrors
 	options = !strip
 	options = !emptydirs
-	source = rankmirrors::git+https://github.com/metis-os/metis-rankmirrors
+	source = rankmirrors::git+https://github.com/whoisYoges/rankmirrors
 	sha256sums = SKIP
 
 pkgname = rankmirrors
