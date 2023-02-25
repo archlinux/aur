@@ -1,7 +1,7 @@
 pkgbase = caddy-trojan
 	pkgdesc = Caddy web server with trojan support
 	pkgver = 2.6.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/imgk/caddy-trojan
 	arch = x86_64
 	arch = aarch64
