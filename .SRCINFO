@@ -9,7 +9,7 @@ pkgbase = mochi-appimage
   depends = hicolor-icon-theme
   noextract = mochi-appimage-1.15.19.AppImage
   options = !strip
-  source_x86_64 = mochi-appimage-1.15.19.AppImage::https://mochi.cards/releases/Mochi-1.15.11.AppImage
+  source_x86_64 = mochi-appimage-1.15.19.AppImage::https://mochi.cards/releases/Mochi-1.15.19.AppImage
   sha256sums_x86_64 = bb0c07c53cb7c962ce18bd5c3a24a9e615ef732489a839c47d5b3c6b7ec46ad8
 
 pkgname = mochi-appimage
