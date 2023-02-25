@@ -1,7 +1,7 @@
 # Maintainer: Derek J. Clark <derekjohn.clark@gmail.com>
 pkgname=ogui-bin
 _pkgbase=opengamepadui
-pkgver=v0.0.4
+pkgver=v0.0.7
 pkgrel=1
 pkgdesc="Open source game launcher"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('glibc' 'gcc-libs' 'libx11' 'libxres' 'libxcb' 'libxext' 'libxau'
 provides=('ogui')
 source=(opengamepadui.tar.gz::https://github.com/ShadowBlip/OpenGamepadUI/releases/download/$pkgver/opengamepadui.tar.gz)
 
-sha256sums=('8ddad19797fd2b49196ed4c23afb1b82909ef02912c745a604e8285b882c63f8')
+sha256sums=('f29453c2a0bdf26a74cb87038d4f722a26498c1acfb7769451cf6751804674c9')
 
 prepare() {
 	cd "$srcdir/${_pkgbase}"
@@ -34,6 +34,7 @@ package() {
 	
 	mkdir -p ${pkgdir}/usr/share/opengamepadui
 	install -Dm644 usr/share/opengamepadui//libevdev.linux.template_debug.x86_64.so ${pkgdir}/usr/share/opengamepadui/libevdev.linux.template_debug.x86_64.so
+	install -Dm644 usr/share/opengamepadui/libpty.linux.template_debug.x86_64.so ${pkgdir}/usr/share/opengamepadui/libpty.linux.template_debug.x86_64.so
 	install -Dm644 usr/share/opengamepadui/libxlib.linux.template_debug.x86_64.so ${pkgdir}/usr/share/opengamepadui/libxlib.linux.template_debug.x86_64.so
 	install -Dm755 usr/share/opengamepadui/opengamepad-ui.x86_64 ${pkgdir}/usr/share/opengamepadui/opengamepad-ui.x86_64
 	
