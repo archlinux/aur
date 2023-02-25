@@ -8,7 +8,7 @@ url="https://github.com/ilya-zlobintsev/LACT"
 makedepends=("rust" "git" "make")
 depends=("gtk4" "hwdata")
 arch=("x86_64" "aarch64")
-backup=('etc/lact.json')
+backup=('etc/lact/config.yaml')
 source=("git+https://github.com/ilya-zlobintsev/LACT.git")
 sha512sums=("SKIP")
 

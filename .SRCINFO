@@ -11,7 +11,7 @@ pkgbase = lact-git
 	makedepends = make
 	depends = gtk4
 	depends = hwdata
-	backup = etc/lact.json
+	backup = etc/lact/config.yaml
 	source = git+https://github.com/ilya-zlobintsev/LACT.git
 	sha512sums = SKIP
 
