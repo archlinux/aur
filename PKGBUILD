@@ -4,7 +4,7 @@
 # Contributor: Sam Whited <sam@samwhited.com>
 
 pkgname=feedbackd
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc='A daemon to provide haptic feedback on events'
 arch=(x86_64 aarch64)
@@ -15,17 +15,18 @@ depends=(
 	gsound
 	json-glib
 	libgudev
+	gsettings-desktop-schemas
 )
 makedepends=(
 	gobject-introspection
 	meson
 	vala
 	git
-	# requered for man docs
-	# python-docutils
+	python-docutils
 )
 
-_tag=fca952f813124110c9dabd766e85255992187c32
+_tag=25913a6a
+# _tag=fca952f813124110c9dabd766e85255992187c32
 source=(
 	"git+${url}.git#tag=${_tag}"
 )
@@ -46,7 +47,7 @@ prepare() {
 }
 
 build() {
-	arch-meson "${pkgname}" build -Dgtk_doc=false -Dman=false -Dtests=true -Ddaemon=true
+	arch-meson "${pkgname}" build -Dgtk_doc=false -Dman=true -Dtests=true -Ddaemon=true
 	meson compile -C build
 }
 
