@@ -1,18 +1,18 @@
 pkgbase = ttf-maple
 	pkgdesc = Open source monospace/Nerd Font font with round corner for IDE and command line
-	pkgver = 6.1
+	pkgver = 6.2
 	pkgrel = 1
 	url = https://gitee.com/subframe7536/Maple/
 	arch = any
 	license = OFL
 	provides = ttf-maple
-	source = https://github.com/subframe7536/Maple-font/releases/download/v6.1/MapleMono.zip
-	source = https://github.com/subframe7536/Maple-font/releases/download/v6.1/MapleMono-NF.zip
-	source = https://github.com/subframe7536/Maple-font/releases/download/v6.1/MapleMono-SC-NF.zip
+	source = https://github.com/subframe7536/Maple-font/releases/download/v6.2/MapleMono.zip
+	source = https://github.com/subframe7536/Maple-font/releases/download/v6.2/MapleMono-NF.zip
+	source = https://github.com/subframe7536/Maple-font/releases/download/v6.2/MapleMono-SC-NF.zip
 	source = LICENSE::https://raw.githubusercontent.com/subframe7536/Maple-font/v6.0/OFL.txt
-	sha1sums = eb92f54700716199889204090ad6c9396154c7af
-	sha1sums = 2b212af0553ef4f2e8c634400ed089032ac2593a
-	sha1sums = efc64a0c21744f9c00d86c03524a2af3f0747146
+	sha1sums = 2b635c45bf25cd590bd288e18edff6b45789051a
+	sha1sums = f0b44a1827c875776a96d53b2aef0dd0e4037696
+	sha1sums = f7839810fb73acfce6595318ed83fbbc49969339
 	sha1sums = SKIP
 
 pkgname = ttf-maple
