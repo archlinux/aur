@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-graphics-compiler-git
-pkgver=1.0.11485.r643.g58a8c46f1
+pkgver=1.0.13404.r94.g98cd86ea4
 _llvmver=11
 pkgrel=1
 epoch=1
@@ -19,8 +19,8 @@ source=('git+https://github.com/intel/intel-graphics-compiler.git'
         "git+https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git#branch=llvm_release_${_llvmver}0"
         "git+https://github.com/intel/opencl-clang.git#branch=ocl-open-${_llvmver}0"
         "git+https://github.com/llvm/llvm-project.git#tag=llvmorg-${_llvmver}.1.0"
-        'git+https://github.com/KhronosGroup/SPIRV-Tools.git'
-        'git+https://github.com/KhronosGroup/SPIRV-Headers.git')
+        'git+https://github.com/KhronosGroup/SPIRV-Tools.git#branch=main'
+        'git+https://github.com/KhronosGroup/SPIRV-Headers.git#branch=main')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -44,6 +44,7 @@ build() {
     export CXXFLAGS+=' -Wno-error=restrict -Wno-error=deprecated-declarations'
     EMAIL='someone@archlinux.org' \
     cmake -B build -S intel-graphics-compiler \
+        -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -DCMAKE_INSTALL_LIBDIR='lib' \
@@ -58,11 +59,11 @@ build() {
         -DCCLANG_FROM_SYSTEM='OFF' \
         -DINSTALL_GENX_IR='ON' \
         -Wno-dev
-    make -C build
+    cmake --build build
 }
 
 package() {
-    make -C build DESTDIR="${pkgdir}" install
+    DESTDIR="$pkgdir" cmake --install build
     install -D -m644 igc/LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
     mv "${pkgdir}/usr/include"/opencl-c{,-base}.h "${pkgdir}/usr/include/igc"
     mv "${pkgdir}/usr/lib/igc/NOTICES.txt" "${pkgdir}/usr/share/licenses/${pkgname}"
