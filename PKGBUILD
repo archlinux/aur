@@ -26,11 +26,12 @@ pkgname=btdu
 pkgver=0.5.0
 pkgrel=1
 pkgdesc='sampling disk usage profiler for btrfs'
-arch=('i686' 'x86_64')
+arch=('aarch64' 'i686' 'x86_64')
 url='https://github.com/CyberShadow/btdu'
 license=('GPL2')
 depends=('ncurses' 'd-runtime')
-makedepends=('d-compiler' 'dub' 'dtools')
+_d_compiler_spec='d-compiler>=2.97.0'
+makedepends=("$_d_compiler_spec" 'dub' 'dtools')
 
 # These should match dub.selections.json from the btdu repository:
 _d_ae_ver=0.0.3228
@@ -62,8 +63,13 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  HOME="${srcdir}/_dub" dub --skip-registry=all build -b release --rdmd || # --rdmd creates smaller binaries
-  HOME="${srcdir}/_dub" dub --skip-registry=all build -b release # retry without --rdmd - https://github.com/dlang/dub/pull/2033
+
+  # Ensure Dub doesn't try to use GDC
+  local d_compiler
+  d_compiler=$(pacman -Qq "$_d_compiler_spec")
+
+  HOME="${srcdir}/_dub" dub --skip-registry=all build --compiler="$d_compiler" -b release --rdmd || # --rdmd creates smaller binaries
+  HOME="${srcdir}/_dub" dub --skip-registry=all build --compiler="$d_compiler" -b release # retry without --rdmd - https://github.com/dlang/dub/pull/2033
 }
 
 package() {

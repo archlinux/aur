@@ -3,10 +3,11 @@ pkgbase = btdu
 	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/CyberShadow/btdu
+	arch = aarch64
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = d-compiler
+	makedepends = d-compiler>=2.97.0
 	makedepends = dub
 	makedepends = dtools
 	depends = ncurses
