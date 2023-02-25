@@ -1,0 +1,12 @@
+diff '--color=auto' --unified --recursive --text orig/opensubtitles-uploader-2.7.0/package.json opensubtitles-uploader-2.7.0/package.json
+--- orig/opensubtitles-uploader-2.7.0/package.json	2022-09-25 14:04:39.000000000 +0200
++++ opensubtitles-uploader-2.7.0/package.json	2023-02-24 09:35:12.172957243 +0100
+@@ -47,7 +47,7 @@
+         "jshint": "^2.12.0",
+         "jshint-stylish": "^2.2.1",
+         "modclean": "^3.0.0-beta.1",
+-        "nw-builder": "^3.5.7",
++        "nw-builder": "3.5.7",
+         "run-sequence": "^2.2.1",
+         "yargs": "^16.2.0"
+     }
