@@ -7,7 +7,7 @@ pkgname="${_pkgname}-git"
 
 pkgver=1.0.1
 
-pkgrel=2
+pkgrel=3
 
 pkgdesc="Reads iio-proxy-sensor output to enable automatic touchscreen rotation in Hyprland"
 
