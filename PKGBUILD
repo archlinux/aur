@@ -14,7 +14,7 @@ license=('GPL')
 groups=('base-devel')
 depends=('bash' 'glibc' 'libarchive' 'curl' 'gpgme' 'pacman-mirrorlist'
          'gettext' 'gawk' 'coreutils' 'gnupg' 'grep' 'makepkg-optimize')
-makedepends=('meson' 'asciidoc' 'doxygen' 'base-devel')
+makedepends=('meson' 'asciidoc' 'doxygen' 'samurai' 'base-devel')
 checkdepends=('python' 'fakechroot')
 optdepends=('perl-locale-gettext: translation support in makepkg-template'
             "pacman-static: just in case pacman breaks. Shouldn\'t happen but just in case!"
@@ -28,7 +28,7 @@ backup=(etc/pacman.conf
 options=('strip')
 validpgpkeys=('6645B0A8C7005E78DB1D7864F99FFE0FEAE999BD'  # Allan McRae <allan@archlinux.org>
               'B8151B117037781095514CA7BBDFFC92306B1121') # Andrew Gregory (pacman) <andrew@archlinux.org>
-source=(git+https://gitlab.archlinux.org/pacman/pacman#${pkgver}
+source=(https://sources.archlinux.org/other/pacman/${_pkgname}-${pkgver}.tar.xz{,.sig}
         pacman-always-create-directories-from-debugedit.patch::https://gitlab.archlinux.org/pacman/pacman/-/commit/efd0c24c07b86be014a4edb5a8ece021b87e3900.patch
         pacman-always-create-directories-from-debugedit-fixup.patch::https://gitlab.archlinux.org/pacman/pacman/-/commit/86981383a2f4380bda26311831be94cdc743649b.patch
         pacman-fix-unique-source-paths.patch::https://gitlab.archlinux.org/pacman/pacman/-/commit/478af273dfe24ded197ec54ae977ddc3719d74a0.patch
@@ -36,7 +36,8 @@ source=(git+https://gitlab.archlinux.org/pacman/pacman#${pkgver}
         pacman.conf
         makepkg.conf
         salted-patches.patch)
-sha256sums=('SKIP'
+sha256sums=('7d8e3e8c5121aec0965df71f59bedf46052c6cf14f96365c4411ec3de0a4c1a5'
+            'SKIP'
             '522b789e442b3bb3afa7ea3fa417a99554f36ec00de3986cbe92c80f09a7db99'
             'dab7c70fb9d77d702069bb57f5a12496b463d68ae20460fb0a3ffcb4791321a9'
             '0b56c61eac3d9425d68faa2eccbaefdc5ed422b643974ae829eaca0460043da1'
@@ -60,7 +61,7 @@ prepare() {
 }
 
 build() {
-  cd "${_pkgname-$pkgver}"
+  cd "${_pkgname}-${pkgver}"
 
   meson --prefix=/usr \
         --buildtype=plain \
@@ -74,13 +75,13 @@ build() {
 }
 
 check() {
-  cd "${_pkgname-$pkgver}"
+  cd "${_pkgname}-${pkgver}"
 
   samu -C build test
 }
 
 package() {
-  cd "${_pkgname-$pkgver}"
+  cd "${_pkgname}-${pkgver}"
 
   DESTDIR="${pkgdir}" samu -C build install
 
