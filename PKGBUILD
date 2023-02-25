@@ -58,7 +58,7 @@ git+https://github.com/cgutman/enet.git
 )
 sha256sums=('f596fd4b30bd9f81aac136366666491aa401ee420155d6c4368016088cf19caa'
             '5ce01689247cb01d3f119cac32c731607d99bb875dcdd39c92b547f76d2befa0'
-            '6bca89de1d90f81887c34805c728e56345b65f3267e69ab04dd72410bf7f3957'
+            'd5cd58dd6cfdef10ac70d55f4baed52f90a117f972799889703c441d27a9679f'
             'SKIP'
             'SKIP'
             'SKIP'

@@ -7,7 +7,7 @@ ExecStart=sunshine
 Restart=always
 RestartSec=3
 PrivateTmp=true
-NoNewPrivileges=true
+#NoNewPrivileges=true
 
 [Install]
 WantedBy=graphical-session.target
