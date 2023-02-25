@@ -1,7 +1,7 @@
 _name=kio
 pkgname=${_name}-light
 pkgver=5.103.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Resource and network access abstraction (stripped from unnecessary dependencies)'
 arch=('x86_64')
 url='https://community.kde.org/Frameworks'
@@ -9,7 +9,7 @@ license=('LGPL')
 groups=('kf5')
 conflicts=("${_name}")
 provides=("${_name}")
-depends=('solid' 'kjobwidgets' 'kbookmarks' 'libxslt' 'ktextwidgets' 'kconfig' 'kcoreaddons')
+depends=('solid' 'kjobwidgets' 'kbookmarks' 'libxslt' 'ktextwidgets' 'kservice')
 makedepends=('extra-cmake-modules' 'qt5-tools')
 
 optdepends=(
