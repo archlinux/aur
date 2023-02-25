@@ -1,6 +1,6 @@
 pkgbase = linux-drm-tip-git
 	pkgdesc = Linux kernel with bleeding-edge GPU drivers
-	pkgver = 6.2.r1156185.3775348312c4
+	pkgver = 6.2.r1157488.648a70b879da
 	pkgrel = 1
 	url = https://cgit.freedesktop.org/drm-tip
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = linux-drm-tip-git
 	source = linux-drm-tip-git::git://anongit.freedesktop.org/drm-tip#branch=drm-tip
 	source = config
 	sha256sums = SKIP
-	sha256sums = 2851b2b8475f1afae7d4f82b58cf7563adf99e39ebe2c1ffce2dd002e2f91b39
+	sha256sums = f35bb39db7324a45e78e6c75c1a60f117fea3f7d0df9f4a32bed411751d6ffea
 
 pkgname = linux-drm-tip-git
 	pkgdesc = The Linux kernel with bleeding-edge GPU drivers kernel and modules

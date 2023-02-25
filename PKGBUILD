@@ -2,7 +2,7 @@
 # Based on testing/linux by Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-drm-tip-git
-pkgver=6.2.r1156185.3775348312c4
+pkgver=6.2.r1157488.648a70b879da
 pkgrel=1
 pkgdesc='Linux kernel with bleeding-edge GPU drivers'
 _product="${pkgbase%-git}"
@@ -22,7 +22,7 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            '2851b2b8475f1afae7d4f82b58cf7563adf99e39ebe2c1ffce2dd002e2f91b39')
+            'f35bb39db7324a45e78e6c75c1a60f117fea3f7d0df9f4a32bed411751d6ffea')
 
 pkgver() {
   cd $_srcname
