@@ -6,7 +6,7 @@
 
 pkgname="catt"
 pkgver=0.12.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Cast All The Things - Send videos from many, many online sources to your Chromecast.'
 arch=('any')
 url="https://github.com/skorokithakis/catt"
@@ -24,7 +24,7 @@ sha256sums=('11b77cf5a3ccb96a5f3234334a8f888cf23d2435d4acefbcaca0376290468be0')
 
 build() {
   cd "$pkgname-$pkgver"
-  python -m poetry build --format wheel
+  GIT_DIR='.' python -m poetry build --format wheel
 }
 
 package() {

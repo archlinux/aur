@@ -1,7 +1,7 @@
 pkgbase = catt
 	pkgdesc = Cast All The Things - Send videos from many, many online sources to your Chromecast.
 	pkgver = 0.12.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/skorokithakis/catt
 	arch = any
 	license = BSD
