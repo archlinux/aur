@@ -2,7 +2,7 @@
 pkgname=mqtt2prometheus
 _pkgname=mqtt2prometheus
 pkgver=v0.1.7.4.gc9296a9
-pkgrel=1
+pkgrel=2
 pkgdesc="Prometheus exporter that can be used to scrape topics from MQTT"
 arch=("x86_64" "i686" "armv6h" "armv7h" "aarch64")
 url="https://github.com/hikhvar/mqtt2prometheus"
@@ -33,9 +33,13 @@ build() {
     cd "${srcdir}/${_pkgname}"
 
     export GOPATH="${srcdir}/gopath"
-    go build --ldflags "-extldflags "static"" -o bin/mqtt2prometheus ./cmd
-
-    go clean -modcache
+    go build\
+      -trimpath \
+      -buildmode=pie \
+      -mod=readonly \
+      -modcacherw \
+      --ldflags "-extldflags "static"" \
+      -o bin/mqtt2prometheus ./cmd
 }
 
 package() {
