@@ -1,0 +1,20 @@
+pkgbase = ssdfs-tools-git
+	pkgdesc = SSDFS file system utilities
+	pkgver = 4.09.r15.gba47e91
+	pkgrel = 1
+	url = https://github.com/dubeyko/ssdfs-tools
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = linux-api-headers
+	makedepends = util-linux
+	depends = libblkid.so
+	depends = libuuid.so
+	depends = zlib
+	provides = ssdfs-tools=4.09.r15.gba47e91
+	conflicts = ssdfs-tools
+	source = git+https://github.com/dubeyko/ssdfs-tools.git
+	sha256sums = SKIP
+
+pkgname = ssdfs-tools-git
