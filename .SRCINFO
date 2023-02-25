@@ -1,7 +1,7 @@
 pkgbase = python-django-ninja
 	pkgdesc = Fast Django REST Framework
 	pkgver = 0.21.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://django-ninja.rest-framework.com/
 	arch = any
 	license = MIT
