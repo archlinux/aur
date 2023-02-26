@@ -10,6 +10,7 @@ pkgbase = python-google-cloud-texttospeech
 	depends = python-libcst
 	depends = python-proto-plus
 	depends = python-google-api-core
+	depends = python-grpcio
 	depends = python-packaging
 	source = https://files.pythonhosted.org/packages/source/g/google-cloud-texttospeech/google-cloud-texttospeech-2.14.1.tar.gz
 	b2sums = 14cf8ab05387283ef97914bd6b0d29fbc24337cf7cd38561c4d5471969a51e3d5b2b974ca824f6fe654ab540b8a36d6415396ca417b43b556b20309cb204df96
