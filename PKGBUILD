@@ -5,7 +5,7 @@
 _gitcommit=3eaec13cfc886a70ed5ff84c228d3f3bce442620
 pkgname=mono-addins
 pkgver=1.3.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Generic framework for creating extensible applications'
 url='https://www.mono-project.com/Mono.Addins'
 arch=('any')
