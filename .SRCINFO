@@ -1,14 +1,14 @@
 pkgbase = cmcl
 	pkgdesc = A Launcher for Minecraft Java Edition Running On The Console
-	pkgver = 2.1
-	pkgrel = 15
+	pkgver = 2.1.1
+	pkgrel = 16
 	url = https://github.com/MrShieh-X/console-minecraft-launcher
 	arch = any
 	license = GPL3
-	makedepends = git
 	depends = bash
+	depends = java-runtime
 	noextract = cmcl
-	source = https://github.com/MrShieh-X/console-minecraft-launcher/releases/download/2.1/cmcl
-	sha256sums = 474c0c3a7401c2e32175be818379833dd3b2fd1009cccc2eeebf754f38055ad5
+	source = https://github.com/MrShieh-X/console-minecraft-launcher/releases/download/2.1.1/cmcl
+	sha256sums = 16a9164c3cc712d3d81839b59ca2154e36fe964efa16ba8a23eaa2a7fcb357d5
 
 pkgname = cmcl

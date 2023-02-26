@@ -5,16 +5,15 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=cmcl
-pkgver=2.1
-pkgrel=15
+pkgver=2.1.1
+pkgrel=16
 epoch=
 pkgdesc="A Launcher for Minecraft Java Edition Running On The Console"
 arch=('any')
 url="https://github.com/MrShieh-X/console-minecraft-launcher"
 license=('GPL3')
 groups=()
-depends=('bash')
-makedepends=("git")
+depends=('bash' 'java-runtime')
 checkdepends=()
 optdepends=()
 provides=()
@@ -26,7 +25,7 @@ install=
 changelog=
 source=("https://github.com/MrShieh-X/console-minecraft-launcher/releases/download/$pkgver/$pkgname")
 noextract=("$pkgname")
-sha256sums=("474c0c3a7401c2e32175be818379833dd3b2fd1009cccc2eeebf754f38055ad5")
+sha256sums=("16a9164c3cc712d3d81839b59ca2154e36fe964efa16ba8a23eaa2a7fcb357d5")
 validpgpkeys=()
 
 prepare() {
