@@ -1,6 +1,6 @@
 pkgbase = libphidget
 	pkgdesc = user-space access library for the Phidget devices
-	pkgver = 1.13.20230222
+	pkgver = 1.13.20230224
 	pkgrel = 1
 	epoch = 2
 	url = https://www.phidgets.com
@@ -9,7 +9,7 @@ pkgbase = libphidget
 	depends = libusb
 	provides = libphidget
 	conflicts = libphidget
-	source = https://www.phidgets.com/downloads/phidget22/libraries/linux/libphidget22/libphidget22-1.13.20230222.tar.gz
-	sha256sums = 183fa706c0362920a1e6c65650e487d687da91db3f62e005621f5c8f2f9a7946
+	source = https://www.phidgets.com/downloads/phidget22/libraries/linux/libphidget22/libphidget22-1.13.20230224.tar.gz
+	sha256sums = 1d0795110517eb18c806472887cafc861dd0b6a1c1045246c555bc47f6bd77e3
 
 pkgname = libphidget
