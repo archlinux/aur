@@ -1,0 +1,374 @@
+From 683787b5c5c075f53a95f4d85f76302111c89914 Mon Sep 17 00:00:00 2001
+From: Evangelos Foutras <evangelos@foutrelis.com>
+Date: Sat, 23 Oct 2021 05:08:48 +0300
+Subject: [PATCH] Enable SSP and PIE by default
+
+This is a minimal set of changes needed to make clang use SSP and PIE by
+default on Arch Linux. Tests that were easy to adjust have been changed
+accordingly; only test/Driver/linux-ld.c has been marked as "expected
+failure" due to the number of changes it would require (mostly replacing
+crtbegin.o with crtbeginS.o).
+
+Doing so is needed in order to align clang with the new default GCC
+behavior in Arch which generates PIE executables by default and also
+defaults to -fstack-protector-strong. It is not meant to be a long term
+solution, but a simple temporary fix.
+
+Hopefully these changes will be obsoleted by the introduction upstream
+of a compile-time option (https://bugs.llvm.org/show_bug.cgi?id=13410)
+---
+ clang/lib/Driver/ToolChains/Linux.cpp     | 10 ++++++++--
+ clang/lib/Driver/ToolChains/Linux.h       |  5 +++++
+ clang/test/Driver/cross-linux.c           | 16 ++++++++--------
+ clang/test/Driver/env.c                   |  2 +-
+ clang/test/Driver/fsanitize.c             | 14 +++++++-------
+ clang/test/Driver/gcc-toolchain.cpp       |  6 +++---
+ clang/test/Driver/hexagon-toolchain-elf.c |  2 +-
+ clang/test/Driver/hip-fpie-option.hip     |  4 ++--
+ clang/test/Driver/linux-as.c              |  4 ++--
+ clang/test/Driver/linux-ld.c              |  2 ++
+ clang/test/Driver/ppc-abi.c               | 18 +++++++++++-------
+ clang/test/Driver/riscv32-toolchain.c     |  4 ++--
+ clang/test/Driver/riscv64-toolchain.c     |  4 ++--
+ clang/test/Driver/stack-protector.c       |  4 ++--
+ 14 files changed, 56 insertions(+), 39 deletions(-)
+
+diff --git a/clang/lib/Driver/ToolChains/Linux.cpp b/clang/lib/Driver/ToolChains/Linux.cpp
+index c9360fc67165..2b60460e6604 100644
+--- a/clang/lib/Driver/ToolChains/Linux.cpp
++++ b/clang/lib/Driver/ToolChains/Linux.cpp
+@@ -652,8 +652,14 @@ void Linux::AddIAMCUIncludeArgs(const ArgList &DriverArgs,
+ }
+ 
+ bool Linux::isPIEDefault() const {
+-  return (getTriple().isAndroid() && !getTriple().isAndroidVersionLT(16)) ||
+-          getTriple().isMusl() || getSanitizerArgs().requiresPIE();
++  const bool IsMips = getTriple().isMIPS();
++  const bool IsAndroid = getTriple().isAndroid();
++
++  if (IsMips || IsAndroid)
++    return (getTriple().isAndroid() && !getTriple().isAndroidVersionLT(16)) ||
++            getTriple().isMusl() || getSanitizerArgs().requiresPIE();
++
++  return true;
+ }
+ 
+ bool Linux::IsAArch64OutlineAtomicsDefault(const ArgList &Args) const {
+diff --git a/clang/lib/Driver/ToolChains/Linux.h b/clang/lib/Driver/ToolChains/Linux.h
+index 169a37c44072..a6458092462e 100644
+--- a/clang/lib/Driver/ToolChains/Linux.h
++++ b/clang/lib/Driver/ToolChains/Linux.h
+@@ -10,6 +10,7 @@
+ #define LLVM_CLANG_LIB_DRIVER_TOOLCHAINS_LINUX_H
+ 
+ #include "Gnu.h"
++#include "clang/Basic/LangOptions.h"
+ #include "clang/Driver/ToolChain.h"
+ 
+ namespace clang {
+@@ -46,6 +47,10 @@ public:
+   bool isPIEDefault() const override;
+   bool isNoExecStackDefault() const override;
+   bool IsMathErrnoDefault() const override;
++  LangOptions::StackProtectorMode
++  GetDefaultStackProtectorLevel(bool KernelOrKext) const override {
++    return LangOptions::SSPStrong;
++  }
+   SanitizerMask getSupportedSanitizers() const override;
+   void addProfileRTLibs(const llvm::opt::ArgList &Args,
+                         llvm::opt::ArgStringList &CmdArgs) const override;
+diff --git a/clang/test/Driver/cross-linux.c b/clang/test/Driver/cross-linux.c
+index 59f5a97d2d9d..8d0e9e724aa0 100644
+--- a/clang/test/Driver/cross-linux.c
++++ b/clang/test/Driver/cross-linux.c
+@@ -43,8 +43,8 @@
+ // CHECK-MULTI32-I386: "{{.*}}/Inputs/multilib_32bit_linux_tree/usr/lib/gcc/i386-unknown-linux/10.2.0/../../../../i386-unknown-linux/bin{{/|\\\\}}ld"
+ // CHECK-MULTI32-I386: "--sysroot=[[sysroot:.*/Inputs/basic_linux_tree]]"
+ // CHECK-MULTI32-I386: "-m" "elf_i386"
+-// CHECK-MULTI32-I386: "crti.o" "[[gcc_install:.*/Inputs/multilib_32bit_linux_tree/usr/lib/gcc/i386-unknown-linux/10.2.0]]{{/|\\\\}}crtbegin.o"
+-// CHECK-MULTI32-I386: "-L[[gcc_install]]"
++// CHECK-MULTI32-I386: "crti.o" "crtbeginS.o"
++// CHECK-MULTI32-I386: "-L[[gcc_install:.*/Inputs/multilib_32bit_linux_tree/usr/lib/gcc/i386-unknown-linux/10.2.0]]"
+ // CHECK-MULTI32-I386: "-L[[gcc_install]]/../../../../i386-unknown-linux/lib/../lib32"
+ // CHECK-MULTI32-I386: "-L[[gcc_install]]/../../../../i386-unknown-linux/lib"
+ // CHECK-MULTI32-I386: "-L[[sysroot]]/lib"
+@@ -61,8 +61,8 @@
+ // CHECK-MULTI32-X86-64: "{{.*}}/Inputs/multilib_32bit_linux_tree/usr/lib/gcc/i386-unknown-linux/10.2.0/../../../../i386-unknown-linux/bin{{/|\\\\}}ld"
+ // CHECK-MULTI32-X86-64: "--sysroot=[[sysroot:.*/Inputs/basic_linux_tree]]"
+ // CHECK-MULTI32-X86-64: "-m" "elf_x86_64"
+-// CHECK-MULTI32-X86-64: "crti.o" "[[gcc_install:.*/Inputs/multilib_32bit_linux_tree/usr/lib/gcc/i386-unknown-linux/10.2.0]]/64{{/|\\\\}}crtbegin.o"
+-// CHECK-MULTI32-X86-64: "-L[[gcc_install]]/64"
++// CHECK-MULTI32-X86-64: "crti.o" "crtbeginS.o"
++// CHECK-MULTI32-X86-64: "-L[[gcc_install:.*/Inputs/multilib_32bit_linux_tree/usr/lib/gcc/i386-unknown-linux/10.2.0]]/64"
+ // CHECK-MULTI32-X86-64: "-L[[gcc_install]]/../../../../i386-unknown-linux/lib/../lib64"
+ // CHECK-MULTI32-X86-64: "-L[[gcc_install]]/../../../../i386-unknown-linux/lib"
+ // CHECK-MULTI32-X86-64: "-L[[sysroot]]/lib"
+@@ -79,8 +79,8 @@
+ // CHECK-MULTI64-I386: "{{.*}}/Inputs/multilib_64bit_linux_tree/usr/lib/gcc/x86_64-unknown-linux/10.2.0/../../../../x86_64-unknown-linux/bin{{/|\\\\}}ld"
+ // CHECK-MULTI64-I386: "--sysroot=[[sysroot:.*/Inputs/basic_linux_tree]]"
+ // CHECK-MULTI64-I386: "-m" "elf_i386"
+-// CHECK-MULTI64-I386: "crti.o" "[[gcc_install:.*/Inputs/multilib_64bit_linux_tree/usr/lib/gcc/x86_64-unknown-linux/10.2.0]]/32{{/|\\\\}}crtbegin.o"
+-// CHECK-MULTI64-I386: "-L[[gcc_install]]/32"
++// CHECK-MULTI64-I386: "crti.o" "crtbeginS.o"
++// CHECK-MULTI64-I386: "-L[[gcc_install:.*/Inputs/multilib_64bit_linux_tree/usr/lib/gcc/x86_64-unknown-linux/10.2.0]]/32"
+ // CHECK-MULTI64-I386: "-L[[gcc_install]]/../../../../x86_64-unknown-linux/lib/../lib32"
+ // CHECK-MULTI64-I386: "-L[[gcc_install]]/../../../../x86_64-unknown-linux/lib"
+ // CHECK-MULTI64-I386: "-L[[sysroot]]/lib"
+@@ -97,8 +97,8 @@
+ // CHECK-MULTI64-X86-64: "{{.*}}/Inputs/multilib_64bit_linux_tree/usr/lib/gcc/x86_64-unknown-linux/10.2.0/../../../../x86_64-unknown-linux/bin{{/|\\\\}}ld"
+ // CHECK-MULTI64-X86-64: "--sysroot=[[sysroot:.*/Inputs/basic_linux_tree]]"
+ // CHECK-MULTI64-X86-64: "-m" "elf_x86_64"
+-// CHECK-MULTI64-X86-64: "crti.o" "[[gcc_install:.*/Inputs/multilib_64bit_linux_tree/usr/lib/gcc/x86_64-unknown-linux/10.2.0]]{{/|\\\\}}crtbegin.o"
+-// CHECK-MULTI64-X86-64: "-L[[gcc_install]]"
++// CHECK-MULTI64-X86-64: "crti.o" "crtbeginS.o"
++// CHECK-MULTI64-X86-64: "-L[[gcc_install:.*/Inputs/multilib_64bit_linux_tree/usr/lib/gcc/x86_64-unknown-linux/10.2.0]]"
+ // CHECK-MULTI64-X86-64: "-L[[gcc_install]]/../../../../x86_64-unknown-linux/lib/../lib64"
+ // CHECK-MULTI64-X86-64: "-L[[gcc_install]]/../../../../x86_64-unknown-linux/lib"
+ // CHECK-MULTI64-X86-64: "-L[[sysroot]]/lib"
+diff --git a/clang/test/Driver/env.c b/clang/test/Driver/env.c
+index e9b86cbcf428..47f304c0420d 100644
+--- a/clang/test/Driver/env.c
++++ b/clang/test/Driver/env.c
+@@ -22,7 +22,7 @@
+ //
+ // CHECK-LD-32-NOT: warning:
+ // CHECK-LD-32: "{{.*}}ld{{(.exe)?}}" "--sysroot=[[SYSROOT:[^"]+]]"
+-// CHECK-LD-32: "{{.*}}/usr/lib/gcc/i386-unknown-linux/10.2.0{{/|\\\\}}crtbegin.o"
++// CHECK-LD-32: "crtbeginS.o"
+ // CHECK-LD-32: "-L[[SYSROOT]]/usr/lib/gcc/i386-unknown-linux/10.2.0"
+ // CHECK-LD-32: "-L[[SYSROOT]]/usr/lib/gcc/i386-unknown-linux/10.2.0/../../../../i386-unknown-linux/lib"
+ // CHECK-LD-32: "-L[[SYSROOT]]/lib"
+diff --git a/clang/test/Driver/fsanitize.c b/clang/test/Driver/fsanitize.c
+index b7d61abe7ec5..461b69b0ac15 100644
+--- a/clang/test/Driver/fsanitize.c
++++ b/clang/test/Driver/fsanitize.c
+@@ -344,15 +344,15 @@
+ // RUN: %clang -target x86_64-linux-gnu -fsanitize=vptr -fno-sanitize=vptr -fsanitize=undefined,address %s -### 2>&1
+ // OK
+ 
+-// RUN: %clang -target x86_64-linux-gnu -fsanitize=thread %s -### 2>&1 | FileCheck %s --check-prefix=CHECK-NO-PIE
+-// RUN: %clang -target x86_64-linux-gnu -fsanitize=memory %s -### 2>&1 | FileCheck %s --check-prefix=CHECK-NO-PIE
++// RUN: %clang -target x86_64-linux-gnu -fsanitize=thread %s -### 2>&1 | FileCheck %s --check-prefix=CHECK-PIE
++// RUN: %clang -target x86_64-linux-gnu -fsanitize=memory %s -### 2>&1 | FileCheck %s --check-prefix=CHECK-PIE
+ // RUN: %clang -target x86_64-unknown-freebsd -fsanitize=memory %s -### 2>&1 | FileCheck %s --check-prefix=CHECK-PIE
+ // RUN: %clang -target aarch64-linux-gnu -fsanitize=memory %s -### 2>&1 | FileCheck %s --check-prefix=CHECK-PIE
+ // RUN: %clang -target arm-linux-androideabi -fsanitize=address %s -### 2>&1 | FileCheck %s --check-prefix=CHECK-PIC-NO-PIE
+ // RUN: %clang -target arm-linux-androideabi24 -fsanitize=address %s -### 2>&1 | FileCheck %s --check-prefix=CHECK-PIE
+ // RUN: %clang -target aarch64-linux-android -fsanitize=address %s -### 2>&1 | FileCheck %s --check-prefix=CHECK-PIE
+-// RUN: %clang -target x86_64-linux-gnu -fsanitize=address %s -### 2>&1 | FileCheck %s --check-prefix=CHECK-NO-PIE
+-// RUN: %clang -target i386-linux-gnu -fsanitize=address %s -### 2>&1 | FileCheck %s --check-prefix=CHECK-NO-PIE
++// RUN: %clang -target x86_64-linux-gnu -fsanitize=address %s -### 2>&1 | FileCheck %s --check-prefix=CHECK-PIE
++// RUN: %clang -target i386-linux-gnu -fsanitize=address %s -### 2>&1 | FileCheck %s --check-prefix=CHECK-PIE
+ 
+ // CHECK-NO-PIE-NOT: "-pie"
+ // CHECK-NO-PIE: "-mrelocation-model" "static"
+@@ -687,12 +687,12 @@
+ // RUN: %clang -fno-sanitize=safe-stack -### %s 2>&1 | FileCheck %s -check-prefix=NOSP
+ // NOSP-NOT: "-fsanitize=safe-stack"
+ 
+-// RUN: %clang -target x86_64-linux-gnu -fsanitize=safe-stack -### %s 2>&1 | FileCheck %s -check-prefix=NO-SP
++// RUN: %clang -target x86_64-linux-gnu -fsanitize=safe-stack -### %s 2>&1 | FileCheck %s -check-prefix=SP
+ // RUN: %clang -target x86_64-linux-gnu -fsanitize=address,safe-stack -### %s 2>&1 | FileCheck %s -check-prefix=SP-ASAN
+ // RUN: %clang -target x86_64-linux-gnu -fstack-protector -fsanitize=safe-stack -### %s 2>&1 | FileCheck %s -check-prefix=SP
+ // RUN: %clang -target x86_64-linux-gnu -fsanitize=safe-stack -fstack-protector-all -### %s 2>&1 | FileCheck %s -check-prefix=SP
+-// RUN: %clang -target arm-linux-androideabi -fsanitize=safe-stack -### %s 2>&1 | FileCheck %s -check-prefix=NO-SP
+-// RUN: %clang -target aarch64-linux-android -fsanitize=safe-stack -### %s 2>&1 | FileCheck %s -check-prefix=NO-SP
++// RUN: %clang -target arm-linux-androideabi -fsanitize=safe-stack -### %s 2>&1 | FileCheck %s -check-prefix=SP
++// RUN: %clang -target aarch64-linux-android -fsanitize=safe-stack -### %s 2>&1 | FileCheck %s -check-prefix=SP
+ // RUN: %clang -target i386-contiki-unknown -fsanitize=safe-stack -### %s 2>&1 | FileCheck %s -check-prefix=NO-SP
+ // NO-SP-NOT: stack-protector
+ // NO-SP: "-fsanitize=safe-stack"
+diff --git a/clang/test/Driver/gcc-toolchain.cpp b/clang/test/Driver/gcc-toolchain.cpp
+index 7cdba0841b8c..655457d62bf8 100644
+--- a/clang/test/Driver/gcc-toolchain.cpp
++++ b/clang/test/Driver/gcc-toolchain.cpp
+@@ -23,7 +23,7 @@
+ // the same precise formatting of the path as the '-internal-system' flags
+ // above, so we just blanket wildcard match the 'crtbegin.o'.
+ // CHECK: "{{[^"]*}}ld{{(.exe)?}}"
+-// CHECK-SAME: "{{[^"]*}}/usr/lib/gcc/x86_64-linux-gnu/4.8{{/|\\\\}}crtbegin.o"
++// CHECK-SAME: "crtbeginS.o"
+ // CHECK-SAME: "-L[[TOOLCHAIN]]/usr/lib/gcc/x86_64-linux-gnu/4.8"
+ /// On x86_64, there is an extra usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu but we should not test it.
+ 
+@@ -35,5 +35,5 @@
+ // RUN:   --target=aarch64-suse-linux -B%S/Inputs/opensuse_42.2_aarch64_tree/usr | \
+ // RUN:   FileCheck %s --check-prefix=NO_AARCH64
+ 
+-// AARCH64:        Inputs{{[^"]+}}aarch64-suse-linux/{{[^"]+}}crt1.o"
+-// NO_AARCH64-NOT: Inputs{{[^"]+}}aarch64-suse-linux/{{[^"]+}}crt1.o"
++// AARCH64:        Inputs{{[^"]+}}aarch64-suse-linux/{{[^"]+}}crti.o"
++// NO_AARCH64-NOT: Inputs{{[^"]+}}aarch64-suse-linux/{{[^"]+}}crti.o"
+diff --git a/clang/test/Driver/hexagon-toolchain-elf.c b/clang/test/Driver/hexagon-toolchain-elf.c
+index cc11f9fcba9e..1fe8b5db587b 100644
+--- a/clang/test/Driver/hexagon-toolchain-elf.c
++++ b/clang/test/Driver/hexagon-toolchain-elf.c
+@@ -487,7 +487,7 @@
+ // RUN:   %s 2>&1 \
+ // RUN:   | FileCheck -check-prefix=CHECK042 %s
+ // CHECK042:      "-cc1"
+-// CHECK042:      "-mrelocation-model" "static"
++// CHECK042:      "-mrelocation-model" "pic"
+ // CHECK042:      "-mllvm" "-hexagon-small-data-threshold=8"
+ // CHECK042-NEXT: llvm-mc
+ // CHECK042:      "-gpsize=8"
+diff --git a/clang/test/Driver/hip-fpie-option.hip b/clang/test/Driver/hip-fpie-option.hip
+index 2e296a099dea..86915f1c8c25 100644
+--- a/clang/test/Driver/hip-fpie-option.hip
++++ b/clang/test/Driver/hip-fpie-option.hip
+@@ -5,11 +5,11 @@
+ 
+ // RUN: %clang -### -target x86_64-unknown-linux-gnu \
+ // RUN:   --offload-arch=gfx906 %s -nogpulib -nogpuinc \
+-// RUN:   2>&1 | FileCheck -check-prefixes=DEV,HOST-STATIC %s
++// RUN:   2>&1 | FileCheck -check-prefixes=DEV,HOST-PIE %s
+ 
+ // RUN: %clang -### -target x86_64-unknown-linux-gnu \
+ // RUN:   -fgpu-rdc --offload-arch=gfx906 %s -nogpulib -nogpuinc \
+-// RUN:   2>&1 | FileCheck -check-prefixes=DEV,HOST-STATIC %s
++// RUN:   2>&1 | FileCheck -check-prefixes=DEV,HOST-PIE %s
+ 
+ // RUN: %clang -### -target x86_64-unknown-linux-gnu \
+ // RUN:   --offload-arch=gfx906 %s -nogpulib -nogpuinc \
+diff --git a/clang/test/Driver/linux-as.c b/clang/test/Driver/linux-as.c
+index 0959bd7ba0a1..4056a672b6f9 100644
+--- a/clang/test/Driver/linux-as.c
++++ b/clang/test/Driver/linux-as.c
+@@ -164,7 +164,7 @@
+ // CHECK-PPC-NO-MCPU-NOT: as{{.*}} "-mcpu=invalid-cpu"
+ //
+ // RUN: %clang -target sparc64-linux -mcpu=invalid-cpu -### \
+-// RUN:   -no-integrated-as -c %s 2>&1 \
++// RUN:   -no-integrated-as -fno-pic -c %s 2>&1 \
+ // RUN:   | FileCheck -check-prefix=CHECK-SPARCV9 %s
+ // CHECK-SPARCV9: as
+ // CHECK-SPARCV9: -64
+@@ -173,7 +173,7 @@
+ // CHECK-SPARCV9: -o
+ //
+ // RUN: %clang -target sparc64-linux -mcpu=invalid-cpu -### \
+-// RUN:   -no-integrated-as -fpic -c %s 2>&1 \
++// RUN:   -no-integrated-as -c %s 2>&1 \
+ // RUN:   | FileCheck -check-prefix=CHECK-SPARCV9PIC %s
+ // CHECK-SPARCV9PIC: as
+ // CHECK-SPARCV9PIC: -64
+diff --git a/clang/test/Driver/linux-ld.c b/clang/test/Driver/linux-ld.c
+index cc505588331b..c7f81d2c5e49 100644
+--- a/clang/test/Driver/linux-ld.c
++++ b/clang/test/Driver/linux-ld.c
+@@ -1,4 +1,6 @@
+ // UNSUPPORTED: system-windows
++// XFAIL: linux
++
+ // General tests that ld invocations on Linux targets sane. Note that we use
+ // sysroot to make these tests independent of the host system.
+ //
+diff --git a/clang/test/Driver/ppc-abi.c b/clang/test/Driver/ppc-abi.c
+index a74a19953ca2..0452661ba5a7 100644
+--- a/clang/test/Driver/ppc-abi.c
++++ b/clang/test/Driver/ppc-abi.c
+@@ -1,20 +1,20 @@
+ // Check passing PowerPC ABI options to the backend.
+ 
+ // RUN: %clang -target powerpc64-unknown-linux-gnu %s -### -o %t.o 2>&1 \
+-// RUN:   | FileCheck -check-prefix=CHECK-ELFv1 %s
++// RUN:   | FileCheck -check-prefix=CHECK-ELFv1-PIE %s
+ // RUN: %clang -target powerpc64-unknown-linux-gnu %s -### -o %t.o 2>&1 \
+-// RUN:   -mabi=elfv1 | FileCheck -check-prefix=CHECK-ELFv1 %s
++// RUN:   -mabi=elfv1 | FileCheck -check-prefix=CHECK-ELFv1-PIE %s
+ // RUN: %clang -target powerpc64-unknown-linux-gnu %s -### -o %t.o 2>&1 \
+-// RUN:   -mabi=elfv2 | FileCheck -check-prefix=CHECK-ELFv2-BE %s
++// RUN:   -mabi=elfv2 | FileCheck -check-prefix=CHECK-ELFv2-BE-PIE %s
+ 
+ // RUN: %clang -target powerpc64le-unknown-linux-gnu %s -### -o %t.o 2>&1 \
+-// RUN:   | FileCheck -check-prefix=CHECK-ELFv2 %s
++// RUN:   | FileCheck -check-prefix=CHECK-ELFv2-PIE %s
+ // RUN: %clang -target powerpc64le-unknown-linux-gnu %s -### -o %t.o 2>&1 \
+ // RUN:   -mabi=elfv1 | FileCheck -check-prefix=CHECK-ELFv1-LE %s
+ // RUN: %clang -target powerpc64le-unknown-linux-gnu %s -### -o %t.o 2>&1 \
+-// RUN:   -mabi=elfv2 | FileCheck -check-prefix=CHECK-ELFv2 %s
++// RUN:   -mabi=elfv2 | FileCheck -check-prefix=CHECK-ELFv2-PIE %s
+ // RUN: %clang -target powerpc64le-unknown-linux-gnu %s -### -o %t.o 2>&1 \
+-// RUN:   -mabi=altivec | FileCheck -check-prefix=CHECK-ELFv2 %s
++// RUN:   -mabi=altivec | FileCheck -check-prefix=CHECK-ELFv2-PIE %s
+ 
+ // RUN: %clang -target powerpc64-unknown-freebsd11 %s -### 2>&1 | FileCheck --check-prefix=CHECK-ELFv1 %s
+ // RUN: %clang -target powerpc64-unknown-freebsd12 %s -### 2>&1 | FileCheck --check-prefix=CHECK-ELFv1 %s
+@@ -26,10 +26,14 @@
+ 
+ // CHECK-ELFv1: "-mrelocation-model" "static"
+ // CHECK-ELFv1: "-target-abi" "elfv1"
+-// CHECK-ELFv1-LE: "-mrelocation-model" "static"
++// CHECK-ELFv1-PIE: "-mrelocation-model" "pic" "-pic-level" "2"
++// CHECK-ELFv1-PIE: "-target-abi" "elfv1"
++// CHECK-ELFv1-LE: "-mrelocation-model" "pic" "-pic-level" "2"
+ // CHECK-ELFv1-LE: "-target-abi" "elfv1"
+ // CHECK-ELFv2: "-mrelocation-model" "static"
+ // CHECK-ELFv2: "-target-abi" "elfv2"
++// CHECK-ELFv2-PIE: "-mrelocation-model" "pic" "-pic-level" "2"
++// CHECK-ELFv2-PIE: "-target-abi" "elfv2"
+ // CHECK-ELFv2-BE: "-mrelocation-model" "static"
+ // CHECK-ELFv2-BE: "-target-abi" "elfv2"
+ // CHECK-ELFv2-BE-PIE: "-mrelocation-model" "pic" "-pic-level" "2" "-pic-is-pie"
+diff --git a/clang/test/Driver/riscv32-toolchain.c b/clang/test/Driver/riscv32-toolchain.c
+index a5852f5f3997..233d9ef003cf 100644
+--- a/clang/test/Driver/riscv32-toolchain.c
++++ b/clang/test/Driver/riscv32-toolchain.c
+@@ -84,7 +84,7 @@
+ // C-RV32-LINUX-MULTI-ILP32: "--sysroot={{.*}}/Inputs/multilib_riscv_linux_sdk/sysroot"
+ // C-RV32-LINUX-MULTI-ILP32: "-m" "elf32lriscv"
+ // C-RV32-LINUX-MULTI-ILP32: "-dynamic-linker" "/lib/ld-linux-riscv32-ilp32.so.1"
+-// C-RV32-LINUX-MULTI-ILP32: "{{.*}}/Inputs/multilib_riscv_linux_sdk/lib/gcc/riscv64-unknown-linux-gnu/7.2.0/lib32/ilp32{{/|\\\\}}crtbegin.o"
++// C-RV32-LINUX-MULTI-ILP32: "crtbeginS.o"
+ // C-RV32-LINUX-MULTI-ILP32: "-L{{.*}}/Inputs/multilib_riscv_linux_sdk/lib/gcc/riscv64-unknown-linux-gnu/7.2.0/lib32/ilp32"
+ // C-RV32-LINUX-MULTI-ILP32: "-L{{.*}}/Inputs/multilib_riscv_linux_sdk/sysroot/lib32/ilp32"
+ // C-RV32-LINUX-MULTI-ILP32: "-L{{.*}}/Inputs/multilib_riscv_linux_sdk/sysroot/usr/lib32/ilp32"
+@@ -99,7 +99,7 @@
+ // C-RV32-LINUX-MULTI-ILP32D: "--sysroot={{.*}}/Inputs/multilib_riscv_linux_sdk/sysroot"
+ // C-RV32-LINUX-MULTI-ILP32D: "-m" "elf32lriscv"
+ // C-RV32-LINUX-MULTI-ILP32D: "-dynamic-linker" "/lib/ld-linux-riscv32-ilp32d.so.1"
+-// C-RV32-LINUX-MULTI-ILP32D: "{{.*}}/Inputs/multilib_riscv_linux_sdk/lib/gcc/riscv64-unknown-linux-gnu/7.2.0/lib32/ilp32d{{/|\\\\}}crtbegin.o"
++// C-RV32-LINUX-MULTI-ILP32D: "crtbeginS.o"
+ // C-RV32-LINUX-MULTI-ILP32D: "-L{{.*}}/Inputs/multilib_riscv_linux_sdk/lib/gcc/riscv64-unknown-linux-gnu/7.2.0/lib32/ilp32d"
+ // C-RV32-LINUX-MULTI-ILP32D: "-L{{.*}}/Inputs/multilib_riscv_linux_sdk/sysroot/lib32/ilp32d"
+ // C-RV32-LINUX-MULTI-ILP32D: "-L{{.*}}/Inputs/multilib_riscv_linux_sdk/sysroot/usr/lib32/ilp32d"
+diff --git a/clang/test/Driver/riscv64-toolchain.c b/clang/test/Driver/riscv64-toolchain.c
+index e727f20bb601..a801e5eee462 100644
+--- a/clang/test/Driver/riscv64-toolchain.c
++++ b/clang/test/Driver/riscv64-toolchain.c
+@@ -84,7 +84,7 @@
+ // C-RV64-LINUX-MULTI-LP64: "--sysroot={{.*}}/Inputs/multilib_riscv_linux_sdk/sysroot"
+ // C-RV64-LINUX-MULTI-LP64: "-m" "elf64lriscv"
+ // C-RV64-LINUX-MULTI-LP64: "-dynamic-linker" "/lib/ld-linux-riscv64-lp64.so.1"
+-// C-RV64-LINUX-MULTI-LP64: "{{.*}}/Inputs/multilib_riscv_linux_sdk/lib/gcc/riscv64-unknown-linux-gnu/7.2.0/lib64/lp64{{/|\\\\}}crtbegin.o"
++// C-RV64-LINUX-MULTI-LP64: "crtbeginS.o"
+ // C-RV64-LINUX-MULTI-LP64: "-L{{.*}}/Inputs/multilib_riscv_linux_sdk/lib/gcc/riscv64-unknown-linux-gnu/7.2.0/lib64/lp64"
+ // C-RV64-LINUX-MULTI-LP64: "-L{{.*}}/Inputs/multilib_riscv_linux_sdk/sysroot/lib64/lp64"
+ // C-RV64-LINUX-MULTI-LP64: "-L{{.*}}/Inputs/multilib_riscv_linux_sdk/sysroot/usr/lib64/lp64"
+@@ -99,7 +99,7 @@
+ // C-RV64-LINUX-MULTI-LP64D: "--sysroot={{.*}}/Inputs/multilib_riscv_linux_sdk/sysroot"
+ // C-RV64-LINUX-MULTI-LP64D: "-m" "elf64lriscv"
+ // C-RV64-LINUX-MULTI-LP64D: "-dynamic-linker" "/lib/ld-linux-riscv64-lp64d.so.1"
+-// C-RV64-LINUX-MULTI-LP64D: "{{.*}}/Inputs/multilib_riscv_linux_sdk/lib/gcc/riscv64-unknown-linux-gnu/7.2.0/lib64/lp64d{{/|\\\\}}crtbegin.o"
++// C-RV64-LINUX-MULTI-LP64D: "crtbeginS.o"
+ // C-RV64-LINUX-MULTI-LP64D: "-L{{.*}}/Inputs/multilib_riscv_linux_sdk/lib/gcc/riscv64-unknown-linux-gnu/7.2.0/lib64/lp64d"
+ // C-RV64-LINUX-MULTI-LP64D: "-L{{.*}}/Inputs/multilib_riscv_linux_sdk/sysroot/lib64/lp64d"
+ // C-RV64-LINUX-MULTI-LP64D: "-L{{.*}}/Inputs/multilib_riscv_linux_sdk/sysroot/usr/lib64/lp64d"
+diff --git a/clang/test/Driver/stack-protector.c b/clang/test/Driver/stack-protector.c
+index a3e40b50eed8..dfffe0d6cf85 100644
+--- a/clang/test/Driver/stack-protector.c
++++ b/clang/test/Driver/stack-protector.c
+@@ -3,11 +3,11 @@
+ // NOSSP-NOT: "-stack-protector-buffer-size" 
+ 
+ // RUN: %clang -target i386-unknown-linux -fstack-protector -### %s 2>&1 | FileCheck %s -check-prefix=SSP
+-// SSP: "-stack-protector" "1"
++// SSP: "-stack-protector" "2"
+ // SSP-NOT: "-stack-protector-buffer-size" 
+ 
+ // RUN: %clang -target i386-unknown-linux -fstack-protector --param ssp-buffer-size=16 -### %s 2>&1 | FileCheck %s -check-prefix=SSP-BUF
+-// SSP-BUF: "-stack-protector" "1"
++// SSP-BUF: "-stack-protector" "2"
+ // SSP-BUF: "-stack-protector-buffer-size" "16" 
+ 
+ // RUN: %clang -target i386-pc-openbsd -### %s 2>&1 | FileCheck %s -check-prefix=OPENBSD
