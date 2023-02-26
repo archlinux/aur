@@ -50,7 +50,7 @@ _disable_debug=y
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20230220.r0.gd2af0fa4bfa4
+pkgver=20230225.r0.g8232539f864c
 _srcname=linux-next
 pkgrel=1
 pkgdesc='Linux NEXT'
@@ -322,4 +322,4 @@ done
 
 sha512sums=('SKIP'
             '28dc56be7060b2398c33d936ec44527fa9efb042b314c96c1568a6d10ca051a1880672deeb57112aa4f5cf72064d67c1494cd1fb52c4e9dfa33a761d6b3692d1'
-            '02100aa3d72b9f1fe8aed2f941d0e25ce31e297fb61226426b898096de030cafa22f862f64307d1682fb424391b8eaca3be28644718636c48dd9b6b63dd044e4')
+            '19aa93ee9f97461c45749c26387b89231870aa1949caee7218022fb11ffc096e5f49f7700fcd105bd713a037e7e75df8bc3868d8597444c9636004cec76d1e36')
