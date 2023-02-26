@@ -1,12 +1,12 @@
 # Maintainer: Christian Schendel <doppelhelix@gmail.com>
 pkgname=gnome-shell-extension-no-overview-git
-pkgver=r19.857c685
+pkgver=r22.665d0e1
 pkgrel=1
 pkgdesc="No overview at start-up. For GNOME Shell 40+"
 arch=('any')
 url="https://github.com/fthx/no-overview"
 license=('GPL3')
-depends=('gnome-shell>=40')
+depends=('gnome-shell>=1:40')
 makedepends=('git')
 conflicts=("${pkgname%-git}")
 provides=(${pkgname%-git})
