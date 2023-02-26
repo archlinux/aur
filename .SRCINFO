@@ -10,6 +10,7 @@ pkgbase = flowee-pay
 	makedepends = boost
 	makedepends = cmake
 	makedepends = flowee>=2023.02.1
+	makedepends = qt6-tools
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = qt6-svg
