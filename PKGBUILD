@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-compiz-alike-windows-effect-git
 pkgver=r48.21acc46
-pkgrel=3
+pkgrel=4
 pkgdesc="Wobbly windows effect inspired by the Compiz ones"
 arch=('any')
 url="https://github.com/hermes83/compiz-alike-windows-effect"
