@@ -1,6 +1,6 @@
 pkgbase = libretro-melonds-git
 	pkgdesc = Nintendo DS core
-	pkgver = r1991.e93ec3e4
+	pkgver = r2012.0e1f06da
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/libretro/melonDS
@@ -13,7 +13,6 @@ pkgbase = libretro-melonds-git
 	groups = libretro
 	license = GPL3
 	makedepends = git
-	makedepends = libglvnd
 	depends = libgl
 	depends = libretro-core-info
 	provides = libretro-melonds
