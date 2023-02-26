@@ -1,7 +1,4 @@
 # Maintainer: Salamandar <felix@piedallu.me>
-# Contributor: Jaroslav Lichtblau <svetlemodry@archlinux.org>
-# Contributor: Martin Wimpress <code@flexion.org>
-# Contributor: kozec <kozec at kozec dot com>
 
 pkgname=syncthing-gtk
 pkgver=0.9.4.4.2
