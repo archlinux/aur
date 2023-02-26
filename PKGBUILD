@@ -2,7 +2,7 @@
 # Contributor: osch <oliver@luced.de>
 
 pkgname=audacity-local-git
-pkgver=3.3.0.0.r16569
+pkgver=3.3.0.0.r16635
 pkgrel=1
 pkgdesc="Record and edit audio files - Built with package versions as recommended by Audacity team"
 arch=('x86_64')
@@ -41,7 +41,7 @@ prepare() {
   conan config home
   conan config init
   conan config set storage.download_cache="$CONAN_USER_HOME/download_cache"
-  conan remove "*" --src --builds --force
+#  conan remove "*" --src --builds --force
 
   cmake -G "Unix Makefiles" ../audacity \
         -DCMAKE_BUILD_TYPE=Release \
