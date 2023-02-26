@@ -1,9 +1,11 @@
 pkgbase = wshowkeys-git
 	pkgdesc = Displays keys being pressed on a Wayland session
 	pkgver = r5.e8bfc78
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ammgws/wshowkeys
 	arch = x86_64
+	arch = armv7h
+	arch = aarch64
 	license = GPL
 	makedepends = git
 	makedepends = meson

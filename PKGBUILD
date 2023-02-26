@@ -1,11 +1,12 @@
-# Maintainer: Stefan Tatschner <stefan@rumpelsepp.org>
+# Maintainer: Moon Sungjoon <sumoon at seoulsaram dot org>
+# Contributor: Stefan Tatschner <stefan@rumpelsepp.org>
 
 pkgname=wshowkeys-git
 _pkgname=wshowkeys
 pkgver=r5.e8bfc78
-pkgrel=1
+pkgrel=2
 pkgdesc='Displays keys being pressed on a Wayland session'
-arch=('x86_64')
+arch=('x86_64' 'armv7h' 'aarch64')
 url='https://github.com/ammgws/wshowkeys'
 license=('GPL')
 depends=('cairo' 'pango' 'libinput' 'libxkbcommon' 'wayland')
