@@ -1,11 +1,11 @@
 pkgbase = deepin-udis86
 	pkgdesc = Deepin Wine udis86
 	pkgver = 1.72_4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.deepin.org
 	arch = i686
 	arch = x86_64
-	license = Proprietary
+	license = custom:proprietary
 	makedepends = tar
 	conflicts = udis86
 	conflicts = udis86-git
