@@ -3,7 +3,7 @@
 # Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 pkgname=python-caldav
 _name=${pkgname#python-}
-pkgver=1.1.3
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A CalDAV (RFC4791) client library for Python"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('python-icalendar' 'python-lxml' 'python-recurring-ical-events'
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest-cov' 'radicale' 'xandikos')
 source=("${_name}-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5a9b623bed2e2c7183b9d24819c5ed1fb13e3b867c94e3ea0c3ca464b9ee2453')
+sha256sums=('2795cbc21690e8612bb80a992bb3de21be5e13f48ab2a2977b505d1d8231b4a0')
 
 build() {
   cd "${_name}-$pkgver"
