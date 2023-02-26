@@ -5,7 +5,7 @@ pkgver='1.0.2'
 pkgrel='8'
 pkgdesc='An ocaml library that implements a WTF-8 encoder and decoder'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url="https://github.com/flowtype/$pkgname"
+url="https://github.com/flow/$pkgname"
 license=('MIT')
 depends=('ocaml>=4.01.0')
 makedepends=('dune>=1.0.0')
