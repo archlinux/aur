@@ -1,7 +1,7 @@
 # Maintainer: wowario <wowario[at]protonmail[dot]com>
 
 pkgname=wownero-git
-pkgver=0.11.0.0.278f2f9968
+pkgver=0.11.0.0.6b28de1cdc
 pkgrel=3
 pkgdesc="Wownero: a fairly launched privacy-centric meme coin with no premine and a finite supply"
 license=('BSD')
@@ -36,7 +36,7 @@ prepare() {
   git config submodule.external/supercop.url "$srcdir/supercop"
   git config submodule.external/miniupnp.url "$srcdir/miniupnp"
   git config submodule.external/rapidjson.url "$srcdir/rapidjson"
-  git config submodule.external/RandomWOW.url "$srcdir/RandomWOW"
+  git config submodule.external/RandomWOW.url "$srcdir/randomwow"
   git -c protocol.file.allow=always submodule update
 }
 
@@ -48,12 +48,12 @@ build() {
 }
 
 package() {
-  backup=('etc/wownerod.conf')
+  backup=('etc/wow.conf')
 
   cd "${pkgname}"
   install -Dm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
-  install -Dm644 "wownerod.conf" "${pkgdir}/etc/wownerod.conf"
+  install -Dm644 "utils/conf/wow.conf" "${pkgdir}/etc/wow.conf"
   install -Dm644 "utils/systemd/wownerod.service" "${pkgdir}/usr/lib/systemd/system/wownerod.service"
   install -Dm644 "../wownero.sysusers" "${pkgdir}/usr/lib/sysusers.d/wownero.conf"
   install -Dm644 "../wownero.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/wownero.conf"

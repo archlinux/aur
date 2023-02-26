@@ -1,6 +1,6 @@
 pkgbase = wownero-git
         pkgdesc = Wownero: a fairly launched privacy-centric meme coin with no premine and a finite supply
-        pkgver = 0.11.0.0.278f2f9968
+        pkgver = 0.11.0.0.6b28de1cdc
         pkgrel = 3
         url = https://wownero.org/
         arch = x86_64
@@ -38,4 +38,4 @@ pkgbase = wownero-git
         sha512sums = a7c8170462e7578eced13908a27955128cc0c002c4bcff0d8c42719f1d7ee0dd33fa793c86c7ded52215cd22ba884569d69043c4d008d2597e33eb7ca1df9972
 
 pkgname = wownero-git
-        backup = etc/wownerod.conf
+        backup = etc/wow.conf
