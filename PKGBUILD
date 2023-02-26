@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gauche-git
-pkgver=0.9.11.p1.r13835
+pkgver=0.9.13_pre2.r14715
 pkgrel=1
 epoch=6
 pkgdesc="R7RS Scheme implementation developed to be a handy script interpreter"
@@ -11,8 +11,8 @@ url='http://practical-scheme.net/gauche/index.html'
 license=('BSD')
 # gauche only needed if this is the first build of gauche-git,
 # afterwards gauche-git will provide gauche
-depends=('mbedtls' 'gdbm' 'libatomic_ops' 'gauche' 'slib') 
-makedepends=('bash' 'git') 
+depends=('mbedtls' 'gdbm' 'libatomic_ops' 'slib') 
+makedepends=('bash' 'git' 'gauche') 
 provides=('gauche')
 conflicts=('gauche')
 source=('git+https://github.com/shirok/Gauche.git')
