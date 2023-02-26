@@ -27,7 +27,7 @@ makedepends=(
 	xorg-xwayland
 	xorg-server-xvfb
 )
-provides=(phoc wlroots)
+provides=(phoc)
 conflicts=(phoc wlroots)
 _tag=8af5ef8f
 source=("git+${url}.git#tag=${_tag}")
