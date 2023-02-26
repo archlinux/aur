@@ -2,7 +2,7 @@
 
 pkgname=silentdragonlite
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='HUSH Lite wallet that supports z-addresses'
 url='http://git.hush.is/hush/SilentDragonLite'
 arch=('x86_64')
@@ -10,11 +10,9 @@ license=('GPL3')
 depends=('libsodium' 'qt5-websockets' 'qt5-base' 'qt5-tools')
 makedepends=('qtcreator' 'rustup')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz"
-        'hushdlogo.png'
         'silentdragonlite.desktop'
         'silentdragonlite.png')
 sha512sums=('631ed0c43bf10010399fc35ad92b5fac22bf686568cc08443e4ccd3553ffb8d58e85bd87bb29b16104653ce6b8b481d7296193f023052a365b753028659ec622'
-            '3a8621542cf45ff4ded4e4d1c3e74a4707bf3d837b4b97e0f7b5374330fe425d1ce89075ad244217746b30918bea4c9985d7a66190409fd41a35adc9c8d8c524'
             '580379c88ef67d15cf1ac1e14899a0159230a2fd59f2400b864ee4d6711f0fcef29ccf84562a3cbdb7caa021271a4fab8210e228c9279ab0854eb1c668f1debd'
             '0b887786a3be6e0643f8d047b0c934036bb71d203e09e692bc2af056d8b23d8469feaff0f952642b1a087f09db159c692fe89aaa4e49802602c4044f9f0620a5')
 
@@ -27,8 +25,6 @@ prepare() {
 }
 
 build() {
-  # upstream is missing this file in the release.tar.gz & it needs it to build
-  cp "$srcdir/hushdlogo.png" "$pkgname/res/hushdlogo.png"
   cd "$pkgname"
   ./build.sh linguist
   ./build.sh
