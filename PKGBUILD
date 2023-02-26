@@ -1,4 +1,5 @@
-# Maintainer: Haonan Chen <g897331845@gmail.com>
+# Maintainer: asukaminato <asukaminato at nyan dot eu dot org>
+# Contributor: Haonan Chen <g897331845@gmail.com>
 pkgname=fcitx5-pinyin-sougou
 pkgver=20210320
 pkgrel=1
