@@ -1,32 +1,20 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='dtoa'
 pkgname="ocaml-$_projectname"
-pkgver='0.3.2'
-pkgrel='8'
+pkgver='0.3.3'
+pkgrel='1'
 pkgdesc='double-to-ascii ocaml implementation'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url="https://github.com/flowtype/$pkgname"
+url="https://github.com/flow/$pkgname"
 license=('MIT')
 depends=('ocaml>=4.01.0')
-makedepends=('dune>=1.0.0')
+makedepends=('dune>=2.0.0')
 checkdepends=('ocaml-ounit>=2.0.0')
 options=('!strip')
-source=(
-	"$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz"
-	'fix-ounit-name.diff'
-	'fix-tests.diff'
-)
-sha512sums=('a5dcce83f53725c45b0891f6af6275c5e617d536a2d491852215c9aefbbd22c7ac65f2738795eaba3a162e360d2fa86b33a98cdefb030230045789179c300604'
-            'a2a35245f4d50db7d6c81bd8a2f94021a11493e40c7caae2a78e5ac989dbd99e6bc1cfa885ecf49161aab67eca9666c0370bb9dfb0df5905e85b463beefc5f79'
-            'eb52bd485c41458c782227e88a649083aeef3e3372de1c5240237da5f25075d4cc98a8ff18bda1e9a2ee2e4d9d3c3509e80c34dce0426bc61992410cb438f271')
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha512sums=('f5d9a287637c7a32c48ad2bbb0d7420c1b59fca26e2569b234d8f0e7b2d6b99d3f3cf0f2755e50d51c7453422593c2be6a54a90f49dfd672622c04f52c92359e')
 
 _sourcedirectory="$pkgname-$pkgver"
-
-prepare() {
-	cd "$srcdir/$_sourcedirectory/"
-	patch --forward -p1 < "$srcdir/fix-ounit-name.diff"
-	patch --forward -p1 < "$srcdir/fix-tests.diff"
-}
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
