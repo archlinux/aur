@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/hermes83/compiz-alike-windows-effect"
 install="${pkgname}.install"
 license=('GPL3')
-depends=('gnome-shell>=3.28')
+depends=('gnome-shell>=1:3.28' 'gnome-shell<1:42')
 makedepends=('git'
              'glib2')
 provides=("${pkgname%-git}")

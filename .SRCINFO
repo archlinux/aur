@@ -8,7 +8,8 @@ pkgbase = gnome-shell-extension-compiz-alike-windows-effect-git
 	license = GPL3
 	makedepends = git
 	makedepends = glib2
-	depends = gnome-shell>=3.28
+	depends = gnome-shell>=1:3.28
+	depends = gnome-shell<1:42
 	provides = gnome-shell-extension-compiz-alike-windows-effect
 	conflicts = gnome-shell-extension-compiz-alike-windows-effect
 	options = !strip
