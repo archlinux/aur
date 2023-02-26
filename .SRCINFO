@@ -1,6 +1,6 @@
 pkgbase = mesen2-git
 	pkgdesc = Multi-system emulator (NES, SNES, Game Boy and PC Engine)
-	pkgver = r2286.733ce19e
+	pkgver = r2446.94a9956c
 	pkgrel = 1
 	url = https://www.mesen.ca
 	arch = x86_64

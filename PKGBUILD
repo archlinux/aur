@@ -8,7 +8,7 @@
 
 # Maintainer: Eldred Habert <arch@eldred.fr>
 pkgname=mesen2-git
-pkgver=r2286.733ce19e
+pkgver=r2446.94a9956c
 pkgrel=1
 pkgdesc="Multi-system emulator (NES, SNES, Game Boy and PC Engine)"
 arch=('x86_64')
@@ -40,6 +40,6 @@ build() {
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}/bin/x64/Release/linux-x64/publish"
+	cd "$srcdir/${pkgname%-git}/bin/linux-x64/Release/linux-x64/publish"
 	install -Dm 755 Mesen "$pkgdir/usr/bin/${pkgname%-git}"
 }
