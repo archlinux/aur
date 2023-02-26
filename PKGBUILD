@@ -2,7 +2,7 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=phoc-embedded-wlroots
-pkgver=0.21.0
+pkgver=0.24.0
 pkgrel=1
 pkgdesc='A pure Wayland shell prototype for GNOME on mobile devices (wlroots embedded)'
 arch=(x86_64 aarch64 armv7h)
@@ -25,10 +25,11 @@ makedepends=(
 	vulkan-headers
 	wayland-protocols
 	xorg-xwayland
+	xorg-server-xvfb
 )
 provides=(phoc wlroots)
 conflicts=(phoc wlroots)
-_tag=1a58a2363b686241647138a8822beac4f761f3fb
+_tag=8af5ef8f
 source=("git+${url}.git#tag=${_tag}")
 sha256sums=('SKIP')
 
@@ -40,15 +41,18 @@ pkgver() {
 prepare() {
 	cd phoc
 
-	git submodule init
-	git submodule update
+	git submodule update --init
 }
 
 build() {
-	arch-meson phoc _build -Dembed-wlroots=enabled -Dtests=false
-	meson compile -C _build
+	arch-meson phoc build -Dembed-wlroots=enabled --default-library=static -Dtests=true
+	ninja -C build
+}
+
+check() {
+	xvfb-run ninja -C build test
 }
 
 package() {
-	DESTDIR="${pkgdir}" meson install -C _build
+	DESTDIR="${pkgdir}" ninja -C build install
 }
