@@ -5,7 +5,7 @@
 _pkgname='transmission-rpc'
 _relname='transmission_rpc'
 pkgname="python-${_pkgname/-/}"
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc='Module to communicate with Transmission BT client via JSON-RPC'
 arch=('any')
@@ -15,7 +15,7 @@ license=('MIT')
 depends=('python-requests')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_relname}-${pkgver}.tar.gz")
-sha256sums=('eab08e8ea399aef60ec95cf40686a3cf70ef09cf1df046d17e48fc5e25157d16')
+sha256sums=('7fd2085bccafc3c456052ba71377c5cc4579e88cb544d508532342f183f719dc')
 
 build() {
   cd "${_relname}-${pkgver}"
