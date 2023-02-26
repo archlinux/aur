@@ -8,7 +8,7 @@ license=("Unlicense")
 arch=("any")
 depends=("sh")
 checkdepends=("shellspec")
-source=("git+https://github.com/FWDekker/mommy.git#tag=$pkgver")
+source=("git+https://github.com/FWDekker/mommy.git#tag=v$pkgver")
 sha256sums=("SKIP")
 
 check() {

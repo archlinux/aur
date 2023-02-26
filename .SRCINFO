@@ -7,7 +7,7 @@ pkgbase = mommy
     license = Unlicense
     checkdepends = shellspec
     depends = sh
-    source = git+https://github.com/FWDekker/mommy.git#tag=1.2.1
+    source = git+https://github.com/FWDekker/mommy.git#tag=v1.2.1
     sha256sums = SKIP
 
 pkgname = mommy
