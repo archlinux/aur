@@ -1,0 +1,11 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = *
+
+[Action]
+Description = Checking repro status...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/check-reproducible-status
+NeedsTargets

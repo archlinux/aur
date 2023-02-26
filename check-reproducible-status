@@ -1,0 +1,25 @@
+#!/usr/bin/python3
+
+import sys
+import json
+from urllib.request import urlopen
+
+
+def main():
+    with urlopen('https://reproducible.archlinux.org/api/v0/pkgs/list') as source:
+        packages = {p['name']: p for p in json.load(source)}
+
+    for line in sys.stdin:
+        pkgname = line.strip()
+        pkginfo = packages.get(pkgname)
+        if pkginfo:
+            status = pkginfo['status']
+            if status != 'GOOD':
+                version = pkginfo['version']
+                print(f'\033[1m{pkgname} {version} is not reproducible, status \033[31m{status}\033[0m')
+        else:
+            print(f'{pkgname} \033[33munknown\033[0m')
+
+
+if __name__ == '__main__':
+    main()
