@@ -2,7 +2,7 @@
 
 _pkgname=regreet
 pkgname="$_pkgname-git"
-pkgver=r89.07b553b
+pkgver=r98.94aad06
 pkgrel=1
 pkgdesc="Clean and customizable greeter for greetd"
 arch=('x86_64')
@@ -32,7 +32,7 @@ build() {
     export CACHE_DIR="/var/cache/${_pkgname}"
     export LOG_DIR="/var/log/${_pkgname}"
     export SESSION_DIRS="/usr/share/xsessions:/usr/share/wayland-sessions"
-    cargo build --frozen --release --target-dir=target
+    cargo build --frozen --release --all-features --target-dir=target
 }
 
 package() {
