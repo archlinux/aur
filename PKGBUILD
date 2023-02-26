@@ -84,7 +84,7 @@ fi
 pkgbase=linux-manjaro-xanmod
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 _major=6.1
-pkgver=${_major}.13
+pkgver=${_major}.14
 _branch=6.x
 xanmod=1
 pkgrel=1
@@ -92,7 +92,7 @@ pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="ff7339729e3abafecd13b43b9755290aab9b1563" # 6.1.13
+__commit="ec17648b49c01936a4683146ddbfb42b924f9f56" # 6.1.14
 
 license=(GPL2)
 makedepends=(
@@ -121,9 +121,9 @@ done
         
 sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'  # kernel tar.xz
             'SKIP'                                                              #        tar.sign
-            '5f1e9f33d9b4f623953740f346340f77a1317b9b01eb9106f7fa1825a2986812'  # xanmod
+            '9af6527926feca7e9cd39f5bdaffcada5c2ef50658cac5645296bab81a995a6c'  # xanmod
             '5c84bfe7c1971354cff3f6b3f52bf33e7bbeec22f85d5e7bfde383b54c679d30'  # choose-gcc-optimization.sh
-            '2036d8406cf9da13185d41c3b33ed2a521f0eacce7339f2146b9e5cbea767a9b') # manjaro
+            'c2dd29fe320529f144f5e7fbd3ccf1e7ad5c6899bc4612c1c7d8d9e4bb114af3') # manjaro
 
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
