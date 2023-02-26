@@ -1,14 +1,14 @@
 # Maintainer: Christian Schendel <doppelhelix@gmail.com>
 
 pkgname=gnome-shell-extension-gnome-clipboard-history-git
-pkgver=37.r156.g5e5b0e6
-pkgrel=1
+pkgver=37.r220.g348685b
+pkgrel=2
 pkgdesc="Gnome Clipboard History is a Gnome extension that saves what you've copied into an easily accessible, searchable history panel."
 arch=('any')
 url="https://github.com/SUPERCILEX/gnome-clipboard-history"
 install="${pkgname}.install"
 license=('MIT')
-depends=('gnome-shell>=40')
+depends=('gnome-shell>=1:40')
 makedepends=('git'
              'glib2')
 provides=("${pkgname%-git}")
