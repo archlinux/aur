@@ -1,13 +1,13 @@
 pkgbase = pantum-p2200-p2500-driver
 	pkgdesc = Pantum P2200 and P2500 series drivers
-	pkgver = 1.1.84
+	pkgver = 1.1.94
 	pkgrel = 1
 	url = http://global.pantum.com/global/
 	arch = x86_64
 	license = proprietary
 	makedepends = unzip
 	depends = cups
-	source = https://drivers.pantum.com/userfiles/files/download/PantumUbuntuDriverV1.1.84-1_1644314880975.zip
-	md5sums = 1343c21c2aa5db6cf0ee4499b6a7188f
+	source = https://drivers.pantum.com/userfiles/files/download/%E9%A9%B1%E5%8A%A8%E6%96%87%E4%BB%B6/2013/Pantum%20Linux%20Driver%20V1_1_94-1.zip
+	md5sums = aaff9109af8b0070224bc722a93e72a8
 
 pkgname = pantum-p2200-p2500-driver
