@@ -1,6 +1,6 @@
 pkgbase = linux-aarch64-flippy
-	pkgver = 6.1.13
-	pkgrel = 2
+	pkgver = 6.1.14
+	pkgrel = 1
 	url = https://github.com/unifreq/linux-6.1.y
 	arch = aarch64
 	license = GPL2
@@ -9,13 +9,11 @@ pkgbase = linux-aarch64-flippy
 	makedepends = dtc
 	makedepends = uboot-tools
 	options = !strip
-	source = linux-6.1.y-d90ddfc6e81dc376224f1cc214a11a7be4e2bc2a.tar.gz::https://github.com/unifreq/linux-6.1.y/archive/d90ddfc6e81dc376224f1cc214a11a7be4e2bc2a.tar.gz
-	source = support-amlogic-proprietary-partition.patch::https://github.com/7Ji/linux/commit/049bddc86d7e2d1a7727bbc6d268be9cf5e779d2.patch
+	source = linux-6.1.y-b33cb9adf00ad50e6de135fe31b1a40c44bde3d3.tar.gz::https://github.com/unifreq/linux-6.1.y/archive/b33cb9adf00ad50e6de135fe31b1a40c44bde3d3.tar.gz
 	source = config
 	source = linux.preset
-	sha256sums = 7c65d89d66b71623402bbd306ea678c0ddbce1743137570d86d311c7472f0aef
-	sha256sums = 66fdfc1425098410eef699fdf29bcc9867de4b81e47a0129613b32a0f1e94019
-	sha256sums = 5c18dc58fcd1e0201b035971cea49b972374cf60ddb53a1743885cff46c7bd9c
+	sha256sums = 6eb8d86f9a4a9f015ff39872d713f05a21e492afbee2c5b8d663be9a578bccb9
+	sha256sums = c632d2e4383ec12206757bdade32b06539c25b39b2befd149e096b6dbaf57be7
 	sha256sums = bdcd6cbf19284b60fac6d6772f1e0ec2e2fe03ce7fe3d7d16844dd6d2b5711f3
 
 pkgname = linux-aarch64-flippy
@@ -25,7 +23,8 @@ pkgname = linux-aarch64-flippy
 	depends = initramfs
 	depends = kmod
 	optdepends = uboot-legacy-initrd-hooks: to generate uboot legacy initrd images
-	optdepends = linux-firmware-amlogic-ophub: firmware for Amlogic SoCs
+	optdepends = linux-firmware: firmware images needed for some devices
+	optdepends = linux-firmware-amlogic-ophub: complete firmware set for devices with Amlogic SoCs
 	optdepends = wireless-regdb: to set the correct wireless channels of your country
 	optdepends = linux-aarch64-flippy-dtb-allwinner: dtbs for Allwinner SoCs
 	optdepends = linux-aarch64-flippy-dtb-amlogic: dtbs for Amlogic SoCs
@@ -37,12 +36,12 @@ pkgname = linux-aarch64-flippy-headers
 
 pkgname = linux-aarch64-flippy-dtb-allwinner
 	pkgdesc = DTB files for Allwinner SoCs for flippy's AArch64 kernel
-	provides = linux-aarch64-flippy-dtb=6.1.13
+	provides = linux-aarch64-flippy-dtb=6.1.14
 
 pkgname = linux-aarch64-flippy-dtb-amlogic
 	pkgdesc = DTB files for Amlogic SoCs for flippy's AArch64 kernel
-	provides = linux-aarch64-flippy-dtb=6.1.13
+	provides = linux-aarch64-flippy-dtb=6.1.14
 
 pkgname = linux-aarch64-flippy-dtb-rockchip
 	pkgdesc = DTB files for Rockchip SoCs for flippy's AArch64 kernel
-	provides = linux-aarch64-flippy-dtb=6.1.13
+	provides = linux-aarch64-flippy-dtb=6.1.14

@@ -1,11 +1,11 @@
 # Maintainer: 7Ji <pugokughin@gmail.com>
 
 _desc="flippy's AArch64-focused fork aiming to increase usability"
-_pkgver_main=6.1.13
+_pkgver_main=6.1.14
 _pkgver_suffix=flippy
 _pkgver_uname="${_pkgver_main}-${_pkgver_suffix}"
 _flippy_repo='linux-6.1.y'
-_flippy_commit='d90ddfc6e81dc376224f1cc214a11a7be4e2bc2a'
+_flippy_commit='b33cb9adf00ad50e6de135fe31b1a40c44bde3d3'
 _srcname="${_flippy_repo}-${_flippy_commit}"
 
 pkgbase=linux-aarch64-flippy
@@ -17,7 +17,7 @@ pkgname=(
   "${pkgbase}-dtb-rockchip"
 )
 pkgver="${_pkgver_main}"
-pkgrel=2
+pkgrel=1
 arch=('aarch64')
 url="https://github.com/unifreq/${_flippy_repo}"
 license=('GPL2')
@@ -27,22 +27,20 @@ makedepends=( # Since we don't build the doc, most of the makedeps for other lin
 options=(!strip)
 source=(
   "${_srcname}.tar.gz::${url}/archive/${_flippy_commit}.tar.gz"
-  "support-amlogic-proprietary-partition.patch::https://github.com/7Ji/linux/commit/049bddc86d7e2d1a7727bbc6d268be9cf5e779d2.patch"
   'config'
   'linux.preset'
 )
 sha256sums=(
-  '7c65d89d66b71623402bbd306ea678c0ddbce1743137570d86d311c7472f0aef'
-  '66fdfc1425098410eef699fdf29bcc9867de4b81e47a0129613b32a0f1e94019'
-  '5c18dc58fcd1e0201b035971cea49b972374cf60ddb53a1743885cff46c7bd9c'
+  '6eb8d86f9a4a9f015ff39872d713f05a21e492afbee2c5b8d663be9a578bccb9'
+  'c632d2e4383ec12206757bdade32b06539c25b39b2befd149e096b6dbaf57be7'
   'bdcd6cbf19284b60fac6d6772f1e0ec2e2fe03ce7fe3d7d16844dd6d2b5711f3'
 )
 
 prepare() {
   cd "${_srcname}"
 
-  echo "Patching kernel..."
-  patch -p1 < '../support-amlogic-proprietary-partition.patch'
+#   echo "Patching kernel..."
+#   patch -p1 < '../support-amlogic-proprietary-partition.patch'
 
   echo "Setting version..."
   scripts/setlocalversion --save-scmversion
@@ -80,7 +78,8 @@ package_linux-aarch64-flippy() {
   )
   optdepends=(
     'uboot-legacy-initrd-hooks: to generate uboot legacy initrd images'
-    'linux-firmware-amlogic-ophub: firmware for Amlogic SoCs'
+    'linux-firmware: firmware images needed for some devices'
+    'linux-firmware-amlogic-ophub: complete firmware set for devices with Amlogic SoCs'
     'wireless-regdb: to set the correct wireless channels of your country'
     "${pkgbase}-dtb-allwinner: dtbs for Allwinner SoCs"
     "${pkgbase}-dtb-amlogic: dtbs for Amlogic SoCs"
