@@ -5,7 +5,7 @@
 # Contributor: Lauri Niskanen <ape@ape3000.com>
 _pkgname=libretro-gambatte
 pkgname=$_pkgname-git
-pkgver=r912.ff1ae4a
+pkgver=r988.15daa10
 pkgrel=1
 epoch=1
 pkgdesc="Nintendo Game Boy/Game Boy Color core"
@@ -15,7 +15,7 @@ license=('GPL2')
 groups=('libretro')
 depends=('gcc-libs' 'libretro-core-info')
 makedepends=('git')
-provides=("$_pkgname")
+provides=("$_pkgname=${pkgver#r}")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
 b2sums=('SKIP')
