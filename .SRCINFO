@@ -1,0 +1,19 @@
+pkgbase = biblija
+	pkgdesc = Čitajte Bibliju (prijevod Kršćanske sadašnjosti, uključuje i apokrife) u terminalu.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/viktoracoric/biblija
+	arch = any
+	license = The Unlicense
+	depends = bash
+	depends = coreutils
+	depends = gawk
+	depends = sed
+	depends = ncurses
+	depends = tar
+	optdepends = less: for better preview
+	noextract = git+https://github.com/viktoracoric/biblija.git
+	source = git+https://github.com/viktoracoric/biblija.git
+	sha256sums = SKIP
+
+pkgname = biblija
