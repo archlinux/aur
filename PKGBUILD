@@ -1,8 +1,8 @@
 # Maintainer: Byron Torres <b@torresjrjr.com>
 
 pkgname=hiprompt-gtk-py
-_revision=18 # git rev-list --count master
-_commit=f744993
+_revision=22 # git rev-list --count master
+_commit=8d6ef1d
 pkgver="r$_revision.$_commit"
 pkgrel=1
 pkgdesc='A GTK+ Himitsu prompter for Wayland'

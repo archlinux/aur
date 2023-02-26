@@ -1,6 +1,6 @@
 pkgbase = hiprompt-gtk-py
 	pkgdesc = A GTK+ Himitsu prompter for Wayland
-	pkgver = r18.f744993
+	pkgver = r22.8d6ef1d
 	pkgrel = 1
 	url = https://sr.ht/~sircmpwn/himitsu
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = hiprompt-gtk-py
 	depends = python-gobject
 	depends = gtk3
 	depends = gtk-layer-shell
-	source = hiprompt-gtk-py-r18.f744993.tar.gz::https://git.sr.ht/~sircmpwn/hiprompt-gtk-py/archive/f744993.tar.gz
+	source = hiprompt-gtk-py-r22.8d6ef1d.tar.gz::https://git.sr.ht/~sircmpwn/hiprompt-gtk-py/archive/8d6ef1d.tar.gz
 	sha256sums = SKIP
 
 pkgname = hiprompt-gtk-py
