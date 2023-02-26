@@ -1,19 +1,19 @@
 # Maintainer: Tom Zander
 
 pkgname=flowee-pay
-pkgver=2022.08.0
+pkgver=2023.02.1
 pkgrel=1
 pkgdesc="Flowee Payment solution"
 arch=('x86_64' 'aarch64')
 url="http://flowee.org/"
 license=('GPL3')
-depends=('qt5-base')
-makedepends=('boost' 'cmake' 'flowee>=2022.07.0')
+depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'qt6-shadertools' 'qt6-scxml')
+makedepends=('boost' 'cmake' 'flowee>=2023.02.1')
 provides=('flowee-pay')
 install=flowee-pay.install
 source=("https://codeberg.org/Flowee/pay/archive/$pkgver.tar.gz"
     "https://flowee.org/products/pay/blockheaders")
-sha256sums=('782deb2346cdc87c835d5a0419637d080e95947965599521672a2b87fe97dd74'
+sha256sums=('81cf813e914a2b9412a4232130aa231016b8d0fbc16e2cd23aec669854a38952'
     '8c2dfde998b4472aea25daa1e4bfe7bcca0b765145ee740bd8cfb0152400abce')
 
 build() {
