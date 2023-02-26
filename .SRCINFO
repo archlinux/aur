@@ -10,7 +10,7 @@ pkgbase = infinite-storage-glitch
 	makedepends = clang
 	depends = opencv
 	optdepends = ffmpeg
-	optdepends = qt
+	optdepends = qt5-base
 	source = git+https://github.com/DvorakDwarf/Infinite-Storage-Glitch.git
 	sha256sums = SKIP
 

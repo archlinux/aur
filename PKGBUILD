@@ -9,7 +9,7 @@ license=("GPL3")
 depends=(opencv)
 makedepends=(git rust clang)
 optdepends=(	'ffmpeg'
-		'qt')
+		'qt5-base')
 arch=('any')
 source=(git+https://github.com/DvorakDwarf/Infinite-Storage-Glitch.git)
 sha256sums=('SKIP')
