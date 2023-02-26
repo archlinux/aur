@@ -1,7 +1,7 @@
 # Maintainer: Byron Torres <b@torresjrjr.com>
 
 pkgname=himitsu-ssh
-pkgver='0.1'
+pkgver='0.2'
 pkgrel=1
 pkgdesc='Himitsu integration for SSH'
 arch=(x86_64)
@@ -16,12 +16,13 @@ source=(
 	'hissh-agent.service'
 )
 sha256sums=(
-	'dfc8a1a1797a6d040a5f2cacf29c3c7a1608be1d9e3c5c0265a7d852087cf437'
+	'5878abdb312467067cd77fd1f3edec8163abf877b7411d363b3d92a67a462dc1'
 	'cff7c70946d9d06f06588e3a3b8c833eb67204a7c936f3f77ee3c8b18974a2ff'
 )
 
 build() {
 	cd "$srcdir/$_extracted"
+	export LDFLAGS=${LDFLAGS#'-Wl,'}
 	make
 }
 
