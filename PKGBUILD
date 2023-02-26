@@ -2,7 +2,7 @@
 pkgname=python-ffsubsync
 _name=${pkgname#python-}
 pkgver=0.4.23
-pkgrel=2
+pkgrel=3
 pkgdesc="Language-agnostic automatic synchronization of subtitles with video."
 url="https://github.com/smacke/ffsubsync"
 depends=(
@@ -28,10 +28,9 @@ arch=('any')
 source=(
     "https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
     "https://raw.githubusercontent.com/smacke/ffsubsync/$pkgver/requirements.txt"
-
 )
 sha256sums=('b0f985ae529b78acfe0b94925c6efa4c1ce199cdc3cad007443cd75790bbe476'
-            '443b1afc077044c41fb1442dc36e4bba595a8895178847d9bc956b485246c018')
+            '67491bab58c1b38bfd2e63f0bcddecb12660104474cb1fab229d8abc1c322d03')
 
 build() {
 	cp "$srcdir/requirements.txt" "$srcdir/$_name-$pkgver"
