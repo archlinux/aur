@@ -1,16 +1,20 @@
 pkgbase = yash
 	pkgdesc = Yet Another SHell is a POSIX-compliant command line shell
-	pkgver = 2.53
+	pkgver = 2.54
 	pkgrel = 1
 	url = https://yash.osdn.jp
 	install = yash.install
+	arch = i686
 	arch = x86_64
 	arch = armv7h
+	arch = aarch64
 	license = GPL
+	makedepends = ed
 	depends = ncurses
-	source = https://osdn.net/dl/yash/yash-2.53.tar.xz
+	options = lto
+	source = https://osdn.net/dl/yash/yash-2.54.tar.xz
 	source = yash.install
-	sha256sums = e430ee845dfd7711c4f864d518df87dd78b40560327c494f59ccc4731585305d
+	sha256sums = 44a0ac1ccf7c3acecfbea027d8c0c930f13a828065be318055ce113015391839
 	sha256sums = c66c7a4b9da4416082ea57bbec0ce0c2bbc13af340ceb1241b4a4897d8944531
 
 pkgname = yash
