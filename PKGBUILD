@@ -16,7 +16,7 @@
 
 pkgbase=llvm-minimal-git
 pkgname=('llvm-minimal-git' 'llvm-libs-minimal-git' 'spirv-llvm-translator-minimal-git')
-pkgver=17.0.0_r452740.1c2280264058
+pkgver=17.0.0_r452967.d9f6077db05c
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -27,16 +27,19 @@ source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
                 'local://llvm-config.h'
                 "git+https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git"
                 '0001-IPSCCP-Remove-legacy-pass.patch'
+                '0001-OCaml-Remove-all-PassManager-related-functions.patch'
                 )
                 
 md5sums=('SKIP'
          '295c343dcd457dc534662f011d7cff1a'
          'SKIP'
-         '245054bc67dec3eb30329bbdeed171b1')
+         '245054bc67dec3eb30329bbdeed171b1'
+         '4c5ac9bca18c8a92280b1699f2f85a16')
 sha512sums=('SKIP'
             '75e743dea28b280943b3cc7f8bbb871b57d110a7f2b9da2e6845c1c36bf170dd883fca54e463f5f49e0c3effe07fbd0db0f8cf5a12a2469d3f792af21a73fcdd'
             'SKIP'
-            '4c1e8a455163ceb1e7d3f09f5e68f731e47f2346a2f62e1fe97b19f54c16781efc0b75d52304fe9d4aa62512fd6f32b7bd6e12b319cbe72e7831f1a056ffbfd0')
+            '4c1e8a455163ceb1e7d3f09f5e68f731e47f2346a2f62e1fe97b19f54c16781efc0b75d52304fe9d4aa62512fd6f32b7bd6e12b319cbe72e7831f1a056ffbfd0'
+            '92f971db948e8acd4a55cb46ef28dc394c5df07f57844b63d82fc19436e2dfe7b184599ca17d84ef4fa63f6281628d8cc734d74dcc95bc0eee8a5e7c3778f49a')
 options=('staticlibs' '!lto')
 # explicitly disable lto to reduce number of build hangs / test failures
 
@@ -65,6 +68,8 @@ pkgver() {
 
 prepare() {
     
+    # revert https://github.com/llvm/llvm-project/commit/e0efe46b33068f2e651e850cdc3ede0306f1853c so the passmanager patch keeps working
+    patch --directory="llvm-project" --reverse --strip=1 --input="${srcdir}/0001-OCaml-Remove-all-PassManager-related-functions.patch"
     # reverting commit b677d0753c0a771c6203607f5dbb56189193a14c , see https://gitlab.freedesktop.org/mesa/mesa/-/issues/8297
     patch --directory="llvm-project" --reverse --strip=1 --input="${srcdir}/0001-IPSCCP-Remove-legacy-pass.patch"
     
