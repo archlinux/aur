@@ -1,0 +1,11 @@
+--- a/program/psiconv/psiconv.h	2023-02-26 23:52:30.388543728 +0100
++++ b/program/psiconv/psiconv.h	2023-02-27 00:04:01.305397816 +0100
+@@ -52,7 +52,7 @@
+   output_function *output;
+ } *fileformat;
+ 
+-psiconv_list fileformat_list; /* of struct psiconv_fileformat */
++static psiconv_list fileformat_list; /* of struct psiconv_fileformat */
+ 
+ 
+ #endif /* PSICONV_H */
