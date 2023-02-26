@@ -1,11 +1,11 @@
-# Maintainer: samsapti <aur at sapti dot mailer dot me>
+# Maintainer: samsapti <sam at sapti dot me>
 # Contributor: lsf
 # Contributer: Sam Whited <sam@samwhited.com>
 # Contributor: Roman Kupriyanov <mr.eshua@gmail.com>
 
 pkgname=jitsi-meet-desktop
 pkgver=2023.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Jitsi Meet desktop application"
 arch=('x86_64' 'aarch64')
 url="https://jitsi.org/jitsi-meet/"
@@ -13,18 +13,17 @@ license=('Apache')
 conflicts=('jitsi-meet-electron-bin'
            'jitsi-meet-electron')
 replaces=('jitsi-meet-electron')
+_electron_pkg="electron21"
 depends=('gtk3'
          'libxss'
-         'nss')
-depends=('electron21')
+         'nss'
+         $_electron_pkg)
 makedepends=('coreutils'
              'git'
-             'npm'
              'python'
              'png++'
              'libxtst'
-             'nvm'
-             )
+             'nvm')
 _node_version="16"
 options=(!strip)
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/jitsi/jitsi-meet-electron/archive/v${pkgver}.tar.gz"
@@ -56,11 +55,7 @@ prepare() {
   # target when calling electron-builder..
   patch -Np1 -i ${srcdir}/no_targets.patch
 
-  _electron_dist=/usr/lib/electron # currently 20 is in the repos, jitsi-meet has introduced 21 already so it should be fine to keep it unconstrained for now.
-  _electron_ver=$(cat ${_electron_dist}/version)
-  sed -r 's#("electron": ").*"#\1'${_electron_ver}'"#' -i package.json
   sed 's#git+ssh://git@github.com#git+https://github.com#g' -i package-lock.json
-
 
   npm install
   # npm audit fix
@@ -72,7 +67,7 @@ build() {
   _ensure_local_nvm
   nvm use ${_node_version}
 
-  _electron_dist=/usr/lib/electron21
+  _electron_dist=/usr/lib/${_electron_pkg}
   _electron_ver=$(cat ${_electron_dist}/version)
 
   # npm run build
@@ -96,7 +91,7 @@ package() {
   cat << EOF > "$pkgdir"/usr/bin/$pkgname
 #!/bin/sh
 
-NODE_ENV=production ELECTRON_IS_DEV=false exec electron /opt/$pkgname/app.asar "\$@"
+NODE_ENV=production ELECTRON_IS_DEV=false exec $_electron_pkg /opt/$pkgname/app.asar "\$@"
 EOF
 
   chmod +x "$pkgdir"/usr/bin/$pkgname
