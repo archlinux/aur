@@ -1,8 +1,8 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=json-schema-for-humans
-pkgver=0.44
-pkgrel=2
+pkgver=0.44.3
+pkgrel=1
 pkgdesc="Quickly generate HTML documentation from a JSON schema"
 arch=('any')
 url="https://github.com/coveooss/json-schema-for-humans"
@@ -29,7 +29,7 @@ depends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a3ed95ef521838e0e4adf250db39df7ac7149054c49f5539fa279cf50e746171')
+sha256sums=('9649b4c8a1e8ff86ec5b441a9db31c69039ce4065a45dd3044f619deff429b3c')
 
 _archive="$pkgname-$pkgver"
 
