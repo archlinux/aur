@@ -1,7 +1,7 @@
 pkgbase = parcimonie-sh-git
 	pkgdesc = Bash reimplementation of parcimonie
-	pkgver = 73.551999c
-	pkgrel = 3
+	pkgver = 78.529e2fa
+	pkgrel = 1
 	url = https://github.com/EtiennePerot/parcimonie.sh
 	arch = any
 	license = custom:WTFPL
@@ -15,4 +15,3 @@ pkgbase = parcimonie-sh-git
 	b2sums = SKIP
 
 pkgname = parcimonie-sh-git
-
