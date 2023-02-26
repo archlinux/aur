@@ -16,7 +16,7 @@ license=('BSD')
 depends=('expat' 'uriparser')
 optdepends=('swig: bindings for additional languages'
             'python2: python bindings')
-makedepends=('cmake' 'swig' 'boost')
+makedepends=('cmake' 'swig' 'boost' 'patchelf')
 provides=('libkml')
 conflicts=('libkml-dev' 'libkml-git')
 source=("libkml::git+https://github.com/libkml/libkml.git")
