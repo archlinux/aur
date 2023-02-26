@@ -2,7 +2,7 @@
 
 _pkgbase=goodix-gpdwin3
 pkgname=${_pkgbase}-dkms
-pkgver=6.1.10
+pkgver=6.2.1
 pkgrel=1
 pkgdesc="Patched Goodix touchscreen driver for GPD WIN3"
 arch=('any')
@@ -16,7 +16,7 @@ source=(
   "Makefile"
   "goodixgpdw3.conf"
 )
-md5sums=('fb2bfa2649ad0f24095bb138ea33637e'
+md5sums=('c0e99fdd6b2778ad43cf7a03a6063cb6'
 	 'aec7f644a9a305c4102665137c7f248b'
 	 '190deba40c822b9d4f89672bc4e610e9'
      'f514c2a1d6de0f50ea5ebc112447ff7d'
