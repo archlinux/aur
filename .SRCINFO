@@ -7,8 +7,8 @@ pkgbase = adwaita-for-steam
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = steam
 	depends = sssm
+	optdepends = steam: if you don't use the flatpak version of Steam
 	source = git+https://github.com/tkashkin/adwaita-for-steam#tag=v0.31
 	b2sums = SKIP
 
