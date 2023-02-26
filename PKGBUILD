@@ -1,15 +1,17 @@
-# Maintainer: onbjerg <hi@notbjerg.me>
+# Maintainer: Ktl_XV <aur@ktlxv.com>
+# Contributor: onbjerg <hi@notbjerg.me>
 pkgname=frame-eth
-pkgver="0.4.4"
-pkgrel=2
+pkgver="0.6.1"
+pkgrel=0
 pkgdesc="System-wide Web3"
 arch=('x86_64')
 url='https://frame.sh'
 license=('GPL3')
 depends=('gtk3' 'nss' 'libxss')
-_node_ver=14
+_node_ver=16
 makedepends=('npm' 'nvm' 'libusb' 'python3' 'git' 'node-gyp')
 provides=('frame')
+conflicts=('frame-eth-dev')
 install=$pkgname.install
 source=("git+https://github.com/floating/frame.git#tag=v$pkgver"
         "$pkgname.desktop")
@@ -27,13 +29,15 @@ _ensure_local_nvm() {
 
 prepare() {
   _ensure_local_nvm
-  nvm install 14
+  nvm install "$_node_ver"
 }
 
 build() {
   _ensure_local_nvm
   cd frame
+  npm run setup
   npm install --cache "${srcdir}/npm-cache"
+  # npm run bundle
   npm run build -- --linux dir
 }
 
