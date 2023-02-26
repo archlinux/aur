@@ -5,7 +5,7 @@
 _pkgname=sunsama
 
 pkgname="${_pkgname}"-appimage
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc="The daily planner for elite professionals. Organize everything you need to do today in one place. Tasks, meetings, emails, you name it."
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://desktop.sunsama.com/linux/appImage/x64")
 noextract=("${_appimage}")
-sha256sums_x86_64=('26c2286c2f47349b54262d4582887b8ec885739917053fc90e34b9a452e4c7b4')
+sha256sums_x86_64=('e3931b8dc8cf789ff22e97a961bda6c4f935467148963c1b7ea23b575d21b4cc')
 
 prepare() {
     chmod +x "${_appimage}"
