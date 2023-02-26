@@ -1,12 +1,13 @@
 pkgbase = mommy
     pkgdesc = mommy's here to support you~
     pkgver = 1.2.1
-    pkgrel = 1
+    pkgrel = 2
     url = https://github.com/FWDekker/mommy
     arch = any
     license = Unlicense
     checkdepends = shellspec
     depends = sh
+    depends = man-db
     source = git+https://github.com/FWDekker/mommy.git#tag=v1.2.1
     sha256sums = SKIP
 
