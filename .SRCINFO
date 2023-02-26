@@ -1,13 +1,13 @@
 pkgbase = pap
-	pkgdesc = a simplistic papermc helper
-	pkgver = 0.10.2
+	pkgdesc = a swiss army knife for minecraft servers
+	pkgver = 0.13.1
 	pkgrel = 1
 	url = https://github.com/talwat/pap
 	arch = any
 	license = MIT
-	makedepends = go
+	makedepends = go>=1.18
 	optdepends = java-runtime: running the downloaded jarfiles
-	source = pap-0.10.2.tar.gz::https://github.com/talwat/pap/archive/v0.10.2.tar.gz
-	sha256sums = 9396ddf1979ebe2700ad8977b0804320e8b2ad6043d53f36942388bfa51d9352
+	source = pap-0.13.1.tar.gz::https://github.com/talwat/pap/archive/v0.13.1.tar.gz
+	sha256sums = 03da5e916fbb0b51511c9cb71745871d8fc685f35c2814f91991fc2b8c439292
 
 pkgname = pap

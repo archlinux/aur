@@ -1,25 +1,26 @@
 # Maintainer: Tal <talwat321@gmail.com>
 pkgname=pap
-pkgver="0.10.2"
+pkgver="0.13.1"
 pkgrel=1
-pkgdesc='a simplistic papermc helper'
+pkgdesc='a swiss army knife for minecraft servers'
 url='https://github.com/talwat/pap'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/talwat/pap/archive/v$pkgver.tar.gz")
 arch=('any')
 license=('MIT')
-sha256sums=('9396ddf1979ebe2700ad8977b0804320e8b2ad6043d53f36942388bfa51d9352')
-makedepends=('go')
+sha256sums=('03da5e916fbb0b51511c9cb71745871d8fc685f35c2814f91991fc2b8c439292')
+makedepends=('go>=1.18')
 optdepends=('java-runtime: running the downloaded jarfiles')
 
 build () {
   cd "$pkgname-$pkgver"
 
   export GOFLAGS="-trimpath"
-  go build .
+  make
 }
 
 package() {
   cd "$pkgname-$pkgver"
 
-  install -Dm755 $pkgname "${pkgdir}"/usr/bin/$pkgname
+  make install PREFIX="$pkgdir/usr"
 }
+
