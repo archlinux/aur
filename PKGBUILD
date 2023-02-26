@@ -1,4 +1,4 @@
-# Maintainer: Lauri Gustafsson <luutifa at jkry dot org>
+# Maintainer: Lauri Gustafsson <lauri at gustafla dot space>
 
 pkgname=rocket-git
 pkgver=r818.b7594c1
