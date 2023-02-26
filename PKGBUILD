@@ -4,7 +4,7 @@
 # Contributor: Dmitry Kharitonov <darksab0r@gmail.com>
 
 pkgname=makedepend
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Create dependencies in Makefiles"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -20,7 +20,7 @@ makedepends=('autoconf'
              'xorg-util-macros'
              'xorgproto')
 source=(http://xorg.freedesktop.org/archive/individual/util/$pkgname-$pkgver.tar.gz)
-sha256sums=('17c1adf0284aaee473abfff0e8d3e754770615e1275f2a0043b9d97a00ed5cc9')
+sha256sums=('275f0d2b196bfdc740aab9f02bb48cb7a97e4dfea011a7b468ed5648d0019e54')
 conflicts=('imake')
 
 build() {

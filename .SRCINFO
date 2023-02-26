@@ -1,6 +1,6 @@
 pkgbase = makedepend
 	pkgdesc = Create dependencies in Makefiles
-	pkgver = 1.0.7
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://xorg.freedesktop.org/archive/individual/util/
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = makedepend
 	makedepends = xorgproto
 	depends = splint
 	conflicts = imake
-	source = http://xorg.freedesktop.org/archive/individual/util/makedepend-1.0.7.tar.gz
-	sha256sums = 17c1adf0284aaee473abfff0e8d3e754770615e1275f2a0043b9d97a00ed5cc9
+	source = http://xorg.freedesktop.org/archive/individual/util/makedepend-1.0.8.tar.gz
+	sha256sums = 275f0d2b196bfdc740aab9f02bb48cb7a97e4dfea011a7b468ed5648d0019e54
 
 pkgname = makedepend
