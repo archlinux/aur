@@ -1,6 +1,6 @@
 pkgbase = efibooteditor
 	pkgdesc = GUI for editing EFI Boot Manager entries
-	pkgver = 1.1.5
+	pkgver = 1.1.6
 	pkgrel = 1
 	url = https://github.com/Neverous/efibooteditor
 	arch = x86_64
@@ -9,9 +9,10 @@ pkgbase = efibooteditor
 	makedepends = qt6-tools
 	makedepends = qt6-5compat
 	makedepends = qt5-base
+	makedepends = qt5-tools
 	depends = efivar
-	source = efibooteditor-1.1.5.tar.gz::https://github.com/Neverous/efibooteditor/archive/refs/tags/v1.1.5.tar.gz
-	md5sums = 02e3e682d419192274c093707805c7cc
+	source = efibooteditor-1.1.6.tar.gz::https://github.com/Neverous/efibooteditor/archive/refs/tags/v1.1.6.tar.gz
+	md5sums = 62617ad8354d911260e9efd4292ad52a
 
 pkgname = efibooteditor
 	pkgdesc = GUI for editing EFI Boot Manager entries
