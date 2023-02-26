@@ -10,7 +10,6 @@ url="https://calamares.io/"
 depends=('kconfig' 'kcoreaddons' 'kiconthemes' 'ki18n' 'kio' 'solid' 'yaml-cpp' 'kpmcore>=4.2.0' 'mkinitcpio-openswap'
          'boost-libs' 'ckbcomp' 'hwinfo' 'qt5-svg' 'polkit-qt5' 'gtk-update-icon-cache' 'plasma-framework'
          'qt5-xmlpatterns' 'squashfs-tools' 'libpwquality' 'efibootmgr' 'icu')
-conflicts=(calamares-git)
 makedepends=('extra-cmake-modules' 'qt5-tools' 'qt5-translations' 'git' 'boost')
 backup=('usr/share/calamares/modules/bootloader.conf'
         'usr/share/calamares/modules/displaymanager.conf'
@@ -24,7 +23,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/calamares/calamares/archive
 	"paru-support.patch")
 
 sha256sums=('35fd3f2fed96e444465507bdafee6a982c0f9a6c4c7759e70234d49093743b04'
-            '2b98f54a2761f94690c695f59d2cb3fbdaef91cab61bd198489a32e211f078ea'
+            '05c4ee3398ebc5168332888f83e49baf9e143641f11873eed14fcd2b6e409a54'
             'c176b28007bd1c1f23d8dbb2c936fa54d0c01bacfb67290ddad597606c129df3'
             '56d85ff6bf860b9559b8c9f997ad9b1002f3fccc782073760eca505e3bddd176'
             'f00c90bd87d6dfd73b3ec53fa9a145ac25234676be41604807f05f05a4bf5bbb')
