@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 6.2.0-zen1 Kernel Configuration
+# Linux/x86 6.2.1-zen1 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 12.2.1 20230201"
 CONFIG_CC_IS_GCC=y
@@ -2362,7 +2362,7 @@ CONFIG_ISCSI_IBFT=m
 CONFIG_FW_CFG_SYSFS=m
 # CONFIG_FW_CFG_SYSFS_CMDLINE is not set
 CONFIG_SYSFB=y
-CONFIG_SYSFB_SIMPLEFB=y
+# CONFIG_SYSFB_SIMPLEFB is not set
 CONFIG_FW_CS_DSP=m
 CONFIG_GOOGLE_FIRMWARE=y
 # CONFIG_GOOGLE_SMI is not set
