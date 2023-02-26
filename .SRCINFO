@@ -1,6 +1,6 @@
 pkgbase = sniffnet
 	pkgdesc = Application to comfortably monitor your network traffic
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/GyulyVGC/sniffnet
 	install = sniffnet.install
@@ -12,7 +12,7 @@ pkgbase = sniffnet
 	depends = fontconfig
 	depends = libpcap
 	options = !lto
-	source = sniffnet-1.1.0.tar.gz::https://github.com/GyulyVGC/sniffnet/archive/refs/tags/v1.1.0.tar.gz
-	sha512sums = ea30985e46dc97a605b6495a1fdca6518ad5adc084a505fc9fb61a459b896fe16b881fefe0741037249b34f29805495b079f56595ed313c2ab2f17b31fbe9521
+	source = sniffnet-1.1.1.tar.gz::https://github.com/GyulyVGC/sniffnet/archive/refs/tags/v1.1.1.tar.gz
+	sha512sums = e76fa0663288f764f599ee9e69b5ba4207a928869ff36e09ff7beba42598f398f0292fa9db0bdced367a1792a7308c5408f6afa379900b4d2dd03ab2bf5da76c
 
 pkgname = sniffnet
