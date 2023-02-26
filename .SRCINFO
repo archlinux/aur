@@ -1,6 +1,6 @@
 pkgbase = up-metro-for-steam-skin
 	pkgdesc = This non-official addon for Metro for Steam fixes bugs with the current version and adds optional content for you to choose from.
-	pkgver = r375.636d76b
+	pkgver = r376.2e91b4d
 	pkgrel = 1
 	url = https://github.com/redsigma/UPMetroSkin
 	install = up-metro-for-steam-skin.install
