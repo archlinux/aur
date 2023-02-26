@@ -3,13 +3,13 @@
 
 pkgname=sdlblocks
 pkgver=1
-pkgrel=7
+pkgrel=8
 pkgdesc="A Tetris remake written in C using libSDL"
 arch=('i686' 'x86_64')
 url="https://github.com/llopisdon/sdlblocks"
 license=("GPL-2")
 source=("https://github.com/llopisdon/sdlblocks/archive/master.zip" "${pkgname}.desktop")
-md5sums=('a6c87c8f54e4f33172721378d570406b'
+md5sums=('53e4b5f83f9a463fdd1f88b109d298ed'
          '4178deb1bc373988c9dd305a648093c0')
 
 if [ "$CARCH" = "i686" ]; then                                                        
