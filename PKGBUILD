@@ -2,7 +2,7 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=phosh-git
-pkgver=0.21.0.r40.g2c03f935
+pkgver=0.24.0.r54.g87a16b18
 pkgrel=1
 pkgdesc='A pure Wayland shell prototype for GNOME on mobile devices'
 arch=(x86_64 aarch64 armv7h)
@@ -21,10 +21,12 @@ depends=(
 	evolution-data-server
 	# Replace this with phoc once it works.
 	#'phoc>=0.21.0'
-	'phoc-embedded-wlroots>=0.21.0'
+	phoc-embedded-wlroots
 	gnome-shell
 	callaudiod
 	polkit
+	libadwaita
+	evince
 )
 makedepends=(
 	meson
@@ -40,7 +42,7 @@ source=(
 sha256sums=(
 	'SKIP'
 	'b7793f80c533e84ad8adfe8bb46c69f107575e724aa9b53b41f370baa37e4fd5'
-	)
+)
 
 pkgver() {
 	cd phosh
@@ -50,14 +52,17 @@ pkgver() {
 prepare() {
 	cd phosh
 
-	git submodule init
-	git submodule update
+	git submodule update --init
 }
 
 build() {
 	# If we don't set `libexecdir` then meson will try and place the phosh bin in /lib/phosh and collide with the dir so we put it in /lib/phosh/phosh
-	arch-meson --libexecdir="/usr/lib/phosh" -D tests=false -D systemd=true phosh _build 
+	arch-meson --libexecdir="/usr/lib/phosh" -D tests=true -D phoc_tests=disabled -D man=true -D gtk_doc=false -D callui-i18n=true -D lockscreen-plugins=true -D systemd=true phosh _build 
 	meson compile -C _build
+}
+
+check() {
+	xvfb-run meson test --no-suite screenshots -C _build
 }
 
 package() {

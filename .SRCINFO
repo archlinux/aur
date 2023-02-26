@@ -1,6 +1,6 @@
 pkgbase = phosh-git
 	pkgdesc = A pure Wayland shell prototype for GNOME on mobile devices
-	pkgver = 0.21.0.r40.g2c03f935
+	pkgver = 0.24.0.r54.g87a16b18
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/Phosh/phosh
 	arch = x86_64
@@ -20,13 +20,17 @@ pkgbase = phosh-git
 	depends = feedbackd
 	depends = libnm
 	depends = evolution-data-server
-	depends = phoc-embedded-wlroots>=0.21.0
+	depends = phoc-embedded-wlroots
 	depends = gnome-shell
 	depends = callaudiod
 	depends = polkit
+	depends = libadwaita
+	depends = evince
 	provides = phosh
 	conflicts = phosh
 	source = git+https://gitlab.gnome.org/World/Phosh/phosh.git
+	source = pam_phosh
 	sha256sums = SKIP
+	sha256sums = b7793f80c533e84ad8adfe8bb46c69f107575e724aa9b53b41f370baa37e4fd5
 
 pkgname = phosh-git
