@@ -1,14 +1,14 @@
 pkgbase = speedtest-rs-bin
 	pkgdesc = speedtest-cli in Rust.
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nelsonjchen/speedtest-rs
 	arch = x86_64
 	license = Apache
 	license = MIT
 	provides = speedtest-rs
 	conflicts = speedtest-rs
-	source = speedtest-rs-0.1.4.tar.gz::https://github.com/nelsonjchen/speedtest-rs/releases/download/v0.1.4/speedtest-rs-linux-x86_64.tar.gz
-	sha256sums = 589fdbf218b0b0f3bd5a2290b581aef17a5fd94baad19bf818aaee48bc8aa1b0
+	source = speedtest-rs-0.1.4-2.tar.gz::https://github.com/nelsonjchen/speedtest-rs/releases/download/v0.1.4/speedtest-rs-linux-x86_64.tar.gz
+	sha256sums = 6d4bffd7c5386c4fcc2f21d945ca87375855f810a26619de10d1f58e00dec699
 
 pkgname = speedtest-rs-bin
