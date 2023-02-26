@@ -1,13 +1,13 @@
 pkgbase = rnr
 	pkgdesc = A CLI tool to rename files and directories that supports regex.
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/ismaelgv/rnr
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	provides = rnr
-	source = rnr-0.4.1.tar.gz::https://github.com/ismaelgv/rnr/archive/v0.4.1/v0.4.1.tar.gz
-	md5sums = 3fa80259bf32585e6f4b79da464ef4ca
+	source = rnr-0.4.2.tar.gz::https://github.com/ismaelgv/rnr/archive/v0.4.2/v0.4.2.tar.gz
+	md5sums = 63adf1eb4eab88aa043e6611640cbcf7
 
 pkgname = rnr
