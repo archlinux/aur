@@ -1,0 +1,230 @@
+From b677d0753c0a771c6203607f5dbb56189193a14c Mon Sep 17 00:00:00 2001
+From: Arthur Eubanks <aeubanks@google.com>
+Date: Tue, 14 Feb 2023 13:20:37 -0800
+Subject: [PATCH] [IPSCCP] Remove legacy pass
+
+This is part of the optimization pipeline, of which the legacy pass manager version is deprecated.
+---
+ .../bindings/ocaml/transforms/ipo/ipo_ocaml.c |  7 --
+ .../bindings/ocaml/transforms/ipo/llvm_ipo.ml |  3 -
+ .../ocaml/transforms/ipo/llvm_ipo.mli         |  6 +-
+ llvm/include/llvm-c/Transforms/IPO.h          |  3 -
+ llvm/include/llvm/LinkAllPasses.h             |  1 -
+ llvm/include/llvm/Transforms/IPO.h            |  7 --
+ llvm/lib/Transforms/IPO/IPO.cpp               |  5 --
+ .../lib/Transforms/IPO/PassManagerBuilder.cpp |  2 -
+ llvm/lib/Transforms/IPO/SCCP.cpp              | 70 -------------------
+ llvm/test/Bindings/OCaml/ipo.ml               |  1 -
+ 10 files changed, 1 insertion(+), 104 deletions(-)
+
+diff --git a/llvm/bindings/ocaml/transforms/ipo/ipo_ocaml.c b/llvm/bindings/ocaml/transforms/ipo/ipo_ocaml.c
+index 09450dc1a8ca..008d18e0822b 100644
+--- a/llvm/bindings/ocaml/transforms/ipo/ipo_ocaml.c
++++ b/llvm/bindings/ocaml/transforms/ipo/ipo_ocaml.c
+@@ -48,10 +48,3 @@ value llvm_add_global_dce(LLVMPassManagerRef PM) {
+   LLVMAddGlobalDCEPass(PM);
+   return Val_unit;
+ }
+-
+-/* [`Module] Llvm.PassManager.t -> unit */
+-value llvm_add_ipsccp(LLVMPassManagerRef PM) {
+-  LLVMAddIPSCCPPass(PM);
+-  return Val_unit;
+-}
+-
+diff --git a/llvm/bindings/ocaml/transforms/ipo/llvm_ipo.ml b/llvm/bindings/ocaml/transforms/ipo/llvm_ipo.ml
+index 3d7464956d01..e54ee494e7be 100644
+--- a/llvm/bindings/ocaml/transforms/ipo/llvm_ipo.ml
++++ b/llvm/bindings/ocaml/transforms/ipo/llvm_ipo.ml
+@@ -21,6 +21,3 @@ external add_always_inliner
+ external add_global_dce
+   : [ `Module ] Llvm.PassManager.t -> unit
+   = "llvm_add_global_dce"
+-external add_ipsccp
+-  : [ `Module ] Llvm.PassManager.t -> unit
+-  = "llvm_add_ipsccp"
+diff --git a/llvm/bindings/ocaml/transforms/ipo/llvm_ipo.mli b/llvm/bindings/ocaml/transforms/ipo/llvm_ipo.mli
+index 03f3a183b95e..baa098495e9c 100644
+--- a/llvm/bindings/ocaml/transforms/ipo/llvm_ipo.mli
++++ b/llvm/bindings/ocaml/transforms/ipo/llvm_ipo.mli
+@@ -35,8 +35,4 @@ external add_always_inliner
+ external add_global_dce
+   : [ `Module ] Llvm.PassManager.t -> unit
+   = "llvm_add_global_dce"
+-
+-(** See the [llvm::createIPSCCPPass] function. *)
+-external add_ipsccp
+-  : [ `Module ] Llvm.PassManager.t -> unit
+-  = "llvm_add_ipsccp"
++  
+\ No newline at end of file
+diff --git a/llvm/include/llvm-c/Transforms/IPO.h b/llvm/include/llvm-c/Transforms/IPO.h
+index f6fd7882ea65..53aa20fbd886 100644
+--- a/llvm/include/llvm-c/Transforms/IPO.h
++++ b/llvm/include/llvm-c/Transforms/IPO.h
+@@ -42,9 +42,6 @@ void LLVMAddAlwaysInlinerPass(LLVMPassManagerRef PM);
+ /** See llvm::createGlobalDCEPass function. */
+ void LLVMAddGlobalDCEPass(LLVMPassManagerRef PM);
+ 
+-/** See llvm::createIPSCCPPass function. */
+-void LLVMAddIPSCCPPass(LLVMPassManagerRef PM);
+-
+ /**
+  * @}
+  */
+diff --git a/llvm/include/llvm/LinkAllPasses.h b/llvm/include/llvm/LinkAllPasses.h
+index 9e3ac6fd821b..b5ab8d87629e 100644
+--- a/llvm/include/llvm/LinkAllPasses.h
++++ b/llvm/include/llvm/LinkAllPasses.h
+@@ -97,7 +97,6 @@ namespace {
+       (void) llvm::createGlobalsAAWrapperPass();
+       (void) llvm::createGuardWideningPass();
+       (void) llvm::createLoopGuardWideningPass();
+-      (void) llvm::createIPSCCPPass();
+       (void) llvm::createInductiveRangeCheckEliminationPass();
+       (void) llvm::createIndVarSimplifyPass();
+       (void) llvm::createInstSimplifyLegacyPass();
+diff --git a/llvm/include/llvm/Transforms/IPO.h b/llvm/include/llvm/Transforms/IPO.h
+index 297e69542064..4c6eb6f6e644 100644
+--- a/llvm/include/llvm/Transforms/IPO.h
++++ b/llvm/include/llvm/Transforms/IPO.h
+@@ -76,13 +76,6 @@ ModulePass *createDeadArgEliminationPass();
+ /// bugpoint.
+ ModulePass *createDeadArgHackingPass();
+ 
+-//===----------------------------------------------------------------------===//
+-/// createIPSCCPPass - This pass propagates constants from call sites into the
+-/// bodies of functions, and keeps track of whether basic blocks are executable
+-/// in the process.
+-///
+-ModulePass *createIPSCCPPass();
+-
+ //===----------------------------------------------------------------------===//
+ //
+ /// createLoopExtractorPass - This pass extracts all natural loops from the
+diff --git a/llvm/lib/Transforms/IPO/IPO.cpp b/llvm/lib/Transforms/IPO/IPO.cpp
+index 7d95c761d3d5..6fa706a91b0b 100644
+--- a/llvm/lib/Transforms/IPO/IPO.cpp
++++ b/llvm/lib/Transforms/IPO/IPO.cpp
+@@ -36,7 +36,6 @@ void llvm::initializeIPO(PassRegistry &Registry) {
+   initializeAttributorLegacyPassPass(Registry);
+   initializeAttributorCGSCCLegacyPassPass(Registry);
+   initializePostOrderFunctionAttrsLegacyPassPass(Registry);
+-  initializeIPSCCPLegacyPassPass(Registry);
+   initializeBarrierNoopPass(Registry);
+   initializeEliminateAvailableExternallyLegacyPassPass(Registry);
+ }
+@@ -64,7 +63,3 @@ void LLVMAddAlwaysInlinerPass(LLVMPassManagerRef PM) {
+ void LLVMAddGlobalDCEPass(LLVMPassManagerRef PM) {
+   unwrap(PM)->add(createGlobalDCEPass());
+ }
+-
+-void LLVMAddIPSCCPPass(LLVMPassManagerRef PM) {
+-  unwrap(PM)->add(createIPSCCPPass());
+-}
+diff --git a/llvm/lib/Transforms/IPO/PassManagerBuilder.cpp b/llvm/lib/Transforms/IPO/PassManagerBuilder.cpp
+index ce0792631ff1..893cca50efc4 100644
+--- a/llvm/lib/Transforms/IPO/PassManagerBuilder.cpp
++++ b/llvm/lib/Transforms/IPO/PassManagerBuilder.cpp
+@@ -310,8 +310,6 @@ void PassManagerBuilder::populateModulePassManager(
+   if (OptLevel > 2)
+     MPM.add(createCallSiteSplittingPass());
+ 
+-  MPM.add(createIPSCCPPass());          // IP SCCP
+-
+   // Promote any localized global vars.
+   MPM.add(createPromoteMemoryToRegisterPass());
+ 
+diff --git a/llvm/lib/Transforms/IPO/SCCP.cpp b/llvm/lib/Transforms/IPO/SCCP.cpp
+index 5c1582ddfdae..9675ec025cf9 100644
+--- a/llvm/lib/Transforms/IPO/SCCP.cpp
++++ b/llvm/lib/Transforms/IPO/SCCP.cpp
+@@ -407,73 +407,3 @@ PreservedAnalyses IPSCCPPass::run(Module &M, ModuleAnalysisManager &AM) {
+   PA.preserve<FunctionAnalysisManagerModuleProxy>();
+   return PA;
+ }
+-
+-namespace {
+-
+-//===--------------------------------------------------------------------===//
+-//
+-/// IPSCCP Class - This class implements interprocedural Sparse Conditional
+-/// Constant Propagation.
+-///
+-class IPSCCPLegacyPass : public ModulePass {
+-public:
+-  static char ID;
+-
+-  IPSCCPLegacyPass() : ModulePass(ID) {
+-    initializeIPSCCPLegacyPassPass(*PassRegistry::getPassRegistry());
+-  }
+-
+-  bool runOnModule(Module &M) override {
+-    if (skipModule(M))
+-      return false;
+-    const DataLayout &DL = M.getDataLayout();
+-    auto GetTLI = [this](Function &F) -> const TargetLibraryInfo & {
+-      return this->getAnalysis<TargetLibraryInfoWrapperPass>().getTLI(F);
+-    };
+-    auto GetTTI = [this](Function &F) -> TargetTransformInfo & {
+-      return this->getAnalysis<TargetTransformInfoWrapperPass>().getTTI(F);
+-    };
+-    auto GetAC = [this](Function &F) -> AssumptionCache & {
+-      return this->getAnalysis<AssumptionCacheTracker>().getAssumptionCache(F);
+-    };
+-    auto getAnalysis = [this](Function &F) -> AnalysisResultsForFn {
+-      DominatorTree &DT =
+-          this->getAnalysis<DominatorTreeWrapperPass>(F).getDomTree();
+-      return {
+-          std::make_unique<PredicateInfo>(
+-              F, DT,
+-              this->getAnalysis<AssumptionCacheTracker>().getAssumptionCache(
+-                  F)),
+-          nullptr,  // We cannot preserve the LI, DT or PDT with the legacy pass
+-          nullptr,  // manager, so set them to nullptr.
+-          nullptr};
+-    };
+-
+-    return runIPSCCP(M, DL, nullptr, GetTLI, GetTTI, GetAC, getAnalysis, false);
+-  }
+-
+-  void getAnalysisUsage(AnalysisUsage &AU) const override {
+-    AU.addRequired<AssumptionCacheTracker>();
+-    AU.addRequired<DominatorTreeWrapperPass>();
+-    AU.addRequired<TargetLibraryInfoWrapperPass>();
+-    AU.addRequired<TargetTransformInfoWrapperPass>();
+-  }
+-};
+-
+-} // end anonymous namespace
+-
+-char IPSCCPLegacyPass::ID = 0;
+-
+-INITIALIZE_PASS_BEGIN(IPSCCPLegacyPass, "ipsccp",
+-                      "Interprocedural Sparse Conditional Constant Propagation",
+-                      false, false)
+-INITIALIZE_PASS_DEPENDENCY(AssumptionCacheTracker)
+-INITIALIZE_PASS_DEPENDENCY(DominatorTreeWrapperPass)
+-INITIALIZE_PASS_DEPENDENCY(TargetLibraryInfoWrapperPass)
+-INITIALIZE_PASS_END(IPSCCPLegacyPass, "ipsccp",
+-                    "Interprocedural Sparse Conditional Constant Propagation",
+-                    false, false)
+-
+-// createIPSCCPPass - This is the public interface to this file.
+-ModulePass *llvm::createIPSCCPPass() { return new IPSCCPLegacyPass(); }
+-
+diff --git a/llvm/test/Bindings/OCaml/ipo.ml b/llvm/test/Bindings/OCaml/ipo.ml
+index 124a9734ce23..9866de4e8ec1 100644
+--- a/llvm/test/Bindings/OCaml/ipo.ml
++++ b/llvm/test/Bindings/OCaml/ipo.ml
+@@ -52,7 +52,6 @@ let test_transforms () =
+            ++ add_function_attrs
+            ++ add_always_inliner
+            ++ add_global_dce
+-           ++ add_ipsccp
+            ++ PassManager.run_module m
+            ++ PassManager.dispose)
+ 
+-- 
+2.39.2
+

@@ -1,6 +1,6 @@
 pkgbase = lib32-llvm-minimal-git
-	pkgver = 16.0.0_r448881.31ee6ae059fd
-	pkgrel = 1
+	pkgver = 17.0.0_r452970.aa56e66bf752
+	pkgrel = 2
 	url = http://llvm.org/
 	arch = x86_64
 	license = custom:Apache 2.0 with LLVM Exception
@@ -17,12 +17,18 @@ pkgbase = lib32-llvm-minimal-git
 	options = staticlibs
 	options = !lto
 	source = llvm-project::git+https://github.com/llvm/llvm-project.git
+	source = 0001-IPSCCP-Remove-legacy-pass.patch
+	source = 0001-OCaml-Remove-all-PassManager-related-functions.patch
 	md5sums = SKIP
+	md5sums = 245054bc67dec3eb30329bbdeed171b1
+	md5sums = 4c5ac9bca18c8a92280b1699f2f85a16
 	sha512sums = SKIP
+	sha512sums = 4c1e8a455163ceb1e7d3f09f5e68f731e47f2346a2f62e1fe97b19f54c16781efc0b75d52304fe9d4aa62512fd6f32b7bd6e12b319cbe72e7831f1a056ffbfd0
+	sha512sums = 92f971db948e8acd4a55cb46ef28dc394c5df07f57844b63d82fc19436e2dfe7b184599ca17d84ef4fa63f6281628d8cc734d74dcc95bc0eee8a5e7c3778f49a
 
 pkgname = lib32-llvm-minimal-git
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies (32-bit)
-	depends = lib32-llvm-libs-minimal-git=16.0.0_r448881.31ee6ae059fd-1
+	depends = lib32-llvm-libs-minimal-git=17.0.0_r452970.aa56e66bf752-2
 	depends = llvm-minimal-git
 	provides = lib32-llvm
 	conflicts = lib32-llvm

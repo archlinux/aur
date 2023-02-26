@@ -19,16 +19,23 @@
 
 pkgbase=lib32-llvm-minimal-git
 pkgname=('lib32-llvm-minimal-git' 'lib32-llvm-libs-minimal-git')
-pkgver=16.0.0_r448881.31ee6ae059fd
-pkgrel=1
+pkgver=17.0.0_r452970.aa56e66bf752
+pkgrel=2
 arch=('x86_64')
 url="http://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=('git' 'cmake' 'ninja' 'lib32-libffi' 'lib32-zlib' 'python' 'lib32-gcc-libs'
              'lib32-libxml2' 'lib32-zstd' 'llvm-minimal-git')
-source=("llvm-project::git+https://github.com/llvm/llvm-project.git")
-md5sums=('SKIP')
-sha512sums=('SKIP')
+source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
+                '0001-IPSCCP-Remove-legacy-pass.patch'
+                '0001-OCaml-Remove-all-PassManager-related-functions.patch'
+)
+md5sums=('SKIP'
+         '245054bc67dec3eb30329bbdeed171b1'
+         '4c5ac9bca18c8a92280b1699f2f85a16')
+sha512sums=('SKIP'
+            '4c1e8a455163ceb1e7d3f09f5e68f731e47f2346a2f62e1fe97b19f54c16781efc0b75d52304fe9d4aa62512fd6f32b7bd6e12b319cbe72e7831f1a056ffbfd0'
+            '92f971db948e8acd4a55cb46ef28dc394c5df07f57844b63d82fc19436e2dfe7b184599ca17d84ef4fa63f6281628d8cc734d74dcc95bc0eee8a5e7c3778f49a')
 options=('staticlibs' '!lto')
 # explicitly disable lto to reduce number of build hangs / test failures
 
@@ -53,6 +60,15 @@ pkgver() {
              END { print "\n" }' \
              CMakeLists.txt)_r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
     echo "${_pkgver}"
+}
+
+prepare() {
+    
+    # revert https://github.com/llvm/llvm-project/commit/e0efe46b33068f2e651e850cdc3ede0306f1853c so the passmanager patch keeps working
+    patch --directory="llvm-project" --reverse --strip=1 --input="${srcdir}/0001-OCaml-Remove-all-PassManager-related-functions.patch"
+    # reverting commit b677d0753c0a771c6203607f5dbb56189193a14c , see https://gitlab.freedesktop.org/mesa/mesa/-/issues/8297
+    patch --directory="llvm-project" --reverse --strip=1 --input="${srcdir}/0001-IPSCCP-Remove-legacy-pass.patch"
+    
 }
 
 build() {
