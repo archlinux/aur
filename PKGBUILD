@@ -1,7 +1,7 @@
 # Maintainer: Caleb Fontenot <foley2431@gmail.com>
 
 pkgname=howdy-beta-git
-pkgver=2.6.1.r147.g943f1e1
+pkgver=2.6.1.r183.gdb3a8cb
 pkgrel=1
 pkgdesc="Windows Hello for Linux (Beta)"
 arch=('x86_64')
@@ -35,7 +35,7 @@ conflicts=(
 provides=(
 	'howdy'
 )
-backup=('usr/lib/security/howdy/config.ini')
+backup=('etc/howdy/config.ini')
 source=(
 	"git+https://github.com/boltgolt/howdy.git#branch=beta"
 	"https://github.com/davisking/dlib-models/raw/master/dlib_face_recognition_resnet_model_v1.dat.bz2"
@@ -81,20 +81,28 @@ package() {
 	install -Dm755 "pam_howdy/build/pam_howdy.so" "${pkgdir}/usr/lib/security/pam_howdy.so"
 
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/howdy/LICENSE"
-	install -dm700 "${pkgdir}/usr/lib/security/howdy"
-	cp -r howdy/src/* -t "${pkgdir}/usr/lib/security/howdy"
-	install -dm700 "${pkgdir}/usr/lib/security/howdy/dlib-data"
-	install -Dm600 "${srcdir}/dlib_face_recognition_resnet_model_v1.dat" "${pkgdir}/usr/lib/security/howdy/dlib-data"
-	install -Dm600 "${srcdir}/mmod_human_face_detector.dat" "${pkgdir}/usr/lib/security/howdy/dlib-data"
-	install -Dm600 "${srcdir}/shape_predictor_5_face_landmarks.dat" "${pkgdir}/usr/lib/security/howdy/dlib-data"
-	install -Dm700 "howdy/src/cli.py" "${pkgdir}/usr/lib/security/howdy/cli.py"
-	find ${pkgdir}/usr/lib/security/howdy -type f -exec chmod 600 {} +
-	find ${pkgdir}/usr/lib/security/howdy -type d -exec chmod 700 {} +
+
+	install -dm700 "${pkgdir}/etc/howdy"
+	install -dm700 "${pkgdir}/usr/lib/security"
+
+	cp -r howdy/src/* -t "${pkgdir}/etc/howdy"
+	#cp -r howdy/src/config.ini -t "${pkgdir}/etc/howdy"
+
+
+	install -dm700 "${pkgdir}/etc/howdy/dlib-data"
+	install -Dm600 "${srcdir}/dlib_face_recognition_resnet_model_v1.dat" "${pkgdir}/etc/howdy/dlib-data"
+	install -Dm600 "${srcdir}/mmod_human_face_detector.dat" "${pkgdir}/etc/howdy/dlib-data"
+	install -Dm600 "${srcdir}/shape_predictor_5_face_landmarks.dat" "${pkgdir}/etc/howdy/dlib-data"
+
+	install -Dm700 "howdy/src/cli.py" "${pkgdir}/etc/howdy/cli.py"
+	find ${pkgdir}/etc/howdy -type f -exec chmod 600 {} +
+	find ${pkgdir}/etc/howdy -type d -exec chmod 700 {} +
 
 	install -dm755 "${pkgdir}/usr/bin/"
-	chmod 755 "${pkgdir}/usr/lib/security/howdy/cli.py"
-	ln -s "/usr/lib/security/howdy/cli.py" "${pkgdir}/usr/bin/howdy"
+	chmod 755 "${pkgdir}/etc/howdy/cli.py"
+	ln -s "/etc/howdy/cli.py" "${pkgdir}/usr/bin/howdy"
+	ln -s "/etc/howdy" "${pkgdir}/usr/lib/security/howdy"
 
-	install -dm755 "${pkgdir}/usr/lib/howdy-gtk"
-	cp -rv howdy-gtk/src/* "${pkgdir}/usr/lib/howdy-gtk"
+#	install -dm755 "${pkgdir}/usr/lib/howdy-gtk"
+#   cp -rv howdy-gtk/src/* "${pkgdir}/usr/lib/howdy-gtk"
 }

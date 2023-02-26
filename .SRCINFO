@@ -1,6 +1,6 @@
 pkgbase = howdy-beta-git
 	pkgdesc = Windows Hello for Linux (Beta)
-	pkgver = 2.6.1.r147.g943f1e1
+	pkgver = 2.6.1.r183.gdb3a8cb
 	pkgrel = 1
 	url = https://github.com/boltgolt/howdy
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = howdy-beta-git
 	depends = python-opencv
 	provides = howdy
 	conflicts = howdy
-	backup = usr/lib/security/howdy/config.ini
+	backup = etc/howdy/config.ini
 	source = git+https://github.com/boltgolt/howdy.git#branch=beta
 	source = https://github.com/davisking/dlib-models/raw/master/dlib_face_recognition_resnet_model_v1.dat.bz2
 	source = https://github.com/davisking/dlib-models/raw/master/mmod_human_face_detector.dat.bz2
