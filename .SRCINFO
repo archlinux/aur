@@ -5,6 +5,7 @@ pkgbase = frame-eth
 	url = https://frame.sh
 	install = frame-eth.install
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = npm
 	makedepends = nvm
