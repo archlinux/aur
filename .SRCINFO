@@ -1,14 +1,15 @@
 pkgbase = himitsu-firefox
 	pkgdesc = Native messaging component for the Himitsu Firefox extension
-	pkgver = 0.3
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://git.sr.ht/~sircmpwn/himitsu-firefox
 	install = himitsu-firefox.install
 	arch = x86_64
 	license = GPL3
 	makedepends = hare
+	makedepends = hare-json
 	depends = himitsu
-	source = himitsu-firefox-0.3.tar.gz::https://git.sr.ht/~sircmpwn/himitsu-firefox/archive/0.3.tar.gz
-	sha256sums = 9710ebfb6dc78bd2d3d1ff173b6829e40acdc90670f1b5b71c2ffede5bb9f37f
+	source = himitsu-firefox-0.4.tar.gz::https://git.sr.ht/~sircmpwn/himitsu-firefox/archive/0.4.tar.gz
+	sha256sums = 0103d2e950b9efd3fcd120ab1b6bb838f8de427805b1da3176503a5ebd05d591
 
 pkgname = himitsu-firefox
