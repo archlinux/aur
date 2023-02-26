@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
-
+# Contributor: asukaminato <asukaminato at nyan dot eu dot org>
 pkgname=speedtest-rs
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='Speedtest.net testing utility and crate'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache' 'MIT')
 depends=('gcc-libs' 'openssl')
 makedepends=('rust')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-b2sums=('4afd4e77623f14ef0ea18135fe4a0d0f4ce145aa28a58fa2fd6478995889ae2e4b63bbaf39e08e56f7001c3bcef49130028032e6052dffea08d3012591991504')
+b2sums=('c53204efd2f622682fdd53b34f9305bfdba0aacf8ea857c99b07a5ff6c0fe7909489f8ac5e49b32104eb77fba4408db4e73e6c62458b4242cf93e7bd7931da2c')
 
 build() {
   cd $pkgname-$pkgver
@@ -24,7 +24,7 @@ check() {
 
 package() {
   cd $pkgname-$pkgver
-  install -Dt "$pkgdir"/usr/bin target/release/$pkgname
+  install -Dm755 target/release/$pkgname -t "$pkgdir"/usr/bin
   install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE-MIT
 }
 
