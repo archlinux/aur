@@ -1,4 +1,4 @@
-# Maintainer: Anastasios Vacharakis <vacharakis@o2mail.de>
+# Maintainer: Anastasios Vacharakis <archlinux@vacharakis.de>
 pkgname=xmppcd-git
 pkgver=1.0
 pkgrel=1
