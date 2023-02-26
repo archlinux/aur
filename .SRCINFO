@@ -1,0 +1,14 @@
+pkgbase = hcxlabtool-git
+	pkgdesc = NL80211 / RTNETLINK fork of hcxdumptool
+	pkgver = r347.51ad69e
+	pkgrel = 1
+	url = https://github.com/ZerBea/wifi_laboratory
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	options = !debug
+	source = hcxlabtool::git+https://github.com/ZerBea/wifi_laboratory
+	b2sums = SKIP
+
+pkgname = hcxlabtool-git
