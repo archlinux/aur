@@ -1,13 +1,14 @@
 pkgbase = python-pypdf3
 	pkgdesc = Pure-Python PDF library for splitting, merging, cropping, and transforming PDF pages.
 	pkgver = 1.0.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/sfneal/PyPDF3
 	arch = any
 	license = custom
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python-tqdm
 	source = https://files.pythonhosted.org/packages/source/P/PyPDF3/PyPDF3-1.0.6.tar.gz
 	sha256sums = c946f3273419e37258e35e72273f49904ab15723d87a761c1115ef99799f8c5f
