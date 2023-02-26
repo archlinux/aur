@@ -2,7 +2,7 @@
 
 pkgname=python-py-gfm
 _pkgname=py-gfm
-pkgver=1.0.2
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Github-Flavored Markdown for Python-Markdown"
 url="https://github.com/Zopieux/py-gfm"
@@ -11,7 +11,7 @@ license=('custom')
 depends=('python' 'python-markdown')
 makedepends=('python-setuptools')
 source=("https://github.com/Zopieux/${_pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('17226897e792477ff57a0346c112c9f3862e48a279af54be3b302660190fdeeeb1fb3657f04229eb6ba03472578acad704afe88f1522e80f5e732aa39a3fbe33')
+sha512sums=('45d62280465bdc0cc51fc3e74486d0923c71fce7497ca29d68ba7bce232bf423d209b7ee54170d2ae283374c4e5979766d95e13ce9285bff303e7a5a83e1e12b')
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
