@@ -2,9 +2,9 @@
 # Contributor: jerry73204 <jerry73204 at gmail dot com>
 
 pkgname=ogr2osm-git
-pkgver=r173.a20f331
+pkgver=r366.e9efa1a
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc='A tool for converting ogr-readable files like shapefiles into .osm data'
 arch=('any')
 url='https://github.com/roelderickx/ogr2osm'
@@ -26,7 +26,7 @@ makedepends=(
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(
-	'ogr2osm::git+https://github.com/pnorman/ogr2osm.git'
+	"ogr2osm::git+$url"
 	'https://raw.githubusercontent.com/roelderickx/ogr2osm/main/LICENSE'
 )
 b2sums=('SKIP'
