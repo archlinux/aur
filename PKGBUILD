@@ -7,7 +7,7 @@
 pkgname=zfs-dkms-raidz-expansion-git
 _pkgbase=zfs-dkms-git
 pkgver=2.1.99
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Kernel modules for the Zettabyte File System.'
 arch=('x86_64')
@@ -20,16 +20,17 @@ provides=("ZFS-MODULE=${pkgver}" "SPL-MODULE=${pkgver}" "${pkgname%-git}=${pkgve
 conflicts=("${pkgname%-git}" "${_pkgbase%-git}" 'spl-dkms')
 replaces=('spl-dkms-git')
 source=('git+https://github.com/nicman23/zfs.git#branch=ahrens-raidz-expand'
-        "0001-only-build-the-module-in-dkms.conf.patch")
+        "0001-only-build-the-module-in-dkms.conf.patch"
+        ecb6a50819448cd2d6570298a5ba46b45eded216.diff)
 sha256sums=('SKIP'
-            '539f325e56443554f9b87baff33948b91a280ec1daadcb0c636b105252fcd0f5')
-b2sums=('SKIP'
-        'a8ab5da81d214e7801f0f8cdf77c076c714a3f17292df15ca35fcf7aef2c4d505348797e3b1da7590ea303ff488490ddba49e6f9e3f8a0bcc975894d51d97c2b')
+            '539f325e56443554f9b87baff33948b91a280ec1daadcb0c636b105252fcd0f5'
+            a60a6e008270b2624b12cf7556832867c29d33ae2bddc06d8205046948a4e0f0)
 
 prepare() {
     cd zfs
 
     patch -p1 -i ../0001-only-build-the-module-in-dkms.conf.patch
+    patch -p1 -i ../ecb6a50819448cd2d6570298a5ba46b45eded216.diff
 
     # remove unneeded sections from module build
     sed -ri "/AC_CONFIG_FILES/,/]\)/{

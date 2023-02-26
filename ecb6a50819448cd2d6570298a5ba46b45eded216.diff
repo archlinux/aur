@@ -1,0 +1,36 @@
+diff --git a/module/os/linux/spl/spl-procfs-list.c b/module/os/linux/spl/spl-procfs-list.c
+index a4a24dcae2b..5e073950d61 100644
+--- a/module/os/linux/spl/spl-procfs-list.c
++++ b/module/os/linux/spl/spl-procfs-list.c
+@@ -23,9 +23,9 @@
+  */
+ 
+ #include <sys/list.h>
+-#include <sys/mutex.h>
+ #include <sys/procfs_list.h>
+ #include <linux/proc_fs.h>
++#include <sys/mutex.h>
+ 
+ /*
+  * A procfs_list is a wrapper around a linked list which implements the seq_file
+diff --git a/module/os/linux/spl/spl-zone.c b/module/os/linux/spl/spl-zone.c
+index 9421f81bf0c..b489179f125 100644
+--- a/module/os/linux/spl/spl-zone.c
++++ b/module/os/linux/spl/spl-zone.c
+@@ -25,7 +25,6 @@
+  */
+ 
+ #include <sys/types.h>
+-#include <sys/mutex.h>
+ #include <sys/sysmacros.h>
+ #include <sys/kmem.h>
+ #include <linux/file.h>
+@@ -37,6 +36,8 @@
+ #include <linux/proc_ns.h>
+ #endif
+ 
++#include <sys/mutex.h>
++
+ static kmutex_t zone_datasets_lock;
+ static struct list_head zone_datasets;
+ 
