@@ -2,7 +2,7 @@
 
 pkgname=python-pyvis
 _name=${pkgname#python-}
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Python package for creating and visualizing interactive network graphs"
 arch=(any)
@@ -23,7 +23,7 @@ depends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('439709a01e43e45bf3bbac201defd0a4ba5506e990b347f890aead4982504e86')
+sha256sums=('ff947e224d9825e4b0f3d6710075945c5c8d13bf60aa54e6396c996f34851a3a')
 
 _archive="$_name-$pkgver"
 
