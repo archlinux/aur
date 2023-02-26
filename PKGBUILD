@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.29
 
 pkgname='perl-template-tiny'
-pkgver='1.12'
+pkgver='1.14'
 pkgrel='1'
 pkgdesc="Template Toolkit reimplemented in as little code as possible"
 arch=('any')
@@ -11,10 +11,9 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=()
 url='http://search.mcpan.org/dist/Template-Tiny'
-source=('http://search.mcpan.org/CPAN/authors/id/A/AD/ADAMK/Template-Tiny-1.12.tar.gz')
-md5sums=('166662a3d24c1c5f995c2ffc26e0eb36')
-sha512sums=('056b3dcffea92533b0c61423edede96654a98d9a2bed13753b03e3dc2849ba2c5d41607cb604b8752909cb07771d152e3c3c90f514f7eccaebd60b34bc270da2')
-_distdir="Template-Tiny-1.12"
+source=('https://cpan.metacpan.org/authors/id/E/ET/ETHER/Template-Tiny-1.14.tar.gz')
+md5sums=('536563598c2bb3c3b763a9ecb8eaef01')
+_distdir="Template-Tiny-1.14"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
