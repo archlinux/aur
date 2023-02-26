@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=boxxy-git
-pkgver=0.3.4.r0.g238a011
+pkgver=0.3.5.r0.g0c07355
 pkgrel=1
 pkgdesc="Put bad Linux applications in a box with only their files (git)"
 arch=('x86_64')
@@ -28,11 +28,14 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
   cargo build --release --frozen
 }
 
 check() {
   cd "${pkgname%-git}"
+  export RUSTUP_TOOLCHAIN=stable
   cargo test --frozen
 }
 
