@@ -1,13 +1,13 @@
 pkgbase = i3-back-bin
 	pkgdesc = An i3 utility to switch focus to your last focused window. Allows for behavior similar to Alt+Tab on other desktop environments.
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/Cretezy/i3-back
 	arch = x86_64
 	license = MIT
 	provides = i3-back
 	conflicts = i3-back
-	source = https://github.com/Cretezy/i3-back/releases/download/v0.1.1/i3-back-0.1.1-x86_64.tar.gz
-	sha256sums = 6e2447ba476aca0b0bf56b271f08700d78c791080768e53aa3b7be17bc1504db
+	source = https://github.com/Cretezy/i3-back/releases/download/v0.1.2/i3-back-0.1.2-x86_64.tar.gz
+	sha256sums = 70294e2741d7cd8ff79283a5e66f9f83a848821d6225c596abe8509ef1055755
 
 pkgname = i3-back-bin
