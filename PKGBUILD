@@ -1,12 +1,12 @@
 # Maintainer: Christian Schendel <doppelhelix@gmail.com>
 pkgname=gnome-shell-extension-gnome-static-background-git
 pkgver=r12.75093fb
-pkgrel=1
+pkgrel=2
 pkgdesc="Static Wallpaper in Overview"
 arch=('any')
 url="https://github.com/dz4k/gnome-static-background"
 license=('GPL3')
-depends=('gnome-shell>=40')
+depends=('gnome-shell>=1:40')
 makedepends=('git')
 install="${pkgname}.install"
 conflicts=("${pkgname%-git}")
