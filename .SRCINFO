@@ -1,0 +1,19 @@
+pkgbase = spaln
+	pkgdesc = Splicing-aware transcript (cDNA/EST or protein sequences) alignment to genomic DNA
+	pkgver = 2.4.13f
+	pkgrel = 1
+	url = https://github.com/ogotoh/spaln
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	depends = perl
+	source = spaln-2.4.13f.tar.gz::https://github.com/ogotoh/spaln/archive/refs/tags/ver.2.4.13f.tar.gz
+	source = spaln.sh
+	source = spaln.csh
+	source = destdir.patch
+	sha256sums = 024fdcf58e38373983092280a7e10ff9c7e246e7d2465c165e158512e686225e
+	sha256sums = 16e205ed8baf72052d6bce8a758eaae73e29d2469bd6825c6374dc652a5c165c
+	sha256sums = 8529a45783eee4f9e0c668e8ef670ab95cf02fb60059d5e442b0283d60a83e7c
+	sha256sums = b78d8bf6c79cee8aa0a06e5aa61098041d46a468275fda911883d356866f8a8f
+
+pkgname = spaln

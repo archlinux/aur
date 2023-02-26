@@ -1,0 +1,26 @@
+--- a/Makefile.in	2023-01-11 17:27:09.000000000 +0530
++++ b/Makefile.in	2023-02-26 23:12:50.488085410 +0530
+@@ -53,16 +53,16 @@
+ 	tar cvf Sources.tar $$Pnm
+ 
+ install:
+-	test -d $(exec_prefix) || mkdir -p $(exec_prefix)
+-	cp $(PROG) $(exec_prefix)
+-	test -d $(table_dir) || mkdir -p $(table_dir)
++	test -d $(DESTDIR)$(exec_prefix) || mkdir -p $(DESTDIR)$(exec_prefix)
++	cp $(PROG) $(DESTDIR)$(exec_prefix)
++	test -d $(DESTDIR)$(table_dir) || mkdir -p $(DESTDIR)$(table_dir)
+ 	@if test "$(table_dir)" != "$(PWD)/../table"; then \
+-		cp -pfR ../table/* $(table_dir); \
++		cp -pfR ../table/* $(DESTDIR)$(table_dir); \
+ 	fi
+-	./makmdm $(table_dir)
+-	test -d $(alndbs_dir) || mkdir -p $(alndbs_dir)
++	./makmdm $(DESTDIR)$(table_dir)
++	test -d $(DESTDIR)$(alndbs_dir) || mkdir -p $(DESTDIR)$(alndbs_dir)
+ 	@if test "$(alndbs_dir)" != "$(PWD)/../seqdb"; then \
+-		cp -pfR ../seqdb/????* $(alndbs_dir); \
++		cp -pfR ../seqdb/????* $(DESTDIR)$(alndbs_dir); \
+ 	fi
+ 
+ uninstall uninst:
