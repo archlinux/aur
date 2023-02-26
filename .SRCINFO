@@ -1,9 +1,12 @@
 pkgbase = linux-lts515
 	pkgdesc = LTS Linux 5.15.x
 	pkgver = 5.15.95
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/
 	arch = x86_64
+	arch = pentium4
+	arch = i686
+	arch = i486
 	license = GPL2
 	makedepends = bc
 	makedepends = libelf

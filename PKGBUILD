@@ -3,10 +3,10 @@
 
 pkgbase=linux-lts515
 pkgver=5.15.95
-pkgrel=1
+pkgrel=2
 pkgdesc='LTS Linux 5.15.x'
 url="https://www.kernel.org/"
-arch=(x86_64)
+arch=(x86_64 pentium4 i686 i486)
 license=(GPL2)
 makedepends=(
   bc libelf pahole cpio perl tar xz
@@ -210,3 +210,117 @@ for _p in "${pkgname[@]}"; do
 done
 
 # vim:set ts=8 sts=2 sw=2 et:
+
+# fail if upstream's .config changes
+for ((i=0; i<${#sha256sums[@]}; i++)); do
+  if [ "${sha256sums[${i}]}" = '34ff5888b26967abe27a2c0a3c8185f5625412b65ddf9221a7d71fdbaae6c356' ]; then
+    sha256sums[${i}]='8c6a77cfaa0f95df4c75670a54f4de89057233129f7795207da0bfc372634165'
+  fi
+done
+
+eval "$(
+  declare -f package_linux-lts515-headers | \
+    sed '
+      \,/tools/objtool" ,d
+      \,arch/x86/Makefile,a install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile_32.cpu
+      $ i depends+=(gcc-libs=$(_get_gcc_version_from_config))
+    '
+)"
+
+_get_gcc_version_from_config() {
+  if [ -z "$srcdir" ]; then
+    gcc --version \
+    | sed '
+      s@^.* @@
+      1!d
+    '
+  else
+    for _config_file in "$srcdir/$_srcname/.config" "$srcdir/config" "${srcdir%/*}/config"; do
+      [ -f "$_config_file" ] && break
+    done
+    sed '
+      s/^CONFIG_CC_VERSION_TEXT="gcc (GCC) \([0-9.]\+\)"$/\1/
+      t
+      d
+    ' "$_config_file"
+  fi
+}
+
+
+if [ "${CARCH}" = "i486" -o  "${CARCH}" = "i686" -o "${CARCH}" = "pentium4" ]; then
+  source_pentium4=('config.pentium4')
+  source_i686=('config.i686')
+  source_i486=('config.i486')
+  # fail if upstream's .config changes
+  for ((i=0; i<${#sha256sums[@]}; i++)); do
+    if [ "${sha256sums[${i}]}" = '94938015bb01b2e4ea8d5b771f833946d6442622fd5603baee63d78abecd5d20' ]; then
+      sha256sums_pentium4=('c8d5ddb98d547573970a42e1eb72e93ce18199248708ee5713b28a079a8df94c')
+      sha256sums_i686=('8c6a77cfaa0f95df4c75670a54f4de89057233129f7795207da0bfc372634165')
+      sha256sums_i486=('4fa1dcca4f04f148e0fa6fde824539b56a578ea96423431cb7c0783c29034403')
+    fi
+  done
+
+  # copy architecture specific config file, not default 'config'
+  eval "$(
+    declare -f prepare | \
+      sed '
+        s,\.\./config,../config.$CARCH,
+      '
+  )"
+
+  # patch architecture when copying the kernel Makefile
+  eval "$(
+    declare -f package_linux515-headers | \
+      sed '
+        \,/tools/objtool" ,d
+        \,arch/x86/Makefile, {
+          a \
+          install -t "${builddir}/arch/x86" -m644 arch/x86/Makefile_32.cpu
+        }
+        $ i depends+=(gcc-libs=$(_get_gcc_version_from_config))
+      '
+  )"
+
+  _get_gcc_version_from_config() {
+    if [ -z "$srcdir" ]; then
+      gcc --version \
+      | sed '
+        s@^.* @@
+        1!d
+      '
+    else
+      for _config_file in "$srcdir/$_srcname/.config" "$srcdir/config" "${srcdir%/*}/config"; do
+        [ -f "$_config_file" ] && break
+      done
+      sed '
+        s/^CONFIG_CC_VERSION_TEXT="gcc (GCC) \([0-9.]\+\)"$/\1/
+        t
+        d
+      ' "$_config_file"
+    fi
+  }
+
+  # avoid using zstd compression in ultra mode (exhausts virtual memory)
+  source+=('no-ultra-zstd.patch')
+  sha256sums+=('3997ce6033fdf950a9960f1db720b38c47b1a2e06ab75fc6712c154f596e7c47')
+  # upstream prepare() does already do the *.patch patching
+
+  # temporarily disabled documentation due to sphinx_rtd_theme (FS32#163)
+  pkgname=(
+    $(
+      printf '%s\n' "${pkgname[@]}" | \
+        grep -v '^\$pkgbase-docs'
+    )
+  )
+  eval "$(
+    declare -f build | \
+      sed '
+        s/\bhtmldocs\b//
+      '
+  )"
+  makedepends=(${makedepends[@]//python-sphinx_rtd_theme/})
+  makedepends=(${makedepends[@]//python-sphinx<6.0.0/})
+  makedepends=(${makedepends[@]//graphviz/})
+  makedepends=(${makedepends[@]//imagemagick/})
+  makedepends=(${makedepends[@]//texlive-latexextra/})
+fi
