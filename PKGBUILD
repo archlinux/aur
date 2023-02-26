@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=boxxy
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="Put bad Linux applications in a box with only their files"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('28ec7c9b62f4b7d8d4d6b056a84831e5485ad91762ce9c7f04d0659cadaf3d68')
+sha256sums=('53de81e99025cd852053f37769727990a5f854acd3516813e1efca8a145bb73b')
 options=('!lto')
 
 prepare() {
@@ -21,11 +21,14 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
   cargo build --release --frozen
 }
 
 check() {
   cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
   cargo test --frozen
 }
 
