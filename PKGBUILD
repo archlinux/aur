@@ -1,13 +1,13 @@
 # Maintainer: Christian Schendel <doppelhelix@gmail.com>
 pkgname=gnome-shell-extension-replace-activities-label-git
 pkgver=r5.0a0fff2
-pkgrel=1
+pkgrel=2
 pkgdesc="Remove the AppMenu, replace the activities label with 3 dots and animate them as a loading spinner."
 arch=(any)
 url="https://github.com/Leleat/replace-activities-label"
 install=${pkgname%-git}.install
 license=('GPL')
-depends=('gnome-shell>=43')
+depends=('gnome-shell>=1:43')
 makedepends=('git'
              'glib2')
 conflicts=("${pkgname%-git}")
