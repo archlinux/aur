@@ -1,40 +1,33 @@
 # Maintainer: DeedleFake <deedlefake at users dot noreply dot github dot com>
+
 pkgname=upspin-git
-pkgver=r1449.2b715455
-pkgrel=2
+pkgver=r2313.67e250ec2
+pkgrel=1
 pkgdesc="A global name system of sorts."
 arch=(i686 x86_64)
 url="https://upspin.io"
 license=('BSD')
-makedepends=('go>=1.8' 'git')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+makedepends=('go>=2:1.13' 'git')
+provides=('upspin' "${pkgname%-git}")
+conflicts=('upspin' "${pkgname%-git}")
 source=("git+https://github.com/upspin/upspin")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-
-# Git, tags available
-	#printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-
-# Git, no tags available
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "$srcdir"
+	cd "$srcdir/upspin"
 
-	export GOPATH="$srcdir/gopath"
-	mkdir -p "$GOPATH/src"
-	mv "$srcdir/${pkgname%-git}" "$GOPATH/src/upspin.io"
-
-	go get -v upspin.io/cmd/...
+	GOBIN="$srcdir/bin" go install -v ./cmd/...
 }
 
 package() {
 	cd "$srcdir"
 
 	mkdir -p "$pkgdir/usr"
-	cp -a "$srcdir/gopath/bin" "$pkgdir/usr/bin"
+	cp -a "$srcdir/bin" "$pkgdir/usr/bin"
+	install -Dm0644 "$srcdir/upspin/LICENSE" "$pkgdir/usr/share/licenses/upspin/LICENSE"
 }

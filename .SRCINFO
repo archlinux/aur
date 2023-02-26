@@ -1,17 +1,18 @@
 pkgbase = upspin-git
 	pkgdesc = A global name system of sorts.
-	pkgver = r1449.2b715455
-	pkgrel = 2
+	pkgver = r2313.67e250ec2
+	pkgrel = 1
 	url = https://upspin.io
 	arch = i686
 	arch = x86_64
 	license = BSD
-	makedepends = go>=1.8
+	makedepends = go>=2:1.13
 	makedepends = git
 	provides = upspin
+	provides = upspin
+	conflicts = upspin
 	conflicts = upspin
 	source = git+https://github.com/upspin/upspin
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = upspin-git
-
