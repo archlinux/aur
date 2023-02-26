@@ -1,6 +1,6 @@
 pkgbase = bilibilitoolpro-git
 	pkgdesc = A cross-platform Bilibili daily task tool written in .Net 5
-	pkgver = 0.2.3.r7.gcc45c4f
+	pkgver = 1.0.0.r0.gc5837ab
 	pkgrel = 1
 	url = https://github.com/RayWangQvQ/BiliBiliToolPro
 	arch = x86_64
@@ -15,10 +15,14 @@ pkgbase = bilibilitoolpro-git
 	source = disable-log-to-file.patch
 	source = bilibilitoolpro.service
 	source = bilibilitoolpro.timer
+	source = sysusers.d
+	source = tmpfiles.d
 	sha256sums = SKIP
-	sha256sums = 7ff40a76980240d22d0eef3dd339b7739fbff80c6027f9459b5d88a096b6aa03
+	sha256sums = 2e1ca56aadd19971c61b5cf4856566cf5b649d3ad52269dd15cf409e8e67e5c0
 	sha256sums = 60df0b33087bf22517abb3f076259cf1e1e76c68b941288ef6f4b07b25ed091b
-	sha256sums = c841c935fd13bb001224177926cd2c9d88e6d7066f58ea12eb962e05adc7790d
+	sha256sums = 1c8eab441925d714ab3d9c85dea7c2c3eb01fbd550c83467a80da4567aa81117
 	sha256sums = 2b4f3621c10194156e0127e07367a2adc3dcc2a90dee5a9ca145931da8ec8d30
+	sha256sums = 92d9a55235d7933fa45d94a68bcf1ba2798d605799f12ffd9949c1150d9e884f
+	sha256sums = c529fbcdf5750aae3c7ac8d5a38cd984f3e9d330cafc889c2c95ab6fe3ef91de
 
 pkgname = bilibilitoolpro-git
