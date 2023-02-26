@@ -1,4 +1,5 @@
-# Maintainer: Codist <countstarlight@gmail.com>
+# Maintainer: asukaminato <asukaminato at nyan dot eu dot org>
+# Contributor: Codist <countstarlight@gmail.com>
 
 pkgname=deepin-wine-tim
 pkgver=3.4.5.22071
