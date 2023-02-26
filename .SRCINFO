@@ -1,0 +1,22 @@
+pkgbase = nvtop-nosystemd-git
+	pkgdesc = GPUs process monitoring for AMD, Intel and NVIDIA. Without systemd dependencies. Latest Git checkout.
+	pkgver = 3.0.1+29.r341.20230225.d3dddbd
+	pkgrel = 1
+	url = https://github.com/Syllo/nvtop
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	makedepends = gtest
+	makedepends = libdrm
+	depends = ncurses
+	depends = libdrm
+	depends = libudev
+	provides = nvtop=3.0.1+29.r341.20230225.d3dddbd
+	provides = nvtop-nosystemd=3.0.1+29.r341.20230225.d3dddbd
+	provides = nvtop-git=3.0.1+29.r341.20230225.d3dddbd
+	conflicts = nvtop
+	source = nvtop::git+https://github.com/Syllo/nvtop.git
+	sha256sums = SKIP
+
+pkgname = nvtop-nosystemd-git
