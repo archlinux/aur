@@ -2,8 +2,8 @@
 # Contributor: Etienne Perot <etienne at perot dot me>
 
 pkgname=parcimonie-sh-git
-pkgver=73.551999c
-pkgrel=3
+pkgver=78.529e2fa
+pkgrel=1
 pkgdesc='Bash reimplementation of parcimonie'
 arch=('any')
 url='https://github.com/EtiennePerot/parcimonie.sh'
@@ -28,6 +28,7 @@ package() {
 	install -Dm644 README.md "${pkgdir}"/usr/share/parcimonie.sh/README.md
 	install -Dm755 parcimonie.sh "${pkgdir}"/usr/share/parcimonie.sh/parcimonie.sh
 	install -Dm644 pkg/parcimonie.sh@.service "${pkgdir}"/usr/lib/systemd/system/parcimonie.sh@.service
+	install -Dm644 pkg/parcimonie.sh.user.service "${pkgdir}"/usr/lib/systemd/user/parcimonie.sh.service
 	install -Dm644 -t "${pkgdir}"/etc/parcimonie.sh.d/ pkg/sample-configuration.conf.sample pkg/all-users.conf
 	ln -sf /usr/share/parcimonie.sh/parcimonie.sh "${pkgdir}"/usr/bin/parcimonie.sh
 }
