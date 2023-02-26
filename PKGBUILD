@@ -2,8 +2,8 @@
 
 _pkgname=bsp-tinkerboard
 pkgname="$_pkgname-bin"
-pkgver=22.11.4
-_pkgver=22.11.4
+pkgver=23.02.2
+_pkgver=23.02.2
 _ubuntu=focal
 pkgrel=1
 pkgdesc="Board support package for Tinker Board / S (Bluetooth, HDMI, Audio...)"
