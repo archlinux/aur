@@ -1,6 +1,6 @@
 pkgbase = chromeos-vboot-reference-git
 	pkgver = r20221126105520.e952b90
-	pkgrel = 1
+	pkgrel = 2
 	url = https://chromium.googlesource.com/chromiumos/platform/vboot_reference
 	arch = aarch64
 	arch = armv6h
@@ -10,7 +10,7 @@ pkgbase = chromeos-vboot-reference-git
 	license = GPL
 	makedepends = git
 	makedepends = libyaml
-	makedepends = flashrom
+	makedepends = chromeos-flashrom-git
 
 pkgname = chromeos-vboot-reference-git
 	pkgdesc = ChromeOS vbutil tools: futility (vbutil_kernel) cgpt from git.
