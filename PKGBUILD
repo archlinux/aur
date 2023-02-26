@@ -2,8 +2,8 @@
 # Contributor: Enes Hecan <nshecan@gmail.com>
 
 pkgname=whatsapp-for-linux
-pkgver=1.6.0
-pkgrel=2
+pkgver=1.6.1
+pkgrel=1
 pkgdesc="An unofficial WhatsApp desktop application for linux"
 url=https://github.com/eneshecan/$pkgname
 arch=(i686 x86_64 armv7h aarch64)
