@@ -1,10 +1,10 @@
 # Maintainer: Lauri Gustafsson <luutifa at jkry dot org>
 
 pkgname=rocket-git
-pkgver=r786.6480a79
+pkgver=r818.b7594c1
 pkgrel=1
 pkgdesc="Sync-tracker library and editor for realtime audiovisual productions"
-arch=("i686" "x86_64" "armv7l")
+arch=("i686" "x86_64" "armv7l" "aarch64")
 url="https://github.com/rocket/rocket"
 license=("zlib")
 depends=("qt5-base")
