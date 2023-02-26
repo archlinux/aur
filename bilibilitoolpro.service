@@ -4,6 +4,10 @@ After=network.target
 
 [Service]
 Type=oneshot
+User=bilibilitoolpro
+Group=bilibilitoolpro
+DynamicUser=yes
+WorkingDirectory=/var/lib/bilibilitoolpro
 ExecStart=/usr/bin/bilibilitoolpro
 User=bilibilitoolpro
 DynamicUser=yes

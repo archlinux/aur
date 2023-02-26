@@ -2,7 +2,7 @@
 
 _pkgname=bilibilitoolpro
 pkgname=${_pkgname}-git
-pkgver=0.2.3.r7.gcc45c4f
+pkgver=1.0.0.r0.gc5837ab
 pkgrel=1
 pkgdesc="A cross-platform Bilibili daily task tool written in .Net 5"
 arch=('x86_64')
@@ -14,13 +14,17 @@ source=("${_pkgname}::git+https://github.com/RayWangQvQ/BiliBiliToolPro.git"
         "change-default-configuration-path.patch"
         "disable-log-to-file.patch"
         "${_pkgname}.service"
-        "${_pkgname}.timer")
+        "${_pkgname}.timer"
+        "sysusers.d"
+        "tmpfiles.d")
 backup=("etc/${_pkgname}/appsettings.json")
 sha256sums=('SKIP'
-            '7ff40a76980240d22d0eef3dd339b7739fbff80c6027f9459b5d88a096b6aa03'
+            '2e1ca56aadd19971c61b5cf4856566cf5b649d3ad52269dd15cf409e8e67e5c0'
             '60df0b33087bf22517abb3f076259cf1e1e76c68b941288ef6f4b07b25ed091b'
-            'c841c935fd13bb001224177926cd2c9d88e6d7066f58ea12eb962e05adc7790d'
-            '2b4f3621c10194156e0127e07367a2adc3dcc2a90dee5a9ca145931da8ec8d30')
+            '1c8eab441925d714ab3d9c85dea7c2c3eb01fbd550c83467a80da4567aa81117'
+            '2b4f3621c10194156e0127e07367a2adc3dcc2a90dee5a9ca145931da8ec8d30'
+            '92d9a55235d7933fa45d94a68bcf1ba2798d605799f12ffd9949c1150d9e884f'
+            'c529fbcdf5750aae3c7ac8d5a38cd984f3e9d330cafc889c2c95ab6fe3ef91de')
 
 pkgver() {
   cd "$_pkgname"
@@ -57,6 +61,8 @@ build() {
 package() {
   install -Dm644 ${_pkgname}.service "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
   install -Dm644 ${_pkgname}.timer "${pkgdir}/usr/lib/systemd/system/${_pkgname}.timer"
+  install -Dm644 tmpfiles.d "${pkgdir}/usr/lib/tmpfiles.d/bilibilitoolpro.conf"
+  install -Dm644 sysusers.d "${pkgdir}/usr/lib/sysusers.d/bilibilitoolpro.conf"
 
   cd "${_pkgname}"
   install -dm755 ${pkgdir}/usr/{bin,lib/${_pkgname}} "${pkgdir}/etc/${_pkgname}"
