@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=('atoms' 'atoms-cli' 'atoms-core' 'servicectl-atoms')
 pkgbase=atoms
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Easily manage Linux Chroot(s) and Containers"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('libadwaita' 'podman' 'proot-termux' 'python-certifi' 'python-chardet'
 makedepends=('git' 'meson' 'python-build' 'python-installer' 'python-setuptools'
              'python-wheel')
 checkdepends=('appstream-glib')
-_commit=36315140b2ce5667878173f61254a20d4b5b567b  # tags/1.1.0^0
+_commit=d09f54f95f21912e14ceb15f961d15f12a3f789f  # tags/1.1.1^0
 source=("git+https://github.com/AtomsDevs/Atoms.git#commit=${_commit}"
         'git+https://github.com/AtomsDevs/atoms-cli.git'
         'git+https://github.com/AtomsDevs/atoms-core.git'
