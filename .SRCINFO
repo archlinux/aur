@@ -1,6 +1,6 @@
 pkgbase = linuxqq
 	pkgdesc = New Linux QQ based on Electron
-	pkgver = 3.1.0_9332
+	pkgver = 3.1.0_9572
 	pkgrel = 1
 	epoch = 2
 	url = https://im.qq.com/linuxqq/
@@ -14,9 +14,9 @@ pkgbase = linuxqq
 	depends = at-spi2-core
 	optdepends = libappindicator-gtk3: Allow QQ to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).
 	conflicts = linuxqq-nt-bwrap
-	source_x86_64 = https://dldir1.qq.com/qqfile/qq/QQNT/c6032ac7/linuxqq_3.1.0-9332_amd64.deb
-	sha512sums_x86_64 = b52d990ed87741a8d6c8448e802bac2cc4427b6a670c07bc18567cd9ec4a680ee9b35840c668f40966f2c5e30d7d488a42b36b6dfc4047ba4070cd81d0f316f7
-	source_aarch64 = https://dldir1.qq.com/qqfile/qq/QQNT/c6032ac7/linuxqq_3.1.0-9332_arm64.deb
-	sha512sums_aarch64 = 483d69f54caf3918ef51d8e1aba7b96c35a18adf612d174a573dec5accd5c1eed76b619470656ec2233df835fb305616ff3b168b3ba451d15e6aa1f90ae1ee87
+	source_x86_64 = https://dldir1.qq.com/qqfile/qq/QQNT/4b2e3220/linuxqq_3.1.0-9572_amd64.deb
+	sha512sums_x86_64 = f109f8533d351bd31609c7766dc9fd7e86682769c7c48fc640a5b457d9cb0ea25fe5dea03cb1d2d97b7c381c3ddb2680549f8b1e8bd523c4efe98bee91f5933f
+	source_aarch64 = https://dldir1.qq.com/qqfile/qq/QQNT/4b2e3220/linuxqq_3.1.0-9572_arm64.deb
+	sha512sums_aarch64 = 223ac51bdc96412d211398fa50d02111cd171f7ccec4b2975b53899ae918d567dec61873760bb6de3942846b8c5606d7eae465bef5695dd440c9da67798bdaa4
 
 pkgname = linuxqq
