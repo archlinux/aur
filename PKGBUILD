@@ -8,7 +8,7 @@ url="https://github.com/DvorakDwarf/Infinite-Storage-Glitch"
 license=("GPL3")
 depends=(opencv)
 makedepends=(git rust clang)
-optdsepends=(	'ffmpeg'
+optdepends=(	'ffmpeg'
 		'qt')
 arch=('any')
 source=(git+https://github.com/DvorakDwarf/Infinite-Storage-Glitch.git)

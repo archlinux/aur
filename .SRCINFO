@@ -9,6 +9,8 @@ pkgbase = infinite-storage-glitch
 	makedepends = rust
 	makedepends = clang
 	depends = opencv
+	optdepends = ffmpeg
+	optdepends = qt
 	source = git+https://github.com/DvorakDwarf/Infinite-Storage-Glitch.git
 	sha256sums = SKIP
 
