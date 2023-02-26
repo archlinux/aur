@@ -3,13 +3,13 @@
 # Remove the --enable-openmp flag below if you do not want parallelization.
 
 pkgname=python-graph-tool
-pkgver=2.45
-pkgrel=3
+pkgver=2.46
+pkgrel=1
 pkgdesc='A Python module for manipulation and statistical analysis of graphs'
 arch=('i686' 'x86_64')
 url='https://graph-tool.skewed.de'
 license=(LGPL3)
-depends=(boost-libs python expat python-scipy python-numpy cgal cairomm python-cairo python-zstandard python-gobject)
+depends=(boost-libs python expat python-scipy python-numpy cgal cairomm-1.16 python-cairo python-zstandard python-gobject)
 makedepends=(boost sparsehash autoconf-archive)
 optdepends=('graphviz: graph layout'
 'python-matplotlib: graph drawing')
@@ -18,10 +18,10 @@ conflicts=(python3-graph-tool)
 replaces=(python3-graph-tool)
 options=(!libtool)
 source=("https://downloads.skewed.de/graph-tool/graph-tool-$pkgver.tar.bz2")
-sha256sums=('f92da7accfda02b29791efe4f0b3ed93329f27232af4d3afc07c92421ec68668')
+sha256sums=('305508f0c2989a150aecd5df010424979cd17e83f67852121e4ab29eb07d3275')
 prepare() {
   cd "$srcdir/graph-tool-$pkgver"
-  # disable assertions which lead to runtime failures
+  # disable assertions which lead to runtime performance degradation
   CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS/}
   export CXXFLAGS="$CXXFLAGS -O3 -march=native -flto=auto -fno-fat-lto-objects"
   ./configure --enable-openmp --prefix=/usr --docdir="/usr/share/doc/$pkgname"
