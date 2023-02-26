@@ -34,6 +34,7 @@ optdepends=('postgresql: postgresql database support'
             'mariadb: mariadb database support'
             'perl: perl binding support'
             'unixodbc: when present while building, will add odbc support'
+            'libkml: when present while building, adds kml support'
 )
 options=('!emptydirs')
 changelog=$pkgbase.changelog
@@ -41,6 +42,9 @@ source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.t
 b2sums=('c90606b642c632dd5ec224d63aa80c158c9ee04c6ca0341815f7449b319bf9442d65c2f9b981aedd242713ef6909a30f620b448ba26baf6cd8a31e2a9ae0dd8a')
 
 build() {
+  opt_libs=""
+  [[ "$(ldconfig -p | grep libkml.so)" ]] && { echo "Found libkml.so"; opt_libs+=" -DGDAL_USE_LIBKML=ON"; }
+
   cmake -B build -S $_pkgbase-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_IPO=ON \
@@ -62,7 +66,6 @@ build() {
     -DGDAL_USE_ICONV=ON \
     -DGDAL_USE_JPEG=ON \
     -DGDAL_USE_JSONC=ON \
-    -DGDAL_USE_LIBKML=ON \
     -DGDAL_USE_LIBLZMA=ON \
     -DGDAL_USE_LIBXML2=ON \
     -DGDAL_USE_LZ4=ON \
@@ -85,7 +88,8 @@ build() {
     -DGDAL_USE_WEBP=ON \
     -DGDAL_USE_XERCESC=ON \
     -DGDAL_USE_ZLIB=ON \
-    -DGDAL_USE_ZSTD=ON
+    -DGDAL_USE_ZSTD=ON \
+    $opt_libs
   make -C build
 }
 
