@@ -1,14 +1,15 @@
 pkgbase = infinite-storage-glitch
 	pkgdesc = Lets you embed files into video and upload them to youtube as storage.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DvorakDwarf/Infinite-Storage-Glitch
 	arch = any
 	license = GPL3
+	makedepends = git
 	makedepends = rust
 	makedepends = clang
 	depends = opencv
-	source = https://github.com/DvorakDwarf/Infinite-Storage-Glitch/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 2e5baa266a1e4cfde9bd97f9cbea09c762fd1d38bd0726e72e0364965ec1894a
+	source = git+https://github.com/DvorakDwarf/Infinite-Storage-Glitch.git
+	sha256sums = SKIP
 
 pkgname = infinite-storage-glitch
