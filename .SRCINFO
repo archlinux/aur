@@ -1,6 +1,6 @@
 pkgbase = pybind11-git
 	pkgdesc = pybind11 (git version)
-	pkgver = v2.9.1.r114.g0e956a2e
+	pkgver = v2.10.2.r32.g3cc7e425
 	pkgrel = 1
 	url = https://pybind11.readthedocs.org/
 	arch = any

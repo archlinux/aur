@@ -7,7 +7,7 @@ pkgname=${_pkgname}-git
 provides=($_pkgname)
 conflicts=($_pkgname)
 
-pkgver=v2.9.1.r114.g0e956a2e
+pkgver=v2.10.2.r32.g3cc7e425
 pkgrel=1
 
 _repo=pybind/$_pkgname
@@ -31,22 +31,30 @@ pkgver() {
 }
 
 build () {
-    cd "${_pkgname}"
-    python setup.py build
-
-    # tests
+    # configure
     cmake \
-        -B "${srcdir}/build-cmake" \
-        -S "${srcdir}/${_pkgname}" \
-        -DCMAKE_BUILD_TYPE:STRING='None' \
-        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -Wno-dev
-    make -C "${srcdir}/build-cmake" all mock_install
-
+        -S ${_pkgname} \
+        -B build \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DPYTHON_EXECUTABLE=/usr/bin/python
+    # build
+    cmake --build build
 }
 
 check() {
-    make -C build-cmake check
+    # configure tests
+    cmake \
+        -S ${_pkgname} \
+        -B build-tests \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DPYTHON_EXECUTABLE=/usr/bin/python
+
+    # build tests
+    make -C build-tests all mock_install
+    # exec tests
+    make -C build-tests check
 }
 
 package() {
