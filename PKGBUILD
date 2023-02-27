@@ -9,7 +9,7 @@ arch=('any')
 url='http://www.sardana-controls.org/'
 license=('LGPL')
 depends=(
-  python-taurus python-itango python-lxml python-click python-pyqtgraph
+  python-taurus itango python-lxml python-click python-pyqtgraph
   python-numpy python-h5py python-mock libibus python-pytest spyder
   python-scipy libblockdev python-pyqt5-datavisualization
 )
