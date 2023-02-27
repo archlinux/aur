@@ -2,8 +2,8 @@
 
 pkgname=firefox-userchromejs
 _pkgname=firefox-scripts
-pkgver=107.0b7
-_pkgver=bb883bb0942cca89424ef3522c78029e9225f316
+pkgver=111.0b4
+_pkgver=e5f578b6c3a8fe32fcfc9f5360c00f116f86e732
 pkgrel=1
 pkgdesc="Patching Firefox to enable JS injection (userchrome-js)"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('firefox')
 url="https://github.com/xiaoxiaoflood/firefox-scripts"
 license=('MPL2')
 source=(https://codeload.github.com/xiaoxiaoflood/$_pkgname/tar.gz/$_pkgver)
-sha512sums=('3adab367654aadbe674704f26b81d01dcf5957aa471c0b4dd4cf0097c1e69f258e6a63942ef2e94a8ef3fca4197f69df366750585ad4935dcd8feb2561290bfd')
+sha512sums=('f0d4cf0300be57dc09aa9d347eb3cb53e24e02cf16f39aa5d121738a6e1761706dd1f04f3559245da278f326268205ff9a5b7f0f01f45c422e4723f1b57245fe')
 install=firefox-userchromejs.install
 
 package() {
