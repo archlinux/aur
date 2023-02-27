@@ -1,6 +1,6 @@
 # Maintainer: Konsonanz <maximilian.lehmann@protonmail.com>
 pkgname=bitburner
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="Bitburner is a programming-based incremental game"
 arch=('x86_64')
@@ -10,22 +10,24 @@ depends=('electron')
 makedepends=('git' 'npm')
 optdepends=('steam: achievement support'
             'steam-native-runtime: achievement support')
-source=("git+$url#tag=v$pkgver"
+_commit='6eb5b5ab4f4533f3aac1f2cc6f4bb642862d5c0d'  # latest stable
+source=("git+$url#commit=$_commit"
         "bitburner.desktop")
 sha256sums=('SKIP'
-            'c897102e274fde81015caa4dedd1ad7af56d7eecd19945cecc18b5f559a603e6')
+            '6b3f195d15c08dc1787c9052d14588724dff0f51d2f076d876d0e02c906b9645')
 
 build() {
     cd "bitburner-src"
 
+    # Cannot use ./tools/package-electron.sh here since it builds for
+    # all targets and archs; no linux-only support yet (again)
+    mkdir .package
     npm install
     npm install -C electron
+    npm run build
+    cp -r .app/* electron/* .package
 
-    # TODO: remove this once webpack supports new node crypto behaviour
-    # https://github.com/webpack/webpack/issues/14532
-    NODE_OPTIONS=--openssl-legacy-provider npm run build
-
-    sh ./tools/package-electron.sh linux
+    npx electron-packager .package bitburner --out .build --overwrite --icon .package/icon.png
 }
 
 package() {
