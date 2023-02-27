@@ -1,0 +1,21 @@
+pkgbase = ocaml-augeas
+	pkgdesc = OCaml bindings for Augeas
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://people.redhat.com/~rjones/augeas/
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = ocaml
+	makedepends = ocaml-findlib
+	depends = augeas
+	source = https://people.redhat.com/~rjones/augeas/files/ocaml-augeas-0.6.tar.gz
+	source = https://people.redhat.com/~rjones/augeas/files/ocaml-augeas-0.6.tar.gz.sig
+	source = https://src.fedoraproject.org/rpms/ocaml-augeas/raw/rawhide/f/0001-Use-ocamlopt-g-option.patch
+	source = https://src.fedoraproject.org/rpms/ocaml-augeas/raw/rawhide/f/0002-caml_named_value-returns-const-value-pointer-in-OCam.patch
+	validpgpkeys = F7774FB1AD074A7E8C8767EA91738F73E1B768A0
+	sha256sums = 8aba99ddacd08768ebeef4a2138361d13b41a30317fce7503140cd86a1307611
+	sha256sums = SKIP
+	sha256sums = 411ca1933065526b2172727c8d7691fca43bc9a583d5af4e0a1fc61aa7480db0
+	sha256sums = 0b0ec2bd8c71e1490993e7868fac5943a758b4120aa4ffe236978787fee0c938
+
+pkgname = ocaml-augeas
