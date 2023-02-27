@@ -8,7 +8,6 @@ pkgver=5.15.5
 pkgrel=1
 _wwwpkgname=AdminLTE
 _wwwpkgver=5.18.4
-_now=`date +%N`
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
 arch=('any')
 license=('EUPL-1.2')
@@ -28,8 +27,8 @@ backup=('etc/dnsmasq.d/01-pihole.conf' 'etc/pihole/adlists.list' 'etc/dnsmasq.co
 
 source=($pkgname-core-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	    $pkgname-admin-$_wwwpkgver.tar.gz::https://github.com/$_pkgname/$_wwwpkgname/archive/v$_wwwpkgver.tar.gz
-        arch-server-core-$pkgver-$_now.patch::"https://raw.githubusercontent.com/max72bra/pi-hole-server-archlinux-customization/master/arch-server-core-$pkgver.patch"
-        arch-server-admin-$_wwwpkgver-$_now.patch::"https://raw.githubusercontent.com/max72bra/pi-hole-server-archlinux-customization/master/arch-server-admin-$_wwwpkgver.patch"
+        "https://raw.githubusercontent.com/max72bra/pi-hole-server-archlinux-customization/master/arch-server-core-$pkgver-$pkgrel.patch"
+        "https://raw.githubusercontent.com/max72bra/pi-hole-server-archlinux-customization/master/arch-server-admin-$_wwwpkgver-$pkgrel.patch"
 	    dnsmasq.include
 	    lighttpd.pi-hole.conf
 	    nginx.pi-hole.conf
@@ -45,8 +44,8 @@ source=($pkgname-core-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/arc
 
 sha256sums=('fa723c7573b0441b5f28300313eb99508853df1752720208f6cf6008da63abc2'
             '25095ead3132aecad193537d8856e291b923cb70db0da1b7d00600caca9b8a97'
-            '53a5f0e8cbf6490bf777b6fa37df698fdd1dbce12292d1a9231b7aee6801f16f'
-            '4026de9025888db53fa0cbf11a7ef9abad6b1d0cc2e8658df9f158bd050765b4'
+            'ac405bd012b9deff33afc066020eaa6746e5a71d14e97574528d873e3068c88c'
+            '5cfab9d951b09af0e7b1f551237f3fcbb3207781236fa85933ee28d094bdba8b'
             '96c1fb8b15e1d0e99c18dc768f5dc3d4991184fb2631af84c5e2111028bc5287'
             '3a3baa92a635d602824f184d901e947a0e14650c950e89325dda6f7d71b39db9'
             'f5906ed845e030ee18baeb8767295e1a76848a10ffd6fe60d34501ae45e2b6a8'
@@ -61,9 +60,9 @@ sha256sums=('fa723c7573b0441b5f28300313eb99508853df1752720208f6cf6008da63abc2'
 
 prepare() {
   cd "$srcdir"/"$_pkgname"-"$pkgver"
-  patch -Np1 -i "$srcdir"/arch-server-core-$pkgver-$_now.patch
+  patch -Np1 -i "$srcdir"/arch-server-core-$pkgver-$pkgrel.patch
   cd "$srcdir"/"$_wwwpkgname"-"$_wwwpkgver"
-  patch -Np1 -i "$srcdir"/arch-server-admin-$_wwwpkgver-$_now.patch
+  patch -Np1 -i "$srcdir"/arch-server-admin-$_wwwpkgver-$pkgrel.patch
 }
 
 package() {
