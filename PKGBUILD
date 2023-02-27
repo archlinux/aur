@@ -1,8 +1,8 @@
 # Maintainer: Masato TOYOSHIMA <phoepsilonix@gmail.com>
 
 pkgname=numlockl
-pkgver=1.0.6
-pkgrel=5
+pkgver=1.0.7
+pkgrel=1
 pkgdesc='Turns on the numlock key.'
 arch=('x86_64')
 url='https://gitlab.com/phoepsilonix/numlockl'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 source=(https://gitlab.com/phoepsilonix/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz
         LICENSE)
-sha512sums=('5b4253439917779410efd3b96f86a987509da923b8d37d7f25be27e5ed5faf82ea9e284e1a4850c7efa47177e85f931a7fa73722c644deff309919426e5f0fae'
+sha512sums=('deeb24f1c0a406b028554c869ff03f5fd6889892294e02bb4b3b35b0cce8dfb9d5c03ce276a73afbb5dd5ff3d20490072618d09a390e6a7127237a8ed781a3ab'
             'c5ac1d5ef4e6b12206d27369087fca7d39cedc2ad3cd625caa5b5c558ab003195a8158ab19206b89e0ccbd4e9c1b39348a72923ba2c35c8d33fc603fae3f4bd8')
 
 build() {
