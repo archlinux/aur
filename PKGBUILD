@@ -3,7 +3,7 @@
 # shellcheck disable=2148
 
 pkgname=diamond
-pkgver=2.1.3
+pkgver=2.1.4
 pkgrel=1
 pkgdesc="High performance sequence aligner for protein and translated DNA searches with big sequence data. https://doi.org/10.1038/s41592-021-01101-x"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('gcc-libs' 'zlib' 'zstd' 'blast+')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bbuchfink/diamond/archive/v$pkgver.tar.gz")
-sha256sums=('6c5504d33e9c88314d9033c3b5e083a572ac550372f70afdae5c56213e2bea85')
+sha256sums=('77e9ea5ca2eb01efa391970d6adad417cf3302ffac403cba638168938fe1befc')
 
 build() {
   cd $pkgname-$pkgver
