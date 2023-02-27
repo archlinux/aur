@@ -1,6 +1,4 @@
-# Maintainer: Kirill Pshenichnyi <pshcyrill@mail.ru>
-# Contributor: The Tango Controls community
-#              (https://tango-controls.org) <info@tango-controls.org>
+# Maintainer: Antonio Bartalesi <antonio.bartalesi@gmail.com>
 
 pkgname=tango-starter
 _pkgname=starter
@@ -9,7 +7,7 @@ _pkgver=Starter-${pkgver}
 pkgrel=1
 groups=('tango-controls')
 pkgdesc="This device server is able to control Tango device servers."
-arch=('x86_64' 'armv7h')
+arch=('x86_64')
 url="https://www.tango-controls.org/"
 license=('GPL3')
 depends=('tango-cpp')
