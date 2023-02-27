@@ -3,30 +3,23 @@
 # Contributor: Ekin Dursun <ekindursun@gmail.com>
 
 pkgname=python-mpv
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Python interface to the awesome mpv media player'
 arch=('any')
 url=https://github.com/jaseg/python-mpv
 _url_pypi=https://pypi.org/project/python-mpv
-license=('GPL3')
+license=('GPL' 'LGPL')
 depends=('mpv' 'python')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest' 'python-xvfbwrapper')
-optdepends=('python-pillow: raw screenshot support')
-source=("https://github.com/jaseg/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
-        'python-mpv-strategic-sleeps.patch::https://github.com/jaseg/python-mpv/commit/85aaed090f05198ce84f2c8c653ebe44c4288f8d.patch')
-b2sums=('3ba95ac4d3219615c80ea475c1f6dc3acd608a8ded919eea55efac8bb44a8946c959a2b39473e6c9e80fa1a4e52f525d6ef9871e3eb4b2664aeb1460208bc677'
-        'c7a4d141a75bec69ae78540bb5f5772899b457ebf154c46ff8418c097b60bd72046cd428233883a9c5cc99e2fb99138778a4b071b5168d78afabf686929bd883')
-
-prepare() {
-  cd $pkgname-$pkgver
-  patch --forward --strip=1 --input=../python-mpv-strategic-sleeps.patch
-}
+optdepends=('python-pillow: for raw screenshot support')
+source=("https://github.com/jaseg/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
+b2sums=('1a364761405e430ed91f597e15aae7f6c221980c2ed9ce0152109486d1fb79ebb7b6257c79bfef34d72468bcf335e8e514324bdd10982096a64f8949b4bca261')
 
 build() {
   cd $pkgname-$pkgver
-  python setup.py build
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
@@ -36,6 +29,6 @@ check() {
 
 package() {
   cd $pkgname-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 'README.rst' -t "$pkgdir"/usr/share/doc/$pkgname
 }
