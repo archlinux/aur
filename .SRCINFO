@@ -1,15 +1,19 @@
 pkgbase = astor
 	pkgdesc = A graphical Tango control system administration tool
-	pkgver = 7.5.1
+	pkgver = 7.5.2
 	pkgrel = 1
 	url = https://gitlab.com/tango-controls/Astor
 	arch = any
 	license = GPL3
+	makedepends = maven
 	depends = java-runtime=8
+	depends = jdk8-openjdk
 	depends = sh
-	source = https://repo1.maven.org/maven2/org/tango-controls/Astor/7.5.1/Astor-7.5.1-jar-with-dependencies.jar
-	source = astor
-	sha256sums = 9ec0e788297f36c69f19bbd6987aeacb900f2c231058f833f0abb238364ce8ad
+	source = https://gitlab.com/tango-controls/Astor/-/archive/7.5.2/Astor-7.5.2.tar.gz
+	source = launcher
+	source = plugin.patch
+	sha256sums = d1d1e3a756da2dbc8f8a19878acb584079c4f1590f3538324638e27172179f5c
 	sha256sums = 25cc409561647519ad0bb2ffc00abb9cd923626f978f49c03b1f72b1fcd47d0b
+	sha256sums = 5dff2f81654c0f036af0db2deb28b8d2333af57c3122831ed23dbd643dc47b99
 
 pkgname = astor
