@@ -1,7 +1,7 @@
 pkgbase = ola
 	pkgdesc = Open Lighting Architecture for controlling entertainment lighting equipment
-	pkgver = 0.10.8
-	pkgrel = 7
+	pkgver = 0.10.9
+	pkgrel = 1
 	url = https://www.openlighting.org
 	arch = x86_64
 	arch = aarch64
@@ -19,12 +19,8 @@ pkgbase = ola
 	makedepends = python-numpy
 	makedepends = python-protobuf
 	makedepends = util-linux-libs
-	source = ola-0.10.8.tar.gz::https://github.com/OpenLightingProject/ola/archive/refs/tags/0.10.8.tar.gz
-	source = fix-crash.patch::https://github.com/OpenLightingProject/ola/commit/c818692.patch
-	source = fix-tests.patch::https://github.com/OpenLightingProject/ola/pull/1757.patch
-	sha256sums = 45bc101d1ddcc1c6320c063eb25a9345e5820a4233acfa5b29f2dfd99f7452e1
-	sha256sums = 6dfa80507a3c6422e8b870dd24345021b2bbff8bd13a06fce2b9fe2ef9883aa5
-	sha256sums = cfe0647ed23d064bfe5fae108b1c5d3461a0475cfd5a902012b43813c07aae46
+	source = ola-0.10.9.tar.gz::https://github.com/OpenLightingProject/ola/archive/refs/tags/0.10.9.tar.gz
+	sha256sums = d2a80d907f5a0a5169583060bd32aa0fdbb2fdfe18d1194dd922595ab6d447b5
 
 pkgname = ola
 	depends = avahi

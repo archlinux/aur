@@ -1,5 +1,3 @@
-/fix-crash.patch
-/fix-tests.patch
 pkg/
 src/
 *.tar.*
