@@ -1,0 +1,18 @@
+pkgbase = openface
+	pkgdesc = A state-of-the art tool intended for facial landmark detection, head pose estimation, facial action unit recognition, and eye-gaze estimation
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/TadasBaltrusaitis/OpenFace
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = qt5-base
+	makedepends = tbb
+	makedepends = wget
+	depends = dlib
+	depends = openblas
+	depends = opencv
+	source = https://github.com/TadasBaltrusaitis/OpenFace/archive/refs/tags/OpenFace_2.2.0.tar.gz
+	sha256sums = 928e6346bcff41393393a364df99bf09c3410fab85b569f2023e3224d2a1981a
+
+pkgname = openface
