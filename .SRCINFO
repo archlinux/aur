@@ -1,0 +1,24 @@
+pkgbase = lximage-qt6-git
+	pkgdesc = The LXQt image viewer
+	pkgver = 1.2.0.16.gfc9ff64
+	pkgrel = 1
+	url = https://lxqt.org
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt6-tools
+	makedepends = lxqt-build-tools-qt6-git
+	depends = libfm-qt6-git
+	depends = qt6-svg
+	depends = hicolor-icon-theme
+	depends = libexif
+	optdepends = qt6-imageformats: support for additional image formats (WEBP, TIFF, etc.)
+	provides = lximage-qt6=1.2.0.16.gfc9ff64
+	conflicts = lximage-qt6
+	conflicts = lximage-qt
+	source = git+https://github.com/lxqt/lximage-qt.git#branch=wip_qt6
+	sha256sums = SKIP
+
+pkgname = lximage-qt6-git
