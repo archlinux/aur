@@ -4,7 +4,7 @@
 pkgname='comic-dl'
 pkgver=2023.01.08.2
 pkgrel=1
-pkgdesc='Comic-dl is a command line tool to download Comics and Manga from various Manga and Comic sites easily.'
+pkgdesc='Command line tool to download Comics and Manga from various Manga and Comic sites easily.'
 arch=(any)
 url="https://github.com/Xonshiz/${pkgname}"
 license=('MIT')
