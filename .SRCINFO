@@ -1,5 +1,5 @@
 pkgbase = swaymonad-git
-	pkgdesc = Clean up old pacman packages, similar to paccache
+	pkgdesc = Auto-tiler for sway that implements Xmonad-like layouts
 	pkgver = r11.ad2ff53
 	pkgrel = 1
 	url = https://github.com/nicolasavru/swaymonad
