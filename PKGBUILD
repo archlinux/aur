@@ -1,4 +1,5 @@
-# Maintainer: Reza Jahanbakhshi <reza.jahanbakhshi at gmail dot com
+# Maintainer: Denis Benato <benato.denis96 [at] gmail dot com>
+# Contributor: Reza Jahanbakhshi <reza.jahanbakhshi at gmail dot com
 # Contributor: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
 # Contributor: Armin K. <krejzi at email dot com>
 # Contributor: Kristian Klausen <klausenbusk@hotmail.com>
@@ -10,18 +11,20 @@
 # Contributor: Antti "Tera" Oja <antti.bofh@gmail.com>
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
-pkgname=mesa-git
+pkgname=mesa-amdonly-gaming-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=23.1.0_devel.165442.9db7c1a509f.932463d268438ce945b21718552d92ab
+pkgver=23.1.0_devel.167344.bf6c214b258.932463d268438ce945b21718552d92ab
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libxrandr'
-              'wayland-protocols' 'meson' 'ninja' 'glslang' 'directx-headers' 'libclc')
+              'wayland-protocols' 'meson' 'ninja' 'glslang' 'libclc'
+              'llvm' 'clang'
+)
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
-         'libomxil-bellagio' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc' 'vulkan-icd-loader' 'zstd' 'expat')
+         'libomxil-bellagio' 'libglvnd' 'wayland' 'lm_sensors' 'libclc' 'vulkan-icd-loader' 'zstd' 'expat' 'llvm-libs')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
-provides=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-swrast' 'vulkan-driver' 'mesa-libgl' 'opengl-driver' 'opencl-driver')
+provides=('mesa' 'opencl-mesa' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-swrast' 'vulkan-driver' 'mesa-libgl' 'opengl-driver' 'opencl-driver')
 conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-swrast' 'mesa-libgl')
 url="https://www.mesa3d.org"
 license=('custom')
@@ -34,6 +37,9 @@ md5sums=('SKIP'
 sha512sums=('SKIP'
             '5dd0cb8affa9cfe6e7d94f59b8e23727036fd8ab76938321f8d266315f30611584da6f6277fe2aa920130483302adab5e57e2bc08f1bd3c62ea57b3e4b007305'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2')
+
+optdepends=('clang: opencl' 'compiler-rt: opencl')
+
 
 # NINJAFLAGS is an env var used to pass commandline options to ninja
 # NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
@@ -52,34 +58,6 @@ sha512sums=('SKIP'
 if [[ ! $MESA_WHICH_LLVM ]] ; then
     MESA_WHICH_LLVM=4
 fi
-
-case $MESA_WHICH_LLVM in
-    1)
-        # aur llvm-minimal-git
-        makedepends+=('llvm-minimal-git')
-        depends+=('llvm-libs-minimal-git')
-        ;;
-    2)
-        # aur llvm-git
-        # depending on aur-llvm-* to avoid mixup with LH llvm-git
-        makedepends+=('aur-llvm-git')
-        depends+=('aur-llvm-libs-git')
-        optdepends+=('aur-llvm-git: opencl')
-        ;;
-    3)
-        # mesa-git/llvm-git (lordheavy unofficial repo)
-        makedepends+=('llvm-git' 'clang-git')
-        depends+=('llvm-libs-git')
-        optdepends+=('clang-git: opencl' 'compiler-rt: opencl')
-        ;;
-    4)
-        # extra/llvm
-        makedepends+=(llvm=15.0.7 clang=15.0.7)
-        depends+=(llvm-libs=15.0.7)
-        optdepends+=('clang: opencl' 'compiler-rt: opencl')
-        ;;
-    *)
-esac
 
 pkgver() {
     cd mesa
@@ -121,24 +99,26 @@ build () {
        -D b_ndebug=true \
        -D b_lto=false \
        -D platforms=x11,wayland \
-       -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,i915,iris,crocus,zink,d3d12 \
-       -D vulkan-drivers=amd,intel,swrast,virtio-experimental,intel_hasvk \
+       -D gallium-d3d12-video=disabled \
+       -D gallium-drivers=radeonsi,swrast,zink \
+       -D vulkan-drivers=amd,swrast \
+       -D vulkan-beta=true\
        -D vulkan-layers=device-select,overlay \
        -D dri3=enabled \
        -D egl=enabled \
        -D gallium-extra-hud=true \
-       -D gallium-nine=true \
+       -D gallium-nine=false \
        -D gallium-omx=bellagio \
        -D gallium-opencl=icd \
        -D gallium-va=enabled \
        -D gallium-vdpau=enabled \
-       -D gallium-xa=enabled \
+       -D gallium-xa=disabled \
        -D gbm=enabled \
        -D gles1=disabled \
        -D gles2=enabled \
        -D glvnd=true \
        -D glx=dri \
-       -D libunwind=enabled \
+       -D libunwind=disabled \
        -D llvm=enabled \
        -D lmsensors=enabled \
        -D osmesa=true \
