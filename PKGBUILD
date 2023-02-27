@@ -16,12 +16,11 @@ depends=('mingw-w64-crt' 'mingw-w64-xerces-c-icu' 'mingw-w64-icu')
 options=('!strip' '!buildflags' 'staticlibs')
 source=(
 	"https://github.com/apache/xalan-c/archive/Xalan-C_${_filever}.tar.gz"
-	'fix-cross-compile.patch'
-	'https://github.com/apache/xalan-c/pull/36.patch')
-sha256sums=(
-	'f3d4f23af7f7914259f2f5dbd9cc1450d3ebe0b8c8163fd50fcac4a39c63fccd'
-	'bffe4d394b877d7a36c08efd7563ce9ccde3621ae3851dc9c00ce065cd360050'
-	'ed5a03ffecb0476aa02e90aba99f12d843bfd90748481d7b1ffc6d524bf4d952')
+	"$pkgname-fix-cross-compile.patch"
+	"$pkgname-36.patch::https://github.com/apache/xalan-c/pull/36.patch")
+sha256sums=('f3d4f23af7f7914259f2f5dbd9cc1450d3ebe0b8c8163fd50fcac4a39c63fccd'
+            'bffe4d394b877d7a36c08efd7563ce9ccde3621ae3851dc9c00ce065cd360050'
+            'ed5a03ffecb0476aa02e90aba99f12d843bfd90748481d7b1ffc6d524bf4d952')
 
 _srcdir="${_pkgname}-Xalan-C_${_filever}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
@@ -29,8 +28,8 @@ _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-O2 -DND
 
 prepare() {
 	cd "${_srcdir}"
-	patch -uNp1 -i '../fix-cross-compile.patch'
-	patch -uNp1 -i '../36.patch'
+	patch -uNp1 -i "../$pkgname-fix-cross-compile.patch"
+	patch -uNp1 -i "../$pkgname-36.patch"
 	sed -i 's/if(WIN32)/if(0)/' 'src/xalanc/CMakeLists.txt'
 }
 
