@@ -1,0 +1,17 @@
+pkgbase = hyprland-scratchpad-git
+	pkgdesc = A helper for scratchpads within Hyprland.
+	pkgver = r34.c19c544
+	pkgrel = 1
+	url = https://github.com/hyprwm/contrib
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = hyprland
+	depends = jq
+	optdepends = libnotify: Notify users on an action.
+	provides = scratchpad
+	conflicts = scratchpad
+	source = git+https://github.com/hyprwm/contrib.git
+	md5sums = SKIP
+
+pkgname = hyprland-scratchpad-git
