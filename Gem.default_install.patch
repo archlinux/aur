@@ -1,0 +1,106 @@
+From 37d2b35146c79f9af72dfaa47ccf6af7fab3d584 Mon Sep 17 00:00:00 2001
+From: Felipe Contreras <felipe.contreras@gmail.com>
+Date: Thu, 20 May 2021 16:26:25 -0500
+Subject: [PATCH] Add Gem.default_install
+
+Most people don't install gems in the default directory, but in the
+user's directory (--user-install), this can be configured by
+distributions using /etc/gemrc, but that doesn't work for bundler since
+it doesn't read gem configurations.
+
+The default installation directory should be Gem.user_dir, not
+Gem.default_dir, but changing this invariably would break backwards
+compatibility.
+
+Instead we can add another default directory which is where gems will be
+installed to by default.
+
+Gem.default_dir is where the system gems are installed to,
+Gem.default_install is where the gems installed by the user are
+installed to.
+
+The method Gem.default_install can be overridden by distributions to
+Gem.user_dir, therefore making all installations user installations by
+default (essentially the same as --user-install).
+
+This way both bundler and gem will install gems in the same directory by
+default without users having to manually set GEM_HOME to volatile
+locations such as $HOME/.local/share/gem/ruby/3.0.0.
+
+All distributions need to do is turn this new behavior on.
+
+If a user has sudo privileges, he/she can do --no-user-install to install
+gems in the system directory (Gem.default_dir), which is the current
+default behavior.
+
+The current behavior remains unaffected: gems are still installed to
+Gem.default_dir by default.
+
+Signed-off-by: Felipe Contreras <felipe.contreras@gmail.com>
+---
+ lib/rubygems/defaults.rb       |  7 +++++++
+ lib/rubygems/path_support.rb   |  2 +-
+ test/rubygems/test_rubygems.rb | 16 ++++++++++++++++
+ 3 files changed, 24 insertions(+), 1 deletion(-)
+
+diff --git a/lib/rubygems/defaults.rb b/lib/rubygems/defaults.rb
+index 4806ea6469..b7254937d2 100644
+--- a/lib/rubygems/defaults.rb
++++ b/lib/rubygems/defaults.rb
+@@ -8,6 +8,13 @@ module Gem
+   @pre_uninstall_hooks  ||= []
+   @pre_install_hooks    ||= []
+ 
++  ##
++  # Determines the default install directory
++
++  def self.default_install
++    Gem.default_dir
++  end
++
+   ##
+   # An Array of the default sources that come with RubyGems
+ 
+diff --git a/lib/rubygems/path_support.rb b/lib/rubygems/path_support.rb
+index d601e653c9..f8a1a0d783 100644
+--- a/lib/rubygems/path_support.rb
++++ b/lib/rubygems/path_support.rb
+@@ -23,7 +23,7 @@ class Gem::PathSupport
+   # hashtable, or defaults to ENV, the system environment.
+   #
+   def initialize(env)
+-    @home = env["GEM_HOME"] || Gem.default_dir
++    @home = env["GEM_HOME"] || Gem.default_install
+ 
+     if File::ALT_SEPARATOR
+       @home = @home.gsub(File::ALT_SEPARATOR, File::SEPARATOR)
+diff --git a/test/rubygems/test_rubygems.rb b/test/rubygems/test_rubygems.rb
+index 8bd116646f..5f539dc598 100644
+--- a/test/rubygems/test_rubygems.rb
++++ b/test/rubygems/test_rubygems.rb
+@@ -49,6 +49,22 @@ def self.default_dir
+     end
+   end
+ 
++  def test_operating_system_customizing_default_install
++    path = util_install_operating_system_rb <<-RUBY
++      module Gem
++        def self.default_install
++          Gem.user_dir
++        end
++      end
++    RUBY
++
++    assert system(
++      *ruby_with_rubygems_and_fake_operating_system_in_load_path(path),
++      "-e",
++      "raise unless Gem.dir == Gem.user_dir"
++    )
++  end
++
+   private
+ 
+   def util_install_operating_system_rb(content)
+-- 
+2.39.2
+
