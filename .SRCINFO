@@ -1,0 +1,30 @@
+pkgbase = tube-converter-git
+	pkgdesc = An easy-to-use video downloader
+	pkgver = 2023.3.0.beta1.p1.r27.g6fb0411
+	pkgrel = 1
+	url = https://github.com/nlogozzo/nickvisiontubeconverter
+	arch = aarch64
+	arch = armv7h
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = blueprint-compiler
+	makedepends = cmake
+	makedepends = dotnet-sdk>=7
+	makedepends = git
+	makedepends = just
+	depends = dotnet-runtime>=7
+	depends = ffmpeg
+	depends = libadwaita
+	depends = python-brotli
+	depends = python-mutagen
+	depends = python-pycryptodomex
+	depends = python-pyxattr
+	depends = python-websockets
+	depends = yt-dlp
+	provides = tube-converter
+	conflicts = tube-converter
+	source = git+https://github.com/nlogozzo/nickvisiontubeconverter
+	b2sums = SKIP
+
+pkgname = tube-converter-git
