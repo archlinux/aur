@@ -3,7 +3,7 @@
 
 _pkgname=libchewing
 pkgname=libchewing-rust-git
-pkgver=0.5.1.r159.gfad98d6
+pkgver=0.5.1.r188.g587e9d6
 pkgrel=1
 epoch=1
 pkgdesc='Intelligent Chinese phonetic input method (experimental Rust implementation)'
@@ -51,6 +51,8 @@ check() {
   cd $_pkgname/build
   # parallel testing is broken (https://github.com/chewing/libchewing/issues/293)
   make -j1 check
+  # Additional tests added in https://github.com/chewing/libchewing/pull/387
+  cargo test
 }
 
 package() {
