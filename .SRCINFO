@@ -1,0 +1,15 @@
+pkgbase = nteract-appimage
+	pkgdesc = An open-source organization committed to creating fantastic interactive computing experiences that allow people to collaborate with ease.
+	pkgver = 0.28.0
+	pkgrel = 1
+	url = https://nteract.io/
+	arch = x86_64
+	license = MIT
+	depends = hicolor-icon-theme
+	depends = zlib
+	conflicts = nteract-bin
+	options = !strip
+	source = nteract-0.28.0.AppImage::https://github.com/nteract/nteract/releases/download/v0.28.0/nteract-0.28.0.AppImage
+	sha256sums = 85ee58064e301b9804fc33a5d88988428737f958de9994eada09d100f7d59dc0
+
+pkgname = nteract-appimage
