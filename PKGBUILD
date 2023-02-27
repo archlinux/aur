@@ -1,7 +1,7 @@
 # Maintainer: Derek J. Clark <derekjohn.clark@gmail.com>
 pkgname=ogui-bin
 _pkgbase=opengamepadui
-pkgver=v0.0.7
+pkgver=v0.1.0
 pkgrel=1
 pkgdesc="Open source game launcher"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('glibc' 'gcc-libs' 'libx11' 'libxres' 'libxcb' 'libxext' 'libxau'
 provides=('ogui')
 source=(opengamepadui.tar.gz::https://github.com/ShadowBlip/OpenGamepadUI/releases/download/$pkgver/opengamepadui.tar.gz)
 
-sha256sums=('f29453c2a0bdf26a74cb87038d4f722a26498c1acfb7769451cf6751804674c9')
+sha256sums=('76610c15f86e070e6f22d9f0e4f4a97ca19981fb69fb0cc138011a741ed7d54c')
 
 prepare() {
 	cd "$srcdir/${_pkgbase}"
