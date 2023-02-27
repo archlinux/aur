@@ -6,7 +6,7 @@
 pkgname=yambar-wayland
 _pkgname=yambar
 pkgver=1.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Simplistic and highly configurable status panel for Wayland (No X11 support)"
 arch=('any')
 url=https://codeberg.org/dnkl/yambar
@@ -23,7 +23,7 @@ depends=(
 	'libudev.so'
 	'libpulse'
 	'pipewire'
-	'fcft>=3.0.0' 'fcft<4.0.0')
+	'fcft')
 # FIXME : I can't test if theses are really optional - Eragon
 optdepends=(
 	'alsa-lib: for the ALSA module'
@@ -34,7 +34,9 @@ sha256sums=('46f3002338f451c154678167bf3d5f593307954b6f381c50ddef2726b1a8c811')
 
 build() {
 	cd $_pkgname
-	meson --buildtype=release --prefix=/usr --wrap-mode=nofallback \
+	meson --buildtype=release \
+		--prefix=/usr \
+		--wrap-mode=nofallback \
 		-Db_lto=true \
 		-Dbackend-x11=disabled \
 		-Dbackend-wayland=enabled \
