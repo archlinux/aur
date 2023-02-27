@@ -2,14 +2,14 @@
 
 _pkgbase=pw-capture
 pkgname=${_pkgbase}-git
-pkgver=r20.2f40326
+pkgver=r24.96ff373
 pkgrel=1
 pkgdesc="Vulkan/OpenGL (game) capture for PipeWire"
 url="https://github.com/EHfive/${_pkgbase}"
 license=(MIT Apache)
 arch=(x86_64)
-makedepends=(git meson rust clang libpipewire)
-depends=(libpipewire-0.3.so pipewire)
+makedepends=(git meson rust clang libpipewire libffi)
+depends=(libpipewire-0.3.so pipewire libffi.so)
 provides=(pw-capture)
 optdepends=(
   'lib32-pw-capture: Capture 32-bit graphics applications'
