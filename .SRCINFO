@@ -8,6 +8,7 @@ pkgbase = perl-cli-osprey
 	license = PerlArtistic
 	checkdepends = perl>=5.12
 	checkdepends = perl-test-lib>=0
+	makedepends = perl-module-build-tiny
 	depends = perl>=5.12
 	depends = perl-getopt-long-descriptive
 	depends = perl-module-runtime

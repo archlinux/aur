@@ -11,6 +11,7 @@ license=('GPL' 'PerlArtistic')
 # Author doesn't say minimum perl version but currently Getopt::Long::Descriptive needs 5.12
 depends=('perl>=5.12' 'perl-getopt-long-descriptive' 'perl-module-runtime' 'perl-moo' 'perl-path-tiny')
 checkdepends=('perl>=5.12' 'perl-test-lib>=0')
+makedepends=('perl-module-build-tiny')
 options=('!emptydirs' purge)
 source=("http://search.cpan.org/CPAN/authors/id/A/AR/ARODLAND/$_dist-$pkgver.tar.gz")
 md5sums=('faacf1400414bc57e551c4ce700523b1')
