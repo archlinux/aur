@@ -1,7 +1,7 @@
 pkgbase = gnome-network-displays-git
 	pkgdesc = Miracast implementation for GNOME
 	pkgver = 0.90.5.r33.g0e128d2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.gnome.org/GNOME/gnome-network-displays
 	arch = x86_64
 	license = GPL3
@@ -23,6 +23,6 @@ pkgbase = gnome-network-displays-git
 	source = git+https://gitlab.gnome.org/GNOME/gnome-network-displays.git
 	source = https://gitlab.gnome.org/GNOME/gnome-network-displays/-/merge_requests/171.patch
 	sha256sums = SKIP
-	sha256sums = 6b8fa34a2f1a563e8e59514c80622a2b1c32ce7e132b1d8547ccab76baaa4284
+	sha256sums = b0be3b267e370cc23202febf16c742257f28b173583be795ce5adf113a44a060
 
 pkgname = gnome-network-displays-git

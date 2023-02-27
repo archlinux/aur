@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-network-displays-git
 pkgver=0.90.5.r33.g0e128d2
-pkgrel=2
+pkgrel=3
 pkgdesc="Miracast implementation for GNOME"
 arch=('x86_64')
 url="https://gitlab.gnome.org/GNOME/gnome-network-displays"
@@ -15,7 +15,7 @@ conflicts=("${pkgname%-git}")
 source=('git+https://gitlab.gnome.org/GNOME/gnome-network-displays.git'
         'https://gitlab.gnome.org/GNOME/gnome-network-displays/-/merge_requests/171.patch')
 sha256sums=('SKIP'
-            '6b8fa34a2f1a563e8e59514c80622a2b1c32ce7e132b1d8547ccab76baaa4284')
+            'b0be3b267e370cc23202febf16c742257f28b173583be795ce5adf113a44a060')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
