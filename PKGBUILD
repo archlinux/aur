@@ -8,7 +8,7 @@ _pkgname=FTL
 _servicename=pihole-FTL
 pkgver=5.21
 pkgrel=1
-_now=`date +%N`
+#_now=`date +%N`
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="The Pi-hole FTL engine"
 url="https://github.com/pi-hole/FTL"
@@ -20,14 +20,14 @@ provides=('dnsmasq')
 install=$pkgname.install
 backup=('etc/pihole/pihole-FTL.conf' 'etc/pihole/pihole-FTL.db' 'etc/pihole/dhcp.leases')
 source=($pkgname-v$pkgver.tar.gz::"https://github.com/pi-hole/FTL/archive/v$pkgver.tar.gz"
-        arch-ftl-$pkgver-$_now.patch::"https://raw.githubusercontent.com/max72bra/pi-hole-ftl-archlinux-customization/master/arch-ftl-$pkgver.patch"
+        "https://raw.githubusercontent.com/max72bra/pi-hole-ftl-archlinux-customization/master/arch-ftl-$pkgver-$pkgrel.patch"
         "$pkgname.tmpfile"
         "$pkgname.sysuser"
         "$pkgname.service"
         "$pkgname.db"
         "$pkgname.conf")
 sha256sums=('66bbec5a4cb8aa64035ccb275b0c849a062b319dfc64b8c26a32529972b1f998'
-            '6448843c81a4e7dc1b1e2ab5ced874c9efc498d5b56e6cceb4459228d830c2a2'
+            '9e6d74f218c140d35c33115c63a1993886b2de13466ff666ef3f9f1c804cd71f'
             '538d2f66e30eabeeb0ac6794ac388b96ddf1830d9e988a0aaa810cb17c5c69fc'
             '39ef7bfd672ce59440bbf89e812992adc4d40091bc8d70fa24bd586381979064'
             '8ac9e414f3330a8c7f5d761a17c1a7a9b3c025c8927467222c3e5d6c57f784d8'
@@ -36,7 +36,7 @@ sha256sums=('66bbec5a4cb8aa64035ccb275b0c849a062b319dfc64b8c26a32529972b1f998'
 
 prepare() {
   cd "$srcdir"/"$_pkgname"-"$pkgver"
-  patch -Np1 -i "$srcdir"/arch-ftl-$pkgver-$_now.patch
+  patch -Np1 -i "$srcdir"/arch-ftl-$pkgver-$pkgrel.patch
 }
 
 build() {
