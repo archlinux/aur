@@ -1,11 +1,14 @@
 pkgbase = joycond-cemuhook-git
 	pkgdesc = Support for cemuhook's UDP protocol for joycond devices
-	pkgver = r46.857395b
+	pkgver = r116.d488022
 	pkgrel = 1
 	url = https://github.com/joaorb64/joycond-cemuhook
 	arch = any
 	license = unknown
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = joycond-git
 	depends = python
 	depends = python-termcolor
@@ -19,8 +22,6 @@ pkgbase = joycond-cemuhook-git
 	optdepends = hid-nintendo-dkms: Kernel module with switch controller support.
 	conflicts = joycond-cemuhook
 	source = joycond-cemuhook::git+https://github.com/joaorb64/joycond-cemuhook.git
-	source = run.sh
 	sha512sums = SKIP
-	sha512sums = ccda550ce3daa6e5541135b81872d897b5ba1267b858a61f7e14b83829aefc91c7610fc31a83a8f0e80f56b20dfb53518b774658640b9fd0b105fe4f3c29ad57
 
 pkgname = joycond-cemuhook-git
