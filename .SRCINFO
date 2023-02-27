@@ -1,0 +1,20 @@
+pkgbase = longzhuti
+	pkgdesc = 龙珠体 | LongZhuTi
+	pkgver = 1.000
+	pkgrel = 1
+	url = https://github.com/maoken-fonts/LongZhuTi
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	source = LogoSCLongZhuTi-Regular1.000.ttf::https://github.com/maoken-fonts/LongZhuTi/releases/download/v1.000/LogoSCLongZhuTi-Regular.ttf
+	source = LogoSCLongZhuTiZHS-Regular1.000.ttf::https://github.com/maoken-fonts/LongZhuTi/releases/download/v1.000/LogoSCLongZhuTiZHS-Regular.ttf
+	source = LongZhuTi-Regular1.000.ttf::https://github.com/maoken-fonts/LongZhuTi/releases/download/v1.000/LongZhuTi-Regular.ttf
+	source = LICENSE1.000::https://raw.githubusercontent.com/maoken-fonts/LongZhuTi/main/OFL.txt
+	source = LICENSE-ZHS1.000::https://raw.githubusercontent.com/maoken-fonts/LongZhuTi/main/OFL_ZHS.txt
+	sha256sums = 977c43b9d16458517eb9503a847e7f58fdad803850bb1d63f6e14d5d09d11142
+	sha256sums = 0180f21c9911bc2358cbbee0674cd51e783f3f63e09ffb08b03b082e6e400bdc
+	sha256sums = a7c16e4ec41419981f2a54b35a0ec8f3dba61884b8b8e03721fed179f2088102
+	sha256sums = ffa9b3b3903dc0904dde70e3023124b8b73acfd268ba2189a300a29cb5734057
+	sha256sums = cbb5cbe68fe081b6ecd96b2684b2345121cec0ed3e661735ac5d671630197f1b
+
+pkgname = ttf-longzhuti
