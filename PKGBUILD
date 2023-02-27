@@ -16,7 +16,7 @@ install=$pkgname.install
 backup=('etc/dnsmasq.d/01-pihole.conf')
 
 source=($pkgname-core-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
-	arch-server-core-$pkgver-$_now.patch::"https://raw.githubusercontent.com/max72bra/pi-hole-standalone-archlinux-customization/master/arch-server-core-$pkgver.patch"
+		"https://raw.githubusercontent.com/max72bra/pi-hole-standalone-archlinux-customization/master/arch-server-core-$pkgver-$pkgrel.patch"
 	dnsmasq.include
 	$_pkgname.tmpfile
 	$_pkgname-gravity.service
@@ -28,7 +28,7 @@ source=($pkgname-core-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/arc
 	piholeDebug.sh)
 
 sha256sums=('fa723c7573b0441b5f28300313eb99508853df1752720208f6cf6008da63abc2'
-            'd9f97c5e00874a0bf2d3ca32079485a4209583a77d98498e5df668b0bff440df'
+            '3ed0f229be386b4f1db58dc1b6fcd10132fe3d7256b73bcc226ffcb1f1b03921'
             '96c1fb8b15e1d0e99c18dc768f5dc3d4991184fb2631af84c5e2111028bc5287'
             '6da6bba6cfac4e87a1f1e8e1488b71858ac6feb0a2e327470a58d8f1e9ad8cbf'
             '9b72d7769036f8f4bb7121968d2ae4bdba427e4b16787ce340205a5f62b45c7c'
@@ -41,7 +41,7 @@ sha256sums=('fa723c7573b0441b5f28300313eb99508853df1752720208f6cf6008da63abc2'
 
 prepare() {
   cd "$srcdir"/"$_pkgname"-"$pkgver"
-  patch -Np1 -i "$srcdir"/arch-server-core-$pkgver-$_now.patch
+  patch -Np1 -i "$srcdir"/arch-server-core-$pkgver-$pkgrel.patch
 }
 
 package() {
