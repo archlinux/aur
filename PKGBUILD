@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutantota dot com>
 pkgname=paleta
-pkgver=0.30
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Extract the dominant colors from any image."
 arch=('x86_64')
@@ -10,9 +10,14 @@ depends=('libadwaita')
 makedepends=('cargo' 'git' 'meson')
 checkdepends=('appstream-glib')
 options=('!lto')
-_commit=85d754ed5d1e0e8e40dcd19c1914f638f45dbf0d  # v0.3.0
+_commit=d779d2a0393d790586c3f73fb230d029ae406391  # tags/v0.3.1^0
 source=("git+https://github.com/nate-xyz/paleta.git#commit=$_commit")
 sha256sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/$pkgname"
+  git describe --tags | sed 's/^v//;s/-/+/g'
+}
 
 prepare() {
   cd "$srcdir/$pkgname"
