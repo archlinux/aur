@@ -1,5 +1,5 @@
 pkgbase = clang-prefixed-release
-	pkgver = 16.0.0rc2
+	pkgver = 16.0.0rc3
 	pkgrel = 1
 	url = https://llvm.org/
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = clang-prefixed-release
 	makedepends = z3
 	makedepends = jsoncpp
 	makedepends = clang
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.0-rc2/llvm-project-16.0.0rc2.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.0-rc3/llvm-project-16.0.0rc3.src.tar.xz
 	sha512sums = SKIP
 
 pkgname = clang-prefixed-release
