@@ -5,7 +5,7 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}-legacyrenderer-git"
-pkgver=r2436.6b7e409f
+pkgver=r2498.18229043
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (Legacy Renderer)"
 arch=(any)
@@ -68,7 +68,10 @@ build() {
 	cd "${srcdir}/${_pkgname}"
 	git submodule update --init
 	make fixwlr
-	cd "./subprojects/wlroots/" && meson build/ --prefix="${srcdir}/tmpwlr" --buildtype=release && ninja -C build/ && mkdir -p "${srcdir}/tmpwlr" && ninja -C build/ install && cd ../../
+	cd "./subprojects/wlroots/" && meson build/ --prefix="${srcdir}/tmpwlr" --buildtype=release && ninja -C build/ && mkdir -p "${srcdir}/tmpwlr" && ninja -C build/ install && cd ../
+	# the following fix is proposed by @justinesmithies on 2023 Feb 27
+	# under the comments of hyprland-git
+	cd udis86 && cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -H./ -B./build -G Ninja && cmake --build ./build --config Release --target all -j$(shell nproc) && cd ../..
 	make protocols
 	make legacyrenderer
 	cd ./hyprctl && make all && cd ..

@@ -1,6 +1,6 @@
 pkgbase = hyprland-legacyrenderer-git
 	pkgdesc = A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (Legacy Renderer)
-	pkgver = r2436.6b7e409f
+	pkgver = r2498.18229043
 	pkgrel = 1
 	url = https://github.com/hyprwm/Hyprland
 	arch = any
