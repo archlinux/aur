@@ -1,18 +1,18 @@
 pkgbase = rars
 	pkgdesc = RISC-V Assembler and Runtime Simulator
-	pkgver = 1.5
-	pkgrel = 2
+	pkgver = 1.6
+	pkgrel = 1
 	url = https://github.com/TheThirdOne/rars
 	arch = any
 	license = MIT
 	depends = java-runtime>=8
-	noextract = rars1_5.jar
-	source = https://github.com/TheThirdOne/rars/releases/download/v1.5/rars1_5.jar
-	source = https://raw.githubusercontent.com/TheThirdOne/rars/v1.5/src/images/RISC-V.png
-	source = https://raw.githubusercontent.com/TheThirdOne/rars/v1.5/License.txt
+	noextract = rars1_6.jar
+	source = https://github.com/TheThirdOne/rars/releases/download/v1.6/rars1_6.jar
+	source = https://raw.githubusercontent.com/TheThirdOne/rars/v1.6/src/images/RISC-V.png
+	source = https://raw.githubusercontent.com/TheThirdOne/rars/v1.6/License.txt
 	source = rars.sh
 	source = rars.desktop
-	sha256sums = c3be607c045f478e94a7aaa78351982f4bbc10d7e90f7c47865ff2a7d9447141
+	sha256sums = 780f730eb457b1ba609e968accc2c8b77d8f92c3d9dbf30cc7fdb3cfb14e8c24
 	sha256sums = 3d2b4769c7935682062f2cc718a1482c098ecf6fbbd2a6781b688047c6085128
 	sha256sums = ee3e447d4d5b1f3ed6bc8a71939d06637338fb247777b3e3b60b6202d0712652
 	sha256sums = ab5b088335e5f189eaffa3399e764d85ad5069bb266a68a5640d2732504c5b56
