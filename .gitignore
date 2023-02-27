@@ -1,0 +1,7 @@
+AbracaDABra-*.pkg.tar.zst
+AbracaDABra-*.pkg.tar.xz
+AbracaDABra-*.tar.gz
+AbracaDABra-*.log
+PKGBUILD-namcap.log
+pkg/
+src/
