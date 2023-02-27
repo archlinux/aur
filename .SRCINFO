@@ -1,6 +1,6 @@
 pkgbase = retsnoop
 	pkgdesc = BPF-based tool for detecting error conditions in the kernel
-	pkgver = 0.9.3
+	pkgver = 0.9.5
 	pkgrel = 1
 	url = https://github.com/anakryiko/retsnoop
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = retsnoop
 	depends = glibc
 	depends = libelf
 	depends = zlib
-	source = https://github.com/anakryiko/retsnoop/releases/download/v0.9.3/srcs-full-v0.9.3.tar.gz
-	sha256sums = 982307041a6b3dc1c26d2e85182b7f6991cb03deb7eda6a8721e6c6bd5f56bc2
+	source = https://github.com/anakryiko/retsnoop/releases/download/v0.9.5/srcs-full-v0.9.5.tar.gz
+	sha256sums = 80c831fdd5f4d8c406057b58476701b0b15308316afb1b671b5d13a56657c485
 
 pkgname = retsnoop

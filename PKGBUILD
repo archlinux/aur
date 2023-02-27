@@ -1,6 +1,6 @@
 # Maintainer: David Vernet <void@manifault.com>
 pkgname=retsnoop
-pkgver=0.9.3
+pkgver=0.9.5
 pkgrel=1
 pkgdesc="BPF-based tool for detecting error conditions in the kernel"
 arch=('x86_64')
@@ -10,7 +10,7 @@ groups=('linux-tools')
 depends=('glibc' 'libelf' 'zlib')
 makedepends=('cargo' 'clang13' 'git' 'llvm')
 source=("https://github.com/anakryiko/$pkgname/releases/download/v$pkgver/srcs-full-v$pkgver.tar.gz")
-sha256sums=('982307041a6b3dc1c26d2e85182b7f6991cb03deb7eda6a8721e6c6bd5f56bc2')
+sha256sums=('80c831fdd5f4d8c406057b58476701b0b15308316afb1b671b5d13a56657c485')
 
 build() {
 	make -C "${srcdir}/src"
