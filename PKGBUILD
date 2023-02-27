@@ -12,10 +12,10 @@ provides=('goresume')
 conflicts=('goresume')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/nikaro/goresume/releases/download/v0.1.0/goresume_0.1.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('de38f18810faf28eb2c26d8186c07f1181e54ca045ff42869c0c643b7e2d7b97')
+sha256sums_aarch64=('ab3148d97a124ac929d62df25294014cacc3f65929b7d9fc14f87757657c8bcd')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/nikaro/goresume/releases/download/v0.1.0/goresume_0.1.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('239cd50092369a20ac4d3ba62a32eeae5787f205041f0d0609122038430d9ce9')
+sha256sums_x86_64=('8b3a34f80b052f72ddf12ffdfc0180a6741fc631005a84405ed335cc01f3592b')
 
 package() {
   install -Dm755 "./goresume" "${pkgdir}/usr/bin/goresume"
