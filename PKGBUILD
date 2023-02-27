@@ -2,7 +2,7 @@
 # Maintainer: Infisical, Inc <support@infisical.com>
 
 pkgname='infisical-bin'
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc='The official Infisical CLI'
 url='https://infisical.com'
@@ -11,20 +11,20 @@ license=('MIT')
 provides=('infisical')
 conflicts=('infisical')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Infisical/infisical/releases/download/v0.3.3/infisical_0.3.3_linux_arm64.tar.gz")
-sha256sums_aarch64=('5ca1bd22d30791fdd64e9f149bfe44c1792d412149ee70666ed3f5fe1a097821')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Infisical/infisical/releases/download/v0.3.4/infisical_0.3.4_linux_arm64.tar.gz")
+sha256sums_aarch64=('90c76072d1be011c6f1f3e10d0e060b05826e27361966a4c0a14648d4deefbf8')
 
-source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/Infisical/infisical/releases/download/v0.3.3/infisical_0.3.3_linux_armv6.tar.gz")
-sha256sums_armv6h=('02bc82daf2549bb86a26e729b1d58a7f9bc88090fd85446d6fb9614eaf1b12d7')
+source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/Infisical/infisical/releases/download/v0.3.4/infisical_0.3.4_linux_armv6.tar.gz")
+sha256sums_armv6h=('bad7c93b398ed387419f3e94fb8731b889f8bc667dd2c32cc9d603a1122dddf3')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/Infisical/infisical/releases/download/v0.3.3/infisical_0.3.3_linux_armv7.tar.gz")
-sha256sums_armv7h=('7a5a10b7d33851601187c818ca59aa3396b9e6d735053c1f0e5f222f331bf883')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/Infisical/infisical/releases/download/v0.3.4/infisical_0.3.4_linux_armv7.tar.gz")
+sha256sums_armv7h=('ef3b7370f0815b6a064978052a9b4f7032227064ae769e83e2a52abfb65cad2a')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/Infisical/infisical/releases/download/v0.3.3/infisical_0.3.3_linux_386.tar.gz")
-sha256sums_i686=('63c7144f7ca5af48eebeff34ad070d4c82f0f779778680c72d14fd31313b5546')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/Infisical/infisical/releases/download/v0.3.4/infisical_0.3.4_linux_386.tar.gz")
+sha256sums_i686=('0d80937cd158c4a203ad3432ebaecb8f192a01f91ffef0a7867c3d8a35fcd9bb')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Infisical/infisical/releases/download/v0.3.3/infisical_0.3.3_linux_amd64.tar.gz")
-sha256sums_x86_64=('467884e3ed37378a73f099a0c2b8854a380d4a2edee21b6135b263fe16e8496b')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Infisical/infisical/releases/download/v0.3.4/infisical_0.3.4_linux_amd64.tar.gz")
+sha256sums_x86_64=('424b9f87d9bd98bfd5859dd9f92aeb6457dc457768af0b27ffefc7b6a687f664')
 
 package() {
   # bin
