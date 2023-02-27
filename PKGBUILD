@@ -6,7 +6,7 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}-legacyrenderer-hidpi-xprop-git"
-pkgver=r2476.66e3679b
+pkgver=r2498.18229043
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (Legacy Renderer with HiDPI fix)"
 arch=(any)
@@ -74,7 +74,7 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/${_pkgname}"
 	rm -rf subprojects/wlroots subprojects/hyprland-protocols
-	git submodule init
+	git submodule update --init
 	git config submodule.wlroots.url "${srcdir}"/wlroots
 	git config submodule.subprojects/hyprland-protocols.url "${srcdir}"/hyprland-protocols
 	git -c protocol.file.allow=always submodule update subprojects/wlroots
@@ -88,7 +88,10 @@ prepare() {
 build() {
 	cd "${srcdir}/${_pkgname}"
 	make fixwlr
-	cd "./subprojects/wlroots/" && meson build/ --prefix="${srcdir}/tmpwlr" --buildtype=release && ninja -C build/ && mkdir -p "${srcdir}/tmpwlr" && ninja -C build/ install && cd ../../
+	cd "./subprojects/wlroots/" && meson build/ --prefix="${srcdir}/tmpwlr" --buildtype=release && ninja -C build/ && mkdir -p "${srcdir}/tmpwlr" && ninja -C build/ install && cd ../
+	# the following fix is proposed by @justinesmithies on 2023 Feb 27
+	# under the comments of hyprland-git
+	cd udis86 && cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -H./ -B./build -G Ninja && cmake --build ./build --config Release --target all -j$(shell nproc) && cd ../..
 	make protocols
 	make legacyrenderer
 	cd ./hyprctl && make all && cd ..
