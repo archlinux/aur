@@ -6,7 +6,7 @@
 # Maintainer: Joao Chamine <jchamine@outlook.pt>
 pkgname=xnotes-git
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Simple notepad created in python."
 arch=(x86_64 i686)
@@ -31,8 +31,12 @@ validpgpkeys=()
 
 package() {
 	cd "xnotes"
-	sudo cp bin/linux/Xnotes /usr/bin/Xnotes
+	sudo mkdir -p /usr/bin/xnotes
+	sudo cp bin/linux/Xnotes /usr/bin/xnotes/Xnotes
+	sudo ln -s /usr/bin/xnotes/Xnotes /usr/bin/Xnotes
 	sudo mkdir -p /usr/share/applications/Xnotes
 	sudo cp res/*.desktop /usr/share/applications/Xnotes/.
 	sudo cp -r img/ /usr/share/applications/Xnotes/.
+	sudo chown jchamine. /usr/share/applications/Xnotes -R
+	sudo chmod 744 /usr/share/applications/Xnotes -R
 }
