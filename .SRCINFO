@@ -1,6 +1,6 @@
 pkgbase = r-boolnet
 	pkgdesc = Construction, Simulation and Analysis of Boolean Networks
-	pkgver = 2.1.7
+	pkgver = 2.1.8
 	pkgrel = 1
 	url = https://cran.r-project.org/package=BoolNet
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = r-boolnet
 	depends = r
 	depends = r-igraph
 	depends = r-xml
-	source = https://cran.r-project.org/src/contrib/BoolNet_2.1.7.tar.gz
-	sha256sums = bb5a1146a1e53be10761363ce30be8869d883be4d2632446f552aff039b307ad
+	source = https://cran.r-project.org/src/contrib/BoolNet_2.1.8.tar.gz
+	sha256sums = 0205d0cdfa656b1b7b491c004bb18467095e517248d22822caed29d34f4f57da
 
 pkgname = r-boolnet
