@@ -1,63 +1,71 @@
-# Maintainer: Mads Kjeldgaard <mail@madskjeldgaard.dk>
+# Maintainer: Robert Pannick <rwpannick@gmail.com>
+# Contributor: Mads Kjeldgaard <mail@madskjeldgaard.dk>
 pkgname=sparta-plugins
-pkgver=1.5.1
+pkgver=2022_06_20_v1.6.2
 pkgrel=1
-pkgdesc="A collection of spatial audio related VST plug-ins (loudspeaker/binaural panners, Ambisonics encoders/decoders/visualisers, etc.)"
-arch=('x86_64')
-url="https://github.com/leomccormack/SPARTA"
+pkgdesc='AALTO vst plugins for Spatial Audio Real-time Applications'
+arch=('x86_64' 'x86_64_v3')
+url="http://research.spa.aalto.fi/projects/sparta_vsts/"
 license=('GPL')
-depends=("hdf5" "netcdf" "netcdf-fortran" "libglvnd" "freetype2" "libxinerama" "webkit2gtk" "gtk3" "libxext" "lapack" "libcurl-gnutls")
-makedepends=()
-optdepends=()
-provides=("${pkgname}")
-conflicts=()
-_build_date="2021_08_23"
-_file_name="Linux_SPARTA_${_build_date}_v${pkgver}"
-source=("$url/releases/download/v$pkgver/$_file_name.zip")
-md5sums=('9b85d35d4c301a4ffb466ccd7de97d7e')
+groups=('pro-audio')
+depends=('bubblewrap' 'webkit2gtk')
+provides=('sparta-plugins')
+source=("https://github.com/leomccormack/SPARTA/releases/download/v1.6.2/Linux_SPARTA_$pkgver.zip")
+sha256sums=('1b8789a8a47e11379283d953db2ed6640b0bb84874032b795b1bd5d1e017ace5')
 
 package() {
+	cd "$srcdir/Linux_SPARTA_$pkgver"
 
-	cd "$srcdir/${_file_name}"
+  #TODO: remove faulty plugins
 
-	# Install libs
+	# Custom mkl and ipp lib needed for the installation
 	install -Dm755 "libsaf_mkl_custom_lp64.so" "$pkgdir/usr/lib/libsaf_mkl_custom_lp64.so"
 	install -Dm755 "libsaf_ipp_custom.so" "$pkgdir/usr/lib/libsaf_ipp_custom.so"
 
-	# Install plugins
-	PLUGINS=(
-				"libcompass_6dof.so"
-				"libcompass_array2sh.so"
-				"libcompass_binaural.so"
-				"libcompass_binauralVR.so"
-				"libcompass_decoder.so"
-				"libcompass_gravitator.so"
-				"libcompass_sidechain.so"
-				"libcompass_spatedit.so"
-				"libcompass_tracker.so"
-				"libcompass_upmixer.so"
-				"libcropac_binaural.so"
-				"libhodirac_binaural.so"
-				"libhodirac_decoder.so"
-				"libHOSIRR.so"
-				"libsparta_ambiBIN.so"
-				"libsparta_ambiDEC.so"
-				"libsparta_ambiDRC.so"
-				"libsparta_ambiENC.so"
-				"libsparta_ambiRoomSim.so"
-				"libsparta_array2sh.so"
-				"libsparta_beamformer.so"
-				"libsparta_binauraliser.so"
-				"libsparta_decorrelator.so"
-				"libsparta_matrixconv.so"
-				"libsparta_multiconv.so"
-				"libsparta_panner.so"
-				"libsparta_pitchShifter.so"
-				"libsparta_rotator.so"
-				"libsparta_spreader.so"
-				)
+	# Install compass plugins
+	install -Dm755 "libcompass_6DoF.so" "$pkgdir/usr/lib/vst/libcompass_6DoF.so"
+	install -Dm755 "libcompass_array2sh.so" "$pkgdir/usr/lib/vst/libcompass_array2sh.so"
+	install -Dm755 "libcompass_binaural.so" "$pkgdir/usr/lib/vst/libcompass_binaural.so"
+	install -Dm755 "libcompass_binauralVR.so" "$pkgdir/usr/lib/vst/binauralVR.so"
+	install -Dm755 "libcompass_decoder.so" "$pkgdir/usr/lib/vst/libcompass_decoder.so"
+	install -Dm755 "libcompass_gravitator.so" "$pkgdir/usr/lib/vst/libcompass_gravitator.so"
+	install -Dm755 "libcompass_sidechain.so" "$pkgdir/usr/lib/vst/libcompass_sidechain.so"
+	install -Dm755 "libcompass_spatedit.so" "$pkgdir/usr/lib/vst/libcompass_spatedit.so"
+	install -Dm755 "libcompass_tracker.so" "$pkgdir/usr/lib/vst/libcompass_tracker.so"
+	install -Dm755 "libcompass_upmixer.so" "$pkgdir/usr/lib/vst/libcompass_upmixer.so"
 
-	for F in "${PLUGINS[@]}"; do install -Dm755 "$F"  "$pkgdir/usr/lib/vst/$F"; done
+	# Install cropac
+	install -Dm755 "libcropac_binaural.so" "$pkgdir/usr/lib/vst/libcropac_binaural.so"
 
-	install -Dm644 ./LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	# Install hades
+	install -Dm755 "libhades_renderer.so" "$pkgdir/usr/lib/vst/libhades_renderer.so"
+
+	# Install sparta plugins
+	install -Dm755  "libsparta_6DoFconv.so" "$pkgdir/usr/lib/vst/libsparta_6DoFconv.so"
+	install -Dm755  "libsparta_ambiBIN.so" "$pkgdir/usr/lib/vst/libsparta_ambiBIN.so"
+	install -Dm755  "libsparta_ambiDEC.so" "$pkgdir/usr/lib/vst/libsparta_ambiDEC.so"
+	install -Dm755  "libsparta_ambiDRC.so" "$pkgdir/usr/lib/vst/libsparta_ambiDRC.so"
+	install -Dm755  "libsparta_ambiENC.so" "$pkgdir/usr/lib/vst/libsparta_ambiENC.so"
+	install -Dm755  "libsparta_ambiRoomSim.so" "$pkgdir/usr/lib/vst/libsparta_ambiRoomSim.so"
+	install -Dm755  "libsparta_array2sh.so" "$pkgdir/usr/lib/vst/libsparta_array2sh.so"
+	install -Dm755  "libsparta_beamformer.so" "$pkgdir/usr/lib/vst/libsparta_beamformer.so"
+	install -Dm755  "libsparta_binauraliser.so" "$pkgdir/usr/lib/vst/libsparta_binauraliser.so"
+	install -Dm755  "libsparta_binauraliser_nf.so" "$pkgdir/usr/lib/vst/libsparta_binauraliser_nf.so"
+	install -Dm755  "libsparta_decorrelator.so" "$pkgdir/usr/lib/vst/libsparta_decorrelator.so"
+	install -Dm755  "libsparta_matrixconv.so" "$pkgdir/usr/lib/vst/libsparta_matrixconv.so"
+	install -Dm755  "libsparta_multiconv.so" "$pkgdir/usr/lib/vst/libsparta_multiconv.so"
+	install -Dm755  "libsparta_panner.so" "$pkgdir/usr/lib/vst/libsparta_panner.so"
+	install -Dm755  "libsparta_pitchShifter.so" "$pkgdir/usr/lib/vst/libsparta_pitchShifter.so"
+	install -Dm755  "libsparta_rotator.so" "$pkgdir/usr/lib/vst/libsparta_rotator.so"
+	install -Dm755  "libsparta_spreader.so" "$pkgdir/usr/lib/vst/libsparta_spreader.so"
+
+	# Install HOSIRR
+	install -Dm755 "libHOSIRR.so" "$pkgdir/usr/lib/vst/libHOSIRR.so"
+
+	# Install HODIRAC
+	install -Dm755 "libhodirac_binaural.so" "$pkgdir/usr/lib/vst/libhodirac_binaural.so"
+
+	# Install Ultra Sonic Super Hearing
+	install -Dm755  "libUltrasonicSuperHearing.so" "$pkgdir/usr/lib/vst/libUltrasonicSuperHearing.so"
+
 }
