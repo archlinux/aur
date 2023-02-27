@@ -3,7 +3,7 @@
 pkgname=beakerlib
 pkgver=1.29.3
 pkgrel=2
-pkgdesc="BeakerLib is a shell-level integration testing library, providing convenience functions which simplify writing, running and analysis of integration and blackbox tests."
+pkgdesc="Shell-level integration testing library, providing convenience functions which simplify writing, running and analysis of integration and blackbox tests."
 arch=('i686' 'x86_64')
 url="https://github.com/beakerlib/beakerlib"
 license=('GPL2')
