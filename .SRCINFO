@@ -7,6 +7,7 @@ pkgbase = mingw-w64-mesa
 	license = custom
 	makedepends = mingw-w64-meson
 	makedepends = mingw-w64-cmake
+	makedepends = mingw-w64-directx-headers
 	makedepends = python-mako
 	depends = mingw-w64-llvm
 	depends = mingw-w64-vulkan-icd-loader
