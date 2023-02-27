@@ -26,10 +26,16 @@ optdepends=('speech-dispatcher: Text-to-Speech support'
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=('git+https://github.com/mumble-voip/mumble.git'
-        'git+https://github.com/mumble-voip/celt-0.7.0.git'
-        'git+https://github.com/mumble-voip/opus.git'
-        'git+https://github.com/mumble-voip/speex.git')
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+        'git+https://github.com/mumble-voip/minhook.git'
+        'git+https://github.com/mumble-voip/mach_override.git'
+        'git+https://github.com/mumble-voip/speexdsp.git'
+        'git+https://github.com/mumble-voip/rnnoise.git'
+        'git+https://github.com/Krzmbrzl/FindPythonInterpreter.git'
+        'git+https://github.com/wolfpld/tracy.git'
+        'git+https://github.com/ArthurSonzogni/nlohmann_json_cmake_fetchcontent'
+        'git+https://github.com/microsoft/GSL.git'
+        'git+https://github.com/rigtorp/SPSCQueue.git')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd "$_pkgname"
@@ -38,12 +44,17 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
-
   git submodule init
-  git config submodule.3rdparty/celt-0.7.0-src.url "$srcdir/celt"
-  git config submodule.3rdparty/opus.url "$srcdir/opus"
-  git config submodule.3rdparty/speex.url "$srcdir/speex"
-  git submodule update
+  git config submodule.3rdparty/minhook.url "$srcdir/minhook"
+  git config submodule.3rdparty/mach-override-src.url "$srcdir/mach_override"
+  git config submodule.3rdparty/speexdsp.url "$srcdir/speexdsp"
+  git config submodule.3rdparty/rnnoise-src.url "$srcdir/rnnoise"
+  git config submodule.3rdparty/FindPythonInterpreter.url "$srcdir/FindPythonInterpreter"
+  git config submodule.3rdparty/tracy.url "$srcdir/tracy"
+  git config submodule.3rdparty/nlohmann_json.url "$srcdir/nlohmann_json_cmake_fetchcontent"
+  git config submodule.3rdparty/gsl.url "$srcdir/GSL"
+  git config submodule.3rdparty/SPSCQueue.url "$srcdir/SPSCQueue"
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
