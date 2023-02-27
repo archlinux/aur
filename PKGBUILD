@@ -40,24 +40,9 @@ sha512sums=('SKIP'
 
 optdepends=('clang: opencl' 'compiler-rt: opencl')
 
-
 # NINJAFLAGS is an env var used to pass commandline options to ninja
 # NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
 
-# MESA_WHICH_LLVM is an environment variable that determines which llvm package tree is used to built mesa-git against.
-# Adding a line to ~/.bashrc  that sets this value is the simplest way to ensure a specific choice.
-#
-# NOTE: Aur helpers don't handle this method well, check the sticky comments on mesa-git aur page .
-#
-# 1: llvm-minimal-git (aur) preferred value
-# 2: AUR llvm-git
-# 3: llvm-git from LordHeavy unofficial repo 
-# 4  llvm (stable from extra) Default value
-# 
-
-if [[ ! $MESA_WHICH_LLVM ]] ; then
-    MESA_WHICH_LLVM=4
-fi
 
 pkgver() {
     cd mesa
@@ -120,6 +105,7 @@ build () {
        -D glx=dri \
        -D libunwind=disabled \
        -D llvm=enabled \
+       -D shared-llvm=enabled \
        -D lmsensors=enabled \
        -D osmesa=true \
        -D shared-glapi=enabled \
