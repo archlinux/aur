@@ -5,7 +5,7 @@ pkgbase = kepubify-bin-git
 	url = https://github.com/pgaskin/kepubify
 	arch = any
 	license = MIT
-	source = https://github.com/pgaskin/kepubify/releases/download/v4.0.4/kepubify-linux-arm64
+	source = https://github.com/pgaskin/kepubify/releases/download/v4.0.4/kepubify-linux-64bit
 	md5sums = SKIP
 
 pkgname = kepubify-bin-git

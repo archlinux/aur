@@ -9,7 +9,7 @@ url="https://github.com/pgaskin/kepubify"
 license=('MIT')
 
 case $CARCH in
-	amd64)
+	amd64|x86_64)
 		package_arch='64bit';;
 	i386)
 		package_arch='32bit';;
