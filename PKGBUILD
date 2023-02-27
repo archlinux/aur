@@ -14,9 +14,9 @@ depends=('python')
 makedepends=('git')
 source=(
 	"git+${url}.git"
-	"${url}/pull/10.patch"
-	"${url}/pull/20.patch"
-	"${url}/pull/21.patch")
+	"$pkgname-10.patch::${url}/pull/10.patch"
+	"$pkgname-20.patch::${url}/pull/20.patch"
+	"$pkgname-21.patch::${url}/pull/21.patch")
 sha256sums=('SKIP'
             'ad90a81995d6027d71a96ecb9504a459161beb61b1630eaf801aa36c8a6b7d5c'
             '441843fc414cff858a4039b63a5787dea5cbb5fd4065fbd41cd24983c4e1844b'
@@ -34,9 +34,9 @@ pkgver() {
 prepare() {
 	cd "${_srcdir}"
 	
-	patch -p1 -i '../10.patch'
-	patch -p1 -i '../20.patch'
-	patch -p1 -i '../21.patch'
+	patch -p1 -i "../$pkgname-10.patch"
+	patch -p1 -i "../$pkgname-20.patch"
+	patch -p1 -i "../$pkgname-21.patch"
 }
 
 package() {
