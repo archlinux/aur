@@ -22,7 +22,7 @@ optdepends=('ffmpeg: H264/AAC/MP3 decoding'
 provides=("firefox=$pkgver")
 conflicts=('firefox-beta')
 install=$pkgname.install
-source=("https://ftp.mozilla.org/pub/firefox/candidates/111.0b6-candidates/build1/linux-x86_64/en-US/firefox-$pkgver.tar.bz2"
+source=("http://archive.mozilla.org/pub/firefox/releases/111.0b6/linux-x86_64/en-US/firefox-$pkgver.tar.bz2"
         "$_pkgname.sh"
         "$pkgname.desktop")
 sha256sums=('1b8650ac822e3176ef2f47e32a6deca53bb53193289dc1b63562831fad2e70a6'

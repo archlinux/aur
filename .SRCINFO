@@ -21,7 +21,7 @@ pkgbase = firefox-beta-bin
 	optdepends = upower: Battery API
 	provides = firefox=111.0b6
 	conflicts = firefox-beta
-	source = https://ftp.mozilla.org/pub/firefox/candidates/111.0b6-candidates/build1/linux-x86_64/en-US/firefox-111.0b6.tar.bz2
+	source = http://archive.mozilla.org/pub/firefox/releases/111.0b6/linux-x86_64/en-US/firefox-111.0b6.tar.bz2
 	source = firefox-beta.sh
 	source = firefox-beta-bin.desktop
 	sha256sums = 1b8650ac822e3176ef2f47e32a6deca53bb53193289dc1b63562831fad2e70a6
