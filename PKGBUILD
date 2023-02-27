@@ -9,7 +9,7 @@ pkgbase=linux-aarch64-lts
 _srcname=linux-6.1
 _kernelname=${pkgbase#linux}
 _desc='AArch64 multi-platform LTS'
-pkgver=6.1.13
+pkgver=6.1.14
 pkgrel=1
 arch=('aarch64')
 url='https://www.kernel.org'
@@ -27,10 +27,10 @@ source=(
     'config' 'linux.preset' '60-linux.hook' '90-linux.hook'
 )
 sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
-            '5ae5551eb50a9392f02ec5cc0c7f07fe7d98f9e80bc930a4904eb47b6c0217ec'
+            '197b3e0b38972ea403d857c5aaa6cb202677c8be484f8808812849b6721a01c5'
             '013ab7f5bcf2cd486e819fb13fde1f673ac72978984a8befea13938eaf8ddd8e'
             'bcb8a42654df5f9670367950daaa01b165c15618f827d18b7b2a8d53d39227a4'
-            '13ed3b8cc6327d5a4b785f2d3de7f491f3081947abc7ac5924265bb27de8a83a'
+            '400086410206247f67e7f69fe357ed3d64cf80230a4f7c0c7e13673363a8759c'
             '6837b3e2152f142f3fff595c6cbd03423f6e7b8d525aac8ae3eb3b58392bd255'
             '452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c'
             '71df1b18a3885b151a3b9d926a91936da2acc90d5e27f1ad326745779cd3759d')
