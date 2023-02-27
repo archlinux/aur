@@ -16,6 +16,27 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## 📚 Documentation -->
 
+# [0.12.2] - 2023-02-23
+
+## 🚀 Features
+
+- **Warn when `federation_version` is not pinned - @EverlastingBugstopper, #1524**
+
+  As of this release, we no longer recommend auto-updates for the `rover supergraph compose` command because of the coordination path that is required to roll out new versions of Federation. If you do not specify an exact `federation_version`, a warning will be printed. In a future version of Rover we will entirely deprecate auto-updating, so please migrate now. This change includes some changes to our documentation as well, check out [the docs](https://www.apollographql.com/docs/rover/commands/supergraphs/#setting-a-composition-version) for more information.
+
+## 🐛 Fixes
+
+- **Fixes composition error reporting in `rover subgraph check` - @EverlastingBugstopper, #1525**
+
+  In Rover v0.12.0 and v0.12.1, running a `rover subgraph check` with an invalid schema failed to report the composition errors, this behavior is fixed in v0.12.2.
+
+## 🛠 Maintenance
+
+- **Updates internal node dependencies - @EverlastingBugstoppe**
+
+  `node` v18.14.0 -> v18.14.1
+  `npm` v9.4.2 -> v9.5.0
+
 # [0.12.1] - 2023-02-17
 
 ## 🐛 Fixes

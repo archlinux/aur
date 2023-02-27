@@ -1,7 +1,8 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=apollo-rover
-pkgver=0.12.1
+_pkg=rover
+pkgver=0.12.2
 pkgrel=1
 pkgdesc="CLI for Apollo's suite of GraphQL developer productivity tools"
 arch=('x86_64')
@@ -14,10 +15,10 @@ options=('!lto')
 install=rover.install
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f2cbfbc80360903d734ee9f8e513465ee91d08cb4671924521978bd20138e10c')
+sha256sums=('bbb04e68a8772f46daae1b19840640026f1ba8d7202557b15a90b10259ec3090')
 
 prepare() {
-	cd "rover-$pkgver"
+	cd "$_pkg-$pkgver"
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -25,19 +26,19 @@ build() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 
-	cd "rover-$pkgver"
+	cd "$_pkg-$pkgver"
 	cargo build --frozen --release --all-features
 }
 
 check() {
 	export RUSTUP_TOOLCHAIN=stable
-	cd "rover-$pkgver"
+	cd "$_pkg-$pkgver"
 	cargo test --frozen --all-features
 }
 
 package() {
-	cd "rover-$pkgver"
-	install -Dv "target/release/rover" -t "$pkgdir/usr/bin/"
+	cd "$_pkg-$pkgver"
+	install -Dv "target/release/$_pkg" -t "$pkgdir/usr/bin/"
 	install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
