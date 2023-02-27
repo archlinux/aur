@@ -1,0 +1,11 @@
+pkgbase = ippsample-git
+	pkgdesc = Sample, non-production-ready implementations of IPP Clients, Printers, Proxies, and System
+	pkgver = r1172.52ca490
+	pkgrel = 1
+	url = https://istopwg.github.io/ippsample/
+	arch = any
+	license = Apache 2
+	source = git+https://github.com/istopwg/ippsample
+	sha512sums = SKIP
+
+pkgname = ippsample-git
