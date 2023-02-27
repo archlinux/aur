@@ -2,7 +2,7 @@
 
 pkgname=game-rs-git
 _realname=game-rs
-pkgver=0.1.0
+pkgver=r31.b20ca17
 pkgrel=1
 pkgdesc="A minimal (CLI) game launcher for Linux written in rust."
 arch=("any")
@@ -14,12 +14,10 @@ conflicts=("game-rs")
 source=(git+https://github.com/amanse/game-rs)
 sha256sums=('SKIP')
 
-# I will update the pkgver as soon as the developer adds a tag to the release.
-
-#pkgver() {
-#  cd "$srcdir/$_realname"
-#  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-#}
+pkgver() {
+  cd "$_realname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
 
 build() {
    cd "$srcdir/$_realname"
