@@ -1,0 +1,13 @@
+pkgbase = zfxtop
+	pkgdesc = fetch top for gen Z with X written by bubbletea enjoyer
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/ssleert/zfxtop
+	arch = x86_64
+	license = BSD2
+	makedepends = go>=1.18
+	options = !lto
+	source = zfxtop-0.2.1.tar.gz::https://github.com/ssleert/zfxtop/archive/refs/tags/0.2.1.tar.gz
+	sha256sums = 146eb2e4924da1a48ff7301b62717815541fa107676a52a0095d25320f4a62c4
+
+pkgname = zfxtop
