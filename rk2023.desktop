@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Exec=/usr/bin/rk2023
+Name=Parliamentary elections 2023
+Comment=Internet Voting Application
+Icon=/usr/share/icons/hicolor/512x512/apps/rk2023.png

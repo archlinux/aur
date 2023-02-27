@@ -1,0 +1,15 @@
+pkgbase = rk2023-bin
+	pkgdesc = Estonian Parliamentary elections 2023 Internet Voting application
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.valimised.ee/en
+	arch = x86_64
+	license = custom
+	source = https://www.valimised.ee/valijarakendus/RK_2023_linux.bin
+	source = rk2023.png
+	source = rk2023.desktop
+	sha256sums = ff5b2ff785725ba60308562031ec5270a41846c4e92d7bbd2a3cdad2a2800215
+	sha256sums = 034c7c8c15a9dbdbef70a26c78b0daac06dc59feee25b17aff47a00cd5e36fd3
+	sha256sums = d3fa00b7411bd4a6e90f46cd5a40306779a437a1825a9406ac2bb458ab20e54b
+
+pkgname = rk2023-bin
