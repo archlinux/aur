@@ -20,6 +20,10 @@ pkgver() {
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+	sed -i "s#dotnet {{PREFIX}}#dotnet /usr#;s#set-value='{{PREFIX}}#set-value='/usr#" nickvisionmoney/NickvisionMoney.GNOME/justfile
+}
+
 package() {
 	just nickvisionmoney/NickvisionMoney.GNOME/ publish "$pkgdir"/usr
 }
