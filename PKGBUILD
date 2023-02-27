@@ -9,13 +9,13 @@ pkgdesc="CEF python bindings (with bundled spotify-built CEF)"
 arch=('x86_64')
 url='https://github.com/cztomczak/cefpython'
 depends=('python' 'nss' 'libgl' 'libxtst' 'alsa-lib' 'gtk2' 'libxss')
-makedepends=('python-docopt' 'python-setuptools' 'python-wheel' 'cython')
+makedepends=('python-docopt' 'python-setuptools' 'python-wheel' 'cython' 'git')
 license=('BSD')
 _cefstring="cef66_3.3359.1774.gd49d25f_linux64"
 source=("git+https://github.com/cztomczak/cefpython.git#commit=5679f28cec18a57a56e298da2927aac8d8f83ad6"
-        "https://github.com/cztomczak/cefpython/pull/640.patch"
+        "${pkgname}-640.patch::https://github.com/cztomczak/cefpython/pull/640.patch"
         "https://github.com/cztomczak/cefpython/releases/download/v${_vermajor}-upstream/${_cefstring}.zip"
-        'fix-build.patch')
+        "${pkgname}-fix-build.patch")
 sha256sums=('SKIP'
             'ad9a68087018797697e3ca0c8e20a164036c0b4e73d845e3d6e93396423d5333'
             'a9ec9a72cc84f290cb985bbf06b9825312b7f84cb3e1ca3f4dcfeeeef338d84b'
@@ -31,8 +31,8 @@ pkgver() {
 
 prepare() {
 	cd "${_dir}"
-	patch -p1 -i '../640.patch'
-	patch -p1 -i '../fix-build.patch'
+	patch -p1 -i "../${pkgname}-640.patch"
+	patch -p1 -i "../${pkgname}-fix-build.patch"
 
 	sed -i 's/command = sudo_command/#command = sudo_command/' 'tools/build.py'
 
