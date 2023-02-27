@@ -11,12 +11,9 @@ arch=('any')
 license=('MIT')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake' 'mingw-w64-gcc')
-source=(
-	"https://github.com/jbeder/${_pkgname}/archive/${_pkgname}-${pkgver}.tar.gz"
-	"https://github.com/jbeder/${_pkgname}/pull/1055.patch")
+source=("https://github.com/jbeder/${_pkgname}/archive/${_pkgname}-${pkgver}.tar.gz")
 options=(staticlibs !strip !buildflags)
-sha384sums=('5ab7a67ba57b9ee189ee4f9c5822ca834ef246740b43490a060a6b329860f494b6b8f3433bfeaf646e492336b2956e4e'
-            'f9b268cc42ef92659b0562506265af966272b31232097108d72cf65f89650b6fd36699af504fdff2a12ada9c6fa948ee')
+sha384sums=('5ab7a67ba57b9ee189ee4f9c5822ca834ef246740b43490a060a6b329860f494b6b8f3433bfeaf646e492336b2956e4e')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release
@@ -28,7 +25,9 @@ prepare() {
 	cd "${_srcdir}"
 	
 	# Fix pkgconfig and cmake files install location.
-	patch -p1 -i '../1055.patch'
+	sed -i 's|INSTALL_DESTINATION "${CMAKE_INSTALL_DATADIR}/cmake/yaml-cpp"|INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/yaml-cpp"|' 'CMakeLists.txt'
+	sed -i 's|DESTINATION "${CMAKE_INSTALL_DATADIR}/cmake/yaml-cpp"|DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/yaml-cpp"|' 'CMakeLists.txt'
+	sed -i 's|${CMAKE_INSTALL_DATADIR}/pkgconfig)|${CMAKE_INSTALL_LIBDIR}/pkgconfig)|' 'CMakeLists.txt'
 	
 	#sed -i 's/add_test(yaml-cpp::test yaml-cpp-tests)/add_test(NAME yaml-cpp::test COMMAND yaml-cpp-tests)/' 'test/CMakeLists.txt'
 	#sed -i 's/build-windows-dll/OFF/' 'test/CMakeLists.txt'
