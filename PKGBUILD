@@ -2,7 +2,7 @@
 
 pkgname=cling
 pkgver=0.9
-pkgrel=3
+pkgrel=4
 pkgdesc="Interactive C++ interpreter, built on the top of LLVM and Clang libraries"
 arch=("i686" "x86_64")
 url="https://root.cern.ch/cling"
@@ -10,14 +10,16 @@ license=("custom:Cling Release License")
 provides=("cling")
 conflicts=("cling")
 depends=("libxml2")
-makedepends=("git" "cmake" "python2")
+makedepends=("git" "cmake" "ninja" "python")
 optdepends=(
-    "python2: support for scan-view and Jupyter"
     "perl: support for scan-build, ccc-analyzer and c++-analyzer"
+    "python: support for scan-view and Jupyter"
+    "python-pygments: support for opt-viewer"
+    "python-yaml: support for opt-viewer"
 )
 source=(
-    "llvm::git+http://root.cern/git/llvm.git#branch=cling-patches"
-    "clang::git+http://root.cern/git/clang.git#branch=cling-patches"
+    "llvm::git+http://root.cern/git/llvm.git#tag=cling-v$pkgver"
+    "clang::git+http://root.cern/git/clang.git#tag=cling-v$pkgver"
     "cling::git+http://root.cern/git/cling.git#tag=v$pkgver"
 )
 sha256sums=(
@@ -46,6 +48,7 @@ build() {
     cd "$srcdir/build"
 
     cmake \
+        -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX="/opt/cling" \
         -DLLVM_TARGETS_TO_BUILD="host;NVPTX" \
@@ -59,14 +62,14 @@ build() {
         -DFFI_INCLUDE_DIR=$(pkg-config --cflags-only-I libffi | cut -c3-) \
         "$srcdir/llvm"
 
-    make -C tools/clang
-    make -C tools/cling
+    ninja clang
+    ninja cling
 }
 
 package() {
     cd "$srcdir/build"
 
-    make DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" ninja install
 
     install -d "$pkgdir/usr/bin"
     ln -s "/opt/cling/bin/cling" "$pkgdir/usr/bin/cling"
