@@ -1,8 +1,8 @@
 # Maintainer: Sven Friedrich (sven At autumnal Dot de) 
 pkgname=rosenpass-git
 _pkgname=rosenpass
-pkgver=26e1d5
-pkgrel=1
+pkgver=0.1.1
+pkgrel=2
 pkgdesc="formally verified and post-quantum secure VPN over WireGuard"
 url="https://rosenpass.eu"
 _git="https://github.com/rosenpass/${_pkgname}.git"
@@ -20,8 +20,7 @@ _script=rp
 
 pkgver() {
     cd "${_pkgname}"
-    # git describe --tags | sed 's/-/./g'
-    git rev-parse HEAD | sed 's/.*\(......\)/\1/'
+    cargo pkgid rosenpass | grep -oE "[^#]+$"
 }
 
 prepare() {
