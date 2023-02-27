@@ -1,6 +1,6 @@
 pkgbase = nwjs-sdk-bin
 	pkgdesc = node-webkit is an app runtime based on Chromium and node.js. SDK release with DevTools
-	pkgver = 0.72.0
+	pkgver = 0.73.0
 	pkgrel = 1
 	url = https://nwjs.io/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = nwjs-sdk-bin
 	optdepends = nw-gyp: native add-on build tool for node-webkit
 	provides = nwjs-sdk
 	conflicts = nwjs-sdk
-	source = nwjs-sdk-bin-0.72.0.tar.gz::http://dl.nwjs.io/v0.72.0/nwjs-sdk-v0.72.0-linux-x64.tar.gz
-	sha512sums = be1de450197f5d6482cbb170d8a4d979c7a4242935469d9885b37c061288fb15fd7fe2c6723a87632547810ed8f3b3ccdbe4343edae88b9d82b2b62f929af923
+	source = nwjs-sdk-bin-0.73.0.tar.gz::http://dl.nwjs.io/v0.73.0/nwjs-sdk-v0.73.0-linux-x64.tar.gz
+	sha512sums = 9fb65588fed67806e87076747f389997a3d669c8e17c08a4a98a81c3a9f70e98c4b09bfaad0a7df6e01506c2561063eca9adfd798b34a15f8b71d5ec0afa5035
 
 pkgname = nwjs-sdk-bin
