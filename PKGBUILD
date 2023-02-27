@@ -1,8 +1,7 @@
 # Contributor: taotieren <admin@taotieren.com>
 
 pkgname=fantascene-dynamic-wallpaper
-srcname=fantascene-dynamic-wallpaper
-pkgver=1.3.3
+pkgver=1.3.7
 pkgrel=1
 pkgdesc="dynamic wallpaper. A very nice animated wallpaper on X11 systems.Support Movie and Web animated wallpaper."
 arch=('x86_64')
@@ -10,26 +9,23 @@ url="https://github.com/dependon/fantascene-dynamic-wallpaper"
 license=('GPLv3')
 provides=(${pkgname})
 conflicts=(${pkgname} ${pkgname}-git)
-#replaces=(${pkgname})
-depends=( 'emby-theater' 'libgl' 'glib2' 'glibc' 'gcc' 'mpv' 'ffmpeg' 'fakeroot' 'libxrender' 'libx11' 'libxext' 'libxrender' 'qt5-tools' 'qt5-base' 'qt5-declarative' 'qt5-location' 'qt5-x11extras' 'qt5-webengine' 'xcb-util-wm' )
-makedepends=('git' 'qconf' 'pkgconfig' 'make')
-backup=()
-options=('!strip')
-#install=${pkgname}.install
-source=("${srcname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('SKIP')
+depends=(mpv
+         qt5-tools
+         qt5-x11extras
+         qt5-webengine)
+makedepends=(qconf
+            pkgconfig
+            make)
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz" )
+sha256sums=('be135ad4af9358172dfaac544aded6d049d3a9cd436c25e3559fb12b3e4006d7')
 
 build() {
-    cd "${srcdir}/${srcname}-${pkgver}"
-#     qmake ./${pkgname}.pro -spec linux-g++ CONFIG+=qtquickcompiler -o build/
-#     make -C ./build
-    qmake ./${pkgname}.pro -spec linux-g++ CONFIG+=qtquickcompiler
-    make
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    qmake ./${pkgname}.pro -spec linux-g++ CONFIG+=qtquickcompiler -o build/
+    make -C ./build
 }
 
 package() {
-    cd "${srcdir}/${srcname}-${pkgver}"
-    make INSTALL_ROOT="$pkgdir" install
-#     install -Dm0755 "${srcdir}/${pkgname}-${pkgver}/build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-#     install -Dm0644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    make INSTALL_ROOT="$pkgdir"  -C ./build install
 }
