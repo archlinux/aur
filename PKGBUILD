@@ -16,7 +16,7 @@ depends=(
 )
 makedepends=('python-setuptools' 'git')
 source=(
-    "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+    "$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
     kde-statusicon.patch
 )
 sha256sums=(
