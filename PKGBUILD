@@ -2,8 +2,8 @@
 
 _pkgname=camelot
 pkgname=python-camelot
-pkgver=0.10.1
-pkgrel=4
+pkgver=0.11.0
+pkgrel=1
 pkgdesc='A Python library to extract tabular data from PDFs'
 arch=('any')
 url='https://github.com/camelot-dev/camelot'
@@ -27,16 +27,8 @@ depends=(
 makedepends=(
   python-setuptools
 )
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/camelot-dev/camelot/archive/v${pkgver}.tar.gz"
-  "0001.fix-pypdf-version.patch::https://github.com/camelot-dev/camelot/pull/307.patch"
-)
-sha512sums=('aeb1446021caccb0aa302d68d8ec17e0598debc29f0521d910c9a14c140a526d14ad8c749bac4fec4e366d8aeced2e9bc36aae1694f172ecbfeca351d97e848d'
-            '7f65d245bf54581cd9a8774780bc2f5af4126399e1f9db443d6f2f110ca3d15d8532bbd10d07b3001f2cf617d2951ff0d50491ffc1dc2b75766a5ffd8cf20bd7')
-
-prepare() {
-  cd "${_pkgname}-${pkgver}"
-  patch -p1 -i "${srcdir}/0001.fix-pypdf-version.patch"
-}
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/camelot-dev/camelot/archive/v${pkgver}.tar.gz")
+sha512sums=('5b34a915979a9b5661a5254e6d0be2198d35530b9bc012b880391f27c0b443e5a9ab68723c2583f66873ffb6ff36a78ac953dedb394d08f08765c72aa95c7054')
 
 build() {
   cd "${_pkgname}-${pkgver}"
