@@ -1,0 +1,11 @@
+pkgbase = kepubify-bin-git
+	pkgdesc = Convert your ePubs into kepubs, with a easy-to-use command-line tool.
+	pkgver = v4.0.4
+	pkgrel = 1
+	url = https://github.com/pgaskin/kepubify
+	arch = any
+	license = MIT
+	source = https://github.com/pgaskin/kepubify/releases/download/v4.0.4/kepubify-linux-arm64
+	md5sums = SKIP
+
+pkgname = kepubify-bin-git
