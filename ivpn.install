@@ -39,13 +39,13 @@ try_systemd_stop() {
 }
 
 erase_leftovers() {
-  local _IVPN_TMP="/opt/ivpn/mutable"
-  local _IVPN_LOG="/opt/ivpn/log"
+  local _IVPN_TMP="/etc/opt/ivpn"
+  local _IVPN_LOG="/var/log/ivpn"
   local _IVPN_DIR="/opt/ivpn"
 
   # Normally, all files which were installed, deleted automatically
   # But ivpn-service also writing to 'mutable' additional temporary files (uninstaller know nothing about them)
-  # Therefore, we are completely removing all content of '/opt/ivpn/mutable' and '/opt/ivpn/log'
+  # Therefore, we are completely removing all content of '/etc/opt/ivpn' and '/var/log/ivpn'
 
   echo "[+] Removing leftovers ..."
   if [ -d $_IVPN_TMP ] ; then
@@ -53,15 +53,6 @@ erase_leftovers() {
   fi
   if [ -d $_IVPN_LOG ] ; then
     rm -rf $_IVPN_LOG|| echo "[-] Removing '$_IVPN_LOG' folder failed"
-  fi
-
-  # Obtaining information about user running the script
-  # (script can be executed with 'sudo', but we should get real user)
-  USER="${SUDO_USER:-$USER}" # TODO: this returns empty line when uninstalling from GUI ('Add/Remove Software')
-  CLI_CONFIG_DIR="/home/${USER}/.ivpn"
-  if [ ! -z $USER ] && [ -d $CLI_CONFIG_DIR ] ; then
-    echo "[+] Removing CLI config folder '${CLI_CONFIG_DIR}'..."
-    rm -rf $CLI_CONFIG_DIR || echo "[-] Removing '$CLI_CONFIG_DIR' folder failed"
   fi
 
   #remove 'ivpn' folder (if empy)

@@ -2,8 +2,8 @@
 
 # PKGBUILD config
 pkgname="ivpn"
-pkgver=3.10.0
-pkgrel=2
+pkgver=3.10.14
+pkgrel=1
 pkgdesc="IVPN - Secure VPN for Privacy (CLI)"
 arch=('x86_64')
 url="https://www.ivpn.net"
@@ -12,16 +12,16 @@ depends=('glibc' 'lsof' 'wireless_tools' 'openvpn')
 makedepends=('curl' 'go>=1.18' 'git')
 install="ivpn.install"
 source=("ivpn-src-v${pkgver}.tar.gz::https://github.com/ivpn/desktop-app/archive/v${pkgver}.tar.gz")
-sha256sums=('b6ea295fe3ac3c237510d9eae0883a47ee82254a4f8bb03d4f8f49d464a95dfa')
+sha256sums=('3629d43aba0174bc44d4a433851cff7b182ceded4ca4b8cd6e378c248ca8866e')
 
 build() {
   echo "*** build daemon***"
   cd "$srcdir/desktop-app-${pkgver}/daemon"
-  IVPN_BUILD_CAN_SKIP_DOWNLOAD_SERVERS=true ./References/Linux/scripts/build-all.sh -v ${pkgver} -c "${pkgver}_stamped"
+  IVPN_BUILD_SKIP_GLIBC_VER_CHECK=true IVPN_BUILD_CAN_SKIP_DOWNLOAD_SERVERS=true ./References/Linux/scripts/build-all.sh -v ${pkgver} -c "${pkgver}_stamped"
 
   echo "*** build CLI ***"
   cd "$srcdir/desktop-app-${pkgver}/cli"
-  ./References/Linux/compile-cli.sh -v ${pkgver} -c "${pkgver}_stamped"
+  IVPN_BUILD_SKIP_GLIBC_VER_CHECK=true ./References/Linux/compile-cli.sh -v ${pkgver} -c "${pkgver}_stamped"
 
   # prepare '*.service' file for systemd
   cat > "$srcdir/ivpn-service.service" << EOF
