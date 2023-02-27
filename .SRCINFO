@@ -63,6 +63,7 @@ pkgbase = perl-dancer2
 	depends = perl-http-headers-fast>=0
 	depends = perl-safe>=0
 	depends = perl-config-any>=0
+	depends = perl-file-which
 	provides = perl-dancer2-cli=0.400000
 	provides = perl-dancer2-cli-command-gen=0.400000
 	provides = perl-dancer2-cli-command-version=0.400000
