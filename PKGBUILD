@@ -3,7 +3,7 @@
 pkgname=hd-idle-go
 _pkgname=hd-idle
 pkgver=1.20
-pkgrel=1
+pkgrel=2
 pkgdesc='Hard Disk Idle Spin-Down Utility - enhanced reimplementation of hd-idle'
 arch=('x86_64')
 url='https://github.com/adelolmo/hd-idle'
@@ -37,7 +37,7 @@ package() {
   cd "${_pkgname}-${pkgver}"
 
   install -Dm755 "build/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 hd-idle.8 "${pkgdir}/usr/share/man/man8/hd-idle.8"
+  install -Dm644 "debian/hd-idle.8" "${pkgdir}/usr/share/man/man8/hd-idle.8"
   install -Dm644 "debian/hd-idle.default" "${pkgdir}/etc/default/hd-idle"
   install -Dm644 "debian/hd-idle.logrotate" "${pkgdir}/etc/logrotate.d/hd-idle"
   install -Dm644 "debian/hd-idle.service" "${pkgdir}/usr/lib/systemd/system/hd-idle.service"
