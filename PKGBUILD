@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-sentry_sdk
 _name=sentry-sdk
-pkgver=1.15.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc="The new Python SDK for Sentry.io"
 arch=('any')
@@ -11,6 +11,7 @@ depends=('python-urllib3' 'python-certifi')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=('python-aiohttp: adds support for the AIOHTTP-Server Web Framework'
             'python-apache-beam: experimental BeamIntegration'
+            'python-arq: Arq integration'
             'python-bottle: adds support for the Bottle Web Framework'
             'python-celery: adds support for the Celery Task Queue System'
             'python-chalice: for the Chalice web framework for AWS Lambda'\
@@ -37,7 +38,7 @@ optdepends=('python-aiohttp: adds support for the AIOHTTP-Server Web Framework'
             'python-pure_eval: for richer stacktraces & additional variables'
             'python-executing: for richer stacktraces & better function names')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('69ecbb2e1ff4db02a06c4f20f6f69cb5dfe3ebfbc06d023e40d77cf78e9c37e7')
+sha256sums=('a900845bd78c263d49695d48ce78a4bce1030bbd917e0b6cc021fc000c901113')
 
 build() {
   cd "$_name-$pkgver"
