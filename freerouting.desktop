@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Icon=freerouting
+Type=Application
+Categories=Science;Electronics;
+Exec=/usr/bin/freerouting
+Name=Freerouting
+GenericName=Advanced PCB auto-router
+Comment=Advanced autorouter for all PCB programs that support the standard Specctra or Electra DSN interface
