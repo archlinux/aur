@@ -2,7 +2,7 @@
 # Contributor: xantares <xantares09@hotmail.com>
 pkgbase=cgal-swig-bindings
 pkgname=('python-cgal' 'java-cgal')
-pkgver=r765.2479e35
+pkgver=r909.f579deb
 pkgrel=1
 pkgdesc='CGAL bindings using SWIG '
 arch=('x86_64')

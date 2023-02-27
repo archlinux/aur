@@ -1,6 +1,6 @@
 pkgbase = cgal-swig-bindings
 	pkgdesc = CGAL bindings using SWIG
-	pkgver = r765.2479e35
+	pkgver = r909.f579deb
 	pkgrel = 1
 	url = https://github.com/CGAL/cgal-swig-bindings
 	arch = x86_64
