@@ -2,7 +2,7 @@
 
 _pkgname=cros-container-guest-tools
 pkgname=${_pkgname}-git
-pkgver=r334.d0714026
+pkgver=r394.bb2552b1
 pkgrel=1
 pkgdesc="Linux guest tools for the Crostini containers on ChromeOS"
 arch=('any')
@@ -12,7 +12,6 @@ makedepends=('git')
 install=cros-container-guest-tools.install
 url="https://chromium.googlesource.com/chromiumos/containers/cros-container-guest-tools"
 source=("git+${url}"
-        'cros-sftp-conditions.conf'
         'cros-garcon-conditions.conf'
         'cros-locale.sh'
         'cros-garcon.hook'
@@ -21,7 +20,6 @@ source=("git+${url}"
         'cros-resolved.conf'
         'mimeapps.list')
 sha1sums=('SKIP'
-          '0827ce6d673949a995be2d69d4974ddd9bdf16f1'
           'd326cd35dcf150f9f9c8c7d6336425ec08ad2433'
           '8586cf72dacdcca82022519467065f70fe4a3294'
           '9a68893cadf9190e99cadc4c781ba43e45104b1e'
@@ -73,6 +71,8 @@ package() {
 	install -m644 -D ${srcdir}/cros-garcon-conditions.conf ${pkgdir}/usr/lib/systemd/user/cros-garcon.service.d/cros-garcon-conditions.conf
 	install -m644 -D ${srcdir}/cros-garcon.hook ${pkgdir}/usr/share/libalpm/hooks/cros-garcon.hook
 	ln -sf ../cros-garcon.service ${pkgdir}/usr/lib/systemd/user/default.target.wants/cros-garcon.service
+	mkdir -p ${pkgdir}/usr/lib/openssh/
+	ln -s /usr/lib/ssh/sftp-server ${pkgdir}/usr/lib/openssh/
 
 	### cros-gpu-alpha -> not applicable
 	### cros-gpu-buster -> not applicable
@@ -94,13 +94,6 @@ package() {
 
 	install -m644 -D ${srcdir}/${_pkgname}/cros-pulse-config/daemon.conf ${pkgdir}/etc/skel/.config/pulse/daemon.conf
 	install -m644 -D ${srcdir}/${_pkgname}/cros-pulse-config/default.pa ${pkgdir}/etc/skel/.config/pulse/default.pa
-
-	### cros-sftp
-
-	install -m644 -D ${srcdir}/${_pkgname}/cros-sftp/cros-sftp.service ${pkgdir}/usr/lib/systemd/system/cros-sftp.service
-	ln -sf ../cros-sftp.service ${pkgdir}/usr/lib/systemd/system/multi-user.target.wants/cros-sftp.service
-	# add drop-in for cros-sftp to check if required ssh artifacts were bind-mounted before starting
-	install -m644 -D ${srcdir}/cros-sftp-conditions.conf ${pkgdir}/usr/lib/systemd/system/cros-sftp.service.d/cros-sftp-conditions.conf
 
 	### cros-sommelier
 
