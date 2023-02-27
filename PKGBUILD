@@ -1,52 +1,43 @@
-# Maintainer: Moritz Poldrack <moritz at poldrack dot dev>
+# Maintainer: éclairevoyant
+
 pkgname=yambar
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='Modular status panel for X11 and Wayland, inspired by polybar'
 arch=('x86_64')
-url='https://codeberg.org/dnkl/yambar'
+url="https://codeberg.org/dnkl/$pkgname"
 license=('MIT')
-depends=(
-	'alsa-lib'
-	'libxcb'
-	'xorgproto'
-	'libyaml'
-	'systemd'
-	'fontconfig'
-	wayland{,-protocols}
-	xcb-util{,-cursor,-errors,-wm}
-	'pixman'
-)
-optdepends=(
-	'libmpdclient: mpd module'
-)
-makedepends=(
-	'git'
-	'meson'
-	'scdoc'
-)
-provides=('yambar')
-source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/dnkl/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('51127d20613666b9924deb9afd92c48d69815c5043d2996b3f0f6e9705fcabc8')
+depends=(fcft libpulse libudev.so libxcb libyaml pipewire pixman
+         wayland wayland-protocols xcb-util xcb-util-cursor xcb-util-wm)
+optdepends=('alsa-lib: ALSA module'
+            'json-c: XKB module'
+            'libmpdclient: MPD module'
+            'xcb-util-errors: better X error messages')
+makedepends=(git meson scdoc tllist xorgproto)
+source=("git+$url.git?signed#commit=1353d635c211bf563c006a35c70c3e4d5db461a4")
+b2sums=('SKIP')
+validpgpkeys=('B19964FBBA09664CC81027ED5BBD4992C116573F') # Daniel Eklöf (Git signing) <daniel@ekloef.se>
 
 prepare() {
-	cd yambar
-
-	pushd subprojects
-	git clone https://codeberg.org/dnkl/tllist.git
-	git clone https://codeberg.org/dnkl/fcft.git
-	popd
-
-	mkdir -p bld/release && cd bld/release
-	meson --buildtype=release --prefix=${pkgdir}/usr/ ../..
+	mkdir build
 }
 
 build() {
-	cd "${srcdir}/yambar/bld/release"
+	cd build
+	meson ../$pkgname \
+		--buildtype=release \
+		--prefix=/usr \
+		--wrap-mode=nofallback \
+		-Db_lto=true \
+		-Dbackend-x11=enabled \
+		-Dbackend-wayland=enabled
 	ninja
 }
 
 package() {
-	cd "${srcdir}/yambar/bld/release"
-	ninja install
+	cd build
+	DESTDIR="$pkgdir/" ninja install
+
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s '/usr/share/doc/yambar/LICENSE' "$pkgdir/usr/share/licenses/$pkgname/"
 }
