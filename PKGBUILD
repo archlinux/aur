@@ -9,6 +9,9 @@ pkgdesc="Rust, Iced based desktop desktop environment, GNOME inspired, by System
 arch=('x86_64')
 url="https://github.com/pop-os/cosmic-epoch"
 license=('GPL3')
+# notes on dependencies: 
+# seatd is required for libseat, not for a running daemon for both building and running,
+# (https://github.com/pop-os/cosmic-epoch/issues/79, https://github.com/pop-os/cosmic-epoch/issues/61)
 depends=('fontconfig' 'gtk4' 'libinput' 'libpulse' 'libxkbcommon' 'mesa' 'pipewire'
          'pop-icon-theme' 'seatd' 'systemd-libs' 'wayland')
 makedepends=('cargo' 'clang' 'desktop-file-utils' 'git' 'just' 'meson' 'mold')
