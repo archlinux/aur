@@ -1,19 +1,20 @@
 pkgbase = pandoc-bin
 	pkgdesc = Pandoc - executable only, without 750MB Haskell depends/makedepends
-	pkgver = 3.0.1
+	pkgver = 3.1
 	pkgrel = 1
 	url = https://pandoc.org
 	arch = x86_64
 	arch = aarch64
-	license = GPLv2+
+	license = GPL2
 	optdepends = texlive-core: for pdf output
-	provides = pandoc=3.0.1
+	provides = pandoc=3.1
 	conflicts = pandoc
-	source = pandoc-bin-source-3.0.1.tar.gz::https://github.com/jgm/pandoc/archive/3.0.1.tar.gz
-	sha256sums = d8b45c3d8434c03db7cd6c571664a2a0a0ba906bfee3b8d82470103978ddc4ce
-	source_x86_64 = pandoc-bin-bin-3.0.1.tar.gz::https://github.com/jgm/pandoc/releases/download/3.0.1/pandoc-3.0.1-linux-amd64.tar.gz
-	sha256sums_x86_64 = b8b0051a3c27ab5802bb2a091c8dd5cdb6588ce7356a6d5c4e64fbf02225da04
-	source_aarch64 = pandoc-bin-bin-3.0.1.tar.gz::https://github.com/jgm/pandoc/releases/download/3.0.1/pandoc-3.0.1-linux-arm64.tar.gz
-	sha256sums_aarch64 = 4e3441ed831f63eb624ba4080a1fbdaa4697390d6494973d0c4f2e5ba109e573
+	conflicts = pandoc-cli
+	source = pandoc-bin-source-3.1.tar.gz::https://github.com/jgm/pandoc/archive/3.1.tar.gz
+	sha256sums = c83649ad51ce4479ed6791b1d8578b82312b01d6fba1bbb3294587fa3caf0879
+	source_x86_64 = pandoc-bin-bin-3.1.tar.gz::https://github.com/jgm/pandoc/releases/download/3.1/pandoc-3.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = 37de6be90055d9a7e1b4e3384cd7fc4c42e138a77f62ddeec12f362bfa3ee18e
+	source_aarch64 = pandoc-bin-bin-3.1.tar.gz::https://github.com/jgm/pandoc/releases/download/3.1/pandoc-3.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = 501d66de88c6e9d143e6631ded152ced7421bc32b6f16cadab18b2064916fe63
 
 pkgname = pandoc-bin
