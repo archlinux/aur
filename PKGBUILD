@@ -2,7 +2,7 @@
 # Maintainer: camb
 
 pkgname='perl-dancer2'
-pkgver=0.400000
+pkgver=0.400001
 pkgrel=1
 pkgdesc='Lightweight yet powerful web application framework'
 _dist='Dancer2'
@@ -15,9 +15,9 @@ makedepends=('perl-test-cpan-meta>=0')
 provides=("perl-dancer2-cli=${pkgver}" "perl-dancer2-cli-command-gen=${pkgver}" "perl-dancer2-cli-command-version=${pkgver}" "perl-dancer2-core=${pkgver}" "perl-dancer2-core-app=${pkgver}" "perl-dancer2-core-cookie=${pkgver}" "perl-dancer2-core-dsl=${pkgver}" "perl-dancer2-core-dispatcher=${pkgver}" "perl-dancer2-core-error=${pkgver}" "perl-dancer2-core-factory=${pkgver}" "perl-dancer2-core-http=${pkgver}" "perl-dancer2-core-hook=${pkgver}" "perl-dancer2-core-mime=${pkgver}" "perl-dancer2-core-request=${pkgver}" "perl-dancer2-core-request-upload=${pkgver}" "perl-dancer2-core-response=${pkgver}" "perl-dancer2-core-response-delayed=${pkgver}" "perl-dancer2-core-role-configreader=${pkgver}" "perl-dancer2-core-role-dsl=${pkgver}" "perl-dancer2-core-role-engine=${pkgver}" "perl-dancer2-core-role-handler=${pkgver}" "perl-dancer2-core-role-haslocation=${pkgver}" "perl-dancer2-core-role-headers=${pkgver}" "perl-dancer2-core-role-hookable=${pkgver}" "perl-dancer2-core-role-logger=${pkgver}" "perl-dancer2-core-role-response=${pkgver}" "perl-dancer2-core-role-serializer=${pkgver}" "perl-dancer2-core-role-sessionfactory=${pkgver}" "perl-dancer2-core-role-sessionfactory-file=${pkgver}" "perl-dancer2-core-role-standardresponses=${pkgver}" "perl-dancer2-core-role-template=${pkgver}" "perl-dancer2-core-route=${pkgver}" "perl-dancer2-core-runner=${pkgver}" "perl-dancer2-core-session=${pkgver}" "perl-dancer2-core-time=${pkgver}" "perl-dancer2-core-types=${pkgver}" "perl-dancer2-fileutils=${pkgver}" "perl-dancer2-handler-autopage=${pkgver}" "perl-dancer2-handler-file=${pkgver}" "perl-dancer2-logger-capture=${pkgver}" "perl-dancer2-logger-capture-trap=${pkgver}" "perl-dancer2-logger-console=${pkgver}" "perl-dancer2-logger-diag=${pkgver}" "perl-dancer2-logger-file=${pkgver}" "perl-dancer2-logger-note=${pkgver}" "perl-dancer2-logger-null=${pkgver}" "perl-dancer2-plugin=${pkgver}" "perl-dancer2-serializer-dumper=${pkgver}" "perl-dancer2-serializer-json=${pkgver}" "perl-dancer2-serializer-mutable=${pkgver}" "perl-dancer2-serializer-yaml=${pkgver}" "perl-dancer2-session-simple=${pkgver}" "perl-dancer2-session-yaml=${pkgver}" "perl-dancer2-template-implementation-forkedtiny=${pkgver}" "perl-dancer2-template-simple=${pkgver}" "perl-dancer2-template-templatetoolkit=${pkgver}" "perl-dancer2-template-tiny=${pkgver}" "perl-dancer2-test=${pkgver}")
 options=('!emptydirs' 'purge')
 source=("http://search.cpan.org/CPAN/authors/id/C/CR/CROMEDOME/${_dist}-${pkgver}.tar.gz")
-md5sums=('167512b19a4d3a4af045bbe5f164a18e')
-sha256sums=('e6cf7a5eed29261087d2ce6db631d28b4e870cb14f31c2dfa2f77c0163bc435c')
-sha512sums=('c65f2ed88e5936c6db65753342ccac7ecdc884ca566c6a6cdadfdb5c6d0c240beb18479c56ea76d4f3aedaf077007cda56e4c246dd973df5c548eb0773058553')
+md5sums=('28739dbe3a4fed12349385407bccc3ce')
+sha256sums=('9db575bc50413fc19399569ad2cfbc52fb49ed7115d03194a908d9989304b74c')
+sha512sums=('d27b4fe004bc21ee2a2c4d73638d158970f524370f453d3d8a23e2a2ccb1305d346f27085e015db87c985e6df22911d4add26c7627bf87208141181104dbfdf0')
 
 build() (
   cd "$srcdir/$_dist-$pkgver"
