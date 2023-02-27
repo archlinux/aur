@@ -1,0 +1,16 @@
+pkgbase = tango-test
+	pkgdesc = A famous TANGO server developed for testing.
+	pkgver = 3.6
+	pkgrel = 1
+	url = https://www.tango-controls.org/
+	arch = x86_64
+	groups = tango-controls
+	license = GPL3
+	makedepends = cmake
+	depends = tango-cpp
+	source = https://gitlab.com/tango-controls/TangoTest/-/archive/3.6/TangoTest-3.6.tar.gz
+	source = cmake_version.patch
+	sha256sums = 6bbaab43eed6c3d775931721b1fe84a70cd3d21661069ef767c25ac7f378f812
+	sha256sums = 078ec4aeeadf94eea13f5950de4b9475ee82518bf3241fc0ee6063e3d07943da
+
+pkgname = tango-test
