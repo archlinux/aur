@@ -15,7 +15,7 @@ sha512sums_x86_64=('cdac1728451021cefea94cf3278628de394a16cc08bee1289f06a5daf13f
 
 package () {
     cd $srcdir
-    tar -C $pkgdir/ -xvf data.tar.xz
+    tar -C $pkgdir/ -xvf data.tar.zst
     rm -rf $pkgdir/etc
     mkdir -p $pkgdir/usr/bin
     ln -sf /opt/WireframeSketcher/WireframeSketcher $pkgdir/usr/bin/${pkgname}
