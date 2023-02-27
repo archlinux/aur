@@ -1,5 +1,5 @@
 pkgbase = systemd-selinux
-	pkgver = 252.5
+	pkgver = 253
 	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
@@ -50,8 +50,8 @@ pkgbase = systemd-selinux
 	makedepends = gnutls
 	makedepends = libselinux
 	options = strip
-	source = git+https://github.com/systemd/systemd-stable#tag=b16ce4c7ab80665b65345ea030c51a5c758fe66b?signed
-	source = git+https://github.com/systemd/systemd#tag=v252?signed
+	source = git+https://github.com/systemd/systemd-stable#tag=eb0f8fc41511dda1f9e0d19e830cc8c6668a2628?signed
+	source = git+https://github.com/systemd/systemd#tag=v253?signed
 	source = 0001-Use-Arch-Linux-device-access-groups.patch
 	source = initcpio-hook-udev
 	source = initcpio-install-systemd
@@ -130,8 +130,6 @@ pkgname = systemd-selinux
 	depends = pcre2
 	depends = audit
 	depends = libaudit.so
-	depends = libp11-kit
-	depends = libp11-kit.so
 	depends = openssl
 	depends = libcrypto.so
 	depends = libssl.so
@@ -139,15 +137,17 @@ pkgname = systemd-selinux
 	optdepends = quota-tools: kernel-level quota management
 	optdepends = systemd-sysvcompat: symlink package to provide sysvinit binaries
 	optdepends = polkit: allow administration as unprivileged user
+	optdepends = python: Unified Kernel Image with ukify
 	optdepends = curl: systemd-journal-upload, machinectl pull-tar and pull-raw
 	optdepends = gnutls: systemd-journal-gatewayd and systemd-journal-remote
 	optdepends = libbpf: support BPF programs
 	optdepends = libfido2: unlocking LUKS2 volumes with FIDO2 token
+	optdepends = libp11-kit: support PKCS#11
 	optdepends = tpm2-tss: unlocking LUKS2 volumes with TPM2
 	provides = nss-myhostname
-	provides = systemd-tools=252.5
-	provides = udev=252.5
-	provides = systemd=252.5-1
+	provides = systemd-tools=253
+	provides = udev=253
+	provides = systemd=253-1
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -174,9 +174,9 @@ pkgname = systemd-libs-selinux
 	pkgdesc = systemd client libraries with SELinux support
 	license = LGPL2.1
 	depends = glibc
+	depends = gcc-libs
 	depends = libcap
 	depends = libgcrypt
-	depends = libp11-kit
 	depends = lz4
 	depends = xz
 	depends = zstd
@@ -185,7 +185,7 @@ pkgname = systemd-libs-selinux
 	provides = libsystemd.so
 	provides = libudev.so
 	provides = libsystemd-selinux
-	provides = systemd-libs=252.5-1
+	provides = systemd-libs=253-1
 	conflicts = libsystemd
 	conflicts = libsystemd-selinux
 	conflicts = systemd-libs
@@ -197,16 +197,16 @@ pkgname = systemd-resolvconf-selinux
 	depends = systemd-selinux
 	provides = openresolv
 	provides = resolvconf
-	provides = systemd-resolvconf=252.5-1
+	provides = systemd-resolvconf=253-1
 	conflicts = openresolv
-	conflicts = systemd-resolvconf=252.5-1
+	conflicts = systemd-resolvconf=253-1
 
 pkgname = systemd-sysvcompat-selinux
 	pkgdesc = sysvinit compat for systemd with SELinux support
 	license = GPL2
 	depends = systemd-selinux
-	provides = systemd-sysvcompat=252.5-1
-	provides = selinux-systemd-sysvcompat=252.5-1
+	provides = systemd-sysvcompat=253-1
+	provides = selinux-systemd-sysvcompat=253-1
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 	conflicts = selinux-systemd-sysvcompat

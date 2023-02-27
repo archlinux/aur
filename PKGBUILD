@@ -8,8 +8,8 @@
 
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'systemd-libs-selinux' 'systemd-resolvconf-selinux' 'systemd-sysvcompat-selinux')
-_tag='b16ce4c7ab80665b65345ea030c51a5c758fe66b' # git rev-parse v${_tag_name}
-_tag_name=252.5
+_tag='eb0f8fc41511dda1f9e0d19e830cc8c6668a2628' # git rev-parse v${_tag_name}
+_tag_name=253
 pkgver="${_tag_name/-/}"
 pkgrel=1
 arch=('x86_64' 'aarch64')
@@ -69,8 +69,6 @@ sha512sums=('SKIP'
             '825b9dd0167c072ba62cabe0677e7cd20f2b4b850328022540f122689d8b25315005fa98ce867cf6e7460b2b26df16b88bb3b5c9ebf721746dce4e2271af7b97')
 
 _backports=(
-  # rules: add missing line continuation
-  'de8409ac43f6e4596de4cecce8dbbb5f1f2a18b1'
 )
 
 _reverts=(
@@ -171,8 +169,8 @@ package_systemd-selinux() {
            'iptables' 'kbd' 'kmod' 'libkmod.so' 'hwdata' 'libcap' 'libcap.so'
            'libgcrypt' 'libxcrypt' 'libcrypt.so' 'systemd-libs-selinux' 'libidn2' 'lz4' 'pam-selinux'
            'libelf' 'libseccomp' 'libseccomp.so' 'util-linux-selinux' 'libblkid.so'
-           'libmount.so' 'xz' 'pcre2' 'audit' 'libaudit.so' 'libp11-kit'
-           'libp11-kit.so' 'openssl' 'libcrypto.so' 'libssl.so')
+           'libmount.so' 'xz' 'pcre2' 'audit' 'libaudit.so' 
+           'openssl' 'libcrypto.so' 'libssl.so')
   provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver"
             "${pkgname/-selinux}=${pkgver}-${pkgrel}")
   conflicts=('nss-myhostname' 'systemd-tools' 'udev'
@@ -181,10 +179,12 @@ package_systemd-selinux() {
               'quota-tools: kernel-level quota management'
               'systemd-sysvcompat: symlink package to provide sysvinit binaries'
               'polkit: allow administration as unprivileged user'
+              'python: Unified Kernel Image with ukify'
               'curl: systemd-journal-upload, machinectl pull-tar and pull-raw'
               'gnutls: systemd-journal-gatewayd and systemd-journal-remote'
               'libbpf: support BPF programs'
               'libfido2: unlocking LUKS2 volumes with FIDO2 token'
+              'libp11-kit: support PKCS#11'
               'tpm2-tss: unlocking LUKS2 volumes with TPM2')
   backup=(etc/pam.d/systemd-user
           etc/systemd/coredump.conf
@@ -258,7 +258,7 @@ package_systemd-selinux() {
 
 package_systemd-libs-selinux() {
   pkgdesc='systemd client libraries with SELinux support'
-  depends=('glibc' 'libcap' 'libgcrypt' 'libp11-kit' 'lz4' 'xz' 'zstd' 'libselinux')
+  depends=('glibc' 'gcc-libs' 'libcap' 'libgcrypt' 'lz4' 'xz' 'zstd' 'libselinux')
   license=('LGPL2.1')
   provides=('libsystemd' 'libsystemd.so' 'libudev.so'
             'libsystemd-selinux'
