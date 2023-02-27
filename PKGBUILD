@@ -1,16 +1,16 @@
 # Maintainer: Kevin MacMartin <prurigro@gmail.com>
 
 pkgname=thumbdrives
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.3.2
+pkgrel=1
 pkgdesc='Thumbdrive and ISO emulator for phones'
 url='https://git.sr.ht/~martijnbraam/thumbdrives'
 license=('MIT')
 arch=('any')
-depends=('dconf' 'hicolor-icon-theme' 'python-xdg' 'python-gobject' 'libhandy0')
+depends=('python-xdg' 'python-gobject' 'libhandy0' 'libblockdev' 'libibus' 'gst-editing-services' 'xapp' 'libgexiv2' 'gom')
 makedepends=('meson')
 source=("https://git.sr.ht/~martijnbraam/thumbdrives/archive/$pkgver.tar.gz")
-sha512sums=('3d4d901975ef1f3ccda6df9a371944702f28ba4590ab9b3758f53b2f38bd5aa666660d720428836f99c6a7adb6333399e3991c6a641273f72fa9c4e0ec2362b2')
+sha512sums=('1594a303e375ca489fbe671e6917013c6d32239d8dfe325616ba94da81ca95cbe82fe0cb719f91a0f78e1b18d59713048899442749ead0a0cdd29508a0bea1d6')
 
 build() {
   cd $pkgname-$pkgver
