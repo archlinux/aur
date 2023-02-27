@@ -1,28 +1,25 @@
 # Maintainer: Radioactiveman <thomas-lange2@gmx.de>
-# Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: David Runge <dvzrv@archlinux.org>
+# Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: Lauri Niskanen <ape@ape3000.com>
 # Contributor: Sebastian.Salich@gmx.de
 # Contributor: Doc Angelo
 
 _pkgname=mumble
 pkgname="$_pkgname-git"
-pkgver=1.4.0.development.snapshot.006.r605.g74faaba32
+pkgver=1.4.0.development.snapshot.006.r1070.gc08801808
 pkgrel=1
 epoch=1
 pkgdesc='An Open Source, low-latency, high quality voice chat software (git version)'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://www.mumble.info'
 license=('BSD')
-depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'libspeechd' 'libx11'
-         'libxi' 'openssl' 'opus' 'poco' 'rnnoise' 'qt5-base' 'qt5-svg'
-         'speex' 'xdg-utils')
-makedepends=('alsa-lib' 'avahi' 'boost' 'cmake' 'git' 'jack' 'lib32-gcc-libs'
-             'libpulse' 'libsndfile' 'mesa' 'microsoft-gsl' 'nlohmann-json'
-             'pipewire' 'protobuf' 'python' 'qt5-tools' 'speech-dispatcher')
-optdepends=('speech-dispatcher: Text-to-Speech support'
-            'espeak-ng: Text-to-Speech support'
-            'pipewire: PipeWire audio support')
+depends=('gcc-libs' 'glibc' 'qt5-base')
+makedepends=('alsa-lib' 'avahi' 'boost' 'cmake' 'git' 'hicolor-icon-theme'
+             'jack' 'lib32-gcc-libs' 'libpulse' 'libsndfile' 'libspeechd'
+             'libx11' 'libxi' 'mesa' 'microsoft-gsl' 'nlohmann-json' 'openssl'
+             'opus' 'poco' 'protobuf' 'python' 'qt5-svg' 'qt5-tools' 'rnnoise'
+             'speech-dispatcher' 'speexdsp' 'xdg-utils')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=('git+https://github.com/mumble-voip/mumble.git'
@@ -58,30 +55,52 @@ prepare() {
 }
 
 build() {
-  cd "$_pkgname"
-
   cmake \
-    -B build \
+    -B build-client \
+    -S "$_pkgname" \
     -DCMAKE_BUILD_TYPE='None' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -Dwarnings-as-errors='OFF' \
     -Dclient='ON' \
     -Dserver='OFF' \
-    -Dbundled-celt='ON' \
     -Dbundled-gsl='OFF' \
     -Dbundled-json='OFF' \
-    -Dbundled-opus='OFF' \
     -Dbundled-rnnoise='OFF' \
     -Dbundled-speex='OFF' \
     -Dupdate='OFF' \
     -Wno-dev
-  make -C build
+
+  cmake --build build-client
 }
 
 package() {
-  depends+=('libasound.so' 'libdns_sd.so' 'libjack.so' 'libprotobuf.so'
-            'libpulse.so' 'libsndfile.so')
-  cd "$_pkgname"
-  make -C build DESTDIR="$pkgdir" install
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
+  # NOTE: jack, libpulse, and pipewire are dlopen'ed
+  depends+=(
+    'alsa-lib' 'libasound.so'
+    'avahi' 'libdns_sd.so'
+    'hicolor-icon-theme'
+    'jack'
+    'protobuf' 'libprotobuf.so'
+    'libpulse'
+    'libsndfile' 'libsndfile.so'
+    'libspeechd'
+    'libx11'
+    'libxi'
+    'openssl' 'libcrypto.so' 'libssl.so'
+    'opus' 'libopus.so'
+    'poco'
+    'qt5-svg'
+    'rnnoise'
+    'speexdsp' 'libspeexdsp.so'
+    'xdg-utils'
+  )
+  optdepends=(
+    'lib32-glibc: For mumble-overlay'
+    'espeak-ng: Text-to-speech support'
+    'speech-dispatcher: Text-to-speech support'
+    'pipewire: PipeWire audio support'
+  )
+
+  DESTDIR="$pkgdir" cmake --install build-client
+  install -Dm 644 "$_pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$_pkgname/"
 }
