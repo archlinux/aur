@@ -1,0 +1,15 @@
+pkgbase = sync-current-directory-git
+	pkgdesc = Sync current directory between your shell and a file manager
+	pkgver = r52.9b243ff
+	pkgrel = 1
+	url = https://github.com/cshuaimin/scd
+	arch = any
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = fish
+	provides = scd
+	source = git+https://github.com/cshuaimin/scd.git
+	sha256sums = SKIP
+
+pkgname = sync-current-directory-git
