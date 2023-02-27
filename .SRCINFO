@@ -1,14 +1,14 @@
 pkgbase = nodejs-lhci-cli
 	pkgdesc = The Lighthouse CI CLI
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/GoogleChrome/lighthouse-ci
 	arch = any
 	license = Apache
 	makedepends = npm
 	depends = nodejs
-	noextract = cli-0.10.0.tgz
-	source = https://registry.npmjs.org/@lhci/cli/-/cli-0.10.0.tgz
-	sha256sums = ce20112346a28ff328243a454b0147bb606d72b516351476233d9681e66daa3a
+	noextract = cli-0.11.0.tgz
+	source = https://registry.npmjs.org/@lhci/cli/-/cli-0.11.0.tgz
+	sha256sums = 9a54be58586b67fec4c6d05bbd58389e6d56c96ddd973939ceedf1fab3fd2813
 
 pkgname = nodejs-lhci-cli
