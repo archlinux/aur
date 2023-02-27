@@ -13,7 +13,7 @@ pkgbase = mingw-w64-assimp
 	options = !buildflags
 	options = staticlibs
 	options = !lto
-	source = https://github.com/assimp/assimp/archive/v5.2.5.tar.gz
+	source = assimp-5.2.5.tar.gz::https://github.com/assimp/assimp/archive/v5.2.5.tar.gz
 	sha256sums = b5219e63ae31d895d60d98001ee5bb809fb2c7b2de1e7f78ceeb600063641e1a
 
 pkgname = mingw-w64-assimp
