@@ -1,0 +1,15 @@
+[Unit]
+Description=Tango Starter device server
+
+[Service]
+# Replace with the host where the database runs, and ORBendPoint port (default is 10000)
+# Consider using explict IP to avoid DNS issues
+Environment="TANGO_HOST=localhost:10000"
+
+Restart=always
+RestartSec=10
+User=tango-sys
+ExecStart=/usr/bin/Starter %H
+
+[Install]
+WantedBy=multi-user.target
