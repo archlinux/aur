@@ -31,9 +31,8 @@ validpgpkeys=()
 
 package() {
 	cd "xnotes"
-	sudo mkdir -p /usr/bin/xnotes
-	sudo cp bin/linux/Xnotes /usr/bin/xnotes/Xnotes
-	sudo ln -s /usr/bin/xnotes/Xnotes /usr/bin/Xnotes
+	sudo cp -r bin/linux/Xnotes /usr/bin/.
+	sudo ln -s /usr/bin/Xnotes/Xnotes /usr/bin/Xnotes
 	sudo mkdir -p /usr/share/applications/Xnotes
 	sudo cp res/*.desktop /usr/share/applications/Xnotes/.
 	sudo cp -r img/ /usr/share/applications/Xnotes/.
