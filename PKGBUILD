@@ -2,7 +2,8 @@
 # Contributor: Ainola
 
 pkgname=imv-git
-pkgver=4.3.0.r18.g4448fb6
+_pkgname=imv
+pkgver=4.4.0.r0.g885e173
 pkgrel=1
 pkgdesc='imv is a command line image viewer intended for use with tiling window managers, with Wayland and X11 support.'
 url="https://git.sr.ht/~exec64/imv"
@@ -20,18 +21,18 @@ source=("git+https://git.sr.ht/~exec64/imv")
 sha1sums=('SKIP')
 
 pkgver() {
-    cd imv
+    cd "$_pkgname"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd $srcdir/imv
-    meson --prefix /usr --buildtype=plain . build
+    cd "$_pkgname"
+    meson setup --prefix /usr --buildtype=plain . build
     ninja -C build
 }
 
 package() {
-    cd $srcdir/imv
+    cd "$_pkgname"
     DESTDIR="$pkgdir" ninja -C build install
-    install -Dm644 $srcdir/imv/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
 }

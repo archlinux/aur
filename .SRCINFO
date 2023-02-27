@@ -1,6 +1,6 @@
 pkgbase = imv-git
 	pkgdesc = imv is a command line image viewer intended for use with tiling window managers, with Wayland and X11 support.
-	pkgver = 4.3.0.r18.g4448fb6
+	pkgver = 4.4.0.r0.g885e173
 	pkgrel = 1
 	url = https://git.sr.ht/~exec64/imv
 	arch = x86_64
