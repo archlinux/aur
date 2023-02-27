@@ -1,16 +1,16 @@
 pkgbase = gpx-animator
 	pkgdesc = Generate a top-down view map video from one or more GPX files
-	pkgver = 1.7.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/zdila/gpx-animator
 	arch = any
 	license = Apache
 	makedepends = gendesk
-	depends = java-runtime
-	noextract = gpx-animator-1.7.0.jar
-	source = gpx-animator-1.7.0.jar::https://download.gpx-animator.app/gpx-animator-1.7.0-all.jar
+	depends = java-runtime>=1
+	noextract = gpx-animator-1.8.0.jar
+	source = gpx-animator-1.8.0.jar::https://download.gpx-animator.app/gpx-animator-1.8.0-all.jar
 	source = gpx-animator.sh
-	md5sums = c54edd707a7d0d472b85ede6205382b8
-	md5sums = 10ed8bf9ddfed9ac083234849b777066
+	md5sums = 91741869de706e183670496b8cdad62c
+	md5sums = a9c1115c51482f9ea07f95c2e70359da
 
 pkgname = gpx-animator
