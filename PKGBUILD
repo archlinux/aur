@@ -2,14 +2,14 @@
 
 _pkgbase=pw-capture
 pkgname=lib32-${_pkgbase}-git
-pkgver=r20.2f40326
+pkgver=r24.96ff373
 pkgrel=1
 pkgdesc="Vulkan/OpenGL (game) capture for PipeWire"
 url="https://github.com/EHfive/${_pkgbase}"
 license=(MIT Apache)
 arch=(x86_64)
-makedepends=(git meson rust lib32-rust-libs clang lib32-libpipewire)
-depends=(libpipewire-0.3.so lib32-pipewire)
+makedepends=(git meson rust lib32-rust-libs clang lib32-libpipewire lib32-libffi)
+depends=(libpipewire-0.3.so lib32-pipewire libffi.so)
 provides=(lib32-pw-capture)
 optdepends=(
   'lib32-vulkan-icd-loader'
