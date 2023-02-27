@@ -2,17 +2,23 @@
 pkgname=logseq-desktop-bin
 _pkgname=logseq-desktop
 pkgver=0.8.17
-pkgrel=4
+pkgrel=5
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management."
 arch=("x86_64")
 url="https://github.com/logseq/logseq"
 license=('AGPL3')
 provides=("logseq-desktop")
 conflicts=("logseq-desktop-git" "logseq-desktop")
-source=("https://github.com/logseq/logseq/releases/download/${pkgver}/logseq-linux-x64-${pkgver}.zip"
-      "${_pkgname}.desktop")
+source=(
+    "https://github.com/logseq/logseq/releases/download/${pkgver}/logseq-linux-x64-${pkgver}.zip"
+    "${_pkgname}.desktop"
+    "${_pkgname}.install"
+    "${_pkgname}.sh"
+)
 sha256sums=('7a010b1267c62575aaf2154132fd1039de7ddd039c2cb5005c327d9e2c083803'
-            '7efeec2aa0ae3dd9037ab7dff56ebde6947d3e1d09c7e438af16a8c68552bff9')
+            'fb4a2e59859b96c157f4da410cc66d8b6fff6e80fbc004577c238bc7d0b43258'
+            'ad9bb5c0c7f9df5686201ed13c3f5566dcec65357bce33a7d143f160b59a9988'
+            '79749ee5011f229810343fb4a4eeb60de986d541617ead4242ccf0057b263a55')
 
 package() {
     cd "$srcdir/Logseq-linux-x64"
@@ -23,5 +29,6 @@ package() {
     install -d ${pkgdir}/opt/${pkgname}
     cp -r $srcdir/Logseq-linux-x64/* ${pkgdir}/opt/${pkgname}/
     install -d ${pkgdir}/usr/bin
-    ln -s /opt/${pkgname}/Logseq ${pkgdir}/usr/bin/logseq
+    # User flag aware launcher
+    install -m755 "${srcdir}/logseq-desktop.sh" "${pkgdir}/usr/bin/logseq"
 }
