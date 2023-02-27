@@ -19,8 +19,8 @@ sha512sums=('SKIP'
             'd3ec37fe33cb67b6d8c9f2f945715c125363659e1e853ef37999668662c2697c6e17fb1f04f91f7b085660b8b20fa58a3e64a0dc248a03d971d24deedc7178b0'
             '948680480f34a40f19e6b1c7da796f3161e99df0f2e11b3bdca3ec743d697b4a08fb5c5e03d8ce1ed2f3ec021a210a33b48a8c8a4df9183707f341d6220c13b3')
 
-source=('git+https://github.com/Zacharia2/SuperMemo18-ON-Wine.git' # wineprefix
-        'git+https://github.com/L-M-Sherlock/sm18-lazy-package.git' # software
+source=('git+https://github.com/Zacharia2/SuperMemo18-ON-Wine.git#commit=f9375d8c4e7cd90f9b21e91ffdacde2f166304af' # wineprefix
+        'git+https://github.com/L-M-Sherlock/sm18-lazy-package.git#commit=c5ab18d237e8411d70199a7093cd21a0fb2c3505' # software
         'https://github.com/Hackerl/Wine_Appimage/releases/download/v3.0/Wine-x86_64-ubuntu.latest.AppImage' # wine runtime
         'config.sh'
         'run.sh'

@@ -6,8 +6,8 @@ pkgbase = supermemo18.05-git
 	arch = x86_64
 	license = proprietary
 	options = !strip
-	source = git+https://github.com/Zacharia2/SuperMemo18-ON-Wine.git
-	source = git+https://github.com/L-M-Sherlock/sm18-lazy-package.git
+	source = git+https://github.com/Zacharia2/SuperMemo18-ON-Wine.git#commit=f9375d8c4e7cd90f9b21e91ffdacde2f166304af
+	source = git+https://github.com/L-M-Sherlock/sm18-lazy-package.git#commit=c5ab18d237e8411d70199a7093cd21a0fb2c3505
 	source = https://github.com/Hackerl/Wine_Appimage/releases/download/v3.0/Wine-x86_64-ubuntu.latest.AppImage
 	source = config.sh
 	source = run.sh
@@ -18,7 +18,7 @@ pkgbase = supermemo18.05-git
 	sha512sums = 4b632d356ea230f439ae6df6c858ec33b96d9c28141b336fc8bab06f883a0e8594d8856330936787220f43a9b81b70d8b99bdde5d04dd8ec1b0d9eff96a4fbf7
 	sha512sums = 314289d7abe7f1e188c37c03b92d3b968ba82aa85a270af6cf61f548f7696845b174cdcca4b935bd6c9270f47b8178edcb55052a9a534bf6ec123766c2e0be77
 	sha512sums = a7eb83a5da1bb381db9750865edf8d6ba6ef27c0857d961675ef2182a0a33c3e45bd8a614f9c1deb4b3b73716fd754cda75232e31405485f11c84fe2e20c08d8
-	sha512sums = c9c911af51222ee1f94743b7c7c331c177b63882894982fae28b23f0b37c51fef44bd61bcfe3aad00cebb647c5ba1b4f6d4f4e7297527ad76ef9899dcd6ecc7b
-	sha512sums = b6efdd0bba4190a7ec6695e61eff8d517902a5ccf49cbf9cc5210c819efeeee25aacf8770ddcc97c22f7df6d98fadfba547213d55e6a6f41868d04baa37acec3
+	sha512sums = d3ec37fe33cb67b6d8c9f2f945715c125363659e1e853ef37999668662c2697c6e17fb1f04f91f7b085660b8b20fa58a3e64a0dc248a03d971d24deedc7178b0
+	sha512sums = 948680480f34a40f19e6b1c7da796f3161e99df0f2e11b3bdca3ec743d697b4a08fb5c5e03d8ce1ed2f3ec021a210a33b48a8c8a4df9183707f341d6220c13b3
 
 pkgname = supermemo18.05-git
