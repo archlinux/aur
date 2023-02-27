@@ -7,8 +7,8 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=iproute2-selinux
-pkgver=6.1.0
-pkgrel=5
+pkgver=6.2.0
+pkgrel=2
 pkgdesc='IP Routing Utilities with SELinux support'
 arch=('x86_64' 'aarch64')
 license=('GPL2')
@@ -35,13 +35,13 @@ options=('staticlibs')
 validpgpkeys=('9F6FC345B05BE7E766B83C8F80A77F6095CDE47E') # Stephen Hemminger
 source=("https://www.kernel.org/pub/linux/utils/net/${pkgname/-selinux}/${pkgname/-selinux}-${pkgver}.tar."{xz,sign}
         '0001-make-iproute2-fhs-compliant.patch'
-        'fix_overlapping_buffers.patch'
-        'bdb5.3.patch')
-sha256sums=('5ce12a0fec6b212725ef218735941b2dab76244db7e72646a76021b0537b43ab'
+        '0002-bdb-5-3.patch'
+        '0003-tc-add-missing-separator.patch')
+sha256sums=('4d72730200ec5b2aabaa1a2f20553c6748292f065d9a154c7d5e22559df9fd62'
             'SKIP'
             '758b82bd61ed7512d215efafd5fab5ae7a28fbfa6161b85e2ce7373285e56a5d'
-            '7d2fb8ba06f3b73a8fa3ab673b8f1ad41c0e4fd85e3c31a8d4002a1b074ec1ae'
-            '908de44ee99bf78669e7c513298fc2a22ca9d7e816a8f99788b1e9b091035cf4')
+            '611c1ad7946aab226a5f4059922d9430f51b3377e33911427f8fdf7f7d31f7d6'
+            '4732160a99a5ded4357c3eca8d0f67108296c957986488c7d02b6e7f08400382')
 
 prepare() {
   cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
@@ -50,12 +50,10 @@ prepare() {
   patch -Np1 -i "${srcdir}"/0001-make-iproute2-fhs-compliant.patch
 
   # use Berkeley DB 5.3
-  patch -Np1 -i "${srcdir}"/bdb5.3.patch
+  patch -Np1 -i "${srcdir}"/0002-bdb-5-3.patch
 
-  # fix overlapping buffers leading to cut off IPv6 adresses since glibc 2.37
-  # See FS#77451 and
-  # https://lore.kernel.org/netdev/0011AC38-4823-4D0A-8580-B108D08959C2@gentoo.org/T/#u
-  patch -Np1 -i "${srcdir}"/fix_overlapping_buffers.patch
+  # tc: add missing separator
+  patch -Np1 -i "${srcdir}"/0003-tc-add-missing-separator.patch
 
   # do not treat warnings as errors
   sed -i 's/-Werror//' Makefile

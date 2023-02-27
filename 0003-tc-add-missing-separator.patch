@@ -1,0 +1,29 @@
+From 095b223e9b46b07b29875b4ce5110763a7636b8a Mon Sep 17 00:00:00 2001
+From: Christian Hesse <mail@eworm.de>
+Date: Thu, 23 Feb 2023 11:04:45 +0100
+Subject: [PATCH 1/1] tc: add missing separator
+
+This is missing a separator, that was removed in commit
+010a8388aea11e767ba3a2506728b9ad9760df0e. Let's add it back.
+
+Signed-off-by: Christian Hesse <mail@eworm.de>
+---
+ tc/tc_class.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tc/tc_class.c b/tc/tc_class.c
+index c1feb009..096fa2ec 100644
+--- a/tc/tc_class.c
++++ b/tc/tc_class.c
+@@ -356,7 +356,7 @@ int print_class(struct nlmsghdr *n, void *arg)
+ 		print_string(PRINT_ANY, "parent", "parent %s ", abuf);
+ 	}
+ 	if (t->tcm_info)
+-		print_0xhex(PRINT_ANY, "leaf", "leaf %x", t->tcm_info>>16);
++		print_0xhex(PRINT_ANY, "leaf", "leaf %x: ", t->tcm_info>>16);
+ 
+ 	q = get_qdisc_kind(RTA_DATA(tb[TCA_KIND]));
+ 	if (tb[TCA_OPTIONS]) {
+-- 
+2.39.2
+
