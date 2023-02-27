@@ -27,7 +27,7 @@ backup=('etc/reposilite/configuration.cdn'
 
 build() {
   cd "$pkgname-$pkgver"
-  sed -i -e "s/version\\s*=.*/version = \"$pkgver\"/" build.gradle.kts
+  sed -i -r -e "s/(\\s+)version\\s*=.*/\\1version = \"$pkgver\"/" build.gradle.kts
   chmod a+x gradlew
   JAVA_HOME="/usr/lib/jvm/java-11-openjdk" ./gradlew :reposilite-backend:shadowJar --no-daemon --stacktrace
 }
