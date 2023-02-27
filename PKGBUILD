@@ -1,4 +1,5 @@
-# Maintainer: Reza Jahanbakhshi <reza.jahanbakhshi at gmail dot com
+# Maintainer: Denis Benato <benato.denis96 [at] gmail dot com>
+# Contributor: Reza Jahanbakhshi <reza.jahanbakhshi at gmail dot com
 # Contributor: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
 # Contributor: Armin K. <krejzi at email dot com>
 # Contributor: Kristian Klausen <klausenbusk@hotmail.com>
@@ -10,19 +11,19 @@
 # Contributor: Antti "Tera" Oja <antti.bofh@gmail.com>
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
-pkgname=lib32-mesa-git
+pkgname=lib32-mesa-amdonly-gaming-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=22.3.0_devel.160673.73089969219.d41d8cd98f00b204e9800998ecf8427e
+pkgver=23.1.0_devel.167344.bf6c214b258.d41d8cd98f00b204e9800998ecf8427e
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
              'lib32-libvdpau' 'git' 'lib32-libglvnd' 'wayland-protocols' 
-             'meson' 'lib32-libva' 'lib32-libxrandr')
-depends=('mesa-git' 'lib32-gcc-libs' 'lib32-libdrm' 'lib32-wayland' 'lib32-libxxf86vm' 
-         'lib32-libxdamage' 'lib32-libxshmfence' 'lib32-libelf' 'lib32-libunwind' 
-         'lib32-lm_sensors' 'glslang' 'lib32-vulkan-icd-loader' 'lib32-zstd')
+             'meson' 'lib32-libva' 'lib32-libxrandr' 'lib32-llvm' 'lib32-clang')
+depends=('mesa-amdonly-gaming-git' 'lib32-gcc-libs' 'lib32-libdrm' 'lib32-wayland' 'lib32-libxxf86vm' 
+         'lib32-libxdamage' 'lib32-libxshmfence' 'lib32-libelf'
+         'lib32-lm_sensors' 'glslang' 'lib32-vulkan-icd-loader' 'lib32-zstd' 'lib32-llvm-libs')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
-provides=('lib32-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-vulkan-mesa-layer' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-mesa-libgl' 'lib32-opengl-driver' 'lib32-vulkan-driver')
+provides=('lib32-mesa' 'lib32-vulkan-radeon' 'lib32-vulkan-mesa-layer' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-mesa-libgl' 'lib32-opengl-driver' 'lib32-vulkan-driver')
 conflicts=('lib32-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-vulkan-mesa-layer' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-mesa-libgl')
 url="https://www.mesa3d.org"
 license=('custom')
@@ -38,47 +39,6 @@ sha512sums=('SKIP'
 
 # NINJAFLAGS is an env var used to pass commandline options to ninja
 # NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
-
-# MESA_WHICH_LLVM is an environment variable used to determine which llvm package tree is used to built mesa-git against.
-# Adding a line to ~/.bash_rc that sets this value is the simplest way to ensure a specific choice.
-# 
-# 1: llvm-minimal-git (aur) preferred value
-# 2: llvm-git (aur)
-# 3  llvm-git (lordheavy unoffical repo)
-# 4  llvm (stable from extra) default value
-# 
-# N.B. make sure lib32-mesa-git uses same value for this as mesa-git to avoid problems !
-#
-
-if [[ ! $MESA_WHICH_LLVM ]] ; then
-    MESA_WHICH_LLVM=4
-fi
-
-case $MESA_WHICH_LLVM in
-    1)
-        # aur lone_wolf-llvm-git
-        makedepends+=('lib32-llvm-minimal-git')
-        depends+=('lib32-llvm-libs-minimal-git')
-        ;;
-    2)
-        # aur llvm-git
-        # depending on aur-lib32-llvm-* to avoid mixup with LH llvm-git
-        makedepends+=('aur-lib32-llvm-git')
-        depends+=('aur-lib32-llvm-libs-git')
-        ;;
-    3)
-        # mesa-git/llvm-git (lordheavy unofficial repo)
-        makedepends+=('lib32-llvm-git')
-        depends+=('lib32-llvm-libs-git')
-        ;;
-    4)
-        # extra/llvm
-        makedepends+=(lib32-llvm=15.0.7)
-        depends+=(lib32-llvm-libs=15.0.7)
-        ;;
-    *)
-esac
-
 
 pkgver() {
     cd mesa
@@ -132,25 +92,28 @@ build () {
         -D sysconfdir=/etc \
         --libdir=/usr/lib32 \
         -D platforms=x11,wayland \
-        -D gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl,iris,zink,crocus \
-        -D vulkan-drivers=amd,intel,swrast,virtio-experimental,intel_hasvk \
+        -D gallium-d3d12-video=disabled \
+        -D gallium-drivers=radeonsi,swrast,zink \
+        -D vulkan-drivers=amd,swrast \
         -D dri3=enabled \
         -D egl=enabled \
         -D gallium-extra-hud=true \
+        -D vulkan-beta=true\
         -D vulkan-layers=device-select,overlay \
-        -D gallium-nine=true \
+        -D gallium-nine=false \
         -D gallium-omx=disabled \
-        -D gallium-opencl=disabled \
+        -D gallium-opencl=icd \
         -D gallium-va=enabled \
         -D gallium-vdpau=enabled \
-        -D gallium-xa=enabled \
+        -D gallium-xa=disabled \
         -D gbm=enabled \
         -D gles1=disabled \
         -D gles2=enabled \
         -D glvnd=true \
         -D glx=dri \
-        -D libunwind=enabled \
+        -D libunwind=disabled \
         -D llvm=enabled \
+        -D shared-llvm=enabled \
         -D lmsensors=enabled \
         -D osmesa=true \
         -D shared-glapi=enabled \
