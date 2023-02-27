@@ -1,20 +1,22 @@
 # Maintainer: Antonio Bartalesi <antonio.bartalesi@gmail.com>
+
 _name="Jive"
 pkgname=${_name,,}
-pkgver=7.38
+pkgver=7.40
 _jarfile="${_name}-${pkgver}-jar-with-dependencies.jar"
 pkgrel=1
 pkgdesc="A standalone JAVA application designed to browse and edit the static TANGO database"
 arch=('any')
 url="https://gitlab.com/tango-controls/${_name}"
 license=('GPL3')
-depends=('java-runtime=8' sh)
+depends=('java-runtime=8' jdk8-openjdk sh)
+makedepends=(maven)
 source=(
-  https://repo1.maven.org/maven2/org/tango-controls/${_name}/${pkgver}/${_jarfile}
+  https://gitlab.com/tango-controls/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz
   launcher
 )
 sha256sums=(
-  '891767c2051412966e7f700c218f911ab8a832bee6138418e48265fa8bbd25c3'
+  'cef6231584770b09369f8d0bf1bb85aed2b579e56e218b432687eb2d5492cfdd'
   'be94be7e0794c84c6011ebda88adfc1dfce911beaa8aec55f66b4b226ee4b6d7'
 )
 
@@ -23,9 +25,13 @@ prepare() {
   sed -i "s/package_name/$pkgname/" launcher
 }
 
+build() {
+  cd ${pkgname}-${pkgver}
+  mvn package
+}
+
 package() {
-  cd ${srcdir}
-  install -D -m755 ${srcdir}/${_jarfile} ${pkgdir}/usr/share/java/${pkgname}/${_jarfile}
+  install -D -m755 ${srcdir}/${pkgname}-${pkgver}/target/${_jarfile} ${pkgdir}/usr/share/java/${pkgname}/${_jarfile}
   
   install -D -m755 ${srcdir}/launcher ${pkgdir}/usr/bin/${pkgname}
 }
