@@ -1,9 +1,9 @@
 # Maintainer: Xuanwo <xuanwo@archlinuxcn.org>
 # Contributor: Bader <Bad3r@pm.me>
-# Acknowledgment: Borrowed a lot from logseq-desktop-git, thank @pychuang 
+# Acknowledgment: Borrowed a lot from logseq-desktop-git, thank @pychuang
 pkgname=logseq-desktop
 pkgver=0.8.17
-pkgrel=1
+pkgrel=2
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management."
 arch=("x86_64")
 url="https://logseq.com"
@@ -11,12 +11,18 @@ license=('AGPL3')
 makedepends=("git" "yarn" "npm" "clojure" "nodejs>=16")
 provides=("${pkgname}")
 conflicts=("${pkgname}-git" "${pkgname}-bin")
-source=("${pkgname}-${pkgver}.zip::https://github.com/logseq/logseq/archive/refs/tags/${pkgver}.zip"
-      "build.patch"
-      "${pkgname}.desktop")
+source=(
+    "${pkgname}-${pkgver}.zip::https://github.com/logseq/logseq/archive/refs/tags/${pkgver}.zip"
+    "build.patch"
+    "${pkgname}.desktop"
+    "${pkgname}.install"
+    "${pkgname}.sh"
+)
 sha256sums=('fbe9d8327c9df30475738eca352f4a34284ff5b4a7cb94937b828310b10a39cf'
             'b26c6ed39e2635e08a0df83d92883e670b75b02ed1c2c279044909c04edf8fc2'
-            'bfa7d2cd6869968d7a77d317e966aec67ed4b4aa17fe7931e920c00f40218e3c')
+            '6e834466132551c721ba2ffe92fc0f81056b3151fe6b5f0f469ece937f9b7e84'
+            'ad9bb5c0c7f9df5686201ed13c3f5566dcec65357bce33a7d143f160b59a9988'
+            'a6412899c57cc0369cb11af547b561b00de84cc4aa4d656f4fa5ea3385cfef2e')
 
 prepare() {
     cd "$srcdir/logseq-${pkgver}"
@@ -51,7 +57,7 @@ build() {
 }
 
 package() {
-    # important files are under static/out/Logseq-linux-x64 
+    # important files are under static/out/Logseq-linux-x64
     cd "${srcdir}/logseq-${pkgver}/static/out/Logseq-linux-x64"
 
     # create destination folder and copy files
@@ -60,7 +66,8 @@ package() {
 
     # create a soft link to the executable
     mkdir -p "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/Logseq" "${pkgdir}/usr/bin/logseq"
+    # User flag aware launcher
+    install -m755 logseq-desktop.sh "${pkgdir}/usr/bin/logseq"
 
     # create license folder and make soft links to actual license
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
