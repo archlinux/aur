@@ -3,7 +3,7 @@
 # Contributor : mickael9 <mickael9 at gmail dot com>
 
 pkgname=wapiti
-pkgver=3.1.3
+pkgver=3.1.6
 _name="$pkgname${pkgver:0:1}"
 pkgrel=1
 pkgdesc='Comprehensive web app vulnerability scanner written in Python'
@@ -19,7 +19,7 @@ optdepends=('python-requests-kerberos: Kerberos authentication'
 options=('zipman')
 changelog=ChangeLog
 source=("https://github.com/$pkgname-scanner/$pkgname/releases/download/$pkgver/$_name-$pkgver.tar.gz")
-sha256sums=('83ffef39199f92f530f7de7b47dbfb93ab2c9c97d3bbee93473084cba5796c61')
+sha512sums=('8017d88c35a232f20f97297f5955154bead777a1b3d3937d29e6a39d2eeb5167764aa81286bfca5b9d200a29c25a6173052ddd8cbfebc1cb18aa84c0e2bb0e22')
 
 prepare() {
   rm -rf "$_name-$pkgver/tests"
