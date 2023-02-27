@@ -3,17 +3,17 @@
 _name="arttime"
 pkgname="${_name}-git"
 pkgver=2.0.0.r454
-pkgrel=6
-pkgdesc="Arttime brings curated text-art to otherwise artless terminal emulators of starving developers and other users who can use terminal."
+pkgrel=7
+pkgdesc="arttime is a clock, timer, time manager and text-art viewer for the terminal (https://github.com/poetaman/arttime/wiki)"
 arch=('any')
 url="https://github.com/poetaman/${_name}"
 license=('GPLv3')
 depends=(
-    'zsh'
+    'zsh>=5.8'
 )
-makedepends=(
-    'zsh'
-)
+optdepends=('libnotify: for desktop notifications'
+            'diffutils: Description of optional dependency 2'
+            'vorbis-tools: Description of optional dependency 3')
 conflicts=(${_name})
 provides=(${_name})
 source=("git+https://github.com/poetaman/$_name.git")
