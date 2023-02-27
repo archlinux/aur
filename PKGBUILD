@@ -3,15 +3,16 @@
 # Contributor: Jonathan Kotta <jpkotta at gmail dot com>
 
 pkgname=python-ipython-sql
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="RDBMS access via IPython"
 arch=('any')
 url="https://pypi.python.org/pypi/ipython-sql"
 license=('MIT')
 depends=('ipython' 'python-sqlalchemy' 'python-prettytable' 'python-sqlparse' 'python-six')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/i/${pkgname#python-}/${pkgname#python-}-$pkgver.tar.gz")
-sha256sums=('3786344ce208a58047a4bcf43afd3c143d935a395c72ea849bf0e3fc24fad9e4')
+sha256sums=('3db3ce7f9a95dfaf43876fa80b16bdbb9a04de0ba12042cab13e9f596fcffdbe')
 optdepends=(
     'python-pandas: DataFrame support'
     'python-pymysql: connect to MySQL database'
