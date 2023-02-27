@@ -3,7 +3,7 @@
 _pkgname=appflowy
 pkgname=$_pkgname-git
 pkgver=latest
-pkgrel=8
+pkgrel=9
 pkgdesc='An open-source alternative to Notion.'
 arch=(x86_64)
 url='https://www.appflowy.io/'
@@ -16,14 +16,13 @@ replaces=()
 backup=()
 options=()
 install=
-source=(
-	"$_pkgname::git+https://github.com/AppFlowy-IO/AppFlowy.git"
-	'flutter::git+https://github.com/flutter/flutter.git#tag=3.3.10'
-)
-sha256sums=('SKIP' 'SKIP')
+source=("$_pkgname::git+https://github.com/AppFlowy-IO/AppFlowy.git"
+        'flutter::git+https://github.com/flutter/flutter.git#tag=3.3.10')
+sha256sums=('SKIP'
+            'SKIP')
 
 _setpath() {
-	PATH="$PATH:$srcdir/flutter/bin:$HOME/.pub-cache/bin:$HOME/.cargo/bin"
+	PATH="$srcdir/flutter/bin:$HOME/.pub-cache/bin:$HOME/.cargo/bin:$PATH"
 }
 
 pkgver() {
@@ -52,15 +51,14 @@ build() {
 
 package() {
 	_setpath
-	cd "$srcdir/$_pkgname/frontend/app_flowy/product/"*/linux/Release/AppFlowy
+	cd "$srcdir/$_pkgname/frontend/appflowy_flutter/product/"*/linux/Release/AppFlowy
 	install -dm755 "$pkgdir"{/usr/bin,/usr/share/applications,"/opt/$pkgname"}
 
 	cp -a * "$pkgdir/opt/$pkgname/"
 	rm "$pkgdir/opt/$pkgname/appflowy.desktop.temp"
-	ln -s "/opt/$pkgname/app_flowy" "$pkgdir/usr/bin/"
+	ln -s "/opt/$pkgname/appflowy_flutter" "$pkgdir/usr/bin/"
 
 	_desktop_file="$pkgdir/usr/share/applications/AppFlowy.desktop"
 	install -m644 appflowy.desktop.temp "$_desktop_file"
-	sed -i '/Exec=/s|\[CHANGE_THIS\]/AppFlowy|/usr/bin|' "$_desktop_file"
-	sed -i "/Icon=/s|\[CHANGE_THIS\]/AppFlowy|/opt/$pkgname|" "$_desktop_file"
+	sed -i "s|\[CHANGE_THIS\]/AppFlowy|/opt/$pkgname|" "$_desktop_file"
 }
