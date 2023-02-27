@@ -63,6 +63,24 @@ erase_leftovers() {
 
 pre_upgrade () {
   disconnect;
+  # ########################################################################################
+  #
+  # Next lines is in use only for compatibility with old package versions (v3.10.10 and older)
+  #
+  # ########################################################################################
+  # Folders changed:
+  # "/opt/ivpn/mutable" -> "/etc/opt/ivpn/mutable" 
+  # "/opt/ivpn/log"     -> "/var/log/ivpn" 
+  if [ -d /opt/ivpn/mutable ]; then 
+    echo "[+] Migrating old-style mutable data from the previous installation ..."
+    mkdir -p /etc/opt/ivpn
+    mv /opt/ivpn/mutable /etc/opt/ivpn/mutable
+  fi
+  if [ -d /opt/ivpn/log ]; then 
+    echo "[+] Migrating old-style logs from the previous installation ..." 
+    mv /opt/ivpn/log /var/log/ivpn
+  fi
+  # ########################################################################################
 }
 
 pre_remove() {
