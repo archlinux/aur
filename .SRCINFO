@@ -11,7 +11,7 @@ pkgbase = authselect
 	depends = libselinux
 	provides = authconfig
 	conflicts = authconfig
-	source = https://github.com/authselect/authselect/archive/refs/tags/1.4.2.tar.gz
+	source = authselect-1.4.2.tar.gz::https://github.com/authselect/authselect/archive/refs/tags/1.4.2.tar.gz
 	sha256sums = 5aecf90f78fbb996db77a9f5026256213d9cb2024ab6f15d19f88053b25b37ad
 
 pkgname = authselect

@@ -11,7 +11,7 @@ depends=('popt' 'asciidoc' 'libselinux')
 provides=('authconfig')
 conflicts=('authconfig')
 makedepends=()
-source=("https://github.com/${pkgname}/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('5aecf90f78fbb996db77a9f5026256213d9cb2024ab6f15d19f88053b25b37ad')
 
 _srcdir="${pkgname}-${pkgver}"
