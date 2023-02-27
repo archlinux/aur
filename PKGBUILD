@@ -1,7 +1,7 @@
 # Maintainer: Alexis Rouillard <contact@arouillard.fr>
 
 pkgname=waybar-git
-pkgver=r636.67593b8
+pkgver=r2429.09142fa3
 pkgrel=1
 pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors (GIT)'
 arch=('x86_64')
@@ -12,25 +12,38 @@ conflicts=('waybar')
 depends=(
     'gtkmm3'
     'libjsoncpp.so'
-    'libinput'
     'libsigc++'
     'fmt'
+    'jack' 'libjack.so'
     'wayland'
-    'chrono-date'
+    'libdate-tz.so'
     'libspdlog.so'
     'gtk-layer-shell'
+    'libupower-glib.so'
+    'upower'
+    'libevdev'
+    'libinput'
     'libpulse'
     'libnl'
     'libappindicator-gtk3'
     'libdbusmenu-gtk3'
     'libmpdclient'
+    'libsndio.so'
+    'libxkbcommon'
+    'libwireplumber'
+    'playerctl'
 )
 makedepends=(
     'git'
     'cmake'
+    'catch2'
     'meson'
     'scdoc' # For generating manpages
     'wayland-protocols'
+)
+backup=(
+    etc/xdg/waybar/config
+    etc/xdg/waybar/style.css
 )
 optdepends=(
     'otf-font-awesome: Icons in the default configuration'
