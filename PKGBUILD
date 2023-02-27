@@ -2,7 +2,7 @@
 # Submitter:  Sébastien Luttringer <seblu@aur.archlinux.org>
 
 pkgname=unscd
-pkgver=0.53
+pkgver=0.54
 pkgrel=1
 pkgdesc='Drop-in replacement for glibc nscd which is designed for simplicity and stability'
 arch=('i686' 'x86_64')
@@ -10,10 +10,10 @@ url='http://busybox.net/~vda/unscd/'
 license=('GPL2')
 source=("http://busybox.net/~vda/unscd/nscd-$pkgver.c"
         'unscd.service' 'unscd.conf' 'unscd.8')
-md5sums=('5dd67886de0e9e3efa5286bc4ea76f94'
-         'SKIP'
-         'SKIP'
-         'SKIP')
+md5sums=('ddff52893cfc48d0e61035e2596f70d2'
+         'f66fcf467518d51880bdf3b85511c53a'
+         'cfbab3d1c5b0fe362a218ad15ad2d6e3'
+         '9069ba3a3a07673ab1a7cc70018b387e')
 
 prepare() {
   sed -i 's,/etc/nscd.conf,/etc/unscd.conf,g' "nscd-$pkgver.c"
@@ -26,10 +26,10 @@ build() {
 }
 
 package() {
-  install -D -m 755 unscd "$pkgdir/usr/bin/unscd"
-  install -D -m 644 unscd.conf "$pkgdir/etc/unscd.conf"
-  install -D -m 644 unscd.8 "$pkgdir/usr/share/man/man8/unscd.8"
-  install -D -m 644 unscd.service "$pkgdir/usr/lib/systemd/system/unscd.service"
+  install -D -m 755 unscd -t "$pkgdir/usr/bin/"
+  install -D -m 644 unscd.conf -t "$pkgdir/etc/"
+  install -D -m 644 unscd.8 -t "$pkgdir/usr/share/man/man8/"
+  install -D -m 644 unscd.service -t "$pkgdir/usr/lib/systemd/system/"
 }
 
 # vim:set ts=2 sw=2 ft=sh et:
