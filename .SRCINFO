@@ -1,14 +1,14 @@
 pkgbase = yambar-wayland
 	pkgdesc = Simplistic and highly configurable status panel for Wayland (No X11 support)
 	pkgver = 1.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/dnkl/yambar
 	arch = any
 	license = MIT
 	makedepends = meson
 	makedepends = ninja
 	makedepends = scdoc
-	makedepends = tllist>=1.0.1
+	makedepends = tllist
 	depends = wayland
 	depends = pixman
 	depends = libyaml

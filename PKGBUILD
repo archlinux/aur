@@ -6,7 +6,7 @@
 pkgname=yambar-wayland
 _pkgname=yambar
 pkgver=1.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Simplistic and highly configurable status panel for Wayland (No X11 support)"
 arch=('any')
 url=https://codeberg.org/dnkl/yambar
@@ -15,7 +15,7 @@ makedepends=(
 	'meson'
 	'ninja'
 	'scdoc'
-	'tllist>=1.0.1')
+	'tllist')
 depends=(
 	'wayland'
 	'pixman'
@@ -33,7 +33,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/dnkl/${_pkgname}/arch
 sha256sums=('46f3002338f451c154678167bf3d5f593307954b6f381c50ddef2726b1a8c811')
 
 build() {
-	cd $srcdir/$_pkgname
+	cd $_pkgname
 	meson --buildtype=release --prefix=/usr --wrap-mode=nofallback \
 		-Db_lto=true \
 		-Dbackend-x11=disabled \
@@ -43,11 +43,11 @@ build() {
 }
 
 check() {
-	cd $srcdir/$_pkgname
+	cd $_pkgname
 	ninja -C build test
 }
 
 package() {
-	cd $srcdir/$_pkgname
+	cd $_pkgname
 	DESTDIR="${pkgdir}/" ninja -C build install
 }
