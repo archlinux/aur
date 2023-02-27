@@ -7,7 +7,7 @@ index 7e4f92925..47d15738f 100755
      `"#{RbConfig.ruby}" extconf.rb`
      `make clean`
 -    `make`
-+    `export CFLAGS="-ffast-math -msse -msse2 -mfpmath=sse -fPIC" && make`
++    `export CFLAGS="-fPIC" && make`
    end
  
    libs = []
