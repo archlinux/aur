@@ -1,0 +1,27 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 6d2e5040a..d6a534230 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,8 +1,3 @@
+ [build-system]
+-requires = ["setuptools>=38.6.0",
+-    "build>=0.6.0",
+-    "setupext-janitor>=1.1",
+-    "wheel>=0.31.0",
+-    "twine>=1.11.0"]
+-    
++requires = ["setuptools>=38.6.0", "build>=0.6.0"]
+ build-backend = 'setuptools.build_meta'
+diff --git a/setup.py b/setup.py
+index 3c8afb8ae..dad88ac7b 100644
+--- a/setup.py
++++ b/setup.py
+@@ -149,7 +149,7 @@ if production:
+         platforms=['Linux', 'Windows', 'MacOS'],
+         download_url='http://leoeditor.com/download.html',
+         classifiers=classifiers,
+-        packages=setuptools.find_packages(),
++        packages=setuptools.find_packages(exclude=['*unittests*']),
+         include_package_data=True,  # also include MANIFEST files in wheels
+         setup_requires=[],  # No longer needed with PEP-518 and pip >v10.
+         install_requires=install_requires,
