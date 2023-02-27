@@ -1,0 +1,11 @@
+pkgbase = ttf-canger-zhoukezhengdabangshu
+	pkgdesc = 仓耳周珂正大榜书,任何用户可以全球任何领域永久免费商用.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://tsanger.cn/category/114
+	arch = any
+	license = custom
+	source = canger-zhoukezhengdabangshu.ttf::http://tsanger.cn/download/%E4%BB%93%E8%80%B3%E5%91%A8%E7%8F%82%E6%AD%A3%E5%A4%A7%E6%A6%9C%E4%B9%A6.ttf
+	sha256sums = 598e95ff626957ca26c74eae412b14394fcf5062c2cd17453d18cdb69843d695
+
+pkgname = ttf-canger-zhoukezhengdabangshu
