@@ -1,6 +1,6 @@
 pkgbase = release-plz-git
 	pkgdesc = Release Rust packages without using the command line (git)
-	pkgver = 0.2.49.r0.g190b34c
+	pkgver = 0.2.50.r0.gfa02617
 	pkgrel = 1
 	url = https://github.com/MarcoIeni/release-plz
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = release-plz-git
 	makedepends = git
 	depends = gcc-libs
 	depends = curl
+	optdepends = cargo-semver-checks: check for API breaking changes
 	provides = release-plz
 	conflicts = release-plz
 	options = !lto

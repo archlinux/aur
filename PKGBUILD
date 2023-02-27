@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=release-plz-git
-pkgver=0.2.49.r0.g190b34c
+pkgver=0.2.50.r0.gfa02617
 pkgrel=1
 pkgdesc="Release Rust packages without using the command line (git)"
 arch=('x86_64')
@@ -10,6 +10,7 @@ url="https://github.com/MarcoIeni/release-plz"
 license=('MIT' 'Apache')
 depends=('gcc-libs' 'curl')
 makedepends=('cargo' 'git')
+optdepends=('cargo-semver-checks: check for API breaking changes')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+${url}")
