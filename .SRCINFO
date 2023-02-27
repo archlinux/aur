@@ -1,0 +1,11 @@
+pkgbase = ttf-canger-xiaowanzi
+	pkgdesc = 仓耳舒圆体,任何用户可以全球任何领域永久免费商用.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://tsanger.cn/category/114
+	arch = any
+	license = custom
+	source = canger-xiaowanzi.ttf::http://tsanger.cn/download/%E4%BB%93%E8%80%B3%E5%B0%8F%E4%B8%B8%E5%AD%90.ttf
+	sha256sums = 17202a84e3583b493553150ea8d604bbedd3715c2f67abfd62df53b3e9361dd4
+
+pkgname = ttf-canger-xiaowanzi
