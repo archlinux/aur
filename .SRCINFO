@@ -1,19 +1,18 @@
 pkgbase = unscd
 	pkgdesc = Drop-in replacement for glibc nscd which is designed for simplicity and stability
-	pkgver = 0.53
+	pkgver = 0.54
 	pkgrel = 1
 	url = http://busybox.net/~vda/unscd/
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	source = http://busybox.net/~vda/unscd/nscd-0.53.c
+	source = http://busybox.net/~vda/unscd/nscd-0.54.c
 	source = unscd.service
 	source = unscd.conf
 	source = unscd.8
-	md5sums = 5dd67886de0e9e3efa5286bc4ea76f94
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = ddff52893cfc48d0e61035e2596f70d2
+	md5sums = f66fcf467518d51880bdf3b85511c53a
+	md5sums = cfbab3d1c5b0fe362a218ad15ad2d6e3
+	md5sums = 9069ba3a3a07673ab1a7cc70018b387e
 
 pkgname = unscd
-

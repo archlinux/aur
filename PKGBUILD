@@ -1,4 +1,5 @@
 # Maintainer: Spider.007 <aur@spider007.net>
+# Contributor: asukaminato
 # Submitter:  Sébastien Luttringer <seblu@aur.archlinux.org>
 
 pkgname=unscd
