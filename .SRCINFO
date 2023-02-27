@@ -1,0 +1,15 @@
+pkgbase = sm3sum
+	pkgdesc = SM3 hash checksum.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/saeziae/sm3sum
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = MIT
+	makedepends = rust
+	source = https://github.com/saeziae/sm3sum/archive/refs/tags/v0.1.tar.gz
+	sha256sums = c52536c72ac2a0363a8d4cb9789288b5eaedb80fc3fc0110418695c0d7a3fcb6
+
+pkgname = sm3sum
