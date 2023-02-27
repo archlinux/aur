@@ -3,13 +3,13 @@
 _name="arttime"
 pkgname="${_name}-git"
 pkgver=2.0.0.r454
-pkgrel=8
-pkgdesc="arttime is a clock, timer, time manager and text-art viewer for the terminal (https://github.com/poetaman/arttime/wiki)"
+pkgrel=10
+pkgdesc="arttime is a clock, timer, time manager and text-art viewer for the terminal (https://github.com/poetaman/$_name/wiki)"
 arch=('any')
 url="https://github.com/poetaman/${_name}"
 license=('GPLv3')
 depends=(
-    'zsh>=5.8'
+    'zsh>=5.7'
 )
 optdepends=('libnotify: for desktop notifications'
             'diffutils: for systems where /etc/localtime is not a symlink and arttime needs to guess the timezone'
@@ -27,17 +27,16 @@ pkgver() {
 
 package() {
     cd "$_name"
-    #./install.sh --prefix "$pkgdir/usr/local/" --zcompdir "$pkgdir/usr/share/zsh/site-functions"
-    #bindir="$installdir/bin"
-    #artdir="$installdir/share/arttime/textart"
-    #keypoemdir="$installdir/share/arttime/keypoems"
-    #srcdir="$installdir/share/arttime/src"
 
-    install -D -t "$pkgdir/usr/local/bin/" "./bin/artprint" "./bin/arttime"
-    find "./share/arttime/keypoems/" -type f -exec install -D -t "$pkgdir/usr/local/share/arttime/keypoems/" {} \;
-    find "./share/arttime/src/" -type f -exec install -D -t "$pkgdir/usr/local/share/arttime/src/" {} \;
-    find "./share/arttime/textart/" -type f -exec install -D -t "$pkgdir/usr/local/share/arttime/textart/" {} \;
+    install -D -t "$pkgdir/usr/bin/" "./bin/artprint" "./bin/$_name"
+    find "./share/$_name/keypoems/" -type f -exec install -D -t "$pkgdir/usr/share/$_name/keypoems/" {} \;
+    find "./share/$_name/src/" -type f -exec install -D -t "$pkgdir/usr/share/$_name/src/" {} \;
+    find "./share/$_name/textart/" -type f -exec install -D -t "$pkgdir/usr/share/$_name/textart/" {} \;
 
     install -D -t "$pkgdir/usr/share/zsh/site-functions/" "./share/zsh/functions/_artprint"
     install -D -t "$pkgdir/usr/share/zsh/site-functions/" "./share/zsh/functions/_arttime"
+
+    install -Dm644 LICENSE_CODE "$pkgdir/usr/share/licenses/$_name/LICENSE_CODE"
+    install -Dm644 LICENSE_ART "$pkgdir/usr/share/licenses/$_name/LICENSE_ART"
+    install -Dm644 LICENSE_ADDENDUM_CFLA "$pkgdir/usr/share/licenses/$_name/LICENSE_ADDENDUM_CFLA"
 }
