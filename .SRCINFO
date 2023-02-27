@@ -16,11 +16,9 @@ pkgbase = freefilesync-bin
 	source = freefilesync-bin-12.1.tar.gz::https://freefilesync.org/download/FreeFileSync_12.1_Linux.tar.gz
 	sha256sums = 3b8121fdf7d91d19680b6ff91f6f10ba79193379e1fdad5227d805b4ea65312a
 	sha256sums = c38a80469c1d91a3655bbd326d9fe58caac42e6ca8b0f9216f180dfaf941c5fe
-	depends_i686 = lib32-atk
-	depends_i686 = lib32-fontconfig
+	depends_i686 = lib32-at-spi2-core
 	depends_i686 = lib32-gdk-pixbuf2
 	depends_i686 = lib32-libsm
-	depends_i686 = lib32-libx11
 	depends_i686 = lib32-pango
 
 pkgname = freefilesync-bin

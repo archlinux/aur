@@ -15,11 +15,9 @@ depends=(
     libxxf86vm
 )
 depends_i686=(
-    lib32-atk
-    lib32-fontconfig
+    lib32-at-spi2-core
     lib32-gdk-pixbuf2
     lib32-libsm
-    lib32-libx11
     lib32-pango
 )
 source=(
