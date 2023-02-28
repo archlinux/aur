@@ -1,0 +1,17 @@
+pkgbase = guiscrcpy-appimage
+	pkgdesc = A full fledged GUI integration for the award winning open-source android screen mirroring system
+	pkgver = 2023.1.1
+	pkgrel = 1
+	url = https://guiscrcpy.srev.in/
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = scrcpy
+	conflicts = guiscrcpy
+	conflicts = guiscrcpy-git
+	options = !strip
+	source = guiscrcpy-2023.1.1.AppImage::https://github.com/srevinsaju/guiscrcpy/releases/download/v2023.1.1/guiscrcpy-v2023.1.1.dev.m.glibc2.35-x86_64.AppImage
+	sha512sums = cc853c5bfbb1ead1905936bd77d3f1c8386f9c3a6e246605a434a9d1b38af2388b43858e5ecac6c20021ce9e0794e4aa2c9e9a9bd89a9d1955b7fdfe84832b75
+
+pkgname = guiscrcpy-appimage
