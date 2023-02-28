@@ -1,21 +1,22 @@
 pkgbase = ignition-transport-8
-	pkgdesc = The transport library combines ZeroMQ with Protobufs to create a fast and efficient message passing system. Asynchronous message publication and subscription is provided along with service calls and discovery.
-	pkgver = 8.2.0
-	pkgrel = 2
+	pkgdesc = Transport library for component communication based on publication/subscription and service calls.
+	pkgver = 8.4.0
+	pkgrel = 1
 	url = https://gazebosim.org/libs/transport
 	arch = i686
 	arch = x86_64
 	groups = development
 	license = Apache
-	makedepends = ignition-cmake>=2
+	makedepends = ignition-cmake=2
 	makedepends = util-linux
 	depends = protobuf
 	depends = protobuf-c
 	depends = zeromq
-	depends = ignition-msgs-5
+	depends = ignition-msgs=5
 	depends = ignition-tools
 	depends = libutil-linux
-	source = https://github.com/gazebosim/gz-transport/archive/ignition-transport8_8.2.0.tar.gz
-	sha256sums = edc6f184c01a1d2cbc4fe3739428c56c89a56842827c4c6cb43cf35498d5a77d
+	provides = ignition-transport=8
+	source = https://github.com/gazebosim/gz-transport/archive/ignition-transport8_8.4.0.tar.gz
+	sha256sums = 65472a874bbb0f6bb686b3c0cce4146fb650e750f8f795a159523ecbe731c1c7
 
 pkgname = ignition-transport-8
