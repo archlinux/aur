@@ -23,6 +23,6 @@ package() {
 		"$pkgdir/usr/share/zsh/plugins/iterm2_shell_integration.zsh"
 	mkdir --parents "$pkgdir/usr/bin"
 	for exe in imgcat it2git it2ssh
-	do install --mode=655 "utilities/$exe" "$pkgdir/usr/bin/$exe"
+	do install --mode=755 "utilities/$exe" "$pkgdir/usr/bin/$exe"
 	done
 }
