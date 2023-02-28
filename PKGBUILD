@@ -1,7 +1,7 @@
 # Maintainer: lantw44 (at) gmail (dot) com
 
 pkgname=guile-ssh
-pkgver=0.15.1
+pkgver=0.16.3
 pkgrel=1
 pkgdesc='SSH module for Guile based on libssh'
 arch=('x86_64' 'i686' 'armv7h')
@@ -13,7 +13,7 @@ depends=(
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/artyom-poptsov/guile-ssh/archive/v${pkgver}.tar.gz")
 sha256sums=(
-  '434fdfdcd439d038c15e40290a8d3187837ad969577573baacb7b105c0c3628f')
+  '96c235a630fc53120881e5af325c7720b5bb19c6a7eab818ace1f3d0b7669d56')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
