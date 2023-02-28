@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 _base=air
 pkgname=${_base}-bin
-pkgver=1.41.0
+pkgver=1.42.0
 pkgrel=1
 pkgdesc="Live reload for Go apps"
 url="https://github.com/cosmtrek/${_base}"
@@ -15,9 +15,9 @@ source_x86_64=("${_base}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pk
 source_i686=("${_base}-${pkgver}-i686.tar.gz::${url}/releases/download/v${pkgver}/${_base}_${pkgver}_linux_386.tar.gz")
 source_aarch64=("${_base}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_base}_${pkgver}_linux_arm64.tar.gz")
 
-sha256sums_x86_64=('f0e8ca7dc12901df14d7744713304caeef6afca1f1489c154eea303248ccab12')
-sha256sums_i686=('70435c025a5024bc3a2fabdcd2db0782e285370a4b441bd7d693d3219edb8e64')
-sha256sums_aarch64=('8159e508e5c78559826875943ec3e7be8d1d0389de3aafd3f55aabb7aade37dc')
+sha256sums_x86_64=('4a38a2241c6f2dcbf115c74617d444a50ca8e53e039161c1cf19deedde1e2db5')
+sha256sums_i686=('57a203c67e12c5029dc6bbf4525cfa0e40781b47c96c107850e9d7c2ae4c8724')
+sha256sums_aarch64=('850b7cfa67ab2d895c366f6c589412495134f1d135bd3a3d89175e42a10ce9e5')
 
 package() {
   install -Dvm755 ${_base} -t "${pkgdir}/usr/bin"
