@@ -1,16 +1,16 @@
 pkgbase = python-imapclient
-	pkgdesc = An easy-to-use, Pythonic and complete IMAP client library with no dependencies outside the Python standard library
-	pkgver = 2.2.0
+	pkgdesc = Easy-to-use, Pythonic and complete IMAP client library
+	pkgver = 2.3.1
 	pkgrel = 1
-	url = https://github.com/mjs/imapclient/
+	url = https://github.com/mjs/imapclient
 	arch = any
 	license = BSD
-	makedepends = python-distribute
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
-	depends = python-backports.ssl
-	options = !emptydirs
-	source = https://github.com/mjs/imapclient/archive/2.2.0.tar.gz
-	md5sums = c90f93ce0b3a7dfe26409141b66295fc
+	source = python-imapclient-2.3.1.tar.gz::https://github.com/mjs/imapclient/archive/d0f5c4e.tar.gz
+	sha256sums = 130dc944f5f063a32e4f2980e3110947b574266e7fae20873726bdc5079b5e38
 
 pkgname = python-imapclient
-
