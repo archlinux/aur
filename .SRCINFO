@@ -1,7 +1,7 @@
 pkgbase = scene-git
 	pkgdesc = An Urbit ship interface from Tirrel
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tirrel-corp/scene
 	arch = x86_64
 	license = LGPL
