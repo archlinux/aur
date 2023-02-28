@@ -9,8 +9,8 @@
 # Contributor: Geoffroy Carrier <geoffroy.carrier@koon.fr>
 
 pkgname=qbittorrent-libtorrent-v1
-pkgver=4.5.1
-pkgrel=2
+pkgver=4.5.2
+pkgrel=1
 provides=('qbittorrent')
 conflicts=('qbittorrent')
 pkgdesc='An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar v1'
@@ -20,14 +20,8 @@ license=(custom GPL)
 depends=(libtorrent-rasterbar-1 qt6-base qt6-svg hicolor-icon-theme)
 makedepends=(cmake boost qt6-tools)
 optdepends=('python: needed for torrent search tab')
-source=("https://downloads.sourceforge.net/sourceforge/qbittorrent/qbittorrent-$pkgver.tar.xz"
-        'https://github.com/qbittorrent/qBittorrent/commit/58a654a7.patch')
-sha256sums=('0527a5887454d6a5f386846f3c73029a6fbeec3d1a4c92e1dc485c485c16add0'
-            '598069b8937eda072635dbf1172505e6c05dbdc2b947edc26cf3febde82752a2')
-
-prepare() {
-  patch -d qbittorrent-$pkgver -p1 < 58a654a7.patch # https://github.com/qbittorrent/qBittorrent/issues/18618
-}
+source=("https://downloads.sourceforge.net/sourceforge/qbittorrent/qbittorrent-$pkgver.tar.xz")
+sha256sums=('109ecff22cb80f1e3ee5b7d3d2d34537839c15f75030632ef131d92b047f4e05')
 
 build() {
   cmake -B build -S "qbittorrent-$pkgver" \
