@@ -42,16 +42,21 @@ package() {
   cd "${srcdir}"/"${pkgname}"/scripts/
   install -D --mode=0755 ethoscope_device.service ethoscope_listener.service ethoscope_GPIO_listener.service "${pkgdir}/usr/lib/systemd/system/"
 
-  tee -a /usr/bin/ethoclient <<EOF
+  tee -a  $pkgdir/usr/bin/ethoclient <<EOF
 #!/bin/env bash
 python /opt/ethoscope-device/src/scripts/ethoclient.py $@
 EOF
-  chmod +x /usr/bin/ethoclient
+  chmod +x  $pkgdir/usr/bin/ethoclient
 
-  tee -a /etc/issue <<EOF
+  tee -a  $pkgdir/etc/issue <<EOF
 Ethoscope Linux \r  (\n) (\l)
 Ethernet IP: \4{eth0}
 WIFI IP: \4{wlan0}
+EOF
+
+  tee -a  $pkgdir/etc/systemd/journal-upload.conf <<EOF
+[Upload]
+URL=http://node:19532
 EOF
 
   cd "${srcdir}"/"${pkgname}"/scripts/ethoscope_updater/
