@@ -1,34 +1,37 @@
-# Maintainer: George Rawlinson <george@rawlinson.net.nz>
+# Maintainer: Youngjae Lee <ls4154.lee@gmail.com>
+# Contributor: George Rawlinson <george@rawlinson.net.nz>
 # Contributor: Christoph Bayer <chrbayer@criby.de>
 # Contributor: James P. Harvey <jamespharvey20 at gmail dot com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Fredy García <frealgagu at gmail dot com>
 
 pkgname=wiredtiger
-pkgver=10.0.0
+pkgver=11.1.0
 pkgrel=1
-pkgdesc="High performance NoSQL platform"
-arch=('x86_64')
-url="https://source.wiredtiger.com"
-license=('GPL')
-depends=('snappy' 'lz4' 'zlib' 'zstd' 'gperftools')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/wiredtiger/wiredtiger/archive/$pkgver.tar.gz")
-sha512sums=('6e2d0fa1e20467ce6d39d4ac097b0bad9954e10f6ff72dc35b02871f9ce5492a889899560065dfdf8d60f966f1d3cf0b3b8490ab017a4199bdcab9d190e77bb0')
-b2sums=('2b9b85bd7711c114a9b6e3c8cd0db3ce8ba6d08efd3b7b8e39ceff8cd251147c9d9a13942353ec885b7542f732d25946befd814fc046225bfde6ae6d31097c10')
+pkgdesc="High performance, scalable, NoSQL, extensible platform for data management"
+arch=("x86_64")
+url="https://github.com/wiredtiger/wiredtiger"
+license=("GPL")
+depends=("lz4" "snappy" "zlib" "zstd")
+makedepends=("cmake" "swig")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/wiredtiger/$pkgname/archive/refs/tags/$pkgver.tar.gz"
+        "include_optional.patch")
+sha256sums=("0d988a8256219b614d855a2504d252975240171a633b882f19149c4a2ce0ec3d"
+            "c90ae01194c0cdc11c3c967289605ba2ba6fc302ad79fbb7e0e85075b81b85a0")
+
+prepare() {
+    patch -d "$pkgname-$pkgver" -p1 < include_optional.patch
+}
 
 build() {
-  cd "$pkgname-$pkgver"
-  ./autogen.sh
-  ./configure \
-    --prefix=/usr \
-    --enable-tcmalloc \
-    --with-builtins=snappy,lz4,zlib,zstd
-
+    cd "$pkgname-$pkgver"
+    cmake -B build -DCMAKE_INSTALL_PREFIX=/usr \
+        -DHAVE_BUILTIN_EXTENSION_LZ4=1 -DHAVE_BUILTIN_EXTENSION_SNAPPY=1 \
+        -DHAVE_BUILTIN_EXTENSION_ZLIB=1 -DHAVE_BUILTIN_EXTENSION_ZSTD=1  .
+    cmake --build build
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-
-  # NOTE there is no `make` in build() because it compiles & runs broken tests
-  make DESTDIR="$pkgdir" install
+    cd "$pkgname-$pkgver"
+    DESTDIR="$pkgdir" cmake --install build
 }
