@@ -1,7 +1,7 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=siren
-pkgver=0.9
+pkgver=0.10
 pkgrel=1
 pkgdesc="A text-based audio player."
 arch=(i686 x86_64)
@@ -15,19 +15,18 @@ optdepends=('libao: audio output support'
             'libmad: mpeg decoder support'
             'wavpack: wav decoder support')
 source=("http://www.kariliq.nl/siren/dist/$pkgname-$pkgver.tar.gz")
-md5sums=('49f0cb287cd0302b4adcdbfab183e0c1')
-sha1sums=('a43d79bc5c11ff1b38bb106964e0848db9853d7c')
-sha256sums=('392c707de8854828ccbcca1e4f3c07e68326f9794edb82235a453ef6ee6c421b')
+md5sums=('97959b9974732e64c7e117de6d2af2d6')
+sha1sums=('73f72f266fa8ea2a3e2ba978196926abb99086fe')
+sha256sums=('54b6af320e1cf223cf02ca9d56859a4f2f796105cd617efa5f37736a3f9719e4')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  ./configure prefix=/usr mandir=/usr/share/man
-  make
+	cd "$srcdir/$pkgname-$pkgver"
+	./configure prefix=/usr mandir=/usr/share/man
+	make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" install
-  install -Dm644 LICENCE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cd "$srcdir/$pkgname-$pkgver"
+	make DESTDIR="$pkgdir/" install
+	install -Dm644 LICENCE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
