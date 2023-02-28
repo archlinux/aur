@@ -1,24 +1,25 @@
 pkgbase = nekoray-bin
 	pkgdesc = Qt based cross-platform GUI proxy configuration manager (backend: v2ray / sing-box)
-	pkgver = 2.14
+	pkgver = 2.17
 	pkgrel = 1
 	url = https://github.com/MatsuriDayo/nekoray
+	install = notice.install
 	arch = x86_64
 	license = GPL 3.0
-	depends = qt5-base
+	depends = qt5-base>=5.15
 	depends = qt5-svg
 	depends = qt5-tools
 	depends = qt5-x11extras
 	optdepends = v2ray-domain-list-community: geosite data for NekoRay
 	optdepends = v2ray-geoip: geoip data for NekoRay
-	optdepends = hysteria: Hysteria support for Nekoray
-	optdepends = sing-geoip: geoip data for NekoBox
-	optdepends = sing-geosite: geosite data for NekoBox
-	conflicts = nekoray
+	provides = nekoray
 	conflicts = nekoray-git
-	source = https://github.com/MatsuriDayo/nekoray/releases/download/2.14/nekoray-2.14-2023-02-04-linux64.zip
+	conflicts = nekoray
+	source = nekoray-bin-2.17.zip::https://github.com/MatsuriDayo/nekoray/releases/download/2.17/nekoray-2.17-2023-02-25-linux64.zip
 	source = nekoray.desktop
-	sha256sums = c483a5debd37c17cca5e98d6808f06f6d836a4a46985f4a60d0de4128c5d6e24
-	sha256sums = f91e598c4fb016527c05702357178126ed2faae1f7e6e71a47afde520832c33d
+	source = nekoray.sh
+	sha256sums = 9fb69fbafe544c3a8d6560287adf33521858da64e2b9fe8f0751fa29082f6a24
+	sha256sums = 86f1332c81be2c346a4cdc80a3550f6484ef89e4ee8d4f23afada0c2d0a184e2
+	sha256sums = 5a7cbb61608137924fb1ba3ecb057adb7973f5775f64758736b447041fa15377
 
 pkgname = nekoray-bin
