@@ -1,7 +1,7 @@
 pkgbase = betaflight-configurator-nightlies-bin
 	pkgdesc = Nightly builds of the Betaflight Configurator
 	pkgver = v20230227.395
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/betaflight/betaflight-configurator-nightlies
 	install = betaflight-configurator-nightlies-bin.install
 	arch = x86_64
