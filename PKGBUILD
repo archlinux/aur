@@ -3,7 +3,7 @@
 # Acknowledgment: Borrowed a lot from logseq-desktop-git, thank @pychuang
 pkgname=logseq-desktop
 pkgver=0.8.17
-pkgrel=2
+pkgrel=3
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management."
 arch=("x86_64")
 url="https://logseq.com"
@@ -67,7 +67,7 @@ package() {
     # create a soft link to the executable
     mkdir -p "${pkgdir}/usr/bin"
     # User flag aware launcher
-    install -m755 logseq-desktop.sh "${pkgdir}/usr/bin/logseq"
+    install -m755 ${srcdir}/logseq-desktop.sh "${pkgdir}/usr/bin/logseq"
 
     # create license folder and make soft links to actual license
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
