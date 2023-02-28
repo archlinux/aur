@@ -1,0 +1,14 @@
+pkgbase = cutter-appimage
+	pkgdesc = Free and Open Source Reverse Engineering Platform powered by rizin
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://cutter.re/
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	depends = hicolor-icon-theme
+	options = !strip
+	source = cutter-2.2.0.AppImage::https://github.com/rizinorg/cutter/releases/download/v2.2.0/Cutter-v2.2.0-Linux-x86_64.AppImage
+	sha512sums = 9c8f69a7f118d41d292a99c33dbd9d26eb89bed5a5cf470becbef1d32ad404c03d237ec757377f3d5bca2fd237d2474a511289b0faaf91e057a875ce82599d43
+
+pkgname = cutter-appimage
