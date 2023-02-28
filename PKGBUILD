@@ -8,6 +8,7 @@ arch=("x86_64")
 url="https://github.com/swiftyapp/swifty"
 license=('GPL3')
 depends=(hicolor-icon-theme zlib)
+conflit=(swifty swifty-bin)
 provides=()
 options=(!strip)
 source=("${_pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Swifty-${pkgver}.AppImage")
