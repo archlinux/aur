@@ -1,0 +1,14 @@
+pkgbase = podman-desktop-companion-appimage
+	pkgdesc = Cross-platform desktop integrated application with consistent UI,Learning tool for the powerful podman command line interface
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://iongion.github.io/podman-desktop-companion/
+	arch = x86_64
+	license = MIT
+	depends = hicolor-icon-theme
+	depends = zlib
+	options = !strip
+	source = podman-desktop-companion-4.1.0.AppImage::https://github.com/iongion/podman-desktop-companion/releases/download/4.1.0-rc.28/podman-desktop-companion-x86_64-4.1.0-rc.28.AppImage
+	sha256sums = ac6f996348ed3a02b64225ea4ead93092f9b721c534f9ba49797a0a1ae56aef9
+
+pkgname = podman-desktop-companion-appimage
