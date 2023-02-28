@@ -1,0 +1,15 @@
+pkgbase = scene-git
+	pkgdesc = An Urbit ship interface from Tirrel
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/tirrel-corp/scene
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = nodejs
+	makedepends = yarn
+	conflicts = scene-git
+	source = scene-git::git+https://github.com/tirrel-corp/scene.git
+	b2sums = SKIP
+
+pkgname = scene-git
