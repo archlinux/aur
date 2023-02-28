@@ -1,25 +1,36 @@
 #!/bin/bash
 
 function main(){
-    if [[ ${XDG_SESSION_DESKTOP} = KDE ]] && [[ ${XDG_SESSION_TYPE} = wayland ]]; then
-        probeKwinVersion
-    else
-        electron /opt/electronic-wechat-uos-bin/resources/app.asar "$@"
+    if [[ $@ =~ '-xwayland' ]]; then
+        x11Launch
     fi
+    if [[ ${XDG_SESSION_DESKTOP} = KDE ]] && [[ ${XDG_SESSION_TYPE} = wayland ]]; then
+        probeKwinVersion "$@"
+    else
+        x11Launch "$@"
+    fi
+}
+
+function x11Launch(){
+    note '使用 XWayland / X11...'
+    electron /opt/electronic-wechat-uos-bin/resources/app.asar --ignore-gpu-blocklist --enable-gpu-rasterization --enable-zero-copy --disable-gpu-driver-bug-workarounds --enable-features=VaapiVideoDecoder,VaapiIgnoreDriverChecks "$@"
+    exit 0
 }
 
 function probeKwinVersion(){
     _kwinVersion=`kwin_wayland --version | cut -c 6- | cut -c -4`
     if [[ `echo "${_kwinVersion} > 5.27" | bc` = 1 ]]; then
-        waylandLaunch
+        waylandLaunch "$@"
     elif [[ ${_kwinVersion} = '5.27' ]]; then
-        waylandLaunch
+        waylandLaunch "$@"
     else
-        electron /opt/electronic-wechat-uos-bin/resources/app.asar "$@"
+        x11Launch "$@"
     fi
 }
 
 function waylandLaunch(){
+    note '使用 Wayland...'
+    note '在 KDE 系统设置中将虚拟键盘设置为 Fcitx5'
     _electronVer=`electron --version | cut -c 2-`
 
     if [[ `echo "${_electronVer} > 20" | bc` = 1 ]]; then
@@ -28,7 +39,19 @@ function waylandLaunch(){
         waylandFlag="--ozone-platform=wayland"
     fi
     electron /opt/electronic-wechat-uos-bin/resources/app.asar ${waylandFlag} --ignore-gpu-blocklist --enable-gpu-rasterization --enable-zero-copy --enable-wayland-ime --disable-gpu-driver-bug-workarounds --enable-features=VaapiVideoDecoder,VaapiIgnoreDriverChecks --disable-features=UseChromeOSDirectVideoDecoder "$@"
+    exit 0
 }
 
+function note() {
+	if [ -f /usr/bin/pamac ]; then
+		echo "  ==> [Info]: $@"
+	else
+        all_off="$(tput sgr0)"
+        bold="${all_off}$(tput bold)"
+        blue="${bold}$(tput setaf 4)"
+        yellow="${bold}$(tput setaf 3)"
+        printf "${blue}==>${yellow} [Info]:${bold} $1${all_off}\n"
+    fi
+}
 
 main

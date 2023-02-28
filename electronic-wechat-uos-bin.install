@@ -14,7 +14,7 @@ function post_install(){
     note '如果桌面通知无法送达, 请检查是否正确设置 libnotify'
     note '由于 KWin 5.27 支持 text_input_v1, Electronic WeChat 将会在 KDE 桌面上自动切换到 Wayland 后端'
     note '请在 KDE 系统设置中将虚拟键盘设置为 Fcitx5 并注销'
-    note '在Xwayland下请勿添加--use-gl=egl, 否则会导致程序卡顿'
+    note '若要在 KDE 下使用原生 Portal, 添加环境变量 GTK_USE_PORTAL=1'
     note "警告! 使用此软件可能导致暂时性或永久性的封号"
 }
 

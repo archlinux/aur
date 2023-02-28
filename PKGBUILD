@@ -2,21 +2,21 @@
 # Contributor: qing <qing at he dot email>
 pkgname=electronic-wechat-uos-bin
 pkgver=2.3.2
-pkgrel=4
+pkgrel=5
 epoch=
 pkgdesc="Linux下更好用的微信客户端. 更多功能, 更少bug. 使用系统Electron并利用UOS请求头修复了登陆问题."
 arch=('x86_64')
 url="https://github.com/Riceneeder/electronic-wechat"
 license=('MIT')
 groups=()
-depends=('nss' 'xdg-utils' 'libxss' 'electron' 'bc')
+depends=('nss' 'xdg-utils' 'libxss' 'electron' 'bc' 'libnotify')
 makedepends=()
 checkdepends=()
 optdepends=(
-	'xdg-desktop-portal-kde: KDE 下的原生对话框'
-	'xdg-desktop-portal-lxqt: lxqt 下的原生对话框'
-	'xdg-desktop-portal-gnome: Gnome 下的原生对话框'
-	'libnotify: 桌面通知, 需要搭配通知服务器使用'
+	'xdg-desktop-portal-kde: KDE 下的原生文件选取器'
+	'xdg-desktop-portal-lxqt: lxqt 下的原生文件选取器'
+	'xdg-desktop-portal-gnome: Gnome 下的原生文件选取器'
+	'xdg-desktop-portal: 原生文件选取器'
 )
 provides=(electronic-wechat-uos-bin)
 conflicts=(electronic-wechat-uos-bin)
@@ -30,8 +30,8 @@ source=(
 )
 noextract=()
 md5sums=(
-	'6a8a6846b136e1312233b4d926eba0b2'
-	'691c13f94f762b092571c728d108df2e'
+	'1c67c593ce6581b582ce8391e9f32944'
+	'ce7eb33de9571e8b8edca4685fc3e42d'
 	'600e74549ce2258c045d5c2f7689ea63'
 	'53d796e5a7c8c488998afdf5fb9020fe'
 )
