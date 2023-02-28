@@ -3,7 +3,7 @@
 pkgname=kwctl-bin
 pkgdesc='kwctl is the go-to CLI tool for Kubewarden users'
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('Apache')
 url='https://www.kubewarden.io/'
