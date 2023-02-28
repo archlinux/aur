@@ -2,7 +2,7 @@
 pkgname=yank-note-bin
 _pkgname=yank-note
 _electron=electron
-pkgver=3.50.1
+pkgver=3.50.2
 pkgrel=1
 pkgdesc='A Hackable Markdown Note Application for Programmers.'
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ source=("$_pkgname.sh")
 source_x86_64=("$_pkgname-$pkgver-amd64.deb::${url}/releases/download/v${pkgver}/Yank-Note-linux-amd64-${pkgver}.deb")
 source_aarch64=("$_pkgname-$pkgver-aarch64.deb::${url}/releases/download/v${pkgver}/Yank-Note-linux-arm64-${pkgver}.deb")
 sha256sums=('e12bac7e9f11a03487dea56fb1ac7afb4b2e7eedcc8e7eb1427b2c960cb830de')
-sha256sums_x86_64=('bf75703fb7f458f9e5fa9846717b9315e601554840dbac0329f6c226b7d0b1ee')
-sha256sums_aarch64=('0012540b9b530318e919ddc9f7fb55daeb99cec4a59cabac0266c97d1d0752f8')
+sha256sums_x86_64=('4d74bb109820639ed01c14056399f13fa3d6563e57d98e23a39a255677a4c00d')
+sha256sums_aarch64=('632f7c293d1f1893fd51f93ea3fe4b72ffe95cc8e9cfd402393c388bcb62a183')
 options=(!strip)
 prepare() {
 	cd ${srcdir}
