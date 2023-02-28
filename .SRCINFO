@@ -1,0 +1,16 @@
+pkgbase = ruby-quick_openai
+	pkgdesc = Convenience extensions for using OpenAI with Ruby
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/Aesthetikx/quick_openai
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-down
+	depends = ruby-ruby-openai
+	noextract = quick_openai-0.1.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/quick_openai-0.1.2.gem
+	sha1sums = c3201d100a6b7c7581684ca0d0373319b3325952
+
+pkgname = ruby-quick_openai
