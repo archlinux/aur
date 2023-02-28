@@ -5,9 +5,50 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [1.14.0] - 2023-02-21
+### Added
+* Add [example](examples/json) to translate JSON inputs. 
+* Added platform and python version information to the user-agent string that is sent with API calls, along with an opt-out.
+* Added method for applications that use this library to identify themselves in API requests they make.
+* Added `verify_ssl` option to `Translator` to control underlying `requests` session.
+  * Thanks to [andrefloriani](https://github.com/andrefloriani) for the 
+    suggestion in [#60](https://github.com/DeepLcom/deepl-python/issues/60).
+
+
+## [1.13.0] - 2023-01-26
+### Added
+* Add [example script](examples/mustache) to translate Mustache templates.
+* Add support for storing your API Key in a keyring via the `keyring` module.
+* Added a CI check for copyright headers.
+* New languages available: Korean (`'ko'`) and Norwegian (bokmål) (`'nb'`). Add language code constants and tests.
+
+  Note: older library versions also support the new languages, this update only adds new code constants.
+### Changed
+### Deprecated
+### Removed
+### Fixed
+* Copyright headers are updated for 2023
+### Security
+* Update `certifi` to resolve security advisory.
+  * `certifi` is a development-only dependency; library users are unaffected. 
+
+
+## [1.12.0] - 2023-01-09
+### Added
+* State explicitly that this library supports Python 3.11.
+* Added the `should_retry` and `http_status_code` properties to all exceptions
+  thrown by the library.
+### Fixed
+* Fix `py` dependency by upgrading `pytest` version to 7.2.0 for Python 3.7+. 
+  For Python 3.6 tests `pytest` needs to be added manually.
+* Remove unused `tox` dependency.
+* Update `coverage` dependency.
+* Also send options in API requests even if they are default values.
+
+
 ## [1.11.0] - 2022-09-26
 ### Added
-* Add formality options `'PREFER_LESS'` and `'PREFER_MORE'`.
+* Add formality options `PREFER_LESS` and `PREFER_MORE`.
 ### Changed
 * Requests resulting in `503 Service Unavailable` errors are now retried.
   Attempting to download a document before translation is completed will now
@@ -203,6 +244,9 @@ Version increased to avoid conflicts with old packages on PyPI.
 Initial version.
 
 
+[1.14.0]: https://github.com/DeepLcom/deepl-python/compare/v1.13.0...v1.14.0
+[1.13.0]: https://github.com/DeepLcom/deepl-python/compare/v1.12.0...v1.13.0
+[1.12.0]: https://github.com/DeepLcom/deepl-python/compare/v1.11.0...v1.12.0
 [1.11.0]: https://github.com/DeepLcom/deepl-python/compare/v1.10.0...v1.11.0
 [1.10.0]: https://github.com/DeepLcom/deepl-python/compare/v1.9.0...v1.10.0
 [1.9.0]: https://github.com/DeepLcom/deepl-python/compare/v1.8.0...v1.9.0

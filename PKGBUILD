@@ -1,20 +1,21 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-deepl
-pkgver=1.11.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc="DeepL language translation API"
 arch=('any')
 url="https://github.com/deeplcom/deepl-python"
 license=('MIT')
 depends=('python-requests')
+optdepends=('python-keyring')
 makedepends=('git' 'python-poetry-core' 'python-build' 'python-installer')
 install=deepl.install
 changelog=CHANGELOG.md
 source=("$pkgname::git+$url#tag=v$pkgver?signed"
         'remove-datafiles.patch')
 sha256sums=('SKIP'
-            'eea3f558773d785b607cde063fe148ed131442a834590b86a2f929b7602065f6')
+            '963de9fdb04134b7c698a2e440aa7f5fd870685673c5240ecfbb26455eff00b7')
 validpgpkeys=('DBDC63E97C526204335805941FA7A782EC90634E') ## Daniel Jones
 
 prepare() {
@@ -30,8 +31,8 @@ build() {
 
 package() {
 	cd "$pkgname"
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
+	python -m installer --destdir="$pkgdir/" dist/*.whl
 	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-	install -d "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s "$_site/deepl-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -sv "$_site/deepl-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }

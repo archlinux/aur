@@ -1,16 +1,12 @@
 diff --git a/pyproject.toml b/pyproject.toml
-index 25a1faf..ca346a9 100644
+index 98f0f06..8c1bda0 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
-@@ -20,11 +20,6 @@ classifiers = [
-     "Programming Language :: Python :: 3.6",
+@@ -21,7 +21,6 @@ classifiers = [
      "Programming Language :: Python :: 3.10",
+     "Programming Language :: Python :: 3.11",
  ]
--include = [
--    "CHANGELOG.md",
--    "LICENSE",
--    "SECURITY.md",
--]
+-include = ["CHANGELOG.md", "LICENSE", "SECURITY.md"]
  
  [tool.poetry.urls]
  "Bug Tracker" = "https://github.com/DeepLcom/deepl-python/issues"
