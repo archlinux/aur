@@ -1,0 +1,16 @@
+pkgbase = guile-lzma
+	pkgdesc = Guile bindings for liblzma
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://ngyro.com/software/guile-lzma.html
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	license = GPL3
+	depends = guile
+	depends = guile-bytestructures
+	depends = xz
+	source = https://files.ngyro.com/guile-lzma/guile-lzma-0.1.1.tar.gz
+	sha256sums = 2b866896d672ed4d39008f4b5336750d7897560a06678365f5c5a72bd2fcce5e
+
+pkgname = guile-lzma
