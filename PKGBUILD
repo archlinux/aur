@@ -3,7 +3,7 @@
 pkgname=betaflight-configurator-bin
 _pkgname=betaflight-configurator
 pkgver=10.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Crossplatform configuration tool for the Betaflight flight control system"
 arch=('x86_64')
 url="https://github.com/betaflight/betaflight-configurator"
@@ -20,5 +20,9 @@ package() {
   install -Dm644 "$srcdir/Betaflight Configurator/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
   cp -dpr --no-preserve=ownership "$srcdir/Betaflight Configurator" "$pkgdir/opt/betaflight/betaflight-configurator"
   ln -s "/opt/betaflight/betaflight-configurator/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  # Perm fixes https://github.com/betaflight/betaflight-configurator/issues/3009#issuecomment-1260777532
+  chmod +xr /opt/betaflight/betaflight-configurator/chrome_crashpad_handler
+  chmod +xr /opt/betaflight/betaflight-configurator/betaflight-configurator
+  chmod -R +Xr /opt/betaflight/betaflight-configurator/
 }
 
