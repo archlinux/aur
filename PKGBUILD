@@ -14,7 +14,7 @@ install=flowee-pay.install
 source=("https://codeberg.org/Flowee/pay/archive/$pkgver.tar.gz"
     "https://flowee.org/products/pay/blockheaders")
 sha256sums=('81cf813e914a2b9412a4232130aa231016b8d0fbc16e2cd23aec669854a38952'
-    '8c2dfde998b4472aea25daa1e4bfe7bcca0b765145ee740bd8cfb0152400abce')
+    '310eead86791f205dae99d192de9f044c9060bba7d37b9fbde45fc69634cf96a')
 
 build() {
   mkdir -p build
