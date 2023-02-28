@@ -3,7 +3,7 @@
 # Contributor: Adrian Perez de Castro <aperez@igalia.com>
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-hidpi-xprop-git
-pkgver=0.17.0.20230221.115526
+pkgver=0.17.0.20230228.144402
 pkgrel=1
 license=(MIT)
 pkgdesc='Modular Wayland compositor library (git version, with patches)'
@@ -15,6 +15,7 @@ options=(debug)
 depends=(
 	glslang
 	libinput
+	libdisplay-info
 	libxcb
 	opengl-driver
 	xcb-util-errors

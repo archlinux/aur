@@ -1,6 +1,6 @@
 pkgbase = wlroots-hidpi-xprop-git
 	pkgdesc = Modular Wayland compositor library (git version, with patches)
-	pkgver = 0.17.0.20230221.115526
+	pkgver = 0.17.0.20230228.144402
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/wlroots/wlroots
 	install = wlroots-hidpi-xprop-git.install
@@ -13,6 +13,7 @@ pkgbase = wlroots-hidpi-xprop-git
 	makedepends = xorgproto
 	depends = glslang
 	depends = libinput
+	depends = libdisplay-info
 	depends = libxcb
 	depends = opengl-driver
 	depends = xcb-util-errors
