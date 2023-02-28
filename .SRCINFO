@@ -1,6 +1,6 @@
 pkgbase = systemmodeler
 	pkgdesc = An easy-to-use, next-generation modeling and simulation environment for cyber-physical systems.
-	pkgver = 12.0.0
+	pkgver = 13.2.0
 	pkgrel = 1
 	url = https://www.wolfram.com/system-modeler/
 	install = systemmodeler.install
@@ -8,8 +8,8 @@ pkgbase = systemmodeler
 	arch = x86_64
 	license = proprietary
 	options = !strip
-	source = file://SystemModeler_12.0.0_LINUX.sh
-	md5sums = 2aedcf8e631c0b25854b515dccf2b3ad
+	source = file://SystemModeler_13.2.0_LINUX.sh
+	md5sums = 3b112c367304dfee696e5c8b3e30f1a1
 
 pkgname = systemmodeler
 
