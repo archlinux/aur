@@ -2,7 +2,7 @@
 
 _pkgname=helmrelease-tools
 pkgname=$_pkgname
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=0
 pkgdesc="ZSH functions to work with flux HelmReleases"
 license=('APACHE')
