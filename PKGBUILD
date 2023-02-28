@@ -3,7 +3,7 @@
 
 pkgname=steam-native-runtime
 pkgver=1.0.0.75
-pkgrel=2
+pkgrel=3
 pkgdesc='Native replacement for the Steam runtime using system libraries'
 arch=('x86_64')
 url='https://wiki.archlinux.org/index.php/Steam/Troubleshooting#Native_runtime'
@@ -21,7 +21,7 @@ depends=(
   'lib32-libjpeg6' 'lib32-libnm' 'lib32-pipewire' 'lib32-libpng12' 'lib32-libpulse'
   'lib32-librtmp0' 'lib32-libsm' 'lib32-libtheora' 'lib32-libtiff4'
   'lib32-libudev0-shim' 'lib32-libusb' 'lib32-libva' 'lib32-libvdpau'
-  'lib32-libvorbis' 'lib32-libvpx1.3' 'lib32-libwrap' 'lib32-libxcomposite'
+  'lib32-libvorbis' 'lib32-libvpx1.3' 'lib32-libxcomposite'
   'lib32-libxcursor' 'lib32-libxft' 'lib32-libxi' 'lib32-libxinerama'
   'lib32-libxmu' 'lib32-libxrandr' 'lib32-libxrender' 'lib32-libxtst'
   'lib32-libxxf86vm' 'lib32-nspr' 'lib32-openal'
@@ -31,7 +31,7 @@ depends=(
   'libcurl-compat' 'libcurl-gnutls' 'dbus' 'libdrm' 'libgcrypt15' 'libice'
   'libidn11' 'libjpeg6' 'libibus' 'libnm' 'libpng12' 'libpulse' 'librsvg' 'librtmp0'
   'libsm' 'libtheora' 'libtiff4' 'libudev0-shim' 'libusb' 'libva' 'libvdpau'
-  'libvorbis' 'libvpx1.3' 'libwrap' 'libxcomposite' 'libxcursor' 'libxft'
+  'libvorbis' 'libvpx1.3' 'libxcomposite' 'libxcursor' 'libxft'
   'libxi' 'libxinerama' 'libxmu' 'libxrandr' 'libxrender' 'libxtst'
   'libxxf86vm' 'nspr' 'openal' 'openssl-1.1' 'pango' 'sdl' 'sdl2'
   'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'sdl_image' 'sdl_mixer' 'sdl_ttf'
