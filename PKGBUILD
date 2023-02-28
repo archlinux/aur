@@ -14,76 +14,50 @@ options=('!strip')
 source=("$pkgname-$pkgver.tgz::https://github.com/nextcloud-releases/impersonate/releases/download/v$pkgver/impersonate-v$pkgver.tar.gz")
 sha256sums=('c30d7545f732d325d4e7ef30feb3974711feede0fa1bc4409b77d9dcfa5781d3')
 
-_get_nextcloud_versions() {
-  _app_min_major_version="$(xq '.info.dependencies.nextcloud["@min-version"]' "${_name}/appinfo/info.xml"| sed 's/"//g')"
-  _app_max_major_version="$(xq '.info.dependencies.nextcloud["@max-version"]' "${_name}/appinfo/info.xml"| sed 's/"//g')"
-  _app_max_major_version=$(expr ${_app_max_major_version} + 1)
+# BEGIN boilerplate nextcloud app version clamping, see also other packages in group
+# 1. Call respective function helpers in check() and package() *after* cd'ing to the source directory
+# 2. Add makedepends+=(nextcloud yq)
+_phps=(php php-legacy)
+_get_supported_ranges() {
+  _app_min_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@min-version"] | values')"
+  _app_max_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@max-version"] | values | tonumber | .+1')"
+  _app_min_php="$(< appinfo/info.xml xq -r '.info.dependencies.php["@min-version"] | values')"
+  _app_max_php="$(< appinfo/info.xml xq -r '.info.dependencies.php["@max-version"] | values | tonumber | .+0.1')"
 }
-
-_get_php_versions() {
-  local _phps=(php7 php)
-
-  _app_min_php="$(xq '.info.dependencies.php["@min-version"]' "$_name/appinfo/info.xml"| sed 's/"//g')"
-  _app_max_php="$(xq '.info.dependencies.php["@max-version"]' "$_name/appinfo/info.xml"| sed 's/"//g')"
-
-  if [[ $_app_max_php != 'null' ]]; then
-    _app_max_php="$(echo $_app_max_php | awk -F '.' '{print $1"."$2+1}')"
-  fi
-
-  _system_php=""
-  for _php in "${_phps[@]}"; do
-    if command -v "$_php" > /dev/null; then
-      if [[ -z "$_system_php" ]]; then
-        _system_php="$_php"
-      fi
-    fi
-  done
+_unsupported_range() {
+  printf "%s requires %s %s, but %s %s is provided.\n" "$pkgname" "$1" "$2" "$1" "$3"
+  exit 1
 }
+_nextcloud_app_check() {
+  _get_supported_ranges
+  for _php in "${_phps[@]}"; do command -v "$_php" > /dev/null && break; done
+  local _nextcloud_ver="$("$_php" <(cat /usr/share/webapps/nextcloud/version.php; echo 'print($OC_VersionString);'))"
+  local _php_ver="$("$_php" -r 'print(phpversion());')"
+  [[ "$(vercmp "${_app_min_nextcloud:-0}" "$_nextcloud_ver")" -le 0 ]] || \
+    _unsupported_range nextcloud "=> $_app_min_nextcloud" "$_nextcloud_ver"
+  [[ "$(vercmp "${_app_max_nextcloud:-999}" "$_nextcloud_ver")" -gt 0 ]] || \
+    _unsupported_range nextcloud "< $_app_max_nextcloud" "$_nextcloud_ver"
+  [[ "$(vercmp "${_app_min_php:-0}" "$_php_ver")" -le 0 ]] || \
+    _unsupported_range php ">= $_app_min_php" "$_php_ver"
+  [[ "$(vercmp "${_app_max_php:-999}" "$_php_ver")" -gt 0 ]] || \
+    _unsupported_range php "< $_app_max_php" "$_php_ver"
+}
+_nextcloud_app_package() {
+  _get_supported_ranges
+  depends+=("nextcloud>=${_app_min_nextcloud:-0}" "nextcloud<${_app_max_nextcloud:-999}")
+  depends+=("php-interpreter${_app_min_php:+>=$_app_min_php}" ${_app_max_php:+"php-interpreter<$_app_max_php"})
+}
+# END boilerplate nextcloud app version clamping
 
 check() {
-  local _app_min_major_version
-  local _app_max_major_version
-  _get_nextcloud_versions
-  _get_php_versions
-
-  local _nextcloud_major_version="$(rg "OC_Version = " /usr/share/webapps/nextcloud/version.php |cut -d'(' -f2| cut -d ',' -f1)"
-  if [[ "$(vercmp "${_nextcloud_major_version}" "${_app_min_major_version}")" -lt 0 ]] || [[ "$(vercmp "${_nextcloud_major_version}" "${_app_max_major_version}")" -gt 0 ]] ; then
-    printf "%s requires nextcloud >= %s/ nextcloud <= %s, but nextcloud %s is provided.\n" "$pkgname" "${_app_min_major_version}" "${_app_max_major_version}" "${_nextcloud_major_version}"
-    exit 1
-  fi
-
-  local _php_version="$($_system_php --version |head -n1 |cut -d ' ' -f2 |sed 's/.[0-9]*$//g')"
-  if [[ "$(vercmp "$_php_version" "$_app_min_php" )" -lt 0 ]]; then
-    printf "%s requires php-interpreter >= %s, but %s is provided\n" $pkgname $_app_min_php $_php_version
-    exit 1
-  fi
-  if [[ $_app_max_php != 'null' ]]; then
-    if [[ "$(vercmp "$_php_version" "$_app_max_php" )" -ge 0 ]]; then
-      printf "%s requires php-interpreter < %s, but %s is provided\n" $pkgname $_app_max_php $_php_version
-      exit 1
-    fi
-  fi
+  cd $_name
+  _nextcloud_app_check
 }
 
 package() {
-  _get_nextcloud_versions
-  _get_php_versions
-
-  depends=("nextcloud>=${_app_min_major_version}" "nextcloud<${_app_max_major_version}")
-  if [[ "$_app_min_php" != 'null' ]]; then
-    depends+=(
-      "php-interpreter>=$_app_min_php"
-    )
-  fi
-  if [[ "$_app_max_php" != 'null' ]]; then
-    depends+=(
-      "php-interpreter<$_app_max_php"
-    )
-  fi
-  if [[ "$_app_min_php" == 'null' ]] && [[ "$_app_max_php" == 'null' ]]; then
-    depends+=(php-interpreter)
-  fi
-
   install -d "${pkgdir}"/usr/share/webapps/nextcloud/apps
   cp -a "${srcdir}"/impersonate "${pkgdir}"/usr/share/webapps/nextcloud/apps/impersonate
+
+  cd $_name
+  _nextcloud_app_package
 }
