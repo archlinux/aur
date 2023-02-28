@@ -1,0 +1,24 @@
+pkgbase = spotify-qt-git
+	pkgdesc = Lightweight Spotify client using Qt
+	pkgver = 3.9.r294.ge0a2832a
+	pkgrel = 1
+	url = https://github.com/kraxarn/spotify-qt
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	depends = qt5-base
+	depends = qt5-svg
+	depends = hicolor-icon-theme
+	optdepends = librespot: Recommended playback client
+	optdepends = spotifyd: Recommended playback client
+	conflicts = spotify-qt
+	source = spotify-qt-git::git+https://github.com/kraxarn/spotify-qt#branch=master
+	sha256sums = SKIP
+
+pkgname = spotify-qt-git
