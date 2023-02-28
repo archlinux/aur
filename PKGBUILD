@@ -21,7 +21,7 @@ optdepends=('ffmpeg: H264/AAC/MP3 decoding'
             'hunspell-en_US: Spell checking, American English')
 provides=("firefox=$pkgver")
 conflicts=('firefox')
-source=("http://archive.mozilla.org/pub/firefox/candidates/110.0.1-candidates/build1/linux-x86_64/en-US/firefox-$pkgver.tar.bz2"
+source=("http://archive.mozilla.org/pub/firefox/releases/110.0.1/linux-x86_64/en-US/firefox-$pkgver.tar.bz2"
         $_pkgname.sh
         $_pkgname.desktop)
 sha256sums=('e3a52e822029c462deb8cd84713a1d2d06eaaaa6007ff5c96a6faa5e99983347'
