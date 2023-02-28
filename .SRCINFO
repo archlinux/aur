@@ -1,14 +1,12 @@
 pkgbase = bpir64-mkimage
 	pkgdesc = Mkimage tool modified to stretch the image leaving empty space on sectors 2 through 34, so a GPT table can be used without problems.
-	pkgver = 2021.10
-	pkgrel = 2
+	pkgver = 2023.01
+	pkgrel = 1
 	url = https://github.com/u-boot/u-boot
 	arch = aarch64
 	license = GPL3
-	source = https://github.com/u-boot/u-boot/archive/refs/tags/v2021.10.tar.gz
-	source = mtkimage-buffer-inc.patch
+	source = https://github.com/u-boot/u-boot/archive/refs/tags/v2023.01.tar.gz
 	source = mtkimage-gpt-expand.patch
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
