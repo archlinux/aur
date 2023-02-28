@@ -2,8 +2,8 @@
 
 _pkgname=lb-planner
 pkgname=${_pkgname}-git
-pkgver=r644.75110dc
-pkgrel=6
+pkgver=r819.eb9a581
+pkgrel=1
 pkgdesc='a Planning tool for students at the TGM Vienna (unstable version)'
 provides=('lb-planner')
 arch=('any')
@@ -31,7 +31,7 @@ prepare() {
 build() {
 	cd "$_pkgname"
 	fvm flutter config --enable-linux-desktop #TODO: check if this is even necessary
-	fvm flutter build linux --no-sound-null-safety --release
+	fvm flutter build linux --no-sound-null-safety --release --dart-define=LB_PLANNER_SETUP_TYPE=aur-git
 }
 
 package() {
