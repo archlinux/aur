@@ -1,22 +1,23 @@
 pkgbase = ignition-msgs-5
-	pkgdesc = Standard set of message definitions, used by Ignition Transport, and other applications.
-	pkgver = 5.9.1
-	pkgrel = 2
-	url = https://ignitionrobotics.org/libs/msgs
+	pkgdesc = Messages for Gazebo robot simulation.
+	pkgver = 5.11.0
+	pkgrel = 1
+	url = https://gazebosim.org/libs/msgs
 	arch = i686
 	arch = x86_64
 	groups = development
 	license = Apache
-	makedepends = ignition-cmake>=2
+	makedepends = ignition-cmake=2
 	makedepends = ruby-ronn
 	makedepends = doxygen
 	makedepends = tinyxml2
 	depends = protobuf
 	depends = protobuf-c
-	depends = ignition-math>=6
+	depends = ignition-math=6
+	depends = ignition-utils
 	depends = ignition-tools
-	source = ignition-msgs-5.9.1::https://github.com/Sir-Photch/ign-msgs/archive/ignition-msgs5_5.9.1.tar.gz
-	sha256sums = eeeb7f403951d3d3eb6c745c802062e7d957cb01fb18e465f30f9929f0002728
+	depends = python
+	source = ignition-msgs-5-5.11.0::https://github.com/gazebosim/gz-msgs/archive/ignition-msgs5_5.11.0.tar.gz
+	sha256sums = 3cf31cabd0d21fc9cb111aafedd65c13d5523a7585572e85657681baf1878da7
 
 pkgname = ignition-msgs-5
-
