@@ -1,14 +1,15 @@
 pkgbase = r-stringi
-	pkgdesc = Character String Processing Facilities
-	pkgver = 1.7.8
-	pkgrel = 2
+	pkgdesc = Fast and Portable Character String Processing Facilities
+	pkgver = 1.7.12
+	pkgrel = 1
 	url = https://cran.r-project.org/package=stringi
 	arch = i686
 	arch = x86_64
 	license = custom
-	depends = r>=3.1
 	depends = icu>=55
-	source = https://cran.r-project.org/src/contrib/stringi_1.7.8.tar.gz
-	sha256sums = 538918b1cd6ed1d8a2dd5ab146ba800a088e99f93c52dcd82615b6e127478b1c
+	depends = r>=3.1
+	depends = r-cpp11
+	source = https://cran.r-project.org/src/contrib/stringi_1.7.12.tar.gz
+	b2sums = 7d368e7e5bb439c7e64c68f2a26eae4e7b48a109cde617aa75dcbce839794711accaf1725df9033bcf8277d82430436b61de037f02ad6724bb988fe4b5854879
 
 pkgname = r-stringi
