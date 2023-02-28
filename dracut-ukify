@@ -140,7 +140,7 @@ function gen_image() {
     os_release=$(mktemp)
     grep -v '^BUILD_ID=' /etc/os-release > "$os_release"
     echo "BUILD_ID=\"$version_name\"" >> "$os_release"
-    echo "VERSION_ID=\"$pkgbase\"" >> "$os_release"
+    echo "VERSION_ID=\"$(variant_name "$pkgbase" "$variant")\"" >> "$os_release"
 
     declare -a ukify_args=("${ukify_global_args[@]}")
     ukify_args+=(--uname "$version")
