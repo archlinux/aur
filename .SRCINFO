@@ -1,6 +1,6 @@
-pkgbase = dotnet-core-preview-bin
+pkgbase = dotnet-preview-bin
 	pkgver = 8.0.0.sdk100+preview.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.microsoft.com/net/core
 	arch = armv7h
 	arch = aarch64

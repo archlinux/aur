@@ -3,7 +3,7 @@
 # Contributor: Max Liebkies <mail@maxliebkies.de>
 # Contributor: Attila Greguss <floyd0122[at]gmail[dot]com>
 
-pkgbase=dotnet-core-preview-bin
+pkgbase=dotnet-preview-bin
 pkgname=(
   dotnet-host-preview-bin
   aspnet-runtime-preview-bin
@@ -18,7 +18,7 @@ _hostver=8.0.0-preview.1.23110.8
 _dotnetruntimever=8.0.0-preview.1.23110.8
 _aspnetruntimever=8.0.0-preview.1.23112.2
 _sdkver=8.0.100-preview.1.23115.2
-pkgrel=1
+pkgrel=2
 arch=(armv7h aarch64 x86_64)
 url=https://www.microsoft.com/net/core
 license=(MIT)
