@@ -78,7 +78,7 @@ prepare() {
     echo "================================================================================"
     echo
     echo "Fetching ${REMOTE_PREFIX}${REMOTE} ${COMMIT}"
-    git fetch ${REMOTE_URL} ${COMMIT}
+    git fetch -t ${REMOTE_URL} ${COMMIT}
     git checkout -f FETCH_HEAD
   fi
 
