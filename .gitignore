@@ -1,16 +1,7 @@
-# from https://github.com/github/gitignore/blob/master/ArchLinuxPackages.gitignore
-*.tar
-*.tar.*
-*.rpm
-*.jar
-*.exe
-*.msi
-*.zip
-*.tgz
-*.log
-*.log.*
+# Ignore everything
+*
 
-*/
-*.orig
-*.bak
-*.backup
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
