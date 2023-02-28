@@ -2,7 +2,7 @@
 # Contributor: Bumsik Kim <k.bumsik@gmail.com>
 
 pkgname=uftrace
-pkgver=0.13
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="Function graph tracer for C/C++/Rust"
 arch=('x86_64')
@@ -13,9 +13,9 @@ makedepends=('pandoc')
 # Disable LTO due to upstream issue
 # https://github.com/namhyung/uftrace/issues/1343
 options=('!lto')
-source=("https://github.com/namhyung/uftrace/archive/v$pkgver.tar.gz")
+source=("uftrace-v${pkgver}.tar.gz"::"https://github.com/namhyung/uftrace/archive/v${pkgver}.tar.gz")
 # Use updpkgsums to update the checksum
-sha256sums=('cffae82c68446c20cc3c7e87e71e57498805767a0d4085b4846f3c49f9e472d9')
+sha256sums=('88b59923fdd9804fd29da8a784cd1b39837b1b735fc3be4165b3932eca3661ad')
 
 build() {
     cd "${pkgname}-${pkgver}"
