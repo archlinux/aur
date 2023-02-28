@@ -6,14 +6,14 @@ _gitbranch="main"
 
 pkgname="${_pkgname}-git"
 pkgver=v1.1.2.r45.gd7136a9
-pkgrel=1
+pkgrel=2
 pkgdesc="Note-taking and tasks management tool"
 arch=('any')
 url="https://github.com/${_gitauthor}/${_pkgname}"
 license=('GPL3')
 groups=()
 depends=('bash' 'ripgrep' 'sed' 'fd' 'fzf' 'bat')
-makedepends=('git')
+makedepends=('git' 'make')
 optdepends=()
 provides=("${_pkgname}")
 conflicts=()

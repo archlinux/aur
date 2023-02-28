@@ -1,11 +1,12 @@
 pkgbase = journal-git
 	pkgdesc = Note-taking and tasks management tool
 	pkgver = v1.1.2.r45.gd7136a9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/danisztls/journal
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = make
 	depends = bash
 	depends = ripgrep
 	depends = sed
