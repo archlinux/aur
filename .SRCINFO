@@ -1,7 +1,7 @@
 pkgbase = home-assistant-simple-thermostat
 	pkgdesc = A different take on the thermostat card for Home Assistant
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nervetattoo/simple-thermostat
 	arch = any
 	license = MIT
