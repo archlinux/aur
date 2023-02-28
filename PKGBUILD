@@ -1,49 +1,29 @@
 # Maintainer: zhullyb <zhullyb [at] outlook dot com>
-
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wolai-bin
 _pkgname=wolai
-pkgver=1.1.3
+pkgver=1.2.6
 pkgrel=2
 pkgdesc="wolai"
 arch=("x86_64")
 url="https://www.wolai.com/"
 license=('Custom')
-depends=("gconf" "libnotify" "libxss" "libxtst" "electron13")
-makedepends=("asar")
-provides=('wolai')
+depends=(hicolor-icon-theme zlib)
+provides=()
 options=(!strip)
-source=("https://cdn.wostatic.cn/dist/installers/wolai-${pkgver}.AppImage"
-        "start.sh")
-md5sums=('2009b325318debf120fb99c1019bd117'
-         '464b6d4557b2ebc66667f1b8b3f05b57')
-_filename=${_pkgname}-${pkgver}.AppImage
-
+source=("${_pkgname}-${pkgver}.AppImage::https://cdn.wostatic.cn/dist/installers/${_pkgname}-${pkgver}.AppImage")
+_install_path="/opt/appimages"
+sha256sums=('8e26a5be413d5cd9efe2bf5f37897d443fc6e7236e4ef2c1502ea69d59760013')
 prepare() {
-    cd "${srcdir}"
-    chmod +x ${_filename}
-    ./${_filename} --appimage-extract
-    sed -i "s|^Exec=AppRun|Exec=wolai %U|g" "squashfs-root/${_pkgname}.desktop"
-
-    asar extract ${srcdir}/squashfs-root/resources/app.asar ${srcdir}/new_app
-    mv  ${srcdir}/squashfs-root/resources/app-update.yml ${srcdir}/new_app/dev-app-update.yml
-    asar pack ${srcdir}/new_app ${srcdir}/squashfs-root/resources/app.asar
-}
-
-package() {
-    cd ${srcdir}/squashfs-root
-    install -Dm644 ${srcdir}/squashfs-root/${_pkgname}.png ${pkgdir}/usr/share/icons/${_pkgname}.png
-    install -Dm644 ${srcdir}/squashfs-root/${_pkgname}.desktop ${pkgdir}/usr/share/applications/${_pkgname}.desktop
-
-    mkdir -p ${pkgdir}/usr/lib/${_pkgname}
-    mv ${srcdir}/squashfs-root/usr/lib/{libappindicator.so.1,libindicator.so.7} ${pkgdir}/usr/lib/${_pkgname}/
-    install -Dm644 ${srcdir}/squashfs-root/resources/app.asar ${pkgdir}/usr/lib/${_pkgname}/resources/app.asar
-
-    chmod 644 -R ${srcdir}/squashfs-root/resources/assets/
-    chmod 755 ${srcdir}/squashfs-root/resources/assets/
-    chmod 755 ${srcdir}/squashfs-root/resources/assets/icons/
-    mv ${srcdir}/squashfs-root/resources/assets/ ${pkgdir}/usr/lib/${_pkgname}/resources/
-
-    mkdir -p ${pkgdir}/usr/bin
-    install -Dm755 ${srcdir}/start.sh ${pkgdir}/usr/bin/wolai
+    chmod a+x "${_pkgname}-${pkgver}.AppImage"
+    "./${_pkgname}-${pkgver}.AppImage" --appimage-extract
+    sed 's/Exec=AppRun/\#Exec=AppRun/g' -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
+    echo "Exec=${_install_path}/${_pkgname}.AppImage" >> "${srcdir}/squashfs-root/${_pkgname}.desktop"
 } 
- 
+package() {
+    install -Dm755 "${srcdir}/${_pkgname}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${_pkgname}.AppImage"
+    for i in 16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
+        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${i}/apps/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/${i}/apps/${_pkgname}.png"
+    done
+    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+}

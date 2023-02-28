@@ -1,21 +1,14 @@
 pkgbase = wolai-bin
 	pkgdesc = wolai
-	pkgver = 1.1.3
+	pkgver = 1.2.6
 	pkgrel = 2
 	url = https://www.wolai.com/
 	arch = x86_64
 	license = Custom
-	makedepends = asar
-	depends = gconf
-	depends = libnotify
-	depends = libxss
-	depends = libxtst
-	depends = electron13
-	provides = wolai
+	depends = hicolor-icon-theme
+	depends = zlib
 	options = !strip
-	source = https://cdn.wostatic.cn/dist/installers/wolai-1.1.3.AppImage
-	source = start.sh
-	md5sums = 2009b325318debf120fb99c1019bd117
-	md5sums = 464b6d4557b2ebc66667f1b8b3f05b57
+	source = wolai-1.2.6.AppImage::https://cdn.wostatic.cn/dist/installers/wolai-1.2.6.AppImage
+	sha256sums = 8e26a5be413d5cd9efe2bf5f37897d443fc6e7236e4ef2c1502ea69d59760013
 
 pkgname = wolai-bin
