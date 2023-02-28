@@ -1,6 +1,6 @@
 pkgbase = blaze
 	pkgdesc = An open-source, high-performance C++ math library for dense and sparse arithmetic.
-	pkgver = 3.8.1
+	pkgver = 3.8.2
 	pkgrel = 1
 	url = https://bitbucket.org/blaze-lib/blaze
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = blaze
 	makedepends = blas
 	makedepends = lapack
 	provides = blaze
-	source = blaze-3.8.1.tar.gz::https://bitbucket.org/blaze-lib/blaze/get/v3.8.1.tar.gz
-	sha256sums = 4ad32a786c45285a66a1375b39e65908e604d10596f5863c63b7ef9a13808187
+	source = blaze-3.8.2.tar.gz::https://bitbucket.org/blaze-lib/blaze/get/v3.8.2.tar.gz
+	sha256sums = 13a2199e75b7a8540e84032b0b4aaff93148a8d221e2d410230d7a58f5dfbbd5
 
 pkgname = blaze
