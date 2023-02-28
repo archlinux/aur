@@ -1,0 +1,14 @@
+pkgbase = guile-quickcheck
+	pkgdesc = Randomized property-based testing for Guile
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://ngyro.com/software/guile-quickcheck.html
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	license = GPL3
+	depends = guile
+	source = https://files.ngyro.com/guile-quickcheck/guile-quickcheck-0.1.0.tar.gz
+	sha256sums = cb99ac5be99b43b61eb9c452d953543e890e2a83fc83acac289d94316888bc0e
+
+pkgname = guile-quickcheck
