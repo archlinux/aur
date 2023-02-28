@@ -1,6 +1,6 @@
 # Maintainer: Conrad Hoffmann <ch@bitfehler.net>
 pkgname=makeimg
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Declarative way to build Arch or Alpine Linux images'
 arch=(any)
@@ -25,7 +25,7 @@ provides=('makeimg')
 conflicts=('makeimg-git')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://git.sr.ht/~bitfehler/makeimg/archive/v${pkgver}.tar.gz")
-sha512sums=('5fddcc0ec5bd0a1df7cce232a25f8c382eb0f98bb5f0cc6edbd8f13a88fe99f542135b5a942ccb3fcaab940d3bdac1472302a4997a45872d25202d90765c7512')
+sha512sums=('c9988dc5f0a41c39a929300e8254270aa12eb4e9dd4f8087d19da5265b980c8f0c87389bec8fb79208eec69588d9cfb9a8e8ca74bc2fc8c7c665394cb0179157')
 
 build() {
   cd "${pkgname}-v${pkgver}"
