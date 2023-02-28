@@ -1,17 +1,17 @@
 pkgbase = ispc-bin
 	pkgdesc = Intel SPMD program compiler
-	pkgver = 1.18.1
+	pkgver = 1.19.0
 	pkgrel = 1
 	url = https://ispc.github.io/
 	arch = x86_64
 	license = BSD
 	depends = glibc
-	optdepends = intel-compute-runtime: GPU support
-	optdepends = level-zero-loader: GPU support
-	optdepends = openmp: GPU support
-	provides = ispc=1.18.1
+	optdepends = intel-compute-runtime: for targeting GPU
+	optdepends = level-zero-loader: for targeting GPU
+	optdepends = openmp: for targeting GPU
+	provides = ispc=1.19.0
 	conflicts = ispc
-	source_x86_64 = ispc-v1.18.1-linux.tar.gz::https://github.com/ispc/ispc/releases/download/v1.18.1/ispc-v1.18.1-linux.tar.gz
-	sha256sums_x86_64 = 7faf59f26c09ceffe6165805d9e40b6582ddc1417c12786a214f4536e3388b47
+	source_x86_64 = ispc-v1.19.0-linux.tar.gz::https://github.com/ispc/ispc/releases/download/v1.19.0/ispc-v1.19.0-linux.tar.gz
+	sha256sums_x86_64 = f99a0afd4c8b5e8aceb46af8e90a7ba0813bf4c4111044ced27d498591304f9c
 
 pkgname = ispc-bin
