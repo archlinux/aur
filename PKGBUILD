@@ -3,13 +3,13 @@
 
 _base=textual
 pkgname=python-${_base}
-pkgver=0.10.1
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="Text User Interface using Rich"
 arch=(any)
 url="https://github.com/Textualize/${_base}"
 license=(MIT)
-depends=(python-rich python-importlib-metadata python-nanoid)
+depends=(python-rich python-importlib-metadata python-typing_extensions python-nanoid)
 makedepends=(python-build python-installer python-poetry-core)
 #checkdepends=(python-pytest python-aiohttp python-msgpack python-jinja python-syrupy python-click python-time-machine python-pytest-aiohttp python-pytest-asyncio)
 optdepends=('python-aiohttp: for HTTP server'
@@ -17,7 +17,7 @@ optdepends=('python-aiohttp: for HTTP server'
   'python-msgpack: for MessagePack serializer'
   'python-httpx: for async support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('1b8e584dc2872a5067bcb7e1568c77c92d4313448888bc2e244a222f00699468fd0153c78e8dc91c4e2b9c0149d4248bddb7d37d9eee3e68e4c334abb3eee951')
+sha512sums=('d84801c18f8a0b6316c9b8dcfa94fb4564e35949396b88461b9043dec43ce4d00b20ce927be48b8b7c80d3049bd17a4b163078666cb82889c4b9a934810c45cc')
 
 build() {
   cd ${_base}-${pkgver}
