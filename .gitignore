@@ -1,4 +1,4 @@
-stash.sqlite
-pkg/
-src/
-theharvester-git*
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
