@@ -1,39 +1,31 @@
-pkgbase=python-doc8
-pkgname=(python-doc8 python2-doc8)
+pkgname=python-doc8
 _pyname=doc8
-pkgver=0.8.0
+pkgver=1.1.1
 pkgrel=1
 arch=(any)
 pkgdesc="Style checker for Sphinx (or other) RST documentation"
 url='https://pypi.python.org/pypi/doc8'
 license=('Apache 2.0')
-makedepends=(python-setuptools python2-setuptools)
-source=("https://files.pythonhosted.org/packages/source/d/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+depends=('python-stevedore' 'python-chardet' 'python-docutils' 'python-argparse' 'python-six' 'python-restructuredtext_lint')
+makedepends=(python-build python-installer python-wheel 'python-setuptools-scm>=7')
+source=("https://files.pythonhosted.org/packages/source/d/${_pyname}/${_pyname}-${pkgver}.tar.gz" "scm.patch")
+
+prepare() {
+  cd "$srcdir/$_pyname-$pkgver"
+  patch -p1 -i $srcdir/scm.patch
+}
 
 build() {
-  cp -r $_pyname-$pkgver $_pyname-$pkgver-py2
-
-  cd $_pyname-$pkgver
-  python setup.py build
-
-  cd "$srcdir"/$_pyname-$pkgver-py2
-  python2 setup.py build
+  cd "$srcdir/$_pyname-$pkgver"
+  python -m build --wheel --no-isolation
 }
 
-package_python-doc8() {
-  depends=('python-stevedore' 'python-chardet' 'python-docutils' 'python-argparse' 'python-six' 'python-restructuredtext_lint')
-  cd $_pyname-${pkgver}
-  python setup.py install --root="$pkgdir" --optimize=1
+package() {
+  cd "$srcdir/$_pyname-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
-package_python2-doc8() {
-  depends=('python2-stevedore' 'python2-chardet' 'python2-docutils' 'python2-argparse' 'python2-six' 'python2-restructuredtext_lint')
-  cd $_pyname-${pkgver}-py2 
-  python2 setup.py install --root="$pkgdir" --optimize=1
-
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-}
-
-sha256sums=('2df89f9c1a5abfb98ab55d0175fed633cae0cf45025b8b1e0ee5ea772be28543')
+sha256sums=('d97a93e8f5a2efc4713a0804657dedad83745cca4cd1d88de9186f77f9776004'
+            'fa5dad03044736139ba64ad72d6157e414a00124b4e4ec277dcb6d2a655935c3')
