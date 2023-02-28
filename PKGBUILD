@@ -4,12 +4,12 @@
 pkgname=pgmodeler
 pkgver=1.0.1
 pkgrel=1
-epoch=3
+epoch=4
 pkgdesc="PostgreSQL Database Modeler: an open source CASE tool for modeling PostgreSQL databases"
 url="https://pgmodeler.io"
 license=('GPL3')
 arch=('x86_64')
-depends=('qt5-svg' 'libpqxx')
+depends=('qt6-svg' 'libpqxx')
 
 source=("https://github.com/$pkgname/$pkgname/archive/v${pkgver//_/-}.tar.gz"
         'mimetype.xml'
@@ -30,7 +30,7 @@ build() {
     patch -p1 < ../patch_no_check_update.diff
 
     # release is needed to get the full dummy and xml2object plugins (doesn't seem to work)
-    qmake CONFIG+=release \
+    qmake6 CONFIG+=release \
           PREFIX=/usr \
           CONFDIR=/etc/pgmodeler \
           PRIVATEBINDIR=/usr/bin \
