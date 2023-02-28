@@ -1,7 +1,7 @@
 # Maintainer: Agorgianitis Loukas <agorglouk [at] gmail [dot] com>
 _pkgname=rustywind
 pkgname=rustywind-bin
-pkgver=0.15.1
+pkgver=0.15.4
 pkgrel=1
 pkgdesc="CLI for organizing Tailwind CSS classes"
 arch=('x86_64')
