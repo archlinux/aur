@@ -18,13 +18,29 @@ if [[ ${#} -eq 0 ]]; then
 fi
 
 declare -a ukify_global_args=()
+declare -A ukify_variants=()
 
 [ -f "/etc/dracut-ukify.conf" ] && source /etc/dracut-ukify.conf
+
+[ ${#ukify_variants[@]} -eq 0 ] && {
+  # Fallback to default image if ukify_variants isn't specified
+  ukify_variants[default]="--hostonly"
+}
 
 ESP_PATH=$(bootctl --print-esp-path)
 MACHINE_ID=$(</etc/machine-id)
 # shellcheck source=/etc/os-release
 source <(grep '^BUILD_ID=' /etc/os-release)
+
+function variant_name() {
+  prefix="$1"
+  name="$2"
+  if [[ "$name" = "default" ]]; then
+    printf "%s" "$prefix"
+  else
+    printf "%s-%s" "$prefix" "$name"
+  fi
+}
 
 declare -A kernels
 update_all=0
@@ -62,13 +78,16 @@ while getopts ":hag:xyz" arg; do
           read -r pkgbase < "/${line}"
           path="$(grep -lE "^${pkgbase}\$" /usr/lib/modules/*/pkgbase)"
           version=$(basename "${path%/pkgbase}")
-          IMAGE="${ESP_PATH}/EFI/Linux/linux-${version}-${MACHINE_ID}-${BUILD_ID}.efi"
-          if [ -f "$IMAGE" ]; then
-            echo "==> Removing $IMAGE..."
-            rm -f "$IMAGE"
-          fi
+          for variant in "${!ukify_variants[@]}"; do
+            IMAGE="${ESP_PATH}/EFI/Linux/$(variant_name "linux-$version-$MACHINE_ID-$BUILD_ID" "$variant").efi"
+            if [ -f "$IMAGE" ]; then
+              echo "==> Removing $IMAGE..."
+              rm -f "$IMAGE"
+            fi
+          done
         fi
       done
+      exit 0
       ;;
     z)
       check_root
@@ -106,33 +125,37 @@ function gen_image() {
   version="$2"
   path="/usr/lib/modules/${version}/pkgbase"
   vmlinuz="/usr/lib/modules/${version}/vmlinuz"
-  image="${ESP_PATH}/EFI/Linux/linux-${version}-${MACHINE_ID}-${BUILD_ID}.efi"
 
-  read -r pkgbase < "$path"
+  for variant in "${!ukify_variants[@]}"; do
+    image="${ESP_PATH}/EFI/Linux/$(variant_name "linux-${version}-${MACHINE_ID}-${BUILD_ID}" "$variant").efi"
+    version_name=$(variant_name "$version" "$variant")
 
-  initrd=$(mktemp)
+    read -r pkgbase < "$path"
 
-  echo "==> Building initrd image $kernel ($version)"
-  dracut -q -f --no-hostonly-cmdline --kver "${version}" "$initrd"
+    initrd=$(mktemp)
 
-  os_release=$(mktemp)
-  grep -v '^BUILD_ID=' /etc/os-release > "$os_release"
-  echo "BUILD_ID=\"$version\"" >> "$os_release"
-  echo "VERSION_ID=\"$pkgbase\"" >> "$os_release"
+    echo "==> Building initrd image $kernel ($version_name)"
+    dracut -q -f --no-hostonly-cmdline --kver "${version}" ${ukify_variants[$variant]} "$initrd"
 
-  declare -a ukify_args=("${ukify_global_args[@]}")
-  ukify_args+=(--uname "$version")
-  ukify_args+=(--os-release "@$os_release")
-  ukify_args+=(--output "$image")
-  ukify_args+=("$vmlinuz" "$initrd")
+    os_release=$(mktemp)
+    grep -v '^BUILD_ID=' /etc/os-release > "$os_release"
+    echo "BUILD_ID=\"$version_name\"" >> "$os_release"
+    echo "VERSION_ID=\"$pkgbase\"" >> "$os_release"
 
-  echo "==> Ukify image $kernel ($version)"
+    declare -a ukify_args=("${ukify_global_args[@]}")
+    ukify_args+=(--uname "$version")
+    ukify_args+=(--os-release "@$os_release")
+    ukify_args+=(--output "$image")
+    ukify_args+=("$vmlinuz" "$initrd")
 
-  /usr/lib/systemd/ukify "${ukify_args[@]}"
+    echo "==> Ukify image $kernel ($version_name)"
 
-  # Remove temporary files
-  rm "$initrd"
-  rm "$os_release"
+    /usr/lib/systemd/ukify "${ukify_args[@]}"
+
+    # Remove temporary files
+    rm "$initrd"
+    rm "$os_release"
+  done
 
   # Mark image as default if needed
   if [[ "$pkgbase" == "$default_kernel_package" ]]; then
