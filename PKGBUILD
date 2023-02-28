@@ -2,7 +2,7 @@
 
 pkgname=notesh
 _pkgname=Notesh
-pkgver=0.4
+pkgver=0.6
 pkgrel=1
 pkgdesc='NoteSH fully functional sticky notes App in your Terminal!'
 url='https://github.com/Cvaniak/NoteSH'
@@ -10,8 +10,8 @@ arch=('any')
 license=('MIT')
 depends=(python-tomli python-textual)
 makedepends=(python-build python-installer python-wheel)
-source=("https://files.pythonhosted.org/packages/47/b7/c51fd06a364ee7e8d0f222f4745569c2e8012412e492b1d4907c3c494db9/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('74b5cadb5f11e7823b10cd7f5b3a2749adb64c773268039ed41f4cdcbd82a28d')
+source=("https://files.pythonhosted.org/packages/source/n/${pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('5cecd02b1c06e6968428d3d0d0934928be8bdf3038f1ae1d7456c8f83d0bd75e')
 
 build() {
   cd "${_pkgname}-${pkgver}"
