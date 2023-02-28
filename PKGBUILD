@@ -4,7 +4,7 @@
 # Contributor: Andrei Shadrikov <notvuvko@gmail.com>
 
 pkgname='python-hydra-core'
-pkgver='1.3.1'
+pkgver='1.3.2'
 pkgrel=1
 pkgdesc='A framework for elegantly configuring complex applications'
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('antlr4' 'java-runtime>=11', 'python' 'python-build' 'python-instal
              'python-setuptools' 'python-packaging')
 source=("$pkgname-$pkgver::https://github.com/facebookresearch/hydra/archive/refs/tags/v${pkgver}.tar.gz"
         "antlr4-jar.patch")
-sha256sums=('9ba1efe09893853e883498fcbeec17f2a77e1ba551587d6d0604077e02de1602'
+sha256sums=('3f0f14305e9c6ae4b1dbcba344fe09dd0fc79c0a0656470c249f4f7ca46bf471'
             '9db3a15d9c32cc754d19efbe0065025612ed6cd0d68d948ccebd5dc6544aadc6')
 
 _pkgname=hydra
