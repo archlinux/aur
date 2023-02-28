@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=infercnv
-_pkgver=1.14.0
+_pkgver=1.14.1
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
-pkgrel=3
+pkgver=1.14.1
+pkgrel=1
 pkgdesc='Infer Copy Number Variation from Single-Cell RNA-Seq Data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -50,7 +50,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3e5fea5ea55afc5bb489e0a7c0b1299bda2a35104591800b8ca3bd6398e10f86')
+sha256sums=('8b7f6cbfa64a87c4b61216422a5ba4eac315ac84cf023af861898dee200647d1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
