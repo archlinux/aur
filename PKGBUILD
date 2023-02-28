@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=ignition-gazebo
-pkgver=7.1.0
+pkgver=7.4.0
 pkgrel=1
 pkgdesc="Open source robotics simulator. The latest version of Gazebo."
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('benchmark' 'gflags' 'tinyxml2' 'tinyxml' 'eigen' 'qt5-declarative'
          'sdformat' 'ignition-fuel_tools' 'ignition-sensors')
 makedepends=('cmake' 'ruby-ronn' 'doxygen')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gz-sim/archive/gz-sim7_${pkgver}.tar.gz")
-sha256sums=('f73e76422cdab0c42e9e9759a53601ba06cd3547878c8b16b6875c860ec52258')
+sha256sums=('f8707038bc692f5157e3ff6852f83f876f5939697aafd0393747ee171479fd29')
 
 _dir="gz-sim-gz-sim7_${pkgver}"
 
