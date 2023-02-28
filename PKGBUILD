@@ -1,9 +1,10 @@
 # Maintainer: Jiuyang Liu <liu@jiuyang.me>
+# Maintainer: SpriteOvO <SpriteOvO AT gmail DOT com>
 
 pkgbase="circt-git"
 pkgname=('firtool-git')
 pkgdesc="Circuit IR Compilers and Tools"
-pkgver=r4396.ce85204ca
+pkgver=r5724.f7963642b
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -12,7 +13,7 @@ makedepends=(
   'git'
   'cmake'
   'ninja'
-  'python'
+  'python-psutil'
 )
 depends=(
   'ncurses'
@@ -21,12 +22,8 @@ source=(
   "git+https://github.com/llvm/llvm-project.git"
   "git+https://github.com/llvm/circt.git"
 )
-
-md5sums=('SKIP'
-         'SKIP')
 sha512sums=('SKIP'
             'SKIP')
-options=('staticlibs')
 
 pkgver() {
     cd $srcdir/circt
@@ -37,17 +34,17 @@ prepare() {
   cd $srcdir/circt
   git submodule init
   git config submodule."llvm".url "${srcdir}/llvm-project"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
   mkdir $srcdir/build
 }
 
 build() {
-  export CFLAGS+=" ${CPPFLAGS}"
-  export CXXFLAGS+=" ${CPPFLAGS}"
+  # export CFLAGS+=" ${CPPFLAGS}"
+  # export CXXFLAGS+=" ${CPPFLAGS}"
+  cd $srcdir/build
   cmake \
     -G Ninja \
     -S $srcdir/circt/llvm/llvm \
-    -B $srcdir/build \
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D LLVM_BINUTILS_INCDIR=/usr/include \
@@ -61,13 +58,15 @@ build() {
     -D LLVM_OPTIMIZED_TABLEGEN=ON \
     -D LLVM_EXTERNAL_PROJECTS=circt \
     -D LLVM_EXTERNAL_CIRCT_SOURCE_DIR=$srcdir/circt \
-    -D LLVM_BUILD_TOOLS=ON
-  ninja -C $srcdir/build firtool
+    -D LLVM_BUILD_TOOLS=ON \
+    -D CIRCT_LLHD_SIM_ENABLED=OFF
+  ninja
 }
 
 check() {
-  #ninja -C $srcdir/build check-circt-firtool
-  echo "todo"
+  cd $srcdir/build
+  ninja check-circt
+  ninja check-circt-integration
 }
 
 package_firtool-git() {

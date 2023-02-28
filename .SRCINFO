@@ -1,6 +1,6 @@
 pkgbase = circt-git
 	pkgdesc = Circuit IR Compilers and Tools
-	pkgver = r4396.ce85204ca
+	pkgver = r5724.f7963642b
 	pkgrel = 1
 	url = https://llvm.org/
 	arch = x86_64
@@ -8,13 +8,10 @@ pkgbase = circt-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
-	makedepends = python
+	makedepends = python-psutil
 	depends = ncurses
-	options = staticlibs
 	source = git+https://github.com/llvm/llvm-project.git
 	source = git+https://github.com/llvm/circt.git
-	md5sums = SKIP
-	md5sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 
