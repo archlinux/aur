@@ -1,6 +1,6 @@
 pkgbase = aom-av1-psy-git
 	pkgdesc = aomenc-av1 psy fork
-	pkgver = r32589.bff73e445
+	pkgver = r33419.06f8bcce9
 	pkgrel = 1
 	url = https://github.com/BlueSwordM/aom-av1-psy
 	arch = x86_64
@@ -11,9 +11,10 @@ pkgbase = aom-av1-psy-git
 	makedepends = yasm
 	depends = gcc-libs
 	depends = vmaf
+	depends = libjxl
 	provides = aom
 	conflicts = aom
-	source = git+https://github.com/BlueSwordM/aom-av1-psy.git#branch=full_build-alpha-4
+	source = git+https://github.com/BlueSwordM/aom-av1-psy.git#branch=Endless_Possibility_JXL_testing
 	sha256sums = SKIP
 
 pkgname = aom-av1-psy-git
