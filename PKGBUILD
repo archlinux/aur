@@ -2,18 +2,19 @@
 # Contributor: jfperini <@jfperini>
 
 pkgname=veusz-git
-pkgver=3.5.3.r3.gf93cf7ac
+pkgver=3.6.2.r0.gc690eb61
 pkgrel=1
 pkgdesc="A scientific plotting and graphing package, designed to create publication-ready Postscript or PDF output."
 url="https://github.com/veusz/veusz"
 arch=('x86_64')
 license=('GPL2')
-depends=('python-pyqt5' 'python-numpy' 'hicolor-icon-theme' 'cblas')
-makedepends=('git' 'sip>=6.7.5' 'python-tomli')
+depends=('python-pyqt5' 'python-numpy' 'hicolor-icon-theme')
+makedepends=('git' 'sip>=6.7.5' 'python-build' 'python-installer' 'python-wheel')
 optdepends=('ghostscript: for EPS/PS output'
             'python-dbus: for dbus interface'
             'python-iminuit: improved fitting'
-            'python-astropy: for VO table import or FITS import')
+            'python-astropy: for VO table import or FITS import'
+            'python-pyemf3: EMF export')
 conflicts=('veusz')
 provides=('veusz')
 source=('git+https://github.com/veusz/veusz')
@@ -26,12 +27,14 @@ pkgver() {
 
 build() {
   cd ${pkgname%-git}
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd ${pkgname%-git}
-  python setup.py install --root="$pkgdir" --prefix=/usr
+
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
   for _i in 16 32 48 64 128; do
     install -Dm644 "icons/veusz_${_i}.png" "$pkgdir"/usr/share/icons/hicolor/${_i}x${_i}/apps/veusz.png
   done

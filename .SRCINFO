@@ -1,21 +1,23 @@
 pkgbase = veusz-git
 	pkgdesc = A scientific plotting and graphing package, designed to create publication-ready Postscript or PDF output.
-	pkgver = 3.5.3.r3.gf93cf7ac
+	pkgver = 3.6.2.r0.gc690eb61
 	pkgrel = 1
 	url = https://github.com/veusz/veusz
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	makedepends = sip>=6.7.5
-	makedepends = python-tomli
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-pyqt5
 	depends = python-numpy
 	depends = hicolor-icon-theme
-	depends = cblas
 	optdepends = ghostscript: for EPS/PS output
 	optdepends = python-dbus: for dbus interface
 	optdepends = python-iminuit: improved fitting
 	optdepends = python-astropy: for VO table import or FITS import
+	optdepends = python-pyemf3: EMF export
 	provides = veusz
 	conflicts = veusz
 	source = git+https://github.com/veusz/veusz
