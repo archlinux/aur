@@ -1,0 +1,27 @@
+pkgbase = rpfm-git
+	pkgdesc = A modding tool for modern (since Empire) Total War games. Development version.
+	pkgver = 3.99.118.3074.g040c623e
+	pkgrel = 1
+	url = https://github.com/Frodo45127/rpfm.git
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cmake
+	depends = libgit2
+	depends = xz
+	depends = p7zip
+	depends = qt5-base
+	depends = qt5-imageformats
+	depends = kcompletion
+	depends = kiconthemes
+	depends = ktexteditor
+	depends = kxmlgui
+	depends = kwidgetsaddons
+	depends = breeze-icons
+	provides = rpfm
+	conflicts = rpfm-bin
+	source = git+https://github.com/Frodo45127/rpfm.git
+	sha256sums = SKIP
+
+pkgname = rpfm-git
