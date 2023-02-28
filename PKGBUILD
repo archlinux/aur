@@ -1,7 +1,7 @@
 # Maintainer: zhullyb <zhullyb [at] outlook dot com>
 
 pkgname=onedrivegui
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A simple GUI for OneDrive Linux client, with multi-account support."
 license=("GPL")
@@ -13,7 +13,7 @@ arch=("any")
 url="https://github.com/bpozdena/OneDriveGUI"
 source=("https://github.com/bpozdena/OneDriveGUI/archive/refs/tags/v${pkgver}.tar.gz"
         "onedrivegui.desktop")
-sha256sums=('a92d16e288ac9aaeab1e00dad82d6c42feef5e25bbd8039ca5385d12f7874757'
+sha256sums=('3dcba012610696dda0386eff0937748a637754184fb53bd2ed1cbc9d29062c2b'
             'c531f57c3c8424f265c0aad2e93260eab071d066d75de2f7eebb47e41c644267')
 
 package(){
