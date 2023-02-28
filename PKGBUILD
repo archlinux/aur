@@ -2,7 +2,7 @@
 
 pkgname=home-assistant-restriction-card
 pkgver=1.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A card to provide restrictions on Lovelace cards defined within."
 arch=(any)
 url="https://github.com/iantrich/restriction-card"
@@ -11,5 +11,5 @@ source=("https://github.com/iantrich/restriction-card/releases/download/$pkgver/
 sha256sums=("a134c8d1c05e02f93a5d634fa404d21ab6545dfefc37dc730e6b784447a3f4a1")
 
 package() {
-  install -Dm 644 "$srcdir/restriction-card.js" "$pkgdir/var/lib/hass/www/restriction-card.js"
+  install -Dm 644 "$srcdir/restriction-card.js" "$pkgdir/var/lib/private/hass/www/restriction-card.js"
 }

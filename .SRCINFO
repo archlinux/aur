@@ -1,7 +1,7 @@
 pkgbase = home-assistant-restriction-card
 	pkgdesc = A card to provide restrictions on Lovelace cards defined within.
 	pkgver = 1.2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iantrich/restriction-card
 	arch = any
 	license = MIT
