@@ -1,0 +1,13 @@
+diff --git a/qtgr/__init__.py b/qtgr/__init__.py
+index 0a9c405..197c9ad 100755
+--- a/qtgr/__init__.py
++++ b/qtgr/__init__.py
+@@ -59,7 +59,7 @@ class GRWidget(QWidget):
+         self._mwidth = self._dwidth * 2.54 / self.physicalDpiX() / 100.
+         self._mheight = self._dheight * 2.54 / self.physicalDpiY() / 100.
+         self._keepRatio = False
+-        self._bgColor = QtCore.Qt.GlobalColor.white
++        self._bgColor = QtGui.QColor("white")
+         self._screen_changed_signal_connected = False
+         os.environ["GKS_WSTYPE"] = "381" # GKS Qt Plugin
+         os.environ["GKS_DOUBLE_BUF"] = "True"

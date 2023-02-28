@@ -1,0 +1,126 @@
+diff --git a/build-flags b/build-flags
+index d8f340e..4d8918a 100755
+--- a/build-flags
++++ b/build-flags
+@@ -6,6 +6,11 @@ ALL=( "python" "numpy" "gr" )
+ SUPPORTED_OS=( "Darwin" "Linux" )
+ 
+ OS=$(uname -s)
++SCRIPT_DIR="$(git rev-parse --show-toplevel)"
++
++if [[ -z "${CONDA_PREFIX}" ]]; then
++    CONDA_PREFIX="${SCRIPT_DIR}/env"
++fi
+ 
+ 
+ array_contains() {
+@@ -15,43 +20,24 @@ array_contains() {
+     return 1
+ }
+ 
++relpath() {
++    "${CONDA_PREFIX}/bin/python2" -c "import os.path; print(os.path.relpath('$1','${2:-$(pwd)}'))"
++}
++
+ python_flags() {
+-    local DARWIN_CONDA_INCLUDE="${CONDA_PREFIX}/include/python2.7"
+-    local DARWIN_CONDA_LIB="${CONDA_PREFIX}/lib"
+-    local DARWIN_LOCAL_FRAMEWORK="/usr/local/Library/Frameworks"
+-    local DARWIN_FRAMEWORK="/System/Library/Frameworks"
+-    local DARWIN_LOCAL_INCLUDE="/usr/local/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7"
+-    local DARWIN_INCLUDE="/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7"
+-    local LINUX_LOCAL_INCLUDE="/usr/local/include/python2.7"
+-    local LINUX_INCLUDE="/usr/include/python2.7"
+-    local LINUX_LOCAL_LIB="/usr/local/lib/python2.7"
+-    local LINUX_LIB="/usr/lib/python2.7"
++    local CONDA_INCLUDE="${CONDA_PREFIX}/include/python2.7"
++    local CONDA_LIB="${CONDA_PREFIX}/lib"
++    local RPATH
+     local INC_FLAGS
+     local LIB_FLAGS
+ 
+-    case "${OS}" in
+-        Darwin)
+-            if [ -n "${CONDA_PREFIX}" ]; then
+-                INC_FLAGS="-I${DARWIN_CONDA_INCLUDE}"
+-                LIB_FLAGS="-L${DARWIN_CONDA_LIB} -lpython2.7"
+-            elif [ -d "${DARWIN_LOCAL_FRAMEWORK}" ]; then
+-                INC_FLAGS="-F${DARWIN_LOCAL_FRAMEWORK} -I${DARWIN_LOCAL_INCLUDE}"
+-                LIB_FLAGS="-F${DARWIN_LOCAL_FRAMEWORK} -framework Python"
+-            else
+-                INC_FLAGS="-F${DARWIN_FRAMEWORK} -I${DARWIN_INCLUDE}"
+-                LIB_FLAGS="-F${DARWIN_FRAMEWORK} -framework Python"
+-            fi
+-            ;;
+-        Linux)
+-            if [ -d "${LINUX_LOCAL_INCLUDE}" ]; then
+-                INC_FLAGS="-I${LINUX_LOCAL_INCLUDE}"
+-                LIB_FLAGS="-L${LINUX_LOCAL_LIB} -lpython2.7"
+-            else
+-                INC_FLAGS="-I${LINUX_INCLUDE}"
+-                LIB_FLAGS="-L${LINUX_LIB} -lpython2.7"
+-            fi
+-            ;;
+-    esac
++    if [[ "${OS}" == "Darwin" ]]; then
++        RPATH="@loader_path/$(relpath "${CONDA_LIB}")"
++    else
++        RPATH="\\\$ORIGIN/$(relpath "${CONDA_LIB}")"
++    fi
++    INC_FLAGS="-I${CONDA_INCLUDE}"
++    LIB_FLAGS="-L${CONDA_LIB} -lpython2.7 -Wl,-rpath,'${RPATH}'"
+ 
+     eval "${1}=\"${INC_FLAGS}\""
+     eval "${2}=\"${LIB_FLAGS}\""
+@@ -62,11 +48,7 @@ numpy_flags() {
+     local PYTHON_EXEC
+     local INC_FLAGS
+ 
+-    if [ -f "/usr/local/bin/python" ]; then
+-        PYTHON_EXEC="/usr/local/bin/python"
+-    else
+-        PYTHON_EXEC=$(which python)
+-    fi
++    PYTHON_EXEC="${CONDA_PREFIX}/bin/python"
+ 
+     INC_FLAGS=$(${PYTHON_EXEC} <<EOF
+ import numpy
+@@ -81,17 +63,18 @@ EOF
+ }
+ 
+ gr_flags() {
+-    local POSSIBLE_GR_DIRS=( "/usr/local/gr" "/usr/gr" "/opt/gr" )
++    local GR_DIR="${CONDA_PREFIX}/lib/python2.7/site-packages/gr"
++    local RPATH
+     local INC_FLAGS
+     local LIB_FLAGS
+ 
+-    for i in ${POSSIBLE_GR_DIRS[@]}; do
+-        if [ -d "${i}" ]; then
+-            INC_FLAGS="-I${i}/include"
+-            LIB_FLAGS="-L${i}/lib -lGR -lGR3"
+-            break
+-        fi
+-    done
++    if [[ "${OS}" == "Darwin" ]]; then
++        RPATH="@loader_path/$(relpath "${GR_DIR}")/lib"
++    else
++        RPATH="\\\$ORIGIN/$(relpath "${GR_DIR}")/lib"
++    fi
++    INC_FLAGS="-I${GR_DIR}/include"
++    LIB_FLAGS="-L${GR_DIR}/lib -lGR -lGR3 -Wl,-rpath,'${RPATH}'"
+ 
+     eval "${1}=\"${INC_FLAGS}\""
+     eval "${2}=\"${LIB_FLAGS}\""
+diff --git a/src/Makefile b/src/Makefile
+index f8387f8..074beee 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -4,7 +4,6 @@ SUBDIRS = computation gui util visualization config core statistics
+ all:
+ 	for i in $(SUBDIRS); do make -C $$i PYLIBPATH=$(PYLIBPATH) EXTRA_LD_FLAGS=$(EXTRA_LD_FLAGS) all; done
+ 
+-EXTRA_LD_FLAGS = -Wl,-rpath,/usr/local/gr/lib
+ app_extension_modules: clean all
+ 
+ clean:
