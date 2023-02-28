@@ -1,12 +1,13 @@
 pkgbase = isp55e0-git
 	pkgdesc = An ISP flashing tool for the WCH CH55x, CH579, CH32F103 under linux.
-	pkgver = r34.6a7f58c
+	pkgver = r43.2665a46
 	pkgrel = 1
 	url = https://github.com/frank-zago/isp55e0
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = libusb
+	depends = udev
 	source = isp55e0-git::git+https://github.com/frank-zago/isp55e0
 	sha256sums = SKIP
 
