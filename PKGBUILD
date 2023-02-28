@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-cflib
-pkgver=0.1.20.1
+pkgver=0.1.22
 pkgrel=1
 pkgdesc='Python library to communicate with Crazyflie'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('python' 'python-pyusb' 'python-libusb-package' 'python-scipy'
 makedepends=('python' 'python-build' 'python-installer' 'python-wheel'
              'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bitcraze/crazyflie-lib-python/archive/$pkgver.tar.gz")
-sha256sums=('8afcaaab32971edea378c9068ded01630c2f72574378da9cb59bb94ff0b8d2d0')
+sha256sums=('91f13a7d8a9a6ccb739e7c5804550386385bff82e2c06cd878a9493629b3d4d0')
 
 _pkgname=crazyflie-lib-python
 
