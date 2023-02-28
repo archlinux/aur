@@ -2,7 +2,7 @@
 
 pkgname=lb-planner
 pkgver=0.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc='a Planning tool for students at the TGM Vienna'
 arch=('any')
 url='https://github.com/necodeIT/lb_planner'
@@ -31,7 +31,7 @@ prepare() {
 build() {
 	cd "$pkgname"
 	fvm flutter config --enable-linux-desktop #TODO: check if this is even necessary
-	fvm flutter build linux --no-sound-null-safety --release
+	fvm flutter build linux --no-sound-null-safety --release --dart-define=LB_PLANNER_SETUP_TYPE=aur
 }
 
 package() {
