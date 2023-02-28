@@ -1,6 +1,6 @@
 # Maintainer : eggz
 pkgname=ffmpeg-nocuda
-pkgver=5.1.2
+pkgver=6.0
 gitver=n${pkgver}
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (without nvidias propriatary blobs)'
