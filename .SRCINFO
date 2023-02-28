@@ -1,12 +1,12 @@
 pkgbase = python-pywhat
 	pkgdesc = Identify emails, IP addresses and more
 	pkgver = 5.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/bee-san/pyWhat
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
 	makedepends = python-poetry
+	makedepends = python-installer
 	depends = python
 	depends = python-click
 	depends = python-rich
