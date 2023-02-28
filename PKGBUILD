@@ -1,6 +1,6 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=kfr
-pkgver=4.2.1
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="Fast, modern C++ DSP framework, FFT, Sample Rate Conversion,
 FIR/IIR/Biquad Filters (SSE, AVX, AVX-512, ARM NEON)"
@@ -10,7 +10,7 @@ license=('GPL-2')
 makedepends=(cmake clang)
 depends=()
 source=("${pkgname}-${pkgver}::https://github.com/kfrlib/kfr/archive/$pkgver.tar.gz")
-sha256sums=("b576fffcfe147b9d2d2408738010c4bf3dbcd333870b048a9506c4bde61e2284")
+sha256sums=("9cfc9698a571f5baa3758cad0b381d07e25041f050cc3705c63d4548b97ee0fb")
 
 build() {
   mkdir -p "$srcdir/${pkgname}-${pkgver}/build"
@@ -19,7 +19,7 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_CXX_COMPILER=clang \
         -DBUILD_SHARED_LIBS=ON \
-        -DENABLE_CAPI_BUILD=ON \
+        -DKFR_ENABLE_CAPI_BUILD=ON \
         ..
   make
 }
