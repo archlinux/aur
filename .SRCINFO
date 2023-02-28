@@ -1,6 +1,6 @@
 pkgbase = guile-avahi
 	pkgdesc = Avahi bindings for GNU Guile
-	pkgver = 0.4
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://www.nongnu.org/guile-avahi
 	arch = x86_64
@@ -10,8 +10,7 @@ pkgbase = guile-avahi
 	depends = guile
 	depends = avahi
 	depends = gmp
-	source = https://download.savannah.nongnu.org/releases/guile-avahi/guile-avahi-0.4.tar.gz
-	sha256sums = 9dcc2810058cc87d8fa81a1fa8eb7a3892b2cc0a8786fb16fe88d260aa0ba669
+	source = https://download.savannah.nongnu.org/releases/guile-avahi/guile-avahi-0.4.1.tar.gz
+	sha256sums = db9de9e19df728b40d23c0381caa9f8eda2b175fa7f69f153be8f3f078044ca5
 
 pkgname = guile-avahi
-
