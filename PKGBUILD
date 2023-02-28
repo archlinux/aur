@@ -6,8 +6,8 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=ffmpeg-headless
-pkgver=5.1.2
-pkgrel=2
+pkgver=6.0
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
 arch=(i686 x86_64 armv7h armv6h aarch64)
@@ -92,18 +92,12 @@ provides=(
     "${pkgname%-headless}"
 )
 conflicts=("${pkgname%-headless}")
-source=(git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=1326fe9d4c85cca1ee774b072ef4fa337694f2e7)
+source=(git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=3949db4d261748a9f34358a388ee255ad1a7f0c0)
 b2sums=('SKIP')
 validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
 
 pkgver() {
     git -C "${pkgname%-headless}" describe --tags | sed 's/^n//'
-}
-
-prepare() {
-    cd ${pkgname%-headless}
-    git cherry-pick -n 412922cc6fa790897ef6bb2be5d6f9a5f030754d # remove default IPFS gateway
-    git cherry-pick -n eb0455d64690eed0068e5cb202f72ecdf899837c # hwcontext_vulkan: remove optional encode/decode extensions from the list
 }
 
 build() {
