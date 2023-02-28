@@ -1,8 +1,8 @@
 #Maintainer: Dylan Delgado <dylan1496@live.com>
 
 pkgname=mtsieve
-pkgver=2.4.2.r257
-pkgrel=2
+pkgver=2.4.3.r264
+pkgrel=1
 pkgdesc='Library for sieving various types of numbers'
 url='https://sourceforge.net/projects/mtsieve/'
 license=('GPL')
