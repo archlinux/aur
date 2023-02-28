@@ -2,13 +2,18 @@
 pkgname=python-logfury
 _name=${pkgname#python-}
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Responsible, low-boilerplate logging of method calls for python libraries"
 arch=('any')
 url="https://github.com/reef-technologies/logfury"
 license=('BSD')
 depends=('python')
-makedepends=('python-setuptools' 'python-pip')
+makedepends=('python-build'
+             'python-installer'
+             'python-setuptools-scm'
+             'python-pip'
+             'python-wheel'
+            )
 #checkdepends=('python-nox' 'python-coverage')
 
 # https://wiki.archlinux.org/title/Python_package_guidelines#Source
@@ -21,12 +26,13 @@ sha512sums=('e62ba75293f93bfe2ea8dfaa20a478d8977800546e55bf511f409f5d89727c50529
 
 build() {
   cd "$srcdir/$_name-$pkgver"
-  python setup.py build
+  sed -i -e "s:\['\(setuptools_scm\)<.*'\]:['\1']:" setup.py
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$srcdir/$_name-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
