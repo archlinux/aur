@@ -2,7 +2,7 @@
 
 pkgname=ethoscope-device
 pkgver=r1702.g1c43fc3
-pkgrel=3
+pkgrel=4
 pkgdesc="A platform from monitoring animal behaviour in real time from a raspberry pi - Device version"
 arch=('any')
 url="http://lab.gilest.ro/ethoscope"
@@ -22,8 +22,10 @@ pkgver() {
 package() {
   #creating packaging directories
   install -dm0755 $pkgdir/opt
+  install -dm0755 $pkgdir/etc
   install -dm0755 $pkgdir/ethoscope_data
   install -dm0755 $pkgdir/usr/lib/systemd/system/
+  install -dm0755 $pkgdir/usr/bin
 
   #setting python3 branch
   cd "${srcdir}/${pkgname}"
