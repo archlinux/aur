@@ -1,0 +1,22 @@
+pkgbase = python-earthpy
+	pkgdesc = Package built to support working with spatial data
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = https://github.com/earthlab/earthpy
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-geopandas
+	depends = python-matplotlib
+	depends = python-numpy
+	depends = python-rasterio
+	depends = python-scikit-image
+	depends = python-requests
+	source = python-earthpy-0.9.4.tar.gz::https://files.pythonhosted.org/packages/source/e/earthpy/earthpy-0.9.4.tar.gz
+	sha256sums = 16ec2831ec87ace9d70473ef23840b6bf3cd239e178b9ddb5767da86e5a34c1b
+
+pkgname = python-earthpy
