@@ -2,7 +2,8 @@
 #
 pkgname=yubico-authenticator
 pkgver=6.1.0
-pkgdesc="Yubico Authenticator is a cross-platform application for managing your YubiKey's second factor credentials."
+pkgdesc="Yubico Authenticator 6 is a cross-platform application for managing your YubiKey's second factor credentials.\
+Yubico Authenticator 6 is a complete rewrite of the application using the Flutter framework."
 arch=('x86_64')
 url="https://developers.yubico.com/yubioath-desktop/"
 license=('GPL')
