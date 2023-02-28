@@ -1,5 +1,5 @@
 pkgbase = rmw
-	pkgdesc = safe-remove utility for the command line
+	pkgdesc = trash/recycle bin utility for the command line
 	pkgver = 0.9.0
 	pkgrel = 2
 	url = https://remove-to-waste.info

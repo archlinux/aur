@@ -4,7 +4,7 @@
 pkgname=rmw
 pkgver=0.9.0
 pkgrel=2
-pkgdesc="safe-remove utility for the command line"
+pkgdesc="trash/recycle bin utility for the command line"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'ppc64le')
 url="https://remove-to-waste.info"
 license=('GPL3')
