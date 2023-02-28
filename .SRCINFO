@@ -1,6 +1,6 @@
 pkgbase = qogir-icon-theme
 	pkgdesc = A colorful design icon theme for linux desktops
-	pkgver = 2022.11.05
+	pkgver = 2023.02.23
 	pkgrel = 1
 	url = https://www.pling.com/p/1296407
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = qogir-icon-theme
 	depends = hicolor-icon-theme
 	depends = gtk-update-icon-cache
 	options = !strip
-	source = qogir-icon-theme-2022.11.05.tar.gz::https://github.com/vinceliuice/Qogir-icon-theme/archive/2022-11-05.tar.gz
-	sha256sums = 7747f8a139e01a075a94b832d95a53a98b98784b06e866dd8259bb0a38404480
+	source = qogir-icon-theme-2023.02.23.tar.gz::https://github.com/vinceliuice/Qogir-icon-theme/archive/2023-02-23.tar.gz
+	sha256sums = 7f72b64a4483c3e1030347641ccd4d9668a689088aaabac9ef425abb4eab6409
 
 pkgname = qogir-icon-theme
