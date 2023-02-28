@@ -1,7 +1,7 @@
 # Maintainer: replydev <commoncargo@tutanota.com>
 
 pkgname=cotp
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc='Trustworthy, encrypted, command-line TOTP/HOTP authenticator app with import functionality.'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 makedepends=('cargo' 'python')
 depends=('libxcb' 'libxkbcommon-x11')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f6c855e4cf9a55c84d49064a3ba13497d360687d183670bd5e2b57185e2d1e07')
+sha256sums=('8cc531400645dfd7149c598bf2fc8c25006aae62a1bbe94af6bbf5f39f1c93b0')
 conflics=('cotp-bin')
 provides=('cotp-bin')
 
