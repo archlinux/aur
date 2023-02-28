@@ -1,6 +1,6 @@
 pkgbase = dotnet-core-preview-bin
 	pkgver = 8.0.0.sdk100+preview.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.microsoft.com/net/core
 	arch = armv7h
 	arch = aarch64
@@ -22,63 +22,10 @@ pkgbase = dotnet-core-preview-bin
 	source_x86_64 = https://download.visualstudio.microsoft.com/download/pr/e2578737-231b-493c-a6ee-f181496fe679/18038808d2621094ebe172ca011a7c22/dotnet-sdk-8.0.100-preview.1.23115.2-linux-x64.tar.gz
 	sha512sums_x86_64 = 23a14c92e402161ed8d42ec9cb25a97868a1b72348195d28cffa00a12815f019308b56485e4375c0d0a33d9a683d83cc1e1a2a517eea44af8fb353171b6c3f64
 
-pkgname = dotnet-host-preview-bin
+pkgname = dotnet-core-host-preview-bin
 	pkgdesc = A generic driver for the .NET Core Command Line Interface (preview, binary)
 	depends = glibc
 	provides = dotnet-host
 	provides = dotnet-host=8.0.0
 	conflicts = dotnet-host
 	replaces = dotnet-host-preview
-
-pkgname = aspnet-runtime-preview-bin
-	pkgdesc = The ASP.NET Core runtime (preview, binary)
-	depends = dotnet-runtime-preview-bin
-	provides = aspnet-runtime=8.0.0
-	provides = aspnet-runtime-8.0
-	conflicts = aspnet-runtime=8.0.0
-	replaces = aspnet-runtime-preview
-
-pkgname = dotnet-runtime-preview-bin
-	pkgdesc = The .NET Core runtime (preview, binary)
-	depends = dotnet-host>=8.0.0
-	depends = glibc
-	depends = icu
-	depends = krb5
-	depends = libcurl.so
-	depends = libunwind
-	depends = openssl
-	depends = zlib
-	optdepends = lttng-ust: CoreCLR tracing
-	optdepends = msquic>=2.1.0: HTTP/3 support with System.Net.Quic
-	provides = dotnet-runtime=8.0.0
-	provides = dotnet-runtime-8.0
-	conflicts = dotnet-runtime=8.0.0
-	replaces = dotnet-runtime-preview
-
-pkgname = dotnet-sdk-preview-bin
-	pkgdesc = The .NET Core SDK (preview, binary)
-	depends = dotnet-runtime-preview-bin
-	depends = dotnet-targeting-pack-preview-bin
-	depends = glibc
-	depends = netstandard-targeting-pack-2.1
-	optdepends = aspnet-targeting-pack-preview-bin: Build ASP.NET Core applications
-	provides = dotnet-sdk=8.0.100
-	provides = dotnet-sdk-8.0
-	conflicts = dotnet-sdk=8.0.100
-	replaces = dotnet-sdk-preview
-
-pkgname = dotnet-targeting-pack-preview-bin
-	pkgdesc = The .NET Core targeting pack (preview, binary)
-	depends = netstandard-targeting-pack-2.1
-	provides = dotnet-targeting-pack=8.0.0
-	provides = dotnet-targeting-pack-8.0
-	conflicts = dotnet-targeting-pack=8.0.0
-	replaces = dotnet-targeting-pack-preview
-
-pkgname = aspnet-targeting-pack-preview-bin
-	pkgdesc = The ASP.NET Core targeting pack (preview, binary)
-	depends = dotnet-targeting-pack-preview-bin
-	provides = aspnet-targeting-pack=8.0.0
-	provides = aspnet-targeting-pack-8.0
-	conflicts = aspnet-targeting-pack=8.0.0
-	replaces = aspnet-targeting-pack-preview
