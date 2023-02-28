@@ -1,12 +1,15 @@
 pkgbase = tekton-cli-bin
 	pkgdesc = A CLI for interacting with Tekton.
-	pkgver = 0.19.1
+	pkgver = 0.29.1
 	pkgrel = 1
 	url = https://github.com/tektoncd/cli
 	arch = x86_64
-	license = Apache
-	provides = tekton-cli
-	source = https://github.com/tektoncd/cli/releases/download/v0.19.1/tkn_0.19.1_Linux_x86_64.tar.gz
-	sha256sums = 3e246a60e4ace03c394e18590ec0ec1a0cb14393008833acd75a6889fe91ffc2
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	conflicts = tektoncd-cli
+	conflicts = tekton-cli
+	source = git+https://github.com/tektoncd/cli#commit=d48a2cc72e7f695b4a90cee62678fd9764a7db85
+	sha256sums = SKIP
 
 pkgname = tekton-cli-bin

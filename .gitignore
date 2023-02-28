@@ -1,2 +1,7 @@
-tkn_*_Linux_x86_64.tar.gz
-tekton-cli-bin-*-x86_64-package.log
+# Ignore everything
+*
+
+# Except these
+!.gitignore
+!PKGBUILD
+!.SRCINFO
