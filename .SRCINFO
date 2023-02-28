@@ -1,0 +1,18 @@
+pkgbase = crqt-ng-git
+	pkgdesc = Cross-platform open source e-book reader using crengine-ng and Qt (CoolReader fork)
+	pkgver = 1.0.9.r1.1f25d0e
+	pkgrel = 1
+	url = https://gitlab.com/coolreader-ng/crqt-ng
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = crengine-ng-git
+	depends = qt5-base
+	provides = crqt-ng
+	conflicts = crqt-ng
+	source = git+https://gitlab.com/coolreader-ng/crqt-ng.git
+	sha256sums = SKIP
+
+pkgname = crqt-ng-git
