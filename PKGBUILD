@@ -4,7 +4,7 @@
 # Contributor: Daniel Isenmann <daniel@archlinux.org>
 pkgname="python2-gimp"
 _pkgname="gimp"
-pkgver="2.10.32"
+pkgver="2.10.34"
 pkgrel="1"
 pkgdesc='Python 2 plugins support for GIMP'
 url='https://www.gimp.org/'
@@ -13,7 +13,7 @@ license=('LGPL')
 depends=('gimp' 'pygtk')
 makedepends=('gtk-doc' 'intltool' 'autoconf')
 source=("https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
-sha512sums=('aa999c1ec388154965f84d995a9b5517e9c38608d03a0d0bb6ec9fa55de946f9da106e7d6f7c02052b61d2b6806e7a378e786539f0de5b5ffaa2fcd1bbd9c7f1')
+sha512sums=('4802ce3758daba868570f1ac97a3f1cb41e1130fcc6376f9bf4c999441f8fd25937aa71b6f726d82d7c780f4153b11d2595bb76bc2356a42266909fbcc0bd34a')
 
 
 
