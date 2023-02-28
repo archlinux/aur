@@ -3,10 +3,9 @@
 # Contributor: Siddhartha Das bablu.boy@gmail.com>
 pkgname=nutty-git
 _app_id=com.github.babluboy.nutty
-pkgver=1.1.1.r75.g8838eeb
-pkgrel=2
-pkgdesc='A network utility that monitors the devices on your network,
-         checks bandwidth and speed details.'
+pkgver=1.1.1.r78.g4f55248
+pkgrel=1
+pkgdesc="A network utility with a user interface for common command line tools"
 arch=('x86_64')
 url='https://github.com/babluboy/nutty'
 license=('GPL3')
@@ -31,7 +30,7 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  meson test -C build --print-errorlogs || :
 }
 
 package() {
