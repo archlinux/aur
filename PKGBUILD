@@ -3,8 +3,7 @@
 pkgname=bunjs-bin
 pkgver=0.5.7
 pkgrel=1
-pkgdesc="Bun is a fast all-in-one JavaScript runtime
-Run, test, transpile, and bundle JavaScript & TypeScript projects — all in Bun. Built for speed, with a native bundler, transpiler, test runner, and npm-compatible package manager baked-in."
+pkgdesc="All-in-one JavaScript runtime built for speed, with a native bundler, transpiler, test runner, and npm-compatible package manager baked-in. Run, test, transpile, and bundle JavaScript & TypeScript projects — all in Bun."
 arch=('x86_64')
 url="https://github.com/oven-sh/bun"
 license=('MIT')
