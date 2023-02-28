@@ -3,7 +3,7 @@
 
 pkgname=ignition-msgs-5
 pkgver=5.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Messages for Gazebo robot simulation."
 arch=('i686' 'x86_64')
 url="https://gazebosim.org/libs/msgs"
@@ -12,6 +12,7 @@ groups=('development')
 depends=('protobuf' 'protobuf-c' 'ignition-math=6' 'ignition-utils'
 'ignition-tools' 'python')
 makedepends=('ignition-cmake=2' 'ruby-ronn' 'doxygen' 'tinyxml2')
+provides=('ignition-msgs=5')
 source=("${pkgname}-${pkgver}::https://github.com/gazebosim/gz-msgs/archive/ignition-msgs5_${pkgver}.tar.gz")
 sha256sums=('3cf31cabd0d21fc9cb111aafedd65c13d5523a7585572e85657681baf1878da7')
 
