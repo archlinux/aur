@@ -1,7 +1,7 @@
 pkgbase = betaflight-configurator-bin
 	pkgdesc = Crossplatform configuration tool for the Betaflight flight control system
 	pkgver = 10.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/betaflight/betaflight-configurator
 	install = betaflight-configurator-bin.install
 	arch = x86_64
