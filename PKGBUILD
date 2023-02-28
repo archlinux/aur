@@ -1,8 +1,8 @@
 # Maintainer: Gerard Ribugent <ribugent <at> gmail <dot> com>
 pkgname='python-parquet-tools'
 _name='parquet_tools'
-pkgver='0.2.11'
-pkgrel=5
+pkgver='0.2.12'
+pkgrel=1
 pkgdesc="Easy install parquet-tools"
 url="https://github.com/ktrueda/parquet-tools"
 depends=(
@@ -17,11 +17,16 @@ depends=(
     'python-colorama>=0.4.3' 'python-colorama<0.5.0'
 )
 
-makedepends=('python-setuptools')
+makedepends=(python-build python-installer python-poetry)
 license=('MIT')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")
-sha256sums=('14a68c9792bd0c6f794824c263f64a19a85a0c26ce5a590e062b4a91509be945')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
+sha256sums=('8deb439408d53ee7d2a89568c553e9e619915a13a452e0dd72e67a49e5f0867a')
+
+build() {
+    cd "$_name-$pkgver"
+    python -m build --wheel --no-isolation
+}
 
 package() {
     python -m installer --destdir="$pkgdir" ${_name}-${pkgver}-py3-none-any.whl
