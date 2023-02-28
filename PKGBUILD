@@ -3,8 +3,8 @@
 
 pkgname=pgmodeler
 pkgver=1.0.1
-pkgrel=1
-epoch=4
+pkgrel=2
+epoch=3
 pkgdesc="PostgreSQL Database Modeler: an open source CASE tool for modeling PostgreSQL databases"
 url="https://pgmodeler.io"
 license=('GPL3')
