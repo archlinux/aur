@@ -3,13 +3,13 @@
 # Contributor: marauder <abhinav.kssk@gmail.com>
 pkgname=ignition-tools
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ignition tools provide the ign command line tool that accepts multiple subcommands."
 arch=('any')
 url="https://github.com/gazebosim/gz-tools"
 license=('Apache')
 groups=('development')
-makedepends=('cmake' 'doxygen' 'pkg-config' 'ruby-ronn')
+makedepends=('cmake' 'ignition-cmake' 'doxygen' 'pkg-config' 'ruby-ronn')
 depends=('ruby')
 optdepends=()
 conflicts=()

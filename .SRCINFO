@@ -1,12 +1,13 @@
 pkgbase = ignition-tools
 	pkgdesc = Ignition tools provide the ign command line tool that accepts multiple subcommands.
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gazebosim/gz-tools
 	arch = any
 	groups = development
 	license = Apache
 	makedepends = cmake
+	makedepends = ignition-cmake
 	makedepends = doxygen
 	makedepends = pkg-config
 	makedepends = ruby-ronn
