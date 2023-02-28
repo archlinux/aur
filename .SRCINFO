@@ -1,6 +1,6 @@
 pkgbase = nethogs-git
 	pkgdesc = A net top tool which displays traffic used per process instead of per IP or interface. GIT version
-	pkgver = v0.8.5.r108.ga663b3a
+	pkgver = 0.8.7.r19.g8f43d02
 	pkgrel = 1
 	url = https://github.com/raboof/nethogs
 	install = nethogs.install
@@ -10,7 +10,7 @@ pkgbase = nethogs-git
 	depends = libpcap
 	depends = ncurses
 	depends = gcc-libs
-	provides = nethogs
+	provides = nethogs=0.8.7.r19.g8f43d02
 	conflicts = nethogs
 	source = nethogs::git+https://github.com/raboof/nethogs#branch=main
 	md5sums = SKIP
