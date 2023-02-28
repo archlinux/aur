@@ -1,19 +1,20 @@
 pkgbase = python-snakeoil
 	pkgdesc = Provides common functionality and useful optimizations
-	pkgver = 0.8.7
-	pkgrel = 4
-	url = https://pypi.python.org/pypi/snakeoil
-	arch = i686
-	arch = x86_64
+	pkgver = 0.10.5
+	pkgrel = 1
+	url = https://github.com/pkgcore/snakeoil
+	arch = any
 	license = BSD
-	makedepends = python
-	makedepends = python-setuptools
-	depends = python
-	source = https://files.pythonhosted.org/packages/source/s/snakeoil/snakeoil-0.8.7.tar.gz
-	source = snakeoil-0.8.7.tar.gz.sig
-	validpgpkeys = 748231EBCBD808A14F5E85D28C004C2F93481F6B
-	sha512sums = 010bbaa08f84ce59f20324ae86af4ad71c167442557934e31fc2040e3ced8d2ce0f1657272057d06e9fd1c22fd8ec89ad3233f24443ace4861121319f2772679
-	sha512sums = SKIP
+	checkdepends = python-pytest
+	checkdepends = lbzip2
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-flit-core
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-lazy-object-proxy
+	source = python-snakeoil::git+https://github.com/pkgcore/snakeoil#tag=v0.10.5?signed
+	validpgpkeys = 38514F35D453DDE719F74C6AFC1FFCB5DC7D67A3
+	sha256sums = SKIP
 
 pkgname = python-snakeoil
-
