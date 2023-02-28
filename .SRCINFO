@@ -1,0 +1,14 @@
+pkgbase = inter-font-beta
+	pkgdesc = A typeface specially designed for user interfaces
+	pkgver = 4.0beta7
+	pkgrel = 1
+	url = https://rsms.me/inter/
+	arch = any
+	license = custom:OFL
+	provides = inter-font
+	conflicts = inter-font
+	noextract = Inter-4.0-beta7.zip
+	source = https://github.com/rsms/inter/releases/download/v4.0-beta7/Inter-4.0-beta7.zip
+	b2sums = 9409ed769de27fcbe86a242b6d3771d5e573ecf25f386e1880458f7af1f78fea1bce7cd78c208003b3b3b8eb2930635605f2847868398061ef5dc9a78ef75a55
+
+pkgname = inter-font-beta
