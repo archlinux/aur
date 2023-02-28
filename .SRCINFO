@@ -1,6 +1,6 @@
 pkgbase = opencamlib-git
 	pkgdesc = Multi-Purpose CNC Toolpath Library
-	pkgver = 2019.07.4.g983a416
+	pkgver = 2023.01.11.4.ge4a5a7d
 	pkgrel = 1
 	url = https://github.com/aewallin/opencamlib
 	arch = i686
@@ -20,4 +20,3 @@ pkgbase = opencamlib-git
 	md5sums = a47c8358b60c11c4d620e6a0c24c0b50
 
 pkgname = opencamlib-git
-

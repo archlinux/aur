@@ -1,7 +1,7 @@
 # Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
 
 pkgname=opencamlib-git
-pkgver=2019.07.17.g653ef7f
+pkgver=2023.01.11.4.ge4a5a7d
 pkgrel=1
 pkgdesc="Multi-Purpose CNC Toolpath Library"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ pkgver() {
 build() {
   mkdir -p "$srcdir/opencamlib/build"
   cd "$srcdir/opencamlib/build"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DUSE_PY_3="ON" -DBUILD_PY_LIB="ON" ../src
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DUSE_PY_3="ON" -DBUILD_PY_LIB="ON" ../
   make
 }
 
