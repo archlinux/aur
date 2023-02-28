@@ -1,9 +1,9 @@
 pkg=cdecrypt
 pkgname=$pkg-git
-pkgver=4.7
+pkgver=r29.0fcb3e9
 pkgrel=1
 pkgdesc="A utility that decrypts Wii U NUS content files."
-arch=(x86_64)
+arch=('any')
 url="https://github.com/VitaSmith/cdecrypt"
 license=('GPL')
 makedepends=('git' 'make')
@@ -18,5 +18,5 @@ build() {
 package() {
     cd $pkg
     install -dm755 $pkgdir/usr/bin
-    cp $pkg $pkgdir/usr/bin
+    mv $pkg $pkgdir/usr/bin
 }

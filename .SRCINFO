@@ -1,9 +1,9 @@
 pkgbase = cdecrypt-git
 	pkgdesc = A utility that decrypts Wii U NUS content files.
-	pkgver = 4.7
+	pkgver = r29.0fcb3e9
 	pkgrel = 1
 	url = https://github.com/VitaSmith/cdecrypt
-	arch = x86_64
+	arch = any
 	license = GPL
 	makedepends = git
 	makedepends = make
