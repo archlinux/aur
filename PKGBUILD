@@ -1,5 +1,5 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname=swifty-bin
+pkgname=swifty-appimage
 _pkgname=swifty
 pkgver=0.6.13
 pkgrel=1
