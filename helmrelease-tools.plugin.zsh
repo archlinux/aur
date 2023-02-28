@@ -53,6 +53,8 @@ function _parse_hr_subcommand() {
 function _hr_git() {
   local subCommand="$1"
   local commands=()
+  local clonePath="$(mktemp -d)"
+  trap 'rm -rf "$clonePath"' EXIT
   local gitUrl="$2"
   local gitRef="$3"
   local gitPath="$4"
@@ -63,16 +65,14 @@ function _hr_git() {
   commands=($(_parse_hr_subcommand "$subCommand"))
   [[ $? != 0 ]] && return 1
 
-  rm -rf /tmp/helm-chart
   (
-    git clone -q "$gitUrl" /tmp/helm-chart
-    cd /tmp/helm-chart
+    git clone -q "$gitUrl" "$clonePath"
+    cd "$clonePath"
     git checkout -q "$gitRef"
   ) > /dev/null
 
-  helm dependency update "/tmp/helm-chart/$gitPath" > /dev/null
-  helm "${commands[@]}" --namespace $namespace $releaseName "/tmp/helm-chart/$gitPath" --values <(<<< "$values") ${@:8}
-  rm -rf /tmp/helm-chart
+  helm dependency update "$clonePath/$gitPath" > /dev/null
+  helm "${commands[@]}" --namespace $namespace $releaseName "$clonePath/$gitPath" --values <(<<< "$values") ${@:8}
 }
 
 function helmrelease() {
@@ -87,6 +87,8 @@ function helmrelease() {
   local index=0
   local sourceParameter
   local yaml
+  local remoteKubeconfig
+  local REMOTE_KUBECONFIG
   commands=($(_parse_hr_subcommand "$subCommand"))
 
   while [[ "$#" != 0 ]]; do
@@ -152,15 +154,21 @@ function helmrelease() {
   helmReleaseYaml=$(_hr_getYaml "$yaml" "$index" HelmRelease)
   [[ "$?" -ne 0 ]] && return 1
   namespace=$(_hr_getNamespace "$helmReleaseYaml")
+  remoteKubeconfig="$(<<< "$helmReleaseYaml" | yq -r '.spec.kubeConfig.secretRef.name')"
+  if [[ "$remoteKubeconfig" != null ]]; then
+    REMOTE_KUBECONFIG="$(mktemp)"
+    trap "rm -f \"$REMOTE_KUBECONFIG\"" EXIT
+    kubectl --namespace=$(<<<"$helmReleaseYaml" | yq -r '.metadata.namespace') get secret $remoteKubeconfig -o jsonpath='{.data.value}' | base64 -d > "$REMOTE_KUBECONFIG"
+  fi
   releaseName=$(_hr_getReleaseName "$helmReleaseYaml")
   case "$subCommand" in
     uninstall)
-      helm "${commands[@]}" --namespace $namespace $releaseName
+      KUBECONFIG="${REMOTE_KUBECONFIG:-$KUBECONFIG}" helm "${commands[@]}" --namespace $namespace $releaseName
       ;;
     *)
       values=$(<<< "$helmReleaseYaml" | yq -y -er .spec.values)
       if [[ -d "$sourceParameter" ]]; then
-        helm "${commands[@]}" --namespace $namespace $releaseName "$sourceParameter" --values <(<<< "$values") ${@}
+        KUBECONFIG="${REMOTE_KUBECONFIG:-$KUBECONFIG}" helm "${commands[@]}" --namespace $namespace $releaseName "$sourceParameter" --values <(<<< "$values") ${@}
       elif <<< "$helmReleaseYaml" | yq -e '.apiVersion == "helm.fluxcd.io/v1"' > /dev/null; then
         if <<< "$helmReleaseYaml" | yq -e .spec.chart.git > /dev/null; then
           local gitPath
@@ -169,9 +177,9 @@ function helmrelease() {
           gitPath="$(<<< "$helmReleaseYaml" | yq -er '.spec.chart.path // "."')"
           gitUrl="$(<<< "$helmReleaseYaml" | yq -er .spec.chart.git)"
           gitRef="$(<<< "$helmReleaseYaml" | yq -er '.spec.chart.ref // "master"')"
-          _hr_git "$subCommand" "$gitUrl" "$gitRef" "$gitPath" "$namespace" "$releaseName" "$values" "$@"
+          KUBECONFIG="${REMOTE_KUBECONFIG:-$KUBECONFIG}" _hr_git "$subCommand" "$gitUrl" "$gitRef" "$gitPath" "$namespace" "$releaseName" "$values" "$@"
         else
-          helm "${commands[@]}" --namespace $namespace --repo $(<<< "$helmReleaseYaml" | yq -er .spec.chart.repository) $releaseName $(<<< "$helmReleaseYaml" | yq -er .spec.chart.name) --version $(<<< "$helmReleaseYaml" | yq -er .spec.chart.version) --values <(<<< "$values") "$@"
+          KUBECONFIG="${REMOTE_KUBECONFIG:-$KUBECONFIG}" helm "${commands[@]}" --namespace $namespace --repo $(<<< "$helmReleaseYaml" | yq -er .spec.chart.repository) $releaseName $(<<< "$helmReleaseYaml" | yq -er .spec.chart.name) --version $(<<< "$helmReleaseYaml" | yq -er .spec.chart.version) --values <(<<< "$values") "$@"
         fi
       else
         local sourceNamespace
@@ -207,13 +215,13 @@ function helmrelease() {
             local gitRef
             gitUrl="$(<<< "$sourceResource" | yq -er .spec.url)"
             gitRef="$(<<< "$sourceResource" | yq -er '.spec.ref | if .branch then .branch elif .tag then .tag elif .semver then .semver elif .commit then .commit else "master" end')"
-            _hr_git "$subCommand" "$gitUrl" "$gitRef" "$chartName" "$namespace" "$releaseName" "$values" "$@"
+            KUBECONFIG="${REMOTE_KUBECONFIG:-$KUBECONFIG}" _hr_git "$subCommand" "$gitUrl" "$gitRef" "$chartName" "$namespace" "$releaseName" "$values" "$@"
             ;;
           HelmRepository)
             local chartVersion
             helmRepositoryUrl="$(<<< "$sourceResource" | yq -er .spec.url)"
             chartVersion="$(<<< "$helmReleaseYaml" | yq -er '.spec.chart.spec.version // "x.x.x"')"
-            helm "${commands[@]}" --namespace $namespace --repo "$helmRepositoryUrl" $releaseName "$chartName" --version "$chartVersion" --values <(<<< "$values") "$@"
+            KUBECONFIG="${REMOTE_KUBECONFIG:-$KUBECONFIG}" helm "${commands[@]}" --namespace $namespace --repo "$helmRepositoryUrl" $releaseName "$chartName" --version "$chartVersion" --values <(<<< "$values") "$@"
             ;;
           *)
             echo "'$sourceKind' is not implemented" > /dev/stderr
