@@ -1,6 +1,6 @@
 pkgbase = firejail-handler-extra
 	pkgdesc = BitTorrent/Youtube URL handlers for Firejail
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/glitsj16/firejail-handler-extra
 	install = firejail-handler-extra.install
@@ -15,7 +15,7 @@ pkgbase = firejail-handler-extra
 	options = staticlibs
 	options = !strip
 	options = !zipman
-	source = firejail-handler-extra-0.1.3.tar.gz::https://github.com/glitsj16/firejail-handler-extra/archive/refs/tags/v0.1.3.tar.gz
-	sha256sums = a56dc9e2cb1d2f75cd5e0aefa92a313b088b8a76cf7c8bd16975f1ab052f41c0
+	source = firejail-handler-extra-0.1.4.tar.gz::https://github.com/glitsj16/firejail-handler-extra/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = 418f4f951ae917b70c37e47c2e2db5a24fa62dfa9b22a060bb7f8efa03a9f2d1
 
 pkgname = firejail-handler-extra
