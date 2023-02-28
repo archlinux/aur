@@ -2,7 +2,7 @@
 # Maintainer: Ayman Bagabas <ayman.bagabas@gmail.com>
 
 pkgname='shcopy-bin'
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Copy text to clipboard from anywhere using ANSI OSC 52 sequence'
 url='https://github.com/aymanbagabas/shcopy'
@@ -11,20 +11,20 @@ license=('MIT')
 provides=('shcopy')
 conflicts=('shcopy')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/aymanbagabas/shcopy/releases/download/v0.1.1/shcopy_0.1.1_linux_arm64.tar.gz")
-sha256sums_aarch64=('acc59c4d011c697e2c49d0ed8752c412b737781c83547da33b7a064193c00125')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/aymanbagabas/shcopy/releases/download/v0.1.2/shcopy_0.1.2_linux_arm64.tar.gz")
+sha256sums_aarch64=('b03c1c239c4b96b6068c6a67fb40e8b2e58c5a61fda44d4601ce7820cf8eaa4a')
 
-source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/aymanbagabas/shcopy/releases/download/v0.1.1/shcopy_0.1.1_linux_armv6.tar.gz")
-sha256sums_armv6h=('6f9ed971dfaa4ec1fccc823637e435286152e8eb5199416f9b039198e3156a66')
+source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/aymanbagabas/shcopy/releases/download/v0.1.2/shcopy_0.1.2_linux_armv6.tar.gz")
+sha256sums_armv6h=('13b3a4979bcb852c18bcb7f598b79aa769d1c418d664ca66d75ae32ebaf97fff')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/aymanbagabas/shcopy/releases/download/v0.1.1/shcopy_0.1.1_linux_armv7.tar.gz")
-sha256sums_armv7h=('092d4a0ce87b169fc2ee85a2bf6bc24c9a2225d34d51ce75722056785752b0cf')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/aymanbagabas/shcopy/releases/download/v0.1.2/shcopy_0.1.2_linux_armv7.tar.gz")
+sha256sums_armv7h=('b317c806b199350d4db5c9cd249084c1b0b481d768923f908426378e5a83b156')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/aymanbagabas/shcopy/releases/download/v0.1.1/shcopy_0.1.1_linux_i386.tar.gz")
-sha256sums_i686=('439f1c8a07c55333129a6c606da5d90fdc370e9e6fa8461906cccfc3bf92f623')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/aymanbagabas/shcopy/releases/download/v0.1.2/shcopy_0.1.2_linux_i386.tar.gz")
+sha256sums_i686=('58378c58d8d870c75ef6e0eabfde5849de6b9823cb59f2029a379677ded7c7e0')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/aymanbagabas/shcopy/releases/download/v0.1.1/shcopy_0.1.1_linux_x86_64.tar.gz")
-sha256sums_x86_64=('99b7aa80e00b61de51d707a3f7215b1db0a5768f664042c8bfb8ee354fe203aa')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/aymanbagabas/shcopy/releases/download/v0.1.2/shcopy_0.1.2_linux_x86_64.tar.gz")
+sha256sums_x86_64=('bd218e9bf43b99bf2b4b0aebe46418dbeaa4fc8bd9681eddec3ec86d12a7ea34')
 
 package() {
   # bin
