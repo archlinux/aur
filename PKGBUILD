@@ -1,10 +1,10 @@
 # Maintainer: Achilleas Pipinellis <axilleas at archlinux dot gr>
 
 _npmname=gitlab-ci-lint
-_npmver=1.0.2
+_npmver=1.1.0
 pkgname=nodejs-$_npmname
 pkgver=$_npmver
-pkgrel=2
+pkgrel=1
 pkgdesc="GitLab CI/CD cli to lint .gitlab-ci.yml files"
 arch=('any')
 url="https://github.com/BuBuaBu/gitlab-ci-lint"
@@ -24,4 +24,4 @@ package() {
   chmod -R 755 $_npmdir$_npmname
 
 }
-sha512sums=('26935f23b70f5a7cc6b836fd3153523ef1d0e4875c22bac0453f0740b97f8b86ef3c5318793d814478c1d914f1cd95ae9ffc1e6093120abcbbeba3e19b2cffc9')
+sha512sums=('ef1f5ca1cd67cfc1908bed3f338855188dfc1e513c44fe6414a577090dec7da35cd1d38c82e9bb13833064cde269510a2d3f9c25c674b331c8c11d1d1f885f5e')

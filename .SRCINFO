@@ -1,15 +1,14 @@
 pkgbase = nodejs-gitlab-ci-lint
 	pkgdesc = GitLab CI/CD cli to lint .gitlab-ci.yml files
-	pkgver = 1.0.2
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/BuBuaBu/gitlab-ci-lint
 	arch = any
 	license = GPL3
 	makedepends = npm
 	depends = nodejs
-	noextract = gitlab-ci-lint-1.0.2.tgz
-	source = https://registry.npmjs.org/gitlab-ci-lint/-/gitlab-ci-lint-1.0.2.tgz
-	sha512sums = 26935f23b70f5a7cc6b836fd3153523ef1d0e4875c22bac0453f0740b97f8b86ef3c5318793d814478c1d914f1cd95ae9ffc1e6093120abcbbeba3e19b2cffc9
+	noextract = gitlab-ci-lint-1.1.0.tgz
+	source = https://registry.npmjs.org/gitlab-ci-lint/-/gitlab-ci-lint-1.1.0.tgz
+	sha512sums = ef1f5ca1cd67cfc1908bed3f338855188dfc1e513c44fe6414a577090dec7da35cd1d38c82e9bb13833064cde269510a2d3f9c25c674b331c8c11d1d1f885f5e
 
 pkgname = nodejs-gitlab-ci-lint
-
