@@ -1,7 +1,7 @@
 pkgbase = emath
 	pkgdesc = Library for representing and operating abstract algebraic concepts
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TheWisker/EMath
 	arch = x86_64
 	license = GPL
