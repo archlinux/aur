@@ -1,0 +1,20 @@
+pkgbase = emath
+	pkgdesc = Library for representing and operating abstract algebraic concepts
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/TheWisker/EMath
+	arch = x86_64
+	license = GPL
+	makedepends = meson
+	makedepends = ninja
+	makedepends = git
+	depends = ncurses
+	depends = rapidjson
+	depends = sfml
+	depends = gcc
+	depends = glibc
+	backup = usr/bin/polynomials.json
+	source = git+https://github.com/TheWisker/EMath
+	sha256sums = SKIP
+
+pkgname = emath
