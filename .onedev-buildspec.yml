@@ -20,7 +20,7 @@ jobs:
   steps:
   - !PushRepository
     name: Push
-    remoteUrl: https://github.com/dzikoysk/reposilite
+    remoteUrl: https://github.com/reposilite-playground/reposilite-aur
     userName: PolarianDev
     passwordSecret: ghpass
     withLfs: false
