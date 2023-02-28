@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Nico <d3sox at protonmail dot com>
 pkgname=sysmontask
-pkgver=1.x.x
-pkgrel=6
+pkgver=1.3.9+16+g7c96959
+pkgrel=1
 epoch=1
 pkgdesc="System monitor with the compactness and usefulness of Windows Task Manager"
 arch=('any')
@@ -24,12 +24,15 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/SysMonTask"
-  git describe --tags | sed 's/^v//;s/-/+/g'
+  git describe --tags --exclude v1.x.x | sed 's/^v//;s/-/+/g'
 }
 
 prepare() {
   cd "$srcdir/SysMonTask"
   patch -Np1 -i "$srcdir/$pkgname.patch"
+
+  # '1.x.x' is not valid according to PEP 440
+  sed -i 's/1.x.x/1.3.9/g' setup.py
 
   sed -i "s/Exec=$pkgname/Exec=$pkgname-pkexec/g" SysMonTask.desktop
 }

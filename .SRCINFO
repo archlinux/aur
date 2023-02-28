@@ -1,7 +1,7 @@
 pkgbase = sysmontask
 	pkgdesc = System monitor with the compactness and usefulness of Windows Task Manager
-	pkgver = 1.x.x
-	pkgrel = 6
+	pkgver = 1.3.9+16+g7c96959
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/KrispyCamel4u/SysMonTask
 	arch = any
