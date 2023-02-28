@@ -1,6 +1,6 @@
 pkgbase = ripasso-cursive
 	pkgdesc = A password manager that uses the file format of the standard unix password manager 'pass', implemented in rust.
-	pkgver = 0.6.2
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/cortex/ripasso/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = ripasso-cursive
 	depends = gpgme
 	depends = libgit2
 	conflicts = ripasso-git
-	source = https://github.com/cortex/ripasso/archive/release-0.6.2.tar.gz
-	sha256sums = 747bf15703bcadf0e6bde884f3249493be90787892631fe51e5001353b833d13
+	source = https://github.com/cortex/ripasso/archive/release-0.6.3.tar.gz
+	sha256sums = 2f43e48c3e1064bef47c89269e4797f216b7600b850f3857cfce7e9716ef8f7d
 
 pkgname = ripasso-cursive
