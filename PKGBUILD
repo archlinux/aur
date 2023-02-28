@@ -1,11 +1,10 @@
-# maintainer: libele <libele@disroot.org>
-
-# contributor:  Beej <beej@beej.us>
-# contributor:  Michiel Broek <mbse at mbse eu>
+# Maintainer: libele <libele@disroot.org>
+# Contributor:  Beej <beej@beej.us>
+# Contributor:  Michiel Broek <mbse at mbse eu>
 
 pkgname=cpmtools
-pkgver=2.22
-pkgrel=2
+pkgver=2.23
+pkgrel=1
 pkgdesc="Tools to access CP/M disks"
 arch=('i686' 'x86_64')
 url="http://www.moria.de/~michael/cpmtools/"
@@ -15,10 +14,10 @@ source=("http://www.moria.de/~michael/cpmtools/files/${pkgname}-${pkgver}.tar.gz
 	'ecsys.drives'
 	'prodos.drives'
 	'z80pack.drives')
-md5sums=('efe8ead733e412b16436fd43910fb61d'
-         'c54b18fbafcb867a014cc814ed2eb93e'
-	 'fc7152d7ae35e690b0860ead7997a03c'
-         '2eef83b5fbc21870743a6eb871fff4b5')
+sha256sums=('7839b19ac15ba554e1a1fc1dbe898f62cf2fd4db3dcdc126515facc6b929746f'
+            '42fbaa5d733d4da255f6e3f9cb8e844f8dae6cd9858c9aa364213e34f45934d9'
+            '10899a2dd2a46e34e278c3aa07d4d65c66c7d885d0d8df8c1c255c2af06d3c8e'
+            '5969c802ba8d6cdeadb96190b15a6e58ba365fdcf42723581a350f54ea221c8d')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
