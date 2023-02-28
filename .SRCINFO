@@ -1,0 +1,16 @@
+pkgbase = uni-algo
+	pkgdesc = Unicode Algorithms Implementation for C/C++
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/uni-algo/uni-algo
+	arch = x86_64
+	license = MIT
+	license = Unlicense
+	makedepends = cmake
+	makedepends = git
+	depends = gcc-libs
+	source = uni-algo-0.7.1::git+https://github.com/uni-algo/uni-algo.git#tag=0c73c42e3a8d1b58069b6c736cf3fb23b64c094c?signed
+	validpgpkeys = 824F52712D0A5D9B2DAA0612C3E259290569D95F
+	b2sums = SKIP
+
+pkgname = uni-algo
