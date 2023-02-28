@@ -3,27 +3,29 @@
 # Original: hexptr <hexptr@protonmail.com>
 
 pkgname=streamdeck-ui
-pkgver=2.0.6
-pkgrel=2
+pkgver=2.0.13
+pkgrel=1
 pkgdesc="A Linux compatible UI for the Elgato Stream Deck"
 arch=('any')
 url="https://timothycrosley.github.io/streamdeck-ui/"
 license=('MIT')
-depends=('python-pillow' 'python-hidapi' 'pyside2' 'python-pynput' 'python-elgato-streamdeck>=0.9.1' 'python-xlib' 'python-filetype' 'python-cairosvg')
+depends=('python-pillow' 'python-hidapi' 'pyside6' 'python-pynput' 'python-elgato-streamdeck>=0.9.1' 'python-xlib' 'python-filetype' 'python-cairosvg')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-poetry')
 provides=('streamdeck-ui')
+conflicts=('streamdeck-ui-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/timothycrosley/streamdeck-ui/archive/refs/tags/v${pkgver}.tar.gz"
         "60-streamdeck.rules"
         "streamdeck-ui.desktop"
         "elgato.png")
+
 # The first hash in the list is the tar.gz
 # The second is 60-streamdeck.rules
 # The third is streamdeck-ui.desktop
 # The fourth is elgato.png
 
-sha512sums=('1f4f2c30c037d33f2e2e035acaf2d393fb63bb455c9e3192a9393acaffb32ba4e6822a75255203d6e38048b3a5e901ba4555c2f8344f30d6c9f8cb80c296ac4a'
+sha512sums=('32e6df5cceed94616f1ec45e60534a15b0358cbdad130a3393e5930d38a60e573b596c49446d04810bef72413e1f49fac0571447b5f15924f24b1706b886580d'
             '690aa38c549b09c7c49d99e47dea74fc47d778881ce1947d9da37f6d1d94f8745c4724c23a702167e6d714ea9b4fd13a4414eb6945b17728eef9b5319b9a6c0f'
-            '5c7b8abeae9f5475ec6033ed39f11d4d460210bfe570b9b13ece46df8f2edb7e6039b190071ee20e2a0b74fba6ced8886d95213494a0f8f93d075b809cc540f9'
+            '963960c17336b4143ddd3560248dcd0484978b821c860b8d8f30a7ee4e623289aed96c375fe7a34177156d7b6c6296008307a4ca24ffe3972b1e787c14891a6f'
             '1145e8cdebdf950090d0833e40984cd402345d559c9faf8aab89f5ec4db5d5de685b68418faf39288f08e9a642fcf1cc53a719b1b11c8ebfac6dd8b42d4898d2')
 
 build() {
