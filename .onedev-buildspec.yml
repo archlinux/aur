@@ -37,4 +37,4 @@ jobs:
   postBuildActions:
   - !SendNotificationAction
     condition: always
-    receivers: user(polarian)
+    receivers: user(polariandev)
