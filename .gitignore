@@ -1,4 +1,4 @@
-pkg/
-src/
-*.zip
-*.tar.zst
+pkg
+src
+nekoray
+*.pkg.tar.zst
