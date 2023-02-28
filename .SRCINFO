@@ -17,7 +17,7 @@ pkgbase = theia-electron
 	makedepends = pkgconf
 	makedepends = python
 	makedepends = node-gyp
-	depends = nodejs>=12
+	depends = nodejs>=14
 	depends = nodejs<18
 	depends = nss
 	depends = gtk3

@@ -9,7 +9,7 @@ arch=('i686' 'x86_64' 'aarch64')
 url='https://www.theia-ide.org/'
 pkgdesc="Cloud & Desktop IDE Platform"
 license=('EPL2')
-depends=('nodejs>=12' 'nodejs<18' 'nss' 'gtk3' 'libxss' 'libxkbfile')
+depends=('nodejs>=14' 'nodejs<18' 'nss' 'gtk3' 'libxss' 'libxkbfile')
 makedepends=('bash>=5' 'curl' 'diffutils' 'jq'
              'yarn' 'make' 'gcc' 'pkgconf' 'python' 'node-gyp')
 optdepends=('git: git support' 'libsecret: keytar support')
