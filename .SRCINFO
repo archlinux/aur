@@ -1,0 +1,15 @@
+pkgbase = ruby-openai_pipe
+	pkgdesc = A UNIX-ey interface to OpenAI
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://www.github.com/Aesthetikx/openai_pipe
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-quick_openai
+	noextract = openai_pipe-0.1.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/openai_pipe-0.1.2.gem
+	sha1sums = 8a9606fc9987e30937cedd958fc27a721c6cc521
+
+pkgname = ruby-openai_pipe
