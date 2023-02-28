@@ -1,13 +1,13 @@
 # Maintainer: GuyLiner <guyliner69@proton.me>
 _pkgname='i3bar-river'
 pkgname=${_pkgname}-git
-pkgver=r66.f54d43f
+pkgver=r67.9d3b703
 pkgrel=1
 pkgdesc="A port of i3bar for the river Wayland compositor"
 url="https://github.com/MaxVerevkin/i3bar-river"
 arch=('x86_64')
 license=('GPL3')
-depends=(cairo pango river)
+depends=(cairo pango)
 makedepends=(git cargo)
 provides=("${pkgname}")
 conflicts=("${pkgname}")
@@ -22,5 +22,5 @@ pkgver() {
 package() {
 	cd "$srcdir/${_pkgname}"
     export RUSTUP_TOOLCHAIN=stable 
-    cargo install --no-track --all-features --root "$pkgdir/usr/" --path .
+    cargo install --no-track --all-features --locked --root "$pkgdir/usr/" --path .
 }
