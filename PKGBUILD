@@ -30,7 +30,8 @@ depends=(
 	'uvicorn'
 	'python-uvloop'
 )
-makedepends=('git' 'python-setuptools' 'python-pytest')
+makedepends=('git' 'python-setuptools')
+checkdepends=('python-pytest')
 install="theHarvester.install"
 source=("$pkgname::git+$url.git")
 b2sums=('SKIP')
