@@ -1,0 +1,18 @@
+pkgbase = guile-gnutls
+	pkgdesc = Guile bindings for the GnuTLS library
+	pkgver = 3.7.11
+	pkgrel = 1
+	url = https://gitlab.com/gnutls/guile
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	license = LGPL
+	depends = guile
+	depends = gnutls
+	source = https://ftp.gnu.org/gnu/gnutls/guile-gnutls-3.7.11.tar.gz
+	source = https://ftp.gnu.org/gnu/gnutls/guile-gnutls-3.7.11.tar.gz.sig
+	validpgpkeys = B1D2BD1375BECB784CF4F8C4D73CF638C53C06BE
+	sha256sums = 058eaa5c763e19fbf93e8b4eefc11280f8070535c138c99be11f00cd685613df
+	sha256sums = 4f4ed40bff804dbdda4a98ef7590f197d327c7b5e9da15860d21b5ec5e947379
+
+pkgname = guile-gnutls
