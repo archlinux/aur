@@ -1,6 +1,6 @@
 pkgbase = python-rosbags
 	pkgdesc = Pure Python library to read, modify, convert, and write rosbag files.
-	pkgver = 0.9.13
+	pkgver = 0.9.14
 	pkgrel = 1
 	url = https://gitlab.com/ternaris/rosbags
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-rosbags
 	depends = python-numpy
 	depends = python-ruamel-yaml
 	depends = python-zstandard
-	source = python-rosbags-0.9.13::https://gitlab.com/ternaris/rosbags/-/archive/v0.9.13/rosbags-v0.9.13.tar.gz
-	sha256sums = a0adf7b684fe8dca16e198a777add76c5b15381937a3e6e5d9c80d9f4cd8dcc0
+	source = python-rosbags-0.9.14::https://gitlab.com/ternaris/rosbags/-/archive/v0.9.14/rosbags-v0.9.14.tar.gz
+	sha256sums = 2779eba2df76aa0a2d7fbacf1335ec94b7b3fc7e4e4c37977f89aa791d53781a
 
 pkgname = python-rosbags
