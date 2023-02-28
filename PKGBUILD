@@ -42,20 +42,21 @@ build() {
 }
 
 package() {
-    mkdir -p "${pkgdir}/usr/lib/nekoray"
-    mkdir -p "${pkgdir}/usr/bin"
-    mkdir -p "${pkgdir}/usr/share/pixmaps"
-    mkdir -p "${pkgdir}/usr/share/applications"
+    install -dm755 ${pkgdir}/usr/share/nekoray
+    install -dm755 ${pkgdir}/usr/bin
+    install -dm755 ${pkgdir}/usr/share/pixmaps
+    install -dm755 ${pkgdir}/usr/share/applications
     # assets
-    cp "${srcdir}/nekoray.desktop" "${pkgdir}/usr/share/applications/nekoray.desktop"
-    cp -a "${srcdir}/nekoray/res/public/nekoray.png" "${pkgdir}/usr/lib/nekoray/"
-    cp -a "${srcdir}/nekoray/res/public/nekobox.png" "${pkgdir}/usr/lib/nekoray/"
-    ln -s "/usr/lib/nekoray/nekoray.png" "${pkgdir}/usr/share/pixmaps/nekoray.png"
-    ln -s "/usr/lib/nekoray/nekobox.png" "${pkgdir}/usr/share/pixmaps/nekobox.png"
+    install -Dm644 ${srcdir}/nekoray.desktop ${pkgdir}/usr/share/applications/nekoray.desktop
+    install -Dm644 ${srcdir}/nekoray/res/public/nekoray.png ${pkgdir}/usr/share/nekoray/
+    install -Dm644 ${srcdir}/nekoray/res/public/nekobox.png ${pkgdir}/usr/share/nekoray/
+    ln -s /usr/share/nekoray/nekoray.png ${pkgdir}/usr/share/pixmaps/nekoray.png
+    ln -s /usr/share/nekoray/nekobox.png ${pkgdir}/usr/share/pixmaps/nekobox.png
     # core
-    cp -a "${srcdir}/nekoray/deployment/linux64/nekoray_core" "${pkgdir}/usr/lib/nekoray/"
-    cp -a "${srcdir}/nekoray/deployment/linux64/nekobox_core" "${pkgdir}/usr/lib/nekoray/"
+    install -Dm755 ${srcdir}/nekoray/deployment/linux64/nekobox_core ${pkgdir}/usr/share/nekoray/
+    install -Dm755 ${srcdir}/nekoray/deployment/linux64/nekoray_core ${pkgdir}/usr/share/nekoray/
     # app
-    cp -a "${srcdir}/nekoray/build/nekoray" "${pkgdir}/usr/lib/nekoray/"
-    ln -s  "/usr/lib/nekoray/nekoray" "${pkgdir}/usr/bin/nekoray"
+    install -Dm755 ${srcdir}/nekoray/build/nekoray ${pkgdir}/usr/share/nekoray/
+
+    ln -s  /usr/share/nekoray/nekoray ${pkgdir}/usr/bin/nekoray
 }
