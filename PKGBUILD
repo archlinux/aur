@@ -4,8 +4,8 @@
 # Contributor: Tobias Manske <aur at rad4day dot de>
 
 pkgname=xp-pen-tablet
-pkgver=3.2.3.220323
-pkgrel=9
+pkgver=3.2.3.230215
+pkgrel=1
 epoch=0
 pkgdesc="XP-Pen (Official) Linux utility (New UI driver)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('LGPL3')
 source=("XPPen-pentablet-${pkgver}-1.${arch}.deb::https://www.xp-pen.ru/download/file/id/1954/pid/143/ext/deb.html")
 install=${pkgname}.install
 
-sha512sums=('bcbd6c04ac0f28f4f9151e95ffc2e0b0941b5863e34af569964660b9aa02ea616cf24772b0a90aa69feb598aa79654a44d185048636cf84b510102c44074df6c')
+sha512sums=('6f33cd2090881299c8c848fee393f5ca0f3cc09f117902c214cf86e28e69eb29915709a4720b7cdf00f7f3af64bc53853f6a3d6377f07daf574d66ae0498dd09')
 
 
 package() {
