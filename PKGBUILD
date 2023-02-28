@@ -1,9 +1,9 @@
-# Maintainer: Alex Hirze <alex at hirzel period us>
+# Maintainer: Alex Hirzel <alex at hirzel period us>
 # Contributor: Maarten de Boer <maarten@cloudstek.nl>
 # Contributor: Yakumo Saki <yakumo at ziomatrix dot org>
 # Contributor: Xuanwo <xuanwo@archlinucn.org>
 pkgname=clickup
-pkgver=3.1.2
+pkgver=3.2.8
 pkgrel=1
 pkgdesc="Desktop app for clickup.com"
 arch=('x86_64')
@@ -18,7 +18,7 @@ _filename="$pkgname-desktop-$pkgver-x86_64.AppImage"
 source=("${_filename}::https://desktop.clickup.com/linux"
         "terms.html::https://clickup.com/terms")
 
-sha256sums=('424becd352fda9fbd9e44f419cb770da859868be6d611ddf6858e5bfaa406366'
+sha256sums=('f7e7cafbb5402e75469ac3c23abaae98676e0f45e5ed8236f12fbb186894664a'
             'SKIP')
 
 prepare() {
@@ -35,11 +35,11 @@ package() {
 
     # Symlink to /usr/bin
     install -dm0755 "${pkgdir}/usr/bin"
-    ln -s /opt/clickup/ClickUp "${pkgdir}/usr/bin/clickup"
+    ln -s /opt/clickup/desktop "${pkgdir}/usr/bin/clickup"
 
     # Desktop entry and icons
-    sed -i -e "s|Exec=.\+|Exec=/usr/bin/${pkgname} %U|" ClickUp.desktop
-    install -Dm0644 ClickUp.desktop -t "${pkgdir}/usr/share/applications/"
+    install -Dm0644 desktop.desktop -T "${pkgdir}/usr/share/applications/ClickUp.desktop"
+    sed -i -e "s|Exec=.\+|Exec=/usr/bin/${pkgname} %U|" "${pkgdir}/usr/share/applications/ClickUp.desktop"
 
     # Terms and licenses
     install -Dm0644 "${srcdir}/terms.html" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
@@ -50,7 +50,7 @@ package() {
     icons=(1024x1024 512x512 256x256 128x128 64x64 48x48 32x32 16x16)
 
     for size in "${icons[@]}"; do
-        install -Dm0644 usr/share/icons/hicolor/${size}/apps/ClickUp.png -t "${pkgdir}/usr/share/icons/hicolor/${size}/apps/"
+        install -Dm0644 usr/share/icons/hicolor/${size}/apps/desktop.png -T "${pkgdir}/usr/share/icons/hicolor/${size}/apps/ClickUp.png"
     done
 
     # AppDir contents
@@ -62,7 +62,7 @@ package() {
 
     # Clean up files
     rm -r "${pkgdir}/opt/clickup/usr/share/"
-    rm "${pkgdir}/opt/clickup/AppRun" "${pkgdir}/opt/clickup/ClickUp.desktop"
-    rm "${pkgdir}/opt/clickup/ClickUp.png" "${pkgdir}/opt/clickup/.DirIcon"
+    rm "${pkgdir}/opt/clickup/AppRun" "${pkgdir}/opt/clickup/desktop.desktop"
+    rm "${pkgdir}/opt/clickup/desktop.png" "${pkgdir}/opt/clickup/.DirIcon"
     rm "${pkgdir}/opt/clickup/LICENSE.electron.txt" "${pkgdir}/opt/clickup/LICENSES.chromium.html"
 }
