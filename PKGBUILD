@@ -2,7 +2,7 @@
 
 _pkgname=pacclean
 pkgname="$_pkgname-git"
-pkgver=r20.a957a06
+pkgver=r33.8dbc569
 pkgrel=1
 pkgdesc="Clean up old pacman packages, similar to paccache"
 arch=('x86_64')
