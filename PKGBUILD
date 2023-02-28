@@ -4,7 +4,7 @@
 _name=7-zip
 pkgname=${_name}-full
 pkgver=22.01
-pkgrel=5
+pkgrel=6
 pkgdesc="File archiver with a high compression ratio (full package to replace p7zip)"
 url="https://7-zip.org/"
 license=('LGPL')
@@ -15,10 +15,6 @@ makedepends=()
 
 if [ ! "${NO_ASM}" ]; then
     makedepends+=('uasm')
-fi
-
-if [ "${CC}" = 'clang' ]; then
-    makedepends+=('clang' 'lld')
 fi
 
 source=(
@@ -32,6 +28,7 @@ sha256sums=(
 )
 
 prepare() {
+    chmod -R a=rw,a+X .
     patch -p0 --binary -i "${source[1]}"
 }
 
@@ -49,8 +46,6 @@ build() {
         IS_ARM64=$([ "${CARCH}" = 'aarch64' ] && echo '1' || echo '')
         MY_ARCH=
         USE_ASM=$([ ! "${NO_ASM}" ] && echo '1' || echo '')
-        CC="${CC:-gcc}"
-        CXX="${CXX:-g++}"
         CFLAGS_WARN='-Wno-error'
         CFLAGS_ADD="${CFLAGS}"
         LDFLAGS_ADD="${LDFLAGS}"
