@@ -13,7 +13,7 @@ depends=('qt6-declarative' 'qt6-multimedia' 'qt6-5compat'
   'readline' )
 makedepends=('cmake' 'flex' 'bison' 'qt6-tools' 'swig' 'clang')
 source=("${url}/releases/download/v${pkgver}/FreeKill-${pkgver}-source.tar.gz")
-sha256sums=('0363cf37a2957ab41604e95b80d24d8c13ce942a15b67f97af7d10ca189a44e3')
+sha256sums=('56b2f04993b2824d68130e8068d5e6190ccf9e452fc48b13365eaab4de587a86')
 
 prepare() {
   cd ${srcdir}/${_upper_pkgname}-${pkgver}
