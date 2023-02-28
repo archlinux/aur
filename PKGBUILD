@@ -6,14 +6,14 @@ _gitbranch="main"
 
 pkgname="${_pkgname}-git"
 pkgver=v1.3.0.r3.g369fe50
-pkgrel=2
+pkgrel=3
 pkgdesc="Encrypted backup and synchronization tool"
 arch=('any')
 url="https://github.com/${_gitauthor}/${_pkgname}"
 license=('MIT')
 groups=()
 depends=('bash' 'borg' 'gocryptfs' 'rclone' 'rsync' 'systemd')
-makedepends=('git')
+makedepends=('git' 'make')
 optdepends=('pass: standard password manager'
             'gopass: improved password manager')
 provides=("${_pkgname}")
