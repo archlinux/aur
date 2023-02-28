@@ -2,7 +2,7 @@
 
 pkgname=freekill
 _upper_pkgname=FreeKill
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/Notify-ctrl/FreeKill'
