@@ -1,6 +1,6 @@
 pkgbase = python-cfclient
 	pkgdesc = Host applications and library for Crazyflie written in Python.
-	pkgver = 2022.9
+	pkgver = 2023.2
 	pkgrel = 1
 	url = https://github.com/bitcraze/crazyflie-clients-python
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = python-cfclient
 	depends = python-pyqt5-sip
 	optdepends = crazyflie-udev
 	optdepends = crazyradio-udev
-	source = python-cfclient-2022.9.tar.gz::https://github.com/bitcraze/crazyflie-clients-python/archive/2022.9.tar.gz
-	sha256sums = 5e13029fce4eeaa83507ed1be3244d9665711a7148c0a2499da5c7f89ca74c07
+	source = python-cfclient-2023.2.tar.gz::https://github.com/bitcraze/crazyflie-clients-python/archive/2023.2.tar.gz
+	sha256sums = c86533892b32d2e41240375eaaa523f71d54efd0dc74b207ab0dcd4eea1bbc27
 
 pkgname = python-cfclient
