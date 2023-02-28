@@ -1,5 +1,6 @@
 pkg
 src
+aliyunpan
 *.deb
 *.zip
 *.pkg.tar.zst

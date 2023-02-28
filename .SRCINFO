@@ -1,14 +1,20 @@
 pkgbase = aliyunpan-liupan1890
-	pkgdesc = 阿里云盘小白羊版 阿里云盘PC版
-	pkgver = 2.12.14
-	pkgrel = 4
-	url = https://github.com/liupan1890/aliyunpan
+	pkgdesc = 阿里云盘小白羊版，临时更换为 odomu 修复下载的 fork
+	pkgver = 3.10.24.git03b0319
+	pkgrel = 1
+	url = https://github.com/odomu/aliyunpan
 	arch = any
 	license = None
-	depends = electron12
+	depends = electron20
 	depends = aria2
 	optdepends = mpv: media preview support
-	source = https://download.copr.fedorainfracloud.org/results/zhullyb/zhullyb/fedora-35-x86_64/04222746-aliyunpan-liupan1890-bin/aliyunpan-liupan1890-bin-2.12.14-1.x86_64.rpm
-	sha256sums = 6f046e3f4f3f116996b2cfb195234489c1b7fa9b137929818c34bb8193a85a5d
+	source = git+https://github.com/odomu/aliyunpan.git#tag=03b0319c29d26c47000b17d776c758a33d8a9515
+	source = aliyunpan-liupan1890.sh
+	source = aliyunpan-liupan1890.desktop
+	source = app.png
+	sha256sums = SKIP
+	sha256sums = 9e28674e188846b10fac60bc3cb88bce4059c151b7d27a5a1bb4603ad0540469
+	sha256sums = 8e726be3f880df102990241b6af8b503d37cc3345971191d0222ed9851df8426
+	sha256sums = 2847ab9e9c9cea5fbee331dd34abc8a8cebef232dcfb4f739da7a36d9bed4c79
 
 pkgname = aliyunpan-liupan1890
