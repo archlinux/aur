@@ -1,4 +1,4 @@
-version: 19
+version: 20
 jobs:
 - name: Build Package
   jobExecutor: Server
@@ -15,3 +15,26 @@ jobs:
   maxRetries: 3
   retryDelay: 30
   timeout: 3600
+- name: Github
+  jobExecutor: Server
+  steps:
+  - !PushRepository
+    name: Push
+    remoteUrl: https://github.com/dzikoysk/reposilite
+    userName: PolarianDev
+    passwordSecret: ghpass
+    withLfs: false
+    force: false
+    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
+  triggers:
+  - !BranchUpdateTrigger
+    branches: master
+    projects: polarrepo/reposilite
+  retryCondition: never
+  maxRetries: 3
+  retryDelay: 30
+  timeout: 3600
+  postBuildActions:
+  - !SendNotificationAction
+    condition: always
+    receivers: user(polarian)
