@@ -4,7 +4,7 @@
 pkgname=namcap-improved
 _pkgname=namcap
 pkgver=3.3.1+r35+ge9ee31d
-pkgrel=5
+pkgrel=6
 pkgdesc="Improved Pacman package analyzer"
 arch=('any')
 url='https://gitlab.archlinux.org/pacman/namcap'
@@ -30,7 +30,7 @@ prepare() {
   git cherry-pick -n f570fb82078db210fd1d6016804b7db8358aa67b
 
   # New checks for optdepends and sodepends
-  git cherry-pick -n 6fce54566f874eff35a4282338c0594f444e7092
+  git cherry-pick -n 0023454b0eff2a422722fb1340e1652374e9100f
 }
 
 build() {
