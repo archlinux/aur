@@ -18,5 +18,5 @@ package() {
   COSIGN_EXPERIMENTAL=1 cosign verify-blob  --signature kwctl-linux-x86_64.sig --cert kwctl-linux-x86_64.pem kwctl-linux-x86_64
 
   # Copy the binary
-  install -Dm755 "kwctl-linux-x86_64" "${pkgdir}/usr/local/bin/kwctl"
+  install -Dm755 "kwctl-linux-x86_64" "${pkgdir}/usr/bin/kwctl"
 }
