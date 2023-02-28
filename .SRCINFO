@@ -1,0 +1,21 @@
+pkgbase = disarchive
+	pkgdesc = Disassembler of software archives for long-term preservation
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://ngyro.com/software/disarchive.html
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	license = GPL3
+	checkdepends = guile-quickcheck
+	depends = guile
+	depends = guile-gcrypt
+	depends = guile-lzma
+	depends = gzip
+	depends = tar
+	depends = xz
+	depends = zlib
+	source = https://files.ngyro.com/disarchive/disarchive-0.5.0.tar.gz
+	sha256sums = 020b7bbf91d3a5ab245ee62631d183448a256aa087529c1dfc27db6427bd529b
+
+pkgname = disarchive
