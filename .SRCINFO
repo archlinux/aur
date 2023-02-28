@@ -1,15 +1,15 @@
 pkgbase = kube-bench-bin
 	pkgdesc = Checks whether Kubernetes is deployed according to security best practices as defined in the CIS Kubernetes Benchmark
-	pkgver = 0.6.10
+	pkgver = 0.6.12
 	pkgrel = 0
 	url = https://github.com/aquasecurity/kube-bench
 	arch = x86_64
 	license = APACHE
 	conflicts = kube-bench
 	conflicts = kube-bench-git
-	source = kube-bench-0.6.10.tar.gz::https://github.com/aquasecurity/kube-bench/releases/download/v0.6.10/kube-bench_0.6.10_linux_amd64.tar.gz
-	source = https://raw.githubusercontent.com/aquasecurity/kube-bench/v0.6.10/cfg/config.yaml
-	sha512sums = f89a4fd3516f78fb9f988ee801ea82153135030a4b4d230b0a4b79e71232eb2b17de3ef472afdb49198164af40df21f5226e49685b558a1c5eeaca6e43981257
-	sha512sums = 755c79f648c2fe3fdaa7e333dcca63d9b9869db970e7c3b3c06ff3971fac2902cba7fd26da8c586e3f1b1e9e893a9ad8fc0fb5623c0ce04fca8661e50bfa95cb
+	source = kube-bench-0.6.12.tar.gz::https://github.com/aquasecurity/kube-bench/releases/download/v0.6.12/kube-bench_0.6.12_linux_amd64.tar.gz
+	source = https://raw.githubusercontent.com/aquasecurity/kube-bench/v0.6.12/cfg/config.yaml
+	sha512sums = fee42f57b66d76e65dc01131e7435c17f5958e38533647bba66e9bec2d7b551a398ebf2e82678826c47f13930899069e65810e011530ee049792314d0bea28dd
+	sha512sums = 6917297b8427746ed8ebcbc23fdf95526f09723ea2f2c70473d6823f3c204231c942510533380c7ae18084b7030a4634f5ff0c6db817ca0ee47865a9bfdbfd65
 
 pkgname = kube-bench-bin
