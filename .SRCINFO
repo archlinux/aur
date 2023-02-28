@@ -1,0 +1,13 @@
+pkgbase = adbmanager-bin
+	pkgdesc = The program is designed for visual and easy management of the ADB-Server and connection of Android smartphones.
+	pkgver = 3.1
+	pkgrel = 1
+	url = https://github.com/AKotov-dev/adbmanager
+	arch = x86_64
+	license = GPL3
+	depends = gtk2
+	depends = at-spi2-core
+	source = adbmanager-3.1.deb::https://github.com/AKotov-dev/adbmanager/releases/download/v3.1/adbmanager_3.1-0.mrx8_amd64.deb
+	sha512sums = c3dbd4dac2cdfac9a6f6082b9395968f101bfbad3e881b0ff14f45d00558e08b00528964dad09c1ff68f53b01dfcbf9f4ca517958c12b3946b2ccb7c9e7e60f1
+
+pkgname = adbmanager-bin
