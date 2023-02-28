@@ -1,0 +1,13 @@
+pkgbase = kwctl-bin
+	pkgdesc = kwctl is the go-to CLI tool for Kubewarden users
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = https://www.kubewarden.io/
+	arch = x86_64
+	license = Apache
+	makedepends = cosign
+	provides = kwctl
+	source = https://github.com/kubewarden/kwctl/releases/download/v1.5.3/kwctl-linux-x86_64.zip
+	sha256sums = 4b19ac4bf058345f38c63008f4079eae804cb159de0ea6fa37477790634dc72f
+
+pkgname = kwctl-bin
