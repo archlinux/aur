@@ -1,6 +1,6 @@
 pkgbase = debugger2
 	pkgdesc = Tool for tracing program output and creating structured logs using plain text or html.
-	pkgver = 1.1.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/Student-Team-Projects/Debugger.git
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = debugger2
 	depends = sysdig
 	depends = fmt
 	depends = llvm-libs
-	source = debugger-1.1.0.zip::https://github.com/Student-Team-Projects/debugger/archive/refs/tags/v1.1.0.zip
+	source = debugger-1.0.1.zip::https://github.com/Student-Team-Projects/debugger/archive/refs/tags/v1.0.1.zip
 	md5sums = SKIP
 
 pkgname = debugger2

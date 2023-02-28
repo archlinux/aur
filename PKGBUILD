@@ -3,7 +3,7 @@
 # Maintainer: Maciej Matys <maciej.matys@student.uj.edu.pl>
 # Maintainer: Tomasz Mazur <tomasz.mazur@student.uj.edu.pl>
 pkgname=debugger2
-pkgver=1.1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Tool for tracing program output and creating structured logs using plain text or html."
 arch=('any')
