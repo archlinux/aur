@@ -1,20 +1,22 @@
 # Maintainer: Antonio Bartalesi <antonio.bartalesi@gmail.com>
+
 _name="Pogo"
 pkgname=tango-${_name,,}
-pkgver=9.8.2
-_jarfile="${_name}-${pkgver}.jar"
+pkgver=9.8.3
+_jarfile="${_name}-${pkgver}-SNAPSHOT.jar"
 pkgrel=1
 pkgdesc="The TANGO code generator. It allows to define a TANGO class model"
 arch=('any')
 url="https://gitlab.com/tango-controls/${_name}"
 license=('GPL3')
-depends=('java-runtime=11' sh)
+depends=('java-runtime=11' jdk11-openjdk sh)
+makedepends=(maven)
 source=(
-  https://repo1.maven.org/maven2/org/tango-controls/${_name}/${pkgver}/${_jarfile}
+  https://gitlab.com/tango-controls/${_name,,}/-/archive/${pkgver}/${_name,,}-${pkgver}.tar.gz
   launcher
 )
 sha256sums=(
-  'dca0d02ce7b4148369db401636486a152df650b07a9d4cc19b6b5ccc18e47cf9'
+  '7cff020f2f250da4bb02e7da56d8f98f9bdc38618ca13ad9f455b049402c47f0'
   'ac00d9dd4e3ed83af078296585b3201f03b0c0a2c0b23fe1705ce3abe648a713'
 )
 
@@ -23,9 +25,12 @@ prepare() {
   sed -i "s/package_name/$pkgname/" launcher
 }
 
+build() {
+  cd ${_name,,}-${pkgver}/fr.esrf.tango.pogo.parent
+  mvn package
+}
+
 package() {
-  cd ${srcdir}
-  install -D -m755 ${srcdir}/${_jarfile} ${pkgdir}/usr/share/java/${pkgname}/${_jarfile}
-  
+  install -D -m755 ${srcdir}/${_name,,}-${pkgver}/org.tango.pogo.pogo_gui/target/${_jarfile} ${pkgdir}/usr/share/java/${pkgname}/${_jarfile}
   install -D -m755 ${srcdir}/launcher ${pkgdir}/usr/bin/${pkgname}
 }
