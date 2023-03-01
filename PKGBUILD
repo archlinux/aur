@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=forgit
-pkgver=22.11.0
+pkgver=23.03.0
 pkgrel=1
 pkgdesc="Utility tool powered by fzf for using git interactively"
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
 	'emoji-cli: emoji support for git log')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('4ae75c154f72d64025d2e335a23f740ce4233f01734c3183248d586de976f816')
+sha256sums=('f64d0a5e0d4064ce9f60825383cca84a5735b3962e6d6c984f13cf8c0b199043')
 
 package() {
 	cd "$pkgname-$pkgver"
