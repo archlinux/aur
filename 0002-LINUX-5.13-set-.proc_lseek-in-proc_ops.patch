@@ -1,0 +1,45 @@
+From 9251a7010b77e2702d22addfe57e83d644339786 Mon Sep 17 00:00:00 2001
+From: Jeffrey Hutzelman <jhutz@cmu.edu>
+Date: Tue, 1 Mar 2022 10:31:14 -0500
+Subject: [PATCH 2/2] LINUX 5.13: set .proc_lseek in proc_ops
+
+When using the proc_ops structure, set .proc_lseek explicitly rather
+than leaving it unset. This field has always been present in proc_ops,
+but prior to Linux 5.13, it could be unset, causing default_llseek to be
+used. Starting with commit d4455faccd6 (proc: mandate ->proc_lseek in
+"struct proc_ops"), this field is now mandatory.
+
+This fixes a problem which would cause an oops if llseek(2) is called
+on /proc/fs/openafs/afs_ioctl.
+
+Reviewed-on: https://gerrit.openafs.org/14918
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 68851b782ca2cb5e4ae7457255841f44f3bef15c)
+
+Change-Id: Ifd3a517f595cfef7fd9dd1fdd3f3aca8fe1bc25f
+Reviewed-on: https://gerrit.openafs.org/15286
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+---
+ src/afs/LINUX/osi_ioctl.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/afs/LINUX/osi_ioctl.c b/src/afs/LINUX/osi_ioctl.c
+index 327520c02..fbdee29cb 100644
+--- a/src/afs/LINUX/osi_ioctl.c
++++ b/src/afs/LINUX/osi_ioctl.c
+@@ -81,6 +81,7 @@ static struct proc_ops afs_syscall_ops = {
+ # ifdef STRUCT_PROC_OPS_HAS_PROC_COMPAT_IOCTL
+     .proc_compat_ioctl = afs_unlocked_ioctl,
+ # endif
++    .proc_lseek = default_llseek,
+ };
+ #else
+ static struct file_operations afs_syscall_ops = {
+-- 
+2.39.2
+
