@@ -1,7 +1,7 @@
 pkgbase = mysqltuner
 	pkgdesc = MySQLTuner - review configuration quickly and make adjustments to increase performance and stability
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.mysqltuner.com
 	arch = any
 	license = GPL
