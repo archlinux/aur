@@ -2,7 +2,7 @@
 
 _pkgname=httr
 pkgname=r-$_pkgname
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 pkgdesc='Useful tools for working with HTTP organised by HTTP verbs (GET(), POST(), etc). Configuration functions make it easy to control additional request components'
 arch=('any')
