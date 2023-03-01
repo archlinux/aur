@@ -2,14 +2,15 @@
 pkgname=guiscrcpy-appimage
 _pkgname=guiscrcpy
 pkgver=2023.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A full fledged GUI integration for the award winning open-source android screen mirroring system"
 arch=('x86_64')
 url="https://guiscrcpy.srev.in/"
 _githuburl="https://github.com/srevinsaju/guiscrcpy"
 license=('GPL3')
 options=(!strip)
-conflicts=(guiscrcpy guiscrcpy-git)
+provides=("${pkgname%-bin}")
+conflicts=("${_pkgname}")
 depends=('zlib' 'hicolor-icon-theme' 'scrcpy')
 _install_path="/opt/appimages"
 source=("${_pkgname}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}.dev.m.glibc2.35-x86_64.AppImage")
