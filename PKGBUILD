@@ -1,5 +1,5 @@
 # Maintainer: Sławomir Spiewak <slawekwaga [at] gmail [dot] com>
-# Maintainer: Emile Pesik <ristridin [at] gmail [dot] com> 
+# Contributor:  Emile Pesik <ristridin [at] gmail [dot] com>
 # Contributor: Martin Imobersteg <imm [at] gmx [dot] ch> 
 pkgname=smbldap-tools 
 pkgver=0.9.11
