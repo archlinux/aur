@@ -1,7 +1,7 @@
 # Package maintainer: Leonid B <leonid dot bloch at esrf dot fr>
 # Upstream contact: silx at esrf dot fr
 pkgname=python-silx
-pkgver=1.0.0
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="A collection of Python packages for data analysis at synchrotron radiation facilities."
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('python-h5py-openmpi: for HDF5 input/output'
             'opencl-driver: for sift - OpenCL implementation')
 makedepends=('cython')
 source=("https://github.com/silx-kit/${pkgname#*-}/archive/v${pkgver}.tar.gz")
-sha256sums=('c9a57b7a253d9cdca92404cd0ba0bed88115681e1982bae45101b7d85c55bde0')
+sha256sums=('2efd287c04b2692257c93231148c77ffb9a444cc5b1b17a4bd35c9918ddbcb6f')
 
 build() {
     cd "${pkgname#*-}-${pkgver}"
