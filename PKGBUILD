@@ -1,8 +1,10 @@
 # Maintainer: Jesus Alvarez <jeezusjr at gmail dot com>
-
+#
+# WARNING: packaging does not work in a "clean chroot" due to issues with jakttest
+#
 pkgname=jakt-git
-pkgver=r1910.9743d976
-pkgrel=5
+pkgver=r2296.7a35484f
+pkgrel=1
 pkgdesc="The Jakt Programming Language from SerenityOS"
 arch=("x86_64")
 url="https://github.com/SerenityOS/jakt"
@@ -34,7 +36,7 @@ build() {
     cmake --build build
 
     # test stage1
-    # ./build/bin/jakttest
+    ./build/bin/jakttest
 
     # stage2
     cmake -B build -DFINAL_STAGE=2
@@ -42,8 +44,9 @@ build() {
 }
 
 check() {
+    # test stage2
     cd "${pkgname}"
-    # ./build/bin/jakttest
+    ./build/bin/jakttest
 }
 
 package() {
@@ -57,5 +60,5 @@ package() {
     DESTDIR="$pkgdir" cmake --install build
 
     # WORKAROUND for https://github.com/SerenityOS/jakt/issues/1214
-    ln -sv ${pkgdir}/usr/bin/jakt_stage2 ${pkgdir}/usr/bin/jakt
+    ln -sv ./jakt_stage1 ${pkgdir}/usr/bin/jakt
 }
