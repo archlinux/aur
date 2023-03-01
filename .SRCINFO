@@ -1,0 +1,19 @@
+pkgbase = idlersc
+	pkgdesc = A fork of IdleRSC for playing on OpenRSC servers
+	pkgver = r474.g8d7473b
+	pkgrel = 1
+	url = https://gitlab.com/open-runescape-classic/idlersc
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = gradle
+	makedepends = gendesk
+	depends = jre-openjdk
+	source = idlersc::git+https://gitlab.com/open-runescape-classic/idlersc.git#commit=8d7473b4365e1e2ea8c434991ca21196b3021e20
+	source = idlersc.sh
+	source = ftbfs-gradle.patch
+	b2sums = SKIP
+	b2sums = c9d8d3f94595ef1a77a13b4ef732dc05efc42762321378d69f88e8a35dc2ceba2b163958f0634ffd226180da0e4e3452e54c36f35ddb0328ad200dde727573dc
+	b2sums = 33ff64e2e90ca279e0114444ee0b00ad2d669ecf4f68c952e07283242a0f18cec6f21be1ffaced286bfee72f7181eaf411f31f2c8216bc5168adaa413c292a2f
+
+pkgname = idlersc
