@@ -7,3 +7,4 @@ Comment[de]=Ein Programm zum Berechnen und Verwalten von Biersuden
 Exec=kleiner-brauhelfer-2
 Icon=kleiner-brauhelfer-2
 Categories=Office;
+StartupWMClass=kleiner-brauhelfer-2

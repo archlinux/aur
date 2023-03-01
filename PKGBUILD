@@ -3,7 +3,7 @@
 # Contributor: Daniel Dietrich <shaddow2k@@gmail..com>
 pkgname=kleiner-brauhelfer
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Qt-based tool for hobby brewer to calculate and manage the beer brewing process."
 arch=("i686" "x86_64")
 url="https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2"
@@ -33,4 +33,4 @@ package() {
 }
 
 sha256sums=('025d833802d542bb1271e6c9293bca448b134b0f8e3cf44b0cf06e6a43b1077c'
-            '688d4ca1c70d19bbfdcd2b1f546f52e7ef585d5ed0b3566a4fb5f0c29317a11a')
+            '186b19866751e3a2bf89e5e3f1e614eff01db2db8afa4c9e52c0d02e5c608cbd')
