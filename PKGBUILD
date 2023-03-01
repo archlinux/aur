@@ -5,7 +5,7 @@ pkgname="ocaml-$_projectname"
 pkgver='0.15.0'
 pkgrel='3'
 pkgdesc='A ppx rewriter that generates hash functions from type expressions and definitions'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
 depends=('ocaml>=4.08.0' 'ocaml-base>=0.15.0' 'ocaml-ppx_compare>=0.15.0' 'ocaml-ppx_sexp_conv>=0.15.0' 'ocaml-ppxlib>=0.23.0')
