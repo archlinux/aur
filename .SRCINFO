@@ -1,5 +1,5 @@
 pkgbase = linux-bpir64-git
-	pkgver = 6.1.8.bpi.r64.1
+	pkgver = 6.1.14.bpi.r64.r3.1
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = aarch64
@@ -19,19 +19,19 @@ pkgbase = linux-bpir64-git
 	md5sums = SKIP
 
 pkgname = linux-bpir64-git
-	pkgdesc = The Linux Kernel and modules - AArch64 kernel for BPIR64
+	pkgdesc = The Linux Kernel and modules - AArch64 kernel for BPI-R64 and BPI-R3
 	install = linux-bpir64-git.install
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
 	optdepends = mkinitcpio>=0.7
-	provides = linux=6.1.8.bpi.r64.1
+	provides = linux=6.1.14.bpi.r64.r3.1
 	provides = WIREGUARD-MODULE
 	conflicts = linux
 	replaces = linux-armv8
 	backup = etc/mkinitcpio.d/linux-bpir64-git.preset
 
 pkgname = linux-bpir64-git-headers
-	pkgdesc = Header files and scripts for building modules for linux kernel - AArch64 kernel for BPIR64
-	provides = linux-headers=6.1.8.bpi.r64.1
+	pkgdesc = Header files and scripts for building modules for linux kernel - AArch64 kernel for BPI-R64 and BPI-R3
+	provides = linux-headers=6.1.14.bpi.r64.r3.1
 	conflicts = linux-headers

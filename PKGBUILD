@@ -8,13 +8,16 @@ _srcname=linux
 _gitroot="https://git.kernel.org/pub/scm/linux/kernel/git/stable/${_srcname}"
 _gitbranch="linux-rolling-stable"
 _kernelname=${pkgbase#linux}
-_desc="AArch64 kernel for BPIR64"
-pkgver=6.1.8.bpi.r64.1
+_desc="AArch64 kernel for BPI-R64 and BPI-R3"
+_r3dts="https://github.com/torvalds/linux/raw/master/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts"
+#_lto="true"  # Uncomment this line to enable CLANG-LTO
+pkgver=6.1.14.bpi.r64.r3.1
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc' 'git')
+[[ "$_lto" == "true" ]] &&  makedepends+=('clang' 'llvm' 'lld')
 options=('!strip')
 source=('defconfig'
         'linux.preset'
@@ -24,6 +27,8 @@ source=('defconfig'
 md5sums=(SKIP SKIP SKIP SKIP)
 
 export LOCALVERSION="-${pkgrel}"
+
+[[ "$_lto" == "true" ]] && _llvm="LLVM=1" || _llvm=""
 
 prepare() {
   if [[ -d "${srcdir}/${_srcname}/" ]]; then
@@ -44,25 +49,34 @@ prepare() {
   fi
   cd "${srcdir}/${_srcname}/"
 
+  rm -f ./arch/arm64/boot/dts/mediatek/$(basename $_r3dts)
+  wget --no-verbose $_r3dts --no-clobber -P ./arch/arm64/boot/dts/mediatek/
+
   cp -vf ${startdir}/defconfig ./arch/arm64/configs/bpir64_defconfig
-  make bpir64_defconfig
+  make ${MAKEFLAGS} $_llvm bpir64_defconfig
   rm -vf ./arch/arm64/configs/bpir64_defconfig
 
   # get kernel version
-  make prepare
+  make ${MAKEFLAGS} $_llvm prepare
 }
 
 pkgver() {
   cd "$srcdir/$_srcname"
-  printf "%s" "$(echo  $(make -s kernelrelease) | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  printf "%s" "$(echo  $(make ${MAKEFLAGS} $_llvm -s kernelrelease) | \
+                 sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
   cd ${_srcname}
   unset LDFLAGS
-  make ${MAKEFLAGS} KCFLAGS=-w Image Image.gz modules
+  if [[ "$_lto" == "true" ]]; then
+    ./scripts/config --enable LTO_CLANG_FULL # LTO_CLANG_THIN
+    make ${MAKEFLAGS} $_llvm oldconfig
+  fi
+# make ${MAKEFLAGS} $_llvm menuconfig
+  make ${MAKEFLAGS} $_llvm Image Image.gz modules # KCFLAGS=-w
   # Generate device tree blobs with symbols to support applying device tree overlays in U-Boot
-  make ${MAKEFLAGS} DTC_FLAGS="-@" dtbs
+  make ${MAKEFLAGS} $_llvm DTC_FLAGS="-@" dtbs
 }
 
 _package() {
@@ -80,12 +94,13 @@ _package() {
   KARCH=arm64
 
   # get kernel version
-  _kernver="$(make kernelrelease)"
+  _kernver="$(make ${MAKEFLAGS} $_llvm kernelrelease)"
   _basekernel=${_kernver%%-*}
   _basekernel=${_basekernel%.*}
 
   mkdir -p "${pkgdir}"/{boot,boot/dtbs,usr/lib/modules}
-  make INSTALL_MOD_PATH="${pkgdir}/usr" DEPMOD=/doesnt/exist modules_install
+  make ${MAKEFLAGS} $_llvm INSTALL_MOD_PATH="${pkgdir}/usr" INSTALL_MOD_STRIP=1 \
+       DEPMOD=/doesnt/exist modules_install
   cp arch/$KARCH/boot/Image{,.gz} "${pkgdir}/boot"
   cp arch/$KARCH/boot/dts/mediatek/*.dtb "${pkgdir}/boot/dtbs"
 
