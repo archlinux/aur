@@ -1,0 +1,89 @@
+diff --git a/build/autogen.sh b/build/autogen.sh
+index e35d2ee..cf9b75a 100755
+--- a/build/autogen.sh
++++ b/build/autogen.sh
+@@ -5,7 +5,7 @@ set -e
+ 
+ rm -rf autom4te*.cache
+ 
+-grep AC_CONFIG_HEADER configure.in >/dev/null && autoheader
++grep AC_CONFIG_HEADER configure.ac >/dev/null && autoheader
+ autoconf
+ 
+ rm -rf autom4te*.cache
+diff --git a/configure.in b/configure.ac
+similarity index 85%
+rename from configure.in
+rename to configure.ac
+index d28211e..3af0f1e 100644
+--- a/configure.in
++++ b/configure.ac
+@@ -1,9 +1,9 @@
+ ## smbldap-tools configure.in
+ ## ======================================================================
+ 
+-AC_PREREQ(2.50)
++AC_PREREQ([2.71])
+ 
+-AC_INIT(smbldap-tools, 0.9.11)
++AC_INIT([smbldap-tools],[0.9.11])
+ 
+ AC_PREFIX_DEFAULT(/usr/local)
+ 
+@@ -30,8 +30,7 @@ AC_SUBST(package_subdir)
+ 
+ AC_ARG_WITH(
+   subdir,
+-  [AC_HELP_STRING(--with-subdir=DIR,
+-    [change default subdirectory used for installs])],
++  [AS_HELP_STRING([--with-subdir=DIR],[change default subdirectory used for installs])],
+   [package_subdir="$withval"],
+ )
+ 
+@@ -52,7 +51,7 @@ AC_SUBST(PERL_COMMAND)
+ 
+ AC_ARG_WITH(
+     perl,
+-    [AC_HELP_STRING(--with-perl=PATH, [Use specific perl command])],
++    [AS_HELP_STRING([--with-perl=PATH],[Use specific perl command])],
+     [PERL_COMMAND="$withval"],
+ )
+ 
+@@ -95,7 +94,7 @@ AC_SUBST(PERL_LIBDIR)
+ 
+ AC_ARG_WITH(
+     perl-libdir,
+-    [AC_HELP_STRING(--with-perl-libdir=PATH,[*.pm install directory])],
++    [AS_HELP_STRING([--with-perl-libdir=PATH],[*.pm install directory])],
+     [PERL_LIBDIR="$withval"],
+ )
+ 
+@@ -118,7 +117,7 @@ AC_SUBST(POD2MAN_COMMAND)
+ 
+ AC_ARG_WITH(
+     pod2man,
+-    [AC_HELP_STRING(--with-pod2man=PATH, [Use specific pod2man command])],
++    [AS_HELP_STRING([--with-pod2man=PATH],[Use specific pod2man command])],
+     [POD2MAN_COMMAND="$withval"],
+ )
+ 
+@@ -139,8 +138,7 @@ AC_SUBST(SAMBA_SYSCONFDIR)
+ 
+ AC_ARG_WITH(
+     samba-sysconfdir,
+-    [AC_HELP_STRING(--with-samba-sysconfdir=DIR,
+-	[Path for Samba sysconf directory])],
++    [AS_HELP_STRING([--with-samba-sysconfdir=DIR],[Path for Samba sysconf directory])],
+     [SAMBA_SYSCONFDIR="$withval"],
+ )
+ 
+@@ -152,8 +150,7 @@ AC_SUBST(SAMBA_BINDIR)
+ 
+ AC_ARG_WITH(
+     samba_bindir,
+-    [AC_HELP_STRING([--with-samba-bindir=DIR],
+-	[Path for Samba bin directory])],
++    [AS_HELP_STRING([--with-samba-bindir=DIR],[Path for Samba bin directory])],
+     [SAMBA_BINDIR="$withval"],
+ )
+ 

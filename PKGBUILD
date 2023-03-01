@@ -1,26 +1,29 @@
+# Maintainer: Sławomir Spiewak <slawekwaga [at] gmail [dot] com>
 # Maintainer: Emile Pesik <ristridin [at] gmail [dot] com> 
 # Contributor: Martin Imobersteg <imm [at] gmx [dot] ch> 
 pkgname=smbldap-tools 
-pkgver=0.9.10
+pkgver=0.9.11
 pkgrel=1 
 pkgdesc="A set of perl scripts designed to manage user and group accounts stored in an LDAP directory." 
 arch=(any) 
 url="https://gna.org/projects/smbldap-tools/" 
 license=("GPL")
 depends=('samba' 'openldap' 'perl-digest-sha1' 'perl-unicode-maputf8' 'perl-crypt-smbhash' 'perl-ldap' 'perl-io-socket-ssl')
-source=("http://download.gna.org/smbldap-tools/sources/${pkgver}/${pkgname}-${pkgver}.tar.gz"
-        'smbldap-config.pl.patch') 
+makedepends=('automake' 'autoconf')
+source=("https://github.com/fumiyas/smbldap-tools/archive/v${pkgver}.tar.gz"
+"fix_autoreconf_warnings.patch")
 backup=(etc/smbldap-tools/smbldap.conf etc/smbldap-tools/smbldap_bind.conf)
-md5sums=('f52a626637c468d66a4e71f30c174873'
-         '36aed03f5fa270bd8ac5849feb200d46')
+sha256sums=('f8d43f7bb5b6cbea29e519b8d9cedd287e9c15978e9deb1fa1892618d2c8639c'
+'5c7b5680923fba460707c96d74998ed33fbeb4d99913d855cb2e0f5af2b9b758')
 
 prepare() {
   cd $srcdir/${pkgname}-${pkgver}
-  patch -p1 -i $srcdir/smbldap-config.pl.patch
+  patch -p1 -i $srcdir/fix_autoreconf_warnings.patch
   }
 
 build() {
   cd $srcdir/${pkgname}-${pkgver}
+  build/autogen.sh
   ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin
   make
   }
