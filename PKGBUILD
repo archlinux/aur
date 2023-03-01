@@ -38,7 +38,7 @@
 
 pkgname=ffmpeg-jxl
 pkgver=5.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Complete solution to record, convert and stream audio and video (with JPEG XL support, supporting jxl screenshots in mpv)'
 arch=(x86_64)
 url=https://ffmpeg.org/
@@ -140,8 +140,10 @@ source=(
   "https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"
   add-av_stream_get_first_dts-for-chromium.patch
   ffmpeg-libjxl-primary.patch
+  vulkan-decode-defs.patch
 )
 b2sums=('SKIP'
+        'SKIP'
         'SKIP'
         'SKIP')
 
@@ -149,6 +151,7 @@ prepare() {
   cd "ffmpeg-${pkgver}"
   patch -Np1 -i ../add-av_stream_get_first_dts-for-chromium.patch # https://crbug.com/1251779
   patch -Np1 -i ../ffmpeg-libjxl-primary.patch # https://github.com/mpv-player/mpv/issues/10349, https://github.com/FFmpeg/FFmpeg/commit/05d6157aab34bc49f23284645a8f34ece870f44d
+  patch -Np1 -i ../vulkan-decode-defs.patch # https://github.com/FFmpeg/FFmpeg/commit/eb0455d64690eed0068e5cb202f72ecdf899837c
 }
 
 build() {
