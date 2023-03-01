@@ -1,7 +1,7 @@
 pkgbase = i3status-rust-full-git
 	pkgdesc = Very resourcefriendly and feature-rich replacement for i3status to use with bar programs (like i3bar and swaybar), written in pure Rust
 	pkgver = 0.30.4.r3161.gf4490035
-	pkgrel = 1
+	pkgrel = 5
 	url = https://github.com/greshake/i3status-rust
 	install = i3status-rust.install
 	arch = x86_64

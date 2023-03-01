@@ -3,7 +3,7 @@
 pkgname=i3status-rust-full-git
 shortname="${pkgname%-full-*}"
 pkgver=0.30.4.r3161.gf4490035
-pkgrel=1
+pkgrel=5
 pkgdesc='Very resourcefriendly and feature-rich replacement for i3status to use with bar programs (like i3bar and swaybar), written in pure Rust'
 arch=('x86_64')
 url='https://github.com/greshake/i3status-rust'
