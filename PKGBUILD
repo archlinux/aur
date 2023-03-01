@@ -5,7 +5,7 @@ pkgname="ocaml-$_projectname"
 pkgver='20210608'
 pkgrel='4'
 pkgdesc='An OCaml syntax extension for generating visitor classes'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://gitlab.inria.fr/fpottier/$_projectname"
 license=('LGPL2.1')
 depends=('ocaml>=4.05.0' 'ocaml-ppx_deriving>=5.0' 'ocaml-ppxlib>=0.22.0' 'ocaml-result')
