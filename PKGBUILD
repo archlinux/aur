@@ -2,16 +2,16 @@
 
 _pkgname=librem-ec-acpi
 pkgname="${_pkgname}-dkms"
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc='Librem 14 EC APCI Driver'
 arch=('any')
 url='https://source.puri.sm/nicole.faerber/librem-ec-acpi-dkms'
 license=('GPL')
 depends=('dkms')
-source=("https://source.puri.sm/nicole.faerber/librem-ec-acpi-dkms/-/archive/v0.9.1/librem-ec-acpi-dkms-v0.9.1.tar.gz")
+source=("https://source.puri.sm/nicole.faerber/librem-ec-acpi-dkms/-/archive/v${pkgver}/librem-ec-acpi-dkms-v${pkgver}.tar.gz")
 
-sha256sums=('df6aa990d50962805b61ca227619890f57676d3dcd88be6b7fffd3664d8ceee8')
+sha256sums=('f238547e170d6b8a56ca724b71ca0719bee19dd14257079f463444d32b42c0a2')
 
 prepare() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
@@ -26,4 +26,3 @@ package() {
   for d in $(find . -type d);do install -dm755 "${install_dir}/$d";done
   for f in $(find . -type f);do install -m644 "$f" "${install_dir}/$f";done
 }
-
