@@ -1,14 +1,14 @@
 pkgbase = nerdctl-full-bin
 	pkgdesc = nerdctl full pkg, bundle with containerd/CNI plugin/RootlessKit
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/containerd/nerdctl
 	arch = x86_64
 	arch = aarch64
 	license = Apache
-	source_x86_64 = nerdctl-full-x86_64-v1.2.0.tar.gz::https://github.com/containerd/nerdctl/releases/download/v1.2.0/nerdctl-full-1.2.0-linux-amd64.tar.gz
-	sha256sums_x86_64 = 0bf8e3497856c6ea901c7ac252f02f4a232da0e6e74e8e5a0365391a7ad1f9ab
-	source_aarch64 = nerdctl-full-aarch64-v1.2.0.tar.gz::https://github.com/containerd/nerdctl/releases/download/v1.2.0/nerdctl-full-1.2.0-linux-arm64.tar.gz
-	sha256sums_aarch64 = 8ee64f3cf7275065d21d485a40dccf972e2ca82ab2c159c436be430303e455f1
+	source_x86_64 = nerdctl-full-x86_64-v1.2.1.tar.gz::https://github.com/containerd/nerdctl/releases/download/v1.2.1/nerdctl-full-1.2.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = e8a3e40d442c566ee494375a4c563121da69d7c7837f50f4a3a171742757b36c
+	source_aarch64 = nerdctl-full-aarch64-v1.2.1.tar.gz::https://github.com/containerd/nerdctl/releases/download/v1.2.1/nerdctl-full-1.2.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = 1334bedbc9704994795bae88138807bd74e8bf2a23717491af5b8ae3aebebcda
 
 pkgname = nerdctl-full-bin
