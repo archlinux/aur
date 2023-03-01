@@ -2,7 +2,7 @@
 
 _pkgname=godot4
 pkgname=${_pkgname}-bin
-pkgver=rc6
+pkgver=stable
 pkgrel=1
 pkgdesc="Godot Game Engine: An advanced, feature packed, multi-platform 2D and 3D game engine."
 url="http://www.godotengine.org"
@@ -18,14 +18,14 @@ source=(
 	icon.png
 	LICENSE
 )
-source_i686=($_pkgname-$pkgver-32bit.zip::https://downloads.tuxfamily.org/godotengine/4.0/$pkgver/Godot_v4.0-${pkgver}_linux.x86_32.zip)
-source_x86_64=($_pkgname-$pkgver-64bit.zip::https://downloads.tuxfamily.org/godotengine/4.0/$pkgver/Godot_v4.0-${pkgver}_linux.x86_64.zip)
+source_i686=($_pkgname-$pkgver-32bit.zip::https://downloads.tuxfamily.org/godotengine/4.0/Godot_v4.0-${pkgver}_linux.x86_32.zip)
+source_x86_64=($_pkgname-$pkgver-64bit.zip::https://downloads.tuxfamily.org/godotengine/4.0/Godot_v4.0-${pkgver}_linux.x86_64.zip)
 
 sha512sums=('a32864067fcd034cc95b0a39ba575dafe62ca8f67b93f1cc0ede5a471d12d73ba525032e1ba1b411f1ca550a106498b5e71a9d491663a39c67175740f07cad87'
             '3598100251a74a6595ffc002df0adac18c37c9367a4ef148ef7f057d547ed15aaaa07140705d4185394b888c0f5fd8446de35f97625a80d1c3a2132a0418b71e'
             'd38569e26e77b238cd9bf60d0ba7dc76367b5f25f68e5d45185d10fdf4de20c696431ab4eed815b7ad611e997d5ddadd96d70f1f6d4388c18b1553b81d4b6738')
-sha512sums_i686=('a83910d9ac6736c10d900b99aed9361a0b4c2a4b01ada42b3aa3f6d42a2e24995581f835030753c70d53b8f598a85739e67499ee6ed1504609d1d2b028f5a7a7')
-sha512sums_x86_64=('79d8916b850d2954463f1748ed73052f7ff6b3b7d8394dee96915497bccb4872b72be2f8299be8f51adb8126aaa9e1ef4e16f3a2dad4a904ad60084a6d5c5836')
+sha512sums_i686=('4e913a786e134f2bc6b46a1afdb6b7fad87a141471c83e4c5f3b34ce602b66e24a3d578a6aa6f20f5c489a5d0c08e9daca1dd295c0b8e37d9f3a0051cf74998f')
+sha512sums_x86_64=('99c54deea6f21d2705da0e731d0273f3ba61a4438d4604e80eb3b809d231e5fdcee28a6e987418fb80731817c1c905d44f2d3572bdd43a19ae5b480fd903b4bc')
 
 
 package() {
