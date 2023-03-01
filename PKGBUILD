@@ -2,8 +2,8 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts515
-pkgver=5.15.95
-pkgrel=2
+pkgver=5.15.96
+pkgrel=1
 pkgdesc='LTS Linux 5.15.x'
 url="https://www.kernel.org/"
 arch=(x86_64 pentium4 i686 i486)
@@ -28,9 +28,9 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-sha256sums=('ea71d1f0d28803679dfdc2278fd9f145f12cb566a796502182d719312756441b'
+sha256sums=('348d974c143fdef8517ec703fdaa24bade12a49047848be92cb9e3253b19ef98'
             'SKIP'
-            '94938015bb01b2e4ea8d5b771f833946d6442622fd5603baee63d78abecd5d20'
+            '49571e574f1fd7c23d42ce83b9287b19ffe7a8e8d7fd8ccb3f41ddecd1764ebc'
             '3b5cfc9ca9cf778ea2c4b619b933cda26519969df2d764b5a687f63cf59974cd'
             'c175fbb141c3cec013c799f694d88310375ac5456042f6a4a1adc7667836d786'
             '8357f000b2b622e73dcfd41c2bad42b5e99fffe8f7ee64f774aa771f86cef43c'
@@ -211,13 +211,6 @@ done
 
 # vim:set ts=8 sts=2 sw=2 et:
 
-# fail if upstream's .config changes
-for ((i=0; i<${#sha256sums[@]}; i++)); do
-  if [ "${sha256sums[${i}]}" = '34ff5888b26967abe27a2c0a3c8185f5625412b65ddf9221a7d71fdbaae6c356' ]; then
-    sha256sums[${i}]='8c6a77cfaa0f95df4c75670a54f4de89057233129f7795207da0bfc372634165'
-  fi
-done
-
 eval "$(
   declare -f package_linux-lts515-headers | \
     sed '
@@ -253,10 +246,10 @@ if [ "${CARCH}" = "i486" -o  "${CARCH}" = "i686" -o "${CARCH}" = "pentium4" ]; t
   source_i486=('config.i486')
   # fail if upstream's .config changes
   for ((i=0; i<${#sha256sums[@]}; i++)); do
-    if [ "${sha256sums[${i}]}" = '94938015bb01b2e4ea8d5b771f833946d6442622fd5603baee63d78abecd5d20' ]; then
-      sha256sums_pentium4=('c8d5ddb98d547573970a42e1eb72e93ce18199248708ee5713b28a079a8df94c')
-      sha256sums_i686=('8c6a77cfaa0f95df4c75670a54f4de89057233129f7795207da0bfc372634165')
-      sha256sums_i486=('4fa1dcca4f04f148e0fa6fde824539b56a578ea96423431cb7c0783c29034403')
+    if [ "${sha256sums[${i}]}" = '49571e574f1fd7c23d42ce83b9287b19ffe7a8e8d7fd8ccb3f41ddecd1764ebc' ]; then
+      sha256sums_pentium4=('880a984455d47c5f5b60f0a59605f4d772078d9fa323d3543a27846171d240a9')
+      sha256sums_i686=('1a3a2d18ea78ead4fbb1eb27d86aa4ae859a70e7147c1fa72ebab5395ecd344f')
+      sha256sums_i486=('77e81a83fa615bdea5a46123a6b59c0af0dba9577c5393136fb6156896326b42')
     fi
   done
 
