@@ -1,6 +1,6 @@
 pkgbase = firefox-appmenu
 	pkgdesc = Firefox from extra with appmenu patch
-	pkgver = 110.0
+	pkgver = 110.0.1
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
@@ -44,15 +44,15 @@ pkgbase = firefox-appmenu
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	provides = firefox=110.0
+	provides = firefox=110.0.1
 	conflicts = firefox
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
 	options = !lto
 	options = !debug
-	source = https://archive.mozilla.org/pub/firefox/releases/110.0/source/firefox-110.0.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/110.0/source/firefox-110.0.source.tar.xz.asc
+	source = https://archive.mozilla.org/pub/firefox/releases/110.0.1/source/firefox-110.0.1.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/110.0.1/source/firefox-110.0.1.source.tar.xz.asc
 	source = 0001-libwebrtc-screen-cast-sync.patch
 	source = firefox.desktop
 	source = identity-icons-brand.svg
@@ -60,7 +60,7 @@ pkgbase = firefox-appmenu
 	source = unity-menubar.patch
 	source = fix_csd_window_buttons.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = d3882492190e4fdcfa142772cf35de5403effb011d24357b315d643ed9168a39
+	sha256sums = f19bb74d684b992625abca68f5776198974cd2785eb5d02d51ba007fc998491f
 	sha256sums = SKIP
 	sha256sums = 43c83101b7ad7dba6f5fffeb89b70a661a547d506a031ea2beada42ccf04eec7
 	sha256sums = 34514a657d6907a159594c51e674eeb81297c431ec26a736417c2fdb995c2c0c
