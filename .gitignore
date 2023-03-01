@@ -1,0 +1,4 @@
+rustdesk
+*.pkg.tar.*
+src
+pkg
