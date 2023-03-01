@@ -1,0 +1,9 @@
+# 2023-03-01 / 1.2.0
+
+* First build on AUR
+	* Built from official deb release
+	* License and deps mostly come from its metadata
+	* Built in Ephenia scripts
+	* Patches path to scripts due to issues with original location
+	* You can add your own scripts to ~/.config/pokecliker-desktop/scripts
+	* Have fun!
