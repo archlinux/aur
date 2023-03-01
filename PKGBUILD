@@ -1,6 +1,6 @@
 # Maintainer: Giovanni Santini <giovannisantini93@yahoo.it>
 pkgname=crystal-launcher
-pkgver=20230116
+pkgver=20230224
 pkgrel=1
 pkgdesc="A custom Minecraft launcher with its own package system"
 arch=(any)
