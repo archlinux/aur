@@ -1,6 +1,6 @@
 # Maintainer: Jesus Alvarez <jeezusjr at gmail dot com>
 #
-# WARNING: packaging does not work in a "clean chroot" due to issues with jakttest
+# WARNING: packaging does not work with aurutils, see https://aur.archlinux.org/packages/jakt-git#comment-883725
 #
 pkgname=jakt-git
 pkgver=r2296.7a35484f
