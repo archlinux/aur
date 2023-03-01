@@ -3,40 +3,49 @@
 # Contributor: katt <magunasu.b97@gmail.com>
 # Contributor: Yangtse Su <i@yangtse.me>
 
-pkgname=xpadneo-dkms
+_pkgname=xpadneo
+_dkmsname=hid-${_pkgname}
+pkgname=${_pkgname}-dkms
 pkgver=0.9.5
 pkgrel=2
-pkgdesc='Advanced Linux Driver for Xbox One Wireless Gamepad'
-arch=(any)
-url=https://github.com/atar-axis/xpadneo
-license=(GPL)
-depends=(dkms bluez bluez-utils)
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/atar-axis/xpadneo/archive/v$pkgver.tar.gz")
-b2sums=('d04a3e1b626af1f1a9ec114f0a8ed44c50ec8cde9da71483491d1afd7688611fd7548186ea68ef8a144aecec06acba816e81e9f0708c8dceb96fa1d40985bb44')
+pkgdesc="Advanced Linux Driver for Xbox One Wireless Gamepad"
+arch=('any')
+url='https://github.com/atar-axis/xpadneo'
+license=('GPL3')
+depends=('dkms' 'bluez' 'bluez-utils')
+source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+        drop-etc-files.patch
+        rename-marker.patch)
+b2sums=('d04a3e1b626af1f1a9ec114f0a8ed44c50ec8cde9da71483491d1afd7688611fd7548186ea68ef8a144aecec06acba816e81e9f0708c8dceb96fa1d40985bb44'
+        'e300dae73905e3223091fe2428c981ecce4c205262d1a5094e0a0b72e50fa37c85486de2c643e6206bf59cb6add727bf8a66c241e8a4674dab79e3109d673d9b'
+        '7f4844b39131d1a8a07a0dc293fc5ef36bc577cc4dbef29479957ae65452191f2f492703e1c90a272f7033895a4df568bb7e716f1ceb6725fc9f84777e43fc03')
+
+prepare() {
+    cd "${_pkgname}-${pkgver}/${_dkmsname}"
+
+    # Upstream uses dkms.post_install to create modprobe and udev files in
+    # /etc. In Arch, it makes more sense to create these files in /usr/lib
+    # and let pacman take care of them.
+    patch -p1 -i "${srcdir}/drop-etc-files.patch"
+
+    # Set the current version in DKMS config file.
+    patch -p1 -i "${srcdir}/rename-marker.patch"
+    sed "s/@PACKAGE_VERSION@/${pkgver}/" dkms.conf.in > dkms.conf
+}
 
 package() {
-    cd "xpadneo-${pkgver}/hid-xpadneo"
+    cd "${_pkgname}-${pkgver}/${_dkmsname}"
 
-    ## DKMS source files
-    install -D -m0644 Makefile -t "${pkgdir}"/usr/src/"hid-xpadneo-${pkgver}"
-    install -D -m0644 src/* -t "${pkgdir}"/usr/src/"hid-xpadneo-${pkgver}"/src
+    # Module source
+    install -Dm0644 -t "${pkgdir}/usr/src/${_dkmsname}-${pkgver}/src" src/*
 
-    ## DKMS config file
-    sed "s/\"@DO_NOT_CHANGE@\"/\"${pkgver}\"/g" dkms.conf.in |\
-        install -D -m0644 /dev/stdin "${pkgdir}"/usr/src/"hid-xpadneo-${pkgver}"/dkms.conf
+    # DKMS files
+    install -Dm0644 -t "${pkgdir}/usr/src/${_dkmsname}-${pkgver}" Makefile dkms.conf dkms.post_install dkms.post_remove
+    install -Dm0755 -t "${pkgdir}/usr/src/${_dkmsname}-${pkgver}" dkms.post_install dkms.post_remove
 
-    ## DKMS post scripts
-    #
-    # The last 10 lines are removed since they are responsible for copying modprobe and udev files
-    # at DKMS install time. In Arch Linux, it makes more sense to let pacman handle these files.
-    head -n -10 dkms.post_install |\
-        install -D -m0755 /dev/stdin "${pkgdir}"/usr/src/"hid-xpadneo-${pkgver}"/dkms.post_install
-    head -n -10 dkms.post_remove |\
-        install -D -m0755 /dev/stdin "${pkgdir}"/usr/src/"hid-xpadneo-${pkgver}"/dkms.post_remove
+    # modprobe aliases
+    install -Dm0644 -t "${pkgdir}/usr/lib/modprobe.d" etc-modprobe.d/*
 
-    ## Modprobe and udev rules
-    #
-    # No need to reaload rules manually, as pacman already has a hook for that.
-    install -D -m0644 etc-modprobe.d/*.conf -t "${pkgdir}"/usr/lib/modprobe.d
-    install -D -m0644 etc-udev-rules.d/*.rules -t "${pkgdir}"/usr/lib/udev/rules.d
+    # udev rules
+    install -Dm0644 -t "${pkgdir}/usr/lib/udev/rules.d" etc-udev-rules.d/*
 }
