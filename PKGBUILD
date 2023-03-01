@@ -12,7 +12,8 @@ sha256sums=('SKIP')
 makedepends=(git cmake ninja)
 depends=(hicolor-icon-theme libglvnd zlib libx{i,randr,inerama,cursor})
 
-build() {
+prepare() {
+  # Run cmake in `prepare()` since it will download stuff.
   cmake -S $pkgname -B build \
     -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -23,6 +24,9 @@ build() {
     -DOPENEXR_INSTALL=OFF \
     -DOPENEXR_INSTALL_PKG_CONFIG=OFF \
     -DOPENEXR_INSTALL_TOOLS=OFF
+}
+
+build() {
    cmake --build build
 }
 
