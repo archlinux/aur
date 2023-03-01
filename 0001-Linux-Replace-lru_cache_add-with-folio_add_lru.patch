@@ -1,0 +1,89 @@
+From 55ce972ab2c21115b374d56a20bf6b129635eaeb Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Wed, 14 Dec 2022 13:40:48 -0700
+Subject: [PATCH 1/2] Linux: Replace lru_cache_add with folio_add_lru
+
+The Linux 6.2 commit:
+    "folio-compat: remove lru_cache_add()" (6e1ca48d0)
+removed the lru_cache_add() function (which was introduced in Linux 5.8)
+
+The replacement function is folio_add_lru(), which was introduced with
+the Linux 5.16 commit:
+    "mm/lru: Add folio_add_lru()" (0d31125d2d)
+
+Reviewed-on: https://gerrit.openafs.org/15227
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+Tested-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit cfac0df9cd7152be2672c665442aac84215494d6)
+
+Change-Id: I74535bf83cdd47c9dd60a7114ec7694ae9981c9b
+Reviewed-on: https://gerrit.openafs.org/15281
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+---
+ src/afs/LINUX/osi_vnodeops.c | 10 +++++++---
+ src/cf/linux-kernel-func.m4  |  7 +++++++
+ 2 files changed, 14 insertions(+), 3 deletions(-)
+
+diff --git a/src/afs/LINUX/osi_vnodeops.c b/src/afs/LINUX/osi_vnodeops.c
+index bec30bb4c..06c00ac5b 100644
+--- a/src/afs/LINUX/osi_vnodeops.c
++++ b/src/afs/LINUX/osi_vnodeops.c
+@@ -32,7 +32,7 @@
+ #endif
+ #include <linux/pagemap.h>
+ #include <linux/writeback.h>
+-#if defined(HAVE_LINUX_LRU_CACHE_ADD_FILE)
++#if defined(HAVE_LINUX_FOLIO_ADD_LRU) || defined(HAVE_LINUX_LRU_CACHE_ADD_FILE)
+ # include <linux/swap.h>
+ #else
+ # include <linux/pagevec.h>
+@@ -78,7 +78,8 @@ extern struct vcache *afs_globalVp;
+ 
+ /* Handle interfacing with Linux's pagevec/lru facilities */
+ 
+-#if defined(HAVE_LINUX_LRU_CACHE_ADD_FILE) || defined(HAVE_LINUX_LRU_CACHE_ADD)
++#if defined(HAVE_LINUX_FOLIO_ADD_LRU) || \
++    defined(HAVE_LINUX_LRU_CACHE_ADD_FILE) || defined(HAVE_LINUX_LRU_CACHE_ADD)
+ 
+ /*
+  * Linux's lru_cache_add_file provides a simplified LRU interface without
+@@ -97,7 +98,10 @@ afs_lru_cache_init(struct afs_lru_pages *alrupages)
+ static inline void
+ afs_lru_cache_add(struct afs_lru_pages *alrupages, struct page *page)
+ {
+-# if defined(HAVE_LINUX_LRU_CACHE_ADD)
++# if defined(HAVE_LINUX_FOLIO_ADD_LRU)
++    struct folio *folio = page_folio(page);
++    folio_add_lru(folio);
++# elif defined(HAVE_LINUX_LRU_CACHE_ADD)
+     lru_cache_add(page);
+ # elif defined(HAVE_LINUX_LRU_CACHE_ADD_FILE)
+     lru_cache_add_file(page);
+diff --git a/src/cf/linux-kernel-func.m4 b/src/cf/linux-kernel-func.m4
+index d3abdf9ff..09cf10f4c 100644
+--- a/src/cf/linux-kernel-func.m4
++++ b/src/cf/linux-kernel-func.m4
+@@ -173,10 +173,17 @@ AC_CHECK_LINUX_FUNC([in_compat_syscall],
+ 
+ dnl lru_cache_add exported in Linux 5.8
+ dnl    replaces lru_cache_add_file
++dnl removed in linux 6.1.  folio_add_lru is a replacement
+ AC_CHECK_LINUX_FUNC([lru_cache_add],
+                     [#include <linux/swap.h>],
+                     [lru_cache_add(NULL);])
+ 
++dnl Linux 5.16 added folio_add_lru as a replacement for
++dnl lru_cache_add
++AC_CHECK_LINUX_FUNC([folio_add_lru],
++                    [#include <linux/swap.h>],
++		    [folio_add_lru(NULL);])
++
+ dnl Linux 5.8 replaced kernel_setsockopt with helper functions
+ dnl e.g. ip_sock_set_mtu_discover, ip_sock_set_recverr
+ AC_CHECK_LINUX_FUNC([ip_sock_set],
+-- 
+2.39.2
+
