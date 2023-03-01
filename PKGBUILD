@@ -3,7 +3,7 @@ pkgname='certspotter'
 pkgver='0.16.0'
 pkgrel='1'
 pkgdesc='Certificate Transparency Log Monitor'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/SSLMate/$pkgname"
 license=('MPL2')
 makedepends=('go>=1.19' 'lowdown')
