@@ -1,11 +1,11 @@
 # Thanks to the maintainer(s) of chirp-daily
-# Maintainer: K5TRP <K5TRP@protonmail.com>
+# Maintainer: K5TRP <K5TRP@onlyhams.ca>
 # Contributor: 0b100100 <0b100100 at protonmail dot ch>
 # Contributor: Ashley Roll (ash@digitalnemesis.com)
 # Contributor: Erez Raviv (erezraviv@gmail.com)
 
 pkgname=chirp-next
-pkgver=20230224
+pkgver=20230301
 pkgrel=1
 pkgdesc="GUI tool for programming ham radios, built from daily build"
 arch=('any')
@@ -20,7 +20,7 @@ provides=(chirp)
 install=$pkgname.install
 source=("${pkgname}-${pkgver}.tar.gz::https://trac.chirp.danplanet.com/chirp_next/next-$pkgver/chirp-$pkgver.tar.gz" "https://trac.chirp.danplanet.com/chirp_next/next-${pkgver}/chirp-next-${pkgver}-win32.zip")
 # Checksums: https://trac.chirp.danplanet.com/chirp_next/next-$pkgver/SHA1SUM
-sha1sums=('82633ec38f3b6d3a24a14b54acb773764b83a197' '3797a77cdf598d0d1a4cb8db8432d0086ce7bc58')
+sha1sums=('c09363174767eb209c9c9e492c1385df072efff5' '0399ac01d93a77d4b27b25523849f78f95536bce')
 
 build() {
     cd "chirp-$pkgver"
