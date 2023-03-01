@@ -2,14 +2,14 @@
 
 pkgname=dkopp
 pkgver=7.9
-pkgrel=4
+pkgrel=5
 pkgdesc="A backup program using DVDs"
 url="https://kornelix.net/dkopp/dkopp.html"
 arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('clutter-gtk')
-source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver.tar.gz")
-sha256sums=('0961e141b9a73b8113e972f31eadb526268a43e62ae094dfa4cc484758bfb7a6')
+source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver-source.tar.gz")
+sha256sums=('ca9e1a68d7ebce62cbc2d207114e290573d73d39974ad584791918ee0860f7ff')
 options=('!emptydirs')
 
 build() {
