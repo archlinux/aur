@@ -3,13 +3,13 @@
 
 _gitname=telegram-qt
 pkgname=telegram-qt-git
-pkgver=r2645.aef1f443
+pkgver=r2660.cd033446
 pkgrel=1
 pkgdesc="Qt bindings for the Telegram protocol"
 arch=(i686 x86_64)
 url="https://github.com/Kaffeine/telegram-qt"
 license=(GPL)
-depends=(qt5-declarative openssl)
+depends=(qt5-declarative qt6-declarative openssl)
 makedepends=(cmake git)
 provides=(telegram-qt)
 conflicts=(telegram-qt)
@@ -22,19 +22,30 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build
+  # Build for QT5
+  cmake -S $_gitname -B build_qt5 \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_WITH_QT_VERSION=Qt5
+  # Build for QT6
+  cmake -S $_gitname -B build_qt6 \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_WITH_QT_VERSION=Qt6
 }
 
 build() {
-  cd build
-  cmake ../$_gitname \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DCMAKE_BUILD_TYPE=Release
-  make
+  echo "--> Building QT5 library"
+  cmake --build build_qt5
+  echo "--> Building QT6 library"
+  cmake --build build_qt6
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  echo "--> Installing QT5 library"
+  DESTDIR="$pkgdir" cmake --install build_qt5
+  echo "--> Installing QT6 library"
+  DESTDIR="$pkgdir" cmake --install build_qt6
 }
