@@ -2,7 +2,7 @@
 
 pkgname=dragonflydb
 pkgver=0.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern replacement for Redis/Memcached'
 arch=('x86_64')
 url='https://dragonflydb.io'
@@ -10,7 +10,7 @@ license=('custom:BSL1.1')
 depends=('openssl' 'boost-libs' 'libunwind')
 makedepends=('git' 'cmake' 'ninja' 'python' 'boost')
 options=('!buildflags')
-_commit='41e359277f4c1d5a70a028179596e8ed8ceaa5db'
+_commit='b62a590a3c8f89598267fb14cc360c4b99b2d20d'
 source=(
   "$pkgname::git+https://github.com/dragonflydb/dragonfly#commit=$_commit"
   'github.com-romage-helio::git+https://github.com/romange/helio'
