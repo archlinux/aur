@@ -9,7 +9,7 @@ pkgname='ocaml-fileutils'
 pkgver='0.6.4'
 pkgrel='1'
 pkgdesc='OCaml API to manipulate real files and filenames'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/gildor478/$pkgname"
 license=('custom:LGPL2.1 with linking exception')
 depends=('ocaml>=4.03.0' 'ocaml-seq' 'ocaml-stdlib-shims')
