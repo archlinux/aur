@@ -7,7 +7,7 @@ pkgname="ocaml-$_projectname"
 pkgver='2.11.0'
 pkgrel='1'
 pkgdesc='Universal toplevel for OCaml'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/ocaml-community/$_projectname"
 license=('BSD')
 depends=('ocaml>=4.08.0' 'ocaml-findlib>=1.7.2' 'ocaml-lambda-term>=3.1.0' 'ocaml-logs' 'ocaml-lwt' 'ocaml-react>=1.0.0' 'ocaml-zed>=3.2.0')
