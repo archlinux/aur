@@ -3,10 +3,10 @@
 # Contributor: Martin Imobersteg <imm [at] gmx [dot] ch> 
 pkgname=smbldap-tools 
 pkgver=0.9.11
-pkgrel=1 
+pkgrel=2
 pkgdesc="A set of perl scripts designed to manage user and group accounts stored in an LDAP directory." 
 arch=(any) 
-url="https://gna.org/projects/smbldap-tools/" 
+url="https://github.com/fumiyas/smbldap-tools"
 license=("GPL")
 depends=('samba' 'openldap' 'perl-digest-sha1' 'perl-unicode-maputf8' 'perl-crypt-smbhash' 'perl-ldap' 'perl-io-socket-ssl')
 makedepends=('automake' 'autoconf')

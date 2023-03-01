@@ -1,8 +1,8 @@
 pkgbase = smbldap-tools
 	pkgdesc = A set of perl scripts designed to manage user and group accounts stored in an LDAP directory.
 	pkgver = 0.9.11
-	pkgrel = 1
-	url = https://gna.org/projects/smbldap-tools/
+	pkgrel = 2
+	url = https://github.com/fumiyas/smbldap-tools
 	arch = any
 	license = GPL
 	makedepends = automake
