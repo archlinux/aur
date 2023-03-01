@@ -1,4 +1,4 @@
-# Maintainer: Mika Hyttinen <mika dot hyttinen at gmail dot com>
+# Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=cellframe-dashboard
 pkgver=2.10.25
 pkgrel=1
