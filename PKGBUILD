@@ -1,30 +1,30 @@
-# Maintainer: Mike Sampson <mike at sambodata dot com>
+# Maintainer: Vojtěch Balák <vojtech@balak.me>
+# Contributor: Mike Sampson <mike at sambodata dot com>
 # Contributor: Brian Schubert <bewschubert@gmail.com>
 
 pkgname=ifm
-pkgver=5.4
+pkgver=5.5
 pkgrel=1
 pkgdesc="A language and a program for keeping track of your progress through an Interactive Fiction game."
-arch=('i686' 'x86_64')
-url="http://fluffybunny.memebot.com/ifm.html"
+arch=('x86_64')
+url="https://git.sr.ht/~zondo/ifm"
 license=('GPL')
 depends=('tk' 'perl')
-makedepends=('tk')
-source=(http://mirror.ifarchive.org/if-archive/mapping-tools/$pkgname-$pkgver.tar.gz)
-md5sums=('fa18a544fc0fec2ddc452777317357ea')
+makedepends=('tk' 'help2man')
+source=("https://git.sr.ht/~zondo/ifm/archive/$pkgver.tar.gz")
+md5sums=('347e173dffc9091827491f4afee9753f')
 options=('docs')
 
 build() {
     cd $srcdir/$pkgname-$pkgver
 
-    sed s:/usr/local/doc:/usr/share/doc: -i man/ifm.1
-
-    export CPPFLAGS=-D_GNU_SOURCE
-    ./configure --prefix=/usr --mandir=/usr/share/man
+    sh autogen.sh
+    ./configure --prefix=/usr
     make
 }
 
 package() {
     cd $srcdir/$pkgname-$pkgver
+
     make DESTDIR=$pkgdir docdir=$pkgdir/usr/share/doc install
 }
