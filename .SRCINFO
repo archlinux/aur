@@ -1,7 +1,7 @@
 pkgbase = libsearpc
 	pkgdesc = A simple C language RPC framework (including both server side & client side)
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = https://github.com/haiwen/libsearpc
 	arch = i686
@@ -15,6 +15,6 @@ pkgbase = libsearpc
 	depends = python-gobject
 	depends = python-simplejson
 	source = libsearpc-3.3-latest.tar.gz::https://github.com/haiwen/libsearpc/archive/v3.3-latest.tar.gz
-	sha256sums = 34e0d1b4ba7a9e4a63d2ce2ff6f3bd06f46c6f9e41d4607dde7c725f28886929
+	sha256sums = 0097b015fc8558f87de24cf7b0ebfd569b968b0c6dac203d789bd74a44404578
 
 pkgname = libsearpc
