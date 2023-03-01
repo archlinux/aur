@@ -5,6 +5,7 @@ pkgbase = python-widlparser
 	url = https://pypi.org/project/widlparser
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel

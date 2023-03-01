@@ -9,7 +9,7 @@ arch=('any')
 url="https://pypi.org/project/$_pkgname"
 license=('MIT')
 depends=('python' 'python-typing-extensions')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm')
 source=("$pkgname::git+https://gitlab.linss.com/open-source/python/widlparser.git#tag=v$pkgver"
         LICENSE)
 sha256sums=('SKIP'
