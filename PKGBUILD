@@ -1,7 +1,7 @@
 # Maintainer: Cedric Mamo <vrighter@gmail.com>
 pkgname=digisim-git
 pkgver=1
-pkgrel=4
+pkgrel=5
 pkgdesc="A digital logic simulator programmed in lua"
 arch=('x86_64')
 url=""
@@ -38,7 +38,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	zig build -Drelease-fast=true
+	zig build -Doptimize=ReleaseFast
 }
 
 check() {
