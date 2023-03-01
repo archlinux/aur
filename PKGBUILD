@@ -1,20 +1,20 @@
 # Maintainer: j.r <j.r@jugendhacker.de>
 pkgname=sonixd
-pkgver=0.15.3
-pkgrel=2
+pkgver=0.15.4
+pkgrel=1
 pkgdesc="A full-featured Subsonic/Jellyfin compatible desktop music player"
 arch=('x86_64')
 url="https://github.com/jeffvli/sonixd"
 license=('GPL3')
-depends=('electron13')
-makedepends=('yarn' 'asar' 'python3' 'nodejs-lts-gallium' 'git' 'node-gyp')
+depends=('electron22')
+makedepends=('yarn' 'asar' 'python3' 'git' 'node-gyp')
 conflicts=("$pkgname-appimage")
 replaces=("$pkgname-appimage")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jeffvli/sonixd/archive/refs/tags/v$pkgver.tar.gz"
 	"$pkgname"
 	"$pkgname.desktop")
-sha256sums=('f6954415491400d802fe098a2fcb94ac451c3c5d535a89f85825c8a1ef0963ee'
-            '89039f59dc58490cc5a2e05bb38b3645448df56b2e763d6170facb64e73241d0'
+sha256sums=('cd1dfb2e8fec5e0081a5f0b978ddc653fc1b6124e39d226ea883ddf5e1b9acb2'
+            'cd44df72a8c0cbe961150bf449a5676f2b34bb7608c4c81e7b92f1a288ad4da0'
             '9e2e1cce47b594b75b8df7a1cf3a5a6da340dda9d0cfdf2aa305d097fc0bbc7a')
 
 prepare() {
@@ -22,21 +22,19 @@ prepare() {
 	mkdir -p "$srcdir/.electron-gyp"
 	touch "$srcdir/.electron-gyp/.yarnrc"
 
-	_ver="$(</usr/lib/electron13/version)"
-	HOME="$srcdir/.electron-gyp" yarn upgrade --cache-folder="$srcdir/yarn-cache" "electron@$_ver"
-	HOME="$srcdir/.electron-gyp" yarn install --cache-folder="$srcdir/yarn-cache"
+	HOME="$srcdir/.electron-gyp" yarn install --frozen-lockfile --cache-folder="$srcdir/yarn-cache"
 }
 
 build() {
 	cd "$pkgname-$pkgver"
 
-	_ver="$(</usr/lib/electron13/version)"
+	_ver="$(</usr/lib/electron22/version)"
 	local i686=ia32 x86_64=x64
 	export NODE_ENV=production
 	yarn build --cache-folder="$srcdir/yarn-cache"
 	yarn run --cache-folder="$srcdir/yarn-cache" \
 		electron-builder --linux --"${!CARCH}" --dir \
-		-c.electronDist=/usr/lib/electron13 \
+		-c.electronDist=/usr/lib/electron22 \
 		-c.electronVersion="$_ver"
 }
 
