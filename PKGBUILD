@@ -2,7 +2,7 @@
 # Contributor: Robert Csordas <xdever@gmail.com>
 
 pkgname=mutagen.io-bin
-pkgver=0.16.4
+pkgver=0.17.0
 pkgrel=1
 epoch=
 arch=('i386' 'x86_64' 'aarch64' 'armv7h')
@@ -13,10 +13,10 @@ source_x86_64=("https://github.com/mutagen-io/mutagen/releases/download/v${pkgve
 source_i386=("https://github.com/mutagen-io/mutagen/releases/download/v${pkgver}/mutagen_linux_386_v${pkgver}.tar.gz")
 source_aarch64=("https://github.com/mutagen-io/mutagen/releases/download/v${pkgver}/mutagen_linux_arm64_v${pkgver}.tar.gz")
 source_arm7h=("https://github.com/mutagen-io/mutagen/releases/download/v${pkgver}/mutagen_linux_arm_v${pkgver}.tar.gz")
-sha256sums_i386=('4a98668151a749fc320b67e61dadcbf50bdead550b4f601e8a6a8ef16c22872d')
-sha256sums_x86_64=('7bb029ff21e5fab0bc2e094af5a93903a14ec0105d6247de441c521e431801e0')
-sha256sums_aarch64=('f684f7cf6c1177a0d8abecf1914bed246b1e5e9bdb4a9d93d7398e7fb36648d9')
-sha256sums_arm7h=('7b406fa985c1cd7b42d6de63278069f7bf5819896eb783fd9b871567d19389ad')
+sha256sums_i386=('cc1eee3f3eff4ee39af0a073e79ecc8b8367ed529ca0557723d6cd20b1a704e1')
+sha256sums_x86_64=('4742bbd4f7be52bb0bb16e3bc91ba52df8b408946d7b76134c78864fbe564980')
+sha256sums_aarch64=('64b47de97e2ad9504f65679bfe45cbbc193a1a8bfaf9d4f7269ac9b3512c2716')
+sha256sums_arm7h=('9e6ff873978854628156b92bab802569b212232cc7e249a658851e9de4cb1aaf')
 pkgdesc="Code synchronization tool for remote development."
 
 prepare () {
