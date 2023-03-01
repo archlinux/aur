@@ -5,7 +5,7 @@ pkgname="ocaml-$_projectname"
 pkgver='1.0'
 pkgrel='1'
 pkgdesc='Simple, efficient iterators for OCaml'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/c-cube/$_projectname"
 license=('MIT')
 depends=('ocaml>=4.03.0' 'ocaml-seq')
