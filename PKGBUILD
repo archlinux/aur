@@ -4,7 +4,7 @@ pkgname="ocaml-$_projectname"
 pkgver='15.0.0'
 pkgrel='2'
 pkgdesc='Unicode character properties for OCaml'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://erratique.ch/software/$_projectname"
 license=('ISC')
 depends=('ocaml>=4.03.0' 'ocaml-cmdliner>=1.1.0' 'ocaml-uucd' 'ocaml-uunf' 'ocaml-uutf>=1.0.1')
