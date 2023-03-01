@@ -1,7 +1,7 @@
 # Maintainer: Arvid Norlander <VorpalBlade (at) users DOT noreply DOT github DOT com>
 pkgname=greaseweazle
-pkgver=1.8
-pkgrel=2
+pkgver=1.9
+pkgrel=1
 epoch=
 pkgdesc="Tools for accessing a floppy drive at the raw flux level"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools
 depends=('python' 'python-crcmod' 'python-bitarray' 'python-pyserial' 'python-requests')
 optdepends=('capsimage: Read IPF files')
 source=("https://github.com/keirf/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.zip")
-sha256sums=('339635d612095d4df42f9b12e7e6b71606edcb3ab3cd22e520edcafde2e5edf1')
+sha256sums=('ab2f6591d77bb57abac308cb791cdbbd0017254aed8c0246a469968186410530')
 
 build() {
 	cd "$pkgname-$pkgver"
