@@ -1,7 +1,7 @@
 pkgbase = audacious-plugins-gtk3
 	pkgdesc = Plugins for Audacious
 	pkgver = 4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://audacious-media-player.org/
 	arch = i686
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = audacious-plugins-gtk3
 	depends = fluidsynth
 	depends = jack
 	depends = lame
+	depends = libcddb
 	depends = libcdio-paranoia
 	depends = libcue
 	depends = libmms
