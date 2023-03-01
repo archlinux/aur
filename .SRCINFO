@@ -11,7 +11,7 @@ pkgbase = sample-cmake-git
 	makedepends = make
 	makedepends = coreutils
 	makedepends = git
-	depends = gcc
+	depends = gcc-libs
 	source = git+https://github.com/badcast/sample-cmake.git
 	md5sums = SKIP
 
