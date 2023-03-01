@@ -2,8 +2,8 @@
 # Contributor: Bader <Bad3r@pm.me>
 # Acknowledgment: Borrowed a lot from logseq-desktop-git, thank @pychuang
 pkgname=logseq-desktop
-pkgver=0.8.17
-pkgrel=3
+pkgver=0.8.18
+pkgrel=1
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management."
 arch=("x86_64")
 url="https://logseq.com"
@@ -18,7 +18,7 @@ source=(
     "${pkgname}.install"
     "${pkgname}.sh"
 )
-sha256sums=('fbe9d8327c9df30475738eca352f4a34284ff5b4a7cb94937b828310b10a39cf'
+sha256sums=('d36023ac1be00f88eedf1c7c617fda88df70d4f1a8be76c32879e1d0583c6776'
             'b26c6ed39e2635e08a0df83d92883e670b75b02ed1c2c279044909c04edf8fc2'
             '6e834466132551c721ba2ffe92fc0f81056b3151fe6b5f0f469ece937f9b7e84'
             'ad9bb5c0c7f9df5686201ed13c3f5566dcec65357bce33a7d143f160b59a9988'
