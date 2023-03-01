@@ -2,7 +2,7 @@
 
 pkgname=directx-headers-git
 pkgdesc="DirectX headers for using D3D12"
-pkgver=r167.d2c7264
+pkgver=r169.1992ac3
 pkgrel=1
 arch=('x86_64')
 makedepends=('meson')
