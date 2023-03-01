@@ -1,6 +1,6 @@
 pkgbase = git-credential-manager-core
 	pkgdesc = A secure Git credential helper built on .NET that runs on Windows, macOS, and Linux
-	pkgver = 2.0.886
+	pkgver = 2.0.931
 	pkgrel = 1
 	url = https://github.com/GitCredentialManager/git-credential-manager
 	install = git-credential-manager-core.install
@@ -8,25 +8,28 @@ pkgbase = git-credential-manager-core
 	arch = x86_64
 	license = MIT
 	checkdepends = dotnet-runtime-6.0
-	makedepends = git
 	makedepends = dotnet-sdk
 	makedepends = dpkg
-	provides = git-credential-manager-core
-	conflicts = git-credential-manager-core-bin
-	replaces = git-credential-manager
+	makedepends = fontconfig
+	makedepends = krb5
+	makedepends = zlib
 	options = !strip
-	source = git-credential-manager-core::git+https://github.com/GitCredentialManager/git-credential-manager.git#tag=v2.0.886
+	source = git-credential-manager-core-2.0.931.tar.gz::https://github.com/GitCredentialManager/git-credential-manager/archive/refs/tags/v2.0.931.tar.gz
 	source = trim-executables.diff
-	sha256sums = SKIP
-	sha256sums = 3eb41718ef9c701307a6ca7ef85b6993d93fe55b5ad4fad632ff5722779397cf
+	sha512sums = 24c043e39f6f7e7ea7081667b3e2ea7eced1ffcd84e140d0baf184fd208d6ae4f4de4ea172ce694a10082073d2f025e92504d4bb3ffb788b79732063d9c2bfc9
+	sha512sums = e5253397233ef8aee547402c4c1e2430ed8bf87346896d7052ce5ef4967fb705431b3516d53c1508aee9eb1fbe3204500c614be04fe2af326851a8a7d2fefd6d
 
 pkgname = git-credential-manager-core
 	depends = zlib
 	depends = krb5
 	optdepends = git-credential-manager-core-extras: additional QT UIs for logging in
+	provides = git-credential-manager-core
+	conflicts = git-credential-manager-core-bin
+	replaces = git-credential-manager
 
 pkgname = git-credential-manager-core-extras
 	pkgdesc = Additional login UIs to Github and Bitbucket for Git Credential Manager Core
 	depends = zlib
 	depends = krb5
 	depends = fontconfig
+	depends = git-credential-manager-core
