@@ -3,7 +3,7 @@
 
 pkgname=clasp-cl
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Bringing Common Lisp and C++ Together'
 arch=('x86_64')
 url='https://github.com/clasp-developers/clasp'
@@ -15,10 +15,10 @@ depends=(
   'gmp'
   'libbsd'
   'libedit'
-  'clang14'
+  'clang15'
   'libelf'
   'libffi'
-  'llvm14'
+  'llvm15'
   'ncurses'
   'zlib'
 )
