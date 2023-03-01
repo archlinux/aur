@@ -22,6 +22,7 @@ pkgbase = audacious-plugins-git
 	depends = jack
 	depends = lame
 	depends = libbs2b
+	depends = libcddb
 	depends = libcdio-paranoia
 	depends = libcue
 	depends = libmms
