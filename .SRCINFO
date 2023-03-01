@@ -1,6 +1,6 @@
 pkgbase = vlauncher
 	pkgdesc = Application launcher for Gnome
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/vlabdrake/vlauncher
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = vlauncher
 	makedepends = meson
 	depends = gtk4
 	depends = libadwaita
-	source = vlauncher-0.1.0::git+https://github.com/vlabdrake/vlauncher#commit=e9952d4
+	source = vlauncher-0.2.0::git+https://github.com/vlabdrake/vlauncher#tag=0.2.0
 	sha256sums = SKIP
 
 pkgname = vlauncher
