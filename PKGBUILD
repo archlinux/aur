@@ -5,7 +5,7 @@ pkgname="ocaml-$_projectname"
 pkgver='1.2'
 pkgrel='3'
 pkgdesc='Optimised functions to read and write int16/32/64 from strings, bytes and bigarrays'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/OCamlPro/$_projectname"
 license=('custom:LGPL2.1 with linking exception')
 depends=('ocaml>=4.03.0')
