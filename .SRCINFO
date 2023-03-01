@@ -1,0 +1,18 @@
+pkgbase = conjure
+	pkgdesc = Magically transform your images.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/nate-xyz/conjure
+	arch = any
+	license = GPL
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	depends = libadwaita
+	depends = python-gobject
+	depends = python-loguru
+	depends = python-wand
+	source = git+https://github.com/nate-xyz/conjure.git#commit=e8c3319fd70f839277e6ccb2d7d2541097677f35
+	sha256sums = SKIP
+
+pkgname = conjure
