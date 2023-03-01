@@ -7,7 +7,7 @@ pkgname="ocaml-$_projectname"
 pkgver='3.3.1'
 pkgrel='2'
 pkgdesc='Terminal manipulation library for OCaml'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/ocaml-community/$_projectname"
 license=('BSD')
 depends=('ocaml>=4.08.0' 'ocaml-logs' 'ocaml-lwt>=4.2.0' 'ocaml-mew_vi>=0.5.0' 'ocaml-react' 'ocaml-zed>=3.2.0')
