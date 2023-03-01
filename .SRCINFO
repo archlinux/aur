@@ -7,6 +7,7 @@ pkgbase = kazakov_simple_components
 	arch = x86_64
 	license = GPL2+
 	makedepends = gprbuild
+	depends = unixodbc
 	source = http://www.dmitry-kazakov.de/ada/components_4_65.tgz
 	source = LICENSE
 	sha256sums = 8483961ca65896fb058a12dcf9f1a12d07570def889156d295a1ef4ce8a07ba5
