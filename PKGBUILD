@@ -1,6 +1,7 @@
+# Maintainer: Klaas Richel <klaas-richel@hotmail.com>
 pkgname=ttf-th-tshyn
 pkgver=4.0.0
-pkgrel=2
+pkgrel=1
 pkgdesc="TH-tshyn Chinese fonts"
 url="http://cheonhyeong.com/Simplified/download.html"
 arch=('any')
@@ -16,5 +17,5 @@ build() {
 package() {
     install -d $pkgdir/usr/share/fonts/
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -m644 *.ttf "$pkgdir/usr/share/fonts/"
+    install -m644 *.ttf "$pkgdir/usr/share/fonts/"
 }
