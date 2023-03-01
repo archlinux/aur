@@ -1,0 +1,11 @@
+pkgbase = pymoldyn-bin
+	pkgdesc = A molecule viewer with cavity computation.
+	pkgver = 0.9.9
+	pkgrel = 1
+	url = https://github.com/sciapp/pyMolDyn
+	arch = x86_64
+	license = MIT
+	source = http://pgi-jcns.fz-juelich.de/pub/downloads/software/pymoldyn_0.9.9-1_amd64.deb
+	sha256sums = 1f0a4c8b78ce36517ae5abdb7653b3d42a966edc8c9a7a6b21dfbd546a8ccff9
+
+pkgname = pymoldyn-bin
