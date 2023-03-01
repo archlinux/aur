@@ -6,22 +6,67 @@
 import sys
 import json
 from urllib.request import urlopen
+from ctypes import CDLL, Structure, c_char_p, c_uint, c_int, byref, POINTER
+from contextlib import contextmanager
+
+
+libalpm = CDLL('libalpm.so')
+
+class alpm_handle_t(Structure):
+    pass
+alpm_handle_t_ptr = POINTER(alpm_handle_t)
+class alpm_db_t(Structure):
+    pass
+alpm_db_t_ptr = POINTER(alpm_db_t)
+class alpm_pkg_t(Structure):
+    pass
+alpm_pkg_t_ptr = POINTER(alpm_pkg_t)
+
+libalpm.alpm_initialize.argtypes = [c_char_p, c_char_p, POINTER(c_uint)]
+libalpm.alpm_initialize.restype = alpm_handle_t_ptr
+libalpm.alpm_release.argtypes = [alpm_handle_t_ptr]
+libalpm.alpm_release.restype = c_int
+libalpm.alpm_get_localdb.argtypes = [alpm_handle_t_ptr]
+libalpm.alpm_get_localdb.restype = alpm_db_t_ptr
+libalpm.alpm_db_get_pkg.argtypes = [alpm_db_t_ptr, c_char_p]
+libalpm.alpm_db_get_pkg.restype = alpm_pkg_t_ptr
+libalpm.alpm_pkg_get_version.argtypes = [alpm_pkg_t_ptr]
+libalpm.alpm_pkg_get_version.restype = c_char_p
+libalpm.alpm_pkg_vercmp.argtypes = [c_char_p, c_char_p]
+libalpm.alpm_pkg_vercmp.restype = c_int
+
+
+@contextmanager
+def alpm_handle():
+    errno = c_uint()
+    handle = libalpm.alpm_initialize('/'.encode('utf-8'), '/var/lib/pacman'.encode('utf-8'), byref(errno))
+    if handle is None:
+        raise ValueError(f'alpm_initialize failed with error {errno}')
+    yield handle
+    libalpm.alpm_release(handle)
 
 
 def main():
     with urlopen('https://reproducible.archlinux.org/api/v0/pkgs/list') as source:
         packages = {p['name']: p for p in json.load(source)}
 
-    for line in sys.stdin:
-        pkgname = line.strip()
-        pkginfo = packages.get(pkgname)
-        if pkginfo:
-            status = pkginfo['status']
-            if status != 'GOOD':
-                version = pkginfo['version']
-                print(f'\033[1m{pkgname} {version} is not reproducible, status \033[31m{status}\033[0m')
-        else:
-            print(f'{pkgname} \033[33munknown\033[0m')
+    with alpm_handle() as handle:
+        localdb = libalpm.alpm_get_localdb(handle)
+        for line in sys.stdin:
+            pkgname = line.strip()
+            pkginfo = packages.get(pkgname)
+            if pkginfo:
+                status = pkginfo['status']
+                pkg = libalpm.alpm_db_get_pkg(localdb, pkgname.encode('utf-8'))
+                pkgver = libalpm.alpm_pkg_get_version(pkg).decode('utf-8')
+                repro_pkgver = pkginfo['version']
+                if libalpm.alpm_pkg_vercmp(pkgver.encode('utf-8'),
+                                           repro_pkgver.encode('utf-8')) != 0:
+                    print(f'\033[33;1mVERSION MISMATCH:\033[0;33m: {pkgname} reproduced at {repro_pkgver}, but installed at {pkgver}\033[0m')
+                elif status != 'GOOD':
+                    print(f'\033[31;1mNOT REPRODUCED:\033[0m {pkgname} {pkgver} status {status}\033[0m')
+            else:
+                print(f'\033[33mUNKNOWN:\033[0m {pkgname} not reproduced by Archlinux (perhaps from AUR or 3rd party repo?)')
 
 
 if __name__ == '__main__':
