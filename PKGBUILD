@@ -7,13 +7,14 @@ _pkgname=xpadneo
 _dkmsname=hid-${_pkgname}
 pkgname=${_pkgname}-dkms
 pkgver=0.9.5
-pkgrel=2
+_pkgver=v${pkgver}
+pkgrel=3
 pkgdesc="Advanced Linux Driver for Xbox One Wireless Gamepad"
 arch=('any')
 url='https://github.com/atar-axis/xpadneo'
 license=('GPL3')
 depends=('dkms' 'bluez' 'bluez-utils')
-source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+source=("${_pkgname}-${_pkgver}.tar.gz::${url}/archive/${_pkgver}.tar.gz"
         drop-etc-files.patch
         rename-marker.patch)
 b2sums=('d04a3e1b626af1f1a9ec114f0a8ed44c50ec8cde9da71483491d1afd7688611fd7548186ea68ef8a144aecec06acba816e81e9f0708c8dceb96fa1d40985bb44'
@@ -30,7 +31,7 @@ prepare() {
 
     # Set the current version in DKMS config file.
     patch -p1 -i "${srcdir}/rename-marker.patch"
-    sed "s/@PACKAGE_VERSION@/${pkgver}/" dkms.conf.in > dkms.conf
+    sed "s/@PACKAGE_VERSION@/${_pkgver}/" dkms.conf.in > dkms.conf
 }
 
 check() {
@@ -49,11 +50,11 @@ package() {
     cd "${_pkgname}-${pkgver}/${_dkmsname}"
 
     # Module source
-    install -Dm0644 -t "${pkgdir}/usr/src/${_dkmsname}-${pkgver}/src" src/*
+    install -Dm0644 -t "${pkgdir}/usr/src/${_dkmsname}-${_pkgver}/src" src/*
 
     # DKMS files
-    install -Dm0644 -t "${pkgdir}/usr/src/${_dkmsname}-${pkgver}" Makefile dkms.conf dkms.post_install dkms.post_remove
-    install -Dm0755 -t "${pkgdir}/usr/src/${_dkmsname}-${pkgver}" dkms.post_install dkms.post_remove
+    install -Dm0644 -t "${pkgdir}/usr/src/${_dkmsname}-${_pkgver}" Makefile dkms.conf dkms.post_install dkms.post_remove
+    install -Dm0755 -t "${pkgdir}/usr/src/${_dkmsname}-${_pkgver}" dkms.post_install dkms.post_remove
 
     # modprobe aliases
     install -Dm0644 -t "${pkgdir}/usr/lib/modprobe.d" etc-modprobe.d/*
