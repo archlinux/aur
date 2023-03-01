@@ -1,7 +1,7 @@
 pkgname=ttf-th-tshyn
 pkgver=4.0.0
 pkgrel=1
-pkgdesc="TH shyn Chinese fonts"
+pkgdesc="TH-tshyn Chinese fonts"
 url="http://cheonhyeong.com/Simplified/download.html"
 arch=('any')
 license=('unknown')
