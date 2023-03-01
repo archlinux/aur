@@ -33,6 +33,18 @@ prepare() {
     sed "s/@PACKAGE_VERSION@/${pkgver}/" dkms.conf.in > dkms.conf
 }
 
+check() {
+    # Warning if missing linux-headers for current `uname -r` kernel
+    if [ ! -f "/usr/lib/modules/$(uname -r)/build/Makefile" ]
+    then
+        _BOLDRED='\033[1;31m'
+        _RED='\033[0;31m'
+        _RESET='\033[0m'
+        echo -e "${_BOLDRED}WARNING:${_RED} You may be missing headers for your current kernel, DKMS packages requires them."
+        echo -e "Please refer to https://wiki.archlinux.org/title/Dynamic_Kernel_Module_Support for details.${_RESET}"
+    fi
+}
+
 package() {
     cd "${_pkgname}-${pkgver}/${_dkmsname}"
 
