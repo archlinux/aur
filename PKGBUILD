@@ -1,13 +1,13 @@
 pkgname=ubertooth
 pkgver=2020.12.R1
 _pkgver=2020-12-R1
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source wireless development platform suitable for Bluetooth experimentation"
 url="https://github.com/greatscottgadgets/ubertooth/"
 arch=('x86_64' 'i686')
 license=('GPL')
 depends=('bluez-libs' 'libbtbb>=2018.12.R1' 'libusb' 'libpcap' 'python-numpy' 'python-pyusb')
-optdepends=('qt5-declarative' 'python-pyside2' 'python-pyqt')
+optdepends=('qt5-declarative' 'python-pyside2' 'python-qtpy')
 makedepends=('cmake')
 source=("https://github.com/greatscottgadgets/ubertooth/releases/download/${_pkgver}/ubertooth-${_pkgver}.tar.xz")
 sha256sums=('93a4ce7af8eddcc299d65aff8dd3a0455293022f7fea4738b286353f833bf986')
