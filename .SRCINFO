@@ -1,13 +1,13 @@
 pkgbase = adebar
 	pkgdesc = Android DEvice Backup And Report, using Bash and ADB.
-	pkgver = 2.1.0
-	pkgrel = 2
+	pkgver = 2.3.2
+	pkgrel = 0
 	url = https://codeberg.org/izzy/Adebar
 	arch = any
 	license = GPL2
 	depends = bash
 	depends = android-tools
 	source = https://codeberg.org/6543/Adebar/archive/make-adebar-system-instalable.tar.gz
-	sha1sums = 1bcc9cb7f71658094058c0de460177f439947ab3
+	sha1sums = d3b48546df9854409d7d508e9b281ea443b69316
 
 pkgname = adebar
