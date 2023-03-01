@@ -4,18 +4,18 @@
 # Contributor: Sebastian Stenzel <sebastian.stenzel@gmail.com>
 
 pkgname=cryptomator
-pkgver=1.6.17
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Multiplatform transparent client-side encryption of your files in the cloud."
 arch=('any')
 url="https://cryptomator.org/"
 license=('GPL3')
-depends=('fuse2' 'libjffi' 'alsa-lib' 'hicolor-icon-theme' 'ttf-dejavu' 'libxtst' 'libnet' 'libxrender')
+depends=('fuse3' 'alsa-lib' 'hicolor-icon-theme' 'ttf-dejavu' 'libxtst' 'libnet' 'libxrender')
 makedepends=('java-environment>=19' 'java-environment<20' 'java-openjfx>=19' 'java-openjfx<20' 'maven')
 optdepends=('keepassxc-cryptomator: Use KeePassXC to store vault passwords' 'ttf-hanazono: Install this font when using Japanese system language')
 source=("cryptomator-${pkgver}.tar.gz::https://github.com/cryptomator/cryptomator/archive/refs/tags/${pkgver}.tar.gz"
         "cryptomator-${pkgver}.tar.gz.asc::https://github.com/cryptomator/cryptomator/releases/download/${pkgver}/cryptomator-${pkgver}.tar.gz.asc")
-sha256sums=('079b8406664ab226c0b8f6068d15de2007b1f09d9dbce7a84b0171623fb6a202'
+sha256sums=('5c2955a54bdea1619dd17f219eacae4e647e1a9abf0f7bf87e5b214b64566297'
             'SKIP')
 options=('!strip')
 
@@ -51,7 +51,7 @@ build() {
   jlink \
     --output runtime \
     --module-path jmod \
-    --add-modules java.base,java.desktop,java.instrument,java.logging,java.naming,java.net.http,java.scripting,java.sql,java.xml,javafx.base,javafx.graphics,javafx.controls,javafx.fxml,jdk.unsupported,jdk.crypto.ec,jdk.accessibility,jdk.management.jfr \
+    --add-modules java.base,java.desktop,java.instrument,java.logging,java.naming,java.net.http,java.scripting,java.sql,java.xml,javafx.base,javafx.graphics,javafx.controls,javafx.fxml,jdk.unsupported,jdk.crypto.ec,jdk.security.auth,jdk.accessibility,jdk.management.jfr \
     --strip-native-commands \
     --no-header-files \
     --no-man-pages \
@@ -67,6 +67,8 @@ build() {
     --dest . \
     --name cryptomator \
     --vendor "Skymatic GmbH" \
+    --java-options "--enable-preview" \
+    --java-options "--enable-native-access=org.cryptomator.jfuse.linux.amd64,org.cryptomator.jfuse.linux.aarch64" \
     --copyright "(C) 2016 - 2023 Skymatic GmbH" \
     --java-options "-Xss5m" \
     --java-options "-Xmx256m" \
