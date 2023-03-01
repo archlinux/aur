@@ -5,7 +5,7 @@ pkgver='0.15.1'
 pkgrel='2'
 epoch='1'
 pkgdesc='Library for serializing OCaml values to and from S-expressions'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
 depends=('ocaml>=4.08.0' 'ocaml-num' 'ocaml-parsexp>=0.15.0' 'ocaml-sexplib0>=0.15.0')
