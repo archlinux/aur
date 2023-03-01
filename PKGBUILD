@@ -4,7 +4,7 @@ pkgname="$_pkgname-git"
 pkgver='0.16.0.r0.g4ca81ab'
 pkgrel='1'
 pkgdesc='Certificate Transparency Log Monitor - git version'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/SSLMate/$_pkgname"
 license=('MPL2')
 makedepends=('git' 'go>=1.19' 'lowdown')
