@@ -1,12 +1,13 @@
-# Maintainer: Ivan ivabus Bushchik <ivabus@ivabus.dev>
-# old Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 # Submitter: Ecmel Ercan <ecmel dot ercan at gmail dot com>
 # Contributor: Vain <aurmaint1 on host: uninformativ dot de>
 # Contributor: BlindPenguin <ferdinand holzner at gmail dot com>
+# Contributor: Ivan ivabus Bushchik <ivabus@ivabus.dev>
+# Contributor: Johnothan King <johnothanking dot protonmail at com>
 # Thanks goes to yjftsjthsd for https://aur.archlinux.org/packages/cdesktopenv-git/ PKGBUILD.
 #
 pkgname=cdesktopenv
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="CDE - Common Desktop Environment"
 url="http://sourceforge.net/projects/cdesktopenv/"
@@ -14,8 +15,8 @@ arch=('i686' 'x86_64') # Some parts of CDE are not stable on x86_64 yet.
 license=('LGPL2.1')
 options=(!strip !zipman)
 install="cdesktopenv.install"
-depends=(xorg-server-devel gcc dnsutils libxinerama libxss ncurses openmotif rpcbind xbitmaps flex ksh opensp)
-makedepends=(tcl ncompress bison rpcsvc-proto)
+depends=(dnsutils libxinerama libxss ncurses openmotif rpcbind xbitmaps flex ksh opensp)
+makedepends=(tcl ncompress bison rpcsvc-proto xorg-mkfontscale xorg-bdftopcf)
 optdepends=('xorg-fonts-100dpi: additional fonts'
             'cups: for printing support'
             'xinetd: for rpc services')
@@ -27,16 +28,16 @@ source=("git+https://git.code.sf.net/p/cdesktopenv/code#tag=${pkgver}"
         'fonts.dir'
         'cde.desktop'
         'startxsession.sh')
-md5sums=('SKIP'
-         '66ff27b4c6b7c5fda4e2db69f829e4aa'
-         '18f9ef4643ff7ed6637907f5cbdabecf'
-         '5cc80c2851ea90b94e94b0c5d92d81fb'
-         '897316929176464ebc9ad085f31e7284'
-         '7d11b9d2bc1234278f14151025744916'
-         '2e5557241915e4c2761ba136dbcba469')
+sha256sums=('SKIP'
+            '51311576857d8c539fab23795bd9353c8a0c58c4e1b2b1fafef6b69fb7fbd0fb'
+            'b6ca01a4ea42849e11dba973c02b6d26608c2abb48a13dca0af3b95efec6de7f'
+            '5de87d008bc6a8b7d6c2dc0637a127fb1ceea819fdc28a5d466973d302337e90'
+            '9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa'
+            'b355515c6c4dc33fd554064ca8061d8ea8c08c7266c39e7a736e5d1f206212d3'
+            '8a7ba3b3856d4ef05c5703abd8e779df577c6b91931d3d0cc5f04d15dc665d57')
+
 build() {
   cd "$srcdir/code/cde/"
-  sed -i '15 a setv mam_cc_FLAGS -lm\nsetv mam_libm -lm' programs/dtksh/ksh93/src/cmd/ksh93/Mamfile
   ./autogen.sh
   ./configure
   make
@@ -45,7 +46,6 @@ build() {
 package() {
   cd "$srcdir/code/cde"
   make DESTDIR="$pkgdir/" install
-
 
   # installing additional things. Without them CDE won't work
   mkdir -p $pkgdir/var/spool/calendar
@@ -69,4 +69,3 @@ package() {
   install -Dm644 "$srcdir/startxsession.sh" \
 		 "$pkgdir/usr/bin/startxsession.sh"
 }
-

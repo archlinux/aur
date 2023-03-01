@@ -1,6 +1,6 @@
 pkgbase = cdesktopenv
 	pkgdesc = CDE - Common Desktop Environment
-	pkgver = 2.5.0
+	pkgver = 2.5.1
 	pkgrel = 1
 	url = http://sourceforge.net/projects/cdesktopenv/
 	install = cdesktopenv.install
@@ -11,8 +11,8 @@ pkgbase = cdesktopenv
 	makedepends = ncompress
 	makedepends = bison
 	makedepends = rpcsvc-proto
-	depends = xorg-server-devel
-	depends = gcc
+	makedepends = xorg-mkfontscale
+	makedepends = xorg-bdftopcf
 	depends = dnsutils
 	depends = libxinerama
 	depends = libxss
@@ -29,19 +29,19 @@ pkgbase = cdesktopenv
 	options = !strip
 	options = !zipman
 	backup = etc/dt/config/xfonts/C/fonts.alias
-	source = git+https://git.code.sf.net/p/cdesktopenv/code#tag=2.5.0
+	source = git+https://git.code.sf.net/p/cdesktopenv/code#tag=2.5.1
 	source = cdesktopenv.install
 	source = dtlogin.service
 	source = fonts.alias
 	source = fonts.dir
 	source = cde.desktop
 	source = startxsession.sh
-	md5sums = SKIP
-	md5sums = 66ff27b4c6b7c5fda4e2db69f829e4aa
-	md5sums = 18f9ef4643ff7ed6637907f5cbdabecf
-	md5sums = 5cc80c2851ea90b94e94b0c5d92d81fb
-	md5sums = 897316929176464ebc9ad085f31e7284
-	md5sums = 7d11b9d2bc1234278f14151025744916
-	md5sums = 2e5557241915e4c2761ba136dbcba469
+	sha256sums = SKIP
+	sha256sums = 51311576857d8c539fab23795bd9353c8a0c58c4e1b2b1fafef6b69fb7fbd0fb
+	sha256sums = b6ca01a4ea42849e11dba973c02b6d26608c2abb48a13dca0af3b95efec6de7f
+	sha256sums = 5de87d008bc6a8b7d6c2dc0637a127fb1ceea819fdc28a5d466973d302337e90
+	sha256sums = 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa
+	sha256sums = b355515c6c4dc33fd554064ca8061d8ea8c08c7266c39e7a736e5d1f206212d3
+	sha256sums = 8a7ba3b3856d4ef05c5703abd8e779df577c6b91931d3d0cc5f04d15dc665d57
 
 pkgname = cdesktopenv
