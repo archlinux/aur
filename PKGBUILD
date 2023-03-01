@@ -1,4 +1,5 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
+# Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
 
 pkgname=gnome-shell-extension-tiling-assistant
 _pkgname=Tiling-Assistant
