@@ -43,7 +43,7 @@ build() {
 
   cd $srcdir/$_pkgname-$pkgver-stable
   export BUILD_NAME=arch_linux
-  scons -j16 \
+  scons -j$(nproc) \
     bits=64 \
     colored=yes \
     platform=x11 \
