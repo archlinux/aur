@@ -1,4 +1,5 @@
-# Maintainer: Bruno Pagani <archange@archlinux.org>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Bruno Pagani <archange@archlinux.org>
 
 _use_suffix=1
 pkgver=17.4.11
@@ -6,7 +7,7 @@ _commit=45a450257999175dce6d5d8fb83f43397220e9f8
 _chromiumver=98.0.4758.141
 _gcc_patchset=5
 # shellcheck disable=SC2034
-pkgrel=5
+pkgrel=6
 
 _major_ver=${pkgver%%.*}
 if [[ ${_use_suffix} != 0 ]]; then
@@ -82,8 +83,7 @@ sha256sums=('SKIP'
             'b4d28867c1fabde6c50a2cfa3f784730446c4d86e5191e0f0000fbf7b0f91ecf'
             '9c9c280be968f06d269167943680fb72a26fbb05d8c15f60507e316e8a9075d5'
             '8679ad2313b9ddbd896262f6f79d849c4a82d2189d52042809e7cf4b1fc7d8e3'
-            'b94b2e88f63cfb7087486508b8139599c89f96d7a4181c61fec4b4e250ca327a'
-           )
+            'b94b2e88f63cfb7087486508b8139599c89f96d7a4181c61fec4b4e250ca327a')
 
 _system_libs=('ffmpeg'
               'flac'
