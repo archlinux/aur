@@ -5,7 +5,7 @@ _pkgname=altus
 _Pkgname=Altus
 
 pkgname="${_pkgname}"-appimage
-pkgver=4.8.3
+pkgver=4.8.5
 pkgrel=1
 pkgdesc="WhatsApp client with themes and multiple account support"
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=(!strip)
 _appimage="${_Pkgname}-${pkgver}-x86_64.AppImage"
 source=("https://github.com/amanharwara/altus/releases/download/${pkgver}/$_appimage")
 noextract=("${_appimage}")
-sha256sums=('d27a70414a9401bd23161b5652398967680d7f4ddbff637673d798e7b2ab1477')
+sha256sums=('569a1e93fe7ba566d7bf00ccf87629bbe819a6b781f6d382a7210113acfaa6df')
 
 prepare() {
     chmod +x "${_appimage}"
