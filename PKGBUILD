@@ -6,7 +6,7 @@ pkgver='base'
 _commit='cbb37092ecf7d4b3a5ff43a69aacbed19a4668e5'
 pkgrel='7'
 pkgdesc='Dummy backward-compatibility package for iterators'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/ocaml/opam-repository/tree/master/packages/$_projectname/$_projectname.$pkgver"
 license=('custom:CC0')
 depends=('ocaml>=4.07.0')
