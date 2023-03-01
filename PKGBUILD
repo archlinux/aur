@@ -8,8 +8,8 @@ url="https://github.com/jeffvli/sonixd"
 license=('GPL3')
 depends=('electron22')
 makedepends=('yarn' 'asar' 'python3' 'git' 'node-gyp')
-conflicts=("$pkgname-appimage")
-replaces=("$pkgname-appimage")
+conflicts=("$pkgname-bin")
+replaces=("$pkgname-bin")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jeffvli/sonixd/archive/refs/tags/v$pkgver.tar.gz"
 	"$pkgname"
 	"$pkgname.desktop")
