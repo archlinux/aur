@@ -13,32 +13,28 @@ After every transaction which installs or upgrades packages it
 resolving dependencies...
 looking for conflicting packages...
 
-Package (2)      New Version  Net Change
+Package (1)    Old Version  New Version  Net Change
 
-community/mdcat  1.0.0-1        6,85 MiB
-community/tea    0.9.2-1       22,09 MiB
+community/tea  0.9.2-1      0.9.2-1        0,00 MiB
 
-Total Installed Size:  28,94 MiB
+Total Installed Size:  22,09 MiB
+Net Upgrade Size:       0,00 MiB
 
 :: Proceed with installation? [Y/n]
-(2/2) checking keys in keyring
-(2/2) checking package integrity
-(2/2) loading package files
-(2/2) checking for file conflicts
-(2/2) checking available disk space
+(1/1) checking keys in keyring
+(1/1) checking package integrity
+(1/1) loading package files
+(1/1) checking for file conflicts
+(1/1) checking available disk space
 :: Processing package changes...
-(1/2) installing tea
-(2/2) installing mdcat
-Optional dependencies for mdcat
-    less: for mdless [installed]
-    librsvg: used to render SVG images in kitty [installed]
+(1/1) reinstalling tea
 :: Running post-transaction hooks...
 (1/2) Arming ConditionNeedsUpdate...
 (2/2) Checking repro status...
-tea 0.9.2-1 is not reproducible, status BAD
+NOT REPRODUCED: tea 0.9.2-1 status BAD
 ```
 
-## installation
+## Installation
 
 Run `make install`, or install from the [AUR](https://aur.archlinux.org/packages/pacman-hook-reproducible-status).
 
