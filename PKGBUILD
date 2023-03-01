@@ -12,7 +12,7 @@ pkgname="ocaml-$_projectname"
 pkgver='2.2.6'
 pkgrel='3'
 pkgdesc='Unit testing framework for OCaml'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/gildor478/$_projectname"
 license=('MIT')
 depends=('ocaml>=4.04.0' 'ocaml-lwt' 'ocaml-seq' 'ocaml-stdlib-shims')
