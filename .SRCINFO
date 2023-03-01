@@ -1,0 +1,12 @@
+pkgbase = ttf-th-tshyn
+	pkgdesc = TH shyn Chinese fonts
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = http://cheonhyeong.com/Simplified/download.html
+	arch = any
+	license = unknown
+	makedepends = grep
+	source = http://cheonhyeong.com/File/TH-Tshyn-4.0.0.7z
+	sha256sums = 9490c9129b0adac8632f99c4d7a8027b9f27346dd35c303be7ec492b0db3707a
+
+pkgname = ttf-th-tshyn
