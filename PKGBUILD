@@ -5,7 +5,7 @@ pkgname="ocaml-$_projectname"
 pkgver='3.0'
 pkgrel='1'
 pkgdesc='Unicode-friendly OCaml lexer generator'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/ocaml-community/$_projectname"
 license=('MIT')
 depends=('ocaml>=4.08.0' 'ocaml-gen' 'ocaml-ppxlib>=0.26.0' 'ocaml-uchar')
