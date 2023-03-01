@@ -1,7 +1,7 @@
 pkgbase = alibabasans-tc-fonts
-	pkgdesc = A typeface for creating alibaba sans tc in text
+	pkgdesc = A typeface for creating alibaba sans tc in text.阿里巴巴普惠体繁体中文(Big5)4字重
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fonts.alibabagroup.com/#/font
 	arch = any
 	license = custom

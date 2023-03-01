@@ -3,8 +3,8 @@
 pkgbase=alibabasans-tc-fonts
 pkgname=('ttf-alibabasans-tc-fonts' 'woff-alibabasans-tc-fonts' 'woff2-alibabasans-tc-fonts' 'eot-alibabasans-tc-fonts' 'otf-alibabasans-tc-fonts')
 pkgver=1.0
-pkgrel=1
-pkgdesc="A typeface for creating alibaba sans tc in text"
+pkgrel=2
+pkgdesc="A typeface for creating alibaba sans tc in text.阿里巴巴普惠体繁体中文(Big5)4字重"
 arch=('any')
 url='https://fonts.alibabagroup.com/#/font'
 license=('custom')
