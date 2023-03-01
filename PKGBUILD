@@ -4,13 +4,13 @@
 # Contributor: Julian Raufelder <arch@raufelder.com>
 
 pkgname=cryptomator-bin
-pkgver=1.6.17
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Multiplatform transparent client-side encryption of your files in the cloud."
 arch=('x86_64')
 url="https://cryptomator.org/"
 license=('GPL3')
-depends=('fuse2' 'ttf-dejavu')
+depends=('fuse3' 'ttf-dejavu')
 provides=('cryptomator')
 conflicts=('cryptomator')
 replaces=('cryptomator')
@@ -21,7 +21,7 @@ source=("cryptomator-${pkgver}-${pkgrel}-x86_64.AppImage::https://github.com/cry
         'org.cryptomator.Cryptomator.png'
         'org.cryptomator.Cryptomator.svg'
         'cryptomator-vault.xml')
-sha256sums=('18eedc6fb1894fe3b7061cdbf7597a49f4a7fdb300cee8b0aaeec24e99eb5a42'
+sha256sums=('2e99f38d6937440e459e2c823b2b2d6e00605398cd16ea17f5e2ddedaf529c6a'
             'SKIP'
             '53c509fe54ef1c5c28b469d86291536649367fb2030b2c0fb3101da2031f8e6e'
             'd299636d78d093117fa7a26563f22e01cdb75b1fcc6cc279bc88627574c968bd'
