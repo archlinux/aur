@@ -1,10 +1,10 @@
 # Maintainer: hertg <aur@her.tg>
 # This file is generated automatically
-_version=0.18.1
-_versionWithoutPrefix=0.18.1
+_version=0.18.2
+_versionWithoutPrefix=0.18.2
 _pkgname=egpu-switcher
-_pkgver=0.18.1
-_source=${_pkgname}-${_version}::https://github.com/hertg/egpu-switcher/archive/refs/tags/0.18.1.tar.gz
+_pkgver=0.18.2
+_source=${_pkgname}-${_version}::https://github.com/hertg/egpu-switcher/archive/refs/tags/0.18.2.tar.gz
 pkgname=$_pkgname
 pkgver=$_pkgver
 pkgdesc='Automatically detect and use eGPU on startup'
