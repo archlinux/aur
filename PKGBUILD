@@ -6,7 +6,7 @@ pkgver='0.15.0'
 pkgrel='3'
 epoch='1'
 pkgdesc='Standard Jane Street ppx rewriters'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
 depends=('ocaml>=4.08.0' 'ocaml-base_quickcheck>=0.15.0' 'ocaml-ppx_assert>=0.15.0' 'ocaml-ppx_base>=0.15.0' 'ocaml-ppx_bench>=0.15.0' 'ocaml-ppx_bin_prot>=0.15.0' 'ocaml-ppx_custom_printf>=0.15.0' 'ocaml-ppx_disable_unused_warnings>=0.15.0' 'ocaml-ppx_expect>=0.15.0' 'ocaml-ppx_fields_conv>=0.15.0' 'ocaml-ppx_fixed_literal' 'ocaml-ppx_here>=0.15.0' 'ocaml-ppx_ignore_instrumentation>=0.15.0' 'ocaml-ppx_inline_test>=0.15.0' 'ocaml-ppx_let>=0.15.0' 'ocaml-ppx_log>=0.15.0' 'ocaml-ppx_module_timer>=0.15.0' 'ocaml-ppx_optcomp>=0.15.0' 'ocaml-ppx_optional>=0.15.0' 'ocaml-ppx_pipebang>=0.15.0' 'ocaml-ppx_sexp_message>=0.15.0' 'ocaml-ppx_sexp_value>=0.15.0' 'ocaml-ppx_stable>=0.15.0' 'ocaml-ppx_string>=0.15.0' 'ocaml-ppx_typerep_conv>=0.15.0' 'ocaml-ppx_variants_conv>=0.15.0' 'ocaml-ppxlib>=0.23.0')
