@@ -3,7 +3,7 @@
 pkgname=privatebin-cli
 _binname=privatebin
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI for privatebin server'
 arch=('x86_64')
 url='https://github.com/gearnode/privatebin'
@@ -27,7 +27,7 @@ build() {
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-    -ldflags "-s -w -linkmode external -extldflags \"${LDFLAGS}\"" \
+    -ldflags "-s -w -linkmode external -extldflags \"${LDFLAGS}\" -X 'gearno.de/privatebin/internal/version.Version=$pkgver'" \
     -o $_binname "cmd/privatebin/main.go"
 }
 

@@ -1,7 +1,7 @@
 pkgbase = privatebin-cli
 	pkgdesc = CLI for privatebin server
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gearnode/privatebin
 	install = privatebin-cli.install
 	arch = x86_64
