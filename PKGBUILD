@@ -1,7 +1,7 @@
 # Maintainer: Alexis Polti <ArchSegger at gmail dot com>
 
 pkgname=jlink-systemview-target-src
-pkgver=3.32
+pkgver=3.50
 pkgrel=1
 epoch=1
 pkgdesc="Segger SystemView target src for Linux"
@@ -10,7 +10,7 @@ license=('custom')
 groups=('jlink')
 depends=()
 source=("https://www.segger.com/downloads/systemview/SystemView_Src_V${pkgver/./}.zip")
-md5sums=('ef13a868a03d1b55ba5e730bc448f337')
+md5sums=('c9042ff789de485a57288aa26f1367a1')
 url="https://www.segger.com/downloads/free-utilities/#SystemView"
 
 package(){
