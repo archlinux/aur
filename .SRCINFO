@@ -6,6 +6,7 @@ pkgbase = lavacli
 	arch = any
 	license = AGPL3
 	makedepends = python-setuptools
+	makedepends = python-pip
 	depends = python
 	depends = python-aiohttp
 	depends = python-pyzmq

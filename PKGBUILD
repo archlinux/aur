@@ -10,7 +10,7 @@ license=('AGPL3')
 source=("$url/-/archive/v$pkgver/lavacli-v$pkgver.tar.gz")
 sha256sums=('159431c2c976488124c2d1edc5a5a3ff8680b445d295dc9c3db3a91321f869c8')
 depends=(python python-{aiohttp,pyzmq})
-makedepends=(python-setuptools)
+makedepends=(python-setuptools python-pip)
 
 build() {
   cd "lavacli-v${pkgver}"
