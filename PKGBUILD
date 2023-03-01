@@ -1,7 +1,7 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=cellframe-node
 pkgver=5.1.366
-pkgrel=2
+pkgrel=3
 pkgdesc="Cellframe blockchain node with a powerful SDK"
 arch=('x86_64' 'aarch64')
 url="https://cellframe.net"
@@ -10,7 +10,7 @@ depends=(python logrotate)
 makedepends=(git cmake python)
 provides=("cellframe-node" "cellframe-node-cli" "cellframe-node-tool")
 options=(!buildflags !makeflags)
-source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=318c5299f18517dd5b3c14a38ebb5468218f88b2
+source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=2918cb9fd3d1df774df78bb706db052741696186
 		git+https://gitlab.demlabs.net/cellframe/cellframe-sdk.git#commit=b32dfcdc37fb192ef2253c8eec86fa8e3d3c8c44
 		git+https://gitlab.demlabs.net/cellframe/python-cellframe.git#commit=3c4b8a87a47ea0cba1231245ac0663d2bce06b6d
 		cellframe-node.cfg
@@ -49,6 +49,7 @@ build() {
 	cd "$pkgname"
 	cmake -B build \
 		-DCMAKE_BUILD_TYPE='Release' \
+		-DCREATE_DEFAULT_CONFIG=OFF \
         -Wno-dev
 	cmake --build build -j$(nproc)
 }
