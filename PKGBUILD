@@ -5,7 +5,7 @@
 
 pkgname=borg-git
 _pkgname=borg
-pkgver=2.0.0.dev0.r2.gb10d6611
+pkgver=2.0.0b5.r5.g8027c7b2
 pkgrel=1
 pkgdesc='Deduplicating backup program with compression and authenticated encryption'
 url='https://borgbackup.github.io/'
@@ -32,7 +32,8 @@ build() {
 }
 
 check() {
-  cd "$srcdir/$_pkgname/build/lib.linux-$CARCH-3".*/
+  cd "$srcdir/$_pkgname/build/lib.linux-$CARCH-3"*/
+
   LANG=en_US.UTF-8 PYTHONPATH="$PWD:$PYTHONPATH" py.test --cov=borg \
     --benchmark-skip --pyargs borg.testsuite -v \
     -k 'not test_non_ascii_acl'
