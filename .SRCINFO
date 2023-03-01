@@ -1,0 +1,13 @@
+pkgbase = certmanager-uos
+	pkgdesc = 一款简单高效的本地证书管理工具,提供证书安装、证书管理、证书验证等功能，支持国密证书.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://www.bitnum.com/
+	arch = x86_64
+	license = unknow
+	depends = qt6-base
+	depends = hicolor-icon-theme
+	source = certmanager-1.0.0.deb::https://com-store-packages.uniontech.com/pool/appstore/c/cn.bitnum.certmanager/cn.bitnum.certmanager_1.0.0_amd64.deb
+	sha512sums = e0fcd0dc498b50ea10f56fe08bd39634f3294ad45a237cd949176394169de5c52b2e85942b8540feb589f4a0a0f1e39f2a485367d515a47241d73e5d03925b3d
+
+pkgname = certmanager-uos
