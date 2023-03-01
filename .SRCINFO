@@ -1,6 +1,6 @@
 pkgbase = ifetch-git
 	pkgdesc = A fetch tool to display network interface information
-	pkgver = r135.d85f773
+	pkgver = r138.34bf52f
 	pkgrel = 1
 	url = https://github.com/deivshon/ifetch
 	arch = x86_64
