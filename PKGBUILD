@@ -1,10 +1,10 @@
-# Maintainer: Mark Barbone <mark.l.barbone at gmail>
-# Contributor: MithicSpirit <rpc01234 at gmail dot com>
+# Maintainer: Thomas Hansen <thomas-e-hansen at teh dot eu>
+# Co-maintainer: MithicSpirit <rpc01234 at gmail dot com>
 
 _pkgname=idris2
 pkgname=$_pkgname-git
 pkgver=latest
-pkgrel=5
+pkgrel=1
 pkgdesc='A purely functional programming language with first class types'
 url='https://www.idris-lang.org/'
 license=('custom')
