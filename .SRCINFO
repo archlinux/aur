@@ -1,17 +1,20 @@
 pkgbase = imgbrd-grabber-appimage
 	pkgdesc = Very customizable imageboard/booru downloader with powerful filenaming features.
-	pkgver = 7.9.0
+	pkgver = 7.10.1
 	pkgrel = 1
 	url = https://github.com/Bionus/imgbrd-grabber
 	arch = x86_64
 	license = Apache
-	makedepends = p7zip
 	depends = hicolor-icon-theme
 	depends = zlib
 	depends = fuse
-	noextract = $_pkgname
+	provides = grabber
+	conflicts = grabber
+	noextract = Grabber_v7.10.1-x86_64.AppImage
 	options = !strip
-	source = https://github.com/Bionus/imgbrd-grabber/releases/download/v7.9.0/Grabber_v7.9.0-x86_64.AppImage
-	sha256sums = aa3f0b4b55f9d4c28cecdc2f1d5d2bd6add4172ba62ca1cb66c3806a52b9528f
+	source = https://github.com/Bionus/imgbrd-grabber/releases/download/v7.10.1/Grabber_v7.10.1-x86_64.AppImage
+	source = https://raw.githubusercontent.com/Bionus/imgbrd-grabber/v7.10.1/LICENSE
+	sha256sums = b3dec3400fa0f6a6419eba185887f8467842948494232445dbdf360d2a733e50
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
 
 pkgname = imgbrd-grabber-appimage
