@@ -1,6 +1,6 @@
 # Maintainer: noprobelm@protonmail.com
 pkgname=tempy-git
-pkgver=1.0.r55.e0ef2c1
+pkgver=1.0.r59.5bd7a5b
 pkgrel=1
 pkgdesc="Render visually pleasing weather reports as rich text to your terminal"
 arch=(any)
