@@ -2,12 +2,12 @@
 
 pkgname=sonixd-bin
 pkgver=0.15.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The latest stable binary release of Sonixd - a full-featured Subsonic API compatible cross-platform desktop client"
 arch=('x86_64')
 url="https://github.com/jeffvli/sonixd"
 license=('GPL3')
-depends=('electron>=22.0.0' 'fuse')
+depends=('electron22' 'fuse')
 makedepends=('asar')
 conflicts=('sonixd' 'sonixd-appimage')
 replaces=('sonixd' 'sonixd-appimage')
