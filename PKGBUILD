@@ -2,7 +2,7 @@
 # Maintainer: Abhinav Gupta <mail@abhinavg.net>
 
 pkgname='stitchmd-bin'
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Stitch multiple Markdown files together into a single document.'
 url='https://github.com/abhinav/stitchmd'
@@ -11,20 +11,20 @@ license=('MIT')
 provides=('stitchmd')
 conflicts=('stitchmd')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/abhinav/stitchmd/releases/download/v0.2.0/stitchmd-linux-arm64.tar.gz")
-sha256sums_aarch64=('f282619d6f39cfc65e86217c7fb2ef37222d7972c717ec99b482c51a411134e6')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/abhinav/stitchmd/releases/download/v0.3.0/stitchmd-linux-arm64.tar.gz")
+sha256sums_aarch64=('d5dd3b9fb99b960e1ea86b06154f1732e561c78c51ec8fa2ca169c281f7a9827')
 
-source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/abhinav/stitchmd/releases/download/v0.2.0/stitchmd-linux-armv6.tar.gz")
-sha256sums_armv6h=('ad4263fa15e92ecddacbe784521a989da8d0741674968f6aa32f5d0947bd8837')
+source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/abhinav/stitchmd/releases/download/v0.3.0/stitchmd-linux-armv6.tar.gz")
+sha256sums_armv6h=('c0567a1064597f71ed5827750d01a687ce5914e6b2378d0d85061277c852c06d')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/abhinav/stitchmd/releases/download/v0.2.0/stitchmd-linux-armv7.tar.gz")
-sha256sums_armv7h=('0eb5acabb1a0c8c3e3e252b46c90599b01d1da95c5d1ddc96e0fc0e235737cea')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/abhinav/stitchmd/releases/download/v0.3.0/stitchmd-linux-armv7.tar.gz")
+sha256sums_armv7h=('5f2948a8d1352fc69e5e226bfacf00f5a0ecc77332570af83d7abb3022eacedb')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/abhinav/stitchmd/releases/download/v0.2.0/stitchmd-linux-386.tar.gz")
-sha256sums_i686=('132696e304d347720c031d71656b29d59e73146679847f87abd679547eb81585')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/abhinav/stitchmd/releases/download/v0.3.0/stitchmd-linux-386.tar.gz")
+sha256sums_i686=('04739caebb164ca8a28039ebeca34af69bd6155729db1e9b60e2039d6bfe8844')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/abhinav/stitchmd/releases/download/v0.2.0/stitchmd-linux-amd64.tar.gz")
-sha256sums_x86_64=('d942b54fa251415a258e7fcc3daa50eefe09b89af8f4a551b7fda5c0f8285a0d')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/abhinav/stitchmd/releases/download/v0.3.0/stitchmd-linux-amd64.tar.gz")
+sha256sums_x86_64=('63382565e8deae7771bf13157eb023a571a2182c8136c1773ff27d6da833371e')
 
 package() {
   install -Dm755 "./stitchmd" "${pkgdir}/usr/bin/stitchmd"
