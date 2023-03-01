@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=ADBManager
+Name[ru]=ADBManager
+Comment=ADB Server Manager
+Comment[ru]=Менеджер сервера ADB
+Icon=adbmanager
+Exec=adbmanager
+Type=Application
+Categories=System;
+Terminal=false
