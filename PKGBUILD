@@ -1,7 +1,7 @@
 # Maintainer: Ingo Meyer <i.meyer@fz-juelich.de>
 
 pkgname="pymoldyn"
-pkgver="0.9.8"
+pkgver="0.9.9"
 pkgrel="1"
 pkgdesc="A molecule viewer with cavity computation."
 arch=("x86_64")
@@ -12,7 +12,7 @@ makedepends=("git" "podman")
 source=("https://github.com/sciapp/pyMolDyn/archive/release-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.patch"
         "qtgr.patch")
-sha256sums=("fb86ad7935d5b30f5bc6db98b33d0ebfc148e5bdda9fe357486fdeddacd327b8"
+sha256sums=("da8fef9c15c9cb762ffb21af989350901b7514673c7f87b6378bfea4a8a15180"
             "4f4391bb18ce31f7603603cc5f489646fc5df97ae5a0800336cbd53cf3af2fe3"
             "48246f36c4b6c89354b32374d3b1624219b35107e33b87e64457b3eb8b5e75ef")
 
