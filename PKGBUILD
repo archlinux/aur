@@ -3,14 +3,14 @@
 pkgname=mysqltuner
 pkgver=2.1.0
 _tag='ea29f3e0d4b77333f32fcaff3c1636759dd5975a'
-pkgrel=4
+pkgrel=5
 pkgdesc='MySQLTuner - review configuration quickly and make adjustments to increase performance and stability'
 arch=('any')
 url='http://www.mysqltuner.com'
 license=('GPL')
 makedepends=('git' 'discount')
 depends=('perl')
-source=("mysqltuner::git://github.com/rackerhacker/MySQLTuner-perl.git#tag=${_tag}")
+source=("mysqltuner::git+https://github.com/rackerhacker/MySQLTuner-perl.git#tag=${_tag}")
 sha256sums=('SKIP')
 
 build() {
