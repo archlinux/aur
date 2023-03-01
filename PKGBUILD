@@ -4,7 +4,7 @@ pkgname="ocaml-$_projectname"
 pkgver='2.0.0'
 pkgrel='4'
 pkgdesc='A ppx rewriter that transforms a recursive module expression into a `struct`'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/flow/$pkgname"
 license=('MIT')
 depends=('ocaml' 'ocaml-ppxlib>=0.18.0')
