@@ -1,0 +1,15 @@
+pkgbase = kazakov_simple_components
+	pkgdesc = A set of low-level Ada components by Dmitri Kazakov.
+	pkgver = 4.65
+	pkgrel = 1
+	url = http://www.dmitry-kazakov.de/ada/components.htm
+	arch = i686
+	arch = x86_64
+	license = GPL2+
+	makedepends = gprbuild
+	source = http://www.dmitry-kazakov.de/ada/components_4_65.tgz
+	source = LICENSE
+	sha256sums = 8483961ca65896fb058a12dcf9f1a12d07570def889156d295a1ef4ce8a07ba5
+	sha256sums = 3718d08bc7d42a49e6ce06d6d942f4e310e0db3c4336de1c9fd91dc6c3711615
+
+pkgname = kazakov_simple_components
