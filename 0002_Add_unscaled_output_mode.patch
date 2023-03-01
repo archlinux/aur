@@ -19,7 +19,7 @@ diff --color --unified --recursive --text a/hw/xwayland/xwayland-output.c b/hw/x
 -                    int32_t width, int32_t height,
 -                    int *count)
 +                    int32_t width, int32_t height, int scale,
-+                    int *count, RRModePtr **preferred_mode)
++                    int *count, RRModePtr *preferred_mode)
  {
      struct xwl_screen *xwl_screen = xwl_output->xwl_screen;
      RRModePtr *rr_modes;
@@ -102,7 +102,7 @@ diff --color --unified --recursive --text a/hw/xwayland/xwayland-output.c b/hw/x
      int mode_width, mode_height, count;
      int width = 0, height = 0, has_this_output = 0;
 -    RRModePtr *randr_modes;
-+    RRModePtr *randr_modes, *preferred_mode;
++    RRModePtr *randr_modes, preferred_mode;
      int32_t scale = xwl_screen->global_output_scale;
  
      /* Clear out the "done" received flags */
