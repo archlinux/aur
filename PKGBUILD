@@ -33,12 +33,12 @@ build() {
 
     # Possible values for the GAMEPACKS_LICENSE_LIST filter are "free",
     # "all" (free + proprietary) and "none".
-    # If, for example, you only want to fetch the Unvanquished and Xonotic gamepacks,
+    # If you only want to fetch the Unvanquished and Xonotic gamepacks for example,
     # use -DGAMEPACKS_LICENSE_LIST=none and -DGAMEPACKS_NAME_LIST="Unvanquished Xonotic".
-    # See https://gitlab.com/xonotic/netradiant for more options.
+    # See https://gitlab.com/xonotic/netradiant/-/blob/master/README.md for more information.
     cmake -G "Unix Makefiles" -S. -Bbuild \
     -DCMAKE_BUILD_TYPE=Release \
-    -DOpenGL_GL_PREFERENCE="GLVND" \
+    -DOpenGL_GL_PREFERENCE=GLVND \
     -DFHS_INSTALL=ON \
     -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr \
     -DDOWNLOAD_GAMEPACKS=ON \
