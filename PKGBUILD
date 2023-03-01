@@ -4,7 +4,7 @@ pkgname="$_pkgname-git"
 pkgver='r86.g9da6ca0'
 pkgrel='1'
 pkgdesc='Minimalist BitWarden client with Secret Service API implementation - git version'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/mvdan/$_pkgname"
 license=('BSD')
 makedepends=('git' 'go>=1.18')
