@@ -4,7 +4,7 @@
 
 pkgname=netdata-git
 _gitname=netdata
-pkgver=v1.37.0.r184.g2516d29ce
+pkgver=v1.38.0.r186.g76ff5ebc7
 pkgrel=1
 pkgdesc="Real-time performance monitoring, in the greatest possible detail, over the web"
 url="https://github.com/netdata/netdata/wiki"
@@ -81,7 +81,7 @@ package() {
   install -Dm644 system/netdata.conf "$pkgdir"/etc/netdata/netdata.conf
   chown -R 0:134 "$pkgdir"/usr/share/netdata/web
 
-  install -Dm0644 "system/netdata.service.v235" "$pkgdir/usr/lib/systemd/system/netdata.service"
-  install -Dm0644 "system/netdata.logrotate" "$pkgdir/etc/logrotate.d/netdata"
+  install -Dm0644 "system/systemd/netdata.service.v235" "$pkgdir/usr/lib/systemd/system/netdata.service"
+  install -Dm0644 "system/logrotate/netdata" "$pkgdir/etc/logrotate.d/netdata"
   install -Dm0644 "${srcdir}/${_gitname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_gitname}.conf"
 }

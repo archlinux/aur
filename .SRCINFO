@@ -1,6 +1,6 @@
 pkgbase = netdata-git
 	pkgdesc = Real-time performance monitoring, in the greatest possible detail, over the web
-	pkgver = v1.37.0.r184.g2516d29ce
+	pkgver = v1.38.0.r186.g76ff5ebc7
 	pkgrel = 1
 	url = https://github.com/netdata/netdata/wiki
 	install = netdata.install
