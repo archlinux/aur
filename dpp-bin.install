@@ -1,0 +1,24 @@
+post_install() {
+	echo -e "\e[1;31mBe aware one of the time conversion tests fail on devices not set to UTC.\e[0m"
+	echo -e "\e[1;31mThis shouldn't affect your server deploys but may play role on your dev machine.\e[0m"
+	echo ""
+	echo -e "\e[1;32mWe build and package with packaged nlohmann/json. This is now properly supported by\e[0m"
+	echo -e "\e[1;32mlibrary build system. You may want to set the new build time flag.\e[0m"
+	echo -e "\e[1;32mSymlink has been provided for convenience, but you may prefer to use it directly.\e[0m"
+	echo ""
+	echo -e "\e[1;33mPackage now includes experimental coroutine support.\e[0m"
+	echo -e "\e[1;33mIt's not considered production ready, but it's available for your experiments.\e[0m"
+	echo -e "\e[1;33mFeedback is welcome on any of the official channels.\e[0m"
+}
+
+post_upgrade() {
+	echo -e "\e[1;31mCMake has been finally fixed. If you were using pkg-config up to now, nothing should\e[0m"
+	echo -e "\e[1;31mchange for you, but you can now also just use find_package and it should actually work.\e[0m"
+	echo ""
+	echo -e "\e[1;32mSymlink has been provided for the embedded nlohmann/json library.\e[0m"
+	echo -e "\e[1;32mWe keep using the systemwide version. You may want to set the new build time flag.\e[0m"
+	echo ""
+	echo -e "\e[1;33mPackage now includes experimental coroutine support.\e[0m"
+	echo -e "\e[1;33mIt's not considered production ready, but it's available for your experiments.\e[0m"
+	echo -e "\e[1;33mFeedback is welcome on any of the official channels.\e[0m"
+}
