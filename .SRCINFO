@@ -1,0 +1,19 @@
+pkgbase = alibabasans-fonts
+	pkgdesc = A typeface for creating alibaba sans viet in text.阿里巴巴普惠体拉丁,172语种,6字重
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://fonts.alibabagroup.com/#/font
+	arch = any
+	license = custom
+	source = alibabasans-fonts-1.0.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlibabaSans.zip
+	sha512sums = 881a5a614e981269fd0609749a9c4876b245982f8857389e2e2dc4b98a8b5145e6b5d069e30c679c4bae491d4c8f8c15b6e0b67b505b89390588553e154427b3
+
+pkgname = ttf-alibabasans-fonts
+
+pkgname = woff-alibabasans-fonts
+
+pkgname = woff2-alibabasans-fonts
+
+pkgname = eot-alibabasans-fonts
+
+pkgname = otf-alibabasans-fonts
