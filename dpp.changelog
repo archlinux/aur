@@ -1,3 +1,14 @@
+# 10.0.23-1 / 2023-03-01
+
+* bump to new library version
+	* support for various new small Discord features
+	* various fixes
+	* see library for full changelog
+* upstream cmake now lets us use systemwide nlohmann::json
+	* was able to drop majority of our patches
+	* we still ship symlink
+	* mind that you may now need to add a define to your build
+
 # 10.0.22-1 / 2023-01-08
 
 * bump to new library version
@@ -6,8 +17,8 @@
 	* various fixes
 	* see library changelog for full list
 * changes to upstream cmake changed way we deal with that
-	* all cmake speific patches have been dropped
-	* find_package should now wor as intended
+	* all cmake specific patches have been dropped
+	* find_package should now work as intended
 	* pkg-config should continue to work as before
 
 # 10.0.21-1 / 2022-11-02
