@@ -1,6 +1,6 @@
 pkgbase = geesefs-bin
 	pkgdesc = A high-performance, POSIX-ish S3 (Yandex, Amazon) file system written in Go.
-	pkgver = 0.34.4
+	pkgver = 0.34.5
 	pkgrel = 2
 	url = https://github.com/yandex-cloud/geesefs
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = geesefs-bin
 	provides = geesefs
 	conflicts = geesefs
 	conflicts = geesefs-git
-	source = geesefs-linux-amd64-0.34.4-2::https://github.com/yandex-cloud/geesefs/releases/download/v0.34.4/geesefs-linux-amd64
-	source = LICENSE::https://raw.githubusercontent.com/yandex-cloud/geesefs/v0.34.4/LICENSE
-	sha512sums = a7261f7b2ce308ef44539fba0dd2fe9d36471979311765ff7067cc4ae4f441a773e84194789d3b40e92bdc3a0e7df7a01ad4ab6d06fb40ba4fc7364f8c41f3eb
+	source = geesefs-linux-amd64-0.34.5-2::https://github.com/yandex-cloud/geesefs/releases/download/v0.34.5/geesefs-linux-amd64
+	source = LICENSE::https://raw.githubusercontent.com/yandex-cloud/geesefs/v0.34.5/LICENSE
+	sha512sums = f6b4acdfb0ce2ac4d654a7ccf9e955694faa74504181efd736dcabc065c347fb842e5564fad8e7eabf2501759e042798461f23213fa804c696e489067e822d59
 	sha512sums = 34e066f8925ff51a4164d55d8ae3fd390fc2fd0d4bdf4ddc599f21a815e8886401cf95385b4c18d97276f4d3aee0ec323be3adf1b7fc773a192e31147d0a06da
 
 pkgname = geesefs-bin
