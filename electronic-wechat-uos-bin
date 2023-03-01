@@ -11,10 +11,14 @@ function main(){
     fi
 }
 
+function launch(){
+    bwrap --dev-bind / / --bind /opt/electronic-wechat-uos-bin/os-release /etc/os-release --bind /opt/electronic-wechat-uos-bin/lsb-release /etc/lsb-release electron /opt/electronic-wechat-uos-bin/resources/app.asar "$@"
+    exit 0
+}
+
 function x11Launch(){
     note '使用 XWayland / X11...'
-    electron /opt/electronic-wechat-uos-bin/resources/app.asar --ignore-gpu-blocklist --enable-gpu-rasterization --enable-zero-copy --disable-gpu-driver-bug-workarounds --enable-features=VaapiVideoDecoder,VaapiIgnoreDriverChecks "$@"
-    exit 0
+    launch --ignore-gpu-blocklist --enable-gpu-rasterization --enable-zero-copy --enable-features=VaapiVideoDecoder,VaapiIgnoreDriverChecks "$@"
 }
 
 function probeKwinVersion(){
@@ -38,8 +42,7 @@ function waylandLaunch(){
     else
         waylandFlag="--ozone-platform=wayland"
     fi
-    electron /opt/electronic-wechat-uos-bin/resources/app.asar ${waylandFlag} --ignore-gpu-blocklist --enable-gpu-rasterization --enable-zero-copy --enable-wayland-ime --disable-gpu-driver-bug-workarounds --enable-features=VaapiVideoDecoder,VaapiIgnoreDriverChecks --disable-features=UseChromeOSDirectVideoDecoder "$@"
-    exit 0
+    launch ${waylandFlag} --ignore-gpu-blocklist --enable-gpu-rasterization --enable-zero-copy --enable-wayland-ime --disable-gpu-driver-bug-workarounds --enable-features=VaapiVideoDecoder,VaapiIgnoreDriverChecks --disable-features=UseChromeOSDirectVideoDecoder "$@"
 }
 
 function note() {
