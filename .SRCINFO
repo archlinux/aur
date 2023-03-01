@@ -1,0 +1,19 @@
+pkgbase = alibabasans-hk-fonts
+	pkgdesc = A typeface for creating alibaba sans hk in text.阿里巴巴普惠体繁体中文(HKSCS)4字重
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://fonts.alibabagroup.com/#/font
+	arch = any
+	license = custom
+	source = alibabasans-hk-fonts-1.0.zip::https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlibabaSansHK.zip
+	sha512sums = d2f09a10d213ed353164b1658eda0a759fdd00da015e52200935980a619e917d0b700a61ff99b07ba643c05fd12368c4573199d7bf77a1bad7fcf428c399b3e2
+
+pkgname = ttf-alibabasans-hk-fonts
+
+pkgname = woff-alibabasans-hk-fonts
+
+pkgname = woff2-alibabasans-hk-fonts
+
+pkgname = eot-alibabasans-hk-fonts
+
+pkgname = otf-alibabasans-hk-fonts
