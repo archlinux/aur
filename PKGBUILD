@@ -15,10 +15,10 @@ depends=(
   'gmp'
   'libbsd'
   'libedit'
-  'clang15'
+  'clang'
   'libelf'
   'libffi'
-  'llvm15'
+  'llvm'
   'ncurses'
   'zlib'
 )
