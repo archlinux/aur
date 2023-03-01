@@ -1,7 +1,7 @@
 # Maintainer: MoetaYuko <loli at yuko dot moe>
 
 pkgname=python-jupytext
-pkgver=1.14.4
+pkgver=1.14.5
 pkgrel=1
 pkgdesc="Jupyter notebooks as Markdown documents, Julia, Python or R scripts"
 url="https://github.com/mwouts/jupytext"
@@ -10,7 +10,7 @@ makedepends=('jupyterlab' 'python-jupyter_packaging' 'python-setuptools' 'python
 license=('MIT')
 arch=('any')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a5a1844d4b5c5f0f5a6b50309a246e4a9b7b6bf4ef1d3891a4a30c20f0b89a6b')
+sha256sums=('4569f95dad9d0217a1df63f0042d3211e4405b854340478654ab2c42d7381740')
 
 build() {
     cd $srcdir/jupytext-$pkgver
