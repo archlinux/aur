@@ -1,7 +1,7 @@
 # Old Maintainer: Dylan Ferris <dylan@psilly.com>
 # Old Maintainer: Michael Lojkovic <mikelojkovic@gmail.com>
 # Maintainer: Shatur95 <genaloner@gmail.com>
-# Co-Maintainer: Neko-san <aur@mycat.anonaddy.me>
+# Co-Maintainer: Neko-san <nekoNexus@protonmail.ch>
 # Contributor: shawarden
 
 # The source is about 200 MiB, with an extra ~11 GiB of dependencies downloaded in Setup.sh, and may take several hours to compile.
