@@ -4,7 +4,6 @@ pkgbase = gb-studio-bin
 	pkgrel = 1
 	url = https://gbstudio.dev
 	arch = x86_64
-	groups =
 	license = MIT
 	depends = gtk3
 	depends = libnotify
