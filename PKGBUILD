@@ -1,4 +1,4 @@
-# Maintainer: Neko-san <aur at mycat dot anonaddy dot me>
+# Maintainer: Neko-san <nekoNexus at protonmail dot ch>
 
 # The source is about 200 MiB, with an extra ~11 GiB of dependencies downloaded in Setup.sh, and may take several hours to compile.
 # If you want to turn on additional patches there are switches below.
