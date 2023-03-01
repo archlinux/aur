@@ -4,14 +4,14 @@
 # Original Submission: Bob Finch <w9ya@qrparci.net>
 
 pkgname=fldigi
-pkgver=4.1.23
+pkgver=4.1.25
 pkgrel=1
 pkgdesc="Digital Modem Program for Amateur Radio"
 arch=('i686' 'x86_64' 'aarch64')
 url="http://w1hkj.com"
 license=('GPL')
 depends=('cty' 'fltk' 'libsamplerate' 'flxmlrpc>=1.0.1'
-         'portaudio' 'libpulse' 'hamlib' 'hamradio-menus')
+         'portaudio' 'libpulse' 'hamlib-git' 'hamradio-menus')
 optdepends=('libsndfile: sound file support'
             'pulseaudio: pulseaudio support')
 source=(http://w1hkj.com/files/$pkgname/$pkgname-$pkgver.tar.gz)
@@ -37,5 +37,5 @@ package() {
 
 	make DESTDIR="$pkgdir" install
 }
-md5sums=('d10ff27d670ef3b1cea1e45a5a57564a')
-sha256sums=('e366e1fc9fc343f57d39128a6603a696f872351ed48dba8f3c3d168bda1fca8d')
+md5sums=('b19c802d948b4b7303413f66a2a27e87')
+sha256sums=('4ec4bf392da65f0aac93e13ef4c12811320745692cf0783fab0f164660310763')
