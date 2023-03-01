@@ -5,7 +5,7 @@ pkgname="ocaml-$_projectname"
 pkgver='0.15.0'
 pkgrel='3'
 pkgdesc='Jane Street C header files'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
 depends=('ocaml>=4.04.2')
