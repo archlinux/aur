@@ -1,15 +1,15 @@
 pkgbase = vmware-vmrc
 	pkgdesc = VMware Remote Console
-	pkgver = 12.0.2
+	pkgver = 12.0.3
 	pkgrel = 1
 	url = https://www.vmware.com/go/download-vmrc
 	arch = x86_64
 	license = custom:vmware
 	optdepends = vmware-keymaps
-	source = local://VMware-Remote-Console-12.0.1-18113358.x86_64.bundle
+	source = local://VMware-Remote-Console-12.0.3-21263813.x86_64.bundle
 	source = bootstrap
 	source = config
-	sha256sums = f3eaed4c8d933a608af94adf6e2812c7358cce76f84fa2a293a84ec12a548e6f
+	sha256sums = cb8c0109b4fb2ca5c72a16b23c3bf68b1b6267ef09940b7195fd53b45635f513
 	sha256sums = 22282e8643d8a20e63773435161e5a5d01c6acce53aa81f27a4d20f111acd228
 	sha256sums = c5643ebad140391622c57ab88d6071b91d1ea9a8379c1aec573c845a00be30d4
 
