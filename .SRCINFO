@@ -1,6 +1,6 @@
 pkgbase = python-discord
 	pkgdesc = Discord API wrapper written in Python
-	pkgver = 2.1.1
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/Rapptz/discord.py
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-discord
 	optdepends = python-brotli: speed support
 	optdepends = python-cchardet=2.1.7: speed support
 	optdepends = python<3.10: speed support
-	source = discord.py-2.1.1.tar.gz::https://github.com/Rapptz/discord.py/archive/v2.1.1.tar.gz
-	sha512sums = 9226a096d44bef51933f0ab16bd318bd97f7df56ab8dd1afe7cb93c146ba54524ed2d981affb1cc9d6280b6e124b4f391f1cf3fffe5bbaa861d7e0f79b48ff92
+	source = discord.py-2.2.0.tar.gz::https://github.com/Rapptz/discord.py/archive/v2.2.0.tar.gz
+	sha512sums = 4918430d6d43bae37d975921ed2a9089afeb8162742ef28cfd83c0b662a2f2e2f803728a90788f5c62ab87d308f06b6b5b61f9ebaa90149d2da0b9803adec98f
 
 pkgname = python-discord
