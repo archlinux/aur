@@ -6,8 +6,9 @@ pkgrel=2
 url="https://github.com/FWDekker/mommy"
 license=("Unlicense")
 arch=("any")
-depends=("sh" "man-db")
-checkdepends=("shellspec")
+depends=("sh")
+checkdepends=("shellspec" "man-db")
+optdepends=("man-db: for manual pages")
 source=("git+https://github.com/FWDekker/mommy.git#tag=v$pkgver")
 sha256sums=("SKIP")
 

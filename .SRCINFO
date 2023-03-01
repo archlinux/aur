@@ -6,8 +6,9 @@ pkgbase = mommy
     arch = any
     license = Unlicense
     checkdepends = shellspec
+    checkdepends = man-db
     depends = sh
-    depends = man-db
+    optdepends = man-db: for manual pages
     source = git+https://github.com/FWDekker/mommy.git#tag=v1.2.1
     sha256sums = SKIP
 
