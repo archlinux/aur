@@ -1,0 +1,18 @@
+pkgbase = gtop-bin
+	pkgdesc = simpler alternative to htop, written in Go, made to display more useful data
+	pkgver = 0.9.1
+	pkgrel = 1
+	license = gpl-3.0
+	conflicts = gtop
+	provides = gtop
+	arch = aarch64
+	source_aarch64 = https://github.com/mJehanno/gtop/releases/download/0.9.1/gtop_0.9.1_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 72983fb2b436d0b15a87ad25af21a6dd38adfc5cb2623b1ccd617663dd6f575f
+	arch = i686
+	source_i686 = https://github.com/mJehanno/gtop/releases/download/0.9.1/gtop_0.9.1_Linux_i386.tar.gz
+	sha256sums_i686 = 46910ff254ee98482901039312ff958a59057d245b0932fa59ed44dd9545d5db
+	arch = x86_64
+	source_x86_64 = https://github.com/mJehanno/gtop/releases/download/0.9.1/gtop_0.9.1_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 36f6f960876c8ab0dda2166a4e9b15f55628c8a14d0de99c4848f771a5df7148
+	
+pkgname = gtop-bin
