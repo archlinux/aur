@@ -1,8 +1,16 @@
+# 10.0.23 / 2023-03-01
+
+* changes to upstream cmake changed way we deal with nlomann/json
+	* cmake flag is now being used to use systemwide version
+	* majority of patches is not needed anymore
+	* symlink still provided just like before
+	* may want to use the new build time flag
+
 # 10.0.22 / 2023-01-08
 
 * changes to upstream cmake changed way we deal with that
-	* all cmake speific patches have been dropped
-	* find_package should now wor as intended
+	* all cmake specific patches have been dropped
+	* find_package should now work as intended
 	* pkg-config should continue to work as before
 * symlink is now provided in place of the embedded nlohmann/json
 	* package still uses systemwide packaged version

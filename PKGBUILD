@@ -2,7 +2,7 @@
 # See also https://github.com/eremiell-aur/dpp-git
 pkgname=dpp-git
 _pkgname=DPP
-pkgver=10.0.22.r1.788377d2
+pkgver=10.0.23.r34.8aaf873e
 pkgrel=1
 pkgdesc="Lightweight and Scalable C++ Discord API Bot Library - git version"
 arch=('x86_64')
@@ -24,8 +24,6 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${pkgname}"
-	find . \( -iname "*.h" -o -iname "*.cpp" \) -exec sed -i -E "s/dpp\/(nlohmann)\//\1\//" '{}' \+
-	sed -i -E "s/^.*dpp\/nlohmann.*$//" "library/CMakeLists.txt"
 	rm -rf "include/dpp/nlohmann"
 }
 
@@ -33,7 +31,7 @@ build() {
 	cd "${srcdir}/${pkgname}"
 	mkdir -p build
 	cd build
-	cmake -DDPP_BUILD_TEST=OFF -DRUN_LDCONFIG=OFF -DDPP_NO_VCPKG=ON -DDPP_CORO=ON -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_MESSAGE=NEVER -Wno-dev ..
+	cmake -DDPP_BUILD_TEST=OFF -DRUN_LDCONFIG=OFF -DDPP_NO_VCPKG=ON -DDPP_CORO=ON -DDPP_USE_EXTERNAL_JSON=ON -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_MESSAGE=NEVER -Wno-dev ..
 	make
 }
 
