@@ -6,7 +6,7 @@ pkgver='5.2.1'
 pkgrel='4'
 epoch='1'
 pkgdesc='Type-driven code generation for OCaml'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/ocaml-ppx/$_projectname"
 license=('MIT')
 depends=('ocaml>=4.05.0' 'ocaml-findlib' 'ocaml-ppx_derivers' 'ocaml-ppxlib>=0.20.0' 'ocaml-result')
