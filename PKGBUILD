@@ -6,7 +6,7 @@ pkgver='0.15.1'
 pkgrel='1'
 epoch='1'
 pkgdesc='Cram like framework for OCaml'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
 depends=('ocaml>=4.08.0' 'ocaml-base>=0.15.0' 'ocaml-ppx_here>=0.15.0' 'ocaml-ppx_inline_test>=0.15.0' 'ocaml-ppxlib>=0.23.0' 'ocaml-re>=1.8.0' 'ocaml-stdio>=0.15.0')
