@@ -1,16 +1,21 @@
 pkgbase = obs-plugin-input-overlay
-	pkgdesc = obs-studio plugin to show keyboard, gamepad and mouse input on stream, legacy v4 branch with D-pad fix for Linux.
-	pkgver = 4.8
-	pkgrel = 2
+	pkgdesc = obs-studio plugin to show keyboard, gamepad and mouse input on stream.
+	pkgver = 5.0.0
+	pkgrel = 1
 	url = https://github.com/univrsal/input-overlay
 	arch = x86_64
+	groups = obs-plugins
 	license = GPL
 	makedepends = git
+	makedepends = cmake
 	depends = obs-studio
-	depends = libuiohook
-	provides = obs-input-overlay
-	conflicts = obs-input-overlay
-	source = git+https://github.com/univrsal/input-overlay.git#branch=legacy
-	sha256sums = SKIP
+	source = git+https://github.com/univrsal/input-overlay.git#tag=v5.0.0
+	source = obs-plugin-input-overlay-netlib::git+https://github.com/univrsal/netlib.git
+	source = obs-plugin-input-overlay-libgamepad::git+https://github.com/univrsal/libgamepad.git
+	source = obs-plugin-input-overlay-libuiohook::git+https://github.com/kwhat/libuiohook.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = obs-plugin-input-overlay
