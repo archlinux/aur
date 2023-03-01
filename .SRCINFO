@@ -1,0 +1,14 @@
+pkgbase = hexsticker
+	pkgdesc = Create hexagon stickers automatically
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/fridex/hexsticker
+	arch = any
+	license = GPL2
+	makedepends = python-setuptools
+	depends = python-pillow
+	depends = python-click
+	source = hexsticker-1.2.0.tar.gz::https://github.com/fridex/hexsticker/archive/1.2.0.tar.gz
+	sha256sums = 8d91581b9620b2e6954fa7ec41fe879206706031e105cad2322cddae4f474ba0
+
+pkgname = hexsticker
