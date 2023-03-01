@@ -2,14 +2,14 @@
 
 pkgname=lbench  
 pkgver=6.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Simple Linux multithread benchmarking tool"
 url="http://www.kornelix.net/lbench/lbench.html"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('clutter-gtk')
-source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver.tar.gz")
-sha256sums=('4ea647c424e6cce75e0e7ae4d7a51aeeb3b50a9c81e350647418ec6dfeb0b7d7')
+source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver-source.tar.gz")
+sha256sums=('38083395bd1666a60c11dbd3b9ba0af790091e28a92836ea322cd65fdd4fbbee')
 
 build() {
   cd $pkgname
