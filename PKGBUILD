@@ -2,21 +2,15 @@
 
 pkgname=watsup
 pkgver=7.1
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 depends=('clutter-gtk')
 license=('GPL3')
 pkgdesc="Showing some system status informations"
 url="http://www.kornelix.net/watsup/watsup.html"
-source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver.tar.gz" watsup.patch)
-sha256sums=('f39275ac073cf807de773a58ed4dcb00ace6c7690357076a12ad193dbd887f8a'
-            '018b06cccc6ac9ddea342bf07b1c9caebed81adec406bc6cfe5ecefa554e9b6f')
+source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver-source.tar.gz")
+sha256sums=('eccfab2ebedbf241dd3868c73224bc0ec97f3c3ffbba7eae0487b4809005a8ba')
 options=('!emptydirs')
-
-prepare() {
-  cd $pkgname
-  patch -Np1 < "$srcdir"/watsup.patch
-}
 
 build() {
   cd $pkgname
