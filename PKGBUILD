@@ -7,7 +7,7 @@ pkgname="$_pkgname-repackaged"
 pkgver='0.12.4'
 pkgrel='5'
 pkgdesc='OCaml compiler libraries repackaged'
-arch=('x86_64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_pkgname"
 license=('MIT')
 depends=('ocaml>=4.04.1' 'ocaml-compiler-libs')

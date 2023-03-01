@@ -4,6 +4,9 @@ pkgbase = ocaml-compiler-libs-repackaged
 	pkgrel = 5
 	url = https://github.com/janestreet/ocaml-compiler-libs
 	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
 	license = MIT
 	makedepends = dune>=2.8.0
 	depends = ocaml>=4.04.1
