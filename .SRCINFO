@@ -10,7 +10,7 @@ pkgbase = ampart-git
 	makedepends = gcc
 	depends = glibc
 	depends = zlib
-	provides = ampart
+	provides = ampart=1.3
 	conflicts = ampart
 	source = ampart::git+https://github.com/7Ji/ampart.git
 	sha256sums = SKIP

@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('glibc' 'zlib')
 makedepends=('git' 'gcc')
 conflicts=("${_pkgbase}")
-provides=("${_pkgbase}")
+provides=("${_pkgbase}=${pkgver}")
 source=(
   "${_pkgbase}::git+https://github.com/7Ji/${_pkgbase}.git"
 )
