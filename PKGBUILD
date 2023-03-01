@@ -2,8 +2,8 @@
 
 _pkgname=edgegpt
 pkgname="${_pkgname}-git"
-pkgver=0.0.40+4.r81.20230215.3421236
-pkgrel=1
+pkgver=0.0.51+7.r122.20230228.f7dc87d
+pkgrel=2
 pkgdesc="The reverse engineering the chat feature of the new version of Bing."
 arch=(
   'any'
@@ -14,6 +14,7 @@ depends=(
   'python>=3'
   'python-argparse'
   'python-requests'
+  'python-tls-client'
   'python-websockets'
 )
 makedepends=(
