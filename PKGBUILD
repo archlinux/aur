@@ -1,5 +1,5 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-# Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=adbmanager-bin
 pkgver=3.1
 pkgrel=2
