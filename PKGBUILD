@@ -7,7 +7,7 @@ pkgname="ocaml-$_projectname"
 pkgver='1.10.4'
 pkgrel='3'
 pkgdesc='Pure OCaml regular expressions, with support for Perl and POSIX-style strings'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/ocaml/$pkgname"
 license=('custom:LGPL2.1 with linking exception')
 depends=('ocaml>=4.03.0' 'ocaml-seq')
