@@ -37,7 +37,7 @@ if [ "$SERVER" == "coleslaw" ] || [ "$SERVER" == "uranium" ]; then
   exec java -jar "${IDLERSC_JAR}" "${@:2}"
 else
   cat <<-EOF
-  Usage: $0 server [options]
+  Usage: $(basename ${0}) server [options]
 
   server:
     Server to connect to.

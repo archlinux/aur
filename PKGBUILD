@@ -2,7 +2,7 @@
 
 pkgname=idlersc
 pkgver=r474.g8d7473b
-pkgrel=1
+pkgrel=2
 pkgdesc='A fork of IdleRSC for playing on OpenRSC servers'
 arch=('any')
 url='https://gitlab.com/open-runescape-classic/idlersc'
@@ -16,7 +16,7 @@ source=(
   'ftbfs-gradle.patch'
 )
 b2sums=('SKIP'
-        'c9d8d3f94595ef1a77a13b4ef732dc05efc42762321378d69f88e8a35dc2ceba2b163958f0634ffd226180da0e4e3452e54c36f35ddb0328ad200dde727573dc'
+        'f0704e5e5897de6b9124eec1c1e8ed09f34bf0210486b2967faf6c78afa2dc979676300af4cbc19e7ed55cf8362a126c422865fb3ffa7c8bb80863d5d144af36'
         '33ff64e2e90ca279e0114444ee0b00ad2d669ecf4f68c952e07283242a0f18cec6f21be1ffaced286bfee72f7181eaf411f31f2c8216bc5168adaa413c292a2f')
 
 pkgver() {
