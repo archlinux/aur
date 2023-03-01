@@ -10,6 +10,7 @@ arch=('i686' 'x86_64')
 url="http://www.dmitry-kazakov.de/ada/components.htm"
 license=('GPL2+')
 
+depends=(unixodbc)
 makedepends=(gprbuild)
 
 source=(http://www.dmitry-kazakov.de/ada/components_4_65.tgz
