@@ -7,7 +7,7 @@ _vlcver=3.0.18
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=${_vlcver}${_vlcfixupver//-/.r}
-pkgrel=3
+pkgrel=4
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
 url='https://www.videolan.org/vlc/'
 arch=('i686' 'x86_64' 'aarch64')
@@ -18,7 +18,7 @@ _flacver=1.4.0
 _libmicrodnsver=0.2
 _libplacebover=4.208
 _libupnpver=1.14
-_libvpxver=1.11
+_libvpxver=1.13
 _protobufver=21
 _srtver=1.5
 _x264ver=0.164
@@ -93,7 +93,6 @@ optdepends=(
   'libavc1394: devices using the 1394ta AV/C'
   'libdc1394: IEEE 1394 access plugin'
   'kwallet: kwallet keystore'
-  #'libva-vdpau-driver: vdpau backend nvidia'
   #'libva-intel-driver: video backend intel'
   'libbluray: Blu-Ray video input'
   'twolame: TwoLAME mpeg2 encoder plugin'
