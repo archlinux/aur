@@ -5,7 +5,7 @@ pkgname="ocaml-$_projectname"
 pkgver='0.29.1'
 pkgrel='1'
 pkgdesc='Standard library for ppx rewriters'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/ocaml-ppx/$_projectname"
 license=('MIT')
 depends=('ocaml>=4.08.0' 'ocaml-base>=0.15.0' 'ocaml-compiler-libs-repackaged>=0.11.0' 'ocaml-ppx_derivers>=1.0.0' 'ocaml-sexplib0>=0.15.0' 'ocaml-stdlib-shims' 'ocaml-yojson')
