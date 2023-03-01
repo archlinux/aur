@@ -1,6 +1,6 @@
 # Maintainer: Timo Sarawinski <timo@it-kraut.net>
 pkgname=ofork
-pkgver=10.0.5
+pkgver=10.0.6
 pkgrel=1
 pkgdesc="OFORK is a OTRS fork open-source Help Desk and IT Service Management (ITSM)"
 arch=("any")
@@ -53,17 +53,17 @@ source=("${pkgname}.install"
 	"https://ftp.o-fork.de/AddOns/MasterSlave-${pkgver}.opm"
 	"https://ftp.o-fork.de/AddOns/Survey-${pkgver}.opm")
 sha256sums=('237bea50871d37e6822b5b47c6c47e90061981293a7edfe3c679e968e7088b42'
-            '6523e133fa22ad2e8c084f7db7e38271eb554aa5cde91f2954ce6ec4f6271d5f'
-            '6ce590a6d5be8704cb24691166f975bc77ce14b563a5b0255bab7dc73539fee7'
-            'cf63f0448b1110a680d681403b3963f7a64e9363eaddc3801baa47f95ab15d6b'
-            '000fbf1d7dacdae65ce0080b7464f34a1756340b6d5d79b7a751d550cae2a197'
-            '0c54e72ba31e88d297ef1512b77c4675836837c293cf0442df820a59395ccf5b'
-            '8adb4eaa4a973b9556604ce7364b4f5752d927d44b4f81ef8bd6f79754e90c8b'
-            '622079af9890e2e9198708dcdc0e4af26927c4d959f6c31c2a19c9a741a8743a'
-            '3a2b477c7ff594cce4e1c4019cbf3c2678cd1913b16944940771108b4da27906'
-            '5e28f204af5dd869c2f50d6a7003ccbf49020156eb83dfa7ab1234fe3405523f'
-            'ee6d91f491841571e06497aeae2c1e403c46390b97357935cc19d569edf28f76'
-            '533a6760c7d89c70764be3f5d45b269c2c51a828262b778702be97384890286b')
+            '4ced20e6d169fd4c6ceb5ebad0135259ceb9c48e407ec35bc45b51f30b234177'
+            '169295ee25277f10d4d9bb9280d5146f59516033a58b9c3664d20eeae8896895'
+            '239ffa321145f8fac7ef480eb79f2cb4e6de4978afad1c05763088cf9b81b50c'
+            'e96752cdf06d2f5b8f947a210b7bb3c85ca4e1ed4616f050dc36b83972870fc8'
+            '2e42459039008ea7207713df2c8e2809ee97c0862aa9fd05bf430f66596dcbd5'
+            'd98922f43d0e3d94f543ce9fa395d35224b3eef65791fc6705bb2d1b22c405b6'
+            '0fb07b80aca5604e65ef02a81434c291e0ce2fb3ed067522f16714f2a0ba5b02'
+            'df2edad77d4d7b7f656a3e7796cf9fe537b030005685c3d08a8e99708e22ac04'
+            '94663ab7a9d1083acc4262a85637eadf347b4e2a7a5db3dbec3eea0cea3cfffe'
+            'c1942619d671eaa8ff57f7b9b307f0b2160a96e5c6002670c069c776a248e445'
+            'f2d2076df7bd682ae163a6de6da587886e20e6a26ff1fbd733b8c4bd96f61274')
 
 prepare() {
 cat << EOL > "${srcdir}/${pkgname}.service"
