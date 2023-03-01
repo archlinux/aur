@@ -4,7 +4,7 @@ pkgname="ocaml-$_projectname"
 pkgver='0.15.1'
 pkgrel='3'
 pkgdesc='Compile-time configuration for Jane Street libraries'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
 depends=('ocaml>=4.08.0' 'ocaml-base>=0.15.0' 'ocaml-ppx_assert>=0.15.0')
