@@ -16,10 +16,8 @@ b2sums=('e00acb4747b3b1711ee04f2a87342cb453e35ffc1355efc308a22fdaa0db8a1b13b85a8
 _uuid=tiling-assistant@leleat-on-github
 
 build() {
-  # cd into repo dir
   cd "${srcdir}/Tiling-Assistant-${pkgver}"
 
-  # package extension to compile settings and translations
   gnome-extensions pack "${_uuid}" \
     --force \
     --podir="../translations" \
@@ -27,7 +25,6 @@ build() {
 }
 
 package() {
-  # cd into repo dir
   cd "${srcdir}/Tiling-Assistant-${pkgver}"
 
   # instead of using gnome-extensions to install the extension package
