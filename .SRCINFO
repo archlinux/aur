@@ -1,0 +1,14 @@
+pkgbase = zcfan-openrc
+	pkgdesc = OpenRC init script for zcfan - Zero-configuration fan control for ThinkPad
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/MeganerdNL/zcfan-openrc
+	arch = any
+	license = MIT
+	depends = openrc
+	depends = zcfan
+	backup = etc/init.d/zcfan
+	source = https://github.com/MeganerdNL/zcfan-openrc/archive/1.0.0.zip
+	sha256sums = e730503944354d109b80c8397d9a2660eeaf770d4570419f439336a9c93ff3e4
+
+pkgname = zcfan-openrc
