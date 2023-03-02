@@ -1,6 +1,6 @@
 pkgbase = certbot-dns-google-domains
 	pkgdesc = A Certbot DNS Authenticator for Google Domains
-	pkgver = 0.1.2
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/aaomidi/certbot-dns-google-domains
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = certbot-dns-google-domains
 	depends = certbot>=1.23.0
 	depends = python-zope-interface>=5.5.0
 	depends = python-dataclasses-json
-	source = https://github.com/aaomidi/certbot-dns-google-domains/archive/refs/tags/v0.1.2.tar.gz
-	sha256sums = 1900aa3fb0335412b8101b0b7d4c483e2ca1a11985a824af59d346c23c0ddcb5
+	source = https://github.com/aaomidi/certbot-dns-google-domains/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = 13aa13877d2fa5dabcb7d6674a95534256ec5eebf2d16b8c104d872d7e2a3673
 
 pkgname = certbot-dns-google-domains
