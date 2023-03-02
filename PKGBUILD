@@ -2,7 +2,7 @@
 # Based on dbeaver-ee maintaned by John Sivak <jsivak@winterjewel.com>
 
 pkgname=dbeaver-le
-pkgver=22.2.0
+pkgver=22.3.0
 pkgrel=1
 pkgdesc="A universal database tool for developers and database administrators. Lite Edition"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(dbeaver-le.desktop dbeaver-le.install)
 source_x86_64=(http://dbeaver.com/downloads-lite/${pkgver}/dbeaver-le-${pkgver}-linux.gtk.x86_64-nojdk.tar.gz)
 sha256sums=('9d985ebe0332caf09fdee3fbe1e97b4f29533fe84911df46556623dff457a4ee'
             '0c2a75baa39459fa56159e982d9f28c966837561bd52dffd24bac87b8d65555f')
-sha256sums_x86_64=('127b7e36cdd435167d5b559b6e9b23961aee0466ce9b46cb763eb8a29d42bb4f')
+sha256sums_x86_64=('a9c29e8351c09e9a0f82d5174d190f46483cacf1278139d4fd01b2a8f9dd91f0')
 
 noextract=("dbeaver-le-${pkgver}-linux.gtk.x86_64.tar.gz")
 
