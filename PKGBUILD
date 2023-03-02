@@ -2,7 +2,7 @@
 # Maintainer: Matej Grabovsky <matej.grabovsky at gmail>
 _projectname='sedlex'
 pkgname="ocaml-$_projectname"
-pkgver='3.0'
+pkgver='3.1'
 pkgrel='1'
 pkgdesc='Unicode-friendly OCaml lexer generator'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -10,9 +10,10 @@ url="https://github.com/ocaml-community/$_projectname"
 license=('MIT')
 depends=('ocaml>=4.08.0' 'ocaml-gen' 'ocaml-ppxlib>=0.26.0' 'ocaml-uchar')
 makedepends=('dune>=2.8.0')
+checkdepends=('ocaml-ppx_expect')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('564780b7af8b3ddd32c9164caa42fd24b2ff59e0bf9977bcee4c3ddea2be3f0c870bd95949b639c5f1942e0fa2604902f5cd3eb9041d59b6ee2367895df556df')
+sha512sums=('4a783dc32ccd19e5da574602b1a079b36a6e15f4e518478b40ad9604345c68a65d352d72f2dd4ed55d8bbf409d4a3747e88597548b59f5367b5dc9a759f0275c')
 
 _sourcedirectory="$_projectname-$pkgver"
 
