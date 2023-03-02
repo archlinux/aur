@@ -12,6 +12,7 @@ checkdepends=()
 optdepends=()
 source=("$pkgname::git+https://github.com/deivshon/ifetch.git")
 md5sums=("SKIP")
+backup=('etc/ifetch/ifetchrc')
 
 pkgver() {
 	cd "$pkgname"
