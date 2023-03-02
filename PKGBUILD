@@ -10,8 +10,8 @@ license=('GPL2' 'custom:brother')
 depends=('cups')
 optdepends=('brscan4: scanner support.')
 source=(
-  "http://download.brother.com/welcome/dlf101757/dcpl2520dwlpr-${pkgver/_/-}.i386.rpm"
-  "http://download.brother.com/welcome/dlf101758/dcpl2520dwcupswrapper-${pkgver/_/-}.i386.rpm"
+  "https://download.brother.com/welcome/dlf101757/dcpl2520dwlpr-${pkgver/_/-}.i386.rpm"
+  "https://download.brother.com/welcome/dlf101758/dcpl2520dwcupswrapper-${pkgver/_/-}.i386.rpm"
   '99-brprint-dcpl2520dw.rules'
 )
 md5sums=(
