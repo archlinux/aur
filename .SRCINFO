@@ -1,6 +1,6 @@
 pkgbase = logfilegen
 	pkgdesc = logfilegen is nginx/apache randomized log generator for testing purposes
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/psemiletov/logfilegen
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = logfilegen
 	depends = gcc
 	depends = gzip
 	depends = cmake
-	source = https://github.com/psemiletov/logfilegen/archive/2.2.0.tar.gz
-	md5sums = 0ce83c414698d357785a6fbb99053615
+	source = https://github.com/psemiletov/logfilegen/archive/2.3.0.tar.gz
+	md5sums = d0e200690fce8924fa999b2944513fe7
 
 pkgname = logfilegen

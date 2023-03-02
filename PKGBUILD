@@ -1,7 +1,7 @@
 # Maintainer: Peter Semiletov peter.semiletov at gmail dot com
 
 pkgname=logfilegen
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="logfilegen is nginx/apache randomized log generator for testing purposes"
 arch=('x86_64')
@@ -31,4 +31,4 @@ package(){
 }
 
 
-md5sums=(0ce83c414698d357785a6fbb99053615)
+md5sums=(d0e200690fce8924fa999b2944513fe7)
