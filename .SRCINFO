@@ -1,6 +1,6 @@
 pkgbase = benthos-bin
 	pkgdesc = Declarative stream processing for mundane tasks and data engineering.
-	pkgver = 3.60.1
+	pkgver = 4.12.1
 	pkgrel = 1
 	url = https://benthos.dev
 	arch = aarch64
@@ -9,11 +9,11 @@ pkgbase = benthos-bin
 	license = MIT
 	provides = benthos
 	conflicts = benthos
-	source = https://github.com/Jeffail/benthos/releases/download/v3.60.1/benthos_3.60.1_linux_amd64.tar.gz
-	sha512sums = e0dad6ee4d0c0d1af62dc4a05e8df3dfb11657cbf6f71513f1e867232d4ea689f8c794b899c582753cd1184d84245a320f7705f30f46f2f919a8af7ee7076da8
-	source_aarch64 = https://github.com/Jeffail/benthos/releases/download/v3.60.1/benthos_3.60.1_linux_arm64.tar.gz
-	sha512sums_aarch64 = f7f394a940bf6bc6eb5eb3fe400d5ef350976752cf372f728ee11bb5a769ef9175fced2a212a10eafae6a3332ec1d142c2759ade8deadee2bba2a2344a57ad4a
-	source_armv6h = https://github.com/Jeffail/benthos/releases/download/v3.60.1/benthos_3.60.1_linux_armv6.tar.gz
-	sha512sums_armv6h = 244fd6ae57305df811a7695016b5709cc52aad5ff301f0bfc6944813e3fcbf032245eef035aedb8be2d235447f20d493d2b4df3e6b0a9407d46fa16c301262ce
+	source = https://github.com/Jeffail/benthos/releases/download/v4.12.1/benthos_4.12.1_linux_amd64.tar.gz
+	sha512sums = b06915587e3f5b156c3a94b34d801a73a45e74e520e3335724530f80645feb0e3d09297383c76472ca67ff0a929edee1456fc7f205deed739ae3fe94af6f9882
+	source_aarch64 = https://github.com/Jeffail/benthos/releases/download/v4.12.1/benthos_4.12.1_linux_arm64.tar.gz
+	sha512sums_aarch64 = a821ba92d8bc018c475ade6b12d23a246e70a46de308a2ff62196d8aac5405cfd8ab1d3b52d38d410aa8eb3aa436420a3db04f324df04d5a3d043758fd11ac62
+	source_armv6h = https://github.com/Jeffail/benthos/releases/download/v4.12.1/benthos_4.12.1_linux_armv6.tar.gz
+	sha512sums_armv6h = aadd8877bf54394f0763a761a3fedf19fce2111c99c0ca8bcf3f65b207878e27aefb7042209fbc4d633add097f564b97e6b46cc3dd366c8ff0390a036e25fffa
 
 pkgname = benthos-bin
