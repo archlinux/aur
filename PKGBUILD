@@ -9,12 +9,12 @@ license=(IPA)
 depends=()
 makedepends=()
 source=(
-    "I.Ming-8.00.ttf::${url}/raw/master/8.00/I.Ming-8.00.ttf"
-    "I.MingCP-8.00.ttf::${url}/raw/master/8.00/I.MingCP-8.00.ttf"
-    "I.MingVar-8.00.ttf::${url}/raw/master/8.00/I.MingVar-8.00.ttf"
-    "I.MingVarCP-8.00.ttf::${url}/raw/master/8.00/I.MingVarCP-8.00.ttf"
-    "PMingI.U-8.00.ttf::${url}/raw/master/8.00/PMingI.U-8.00.ttf"
-    "PMingI.UVar-8.00.ttf::${url}/raw/master/8.00/PMingI.UVar-8.00.ttf"
+    "I.Ming-${pkgver}.ttf::${url}/raw/master/${pkgver}/I.Ming-8.00.ttf"
+    "I.MingCP-${pkgver}.ttf::${url}/raw/master/${pkgver}/I.MingCP-8.00.ttf"
+    "I.MingVar-${pkgver}.ttf::${url}/raw/master/${pkgver}/I.MingVar-8.00.ttf"
+    "I.MingVarCP-${pkgver}.ttf::${url}/raw/master/${pkgver}/I.MingVarCP-8.00.ttf"
+    "PMingI.U-${pkgver}.ttf::${url}/raw/master/${pkgver}/PMingI.U-8.00.ttf"
+    "PMingI.UVar-${pkgver}.ttf::${url}/raw/master/${pkgver}/PMingI.UVar-8.00.ttf"
 )
 sha256sums=('eb7e39eb6f4e74acfa9539c3dd58eda7a0f3b18cb4a2368bd276971abb5d66fc'
             '23eb45cdf0ac71c8c57462c4ea2a99efc8de1fb81273064dbe0873a628b4e150'
