@@ -1,0 +1,5 @@
+
+post_remove() {
+    echo "deleting the synwit-jlink-pack ..."
+    find /home -maxdepth 5 -name "swm32" -exec rm -rf {} \;
+}
