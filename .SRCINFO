@@ -1,7 +1,7 @@
 pkgbase = r-opencpu
 	pkgdesc = Producing and Reproducing Results
-	pkgver = 2.2.8
-	pkgrel = 6
+	pkgver = 2.2.9
+	pkgrel = 1
 	url = https://cran.r-project.org/package=opencpu
 	arch = any
 	license = Apache
@@ -28,7 +28,7 @@ pkgbase = r-opencpu
 	optdepends = r-r.rsp
 	optdepends = r-svglite
 	optdepends = r-unix
-	source = https://cran.r-project.org/src/contrib/opencpu_2.2.8.tar.gz
-	sha256sums = d1262139fa96bc7efc5c550ccc45d0a60219ab1ab369934480c47917973b1ac0
+	source = https://cran.r-project.org/src/contrib/opencpu_2.2.9.tar.gz
+	sha256sums = 13e3d1976caf3b3b34bd8b95294868ac0ade3e73a3511354625fa4a863c874a3
 
 pkgname = r-opencpu
