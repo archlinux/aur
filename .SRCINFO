@@ -1,16 +1,13 @@
 pkgbase = almond
 	pkgdesc = A scala kernel for Jupyter
-	pkgver = 0.11.2
+	pkgver = 0.13.3
 	pkgrel = 1
 	url = https://almond.sh/
 	arch = any
 	license = BSD
 	makedepends = coursier
-	depends = scala
-	depends = jupyter
-	source = almond-0.11.2::https://github.com/almond-sh/almond/archive/refs/tags/v0.11.2.tar.gz
+	depends = jupyter-notebook-shim
 	source = kernel.json.template
-	md5sums = 1d70b12fc9420252736340080c916ac3
 	md5sums = c8015b7cd10ab14c914eb688c3886703
 
 pkgname = almond
