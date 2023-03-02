@@ -1,7 +1,7 @@
 pkgbase = godot-mono-bin
 	pkgdesc = Godot is an advanced, feature packed, multi-platform 2D and 3D game engine. It provides a huge set of common tools, so you can just focus on making your game without reinventing the wheel.
 	pkgver = 4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.godotengine.org
 	arch = i686
 	arch = x86_64
