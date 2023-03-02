@@ -2,7 +2,7 @@
 
 pkgname=tree-sitter-markdown-git
 _pkgname="${pkgname%-git}"
-pkgver=r182.gb795aa9
+pkgver=r210.g10b9b5a
 pkgrel=1
 pkgdesc="A markdown grammar for tree-sitter"
 arch=('any')
@@ -32,12 +32,12 @@ build() {
 	ls "$pkgname"
 	cd "$pkgname/tree-sitter-markdown/src"
 	cc $CFLAGS -fPIC -std=c99 -c parser.c
-	c++ $CPPFLAGS -fPIC -c scanner.cc
-	c++ $LDFLAGS -shared parser.o scanner.o -o "$srcdir/parser.so"
+	cc $CFLAGS -fPIC -std=c99 -c scanner.c
+	cc $LDFLAGS -shared parser.o scanner.o -o "$srcdir/parser.so"
 	cd "../../tree-sitter-markdown-inline/src"
 	cc $CFLAGS -fPIC -std=c99 -c parser.c
-	c++ $CPPFLAGS -fPIC -c scanner.cc
-	c++ $LDFLAGS -shared parser.o scanner.o -o "$srcdir/parser-inline.so"
+	cc $CFLAGS -fPIC -std=c99 -c scanner.c
+	cc $LDFLAGS -shared parser.o scanner.o -o "$srcdir/parser-inline.so"
 }
 
 package() {

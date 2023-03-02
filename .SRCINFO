@@ -1,6 +1,6 @@
 pkgbase = tree-sitter-markdown-git
 	pkgdesc = A markdown grammar for tree-sitter
-	pkgver = r182.gb795aa9
+	pkgver = r210.g10b9b5a
 	pkgrel = 1
 	url = https://github.com/MDeiml/tree-sitter-markdown
 	arch = any
