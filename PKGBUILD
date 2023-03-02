@@ -27,7 +27,7 @@ prepare() {
   cd $_pkgname
 
   # pydepends: Various improvements
-  git cherry-pick -n e944c5927dee39cfebc70a98888213b1bdd7c945
+  git cherry-pick -n e2ec226954e7685245c13f68780272e714fb3cfa
 
   # New checks for optdepends and sodepends
   git cherry-pick -n 0023454b0eff2a422722fb1340e1652374e9100f
