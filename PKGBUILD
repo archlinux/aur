@@ -1,13 +1,13 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwallet-git
-pkgver=r976.fc36db0
+pkgver=r1241.45f1018
 pkgrel=1
 pkgdesc='KWallet Framework'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/frameworks/kwallet'
 license=(LGPL)
-depends=(knotifications-git kiconthemes-git kservice-git gpgme)
+depends=(knotifications-git kiconthemes-git kservice-git gpgme qca-qt6)
 makedepends=(extra-cmake-modules-git git python boost kdoctools-git)
 conflicts=(kwallet)
 provides=(kwallet)
@@ -30,7 +30,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DBUILD_TESTING=OFF
+    -DBUILD_TESTING=OFF \
+    -DQT_MAJOR_VERSION=6
   make
 }
 
