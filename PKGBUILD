@@ -1,45 +1,44 @@
-# Maintainer: Amina Khakimova <hakami1024@gmail.com>
+# Maintainer: Denes Turei <turei.denes@gmail.com>
+# Contributor: Amina Khakimova <hakami1024@gmail.com>
 # Contributor: Marcel Campello Ferreira <marcel.campello.ferreira@gmail.com>
-# Contributor: Denes Turei <turei.denes@gmail.com>
 pkgname=neo4j-enterprise
-pkgver=4.4.7
+pkgver=5.5.0
 pkgrel=1
 pkgdesc='A fully transactional graph database implemented in Java'
 arch=(any)
 url=http://neo4j.org/
 license=(custom)
 makedepends=(patch)
-depends=('jre11-openjdk-headless')
+depends=('jre17-openjdk-headless')
 conflicts=(neo4j-community)
 backup=(etc/neo4j/neo4j.conf)
 options=(!strip)
 install=neo4j.install
 source=(http://dist.neo4j.org/neo4j-enterprise-$pkgver-unix.tar.gz
-	bin.patch
-	startup-scripts-paths.patch
+	startup-scripts-fix-paths.patch
         neo4j.conf
         neo4j.install
         neo4j.service
         neo4j-tmpfile.conf)
-sha256sums=('b0a0fa18f8285f5860ad79d51f6a343143d31e37c9637f457da53631704a114e'
-            '3d6485fe74e174044954216cbfecf0e87611952d9cb0a2e4dd5758aecbaaf3ae'
-	    '40848f03cb4fac18e992b7e2ed017d247fd5936e22599ee758f18ef77c2652aa'
-	    '49a3533e37212bf0cee4a1caa5eee2ff0cdb0e5f673a743dd7cd8149d96d7604'
-	    'f1c083521502749200cb24fb5dcf20ab2f988f3b31fef278d774e7089f034208'
-            '4e56e56e38cfe91755adf76642972bece509a9fd3f7d1851d65715fff762b9db'
+
+sha256sums=('4e7a26d5ed0a89fce2c7f94dc756586f0e666f7d756e3fd1c4a0fddea98bfa46'
+            '4c5acebaa604a6ecf5ab998ae5c5f178ddde3a9a906241c60649492481b5ce52'
+            '5d5b0a2137dd093b1e18b264b4a54b9d1f84029100ef6a513361d71d1ddeb8f6'
+            '8cdf6de9864f66b8f435b8da5c04245a7fa23dde986cc7aec3133261e4003c64'
+            '42d4fa137d2a0eb1541780a4afef1bdaebf6c6e593cf7f285b527ea0e07bdf74'
             'e1311352e05b1e698599b91883141b938ceb418abd7e6bc11cc964854f0a21e1')
+
 prepare() {
-  cd $srcdir/neo4j-enterprise-$pkgver
-  patch -Np1 -i ../bin.patch
-  patch --strip=2 < ../startup-scripts-paths.patch
+  cd $srcdir/$pkgname-$pkgver
+  patch --forward --strip=1 --input=../startup-scripts-fix-paths.patch
 }
+
 package() {
-  cd $srcdir/neo4j-enterprise-$pkgver
+  cd $srcdir/$pkgname-$pkgver
 
   # Config files
   CONFIG_DIR=etc/neo4j
   install -dm755 $pkgdir/$CONFIG_DIR
-  install -dm700 $pkgdir/$CONFIG_DIR/certificates
   [[ $(ls -A conf/* 2>/dev/null) ]] && cp -r data/* $pkgdir/$CONFIG_DIR
   install -Dm644 $srcdir/neo4j.conf $pkgdir/etc/neo4j/neo4j.conf
 
@@ -86,6 +85,9 @@ package() {
   LICENSES_DIR=usr/share/licenses/neo4j
   install -dm755 $pkgdir/$LICENSES_DIR
   cp LICENSE.txt LICENSES.txt NOTICE.txt $pkgdir/$LICENSES_DIR
+  LICENSE_STATUS_DIR=$pkgdir/usr/share/java/neo4j/licenses
+  mkdir -p $LICENSE_STATUS_DIR
+  echo -n "yes" > $LICENSE_STATUS_DIR/ACCEPT_LICENSE_AGREEMENT
 
   # Service definition files
   install -Dm644 $srcdir/neo4j.service $pkgdir/usr/lib/systemd/system/neo4j.service

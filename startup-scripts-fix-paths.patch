@@ -1,0 +1,101 @@
+diff --unified --recursive --text package.orig/bin/cypher-shell package.new/bin/cypher-shell
+--- package.orig/bin/cypher-shell	2023-02-10 09:56:40.000000000 +0100
++++ package.new/bin/cypher-shell	2023-03-03 01:04:50.033915121 +0100
+@@ -18,7 +18,6 @@
+ #   Copyright (c) 2001-2006 The Apache Software Foundation.  All rights
+ #   reserved.
+ 
+-
+ # resolve links - $0 may be a softlink
+ PRG="$0"
+ 
+@@ -38,6 +37,10 @@
+ # Reset the REPO variable. If you need to influence this use the environment setup file.
+ REPO=
+ 
++# Paths for Arch Linux AUR installation:
++BASEDIR="/usr/share/java/neo4j"
++CLASSPATH="$BASEDIR:$BASEDIR/*"
++REPO="$BASEDIR"
+ 
+ # OS specific support.  $var _must_ be set to either true or false.
+ cygwin=false;
+@@ -97,7 +100,10 @@
+   REPO="$BASEDIR"/lib
+ fi
+ 
+-CLASSPATH="$BASEDIR"/etc:"$REPO"/neo4j-java-driver-5.5.0.jar:"$REPO"/reactive-streams-1.0.4.jar:"$REPO"/netty-handler-4.1.87.Final.jar:"$REPO"/netty-common-4.1.87.Final.jar:"$REPO"/netty-resolver-4.1.87.Final.jar:"$REPO"/netty-buffer-4.1.87.Final.jar:"$REPO"/netty-transport-4.1.87.Final.jar:"$REPO"/netty-transport-native-unix-common-4.1.87.Final.jar:"$REPO"/netty-codec-4.1.87.Final.jar:"$REPO"/netty-tcnative-classes-2.0.56.Final.jar:"$REPO"/reactor-core-3.5.1.jar:"$REPO"/cypher-literal-interpreter-5.5.0.jar:"$REPO"/neo4j-values-5.5.0.jar:"$REPO"/neo4j-graphdb-api-5.5.0.jar:"$REPO"/annotations-5.5.0.jar:"$REPO"/eclipse-collections-11.1.0.jar:"$REPO"/eclipse-collections-api-11.1.0.jar:"$REPO"/commons-lang3-3.12.0.jar:"$REPO"/neo4j-common-5.5.0.jar:"$REPO"/lz4-java-1.8.0.jar:"$REPO"/neo4j-resource-5.5.0.jar:"$REPO"/neo4j-collections-5.5.0.jar:"$REPO"/caffeine-3.1.2.jar:"$REPO"/neo4j-exceptions-5.5.0.jar:"$REPO"/neo4j-unsafe-5.5.0.jar:"$REPO"/jna-5.12.1.jar:"$REPO"/cypher-ast-factory-5.5.0.jar:"$REPO"/neo4j-cypher-javacc-parser-5.5.0.jar:"$REPO"/argparse4j-0.9.0.jar:"$REPO"/jline-terminal-3.21.0.jar:"$REPO"/jline-reader-3.21.0.jar:"$REPO"/jline-terminal-jansi-3.21.0.jar:"$REPO"/jansi-2.4.0.jar:"$REPO"/cypher-shell-5.5.0.jar
++BASEDIR="/usr/share/java/neo4j"
++REPO="$BASEDIR"
++
++CLASSPATH="$BASEDIR":"$REPO"/neo4j-java-driver-5.5.0.jar:"$REPO"/reactive-streams-1.0.4.jar:"$REPO"/netty-handler-4.1.87.Final.jar:"$REPO"/netty-common-4.1.87.Final.jar:"$REPO"/netty-resolver-4.1.87.Final.jar:"$REPO"/netty-buffer-4.1.87.Final.jar:"$REPO"/netty-transport-4.1.87.Final.jar:"$REPO"/netty-transport-native-unix-common-4.1.87.Final.jar:"$REPO"/netty-codec-4.1.87.Final.jar:"$REPO"/netty-tcnative-classes-2.0.56.Final.jar:"$REPO"/reactor-core-3.5.1.jar:"$REPO"/cypher-literal-interpreter-5.5.0.jar:"$REPO"/neo4j-values-5.5.0.jar:"$REPO"/neo4j-graphdb-api-5.5.0.jar:"$REPO"/annotations-5.5.0.jar:"$REPO"/eclipse-collections-11.1.0.jar:"$REPO"/eclipse-collections-api-11.1.0.jar:"$REPO"/commons-lang3-3.12.0.jar:"$REPO"/neo4j-common-5.5.0.jar:"$REPO"/lz4-java-1.8.0.jar:"$REPO"/neo4j-resource-5.5.0.jar:"$REPO"/neo4j-collections-5.5.0.jar:"$REPO"/caffeine-3.1.2.jar:"$REPO"/neo4j-exceptions-5.5.0.jar:"$REPO"/neo4j-unsafe-5.5.0.jar:"$REPO"/jna-5.12.1.jar:"$REPO"/cypher-ast-factory-5.5.0.jar:"$REPO"/neo4j-cypher-javacc-parser-5.5.0.jar:"$REPO"/argparse4j-0.9.0.jar:"$REPO"/jline-terminal-3.21.0.jar:"$REPO"/jline-reader-3.21.0.jar:"$REPO"/jline-terminal-jansi-3.21.0.jar:"$REPO"/jansi-2.4.0.jar:"$REPO"/cypher-shell-5.5.0.jar
+ 
+ ENDORSED_DIR=
+ if [ -n "$ENDORSED_DIR" ] ; then
+@@ -124,5 +130,5 @@
+   -Dapp.repo="$REPO" \
+   -Dapp.home="$BASEDIR" \
+   -Dbasedir="$BASEDIR" \
+-  org.neo4j.shell.startup.CypherShellBoot \
++  org.neo4j.shell.Main \
+   "$@"
+diff --unified --recursive --text package.orig/bin/neo4j package.new/bin/neo4j
+--- package.orig/bin/neo4j	2023-02-10 10:10:35.000000000 +0100
++++ package.new/bin/neo4j	2023-03-02 20:35:49.448160240 +0100
+@@ -2,7 +2,7 @@
+ # Copyright (c) "Neo4j"
+ # Neo4j Sweden AB [http://neo4j.com]
+ # This file is a commercial add-on to Neo4j Enterprise Edition.
+-
++export NEO4J_CONF=/etc/neo4j
+ 
+ # resolve links - $0 may be a softlink
+ PRG="$0"
+@@ -102,6 +102,10 @@
+   [ -n "$REPO" ] && REPO=`cygpath --path --windows "$REPO"`
+ fi
+ 
++BASEDIR="/usr/share/java/neo4j"
++CLASSPATH="$BASEDIR:$BASEDIR/*"
++REPO="$BASEDIR/repo"
++
+ exec "$JAVACMD" -Xmx128m \
+   -classpath "$CLASSPATH" \
+   -Dapp.name="neo4j" \
+@@ -110,4 +114,4 @@
+   -Dapp.home="$BASEDIR" \
+   -Dbasedir="$BASEDIR" \
+   org.neo4j.server.startup.Neo4jBoot \
+-  "$@"
+\ No newline at end of file
++  "$@"
+diff --unified --recursive --text package.orig/bin/neo4j-admin package.new/bin/neo4j-admin
+--- package.orig/bin/neo4j-admin	2023-02-10 10:10:35.000000000 +0100
++++ package.new/bin/neo4j-admin	2023-03-02 20:28:39.903178130 +0100
+@@ -1,6 +1,8 @@
+ #!/usr/bin/env sh
+ # Copyright (c) "Neo4j"
+ # Neo4j Sweden AB [http://neo4j.com]
++export NEO4J_CONF=/etc/neo4j
++
+ # This file is a commercial add-on to Neo4j Enterprise Edition.
+ 
+ 
+@@ -102,6 +104,10 @@
+   [ -n "$REPO" ] && REPO=`cygpath --path --windows "$REPO"`
+ fi
+ 
++BASEDIR="/usr/share/java/neo4j"
++CLASSPATH="$BASEDIR:$BASEDIR/*:$CLASSPATH"
++REPO="$BASEDIR/repo"
++
+ exec "$JAVACMD" -Xmx128m \
+   -classpath "$CLASSPATH" \
+   -Dapp.name="neo4j-admin" \
+@@ -110,4 +116,4 @@
+   -Dapp.home="$BASEDIR" \
+   -Dbasedir="$BASEDIR" \
+   org.neo4j.server.startup.Neo4jAdminBoot \
+-  "$@"
+\ No newline at end of file
++  "$@"
