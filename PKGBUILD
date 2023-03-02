@@ -1,6 +1,6 @@
 # Maintainer: Marvin Dalheimer <me@marvin-dalheimer.de>
 pkgname=godot-mono
-pkgver=3.5.1
+pkgver=4.0
 pkgrel=1
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine."
 arch=('i686' 'x86_64')
@@ -40,11 +40,12 @@ build() {
     git checkout ${pkgver}-stable
 
     #Build temporary binaries to generate needed files for mono support
-    scons -j$(nproc) platform=x11 tools=yes module_mono_enabled=yes mono_glue=no
-    xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" bin/godot.x11.tools.64.mono --generate-mono-glue modules/mono/glue
+    scons -j$(nproc) platform=linuxbsd tools=yes module_mono_enabled=yes mono_glue=no
+    xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" bin/godot.linuxbsd.editor.x86_64.mono --generate-mono-glue modules/mono/glue
 
     # Build normal binaries
-    scons -j$(nproc) platform=x11 target=release_debug tools=yes module_mono_enabled=yes bits=64
+    #scons -j$(nproc) platform=linuxbsd target=editor tools=yes module_mono_enabled=yes bits=64
+    modules/mono/build_scripts/build_assemblies.py --godot-output-dir=./bin --godot-platform=linuxbsd
 }
 
 package() {
@@ -59,7 +60,7 @@ package() {
     # I have to use TERM=xterm because of an bug in mono
     cat > "${pkgdir}/usr/bin/${pkgname}" <<-EOF
 		#!/usr/bin/env bash
-		/opt/godot-mono/bin/godot.x11.opt.tools.64.mono
+		/opt/godot-mono/bin/godot.linuxbsd.editor.x86_64.mono
 	EOF
     
     chmod a+x ${pkgdir}/usr/bin/${pkgname}
