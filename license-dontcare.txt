@@ -1,3 +1,0 @@
-Licensing information according to this comment (https://github.com/bogdanfinn/tls-client/issues/24#issuecomment-1435646986, retrieved: 2023-02-18):
-
-> in general i would say "do whatever you want with my work just do not sue me"

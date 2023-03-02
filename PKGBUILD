@@ -10,9 +10,9 @@ _gitproject="${_pkgbase}"
 
 pkgbase="${_pkgbase}-git"
 pkgname=("golang-${_gitservice}-${_gitauthor}-${_pkgbase}-git" "lib-${_pkgbase}-git")
-pkgver=1.3.4.r163.20230218.46e88e3
+pkgver=1.3.5.r168.20230224.ec493f9
 _releasever="$(awk -F. '{print $1"."$2"."$3}' <<<"${pkgver}")"
-pkgrel=8
+pkgrel=1
 pkgdesc="Go module and shared library providing a TLS Client is built upon https://github.com/Carcraftz/fhttp and https://github.com/Carcraftz/utls."
 arch=(
   'aarch64'
@@ -20,7 +20,7 @@ arch=(
   'x86_64'
 )
 url="https://${_gitserver}/${_gitauthor}/${_gitproject}"
-license=('custom: dontcare')
+license=('custom')
 makedepends=(
   'git'
   'go>=1.18'
@@ -34,12 +34,10 @@ makedepends=(
 source=(
   "${_pkgbase}::git+${url}.git"
   "${_pkgbase}.pc.in"
-  'license-dontcare.txt'
 )
 sha256sums=(
   'SKIP'                                                             # main source: git+${url}.git
   '082b1fb28aa31320960d5f523dc2419f09958602577ed3f5184f5bb55896a2bc' # ${_pkgbase}.pc.in
-  '8b45a1a51ac8989701a6119ef5ce0aa081dc4edd88132cf82f29d741a423a8f9' # license-dontcare.txt
 )
 
 pkgver() {
@@ -85,6 +83,8 @@ build() {
 
   # go build -x -v -o build ./... # This would only build examples and ??
 
+  go build -x -v ./tests
+
   cd cffi_dist
   go build -x -v -buildmode=c-shared -o tls-client.so
 }
@@ -125,20 +125,21 @@ package_golang-github-bogdanfinn-tls-client-git() {
   cd "${srcdir}/${_pkgbase}"
 
   install -d -v -m755 "${pkgdir}/usr/share/gocode/src/${_gitserver}/${_gitauthor}/${_gitproject}"
-  cp -rv *.go *.mod *.sum cffi_src cffi_dist shared tests test-all.sh "${pkgdir}/usr/share/gocode/src/${_gitserver}/${_gitauthor}/${_gitproject}"/
+  cp -rv *.go *.mod *.sum cffi_src cffi_dist shared tests  "${pkgdir}/usr/share/gocode/src/${_gitserver}/${_gitauthor}/${_gitproject}"/
+  if [ -e "test-all.sh" ]; then
+    install -D -v -m775 test-all.sh                        "${pkgdir}/usr/share/gocode/src/${_gitserver}/${_gitauthor}/${_gitproject}"/test-all.sh
+  fi
   rm -rv "${pkgdir}/usr/share/gocode/src/${_gitserver}/${_gitauthor}/${_gitproject}"/cffi_dist/{*.so,*.h,dist,Dockerfile*,example*}
 
   for _docfile in "Readme.md"; do
-    install -D -v -m644 "${_docfile}"                  "${pkgdir}/usr/share/doc/golang-github-bogdanfinn-tls-client/${_docfile}"
+    install -D -v -m644 "${_docfile}"                      "${pkgdir}/usr/share/doc/golang-github-bogdanfinn-tls-client/${_docfile}"
   done
-  install -D -v -m644 "${srcdir}/git.log"              "${pkgdir}/usr/share/doc/golang-github-bogdanfinn-tls-client/git.log"
-  install -d -v -m755                                  "${pkgdir}/usr/share/doc/golang-github-bogdanfinn-tls-client/examples"
-  cp -rv example/*                                     "${pkgdir}/usr/share/doc/golang-github-bogdanfinn-tls-client/examples"/
+  install -D -v -m644 "${srcdir}/git.log"                  "${pkgdir}/usr/share/doc/golang-github-bogdanfinn-tls-client/git.log"
+  install -d -v -m755                                      "${pkgdir}/usr/share/doc/golang-github-bogdanfinn-tls-client/examples"
+  cp -rv example/*                                         "${pkgdir}/usr/share/doc/golang-github-bogdanfinn-tls-client/examples"/
 
-  install -D -v -m644 "${srcdir}/license-dontcare.txt" "${pkgdir}/usr/share/licenses/golang-github-bogdanfinn-tls-client-git/license-dontcare.txt"
-  ln -svf "/usr/share/licenses/golang-github-bogdanfinn-tls-client-git/license-dontcare.txt"  "${pkgdir}/usr/share/doc/golang-github-bogdanfinn-tls-client/license-dontcare.txt"
-  # install -D -v -m644 LICENSE                          "${pkgdir}/usr/share/licenses/golang-github-bogdanfinn-tls-client-git/LICENSE"
-  # ln -svf "/usr/share/licenses/golang-github-bogdanfinn-tls-client-git/LICENSE"  "${pkgdir}/usr/share/doc/golang-github-bogdanfinn-tls-client/LICENSE"
+  install -D -v -m644 LICENSE                              "${pkgdir}/usr/share/licenses/golang-github-bogdanfinn-tls-client-git/LICENSE"
+  ln -svf "/usr/share/licenses/golang-github-bogdanfinn-tls-client-git/LICENSE"  "${pkgdir}/usr/share/doc/golang-github-bogdanfinn-tls-client/LICENSE"
 }
 
 package_lib-tls-client-git() {
@@ -173,20 +174,18 @@ package_lib-tls-client-git() {
 
   cd "${srcdir}/${_pkgbase}"
 
-  install -D -v -m644 "cffi_dist/tls-client.so"     "${pkgdir}/usr/lib/tls-client.so"
-  install -D -v -m644 "cffi_dist/tls-client.h"      "${pkgdir}/usr/include/tls-client.h"
+  install -D -v -m644 "cffi_dist/tls-client.so"              "${pkgdir}/usr/lib/tls-client.so"
+  install -D -v -m644 "cffi_dist/tls-client.h"               "${pkgdir}/usr/include/tls-client.h"
 
-  install -D -v -m644 "${srcdir}/${_pkgbase}.pc"    "${pkgdir}/usr/share/pkgconfig/${_pkgbase}.pc"
+  install -D -v -m644 "${srcdir}/${_pkgbase}.pc"             "${pkgdir}/usr/share/pkgconfig/${_pkgbase}.pc"
 
   for _docfile in "Readme.md"; do
-    install -D -v -m644 "${_docfile}"               "${pkgdir}/usr/share/doc/lib-tls-client/${_docfile}"
+    install -D -v -m644 "${_docfile}"                        "${pkgdir}/usr/share/doc/lib-tls-client/${_docfile}"
   done
-  install -D -v -m644 "${srcdir}/git.log"           "${pkgdir}/usr/share/doc/lib-tls-client/git.log"
-  install -d -v -m755                               "${pkgdir}/usr/share/doc/lib-tls-client/examples"
+  install -D -v -m644 "${srcdir}/git.log"                    "${pkgdir}/usr/share/doc/lib-tls-client/git.log"
+  install -d -v -m755                                        "${pkgdir}/usr/share/doc/lib-tls-client/examples"
   cp -rv cffi_dist/example*                                  "${pkgdir}/usr/share/doc/lib-tls-client/examples"/
 
-  install -D -v -m644 "${srcdir}/license-dontcare.txt" "${pkgdir}/usr/share/licenses/lib-tls-client-git/license-dontcare.txt"
-  ln -svf "/usr/share/licenses/lib-tls-client-git/license-dontcare.txt"  "${pkgdir}/usr/share/doc/lib-tls-client/license-dontcare.txt"
-  # install -D -v -m644 LICENSE                       "${pkgdir}/usr/share/licenses/${lib-tls-client-git}/LICENSE"
-  # ln -svf "/usr/share/licenses/${lib-tls-client-git}/LICENSE"  "${pkgdir}/usr/share/doc/${lib-tls-client}/LICENSE"
+  install -D -v -m644 LICENSE                                "${pkgdir}/usr/share/licenses/lib-tls-client-git/LICENSE"
+  ln -svf "/usr/share/licenses/lib-tls-client-git/LICENSE"   "${pkgdir}/usr/share/doc/lib-tls-client/LICENSE"
 }
