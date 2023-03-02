@@ -1,6 +1,6 @@
 # Maintainer: Marius Hirt <marius-hirt@web.de>
 pkgname=zork++-bin
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A modern C++ project manager and build system for modern C++"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/zerodaycode/Zork/releases/download/v${pkgver}/default.zork++.zork++.tar.gz"
 )
 sha256sums=(
-	'04110fbf62738e8482fe1c8c2bbbb490eccf182b8cfa768ab92c383d587dfb96'
+	'43ee8178681815dca2baedca577d79b5ec9bd370ab85b2a121a73d60a1182602'
 )
 
 package() {
