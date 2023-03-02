@@ -1,0 +1,40 @@
+post_install() {
+  if [ ! -e /etc/ssl/certs/imapd.pem ]; then
+    generate_certificate imapd
+  fi
+  if [ ! -e /etc/ssl/certs/ipop3d.pem ]; then
+    generate_certificate ipop3d
+  fi
+}
+
+post_upgrade() {
+  post_install
+}
+
+generate_certificate() {
+  t=$1
+  echo -n "Generating $t certificate..."
+
+  umask 077
+  tmpdir=$(mktemp -d)
+  PEM1="$tmpdir/$t.pem1"
+  PEM2="$tmpdir/$t.pem2"
+  cert="$tmpdir/$t.pem"
+  /usr/bin/openssl req -newkey rsa:4096 -keyout "$PEM1" \
+    -nodes -x509 -days 365 -out "$PEM2" >/dev/null 2>&1 << EOF
+--
+SomeState
+SomeCity
+SomeOrganization
+SomeOrganizationalUnit
+localhost.localdomain
+root@localhost.localdomain
+EOF
+
+  cat "$PEM1" >  "$cert"
+  echo ""     >> "$cert"
+  cat "$PEM2" >> "$cert"
+  install -Dm 600 "$cert" -t /etc/ssl/certs
+  rm -rf "$tmpdir"
+  echo "done."
+}
