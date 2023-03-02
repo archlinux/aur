@@ -2,7 +2,7 @@
 # Contributor: nerflad (nerflad@gmail.com)
 pkgname=gapi-ocaml
 pkgver=0.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple OCaml client for Google Services.'
 arch=('x86_64')
 url='https://astrada.github.io/gapi-ocaml/'
@@ -14,6 +14,7 @@ depends=(
 'ocaml-curl>=0.5.3'
 'ocaml-cryptokit>=1.3.14'
 'ocaml-yojson>=1.6.0'
+'ocaml-yojson<2.0.0'
 )
 makedepends=(
 'dune'
