@@ -1,6 +1,6 @@
 pkgname="pymoldyn-bin"
 pkgver="0.9.9"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="A molecule viewer with cavity computation."
 arch=("x86_64")
 url="https://github.com/sciapp/pyMolDyn"
@@ -10,7 +10,7 @@ makedepends=()
 provides=("${pkgname%-*}=${pkgver}")
 conflicts=("${pkgname%-*}")
 source=("http://pgi-jcns.fz-juelich.de/pub/downloads/software/pymoldyn_${pkgver}-1_amd64.deb")
-sha256sums=("1f0a4c8b78ce36517ae5abdb7653b3d42a966edc8c9a7a6b21dfbd546a8ccff9")
+sha256sums=("581c449caefaaf3eba8c2aa8cdbedc6548e23203e8c88d2a23696d06107c7589")
 
 package() {
     cd "${srcdir}" && \
