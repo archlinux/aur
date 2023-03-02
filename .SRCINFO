@@ -1,5 +1,5 @@
 pkgbase = litecoin-git
-	pkgver = 0.21.1rc1+0+g3665dadce
+	pkgver = 0.21.2.2+0+g953811f77a
 	pkgrel = 1
 	url = http://www.litecoin.org/
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = litecoin-git
 	makedepends = qt5-base
 	makedepends = qt5-tools
 	makedepends = zeromq
+	makedepends = db5.3
 	source = litecoin-git::git+https://github.com/litecoin-project/litecoin.git#branch=0.21
 	source = litecoin-qt.desktop
 	source = litecoind.service
@@ -30,6 +31,7 @@ pkgname = litecoin-daemon-git
 	depends = libevent
 	depends = miniupnpc
 	depends = zeromq
+	depends = db5.3
 	provides = litecoin-daemon
 	conflicts = litecoin-daemon
 
@@ -46,10 +48,12 @@ pkgname = litecoin-qt-git
 	depends = desktop-file-utils
 	depends = libevent
 	depends = qt5-base
+	depends = fmt
 	depends = miniupnpc
 	depends = qrencode
 	depends = protobuf
 	depends = zeromq
+	depends = db5.3
 	provides = litecoin-qt
 	conflicts = litecoin-qt
 

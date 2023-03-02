@@ -4,21 +4,22 @@
 pkgbase=litecoin-git
 pkgname=('litecoin-daemon-git' 'litecoin-cli-git' 'litecoin-qt-git' 'litecoin-tx-git')
 git_branch=0.21
-pkgver=0.21.1rc1+0+g3665dadce
+pkgver=0.21.2.2+0+g953811f77a
 pkgrel=1
 arch=('x86_64')
 url="http://www.litecoin.org/"
 license=('MIT')
 makedepends=(
-	'boost'
-	'git'
-	'libevent'
-	'miniupnpc'
-	'protobuf'
-	'qrencode'
-	'qt5-base'
-	'qt5-tools'
-	'zeromq'
+  'boost'
+  'git'
+  'libevent'
+  'miniupnpc'
+  'protobuf'
+  'qrencode'
+  'qt5-base'
+  'qt5-tools'
+  'zeromq'
+  'db5.3'
 )
 source=(
   "$pkgbase::git+https://github.com/litecoin-project/litecoin.git#branch=$git_branch"
@@ -48,13 +49,13 @@ pkgver() {
 
 build() {
   cd "$pkgbase"
-  ./configure --prefix=/usr --with-gui=qt5 --with-incompatible-bdb --disable-gui-tests
+  ./configure --prefix=/usr --with-gui=qt5 --with-incompatible-bdb --disable-gui-tests BDB_LIBS="-ldb_cxx-5.3" BDB_CFLAGS="-I/usr/include/db5.3"
   make
 }
 
 package_litecoin-qt-git() {
   pkgdesc="Litecoin is a peer-to-peer network based digital currency - Qt"
-  depends=(boost-libs desktop-file-utils libevent qt5-base miniupnpc qrencode protobuf zeromq)
+  depends=(boost-libs desktop-file-utils libevent qt5-base fmt miniupnpc qrencode protobuf zeromq db5.3)
   conflicts=(litecoin-qt)
   provides=(litecoin-qt)
 
@@ -69,7 +70,7 @@ package_litecoin-qt-git() {
 
 package_litecoin-daemon-git() {
   pkgdesc="Litecoin is a peer-to-peer network based digital currency - daemon"
-  depends=(boost-libs libevent miniupnpc zeromq)
+  depends=(boost-libs libevent miniupnpc zeromq db5.3)
   conflicts=(litecoin-daemon)
   provides=(litecoin-daemon)
 
