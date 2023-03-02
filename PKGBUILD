@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='orbterm'
 pkgver='0.3.6'
-pkgrel='4'
+pkgrel='5'
 pkgdesc='The default terminal for RedoxOS, compatible with Linux'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://gitlab.redox-os.org/redox-os/$pkgname"
