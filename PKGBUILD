@@ -1,7 +1,7 @@
 # Maintainer: Alessandro Zanatta <alessandro.zanatta.lav@gmail.com>
 pkgname=pvs
 pkgver=7.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Mechanized environment for formal specification and verification"
 arch=('x86_64')
 url="https://pvs.csl.sri.com"

@@ -1,12 +1,12 @@
 post_install() {
 	echo ""
-	echo "Installed to /opt/${pkgname}"
-	echo "Remember to add /opt/${pkgname} to your PATH"
+	echo "Installed to '/opt/pvs'"
+	echo "Remember to add '/opt/pvs' to your PATH"
 	echo ""
 }
 
 post_remove() {
 	echo ""
-	echo "Remember to remove /opt/${pkgname} to your PATH"
+	echo "Remember to remove '/opt/pvs' to your PATH"
 	echo ""
 }
