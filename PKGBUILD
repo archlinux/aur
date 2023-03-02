@@ -1,7 +1,7 @@
 # Maintainer: Derek J. Clark <derekjohn.clark@gmail.com>
 pkgname=handygccs-git
 _gitdir=HandyGCCS
-pkgver=23.02.r122.c6ddca4
+pkgver=23.03.r123.49aa0a0
 pkgrel=1
 pkgdesc="Handheld Game Console Controller Support."
 arch=('any')
@@ -11,7 +11,7 @@ groups=()
 depends=('python' 'python-evdev' 'dbus-python' 'python-bmi160-i2c')
 optdepends=()
 makedepends=('git')
-_tag=c6ddca4e7858faff9508fe63b760ccc87a7ac5b6
+_tag=49aa0a04bf503c67188500286fa47edfc8c89eaa
 source=("${_gitdir}::git+https://github.com/ShadowBlip/${_gitdir}.git#tag=${_tag}")
 sha256sums=('SKIP')
 pkgver() {
@@ -20,14 +20,17 @@ pkgver() {
 }
 package() {
 	cd "$srcdir/${_gitdir}"
-	mkdir -p ${pkgdir}/usr/lib/modules-load.d
-	mkdir -p ${pkgdir}/usr/lib/systemd/system
-	mkdir -p ${pkgdir}/usr/lib/udev/rules.d
-	mkdir -p ${pkgdir}/usr/share/handygccs/scripts
 
+	mkdir -p ${pkgdir}/usr/lib/modules-load.d
 	install -m644 usr/lib/modules-load.d/handycon.conf ${pkgdir}/usr/lib/modules-load.d
+
+	mkdir -p ${pkgdir}/usr/lib/systemd/system
 	install -m644 usr/lib/systemd/system/handycon.service ${pkgdir}/usr/lib/systemd/system
+
+	mkdir -p ${pkgdir}/usr/lib/udev/rules.d
 	install -m644 usr/lib/udev/rules.d/60-handycon.rules ${pkgdir}/usr/lib/udev/rules.d
+
+	mkdir -p ${pkgdir}/usr/share/handygccs/scripts
 	install -m744 usr/share/handygccs/scripts/constants.py ${pkgdir}/usr/share/handygccs/scripts
 	install -m744 usr/share/handygccs/scripts/handycon.py ${pkgdir}/usr/share/handygccs/scripts
 }
