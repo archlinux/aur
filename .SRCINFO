@@ -1,0 +1,13 @@
+pkgbase = hunspell-et
+	pkgdesc = Estonian hunspell dictionary
+	pkgver = 20030606
+	pkgrel = 1
+	url = http://www.meso.ee/~jjpp/speller/
+	arch = any
+	license = LGPL
+	depends = hunspell
+	depends = hyphen
+	source = http://www.meso.ee/~jjpp/speller/ispell-et_20030606.tar.gz
+	sha256sums = 4aea338eef90a977134e81e075277912938ce1a97344d7a0dbf238e274a86116
+
+pkgname = hunspell-et
