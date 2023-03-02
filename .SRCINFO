@@ -1,0 +1,27 @@
+pkgbase = crowdsec-firewall-bouncer-bin
+	pkgver = 0.0.25
+	pkgrel = 1
+	url = https://crowdsec.net
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = crowdsec
+	backup = etc/crowdsec/bouncers/crowdsec-firewall-bouncer.yaml
+	source = crowdsec-firewall-bouncer-nftables-bin.install
+	source = crowdsec-firewall-bouncer-iptables-bin.install
+	sha256sums = c83017ae6b8174647817c82a8e3a7855420811f4395224898c62df89aeaf0ac0
+	sha256sums = 8cd0afbabc5c97cc4181d451bf06b6bcc709b721e0ec82550cc9f99532acb784
+	source_x86_64 = https://packagecloud.io/crowdsec/crowdsec/ubuntu/pool/jammy/main/c/crowdsec/crowdsec-firewall-bouncer-nftables_0.0.25_amd64.deb
+	sha256sums_x86_64 = 150666621d61e3bad05a28da9fda17a96743805e5392b278b0f3ecb8fe441382
+	source_aarch64 = https://packagecloud.io/crowdsec/crowdsec/ubuntu/pool/jammy/main/c/crowdsec/crowdsec-firewall-bouncer-nftables_0.0.25_arm64.deb
+	sha256sums_aarch64 = bfeb8f778d7d01dbdaedaad6b13d35169e4d7335dc2782de153195d402e86ac3
+
+pkgname = crowdsec-firewall-bouncer-iptables-bin
+	pkgdesc = Firewall bouncer for Crowdsec (iptables+ipset) - binary version
+	install = crowdsec-firewall-bouncer-iptables-bin.install
+	depends = ipset
+	depends = iptables
+
+pkgname = crowdsec-firewall-bouncer-nftables-bin
+	pkgdesc = Firewall bouncer for Crowdsec (nftables) - binary version
+	install = crowdsec-firewall-bouncer-nftables-bin.install
