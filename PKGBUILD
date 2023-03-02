@@ -2,11 +2,11 @@
 pkgname=into-cps-application-bin
 _pkgname=INTO-CPS-application
 pkgver=4.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Frontend of the INTO-CPS Tool Chain"
 arch=('x86_64')
 url="https://github.com/INTO-CPS-Association/into-cps-application"
-license=('MIT')
+license=('unknown')
 provides=('into-cps-application')
 _appimage="${_pkgname}-${pkgver}.AppImage"
 source=("${_appimage}::https://github.com/INTO-CPS-Association/$_pkgname/releases/download/v$pkgver/${_appimage}")

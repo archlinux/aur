@@ -1,10 +1,10 @@
 pkgbase = into-cps-application-bin
 	pkgdesc = Frontend of the INTO-CPS Tool Chain
 	pkgver = 4.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/INTO-CPS-Association/into-cps-application
 	arch = x86_64
-	license = MIT
+	license = unknown
 	provides = into-cps-application
 	options = !strip
 	source = INTO-CPS-application-4.0.5.AppImage::https://github.com/INTO-CPS-Association/INTO-CPS-application/releases/download/v4.0.5/INTO-CPS-application-4.0.5.AppImage
