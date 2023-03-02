@@ -3,7 +3,7 @@
 
 pkgname=dendrite-git
 _gitname=dendrite
-pkgver=0.8.5.r2.gcd8246051
+pkgver=helm.dendrite.0.11.2.r5.g6b1c9eafa
 pkgrel=1
 pkgdesc="A second-generation Matrix homeserver written in Go"
 arch=('x86_64')
@@ -33,7 +33,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build ./cmd/dendrite-monolith-server
+  go build ./cmd/dendrite
   go build ./cmd/generate-config
   go build ./cmd/generate-keys
   go build ./cmd/create-account
@@ -46,16 +46,16 @@ check() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go test ./cmd/dendrite-monolith-server
+  go test ./cmd/dendrite
 }
 
 package() {
   cd ${_gitname}
-  install -Dm755 ./dendrite-monolith-server           "${pkgdir}/usr/bin/${_gitname}"
+  install -Dm755 ./dendrite                           "${pkgdir}/usr/bin/${_gitname}"
   install -Dm755 ./generate-config                    "${pkgdir}/usr/bin/${_gitname}-generate-config"
   install -Dm755 ./generate-keys                      "${pkgdir}/usr/bin/${_gitname}-generate-keys"
   install -Dm755 ./create-account                      "${pkgdir}/usr/bin/${_gitname}-create-account"
-  install -Dm644 ./dendrite-sample.monolith.yaml       "${pkgdir}/etc/dendrite/config-sample.yaml"
+  install -Dm644 ./dendrite-sample.yaml               "${pkgdir}/etc/dendrite/config-sample.yaml"
   install -Dm644 "${srcdir}/dendrite.service"         "${pkgdir}/usr/lib/systemd/system/${_gitname}.service"
   install -Dm644 "${srcdir}/${_gitname}.sysusers"      "${pkgdir}/usr/lib/sysusers.d/${_gitname}.conf"
   install -Dm644 "${srcdir}/tmpfiles-${_gitname}.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_gitname}.conf"
