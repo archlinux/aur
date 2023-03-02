@@ -18,9 +18,11 @@ conflicts=('rambox' 'rambox-bin' 'rambox-pro-bin-beta')
 
 # To extract the EULA as a file:
 # 1. Go to https://rambox.app/eula in a Javascript-enabled browser.
-# 2. Save the rendered result to an HTML file.
-# 3. Run the shell command line:
+# 2. Check the timestamp: Last updated Jan 19, 2023
+# 3. Save the page to an HTML file.
+# 4. Run the shell command line:
 #    html2text --body-width=80 file.html | awk '/^# .*EULA/,/^## If/ { print }' | head -n -1
+# 5. Update the timestamp in step #2.
 source=("${_pkgname}-EULA"
         "${_pkgname}-${pkgver}.deb::https://github.com/ramboxapp/download/releases/download/v${pkgver}/Rambox-${pkgver}-linux-x64.deb")
 
