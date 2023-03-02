@@ -16,7 +16,7 @@ backup=("etc/${pkgname%-git}/settings.toml")
 options=()
 install=
 source=(
-  'git+https://github.com/brennana/apex-tux.git#branch=stats-provider'
+  'git+https://github.com/brennana/apex-tux.git#branch=aur'
   'settings.toml'
   '98-steelseries.rules'
   'apex-tux.service'

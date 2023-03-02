@@ -13,7 +13,7 @@ pkgbase = apex-tux-git
 	provides = apex-tux
 	conflicts = apex-tux
 	backup = etc/apex-tux/settings.toml
-	source = git+https://github.com/brennana/apex-tux.git#branch=stats-provider
+	source = git+https://github.com/brennana/apex-tux.git#branch=aur
 	source = settings.toml
 	source = 98-steelseries.rules
 	source = apex-tux.service
