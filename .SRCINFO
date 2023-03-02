@@ -1,6 +1,6 @@
 pkgbase = qtcreator-git
 	pkgdesc = Lightweight, cross-platform integrated development environment
-	pkgver = 9.0.0.beta1.r370.ga0835dd3d3
+	pkgver = 10.0.0.beta2.r124.gd8dc1c7f0f
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = qtcreator-git
 	optdepends = subversion: subversion support
 	optdepends = valgrind: analyze support
 	optdepends = x11-ssh-askpass: ssh support
-	provides = qtcreator=9.0.0.beta1.r370.ga0835dd3d3
+	provides = qtcreator=10.0.0.beta2.r124.gd8dc1c7f0f
 	conflicts = qtcreator
 	options = docs
 	source = git+https://code.qt.io/qt-creator/qt-creator.git

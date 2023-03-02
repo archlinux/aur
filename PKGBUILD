@@ -8,7 +8,7 @@
 # Contributor: Tobias Hunger <tobias dot hunger at gmail dot com>
 
 pkgname=qtcreator-git
-pkgver=9.0.0.beta1.r370.ga0835dd3d3
+pkgver=10.0.0.beta2.r124.gd8dc1c7f0f
 pkgrel=1
 pkgdesc='Lightweight, cross-platform integrated development environment'
 arch=('x86_64')
@@ -46,11 +46,6 @@ pkgver() {
 
 prepare() {
     mkdir -p build
-
-    cd qt-creator
-
-    # fix hardcoded libexec path
-    sed -e 's|libexec\/qtcreator|lib\/qtcreator|g' -i qtcreator.pri
 }
 
 build() {
