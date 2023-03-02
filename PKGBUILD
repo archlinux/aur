@@ -9,7 +9,6 @@ url="https://github.com/str4d/$_pkgname"
 license=('Apache' 'MIT')
 depends=('fuse2' 'pcsclite')
 makedepends=('cargo' 'git')
-optdepends=('bash-completion: Bash completion')
 provides=("rust-$_pkgname")
 conflicts=("rust-$_pkgname")
 source=("$pkgname::git+$url")

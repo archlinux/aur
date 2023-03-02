@@ -13,7 +13,6 @@ pkgbase = rust-rage-git
 	makedepends = git
 	depends = fuse2
 	depends = pcsclite
-	optdepends = bash-completion: Bash completion
 	provides = rust-rage
 	conflicts = rust-rage
 	source = rust-rage-git::git+https://github.com/str4d/rage
