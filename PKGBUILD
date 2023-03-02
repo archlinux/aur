@@ -6,7 +6,7 @@ pkgver=3.4.5.22071
 _debpkgver=9.3.2deepin20
 _debpkgname="com.qq.im.deepin"
 _timpkgname="com.qq.office.deepin"
-pkgrel=1
+pkgrel=2
 pkgdesc="Tencent TIM on Deepin Wine5(${_timpkgname}) For Archlinux"
 arch=("x86_64")
 url="https://tim.qq.com/"
@@ -31,7 +31,8 @@ build() {
   #sed "s/\(Categories.*$\)/\1Network;/" -i "${srcdir}/dpkgdir/usr/share/applications/deepin.com.qq.office.desktop"
   #sed "13s/TIM.exe/tim.exe/" -i "${srcdir}/dpkgdir/usr/share/applications/deepin.com.qq.office.desktop"
   printf "Extracting Deepin Wine QQ archive ...\n"
-  7z x -aoa "${srcdir}/dpkgdir/opt/apps/${_debpkgname}/files/files.7z" -o"${srcdir}/deepintimdir"
+  # https://sourceforge.net/p/sevenzip/bugs/2356/
+  7z x -aoa -snl "${srcdir}/dpkgdir/opt/apps/${_debpkgname}/files/files.7z" -o"${srcdir}/deepintimdir"
   printf "Cleaning up the original package directory ...\n"
   rm -r "${srcdir}/deepintimdir/drive_c/Program Files/Tencent/QQ"
   #printf "Patching reg files ..."
