@@ -1,10 +1,10 @@
 pkgbase = xprinter-ppd
 	pkgdesc = CUPS driver for Xprinter XP-420B, XP-DT325B, XP-H400B, XP-TT325B series
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.xprintertech.com/drivers-2
 	arch = x86_64
-	source = package.rar::https://www.xprintertech.com/label-printer-1
-	sha256sums = 03d5d7b25a2c2fd3635ae22fe1117d5e2bdc2b2e2a1a2c981072a17a4b16786b
+	source = package.zip::https://www.xprintertech.com/label-printer-1
+	sha256sums = a846b3104beee9f464e211a25482e4dcaa6b3a9a56f8b684f5a6e1885517f1d3
 
 pkgname = xprinter-ppd
