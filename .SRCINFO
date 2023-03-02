@@ -1,6 +1,6 @@
 pkgbase = electron-fiddle-git
 pkgdesc = The easiest way to get started with Electron
-pkgver = 0.29.0.r171.ga8862e14
+pkgver = r1771.68eaf45
 pkgrel = 1
 url = https://electronjs.org/fiddle
 arch = x86_64
