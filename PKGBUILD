@@ -1,4 +1,4 @@
-# Maintainer: Andrea Denisse Gómez-Martínez <aur at denisse dot dev>
+# Maintainer: denisse <aur at denisse dot dev>
 
 pkgname=benthos
 pkgdesc='Declarative stream processing for mundane tasks and data engineering.'
@@ -6,12 +6,12 @@ arch=(aarch64 armv5h armv6h armv7h x86_64)
 url='https://benthos.dev'
 _url='https://github.com/Jeffail/benthos'
 _branch='master'
-pkgver=3.60.1
+pkgver=4.12.1
 pkgrel=1
 license=('MIT')
 makedepends=(go)
 source=("${pkgname}-${pkgver}.tar.gz::${_url}/archive/v${pkgver}.tar.gz")
-sha256sums=('f2e9b37c5bed391b40da5b1c3c9c555250490f95f76fa8b52ec351992db84c43')
+sha256sums=('aa8f082049714528a84515a74c126a3f2ab021dcf35d476bc8aff6623e29d017')
 provides=($pkgname)
 conflicts=($pkgname)
 
