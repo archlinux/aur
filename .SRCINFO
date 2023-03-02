@@ -11,6 +11,7 @@ pkgbase = harbour-shutter-git
 	depends = qt5-multimedia
 	depends = qt5-quickcontrols
 	depends = libexif
+	depends = libcamera
 	provides = harbour-shutter
 	conflicts = harbour-shutter
 	replaces = harbour-shutter
