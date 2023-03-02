@@ -21,6 +21,7 @@ makedepends=(
 	python-setuptools
 	"glibc>=2.34"
 	cmake
+	patch
 )
 
 provides=("${pkgname%-pkgver}")
