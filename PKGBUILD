@@ -9,8 +9,9 @@ arch=('x86_64')
 url="https://electronjs.org/fiddle"
 license=('MIT')
 depends=('electron')
-makedepends=('npm')
+makedepends=('npm' 'git')
 provides=("electron-fiddle")
+conflicts=('electron-fiddle' 'electron-fiddle-bin')
 source=("git+https://github.com/electron/fiddle.git")
 sha256sums=('SKIP')
 

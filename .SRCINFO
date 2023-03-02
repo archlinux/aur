@@ -6,8 +6,11 @@ url = https://electronjs.org/fiddle
 arch = x86_64
 license = MIT
 makedepends = npm
+makedepends = git
 depends = electron
 provides = electron-fiddle
+conflicts = electron-fiddle
+conflicts = electron-fiddle-bin
 source = git+https://github.com/electron/fiddle.git
 sha256sums = SKIP
 
