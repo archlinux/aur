@@ -1,8 +1,8 @@
 # Maintainer: Marius Hirt <marius-hirt@web.de>
 _pkgname=dezor
 pkgname=dezor-appimage
-pkgver=0.35.16
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="The web browser including VPN & Adblocker"
 arch=('x86_64')
 url='https://dezor.net'
@@ -12,7 +12,7 @@ source=(
 	"$_pkgname-$pkgver.AppImage::https://cdn.dezor.net/updates/linux/Dezor-v$pkgver-x86_64.AppImage"
 )
 sha256sums=(
-	'719debe09dc5f62364abccb6642e009d9fcfc749105987d2e8b34be7dbd267a6'
+	'0b28c4299c31a60525685961bbaebe2ad8cdd91d320bae111a19fb67ed49e723'
 )
 
 prepare() {
