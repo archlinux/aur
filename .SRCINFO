@@ -1,6 +1,6 @@
 pkgbase = python-pyfftw
 	pkgdesc = A pythonic wrapper around FFTW.
-	pkgver = 0.13.0
+	pkgver = 0.13.1
 	pkgrel = 2
 	url = https://github.com/pyFFTW/pyFFTW
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = python-pyfftw
 	depends = fftw
 	depends = python-numpy
 	depends = python-scipy
-	source = pyFFTW-0.13.0.tar.gz::https://github.com/pyFFTW/pyFFTW/archive/v0.13.0.tar.gz
-	md5sums = d445e9f3e1199d315038c2d31ea9f179
+	source = pyFFTW-0.13.1.tar.gz::https://github.com/pyFFTW/pyFFTW/archive/v0.13.1.tar.gz
+	md5sums = 1e6c37d9d0d8e037908cf89ca3c0232b
 
 pkgname = python-pyfftw
