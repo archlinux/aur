@@ -2,8 +2,8 @@
 
 _srcname=chinadns-ng
 pkgname=${_srcname}-git
-pkgver=r366.8f61b8c
-pkgrel=1
+pkgver=r387.a2ceae6
+pkgrel=2
 pkgdesc='Chinadns next generation, refactoring with epoll and ipset'
 arch=(i686 x86_64)
 url=https://github.com/zfl9/${_srcname}
@@ -21,7 +21,6 @@ pkgver() {
 
 build() {
     cd ${_srcname}
-    git checkout b25 -q # tag
     make
 }
 
