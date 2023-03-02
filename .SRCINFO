@@ -1,7 +1,7 @@
 pkgbase = waffle-git
 	pkgdesc = Library for choosing window system and OpenGL API at runtime (git version)
-	pkgver = v1.7.0.r71.g692046d
-	pkgrel = 3
+	pkgver = v1.7.0.r74.gcafcd1b
+	pkgrel = 1
 	url = https://waffle.freedesktop.org
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,6 @@ pkgbase = waffle-git
 	makedepends = mesa
 	makedepends = libxslt
 	makedepends = docbook-xsl
-	makedepends = cmake
 	makedepends = libdrm
 	makedepends = wayland-protocols
 	depends = libx11

@@ -3,8 +3,8 @@
 # Contributor: Clayton Craft <clayton@craftyguy.net>
 
 pkgname=waffle-git
-pkgver=v1.7.0.r71.g692046d
-pkgrel=3
+pkgver=v1.7.0.r74.gcafcd1b
+pkgrel=1
 pkgdesc='Library for choosing window system and OpenGL API at runtime (git version)'
 arch=('x86_64' 'aarch64')
 url='https://waffle.freedesktop.org'
@@ -19,7 +19,7 @@ optdepends=('libgl: for OpenGL or GLX support'
             'mesa: for gbm support'
             'libdrm: for gbm support'
             'wayland: for wayland support')
-makedepends=('git' 'meson' 'xcb-proto' 'mesa' 'libxslt' 'docbook-xsl' 'cmake' 'libdrm' 'wayland-protocols')
+makedepends=('git' 'meson' 'xcb-proto' 'mesa' 'libxslt' 'docbook-xsl' 'libdrm' 'wayland-protocols')
 
 source=('git+https://gitlab.freedesktop.org/mesa/waffle.git')
 sha256sums=('SKIP')
