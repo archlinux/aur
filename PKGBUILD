@@ -1,8 +1,8 @@
 # Maintainer: Jean Schoeller <jean@schoeller.fr>
 
+_pkgname="iio-hyprland"
 
-
-pkgname="iio-hyprland-git"
+pkgname="${_pkgname}-git"
 
 pkgver=1.0.1
 
@@ -20,26 +20,26 @@ licence="custom"
 
 url="https://github.com/JeanSchoeller/iio-hyprland/"
 source=(
-    "${pkgname}::git+${url}"
+    "${_pkgname}::git+${url}"
 )
 sha1sums=(
     SKIP
 )
 
 prepare() {
-    if [ ! -d "${pkgname}/build" ]; then
-    mkdir ${pkgname}/build
+    if [ ! -d "${_pkgname}/build" ]; then
+    mkdir ${_pkgname}/build
     fi
 }
 
 build() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$_pkgname"
     meson setup build    
 }
 
 package() {
-    cd ${pkgname}/build
-    DESTDIR="${pkgdir}" ninja install
+    cd ${_pkgname}/build
+    DESTDIR="${_pkgdir}" ninja install
 }
 
 
