@@ -8,12 +8,12 @@
 _base=requests-cache
 pkgname=python-${_base}
 pkgdesc="A transparent persistent cache for the requests library"
-pkgver=0.9.8
+pkgver=1.0.0
 pkgrel=1
 arch=(any)
-url="https://github.com/reclosedev/${_base}"
+url="https://github.com/${_base}/${_base}"
 license=('custom:BSD-2-clause')
-depends=(python-requests python-appdirs python-cattrs python-url-normalize)
+depends=(python-requests python-platformdirs python-cattrs python-url-normalize)
 makedepends=(python-poetry-core python-build python-installer python-wheel)
 optdepends=(
   'python-boto3: Cache backend for Amazon DynamoDB database'
@@ -27,7 +27,7 @@ optdepends=(
 )
 checkdepends=(python-pytest python-requests-mock python-responses python-itsdangerous python-ujson python-timeout-decorator)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('f428a7b498d2ef2b6c23d3715bac2274c320b6f9d6f56017e69ab5fa6b8830242a2f335ed6c3758a741a51f108c6dacae1a447ff8f05ca5686303caf48a1dc59')
+sha512sums=('21bc59c35fdbcd25ae9db5e13067422199bb29077ddc98ecf163e52fee2ef38f31c44012a39e96ad3f3b32854510edd8453803352eb076622bfd817cde51a7e2')
 
 build() {
   cd ${_base}-${pkgver}
