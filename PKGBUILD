@@ -1,7 +1,7 @@
 # Maintainer: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=denaro-git
-pkgver=2023.2.2.r27.gfca8ad1
+pkgver=2023.2.2.r31.g98ea94b
 pkgrel=1
 pkgdesc='A personal finance manager'
 arch=(aarch64 armv7h x86_64 i686)
@@ -20,10 +20,10 @@ pkgver() {
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-	sed -i "s#dotnet {{PREFIX}}#dotnet /usr#;s#set-value='{{PREFIX}}#set-value='/usr#" nickvisionmoney/NickvisionMoney.GNOME/justfile
+build() {
+	just nickvisionmoney/NickvisionMoney.GNOME/ publish /usr
 }
 
 package() {
-	just nickvisionmoney/NickvisionMoney.GNOME/ publish "$pkgdir"/usr
+	just nickvisionmoney/NickvisionMoney.GNOME/ install "$pkgdir"
 }
