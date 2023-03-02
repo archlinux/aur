@@ -1,6 +1,6 @@
 pkgbase = verapdf
 	pkgdesc = purpose-built, open source, file-format validator covering all PDF/A parts and conformance levels
-	pkgver = 1.18.6
+	pkgver = 1.22.3
 	pkgrel = 1
 	url = https://verapdf.org/
 	arch = any
@@ -9,13 +9,13 @@ pkgbase = verapdf
 	makedepends = unzip
 	depends = java-runtime
 	depends = bash
-	noextract = verapdf-greenfield-1.18.6-installer.zip
+	noextract = verapdf-greenfield-1.22.3-installer.zip
 	noextract = auto-install.sh
-	source = https://software.verapdf.org/rel/1.18/verapdf-greenfield-1.18.6-installer.zip
+	source = https://software.verapdf.org/rel/1.22/verapdf-greenfield-1.22.3-installer.zip
 	source = verapdf.png::https://avatars1.githubusercontent.com/u/9946925?s=280&v=4
 	source = verapdf.desktop
 	source = auto-install.xml
-	md5sums = ab2304af430178a80623b61975005ec1
+	md5sums = 6a881c108b448e27c7e727c133e77187
 	md5sums = 076b23717ab675281ed53dcf84471b89
 	md5sums = d84e22d0455afdf60816e182d66ce089
 	md5sums = 312f8dc7e9c4a6ecfd25d75aff7b22c9
