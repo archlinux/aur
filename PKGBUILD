@@ -1,7 +1,7 @@
 # Maintainer: Baltazár Radics <baltazar.radics@gmail.com>
 pkgname=omnisharp-roslyn-bin
 pkgver=1.39.4
-pkgrel=1
+pkgrel=2
 pkgdesc='OmniSharp server (STDIO) based on Roslyn workspaces'
 arch=(x86_64)
 url='https://github.com/OmniSharp/omnisharp-roslyn'
