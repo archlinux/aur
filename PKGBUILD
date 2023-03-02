@@ -1,7 +1,7 @@
 # Maintainer: Alban Fichet <alban.fichet@gmx.fr>
 pkgname=spectral-viewer
-pkgver=3.3.1
-pkgrel=12
+pkgver=3.3.2
+pkgrel=13
 pkgdesc="Tool for visualising and manipulating spectral images and HDR images."
 arch=('any')
 url="https://mrf-devteam.gitlab.io/spectral-viewer/"
