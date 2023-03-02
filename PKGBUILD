@@ -18,7 +18,7 @@ pkgver() {
 }
 
 pkgver=1.6.1.r19.g5c2b5d2d0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://handbrake.fr/"
 license=('GPL')
