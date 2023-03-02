@@ -1,4 +1,4 @@
-# Maintainer: Andrea Denisse Gómez-Martínez <aur at denisse dot dev>
+# Maintainer: denisse <aur at denisse dot dev>
 
 pkgname=oauth2-proxy
 pkgdesc='A reverse proxy that provides authentication with Google, Github or other providers.'
@@ -6,12 +6,12 @@ arch=(aarch64 armv6h x86_64)
 url='https://oauth2-proxy.github.io/oauth2-proxy/'
 _url='https://github.com/oauth2-proxy/oauth2-proxy'
 _branch='master'
-pkgver=7.2.0
+pkgver=7.4.0
 pkgrel=1
 license=('MIT')
 makedepends=(go sed)
 source=("${pkgname}-${pkgver}.tar.gz::${_url}/archive/v${pkgver}.tar.gz")
-b2sums=('cb40e2be2ab335289d2785382fedb3f57cd9b1f7d67311d247e692e22a135f51cf460b534196981e9e87f31ab44500f92d5e938701f2a45971a0f20178f66dd5')
+b2sums=('83a5c8ee42ac55f6d9b5389da1b0ffb2132a3dae7e9c80f0fb866b52a866e557bf1f924c9bdf91fc99b63f954a939a7e876d22b7009d3e7223b016e21a439caa')
 provides=($pkgname)
 conflicts=($pkgname)
 
