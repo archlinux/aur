@@ -1,8 +1,8 @@
 pkgbase = java-openjdk-ea-bin
-	pkgdesc = Java OpenJDK 20 Early-Access Build
-	pkgver = 20b36
+	pkgdesc = Java OpenJDK 21 Early-Access Build
+	pkgver = 21b12
 	pkgrel = 1
-	url = https://jdk.java.net/20
+	url = https://jdk.java.net/21
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
@@ -14,13 +14,13 @@ pkgbase = java-openjdk-ea-bin
 	depends = libxtst
 	depends = alsa-lib
 	depends = freetype2
-	provides = java-environment=20
-	provides = java-environment-openjdk=20
-	provides = java-runtime=20
-	provides = java-runtime-openjdk=20
-	provides = java-runtime-headless=20
-	provides = java-runtime-headless-openjdk=20
-	source = https://download.java.net/java/GA/jdk20/bdc68b4b9cbc4ebcb30745c85038d91d/36/GPL/openjdk-20_linux-x64_bin.tar.gz
-	sha256sums = bb863b2d542976d1ae4b7b81af3e78b1e4247a64644350b552d298d8dc5980dc
+	provides = java-environment=21
+	provides = java-environment-openjdk=21
+	provides = java-runtime=21
+	provides = java-runtime-openjdk=21
+	provides = java-runtime-headless=21
+	provides = java-runtime-headless-openjdk=21
+	source = https://download.java.net/java/early_access/jdk21/12/GPL/openjdk-21-ea+12_linux-x64_bin.tar.gz
+	sha256sums = da247094c9b9e7b4ab18b5e36adc89e3b7f6ee77192816ce059b933e23e09fca
 
 pkgname = java-openjdk-ea-bin

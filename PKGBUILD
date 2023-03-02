@@ -3,8 +3,8 @@
 # Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=java-openjdk-ea-bin
 
-_majorver=20
-_buildver=36
+_majorver=21
+_buildver=12
 pkgver=${_majorver}b${_buildver}
 pkgrel=1
 
@@ -33,13 +33,13 @@ provides=(
   "java-runtime-headless=${_majorver}"
   "java-runtime-headless-openjdk=${_majorver}"
 )
-#source=("https://download.java.net/java/early_access/jdk${_majorver}/${_buildver}/GPL/openjdk-${_majorver}-ea+${_buildver}_linux-${_JARCH}_bin.tar.gz")
-source=("https://download.java.net/java/GA/jdk20/bdc68b4b9cbc4ebcb30745c85038d91d/36/GPL/openjdk-20_linux-${_JARCH}_bin.tar.gz")
+source=("https://download.java.net/java/early_access/jdk${_majorver}/${_buildver}/GPL/openjdk-${_majorver}-ea+${_buildver}_linux-${_JARCH}_bin.tar.gz")
+
 
 if [[ $_JARCH == "x64" ]]; then
-sha256sums=('bb863b2d542976d1ae4b7b81af3e78b1e4247a64644350b552d298d8dc5980dc')
+sha256sums=('da247094c9b9e7b4ab18b5e36adc89e3b7f6ee77192816ce059b933e23e09fca')
 else
-sha256sums=('b671dd1513e7bd4f3de6b1424a90a4998997a67593bf259936d55f5e83e31959')
+sha256sums=('ea0bf5244a8b27f1c111cb40cb161186c9217f0bbc31e3a019b81c21505c8f18')
 fi
 
 
