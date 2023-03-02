@@ -1,6 +1,6 @@
 # Maintainer: RaphGL <raphfl.dev@gmail.com>
 pkgname=neosent-git
-pkgver=v1.0
+pkgver=v1.1
 pkgrel=1
 epoch=1
 pkgdesc="Suckful Sent"
