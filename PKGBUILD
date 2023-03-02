@@ -1,13 +1,13 @@
 #Maintainer: BoBeR182 <aur AT nullvoid DOT me>
 #Contributor: max-k <max-k AT post DOT com>
 pkgname=ampache
-pkgver=5.5.6
+pkgver=5.5.7
 pkgrel=1
 pkgdesc="PHP web based audio/video streaming application and file manager"
 arch=('any')
 url="http://www.ampache.org/"
 license=('GPL')
-depends=('mariadb>=10.0' 'php>=8.1')
+depends=('mariadb>=10.0' 'php>=8.2')
 optdepends=('lame: all transcoding/downsampling'
                 'vorbis-tools: all transcoding'
                 'flac: flac transcoding/downsampling'
@@ -16,10 +16,10 @@ optdepends=('lame: all transcoding/downsampling'
 conflicts=('ampache-git' 'ampache-development')
 install="${pkgname}.install"
 _sourcebase="https://github.com/${pkgname}/${pkgname}/releases/download"
-source=("${_sourcebase}/${pkgver}/${pkgname}-${pkgver}_all_squashed_php8.1.zip"
+source=("${_sourcebase}/${pkgver}/${pkgname}-${pkgver}_all_squashed_php8.2.zip"
         "nginx-example.conf"
         "${pkgname}.install")
-sha256sums=('63b069e108e1ee48915a79c384d9a2905cba5b44c9e47f7b1e8f5cbdad03eabf'
+sha256sums=('51f7ea64f6fa5f746576c2a7f7b2d17f98f7122ebfd2126642cfc8d53a8ac7ab'
             'd579f125fc85b6862dc2bd950b6aa3a4ffdad219323b8ee2c93282c8f223c3eb'
             '218f6293f3b63310bba36c6903f907a2b5594013d4d64d206d7ac45c85b1ed26')
 options=(!strip)
@@ -36,7 +36,7 @@ package() {
   _vendordir="${_targetdir}/lib/vendor"
   mkdir -p "$_targetdir"
   cp -r ./* "${_targetdir}/"
-  unlink "${_targetdir}/${pkgname}-${pkgver}_all_squashed_php8.1.zip"
+  unlink "${_targetdir}/${pkgname}-${pkgver}_all_squashed_php8.2.zip"
   unlink "${_targetdir}/nginx-example.conf"
   unlink "${_targetdir}/ampache.install"
   rm -r "${_targetdir}/docs/man"
