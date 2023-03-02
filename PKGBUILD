@@ -1,6 +1,6 @@
 packager='Aditya Mahajan <adityam at umich dot edu>'
 pkgname=luametatex
-pkgver=2021.12.14
+pkgver=2023.02.23
 pkgrel=1
 pkgdesc="ConTeXt LuaMetaTeX distribution"
 url="http://www.contextgarden.net"
@@ -42,14 +42,19 @@ modules=(
          "https://mirrors.ctan.org/macros/context/contrib/context-filter.zip"
          "https://mirrors.ctan.org/macros/context/contrib/context-vim.zip"
          "https://mirrors.ctan.org/macros/context/contrib/context-visualcounter.zip"
-         "http://mirrors.ctan.org/install/graphics/pgf/base/pgf.tds.zip"
          "http://mirrors.ctan.org/install/graphics/pgf/contrib/pgfplots.tds.zip"
          "http://mirrors.ctan.org/install/graphics/pgf/contrib/circuitikz.tds.zip"
          )
 
+pgf_modules=(
+         "http://mirrors.ctan.org/install/graphics/pgf/base/pgf.tds.zip"
+)
+
 module_names=("${modules[@]##*/}")
+pgf_module_names=("${pgf_modules[@]##*/}")
 
 module_count=${#modules[@]}
+pgf_module_count=${#pgf_modules[@]}
 
 _dest=/opt/luametatex
 
@@ -61,27 +66,27 @@ _osfontdir="/usr/share/fonts"
 
 pkgver() {
   cd "$scrdir"
-  grep -e '\\edef\\contextversion' tex/texmf-context/tex/context/base/mkiv/context.mkiv | sed -n 's/.*{\(.*\) .*}/\1/p'
+  grep -e '\\edef\\contextversion' tex/texmf-context/tex/context/base/mkxl/context.mkxl | sed -n 's/.*{\(.*\) .*}/\1/p'
 }
 
 prepare() {
- OLDPATH=$PATH
- PATH=$scrdir/bin:$scrdir/tex/texmf-${_platform}/bin:$PATH
- msg "Starting download or update of ConTeXt distribution"
- chmod +x $srcdir/bin/mtxrun
- $srcdir/bin/mtxrun --script $srcdir/bin/mtx-install.lua --update \
-                    --server="${_lmtxserverlist}" \
-                    --instance="install-lmtx" --erase \
-                    || return 1
- PATH=$OLDPATH
- # Make sure the binaries are executable
- chmod +x $srcdir/tex/texmf-${_platform}/bin/{context,luametatex,mtxrun}
+  OLDPATH=$PATH
+  PATH=$scrdir/bin:$scrdir/tex/texmf-${_platform}/bin:$PATH
+  msg "Starting download or update of ConTeXt distribution"
+  chmod +x $srcdir/bin/mtxrun
+  $srcdir/bin/mtxrun --script $srcdir/bin/mtx-install.lua --update \
+                     --server="${_lmtxserverlist}" \
+                     --instance="install-lmtx" --erase \
+                     || return 1
+  PATH=$OLDPATH
+  # Make sure the binaries are executable
+  chmod +x $srcdir/tex/texmf-${_platform}/bin/{context,luametatex,mtxrun}
+ 
+  # Copy mtxrun for next install
+  cp $srcdir/tex/texmf-${_platform}/bin/mtxrun $srcdir/bin
+  cp $srcdir/tex/texmf-context/scripts/context/lua/{mtxrun.lua,mtx-install.lua} $srcdir/bin
 
- # Copy mtxrun for next install
- cp $srcdir/tex/texmf-${_platform}/bin/mtxrun $srcdir/bin
- cp $srcdir/tex/texmf-context/scripts/context/lua/{mtxrun.lua,mtx-install.lua} $srcdir/bin
-
-  echo "Installing $module_count modules ..."
+  echo "Installing $module_count + $pgf_module_count modules ..."
   mkdir -p $srcdir/tex/texmf-modules
 
   # PKGBUILD doesn't seem to support brace expansion
@@ -93,15 +98,24 @@ prepare() {
       count+=1
   done
 
-  # pgfplots doesn't make all the files readable, so we manually correct the
-  # modes
-  chmod -R a+rx $srcdir/tex/texmf-modules
+  mkdir -p $srcdir/tex/texmf-modules
+
+  declare -i pgf_count=0
+  while [ $pgf_count -lt $pgf_module_count ]
+  do
+      wget -O $srcdir/${pgf_module_names[$pgf_count]} ${pgf_modules[$pgf_count]}
+      unzip -o -d $srcdir/tex/texmf-modules $srcdir/${pgf_module_names[$pgf_count]} \
+            -x "**/t-*.*" 
+      pgf_count+=1
+  done
 
 
  # Generate a setuptex file
+ mkdir -p $srcdir/tex
  cat <<- _EOF_ > $srcdir/tex/setuptex
-	_OLD_PS1=\$PS1
 	_OLD_PATH=\$PATH
+    _OLD_CONTEXTDIST=$CONTEXTDIST
+
 	TEXMFOS=${_dest}/texmf-${_platform}
 	export TEXMFOS
 
@@ -111,19 +125,17 @@ prepare() {
 	PATH=\$TEXMFOS/bin:\$PATH
 	export PATH
 
-	PS1="(lmtx) \$PS1"
-	export PS1
-
 	OSFONTDIR="$_userfontdir;$_osfontdir;"
 	export OSFONTDIR
+
 	resettex () {
 	    PATH=\$_OLD_PATH
 	    export PATH
 	    unset _OLD_PATH
 
-	    PS1=\$_OLD_PS1
-	    export PS1
-	    unset _OLD_PS1
+        CONTEXTDIST=$_OLD_CONTEXTDIST
+        export CONTEXTDIST
+        unset _OLD_CONTEXTDIST
 
 	    unset -f resettex
 }
