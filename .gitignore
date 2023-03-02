@@ -1,7 +1,8 @@
-
+/.vscode
+/gen_srcinfo.sh
 /pkg
 /src
-/verapdf.png
-*.pkg.tar.xz
 /verapdf-*-installer.zip
-/gen_srcinfo.sh
+/verapdf.png
+*.log
+*.pkg.tar.xz
