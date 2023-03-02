@@ -3,7 +3,7 @@ pkgbase=python-sphinx-changelog
 _pname=${pkgbase#python-}
 _pyname=${_pname/-/_}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A changelog renderer for sphinx"
 arch=('any')
@@ -19,7 +19,7 @@ makedepends=('python-setuptools-scm'
 checkdepends=('python-nose')    # sphinx, towncrier already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/OpenAstronomy/sphinx-changelog/main/changelog/template.rst")
-md5sums=('5fba7a2b299a2445f09be5e0567cfa71'
+md5sums=('fd484014c2192b63395d93a16fc1aae4'
          'SKIP')
 
 prepare() {
@@ -33,19 +33,18 @@ build() {
     python -m build --wheel --no-isolation
 
     msg "Building Docs"
-    cd ${srcdir}/${_pyname}-${pkgver}/docs
-    PYTHONPATH="../build/lib" make html
+    PYTHONPATH="../build/lib" make -C docs html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-#   pytest #|| warning "Tests failed"
+#   pytest -vv --color=yes #|| warning "Tests failed"
     nosetests || warning "Tests failed"
 }
 
 package_python-sphinx-changelog() {
-    depends=('python-sphinx' 'towncrier>=22.8.0')
+    depends=('python-sphinx' 'towncrier')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" licenses/*
