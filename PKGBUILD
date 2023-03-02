@@ -3,7 +3,7 @@
 
 pkgbase=linux-lts515
 pkgver=5.15.96
-pkgrel=1
+pkgrel=2
 pkgdesc='LTS Linux 5.15.x'
 url="https://www.kernel.org/"
 arch=(x86_64 pentium4 i686 i486)
@@ -216,29 +216,8 @@ eval "$(
     sed '
       \,/tools/objtool" ,d
       \,arch/x86/Makefile,a install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile_32.cpu
-      $ i depends+=(gcc-libs=$(_get_gcc_version_from_config))
     '
 )"
-
-_get_gcc_version_from_config() {
-  if [ -z "$srcdir" ]; then
-    gcc --version \
-    | sed '
-      s@^.* @@
-      1!d
-    '
-  else
-    for _config_file in "$srcdir/$_srcname/.config" "$srcdir/config" "${srcdir%/*}/config"; do
-      [ -f "$_config_file" ] && break
-    done
-    sed '
-      s/^CONFIG_CC_VERSION_TEXT="gcc (GCC) \([0-9.]\+\)"$/\1/
-      t
-      d
-    ' "$_config_file"
-  fi
-}
-
 
 if [ "${CARCH}" = "i486" -o  "${CARCH}" = "i686" -o "${CARCH}" = "pentium4" ]; then
   source_pentium4=('config.pentium4')
@@ -270,28 +249,8 @@ if [ "${CARCH}" = "i486" -o  "${CARCH}" = "i686" -o "${CARCH}" = "pentium4" ]; t
           a \
           install -t "${builddir}/arch/x86" -m644 arch/x86/Makefile_32.cpu
         }
-        $ i depends+=(gcc-libs=$(_get_gcc_version_from_config))
       '
   )"
-
-  _get_gcc_version_from_config() {
-    if [ -z "$srcdir" ]; then
-      gcc --version \
-      | sed '
-        s@^.* @@
-        1!d
-      '
-    else
-      for _config_file in "$srcdir/$_srcname/.config" "$srcdir/config" "${srcdir%/*}/config"; do
-        [ -f "$_config_file" ] && break
-      done
-      sed '
-        s/^CONFIG_CC_VERSION_TEXT="gcc (GCC) \([0-9.]\+\)"$/\1/
-        t
-        d
-      ' "$_config_file"
-    fi
-  }
 
   # avoid using zstd compression in ultra mode (exhausts virtual memory)
   source+=('no-ultra-zstd.patch')
