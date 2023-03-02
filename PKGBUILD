@@ -1,0 +1,29 @@
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+pkgname=ttf-i-ming-fonts
+pkgver=8.00
+pkgdesc="I.Ming ( I.明體 / 一点明朝体 / 一點明體 )"
+pkgrel=1
+arch=(any)
+url='https://github.com/ichitenfont/I.Ming'
+license=(IPA)
+depends=()
+makedepends=()
+source=(
+    "I.Ming-8.00.ttf::${url}/raw/master/8.00/I.Ming-8.00.ttf"
+    "I.MingCP-8.00.ttf::${url}/raw/master/8.00/I.MingCP-8.00.ttf"
+    "I.MingVar-8.00.ttf::${url}/raw/master/8.00/I.MingVar-8.00.ttf"
+    "I.MingVarCP-8.00.ttf::${url}/raw/master/8.00/I.MingVarCP-8.00.ttf"
+    "PMingI.U-8.00.ttf::${url}/raw/master/8.00/PMingI.U-8.00.ttf"
+    "PMingI.UVar-8.00.ttf::${url}/raw/master/8.00/PMingI.UVar-8.00.ttf"
+)
+sha256sums=('eb7e39eb6f4e74acfa9539c3dd58eda7a0f3b18cb4a2368bd276971abb5d66fc'
+            '23eb45cdf0ac71c8c57462c4ea2a99efc8de1fb81273064dbe0873a628b4e150'
+            '7d2120c61fcb5defb0e816cba7574bc0a9fcea2c19ecaf5d3febe3dd8ddf5076'
+            '8d95346811e36c8f629bdd4c1f0f78684b6cbb394acedb8d0b551d737458e054'
+            '57c8c6c20a7adb5aee01b35ef21f50a9255d43f6d8316fdc3f8792b09bd86b0c'
+            '5f35c4c97eb276f3468743d3b782dba1f85e4c712906d2363c63dd8de2431fab')
+package() {
+    export LC_CTYPE="zh_CN.UTF-8"    
+    install -dm755 "${pkgdir}/usr/share/fonts/TTF"
+    cp "${srcdir}"/*.ttf "${pkgdir}/usr/share/fonts/TTF"
+}
