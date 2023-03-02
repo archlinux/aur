@@ -25,7 +25,6 @@ pkgbase = flow
 	makedepends = ocaml-sedlex>=2.3
 	makedepends = ocaml-visitors
 	makedepends = ocaml-wtf8
-	optdepends = bash-completion: Bash completion
 	source = flow-0.200.1-1.tar.gz::https://github.com/facebook/flow/archive/v0.200.1.tar.gz
 	sha512sums = 3627b4364a234e94cecd77094dbb51c5a06a90ebf6f65966557325aaa3479a6a110faf0dcf5315bdd17f7462937c81863de6c7c200adef9cc817d76b448a545b
 
