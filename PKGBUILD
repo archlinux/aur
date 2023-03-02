@@ -2,7 +2,7 @@
 
 pkgname=kora-icon-theme
 pkgver=1.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="SVG icon theme suitable for every desktop environment (dark and light versions, HiDPI support)"
 arch=("any")
 url="https://github.com/bikass/kora"
@@ -24,7 +24,7 @@ _iconcache=icon-theme.cache
 _iconnewcachescript=create-new-icon-theme.cache.sh
 
 package() {
-    cd "$srcdir/kora-$pkgver"
+    cd "$srcdir/kora-v.$pkgver"
     
     # Delete useless files from source folder
     rm -f "kora/$_iconnewcachescript"
