@@ -8,7 +8,7 @@ url="https://gitlab.com/youtube-music/application"
 license=('GPL')
 replaces=("youtubemusic-bin")
 conflicts=("youtubemusic-bin")
-depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
+depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git' 'playerctl')
 source=("https://gitlab.com/youtube-music/application/-/archive/$pkgver-$pkgrel/application-$pkgver-$pkgrel.tar.bz2")
 sha256sums=('SKIP')
 

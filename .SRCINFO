@@ -11,6 +11,7 @@ pkgbase = youtubemusic
 	depends = gtk3
 	depends = libxss
 	depends = git
+	depends = playerctl
 	conflicts = youtubemusic-bin
 	replaces = youtubemusic-bin
 	source = https://gitlab.com/youtube-music/application/-/archive/1.0.7-1/application-1.0.7-1.tar.bz2
