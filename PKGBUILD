@@ -6,14 +6,14 @@ arch=('x86_64')
 url="https://portal.nersc.gov/project/sparse/superlu"
 license=('BSD')
 depends=('blas')
-makedepends=('gcc-fortran' 'tcsh' 'cmake')
+makedepends=('gcc-fortran')
 options=('staticlibs' '!makeflags')
 source=("${url}/superlu_mt_${pkgver}.tar.gz")
 sha256sums=(SKIP)
 
 build() {
   cd "$srcdir/SuperLU_MT_${pkgver}"
-  make CFLAGS="${CFLAGS} -fPIC" BLASLIB="-lblas"
+  make CFLAGS="${CFLAGS} -fPIC" BLASLIB="-lblas" lib
 }
 
 package() {
