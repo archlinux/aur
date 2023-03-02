@@ -4,11 +4,11 @@ _projectid=160
 _buildid=3476
 pkgname=('onedev' 'onedev-new')
 pkgbase=onedev
-pkgver=8.0.4
+pkgver=8.0.5
 pkgrel=1
 arch=('x86_64')
 depends=('java-runtime-headless>11.0.0' 'git>2.11.1' 'fontconfig' 'ttf-dejavu')
-makedepends=('gzip' 'tar' 'java-environment-openjdk=11')
+makedepends=('gzip' 'tar')
 url="https://code.onedev.io/onedev/server"
 license=('MIT' 'BSD' 'Apache' 'LGPL2.1' 'MPL2' 'custom:Oracle Technology Network License'
          'custom:Microsoft Software License' 'custom:Sun Microsystems Inc Binary Code License'

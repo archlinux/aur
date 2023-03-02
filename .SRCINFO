@@ -1,5 +1,5 @@
 pkgbase = onedev
-	pkgver = 8.0.4
+	pkgver = 8.0.5
 	pkgrel = 1
 	url = https://code.onedev.io/onedev/server
 	arch = x86_64
@@ -14,7 +14,6 @@ pkgbase = onedev
 	license = custom:Jetty License
 	makedepends = gzip
 	makedepends = tar
-	makedepends = java-environment-openjdk=11
 	depends = java-runtime-headless>11.0.0
 	depends = git>2.11.1
 	depends = fontconfig
@@ -24,7 +23,7 @@ pkgbase = onedev
 	backup = opt/onedev/conf/server.properties
 	backup = opt/onedev/conf/wrapper.conf
 	backup = opt/onedev/conf/wrapper-license.conf
-	source = https://code.onedev.io/~downloads/projects/160/builds/3476/artifacts/onedev-8.0.4.tar.gz
+	source = https://code.onedev.io/~downloads/projects/160/builds/3476/artifacts/onedev-8.0.5.tar.gz
 	source = sysusers.conf
 	source = onedev.service
 	sha256sums = 716d034607f51145871cc6c60ea8a1227013d69b0746b69449e209b3dcdbccc0
