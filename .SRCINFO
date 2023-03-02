@@ -1,7 +1,7 @@
 pkgbase = buildbox-casd
 	pkgdesc = Local cache and proxy for remote CAS servers
 	pkgver = 0.0.63
-	pkgrel = 1
+	pkgrel = 2
 	url = https://buildgrid.build
 	arch = x86_64
 	license = Apache

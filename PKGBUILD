@@ -2,7 +2,7 @@
 # Maintainer: Marko Semet <marko10_000@mailbox.org>
 pkgname=buildbox-casd
 pkgver=0.0.63
-pkgrel=1
+pkgrel=2
 pkgdesc="Local cache and proxy for remote CAS servers"
 arch=(x86_64)
 url="https://buildgrid.build"
@@ -13,6 +13,7 @@ source=("git+https://gitlab.com/BuildGrid/buildbox/buildbox-casd#tag=0.0.63&comm
 sha256sums=('SKIP')
 
 build() {
+  sed -i 's@CMAKE_CXX_STANDARD 14@CMAKE_CXX_STANDARD 20@' buildbox-casd/CMakeLists.txt
   mkdir -p build
   cd build
   cmake ../buildbox-casd \
@@ -26,7 +27,7 @@ build() {
 check() {
   cd build
   echo "Test 'cas_proxy_tests' and 'local_cas_service_tests' can take some time."
-  ninja -k-1 test
+  ninja test
 }
 
 package() {
