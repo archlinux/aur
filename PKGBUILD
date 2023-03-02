@@ -7,7 +7,7 @@ pkgbase=crowdsec-firewall-bouncer-bin
 _pkgname=(crowdsec-firewall-bouncer)
 
 pkgver=0.0.25
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url="https://crowdsec.net"
 license=('MIT')
@@ -58,7 +58,7 @@ package_crowdsec-firewall-bouncer-nftables-bin() {
 
 
 
-sha256sums=('c83017ae6b8174647817c82a8e3a7855420811f4395224898c62df89aeaf0ac0'
-            '8cd0afbabc5c97cc4181d451bf06b6bcc709b721e0ec82550cc9f99532acb784')
+sha256sums=('5c7a53710edb8b2b30eb29245ac0ff209066ef3aeb8fd0f54432994654da7be6'
+            '804fe713e59994f1259af0d1b07b0f6cf40c8aa31e468818364dae87eef51b3f')
 sha256sums_x86_64=('150666621d61e3bad05a28da9fda17a96743805e5392b278b0f3ecb8fe441382')
 sha256sums_aarch64=('bfeb8f778d7d01dbdaedaad6b13d35169e4d7335dc2782de153195d402e86ac3')

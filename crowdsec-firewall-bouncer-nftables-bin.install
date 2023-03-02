@@ -21,9 +21,6 @@ START=0
     install -m 0600 /etc/crowdsec/bouncers/crowdsec-firewall-bouncer.yaml "$TMP"
     BACKEND=nftables API_KEY="$API_KEY" envsubst < "$TMP" | install -m 0600 /dev/stdin /etc/crowdsec/bouncers/crowdsec-firewall-bouncer.yaml
     rm "$TMP"
-else
-    START=1
-fi
 
 if command -v cscli >/dev/null; then
     PORT=$(cscli config show --key "Config.API.Server.ListenURI" | cut -d ":" -f2)
