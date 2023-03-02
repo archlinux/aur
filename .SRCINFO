@@ -8,6 +8,7 @@ pkgbase = ifetch-git
 	makedepends = git
 	makedepends = make
 	depends = glibc
+	backup = etc/ifetch/ifetchrc
 	source = ifetch-git::git+https://github.com/deivshon/ifetch.git
 	md5sums = SKIP
 
