@@ -1,12 +1,12 @@
 # Maintainer: Areskul <areskul@areskul.com>
 pkgname="pipelight"
-pkgver="0.4.8"
+pkgver="0.4.10"
 pkgrel=1
 pkgdesc="A Rust/Typescript based absurd automation tool"
 arch=(x86_64)
 url="https://gitea.com/pipelight/pipelight.git"
 license=('GPL2')
-depends=()
+depends=(deno)
 makedepends=(git make)
 provides=("pipelight")
 conflicts=("pipelight")
