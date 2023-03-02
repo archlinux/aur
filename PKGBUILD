@@ -34,8 +34,6 @@ _piver=""
 _use_mesa=true
 _float=false
 _shadow_build=true
-# automatically disabled if you are building webengine
-_debug=true
 _skip_qtwebengine=true
 _skip_qtwidgets=false
 _static_build=false
@@ -52,14 +50,9 @@ if [[ -f build-from-local-src-tree  ]]; then
   _build_from_local_src_tree=true
 fi
 
-if [[ -f no-debug ]]; then
-  _debug=false
-fi
-
 if [[ -f static ]]; then
   _static_build=true
   _uber_minimal=true
-  _debug=false
   #_float=true
 fi
 
@@ -119,14 +112,17 @@ fi
 # vars
 _local_qt_repo="${local_qt_repo}"
 #_pkgvermajmin="5.15"
-_pkgvermajmin="6.2"
+_pkgvermajmin="6.5"
 _pkgverpatch=".0"
 # {alpha/beta/beta2/rc}
-_dev_suffix="rc2"
-pkgrel=6
+_dev_suffix="beta3"
+pkgrel=2
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_local_src_tree && pkgver=6.6.6
-_pkgver=${pkgver}
+if [[ -n ${_dev_suffix} ]]; then
+    _pkgver=${pkgver}-${_dev_suffix}
+    pkgver=${pkgver}${_dev_suffix}
+fi
 _release_type="development_releases"
 _profiled_gpu_fn=qpi-proprietary.sh
 
@@ -157,100 +153,38 @@ if $_building && $_uber_minimal; then
   _skip_qtwidgets=true
 fi
 
-if [[ -f debug ]]; then
-  _debug=true
-fi
-
-$_skip_qtwebengine && _additional_configure_flags="$_additional_configure_flags -skip qtwebengine -no-icu"
-$_skip_qtwidgets && _additional_configure_flags="$_additional_configure_flags -no-widgets"
-$_static_build && _additional_configure_flags="$_additional_configure_flags -static -ltcg"
-$_float && _additional_configure_flags="$_additional_configure_flags -qreal float"
-$_debug && _additional_configure_flags="$_additional_configure_flags -force-debug-info -separate-debug-info"
-
 _libspkgname="${pkgname}-target-libs"
 _libsdebugpkgname="${pkgname}-target-libs-debug"
 _packaginguser=$(whoami)
 _qt_package_name_prefix="qt-everywhere-src"
-if [[ -n ${_dev_suffix} ]]; then
-    _pkgver=${pkgver}-${_dev_suffix}
-fi
 _source_package_name=${_qt_package_name_prefix}-${_pkgver}
-_baseprefix="/opt/qt"
-_installprefix=${_baseprefix}/${pkgname}
+_installprefix="/opt/qt/${_pkgver}"
 
 pkgdesc="Qt SDK for both hosts and a variety of targets"
 arch=("x86_64")
 url="http://www.chaos-reins.com/qpi/"
 license=("LGPL3" "GPL3")
 optdepends=('qtcreator: Integrated IDE development')
-makedepends=("git" "pkgconfig" "gcc" "gperf" "python" "clang" "cmake" "ninja" "libc++" "pcre" "harfbuzz")
+makedepends=("git" "pkgconfig" "gcc" "gperf" "python" "clang" "cmake" "ninja" "libc++" "pcre" "harfbuzz" "mold")
 #_provider=http://qt.mirror.constant.com/
 _provider=https://download.qt.io
 _tmpfs_dir=/vortex/build
 
-retired_exhaustive_uber_minimal_specific_configure_options="\
-    -no-linuxfb \
-"
-
-if $_minimal; then
-    _additional_configure_flags="$_additional_configure_flags \
-        -no-xcb \
-        -qpa eglfs \
-        -egl \
-    "
-fi
-
-if $_uber_minimal; then
-    _additional_configure_flags="$_additional_configure_flags \
-        -no-direct2d \
-        -no-directfb \
-        -no-cups \
-        -no-iconv \
-        -no-gif \
-        -no-sql-mysql \
-        -no-sql-psql \
-        -no-tslib \
-        -no-qml-debug \
-        -no-ico \
-        -no-glib \
-    "
-fi
-
-  # Too bleeding big
-  # -developer-build \
-
-_core_configure_options=" \
-                 -separate-debug-info \
-                 -pkg-config \
-                 -prefix ${_installprefix} \
-                 -opengl ${_opengl_variant} \
-                 -qt-sqlite \
-                 -confirm-license \
-                 -opensource \
-                 -release \
-                 -pch \
-                 -make libs \
-                 -nomake examples \
-                 \
-                 -reduce-exports \
-        "
-
-source=("git://github.com/sirspudd/mkspecs.git")
-sha256sums=("SKIP")
+source=()
+sha256sums=()
 
 if ! $_build_from_local_src_tree; then
   source+=("${_provider}/${_release_type}/qt/${_pkgvermajmin}/${_pkgver}/single/${_source_package_name}.tar.xz")
   sha256sums+=("SKIP")
   #if $_building; then echo ${source[@]}; fi
 fi
+echo "Source: ${source[@]}"
 
 options=('!strip')
 
 if ${_use_mesa}; then
   _profiled_gpu_fn=qpi-mesa.sh
-  _additional_configure_flags="$_additional_configure_flags -gbm -kms"
 else
-  _additional_configure_flags="$_additional_configure_flags -no-gbm"
   if $_building && ([[ -f ${__eglpkgconfigpath} ]] || [[ -f ${__glespkgconfigpath} ]]); then
     echo "Mesa is about to eat our communal poodle; delete egl.pc and glesv2.pc in your sysroot"
     exit 1
@@ -266,101 +200,52 @@ finish() {
     fi
 }
 
-adjust_bin_dir() {
-  adjust_src_dir
-  if [[ -n ${_srcdir} ]]; then
-    _bindir="${_srcdir}"
-  else
-    # Probably repackaging: gonna have to make some assumptions
-    _bindir="${startdir}/src/${_source_package_name}"
-  fi
-  if $_shadow_build; then
-    _bindir="${startdir}/build"
-    if $_minimal && [[ -d $_tmpfs_dir ]]; then
-      _bindir="${_tmpfs_dir}/${_bindir}"
-    fi
-  fi
-}
-
-adjust_src_dir() {
-  if $_build_from_local_src_tree; then
-     if [[ -z $_local_qt_repo ]]; then echo "Need to set a repo dir to build from head"; exit 1; fi
-    _srcdir=$_local_qt_repo
-  fi
-}
-
 build() {
-  # Qt tries to do the right thing and stores these, breaking cross compilation
-  # unset everything set in /etc/makepkg.conf
-  unset LDFLAGS
-  unset CFLAGS
-  unset CXXFLAGS
-  unset CHOST
-  unset CPPFLAGS
-  unset CARCH
-  unset HOSTTYPE
-  unset MACHTYPE
-  unset DEBUG_CFLAGS
-  unset DEBUG_CXXFLAGS
-
-  export PATH=${startdir}:${PATH}
-
+  echo ${srcdir}
+  echo ${_builddir}
   _srcdir="${srcdir}/${_source_package_name}"
-  adjust_bin_dir
 
   local _basedir="${_srcdir}/qtbase"
   local _mkspec_dir="${_basedir}/mkspecs/devices/${_mkspec}"
 
-if $_uber_minimal; then
-  local _qtpro=${_srcdir}/qt.pro
-  local _tmp_qtpro=$(mktemp)
-  cp $_qtpro $_tmp_qtpro
-  echo "QT_BUILD_MODULES = qtbase qtdeclarative" > $_qtpro
-  cat $_tmp_qtpro >> $_qtpro
-fi
-
-if ! $_target_host && $_overwrite_mkspec; then
-  # Get our mkspec
-  mkdir -p $_mkspec_dir
-  rsync -r ${srcdir}/mkspecs/${_mkspec}/ $_mkspec_dir/
-fi
-
-  rm -Rf ${_bindir}
-  mkdir -p ${_bindir}
-  cd ${_bindir}
+  #local _builddir=${BUILDDIR}/${pkgbase}
+  #rm -Rf ${_builddir}
+  #mkdir -p ${_builddir}
+  #cd ${_builddir}
 
   # Just because you can enable something doesnt mean you should
   # Prepare for breakage in all your Qt derived projects
   #-qtnamespace "Pi${_piver}" \
 
-if $_target_host; then
-  local _configure_line="${_srcdir}/configure \
-                 -platform linux-clang-libc++ \
-                 -xplatform linux-clang-libc++ \
-                 -linker lld \
-                 ${_core_configure_options} \
-                 ${_additional_configure_flags}"
-else
-  # Fuck debian multi-arch dead
-  export PKG_CONFIG_LIBDIR=${_sysroot}/usr/lib/$(${_toolchain}gcc -dumpmachine)/pkgconfig/:${_sysroot}/usr/lib/pkgconfig/
-  export PKG_CONFIG_SYSROOT_DIR=${_sysroot}
+  #-DQT_BUILD_SUBMODULES=qtbase;qtdeclarative \
+  #-D_CMAKE_TOOLCHAIN_PREFIX=llvm \
+  #-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+  #-DINPUT_linker=lld \
 
-  # I harbour a certain amount of X11 prejudice
-  local _configure_line="${_srcdir}/configure \
-                 ${_core_configure_options} \
-                 -qtlibinfix "Pi${_piver}" \
-                 -sysroot ${_sysroot} \
-                 -device ${_mkspec} \
-                 -optimize-size \
-                 -device-option CROSS_COMPILE=${_toolchain} \
-                 ${_additional_configure_flags}"
-fi
+  # using clang like this results in a broken moc
+  #export CC=clang
+  #export CXX=clang++
   local _configure_line_fn=configure_line
+  local _configure_line="cmake \
+                                -GNinja \
+                                -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+                                -DFEATURE_separate_debug_info=ON \
+                                -DFEATURE_reduce_exports=ON \
+                                -DFEATURE_reduce_relocations=ON \
+                                -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
+                                -DBUILD_WITH_PCH=ON \
+                                -DQT_BUILD_TESTS=OFF \
+                                -DQT_BUILD_EXAMPLES=OFF \
+                                -DCMAKE_INSTALL_PREFIX:PATH=${_installprefix} \
+                                -DBUILD_qtwebengine=OFF \
+                                -DINPUT_linker=mold \
+                                ${_srcdir}
+    "
   echo ${_configure_line} > ${_configure_line_fn}
   set &> configure_env
   ${_configure_line}
-  cmake --build . --parallel
-  cmake --build . --target docs
+  time cmake --build . --parallel
+  #cmake --build . --target docs
 }
 
 create_install_script() {
@@ -384,8 +269,6 @@ create_install_script() {
 #create_install_script
 
 package() {
-  adjust_bin_dir
-
   #create_install_script
 
   # Qt is now installed to $pkgdir/$sysroot/$prefix
@@ -407,74 +290,65 @@ package() {
   local _profiledfn=qpi.sh
   local _qpienvexecfn=qpi-env-exec
 
-  local _installed_dir="${pkgdir}/${_sysroot}/${_baseprefix}"
-  local _installed_dir_sans_sysroot_offset="${pkgdir}/${_baseprefix}"
+  local _installed_dir="${pkgdir}/${_sysroot}/${_installprefix}"
+  local _installed_dir_sans_sysroot_offset="${pkgdir}/${_installprefix}"
 
   rm -Rf ${_libspkgdir} ${_libsdebugpkgdir} ${pkgdir}
   mkdir -p ${_libspkgdir} ${_libsdebugpkgdir} ${pkgdir}
 
-  cd "${_bindir}"
-  DESTDIR="$pkgdir" cmake --build . --target install
-  DESTDIR="$pkgdir" cmake --build . --target install_docs
+  #cd "${_bindir}"
+  echo "Installing to ${pkgdir}"
+  DESTDIR="$pkgdir" cmake --install .
+  #DESTDIR="$pkgdir" cmake --install . --target install_docs
 
-  # attempt to fix Qt 5.12.1's insane complete qualification of linked libraries
-  # this still results in other sources of the complete path
-  find ${_installed_dir}/${pkgname} -type f -regex '.*\(prl\|pc\|pri\)' | xargs sed -i "s,/mnt/pi4/[^ ]*lib\(.[^ ]*\)\.so,-l\1,g"
-  # this breaks stuff as gcc does not look inside of sysroots for supposedly qualified paths
-  #find ${_installed_dir}/${pkgname}/mkspecs/modules -type f | xargs sed -i "s,${_sysroot}\([^ ]*\.so\),\1,g"
+#  find ${_installed_dir} -name '*.debug' -exec cp --parents '{}' ${_libsdebugpkgdir} \; -exec rm '{}' \;
 
-  cd $(dirname $(dirname ${_installed_dir}))
+#  cp ${startdir}/PKGBUILD.libs.debug ${_libsdebugpkgbuild}
+#
+#  sed -i "s/libspkgrel/${pkgrel}/" ${_libsdebugpkgbuild}
+#  sed -i "s/libspkgver/${pkgver}/" ${_libsdebugpkgbuild}
+#if $_target_host || $_static_build; then
+#  sed -i "s/libspkgname/${pkgname}/" ${_libsdebugpkgbuild}
+#else
+#  sed -i "s/libspkgname/${_libspkgname}/" ${_libsdebugpkgbuild}
+#fi
+#  sed -i "s/libsdebugpkgname/${_libsdebugpkgname}/" ${_libsdebugpkgbuild}
+#  sed -i "s/libspiver/${_piver}/" ${_libsdebugpkgbuild}
+#
+#  cd ${_libsdebugdir}
+#  runuser -l ${_packaginguser} -c 'makepkg -d -f' || exit 1
+#  #mv ${_libsdebugdir}/${_libsdebugpkgname}-${pkgver}-${pkgrel}-any.pkg.tar.* ${startdir}
+#
+#  if $_static_build || $_target_host; then
+#    if ! $_target_host; then
+#        mkdir $(dirname ${_installed_dir_sans_sysroot_offset})
+#        mv ${_installed_dir} `dirname ${_installed_dir_sans_sysroot_offset}`
+#    fi
+#  else
+#    mv `dirname ${_installed_dir}` ${_libspkgdir}
+#
+#    cp ${_bindir}/configure_line ${_bindir}/config.opt ${_libspkgdir}
+#
+#    cp ${startdir}/PKGBUILD.libs ${_libspkgbuild}
+#
+#    # set correct libs version
+#    sed -i "s/libspkgrel/${pkgrel}/" ${_libspkgbuild}
+#    sed -i "s/libspkgver/${pkgver}/" ${_libspkgbuild}
+#    sed -i "s/libspkgname/${_libspkgname}/" ${_libspkgbuild}
+#    sed -i "s/libspiver/${_piver}/" ${_libspkgbuild}
+#
+#    mkdir -p ${_pkgprofiled}
+#    mkdir -p ${_pkgbindir}
+#
+#    cp -L ${startdir}/${_profiledfn} ${_pkgprofiled}
+#    cp -L ${startdir}/${_profiled_gpu_fn} ${_pkgprofiled}
+#    cp -L ${startdir}/${_qpienvexecfn} ${_pkgbindir}
+#    sed -i "s,localpiprefix,${_installprefix}," ${_pkgprofiled}/${_profiledfn}
+#
+#    cd ${_libsdir}
+#    runuser -l ${_packaginguser} -c 'makepkg -d -f' || exit 1
+#    #mv ${_libsdir}/${_libspkgname}-${pkgver}-${pkgrel}-any.pkg.tar.* ${startdir}
+#  fi
 
-if $_debug; then
-  find $(basename $(dirname ${_installed_dir})) -name '*.debug' -exec cp --parents '{}' ${_libsdebugpkgdir} \; -exec rm '{}' \;
-
-  cp ${startdir}/PKGBUILD.libs.debug ${_libsdebugpkgbuild}
-
-  sed -i "s/libspkgrel/${pkgrel}/" ${_libsdebugpkgbuild}
-  sed -i "s/libspkgver/${pkgver}/" ${_libsdebugpkgbuild}
-if $_target_host || $_static_build; then
-  sed -i "s/libspkgname/${pkgname}/" ${_libsdebugpkgbuild}
-else
-  sed -i "s/libspkgname/${_libspkgname}/" ${_libsdebugpkgbuild}
-fi
-  sed -i "s/libsdebugpkgname/${_libsdebugpkgname}/" ${_libsdebugpkgbuild}
-  sed -i "s/libspiver/${_piver}/" ${_libsdebugpkgbuild}
-
-  cd ${_libsdebugdir}
-  runuser -l ${_packaginguser} -c 'makepkg -d -f' || exit 1
-  #mv ${_libsdebugdir}/${_libsdebugpkgname}-${pkgver}-${pkgrel}-any.pkg.tar.* ${startdir}
-fi
-
-  if $_static_build || $_target_host; then
-    if ! $_target_host; then
-        mkdir $(dirname ${_installed_dir_sans_sysroot_offset})
-        mv ${_installed_dir} `dirname ${_installed_dir_sans_sysroot_offset}`
-    fi
-  else
-    mv `dirname ${_installed_dir}` ${_libspkgdir}
-
-    cp ${_bindir}/configure_line ${_bindir}/config.opt ${_libspkgdir}
-
-    cp ${startdir}/PKGBUILD.libs ${_libspkgbuild}
-
-    # set correct libs version
-    sed -i "s/libspkgrel/${pkgrel}/" ${_libspkgbuild}
-    sed -i "s/libspkgver/${pkgver}/" ${_libspkgbuild}
-    sed -i "s/libspkgname/${_libspkgname}/" ${_libspkgbuild}
-    sed -i "s/libspiver/${_piver}/" ${_libspkgbuild}
-
-    mkdir -p ${_pkgprofiled}
-    mkdir -p ${_pkgbindir}
-
-    cp -L ${startdir}/${_profiledfn} ${_pkgprofiled}
-    cp -L ${startdir}/${_profiled_gpu_fn} ${_pkgprofiled}
-    cp -L ${startdir}/${_qpienvexecfn} ${_pkgbindir}
-    sed -i "s,localpiprefix,${_installprefix}," ${_pkgprofiled}/${_profiledfn}
-
-    cd ${_libsdir}
-    runuser -l ${_packaginguser} -c 'makepkg -d -f' || exit 1
-    #mv ${_libsdir}/${_libspkgname}-${pkgver}-${pkgrel}-any.pkg.tar.* ${startdir}
-  fi
-
-  cp ${_bindir}/configure_line ${_bindir}/config.opt ${_basepkgdir}
+  cp configure_line config.summary ${_basepkgdir}
 }
