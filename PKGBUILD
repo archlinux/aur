@@ -23,11 +23,22 @@ prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 	patch --forward -p1 < "../$pkgname-$pkgver-$pkgrel-fix-cargo-lock.diff"
 	patch --forward -p1 < "$srcdir/update-orbfont.diff"
+
+	# Prepare correct target for our architecture
+	_cargotarget="$CARCH-unknown-linux-gnu"
+
+	if [ "$CARCH" = 'armv7h' ]; then
+		_cargotarget='armv7-unknown-linux-gnueabihf'
+	fi
+
+	cargo fetch --locked --target "$_cargotarget"
 }
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
-	cargo build --release --locked --all-features
+	export RUSTUP_TOOLCHAIN='stable'
+	export CARGO_TARGET_DIR='target'
+	cargo build --frozen --release --all-features
 }
 
 package() {
