@@ -1,12 +1,12 @@
 pkgbase = opencore-efi
 	pkgdesc = OpenCore bootloader to provide supplemental functionality for Apple-specific UEFI drivers
-	pkgver = 0.8.7
+	pkgver = 0.8.9
 	pkgrel = 1
 	url = https://github.com/acidanthera/OpenCorePkg
 	arch = x86_64
 	arch = i686
 	license = BSD
-	source = https://github.com/acidanthera/OpenCorePkg/releases/download/0.8.7/OpenCore-0.8.7-RELEASE.zip
-	sha256sums = bd36392624a1378baaf3c4ee817ddb69c117a210b6e0b0ad3e119ab4fafd39b5
+	source = https://github.com/acidanthera/OpenCorePkg/releases/download/0.8.9/OpenCore-0.8.9-RELEASE.zip
+	sha256sums = d94c483f8468e72752b82313e68f30f556298b958ecf2baef7e3403bc74b2df9
 
 pkgname = opencore-efi
