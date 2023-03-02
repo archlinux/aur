@@ -1,6 +1,6 @@
 pkgbase = atuin-bin
 	pkgdesc = Magical shell history
-	pkgver = 12.0.0
+	pkgver = 13.0.1
 	pkgrel = 1
 	url = https://github.com/ellie/atuin
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = atuin-bin
 	depends = gcc-libs
 	provides = atuin
 	conflicts = atuin
-	source_x86_64 = https://github.com/ellie/atuin/releases/download/v12.0.0/atuin-v12.0.0-x86_64-unknown-linux-gnu.tar.gz
-	sha512sums_x86_64 = 1756988c2c90fda3d17f3e9bc3347d04534cd31d0d284b372006fe58f9406ea6581d41f18f101c16c9a46b6e264999484969df24da809db6d3f3a044f61e6b9f
+	source_x86_64 = https://github.com/ellie/atuin/releases/download/v13.0.1/atuin-v13.0.1-x86_64-unknown-linux-gnu.tar.gz
+	sha512sums_x86_64 = d3a901a8066eb6bd2345b52768eb5f2829d2fa879e109d053bea9d5c044dcb5c6975853234bfdc41297cb8f3501035112fd992a064bf6935f218debae7e701c5
 
 pkgname = atuin-bin
