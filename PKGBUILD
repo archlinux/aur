@@ -1,6 +1,6 @@
 # Maintainer: Philip Meier <meier.philip@posteo.de>
 pkgname='timeular'
-pkgver=5.7.8
+pkgver=5.7.9
 pkgrel=1
 pkgdesc='A proprietary time tracking service'
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=('!strip')
 _bin="Timeular-${pkgver}.AppImage"
 source=("https://releases.timeular.com/desktop/public/linux/production/${_bin}"
 	'LICENSE')
-sha512sums=('2e669dfc5d8fb5984ddb07e1ab8d8f70160cb1ce6b630ad40d4437c5f6836d3639dc13c591cb8e6f0d3f39d2800cd09ea5dfb79521a7dd42a265cfb3e09a43ac'
+sha512sums=('3e948f442ad60447f5283fad4effd2875e128c187bd3b5fe42993243bc9d45a50344e72dabbfdc989e8cdf48661ce258c76de6ac2d9833f8f4aa7fb885f33751'
             '35c5e9efa9529ca7b6ca6d26990b41482a1bbb0a735051761460f7ae1d7c05e6e50f66a63eedf31d6830bbf5eb9c96045ba78c2c8680f8f6c8416c62b6f5b67e')
 	    
 prepare() {
