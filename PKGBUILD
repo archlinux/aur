@@ -1,6 +1,6 @@
 # Maintainer: Ewout van Mansom <ewout@vanmansom.name>
 pkgname=smfc
-pkgver=2.2.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Super Micro Fan Control"
 arch=(any)
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=(python syslog-ng)
 checkdepends=(flake8 python-coverage python-pylint python-pytest python-pytest-cov)
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('04b9fe4ab3be463c619f129e457a9e6d14a413337ae1a042016edc586c81fc05')
+sha256sums=('5578829cb2b329d9f920b9ba2a20b80c541e47dc418e1c81838ec672b32284e7')
 
 check() {
   cd "${pkgname}-${pkgver}"
