@@ -1,7 +1,7 @@
 pkgbase = figma-linux-bin
 	pkgdesc = The collaborative interface design tool. Unofficial Figma desktop client for Linux (AppImage)
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Figma-linux/figma-linux
 	arch = x86_64
 	arch = aarch64
