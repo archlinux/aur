@@ -1,8 +1,9 @@
 pkgbase = lens
 	pkgdesc = The Kubernetes IDE
-	pkgver = 6.2.6
+	pkgver = 6.4.0
 	pkgrel = 1
 	url = https://k8slens.dev
+	install = lens.install
 	arch = x86_64
 	license = MIT
 	makedepends = npm
@@ -14,9 +15,11 @@ pkgbase = lens
 	optdepends = kubectl: Kubernetes control, can be downloaded from settings
 	optdepends = helm: for Helm section, only useful if your deploy uses Helm or plan to use it
 	conflicts = lens-bin
-	source = lens-6.2.6.tar.gz::https://github.com/lensapp/lens/archive/v6.2.6.tar.gz
+	source = lens-6.4.0.tar.gz::https://github.com/lensapp/lens/archive/v6.4.0.tar.gz
 	source = lens.desktop
-	b2sums = 68e4d3dfeeb1987e3b576a34b31132fa414db13dcdab77880aafe9f7a9f18ccdafa8ad7520b5e4df179eab64a65a2df65950c4ae8e4822a820e2d7cd083f3a14
+	source = lens.install
+	b2sums = c4ad93073e7a0b328cee292ee0d5eefee51fcda5823f4547d20c9be091145f71fa0bc4949beaee913ce55ef258751d9d410d6692bd2ad84828577fa64d559218
 	b2sums = 2aea209098a22d8e4b263a059f6e67b2a3e8f8dfb0c15ac81e33edb4c2be81fd7a6f419a04a77be5b5c8d81b160e6e3f159b4d8639ccab705fffecf149255a36
+	b2sums = 47c4e6e7e4b895f55589b58ec32c31f29b487e41b07dc21d12dee2da6710fa40a9996abc02b1b7c073b08d972a988baf462c7a3becc8324dcc17934fdb2b207f
 
 pkgname = lens
