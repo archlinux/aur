@@ -2,7 +2,7 @@
 # Maintainer: Marko Semet <marko10_000@mailbox.org>
 pkgname=buildbox-common
 pkgver=0.0.65
-pkgrel=1
+pkgrel=2
 pkgdesc="Shared protocol-buffer definitions and various helper functions"
 arch=(x86_64)
 url="https://buildgrid.build"
@@ -13,6 +13,9 @@ source=("git+https://gitlab.com/BuildGrid/buildbox/buildbox-common#tag=0.0.65&co
 sha256sums=('SKIP')
 
 build() {
+  sed -i 's/CMAKE_CXX_STANDARD 14/CMAKE_CXX_STANDARD 20/' buildbox-common/CMakeLists.txt
+  sed -i 's@~ScopedMetric<MetricType>()@~ScopedMetric()@' buildbox-common/buildbox-common/buildboxcommonmetrics/buildboxcommonmetrics_scopedmetric.h
+  sed -i 's@~MetricTeeGuard<MetricType>()@~MetricTeeGuard()@' buildbox-common/buildbox-common/buildboxcommonmetrics/buildboxcommonmetrics_metricteeguard.h
   mkdir -p build
   cd build
   cmake ../buildbox-common \
@@ -25,7 +28,7 @@ build() {
 check() {
   cd build
   echo "Sometimes 'streamingstandardoutputinotifyfilemonitor' fails, just rerun it."
-  ninja -k-1 test
+  ninja test
 }
 
 package() {

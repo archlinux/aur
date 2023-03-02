@@ -1,7 +1,7 @@
 pkgbase = buildbox-common
 	pkgdesc = Shared protocol-buffer definitions and various helper functions
 	pkgver = 0.0.65
-	pkgrel = 1
+	pkgrel = 2
 	url = https://buildgrid.build
 	arch = x86_64
 	license = Apache
