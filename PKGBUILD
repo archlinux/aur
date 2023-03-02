@@ -2,7 +2,7 @@
 
 pkgname=yakuake-alca7raz
 _pkgname=yakuake
-pkgver=22.12.2
+pkgver=22.12.3
 pkgrel=1
 pkgdesc="A drop-down terminal emulator based on KDE konsole technology"
 arch=(x86_64)
@@ -14,7 +14,7 @@ depends=(konsole kwayland hicolor-icon-theme)
 makedepends=(git extra-cmake-modules)
 source=("https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz"
         "alca7raz.patch")
-sha256sums=('f27e8c5335b51c7cb8f839ffa13f7ee6d848498d50d02a7927728223673c5b1d'
+sha256sums=('bd8a4138b818b8569644f815211548d51b5df621037ff801ee2f28d85c8f0ddb'
             'dc0ffbc6ed3c4f68e59bc1bf074d97e39e9323a95e0275e584fec9dad82312f1')
 
 prepare() {
