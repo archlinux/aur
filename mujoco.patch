@@ -138,15 +138,6 @@ index 3534929..6732055 100644
  )
  if(MUJOCO_EXTRAS_STATIC_GLFW)
    set(BUILD_SHARED_LIBS_OLD ${BUILD_SHARED_LIBS})
-@@ -78,7 +78,7 @@ findorfetch(
-   USE_SYSTEM_PACKAGE
-   MUJOCO_SAMPLES_USE_SYSTEM_GLFW
-   PACKAGE_NAME
--  glfw
-+  glfw3
-   LIBRARY_NAME
-   glfw
-   GIT_REPO
 diff --git a/simulate/cmake/SimulateDependencies.cmake b/simulate/cmake/SimulateDependencies.cmake
 index 9fba6a2..6404d29 100644
 --- a/simulate/cmake/SimulateDependencies.cmake
@@ -171,12 +162,3 @@ index 9fba6a2..6404d29 100644
  )
  if(MUJOCO_EXTRAS_STATIC_GLFW)
    set(BUILD_SHARED_LIBS_OLD ${BUILD_SHARED_LIBS})
-@@ -78,7 +78,7 @@ findorfetch(
-   USE_SYSTEM_PACKAGE
-   MUJOCO_SIMULATE_USE_SYSTEM_GLFW
-   PACKAGE_NAME
--  glfw
-+  glfw3
-   LIBRARY_NAME
-   glfw
-   GIT_REPO
