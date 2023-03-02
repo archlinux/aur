@@ -1,6 +1,6 @@
 pkgbase = luametatex
 	pkgdesc = ConTeXt LuaMetaTeX distribution
-	pkgver = 2021.12.14
+	pkgver = 2023.02.23
 	pkgrel = 1
 	url = http://www.contextgarden.net
 	install = luametatex.install
