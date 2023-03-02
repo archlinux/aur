@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=atuin-git
-pkgver=11.0.0.r0.g41eed3f6
+pkgver=13.0.1.r7.g63c57210
 pkgrel=1
 pkgdesc="Magical shell history (git)"
 arch=('x86_64')
