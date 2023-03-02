@@ -1,0 +1,36 @@
+From 26f516191d6f0ae1c80d74fdf89d6b5faa773253 Mon Sep 17 00:00:00 2001
+From: Frank LENORMAND <lenormf@gmail.com>
+Date: Thu, 2 Mar 2023 07:54:44 +0100
+Subject: [PATCH 1/2] feat: Remove unbreakable spaces from the layouts
+
+Varieties of whitespace characters are too easily inserted into code/writings,
+which creates errors that can be hard to identify.
+---
+ lafayette_linux_v0.8.1.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lafayette_linux_v0.8.1.py b/lafayette_linux_v0.8.1.py
+index 6c4077f..fe16a84 100644
+--- a/lafayette_linux_v0.8.1.py
++++ b/lafayette_linux_v0.8.1.py
+@@ -434,7 +434,7 @@ LAYOUTS = [{
+             key <LSGT> {[ less            , greater         , lessthanequal   , greaterthanequal, VoidSymbol      , VoidSymbol      , VoidSymbol      , VoidSymbol      ]}; // < > ≤ ≥
+ 
+             // Space bar
+-            key <SPCE> {[ space           , U202F           , U2019           , U2019           , space           , nobreakspace    , VoidSymbol      , VoidSymbol      ]}; //     ’ ’
++            key <SPCE> {[ space           , space           , U2019           , U2019           , space           , space    , VoidSymbol      , VoidSymbol      ]}; //     ’ ’
+ 
+             // The “OneDeadKey” is an ISO_Level3_Latch, i.e. a “dead AltGr” key:
+             // this is the only way to have a multi-purpose dead key with XKB.
+@@ -558,7 +558,7 @@ LAYOUTS = [{
+             key <LSGT> {[ less            , greater         , VoidSymbol      , VoidSymbol      , VoidSymbol      , VoidSymbol      , VoidSymbol      , VoidSymbol      ]}; // < >
+ 
+             // Space bar
+-            key <SPCE> {[ space           , U202F           , U2019           , U2019           , space           , nobreakspace    , VoidSymbol      , VoidSymbol      ]}; //     ’ ’
++            key <SPCE> {[ space           , space           , U2019           , U2019           , space           , space    , VoidSymbol      , VoidSymbol      ]}; //     ’ ’
+ 
+             // The “OneDeadKey” is an ISO_Level3_Latch, i.e. a “dead AltGr” key:
+             // this is the only way to have a multi-purpose dead key with XKB.
+-- 
+2.39.0
+

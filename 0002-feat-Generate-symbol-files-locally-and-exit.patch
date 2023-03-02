@@ -1,0 +1,32 @@
+From db34f751d57ff0f5f87c633ac2420d2b998c11f8 Mon Sep 17 00:00:00 2001
+From: Frank LENORMAND <lenormf@gmail.com>
+Date: Thu, 2 Mar 2023 07:57:12 +0100
+Subject: [PATCH 2/2] feat: Generate symbol files locally and exit
+
+---
+ lafayette_linux_v0.8.1.py | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/lafayette_linux_v0.8.1.py b/lafayette_linux_v0.8.1.py
+index fe16a84..f75d21b 100644
+--- a/lafayette_linux_v0.8.1.py
++++ b/lafayette_linux_v0.8.1.py
+@@ -567,6 +567,15 @@ LAYOUTS = [{
+         };""")
+ }]
+ 
++for layout in LAYOUTS:
++    meta, symbols = layout["meta"], layout["symbols"]
++    filename = "%s_%s" % (meta["locale"], meta["variant"])
++    with open(filename, "w") as fout:
++        fout.write(symbols)
++
++import sys
++sys.exit(0)
++
+ def layout_items():
+     layouts = {}
+     for name, desc in xkb.list_all(f"{LOCALE}/*").items():
+-- 
+2.39.0
+
