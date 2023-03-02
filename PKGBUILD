@@ -1,6 +1,6 @@
 # Maintainer: Davide Cioni <davide dot cioni dot 128 at gmail dot com>
 pkgname="ifetch-git"
-pkgver=r138.34bf52f
+pkgver=r139.23c9c9b
 pkgrel=1
 pkgdesc="A fetch tool to display network interface information"
 arch=("x86_64")
