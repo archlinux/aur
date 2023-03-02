@@ -1,6 +1,6 @@
 pkgbase = lean4-git
 	pkgdesc = An interactive theorem prover
-	pkgver = r25881.g81400109f3
+	pkgver = 4.0.0.m5.r1507.g0da281fab4
 	pkgrel = 1
 	url = https://leanprover.github.io/
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = lean4-git
 	makedepends = cmake
 	depends = glibc
 	depends = gmp
-	provides = lean4
+	provides = lean4=4.0.0.m5.r1507.g0da281fab4
 	conflicts = lean4
 	options = staticlibs
 	source = git+https://github.com/leanprover/lean4.git
