@@ -1,7 +1,7 @@
 # Maintainer: Specter119 <spcter119 AT gmail.com>
 
 pkgname=jupyterlab-lsp
-pkgver=3.10.1
+pkgver=3.10.2
 pkgrel=1
 pkgdesc='Coding assistance for JupyterLab with Language Server Protocol.'
 arch=(any)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(python jupyter-lsp jupyterlab)
 makedepends=(python-setuptools)
 source=(https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('9ad6ef22c4972b85480797034fc7914728eb78f1856b4dab3361686e4f20c9dd')
+sha256sums=('559ad4692f97f42dd6b9f0b330ab92703f02b8e45bbaf6e9cf59898a897222a0')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
