@@ -1,7 +1,7 @@
 pkgbase = kakele
 	pkgdesc = Kakele Online is a Cross Platform, 2D open world massive multiplayer online role playing game
 	pkgver = 4.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kakele.io
 	arch = x86_64
 	license = custom

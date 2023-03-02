@@ -1,6 +1,6 @@
 pkgname=kakele
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc="Kakele Online is a Cross Platform, 2D open world massive multiplayer online role playing game"
 arch=('x86_64')
 url="https://kakele.io"
