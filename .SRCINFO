@@ -1,7 +1,7 @@
 pkgbase = dust3d-git
 	pkgdesc = 3D watertight modeling software (git version)
 	pkgver = 1.0.0.rc.7.r27.g3a0d07b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dust3d.org/
 	arch = aarch64
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = dust3d-git
 	makedepends = git
 	depends = qt5-base
 	depends = qt5-svg
+	provides = dust3d
+	conflicts = dust3d
 	source = git+https://github.com/huxingyi/dust3d
 	source = dust3d.desktop
 	md5sums = SKIP

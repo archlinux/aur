@@ -3,12 +3,14 @@
 _pkgname=dust3d
 pkgname="${_pkgname}-git"
 pkgver=1.0.0.rc.7.r27.g3a0d07b
-pkgrel=1
+pkgrel=2
 pkgdesc="3D watertight modeling software (git version)"
 url="https://dust3d.org/"
 license=('MIT')
 depends=('qt5-base' 'qt5-svg')
-makedepends=('git') #'qt5-tools')
+makedepends=('git')
+provides=('dust3d')
+conflicts=('dust3d')
 arch=('aarch64' 'x86_64')
 
 source=('git+https://github.com/huxingyi/dust3d'
