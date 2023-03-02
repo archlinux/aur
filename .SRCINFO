@@ -1,7 +1,7 @@
 pkgbase = python-mpv
 	pkgdesc = Python interface to the awesome mpv media player
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jaseg/python-mpv
 	arch = any
 	license = GPL
@@ -15,7 +15,7 @@ pkgbase = python-mpv
 	depends = mpv
 	depends = python
 	optdepends = python-pillow: for raw screenshot support
-	source = https://github.com/jaseg/python-mpv/archive/vv1.0.3/python-mpv-1.0.3.tar.gz
-	b2sums = 8438babe099f0a40903dd09e0bd2ce846168641d30e49e8bc87bb66b73952b4fb6d23e8dfd915c249074330a3f50f10218e0c59e63e9dc9c01f44b8907729dd2
+	source = https://github.com/jaseg/python-mpv/archive/v1.0.3/python-mpv-1.0.3.tar.gz
+	b2sums = 0701147415c920be4ec65151ed7844bb36c275bcc64ae07d4ece9a515a96ba09097a8f2282eb7bbb74e8dc143d14f9a0aebdfadad53e0e9e4d62fcde734c7d17
 
 pkgname = python-mpv

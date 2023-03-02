@@ -4,7 +4,7 @@
 
 pkgname=python-mpv
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Python interface to the awesome mpv media player'
 arch=('any')
 url=https://github.com/jaseg/python-mpv
@@ -15,21 +15,21 @@ makedepends=('python-build' 'python-installer' 'python-setuptools'
              'python-wheel')
 checkdepends=('python-pytest' 'python-xvfbwrapper')
 optdepends=('python-pillow: for raw screenshot support')
-source=("https://github.com/jaseg/$pkgname/archive/vv$pkgver/$pkgname-$pkgver.tar.gz")
-b2sums=('8438babe099f0a40903dd09e0bd2ce846168641d30e49e8bc87bb66b73952b4fb6d23e8dfd915c249074330a3f50f10218e0c59e63e9dc9c01f44b8907729dd2')
+source=("https://github.com/jaseg/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
+b2sums=('0701147415c920be4ec65151ed7844bb36c275bcc64ae07d4ece9a515a96ba09097a8f2282eb7bbb74e8dc143d14f9a0aebdfadad53e0e9e4d62fcde734c7d17')
 
 build() {
-  cd $pkgname-vv$pkgver
+  cd $pkgname-$pkgver
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
-  cd $pkgname-vv$pkgver
+  cd $pkgname-$pkgver
   pytest
 }
 
 package() {
-  cd $pkgname-vv$pkgver
+  cd $pkgname-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 'README.rst' -t "$pkgdir"/usr/share/doc/$pkgname
 }
