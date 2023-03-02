@@ -1,6 +1,6 @@
 # Maintainer: Chris Tam <LChris314 at gmail dot com>
 pkgname=megatools-bin
-pkgver=1.11.0.20220519
+pkgver=1.11.1.20230212
 pkgrel=1
 pkgdesc='Command line client application for Mega.nz. Precompiled.'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -14,10 +14,10 @@ source_i686=("https://megatools.megous.com/builds/builds/megatools-${pkgver}-lin
 source_aarch64=("https://megatools.megous.com/builds/builds/megatools-${pkgver}-linux-aarch64.tar.gz")
 source_armv7h=("https://megatools.megous.com/builds/builds/megatools-${pkgver}-linux-arm.tar.gz")
 
-sha256sums_x86_64=('dd2d0b86d5560d789c0fe3cc8c0b38a8375ccbb5156edba00d845178769f5748')
-sha256sums_i686=('ea8089b6c6e4f1bb0c0629661ece814ca8d85cd1fd640819d75ffa7c6e61457f')
-sha256sums_aarch64=('ae95def4ec4fc35559ffcdf082b11f53d37c3e7c5bfd05095f087424a5bd7e97')
-sha256sums_armv7h=('3c7a3ac7402e158c60b6637f2b94e074ae520fd6af587db9f00e1f884696e888')
+sha256sums_x86_64=('1543e155366b8931aff3cbaba2f752a5d6558c3eca857a8d82a1040924b4a970')
+sha256sums_i686=('7d4c6d7d702fe76cec9bb1ad8b656ac6286ab0ab6524e1df383d3bde4e9cd196')
+sha256sums_aarch64=('6a8797894d46076ba6f2dade5c5fa00297bb75ce10a84438c3e02bfc7ce12044')
+sha256sums_armv7h=('e80fa4eb9dd0df798f129f6d1d45e8e68507a3dc6c70edee6f7585eb6871f5c2')
 
 package() {
   _output="${srcdir}/megatools-${pkgver}-linux-${CARCH%v7h}"
@@ -25,8 +25,9 @@ package() {
   for shim in megacopy megadf megadl megaexport megaget megals megamkdir megaput megareg megarm megatest; do
     ln -s megatools "${pkgdir}/usr/bin/${shim}"
   done
-  for f in LICENSE NEWS README TODO; do
+  for f in NEWS README TODO; do
     install -Dm644 "${_output}/$f" "${pkgdir}/usr/share/doc/megatools/${f}"
   done
+  install -Dm644 "${_output}/LICENSE" "${pkgdir}/usr/share/licenses/megatools/LICENSE"
 }
 
