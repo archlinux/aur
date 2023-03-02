@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _pkgname='orbterm'
 pkgname="$_pkgname-git"
-pkgver='0.3.6.r13.gf1ca2c8'
+pkgver='0.3.6.r15.gf177f49'
 pkgrel='1'
 pkgdesc='The default terminal for RedoxOS, compatible with Linux - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
