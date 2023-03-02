@@ -11,7 +11,6 @@ optdepends=('youtube-dl: unmaintained downloader integration' 'yt-dlp-drop-in: r
 makedepends=('pkgconf' 'cmake' 'ninja' 'pipewire')
 source=("https://github.com/Soundux/Soundux/releases/download/$pkgver/soundux-$pkgver.tar.gz")
 sha256sums=('017003fc96f49df30575975f3904c0d8a500e325a9d2bca8c3dc69fed0cab0a7')
-install=soundux.install
 
 prepare() {
   sed -i /-Werror/d "$srcdir/Soundux/CMakeLists.txt"
