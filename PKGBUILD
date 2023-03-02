@@ -1,6 +1,6 @@
 pkgname="teensy-loader"
-pkgver=1.52
-pkgrel=4
+pkgver=1.56
+pkgrel=1
 pkgdesc="The Teensy Loader program communicates with your Teensy board when the HalfKay bootloader is running, so you can download new programs and run them"
 arch=("x86_64")
 url="https://www.pjrc.com/teensy/loader.html"
@@ -14,7 +14,7 @@ source=(
     "https://www.pjrc.com/teensy/00-teensy.rules"
 )
 sha256sums=(
-    "00c99f0ea6c686747595ad70401a8d78faa1c34a0171093c661566926dc03bfa"
+    "9d8325378fdd23343ed3f24342ab8bd50e6291ab4f1c74403d5f8e7e02ca4b66"
     "17f56b63603271e2cdae291fed347b66dfbdfd089b2847cf0b4383c877ffacfb"
 )
 
