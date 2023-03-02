@@ -1,6 +1,6 @@
 pkgbase = ogui-git
 	pkgdesc = Open source game launcher
-	pkgver = v0.0.7.r1.g57efddc
+	pkgver = v0.1.0.r6.g1fa9b4c
 	pkgrel = 1
 	url = https://github.com/ShadowBlip/OpenGamepadUI
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = ogui-git
 	depends = ryzenadj-git
 	depends = firejail
 	provides = ogui
-	source = OpenGamepadUI::git+https://github.com/ShadowBlip/OpenGamepadUI.git#tag=57efddc6788a97a5aa25f8727f517d86a4b50c45
+	source = OpenGamepadUI::git+https://github.com/ShadowBlip/OpenGamepadUI.git#tag=1fa9b4c705e5378b889707ed3adc44d84a7d4d2a
 	sha256sums = SKIP
 
 pkgname = ogui-git
