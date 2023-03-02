@@ -1,15 +1,18 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=playdate-sdk
-pkgver=1.13.0
+pkgver=1.13.1
 pkgrel=1
 pkgdesc='SDK for the Playdate console with Lua and C APIs, docs, and a simulator'
 arch=('x86_64')
 url='https://play.date/dev/'
 license=('custom')
-depends=('xdg-utils')
+depends=('glib2' 'hicolor-icon-theme' 'systemd-libs' 'xdg-utils')
 makedepends=('curl' 'jq')
-optdepends=('zeal: read the Playdate SDK docset offline')
+optdepends=(
+  'python: to run the firmware_symbolizer.py utility'
+  'zeal: read the Playdate SDK docset offline'
+)
 options=('!strip')
 install="${pkgname}.install"
 _url_base='https://download-keycdn.panic.com/playdate_sdk/Linux/PlaydateSDK'
@@ -22,7 +25,7 @@ source=(
 )
 
 sha512sums=(
-  '60e21cf8d20dcf15f868d0a53d9a3183b3c450cbde777506ee38f1bce31c77e802d6f844bbafc2f8ac62a98c059d9457a6b05aa1b7b6c30574c3151e0cc779c9'
+  'e5b90ec15331ae61c3b7518d8d0beb3398c0c55be19d527f83426f229e92973f035e461253cb65b3e3ea9d9c0768b69078e1a6f01ab80225d0bfea68e66a5eba'
   '7286f35bff63253ff430860ce6a3ce52dfd88bcd90e6dd6cfcbeb90a76b38d2341d4fc428259d00eac7b67c2b94e0319e3d438a67e76e8016d8cd36be1123677'
   'ed30d6745f686e985bd54cd23c5a8e9bee95bad7209d065871bf461dc8321dea032583d6a3da9fa9909efca2969dde0954777a55ba42b4974c49ed1993101c92'
   '2a909f7d290489e23a5dd1648269e8575e3912057d03649d898fa23a6ff74185bd1080c6366db1b840bce4cb72482c72e218f88bb1aac4d91eec6f89205573cb'
