@@ -1,0 +1,36 @@
+diff --git a/launcher/ui/pages/global/AccountListPage.cpp b/launcher/ui/pages/global/AccountListPage.cpp
+index 278f45c4..b485717d 100644
+--- a/launcher/ui/pages/global/AccountListPage.cpp
++++ b/launcher/ui/pages/global/AccountListPage.cpp
+@@ -188,18 +188,19 @@ void AccountListPage::on_actionAddMicrosoft_triggered()
+ 
+ void AccountListPage::on_actionAddOffline_triggered()
+ {
+-    if (!m_accounts->anyAccountIsValid()) {
+-        QMessageBox::warning(
+-            this,
+-            tr("Error"),
+-            tr(
+-                "You must add a Microsoft or Mojang account that owns Minecraft before you can add an offline account."
+-                "<br><br>"
+-                "If you have lost your account you can contact Microsoft for support."
+-            )
+-        );
+-        return;
+-    }
++    // Removes the requirement to have one online account before being able to add an offline account.
++    // if (!m_accounts->anyAccountIsValid()) {
++    //     QMessageBox::warning(
++    //         this,
++    //         tr("Error"),
++    //         tr(
++    //             "You must add a Microsoft or Mojang account that owns Minecraft before you can add an offline account."
++    //             "<br><br>"
++    //             "If you have lost your account you can contact Microsoft for support."
++    //         )
++    //     );
++    //     return;
++    // }
+ 
+     MinecraftAccountPtr account = OfflineLoginDialog::newAccount(
+         this,
