@@ -1,6 +1,6 @@
 # Maintainer: ookami <mail@ookami.one>
 pkgname=proxy-ns
-pkgver=1.1.3
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Run programs in a network namespace where all traffic go through proxy"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('make')
 source=("git+$url")
 sha512sums=('SKIP')
 backup=(
-    etc/proxy-nsd.conf
+    etc/proxy-nsd/main.conf
 )
 
 build() {
