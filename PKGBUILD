@@ -1,6 +1,6 @@
 # Maintainer: Craig Barnes <craigbarnes@protonmail.com>
 pkgname='dte'
-pkgver='1.11'
+pkgver='1.11.1'
 pkgrel='1'
 pkgdesc='A small, configurable console text editor'
 url='https://craigbarnes.gitlab.io/dte/'
@@ -13,7 +13,7 @@ optdepends=(
     'fzf: for the builtin git-open alias'
 )
 source=("https://craigbarnes.gitlab.io/dist/dte/dte-$pkgver.tar.gz")
-sha256sums=('3332117c07ae5052cf7b81124019788fe3c8bf5ffe1342a6da69b789edbec93d')
+sha256sums=('3d7d0d375fd31906ed436de20161dddc42d97f969a93d22b02aecfc3451e6c39')
 
 build() {
     cd "$pkgname-$pkgver"
