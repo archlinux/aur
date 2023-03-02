@@ -3,7 +3,7 @@ pkgname=piavpn-bin
 pkgver=3.3.1_06924
 _pkgver=${pkgver/\.0_/_}
 _pkgver=${_pkgver/_/-}
-pkgrel=2
+pkgrel=3
 pkgdesc="Private Internet Access client"
 # https://www.privateinternetaccess.com/pages/changelog
 arch=('x86_64' 'aarch64')
@@ -15,17 +15,19 @@ makedepends=(libcap)
 provides=(piavpn)
 conflicts=(pia-launch pia-manager pia-tools private-internet-access-vpn)
 install=piavpn-bin.install
-source=("https://installers.privateinternetaccess.com/download/pia-linux-${_pkgver}.run")
+source_x86_64=("https://installers.privateinternetaccess.com/download/pia-linux-${_pkgver}.run")
+source_aarch64=("https://installers.privateinternetaccess.com/download/pia-linux-arm64-${_pkgver}.run")
 options=(!strip)
-sha256sums=('eee140e511adfac4d74b059ed9d673f1b910163b5b92ac35642a65592fef639d')
+sha256sums_x86_64=('eee140e511adfac4d74b059ed9d673f1b910163b5b92ac35642a65592fef639d')
+sha256sums_aarch64=('7cde46390c69104f6d21a7729f90222c3ff88dab6c8bef33c4d41dedcf2df783')
 
 # == You need to enable and start piavpn.service. Run sudo systemctl enable --now piavpn.service ==
 prepare() {
-	if [ $arch == "aarch64" ] ;then
-		sha256sums=('7cde46390c69104f6d21a7729f90222c3ff88dab6c8bef33c4d41dedcf2df783')
-		_pkgver="arm64-${_pkgver}"
+	_pia_run="pia-linux-${_pkgver}.run"
+	if [ "$CARCH" == "aarch64" ] ;then
+		_pia_run="pia-linux-arm64-${_pkgver}.run"
 	fi
-	env -i /bin/sh pia-linux-${_pkgver}.run --noexec --target "${srcdir}/$pkgname-${_pkgver}"
+	env -i /bin/sh $_pia_run --noexec --target "${srcdir}/$pkgname-${_pkgver}"
 }
 
 package() {
