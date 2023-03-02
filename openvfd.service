@@ -1,0 +1,13 @@
+[Unit]
+Description=OpenVFD display service
+After=suspend.target
+
+[Service]
+Type=simple
+ExecStartPre=-/usr/bin/rmmod -f openvfd
+ExecStartPre=/usr/bin/openvfd-probe
+ExecStart=/usr/bin/bash -e -c '. /etc/conf.d/openvfd; /usr/bin/openvfd-service ${clock_12h_format:+-12h}'
+ExecStopPost=-/usr/bin/rmmod -f openvfd
+
+[Install]
+WantedBy=multi-user.target
