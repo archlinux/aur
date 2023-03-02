@@ -1,7 +1,7 @@
 pkgbase = bareos
 	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced
 	pkgver = 22.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.bareos.org
 	arch = i686
 	arch = x86_64
@@ -14,9 +14,7 @@ pkgbase = bareos
 	makedepends = libmariadbclient
 	makedepends = postgresql-libs
 	makedepends = python
-	makedepends = python2
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	makedepends = rpcsvc-proto
 	makedepends = git
 	makedepends = lsb-release
@@ -105,16 +103,6 @@ pkgname = bareos-director-python-plugins-common
 	arch = any
 	depends = bareos-director=22.0.1
 
-pkgname = bareos-director-python2-plugin
-	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Python plugin for director daemon
-	depends = bareos-director=22.0.1
-	depends = bareos-director-python-plugins-common=22.0.1
-	depends = python2
-	depends = libcap
-	depends = jansson
-	depends = lzo
-	conflicts = bareos-director-python-plugin
-
 pkgname = bareos-director-python3-plugin
 	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Python plugin for director daemon
 	depends = bareos-director=22.0.1
@@ -174,16 +162,6 @@ pkgname = bareos-filedaemon-python-plugins-common
 	arch = any
 	depends = bareos-filedaemon=22.0.1
 
-pkgname = bareos-filedaemon-python2-plugin
-	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Python plugin for file daemon
-	depends = bareos-filedaemon=22.0.1
-	depends = bareos-filedaemon-python-plugins-common=22.0.1
-	depends = python2
-	depends = libcap
-	depends = lzo
-	depends = jansson
-	conflicts = bareos-filedaemon-python-plugin
-
 pkgname = bareos-filedaemon-python3-plugin
 	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Python plugin for file daemon
 	depends = bareos-filedaemon=22.0.1
@@ -226,16 +204,6 @@ pkgname = bareos-storage-python-plugins-common
 	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - This package contains the common files for the python 2 and python 3 storage plugins
 	arch = any
 	depends = bareos-storage=22.0.1
-
-pkgname = bareos-storage-python2-plugin
-	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Python plugin for storage daemon
-	depends = bareos-storage=22.0.1
-	depends = bareos-storage-python-plugins-common=22.0.1
-	depends = python2
-	depends = lzo
-	depends = libcap
-	depends = jansson
-	conflicts = bareos-storage-python-plugin
 
 pkgname = bareos-storage-python3-plugin
 	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Python plugin for storage daemon
@@ -282,9 +250,6 @@ pkgname = bareos-traymonitor
 	depends = bareos-common=22.0.1
 	backup = etc/bareos/tray-monitor.d/monitor/bareos-mon.conf
 
-pkgname = bareos-vadp-dumper
-	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - vStorage APIs for Data Protection Dumper program
-
 pkgname = bareos-vmware-plugin
 	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Bareos VMware plugin
 	arch = any
@@ -292,9 +257,6 @@ pkgname = bareos-vmware-plugin
 	depends = bareos-common=22.0.1
 	optdepends = bareos-filedaemon-python3-plugin=22.0.1
 	optdepends = bareos-filedaemon-python2-plugin=22.0.1
-
-pkgname = bareos-vmware-vix-disklib
-	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - VMware vix disklib distributable libraries
 
 pkgname = bareos-webui
 	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Webui (Bareos web administration)
@@ -305,7 +267,7 @@ pkgname = bareos-webui
 	backup = etc/bareos-webui/configuration.ini
 	backup = etc/bareos/bareos-dir.d/console/admin.conf.example
 	backup = etc/bareos/bareos-dir.d/profile/webui-admin.conf
-	backup = etc/httpd/conf/extra/bareos-webui.conf
+	backup = etc/httpd/conf.d/bareos-webui.conf
 
 pkgname = bareos-devel
 	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Devel headers
@@ -316,10 +278,3 @@ pkgname = python-bareos
 	depends = python
 	depends = python-sslpsk
 	depends = jansson
-
-pkgname = python2-bareos
-	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - python-bareos is a Python2 module to access a backup system.
-	depends = python2
-	depends = python2-sslpsk
-	depends = jansson
-	conflicts = python-bareos

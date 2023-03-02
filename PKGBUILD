@@ -13,7 +13,6 @@ pkgname=("bareos-bconsole"
          "bareos-database-postgresql"
          "bareos-database-tools"
          "bareos-director-python-plugins-common"
-         "bareos-director-python2-plugin"
          "bareos-director-python3-plugin"
          "bareos-director"
          "bareos-filedaemon-glusterfs-plugin"
@@ -23,14 +22,12 @@ pkgname=("bareos-bconsole"
          "bareos-filedaemon-percona-xtrabackup-python-plugin"
          "bareos-filedaemon-postgresql-python-plugin"
          "bareos-filedaemon-python-plugins-common"
-         "bareos-filedaemon-python2-plugin"
          "bareos-filedaemon-python3-plugin"
          "bareos-filedaemon"
          "bareos-storage-droplet"
          "bareos-storage-fifo"
          "bareos-storage-glusterfs"
          "bareos-storage-python-plugins-common"
-         "bareos-storage-python2-plugin"
          "bareos-storage-python3-plugin"
          "bareos-storage-tape"
          "bareos-storage"
@@ -40,20 +37,25 @@ pkgname=("bareos-bconsole"
          "bareos-webui"
          "bareos-devel"
          "python-bareos"
-         "python2-bareos"
          )
+
+#         "bareos-director-python2-plugin"
+#         "bareos-filedaemon-python2-plugin"
+#         "bareos-storage-python2-plugin"
+#         "python2-bareos"
 #         "bareos-vadp-dumper"
 #         "bareos-vmware-vix-disklib"
 
 pkgver=22.0.1
 pkgmajor=${pkgver%%.*}
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64 armv7h aarch64)
 groups=('bareos')
 pkgdesc="Bareos - Backup Archiving Recovery Open Sourced"
 url="http://www.bareos.org"
 license=('AGPL3')
-makedepends=('cmake' 'gcc' 'libmariadbclient' 'postgresql-libs' 'python' 'python2' 'python-setuptools' 'python2-setuptools' 'rpcsvc-proto' 'git' 'lsb-release' 'qt5-base' 'glusterfs' 'jansson' 'pam_wrapper')
+makedepends=('cmake' 'gcc' 'libmariadbclient' 'postgresql-libs' 'python' 'python-setuptools' 'rpcsvc-proto' 'git' 'lsb-release' 'qt5-base' 'glusterfs' 'jansson' 'pam_wrapper')
+#makedepends=('cmake' 'gcc' 'libmariadbclient' 'postgresql-libs' 'python' 'python2' 'python-setuptools' 'python2-setuptools' 'rpcsvc-proto' 'git' 'lsb-release' 'qt5-base' 'glusterfs' 'jansson' 'pam_wrapper')
 source=("git+https://github.com/bareos/bareos.git#tag=Release/${pkgver}"
         "0001-distver.patch"
         "0002-logspam.patch"
@@ -69,7 +71,7 @@ md5sums=('SKIP'
          '33d9c3a1d25b30ac2182aa8d874e28a5'
          'e78b88f897cfc3e60129eec360521e3d')
 python3_ver="3.10"
-python2_ver="2.7"
+#python2_ver="2.7"
 
 #=========================================
 prepare() {
@@ -134,7 +136,7 @@ build() {
 
   cd "${srcdir}/${pkgbase}/python-bareos"
   python setup.py build
-  python2 setup.py build
+  #python2 setup.py build
 }
 
 #=========================================
@@ -160,7 +162,7 @@ cp_pkgdir() {
          echo -e "\033[41mError:\033[0m missing $2/$n";
          return
       fi
-      files=`find $2/$n -type f`
+      files=`find $2/$n -type f,l`
       for f in $files \
       ; do
          new_dir=$(dirname $pkgdir`echo "$f" | sed "s|$2||"`)
