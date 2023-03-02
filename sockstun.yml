@@ -1,0 +1,16 @@
+tunnel:
+  name: tun0
+  mtu: 9000
+  ipv4:
+    address: '198.18.0.2'
+    gateway: '198.18.0.1'
+    prefix: 30
+  ipv6:
+    address: 'fc00::2'
+    gateway: 'fc00::1'
+    prefix: 126
+
+socks5:
+  port: 1080
+  address: 127.0.0.1
+  udp: 'udp'

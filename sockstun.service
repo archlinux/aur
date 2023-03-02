@@ -1,0 +1,9 @@
+[Unit]
+Description=SocksTun
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/sockstun /etc/sockstun.yml
+
+[Install]
+WantedBy=multi-user.target
