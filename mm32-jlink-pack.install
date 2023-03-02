@@ -1,25 +1,5 @@
-# mm32-jlink-pack.install
-info() {
-    echo -e "JLINK Pack 支持包支持 MM32 全系列芯片，在 SEGGER JLink 6.10 及以上版本下的安装。"
-}
 
-post_install() {
-    echo "Install JLinkDevicesMM32.xml..."
-    info
-    install_jlinkdevices
-}
-
-post_upgrade() {
-    post_install
-}
-
-pre_remove() {
-    echo "Uninstall JLinkDevicesMM32.xml..."
-    mv -v /opt/SEGGER/JLink/JLinkDevicesBak.xml /opt/SEGGER/JLink/JLinkDevices.xml
-}
-
-install_jlinkdevices() {
-    cp -rv /opt/SEGGER/JLink/JLinkDevices.xml /opt/SEGGER/JLink/JLinkDevicesBak.xml
-    sed -i "s|</DataBase>||g" /opt/SEGGER/JLink/JLinkDevices.xml
-    cat /opt/SEGGER/JLink/JLinkDevicesMM32.xml.patch >> /opt/SEGGER/JLink/JLinkDevices.xml
+post_remove() {
+    echo "deleting the mm32-jlink-pack ..."
+    find /home -maxdepth 5 -name "mm32" -exec rm -rf {} \;
 }
