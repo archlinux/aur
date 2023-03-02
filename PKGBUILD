@@ -1,5 +1,5 @@
 pkgname=openmodelica
-pkgver=1.19.3
+pkgver=1.20.0
 pkgrel=1
 pkgdesc="Open-source Modelica-based modeling and simulation environment"
 url="https://www.openmodelica.org"
