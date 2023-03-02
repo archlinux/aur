@@ -1,0 +1,17 @@
+
+post_install() {
+systemctl is-active --quiet skywire && systemctl daemon-reload && systemctl restart skywire && systemctl enable --now skywire-monitor 2> /dev/null
+}
+
+
+post_upgrade() {
+post_install
+}
+
+pre-remove() {
+systemctl disable --now skywire-monitor
+}
+
+post_remove() {
+systemctl is-active --quiet skywire && systemctl daemon-reload && systemctl restart skywire
+}

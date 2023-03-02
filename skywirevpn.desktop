@@ -1,8 +1,7 @@
 [Desktop Entry]
 Categories=P2P;VPN;WWW;Network;Internet
 Exec=skywire-cli vpn ui
-GenericName=Skywire VPN Interface
-Comment=Skywire VPN Interface.
+GenericName=Skywire VPN UI
 Icon=skywirevpn
 MimeType=application/x-skywire;
 Name=SkywireVPN

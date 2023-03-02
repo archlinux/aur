@@ -1,0 +1,14 @@
+[Unit]
+Description=http endpoint for skywire logs
+
+[Service]
+Type=simple
+Environment="SYSTEMD_COLORS=true"
+ExecStartPre=/bin/bash -c 'systemctl status skywire --lines=0 | tee /tmp/skylog.html > /dev/null ; echo -e "\nshowing last 300 lines of skywire logs most recent first\n" | tee -a /tmp/skylog.html  > /dev/null ; journalctl -x -u skywire.service -b --output cat | tail -n 300 | tac | tee -a /tmp/skylog.html > /dev/null ;  ansifilter --html -i /tmp/skylog.html -o /tmp/skylog0.html ; sed -i -e "s/●/\&#9679;/g" -e "s/○/\&#9675;/g" -e "s/×/\&#10060;/g" -e "s/─/\&#9472;/g" -e "s/└/\&#9492;/g" -e "s/├/\&#9500;/g" -e "s/<body>/<body style=\\"background-color:black;color:white;\\">/g" /tmp/skylog0.html ; tail -n 1 /tmp/skylog0.html | wc -c | xargs -I {} truncate /tmp/skylog0.html -s -{} ; cat /tmp/skylog0.html | wc -m | tee /tmp/skylog.wc > /dev/null'
+ExecStart=/bin/nc -vlc -p 7998 -e 'printf "HTTP/1.0 200 OK\r\nContent-Length: " ; cat /tmp/skylog.wc ; printf "\r\n" ; cat /tmp/skylog0.html'
+Restart=always
+StartLimitInterval=1min
+StartLimitBurst=60
+
+[Install]
+WantedBy=multi-user.target

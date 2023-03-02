@@ -118,11 +118,11 @@ _config_gen() {
 	##generate (hyper)visor configuration##
 	# show config gen command used
 	_msg3 "Generating skywire config with command:
-${_cyan}skywire-cli ${_yellow}config gen -bepr ${_retain_hv} ${_is_hypervisor} ${_public_rpc} ${_vpn_server} ${_test_env} ${_hvpks} ${_no_autoconnect} ${_is_public_visor}${_nc}"
-    skywire-cli config gen -bepr ${_retain_hv} ${_is_hypervisor} ${_public_rpc} ${_vpn_server} ${_test_env} ${_hvpks} ${_no_autoconnect} ${_is_public_visor} >> /dev/null 2>&1
+${_cyan}skywire-cli ${_yellow}config gen -bepr ${_retain_hv} ${_is_hypervisor} ${_public_rpc} ${_vpn_server} ${_test_env} ${_hvpks} ${_no_autoconnect} ${_is_public_visor} ${_dmsghttp} ${_url}${_nc}"
+    skywire-cli config gen -bepr ${_retain_hv} ${_is_hypervisor} ${_public_rpc} ${_vpn_server} ${_test_env} ${_hvpks} ${_no_autoconnect} ${_is_public_visor}  ${_dmsghttp} ${_url} >> /dev/null 2>&1
     if [[ ${?} != 0 ]]; then
       #print the error!
-      skywire-cli config gen -bepr ${_retain_hv} ${_is_hypervisor} ${_public_rpc} ${_vpn_server} ${_test_env} ${_hvpks} ${_no_autoconnect} ${_is_public_visor}
+      skywire-cli config gen -bepr ${_retain_hv} ${_is_hypervisor} ${_public_rpc} ${_vpn_server} ${_test_env} ${_hvpks} ${_no_autoconnect} ${_is_public_visor} ${_dmsghttp} ${_url}
       _err=$?
       _errmsg2 "error generating skywire config"
       exit ${_err}
@@ -141,6 +141,14 @@ config path: ${_purple}/opt/skywire/skywire.json${_nc}"
 	fi
 }
 
+#only use public rpc flag with env PUBLICRPC=1
+if [[ ( ${URL} -ne "") ]]; then
+  _url="${URL}"
+fi
+#only use public rpc flag with env PUBLICRPC=1
+if [[ ( ${DMSGHTTP} -eq "1") ]]; then
+  _dmsghttp="--dmsghttp "
+fi
 #only use public rpc flag with env PUBLICRPC=1
 if [[ ( ${PUBLICRPC} -eq "1") ]]; then
   _public_rpc="--publicrpc "
@@ -243,6 +251,7 @@ if [[ $_is_hypervisor == "-i" ]]; then
     _msg2 "to see this text again run: ${_cyan}skywire-autoconfig${_nc}"
 else
   	_msg2 "${_blue}Skywire${_nc} starting in visor mode"
-    _msg2 "Visor Public Key: ${_green}${_pubkey}${_nc}"
+    _hvpk=$(grep -A 2 "\"hypervisors\": \[" /opt/skywire/skywire.json | grep -v "\[\]" | head -n2 | tail -n1 | cut -d '"' -f2)
+    _msg2 "hypervisor Public Key: ${_purple}${_hvpk}${_nc}"
     _welcome
 fi
