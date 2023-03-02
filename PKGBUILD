@@ -1,6 +1,6 @@
 # Maintainer: Marvin Dalheimer <me@marvin-dalheimer.de>
 pkgname=godot-mono-bin
-pkgver=3.5.1
+pkgver=4.0
 pkgrel=1
 pkgdesc="Godot is an advanced, feature packed, multi-platform 2D and 3D game engine. It provides a huge set of common tools, so you can just focus on making your game without reinventing the wheel."
 arch=("i686" "x86_64")
@@ -10,8 +10,8 @@ provides=("godot-mono-bin")
 conflicts=("godot-mono")
 depends=("mono>=6.12.0" "dotnet-sdk" "msbuild")
 source=("godot-mono.desktop" "icons.tar.gz")
-source_i686=("$pkgname-$pkgver-i686.zip::https://downloads.tuxfamily.org/godotengine/"$pkgver"/mono/Godot_v"$pkgver"-stable_mono_x11_32.zip")
-source_x86_64=("$pkgname-$pkgver-x86_64.zip::https://downloads.tuxfamily.org/godotengine/"$pkgver"/mono/Godot_v"$pkgver"-stable_mono_x11_64.zip")
+source_i686=("$pkgname-$pkgver-i686.zip::https://downloads.tuxfamily.org/godotengine/"$pkgver"/mono/Godot_v"$pkgver"-stable_mono_linux_x86_32.zip")
+source_x86_64=("$pkgname-$pkgver-x86_64.zip::https://downloads.tuxfamily.org/godotengine/"$pkgver"/mono/Godot_v"$pkgver"-stable_mono_linux_x86_64.zip")
 
 package() {
   mkdir -p "$pkgdir/opt/$pkgname"
@@ -21,10 +21,10 @@ package() {
 
   case $CARCH in
     "i686")
-      cp -r "$srcdir/Godot_v${pkgver}-stable_mono_x11_32" "$pkgdir/opt/$pkgname/godot"
+      cp -r "$srcdir/Godot_v${pkgver}-stable_mono_linux_x86_32" "$pkgdir/opt/$pkgname/godot"
     ;;
     "x86_64")
-      cp -r "$srcdir/Godot_v${pkgver}-stable_mono_x11_64" "$pkgdir/opt/$pkgname/godot"
+      cp -r "$srcdir/Godot_v${pkgver}-stable_mono_linux_x86_64" "$pkgdir/opt/$pkgname/godot"
     ;;
   esac
   
@@ -33,16 +33,16 @@ package() {
 
   case $CARCH in
     "i686")
-      chmod +x "$pkgdir/opt/$pkgname/godot/Godot_v${pkgver}-stable_mono_x11.32"
-      ln -s "/opt/$pkgname/godot/Godot_v${pkgver}-stable_mono_x11.32" "$pkgdir/usr/bin/godot-mono"
+      chmod +x "$pkgdir/opt/$pkgname/godot/Godot_v${pkgver}-stable_mono_linux.x86_32"
+      ln -s "/opt/$pkgname/godot/Godot_v${pkgver}-stable_mono_linux.x86_32" "$pkgdir/usr/bin/godot-mono"
     ;;
     "x86_64")
-      chmod +x "$pkgdir/opt/$pkgname/godot/Godot_v${pkgver}-stable_mono_x11.64"
-      ln -s "/opt/$pkgname/godot/Godot_v${pkgver}-stable_mono_x11.64" "$pkgdir/usr/bin/godot-mono"
+      chmod +x "$pkgdir/opt/$pkgname/godot/Godot_v${pkgver}-stable_mono_linux.x86_64"
+      ln -s "/opt/$pkgname/godot/Godot_v${pkgver}-stable_mono_linux.x_86_64" "$pkgdir/usr/bin/godot-mono"
     ;;
   esac
 }
 md5sums=('c8ba9f7656b2c2db9a3ec385b3848bf5'
          '281c83d55c6a4d39fb9710e6f143bc5a')
-md5sums_i686=('13aa7c6724997a543d7759b657a20364')
-md5sums_x86_64=('88a0be9080dc7b8e3df4a663b355b654')
+md5sums_i686=('183a1b9b3976e29f8f99eac993891feb')
+md5sums_x86_64=('e719e0c19f4166ef39309ea2cafe6ce9')
