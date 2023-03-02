@@ -9,10 +9,9 @@ pkgbase = libhashab-git
 	license = GPL
 	makedepends = git
 	depends = libgpod
-	source = git://github.com/neheb/libhashab.git
+	source = git+https://github.com/neheb/libhashab.git
 	source = lib.patch
 	md5sums = SKIP
 	md5sums = 7d5be1e8b685cd1e1c645da5c7c2ffe4
 
 pkgname = libhashab-git
-
