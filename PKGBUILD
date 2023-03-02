@@ -1,7 +1,7 @@
 # Maintainer: Daniil Gentili <daniil@daniil.it>
 
 pkgname=cabbage-bin
-pkgver=2.8.0
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="Framework for developing audio plugins with the Csound programming language."
 arch=(x86_64)
@@ -10,8 +10,7 @@ license=('GPL')
 provides=(cabbage)
 depends=(csound)
 
-_ver=2.8
-source_x86_64=("https://github.com/rorywalsh/cabbage/releases/download/v${pkgver}/Cabbage-${_ver}-DEB.zip")
+source_x86_64=("https://github.com/rorywalsh/cabbage/releases/download/v${pkgver}/CabbageLinux-${pkgver}.zip")
 
 package() {
 	bin_path="$pkgdir/usr/bin"
@@ -35,4 +34,4 @@ package() {
 	chmod -R 755 "$theme_path"
 }
 
-sha512sums_x86_64=('80097bc27c5813fe94ca598726b35b00990f58e73b0544e1eaad6bb4dc38403d6a7d792fa23e916ac8ca3b8c537ea951bf9f340a25bf2d656bd4e4f60ebbe009')
+sha512sums_x86_64=('eb502e3bcfbb5a7449c9de97b4f5b61e27dc7eeb956b93a30944fe18b85153887e693c5a80526801825aaa2f702219ffec880cfe593eb50d99e8f87f9d955863')
