@@ -1,0 +1,12 @@
+--- txt2img	2023-03-03 02:52:13.288927751 +0400
++++ /opt/stable-diffusion-intel/txt2img	2023-03-03 02:52:18.472260223 +0400
+@@ -17,8 +17,7 @@
+         scheduler = LMSDiscreteScheduler(
+             beta_start=args.beta_start,
+             beta_end=args.beta_end,
+-            beta_schedule=args.beta_schedule,
+-            tensor_format="np"
++            beta_schedule=args.beta_schedule
+         )
+     else:
+         scheduler = PNDMScheduler(
