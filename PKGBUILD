@@ -25,7 +25,7 @@ optdepends=(
   'python-yaml: for bindings yaml support'
   'python-ujson: for JSON serializer for improved performance'
 )
-checkdepends=(python-pytest python-requests-mock python-responses python-itsdangerous python-ujson python-timeout-decorator)
+checkdepends=(python-pytest python-requests-mock python-responses python-itsdangerous python-ujson python-timeout-decorator python-rich)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('21bc59c35fdbcd25ae9db5e13067422199bb29077ddc98ecf163e52fee2ef38f31c44012a39e96ad3f3b32854510edd8453803352eb076622bfd817cde51a7e2')
 
