@@ -3,7 +3,7 @@
 
 _name=language-tools
 pkgname=vue-language-server
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Fast Vue Language Support Extension'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('nodejs')
 makedepends=('npm' 'pnpm' 'typescript')
 optdepends=('typescript: for use in typescript.tsdk')
 source=("https://github.com/vuejs/language-tools/archive/v$pkgver/vuejs_$_name-$pkgver.tar.gz")
-b2sums=('4edad66a35ba59685e38263071ac76442bed2e13382d8639250adbe06780f3e929727b0db76bacf0e84b0ae3ad9dd46b77cda6e678f56bfb169d0a66ff0bca98')
+b2sums=('acd884f20b3a45b4c8f82d6253090f71a867bc0feea448565b9ef141855b8e13db9eaba21988fae008166263895a132d64ebd558227156800934faeb5d59b1cd')
 
 prepare() {
   cd $_name-$pkgver
