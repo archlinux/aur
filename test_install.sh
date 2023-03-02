@@ -17,4 +17,3 @@ rm *.xml
 rm *.h5
 rm *.stl
 rm *.h5m
-rm *.vtk
