@@ -1,6 +1,6 @@
 # Maintainer: AntiCompositeNumber <anticompositenumber at gmail dot com>
 pkgname=fresh-node
-pkgver=22.11.1
+pkgver=22.11.2
 pkgrel=1
 pkgdesc="Wikimedia tool to create Docker containers for running isolated npm tests"
 arch=('any')
