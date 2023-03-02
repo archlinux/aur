@@ -1,0 +1,14 @@
+pkgbase = remine
+	pkgdesc = A simple command line tool for list and quickly update issues
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/schelmo/remine
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = remine-0.1.5.tgz
+	source = https://registry.npmjs.org/remine/-/remine-0.1.5.tgz
+	sha1sums = bcd799944c1b4aca4ca3b76fc5e6669bb3a241db
+
+pkgname = remine
