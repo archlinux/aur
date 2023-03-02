@@ -3,12 +3,12 @@
 
 pkgname=dbeaver-le
 pkgver=22.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A universal database tool for developers and database administrators. Lite Edition"
 arch=('x86_64')
 url="http://dbeaver.com/"
 license=("Commercial")
-depends=('java-runtime>=1.8' 'gtk3' 'gtk-update-icon-cache')
+depends=('java-runtime>=11' 'gtk3' 'gtk-update-icon-cache')
 install=dbeaver-le.install
 
 source=(dbeaver-le.desktop dbeaver-le.install)

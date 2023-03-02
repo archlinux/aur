@@ -1,12 +1,12 @@
 pkgbase = dbeaver-le
 	pkgdesc = A universal database tool for developers and database administrators. Lite Edition
 	pkgver = 22.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://dbeaver.com/
 	install = dbeaver-le.install
 	arch = x86_64
 	license = Commercial
-	depends = java-runtime>=1.8
+	depends = java-runtime>=11
 	depends = gtk3
 	depends = gtk-update-icon-cache
 	noextract = dbeaver-le-22.3.0-linux.gtk.x86_64.tar.gz
