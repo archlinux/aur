@@ -1,7 +1,7 @@
 # Maintainer: Jean Schoeller <jean@schoeller.fr>
-_pkgname="iio-hyprland"
 pkgname="iio-hyprland-git"
 
+_pkgname="iio-hyprland"
 pkgver=1.0.1
 
 pkgrel=3
