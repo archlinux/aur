@@ -1,14 +1,13 @@
 pkgbase = robotframework
 	pkgdesc = A keyword-driven test automation framework
-	pkgver = 4.0
+	pkgver = 6.0.2
 	pkgrel = 1
 	url = http://www.robotframework.org
 	arch = any
 	license = Apache
 	depends = python
 	optdepends = jython: for using robotframework with Java (must be installed before running PKGBUILD)
-	source = https://github.com/robotframework/robotframework/archive/v4.0.tar.gz
-	md5sums = 85391b47521d04b4201d6bf6573afa9d
+	source = https://github.com/robotframework/robotframework/archive/v6.0.2.tar.gz
+	md5sums = 8abf14ae37187dd9c4d1046cfe88367e
 
 pkgname = robotframework
-
