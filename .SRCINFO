@@ -1,0 +1,13 @@
+pkgbase = labwc-menu-gnome3-git
+	pkgdesc = OpenBox/labwc menu generator for GNOME 3 menus
+	pkgver = r9.1d138c1
+	pkgrel = 1
+	url = https://github.com/labwc/labwc-menu-gnome3
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = gnome-menus
+	source = labwc-menu-gnome3-git::git+https://github.com/labwc/labwc-menu-gnome3
+	b2sums = SKIP
+
+pkgname = labwc-menu-gnome3-git
