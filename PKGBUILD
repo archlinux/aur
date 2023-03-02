@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=uftrace-git
-pkgver=0.13+0.g53ec12d
+pkgver=0.13.1+55.g3d728c5
 pkgrel=1
 pkgdesc="Function graph tracer for C/C++/Rust"
 arch=(x86_64)
@@ -11,7 +11,12 @@ provides=("uftrace=${pkgver%+*}")
 conflicts=('uftrace')
 source=("git+$url")
 sha1sums=('SKIP')
-makedepends=('git')
+makedepends=('git' 'pandoc')
+depends=('libelf' 'python3' 'ncurses' 'pkgconf' 'luajit' 'capstone' 'libunwind')
+
+# Disable LTO due to upstream issue
+# https://github.com/namhyung/uftrace/issues/1343
+options=('!lto')
 
 pkgver() {
   cd "$srcdir"/uftrace
