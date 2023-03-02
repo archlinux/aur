@@ -27,7 +27,7 @@ optdepends=(
 )
 checkdepends=(python-pytest python-requests-mock python-responses python-itsdangerous python-ujson python-timeout-decorator python-rich)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('21bc59c35fdbcd25ae9db5e13067422199bb29077ddc98ecf163e52fee2ef38f31c44012a39e96ad3f3b32854510edd8453803352eb076622bfd817cde51a7e2')
+sha512sums=('92d6e1b9afb158f824a4b20d83c7b30a5988476b741213b0663df6095df1753da2dcd6516372ba383864e19d346850a356e9370b2ae27554effcc3f0b6a078c8')
 
 build() {
   cd ${_base}-${pkgver}
