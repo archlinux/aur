@@ -4,7 +4,7 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgname='refind-git'
-pkgver=0.13.3.7.r832.gcce5cdc
+pkgver=0.13.3.8.r838.gf4c3375
 pkgrel=1
 pkgdesc='rEFInd Boot Manager - git version'
 url='https://www.rodsbooks.com/refind/'
@@ -17,7 +17,7 @@ optdepends=('gptfdisk: for finding non-vfat ESP with refind-install'
             'mokutil: for Machine Owner Key enrollment'
             'openssl: for generating local certificates with refind-install'
             'preloader-signed: pre-signed Secure Boot shim loader'
-            'python: for refind-mkdefault'
+            'python: for refind-mkdefault and extract-sb-keys'
             'sbsigntools: for EFI binary signing with refind-install'
             'sudo: for privilege elevation in refind-install and refind-mkdefault'
             'shim-signed: pre-signed Secure Boot shim loader'
@@ -72,7 +72,7 @@ package() {
 	install -vDm 0644 icons/*.png -t "${pkgdir}/usr/share/${pkgname%-git}/icons"
 	install -vDm 0644 icons/svg/*.svg -t "${pkgdir}/usr/share/${pkgname%-git}/icons/svg"
 	# scripts
-	install -vDm 0755 {refind-{install,mkdefault},mkrlconf,mvrefind} -t "${pkgdir}/usr/bin"
+	install -vDm 0755 {refind-{install,mkdefault,sb-healthcheck},mkrlconf,mvrefind,extract-sb-keys} -t "${pkgdir}/usr/bin"
 	install -vDm 0755 fonts/mkfont.sh "${pkgdir}/usr/bin/${pkgname%-git}-mkfont"
 	# man pages
 	install -vDm 0644 docs/man/*.8 -t "${pkgdir}/usr/share/man/man8"
