@@ -32,7 +32,7 @@ build() {
 }
 
 check() {
-  cd "$srcdir/$_pkgname/build/lib.linux-$CARCH-3"*/
+  cd "$srcdir/$_pkgname/build/lib.linux-$CARCH-cpython-"*/
 
   LANG=en_US.UTF-8 PYTHONPATH="$PWD:$PYTHONPATH" py.test --cov=borg \
     --benchmark-skip --pyargs borg.testsuite -v \
