@@ -3,7 +3,7 @@
 pkgbase=python-ndcube
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=2.0.3
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Package for multi-dimensional contiguious and non-contiguious coordinate aware arrays"
 arch=('any')
@@ -15,46 +15,52 @@ makedepends=('python-setuptools-scm'
              'python-installer'
              'python-sphinx-automodapi'
              'python-sphinx-changelog'
+             'python-sphinx-gallery'
+             'python-sphinxext-opengraph'
              'python-sunpy-sphinx-theme'
              'python-gwcs'
+             'python-sunpy'
              'python-mpl-animators'
              'python-pytest-doctestplus'
-             'graphviz'
-             'subversion')  # matplotlib <- mpl-animators
-checkdepends=('python-reproject' 'python-sunpy')  # pytest-doctestplus gwcs mpl-animators already in makedep
-source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('84cd91f9977db35fb95c65f3e4def477')
+             'graphviz')  # matplotlib <- mpl-animators
+checkdepends=('python-pytest-doctestplus'
+              'python-dask'
+              'python-reproject')  # pytest-doctestplus gwcs mpl-animators sunpy already in makedep
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
+        "https://github.com/sunpy/ndcube/raw/main/changelog/README.rst")
+md5sums=('f046a10f107da6b37238088a5efa2890'
+         'SKIP')
 
-#prepare() {
-#    cd ${srcdir}/${_pyname}-${pkgver}
-#
-#    sed -e '/ignore:distutils/a \	ignore:"order" was deprecated in version 0.9' \
-#        -e "/ignore:distutils/a \	ignore:The default kernel will change from 'Hann' to  'Gaussian'" \
-#        -e "/ignore:distutils/a \	ignore:The default boundary mode will change from 'ignore' to  'strict'" \
-#        -i setup.cfg
-#}
+prepare() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    install -Dm644 -t changelog ${srcdir}/README.rst
+#   sed -e '/ignore:distutils/a \	ignore:"order" was deprecated in version 0.9' \
+#       -e "/ignore:distutils/a \	ignore:The default kernel will change from 'Hann' to  'Gaussian'" \
+#       -e "/ignore:distutils/a \	ignore:The default boundary mode will change from 'ignore' to  'strict'" \
+#       -i setup.cfg
+}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
     python -m build --wheel --no-isolation
 
     msg "Building Docs"
-    svn export https://github.com/sunpy/ndcube/trunk/changelog
-    cd ${srcdir}/${_pyname}-${pkgver}/docs
-    PYTHONPATH="../build/lib" make html
+#   svn export https://github.com/sunpy/ndcube/trunk/changelog
+    PYTHONPATH="../build/lib" make -C docs html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed"  #-vv --color=yes
+    pytest || warning "Tests failed" #-vv --color=yes
 }
 
 package_python-ndcube() {
     depends=('python>=3.8' 'python-gwcs>=0.15')
     optdepends=('python-matplotlib>=3.2: plotting'
                 'python-mpl-animators>=1.0: plotting'
-                'python-reproject<0.10: reproject'
+                'python-reproject>=0.7.1: reproject'
                 'python-ndcube-doc: Documentation for ndcube')
     cd ${srcdir}/${_pyname}-${pkgver}
 
