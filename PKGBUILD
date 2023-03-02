@@ -1,7 +1,7 @@
 # Maintainer: Patrik Sundberg <patrik.sundberg@gmail.com>
 
 pkgname=beeper
-pkgver=3.43.31
+pkgver=3.44.28
 pkgrel=1
 pkgdesc="all your chats in one app"
 arch=('x86_64')
@@ -13,7 +13,7 @@ noextract=("$pkgname-$pkgver.AppImage")
 options=('!strip')
 
 source=("$pkgname-$pkgver.AppImage::https://download.beeper.com/linux/appImage/x64")
-sha256sums=('c0f50d708ac8d26da4880c73850acf68172c00420948303154b9fa73193dd32e')
+sha256sums=('84112380dc2eb2c43b98e2471c2f0bc00221ef0fdaf3b58879f0b20021589f01')
 
 prepare() {
     cd "${srcdir}"
