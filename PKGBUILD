@@ -43,6 +43,12 @@ build() {
 	cargo run --frozen --release --all-features --example generate-docs
 }
 
+check() {
+	cd "$srcdir/$_sourcedirectory/"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo test --frozen --all-features
+}
+
 package() {
 	cd "$srcdir/$_sourcedirectory/target/"
 	for _binary in "$_pkgname" "$_pkgname-keygen" "$_pkgname-mount"; do
