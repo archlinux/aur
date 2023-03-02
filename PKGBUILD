@@ -1,4 +1,5 @@
 # Maintainer: dhn <neilson+aur@sent.com>
+# Co-maintainer: alhirzel
 
 _pkgname=httr
 pkgname=r-$_pkgname
