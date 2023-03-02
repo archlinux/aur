@@ -2,7 +2,7 @@
 # Contributor: qing <qing at he dot email>
 pkgname=electronic-wechat-uos-bin
 pkgver=2.3.2
-pkgrel=6
+pkgrel=7
 _uosVer=2.1.5
 epoch=
 pkgdesc="Linux下更好用的微信客户端. 更多功能, 更少bug. 使用系统Electron并利用UOS请求头修复了登陆问题."
@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://github.com/Riceneeder/electronic-wechat"
 license=('MIT')
 groups=()
-depends=('nss' 'xdg-utils' 'libxss' 'electron' 'bc' 'libnotify' 'bubblewrap' 'lsb-release')
+depends=('nss' 'xdg-utils' 'libxss' 'electron' 'bc' 'libnotify' 'bubblewrap')
 makedepends=()
 checkdepends=()
 optdepends=(
