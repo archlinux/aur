@@ -1,9 +1,9 @@
-# Maintainer: Andrea Denisse Gómez-Martínez <denisse at archlinux dot org>
+# Maintainer: denisse <denisse at archlinux dot org>
 # Contributor: Radu Bîrzu <radu@webative.net>
 
 pkgname=dracula-gtk-theme
-pkgver=v3.0
-pkgrel=2
+pkgver=v4.0.0
+pkgrel=1
 pkgdesc="Dark theme for GTK"
 arch=("any")
 url="https://github.com/dracula/gtk"
@@ -12,7 +12,7 @@ optdepends=('ttf-roboto: primary font face defined'
 	'ttf-ubuntu-font-family: secondary font face defined'
 	'cantarell-fonts: tertiary font face defined')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/Dracula.tar.xz")
-sha256sums=('d0a7af0baab7c2ec4ed138c7ee1e4558450154ee4b9a5545e7525d022a79d261')
+sha256sums=('199bd4051b243fddadc625038686c7e8a91d4e8098868aadb4ca4c0c80911b6f')
 provides=($pkgname)
 conflicts=($pkgname)
 
