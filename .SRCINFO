@@ -1,17 +1,17 @@
 pkgbase = python-ipyopt
 	pkgdesc = Python interface to Ipopt
-	pkgver = 0.12.6
+	pkgver = 0.12.7
 	pkgrel = 1
 	url = https://github.com/py-nonlinopt/ipyopt
 	arch = x86_64
-	license = custom
+	license = custom:BSD-3-clause
 	checkdepends = python-scipy
 	checkdepends = python-sympy
 	makedepends = cython
 	makedepends = python-setuptools
 	depends = coin-or-ipopt
 	depends = python-numpy
-	source = ipyopt-0.12.6.tar.gz::https://github.com/py-nonlinopt/ipyopt/archive/0.12.6.tar.gz
-	sha512sums = a072f76aaae8b5b7c6bb7a10bee1ba0d67c75c64e71251f887a3fc3f00d6ddd32cedd6238034c177d6314b927e9e8e88cb80bf1843165c71c48d1cfaa5da0fc6
+	source = ipyopt-0.12.7.tar.gz::https://github.com/py-nonlinopt/ipyopt/archive/0.12.7.tar.gz
+	sha512sums = b69b4f605244227ad8945bcbb815699c607ab90987656a73bbfc1218af7c54ef9f1d3ec7d5bc3cf95f0d38f3eb2fb93939a6ee916cd4bcf2b58d8ea62c3bb176
 
 pkgname = python-ipyopt
