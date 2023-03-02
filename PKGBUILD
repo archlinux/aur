@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Giorgi Taba Kobakhidze <t@gtk.ge>
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=stable-diffusion-intel

@@ -1,7 +1,7 @@
 pkgbase = stable-diffusion-intel
 	pkgdesc = Image generator that uses stable diffusion, vino (Intel CPU) and includes "txt2img"
 	pkgver = 20220908
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/bes-dev/stable_diffusion.openvino
 	arch = x86_64
 	license = Apache
@@ -20,6 +20,10 @@ pkgbase = stable-diffusion-intel
 	depends = python-transformers
 	depends = python-watchdog
 	source = git+https://github.com/bes-dev/stable_diffusion.openvino#commit=72d3ad67f078b25bc5ae191f6e49078cebd1f791
-	b2sums = SKIP
+	source = remove-tensor-format.patch
+	source = txt2img.sh
+	sha256sums = SKIP
+	sha256sums = 8d2e28e19488992103fdda2685f3f64908c153d256ce545731261bed17cc406c
+	sha256sums = 35329c631245260dfca4bf64521e748f86547248f8236a617f370bc54485f026
 
 pkgname = stable-diffusion-intel
