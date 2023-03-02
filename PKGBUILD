@@ -4,7 +4,7 @@
 pkgname=namcap-improved
 _pkgname=namcap
 pkgver=3.3.1+r35+ge9ee31d
-pkgrel=6
+pkgrel=7
 pkgdesc="Improved Pacman package analyzer"
 arch=('any')
 url='https://gitlab.archlinux.org/pacman/namcap'
@@ -27,10 +27,16 @@ prepare() {
   cd $_pkgname
 
   # pydepends: Various improvements
-  git cherry-pick -n f570fb82078db210fd1d6016804b7db8358aa67b
+  git cherry-pick -n e944c5927dee39cfebc70a98888213b1bdd7c945
 
   # New checks for optdepends and sodepends
   git cherry-pick -n 0023454b0eff2a422722fb1340e1652374e9100f
+
+  # Add support for symlinked license dir
+  git cherry-pick -n 1f61dcebcffb6b4f1072b61b8677a2e1a33c39ae
+
+  # Add pcdepends rule
+  git cherry-pick -n ac1c60c67fc5a3c2686a392f5370777f7f1e2da8
 }
 
 build() {
