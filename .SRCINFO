@@ -1,0 +1,14 @@
+pkgbase = neosent-git
+	pkgdesc = Suckful Sent
+	pkgver = v1.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/RaphGL/NeoSent
+	arch = any
+	license = GPLv3
+	makedepends = make
+	makedepends = git
+	source = git+https://github.com/RaphGL/NeoSent
+	md5sums = SKIP
+
+pkgname = neosent-git
