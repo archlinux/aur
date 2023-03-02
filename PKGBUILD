@@ -62,4 +62,5 @@ package() {
 	cd $srcdir/${pkgname}/build 
 	make DESTDIR="$pkgdir/" install
 	pip install ../
+	mv $srcdir/${pkgname} $pkgdir/opt/openmc
 }
