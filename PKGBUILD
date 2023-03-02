@@ -2,7 +2,7 @@
 
 
 
-pkgname="iio-hyprland"
+pkgname="iio-hyprland-git"
 
 pkgver=1.0.1
 
