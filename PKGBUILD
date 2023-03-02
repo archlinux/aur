@@ -3,18 +3,24 @@
 
 pkgname=stable-diffusion-intel
 pkgver=20220908
-pkgrel=2
+pkgrel=3
 pkgdesc='Image generator that uses stable diffusion, vino (Intel CPU) and includes "txt2img"'
 arch=(x86_64)
 url='https://github.com/bes-dev/stable_diffusion.openvino'
-license=(Apache2)
+license=(Apache 'custom: CreativeML Open RAIL-M')
 makedepends=(git)
 depends=(openvino python-diffusers python-ftfy python-huggingface-hub python-numpy python-opencv python-pytorch python-scipy python-streamlit python-tqdm python-transformers python-watchdog)
 source=("git+$url#commit=72d3ad67f078b25bc5ae191f6e49078cebd1f791")
 b2sums=(SKIP)
 
 prepare() {
-  echo -e '#!/bin/sh\nexport PYTHONPATH+=/opt/intel/openvino/python/python3.10\ntime /usr/bin/python3 /opt/stable-diffusion-intel/txt2img "$@"' > txt2img.sh
+  cat <<-'EOF' > txt2img.sh
+		#!/bin/sh
+		python_version_major_minor=$(python -V | cut -d" " -f2 | cut -d. -f1-2) \
+		|| exit
+		export PYTHONPATH="${PYTHONPATH+:$PYTHONPATH:}"/opt/intel/openvino/python/python"$python_version_major_minor"
+		exec /usr/bin/python3 /opt/stable-diffusion-intel/txt2img "$@"
+	EOF
 }
 
 package() {
