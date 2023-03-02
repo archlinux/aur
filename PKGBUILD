@@ -1,9 +1,9 @@
 # Maintainer: xgjmibzr <xgjmibzr@gmail.com>
 
 pkgname=httm-bin
-pkgver=0.22.1
+pkgver=0.22.2
 pkgrel=1
-pkgdesc="Prints the size, date and locations of available unique versions (deduplicated by modify time and size) of files residing on ZFS or BTRFS snapshots. (binary .deb)"
+pkgdesc="Prints the size, date and locations of available unique versions (deduplicated by modify time and size) of files residing on ZFS, BTRFS, or NILFS snapshots. (binary .deb)"
 arch=('x86_64')
 url="https://github.com/kimono-koans/httm"
 license=('MPL-2.0')
@@ -14,7 +14,7 @@ optdepends=('btrfs-progs: BTRFS support'
             'nilfs-utils: NILFS2 support')
 options=('!strip' '!emptydirs')
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/${pkgver}/httm_${pkgver}_amd64.deb")
-sha512sums=('5994a4c105784535781a8fa48ddf34b2b8fe866911388a4c583d539ab9ec4ddb5e3762bfc9f76a07d6ea2bdfefe4f46596aed47f2cca8c8cb2013fad697e308a')
+sha512sums=('d9cb0928fade8b3077528ca795bf62aa241f803489a27b924ccd3ae951c733acf0bc42c1ea40ef5d2fd5ebf61558ea6dd8b5b95e805b218e10d832b588fdc80f')
 
 prepare() {
 	tar -xf data.tar.xz
