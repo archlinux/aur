@@ -4,7 +4,7 @@
 
 pkgname=nextcloud-app-polls
 _appname=polls
-pkgver=4.1.5
+pkgver=4.1.6
 pkgrel=1
 pkgdesc="Poll app for Nextcloud"
 arch=('any')
@@ -12,7 +12,7 @@ url="https://github.com/nextcloud/polls"
 license=('AGPL3')
 makedepends=('npm' 'composer' 'yq' 'rsync')
 source=("${_appname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('3160b77202034db7e14a94ab14f4cca9dd2b0313d87d476447313570001fa62263f12ae5c2135be8815790da368e8def3b183979a865c1846ef632fdc2e3167d')
+sha512sums=('f44a92708013a3985d7a3c8e332986d0a41b0f0afc2cf30ffd976c7fc2cabb71fd03181a68fee7b83e833915ee5cff0754e5c0b32b9f08cf89f90440e2c63f91')
 
 build() {
     cd "${srcdir}/polls-${pkgver}"
