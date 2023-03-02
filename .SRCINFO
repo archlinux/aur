@@ -5,6 +5,7 @@ pkgbase = aliyunpan-liupan1890
 	url = https://github.com/odomu/aliyunpan
 	arch = any
 	license = None
+	makedepends = yarn
 	depends = electron20
 	depends = aria2
 	optdepends = mpv: media preview support
