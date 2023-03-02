@@ -1,11 +1,11 @@
 pkgbase = jimtcl
 	pkgdesc = Jim Tcl - A small footprint implementation of Tcl
-	pkgver = 0.81
+	pkgver = 0.82
 	pkgrel = 1
 	url = https://github.com/msteveb/jimtcl
 	arch = any
 	license = custom
-	source = jimtcl-0.81.tar.gz::https://github.com/msteveb/jimtcl/archive/0.81.tar.gz
-	md5sums = a6d232ed12f47c28b56c97a955448e34
+	source = jimtcl-0.82.tar.gz::https://github.com/msteveb/jimtcl/archive/0.82.tar.gz
+	md5sums = 7d6be6bff1079778bf27d50ba9185388
 
 pkgname = jimtcl
