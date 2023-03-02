@@ -9,6 +9,7 @@ arch=("any")
 license=("None")
 _electron=electron20
 depends=(${_electron} 'aria2')
+makedepedns=('yarn')
 optdepends=('mpv: media preview support')
 source=("git+${url}.git#tag=03b0319c29d26c47000b17d776c758a33d8a9515"
 		'aliyunpan-liupan1890.sh'
