@@ -16,13 +16,22 @@ source=(
 	'update-orbfont.diff'
 )
 sha512sums=('SKIP'
-            '252bfe7afd4aab9e495030894d3bbe904eb4af8946c7869b17bf9a4777d69716cf9220b26d30968ff492ffaed7e5d2cecf25d9e06798ac2639b8cebf73a5cbf2')
+            'd78fe9cf662dc286c77ed0526493deb39dbed614259108fc247b44c406cbdf1c70aef4d05ee6c816fd51035df2fb107466d6f06fbde6941576e34a7f89febfc0')
 
 _sourcedirectory="$pkgname"
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 	patch --forward -p1 < "$srcdir/update-orbfont.diff"
+
+	# Prepare correct target for our architecture
+	_cargotarget="$CARCH-unknown-linux-gnu"
+
+	if [ "$CARCH" = 'armv7h' ]; then
+		_cargotarget='armv7-unknown-linux-gnueabihf'
+	fi
+
+	cargo fetch --locked --target "$_cargotarget"
 }
 
 pkgver() {
@@ -32,7 +41,9 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
-	cargo build --release --locked --all-features
+	export RUSTUP_TOOLCHAIN='stable'
+	export CARGO_TARGET_DIR='target'
+	cargo build --frozen --release --all-features
 }
 
 package() {
