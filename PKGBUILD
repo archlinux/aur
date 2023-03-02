@@ -4,12 +4,12 @@
 pkgname=ytdlp-gui
 _pkgname=ytdlp-gui
 pkgver=0.2.5
-pkgrel=2
+pkgrel=3
 pkgdesc="a GUI for yt-dlp written in Rust"
 url="https://github.com/BKSalman"
 license=("GPL3")
 arch=("x86_64")
-makedepends=("cargo" "rust" "pkgconf" "git" )
+makedepends=("rustup" "cargo" "rust" "pkgconf" "git" )
 depends=("ffmpeg" "yt-dlp")
 provides=("ytdlp-gui")
 conflicts=("ytdlp-gui")
