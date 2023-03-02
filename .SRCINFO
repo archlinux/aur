@@ -14,6 +14,6 @@ pkgbase = ytdlp-gui
 	provides = ytdlp-gui
 	conflicts = ytdlp-gui
 	source = https://github.com/BKSalman/ytdlp-gui/archive/refs/tags/v0.2.5.tar.gz
-	sha256sums = 8cfd0cf4c5261242f010fff2dd60fbb87b3031dff2d4bd1338eb06156eb78e31
+	sha256sums = b7e1a8350dc69f583122df4bc43c6968ab1f11a3282472f1fc52b47630387f0c
 
 pkgname = ytdlp-gui
