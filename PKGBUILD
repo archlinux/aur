@@ -36,8 +36,8 @@ package() {
     rmdir $pkgdir/usr/local
     mkdir $pkgdir/usr/lib/mujoco
     mv $pkgdir/usr/bin/* $pkgdir/usr/lib/mujoco/
-    mkdir $pkgdir/usr/lib/mujoco/mujoco_plugin
-    cp lib/libelasticity.so $pkgdir/usr/lib/mujoco/mujoco_plugin/
+    mkdir $pkgdir/usr/lib/mujoco/plugins
+    cp lib/libelasticity.so $pkgdir/usr/lib/mujoco/plugins/
     for _file in $pkgdir/usr/lib/mujoco/*; do
         ln -s /usr/lib/mujoco/$(basename $_file) $pkgdir/usr/bin/mujoco-$(basename $_file)
     done
