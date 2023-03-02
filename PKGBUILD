@@ -1,9 +1,9 @@
 # Maintainer: flaviofearn <flavioislima@gmail.com>
 
 pkgname=hyperplay
-_pkgver=v0.0.5
+_pkgver=v0.0.7
 pkgver=${_pkgver#v}
-pkgrel=3
+pkgrel=1
 pkgdesc="An open source Web3 gaming platform."
 arch=('x86_64')
 url="https://github.com/HyperPlay-Gaming/hyperplay-desktop-client"
@@ -13,7 +13,7 @@ depends=('fuse2' 'gawk')
 _filename=hyperplay-${pkgver}.pacman
 source=("$url/releases/download/${_pkgver}/${_filename}")
 noextract=("${_filename}")
-md5sums=('2c359fbe20980f3dfbfd5bc235233ed6')
+md5sums=('a99db51c62f5e5f2fda9674ee1453192')
 options=(!strip)
 
 package() {
