@@ -46,9 +46,9 @@ pkgname=("bareos-bconsole"
 #         "bareos-vadp-dumper"
 #         "bareos-vmware-vix-disklib"
 
-pkgver=22.0.1
+pkgver=22.0.2
 pkgmajor=${pkgver%%.*}
-pkgrel=2
+pkgrel=1
 arch=(i686 x86_64 armv7h aarch64)
 groups=('bareos')
 pkgdesc="Bareos - Backup Archiving Recovery Open Sourced"
