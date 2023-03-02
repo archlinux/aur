@@ -26,7 +26,6 @@ pkgbase = flow-git
 	makedepends = ocaml-sedlex>=2.3
 	makedepends = ocaml-visitors
 	makedepends = ocaml-wtf8
-	optdepends = bash-completion: Bash completion
 	provides = flow
 	conflicts = flow
 	source = flow-git::git+https://github.com/facebook/flow
