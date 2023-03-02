@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=git-branchless
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='High-velocity monorepo-scale workflow for Git'
 url="https://github.com/arxanas/$pkgname"
@@ -13,7 +13,7 @@ makedepends=(cargo)
 checkdepends=(git)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('362ac1ff6da00b1e5c1ab68614753fb5ffff3f1860a9a8272bf067cd8a9edccc')
+sha256sums=('13a7441be5c002b5a645dd9ad359dad5bdd46950b51b49e3cddccd9041deb5f5')
 
 prepare() {
 	cd "$_archive"
