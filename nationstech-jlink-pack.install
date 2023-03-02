@@ -1,25 +1,6 @@
 # nationstech-jlink-pack.install
-info() {
-    echo -e "JLINK Pack 支持包支持 Nationstech (国民技术) 全系列芯片，在 SEGGER JLink 6.42 及以上版本下的安装。"
-}
 
-post_install() {
-    echo "Install NationstechJLinkDevices.xml..."
-    info
-    install_jlinkdevices
-}
-
-post_upgrade() {
-    post_install
-}
-
-pre_remove() {
-    echo "Uninstall NationstechJLinkDevices.xml..."
-    mv -v /opt/SEGGER/JLink/JLinkDevicesNationBak.xml /opt/SEGGER/JLink/JLinkDevices.xml
-}
-
-install_jlinkdevices() {
-    cp -rv /opt/SEGGER/JLink/JLinkDevices.xml /opt/SEGGER/JLink/JLinkDevicesNationBak.xml
-    sed -i "s|</DataBase>||g" /opt/SEGGER/JLink/JLinkDevices.xml
-    cat /opt/SEGGER/JLink/Nationstech-JLinkDevices.xml >> /opt/SEGGER/JLink/JLinkDevices.xml
+post_remove() {
+    echo "deleting the nationstech-jlink-pack ..."
+    find /home -maxdepth 5 -name "n32" -exec rm -rf {} \;
 }

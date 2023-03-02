@@ -2,15 +2,15 @@
 
 pkgname=nationstech-jlink-pack
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 epoch=
-pkgdesc="JLINK Pack 支持包支持 Nationstech (国民技术) 全系列芯片，在 SEGGER JLink 6.42 及以上版本下的安装。"
+pkgdesc="JLINK Pack 支持包支持 Nationstech (国民技术) 全系列芯片，在 SEGGER JLink 7.62 及以上版本下的安装。"
 arch=('any')
 url="https://bbs.21ic.com/icview-3183882-1-1.html"
 license=('custom' 'Commercial')
 groups=()
-depends=("jlink-software-and-documentation>=6.42")
-makedepends=('unzip')
+depends=("jlink-software-and-documentation>=7.62")
+makedepends=('unzip-natspec')
 checkdepends=()
 optdepends=()
 provides=('Nationstech_JLINK_pack')
@@ -24,21 +24,37 @@ source=("${pkgname}-${pkgver}.zip::https://bbs.21ic.com/forum.php?mod=attachment
         "${pkgname}.install")
 noextract=(${pkgname}-${pkgver}.zip)
 sha256sums=('2fd82a41d8a77adebf777353b5bdcca37e4803685badf9a3ce12ad3c67e5a83d'
-            'fd9bcba2df02c185cefac582b404d86f2b2c4a8f4d7d8ff0a890f596af11c9ec')
+            'da23417b4f6901d25d7b0f858c31743475be9a7ade92ee4d97a6f879c2c4f31a')
 #validpgpkeys=()
 
+prepare() {
+    unzip  -O gbk -o "${srcdir}/${pkgname}-${pkgver}.zip"
+}
+
 package() {
+    install -dm0755 "${pkgdir}/opt/nationstech/n32/"
+    cd ${srcdir}/jlink工具添加Nationstech芯片V${pkgver}/jlink工具添加Nationstech芯片V${pkgver}
+    cp -rv Samples "${pkgdir}/opt/nationstech/n32/"
+    cp -rv Devices "${pkgdir}/opt/nationstech/n32/"
+    cp -rv Nationstech-JLinkDevices.xml "${pkgdir}/opt/nationstech/n32/"
 
-    install -dm0755 "${pkgdir}/opt/SEGGER/JLink/"
+    find "${pkgdir}/opt/nationstech/n32/" -type f -exec chmod 644 "{}" \;
+    find "${pkgdir}/opt/nationstech/n32/" -type d -exec chmod 755 "{}" \;
 
-    unzip -O gbk -o "${srcdir}/${pkgname}-${pkgver}.zip"
-    cp -rv ${srcdir}/jlink*/jlink*/. "${pkgdir}/opt/SEGGER/JLink/"
+    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" << EOF
+#!/bin/bash
 
-    find "${pkgdir}/opt/SEGGER/JLink/" -type f -exec chmod 644 "{}" \;
-    find "${pkgdir}/opt/SEGGER/JLink/" -type d -exec chmod 755 "{}" \;
+if [ ! -d "$HOME"/.config/SEGGER/JLinkDevices ] ; then
+    mkdir -p $HOME/.config/SEGGER/JLinkDevices || exit 1
+fi
 
-    cd "${pkgdir}/opt/SEGGER/JLink/"
+if [ -d "$HOME"/.config/SEGGER/JLinkDevices/n32 ] ; then
+    rm -rf $HOME/.config/SEGGER/JLinkDevices/n32 || exit 1
+fi
 
-    sed -i "1d" Nationstech-JLinkDevices.xml
-    rm -rf readme.txt
+if [ ! -d "$HOME"/.config/SEGGER/JLinkDevices/n32 ] ; then
+    cp -r /opt/nationstech/n32 $HOME/.config/SEGGER/JLinkDevices/ || exit 1
+fi
+
+EOF
 }
