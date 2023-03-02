@@ -24,6 +24,11 @@ source=(
 sha1sums=(
     SKIP
 )
+pkgver() {
+  cd "$pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}     
+
 
 prepare() {
     if [ ! -d "${pkgname}/build" ]; then
