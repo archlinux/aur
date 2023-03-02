@@ -6,7 +6,7 @@ pkgbase = iio-hyprland-git
 	arch = any
 	makedepends = meson
 	depends = iio-sensor-proxy
-	source = git+https://github.com/JeanSchoeller/iio-hyprland.git
+	source = iio-hyprland::git+https://github.com/JeanSchoeller/iio-hyprland/
 	sha1sums = SKIP
 
 pkgname = iio-hyprland-git
