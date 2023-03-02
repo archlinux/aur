@@ -1,6 +1,6 @@
-# Maintainer: xmengnet <794508986@qq.com>
+# Maintainer: xmengnet <my@liyp.cc>
 pkgname=aria2-config-script
-pkgver=0.3
+pkgver=0.5
 pkgrel=1
 pkgdesc="一个自动配置Aria2的脚本，自动创建、启动服务，可直接搭配浏览器插件使用。"
 arch=(any)
@@ -9,10 +9,14 @@ depends=('aria2')
 
 source=("aria2.conf"
 	"aria2.session"
-	"aria2c.service")
+	"aria2c.service"
+	"aria2c@.service"
+	"usage.install")
 md5sums=('3a0439d1a807938c789e4415c38a833b'
          'SKIP'
-         '4eb906a2e99a6920571d263f05433a73')
+         '4eb906a2e99a6920571d263f05433a73'
+         '3fe49c8d556f6669882130f5448c8b32'
+         'c0d31a4899a8eac93a40ef97eb2a7e58')
 package() {
 	
 	user="${HOME}"
@@ -29,8 +33,9 @@ package() {
 	install -Dm644 "${srcdir}"/aria2.conf "$file"
 	install -Dm644 "${srcdir}"/aria2.session "$file"
 	install -Dm644 "${srcdir}"/aria2c.service "$service"
-	
-   	echo "	********请自行修改/etc/aria2/aria2.conf 里面的下载位置"
-	echo "	********然后使用 ‘sudo systemctl enable --now aria2c’ 设置开机自启并且现在启动"
+	install -Dm644 "${srcdir}"/aria2c@.service "$service"
+
+	install=usage.install
+
 	
 }

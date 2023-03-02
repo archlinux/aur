@@ -1,0 +1,4 @@
+post_install() {
+   	echo "	********默认下载位置为当前用户的~/Downloads目录，如需修改请自行修改/etc/aria2/aria2.conf 里面的下载位置"
+	echo "	********然后使用 ‘sudo systemctl enable --now aria2c@$USER’ 设置开机自启并且现在启动"
+}
