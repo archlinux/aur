@@ -1,6 +1,6 @@
 pkgname=twitter
 _pkgname=Twitter
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Unnofficial Twitter desktop application"
 arch=('x86_64' 'aarch64')
