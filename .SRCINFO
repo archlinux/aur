@@ -9,4 +9,4 @@ pkgbase = iio-hyprland-git
 	source = iio-hyprland-git::git+https://github.com/JeanSchoeller/iio-hyprland/
 	sha1sums = SKIP
 
-pkgname = iio-hyprland-git
+pkgname = iio-hyprland
