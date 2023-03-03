@@ -3,13 +3,13 @@ pkgname=deepin-wine-douyin
 _pkgname=com.douyin.spark
 _officalname=douyin
 _providername=ByteDance
-pkgver=1.8.0
+pkgver=1.9.1
 sparkver=1.7.1spark2
-pkgrel=3
+pkgrel=1
 epoch=
 pkgdesc="douyin,record beautify life;抖音，记录美好生活"
 arch=("x86_64")
-url="https://www.douyin.com/"
+url="https://www.douyin.com"
 license=('custom')
 depends=(
     'deepin-wine6-stable'
@@ -25,14 +25,14 @@ provides=("ByteDance")
 install="deepin-wine-douyin.install"
 source=(
     "${_pkgname}_${sparkver}_i386.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/video/${_pkgname}/${_pkgname}_${sparkver}_i386.deb"
-	"${_officalname}-${pkgver}.exe::https://www.douyin.com/download/pc/obj/${_officalname}-pc-client/7044145585217083655/releases/9818478/${pkgver}/win32-ia32/${_officalname}-v${pkgver}-win32-ia32-douyinDownload1.exe"
+	"${_officalname}-${pkgver}.exe::${url}/download/pc/obj/douyin-pc-client/7044145585217083655/releases/9962158/${pkgver}/win32-ia32/douyin-v${pkgver}-win32-ia32-douyinDownload1.exe"
 	deepin-wine-douyin.install
     run.sh
     )
 sha256sums=('ddb6e863b45e4eddee273119866e73de27b10efa5e57054933153fb442f1ce10'
-            '322ea0649362f110cd88e5ea5f5b68b0a599837332ddfa112e385c933bf36521'
+            '1defbe3ae36b46be90006bbab237ce401c597a1bc6e9c21eb00368e035f7fa39'
             'e476028b1c94fe6a4d1a24e4b603667a39276c21dfbe76433c42cf64a73d16be'
-            '55a7959b8511646d1dcaeb3876dc08afe2c775361b5dbbb28b0ff34201b16219')
+            'd4740a8b43dd12f73892cef4dc35a219f1a26418fa43f37521ebc0b6e9dbad60')
 
 prepare() {
     bsdtar -xf data.tar.xz
