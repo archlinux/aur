@@ -1,5 +1,5 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
-
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dooble-bin
 _pkgname=dooble
 pkgver=2023.02.25
