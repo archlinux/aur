@@ -1,20 +1,20 @@
 # Maintainer: tPenguinLTG <tpenguinltg@disroot.org>
 pkgname=oed
-pkgver=6.7
+pkgver=7.1
 pkgrel=1
 pkgdesc="OpenED: Portable OpenBSD ed(1) editor."
 arch=(x86_64 i686)
 url="https://github.com/ibara/oed"
 license=('BSD' 'ISC')
 depends=()
-source=("https://github.com/ibara/${pkgname}/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('95bb8ea554a91784a76eeeeb53b42e65')
+source=("https://github.com/ibara/${pkgname}/archive/refs/tags/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('227ad4e6e9d2adb3a4b743c8ad3a50bcda63dea146d41bd6cbd8b79f495b057b')
 
 build() {
 	local f
 	local license_file
 
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-$pkgname-$pkgver"
 
 	./configure --prefix=/usr --mandir=/usr/share/man
 	make
@@ -31,9 +31,9 @@ build() {
 package() {
 	local f
 
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
-	
+
 	# Install licenses
 	for f in ../licenses/*.LICENSE; do
 	  install -Dm644 "$f" "$pkgdir/usr/share/licenses/$pkgname/${f##*/}"
