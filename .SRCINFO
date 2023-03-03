@@ -1,0 +1,30 @@
+pkgbase = electron-blur-me-not
+	pkgdesc = Auto-enable Wayland (ozone) for apps that come with a vendored Electron
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/electron-blur-me-not
+	arch = any
+	license = Apache
+	options = !strip
+	source = electron-blur-me-not.hook
+	source = electron-blur-me-not-patch.sh
+	source = electron-blur-me-not-unpatch.sh
+	source = electron-flags.conf
+	source = electron-launcher.sh
+	sha512sums = 5057477e2155a61a110a106e66376137f19472df215383435885529f6d8fbdc533ad912cb6a964cc2c8112d93f2443540729c3877b2259268729040c860f4506
+	sha512sums = 331d86cdb0d10a82dfae45331a34a22b2938895fe874b10433674f33f9aed851289ab8cbbba35fce38bae376bcd83c82537592ee17cdfd930c1bf1db3cef8748
+	sha512sums = bbe9bcbd7b6f2cd50061ba56d3e123fb76c734f2a878a2d40f7cceb5e300ab5de2127628c450bb979a64fd14abd38b867e87b70e6269710f9f459431d5d46d59
+	sha512sums = 5f623fe7d7d750b19072ba6bd3a0ab44a46f938040c4cdfa0d8ba5ec78e6345f0b3793a8fb8950a65c39d661d7a2ac4f1cffd5c981b96385729c4c05a6fd5f3a
+	sha512sums = fe94d357a5da3333beaa88d1dc9a02b75c6d07ab83d32029f8ac216e783cfc8a90f4bdad2b6e01a10d796228acface0896240528811def3cfee70c13d40807d1
+
+pkgname = 1password-blur-me-not
+	pkgdesc = Auto-enable Wayland (ozone) for 1passwordAuto-enable Wayland (ozone) for 1Password
+
+pkgname = rambox-pro-bin-blur-me-not
+	pkgdesc = Auto-enable Wayland (ozone) for rambox-pro-binAuto-enable Wayland (ozone) for Rambox Pro
+
+pkgname = signal-desktop-blur-me-not
+	pkgdesc = Auto-enable Wayland (ozone) for signal-desktopAuto-enable Wayland (ozone) for Signal Desktop
+
+pkgname = spotify-blur-me-not
+	pkgdesc = Auto-enable Wayland (ozone) for spotifyAuto-enable Wayland (ozone) for Spotify

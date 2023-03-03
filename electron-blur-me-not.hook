@@ -1,0 +1,10 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = {{basename}}
+
+[Action]
+Description = Enabling Wayland (ozone) for {{basename}}...
+Exec = /usr/share/libalpm/scripts/{{basename}}-blur-me-not-patch
+When = PostTransaction

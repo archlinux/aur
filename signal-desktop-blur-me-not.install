@@ -1,0 +1,14 @@
+post_install() {
+  echo >&2 'Enabling Wayland (ozone) for signal-desktop...'
+  /usr/share/libalpm/scripts/signal-desktop-blur-me-not-patch
+}
+
+post_upgrade() {
+  echo >&2 'Enabling Wayland (ozone) for signal-desktop...'
+  /usr/share/libalpm/scripts/signal-desktop-blur-me-not-patch
+}
+
+pre_remove() {
+  echo >&2 'Undoing modifications to signal-desktop...'
+  /usr/share/libalpm/scripts/signal-desktop-blur-me-not-unpatch
+}

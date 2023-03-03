@@ -1,0 +1,14 @@
+post_install() {
+  echo >&2 'Enabling Wayland (ozone) for spotify...'
+  /usr/share/libalpm/scripts/spotify-blur-me-not-patch
+}
+
+post_upgrade() {
+  echo >&2 'Enabling Wayland (ozone) for spotify...'
+  /usr/share/libalpm/scripts/spotify-blur-me-not-patch
+}
+
+pre_remove() {
+  echo >&2 'Undoing modifications to spotify...'
+  /usr/share/libalpm/scripts/spotify-blur-me-not-unpatch
+}
