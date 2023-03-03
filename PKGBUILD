@@ -2,7 +2,7 @@
 
 _pkgname=maui-core
 pkgname=$_pkgname-git
-pkgver=0.5.6.r0.gb298165
+pkgver=0.6.0.r0.gebef091
 pkgrel=1
 pkgdesc='Core libraries to manage the DE to be shared between Maui Settings and Cask.'
 url='https://github.com/Nitrux/maui-core'
