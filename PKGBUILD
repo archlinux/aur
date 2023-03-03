@@ -2,7 +2,7 @@
 
 pkgname=artery-jlink-pack
 pkgver=2.0.0
-pkgrel=0
+pkgrel=1
 epoch=
 pkgdesc="JLINK Pack 支持包支持雅特力 (Artery) MCU 全系列芯片，在 SEGGER JLink 7.62 及以上版本下的安装。"
 arch=('any')
@@ -24,7 +24,7 @@ source=("${pkgname}-${pkgver}.zip::https://www.arterytek.com/download/FAQ/FAQ013
         "${pkgname}.install")
 noextract=(${pkgname}-${pkgver}.zip)
 sha256sums=('58530387ae7c4c70fd291ff3dde9fc134284dfeccbb3869957327df63eb95fad'
-            '3f0c2cea25eaad8bd4ca12b6adca76a8f02137bbff55af9a309ddbba3c4aa3e2')
+            'f19a2d3962f5bf0a448ce168881fd7bd99d33f977cdff96b4617c0a94033b475')
 
 package() {
     _name=artery

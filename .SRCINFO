@@ -1,7 +1,7 @@
 pkgbase = artery-jlink-pack
 	pkgdesc = JLINK Pack 支持包支持雅特力 (Artery) MCU 全系列芯片，在 SEGGER JLink 7.62 及以上版本下的安装。
 	pkgver = 2.0.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://www.arterytek.com/cn/support/index.jsp?index=0
 	install = artery-jlink-pack.install
 	arch = any
@@ -15,6 +15,6 @@ pkgbase = artery-jlink-pack
 	source = artery-jlink-pack-2.0.0.zip::https://www.arterytek.com/download/FAQ/FAQ0132_JLink%E6%89%8B%E5%8A%A8%E6%B7%BB%E5%8A%A0Artery%20MCU_V2.0.0.zip
 	source = artery-jlink-pack.install
 	sha256sums = 58530387ae7c4c70fd291ff3dde9fc134284dfeccbb3869957327df63eb95fad
-	sha256sums = 3f0c2cea25eaad8bd4ca12b6adca76a8f02137bbff55af9a309ddbba3c4aa3e2
+	sha256sums = f19a2d3962f5bf0a448ce168881fd7bd99d33f977cdff96b4617c0a94033b475
 
 pkgname = artery-jlink-pack

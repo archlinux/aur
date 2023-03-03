@@ -13,6 +13,6 @@ post_upgrade() {
 }
 
 post_remove() {
-    echo "deleting the synwit-jlink-pack ..."
-    find /home -maxdepth 5 -name "swm32" -exec rm -rf {} \;
+    echo "deleting the artery-jlink-pack ..."
+    find /home -maxdepth 5 -name "at32" -exec rm -rf {} \;
 }
