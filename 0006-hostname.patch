@@ -1,0 +1,11 @@
+--- core/scripts/bareos-config-lib.sh.in.orig	2023-03-03 18:31:34.000000000 +0200
++++ core/scripts/bareos-config-lib.sh.in	2023-03-03 18:58:35.163665093 +0200
+@@ -998,7 +998,7 @@
+ {
+     # put actual short hostname in configuration files
+     # try to get short hostname
+-    hname=$(hostname -s)
++    hname=$(hostnamectl hostname)
+     if [ -z "${hname}" ]; then
+         # try to get long hostname
+         hname=$(hostname|sed 's/\..*//g')

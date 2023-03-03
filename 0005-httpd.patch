@@ -1,11 +1,13 @@
---- webui/CMakeLists.txt	2022-05-10 23:29:44.000000000 +0300
-+++ webui/CMakeLists.txt	2022-05-11 00:05:05.698335917 +0300
-@@ -76,7 +76,7 @@
- elseif(EXISTS ${sysconfdir}/apache2/conf-available)
-   set(HTTPD_CONF ${sysconfdir}/apache2/conf-available)
- else()
--  set(HTTPD_CONF ${sysconfdir}/httpd/conf.d)
-+  set(HTTPD_CONF ${sysconfdir}/httpd/conf/extra )
- endif()
+--- webui/CMakeLists.txt.orig	2023-03-03 21:55:18.000000000 +0200
++++ webui/CMakeLists.txt	2023-03-03 22:01:47.835425931 +0200
+@@ -66,7 +66,9 @@
+ message("   BAREOS_FULL_VERSION:           ${BAREOS_FULL_VERSION} ")
+ message("   LocalBuildDefinitionsFile:     ${BareosLocalBuildDefinitionsFile}")
  
- configure_file(
+-if(EXISTS ${sysconfdir}/httpd/conf.d)
++if(EXISTS ${sysconfdir}/httpd/conf/extra )
++  set(HTTPD_CONF ${sysconfdir}/httpd/conf/extra )
++elseif(EXISTS ${sysconfdir}/httpd/conf.d)
+   set(HTTPD_CONF ${sysconfdir}/httpd/conf.d)
+ elseif(EXISTS ${sysconfdir}/apache2/conf.d)
+   set(HTTPD_CONF ${sysconfdir}/apache2/conf.d)

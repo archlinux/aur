@@ -1,7 +1,7 @@
 pkgbase = bareos
 	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced
 	pkgver = 22.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.bareos.org
 	arch = i686
 	arch = x86_64
@@ -28,13 +28,15 @@ pkgbase = bareos
 	source = 0003-version.patch
 	source = 0004-sqlspam.patch
 	source = 0005-httpd.patch
+	source = 0006-hostname.patch
 	source = bootstrap-table-locale-all.min.js
 	md5sums = SKIP
 	md5sums = 419b0c64af750aa3e8ea668edf464d3e
 	md5sums = 39724df5903b712fb8d34209c7ac8f1e
 	md5sums = 5bf1233d94dfecc9060746bfb39b9d2b
 	md5sums = ca4c929a2462cafaead8d0b49e3cebed
-	md5sums = 33d9c3a1d25b30ac2182aa8d874e28a5
+	md5sums = a6a260808e46c20b1c22aa2efebc3fe1
+	md5sums = 40fc1919d59133214466972b3f9aa6d2
 	md5sums = e78b88f897cfc3e60129eec360521e3d
 
 pkgname = bareos-bconsole
@@ -260,14 +262,29 @@ pkgname = bareos-vmware-plugin
 
 pkgname = bareos-webui
 	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Webui (Bareos web administration)
-	depends = php7
-	depends = php7-fpm
+	arch = any
 	depends = jansson
 	backup = etc/bareos-webui/directors.ini
 	backup = etc/bareos-webui/configuration.ini
 	backup = etc/bareos/bareos-dir.d/console/admin.conf.example
 	backup = etc/bareos/bareos-dir.d/profile/webui-admin.conf
-	backup = etc/httpd/conf.d/bareos-webui.conf
+
+pkgname = bareos-webui-apache
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Webui Apache
+	arch = any
+	depends = apache
+	depends = php-apache
+	depends = php
+	depends = php-fpm
+	backup = etc/httpd/conf/extra/bareos-webui.conf
+
+pkgname = bareos-webui-nginx
+	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Webui nginx
+	arch = any
+	depends = nginx
+	depends = php
+	depends = php-fpm
+	backup = etc/nginx/bareos-webui.conf
 
 pkgname = bareos-devel
 	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced - Devel headers

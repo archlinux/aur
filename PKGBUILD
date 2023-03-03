@@ -35,6 +35,8 @@ pkgname=("bareos-bconsole"
          "bareos-traymonitor"
          "bareos-vmware-plugin"
          "bareos-webui"
+         "bareos-webui-apache"
+         "bareos-webui-nginx"
          "bareos-devel"
          "python-bareos"
          )
@@ -48,7 +50,7 @@ pkgname=("bareos-bconsole"
 
 pkgver=22.0.2
 pkgmajor=${pkgver%%.*}
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64 armv7h aarch64)
 groups=('bareos')
 pkgdesc="Bareos - Backup Archiving Recovery Open Sourced"
@@ -62,14 +64,18 @@ source=("git+https://github.com/bareos/bareos.git#tag=Release/${pkgver}"
         "0003-version.patch"
         "0004-sqlspam.patch"
         "0005-httpd.patch"
+        "0006-hostname.patch"
         "bootstrap-table-locale-all.min.js")
+
 md5sums=('SKIP'
          '419b0c64af750aa3e8ea668edf464d3e'
          '39724df5903b712fb8d34209c7ac8f1e'
          '5bf1233d94dfecc9060746bfb39b9d2b'
          'ca4c929a2462cafaead8d0b49e3cebed'
-         '33d9c3a1d25b30ac2182aa8d874e28a5'
+         'a6a260808e46c20b1c22aa2efebc3fe1'
+         '40fc1919d59133214466972b3f9aa6d2'
          'e78b88f897cfc3e60129eec360521e3d')
+
 python3_ver="3.10"
 #python2_ver="2.7"
 
@@ -819,21 +825,20 @@ package_bareos-vmware-plugin() {
 
 #=========================================
 package_bareos-webui() {
+  arch=(any)
   pkgdesc="${pkgdesc} - Webui (Bareos web administration)"
-  depends=('php7' 'php7-fpm' 'jansson')
-  optdepend=('apache' 'nginx' 'php7-apache' )
+  depends=('jansson')
+  optdepend=( 'bareos-webui-apache' 'bareos-webui-nginx' )
   backup=('etc/bareos-webui/directors.ini'
           'etc/bareos-webui/configuration.ini'
           'etc/bareos/bareos-dir.d/console/admin.conf.example'
-          'etc/bareos/bareos-dir.d/profile/webui-admin.conf'
-          'etc/httpd/conf.d/bareos-webui.conf')
+          'etc/bareos/bareos-dir.d/profile/webui-admin.conf')
 
   for f in \
      etc/bareos/bareos-dir.d/console/admin.conf.example \
      etc/bareos/bareos-dir.d/profile/webui-admin.conf \
      etc/bareos/bareos-dir.d/profile/webui-limited.conf.example \
      etc/bareos/bareos-dir.d/profile/webui-readonly.conf \
-     etc/httpd/conf.d/bareos-webui.conf \
      etc/bareos-webui/directors.ini \
      etc/bareos-webui/configuration.ini \
      usr/share/bareos-webui \
@@ -843,6 +848,31 @@ package_bareos-webui() {
   done
   cp ${srcdir}/bootstrap-table-locale-all.min.js ${pkgdir}/usr/share/bareos-webui/public/js/bootstrap-table-locale-all.min.js
   install -Dm644 ${srcdir}/bareos/webui/{README.md,LICENSE,doc/README-TRANSLATION.md} "${pkgdir}/usr/share/licenses/${pkgname}/"
+}
+
+#=========================================
+package_bareos-webui-apache() {
+  arch=(any)
+  pkgdesc="${pkgdesc} - Webui Apache"
+  depends=('apache' 'php-apache' 'php' 'php-fpm')
+  backup=('etc/httpd/conf/extra/bareos-webui.conf')
+
+  for f in \
+     etc/httpd/conf/extra/bareos-webui.conf \
+  ; do
+    cp_pkgdir "$f" "$srcdir/install"
+  done
+}
+
+#=========================================
+package_bareos-webui-nginx() {
+  arch=(any)
+  pkgdesc="${pkgdesc} - Webui nginx"
+  depends=('nginx' 'php' 'php-fpm')
+  backup=('etc/nginx/bareos-webui.conf')
+
+  mkdir -p "$pkgdir"/etc/nginx
+  cp ${srcdir}/bareos/webui/install/nginx/bareos-webui.conf ${pkgdir}/etc/nginx/bareos-webui.conf
 }
 
 #=========================================
