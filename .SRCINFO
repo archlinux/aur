@@ -1,15 +1,16 @@
 pkgbase = ruby-equalizer
-	pkgdesc = Module to define equality, equivalence and inspection methods.
+	pkgdesc = Module to define equality, equivalence and inspection methods
 	pkgver = 0.0.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dkubb/equalizer
 	arch = any
 	license = MIT
+	checkdepends = ruby-rspec
+	makedepends = rubygems
+	makedepends = ruby-rdoc
 	depends = ruby
-	noextract = equalizer-0.0.11.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/equalizer-0.0.11.gem
-	sha256sums = 44e5bc46f49883e83d159ee9b1f7320b4ae8283bb6329e5d9716f5e7dde855ce
+	source = https://github.com/dkubb/equalizer/archive/v0.0.11.tar.gz
+	sha256sums = 65d79f2109023c2e766200efe6250e029a6e9a3b1299ca8fac356241a1df5706
 
 pkgname = ruby-equalizer
-
