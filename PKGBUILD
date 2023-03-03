@@ -17,7 +17,7 @@ makedepends=("git" "python-setuptools")
 optdepends=()
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
-source=("https://github.com/alexmercerind/youtube-search-python/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/alexmercerind/youtube-search-python/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('6474472d1a93df9a803eea32c939be4af9bd6af6a13ea997ab3c339d0f9f2851')
 
 build() {
