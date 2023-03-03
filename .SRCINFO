@@ -1,0 +1,13 @@
+pkgbase = python-qmake2cmake
+	pkgdesc = Python scripts to convert QMake projects to CMake projects.
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://code.qt.io/cgit/qt/qmake2cmake.git
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/46/c3/0ad251e972021e4f26d37e378b312eb56649c170ca578c9b45aed8f1c4a1/qmake2cmake-1.0.2.tar.gz
+	sha256sums = 5d6e45a65cb4876f571c0a9f29e1da3805e67c42994239beebeb747c52d999b3
+
+pkgname = python-qmake2cmake
