@@ -3,13 +3,13 @@ _pkgname=gourou
 pkgname="${_pkgname}-bin"
 __pkgname="lib${_pkgname}"
 pkgver=0.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Download and decrypt adobe encrypted (acsm) pdf and epub files"
 arch=('x86_64')
 license=('LGPL3')
 url="https://indefero.soutade.fr/p/libgourou"
 depends=(glibc gcc-libs zlib libzip openssl)
-conflicts=(gourou gourou-git)
+conflicts=(gourou-git)
 provides=("gourou=${pkgver}")
 options=(!strip)
 source=("https://indefero.soutade.fr/p/${__pkgname}/downloads/get/${__pkgname}_utils_${pkgver}.tgz")
