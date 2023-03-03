@@ -1,7 +1,7 @@
 # Maintainer: Andrey Kolchenko <andrey@kolchenko.me>
 
 pkgname=stashpad
-pkgver=1.1.7
+pkgver=1.1.9
 pkgrel=1
 pkgdesc='Stashpad is the developer notepad.'
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=(
 )
 _file="${pkgname}_${pkgver}"
 source=("${_file}::https://releases.stashpad.com/download/appimage")
-sha256sums=('ca46ce2ee8682da7767774084a8a939ea02a95647165e014a716217b567f972f')
+sha256sums=('c8f3cfb8bcc5ef932d1ecafaa3f0b4f1c16ceaa12cb3fe5c49d75ac323d4f469')
 
 prepare() {
     chmod +x "${srcdir}/${_file}"
