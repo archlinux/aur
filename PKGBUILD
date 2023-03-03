@@ -10,10 +10,12 @@ license=(LGPL)
 depends=(mpv phonon-qt5)
 provides=(phonon-qt5-backend)
 makedepends=(extra-cmake-modules)
-source=("https://github.com/OpenProgger/phonon-mpv/archive/v$pkgver.tar.gz")
-sha256sums=('c674e982d81dcdb2cfca3244e55a4c1e5b35cfc4bed3c7bd65921358d8a0ebc6')
+source=("https://github.com/OpenProgger/phonon-mpv/archive/v$pkgver.tar.gz" "compile-fix.patch")
+sha256sums=('c674e982d81dcdb2cfca3244e55a4c1e5b35cfc4bed3c7bd65921358d8a0ebc6'
+            'df6067fa34b9b84202af5d99ae1a01895d4ae846b2acb1382ff297e704ea7c67')
 
 prepare() {
+  patch --directory="phonon-mpv-$pkgver" --forward --strip=1 --input="${srcdir}/compile-fix.patch"
   mkdir -p build
 }
 
