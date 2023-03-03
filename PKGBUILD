@@ -1,12 +1,12 @@
 
 pkgname=passer-git
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="passer is a password generator based on passphrases"
 arch=(any)
 url="https://github.com/spynetS/passer"
 license=(GPL3)
-depends=(python3)
+depends=(python3 xclip)
 source=("git+https://github.com/spynetS/passer.git")
 noextract=()
 md5sums=(SKIP)
