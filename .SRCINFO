@@ -1,0 +1,14 @@
+pkgbase = mpcreator-git
+	pkgdesc = An unofficial Minecraft mod project generator for QuiltMC in Nim. Git version
+	pkgver = 1.1.1
+	pkgrel = 1
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = nim
+	provides = mpcreator
+	conflicts = mpcreator
+	source = git+https://github.com/Ecorous/mpcreator
+	md5sums = SKIP
+
+pkgname = mpcreator-git
