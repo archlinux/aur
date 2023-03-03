@@ -1,0 +1,21 @@
+pkgbase = python-stringdist-git
+	pkgdesc = String distance measures
+	pkgver = r6.38d0435
+	pkgrel = 1
+	url = https://github.com/obulkin/string-dist
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = python-stringdist
+	conflicts = python-stringdist
+	source = python-stringdist::git+https://github.com/obulkin/string-dist
+	md5sums = SKIP
+
+pkgname = python-stringdist-git
