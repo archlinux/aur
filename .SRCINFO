@@ -1,0 +1,17 @@
+pkgbase = python-python-lorem
+	pkgdesc = Pythonic lorem ipsum generator
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/JarryShaw/lorem
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/python-lorem/python-lorem-1.2.0.tar.gz
+	sha256sums = 114323c465558e9df5f0893a68ba8dbd9efbd94f8b62f4fb43756c88353e3c55
+
+pkgname = python-python-lorem
