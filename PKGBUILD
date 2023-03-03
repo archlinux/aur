@@ -1,45 +1,49 @@
-# Maintainer: aksr <aksr at t-com dot me>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: aksr <aksr at t-com dot me>
+
 pkgname=gomacro-git
-pkgver=r1115.4f667f8
+_pkg="${pkgname%-git}"
+pkgver=2.7.r602.g12bd30a
 pkgrel=1
-epoch=
 pkgdesc="Interactive Go interpreter and debugger with REPL, Eval, generics and Lisp-like macros"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="https://github.com/cosmos72/gomacro"
 license=('MPL2')
-groups=()
-depends=()
-makedepends=('git' 'go>=1.9')
-optdepends=()
-checkdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-changelog=
-install=
-noextract=()
-_gourl=github.com/cosmos72/gomacro
+depends=('glibc')
+makedepends=('git' 'go')
+provides=("$_pkg")
+conflicts=("$_pkg")
+source=("$_pkg::git+$url")
+sha256sums=('SKIP')
 
 pkgver() {
-  GOPATH="$srcdir" go get -d ${_gourl}
-  cd "$srcdir/src/${_gourl}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git -C "$_pkg" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+}
+
+prepare() {
+	cd "$_pkg"
+	mkdir -p build
+	go mod download
 }
 
 build() {
-  GOPATH="$srcdir" go get -fix -v ${_gourl}
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	cd "$_pkg"
+	go build -o build
 }
 
 check() {
-  GOPATH="$srcdir" go test -v -x ${_gourl}
+	cd "$_pkg"
+	go test ./... || printf "\n\nTests failed.\n\n"
 }
 
 package() {
-  cd "$srcdir"
-  install -D -m755 bin/gomacro "$pkgdir/usr/bin/gomacro"
-  install -D -m644 src/${_gourl}/README.md $pkgdir/usr/share/doc/${pkgname%-*}/README.md
-  install -D -m644 src/${_gourl}/LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
+	cd "$_pkg"
+	install -Dv "build/$_pkg" -t "$pkgdir/usr/bin/"
+	install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
-
