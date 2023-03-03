@@ -1,6 +1,6 @@
 pkgbase = flow-bin
 	pkgdesc = A static type checker for JavaScript - binary version
-	pkgver = 0.200.1
+	pkgver = 0.201.0
 	pkgrel = 1
 	url = https://flow.org
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = flow-bin
 	license = MIT
 	provides = flow
 	conflicts = flow
-	source = flow-bin-0.200.1-1-bash-completion::https://github.com/facebook/flow/raw/v0.200.1/resources/shell/bash-completion
-	source = flow-bin-0.200.1-1-LICENSE::https://github.com/facebook/flow/raw/v0.200.1/LICENSE
+	source = flow-bin-0.201.0-1-bash-completion::https://github.com/facebook/flow/raw/v0.201.0/resources/shell/bash-completion
+	source = flow-bin-0.201.0-1-LICENSE::https://github.com/facebook/flow/raw/v0.201.0/LICENSE
 	sha512sums = 50dd81cc39c67bc463e51a2d492119a2533548cb7e3f765e02cf9ada999397710351a1c4deadc4ffc59f4c2347b2e6ba2d4c42cbb63026ef48d50a2f2f5ee87a
 	sha512sums = 3b8288e5dac996da44bd81b0eb1d96905c4b90ad9154f3d29d073c96890b75cd281fa03af0b77f331dbec239d341363b5f9b328bafea0d4b8d0a3e900d150f80
-	source_x86_64 = flow-bin-0.200.1-1-x86_64.zip::https://github.com/facebook/flow/releases/download/v0.200.1/flow-linux64-v0.200.1.zip
-	sha512sums_x86_64 = d2f81d8a4e913d356e0e1613529d8721683004a6cd2a87b97c04a19efbada7cfdc6203adea5651d206fab5899800b19a7c730e8b231af67ba0bafdea4d5c94a0
-	source_aarch64 = flow-bin-0.200.1-1-aarch64.zip::https://github.com/facebook/flow/releases/download/v0.200.1/flow-linux-arm64-v0.200.1.zip
-	sha512sums_aarch64 = cb2aef13feb6e4df5dca936272ae25b5920e04f2244ab4e650bd1e286a58735f944f2b11680cf5d7d115f369ca6960835fd8b24c6ed0f2f18a9c83896c6bf131
+	source_x86_64 = flow-bin-0.201.0-1-x86_64.zip::https://github.com/facebook/flow/releases/download/v0.201.0/flow-linux64-v0.201.0.zip
+	sha512sums_x86_64 = 1ad39722c9352f93161283f9f4cf7bc9cd12e02363431f1f1074ddfe87875b03ae54b8991b23a2f24bd0bffa4f0b32a5c200ed1f28c1528bf4cea7dfe9243869
+	source_aarch64 = flow-bin-0.201.0-1-aarch64.zip::https://github.com/facebook/flow/releases/download/v0.201.0/flow-linux-arm64-v0.201.0.zip
+	sha512sums_aarch64 = 5cf739b138e7b28c790a12d4ebe7a7bcf5d873c1a735f7aeb564c4ecabc18d9e376ac00689c4cfb8e58903b6b21fba022ec2f2a6b22e4edca156ebf153c7087f
 
 pkgname = flow-bin
