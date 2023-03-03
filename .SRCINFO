@@ -1,12 +1,14 @@
 pkgbase = veusz
 	pkgdesc = A 2D and 3D scientific plotting package, designed to create publication-ready PDF or SVG output
-	pkgver = 3.5.3
-	pkgrel = 2
+	pkgver = 3.6.2
+	pkgrel = 1
 	url = https://veusz.github.io/
 	arch = x86_64
 	license = GPL2
 	makedepends = sip>=6.7.5
-	makedepends = python-tomli
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-pyqt5
 	depends = python-numpy
 	depends = hicolor-icon-theme
@@ -16,7 +18,7 @@ pkgbase = veusz
 	optdepends = python-iminuit: improved fitting
 	optdepends = python-astropy: VO table import and FITS import
 	optdepends = ghostscript: for EPS/PS output
-	source = https://github.com/veusz/veusz/releases/download/veusz-3.5.3/veusz-3.5.3.tar.gz
-	sha256sums = d4c3c29a4d314a97d7ec25cf154e381df3c8f5910a94e1bd993e7ba1c4d69473
+	source = https://github.com/veusz/veusz/releases/download/veusz-3.6.2/veusz-3.6.2.tar.gz
+	sha256sums = c2171ac45e4b30424d8fc35261e2e99dbe6e25ba1197ebc24355b106b26395d1
 
 pkgname = veusz
