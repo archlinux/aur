@@ -17,6 +17,7 @@ sha256sums=('65757c5fe189a1abd87829f1a4aed496bd08874ab77f4d326e0a83e76707d14d')
 
 noextract=("$_whl")
 package() {
+    _python_version="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
     python -m installer --destdir="$pkgdir" "$_whl"
-    rm -r "$pkgdir/usr/lib/python3.10/site-packages/tests"
+    rm -r "$pkgdir/usr/lib/python$_python_version/site-packages/tests"
 }
