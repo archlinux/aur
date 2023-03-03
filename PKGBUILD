@@ -3,7 +3,7 @@
 _gitname=check-soa
 pkgname="${_gitname}-git"
 _gitauthor=bortzmeyer # Stéphane Bortzmeyer
-pkgver=r73.412cb8a
+pkgver=r74.ead071c
 pkgrel=1
 pkgdesc="A simple command-line DNS testing tool for having rapidly an idea of the health of a DNS."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
