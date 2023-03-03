@@ -2,20 +2,32 @@
 
 pkgname=idlersc
 pkgver=r489.g6a7281f
-pkgrel=1
+pkgrel=2
 pkgdesc='A fork of IdleRSC for playing on OpenRSC servers'
 arch=('any')
 url='https://gitlab.com/open-runescape-classic/idlersc'
 license=('GPL3')
-depends=('jre-openjdk')
+depends=('jre-openjdk' 'hicolor-icon-theme')
 makedepends=('git' 'gradle' 'gendesk')
 _commit='6a7281fddb4cf2f1f6567336d9e4e8fe74170295'
 source=(
   "$pkgname::git+https://gitlab.com/open-runescape-classic/idlersc.git#commit=$_commit"
   'idlersc.sh'
+  'coleslaw_icon_512.png'
+  'coleslaw_icon_256.png'
+  'coleslaw_icon_128.png'
+  'uranium_icon_512.png'
+  'uranium_icon_256.png'
+  'uranium_icon_128.png'
 )
 b2sums=('SKIP'
-        'ef68e1b337454a325a38edae5ed9dfb0b3e3d178393221c0bc76d819fe1efc8ee1dfcc52afd6d7cc39673fb31f6c13f36e4a574d9c9f1eb9d2320fd88ba1abd5')
+        'ef68e1b337454a325a38edae5ed9dfb0b3e3d178393221c0bc76d819fe1efc8ee1dfcc52afd6d7cc39673fb31f6c13f36e4a574d9c9f1eb9d2320fd88ba1abd5'
+        '6e9005bc77036466f2e931adbcd880a704eedc89398ef0c32efc40bb5aebcad72a88479a71303bd9c496c84fce31d4f083464c4faa6df477281c5ad980aa2948'
+        '7ac538f0cdde8efb76adbd1c35dd9f4a6e4d6f5a75704d745099f1b43a651a03d0e2b9b8f8f3cb7b6775dbd99c4d886ffb3ad3c1c7223922a1a31681579521d0'
+        'e39fdd136683fd1c3124937d76bfebf431b6c7c705b3f08dc9b83248f99a4dbbccd491c77ea7b77ad938ddcb1e53435abb15c6863657356762acedf0d8c7b40d'
+        '6962a2ccfcdb7972214a42d391e34ad9828ffbc8aeff236d99ecca7b7270b5b6b674bb9ece43ce810b2b2a6c74643fbc5dd7b03108387259b071a0a5f149b591'
+        'df326a9fd71547892aa0dbed93023136a6e176e6a8bcc2e9132c792febe8d7674d57a356966f9937beffc3558af95de9475f8a36bc8a6aa9dcb493fc0310ecea'
+        '57e42ba3bf4671c1d2336062efd123d6b07db0480b475fafd7debe4178223c9f497ab9fb17d0a48ace21e874e71e8854c1db04f180f3e86e811649086dbc04db')
 
 pkgver() {
   cd "$pkgname"
@@ -76,6 +88,12 @@ package() {
   install -vd "$pkgdir/usr/share/$pkgname/bin/scripting"
   cp -vr bin/scripting/{apos,idlescript,sbot} "$pkgdir/usr/share/$pkgname/bin/scripting"
   
-  # desktop files
-  install -vDm644 -t "$pkgdir/usr/share/applications" ./*.desktop
+  # desktop files & icons
+  for server in coleslaw uranium; do
+    install -vDm644 -t "$pkgdir/usr/share/applications" "vet.rsc.IdleRSC.${server}.desktop"
+    for res in 128 256 512; do
+      install -vDm644 "${srcdir}/${server}_icon_${res}.png" \
+        "${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/vet.rsc.IdleRSC.${server}.png"
+    done
+  done
 }
