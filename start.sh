@@ -6,7 +6,7 @@ XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 FONTCONFIG_HOME="${XDG_CONFIG_HOME}/fontconfig"
 QQ_APP_DIR="${XDG_CONFIG_HOME}/QQ"
 if [ -z "${QQ_DOWNLOAD_DIR}" ]; then
-    if [ -z "${XDG_DOWNLOAD_DIR}"]; then
+    if [ -z "${XDG_DOWNLOAD_DIR}" ]; then
         XDG_DOWNLOAD_DIR="$(xdg-user-dir DOWNLOAD)"
     fi
     QQ_DOWNLOAD_DIR="${XDG_DOWNLOAD_DIR:-$HOME/Downloads}"
@@ -34,11 +34,12 @@ QQ_PREVIOUS_VERSIONS=("2.0.1-429" "2.0.1-453" "2.0.2-510" "2.0.3-543" "3.0.0-565
 
 if [ "${QQ_DOWNLOAD_DIR%*/}" == "${HOME}" ]; then
     QQ_DOWNLOAD_DIR="${HOME}/Downloads"
-    if [ ! -e "${QQ_DOWNLOAD_DIR}" ]; then mkdir -p "${QQ_DOWNLOAD_DIR}"; fi
+    if [ ! -d "${QQ_DOWNLOAD_DIR}" ]; then mkdir -p "${QQ_DOWNLOAD_DIR}"; fi
 fi
 
-if [ ! -e "${QQ_APP_DIR}" ]; then mkdir -p "${QQ_APP_DIR}"; fi
-if [ ! -e "${QQ_HOTUPDATE_DIR}/${QQ_HOTUPDATE_VERSION}" ]; then ln -sfd "/opt/QQ/resources/app" "${QQ_HOTUPDATE_DIR}/${QQ_HOTUPDATE_VERSION}"; fi
+if [ ! -d "${QQ_APP_DIR}" ]; then mkdir -p "${QQ_APP_DIR}"; fi
+if [ ! -d "${QQ_APP_DIR}/versions" ]; then mkdir -p "${QQ_APP_DIR}/versions"; fi
+if [ ! -d "${QQ_HOTUPDATE_DIR}/${QQ_HOTUPDATE_VERSION}" ]; then ln -sfd "/opt/QQ/resources/app" "${QQ_HOTUPDATE_DIR}/${QQ_HOTUPDATE_VERSION}"; fi
 rm -rf "${QQ_HOTUPDATE_DIR}/"**".zip"
 
 # 处理 config.json
