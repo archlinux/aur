@@ -20,7 +20,7 @@
 
 pkgname=ffmpeg-mpp
 pkgver=5.1.2
-pkgrel=7
+pkgrel=8
 epoch=2
 pkgdesc='Complete solution to record, convert and stream audio and video supporting rockchip MPP hardware decoder'
 arch=(aarch64 arm7f)
@@ -60,7 +60,6 @@ depends=(
   libvidstab.so
   libvorbisenc.so
   libvorbis.so
-  libvpx.so
   libwebp
   libx11
   libx264.so

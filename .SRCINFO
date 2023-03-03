@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-mpp
 	pkgdesc = Complete solution to record, convert and stream audio and video supporting rockchip MPP hardware decoder
 	pkgver = 5.1.2
-	pkgrel = 7
+	pkgrel = 8
 	epoch = 2
 	url = https://ffmpeg.org/
 	arch = aarch64
@@ -48,7 +48,6 @@ pkgbase = ffmpeg-mpp
 	depends = libvidstab.so
 	depends = libvorbisenc.so
 	depends = libvorbis.so
-	depends = libvpx.so
 	depends = libwebp
 	depends = libx11
 	depends = libx264.so
