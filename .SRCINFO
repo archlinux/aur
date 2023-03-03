@@ -1,6 +1,6 @@
 pkgbase = gourou-bin
 	pkgdesc = Download and decrypt adobe encrypted (acsm) pdf and epub files
-	pkgver = 0.8
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://indefero.soutade.fr/p/libgourou
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = gourou-bin
 	depends = gcc-libs
 	depends = zlib
 	depends = libzip
-	depends = openssl-3.0
+	depends = openssl
 	conflicts = gourou
 	conflicts = gourou-git
 	options = !strip
-	source = https://indefero.soutade.fr/p/libgourou/downloads/get/libgourou_utils_0.8.tgz
-	sha512sums = 9ae25d14d209909c2eac4415fd72eb8612509c3167529bbb03f4e12ae3948f364bc387c87e75f861d929eb6664ff67ed3096d0c8316ef75bbcb58c787bb8c4e3
+	source = https://indefero.soutade.fr/p/libgourou/downloads/get/libgourou_utils_0.8.1.tgz
+	sha512sums = ee5e2ffd298fd38757f6a060fc2d697222d50834cdb0e19837fd036ce08eb5a1fa57cc201e11237e18b0b8f2714f7afb0e5d21ca97497aa48e6e90e551ffe4b3
 
 pkgname = gourou-bin
