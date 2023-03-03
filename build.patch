@@ -1,49 +1,48 @@
 diff --git a/Makefile b/Makefile
-index d05d86d..f640c87 100644
+index ceaf392..784fd77 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -1,10 +1,10 @@
- AR ?= $(CROSS)ar
- CXX ?= $(CROSS)g++
+@@ -8,10 +8,10 @@ ifeq ($(PREFIX),)
+     PREFIX := /usr/local
+ endif
  
 -UPDFPARSERLIB = ./lib/updfparser/libupdfparser.a
 +UPDFPARSERLIB = "$(PWD)/../updfparser/libupdfparser.a"
  
--CXXFLAGS=-Wall -fPIC -I./include -I./lib/pugixml/src/ -I./lib/updfparser/include
--LDFLAGS = $(UPDFPARSERLIB)
-+CXXFLAGS=-Wall -fPIC -I./include "-I$(PWD)/../updfparser/include"
+-CXXFLAGS += -Wall -fPIC -I./include -I./usr/include/pugixml -I./lib/updfparser/include
+-LDFLAGS = -lpugixml
++CXXFLAGS += -Wall -fPIC -I./include "-I$(PWD)/../updfparser/include" `pkg-config --cflags pugixml`
 +LDFLAGS = $(UPDFPARSERLIB) `pkg-config --libs pugixml`
  
- BUILD_STATIC ?= 0
- BUILD_SHARED ?= 1
-@@ -39,10 +39,10 @@ TARGETDIR   := bin
- SRCEXT      := cpp
- OBJEXT      := o
+ VERSION     := $(shell cat include/libgourou.h |grep LIBGOUROU_VERSION|cut -d '"' -f2)
  
--SOURCES      = src/libgourou.cpp src/user.cpp src/device.cpp src/fulfillment_item.cpp src/loan_token.cpp src/bytearray.cpp src/pugixml.cpp
-+SOURCES      = src/libgourou.cpp src/user.cpp src/device.cpp src/fulfillment_item.cpp src/loan_token.cpp src/bytearray.cpp
+@@ -56,7 +56,7 @@ OBJEXT      := o
+ SOURCES      = src/libgourou.cpp src/user.cpp src/device.cpp src/fulfillment_item.cpp src/loan_token.cpp src/bytearray.cpp
  OBJECTS     := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.$(OBJEXT)))
  
--all: lib obj $(TARGETS)
-+all: obj $(TARGETS)
+-all: version lib obj $(TARGETS)
++all: version obj $(TARGETS)
  
- lib:
- 	mkdir lib
-@@ -59,14 +59,14 @@ $(BUILDDIR)/%.$(OBJEXT): $(SRCDIR)/%.$(SRCEXT)
+ version:
+ 	@echo "Building libgourou $(VERSION)"
+@@ -76,17 +76,17 @@ $(BUILDDIR)/%.$(OBJEXT): $(SRCDIR)/%.$(SRCEXT)
  
- libgourou: libgourou.a libgourou.so
+ libgourou: $(TARGET_LIBRARIES)
  
 -libgourou.a: $(OBJECTS) $(UPDFPARSERLIB)
 +libgourou.a: $(OBJECTS)
- 	$(AR) crs $@ obj/*.o  $(UPDFPARSERLIB)
+ 	$(AR) rcs --thin $@ $^
  
--libgourou.so: $(OBJECTS) $(UPDFPARSERLIB)
-+libgourou.so: $(OBJECTS)
- 	$(CXX) obj/*.o $(LDFLAGS) -o $@ -shared
+-libgourou.so.$(VERSION): $(OBJECTS) $(UPDFPARSERLIB)
++libgourou.so.$(VERSION): $(OBJECTS)
+ 	$(CXX) $^ -Wl,-soname,$@ $(LDFLAGS) -o $@ -shared
  
- build_utils:
--	make -C utils ROOT=$(PWD) CXX=$(CXX) AR=$(AR) DEBUG=$(DEBUG) STATIC_UTILS=$(STATIC_UTILS)
-+	make -C utils ROOT=.. CXX=$(CXX) AR=$(AR) DEBUG=$(DEBUG) STATIC_UTILS=$(STATIC_UTILS)
+ libgourou.so: libgourou.so.$(VERSION)
+ 	ln -f -s $^ $@
  
- clean:
- 	rm -rf libgourou.a libgourou.so obj
+ build_utils: $(TARGET_LIBRARIES)
+-	$(MAKE) -C utils ROOT=$(PWD) CXX=$(CXX) AR=$(AR) DEBUG=$(DEBUG) STATIC_UTILS=$(STATIC_UTILS) DEST_DIR=$(DEST_DIR) PREFIX=$(PREFIX)
++	$(MAKE) -C utils ROOT=.. CXX=$(CXX) AR=$(AR) DEBUG=$(DEBUG) STATIC_UTILS=$(STATIC_UTILS) DEST_DIR=$(DEST_DIR) PREFIX=$(PREFIX)
+ 
+ install: $(TARGET_LIBRARIES)
+ 	install -d $(DESTDIR)$(PREFIX)$(LIBDIR)
