@@ -4,7 +4,7 @@
 pkgname=rime-custom-pinyin-dictionary
 pkgver=20230303
 _reponame=CustomPinyinDictionary
-pkgrel=1
+pkgrel=2
 pkgdesc="rime 自建拼音输入法词库，百万常用词汇量。"
 arch=('any')
 url="https://github.com/wuhgit/CustomPinyinDictionary"
