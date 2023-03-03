@@ -1,6 +1,6 @@
 pkgbase = check-soa-git
 	pkgdesc = A simple command-line DNS testing tool for having rapidly an idea of the health of a DNS.
-	pkgver = r73.412cb8a
+	pkgver = r74.ead071c
 	pkgrel = 1
 	url = https://www.bortzmeyer.org/check-soa-go.html
 	arch = i686
