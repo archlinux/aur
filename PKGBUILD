@@ -52,8 +52,8 @@ _override_max_perf=
 
 pkgname=nvidia-tweaks
 pkgdesc="A collection of tweaks and improvements to the NVIDIA driver"
-pkgver=510
-pkgrel=4
+pkgver=525
+pkgrel=1
 license=('custom')
 url='https://github.com/ventureoo/nvidia-tweaks'
 depends=('NVIDIA-MODULE' 'nvidia-utils')
@@ -67,7 +67,7 @@ source=('nvidia.conf'
         'https://raw.githubusercontent.com/keylase/nvidia-patch/master/patch-fbc.sh'
         'https://raw.githubusercontent.com/keylase/nvidia-patch/master/patch.sh')
 sha256sums=('ff2bb34076c829d0e11a04379915d36d224ad4f381c4e406b4c75349cdf2df5b'
-            'b7001d91396821ff0ce50d9b65a7e86e2379dba738543cea4c01613c092efa90'
+            'cbd585ed1e2dac6e4d07c1ff32f1eca8661fb61f786f7c8c26db29a5f864d347'
             '81464bfeda86b9683a6f739a1cec1a2fe37717af5480671be70fe43f51fba420'
             'b4bde9eecd90fc9498a8d47c7bb7edfe877ae64ea9e7069c405710a76c749144'
             'c8fd71e3885b18c88c800cc9693112846d1889a008ae7dc6cbc9bb6fadd67ec6'
@@ -83,7 +83,7 @@ prepare() {
         if [ "$_powermizer_scheme" = "1" ]; then
             registrydwords+=';PowerMizerEnable=0x1;PerfLevelSrc=0x2222;PowerMizerDefault=0x3;PowerMizerDefaultAC=0x1'
         elif [ "$_powermizer_scheme" = "2" ]; then
-            registrydwords+=';PowerMizerEnable=0x1;PerfLevelSrc=0x2233;PowerMizerDefault=0x3'
+            registrydwords+=';PowerMizerEnable=0x1;PerfLevelSrc=0x3322;PowerMizerDefaultAC=0x1'
         elif [ "$_powermizer_scheme" = "3" ]; then
             registrydwords+=';PowerMizerEnable=0x1;PerfLevelSrc=0x2233;PowerMizerDefault=0x3'
 	else
