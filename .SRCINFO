@@ -1,0 +1,24 @@
+pkgbase = python-pyemd-git
+	pkgdesc = Fast EMD for Python: a wrapper for Pele and Werman's C++ implementation of the Earth Mover's Distance metric
+	pkgver = r383.255824f
+	pkgrel = 1
+	url = https://github.com/wmayner/pyemd
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-oldest-supported-numpy
+	provides = python-pyemd
+	conflicts = python-pyemd
+	source = python-pyemd::git+https://github.com/wmayner/pyemd.git
+	md5sums = SKIP
+
+pkgname = python-pyemd-git
