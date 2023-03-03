@@ -8,7 +8,7 @@ arch=("any")
 url="https://github.com/Col-E/Recaf"
 license=("MIT")
 depends=("java-runtime" "java-openjfx" "ttf-font")
-makedepends=("git" "java-environment")
+makedepends=("git" "java-environment" "jdk11-openjdk")
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-bin")
 replaces=("recaf")
@@ -22,9 +22,14 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+    cd "$srcdir/$_pkgname"
+    patch "src/main/java/me/coley/recaf/util/MavenUtil.java" "../../MavenUtil.patch"
+}
+
 build() {
 	cd "$srcdir/$_pkgname"
-    MAVEN_USER_HOME="$srcdir/$_pkgname/.m2" ./mvnw -gs "$srcdir/../settings.xml" clean package
+    JAVA_HOME="/usr/lib/jvm/java-11-openjdk" MAVEN_USER_HOME="$srcdir/$_pkgname/.m2" ./mvnw -gs "$srcdir/settings.xml" clean package
 }
 
 package() {
