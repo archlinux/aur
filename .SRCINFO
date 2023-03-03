@@ -1,7 +1,7 @@
 pkgbase = rustdesk-flutter-git
 	pkgdesc = A open source virtual / remote desktop infrastructure for everyone with flutter UI
-	pkgver = 1.2.0.r1948.ga071700c
-	pkgrel = 1
+	pkgver = 1.2.0.r2009.g4f8dd59c
+	pkgrel = 2
 	url = https://github.com/rustdesk/rustdesk
 	arch = x86_64
 	license = GPL3

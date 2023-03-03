@@ -6,8 +6,8 @@
 # Contributor: Chris Severance aur.severach aATt spamgourmet dott com
 
 pkgname='rustdesk-flutter-git'
-pkgver=1.2.0.r1948.ga071700c
-pkgrel=1
+pkgver=1.2.0.r2009.g4f8dd59c
+pkgrel=2
 pkgdesc='A open source virtual / remote desktop infrastructure for everyone with flutter UI'
 provides=('rustdesk' 'rustdesk-flutter')
 conflicts=('rustdesk' 'rustdesk-flutter')
@@ -45,6 +45,10 @@ build(){
     export PATH="${VCPKG_ROOT}:${FLUTTER_HOME}/bin:${HOME}/.cargo/bin:${PATH}"
     ## https://cjycode.com/flutter_rust_bridge/troubleshooting.html#the-generated-store_dart_post_cobject-has-the-wrong-signature--stdargh-file-not-found-in-linux--stdboolh--
     export CPATH="$(clang -v 2>&1 | grep 'Selected GCC installation' | rev | cut -d' ' -f1 | rev)/include"
+    if [[ ${CARCH} != x86_64 ]]
+    then
+        export VCPKG_FORCE_SYSTEM_BINARIES=true
+    fi
     # See .github/workflows/flutter-ci.yml
     msg2 'Installing vcpkg requirements...'
     vcpkg install libvpx libyuv opus
