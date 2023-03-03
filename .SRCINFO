@@ -1,0 +1,16 @@
+pkgbase = zebrad
+	pkgdesc = ZF's independent, consensus-compatible implementation of a Zcash node
+	pkgver = 1.0.0_rc.5
+	pkgrel = 1
+	url = https://github.com/ZcashFoundation/zebra
+	arch = aarch64
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = rust
+	makedepends = clang
+	makedepends = pkgconf
+	source = zebra-1.0.0-rc.5.tar.gz::https://github.com/ZcashFoundation/zebra/archive/refs/tags/v1.0.0-rc.5.tar.gz
+	sha256sums = SKIP
+
+pkgname = zebrad
