@@ -1,7 +1,7 @@
 pkgbase = aria2-config-script
 	pkgdesc = 一个自动配置Aria2的脚本，自动创建、启动服务，可直接搭配浏览器插件使用。
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = GPL
 	depends = aria2
@@ -14,7 +14,7 @@ pkgbase = aria2-config-script
 	md5sums = SKIP
 	md5sums = 4eb906a2e99a6920571d263f05433a73
 	md5sums = 3fe49c8d556f6669882130f5448c8b32
-	md5sums = c0d31a4899a8eac93a40ef97eb2a7e58
+	md5sums = SKIP
 
 pkgname = aria2-config-script
 	install = usage.install
