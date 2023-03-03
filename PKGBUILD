@@ -5,7 +5,7 @@
 # Contributor: Christian Finnberg <christian@finnberg.net>
 
 pkgname=notesnook
-pkgver=2.4.3
+pkgver=2.4.4
 pkgrel=1
 _electronversion=21
 pkgdesc="Take private notes, capture ideas, make lists & sync them anywhere"
@@ -16,7 +16,7 @@ options=(!strip)
 provides=(${pkgname})
 conflicts=(${pkgname})
 depends=("electron$_electronversion" 'gtk3' 'libxss' 'libnotify' 'libappindicator-gtk3')
-makedepends=('nvm' 'git')
+makedepends=('nvm' 'git' 'yarn')
 source=(notesnook::git+https://github.com/streetwriters/notesnook.git
         ${pkgname}.desktop)
 sha512sums=('SKIP'
