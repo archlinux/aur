@@ -5,8 +5,8 @@
 
 _pkgname=phpunit
 pkgname=${_pkgname}
-pkgver=10.0.12
-pkgrel=2
+pkgver=10.0.14
+pkgrel=1
 pkgdesc="PHPUnit is a programmer-oriented testing framework for PHP."
 conflicts=('phpunit-bin')
 url="https://phpunit.de"
