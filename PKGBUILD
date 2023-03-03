@@ -1,7 +1,7 @@
 pkgbase=imap
 pkgname=imap
 pkgver=2007f
-pkgrel=20
+pkgrel=21
 arch=('x86_64')
 license=('APACHE')
 url="https://github.com/uw-imap/imap"
