@@ -1,0 +1,21 @@
+pkgbase = python-zigpy-znp
+	pkgdesc = Zigpy support for common Texas Instruments ZNP radio modules
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://github.com/zigpy/zigpy-znp
+	arch = any
+	license = GPL3
+	checkdepends = python-pytest-asyncio
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-zigpy
+	depends = python-voluptuous
+	depends = python-coloredlogs
+	depends = python-jsonschema
+	depends = python-pyserial-asyncio
+	source = zigpy-znp-0.9.3.tar.gz::https://github.com/zigpy/zigpy-znp/archive/v0.9.3.tar.gz
+	b2sums = 2a410fe3dac23df4f1b1360edffc3011ae417cf4ab704def717d82bf5f49572a2c78cb461d215a3b74e352d9d3b932e1972016f78e26f3dd7001da32fb1baadd
+
+pkgname = python-zigpy-znp
