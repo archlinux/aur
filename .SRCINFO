@@ -1,20 +1,17 @@
 pkgbase = matplotlib-cpp-git
 	pkgdesc = Extremely simple yet powerful header-only C++ plotting library built on the popular matplotlib
-	pkgver = r121.f23347f
+	pkgver = r177.ef0383f
 	pkgrel = 1
 	url = https://github.com/lava/matplotlib-cpp
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = gcc
 	makedepends = cmake
-	depends = gcc
+	makedepends = git
 	depends = python-matplotlib
-	depends = python-numpy
-	depends = python
 	provides = matplotlib-cpp
-	source = git+https://github.com/lava/matplotlib-cpp
-	sha256sums = SKIP
+	conflicts = matplotlib-cpp
+	source = git+https://github.com/lava/matplotlib-cpp.git
+	sha512sums = SKIP
 
 pkgname = matplotlib-cpp-git
-
