@@ -1,12 +1,12 @@
 # Maintainer: silverhikari <kerrickethan@gmail.com>
 pkgname=libchimara-git
-pkgver=0.9.2.r0.5cd1f96
+pkgver=0.9.2.r17.2571f79
 pkgrel=1
 pkgdesc="Interactive Fiction GTK Widget"
 arch=(x86_64)
-url="https://github.com/chimara/Chimara.git"
+url="https://chimara.github.io/Chimara/"
 license=('custom')
-depends=('gtk3' 'gstreamer')
+depends=('gtk3' 'gstreamer' 'gobject-introspection' 'gst-plugins-bad' 'gst-plugins-good' 'gst-plugins-base')
 makedepends=('git' 'meson' 'ninja')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
