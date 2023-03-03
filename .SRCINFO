@@ -1,6 +1,6 @@
 pkgbase = mauikit-calendar-git
 	pkgdesc = MauiKit Calendar components
-	pkgver = 1.0.0.r0.gdeb1859
+	pkgver = 1.0.1.r0.g889ebdb
 	pkgrel = 1
 	url = https://invent.kde.org/maui/mauikit-calendar
 	arch = x86_64
