@@ -1,6 +1,6 @@
 _pkgname=cyberdrop-dl
 pkgname="cyberdropdownloader"
-pkgver=4.0.62
+pkgver=4.0.65
 pkgrel=1
 pkgdesc="Bulk downloader for multiple file hosts and forum sites"
 arch=('any')
@@ -13,14 +13,13 @@ depends=(
     python-rich
     python-tqdm
     python-yaml
-    python-yarl
 )
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 url="https://github.com/Jules-WinnfieldX/CyberDropDownloader"
 license=('GPL3')
 conflicts=('cyberdrop-dl' 'cyberdrop-dl-git')
 source=("https://files.pythonhosted.org/packages/source/c/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('5da57bc169533ab713aa963e96974772f5c183099023242a6593344e855c013d')
+sha256sums=('e60c6890dc1fe65a345d1f09d555f0f96196d96bf1f31b158a56f8337f9287e7')
 
 build(){
     cd $_pkgname-$pkgver
