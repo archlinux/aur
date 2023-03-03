@@ -1,14 +1,15 @@
 pkgbase = flair
 	pkgdesc = Tool for correction, isoform definition, and alternative splicing analysis of nanopore cDNA, native RNA, and PacBio sequencing reads
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/BrooksLabUCSC/flair
 	arch = any
-	license = BSD-2
+	license = BSD
 	makedepends = python-setuptools
 	makedepends = cython
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = python-numpy
 	depends = python-tqdm
