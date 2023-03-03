@@ -3,7 +3,7 @@
 
 pkgname=youtube-search-python
 pkgver=1.6.6
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Search for YouTube videos, channels & playlists & get video information using link WITHOUT YouTube Data API v3"
 arch=("any")
