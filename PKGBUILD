@@ -9,7 +9,7 @@ depends=('python')
 makedepends=('python-setuptools')
 license=(GNU GPLv3)
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/${_module/-/_}-$pkgver.tar.gz")
 sha256sums=('94dcdf8bfaf8af2293cef4323cd90994ca58ea4f2988fe8ff4c8103e953e66f0')
 
 build() {
