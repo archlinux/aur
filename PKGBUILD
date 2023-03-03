@@ -2,12 +2,12 @@
 pkgname=pypeek-git
 _pkgname="${pkgname%-git}"
 pkgver=r1540.4e0fce8
-pkgrel=3
+pkgrel=4
 pkgdesc="Simple animated GIF screen recorder with an easy to use interface"
 arch=(any)
 url="https://github.com/firatkiral/pypeek"
 license=('GPL3')
-depends=('python' 'python-requests' 'pyside6')
+depends=('python' 'python-requests' 'pyside6' 'ffmpeg')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-hatchling' 'gendesk')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
