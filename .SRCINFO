@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libass
 	pkgdesc = A portable library for SSA/ASS subtitles rendering (mingw-w64)
-	pkgver = 0.17.0
+	pkgver = 0.17.1
 	pkgrel = 1
 	url = https://github.com/libass/libass/
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = mingw-w64-libass
 	options = !buildflags
 	options = !libtool
 	options = staticlibs
-	source = git+https://github.com/libass/libass.git?signed#tag=0e55cf52e304b7cb43dbfa7c3ab3d2f298c293be
+	source = git+https://github.com/libass/libass.git?signed#tag=915599d88e951e34079383cf926d2731bb45cea1
 	validpgpkeys = 5458C3100671F252B0F4C7708079D18C21AAAAFF
 	validpgpkeys = 5EE63F2A71BF132CFE3567E1DFFE615F2824C720
 	b2sums = SKIP
