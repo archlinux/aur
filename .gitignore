@@ -1,0 +1,4 @@
+/edgedb-cli-bin-*.pkg.tar.zst
+/edgedb-cli-*.zst
+/pkg/
+/src/
