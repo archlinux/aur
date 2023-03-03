@@ -1,7 +1,8 @@
 pkgbase = uudeck
 	pkgdesc = uu加速器Steam Deck插件，需配合手机UU主机加速APP使用
 	pkgver = 2023.1.10.1600
-	pkgrel = 2
+	pkgrel = 3
+	url = https://uu.163.com/console/
 	arch = x86_64
 	license = custom
 	source = uuplugin_monitor.sh::https://uu.gdl.netease.com/uuplugin-script/202301101600/uuplugin_monitor.sh
