@@ -1,46 +1,43 @@
-# Maintainer:  Yigit Dallilar <yigit.dallilar@gmail.com>
-# Prev. Maintainer: orumin <dev at orum.in>
+# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Contributor:  Yigit Dallilar <yigit.dallilar@gmail.com>
+# Contributor: orumin <dev at orum.in>
 
 pkgname=slack-term
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Slack client for your terminal"
-arch=('x86_64')
-url="https://github.com/erroneousboat/slack-term"
-source=("slack-term-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-        "slack-term.json")
-noextract=("slack-term-${pkgver}.tar.gz")
-license=('MIT')
-conflicts=('slack-term-bin')
-options=()
-makedepends=("go")
-md5sums=('77c64a2aac37d65cbcfe2cecab043b9f'
-         '9cdd35c2d48f6d899333ab3721a6464b')
+arch=(x86_64)
+url="https://github.com/jpbruinsslot/slack-term"
+license=(MIT)
+makedepends=(go)
 
+source=(
+  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz"
+  "slack-term.json"
+)
+sha256sums=(
+  '089cf10a3959c99b73da1d5ad974f2cd076a56851ef9ffd97a77350a81e527f0'
+  'c0115da2947fc14ab7db055c6d597ecc5e765af9ffcf7fa68821540f3c0e9d32'
+)
+
+_archive="$pkgname-$pkgver"
 
 build() {
+  cd "$_archive"
 
-    export GOPATH=$(pwd)
-    reldir=src/github.com/erroneousboat
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-    mkdir -p ${srcdir}/${reldir}
-    ln -s $(pwd)/slack-term-${pkgver}.tar.gz ${srcdir}/${reldir}       
-    cd ${srcdir}/${reldir}
-    tar zxvf slack-term-${pkgver}.tar.gz
-    mv slack-term-${pkgver} slack-term
-    cd slack-term
-    make build-linux
-
+  go build -v .
 }
 
 package() {
+  cd "$_archive"
 
-    reldir=src/github.com/erroneousboat
-
-    install -Dm755 ${srcdir}/${reldir}/slack-term/bin/slack-term-linux-amd64 ${pkgdir}/usr/bin/slack-term
-    install -Dm644 ${srcdir}/${reldir}/slack-term/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-    install -Dm644 slack-term.json ${pkgdir}/etc/slack-term.json
-
+  install -Dm755 slack-term "$pkgdir/usr/bin/slack-term"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 $srcdir/slack-term.json "$pkgdir/etc/slack-term.json"
 }
-
-# vim:set ts=4 sw=4 et:
