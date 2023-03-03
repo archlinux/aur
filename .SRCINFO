@@ -1,0 +1,11 @@
+pkgbase = ttf-deogon
+	pkgdesc = 덕온공주체 Deogon Princess (Deokon)
+	pkgver = 0
+	pkgrel = 1
+	url = https://hanfont.hangeul.go.kr/relaxfont/font/deokon.do
+	arch = any
+	license = custom:KOGL-3
+	source = https://hanfont.hangeul.go.kr/fonts/DeogonPrincess_TTF.zip
+	sha256sums = 2b0091c42cf8cf8ac056278f2494a28fac2eaea8010734f74aac8e41681f503d
+
+pkgname = ttf-deogon
