@@ -1,12 +1,12 @@
-# Maintainer: Your Name <ecorous@frogastudios.com>
+# Maintainer: Ecorous <ecorous@frogastudios.com>
 pkgname=mpcreator-git
 pkgver=1.1.1
 pkgrel=1
 arch=('x86_64')
 pkgdesc="An unofficial Minecraft mod project generator for QuiltMC in Nim. Git version"
-license=('Apache-2.0')
+license=('Apache')
 groups=()
-depends=()
+depends=('glibc')
 makedepends=('git' 'nim')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
