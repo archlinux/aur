@@ -29,7 +29,7 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
     # install icon
     install -Dm644 "src/$_pkgname/icon/peek.png" "$pkgdir/usr/share/pixmaps/pypeek.png"
-    # generate desktop entry, uses Peek's icon for now
+    # generate desktop entry
     gendesk -f -n --pkgname "$_pkgname" --pkgdesc "$pkgdesc" --exec="$_pkgname" --categories=Utility --icon "$_pkgname"
     install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
