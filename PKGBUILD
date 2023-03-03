@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=sfheaders
-_cranver=0.4.0
+_cranver=0.4.2
 pkgname=r-${_cranname,,}
 pkgdesc="Converts Between R Objects and Simple Feature Objects"
 url="https://cran.r-project.org/package=sfheaders"
@@ -10,12 +10,20 @@ pkgver=${_cranver//[:-]/.}
 pkgrel=1
 
 arch=("i686" "x86_64")
-depends=("r" "r-geometries" "r-rcpp")
-optdepends=("r-covr" "r-knitr" "r-testthat")
+depends=(
+    "r>=3.0.2"
+    "r-geometries>=0.2.2"
+    "r-rcpp>=1.0.10"
+)
+optdepends=(
+    "r-covr"
+    "r-knitr"
+    "r-testthat"
+)
 makedepends=()
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=("322a6e1ec7c88fcceebb60ee707105b9")
+b2sums=('2652abb2afda69455faab4b74ae28f397a83793cdc387a00b001f7535bc8ee220534a52cf0d78896c084ca9173af177e0a03394d0594521f13ac4310bfebca2b')
 
 build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
