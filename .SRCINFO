@@ -1,11 +1,12 @@
 pkgbase = system-monitoring-center
 	pkgdesc = Multi-featured system monitor.
-	pkgver = 2.7.0
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/hakandundar34coding/system-monitoring-center
 	arch = any
 	license = GPL3
-	makedepends = python-setuptools
+	checkdepends = appstream-glib
+	makedepends = meson
 	depends = dmidecode
 	depends = iproute2
 	depends = libadwaita
@@ -15,7 +16,7 @@ pkgbase = system-monitoring-center
 	depends = util-linux
 	optdepends = hwdata: for device vendor-model information of new devices
 	optdepends = xorg-xrandr: for more accurate screen resolution and refresh rate detection
-	source = system-monitoring-center-2.7.0.tar.gz::https://github.com/hakandundar34coding/system-monitoring-center/archive/refs/tags/v2.7.0.tar.gz
-	sha256sums = 9cdb318edfca4461284e5e6a86b2de895b93fd08cec770199e7dd0c6faa4fd08
+	source = system-monitoring-center-2.8.0.tar.gz::https://github.com/hakandundar34coding/system-monitoring-center/archive/refs/tags/v2.8.0.tar.gz
+	sha256sums = e543bc1c2ef5642082b4f019ca7bd222384d89db1914d9fdc3d902c0c0cdd468
 
 pkgname = system-monitoring-center
