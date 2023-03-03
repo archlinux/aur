@@ -2,7 +2,7 @@
 pkgname='python-parquet-tools'
 _name='parquet_tools'
 pkgver='0.2.12'
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy install parquet-tools"
 url="https://github.com/ktrueda/parquet-tools"
 depends=(
@@ -29,6 +29,7 @@ build() {
 }
 
 package() {
-    python -m installer --destdir="$pkgdir" ${_name}-${pkgver}-py3-none-any.whl
-    install -Dm0644 $_name-$pkgver.dist-info/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "$_name-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/${_name}-${pkgver}-py3-none-any.whl
+    install -Dm0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
