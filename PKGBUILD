@@ -2,10 +2,10 @@
 
 _pkgname=maui-agenda
 pkgname=$_pkgname-git
-pkgver=0.1.0.r0.gb27824a
+pkgver=0.1.1.r0.gfb2ef22
 pkgrel=1
 pkgdesc='Calendar application built with MauiKit'
-url='https://github.com/Nitrux/agenda'
+url='https://invent.kde.org/maui/agenda'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 license=(GPL3)
 depends=(akonadi-contacts
