@@ -1,6 +1,6 @@
 
 pkgname=scopehal-apps-git
-pkgver=0.0.62934e0
+pkgver=0.0.f18ad75
 pkgrel=1
 pkgdesc="glscopeclient and other client applications for libscopehal"
 arch=('x86_64')
@@ -12,7 +12,9 @@ makedepends=('cmake' 'git' 'vulkan-headers')
 source=("git+https://github.com/glscopeclient/scopehal-apps.git"
         "modules.patch"
         "target_link_libraries.patch")
-md5sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP'
+            'afcabed21ee30a3b08b86c452e09f964632f9ac2a2ce6d9eeea430c3060748af'
+            '39459c2f5b67968ca9b743e335026dc280e340ed6e3e4091ac26afd7d709f290')
 
 pkgver() {
   cd "${srcdir}/scopehal-apps"

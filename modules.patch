@@ -1,6 +1,8 @@
---- src/scopehal-apps/.gitmodules	2021-12-14 13:31:20.205388635 +0800
-+++ src/scopehal-apps/2.gitmodules	2021-12-14 13:38:23.108470633 +0800
-@@ -1,6 +1,6 @@
+diff --git a/.gitmodules b/.gitmodules
+index 478f69b..8350711 100644
+--- a/.gitmodules
++++ b/.gitmodules
+@@ -1,9 +1,9 @@
  [submodule "lib"]
  	path = lib
 -	url = ../scopehal.git
@@ -9,3 +11,15 @@
  	path = doc
 -	url = ../scopehal-docs.git
 +	url = https://github.com/glscopeclient/scopehal-docs.git
+ [submodule "src/imgui"]
+ 	path = src/imgui
+ 	url = https://github.com/ocornut/imgui
+@@ -12,7 +12,7 @@
+ 	url = https://github.com/epezent/implot
+ [submodule "src/imgui-node-editor"]
+ 	path = src/imgui-node-editor
+-	url = ../imgui-node-editor.git
++	url = https://github.com/glscopeclient/imgui-node-editor.git
+ [submodule "src/ImGuiFileDialog"]
+ 	path = src/ImGuiFileDialog
+ 	url = https://github.com/aiekick/ImGuiFileDialog
