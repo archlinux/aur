@@ -1,3 +1,16 @@
+2022-02-26 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.4.3.2-1:
+    Added new MobileAuthenticator plugin which adds two new commands: 2fainit and 2fafinalize, see wiki for more info (@JustArchi).
+    Added win-arm64 OS-specific ASF variant, see wiki for more info (@JustArchi).
+    Added --minimized command-line argument, see wiki for more info (@JustArchi).
+    ASF binary now supports ASF_ARGS, which allows for cmdline args when used with systemd, previously we had this only in docker (@JustArchi #2827).
+    Disallowed limited, locked and trade banned accounts from announcing on the ASF STM listing, they can't trade anyway (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
+    pkg: explicit build instructions (replace cc.sh script)
+    pkg: include all upstream plugins
+    pkg: check git tag signature
 2022-02-01 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.4.2.13-1:
     [!] Improved neutral+ logic to reject possible abuse/exploitation on fair offers (@JustArchi #2807).
