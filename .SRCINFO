@@ -1,16 +1,15 @@
 pkgbase = lerna
-	pkgdesc = Tool for managing JavaScript projects with multiple packages
-	pkgver = 4.0.0
-	pkgrel = 2
-	url = https://github.com/sebmck/lerna#readme
+	pkgdesc = A fast, modern build system for managing and publishing multiple JavaScript/TypeScript packages from the same repository.
+	pkgver = 6.5.1
+	pkgrel = 1
+	url = https://github.com/lerna/lerna
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = lerna-4.0.0.tgz
+	noextract = lerna-6.5.1.tgz
 	options = !strip
-	source = https://registry.npmjs.org/lerna/-/lerna-4.0.0.tgz
-	sha256sums = 64330ffdb7b7d879e40ca2520028958b9d6daff34a32547ced138b5896633bd4
+	source = https://registry.npmjs.org/lerna/-/lerna-6.5.1.tgz
+	sha256sums = 05288dbf9c3fa5523d68ad04e80f69ba88c8e4f00b68c03bb990202d4341ea20
 
 pkgname = lerna
-

@@ -1,12 +1,12 @@
-# Maintainer: Simon Legner <Simon.Legner@gmail.com>
+# Maintainer: Maykel Moya <mmoya (at) mmoya.org>
 # Contributor: Marcs <aur (at) mg.odd.red>
 
 pkgname=lerna
-pkgver=4.0.0
-pkgrel=2
-pkgdesc="Tool for managing JavaScript projects with multiple packages"
+pkgver=6.5.1
+pkgrel=1
+pkgdesc="A fast, modern build system for managing and publishing multiple JavaScript/TypeScript packages from the same repository."
 arch=(any)
-url="https://github.com/sebmck/lerna#readme"
+url="https://github.com/lerna/lerna"
 license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
@@ -20,4 +20,4 @@ package() {
   chown -R root:root "${pkgdir}"
 }
 
-sha256sums=('64330ffdb7b7d879e40ca2520028958b9d6daff34a32547ced138b5896633bd4')
+sha256sums=('05288dbf9c3fa5523d68ad04e80f69ba88c8e4f00b68c03bb990202d4341ea20')
