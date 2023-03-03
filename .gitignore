@@ -1,3 +1,7 @@
-pkg/
-src/
-/azure-storage-fuse-*.tar.*
+*
+!/.gitignore
+!/PKGBUILD
+!/.editorconfig
+!/Makefile
+!/README.md
+!/.SRCINFO
