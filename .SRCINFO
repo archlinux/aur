@@ -1,0 +1,22 @@
+pkgbase = ruby-yardstick
+	pkgdesc = Measure YARD documentation coverage
+	pkgver = 0.9.9
+	pkgrel = 1
+	url = https://github.com/dkubb/yardstick
+	arch = any
+	license = MIT
+	checkdepends = ruby-rspec
+	checkdepends = ruby-rspec-its
+	makedepends = rubygems
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-yard
+	depends = ruby-concord
+	depends = ruby-ice_nine
+	depends = ruby-adamantium
+	depends = ruby-abstract_type
+	options = !emptydirs
+	source = https://github.com/dkubb/yardstick/archive/v0.9.9.tar.gz
+	sha256sums = 67bec98bcb06f21b2e02d5fd26fcaf096f6c8eeaab01ebbf6ca5b6d78dae1d3c
+
+pkgname = ruby-yardstick
