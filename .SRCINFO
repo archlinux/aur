@@ -1,7 +1,7 @@
 pkgbase = ppet3-bin
 	pkgdesc = Put a cute girl on your desk for more fun.在你的桌面放一个萌妹子，多一点乐趣
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zenghongtu/PPet
 	arch = x86_64
 	license = MIT
@@ -10,8 +10,6 @@ pkgbase = ppet3-bin
 	depends = nss
 	depends = alsa-lib
 	source = PPet3-3.3.0.deb::https://github.com/zenghongtu/PPet/releases/download/v3.3.0/PPet3-3.3.0.deb
-	source = LICENSE::https://github.com/zenghongtu/PPet/raw/dev/LICENSE.md
 	sha512sums = fae74eaa7bc42ca56e1d85d1c01810565a56eca10ca87c28e27d44b285a158831f022a15bea6991cebc190de73b23b083af1210f0d2f332fda2139cb67afb8d6
-	sha512sums = 2a0f2267dbfc223f54b4925e852beac15f7aa18d1f5cfbb93ee18d221d01a321b9a031ada874042286f4d74330a7f11a3e0b5229b67141c6ee53875769268a8b
 
 pkgname = ppet3-bin
