@@ -27,14 +27,20 @@ checkdepends=('python-pytest-doctestplus'
               'python-dask'
               'python-reproject')  # pytest-doctestplus gwcs mpl-animators sunpy already in makedep
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
+#       'doc-use-local-fits.patch'
+#       "https://www.astropy.org/astropy-data/tutorials/FITS-images/HorseHead.fits"
         "https://github.com/sunpy/ndcube/raw/main/changelog/README.rst")
 md5sums=('f046a10f107da6b37238088a5efa2890'
+#        'b50513a0bb73290d65317d0d44ae9fb9'
+#        'SKIP'
          'SKIP')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -Dm644 -t changelog ${srcdir}/README.rst
+#   cp ${srcdir}/*.fits examples
+#   patch -Np1 -i "${srcdir}/doc-use-local-fits.patch"
 #   sed -e '/ignore:distutils/a \	ignore:"order" was deprecated in version 0.9' \
 #       -e "/ignore:distutils/a \	ignore:The default kernel will change from 'Hann' to  'Gaussian'" \
 #       -e "/ignore:distutils/a \	ignore:The default boundary mode will change from 'ignore' to  'strict'" \
