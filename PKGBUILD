@@ -2,7 +2,7 @@
 
 _pkgbase=pw-capture
 pkgname=${_pkgbase}-git
-pkgver=r25.a62cd68
+pkgver=r27.e8fc56b
 pkgrel=1
 pkgdesc="Vulkan/OpenGL (game) capture for PipeWire"
 url="https://github.com/EHfive/${_pkgbase}"
