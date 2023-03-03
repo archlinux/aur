@@ -2,19 +2,13 @@
 
 pkgname=dooble-bin
 _pkgname=dooble
-pkgver=2023.02.20
+pkgver=2023.02.25
 pkgrel=1
 pkgdesc="Web browser based on QtWebEngine"
 arch=(x86_64)
 url="https://textbrowser.github.io/dooble/"
 license=('BSD')
-depends=(
-    'unixodbc'
-    'at-spi2-core'
-    'gtk3'
-    'qt6-webengine'
-    'qt6-svg'
-)
+depends=('unixodbc' 'at-spi2-core' 'gtk3' 'qt6-webengine' 'qt6-svg')
 optdepends=()
 conflicts=('dooble')
 source=(
@@ -22,21 +16,18 @@ source=(
     "${_pkgname}.desktop"
     "LICENSE::https://github.com/textbrowser/dooble/raw/master/LICENSE"
     )
-sha256sums=('f0efbb0b2137669338bf232b4ec881cef7478c445b2e797ed45f4206d7971f7b'
+sha256sums=('e15e464f2cd86b9c75e6ac3fd57910dd315350b4f5817a9839d7736ebcd37785'
             '0451898ad6b3864601d4406956558153b9518b1695545440e91bf26465c1dbe4'
-            'c60bf2d6a8bfdf7c7418bba91c6767cbb4b48dccae36dd5d9ffdb48f756815dd')
-
-prepare() {
-    mkdir -p "${pkgdir}/opt/${_pkgname}"
-}
-
+            'cbf629abfdc78b888d87ceae0847a9129e5b0e1baa8da4a1cec53324f38defb7')
 package() {
-    mkdir -p "${pkgdir}/opt/${_pkgname}/"
+    mkdir -p "${pkgdir}/opt"
+    bsdtar -xvf ${_pkgname}-${pkgver}.tar.gz -C "${pkgdir}/opt"
+    find "${pkgdir}/opt" -type d -exec chmod 755 {} \;
+    chown -R root:root "${pkgdir}/opt"
+    chmod -x "${pkgdir}/opt/dooble/Lib/libQt6WebEngineCore.so.6"
     #Use system libc.so.6
-    rm -r "${srcdir}/${_pkgname}/Lib/libc.so.6"
-    cp -r "${srcdir}/${_pkgname}/" "${pkgdir}/opt/"
-    install -Dm755 "${srcdir}/${_pkgname}/Dooble" "${pkgdir}/opt/${_pkgname}/Dooble"
-    install -Dm644 "${srcdir}/${_pkgname}/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.png"
+    rm -r "${pkgdir}/opt/${_pkgname}/Lib/libc.so.6"
+    install -Dm644 "${pkgdir}/opt/${_pkgname}/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.png"
     install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
