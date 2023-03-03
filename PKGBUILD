@@ -2,7 +2,7 @@
 #Maintainer: Rafael Fontenelle <rafaeff at gnome dot org>
 
 pkgname="mongodb-tools-bin"
-pkgver="100.6.1"
+pkgver="100.7.0"
 _basever="6.0"
 _basedist="focal"
 pkgrel="2"
@@ -15,8 +15,8 @@ conflicts=("mongodb-tools")
 depends=("openssl-1.1" "krb5")
 source_x86_64=(mongodb-org-tools_${pkgver}_x86_64.deb::"https://repo.mongodb.org/apt/ubuntu/dists/${_basedist}/mongodb-org/${_basever}/multiverse/binary-amd64/mongodb-database-tools_${pkgver}_amd64.deb")
 source_aarch64=(mongodb-org-tools_${pkgver}_aarch64.deb::"https://repo.mongodb.org/apt/ubuntu/dists/${_basedist}/mongodb-org/${_basever}/multiverse/binary-arm64/mongodb-database-tools_${pkgver}_arm64.deb")
-sha256sums_x86_64=('2a9242e5da671fc554f45af87ed1355000f7534b35e4869f1cea60e092e1e201')
-sha256sums_aarch64=('cc4c77b4179470b100cfdbaa2b54411e7f2b7c85670cb39595ff1bdca9d85720')
+sha256sums_x86_64=('cc1d877d21b557b023540bbb381ea523628027c45c43fed198d71df8e0705a0a')
+sha256sums_aarch64=('efe19923d25f3abe562420788e2cd6febf8e0e9cd6f184933f93b8efbdda59f2')
 
 prepare() {
   mkdir -p output
