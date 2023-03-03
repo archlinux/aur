@@ -1,14 +1,16 @@
 pkgbase = zettlr-appimage
 	pkgdesc = A Markdown Editor for the 21st century.
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.zettlr.com
 	arch = x86_64
 	license = GPL3
+	depends = hicolor-icon-theme
+	depends = zlib
 	conflicts = zettlr
 	conflicts = zettlr-git
 	options = !strip
-	source = Zettlr-2.3.0-x86_64.AppImage::https://github.com/Zettlr/Zettlr/releases/download/v2.3.0/Zettlr-2.3.0-x86_64.AppImage
+	source = Zettlr-2.3.0.AppImage::https://github.com/Zettlr/Zettlr/releases/download/v2.3.0/Zettlr-2.3.0-x86_64.AppImage
 	sha512sums = 0d5d84e28df6bd580431dd2cdecc1ed16ccf599e0a422877bca49424c7afd721d376ad6fc556fc1192919783075333bb5444c9e6c3cde1a1d55786c389f6a157
 
 pkgname = zettlr-appimage
