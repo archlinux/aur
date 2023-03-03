@@ -1,19 +1,20 @@
-# Maintainer: dalto <dalto[at]fastmail.com>
-# Contributor: eagleeyetom <eagleeyetom@gmail.com>
 # Original Maintainer: raininja <dandenkijin@gmail.com>
+# Contributor: eagleeyetom <eagleeyetom@gmail.com>
+# Maintainer: dalto <dalto[at]fastmail.com>
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=slimjet
 pkgver=38.0.4.0
-pkgrel=1
+pkgrel=2
 _libffmpegverurl="https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases"
 _libffmpegver=0.73.0
 pkgdesc="Fast, smart and powerful browser based on Blink"
 arch=('x86_64')
-url="http://www.slimjet.com"
-_downurl="http://www.slimjetbrowser.com"
+url="https://www.slimjet.com"
+_downurl="https://www.slimjetbrowser.com"
 license=('custom:freeware')
-depends=('nss' 'ttf-font' 'alsa-lib' 'at-spi2-core' 'hicolor-icon-theme' 'libxkbcommon' 'pango' 'mesa' 'libcups' 'libxcomposite' 'libxrandr')
+depends=(libxkbcommon libcups libxcomposite libxrandr hicolor-icon-theme nss pango mesa alsa-lib at-spi2-core)
 optdepends=('kdialog: needed for file dialogs in KDE' 'ttf-liberation: fix fonts for some PDFs')
-conflicts=('slimjet-git')
+conflicts=('slimjet35')
 options=('!emptydirs' '!strip')
 source=(
     "${pkgname}-${pkgver}_amd64.deb::${_downurl}/release/${pkgname}_amd64.deb"
