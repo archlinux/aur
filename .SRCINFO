@@ -1,0 +1,19 @@
+pkgbase = ruby-adamantium
+	pkgdesc = Immutable extensions to objects
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/dkubb/adamantium
+	arch = any
+	license = MIT
+	checkdepends = ruby-rspec
+	makedepends = rubygems
+	makedepends = ruby-rdoc
+	makedepends = git
+	depends = ruby
+	depends = ruby-ice_nine
+	depends = ruby-memoizable
+	options = !emptydirs
+	source = https://github.com/dkubb/adamantium/archive/v0.2.0.tar.gz
+	sha256sums = 17961c34779033b899663bbf63f457c9ff1995dc191347b5b22963c67255aec5
+
+pkgname = ruby-adamantium
