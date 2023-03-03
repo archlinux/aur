@@ -1,0 +1,21 @@
+pkgbase = unpoller
+	pkgdesc = Collect your UniFi controller data and report it to an InfluxDB instance, or export it for Prometheus collection.
+	pkgver = 2.7.11
+	pkgrel = 1
+	url = https://unpoller.com/
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	backup = etc/conf.d/unpoller.conf
+	source = unpoller-2.7.11.tar.gz::https://github.com/unpoller/unpoller/archive/v2.7.11.tar.gz
+	source = unpoller.conf
+	source = unpoller.service
+	source = unpoller.sysusers
+	sha256sums = fe4654612b737938132d2a91978b5a004c4727e3a34e15dc1ca95f24ca6cd10e
+	sha256sums = 6bf48404916555cf46f75aff54c8ac2eef9ef91c835949a21f64cea98fb9e05b
+	sha256sums = decf90f6d5a907bae685d38291ef0aeefd8af406e54f3292e29245347d8179b8
+	sha256sums = 24bf33b9a4e9693984104e755109361dae5d7cb399220c5bcfd35a2bd2d0c9b6
+
+pkgname = unpoller

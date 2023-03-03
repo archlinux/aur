@@ -1,0 +1,15 @@
+[Unit]
+Description=unpoller - Telemetry and Observability for your UniFi Network
+After=network-online.target
+Requires=network.target
+
+[Service]
+User=unpoller
+Group=unpoller
+ExecStart=/usr/bin/unpoller -c /etc/conf.d/unpoller.conf
+Restart=always
+RestartSec=10
+WorkingDirectory=/tmp
+
+[Install]
+WantedBy=multi-user.target
