@@ -1,35 +1,35 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=streampager
-pkgver=0.10.2
+pkgver=0.10.3
 pkgrel=1
 pkgdesc='A pager for command output or large files'
 url='https://github.com/markbt/streampager'
 license=('MIT')
 arch=('x86_64')
 depends=('gcc-libs')
-makedepends=('rust')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/markbt/streampager/archive/v$pkgver.tar.gz")
-sha256sums=('38f97ce65dd2231e5ec8ce06f6c3367fac04f13ad7b77d78b387f6a137f1e798')
-b2sums=('1be04b231d21f96f8e9aff4575d2a3d3612e8de2a8bdbe3c8be3b8d5faee3766b56461f5e195b89247e098e8b4151a70db8d73d25db825599d8388995c73cea0')
+makedepends=('git' 'rust')
+source=("$pkgname::git+https://github.com/markbt/streampager.git#commit=3c558526ce047e50530c2d89ca19b25f8424b4ab")
+sha256sums=('SKIP')
+b2sums=('SKIP')
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
   CARGO_TARGET_DIR=target \
     cargo build --release --frozen
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
   install -Dm0755 -t "$pkgdir/usr/bin" target/release/{sp,spp}
 
