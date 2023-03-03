@@ -9,6 +9,6 @@ pkgbase = rime-custom-pinyin-dictionary
 	makedepends = libime
 	makedepends = imewlconverter
 	source = https://github.com/wuhgit/CustomPinyinDictionary/releases/download/assets/CustomPinyinDictionary_Fcitx_20230303.tar.gz
-	sha256sums = b3a404f6a04c82d6a4f7c13ab814825ae1c3a78c80150c3c40ee1c3582c6ecdb
+	sha256sums = 2caf592a041b3d0c5d86876ba1725c29531824f8789ce54648d0b662b479e2bd
 
 pkgname = rime-custom-pinyin-dictionary
