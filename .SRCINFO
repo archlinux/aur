@@ -1,5 +1,5 @@
 pkgbase = libbpf-static
-	pkgdesc = Library for loading eBPF programs and reading and manipulating eBPF objects from user-space
+	pkgdesc = Library for loading eBPF programs and reading and manipulating eBPF objects from user-space (static libraries)
 	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/libbpf/libbpf
