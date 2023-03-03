@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=10.0.beta2.r0.g8f5bbd278a
+pkgver=10.0.beta3.r0.g46a6105bc4
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -61,7 +61,6 @@ source=(git+https://github.com/sagemath/sage#branch=develop
         test-optional.patch
         sagemath-linbox-1.7.patch
         sagemath-bliss-0.77.patch
-        sagemath-tachyon-0.99.patch
         sagemath-gap-4.12.patch
         sagemath-tdlib-0.9.patch)
 sha256sums=('SKIP'
@@ -70,7 +69,6 @@ sha256sums=('SKIP'
             '4484bd38b273e7fcc3d54bcd38e1ed3cdade12f3e9dc79235b011ef69e17c10c'
             'fbc87b62c73d20aa12fced28f5d68dc2b3ec7cc9123be424226321195bf2b3b4'
             '1a578528bab7be3970954fdfa033afa69fe753da1bab3f41693b0e05e3c849cd'
-            'dfdc071e96dcd12b7e7e05953039f3d67aebb757f459c5e29a413ffac6354a9e'
             '43dda8c7a8f9331155bdb831cdeb419953ddcb9b72d71d7c1f84f22530e753da'
             '56a83abecf2ff5a500442adc7a50abbb70006037dd39c39dcdb04b3ca9fb51e2')
 
@@ -87,8 +85,6 @@ prepare(){
   patch -p1 -i ../sagemath-linbox-1.7.patch
 # Fix build with bliss 0.77 https://trac.sagemath.org/ticket/33010
   patch -p1 -i ../sagemath-bliss-0.77.patch
-# Fix tests with tachyon 0.99 https://trac.sagemath.org/ticket/23712
-  patch -p1 -i ../sagemath-tachyon-0.99.patch
 # Port to GAP 4.12 https://trac.sagemath.org/ticket/34391
   patch -p1 -i ../sagemath-gap-4.12.patch
 
