@@ -1,0 +1,14 @@
+pkgbase = python-nutils-poly
+	pkgdesc = Low-level functions for evaluating and manipulating polynomials
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/nutils/poly-py
+	arch = any
+	license = MIT
+	makedepends = maturin
+	makedepends = python-installer
+	depends = python-numpy
+	source = poly-py-1.0.0.tar.gz::https://github.com/nutils/poly-py/archive/v1.0.0.tar.gz
+	sha512sums = dde79e3b5d351ebdbc83751efe20e4e76a9db0db26d05a64e68efc8f035ee8e5ba98d4ab6eb7a1e9190d39d51d5d9fa201bcb3c87819ae7072345db3af187b2d
+
+pkgname = python-nutils-poly
