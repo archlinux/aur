@@ -1,6 +1,6 @@
 pkgbase = kakoune-git
 	pkgdesc = Multiple-selection, UNIX-flavored modal editor
-	pkgver = 2021.11.08
+	pkgver = 2022.10.31
 	pkgrel = 1
 	url = https://github.com/mawww/kakoune
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = kakoune-git
 	optdepends = tmux: split windows, spawn tabs
 	optdepends = xdotool: X11 window management
 	optdepends = xorg-xmessage: print detailed crash information in a separate window
-	provides = kakoune=2021.11.08
+	provides = kakoune=2022.10.31
 	conflicts = kakoune
 	options = !buildflags
 	source = kakoune-git::git+https://github.com/mawww/kakoune.git

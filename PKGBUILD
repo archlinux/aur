@@ -1,5 +1,5 @@
 pkgname=kakoune-git
-pkgver=2021.11.08
+pkgver=2022.10.31
 pkgrel=1
 pkgdesc="Multiple-selection, UNIX-flavored modal editor"
 arch=("x86_64" "armv7h")
