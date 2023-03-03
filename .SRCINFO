@@ -1,16 +1,15 @@
 pkgbase = esearch-appimage
 	pkgdesc = 截屏 离线OCR 搜索翻译 以图搜图 贴图 录屏 滚动截屏 Screenshot OCR search translate search for picture paste the picture on the screen screen recorder
 	pkgver = 1.9.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://esearch-app.netlify.app/
 	arch = x86_64
 	license = GPL3
 	depends = hicolor-icon-theme
 	depends = zlib
-	provides = xushengfeng
 	conflicts = esearch-bin
 	options = !strip
-	source = eSearch-1.9.8-linux-x86_64.AppImage::https://github.com/xushengfeng/eSearch/releases/download/1.9.8/eSearch-1.9.8-linux-x86_64.AppImage
+	source = eSearch-1.9.8.AppImage::https://github.com/xushengfeng/eSearch/releases/download/1.9.8/eSearch-1.9.8-linux-x86_64.AppImage
 	sha256sums = cb48cdef279e2813df6228a66f0d19992b148c021903cc8d92c581bf7d2c33d0
 
 pkgname = esearch-appimage
