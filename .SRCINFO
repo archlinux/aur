@@ -24,6 +24,7 @@ pkgbase = maya
 	depends = glu
 	depends = gst-plugins-base-libs
 	depends = libxtst
+	depends = libtiff5
 	optdepends = maya-arnold: Maya Arnold Renderer Plugin
 	optdepends = maya-bifrost: Maya Bifrost Effects Plugin
 	optdepends = maya-substance: Maya Substance Material Plugin

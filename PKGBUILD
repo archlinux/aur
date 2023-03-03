@@ -14,7 +14,7 @@ url='http://www.autodesk.com/products/maya/overview'
 license=('custom')
 depends=('audiofile' 'xorg-fonts-75dpi' 'xorg-fonts-100dpi' 'adsklicensing=12.1.0.7121' 'libxp' 'gtk2' 'libxcrypt-compat'
          'libjpeg6-turbo' 'libffi6' 'nss' 'libxaw' 'libpng15' 'libtool' 'ncurses5-compat-libs' 'libpulse'
-         'glu' 'gst-plugins-base-libs' 'libxtst')
+         'glu' 'gst-plugins-base-libs' 'libxtst' 'libtiff5')
 optdepends=('maya-arnold: Maya Arnold Renderer Plugin'
             'maya-bifrost: Maya Bifrost Effects Plugin'
             'maya-substance: Maya Substance Material Plugin'
