@@ -35,5 +35,5 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --build build --target install
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 "${_base}"/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
