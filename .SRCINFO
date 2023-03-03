@@ -1,0 +1,15 @@
+pkgbase = chord-appimage
+	pkgdesc = Chord - A Modern Music Player
+	pkgver = 0.2.40
+	pkgrel = 1
+	url = https://github.com/PeterDing/chord
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = hicolor-icon-theme
+	conflicts = chord-bin
+	options = !strip
+	source = chord-0.2.40.AppImage::https://github.com/PeterDing/chord/releases/download/v0.2.40/chord-0.2.40-linux-x86_64.AppImage
+	sha512sums = 60ad941f1b2d65799eb9e94e21082b90ab4f0d726e1af706053a17a5c1decff58ab3fe4d585fdffe4be670703951eaa7079ea28e4f6c121e9823235ea9a2cf9a
+
+pkgname = chord-appimage
