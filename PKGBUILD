@@ -6,11 +6,11 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine64-git
-pkgver=7.19.243.g2cfcddb2fef
-pkgrel=1
+pkgver=8.2.221.g10765f2956d
+pkgrel=2
 pkgdesc="A compatibility layer for running Windows programs which is only for 64 bit system."
 url=https://winehq.org
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 options=('staticlibs' '!lto')
 license=('LGPL')
 source=(
@@ -29,7 +29,7 @@ depends=(
     'libxml2' 'libxslt' 'libxcursor' 'libxrandr' 'libxdamage' 'libxi' 'gettext' 'glu' 'libsm' 'gcc-libs'
     'desktop-file-utils' 'alsa-lib' 'libpulse' 'faudio' 'gstreamer' 'gst-plugins-base-libs' 'mpg123'
     'systemd' 'sdl2' 'vkd3d' 'vulkan-icd-loader' 'vulkan-headers' 'lcms2' 'libcups' 'libgphoto2'
-    'sane' 'gsm' 'krb5' 'libldap' 'smbclient' 'ocl-icd' 'libpcap' 'libusb' 'v4l-utils'
+    'sane' 'gsm' 'krb5' 'libldap' 'smbclient' 'ocl-icd' 'libpcap' 'libusb' 'v4l-utils' 'pcsclite'
     # Depends in Official repo:
 
     )
@@ -47,15 +47,12 @@ pkgver(){
     cd "${srcdir}/wine"
     git describe --tags | sed 's/wine-//;s/-/./g'
 }
-prepare(){
+build(){
     mkdir -p "${srcdir}/wine/wine64-build"
     cd "${srcdir}/wine/wine64-build"
     ../configure --enable-win64 --prefix=/usr \
         --sysconfdir=/etc --localstatedir=/var \
         --runstatedir=/run --with-x --without-oss
-}
-build(){
-    cd "${srcdir}/wine/wine64-build"
     make -j$(nproc)
 }
 package(){
