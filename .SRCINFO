@@ -1,6 +1,6 @@
 pkgbase = python-osadl-matrix
 	pkgdesc = OSADL license compatibility matrix as a CSV
-	pkgver = 2021.11.02.091119
+	pkgver = 2023.03.03.030339
 	pkgrel = 1
 	url = https://github.com/priv-kweihmann/osadl-matrix
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-osadl-matrix
 	makedepends = python-setuptools
 	depends = python
 	options = !emptydirs
-	source = python-osadl-matrix-2021.11.02.091119.tar.gz::https://github.com/priv-kweihmann/osadl-matrix/archive/refs/tags/2021.11.02.091119.tar.gz
-	sha256sums = 3ba0a4b19d43c414521b1a42a402139a06d26652073c2e34f8059c829902812a
+	source = python-osadl-matrix-2023.03.03.030339.tar.gz::https://github.com/priv-kweihmann/osadl-matrix/archive/refs/tags/2023.03.03.030339.tar.gz
+	sha256sums = ff7af61c934cd126f9b635a7344b5b2d16a3e579c9c35618efaf5cfd2101219c
 
 pkgname = python-osadl-matrix
