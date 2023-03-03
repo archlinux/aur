@@ -4,7 +4,7 @@
 _pkgname=gimp
 pkgname=${_pkgname}-devel-noconflict
 pkgver=2.99.14
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Image Manipulation Program (Development version, doesn't conflict with gimp 2.0)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://www.gimp.org/"
@@ -35,9 +35,17 @@ optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cu
             'lua51-lgi: LUA scripting support')
 provides=("${_pkgname}=${pkgver}")
 source=(https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz
-        linux.gpl)
+        linux.gpl
+        babl-0.1-name-change-meson.patch::https://gitlab.gnome.org/GNOME/gimp/-/commit/04a78154e1af5e30dcedde6dbaa321be3f0e24b1.patch)
 sha256sums=('313a205475d1ff03c5c4d9602f09f5c975ba6c1c79d8843e2396f9fe2abdf7a8'
-            '1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3')
+            '1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3'
+            '40c8175505598219e379bfd25c3b0a37bbd42ac35c06990683f1dca622a0a6a1')
+
+prepare() {
+  cd $_pkgname-$pkgver
+  patch -Np1 -i ../babl-0.1-name-change-meson.patch
+}
+
 build() {
   arch-meson "${_pkgname}-${pkgver}" build \
     -Dgi-docgen=enabled \
