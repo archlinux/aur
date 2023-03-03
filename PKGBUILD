@@ -11,7 +11,7 @@ url="https://github.com/wuhgit/CustomPinyinDictionary"
 license=('GFDL' 'CCPL:by-sa')
 makedepends=('libime' 'imewlconverter')
 source=("https://github.com/wuhgit/${_reponame}/releases/download/assets/CustomPinyinDictionary_Fcitx_${pkgver}.tar.gz")
-sha256sums=('b3a404f6a04c82d6a4f7c13ab814825ae1c3a78c80150c3c40ee1c3582c6ecdb')
+sha256sums=('2caf592a041b3d0c5d86876ba1725c29531824f8789ce54648d0b662b479e2bd')
 
 build() {
   libime_pinyindict -d CustomPinyinDictionary_Fcitx.dict temp.txt
