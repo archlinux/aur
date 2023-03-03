@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+NoDisplay=false
+Icon=baidu-translate
+Type=Application
+Categories=Office;
+Exec="/opt/apps/deepin-wine-baidu-translate/files/run.sh" %U
+Name=Baidu Translate Client
+Name[zh]=百度翻译
+GenericName=百度翻译
+Comment=百度翻译桌面端

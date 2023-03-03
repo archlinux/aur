@@ -1,0 +1,23 @@
+pkgbase = deepin-wine-baidu-translate
+	pkgdesc = Baidu Translate Client on Deepin Wine 6.百度翻译桌面端,轻·快的多语种翻译工具
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://fanyi.baidu.com
+	install = deepin-wine-baidu-translate.install
+	arch = x86_64
+	license = custom
+	depends = deepin-wine6-stable
+	source = com.deepin.bandizip-7.23.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/tools/com.deepin.bandizip/com.deepin.bandizip_7.23_amd64.deb
+	source = baidu-translate-1.6.1.exe::https://fanyi.baidu.com/client/download/redirect?device=win&from=pcproduct
+	source = deepin-wine-baidu-translate.install
+	source = deepin-wine-baidu-translate.desktop
+	source = baidu-translate.png
+	source = run.sh
+	sha256sums = e8f04a4870dbd7e4398b8d3a92a19f451b8756df58f30cdd8cbc0b2bdf629b7a
+	sha256sums = 2bf35d3d99750379bba1d7637c98e0e58b17d8ce0d89ec0deef10bd276b18cc1
+	sha256sums = 481c94a7d26b201ff8c87dafd9744a457b8e6a6ef212807e9e44fa8c376b2cbc
+	sha256sums = 28bcbb2bd8306ea897dfe8e28f247b8c1c5a3771ac8f98079e491bcb04a81bca
+	sha256sums = 3b77fadec0287cff726676e2e3887e1a44ce9afff86740e127f6c08e34fe05aa
+	sha256sums = 46b6c7b0446af298d96b72e7ea1d49acc6e57ba9f95a33786d69dc0cb7b41ed0
+
+pkgname = deepin-wine-baidu-translate
