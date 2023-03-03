@@ -1,6 +1,6 @@
 pkgbase = gtk3-classic
 	pkgdesc = GTK3 patched to provide a more classic experience
-	pkgver = 3.24.36
+	pkgver = 3.24.37
 	pkgrel = 1
 	url = https://github.com/lah7/gtk3-classic
 	install = gtk3.install
@@ -60,9 +60,9 @@ pkgbase = gtk3-classic
 	optdepends = colord: color management support
 	optdepends = dconf: default GSettings backend
 	optdepends = libcups: printer support in print dialog
-	provides = gtk3=3.24.36
-	provides = gtk3-typeahead=3.24.36
-	provides = gtk3-mushrooms=3.24.36
+	provides = gtk3=3.24.37
+	provides = gtk3-typeahead=3.24.37
+	provides = gtk3-mushrooms=3.24.37
 	provides = gtk3-print-backends
 	provides = libgtk-3.so
 	provides = libgdk-3.so
@@ -73,12 +73,12 @@ pkgbase = gtk3-classic
 	conflicts = gtk3-nocsd
 	conflicts = gtk3-nocsd-git
 	conflicts = gtk3-nocsd-legacy-git
-	source = git+https://github.com/lah7/gtk3-classic.git#commit=ca470ac4870271fd9b40a4478c15a70fd10a3a68
-	source = https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.36.tar.xz
-	source = gtk-query-immodules-3.0.hook::https://raw.githubusercontent.com/archlinux/svntogit-packages/ec12847fb811add133b399aaf0916c96eb03862e/trunk/gtk-query-immodules-3.0.hook
+	source = git+https://github.com/lah7/gtk3-classic.git#commit=23bb70c43eaf9eef9e9c749e20e1f60eda54b710
+	source = https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.37.tar.xz
+	source = gtk-query-immodules-3.0.hook::https://raw.githubusercontent.com/archlinux/svntogit-packages/a683ff63aa2c307fe73f4cc6f464791951b14f7c/trunk/gtk-query-immodules-3.0.hook
 	source = settings.ini
 	sha256sums = SKIP
-	sha256sums = 27a6ef157743350c807ffea59baa1d70226dbede82a5e953ffd58ea6059fe691
+	sha256sums = 6745f0b4c053794151fd0f0e2474b077cccff5f83e9dd1bf3d39fe9fe5fb7f57
 	sha256sums = a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229
 	sha256sums = 01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202
 
