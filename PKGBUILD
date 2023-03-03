@@ -2,7 +2,7 @@
 pkgname=pypeek-git
 _pkgname="${pkgname%-git}"
 pkgver=r1540.4e0fce8
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple animated GIF screen recorder with an easy to use interface"
 arch=(any)
 url="https://github.com/firatkiral/pypeek"
@@ -27,7 +27,9 @@ build() {
 package() {
     cd "$srcdir/$_pkgname"
     python -m installer --destdir="$pkgdir" dist/*.whl
+    # install icon
+    install -Dm644 "src/$_pkgname/icon/peek.png" "$pkgdir/usr/share/pixmaps/pypeek.png"
     # generate desktop entry, uses Peek's icon for now
-    gendesk -f -n --pkgname "$_pkgname" --pkgdesc "$pkgdesc" --exec="$_pkgname" --categories=Utility --icon "com.uploadedlobster.peek"
+    gendesk -f -n --pkgname "$_pkgname" --pkgdesc "$pkgdesc" --exec="$_pkgname" --categories=Utility --icon "$_pkgname"
     install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
