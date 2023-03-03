@@ -16,7 +16,7 @@ pkgbase = libchimara-git
 	depends = gst-plugins-base
 	provides = libchimara
 	conflicts = libchimara
-	source = libchimara::git+https://chimara.github.io/Chimara/
+	source = libchimara::git+https://github.com/chimara/Chimara.git
 	md5sums = SKIP
 
 pkgname = libchimara-git

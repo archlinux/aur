@@ -10,7 +10,7 @@ depends=('gtk3' 'gstreamer' 'gobject-introspection' 'gst-plugins-bad' 'gst-plugi
 makedepends=('git' 'meson' 'ninja')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("libchimara::git+${url}")
+source=("libchimara::git+https://github.com/chimara/Chimara.git")
 md5sums=('SKIP')
 
 pkgver() {
