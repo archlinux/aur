@@ -1,7 +1,7 @@
 pkgbase = python-pathpy2
 	pkgdesc = An OpenSource python package for the analysis and visualisation of time series data on complex networks with higher- and multi-order graphical models.
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.pathpy.net
 	arch = any
 	license = AGPL
