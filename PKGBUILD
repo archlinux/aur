@@ -13,7 +13,9 @@ source=("git+https://github.com/FWDekker/mommy.git#tag=v$pkgver")
 sha256sums=("SKIP")
 
 check() {
-    ./$pkgname/test.sh
+    [ "$(pacman-conf | grep "NoExtract.*usr/share/man" | wc -l)" -gt 0 ] && MOMMY_TEST_MAN="0"
+
+    MOMMY_TEST_MAN=MOMMY_TEST_MAN ./$pkgname/test.sh
 }
 
 package() {
