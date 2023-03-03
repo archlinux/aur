@@ -8,7 +8,7 @@ arch=('x86_64')
 license=('LGPL')
 url='https://www.videolan.org/developers/libaacs.html'
 depends=('libgcrypt'
-         'libudfread.git'
+         'libudfread.so'
          )
 makedepends=('git'
              'flex'
