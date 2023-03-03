@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=VGS60
+Comment=Signal Generator Software
+keywords=signal;hound;vsg60;vector;signal;generator;
+Exec=INSTALL_DIR/vsg60
+#Icon=com.signalhound.spike
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;
+StartupNotify=true
+X-Ubuntu-Gettext-Domain=signalhound-vgs60
