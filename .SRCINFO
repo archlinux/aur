@@ -1,0 +1,18 @@
+pkgbase = erpnext
+	pkgdesc = Free and open source Enterprise Resource Planning (ERP).
+	pkgver = 14.17.4
+	pkgrel = 1
+	url = https://github.com/frappe/erpnext
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	depends = frappe-bench
+	depends = nodejs
+	depends = python
+	source = erpnext-v14.17.4.tar.gz::https://github.com/frappe/erpnext/archive/refs/tags/v14.17.4.tar.gz
+	source = erpnext.sh
+	sha512sums = 7fb7154bc8542eab411492949cbfe38b7755f5b1a41f410cfab89865ee53d0ac26bc52e77295648c95f7c0c376c377dcbea543f74b525a265bc71d362f9cb68d
+	sha512sums = 4829a0db8899fc1021c2e2a5e98399c3647f5149bf324968b6418c09818b85913bfac1cfb27ac3000751c0b537c6dc7b0abecef970cb77682b1efaf9337f6203
+
+pkgname = erpnext
