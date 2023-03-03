@@ -1,18 +1,18 @@
 pkgbase = waydroid
 	pkgdesc = A container-based approach to boot a full Android system on a regular Linux system
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/waydroid
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = lxc
-	depends = python
 	depends = python-gbinder
 	depends = python-gobject
 	depends = nftables
 	depends = dnsmasq
-	depends = which
+	depends = gtk3
+	depends = dbus-python
 	optdepends = python-pyclip: share clipboard with container
 	source = waydroid::git+https://github.com/waydroid/waydroid.git#commit=865e041af854e3f63eb8f72eb7aa4f5075e0b866
 	source = gbinder.conf
