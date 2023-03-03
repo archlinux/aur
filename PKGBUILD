@@ -3,8 +3,8 @@
 
 pkgname=bedops
 pkgver=2.4.41
-pkgrel=1
-pkgdesc="Highly scalable genomic feature operations."
+pkgrel=2
+pkgdesc="Highly scalable genomic feature operations. https://doi.org/10.1093/bioinformatics/bts277"
 arch=('x86_64')
 url="http://github.com/bedops/bedops/"
 license=('GPL')
@@ -22,5 +22,5 @@ package() {
     cd "$srcdir"/$pkgname-$pkgver
     make install
     mkdir -p "$pkgdir"/usr/bin
-    cp -r bin/* $pkgdir/usr/
+    cp -r bin/* $pkgdir/usr/bin
 }
