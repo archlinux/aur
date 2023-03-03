@@ -2,7 +2,7 @@
 
 _pkgname=maui-shell
 pkgname=$_pkgname-git
-pkgver=0.5.6.r0.ge2662c6
+pkgver=0.6.0.r0.g180d437
 pkgrel=1
 pkgdesc='Maui Shell is a convergent shell for desktops, tablets, and phones.'
 url='https://github.com/Nitrux/maui-shell'
