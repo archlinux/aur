@@ -1,7 +1,7 @@
 # Maintainer: Gijs Burghoorn <me@gburghoorn.com>
 pkgname=lemurs-git
 _pkgname=lemurs
-pkgver=0.3.1.r0.gc64f69c
+pkgver=0.3.1.r1.gd84deac
 pkgrel=1
 pkgdesc="TUI Display/Login Manager"
 arch=('i686' 'x86_64' 'aarch64')

@@ -1,7 +1,7 @@
 pkgbase = lemurs-git
 	pkgdesc = TUI Display/Login Manager
 	pkgver = 0.3.1.r0.gc64f69c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coastalwhite/lemurs
 	arch = i686
 	arch = x86_64
