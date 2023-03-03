@@ -1,20 +1,14 @@
 pkgbase = tilde-podcast-appimage
 	pkgdesc = Podcast client to listen to all you favorite podcasts
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/paologiua/tilde
 	arch = x86_64
 	license = MIT
 	depends = zlib
 	depends = hicolor-icon-theme
 	options = !strip
-	source = tilde-1.0.0-x86_64.AppImage::https://github.com/paologiua/tilde/releases/download/v1.0.0/Tilde-1.0.0.AppImage
-	source = LICENSE::https://github.com/paologiua/tilde/raw/main/LICENSE
-	source = tilde-podcast-appimage.png::https://github.com/paologiua/tilde/raw/main/images/tilde.png
-	source = tilde-podcast-appimage.desktop
+	source = tilde-podcast-1.0.0.AppImage::https://github.com/paologiua/tilde/releases/download/v1.0.0/Tilde-1.0.0.AppImage
 	sha512sums = cc857618d5bd1e8c9d1b929e5f32e102561039f960c4fd213fbeb6c58e4ead1bc6a6654078be9703e41dccc84f41ade76348f9f1e8177792047c09a5886daaba
-	sha512sums = 779a7c307c5d3b375b25bdda6f5c9830385ddc276be0b8a7fb00ef63c6c4dd181cf7f67bfb056a75b865f436ec5f35422340dd3522da956a9ac7d38391100086
-	sha512sums = d563b75dba483befbe5451c4f9ebabb4c50ab36c3d6ec2fcead153f6c5712d4b61f7c0de227141b6356d6a2b96c9c62c6da7bdddb9298f8e0c40a3539d7d23fa
-	sha512sums = 4c52d7aeb223e3fdf204942b9145a3ec125706054665dbcca82117e56eb2b60fc7997864dac376a1f2d6c43faa3ac63e73b06d573a6bb89ec1efecbf1ebbcd17
 
 pkgname = tilde-podcast-appimage
