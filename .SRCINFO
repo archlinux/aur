@@ -1,0 +1,18 @@
+pkgbase = ruby-concord
+	pkgdesc = Helper for object composition
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/mbj/concord
+	arch = any
+	license = MIT
+	checkdepends = ruby-rspec
+	makedepends = rubygems
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-adamantium
+	depends = ruby-equalizer
+	options = !emptydirs
+	source = https://github.com/mbj/concord/archive/v0.1.6.tar.gz
+	sha256sums = 755c0f4ff9b5e7895e7d06d50f50f235722ebc2f5a226bd21fa77204e17e5db8
+
+pkgname = ruby-concord
