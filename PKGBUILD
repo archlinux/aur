@@ -2,7 +2,7 @@
 
 _pkgname=mauiman
 pkgname=$_pkgname-git
-pkgver=1.0.1.r17.gd0407bd
+pkgver=1.0.2.r1.gc5adf7c
 pkgrel=1
 pkgdesc='Maui Manager Library. Server and public library API.'
 url='https://invent.kde.org/maui/mauiman'
