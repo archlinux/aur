@@ -1,6 +1,6 @@
 pkgbase = lib32-pw-capture-git
 	pkgdesc = Vulkan/OpenGL (game) capture for PipeWire
-	pkgver = r25.a62cd68
+	pkgver = r27.e8fc56b
 	pkgrel = 1
 	url = https://github.com/EHfive/pw-capture
 	arch = x86_64
