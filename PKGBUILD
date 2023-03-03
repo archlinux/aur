@@ -1,7 +1,7 @@
 # Maintainer: Zeta Gabriels <zetagabriels@gmail.com>
 _pkgname=userspace-tablet-driver-daemon
 pkgname=userspace-tablet-driver-daemon
-pkgver=r1.141a416
+pkgver=r1.1502c8a
 pkgrel=1
 epoch=
 pkgdesc="A userspace daemon for XP-Pen and Huion tablets."
