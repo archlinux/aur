@@ -12,6 +12,8 @@ pkgbase = python-mulimgviewer
 	depends = python-requests
 	depends = python-wxpython
 	source = https://files.pythonhosted.org/packages/py3/m/mulimgviewer/mulimgviewer-3.9.9-py3-none-any.whl
+	source = https://raw.githubusercontent.com/nachifur/MulimgViewer/master/assets/desktop/MulimgViewer.desktop
 	sha256sums = e1d1a13f2b7a6cb6850e79a18d96ac37e9be0e18eeb3508a8000df0d10df1799
+	sha256sums = 0078ae602cfaa6fc0230dce60c96130267318d4151324b0497d9cce26b027896
 
 pkgname = python-mulimgviewer
