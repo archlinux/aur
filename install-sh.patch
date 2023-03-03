@@ -1,0 +1,13 @@
+--- install-sh	2023-03-03 14:38:38.949075607 +0100
++++ install-sh-patched	2023-03-03 14:49:13.573581548 +0100
+@@ -33,9 +33,4 @@
+ echo "\nByte compiling emacs files using $emacsinfo"
+ echo "  if this is not the right Emacs, set PVSEMACS"
+ echo "  otherwise the byte compiled files will cause an error"
+-echo "see byte-compile.log for details (mostly warnings)"
+-echo "Byte compilation currently generates lots of warnings" > byte-compile.log
+-echo "  (because of compatibility issues with older Emacs versions)\n" >> byte-compile.log
+-(cd emacs; $emacsprog -batch -l pvs-byte-compile.el) \
+-    >> byte-compile.log 2>&1 \
+-    || echo "!!! Something went wrong - see the end of byte-compile.log"
++(cd emacs; $emacsprog -batch -l pvs-byte-compile.el) || echo "!!! Something went wrong - see the end of byte-compile.log"
