@@ -1,7 +1,7 @@
 # Maintainer: silverhikari <kerrickethan@gmail.com>
 pkgname=libchimara-git
 pkgver=0.9.2.r17.2571f79
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive Fiction GTK Widget"
 arch=(x86_64)
 url="https://chimara.github.io/Chimara/"
