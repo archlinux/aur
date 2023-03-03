@@ -3,18 +3,18 @@
 
 pkgname=namcap-improved
 _pkgname=namcap
-pkgver=3.3.1+r35+ge9ee31d
-pkgrel=7
+pkgver=3.3.1+r41+gf84f3c4
+pkgrel=1
 pkgdesc="Improved Pacman package analyzer"
 arch=('any')
 url='https://gitlab.archlinux.org/pacman/namcap'
 license=('GPL')
-depends=('python' 'pyalpm' 'licenses' 'binutils' 'elfutils' 'python-pyelftools')
+depends=('python' 'pyalpm' 'licenses' 'binutils' 'elfutils' 'pkgconf' 'python-pyelftools')
 #checkdepends=('systemd' 'python-pytest' 'python-six')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'git')
 conflicts=("namcap=$pkgver")
 provides=("namcap")
-_commit=e9ee31db235e0e64a5de3f509ef3bc14f7539afc
+_commit=f84f3c4a847826ef2aa901a3b145faef5b81e79b
 source=("git+https://gitlab.archlinux.org/pacman/namcap.git#commit=$_commit")
 sha512sums=('SKIP')
 
@@ -27,16 +27,10 @@ prepare() {
   cd $_pkgname
 
   # pydepends: Various improvements
-  git cherry-pick -n e2ec226954e7685245c13f68780272e714fb3cfa
+  git cherry-pick -n d00aa49b3e49bff80697ac501bc6d079723c9414
 
-  # New checks for optdepends and sodepends
-  git cherry-pick -n 0023454b0eff2a422722fb1340e1652374e9100f
-
-  # Add support for symlinked license dir
-  git cherry-pick -n 1f61dcebcffb6b4f1072b61b8677a2e1a33c39ae
-
-  # Add pcdepends rule
-  git cherry-pick -n ac1c60c67fc5a3c2686a392f5370777f7f1e2da8
+  # externalhooks: Show hook/package name in warning message
+  git cherry-pick -n 9f1730b132adc7723d8878b1b29d3d87a22099a5
 }
 
 build() {

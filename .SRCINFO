@@ -1,7 +1,7 @@
 pkgbase = namcap-improved
 	pkgdesc = Improved Pacman package analyzer
-	pkgver = 3.3.1+r35+ge9ee31d
-	pkgrel = 7
+	pkgver = 3.3.1+r41+gf84f3c4
+	pkgrel = 1
 	url = https://gitlab.archlinux.org/pacman/namcap
 	arch = any
 	license = GPL
@@ -15,10 +15,11 @@ pkgbase = namcap-improved
 	depends = licenses
 	depends = binutils
 	depends = elfutils
+	depends = pkgconf
 	depends = python-pyelftools
 	provides = namcap
-	conflicts = namcap=3.3.1+r35+ge9ee31d
-	source = git+https://gitlab.archlinux.org/pacman/namcap.git#commit=e9ee31db235e0e64a5de3f509ef3bc14f7539afc
+	conflicts = namcap=3.3.1+r41+gf84f3c4
+	source = git+https://gitlab.archlinux.org/pacman/namcap.git#commit=f84f3c4a847826ef2aa901a3b145faef5b81e79b
 	sha512sums = SKIP
 
 pkgname = namcap-improved
