@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=FLB Music Player
-GenericName=FLB Music
-Comment=A Beautiful Feature Rich Music Player and Downloader
-Icon=flb-music-player-appimage
-Exec="/opt/appimages/FLB-Music.AppImage" %F
-Terminal=false
-Categories=AudioVideo;
