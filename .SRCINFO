@@ -1,7 +1,7 @@
 pkgbase = streamdeck-ui-git
 	pkgdesc = A Linux compatible UI for the Elgato Stream Deck
 	pkgver = r453.e8cc045
-	pkgrel = 1
+	pkgrel = 2
 	url = https://timothycrosley.github.io/streamdeck-ui/
 	arch = any
 	license = MIT
