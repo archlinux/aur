@@ -1,6 +1,6 @@
 pkgbase = userspace-tablet-driver-daemon
 	pkgdesc = A userspace daemon for XP-Pen and Huion tablets.
-	pkgver = r1.141a416
+	pkgver = r1.1502c8a
 	pkgrel = 1
 	url = https://github.com/kurikaesu/userspace-tablet-driver-daemon.git
 	install = ustdd.install
