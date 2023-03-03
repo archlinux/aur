@@ -1,0 +1,18 @@
+_info() {
+    echo "For the first installation / upgrade please run:"
+    echo "第一次安装/升级请运行："
+    echo "holtek-jlink-pack"
+}
+
+post_install() {
+    _info
+}
+
+post_upgrade() {
+    _info
+}
+
+post_remove() {
+    echo "deleting the holtek-jlink-pack ..."
+    find /home -maxdepth 5 -name "ht32" -exec rm -rf {} \;
+}

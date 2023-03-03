@@ -1,0 +1,28 @@
+pkgbase = mcu-jlink-pack
+	pkgver = 67f2f2b
+	pkgrel = 1
+	url = https://github.com/taotieren/mcu-jlink-pack
+	arch = any
+	license = custom
+	license = Commercial
+	license = MIT
+	makedepends = git
+	depends = jlink-software-and-documentation>=7.62
+	source = mcu-jlink-pack::git+https://github.com/taotieren/mcu-jlink-pack.git
+	sha256sums = SKIP
+
+pkgname = mcu-jlink-pack
+	pkgdesc = JLINK Pack 支持包支持 MCU 全系列芯片，在 SEGGER JLink 7.62 及以上版本下的安装。
+	depends = hkmicrochip-jlink-pack
+	depends = holtek-jlink-pack
+	provides = MCU_JLINK_pack
+
+pkgname = hkmicrochip-jlink-pack
+	pkgdesc = JLINK Pack 支持包支持航顺(HK32) MCU 全系列芯片，在 SEGGER JLink 7.62 及以上版本下的安装。
+	install = hkmicrochip-jlink-pack.install
+	provides = HK32_JLINK_pack
+
+pkgname = holtek-jlink-pack
+	pkgdesc = JLINK Pack 支持包支持合泰(HT32) MCU 全系列芯片，在 SEGGER JLink 7.62 及以上版本下的安装。
+	install = holtek-jlink-pack.install
+	provides = HK32_JLINK_pack
