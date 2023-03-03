@@ -1,0 +1,7 @@
+post_install() {
+	echo '使用 ‘sudo systemctl enable --now uuplugin’ 启动软件并开机自启，可以使用UU主机加速APP连接'
+}
+post_remove() {
+	rm -rf /etc/uu
+	echo "清理 /etc/uu 目录"
+}

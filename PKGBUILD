@@ -1,7 +1,7 @@
 # Maintainer: xmengnet <my@liyp.cc>
 pkgname=uudeck
 pkgver=2023.1.10.1600
-pkgrel=1
+pkgrel=2
 pkgdesc="uu加速器Steam Deck插件，需配合手机UU主机加速APP使用"
 arch=("x86_64")
 license=('custom')
@@ -14,10 +14,12 @@ MONITOR_FILE="https://uu.gdl.netease.com/uuplugin-script/202301101600/${MONITOR_
 MONITOR_CONFIG="uuplugin_monitor.config"
 
 source=("${MONITOR_FILENAME}::${MONITOR_FILE}"
-        "${MONITOR_CONFIG}")
+        "${MONITOR_CONFIG}"
+        "usage.install")
 
 sha256sums=('88fa487ab0c7608746be696cf76c574404351464fee038ef3d1333688770cdfa'
-            'f539a40aa060b1e8d584f9d0161f12faa3df34698036f8bb5bbc124c52c47556')
+            'f539a40aa060b1e8d584f9d0161f12faa3df34698036f8bb5bbc124c52c47556'
+            '9c42bb8f22a73b7cc58b8c6e07dc0394f55c5949a3d86726a6d64c63be6e2603')
 
 
 # user="${HOME}"
@@ -42,14 +44,13 @@ uuplugin_service_dir="etc/systemd/system/"
         echo "[Install]"
         echo "WantedBy=default.target"
     } > "${uuplugin_service}"
-    install -Dm644 ${srcdir}/${uuplugin_service} ${pkgdir}/${uuplugin_service_dir}/${uuplugin_service}
-    install -Dm644 ${srcdir}/${MONITOR_FILENAME} ${pkgdir}/${INSTALL_DIR}/${MONITOR_FILENAME}
-    install -Dm644 ${srcdir}/${MONITOR_CONFIG} ${pkgdir}/${INSTALL_DIR}/${MONITOR_CONFIG}
+    install -Dm755 ${srcdir}/${uuplugin_service} ${pkgdir}/${uuplugin_service_dir}/${uuplugin_service}
+    install -Dm755 ${srcdir}/${MONITOR_FILENAME} ${pkgdir}/${INSTALL_DIR}/${MONITOR_FILENAME}
+    install -Dm755 ${srcdir}/${MONITOR_CONFIG} ${pkgdir}/${INSTALL_DIR}/${MONITOR_CONFIG}
+    install=usage.install
+
 
 }
-post_install() {
-   	echo "	默认文件保存位置为${INSTALL_DIR}"
-	echo '	使用 ‘sudo systemctl enable --now uuplugin’ 启动软件并开机自启，可以使用UU主机加速APP连接'
-}
+
 
 
