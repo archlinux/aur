@@ -1,8 +1,8 @@
 pkgbase = maui-arca-git
 	pkgdesc = Arca - Maui Archive Manager - Browse, create and manage archives.
-	pkgver = 0.1.0.r0.g7a59d44
+	pkgver = 0.1.0.r1.geb042df
 	pkgrel = 1
-	url = https://github.com/Nitrux/maui-archiver
+	url = https://invent.kde.org/maui/arca
 	arch = x86_64
 	arch = i686
 	arch = arm
@@ -21,7 +21,7 @@ pkgbase = maui-arca-git
 	depends = qt5-declarative
 	provides = maui-arca
 	conflicts = maui-arca
-	source = maui-arca::git+https://github.com/Nitrux/maui-archiver.git
+	source = maui-arca::git+https://invent.kde.org/maui/arca.git
 	sha256sums = SKIP
 
 pkgname = maui-arca-git

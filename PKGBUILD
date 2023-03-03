@@ -2,10 +2,10 @@
 
 _pkgname=maui-arca
 pkgname=$_pkgname-git
-pkgver=0.1.0.r0.g7a59d44
+pkgver=0.1.0.r1.geb042df
 pkgrel=1
 pkgdesc='Arca - Maui Archive Manager - Browse, create and manage archives.'
-url='https://github.com/Nitrux/maui-archiver'
+url='https://invent.kde.org/maui/arca'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 license=(GPL3)
 depends=(kconfig
