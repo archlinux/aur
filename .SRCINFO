@@ -1,7 +1,7 @@
 pkgbase = synwit-jlink-pack
 	pkgdesc = JLINK Pack 支持包支持华芯微特 MCU 全系列芯片，在 SEGGER JLink 7.62 及以上版本下的安装。
 	pkgver = 220311
-	pkgrel = 0
+	pkgrel = 1
 	url = https://www.synwit.cn/wendang455/
 	install = synwit-jlink-pack.install
 	arch = any
@@ -15,6 +15,6 @@ pkgbase = synwit-jlink-pack
 	source = synwit-jlink-pack-220311.rar::https://www.synwit.cn/uploads/soft/20220721/1-220H1111129320.rar
 	source = synwit-jlink-pack.install
 	sha256sums = 08699993243e4809296339beaa1b2ac5a17140eb78ad0d8eb274d86e0cfed9a7
-	sha256sums = 76556236cde26cd333dc843c22f758cbf6b3ae94f04a223fb5bf5651d1762431
+	sha256sums = c817d29ac83eed7bf124ffe059a0c0a0e892630cafcd057d99c25d52e0b7cebd
 
 pkgname = synwit-jlink-pack
