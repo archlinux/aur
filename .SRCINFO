@@ -1,7 +1,7 @@
 pkgbase = beekeeper-studio
 	pkgdesc = Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more
 	pkgver = 3.8.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/beekeeper-studio/beekeeper-studio
 	arch = x86_64
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = beekeeper-studio
 	makedepends = python
 	makedepends = yarn
 	depends = electron13
-	source = beekeeper-studio-3.8.10-1.tar.gz::https://github.com/beekeeper-studio/beekeeper-studio/archive/v3.8.10.tar.gz
+	source = beekeeper-studio-3.8.10-2.tar.gz::https://github.com/beekeeper-studio/beekeeper-studio/archive/v3.8.10.tar.gz
 	source = electron-builder-config.diff
 	source = configure-environment.diff
 	source = fix-argv.diff

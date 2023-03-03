@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='beekeeper-studio'
 pkgver='3.8.10'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/$pkgname/$pkgname"
@@ -45,7 +45,6 @@ package() {
 	# Electron resources
 	cd "$srcdir/$_sourcedirectory/apps/studio/dist_electron/"
 	install -Dm644 'linux-unpacked/resources/app.asar' "$pkgdir/usr/lib/$pkgname/app.asar"
-	cp -r --no-preserve=ownership --preserve=mode 'linux-unpacked/resources/app.asar.unpacked/' "$pkgdir/usr/lib/$pkgname/app.asar.unpacked/"
 	cp -r --no-preserve=ownership --preserve=mode 'linux-unpacked/resources/public/' "$pkgdir/usr/lib/$pkgname/public/"
 
 	# Binary
