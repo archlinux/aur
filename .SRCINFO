@@ -1,7 +1,7 @@
 pkgbase = pymoldyn
 	pkgdesc = A molecule viewer with cavity computation.
 	pkgver = 0.9.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sciapp/pyMolDyn
 	arch = x86_64
 	license = MIT

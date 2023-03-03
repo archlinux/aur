@@ -2,7 +2,7 @@
 
 pkgname="pymoldyn"
 pkgver="0.9.9"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A molecule viewer with cavity computation."
 arch=("x86_64")
 url="https://github.com/sciapp/pyMolDyn"
@@ -39,7 +39,9 @@ prepare() {
 		        pyopengl \
 		        pyqt \
 		        python-dateutil && \
-		    GR_FORCE_DOWNLOAD=1 /opt/pymoldyn/env/bin/pip install --no-cache-dir 'gr==1.23.2'
+		    GR_FORCE_DOWNLOAD=1 /opt/pymoldyn/env/bin/pip install --no-cache-dir 'gr==1.23.2' && \
+		    /opt/pymoldyn/env/bin/conda clean -f -y --all && \
+		    rm -rf /opt/pymoldyn/env/pkgs
 
 		VOLUME /export
 
