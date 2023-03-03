@@ -4,9 +4,9 @@
 _pkgname=pytorch
 pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda")
-pkgver=1.13.1
-_pkgver=1.13.1
-pkgrel=3
+pkgver=2.0.0rc3
+_pkgver=2.0.0-rc3
+pkgrel=1
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=('google-glog' 'gflags' 'opencv' 'openmp' 'nccl' 'pybind11' 'python' 'py
          'python-numpy' 'protobuf' 'ffmpeg4.4' 'python-future' 'qt5-base' 'intel-oneapi-mkl'
          'python-typing_extensions')
 makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda'
-             'cudnn' 'git' 'magma' 'ninja' 'pkgconfig' 'doxygen' 'gcc11' 'onednn'
+             'cudnn' 'git' 'magma' 'ninja' 'pkgconfig' 'doxygen' 'onednn'
              'vulkan-headers' 'shaderc')
 source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         # generated using parse-submodules
@@ -65,7 +65,10 @@ source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v
         use-system-libuv.patch
         fix-building-for-torchvision.patch
         87773.patch
-        cuda_arch_update.patch
+        disable-werror1.patch
+        disable-werror2.patch
+        disable-werror3.patch
+        disable-werror4.patch
         ffmpeg4.4.patch)
 b2sums=('SKIP'
         'SKIP'
@@ -113,7 +116,10 @@ b2sums=('SKIP'
         '1f7ce593fa9fc62535ca1c3d85c996a73006cc614c7b7258160c3fc53cd52a1cfddcb18baf897f2e1223ecdfee52ca1471b91c9f845368ed6ac51b66f6e0e676'
         'fdea0b815d7750a4233c1d4668593020da017aea43cf4cb63b4c00d0852c7d34f0333e618fcf98b8df2185313a2089b8c2e9fe8ec3cfb0bf693598f9c61461a8'
         '0a8fc110a306e81beeb9ddfb3a1ddfd26aeda5e3f7adfb0f7c9bc3fd999c2dde62e0b407d3eca573097a53fd97329214e30e8767fb38d770197c7ec2b53daf18'
-        '2a540c5beb978bcda1e3375d82526fb088409cd9ba0be3aa8f411477dd935b75bab2b4a4a79cecffeee91e8c6a3a716884508d17b9a558979dbb5059458bd0d3'
+        '844d0b7b39777492a6d456fa845d5399f673b4bb37b62473393449c9ad0c29dca3c33276dc3980f2e766680100335c0acfb69d51781b79575f4da112d9c4018c'
+        '985e331b2025e1ca5a4fba5188af0900f1f38bd0fd32c9173deb8bed7358af01e387d4654c7e0389e5f98b6f7cbed053226934d180b8b3b1270bdbbb36fc89b2'
+        '96de2729b29c7ce3e4fdd8008f575d24c2c3ef9f85d6217e607902d7b870ac71b9290fde71e87a68d75bb75ef28eacbf5ce04e071146809ccf1e76a03f97b479'
+        'eea86bbed0a37e1661035913536456f90e0cd1e687c7e4103011f0688bc8347b6fc2ff82019909c41e7c89ddbc3b80dde641e88abf406f4faebc71b0bb693d25'
         '6286b05d5b5143f117363e3ce3c7d693910f53845aeb6f501b3eea64aa71778cb2d7dcd4ac945d5321ef23b4da02446e86dedc6a9b6a998df4a7f3b1ce50550a')
 options=('!lto')
 
@@ -183,8 +189,11 @@ prepare() {
   # Fix building against glog 0.6
   patch -Np1 -i "${srcdir}/87773.patch"
 
-  # Update supported CUDA compute architectures
-  patch -Np1 -i "${srcdir}/cuda_arch_update.patch"
+  # Disable -Werror
+  patch -Np1 -d third_party/fbgemm -i "${srcdir}/disable-werror1.patch"
+  patch -Np1 -d third_party/benchmark -i "${srcdir}/disable-werror2.patch"
+  patch -Np1 -d third_party/ideep/mkl-dnn -i "${srcdir}/disable-werror3.patch"
+  patch -Np1 -i "${srcdir}/disable-werror4.patch"
 
   # build against ffmpeg4.4
   patch -Np1 -i "${srcdir}/ffmpeg4.4.patch"
@@ -220,12 +229,12 @@ prepare() {
   # export BUILD_SPLIT_CUDA=ON  # modern preferred build, but splits libs and symbols, ABI break
   # export USE_FAST_NVCC=ON  # parallel build with nvcc, spawns too many processes
   export USE_CUPTI_SO=ON  # make sure cupti.so is used as shared lib
-  export CC=/usr/bin/gcc-11
-  export CXX=/usr/bin/g++-11
-  export CUDAHOSTCXX=/usr/bin/g++-11
+  export CC=/usr/bin/gcc
+  export CXX=/usr/bin/g++
+  export CUDAHOSTCXX=/opt/cuda/bin/g++
   export CUDA_HOST_COMPILER="${CUDAHOSTCXX}"
   export CUDA_HOME=/opt/cuda
-  # hide buildt-time CUDA devices
+  # hide build-time CUDA devices
   export CUDA_VISIBLE_DEVICES=""
   export CUDNN_LIB_DIR=/usr/lib
   export CUDNN_INCLUDE_DIR=/usr/include
