@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=QAL VPN
+Comment=QAL VPN is a post-quantum VPN service to protect you against the future of computing: quantum computers
+Exec=/opt/qalvpn/qalvpn
+Icon=/usr/share/icons/hicolor/0x0/apps/qalvpn.png
+Terminal=false
+Categories=Network;
+
