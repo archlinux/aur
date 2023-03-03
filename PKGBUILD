@@ -2,7 +2,7 @@
 # Contributor: Christian Wieden <wiedenchr at gmail dot com>
 
 pkgname=hstr
-pkgver=2.5
+pkgver=2.6
 pkgrel=1
 pkgdesc="Bash and Zsh shell history suggest box - easily view, navigate, search and manage your command history."
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('Apache')
 makedepends=('readline' 'ncurses')
 depends=('readline')
 source=("https://github.com/dvorka/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('7f5933fc07d55d09d5f7f9a6fbfdfc556d8a7d8575c3890ac1e672adabd2bec4')
+sha256sums=('085f8a087481bcdf33e75e2fa5aaa9289931782c0bee2db3e02425b9a7d83cdf')
 
 
 build() {
