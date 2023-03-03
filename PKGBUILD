@@ -1,8 +1,9 @@
+# Maintainer: Matthew Brian Cohen <cohen at matthewbriancohen dot com>
 # Maintainer: Deepjyoti <deep.barman30@gmail.com>
-pkgname=youtube-search-python
 
-pkgver=1.6.0
-pkgrel=0
+pkgname=youtube-search-python
+pkgver=1.6.6
+pkgrel=1
 
 pkgdesc="Search for YouTube videos, channels & playlists & get video information using link WITHOUT YouTube Data API v3"
 arch=("any")
@@ -16,15 +17,8 @@ makedepends=("git" "python-setuptools")
 optdepends=()
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://files.pythonhosted.org/packages/8a/8c/e26f6d3116996c498cef6bfefd7ebc32b157df1f0958b06c8e29b4e14a39/youtube-search-python-1.6.0.tar.gz")
-noextract=()
-md5sums=("SKIP")
-validpgpkeys=()
+source=("https://github.com/alexmercerind/youtube-search-python/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('6474472d1a93df9a803eea32c939be4af9bd6af6a13ea997ab3c339d0f9f2851')
 
 build() {
 	cd "${pkgname}-${pkgver}"
