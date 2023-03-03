@@ -1,7 +1,7 @@
 pkgbase = via-bin
-	pkgdesc = binary distribution of electron builds for https://usevia.app/
-	pkgver = 2.1.0
-	pkgrel = 1
+	pkgdesc = an electron wrapper that points to https://usevia.app/
+	pkgver = 2.2.0
+	pkgrel = 0
 	url = https://caniusevia.com/
 	arch = any
 	depends = gtk3
@@ -14,8 +14,8 @@ pkgbase = via-bin
 	depends = libutil-linux
 	depends = libsecret
 	optdepends = libappindicator-gtk3: recommended for app indicator
-	provides = via=2.1.0
-	source = https://github.com/the-via/releases/releases/download/v2.1.0/via-2.1.0-linux.deb
-	md5sums = 2734829f205c1cc885093bdacda1c107 
+	provides = via=2.2.0
+	source = https://github.com/the-via/releases/releases/download/v2.2.0/via-2.2.0-linux.deb
+	md5sums = 6df4d5acede5e0e57aacd4f17c83bb19
 
 pkgname = via-bin
