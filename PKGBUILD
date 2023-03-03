@@ -2,7 +2,7 @@
 
 _pkgname=mauikit-documents
 pkgname=$_pkgname-git
-pkgver=1.0.0.r0.ga8c6075
+pkgver=1.0.1.r0.g3c5a5f8
 pkgrel=1
 pkgdesc='MauiKit Documents components'
 url='https://invent.kde.org/maui/mauikit-documents'
