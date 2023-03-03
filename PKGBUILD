@@ -1,23 +1,21 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=idlersc
-pkgver=r474.g8d7473b
-pkgrel=2
+pkgver=r489.g6a7281f
+pkgrel=1
 pkgdesc='A fork of IdleRSC for playing on OpenRSC servers'
 arch=('any')
 url='https://gitlab.com/open-runescape-classic/idlersc'
 license=('GPL3')
 depends=('jre-openjdk')
 makedepends=('git' 'gradle' 'gendesk')
-_commit='8d7473b4365e1e2ea8c434991ca21196b3021e20'
+_commit='6a7281fddb4cf2f1f6567336d9e4e8fe74170295'
 source=(
   "$pkgname::git+https://gitlab.com/open-runescape-classic/idlersc.git#commit=$_commit"
   'idlersc.sh'
-  'ftbfs-gradle.patch'
 )
 b2sums=('SKIP'
-        'f0704e5e5897de6b9124eec1c1e8ed09f34bf0210486b2967faf6c78afa2dc979676300af4cbc19e7ed55cf8362a126c422865fb3ffa7c8bb80863d5d144af36'
-        '33ff64e2e90ca279e0114444ee0b00ad2d669ecf4f68c952e07283242a0f18cec6f21be1ffaced286bfee72f7181eaf411f31f2c8216bc5168adaa413c292a2f')
+        'ef68e1b337454a325a38edae5ed9dfb0b3e3d178393221c0bc76d819fe1efc8ee1dfcc52afd6d7cc39673fb31f6c13f36e4a574d9c9f1eb9d2320fd88ba1abd5')
 
 pkgver() {
   cd "$pkgname"
@@ -30,9 +28,6 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
-
-  # fix FTBFS on newer version of Java
-  patch -p1 -i "$srcdir/ftbfs-gradle.patch"
 
   # file generation
   for server in coleslaw uranium; do
@@ -76,6 +71,10 @@ package() {
   # assets
   install -vd "$pkgdir/usr/share/$pkgname"
   cp -vr {Coleslaw,Uranium}Cache{,.hash} "$pkgdir/usr/share/$pkgname"
+
+  # scripts
+  install -vd "$pkgdir/usr/share/$pkgname/bin/scripting"
+  cp -vr bin/scripting/{apos,idlescript,sbot} "$pkgdir/usr/share/$pkgname/bin/scripting"
   
   # desktop files
   install -vDm644 -t "$pkgdir/usr/share/applications" ./*.desktop

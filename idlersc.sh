@@ -32,12 +32,25 @@ if [ "$SERVER" == "coleslaw" ] || [ "$SERVER" == "uranium" ]; then
     cp "${IDLERSC_DATA_DIR}/${SERVER^}Cache.hash" "${USER_DATA_DIR}/${SERVER^}Cache.hash"
   fi
 
-  cd "${USER_DATA_DIR}" || exit 1
+  # create bin directory if it doesn't exist
+  if [ ! -e "${USER_DATA_DIR}/bin" ]; then
+    printf "Creating scripting directory for %s …\n" "${SERVER^}"
+    mkdir -p "${USER_DATA_DIR}/bin"
+  fi
 
+  # create scripting symlink if it doesn't exist
+  if [ ! -L "${USER_DATA_DIR}/bin/scripting" ]; then
+    printf "Creating scripting symlink for for %s …\n" "${SERVER^}"
+    ln -s "${IDLERSC_DATA_DIR}/bin/scripting" "${USER_DATA_DIR}/bin/scripting"
+  fi
+
+  # launch IdleRSC
+  cd "${USER_DATA_DIR}" || exit 1
   exec java -jar "${IDLERSC_JAR}" "${@:2}"
 else
+  # print usage
   cat <<-EOF
-  Usage: $(basename ${0}) server [options]
+  Usage: $(basename "${0}") server [options]
 
   server:
     Server to connect to.
