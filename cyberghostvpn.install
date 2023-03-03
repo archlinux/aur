@@ -4,20 +4,19 @@ blue="${bold}$(tput setaf 4)"
 yellow="${bold}$(tput setaf 3)"
 
 note() {
-    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+  printf "%s==>%s NOTE:%s %s%s\n" "${blue}" "${yellow}" "${bold}" "$1" "${all_off}"
 }
 
 post_install() {
-    ln -sf /usr/local/cyberghost/cyberghostvpn /usr/bin/cyberghostvpn
-    note "Enable systemd-resolved: systemctl enable systemd-resolved.service"
-    note "Setup your account: cyberghostvpn --setup"
+  ln -sf /opt/cyberghost/cyberghostvpn /usr/bin/cyberghostvpn
+  note "Enable systemd-resolved: systemctl enable systemd-resolved.service"
+  note "Setup your account: cyberghostvpn --setup"
 }
 
 post_upgrade() {
-    post_install
+  post_install
 }
 
 post_remove() {
-    unlink /usr/bin/cyberghostvpn
-    rm -rf /usr/local/cyberghost
+  unlink /usr/bin/cyberghostvpn
 }
