@@ -16,6 +16,7 @@ backup=(
 
 build() {
     cd "$srcdir/$pkgname"
+    git checkout "v$pkgver"
     make
 }
 
