@@ -1,0 +1,4 @@
+# Udev rule for Signal Hound BB60, SM200, SM435, and VSG60
+
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="2817", TAG+="uaccess"
+
