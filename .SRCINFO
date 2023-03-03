@@ -1,0 +1,18 @@
+pkgbase = a-gpt-git
+	pkgdesc = A CLI tool to generate code from GPT3 (git)
+	pkgver = r58.dece782
+	pkgrel = 1
+	url = https://github.com/ddddddeon/a
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = libxcb
+	depends = libxkbcommon
+	provides = a-gpt
+	conflicts = a-gpt
+	options = !lto
+	source = git+https://github.com/ddddddeon/a
+	sha512sums = SKIP
+
+pkgname = a-gpt-git
