@@ -20,15 +20,10 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-    #python -m venv env
-    #source env/bin/activate
-    #pip install -r data/req.txt
     python -m build --wheel --no-isolation
 }
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-    echo 'test'
     python -m installer --destdir="$pkgdir" dist/*.whl
-	#make DESTDIR="$pkgdir/" install
 }
