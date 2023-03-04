@@ -2,13 +2,13 @@
 
 _pkgname=pacclean
 pkgname="$_pkgname-git"
-pkgver=r33.8dbc569
+pkgver=r35.a39fc9c
 pkgrel=1
 pkgdesc="Clean up old pacman packages, similar to paccache"
 arch=('x86_64')
 url="https://github.com/eclairevoyant/pacclean"
 license=('CCPL:by-nc-sa')
-depends=('pacman' 'glibc')
+depends=('glibc' 'libalpm.so')
 makedepends=('git' 'nim' 'pandoc')
 source=("git+$url.git")
 b2sums=('SKIP')
