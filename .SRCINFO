@@ -1,29 +1,28 @@
 pkgbase = task-git
 	pkgdesc = A command-line todo list manager
-	pkgver = v2.6.1.r44.g4fa1c0bcf
+	pkgver = 2.6.2.r916.g0adced7
 	pkgrel = 1
-	url = http://taskwarrior.org/
-	install = task.install
-	arch = i686
+	epoch = 1
+	url = https://taskwarrior.org/
 	arch = x86_64
 	license = MIT
-	makedepends = git
 	makedepends = cmake
-	depends = gcc-libs
+	makedepends = git
+	makedepends = cargo
 	depends = util-linux
 	depends = gnutls
-	optdepends = bash-completion
+	optdepends = bash-completion: for bash completion
 	optdepends = python: for python export addon
 	optdepends = ruby: for ruby export addon
 	optdepends = perl: for perl export addon
 	optdepends = perl-json: for perl export addon
-	optdepends = rsync: synchronisation via rsync
-	optdepends = curl: synchronisation via http(s)/ftp
-	optdepends = openssh: synchronisation via ssh
-	provides = task=2.6.1
+	provides = task
 	conflicts = task
-	source = task-git::git+https://github.com/GothenburgBitFactory/taskwarrior.git#branch=develop
-	md5sums = SKIP
+	source = git+https://github.com/GothenburgBitFactory/taskwarrior.git#branch=develop
+	source = git+https://github.com/GothenburgBitFactory/libshared.git
+	source = git+https://github.com/Devolutions/CMakeRust.git
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
 
 pkgname = task-git
-
