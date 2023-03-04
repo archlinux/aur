@@ -20,7 +20,7 @@
 
 pkgname=ffmpeg4.4-mpp
 pkgver=4.4.3
-pkgrel=7
+pkgrel=8
 pkgdesc='Complete solution to record, convert and stream audio and video supporting rockchip MPP hardware decoder'
 arch=(aarch64 arm7f)
 url=https://ffmpeg.org/
@@ -40,6 +40,7 @@ depends=(
   libbluray.so
   libdav1d.so
   libdrm
+  libvpx
   libfreetype.so
   libiec61883
   libmodplug
