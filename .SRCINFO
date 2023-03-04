@@ -1,6 +1,6 @@
 pkgbase = yt-dlp-git
 	pkgdesc = A youtube-dl fork with additional features and fixes (git)
-	pkgver = 2022.08.19.r10.g07275b708
+	pkgver = 2023.03.03.r3.g4a6272c6d
 	pkgrel = 1
 	url = https://github.com/yt-dlp/yt-dlp
 	arch = any

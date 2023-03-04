@@ -1,7 +1,7 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=yt-dlp-git
-pkgver=2022.08.19.r10.g07275b708
+pkgver=2023.03.03.r3.g4a6272c6d
 pkgrel=1
 pkgdesc='A youtube-dl fork with additional features and fixes (git)'
 arch=(any)
@@ -22,6 +22,11 @@ conflicts=("${pkgname%-git}")
 source=(git+"${url}".git)
 sha256sums=('SKIP')
 
+prepare() {
+    # Ugly workaround to fix pkgver() reporting nightly.r0(...)
+    git -C "${pkgname%-git}" tag -d nightly
+}
+
 pkgver() {
     git -C "${pkgname%-git}" describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
@@ -34,8 +39,7 @@ build() {
 
 check() {
     cd "${pkgname%-git}"
-    # Skip test_escaping as it breaks with ffmpeg 5.1, see https://github.com/yt-dlp/yt-dlp/issues/4604
-    pytest -v -m "not download" -k "not test_escaping"
+    pytest -v -m "not download"
 }
 
 package() {
