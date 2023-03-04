@@ -1,0 +1,17 @@
+pkgbase = walbottle-git
+	pkgdesc = Walbottle is a project for generating JSON unit test vectors from JSON Schemas. It provides a library, libwalbottle, which implements JSON Schema parsing and test vector generation.
+	pkgver = 0.2.0.r71.ge643df3
+	pkgrel = 1
+	url = https://gitlab.com/walbottle/walbottle-git
+	arch = x86_64
+	arch = aarch64
+	license = LGPL2.1
+	depends = glib2
+	depends = json-glib
+	depends = gobject-introspection
+	provides = walbottle
+	conflicts = walbottle
+	source = walbottle::git+https://gitlab.com/walbottle/walbottle.git
+	sha512sums = SKIP
+
+pkgname = walbottle-git
