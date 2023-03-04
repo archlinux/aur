@@ -1,8 +1,8 @@
-# Maintainer: Andrew O'Neill <andrew at meanjollies dot com>
+# Maintainer: Andrew O'Neill <andrew at haunted dot sh>
 
 pkgname=python-oci
 _pyname=oci-python-sdk
-pkgver=2.93.0
+pkgver=2.93.1
 pkgrel=1
 pkgdesc='Python SDK for Oracle Cloud Infrastructure'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('python' 'python-dateutil' 'python-certifi' 'python-circuitbreaker' 'python-cryptography' 'python-pyopenssl' 'python-pytz')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('26ca26b44a77f16a7695db14abff73c47033764a4f879cf7042f7c38fa64b2cf')
+sha256sums=('23a7d884762879351ac6a9f058dd0b101646385583fe8afc071609a52bcde547')
 
 prepare() {
   cd "${_pyname}-${pkgver}"
