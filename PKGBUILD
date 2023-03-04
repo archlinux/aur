@@ -1,11 +1,12 @@
-# Maintainer: Alex Whitt <alex.joseph.whitt@gmail.com>
+# Maintainer: iamawacko <iamawacko@protonmail.com>
+# Contributor: Alex Whitt <alex.joseph.whitt@gmail.com>
 
 _pkgsrcname=spacemacs
 _pkgmaintainer=syl20bnr
 _pkgdestdirname=spacemacs-funcs
 _versionprefix=v
-pkgver=0.200.9
-pkgrel=3
+pkgver=0.200.13
+pkgrel=1
 pkgdesc="Useful functions from the Spacemacs project"
 pkgname=emacs-${_pkgdestdirname}
 arch=(any)
