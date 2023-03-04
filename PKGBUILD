@@ -1,4 +1,4 @@
-# Maintainer:  Andrew O'Neill <andrew at meanjollies dot com>
+# Maintainer:  Andrew O'Neill <andrew at haunted dot sh>
 # Contributor: Evgeniy Alekseev <arcanis at archlinux dot org>
 # Contributor: Matt Harrison <matt at mistbyte dot com>
 # Contributor: Muhammad Qadri <Muhammad.A.Qadri at gmail dot com>
