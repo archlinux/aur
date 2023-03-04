@@ -1,43 +1,42 @@
-# Maintainer: VCalV
-_pkgname=gourou
-pkgname="${_pkgname}"
-__pkgname="lib${_pkgname}"
-pkgver=0.5.1
-pkgrel=2
+pkgname="gourou"
+pkgver=0.8.1
+pkgrel=1
 pkgdesc="Download and decrypt adobe encrypted (acsm) pdf and epub files"
 arch=('x86_64')
 license=('LGPL3')
 url="https://indefero.soutade.fr/p/libgourou"
-depends=(glibc gcc-libs qt5-base zlib libzip openssl pugixml)
-conflicts=(gourou-bin)
-options=(!strip)
-source=(make.patch "gourou::git://soutade.fr/libgourou.git#tag=v$pkgver" "base64::git://gist.github.com/f0fd86b6c73063283afe550bc5d77594.git" "updfparser::git://soutade.fr/updfparser.git#commit=47143308ca253a6ae108b10a6ae5e7852bdd2c5d")
-md5sums=(b1a33163659f7c0e782d7a19a304a012 SKIP SKIP SKIP)
+depends=(glibc gcc-libs zlib libzip openssl pugixml curl)
+conflicts=(gourou-git gourou-bin)
+provides=("gourou=${pkgver}")
+options=(strip)
+source=("git://soutade.fr/libgourou.git#tag=v$pkgver" "git://soutade.fr/updfparser.git" "build.patch")
+sha512sums=('SKIP'
+            'SKIP'
+            '768e49fddcabe8b4c6f771ebbddf2618ab59e7b1a399d99aa9a9881f932e092210878ef576144593684b4c3a763218c5b546dbe19fdbadeff13995245bffda19')
 
-prepare() {
-	patch --strip=1 --input=make.patch
+prepare(){
+	cd libgourou
+	for patch in build; do
+		patch --forward --strip=1 --input="../$patch.patch"
+	done
 }
 
-build() {
-	cd $srcdir/gourou
+build(){
 
-	mkdir -p lib
-
-	ln -fs $srcdir/base64 lib
-	ln -fs $srcdir/updfparser lib
-
-	cd lib/updfparser
-	BUILD_STATIC=1 BUILD_SHARED=0 make all
-	cd ../../
-
-	#scripts/setup.sh
-	make all
+  cd updfparser
+  make BUILD_STATIC=1 BUILD_SHARED=0
+  cd ../libgourou
+  make PWD=`pwd` BUILD_STATIC=1 BUILD_SHARED=1
 }
+
 
 package() {
-	cd $srcdir/gourou
 
-	install -d $pkgdir/{usr/bin/,usr/lib/}
-	cp -a --no-preserve=ownership utils/{acsmdownloader,adept_activate,adept_remove} $pkgdir/usr/bin
-	cp -a --no-preserve=ownership *.so $pkgdir/usr/lib
+	install -d $pkgdir/{usr/bin/,usr/lib/,/usr/include/libgourou}
+	cd "libgourou"
+	cp -a --no-preserve=ownership libgourou*.so "$pkgdir/usr/lib"
+	cp -a --no-preserve=ownership include/*.h "$pkgdir/usr/include/libgourou/"
+	cd "utils"
+	cp -a --no-preserve=ownership {acsmdownloader,adept_activate,adept_remove} "$pkgdir/usr/bin"
+	strip "$pkgdir/usr/bin"/*
 }
