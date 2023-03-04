@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=vkd3d-proton-mingw-git
-pkgver=2.8.r4.ge8d00f70
+pkgver=2.8.r125.g894d38d6
 pkgrel=1
 pkgdesc='Fork of VKD3D. Development branches for Protons Direct3D 12 implementation'
 arch=('x86_64')
@@ -39,6 +39,9 @@ prepare() {
     git submodule set-url third_party/spirv-headers "$srcdir"/SPIRV-Headers
     git -c protocol.file.allow=always submodule update third_party/spirv-headers
     popd
+
+    # use mingw-tools widls
+    git revert -n 2ec6c90ab6676e328883651783e3822579234386
 
     # By default export FLAGS used by proton and ignore makepkg
     # This overrides FLAGS from makepkg.conf, if you comment these you are on your own
