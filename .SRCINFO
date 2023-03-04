@@ -17,6 +17,6 @@ pkgbase = linux-xanmod-lts-linux-bin-x64v3
 	sha256sums = b8214d667016bcd70cd574b2b8ff1d7e23f86bf6a916b8de85a79a7c59b3b6f1
 	sha256sums = 1c6041f2bea31ae3935624303cf2a9e44c8aac607c5b3dcc2bb7eac672448b65
 
-pkgname = linux-xanmod-linux-bin-x64v3
+pkgname = linux-xanmod-lts-linux-bin-x64v3
 
-pkgname = linux-xanmod-linux-headers-bin-x64v3
+pkgname = linux-xanmod-lts-linux-headers-bin-x64v3

@@ -4,7 +4,7 @@
 
 _arch=x64v3
 pkgbase=linux-xanmod-lts-linux-bin-${_arch}
-_pkgbase=linux-xanmod
+_pkgbase=linux-xanmod-lts
 _major=6.1
 pkgver=${_major}.15
 xanmod=1
