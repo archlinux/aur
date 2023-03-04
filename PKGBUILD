@@ -2,7 +2,6 @@
 # Contributor: Kevin Del Castillo <quebin31 at gmail dot com>
 
 _pkgname=neovim
-_pkgver=0.6.0
 pkgname=neovim-nightly-bin
 pkgver=0.9.0+dev+1115+g446c353a5 
 pkgrel=1
