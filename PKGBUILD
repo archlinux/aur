@@ -1,17 +1,16 @@
 # Maintainer: TurboPunk <turbopunk@telenet.be>
 # Contributor: José San Juan <josesj@gmail.com>
 pkgname=snapmaker-luban
-pkgver=4.4.0
-pkgrel=5
+pkgver=4.6.3
+pkgrel=1
 pkgdesc="Snapmaker Luban is an easy-to-use 3-in-1 software tailor-made for Snapmaker machines."
 url="https://github.com/Snapmaker/Luban"
 license=('AGPL v3')
 arch=('x86_64')
-makedepends=('npm' 'nvm' 'jq' 'moreutils' 'fontconfig')
+makedepends=('npm' 'nvm' 'jq' 'yq' 'moreutils' 'fontconfig' 'ruby' 'libxcrypt-compat')
 options=('!strip')
-source=("https://github.com/Snapmaker/Luban/archive/refs/tags/v${pkgver}.tar.gz")
-
-sha256sums=('6db462e15fa55691226351a5a908b00b9b25b32aff1734dab2009091fe29a2ee')
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 _ensure_local_nvm() {
     # let's be sure we are starting clean
@@ -26,25 +25,30 @@ _ensure_local_nvm() {
 
 
 prepare() {
+  cd ${srcdir}/Luban
+  git checkout tags/v${pkgver}
+  git submodule update --init --recursive
   _ensure_local_nvm
-  nvm install 12
-  cd ${srcdir}/Luban-${pkgver}
-  jq '.build.linux.target="pacman"' package.json | sponge package.json
+  nvm install 16
+  cd ${srcdir}/Luban
+  jq '.scripts."build:linux-x64"="bash -c '\''build/electron-builder.sh --linux --x64 --config electron-builder.yml'\''"' package.json | sponge package.json
+  yq '.linux.target="pacman"' electron-builder.yml | sponge electron-builder.yml
 }
 
 build() {
   _ensure_local_nvm
   export PATH=$PATH:node_modules/.bin
-  cd ${srcdir}/Luban-${pkgver}
-  nvm use 12
-  npm install --cache "${srcdir}/npm-cache" -g npm@7.24.0
+  cd ${srcdir}/Luban
+  nvm use 16
+  npm install --cache "${srcdir}/npm-cache" -g npm@latest
   npm install --cache "${srcdir}/npm-cache"
   npm run build
-  npm run electron-builder
+  #npm run electron-builder
+  npm run build:linux-x64
 }
 
 package() {
-  mv ${srcdir}/Luban-${pkgver}/output/${pkgname}-${pkgver}.pacman ${srcdir}/Luban-${pkgver}/output/${pkgname}-${pkgver}.tar.xz
-  tar xf ${srcdir}/Luban-${pkgver}/output/${pkgname}-${pkgver}.tar.xz --exclude='.*' -C ${pkgdir}
+  mv ${srcdir}/Luban/output/${pkgname}-${pkgver}-linux-x64.pacman ${srcdir}/Luban/output/${pkgname}-${pkgver}.tar.xz
+  tar xf ${srcdir}/Luban/output/${pkgname}-${pkgver}.tar.xz --exclude='.*' -C ${pkgdir}
   chown -R root:root "${pkgdir}"
 }
