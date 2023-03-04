@@ -2,7 +2,7 @@
 # Contributor: Aaron Blair <aaron@aaronpb.me>
 
 pkgname=gobuster
-pkgver=3.4.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="A directory/file & DNS busting tool."
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go')
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-b2sums=('e553e477389c90af462eb2dc9deeba2f83832be11c999c4f2dfa2defb8c10296b011c6073def85d90461c5b64f21984e02925855ffffd3d52de855bdf6c66e1a')
+b2sums=('06002e2f5bf05a0779e2bc667bb58f12cd1d09fb2e2473d2ab1ff69bb608efe6d724a4ed1db2da10cda1434b966af8cac3ffb4d45ab3fa1ea7d1ec54d62fbfc6')
 
 build() {
   cd ${pkgname}-${pkgver}
