@@ -4,7 +4,7 @@
 
 _pkgname=lens
 pkgname=lens-bin
-pkgver=2023.3.21022
+pkgver=2023.3.31330
 pkgrel=1
 pkgdesc='The Kubernetes IDE'
 arch=('x86_64')
@@ -13,11 +13,12 @@ url='https://k8slens.dev'
 depends=('gtk3' 'libxss' 'nss')
 provides=('lens')
 conflicts=('lens')
+options=('!strip' '!emptydirs')
 install="${_pkgname}.install"
 source=(${_pkgname}-${pkgver}.${arch}.AppImage::"https://api.k8slens.dev/binaries/Lens-${pkgver}-latest.${arch}.AppImage"
         "${_pkgname}.install"
         "${_pkgname}.desktop")
-b2sums=('287a17642c6cada6d29398b8a82428d83e6a9dd5dc745f0faa0ea38047cb2767ad67ea13f7171b382dc8d78d118e5b2e6b6bec84cd146c11d9961fdb085eabab'
+b2sums=('42197e3c62f7329e63582d7af33302d4ccca4a143809dcf823045453df367fbb15a8e12b1c0f5ff1d59f787d8d2637a093d2b13179b745ac85f4ad9968e0901e'
         '824c9dcfd5700335632d814c2c1edc3861e18e5f82f0866474895f7b40d0177097d308d6802944ef1c1b6eda2f58b33647a3b2221e3c482f7cf2085fb97ab6b3'
         '7c5afc77c4e921f198139efeb168a16c6208fe0df1267a224ce62bde160d22ec68467f57a560742307ff2bf4e6b5d0bcbf07062b82f1fabcd95e7368d9d02477')
 
