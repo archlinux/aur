@@ -3,7 +3,7 @@
 _pkgname=godot4
 pkgname=${_pkgname}-bin
 pkgver=stable
-pkgrel=1
+pkgrel=2
 pkgdesc="Godot Game Engine: An advanced, feature packed, multi-platform 2D and 3D game engine."
 url="http://www.godotengine.org"
 license=('MIT')
@@ -29,7 +29,6 @@ sha512sums_x86_64=('99c54deea6f21d2705da0e731d0273f3ba61a4438d4604e80eb3b809d231
 
 
 package() {
-  mkdir -p "$pkgdir/opt/$pkgname"
   mkdir -p "$pkgdir/usr/bin"
   mkdir -p "$pkgdir/usr/share/icons/hicolor"
   mkdir -p "$pkgdir/usr/share/applications"
