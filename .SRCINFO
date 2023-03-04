@@ -51,12 +51,12 @@ pkgbase = hyprland-nvidia-hidpi-git
 	source = hyprland::git+https://github.com/hyprwm/Hyprland.git
 	source = git+https://gitlab.freedesktop.org/wlroots/wlroots.git
 	source = git+https://github.com/hyprwm/hyprland-protocols.git
-	source = https://gitlab.freedesktop.org/lilydjwg/wlroots/-/commit/6c5ffcd1fee9e44780a6a8792f74ecfbe24a1ca7.patch
+	source = https://gitlab.freedesktop.org/lilydjwg/wlroots/-/commit/629d73889cb96cddecc75c48ab1e143b96338dac.patch
 	source = nvidia.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = a37e441c309b35e5d9b5c5c637c96729c5348a523a7eaa25c6e24b1fcc3521a6
+	sha256sums = 6b9e7f444a958711c9610a464577b5abd18a2a6ca2ebffde990f3381b871fe9c
 	sha256sums = 522b19656d7c1627ec615b6720182590570560e346c1670f9df002015707b340
 
 pkgname = hyprland-nvidia-hidpi-git
