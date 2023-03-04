@@ -1,0 +1,14 @@
+pkgbase = inkscape-openpaths-git
+	pkgdesc = Inkscape extension for opening up closed paths, e. g. for single-line fonts in OPF/OTF/TTF format
+	pkgver = r8.10d0d7c
+	pkgrel = 1
+	url = https://gitlab.com/EllenWasbo/inkscape-extension-openpaths
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = inkscape
+	options = !strip
+	source = inkscape-openpaths-git::git+https://gitlab.com/EllenWasbo/inkscape-extension-openpaths.git
+	sha512sums = SKIP
+
+pkgname = inkscape-openpaths-git

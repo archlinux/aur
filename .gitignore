@@ -1,0 +1,8 @@
+/.vscode/
+/inkscape-openpaths-git/
+/src/
+/pkg/
+*.log
+*.pkg.*
+*.tar.*
+*.zip
