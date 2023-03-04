@@ -1,4 +1,4 @@
-# Maintainer:  Andrew O'Neill <andrew at meanjollies dot com>
+# Maintainer:  Andrew O'Neill <andrew at haunted dot sh>
 # Contributor: Eric DeStefano <eric at ericdestefano dot com> 
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Boris Timofeev <mashin87@gmail.com>
