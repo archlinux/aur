@@ -2,7 +2,7 @@
 # Contributor: José San Juan <josesj@gmail.com>
 pkgname=snapmaker-luban
 pkgver=4.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Snapmaker Luban is an easy-to-use 3-in-1 software tailor-made for Snapmaker machines."
 url="https://github.com/Snapmaker/Luban"
 license=('AGPL v3')
@@ -27,6 +27,9 @@ _ensure_local_nvm() {
 prepare() {
   cd ${srcdir}/Luban
   git checkout tags/v${pkgver}
+  sed -i -e 's/:/\//g' .gitmodules
+  sed -i -e 's/git@/https:\/\//g' .gitmodules
+  git submodule sync --recursive
   git submodule update --init --recursive
   _ensure_local_nvm
   nvm install 16
