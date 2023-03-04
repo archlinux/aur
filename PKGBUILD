@@ -1,10 +1,11 @@
 # Maintainer: Johannes Löthberg <johannes@kyriasis.com>
+# Maintainer: Robin Candau <antiz@archlinux.org>
 # Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=zathura-pdf-mupdf
-pkgver=0.3.9
+pkgver=0.4.0
 pkgrel=1
 
 pkgdesc="PDF support for Zathura (MuPDF backend) (Supports PDF, ePub, and OpenXPS)"
@@ -20,7 +21,7 @@ makedepends=('libmupdf' 'meson' 'ninja' 'git')
 source=(zathura-pdf-mupdf-$pkgver.tar.gz::https://pwmt.org/projects/zathura-pdf-mupdf/download/zathura-pdf-mupdf-$pkgver.tar.xz
         0001-Remove-mupdf-linking-detection.patch)
 
-sha256sums=('77f795ea1745b695a50b6864e73569d4ed8ac0eaa4ee2e6069e725c932057c07'
+sha256sums=('8c1c575678a1cd45b007bdf12328527f0aef6184103e0965459a4202e9ee925d'
             '8b51563a782a7dea38711335354bf65e2303b06bfecacf9cc060ecfc7b0851b8')
 
 prepare() {
