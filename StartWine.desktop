@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=StartWine
+Comment=Launch Windows applications on Linux operating systems
+Type=Application
+MimeType=application/x-wine-extension-msp;application/x-msi;application/x-ms-dos-executable;
+Categories=Game
+Icon=StartWine.png
+Terminal=false
+Exec=startwine %F
