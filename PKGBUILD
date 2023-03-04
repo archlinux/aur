@@ -12,7 +12,7 @@ groups=(
   'phc-intel'
 )
 pkgver=0.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Helper and init scripts for phc-intel, a frequency driver for Intel CPUs with undervolting feature."
 url="https://gitlab.com/linux-phc/phc-intel"
 arch=('any')
@@ -75,7 +75,7 @@ package_phc-intel-openrc() {
   optdepends=(
     'openrc: To use this initscript.'
   )
-  provides=()
+  provides=('PHC-INTEL-INITSCRIPT')
   conflicts=()
   replaces=()
 
@@ -93,7 +93,7 @@ package_phc-intel-sysvinit() {
   optdepends=(
     'sysvinit: To use this initscript.'
   )
-  provides=()
+  provides=('PHC-INTEL-INITSCRIPT')
   conflicts=()
   replaces=()
 
@@ -110,7 +110,7 @@ package_phc-intel-systemd() {
   optdepends=(
     'systemd: To use this initscript.'
   )
-  provides=()
+  provides=('PHC-INTEL-INITSCRIPT')
   conflicts=()
   replaces=()
 
