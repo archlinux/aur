@@ -32,7 +32,7 @@ depends=(
 optdepends=('bash-completion: Bash completions')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-url='https://github.com/artemsen/swayimg'
+url='https://github.com/cl4ptrap42/swayimg'
 source=("${_pkgname}::git+${url}.git")
 md5sums=('SKIP')
 
