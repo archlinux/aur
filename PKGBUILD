@@ -10,16 +10,8 @@ license=("custom: BSD3")
 arch=('x86_64')
 depends=('ghc-libs' 'haskell-cmdargs' 'haskell-githash' 'haskell-hashable' 'haskell-vector')
 makedepends=('ghc' 'alex' 'happy')
-source=("https://hackage.haskell.org/packages/archive/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz"
-        "sv2v-cabal.patch")
-sha256sums=('6df6d4e35a0ccff4b43e70d7eeb043b1f5bd956945d4efd922f984581b720702'
-            'd2f3f94a931209a2bd6f95bf8a4316337a41c6b9c127c95bf75891df6a6dbc67')
-
-prepare() {
-  cd $pkgname-$pkgver
-
-  patch -p1 < "$srcdir/sv2v-cabal.patch"
-}
+source=("https://github.com/zachjs/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('b3d4b8d7b2ffe5fb81cc6eabf9b66d5b6068799f16fb0abc8c37fa7472483c59')
 
 build() {
   cd $pkgname-$pkgver

@@ -13,9 +13,7 @@ pkgbase = sv2v
 	depends = haskell-githash
 	depends = haskell-hashable
 	depends = haskell-vector
-	source = https://hackage.haskell.org/packages/archive/sv2v/0.0.10/sv2v-0.0.10.tar.gz
-	source = sv2v-cabal.patch
-	sha256sums = 6df6d4e35a0ccff4b43e70d7eeb043b1f5bd956945d4efd922f984581b720702
-	sha256sums = d2f3f94a931209a2bd6f95bf8a4316337a41c6b9c127c95bf75891df6a6dbc67
+	source = https://github.com/zachjs/sv2v/archive/refs/tags/v0.0.10.tar.gz
+	sha256sums = b3d4b8d7b2ffe5fb81cc6eabf9b66d5b6068799f16fb0abc8c37fa7472483c59
 
 pkgname = sv2v
