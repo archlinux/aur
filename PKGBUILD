@@ -50,16 +50,14 @@ makedepends=(
     wayland-protocols
     xorgproto)
 source=("${_pkgname}::git+https://github.com/hyprwm/Hyprland.git"
-    "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
+    "git+https://gitlab.freedesktop.org/lilydjwg/wlroots.git"
     "git+https://github.com/hyprwm/hyprland-protocols.git"
-    "https://gitlab.freedesktop.org/lilydjwg/wlroots/-/commit/629d73889cb96cddecc75c48ab1e143b96338dac.patch"
     "nvidia.patch")
 conflicts=("${_pkgname}")
 provides=(hyprland)
 sha256sums=('SKIP'
     'SKIP'
     'SKIP'
-    '6b9e7f444a958711c9610a464577b5abd18a2a6ca2ebffde990f3381b871fe9c'
     '522b19656d7c1627ec615b6720182590570560e346c1670f9df002015707b340')
 options=(!makeflags !buildflags !strip)
 
@@ -82,7 +80,6 @@ prepare() {
     git -c protocol.file.allow=always submodule update subprojects/hyprland-protocols
     cd subprojects/wlroots
     git revert -n 18595000f3a21502fd60bf213122859cc348f9af
-    patch --forward --strip=1 --input="${srcdir}"/629d73889cb96cddecc75c48ab1e143b96338dac.patch
     patch --forward --strip=0 --input="${srcdir}"/nvidia.patch
 }
 
