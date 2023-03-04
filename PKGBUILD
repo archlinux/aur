@@ -16,7 +16,7 @@ pkgname=(
 )
 
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Auto-enable Wayland (ozone) for apps that come with a vendored Electron'
 arch=('any')
 url='https://aur.archlinux.org/packages/electron-blur-me-not'
@@ -40,8 +40,7 @@ sha512sums=(
 )
 
 _pkgdesc() {
-  printf 'Auto-enable Wayland (ozone) for %s' \
-    "${pkgname%-blur-me-not}" "${1?}"
+  printf 'Auto-enable Wayland (ozone) for %s' "${pkgname%-blur-me-not}"
 }
 
 # shellcheck disable=SC2128 # during execution, pkgname is a string
