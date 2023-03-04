@@ -1,9 +1,10 @@
-# Maintainer: Radek Podgorny <radek@podgorny.cz>
-# Contributor: Loïc Guitaut <flink at belfalas.eu>
-# Contributor: Nicolas Doualot <packages at slubman.info>
+# Maintainer: mrxx <mrxx at cyberhome dot at>
+# Contributor: Radek Podgorny <radek at podgorny dot cz>
+# Contributor: Loïc Guitaut <flink at belfalas dot eu>
+# Contributor: Nicolas Doualot <packages at slubman dot info>
 
 pkgname=litecoin-qt
-pkgver=0.21.2.1
+pkgver=0.21.2.2
 pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.litecoin.org/"
@@ -17,7 +18,7 @@ source=("https://download.litecoin.org/litecoin-${pkgver}/src/litecoin-${pkgver}
         "boost1770.patch"
         "$pkgname.desktop"
         "litecoin128.png")
-sha256sums=('533516ebbf5f4efa5b2a789cb93ae9805172c1f547d6cd77c1e8f2bd0e89e00c'
+sha256sums=('c04366711c27acb0196c40b83f833f40b5431ad35c15809aa7f93b84b96eb7ff'
             '3ccbff49fef5a7e820168f4c4b75ae9a1e74e81dc08587145aa85599254b85e5'
             'cfc53dc9028745358235698ddd562d3e6b4a3ea9f896f5efc1aa8cd81f595559'
             '79fb205581c1e6df9758b56e2b527350f23124677036bc68176d088c4a28af8d')
