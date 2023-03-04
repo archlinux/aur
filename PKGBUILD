@@ -1,16 +1,18 @@
-# Maintainer: Marie Piontek <marie@kaifa.ch>
+# Maintainer: Maxim Korotkov <maximkorotkov4@gmail.com>
+# Contributor: Marie Piontek <marie@kaifa.ch>
 
 pkgname=an-anime-game-launcher-bin
-pkgver=2.4.5
+pkgver=3.0.1
 pkgrel=1
-pkgdesc="An Launcher for a specific anime game with auto-patching, discord rpc and time tracking"
+pkgdesc="A Launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 url="https://github.com/an-anime-team/an-anime-game-launcher"
 conflicts=("an-anime-game-launcher")
+provides=("an-anime-game-launcher")
 arch=("x86_64")
 license=("GPL3")
 
 depends=(
-    "libayatana-appindicator"
+    "libadwaita"
     "tar"
     "unzip"
     "xdelta3"
@@ -18,43 +20,39 @@ depends=(
     "git"
     "curl"
     "iputils"
-    "webkit2gtk"
+    "gtk4"
+    "glibc"
 )
 
 optdepends=(
     "mangohud: FPS Hud/GUI"
     "gamemode: Game Optimizations"
-    "vkbasalt: Required to use custom shaders (install this and reshade-shaders-git)"
-    "reshade-shaders-git: Required by vkBasalt config files (install this and vkbasalt)"
+    "gamescope: a tool from Valve that allows for games to run in an isolated Xwayland instance"
 )
 
 source=(
-    "An_Anime_Game_Launcher_${pkgver}.AppImage::https://github.com/an-anime-team/an-anime-game-launcher/releases/download/${pkgver}/an-anime-game-launcher-${pkgver}.AppImage"
+    "an-anime-game-launcher_${pkgver}::https://github.com/an-anime-team/an-anime-game-launcher/releases/download/${pkgver}/anime-game-launcher"
     "icon.png"
-    "an-anime-game-launcher-bin.desktop"
-    "an-anime-game-launcher-bin.sh"
+    "an-anime-game-launcher.desktop"
 )
 
 md5sums=(
-    '8882484d250db56d3e0fb6e770932ce1'
-    '82d75ad72aed6c6962f203f9c6f329d3'
-    'acb9fecb5d938c4fb8e5facb0511bc23'
-    'aa1d36e938b47b1f9fcff6aa5cec588b'
+    'a4bdfef0e10aa5fdb7c9f04593376697'
+    'c1a5499b80a55d3d238ef5c5d2c93c99'
+    '12d89b3be2072437e7b252af97274142'
 )
 
 prepare() {
-    chmod +x "${srcdir}/An_Anime_Game_Launcher_${pkgver}.AppImage"
-    "${srcdir}/An_Anime_Game_Launcher_${pkgver}.AppImage" --appimage-extract
+    chmod +x "${srcdir}/an-anime-game-launcher_${pkgver}"
 }
 
 package() {
-    cd "squashfs-root"
     install -dm755 "${pkgdir}/usr/lib/${pkgname}"
-    cp -dr --no-preserve=ownership resources.neu "${pkgdir}/usr/lib/${pkgname}/"
-    cp -dr --no-preserve=ownership an-anime-game-launcher "${pkgdir}/usr/lib/${pkgname}/"
-    cp -dr --no-preserve=ownership public "${pkgdir}/usr/lib/${pkgname}/"
+    install -dm755 "${pkgdir}/usr/bin/"
+    cp an-anime-game-launcher_${pkgver} "${pkgdir}/usr/lib/${pkgname}/"
 
-    install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm755 "${srcdir}/an-anime-game-launcher-bin.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/an-anime-game-launcher-bin.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/an-anime-game-launcher.png"
+    ln -s "/usr/lib/${pkgname}/an-anime-game-launcher_${pkgver}" "${pkgdir}/usr/bin/an-anime-game-launcher"
+    install -Dm644 "${srcdir}/an-anime-game-launcher.desktop" -t "${pkgdir}/usr/share/applications"
 }
+
