@@ -1,0 +1,20 @@
+pkgbase = sfa-spa
+	pkgdesc = A short peptide assembler for metagenomic data https://doi.org/10.1093/nar/gkt118
+	pkgver = 0.2.1
+	pkgrel = 0
+	url = https://sourceforge.net/projects/spa-assembler/
+	arch = x86_64
+	license = GPL3
+	makedepends = make
+	makedepends = boost
+	depends = glibc
+	depends = seqan
+	depends = libdivsufsort
+	depends = boost-libs
+	optdepends = perl
+	source = sfa-spa-0.2.1::https://sourceforge.net/projects/spa-assembler/files/SFA-SPA%20source%20%2864%20bit%20linux%29/sfaspa-0.2.1.tar.gz/download
+	source = sfa-spa.patch
+	sha256sums = 24cd2ecd2fbdc2734e4bd8992f5216f2e938cfdd95ec1c6bd8298601e2006206
+	sha256sums = 373a6a471541fa061765484549907c60c5cc35ce3eb73de08b52d893def4ca3d
+
+pkgname = sfa-spa
