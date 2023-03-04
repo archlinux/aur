@@ -1,20 +1,18 @@
 pkgbase = cpp-netlib
-	pkgdesc = A library that provides application layer protocol support using modern C++ techniques
-	pkgver = 0.12.0
-	pkgrel = 2
-	url = http://cpp-netlib.github.com/
-	arch = i686
+	pkgdesc = Cross-platform, standards compliant networking library
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/cpp-netlib/cpp-netlib
 	arch = x86_64
-	license = custom
-	makedepends = cmake>=2.8.10
+	license = custom:BSL
 	makedepends = boost
-	makedepends = boost-libs
-	makedepends = asio
-	optdepends = openssl: for https
-	source = http://downloads.cpp-netlib.org/0.12.0/cpp-netlib-0.12.0-final.tar.gz
-	source = OPENSSL_NO_SSL3.patch
-	sha256sums = a0a4a5cbb57742464b04268c25b80cc1fc91de8039f7710884bf8d3c060bd711
-	sha256sums = e7b4b7ecdafb51211d9be65fd179e8cd7cea71480aaeb4f30f11d5c8fc251f03
+	makedepends = cmake
+	depends = gcc-libs
+	depends = openssl
+	provides = libcppnetlib-client-connections.so=0.13.0
+	provides = libcppnetlib-uri-server-parsers.so=0.13.0
+	provides = libcppnetlib-uri.so=0.13.0
+	source = cpp-netlib-0.13.0.tar.gz::https://github.com/cpp-netlib/cpp-netlib/archive/cpp-netlib-0.13.0-final.tar.gz
+	sha256sums = 897259d9f9087acba33911aec925804e6236a7a77f5444dedde6145049605a34
 
 pkgname = cpp-netlib
-
