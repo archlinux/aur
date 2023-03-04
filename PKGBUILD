@@ -1,7 +1,7 @@
 # Maintainer: sezanzeb proxima@seanzeb.de
 pkgname=input-remapper-git
-pkgver=1.5.0.r12.gb0478435
-pkgrel=2
+pkgver=2.0.0.rc
+pkgrel=1
 pkgdesc="A tool to change and program the mapping of your input device buttons."
 arch=('any')
 url="https://github.com/sezanzeb/input-remapper/"

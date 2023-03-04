@@ -2,8 +2,8 @@ post_install() {
   systemctl stop key-mapper || true
   systemctl disable key-mapper || true
 
-  systemctl enable input-remapper
-  systemctl start input-remapper
+  # systemctl enable input-remapper
+  # systemctl start input-remapper
 }
 
 post_upgrade() {
@@ -15,3 +15,6 @@ post_upgrade() {
   fi
 }
 
+post_remove() {
+  systemctl disable input-remapper || true
+}
