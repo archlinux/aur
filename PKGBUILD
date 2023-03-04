@@ -1,7 +1,7 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=yt-dlp-git
-pkgver=2023.03.03.r3.g4a6272c6d
+pkgver=2023.03.03.r6.g283a0b5bc
 pkgrel=1
 pkgdesc='A youtube-dl fork with additional features and fixes (git)'
 arch=(any)
@@ -22,13 +22,8 @@ conflicts=("${pkgname%-git}")
 source=(git+"${url}".git)
 sha256sums=('SKIP')
 
-prepare() {
-    # Ugly workaround to fix pkgver() reporting nightly.r0(...)
-    git -C "${pkgname%-git}" tag -d nightly
-}
-
 pkgver() {
-    git -C "${pkgname%-git}" describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git -C "${pkgname%-git}" describe --long --tags --exclude=nightly | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
