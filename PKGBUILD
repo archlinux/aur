@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=openvino-git
-pkgver=2022.2.0.r1048.g951be58dc3
+pkgver=2022.3.0.r990.ga1cde2e7901
 pkgrel=1
 pkgdesc='A toolkit for developing artificial inteligence and deep learning applications (git version)'
 arch=('x86_64')
@@ -13,14 +13,12 @@ depends=('protobuf' 'numactl' 'libxml2')
 optdepends=('intel-compute-runtime: for GPU (clDNN) plugin'
             'ocl-icd: for GPU (clDNN) plugin'
             'libusb: for Myriad plugin'
+            'tbb: for Myriad plugin'
             'python: for Python API'
             'python-numpy: for Python API'
-            'cython: for Python API'
-            'python-py-cpuinfo: for benchmark tool'
-            'python-progress: for benchmark tool'
-            'opencv: for benchmark and cross_check tools')
+            'cython: for Python API')
 makedepends=('git' 'git-lfs' 'cmake' 'intel-compute-runtime' 'libusb' 'ocl-icd' 'opencv'
-             'python' 'cython' 'shellcheck' 'aria2' 'wget')
+             'patchelf' 'python' 'cython' 'shellcheck' 'aria2' 'wget' 'tbb')
 provides=('openvino' 'intel-openvino-git')
 conflicts=('openvino' 'intel-openvino-git')
 replaces=('intel-openvino-git')
@@ -44,7 +42,7 @@ source=('git+https://github.com/openvinotoolkit/openvino.git'
         'git+https://github.com/oneapi-src/oneDNN.git'
         'git+https://github.com/openvinotoolkit/open_model_zoo.git'
         'git+https://github.com/nlohmann/json.git'
-        'git+https://github.com/pboettch/json-schema-validator.git'
+        'git+https://github.com/google/flatbuffers.git'
         'openvino.conf'
         'setupvars.sh'
         '010-ade-disable-werror.patch'
@@ -69,10 +67,10 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '48b6a93bb54c36f9bc87a7f326b0a634f752f34f57f90a60dccc13f92fd96a9d'
-            '15918bfcab40965828e2f6250b16152dc9b8c078bd86f1929bb5fd38f19f854d'
+            '335a55533ab26bd1f63683921baf33b8e8e3f2732a94554916d202ee500f90af'
+            'e5024ad3382f285fe63dc58faca379f11a669bbe9f5d90682c59ad588aab434c'
             '502fcbb3fcbb66aa5149ad2cc5f1fa297b51ed12c5c9396a16b5795a03860ed0'
-            'c33688f5a183d28802332a16a29ab489272fdc302ef3bc4ebe56a6b33811e669')
+            '9faccd9dc8088e36560a402b7613e149b773479b5070002d9504bf7bb2a267ed')
 
 export GIT_LFS_SKIP_SMUDGE='1'
 
@@ -99,7 +97,7 @@ prepare() {
     git -C openvino config --local submodule.thirdparty/onednn_gpu.url "${srcdir}/oneDNN"
     git -C openvino config --local submodule.tools/pot/thirdparty/open_model_zoo.url "${srcdir}/open_model_zoo"
     git -C openvino config --local submodule.thirdparty/json/nlohmann_json.url "${srcdir}/json"
-    git -C openvino config --local submodule.thirdparty/json/nlohmann_json_schema_validator.url "${srcdir}/json-schema-validator"
+    git -C openvino config --local submodule.thirdparty/flatbuffers/flatbuffers.url "${srcdir}/flatbuffers"
     git -C openvino -c protocol.file.allow='always' submodule update
     
     patch -d openvino/thirdparty/ade -Np1 -i "${srcdir}/010-ade-disable-werror.patch"
@@ -108,12 +106,10 @@ prepare() {
 
 pkgver() {
     local _version
-    local _revision
-    local _shorthash
     _version="$(git -C openvino tag --list | grep '^[[:digit:]]' | sed '/dev/d' | sort -r | head -n1)"
-    _revision="$(git -C openvino rev-list --count "${_version}..HEAD")"
-    _shorthash="$(git -C openvino rev-parse --short HEAD)"
-    printf '%s.r%s.g%s' "$_version" "$_revision" "$_shorthash"
+    printf '%s.r%s.g%s' "$_version" \
+                        "$(git -C openvino rev-list --count "${_version}..HEAD")" \
+                        "$(git -C openvino rev-parse --short HEAD)"
 }
 
 build() {
@@ -124,6 +120,7 @@ build() {
     
     # note: does not accept 'None' build type
     cmake -B build -S openvino \
+        -G 'Unix Makefiles' \
         -DBUILD_TESTING:BOOL='OFF' \
         -DCMAKE_BUILD_TYPE:STRING='Release' \
         -DCMAKE_INSTALL_PREFIX:PATH='/opt/intel/openvino' \
@@ -135,24 +132,13 @@ build() {
         -DENABLE_NCC_STYLE:BOOL='OFF' \
         -DENABLE_SYSTEM_PROTOBUF:BOOL='ON' \
         -DENABLE_ONEDNN_FOR_GPU:BOOL='OFF' \
-        -DTREAT_WARNING_AS_ERROR:BOOL='OFF' \
+        -DENABLE_INTEL_GNA:BOOL='OFF' \
+        -Dopencl_root_hints="${srcdir}/OpenCL-CLHPP/include" \
         -Wno-dev
-    make -C build
+    cmake --build build
 }
 
 package() {
-    make -C build DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake --install build
     install -D -m644 openvino.conf -t "${pkgdir}/etc/ld.so.conf.d"
-    
-    local _gnaver
-    local _gnasover
-    local _gnadir="${pkgdir}/opt/intel/openvino/runtime/lib/intel64"
-    _gnaver="$(find openvino/temp -maxdepth 1 -type d -name 'gna_*' | sed 's/.*_//')"
-    _gnasover="$(find -L "$_gnadir" -type f -regextype 'posix-extended' -regex '.*/libgna\.so\.[0-9]+$' | sed 's/.*\.//')"
-    
-    ln -s "libgna.so.${_gnasover}" "${_gnadir}/libgna.so"
-    
-    cp -dr --no-preserve='ownership' "openvino/temp/gna_${_gnaver}/include" \
-        "${pkgdir}/opt/intel/openvino/runtime/include/gna"
-    chmod -R a+r "${pkgdir}/opt/intel/openvino/runtime/include/gna"
 }

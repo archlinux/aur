@@ -11,13 +11,9 @@ then
 fi
 
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH:+${LD_LIBRARY_PATH}:}${INTEL_OPENVINO_DIR}/runtime/lib/intel64"
-export LD_LIBRARY_PATH+=":${INTEL_OPENVINO_DIR}/runtime/3rdparty/tbb/lib"
 
 export LIBRARY_PATH="${LIBRARY_PATH:+${LIBRARY_PATH}:}${INTEL_OPENVINO_DIR}/runtime/lib/intel64"
-export LIBRARY_PATH+=":${INTEL_OPENVINO_DIR}/runtime/3rdparty/tbb/lib"
 
-export CPATH="${CPATH:+${CPATH}:}${INTEL_OPENVINO_DIR}/runtime/include/gna"
 export CPATH+=":${INTEL_OPENVINO_DIR}/runtime/include/ie"
 export CPATH+=":${INTEL_OPENVINO_DIR}/runtime/include/ngraph"
 export CPATH+=":${INTEL_OPENVINO_DIR}/runtime/include/openvino"
-export CPATH+=":${INTEL_OPENVINO_DIR}/runtime/3rdparty/tbb/include"
