@@ -5,7 +5,7 @@
 # Maintainer: Matheus <matheusgwdl@protonmail.com>
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
-readonly version_frappe="v14.26.3"
+readonly _version_frappe="v14.26.3"
 
 pkgname="erpnext"
 pkgver="14.17.4"
@@ -29,7 +29,7 @@ sha512sums=("7fb7154bc8542eab411492949cbfe38b7755f5b1a41f410cfab89865ee53d0ac26b
 build()
 {
     cd "${srcdir}"/ || exit 1
-    bench init --frappe-branch "${version_frappe}" "${pkgname}"
+    bench init --frappe-branch "${_version_frappe}" "${pkgname}"
     cd "${srcdir}"/"${pkgname}"/ || exit 1
     bench get --branch v"${pkgver}" --resolve-deps "${pkgname}" "${url}.git"
     bench new-site --db-name "${pkgname}" --set-default "${pkgname}"
@@ -51,8 +51,8 @@ package()
     install -Dm644 "${srcdir}"/"${pkgname}".tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/"${pkgname}".conf
 
     ## Edit paths. Configuration files are altered as well as .pyc.
-    declare -r files=$(grep -lr "${srcdir}"/"${pkgname}/" "${pkgdir}"/usr/share/webapps/"${pkgname}"/)
-    echo "${files}" | xargs sed -i "s|${srcdir}/${pkgname}/|/usr/share/webapps/${pkgname}/|g"
+    declare -r _files=$(grep -lr "${srcdir}"/"${pkgname}/" "${pkgdir}"/usr/share/webapps/"${pkgname}"/)
+    echo "${_files}" | xargs sed -i "s|${srcdir}/${pkgname}/|/usr/share/webapps/${pkgname}/|g"
 
     ## Rebuild the software since their contents were manipulated.
     rm -r "${pkgdir}"/usr/share/webapps/"${pkgname}"/env/
@@ -70,9 +70,16 @@ package()
     bench build --hard-link --production
     bench build --app "${pkgname}" --hard-link --production
 
-    # Edit the paths.
+    ## Edit the paths.
     echo "/usr/share/webapps/${pkgname}/apps/erpnext/" > "${pkgdir}"/usr/share/webapps/"${pkgname}"/env/lib/python3.10/site-packages/erpnext.pth
     echo "/usr/share/webapps/${pkgname}/apps/frappe/" > "${pkgdir}"/usr/share/webapps/"${pkgname}"/env/lib/python3.10/site-packages/frappe.pth
+
+    ## Correct symlinks.
+    rm "${pkgdir}"/usr/share/webapps/"${pkgname}"/apps/erpnext/erpnext/public/node_modules
+    ln -s /usr/share/webapps/"${pkgname}"/apps/erpnext/node_modules/ "${pkgdir}"/usr/share/webapps/"${pkgname}"/apps/erpnext/erpnext/public/node_modules
+
+    rm "${pkgdir}"/usr/share/webapps/"${pkgname}"/apps/frappe/frappe/public/node_modules
+    ln -s /usr/share/webapps/"${pkgname}"/apps/frappe/node_modules/ "${pkgdir}"/usr/share/webapps/"${pkgname}"/apps/frappe/frappe/public/node_modules
 
     # Install the documentation.
     install -Dm644 "${srcdir}"/"${pkgname}"-"${pkgver}"/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
