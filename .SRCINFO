@@ -1,7 +1,7 @@
 pkgbase = phc-intel
 	pkgdesc = Meta package that depends on phc intel kernel driver, helper script and initscript.
 	pkgver = 0.3.2
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://gitlab.com/linux-phc/phc-intel
 	arch = any
