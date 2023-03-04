@@ -79,7 +79,6 @@ prepare() {
     git -c protocol.file.allow=always submodule update subprojects/wlroots
     git -c protocol.file.allow=always submodule update subprojects/hyprland-protocols
     cd subprojects/wlroots
-    git revert -n 18595000f3a21502fd60bf213122859cc348f9af
     patch --forward --strip=0 --input="${srcdir}"/nvidia.patch
 }
 
