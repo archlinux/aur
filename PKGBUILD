@@ -1,7 +1,7 @@
 # Maintainer: Thomas Andres <thomas at andres dot in>
 pkgname=openhantek6022
 _gitname=OpenHantek6022
-pkgver=3.3.1
+pkgver=3.3.2.1
 pkgrel=1
 pkgdesc="A DSO software for Hantek USB digital signal oscilloscopes 6022BE/BL."
 arch=('i686' 'x86_64')
@@ -24,12 +24,12 @@ build() {
     [[ ! -d build ]] && mkdir -p build
     cd build
     cmake \
-        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
         ../
-    make
+    cmake --build .
 }
 
 package() {
     cd $_gitname/build
-    make DESTDIR=$pkgdir install
+    cmake --install .
 }
