@@ -1,0 +1,24 @@
+pkgbase = dri2to3-git
+	pkgdesc = Library implementing DRI2 on top of DRI3 for running blob X11 drivers under Xwayland.
+	pkgver = r6.43a51c6
+	pkgrel = 1
+	url = https://gitlab.com/panfork/dri2to3
+	arch = aarch64
+	arch = arm7h
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	depends = gcc-libs
+	depends = coreutils
+	depends = mesa
+	options = !lto
+	options = debug
+	options = strip
+	source = git+https://gitlab.com/panfork/dri2to3.git#branch=main
+	sha256sums = SKIP
+
+pkgname = dri2to3-git
+	provides = dri2to3
+	provides = dri2to3-git
+	conflicts = dri2to3
+	conflicts = dri2to3-git
