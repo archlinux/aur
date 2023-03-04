@@ -20,7 +20,7 @@
 
 pkgname=ffmpeg-mpp
 pkgver=5.1.2
-pkgrel=8
+pkgrel=9
 epoch=2
 pkgdesc='Complete solution to record, convert and stream audio and video supporting rockchip MPP hardware decoder'
 arch=(aarch64 arm7f)
@@ -37,6 +37,7 @@ depends=(
   gsm
   jack
   lame
+  libvpx
   libass.so
   libavc1394
   libbluray.so
