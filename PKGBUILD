@@ -20,9 +20,11 @@ provides=("$_pkgname=${pkgver/\+*/}" 'vim-plugin-runtime')
 conflicts=("$_pkgname")
 _date="$(date -u +%Y%m%d)"
 source=("$_pkgname-$_date.tar.gz::https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz"
+        "$_pkgname-$_date.tar.gz.sha256sum::https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz.sha256sum"
         "$pkgname-archlinux.vim"
         "$pkgname-sysinit.vim")
 b2sums=('SKIP'
+        'SKIP'
         'd0871e240bd9c7de7d898e1fba95364f4c4a12dbb3ac40892bbf93a49eb0e8cc2c8bc1ccae9ea5b700581a185a4df56bd28427d42a7d4b288560207b3951a15d'
         '6ed647c3a4c0907a60060fa61117d484aa091c69c73dda1f0a99aa4e67870ae2092a2c1057a15ced9fc56b08374ce8a8b86dbe531df777f9ad49302c7a9d3da0')
 install=$pkgname.install
@@ -30,6 +32,11 @@ install=$pkgname.install
 pkgver() {
 	cd nvim-linux64
 	./bin/nvim --version | awk 'NR == 1 { sub("NVIM v", ""); gsub("-", "+"); print $1 }'
+}
+
+prepare() {
+	sed -i "s/nvim-linux64/$_pkgname-$_date/" $_pkgname-$_date.tar.gz.sha256sum
+	sha256sum -c $_pkgname-$_date.tar.gz.sha256sum
 }
 
 check() {
