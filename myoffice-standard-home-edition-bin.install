@@ -20,7 +20,7 @@ post_install() {
 	# The placeholder is overriden during the package configuration
 	SCRIPT_DIR="/usr/bin/myoffice-standard-home-edition"
 
-	source "${SCRIPT_DIR}/Common.1.28.0.sh"
+	source "${SCRIPT_DIR}/Common.2.3.0.sh"
 
 	# Initialize licensing - for linux create cache of HW ids, due to reading of them requires root access
 	createHardwareIdCache()
@@ -68,7 +68,28 @@ post_install() {
 	    registerAppMenu "${name}.desktop"
 	done
 
+	removeFromDefaults()
+	{
+	    local defaults_file=$(readlink -f "$1")
+
+	    if [ -w "${defaults_file}" ] ; then
+	        local tmp_defaults_file=$(mktemp "/tmp/defaults-XXXXXX.list")
+	        cp "${defaults_file}" "${tmp_defaults_file}"
+
+	        for name in "${APPS[@]}"; do
+	            sed -i "s/;*${name}.desktop//" "${tmp_defaults_file}"
+	        done
+	        sed -i "s/=;/=/" "${tmp_defaults_file}"
+
+	        grep -v "=$" "${tmp_defaults_file}" > "${defaults_file}" 2> /dev/null
+	        rm -f "${tmp_defaults_file}"
+	    fi
+	}
+
 	IFW_MENU_DEST_DIR=$(probe_menu_installation_path)
+
+	# remove apps from defaults (fix for EDESK-465)
+	removeFromDefaults "${IFW_MENU_DEST_DIR}/defaults.list"
 
 	# Registering our own mime types
 	if [[ "${ENABLE_MIME_REGISTRATION}" != "0" ]]; then
@@ -328,7 +349,7 @@ pre_remove() {
 	SCRIPT_DIR="/usr/bin/myoffice-standard-home-edition"
 	CONFIG_DIR="New Cloud Technologies Ltd."
 
-	source "${SCRIPT_DIR}/Common.1.28.0.sh"
+	source "${SCRIPT_DIR}/Common.2.3.0.sh"
 
 	if [[ "${TAG}" == "upgrade" || "${TAG}" == "1" ]]; then
 	    echo "Skipping uninstall step..."
