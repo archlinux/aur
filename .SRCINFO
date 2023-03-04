@@ -1,6 +1,6 @@
 pkgbase = chatgpt-desktop-bin
 	pkgdesc = ChatGPT Desktop Application (Mac, Windows and Linux)
-	pkgver = 0.11.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/lencx/ChatGPT
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = chatgpt-desktop-bin
 	depends = openssl-1.1
 	depends = webkit2gtk
 	depends = libayatana-appindicator
-	provides = chatgpt-desktop=0.11.0
+	provides = chatgpt-desktop=0.11.1
 	conflicts = chatgpt-desktop
-	noextract = chat-gpt_0.11.0_amd64.deb
-	source = https://github.com/lencx/ChatGPT/releases/download/v0.11.0/ChatGPT_0.11.0_linux_x86_64.deb
-	sha256sums = 90e56e19b0fb637627d2c6053cbff00f1e141a8a179a2cf9c4fab3e4147a6a26
+	noextract = chat-gpt_0.11.1_amd64.deb
+	source = https://github.com/lencx/ChatGPT/releases/download/v0.11.1/ChatGPT_0.11.1_linux_x86_64.deb
+	sha256sums = 07c9ec6aaf7f6555687b3c3624d320dfa58f591e4af3b4d932a85933e26bc779
 
 pkgname = chatgpt-desktop-bin
