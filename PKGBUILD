@@ -2,11 +2,11 @@
 _pkgname=pm4py-core
 pkgname=python-pm4py
 pkgver=2.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="State-of-the-art-process mining in Python"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/pm4py/pm4py-core"
-license=('GPL2')
+license=('GPL3')
 groups=()
 depends=(
 	'python'
@@ -39,7 +39,7 @@ install=
 _archive="$_pkgname-$pkgver"
 source=("$url/archive/$pkgver/$_archive.tar.gz")
 noextract=()
-sha256sums=('b487fa469efba4efeff1c76922fab30a8dc80050c6d5d557ac5084bdf32a4521')
+sha512sums=('744f3700db7fdd2dc347ed8325226ff1d772f76a889a587551cdaeba719a0561778fad339b40caf1c5070551e7b52eb463d1e0c7d1aac117a23081f2b9f77350')
 
 build() {
 	cd "$srcdir/${_archive}"
@@ -48,8 +48,6 @@ build() {
 
 check() {
 	cd "$srcdir/${_archive}/tests"
-	#ln -s "$srcdir/${_archive}/tests/compressed_input_data" ../
-	#PYTHONPATH=. py.test --cov pm4py tests
 	python execute_tests.py
 }
 
