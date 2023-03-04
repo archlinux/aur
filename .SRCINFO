@@ -1,6 +1,6 @@
 pkgbase = gtk4-telegrand
 	pkgdesc = GObject-based multi-platform GUI toolkit (Version required by Telegrand)
-	pkgver = 4.9.4
+	pkgver = 4.10.0
 	pkgrel = 1
 	url = https://www.gtk.org/
 	arch = i686
@@ -56,11 +56,11 @@ pkgbase = gtk4-telegrand
 	depends = tracker3
 	depends = wayland
 	optdepends = evince: Default print preview command
-	provides = gtk4=4.9.4
+	provides = gtk4=4.10.0
 	provides = libgtk-4.so
 	conflicts = gtk4
-	source = git+https://gitlab.gnome.org/GNOME/gtk.git#commit=8967b2da0182b2496d858bddc8ae8c7a76aef9c9
-	source = gtk-reversed-list-4.9.4.patch::https://raw.githubusercontent.com/melix99/telegrand/main/build-aux/gtk-reversed-list.patch
+	source = git+https://gitlab.gnome.org/GNOME/gtk.git#commit=47aa0dcc7f1a895d19d7ded7eb5eb429141c432e
+	source = gtk-reversed-list-4.10.0.patch::https://raw.githubusercontent.com/melix99/telegrand/main/build-aux/gtk-reversed-list.patch
 	source = gtk4-querymodules.hook
 	sha256sums = SKIP
 	sha256sums = 4bf149a0f547747f13ffcd97f3160b6170dbfc4473d7d56d4f4c80eada4893c2
