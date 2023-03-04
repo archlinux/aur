@@ -2,7 +2,7 @@
 
 pkgname=slides
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Terminal based presentation tool'
 arch=('x86_64')
 url="https://github.com/maaslalani/$pkgname"
@@ -20,7 +20,8 @@ build() {
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
-    go clean -testcache ./...
+    go clean -cache
+    go clean -testcache
     go build -buildmode=pie -trimpath -ldflags "-linkmode external -X main.Version=${pkgver} -s -w"
 }
 

@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.9.0-2] - 2023-03-04
+
+- Fix build issue caused by change to go 1.20 cli. [#219](https://github.com/maaslalani/slides/issues/219)
+
 ## [0.9.0-1] - 2022-09-13
 
 - Add ssh server functionality by [@ivantsepp](https://github.com/@ivantsepp) in [#150](https://github.com/maaslalani/slides/pull/150)
