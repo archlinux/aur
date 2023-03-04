@@ -247,7 +247,7 @@ package_ceph-octopus-libs() {
 package_ceph-octopus() {
   depends=("ceph-octopus-libs=${pkgver}-${pkgrel}"
            'boost-libs' 'curl' 'fuse2' 'fuse3' 'fmt' 'glibc' 'gperftools' 'java-runtime'
-           'keyutils' 'leveldb' 'libaio' 'libutil-linux' 'librdkafka'
+           'keyutils' 'leveldb' 'libaio' 'libutil-linux' 'librdkafka1'
            'lsb-release' 'ncurses'
            'nss' 'oath-toolkit' 'python' 'python-bcrypt' 'python-setuptools'
            'python-prettytable' 'python-cmd2' 'python-dateutil' 'snappy' 'sudo' 'systemd-libs'
