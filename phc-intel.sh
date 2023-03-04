@@ -2,6 +2,7 @@
 
 ## This file is licensed under the GNU General Public License, version 2.
 
+VERSION=0.4.0
 _conf='/etc/default/phc-intel'
 
 msg() {
@@ -90,8 +91,12 @@ case "$1" in
     "$0" stop
   ;;
 
+  --version)
+    printf '%s\n' "${VERSION}"
+  ;;
+
   *)
-    echo "usage: $0 {start|stop|status|set|force-set|reset}"
+    echo "usage: $0 {start|stop|status|set|force-set|reset|--version}"
   ;;
 
 esac

@@ -11,8 +11,9 @@ groups=(
   'linux-phc'
   'phc-intel'
 )
-pkgver=0.3
-pkgrel=6
+epoch=0
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Helper and init scripts for phc-intel, a frequency driver for Intel CPUs with undervolting feature."
 url="https://gitlab.com/linux-phc/phc-intel"
 arch=('any')
@@ -30,7 +31,7 @@ source=(
 )
 sha256sums=(
   'ce08a5a4107be1d5723f1f169d515e67b6c77893f3994fc2d0d2ccf611307ed3' # phc-intel.conf.default
-  'b3144438cc796b96515508ebbbb22f854fcd36a3af31872da090af85f4f6d441' # phc-intel.sh
+  'd8520df3d25680574899ad0688d8043e4798ade799eb36572fca5abd7b59ed9a' # phc-intel.sh
   '3f965edca571e5a4d2dd60939b252e15062b440ce6eb87021dc3170682eff0d7' # phc-intel.sleep.pm-utils
   '0217a76958e2aba747c89bfd3bef16dcd8377770014896ab749faf16c05a2e53' # phc-intel.sleep.systemd
   '66be32665dd8e3c153ce512678d3af3cbf24f36829556590736e0c21baf82d28' # phc-intel.openrc
@@ -38,6 +39,11 @@ sha256sums=(
   '345b479cce16e2ac2a3b001123aa2b4f16be21c63ba9c7e9e3cc5865d3c01d8c' # phc-intel.systemd
   '3d7b7bd26e3bbd93eac8098fe8d688eecd7697fec345ef829b957680e0b4a360' # phc-intel-scripts.install
 )
+
+pkgver() {
+  cd "${srcdir}"
+  ./phc-intel.sh --version
+}
 
 package_phc-intel-scripts() {
   pkgdesc="Helper scripts for phc-intel, a frequency driver for Intel CPUs with undervolting feature."
