@@ -1,4 +1,4 @@
-# Maintainer:  Andrew O'Neill <andrew at meanjollies dot com>
+# Maintainer:  Andrew O'Neill <andrew at haunted dot sh>
 # Contributor: Steven Honeyman <stevenhoneyman at gmail com>
 # Contributor: Alexej Magura <agm2819*gmail*>
 # Contributor: Dragonlord <dragonlord[at]seznam[.]cz>
