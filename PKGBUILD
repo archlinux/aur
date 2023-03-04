@@ -4,19 +4,21 @@ pkgname=libdovi
 pkgver=3.1.2
 pkgrel=1
 pkgdesc='Library to read and write Dolby Vision metadata (C-API)'
+_pkgtag="libdovi-${pkgver}"
 arch=('x86_64')
 url='https://github.com/quietvoid/dovi_tool/tree/main/dolby_vision'
 license=('MIT')
 depends=('gcc-libs' 'glibc')
-makedepends=('git' 'cargo' 'cargo-c')
+makedepends=('cargo' 'cargo-c')
 conflicts=('libdovi.so')
 provides=('libdovi.so')
-source=("git+https://github.com/quietvoid/dovi_tool.git#tag=libdovi-${pkgver}")
+source=("https://github.com/quietvoid/dovi_tool/archive/refs/tags/${_pkgtag}.tar.gz")
 sha256sums=(SKIP)
+_rootdir="dovi_tool-${_pkgtag}"
 
 prepare() {
   cargo fetch \
-    --manifest-path dovi_tool/dolby_vision/Cargo.toml
+    --manifest-path ${_rootdir}/dolby_vision/Cargo.toml
 }
 
 build() {
@@ -24,7 +26,7 @@ build() {
     --release \
     --frozen \
     --prefix=/usr \
-    --manifest-path dovi_tool/dolby_vision/Cargo.toml
+    --manifest-path ${_rootdir}/dolby_vision/Cargo.toml
 }
 
 check() {
@@ -32,11 +34,11 @@ check() {
     --release \
     --frozen \
     --all-features \
-    --manifest-path dovi_tool/dolby_vision/Cargo.toml
+    --manifest-path ${_rootdir}/dolby_vision/Cargo.toml
 }
 
 package() {
-  cd dovi_tool/dolby_vision
+  cd ${_rootdir}/dolby_vision
 
   cargo cinstall \
     --release \

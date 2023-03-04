@@ -5,14 +5,13 @@ pkgbase = libdovi
 	url = https://github.com/quietvoid/dovi_tool/tree/main/dolby_vision
 	arch = x86_64
 	license = MIT
-	makedepends = git
 	makedepends = cargo
 	makedepends = cargo-c
 	depends = gcc-libs
 	depends = glibc
 	provides = libdovi.so
 	conflicts = libdovi.so
-	source = git+https://github.com/quietvoid/dovi_tool.git#tag=libdovi-3.1.2
+	source = https://github.com/quietvoid/dovi_tool/archive/refs/tags/libdovi-3.1.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = libdovi
