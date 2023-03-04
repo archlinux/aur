@@ -1,0 +1,24 @@
+pkgbase = tsduck-git
+	pkgdesc = TSDuck is an extensible toolkit for MPEG transport streams
+	pkgver = 3.33.3139.r12.gc4243cf22
+	pkgrel = 1
+	url = https://tsduck.io/
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = git-lfs
+	makedepends = cmake
+	makedepends = zip
+	makedepends = doxygen
+	makedepends = dos2unix
+	makedepends = graphviz
+	depends = pcsclite
+	depends = srt
+	depends = jdk-openjdk
+	provides = tsduck-git=3.33.3139.r12.gc4243cf22
+	conflicts = tsduck-git
+	conflicts = tsduck
+	source = git+https://github.com/tsduck/tsduck.git
+	sha256sums = SKIP
+
+pkgname = tsduck-git
