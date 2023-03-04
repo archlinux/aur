@@ -1,0 +1,16 @@
+pkgbase = today-journal
+	pkgdesc = POSIX shell script for keeping a daily journal.
+	pkgver = 5.3.0
+	pkgrel = 1
+	url = https://sr.ht/~sotirisp/today/
+	arch = any
+	license = GPL3
+	license = custom:CC0-1.0
+	makedepends = make
+	makedepends = scdoc
+	makedepends = grep
+	provides = today
+	source = today-journal-v5.3.0.tar.gz::https://git.sr.ht/~sotirisp/today/archive/v5.3.0.tar.gz
+	sha256sums = 3559c0d404bfe48e5bdc72dc88a550e3c86253bd4b418365fc2c18e219904803
+
+pkgname = today-journal
