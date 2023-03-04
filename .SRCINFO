@@ -1,7 +1,7 @@
 pkgbase = maui-station-git
 	pkgdesc = Convergent terminal emulator.
 	pkgver = 2.2.2.r2.g83a1764
-	pkgrel = 1
+	pkgrel = 2
 	url = https://invent.kde.org/maui/station
 	arch = x86_64
 	arch = i686
@@ -16,6 +16,7 @@ pkgbase = maui-station-git
 	depends = kconfig
 	depends = kcoreaddons
 	depends = ki18n
+	depends = mauikit-terminal
 	depends = qmltermwidget
 	depends = qt5-base
 	depends = qt5-declarative
