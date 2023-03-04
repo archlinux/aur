@@ -1,6 +1,6 @@
 pkgbase = ogui-bin
 	pkgdesc = Open source game launcher
-	pkgver = v0.1.0
+	pkgver = v0.1.1
 	pkgrel = 1
 	url = https://github.com/ShadowBlip/OpenGamepadUI
 	arch = x86_64
@@ -15,9 +15,10 @@ pkgbase = ogui-bin
 	depends = libxdmcp
 	depends = gamescope
 	depends = ryzenadj-git
+	depends = networkmanager
 	provides = ogui
-	source = opengamepadui.tar.gz::https://github.com/ShadowBlip/OpenGamepadUI/releases/download/v0.1.0/opengamepadui.tar.gz
-	sha256sums = 76610c15f86e070e6f22d9f0e4f4a97ca19981fb69fb0cc138011a741ed7d54c
+	source = opengamepadui.tar.gz::https://github.com/ShadowBlip/OpenGamepadUI/releases/download/v0.1.1/opengamepadui.tar.gz
+	sha256sums = 948c4f18956f8bc8214c5bd5e822647663b6ea940bbacd8e726b1140d72aa7c3
 
 pkgname = ogui-bin
 	options = !strip

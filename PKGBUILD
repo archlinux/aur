@@ -1,19 +1,19 @@
 # Maintainer: Derek J. Clark <derekjohn.clark@gmail.com>
 pkgname=ogui-bin
 _pkgbase=opengamepadui
-pkgver=v0.1.0
+pkgver=v0.1.1
 pkgrel=1
 pkgdesc="Open source game launcher"
 arch=('x86_64')
 url="https://github.com/ShadowBlip/OpenGamepadUI"
 license=('GPL')
 depends=('glibc' 'gcc-libs' 'libx11' 'libxres' 'libxcb' 'libxext' 'libxau'
-	 'libxdmcp' 'gamescope' 'ryzenadj-git'
+	 'libxdmcp' 'gamescope' 'ryzenadj-git' 'networkmanager'
 	 )
 provides=('ogui')
 source=(opengamepadui.tar.gz::https://github.com/ShadowBlip/OpenGamepadUI/releases/download/$pkgver/opengamepadui.tar.gz)
 
-sha256sums=('76610c15f86e070e6f22d9f0e4f4a97ca19981fb69fb0cc138011a741ed7d54c')
+sha256sums=('948c4f18956f8bc8214c5bd5e822647663b6ea940bbacd8e726b1140d72aa7c3')
 
 prepare() {
 	cd "$srcdir/${_pkgbase}"
