@@ -1,0 +1,15 @@
+pkgbase = shadowsocks-rust-multiprofile-daemon-git
+	pkgdesc = Systemd units that make it easy to work with multiple shadowsocks-rust profiles.
+	pkgver = r2.ec5efb7
+	pkgrel = 1
+	url = https://github.com/spyophobia/shadowsocks-rust-multiprofile-daemon
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = git
+	provides = shadowsocks-rust-multiprofile-daemon
+	conflicts = shadowsocks-rust-multiprofile-daemon
+	source = shadowsocks-rust-multiprofile-daemon::git+https://github.com/spyophobia/shadowsocks-rust-multiprofile-daemon.git
+	sha512sums = SKIP
+
+pkgname = shadowsocks-rust-multiprofile-daemon-git
