@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Rosalie's Mupen GUI"
 arch=('x86_64')
 url="https://github.com/Rosalie241/${_pkgname}"
-license=('GPLv3')
+license=('GPL3')
 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
