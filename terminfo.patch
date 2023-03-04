@@ -30,7 +30,7 @@ index 9331755..3bd6eba 100644
  
  /* default TERM value */
 -char *termname = "st-256color";
-+char *termname = "st-256color-ul";
++char *termname = "st-uc-256color";
  
  /*
   * spaces per tab
@@ -61,7 +61,7 @@ index 7df13e8..a806b5c 100644
  
 -st-256color| simpleterm with 256 colors,
 -	use=st,
-+st-256color-uc| simpleterm with 256 colors and undercurl support,
++st-uc-256color| simpleterm with 256 colors and undercurl support,
 +	use=st-uc,
  	ccc,
  	colors#256,
@@ -83,7 +83,7 @@ index 7df13e8..a806b5c 100644
 -st-meta-256color| simpleterm with meta key and 256 colors,
 -	use=st-256color,
 +st-meta-uc-256color| simpleterm with meta key 256 colors with undercurl support,
-+	use=st-256color-uc,
++	use=st-uc-256color,
  	km,
  	rmm=\E[?1034l,
  	smm=\E[?1034h,
@@ -100,7 +100,7 @@ index 7df13e8..a806b5c 100644
 -st-bs-256color| simpleterm with backspace as backspace and 256colors,
 -	use=st-256color,
 +st-bs-uc-256color| simpleterm with backspace as backspace 256colors and undercurl support,
-+	use=st-256color-uc,
++	use=st-uc-256color,
  	kbs=\010,
  	kdch1=\177,
 -- 
