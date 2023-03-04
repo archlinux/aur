@@ -1,6 +1,6 @@
 pkgbase = sv2v
 	pkgdesc = SystemVerilog to Verilog conversion
-	pkgver = 0.0.8
+	pkgver = 0.0.10
 	pkgrel = 1
 	url = https://github.com/zachjs/sv2v
 	arch = x86_64
@@ -13,11 +13,9 @@ pkgbase = sv2v
 	depends = haskell-githash
 	depends = haskell-hashable
 	depends = haskell-vector
-	source = https://hackage.haskell.org/packages/archive/sv2v/0.0.8/sv2v-0.0.8.tar.gz
+	source = https://hackage.haskell.org/packages/archive/sv2v/0.0.10/sv2v-0.0.10.tar.gz
 	source = sv2v-cabal.patch
-	source = at-operator.patch
-	sha256sums = fc84a770faa9357eeac56d55f861e89d2a73d71378b332096de8ddf4340674fe
-	sha256sums = fd9d4dfd5537347d3ca6c3c1e5f166c7d6417acfe84541b8feb837fb043879f8
-	sha256sums = 6f0ab8b52a0592e42de5f07a75e16f13fa576d37c8d223e5932e9f2d8b8689f6
+	sha256sums = 6df6d4e35a0ccff4b43e70d7eeb043b1f5bd956945d4efd922f984581b720702
+	sha256sums = d2f3f94a931209a2bd6f95bf8a4316337a41c6b9c127c95bf75891df6a6dbc67
 
 pkgname = sv2v
