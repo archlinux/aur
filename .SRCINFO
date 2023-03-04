@@ -1,0 +1,15 @@
+pkgbase = python-duckargs
+	pkgdesc = Productivity tool for quickly creating python programs that parse command-line arguments
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/eriknyquist/duckargs
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.7
+	source = https://github.com/eriknyquist/duckargs/archive/refs/tags/v0.1.1.tar.gz
+	b2sums = eb58944256c0373f0e2a07dbc8646b81cb7796d4c9a588ef67409d981433360c06afa5c10135d3648b6be43a4e8f8a3e67cc7c553fe60be8a25d03eb2751ac61
+
+pkgname = python-duckargs
