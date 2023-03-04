@@ -90,6 +90,7 @@ _package
 
 _msg2 'installing control file and install scripts'
 install -Dm755 "${srcdir}/${_pkgarch}.control" "${_pkgdir}/DEBIAN/control"
+#_debscripts
 #install -Dm755 ${srcdir}/${_scripts}/preinst.sh ${_pkgdir}/DEBIAN/preinst
 install -Dm755 "${srcdir}/postinst.sh" "${_pkgdir}/DEBIAN/postinst"
 install -Dm755 "${srcdir}/prerm.sh" "${_pkgdir}/DEBIAN/prerm"
@@ -103,4 +104,33 @@ mv *.deb ../../
 done
 #exit so the arch package doesn't get built
 exit
+}
+
+_descripts() {
+  func=$1
+  input_file=$2
+  # Check if the function is defined in the .install file
+  if grep -q "^$func()" "${install}"; then
+    # Create the script
+    case "$func" in
+      pre_install)  _script="preinst";;
+      post_install) _script="postinst";;
+      pre_upgrade)  _script="preinst";;
+      post_upgrade) _script="postinst";;
+      pre_remove)   _script="prerm";;
+      post_remove)  _script="postrm";;
+      backup)       _script="preinst";;
+      restore)      _script="postinst";;
+      clean)        _script="postrm";;
+      check)        _script="preinst";;
+      fix_install)  _script="postinst";;
+      fix_upgrade)  _script="postinst";;
+      *)            echo "Unknown function: $func"; continue;;
+    esac
+    _debscript="${_script}.sh"
+    echo "#!/bin/sh" > "${_pkgdir}/DEBIAN/${_debscript}"
+    echo "$(grep -A999 "^$func()" "${_pkgdir}/DEBIAN/${_debscript}" | sed '/^}$/Q')" >> "${_pkgdir}/DEBIAN/${_debscript}"
+    chmod +x "${_pkgdir}/DEBIAN/${_debscript}"
+    _msg3 "Created ${_debscript}"
+  fi
 }

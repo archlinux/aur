@@ -20,9 +20,14 @@ sha256sums=('72c189a1c1994e90cab0ab3e21a3bf2932b229210a0bc9e296d6a4400e2a52a1'
             'f26f0d3aa3baeb22fe1f0c94fe86113a638195f0070c5a2cd80e72463de5319a')
 
 package() {
+  _pkgdir="${pkgdir}"
+  _systemddir="usr/lib/systemd/system"
+_package
+}
+#_package function - used in build variants
+_package() {
 #declare the _pkgdir and systemd directory
-_pkgdir="${pkgdir}"
-_systemddir="usr/lib/systemd/system"
+
 _msg2 'Installing systemd services'
 for _i in "${_service[@]}" ; do
   _msg3 ${_i}
