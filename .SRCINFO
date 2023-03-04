@@ -49,12 +49,16 @@ pkgbase = hyprland-nvidia-hidpi-git
 	options = !buildflags
 	options = !strip
 	source = hyprland::git+https://github.com/hyprwm/Hyprland.git
-	source = git+https://gitlab.freedesktop.org/lilydjwg/wlroots.git
+	source = git+https://gitlab.freedesktop.org/wlroots/wlroots.git
 	source = git+https://github.com/hyprwm/hyprland-protocols.git
+	source = xwayland-support-HiDPI-scale.patch
+	source = fix-configure_notify-event.patch
 	source = nvidia.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 304aaf12cbd7dc198bf7e418d729b297ea61186d27c035e4a63a337399fcec76
+	sha256sums = e7cf16e39db2bde4dbc9d7ec3b4753f7643b1bf198a3179e6802a9c603437fe9
 	sha256sums = 522b19656d7c1627ec615b6720182590570560e346c1670f9df002015707b340
 
 pkgname = hyprland-nvidia-hidpi-git

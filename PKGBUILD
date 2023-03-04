@@ -50,14 +50,18 @@ makedepends=(
     wayland-protocols
     xorgproto)
 source=("${_pkgname}::git+https://github.com/hyprwm/Hyprland.git"
-    "git+https://gitlab.freedesktop.org/lilydjwg/wlroots.git"
+    "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
     "git+https://github.com/hyprwm/hyprland-protocols.git"
+    "xwayland-support-HiDPI-scale.patch"
+    "fix-configure_notify-event.patch"
     "nvidia.patch")
 conflicts=("${_pkgname}")
 provides=(hyprland)
 sha256sums=('SKIP'
     'SKIP'
     'SKIP'
+    '304aaf12cbd7dc198bf7e418d729b297ea61186d27c035e4a63a337399fcec76'
+    'e7cf16e39db2bde4dbc9d7ec3b4753f7643b1bf198a3179e6802a9c603437fe9'
     '522b19656d7c1627ec615b6720182590570560e346c1670f9df002015707b340')
 options=(!makeflags !buildflags !strip)
 
@@ -79,6 +83,9 @@ prepare() {
     git -c protocol.file.allow=always submodule update subprojects/wlroots
     git -c protocol.file.allow=always submodule update subprojects/hyprland-protocols
     cd subprojects/wlroots
+    git revert -n 18595000f3a21502fd60bf213122859cc348f9af
+	patch --forward --strip=1 --input="${srcdir}"/xwayland-support-HiDPI-scale.patch
+	patch --forward --strip=1 --input="${srcdir}"/fix-configure_notify-event.patch
     patch --forward --strip=0 --input="${srcdir}"/nvidia.patch
 }
 
