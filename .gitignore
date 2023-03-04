@@ -1,0 +1,5 @@
+pkg/*
+libfprint/*
+src/*
+*.zst
+*.~undo-tree~

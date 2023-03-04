@@ -1,0 +1,27 @@
+pkgbase = libfprint-egis-0575
+	pkgdesc = Library for fingerprint readers - topni1's experimental EgisTech EH0575 implementation
+	pkgver = r1529.e7ef7e3
+	pkgrel = 1
+	url = https://fprint.freedesktop.org/
+	arch = x86_64
+	groups = fprint
+	license = LGPL
+	checkdepends = python
+	checkdepends = python-cairo
+	checkdepends = python-gobject
+	checkdepends = umockdev>=0.13.2
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	makedepends = meson>=0.49.0
+	depends = libgusb>=0.3.0
+	depends = nss
+	depends = pixman
+	depends = libgudev
+	provides = libfprint
+	provides = libfprint-2.so
+	conflicts = libfprint
+	source = git+https://gitlab.freedesktop.org/topni1/libfprint.git#branch=master
+	sha256sums = SKIP
+
+pkgname = libfprint-egis-0575
