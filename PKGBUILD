@@ -16,7 +16,6 @@ url="https://github.com/frappe/${pkgname}"
 license=("GPL3")
 depends=("frappe-bench" "nodejs" "python")
 makedepends=("python-build" "python-installer")
-options=("!strip") # TODO
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
     "${pkgname}.sysusers"
@@ -50,7 +49,7 @@ package()
     install -Dm644 "${srcdir}"/"${pkgname}".sysusers "${pkgdir}"/usr/lib/sysusers.d/"${pkgname}".conf
     install -Dm644 "${srcdir}"/"${pkgname}".tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/"${pkgname}".conf
 
-    ## Edit paths. Configuration files are altered as well as .pyc.
+    ## Edit paths which were written during the build process. Configuration files are going to be altered as well as .pyc.
     declare -r _files=$(grep -lr "${srcdir}"/"${pkgname}/" "${pkgdir}"/usr/share/webapps/"${pkgname}"/)
     echo "${_files}" | xargs sed -i "s|${srcdir}/${pkgname}/|/usr/share/webapps/${pkgname}/|g"
 
@@ -70,7 +69,7 @@ package()
     bench build --hard-link --production
     bench build --app "${pkgname}" --hard-link --production
 
-    ## Edit the paths.
+    ## Edit the paths for Python modules.
     echo "/usr/share/webapps/${pkgname}/apps/erpnext/" > "${pkgdir}"/usr/share/webapps/"${pkgname}"/env/lib/python3.10/site-packages/erpnext.pth
     echo "/usr/share/webapps/${pkgname}/apps/frappe/" > "${pkgdir}"/usr/share/webapps/"${pkgname}"/env/lib/python3.10/site-packages/frappe.pth
 
