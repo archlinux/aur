@@ -1,6 +1,8 @@
 *
 !*.install
 !*.sh
+!*.sysusers
+!*.tmpfiles
 !.gitignore
 !.SRCINFO
 !PKGBUILD
