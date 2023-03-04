@@ -3,3 +3,4 @@
 *.AppImage
 *.zst
 *.zip
+/squashfs-root

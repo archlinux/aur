@@ -1,9 +1,10 @@
 pkgbase = curseforge
 	pkgdesc = CurseForge desktop client for Linux
 	pkgver = 0.218.1_8238
-	pkgrel = 1
+	pkgrel = 2
 	url = https://download.curseforge.com/
 	arch = x86_64
+	depends = fuse2
 	options = !strip
 	source = curseforge-0.218.1_8238.zip::https://curseforge.overwolf.com/downloads/curseforge-latest-linux.zip
 	source = curseforge

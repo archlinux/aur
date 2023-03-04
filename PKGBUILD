@@ -1,9 +1,10 @@
 # Maintainer: Saghm Rossi <aur@saghm.com>
 pkgname=curseforge
 pkgver=0.218.1_8238
-pkgrel=1
+pkgrel=2
 pkgdesc="CurseForge desktop client for Linux"
 arch=('x86_64')
+depends=("fuse2")
 url="https://download.curseforge.com/"
 source=("$pkgname-$pkgver.zip::https://curseforge.overwolf.com/downloads/curseforge-latest-linux.zip"
         'curseforge'
@@ -24,6 +25,11 @@ package() {
     install -Dm755 "curseforge" "${pkgdir}/usr/bin/curseforge"
     install -dm755 "${pkgdir}/usr/share/applications/"
     install -dm755 "${pkgdir}/usr/share/icons"
+    install -dm755 "${pkgdir}/usr/share/licenses"
+    install -dm755 "${pkgdir}/usr/share/licenses/curseforge"
+
     cp -r --no-preserve=mode,ownership "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share"
     cp --no-preserve=mode,ownership "${srcdir}/squashfs-root/curseforge.desktop" "${pkgdir}/usr/share/applications/"
+    cp --no-preserve=mode,ownership "${srcdir}/squashfs-root/LICENSE.electron.txt" "${pkgdir}/usr/share/licenses/curseforge"
+    cp --no-preserve=mode,ownership "${srcdir}/squashfs-root/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/curseforge"
 }
