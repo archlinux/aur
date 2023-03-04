@@ -1,0 +1,19 @@
+pkgbase = gcc-ia16
+	pkgdesc = IA-16 (Intel 16-bit x86) port of GNU Gcc
+	pkgver = 20230119
+	pkgrel = 1
+	url = https://github.com/tkchia/gcc-ia16
+	arch = x86_64
+	license = GPL
+	checkdepends = dejagnu
+	checkdepends = bc
+	depends = binutils-ia16
+	depends = glibc
+	depends = zlib
+	options = staticlibs
+	options = !distcc
+	options = !ccache
+	source = https://github.com/tkchia/gcc-ia16/archive/refs/tags/20230119.tar.gz
+	md5sums = db9cf1256c0211f06f9b59538b20897e
+
+pkgname = gcc-ia16
