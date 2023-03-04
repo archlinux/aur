@@ -1,6 +1,6 @@
 pkgbase = ceph-pacific
 	pkgdesc = Distributed, fault-tolerant storage platform delivering object, block, and file system
-	pkgver = 16.2.10
+	pkgver = 16.2.11
 	pkgrel = 1
 	url = https://ceph.com/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = ceph-pacific
 	checkdepends = python-pylint
 	checkdepends = python-pytest
 	checkdepends = python-pytest-cov
-	makedepends = zstd=1.5.2
+	makedepends = zstd=1.5.4
 	makedepends = bash
 	makedepends = bc
 	makedepends = boost
@@ -65,7 +65,7 @@ pkgbase = ceph-pacific
 	makedepends = util-linux
 	makedepends = libuv
 	makedepends = libxml2
-	makedepends = librdkafka
+	makedepends = librdkafka1
 	makedepends = libpciaccess
 	makedepends = lsb-release
 	makedepends = lua
@@ -147,33 +147,29 @@ pkgbase = ceph-pacific
 	makedepends = zlib
 	options = emptydirs
 	options = !lto
-	source = https://download.ceph.com/tarballs/ceph-16.2.10.tar.gz
+	source = https://download.ceph.com/tarballs/ceph-16.2.11.tar.gz
 	source = ceph.sysusers
-	source = zstd-1.5.2.tar.gz::https://github.com/facebook/zstd/archive/v1.5.2.tar.gz
+	source = zstd-1.5.4.tar.gz::https://github.com/facebook/zstd/archive/v1.5.4.tar.gz
 	source = ceph-14.2.0-cflags.patch
 	source = ceph-12.2.4-boost-build-none-options.patch
 	source = ceph-13.2.0-cflags.patch
 	source = ceph-13.2.2-dont-install-sysvinit-script.patch
 	source = ceph-14.2.0-cython-0.29.patch
 	source = ceph-15.2.0-rocksdb-cmake.patch
-	source = ceph-15.2.14-gcc12.patch
 	source = disable-empty-readable.sh-test.patch
-	source = https://patch-diff.githubusercontent.com/raw/ceph/ceph/pull/47304.patch
-	sha512sums = ae164c24462c3e08763d202acc3e2fe86ffc09f312b5059bae07863e804fc47bd158fc130aa2923246ffcfe26ae6d6d9317326aec96373226e6f9030d7123c8b
+	sha512sums = 905e36bc08f5cf1af1eca7fb467dd9e946d44f7ed3561c262afa9caeb35443a445a86e0b1f662754727213a4a123bc2a5eb1f080ec6697743d235449d34681fd
 	sha512sums = 4354001c1abd9a0c385ba7bd529e3638fb6660b6a88d4e49706d4ac21c81b8e829303a20fb5445730bdac18c4865efb10bc809c1cd56d743c12aa9a52e160049
-	sha512sums = e107508a41fca50845cc2494e64adaba93efb95a2fa486fc962510a8ba4b2180d93067cae9870f119e88e5e8b28a046bc2240b0b23cdd8933d1fb1a6a9668c1e
+	sha512sums = b6f64850ceb6cfed831fff3c43508d2a72338862a96dd9430b1d3ebbfcee40201c8b6dcf8b6b603e252bb96f3f283c9cb07da7f24414187f5f1fea3b51e01863
 	sha512sums = 9e6bb46d5bbdc5d93f4f026b2a8d6bdb692d9ea6e7018c1bb0188d95ea8574c76238d968b340fd67ddaa3d8183b310e393e3549dc3a63a795fde696413b0ca94
 	sha512sums = 6ff46a90d76f667fa23be0f9eb1ed2fb7e30af9a2621aec19944d0a22a431a0f5721603c588286e483ff55c14aac920adfccb039c9678a87cc59640dd70367ae
 	sha512sums = 8ec0d668fefee12d2c7f5b5297dd81fc6a559f5823d069e6395d9b4240110eb8f95049d3054697a459948c1f3784b4450539849cf9d7f3b1aa1c7fbd96c475df
 	sha512sums = ea069b75b786c22166c609b127b512802cc5c6e9512d792d7b7b34d276f5b86d57c8c35cfc7b5c855a59c0ba87ba1aabe2ca26da72b26bff46b6ba8410ddb27e
 	sha512sums = 82c1608928ee669ef60b8930ce82c443152c446e669e7bde9ce32f78571afb19a9620c3818b69ac8cb3ea33e7d7ac40f77c89162c71b19b157336d907fa23e3d
 	sha512sums = 2e62020cce33e3152cdb9a128023ee673124c4bcfdb9ee17718891ba5c9a16d98eb03ed06fe7dc7833c98487c1c1eb67fadfad1aa2f40c2c648829c86b4caab0
-	sha512sums = f1b54767d8d3c12ca9fe9eafd0590efa8560a52b5c18f1121f8fd8b7e69d70578bdeae9a1803612a8a8d0032f039f8786b5152a889ba359850e3d3d30a6af8c7
 	sha512sums = 2234d005df71b3b6013e6b76ad07a5791e3af7efec5f41c78eb1a9c92a22a67f0be9560be59b52534e90bfe251bcf32c33d5d40163f3f8f7e7420691f0f4a222
-	sha512sums = 686a80cc00efae855988a087bace7ff94b33b069c87e2455a57126085e21e104e53e97835cda3493ceebfd0dc6ead1b5e6a08dd3c29884d1cb70ca4451577ef0
 
 pkgname = ceph-pacific
-	depends = ceph-pacific-libs=16.2.10-1
+	depends = ceph-pacific-libs=16.2.11-1
 	depends = boost-libs
 	depends = curl
 	depends = fuse2
@@ -186,7 +182,7 @@ pkgname = ceph-pacific
 	depends = leveldb
 	depends = libaio
 	depends = libutil-linux
-	depends = librdkafka
+	depends = librdkafka1
 	depends = lsb-release
 	depends = ncurses
 	depends = nss
@@ -208,7 +204,7 @@ pkgname = ceph-pacific
 	depends = xfsprogs
 	depends = python-yaml
 	depends = python-pyaml
-	provides = ceph=16.2.10
+	provides = ceph=16.2.11
 	conflicts = ceph
 
 pkgname = ceph-pacific-libs
@@ -225,12 +221,12 @@ pkgname = ceph-pacific-libs
 	depends = snappy
 	depends = systemd-libs
 	depends = fmt
-	provides = ceph-libs=16.2.10
+	provides = ceph-libs=16.2.11
 	conflicts = ceph-libs
 
 pkgname = ceph-pacific-mgr
-	depends = ceph-pacific=16.2.10-1
-	depends = ceph-pacific-libs=16.2.10-1
+	depends = ceph-pacific=16.2.11-1
+	depends = ceph-pacific-libs=16.2.11-1
 	depends = bash
 	depends = boost-libs
 	depends = coffeescript
@@ -253,5 +249,5 @@ pkgname = ceph-pacific-mgr
 	optdepends = python-kubernetes: rook module
 	optdepends = python-prometheus_client: prometheus module
 	optdepends = python-remoto: ssh module
-	provides = ceph-mgr=16.2.10
+	provides = ceph-mgr=16.2.11
 	conflicts = ceph-mgr
