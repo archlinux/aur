@@ -1,0 +1,18 @@
+pkgbase = kmoretools-git
+	pkgdesc = Support for downloading application assets from the network
+	pkgver = v5.102.0.r34.g31399a2e
+	pkgrel = 1
+	url = https://invent.kde.org/libraries/kmoretools
+	arch = x86_64
+	groups = kf5
+	license = LGPL
+	makedepends = git
+	makedepends = ninja
+	makedepends = extra-cmake-modules-git
+	depends = qt6-base
+	provides = kmoretools
+	conflicts = kmoretools
+	source = git+https://invent.kde.org/libraries/kmoretools.git
+	sha256sums = SKIP
+
+pkgname = kmoretools-git
