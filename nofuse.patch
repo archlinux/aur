@@ -1,26 +1,31 @@
-diff --git configure.ac configure.ac
---- configure.ac	2018-09-15 07:03:24.000000000 +0200
-+++ configure.ac	2019-10-28 18:02:19.792588993 +0100
-@@ -37,13 +37,11 @@
+diff -aur aaa/configure.ac bbb/configure.ac
+--- aaa/configure.ac	2023-03-02 20:49:24.000000000 +0100
++++ bbb/configure.ac	2023-03-04 23:18:54.451925996 +0100
+@@ -37,10 +37,6 @@
    AC_DEFINE([USE_UBLIO], [1],
      [Define if block devices are not supported.])
  ], [:])
--PKG_CHECK_MODULES([FUSE], [fuse])
- AC_CONFIG_HEADERS([libexfat/config.h])
- AC_CONFIG_FILES([
- 	libexfat/Makefile
+-PKG_CHECK_MODULES([FUSE3], [fuse3],
+-  [AC_DEFINE([FUSE_USE_VERSION], [30], [Required FUSE API version.])],
+-  [PKG_CHECK_MODULES([FUSE2], [fuse >= 2.6],
+-    [AC_DEFINE([FUSE_USE_VERSION], [26], [Required FUSE API version.])])])
+ case "$host_os" in
+   *-gnu)
+     AC_DEFINE([_XOPEN_SOURCE], [500], [Enable pread() and pwrite().])
+@@ -53,7 +49,6 @@
+ 	attrib/Makefile
  	dump/Makefile
  	fsck/Makefile
 -	fuse/Makefile
  	label/Makefile
  	mkfs/Makefile
  	Makefile])
-diff --git Makefile.am Makefile.am
---- Makefile.am	2018-09-15 07:03:24.000000000 +0200
-+++ Makefile.am	2019-10-28 18:02:19.785922319 +0100
+diff -aur aaa/Makefile.am bbb/Makefile.am
+--- aaa/Makefile.am	2023-03-02 20:49:24.000000000 +0100
++++ bbb/Makefile.am	2023-03-04 23:19:01.525234081 +0100
 @@ -20,4 +20,4 @@
  #	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  #
 
--SUBDIRS = libexfat dump fsck fuse label mkfs
-+SUBDIRS = libexfat dump fsck label mkfs
+-SUBDIRS = libexfat attrib dump fsck fuse label mkfs
++SUBDIRS = libexfat attrib dump fsck label mkfs
