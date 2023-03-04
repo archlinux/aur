@@ -1,4 +1,4 @@
-# Maintainer:  Andrew O'Neill <andrew at meanjollies dot com>
+# Maintainer:  Andrew O'Neill <andrew at haunted dot sh>
 # Contributor: Shaw <puxx@mail.ustc.edu.cn>
 # Contributor: Nick <iglu.sitar at gmail dot com>
 # Contributor: Angus Gibson <darthshrine@gmail.com>
