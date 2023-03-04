@@ -1,0 +1,826 @@
+From 773d663e4729f55d23cb04f78a9d003643f2cb37 Mon Sep 17 00:00:00 2001
+From: Arthur Eubanks <aeubanks@google.com>
+Date: Mon, 27 Feb 2023 19:00:37 -0800
+Subject: [PATCH] [IPO] Remove various legacy passes
+
+These are part of the optimization pipeline, of which the legacy pass manager version is deprecated and being removed.
+---
+ llvm/include/llvm-c/Transforms/IPO.h          |  6 --
+ llvm/include/llvm/InitializePasses.h          |  2 -
+ llvm/include/llvm/LinkAllPasses.h             |  6 --
+ llvm/include/llvm/Transforms/IPO.h            | 28 ------
+ llvm/include/llvm/Transforms/IPO/Attributor.h |  3 -
+ .../llvm/Transforms/IPO/ForceFunctionAttrs.h  |  4 -
+ .../llvm/Transforms/IPO/FunctionAttrs.h       |  4 -
+ .../llvm/Transforms/IPO/InferFunctionAttrs.h  |  5 -
+ .../Transforms/IPO/Annotation2Metadata.cpp    | 28 ------
+ llvm/lib/Transforms/IPO/Attributor.cpp        | 95 -------------------
+ llvm/lib/Transforms/IPO/ConstantMerge.cpp     | 29 ------
+ llvm/lib/Transforms/IPO/ElimAvailExtern.cpp   | 30 ------
+ .../lib/Transforms/IPO/ForceFunctionAttrs.cpp | 29 ------
+ llvm/lib/Transforms/IPO/FunctionAttrs.cpp     | 42 --------
+ llvm/lib/Transforms/IPO/GlobalDCE.cpp         | 41 --------
+ llvm/lib/Transforms/IPO/IPO.cpp               | 21 ----
+ .../lib/Transforms/IPO/InferFunctionAttrs.cpp | 35 -------
+ .../lib/Transforms/IPO/PassManagerBuilder.cpp | 41 --------
+ llvm/test/CodeGen/ARM/pr26669.ll              | 31 ------
+ .../Other/opt-legacy-syntax-deprecation.ll    |  2 +-
+ llvm/tools/bugpoint/ExtractFunction.cpp       |  1 -
+ 21 files changed, 1 insertion(+), 482 deletions(-)
+ delete mode 100644 llvm/test/CodeGen/ARM/pr26669.ll
+
+diff --git a/llvm/include/llvm-c/Transforms/IPO.h b/llvm/include/llvm-c/Transforms/IPO.h
+index 53aa20fbd886..c558aa37f1c3 100644
+--- a/llvm/include/llvm-c/Transforms/IPO.h
++++ b/llvm/include/llvm-c/Transforms/IPO.h
+@@ -27,9 +27,6 @@ LLVM_C_EXTERN_C_BEGIN
+  * @{
+  */
+ 
+-/** See llvm::createConstantMergePass function. */
+-void LLVMAddConstantMergePass(LLVMPassManagerRef PM);
+-
+ /** See llvm::createDeadArgEliminationPass function. */
+ void LLVMAddDeadArgEliminationPass(LLVMPassManagerRef PM);
+ 
+@@ -39,9 +36,6 @@ void LLVMAddFunctionAttrsPass(LLVMPassManagerRef PM);
+ /** See llvm::createAlwaysInlinerPass function. */
+ void LLVMAddAlwaysInlinerPass(LLVMPassManagerRef PM);
+ 
+-/** See llvm::createGlobalDCEPass function. */
+-void LLVMAddGlobalDCEPass(LLVMPassManagerRef PM);
+-
+ /**
+  * @}
+  */
+diff --git a/llvm/include/llvm/InitializePasses.h b/llvm/include/llvm/InitializePasses.h
+index 2924b02774bd..2fdce85c2599 100644
+--- a/llvm/include/llvm/InitializePasses.h
++++ b/llvm/include/llvm/InitializePasses.h
+@@ -60,8 +60,6 @@ void initializeAssumeBuilderPassLegacyPassPass(PassRegistry &);
+ void initializeAnnotation2MetadataLegacyPass(PassRegistry &);
+ void initializeAssumptionCacheTrackerPass(PassRegistry&);
+ void initializeAtomicExpandPass(PassRegistry&);
+-void initializeAttributorLegacyPassPass(PassRegistry&);
+-void initializeAttributorCGSCCLegacyPassPass(PassRegistry &);
+ void initializeBasicBlockSectionsProfileReaderPass(PassRegistry &);
+ void initializeBasicBlockSectionsPass(PassRegistry &);
+ void initializeBDCELegacyPassPass(PassRegistry&);
+diff --git a/llvm/include/llvm/LinkAllPasses.h b/llvm/include/llvm/LinkAllPasses.h
+index 8f07acd0bdf5..3f20916af2f3 100644
+--- a/llvm/include/llvm/LinkAllPasses.h
++++ b/llvm/include/llvm/LinkAllPasses.h
+@@ -82,7 +82,6 @@ namespace {
+       (void) llvm::createCFGSimplificationPass();
+       (void) llvm::createStructurizeCFGPass();
+       (void) llvm::createLibCallsShrinkWrapPass();
+-      (void) llvm::createConstantMergePass();
+       (void) llvm::createCostModelAnalysisPass();
+       (void) llvm::createDeadArgEliminationPass();
+       (void) llvm::createDeadCodeEliminationPass();
+@@ -93,7 +92,6 @@ namespace {
+       (void) llvm::createDomOnlyViewerWrapperPassPass();
+       (void) llvm::createDomViewerWrapperPassPass();
+       (void) llvm::createAlwaysInlinerLegacyPass();
+-      (void) llvm::createGlobalDCEPass();
+       (void) llvm::createGlobalsAAWrapperPass();
+       (void) llvm::createGuardWideningPass();
+       (void) llvm::createLoopGuardWideningPass();
+@@ -154,9 +152,6 @@ namespace {
+       (void) llvm::createPostDomTree();
+       (void) llvm::createInstructionNamerPass();
+       (void) llvm::createMetaRenamerPass();
+-      (void) llvm::createAttributorLegacyPass();
+-      (void) llvm::createAttributorCGSCCLegacyPass();
+-      (void) llvm::createPostOrderFunctionAttrsLegacyPass();
+       (void) llvm::createMergeICmpsLegacyPass();
+       (void) llvm::createExpandLargeDivRemPass();
+       (void) llvm::createExpandMemCmpPass();
+@@ -185,7 +180,6 @@ namespace {
+       (void) llvm::createMustExecutePrinter();
+       (void) llvm::createMustBeExecutedContextPrinter();
+       (void) llvm::createFloat2IntPass();
+-      (void) llvm::createEliminateAvailableExternallyPass();
+       (void)llvm::createScalarizeMaskedMemIntrinLegacyPass();
+       (void) llvm::createHardwareLoopsLegacyPass();
+       (void) llvm::createInjectTLIMappingsLegacyPass();
+diff --git a/llvm/include/llvm/Transforms/IPO.h b/llvm/include/llvm/Transforms/IPO.h
+index 4c6eb6f6e644..da2143625dc7 100644
+--- a/llvm/include/llvm/Transforms/IPO.h
++++ b/llvm/include/llvm/Transforms/IPO.h
+@@ -27,34 +27,6 @@ class BasicBlock;
+ class GlobalValue;
+ class raw_ostream;
+ 
+-//===----------------------------------------------------------------------===//
+-//
+-// This pass adds !annotation metadata to entries in the
+-// @llvm.global.annotations global constant.
+-//
+-ModulePass *createAnnotation2MetadataLegacyPass();
+-
+-//===----------------------------------------------------------------------===//
+-/// createConstantMergePass - This function returns a new pass that merges
+-/// duplicate global constants together into a single constant that is shared.
+-/// This is useful because some passes (ie TraceValues) insert a lot of string
+-/// constants into the program, regardless of whether or not they duplicate an
+-/// existing string.
+-///
+-ModulePass *createConstantMergePass();
+-
+-//===----------------------------------------------------------------------===//
+-/// createGlobalDCEPass - This transform is designed to eliminate unreachable
+-/// internal globals (functions or global variables)
+-///
+-ModulePass *createGlobalDCEPass();
+-
+-//===----------------------------------------------------------------------===//
+-/// This transform is designed to eliminate available external globals
+-/// (functions or global variables)
+-///
+-ModulePass *createEliminateAvailableExternallyPass();
+-
+ //===----------------------------------------------------------------------===//
+ /// createGVExtractionPass - If deleteFn is true, this pass deletes
+ /// the specified global values. Otherwise, it deletes as much of the module as
+diff --git a/llvm/include/llvm/Transforms/IPO/Attributor.h b/llvm/include/llvm/Transforms/IPO/Attributor.h
+index 694a807d8861..968e482eff1b 100644
+--- a/llvm/include/llvm/Transforms/IPO/Attributor.h
++++ b/llvm/include/llvm/Transforms/IPO/Attributor.h
+@@ -3223,9 +3223,6 @@ struct AttributorCGSCCPass : public PassInfoMixin<AttributorCGSCCPass> {
+                         LazyCallGraph &CG, CGSCCUpdateResult &UR);
+ };
+ 
+-Pass *createAttributorLegacyPass();
+-Pass *createAttributorCGSCCLegacyPass();
+-
+ /// Helper function to clamp a state \p S of type \p StateType with the
+ /// information in \p R and indicate/return if \p S did change (as-in update is
+ /// required to be run again).
+diff --git a/llvm/include/llvm/Transforms/IPO/ForceFunctionAttrs.h b/llvm/include/llvm/Transforms/IPO/ForceFunctionAttrs.h
+index 07c7cac77354..52667e19bc88 100644
+--- a/llvm/include/llvm/Transforms/IPO/ForceFunctionAttrs.h
++++ b/llvm/include/llvm/Transforms/IPO/ForceFunctionAttrs.h
+@@ -17,7 +17,6 @@
+ 
+ namespace llvm {
+ class Module;
+-class Pass;
+ 
+ /// Pass which forces specific function attributes into the IR, primarily as
+ /// a debugging tool.
+@@ -25,9 +24,6 @@ struct ForceFunctionAttrsPass : PassInfoMixin<ForceFunctionAttrsPass> {
+   PreservedAnalyses run(Module &M, ModuleAnalysisManager &);
+ };
+ 
+-/// Create a legacy pass manager instance of a pass to force function attrs.
+-Pass *createForceFunctionAttrsLegacyPass();
+-
+ }
+ 
+ #endif // LLVM_TRANSFORMS_IPO_FORCEFUNCTIONATTRS_H
+diff --git a/llvm/include/llvm/Transforms/IPO/FunctionAttrs.h b/llvm/include/llvm/Transforms/IPO/FunctionAttrs.h
+index fc7cca83496b..1cab52b2cca8 100644
+--- a/llvm/include/llvm/Transforms/IPO/FunctionAttrs.h
++++ b/llvm/include/llvm/Transforms/IPO/FunctionAttrs.h
+@@ -52,10 +52,6 @@ struct PostOrderFunctionAttrsPass : PassInfoMixin<PostOrderFunctionAttrsPass> {
+                         LazyCallGraph &CG, CGSCCUpdateResult &UR);
+ };
+ 
+-/// Create a legacy pass manager instance of a pass to compute function attrs
+-/// in post-order.
+-Pass *createPostOrderFunctionAttrsLegacyPass();
+-
+ /// A pass to do RPO deduction and propagation of function attributes.
+ ///
+ /// This pass provides a general RPO or "top down" propagation of
+diff --git a/llvm/include/llvm/Transforms/IPO/InferFunctionAttrs.h b/llvm/include/llvm/Transforms/IPO/InferFunctionAttrs.h
+index 880af2b46d7f..8addf49fc0d8 100644
+--- a/llvm/include/llvm/Transforms/IPO/InferFunctionAttrs.h
++++ b/llvm/include/llvm/Transforms/IPO/InferFunctionAttrs.h
+@@ -19,7 +19,6 @@
+ 
+ namespace llvm {
+ class Module;
+-class Pass;
+ 
+ /// A pass which infers function attributes from the names and signatures of
+ /// function declarations in a module.
+@@ -27,10 +26,6 @@ struct InferFunctionAttrsPass : PassInfoMixin<InferFunctionAttrsPass> {
+   PreservedAnalyses run(Module &M, ModuleAnalysisManager &AM);
+ };
+ 
+-/// Create a legacy pass manager instance of a pass to infer function
+-/// attributes.
+-Pass *createInferFunctionAttrsLegacyPass();
+-
+ }
+ 
+ #endif // LLVM_TRANSFORMS_IPO_INFERFUNCTIONATTRS_H
+diff --git a/llvm/lib/Transforms/IPO/Annotation2Metadata.cpp b/llvm/lib/Transforms/IPO/Annotation2Metadata.cpp
+index 6cc04544cabc..7156e65f45a5 100644
+--- a/llvm/lib/Transforms/IPO/Annotation2Metadata.cpp
++++ b/llvm/lib/Transforms/IPO/Annotation2Metadata.cpp
+@@ -64,34 +64,6 @@ static bool convertAnnotation2Metadata(Module &M) {
+   return true;
+ }
+ 
+-namespace {
+-struct Annotation2MetadataLegacy : public ModulePass {
+-  static char ID;
+-
+-  Annotation2MetadataLegacy() : ModulePass(ID) {
+-    initializeAnnotation2MetadataLegacyPass(*PassRegistry::getPassRegistry());
+-  }
+-
+-  bool runOnModule(Module &M) override { return convertAnnotation2Metadata(M); }
+-
+-  void getAnalysisUsage(AnalysisUsage &AU) const override {
+-    AU.setPreservesAll();
+-  }
+-};
+-
+-} // end anonymous namespace
+-
+-char Annotation2MetadataLegacy::ID = 0;
+-
+-INITIALIZE_PASS_BEGIN(Annotation2MetadataLegacy, DEBUG_TYPE,
+-                      "Annotation2Metadata", false, false)
+-INITIALIZE_PASS_END(Annotation2MetadataLegacy, DEBUG_TYPE,
+-                    "Annotation2Metadata", false, false)
+-
+-ModulePass *llvm::createAnnotation2MetadataLegacyPass() {
+-  return new Annotation2MetadataLegacy();
+-}
+-
+ PreservedAnalyses Annotation2MetadataPass::run(Module &M,
+                                                ModuleAnalysisManager &AM) {
+   convertAnnotation2Metadata(M);
+diff --git a/llvm/lib/Transforms/IPO/Attributor.cpp b/llvm/lib/Transforms/IPO/Attributor.cpp
+index 3485a9af1633..6cb74cd4aacd 100644
+--- a/llvm/lib/Transforms/IPO/Attributor.cpp
++++ b/llvm/lib/Transforms/IPO/Attributor.cpp
+@@ -3747,98 +3747,3 @@ template <> struct DOTGraphTraits<AADepGraph *> : public DefaultDOTGraphTraits {
+ };
+ 
+ } // end namespace llvm
+-
+-namespace {
+-
+-struct AttributorLegacyPass : public ModulePass {
+-  static char ID;
+-
+-  AttributorLegacyPass() : ModulePass(ID) {
+-    initializeAttributorLegacyPassPass(*PassRegistry::getPassRegistry());
+-  }
+-
+-  bool runOnModule(Module &M) override {
+-    if (skipModule(M))
+-      return false;
+-
+-    AnalysisGetter AG;
+-    SetVector<Function *> Functions;
+-    for (Function &F : M)
+-      Functions.insert(&F);
+-
+-    CallGraphUpdater CGUpdater;
+-    BumpPtrAllocator Allocator;
+-    InformationCache InfoCache(M, AG, Allocator, /* CGSCC */ nullptr);
+-    return runAttributorOnFunctions(InfoCache, Functions, AG, CGUpdater,
+-                                    /* DeleteFns*/ true,
+-                                    /* IsModulePass */ true);
+-  }
+-
+-  void getAnalysisUsage(AnalysisUsage &AU) const override {
+-    // FIXME: Think about passes we will preserve and add them here.
+-    AU.addRequired<TargetLibraryInfoWrapperPass>();
+-  }
+-};
+-
+-struct AttributorCGSCCLegacyPass : public CallGraphSCCPass {
+-  static char ID;
+-
+-  AttributorCGSCCLegacyPass() : CallGraphSCCPass(ID) {
+-    initializeAttributorCGSCCLegacyPassPass(*PassRegistry::getPassRegistry());
+-  }
+-
+-  bool runOnSCC(CallGraphSCC &SCC) override {
+-    if (skipSCC(SCC))
+-      return false;
+-
+-    SetVector<Function *> Functions;
+-    for (CallGraphNode *CGN : SCC)
+-      if (Function *Fn = CGN->getFunction())
+-        if (!Fn->isDeclaration())
+-          Functions.insert(Fn);
+-
+-    if (Functions.empty())
+-      return false;
+-
+-    AnalysisGetter AG;
+-    CallGraph &CG = const_cast<CallGraph &>(SCC.getCallGraph());
+-    CallGraphUpdater CGUpdater;
+-    CGUpdater.initialize(CG, SCC);
+-    Module &M = *Functions.back()->getParent();
+-    BumpPtrAllocator Allocator;
+-    InformationCache InfoCache(M, AG, Allocator, /* CGSCC */ &Functions);
+-    return runAttributorOnFunctions(InfoCache, Functions, AG, CGUpdater,
+-                                    /* DeleteFns */ false,
+-                                    /* IsModulePass */ false);
+-  }
+-
+-  void getAnalysisUsage(AnalysisUsage &AU) const override {
+-    // FIXME: Think about passes we will preserve and add them here.
+-    AU.addRequired<TargetLibraryInfoWrapperPass>();
+-    CallGraphSCCPass::getAnalysisUsage(AU);
+-  }
+-};
+-
+-} // end anonymous namespace
+-
+-Pass *llvm::createAttributorLegacyPass() { return new AttributorLegacyPass(); }
+-Pass *llvm::createAttributorCGSCCLegacyPass() {
+-  return new AttributorCGSCCLegacyPass();
+-}
+-
+-char AttributorLegacyPass::ID = 0;
+-char AttributorCGSCCLegacyPass::ID = 0;
+-
+-INITIALIZE_PASS_BEGIN(AttributorLegacyPass, "attributor",
+-                      "Deduce and propagate attributes", false, false)
+-INITIALIZE_PASS_DEPENDENCY(TargetLibraryInfoWrapperPass)
+-INITIALIZE_PASS_END(AttributorLegacyPass, "attributor",
+-                    "Deduce and propagate attributes", false, false)
+-INITIALIZE_PASS_BEGIN(AttributorCGSCCLegacyPass, "attributor-cgscc",
+-                      "Deduce and propagate attributes (CGSCC pass)", false,
+-                      false)
+-INITIALIZE_PASS_DEPENDENCY(TargetLibraryInfoWrapperPass)
+-INITIALIZE_PASS_DEPENDENCY(CallGraphWrapperPass)
+-INITIALIZE_PASS_END(AttributorCGSCCLegacyPass, "attributor-cgscc",
+-                    "Deduce and propagate attributes (CGSCC pass)", false,
+-                    false)
+diff --git a/llvm/lib/Transforms/IPO/ConstantMerge.cpp b/llvm/lib/Transforms/IPO/ConstantMerge.cpp
+index 77bc377f4514..06d258fdb4e7 100644
+--- a/llvm/lib/Transforms/IPO/ConstantMerge.cpp
++++ b/llvm/lib/Transforms/IPO/ConstantMerge.cpp
+@@ -251,32 +251,3 @@ PreservedAnalyses ConstantMergePass::run(Module &M, ModuleAnalysisManager &) {
+     return PreservedAnalyses::all();
+   return PreservedAnalyses::none();
+ }
+-
+-namespace {
+-
+-struct ConstantMergeLegacyPass : public ModulePass {
+-  static char ID; // Pass identification, replacement for typeid
+-
+-  ConstantMergeLegacyPass() : ModulePass(ID) {
+-    initializeConstantMergeLegacyPassPass(*PassRegistry::getPassRegistry());
+-  }
+-
+-  // For this pass, process all of the globals in the module, eliminating
+-  // duplicate constants.
+-  bool runOnModule(Module &M) override {
+-    if (skipModule(M))
+-      return false;
+-    return mergeConstants(M);
+-  }
+-};
+-
+-} // end anonymous namespace
+-
+-char ConstantMergeLegacyPass::ID = 0;
+-
+-INITIALIZE_PASS(ConstantMergeLegacyPass, "constmerge",
+-                "Merge Duplicate Global Constants", false, false)
+-
+-ModulePass *llvm::createConstantMergePass() {
+-  return new ConstantMergeLegacyPass();
+-}
+diff --git a/llvm/lib/Transforms/IPO/ElimAvailExtern.cpp b/llvm/lib/Transforms/IPO/ElimAvailExtern.cpp
+index 7f138d206fac..2ba1ff45b3db 100644
+--- a/llvm/lib/Transforms/IPO/ElimAvailExtern.cpp
++++ b/llvm/lib/Transforms/IPO/ElimAvailExtern.cpp
+@@ -70,33 +70,3 @@ EliminateAvailableExternallyPass::run(Module &M, ModuleAnalysisManager &) {
+     return PreservedAnalyses::all();
+   return PreservedAnalyses::none();
+ }
+-
+-namespace {
+-
+-struct EliminateAvailableExternallyLegacyPass : public ModulePass {
+-  static char ID; // Pass identification, replacement for typeid
+-
+-  EliminateAvailableExternallyLegacyPass() : ModulePass(ID) {
+-    initializeEliminateAvailableExternallyLegacyPassPass(
+-        *PassRegistry::getPassRegistry());
+-  }
+-
+-  // run - Do the EliminateAvailableExternally pass on the specified module,
+-  // optionally updating the specified callgraph to reflect the changes.
+-  bool runOnModule(Module &M) override {
+-    if (skipModule(M))
+-      return false;
+-    return eliminateAvailableExternally(M);
+-  }
+-};
+-
+-} // end anonymous namespace
+-
+-char EliminateAvailableExternallyLegacyPass::ID = 0;
+-
+-INITIALIZE_PASS(EliminateAvailableExternallyLegacyPass, "elim-avail-extern",
+-                "Eliminate Available Externally Globals", false, false)
+-
+-ModulePass *llvm::createEliminateAvailableExternallyPass() {
+-  return new EliminateAvailableExternallyLegacyPass();
+-}
+diff --git a/llvm/lib/Transforms/IPO/ForceFunctionAttrs.cpp b/llvm/lib/Transforms/IPO/ForceFunctionAttrs.cpp
+index b10c2ea13469..2b8411d32fec 100644
+--- a/llvm/lib/Transforms/IPO/ForceFunctionAttrs.cpp
++++ b/llvm/lib/Transforms/IPO/ForceFunctionAttrs.cpp
+@@ -80,32 +80,3 @@ PreservedAnalyses ForceFunctionAttrsPass::run(Module &M,
+   // Just conservatively invalidate analyses, this isn't likely to be important.
+   return PreservedAnalyses::none();
+ }
+-
+-namespace {
+-struct ForceFunctionAttrsLegacyPass : public ModulePass {
+-  static char ID; // Pass identification, replacement for typeid
+-  ForceFunctionAttrsLegacyPass() : ModulePass(ID) {
+-    initializeForceFunctionAttrsLegacyPassPass(
+-        *PassRegistry::getPassRegistry());
+-  }
+-
+-  bool runOnModule(Module &M) override {
+-    if (!hasForceAttributes())
+-      return false;
+-
+-    for (Function &F : M.functions())
+-      forceAttributes(F);
+-
+-    // Conservatively assume we changed something.
+-    return true;
+-  }
+-};
+-}
+-
+-char ForceFunctionAttrsLegacyPass::ID = 0;
+-INITIALIZE_PASS(ForceFunctionAttrsLegacyPass, "forceattrs",
+-                "Force set function attributes", false, false)
+-
+-Pass *llvm::createForceFunctionAttrsLegacyPass() {
+-  return new ForceFunctionAttrsLegacyPass();
+-}
+diff --git a/llvm/lib/Transforms/IPO/FunctionAttrs.cpp b/llvm/lib/Transforms/IPO/FunctionAttrs.cpp
+index 76a89a8b673c..68a4860dc190 100644
+--- a/llvm/lib/Transforms/IPO/FunctionAttrs.cpp
++++ b/llvm/lib/Transforms/IPO/FunctionAttrs.cpp
+@@ -1808,42 +1808,6 @@ PreservedAnalyses PostOrderFunctionAttrsPass::run(LazyCallGraph::SCC &C,
+   return PA;
+ }
+ 
+-namespace {
+-
+-struct PostOrderFunctionAttrsLegacyPass : public CallGraphSCCPass {
+-  // Pass identification, replacement for typeid
+-  static char ID;
+-
+-  PostOrderFunctionAttrsLegacyPass() : CallGraphSCCPass(ID) {
+-    initializePostOrderFunctionAttrsLegacyPassPass(
+-        *PassRegistry::getPassRegistry());
+-  }
+-
+-  bool runOnSCC(CallGraphSCC &SCC) override;
+-
+-  void getAnalysisUsage(AnalysisUsage &AU) const override {
+-    AU.setPreservesCFG();
+-    AU.addRequired<AssumptionCacheTracker>();
+-    getAAResultsAnalysisUsage(AU);
+-    CallGraphSCCPass::getAnalysisUsage(AU);
+-  }
+-};
+-
+-} // end anonymous namespace
+-
+-char PostOrderFunctionAttrsLegacyPass::ID = 0;
+-INITIALIZE_PASS_BEGIN(PostOrderFunctionAttrsLegacyPass, "function-attrs",
+-                      "Deduce function attributes", false, false)
+-INITIALIZE_PASS_DEPENDENCY(AAResultsWrapperPass)
+-INITIALIZE_PASS_DEPENDENCY(AssumptionCacheTracker)
+-INITIALIZE_PASS_DEPENDENCY(CallGraphWrapperPass)
+-INITIALIZE_PASS_END(PostOrderFunctionAttrsLegacyPass, "function-attrs",
+-                    "Deduce function attributes", false, false)
+-
+-Pass *llvm::createPostOrderFunctionAttrsLegacyPass() {
+-  return new PostOrderFunctionAttrsLegacyPass();
+-}
+-
+ template <typename AARGetterT>
+ static bool runImpl(CallGraphSCC &SCC, AARGetterT AARGetter) {
+   SmallVector<Function *, 8> Functions;
+@@ -1854,12 +1818,6 @@ static bool runImpl(CallGraphSCC &SCC, AARGetterT AARGetter) {
+   return !deriveAttrsInPostOrder(Functions, AARGetter).empty();
+ }
+ 
+-bool PostOrderFunctionAttrsLegacyPass::runOnSCC(CallGraphSCC &SCC) {
+-  if (skipSCC(SCC))
+-    return false;
+-  return runImpl(SCC, LegacyAARGetter(*this));
+-}
+-
+ static bool addNoRecurseAttrsTopDown(Function &F) {
+   // We check the preconditions for the function prior to calling this to avoid
+   // the cost of building up a reversible post-order list. We assert them here
+diff --git a/llvm/lib/Transforms/IPO/GlobalDCE.cpp b/llvm/lib/Transforms/IPO/GlobalDCE.cpp
+index 2f2bb174a8c8..4aa5ae8f6a03 100644
+--- a/llvm/lib/Transforms/IPO/GlobalDCE.cpp
++++ b/llvm/lib/Transforms/IPO/GlobalDCE.cpp
+@@ -42,47 +42,6 @@ STATISTIC(NumIFuncs,    "Number of indirect functions removed");
+ STATISTIC(NumVariables, "Number of global variables removed");
+ STATISTIC(NumVFuncs,    "Number of virtual functions removed");
+ 
+-namespace {
+-  class GlobalDCELegacyPass : public ModulePass {
+-  public:
+-    static char ID; // Pass identification, replacement for typeid
+-    GlobalDCELegacyPass() : ModulePass(ID) {
+-      initializeGlobalDCELegacyPassPass(*PassRegistry::getPassRegistry());
+-    }
+-
+-    // run - Do the GlobalDCE pass on the specified module, optionally updating
+-    // the specified callgraph to reflect the changes.
+-    //
+-    bool runOnModule(Module &M) override {
+-      if (skipModule(M))
+-        return false;
+-
+-      // We need a minimally functional dummy module analysis manager. It needs
+-      // to at least know about the possibility of proxying a function analysis
+-      // manager.
+-      FunctionAnalysisManager DummyFAM;
+-      ModuleAnalysisManager DummyMAM;
+-      DummyMAM.registerPass(
+-          [&] { return FunctionAnalysisManagerModuleProxy(DummyFAM); });
+-
+-      auto PA = Impl.run(M, DummyMAM);
+-      return !PA.areAllPreserved();
+-    }
+-
+-  private:
+-    GlobalDCEPass Impl;
+-  };
+-}
+-
+-char GlobalDCELegacyPass::ID = 0;
+-INITIALIZE_PASS(GlobalDCELegacyPass, "globaldce",
+-                "Dead Global Elimination", false, false)
+-
+-// Public interface to the GlobalDCEPass.
+-ModulePass *llvm::createGlobalDCEPass() {
+-  return new GlobalDCELegacyPass();
+-}
+-
+ /// Returns true if F is effectively empty.
+ static bool isEmptyFunction(Function *F) {
+   // Skip external functions.
+diff --git a/llvm/lib/Transforms/IPO/IPO.cpp b/llvm/lib/Transforms/IPO/IPO.cpp
+index 6fa706a91b0b..eb0a91bbbc90 100644
+--- a/llvm/lib/Transforms/IPO/IPO.cpp
++++ b/llvm/lib/Transforms/IPO/IPO.cpp
+@@ -23,43 +23,22 @@
+ using namespace llvm;
+ 
+ void llvm::initializeIPO(PassRegistry &Registry) {
+-  initializeAnnotation2MetadataLegacyPass(Registry);
+-  initializeConstantMergeLegacyPassPass(Registry);
+   initializeDAEPass(Registry);
+   initializeDAHPass(Registry);
+-  initializeForceFunctionAttrsLegacyPassPass(Registry);
+-  initializeGlobalDCELegacyPassPass(Registry);
+   initializeAlwaysInlinerLegacyPassPass(Registry);
+-  initializeInferFunctionAttrsLegacyPassPass(Registry);
+   initializeLoopExtractorLegacyPassPass(Registry);
+   initializeSingleLoopExtractorPass(Registry);
+-  initializeAttributorLegacyPassPass(Registry);
+-  initializeAttributorCGSCCLegacyPassPass(Registry);
+-  initializePostOrderFunctionAttrsLegacyPassPass(Registry);
+   initializeBarrierNoopPass(Registry);
+-  initializeEliminateAvailableExternallyLegacyPassPass(Registry);
+ }
+ 
+ void LLVMInitializeIPO(LLVMPassRegistryRef R) {
+   initializeIPO(*unwrap(R));
+ }
+ 
+-void LLVMAddConstantMergePass(LLVMPassManagerRef PM) {
+-  unwrap(PM)->add(createConstantMergePass());
+-}
+-
+ void LLVMAddDeadArgEliminationPass(LLVMPassManagerRef PM) {
+   unwrap(PM)->add(createDeadArgEliminationPass());
+ }
+ 
+-void LLVMAddFunctionAttrsPass(LLVMPassManagerRef PM) {
+-  unwrap(PM)->add(createPostOrderFunctionAttrsLegacyPass());
+-}
+-
+ void LLVMAddAlwaysInlinerPass(LLVMPassManagerRef PM) {
+   unwrap(PM)->add(llvm::createAlwaysInlinerLegacyPass());
+ }
+-
+-void LLVMAddGlobalDCEPass(LLVMPassManagerRef PM) {
+-  unwrap(PM)->add(createGlobalDCEPass());
+-}
+diff --git a/llvm/lib/Transforms/IPO/InferFunctionAttrs.cpp b/llvm/lib/Transforms/IPO/InferFunctionAttrs.cpp
+index 76f8f1a7a482..b4f7967ec60a 100644
+--- a/llvm/lib/Transforms/IPO/InferFunctionAttrs.cpp
++++ b/llvm/lib/Transforms/IPO/InferFunctionAttrs.cpp
+@@ -52,38 +52,3 @@ PreservedAnalyses InferFunctionAttrsPass::run(Module &M,
+   // out all the passes.
+   return PreservedAnalyses::none();
+ }
+-
+-namespace {
+-struct InferFunctionAttrsLegacyPass : public ModulePass {
+-  static char ID; // Pass identification, replacement for typeid
+-  InferFunctionAttrsLegacyPass() : ModulePass(ID) {
+-    initializeInferFunctionAttrsLegacyPassPass(
+-        *PassRegistry::getPassRegistry());
+-  }
+-
+-  void getAnalysisUsage(AnalysisUsage &AU) const override {
+-    AU.addRequired<TargetLibraryInfoWrapperPass>();
+-  }
+-
+-  bool runOnModule(Module &M) override {
+-    if (skipModule(M))
+-      return false;
+-
+-    auto GetTLI = [this](Function &F) -> TargetLibraryInfo & {
+-      return this->getAnalysis<TargetLibraryInfoWrapperPass>().getTLI(F);
+-    };
+-    return inferAllPrototypeAttributes(M, GetTLI);
+-  }
+-};
+-}
+-
+-char InferFunctionAttrsLegacyPass::ID = 0;
+-INITIALIZE_PASS_BEGIN(InferFunctionAttrsLegacyPass, "inferattrs",
+-                      "Infer set function attributes", false, false)
+-INITIALIZE_PASS_DEPENDENCY(TargetLibraryInfoWrapperPass)
+-INITIALIZE_PASS_END(InferFunctionAttrsLegacyPass, "inferattrs",
+-                    "Infer set function attributes", false, false)
+-
+-Pass *llvm::createInferFunctionAttrsLegacyPass() {
+-  return new InferFunctionAttrsLegacyPass();
+-}
+diff --git a/llvm/lib/Transforms/IPO/PassManagerBuilder.cpp b/llvm/lib/Transforms/IPO/PassManagerBuilder.cpp
+index ed394a1822de..4fdd2c9073ac 100644
+--- a/llvm/lib/Transforms/IPO/PassManagerBuilder.cpp
++++ b/llvm/lib/Transforms/IPO/PassManagerBuilder.cpp
+@@ -273,11 +273,6 @@ void PassManagerBuilder::addVectorPasses(legacy::PassManagerBase &PM,
+ 
+ void PassManagerBuilder::populateModulePassManager(
+     legacy::PassManagerBase &MPM) {
+-  MPM.add(createAnnotation2MetadataLegacyPass());
+-
+-  // Allow forcing function attributes as a debugging and tuning aid.
+-  MPM.add(createForceFunctionAttrsLegacyPass());
+-
+   // If all optimizations are disabled, just run the always-inline pass and,
+   // if enabled, the function merging pass.
+   if (OptLevel == 0) {
+@@ -295,9 +290,6 @@ void PassManagerBuilder::populateModulePassManager(
+ 
+   addInitialAliasAnalysisPasses(MPM);
+ 
+-  // Infer attributes about declarations if possible.
+-  MPM.add(createInferFunctionAttrsLegacyPass());
+-
+   if (OptLevel > 2)
+     MPM.add(createCallSiteSplittingPass());
+ 
+@@ -317,15 +309,11 @@ void PassManagerBuilder::populateModulePassManager(
+   MPM.add(createGlobalsAAWrapperPass());
+ 
+   // Start of CallGraph SCC passes.
+-  bool RunInliner = false;
+   if (Inliner) {
+     MPM.add(Inliner);
+     Inliner = nullptr;
+-    RunInliner = true;
+   }
+ 
+-  MPM.add(createPostOrderFunctionAttrsLegacyPass());
+-
+   addFunctionSimplificationPasses(MPM);
+ 
+   // FIXME: This is a HACK! The inliner pass above implicitly creates a CGSCC
+@@ -333,28 +321,6 @@ void PassManagerBuilder::populateModulePassManager(
+   // we must insert a no-op module pass to reset the pass manager.
+   MPM.add(createBarrierNoopPass());
+ 
+-  if (OptLevel > 1)
+-    // Remove avail extern fns and globals definitions if we aren't
+-    // compiling an object file for later LTO. For LTO we want to preserve
+-    // these so they are eligible for inlining at link-time. Note if they
+-    // are unreferenced they will be removed by GlobalDCE later, so
+-    // this only impacts referenced available externally globals.
+-    // Eventually they will be suppressed during codegen, but eliminating
+-    // here enables more opportunity for GlobalDCE as it may make
+-    // globals referenced by available external functions dead
+-    // and saves running remaining passes on the eliminated functions.
+-    MPM.add(createEliminateAvailableExternallyPass());
+-
+-  // The inliner performs some kind of dead code elimination as it goes,
+-  // but there are cases that are not really caught by it. We might
+-  // at some point consider teaching the inliner about them, but it
+-  // is OK for now to run GlobalOpt + GlobalDCE in tandem as their
+-  // benefits generally outweight the cost, making the whole pipeline
+-  // faster.
+-  if (RunInliner) {
+-    MPM.add(createGlobalDCEPass());
+-  }
+-
+   // We add a fresh GlobalsModRef run at this point. This is particularly
+   // useful as the above will have inlined, DCE'ed, and function-attr
+   // propagated everything. We should at this point have a reasonably minimal
+@@ -382,13 +348,6 @@ void PassManagerBuilder::populateModulePassManager(
+ 
+   addVectorPasses(MPM, /* IsFullLTO */ false);
+ 
+-  // GlobalOpt already deletes dead functions and globals, at -O2 try a
+-  // late pass of GlobalDCE.  It is capable of deleting dead cycles.
+-  if (OptLevel > 1) {
+-    MPM.add(createGlobalDCEPass());         // Remove dead fns and globals.
+-    MPM.add(createConstantMergePass());     // Merge dup global constants
+-  }
+-
+   // LoopSink pass sinks instructions hoisted by LICM, which serves as a
+   // canonicalization pass that enables other optimizations. As a result,
+   // LoopSink pass needs to be a very late IR pass to avoid undoing LICM
+diff --git a/llvm/test/CodeGen/ARM/pr26669.ll b/llvm/test/CodeGen/ARM/pr26669.ll
+deleted file mode 100644
+index b3de1843da38..000000000000
+--- a/llvm/test/CodeGen/ARM/pr26669.ll
++++ /dev/null
+@@ -1,31 +0,0 @@
+-; RUN: opt -S -globaldce -sjljehprepare < %s | FileCheck %s
+-target datalayout = "e-m:o-p:32:32-f64:32:64-v64:32:64-v128:32:128-a:0:32-n32-S32"
+-target triple = "thumbv7--ios5.0.0"
+-
+-define void @g() personality ptr @__gxx_personality_sj0 {
+-entry:
+-  %exn.slot = alloca ptr
+-  %ehselector.slot = alloca i32
+-  invoke void @f()
+-          to label %try.cont unwind label %lpad
+-
+-lpad:                                             ; preds = %entry
+-  %0 = landingpad { ptr, i32 }
+-          cleanup
+-  br label %try.cont
+-
+-try.cont:                                         ; preds = %catch, %invoke.cont
+-  ret void
+-}
+-
+-declare void @f()
+-
+-declare i32 @__gxx_personality_sj0(...)
+-
+-; CHECK-LABEL: define void @g(
+-; CHECK: call void @llvm.eh.sjlj.callsite(
+-; CHECK: call void @_Unwind_SjLj_Register(
+-; CHECK: invoke void @f(
+-; CHECK: landingpad
+-; CHECK-NEXT: cleanup
+-; CHECK: call void @_Unwind_SjLj_Unregister(
+diff --git a/llvm/test/Other/opt-legacy-syntax-deprecation.ll b/llvm/test/Other/opt-legacy-syntax-deprecation.ll
+index b7247a7ceef4..a5a33564fd7e 100644
+--- a/llvm/test/Other/opt-legacy-syntax-deprecation.ll
++++ b/llvm/test/Other/opt-legacy-syntax-deprecation.ll
+@@ -3,7 +3,7 @@
+ ; RUN: opt /dev/null -disable-output 2>&1 | FileCheck %s --check-prefix=OK --allow-empty
+ ; RUN: opt /dev/null -disable-output -passes=instcombine 2>&1 | FileCheck %s --check-prefix=OK --allow-empty
+ ; RUN: not opt /dev/null -disable-output -instcombine 2>&1 | FileCheck %s --check-prefix=WARN
+-; RUN: not opt /dev/null -disable-output -instcombine -globaldce 2>&1 | FileCheck %s --check-prefix=WARN
++; RUN: not opt /dev/null -disable-output -instcombine -always-inline 2>&1 | FileCheck %s --check-prefix=WARN
+ ; RUN: opt /dev/null -disable-output -instcombine -enable-new-pm=0 2>&1 | FileCheck %s --check-prefix=OK --allow-empty
+ ; RUN: opt /dev/null -disable-output -codegenprepare -mtriple=x86_64-unknown-linux-gnu 2>&1 | FileCheck %s --check-prefix=OK --allow-empty
+ 
+diff --git a/llvm/tools/bugpoint/ExtractFunction.cpp b/llvm/tools/bugpoint/ExtractFunction.cpp
+index 5047aa35d7e7..dd9a82c32035 100644
+--- a/llvm/tools/bugpoint/ExtractFunction.cpp
++++ b/llvm/tools/bugpoint/ExtractFunction.cpp
+@@ -133,7 +133,6 @@ BugDriver::performFinalCleanups(std::unique_ptr<Module> M,
+     I->setLinkage(GlobalValue::ExternalLinkage);
+ 
+   std::vector<std::string> CleanupPasses;
+-  CleanupPasses.push_back("globaldce");
+ 
+   if (MayModifySemantics)
+     CleanupPasses.push_back("deadarghaX0r");
+-- 
+2.39.2
+
