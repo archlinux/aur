@@ -1,0 +1,13 @@
+pkgbase = udev-usb-sync
+	pkgdesc = Disable writecache when USB storage device is plugged
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://codeberg.org/wonky/udev-usb-sync
+	arch = any
+	license = MIT
+	depends = hdparm
+	provides = udev-usb-sync
+	source = 99-usb-sync.rules
+	sha256sums = ed0253bbbd5b64529efd752978ba17176e3ff23d3f7f220bbacd3fa3a3691df9
+
+pkgname = udev-usb-sync

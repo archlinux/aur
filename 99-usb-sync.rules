@@ -1,0 +1,3 @@
+# rule to disable write cache for usb storage
+# requires hdparm to be installed
+ACTION=="add|change", KERNEL=="sd[a-z]", ENV{ID_USB_TYPE}=="disk", RUN+="/usr/bin/hdparm -W 0 /dev/%k"
