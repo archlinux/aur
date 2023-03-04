@@ -1,7 +1,7 @@
 # Maintainer: TimeTrap <844177178@qq.com>
 pkgname=xmcl-launcher-bin
 _pkgname=xmcl-launcher
-pkgver=0.34.0
+pkgver=0.34.1
 pkgrel=1
 pkgdesc="X Minecraft Launcher - 一个现代化的 Minecraft 启动器"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
     "https://github.com/Voxelum/x-minecraft-launcher/releases/download/v${pkgver}/xmcl-${pkgver}-amd64.deb"
     "xmcl.png"
 )
-sha256sums=('fcc244d946ad29a642801c37eb093d7853c23ad1d66d413ad77b39b48b38152e'
+sha256sums=('36b334921f83f6b32fcef0e0a4b174454cfac3fb67a91fb8ebbed1248bca3390'
             '7292bbcf951bba1e34d265925c1ca5f786198a3b289a081e134e0e59b743e742')
 
 package(){
