@@ -58,7 +58,7 @@ prepare() {
     echo "Setting config..."
     cp ../config .config
     make olddefconfig
-    diff -u ../config .config || :
+    diff -u ../config .config
 
     make -s kernelrelease > version
     echo "Prepared $pkgbase version $(<version)"
