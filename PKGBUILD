@@ -7,7 +7,7 @@ groups=(
 )
 epoch=1
 pkgver=0.3.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Meta package that depends on phc intel kernel driver, helper script and initscript."
 url="https://gitlab.com/linux-phc/phc-intel"
 arch=('any')
@@ -32,7 +32,7 @@ sha256sums=(
 
 pkgver() {
   # Set version to be the same as the installed package `PHC-INTEL-MODULE`:
-  pacman -Q PHC-INTEL-MODULE | head -n1 | awk '{print $2}' | awk -F- '{print $1}'
+  pacman -Q PHC-INTEL-MODULE | sort | head -n1 | awk '{print $2}' | awk -F- '{print $1}'
 }
 
 package() {
