@@ -16,6 +16,11 @@ url="https://github.com/frappe/${pkgname}"
 license=("GPL3")
 depends=("frappe-bench" "nodejs" "python")
 makedepends=("python-build" "python-installer")
+optdepends=("apache: HTTP server"
+    "certbot: Creates SSL certificates."
+    "mariadb: Database"
+    "nginx: HTTP server"
+    "postgresql: Database")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
     "${pkgname}.sysusers"
