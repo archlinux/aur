@@ -9,7 +9,7 @@ pkgname=(
 )
 _pkgname=visualboyadvance-m
 pkgver=2.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Nintendo GameBoy Advance emulator'
 arch=(x86_64)
 url=https://vba-m.com
@@ -45,6 +45,8 @@ prepare() {
   cd ${_pkgname}
   # Unbundle doctest (bundled one is not glibc 2.34 compatible)
   sed -e 's|${CMAKE_SOURCE_DIR}/third_party|/usr|' -i src/wx/tests/CMakeLists.txt
+  # Fix build with openal 1.23
+  sed -e '/AL_NO_PROTOTYPES/d' -i src/wx/openal.h
 }
 
 #pkgver() {
