@@ -1,6 +1,6 @@
 pkgbase = python-textual
 	pkgdesc = Text User Interface using Rich
-	pkgver = 0.12.1
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/Textualize/textual
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-textual
 	optdepends = python-click: for click event as mouse button
 	optdepends = python-msgpack: for MessagePack serializer
 	optdepends = python-httpx: for async support
-	source = textual-0.12.1.tar.gz::https://github.com/Textualize/textual/archive/v0.12.1.tar.gz
-	sha512sums = d84801c18f8a0b6316c9b8dcfa94fb4564e35949396b88461b9043dec43ce4d00b20ce927be48b8b7c80d3049bd17a4b163078666cb82889c4b9a934810c45cc
+	source = textual-0.13.0.tar.gz::https://github.com/Textualize/textual/archive/v0.13.0.tar.gz
+	sha512sums = fa204467f1eb64987358d4b5c91d330c04c9db32ae96bb40cfeec055880970e2770cc56a96e4462fe2d20c63cbf30e3789b50bcceb0f01aa93edc775b4e2cd37
 
 pkgname = python-textual
