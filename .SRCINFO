@@ -1,6 +1,6 @@
 pkgbase = lact
 	pkgdesc = AMDGPU Controller application
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/ilya-zlobintsev/LACT
 	arch = x86_64
@@ -9,8 +9,7 @@ pkgbase = lact
 	makedepends = rust
 	depends = gtk4
 	depends = hwdata
-	backup = etc/lact/config.yaml
-	source = lact-0.3.0.tar.gz::https://github.com/ilya-zlobintsev/LACT/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = c3063282f50728d93da169c0c1ca36061af2a38f9256b35b4c235c4622823dbc
+	source = lact-0.3.1.tar.gz::https://github.com/ilya-zlobintsev/LACT/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = aafa4f6db8d1364cca80168b99876b59b294ddcacc435cd8bf3efa7438d06d71
 
 pkgname = lact
