@@ -2,7 +2,7 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}-opti-git"
-pkgver=r2286.0e3547e
+pkgver=r2551.c4440993
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=(any)
@@ -46,7 +46,9 @@ makedepends=(
 	meson
 	vulkan-headers
 	wayland-protocols
-	xorgproto)
+	xorgproto
+	libliftoff
+	libdisplay-info)
 source=("${_pkgname}::git+https://github.com/hyprwm/Hyprland.git")
 conflicts=("${_pkgname}"
 	hyprland-git)
