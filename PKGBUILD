@@ -3,7 +3,7 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}-hidpi-xprop-git"
-pkgver=r2495.3bceabe2
+pkgver=r2551.c4440993
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=(any)
@@ -51,14 +51,16 @@ source=("${_pkgname}::git+https://github.com/hyprwm/Hyprland.git"
         "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
         "git+https://github.com/hyprwm/hyprland-protocols.git"
         "git+https://github.com/canihavesomecoffee/udis86.git"
-        "https://gitlab.freedesktop.org/lilydjwg/wlroots/-/commit/6c5ffcd1fee9e44780a6a8792f74ecfbe24a1ca7.patch")
+        "0001-xwayland-support-HiDPI-scale.patch"
+        "0002-Fix-configure_notify-event.patch")
 conflicts=("${_pkgname}")
 provides=(hyprland)
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'a37e441c309b35e5d9b5c5c637c96729c5348a523a7eaa25c6e24b1fcc3521a6')
+            '304aaf12cbd7dc198bf7e418d729b297ea61186d27c035e4a63a337399fcec76'
+            'e7cf16e39db2bde4dbc9d7ec3b4753f7643b1bf198a3179e6802a9c603437fe9')
 options=(!makeflags !buildflags !strip)
 
 pkgver() {
@@ -81,8 +83,8 @@ prepare() {
 	git -c protocol.file.allow=always submodule update subprojects/udis86
 	cd subprojects/wlroots
 	git revert -n 18595000f3a21502fd60bf213122859cc348f9af
-	git cherry-pick -n 03412e9aaba3f2bedacbeeef53469f13d6b6b277
-	patch -Np1 < "${srcdir}"/6c5ffcd1fee9e44780a6a8792f74ecfbe24a1ca7.patch
+	patch -Np1 -i "${srcdir}"/0001-xwayland-support-HiDPI-scale.patch
+	patch -Np1 -i "${srcdir}"/0002-Fix-configure_notify-event.patch
 }
 
 build() {
