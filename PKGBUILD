@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-git
-pkgver=0.16.0.r5511.e59f4d4f
+pkgver=0.17.0.r6161.3a200aa2
 pkgrel=1
 license=(custom:MIT)
 pkgdesc='Modular Wayland compositor library (git version)'
@@ -13,6 +13,7 @@ options=(debug)
 depends=(
 	glslang
 	libinput
+	libliftoff
 	libxcb
 	libxkbcommon
 	opengl-driver
@@ -23,8 +24,8 @@ depends=(
 	xcb-util-wm
 	seatd
 	vulkan-icd-loader
-	vulkan-validation-layers
-	xorg-xwayland)
+	xorg-xwayland
+	libdisplay-info)
 makedepends=(
 	git
 	meson
@@ -65,7 +66,7 @@ build () {
 }
 
 package () {
-	DESTDIR="${pkgdir}" meson install -C build
+	meson install -C "${_builddir}" --destdir="${pkgdir}"
 	install -Dm644 "${pkgname}/"LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
