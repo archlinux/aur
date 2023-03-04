@@ -12,7 +12,7 @@ groups=(
   'phc-intel'
 )
 pkgver=0.3
-pkgrel=5
+pkgrel=6
 pkgdesc="Helper and init scripts for phc-intel, a frequency driver for Intel CPUs with undervolting feature."
 url="https://gitlab.com/linux-phc/phc-intel"
 arch=('any')
@@ -49,9 +49,7 @@ package_phc-intel-scripts() {
   optdepends=()
   provides=()
   conflicts=()
-  replaces=(
-    "phc-intel<=0.3.2.rev44"
-  )
+  replaces=()
 
   backup=(
     'etc/default/phc-intel'
