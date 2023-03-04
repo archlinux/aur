@@ -1,10 +1,11 @@
 # Maintainer: CupIvan <mail@cupivan.ru>
 pkgname=xprinter-ppd
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="CUPS driver for Xprinter XP-420B, XP-DT325B, XP-H400B, XP-TT325B series"
 url="https://www.xprintertech.com/drivers-2"
 arch=('x86_64')
+options=('!strip')
 
 source=(
 "package.zip::https://www.xprintertech.com/label-printer-1"
