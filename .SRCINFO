@@ -1,7 +1,7 @@
 pkgbase = python-gdbgui
 	pkgdesc = Browser-based frontend to gdb. Debug C, C++, Go, or Rust.
 	pkgver = 0.15.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gdbgui.com
 	arch = any
 	license = GPL
