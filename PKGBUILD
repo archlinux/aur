@@ -1,20 +1,19 @@
 # Maintainer: Pylogmon <pylogmon@outlook.com>
 
 pkgname=pot-translation
-prjname=Pot
-exename=pot
+prjname=pot
 pkgver=0.0.1
 pkgrel=0
 pkgdesc="一个跨平台的划词翻译软件"
 arch=('x86_64')
-url="https://github.com/Pylogmon/Pot"
+url="https://github.com/Pylogmon/pot"
 license=('GPL3')
 depends=('libappindicator-gtk3' 'webkit2gtk' 'gtk3' 'libayatana-appindicator' 'xsel')
 makedepends=('nodejs' 'pnpm' 'rust')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 
-sha512sums=('SKIP')
+sha512sums=('07bc6c99a1dae31214fc629250a3dcdb0135b55309b58e2451c34daa65330010678b2742a1729964fbaef0f42d2faf3ab9257b773fcb01ae2bf920ee96965014')
 
 build(){
     cd $srcdir/${prjname}-${pkgver}
@@ -24,5 +23,5 @@ build(){
 }
 package() {
     cd $srcdir/${prjname}-${pkgver}
-    tar xpf src-tauri/target/release/bundle/deb/${exename}_${pkgver}_amd64/data.tar.gz -C ${pkgdir}
+    tar xpf src-tauri/target/release/bundle/deb/${prjname}_${pkgver}_amd64/data.tar.gz -C ${pkgdir}
 }
