@@ -1,23 +1,18 @@
 pkgbase = phc-intel
-	pkgdesc = Frequency driver for Intel CPUs with undervolting feature. DKMS-based kernel module, stable branch.
-	pkgver = 0.3.2.rev44
+	pkgdesc = Meta package that depends on phc intel kernel driver, helper script and initscript.
+	pkgver = 0.3.2.rev44.r52.20230220.f0f42bd
 	pkgrel = 1
+	epoch = 1
 	url = https://gitlab.com/linux-phc/phc-intel
 	arch = any
 	groups = linux-phc
 	groups = phc-intel
-	license = GPL2
-	depends = dkms
-	optdepends = phc-intel-scripts: To control the driver.
+	license = custom: public domain
+	depends = PHC-INTEL-MODULE
+	depends = phc-intel-scripts
+	depends = PHC-INTEL-INITSCRIPT
 	provides = linux-phc
-	provides = phc-intel-dkms=0.3.2.rev44
-	provides = phc-intel-dkms-stable=0.3.2.rev44
-	provides = phc-intel-patch=0.3.2.rev44
-	provides = PHC-INTEL-MODULE
-	conflicts = phc-intel-dkms
-	source = https://gitlab.com/linux-phc/phc-intel/-/archive/rev44/phc-intel-rev44.tar.bz2
-	source = dkms.conf.in
-	sha256sums = f3b70962e94c604adf9285f06ed1f1aaadcdee88f9ddf213255ed96c97d0c096
-	sha256sums = 9162c25d0df436a00d8b45d9e97c24a1f2999f5b8a4f78f2995df15d2d31baa7
+	source = license.dummypackage.txt
+	sha256sums = 0e0aeb02347977abaa12efcbd9ccfe4d69b9cdf60868c60eb3dda4f1c38b93cd
 
 pkgname = phc-intel
