@@ -4,7 +4,7 @@
 pkgname=qt5-location
 _basever=5.15.8
 pkgver=5.15.8+kde+r4
-pkgrel=1
+pkgrel=2
 _commit=435f931a7e42172e12ceba8f0d9da06ba4ec0bee
 arch=('x86_64')
 url='https://www.qt.io'
@@ -14,8 +14,10 @@ depends=('qt5-declarative')
 makedepends=('git')
 groups=('qt' 'qt5')
 _pkgfqn=${pkgname/5-/}
-source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('SKIP')
+source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
+        git+https://invent.kde.org/qt/qt/qtlocation-mapboxgl.git)
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
   cd $_pkgfqn
@@ -24,6 +26,11 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+
+  cd ${_pkgfqn}
+  git submodule init
+  git submodule set-url src/3rdparty/mapbox-gl-native "$srcdir"/qtlocation-mapboxgl
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
