@@ -6,8 +6,8 @@ groups=(
   'phc-intel'
 )
 epoch=1
-pkgver=0.3.2.rev44.r52.20230220.f0f42bd
-pkgrel=1
+pkgver=0.3.2
+pkgrel=2
 pkgdesc="Meta package that depends on phc intel kernel driver, helper script and initscript."
 url="https://gitlab.com/linux-phc/phc-intel"
 arch=('any')
