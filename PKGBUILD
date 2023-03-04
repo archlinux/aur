@@ -19,11 +19,11 @@ source=("https://github.com/theotherp/nzbhydra2/releases/download/v${pkgver}/${p
         'nzbhydra2.sysusers'
         'nzbhydra2.sh')
 
-sha256sums=('80557d136d675b419b8daab8253bec0ee4fea60ecc851695b40f07fd1fb8d2ab'
+sha256sums=('891ae087a3ff002733b0fbbc7c94f41e19541bd275eb54144f691a9e03f4aed0'
             '2fae64a1c5979d9f7b508f1e15d0f013b7cca1f2bbbdae56f546f4c362146b68'
             'a9ceeed2b50d55c5e554c0d4c615e855fe4d3889eb118e37908fa04ffb7cb003'
             '8f91eb4f98f7f5c11590b29b1394dfa7ca62ad115feeac4f402c9ac094fb925a'
-            '62d00aeeb4a1743d166ae46e98f4609db38426fc8866d9eb20ca7ef34b653c31')
+            'ed649f9b5d9f9f561829f8a563d28c1335945785b08b887634be15bc742cb4e7')
 
 package() {
     install -D -m 755 "${srcdir}/nzbhydra2.sh" "${pkgdir}/usr/bin/nzbhydra2"
