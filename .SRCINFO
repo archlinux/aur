@@ -1,6 +1,6 @@
 pkgbase = hyprland-nvidia-git
 	pkgdesc = A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (NVIDIA patch)
-	pkgver = r2550.31cd1042
+	pkgver = r2551.c4440993
 	pkgrel = 1
 	url = https://github.com/hyprwm/Hyprland
 	arch = any
@@ -52,6 +52,6 @@ pkgbase = hyprland-nvidia-git
 	source = hyprland::git+https://github.com/hyprwm/Hyprland.git
 	source = nvidia.patch
 	sha256sums = SKIP
-	sha256sums = c200d341641ee20a13b1893e27a9d823e9ef5ac2378e3cdecd0efc55a713db1c
+	sha256sums = b412eb6040cf7406d20fe9941e8a08f2a314ec4d4ec305fca9f12ac2b0280737
 
 pkgname = hyprland-nvidia-git
