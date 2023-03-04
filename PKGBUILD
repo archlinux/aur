@@ -1,7 +1,7 @@
 # Contributor: Michał Przybyś <michal@przybys.eu>
 # Maintainer: Thomas Bork <sudoBash418@gmail.com>
 pkgname=strawberry-qt5
-pkgver=1.0.14
+pkgver=1.0.15
 pkgrel=1
 pkgdesc="A music player aimed at audio enthusiasts and music collectors (Qt5 version)"
 arch=(x86_64)
@@ -29,7 +29,7 @@ provides=(strawberry)
 conflicts=(strawberry)
 
 source=("https://github.com/strawberrymusicplayer/strawberry/releases/download/${pkgver}/strawberry-${pkgver}.tar.xz")
-sha256sums=('cbb0e0557e97c6e29ca3bf093f2359c959c8b5e8d26c1b6734bb17a85abcd37f')
+sha256sums=('5470e72335dc9d3f6f4943387158cec067821a934e5d322de7d3ad4e8c50a9ef')
 
 
 build() {
