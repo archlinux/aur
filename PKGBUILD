@@ -1,4 +1,4 @@
-# Maintainer:  Andrew O'Neill <andrew at meanjollies dot com>
+# Maintainer:  Andrew O'Neill <andrew at haunted dot sh>
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Christoph Zeiler <rabyte*gmail>
 # Contributor: Rickard Gustafsson <rickard@allyourbase.se>
