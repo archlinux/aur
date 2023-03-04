@@ -9,7 +9,7 @@
 # Contributor: Christoph Vigano <mail@cvigano.de>
 
 pkgname=st-usable-git
-pkgver=0.9.r42.985081f
+pkgver=0.9.r43.e6e4518
 pkgrel=1
 pkgdesc='A simple virtual terminal emulator for X, with popular patches included.'
 arch=('i686' 'x86_64' 'armv7h')
@@ -29,13 +29,13 @@ _gitdir=${pkgname%'-git'}
 _startdir=$PWD
 
 pkgver() {
-    cd "${_gitdir}"
-    _pkgver=$(awk '/VERSION/ {print $3}' config.mk|head -1)
-    echo "${_pkgver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  cd "${_sourcedir}"
+  _pkgver=$(awk '/VERSION/ {print $3}' config.mk|head -1)
+  echo "${_pkgver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  patch --directory="$_sourcedir" --strip=0 < terminfo.patch
+  patch -d"$_sourcedir" -p1 < terminfo.patch
 
   # This package provides a mechanism to provide a custom config.h. Multiple
   # configuration states are determined by the presence of two files in
@@ -72,11 +72,14 @@ prepare() {
 
 build() {
   make -C "$_sourcedir" X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
+  mkdir "$_sourcedir/terminfo"
+  tic -sx -o "$_sourcedir/terminfo" "$_sourcedir/st.info"
 }
 
 package() {
   local shrdir="$pkgdir/usr/share"
   make -C "$_sourcedir" PREFIX=/usr DESTDIR="$pkgdir" install
+  find "$_sourcedir/terminfo/s/" -type f -exec install -m 0644 -D -t "$shrdir/terminfo/s/" {} \;
   install -m 0644 -D -t "$shrdir/applications/" "$_sourcedir/st.desktop"
   install -m 0644 -D -t "$shrdir/licenses/$_gitname" "$_sourcedir/LICENSE"
   install -m 0644 -D -t "$shrdir/doc/$_gitname" "$_sourcedir/README.md"

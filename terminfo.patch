@@ -1,10 +1,108 @@
---- Makefile.old	2019-02-09 12:50:41.000000000 +0100
-+++ Makefile	2019-11-07 00:00:24.487953923 +0100
-@@ -47,7 +47,6 @@
+From 277ce5043d9f2cd0a3578809110b63effbe1bda4 Mon Sep 17 00:00:00 2001
+From: DarthChungo <antonio@adaro.eu>
+Date: Sat, 4 Mar 2023 21:56:29 +0100
+Subject: [PATCH] Update terminfo files
+
+---
+ Makefile     |  1 -
+ config.def.h |  2 +-
+ st.info      | 26 +++++++++++++-------------
+ 3 files changed, 14 insertions(+), 15 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 95fafdf..3acbbba 100644
+--- a/Makefile
++++ b/Makefile
+@@ -49,7 +49,6 @@ install: st
  	mkdir -p $(DESTDIR)$(MANPREFIX)/man1
  	sed "s/VERSION/$(VERSION)/g" < st.1 > $(DESTDIR)$(MANPREFIX)/man1/st.1
  	chmod 644 $(DESTDIR)$(MANPREFIX)/man1/st.1
 -	tic -sx st.info
  	@echo Please see the README file regarding the terminfo entry of st.
+ 	mkdir -p $(DESTDIR)$(APPPREFIX)
+ 	cp -f st.desktop $(DESTDIR)$(APPPREFIX)
+diff --git a/config.def.h b/config.def.h
+index 9331755..3bd6eba 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -93,7 +93,7 @@ const int boxdraw_braille = 0;
+ static int bellvolume = 0;
  
- uninstall:
+ /* default TERM value */
+-char *termname = "st-256color";
++char *termname = "st-256color-ul";
+ 
+ /*
+  * spaces per tab
+diff --git a/st.info b/st.info
+index 7df13e8..a806b5c 100644
+--- a/st.info
++++ b/st.info
+@@ -1,4 +1,4 @@
+-st-mono| simpleterm monocolor,
++st-mono-uc| simpleterm monocolor with undercurl support,
+ 	Su,
+ 	acsc=+C\,D-A.B0E``aaffgghFiGjjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~,
+ 	am,
+@@ -194,8 +194,8 @@ st-mono| simpleterm monocolor,
+ 	Ss=\E[%p1%d q,
+ 	Sync=\EP=%p1%ds\E\\,
+ 
+-st| simpleterm,
+-	use=st-mono,
++st-uc| simpleterm with undercurl support,
++	use=st-mono-uc,
+ 	colors#8,
+ 	setab=\E[4%p1%dm,
+ 	setaf=\E[3%p1%dm,
+@@ -203,8 +203,8 @@ st| simpleterm,
+ 	setf=\E[3%?%p1%{1}%=%t4%e%p1%{3}%=%t6%e%p1%{4}%=%t1%e%p1%{6}%=%t3%e%p1%d%;m,
+ 	sgr=%?%p9%t\E(0%e\E(B%;\E[0%?%p6%t;1%;%?%p2%t;4%;%?%p1%p3%|%t;7%;%?%p4%t;5%;%?%p7%t;8%;m,
+ 
+-st-256color| simpleterm with 256 colors,
+-	use=st,
++st-256color-uc| simpleterm with 256 colors and undercurl support,
++	use=st-uc,
+ 	ccc,
+ 	colors#256,
+ 	oc=\E]104\007,
+@@ -214,28 +214,28 @@ st-256color| simpleterm with 256 colors,
+ 	setab=\E[%?%p1%{8}%<%t4%p1%d%e%p1%{16}%<%t10%p1%{8}%-%d%e48;5;%p1%d%;m,
+ 	setaf=\E[%?%p1%{8}%<%t3%p1%d%e%p1%{16}%<%t9%p1%{8}%-%d%e38;5;%p1%d%;m,
+ 
+-st-meta| simpleterm with meta key,
+-	use=st,
++st-meta-uc| simpleterm with meta key and undercurl support,
++	use=st-uc,
+ 	km,
+ 	rmm=\E[?1034l,
+ 	smm=\E[?1034h,
+ 	rs2=\E[4l\E>\E[?1034h,
+ 	is2=\E[4l\E>\E[?1034h,
+ 
+-st-meta-256color| simpleterm with meta key and 256 colors,
+-	use=st-256color,
++st-meta-uc-256color| simpleterm with meta key 256 colors with undercurl support,
++	use=st-256color-uc,
+ 	km,
+ 	rmm=\E[?1034l,
+ 	smm=\E[?1034h,
+ 	rs2=\E[4l\E>\E[?1034h,
+ 	is2=\E[4l\E>\E[?1034h,
+ 
+-st-bs| simpleterm with backspace as backspace,
+-	use=st,
++st-bs-uc| simpleterm with backspace as backspace and undercurl support,
++	use=st-uc,
+ 	kbs=\010,
+ 	kdch1=\177,
+ 
+-st-bs-256color| simpleterm with backspace as backspace and 256colors,
+-	use=st-256color,
++st-bs-uc-256color| simpleterm with backspace as backspace 256colors and undercurl support,
++	use=st-256color-uc,
+ 	kbs=\010,
+ 	kdch1=\177,
+-- 
+2.39.2
+
