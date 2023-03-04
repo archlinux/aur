@@ -21,13 +21,22 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+	cd "$srcdir/${_pkgname}"
+
+    # the units are installed with slightly different names to prevent conflict
+    # therefore the doc comments in them need to be updated as well
+    sed -i 's/shadowsocks-rust-local@/shadowsocks-rust-local-mp@/' shadowsocks-rust-local@.service.system shadowsocks-rust-local@.service.user
+    sed -i 's/shadowsocks-rust-server@/shadowsocks-rust-server-mp@/' shadowsocks-rust-server@.service.system shadowsocks-rust-server@.service.user
+}
+
 package() {
 	cd "$srcdir/${_pkgname}"
 
-    install -Dm644 shadowsocks-rust-local@.service.system "${pkgdir}/usr/lib/systemd/system/shadowsocks-rust-local@.service"
-    install -Dm644 shadowsocks-rust-server@.service.system "${pkgdir}/usr/lib/systemd/system/shadowsocks-rust-server@.service"
-    install -Dm644 shadowsocks-rust-local@.service.user "${pkgdir}/usr/lib/systemd/user/shadowsocks-rust-local@.service"
-    install -Dm644 shadowsocks-rust-server@.service.user "${pkgdir}/usr/lib/systemd/user/shadowsocks-rust-server@.service"
+    install -Dm644 shadowsocks-rust-local@.service.system "${pkgdir}/usr/lib/systemd/system/shadowsocks-rust-local-mp@.service"
+    install -Dm644 shadowsocks-rust-server@.service.system "${pkgdir}/usr/lib/systemd/system/shadowsocks-rust-server-mp@.service"
+    install -Dm644 shadowsocks-rust-local@.service.user "${pkgdir}/usr/lib/systemd/user/shadowsocks-rust-local-mp@.service"
+    install -Dm644 shadowsocks-rust-server@.service.user "${pkgdir}/usr/lib/systemd/user/shadowsocks-rust-server-mp@.service"
 
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
