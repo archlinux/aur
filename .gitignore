@@ -3,3 +3,4 @@ libfprint/*
 src/*
 *.zst
 *.~undo-tree~
+*.log
