@@ -3,9 +3,9 @@
 
 pkgname=qt5-location
 _basever=5.15.8
-pkgver=5.15.8+kde+r3
+pkgver=5.15.8+kde+r4
 pkgrel=1
-_commit=f991e28cb0a670597f1955585c76ce8a26ce9e4b
+_commit=435f931a7e42172e12ceba8f0d9da06ba4ec0bee
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
