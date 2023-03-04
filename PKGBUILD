@@ -73,11 +73,6 @@ _package() {
     -e "s#{{target}}#/usr/bin/${_executable##*/}#g" \
     "${srcdir}/${pkgbase}-unpatch.sh" \
     > "${pkgdir}/usr/share/libalpm/scripts/${pkgname}-unpatch"
-  sed \
-    -e "s#{{executable}}#${_executable}#g" \
-    -e "s#{{target}}#/usr/bin/${_executable##*/}#g" \
-    "${srcdir}/${pkgbase}-unpatch.sh" \
-    > "${pkgdir}/usr/share/libalpm/scripts/${pkgname}-unpatch"
 
   chmod 755 "${pkgdir}/usr/share/libalpm/scripts/${pkgname}-patch"
   chmod 755 "${pkgdir}/usr/share/libalpm/scripts/${pkgname}-unpatch"
