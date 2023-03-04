@@ -1,0 +1,27 @@
+pkgbase = mauikit-terminal-git
+	pkgdesc = Terminal support components for Maui applications
+	pkgver = 1.0.0.r1.gd76b87d
+	pkgrel = 1
+	url = https://invent.kde.org/maui/mauikit-terminal
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	groups = maui
+	license = GPL3
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = kconfig
+	depends = kcoreaddons
+	depends = ki18n
+	depends = mauikit-git
+	depends = qt5-base
+	depends = qt5-declarative
+	provides = mauikit-terminal
+	conflicts = mauikit-terminal
+	source = git+https://invent.kde.org/maui/mauikit-terminal.git
+	sha256sums = SKIP
+
+pkgname = mauikit-terminal-git
