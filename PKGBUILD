@@ -3,7 +3,7 @@
 pkgname=shadowsocks-rust-multiprofile-daemon-git
 _pkgname=shadowsocks-rust-multiprofile-daemon
 pkgver=r2.ec5efb7
-pkgrel=1
+pkgrel=2
 pkgdesc='Systemd units that make it easy to work with multiple shadowsocks-rust profiles.'
 arch=("any")
 url="https://github.com/spyophobia/shadowsocks-rust-multiprofile-daemon"
