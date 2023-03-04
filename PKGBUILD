@@ -1,6 +1,7 @@
 # Maintainer: Joan Figueras <ffigue at gmail dot com>
 # Contributor: Torge Matthies <openglfreak at googlemail dot com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Contributor: SoftExpert <softexpert at gmail dot com>
 
 _arch=x64v3
 pkgbase=linux-xanmod-lts-linux-bin-${_arch}
@@ -9,7 +10,7 @@ _major=6.1
 pkgver=${_major}.15
 xanmod=1
 pkgrel=${xanmod}
-pkgdesc="The Linux kernel and modules with Xanmod patches - Current Stable (MAIN) - Prebuilt version - ${_arch}"
+pkgdesc="The Linux kernel and modules with Xanmod patches - Current Stable (LTS) - Prebuilt version - ${_arch}"
 url="http://www.xanmod.org/"
 arch=(x86_64)
 license=(GPL2)
@@ -40,7 +41,7 @@ prepare() {
 }
 
 _package() {
-  pkgdesc="The Linux kernel and modules with Xanmod patches - Current Stable (MAIN) - Prebuilt version - ${_arch}"
+  pkgdesc="The Linux kernel and modules with Xanmod patches - Current Stable (LTS) - Prebuilt version - ${_arch}"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
@@ -69,7 +70,7 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Headers and scripts for building modules for the Linux Xanmod - Current Stable (MAIN) - Prebuilt version - ${_arch}"
+  pkgdesc="Headers and scripts for building modules for the Linux Xanmod - Current Stable (LTS) - Prebuilt version - ${_arch}"
   depends=(pahole)
 
   mkdir -p "${pkgdir}"/usr/share/doc
