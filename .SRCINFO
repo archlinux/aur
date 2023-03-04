@@ -1,7 +1,7 @@
 pkgbase = ceph-octopus
 	pkgdesc = Distributed, fault-tolerant storage platform delivering object, block, and file system
 	pkgver = 15.2.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ceph.com/
 	arch = x86_64
 	license = GPL
@@ -11,7 +11,7 @@ pkgbase = ceph-octopus
 	checkdepends = python-pylint
 	checkdepends = python-pytest
 	checkdepends = python-pytest-cov
-	makedepends = zstd=1.5.2
+	makedepends = zstd=1.5.4
 	makedepends = bash
 	makedepends = bc
 	makedepends = boost
@@ -65,7 +65,7 @@ pkgbase = ceph-octopus
 	makedepends = util-linux
 	makedepends = libuv
 	makedepends = libxml2
-	makedepends = librdkafka
+	makedepends = librdkafka1
 	makedepends = libpciaccess
 	makedepends = lsb-release
 	makedepends = lz4
@@ -146,9 +146,9 @@ pkgbase = ceph-octopus
 	makedepends = zlib
 	options = emptydirs
 	options = !lto
-	source = https://download.ceph.com/tarballs/ceph-octopus-15.2.17.tar.gz
+	source = https://download.ceph.com/tarballs/ceph-15.2.17.tar.gz
 	source = ceph.sysusers
-	source = zstd-1.5.2.tar.gz::https://github.com/facebook/zstd/archive/v1.5.2.tar.gz
+	source = zstd-1.5.4.tar.gz::https://github.com/facebook/zstd/archive/v1.5.4.tar.gz
 	source = ceph-14.2.0-cflags.patch
 	source = ceph-12.2.4-boost-build-none-options.patch
 	source = ceph-13.2.0-cflags.patch
@@ -162,7 +162,7 @@ pkgbase = ceph-octopus
 	source = fix_snappy_namespace_uint.patch
 	sha512sums = 952cd4db057fcab5efa3c6331fbc19cf1e904f5855266c2ed13e41ffb2e5a7d18ed133bd113fea493149005a182f429eef39931c4ceac7776aefe84a208a745a
 	sha512sums = 4354001c1abd9a0c385ba7bd529e3638fb6660b6a88d4e49706d4ac21c81b8e829303a20fb5445730bdac18c4865efb10bc809c1cd56d743c12aa9a52e160049
-	sha512sums = e107508a41fca50845cc2494e64adaba93efb95a2fa486fc962510a8ba4b2180d93067cae9870f119e88e5e8b28a046bc2240b0b23cdd8933d1fb1a6a9668c1e
+	sha512sums = b6f64850ceb6cfed831fff3c43508d2a72338862a96dd9430b1d3ebbfcee40201c8b6dcf8b6b603e252bb96f3f283c9cb07da7f24414187f5f1fea3b51e01863
 	sha512sums = 9e6bb46d5bbdc5d93f4f026b2a8d6bdb692d9ea6e7018c1bb0188d95ea8574c76238d968b340fd67ddaa3d8183b310e393e3549dc3a63a795fde696413b0ca94
 	sha512sums = 6ff46a90d76f667fa23be0f9eb1ed2fb7e30af9a2621aec19944d0a22a431a0f5721603c588286e483ff55c14aac920adfccb039c9678a87cc59640dd70367ae
 	sha512sums = 8ec0d668fefee12d2c7f5b5297dd81fc6a559f5823d069e6395d9b4240110eb8f95049d3054697a459948c1f3784b4450539849cf9d7f3b1aa1c7fbd96c475df
@@ -176,7 +176,7 @@ pkgbase = ceph-octopus
 	sha512sums = 4b4d0528d909fb735975db290bc8495ee626fc78d68b82b3525326cb69326cfc310c3078c529246f3d76cec590a3a7c4e92950009211590ebfe55583c4f5b71d
 
 pkgname = ceph-octopus
-	depends = ceph-octopus-libs=15.2.17-1
+	depends = ceph-octopus-libs=15.2.17-2
 	depends = boost-libs
 	depends = curl
 	depends = fuse2
@@ -232,8 +232,8 @@ pkgname = ceph-octopus-libs
 	conflicts = ceph-libs
 
 pkgname = ceph-octopus-mgr
-	depends = ceph-octopus=15.2.17-1
-	depends = ceph-octopus-libs=15.2.17-1
+	depends = ceph-octopus=15.2.17-2
+	depends = ceph-octopus-libs=15.2.17-2
 	depends = bash
 	depends = boost-libs
 	depends = coffeescript
