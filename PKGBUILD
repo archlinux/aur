@@ -3,7 +3,7 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}-nvidia-hidpi-git"
-pkgver=r2042.ga7ed3a5
+pkgver=r2551.c4440993
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (NVIDIA + HiDPI patch)"
 arch=(any)
@@ -37,7 +37,8 @@ depends=(
     seatd
     vulkan-icd-loader
     vulkan-validation-layers
-    xorg-xwayland-hidpi-xprop)
+    xorg-xwayland-hidpi-xprop
+    libdisplay-info)
 makedepends=(
     git
     cmake
@@ -89,6 +90,7 @@ build() {
     cd "${srcdir}/${_pkgname}"
     make fixwlr
     cd "./subprojects/wlroots/" && meson build/ --prefix="${srcdir}/tmpwlr" --buildtype=release && ninja -C build/ && mkdir -p "${srcdir}/tmpwlr" && ninja -C build/ install && cd ../../
+    cd subprojects/udis86 && cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -H./ -B./build -G Ninja && cmake --build ./build --config Release --target all -j$(shell nproc) && cd ../../
     make protocols
     make release
     cd ./hyprctl && make all && cd ..
