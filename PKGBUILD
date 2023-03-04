@@ -57,10 +57,10 @@ package()
     ## Rebuild the software since their contents were manipulated.
     rm -r "${pkgdir}"/usr/share/webapps/"${pkgname}"/env/
     python -m venv "${pkgdir}"/usr/share/webapps/"${pkgname}"/env/
-    "${pkgdir}"/usr/share/webapps/"${pkgname}"/env/bin/python -m pip install --force-reinstall -q wheel
+    "${pkgdir}"/usr/share/webapps/"${pkgname}"/env/bin/python -m pip install wheel
 
     for path in "${pkgdir}/usr/share/webapps/${pkgname}/apps/frappe/" "${pkgdir}/usr/share/webapps/${pkgname}/apps/erpnext/"; do
-        "${pkgdir}"/usr/share/webapps/"${pkgname}"/env/bin/python -m pip install --force-reinstall -qe "${path}"
+        "${pkgdir}"/usr/share/webapps/"${pkgname}"/env/bin/python -m pip install -e "${path}"
         cd "${path}" || exit 1
         yarn install
         yarn --check-files
