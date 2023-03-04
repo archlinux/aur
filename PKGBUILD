@@ -1,4 +1,4 @@
-# Maintainer:  Andrew O'Neill <andrew at meanjollies dot com>
+# Maintainer:  Andrew O'Neill <andrew at haunted dot sh>
 # Contributor: Josh VanderLinden <arch@cloudlery.com>
 
 pkgname=s6
