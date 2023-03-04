@@ -1,6 +1,6 @@
 pkgbase = openlens-bin
 	pkgdesc = The Kubernetes IDE (fork lens-bin without lenscloud-lens-extension). Read more - https://github.com/lensapp/lens/issues/5444
-	pkgver = 6.4.0
+	pkgver = 6.4.1
 	pkgrel = 1
 	url = https://k8slens.dev
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = openlens-bin
 	conflicts = lens-bin
 	source = OpenLens.desktop
 	sha256sums = 30ab2e9f91ca6be993b5893fb385a225c6d06f6d11caa305e0d109348b5d132c
-	source_x86_64 = OpenLens-6.4.0-x86_64.AppImage::https://github.com/beliys/OpenLens/releases/download/v6.4.0/OpenLens-6.4.0.x86_64.AppImage
-	sha256sums_x86_64 = 01c864332d9cc4f0afb0fe8af2655af55106cf10e19df84def33cdbdfddcc773
-	source_aarch64 = OpenLens-6.4.0-aarch64.AppImage::https://github.com/beliys/OpenLens/releases/download/v6.4.0/OpenLens-6.4.0.arm64.AppImage
-	sha256sums_aarch64 = 9cd10f240af7d47788dfe71b55f8b4200cde2a65abd998fb1406cab3bfc0c1e2
+	source_x86_64 = OpenLens-6.4.1-x86_64.AppImage::https://github.com/beliys/OpenLens/releases/download/v6.4.1/OpenLens-6.4.1.x86_64.AppImage
+	sha256sums_x86_64 = 31dba0e15e6ca0602ee8a8e90c7f5bfbe2c14e224aa5edfdddbd97accaf0fc4d
+	source_aarch64 = OpenLens-6.4.1-aarch64.AppImage::https://github.com/beliys/OpenLens/releases/download/v6.4.1/OpenLens-6.4.1.arm64.AppImage
+	sha256sums_aarch64 = 7148114d4ae900de1fb12be52ea4e5710079c7617d95d09d02e828f1826e7b8e
 
 pkgname = openlens-bin
