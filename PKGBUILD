@@ -6,7 +6,7 @@ _arch=x64v1
 pkgbase=linux-xanmod-linux-bin-${_arch}
 _pkgbase=linux-xanmod
 _major=6.2
-pkgver=${_major}.1
+pkgver=${_major}.2
 xanmod=1
 pkgrel=${xanmod}
 pkgdesc="The Linux kernel and modules with Xanmod patches - Current Stable (MAIN) - Prebuilt version - ${_arch}"
@@ -26,8 +26,8 @@ validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha256sums=('18090f25dd7fbbd45c779600681f48bb89f23cb85966f7491c260dbc6c998270'
-            'af2373f47343ee4de5e79c18c8d1d46785128bbceafb26d756a674ec73e332b8')
+sha256sums=('d77b948e3c75aed7003f055bba324bb497b6b8732169d9668d8ff212497959af'
+            '6be627bcbd83aa04b197b343cf8e5cd1cd826a16070b7b9ebc294c4659c8c9e3')
 
 prepare() {
   for _f in ${_image_files[@]} ; do
