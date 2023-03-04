@@ -1,12 +1,11 @@
 pkgbase = drogon
 	pkgdesc = A C++14/17 based HTTP web application framework running on Linux/macOS/Unix/Windows
 	pkgver = 1.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/an-tao/drogon
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	makedepends = git
 	makedepends = mariadb
 	makedepends = postgresql
 	makedepends = util-linux
@@ -17,8 +16,9 @@ pkgbase = drogon
 	depends = postgresql-libs
 	depends = sqlite
 	depends = hiredis
+	depends = trantor
 	source = drogon-1.8.3.tar.gz::https://github.com/an-tao/drogon/archive/v1.8.3.tar.gz
-	source = git+https://github.com/an-tao/trantor.git
+	source = https://github.com/an-tao/drogon/pull/1520.diff
 	sha256sums = db6d92a0c40ec52d5704fb4128860b9eecdc284653e8d85113b4219b96dc7129
 	sha256sums = SKIP
 

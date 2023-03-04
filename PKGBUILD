@@ -3,16 +3,16 @@
 
 pkgname=drogon
 pkgver=1.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A C++14/17 based HTTP web application framework running on Linux/macOS/Unix/Windows'
 arch=('x86_64')
-url="https://github.com/an-tao/$pkgname"
+url="https://github.com/an-tao/drogon"
 license=('MIT')
-depends=('brotli' 'c-ares' 'jsoncpp' 'mariadb-libs' 'postgresql-libs' 'sqlite' 'hiredis')
-makedepends=('cmake' 'git' 'mariadb' 'postgresql' 'util-linux')
+depends=('brotli' 'c-ares' 'jsoncpp' 'mariadb-libs' 'postgresql-libs' 'sqlite' 'hiredis' 'trantor')
+makedepends=('cmake' 'mariadb' 'postgresql' 'util-linux')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-	"git+https://github.com/an-tao/trantor.git"
+	"$url/pull/1520.diff"
 )
 sha256sums=(
 	'db6d92a0c40ec52d5704fb4128860b9eecdc284653e8d85113b4219b96dc7129'
@@ -20,7 +20,8 @@ sha256sums=(
 )
 
 prepare() {
-	mv -T trantor "$pkgname-$pkgver/trantor"
+	cd "$pkgname-$pkgver"
+	patch --forward --strip=1 --input="$srcdir/1520.diff"
 }
 
 build() {
@@ -29,7 +30,7 @@ build() {
 		-DCMAKE_CXX_FLAGS_RELEASE="$CXXFLAGS" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DBUILD_SHARED_LIBS=ON \
-		-DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+		-DUSE_SUBMODULE=OFF
 
 	cmake --build build
 }
