@@ -1,4 +1,4 @@
-# Maintainer:  Andrew O'Neill <andrew at meanjollies dot com>
+# Maintainer:  Andrew O'Neill <andrew at haunted dot sh>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Martin C. Doege <mdoege at compuserve dot com>
 # Contributor: kotyz <kotyz.king@gmail.com>
