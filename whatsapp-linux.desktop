@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=WhatsApp For Linux
+StartupWMClass=whatsapp
+Comment=WhatsApp Messenger.
+GenericName=Internet Messenger
+Exec=/opt/WhatsApp-linux-x64/WhatsApp
+Icon=whatsapp
+Type=Application
+Categories=Network;InstantMessaging;

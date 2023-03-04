@@ -1,0 +1,12 @@
+pkgbase = whatsapp-linux
+	pkgdesc = WhatsaApp Client for Linux.
+	pkgver = 6.3.r.
+	pkgrel = 1
+	url = https://gitlab.com/DemonKingSwarn/whatsapp-linux
+	arch = x86_64
+	license = GPL3
+	provides = whatsapp
+	source = git+https://gitlab.com/DemonKingSwarn/whatsapp-linux
+	md5sums = SKIP
+
+pkgname = whatsapp-linux
