@@ -11,4 +11,3 @@ pkgbase = python-ipaddress
 	sha256sums = 8cc01a7523042c3b1a01446f0318e8bbe0fc0d520ca651c986377e402a2e9b47
 
 pkgname = python-ipaddress
-
