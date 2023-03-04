@@ -7,11 +7,9 @@ pkgdesc='A non-blocking I/O tcp network lib based on c++14/17'
 arch=('x86_64')
 url="https://github.com/an-tao/trantor"
 license=('BSD')
-depends=('c-ares' 'openssl')
+depends=('c-ares' 'openssl' 'gcc-libs')
 makedepends=('cmake')
-source=(
-	"$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('2d47775b3091a1a103bea46f5da017dc03c39883f8d717cf6ba24bdcdf01a15d')
 
 build() {
