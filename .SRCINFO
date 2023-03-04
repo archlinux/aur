@@ -1,0 +1,14 @@
+pkgbase = sstools
+	pkgdesc = Make snapshots in a Btrfs filesystem.
+	pkgver = 0.2b
+	pkgrel = 1
+	url = https://github.com/mdomlop/sstools
+	arch = i686
+	arch = x86_64
+	license = GPLv3+
+	makedepends = btrfs-progs
+	backup = etc/sstab
+	source = https://github.com/mdomlop/sstools/archive/refs/tags/0.2b.tar.gz
+	md5sums = b1f60794e2ea55721321a2edcc0ddae3
+
+pkgname = sstools
