@@ -1,6 +1,6 @@
 pkgbase = egpu-switcher-bin
 	pkgdesc = Automatically detect and use eGPU on startup
-	pkgver = 0.18.2
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://github.com/hertg/egpu-switcher
 	install = egpu-switcher-bin.install
@@ -8,7 +8,7 @@ pkgbase = egpu-switcher-bin
 	license = GPL
 	provides = egpu-switcher
 	conflicts = egpu-switcher
-	source = egpu-switcher-bin-0.18.2::https://github.com/hertg/egpu-switcher/releases/download/0.18.2/egpu-switcher-amd64
-	sha256sums = b391efbe805c47cad19ff5691ad69efddc386c72e69ac3d88cd34a120e6e614c
+	source = egpu-switcher-bin-0.19.0::https://github.com/hertg/egpu-switcher/releases/download/0.19.0/egpu-switcher-amd64
+	sha256sums = 182ac8dc0bb494856560f9c275cefbf0e9cdaaeace2b9eea317829aaebeed885
 
 pkgname = egpu-switcher-bin
