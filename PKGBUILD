@@ -1,9 +1,9 @@
-# Maintainer:  Andrew O'Neill <andrew at meanjollies dot com>
+# Maintainer:  Andrew O'Neill <andrew at haunted dot sh>
 # Contributor: quomoow <quomoow@gmail.com>
 # Contributor: Thomas Mudrunka <harvie@@email..cz>
 
 pkgname=gretl
-pkgver=2022c
+pkgver=2023a
 pkgrel=1
 pkgdesc='A cross-platform software package for econometric analysis, written in the C programming language'
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('readline: provides a nice editable command line in gretlcli'
             'JSON-GLib: provides for parsing of data from various websites'
             'openmpi: provides means for dividing labor among multiple nodes')
 source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('e100104cda9b7c85fa2b709db4a71538db425ab91346f1a5d995c64757b241d0')
+sha256sums=('4f5530421c3f4ebfe3b98a9524192cb762d10422173cbbd577437e40225c56d3')
 
 build() {
   cd "${pkgname}-${pkgver}"
