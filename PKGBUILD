@@ -8,7 +8,7 @@ license=('MIT')
 arch=('x86_64')
 install="lfp.install"
 url="https://gitlab.com/a4to/lfp"
-depends=(lf zsh ffmpeg graphicsmagick openslide ghostscript bat fzf dunst dialog xsel lolcat)
+depends=(lf zsh ffmpeg graphicsmagick openslide ghostscript bat fzf dunst dialog xsel lolcat python3 python-docopt python-pillow python-attrs)
 conflicts=(lfp-git)
 optdepends=(
   'nodejs: to make use of lfps built in node actions manager'
@@ -18,12 +18,12 @@ source=(
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
   )
 sha512sums=(
-  'b227c18be46d535e72dc1148f32deb0f89379df2fc6e6638dcdb004a2869673ef964fe773457034a2c287d21e98c4427f7a67c319dc5fabde556dc1c2c64cf8e'
-  '6b0b2644fa7889e4b62055277077917d841e87e457198af727fd2882e96172fd744c0da7f7abf3d150a065e9f12f20bdd11a783cfd7284c77a91a6de6add5127'
+  '4523361e649b74d2acb7bfeb655ccf1de2be1927901773e05fd8c2b1933c18042a21d67d99fb328f69ec35a778dc15a392b0c1fbfe28e944ce35223b485a9a1e'
+  '8b667f666ec4179bfb11b36aa5431da765f8a40c5ee8642417f54f27b7ba1a26ec1271da39cbc49fb9f15e248475ba9948df678de8e2159a9ee27a7fb6fa60ad'
   )
 md5sums=(
-  '042253e874aa8df82aa89cef5734109d'
-  'd95549bfccda1177187c2ca9422a1f3b'
+  'b8e031220229b1d28aa9db81a61396f6'
+  '72dc7cc656693e01fc313c0816237db1'
   )
 validpgpkeys=('9A1F3F41DDA55A60331CB8DD3714CB0967D15980')
 
