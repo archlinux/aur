@@ -2356,3 +2356,216 @@ diff -ar -U 1 media_build/backports/rc-cec.patch media_build/backports/rc-cec.pa
 - rc-core-$(CONFIG_BPF_LIRC_MODE2) += bpf-lirc.o
 - obj-$(CONFIG_IR_NEC_DECODER) += ir-nec-decoder.o
 - obj-$(CONFIG_IR_RC5_DECODER) += ir-rc5-decoder.o
+diff -ar -U 1 media/drivers/media/common/v4l2-tpg/v4l2-tpg-core.c media/drivers/media/common/v4l2-tpg/v4l2-tpg-core.c
+--- media/drivers/media/common/v4l2-tpg/v4l2-tpg-core.c	2023-03-04 09:32:25.533430457 +0100
++++ media/drivers/media/common/v4l2-tpg/v4l2-tpg-core.c	2023-03-04 10:11:35.915871193 +0100
+@@ -868,5 +868,5 @@
+ 	} else if (tpg->pattern == TPG_PAT_NOISE) {
+-		r = g = b = prandom_u32_max(256);
++		r = g = b = prandom_u32_state(256);
+ 	} else if (k == TPG_COLOR_RANDOM) {
+-		r = g = b = tpg->qual_offset + prandom_u32_max(196);
++		r = g = b = tpg->qual_offset + prandom_u32_state(196);
+ 	} else if (k >= TPG_COLOR_RAMP) {
+@@ -2282,3 +2282,3 @@
+ 	params->wss_random_offset =
+-		params->twopixsize * prandom_u32_max(tpg->src_width / 2);
++		params->twopixsize * prandom_u32_state(tpg->src_width / 2);
+ 
+@@ -2453,5 +2453,5 @@
+ 		linestart_older = tpg->random_line[p] +
+-				  twopixsize * prandom_u32_max(tpg->src_width / 2);
++				  twopixsize * prandom_u32_state(tpg->src_width / 2);
+ 		linestart_newer = tpg->random_line[p] +
+-				  twopixsize * prandom_u32_max(tpg->src_width / 2);
++				  twopixsize * prandom_u32_state(tpg->src_width / 2);
+ 	} else {
+diff -ar -U 1 media/drivers/media/common/videobuf2/videobuf2-dma-contig.c media/drivers/media/common/videobuf2/videobuf2-dma-contig.c
+--- media/drivers/media/common/videobuf2/videobuf2-dma-contig.c	2023-03-04 09:32:25.533430457 +0100
++++ media/drivers/media/common/videobuf2/videobuf2-dma-contig.c	2023-03-04 09:59:20.809487327 +0100
+@@ -384,14 +384,8 @@
+ 	struct vb2_dc_attachment *attach = db_attach->priv;
+-	/* stealing dmabuf mutex to serialize map/unmap operations */
+-	struct mutex *lock = &db_attach->dmabuf->lock;
+ 	struct sg_table *sgt;
+ 
+-	mutex_lock(lock);
+-
+ 	sgt = &attach->sgt;
+ 	/* return previously mapped sg table */
+-	if (attach->dma_dir == dma_dir) {
+-		mutex_unlock(lock);
++	if (attach->dma_dir == dma_dir)
+ 		return sgt;
+-	}
+ 
+@@ -411,3 +405,2 @@
+ 		pr_err("failed to map scatterlist\n");
+-		mutex_unlock(lock);
+ 		return ERR_PTR(-EIO);
+@@ -417,4 +410,2 @@
+ 
+-	mutex_unlock(lock);
+-
+ 	return sgt;
+diff -ar -U 1 media/drivers/media/common/videobuf2/videobuf2-dma-sg.c media/drivers/media/common/videobuf2/videobuf2-dma-sg.c
+--- media/drivers/media/common/videobuf2/videobuf2-dma-sg.c	2023-03-04 09:32:25.533430457 +0100
++++ media/drivers/media/common/videobuf2/videobuf2-dma-sg.c	2023-03-04 10:03:10.896777736 +0100
+@@ -427,14 +427,8 @@
+ 	struct vb2_dma_sg_attachment *attach = db_attach->priv;
+-	/* stealing dmabuf mutex to serialize map/unmap operations */
+-	struct mutex *lock = &db_attach->dmabuf->lock;
+ 	struct sg_table *sgt;
+ 
+-	mutex_lock(lock);
+-
+ 	sgt = &attach->sgt;
+ 	/* return previously mapped sg table */
+-	if (attach->dma_dir == dma_dir) {
+-		mutex_unlock(lock);
++	if (attach->dma_dir == dma_dir)
+ 		return sgt;
+-	}
+ 
+@@ -449,3 +443,2 @@
+ 		pr_err("failed to map scatterlist\n");
+-		mutex_unlock(lock);
+ 		return ERR_PTR(-EIO);
+@@ -455,4 +448,2 @@
+ 
+-	mutex_unlock(lock);
+-
+ 	return sgt;
+diff -ar -U 1 media/drivers/media/common/videobuf2/videobuf2-vmalloc.c media/drivers/media/common/videobuf2/videobuf2-vmalloc.c
+--- media/drivers/media/common/videobuf2/videobuf2-vmalloc.c	2023-03-04 09:32:25.533430457 +0100
++++ media/drivers/media/common/videobuf2/videobuf2-vmalloc.c	2023-03-04 10:15:54.807411848 +0100
+@@ -269,14 +269,8 @@
+ 	struct vb2_vmalloc_attachment *attach = db_attach->priv;
+-	/* stealing dmabuf mutex to serialize map/unmap operations */
+-	struct mutex *lock = &db_attach->dmabuf->lock;
+ 	struct sg_table *sgt;
+ 
+-	mutex_lock(lock);
+-
+ 	sgt = &attach->sgt;
+ 	/* return previously mapped sg table */
+-	if (attach->dma_dir == dma_dir) {
+-		mutex_unlock(lock);
++	if (attach->dma_dir == dma_dir)
+ 		return sgt;
+-	}
+ 
+@@ -291,3 +285,2 @@
+ 		pr_err("failed to map scatterlist\n");
+-		mutex_unlock(lock);
+ 		return ERR_PTR(-EIO);
+@@ -297,4 +290,2 @@
+ 
+-	mutex_unlock(lock);
+-
+ 	return sgt;
+diff -ar -U 1 media/drivers/media/dvb-core/dvbdev.c media/drivers/media/dvb-core/dvbdev.c
+--- media/drivers/media/dvb-core/dvbdev.c	2023-03-04 09:32:25.533430457 +0100
++++ media/drivers/media/dvb-core/dvbdev.c	2023-03-04 09:41:59.098457988 +0100
+@@ -451,3 +451,3 @@
+ 	struct file_operations *dvbdevfops;
+-	struct device *clsdev;
++	const struct device *clsdev;
+ 	int minor;
+@@ -1010,3 +1010,3 @@
+ 
+-static int dvb_uevent(struct device *dev, struct kobj_uevent_env *env)
++static int dvb_uevent(const struct device *dev, struct kobj_uevent_env *env)
+ {
+@@ -1020,3 +1020,3 @@
+ 
+-static char *dvb_devnode(struct device *dev, umode_t *mode)
++static char *dvb_devnode(const struct device *dev, umode_t *mode)
+ {
+diff -ar -U 1 media/drivers/media/pci/ddbridge/ddbridge-core.c media/drivers/media/pci/ddbridge/ddbridge-core.c
+--- media/drivers/media/pci/ddbridge/ddbridge-core.c	2023-03-04 09:32:25.543430523 +0100
++++ media/drivers/media/pci/ddbridge/ddbridge-core.c	2023-03-04 10:27:28.178596758 +0100
+@@ -7,11 +7,2 @@
+  *                         Ralph Metzler <rjkm@metzlerbros.de>
+- *
+- * This program is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU General Public License
+- * version 2 only, as published by the Free Software Foundation.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+  */
+@@ -2727,5 +2718,5 @@
+ 
+-static char *ddb_devnode(struct device *device, umode_t *mode)
++static char *ddb_devnode(const struct device *device, umode_t *mode)
+ {
+-	struct ddb *dev = dev_get_drvdata(device);
++	const struct ddb *dev = dev_get_drvdata(device);
+ 
+diff -ar -U 1 media/drivers/media/test-drivers/vidtv/vidtv_demod.c media/drivers/media/test-drivers/vidtv/vidtv_demod.c
+--- media/drivers/media/test-drivers/vidtv/vidtv_demod.c	2023-03-04 09:32:25.556763944 +0100
++++ media/drivers/media/test-drivers/vidtv/vidtv_demod.c	2023-03-04 10:31:27.379106088 +0100
+@@ -190,3 +190,3 @@
+ 	c->strength.stat[0].svalue = state->tuner_cnr;
+-	c->strength.stat[0].svalue -= prandom_u32_max(state->tuner_cnr / 50);
++	c->strength.stat[0].svalue -= prandom_u32_state(state->tuner_cnr / 50);
+ 	c->strength.stat[0].svalue -= 68000; /* Adjust to a better range */
+@@ -194,3 +194,3 @@
+ 	c->cnr.stat[0].svalue = state->tuner_cnr;
+-	c->cnr.stat[0].svalue -= prandom_u32_max(state->tuner_cnr / 50);
++	c->cnr.stat[0].svalue -= prandom_u32_state(state->tuner_cnr / 50);
+ }
+@@ -215,3 +215,3 @@
+ 			/* eventually lose the TS lock */
+-			if (prandom_u32_max(100) < config->drop_tslock_prob_on_low_snr)
++			if (prandom_u32_state(100) < config->drop_tslock_prob_on_low_snr)
+ 				state->status = 0;
+@@ -219,3 +219,3 @@
+ 			/* recover if the signal improves */
+-			if (prandom_u32_max(100) <
++			if (prandom_u32_state(100) <
+ 			    config->recover_tslock_prob_on_good_snr)
+diff -ar -U 1 media/drivers/media/test-drivers/vivid/vivid-kthread-cap.c media/drivers/media/test-drivers/vivid/vivid-kthread-cap.c
+--- media/drivers/media/test-drivers/vivid/vivid-kthread-cap.c	2023-03-04 09:32:25.556763944 +0100
++++ media/drivers/media/test-drivers/vivid/vivid-kthread-cap.c	2023-03-04 10:43:17.903471849 +0100
+@@ -695,3 +695,3 @@
+ 	if (dev->perc_dropped_buffers &&
+-	    prandom_u32_max(100) < dev->perc_dropped_buffers)
++	    prandom_u32_state(100) < dev->perc_dropped_buffers)
+ 		goto update_mv;
+diff -ar -U 1 media/drivers/media/test-drivers/vivid/vivid-kthread-out.c media/drivers/media/test-drivers/vivid/vivid-kthread-out.c
+--- media/drivers/media/test-drivers/vivid/vivid-kthread-out.c	2023-03-04 09:32:25.556763944 +0100
++++ media/drivers/media/test-drivers/vivid/vivid-kthread-out.c	2023-03-04 10:53:23.661077362 +0100
+@@ -53,3 +53,3 @@
+ 	if (dev->perc_dropped_buffers &&
+-	    prandom_u32_max(100) < dev->perc_dropped_buffers)
++	    prandom_u32_state(100) < dev->perc_dropped_buffers)
+ 		return;
+diff -ar -U 1 media/drivers/media/test-drivers/vivid/vivid-radio-rx.c media/drivers/media/test-drivers/vivid/vivid-radio-rx.c
+--- media/drivers/media/test-drivers/vivid/vivid-radio-rx.c	2023-03-04 09:32:25.556763944 +0100
++++ media/drivers/media/test-drivers/vivid/vivid-radio-rx.c	2023-03-04 10:59:16.738681410 +0100
+@@ -96,4 +96,4 @@
+ 			vivid_radio_rds_init(dev);
+-		if (perc && prandom_u32_max(100) < perc) {
+-			switch (prandom_u32_max(4)) {
++		if (perc && prandom_u32_state(100) < perc) {
++			switch (prandom_u32_state(4)) {
+ 			case 0:
+@@ -106,4 +106,4 @@
+ 				rds.block |= V4L2_RDS_BLOCK_ERROR;
+-				rds.lsb = prandom_u32_max(256);
+-				rds.msb = prandom_u32_max(256);
++				rds.lsb = prandom_u32_state(256);
++				rds.msb = prandom_u32_state(256);
+ 				break;
+diff -ar -U 1 media/drivers/media/test-drivers/vivid/vivid-sdr-cap.c media/drivers/media/test-drivers/vivid/vivid-sdr-cap.c
+--- media/drivers/media/test-drivers/vivid/vivid-sdr-cap.c	2023-03-04 09:32:25.556763944 +0100
++++ media/drivers/media/test-drivers/vivid/vivid-sdr-cap.c	2023-03-04 10:58:44.035255053 +0100
+@@ -92,3 +92,3 @@
+ 	if (dev->perc_dropped_buffers &&
+-	    prandom_u32_max(100) < dev->perc_dropped_buffers)
++	    prandom_u32_state(100) < dev->perc_dropped_buffers)
+ 		return;
