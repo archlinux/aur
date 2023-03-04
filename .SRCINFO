@@ -1,5 +1,5 @@
 pkgbase = linux-xanmod-lts-linux-bin-x64v1
-	pkgdesc = The Linux kernel and modules with Xanmod patches - Current Stable (MAIN) - Prebuilt version - x64v1
+	pkgdesc = The Linux kernel and modules with Xanmod patches - Current Stable (LTS) - Prebuilt version - x64v1
 	pkgver = 6.1.15
 	pkgrel = 1
 	url = http://www.xanmod.org/
