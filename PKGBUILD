@@ -3,7 +3,7 @@
 # Co-Maintainer: Leon Möller <jkhsjdhjs at totally dot rip>
 
 pkgname="nzbhydra2"
-pkgver=5.1.6
+pkgver=5.1.7
 pkgrel=1
 pkgdesc="Search aggregator for newznab and torznab indexers."
 arch=('any')
@@ -17,22 +17,19 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/theotherp/nzbhydra2/arc
         'nzbhydra2.tmpfiles'
         'nzbhydra2.sysusers'
         'nzbhydra2.sh'
-        'wrapper-remove-release-type-detection.patch'
         'disable-update-checks.patch'
         'skip-unneeded-builds.patch')
 
-sha256sums=('975032b9662e876a86a07524cc4cb82131dbe7cf7b133b447525edbc72577168'
+sha256sums=('69717cba7a2c2b193e66c5a9fdd83b67124854c135531c9f150fc5a8829dc106'
             '2fae64a1c5979d9f7b508f1e15d0f013b7cca1f2bbbdae56f546f4c362146b68'
             'a9ceeed2b50d55c5e554c0d4c615e855fe4d3889eb118e37908fa04ffb7cb003'
             '8f91eb4f98f7f5c11590b29b1394dfa7ca62ad115feeac4f402c9ac094fb925a'
-            '62d00aeeb4a1743d166ae46e98f4609db38426fc8866d9eb20ca7ef34b653c31'
-            'defb77e7b19c6abfc8380cd175bc04062a0c52d1042b8e02173133367152c8e2'
+            'ed649f9b5d9f9f561829f8a563d28c1335945785b08b887634be15bc742cb4e7'
             '20c57da3a877f0390778b88cbea2f98cc88fd59a2e6f15895fd6a2ef69b245a7'
             'fa133df02514af1fd10d282f6b52f03d70778dc9fdf55ca2469bc124f8c815d0')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    patch -p1 < "${srcdir}/wrapper-remove-release-type-detection.patch"
     patch -p1 < "${srcdir}/disable-update-checks.patch"
     patch -p1 < "${srcdir}/skip-unneeded-builds.patch"
 }

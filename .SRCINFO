@@ -1,6 +1,6 @@
 pkgbase = nzbhydra2
 	pkgdesc = Search aggregator for newznab and torznab indexers.
-	pkgver = 5.1.6
+	pkgver = 5.1.7
 	pkgrel = 1
 	url = https://github.com/theotherp/nzbhydra2
 	arch = any
@@ -10,20 +10,18 @@ pkgbase = nzbhydra2
 	depends = python
 	depends = java-runtime-headless=17
 	optdepends = jackett: torrent indexer proxy
-	source = nzbhydra2-5.1.6.tar.gz::https://github.com/theotherp/nzbhydra2/archive/refs/tags/v5.1.6.tar.gz
+	source = nzbhydra2-5.1.7.tar.gz::https://github.com/theotherp/nzbhydra2/archive/refs/tags/v5.1.7.tar.gz
 	source = nzbhydra2.service
 	source = nzbhydra2.tmpfiles
 	source = nzbhydra2.sysusers
 	source = nzbhydra2.sh
-	source = wrapper-remove-release-type-detection.patch
 	source = disable-update-checks.patch
 	source = skip-unneeded-builds.patch
-	sha256sums = 975032b9662e876a86a07524cc4cb82131dbe7cf7b133b447525edbc72577168
+	sha256sums = 69717cba7a2c2b193e66c5a9fdd83b67124854c135531c9f150fc5a8829dc106
 	sha256sums = 2fae64a1c5979d9f7b508f1e15d0f013b7cca1f2bbbdae56f546f4c362146b68
 	sha256sums = a9ceeed2b50d55c5e554c0d4c615e855fe4d3889eb118e37908fa04ffb7cb003
 	sha256sums = 8f91eb4f98f7f5c11590b29b1394dfa7ca62ad115feeac4f402c9ac094fb925a
-	sha256sums = 62d00aeeb4a1743d166ae46e98f4609db38426fc8866d9eb20ca7ef34b653c31
-	sha256sums = defb77e7b19c6abfc8380cd175bc04062a0c52d1042b8e02173133367152c8e2
+	sha256sums = ed649f9b5d9f9f561829f8a563d28c1335945785b08b887634be15bc742cb4e7
 	sha256sums = 20c57da3a877f0390778b88cbea2f98cc88fd59a2e6f15895fd6a2ef69b245a7
 	sha256sums = fa133df02514af1fd10d282f6b52f03d70778dc9fdf55ca2469bc124f8c815d0
 
