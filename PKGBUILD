@@ -1,54 +1,50 @@
-# Maintainer: Kevin Del Castillo <quebin31@gmail.com>
+# Maintainer: éclairevoyant
+# Contributor: Kevin Del Castillo <quebin31 at gmail dot com>
 
 _pkgname=neovim
 _pkgver=0.6.0
 pkgname=neovim-nightly-bin
-# only to show a version
-pkgver=0.6.0+dev+43+g02bf251bb 
+pkgver=0.9.0+dev+1115+g446c353a5 
 pkgrel=1
-pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs - Nightly Builds'
+pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs (nightly build)'
 arch=('x86_64')
 url='https://neovim.io'
 backup=('etc/xdg/nvim/sysinit.vim')
 license=('custom:neovim')
-provides=("${_pkgname}=${_pkgver}" 'vim-plugin-runtime')
-conflicts=("${_pkgname}")
-optdepends=('python2-neovim: for Python 2 plugin support, see :help python'
-            'python-neovim: for Python 3 plugin support, see :help python'
-            'xclip: for clipboard support, see :help clipboard'
-            'xsel: for clipboard support, see :help clipboard')
-
+depends=('hicolor-icon-theme')
+optdepends=('python-neovim: for Python 3 plugin support (see :help provider-python)'
+            'ruby-neovim: for Ruby plugin support (see :help provider-ruby)'
+            'xclip: for X11 clipboard support (or xsel) (see :help provider-clipboard)'
+            'xsel: for X11 clipboard support (or xclip) (see :help provider-clipboard)'
+            'wl-clipboard: for clipboard support on wayland (see :help clipboard)')
+provides=("$_pkgname=${pkgver/\+*/}" 'vim-plugin-runtime')
+conflicts=("$_pkgname")
 _date="$(date -u +%Y%m%d)"
-source=("$_pkgname-$_date.tar.gz::https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz")
-sha512sums=(SKIP) 
-install=neovim.install
+source=("$_pkgname-$_date.tar.gz::https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz"
+        "$pkgname-archlinux.vim"
+        "$pkgname-sysinit.vim")
+b2sums=('SKIP'
+        'd0871e240bd9c7de7d898e1fba95364f4c4a12dbb3ac40892bbf93a49eb0e8cc2c8bc1ccae9ea5b700581a185a4df56bd28427d42a7d4b288560207b3951a15d'
+        '6ed647c3a4c0907a60060fa61117d484aa091c69c73dda1f0a99aa4e67870ae2092a2c1057a15ced9fc56b08374ce8a8b86dbe531df777f9ad49302c7a9d3da0')
+install=$pkgname.install
 
 pkgver() {
-  cd "${srcdir}/nvim-linux64"
-  ./bin/nvim --version | head -1 | awk '{ printf $2 }' | sed 's/-/+/g' | sed 's/v//'
+	cd nvim-linux64
+	./bin/nvim --version | awk 'NR == 1 { sub("NVIM v", ""); gsub("-", "+"); print $1 }'
 }
 
 check() {
-  cd "${srcdir}/nvim-linux64"
-  ./bin/nvim --version
-  ./bin/nvim --headless -u NONE -i NONE -c ':quit'
+	cd nvim-linux64
+	./bin/nvim --version
+	./bin/nvim --headless -u NONE -i NONE -c ':quit'
 }
 
 package() {
-  cd "${srcdir}/nvim-linux64"
+	# Make Arch vim packages work
+	install -Dm644 $pkgname-sysinit.vim "$pkgdir/etc/xdg/nvim/sysinit.vim"
+	install -Dm644 $pkgname-archlinux.vim "$pkgdir/usr/share/nvim/archlinux.vim"
 
-  mkdir -p "${pkgdir}/usr/bin"
-  cp -r lib "${pkgdir}/usr/"
-  cp -r share "${pkgdir}/usr/"
-  install bin/nvim "${pkgdir}/usr/bin"
-
-  # Make Arch vim packages work
-  mkdir -p "${pkgdir}"/etc/xdg/nvim
-  echo "\" This line makes pacman-installed global Arch Linux vim packages work." > "${pkgdir}"/etc/xdg/nvim/sysinit.vim
-  echo "source /usr/share/nvim/archlinux.vim" >> "${pkgdir}"/etc/xdg/nvim/sysinit.vim
-
-  mkdir -p "${pkgdir}"/usr/share/nvim
-  echo "set runtimepath+=/usr/share/vim/vimfiles" > "${pkgdir}"/usr/share/nvim/archlinux.vim
+	cd nvim-linux64
+	install -Dm755 bin/nvim -t "$pkgdir/usr/bin/"
+	cp -r lib share "$pkgdir/usr/"
 }
-
-# vim:set sw=2 sts=2 et:

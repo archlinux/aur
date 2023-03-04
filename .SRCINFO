@@ -1,20 +1,26 @@
 pkgbase = neovim-nightly-bin
-	pkgdesc = Fork of Vim aiming to improve user experience, plugins, and GUIs - Nightly Builds
-	pkgver = 0.6.0+dev+43+g02bf251bb
+	pkgdesc = Fork of Vim aiming to improve user experience, plugins, and GUIs (nightly build)
+	pkgver = 0.9.0+dev+1115+g446c353a5
 	pkgrel = 1
 	url = https://neovim.io
-	install = neovim.install
+	install = neovim-nightly-bin.install
 	arch = x86_64
 	license = custom:neovim
-	optdepends = python2-neovim: for Python 2 plugin support, see :help python
-	optdepends = python-neovim: for Python 3 plugin support, see :help python
-	optdepends = xclip: for clipboard support, see :help clipboard
-	optdepends = xsel: for clipboard support, see :help clipboard
-	provides = neovim=0.6.0
+	depends = hicolor-icon-theme
+	optdepends = python-neovim: for Python 3 plugin support (see :help provider-python)
+	optdepends = ruby-neovim: for Ruby plugin support (see :help provider-ruby)
+	optdepends = xclip: for X11 clipboard support (or xsel) (see :help provider-clipboard)
+	optdepends = xsel: for X11 clipboard support (or xclip) (see :help provider-clipboard)
+	optdepends = wl-clipboard: for clipboard support on wayland (see :help clipboard)
+	provides = neovim=0.9.0
 	provides = vim-plugin-runtime
 	conflicts = neovim
 	backup = etc/xdg/nvim/sysinit.vim
-	source = neovim-20210715.tar.gz::https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz
-	sha512sums = SKIP
+	source = neovim-20230304.tar.gz::https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz
+	source = neovim-nightly-bin-archlinux.vim
+	source = neovim-nightly-bin-sysinit.vim
+	b2sums = SKIP
+	b2sums = d0871e240bd9c7de7d898e1fba95364f4c4a12dbb3ac40892bbf93a49eb0e8cc2c8bc1ccae9ea5b700581a185a4df56bd28427d42a7d4b288560207b3951a15d
+	b2sums = 6ed647c3a4c0907a60060fa61117d484aa091c69c73dda1f0a99aa4e67870ae2092a2c1057a15ced9fc56b08374ce8a8b86dbe531df777f9ad49302c7a9d3da0
 
 pkgname = neovim-nightly-bin
