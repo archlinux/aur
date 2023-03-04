@@ -13,4 +13,4 @@ ExecReload=/usr/bin/phc-intel stop; /usr/bin/phc-intel start
 ExecStatus=/usr/bin/phc-intel status
 
 [Install]
-# WantedBy=multi-user.target
+WantedBy=sysinit.target
