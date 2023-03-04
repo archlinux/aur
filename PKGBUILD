@@ -1,4 +1,4 @@
-# Maintainer:  Andrew O'Neill <andrew at meanjollies dot com>
+# Maintainer:  Andrew O'Neill <andrew at haunted dot sh>
 # Contributor: Gavin Lloyd <gavinhungry@gmail.com>
 # Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 
