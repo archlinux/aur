@@ -1,10 +1,10 @@
 pkgbase = python-duckargs
 	pkgdesc = Productivity tool for quickly creating python programs that parse command-line arguments
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eriknyquist/duckargs
 	arch = any
-	license = MIT
+	license = APACHE
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel

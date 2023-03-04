@@ -3,11 +3,11 @@
 _name=duckargs
 pkgname=python-duckargs
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Productivity tool for quickly creating python programs that parse command-line arguments"
 arch=(any)
 url="https://github.com/eriknyquist/duckargs"
-license=('MIT')
+license=('APACHE')
 depends=('python>=3.7')
 makedepends=(python-build python-installer python-wheel)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
@@ -21,5 +21,4 @@ build() {
 package() {
     cd $_name-$pkgver
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
