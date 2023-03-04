@@ -1,7 +1,7 @@
 # Maintainer: Vasiliy Stelmachenok <ventureo@yandex.ru>
 pkgname=zfxtop
 pkgdesc='fetch top for gen Z with X written by bubbletea enjoyer'
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 license=('BSD2')
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/ssleert/zfxtop'
 options=('!lto')
 makedepends=("go>=1.18")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ssleert/zfxtop/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('146eb2e4924da1a48ff7301b62717815541fa107676a52a0095d25320f4a62c4')
+sha256sums=('fa6894aa98f0dce60935efb884e5f9c6a4b7e2dd033c636ab9c8c9d614ccf0a7')
 
 prepare() {
   cd "$pkgname-$pkgver"
