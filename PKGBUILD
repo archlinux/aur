@@ -28,7 +28,7 @@ pkgver() {
 }
 
 package() {
-  #sudo cp whatsapp-linux.desktop /usr/share/applications/whatsapp-linux.desktop 
+  sudo curl -sL "https://aur.archlinux.org/cgit/aur.git/plain/whatsapp-linux.desktop?h=whatsapp-linux" -o /usr/share/applications/whatsapp-linux.desktop
   cd "${pkgname}"
   sudo mkdir -p /opt/WhatsApp-linux-x64
   sudo cp -rf * /opt/WhatsApp-linux-x64
