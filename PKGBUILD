@@ -1,4 +1,4 @@
-# Maintainer: Andrew O'Neill <andrew at meanjollies dot com>
+# Maintainer: Andrew O'Neill <andrew at haunted dot sh>
 
 pkgname=actiona
 pkgver=3.10.1
