@@ -52,12 +52,14 @@ makedepends=(
 source=("${_pkgname}::git+https://github.com/hyprwm/Hyprland.git"
     "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
     "git+https://github.com/hyprwm/hyprland-protocols.git"
+    "git+https://github.com/canihavesomecoffee/udis86.git"
     "xwayland-support-HiDPI-scale.patch"
     "fix-configure_notify-event.patch"
     "nvidia.patch")
 conflicts=("${_pkgname}")
 provides=(hyprland)
 sha256sums=('SKIP'
+    'SKIP'
     'SKIP'
     'SKIP'
     '304aaf12cbd7dc198bf7e418d729b297ea61186d27c035e4a63a337399fcec76'
@@ -80,8 +82,10 @@ prepare() {
     git submodule init
     git config submodule.wlroots.url "${srcdir}"/wlroots
     git config submodule.subprojects/hyprland-protocols.url "${srcdir}"/hyprland-protocols
+    git config submodule.subprojects/udis86.url "${srcdir}"/udis86
     git -c protocol.file.allow=always submodule update subprojects/wlroots
     git -c protocol.file.allow=always submodule update subprojects/hyprland-protocols
+    git -c protocol.file.allow=always submodule update subprojects/udis86
     cd subprojects/wlroots
     git revert -n 18595000f3a21502fd60bf213122859cc348f9af
 	patch --forward --strip=1 --input="${srcdir}"/xwayland-support-HiDPI-scale.patch
@@ -93,7 +97,7 @@ build() {
     cd "${srcdir}/${_pkgname}"
     make fixwlr
     cd "./subprojects/wlroots/" && meson build/ --prefix="${srcdir}/tmpwlr" --buildtype=release && ninja -C build/ && mkdir -p "${srcdir}/tmpwlr" && ninja -C build/ install && cd ../../
-    cd subprojects/udis86 && cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -H./ -B./build -G Ninja && cmake --build ./build --config Release --target all -j$(shell nproc) && cd ../../
+    cd "./subprojects/udis86/" && cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -H./ -B./build -G Ninja && cmake --build ./build --config Release --target all -j$(shell nproc) && cd ../../
     make protocols
     make release
     cd ./hyprctl && make all && cd ..
