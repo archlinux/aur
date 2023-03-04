@@ -3,7 +3,7 @@
 
 pkgname=yuzu
 pkgver=1350
-pkgrel=1
+pkgrel=2
 pkgdesc='Nintendo Switch emulator'
 arch=(x86_64)
 url=https://yuzu-emu.org/
