@@ -2,12 +2,12 @@
  
 _gitname="arm-trusted-firmware"
 _gitroot=https://github.com/ericwoud/${_gitname}
-_gitbranch="bpir64"
+_gitbranch="bpir"
 #_gitbranch="master"
 pkgname=bpir64-atf-git
 epoch=2
-pkgver=v2.8r12079.98b090de4
-pkgrel=2
+pkgver=v2.8r12079.7155480e7
+pkgrel=1
 pkgdesc='ATF bpir64 images including fiptool'
 url='https://github.com/mtk-openwrt/arm-trusted-firmware.git'
 arch=(aarch64)
@@ -40,17 +40,13 @@ prepare() {
 
 _buildimage() {
   _plat=$1; _bpir=$2; _atfdev=$3; _rest="${@:4}"
-  _makeatf="PLAT=${_plat} BOOT_DEVICE=$_atfdev LOG_LEVEL=40 MTK_BL33_IS_64BIT=1 ${_rest}"
-  _makeatf="$_makeatf USE_MKIMAGE=1 MKIMAGE=$(which bpir64-mkimage)"
   sed -i 's/.*entry = get_partition_entry.*/\tentry = get_partition_entry("'${_bpir}'-'${_atfdev}'-fip");/' \
          plat/mediatek/${_plat}/bl2_boot_mmc.c
   touch plat/mediatek/${_plat}/platform.mk
   unset CXXFLAGS CPPFLAGS LDFLAGS
   export CFLAGS=-Wno-error
-  # PRELOADED_BL33_BASE is not being used in mt7xxx atf code, so we use it as binairy flags:
-  # 0b0001 : incbin BL31.bin inside of BL2 image, disable it during BL31 build because of common code!
-  make $_makeatf PRELOADED_BL33_BASE=0b0000 bl31.bin.o
-  make $_makeatf PRELOADED_BL33_BASE=0b0001 ${srcdir}/${_gitname}/build/${_plat}/release/bl2.img
+  make PLAT=${_plat} BOOT_DEVICE=$_atfdev LOG_LEVEL=40 MTK_BL33_IS_64BIT=1 \
+       USE_MKIMAGE=1 MKIMAGE=$(which bpir64-mkimage) ${_rest} all
   dd of=build/${_plat}/release/${_bpir}-atf-${_atfdev}-header.bin bs=1 count=440 if=build/${_plat}/release/bl2.img
   dd of=build/${_plat}/release/${_bpir}-atf-${_atfdev}-atf.bin         skip=34   if=build/${_plat}/release/bl2.img
 }

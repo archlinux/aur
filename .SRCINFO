@@ -1,7 +1,7 @@
 pkgbase = bpir64-atf-git
 	pkgdesc = ATF bpir64 images including fiptool
-	pkgver = v2.8r12079.98b090de4
-	pkgrel = 2
+	pkgver = v2.8r12079.7155480e7
+	pkgrel = 1
 	epoch = 2
 	url = https://github.com/mtk-openwrt/arm-trusted-firmware.git
 	install = bpir64-atf-git.install
@@ -10,7 +10,7 @@ pkgbase = bpir64-atf-git
 	makedepends = git
 	makedepends = bpir64-mkimage
 	depends = linux
-	source = git+https://github.com/ericwoud/arm-trusted-firmware.git#branch=bpir64
+	source = git+https://github.com/ericwoud/arm-trusted-firmware.git#branch=bpir
 	source = 95-atf.hook
 	source = bpir64-writefip
 	sha256sums = SKIP
