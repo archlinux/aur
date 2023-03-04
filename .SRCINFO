@@ -13,6 +13,7 @@ pkgbase = rmg-git
 	makedepends = ninja
 	depends = hidapi
 	depends = libsamplerate
+	depends = speexdsp
 	depends = minizip
 	depends = sdl2
 	depends = zlib

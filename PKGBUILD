@@ -11,7 +11,7 @@ license=('GPLv3')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
-depends=("hidapi" "libsamplerate" "minizip" "sdl2" "zlib" "freetype2" "qt6-base" "qt6-svg" "xdg-user-dirs")
+depends=("hidapi" "libsamplerate" "speexdsp" "minizip" "sdl2" "zlib" "freetype2" "qt6-base" "qt6-svg" "xdg-user-dirs")
 makedepends=("git" "pkg-config" "nasm" "cmake" "cargo" "ninja")
 
 source=("git+https://github.com/Rosalie241/${_pkgname}.git")
@@ -35,7 +35,7 @@ build()
                 -DCMAKE_BUILD_TYPE="Release" \
                 -DPORTABLE_INSTALL="OFF" \
                 -DCMAKE_INSTALL_PREFIX="/usr" \
-                -G "Ninja" \
+                -G "Ninja"
 
     cmake --build "$srcdir/${_pkgname}/build"
 }
