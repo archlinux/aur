@@ -19,8 +19,8 @@
 
 pkgbase=lib32-llvm-minimal-git
 pkgname=('lib32-llvm-minimal-git' 'lib32-llvm-libs-minimal-git')
-pkgver=17.0.0_r452970.aa56e66bf752
-pkgrel=2
+pkgver=17.0.0_r453592.7e4639d28f44
+pkgrel=1
 arch=('x86_64')
 url="http://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -29,13 +29,19 @@ makedepends=('git' 'cmake' 'ninja' 'lib32-libffi' 'lib32-zlib' 'python' 'lib32-g
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
                 '0001-IPSCCP-Remove-legacy-pass.patch'
                 '0001-OCaml-Remove-all-PassManager-related-functions.patch'
+                '0001-llvm-c-Remove-bindings-for-creating-legacy-passes.patch'
+                '0001-IPO-Remove-various-legacy-passes.patch'
 )
 md5sums=('SKIP'
          '245054bc67dec3eb30329bbdeed171b1'
-         '4c5ac9bca18c8a92280b1699f2f85a16')
+         '4c5ac9bca18c8a92280b1699f2f85a16'
+         '286194131e1b5df0fe50ecd0f1b58eb2'
+         '179d535366bdb73c6b02850210aca69c')
 sha512sums=('SKIP'
             '4c1e8a455163ceb1e7d3f09f5e68f731e47f2346a2f62e1fe97b19f54c16781efc0b75d52304fe9d4aa62512fd6f32b7bd6e12b319cbe72e7831f1a056ffbfd0'
-            '92f971db948e8acd4a55cb46ef28dc394c5df07f57844b63d82fc19436e2dfe7b184599ca17d84ef4fa63f6281628d8cc734d74dcc95bc0eee8a5e7c3778f49a')
+            '92f971db948e8acd4a55cb46ef28dc394c5df07f57844b63d82fc19436e2dfe7b184599ca17d84ef4fa63f6281628d8cc734d74dcc95bc0eee8a5e7c3778f49a'
+            'd3f5df839b49e4a853e88efaf2fb31c36efb15a91b4803f7e52414ab0e3121f4bfafc7d39edaad52a29106ca648428577f97f4fd12e7575cd3bbe009a1111901'
+            'ab46bd37d540e9c62d99cc9e137079e077f032d0ba6531b0685d2bb91a4d832787dd12e3680c76b58d26ada7e81b3a7d8d138c303a6ffb21b593dc549aecb140')
 options=('staticlibs' '!lto')
 # explicitly disable lto to reduce number of build hangs / test failures
 
@@ -64,7 +70,9 @@ pkgver() {
 
 prepare() {
     
-    # revert https://github.com/llvm/llvm-project/commit/e0efe46b33068f2e651e850cdc3ede0306f1853c so the passmanager patch keeps working
+    # revert more commits so the passmanager patch keeps working
+    patch --directory="llvm-project" --reverse --strip=1 --input="${srcdir}/0001-llvm-c-Remove-bindings-for-creating-legacy-passes.patch"
+    patch --directory="llvm-project" --reverse --strip=1 --input="${srcdir}/0001-IPO-Remove-various-legacy-passes.patch"
     patch --directory="llvm-project" --reverse --strip=1 --input="${srcdir}/0001-OCaml-Remove-all-PassManager-related-functions.patch"
     # reverting commit b677d0753c0a771c6203607f5dbb56189193a14c , see https://gitlab.freedesktop.org/mesa/mesa/-/issues/8297
     patch --directory="llvm-project" --reverse --strip=1 --input="${srcdir}/0001-IPSCCP-Remove-legacy-pass.patch"
