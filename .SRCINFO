@@ -1,6 +1,6 @@
 pkgbase = flow-git
 	pkgdesc = A static type checker for JavaScript - git version
-	pkgver = 0.196.0.r14893.gf4ecc9c1f
+	pkgver = 0.201.0.r15454.gb43df2306
 	pkgrel = 1
 	url = https://flow.org
 	arch = x86_64
@@ -8,7 +8,6 @@ pkgbase = flow-git
 	arch = armv7h
 	arch = aarch64
 	license = MIT
-	checkdepends = ocaml-ounit
 	makedepends = git
 	makedepends = ocaml>=4.14.0
 	makedepends = dune>=3.0.0
