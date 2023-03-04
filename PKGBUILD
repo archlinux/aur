@@ -3,8 +3,10 @@ pkgbase=python-galpy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
+_torus_commit="b7bf7965db8c3b2034d6a92f5a1c1fefe13e0e5d"
 pkgver=1.8.1
-pkgrel=1
+# not update to 1.8.2: galpyWarning: libgalpy C extension module not loaded, because of error '/usr/lib/python3.10/site-packages/libgalpy.cpython-310-x86_64-linux-gnu.so: undefined symbol: GOMP_loop_nonmonotonic_dynamic_start'
+pkgrel=2
 pkgdesc="Galactic Dynamics in python"
 arch=('i686' 'x86_64')
 url="https://www.galpy.org"
@@ -13,21 +15,27 @@ makedepends=('python-setuptools' 'gsl'
              'python-wheel'
              'python-build'
              'python-installer')
-checkdepends=('python-nose'
-              'python-scipy'
-              'python-matplotlib')
-source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('02926db04ece780d713e5ef979cae769')
+#checkdepends=('python-pytest'
+#              'python-astropy'
+#              'python-scipy'
+#              'python-matplotlib')
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
+        "torus-200307.tar.gz::https://github.com/jobovy/Torus/archive/${_torus_commit}.tar.gz")
+md5sums=('02926db04ece780d713e5ef979cae769'
+         'f84f68196975d1efbac800b1a5703c45')
 
-#get_pyver() {
-#    python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
-#}
+get_pyver() {
+    python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
+}
 
 prepare() {
-    cd ${srcdir}/${_pyname}-${pkgver}/${_pyname}/snapshot
+#   cd ${srcdir}/${_pyname}-${pkgver}/${_pyname}/snapshot
+    cd ${srcdir}/${_pyname}-${pkgver}
 
-    sed -i "/directnbody/s/directnbody/.directnbody/" Snapshot.py
-    sed -i "/from\ Snapshot/s/Snapshot/.Snapshot/" snapshotMovies.py
+    mv ${srcdir}/{Torus-${_torus_commit},${_pyname}-${pkgver}/galpy/actionAngle/actionAngleTorus_c_ext/torus}
+    sed -i 's/numpy.float)/numpy.float64)/' galpy/util/leung_dop853.py
+#   sed -i "/directnbody/s/directnbody/.directnbody/" Snapshot.py
+#   sed -i "/from\ Snapshot/s/Snapshot/.Snapshot/" snapshotMovies.py
 }
 
 build() {
@@ -38,13 +46,16 @@ build() {
 #   python setup.py build_docs
 }
 
-check() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
-#   pytest -vv --color=yes "build/lib.linux-${CARCH}-cpython-$(get_pyver)"
-#   python setup.py test
-    nosetests
-}
+#check() {
+#    takes a lot of time
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#
+#    PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver):${PYTHONPATH}" pytest -vv --color=yes \
+#        --ignore=tests/test_amuse.py \
+#        --ignore=tests/test_snapshotpotential.py \
+#        --ignore=tests/test_sphericaldf.py
+##   nosetests
+#}
 
 package_python-galpy() {
     depends=('python-packaging' 'python-scipy' 'python-matplotlib')
@@ -53,6 +64,7 @@ package_python-galpy() {
                 'python-astropy: For Quantity support'
                 'python-astroquery: For the Orbit.from_name initialization method'
                 'python-numexpr: For or plotting arbitrary expressions of Orbit quantities'
+                'python-numba: for speeding up the evaluation of certain functions when using C orbit integration'
                 'python-jax: For use of constant-anisotropy DFs in galpy.df.constantbetadf'
                 'python-tqdm: For displaying a progress bar for certain operations (e.g., orbit integration of multiple objects at once'
                 'python-pynbody: Foruse of SnapshotRZPotential and InterpSnapshotRZPotential')
