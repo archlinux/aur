@@ -1,7 +1,7 @@
 # Maintainer: Mark Stenglein <aur@markstenglein.com>
 
 pkgname=slides-git
-pkgver=0.9.0.r0.g1620042
+pkgver=0.9.0.r13.g9e3e13e
 pkgrel=1
 pkgdesc='Terminal based presentation tool'
 arch=('x86_64')
@@ -22,7 +22,8 @@ pkgver() {
 
 prepare() {
     cd ${pkgname%-git}
-    go clean -testcache ./...
+    go clean -cache
+    go clean -testcache
 }
 
 build() {

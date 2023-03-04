@@ -1,6 +1,6 @@
 pkgbase = slides-git
 	pkgdesc = Terminal based presentation tool
-	pkgver = 0.9.0.r0.g1620042
+	pkgver = 0.9.0.r13.g9e3e13e
 	pkgrel = 1
 	url = https://github.com/maaslalani/slides
 	changelog = CHANGELOG.md
