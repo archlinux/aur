@@ -13,7 +13,8 @@ optdepends=("libappindicator-gtk3: Systray indicator support"
             "pulseaudio: Video and voice call support")
 conflicts=("ms-teams")
 replaces=("ms-teams")
-source=("https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams/${pkgname}_${pkgver}_amd64.deb")
+#source=("https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams/${pkgname}_${pkgver}_amd64.deb")
+source=("https://web.archive.org/web/20221130115842if_/https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams/${pkgname}_${pkgver}_amd64.deb")
 noextract=("${pkgname}_${pkgver}_amd64.deb")
 b2sums=('fb989e0f6fcf65aad52586de83a1c6da2f7a8c3d7509f3c09fec61a6a3a83660df47284c5c76964eb845441e294a0c4e29517aa0b9df1c4356efed1e1bd1a50d')
 
