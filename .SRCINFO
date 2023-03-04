@@ -1,17 +1,13 @@
 pkgbase = realize-git
-	pkgdesc = Golang live reload and task runner
-	pkgver = v2.0.2.r35.g498ce46
+	pkgver = 3.0.0.r0.gaa3f576
 	pkgrel = 1
-	url = https://gorealize.io/
+	url = https://github.com/abs3ntdev/realize
 	arch = x86_64
 	license = GPL
 	makedepends = go
-	makedepends = git
-	depends = glibc
 	provides = realize
-	options = !strip
-	source = git+https://github.com/oxequa/realize.git
-	sha512sums = SKIP
+	conflicts = realize
+	source = git+https://github.com/abs3ntdev/realize.git
+	sha256sums = SKIP
 
 pkgname = realize-git
-
