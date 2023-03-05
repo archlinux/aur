@@ -1,6 +1,6 @@
 # Maintainer: Zetta1 Reid0
 
-pkgname=xfdesktop
+pkgname=xfdesktop-nothunar
 pkgver=4.18.1
 pkgrel=1
 pkgdesc="Xfce's desktop manager (Thunar Disabled)"
