@@ -1,0 +1,19 @@
+pkgbase = r-showtext
+	pkgdesc = Using Fonts More Easily in R Graphs
+	pkgver = 0.9.5
+	pkgrel = 1
+	url = https://cran.r-project.org/package=showtext
+	arch = x86_64
+	license = Apache
+	depends = r-sysfonts>=0.7.1
+	depends = r-showtextdb>=2.0
+	depends = r-grdevices
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-prettydoc
+	optdepends = r-curl
+	optdepends = r-jsonlite
+	source = https://cran.microsoft.com/snapshot/2022-02-10/src/contrib/showtext_0.9-5.tar.gz
+	sha256sums = 63c19d1d85ffff9198bb493647eacf3d21080b5465d4a6225e56d9643bb659d1
+
+pkgname = r-showtext
