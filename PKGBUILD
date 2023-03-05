@@ -6,40 +6,36 @@
 
 _pkgname=audacious-plugins
 pkgname=$_pkgname-gtk3
-pkgver=4.2
-pkgrel=2
+pkgver=4.3
+pkgrel=1
 pkgdesc="Plugins for Audacious"
 arch=('i686' 'x86_64')
 url="https://audacious-media-player.org/"
 license=('BSD' 'GPL')
-depends=('alsa-lib' 'curl' 'dbus-glib' 'faad2' 'ffmpeg' 'flac' 'fluidsynth'
-         'jack' 'lame' 'libcddb' 'libcdio-paranoia' 'libcue' 'libmms'
-         'libmodplug' 'libmtp' 'libpulse' 'libnotify' 'libsamplerate'
-         'libsidplayfp' 'libvorbis' 'lirc' 'mpg123' 'neon' 'wavpack' 'libbs2b'
-         'libopenmpt')
-makedepends=("audacious-gtk3>=$pkgver" 'glib2' 'python' 'git')
+depends=("audacious-gtk3>=$pkgver"
+         'alsa-lib' 'curl' 'dbus-glib' 'faad2' 'ffmpeg' 'flac' 'fluidsynth'
+         'jack' 'lame' 'libbs2b' 'libcddb' 'libcdio-paranoia' 'libcue' 'libmms'
+         'libmodplug' 'libmtp' 'libnotify' 'libopenmpt' 'libpipewire' 'libpulse'
+         'libsamplerate' 'libsidplayfp' 'libvorbis' 'lirc' 'mpg123' 'neon'
+         'opusfile' 'wavpack')
+makedepends=('glib2' 'python')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-_commit=c71ee93826eecdec855e6c37fcf12c51c76b596c
-source=("git+https://github.com/audacious-media-player/$_pkgname.git#commit=$_commit")
-sha256sums=('SKIP')
-
-prepare() {
-  cd "$_pkgname"
-  autoreconf -I m4
-}
+source=("https://distfiles.audacious-media-player.org/$_pkgname-$pkgver.tar.bz2")
+sha256sums=('662ef6c8c4bd70d0f35fd1c5f08b91549b9436638b65f8a1a33956b09df89fc6')
 
 build() {
-  cd "$_pkgname"
+  cd "$_pkgname-$pkgver"
 
   ./configure \
     --prefix=/usr \
+    --enable-gtk3 \
     --disable-qt
   make
 }
 
 package() {
-  cd "$_pkgname"
+  cd "$_pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }

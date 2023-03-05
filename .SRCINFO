@@ -1,16 +1,15 @@
 pkgbase = audacious-plugins-gtk3
 	pkgdesc = Plugins for Audacious
-	pkgver = 4.2
-	pkgrel = 2
+	pkgver = 4.3
+	pkgrel = 1
 	url = https://audacious-media-player.org/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	license = GPL
-	makedepends = audacious-gtk3>=4.2
 	makedepends = glib2
 	makedepends = python
-	makedepends = git
+	depends = audacious-gtk3>=4.3
 	depends = alsa-lib
 	depends = curl
 	depends = dbus-glib
@@ -20,26 +19,28 @@ pkgbase = audacious-plugins-gtk3
 	depends = fluidsynth
 	depends = jack
 	depends = lame
+	depends = libbs2b
 	depends = libcddb
 	depends = libcdio-paranoia
 	depends = libcue
 	depends = libmms
 	depends = libmodplug
 	depends = libmtp
-	depends = libpulse
 	depends = libnotify
+	depends = libopenmpt
+	depends = libpipewire
+	depends = libpulse
 	depends = libsamplerate
 	depends = libsidplayfp
 	depends = libvorbis
 	depends = lirc
 	depends = mpg123
 	depends = neon
+	depends = opusfile
 	depends = wavpack
-	depends = libbs2b
-	depends = libopenmpt
 	provides = audacious-plugins
 	conflicts = audacious-plugins
-	source = git+https://github.com/audacious-media-player/audacious-plugins.git#commit=c71ee93826eecdec855e6c37fcf12c51c76b596c
-	sha256sums = SKIP
+	source = https://distfiles.audacious-media-player.org/audacious-plugins-4.3.tar.bz2
+	sha256sums = 662ef6c8c4bd70d0f35fd1c5f08b91549b9436638b65f8a1a33956b09df89fc6
 
 pkgname = audacious-plugins-gtk3
