@@ -1,6 +1,8 @@
 # Maintainer: Zetta1 Reid0
 
 pkgname=xfdesktop-nothunar
+provides=('xfdesktop')
+conflicts=('xfdesktop')
 _pkgname=xfdesktop
 pkgver=4.18.1
 pkgrel=1

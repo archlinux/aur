@@ -12,6 +12,8 @@ pkgbase = xfdesktop-nothunar
 	depends = exo
 	depends = garcon
 	depends = hicolor-icon-theme
+	provides = xfdesktop
+	conflicts = xfdesktop
 	source = https://archive.xfce.org/src/xfce/xfdesktop/4.18/xfdesktop-4.18.1.tar.bz2
 	sha256sums = ef9268190c25877e22a9ff5aa31cc8ede120239cb0dfca080c174e7eed4ff756
 
