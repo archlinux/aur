@@ -13,11 +13,15 @@ source=("git+https://github.com/FWDekker/mommy.git#tag=v$pkgver")
 sha256sums=("SKIP")
 
 check() {
-    [ "$(pacman-conf | grep "NoExtract.*usr/share/man" | wc -l)" -gt 0 ] && MOMMY_TEST_MAN="0"
-
-    MOMMY_TEST_MAN=MOMMY_TEST_MAN ./$pkgname/test.sh
+    cd "$pkgname"
+    if [ "$(pacman-conf | grep "NoExtract.*usr/share/man" | wc -l)" -gt 0 ]; then
+        make -W test/man test
+    else
+        make test
+    fi
 }
 
 package() {
-    PREFIX="$pkgdir/usr/" "./$pkgname/build.sh" install
+    cd "$pkgname"
+    make prefix="$pkgdir/usr/" install
 }
