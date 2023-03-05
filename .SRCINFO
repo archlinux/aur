@@ -1,0 +1,16 @@
+pkgbase = python-find_libpython
+	pkgdesc = Finds the libpython associated with the current Python environment, wherever it may be hiding
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/ktbarrett/find_libpython
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	options = !emptydirs
+	source = https://github.com/ktbarrett/find_libpython/archive/refs/tags/v0.3.0.tar.gz
+	sha512sums = 0ae368607b2ebac1be239e95f33b53600748e2cdf9fd864b81228d3690ae9ea781045eca16df45bf66956539c0af80b781fd6eff343742dd20767b722f4b82d8
+
+pkgname = python-find_libpython
