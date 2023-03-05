@@ -1,8 +1,8 @@
-# Maintainer: Chris Kitching <chriskitching@linux.com>
-# Author: "Lucy" https://github.com/lucy
+# Contributor: Chris Kitching <chriskitching@linux.com>
+# Contributor: "Lucy" https://github.com/lucy
 
 pkgname=perl-benchmark-timer
-pkgver=0.7107
+pkgver=0.7112
 pkgrel=1
 pkgdesc="Perl code benchmarking tool"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0' 'perl-uri' 'perl-module-install')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/D/DC/DCOPPIT/Benchmark-Timer-$pkgver.tar.gz")
-sha256sums=('64f70fabc896236520bfbf43c2683fdcb0f2c637d77333aed0fd926b92226b60')
+sha256sums=('0278447d9ad9d773d59a4ebd6db8afeadde81c8fa5d6a8738f5e7d578e2a402e')
 
 build() {
 	cd "$srcdir/Benchmark-Timer-$pkgver"
