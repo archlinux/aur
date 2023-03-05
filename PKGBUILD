@@ -1,7 +1,7 @@
 # Maintainer: egoroff <egoroff@gmail.com>
 pkgname=editorconfiger
 pkgver=0.4.1
-pkgrel=7
+pkgrel=8
 arch=('x86_64')
 pkgdesc="Plain tool to validate and compare .editorconfig files"
 url="https://github.com/aegoroff/editorconfiger"
@@ -14,5 +14,5 @@ build() {
 }
 
 package() {
-    install -d "${pkgdir}"
+    install -Dm0755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
