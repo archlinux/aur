@@ -1,7 +1,7 @@
 pkgbase = r-triebeard
 	pkgdesc = 'Radix' Trees in 'Rcpp'
-	pkgver = 0.3.0
-	pkgrel = 4
+	pkgver = 0.4.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=triebeard
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = r-triebeard
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/triebeard_0.3.0.tar.gz
-	sha256sums = bf1dd6209cea1aab24e21a85375ca473ad11c2eff400d65c6202c0fb4ef91ec3
+	source = https://cran.r-project.org/src/contrib/triebeard_0.4.1.tar.gz
+	sha256sums = 192f2fef6341e43bd56ef4f9841e813e07be990f4ffcf38c5606259630efe0f7
 
 pkgname = r-triebeard
