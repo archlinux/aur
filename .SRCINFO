@@ -1,6 +1,6 @@
 pkgbase = denaro-git
 	pkgdesc = A personal finance manager
-	pkgver = 2023.2.2.r27.gfca8ad1
+	pkgver = 2023.2.2.r31.g98ea94b
 	pkgrel = 1
 	url = https://github.com/nlogozzo/nickvisionmoney
 	arch = aarch64
@@ -8,7 +8,6 @@ pkgbase = denaro-git
 	arch = x86_64
 	arch = i686
 	license = GPL3
-	makedepends = cmake
 	makedepends = dotnet-sdk>=7
 	makedepends = git
 	makedepends = just
