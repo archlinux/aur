@@ -2,7 +2,7 @@
 
 _pkgname=blivet-gui
 pkgname=$_pkgname-git
-pkgver=8479f03
+pkgver=fb5726a
 pkgrel=1
 pkgdesc='GUI tool for storage configuration'
 arch=('any')
