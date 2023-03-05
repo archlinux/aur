@@ -1,29 +1,22 @@
-# Maintainer: Daniel Menelkir <dmenelkir at gmail dot com>
+# Maintainer: MeganerdNL <meganerd [at] meganerd [dot] nl>
+# Contributor: Daniel Menelkir <dmenelkir [at] gmail [dot] com>
 
 pkgname="plymouth-theme-artix-logo-new"
-pkgver=0.2
-pkgrel=3
+pkgver=0.3
+pkgrel=1
 pkgdesc="Replace the logo from package plymouth-theme-artix-logo"
 arch=('any')
-url="https://gitlab.com/menelkir/plymouth-artix-logo-new"
+url="https://github.com/MeganerdNL/plymouth-theme-artix-logo-new"
 license=('GPL')
 depends=('plymouth')
-source=(https://gitlab.com/menelkir/plymouth-artix-logo-new/-/archive/v${pkgver}/plymouth-artix-logo-new-v${pkgver}.tar.bz2)
-sha256sums=('926409c40b1413a15b5367b8a00c27dcdd709b0aa5d924ff9a79569b474263b4')
+source=("https://github.com/MeganerdNL/plymouth-theme-artix-logo-new/archive/${pkgver}.zip")
+sha256sums=('4dbd08e2350a7fef1c5de07e4ec63638f2e3328bd2f7ee7aa6a1cbf5caf7987d')
+install="plymouth-theme-artix-logo-new.install"
 
 package() {
-    cd "${srcdir}/plymouth-artix-logo-new-v${pkgver}"
+    cd "${srcdir}/plymouth-theme-artix-logo-new-${pkgver}"
     mkdir -p $pkgdir/usr/share/plymouth/themes/artix-logo-new
-    install -Dm644 * $pkgdir/usr/share/plymouth/themes/artix-logo-new
+    install -Dm644 *.png $pkgdir/usr/share/plymouth/themes/artix-logo-new
+    install -Dm644 artix-logo-new.script $pkgdir/usr/share/plymouth/themes/artix-logo-new
+    install -Dm644 artix-logo-new.plymouth $pkgdir/usr/share/plymouth/themes/artix-logo-new
 }
-
-post_install() {
-    echo "==> To activate run:"
-    echo "==> sudo plymouth-set-default-theme -R artix-logo-new"
-}
-
-post_upgrade() {
-    post_install $1
-}
-
-

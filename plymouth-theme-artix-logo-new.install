@@ -1,0 +1,8 @@
+post_install() {
+    echo "==> To activate run:"
+    echo "==> sudo plymouth-set-default-theme -R artix-logo-new"
+}
+
+post_upgrade() {
+    post_install $1
+}
