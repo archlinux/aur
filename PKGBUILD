@@ -9,10 +9,11 @@ pkgbase=linux-aarch64-lts
 _srcname=linux-6.1
 _kernelname=${pkgbase#linux}
 _desc='AArch64 multi-platform LTS'
+pkgdesc="The Linux Kernel and modules - ${_desc}"
 pkgver=6.1.15
 pkgrel=1
 arch=('aarch64')
-url='https://www.kernel.org'
+url='https://github.com/lynix/linux-aarch64-lts'
 license=('GPL2')
 makedepends=(
     'xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools'
@@ -76,7 +77,6 @@ build() {
 }
 
 _package() {
-    pkgdesc="The Linux Kernel and modules - ${_desc}"
     depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
     optdepends=(
         'wireless-regdb: to set the correct wireless channels of your country'
