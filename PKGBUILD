@@ -3,13 +3,13 @@
 
 pkgname='perl-test-deep-json'
 pkgver='0.05'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Compare JSON with Test::Deep"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-exporter-lite>=0' 'perl-json-maybexs>=0' 'perl-test-deep>=0' 'perl>=5.8.1')
-makedepends=()
+makedepends=('perl-module-build-tiny')
 url='https://metacpan.org/release/Test-Deep-JSON'
 source=('http://search.cpan.org/CPAN/authors/id/M/MO/MOTEMEN/Test-Deep-JSON-0.05.tar.gz')
 md5sums=('4919d51563bb5277b4ea3be72dfafd5a')
