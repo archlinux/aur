@@ -1,17 +1,26 @@
 pkgbase = virtualsmartcard-git
-	pkgdesc = Virtual Smart Card emulates a smart card and makes it accessible through PC/SC
-	pkgver = 0
+	pkgdesc = Smart card emulator written in Python
+	pkgver = 0.8.r65.g38709f3
 	pkgrel = 1
-	url = http://sourceforge.net/projects/vsmartcard/
+	url = https://frankmorgner.github.io/vsmartcard/virtualsmartcard/README.html
+	arch = aarch64
+	arch = armv7h
+	arch = i486
 	arch = i686
+	arch = pentium4
 	arch = x86_64
-	license = GPLv3
+	license = GPL3
+	makedepends = git
 	makedepends = help2man
 	depends = pcsclite
-	provides = virtualsmartcard
+	depends = python-pillow
+	depends = python-pycryptodomex
+	depends = python-pyscard
+	depends = python-qrcode
+	depends = qrencode
+	provides = virtualsmartcard=0.8.r65.g38709f3
 	conflicts = virtualsmartcard
-	source = virtualsmartcard::git+http://git.code.sf.net/p/vsmartcard/git
-	sha1sums = SKIP
+	source = vsmartcard::git+https://github.com/frankmorgner/vsmartcard.git
+	b2sums = SKIP
 
 pkgname = virtualsmartcard-git
-

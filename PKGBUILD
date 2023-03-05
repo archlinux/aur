@@ -1,34 +1,46 @@
-# Maintainer: Daniel Nagy <danielnagy at gmx de>
-
-pkgname=virtualsmartcard-git
-_gitname=virtualsmartcard
-pkgver=0
+# Maintainer: Alexandre Bouvier <contact@amb.tf>
+_pkgname=virtualsmartcard
+pkgname=$_pkgname-git
+pkgver=0.8.r65.g38709f3
 pkgrel=1
-pkgdesc="Virtual Smart Card emulates a smart card and makes it accessible through PC/SC"
-url="http://sourceforge.net/projects/vsmartcard/"
-arch=('i686' 'x86_64')
-license=( "GPLv3" )
-conflicts=( $_gitname )
-provides=( $_gitname )
-depends=( "pcsclite"  )
-makedepends=( "help2man" )
-source=( "$_gitname::git+http://git.code.sf.net/p/vsmartcard/git" )
-sha1sums=('SKIP')
+pkgdesc="Smart card emulator written in Python"
+arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
+url="https://frankmorgner.github.io/vsmartcard/virtualsmartcard/README.html"
+license=('GPL3')
+depends=(
+	'pcsclite'
+	'python-pillow'
+	'python-pycryptodomex'
+	'python-pyscard'
+	'python-qrcode'
+	'qrencode'
+)
+makedepends=('git' 'help2man')
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
+source=('vsmartcard::git+https://github.com/frankmorgner/vsmartcard.git')
+b2sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir"/$_gitname
-  # Use the tag of the last commit
-  git describe --always | sed 's|-|.|g'
+	cd vsmartcard
+	git describe --long --match='virtualsmartcard-*' --tags | sed 's/^virtualsmartcard-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	autoreconf -fiv vsmartcard/virtualsmartcard
 }
 
 build() {
-  cd "$srcdir"/$_gitname/virtualsmartcard
-  autoreconf --verbose --install
-  ./configure --prefix=/usr
-  make
+	cd vsmartcard/virtualsmartcard
+	LDFLAGS+=" -Wl,-z,undefs"
+	./configure \
+		--enable-serialconfdir=/etc/reader.conf.d \
+		--enable-serialdropdir=/usr/lib/pcsc/drivers/serial \
+		--prefix=/usr
+	make
 }
 
 package() {
-  cd "$srcdir"/$_gitname/virtualsmartcard
-  make DESTDIR="$pkgdir" install
+	# shellcheck disable=SC2154
+	make -C vsmartcard/virtualsmartcard DESTDIR="$pkgdir" install
 }
