@@ -1,12 +1,12 @@
 pkgbase = murphysec-bin
 	pkgdesc = Detecting vulnerable dependencies from the command-line
 	pkgver = 3.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/murphysecurity/murphysec
 	arch = x86_64
 	arch = aarch64
 	license = Apache
-	source = https://github.com/murphysecurity/murphysec/releases/download/v3.0.1/murphysec-linux-amd64
+	source = murphysec::https://github.com/murphysecurity/murphysec/releases/download/v3.0.1/murphysec-linux-amd64
 	sha256sums = SKIP
 
 pkgname = murphysec-bin
