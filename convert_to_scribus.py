@@ -11,7 +11,6 @@ CSS_HASH_PATTERN = re.compile(r"#([0-9a-fA-F]{6})")
 CSS_RGB_PATTERN = re.compile(r"rgb\((\d+),\s*(\d+),\s*(\d+)\)")
 
 def _scribus_swatch(source: dict[str, str]) -> dict[str, str]:
-    # pylint: disable=used-before-assignment # https://github.com/PyCQA/pylint/issues/5327
     match source["hex"]:
         case str(color) if (match := CSS_HASH_PATTERN.search(color)):
             rgb = bytes.fromhex(match[1])
