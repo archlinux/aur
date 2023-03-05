@@ -10,7 +10,7 @@ license=('Custom')
 depends=('jre11-openjdk')
 conflicts=('purewriter-desktop')
 replaces=('purewriter-desktop')
-source=("https://github.com/PureWriter/desktop/releases/download/${pkgver}/PureWriter-$pkgver-Linux-amd64.deb"
+source=("https://github.com/PureWriter/desktop/releases/download/1.8.0/PureWriter-$pkgver-Linux-amd64.deb"
         'purewriter'
         'purewriter.png'
         'purewriter.desktop')
