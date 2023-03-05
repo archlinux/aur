@@ -1,7 +1,11 @@
 *.tar.gz
 *.tar.xz
 tableplus*
+!tableplus.desktop
 pkg
 deb
 src
 *.orig
+glib2-*
+libldap-*
+libsasl2-*
