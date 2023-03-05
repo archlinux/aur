@@ -1,11 +1,13 @@
 pkgbase = perl-graph-writer-dsm
 	pkgdesc = Write graph as a quadractic matrix N x N, where N is the number of vertices in the graph. It is useful to visualize graphs with at least 1k vertices.
-	pkgver = 0.006
-	pkgrel = 2
-	url = http://search.cpan.org/~joenio/Graph-Writer-DSM-0.006/lib/Graph/Writer/DSM.pm
+	pkgver = 0.008
+	pkgrel = 1
+	url = http://search.cpan.org/~joenio/Graph-Writer-DSM-0.008/lib/Graph/Writer/DSM.pm
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	checkdepends = perl-test-tempdir-tiny
+	checkdepends = perl-alien-gnuplot
 	depends = perl-test-class
 	depends = perl-test-file
 	depends = perl-graph
@@ -16,9 +18,9 @@ pkgbase = perl-graph-writer-dsm
 	depends = perl-chart-gnuplot
 	depends = perl-list-moreutils
 	depends = perl-module-install
+	depends = perl-graph-readwrite
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/J/JO/JOENIO/Graph-Writer-DSM-0.006.tar.gz
-	sha512sums = 0c227bb07d0ef50655051dd5b7ddb80c3b88b61f8f14aacf98e9d65247c2ed334b58bc0d536dc04888147bf021e8f9a9a62b3944c7519801096fae6d76441729
+	source = http://search.cpan.org/CPAN/authors/id/J/JO/JOENIO/Graph-Writer-DSM-0.008.tar.gz
+	sha512sums = a0819bdb9eefc9c0275a34a559d6bbf97b7cd6a93037309d819ce43930a2ff48742c373dd93d55dfb422534eeb7dcdd8a9f7950196115355957fc4a4d47b2f6d
 
 pkgname = perl-graph-writer-dsm
-
