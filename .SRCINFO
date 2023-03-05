@@ -1,0 +1,17 @@
+pkgbase = perl-graph-readwrite
+	pkgdesc = modules for reading and writing directed graphs
+	pkgver = 2.10
+	pkgrel = 1
+	url = https://metacpan.org/dist/Graph-ReadWrite
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-graph
+	depends = perl-parse-yapp
+	depends = perl-xml-parser
+	depends = perl-xml-writer
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/N/NE/NEILB//Graph-ReadWrite-2.10.tar.gz
+	sha512sums = f32e0fd002068ed53389d8903588cafb8ff819f01f7ef28c4d3fa9ffcb56e7eba1316583b7e91f2089b6a654cf896ffa96e3c29d89ab11b082856526044297e3
+
+pkgname = perl-graph-readwrite
