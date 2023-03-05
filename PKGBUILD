@@ -1,21 +1,20 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-datetime-format-natural'
-pkgver='1.04'
+pkgver='1.16'
 pkgrel='1'
 pkgdesc="Parse informal natural language date/time strings"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-clone' 'perl-datetime' 'perl-datetime-timezone' 'perl-list-moreutils' 'perl-module-util' 'perl-params-validate' 'perl-boolean')
-makedepends=()
-checkdepends=('perl-test-mocktime')
-url='https://metacpan.org/release/DateTime-Format-Natural'
-source=('http://search.cpan.org/CPAN/authors/id/S/SC/SCHUBIGER/DateTime-Format-Natural-1.04.tar.gz')
-md5sums=('62e7a7ff35cf5f9bcfd993d1aa6984fe')
-sha512sums=('4d48ec2180f56333bc50dfe75609e09574bec502bae38a858c82467b6030dcedaec14f94fc6da182d159c1070ebe734f5e3de9d7ad0f82fe99fce885744ea213')
-_distdir="DateTime-Format-Natural-1.04"
+depends=('perl-clone' 'perl-datetime' 'perl-datetime-hires' 'perl-boolean')
+makedepends=('perl-module-build')
+checkdepends=('perl-module-util' 'perl-test-mocktime-hires')
+url='https://metacpan.org/dist/DateTime-Format-Natural'
+source=('https://cpan.metacpan.org/authors/id/S/SC/SCHUBIGER/DateTime-Format-Natural-1.16.tar.gz')
+md5sums=('cd2d34fd04ffa4473ad37a944e7fbd2f')
+_distdir="DateTime-Format-Natural-1.16"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -25,27 +24,22 @@ build() {
       MODULEBUILDRC=/dev/null
 
     cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
+    /usr/bin/perl Build.PL
+    /usr/bin/perl Build 
   )
 }
 
 check() {
   cd "$srcdir/$_distdir"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
+    unset DISPLAY
+    /usr/bin/perl Build test
   )
 }
 
 package() {
   cd "$srcdir/$_distdir"
-  make install
-
+  /usr/bin/perl Build install
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
