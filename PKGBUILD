@@ -4,7 +4,7 @@
 # Contributor: Chad Versace <chad.versace@linux.intel.com>
 
 pkgname=waffle
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc='a library for choosing window system and OpenGL API at runtime'
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=('libgl: for OpenGL or GLX support'
 makedepends=('meson' 'xcb-proto' 'mesa' 'libxslt' 'docbook-xsl' 'systemd' 'wayland-protocols')
 
 source=(https://waffle.freedesktop.org/files/release/waffle-${pkgver}/waffle-${pkgver}.tar.xz{,.asc})
-sha256sums=('9e6f392185d085e9aa7f1a0aef6642f843e80d17282b4382217a5b29ded9fdd9'
+sha256sums=('f676195cfea58cc75ef2441c5616b2f1d5565a7d371a6aa655aff3cc67c7c2c9'
             'SKIP')
 validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D')
 
