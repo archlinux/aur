@@ -1,18 +1,17 @@
 # Maintainer: egoroff <egoroff@gmail.com>
 pkgname=editorconfiger
 pkgver=0.4.1
-pkgrel=7
-arch=('x86_64')
+pkgrel=6
+makedepends=('cargo')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="Plain tool to validate and compare .editorconfig files"
 url="https://github.com/aegoroff/editorconfiger"
 license=('MIT')
-source=("https://github.com/aegoroff/editorconfiger/releases/download/${pkgver}/editorconfiger-${pkgver}-x86_64-unknown-linux-musl.tar.gz")
-sha256sums=('cff46889b3cbdbf1f361d065db674cc82919cf627fc1801afb5b22ddcc25fc76')
 
 build() {
     return 0
 }
 
 package() {
-    install -d "${pkgdir}"
+    cargo install --no-track --bin editorconfiger --features="build-binary" --root "$pkgdir/usr/" editorconfiger
 }
