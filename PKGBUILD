@@ -1,8 +1,8 @@
 # Maintainer: Skydrome <skydrome at protonmail dot com>
 
 pkgname=zulu-embedded-jdk
-pkgver=19.0.1
-_build=19.30.11
+pkgver=19.0.2
+_build=19.32.13
 pkgrel=1
 pkgdesc='Zulu Embedded is a certified build of OpenJDK for ARMv8 64bit devices.'
 arch=('armv7h' 'armv8h' 'aarch64' 'i686' 'x86_64')
@@ -10,21 +10,20 @@ url='https://www.azul.com/downloads/?os=linux'
 license=('custom')
 install=jdk.install
 options=(!strip)
-provides=("java-environment=17" "java-runtime=17")
+provides=("java-environment=19" "java-runtime=19")
 depends=('java-runtime-common>=3' 'java-environment-common>=3'
-         'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'lcms2' 'libnet'
-         'freetype2' 'giflib' 'libelf')
+         'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'lcms2' 'libnet' 'freetype2' 'giflib' 'libelf')
 
 case "$CARCH" in
     armv?h) _arch='aarch32hf'
-        pkgver=17.0.5
-        _build=17.38.21
-        sha256sums=('55f936d1b067bfc760ae5682f563ac79dd93a31d0042e04c77bac11f62dacf0b')
+        pkgver=17.0.6
+        _build=17.40.19
+        sha256sums=('a2d9d7b734174fd734700194d8e38434f24a62be193c4c2810ba1a91efd4c5e4')
         source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-c2-linux_${_arch}.tar.gz")
-        provides=("java-environment=13" "java-runtime=13")
+        provides=("java-environment=17" "java-runtime=17")
         ;;
     aarch64) _arch='aarch64'
-        sha256sums=('5f9c1ea91000a271afad3726149a6aefbca3c3b9e0fa790e9aa7fbf0f38aa9ed')
+        sha256sums=('76216efa69e448fe487d57310372aea0df1cf15b82974c84a8cb0d97eb934165')
         source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-linux_${_arch}.tar.gz")
         ;;
     i686) _arch='i686'
@@ -32,9 +31,10 @@ case "$CARCH" in
         _build=18.32.13
         sha256sums=('91337d39daccf91169761b2b0b80249f1a65cb60e8a6a82d5bbffd2eee10ef4e')
         source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-linux_${_arch}.tar.gz")
+        provides=("java-environment=18" "java-runtime=18")
         ;;
     x86_64) _arch='x64'
-        sha256sums=('2ac8cd9e7e1e30c8fba107164a2ded9fad698326899564af4b1254815adfaa8a')
+        sha256sums=('4a994aded1d9b35258d543a59d4963d2687a1094a818b79a21f00273fbbc5bca')
         source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-linux_${_arch}.tar.gz")
         ;;
 esac

@@ -1,6 +1,6 @@
 pkgbase = zulu-embedded-jdk
 	pkgdesc = Zulu Embedded is a certified build of OpenJDK for ARMv8 64bit devices.
-	pkgver = 19.0.1
+	pkgver = 19.0.2
 	pkgrel = 1
 	url = https://www.azul.com/downloads/?os=linux
 	install = jdk.install
@@ -20,10 +20,10 @@ pkgbase = zulu-embedded-jdk
 	depends = freetype2
 	depends = giflib
 	depends = libelf
-	provides = java-environment=17
-	provides = java-runtime=17
+	provides = java-environment=19
+	provides = java-runtime=19
 	options = !strip
-	source = https://cdn.azul.com/zulu/bin/zulu19.30.11-ca-jdk19.0.1-linux_aarch64.tar.gz
-	sha256sums = 5f9c1ea91000a271afad3726149a6aefbca3c3b9e0fa790e9aa7fbf0f38aa9ed
+	source = https://cdn.azul.com/zulu/bin/zulu19.32.13-ca-jdk19.0.2-linux_aarch64.tar.gz
+	sha256sums = 76216efa69e448fe487d57310372aea0df1cf15b82974c84a8cb0d97eb934165
 
 pkgname = zulu-embedded-jdk
