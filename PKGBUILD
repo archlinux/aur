@@ -22,7 +22,7 @@ _clangbuild=
 
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r62347.b96206569e2
+pkgver=r62482.3459df385e4
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -112,6 +112,10 @@ prepare() {
   cd "$_gitname"
 
   [[ "$_sse_workaround" -eq 1 ]] && patch -p1 -i "$srcdir/cheat-sse-build.patch"
+
+  # NFSv4 fix
+  # https://bugs.archlinux.org/task/77727
+  git pull --no-edit origin pull/22897/head
 
   if [[ -n "$_clangbuild" ]]; then
     msg "Building with clang"
