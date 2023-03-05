@@ -70,7 +70,7 @@ _subarch=36
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-prjc
-pkgver=6.1.12
+pkgver=6.2.2
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
@@ -80,10 +80,10 @@ makedepends=(bc libelf cpio perl tar xz)
 [[ -n "$_clangbuild" ]] && makedepends+=(clang llvm lld python)
 options=('!strip')
 _srcname=linux-${pkgver}
-_kernel_base_commit=129c15b606278f9254a16013f7e5a94a128d9bcd
+_kernel_base_commit=6ab3eda153b603d578a83e75dd1a58270ebfe3f2
 _kernel_arch_tag=${pkgver}-arch1
-_arch_config_commit=fd061c7c0502bb7f13beaa13aedf69043905b105
-_prjc_version=6.1-r4
+_arch_config_commit=a3c4af9c73ffc82ed960204f275602a808c1f050
+_prjc_version=6.2-r0
 _prjc_patch="prjc_v${_prjc_version}.patch"
 _gcc_more_v=20230105
 source=(
@@ -98,12 +98,12 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('1ff8d14fa1544a9d613fe372073e6735cc9444383e598a1c6a546177e1a9516b7f5a0d16aac4fc141fef134ffe14a0e40ab5db4200c11c953fec7f70a7bc9079'
+b2sums=('7f0ace4eb3f3dbba6104adf1b64682ce3d76e96a33cd0500f9943c150b5aa17c9e25690615f9ab0bdabe33c3e13548d9cd9f1f3faecd0369554f2cb5982c44aa'
         'SKIP'
-        '4453d86e70cec81e6fa94302d3ada249d1a9fe555671ca8660dc35c4ab87b36f0aecb3d66d4aa6b82e5da80c8a2c22bb936719c656fe2d77c8a86d5e47a48034'
-        'ea7fc9eabe9c201a675170b188ffa07ac25e568eec461990c3a08833e401642a4c2fde34df7d6b3938e4a232861192ab8df8af902cdae002b6fefc28d9fec5ea'
+        '45b53be3b62dff05e048bd2b79edb6540bad6d48b4f2e1ebae9ec660cfbc60cfc8290d32c3f325d30b653d3a463bca05dbd1fb488631e12118aa767d26471a5c'
+        '9f14aeebd39a59833dd16a0d245348a3be30b001d3a0cd0cbd665f73cd06113be4cdae4aecb840af3285f90c2e90b98236511e9685fd9fb93b117eb95a8a602f'
         'd178dad69501967382d5c841f65e4f57651042bee8117041a9baa35ab3fa73af8174b8b999ae9e72ec381c52744ccaaabb77944d59f123c04b6ed5626432d843'
-        '38f5b8ee3de31fe42015a0806e4cea54af70d30cfd7b5cbf5162c5bdd1c4a944878859abd464ebc4d897348f2ae9ad8454b37fcc4752141b3823c164cebd9d86')
+        'c0ee20e5578ca04e1f785672c437df9090846bc1d51d5c0b76f3ad84fe263bae3315d48e1d3324d21ea5465e1e615e5fb833b6f573f9f25a3eaa2cdee864c1f5')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-prjc}
