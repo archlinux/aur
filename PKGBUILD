@@ -1,7 +1,7 @@
 # Maintainer: asukaminato <asukaminato at nyan dot eu dot org>
 pkgname=erdtree-bin
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A multi-threaded file-tree visualizer and disk usage analyzer."
 arch=('x86_64' 'aarch64')
@@ -28,5 +28,5 @@ validpgpkeys=()
 
 package() {
 	install -Dm755 et -t $pkgdir/usr/bin/
-	install -Dm644 LICENSE -t $pkgdir/usr/share/licenses/
+	install -Dm644 LICENSE -t $pkgdir/usr/share/licenses/${pkgname}/
 }
