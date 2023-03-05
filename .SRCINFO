@@ -1,0 +1,17 @@
+pkgbase = perl-alien-gnuplot
+	pkgdesc = Find and verify functionality of the gnuplot executable.
+	pkgver = 1.040
+	pkgrel = 1
+	url = https://metacpan.org/dist/Alien-Gnuplot
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-exception
+	makedepends = perl-alien-build
+	depends = perl
+	depends = gnuplot
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/Z/ZM/ZMUGHAL/Alien-Gnuplot-1.040.tar.gz
+	sha512sums = b8665ffba818026c569c5a9b6a632aed473c69d0f0eef3a81d20ced008036b230ca1a8fb4c94fa7bd95b10de91e8b2c11777c26b6a4997068353ee2856ec6712
+
+pkgname = perl-alien-gnuplot
