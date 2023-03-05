@@ -2,8 +2,8 @@
 # Contributor: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=lcms2-ff-git
-pkgver=2.14.r44.ge71aeb6
-pkgrel=2
+pkgver=2.15.r4.g53bc7c5
+pkgrel=1
 pkgdesc="Small-footprint color management engine including fast_float plugin"
 arch=('x86_64')
 url="https://www.littlecms.com/"
