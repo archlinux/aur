@@ -6,6 +6,7 @@ pkgbase = keyboard-backlightd-git
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
+	makedepends = git
 	depends = libevdev
 	provides = keyboard-backlightd
 	conflicts = keyboard-backlightd
