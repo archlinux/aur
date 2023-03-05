@@ -1,0 +1,17 @@
+pkgbase = libaccounts-qt-git
+	pkgdesc = Qt-based client library for accessing the online accounts database
+	pkgver = 1.16
+	pkgrel = 3
+	url = https://gitlab.com/accounts-sso/libaccounts-qt
+	arch = x86_64
+	license = LGPL
+	makedepends = doxygen
+	depends = libaccounts-glib
+	depends = qt6-base
+	provides = libaccounts-qt
+	conflicts = libaccounts-qt
+	replaces = libaccounts-qt
+	source = git+https://gitlab.com/accounts-sso/libaccounts-qt.git
+	sha256sums = SKIP
+
+pkgname = libaccounts-qt-git
