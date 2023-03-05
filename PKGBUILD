@@ -22,7 +22,7 @@ _clangbuild=
 
 pkgbase=kodi-nexus-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r61969.246fd7f19fc
+pkgver=r62023.8781093eb8b
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -80,7 +80,6 @@ source=(
   "https://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   "https://mirrors.kodi.tv/build-deps/sources/libudfread-$_libudfread_version.tar.gz"
   cheat-sse-build.patch
-  "https://github.com/xbmc/xbmc/pull/22714.patch"  # FS#77565
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -101,8 +100,7 @@ b2sums=('SKIP'
         'a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e'
         'ccd827a43da39cf831727b439beed0cea216cdf50dbfe70954854bbe388b2c47ed4e78cc87e3fc0d5568034b13baa2ea96480914cc8129747bccbf8ea928847c'
         '1801d84a0ca38410a78f23e7d44f37e6d53346753c853df2e7380d259ce1ae7f0c712825b95a5753ad0bc6360cfffe1888b9e7bc30da8b84549e0f1198248f61'
-        '6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0'
-        'bc092d345bd32f9425f92485da2f6bdecceffa37dce06cd8e750de467702e402c134a6b07a5132da70722bc215c0232e4d9c49484370ba2274542925e41d4733')
+        '6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0')
 
 pkgver() {
   cd "$_gitname"
@@ -116,11 +114,16 @@ prepare() {
   cd "$_gitname"
 
   [[ "$_sse_workaround" -eq 1 ]] && patch -p1 -i "$srcdir/cheat-sse-build.patch"
-
+  
   # NFSv4 fix
   # https://bugs.archlinux.org/task/77565
-  patch -p1 -i "$srcdir/22714.patch"
-
+  git cherry-pick 9dc30e83c830d379c063eaf3a4a64a9fb57ca782
+  # https://bugs.archlinux.org/task/77727
+  git cherry-pick 4f50af70efeaef2c7305719df7bc070be604793d
+  git cherry-pick b581bb8dd23eff1da4b7368adc9bf6c9a1797809
+  git cherry-pick 1c3671e0866b617c3578cd234c758ad3d3d293af
+  git cherry-pick 3459df385e4ec0f9161177a6271bc05b51cc505c
+  
   if [[ -n "$_clangbuild" ]]; then
     msg "Building with clang"
     export CC=clang CXX=clang++
