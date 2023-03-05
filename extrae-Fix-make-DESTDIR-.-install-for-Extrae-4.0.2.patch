@@ -1,0 +1,35 @@
+From bb50dfa2770d20856467d9c2347f67da362608b9 Mon Sep 17 00:00:00 2001
+From: Joan Bruguera <joanbrugueram@gmail.com>
+Date: Sun, 5 Mar 2023 17:07:18 +0000
+Subject: [PATCH] Fix 'make DESTDIR=... install' for Extrae 4.0.2.
+
+---
+ src/extrae-uncore/Makefile.am | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/src/extrae-uncore/Makefile.am b/src/extrae-uncore/Makefile.am
+index 4d975770..59408f18 100644
+--- a/src/extrae-uncore/Makefile.am
++++ b/src/extrae-uncore/Makefile.am
+@@ -3,12 +3,12 @@ SUBDIRS = uncore-service
+ dist_bin_SCRIPTS = extrae-uncore.py
+ 
+ install-data-hook:
+-	$(top_srcdir)/substitute $(SED) "@sub_PREFIXDIR@" "${prefix}"    ${prefix}/bin/extrae-uncore.py
+-	$(top_srcdir)/substitute $(SED) "@sub_LIBDIR@"    "${libdir}"    ${prefix}/bin/extrae-uncore.py
+-	$(top_srcdir)/substitute $(SED) "@sub_PAPI_HOME@" "${PAPI_HOME}" ${prefix}/bin/extrae-uncore.py
+-	ln -fs ${prefix}/bin/extrae-uncore.py ${prefix}/bin/extrae-uncore
+-	chmod u+x ${prefix}/bin/extrae-uncore
++	$(top_srcdir)/substitute $(SED) "@sub_PREFIXDIR@" "${prefix}"    $(DESTDIR)${prefix}/bin/extrae-uncore.py
++	$(top_srcdir)/substitute $(SED) "@sub_LIBDIR@"    "${libdir}"    $(DESTDIR)${prefix}/bin/extrae-uncore.py
++	$(top_srcdir)/substitute $(SED) "@sub_PAPI_HOME@" "${PAPI_HOME}" $(DESTDIR)${prefix}/bin/extrae-uncore.py
++	ln -fs ${prefix}/bin/extrae-uncore.py $(DESTDIR)${prefix}/bin/extrae-uncore
++	chmod u+x $(DESTDIR)${prefix}/bin/extrae-uncore.py
+ 	$(MKDIR_P) $(DESTDIR)$(sysconfdir)
+ 	cp extrae_uncore_template.xml $(DESTDIR)$(sysconfdir)/extrae_uncore_template.xml
+-	$(top_srcdir)/substitute $(SED) "@sub_PREFIXDIR@" "${prefix}" ${prefix}/etc/extrae_uncore_template.xml
++	$(top_srcdir)/substitute $(SED) "@sub_PREFIXDIR@" "${prefix}" $(DESTDIR)${prefix}/etc/extrae_uncore_template.xml
+ 
+-- 
+2.39.2
+

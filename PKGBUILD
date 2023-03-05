@@ -1,27 +1,28 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname='extrae'
 pkgdesc='Instrumentation framework to generate execution traces of the most used parallel runtimes (from BSC).'
-pkgver='4.0.1.20220513'
-pkgrel='4'
+pkgver='4.0.2.20230303'
+pkgrel='1'
 arch=('i686' 'x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
 license=('LGPL2.1')
 depends=(openmpi libunwind papi libxml2 zlib python)
 source=("https://github.com/bsc-performance-tools/$pkgname/archive/${pkgver%.*}.tar.gz"
         extrae-issue-27-fix-pie-address-translation.patch
+        extrae-Fix-make-DESTDIR-.-install-for-Extrae-4.0.2.patch
         extrae-Fix-references-to-the-build-directory.patch)
-sha512sums=(58cbe06b1eb738dba3c9d38a96ca8a9bf442c492214e086876af25b8d7e01c379b46281f6815763e87e0e69214636f95486d48b1b6ce088b54d24b4d77ff0920
-            3b0fae157fcc6e85be3a5565c2ea3abe8bf35e130de96435a93ba7b3f4b6c30df8982823d36c494633a2c16671664112558393faeead05226b96aa521bb14fba
+sha512sums=(a2d55514fd338b4b15a55725deebd82696572bfb0d63744a7f50d3aac0cf0a70908bdb0fb3a7ea776ced54c737eef38e7deaa58de93f89f320774459a08cc10c
+            ce6e5f3994118783fd1e05de7336782e4df4eaf3b2a277174ea536b0d391f418cb36682c1e1b3adee3b4d2aa07f25af58998525c79d0567f7afa88dda048c413
+            e90d108ac4531d68ba8bced44db71139cb7b4273f97ec994582150eb9d4f71960c525c1b3ad2fac95d678f91494b5299bfb00513a0a58cc5b6d916eb930af2d5
             a5085d4e974a98cb6266502e06bd2b5a45e213f7d322e8f6cffccbaf92a7f414641b6e6578f87f76dbbb3e4f89b3c268dc33e813c13ea5512e52d1b241317f2a)
 
 prepare() {
 	cd "$srcdir/$pkgname-${pkgver%.*}"
 
-	# Replace PTR type (from ansidecl.h) which was recently removed from binutils
-	sed -i 's|PTR|void *|g' src/merger/common/bfd_manager.c
-
 	# Upstream issue: https://github.com/bsc-performance-tools/extrae/issues/27
 	patch -Np1 -i "$srcdir/extrae-issue-27-fix-pie-address-translation.patch"
+
+	patch -Np1 -i "$srcdir/extrae-Fix-make-DESTDIR-.-install-for-Extrae-4.0.2.patch"
 	patch -Np1 -i "$srcdir/extrae-Fix-references-to-the-build-directory.patch"
 
 	# The OpenMPI package also has a library called libompitrace, which conflicts with
@@ -33,10 +34,6 @@ prepare() {
 
 build() {
 	cd "$srcdir/$pkgname-${pkgver%.*}"
-
-	# OpenMPI library path changed between openmpi 4.1.2-1 and 4.1.3-1
-	# Autodetect which one it is to smoothen transition
-	[ -e /usr/lib/openmpi/libmpi.so ] && MPILIBPATH=/usr/lib/openmpi || MPILIBPATH=/usr/lib
 
 	# NOTE: The following optional features are NOT enabled:
 	# * Automatic instrumentation (with dyninst)
@@ -51,7 +48,7 @@ build() {
 	./configure \
 		--prefix=/usr \
 		--with-mpi=/usr \
-		--with-mpi-libs="$MPILIBPATH" \
+		--with-mpi-libs=/usr/lib \
 		--with-mpi-headers=/usr/include/openmpi \
 		--with-unwind=/usr \
 		--with-unwind-headers=/usr/include \
