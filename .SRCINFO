@@ -8,6 +8,7 @@ pkgbase = mapshot
 	makedepends = go
 	makedepends = npm
 	depends = glibc
+	optdepends = factorio: The game in some form is required for rendering maps
 	source = mapshot-0.0.17.tar.gz::https://github.com/Palats/mapshot/archive/refs/tags/0.0.17.tar.gz
 	sha256sums = 989310114b3e5e12465954bb38fc1c96ce3aa4930131a037d85efa6011d9d276
 
