@@ -1,0 +1,16 @@
+pkgbase = libclc13-minimal
+	pkgdesc = Library requirements of the OpenCL C programming language
+	pkgver = 13.0.0
+	pkgrel = 1
+	url = https://libclc.llvm.org/
+	arch = x86_64
+	license = MIT
+	makedepends = llvm13-minimal
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = python
+	makedepends = git
+	source = https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-13.0.0.tar.gz
+	sha256sums = a1131358f1f9f819df73fa6bff505f2c49d176e9eef0a3aedd1fdbce3b4630e8
+
+pkgname = libclc13-minimal
