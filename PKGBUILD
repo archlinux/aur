@@ -20,7 +20,7 @@ source=(
     solarized.patch
 )
 sha256sums=('cd5fd71c46271d70c08ad44562e57c34e787d6a8650071db115910999a335ba8'
-            'a9606b8d99e0e0ad6948ee75b39596baeed1061c97859cace80a3732fe444eaf')
+            'c6263c891ef7f53eeffcacbfa9547c98779d5cbf558375961ae763638f10ac24')
 
 prepare() {
     cd "$_base-$pkgver"
