@@ -1,0 +1,19 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 380f461..c91ad53 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -46,12 +46,8 @@ set_property(TARGET ${RELEASE_NAME} PROPERTY CXX_STANDARD_REQUIRED YES)
+ set_property(TARGET ${RELEASE_NAME} PROPERTY CXX_EXTENSIONS NO)
+ 
+ # General Qt configuration.
+-if(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+-    add_compile_definitions(${RELEASE_NAME} QT_DEBUG)
+-else()
+-    add_compile_definitions(${RELEASE_NAME} QT_NO_DEBUG)
+-    add_compile_definitions(${RELEASE_NAME} QT_NO_DEBUG_OUTPUT)
+-endif()
++add_compile_definitions(${RELEASE_NAME} QT_NO_DEBUG)
++add_compile_definitions(${RELEASE_NAME} QT_NO_DEBUG_OUTPUT)
+ 
+ # Link against all required Qt modules.
+ foreach(QT_COMPONENT ${REQUIRED_QT5_COMPONENTS})
