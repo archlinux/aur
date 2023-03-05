@@ -1,0 +1,17 @@
+pkgbase = cargo-all-features
+	pkgdesc = A Cargo subcommand to build and test all feature flag combinations
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://crates.io/crates/cargo-all-features
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = cargo
+	source = cargo-all-features-1.8.0.tar.gz::https://crates.io/api/v1/crates/cargo-all-features/1.8.0/download
+	sha512sums = beadbb2bff06cf3815bbe9e9eca9029c3ba20a56d247558e6573776b0235bc11410756a1dba29e1a46ad2edced7cfff14d9bc18dd64008ca113a053efa9f7330
+
+pkgname = cargo-all-features
