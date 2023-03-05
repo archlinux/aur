@@ -1,14 +1,14 @@
 pkgbase = ruby-google-apis-pubsub_v1
 	pkgdesc = simple REST client for Cloud Pub/Sub API V1
-	pkgver = 0.34.0
+	pkgver = 0.35.0
 	pkgrel = 1
 	url = https://rubygems.org/gems/google-apis-pubsub_v1
 	arch = any
 	license = Apache-2.0
 	depends = ruby-google-apis-core
-	noextract = google-apis-pubsub_v1-0.34.0.gem
+	noextract = google-apis-pubsub_v1-0.35.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/google-apis-pubsub_v1-0.34.0.gem
-	sha256sums = 6bec40de9a5b48a2df58e0ba8c2ec9f8fadd4369bb4b4746566580115710b7fd
+	source = https://rubygems.org/downloads/google-apis-pubsub_v1-0.35.0.gem
+	sha256sums = 034a88077703154373c0cca2649809b0fe9dcb0f70e397323e4150cb948ddf8d
 
 pkgname = ruby-google-apis-pubsub_v1
