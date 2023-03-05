@@ -1,0 +1,14 @@
+pkgbase = r-sysfonts
+	pkgdesc = Loading Fonts into R
+	pkgver = 0.8.8
+	pkgrel = 1
+	url = https://cran.r-project.org/package=sysfonts
+	arch = x86_64
+	license = GPL2
+	depends = r
+	optdepends = r-curl
+	optdepends = r-jsonlite
+	source = https://cran.microsoft.com/snapshot/2022-03-14/src/contrib/sysfonts_0.8.8.tar.gz
+	sha256sums = f6b2a8d6af4803f895c29b45fe833983bd4ddc542c7d67ffca4f2740896d05bb
+
+pkgname = r-sysfonts
