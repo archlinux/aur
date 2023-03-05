@@ -3,7 +3,7 @@
 pkgname=lfp
 pkgver=3.0.1
 pkgrel=1
-pkgdesc='A wrapper for the lf terminal file manager with in-terminal media previews, on-exit directory changing and much more.'
+pkgdesc='A wrapper for the lf file manager with in-terminal media previews, cd-on-exit and much more'
 license=('MIT')
 arch=('x86_64')
 install="lfp.install"
@@ -18,12 +18,12 @@ source=(
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
   )
 sha512sums=(
-  '50193642daf9f2ee1f05e21a47eaae9fe326d3fd8713e549a4780df2d2ebed018d4d249463e902bb49d17c99cb9ce0c599aa365699f0135d9661817a33f0fc90'
-  '00fec5d79c31cff35afbf07bafb631edb06e9e431e8119e6dd0ba51d87df6dc74dd3eb065e89c16dfcfcb4004d4adefe854b52a93bbe39b06451e736eee8c4e5'
+  '65609ddb141d96ceaaeb9212826877f0756d816fbdd62ee572049b397d3947c8ef9c855ffed1850b5dd3bee16f3d7d3c7155d5c07878d0f6cd46a7ab0d4ed272'
+  'ab004266e8414e48219625a32b08086e66b6bee612d44d6925423f06b4e28f63bdb0757b98dc6f40fe3929b0d4c6b9e072ccbcbbd8fc99eb0530a036f7c8e333'
   )
 md5sums=(
-  '78228f3d5f4fb71d75b9202af0d4cebb'
-  '2c82a3294b4f70e7d98a5f2ea1c05e30'
+  '9c38f8caa8d534a74188107213a868c2'
+  '6d7b3b434b408c237c586f4af6e35c45'
   )
 validpgpkeys=('9A1F3F41DDA55A60331CB8DD3714CB0967D15980')
 
