@@ -1,7 +1,7 @@
 pkgbase = geekeditor-bin
 	pkgdesc = Immersive efficiency writing editor.极客编辑器是一款所见即所得(WYSIWYG)富文本沉浸式写作排版编辑器,它注重高效创作,可多开文档编辑,同时支持Markdown语法输入及一键排版
 	pkgver = 1.4.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/geekeditor/geekeditor-releases
 	arch = x86_64
 	license = GPL3
