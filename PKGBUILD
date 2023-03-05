@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=runst
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A dead simple notification daemon"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT' 'Apache')
 depends=('dbus' 'pango')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('edf6f999919baa43ba145c459b8d526ca19a0d28e5d6a9f29256f055b88e4edae52b48cc1fe041458b614541bfdccd26bf1805b132908c2b5dbe74b02f407f78')
+sha512sums=('49d2a2efb639b88a065f12a17bcad1ebe349f4aaf65666e2f9d0d2a4014babdcc41355514f5e23315a90969ddfb403686bbb0a73860fcea9e1b39d28f2f77fdd')
 
 prepare() {
   cd "$pkgname-$pkgver"
