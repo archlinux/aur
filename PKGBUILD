@@ -2,7 +2,7 @@
 # Contributor: Jason Stryker <public at jasonstryker dot com>
 
 pkgname=runelite
-pkgver=2.6.1
+pkgver=2.6.3
 pkgrel=1
 epoch=1
 pkgdesc="Open source Old School RuneScape client."
@@ -21,7 +21,7 @@ source=("${pkgver}_RuneLite.jar::https://github.com/runelite/launcher/releases/d
     "${pkgver}_runelite.png::https://raw.githubusercontent.com/runelite/launcher/${pkgver}/appimage/runelite.png"
     runelite.desktop)
 noextract=('RuneLite.jar')
-sha256sums=('5eeeb4dfde0810806d3e89049676746172cdaafab5083e19a125648691d49054'
+sha256sums=('b4db68442950be4a44c07d02debc851dda6e48f66f1969f22cc01b5423097f3c'
     '1487fb5a1804002fd63fe8c01c75258c148fbfa0e2c5d9e97056f9fcd607c0ad'
     '81cb6ce7d8c4b9154e9840ab9d2938d0e6234f227049f004cacf90724f95cc11'
     'SKIP')
