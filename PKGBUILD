@@ -27,15 +27,17 @@ prepare() {
   cd "${pkgbase}-${pkgver}"
 
   # Use dependencies from Arch
-  sed '/python -m pip/d' -i Makefile
+  sed '/python -m pip/d' -i package.js
 
   # Disable mac and windows builds
-  sed -e '/--mac /d' -e '/--win /d' -i Makefile
+  sed -e '/--mac /d' -e '/--win /d' -i package.js
 }
 
 build() {
   cd "${pkgbase}-${pkgver}"
-  make clean build_python build_electron
+  npm run clean
+  npm run build python
+  npm run build electron
 }
 
 package_netron() {
