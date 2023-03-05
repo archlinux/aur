@@ -4,16 +4,16 @@
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 pkgname='ibus-mozc'
-pkgver=2.28.5008.102
+pkgver=2.28.5029.102
 pkgrel=1
 pkgdesc='Mozc module for IBus'
 arch=('x86_64')
 url='https://github.com/google/mozc'
 license=('Apache' 'GPL' 'LGPL' 'MIT' 'custom')
-depends=('ibus>=1.4.1' 'mozc>=2.28.5008.102')
+depends=('ibus>=1.4.1' 'mozc>=2.28.5029.102')
 makedepends=('bazel' 'git' 'python' 'qt5-base')
 options=(!distcc !ccache)
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=913bb5b968944b9100497698789a65b3f2a5c177")
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=961949a1561348031fe03f72de46d480695734d2")
 sha256sums=('SKIP')
 
 prepare() {
@@ -27,7 +27,7 @@ build() {
 
     unset ANDROID_NDK_HOME
     export JAVA_HOME='/usr/lib/jvm/java-11-openjdk/'
-    bazel build renderer:mozc_renderer unix/ibus:ibus_mozc unix/icons --config oss_linux --compilation_mode opt
+    bazel build renderer/qt:mozc_renderer unix/ibus:ibus_mozc unix/icons --config oss_linux --compilation_mode opt
 }
 
 package() {
