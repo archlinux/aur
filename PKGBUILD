@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-time-duration-parse'
-pkgver='0.13'
+pkgver='0.16'
 pkgrel='1'
 pkgdesc="Parse string that represents time duration"
 arch=('any')
@@ -11,10 +11,9 @@ options=('!emptydirs')
 depends=('perl-exporter-lite' 'perl-time-duration' 'perl>=5.006')
 makedepends=()
 url='https://metacpan.org/release/Time-Duration-Parse'
-source=('http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/Time-Duration-Parse-0.13.tar.gz')
-md5sums=('c9ac2f37ed8bf96c4c9c59fe181643ee')
-sha512sums=('2732f6053dbc672d92a4efddab6e767f81bf1386f7b232fe1d1debe551d406b27c222c2173f9771f302bb928dac96edeb1ef3dfd0fe67d46315f671c7ad1a5b4')
-_distdir="Time-Duration-Parse-0.13"
+source=('http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/Time-Duration-Parse-0.16.tar.gz')
+md5sums=('c595c3dfcada3e0534867afa25626bfc')
+_distdir="Time-Duration-Parse-0.16"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
