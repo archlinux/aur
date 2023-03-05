@@ -1,12 +1,12 @@
 # Maintainer: MV <notfood.dev@gmail.com>
-# Contributor: Manuel Hüsers <manuel.huesers@uni-ol.de>
+# Contributor: Manuel Hüsers <aur@huesers.de>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Franco Iacomella <yaco@gnu.org>
 
 pkgbase='drawpile'
 pkgname=("${pkgbase}"{,'-client','-server'})
 pkgver=2.1.20
-pkgrel=2
+pkgrel=3
 pkgdesc='Collaborative drawing program specially made for use with pen tablets'
 arch=('i686' 'x86_64')
 url='https://drawpile.net/'

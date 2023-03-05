@@ -1,7 +1,7 @@
 pkgbase = drawpile
 	pkgdesc = Collaborative drawing program specially made for use with pen tablets
 	pkgver = 2.1.20
-	pkgrel = 2
+	pkgrel = 3
 	url = https://drawpile.net/
 	arch = i686
 	arch = x86_64
