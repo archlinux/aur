@@ -1,7 +1,7 @@
 pkgbase = qt5-clx000-git
 	pkgdesc = CLX000 plugin for Qt5 (e.g. for integration with SavvyCAN)
 	pkgver = 0.1.0.4c1a1e7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CSS-Electronics/clx000-qt5-plugin
 	arch = x86_64
 	license = MIT

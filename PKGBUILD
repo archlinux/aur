@@ -1,7 +1,7 @@
 # Maintainer: jim3692 <jim3692 at gmail.com>
 pkgname="qt5-clx000-git"
 pkgver=0.1.0.4c1a1e7
-pkgrel=1
+pkgrel=2
 pkgdesc="CLX000 plugin for Qt5 (e.g. for integration with SavvyCAN)"
 arch=('x86_64')
 url="https://github.com/CSS-Electronics/clx000-qt5-plugin"
@@ -28,6 +28,7 @@ sha256sums=(
   )
 
 build() {
+  mkdir -p "$srcdir/src"
   cd "$srcdir/src"
   git apply ../00-no-debug.patch
 
