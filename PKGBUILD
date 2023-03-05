@@ -2,7 +2,7 @@
 pkgname=turbowarp-desktop-appimage
 _pkgname=turbowarp-desktop
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A program that lets you manipulate digital audio waveforms"
 arch=("x86_64")
@@ -13,20 +13,17 @@ depends=(hicolor-icon-theme zlib)
 options=(!strip)
 optdepends=()
 provides=(turbowarp)
-conflicts=(turbowarp turbowarp-wxgtk2 turbowarp-git tenacity-wxgtk3-git tenacity-git audacium-git  turbowarp-qt-git turbowarp-local-git)
+conflicts=(turbowarp-desktop-bin)
 install=
 _install_path="/opt/appimages"
 source=("${_pkgname}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/TurboWarp-linux-x86_64-${pkgver}.AppImage")
 sha256sums=('6cd3d0fa479a4f4cb281fdce3e80daaf33ec80ee5f7f8e0ec5d8029827efc5d0')
-        
 prepare() {
     chmod a+x "${_pkgname}-${pkgver}.AppImage"
     "./${_pkgname}-${pkgver}.AppImage" --appimage-extract
     sed 's/Exec=AppRun/#Exec=AppRun/g' -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
     echo "Exec=/opt/appimages/turbowarp-desktop.AppImage --no-sandbox %U" >> "${srcdir}/squashfs-root/${_pkgname}.desktop"
-    find "${srcdir}/squashfs-root" -type d -exec chmod 755 {} \;
 }
-        
 package() {
     install -Dm755 "${srcdir}/${_pkgname}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${_pkgname}.AppImage"
     install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
