@@ -2,7 +2,7 @@
 
 _target=msp430-elf
 pkgname="${_target}-gdb"
-pkgver=12.1
+pkgver=13.1
 pkgrel=1
 pkgdesc="The GNU Debugger for the ${_target} target."
 arch=('x86_64' 'x86')
@@ -11,7 +11,7 @@ license=('GPL')
 groups=('devel')
 depends=("python" "readline" "ncurses" "gdb-common" "guile" "expat" "xz" "gmp")
 source=("http://ftp.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz")
-sha256sums=('0e1793bf8f2b54d53f46dea84ccfd446f48f81b297b28c4f7fc017b818d69fed')
+sha256sums=('115ad5c18d69a6be2ab15882d365dda2a2211c14f480b3502c6eba576e2e95a0')
 
 
 prepare() {
@@ -60,6 +60,7 @@ package() {
   rm -r ${pkgdir}/usr/share/man
   rm -r ${pkgdir}/usr/share/gdb/
   rm -r ${pkgdir}/usr/include/gdb
+  rm -r ${pkgdir}/usr/include/sim
 }
 
 # vim:set ts=2 sw=2 et:

@@ -1,6 +1,6 @@
 pkgbase = msp430-elf-gdb
 	pkgdesc = The GNU Debugger for the msp430-elf target.
-	pkgver = 12.1
+	pkgver = 13.1
 	pkgrel = 1
 	url = https://www.gnu.org/software/gdb/download/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = msp430-elf-gdb
 	depends = expat
 	depends = xz
 	depends = gmp
-	source = http://ftp.gnu.org/gnu/gdb/gdb-12.1.tar.xz
-	sha256sums = 0e1793bf8f2b54d53f46dea84ccfd446f48f81b297b28c4f7fc017b818d69fed
+	source = http://ftp.gnu.org/gnu/gdb/gdb-13.1.tar.xz
+	sha256sums = 115ad5c18d69a6be2ab15882d365dda2a2211c14f480b3502c6eba576e2e95a0
 
 pkgname = msp430-elf-gdb
