@@ -1,0 +1,23 @@
+pkgbase = goffice-minimal
+	pkgdesc = A GLib/GTK+ set of document-centric objects and charting library
+	pkgver = 0.10.55
+	pkgrel = 1
+	url = https://git.gnome.org/browse/goffice
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = gtk-doc
+	makedepends = gobject-introspection
+	makedepends = autoconf-archive
+	makedepends = git
+	depends = librsvg
+	depends = gtk3
+	depends = libgsf
+	depends = libspectre
+	depends = libxslt
+	provides = goffice
+	conflicts = goffice
+	source = git+https://gitlab.gnome.org/GNOME/goffice.git#commit=29c5bfe6333b499a051f969464c6804e28616736
+	sha256sums = SKIP
+
+pkgname = goffice-minimal
