@@ -1,0 +1,24 @@
+pkgbase = dektec-utilities
+	pkgdesc = DekTec utilities DtEpc, DtPlay, DtRecord and DtInfoCL
+	pkgver = 23.3.5
+	pkgrel = 1
+	url = https://www.dektec.com/downloads/utilities/
+	arch = x86_64
+	license = unknown
+	makedepends = unzip
+	provides = dektec-utilities
+	conflicts = dektec-utilities
+	noextract = DtPlay_v4.16.0.zip
+	noextract = DtRecord_v4.13.0.zip
+	source = https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v2022.12.1.tar.gz
+	source = https://www.dektec.com/products/applications/DtEpc/downloads/DtEpc-2.13.1.zip
+	source = https://www.dektec.com/products/applications/DtInfoCL/downloads/DtInfoCL_v1.5.2.zip
+	source = https://www.dektec.com/products/applications/DtPlay/downloads/DtPlay_v4.16.0.zip
+	source = https://www.dektec.com/products/applications/DtRecord/downloads/DtRecord_v4.13.0.zip
+	sha256sums = 6dbe78f504d7b579a809f8720d8ecc305637b98c9454f89ea4e4c7f60429d1ac
+	sha256sums = 4fbbfe09d55b3528a6a45bc6a2effce3ba0431d7ac141bf190423accc7c4a435
+	sha256sums = d93fd5372e3ae09942a6d21c363f3eb4c527d2ae631a103df81487942dbdfbce
+	sha256sums = 94f01c935e16e2abb626515f6ef6433d302850efb180bb0699d5deb767b7e00b
+	sha256sums = 12a383160743672d8b90a97a10356b701f931d0c99daad2d1066a2eb425d22ad
+
+pkgname = dektec-utilities
