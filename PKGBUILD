@@ -3,7 +3,7 @@ _pkgver_year=2023
 _pkgver_month=02
 _pkgver_day=27
 pkgname=sstools
-pkgver=0.3b
+pkgver=0.4b
 pkgrel=1
 pkgdesc="Make snapshots in a Btrfs filesystem."
 license=("GPLv3+")
@@ -22,4 +22,4 @@ package() {
 	cd $pkgname-$pkgver
 	make arch_install DESTDIR=$pkgdir
 }
-md5sums=('f280079d23a212fcd2bf8f792458276f')
+md5sums=('71ff0a1c6b111d2eeb2be5a01270a77d')
