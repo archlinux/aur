@@ -4,7 +4,7 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgname='refind-git'
-pkgver=0.13.3.8.r838.gf4c3375
+pkgver=0.14.0.r845.g47af961
 pkgrel=1
 pkgdesc='rEFInd Boot Manager - git version'
 url='https://www.rodsbooks.com/refind/'
@@ -24,8 +24,6 @@ optdepends=('gptfdisk: for finding non-vfat ESP with refind-install'
 )
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver}")
-# the drivers don't build with many jobs
-options=('!makeflags')
 source=('refind::git+https://git.code.sf.net/p/refind/code#branch=master')
 sha512sums=('SKIP')
 _arch='x64'
@@ -72,7 +70,7 @@ package() {
 	install -vDm 0644 icons/*.png -t "${pkgdir}/usr/share/${pkgname%-git}/icons"
 	install -vDm 0644 icons/svg/*.svg -t "${pkgdir}/usr/share/${pkgname%-git}/icons/svg"
 	# scripts
-	install -vDm 0755 {refind-{install,mkdefault,sb-healthcheck},mkrlconf,mvrefind,extract-sb-keys} -t "${pkgdir}/usr/bin"
+	install -vDm 0755 {refind-{install,mkdefault,sb-healthcheck},mkrlconf,mvrefind} -t "${pkgdir}/usr/bin"
 	install -vDm 0755 fonts/mkfont.sh "${pkgdir}/usr/bin/${pkgname%-git}-mkfont"
 	# man pages
 	install -vDm 0644 docs/man/*.8 -t "${pkgdir}/usr/share/man/man8"
