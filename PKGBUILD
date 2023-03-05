@@ -8,7 +8,7 @@ _name=kadu
 _commit=c2007766
 pkgname=$_name-git
 pkgver=20170821
-pkgrel=2
+pkgrel=3
 pkgdesc='Qt-based Jabber/XMPP and Gadu-Gadu client'
 arch=('i686' 'x86_64')
 url='https://gitlab.com/kadu/kadu'
@@ -36,6 +36,8 @@ prepare() {
   sed -i 's/ENCHANT enchant/ENCHANT enchant-2/' plugins/spellchecker/CMakeLists.txt
   sed -i 's/unity_integration//g' Plugins.cmake
   sed -i 's/indicator_docking//g' Plugins.cmake
+  sed -i 's/set (CMAKE_CXX_STANDARD 14)/set (CMAKE_CXX_STANDARD 17)/g' CMakeLists.txt
+  sed -i 's/set (CMAKE_CXX_STANDARD 14)/set (CMAKE_CXX_STANDARD 17)/g' cmake/KaduMacros.cmake
 }
 
 build() {
@@ -46,7 +48,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DCMAKE_CXX_STANDARD=14 \
+    -DCMAKE_CXX_STANDARD=17 \
     -DENABLE_TESTS=OFF
   make
 }
