@@ -3,7 +3,7 @@
 
 pkgname=libfprint-egis-0575
 _pkgdirname=libfprint
-pkgver=r1529.e7ef7e3
+pkgver=r1527.2776600
 pkgrel=1
 pkgdesc="Library for fingerprint readers - topni1's experimental EgisTech EH0575 implementation"
 arch=(x86_64)
