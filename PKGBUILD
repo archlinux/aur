@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-test-tempdir'
-pkgver='0.10'
+pkgver='0.11'
 pkgrel='1'
 pkgdesc="(DEPRECATED) Temporary files support for testing"
 arch=('any')
@@ -11,10 +11,9 @@ options=('!emptydirs')
 depends=('perl-file-nfslock' 'perl-moose' 'perl-moosex-types-path-class' 'perl-path-class' 'perl-sub-exporter' 'perl-test-requires' 'perl-namespace-autoclean>=0.08' 'perl>=5.006')
 makedepends=()
 url='https://metacpan.org/release/Test-TempDir'
-source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Test-TempDir-0.10.tar.gz')
-md5sums=('0042d43cbefe61a40a8701eb7ae3ca5d')
-sha512sums=('89611be65e201cf83229fe6ca3ab3af5c716ceffc699a56ca804901edbfce2ad671f43c9afc84d9affb34345852213ed551b24d5a2fd054278e9c7bc5fb7a820')
-_distdir="Test-TempDir-0.10"
+source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Test-TempDir-0.11.tar.gz')
+md5sums=('985aa1a10b0008ca34c534f0c6ae07fd')
+_distdir="Test-TempDir-0.11"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
