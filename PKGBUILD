@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-chi'
-pkgver='0.60'
+pkgver='0.61'
 pkgrel='1'
 pkgdesc="Unified cache handling interface"
 arch=('any')
@@ -12,10 +12,9 @@ depends=('perl-carp-assert>=0.20' 'perl-class-load' 'perl-data-uuid' 'perl-diges
 makedepends=()
 checkdepends=('perl-test-class' 'perl-test-deep' 'perl-test-exception' 'perl-test-warn')
 url='https://metacpan.org/release/CHI'
-source=('http://search.cpan.org/CPAN/authors/id/J/JS/JSWARTZ/CHI-0.60.tar.gz')
-md5sums=('e559c52c12de4a27b0210caa1c790e65')
-sha512sums=('06d3f22465f38868795a4ee97e1b3e40e66d423c4e28c066c2f11721b770e77c6134ad122ec9a7ea6a7e215d0b712e57c54d91bae02770fbc61e3c10a465b29d')
-_distdir="CHI-0.60"
+source=('https://cpan.metacpan.org/authors/id/A/AS/ASB/CHI-0.61.tar.gz')
+md5sums=('053ea5759487ac045185f1ca313ce6e6')
+_distdir="CHI-0.61"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
