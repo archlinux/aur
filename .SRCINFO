@@ -1,16 +1,15 @@
 pkgbase = fcitx-huayupinyin
 	pkgdesc = The Input Method Developed by thunisoft
 	pkgver = 2.4.8.198
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pinyin.thunisoft.com
 	arch = x86_64
 	license = unknown
-	depends = cairo
 	depends = libxtst
 	depends = qt5-svg
 	depends = fcitx
 	depends = fcitx-qt5
-	source = fcitx-huayupinyin_2.4.8.198.deb::https://pinyin.thunisoft.com/webapi/v1/downloadSetupFile?os=uos&cpu=x86
+	source = fcitx-huayupinyin_2.4.8.198.deb::https://com-store-packages.uniontech.com/appstore/pool/appstore/c/com.thunisoft.input/com.thunisoft.input_2.4.8.198_amd64.deb
 	sha512sums = 37b827751e0549cd6eda47b10902dd527550ce9674fc278940ff6f70cafd83349a9a3e9d2934894605cc6364ecf8c62e65a3de7f5a14e200288d9581aa56a814
 
 pkgname = fcitx-huayupinyin
