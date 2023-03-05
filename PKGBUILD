@@ -2,7 +2,7 @@
 
 pkgname=nvidia-prime-rtd3pm
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Configure your discrete NVIDIA GPU to power down when not in use."
 arch=("any")
 url="https://us.download.nvidia.com/XFree86/Linux-x86_64/525.89.02/README/dynamicpowermanagement.html"
@@ -19,7 +19,7 @@ sha512sums=(
 )
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd ${srcdir}
   install -Dm644 -t "${pkgdir}/usr/lib/udev/rules.d" 80-nvidia-pm.rules
   install -Dm644 -t "${pkgdir}/usr/lib/modprobe.d" nvidia-pm.conf
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
