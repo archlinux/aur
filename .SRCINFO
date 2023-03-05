@@ -9,7 +9,6 @@ pkgbase = erpnext
 	makedepends = python-installer
 	makedepends = python-virtualenv
 	depends = frappe-bench
-	depends = libcups
 	depends = libmaxminddb
 	depends = nodejs
 	depends = python
