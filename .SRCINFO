@@ -1,0 +1,16 @@
+pkgbase = keyboard-backlightd-git
+	pkgdesc = Automatic keyboard backlight management on Thinkpads
+	pkgver = v0.1.1.r3.0948c9f
+	pkgrel = 1
+	url = https://github.com/VorpalBlade/keyboard-backlightd
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	depends = libevdev
+	provides = keyboard-backlightd
+	conflicts = keyboard-backlightd
+	backup = etc/conf.d/keyboard-backlightd
+	source = keyboard-backlightd::git+https://github.com/VorpalBlade/keyboard-backlightd.git
+	sha256sums = SKIP
+
+pkgname = keyboard-backlightd-git
