@@ -1,15 +1,13 @@
 pkgbase = deepin-wine-mcloud
-	pkgdesc = CMCC 139 client on Deepin Wine 6
+	pkgdesc = CMCC 139 client on Deepin Wine 6.中国移动云盘 on Deepin Wine 6
 	pkgver = 7.3.4
-	pkgrel = 1
-	url = https://www.mcloud.com/
+	pkgrel = 2
+	url = https://yun.139.com/
 	install = deepin-wine-mcloud.install
 	arch = x86_64
 	license = custom
 	depends = deepin-wine6-stable
 	depends = xdg-utils
-	optdepends = wqy-microhei
-	optdepends = wqy-zenhei
 	source = com.139.yun.deepin_7.2.0deepin2_i386.deb::https://com-store-packages.uniontech.com/appstore/pool/appstore/c/com.139.yun.deepin/com.139.yun.deepin_7.2.0deepin2_i386.deb
 	source = mCloud-7.3.4.exe::https://img.zone139.com/m2012/controlupdate/v6/mCloud_Setup-001.exe
 	source = deepin-wine-mcloud.install
@@ -18,7 +16,7 @@ pkgbase = deepin-wine-mcloud
 	sha256sums = ecc41143f5c0a96f17236e2f7a4c1e79eb601d1129674d89ea360999a93c6dcb
 	sha256sums = a7916088010b455ac5330bb0a9b848adff2d61981ac761212f704241f03a3f37
 	sha256sums = f24db714acc5bdfc1590da6f4d24b8b24bc6e0f371d2ccb27ff7a32cb87b3f8e
-	sha256sums = c3d6ebe6ffb827ab6584c60aa329f7f1bb4539b5463978d49730da73572a6dcf
+	sha256sums = e035a119d3731f07bfe85ec49c04d50d8062ee44e19f441f36ada02d7f3e7cd2
 	sha256sums = 3e2ed9203a5ce3b2f00b6c942d8fac6b24e7a6e7b1ebc863cee2e27d3ff487db
 
 pkgname = deepin-wine-mcloud
