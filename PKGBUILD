@@ -2,7 +2,7 @@
 # Contributor: malacology
 
 pkgname=tpsutil
-pkgver=2021.04.30
+pkgver=2023.03.04
 pkgrel=1
 pkgdesc="tps file utility program"
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = tpsutil
 	pkgdesc = tps file utility program
-	pkgver = 2021.04.30
+	pkgver = 2023.03.04
 	pkgrel = 1
 	url = http://sbmorphometrics.org/soft-utility.html
 	arch = any
