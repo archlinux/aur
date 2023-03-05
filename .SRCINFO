@@ -1,0 +1,16 @@
+pkgbase = erdtree-bin
+	pkgdesc = A multi-threaded file-tree visualizer and disk usage analyzer.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/solidiquis/erdtree/
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = et
+	conflicts = erdtree
+	source_x86_64 = erdtree-bin-x86_64-1.2.0-1.tar.gz::https://github.com/solidiquis/erdtree/releases/download/v1.2.0/et-v1.2.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 837f1e29af9c1971fd0f7ee08fe16ca47e77b9622c2960e9b568f6b5fbe20458
+	source_aarch64 = erdtree-bin-aarch64-1.2.0-1.tar.gz::https://github.com/solidiquis/erdtree/releases/download/v1.2.0/et-v1.2.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 4f1375b893095f26e295c442dd4f0c6441892174b353235468f36383438f3e7f
+
+pkgname = erdtree-bin
