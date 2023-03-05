@@ -1,18 +1,17 @@
 pkgbase = notable-appimage
 	pkgdesc = The Markdown-based note-taking app that doesn't suck.
 	pkgver = 1.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://notable.app/
 	arch = x86_64
-	license = Unlicensed
+	license = unknown
 	depends = hicolor-icon-theme
 	depends = zlib
-	provides = Notable
 	conflicts = notable-bin
 	conflicts = notable-insiders-bin
 	conflicts = notable-insiders-electron
 	options = !strip
-	source = Notable-1.8.4.AppImage::https://github.com/notable/notable/releases/download/v1.8.4/Notable-1.8.4.AppImage
+	source = notable-1.8.4.AppImage::https://github.com/notable/notable/releases/download/v1.8.4/Notable-1.8.4.AppImage
 	sha256sums = 7ee59f198613f35e8cdb21b73dc100cb1798201716ed9b108e5398a8f9477f67
 
 pkgname = notable-appimage
