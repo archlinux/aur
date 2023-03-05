@@ -1,7 +1,7 @@
 pkgbase = qt5-clx000-git
 	pkgdesc = CLX000 plugin for Qt5 (e.g. for integration with SavvyCAN)
 	pkgver = 0.1.0.4c1a1e7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/CSS-Electronics/clx000-qt5-plugin
 	arch = x86_64
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = qt5-clx000-git
 	provides = qt5-clx000
 	conflicts = qt5-clx000
 	options = !lto
-	source = src::git+https://github.com/CSS-Electronics/clx000-qt5-plugin.git#branch=master
+	source = plugin::git+https://github.com/CSS-Electronics/clx000-qt5-plugin.git#branch=master
 	source = 00-no-debug.patch
 	sha256sums = SKIP
 	sha256sums = 55a1a551c8e053cbe7aa25c436a1203cea6488fc862e2e13bb42765b23cb5226
