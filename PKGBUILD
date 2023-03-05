@@ -156,9 +156,10 @@ provides=(
   libswresample.so
   libswscale.so
 )
-options=(
-  debug
-)
+#options=(
+#  debug
+#)
+conflicts=('ffmpeg')
 _tag=3949db4d261748a9f34358a388ee255ad1a7f0c0
 _svt_hevc_ver='eb24a06ba4ee4948f219a3246b88439a8090bd37'
 _svt_vp9_ver='aaa8140c8cdf6c073eaa6aaa5d003d1535fd0059'
