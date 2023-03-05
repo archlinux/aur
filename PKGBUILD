@@ -2,7 +2,7 @@
 # Co-Maintainer: Leon Möller <jkhsjdhjs at totally dot rip>
 
 pkgname="nzbhydra2-nojava-bin"
-pkgver=5.1.6
+pkgver=5.1.7
 pkgrel=1
 pkgdesc="Search aggregator for newznab and torznab indexers."
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,6 @@ optdepends=('jackett: torrent indexer proxy')
 source=('nzbhydra2.service'
         'nzbhydra2.tmpfiles'
         'nzbhydra2.sysusers'
-        'wrapper-remove-release-type-detection.patch'
         'nzbhydra2.sh')
 source_x86_64=("https://github.com/theotherp/nzbhydra2/releases/download/v${pkgver}/${pkgname%-nojava-bin}-${pkgver}-amd64-linux.zip")
 source_aarch64=("https://github.com/theotherp/nzbhydra2/releases/download/v${pkgver}/${pkgname%-nojava-bin}-${pkgver}-arm64-linux.zip")
@@ -24,14 +23,9 @@ source_aarch64=("https://github.com/theotherp/nzbhydra2/releases/download/v${pkg
 sha256sums=('2fae64a1c5979d9f7b508f1e15d0f013b7cca1f2bbbdae56f546f4c362146b68'
             'a9ceeed2b50d55c5e554c0d4c615e855fe4d3889eb118e37908fa04ffb7cb003'
             '8f91eb4f98f7f5c11590b29b1394dfa7ca62ad115feeac4f402c9ac094fb925a'
-            'f322cfbfb360ede7b815ed63262032d48d459fc1f775ad4b95b6a585a97f2bdd'
             'd1c40c40c1ec75d37e8dec0b250179f6a88fedb49ad335ae53625e159a730019')
-sha256sums_x86_64=('351e764201b5b83da777ed199c672a7f86956f379c8eb490fb5c938bd105ea77')
-sha256sums_aarch64=('21013a25eb1c2a51dbe4219f4f4649f620070bdf4381b4b339bc78bf9c7dae88')
-
-prepare() {
-    patch "${srcdir}/nzbhydra2wrapperPy3.py" < "${srcdir}/wrapper-remove-release-type-detection.patch"
-}
+sha256sums_x86_64=('edd086fb21f3e8b77de8535a554b1cf4e06f01b745ae7bfabe278f8e2c451d3b')
+sha256sums_aarch64=('c0d0ea1978580e6a1775e23ad69ca42ed16f9be57d1a24602dbd8f1fa90aa92c')
 
 package() {
     install -D -m 755 "${srcdir}/nzbhydra2.sh" "${pkgdir}/usr/bin/nzbhydra2"
