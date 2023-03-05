@@ -28,7 +28,7 @@
 : "${COMPONENT:=4}"
 
 pkgname=brave
-pkgver=1.48.164
+pkgver=1.48.171
 pkgrel=1
 pkgdesc='Web browser that blocks ads and trackers by default'
 arch=(x86_64)
@@ -46,7 +46,7 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: support for storing passwords in KWallet on Plasma')
 options=('!lto') # Chromium adds its own flags for ThinLTO
-_chromium_ver=110.0.5481.100
+_chromium_ver=110.0.5481.177
 _gcc_patchset=4
 _patchset_name="chromium-${_chromium_ver%%.*}-patchset-$_gcc_patchset"
 _launcher_ver=8
@@ -60,9 +60,7 @@ source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v$pkg
         chromium-launcher-vendor.patch
         system-rust-utils.patch
         brave-1.11-bat-native-ledger-header_fix-ctime.patch
-        brave-1.17-ipfs-ipfs_utils-header_fix-algorithm.patch
         brave-1.19-BUILD.gn.patch
-        brave-1.27-url_request-url_request_test_job_fix-stddef.patch
         brave-1.43-bat-native-ads-hash_vectorizer_fix-cstring.patch
         brave-1.43-bat-native-ads-vector_data_fix-cmath.patch
         brave-1.43-bitcoin-core_remove-serialize.h.patch
@@ -89,9 +87,7 @@ sha256sums=('SKIP'
             '404bf09df39310a1e374c5e7eb9c7311239798adf4e8cd85b7ff04fc79647f88'
             'a8b119138c7157a71f2d1240bea5a2af9593d6b774586f5cc337b344cd9a18b8'
             '1f7c9e7f15876bf3a6611971dc10ad0311fdcc92bc4d369ff077c984b395b802'
-            'af7ca7f5d395b5cba8f47e3e20144a49d327b9d930ca3a77e9e3ad198ea509bf'
             '12a3d37ffca4c0fa25f89f02efdf79d24f6412ee29ec35e8a00f9086dba4e822'
-            '1678dd14d73be905fcfbb674fd74ae44ea7314c9ef2755d9520a4297ea5e74d4'
             'a4ed0ad8f4931bae08c42a20266b8e2f934f21811fe0892960798f14a1fcfd0b'
             '5c1e562b25d4fe614f3a77e00accc53001541b7b3f308fb7512cce1138878d7e'
             '0b5764355b9201d201b1e08f700bbb5a7fa238bef127b95d36cbf8ce2afa73a6'
