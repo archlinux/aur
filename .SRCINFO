@@ -18,8 +18,8 @@ pkgbase = w_scan_cpp
 	depends = curl
 	source = https://www.gen2vdr.de/wirbel/w_scan_cpp/w_scan_cpp-20230121.tar.bz2
 	source = https://www.gen2vdr.de/wirbel/wirbelscan/vdr-wirbelscan-2023.01.21.tgz
-	source = git://git.tvdr.de/vdr.git#commit=d05765c670befc42e55b05a0fd75bb7771076c04
-	source = git+https://github.com/wirbel-at-vdr-portal/vdr-plugin-satip.git#commit=a89ad423e9a3994572d3bbbbf2958b470afa8de1
+	source = git://git.tvdr.de/vdr.git#commit=42b584e38d442cae587add3a1018d4ed6917e123
+	source = git+https://github.com/wirbel-at-vdr-portal/vdr-plugin-satip.git#commit=7ef19f78c8cc0dfb2398be8f6577eadd4475fa51
 	sha256sums = 6177dc8a42f87c03292de74bfe43bf4c0f027727e017c0d98f211666d9bed4bf
 	sha256sums = d6db38e259699de21a4c261ed1799991539fe57dea987870854e037b9c0be7f9
 	sha256sums = SKIP

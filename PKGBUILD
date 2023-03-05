@@ -7,8 +7,8 @@ pkgrel=1
 
 # These are versions of dependencies used by w_scan_cpp
 _wirbelscan_version=wirbelscan-2023.01.21
-_satip_gitver=a89ad423e9a3994572d3bbbbf2958b470afa8de1
-_vdr_gitver=d05765c670befc42e55b05a0fd75bb7771076c04
+_satip_gitver=7ef19f78c8cc0dfb2398be8f6577eadd4475fa51
+_vdr_gitver=42b584e38d442cae587add3a1018d4ed6917e123
 
 pkgdesc="A dtv channel scanner based on VDR. Successor of w_scan"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
