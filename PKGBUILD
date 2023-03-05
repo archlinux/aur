@@ -2,7 +2,7 @@
 pkgname=yana-appimage
 _pkgname=yana
 pkgver=1.0.13
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Powerful note-taking app with nested documents, full-text search, rich-text editor, code snippet editor and more"
 arch=("x86_64")
@@ -12,7 +12,7 @@ license=(MIT)
 depends=(hicolor-icon-theme zlib)
 options=(!strip)
 optdepends=()
-provides=(yana)
+provides=()
 conflicts=(yana-bin)
 install=
 _install_path="/opt/appimages"
@@ -24,9 +24,7 @@ prepare() {
     "./${_pkgname}-${pkgver}.AppImage" --appimage-extract
     sed 's/Exec=AppRun/#Exec=AppRun/g' -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
     echo "Exec=/opt/appimages/yana.AppImage" >> "${srcdir}/squashfs-root/${_pkgname}.desktop"
-    find "${srcdir}/squashfs-root" -type d -exec chmod a+x {} \;
 }
-      
 package() {
     install -Dm755 "${srcdir}/${_pkgname}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${_pkgname}.AppImage"
     install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
