@@ -10,7 +10,7 @@ pkgbase = signond-git
 	makedepends = ttf-font
 	depends = qt6-base
 	provides = signond
-	replaces = signond
+	conflicts = signond
 	source = git+https://gitlab.com/accounts-sso/signond.git
 	sha256sums = SKIP
 
