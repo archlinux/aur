@@ -2,7 +2,7 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-softhddevice
-pkgver=1.9.7
+pkgver=1.10.0
 epoch=1
 _vdrapi=2.6.3
 pkgrel=1
@@ -12,14 +12,14 @@ arch=('x86_64' 'i686')
 license=('AGPL3')
 depends=('freeglut' 'glew' 'mesa' "vdr-api=${_vdrapi}" 'xcb-util-wm' 'xorg-server' 'libva'
          'libavcodec.so' 'libswscale.so' 'libswresample.so')
-optdepends=('nvidia: Required for VDPAU decoding',
+optdepends=('nvidia: Required for VDPAU decoding'
             'vdr-xorg: Recommended way to start X.org server together with VDR')
 makedepends=('glm' 'glu' 'ffnvcodec-headers')
 _plugname=${pkgname//vdr-/}
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ua0lnj/vdr-plugin-softhddevice/archive/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ua0lnj/vdr-plugin-softhddevice/archive/$pkgver.tar.gz"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-sha256sums=('4cd079bc0d95cc357d852c4309c2f342e4f65165a89db8d695375af7810ad2f8'
+sha256sums=('63565ec47d9bbe71985f55a5b4dd7fa559be8600d3626f170d2e289c8c813c32'
             '889d4c19770a926f8aa6a014ff8219800a7a74c464ef0b12dcef6bb8db93e719')
 
 prepare() {
