@@ -8,11 +8,13 @@ arch=(x86_64)
 url="https://github.com/Palats/mapshot"
 license=('Apache')
 depends=('glibc')
+optdepends=('factorio: The game in some form is required for rendering maps')
 provides=('mapshot')
 conflicts=('mapshot')
-source=("https://github.com/Palats/mapshot/releases/download/$pkgver/mapshot-linux")
+_binname=mapshot
+source=("$_binname::https://github.com/Palats/mapshot/releases/download/$pkgver/mapshot-linux")
 sha256sums=('ff34ecd7c502861eea747fc876001d6f7eb6628dce71996c73f07fb8039fc6d9')
 
 package() {
-  install -Dm755 "mapshot-linux" "$pkgdir/usr/bin/mapshot"
+  install -Dm755 "$_binname" "$pkgdir/usr/bin/$_binname"
 }
