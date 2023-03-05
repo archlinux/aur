@@ -1,14 +1,15 @@
 pkgbase = perl-findbin-libs
 	pkgdesc = locate and a 'use lib' or export directories based on ::Bin.
-	pkgver = 2.15
+	pkgver = 3.0.2
 	pkgrel = 1
-	url = http://search.cpan.org/~lembark/FindBin-libs-2.15/lib/FindBin/libs.pm
+	url = https://metacpan.org/dist/FindBin-libs
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	makedepends = perl-file-copy-recursive-reduced
+	depends = perl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/L/LE/LEMBARK/FindBin-libs-2.15.tar.gz
-	sha512sums = b97c09e490a170388c5f835ff3c9590eb038edf816dbfe78cc2ca31689cbd56dd12fcba49f158aadcf5928b44e50c6ffe7949058434e3d028f43f9a6a589c3de
+	source = https://cpan.metacpan.org/authors/id/L/LE/LEMBARK//FindBin-libs-v3.0.2.tar.gz
+	sha512sums = 7ea749f70189b9927b51919b7d537fbd25004aec6f397f77f78d6a8d1481e60b837c35998874e5851131c8f6e5b1af78ad93d1565f1f36e6e773aec1f779a36f
 
 pkgname = perl-findbin-libs
-
