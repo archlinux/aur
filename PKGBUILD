@@ -57,8 +57,6 @@ _get_distribution_components(){
 }
 
 prepare(){
-  cd ${srcdir}/llvm-project-llvmorg-${pkgver}/llvm
-
   cd ${srcdir}/llvm-project-llvmorg-${pkgver}/clang
   patch -Np2 -i ${srcdir}/enable-SSP-and-PIE-by-default.patch
 
