@@ -1,16 +1,19 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=normcap
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OCR powered screen-capture tool to capture information instead of images"
 arch=('any')
 url="https://dynobo.github.io/normcap"
 license=('GPL')
 depends=('leptonica' 'pyside6' 'python-certifi' 'python-jeepney' 'python-pillow'
-         'python-pytesseract' 'wl-clipboard')
+         'python-pytesseract')
 makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
-#checkdepends=('python-levenshtein' 'python-pytest-qt' 'python-toml'
-#              'tesseract-data-eng' 'tesseract-data-jpn' 'tesseract-data-chi_sim')
+#checkdepends=('python-levenshtein' 'python-pytest-qt' 'python-toml' 
+#              'tesseract-data-eng' 'tesseract-data-jpn' 'tesseract-data-chi_sim'
+#              'wl-clipboard')
+optdepends=('qt6-wayland: Required in Wayland sessions'
+            'wl-clipboard: Required for clipboard access in Wayland sessions')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dynobo/normcap/archive/refs/tags/v$pkgver.tar.gz"
 #        "https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
         "$pkgname.desktop")
@@ -48,7 +51,10 @@ package() {
       "$pkgdir/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps/$pkgname.png"
   done
 
-  install -Dm644 "bundle/imgs/$pkgname.svg" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
-  install -Dm644 bundle/metainfo "$pkgdir/usr/share/metainfo/$pkgname.metainfo.xml"
-  install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 "bundle/imgs/$pkgname.svg" -t \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
+  install -Dm644 bundle/metainfo \
+    "$pkgdir/usr/share/metainfo/$pkgname.metainfo.xml"
+  install -Dm644 "$srcdir/$pkgname.desktop" -t \
+    "$pkgdir/usr/share/applications/"
 }
