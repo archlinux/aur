@@ -14,7 +14,7 @@ pkgdesc="Free and open source Enterprise Resource Planning (ERP)."
 arch=("x86_64")
 url="https://github.com/frappe/${pkgname}"
 license=("GPL3")
-depends=("frappe-bench" "libmaxminddb" "nodejs" "python")
+depends=("frappe-bench" "libcups" "libmaxminddb" "nodejs" "python" "python-pycups")
 makedepends=("python-build" "python-installer" "python-virtualenv")
 optdepends=("apache: HTTP server"
     "certbot: Creates SSL certificates."
