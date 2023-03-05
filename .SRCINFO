@@ -1,0 +1,16 @@
+pkgbase = yank-note-appimage
+	pkgdesc = A Hackable Markdown Note Application for Programmers.
+	pkgver = 3.50.2
+	pkgrel = 1
+	url = https://github.com/purocean/yn
+	arch = x86_64
+	license = AGPL3
+	depends = hicolor-icon-theme
+	depends = zlib
+	provides = yank-note
+	conflicts = yank-note-bin
+	options = !strip
+	source = yank-note-3.50.2.AppImage::https://github.com/purocean/yn/releases/download/v3.50.2/Yank-Note-linux-x86_64-3.50.2.AppImage
+	sha512sums = 3ceb4796d9ef6d238ad6f356cae6f4fa9b9834e3f625dfaa680efc88f01473507d0f0b39f90624c8a40f368b5ea1f31b4b1071c08a3ea21867a9c4127abc43e4
+
+pkgname = yank-note-appimage
