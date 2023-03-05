@@ -56,4 +56,4 @@ pkgbase = gnome-critical-packages
 	depends = tracker3-miners
 	depends = xdg-user-dirs-gtk
 
-pkgname = gnome-critial-packages
+pkgname = gnome-critical-packages
