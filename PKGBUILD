@@ -2,9 +2,9 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-favorites
-pkgver=0.0.3
+pkgver=0.0.4
 _vdrapi=2.6.3
-pkgrel=5
+pkgrel=1
 pkgdesc="Implements a favorite channels menu"
 url="https://github.com/vdr-projects/vdr-plugin-favorites"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -14,7 +14,7 @@ _plugname=${pkgname//vdr-/}
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vdr-projects/vdr-plugin-favorites/archive/$pkgver.tar.gz"
 )
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-sha256sums=('3aef2917336717e6e1cdfecc3a586a713e29dc7d292a4cbcf3b59045b3cf646e')
+sha256sums=('3d26d92f2d38fb6106dae3602b618508532bffd2efd2318116ada5e0a898fb3c')
 
 build() {
   cd "${srcdir}/vdr-plugin-${_plugname}-${pkgver}"
