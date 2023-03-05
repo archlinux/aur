@@ -1,0 +1,14 @@
+pkgbase = editorconfiger
+	pkgdesc = Plain tool to validate and compare .editorconfig files
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/aegoroff/editorconfiger
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+
+pkgname = editorconfiger
