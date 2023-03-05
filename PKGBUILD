@@ -8,7 +8,7 @@ arch=(aarch64 armv7h x86_64 i686)
 url=https://github.com/nlogozzo/nickvisiontubeconverter
 license=(GPL3)
 depends=('dotnet-runtime>=7' ffmpeg libadwaita python-brotli python-mutagen python-pycryptodomex python-pyxattr python-websockets yt-dlp)
-makedepends=(blueprint-compiler cmake 'dotnet-sdk>=7' git just)
+makedepends=(blueprint-compiler 'dotnet-sdk>=7' git just)
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 source=(git+$url)
@@ -19,10 +19,10 @@ pkgver() {
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-	sed -i "s#dotnet {{PREFIX}}#dotnet /usr#;s#set-value='{{PREFIX}}#set-value='/usr#" nickvisiontubeconverter/NickvisionTubeConverter.GNOME/justfile
+build() {
+	just nickvisiontubeconverter/NickvisionTubeConverter.GNOME/ publish /usr
 }
 
 package() {
-	just nickvisiontubeconverter/NickvisionTubeConverter.GNOME/ publish "$pkgdir"/usr
+	just nickvisiontubeconverter/NickvisionTubeConverter.GNOME/ install "$pkgdir"
 }
