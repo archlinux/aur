@@ -1,14 +1,13 @@
 pkgbase = gstarcad-bin
 	pkgdesc = 浩辰 CAD
 	pkgver = 23.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gstarcad.com/cad_linux/
 	arch = x86_64
 	license = unknown
 	depends = openssl-1.0
 	depends = qt5-svg
 	depends = hicolor-icon-theme
-	provides = gstarcad
 	source = gstarcad-bin-23.0.2.deb::https://hccad.gstarcad.cn/linux2023/v23.0.2/uos/signed_com.gstarcad2023.cad_com.gstarcad2023.cad_amd64.deb
 	sha256sums = 1aaa224365cc439a98a1071eecde9834b79999a52e76f2f6fbf60ad7c4c3aafd
 
