@@ -1,6 +1,6 @@
 pkgbase = pivy
 	pkgdesc = Tools for using PIV smartcards/Yubikeys with ssh-agent and disk encryption
-	pkgver = 0.11.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/arekinath/pivy
 	arch = x86
@@ -19,11 +19,11 @@ pkgbase = pivy
 	optdepends = pam: PAM plugin (pam_pivy.so)
 	source = zfs-pivy.hook
 	source = zfs-pivy.install
-	source = https://github.com/arekinath/pivy/releases/download/v0.11.0/pivy-0.11.0.tar.gz
+	source = https://github.com/arekinath/pivy/releases/download/v0.11.1/pivy-0.11.1.tar.gz
 	source = https://github.com/arekinath/mini-pcsc/archive/v0.2.0.tar.gz
 	sha256sums = 7925467b71227ae835cc5bf5ebf0b74ea6d740738af5d13be05e0416a78f8acc
 	sha256sums = 8da0bc793ba9b7fb1cb784af1ed066aea478b93715f484e7fb7921184d675b84
-	sha256sums = 00b17c44ed8f9c3662f903110c9345d0ec2915d5c9863e9001465fe12584ac7f
+	sha256sums = ce5b0fa4ccb364349b9d7a107ab366af5e0759aae2d7b57b78d7ee63411256bf
 	sha256sums = a2c23b7b9e3dc976b54627a08da68b76fd6194ba45d211959dedf4700879379e
 
 pkgname = pivy
