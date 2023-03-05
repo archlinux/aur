@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
 pkgname=bkmr
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Ultrafast Bookmark Manager and Launcher'
 url='https://github.com/sysid/bkmr'
@@ -11,10 +11,10 @@ depends=('gcc-libs' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sysid/bkmr/archive/refs/tags/v$pkgver.tar.gz"
         Cargo.lock)
-sha256sums=('44ebc9143f5ca8114e8d0bec07af042cea3056ba5aef1b03192359fce2af2d90'
-            '339d2f42a1c11fd85a56569b232889b374066c9cdf7ba66b5094ada37e4e1eb0')
-b2sums=('09c0deea7594a8f9419097c4659429f2f6eab17aafdf3f9b2ed6249639a77bbb9eac85272b61c1745869313bdac60e0bd801141c741e0b4d4d0fce96ee77d9b6'
-        '52fff319d3525897686b844c9a107e994f905b3a587bd6fa9e550e8f6e7688c2fcd1725d534837cd13cd5bbf9e87fb7ae0fc60a988f995db35ddb66ab7cc1c2d')
+sha256sums=('b154bdbbaff290b0053ae4b1bb487e55fefebf5fd94f232be5b3e4095b0a82f4'
+            '6d802906cf8c5a82de7fde5091372db175c3caf2a307ba2559bcc9c3b1314276')
+b2sums=('536a39c47183f457d754f40a13135d126ff33029d2eeca8d623130176009def2c93134fdc71253c061ea9e766f0bc07e90c9df54191eeea855467c06eb444b2b'
+        '369913dd55e9c2fa2b3102e5624152d4792aa53bf98c9465a691925e069c435195e152e9028276f86d9576c7979a5670a2640f0c1ce5838c970af29d819c64e2')
 
 case $CARCH in
   x86_64|i686|aarch64)
