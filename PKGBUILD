@@ -11,7 +11,7 @@ depends=('glibc')
 optdepends=('factorio: The game in some form is required for rendering maps')
 provides=('mapshot')
 conflicts=('mapshot')
-_binname=mapshot
+_binname=${pkgname%-bin}
 source=("$_binname::https://github.com/Palats/mapshot/releases/download/$pkgver/mapshot-linux")
 sha256sums=('ff34ecd7c502861eea747fc876001d6f7eb6628dce71996c73f07fb8039fc6d9')
 
