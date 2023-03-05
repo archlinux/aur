@@ -1,0 +1,378 @@
+From d50044e809d2c15c56df0ea808f047a2c81d7344 Mon Sep 17 00:00:00 2001
+From: Artem Belevich <tra@google.com>
+Date: Mon, 19 Oct 2020 16:41:51 -0700
+Subject: [PATCH 1/2] [CUDA] Improve clang's ability to detect recent CUDA
+ versions.
+
+CUDA-11.1 does not carry version.txt which causes clang to assume that it's
+CUDA-7.0, which used to be the only CUDA version w/o version.txt.
+
+In order to tell CUDA-7.0 apart from the new versions, clang now probes for the
+presence of libdevice.10.bc which is not present in the old CUDA versions.
+
+This should keep Clang working for CUDA-11.1.
+
+PR47332: https://bugs.llvm.org/show_bug.cgi?id=47332
+
+Differential Revision: https://reviews.llvm.org/D89752
+
+(cherry picked from commit 65d206484c54177641d4b11d42cab1f1acc8c0c7)
+---
+ clang/lib/Driver/ToolChains/Cuda.cpp                  | 11 ++++++++---
+ .../Driver/Inputs/CUDA_111/usr/local/cuda/bin/.keep   |  0
+ .../Inputs/CUDA_111/usr/local/cuda/include/.keep      |  0
+ .../Driver/Inputs/CUDA_111/usr/local/cuda/lib/.keep   |  0
+ .../Driver/Inputs/CUDA_111/usr/local/cuda/lib64/.keep |  0
+ .../usr/local/cuda/nvvm/libdevice/libdevice.10.bc     |  0
+ clang/test/Driver/cuda-version-check.cu               |  7 ++++++-
+ 7 files changed, 14 insertions(+), 4 deletions(-)
+ create mode 100644 clang/test/Driver/Inputs/CUDA_111/usr/local/cuda/bin/.keep
+ create mode 100644 clang/test/Driver/Inputs/CUDA_111/usr/local/cuda/include/.keep
+ create mode 100644 clang/test/Driver/Inputs/CUDA_111/usr/local/cuda/lib/.keep
+ create mode 100644 clang/test/Driver/Inputs/CUDA_111/usr/local/cuda/lib64/.keep
+ create mode 100644 clang/test/Driver/Inputs/CUDA_111/usr/local/cuda/nvvm/libdevice/libdevice.10.bc
+
+diff --git a/clang/lib/Driver/ToolChains/Cuda.cpp b/clang/lib/Driver/ToolChains/Cuda.cpp
+index 110a0bca9bc1..cfd9dae0fa91 100644
+--- a/clang/lib/Driver/ToolChains/Cuda.cpp
++++ b/clang/lib/Driver/ToolChains/Cuda.cpp
+@@ -155,9 +155,14 @@ CudaInstallationDetector::CudaInstallationDetector(
+     llvm::ErrorOr<std::unique_ptr<llvm::MemoryBuffer>> VersionFile =
+         FS.getBufferForFile(InstallPath + "/version.txt");
+     if (!VersionFile) {
+-      // CUDA 7.0 doesn't have a version.txt, so guess that's our version if
+-      // version.txt isn't present.
+-      Version = CudaVersion::CUDA_70;
++      // CUDA 7.0 and CUDA 11.1+ do not have version.txt file.
++      // Use libdevice file to distinguish 7.0 from the new versions.
++      if (FS.exists(LibDevicePath + "/libdevice.10.bc")) {
++        Version = CudaVersion::LATEST;
++        DetectedVersionIsNotSupported = Version > CudaVersion::LATEST_SUPPORTED;
++      } else {
++        Version = CudaVersion::CUDA_70;
++      }
+     } else {
+       ParseCudaVersionFile((*VersionFile)->getBuffer());
+     }
+diff --git a/clang/test/Driver/Inputs/CUDA_111/usr/local/cuda/bin/.keep b/clang/test/Driver/Inputs/CUDA_111/usr/local/cuda/bin/.keep
+new file mode 100644
+index 000000000000..e69de29bb2d1
+diff --git a/clang/test/Driver/Inputs/CUDA_111/usr/local/cuda/include/.keep b/clang/test/Driver/Inputs/CUDA_111/usr/local/cuda/include/.keep
+new file mode 100644
+index 000000000000..e69de29bb2d1
+diff --git a/clang/test/Driver/Inputs/CUDA_111/usr/local/cuda/lib/.keep b/clang/test/Driver/Inputs/CUDA_111/usr/local/cuda/lib/.keep
+new file mode 100644
+index 000000000000..e69de29bb2d1
+diff --git a/clang/test/Driver/Inputs/CUDA_111/usr/local/cuda/lib64/.keep b/clang/test/Driver/Inputs/CUDA_111/usr/local/cuda/lib64/.keep
+new file mode 100644
+index 000000000000..e69de29bb2d1
+diff --git a/clang/test/Driver/Inputs/CUDA_111/usr/local/cuda/nvvm/libdevice/libdevice.10.bc b/clang/test/Driver/Inputs/CUDA_111/usr/local/cuda/nvvm/libdevice/libdevice.10.bc
+new file mode 100644
+index 000000000000..e69de29bb2d1
+diff --git a/clang/test/Driver/cuda-version-check.cu b/clang/test/Driver/cuda-version-check.cu
+index a09b248304f2..1e6af029202f 100644
+--- a/clang/test/Driver/cuda-version-check.cu
++++ b/clang/test/Driver/cuda-version-check.cu
+@@ -10,6 +10,11 @@
+ // RUN:    FileCheck %s --check-prefix=OK
+ // RUN: %clang --target=x86_64-linux -v -### --cuda-gpu-arch=sm_60 --cuda-path=%S/Inputs/CUDA-unknown/usr/local/cuda 2>&1 %s | \
+ // RUN:    FileCheck %s --check-prefix=UNKNOWN_VERSION
++// CUDA versions after 11.0 (update 1) do not carry version.txt file. Make sure
++// we still detect them as a new version and handle them the same as we handle
++// other new CUDA versions.
++// RUN: %clang --target=x86_64-linux -v -### --cuda-gpu-arch=sm_60 --cuda-path=%S/Inputs/CUDA_111/usr/local/cuda 2>&1 %s | \
++// RUN:    FileCheck %s --check-prefix=UNKNOWN_VERSION
+ // Make sure that we don't warn about CUDA version during C++ compilation.
+ // RUN: %clang --target=x86_64-linux -v -### -x c++ --cuda-gpu-arch=sm_60 \
+ // RUN:    --cuda-path=%S/Inputs/CUDA-unknown/usr/local/cuda 2>&1 %s | \
+@@ -65,5 +70,5 @@
+ // ERR_SM61: error: GPU arch sm_61 {{.*}}
+ // ERR_SM61-NOT: error: GPU arch sm_61
+ 
+-// UNKNOWN_VERSION: Unknown CUDA version 999.999. Assuming the latest supported version
++// UNKNOWN_VERSION: Unknown CUDA version {{.*}}. Assuming the latest supported version
+ // UNKNOWN_VERSION_CXX-NOT: Unknown CUDA version
+
+From 06f479cba3a09ef47326ea69e719d2aa1c0fba4c Mon Sep 17 00:00:00 2001
+From: Artem Belevich <tra@google.com>
+Date: Tue, 20 Oct 2020 15:11:38 -0700
+Subject: [PATCH 2/2] [CUDA] Extract CUDA version from cuda.h if version.txt is
+ not found
+
+If CUDA version can not be determined based on version.txt file, attempt to find
+CUDA_VERSION macro in cuda.h.
+
+This is a follow-up to D89752,
+
+Differntial Revision: https://reviews.llvm.org/D89832
+
+(cherry picked from commit e7fe125b776bf08d95e60ff3354a5c836218a0e6)
+---
+ .../clang/Basic/DiagnosticDriverKinds.td      |   2 +-
+ clang/lib/Driver/ToolChains/Cuda.cpp          | 118 +++++++++++++-----
+ clang/lib/Driver/ToolChains/Cuda.h            |   3 -
+ .../Inputs/CUDA_102/usr/local/cuda/bin/.keep  |   0
+ .../CUDA_102/usr/local/cuda/include/.keep     |   0
+ .../Inputs/CUDA_102/usr/local/cuda/lib/.keep  |   0
+ .../CUDA_102/usr/local/cuda/lib64/.keep       |   0
+ .../local/cuda/nvvm/libdevice/libdevice.10.bc |   0
+ .../CUDA_102/usr/local/cuda/version.txt       |   1 +
+ .../CUDA_111/usr/local/cuda/include/cuda.h    |   7 ++
+ clang/test/Driver/cuda-version-check.cu       |  14 ++-
+ 11 files changed, 108 insertions(+), 37 deletions(-)
+ create mode 100644 clang/test/Driver/Inputs/CUDA_102/usr/local/cuda/bin/.keep
+ create mode 100644 clang/test/Driver/Inputs/CUDA_102/usr/local/cuda/include/.keep
+ create mode 100644 clang/test/Driver/Inputs/CUDA_102/usr/local/cuda/lib/.keep
+ create mode 100644 clang/test/Driver/Inputs/CUDA_102/usr/local/cuda/lib64/.keep
+ create mode 100644 clang/test/Driver/Inputs/CUDA_102/usr/local/cuda/nvvm/libdevice/libdevice.10.bc
+ create mode 100644 clang/test/Driver/Inputs/CUDA_102/usr/local/cuda/version.txt
+ create mode 100644 clang/test/Driver/Inputs/CUDA_111/usr/local/cuda/include/cuda.h
+
+diff --git a/clang/include/clang/Basic/DiagnosticDriverKinds.td b/clang/include/clang/Basic/DiagnosticDriverKinds.td
+index 558639ecad6a..acdad15cdf6c 100644
+--- a/clang/include/clang/Basic/DiagnosticDriverKinds.td
++++ b/clang/include/clang/Basic/DiagnosticDriverKinds.td
+@@ -69,7 +69,7 @@ def err_drv_cuda_version_unsupported : Error<
+   "install, pass a different GPU arch with --cuda-gpu-arch, or pass "
+   "--no-cuda-version-check.">;
+ def warn_drv_unknown_cuda_version: Warning<
+-  "Unknown CUDA version %0. Assuming the latest supported version %1">,
++  "Unknown CUDA version. %0 Assuming the latest supported version %1">,
+   InGroup<CudaUnknownVersion>;
+ def err_drv_cuda_host_arch : Error<"unsupported architecture '%0' for host compilation.">;
+ def err_drv_mix_cuda_hip : Error<"Mixed Cuda and HIP compilation is not supported.">;
+diff --git a/clang/lib/Driver/ToolChains/Cuda.cpp b/clang/lib/Driver/ToolChains/Cuda.cpp
+index cfd9dae0fa91..ffc606dd554b 100644
+--- a/clang/lib/Driver/ToolChains/Cuda.cpp
++++ b/clang/lib/Driver/ToolChains/Cuda.cpp
+@@ -16,6 +16,7 @@
+ #include "clang/Driver/Driver.h"
+ #include "clang/Driver/DriverDiagnostic.h"
+ #include "clang/Driver/Options.h"
++#include "llvm/ADT/Optional.h"
+ #include "llvm/Option/ArgList.h"
+ #include "llvm/Support/FileSystem.h"
+ #include "llvm/Support/Host.h"
+@@ -32,29 +33,80 @@ using namespace clang::driver::tools;
+ using namespace clang;
+ using namespace llvm::opt;
+ 
++namespace {
++struct CudaVersionInfo {
++  std::string DetectedVersion;
++  CudaVersion Version;
++};
+ // Parses the contents of version.txt in an CUDA installation.  It should
+ // contain one line of the from e.g. "CUDA Version 7.5.2".
+-void CudaInstallationDetector::ParseCudaVersionFile(llvm::StringRef V) {
+-  Version = CudaVersion::UNKNOWN;
++CudaVersionInfo parseCudaVersionFile(llvm::StringRef V) {
++  V = V.trim();
+   if (!V.startswith("CUDA Version "))
+-    return;
++    return {V.str(), CudaVersion::UNKNOWN};
+   V = V.substr(strlen("CUDA Version "));
+   SmallVector<StringRef,4> VersionParts;
+   V.split(VersionParts, '.');
+-  if (VersionParts.size() < 2)
+-    return;
+-  DetectedVersion = join_items(".", VersionParts[0], VersionParts[1]);
+-  Version = CudaStringToVersion(DetectedVersion);
+-  if (Version != CudaVersion::UNKNOWN) {
+-    // TODO(tra): remove the warning once we have all features of 10.2 and 11.0
+-    // implemented.
+-    DetectedVersionIsNotSupported = Version > CudaVersion::LATEST_SUPPORTED;
+-    return;
+-  }
++  return {"version.txt: " + V.str() + ".",
++          VersionParts.size() < 2
++              ? CudaVersion::UNKNOWN
++              : CudaStringToVersion(
++                    join_items(".", VersionParts[0], VersionParts[1]))};
++}
++
++CudaVersion getCudaVersion(uint32_t raw_version) {
++  if (raw_version < 7050)
++    return CudaVersion::CUDA_70;
++  if (raw_version < 8000)
++    return CudaVersion::CUDA_75;
++  if (raw_version < 9000)
++    return CudaVersion::CUDA_80;
++  if (raw_version < 9010)
++    return CudaVersion::CUDA_90;
++  if (raw_version < 9020)
++    return CudaVersion::CUDA_91;
++  if (raw_version < 10000)
++    return CudaVersion::CUDA_92;
++  if (raw_version < 10010)
++    return CudaVersion::CUDA_100;
++  if (raw_version < 10020)
++    return CudaVersion::CUDA_101;
++  if (raw_version < 11000)
++    return CudaVersion::CUDA_102;
++  if (raw_version < 11010)
++    return CudaVersion::CUDA_110;
++  return CudaVersion::LATEST;
++}
+ 
+-  Version = CudaVersion::LATEST_SUPPORTED;
+-  DetectedVersionIsNotSupported = true;
++CudaVersionInfo parseCudaHFile(llvm::StringRef Input) {
++  // Helper lambda which skips the words if the line starts with them or returns
++  // None otherwise.
++  auto StartsWithWords =
++      [](llvm::StringRef Line,
++         const SmallVector<StringRef, 3> words) -> llvm::Optional<StringRef> {
++    for (StringRef word : words) {
++      if (!Line.consume_front(word))
++        return {};
++      Line = Line.ltrim();
++    }
++    return Line;
++  };
++
++  Input = Input.ltrim();
++  while (!Input.empty()) {
++    if (auto Line =
++            StartsWithWords(Input.ltrim(), {"#", "define", "CUDA_VERSION"})) {
++      uint32_t RawVersion;
++      Line->consumeInteger(10, RawVersion);
++      return {"cuda.h: CUDA_VERSION=" + Twine(RawVersion).str() + ".",
++              getCudaVersion(RawVersion)};
++    }
++    // Find next non-empty line.
++    Input = Input.drop_front(Input.find_first_of("\n\r")).ltrim();
++  }
++  return {"cuda.h: CUDA_VERSION not found.", CudaVersion::UNKNOWN};
+ }
++} // namespace
+ 
+ void CudaInstallationDetector::WarnIfUnsupportedVersion() {
+   if (DetectedVersionIsNotSupported)
+@@ -152,21 +204,31 @@ CudaInstallationDetector::CudaInstallationDetector(
+     else
+       continue;
+ 
+-    llvm::ErrorOr<std::unique_ptr<llvm::MemoryBuffer>> VersionFile =
+-        FS.getBufferForFile(InstallPath + "/version.txt");
+-    if (!VersionFile) {
+-      // CUDA 7.0 and CUDA 11.1+ do not have version.txt file.
+-      // Use libdevice file to distinguish 7.0 from the new versions.
+-      if (FS.exists(LibDevicePath + "/libdevice.10.bc")) {
+-        Version = CudaVersion::LATEST;
+-        DetectedVersionIsNotSupported = Version > CudaVersion::LATEST_SUPPORTED;
+-      } else {
+-        Version = CudaVersion::CUDA_70;
+-      }
+-    } else {
+-      ParseCudaVersionFile((*VersionFile)->getBuffer());
++    CudaVersionInfo VersionInfo = {"", CudaVersion::UNKNOWN};
++    if (auto VersionFile = FS.getBufferForFile(InstallPath + "/version.txt"))
++      VersionInfo = parseCudaVersionFile((*VersionFile)->getBuffer());
++    // If version file didn't give us the version, try to find it in cuda.h
++    if (VersionInfo.Version == CudaVersion::UNKNOWN)
++      if (auto CudaHFile = FS.getBufferForFile(InstallPath + "/include/cuda.h"))
++        VersionInfo = parseCudaHFile((*CudaHFile)->getBuffer());
++    // As the last resort, make an educated guess between CUDA-7.0, (which had
++    // no version.txt file and had old-style libdevice bitcode ) and an unknown
++    // recent CUDA version (no version.txt, new style bitcode).
++    if (VersionInfo.Version == CudaVersion::UNKNOWN) {
++      VersionInfo.Version = (FS.exists(LibDevicePath + "/libdevice.10.bc"))
++                                ? Version = CudaVersion::LATEST
++                                : Version = CudaVersion::CUDA_70;
++      VersionInfo.DetectedVersion =
++          "No version found in version.txt or cuda.h.";
+     }
+ 
++    Version = VersionInfo.Version;
++    DetectedVersion = VersionInfo.DetectedVersion;
++
++    // TODO(tra): remove the warning once we have all features of 10.2
++    // and 11.0 implemented.
++    DetectedVersionIsNotSupported = Version > CudaVersion::LATEST_SUPPORTED;
++
+     if (Version >= CudaVersion::CUDA_90) {
+       // CUDA-9+ uses single libdevice file for all GPU variants.
+       std::string FilePath = LibDevicePath + "/libdevice.10.bc";
+diff --git a/clang/lib/Driver/ToolChains/Cuda.h b/clang/lib/Driver/ToolChains/Cuda.h
+index 873eb7338a30..bbf272c468a5 100644
+--- a/clang/lib/Driver/ToolChains/Cuda.h
++++ b/clang/lib/Driver/ToolChains/Cuda.h
+@@ -78,9 +78,6 @@ public:
+     return LibDeviceMap.lookup(Gpu);
+   }
+   void WarnIfUnsupportedVersion();
+-
+-private:
+-  void ParseCudaVersionFile(llvm::StringRef V);
+ };
+ 
+ namespace tools {
+diff --git a/clang/test/Driver/Inputs/CUDA_102/usr/local/cuda/bin/.keep b/clang/test/Driver/Inputs/CUDA_102/usr/local/cuda/bin/.keep
+new file mode 100644
+index 000000000000..e69de29bb2d1
+diff --git a/clang/test/Driver/Inputs/CUDA_102/usr/local/cuda/include/.keep b/clang/test/Driver/Inputs/CUDA_102/usr/local/cuda/include/.keep
+new file mode 100644
+index 000000000000..e69de29bb2d1
+diff --git a/clang/test/Driver/Inputs/CUDA_102/usr/local/cuda/lib/.keep b/clang/test/Driver/Inputs/CUDA_102/usr/local/cuda/lib/.keep
+new file mode 100644
+index 000000000000..e69de29bb2d1
+diff --git a/clang/test/Driver/Inputs/CUDA_102/usr/local/cuda/lib64/.keep b/clang/test/Driver/Inputs/CUDA_102/usr/local/cuda/lib64/.keep
+new file mode 100644
+index 000000000000..e69de29bb2d1
+diff --git a/clang/test/Driver/Inputs/CUDA_102/usr/local/cuda/nvvm/libdevice/libdevice.10.bc b/clang/test/Driver/Inputs/CUDA_102/usr/local/cuda/nvvm/libdevice/libdevice.10.bc
+new file mode 100644
+index 000000000000..e69de29bb2d1
+diff --git a/clang/test/Driver/Inputs/CUDA_102/usr/local/cuda/version.txt b/clang/test/Driver/Inputs/CUDA_102/usr/local/cuda/version.txt
+new file mode 100644
+index 000000000000..cd34d385ddf5
+--- /dev/null
++++ b/clang/test/Driver/Inputs/CUDA_102/usr/local/cuda/version.txt
+@@ -0,0 +1 @@
++CUDA Version 10.2.333
+diff --git a/clang/test/Driver/Inputs/CUDA_111/usr/local/cuda/include/cuda.h b/clang/test/Driver/Inputs/CUDA_111/usr/local/cuda/include/cuda.h
+new file mode 100644
+index 000000000000..6ce5b747561d
+--- /dev/null
++++ b/clang/test/Driver/Inputs/CUDA_111/usr/local/cuda/include/cuda.h
+@@ -0,0 +1,7 @@
++//
++// Placeholder file for testing CUDA version detection
++//
++
++#define CUDA_VERSION 11010
++
++//
+diff --git a/clang/test/Driver/cuda-version-check.cu b/clang/test/Driver/cuda-version-check.cu
+index 1e6af029202f..bc04794375a9 100644
+--- a/clang/test/Driver/cuda-version-check.cu
++++ b/clang/test/Driver/cuda-version-check.cu
+@@ -8,13 +8,15 @@
+ // RUN:    FileCheck %s --check-prefix=OK
+ // RUN: %clang --target=x86_64-linux -v -### --cuda-gpu-arch=sm_60 --cuda-path=%S/Inputs/CUDA_80/usr/local/cuda 2>&1 %s | \
+ // RUN:    FileCheck %s --check-prefix=OK
++// Test version guess when no version.txt or cuda.h are found
+ // RUN: %clang --target=x86_64-linux -v -### --cuda-gpu-arch=sm_60 --cuda-path=%S/Inputs/CUDA-unknown/usr/local/cuda 2>&1 %s | \
+ // RUN:    FileCheck %s --check-prefix=UNKNOWN_VERSION
+-// CUDA versions after 11.0 (update 1) do not carry version.txt file. Make sure
+-// we still detect them as a new version and handle them the same as we handle
+-// other new CUDA versions.
++// Unknown version with version.txt present
++// RUN: %clang --target=x86_64-linux -v -### --cuda-gpu-arch=sm_60 --cuda-path=%S/Inputs/CUDA_102/usr/local/cuda 2>&1 %s | \
++// RUN:    FileCheck %s --check-prefix=UNKNOWN_VERSION_V
++// Unknown version with no version.txt but with version info present in cuda.h
+ // RUN: %clang --target=x86_64-linux -v -### --cuda-gpu-arch=sm_60 --cuda-path=%S/Inputs/CUDA_111/usr/local/cuda 2>&1 %s | \
+-// RUN:    FileCheck %s --check-prefix=UNKNOWN_VERSION
++// RUN:    FileCheck %s --check-prefix=UNKNOWN_VERSION_H
+ // Make sure that we don't warn about CUDA version during C++ compilation.
+ // RUN: %clang --target=x86_64-linux -v -### -x c++ --cuda-gpu-arch=sm_60 \
+ // RUN:    --cuda-path=%S/Inputs/CUDA-unknown/usr/local/cuda 2>&1 %s | \
+@@ -70,5 +72,7 @@
+ // ERR_SM61: error: GPU arch sm_61 {{.*}}
+ // ERR_SM61-NOT: error: GPU arch sm_61
+ 
+-// UNKNOWN_VERSION: Unknown CUDA version {{.*}}. Assuming the latest supported version
++// UNKNOWN_VERSION_V: Unknown CUDA version. version.txt:{{.*}}. Assuming the latest supported version
++// UNKNOWN_VERSION_H: Unknown CUDA version. cuda.h: CUDA_VERSION={{.*}}. Assuming the latest supported version
++// UNKNOWN_VERSION: Unknown CUDA version. No version found in version.txt or cuda.h. Assuming the latest supported version
+ // UNKNOWN_VERSION_CXX-NOT: Unknown CUDA version
