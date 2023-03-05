@@ -1,0 +1,15 @@
+pkgbase = frida-dexdump
+	pkgdesc = A frida tool to dump dex in memory
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/hluwa/frida-dexdump
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python-click
+	depends = python-frida-tools
+	depends = python-wallbreaker
+	source = frida-dexdump-2.0.1.tar.gz::https://github.com/hluwa/frida-dexdump/archive/v2.0.1.tar.gz
+	sha256sums = a7e643bee7f380e43b1dd460284d251d3581b7c18ca73219147e2ed0dc15f5c3
+
+pkgname = frida-dexdump
