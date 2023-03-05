@@ -1,7 +1,7 @@
-# Maintainer: Johannes Loher <johannes dor loher at fg4f dot de>
+# Maintainer: Johannes Loher <johannes dot loher at fg4f dot de>
 
 pkgname='ansiweather'
-pkgver=1.18.0
+pkgver=1.19.0
 pkgrel=1
 pkgdesc='A Shell script for displaying the current weather conditions in your terminal, with support for ANSI colors and Unicode symbols.'
 arch=('any')
