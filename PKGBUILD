@@ -3,7 +3,7 @@
 pkgname=labrecorder
 pkgver=1.16.3
 _pkgver="v${pkgver}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Default LSL (LabStreamingLayer) recording program (stable release). It allows to record all streams on the lab network (or a subset) into a single file, with time synchronization between streams.'
 arch=('any')
 url='https://github.com/sccn/liblsl/'
@@ -36,5 +36,5 @@ package() {
     ln -rs "${pkgdir}/usr/bin/LabRecorder.cfg" -t "${pkgdir}/opt/LSL/bin"
     ln -rs "${pkgdir}/usr/bin/LabRecorderCLI" -t "${pkgdir}/opt/LSL/bin"
 
-    install -Dm644 "${pkgdir}/usr/bin/LICENSE" -t "${pkgdir}/opt/LSL/bin"
+    install -Dm644 "${pkgdir}/usr/share/LabRecorder/LICENSE" -t "${pkgdir}/opt/LSL/bin"
 }
