@@ -19,7 +19,7 @@ options=(!lto)
 conflicts=('qt5-clx000')
 provides=('qt5-clx000')
 source=(
-  'src::git+https://github.com/CSS-Electronics/clx000-qt5-plugin.git#branch=master'
+  'plugin::git+https://github.com/CSS-Electronics/clx000-qt5-plugin.git#branch=master'
   '00-no-debug.patch'
   )
 sha256sums=(
@@ -28,8 +28,7 @@ sha256sums=(
   )
 
 build() {
-  mkdir -p "$srcdir/src"
-  cd "$srcdir/src"
+  cd "$srcdir/plugin"
   git apply ../00-no-debug.patch
 
   mkdir -p build
@@ -38,5 +37,5 @@ build() {
 }
 
 package() {
-  install -Dm644 "$srcdir/src/build/libclx000canbus.so" "$pkgdir/usr/lib/qt/plugins/canbus/libclx000canbus.so"
+  install -Dm644 "$srcdir/plugin/build/libclx000canbus.so" "$pkgdir/usr/lib/qt/plugins/canbus/libclx000canbus.so"
 }
