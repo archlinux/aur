@@ -5,7 +5,6 @@ pkgbase = rsiedit-bin
 	url = https://github.com/space-wizards/RSIEdit
 	arch = x86_64
 	license = MIT
-	provides = rsiedit
 	options = !strip
 	source = https://github.com/space-wizards/RSIEdit/releases/download/v0.2.4/Editor_Linux.zip
 	sha256sums = 9c891736a2fdc583f8d71a56b965ffdda409ce8b691a2af735ced16a27bd2dd7
