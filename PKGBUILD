@@ -5,7 +5,7 @@
 
 pkgname='ibus-mozc'
 pkgver=2.28.5029.102
-pkgrel=1
+pkgrel=2
 pkgdesc='Mozc module for IBus'
 arch=('x86_64')
 url='https://github.com/google/mozc'
@@ -36,7 +36,7 @@ package() {
     install -Dm644 ../LICENSE                                   ${pkgdir}/usr/share/licenses/ibus-mozc/LICENSE
     install -Dm644 data/installer/credits_en.html               ${pkgdir}/usr/share/licenses/ibus-mozc/Submodules
 
-    install -Dm755 bazel-bin/renderer/mozc_renderer             ${pkgdir}/usr/lib/mozc/mozc_renderer
+    install -Dm755 bazel-bin/renderer/qt/mozc_renderer          ${pkgdir}/usr/lib/mozc/mozc_renderer
 
     install -Dm755 bazel-bin/unix/ibus/ibus_mozc                ${pkgdir}/usr/lib/ibus-mozc/ibus-engine-mozc
     install -Dm644 bazel-bin/unix/ibus/mozc.xml                 ${pkgdir}/usr/share/ibus/component/mozc.xml
