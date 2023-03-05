@@ -1,0 +1,17 @@
+pkgbase = signond-git
+	pkgdesc = A D-Bus service which performs user authentication on behalf of its clients
+	pkgver = 8.61.r1.gee891bf
+	pkgrel = 1
+	url = https://gitlab.com/accounts-sso/signond/
+	arch = x86_64
+	license = LGPL
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = ttf-font
+	depends = qt6-base
+	provides = signond
+	replaces = signond
+	source = git+https://gitlab.com/accounts-sso/signond.git
+	sha256sums = SKIP
+
+pkgname = signond-git
