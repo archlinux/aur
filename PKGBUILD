@@ -7,7 +7,7 @@ url='https://github.com/jmmv/atf/'
 depends=(gcc-libs)
 license=(BSD)
 source=(https://github.com/jmmv/atf/archive/atf-$pkgver.zip)
-sha1sums=('743a0a5fda87470330e7dffcd2436f39285a1f95')
+sha1sums=('986f7e13eb8f3ffdba6bd210c39816734589bfb9')
 
 build() {
   cd atf-atf-$pkgver
