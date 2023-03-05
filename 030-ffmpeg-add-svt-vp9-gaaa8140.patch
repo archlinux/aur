@@ -1,4 +1,4 @@
-From 9a005fe0e836c0cacef93f2e7a6d7e59bf394cab Mon Sep 17 00:00:00 2001
+From 1317fc51792caa70ae8f08224367bc6bf2e3857e Mon Sep 17 00:00:00 2001
 From: hassene <hassene.tmar@intel.com>
 Date: Fri, 15 Feb 2019 17:43:54 -0800
 Subject: [PATCH] Add ability for ffmpeg to run svt vp9
@@ -12,12 +12,12 @@ Signed-off-by: Guo Jiansheng <jiansheng.guo@intel.com>
  configure               |   4 +
  libavcodec/Makefile     |   1 +
  libavcodec/allcodecs.c  |   1 +
- libavcodec/libsvt_vp9.c | 699 ++++++++++++++++++++++++++++++++++++++++
- 4 files changed, 705 insertions(+)
+ libavcodec/libsvt_vp9.c | 700 ++++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 706 insertions(+)
  create mode 100644 libavcodec/libsvt_vp9.c
 
 diff --git a/configure b/configure
-index 5a167613a4..5d7a347ebf 100755
+index 932805ccf3..45306434fb 100755
 --- a/configure
 +++ b/configure
 @@ -288,6 +288,7 @@ External library support:
@@ -28,7 +28,7 @@ index 5a167613a4..5d7a347ebf 100755
    --enable-libwebp         enable WebP encoding via libwebp [no]
    --enable-libx264         enable H.264 encoding via x264 [no]
    --enable-libx265         enable HEVC encoding via x265 [no]
-@@ -1858,6 +1859,7 @@ EXTERNAL_LIBRARY_LIST="
+@@ -1846,6 +1847,7 @@ EXTERNAL_LIBRARY_LIST="
      libshaderc
      libshine
      libsmbclient
@@ -36,7 +36,7 @@ index 5a167613a4..5d7a347ebf 100755
      libsnappy
      libsoxr
      libspeex
-@@ -3373,6 +3375,7 @@ libvpx_vp8_decoder_deps="libvpx"
+@@ -3387,6 +3389,7 @@ libvpx_vp8_decoder_deps="libvpx"
  libvpx_vp8_encoder_deps="libvpx"
  libvpx_vp9_decoder_deps="libvpx"
  libvpx_vp9_encoder_deps="libvpx"
@@ -44,7 +44,7 @@ index 5a167613a4..5d7a347ebf 100755
  libwebp_encoder_deps="libwebp"
  libwebp_anim_encoder_deps="libwebp"
  libx262_encoder_deps="libx262"
-@@ -6655,6 +6658,7 @@ enabled libvpx            && {
+@@ -6715,6 +6718,7 @@ enabled libvpx            && {
      fi
  }
  
@@ -53,10 +53,10 @@ index 5a167613a4..5d7a347ebf 100755
      enabled libwebp_encoder      && require_pkg_config libwebp "libwebp >= 0.2.0" webp/encode.h WebPGetEncoderVersion
      enabled libwebp_anim_encoder && check_pkg_config libwebp_anim_encoder "libwebpmux >= 0.4.0" webp/mux.h WebPAnimEncoderOptionsInit; }
 diff --git a/libavcodec/Makefile b/libavcodec/Makefile
-index 3b8f7b5e01..c3926f8745 100644
+index 389253f5d0..1573ae4c34 100644
 --- a/libavcodec/Makefile
 +++ b/libavcodec/Makefile
-@@ -1096,6 +1096,7 @@ OBJS-$(CONFIG_LIBVPX_VP8_DECODER)         += libvpxdec.o
+@@ -1123,6 +1123,7 @@ OBJS-$(CONFIG_LIBVPX_VP8_DECODER)         += libvpxdec.o
  OBJS-$(CONFIG_LIBVPX_VP8_ENCODER)         += libvpxenc.o
  OBJS-$(CONFIG_LIBVPX_VP9_DECODER)         += libvpxdec.o libvpx.o
  OBJS-$(CONFIG_LIBVPX_VP9_ENCODER)         += libvpxenc.o libvpx.o
@@ -65,10 +65,10 @@ index 3b8f7b5e01..c3926f8745 100644
  OBJS-$(CONFIG_LIBWEBP_ANIM_ENCODER)       += libwebpenc_common.o libwebpenc_animencoder.o
  OBJS-$(CONFIG_LIBX262_ENCODER)            += libx264.o
 diff --git a/libavcodec/allcodecs.c b/libavcodec/allcodecs.c
-index f0b01051b0..36dbad86cd 100644
+index e593ad19af..a5396c0477 100644
 --- a/libavcodec/allcodecs.c
 +++ b/libavcodec/allcodecs.c
-@@ -779,6 +779,7 @@ extern const FFCodec ff_libvpx_vp8_encoder;
+@@ -799,6 +799,7 @@ extern const FFCodec ff_libvpx_vp8_encoder;
  extern const FFCodec ff_libvpx_vp8_decoder;
  extern FFCodec ff_libvpx_vp9_encoder;
  extern FFCodec ff_libvpx_vp9_decoder;
@@ -78,10 +78,10 @@ index f0b01051b0..36dbad86cd 100644
  extern const FFCodec ff_libwebp_encoder;
 diff --git a/libavcodec/libsvt_vp9.c b/libavcodec/libsvt_vp9.c
 new file mode 100644
-index 0000000000..a7da7023d2
+index 0000000000..5f99367924
 --- /dev/null
 +++ b/libavcodec/libsvt_vp9.c
-@@ -0,0 +1,699 @@
+@@ -0,0 +1,700 @@
 +/*
 +* Scalable Video Technology for VP9 encoder library plugin
 +*
@@ -773,14 +773,15 @@ index 0000000000..a7da7023d2
 +    .init             = eb_enc_init,
 +    FF_CODEC_RECEIVE_PACKET_CB(eb_receive_packet),
 +    .close            = eb_enc_close,
-+    .p.capabilities   = AV_CODEC_CAP_DELAY | AV_CODEC_CAP_AUTO_THREADS,
++    .p.capabilities   = AV_CODEC_CAP_DELAY | AV_CODEC_CAP_OTHER_THREADS,
++    .caps_internal    = FF_CODEC_CAP_NOT_INIT_THREADSAFE |
++                        FF_CODEC_CAP_AUTO_THREADS | FF_CODEC_CAP_INIT_CLEANUP,
 +    .p.pix_fmts       = (const enum AVPixelFormat[]){ AV_PIX_FMT_YUV420P,
 +                                                    AV_PIX_FMT_NONE },
 +    .p.priv_class     = &class,
 +    .defaults         = eb_enc_defaults,
-+    .caps_internal    = FF_CODEC_CAP_INIT_CLEANUP,
 +    .p.wrapper_name   = "libsvt_vp9",
 +};
 -- 
-2.17.1
+2.39.1
 
