@@ -1,4 +1,4 @@
-pkgname=darktable
+pkgname=ansel
 
 post_install() {
 #  usr/sbin/gconfpkg --install ${pkgname}

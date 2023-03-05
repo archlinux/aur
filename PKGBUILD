@@ -6,13 +6,13 @@
 # Contributor: Kevin Brubeck Unhammer <unhammer at member dot fsf dot org>
 # Contributor: orbisvicis <orbisvicis at gmail dot com>
 pkgname=rdarktable-git
-_gitname=R-Darktable
-pkgver=3.9.0.r1643.g60bbf83ac
-pkgrel=1
-pkgdesc="A camera raw editor and asset manager, based on the \"rationalised\" R&Darktable fork from Aurélien Pierre."
-pkgdesc="Aurélien Pierre's R&Darktable fork of the camera raw editor/asset manager"
+_gitname=ansel
+pkgver=v0.0.0.r187.g70c875b2d
+pkgrel=2
+pkgdesc="Ansel camera raw editor and asset manager from Aurélien Pierre, forked deom darktable."
+pkgdesc="Aurélien Pierre's Ansel fork of the darktable camera raw editor/asset manager"
 arch=('i686' 'x86_64')
-url=https://github.com/aurelienpierre/R-Darktable/blob/master/README.md
+url=https://github.com/aurelienpierreeng/ansel/blob/master/README.md
 license=('GPL3')
 depends=(pugixml libjpeg-turbo colord-gtk libgphoto2 openexr lensfun iso-codes zlib
          exiv2 flickcurl openjpeg2 graphicsmagick lua53 osm-gps-map libsecret openmp
@@ -23,11 +23,11 @@ optdepends=('dcraw: base curve script'
             'ghostscript: noise profile script'
             'gnuplot: noise profile script')
 makedepends=(git cmake intltool desktop-file-utils llvm clang python-jsonschema libwebp)
-conflicts=(darktable)
-provides=(darktable)
-install=darktable.install
+conflicts=()
+provides=(ansel)
+install=ansel.install
 options=(!emptydirs !libtool)
-source=('git+https://github.com/aurelienpierre/R-Darktable.git'
+source=('git+https://github.com/aurelienpierreeng/ansel.git'
 )
 md5sums=('SKIP')
 
@@ -65,5 +65,5 @@ build() {
 package() {
   cd $_gitname
   make -C build DESTDIR=$pkgdir install
-  ln -s darktable/libdarktable.so "${pkgdir}"/usr/lib/libdarktable.so
+  ln -s ansel/libansel.so "${pkgdir}"/usr/lib/libansel.so
 }
