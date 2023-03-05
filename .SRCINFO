@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-game-libretro-fbneo
 	pkgdesc = This add-on provides a wrapper that allows Libretro cores to be loaded as game add-ons
-	pkgver = 1.0.0.63
+	pkgver = 1.0.0.64
 	pkgrel = 1
 	url = https://github.com/kodi-game/game.libretro.fbneo
 	arch = aarch64
@@ -14,8 +14,8 @@ pkgbase = kodi-addon-game-libretro-fbneo
 	makedepends = libretro-fbneo
 	options = !lto
 	options = debug
-	source = kodi-addon-game-libretro-fbneo-1.0.0.63.tar.gz::https://github.com/kodi-game/game.libretro.fbneo/archive/refs/tags/1.0.0.63-Nexus.tar.gz
-	sha512sums = 93a819d37634d58bb4dea2bdd69fe4b63af09f97f2d9a7133c7353dd72d2a3cf2b63b04d506cea26b6493fc5dd71094cb87a12bef12839ef642fd71d45af9cd6
+	source = kodi-addon-game-libretro-fbneo-1.0.0.64.tar.gz::https://github.com/kodi-game/game.libretro.fbneo/archive/refs/tags/1.0.0.64-Nexus.tar.gz
+	sha512sums = c543b1719d5c5a12614a6b107e661ab0f747b98a3c03a5a69360e01865a836c24c479761fd4fdf1946d6c4ad40a983ab582d1413bb43ef5e7437a37699230b53
 
 pkgname = kodi-addon-game-libretro-fbneo
 	depends = kodi-addon-game-libretro

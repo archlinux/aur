@@ -1,7 +1,7 @@
 # Maintainer: mcarni <michele DOT carnaghi AT googlemail DOT com>
 
 pkgname=kodi-addon-game-libretro-fbneo
-pkgver=1.0.0.63
+pkgver=1.0.0.64
 _codename=Nexus
 pkgrel=1
 pkgdesc="This add-on provides a wrapper that allows Libretro cores to be loaded as game add-ons"
@@ -12,7 +12,7 @@ groups=('kodi-addons' 'kodi-addons-game')
 makedepends=('cmake' 'kodi-dev' 'kodi-addon-game-libretro' 'libretro-fbneo')
 options=(!lto debug)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kodi-game/game.libretro.fbneo/archive/refs/tags/$pkgver-$_codename.tar.gz")
-sha512sums=('93a819d37634d58bb4dea2bdd69fe4b63af09f97f2d9a7133c7353dd72d2a3cf2b63b04d506cea26b6493fc5dd71094cb87a12bef12839ef642fd71d45af9cd6')
+sha512sums=('c543b1719d5c5a12614a6b107e661ab0f747b98a3c03a5a69360e01865a836c24c479761fd4fdf1946d6c4ad40a983ab582d1413bb43ef5e7437a37699230b53')
 
 build() {
     cd "game.libretro.fbneo-$pkgver-$_codename"
