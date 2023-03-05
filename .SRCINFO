@@ -1,12 +1,13 @@
 pkgbase = gblocks-bin
-	pkgdesc = A program written in ANSI C language that eliminates poorly aligned positions and divergent regions of an alignment of DNA or protein sequences
+	pkgdesc = A program written in ANSI C language that eliminates poorly aligned positions and divergent regions of an alignment of DNA or protein sequences. https://doi.org/10.1093/oxfordjournals.molbev.a026334
 	pkgver = 0.91b
-	pkgrel = 1
-	url = http://molevol.cmima.csic.es/castresana/Gblocks.html
+	pkgrel = 5
+	url = https://www.biologiaevolutiva.org/jcastresana/Gblocks.html
 	arch = x86_64
 	license = unknown
 	depends = glibc
-	source = http://molevol.cmima.csic.es/castresana/Gblocks/Gblocks_Linux64_0.91b.tar.Z
+	provides = gblocks
+	source = https://www.biologiaevolutiva.org/jcastresana/Gblocks/Gblocks_Linux64_0.91b.tar.Z
 	sha256sums = 563658f03cc5e76234a8aa705bdc149398defec813d3a0c172b5f94c06c880dc
 
 pkgname = gblocks-bin
