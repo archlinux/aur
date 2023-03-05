@@ -1,0 +1,18 @@
+pkgbase = trakker-git
+	pkgdesc = A terminal-based tracker interface for libxmp.
+	pkgver = 0.3.0.r1.ge275e29
+	pkgrel = 1
+	url = https://codeberg.org/Wirlaburla/trakker
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = alsa-lib
+	depends = libxmp
+	depends = ncurses
+	provides = trakker
+	conflicts = trakker
+	source = trakker-git::git+https://codeberg.org/Wirlaburla/trakker.git#branch=master
+	sha256sums = SKIP
+
+pkgname = trakker-git
