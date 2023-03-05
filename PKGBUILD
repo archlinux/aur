@@ -1,5 +1,4 @@
 # Maintainer: Vryali <vryali ~at~ gmail ~dot~ com>
-#
 
 # Required icon attribution: Twitch Icon created by Vitaly Corbachev - Flaticon
 # https://www.flaticon.com/free-icons/twitch
@@ -54,9 +53,6 @@ package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 
     # Clean up some of the build files
-    #rm -rf "${srcdir}/${pkgname}-${pkgver}/node_modules"
-    #rm -rf "${srcdir}/${pkgname}-${pkgver}/app/app/node_modules"
-    #rm -rf "${srcdir}/${pkgname}-${pkgver}/app/node_modules"
     rm -rf "${srcdir}/${pkgname}-${pkgver}/flatpak"*
 
     # Can do some clean-up here from the things used in build
