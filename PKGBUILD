@@ -6,7 +6,7 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}-legacyrenderer-hidpi-xprop-git"
-pkgver=r2498.18229043
+pkgver=r2557.5184b542
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (Legacy Renderer with HiDPI fix)"
 arch=(any)
@@ -28,6 +28,7 @@ depends=(
 	pango
 	polkit
 	glslang
+	libdisplay-info
 	libinput
 	libxcb
 	libxkbcommon
@@ -54,13 +55,17 @@ makedepends=(
 source=("${_pkgname}::git+https://github.com/hyprwm/Hyprland.git"
 	"git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
         "git+https://github.com/hyprwm/hyprland-protocols.git"
-        "https://gitlab.freedesktop.org/lilydjwg/wlroots/-/commit/6c5ffcd1fee9e44780a6a8792f74ecfbe24a1ca7.patch")
+	"git+https://github.com/canihavesomecoffee/udis86.git"
+        "0001-xwayland-support-HiDPI-scale.patch"
+        "0002-Fix-configure_notify-event.patch")
 conflicts=("${_pkgname}")
 provides=(hyprland)
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'a37e441c309b35e5d9b5c5c637c96729c5348a523a7eaa25c6e24b1fcc3521a6')
+            'SKIP'
+            '304aaf12cbd7dc198bf7e418d729b297ea61186d27c035e4a63a337399fcec76'
+            'e7cf16e39db2bde4dbc9d7ec3b4753f7643b1bf198a3179e6802a9c603437fe9')
 options=(!makeflags !buildflags !strip)
 
 pkgver() {
@@ -74,24 +79,25 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/${_pkgname}"
 	rm -rf subprojects/wlroots subprojects/hyprland-protocols
-	git submodule update --init
 	git config submodule.wlroots.url "${srcdir}"/wlroots
 	git config submodule.subprojects/hyprland-protocols.url "${srcdir}"/hyprland-protocols
+	git config submodule.subprojects/udis86.url "${srcdir}"/udis86
 	git -c protocol.file.allow=always submodule update subprojects/wlroots
 	git -c protocol.file.allow=always submodule update subprojects/hyprland-protocols
+	git -c protocol.file.allow=always submodule update subprojects/udis86
 	cd subprojects/wlroots
 	git revert -n 18595000f3a21502fd60bf213122859cc348f9af
-	git cherry-pick -n 03412e9aaba3f2bedacbeeef53469f13d6b6b277
-	patch -Np1 < "${srcdir}"/6c5ffcd1fee9e44780a6a8792f74ecfbe24a1ca7.patch
+	patch -Np1 -i "${srcdir}"/0001-xwayland-support-HiDPI-scale.patch
+	patch -Np1 -i "${srcdir}"/0002-Fix-configure_notify-event.patch
 }
 
 build() {
 	cd "${srcdir}/${_pkgname}"
 	make fixwlr
-	cd "./subprojects/wlroots/" && meson build/ --prefix="${srcdir}/tmpwlr" --buildtype=release && ninja -C build/ && mkdir -p "${srcdir}/tmpwlr" && ninja -C build/ install && cd ../
+	cd "./subprojects/wlroots/" && meson build/ --prefix="${srcdir}/tmpwlr" --buildtype=release && ninja -C build/ && mkdir -p "${srcdir}/tmpwlr" && ninja -C build/ install && cd ../..
 	# the following fix is proposed by @justinesmithies on 2023 Feb 27
 	# under the comments of hyprland-git
-	cd udis86 && cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -H./ -B./build -G Ninja && cmake --build ./build --config Release --target all -j$(shell nproc) && cd ../..
+	cd "./subprojects/udis86" && cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -H./ -B./build -G Ninja && cmake --build ./build --config Release --target all -j$(shell nproc) && cd ../..
 	make protocols
 	make legacyrenderer
 	cd ./hyprctl && make all && cd ..
