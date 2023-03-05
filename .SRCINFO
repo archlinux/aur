@@ -1,0 +1,12 @@
+pkgbase = adafruit-boards-udev
+	pkgdesc = udev rule for adafruit boards
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/jacobrosenthal/hf2-rs/tree/master/hf2-cli
+	arch = any
+	license = Apache
+	license = MIT
+	source = file://99-adafruit-boards.rules
+	md5sums = 29b232588bf2d3eed562199af73ce1e7
+
+pkgname = adafruit-boards-udev
