@@ -1,0 +1,18 @@
+pkgbase = runst-git
+	pkgdesc = A dead simple notification daemon (git)
+	pkgver = 0.1.0.r0.g7a351a5
+	pkgrel = 1
+	url = https://github.com/orhun/runst
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = cargo
+	makedepends = git
+	depends = dbus
+	depends = pango
+	provides = runst
+	conflicts = runst
+	source = git+https://github.com/orhun/runst
+	sha512sums = SKIP
+
+pkgname = runst-git
