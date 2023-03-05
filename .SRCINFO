@@ -1,6 +1,6 @@
 pkgbase = ossia-score
 	pkgdesc = ossia score, an interactive sequencer for the intermedia arts
-	pkgver = 3.1.7
+	pkgver = 3.1.8
 	pkgrel = 1
 	url = https://ossia.io
 	arch = x86_64
@@ -31,10 +31,10 @@ pkgbase = ossia-score
 	optdepends = ysfx-git
 	optdepends = leap-motion-sdk
 	optdepends = leap-motion-driver
-	provides = ossia-score=3.1.7
+	provides = ossia-score=3.1.8
 	conflicts = ossia-score-git
 	replaces = i-score
-	source = https://github.com/ossia/score/releases/download/v3.1.7/ossia.score-3.1.7-src.tar.xz
-	sha512sums = 330f81cab7994b60ea4e797f8a25c2bf5d0864189b572f666ff5aaae420bd20498d59864590bd36ff533c4ff4293315ae629ee7f423f5d7cf5c230726a552a44
+	source = https://github.com/ossia/score/releases/download/v3.1.8/ossia.score-3.1.8-src.tar.xz
+	sha512sums = 49cbca9eeacd83bc64886a626813e1341628ea0b5bcf4a8761dbef53c0840a4a3625689471f356ce2c763f2795ed4583db5a919379ea80e7491cb52397581bef
 
 pkgname = ossia-score
