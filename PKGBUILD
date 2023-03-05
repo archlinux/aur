@@ -1,4 +1,4 @@
-# Maintainer: Daniele Bartolini <dbartolini.aa gmail com> - https://github.com/dbartolini
+# Maintainer: Daniele Bartolini <dbartolini crownengine org>
 
 replaces=('pepper')
 pkgname=crown
@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="The Flexible Game Engine"
 arch=(x86_64)
 url="https://www.crownengine.org"
-license=('MIT')
+license=('MIT' 'GPL3')
 depends=('glib2>=2.48.2'
          'gtk3>=3.16'
          'libgee'
