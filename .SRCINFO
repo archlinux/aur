@@ -1,4 +1,4 @@
-pkgbase = editorconfiger
+pkgbase = editorconfiger-bin
 	pkgdesc = Plain tool to validate and compare .editorconfig files
 	pkgver = 0.4.1
 	pkgrel = 1
@@ -8,4 +8,4 @@ pkgbase = editorconfiger
 	source = https://github.com/aegoroff/editorconfiger/releases/download/0.4.1/editorconfiger-0.4.1-x86_64-unknown-linux-musl.tar.gz
 	sha256sums = cff46889b3cbdbf1f361d065db674cc82919cf627fc1801afb5b22ddcc25fc76
 
-pkgname = editorconfiger
+pkgname = editorconfiger-bin
