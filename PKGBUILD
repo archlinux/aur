@@ -1,12 +1,12 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=cproc-git
 pkgdesc='Small C11 compiler using QBE as backend'
-pkgver=r569.70fe9ef
+pkgver=r592.9ae9aa6
 pkgrel=1
 url=https://git.sr.ht/~mcf/cproc
 makedepends=(git)
 arch=(x86_64)
-depends=(gcc qbe-git)
+depends=(gcc "qbe>=1.1")
 license=(custom)
 source=("${pkgname}::git+${url}")
 b2sums=(SKIP)
@@ -42,7 +42,7 @@ build ()
 		--with-ld=/usr/bin/ld \
 		${ldso_option}
 
-	make bootstrap CFLAGS='' LDFLAGS='-s' 
+	make
 }
 
 check ()
@@ -53,7 +53,7 @@ check ()
 package ()
 {
 	cd "${pkgname}"
-	make DESTDIR="${pkgdir}" objdir=stage3 install
+	make DESTDIR="${pkgdir}" install
 
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.cproc"
 
