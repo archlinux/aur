@@ -1,18 +1,18 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=boca
 _pkgname=BoCA
-pkgver=1.0.6a
+pkgver=1.0.7
 pkgrel=1
 epoch=1
 pkgdesc="A component library used by the fre:ac audio converter"
 arch=('x86_64')
 url="https://github.com/enzo1982/BoCA"
 license=('GPL2')
-depends=('alsa-lib' 'libcdio-paranoia' 'expat' 'libpulse' 'uriparser' 'smooth')
+depends=('alsa-lib' 'expat' 'libcdio-paranoia' 'libpulse' 'smooth' 'uriparser')
 provides=('libboca-1.0.so=3' 'freac_cdk')
 conflicts=('freac_cdk')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a58fe081f210b6e9ab2ad15dcd2b76d7708a98d307f088d8ac5dc1bfa250a749')
+sha256sums=('2c0b99b377e5bc5aeb046e34e25f8bc8af6427af30bf3105dd4318ed228a6a0f')
 
 prepare() {
   cd "$_pkgname-$pkgver"
