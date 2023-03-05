@@ -1,17 +1,21 @@
 pkgbase = blivet-gui-git
 	pkgdesc = GUI tool for storage configuration
-	pkgver = fb5726a
+	pkgver = 2.4.0.1.r56.gfb5726a
 	pkgrel = 1
 	url = https://github.com/storaged-project/blivet-gui
 	arch = any
 	license = GPL
+	makedepends = git
+	makedepends = python
 	depends = python
 	depends = python-blivet-git
 	depends = python-cairo
 	depends = python-gobject
 	depends = python-meh-git
 	depends = python-pid
-	source = git+https://github.com/storaged-project/blivet-gui.git
+	provides = blivet-gui
+	conflicts = blivet-gui
+	source = blivet-gui::git+https://github.com/storaged-project/blivet-gui.git
 	sha256sums = SKIP
 
 pkgname = blivet-gui-git
