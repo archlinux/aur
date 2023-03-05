@@ -7,7 +7,7 @@ _encodings='uni i15'
 
 pkgname='uw-ttyp0-otb'
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Monospaced bitmap font with unicode support and powerline symbols (OTB version)'
 arch=('any')
 url='http://people.mpi-inf.mpg.de/~uwe/misc/uw-ttyp0'
@@ -48,6 +48,12 @@ build() {
 	
 	mkdir -p otb
 	for f in genbdf/*.bdf ; do
+		if grep -Fq 'FAMILY_NAME "' "$f" 2>/dev/null; then
+        	family_name="$(grep -F 'FAMILY_NAME "' "$f")"
+        	family_name="${family_name%\"}"
+        	family_name_otb="$family_name (OTB)"
+        	sed -i "s/$family_name/$family_name_otb/" "$f"
+        fi
 	    f=${f##*/}
 	    fonttosfnt -b -c -g 2 -m 2 -o "otb/uw-ttyp0-${pkgver}-${f/bdf/otb}" "genbdf/${f}"
 	done
