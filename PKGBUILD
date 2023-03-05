@@ -13,5 +13,5 @@ build() {
 }
 
 package() {
-    cargo install --root="$pkgdir" editorconfiger
+    cargo install --no-track --root="$pkgdir" editorconfiger
 }
