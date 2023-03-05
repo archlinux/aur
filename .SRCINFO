@@ -1,0 +1,13 @@
+pkgbase = uw-ttyp0-otb
+	pkgdesc = Monospaced bitmap font with unicode support and powerline symbols (OTB version)
+	pkgver = 1.3
+	pkgrel = 1
+	url = http://people.mpi-inf.mpg.de/~uwe/misc/uw-ttyp0
+	arch = any
+	license = custom:TTYP0
+	makedepends = fonttosfnt-git
+	makedepends = perl
+	source = http://people.mpi-inf.mpg.de/~uwe/misc/uw-ttyp0/uw-ttyp0-1.3.tar.gz
+	md5sums = SKIP
+
+pkgname = uw-ttyp0-otb
