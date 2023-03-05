@@ -1,5 +1,5 @@
 pkgbase = vdr-epg-daemon
-	pkgver = 1.3.5
+	pkgver = 1.3.22
 	pkgrel = 1
 	url = https://github.com/horchi/vdr-epg-daemon
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = vdr-epg-daemon
 	makedepends = libmicrohttpd
 	makedepends = libxslt
 	makedepends = python
-	source = vdr-epg-daemon-1.3.5.tar.gz::https://github.com/horchi/vdr-epg-daemon/archive/refs/tags/1.3.5.tar.gz
-	sha256sums = 559c61323311ae8aa5ecb3ecbb4dfd2dfc1d1352dd230919a33b1ab421535985
+	source = vdr-epg-daemon-1.3.22.tar.gz::https://github.com/horchi/vdr-epg-daemon/archive/refs/tags/1.3.22.tar.gz
+	sha256sums = 69cc95f3ac71188797846fe4437bae1e05501c21ed6ee840c8392fd3561db821
 
 pkgname = epgd
 	pkgdesc = write epg data to a mysql database
