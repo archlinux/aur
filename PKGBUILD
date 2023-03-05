@@ -9,6 +9,7 @@ url="https://github.com/Palats/mapshot"
 license=('Apache')
 depends=('glibc')
 makedepends=('go' 'npm')
+optdepends=('factorio: The game in some form is required for rendering maps')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Palats/mapshot/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('989310114b3e5e12465954bb38fc1c96ce3aa4930131a037d85efa6011d9d276')
 
