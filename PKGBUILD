@@ -1,40 +1,36 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Ferdinand Bachmann <ferdinand.bachmann@yrlf.at>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Victor Homic <aur (at) dothomic (dot) de>
 # Contributor: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 # Contributor: Aniket Pradhan <aniket17133 (at) iiitd (dot) ac (dot) in>
 # Contributor: Martin Briza <m (at) rtinbriza (dot) cz>
 
-_base=adwaita-qt
-pkgbase=adwaita-solarized-qt
+_base=adwaita-solarized-qt
+pkgbase=adwaita-solarized-qt-git
 pkgname=(adwaita-solarized-qt5 adwaita-solarized-qt6)
-pkgver=1.4.2
+pkgver=1.4.1.r29.g3c98239
 pkgrel=1
 pkgdesc='A solarized style to bend Qt applications to look like they belong into GNOME Shell'
 arch=(x86_64)
 url='https://github.com/FedoraQt/adwaita-qt'
 license=(GPL)
 makedepends=(cmake qt5-x11extras qt6-base)
-source=(
-    https://github.com/FedoraQt/adwaita-qt/archive/$pkgver/$_base-$pkgver.tar.gz
-    solarized.patch
-)
-sha256sums=('cd5fd71c46271d70c08ad44562e57c34e787d6a8650071db115910999a335ba8'
-            'c6263c891ef7f53eeffcacbfa9547c98779d5cbf558375961ae763638f10ac24')
+source=(git+https://github.com/Ferdi265/adwaita-solarized-qt)
+sha256sums=('SKIP')
 
-prepare() {
-    cd "$_base-$pkgver"
-
-    patch -p1 < "$srcdir/solarized.patch"
+pkgver() {
+    cd "$srcdir/$_base"
+    git describe --long --tags | sed -r 's/^v//g;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cmake -B build-qt5 -S $_base-$pkgver \
+  cmake -B build-qt5 -S $_base \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DUSE_QT6=OFF
   cmake --build build-qt5
 
-  cmake -B build-qt6 -S $_base-$pkgver \
+  cmake -B build-qt6 -S $_base \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DUSE_QT6=ON
   cmake --build build-qt6
