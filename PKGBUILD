@@ -9,7 +9,7 @@ _pkgname=$(tr A-Z a-z <<<${_repo##*/})
 
 pkgname=${_pkgname//_/-}-bin
 pkgver=${_upstreamver##v}
-pkgrel=1
+pkgrel=2
 pkgdesc="Detecting vulnerable dependencies from the command-line"
 arch=(x86_64 aarch64)
 url=https://github.com/$_repo
@@ -22,4 +22,10 @@ sha256sums=(SKIP)
 package() {
 	cd "$srcdir" || return 1
 	install -D "$_pkgname" -t "$pkgdir/usr/bin"
+	for shell in bash zsh fish; do
+		"$pkgdir/usr/bin/$_pkgname" completion $shell >$_pkgname.$shell
+	done
+	install -Dm644 "$_pkgname.bash" "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
+	install -Dm644 "$_pkgname.zsh" "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
+	install -Dm644 "$_pkgname.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d"
 }
