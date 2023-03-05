@@ -1,4 +1,4 @@
-pkgname='gnome-critial-packages'
+pkgname='gnome-critical-packages'
 pkgver='1.0'
 pkgrel='1'
 pkgdesc="Just a thing to protect GNOME's various packages"
