@@ -1,8 +1,8 @@
+# Maintainer : Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname='perl-class'
-pkgver='1.00'
+pkgver='1.1.7'
 pkgrel='1'
 pkgdesc="Alias for __PACKAGE__"
 arch=('any')
@@ -10,11 +10,10 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
-url='http://search.cpan.org/dist/CLASS'
-source=('http://search.cpan.org/CPAN/authors/id/M/MS/MSCHWERN/CLASS-1.00.tar.gz')
-md5sums=('834b888b9c8a936b12de2c168798b618')
-sha512sums=('6e6f782cc7d86e5a5e5f052fbc598374451ce0600a238480275c462f1782b70b68e0b4cc968efa349bfdf1736d587b9f8d21b95361ad0a0f22bb46b324c08451')
-_distdir="CLASS-1.00"
+url='https://metacpan.org/dist/CLASS'
+source=('https://cpan.metacpan.org/authors/id/J/JD/JDEGUEST/CLASS-v1.1.7.tar.gz')
+md5sums=('2fe39068d9678d253bff75eb71ccf253')
+_distdir="CLASS-v1.1.7"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -42,9 +41,3 @@ package() {
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
