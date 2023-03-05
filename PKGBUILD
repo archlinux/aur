@@ -2,9 +2,9 @@
 # Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=styler
-_pkgver=1.9.0
+_pkgver=1.9.1
 pkgname=r-${_pkgname,,}
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc='Non-Invasive Pretty Printing of R Code'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-tibble
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a85417b3df03f5b2085a40ce4de295d81fea02d0212f5046ce14c1b6dbaac02f')
+sha256sums=('c80fa3c062f007645ec820b5b087d4d5784e7797cc88d030ab59fb5823ded0bb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
