@@ -2,7 +2,7 @@
 
 _pkgbase=applesmc-next
 pkgname=${_pkgbase}-dkms
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='Updated applesmc driver with charge threshold'
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
 )
 
 sha256sums=(
-   '5e578ceba9e776d21771639ab12cc793ec6b957e9ebf4ebcf660984a3f3bd01c'
+   'a95064c9a01806250247be5093458b149e06452735ae7dc2451e735ea0438ad2'
 )
 
 package() {
