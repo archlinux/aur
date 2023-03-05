@@ -2,9 +2,9 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-osdteletext
-pkgver=1.1.1
+pkgver=2.3.1
 _vdrapi=2.6.3
-pkgrel=5
+pkgrel=1
 pkgdesc="Displays teletext pages directly on VDR's OSD"
 url="https://github.com/vdr-projects/vdr-plugin-osdteletext"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -15,7 +15,7 @@ _plugname=${pkgname//vdr-/}
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vdr-projects/vdr-plugin-osdteletext/archive/v$pkgver.tar.gz"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-sha256sums=('ba4a1c1eb35480d30840179c0050aae780d44d4d3fa10c50a8df45105ee8d0db'
+sha256sums=('6a5ca0ee3e6513d43ef486ac5db390ef8c38ba24b23cec5b04d9e7907eec81d6'
             '8e1347177732fc334ab1f542f3e434728889c9006e211e9a7ff53c6cbc1ecb2e')
 
 build() {
