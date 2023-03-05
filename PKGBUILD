@@ -3,7 +3,7 @@
 _pkgname=maui-station
 pkgname=$_pkgname-git
 pkgver=2.2.2.r2.g83a1764
-pkgrel=2
+pkgrel=3
 pkgdesc='Convergent terminal emulator.'
 url='https://invent.kde.org/maui/station'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -12,7 +12,6 @@ depends=(kconfig
          kcoreaddons
          ki18n
          mauikit-terminal
-         qmltermwidget
          qt5-base
          qt5-declarative)
 makedepends=(git extra-cmake-modules)
