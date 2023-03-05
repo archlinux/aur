@@ -1,0 +1,59 @@
+From 0a14674f276b598d23353290635fc62f93e9ab30 Mon Sep 17 00:00:00 2001
+From: Peter Collingbourne <peter@pcc.me.uk>
+Date: Fri, 3 Dec 2021 14:48:57 -0500
+Subject: [PATCH] CodeGen: Strip exception specifications from function types
+ in CFI type names.
+
+With C++17 the exception specification has been made part of the
+function type, and therefore part of mangled type names.
+
+However, it's valid to convert function pointers with an exception
+specification to function pointers with the same argument and return
+types but without an exception specification, which means that e.g. a
+function of type "void () noexcept" can be called through a pointer
+of type "void ()". We must therefore consider the two types to be
+compatible for CFI purposes.
+
+We can do this by stripping the exception specification before mangling
+the type name, which is what this patch does.
+
+Differential Revision: https://reviews.llvm.org/D115015
+---
+ clang/lib/CodeGen/CodeGenModule.cpp          |  5 +++++
+ clang/test/CodeGenCXX/cfi-icall-noexcept.cpp | 11 +++++++++++
+ 2 files changed, 16 insertions(+)
+ create mode 100644 clang/test/CodeGenCXX/cfi-icall-noexcept.cpp
+
+diff --git a/clang/lib/CodeGen/CodeGenModule.cpp b/clang/lib/CodeGen/CodeGenModule.cpp
+index 9ba1a5c25e81a..39044617d6774 100644
+--- a/clang/lib/CodeGen/CodeGenModule.cpp
++++ b/clang/lib/CodeGen/CodeGenModule.cpp
+@@ -6398,6 +6398,11 @@ void CodeGenModule::EmitOMPThreadPrivateDecl(const OMPThreadPrivateDecl *D) {
+ llvm::Metadata *
+ CodeGenModule::CreateMetadataIdentifierImpl(QualType T, MetadataTypeMap &Map,
+                                             StringRef Suffix) {
++  if (auto *FnType = T->getAs<FunctionProtoType>())
++    T = getContext().getFunctionType(
++        FnType->getReturnType(), FnType->getParamTypes(),
++        FnType->getExtProtoInfo().withExceptionSpec(EST_None));
++
+   llvm::Metadata *&InternalId = Map[T.getCanonicalType()];
+   if (InternalId)
+     return InternalId;
+diff --git a/clang/test/CodeGenCXX/cfi-icall-noexcept.cpp b/clang/test/CodeGenCXX/cfi-icall-noexcept.cpp
+new file mode 100644
+index 0000000000000..eabc4862b4c52
+--- /dev/null
++++ b/clang/test/CodeGenCXX/cfi-icall-noexcept.cpp
+@@ -0,0 +1,11 @@
++// RUN: %clang_cc1 -triple x86_64-unknown-linux -fsanitize=cfi-icall -emit-llvm -std=c++17 -o - %s | FileCheck %s
++
++// Tests that exception specifiers are stripped when forming the
++// mangled CFI type name.
++
++void f() noexcept {}
++
++// CHECK: define{{.*}} void @_Z1fv({{.*}} !type [[TS1:![0-9]+]] !type [[TS2:![0-9]+]]
++
++// CHECK: [[TS1]] = !{i64 0, !"_ZTSFvvE"}
++// CHECK: [[TS2]] = !{i64 0, !"_ZTSFvvE.generalized"}
