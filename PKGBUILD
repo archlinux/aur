@@ -1,6 +1,7 @@
 # Maintainer: Zetta1 Reid0
 
 pkgname=xfdesktop-nothunar
+_pkgname=xfdesktop
 pkgver=4.18.1
 pkgrel=1
 pkgdesc="Xfce's desktop manager (Thunar Disabled)"
@@ -10,11 +11,11 @@ license=('GPL2')
 groups=('xfce4')
 depends=('libxfce4ui' 'libwnck3' 'exo' 'garcon' 'hicolor-icon-theme')
 makedepends=('intltool')
-source=(https://archive.xfce.org/src/xfce/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.bz2)
+source=(https://archive.xfce.org/src/xfce/xfdesktop/${pkgver%.*}/xfdesktop-$pkgver.tar.bz2)
 sha256sums=('ef9268190c25877e22a9ff5aa31cc8ede120239cb0dfca080c174e7eed4ff756')
 
 build() {
-  cd $pkgname-$pkgver
+  cd xfdesktop-$pkgver
 
   ./configure \
     --prefix=/usr \
@@ -26,7 +27,7 @@ build() {
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd xfdesktop-$pkgver
   make DESTDIR="$pkgdir" install
 }
 
