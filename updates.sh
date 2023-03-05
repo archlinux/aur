@@ -4,6 +4,8 @@ _version=$(git ls-remote --tags --refs --sort="version:refname" https://github.c
 _version=${_version##*/}
 _version=${_version%%-*}
 _version=${_version//v/}
+#override
+_version=1.3.4
 #Uncomment to use release candidates or pre-releases for testing
 #get release candidate version from source repo
 #_vrc=$(git ls-remote --tags --refs --sort="version:refname" https://github.com/skycoin/skywire.git | tail -n1 | grep -- -rc)

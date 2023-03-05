@@ -22,7 +22,7 @@ source=("${_source[@]}"
 noextract=(
 "${_binarchive}-amd64.tar.gz"
 "${_binarchive}-arm64.tar.gz"
-"${_binarchive}armhf.tar.gz"
+"${_binarchive}-armhf.tar.gz"
 "${_release_url}-arm.tar.gz"
 )
 sha256sums=('adaab458dd6b839b35bf1214a6e6c7d8eb4ecb475130bcd61d97c7357d05d63a'
@@ -33,10 +33,10 @@ sha256sums=('adaab458dd6b839b35bf1214a6e6c7d8eb4ecb475130bcd61d97c7357d05d63a'
             '44a25adf22c87bf7a2102a7fc1c9f566d239ef3f3d7b3dc2bcd0f2c632695a17'
             '8519d027325dcb34877bb5b0fb0c3c035d7589c0046b53935e2b949d436c4be3'
             '41c0a4a42ae64479b008392053f4a947618acd6bb9c3ed2672dafdb2453caa14'
-            'e210aed1ba304e6124740d414de09111126a8f8bfd2932af285ad8db8c9ab8e6'
-            '1e94ed5fc121453f09e4daec3b7e9f78764a5351c2b6b020c30f450f4f947d6c'
-            '68cbd2ebf00bdfdae706f56576fcae5c787d458446eb4b84b81a71c0728c78cf'
-            '92e920010e9cbe9b3b626f4be57088fe314a08f241b4cc31ac7d1783112cd027'
+            '1037ecc2df9e7a0f825db88f9fe5aee4450576511dc321f1b66b0cae4f5d54b6'
+            '5c2dbe82659dd36caa70073559801d40e81b00d3b786c130cc5390aacf6449f4'
+            '77060322651466a817150843312b0490d20314208992ab4eca0b181993c3093a'
+            '369a6ac68a9f81cbc049d0f3a239231b4eb880cbd33914eb9f7bb7d3487f9f8b'
             '7b17a55e64d1371fecd24edc3da7c6a762cf2b3d058f6fc4a5dc7c5f9b4cff09'
             '233ccf0e87b37e782828f53960e05e478cf381f61bbfdb16a0cc0254ee8be7c2')
 

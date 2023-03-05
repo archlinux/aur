@@ -3,8 +3,8 @@ pkgname=skywire-bin
 _pkgname=${pkgname/-bin/}
 _githuborg=skycoin
 pkgdesc="Skywire: Building a new Internet. Skycoin.com"
-pkgver='1.3.6'
-pkgrel=1
+pkgver='1.3.4'
+pkgrel=6
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
@@ -37,13 +37,13 @@ sha256sums=('adaab458dd6b839b35bf1214a6e6c7d8eb4ecb475130bcd61d97c7357d05d63a'
             '44a25adf22c87bf7a2102a7fc1c9f566d239ef3f3d7b3dc2bcd0f2c632695a17'
             '8519d027325dcb34877bb5b0fb0c3c035d7589c0046b53935e2b949d436c4be3'
             '41c0a4a42ae64479b008392053f4a947618acd6bb9c3ed2672dafdb2453caa14')
-sha256sums_x86_64=('e210aed1ba304e6124740d414de09111126a8f8bfd2932af285ad8db8c9ab8e6')
-sha256sums_aarch64=('1e94ed5fc121453f09e4daec3b7e9f78764a5351c2b6b020c30f450f4f947d6c')
-sha256sums_armv8=('1e94ed5fc121453f09e4daec3b7e9f78764a5351c2b6b020c30f450f4f947d6c')
-sha256sums_armv7=('68cbd2ebf00bdfdae706f56576fcae5c787d458446eb4b84b81a71c0728c78cf')
-sha256sums_armv7l=('68cbd2ebf00bdfdae706f56576fcae5c787d458446eb4b84b81a71c0728c78cf')
-sha256sums_armv7h=('68cbd2ebf00bdfdae706f56576fcae5c787d458446eb4b84b81a71c0728c78cf')
-sha256sums_arm=('92e920010e9cbe9b3b626f4be57088fe314a08f241b4cc31ac7d1783112cd027')
+sha256sums_x86_64=('1037ecc2df9e7a0f825db88f9fe5aee4450576511dc321f1b66b0cae4f5d54b6')
+sha256sums_aarch64=('5c2dbe82659dd36caa70073559801d40e81b00d3b786c130cc5390aacf6449f4')
+sha256sums_armv8=('5c2dbe82659dd36caa70073559801d40e81b00d3b786c130cc5390aacf6449f4')
+sha256sums_armv7=('77060322651466a817150843312b0490d20314208992ab4eca0b181993c3093a')
+sha256sums_armv7l=('77060322651466a817150843312b0490d20314208992ab4eca0b181993c3093a')
+sha256sums_armv7h=('77060322651466a817150843312b0490d20314208992ab4eca0b181993c3093a')
+sha256sums_arm=('369a6ac68a9f81cbc049d0f3a239231b4eb880cbd33914eb9f7bb7d3487f9f8b')
 #https://github.com/skycoin/skywire/releases/download/v1.2.1/skywire-v1.2.1-linux-amd64.tar.gz
 #https://github.com/skycoin/skywire/releases/download/v1.2.1/skywire-v1.2.1-linux-arm64.tar.gz
 #https://github.com/skycoin/skywire/releases/download/v1.2.1/skywire-v1.2.1-linux-armhf.tar.gz
