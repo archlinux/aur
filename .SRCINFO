@@ -1,6 +1,6 @@
 pkgbase = freenet
 	pkgdesc = A peer-to-peer platform for censorship-resistant communication and publishing
-	pkgver = 0.7.5.1496
+	pkgver = 0.7.5.1497
 	pkgrel = 1
 	url = https://freenetproject.org
 	install = freenet.install
@@ -14,9 +14,9 @@ pkgbase = freenet
 	depends = nss
 	depends = java-service-wrapper
 	backup = opt/freenet/wrapper.config
-	source = git+https://github.com/freenet/fred.git?signed#tag=build01496
-	source = git+https://github.com/freenet/plugin-WebOfTrust.git#branch=next
-	source = git+https://github.com/freenet/seedrefs.git
+	source = git+https://github.com/hyphanet/fred.git?signed#tag=build01497
+	source = git+https://github.com/hyphanet/plugin-WebOfTrust.git#branch=next
+	source = git+https://github.com/hyphanet/seedrefs.git
 	source = run.sh
 	source = wrapper.config
 	source = freenet.ini.dist

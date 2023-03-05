@@ -6,13 +6,13 @@
 
 # TODO: https://github.com/freenet/fred/pull/807
 
-_fred=build01496
+_fred=build01497
 _wot=next
 
 _plugins=('WebOfTrust')
 
 pkgname=freenet
-pkgver=0.7.5.1496
+pkgver=0.7.5.1497
 pkgrel=1
 pkgdesc="A peer-to-peer platform for censorship-resistant communication and publishing"
 url="https://freenetproject.org"
@@ -26,9 +26,9 @@ backup=('opt/freenet/wrapper.config')
 # https://freenetproject.org/assets/keyring.gpg
 validpgpkeys=('B30C3D91069F81ECFEFED0B1B41A6047FD6C57F9')
 
-source=("git+https://github.com/freenet/fred.git?signed#tag=$_fred"
-        "git+https://github.com/freenet/plugin-WebOfTrust.git#branch=$_wot"
-        "git+https://github.com/freenet/seedrefs.git"
+source=("git+https://github.com/hyphanet/fred.git?signed#tag=$_fred"
+        "git+https://github.com/hyphanet/plugin-WebOfTrust.git#branch=$_wot"
+        "git+https://github.com/hyphanet/seedrefs.git"
         'run.sh' 'wrapper.config' freenet.{ini.dist,service,tmpfiles})
 
 b2sums=('SKIP'
@@ -50,7 +50,7 @@ prepare() {
     cd fred
 
     # java 19 support
-    git pull -r -v https://github.com/skydrome/fred.git gradle-7.6-aur-1 -q
+    git pull -r -v https://github.com/skydrome/fred.git gradle-8.0-aur -q
 
     # create seednodes file for bootstrapping
     rm -f seednodes.fref
