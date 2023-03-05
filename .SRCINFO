@@ -1,6 +1,6 @@
 pkgbase = vdr-epg2vdr
 	pkgdesc = Used to retrieve EPG data into the VDR
-	pkgver = 1.2.12
+	pkgver = 1.2.14
 	pkgrel = 1
 	url = https://github.com/horchi/vdr-plugin-epg2vdr
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = vdr-epg2vdr
 	depends = vdr-api=2.6.3
 	backup = etc/vdr/conf.avail/50-epg2vdr.conf
 	backup = var/lib/vdr/plugins/epg2vdr/epg.dat
-	source = vdr-epg2vdr-1.2.12.tar.gz::https://github.com/horchi/vdr-plugin-epg2vdr/archive/refs/tags/1.2.12.tar.gz
-	sha256sums = f79e511702a92790940a5798b667ac419278cb73e6f0d67f61784b40203b525a
+	source = vdr-epg2vdr-1.2.14.tar.gz::https://github.com/horchi/vdr-plugin-epg2vdr/archive/refs/tags/1.2.14.tar.gz
+	sha256sums = c07370e226ebdfac3f09d6f2f4f7083825a603bd36fcf070f2cad5a74e360993
 
 pkgname = vdr-epg2vdr
