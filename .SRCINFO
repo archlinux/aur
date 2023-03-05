@@ -1,7 +1,7 @@
 pkgbase = js-design-appimage
 	pkgdesc = 即时设计 A professional UI design software tailored for Chinese designers.
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://js.design/
 	arch = x86_64
 	license = GPL3
