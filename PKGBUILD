@@ -1,26 +1,26 @@
 # Maintainer: Akira Fukushima <h3.poteto@gmail.com>
 pkgname=whalebird
-pkgver=4.7.4
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="An Electron based Mastodon, Pleroma and Misskey client"
 arch=('x86_64')
 url="https://whalebird.social"
 license=('MIT')
-depends=('electron19>=19.1.3' 'electron19<20.0.0')
+depends=('electron20>=20.3.10' 'electron20<21.0.0')
 makedepends=('yarn' 'tar' 'nodejs>=18.0.0')
 provides=('whalebird')
 cnflicts=('whalebird-bin' 'whalebird-desktop-git')
-source=("https://github.com/h3poteto/whalebird-desktop/archive/refs/tags/$pkgver.tar.gz"
+source=("https://github.com/h3poteto/whalebird-desktop/archive/refs/tags/v$pkgver.tar.gz"
         whalebird.desktop
         electron-builder.yml)
-md5sums=('cbb8596b41122d0dad34add6fb24f12d'
+md5sums=('3d755f27f5b25072ad2e278361237b56'
          '2cf7ef689d208d2fa41ce3622dce3545'
          '68af72623ba3763c9a1ea440b72a253d')
 
 prepare() {
   cd "whalebird-desktop-${pkgver}"
   rm -f electron-builder.json
-  _electronVersion="$(</usr/lib/electron19/version)"
+  _electronVersion="$(</usr/lib/electron20/version)"
   yarn upgrade "electron@$_electronVersion"
 }
 
@@ -28,7 +28,7 @@ build() {
   cp electron-builder.yml "whalebird-desktop-${pkgver}"/electron-builder.yml
   cd "whalebird-desktop-${pkgver}"
   make build
-  yarn exec electron-builder --linux --dir --config electron-builder.yml -c.electronDist=/usr/lib/electron19 -c.electronVersion="$_electronVersion"
+  yarn exec electron-builder --linux --dir --config electron-builder.yml -c.electronDist=/usr/lib/electron20 -c.electronVersion="$_electronVersion"
 }
 
 package() {
