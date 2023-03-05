@@ -9,8 +9,8 @@ pkgbase = msp430-elf-libstdc++
 	license = LGPL
 	depends = msp430-elf-newlib
 	depends = msp430-elf-binutils
-	depends = msp430-elf-gcc>=11.0.0
-	depends = msp430-elf-gcc<12.0.0
+	depends = msp430-elf-gcc>=12.0.0
+	depends = msp430-elf-gcc<13.0.0
 	depends = libmpc
 	depends = elfutils
 	depends = zlib
