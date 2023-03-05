@@ -1,6 +1,38 @@
 Version history
 ===============
 
+0.10.6
+------
+
+2023-02-04
+
+Fix #453: Added a separate resolution user option (two integers) for hardware
+fullscreen. Now, you can specify a windowed resolution and a hardware
+resolution separately from each other. Before, the same setting applied
+to both windowed mode and hardware fullscreen.
+
+Fix a backroute in Come on Down to My Place, in lemforum.
+
+Fix a backroute in Spin Me Around, in miniatures.
+
+Re-order miniatures for difficulty: Uprank Diodes and The Bottomless Closet.
+
+Added Shed of Presents, a multiplayer map for 2p and 6p.
+
+music/minim-mobius/meadow-sunrise.ogg: Removed wrongly looped initial segment.
+Before, the song started, then restarted after 2 seconds.
+
+Work around a Linux-only bug in Allegro 5.2.8: Software fullscreen failed
+to deduce the desktop resolution. Lix now passes the hardware fullscreen
+resolution user option to Allegro even when entering a software fullscreen.
+Without the bug, Allegro ingores the passed resolution and deduce the desktop
+resolution, but with the bug, you can now achieve the right resolution.
+The user option tooltip still claims that software fullscreen ignores the
+resolution user options because this bug is Linux-only, it's already fixed,
+and the bugfix will ship with the next stable Allegro 5 release.
+
+
+
 0.10.5
 ------
 
