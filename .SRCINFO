@@ -1,4 +1,4 @@
-pkgbase = gnome-critial-packages
+pkgbase = gnome-critical-packages
 	pkgdesc = Just a thing to protect GNOME's various packages
 	pkgver = 1.0
 	pkgrel = 1
