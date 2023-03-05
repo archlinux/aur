@@ -3,9 +3,9 @@ _pkgver_year=2023
 _pkgver_month=02
 _pkgver_day=27
 pkgname=sstools
-pkgver=0.4b
+pkgver=0.5b
 pkgrel=1
-pkgdesc="Make snapshots in a Btrfs filesystem."
+pkgdesc="KISS tools for make snapshots in a Btrfs filesystem."
 license=("GPLv3+")
 url="https://github.com/mdomlop/sstools"
 backup=('etc/sstab')
@@ -20,6 +20,6 @@ build() {
 
 package() {
 	cd $pkgname-$pkgver
-	make arch_install DESTDIR=$pkgdir
+	make install DESTDIR=$pkgdir
 }
-md5sums=('71ff0a1c6b111d2eeb2be5a01270a77d')
+md5sums=('bbbb0d9cc381b39d492a4480cd9e10c5')
