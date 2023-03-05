@@ -1,0 +1,14 @@
+pkgbase = r-showtextdb
+	pkgdesc = Font Files for the 'showtext' Package
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=showtextdb
+	arch = any
+	license = Apache
+	depends = r-sysfonts>=0.7
+	depends = r-utils
+	optdepends = r-curl
+	source = https://cran.microsoft.com/snapshot/2020-06-05/src/contrib/showtextdb_3.0.tar.gz
+	sha256sums = 027f5d0ab91eb27c72b6e918a2915b6087f7408b66c1630d69b3e507dd609642
+
+pkgname = r-showtextdb
