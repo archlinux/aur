@@ -1,4 +1,4 @@
-# Maintainer: wirlaburla <wirlaburla@worlio.com>
+# Maintainer: Nick G. <wirlaburla@worlio.com>
 
 pkgname=trakker-git
 pkgver=0.3.0.r1.ge275e29
