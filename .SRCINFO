@@ -1,7 +1,7 @@
 pkgbase = bareos
 	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced
 	pkgver = 22.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.bareos.org
 	arch = i686
 	arch = x86_64
@@ -276,6 +276,7 @@ pkgname = bareos-webui-apache
 	depends = php-apache
 	depends = php
 	depends = php-fpm
+	depends = php-pgsql
 	backup = etc/httpd/conf/extra/bareos-webui.conf
 
 pkgname = bareos-webui-nginx
@@ -284,6 +285,7 @@ pkgname = bareos-webui-nginx
 	depends = nginx
 	depends = php
 	depends = php-fpm
+	depends = php-pgsql
 	backup = etc/nginx/bareos-webui.conf
 
 pkgname = bareos-devel

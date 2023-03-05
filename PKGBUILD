@@ -50,7 +50,7 @@ pkgname=("bareos-bconsole"
 
 pkgver=22.0.2
 pkgmajor=${pkgver%%.*}
-pkgrel=2
+pkgrel=3
 arch=(i686 x86_64 armv7h aarch64)
 groups=('bareos')
 pkgdesc="Bareos - Backup Archiving Recovery Open Sourced"
@@ -606,6 +606,7 @@ package_bareos-storage() {
   install=bareos-storage.install
   for f in \
      usr/lib/bareos/plugins/autoxflate-sd.so \
+     usr/lib/bareos/backends/libbareossd-file.so* \
      usr/lib/bareos/scripts/disk-changer \
      usr/share/bareos/config/bareos-sd.d/device/FileStorage.conf \
      usr/share/bareos/config/bareos-sd.d/director/bareos-dir.conf \
@@ -614,7 +615,7 @@ package_bareos-storage() {
      usr/share/bareos/config/bareos-sd.d/storage/bareos-sd.conf \
      usr/share/bareos/config/tray-monitor.d/storage/StorageDaemon-local*.conf \
      usr/bin/bareos-sd \
-     usr/share/man/man8/bareos-sd.8 \
+     usr/share/man/man8/bareos-sd.8* \
      usr/lib/systemd/system/bareos-sd.service \
      +var/lib/bareos/storage \
   ; do
@@ -854,7 +855,7 @@ package_bareos-webui() {
 package_bareos-webui-apache() {
   arch=(any)
   pkgdesc="${pkgdesc} - Webui Apache"
-  depends=('apache' 'php-apache' 'php' 'php-fpm')
+  depends=('apache' 'php-apache' 'php' 'php-fpm' 'php-pgsql')
   backup=('etc/httpd/conf/extra/bareos-webui.conf')
 
   for f in \
@@ -868,7 +869,7 @@ package_bareos-webui-apache() {
 package_bareos-webui-nginx() {
   arch=(any)
   pkgdesc="${pkgdesc} - Webui nginx"
-  depends=('nginx' 'php' 'php-fpm')
+  depends=('nginx' 'php' 'php-fpm' 'php-pgsql')
   backup=('etc/nginx/bareos-webui.conf')
 
   mkdir -p "$pkgdir"/etc/nginx
