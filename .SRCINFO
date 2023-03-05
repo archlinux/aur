@@ -1,0 +1,18 @@
+pkgbase = perl-test-mocktime-hires
+	pkgdesc = Replaces actual time with simulated high resolution time
+	pkgver = 0.08
+	pkgrel = 1
+	url = https://metacpan.org/dist/Test-MockTime-HiRes
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-class
+	checkdepends = perl-test-requires
+	checkdepends = perl-anyevent
+	makedepends = perl-module-build-tiny
+	depends = perl-test-mocktime
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/T/TA/TARAO/Test-MockTime-HiRes-0.08.tar.gz
+	md5sums = ba664276b7540ed5f8f76fc68f5f75be
+
+pkgname = perl-test-mocktime-hires
