@@ -17,5 +17,5 @@ source=("https://www.biologiaevolutiva.org/jcastresana/${_pkgname}/${_pkgname}_L
 sha256sums=('563658f03cc5e76234a8aa705bdc149398defec813d3a0c172b5f94c06c880dc')
 package() {
   install -Dm755 ${_pkgname}_$pkgver/$_pkgname "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 ${_pkgname}_$pkgver/$_pkgname/Documentation/Gblocks_documentation.html  $pkgdir/usr/share/doc/$_pkgname/Gblocks_documentation.html
+  install -Dm644 ${_pkgname}_$pkgver/Documentation/Gblocks_documentation.html  $pkgdir/usr/share/doc/$_pkgname/Gblocks_documentation.html
 }
