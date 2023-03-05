@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-moox-types-mooselike-numeric'
-pkgver='1.02'
+pkgver='1.03'
 pkgrel='1'
 pkgdesc="Moo types for numbers"
 arch=('any')
@@ -12,10 +12,9 @@ depends=('perl-moox-types-mooselike>=0.23')
 makedepends=()
 checkdepends=('perl-test-fatal>=0.003')
 url='https://metacpan.org/release/MooX-Types-MooseLike-Numeric'
-source=('http://search.cpan.org/CPAN/authors/id/M/MA/MATEU/MooX-Types-MooseLike-Numeric-1.02.tar.gz')
-md5sums=('5690122ad6dee3cd36db5532b686094d')
-sha512sums=('d1df24ea1a9a59c0ffeb828c541a2cab562b2e95582991ca7b594de200ccc725309b0585adb3392b9c746d34bca243ed606e1a835e07a4dd91c5e3eb84050dc3')
-_distdir="MooX-Types-MooseLike-Numeric-1.02"
+source=('http://search.cpan.org/CPAN/authors/id/M/MA/MATEU/MooX-Types-MooseLike-Numeric-1.03.tar.gz')
+md5sums=('0877534ebf63a21bab182f266076fb97')
+_distdir="MooX-Types-MooseLike-Numeric-1.03"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
