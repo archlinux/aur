@@ -5,7 +5,7 @@ pkgname='ddev-edge-bin'
 pkgver=1.21.5
 pkgrel=1
 pkgdesc='DDEV: a local web development environment (edge)'
-url='https://github.com/drud/ddev'
+url='https://github.com/ddev/ddev'
 arch=('aarch64' 'x86_64')
 license=('Apache 2')
 provides=('ddev')
@@ -13,11 +13,11 @@ conflicts=('ddev')
 depends=('docker')
 optdepends=('bash-completion: subcommand completion support')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/drud/ddev/releases/download/v1.21.5-alpha1/ddev_linux-arm64.v1.21.5-alpha1.tar.gz")
-sha256sums_aarch64=('247f4a1b83bbf165c3a74f773bec049463c013e7678eb7a2804a984454a663d9')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ddev/ddev/releases/download/v1.21.5-rc1/ddev_linux-arm64.v1.21.5-rc1.tar.gz")
+sha256sums_aarch64=('c4c030c946732d1e75011e5da095af73403ff2084d6326af1474970f6d114234')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/drud/ddev/releases/download/v1.21.5-alpha1/ddev_linux-amd64.v1.21.5-alpha1.tar.gz")
-sha256sums_x86_64=('62829e26a0288f18c4fd2d8a1e8997d130c6692cda3a6e0469524298ea333e28')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ddev/ddev/releases/download/v1.21.5-rc1/ddev_linux-amd64.v1.21.5-rc1.tar.gz")
+sha256sums_x86_64=('7ce00b0859a8b6d06c5ba471ddedbe4bbfb285213fe4e56d2a74460273f8058a')
 
 package() {
   # bin
