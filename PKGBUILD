@@ -1,7 +1,7 @@
 # Maintainer: witcher <witcher@wiredspace.de>
 
 pkgname="rss-email"
-pkgver=0.4.1
+pkgver=v0.4.3
 pkgrel=1
 pkgdesc="Send new RSS/Atom posts as email"
 arch=('x86_64')
