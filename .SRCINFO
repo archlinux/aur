@@ -4,6 +4,7 @@ pkgbase = xinit-xsession
 	pkgrel = 5
 	arch = any
 	license = GPL3
+	depends = coreutils
 	depends = sh
 	provides = xinit-xsession
 	source = xinitrcsession-helper
