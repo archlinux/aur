@@ -17,8 +17,8 @@ _version=${_version//v/}
 #	_vrc="-${_vrc##*-}"
 #fi
 source PKGBUILD
-_prel="$(curl -s https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=${pkgname} | grep pkgrel | cut -d "=" -f2)"
-if [[ -z _prelnew ]] ; then
+_prel="$(curl -s https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=${pkgname} | grep pkgrel | cut -d "=" -f2 | tr -d "'")"
+if [[ -z $_prelnew ]] ; then
 _prelnew=$_prel
 let _prelnew++
 fi
