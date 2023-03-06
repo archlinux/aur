@@ -35,3 +35,5 @@ source PKGBUILD && echo "pkgver=${pkgver}" && echo "pkgrel=${pkgrel}"
 echo
 echo "git add -f " *PKGBUILD " .SRCINFO skywire-autoconfig " *.desktop *.png *.service *.sh *.conf *.install
 echo 'git commit -m " "'
+echo "aurpublish ${pkgname}"
+echo "git push"

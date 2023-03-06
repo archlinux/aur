@@ -76,13 +76,13 @@ if [[ ${?} == 0 ]]; then
 _msg2 "skycoin reward address:
 ${_green}$(skywire-cli reward -r)${_nc}"
 else
-  if [[ $(uname -m) == *"arm"* ]]; then
+#  if [[ $(uname -m) == *"arm"* ]]; then
     _msg2 "reward eligibility rules:
 ${_yellow}https://github.com/skycoin/skywire/blob/develop/mainnet_rules.md${_nc}"
     _msg2 "set your skycoin reward address:
 ${_cyan}skywire-cli ${_yellow}reward ${_green}<skycoin-address>${_nc}"
   fi
-fi
+#fi
 	_msg2 "track uptime:
   ${_blue}http://ut.skywire.skycoin.com/uptimes${_nc}
   ${_blue}http://ut.skywire.skycoin.com/uptimes?v=v2${_nc}"

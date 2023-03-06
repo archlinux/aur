@@ -25,7 +25,7 @@ noextract=(
 "${_binarchive}-armhf.tar.gz"
 "${_binarchive}-arm.tar.gz"
 )
-sha256sums=('21775a1917f7fabea78d2b631a70c6989b910ee191b822c65fb6f290458dbced'
+sha256sums=('a55c345c144f18a1a58161630635aa08c7ff6cd4a73752368d0eaa43ecf7af92'
             '40c80ccce9e89ae559050b943be1f09d905476c614a72d74fac2a58c821ac058'
             '00da5a9afdf5a8c7033978d2074039ba1ff7bc7a7221fbd278eb1270bdeb8eae'
             'ec24750a99f5cda8d8a8dc94743943218e1b2088c2b2c7dc1644ee78d954fe7e'
