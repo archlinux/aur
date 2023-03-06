@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=kbs2-bin
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="A secret manager backed by age"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('libx11' 'gcc-libs')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("$url/releases/download/v$pkgver/${pkgname%-bin}-linux-v${pkgver}.tar.gz")
-sha256sums_x86_64=('2002e0af0f0d457a0d2993b0bd6ffbee73b6ef56519f6dfde2fa184840152796')
+sha256sums_x86_64=('3f190653fc4dfad9461b57e688b15e12835ce9d9bb6ae15df83373ab127fb8f8')
 
 package() {
   install -Dm 755 "${pkgname%-bin}" -t "${pkgdir}/usr/bin"
