@@ -4,11 +4,10 @@
 
 _pkgname=Qogir-theme
 _pkgver=2023-02-27
-_pkgbase='qogir-gtk-theme'
-pkgbase="qogir-gtk-theme-base"
+pkgbase="qogir-gtk-theme"
 pkgname=("qogir-gtk-theme" "qogir-gtk2-theme")
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=5
 pkgdesc="Qogir is a flat Design theme for GTK"
 arch=('any')
 url="https://github.com/vinceliuice/Qogir-theme"
@@ -21,9 +20,10 @@ optdepends=(
     'tela-icon-theme: Recommended icon theme'
 )
 backup=(etc/qogir-gtk-theme/options.txt)
+install="${pkgbase}.install"
 options=('!strip')
 source=(
-    "$_pkgbase-$pkgver.tar.gz::https://github.com/vinceliuice/$_pkgname/archive/$_pkgver.tar.gz"
+    "$pkgbase-$pkgver.tar.gz::https://github.com/vinceliuice/$_pkgname/archive/$_pkgver.tar.gz"
     "options.txt"
 )
 sha256sums=('211d2d7e027fe595e7512ca346b63a9314ee59e3ddee875bc1c06aeef9e5b9bb'
@@ -38,10 +38,11 @@ packaging() {
         --invert-match '^\s*$|#.+' \
         "/${backup[0]}" || echo -n '--theme all --tweaks image square round --icon arch')"
 
-    cd "$_pkgname-$_pkgver" || return 1
+    install -Dm644 "$srcdir/options.txt" -t "$pkgdir/${backup[0]/%options.txt/}"
     install -dm755 "$pkgdir/usr/share/themes"
-    install -D --mode=644 "$srcdir/options.txt" --target-directory="$pkgdir/${backup[0]}"
+    cd "$_pkgname-$_pkgver"
     ./install.sh ${INSTALL_OPTS//--logo/--icon} --dest "$pkgdir/usr/share/themes"
+    install -D ./install.sh -t "$pkgdir/usr/bin/${pkgname}/"
 }
 
 package_qogir-gtk-theme() {

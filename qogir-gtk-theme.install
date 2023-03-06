@@ -1,0 +1,3 @@
+pre_remove() {
+	/usr/bin/qogir-gtk-theme/install.sh --uninstall --libadwaita
+}
