@@ -140,7 +140,7 @@ pkgbase = ffmpeg-nonvidia
 	provides = libpostproc.so
 	provides = libswresample.so
 	provides = libswscale.so
-	options = debug
+	conflicts = ffmpeg
 	source = git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=3949db4d261748a9f34358a388ee255ad1a7f0c0
 	source = 010-ffmpeg-add-svt-hevc-geb24a06.patch::https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/eb24a06ba4ee4948f219a3246b88439a8090bd37/ffmpeg_plugin/master-0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch
 	source = 030-ffmpeg-add-svt-vp9-gaaa8140.patch::https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/aaa8140c8cdf6c073eaa6aaa5d003d1535fd0059/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch
