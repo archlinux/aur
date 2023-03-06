@@ -1,0 +1,18 @@
+pkgbase = ignition-tools-1
+	pkgdesc = Command line tools for the Gazebo libraries
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://gazebosim.org/libs/tools
+	arch = any
+	license = Apache
+	makedepends = cmake
+	makedepends = ignition-cmake
+	makedepends = doxygen
+	makedepends = pkg-config
+	makedepends = ruby-ronn
+	depends = ruby
+	provides = ignition-tools=1
+	source = https://github.com/gazebosim/gz-tools/archive/ignition-tools_1.5.0.tar.gz
+	sha256sums = cc99189063b6556e539836a438bdbb9da6eca1fe95a7058d46bfc17debc3d8f5
+
+pkgname = ignition-tools-1
