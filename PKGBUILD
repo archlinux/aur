@@ -4,14 +4,14 @@
 ## GPG key: https://github.com/web-flow.gpg
 
 pkgname=fastly
-pkgver=4.2.0
+pkgver=7.0.1
 pkgrel=1
 pkgdesc='CLI for the Fastly platform'
 url='https://github.com/fastly/cli'
 arch=('aarch64' 'i686' 'x86_64')
 license=('Apache')
 depends=('glibc')
-makedepends=('git' 'go')
+makedepends=('git' 'go' 'tomlq')
 changelog=CHANGELOG.md
 source=("$pkgname::git+$url#tag=v$pkgver?signed")
 sha256sums=('SKIP')
@@ -48,5 +48,5 @@ check() {
 
 package() {
 	cd "$pkgname"
-	install -D fastly -t "$pkgdir/usr/bin/"
+	install -Dv fastly -t "$pkgdir/usr/bin/"
 }

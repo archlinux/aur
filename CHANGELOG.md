@@ -1,5 +1,371 @@
 # Changelog
 
+## [v7.0.1](https://github.com/fastly/cli/releases/tag/v7.0.1) (2023-03-02)
+
+[Full Changelog](https://github.com/fastly/cli/compare/v7.0.0...v7.0.1)
+
+**Bug fixes:**
+
+* fix(compute/build): move log calls before subprocess call [#847](https://github.com/fastly/cli/pull/847)
+* fix(compute/serve): ensure spinner is closed for all logic branches [#849](https://github.com/fastly/cli/pull/849)
+
+**Enhancements:**
+
+* feat(dict/create): display dictionary ID on creation [#848](https://github.com/fastly/cli/pull/848)
+* refactor: clean-up nil error checks [#851](https://github.com/fastly/cli/pull/851)
+
+## [v7.0.0](https://github.com/fastly/cli/releases/tag/v7.0.0) (2023-02-23)
+
+[Full Changelog](https://github.com/fastly/cli/compare/v6.0.6...v7.0.0)
+
+**Breaking:**
+
+There are a couple of small breaking changes to the CLI.
+
+Prior versions of the CLI would consult the following files to ignore specific files while running `compute serve --watch`:
+
+- `.ignore`
+- `.gitignore`
+- The user's global git ignore configuration
+
+We are dropping support for these files and will instead consult `.fastlyignore`, which is already used by `compute build`.
+
+We've removed support for the `logging logentries` subcommand as the third-party logging product has been deprecated.
+
+* fix(compute/serve): replace separate ignore files with `.fastlyignore` [#834](https://github.com/fastly/cli/pull/834)
+* breaking(logging): remove logentries [#835](https://github.com/fastly/cli/pull/835)
+
+**Bug fixes:**
+
+* fix(compute/build): ignore all files except manifest and wasm binary [#836](https://github.com/fastly/cli/pull/836)
+* fix(compute/serve): output rendering [#839](https://github.com/fastly/cli/pull/839)
+* Fix compute build rendered output [#842](https://github.com/fastly/cli/pull/842)
+
+**Enhancements:**
+
+* use secret store client keys when creating secret store entries [#805](https://github.com/fastly/cli/pull/805)
+* fix(compute/serve): check for missing override_host [#832](https://github.com/fastly/cli/pull/832)
+* feat(resource-link): Add Service Resource commands [#800](https://github.com/fastly/cli/pull/800)
+* Replace custom spinner with less buggy third-party package [#838](https://github.com/fastly/cli/pull/838)
+* refactor(spinner): hide `...` after spinner has stopped [#840](https://github.com/fastly/cli/pull/840)
+* fix(compute/serve): make override_host a default behaviour [#843](https://github.com/fastly/cli/pull/843)
+
+**Dependencies:**
+
+* build(deps): bump golang.org/x/net from 0.2.0 to 0.7.0 [#830](https://github.com/fastly/cli/pull/830)
+* build(deps): bump github.com/fastly/go-fastly/v7 from 7.2.0 to 7.3.0 [#831](https://github.com/fastly/cli/pull/831)
+
+**Clean-ups:**
+
+* refactor: linter issues resolved [#833](https://github.com/fastly/cli/pull/833)
+
+## [v6.0.6](https://github.com/fastly/cli/releases/tag/v6.0.6) (2023-02-15)
+
+[Full Changelog](https://github.com/fastly/cli/compare/v6.0.5...v6.0.6)
+
+**Bug fixes:**
+
+* build(goreleaser): build with explicit `CGO_ENABLED=0` [#826](https://github.com/fastly/cli/pull/826)
+
+## [v6.0.5](https://github.com/fastly/cli/releases/tag/v6.0.5) (2023-02-15)
+
+[Full Changelog](https://github.com/fastly/cli/compare/v6.0.4...v6.0.5)
+
+**Enhancements:**
+
+* fix(dns): migrate to go1.20 [#824](https://github.com/fastly/cli/pull/824)
+
+## [v6.0.4](https://github.com/fastly/cli/releases/tag/v6.0.4) (2023-02-13)
+
+[Full Changelog](https://github.com/fastly/cli/compare/v6.0.3...v6.0.4)
+
+**Bug fixes:**
+
+* fix(compute/build): only use default build script if none defined [#814](https://github.com/fastly/cli/pull/814)
+* fix(compute/deploy): replace spinner implementation [#820](https://github.com/fastly/cli/pull/820)
+
+**Enhancements:**
+
+* fix(compute/build): ensure build output doesn't show unless --verbose is set [#815](https://github.com/fastly/cli/pull/815)
+
+**Documentation:**
+
+* docs: remove --skip-verification [#816](https://github.com/fastly/cli/pull/816)
+
+**Dependencies:**
+
+* build(deps): bump github.com/fastly/go-fastly/v7 from 7.1.0 to 7.2.0 [#819](https://github.com/fastly/cli/pull/819)
+* build(deps): bump github.com/getsentry/sentry-go from 0.17.0 to 0.18.0 [#818](https://github.com/fastly/cli/pull/818)
+* build(deps): bump golang.org/x/term from 0.4.0 to 0.5.0 [#817](https://github.com/fastly/cli/pull/817)
+
+## [v6.0.3](https://github.com/fastly/cli/releases/tag/v6.0.3) (2023-02-09)
+
+[Full Changelog](https://github.com/fastly/cli/compare/v6.0.2...v6.0.3)
+
+**Bug fixes:**
+
+* fix(compute/setup): fix duplicated domains [#808](https://github.com/fastly/cli/pull/808)
+* fix(setup/domain): allow user to correct a domain already in use [#811](https://github.com/fastly/cli/pull/811)
+
+**Enhancements:**
+
+* build(goreleaser): replace deprecated flag [#807](https://github.com/fastly/cli/pull/807)
+* refactor: add type annotations [#809](https://github.com/fastly/cli/pull/809)
+* build(lint): implement semgrep for local validation [#810](https://github.com/fastly/cli/pull/810)
+
+## [v6.0.2](https://github.com/fastly/cli/releases/tag/v6.0.2) (2023-02-08)
+
+[Full Changelog](https://github.com/fastly/cli/compare/v6.0.1...v6.0.2)
+
+**Bug fixes:**
+
+* fix(compute/build): ensure we only parse stdout from cargo command [#804](https://github.com/fastly/cli/pull/804)
+
+## [v6.0.1](https://github.com/fastly/cli/releases/tag/v6.0.1) (2023-02-08)
+
+[Full Changelog](https://github.com/fastly/cli/compare/v6.0.0...v6.0.1)
+
+**Enhancements:**
+
+* refactor(compute): add command output when there is an error [#801](https://github.com/fastly/cli/pull/801)
+
+## [v6.0.0](https://github.com/fastly/cli/releases/tag/v6.0.0) (2023-02-07)
+
+[Full Changelog](https://github.com/fastly/cli/compare/v5.1.1...v6.0.0)
+
+**Breaking:**
+
+There are three breaking changes in this release.
+
+The first comes from the removal of logic related to user environment 
+validation. This logic existed as an attempt to reduce the number of possible 
+errors when trying to compile a Compute project. The reality was that this 
+validation logic was tightly coupled to specific expectations of the CLI 
+(and of its starter kits) and consequently resulted in errors that were often 
+difficult to understand and debug, as well as restricting users from using their 
+own tools and scripts. By simplifying the logic flow we hope to reduce friction 
+for users who want to switch the tooling used, as well as reduce the general 
+confusion caused for users when there are environment validation errors, while 
+also reducing the maintenance overhead for contributors to the CLI code base.
+This change has meant we no longer need to define a `--skip-validation` flag and 
+that resulted in a breaking interface change.
+
+The second breaking change is to the `objectstore` command. This has now been 
+renamed to `object-store`. Additionally, there is no `keys`, `get` or `insert` 
+commands for manipulating the object-store entries. These operations have been 
+moved to a separate subcommand `object-store-entry` as this keeps the naming and 
+structural convention consistent with ACLs and Edge Dictionaries.
+
+The third breaking change is to Edge Dictionaries, which sees the
+`dictionary-item` subcommand renamed to `dictionary-entry`, again for
+consistency with other similar subcommands.
+
+* Remove user environment validation logic [#785](https://github.com/fastly/cli/pull/785)
+* Rework objectstore subcommand [#792](https://github.com/fastly/cli/pull/792)
+* Rename object store 'keys' to 'entry' for consistency [#795](https://github.com/fastly/cli/pull/795)
+* refactor(dictionaryitem): rename from item to entry [#798](https://github.com/fastly/cli/pull/798)
+
+**Bug fixes:**
+
+* Fix description in the manifest [#788](https://github.com/fastly/cli/pull/788)
+
+**Enhancements:**
+
+* Update `local_server` object and secret store formats [#789](https://github.com/fastly/cli/pull/789)
+
+**Clean-ups:**
+
+* refactor: move global struct and config.Source types into separate packages [#796](https://github.com/fastly/cli/pull/796)
+* refactor(secretstore): divide command files into separate packages [#797](https://github.com/fastly/cli/pull/797)
+
+## [v5.1.1](https://github.com/fastly/cli/releases/tag/v5.1.1) (2023-02-01)
+
+[Full Changelog](https://github.com/fastly/cli/compare/v5.1.0...v5.1.1)
+
+**Bug fixes:**
+
+* fix(compute/build): AssemblyScript bugs [#786](https://github.com/fastly/cli/pull/786)
+
+**Dependencies:**
+
+* Bump github.com/fatih/color from 1.14.0 to 1.14.1 [#783](https://github.com/fastly/cli/pull/783)
+
+## [v5.1.0](https://github.com/fastly/cli/releases/tag/v5.1.0) (2023-01-27)
+
+[Full Changelog](https://github.com/fastly/cli/compare/v5.0.0...v5.1.0)
+
+**Enhancements:**
+
+* Add Secret Store support [#717](https://github.com/fastly/cli/pull/717)
+* refactor(compute/deploy): reduce size of `Exec()` [#775](https://github.com/fastly/cli/pull/775)
+* refactor(compute/deploy): add messaging to explain `[setup]` [#779](https://github.com/fastly/cli/pull/779)
+
+**Bug fixes:**
+
+* fix(objectstore/get): output value unless verbose/json flag passed [#774](https://github.com/fastly/cli/pull/774)
+* fix(compute/init): add warning for paths with spaces [#778](https://github.com/fastly/cli/pull/778)
+* fix(compute/deploy): clean-up new service creation on-error [#776](https://github.com/fastly/cli/pull/776)
+
+**Dependencies:**
+
+* Bump github.com/fatih/color from 1.13.0 to 1.14.0 [#772](https://github.com/fastly/cli/pull/772)
+
+## [v5.0.0](https://github.com/fastly/cli/releases/tag/v5.0.0) (2023-01-19)
+
+[Full Changelog](https://github.com/fastly/cli/compare/v4.6.2...v5.0.0)
+
+**Breaking:**
+
+The `objectstore` command was incorrectly configured to have a long flag using 
+a single character (e.g. `--k` and `--v`). These were corrected to `--key` and
+`--value` (and a short flag variant for `-k` was added as well).
+
+* feat(objectstore): add --json support to keys/list subcommands [#762](https://github.com/fastly/cli/pull/762)
+* feat(objectstore/get): implement --json flag for getting key value [#763](https://github.com/fastly/cli/pull/763)
+
+**Enhancements:**
+
+* feat(compute/deploy): add Object Store to manifest [setup] [#764](https://github.com/fastly/cli/pull/764)
+* feat(compute/build): support locating language manifests outside project directory [#765](https://github.com/fastly/cli/pull/765)
+* feat(compute/serve): implement --watch-dir flag [#758](https://github.com/fastly/cli/pull/758)
+
+**Bug fixes:**
+
+* fix(setup): object_store needs to be linked to service [#767](https://github.com/fastly/cli/pull/767)
+
+**Dependencies:**
+
+* Bump github.com/getsentry/sentry-go from 0.16.0 to 0.17.0 [#759](https://github.com/fastly/cli/pull/759)
+
+## [v4.6.2](https://github.com/fastly/cli/releases/tag/v4.6.2) (2023-01-12)
+
+[Full Changelog](https://github.com/fastly/cli/compare/v4.6.1...v4.6.2)
+
+**Bug fixes:**
+
+* fix(pkg/commands/compute/serve): prevent 386 arch users executing command [#753](https://github.com/fastly/cli/pull/753)
+* build(goreleaser): fix Windows archive generation to include zips [#756](https://github.com/fastly/cli/pull/756)
+
+**Dependencies:**
+
+* Bump golang.org/x/term from 0.3.0 to 0.4.0 [#754](https://github.com/fastly/cli/pull/754)
+
+## [v4.6.1](https://github.com/fastly/cli/releases/tag/v4.6.1) (2023-01-05)
+
+[Full Changelog](https://github.com/fastly/cli/compare/v4.6.0...v4.6.1)
+
+**Bug fixes:**
+
+* fix(pkg/commands/vcl/snippet): set default dynamic value [#751](https://github.com/fastly/cli/pull/751)
+
+**Dependencies:** 
+
+* Bump github.com/mattn/go-isatty from 0.0.16 to 0.0.17 [#748](https://github.com/fastly/cli/pull/748)
+
+**Enhancements:**
+
+* build(makefile): add goreleaser target for testing builds locally [#750](https://github.com/fastly/cli/pull/750)
+
+## [v4.6.0](https://github.com/fastly/cli/releases/tag/v4.6.0) (2023-01-03)
+
+[Full Changelog](https://github.com/fastly/cli/compare/v4.5.0...v4.6.0)
+
+**Bug fixes:**
+
+* vcl/snippet: pass AllowActiveLocked if --dynamic was passed [#742](https://github.com/fastly/cli/pull/742)
+
+**Dependencies:** 
+
+* Bump goreleaser/goreleaser-action from 3 to 4 [#746](https://github.com/fastly/cli/pull/746)
+
+**Enhancements:**
+
+* Use DevHub endpoint for acquiring CLI/Viceroy metadata [#739](https://github.com/fastly/cli/pull/739)
+
+## [v4.5.0](https://github.com/fastly/cli/releases/tag/v4.5.0) (2022-12-15)
+
+[Full Changelog](https://github.com/fastly/cli/compare/v4.4.1...v4.5.0)
+
+**Documentation:**
+
+* docs(pkg/compute): remove PLC labels from supported languages [#740](https://github.com/fastly/cli/pull/740)
+
+**Enhancements:**
+
+* refactor(pkg/commands/update): move versioner logic to separate package [#735](https://github.com/fastly/cli/pull/735)
+* fix(compute): don't validate js-compute-runtime binary location [#731](https://github.com/fastly/cli/pull/731)
+* Link to Starter Kits during compute init [#730](https://github.com/fastly/cli/pull/730)
+* Update tinygo default build command [#727](https://github.com/fastly/cli/pull/727)
+* CI/Dockerfiles: minor dockerfiles improvements [#722](https://github.com/fastly/cli/pull/722)
+* Switch JavaScript build script based on webpack in package.json prebuild [#728](https://github.com/fastly/cli/pull/728)
+* Add support for TOML secret_store section [#726](https://github.com/fastly/cli/pull/726)
+
+**Dependencies:** 
+
+* Bump golang.org/x/term from 0.2.0 to 0.3.0 [#733](https://github.com/fastly/cli/pull/733)
+* Bump github.com/getsentry/sentry-go from 0.15.0 to 0.16.0 [#734](https://github.com/fastly/cli/pull/734)
+* Bump github.com/Masterminds/semver/v3 from 3.1.1 to 3.2.0 [#724](https://github.com/fastly/cli/pull/724)
+
+## [v4.4.1](https://github.com/fastly/cli/releases/tag/v4.4.1) (2022-12-02)
+
+[Full Changelog](https://github.com/fastly/cli/compare/v4.4.0...v4.4.1)
+
+**Bug fixes:**
+
+* Avoid sending empty string to Backend create API [#720](https://github.com/fastly/cli/pull/720)
+
+## [v4.4.0](https://github.com/fastly/cli/releases/tag/v4.4.0) (2022-11-29)
+
+[Full Changelog](https://github.com/fastly/cli/compare/v4.3.0...v4.4.0)
+
+**Enhancements:**
+
+* Add `PrintLines` to `text` package and use in logging [#698](https://github.com/fastly/cli/pull/698)
+* Add dependabot workflow automation for updating dependency [#701](https://github.com/fastly/cli/pull/701)
+* Add account name to pubsub and bigquery [#699](https://github.com/fastly/cli/pull/699)
+
+**Bug fixes:**
+
+* Add missing `--help` flag to globals [#695](https://github.com/fastly/cli/pull/695)
+* Fix check for mutual exclusion flags [#696](https://github.com/fastly/cli/pull/696)
+* Fix object store TOML definitions, add test data [#715](https://github.com/fastly/cli/pull/715)
+
+**Dependencies:**
+
+* Bump github.com/otiai10/copy from 1.7.0 to 1.9.0 [#706](https://github.com/fastly/cli/pull/706)
+* Bump github.com/mholt/archiver/v3 from 3.5.0 to 3.5.1 [#703](https://github.com/fastly/cli/pull/703)
+* Bump github.com/fastly/go-fastly/v6 from 6.6.0 to 6.8.0 [#704](https://github.com/fastly/cli/pull/704)
+* Bump github.com/mattn/go-isatty from 0.0.14 to 0.0.16 [#702](https://github.com/fastly/cli/pull/702)
+* Bump github.com/google/go-cmp from 0.5.6 to 0.5.9 [#708](https://github.com/fastly/cli/pull/708)
+* Bump github.com/mitchellh/mapstructure from 1.4.3 to 1.5.0 [#709](https://github.com/fastly/cli/pull/709)
+* Bump github.com/bep/debounce from 1.2.0 to 1.2.1 [#711](https://github.com/fastly/cli/pull/711)
+* Bump github.com/getsentry/sentry-go from 0.12.0 to 0.15.0 [#712](https://github.com/fastly/cli/pull/712)
+* Bump github.com/pelletier/go-toml from 1.9.3 to 1.9.5 [#710](https://github.com/fastly/cli/pull/710)
+* Bump go-fastly to v7 [#707](https://github.com/fastly/cli/pull/707)
+* Bump github.com/fsnotify/fsnotify from 1.5.1 to 1.6.0 [#716](https://github.com/fastly/cli/pull/716)
+
+## [v4.3.0](https://github.com/fastly/cli/releases/tag/v4.3.0) (2022-10-26)
+
+[Full Changelog](https://github.com/fastly/cli/compare/v4.2.0...v4.3.0)
+
+**Enhancements:**
+
+* Fix release process to not use external config [#688](https://github.com/fastly/cli/pull/688)
+* Skip exit code 1 for 'help' output [#689](https://github.com/fastly/cli/pull/689)
+* Implement dynamic package name [#686](https://github.com/fastly/cli/pull/686)
+* Replace fiddle.fastly.dev with fiddle.fastlydemo.net [#687](https://github.com/fastly/cli/pull/687)
+* Code clean-up [#685](https://github.com/fastly/cli/pull/685)
+* Implement --quiet flag [#690](https://github.com/fastly/cli/pull/690)
+* Make `compute build` respect `--quiet` [#694](https://github.com/fastly/cli/pull/694)
+
+**Bug fixes:**
+
+* Fix runtime panic [#683](https://github.com/fastly/cli/pull/683)
+* Fix runtime panic caused by outdated global flags [#693](https://github.com/fastly/cli/pull/693)
+* Fix runtime panic caused by missing `--help` global flag [#695](https://github.com/fastly/cli/pull/695)
+* Fix check for mutual exclusion flags[#696](https://github.com/fastly/cli/pull/696)
+* Correct installation instructions for Go [#682](https://github.com/fastly/cli/pull/682)
+
 ## [v4.2.0](https://github.com/fastly/cli/releases/tag/v4.2.0) (2022-10-18)
 
 [Full Changelog](https://github.com/fastly/cli/compare/v4.1.0...v4.2.0)
