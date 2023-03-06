@@ -50,6 +50,6 @@ emcdnsport=5335" > /var/lib/emc/.emercoin/emercoin.conf
 
 ## arg 1:  the old package version
 post_remove() {
-    /usr/sbin/groupdel -f emercoin  
-    /usr/sbin/userdel -f emercoin 
+    /usr/sbin/groupdel -f emercoin
+    /usr/sbin/userdel -f emercoin
 }
