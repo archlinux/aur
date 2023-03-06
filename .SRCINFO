@@ -1,5 +1,5 @@
 pkgbase = kodi-nexus-git
-	pkgver = r62023.8781093eb8b
+	pkgver = r62028.ae03c8e9fe1
 	pkgrel = 1
 	url = https://kodi.tv
 	arch = x86_64
@@ -135,7 +135,7 @@ pkgname = kodi-nexus-git
 	optdepends = pulseaudio: PulseAudio support
 	optdepends = pipewire: PipeWire support
 	optdepends = upower: Display battery level
-	provides = kodi=r62023.8781093eb8b
+	provides = kodi=r62028.ae03c8e9fe1
 	provides = kodi-x11
 	provides = kodi-wayland
 	provides = kodi-gbm
@@ -148,7 +148,7 @@ pkgname = kodi-nexus-git-eventclients
 	pkgdesc = Kodi Event Clients (Nexus branch)
 	optdepends = kodi: local machine eventclient use
 	optdepends = python: most eventclients are implemented in python
-	provides = kodi-eventclients=r62023.8781093eb8b
+	provides = kodi-eventclients=r62028.ae03c8e9fe1
 	conflicts = kodi-eventclients
 
 pkgname = kodi-nexus-git-tools-texturepacker
@@ -157,11 +157,11 @@ pkgname = kodi-nexus-git-tools-texturepacker
 	depends = giflib
 	depends = libjpeg-turbo
 	depends = lzo
-	provides = kodi-tools-texturepacker=r62023.8781093eb8b
+	provides = kodi-tools-texturepacker=r62028.ae03c8e9fe1
 	conflicts = kodi-tools-texturepacker
 
 pkgname = kodi-nexus-git-dev
 	pkgdesc = Kodi dev files (Nexus branch)
 	depends = kodi-nexus-git
-	provides = kodi-nexus-dev=r62023.8781093eb8b
+	provides = kodi-nexus-dev=r62028.ae03c8e9fe1
 	conflicts = kodi-nexus-dev
