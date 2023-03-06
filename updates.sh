@@ -17,14 +17,16 @@ _version=${_version//v/}
 #	_vrc="-${_vrc##*-}"
 #fi
 source PKGBUILD
-_prel="$(curl -s https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=${pkgname} | grep pkgrel | cut -d "=" -f2)"
+_prel="$(curl -s https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=${pkgname} | grep pkgrel | cut -d "=" -f2 | tr -d "'")"
+if [[ -z $_prelnew ]] ; then
 _prelnew=$_prel
 let _prelnew++
+fi
 echo "setting pkgver=$_version, pkgrel=${_prelnew} for PKGBUILD"
 sed -i "s/^pkgver=.*/pkgver='${_version}'/" PKGBUILD && sed -i "s/^_rc=.*/_rc='${_vrc}'/" PKGBUILD && sed -i "s/^pkgrel=.*/pkgrel='${_prelnew}'/" PKGBUILD
 echo "updating checksums for PKGBUILD(s)"
 updpkgsums
-find *.PKGBUILD | parallel unbuffer updpkgsums {}
+find *.PKGBUILD | parallel updpkgsums {}
 echo "creating .SRCINFO"
 makepkg --printsrcinfo > .SRCINFO
 #sha256sum skywire-scripts.tar.gz
