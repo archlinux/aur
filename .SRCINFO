@@ -1,0 +1,18 @@
+pkgbase = python-torch-sparse
+	pkgdesc = PyTorch Extension Library of Optimized Autograd Sparse Matrix Operations
+	pkgver = 0.6.16
+	pkgrel = 1
+	url = https://github.com/rusty1s/pytorch_sparse
+	arch = x86_64
+	license = MIT
+	makedepends = python
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-scipy
+	source = python-torch-sparse-0.6.16::https://github.com/rusty1s/pytorch_sparse/archive/refs/tags/0.6.16.tar.gz
+	sha256sums = 47129f4dd9ce38bc22d58eb9a07dd65a551038cf7a45b15374c3245e84b50196
+
+pkgname = python-torch-sparse
