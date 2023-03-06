@@ -1,7 +1,7 @@
 # Maintainer: Lars Sjöström <(firstname) @ radicore.se>
 
 pkgname=sapling-scm-bin
-_realver=0.2.20230124-180750-hf8cd450a
+_realver=0.2.20230228-144002-h9440b05e
 pkgver="${_realver//-/.}" # dashes aren't allowed in pkgver
 pkgrel=2
 epoch=1
@@ -17,7 +17,7 @@ conflicts=('sapling-scm')
 options=('!strip')
 
 source=("https://github.com/facebook/sapling/releases/download/$_realver/sapling_${_realver}_amd64.Ubuntu22.04.deb")
-sha256sums=('6d20686c4fa713ae861ab84728a162c6f750c8fe149d2c8a717601df0ed163ab')
+sha256sums=('9841f572b99f9e92df6b511957978b1395164be2622334b218ce92de90f738a9')
 
 package() {
 	cd "${srcdir}"
