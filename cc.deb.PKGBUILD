@@ -52,7 +52,7 @@ build() {
     echo "Priority: optional" >> ${srcdir}/${_pkgarch}.control
     echo "Section: web" >> ${srcdir}/${_pkgarch}.control
     if [[ ${_pkgarch} == "armhf" ]] ; then
-      echo "Architecture: armhf,armel" >> ${srcdir}/${_pkgarch}.control
+      echo "Architecture: armhf armel" >> ${srcdir}/${_pkgarch}.control
     else
       echo "Architecture: ${_pkgarch}" >> ${srcdir}/${_pkgarch}.control
     fi
