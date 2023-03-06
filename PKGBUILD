@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=poketex-git
-pkgver=1.0.3.r1.g69cec2e
+pkgver=1.0.4.r0.g2f476bf
 pkgrel=1
 pkgdesc="Simple Pokedex based on TUI (git)"
 arch=('x86_64')
