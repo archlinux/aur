@@ -1,6 +1,6 @@
 # Maintainer: ml <>
 pkgname=golang-mockery
-pkgver=2.20.2
+pkgver=2.21.1
 pkgrel=1
 pkgdesc='A mock code autogenerator for golang'
 arch=('aarch64' 'x86_64')
@@ -9,7 +9,7 @@ license=('BSD')
 depends=('glibc')
 makedepends=('go')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('2dde91bc8465111b61d934d695749413c9596e7b6bc64351af1e5c5e776d7d54')
+sha256sums=('a58e4ac8be76f422e4d7a93ed786b32bcd3b817024b81d652493a6eedd9c6bea')
 
 build() {
   cd mockery-"$pkgver"
