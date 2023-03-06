@@ -1,0 +1,13 @@
+diff --git a/make/rules-cargo.mk b/make/rules-cargo.mk
+index 5ebcf009..4f5c3162 100644
+--- a/make/rules-cargo.mk
++++ b/make/rules-cargo.mk
+@@ -14,8 +14,6 @@ $$(OBJ)/.$(1)-configure$(3):
+ $$(OBJ)/.$(1)-build$(3):
+ 	@echo ":: building $(3)bit $(1)..." >&2
+ 	cd $$($(2)_SRC) && env $$($(2)_ENV$(3)) \
+-	cargo update --locked --offline --verbose --workspace
+-	cd $$($(2)_SRC) && env $$($(2)_ENV$(3)) \
+ 	cargo build \
+ 	      -j$$(SUBJOBS) --locked --offline --verbose \
+ 	      --target "$$(CARGO_TARGET_$(3))" \

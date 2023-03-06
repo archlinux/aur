@@ -1,8 +1,8 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=GE-Proton7-49
-_commit=
+_srctag=GE-Proton7-50
+_commit=174db6e815ce5d8387b5cab8a115bba92f3229eb
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=7.4.0
@@ -103,7 +103,7 @@ makedepends=(${makedepends[@]} ${depends[@]})
 provides=('proton')
 install=${pkgname}.install
 source=(
-    proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#tag=${_srctag}
+    proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#commit=${_commit}
     wine-valve::git+https://github.com/ValveSoftware/wine.git
     dxvk::git+https://github.com/doitsujin/dxvk.git
     openvr::git+https://github.com/ValveSoftware/openvr.git
@@ -134,6 +134,7 @@ source=(
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
     0001-AUR-pkgbuild-changes.patch
+    0002-AUR-pkgbuild-changes.patch
 )
 # Optional patches
 source+=(
@@ -257,7 +258,6 @@ prepare() {
     pushd $submodule
         export RUSTUP_TOOLCHAIN=stable
         export CARGO_HOME="${SRCDEST}"/proton-cargo
-        cargo update --locked --workspace
         cargo fetch --locked --target "i686-unknown-linux-gnu"
         cargo fetch --locked --target "x86_64-unknown-linux-gnu"
     popd
@@ -273,6 +273,7 @@ prepare() {
     popd
 
     patch -p1 -i "$srcdir"/0001-AUR-pkgbuild-changes.patch
+    patch -p1 -i "$srcdir"/0002-AUR-pkgbuild-changes.patch
 
     # Remove repos from srcdir to save space
     for submodule in "${_submodules[@]}"; do
@@ -392,7 +393,8 @@ sha256sums=('SKIP'
             '08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3'
             '0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75'
             '9249ece664bcf2fecb1308ea1d2542c72923df9fe3df891986f137b2266a9ba3'
-            '74f1c152a0bf75ddb9170136530249d0459173ceb641c0a6b9cd98cd81bf38b4')
+            '74f1c152a0bf75ddb9170136530249d0459173ceb641c0a6b9cd98cd81bf38b4'
+            '7ed62873f78fc4e65b037ee52738ee15814a8f0599668690fe29311bf311432b')
 # Optional patches
 sha256sums+=(
 )
