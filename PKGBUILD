@@ -13,7 +13,7 @@
 
 pkgname=lib32-mesa-amdonly-gaming-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=23.1.0_devel.167344.bf6c214b258.d41d8cd98f00b204e9800998ecf8427e
+pkgver=23.1.0_devel.167746.399012a911b.d41d8cd98f00b204e9800998ecf8427e
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -83,12 +83,10 @@ build () {
 
     export PKG_CONFIG=/usr/bin/i686-pc-linux-gnu-pkg-config
 
-    meson setup mesa _build \
+    arch-meson mesa _build \
         --native-file llvm32.native \
         -D b_ndebug=true \
-        -D buildtype=plain \
         --wrap-mode=nofallback \
-        -D prefix=/usr \
         -D sysconfdir=/etc \
         --libdir=/usr/lib32 \
         -D platforms=x11,wayland \
@@ -112,6 +110,7 @@ build () {
         -D glvnd=true \
         -D glx=dri \
         -D libunwind=disabled \
+        -D android-libbacktrace=disabled \
         -D llvm=enabled \
         -D shared-llvm=enabled \
         -D lmsensors=enabled \
