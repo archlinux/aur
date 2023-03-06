@@ -257,7 +257,7 @@ else
 fi
 
 if systemctl is-active --quiet ${_svc} >/dev/null; then
-  if [[ ${SKYFWD[@]} -gt 0 ]] ; then
+  if [[ ${#SKYFWD[@]} -gt 0 ]] ; then
     if command -v nc >/dev/null 2>&1; then
       while ! nc -z localhost 3435; do _msg2 "waiting for RPC" ;  sleep 1; done
       for _port in ${SKYFWD[@]} ; do
@@ -268,14 +268,14 @@ if systemctl is-active --quiet ${_svc} >/dev/null; then
   fi
 fi
 #SKYREV=('-p 8000 -r 8000 -k <public-key>')
-if systemctl is-active --quiet ${_svc} >/dev/null; then
-  if [[ ${SKYREV[@]} -gt 0 ]] ; then
-    if command -v nc >/dev/null 2>&1; then
-      while ! nc -z localhost 3435; do _msg2 "waiting for RPC" ;  sleep 1; done
-      for _rev in ${SKYREV[@]} ; do
-        _msg2 "setting up skyrev connection with ${_yellow}skywire-cli rev $_rev${_nc}"
-        skywire-cli rev $_rev
-      done
-    fi
-  fi
-fi
+#if systemctl is-active --quiet ${_svc} >/dev/null; then
+#  if [[ ${#SKYREV[@]} -gt 0 ]] ; then
+#    if command -v nc >/dev/null 2>&1; then
+#      while ! nc -z localhost 3435; do _msg2 "waiting for RPC" ;  sleep 1; done
+#      for _rev in ${SKYREV[@]} ; do
+#        _msg2 "setting up skyrev connection with ${_yellow}skywire-cli rev $_rev${_nc}"
+#        skywire-cli rev $_rev
+#      done
+#    fi
+#  fi
+#fi
