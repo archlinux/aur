@@ -1,7 +1,7 @@
 pkgbase = rosenpass-git
 	pkgdesc = formally verified and post-quantum secure VPN over WireGuard
 	pkgver = 0.1.1
-	pkgrel = 2
+	pkgrel = 4
 	url = https://rosenpass.eu
 	arch = any
 	license = MIT
@@ -17,6 +17,7 @@ pkgbase = rosenpass-git
 	depends = findutils
 	provides = rp
 	provides = rosenpass
+	options = !lto
 	source = rosenpass::git+https://github.com/rosenpass/rosenpass.git
 	sha256sums = SKIP
 
