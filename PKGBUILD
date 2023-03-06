@@ -4,7 +4,7 @@
 
 pkgname=qogir-gtk-theme
 _pkgname=Qogir-theme
-_pkgver=2022-11-09
+_pkgver=2023-02-27
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Qogir is a flat Design theme for GTK"
@@ -23,7 +23,7 @@ source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/vinceliuice/$_pkgname/archive/$_pkgver.tar.gz"
     "options.txt"
 )
-sha256sums=('0075412e14ca9cc012b7eb7fc302524d82af8e872e2f139cddb4ec80201ebe41'
+sha256sums=('211d2d7e027fe595e7512ca346b63a9314ee59e3ddee875bc1c06aeef9e5b9bb'
             'fabf821acfe0641fd233d4d7a42a536aedc369516de62f877e83a1070c73327e')
 
 build() {
