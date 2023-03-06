@@ -7,7 +7,7 @@ _pkgbin=ledger-live-desktop
 _pkgname=ledger-live
 pkgname=${_pkgname}-git
 pkgdesc="Ledger Live - Desktop (git-main)"
-pkgver=2.50.1.r0.gc5aba7d153
+pkgver=2.54.0.r6.g72cbeef
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live'
@@ -19,9 +19,19 @@ conflicts=("${_pkgname}")
 source=("${pkgname}::git+${url}#branch=main")
 sha512sums=('SKIP')
 
-prepare() {
-  cd "${pkgname}"
+_check_nodejs() {
+  exp_ver=$(cat .nvmrc)
+  use_ver=$(node -v)
+  if [[ "${exp_ver}" != "${use_ver}" ]]
+  then
+    echo "Using the wrong version of NodeJS! Expected [${exp_ver}] but using [${use_ver}]."
+    exit 1
+  fi
+}
 
+prepare() {
+  export FNM_DIR="${srcdir}/.fnm"
+  cd "${pkgname}"
   eval "$(fnm env --shell bash)"
   fnm use --install-if-missing
 }
@@ -29,6 +39,7 @@ prepare() {
 build() {
   cd "${pkgname}"
 
+  _check_nodejs
   pnpm i --filter="ledger-live-desktop..." --filter="ledger-live" --frozen-lockfile --unsafe-perm
   pnpm build:lld
 
@@ -57,5 +68,5 @@ package() {
 
 pkgver() {
   cd "${pkgname}"
-  git describe --long --tags --match '@ledgerhq/live-desktop@*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' | cut -d@ -f3
+  git describe --long --tags --abbrev=7 --match '@ledgerhq/live-desktop@*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' | cut -d@ -f3
 }
