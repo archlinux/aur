@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=fre:ac
-GenericName=Audio Converter
-Comment=Audio converter and CD ripper with support for various popular formats and encoders.
-Icon=freac-appimage.svg
-Exec="/opt/appimages/freac.AppImage" %F
-Terminal=false
-Categories=AudioVideo;

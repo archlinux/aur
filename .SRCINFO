@@ -1,7 +1,7 @@
 pkgbase = freac-appimage
 	pkgdesc = Audio converter and CD ripper with support for various popular formats and encoders.
-	pkgver = 1.1.6
-	pkgrel = 3
+	pkgver = 1.1.7
+	pkgrel = 1
 	url = https://www.freac.org/
 	arch = x86_64
 	license = GPL2
@@ -10,13 +10,7 @@ pkgbase = freac-appimage
 	provides = freac
 	conflicts = freac
 	options = !strip
-	source = freac-1.1.6-x86_64.AppImage::https://github.com/enzo1982/freac/releases/download/v1.1.6/freac-1.1.6-linux-x86_64.AppImage
-	source = LICENSE::https://github.com/enzo1982/freac/raw/master/COPYING
-	source = freac-appimage.svg::https://github.com/enzo1982/freac/raw/master/icons/freac.svg
-	source = freac-appimage.desktop
-	md5sums = 13ae29576120712bcbd7c1a39b441745
-	md5sums = 4d699aa6a6c6b7bebeadeb886de76e55
-	md5sums = 9c7d78a4f879a7ccba7ceb1013aaef00
-	md5sums = 5c72bba204ba9f38e584e7618e7b15e3
+	source = freac-1.1.7.AppImage::https://github.com/enzo1982/freac/releases/download/v1.1.7/freac-1.1.7-linux-x86_64.AppImage
+	md5sums = b5fe625c3bd1b77121477feba3dd24ff
 
 pkgname = freac-appimage
