@@ -12,8 +12,14 @@ url="https://github.com/microsoft/${_pkgname}"
 license=('BSD')  # NCSA
 makedepends=('cmake' 'git' 'python')
 # package 'ninja' not needed actually
-source=("git+https://github.com/microsoft/${_pkgname}.git")
-sha256sums=('SKIP')
+source=(
+  "git+https://github.com/microsoft/${_pkgname}.git"
+  "LICENSE"
+)
+sha256sums=(
+  'SKIP'
+  'a6bce372d524a7cd48b0e7a40d51198e29cd6ccf897f5839e040f21aa25de037'
+)
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -54,6 +60,8 @@ build() {
 
 package() {
   cd "$srcdir/${_pkgname}"
+  cp "$srcdir/LICENSE" "$srcdir/${_pkgname}"
+
   make -C build DESTDIR="$pkgdir" install
   #DESTDIR="$pkgdir" cmake --install build
   mkdir -p "$pkgdir/usr/bin"
@@ -63,5 +71,5 @@ package() {
   ln -s "/opt/directx-shader-compiler/bin/dxv" "$pkgdir/usr/bin/dxv"
   ln -s "/opt/directx-shader-compiler/bin/dxopt" "$pkgdir/usr/bin/dxopt"
 
-  # TODO install license install -Dm 644 -t $pkgdir/usr/lib/systemd/system $srcdir/anbox-container-manager.service
+  install -D -m644 "$srcdir/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

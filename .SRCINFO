@@ -10,6 +10,8 @@ pkgbase = directx-shader-compiler-git
 	makedepends = git
 	makedepends = python
 	source = git+https://github.com/microsoft/DirectXShaderCompiler.git
+	source = LICENSE
 	sha256sums = SKIP
+	sha256sums = a6bce372d524a7cd48b0e7a40d51198e29cd6ccf897f5839e040f21aa25de037
 
 pkgname = directx-shader-compiler-git
