@@ -2,28 +2,58 @@
 # Contributor: Kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=fwupd-git
-pkgver=1.8.6.r82.g60c01af01
+pkgver=1.8.12.r18.g7e502cf7d
 pkgrel=1
 pkgdesc="Simple daemon to allow session software to update firmware"
 arch=('x86_64')
 url="https://github.com/fwupd/fwupd"
 license=('LGPL')
 depends=(
-    'libxmlb' 'efivar' 'python' 'libsmbios' 'libgusb'
-    'polkit' 'shared-mime-info' 'tpm2-tss' 'flashrom'
-    'libjcat' 'fwupd-efi' 'gcab' 'hicolor-icon-theme'
-    'bluez' 'gnutls'
-    'libarchive.so' 'libcurl.so' 'libcbor.so'
-    'libjson-glib-1.0.so' 'libgudev-1.0.so' 'libmm-glib.so'
-    'libqmi-glib.so' 'libprotobuf-c.so')
+    'bluez'
+    'diffutils'
+    'efivar'
+    'flashrom'
+    'fwupd-efi'
+    'hicolor-icon-theme'
+    'gcab'
+    'glib2'
+    'gnutls'
+    'gzip'
+    'polkit'
+    'python'
+    'python-gobject'
+    'sqlite'
+    'libxmlb'
+    'libgusb'
+    'libjcat'
+    'libarchive.so'
+    'libjson-glib-1.0.so'
+    'libmm-glib'
+    'libcurl.so'
+    'libcbor.so'
+    'libsmbios'
+    'libsystemd.so'
+    'liblzma.so'
+    'libgudev-1.0.so'
+    'libprotobuf-c.so'
+    'libqmi'
+)
 optdepends=(
     'udisks2: UEFI firmware upgrade support'
 )
 makedepends=(
-    'meson' 'valgrind' 'gobject-introspection' 'gi-docgen'
-    'python-cairo' 'noto-fonts' 'noto-fonts-cjk' 'python-gobject' 'vala'
-    'bash-completion' 'python-pillow' 'help2man' 'gnu-efi-libs' 'git')
-checkdepends=('umockdev')
+    'bash-completion'
+    'git'
+    'gobject-introspection'
+    'meson'
+    'python-cairo'
+    'python-markdown'
+    'vala'
+    'valgrind'
+)
+checkdepends=(
+    'umockdev'
+)
 provides=('libfwupd.so' 'libfwupdplugin.so' "${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 backup=(
@@ -46,18 +76,17 @@ pkgver() {
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
-
+prepare() {
     arch-meson "${srcdir}/${pkgname}" "${srcdir}/build" \
-        -D plugin_flashrom=enabled \
-        -D plugin_modem_manager=enabled \
         -D b_lto=false \
-        -D lzma=enabled \
-        -D docs=enabled \
+        -D docs=disabled \
+        -D man=true \
         -D plugin_intel_spi=true \
         -D supported_build=enabled \
         -D efi_binary=false
+}
 
+build() {
     meson compile -C "${srcdir}/build" -j 0
 }
 
