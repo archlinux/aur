@@ -96,6 +96,10 @@ source=(
   # https://github.com/bazaah/aur-ceph/issues/11
   # https://github.com/confluentinc/librdkafka/issues/4155
   'rdkafka.mpatch'
+
+  # Fixes API changes to boost::beast string_view type def in 1.81
+  # https://github.com/boostorg/beast/issues/2594
+  'ceph-17.2.5-rgw-client-boost-string-view.patch'
 )
 sha512sums=('10cd3d9eb01c91c148a92f1f7d040bbd78af5bb1ab15d071d93f54b37097dc9e1268eed9e788fe32794d137f6af81abd6a2aeaee39cef44d2c45234a15cc6020'
             '4354001c1abd9a0c385ba7bd529e3638fb6660b6a88d4e49706d4ac21c81b8e829303a20fb5445730bdac18c4865efb10bc809c1cd56d743c12aa9a52e160049'
@@ -112,7 +116,8 @@ sha512sums=('10cd3d9eb01c91c148a92f1f7d040bbd78af5bb1ab15d071d93f54b37097dc9e126
             '781a01e622a70d56bf1948bdc0b427ffa95a86cec7dd9d26c6007a9ec024a942a8ca55f2acc3d37344862f1d6bf11cae998d8071754cd841a66bfba4ec9c58bf'
             '2a6f33791760e14543c90077bfc6bf1b6b82ee2996e80b4762eadb887a0d9a67c221b6f10832ddf780dc6abaed246a1e2ee7680c9c861c4ff70e61b752a37b36'
             'b2e1f495b57f3ed65b466719faded1713d8155e10b6432b704c632501313b6a98a56461164942cf303427770be0d5efe4798572fe8490ee977bf652906166bde'
-            'e4703027fccdb18be4255ba087a165e2a780248d8d52f18a776ef7b50f09f312a9e9a0d5832440a19f248b508e4ed4a869c1baa4362923f93a61e9a471760178')
+            'e4703027fccdb18be4255ba087a165e2a780248d8d52f18a776ef7b50f09f312a9e9a0d5832440a19f248b508e4ed4a869c1baa4362923f93a61e9a471760178'
+            '02ca1a9bf15f9cd6f474f264ba2bf66ae725bac990a7cac315dabe377c66935a7afd8117f18a1f82c78bdf9ab2c3e5a2a227f2ffc166974dd7bb99b290f1f233')
 
 # -fno-plt causes linker errors (undefined reference to internal methods)
 # similar issue: https://bugs.archlinux.org/task/54845
