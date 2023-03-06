@@ -3,7 +3,6 @@ pkgbase = wxparaver
 	pkgver = 4.10.6.20221116
 	pkgrel = 1
 	url = https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools
-	arch = i686
 	arch = x86_64
 	license = LGPL2.1
 	depends = wxwidgets-gtk3
