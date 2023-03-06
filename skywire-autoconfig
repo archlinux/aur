@@ -3,6 +3,7 @@
 #skywire autoconfiguration script for debian & archlinux packages
 #source the skyenv file if it exists - provided by the skybian package or the user
 [[ -f /etc/profile.d/skyenv.sh ]] && source /etc/profile.d/skyenv.sh
+[[ ! -d /opt/skywire/local/custom ]] && mkdir -p /opt/skywire/local/custom
 #set NOAUTOCONFIG=true to avoid running the script in the postinstall
 if [[ ${NOAUTOCONFIG} == true ]]; then
   #unset the env
