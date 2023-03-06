@@ -3,7 +3,7 @@
 # Contributor: Jozef Holly <j2.00ghz@gmail.com>
 
 pkgname=influxdb2-bin
-pkgver=2.0.7
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='Scalable datastore for metrics, events, and real-time analytics; Binary release;'
 arch=('x86_64' 'aarch64')
@@ -33,7 +33,6 @@ package() {
     cd "$srcdir/influxdb2-${pkgver}-linux-amd64"
   fi
   install -d "${pkgdir}/usr/bin/"
-  install -Dm755 influx "${pkgdir}/usr/bin/influx"
   install -Dm755 influxd "${pkgdir}/usr/bin/influxd"
   # text files
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
@@ -48,5 +47,5 @@ package() {
 sha256sums=('5266afa264a210102ade9e777f9258baa38dcc500707b822a31b9a7e2e029439'
             '4be469656e630e9ab49653f3a7b51062712cf6fe892d76bf645f7e6feb4502ed'
             'f71a1780f3b21b638f08e556cb9410d1b8cc2aaafcdd2d340954ed8ba0809cd8')
-sha256sums_x86_64=('bac6e6495b855479d325ea9996ad0301789613891daba2b386f84f1b11912d66')
-sha256sums_aarch64=('55129ca31e5d0633c81ff17771d06c8604ad1a16be4f7c5c6142695a0bdb6ffc')
+sha256sums_x86_64=('1688e3afa7f875d472768e4f4f5a909b357287a45a8f28287021e4184a185927')
+sha256sums_aarch64=('a5d9c355231f69e6a1141c4af02136fa5696979a4d79dd16767fbd110feffb88')
