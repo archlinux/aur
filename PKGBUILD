@@ -6,14 +6,14 @@ pkgname=snapgene
 pkgver=6.2.0
 _pkgver_major=$(cut -d '.' -f 1 <<<"$pkgver")
 _pkgver_major_middle=$(cut -d '.' -f 1-2 <<<"$pkgver")
-pkgrel=2
+pkgrel=1
 pkgdesc='Software for plasmid mapping, primer design, and restriction site analysis'
 arch=('x86_64')
 url='http://www.snapgene.com/products/snapgene/'
 license=('custom')
 # A valid licence is required to use the full version of snapgene
 source=("https://cdn.snapgene.com/downloads/SnapGene/"$_pkgver_major".x/"$_pkgver_major_middle"/"$pkgver"/snapgene_"$pkgver"_linux.rpm")
-sha512sums=('7163910825bc701b4c4a5671bf2279b860531f2560a39b7f4d19a83b176790d533c599b8770d886800944d510cafa73896a0ed1d6691559421e9ab0a61595f3c')
+sha512sums=('e527187319af16019070cad1ca78d7db69770b3c8dc2c8c4ebb052474c94847abbc1a31647931b2b01388ea395de5a27a05555ca95c8509440f5d25c81b09e70')
 
 package() {
     cd "$pkgdir"
