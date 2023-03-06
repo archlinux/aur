@@ -2,8 +2,8 @@
 
 _srcname=chinadns-ng
 pkgname=${_srcname}-git
-pkgver=r387.a2ceae6
-pkgrel=2
+pkgver=r380.0f80a32
+pkgrel=1
 pkgdesc='Chinadns next generation, refactoring with epoll and ipset'
 arch=(i686 x86_64)
 url=https://github.com/zfl9/${_srcname}

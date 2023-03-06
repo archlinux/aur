@@ -1,7 +1,7 @@
 pkgbase = chinadns-ng-git
 	pkgdesc = Chinadns next generation, refactoring with epoll and ipset
-	pkgver = r387.a2ceae6
-	pkgrel = 2
+	pkgver = r380.0f80a32
+	pkgrel = 1
 	url = https://github.com/zfl9/chinadns-ng
 	arch = i686
 	arch = x86_64
