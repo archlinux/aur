@@ -2,7 +2,7 @@
 Name=Spoofax 3
 Comment=A modular and incremental textual language workbench running on the JVM
 Icon=spoofax3
-Exec=spoofax3
+Exec=env GDK_BACKEND=x11 spoofax3
 Terminal=false
 Type=Application
 Categories=Development;IDE;Java;
