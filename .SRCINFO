@@ -1,0 +1,16 @@
+pkgbase = capstan-git
+	pkgdesc = Capstan, a tool for packaging and running your application on OSv.
+	pkgver = v0.4.1.r6.de91c4e
+	pkgrel = 1
+	url = https://github.com/cloudius-systems/capstan
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = go
+	provides = capstan
+	conflicts = capstan
+	source = capstan::git+https://github.com/cloudius-systems/capstan.git
+	md5sums = SKIP
+
+pkgname = capstan-git
