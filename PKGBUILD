@@ -3,28 +3,16 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=swig
-pkgver=4.0.2
-pkgrel=5
+pkgver=4.1.0
+pkgrel=1
 pkgdesc="Generate scripting interfaces to C/C++ code"
 arch=('x86_64')
 url="http://www.swig.org/"
 license=('custom')
-depends=('pcre' 'gcc-libs')
+depends=('pcre2' 'gcc-libs')
 checkdepends=('ruby' 'python' 'java-environment' 'tcl' 'php' 'lua' 'r' 'go' 'boost')
-source=(https://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz
-        jdk17.patch
-        python310.patch)
-sha512sums=('05e7da70ce6d9a733b96c0bcfa3c1b82765bd859f48c74759bbf4bb1467acb1809caa310cba5e2b3280cd704fca249eaa0624821dffae1d2a75097c7f55d14ed'
-            '06671202b6a1f82e96166ada7982b9dd70ae5365dc90c4f24e81596963f7bd3960913f2eca5250ad76bee4b2e51f10ed922595722036e3da9da63d6aa988cb3e'
-            '3de6484d920d8ecf042102d40af3a375ecb1ead3c4e0bc45ae63633e5fd652f52e1938108f747514a654a19d93a783afe2968b141be56957f438162263d62d8a')
-
-prepare() {
-  cd ${pkgname}-${pkgver}
-  patch -Np1 -i ../jdk17.patch
-
-  # https://github.com/swig/swig/issues/2044
-  patch -Np1 -i ../python310.patch
-}
+source=(https://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz)
+sha512sums=('a7d43d6aa764923826786081a3f2e25aa0f8345e1169c1e57bf02d01f6f41c92d8db0f360ec86e0e428ef5a21d1b5cd3edb7e4b71d0beff3e6611e344b5c22b1')
 
 build() {
   cd ${pkgname}-${pkgver}
