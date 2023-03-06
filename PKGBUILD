@@ -2,7 +2,7 @@
 # Co-maintainer: Carlos Galindo <arch -at- cgj.es>
 
 pkgname=yourls
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="your own URL shortener"
 arch=('any')
@@ -14,7 +14,7 @@ conflicts=('yourls-svn')
 backup=('etc/webapps/yourls/config.php')
 install=$pkgname.install
 source=("yourls-${pkgver}.tar.gz::https://github.com/YOURLS/YOURLS/archive/${pkgver}.tar.gz")
-sha512sums=('58cc703799709ac2a57384152329e6b3fab35ade3127f8bbe547f192b2d1c3ee6dd6dd53352b3ab1ff575d40adde472bb2d7cd8539dde738d7c44c05c54827f3')
+sha512sums=('2762a671fa62ca05a4888f55045edff3117979ffd2f63634b42b2c30675135736df30469ae76454dc069399ed2cc9e815441289e0b0f9843c04c2f12fef6995d')
 
 package() {
   cd "$srcdir/YOURLS-$pkgver"
