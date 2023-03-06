@@ -6,7 +6,7 @@
 
 pkgname=digital-git
 pkgver=v0.30.r3.gf8b800a63
-pkgrel=1
+pkgrel=2
 pkgdesc="A digital logic designer and circuit simulator. Git development version"
 arch=('x86_64')
 url="https://github.com/hneemann/Digital"
