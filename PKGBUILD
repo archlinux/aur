@@ -3,7 +3,7 @@
 # Contributor: Jozef Holly <j2.00ghz@gmail.com>
 
 pkgname=influxdb2-bin
-pkgver=2.1.1
+pkgver=2.6.1
 pkgrel=1
 pkgdesc='Scalable datastore for metrics, events, and real-time analytics; Binary release;'
 arch=('x86_64' 'aarch64')
@@ -47,5 +47,5 @@ package() {
 sha256sums=('5266afa264a210102ade9e777f9258baa38dcc500707b822a31b9a7e2e029439'
             '4be469656e630e9ab49653f3a7b51062712cf6fe892d76bf645f7e6feb4502ed'
             'f71a1780f3b21b638f08e556cb9410d1b8cc2aaafcdd2d340954ed8ba0809cd8')
-sha256sums_x86_64=('1688e3afa7f875d472768e4f4f5a909b357287a45a8f28287021e4184a185927')
-sha256sums_aarch64=('a5d9c355231f69e6a1141c4af02136fa5696979a4d79dd16767fbd110feffb88')
+sha256sums_x86_64=('003908bacc9653603cc7cad68e40f66552b6a09279305228d26b33b71346941e')
+sha256sums_aarch64=('906b360e03801349badff704ab5b5e2b7034b077dafdd43ffc424ccc5cb831fc')
