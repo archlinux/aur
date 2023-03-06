@@ -8,6 +8,7 @@ pkgbase = capstan-git
 	license = BSD
 	makedepends = git
 	makedepends = go
+	depends = glibc
 	provides = capstan
 	conflicts = capstan
 	source = capstan::git+https://github.com/cloudius-systems/capstan.git
