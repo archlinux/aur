@@ -45,6 +45,7 @@ pkgbase = airgeddon-git
 	optdepends = pixiewps: Offline bruteforce of the WPS pin exploiting the low or non-existing entropy of some APs
 	optdepends = reaver: Brute force attack against Wifi Protected Setup
 	optdepends = rfkill: Tool for enabling and disabling wireless devices
+	optdepends = systemd: System and service manager
 	optdepends = usbutils: USB Device Utilities
 	optdepends = wget: A network utility to retrieve files from the Web
 	optdepends = wireshark-cli: Network traffic and protocol analyzer/sniffer CLI tools

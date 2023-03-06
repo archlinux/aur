@@ -4,7 +4,7 @@
 
 _pkgname=airgeddon
 pkgname=$_pkgname-git
-pkgver=r2654.9a12af4
+pkgver=r2707.484bd4c
 pkgrel=1
 pkgdesc='Multi-use bash script for Linux systems to audit wireless networks'
 url='https://github.com/v1s1t0r1sh3r3/airgeddon'
@@ -43,6 +43,7 @@ optdepends=(
   'pixiewps: Offline bruteforce of the WPS pin exploiting the low or non-existing entropy of some APs'
   'reaver: Brute force attack against Wifi Protected Setup'
   'rfkill: Tool for enabling and disabling wireless devices'
+  'systemd: System and service manager'
   'usbutils: USB Device Utilities'
   'wget: A network utility to retrieve files from the Web'
   'wireshark-cli: Network traffic and protocol analyzer/sniffer CLI tools'
