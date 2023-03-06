@@ -155,7 +155,10 @@ provides=(
   libpostproc.so
   libswresample.so
   libswscale.so
+  ffmpeg
+  ffmpeg-full
 )
+
 #options=(
 #  debug
 #)
