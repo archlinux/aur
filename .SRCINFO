@@ -1,0 +1,17 @@
+pkgbase = ts-standard
+	pkgdesc = TypeScript style guide, linter, and formatter using StandardJS
+	pkgver = 12.0.2
+	pkgrel = 1
+	url = https://standardjs.com
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	provides = nodejs-ts-standard
+	conflicts = nodejs-ts-standard
+	replaces = nodejs-ts-standard
+	noextract = ts-standard-12.0.2.tgz
+	source = https://registry.npmjs.org/ts-standard/-/ts-standard-12.0.2.tgz
+	sha512sums = 5d7db0ac1f5f28a4df063e320f70019bd89287365c4b689670f2bc5f3941bee2f6d3ec0c88b822cff939b57819c13698ab9c1185b92cd58f4f7a586e8c5ffd6a
+
+pkgname = ts-standard
