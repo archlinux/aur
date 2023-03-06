@@ -1,0 +1,25 @@
+pkgbase = redpanda-cpp
+	pkgdesc = A fast, lightweight, open source, and cross platform C/C++/GNU Assembly IDE
+	pkgver = 2.15
+	pkgrel = 1
+	url = https://github.com/royqh1979/RedPanda-CPP
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = qt5-svg
+	depends = gcc
+	depends = gdb
+	depends = qterminal
+	optdepends = clang: C/C++ compiler (alternative)
+	optdepends = git: git integration
+	source = RedPanda-CPP-2.15.tar.gz::https://github.com/royqh1979/RedPanda-CPP/archive/refs/tags/2.15.tar.gz
+	sha256sums = 7ffdc65a577445c936e24ffc4188a073d0a67d22c136109d2dd0531077403c5c
+
+pkgname = redpanda-cpp

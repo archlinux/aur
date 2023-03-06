@@ -1,0 +1,5 @@
+src
+pkg
+redpanda-cpp-*.tar*
+RedPanda-CPP-*.tar.gz
+*.log
