@@ -2,9 +2,9 @@
 pkgname=sigma-file-manager-appimage
 _pkgname=sigma-file-manager
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 epoch=
-pkgdesc="A program that lets you manipulate digital audio waveforms"
+pkgdesc="A free, open-source, quickly evolving, modern file manager (explorer / finder) app for Windows and Linux."
 arch=("x86_64")
 url="https://github.com/aleksey-hoffman/sigma-file-manager"
 license=(GPL3)
