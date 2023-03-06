@@ -3,7 +3,6 @@ pkgbase = nanox
 	pkgver = 0.15.20190627
 	pkgrel = 3
 	url = https://pm.bsc.es/ompss
-	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = python
