@@ -10,8 +10,8 @@
 # package, maintained by T. Borgert.
 
 pkgname=ros2-galactic
-pkgver=2021.07.16
-pkgrel=18
+pkgver=2022.12.09
+pkgrel=1
 pkgdesc="A set of software libraries and tools for building robot applications"
 url="https://docs.ros.org/en/galactic/"
 arch=('any')
@@ -23,7 +23,7 @@ depends=(
     'gmock'
 )
 source=(
-    "ros2::git+https://github.com/ros2/ros2#tag=release-galactic-20210716"
+    "ros2::git+https://github.com/ros2/ros2#tag=release-galactic-20221209"
     "google_benchmark_vendor.patch"
     "rviz_assimp_vendor.patch"
 )
@@ -68,21 +68,12 @@ prepare() {
     git -C $srcdir/ros2/src/ros2/demos cherry-pick 754612348e408675f526174c5f03786e08ad8a70
     ## ros1_bridge
     git -C $srcdir/ros2/src/ros2/ros1_bridge revert 81b7610568286ec7b390c64cf6207b362d0a6550 --no-edit
-    ## rcl_logging
-    git -C $srcdir/ros2/src/ros2/rcl_logging cherry-pick 77b5b2a6c948a6db1986501edc83f12ceadedba3
-    ## rviz_assimp_vendor
-    git -C $srcdir/ros2/src/ros2/rviz checkout .
-    git -C $srcdir/ros2/src/ros2/rviz apply $srcdir/rviz_assimp_vendor.patch
     ## tlsf_cpp
     git -C $srcdir/ros2/src/ros2/realtime_support cherry-pick fa9a5545db8f641212de78c5924f1305e01bc7a8
     ## osrf_testing_tools_cpp
     git -C $srcdir/ros2/src/osrf/osrf_testing_tools_cpp cherry-pick 869da204dd829308380df5a33e432670e474e54a
-    ## performance_test_fixture
-    git -C $srcdir/ros2/src/ros2/performance_test_fixture cherry-pick d736c276d292a78f9750aba39108d5222bf9629e
     ## rmw_cyclonedds_cpp
     git -C $srcdir/ros2/src/ros2/rmw_cyclonedds cherry-pick f57732d15be53796d518e12352866124efcaa939
-    ## ament_cmake
-    git -C $srcdir/ros2/src/ament/ament_cmake cherry-pick ca8c26ea3c89e69c0c636b7cd0c088674c689f5f
     ## googletest: fix building error with GCC 11
     git -C $srcdir/ros2/src/ament/googletest/googletest cherry-pick 4679637f1c9d5a0728bdc347a531737fad0b1ca3
 }
