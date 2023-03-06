@@ -2,7 +2,7 @@
 
 pkgname=sing-box-beta
 _pkgname=sing-box
-_version="1.2-beta5"
+_version="1.2-beta6"
 pkgver="${_version//[v-]/}"
 pkgrel=1
 
@@ -14,7 +14,7 @@ license=('GPL3')
 makedepends=('go')
 
 source=("${_pkgname}-${_version}.tar.gz::https://github.com/SagerNet/sing-box/archive/v${_version}.tar.gz")
-sha256sums=('14a5834b9cde1c7e951c5d65ddf3c660b56cde76de4fff43f5454c9549f6ee82')
+sha256sums=('53504e86f74d64ac55a43b84818aff6a387777ae8e7e93750be6b589adbafc9e')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -40,7 +40,7 @@ build(){
         -mod=readonly \
         -modcacherw \
         -tags "$_tags" \
-        -ldflags '-s -w -buildid= -linkmode=external' \
+        -ldflags "-s -w -buildid= -X github.com/sagernet/sing-box/constant.Version=${pkgver} -linkmode=external" \
         ./cmd/sing-box
 
     sed -i "/^\[Service\]$/a User=${_pkgname}
