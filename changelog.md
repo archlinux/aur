@@ -1,3 +1,18 @@
+## GE-Proton7-50
+
+* update dxvk to latest git
+* update vkd3d-proton to latest git
+* update wine to latest bleeding edge
+* rebase wine-staging patches
+* import upstream vkd3d updates
+* import upstream font updates
+* import upstream vrclient/openvr updates
+* import upstream steamclient updates
+* import upstream proton updates
+* protonfixes: remove no longer needed persona 4 golden fixes (thanks tgurr)
+* protonfixes: remove no longer needed Battle Fantasia FPS lock (merged in dxvk, thanks ranplayer)
+* protonfixes: Metal Slug -- fix black window (thanks ranplayer)
+
 ## GE-Proton7-49
 
 This is mainly just a hotfix release that adds the upstream Ubisoft Uplay fix
