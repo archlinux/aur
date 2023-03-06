@@ -16,7 +16,7 @@ arch=(x86_64)
 url="https://kernel.org/"
 license=(GPL2)
 makedepends=(
-  bc libelf pahole cpio perl tar xz
+  bc libelf pahole cpio perl tar xz gettext
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
   git
 )
@@ -32,7 +32,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '0571ea17a2e38458096b679418197bbea8c414388f628d122517f3a1f3a31b3a')
+            '9fd08d03cf2de3325ca2c52282560a0b6ea63ee7801dc71d199e40c7a616d655')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase

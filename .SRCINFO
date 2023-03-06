@@ -12,6 +12,7 @@ pkgbase = linux-mainline
 	makedepends = perl
 	makedepends = tar
 	makedepends = xz
+	makedepends = gettext
 	makedepends = xmlto
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
@@ -26,7 +27,7 @@ pkgbase = linux-mainline
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	sha256sums = SKIP
-	sha256sums = 0571ea17a2e38458096b679418197bbea8c414388f628d122517f3a1f3a31b3a
+	sha256sums = 9fd08d03cf2de3325ca2c52282560a0b6ea63ee7801dc71d199e40c7a616d655
 
 pkgname = linux-mainline
 	pkgdesc = The Linux Mainline kernel and modules
