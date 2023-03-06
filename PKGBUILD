@@ -9,7 +9,7 @@ pkgdesc='Crypto.com DeFi Desktop Wallet'
 license=('Apache')
 url='https://github.com/crypto-com/chain-desktop-wallet'
 pkgver=1.4.1
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 makedepends=('yarn' 'fnm')
 source=("${_pkgbin}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
@@ -19,8 +19,8 @@ sha512sums=('cccc235b644a232ca09d2c456d9f93a38dfaf7a184c6d5b286c32bc2e4e55d69e6d
 
 _check_nodejs() {
   exp_ver=$(cat .node-version)
-  use_ver=$(node --version)
-  if [[ "${exp_node}" != "${use_node}" ]]
+  use_ver=$(node -v)
+  if [[ "${exp_ver}" != "${use_ver}" ]]
   then
     echo "Using the wrong version of NodeJS! Expected [${exp_ver}] but using [${use_ver}]."
     exit 1
