@@ -9,8 +9,8 @@
 #
 
 pkgname=souffle
-pkgver=2.3
-pkgrel=2
+pkgver=2.4
+pkgrel=1
 pkgdesc="Soufflé is a translator of declarative Datalog programs into the C++ language"
 arch=('any')
 url="https://github.com/souffle-lang/souffle"
@@ -21,7 +21,7 @@ makedepends=('git' 'cmake>=3.15' 'bison>=3.0.4' 'flex' 'libffi' 'ncurses' 'zlib'
 optdepends=('bash-completion')
 provides=('souffle')
 conflicts=('souffle-git')
-source=(souffle-2.3.tar.gz::https://github.com/souffle-lang/souffle/archive/2.3.tar.gz)
+source=(souffle-2.4.tar.gz::https://github.com/souffle-lang/souffle/archive/2.4.tar.gz)
 md5sums=('SKIP')
 
 build() {
