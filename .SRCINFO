@@ -1,0 +1,15 @@
+pkgbase = anek
+	pkgdesc = Tool to run commands based on a templates
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/Atreyagaurav/anek
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	source = git+https://github.com/Atreyagaurav/anek.git
+	md5sums = SKIP
+
+pkgname = anek
