@@ -4,12 +4,12 @@
 pkgname=qemacs-git
 pkgdesc="QEmacs (Quick Emacs) is a very small editor with Emacs look and feel, syntax highlighting, UTF-8, dired mode with preview window, and many other features."
 
-pkgver=r1188.216b3ff
+pkgver=r1200.909f097
 pkgrel=1
 _gitname="qemacs"
 arch=('x86_64')
 url="https://github.com/qemacs/qemacs"
-license=('LGPL2.1')
+license=('MIT')
 depends=('libpng' 'libxv')
 optdepends=('jp2a: for converting JPG images to ASCII')
 makedepends=('git' 'libxrender' 'texi2html')
@@ -36,7 +36,8 @@ build() {
 package() {
   cd "$srcdir/$_gitname"
   make -j1 DESTDIR=$pkgdir prefix="/usr/" datadir="/usr/share" mandir="/usr/share/man" install
-  install -Dm644 config.eg $pkgdir/usr/share/qe/config.eg
-  install -Dm644 qe-doc.html $pkgdir/usr/share/qe/qe-doc.html
-  install -Dm644 README.md $pkgdir/usr/share/qe/README.md
+  install -Dm644 config.eg "$pkgdir/usr/share/qe/config.eg"
+  install -Dm644 qe-doc.html "$pkgdir/usr/share/qe/qe-doc.html"
+  install -Dm644 README.md "$pkgdir/usr/share/qe/README.md"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

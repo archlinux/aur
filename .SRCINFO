@@ -1,10 +1,10 @@
 pkgbase = qemacs-git
 	pkgdesc = QEmacs (Quick Emacs) is a very small editor with Emacs look and feel, syntax highlighting, UTF-8, dired mode with preview window, and many other features.
-	pkgver = r1188.216b3ff
+	pkgver = r1200.909f097
 	pkgrel = 1
 	url = https://github.com/qemacs/qemacs
 	arch = x86_64
-	license = LGPL2.1
+	license = MIT
 	makedepends = git
 	makedepends = libxrender
 	makedepends = texi2html
