@@ -3,7 +3,7 @@
 
 pkgname=namcap-improved
 _pkgname=namcap
-pkgver=3.3.1+r41+gf84f3c4
+pkgver=3.3.1+r43+gb6265a7
 pkgrel=1
 pkgdesc="Improved Pacman package analyzer"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('python' 'pyalpm' 'licenses' 'binutils' 'elfutils' 'pkgconf' 'python-py
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'git')
 conflicts=("namcap=$pkgver")
 provides=("namcap")
-_commit=f84f3c4a847826ef2aa901a3b145faef5b81e79b
+_commit=b6265a735c722d39f223177119988153cfe07aed
 source=("git+https://gitlab.archlinux.org/pacman/namcap.git#commit=$_commit")
 sha512sums=('SKIP')
 
@@ -27,10 +27,7 @@ prepare() {
   cd $_pkgname
 
   # pydepends: Various improvements
-  git cherry-pick -n d00aa49b3e49bff80697ac501bc6d079723c9414
-
-  # externalhooks: Show hook/package name in warning message
-  git cherry-pick -n 9f1730b132adc7723d8878b1b29d3d87a22099a5
+  git cherry-pick -n 06aac190c1aadd54600aacf65002b81f372fce58
 }
 
 build() {
