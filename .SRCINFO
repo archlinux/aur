@@ -15,6 +15,6 @@ pkgbase = fig-nightly-bin
 	provides = fig
 	conflicts = fig
 	source = fig-nightly-bin-2.15.0-nightly.20230306.tar.xz::https://repo.fig.io/generic/nightly/asset/2.15.0-nightly.20230306/x86_64/fig.tar.xz
-	sha256sums = 62ad1720c9bce1ddc9307656c43995ef8dbe661e6d0fa8afee7ee941b90beea5
+	sha256sums = 275b6bd20fa2a24879f61489da4a25f4fe74b0fa080d9f298607e21f5e507836
 
 pkgname = fig-nightly-bin
