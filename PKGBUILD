@@ -6,7 +6,7 @@
 ## GPG key: https://github.com/jsirois.gpg
 
 pkgname=python-pex
-pkgver=2.1.109
+pkgver=2.1.126
 pkgrel=1
 arch=('any')
 pkgdesc='Generates executable Python environments'
@@ -41,6 +41,6 @@ build() {
 
 package() {
 	cd "$pkgname"
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
-	install -Dm644 docs/_build/man/pex.1 -t "$pkgdir/usr/share/man/man1/"
+	python -m installer --destdir="$pkgdir/" dist/*.whl
+	install -Dvm644 docs/_build/man/pex.1 -t "$pkgdir/usr/share/man/man1/"
 }

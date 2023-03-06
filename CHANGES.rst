@@ -1,6 +1,267 @@
 Release Notes
 =============
 
+2.1.126
+-------
+
+This release fixes a long standing (> 4 years old!) concurrency bug
+when building the same sdist for the 1st time and racing another Pex
+process doing the same sdist build.
+
+* Guard against racing sdist builds. (#2080)
+  `PR #2080 <https://github.com/pantsbuild/pex/pull/2080>`_
+
+2.1.125
+-------
+
+This release makes ``--platform`` and ``--complete-platform`` resolves
+and locks as permissive as possible. If such a resolve or lock only has
+an sdist available for a certain project, that sdist will now be used if
+it builds to a wheel compatible with the specified foreign platform(s).
+
+* Attempt "cross-builds" of sdists for foreign platforms. (#2075)
+  `PR #2075 <https://github.com/pantsbuild/pex/pull/2075>`_
+
+2.1.124
+-------
+
+This release adds support for specifying ``--non-hermetic-venv-scripts``
+when building a ``--venv`` PEX. This can be useful when integrating with
+frameworks that do setup via ``PYTHONPATH`` manipulation.
+
+Support for Pip 23.0.1 and setuptools 67.4.0 is added via
+``--pip-version 23.0.1``.
+
+Additionally, more work towards hardening Pex against rare concurrency
+issues in its atomic directory handling is included.
+
+* Introduce ``--non-hermetic-venv-scripts``. (#2068)
+  `PR #2068 <https://github.com/pantsbuild/pex/pull/2068>`_
+
+* Wrap inter-process locks in in-process locks. (#2070)
+  `PR #2070 <https://github.com/pantsbuild/pex/pull/2070>`_
+
+* Add support for Pip 23.0.1. (#2072)
+  `PR #2072 <https://github.com/pantsbuild/pex/pull/2072>`_
+
+2.1.123
+-------
+
+This release fixes a few ``pex3 lock create`` bugs.
+
+There was a regression introduced in Pex 2.1.122 where projects that
+used a PEP-518 ``[build-system] requires`` but specified no
+corresponding ``build-backend`` would fail to lock.
+
+There were also two long standing issues handling more exotic direct
+reference URL requirements. Source archives with names not following the
+standard Python sdist naming scheme of
+``<project name>-<version>.{zip,tar.gz}`` would cause a lock error. An
+important class of these is provided by GitHub's magic source archive
+download URLs. Also, although local projects addressed with Pip
+proprietary support for pure local path requirements would lock, the
+same local projects addressed via
+``<project name> @ file://<local project path>`` would also cause a lock
+error. Both of these cases are now fixed and can be locked successfully.
+
+When locking with an ``--interpreter-constraint``, any resolve
+traversing wheels using the ``pypyXY`` or ``cpythonXY`` python tags
+would cause the lock to error. Wheels with this form of python tag are
+now handled correctly.
+
+* Handle ``[build-system]`` with no build-backend. (#2064)
+  `PR #2064 <https://github.com/pantsbuild/pex/pull/2064>`_
+
+* Handle locking all direct reference URL forms. (#2060)
+  `PR #2060 <https://github.com/pantsbuild/pex/pull/2060>`_
+
+* Fix python tag handling in IC locks. (#2061)
+  `PR #2061 <https://github.com/pantsbuild/pex/pull/2061>`_
+
+2.1.122
+-------
+
+This release fixes posix file locks used by Pex internally and enhances
+lock creation to support locking sdist-only C extension projects that
+do not build on the current platform. Pex is also updated to support
+``--pip-version 22.3.1`` and ``--pip-version 23.0``, bringing it up to
+date with the latest Pip's available.
+
+* Support the latest Pip releases: 22.3.1 & 23.0 (#2056)
+  `PR #2056 <https://github.com/pantsbuild/pex/pull/2056>`_
+
+* Lock sdists with ``prepare-metadata-for-build-wheel``. (#2053)
+  `PR #2053 <https://github.com/pantsbuild/pex/pull/2053>`_
+
+* Fix ``execute_parallel`` "leaking" a thread. (#2052)
+  `PR #2052 <https://github.com/pantsbuild/pex/pull/2052>`_
+
+2.1.121
+-------
+
+This release fixes two bugs brought to light trying to interoperate with
+Poetry projects.
+
+* Support space separated markers in URL reqs. (#2039)
+  `PR #2039 <https://github.com/pantsbuild/pex/pull/2039>`_
+
+* Handle file:// URL deps in distributions. (#2041)
+  `PR #2041 <https://github.com/pantsbuild/pex/pull/2041>`_
+
+2.1.120
+-------
+
+This release completes the ``--complete-platform`` fix started in
+Pex 2.1.116 by #1991. That fix did not work in all cases but now does.
+
+PEXes run in interpreter mode now support command history when the
+underlying interpreter being used to run the PEX does; use the
+``PEX_INTERPRETER_HISTORY`` bool env var to turn this on.
+
+Additionally, PEXes built with the combination
+``--layout loose --venv --no-venv-site-packages-copies`` are fixed to
+be robust to moves of the source loose PEX directory.
+
+* Fix loose --venv PEXes to be robust to moves. (#2033)
+  `PR #2033 <https://github.com/pantsbuild/pex/pull/2033>`_
+
+* Fix interpreter resolution when using --complete-platform with --resolve-local-platforms (#2031)
+  `PR #2031 <https://github.com/pantsbuild/pex/pull/2031>`_
+
+* Support REPL command history. (#2018)
+  `PR #2018 <https://github.com/pantsbuild/pex/pull/2018>`_
+
+2.1.119
+-------
+
+This release brings two new features. The venv pex tool now just warns when
+using ``--compile`` and there is a ``*.pyc`` compile error instead of failing
+to create the venv. Also, a new ``PEX_DISABLE_VARIABLES`` env var knob is added
+to turn off reading all ``PEX_*`` env vars from the environment.
+
+* Ignore compile error for PEX_TOOLS=1 (#2002)
+  `PR #2002 <https://github.com/pantsbuild/pex/pull/2002>`_
+
+* Add PEX_DISABLE_VARIABLES to lock down a PEX run. (#2014)
+  `PR #2014 <https://github.com/pantsbuild/pex/pull/2014>`_
+
+2.1.118
+-------
+
+This is a very tardy hotfix release for a regression introduced in Pex
+2.1.91 by #1785 that replaced sys.argv[0] with its fully resolved path.
+This prevented introspecting the actual file path used to launch the PEX
+which broke BusyBox-alike use cases.
+
+There is also a new ``--non-hermetic-scripts`` option accepted by the
+``venv`` tool to allow running console scripts with ``PYTHONPATH``
+adjustments to the ``sys.path``.
+
+* Remove un-needed realpathing of ``sys.argv[0]``. (#2007)
+  `PR #2007 <https://github.com/pantsbuild/pex/pull/2007>`_
+
+* Add ``--non-hermetic-scripts`` option to ``venv`` tool. (#2010)
+  `PR #2010 <https://github.com/pantsbuild/pex/pull/2010>`_
+
+2.1.117
+-------
+
+This release fixes a bug introduced in Pex 2.1.109 where the released
+Pex PEX could not be executed by PyPy interpreters. More generally, any
+PEX created with interpreter constraints that did not specify the Python
+implementation, e.g.: ``==3.8.*``, were interpreted as being CPython
+specific, i.e.: ``CPython==3.8.*``. This is now fixed, but if the
+intention of a constraint like ``==3.8.*`` was in fact to restrict to
+CPython only, interpreter constraints need to say so now and use
+``CPython==3.8.*`` explicitly.
+
+* Fix interpreter constraint parsing. (#1998)
+  `PR #1998 <https://github.com/pantsbuild/pex/pull/1998>`_
+
+2.1.116
+-------
+
+This release fixes a bug in ``--resolve-local-platforms`` when
+``--complete-platform`` was used.
+
+* Check for --complete-platforms match when --resolve-local-platforms (#1991)
+  `PR #1991 <https://github.com/pantsbuild/pex/pull/1991>`_
+
+2.1.115
+-------
+
+This release brings some attention to the ``pex3 lock export``
+subcommand to make it more useful when inter-operating with
+``pip-tools``.
+
+* Sort requirements based on normalized project name when exporting (#1992)
+  `PR #1992 <https://github.com/pantsbuild/pex/pull/1992>`_
+
+* Use raw version when exporting (#1990)
+  `PR #1990 <https://github.com/pantsbuild/pex/pull/1990>`_
+
+2.1.114
+-------
+
+This release brings two fixes for ``--venv`` mode PEXes.
+
+* Only insert "" to head of sys.path if a venv PEX runs in interpreter mode (#1984)
+  `PR #1984 <https://github.com/pantsbuild/pex/pull/1984>`_
+
+* Map pex python path interpreter to realpath when creating venv dir hash. (#1972)
+  `PR #1972 <https://github.com/pantsbuild/pex/pull/1972>`_
+
+2.1.113
+-------
+
+This is a hotfix release that fixes errors installing wheels when there
+is high parallelism in execution of Pex processes. These issues were a
+regression introduced by #1961 included in the 2.1.112 release.
+
+* Restore AtomicDirectory non-locked good behavior. (#1974)
+  `PR #1974 <https://github.com/pantsbuild/pex/pull/1974>`_
+
+2.1.112
+-------
+
+This release brings support for the latest Pip release and includes
+some internal changes to help debug intermittent issues some users are
+seeing that implicate what may be file locking related bugs.
+
+* Add support for ``--pip-version 22.3``. (#1953)
+  `PR #1953 <https://github.com/pantsbuild/pex/pull/1953>`_
+
+2.1.111
+-------
+
+This release fixes resolving requirements from a lock using arbitrary
+equality (``===``).
+
+In addition, you can now "inject" runtime environment variables and
+arguments into PEX files such that, when run, the PEX runtime ensures
+those environment variables and command line arguments are passed to
+the PEXed application. See `PEX Recipes
+<https://pex.readthedocs.io/en/latest/recipes.html
+#uvicorn-and-other-customizable-application-servers>`_ for more
+information.
+
+* Fix lock resolution to handle arbitrary equality. (#1951)
+  `PR #1951 <https://github.com/pantsbuild/pex/pull/1951>`_
+
+* Support injecting args and env vars in a PEX. (#1948)
+  `PR #1948 <https://github.com/pantsbuild/pex/pull/1948>`_
+
+2.1.110
+-------
+
+This release fixes Pex runtime ``sys.path`` scrubbing for cases where
+Pex is not the main entry point. An important example of this is in
+Lambdex where the AWS Lambda Python runtime packages (``boto3`` and
+``botocore``) are leaked into the PEX runtime ``sys.path``.
+
+* Fix ``sys.path`` scrubbing. (#1946)
+  `PR #1946 <https://github.com/pantsbuild/pex/pull/1946>`_
+
 2.1.109
 -------
 
