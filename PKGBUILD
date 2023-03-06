@@ -3,13 +3,13 @@
 pkgname=gomopho
 _realname=GoMoPho
 pkgver=3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Google motion photos video extractor (extract MP4 from MVIMG)"
 arch=(x86_64)
 url="https://github.com/cliveontoast/GoMoPho"
 license=('GPL')
 groups=()
-depends=(openssl-1.1)
+depends=(openssl-1.1 icu69-bin)
 makedepends=()
 optdepends=()
 provides=()
