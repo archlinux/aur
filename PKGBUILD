@@ -10,7 +10,7 @@ pkgname='dual-root'
 pkgdesc='Dual Root Tools for Managing dual esp systems'
 _gitname='dual-root'
 
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 url="https://github.com/gene-git/dual-root"
 
