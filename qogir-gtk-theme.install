@@ -1,3 +1,13 @@
 pre_remove() {
-	/usr/bin/qogir-gtk-theme/install.sh --uninstall --libadwaita
+    INSTALL_OPTS="$(/usr/bin/grep \
+        --extended-regexp \
+        --max-count=1 \
+        --line-regexp \
+        --no-messages \
+        --invert-match '^\s*$|#.+' \
+        "/etc/qogir-gtk-theme/options.txt" || echo -n '--theme all --tweaks image square round --icon arch')"
+
+    if [[ "$INSTALL_OPTS" ~= (-l|--libadwaita) ]]; then
+        /usr/bin/qogir-gtk-theme/install.sh --uninstall --libadwaita
+    fi
 }
