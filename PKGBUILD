@@ -25,7 +25,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/download/FreeFileSync_${pkgver}_Linux.tar.gz"
 )
 sha256sums=(
-    "3b8121fdf7d91d19680b6ff91f6f10ba79193379e1fdad5227d805b4ea65312a"
+    "21ad62ebf8659bb49a27d1cb1ff29fb7073f206a0ebd4c44340a9afa2b7da218"
     "c38a80469c1d91a3655bbd326d9fe58caac42e6ca8b0f9216f180dfaf941c5fe"
 )
 options=(!strip)
