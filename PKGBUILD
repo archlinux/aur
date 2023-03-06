@@ -13,7 +13,7 @@
 
 pkgname=mesa-amdonly-gaming-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=23.1.0_devel.167344.bf6c214b258.932463d268438ce945b21718552d92ab
+pkgver=23.1.0_devel.167746.399012a911b.932463d268438ce945b21718552d92ab
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
@@ -80,7 +80,7 @@ prepare() {
 }
 
 build () {
-    meson setup mesa _build \
+    arch-meson mesa _build \
        -D b_ndebug=true \
        -D b_lto=false \
        -D platforms=x11,wayland \
@@ -104,6 +104,7 @@ build () {
        -D glvnd=true \
        -D glx=dri \
        -D libunwind=disabled \
+       -D android-libbacktrace=disabled \
        -D llvm=enabled \
        -D shared-llvm=enabled \
        -D lmsensors=enabled \
@@ -114,11 +115,9 @@ build () {
        -D tools=[] \
        -D zstd=enabled \
        -D video-codecs=vc1dec,h264dec,h264enc,h265dec,h265enc \
-       -D buildtype=plain \
        --wrap-mode=nofallback \
-       -D prefix=/usr \
        -D sysconfdir=/etc
-       
+    
     meson configure --no-pager _build
     
     ninja $NINJAFLAGS -C _build
