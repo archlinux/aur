@@ -2,7 +2,7 @@
 
 pkgname=octopi-notifier-noknotify
 pkgdesc="Notifier for Octopi without knotify"
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/aarnt/octopi"
@@ -13,7 +13,7 @@ makedepends=('qt5-declarative')
 optdepends=('xfce4-notifyd: for notifications in XFCE')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 install=octopi.install
-sha256sums=('3ee7f9fb22ccf72269576cc20aa488956d722ce0da1137977042b911e23b3bf4')
+sha256sums=('9b548661807fe8eecc20726a4aefa25658c4ce1bf1bc8f51b54829809d76f12d')
 
 prepare() {
 	_cpucount=$(grep -c processor /proc/cpuinfo 2>/dev/null)

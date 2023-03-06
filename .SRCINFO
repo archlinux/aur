@@ -1,6 +1,6 @@
 pkgbase = octopi-notifier-noknotify
 	pkgdesc = Notifier for Octopi without knotify
-	pkgver = 0.13.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/aarnt/octopi
 	install = octopi.install
@@ -15,7 +15,7 @@ pkgbase = octopi-notifier-noknotify
 	conflicts = octopi-notifier-kde
 	conflicts = octopi-notifier-kde4
 	conflicts = octopi-notifier
-	source = octopi-notifier-noknotify-0.13.0.tar.gz::https://github.com/aarnt/octopi/archive/v0.13.0.tar.gz
-	sha256sums = 3ee7f9fb22ccf72269576cc20aa488956d722ce0da1137977042b911e23b3bf4
+	source = octopi-notifier-noknotify-0.14.0.tar.gz::https://github.com/aarnt/octopi/archive/v0.14.0.tar.gz
+	sha256sums = 9b548661807fe8eecc20726a4aefa25658c4ce1bf1bc8f51b54829809d76f12d
 
 pkgname = octopi-notifier-noknotify
