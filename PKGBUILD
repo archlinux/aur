@@ -1,8 +1,8 @@
 # Maintainer: necklace <ns@nsz.no>
 
 pkgname=iridium-rpm
-pkgver=109.0
-pkgrel=2
+pkgver=110.0
+pkgrel=1
 _folder='iridium-browser'
 _name='iridium-browser'
 pkgdesc='Iridium browser - rhel/centos build altered for arch'
@@ -15,9 +15,9 @@ depends=('ffmpeg4.4' 'pipewire' 're2' 'snappy' 'minizip')
 options=('!emptydirs' '!strip')
 makedepends=('patchelf')
 
-source=('https://downloads.iridiumbrowser.de/epel8/iridium-browser-2023.01.109-1.el8.x86_64.rpm')
+source=('https://downloads.iridiumbrowser.de/epel8/iridium-browser-2023.02.110-1.el8.x86_64.rpm')
 
-sha256sums=('03484a33f1c0e5b0a029e46cb8a036798b4b653430165847c7a4d911de8a025a')
+sha256sums=('80247b68a0ae6aacc4f80d88dfe5d2a325f94fbfe508c543a7b15efb2f8eb86b')
 
 package() (
     mkdir -p "${pkgdir}/usr/share/"
@@ -32,7 +32,7 @@ package() (
     #ln -s "/usr/lib/libavformat.so.58.76.100" "${pkgdir}/usr/lib/libavformat.so.58.76"
     #ln -s "/usr/lib/libavutil.so.56.70.100" "${pkgdir}/usr/lib/libavutil.so.56.70"
     #ln -s "/usr/lib/libevent-2.1.so" "${pkgdir}/usr/lib/libevent-2.1.so.6"
-    patchelf "${pkgdir}/usr/lib/${_folder}/${_name}" --replace-needed "libffi.so.6" "libffi.so.8"
+    #patchelf "${pkgdir}/usr/lib/${_folder}/${_name}" --replace-needed "libffi.so.6" "libffi.so.8"
     #patchelf "${pkgdir}/usr/lib/${_folder}/${_name}" --replace-needed "libavformat.so.58.76" "libavformat.so.58"
     #patchelf "${pkgdir}/usr/lib/${_folder}/${_name}" --replace-needed "libavutil.so.56.70" "libavutil.so.56"
     ln -s "${pkgdir}/usr/bin/iridium-browser" "${pkgdir}/usr/bin/iridium"
