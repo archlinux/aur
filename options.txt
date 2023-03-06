@@ -1,0 +1,5 @@
+# Use this file to specify any of the options from https://github.com/vinceliuice/Qogir-theme#install
+# Location: /etc/qogir-gtk-theme/options.txt
+
+# Specify options below this line (-d is ignored)
+# ex. --theme all --tweaks image square round --icon arch
