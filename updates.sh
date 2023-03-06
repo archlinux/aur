@@ -16,16 +16,21 @@ _version=${_version//v/}
 #if [[ $_vrc != "" ]]; then
 #	_vrc="-${_vrc##*-}"
 #fi
-echo ${_version}
-echo ${_vrc}
-echo "updating checksums and version for PKGBUILDs"
-sed -i "s/^pkgver=.*/pkgver='${_version}'/" PKGBUILD && sed -i "s/^_rc=.*/_rc='${_vrc}'/" PKGBUILD
+source PKGBUILD
+_prel="$(curl -s https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=${pkgname} | grep pkgrel | cut -d "=" -f2)"
+if [[ -z _prelnew ]] ; then
+_prelnew=$_prel
+let _prelnew++
+fi
+echo "setting pkgver=$_version, pkgrel=${_prelnew} for PKGBUILD"
+sed -i "s/^pkgver=.*/pkgver='${_version}'/" PKGBUILD && sed -i "s/^_rc=.*/_rc='${_vrc}'/" PKGBUILD && sed -i "s/^pkgrel=.*/pkgrel='${_prelnew}'/" PKGBUILD
+echo "updating checksums for PKGBUILD(s)"
 updpkgsums
 ls *PKGBUILD | parallel updpkgsums {}
 echo "creating .SRCINFO"
 makepkg --printsrcinfo > .SRCINFO
 #sha256sum skywire-scripts.tar.gz
-echo "don't forget to increment pkgrel if you edited the PKGBUILD"
+echo "old pkgrel=$_prel"
 source PKGBUILD && echo "pkgver=${pkgver}" && echo "pkgrel=${pkgrel}"
 echo
 echo "git add -f" *PKGBUILD " .SRCINFO skywire.install updates.sh test.sh skycoin"

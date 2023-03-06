@@ -6,7 +6,7 @@ _githuborg=${FORK:-$_projectname}
 pkgdesc="Skywire Mainnet Node implementation. Skycoin.com"
 _pkggopath=github.com/${_githuborg}/${_pkgname}
 pkgver='1.3.6'
-pkgrel=5
+pkgrel='7'
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
@@ -111,7 +111,7 @@ _msg2 'creating dirs'
 mkdir -p "${_pkgdir}/usr/bin"
 mkdir -p "${_pkgdir}/${_dir}/bin"
 mkdir -p "${_pkgdir}/${_dir}/apps"
-mkdir -p "${_pkgdir}/${_dir}/local"
+mkdir -p "${_pkgdir}/${_dir}/local/custom"
 mkdir -p "${_pkgdir}/${_dir}/scripts"
 mkdir -p "${_pkgdir}/${_systemddir}"
 _msg2 'installing binaries'

@@ -1,7 +1,6 @@
 source deb.PKGBUILD
 pkgdesc="Skywire Mainnet Node implementation. Debian package; cross-compile."
 _pkgarches=('armhf' 'arm64' 'amd64')
-##STATIC CROSS-COMPILATION DEPENDENCIES NOT SATISFIABLE!!!
 makedepends=("${makedepends[@]}" "aarch64-linux-musl-cross-bin" "muslcc-arm-linux-musleabihf-cross-bin" "muslcc-arm-linux-musleabi-cross-bin")
 
 prepare() {
