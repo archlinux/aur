@@ -1,0 +1,13 @@
+pkgbase = reflex-3-3
+	pkgdesc = Fork of re/flex v3.3 (The regex-centric, fast lexical analyzer generator for C++) intended for use in EPITA school project TIGER.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/MajorBarnulf/RE-flex
+	arch = x86_64
+	license = BSD 3-Clause
+	depends = gcc
+	depends = git
+	source = https://github.com/MajorBarnulf/RE-flex/releases/download/v1.0.0/reflex-3-3-1.0.0.tar.gz
+	sha256sums = 781fe51d232f881ce97d0547bf57508c7620a2cf1b9e1fdf63c976c2181df701
+
+pkgname = reflex-3-3
