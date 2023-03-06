@@ -16,8 +16,6 @@ source=("${_source[@]}"
 "${_release_url}-arm64.tar.gz"
 "${_release_url}-armhf.tar.gz"
 "${_release_url}-arm.tar.gz"
-"postinst.sh"
-"prerm.sh"
 )
 noextract=(
 "${_binarchive}-amd64.tar.gz"
@@ -37,9 +35,7 @@ sha256sums=('a55c345c144f18a1a58161630635aa08c7ff6cd4a73752368d0eaa43ecf7af92'
             'd6de9eaaafcbe0117e70be2bf490f1d43ce8c0ffb6348d68e24c7d4175025a53'
             'f558abaa1de6ffc7c70ffefbeb691bc44ca6c0ee64802f0a6ba6f57e2b5a2e2f'
             '500906d22415c2851b87b87bdf2c1caa066908101555e90254a9ae57c93bf43b'
-            '4de6faf7eb8b97f9dc87397ab221eaa935141d2a92948d2abfca5d7fbb79274a'
-            '7b17a55e64d1371fecd24edc3da7c6a762cf2b3d058f6fc4a5dc7c5f9b4cff09'
-            '233ccf0e87b37e782828f53960e05e478cf381f61bbfdb16a0cc0254ee8be7c2')
+            '4de6faf7eb8b97f9dc87397ab221eaa935141d2a92948d2abfca5d7fbb79274a')
 
 build() {
   _msg2 'creating the DEBIAN/control files'
@@ -93,10 +89,11 @@ _msg2 'installing control file and install scripts'
 install -Dm755 "${srcdir}/${_pkgarch}.control" "${_pkgdir}/DEBIAN/control"
 echo -e "#!/bin/bash
 [[ -f /opt/skywire/scripts/skywire-autoconfig ]]  && /opt/skywire/scripts/skywire-autoconfig
-"| tee "${_pkgdir}/DEBIAN/postinst" ; install -Dm755  "${_pkgdir}/DEBIAN/postinst"
+"| tee "${_pkgdir}/DEBIAN/postinst"
 echo -e "#!/bin/bash
 [[ -d /opt/skywire/ ]] && rm -rf /opt/skywire/
-"| tee "${_pkgdir}/DEBIAN/postrm" ; install -Dm755  "${_pkgdir}/DEBIAN/postrm"
+"| tee "${_pkgdir}/DEBIAN/postrm"
+chmod +x "${_pkgdir}/DEBIAN/"*
 _msg2 'creating the debian package'
 #create the debian package!
 cd "${pkgdir}"

@@ -21,7 +21,8 @@ sha256sums=('SKIP'
             'a6941680b5858ca3e0c85d9bf5824455a0c95524b61e42352462f2abbb750495'
             '44a25adf22c87bf7a2102a7fc1c9f566d239ef3f3d7b3dc2bcd0f2c632695a17'
             '8519d027325dcb34877bb5b0fb0c3c035d7589c0046b53935e2b949d436c4be3'
-            '41c0a4a42ae64479b008392053f4a947618acd6bb9c3ed2672dafdb2453caa14')
+            '41c0a4a42ae64479b008392053f4a947618acd6bb9c3ed2672dafdb2453caa14'
+            'dcb3b8bc1f6fa58dd64b95045b8b010489352c815f737bf2cbf8812973a8dc49')
 
 pkgver() {
 _version=$(git ls-remote --tags --refs --sort="version:refname" ${url}.git | tail -n1)
