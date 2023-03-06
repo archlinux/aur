@@ -1,8 +1,9 @@
 # Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 
 pkgname=viewmailattachments
-pkgver=r7.c0e5a9e
-_git_SHA=c0e5a9e0bf22591b49ba63bf548b442df651665d
+_rev=11
+_git_SHA=2de88ef1e82cb342e3902d5330ce4feff970eaf9
+pkgver=r${_rev}.$(grep -o '^.\{7\}' <<<${_git_SHA})
 pkgrel=1
 pkgdesc='Show HTML messages in an external browser, including embedded images'
 url='https://github.com/akkana/scripts'
@@ -11,9 +12,9 @@ license=('GPL2')
 depends=('python')
 
 source=(${pkgname}.py-${pkgver}::"https://raw.githubusercontent.com/akkana/scripts/${_git_SHA}/${pkgname}.py"
-        ${pkgname}_no_private_tab_firefox.patch)
-sha256sums=('df3b0163b5d008cbdd2eadf31b5aace66251ce624f20c95c3220f5b2897b6873'
-            'f288921c859db46a9b0ccb31bb7cc802f60f901b6f2f15e9eeb06fb8c6c85844')
+        ${pkgname}_no_private_tab_firefox.r${_rev}.patch)
+sha256sums=('ca67b340aad69cef42281a2e41240ed3df4013b5ef1bf2e818610767d55b2b22'
+            'a9b9be2d477e94d6592d2a5245adc1353a44713dd394474e2965478d817f8155')
 
 prepare() {
   # remove .py suffix from the comments. Script will be installed without this suffix.
@@ -22,8 +23,7 @@ prepare() {
   # sed "s/${pkgname}.py/${pkgname}/g" ${pkgname}.py-${pkgver} > ${pkgname}-${pkgver}
 
   # disable private tabs in Firefox
-pwd
-  patch ${pkgname}-${pkgver} <"$srcdir/${pkgname}_no_private_tab_firefox.patch"
+  patch ${pkgname}-${pkgver} <"$srcdir/${pkgname}_no_private_tab_firefox.r${_rev}.patch"
 }
 
 package() {

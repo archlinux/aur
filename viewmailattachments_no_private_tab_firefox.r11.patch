@@ -1,0 +1,13 @@
+--- viewmailattachments.orig	2023-03-06 22:39:35.926105463 +1100
++++ viewmailattachments	2023-03-06 22:41:21.443805866 +1100
+@@ -87,8 +87,8 @@
+     }),
+ 
+     ('firefox', {
+-        'ARGS_FIRST': [ "--new-tab", "--private-window" ],
+-        'ARGS': [  "--private-window" ],
++        'ARGS_FIRST': [ "--new-tab" ],
++        'ARGS': [  "--new-tab" ],
+         'BACKGROUND': True,
+         'CONVERT_PDF_TO_HTML': False,
+     })
