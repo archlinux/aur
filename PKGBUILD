@@ -1,9 +1,10 @@
 # Maintainer: Parker Reed <parker.l.reed@gmail.com>
+# Co-Maintainer: Martin Rys <rys.pw/contact>
 # PKGBUILD that builds package from git.
 # Run 'makepkg -i' and hope for best :)
 
 pkgname=sc-controller-git
-pkgver=v0.4.8.6.r14.3ce2d23c
+pkgver=0.4.8.9.r2.8a038446
 pkgrel=1
 pkgdesc='User-mode driver and GTK3 based GUI for Steam Controller'
 arch=('any')
@@ -19,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --tags --long | sed -e 's/\([^-]*-\)g/r\1/;s/-/./g' -e 's/^v//')"
 }
 
 build() {
