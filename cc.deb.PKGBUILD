@@ -23,7 +23,7 @@ noextract=(
 "${_binarchive}-amd64.tar.gz"
 "${_binarchive}-arm64.tar.gz"
 "${_binarchive}-armhf.tar.gz"
-"${_release_url}-arm.tar.gz"
+"${_binarchive}-arm.tar.gz"
 )
 sha256sums=('21775a1917f7fabea78d2b631a70c6989b910ee191b822c65fb6f290458dbced'
             '40c80ccce9e89ae559050b943be1f09d905476c614a72d74fac2a58c821ac058'
@@ -42,15 +42,20 @@ sha256sums=('21775a1917f7fabea78d2b631a70c6989b910ee191b822c65fb6f290458dbced'
 
 build() {
   _msg2 'creating the DEBIAN/control files'
-  for i in ${_pkgarches[@]}; do
-    _msg2 "_pkgarch=$i"
-    local _pkgarch=$i
+  for _i in ${_pkgarches[@]}; do
+    [[ ${_i} == "armel" ]] && continue
+    _msg2 "_pkgarch=${_i}"
+    local _pkgarch=${_i}
     #create control file for the debian package
     echo "Package: ${pkgname}" > ${srcdir}/${_pkgarch}.control
     echo "Version: ${pkgver}-${_pkgrel}" >> ${srcdir}/${_pkgarch}.control
     echo "Priority: optional" >> ${srcdir}/${_pkgarch}.control
     echo "Section: web" >> ${srcdir}/${_pkgarch}.control
-    echo "Architecture: ${_pkgarch}" >> ${srcdir}/${_pkgarch}.control
+    if [[ ${_pkgarch} == "armhf" ]] ; then
+      echo "Architecture: armhf, armel" >> ${srcdir}/${_pkgarch}.control
+    else
+      echo "Architecture: ${_pkgarch}" >> ${srcdir}/${_pkgarch}.control
+    fi
     echo "Depends: ${_debdeps}" >> ${srcdir}/${_pkgarch}.control
     echo "Provides: ${_pkgname}" >> ${srcdir}/${_pkgarch}.control
     echo "Maintainer: ${_githuborg}" >> ${srcdir}/${_pkgarch}.control
@@ -61,6 +66,8 @@ build() {
 package() {
 
 for _i in "${_pkgarches[@]}"; do
+  [[ ${_i} == "armel" ]] && continue
+
 _msg2 "_pkgarch=${_i}"
 local _pkgarch="${_i}"
 local _pkgarch1="${_pkgarch}"
@@ -90,7 +97,6 @@ _package
 
 _msg2 'installing control file and install scripts'
 install -Dm755 "${srcdir}/${_pkgarch}.control" "${_pkgdir}/DEBIAN/control"
-#_debscripts
 #install -Dm755 ${srcdir}/${_scripts}/preinst.sh ${_pkgdir}/DEBIAN/preinst
 install -Dm755 "${srcdir}/postinst.sh" "${_pkgdir}/DEBIAN/postinst"
 install -Dm755 "${srcdir}/prerm.sh" "${_pkgdir}/DEBIAN/prerm"
@@ -104,33 +110,4 @@ mv *.deb ../../
 done
 #exit so the arch package doesn't get built
 exit
-}
-
-_descripts() {
-  func=$1
-  input_file=$2
-  # Check if the function is defined in the .install file
-  if grep -q "^$func()" "${install}"; then
-    # Create the script
-    case "$func" in
-      pre_install)  _script="preinst";;
-      post_install) _script="postinst";;
-      pre_upgrade)  _script="preinst";;
-      post_upgrade) _script="postinst";;
-      pre_remove)   _script="prerm";;
-      post_remove)  _script="postrm";;
-      backup)       _script="preinst";;
-      restore)      _script="postinst";;
-      clean)        _script="postrm";;
-      check)        _script="preinst";;
-      fix_install)  _script="postinst";;
-      fix_upgrade)  _script="postinst";;
-      *)            echo "Unknown function: $func"; continue;;
-    esac
-    _debscript="${_script}.sh"
-    echo "#!/bin/sh" > "${_pkgdir}/DEBIAN/${_debscript}"
-    echo "$(grep -A999 "^$func()" "${_pkgdir}/DEBIAN/${_debscript}" | sed '/^}$/Q')" >> "${_pkgdir}/DEBIAN/${_debscript}"
-    chmod +x "${_pkgdir}/DEBIAN/${_debscript}"
-    _msg3 "Created ${_debscript}"
-  fi
 }

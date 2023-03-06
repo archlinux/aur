@@ -1,5 +1,4 @@
 #!/bin/bash
-
 _version=$(git ls-remote --tags --refs --sort="version:refname" https://github.com/skycoin/skywire.git | tail -n1)
 _version=${_version##*/}
 _version=${_version%%-*}
@@ -17,17 +16,19 @@ _version=${_version//v/}
 #if [[ $_vrc != "" ]]; then
 #	_vrc="-${_vrc##*-}"
 #fi
-echo "remote version="${_version}
-if [[ ${_vrc} != "" ]]; then
-echo "remote version="${_vrc}
-fi
-echo "updating checksums and version for PKGBUILD"
-sed -i "s/^pkgver=.*/pkgver='${_version}'/" PKGBUILD && sed -i "s/^_rc=.*/_rc='${_vrc}'/" PKGBUILD && updpkgsums
+source PKGBUILD
+_prel="$(curl -s https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=${pkgname} | grep pkgrel | cut -d "=" -f2)"
+_prelnew=$_prel
+let _prelnew++
+echo "setting pkgver=$_version, pkgrel=${_prelnew} for PKGBUILD"
+sed -i "s/^pkgver=.*/pkgver='${_version}'/" PKGBUILD && sed -i "s/^_rc=.*/_rc='${_vrc}'/" PKGBUILD && sed -i "s/^pkgrel=.*/pkgrel='${_prelnew}'/" PKGBUILD
+echo "updating checksums for PKGBUILD(s)"
+updpkgsums
 find *.PKGBUILD | parallel unbuffer updpkgsums {}
 echo "creating .SRCINFO"
 makepkg --printsrcinfo > .SRCINFO
 #sha256sum skywire-scripts.tar.gz
-echo "don't forget to increment pkgrel if you edited the PKGBUILD"
+echo "old pkgrel=$_prel"
 source PKGBUILD && echo "pkgver=${pkgver}" && echo "pkgrel=${pkgrel}"
 echo
 echo "git add -f " *PKGBUILD " .SRCINFO skywire-autoconfig " *.desktop *.png *.service *.sh *.conf *.install
