@@ -1,5 +1,5 @@
 [Unit]
-Description=A Linux compatible UI for the Elgato Stream Deck.
+Description=Streamdeck-UI: A Linux compatible UI for the Elgato Stream Deck.
 
 [Service]
 Type=simple
