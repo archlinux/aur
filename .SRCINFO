@@ -1,0 +1,19 @@
+pkgbase = pdfcpu-bin
+	pkgdesc = A PDF processor written in Go.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/pdfcpu/pdfcpu
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	license = Apache
+	conflicts = pdfcpu
+	conflicts = pdfcpu-git
+	source_x86_64 = pdfcpu-x86_64-0.4.0-1.tar.xz::https://github.com/pdfcpu/pdfcpu/releases/download/v0.4.0/pdfcpu_0.4.0_Linux_x86_64.tar.xz
+	sha256sums_x86_64 = 1dd1f08a94753ddd0842e97b709753aef963eec42f65813bb66814c6699f3cf9
+	source_aarch64 = pdfcpu-aarch64-0.4.0-1.tar.xz::https://github.com/pdfcpu/pdfcpu/releases/download/v0.4.0/pdfcpu_0.4.0_Linux_arm64.tar.xz
+	sha256sums_aarch64 = 9d19aef2af0c95732142ca41c95743c614150e7971298c85568ff41cb32ad2fc
+	source_i686 = pdfcpu-i686-0.4.0-1.tar.xz::https://github.com/pdfcpu/pdfcpu/releases/download/v0.4.0/pdfcpu_0.4.0_Linux_i386.tar.xz
+	sha256sums_i686 = 93a9fc062ab49d3a8079efba7fd3a13cb9c8cf611d7e3aac9cce000ce05404dc
+
+pkgname = pdfcpu-bin
