@@ -12,6 +12,6 @@ pkgbase = spoofax3-jvm-bin
 	source = spoofax3-jvm-bin-0.19.2-7.zip::https://artifacts.metaborg.org/service/local/artifact/maven/redirect?r=snapshots&g=org.metaborg&a=spoofax.lwb.eclipse.repository&c=spoofax3-linux-x86_64-jvm&p=zip&v=LATEST
 	source = spoofax3.desktop
 	sha256sums = SKIP
-	sha256sums = 9b29cb76ecff4dbd2f5aa404f8672cc96ca8ade6c41e9eedefe4a8b4f373336e
+	sha256sums = a6b57b78b855c00eb36abef337dc9dc439791bb2b0e0c268197b9c2bf0e0aba4
 
 pkgname = spoofax3-jvm-bin

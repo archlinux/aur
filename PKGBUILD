@@ -18,7 +18,7 @@ source=(
         "spoofax3.desktop"
 )
 sha256sums=('SKIP'
-            '9b29cb76ecff4dbd2f5aa404f8672cc96ca8ade6c41e9eedefe4a8b4f373336e')
+            'a6b57b78b855c00eb36abef337dc9dc439791bb2b0e0c268197b9c2bf0e0aba4')
 
 build() {
     chmod +x "$srcdir/Spoofax3/jvm/bin/java"
