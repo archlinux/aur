@@ -19,6 +19,12 @@ conflicts=("${_pkgname}")
 source=("${pkgname}::git+${url}#branch=main")
 sha512sums=('SKIP')
 
+_fnm_use() {
+  export FNM_DIR="${srcdir}/.fnm"
+  eval "$(fnm env --shell bash)"
+  fnm use --install-if-missing
+}
+
 _check_nodejs() {
   exp_ver=$(cat .nvmrc)
   use_ver=$(node -v)
@@ -29,17 +35,12 @@ _check_nodejs() {
   fi
 }
 
-prepare() {
-  export FNM_DIR="${srcdir}/.fnm"
-  cd "${pkgname}"
-  eval "$(fnm env --shell bash)"
-  fnm use --install-if-missing
-}
-
 build() {
   cd "${pkgname}"
 
+  _fnm_use
   _check_nodejs
+
   pnpm i --filter="ledger-live-desktop..." --filter="ledger-live" --frozen-lockfile --unsafe-perm
   pnpm build:lld
 
