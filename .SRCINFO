@@ -25,6 +25,7 @@ pkgbase = libdart
 	depends = libxi
 	depends = libxmu
 	depends = pagmo
+	depends = fmt
 	optdepends = pagmo: pagmo optimizer support
 	provides = dartsim
 	source = libdart-6.13.0.tar.gz::https://github.com/dartsim/dart/archive/v6.13.0.tar.gz

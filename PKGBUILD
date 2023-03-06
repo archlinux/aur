@@ -12,7 +12,7 @@ url="https://dartsim.github.io"
 license=('BSD')
 depends=('assimp' 'boost' 'eigen' 'fcl' 'libccd' 'bullet' 'coin-or-ipopt'
          'nlopt' 'octomap' 'ode' 'openscenegraph' 'tinyxml2' 'urdfdom'
-         'glu' 'freeglut' 'libxi' 'libxmu' 'pagmo')
+         'glu' 'freeglut' 'libxi' 'libxmu' 'pagmo' 'fmt')
 optdepends=('pagmo: pagmo optimizer support')
 makedepends=('cmake')
 provides=('dartsim')
@@ -32,6 +32,7 @@ build() {
     cmake .. \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_INSTALL_LIBDIR="lib" \
+        -DDART_TREAT_WARNINGS_AS_ERRORS="off"
 
     make
 }
