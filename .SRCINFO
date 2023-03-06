@@ -1,6 +1,6 @@
 pkgbase = exaile-git
 	pkgdesc = music player for gnome, similar to KDEs amarok
-	pkgver = 4.1.0alpha1+14+gcea417cb
+	pkgver = 4.1.3beta2+8+g863673ce
 	pkgrel = 1
 	epoch = 1
 	url = https://www.exaile.org
@@ -31,16 +31,16 @@ pkgbase = exaile-git
 	optdepends = cinnamon-screensaver: Pause on screensaver plugin
 	optdepends = xfce4-screensaver: Pause on screensaver plugin
 	optdepends = moodbar: Moodbar plugin
-	optdepends = python-musicbrainzngs: Musicbrainz cover search plugin
+	optdepends = python-musicbrainzngs: Musicbrainz cover search plugin & CD tags plugin
+	optdepends = python-discid: CD tags plugin
 	optdepends = ipython: Ipython console plugin
 	optdepends = python-pylast: Last.fm loved tracks plugin
 	optdepends = gst-plugins-bad: Additional audio codecs
 	optdepends = gst-plugins-ugly: Additional audio codecs
 	optdepends = spydaap-git: DAAP server/client
-	provides = exaile=4.1.0alpha1
+	provides = exaile=4.1.3beta2
 	conflicts = exaile
 	source = exaile::git+https://github.com/exaile/exaile.git
 	sha256sums = SKIP
 
 pkgname = exaile-git
-

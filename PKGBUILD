@@ -4,7 +4,7 @@
 _pkgname=exaile
 pkgname=${_pkgname}-git
 epoch=1
-pkgver=4.1.0alpha1+14+gcea417cb
+pkgver=4.1.3beta2+8+g863673ce
 pkgrel=1
 pkgdesc="music player for gnome, similar to KDEs amarok"
 arch=('any')
@@ -25,7 +25,8 @@ optdepends=('python-feedparser: podcasts plugin'
             'cinnamon-screensaver: Pause on screensaver plugin'
             'xfce4-screensaver: Pause on screensaver plugin'
             'moodbar: Moodbar plugin'
-            'python-musicbrainzngs: Musicbrainz cover search plugin'
+            'python-musicbrainzngs: Musicbrainz cover search plugin & CD tags plugin'
+            'python-discid: CD tags plugin'
             'ipython: Ipython console plugin'
             'python-pylast: Last.fm loved tracks plugin'
             'gst-plugins-bad: Additional audio codecs'
