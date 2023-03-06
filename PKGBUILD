@@ -18,7 +18,6 @@ optdepends=('unzip: zipped skins support')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 install="$_pkgname.install"
-_commit=a68beaf3768765968c560be074a59b450aa1b69c
 source=("https://distfiles.audacious-media-player.org/$_pkgname-$pkgver.tar.bz2")
 sha256sums=('27584dc845c7e70db8c9267990945f17322a1ecc80ff8b452e9ca916a0ce9091')
 
@@ -35,5 +34,6 @@ build() {
 package() {
   cd "$_pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
+  install -Dm644 contrib/audacious.appdata.xml -t "$pkgdir/usr/share/metainfo"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
