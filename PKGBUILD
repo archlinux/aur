@@ -9,13 +9,19 @@ pkgdesc='Crypto.com DeFi Desktop Wallet'
 license=('Apache')
 url='https://github.com/crypto-com/chain-desktop-wallet'
 pkgver=1.4.1
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 makedepends=('yarn' 'fnm')
 source=("${_pkgbin}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "chain-desktop-wallet.desktop")
 sha512sums=('cccc235b644a232ca09d2c456d9f93a38dfaf7a184c6d5b286c32bc2e4e55d69e6d78b6356d2a279b8669fe10428642c5cc93b6ff1402f55ddd9fbbc0bb263ff'
             'f7e4d91d7078a1d627995ffec39b4b67239827dbab0651909238a718ac4538bd6316c8f87430b244b13f617214171d6283ae3b1c268827b3d49f8dead5d2d71a')
+
+_fnm_use() {
+  export FNM_DIR="${srcdir}/.fnm"
+  eval "$(fnm env --shell bash)"
+  fnm use --install-if-missing
+}
 
 _check_nodejs() {
   exp_ver=$(cat .node-version)
@@ -27,16 +33,12 @@ _check_nodejs() {
   fi
 }
 
-prepare() {
-  export FNM_DIR="${srcdir}/.fnm"
-  cd "${_pkgbin}-${pkgver}"
-  eval "$(fnm env --shell bash)"
-  fnm use --install-if-missing
-}
-
 build() {
   cd "${_pkgbin}-${pkgver}"
+
+  _fnm_use
   _check_nodejs
+
   yarn install --frozen-lockfile
   yarn electron:build
 }
