@@ -1,6 +1,6 @@
 pkgbase = binutils-ia16
 	pkgdesc = IA-16 (Intel 16-bit x86) port of GNU Binutils
-	pkgver = 20190928
+	pkgver = 20221221
 	pkgrel = 1
 	url = https://github.com/tkchia/binutils-ia16
 	arch = x86_64
@@ -12,8 +12,7 @@ pkgbase = binutils-ia16
 	options = staticlibs
 	options = !distcc
 	options = !ccache
-	source = https://github.com/tkchia/binutils-ia16/archive/binutils-ia16-20190928.tar.gz
-	md5sums = 3aa191808e034db66e9031a0be1e2c3d
+	source = https://github.com/tkchia/binutils-ia16/archive/refs/tags/20221221.tar.gz
+	md5sums = 36d72eed7f40a91170ec2d7bd8b30ca2
 
 pkgname = binutils-ia16
-
