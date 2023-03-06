@@ -2,7 +2,7 @@
 pkgname=rosenpass-git
 _pkgname=rosenpass
 pkgver=0.1.1
-pkgrel=2
+pkgrel=4
 pkgdesc="formally verified and post-quantum secure VPN over WireGuard"
 url="https://rosenpass.eu"
 _git="https://github.com/rosenpass/${_pkgname}.git"
@@ -14,6 +14,7 @@ provides=('rp' 'rosenpass')
 conflicts=()
 source=("${_pkgname}::git+${_git}")
 sha256sums=('SKIP')
+options=(!lto)
 
 _bin=rosenpass
 _script=rp
