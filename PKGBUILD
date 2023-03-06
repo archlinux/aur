@@ -30,8 +30,8 @@ prepare() {
     # If you want the "best" possible optimizations for your system you can use
     # `-march=native` and remove the `-mtune=core-avx2` option.
     # `-O2` is adjusted to `-O3` since AVX is disabled
-    export CFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
-    export CXXFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
+    export CFLAGS="-O2 -march=nocona -mtune=core-avx2 -pipe"
+    export CXXFLAGS="-O2 -march=nocona -mtune=core-avx2 -pipe"
     export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
 
     # Uncomment to enable extra optimizations
