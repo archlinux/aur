@@ -1,4 +1,4 @@
-pkgbase = python-polib
+pkgbase = python2-polib
 	pkgdesc = A library to manipulate gettext files
 	pkgver = 1.2.0
 	pkgrel = 1
