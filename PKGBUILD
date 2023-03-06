@@ -37,6 +37,7 @@ package() {
 	sudo cp res/*.desktop /usr/share/applications/Xnotes/.
 	sudo cp -r img/ /usr/share/applications/Xnotes/.
 	sudo cp -r img/ /usr/bin/xnotes/.
+	sudo cp -r bin/linux/Xnotes /usr/bin/xnotes/.
 	sudo chown jchamine. /usr/share/applications/Xnotes -R
 	sudo chmod 744 /usr/share/applications/Xnotes -R
 }
