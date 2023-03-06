@@ -4,7 +4,7 @@
 pkgname=directx-shader-compiler-git
 _pkgname=DirectXShaderCompiler
 pkgdesc="A compiler for HLSL to DXIL (DirectX Intermediate Language)."
-pkgver=r3839.740dd0951
+pkgver=r3851.364d5f9da
 pkgrel=1
 epoch=1
 arch=('x86_64')
@@ -26,13 +26,27 @@ pkgver() {
 prepare() {
   cd "$srcdir/${_pkgname}"
   git submodule update --init
+
+  # although removing build folder in build() function feels more natural,
+  # that interferes with the spirit of makepkg --noextract
+  if [  -d "$srcdir/${_pkgname}/build" ]; then
+    rm -rf "$srcdir/${_pkgname}/build"
+  fi
 }
 
 build() {
   mkdir -p "$srcdir/${_pkgname}/build"
   cd "$srcdir/${_pkgname}/build"
 
-  export CXXFLAGS="$CXXFLAGS -Wno-error=restrict"
+  # this project needs a specific compiler and a specific set of flags
+  export CC="gcc"
+  export CXX="g++"
+  export CFLAGS="-march=native -mtune=native -O2 -pipe -fno-plt -fexceptions \
+        -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security \
+        -fstack-clash-protection -fcf-protection -Wno-error=restrict"
+  export CXXFLAGS="$CFLAGS -Wp,-D_GLIBCXX_ASSERTIONS"
+  export LDFLAGS="-Wl,-O2,--sort-common,--as-needed,-z,relro,-z,now"
+
   cmake .. -G"Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -C ../cmake/caches/PredefinedParams.cmake -DCMAKE_INSTALL_LIBDIR=/opt/directx-shader-compiler/lib -DCMAKE_INSTALL_PREFIX=/opt/directx-shader-compiler CFLAGS="$CFLAGS -Wno-error=restrict" -DLLVM_BUILD_TOOLS=OFF
   make -j$(nproc)
   #cmake --build .
