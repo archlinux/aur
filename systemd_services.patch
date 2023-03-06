@@ -1,0 +1,24 @@
+diff -u unpatched/afrender.service patched/afrender.service
+--- unpatched/afrender.service	2023-03-06 17:42:43.000000000 +0300
++++ patched/afrender.service	2023-03-06 23:24:01.250740720 +0300
+@@ -4,7 +4,7 @@
+ 
+ [Service]
+ Type=simple
+-User=render
++#User=render
+ #Group=render
+ WorkingDirectory=/opt/cgru
+ ExecStart=/opt/cgru/start/AFANASY/_afrender.sh -log_nodate
+diff -u unpatched/afserver.service patched/afserver.service
+--- unpatched/afserver.service	2023-03-06 17:42:43.000000000 +0300
++++ patched/afserver.service	2023-03-06 23:20:54.392134865 +0300
+@@ -4,7 +4,7 @@
+ 
+ [Service]
+ Type=simple
+-User=render
++#User=render
+ #Group=render
+ WorkingDirectory=/opt/cgru
+ ExecStart=/opt/cgru/start/AFANASY/_afserver.sh -log_nodate

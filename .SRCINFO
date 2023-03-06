@@ -1,0 +1,16 @@
+pkgbase = cgru
+	pkgdesc = Free And Open Source CG Tools Pack. Includes Afanasy render farm manager, Rules project tracker and tools around it.
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://cgru.info/
+	arch = x86_64
+	license = LGPL
+	makedepends = rpmextract
+	depends = openexr
+	depends = libpqxx
+	source = https://sourceforge.net/projects/cgru/files/3.3.0/cgru.3.3.0.CentOS-7_x86_64.tar.gz
+	source = systemd_services.patch
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = cgru
