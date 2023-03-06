@@ -1,0 +1,14 @@
+pkgbase = phppgadmin
+	pkgdesc = A web-based administration tool for PostgreSQL
+	pkgver = 7.13.0
+	pkgrel = 3
+	url = https://github.com/phppgadmin/phppgadmin/
+	arch = any
+	license = GPL
+	depends = php
+	depends = php-pgsql
+	backup = etc/webapps/phppgadmin/config.inc.php
+	source = https://github.com/phppgadmin/phppgadmin/releases/download/REL_7-13-0/phpPgAdmin-7.13.0.tar.bz2
+	sha256sums = dc9a5d74c49330af65664b3fd145df2b76c63f946e0de86e306b308ad104939c
+
+pkgname = phppgadmin
