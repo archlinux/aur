@@ -1,6 +1,6 @@
 pkgbase = d2-bin
 	pkgdesc = A modern diagram scripting language that turns text to diagrams
-	pkgver = 0.2.1
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://d2lang.com
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = d2-bin
 	depends = gcc-libs
 	conflicts = d2
 	options = !lto
-	source = https://github.com/terrastruct/d2/releases/download/v0.2.1/d2-v0.2.1-linux-amd64.tar.gz
-	sha256sums = e59e0cbcb44b688b4a717456a1b63dc9e0d6e9140495e62ed36b1a5921e23c89
+	source = https://github.com/terrastruct/d2/releases/download/v0.2.3/d2-v0.2.3-linux-amd64.tar.gz
+	sha256sums = 3492edaed9f78d90979652350c6352d6fb6ef509982c9fd0dd6534132e8582f7
 
 pkgname = d2-bin
