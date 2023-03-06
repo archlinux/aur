@@ -3,7 +3,6 @@ pkgbase = spectral
 	pkgver = 3.4.1.20180918
 	pkgrel = 2
 	url = https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = fftw
@@ -15,4 +14,3 @@ pkgbase = spectral
 	sha512sums = 892fe4c0e41d8e847b7c77922b864ce9b9c43acf1259805c604e6fe9e614cdc25e4c5ea4f8dbcc0157bb72006b34e72411f4d776f14dd3c38c23accdf2bf92e0
 
 pkgname = spectral
-
