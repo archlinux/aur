@@ -3,7 +3,6 @@ pkgbase = mcxx
 	pkgver = 2.3.0.20190627
 	pkgrel = 2
 	url = https://pm.bsc.es/ompss
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = python3
