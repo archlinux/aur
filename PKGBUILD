@@ -53,7 +53,7 @@ build() {
   export CXXFLAGS="$CFLAGS -Wp,-D_GLIBCXX_ASSERTIONS"
   export LDFLAGS="-Wl,-O2,--sort-common,--as-needed,-z,relro,-z,now"
 
-  cmake .. -G"Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -C ../cmake/caches/PredefinedParams.cmake -DCMAKE_INSTALL_LIBDIR=/opt/directx-shader-compiler/lib -DCMAKE_INSTALL_PREFIX=/opt/directx-shader-compiler CFLAGS="$CFLAGS -Wno-error=restrict" -DLLVM_BUILD_TOOLS=OFF
+  cmake .. -G"Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -C ../cmake/caches/PredefinedParams.cmake -DCMAKE_INSTALL_LIBDIR=/opt/directx-shader-compiler/lib -DCMAKE_INSTALL_PREFIX=/opt/directx-shader-compiler -DLLVM_BUILD_TOOLS=OFF
   make -j$(nproc)
   #cmake --build .
 }
