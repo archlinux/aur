@@ -2,7 +2,7 @@
 # Contributor: Marie Piontek <marie@kaifa.ch>
 
 pkgname=an-anime-game-launcher-bin
-pkgver=3.0.1
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="A Launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 url="https://github.com/an-anime-team/an-anime-game-launcher"
@@ -37,7 +37,7 @@ source=(
 )
 
 md5sums=(
-    'a4bdfef0e10aa5fdb7c9f04593376697'
+    '4b990ceccbd0b74de1039d891995cd78'
     'c1a5499b80a55d3d238ef5c5d2c93c99'
     '12d89b3be2072437e7b252af97274142'
 )
