@@ -3,7 +3,6 @@ pkgbase = bsctools
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools
-	arch = i686
 	arch = x86_64
 	license = None
 	depends = basicanalysis
@@ -16,4 +15,3 @@ pkgbase = bsctools
 	depends = wxparaver
 
 pkgname = bsctools
-
