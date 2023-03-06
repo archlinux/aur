@@ -5,8 +5,8 @@
 ################################################################
 
 pkgname=digital-git
-pkgver=v0.27.r72.g5aa8e2bc2
-pkgrel=2
+pkgver=v0.30.r3.gf8b800a63
+pkgrel=1
 pkgdesc="A digital logic designer and circuit simulator. Git development version"
 arch=('x86_64')
 url="https://github.com/hneemann/Digital"
@@ -16,7 +16,7 @@ makedepends=('git' 'maven' 'java-runtime')
 provides=('digital')
 conflicts=('digital')
 replaces=('digital')
-source=("digital-git::git://github.com/hneemann/Digital.git")
+source=("digital-git::git+https://github.com/hneemann/Digital.git")
 sha256sums=('SKIP')
 
 jar_name=Digital.jar
