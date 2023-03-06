@@ -2,7 +2,7 @@
 
 pkgname=python-mlflow
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source platform for the machine learning lifecycle'
 arch=('x86_64')
 url='https://mlflow.org'
@@ -33,17 +33,18 @@ optdepends=('python-scikit-learn: for mlflow[extras, pipelines]'
             'python-aliyunstoreplugin: for mlflow[aliyun-oss]'
             )
 makedepends=('python' 'python-build' 'python-installer' 'python-wheel'
-             'python-setuptools' 'npm')
+             'python-setuptools' 'yarn')
 source=("$pkgname-$pkgver::https://github.com/mlflow/mlflow/archive/v$pkgver.tar.gz")
 sha256sums=('1d9933a658f8a31ba4902a5d3cd247c3e28acc2930ceac224c0266b3e737e253')
 
 _pkgname=mlflow
 
 build() {
+  export NODE_OPTIONS=--openssl-legacy-provider
   cd "${srcdir}/${_pkgname}-${pkgver}"
   cd mlflow/server/js
-  npm install
-  npm run build
+  yarn install
+  yarn run build
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python -m build --wheel --no-isolation
