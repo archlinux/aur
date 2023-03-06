@@ -1,0 +1,14 @@
+pkgbase = orogene-git
+	pkgdesc = A next-generation platform and package manager for Node.js-compatible and frontend JavaScript projects
+	pkgver = r374.c1d832f
+	pkgrel = 1
+	url = https://github.com/orogene/orogene
+	arch = x86_64
+	license = APACHE
+	makedepends = rust
+	provides = orogene
+	conflicts = orogene
+	source = git+https://github.com/orogene/orogene.git
+	sha256sums = SKIP
+
+pkgname = orogene-git
