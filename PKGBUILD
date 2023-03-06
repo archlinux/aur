@@ -2,7 +2,7 @@
 
 pkgname=ignition-gazebo
 pkgver=7.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source robotics simulator. The latest version of Gazebo."
 arch=('x86_64')
 url="https://gazebosim.org/libs/gazebo"
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('benchmark' 'gflags' 'tinyxml2' 'tinyxml' 'eigen' 'qt5-declarative'
          'ignition-cmake>2' 'ignition-common>3' 'ignition-math>6'
          'ignition-plugin' 'ignition-physics' 'ignition-rendering'
-         'ignition-tools' 'ignition-transport>8' 'ignition-gui' 'ignition-msgs>5'
+         'ignition-tools>1' 'ignition-transport>8' 'ignition-gui' 'ignition-msgs>5'
          'sdformat' 'ignition-fuel_tools>4' 'ignition-sensors')
 makedepends=('cmake' 'ruby-ronn' 'doxygen')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gz-sim/archive/gz-sim7_${pkgver}.tar.gz")

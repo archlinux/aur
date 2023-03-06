@@ -1,7 +1,7 @@
 pkgbase = ignition-gazebo
 	pkgdesc = Open source robotics simulator. The latest version of Gazebo.
 	pkgver = 7.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gazebosim.org/libs/gazebo
 	arch = x86_64
 	license = Apache
@@ -20,7 +20,7 @@ pkgbase = ignition-gazebo
 	depends = ignition-plugin
 	depends = ignition-physics
 	depends = ignition-rendering
-	depends = ignition-tools
+	depends = ignition-tools>1
 	depends = ignition-transport>8
 	depends = ignition-gui
 	depends = ignition-msgs>5
