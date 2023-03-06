@@ -1,4 +1,4 @@
-From bfe1dbb54d5f1f31a44ea2d453360f2ed66a1ced Mon Sep 17 00:00:00 2001
+From 44199d35a0d297842735607ec832f04ddc437a05 Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Wed, 4 Apr 2018 16:37:38 +0100
 Subject: [PATCH 2/3] Setting default Qt5 backend to Cairo
