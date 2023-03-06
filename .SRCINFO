@@ -1,7 +1,7 @@
 pkgbase = pvs
 	pkgdesc = Mechanized environment for formal specification and verification
 	pkgver = 7.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://pvs.csl.sri.com
 	install = path.install
 	arch = x86_64

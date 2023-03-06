@@ -1,7 +1,7 @@
 # Maintainer: Alessandro Zanatta <alessandro.zanatta.lav@gmail.com>
 pkgname=pvs
 pkgver=7.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Mechanized environment for formal specification and verification"
 arch=('x86_64')
 url="https://pvs.csl.sri.com"
@@ -17,7 +17,7 @@ build () {
     # Build
     cd "$pkgname-$pkgver"
     patch ./install-sh < "${srcdir}/install-sh.patch"
-    ./install-sh-patched
+    ./install-sh
 }
 
 package() {
