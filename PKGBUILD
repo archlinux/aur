@@ -83,6 +83,8 @@ prepare() {
     git -C $srcdir/ros2/src/ros2/rmw_cyclonedds cherry-pick f57732d15be53796d518e12352866124efcaa939
     ## ament_cmake
     git -C $srcdir/ros2/src/ament/ament_cmake cherry-pick ca8c26ea3c89e69c0c636b7cd0c088674c689f5f
+    ## googletest: fix building error with GCC 11
+    git -C $srcdir/ros2/src/ament/googletest/googletest cherry-pick 4679637f1c9d5a0728bdc347a531737fad0b1ca3
 }
 
 build() {
