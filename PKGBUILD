@@ -97,7 +97,7 @@ _lru_config=${_lru_config-standard}
 # 'standard' - enable per-VMA locking
 # 'stats' - enable per-VMA locking with stats
 # 'none' - disable per-VMA locking
-_vma_config=${_vma_config-none}
+_vma_config=${_vma_config-standard}
 
 ### Transparent Hugepages
 # ATTENTION - one of two predefined values should be selected!
@@ -167,8 +167,7 @@ _use_gcc_lto=${_use_gcc_lto-}
 # scheme used by CONFIG_CFI_CLANG. kCFI doesn't require LTO, doesn't
 # alter function references to point to a jump table, and won't break
 # function address equality.
-# ATTENTION!: You need llvm-git or a patched llvm 15
-# ATTENTION!: This is experimental, could fail to boot with nvidia
+# ATTENTION!: kCFI is only available in llvm 16
 _use_kcfi=${_use_kcfi-}
 
 # Build the zfs module in to the kernel
@@ -181,11 +180,8 @@ _bcachefs=${_bcachefs-}
 # Latency nice is a approach to sets latency-nice as a per-task attribute
 # It can improve the latency of applications similar to sched_nice, but focused on the latency
 # You need to set the values per task
-# Ananicy-cpp has a experimental implementation for this
-# It converts sched_nice to latency_nice and set this per task
+# Ananicy-cpp has a implementation for this
 # You need to configure ananicy-cpp for this or use existing settings
-# If you want to test it, use the following branch
-# https://gitlab.com/ananicy-cpp/ananicy-cpp/-/tree/feature/latency-nice
 _latency_nice=${_latency_nice-y}
 
 if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] && [ -n "$_use_lto_suffix" ]; then
@@ -196,10 +192,10 @@ else
     pkgsuffix=cachyos-rc
     pkgbase=linux-$pkgsuffix
 fi
-_major=6.2
+_major=6.3
 _minor=0
 #_minorc=$((_minor+1))
-_rcver=rc8
+_rcver=rc1
 pkgver=${_major}.${_rcver}
 #_stable=${_major}.${_minor}
 #_stable=${_major}
@@ -207,7 +203,7 @@ _stable=${_major}-${_rcver}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux BORE scheduler Kernel by CachyOS and with some other patches and other improvements'
-pkgrel=3
+pkgrel=1
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -267,10 +263,6 @@ if [ -n "$_use_gcc_lto" ]; then
     source+=("${_patchsource}/misc/gcc-lto/0001-gcc-LTO-support-for-the-kernel.patch"
              "${_patchsource}/misc/gcc-lto/0002-gcc-lto-no-pie.patch")
 fi
-## per VMA lock
-if [[ "$_vma_config" = "standard"  || "$_vma_config" = "stats" ]]; then
-    source+=("${_patchsource}/misc/0001-Per-VMA-locks.patch")
-fi
 ## lrng patchset
 if [ -n "$_lrng_enable" ]; then
     source+=("${_patchsource}/misc/0001-lrng.patch")
@@ -286,8 +278,8 @@ prepare() {
 
     cd ${srcdir}/$_srcname
 
-    echo "Setting version..."
-    scripts/setlocalversion --save-scmversion
+#    echo "Setting version..."
+#    scripts/setlocalversion --save-scmversion
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
@@ -326,8 +318,8 @@ prepare() {
     [ -z "$_cpusched" ] && _die "The value is empty. Choose the correct one again."
 
     case "$_cpusched" in
-        pds) scripts/config -e SCHED_ALT -d SCHED_BMQ -e SCHED_PDS;;
-        bmq) scripts/config -e SCHED_ALT -e SCHED_BMQ -d SCHED_PDS;;
+        pds) scripts/config -e SCHED_ALT -d SCHED_BMQ -e SCHED_PDS -e PSI_DEFAULT_DISABLED;;
+        bmq) scripts/config -e SCHED_ALT -e SCHED_BMQ -d SCHED_PDS -e PSI_DEFAULT_DISABLED;;
         tt)  scripts/config -e TT_SCHED -e TT_ACCOUNTING_STATS;;
         bore|hardened) scripts/config -e SCHED_BORE;;
         cfs) ;;
@@ -604,8 +596,8 @@ prepare() {
     [ -z "$_zstd_level_value" ] && _die "The value is empty. Choose the correct one again."
 
     case "$_zstd_level_value" in
-        ultra) scripts/config --set-val MODULE_COMPRESS_ZSTD_LEVEL 19 -e MODULE_COMPRESS_ZSTD_ULTRA --set-val MODULE_COMPRESS_ZSTD_LEVEL_ULTRA 22 --set-val ZSTD_COMP_VAL 22;;
-        normal) scripts/config --set-val MODULE_COMPRESS_ZSTD_LEVEL 9 -d MODULE_COMPRESS_ZSTD_ULTRA --set-val ZSTD_COMP_VAL 19;;
+        ultra) scripts/config --set-val MODULE_COMPRESS_ZSTD_LEVEL 19 -e MODULE_COMPRESS_ZSTD_ULTRA --set-val MODULE_COMPRESS_ZSTD_LEVEL_ULTRA 22 --set-val ZSTD_COMPRESSION_LEVEL 22;;
+        normal) scripts/config --set-val MODULE_COMPRESS_ZSTD_LEVEL 9 -d MODULE_COMPRESS_ZSTD_ULTRA --set-val ZSTD_COMPRESSION_LEVEL 19;;
         *) _die "The value '$_zstd_level_value' is invalid. Choose the correct one again.";;
     esac
 
@@ -845,9 +837,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('747d729e089bfe37d0c0713338d09c48fe155681acc485949bb001026397a732'
-            '44e53082f7f88b62c0b4402a00db0797850de1d90adc2a803b1432fc7efe51bb'
+sha256sums=('a19846f5d62546d853e136d136e27efcac3f991b864c8bb613d0f0e607bec42a'
+            '2e232b42b431185593bf5520d17654ae3e4af69336e453d863c1dd9b086b4641'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
-            'e9fb91e6333ac8293f81b83e22a77b6eb0d752ec6749a1f46067955636206a8f'
-            '9b8da83a416041b7dfec2a83066022bba9a1b24b05c68713546ab199a3c4888b'
-            'b78828363b80104e8905966f35f32f6a90d5ab7fe544a04e44ef5d13a8404346')
+            'e5f110c70d12590ddb8ea7c02f2cec3497cf41698c53b1fdb9f0dd73120e597a'
+            '51174a0fdd8bf76f2d1a8e931c695ca462bb0a6aa9b9169241e87b6f2139eaee'
+            '6f6316f0e6c3dc0e4b0fa7c819f7477055a2f76cc6e02ac11753eaa284a5f7d0')
