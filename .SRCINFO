@@ -1,6 +1,6 @@
 pkgbase = cpp-httplib-git
 	pkgdesc = A C++ HTTP/HTTPS server and client library
-	pkgver = 0.12.0.r6.g016838f
+	pkgver = 0.12.0.r11.g7b69999
 	pkgrel = 1
 	url = https://github.com/yhirose/cpp-httplib
 	arch = aarch64
@@ -17,7 +17,7 @@ pkgbase = cpp-httplib-git
 	makedepends = openssl>=1.1.1
 	makedepends = python
 	depends = zlib
-	provides = cpp-httplib=0.12.0.r6.g016838f
+	provides = cpp-httplib=0.12.0.r11.g7b69999
 	provides = libhttplib.so
 	conflicts = cpp-httplib
 	source = cpp-httplib::git+https://github.com/yhirose/cpp-httplib.git

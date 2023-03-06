@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=cpp-httplib
 pkgname=$_pkgname-git
-pkgver=0.12.0.r6.g016838f
+pkgver=0.12.0.r11.g7b69999
 pkgrel=1
 pkgdesc="A C++ HTTP/HTTPS server and client library"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -18,10 +18,6 @@ b2sums=('SKIP')
 pkgver() {
 	cd $_pkgname
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-	sed -i '/URL/a FIND_PACKAGE_ARGS NAMES GTest' $_pkgname/test/CMakeLists.txt
 }
 
 build() {
