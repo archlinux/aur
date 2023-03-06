@@ -1,0 +1,23 @@
+pkgbase = qttube-git
+	pkgdesc = A Qt frontend for YouTube.
+	pkgver = 350fd78
+	pkgrel = 1
+	url = https://github.com/BowDown097/QtTube
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	depends = openssl
+	depends = qt6-base
+	depends = qt6-webchannel
+	depends = qt6-webengine
+	optdepends = libxss: for preventing the screen from sleeping while watching videos
+	provides = qttube
+	conflicts = qttube
+	source = git+https://github.com/BowDown097/QtTube
+	source = git+https://github.com/BowDown097/innertube-qt
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = qttube-git
