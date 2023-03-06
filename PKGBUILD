@@ -10,7 +10,7 @@
 _majorver=17
 _completever=17.0.6
 _updatever=10
-pkgrel=1
+pkgrel=2
 pkgver=${_completever}.u${_updatever}
 _tag_ver=${_completever}+${_updatever}
 [ $_majorver != $_completever ] && _versuffix=U
@@ -54,6 +54,7 @@ backup=(etc/java-${_majorver}-temurin/logging.properties
         etc/java-${_majorver}-temurin/security/policy/unlimited/default_US_export.policy
         etc/java-${_majorver}-temurin/sound.properties)
 install=install_jdk17-temurin.sh
+options=(!strip)
 
 source=(https://github.com/adoptium/temurin${_majorver}-binaries/releases/download/jdk-${_tag_ver/+/%2B}/OpenJDK${_majorver}${_versuffix}-jdk_x64_linux_hotspot_${_tag_ver/+/_}.tar.gz
         freedesktop-java.desktop

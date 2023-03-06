@@ -1,7 +1,7 @@
 pkgbase = jdk17-temurin
 	pkgdesc = Temurin 17 (OpenJDK 17 Java binaries by Adoptium, formerly AdoptOpenJDK)
 	pkgver = 17.0.6.u10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://adoptium.net/
 	install = install_jdk17-temurin.sh
 	arch = x86_64
@@ -29,6 +29,7 @@ pkgbase = jdk17-temurin
 	provides = jdk-openjdk=17.0.6.u10
 	provides = openjdk17-src=17.0.6.u10
 	provides = openjdk-src=17.0.6.u10
+	options = !strip
 	backup = etc/java-17-temurin/logging.properties
 	backup = etc/java-17-temurin/management/jmxremote.access
 	backup = etc/java-17-temurin/management/jmxremote.password.template
