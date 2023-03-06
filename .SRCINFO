@@ -1,5 +1,5 @@
 pkgbase = youku-uos-electron-bin
-	pkgdesc = Make drag-and-drop easier using DropPoint. Drag content without having to open side-by-side windows
+	pkgdesc = uos版本优酷客户端APP,基于Electron 技术实现在uos的APP客户端.
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = http://gitlab.alibaba-inc.com/youku-node/uos-youku-app/blob/master/README.md
