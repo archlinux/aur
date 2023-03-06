@@ -6,12 +6,12 @@ pkgname=gnumeric-minimal
 _pkgname=gnumeric
 _minorver=55
 pkgver=1.12.${_minorver}
-pkgrel=3
+pkgrel=4
 pkgdesc="A GNOME-less spreadsheet program"
 arch=('i686' 'x86_64')
 url="http://www.gnumeric.org/"
 license=('GPL')
-depends=("goffice")
+depends=("goffice>=0.10.${_minorver}" 'lasem')
 makedepends=('intltool' 'itstool' 'yelp-tools' 'gtk-doc')
 conflicts=('gnumeric')
 provides=('gnumeric')
