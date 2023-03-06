@@ -1,0 +1,22 @@
+pkgbase = bnx2x-2500m-dkms
+	pkgdesc = Broadcom bnx2x driver with 2500 Mbps HSGMII patch
+	pkgver = 6.2.2.arch1
+	pkgrel = 1
+	url = https://github.com/archlinux/linux/commits/v6.2.2-arch1
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	depends = linux-firmware-bnx2x
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.2.2-arch1
+	source = bnx2x_warpcore+8727_2_5g_sgmii_arch.patch
+	source = dkms.conf
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
+	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
+	sha256sums = SKIP
+	sha256sums = d655669179109ae8e801a259c35dbe442ca67a49b9ceb6ca3ef0e56f48149a7d
+	sha256sums = 9e8de01f4f7d7ed966cd979bc4e41bee95f37398327a094cc705d7e590c06f2a
+
+pkgname = bnx2x-2500m-dkms
