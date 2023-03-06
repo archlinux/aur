@@ -1,7 +1,7 @@
 pkgbase = python-torch-geometric
 	pkgdesc = Graph Neural Network Library for PyTorch
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pytorch-geometric.readthedocs.io
 	arch = x86_64
 	license = MIT
@@ -19,6 +19,8 @@ pkgbase = python-torch-geometric
 	depends = python-pyparsing
 	depends = python-scikit-learn
 	depends = python-psutil
+	depends = python-torch-scatter
+	depends = python-torch-sparse
 	optdepends = python-yacs
 	optdepends = python-hydra-core
 	optdepends = python-protobuf
@@ -42,6 +44,8 @@ pkgbase = python-torch-geometric
 	optdepends = python-pgmpy
 	optdepends = python-opt_einsum
 	optdepends = python-statsmodels
+	optdepends = python-torch-cluster
+	optdepends = python-torch-spline-cov
 	source = python-torch-geometric-2.2.0::https://github.com/pyg-team/pytorch_geometric/archive/refs/tags/2.2.0.tar.gz
 	sha256sums = 0cc4e51023ffb7e72642fed8bb0a8cbdb74c15a4572eafb47d6ab4341baab4b9
 
