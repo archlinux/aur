@@ -1,0 +1,6 @@
+linux-intel-lts
+src
+pkg
+*.pkg.*
+*.pkg
+tmp
