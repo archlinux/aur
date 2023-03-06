@@ -1,6 +1,6 @@
 pkgbase = pot-translation-bin
 	pkgdesc = 一个跨平台的划词翻译软件
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 0
 	url = https://github.com/Pylogmon/pot
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = pot-translation-bin
 	depends = gtk3
 	depends = libayatana-appindicator
 	depends = xsel
-	source = pot-0.0.2-x86_64.deb::https://github.com/Pylogmon/pot/releases/download/0.0.2/pot_0.0.2_amd64.deb
-	sha512sums = 0bcd316e7e180b5b6e3a1596e117b6d45675c6d53878c5b0cc5849a6d19d3327be2d2111eb1503f01dcd391cc4892927b7af00ac58b5e6904082b2974a2a0fba
+	source = pot-0.0.3-x86_64.deb::https://github.com/Pylogmon/pot/releases/download/0.0.3/pot_0.0.3_amd64.deb
+	sha512sums = ea5978115deef0cdc54af74e4e0ba0b3b1c435cf6d28994179666313308a261d45bbe59aa3c6101542af78c8c300bfb16c0a75fab3513d3e07dea07065242f77
 
 pkgname = pot-translation-bin
