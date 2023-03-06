@@ -10,7 +10,7 @@
 _majorver=19
 _completever=19.0.2
 _updatever=7
-pkgrel=1
+pkgrel=2
 pkgver=${_completever}.u${_updatever}
 _tag_ver=${_completever}+${_updatever}
 _versuffix=U
@@ -55,6 +55,7 @@ backup=(etc/java-temurin/logging.properties
         etc/java-temurin/security/policy/unlimited/default_US_export.policy
         etc/java-temurin/sound.properties)
 install=install_jdk-temurin.sh
+options=(!strip)
 
 source=(https://github.com/adoptium/temurin${_majorver}-binaries/releases/download/jdk-${_tag_ver/+/%2B}/OpenJDK${_majorver}${_versuffix}-jdk_x64_linux_hotspot_${_tag_ver/+/_}.tar.gz
         freedesktop-java.desktop

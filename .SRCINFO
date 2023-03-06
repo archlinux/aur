@@ -1,7 +1,7 @@
 pkgbase = jdk-temurin
 	pkgdesc = Temurin (OpenJDK 19 Java binaries by Adoptium, formerly AdoptOpenJDK)
 	pkgver = 19.0.2.u7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://adoptium.net/
 	install = install_jdk-temurin.sh
 	arch = x86_64
@@ -30,6 +30,7 @@ pkgbase = jdk-temurin
 	provides = openjdk19-src=19.0.2.u7
 	provides = openjdk-src=19.0.2.u7
 	replaces = jdk-adoptopenjdk
+	options = !strip
 	backup = etc/java-temurin/logging.properties
 	backup = etc/java-temurin/management/jmxremote.access
 	backup = etc/java-temurin/management/jmxremote.password.template
