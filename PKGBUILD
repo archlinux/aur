@@ -5,13 +5,13 @@
 _pkgname='input-overlay'
 pkgname=obs-plugin-${_pkgname}
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 groups=('obs-plugins')
 pkgdesc='obs-studio plugin to show keyboard, gamepad and mouse input on stream.'
 arch=("x86_64")
 url="https://github.com/univrsal/${_pkgname}"
 license=('GPL')
-depends=('obs-studio')
+depends=('obs-studio' 'libxtst' 'libxkbfile')
 makedepends=('git' 'cmake')
 source=(
 	"git+https://github.com/univrsal/${_pkgname}.git#tag=v${pkgver}"
