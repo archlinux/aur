@@ -1,20 +1,21 @@
 # Maintainer: Firegem <mrfiregem@protonmail.ch>
 pkgname=erdtree
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='multi-threaded file-tree visualizer and disk usage analyzer'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/solidiquis/erdtree'
 license=('MIT')
 depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
+optdepends=('nerd-fonts: Used for --icons flag')
 provides=('et')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('88f96e88c493afb021ceda873885a06d30eff9957a1a8736f3b823f8a4703fb0')
+sha256sums=('5114f694d2430374ce4d251613e16acfa1e5d34a911306062cdb43f7f6544ea9')
 
 prepare() {
 	cd "$pkgname-$pkgver"
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
 
 build() {

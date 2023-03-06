@@ -1,15 +1,17 @@
 pkgbase = erdtree
 	pkgdesc = multi-threaded file-tree visualizer and disk usage analyzer
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/solidiquis/erdtree
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = cargo
 	depends = glibc
 	depends = gcc-libs
+	optdepends = nerd-fonts: Used for --icons flag
 	provides = et
-	source = erdtree-1.1.0.tar.gz::https://github.com/solidiquis/erdtree/archive/refs/tags/v1.1.0.tar.gz
-	sha256sums = 88f96e88c493afb021ceda873885a06d30eff9957a1a8736f3b823f8a4703fb0
+	source = erdtree-1.2.0.tar.gz::https://github.com/solidiquis/erdtree/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = 5114f694d2430374ce4d251613e16acfa1e5d34a911306062cdb43f7f6544ea9
 
 pkgname = erdtree
