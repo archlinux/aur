@@ -3,7 +3,7 @@
 # Co-Maintainer: Lorenzo Gaifas <brisvag at gmail dot com>
 # Co-Maintainer: Bitals <me at bitals dot xyz>
 pkgname=snapgene
-pkgver=6.1.0
+pkgver=6.2.0
 _pkgver_major=$(cut -d '.' -f 1 <<<"$pkgver")
 _pkgver_major_middle=$(cut -d '.' -f 1-2 <<<"$pkgver")
 pkgrel=2
