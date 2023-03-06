@@ -1,0 +1,20 @@
+USER=mail
+GROUP=mail
+
+pre_install() {
+  # Create User/Group
+  getent group ${GROUP} > /dev/null || groupadd --system ${GROUP}
+  getent passwd ${USER} > /dev/null || useradd --system --gid ${USER} --home-dir /dev/null --shell /sbin/nologin --no-create-home ${USER}
+}
+
+post_install() {
+  echo "Change files permissions"
+  chown ${USER}:${GROUP} /bin/smail
+  chown ${USER}:${GROUP} /etc/smail.conf
+  chown -R ${USER}:${GROUP} /usr/share/smail
+  chown -R ${USER}:${GROUP} /var/log/smail
+}
+
+post_upgrade() {
+  post_install $1
+}

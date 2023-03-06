@@ -1,0 +1,16 @@
+pkgbase = smail
+	pkgdesc = smail - BASH script to send emails via SMTP SSL.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/snuglinux/smail
+	install = smail.install
+	arch = any
+	license = GPL2
+	depends = bash
+	depends = openssl
+	depends = grep
+	backup = etc/smail.conf
+	source = https://github.com/snuglinux/smail/archive/0.1.2.tar.gz
+	md5sums = a0137bfd572d11c07683c918abe075e9
+
+pkgname = smail
