@@ -1,0 +1,23 @@
+diff --git a/src/common/os/linux/thread.cpp b/src/common/os/linux/thread.cpp
+index 26a47bb29..a5ec14207 100644
+--- a/src/common/os/linux/thread.cpp
++++ b/src/common/os/linux/thread.cpp
+@@ -1,5 +1,6 @@
+ #include "../thread.h"
+ #include "../../utf.h"
++#include <pthread.h>
+ 
+ namespace caspar {
+ 
+diff --git a/src/modules/ffmpeg/util/av_util.h b/src/modules/ffmpeg/util/av_util.h
+index 5809abb84..2fa703d20 100644
+--- a/src/modules/ffmpeg/util/av_util.h
++++ b/src/modules/ffmpeg/util/av_util.h
+@@ -3,6 +3,7 @@
+ #include <core/frame/frame.h>
+ #include <core/frame/frame_factory.h>
+ #include <core/frame/pixel_format.h>
++#include <core/video_format.h>
+ 
+ #include <memory>
+ #include <vector>
