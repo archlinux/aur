@@ -2,10 +2,9 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Bogdan Szczurek <thebodzio@gmail.com>
 
-_pkgname='transmission-rpc'
-_relname='transmission_rpc'
-pkgname="python-${_pkgname/-/}"
-pkgver=4.1.0
+_name='transmission-rpc'
+pkgname="python-${_name/-/}"
+pkgver=4.1.2
 pkgrel=1
 pkgdesc='Module to communicate with Transmission BT client via JSON-RPC'
 arch=('any')
@@ -13,20 +12,13 @@ url='https://github.com/Trim21/transmission-rpc'
 _url_pypi='https://pypi.org/project/transmission-rpc'
 license=('MIT')
 depends=('python-requests')
-makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_relname}-${pkgver}.tar.gz")
-sha256sums=('7fd2085bccafc3c456052ba71377c5cc4579e88cb544d508532342f183f719dc')
-
-build() {
-  cd "${_relname}-${pkgver}"
-  python setup.py build
-}
+makedepends=('python-installer')
+source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")
+sha256sums=('1d46119416cf485ca1012bb17f2d80cc8defffd3bf4fbb08a8783ee4ecd099c7')
 
 package() {
-  cd "${_relname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  python -m installer --destdir="$pkgdir" "${_name//-/_}-$pkgver-py3-none-any.whl"
+  install -Dvm644 "${pkgdir}"/usr/lib/python*/site-packages/"${_name//-/_}"*.dist-info/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
