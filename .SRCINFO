@@ -1,6 +1,6 @@
 pkgbase = xfce4-dev-tools-devel
-	pkgdesc = Xfce developer tools
-	pkgver = 4.17.2
+	pkgdesc = https://docs.xfce.org/xfce/xfce4-dev-tools/start
+	pkgver = 4.19.0
 	pkgrel = 1
 	url = http://www.xfce.org/
 	arch = i686
@@ -13,9 +13,9 @@ pkgbase = xfce4-dev-tools-devel
 	depends = make
 	depends = intltool
 	depends = pkg-config
-	provides = xfce4-dev-tools=4.17.2
+	provides = xfce4-dev-tools=4.19.0
 	conflicts = xfce4-dev-tools
-	source = https://archive.xfce.org/src/xfce/xfce4-dev-tools/4.17/xfce4-dev-tools-4.17.2.tar.bz2
-	sha256sums = 4501079488ee9eba007c2e2cea67755737faea887cd0e7330cc5fcbf7b397813
+	source = https://archive.xfce.org/src/xfce/xfce4-dev-tools/4.19/xfce4-dev-tools-4.19.0.tar.bz2
+	sha256sums = ac9fd11f9749303683d80480dac6bbb91c8bf160d8ea5a794bb4f2041eb61d1d
 
 pkgname = xfce4-dev-tools-devel

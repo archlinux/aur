@@ -2,9 +2,9 @@
 
 _pkgname=xfce4-dev-tools
 pkgname=${_pkgname}-devel
-pkgver=4.17.2
+pkgver=4.19.0
 pkgrel=1
-pkgdesc="Xfce developer tools"
+pkgdesc="https://docs.xfce.org/xfce/xfce4-dev-tools/start"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="http://www.xfce.org/"
 license=('GPL2')
@@ -12,7 +12,7 @@ depends=('gtk-doc' 'automake' 'make' 'intltool' 'pkg-config')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://archive.xfce.org/src/xfce/xfce4-dev-tools/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('4501079488ee9eba007c2e2cea67755737faea887cd0e7330cc5fcbf7b397813')
+sha256sums=('ac9fd11f9749303683d80480dac6bbb91c8bf160d8ea5a794bb4f2041eb61d1d')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
