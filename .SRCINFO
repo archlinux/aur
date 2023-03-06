@@ -1,0 +1,13 @@
+pkgbase = jellyfin-server-openrc
+	pkgdesc = jellyfin server openrc service
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/WaffleFrisbee/jellyfin-server-openrc
+	arch = any
+	license = custom:WTFPL
+	depends = openrc
+	source = jellyfind.initd
+	sha256sums = 85cd9f9ac0a616195219edc829ef88d87f30e7036a62ecf51c17c49342a61444
+
+pkgname = jellyfin-server-openrc
+	install = jellyfind.install

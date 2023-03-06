@@ -1,0 +1,12 @@
+post_install() {
+        echo " ==> Add the jellyfin server daemon to system startup with 'rc-update add jellyfind default'"
+        echo " ==> Start the jellyfin server daemon now with 'rc-service jellyfind start'"
+}
+
+post_upgrade() {
+        post_install "$1"
+}
+
+pre_remove() {
+        echo " ==> Make sure you run 'rc-update del jellyfind default'"
+}

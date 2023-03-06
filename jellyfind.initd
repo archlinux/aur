@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+
+name=$RC_SVCNAME
+description="Jellyfin Media Server"
+supervisor="supervise-daemon"
+command="/usr/bin/dotnet"
+command_args="/usr/lib/jellyfin/jellyfin.dll --datadir '/var/lib/jellyfin' --cachedir '/var/cache/jellyfin'"
+command_user="jellyfin"
+
+depend() {
+	after net
+}
