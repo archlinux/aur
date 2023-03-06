@@ -1,55 +1,32 @@
-# Maintainer: Zeta Gabriels <zetagabriels@gmail.com>
-_pkgname=userspace-tablet-driver-daemon
+# Maintainer : silverhikari <kerrickethan@gmail.com>
+# Contributor: Zeta Gabriels <zetagabriels@gmail.com>
 pkgname=userspace-tablet-driver-daemon-git
-pkgver=r1.33e18ab
+pkgver=r178.5369d9b
 pkgrel=1
-epoch=
+epoch=1
 pkgdesc="A userspace daemon for XP-Pen and Huion tablets."
 arch=("x86_64")
 url="https://github.com/kurikaesu/userspace-tablet-driver-daemon.git"
 license=('GPL3')
-groups=()
-depends=()
-makedepends=(git cmake make)
-checkdepends=()
-optdepends=()
+makedepends=('git' 'cmake' 'make')
 provides=(userspace_tablet_driver_daemon)
 conflicts=(userpace-tablet-driver-daemon)
-replaces=()
-backup=()
-options=()
 install=ustdd.install
-changelog=
 source=(git+"${url}")
-noextract=()
-md5sums=()
-validpgpkeys=()
 sha256sums=('SKIP')
 
-prepare() {
-	if [ ! -d "${srcdir}/${_pkgname}" ]
-	then
-		cd ${srcdir}
-		git clone $url --branch main --single-branch --depth 1
-	else
-		cd "${srcdir}/${_pkgname}"
-		git fetch --depth 1 origin main
-		git reset --hard origin/main
-	fi
-}
-
 pkgver() {
-	cd "${srcdir}/${_pkgname}"
+	cd "${srcdir}/${pkgname%-git}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}"
-	cmake .
-	make
+	cmake -B build -S "${pkgname%-git}" \
+	-DCMAKE_INSTALL_PREFIX='/usr'
+	cmake --build build
 }
 
 package() {
-	make -C "${srcdir}/${_pkgname}" DESTDIR="${pkgdir}" install
+	DESTDIR="$pkgdir" cmake --install build
 	sudo udevadm trigger
 }
