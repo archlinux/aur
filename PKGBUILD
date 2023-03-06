@@ -1,6 +1,6 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=jaq
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="jaq is a clone of the JSON data processing tool jq. jaq aims to support a large subset of jq's syntax and operations."
 url="https://github.com/01mf02/$pkgname"
@@ -8,7 +8,7 @@ arch=("x86_64")
 license=("MIT")
 makedepends=("cargo")
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('695ac97fa08d64f7e7cb4e9a49b721d26007ec9f75026254fddc341328f87b26')
+sha256sums=('ea54e2675ccd7ea9fe900343cea9263582a519f157fba6cf1d54f1e4e6718b99')
 
 build()
 {
