@@ -1,0 +1,17 @@
+pkgbase = youku-uos-electron-bin
+	pkgdesc = Make drag-and-drop easier using DropPoint. Drag content without having to open side-by-side windows
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://gitlab.alibaba-inc.com/youku-node/uos-youku-app/blob/master/README.md
+	arch = x86_64
+	license = unknown
+	depends = nss
+	depends = at-spi2-core
+	depends = gtk3
+	depends = libxss
+	depends = alsa-lib
+	conflicts = youku
+	source = YouKu-1.0.0.deb::https://com-store-packages.uniontech.com/appstore/pool/appstore/u/uos-YouKu-app/uos-YouKu-app_1.0.0_amd64.deb
+	sha512sums = c92178402cee57a48176eeafa80087fe987ac5c35ab5922ef2c5c0760076b9d88ba982e4a8b2a761479f266ee8f8452706493d3a2d336cbadb5103c01e349e1c
+
+pkgname = youku-uos-electron-bin
