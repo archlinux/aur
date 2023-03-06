@@ -1,7 +1,8 @@
 # Maintainer: Trizen <echo dHJpemVuQHByb3Rvbm1haWwuY29tCg== | base64 -d>
 
 pkgname='sidef'
-pkgver='22.12'
+_pkgname='Sidef'
+pkgver='23.03'
 pkgrel='1'
 pkgdesc="A modern object-oriented programming language."
 arch=('any')
@@ -15,29 +16,29 @@ depends=(
     'perl-math-prime-util-gmp>=0.52' 'perl-term-readline-gnu' 'perl-algorithm-combinatorics' 'perl-algorithm-loops'
 )
 optdepends=('perl-math-prime-util: for better performance in several functions')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
-b2sums=('452e25be355f525e438ebd4dd3de8378373ba1b968b5d4260263ada72a41ca9def5cc99f4eedb94cf3ca2f9a0985240073cc5deaad14e6e5b111cc5feeb5ddfe')
+source=("https://cpan.metacpan.org/authors/id/T/TR/TRIZEN/${_pkgname}-${pkgver}.tar.gz")
+b2sums=('d4900db1ccd868c1bcbbc9c1fad565b8d5381ee60926f556d06972aab894fc078e228d8388ed1eadbfb07a8596e9dcca36599b7bcd8dc0f09c013640e45cd564')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                                          \
       PERL_AUTOINSTALL=--skipdeps                                                     \
       PERL_MM_OPT="INSTALLDIRS=vendor INSTALLVENDORSCRIPT=/usr/bin DESTDIR='$pkgdir'"
 
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$_pkgname-$pkgver"
     /usr/bin/perl Makefile.PL
     make
   )
 }
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-$pkgver"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
     make test
   )
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-$pkgver"
   make install
   rm -r "$pkgdir/usr/lib"
 
