@@ -3,7 +3,7 @@
 # Contributor: khvalera <khvalera[at]ukr[dot]net>
 
 pkgname=glpi
-pkgver=10.0.5
+pkgver=10.0.6
 pkgrel=1
 pkgdesc="GLPI Inventory Management"
 arch=('any')
@@ -23,10 +23,10 @@ backup=("etc/httpd/conf/extra/httpd-glpi.conf"
         "etc/glpi/local_define.php")
 optdepends=('nginx: a more performant webserver'
             'apache: a more performant webserver'
-            'php7' 'php7-gd' 'php7-intl' 'php7-sodium' 'php7-apache'
+            'php74' 'php74-gd' 'php74-intl' 'php74-sodium' 'php74-apache'
             'php' 'php-gd' 'php-intl' 'php-sodium' 'php-apache'
             'libxml2' 'zlib' 'openssl')
-sha256sums=('a046d0d5bcc08b0024f26bf6e9432e2cb20fa0c83ff128e6cdf8bf83a7405f35'
+sha256sums=('d30d915a7cdc2f0e117a38e86b528f787a41e5ffdf9c3a5f9f4a1b8a70bf91ce'
             '32bd84daa949cfa1158f2c6cd8fa2593fd4bd3cc6392791b69ab24ca98eee0dd'
             'c02b51467eaf9164e8a1e988f3d2cf15ab7a05c40904140d71a18a330a42eccd'
             'c5ca6a8d1bcc73c71348d5f8a4c3de0fd023c346d1c2bf02c9dd627bcda9bfe8'
@@ -48,7 +48,6 @@ package() {
         $pkgdir/var/lib \
 
   install -dm 775 $pkgdir/var/log/glpi
-  #install -dm 775 $pkgdir/var/log/glpi
 
   install -Dm644 "${srcdir}"/httpd-glpi.conf $pkgdir/etc/httpd/conf/extra
   ln -s LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
