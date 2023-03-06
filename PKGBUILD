@@ -4,17 +4,18 @@
 
 _pkgname=Qogir-theme
 _pkgver=2023-02-27
-pkgbase="qogir-gtk-theme"
+_pkgbase='qogir-gtk-theme'
+pkgbase="qogir-gtk-theme-base"
 pkgname=("qogir-gtk-theme" "qogir-gtk2-theme")
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=4
 pkgdesc="Qogir is a flat Design theme for GTK"
 arch=('any')
 url="https://github.com/vinceliuice/Qogir-theme"
 license=('GPL3')
 makedepends=('grep' 'sassc')
 optdepends=(
-	'kvantum-theme-qogir-git: Matching Kvantum theme'
+    'kvantum-theme-qogir-git: Matching Kvantum theme'
     'qogir-icon-theme: Matching icon theme'
     'vimix-cursors: Matching cursor theme'
     'tela-icon-theme: Recommended icon theme'
@@ -22,14 +23,14 @@ optdepends=(
 backup=(etc/qogir-gtk-theme/options.txt)
 options=('!strip')
 source=(
-    "$pkgbase-$pkgver.tar.gz::https://github.com/vinceliuice/$_pkgname/archive/$_pkgver.tar.gz"
+    "$_pkgbase-$pkgver.tar.gz::https://github.com/vinceliuice/$_pkgname/archive/$_pkgver.tar.gz"
     "options.txt"
 )
 sha256sums=('211d2d7e027fe595e7512ca346b63a9314ee59e3ddee875bc1c06aeef9e5b9bb'
             'fabf821acfe0641fd233d4d7a42a536aedc369516de62f877e83a1070c73327e')
 
 packaging() {
-	INSTALL_OPTS="$(/usr/bin/grep \
+    INSTALL_OPTS="$(/usr/bin/grep \
         --extended-regexp \
         --max-count=1 \
         --line-regexp \
@@ -44,13 +45,13 @@ packaging() {
 }
 
 package_qogir-gtk-theme() {
-	depends=('gtk3')
-	packaging
+    depends=('gtk3')
+    packaging
 }
 
 package_qogir-gtk2-theme() {
-	depends=('gtk-engines' 'gtk-engine-murrine')
-	provides=('qogir-gtk-theme')
-	conflicts=('qogir-gtk-theme')
-	packaging
+    depends=('gtk-engines' 'gtk-engine-murrine')
+    provides=('qogir-gtk-theme')
+    conflicts=('qogir-gtk-theme')
+    packaging
 }
