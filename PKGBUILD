@@ -11,7 +11,7 @@ _majorver=11
 _minorver=0
 _securityver=18
 _updatever=10
-pkgrel=1
+pkgrel=2
 pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
 _tag_ver=${_majorver}.${_minorver}.${_securityver}+${_updatever}
 _tag_ver_short=${_majorver}.${_minorver}.${_securityver}+${_updatever%.*}
@@ -55,6 +55,7 @@ backup=(etc/java-${_majorver}-temurin/net.properties
         etc/java-${_majorver}-temurin/management/jmxremote.password.template
         etc/java-${_majorver}-temurin/sound.properties)
 install=install_jdk11-temurin.sh
+options=(!strip)
 
 source_x86_64=(https://github.com/adoptium/temurin${_majorver}-binaries/releases/download/jdk-${_tag_ver/+/%2B}/OpenJDK${_majorver}U-jdk_x64_linux_hotspot_${_tag_ver_short/+/_}.tar.gz)
 sha256sums=('502d5dbdde0e4ef009af0f088e8431e0c1721ba2967951e690bf86d184493f75'
