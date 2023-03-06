@@ -6,6 +6,7 @@ pkgdesc="A rewrite of the pfetch system information tool in Rust"
 url="https://github.com/Gobidev/pfetch-rs"
 license=("MIT")
 arch=("x86_64")
+depends=("gcc-libs" "glibc" "sqlite")
 provides=("pfetch")
 conflicts=("pfetch-rs" "pfetch" "pfetch-git")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Gobidev/pfetch-rs/releases/download/v$pkgver/pfetch-linux-gnu-x86_64.tar.gz")
