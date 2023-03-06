@@ -8,8 +8,8 @@ url="https://github.com/pvsr/qbpm"
 license=('GPL')
 sha512sums=('SKIP')
 arch=('any')
-depends=('python' 'python-pyxdg')
-makedepends=('git' 'python-setuptools' 'python-click' 'scdoc')
+depends=('python' 'python-pyxdg' 'python-click')
+makedepends=('git' 'python-setuptools' 'scdoc')
 provides=('qbpm')
 source=("git+https://github.com/pvsr/qbpm")
 
