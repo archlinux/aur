@@ -1,0 +1,17 @@
+pkgbase = mysql-db-backup
+	pkgdesc = A script for automatically archiving MySQL databases.
+	pkgver = 0.0.4
+	pkgrel = 2
+	url = https://github.com/snuglinux/mysql-db-backup
+	install = mysql-db-backup.install
+	arch = any
+	license = GPL2
+	depends = bash
+	depends = mariadb-clients
+	optdepends = smail
+	backup = etc/mysql-db-backup/mysql-db-backup.conf
+	backup = usr/lib/systemd/system/mysql-db-backup.timer.d/mysql-db-backup.conf
+	source = https://github.com/snuglinux/mysql-db-backup/archive/0.0.4.zip
+	md5sums = 09d0390787667aad8b8e32961c6727cb
+
+pkgname = mysql-db-backup

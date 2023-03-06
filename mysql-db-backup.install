@@ -1,0 +1,14 @@
+USER=backup
+GROUP=backup
+
+pre_install() {
+  # Create User/Group
+  getent group ${GROUP} > /dev/null || groupadd --system ${GROUP}
+  getent passwd ${USER} > /dev/null || useradd --system --gid ${USER} --home-dir /dev/null --shell /sbin/nologin --no-create-home ${USER}
+}
+
+post_install() {
+  chown -R ${USER}:${GROUP} /etc/mysql-db-backup/
+  chown -R ${USER}:${GROUP} /usr/share/mysql-db-backup/
+  chown -R ${USER}:${GROUP} /var/log/mysql-db-backup
+}
