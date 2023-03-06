@@ -3,9 +3,10 @@ license=('GPL' 'custom:Brother')
 arch=('i686' 'x86_64')
 pkgname=brscan4
 pkgver=0.4.11_1
-pkgrel=1
+pkgrel=2
 pkgdesc="SANE drivers from Brother for compatible models"
-depends=('sane' 'gtk2')
+depends=('sane')
+optdepends=('gtk2: for using brscan_gnetconfig')
 url="http://support.brother.com"
 install=brscan4.install
 
