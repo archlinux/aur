@@ -33,6 +33,7 @@ sha256sums=('a55c345c144f18a1a58161630635aa08c7ff6cd4a73752368d0eaa43ecf7af92'
             '44a25adf22c87bf7a2102a7fc1c9f566d239ef3f3d7b3dc2bcd0f2c632695a17'
             '8519d027325dcb34877bb5b0fb0c3c035d7589c0046b53935e2b949d436c4be3'
             '41c0a4a42ae64479b008392053f4a947618acd6bb9c3ed2672dafdb2453caa14'
+            'dcb3b8bc1f6fa58dd64b95045b8b010489352c815f737bf2cbf8812973a8dc49'
             'd6de9eaaafcbe0117e70be2bf490f1d43ce8c0ffb6348d68e24c7d4175025a53'
             'f558abaa1de6ffc7c70ffefbeb691bc44ca6c0ee64802f0a6ba6f57e2b5a2e2f'
             '500906d22415c2851b87b87bdf2c1caa066908101555e90254a9ae57c93bf43b'
@@ -43,7 +44,6 @@ sha256sums=('a55c345c144f18a1a58161630635aa08c7ff6cd4a73752368d0eaa43ecf7af92'
 build() {
   _msg2 'creating the DEBIAN/control files'
   for _i in ${_pkgarches[@]}; do
-    [[ ${_i} == "armel" ]] && continue
     _msg2 "_pkgarch=${_i}"
     local _pkgarch=${_i}
     #create control file for the debian package
@@ -51,11 +51,7 @@ build() {
     echo "Version: ${pkgver}-${_pkgrel}" >> ${srcdir}/${_pkgarch}.control
     echo "Priority: optional" >> ${srcdir}/${_pkgarch}.control
     echo "Section: web" >> ${srcdir}/${_pkgarch}.control
-#    if [[ ${_pkgarch} == "armhf" ]] ; then
-#      echo "Architecture: armhf armel" >> ${srcdir}/${_pkgarch}.control
-#    else
-      echo "Architecture: ${_pkgarch}" >> ${srcdir}/${_pkgarch}.control
-#    fi
+    echo "Architecture: ${_pkgarch}" >> ${srcdir}/${_pkgarch}.control
     echo "Depends: ${_debdeps}" >> ${srcdir}/${_pkgarch}.control
     echo "Provides: ${_pkgname}" >> ${srcdir}/${_pkgarch}.control
     echo "Maintainer: ${_githuborg}" >> ${srcdir}/${_pkgarch}.control
@@ -66,8 +62,6 @@ build() {
 package() {
 
 for _i in "${_pkgarches[@]}"; do
-#  [[ ${_i} == "armel" ]] && continue
-
 _msg2 "_pkgarch=${_i}"
 local _pkgarch="${_i}"
 local _pkgarch1="${_pkgarch}"
@@ -97,11 +91,12 @@ _package
 
 _msg2 'installing control file and install scripts'
 install -Dm755 "${srcdir}/${_pkgarch}.control" "${_pkgdir}/DEBIAN/control"
-#install -Dm755 ${srcdir}/${_scripts}/preinst.sh ${_pkgdir}/DEBIAN/preinst
-install -Dm755 "${srcdir}/postinst.sh" "${_pkgdir}/DEBIAN/postinst"
-install -Dm755 "${srcdir}/prerm.sh" "${_pkgdir}/DEBIAN/prerm"
-#install -Dm755 "${srcdir}/${_scripts}/postrm.sh" "${_pkgdir}/DEBIAN/postrm"
-
+echo -e "#!/bin/bash
+[[ -f /opt/skywire/scripts/skywire-autoconfig ]]  && /opt/skywire/scripts/skywire-autoconfig
+"| tee "${_pkgdir}/DEBIAN/postinst" ; install -Dm755  "${_pkgdir}/DEBIAN/postinst"
+echo -e "#!/bin/bash
+[[ -d /opt/skywire/ ]] && rm -rf /opt/skywire/
+"| tee "${_pkgdir}/DEBIAN/postrm" ; install -Dm755  "${_pkgdir}/DEBIAN/postrm"
 _msg2 'creating the debian package'
 #create the debian package!
 cd "${pkgdir}"
