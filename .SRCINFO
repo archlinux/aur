@@ -1,6 +1,6 @@
 pkgbase = kourou
 	pkgdesc = The CLI that helps you manage your Kuzzle application
-	pkgver = 0.25.2
+	pkgver = 0.26.0
 	pkgrel = 1
 	url = https://github.com/kuzzleio/kourou
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = kourou
 	makedepends = jq
 	makedepends = npm
 	depends = nodejs
-	noextract = kourou-0.25.2.tgz
-	source = https://registry.npmjs.org/kourou/-/kourou-0.25.2.tgz
-	b2sums = aa3a6d65c564fca988427c8ea3e848739d12668751bfa57615972c080fdc2cf21172e1b595595583f881a3f98714fe3c87d571ad74bb00939249fa8396ac4cf3
+	noextract = kourou-0.26.0.tgz
+	source = https://registry.npmjs.org/kourou/-/kourou-0.26.0.tgz
+	b2sums = a499447d728649433ce9d5ee119460aee283432ffebdabeabf3e360df90ed94aca0061cc79804b9e50d295f3328919d7e8d64fac29330ab19218d6e96df9ea29
 
 pkgname = kourou
