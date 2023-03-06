@@ -13,18 +13,18 @@ post_install() {
 - OPTIONAL: Configure kanboard by editing /etc/webapps/kanboard/config.php
     This is required when using another DB driver than sqlite
     More info:
-    * http://kanboard.net/documentation/mysql-configuration
-    * http://kanboard.net/documentation/postgresql-configuration
+    * https://docs.kanboard.org/v1/admin/mysql/
+    * https://docs.kanboard.org/v1/admin/postgresql/
 - Configure the background tasks either by enabling the systemd timer service or by creating a crontab job
     * The SystemD service and timer are named 'kanboard.service' and 'kanboard.timer'
     * Example crontab config is located in /etc/webapps/kanboard
-    * http://kanboard.net/documentation/cronjob
+    * https://docs.kanboard.org/v1/admin/cronjob/
 - Configure kanboard to send out emails
-    * http://kanboard.net/documentation/email-configuration
+    * https://docs.kanboard.org/v1/admin/email/
 - Configure URL Rewriting
-    * http://kanboard.net/documentation/nice-urls
+    * https://docs.kanboard.org/v1/admin/url-rewriting/
 - Evaluate other config options as needed
-    * http://kanboard.net/documentation/config
+    * https://docs.kanboard.org/v1/admin/
 - Make sure your web server can write to kanboards data directory
     * chown -R http:http /usr/share/webapps/kanboard/data'
 }
