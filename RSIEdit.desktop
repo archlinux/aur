@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=RSIEdit
+Comment=C# GUI application for manipulation of RSI files used in SS14.
+Exec=/usr/bin/rsiedit "\\$@"
+Icon=RSIEdit
+Terminal=false
+Categories=Graphics;Development;
+

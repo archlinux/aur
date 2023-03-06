@@ -2,14 +2,18 @@
 
 pkgname=rsiedit-bin
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="C# GUI application for manipulation of RSI files used in SS14."
 arch=("x86_64")
 url="https://github.com/space-wizards/RSIEdit"
 license=("MIT")
 options=("!strip")
-source=("$url/releases/download/v$pkgver/Editor_Linux.zip")
-sha256sums=('9c891736a2fdc583f8d71a56b965ffdda409ce8b691a2af735ced16a27bd2dd7')
+source=("$url/releases/download/v$pkgver/Editor_Linux.zip"
+        "RSIEdit.desktop"
+	"RSIEdit.png")
+sha256sums=('9c891736a2fdc583f8d71a56b965ffdda409ce8b691a2af735ced16a27bd2dd7'
+            '58c4554c6ada6b33d16f82a87301a2975f8ef2ca6247b3bab6bd8b8d76b92898'
+            '56b7069383f1e839ce9aa14c8ca5e00bd089e3da85dd3ca774788d214c1fedea')
 
 package() {
   install -Dm755 "$srcdir/Editor_Linux/Editor"			-t "$pkgdir/opt/RSIEdit"
@@ -17,6 +21,9 @@ package() {
   install -Dm644 "$srcdir/Editor_Linux/libSkiaSharp.so"		-t "$pkgdir/opt/RSIEdit"
   install -Dm644 "$srcdir/Editor_Linux/Editor.pdb"		-t "$pkgdir/opt/RSIEdit"
   install -Dm644 "$srcdir/Editor_Linux/Importer.pdb"		-t "$pkgdir/opt/RSIEdit"
+
+  install -Dm644 "RSIEdit.desktop" 				-t "$pkgdir/usr/share/applications"
+  install -Dm644 "RSIEdit.png" 					-t "$pkgdir/usr/share/pixmaps"
 
   mkdir -p "$pkgdir/usr/bin"
   ln -s "/opt/RSIEdit/Editor" "$pkgdir/usr/bin/rsiedit"
