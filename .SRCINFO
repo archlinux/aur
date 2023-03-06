@@ -1,0 +1,17 @@
+pkgbase = python-torch-scatter
+	pkgdesc = PyTorch Extension Library of Optimized Scatter Operations
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://pytorch-scatter.readthedocs.io
+	arch = x86_64
+	license = MIT
+	makedepends = python
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	source = python-torch-scatter-2.1.0::https://github.com/rusty1s/pytorch_scatter/archive/refs/tags/2.1.0.tar.gz
+	sha256sums = c587ddf7ffaf8e4ddc31d8016d7f445d5896ce491209574800166a9f85c29377
+
+pkgname = python-torch-scatter
