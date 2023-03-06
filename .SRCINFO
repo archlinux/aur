@@ -1,6 +1,6 @@
 pkgbase = mstflint
 	pkgdesc = Mstflint - an open source version of MFT (Mellanox Firmware Tools)
-	pkgver = 4.22.0.1
+	pkgver = 4.23.0.1
 	pkgrel = 1
 	url = https://github.com/Mellanox/mstflint
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = mstflint
 	makedepends = rdma-core
 	depends = python
 	depends = iniparser
-	source = https://github.com/Mellanox/mstflint/archive/v4.22.0-1/mstflint-4.22.0-1.tar.gz
-	sha256sums = 1403928463fe589034e0effb215bbeb18e0ffac745c197b4511782f6694fe24c
+	source = https://github.com/Mellanox/mstflint/archive/v4.23.0-1/mstflint-4.23.0-1.tar.gz
+	sha256sums = 095f75a1c50dc7328f2f933b378a3e2a63ab55d7e8495e7c881e8313b7b69c32
 
 pkgname = mstflint

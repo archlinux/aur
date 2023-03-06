@@ -2,8 +2,8 @@
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
 pkgname='mstflint'
-pkgver='4.22.0.1'
-_pkgver='4.22.0-1'
+pkgver='4.23.0.1'
+_pkgver='4.23.0-1'
 pkgrel='1'
 pkgdesc='Mstflint - an open source version of MFT (Mellanox Firmware Tools)'
 arch=('x86_64' 'i686')
@@ -12,13 +12,14 @@ license=('GPL2' 'custom:"OpenIB.org BSD"')
 depends=('python' 'iniparser')
 makedepends=('rdma-core')
 source=("${url}/archive/v${_pkgver}/${pkgname}-${_pkgver}.tar.gz")
-sha256sums=('1403928463fe589034e0effb215bbeb18e0ffac745c197b4511782f6694fe24c')
+sha256sums=('095f75a1c50dc7328f2f933b378a3e2a63ab55d7e8495e7c881e8313b7b69c32')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${_pkgver}"
+  cd "${pkgname}-${_pkgver}"
 
   ./autogen.sh
   autoreconf -fvi
+
   ./configure \
     --prefix="/usr" \
     --sbindir="/usr/bin" \
@@ -34,7 +35,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${_pkgver}"
+  cd "${pkgname}-${_pkgver}"
 
   make DESTDIR="${pkgdir}" install
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
