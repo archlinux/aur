@@ -1,6 +1,6 @@
 pkgbase = python-jaraco.tidelift
 	pkgdesc = Tools for Tidelift by jaraco
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/jaraco/jaraco.tidelift
 	arch = any
@@ -10,9 +10,13 @@ pkgbase = python-jaraco.tidelift
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/j/jaraco.tidelift/jaraco.tidelift-1.5.0.tar.gz
+	makedepends = python-sphinx-furo
+	makedepends = python-jaraco.packaging
+	makedepends = python-rst.linker
+	makedepends = python-importlib_resources
+	source = https://files.pythonhosted.org/packages/source/j/jaraco.tidelift/jaraco.tidelift-1.5.1.tar.gz
 	source = Makefile
-	md5sums = 6a95586094fafed2703efdbec0ffc951
+	md5sums = 38a2d363e08ff0f8b6c324e5adfb5b08
 	md5sums = a6aa4bc42b138d75f938065a0994c3e1
 
 pkgname = python-jaraco.tidelift
@@ -20,4 +24,4 @@ pkgname = python-jaraco.tidelift
 	depends = python-autocommand
 	depends = python-requests-toolbelt
 	depends = python-keyring
-	depends = python-importlib_resources
+	depends = python-importlib_resources>=1.6
