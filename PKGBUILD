@@ -8,7 +8,7 @@ _pkgbin=ledger-live-desktop
 pkgname=ledger-live
 pkgdesc="Ledger Live - Desktop"
 pkgver=2.54.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live'
 license=('MIT')
@@ -18,15 +18,27 @@ _extdir=ledger-live--ledgerhq-live-desktop-${pkgver}
 source=("${_pkgbin}-${pkgver}.tar.gz::https://github.com/LedgerHQ/ledger-live/archive/refs/tags/@ledgerhq/live-desktop@${pkgver}.tar.gz")
 sha512sums=('f6929cffd66be1cf5d9c2d93bf5ff9aee18d72aaedba8230837f5ac18ec5e92157a4f1bea8e497cc6cb7facabfa69c06c251f5c0aa8cd7be1dae905607a2689f')
 
-prepare() {
-  cd "${_extdir}"
-
+_fnm_use() {
+  export FNM_DIR="${srcdir}/.fnm"
   eval "$(fnm env --shell bash)"
   fnm use --install-if-missing
 }
 
+_check_nodejs() {
+  exp_ver=$(cat .nvmrc)
+  use_ver=$(node -v)
+  if [[ "${exp_ver}" != "${use_ver}" ]]
+  then
+    echo "Using the wrong version of NodeJS! Expected [${exp_ver}] but using [${use_ver}]."
+    exit 1
+  fi
+}
+
 build() {
   cd "${_extdir}"
+
+  _fnm_use
+  _check_nodejs
 
   export GIT_REVISION=${pkgver}
   pnpm i --filter="ledger-live-desktop..." --filter="ledger-live" --frozen-lockfile --unsafe-perm
