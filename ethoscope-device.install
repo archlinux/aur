@@ -11,48 +11,36 @@ post_install() {
 
     echo "setting GIT branch"
     git checkout dev
-    
+
     echo "installing python package"
     cd /opt/ethoscope-device/src
     python setup.py develop
-    
+
     echo "create 000 machine files"
     echo "ETHOSCOPE_000" > /etc/machine-name
     echo "ETHOSCOPE_000" > /etc/hostname
-    
-    echo "create a default wlan0 file"
-    echo "Description='ethoscope_wifi'" > /etc/netctl/wlan
-    echo "Interface=wlan0" >> /etc/netctl/wlan
-    echo "Connection=wireless" >> /etc/netctl/wlan
-    echo "Security=wpa" >> /etc/netctl/wlan
-    echo "IP=dhcp" >> /etc/netctl/wlan
-    echo "TimeoutDHCP=60" >> /etc/netctl/wlan
-    echo "ESSID=ETHOSCOPE_WIFI" >> /etc/netctl/wlan
-    echo "Key=ETHOSCOPE_1234" >> /etc/netctl/wlan
-    
-    echo "create a default eth0 file"
-    echo "Description='Ethernet'" > /etc/netctl/ether
-    echo "Interface=eth0" >> /etc/netctl/ether
-    echo "Connection=ethernet" >> /etc/netctl/ether
-    echo "IP=dhcp" >> /etc/netctl/ether
-    
-    echo "use netctl instead of networkd"
-    systemctl stop systemd-networkd
-    systemctl disable systemd-networkd
-    ip link set eth0 down
-    ip link set wlan0 down
 
-    netctl enable ether
-    netctl enable wlan
+    echo "create an ethoclient command"
+    echo $'#!/bin/env bash\npython /opt/ethoscope-device/src/scripts/ethoclient.py $@' > /usr/bin/ethoclient
+    chmod +x /usr/bin/ethoclient
 
-    # netctl-auto is for wireless connections only, 
-    systemctl start netctl-auto@wlan
-    systemctl enable netctl-auto@wlan
+    echo "create the default network configuration files"
+    echo $'[Match]\nName=eth0\n\n[Network]\nDHCP=yes\n\n[DHCPv4]\nRouteMetric=10\n' > /etc/systemd/network/20-wired.network
+	echo $'[Match]\nName=wlan0\n\n\n[Network]\nDHCP=yes\n\n[DHCPv4]\nRouteMetric=20\n' > /etc/systemd/network/25-wireless.network
+    systemctl enable systemd-networkd --now
 
-    # ifplugd for wired connections  
-    systemctl enable netctl-ifplugd@eth0
-    systemctl start netctl-ifplugd@eth0
-    
+	wpa_passphrase ETHOSCOPE_WIFI ETHOSCOPE_1234 > /etc/wpa_supplicant/wpa_supplicant-wlan0.conf
+    systemctl enable wpa_supplicant --now
+    systemctl enable wpa_supplicant@wlan0.service
+
+	#create a verbose login prompt
+	echo 'Ethoscope Linux \r  (\n) (\l)' > /etc/issue
+	echo 'Ethernet IP: \4{eth0}' >> /etc/issue
+	echo 'WIFI IP: \4{wlan0}' >> /etc/issue
+
+	echo "activates remote journal upload"
+    echo $'[Upload]\nURL=http://node:19532\n' > /etc/systemd/journal-upload.conf
+
     echo "configure the NTP file"
     echo 'server node' > /etc/ntp.conf
     echo 'server 127.127.1.0' >> /etc/ntp.conf
@@ -61,12 +49,12 @@ post_install() {
     echo 'restrict 127.0.0.1' >> /etc/ntp.conf
     echo 'restrict ::1' >> /etc/ntp.conf
     echo 'driftfile /var/lib/ntp/ntp.drift' >> /etc/ntp.conf
-    
+
     echo "enabling DEVICE specific systemd service files"
     systemctl enable ethoscope_device.service ethoscope_listener.service ethoscope_update.service ethoscope_GPIO_listener.service
     systemctl enable ntpd.service mysqld.service sshd.service mysqld.service avahi-daemon.service
     #systemctl enable fake-hwclock fake-hwclock-save.timer
-    
+
     echo "Set up mysql database"
     mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
     systemctl start mysqld.service
@@ -90,7 +78,7 @@ post_install() {
     echo 'gpu_mem=256' >> /boot/config.txt
     echo 'cma_lwm=' >> /boot/config.txt
     echo 'cma_hwm=' >> /boot/config.txt
-    
+
     echo 'cma_offline_start=' >> /boot/config.txt
     echo 'hdmi_force_hotplug=1' >> /boot/config.txt
 
@@ -99,28 +87,24 @@ post_install() {
 
     echo 'Loading bcm2835 module'
     echo 'bcm2835-v4l2' > /etc/modules-load.d/picamera.conf
-   
+
     echo "limiting journal log space"
     echo 'SystemMaxUse=250MB' >> /etc/systemd/journald.conf
-   
+
     echo "generating locale"
     echo "en_GB.UTF-8 UTF-8" >> /etc/locale.gen
     locale-gen
 
     echo "disable bluetooth"
     echo 'dtoverlay=pi3-disable-bt' >> /boot/config.txt
-    
+
     #https://madflex.de/use-i2c-on-raspberry-pi-with-archlinux-arm/
     echo "adding support to I2C"
     echo 'dtparam=i2c_arm=on' >> /boot/config.txt
     echo 'i2c-dev' >> /etc/modules-load.d/raspberrypi.conf
-   
-    #make ethoclient an executable command
-    chmod +x /opt/ethoscope-device/src/scritpts/ethoclient.py
-    ln -s /usr/bin/ethoclient /opt/ethoscope-device/src/scritpts/ethoclient.py
-    
+
     echo "Please reboot this PI now."
-    
+
 }
 
 ## arg 1:  the new package version
