@@ -10,7 +10,7 @@ url="http://emercoin.com/"
 license=('GPL3')
 install='emercoin.install'
 _archive="emercoin-${pkgver}-x86_64-linux-gnu"
-source_x86_64=("https://w3s.link/ipfs/bafybeihwaze5bvcwt36kz7lcg7pift3rc5ttj5w275vl2e53tdt5ybiy4u/emercoin-0.7.12-x86_64-linux-gnu.tar.xz"
+source_x86_64=("https://ipfs.cofob.dev/ipfs/bafybeihwaze5bvcwt36kz7lcg7pift3rc5ttj5w275vl2e53tdt5ybiy4u/emercoin-0.7.12-x86_64-linux-gnu.tar.xz"
 "emercoin.install"
 "emercoind.service"
 "emc48.png"
