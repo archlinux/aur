@@ -37,6 +37,6 @@ package() {
 	install -Dm755 "target/release/cargo-build-all-features" -t "$pkgdir/usr/bin"
 	install -Dm755 "target/release/cargo-test-all-features" -t "$pkgdir/usr/bin"
 	install -Dm755 "target/release/cargo-check-all-features" -t "$pkgdir/usr/bin"
-	install -Dm644 "LICENSE-MIT" -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm644 "LICENSE-APACHE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 "LICENSE-MIT" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
