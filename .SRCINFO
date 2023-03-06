@@ -1,7 +1,7 @@
 pkgbase = namcap-improved
 	pkgdesc = Improved Pacman package analyzer
 	pkgver = 3.3.1+r43+gb6265a7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.archlinux.org/pacman/namcap
 	arch = any
 	license = GPL
