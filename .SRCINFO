@@ -1,6 +1,6 @@
 pkgbase = seamly2d
 	pkgdesc = Open source patternmaking software
-	pkgver = 2023.2.13.238
+	pkgver = 2023.3.6.1639
 	pkgrel = 1
 	url = https://seamly.net/
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = seamly2d
 	depends = qt5-svg
 	depends = qt5-xmlpatterns
 	depends = desktop-file-utils
-	source = https://github.com/FashionFreedom/Seamly2D/archive/v2023.2.13.238.tar.gz
-	sha512sums = 83e8e006078949ec3c378e06d4655d8c6c330c8c8a144fefec36f1557b87584a59916c2abee910c4cc8ee0f7d5b04450749b0e9566d8f3ee37198705ee6e0bc1
+	source = https://github.com/FashionFreedom/Seamly2D/archive/v2023.3.6.1639.tar.gz
+	sha512sums = ffae879b6f332635b560e8e6d1a5dc6688ac17efdd930a7710c7f1924f0e9b58cd1093fa7c074c6d1d2f4d19bc30ae3510ebb6e8bc59c4a031fabafeeaf4eb49
 
 pkgname = seamly2d
