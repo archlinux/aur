@@ -2,10 +2,10 @@
 # Contributor: nightuser <nightuser.android@gmail.com>
 
 pkgname="stm32cubeide"
-pkgver=1.11.2
-_pkgver_ext=1.11.2_14494_20230119_0724.unsigned
-_pkg_file_name=en.st-stm32cubeide_1.11.2_14494_20230119_0724.unsigned_amd64.sh.zip
-pkgrel=2
+pkgver=1.12.0
+_pkgver_ext=1.12.0_14980_20230301_1550
+_pkg_file_name=st-stm32cubeide_1.12.0_14980_20230301_1550_amd64.sh.zip
+pkgrel=1
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
 makedepends=('imagemagick')
@@ -39,7 +39,7 @@ source=("${_pkg_file_name}"::"$_download_path"
 #	"99-jlink.rules.patch"
 	"https://www.st.com/resource/en/license/SLA0048_STM32CubeIDE.pdf"
 	)
-sha256sums=('86043ab98b5f0ee54ad50b23148a47a635881f4c616e6face9dba7b6133d51f4'
+sha256sums=('287129ea5d1fc283ae34404ccb15891f8e767587d43f9c43504ee9cdb73d55f7'
 #	'0f3f69f7c980a701bf814e94595f5acb51a5d91be76b74e5b632220cfb0e7bb3'
 	'SKIP'
 )
