@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=onevpl-intel-gpu-git
-pkgver=22.4.2.r19.g617a5b2d
+pkgver=23.1.2.r28.g9feab43c
 pkgrel=1
 pkgdesc='oneVPL runtime implementation for Intel GPUs (Tiger Lake and newer) (git version)'
 arch=('x86_64')
@@ -22,7 +22,7 @@ prepare() {
 
 pkgver() {
     local _version
-    _version="$(git -C oneVPL-intel-gpu tag --list --sort='-v:refname' 'intel-onevpl-*' | head -n1 | sed 's/^intel\-onevpl\-//')"
+    _version="$(git -C oneVPL-intel-gpu tag --list --sort='-v:refname' 'intel-onevpl-*' | sed -n 's/^intel-onevpl-//;1p')"
     printf '%s.r%s.g%s' "$_version" \
                         "$(git -C oneVPL-intel-gpu rev-list --count "intel-onevpl-${_version}..HEAD")" \
                         "$(git -C oneVPL-intel-gpu rev-parse --short HEAD)"
@@ -30,14 +30,15 @@ pkgver() {
 
 build() {
     cmake -B build -S oneVPL-intel-gpu \
+        -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DBUILD_TESTS:BOOL='OFF' \
         -Wno-dev
-    make -C build
+    cmake --build build
 }
 
 package() {
-    make -C build DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake --install build
     install -D -m644 oneVPL-intel-gpu/{LICENSE,NOTICE} -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
