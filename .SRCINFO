@@ -2,7 +2,7 @@ pkgbase = gxemul
 	pkgdesc = Instruction-level machine emulator
 	pkgver = 0.7.0
 	pkgrel = 1
-	url = http://gavare.se/gxemul/
+	url = https://gavare.se/gxemul/
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -12,4 +12,3 @@ pkgbase = gxemul
 	sha256sums = 79c4437c6f8ca904f46d33ac36062a65fdcf4a92a248478e408ab11295cf8e83
 
 pkgname = gxemul
-
