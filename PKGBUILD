@@ -6,7 +6,7 @@
 pkgname=mediawriter
 _pkgname=MediaWriter
 _author=FedoraQt
-pkgver=5.0.3
+pkgver=5.0.4
 pkgrel=1
 pkgdesc='Fedora Media Writer - Write Fedora Images to Portable Media'
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=('xz' 'qt6-base' 'qt6-imageformats' 'qt6-tools' 'qt6-declarative' 'qt6-5
 optdepends=('udisks2: Disk Management Service for disk installation')
 makedepends=('cmake' 'ninja')
 source=("https://github.com/${_author}/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('51112d2f5b5d608d04f11a502a4c7e910193ada3f3fd0657de35ceb5ed2ce10d')
+sha256sums=('56b810131bc82bf5179efa5ca0d8ec203c065bdc1e73e8d3d6549f55ddac0962')
 
 build() {
   cmake -G Ninja -B build -S "${_pkgname}-${pkgver}" \
