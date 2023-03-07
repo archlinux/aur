@@ -1,6 +1,6 @@
 pkgbase = game-rs-git
 	pkgdesc = A minimal (CLI) game launcher for Linux written in rust.
-	pkgver = r31.b20ca17
+	pkgver = r40.8bdbd24
 	pkgrel = 1
 	url = https://github.com/amanse/game-rs
 	arch = any

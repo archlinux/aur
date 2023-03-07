@@ -2,7 +2,7 @@
 
 pkgname=game-rs-git
 _realname=game-rs
-pkgver=r31.b20ca17
+pkgver=r40.8bdbd24
 pkgrel=1
 pkgdesc="A minimal (CLI) game launcher for Linux written in rust."
 arch=("any")
