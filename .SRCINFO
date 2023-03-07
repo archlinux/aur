@@ -1,0 +1,17 @@
+pkgbase = guile-goblins
+	pkgdesc = Spritely Goblins is a distributed object programming environment for Guile Scheme.
+	pkgver = 0.10
+	pkgrel = 1
+	url = https://spritely.institute/goblins/
+	arch = any
+	license = Apache
+	makedepends = guile>=3.0,
+	makedepends = guile-gcrypt>=0.3.0,
+	makedepends = guile-fibers>=1.0.0
+	depends = guile>=3.0,
+	depends = guile-gcrypt>=0.3.0,
+	depends = guile-fibers>=1.0.0
+	source = https://spritely.institute/files/releases/guile-goblins/guile-goblins-0.10.tar.gz
+	md5sums = 8ea95ea89da3edff129017bc82405ad6
+
+pkgname = guile-goblins
