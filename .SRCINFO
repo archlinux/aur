@@ -11,6 +11,7 @@ pkgbase = ps3-spu-gcc
 	arch = riscv64
 	license = GPL
 	license = LGPL
+	depends = ps3-spu-binutils
 	options = !emptydirs
 	options = !strip
 	options = staticlibs

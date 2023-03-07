@@ -14,7 +14,7 @@ pkgdesc="GCC for cross-compiling to ${_target}"
 arch=(x86_64 aarch64 powerpc64le powerpc64 powerpc riscv64)
 url='https://gcc.gnu.org/'
 license=(GPL LGPL)
-depends=()
+depends=(ps3-spu-binutils)
 options=(!emptydirs !strip staticlibs !lto)
 source=(
 	"https://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.tar.xz"
