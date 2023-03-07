@@ -1,5 +1,28 @@
---- install-sh	2023-03-03 14:38:38.949075607 +0100
-+++ install-sh-patched	2023-03-03 14:49:13.573581548 +0100
+diff --color --unified --recursive --text --color pvs-7.1.0/install-sh pvs-7.1.0.new/install-sh
+--- pvs-7.1.0/install-sh	2020-09-24 00:39:14.000000000 +0200
++++ pvs-7.1.0.new/install-sh	2023-03-07 15:41:56.483077353 +0100
+@@ -8,16 +8,16 @@
+ # Relocate PVSPATH and in the pvs shell script.
+ 
+ echo Setting PVSPATH in the \"pvs\", \"pvsio\", \"proveit\", and \"provethem\"
+-echo "  shell scripts to $PWD"
++echo "  shell scripts to /opt/pvs"
+ echo If this is not the right path, edit the scripts before using them.
+ $chmodprog u+w pvs pvsio proveit provethem
+-$sedprog -e "s,^PVSPATH=.*$,PVSPATH=$PWD," < pvs > tmp.$$
++$sedprog -e "s,^PVSPATH=.*$,PVSPATH=/opt/pvs," < pvs > tmp.$$
+ $mvprog tmp.$$ pvs
+-$sedprog -e "s,^PVSPATH=.*$,PVSPATH=$PWD," < pvsio > tmp.$$
++$sedprog -e "s,^PVSPATH=.*$,PVSPATH=/opt/pvs," < pvsio > tmp.$$
+ $mvprog tmp.$$ pvsio
+-$sedprog -e "s,^PVSPATH=.*$,PVSPATH=$PWD," < proveit > tmp.$$
++$sedprog -e "s,^PVSPATH=.*$,PVSPATH=/opt/pvs," < proveit > tmp.$$
+ $mvprog tmp.$$ proveit
+-$sedprog -e "s,^\$PVSPATH=.*$,\$PVSPATH=\"$PWD\";," < provethem > tmp.$$
++$sedprog -e "s,^\$PVSPATH=.*$,\$PVSPATH=\"/opt/pvs\";," < provethem > tmp.$$
+ $mvprog tmp.$$ provethem
+ $chmodprog a+x pvs pvsio proveit provethem
+ 
 @@ -33,9 +33,4 @@
  echo "\nByte compiling emacs files using $emacsinfo"
  echo "  if this is not the right Emacs, set PVSEMACS"
@@ -10,4 +33,4 @@
 -(cd emacs; $emacsprog -batch -l pvs-byte-compile.el) \
 -    >> byte-compile.log 2>&1 \
 -    || echo "!!! Something went wrong - see the end of byte-compile.log"
-+(cd emacs; $emacsprog -batch -l pvs-byte-compile.el) || echo "!!! Something went wrong - see the end of byte-compile.log"
++(cd emacs; $emacsprog -batch -l pvs-byte-compile.el) || echo "!!! Something went wrong"
