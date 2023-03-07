@@ -7,7 +7,7 @@ pkgbase = doomrunner
 	license = GPL3
 	makedepends = git
 	depends = qt5-base
-	backup = usr/bin/doomrunner
+	backup = opt/DoomRunner
 	source = doomrunner-1.7.1.tar.gz::https://github.com/Youda008/DoomRunner/archive/v1.7.1.tar.gz
 	md5sums = 023b888f6ca19caa45363c0cbbb9980f
 
