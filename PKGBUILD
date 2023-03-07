@@ -1,4 +1,5 @@
-# Maintainer: Atif Chowdhury <iftakhar.awal@gmail.com>
+# Maintainer: éclairevoyant
+# Contributor: Atif Chowdhury <iftakhar dot awal at gmail dot com>
 
 _pkgname=eww
 pkgname="$_pkgname-wayland-git"
