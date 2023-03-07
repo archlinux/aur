@@ -3,7 +3,7 @@
 
 pkgname='offpunk-git'
 _pkgname='offpunk'
-pkgver=1.8.r0.g45a689a
+pkgver=1.8.r20.g520b53f
 pkgrel=1
 epoch=2
 pkgdesc='Fork of the command-line Gemini client AV-98 with added offline capabilities'
@@ -55,8 +55,10 @@ package() {
   umask 0022
   python setup.py install --root="$pkgdir" --prefix='/usr' --optimize=1
 
-  install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm0644 LICENSE   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  test -f man/offpunk.1 && \
+  install -Dm0644 man/offpunk.1 "$pkgdir/usr/share/man/man1/offpunk.1"
+  install -Dm0644 README.md     "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm0644 LICENSE       "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # eof
