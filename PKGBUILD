@@ -2,7 +2,7 @@
 
 pkgname=teamspeak
 pkgver=5.0.0beta72
-pkgrel=1
+pkgrel=2
 pkgdesc="Software for quality voice communication via the Internet"
 url="http://www.teamspeak.com"
 license=('custom')
@@ -26,7 +26,7 @@ sha512sums=('de1930ba086c3862c6bdc23088939b2a3bf6ddd559cdeb8dedfd7eec692a303e202
 DLAGENTS=("http::/usr/bin/curl --basic -u teamspeak5:LFZ6Z^kvGrnX~an,\$L#4gxL3'a7/a[[&_7>at}A3ARRGY -A teamspeak.downloader/1.0 -C 200 -o %o %u")
 
 package() {
-  install -d "$pkgdir"/usr/{bin,share/{licenses,pixmaps},lib/$pkgname}/
+  install -d "$pkgdir"/{usr/{bin,share/{licenses,pixmaps}},opt/$pkgname}/
 
   # Recursively installing all top-level regular files and directories from srcdir
   #   Files supplied to makepkg as sources are present in srcdir using symbolic links
@@ -36,12 +36,13 @@ package() {
     -maxdepth 1 \
     -type d,f \
     ! -name teamspeak-client.desktop \
-    -exec cp -r {} "$pkgdir/usr/lib/$pkgname/" \;
+    -exec cp -r {} "$pkgdir/opt/$pkgname/" \;
 
-  chmod 755 "$pkgdir/usr/lib/$pkgname/TeamSpeak"
+  chmod 0755 "$pkgdir/opt/$pkgname/TeamSpeak"
+  chmod 0755 "$pkgdir/opt/$pkgname/hotkey_helper"
 
-  install -Dm644 "$srcdir/teamspeak-client.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-  ln -s /usr/lib/$pkgname/logo-256.png "$pkgdir/usr/share/pixmaps/teamspeak-client.png"
-  ln -s /usr/lib/$pkgname/licenses "$pkgdir/usr/share/licenses/$pkgname"
-  ln -s /usr/lib/$pkgname/TeamSpeak "$pkgdir/usr/bin/teamspeak"
+  install -Dm0644 "$srcdir/teamspeak-client.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  ln -s /opt/$pkgname/logo-256.png "$pkgdir/usr/share/pixmaps/teamspeak-client.png"
+  ln -s /opt/$pkgname/licenses "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s /opt/$pkgname/TeamSpeak "$pkgdir/usr/bin/teamspeak"
 }

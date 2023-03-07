@@ -1,7 +1,7 @@
 pkgbase = teamspeak
 	pkgdesc = Software for quality voice communication via the Internet
 	pkgver = 5.0.0beta72
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.teamspeak.com
 	arch = x86_64
 	license = custom
