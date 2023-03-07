@@ -1,12 +1,11 @@
 # Maintainer: wordofglass <wordofglass@users.noreply.github.com>
 
 pkgname=beets-copyartifacts-git
-pkgver=0.1.2.r34.1a0c281
+pkgver=0.1.5.r1.2583e59
 pkgrel=1
-epoch=1 # had the versioning messed up initially...
 pkgdesc="A beets plugin that moves non-music files during the import process."
 arch=('any')
-url="https://github.com/sbarakat/${pkgname%-git}"
+url="https://github.com/adammillerio/${pkgname%-git}"
 license=('MIT')
 depends=('python' 'beets')
 makedepends=('git')
