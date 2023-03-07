@@ -1,18 +1,18 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=onevpl-cpu
-pkgver=2023.1.2
+pkgver=2023.1.3
 pkgrel=1
 pkgdesc='oneVPL runtime implementation for CPU'
 arch=('x86_64')
 url='https://www.intel.com/content/www/us/en/developer/tools/oneapi/onevpl.html'
 license=('MIT')
 depends=('gcc-libs')
-makedepends=('git' 'cmake' 'meson' 'nasm' 'onevpl' 'python' 'xxhash' 'yasm')
+makedepends=('git' 'cmake' 'meson' 'nasm' 'onevpl' 'xxhash' 'yasm')
 provides=('onevpl-runtime')
 source=("https://github.com/oneapi-src/oneVPL-cpu/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         '010-onevpl-cpu-fix-build.patch')
-sha256sums=('78608458545982354070c04802bbf77be494e9fd25c5cab9635849bcb245aff1'
+sha256sums=('5512a54f5d892985d1e57655773bfa8b90642a6468fddf5385904c090583df88'
             'ee6b8f15e24a6c03337657c3b38eab0b929cc3ec539a94dd8d1d5f9a9b85b3cb')
 
 prepare() {
@@ -28,12 +28,11 @@ build() {
     
     "oneVPL-cpu-${pkgver}/script/bootstrap" gpl
     
-    local _pyver
-    _pyver="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
     export CFLAGS="${CFLAGS/ -ffat-lto-objects/}"
     export CXXFLAGS="${CXXFLAGS/ -ffat-lto-objects/}"
     
     cmake -B build -S "oneVPL-cpu-${pkgver}" \
+        -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DCMAKE_INSTALL_SYSCONFDIR:PATH='/etc' \
@@ -41,13 +40,12 @@ build() {
         -DBUILD_GPL_X264:BOOL='ON' \
         -DBUILD_TESTS:BOOL='ON' \
         -DONEAPI_INSTALL_LICENSEDIR:STRING="share/licenses/${pkgname}" \
-        -DONEAPI_INSTALL_PYTHONDIR:STRING="lib/python${_pyver}" \
         -Wno-dev
-    make -C build
+    cmake --build build
 }
 
 check() {
-    make -C build test
+    ctest --test-dir build --output-on-failure
 }
 
 package() {
