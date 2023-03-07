@@ -7,7 +7,7 @@
 
 pkgname=extremetuxracer-ukr-lat
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Downhill racing game starring Tux"
 arch=('x86_64')
 url="https://sourceforge.net/projects/extremetuxracer"
@@ -17,7 +17,7 @@ makedepends=('csfml' 'git')
 conflicts=('ppracer' 'etracer' 'extremetuxracer')
 replaces=('ppracer' 'etracer' 'extremetuxracer')
 source=("https://github.com/phrippy/extremetuxracer/archive/refs/heads/${pkgver}.zip")
-sha512sums=('1b329d7d2364fa2a629a3266e83f829835c3b16b0a8a863d08168f4fb5f5709948be92f50123deaad2f844e3d229e9b39392ba4a622fb91c68a96b459d78245f')
+sha512sums=('16d52c41192e65a90b795897ea66e9f615f1a3c47c99c49134ca2b099096380d165415403cecede6e9bcd56a32c4f5ba96af456f84d533a70c3811ca5661a721')
 
 build() {
 	cd extremetuxracer-${pkgver}
