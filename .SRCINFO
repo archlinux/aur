@@ -1,7 +1,7 @@
 pkgbase = confusion
 	pkgdesc = A MDL interpreter
 	pkgver = 0.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://gitlab.com/emacsomancer/confusion-mdl
 	arch = x86_64
 	license = GPL
