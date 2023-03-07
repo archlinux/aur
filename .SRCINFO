@@ -1,6 +1,6 @@
 pkgbase = r-terra
 	pkgdesc = Spatial Data Analysis
-	pkgver = 1.7.3
+	pkgver = 1.7.18
 	pkgrel = 1
 	url = https://cran.r-project.org/package=terra
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = r-terra
 	depends = gdal>=2.2.3
 	depends = geos>=3.4.0
 	depends = proj>=4.9.3
-	depends = r-rcpp
+	depends = r-rcpp>=1.0.10
 	depends = r>=3.5.0
 	depends = sqlite
 	optdepends = r-deldir
@@ -18,7 +18,7 @@ pkgbase = r-terra
 	optdepends = r-sf>=0.9.8
 	optdepends = r-tinytest
 	optdepends = r-xml
-	source = https://cran.r-project.org/src/contrib/terra_1.7-3.tar.gz
-	b2sums = 692eb64c9ca21e9964408ba8b85af0b6f1fc2a065bdf34f5f14a42424648a415e087442f462b96a8bbe59a731c9b516baa71a932dc4bdac1babac0325fbc2660
+	source = https://cran.r-project.org/src/contrib/terra_1.7-18.tar.gz
+	b2sums = 14aa5b5367ab029c19a6514ebd6ca991087940663ff2f3b8a69855672e8a890b731cb11585c87d54a41f5daf3de4801a409c590e49805927bf9df393faf329bc
 
 pkgname = r-terra
