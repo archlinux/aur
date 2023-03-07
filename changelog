@@ -1,23 +1,25 @@
-# Version 1.0.5
+# Version 1.0.6
 
 ## List of changes
 
-### Breaking changes
+### REST API
 
-There are no breaking changes on this release.
+No changes.
 
-### Features
+### Pinning Service API
 
-    Support for pebble and badger3 datastores | #1809
+No changes.
 
-### Bug fixes
+### IPFS Proxy API
 
-    Fix panic on boot (related to libp2p AutoRelay) | #1796 | #1797
-    Fix error parsing quic-v1 multiaddresses from Kubo 0.18.0 | #1835 | #1841
-    Fix error building docker container with newer git | #1836
-    Fix building master due to pinned go-mfs dependency | #1817 | #1818
+No changes.
 
-### Other changes
+### Go APIs
 
-    Dependency updates (including libp2p v0.24.2) | #1813 | #1840
-    Switch Docker containers to pebble by default | #1842
+No relevant changes.
+
+### Other
+
+The `--datastore` flag to `ipfs-cluster-service init` now defaults to `pebble`
+in most platforms, and to `badger3` in those where Pebble is not supported
+(arm, 386).
