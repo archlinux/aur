@@ -40,9 +40,11 @@ makedepends=("po4a")
 conflicts=("adduser")
 backup=("etc/adduser.conf" "etc/deluser.conf")
 source=("https://salsa.debian.org/debian/adduser/-/archive/debian/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
+        "arch-finger.patch"
         "arch-license-path.patch"
         "arch-policy.patch")
 sha256sums=('3ce6de32bce048d12429d9431b36d8437c1934266475b6a9f5235b3dff54f918'
+            '917d0f4733610e0fef9210728d1a11ac47574293c5c4c5e37d654e78f84dff85'
             '2bb01846f0f3206796a817aacc65bef7d216ef7e0a89132661abb4182f0ba7d6'
             '245e1fcd5baa0e85471ef92778bd429dedc094e02743d1a832217e116be3ccb1')
 
@@ -77,6 +79,39 @@ prepare() {
   patch -Np0 -d . -i arch-license-path.patch
   cd ${_pkgname}-${pkgver}
   sed -i "s/my \$version = \"VERSION\"/my \$version = \"${pkgver}-arch${pkgrel}\"/" adduser deluser
+  cd ..
+
+  # On Arch, `chfn` comes from the `util-linux` package rather than `shadow`.
+  # Both packages have different interpretations of the GECOS/finger field in
+  # user definitions. The `shadow` or Debian version has the following format:
+  # * Full Name (`-f` argument)
+  # * Office Room Number (`-r` argument)
+  # * Work Phone Number (`-w` argument)
+  # * Home Phone Number (`-h` argument)
+  # * Other (`-o` argument)
+  # Whereas the `util-linux` or Arch version has the following format:
+  # * Full Name (`-f` argument)
+  # * Office Room Number (`-o` argument)
+  # * Office Phone Number (`-p` argument)
+  # * Home Phone Number (`-h` argument)
+  # So the differences are in the arguments which need to be passed to `chfn`,
+  # and that Arch does not have an "other" field.
+  #
+  # In the normal case (the user does not specify the `--comment` argument)
+  # there is no issue, as the script calls `chfn` with no arguments to prompt
+  # the user for the finger information. But if the `--comment` argument is
+  # specified, the script will try to call `chfn` with each of the above
+  # arguments. This will cause the script to fail once it reaches the Office
+  # Room Number field, because the `-r` flag doesn't exist.
+  #
+  # This patch resolves the issue by changing how the `--comment` argument is
+  # translated into `chfn` calls. These changes are internal and do not change
+  # the format of the arguments the user should use, i.e. a comma-separated
+  # list like `--comment "<name>,<room>,<work>,<home>"` is still correct. The
+  # user should note that there is no longer an "other" field, and if the user
+  # specifies one, e.g. `--comment "<name>,<room>,<work>,<home>,<other>"`, it
+  # will be ignored, like how the stock script ignores all additional fields.
+  patch -Np0 -d . -i arch-finger.patch
 }
 
 # Translated manpages have to be generated using `po4a`. A Makefile is provided

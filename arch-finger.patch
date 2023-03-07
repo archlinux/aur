@@ -1,0 +1,23 @@
+diff '--color=auto' -rupN adduser-debian-3.131.orig/adduser adduser-debian-3.131/adduser
+--- adduser-debian-3.131.orig/adduser	2023-03-07 20:17:55.743091131 +1030
++++ adduser-debian-3.131/adduser	2023-03-07 20:19:16.165702456 +1030
+@@ -1185,16 +1185,14 @@ sub ch_comment {
+     my $chfn = &which('chfn');
+     my $comment = shift;
+     if($comment =~ /,/) {
+-        my($comment_name,$comment_room,$comment_work,$comment_home,$comment_other)
++        my($comment_name,$comment_room,$comment_work,$comment_home)
+           = split(/,/,$comment);
+  
+-        &systemcall($chfn, '-f', $comment_name, '-r', $comment_room, $new_name);
+-        &systemcall($chfn,'-w',$comment_work,$new_name)
++        &systemcall($chfn, '-f', $comment_name, '-o', $comment_room, $new_name);
++        &systemcall($chfn,'-p',$comment_work,$new_name)
+           if(defined($comment_work));
+         &systemcall($chfn,'-h',$comment_home,$new_name)
+           if(defined($comment_home));
+-        &systemcall($chfn,'-o',$comment_other,$new_name)
+-          if(defined($comment_other));
+     } else {
+         &systemcall($chfn, '-f', $comment, $new_name);
+     }
