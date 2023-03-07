@@ -2,20 +2,22 @@
 # Maintainer: Kevin Concilio (kevin.concilio1@gmail.com)
 
 pkgname=gnome-shell-extension-pano
-pkgver=10
-pkgrel=3
+pkgver=19
+pkgrel=1
 pkgdesc="Next-gen Clipboard Manager (forked from -git package)"
 arch=('any')
 url="https://github.com/oae/gnome-shell-pano"
 license=('GPL2')
 depends=('gnome-shell>=42'
-         'libgda'
+         'libgda6'
+         'cogl'
          'gsound')
 makedepends=('gobject-introspection'
              'yarn'
-             'appstream')
+             'appstream'
+             'zip')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=(21754ab62c1c5c1f2d700fb535759ed2)
+md5sums=("SKIP")
 
 prepare() {
   cd "gnome-shell-pano-$pkgver"
