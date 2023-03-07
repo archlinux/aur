@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://www.eevblog.com/forum/testgear/free-ds1052eds1102e-software-for-linux/msg684186/"
 license=('GPL2')
 makedepends=('git' 'qt5-webkit')
-source=("git://github.com/wd5gnr/qrigol.git" '40-rigol.rules')
+source=("git+https://github.com/wd5gnr/qrigol.git" '40-rigol.rules')
 md5sums=('SKIP'
          '45bf05e7568c4f0c359282e4199654a9')
 
