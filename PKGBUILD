@@ -3,9 +3,9 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=chron
-_pkgver=2.3-59
+_pkgver=2.3-60
 pkgname=r-${_pkgname,,}
-pkgver=2.3.59
+pkgver=2.3.60
 pkgrel=1
 pkgdesc='Chronological Objects which can Handle Dates and Times'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
   r-zoo
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b943a6b97c42e7858dcd4a23deeb1f3a817f9f5086776177627ddc58894601f6')
+sha256sums=('0e0675cec55b6cea87fc5776846215e0445442554684120079e66013067491ee')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
