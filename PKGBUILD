@@ -4,7 +4,7 @@
 _pkgname=libadwaita
 pkgbase=libadwaita-testing
 pkgname=(libadwaita-testing libadwaita-testing-docs libadwaita-testing-demos)
-pkgver=1.2.0
+pkgver=1.3rc
 pkgrel=1
 pkgdesc="Building blocks for modern adaptive GNOME applications"
 url="https://gnome.pages.gitlab.gnome.org/libadwaita/"
@@ -12,11 +12,9 @@ arch=(x86_64)
 license=(LGPL)
 depends=(gtk4)
 makedepends=(git meson gi-docgen sassc gobject-introspection vala libgtk-4.so)
-provides=($_pkgname)
-conflicts=($_pkgname $_pkgname-git)
 checkdepends=(weston)
 options=(debug)
-_commit=a905117bd2150de9e85d65f8cdce8d8fb001b89e  # tags/1.2.0
+_commit=2e72b0ff7d441e6be335cc63d543c3ff0b4d2b08  # tags/1.3.rc
 source=("git+https://gitlab.gnome.org/GNOME/libadwaita.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -58,7 +56,7 @@ _pick() {
 
 package_libadwaita-testing() {
   depends+=(libgtk-4.so)
-  provides+=($_pkgname libadwaita-1.so)
+  provides+=($_pkgname=1:$pkgver libadwaita-1.so)
   conflicts=($_pkgname)
 
   meson install -C build --destdir "$pkgdir"
