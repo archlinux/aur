@@ -18,8 +18,8 @@ source=("libmali_g610_wayland.so::https://github.com/JeffyCN/rockchip_mirrors/ra
 sha256sums=('b0794cc1e4daf0c19f0f947eaad100d87cf472a9c7ae1d1b206c156b129e0c41'
             '3d57cb76dca851c876a3ff71c49febd5bfc00fc1501f46ed37df33e75ebcb99b'
             '9e9cede2cb8f45228216f39259552ac886950be9daf59e2591c73bde60010699'
-            'b84ee1260ca933caa14d524ed2b44500aac0fade0dc15e7f1b92df2dde1ccd11'
-            '400775e8529a0a43cb138c57c87138cca6865db4db6ee3adefb0c599c91e27c7')
+            '8394807e3f2af0c3c03856585327aea6d36b86fda5f468606c12f0d822b2e5dc'
+            '5d36559cc806733a4025668609476c86a41fa74b1c8b7afa96e911576cf9335d')
 
 package() {
   	provides=(libmali $pkgname)

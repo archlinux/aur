@@ -10,9 +10,9 @@ export LD_LIBRARY_PATH="/usr/lib/gl4es:/usr/lib/libmali/wayland:$LD_LIBRARY_PATH
 echo $HASRPATH
 if [ -z $HASRPATH ]
 then
-    echo "Running ${APP} with libmali"
+    echo "Running ${APP} on Wayland with libmali"
     exec $APP $ARGS
 else
-    echo "Running ${APP} with libmali using linker"
+    echo "Running ${APP} on Wayland with libmali using linker"
     exec /lib/ld-linux-aarch64.so.1 --inhibit-rpath :/usr/lib $APP $ARGS
 fi

@@ -11,9 +11,9 @@ export LD_PRELOAD="/usr/lib/libdri2to3.so:$LD_PRELOAD"
 echo $HASRPATH
 if [ -z $HASRPATH ]
 then
-    echo "Running ${APP} with libmali"
+    echo "Running ${APP} on X with libmali"
     exec $APP $ARGS
 else
-    echo "Running ${APP} with libmali using linker"
+    echo "Running ${APP} on X with libmali using linker"
     exec /lib/ld-linux-aarch64.so.1 --inhibit-rpath :/usr/lib $APP $ARGS
 fi
