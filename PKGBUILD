@@ -1,7 +1,7 @@
 # Maintainer: Marco Martinelli <marco+libzstd-seek@13byte.com>
 
 pkgname=python-indexed-zstd
-pkgver=1.5.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="A bridge for libzstd-seek to python"
 arch=('x86_64' 'aarch64')
@@ -21,5 +21,5 @@ prepare() {
 
 package() {
     cd "$srcdir/${pkgname}-${pkgver}"
-    python setup.py install --cython --root="$pkgdir/" --optimize=1
+    python setup.py install --root="$pkgdir/" --optimize=1
 }
