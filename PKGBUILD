@@ -10,15 +10,16 @@ pkgname='dual-root'
 pkgdesc='Dual Root Tools for Managing dual esp systems'
 _gitname='dual-root'
 
-pkgver=0.9.1
+pkgver=1.0.0
 pkgrel=1
 url="https://github.com/gene-git/dual-root"
 
 arch=(any)
 license=(MIT)
-# tomli only needed for python < 3.11
-depends=('python>3.9' 'efibootmgr' 'util-linux' 'rsync' )
+
+depends=('python>3.9' 'efibootmgr' 'util-linux' 'rsync' 'inotify-tools')
 makedepends=('git')
+
 # See mkpkg https://github.com/gene-git/Arch-mkpkg
 _mkpkg_depends=()
 source=("git+https://github.com/gene-git/${_gitname}")
