@@ -1,7 +1,7 @@
 # Maintainer: Alonso Rodriguez <alonso.rodriguez (at) udc.es>
 
 pkgname=pato
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=0
 pkgdesc="PATO: high PerformAnce TriplexatOr is a high performance tool for the fast and efficient detection of triple helices and triplex features in nucleotide sequences"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=()
 conflicts=('pato' 'pato-git')
 provides=('pato')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/UDC-GAC/pato/archive/v${pkgver}.tar.gz")
-sha256sums=('829ee6ea20c2204bcdf775e4c94666e2fac841aaa86f093a25ce5753beb8863e')
+sha256sums=('3763d7ff5d3f3e85baf8c97682b2b50bdb5f7d5d8ca1d818d25c61e79beabdb6')
 
 # TODO FIX PARSING ARGUMENTS FROM makepkg VARS
 _wflags="-Wno-address"
