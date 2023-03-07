@@ -1,6 +1,6 @@
 pkgbase = firefox-syncstorage
 	pkgdesc = Sync storage server with built-in token server for running a self-hosted firefox sync server
-	pkgver = 0.13.5
+	pkgver = 0.13.6
 	pkgrel = 1
 	url = https://github.com/mozilla-services/syncstorage-rs
 	install = firefox-syncstorage.install
@@ -20,9 +20,9 @@ pkgbase = firefox-syncstorage
 	depends = python-tokenlib
 	optdepends = mysql: for use with a local database server
 	backup = etc/firefox-syncstorage.toml
-	source = https://github.com/mozilla-services/syncstorage-rs/archive/0.13.5/syncstorage-rs-0.13.5.tar.gz
+	source = https://github.com/mozilla-services/syncstorage-rs/archive/0.13.6/syncstorage-rs-0.13.6.tar.gz
 	source = firefox-syncstorage.service
-	sha256sums = 882e90da8d89235bb36e7c5fa307408cfd9b83abeb53f43f6ad60d1a6f676665
+	sha256sums = ddf8169a0a9bd06db10bf032a2b9af7ea4e5816251e82d9e7627f87eba1f27bd
 	sha256sums = 609e057cd835ea54b06b32b98e210cd946255f652e7754c9160fd7c94379a83d
 
 pkgname = firefox-syncstorage

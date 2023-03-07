@@ -5,7 +5,7 @@
 
 pkgname=firefox-syncstorage
 _pkgname=syncstorage-rs
-pkgver=0.13.5
+pkgver=0.13.6
 pkgrel=1
 pkgdesc='Sync storage server with built-in token server for running a self-hosted firefox sync server'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -17,13 +17,13 @@ optdepends=('mysql: for use with a local database server')
 install="${pkgname}.install"
 source=("https://github.com/mozilla-services/${_pkgname}/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
 	"${pkgname}.service")
-sha256sums=('882e90da8d89235bb36e7c5fa307408cfd9b83abeb53f43f6ad60d1a6f676665'
+sha256sums=('ddf8169a0a9bd06db10bf032a2b9af7ea4e5816251e82d9e7627f87eba1f27bd'
             '609e057cd835ea54b06b32b98e210cd946255f652e7754c9160fd7c94379a83d')
 backup=("etc/${pkgname}.toml")
 
 build() {
 	cd "${_pkgname}-${pkgver}"
-	cargo build --release --features grpcio/openssl
+	cargo build --release
 }
 
 package() {
