@@ -1,6 +1,6 @@
 # Maintainer: Anders Pedersen <silwerspawn+aur.archlinux.org@gmail.com>
 pkgname=edrawmax-bin
-pkgver=12.0.1
+pkgver=12.0.6
 pkgrel=2
 pkgmaver=12
 pkgmaname=EdrawMax
@@ -23,7 +23,7 @@ options=(!strip)
 install=
 changelog=
 source=(http://download.edrawsoft.com/archives/${pkgmaname}_${pkgver}_en.rpm edrawmax.desktop)
-sha256sums=('f6a64c3f9a0b9757c45a82c7d10fb70ffa095ac285528934b962e47e23c19b05'
+sha256sums=('81063f334dd7087291bbe26569dc0bd13f7c31733a0c774b9c95fa56ba2bdf05'
 '6ef72d55814737c3d49497857377ebadcf2f985da378605202e643e8cc450fc6')
 noextract=()
 
