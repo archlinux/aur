@@ -7,7 +7,7 @@
 
 _pkgname=godot
 pkgname=godot3
-pkgver=3.5.1
+pkgver=3.5.2
 pkgrel=1
 pkgdesc='Advanced cross-platform 2D and 3D game engine (3.x Branch)'
 url='https://godotengine.org'
@@ -20,7 +20,7 @@ optdepends=(pipewire-alsa pipewire-pulse)
 provides=("godot")
 conflicts=("godot")
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/godotengine/godot/archive/$pkgver-stable.tar.gz")
-b2sums=('e8a209972fc680ce9c024762715c64ea36f9d1ca223c6911a5179ff1cff3c2a143b703bb5b41f198b8b3ed5bd2c474316177bda094a3ef34d06e2dcf2adb2815')
+b2sums=('f5f9449711b7727846dcc34d0ff44c7fdb64fbdf29c85ca0ba42c2933d01c41aaac8f584e1b9c33b36fc30cfe47710fae935502855255da305694873a9148e7c')
 
 prepare() {
   # Disable the check that adds -no-pie to LINKFLAGS, for gcc != 6
