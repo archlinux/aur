@@ -2,13 +2,13 @@
 
 pkgname=libmali-radxa-g610-bin
 pkgver=g6p0_5_01eac0
-pkgrel=1
+pkgrel=2
 blobcommit="25e4250de1c539d23c67a74f69273130fe88b4a3"
 fwcommit="25e4250de1c539d23c67a74f69273130fe88b4a3"
 pkgdesc='Binary libmali g610 drivers for X and Wayland and firmware for panfork/mesa for Radxa Rock5b'
 arch=('aarch64')
 url='https://github.com/JeffyCN/rockchip_mirrors/tree/libmali/'
-depends=('coreutils' 'mesa' 'dri2to3' 'gl4es')
+depends=('coreutils' 'mesa' 'dri2to3' 'gl4es' 'chrpath')
 options=(!lto !strip)
 source=("libmali_g610_wayland.so::https://github.com/JeffyCN/rockchip_mirrors/raw/${blobcommit}/lib/aarch64-linux-gnu/libmali-valhall-g610-g6p0-wayland-gbm.so"
         "libmali_g610_x.so::https://github.com/JeffyCN/rockchip_mirrors/raw/${blobcommit}/lib/aarch64-linux-gnu/libmali-valhall-g610-g6p0-x11-gbm.so"
