@@ -1,0 +1,16 @@
+--- a/030-ffmpeg-add-svt-vp9-gaaa8140.patch
++++ b/030-ffmpeg-add-svt-vp9-gaaa8140.patch
+@@ -56,10 +56,10 @@ diff --git a/libavcodec/Makefile b/libav
+ index 389253f5d0..1573ae4c34 100644
+ --- a/libavcodec/Makefile
+ +++ b/libavcodec/Makefile
+-@@ -1123,6 +1123,7 @@ OBJS-$(CONFIG_LIBVPX_VP8_DECODER)         += libvpxdec.o
++@@ -1123,6 +1123,7 @@ OBJS-$(CONFIG_LIBVPX_VP8_DECODER)
+  OBJS-$(CONFIG_LIBVPX_VP8_ENCODER)         += libvpxenc.o
+- OBJS-$(CONFIG_LIBVPX_VP9_DECODER)         += libvpxdec.o libvpx.o
+- OBJS-$(CONFIG_LIBVPX_VP9_ENCODER)         += libvpxenc.o libvpx.o
++ OBJS-$(CONFIG_LIBVPX_VP9_DECODER)         += libvpxdec.o
++ OBJS-$(CONFIG_LIBVPX_VP9_ENCODER)         += libvpxenc.o
+ +OBJS-$(CONFIG_LIBSVT_VP9_ENCODER)         += libsvt_vp9.o
+  OBJS-$(CONFIG_LIBWEBP_ENCODER)            += libwebpenc_common.o libwebpenc.o
+  OBJS-$(CONFIG_LIBWEBP_ANIM_ENCODER)       += libwebpenc_common.o libwebpenc_animencoder.o
