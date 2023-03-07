@@ -6,7 +6,7 @@ pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda")
 pkgver=2.0.0rc5
 _pkgver=2.0.0-rc5
-pkgrel=1
+pkgrel=2
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -16,8 +16,7 @@ depends=('google-glog' 'gflags' 'opencv' 'openmp' 'nccl' 'pybind11' 'python' 'py
          'python-numpy' 'protobuf' 'ffmpeg4.4' 'python-future' 'qt5-base' 'intel-oneapi-mkl'
          'python-typing_extensions')
 makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda'
-             'cudnn' 'git' 'magma' 'ninja' 'pkgconfig' 'doxygen' 'onednn'
-             'vulkan-headers' 'shaderc')
+             'cudnn' 'git' 'magma' 'ninja' 'pkgconfig' 'doxygen' 'vulkan-headers' 'shaderc')
 source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         # generated using parse-submodules
         "${pkgname}-ARM_NEON_2_x86_SSE::git+https://github.com/intel/ARM_NEON_2_x86_SSE.git"
@@ -242,6 +241,9 @@ prepare() {
   # CUDA arch 8.7 is not supported (needed by Jetson boards, etc.)
   export TORCH_CUDA_ARCH_LIST="5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6;8.9;9.0;9.0+PTX"  #include latest PTX for future compat
   export OVERRIDE_TORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST}"
+
+  # Hack to make sure that the generated dnnl_config.h from onednn can be inlcuded.
+  export CXXFLAGS="${CXXFLAGS} -I third_party/ideep/mkl-dnn/third_party/oneDNN/include/"
 }
 
 build() {
@@ -252,7 +254,7 @@ build() {
   echo "add_definitions(-march=x86-64)" >> cmake/MiscCheck.cmake
   # this horrible hack is necessary because the current release
   # ships inconsistent CMake which tries to build objects before
-  # thier dependencies, build twice when dependencies are available
+  # their dependencies, build twice when dependencies are available
   python setup.py build || python setup.py build
 
   echo "Building without cuda and with non-x86-64 optimizations"
@@ -301,12 +303,10 @@ _package() {
   done
 
   # clean up duplicates
-  # TODO: move towards direct shared library dependecy of:
-  #   c10, caffe2, libcpuinfo, CUDA RT, gloo, GTest, Intel MKL,
-  #   NVRTC, ONNX, protobuf, libthreadpool, QNNPACK
-  rm -rf "${pkgdir}/usr/include/pybind11"
+  rm -r "${pkgdir}/usr/include/pybind11"
+  rm "${pkgdir}"/usr/include/*.h
 
-  # python module is hardcoded to look there at runtime
+  # Python module is hardcoded so look there at runtime
   ln -s /usr/include "${pkgdir}/${pytorchpath}/include"
   find "${pkgdir}"/usr/lib -maxdepth 1 -type f,l \( -iname '*.so' -or -iname '*.so*' \) -print0 | while read -rd $'\0' _lib; do
     ln -s ${_lib#"$pkgdir"} "${pkgdir}/${pytorchpath}/lib/"
