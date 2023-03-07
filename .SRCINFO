@@ -1,6 +1,6 @@
 pkgbase = kuro
 	pkgdesc = An elegant Microsoft ToDo desktop client for Linux
-	pkgver = 8.1.9
+	pkgver = 9.0.0
 	pkgrel = 1
 	url = https://github.com/davidsmorais/kuro
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = kuro
 	conflicts = kuro-appimage
 	source = kuro
 	source = kuro.desktop
-	source = kuro-8.1.9.tar.gz::https://github.com/davidsmorais/kuro/archive/refs/tags/v8.1.9.tar.gz
+	source = kuro-9.0.0.tar.gz::https://github.com/davidsmorais/kuro/archive/refs/tags/v9.0.0.tar.gz
 	sha256sums = 93340f3310b5133058df40fe36482eb364cb514f53d8e594ea646f9cf0e21463
 	sha256sums = a7602db570ab593499661d88feb6775c1a97458df2493ac1fe91f24b14911d2c
-	sha256sums = 5523806226ef7581f6afccda9a8cb0f2b11fd69c8a222eba4e2693792e84b16a
+	sha256sums = f7ba91ea2c232b613e7d17fd34215eaf2813530272bc542584697a17d0a3546f
 
 pkgname = kuro
