@@ -1,6 +1,6 @@
 # Maintainer: Matt Geskey <matt@celtra.com>
 pkgname=kolide-launcher-git
-pkgver=v0.11.22.r4.g554bd92
+pkgver=v0.13.5.r38.g854c6846
 pkgrel=1
 pkgdesc="osquery command and control"
 url="https://www.kolide.co/"
@@ -48,7 +48,6 @@ package() {
 	cd "${srcdir}/go/src/github.com/kolide/launcher"
 
 	install -Dm755 "build/launcher" "${pkgdir}/usr/bin/kolide-launcher"
-	install -Dm755 "build/osquery-extension.ext" "${pkgdir}/usr/bin/osquery-extension.ext"
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/kolide/LICENSE"
 
 	install -m755 -d "${pkgdir}/var/lib/kolide"
