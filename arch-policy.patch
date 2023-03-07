@@ -1,6 +1,6 @@
 diff '--color=auto' -rupN adduser-debian-3.131.orig/AdduserCommon.pm adduser-debian-3.131/AdduserCommon.pm
---- adduser-debian-3.131.orig/AdduserCommon.pm	2023-02-19 16:44:55.239704864 +1030
-+++ adduser-debian-3.131/AdduserCommon.pm	2023-02-19 21:37:36.388307790 +1030
+--- adduser-debian-3.131.orig/AdduserCommon.pm	2023-02-24 19:53:17.905070158 +1030
++++ adduser-debian-3.131/AdduserCommon.pm	2023-02-24 19:54:36.937701982 +1030
 @@ -286,14 +286,14 @@ sub preseed_config {
          backup => 0,
          backup_to => ".",
@@ -20,9 +20,20 @@ diff '--color=auto' -rupN adduser-debian-3.131.orig/AdduserCommon.pm adduser-deb
          dhome => "/home",
          skel => "/etc/skel",
          usergroups => "yes",
+@@ -306,8 +306,8 @@ sub preseed_config {
+         sys_dir_mode => "0755",
+         setgid_home => "no",
+         no_del_paths => "^/bin\$ ^/boot\$ ^/dev\$ ^/etc\$ ^/initrd ^/lib ^/lost+found\$ ^/media\$ ^/mnt\$ ^/opt\$ ^/proc\$ ^/root\$ ^/run\$ ^/sbin\$ ^/srv\$ ^/sys\$ ^/tmp\$ ^/usr\$ ^/var\$ ^/vmlinu",
+-        name_regex => "^[a-z][a-z0-9_-]*\\\$?\$",
+-        sys_name_regex => "^[a-z_][a-z0-9_-]*\\\$?\$",
++        name_regex => "^[a-zA-Z0-9_][a-zA-Z0-9_-]*\\\$?\$",
++        sys_name_regex => "^[a-zA-Z0-9_][a-zA-Z0-9_-]*\\\$?\$",
+         exclude_fstypes => "(proc|sysfs|usbfs|devpts|devtmpfs|devfs|afs)",
+         skel_ignore_regex => "\.(dpkg|ucf)-(old|new|dist)\$",
+         extra_groups => "users",
 diff '--color=auto' -rupN adduser-debian-3.131.orig/adduser.conf adduser-debian-3.131/adduser.conf
---- adduser-debian-3.131.orig/adduser.conf	2023-02-19 16:44:55.239704864 +1030
-+++ adduser-debian-3.131/adduser.conf	2023-02-19 21:37:33.024856943 +1030
+--- adduser-debian-3.131.orig/adduser.conf	2023-02-24 19:53:17.908403602 +1030
++++ adduser-debian-3.131/adduser.conf	2023-02-24 19:55:05.871998859 +1030
 @@ -21,21 +21,21 @@
  # Specify inclusive ranges of UIDs and GIDs from which UIDs and GIDs
  # for system users, system groups, non-system users and non-system groups
@@ -53,9 +64,27 @@ diff '--color=auto' -rupN adduser-debian-3.131.orig/adduser.conf adduser-debian-
  
  # Specify a file or a directory containing UID and GID pool.
  #UID_POOL=/etc/adduser-pool.conf
+@@ -71,13 +71,13 @@
+ 
+ # Non-system user- and groupnames are checked against this regular
+ # expression.
+-# Default: NAME_REGEX="^[a-z][-a-z0-9_]*\$?$"
+-#NAME_REGEX="^[a-z][-a-z0-9_]*\$?$"
++# Default: NAME_REGEX="^[a-zA-Z0-9_][-a-zA-Z0-9_]*\$?$"
++#NAME_REGEX="^[a-zA-Z0-9][-a-zA-Z0-9_]*\$?$"
+ 
+ # System user- and groupnames are checked against this regular
+ # expression.
+-# Default: SYS_NAME_REGEX="^[a-z_][-a-z0-9_]*\$?$"
+-#SYS_NAME_REGEX="^[a-z_][-a-z0-9_]*\$?$"
++# Default: SYS_NAME_REGEX="^[a-zA-Z0-9_][-a-zA-Z0-9_]*\$?$"
++#SYS_NAME_REGEX="^[a-zA-Z0-9_][-a-zA-Z0-9_]*\$?$"
+ 
+ # When populating the newly created home directory of a non-system user,
+ # files in SKEL matching this regex are not copied.
 diff '--color=auto' -rupN adduser-debian-3.131.orig/doc/adduser.conf.5 adduser-debian-3.131/doc/adduser.conf.5
---- adduser-debian-3.131.orig/doc/adduser.conf.5        2023-02-19 22:33:00.353721720 +1030
-+++ adduser-debian-3.131/doc/adduser.conf.5     2023-02-19 23:00:31.581333495 +1030
+--- adduser-debian-3.131.orig/doc/adduser.conf.5	2023-02-24 19:53:17.908403602 +1030
++++ adduser-debian-3.131/doc/adduser.conf.5	2023-02-24 19:56:31.554852252 +1030
 @@ -62,17 +62,17 @@ Defaults to \fIusers\fP.
  .B FIRST_SYSTEM_GID " and " LAST_SYSTEM_GID
  specify an inclusive range of GIDs from which GIDs
@@ -86,3 +115,21 @@ diff '--color=auto' -rupN adduser-debian-3.131.orig/doc/adduser.conf.5 adduser-d
  .TP
  .B GID_POOL
  See \fBUID_POOL\fP.
+@@ -113,7 +113,7 @@ user and group creation in \fBadduser\fR
+ unless \-\-allow\-bad\-names is set.
+ With \-\-allow\-bad\-names set,
+ weaker checks are performed.
+-Defaults to the most conservative \fI^[a\-z][\-a\-z0\-9_]*$\fP.
++Defaults to the Arch policy \fI^[a\-zA\-Z0\-9_][\-a\-zA\-Z0\-9_]*\\$?$\fP.
+ See \fBSYS_NAME_REGXEX\fP and \fBValid names\fP,
+ below, for more information.
+ .TP
+@@ -161,7 +161,7 @@ system user and group creation in adduse
+ unless \-\-allow\-bad\-names is set.
+ With \-\-allow\-bad\-names set,
+ weaker checks are performed.
+-Defaults to the most conservative \fI^[a\-z_][\-a\-z0\-9_]*$\fP.
++Defaults to the Arch policy \fI^[a\-zA\-Z0\-9_][\-a\-zA\-Z0\-9_]*\\$?$\fP.
+ See \fBNAME_REGEX\fP, above, and \fBValid names\fP,
+ below, for more information.
+ .TP

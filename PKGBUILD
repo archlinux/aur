@@ -42,9 +42,9 @@ backup=("etc/adduser.conf" "etc/deluser.conf")
 source=("https://salsa.debian.org/debian/adduser/-/archive/debian/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         "arch-license-path.patch"
         "arch-policy.patch")
-sha256sums=("3ce6de32bce048d12429d9431b36d8437c1934266475b6a9f5235b3dff54f918"
-            "2bb01846f0f3206796a817aacc65bef7d216ef7e0a89132661abb4182f0ba7d6"
-            "1cdd9db5dc7b112eb24d2527a08bfbde05fe25f239d36ac03dc0babeb0ba40c4")
+sha256sums=('3ce6de32bce048d12429d9431b36d8437c1934266475b6a9f5235b3dff54f918'
+            '2bb01846f0f3206796a817aacc65bef7d216ef7e0a89132661abb4182f0ba7d6'
+            'dc39d3588a408ab9caf24bda5813a2ce832a41cc4852cd5f2a60924d0847eeab')
 
 prepare() {
   # Arch's UID/GID policy differs a little from Debian's. I've included a patch
@@ -52,16 +52,16 @@ prepare() {
   # as well as the scripts themselves. These changes include the following:
   # * Automatically chosen system user/group IDs start at 500 instead of 100
   # * Automatically chosen regular user/group IDs end at 60000 instead of 59999
+  # * The regex defining which user names are allowed has been changed to
+  #   `^[a-zA-Z0-9_][-a-zA-Z0-9_]*\$?$` to match the Arch policy of "only lower
+  #   and upper case letters, digits, underscores, or dashes" and "can end with
+  #   a dollar sign". All other conditions seem to be covered by additional
+  #   checks in `adduser` which cannot be customised by the user.
+  # * Arch does not automatically add non-system users to the `users` group
   # Sources: useradd(8) and /etc/login.defs
   # TODO: The translated manpages also need to be updated with the new default
   # options. I've neglected this for now because all of the translations for
   # adduser.conf(5) are currently rejected by `po4a` for being incomplete.
-  # TODO: Improve user name regex. According to useradd(8) Arch allows
-  # uppercase characters, underscores and numbers in the first character (but
-  # not dashes). It may be sufficient to just remove the regex entirely as the
-  # script includes additional non-configurable checks which seem to suffice.
-  # TODO: That covers all of the policy differences I've noticed, but there may
-  # be more that I didn't notice.
   patch -Np0 -d . -i arch-policy.patch
 
   # There are two problems with the output of `{add,del}user --version`. The
