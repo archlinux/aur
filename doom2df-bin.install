@@ -1,0 +1,14 @@
+post_install() {
+  usr/bin/mandb
+  echo '-- -- -- -- -- -- -- -- --'
+  echo "Check manual page d2df for some information about commandline options!"
+  echo '-- -- -- -- -- -- -- -- --'
+}
+
+post_upgrade() {
+   usr/bin/mandb
+}
+
+post_remove() {
+   usr/bin/mandb
+}

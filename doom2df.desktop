@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Doom 2D Forever
+Exec=Doom2DF
+Icon=doom2df
+Terminal=false
+Type=Application
+Categories=Game;Shooter;ActionGame
+Comment=Doom-themed platformer with network play, modern port of the 1996 Doom 2D by Prikol Software
+Comment[ru]=Платформер с сетевой игрой во вселенной классического Doom, современный порт игры Doom 2D от Prikol Software
+Keywords=Doom;Doom2D;Doom2D Forever;Forever;Shooter;Doom 2D;
