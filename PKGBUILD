@@ -1,6 +1,6 @@
 # Maintainer: Mark Collins <tera_1225 hat hotmail dote com>
 pkgname=passless-boot
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Perform a one-time password-less reboot on a luks encrypted root"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://gitlab.com/Marcool04/reboot-hdpassless/"
 license=('GPL')
 depends=(cryptsetup reboot-guard)
 source=("https://gitlab.com/Marcool04/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('217d0a2e8d3555e04f86f9e30b4b0153efa236ee45e1bf366d19d8c53866faa8')
+sha256sums=('9630f74064d08bd80ee92d61c3f07cadbd667014b5d4069cfc11ae66f532a221')
 
 
 package() {
