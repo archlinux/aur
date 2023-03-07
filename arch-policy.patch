@@ -1,7 +1,7 @@
 diff '--color=auto' -rupN adduser-debian-3.131.orig/AdduserCommon.pm adduser-debian-3.131/AdduserCommon.pm
---- adduser-debian-3.131.orig/AdduserCommon.pm	2023-02-24 19:53:17.905070158 +1030
-+++ adduser-debian-3.131/AdduserCommon.pm	2023-02-24 19:54:36.937701982 +1030
-@@ -286,14 +286,14 @@ sub preseed_config {
+--- adduser-debian-3.131.orig/AdduserCommon.pm	2023-03-07 18:08:25.694341050 +1030
++++ adduser-debian-3.131/AdduserCommon.pm	2023-03-07 18:11:00.172778792 +1030
+@@ -286,18 +286,18 @@ sub preseed_config {
          backup => 0,
          backup_to => ".",
          dshell => "/bin/bash",
@@ -20,6 +20,11 @@ diff '--color=auto' -rupN adduser-debian-3.131.orig/AdduserCommon.pm adduser-deb
          dhome => "/home",
          skel => "/etc/skel",
          usergroups => "yes",
+-        users_gid => undef,
++        users_gid => -1,
+         users_group => undef,
+         grouphomes => "no",
+         letterhomes => "no",
 @@ -306,8 +306,8 @@ sub preseed_config {
          sys_dir_mode => "0755",
          setgid_home => "no",
@@ -32,8 +37,8 @@ diff '--color=auto' -rupN adduser-debian-3.131.orig/AdduserCommon.pm adduser-deb
          skel_ignore_regex => "\.(dpkg|ucf)-(old|new|dist)\$",
          extra_groups => "users",
 diff '--color=auto' -rupN adduser-debian-3.131.orig/adduser.conf adduser-debian-3.131/adduser.conf
---- adduser-debian-3.131.orig/adduser.conf	2023-02-24 19:53:17.908403602 +1030
-+++ adduser-debian-3.131/adduser.conf	2023-02-24 19:55:05.871998859 +1030
+--- adduser-debian-3.131.orig/adduser.conf	2023-03-07 18:08:25.694341050 +1030
++++ adduser-debian-3.131/adduser.conf	2023-03-07 18:12:36.269287490 +1030
 @@ -21,21 +21,21 @@
  # Specify inclusive ranges of UIDs and GIDs from which UIDs and GIDs
  # for system users, system groups, non-system users and non-system groups
@@ -64,7 +69,17 @@ diff '--color=auto' -rupN adduser-debian-3.131.orig/adduser.conf adduser-debian-
  
  # Specify a file or a directory containing UID and GID pool.
  #UID_POOL=/etc/adduser-pool.conf
-@@ -71,13 +71,13 @@
+@@ -52,7 +52,8 @@
+ # non-system users are placed into.
+ # It is a configuration error to define both variables
+ # even if the values are consistent.
+-# Default: USERS_GID=undefined, USERS_GROUP=users
++# Set USERS_GID=-1 to disable this functionality.
++# Default: USERS_GID=-1, USERS_GROUP is undefined
+ #USERS_GID=100
+ #USERS_GROUP=users
+ 
+@@ -71,13 +72,13 @@
  
  # Non-system user- and groupnames are checked against this regular
  # expression.
@@ -83,8 +98,8 @@ diff '--color=auto' -rupN adduser-debian-3.131.orig/adduser.conf adduser-debian-
  # When populating the newly created home directory of a non-system user,
  # files in SKEL matching this regex are not copied.
 diff '--color=auto' -rupN adduser-debian-3.131.orig/doc/adduser.conf.5 adduser-debian-3.131/doc/adduser.conf.5
---- adduser-debian-3.131.orig/doc/adduser.conf.5	2023-02-24 19:53:17.908403602 +1030
-+++ adduser-debian-3.131/doc/adduser.conf.5	2023-02-24 19:56:31.554852252 +1030
+--- adduser-debian-3.131.orig/doc/adduser.conf.5	2023-03-07 18:08:25.697674494 +1030
++++ adduser-debian-3.131/doc/adduser.conf.5	2023-03-07 18:10:36.715337017 +1030
 @@ -62,17 +62,17 @@ Defaults to \fIusers\fP.
  .B FIRST_SYSTEM_GID " and " LAST_SYSTEM_GID
  specify an inclusive range of GIDs from which GIDs

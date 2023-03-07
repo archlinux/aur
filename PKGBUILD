@@ -44,7 +44,7 @@ source=("https://salsa.debian.org/debian/adduser/-/archive/debian/${pkgver}/${_p
         "arch-policy.patch")
 sha256sums=('3ce6de32bce048d12429d9431b36d8437c1934266475b6a9f5235b3dff54f918'
             '2bb01846f0f3206796a817aacc65bef7d216ef7e0a89132661abb4182f0ba7d6'
-            'dc39d3588a408ab9caf24bda5813a2ce832a41cc4852cd5f2a60924d0847eeab')
+            '245e1fcd5baa0e85471ef92778bd429dedc094e02743d1a832217e116be3ccb1')
 
 prepare() {
   # Arch's UID/GID policy differs a little from Debian's. I've included a patch
