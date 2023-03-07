@@ -26,8 +26,8 @@ _reponame=syncthingtray
 _cfg=qt6
 pkgname=syncthingtray-$_cfg
 _name=${pkgname%-$_cfg}
-pkgver=1.3.2
-pkgrel=2
+pkgver=1.3.3
+pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Tray application for Syncthing (using Qt 6)'
 license=('GPL')
@@ -46,7 +46,7 @@ checkdepends=('cppunit' 'syncthing' 'iproute2' 'appstream')
 [[ $_enable_plasmoid ]] && makedepends+=('plasma-framework' 'extra-cmake-modules')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('184d46f2bdf25be816635447c5ca390b6788cc7ccd643b5146686a128e70ef54')
+sha256sums=('a268da44b0a463d50ed71fd3dbca785d5680afb034f6b587cd53a6dffe693b1e')
 
 ephemeral_port() {
   comm -23 <(seq 49152 65535) <(ss -tan | awk '{print $4}' | cut -d':' -f2 | grep "[0-9]\{1,5\}" | sort | uniq) | shuf | head -n 1
