@@ -2,7 +2,7 @@
 
 pkgname=thqm
 pkgdesc='A simple HTTP server to serve a dynamic menu for your scripts over the network.'
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 arch=('any')
 url='https://github.com/loiccoyle/thqm-rs'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('git')
 makedepends=('rust')
 source=("$pkgname-${pkgver}.tar.gz::https://github.com/loiccoyle/thqm.rs/archive/v${pkgver}.tar.gz")
-sha256sums=('4f9399fb4e2c016eab1a0c9965e4ee92e471c47d775a33f1cbfab24d1d0db318')
+sha256sums=('3259815a7bc41e8fc2041935d5c170f37a7d5ce87f1854f68ef2e5156129a0ad')
 
 build() {
     cd "$pkgname-rs-$pkgver"

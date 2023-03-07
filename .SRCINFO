@@ -1,13 +1,13 @@
 pkgbase = thqm
 	pkgdesc = A simple HTTP server to serve a dynamic menu for your scripts over the network.
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/loiccoyle/thqm-rs
 	arch = any
 	license = MIT
 	makedepends = rust
 	depends = git
-	source = thqm-0.1.5.tar.gz::https://github.com/loiccoyle/thqm.rs/archive/v0.1.5.tar.gz
-	sha256sums = bab6c67348e0aa343418adf03cb21ec07c96123851ac4211e87d9c0a52dd57b5
+	source = thqm-0.1.6.tar.gz::https://github.com/loiccoyle/thqm.rs/archive/v0.1.6.tar.gz
+	sha256sums = 3259815a7bc41e8fc2041935d5c170f37a7d5ce87f1854f68ef2e5156129a0ad
 
 pkgname = thqm
