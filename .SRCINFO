@@ -1,17 +1,23 @@
 pkgbase = greenclip
-	pkgdesc = Clipboard manager to use with rofi
-	pkgver = 2.1
-	pkgrel = 0
-	epoch = 0
-	url = https://github.com/erebe/greenclip
-	changelog = changelog
+	pkgdesc = Simple clipboard manager to be integrated with rofi
+	pkgver = 4.1.0
+	pkgrel = 2
+	url = https://github.com/erebe/greenclip#readme
 	arch = x86_64
-	license = GPL
-	depends = rofi
-	provides = greenclip
-	options = !strip
-	source = https://github.com/erebe/greenclip/releases/download/2.1/greenclip
-	sha256sums = 9964a6520f3ec6c935e3f6ef4b4b6235d79aab38060305673a66a5c71e7c9e57
+	license = BSD
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-x11
+	depends = haskell-hashable
+	depends = haskell-microlens
+	depends = haskell-microlens-mtl
+	depends = haskell-protolude
+	depends = haskell-tomland
+	depends = haskell-vector
+	depends = haskell-wordexp
+	provides = rofi-greenclip
+	conflicts = rofi-greenclip
+	source = greenclip-4.1.0.tar.gz::https://hackage.haskell.org/packages/archive/greenclip/4.1.0/greenclip-4.1.0.tar.gz
+	sha256sums = c41a4b6f17d250ec9bfe811d233701490d4efefd9cca3534a52e02379673a2fc
 
 pkgname = greenclip
-
