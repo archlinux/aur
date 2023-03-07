@@ -1,0 +1,13 @@
+pkgbase = doom2df-res
+	pkgdesc = Resources for Doom 2D: Forever
+	pkgver = 0.667
+	pkgrel = 1
+	url = https://doom2d.org/
+	arch = any
+	license = unknow
+	conflicts = doom2df-git
+	conflicts = doom2df-bin-git
+	source = https://deadsoftware.ru/files/terminalhash/doom2df-packages/d2df-res.zip
+	md5sums = 72fda0a8517f79a04a33a1ee43853f55
+
+pkgname = doom2df-res
