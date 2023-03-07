@@ -1,24 +1,26 @@
-# Maintainer: Gunnar Bretthauer <taijian@posteo.de>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Gunnar Bretthauer <taijian@posteo.de>
 
 pkgname=python-json-logging
-_pkgname=json-logging-python
+_pkgname=json-logging
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python logging library to emit JSON log that can be easily indexed and searched"
 url="https://github.com/bobbui/json-logging-python"
-depends=('python')
-makedepends=('python-setuptools')
-license=('APACHE')
+license=('Apache')
 arch=('any')
-source=("${url}/archive/${pkgver}.zip")
-sha256sums=('cab9f956bf1f667587e3c28d634c7cb7849609111201fe205c246a0f0bf95d61')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+changelog=CHANGELOG.md
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/j/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha256sums=('60a02a1daa168a08aa0a41eeeda63e92500ab08170491bdd326cf00d17f656f8')
 
 build() {
 	cd "$_pkgname-$pkgver"
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 package() {
 	cd "$_pkgname-$pkgver"
-	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+	python -m installer --destdir "$pkgdir" dist/*.whl
 }
