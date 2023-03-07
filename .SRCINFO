@@ -1,15 +1,16 @@
 pkgbase = python-scrython
-	pkgdesc = A Python wrapper for the Scryfall.com API
-	pkgver = 1.4.0
-	pkgrel = 2
+	pkgdesc = Python wrapper for the Scryfall API
+	pkgver = 1.11.0
+	pkgrel = 1
 	url = https://github.com/NandaScott/Scrython
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	depends = python
+	makedepends = python-wheel
 	depends = python-aiohttp
-	source = https://files.pythonhosted.org/packages/source/s/scrython/scrython-1.4.0.tar.gz
-	sha256sums = 1099e86ad950916609c3fdcc7f39062091e8a04ef22413fe59adff4c434e950a
+	source = python-scrython-1.11.0.tar.gz::https://files.pythonhosted.org/packages/source/s/scrython/scrython-1.11.0.tar.gz
+	sha256sums = 4afcc631c56ae56e7433e1482e074a2b5acb9c7dd85ed98991760491fd6da83a
 
 pkgname = python-scrython
-
