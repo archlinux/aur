@@ -29,17 +29,17 @@ build() {
   cmake -Sneovim-nightly -Bbuild \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DCMAKE_INSTALL_PREFIX=/usr
-#  cmake --build build
+  cmake --build build
 }
 
 check() {
   cd "$srcdir/build"
-#  ./bin/nvim --headless -u NONE -i NONE -c ':quit'
+  ./bin/nvim --headless -u NONE -i NONE -c ':quit'
 }
 
 package() {
   cd "$srcdir/build"
-#  DESTDIR="$pkgdir" cmake --build . --target install
+  DESTDIR="$pkgdir" cmake --build . --target install
   cd "$srcdir/neovim-nightly"
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
   install -Dm644 runtime/nvim.desktop "$pkgdir/usr/share/applications/nvim.desktop"
