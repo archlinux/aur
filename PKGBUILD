@@ -1,7 +1,7 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=cellframe-node
 pkgver=5.1.367
-pkgrel=1
+pkgrel=2
 pkgdesc="Cellframe blockchain node with a powerful SDK"
 arch=('x86_64' 'aarch64')
 url="https://cellframe.net"
@@ -72,6 +72,13 @@ package() {
 	install -Dm 644 "$srcdir/$pkgname.sh" -t "$pkgdir/etc/profile.d" || return 1
 
 	install -Dm 644 "$srcdir/$pkgname.cfg" -t "$_prefix/etc" || return 1
+
+	mkdir -p "$pkgdir/usr/bin"
+
+	for _executables in cellframe-node-cli cellframe-node-tool cellframe-node
+	do
+		ln -sf "$_prefix/bin/$_executables" "$pkgdir/usr/bin/$_executables"
+	done
 
 	for _nets in Backbone.cfg kelvpn-minkowski.cfg mileena.cfg subzero.cfg
 	do
