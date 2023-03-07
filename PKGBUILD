@@ -3,7 +3,7 @@
 # Contributor: Adrian Perez de Castro <aperez@igalia.com>
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-hidpi-xprop-git
-pkgver=0.17.0.20230306.122351
+pkgver=0.17.0.20230228.144402
 pkgrel=1
 license=(MIT)
 pkgdesc='Modular Wayland compositor library (git version, with patches)'
@@ -56,8 +56,6 @@ pkgver () {
 
 prepare () {
   cd "${pkgname}"
-  git revert -n c09d3450d494e21f065c12f199fa5ba8bfd946a9
-  git revert -n 79248e4961d49da1858917a902ba6b8fcc0bead1
   git revert -n 18595000f3a21502fd60bf213122859cc348f9af 
   patch -Np1 < ../0001-xwayland-support-HiDPI-scale.patch
   patch -Np1 < ../0002-Fix-configure_notify-event.patch
