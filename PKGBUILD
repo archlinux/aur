@@ -126,7 +126,7 @@ source=(
     gst-plugins-rs::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git
     dxil-spirv::git+https://github.com/HansKristian-Work/dxil-spirv.git
     graphene::git+https://github.com/ebassi/graphene.git
-    libdisplay-info::git+https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info.git
+    libdisplay-info-dxvk::git+https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info.git
     wine-staging::git+https://github.com/wine-staging/wine-staging.git
     protonfixes-gloriouseggroll::git+https://github.com/gloriouseggroll/protonfixes.git
     gst-plugins-bad::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git
@@ -231,7 +231,7 @@ prepare() {
         git -c protocol.file.allow=always submodule update include/{vulkan,spirv}
 
         git submodule init subprojects/libdisplay-info
-        git submodule set-url subprojects/libdisplay-info "$srcdir/libdisplay-info"
+        git submodule set-url subprojects/libdisplay-info "$srcdir/libdisplay-info-dxvk"
         git -c protocol.file.allow=always submodule update subprojects/libdisplay-info
     popd
 
