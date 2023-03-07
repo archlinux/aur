@@ -1,7 +1,7 @@
 # Maintainer: Florian Loitsch <florian@toit.io>
 pkgname=toit-git
 pkgver=VERSION
-pkgrel=7
+pkgrel=8
 pkgdesc="Toit programming language SDK"
 arch=('x86_64')
 url="https://toitlang.org"
@@ -15,7 +15,6 @@ makedepends=(
 	# For xxd.
 	'vim'
 	# For the esp-tool.
-	'pyinstaller'
 	'python'
 	'python-pip'
 	'libusb'

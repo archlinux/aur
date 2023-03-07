@@ -1,7 +1,7 @@
 pkgbase = toit-git
 	pkgdesc = Toit programming language SDK
 	pkgver = VERSION
-	pkgrel = 7
+	pkgrel = 8
 	url = https://toitlang.org
 	arch = x86_64
 	license = LGPL
@@ -10,7 +10,6 @@ pkgbase = toit-git
 	makedepends = ninja
 	makedepends = go
 	makedepends = vim
-	makedepends = pyinstaller
 	makedepends = python
 	makedepends = python-pip
 	makedepends = libusb
