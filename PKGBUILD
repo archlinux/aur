@@ -2,7 +2,7 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=deployer
-pkgver=7.1.3
+pkgver=7.2.1
 _target_version=${pkgver//_/-}
 pkgrel=1
 pkgdesc="A deployment tool written in PHP with support for popular frameworks out of the box."
@@ -11,7 +11,7 @@ url="https://deployer.org"
 license=('MIT')
 depends=('php')
 source=("$pkgname-$_target_version.phar::https://github.com/deployphp/deployer/releases/download/v$_target_version/deployer.phar")
-sha512sums=('a9677f4bd46934e1f02bd7590ad68907164b04663f55c51babd6fbe002899f1dadf7b559a597589b246e0640360cd57b7366b588b5f1ad9e82777707df2ef2a9')
+sha512sums=('a9e63d1812323965a41de8a43a99ac8afdb5f1e70971dd8650789f399d62c8237ec2165321139f6205aac6a4f7f0d9eed82213c4d621245f0ebbe493cd1ea9ae')
 
 package() {
     install -Dm0755 ${srcdir}/$pkgname-$_target_version.phar "$pkgdir/usr/local/bin/dep"
