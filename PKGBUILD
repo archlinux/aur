@@ -20,7 +20,6 @@ source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=d08cc30bfba
 		subzero.cfg
 		cellframe-node.service
 		cellframe-node.logrotate
-		cellframe-node.sh
 		LICENSE)
 md5sums=('SKIP'
          'SKIP'
@@ -32,8 +31,8 @@ md5sums=('SKIP'
          'be8dc9bddf5354074993df8377da03a4'
          'f6fa69bc2e3896fda661c84d2a2c3192'
          '4ccc93f9055e3382025564a729430d34'
-         '797a5e1704727d387713105e1f101d99'
          'e6a600fd5e1d9cbde2d983680233ad02')
+
 install=$pkgname.install
 backup=('opt/cellframe-node/etc/cellframe-node.cfg')
 

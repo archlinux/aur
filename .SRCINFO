@@ -28,7 +28,6 @@ pkgbase = cellframe-node
 	source = subzero.cfg
 	source = cellframe-node.service
 	source = cellframe-node.logrotate
-	source = cellframe-node.sh
 	source = LICENSE
 	md5sums = SKIP
 	md5sums = SKIP
@@ -40,7 +39,6 @@ pkgbase = cellframe-node
 	md5sums = be8dc9bddf5354074993df8377da03a4
 	md5sums = f6fa69bc2e3896fda661c84d2a2c3192
 	md5sums = 4ccc93f9055e3382025564a729430d34
-	md5sums = 797a5e1704727d387713105e1f101d99
 	md5sums = e6a600fd5e1d9cbde2d983680233ad02
 
 pkgname = cellframe-node
