@@ -1,7 +1,7 @@
 pkgbase = mdli
 	pkgdesc = A MDL interpreter
 	pkgver = 0.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.russotto.net/git/mrussotto/confusion
 	arch = any
 	license = GPL
@@ -11,4 +11,3 @@ pkgbase = mdli
 	md5sums = 2ed2454e1553c9ef85545cc2b7d40891
 
 pkgname = mdli
-
