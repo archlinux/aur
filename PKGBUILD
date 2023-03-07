@@ -3,7 +3,7 @@
 # Contributor: Donald Webster <fryfrog@gmail.com>
 
 pkgname=jackett-bin
-pkgver=0.20.3486
+pkgver=0.20.3521
 pkgrel=1
 pkgdesc='Use many torrent trackers with software that supports torznab/potato feeds.'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -26,9 +26,9 @@ source_armv7h=("Jackett.Binaries.LinuxARM32-${pkgver}.tar.gz::https://github.com
 sha256sums=('9d8f9d73e5fa2b2877dde010c0d8ca6fbf47f03eb1f01b02f846026a949a0dcf'
             'd005fcd009ec5404e1ec88246c31e664167f5551d6cabc35f68eb41750bfe590'
             '64022e15565a609f449090f02d53ee90ef95cffec52ae14f99e4e2132b6cffe1')
-sha256sums_x86_64=('1c4b3d4b84ee8512c980d23cc9e4495ed98ebdd7372bcdbf9b2e7c4837061a94')
-sha256sums_aarch64=('a7c8e563ad807bf89ea41c412cfbe9ece09c0f9923470e14ed3afeea3b07a899')
-sha256sums_armv7h=('f910c0b11b425391b24eaa70e3d3b4babe6c1ce5ee773fda007404762c3bf4ee')
+sha256sums_x86_64=('61412f335c245c29e72b776fdb5d60db845b89c0ad7ab1aee92102d4d7794305')
+sha256sums_aarch64=('eaa25b089ca5bbe9892000c09b82b55e1910ccdfd38b83f87e08fc56cb00a6ea')
+sha256sums_armv7h=('e0c7b249164c10cbdf056f0c1282fd234856017cb866d5636557d1e49bf14a5f')
 
 
 
