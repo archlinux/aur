@@ -1,9 +1,11 @@
 # Maintainer: Melvin Vermeeren <mail@mel.vin>
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
-# Useful: https://gitlab.com/gitlab-org/gitlab/issues/17584
+
+# GitLab Pages without DNS wildcard
+# https://gitlab.com/gitlab-org/gitlab/issues/17584
 
 pkgname=gitlab-pages
-pkgver=15.9.1
+pkgver=15.9.2
 pkgrel=1
 pkgdesc='GitLab Pages daemon used to serve static websites for GitLab users'
 url="https://gitlab.com/gitlab-org/$pkgname"
@@ -16,7 +18,7 @@ source=("$url/-/archive/v$pkgver/$_archive.tar.bz2"
         'service.env')
 backup=("etc/$pkgname/config.cfg"
         "etc/$pkgname/service.env")
-sha256sums=('5613e98a0c46fb26818df6a9d5b32008110c77d98cbabd29bcb2ac2305cf3053'
+sha256sums=('202623b1ab93d7dfe0e7430d92f93dd00cf78ecf8f620392c9c336dadfbaee32'
             'df2bb3607f500daf95ac7c3ddf2470c794a72c66ba0770029753f859f1c53082'
             'fd8f9b60e2247077ad00765904237b6b1c36b11a952cd3b1ad88e74417b82a96')
 
