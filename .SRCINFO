@@ -1,7 +1,7 @@
 pkgbase = sapling-scm
 	pkgdesc = A Scalable, User-Friendly Source Control System
 	pkgver = 0.2.20230228.144002.h9440b05e
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://sapling-scm.com
 	arch = x86_64

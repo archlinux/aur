@@ -4,7 +4,7 @@ pkgname="$_realname-scm"
 _realver=0.2.20230228-144002-h9440b05e
 pkgver="${_realver//-/.}"  # dashes aren't allowed in pkgver
 epoch=1  # Version scheme was changed from YYYYMMDD-.... to prepend a number: 0.1-YYYYMMDD-...
-pkgrel=1
+pkgrel=2
 pkgdesc="A Scalable, User-Friendly Source Control System"
 arch=("x86_64")
 url="https://sapling-scm.com"
@@ -36,6 +36,6 @@ check() {
 
 package() {
 	cd "$_realname-$_realver/eden/scm"
-	make PREFIX=/usr DESTDIR="$pkgdir/" install-oss
+	SAPLING_VERSION="$_realver" make PREFIX=/usr DESTDIR="$pkgdir/" install-oss
 }
 
