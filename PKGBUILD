@@ -6,7 +6,7 @@ _pkgname=Qogir-theme
 _pkgver=2023-02-27
 pkgname="qogir-gtk-theme"
 pkgver=${_pkgver//-/.}
-pkgrel=7
+pkgrel=8
 pkgdesc="Qogir is a flat Design theme for GTK"
 arch=('any')
 url="https://github.com/vinceliuice/Qogir-theme"
@@ -15,7 +15,7 @@ makedepends=('grep' 'sassc')
 depends=('gtk3')
 optdepends=(
 	'gtk-engines: For GTK2 support'
-	'gtk-engines-murrine: For GTK2 support'
+	'gtk-engine-murrine: For GTK2 support'
     'kvantum-theme-qogir-git: Matching Kvantum theme'
     'qogir-icon-theme: Matching icon theme'
     'vimix-cursors: Matching cursor theme'
