@@ -1,0 +1,12 @@
+pkgbase = kubevela
+	pkgdesc = The Modern Application Platform.
+	pkgver = 1.7.5
+	pkgrel = 1
+	url = https://github.com/kubevela/kubevela
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	source = https://github.com/kubevela/kubevela/archive/refs/tags/v1.7.5.tar.gz
+	sha256sums = aff27830121eb259b20a498f90de9ee3db720a5d02f7c969c052935367bd279d
+
+pkgname = kubevela
