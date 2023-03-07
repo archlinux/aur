@@ -1,43 +1,51 @@
-# Maintainer: Kevin Del Castillo <quebin31@gmail.com>
-
-_pkgname=neovim
-_pkgver=0.5.0
+# Maintainer: iamawacko <iamawacko@protonmail.com>
+# Contributor: Francesco La Camera <fm@lacamera.org>
 pkgname=neovim-nightly
-epoch=2
-pkgver=0.5.0+dev+973+gc64cce906
+pkgver=0.9.0.dev.20230306
 pkgrel=1
-pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs - Nightly Builds'
-arch=('x86_64')
-url='https://neovim.io'
+pkgdesc='hyperextensible Vim-based text editor'
+arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64' 'pentium4')
+url='https://github.com/neovim/neovim/releases/tag/nightly'
+backup=('etc/xdg/nvim/sysinit.vim')
 license=('custom:neovim')
-provides=("${_pkgname}=${_pkgver}")
-conflicts=("${_pkgname}")
-optdepends=('python2-neovim: for Python 2 plugin support, see :help python'
-            'python-neovim: for Python 3 plugin support, see :help python'
-            'xclip: for clipboard support, see :help clipboard'
-            'xsel: for clipboard support, see :help clipboard')
+depends=('libluv' 'libtermkey' 'libuv' 'libvterm' 'luajit' 'msgpack-c' 'tree-sitter' 'unibilium')
+makedepends=('cmake' 'gperf' 'ninja' 'lua51-mpack' 'lua51-lpeg' 'patchelf')
+optdepends=('python2-neovim: Python 2 provider'
+            'python-pynvim: Python 3 provider'
+            'ruby-neovim: Ruby provider'
+            'xclip: X11 clipboard integration'
+            'xsel: X11 clipboard integration'
+            'wl-clipboard: wayland clipboard integration')
+source=("$pkgname-$pkgver::https://github.com/neovim/neovim/archive/refs/tags/nightly.tar.gz")
+provides=("neovim=$pkgver" 'vim-plugin-runtime')
+conflicts=('neovim')
+sha256sums=('SKIP')
 
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz")
-sha512sums=(SKIP) 
-install=neovim.install
+pkgver() {
+	printf "0.9.0.dev.%s" "$(date +%Y%m%d)"	
+}
+
+build() {
+  cmake -Sneovim-nightly -Bbuild \
+        -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+        -DCMAKE_INSTALL_PREFIX=/usr
+#  cmake --build build
+}
 
 check() {
-  cd "${srcdir}/nvim-linux64"
-  ./bin/nvim --version
-  ./bin/nvim --headless -u NONE -i NONE -c ':quit'
+  cd "$srcdir/build"
+#  ./bin/nvim --headless -u NONE -i NONE -c ':quit'
 }
 
 package() {
-  cd "${srcdir}/nvim-linux64"
-
-  mkdir -p "${pkgdir}/usr/bin"
-
-  cp -r share "${pkgdir}/usr/"
-  install bin/nvim "${pkgdir}/usr/bin"
-
-  # Make Arch vim packages work
-  mkdir -p "${pkgdir}"/usr/share/vim
-  echo "set runtimepath+=/usr/share/vim/vimfiles" > "${pkgdir}"/usr/share/nvim/sysinit.vim
+  cd "$srcdir/build"
+#  DESTDIR="$pkgdir" cmake --build . --target install
+  cd "$srcdir/neovim-nightly"
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  install -Dm644 runtime/nvim.desktop "$pkgdir/usr/share/applications/nvim.desktop"
+  install -Dm644 runtime/nvim.png "$pkgdir/usr/share/pixmaps/nvim.png"
+  mkdir -p "$pkgdir/etc/xdg/nvim"
+  mkdir -p "$pkgdir/usr/share/nvim"
+  echo "source /usr/share/nvim/archlinux.vim" >> "$pkgdir"/etc/xdg/nvim/sysinit.vim
+  echo "set runtimepath+=/usr/share/vim/vimfiles" > "$pkgdir"/usr/share/nvim/archlinux.vim
 }
-
-# vim:set sw=2 sts=2 et:
