@@ -1,0 +1,13 @@
+pkgbase = vangen
+	pkgdesc = Tool for generating static HTML for Go vanity import paths
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/leighmcculloch/vangen
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = vangen-1.4.0.tar.gz::https://github.com/leighmcculloch/vangen/archive/v1.4.0.tar.gz
+	sha256sums = 5b10eb21f586d910a4cbd33381d53a22db0d610d33da620803e0478772810b5d
+
+pkgname = vangen
