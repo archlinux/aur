@@ -1,7 +1,7 @@
 pkgbase = pywws
 	pkgdesc = Python software for USB Wireless WeatherStations
 	pkgver = 23.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jim-easterbrook/pywws
 	arch = any
 	license = GPL
@@ -11,6 +11,7 @@ pkgbase = pywws
 	makedepends = python-wheel
 	depends = python-tzlocal
 	depends = python-libusb1
+	depends = python-dateutil
 	optdepends = python-croniter: flexible timed tasks
 	optdepends = python-daemon: runs pywws as a proper UNIX daemon process
 	optdepends = gnuplot>=4.2: draws weather data graphs

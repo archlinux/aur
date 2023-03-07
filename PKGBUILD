@@ -3,12 +3,12 @@
 
 pkgname=pywws
 pkgver=23.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python software for USB Wireless WeatherStations"
 arch=('any')
 url="https://github.com/jim-easterbrook/pywws"
 license=('GPL')
-depends=('python-tzlocal' 'python-libusb1')
+depends=('python-tzlocal' 'python-libusb1' 'python-dateutil')
 optdepends=(
   'python-croniter: flexible timed tasks'
   'python-daemon: runs pywws as a proper UNIX daemon process'
