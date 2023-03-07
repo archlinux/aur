@@ -1,7 +1,7 @@
 pkgbase = r-hmisc
 	pkgdesc = Harrell Miscellaneous
-	pkgver = 4.8.0
-	pkgrel = 3
+	pkgver = 5.0.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=Hmisc
 	arch = x86_64
 	license = GPL
@@ -29,7 +29,7 @@ pkgbase = r-hmisc
 	optdepends = r-rstudioapi
 	optdepends = r-tables
 	optdepends = r-vgam
-	source = https://cran.r-project.org/src/contrib/Hmisc_4.8-0.tar.gz
-	sha256sums = 6392ed4b96c8ea95da1ebfa92b38cc3baa0314babb2680a08800d0b25c0a9b1d
+	source = https://cran.r-project.org/src/contrib/Hmisc_5.0-0.tar.gz
+	sha256sums = a3f71506394de7df970aec092fc25f44c9e2ba1a2bb56a1e5954d377b4245da4
 
 pkgname = r-hmisc
