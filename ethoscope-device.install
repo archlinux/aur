@@ -26,19 +26,20 @@ post_install() {
 
     echo "create the default network configuration files"
     echo $'[Match]\nName=eth0\n\n[Network]\nDHCP=yes\n\n[DHCPv4]\nRouteMetric=10\n' > /etc/systemd/network/20-wired.network
-	echo $'[Match]\nName=wlan0\n\n\n[Network]\nDHCP=yes\n\n[DHCPv4]\nRouteMetric=20\n' > /etc/systemd/network/25-wireless.network
+    echo $'[Match]\nName=wlan0\n\n\n[Network]\nDHCP=yes\n\n[DHCPv4]\nRouteMetric=20\n' > /etc/systemd/network/25-wireless.network
     systemctl enable systemd-networkd --now
 
-	wpa_passphrase ETHOSCOPE_WIFI ETHOSCOPE_1234 > /etc/wpa_supplicant/wpa_supplicant-wlan0.conf
+    wpa_passphrase ETHOSCOPE_WIFI ETHOSCOPE_1234 > /etc/wpa_supplicant/wpa_supplicant-wlan0.conf
     systemctl enable wpa_supplicant --now
     systemctl enable wpa_supplicant@wlan0.service
 
-	#create a verbose login prompt
-	echo 'Ethoscope Linux \r  (\n) (\l)' > /etc/issue
-	echo 'Ethernet IP: \4{eth0}' >> /etc/issue
-	echo 'WIFI IP: \4{wlan0}' >> /etc/issue
+    #create a verbose login prompt
+    echo 'Ethoscope Linux \r  (\n) (\l)' > /etc/issue
+    echo 'Ethernet IP: \4{eth0}' >> /etc/issue
+    echo 'WIFI IP: \4{wlan0}' >> /etc/issue
+    echo 'Time on Device: \d \t' >> /etc/issue
 
-	echo "activates remote journal upload"
+    echo "activates remote journal upload"
     echo $'[Upload]\nURL=http://node:19532\n' > /etc/systemd/journal-upload.conf
 
     echo "configure the NTP file"
