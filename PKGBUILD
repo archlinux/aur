@@ -2,7 +2,7 @@
 pkgname=jddesktopentryedit
 _app_id=page.codeberg.JakobDev.jdDesktopEntryEdit
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A graphical program to create and edit desktop entries"
 arch=('any')
 url="https://codeberg.org/JakobDev/jdDesktopEntryEdit"
@@ -37,5 +37,5 @@ package() {
   install -Dm644 "deploy/$_app_id.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm644 "deploy/$_app_id.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
   install -Dm644 jdDesktopEntryEdit/Icon.svg \
-    "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_app_id.png"
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_app_id.svg"
 }

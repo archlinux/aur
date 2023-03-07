@@ -1,7 +1,7 @@
 pkgbase = jddesktopentryedit
 	pkgdesc = A graphical program to create and edit desktop entries
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/JakobDev/jdDesktopEntryEdit
 	arch = any
 	license = GPL3
