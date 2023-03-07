@@ -20,6 +20,7 @@ build() {
   # kwbimage needs libcrypto, so remove it from build
   sed -i '/kwbimage.o \\/d' ./tools/Makefile
   sed -i 's/FIT_OBJS-y :=.*/FIT_OBJS-y := fit_common.o boot\/image-fit.o/' ./tools/Makefile
+  ARCH=arm64 make clean
   ARCH=arm64 make my_defconfig
   ARCH=arm64 make tools-only
   mv -vf tools/mkimage bpir3-mkimage
