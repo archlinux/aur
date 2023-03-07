@@ -19,12 +19,11 @@ conflicts=('tango' 'tango-database-git')
 install=$pkgname.install
 source=(
   "https://gitlab.com/tango-controls/${_pkgname}/-/archive/${_pkgver}/${_pkgname}-${_pkgver}.tar.gz"
-  "tango-database.service" "collate.patch" "cmake_version.patch"
+  "tango-database.service" "cmake_version.patch"
   "timestamp.patch" "tango-db.conf" "create_db_user.sql" "check_and_create_db.sh"
 )
 sha256sums=('beb0c79f9db361e5c49ae30f2601e27eb79b89500c088e29dc2328de88bd2c3d'
             'a0e7dc022acc43d4eb96828ba0362bc1397607d5850e1b69ce5aa5ae90a74386'
-            'a48e929dfffc7831cf2cb783aa51d38ddbfb3ee04bfa57d07947de8134f61ac3'
             'a657c5648d176a523d2765365005125f5b278971d250efc69ee27d7b595521d7'
             '2e2958b14d342f2041a0fdc638b3e5600f3aaa1b734abea87f322623d92874bb'
             '0edcbdda3f3789973d30ab65589b5a0920a3b70b185e25544f60cc4669492475'
@@ -34,7 +33,6 @@ sha256sums=('beb0c79f9db361e5c49ae30f2601e27eb79b89500c088e29dc2328de88bd2c3d'
 
 prepare() {
   cd ${_pkgname}-${_pkgver}
-  patch -N -p1 --input="${srcdir}/collate.patch"
   patch -N -p1 --input="${srcdir}/timestamp.patch"
   patch -N -p1 --input="${srcdir}/cmake_version.patch"
 }
