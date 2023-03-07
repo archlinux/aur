@@ -1,0 +1,12 @@
+pkgbase = modern-theme-git
+	pkgdesc = Small tweaks of standart Adwaita/adw-mod theme, contains color schemes for Qt5/Qt6/KDE
+	pkgver = v1.02a.r8.g1753235
+	pkgrel = 1
+	url = https://github.com/TerminalHash/Modern
+	arch = any
+	license = GPL3
+	conflicts = modern-theme
+	source = git+https://github.com/TerminalHash/Modern.git
+	md5sums = SKIP
+
+pkgname = modern-theme-git
