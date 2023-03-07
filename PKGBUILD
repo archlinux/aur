@@ -2,7 +2,7 @@
 _base=py-pde
 pkgname=python-${_base}
 pkgdesc="Python package for solving partial differential equations"
-pkgver=0.27.1
+pkgver=0.28.0
 pkgrel=1
 arch=(any)
 url="https://github.com/zwicker-group/${_base}"
@@ -17,7 +17,7 @@ optdepends=('python-h5py: for storing data in the hierarchical file format'
   'python-numba-mpi: for njittable MPI wrapper'
   'python-mpi4py: for parallel processing using MPI')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('07a4932b62bd032bce5ace1d9d5c2cfc319667bb7946823cd09ba5e13a807dd3d96c348ae2286b38c4eef0f32898f278698ad9caaf500f3f87dfcbe73d351ca5')
+sha512sums=('fe2870cd8e087e665594703a452a600785de816fcdc360caccd4856df5960a4f2261bfdb08c25c68dd5c0bdc0acf16004d0d7d8dabc59f8ad4410e119695dad3')
 
 build() {
   cd ${_base}-${pkgver}
