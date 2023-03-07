@@ -7,6 +7,7 @@ pkgdesc='GILDAS'
 arch=('x86_64')
 url="https://www.iram.fr/IRAMFR/GILDAS/"
 license=('custom')
+makedepends=(python python-setuptools python-numpy which)
 depends=(gcc-fortran cfitsio gtk2)
 optdepends=(python-numpy)
 
