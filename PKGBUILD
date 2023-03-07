@@ -82,11 +82,11 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=6.2
-_minor=1
+_minor=2
 _srcname=linux-${_major}
-_clr=${_major}.0-1275
+_clr=${_major}.1-1280
 _gcc_more_v='20230105'
-_xanmod='4ba17e3181e82204446e7e3e1bec927028043558'
+_xanmod='c527f69aa31ddb2cc15b86951bd3c2610df77872'
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -105,8 +105,8 @@ source=(
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-${pkgver}.xz"
   "$pkgbase::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_clr}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-pci-Enable-overrides-for-missing-ACS-capabilities-${_xanmod}.patch::https://raw.githubusercontent.com/xanmod/linux-patches/${_xanmod}/linux-6.1.y-xanmod/pci_acso/0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch"
-  "0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW-${_xanmod}.patch::https://raw.githubusercontent.com/xanmod/linux-patches/${_xanmod}/linux-6.1.y-xanmod/userns/0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch"
+  "0001-pci-Enable-overrides-for-missing-ACS-capabilities-${_xanmod}.patch::https://raw.githubusercontent.com/xanmod/linux-patches/${_xanmod}/linux-6.2.y-xanmod/pci_acso/0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch"
+  "0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW-${_xanmod}.patch::https://raw.githubusercontent.com/xanmod/linux-patches/${_xanmod}/linux-6.2.y-xanmod/userns/0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch"
 )
 
 if [ -n "$_use_llvm_lto" ]; then
@@ -158,85 +158,85 @@ prepare() {
 
     # General setup
     scripts/config --set-str DEFAULT_HOSTNAME archlinux \
-                   --enable IKCONFIG \
-                   --enable IKCONFIG_PROC \
-                   --undefine RT_GROUP_SCHED
+                   -e IKCONFIG \
+                   -e IKCONFIG_PROC \
+                   -u RT_GROUP_SCHED
 
     # Power management and ACPI options
-    scripts/config --enable ACPI_REV_OVERRIDE_POSSIBLE \
-                   --enable ACPI_TABLE_UPGRADE
+    scripts/config -e ACPI_REV_OVERRIDE_POSSIBLE \
+                   -e ACPI_TABLE_UPGRADE
 
     # General architecture-dependent options
-    scripts/config --enable KPROBES
+    scripts/config -e KPROBES
 
     # Enable loadable module support
-    scripts/config --undefine MODULE_SIG_FORCE \
-                   --enable MODULE_COMPRESS_ZSTD
+    scripts/config -u MODULE_SIG_FORCE \
+                   -e MODULE_COMPRESS_ZSTD
 
     # Networking support
-    scripts/config --enable NETFILTER_INGRESS
+    scripts/config -e NETFILTER_INGRESS
 
     # Device Drivers
-    scripts/config --enable FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER \
-                   --enable DELL_SMBIOS_SMM \
-                   --module PATA_JMICRON \
-                   --enable-after SOUND SOUND_OSS_CORE \
-                   --enable SND_OSSEMUL \
-                   --module-after SND_OSSEMUL SND_MIXER_OSS \
-                   --module-after SND_MIXER_OSS SND_PCM_OSS \
-                   --enable-after SND_PCM_OSS SND_PCM_OSS_PLUGINS \
-                   --module AGP --module-after AGP AGP_INTEL --module-after AGP_INTEL AGP_VIA
+    scripts/config -e FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER \
+                   -e DELL_SMBIOS_SMM \
+                   -m PATA_JMICRON \
+                   -E SOUND SOUND_OSS_CORE \
+                   -e SND_OSSEMUL \
+                   -M SND_OSSEMUL SND_MIXER_OSS \
+                   -M SND_MIXER_OSS SND_PCM_OSS \
+                   -E SND_PCM_OSS SND_PCM_OSS_PLUGINS \
+                   -m AGP -M AGP AGP_INTEL -M AGP_INTEL AGP_VIA
 
     # Kernel hacking -> Compile-time checks and compiler options -> Make section mismatch errors non-fatal
-    scripts/config --enable SECTION_MISMATCH_WARN_ONLY
+    scripts/config -e SECTION_MISMATCH_WARN_ONLY
 
     # File systems
-    scripts/config --module NTFS3_FS \
-                   --enable NTFS3_LZX_XPRESS \
-                   --enable NTFS3_FS_POSIX_ACL
+    scripts/config -m NTFS3_FS \
+                   -e NTFS3_LZX_XPRESS \
+                   -e NTFS3_FS_POSIX_ACL
 
-    scripts/config --module SMB_SERVER \
-                   --enable SMB_SERVER_SMBDIRECT \
-                   --enable SMB_SERVER_CHECK_CAP_NET_ADMIN \
-                   --enable SMB_SERVER_KERBEROS5
+    scripts/config -m SMB_SERVER \
+                   -e SMB_SERVER_SMBDIRECT \
+                   -e SMB_SERVER_CHECK_CAP_NET_ADMIN \
+                   -e SMB_SERVER_KERBEROS5
 
     # Security options
-    scripts/config --enable SECURITY_SELINUX \
-                   --enable SECURITY_SELINUX_BOOTPARAM \
-                   --enable SECURITY_SMACK \
-                   --enable SECURITY_SMACK_BRINGUP \
-                   --enable SECURITY_SMACK_NETFILTER \
-                   --enable SECURITY_SMACK_APPEND_SIGNALS \
-                   --enable SECURITY_TOMOYO \
-                   --enable SECURITY_APPARMOR \
-                   --enable SECURITY_YAMA
+    scripts/config -e SECURITY_SELINUX \
+                   -e SECURITY_SELINUX_BOOTPARAM \
+                   -e SECURITY_SMACK \
+                   -e SECURITY_SMACK_BRINGUP \
+                   -e SECURITY_SMACK_NETFILTER \
+                   -e SECURITY_SMACK_APPEND_SIGNALS \
+                   -e SECURITY_TOMOYO \
+                   -e SECURITY_APPARMOR \
+                   -e SECURITY_YAMA
 
     # Library routines
-    scripts/config --enable FONT_TER16x32
+    scripts/config -k -e FONT_TER16x32
 
     if [ -n "$_use_llvm_lto" ]; then
-        scripts/config --disable LTO_NONE \
-                       --enable LTO \
-                       --enable LTO_CLANG \
-                       --enable ARCH_SUPPORTS_LTO_CLANG \
-                       --enable ARCH_SUPPORTS_LTO_CLANG_THIN \
-                       --enable HAS_LTO_CLANG \
-                       --enable LTO_CLANG_THIN \
-                       --enable HAVE_GCC_PLUGINS
+        scripts/config -d LTO_NONE \
+                       -e LTO \
+                       -e LTO_CLANG \
+                       -e ARCH_SUPPORTS_LTO_CLANG \
+                       -e ARCH_SUPPORTS_LTO_CLANG_THIN \
+                       -e HAS_LTO_CLANG \
+                       -e LTO_CLANG_THIN \
+                       -e HAVE_GCC_PLUGINS
     fi
 
     if [ "$_debug" == "y" ]; then
-        scripts/config --enable DEBUG_INFO \
-                       --enable DEBUG_INFO_BTF \
-                       --enable DEBUG_INFO_DWARF4 \
-                       --enable PAHOLE_HAS_SPLIT_BTF \
-                       --enable DEBUG_INFO_BTF_MODULES
+        scripts/config -e DEBUG_INFO \
+                       -e DEBUG_INFO_BTF \
+                       -e DEBUG_INFO_DWARF4 \
+                       -e PAHOLE_HAS_SPLIT_BTF \
+                       -e DEBUG_INFO_BTF_MODULES
     elif [ "$_debug" == "n" ]; then
-        scripts/config --disable DEBUG_INFO \
-                       --disable DEBUG_INFO_BTF \
-                       --disable DEBUG_INFO_DWARF4 \
-                       --disable PAHOLE_HAS_SPLIT_BTF \
-                       --disable DEBUG_INFO_BTF_MODULES
+        scripts/config -d DEBUG_INFO \
+                       -d DEBUG_INFO_BTF \
+                       -d DEBUG_INFO_DWARF4 \
+                       -d PAHOLE_HAS_SPLIT_BTF \
+                       -d DEBUG_INFO_BTF_MODULES
     fi
 
     make ${BUILD_FLAGS[*]} olddefconfig
@@ -420,11 +420,11 @@ done
 
 sha256sums=('74862fa8ab40edae85bb3385c0b71fe103288bce518526d63197800b3cbdecb1'
             'SKIP'
-            'f533d80e81ca77b0cad4bd989d6c628848c5ed42dbfae74d0cca736c7234b965'
+            'a1699c7183afcbb2af7c0afb30a2680f867775f934b111a382cbb16760f2f8fa'
             'SKIP'
             '802946f623c69ae1a636b63697c23ca48af31a099415ed837d2c1e168a272d23'
-            '821136df8fffcb4ae612cdf88af57e294490c0552c55163f8b0f7485b0a035a1'
-            'b26bfbdb0981ffb387c06f4f18fc5a15cf5c590f011dea197e1fe9e27b60a422')
+            'f9e2de1f448fcae193c2445658dbbc7b9c18f9d4e2a29a68e3e78fb63238b4b7'
+            '999b1a2548afebcf88aa0e53b1261b36bb1a3b4d6c575048786f07c8266ee37f')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
