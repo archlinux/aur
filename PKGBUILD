@@ -1,7 +1,7 @@
 # Maintainer: mcarni <michele DOT carnaghi AT googlemail DOT com>
 
 pkgname=kodi-addon-game-libretro-mame
-pkgver=0.251.0.15
+pkgver=0.251.0.16
 _codename=Nexus
 pkgrel=1
 pkgdesc="This add-on provides a wrapper that allows Libretro cores to be loaded as game add-ons"
@@ -12,7 +12,7 @@ groups=('kodi-addons' 'kodi-addons-game')
 makedepends=('cmake' 'kodi-dev' 'kodi-addon-game-libretro' 'libretro-mame')
 options=(!lto debug)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kodi-game/game.libretro.mame/archive/refs/tags/$pkgver-$_codename.tar.gz")
-sha512sums=('c679aed84001b467d7d0fd43ab82393a7cb8c864b8c3445ebb516b05237996d7f7bf96f8d3be15d790051158dd2fd3f4e5e5cdd90bf5217b8b7c5c9baae5fab5')
+sha512sums=('835aca41cfd556eadedea1fd650ac437782cdad4f24569e631b86cd0f5c2e0fefffe07a4daff898924e73f5372e03ae910b822d38259dd4ad34698024051bc21')
 
 build() {
     cd "game.libretro.mame-$pkgver-$_codename"
