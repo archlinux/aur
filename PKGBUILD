@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=devtoolbox
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Development tools at your fingertips"
 arch=('any')
@@ -15,7 +15,7 @@ depends=('gtksourceview5' 'libadwaita' 'python-base64io' 'python-croniter'
 makedepends=('meson')
 checkdepends=('appstream-glib')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('731d3ab3b4712231e0fb5ee4fcc7517450eba4964c46a241f45933d2490d480b')
+sha256sums=('7a87dd408c9d54471aee904ece13ecca9b5d3eb2568f1755127738f8dd5b24e4')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
