@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="PSL1GHT lightweight PS3 GameOS SDK"
 arch=(x86_64 aarch64 powerpc64le powerpc64 powerpc riscv64)
 url='https://github.com/ps3dev'
-license=(GPL LGPL FDL)
+license=(MIT)
 depends=(
 	ps3-ppu-binutils
 	ps3-ppu-gcc
