@@ -1,46 +1,42 @@
 # Maintainer: Atif Chowdhury <iftakhar.awal@gmail.com>
-pkgname=eww-wayland-git
+
 _pkgname=eww
-pkgver=0.1.0.r164.g70285e0
-pkgrel=3
-epoch=
-pkgdesc="ElKowar's wacky widgets (Wayland Only)"
-arch=('any')
+pkgname="$_pkgname-wayland-git"
+pkgver=0.4.0.r20.g8ff4142
+pkgrel=1
+pkgdesc="ElKowar's wacky widgets (Wayland build)"
+arch=('x86_64')
 url="https://github.com/elkowar/eww"
 license=('MIT')
-groups=()
-depends=("gtk3")
-makedepends=("rustup" "git")
-checkdepends=()
-optdepends=()
-provides=("eww")
+depends=(gtk3 gtk-layer-shell)
+makedepends=(git rustup)
+provides=("$_pkgname=${pkgver/.r*/}")
 conflicts=("eww")
-replaces=()
-backup=()
-options=()
-install="${_pkgname}.install"
-changelog=
-source=("git+https://github.com/elkowar/eww")
-noextract=()
-md5sums=("SKIP")
-validpgpkeys=()
+install=$pkgname.install
+source=("git+$url.git?signed")
+b2sums=('SKIP')
+validpgpkeys=(
+	'B558974128820CB473BD9807E321AD71B1D1F27F' # Leon Kowarschick <5300871+elkowar@users.noreply.github.com>
+	'5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23' # GitHub (web-flow commit signing) <noreply@github.com>
+)
 
 pkgver() {
-    cd ${_pkgname}
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd $_pkgname
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$_pkgname"
-    rustup toolchain install nightly
-    cargo +nightly build --release --no-default-features --features=wayland
+	cd $_pkgname
+	rustup toolchain install nightly
+	cargo +nightly build --release --no-default-features --features=wayland
 }
 
 package() {
-    cd "$_pkgname"
+	cd $_pkgname
 
-    install -Dm755 target/release/eww "${pkgdir}/usr/bin/${_pkgname}"
-    mkdir -p "${pkgdir}/etc/xdg/${_pkgname}"
-    cp -r examples/eww-bar "${pkgdir}/etc/xdg/${_pkgname}"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
+	install -Dm755 target/release/$_pkgname -t "$pkgdir/usr/bin/"
+
+	install -d "$pkgdir/etc/xdg/$_pkgname/"
+	cp -r examples/eww-bar "$pkgdir/etc/xdg/$_pkgname/"
 }
