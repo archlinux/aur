@@ -1,7 +1,7 @@
 # Maintainer: Ahmed W. <oneofone@gmail.com>
 # old maintainer:   M.Reynolds <blackboxnetworkproject@gmail.com>
 
-pkgname=tastyworks
+pkgname=tastytrade
 pkgver='2.0.0'
 pkgrel='1'
 pkgdesc="One of the fastest, most reliable, and most secure trading platforms in the world."

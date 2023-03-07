@@ -1,4 +1,4 @@
-pkgbase = tastyworks
+pkgbase = tastytrade
 	pkgdesc = One of the fastest, most reliable, and most secure trading platforms in the world.
 	pkgver = 2.0.0
 	pkgrel = 1
@@ -9,4 +9,4 @@ pkgbase = tastyworks
 	source = https://download.tastytrade.com/desktop-2.x.x/2.0.0/tastytrade-2.0.0-1_amd64.deb
 	sha256sums = ea11b42d4a28c3023907d1eb28fb57a5e3290bc820adce602adcc22093caad1b
 
-pkgname = tastyworks
+pkgname = tastytrade
