@@ -1,0 +1,15 @@
+pkgbase = python-pyahocorasick
+	pkgdesc = Fast and memory efficient library for exact or approximate multi-pattern string search
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/WojciechMula/pyahocorasick
+	arch = x86_64
+	license = custom:BSD-3
+	makedepends = python-setuptools
+	makedepends = cython
+	depends = python
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/p/pyahocorasick/pyahocorasick-2.0.0.tar.gz
+	sha256sums = 2985cac6d99c0e9165617fe154b4db0b50c4c2819791c2ad5f0aac0c6a6e58c5
+
+pkgname = python-pyahocorasick
