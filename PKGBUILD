@@ -5,7 +5,7 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}-legacyrenderer-git"
-pkgver=r2498.18229043
+pkgver=r2570.0aeb61a9
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (Legacy Renderer)"
 arch=(any)
@@ -39,7 +39,8 @@ depends=(
 	seatd
 	vulkan-icd-loader
 	vulkan-validation-layers
-	xorg-xwayland)
+	xorg-xwayland
+	libdisplay-info)
 makedepends=(
 	git
 	cmake
