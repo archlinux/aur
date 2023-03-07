@@ -1,33 +1,32 @@
 # Maintainer: Ahmed W. <oneofone@gmail.com>
 # old maintainer:   M.Reynolds <blackboxnetworkproject@gmail.com>
 
-pkgname=tastyworks
-pkgver='1.27.0'
+pkgname=tastytrade
+pkgver='2.0.0'
 pkgrel='1'
 pkgdesc="One of the fastest, most reliable, and most secure trading platforms in the world."
 arch=('x86_64')
-url='https://tastyworks.com/'
+url='https://tastytrade.com/'
 license=('custom:commercial')
-conflicts=('tastyworks-bin')
-
-source=(https://download.tastyworks.com/desktop-1.x.x/${pkgver}/tastyworks-${pkgver}-1_amd64.deb)
-sha256sums=('16921dd879b3eca390031be1a0e4dd24f8a11717d09a36f978d5a1fb607945aa')
+conflicts=('tastytrade-bin')
+source=(https://download.tastytrade.com/desktop-2.x.x/${pkgver}/tastytrade-${pkgver}-1_amd64.deb)
+sha256sums=('ea11b42d4a28c3023907d1eb28fb57a5e3290bc820adce602adcc22093caad1b')
 
 build() {
 	tar xf data.tar.xz
 
 	# Remove additional bundled Java "runtime"
-	#rm -rf opt/tastyworks/lib/runtime
-	#sed -i 's|app.runtime=$ROOTDIR/lib/runtime|app.runtime=/usr/lib/jvm/default-runtime|' opt/tastyworks/lib/app/tastyworks.cfg
+	#rm -rf opt/tastytrade/lib/runtime
+	#sed -i 's|app.runtime=$ROOTDIR/lib/runtime|app.runtime=/usr/lib/jvm/default-runtime|' opt/tastytrade/lib/app/tastytrade.cfg
 
-	DF="opt/tastyworks/lib/tastyworks-tastyworks.desktop"
+	DF="opt/tastytrade/lib/tastytrade-tastytrade.desktop"
 
 	# Set correct information for the application .desktop launcher
-	sed -i 's|Name=tastyworks|Name=TastyWorks|'                  $DF
-	sed -i 's|Comment=tastyworks|Comment=Trading Platform|'      $DF
-	sed -i 's|Exec=.*|Exec=/usr/bin/tastyworks|'             $DF
-	sed -i 's|Icon=.*|Icon=tastyworks|'                      $DF
-	sed -i 's|Categories=tastyworks|Categories=Network|'         $DF
+	sed -i 's|Name=tastytrade|Name=TastyTrade|'                  $DF
+	sed -i 's|Comment=tastytrade|Comment=Trading Platform|'      $DF
+	sed -i 's|Exec=.*|Exec=/usr/bin/tastytrade|'             $DF
+	sed -i 's|Icon=.*|Icon=tastytrade|'                      $DF
+	sed -i 's|Categories=tastytrade|Categories=Network|'         $DF
 
 	# Add the correct startup window manager class
 	# This *should* fix gnome from creating more than one dock entry for the program
@@ -37,18 +36,18 @@ build() {
 
 package() {
 	install -d "${pkgdir}/usr/bin"
-	ln -sf "/usr/lib/${pkgname}/bin/tastyworks" "${pkgdir}/usr/bin/${pkgname}"
+	ln -sf "/usr/lib/${pkgname}/bin/tastytrade" "${pkgdir}/usr/bin/${pkgname}"
 
 	install -d "${pkgdir}/usr/lib/${pkgname}/lib/app"
-	cp -r           "${srcdir}/opt/tastyworks/lib/app/"                          "${pkgdir}/usr/lib/${pkgname}/lib/"
-	cp -r           "${srcdir}/opt/tastyworks/lib/runtime/"                          "${pkgdir}/usr/lib/${pkgname}/lib/"
-	install -Dm 644 "${srcdir}/opt/tastyworks/lib/libapplauncher.so"             "${pkgdir}/usr/lib/${pkgname}/lib/libapplauncher.so"
+	cp -r           "${srcdir}/opt/tastytrade/lib/app/"                          "${pkgdir}/usr/lib/${pkgname}/lib/"
+	cp -r           "${srcdir}/opt/tastytrade/lib/runtime/"                          "${pkgdir}/usr/lib/${pkgname}/lib/"
+	install -Dm 644 "${srcdir}/opt/tastytrade/lib/libapplauncher.so"             "${pkgdir}/usr/lib/${pkgname}/lib/libapplauncher.so"
 
-	install -Dm 755 "${srcdir}/opt/tastyworks/bin/tastyworks"                    "${pkgdir}/usr/lib/${pkgname}/bin/tastyworks"
+	install -Dm 755 "${srcdir}/opt/tastytrade/bin/tastytrade"                    "${pkgdir}/usr/lib/${pkgname}/bin/tastytrade"
 
-	install -Dm 644 "${srcdir}/opt/tastyworks/lib/tastyworks-tastyworks.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-	install -Dm 644 "${srcdir}/opt/tastyworks/share/doc/copyright"               "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm 644 "${srcdir}/opt/tastyworks/lib/tastyworks.png"                "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+	install -Dm 644 "${srcdir}/opt/tastytrade/lib/tastytrade-tastytrade.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	install -Dm 644 "${srcdir}/opt/tastytrade/share/doc/copyright"               "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm 644 "${srcdir}/opt/tastytrade/lib/tastytrade.png"                "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
-	echo "changelog: https://tastyworks.freshdesk.com/support/solutions/articles/43000435186-recent-release-notes?_sp=7c25726d-6774-4b70-bda4-a82570383c13.1600117130600"
+	echo "changelog: https://tastytrade.freshdesk.com/support/solutions/articles/43000435186-recent-release-notes?_sp=7c25726d-6774-4b70-bda4-a82570383c13.1600117130600"
 }
