@@ -1,0 +1,15 @@
+pkgbase = fallout2-cursor-theme
+	pkgdesc = Vector version of old Fallout 2 cursors, based on cursor-toolbox by charakterziffer
+	pkgver = 20230307
+	pkgrel = 1
+	url = https://github.com/TerminalHash/Fallout2-Vector-Cursor
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = inkscape
+	makedepends = xorg-xcursorgen
+	makedepends = python
+	source = git+https://github.com/TerminalHash/Fallout2-Vector-Cursor.git
+	md5sums = SKIP
+
+pkgname = fallout2-cursor-theme
