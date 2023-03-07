@@ -1,5 +1,5 @@
 # Original from https://github.com/ps3dev/ps3toolchain
-# Updated for binutils gcc 9.5.0 by Darjan Krijan [https://disc-kuraudo.eu]
+# Updated to gcc 9.5.0 by Darjan Krijan [https://disc-kuraudo.eu]
 diff '--color=auto' -urN a/gcc/config/rs6000/cell64lv2.h b/gcc/config/rs6000/cell64lv2.h
 --- a/gcc/config/rs6000/cell64lv2.h	1970-01-01 01:00:00.000000000 +0100
 +++ b/gcc/config/rs6000/cell64lv2.h	2023-01-01 17:58:23.274094209 +0100
