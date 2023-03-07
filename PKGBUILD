@@ -3,8 +3,8 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}-hidpi-xprop-git"
-pkgver=r2551.c4440993
-pkgrel=2
+pkgver=r2570.0aeb61a9
+pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=(any)
 url="https://github.com/hyprwm/Hyprland"
