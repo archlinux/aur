@@ -1,14 +1,14 @@
 # Contributor: parovoz <andrey.android7890 at gmail dot com>
 
 pkgbase=meridius-bin-git
-pkgname=("${pkgbase}") #"${pkgbase}-electron")
+pkgname=("${pkgbase}" "${pkgbase}-electron")
 pkgver=v2.9.7
 pkgrel=1
 pkgdesc="Free and modern music player for VK. Meridius - it is a beautiful music player for vk.com"
 arch=('x86_64')
 url="https://purplehorrorrus.github.io/meridius"
 license=('custom')
-makedepends=('git' 'gendesk')
+makedepends=('git' 'gendesk' 'asar')
 options=('!strip' '!emptydirs')
 source=(git+https://github.com/PurpleHorrorRus/Meridius.git)
 md5sums=('SKIP')
@@ -35,37 +35,50 @@ package_meridius-bin-git(){
     provides=('meridius')
     conflicts=('meridius')
         install -dm755 "$pkgdir/opt"
-        mv "meridius-${pkgver//v}" "${pkgdir}/opt/Meridius"
-        install -Dm 644 "${pkgdir}/opt/Meridius/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+        cp -r "meridius-${pkgver//v}" "${pkgdir}/opt/Meridius"
+        install -Dm644 "${pkgdir}/opt/Meridius/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
         
-        gendesk --pkgname "meridius"                                   \
+        gendesk -f --pkgname "meridius"                                \
                 --exec "/opt/Meridius/meridius %U"                     \
                 --icon "/opt/Meridius/builder/icons/linux/256x256.png" \
-                --categories "Audio;"                                  \
+                --categories "Audio;Music;Player;AudioVideo;"          \
                 --comment $pkgdesc
                 
-        install -Dm 644 -t "$pkgdir/usr/share/applications" meridius.desktop
+        install -Dm644 -t "$pkgdir/usr/share/applications" meridius.desktop
 }
 
-# (not working)
-# https://aur.archlinux.org/packages/meridius-electron-bin/
-# package_meridius-bin-git-electron() {
-#     depends=('electron' 'libxss' 'libxtst' 'at-spi2-core' 'util-linux-libs' 'libsecret')
-#     arch=('x86_64')
-#     pkgdesc="Music Player for vk.com based on Electron, NuxtJS, Vue. (System Electron)"
-#     provides=('meridius')
-#     conflicts=('meridius')
-#     
-#         mkdir -p ${pkgdir}/usr/share/Meridius
-#         mkdir -p ${pkgdir}/usr/share/icons/hicolor/256x256/apps
-#         mkdir -p ${pkgdir}/usr/share/applications
-# 
-#         bsdtar -xvf data.tar.xz ./opt/Meridius/resources/app.asar ./usr/share/applications/meridiusreborn.desktop ./usr/share/icons/hicolor/256x256/apps/meridiusreborn.png
-# 
-#         sed -i 's!/opt/Meridius/meridiusreborn!electron /usr/share/Meridius/app.asar!' usr/share/applications/meridiusreborn.desktop
-#         sed -i 's!Audio;!Audio;Music;Player;AudioVideo;!' usr/share/applications/meridiusreborn.desktop
-# 
-#         mv usr/share/icons/hicolor/256x256/apps/meridiusreborn.png ${pkgdir}/usr/share/icons/hicolor/256x256/apps
-#         mv usr/share/applications/meridiusreborn.desktop ${pkgdir}/usr/share/applications
-#         mv opt/Meridius/resources/app.asar ${pkgdir}/usr/share/Meridius
-# }
+package_meridius-bin-git-electron() {
+    depends=('electron' 'libxss' 'libxtst' 'at-spi2-core' 'util-linux-libs' 'libsecret')
+    arch=('x86_64')
+    pkgdesc="Music Player for vk.com based on Electron, NuxtJS, Vue. (System Electron)"
+    provides=('meridius')
+    conflicts=('meridius')
+        cd $srcdir/meridius-${pkgver//v}/resources
+        
+        msg2 "unpacking app..."
+        asar e app.asar app
+        rm app.asar
+        
+        msg2 "changing resource search path"
+        sed -i "s!builder/icons!meridius/icons!" app/dist/main/index.js
+        
+        msg2 "repacking app..."
+        asar p app app.asar --unpack-dir '**'
+        rm -r app
+
+        cd ..
+        
+        sed -i "s!Exec=.*!Exec=electron /usr/share/meridius/app.asar!" io.github.purplehorrorrus.Meridius.desktop
+        sed -i "s!AudioVideo;!Audio;Music;Player;AudioVideo;!"         io.github.purplehorrorrus.Meridius.desktop
+
+        install -dm755 ${pkgdir}/usr/share/{meridius,applications}
+        
+        cp -dr --preserve=ownership             \
+                builder/icons                   \
+                resources/app.asar              \
+                resources/app.asar.unpacked     \
+            ${pkgdir}/usr/share/meridius
+        
+        install -Dm644 builder/icons/linux/256x256.png            ${pkgdir}/usr/share/pixmaps/io.github.purplehorrorrus.Meridius.png 
+        install -Dm644 io.github.purplehorrorrus.Meridius.desktop ${pkgdir}/usr/share/applications/
+}
