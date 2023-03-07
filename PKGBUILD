@@ -1,8 +1,8 @@
 # Maintainer: Pierre Grasser <pierre.grasser@proton.me>
 pkgname=save3ds_fuse-git
 _reponame=${pkgname%_fuse-git}
-pkgver=1.3.0.r14.g07e3d37
-pkgrel=2
+pkgver=1.3.0.r16.g169078a
+pkgrel=1
 pkgdesc="Extract/Import/FUSE for 3DS save/extdata/database"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/wwylele/save3ds"
@@ -11,7 +11,6 @@ depends=('gcc-libs' 'fuse')
 makedepends=('git' 'cargo' 'pkg-config')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-backup=()
 source=('git+https://github.com/wwylele/save3ds.git#branch=master')
 md5sums=('SKIP')
 
