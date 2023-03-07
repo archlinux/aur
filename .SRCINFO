@@ -1,5 +1,5 @@
 pkgbase = ps3-spu-gcc
-	pkgdesc = GCC for cross-compiling to spu
+	pkgdesc = GCC for cross-compiling to spu (PS3 GameOS)
 	pkgver = 9.5.0
 	pkgrel = 1
 	url = https://gcc.gnu.org/
