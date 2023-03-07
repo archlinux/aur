@@ -1,6 +1,6 @@
 pkgbase = vmangos-git
 	pkgdesc = World of Warcraft Vanilla server emulator
-	pkgver = r5203.aa73bd1ca
+	pkgver = r5229.1c90bba03
 	pkgrel = 1
 	url = https://github.com/vmangos/
 	install = vmangos-git.install
