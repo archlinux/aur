@@ -1,4 +1,4 @@
-pkgbase = libressl
+pkgbase = libressl-3.7
 	pkgdesc = Free version of the TLS/crypto stack forked from OpenSSL
 	pkgver = 3.7.0
 	pkgrel = 2
@@ -6,8 +6,11 @@ pkgbase = libressl
 	arch = x86_64
 	license = ISC
 	license = custom:OpenSSL
+	makedepends = patchelf
 	depends = glibc
 	optdepends = ca-certificates
+	provides = libressl
+	conflicts = libressl
 	backup = etc/libressl/openssl.cnf
 	source = https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.7.0.tar.gz
 	source = https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.7.0.tar.gz.asc
@@ -17,4 +20,4 @@ pkgbase = libressl
 	sha256sums = SKIP
 	sha256sums = 294c7dd77b5a63593264f89184226256a2988661b4748722e510e2deda42810b
 
-pkgname = libressl
+pkgname = libressl-3.7
