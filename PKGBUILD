@@ -1,8 +1,6 @@
-# http://rec.arts.int-fiction.narkive.com/pM8Kgfbw/confusion-just-enough-mdl
-
 pkgname=mdli-bin
 pkgver=0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A MDL interpreter"
 arch=('x86_64')
 conflicts=('mdli')
