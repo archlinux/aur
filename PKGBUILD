@@ -23,12 +23,10 @@ package() {
   install -d "${pkgdir}/usr/bin/"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   cp -a --no-preserve=ownership * "${pkgdir}/opt/${pkgname}"
-
   cat > "${pkgdir}/usr/bin/${pkgname}" << EOF
 #!/bin/sh
 cd /opt/${pkgname}
 python SubDomainizer.py "\$@"
 EOF
-
   chmod 755 "${pkgdir}/usr/bin/${pkgname}"
 }
