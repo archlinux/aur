@@ -1,47 +1,16 @@
 #!/bin/sh
 
 post_install() {
-    echo "crate user: tango"
-    useradd -M tango
-    echo ""
-    echo "Note: It is recommended to setup the database to use latin1 character set."
-    echo "Especially, any other character set with characters longer than 3 bytes"
-    echo "will not work. Character set can be specified in my.cnf configuration file:"
-    echo ""
-    echo "[mysqld]"
-    echo "character_set_server=latin1"
-    echo "collation_server=latin1_swedish_ci"
-    echo ""
-    echo "#Launch the mysql client"
-    echo ""
-    echo "mysql -u[user] -p[password]"
-    echo ""
-    echo "# Create the tango scheme, add the declaration of the DB server and"
-    echo "# initialise history tables."
-    echo ""
-    echo "mysql>source /usr/share/tango/db/create_db.sql"
-    echo ""
-    echo "# or you can just run the tango-database-init.sh script ;)."
-    echo ""
-    echo "# Set-up the environment variables MYSQL_USER and MYSQL_PASSWORD"
-    echo "# or prepare the my.cnf (mysql configuration file) file to specify"
-    echo "# the mysql user and its password to be used to connect to the database."
-    echo ""
-    echo "# The user is root without a password"
-    echo "export MYSQL_USER=root"
-    echo "# Other options: "
-    echo "export MYSQL_PASSWORD=you_root_mysql_secret_pass"
-    echo "export MYSQL_DATABASE=tango (default tango, see tango_create.sql)"
-    echo "export MYSQL_HOST=localhost"
-    echo ""
-    echo "# Now, you should be able to launch the DB server"
-    echo ""
-    echo "Databaseds 2 -ORBendPoint giop:tcp:[hostname]:[port]"
-    echo "# or"
-    echo "systemctl start tango-database"
-    echo "# for this for this you need to create \"tango\" database"
-    echo "# under \"tango\" user and \"tango\" password,"
-    echo "# or change the variables in the tango-database.service file."
+  /usr/bin/sh /usr/share/tango/db/check_and_create_db.sh
+}
 
-    systemctl daemon-reload
+post_upgrade() {
+  /usr/bin/sh /usr/share/tango/db/check_and_create_db.sh
+}
+
+post_remove() {
+  echo "***************************************************"
+  echo ">>> tango-database was successfully removed but <<<"
+  echo ">>> The tango mariadb database was NOT removed! <<<"
+  echo "***************************************************"
 }

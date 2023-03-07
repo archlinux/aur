@@ -1,0 +1,10 @@
+--- a/create_db.sql.in
++++ b/create_db.sql.in
+@@ -1,6 +1,6 @@
+ # vim: filetype=mysql:
+ 
+-CREATE DATABASE @TANGO_DB_NAME@;
++CREATE DATABASE @TANGO_DB_NAME@ CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+ USE @TANGO_DB_NAME@;
+ 
+ #

@@ -1,28 +1,13 @@
 [Unit]
-Description=TANGO distributed control system - database server
-Requires=mysqld.service
+Description=Tango database device server
+After=mariadb.service
+Requires=mariadb.service
 
 [Service]
-Type=simple
-
-# If you have other settings, you can change these variables.
-Environment="MYSQL_HOST=localhost"
-Environment="MYSQL_DATABASE=tango"
-Environment="MYSQL_USER=tango"
-Environment="MYSQL_PASSWORD=tango"
-
-User=tango
-Group=tango
-
+Restart=always
+RestartSec=10s
+User=tango-db
 ExecStart=/usr/bin/Databaseds 2 -ORBendPoint giop:tcp:0.0.0.0:10000
-
-KillSignal=SIGTERM
-
-TimeoutStartSec=900
-TimeoutStopSec=900
-
-Restart=on-abort
-RestartSec=5s
 
 [Install]
 WantedBy=multi-user.target

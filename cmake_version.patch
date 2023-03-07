@@ -1,0 +1,10 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ configure_file(cmake_config.h.in cmake_config.h @ONLY)
+ 
+ set(MAJOR_VERSION "5")
+-set(MINOR_VERSION "16")
++set(MINOR_VERSION "20")
+ set(PATCH_VERSION "0")
+ set(PROJECT_VERSION "${MAJOR_VERSION}.${MINOR_VERSION}.${PATCH_VERSION}")
