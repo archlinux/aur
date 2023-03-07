@@ -8,12 +8,12 @@
 __arch_pkg_commit="a683ff63aa2c307fe73f4cc6f464791951b14f7c"
 _gtkver=3.24.37
 
-_gtk3_classic_commit="23bb70c43eaf9eef9e9c749e20e1f60eda54b710"
+_gtk3_classic_commit="7f47e156bb7452cd97e89ab6a0fca81d694be6a1"
 
 pkgbase=gtk3-classic
 pkgname=($pkgbase)
 pkgver=${_gtkver}
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK3 patched to provide a more classic experience"
 url="https://github.com/lah7/gtk3-classic"
 conflicts=(gtk3 gtk3-typeahead gtk3-print-backends gtk3-nocsd gtk3-nocsd-git gtk3-nocsd-legacy-git)
