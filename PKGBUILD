@@ -1,6 +1,6 @@
 pkgname=git-xargs
 _pkgname=git-xargs
-pkgver=0.1.0
+pkgver=0.1.4
 pkgdesc='git-xargs is a command-line tool (CLI) for making updates across multiple Github repositories with a single command.'
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url='https://github.com/gruntwork-io/git-xargs'
 source=("https://github.com/gruntwork-io/git-xargs/archive/refs/tags/v${pkgver}.tar.gz")
 depends=()
 makedepends=('go')
-b2sums=('fbecd02c17b6e4dfe954590848c781572aa98503eed0ddca6b207492bdd284177baa6e0810290202e50b403484ea5b38b512cee6f1660e543cddbd8345e7f963')
+b2sums=('0c60f400fa3a3629c98f9175ddf56a19270d8423d15a401e3f8cf7b8907d226f5dcc6836d7a64d46c9f924dacc2630df6583e1b7ca7819f14d060e80a7ca9bd3')
 license=('Apache')
 
 build(){
