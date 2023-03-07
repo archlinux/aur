@@ -1,24 +1,17 @@
-# Maintainer: Morteza NourelahiAlamdari <m@0t1.me>
-
 pkgname=dotsync
-pkgver=1.0.0
-pkgrel=1
-pkgdesc="Sync dotfiles with your Git repository"
-arch=("x86_64")
-url="https://github.com/mortymacs/dotsync"
-license=("GPL-3")
-makedepends=("gcc" "cmake" "make")
-depends=("yaml-cpp" "libgit2" "fmt")
-source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('05ef06ce2ef607c1648dd47215b07a4f8afe338e92943a086939325254ff2226')
-
-build() {
-  cd "$pkgname-$pkgver"
-  cmake .
-  make -j"$(nproc)"
-}
+pkgver=0.0.1
+pkgrel=0
+pkgdesc="Command line utility to manage dotfiles"
+arch=('x86_64' 'i686')
+url="https://github.com/termapps/dotsync"
+license=("MIT")
+provides=("dotsync")
+source_x86_64=(dotsync-0.0.1.zip::https://github.com/termapps/dotsync/releases/download/v0.0.1/dotsync-v0.0.1-x86_64-unknown-linux-gnu.zip)
+source_i686=(dotsync-0.0.1.zip::https://github.com/termapps/dotsync/releases/download/v0.0.1/dotsync-v0.0.1-i686-unknown-linux-gnu.zip)
+sha256sums_x86_64=("10719af894ed57bc0b6145c01bd47a3c97c61d496f6c8d3dd60264e1821e39b4")
+sha256sums_i686=("0d5446d5d0147f1542b203759b055c9d56cbf996dab0dd3c833ffae43cb034ec")
 
 package() {
-  install -Dm755 "${pkgname}-${pkgver}/${pkgname}" "${pkgdir}/usr/local/bin/${pkgname}"
+    install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
