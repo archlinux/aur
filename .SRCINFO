@@ -1,7 +1,7 @@
 pkgbase = libmali-radxa-g610-bin
 	pkgdesc = Binary libmali g610 drivers for X and Wayland and firmware for panfork/mesa for Radxa Rock5b
 	pkgver = g6p0_5_01eac0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/JeffyCN/rockchip_mirrors/tree/libmali/
 	arch = aarch64
 	depends = coreutils
