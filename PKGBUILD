@@ -1,8 +1,8 @@
 # Maintainer: Ktl_XV <aur@ktlxv.com>
 # Contributor: onbjerg <hi@notbjerg.me>
 pkgname=frame-eth
-pkgver="0.6.1"
-pkgrel=0
+pkgver="0.6.2"
+pkgrel=1
 pkgdesc="System-wide Web3"
 arch=('x86_64' 'aarch64')
 url='https://frame.sh'
