@@ -32,3 +32,4 @@ EOF
 
   chmod 755 "${pkgdir}/usr/bin/${pkgname}"
 }
+#trigger
