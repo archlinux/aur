@@ -3,29 +3,37 @@ pkgbase=python-mpl-animators
 _pname=${pkgbase#python-}
 _pyname=${_pname/-/_}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="An interative animation framework for matplotlib"
 arch=('any')
 url="https://sunpy.org"
 license=('BSD')
-makedepends=('python-setuptools-scm' 'python-sunpy-sphinx-theme' 'python-sphinx-automodapi' 'python-matplotlib' 'python-astropy' 'graphviz')
-checkdepends=('python-pytest')
+makedepends=('python-setuptools-scm'
+             'python-wheel'
+             'python-build'
+             'python-installer'
+             'python-sunpy-sphinx-theme'
+             'python-sphinx-automodapi'
+             'python-matplotlib'
+             'python-astropy'
+             'graphviz')
+checkdepends=('python-pytest-mpl')  # matplotlib, astropy already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('3b2641fd0e00fa55c35687929dbd40bd')
+md5sums=('4fd4f023a2c2df86dec409de3519d17a')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    python setup.py build
+    python -m build --wheel --no-isolation
 
     msg "Building Docs"
-    python setup.py build_sphinx
+    PYTHONPATH="../build/lib" make -C docs html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed"
+    pytest || warning "Tests failed" # -vv --color=yes
 }
 
 package_python-mpl-animators() {
@@ -36,12 +44,12 @@ package_python-mpl-animators() {
 
     install -D -m644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
-    python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
 
 package_python-mpl-animators-doc() {
     pkgdesc="Documentation for Python mpl-animators"
-    cd ${srcdir}/${_pyname}-${pkgver}/build/sphinx
+    cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
 
     install -D -m644 ../../LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
