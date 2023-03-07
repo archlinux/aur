@@ -1,6 +1,6 @@
 pkgbase = xfce4-goodies-meta
 	pkgdesc = Meta package for installing the xfce4-goodies group
-	pkgver = 4.16
+	pkgver = 4.18
 	pkgrel = 1
 	url = https://www.archlinux.org/
 	arch = any
@@ -15,7 +15,6 @@ pkgbase = xfce4-goodies-meta
 	depends = xfce4-clipman-plugin
 	depends = xfce4-cpufreq-plugin
 	depends = xfce4-cpugraph-plugin
-	depends = xfce4-datetime-plugin
 	depends = xfce4-dict
 	depends = xfce4-diskperf-plugin
 	depends = xfce4-eyes-plugin
@@ -44,4 +43,3 @@ pkgbase = xfce4-goodies-meta
 	depends = xfce4-whiskermenu-plugin
 
 pkgname = xfce4-goodies-meta
-

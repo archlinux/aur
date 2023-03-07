@@ -2,7 +2,7 @@
 # Maintainer: Patrick Wicki <patrick.wicki96@gmail.com>
 
 pkgname=xfce4-goodies-meta
-pkgver=4.16
+pkgver=4.18
 pkgrel=1
 pkgdesc='Meta package for installing the xfce4-goodies group'
 arch=(any)
@@ -19,7 +19,6 @@ depends=(
 	xfce4-clipman-plugin
 	xfce4-cpufreq-plugin
 	xfce4-cpugraph-plugin
-	xfce4-datetime-plugin
 	xfce4-dict
 	xfce4-diskperf-plugin
 	xfce4-eyes-plugin
