@@ -1,13 +1,16 @@
 pkgbase = qogir-gtk-theme
 	pkgdesc = Qogir is a flat Design theme for GTK
 	pkgver = 2023.02.27
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/vinceliuice/Qogir-theme
 	install = qogir-gtk-theme.install
 	arch = any
 	license = GPL3
 	makedepends = grep
 	makedepends = sassc
+	depends = gtk3
+	optdepends = gtk-engines: For GTK2 support
+	optdepends = gtk-engines-murrine: For GTK2 support
 	optdepends = kvantum-theme-qogir-git: Matching Kvantum theme
 	optdepends = qogir-icon-theme: Matching icon theme
 	optdepends = vimix-cursors: Matching cursor theme
@@ -20,10 +23,3 @@ pkgbase = qogir-gtk-theme
 	sha256sums = fabf821acfe0641fd233d4d7a42a536aedc369516de62f877e83a1070c73327e
 
 pkgname = qogir-gtk-theme
-	depends = gtk3
-
-pkgname = qogir-gtk2-theme
-	depends = gtk-engines
-	depends = gtk-engine-murrine
-	provides = qogir-gtk-theme
-	conflicts = qogir-gtk-theme
