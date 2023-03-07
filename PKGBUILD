@@ -6,7 +6,7 @@ pkgname=pstate-frequency
 # shellcheck disable=SC2034
 pkgdesc="Easily control Intel p-state driver"
 # shellcheck disable=SC2034
-pkgver=3.13.2
+pkgver=3.13.4
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -36,7 +36,7 @@ source=(
         "${url}/archive/${pkgver}.zip"
         "00-fix-prefix.patch")
 # shellcheck disable=SC2034
-sha256sums=('d32d5d184a66134d0516aab2d1db1bcf1b776159ba8e6a1ee2e0915bfdbea501'
+sha256sums=('ef74e6df5b94205e01b8953df2f80d9380fbe67c3544cf4d806d1b3c7ae1c0b6'
             'e5423df20c03ef19448a78a1ae39e630d90f63c6c4e0962296ad292665575f0d')
 
 prepare() {
