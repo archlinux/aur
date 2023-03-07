@@ -1,10 +1,11 @@
 pkgbase = calibre-web
 	pkgdesc = Web app for browsing, reading and downloading eBooks stored in a Calibre database
 	pkgver = 0.6.19
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/janeczku/calibre-web
 	arch = any
 	license = GPL3
+	makedepends = patchutils
 	depends = python
 	depends = python-advocate
 	depends = python-babel
@@ -30,9 +31,11 @@ pkgbase = calibre-web
 	source = calibre-web.service
 	source = calibre-web.sysusers
 	source = calibre-web.tmpfiles
+	source = flask-babel.patch::https://github.com/janeczku/calibre-web/commit/94a6931d48d347ae6c07e2b5f0301e8cf97cf53d.diff
 	sha256sums = 917710392f8b73cfb102b5c63c592117bb005d16ce2c8142033a7983588e987b
 	sha256sums = 216c5443424aa9b38b71c53186d0369d2eacd2cb03d742e01c881ab7bac9ea2d
 	sha256sums = b5d6c225761244b6c698af0279c9501bb9514e3e2a5151ca6e3212a4f5d0d76a
 	sha256sums = 82fae88cbed6d69e5a04586293de81bdc55994a4fe003178c39b5a35f2c87c1a
+	sha256sums = 441ae605b23e2216aacf535403bb1fb31a37066cbe51e815cb88a786a01170cc
 
 pkgname = calibre-web
