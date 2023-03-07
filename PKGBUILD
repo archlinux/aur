@@ -17,7 +17,7 @@ makedepends=('csfml' 'git')
 conflicts=('ppracer' 'etracer' 'extremetuxracer')
 replaces=('ppracer' 'etracer' 'extremetuxracer')
 source=("https://github.com/phrippy/extremetuxracer/archive/refs/heads/${pkgver}.zip")
-sha512sums=('16d52c41192e65a90b795897ea66e9f615f1a3c47c99c49134ca2b099096380d165415403cecede6e9bcd56a32c4f5ba96af456f84d533a70c3811ca5661a721')
+sha512sums=('8a3f2c2fffd16fcdfea7f4e57bb1ad74cd9756a021b550f498735adb31dda18ceb68d502adc3aa112a851d8298f5d9ef553c00e3c19d4ebdfdd9de31920efdcd')
 
 build() {
 	cd extremetuxracer-${pkgver}
