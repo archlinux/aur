@@ -1,7 +1,7 @@
 # Maintainer: Felipe Balbi <felipe.balbi@microsoft.com>
 pkgname=azure-sphere-sdk
 pkgmajor=22
-pkgminor=07
+pkgminor=11
 pkgver=${pkgmajor}.${pkgminor}
 pkgrel=1
 pkgdesc="Azure Sphere SDK Preview for Linux"
@@ -18,10 +18,10 @@ install="${pkgname}".install
 optdepends=('minicom: for serial communication with the Sphere board'
 	    'code: for software development')
 options=(!strip staticlibs)
-source=("${pkgname}-${pkgver}.tar.gz::https://software-download.microsoft.com/download/pr/Azure_Sphere_SDK_Bundle_${pkgmajor}${pkgminor}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://aka.ms/AzureSphereSDKDownload/Linux"
         "azure-sphere-sdk.udev"
         "azure-sphere-sdk.sysusers")
-sha256sums=('642863fef009c8e468951292b4cdb415a703f771adc847517eb0fa9f0b0139a5'
+sha256sums=('47418d96466c91ede13828d8ad2773e5a2a008f880c25d436a058c87ad502e27'
             '649ec04bdd0c052838bf3364fdd32313264891c4f7f60039cb644ef79c3c589f'
             '0afb48362c9684940c02d45136998267cbda7196ce04ab9933687f82165af9d4')
 
