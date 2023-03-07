@@ -1,8 +1,8 @@
-# Contributor: ANDRoid7890 <andrey.android7890 at gmail dot com>
+# Contributor: parovoz <andrey.android7890 at gmail dot com>
 
 pkgbase=meridius-bin-git
 pkgname=("${pkgbase}") #"${pkgbase}-electron")
-pkgver=v2.4.24
+pkgver=v2.9.7
 pkgrel=1
 pkgdesc="Free and modern music player for VK. Meridius - it is a beautiful music player for vk.com"
 arch=('x86_64')
@@ -38,10 +38,10 @@ package_meridius-bin-git(){
         mv "meridius-${pkgver//v}" "${pkgdir}/opt/Meridius"
         install -Dm 644 "${pkgdir}/opt/Meridius/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
         
-        gendesk --pkgname "meridius"                            \
-                --exec "/opt/Meridius/meridiusreborn %U"        \
-                --icon "/opt/Meridius/build/icons/256x256.png"  \
-                --categories "Audio;"                           \
+        gendesk --pkgname "meridius"                                   \
+                --exec "/opt/Meridius/meridius %U"                     \
+                --icon "/opt/Meridius/builder/icons/linux/256x256.png" \
+                --categories "Audio;"                                  \
                 --comment $pkgdesc
                 
         install -Dm 644 -t "$pkgdir/usr/share/applications" meridius.desktop

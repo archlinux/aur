@@ -1,6 +1,6 @@
 pkgbase = meridius-bin-git
 	pkgdesc = Free and modern music player for VK. Meridius - it is a beautiful music player for vk.com
-	pkgver = v2.4.24
+	pkgver = v2.9.7
 	pkgrel = 1
 	url = https://purplehorrorrus.github.io/meridius
 	arch = x86_64
