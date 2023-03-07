@@ -1,7 +1,7 @@
 pkgbase = zork
 	pkgdesc = MDL Zork!
 	pkgver = 1981
-	pkgrel = 0
+	pkgrel = 1
 	arch = any
 	license = none
 	makedepends = expect
@@ -13,4 +13,3 @@ pkgbase = zork
 	md5sums = f159bc65e1d12463981af5bd934cbb2f
 
 pkgname = zork
-

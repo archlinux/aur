@@ -1,8 +1,6 @@
-# maintainer: lorelei <eel@sdf.org>
-
 pkgname=zork
 pkgver=1981
-pkgrel=0
+pkgrel=1
 pkgdesc="MDL Zork!"
 license=('none')
 arch=('any')
