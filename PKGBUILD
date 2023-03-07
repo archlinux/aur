@@ -3,7 +3,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=cosmic-epoch-git
-pkgver=r41.75cb3ab
+pkgver=r52.277cf9e
 pkgrel=1
 pkgdesc="Rust, Iced based desktop environment, GNOME inspired, by System76, Pop! OS."
 arch=('x86_64' 'aarch64')
@@ -16,6 +16,8 @@ depends=('fontconfig' 'gtk4' 'libinput' 'libpulse' 'libxkbcommon' 'mesa' 'pipewi
          'pop-icon-theme' 'seatd' 'systemd-libs' 'wayland')
 makedepends=('cargo' 'clang' 'desktop-file-utils' 'git' 'just' 'meson' 'mold')
 checkdepends=('appstream-glib')
+optdepends=('ksnip: Screenshots' # See https://github.com/pop-os/cosmic-epoch#screenshots
+            'qt5-wayland: Screenshots')
 provides=('cosmic-epoch' 'cosmic-applets' 'cosmic-applibrary' 'cosmic-bg'
           'cosmic-comp' 'cosmic-launcher' 'cosmic-osd' 'cosmic-panel'
           'cosmic-session' 'cosmic-settings' 'cosmic-settings-daemon'
@@ -24,7 +26,8 @@ conflicts=('cosmic-epoch' 'cosmic-applets' 'cosmic-applibrary' 'cosmic-bg'
            'cosmic-comp' 'cosmic-launcher' 'cosmic-osd' 'cosmic-panel'
            'cosmic-session' 'cosmic-settings' 'cosmic-settings-daemon'
            'xdg-desktop-portal-cosmic')
-backup=('etc/cosmic-comp/config.ron')
+backup=('etc/cosmic-comp/config.ron'
+        'etc/cosmic-panel/config.ron')
 options=('!lto')
 source=('git+https://github.com/pop-os/cosmic-epoch.git'
         'git+https://github.com/pop-os/cosmic-applets.git'
@@ -127,6 +130,11 @@ package() {
   cp -r cosmic-sysext/* "$pkgdir/"
 
   # Keybinding config
-  # https://github.com/pop-os/cosmic-epoch/issues/71#issuecomment-1431670834
+  # https://github.com/pop-os/cosmic-epoch#cosmic-comp
   install -Dm644 cosmic-comp/config.ron -t "$pkgdir/etc/cosmic-comp/"
+
+  # Panel config
+  # https://github.com/pop-os/cosmic-epoch#panel-configuration
+  install -Dm644 cosmic-panel/cosmic-panel-config/config.ron -t \
+    "$pkgdir/etc/cosmic-panel/"
 }
