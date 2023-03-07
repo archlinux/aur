@@ -6,7 +6,7 @@ pkgname=pstate-frequency
 # shellcheck disable=SC2034
 pkgdesc="Easily control Intel p-state driver"
 # shellcheck disable=SC2034
-pkgver=3.13.0
+pkgver=3.13.1
 # shellcheck disable=SC2034
 pkgrel=1
 # shellcheck disable=SC2034
@@ -26,11 +26,17 @@ license=('GPL2')
 # shellcheck disable=SC2034
 url="https://github.com/pyamsoft/pstate-frequency"
 # shellcheck disable=SC2034
+backup=('etc/pstate-frequency.d/00-auto.plan'
+        'etc/pstate-frequency.d/01-powersave.plan'
+        'etc/pstate-frequency.d/02-balanced.plan'
+        'etc/pstate-frequency.d/03-performance.plan'
+        'etc/pstate-frequency.d/04-max.plan')
+# shellcheck disable=SC2034
 source=(
         "${url}/archive/${pkgver}.zip"
         "00-fix-prefix.patch")
 # shellcheck disable=SC2034
-sha256sums=('ab75d31967626cea9caf781f2286e69a138657d6f833e0e7bf6a1e7b74e3b43a'
+sha256sums=('2c13ba6f05c2df9abb36e746cb85d78b6051d8473331ad9f00243b0cb1cfa4f9'
             'e5423df20c03ef19448a78a1ae39e630d90f63c6c4e0962296ad292665575f0d')
 
 prepare() {
