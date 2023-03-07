@@ -6,7 +6,7 @@ url='https://wiki.ros.org/rosbridge_library'
 pkgname='ros-noetic-rosbridge-library'
 pkgver='0.11.13'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -21,7 +21,7 @@ makedepends=(
     ros-build-tools
     ${ros_makedepends[@]}
     python-pillow
-    python-bson
+    python-pymongo
 )
 
 ros_depends=(
@@ -38,7 +38,7 @@ ros_depends=(
 depends=(
     ${ros_depends[@]}
     python-pillow
-    python-bson
+    python-pymongo
 )
 
 _dir="rosbridge_suite-${pkgver}/rosbridge_library"

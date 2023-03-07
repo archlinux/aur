@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-rosbridge-library
 	pkgdesc = ROS - The core rosbridge package, repsonsible for interpreting JSON and performing the appropriate ROS action, like subscribe, publish, call service, and interact with params.
 	pkgver = 0.11.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/rosbridge_library
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = ros-noetic-rosbridge-library
 	makedepends = ros-noetic-geometry-msgs
 	makedepends = ros-noetic-message-generation
 	makedepends = python-pillow
-	makedepends = python-bson
+	makedepends = python-pymongo
 	depends = ros-noetic-rospy
 	depends = ros-noetic-roscpp
 	depends = ros-noetic-rosgraph
@@ -26,7 +26,7 @@ pkgbase = ros-noetic-rosbridge-library
 	depends = ros-noetic-geometry-msgs
 	depends = ros-noetic-message-runtime
 	depends = python-pillow
-	depends = python-bson
+	depends = python-pymongo
 	source = ros-noetic-rosbridge-library-0.11.13.tar.gz::https://github.com/RobotWebTools/rosbridge_suite/archive/0.11.13.tar.gz
 	sha256sums = e4989b48efce2f101aca6761102b0f9618ecc31a590039b641b35a08fc91d6db
 
