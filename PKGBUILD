@@ -7,8 +7,8 @@ _gitbranch="bpir"
 pkgname=bpir64-atf-git
 epoch=2
 pkgver=v2.8r12079.7155480e7
-pkgrel=1
-pkgdesc='ATF bpir64 images including fiptool'
+pkgrel=2
+pkgdesc='ATF BPI-R64 & BPI-R3 images including fiptool'
 url='https://github.com/mtk-openwrt/arm-trusted-firmware.git'
 arch=(aarch64)
 depends=(linux)
@@ -16,7 +16,7 @@ makedepends=(git bpir64-mkimage)
 license=(GPL)
 source=("git+${_gitroot}.git#branch=${_gitbranch}"
         '95-atf.hook'
-        'bpir64-writefip'
+        'bpir-writefip'
 )
 sha256sums=(SKIP SKIP SKIP)
 install=${pkgname}.install
@@ -46,9 +46,13 @@ _buildimage() {
   unset CXXFLAGS CPPFLAGS LDFLAGS
   export CFLAGS=-Wno-error
   make PLAT=${_plat} BOOT_DEVICE=$_atfdev LOG_LEVEL=40 MTK_BL33_IS_64BIT=1 \
-       USE_MKIMAGE=1 MKIMAGE=$(which bpir64-mkimage) ${_rest} all
-  dd of=build/${_plat}/release/${_bpir}-atf-${_atfdev}-header.bin bs=1 count=440 if=build/${_plat}/release/bl2.img
-  dd of=build/${_plat}/release/${_bpir}-atf-${_atfdev}-atf.bin         skip=34   if=build/${_plat}/release/bl2.img
+       USE_MKIMAGE=1 MKIMAGE=$(which ${_bpir}-mkimage) ${_rest} all
+  if [[ "${_bpir}" == "bpir64" ]]; then
+    dd of=build/${_plat}/release/${_bpir}-atf-${_atfdev}-header.bin bs=1 count=440 if=build/${_plat}/release/bl2.img
+    dd of=build/${_plat}/release/${_bpir}-atf-${_atfdev}-atf.bin         skip=34   if=build/${_plat}/release/bl2.img
+  else
+    dd of=build/${_plat}/release/${_bpir}-atf-${_atfdev}-atf.bin                   if=build/${_plat}/release/bl2.img
+  fi
 }
 
 _installimage() {
@@ -70,7 +74,7 @@ build() {
  
 package() {
   cd "${srcdir}"
-  install -m755 -vDt "$pkgdir/usr/bin" bpir64-writefip
+  install -m755 -vDt "$pkgdir/usr/bin" bpir-writefip
   install -Dt "${pkgdir}/usr/share/libalpm/hooks/" -m644 95-atf.hook
   cd "${srcdir}/${_gitname}/tools/fiptool"
   install -m755 -vDt "$pkgdir/usr/bin" fiptool

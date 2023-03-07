@@ -8,4 +8,4 @@ Target = usr/lib/initcpio/*
 [Action]
 Description = Updating fip partition...
 When = PostTransaction
-Exec = /usr/bin/bpir64-writefip
+Exec = /usr/bin/bpir-writefip

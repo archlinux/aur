@@ -16,12 +16,14 @@ dtb=$(cat      /boot/bootcfg/dtb)
 if [[ $@ =~ "--atf" ]]; then
   atfdev="/dev/disk/by-partlabel/${target}-${fipdev}-atf"
   if [ -L $atfdev ]; then
-    headerdev="/dev/"$(lsblk -no pkname ${atfdev})
+    if [ -f "/boot/${target}-atf-${fipdev}-header.bin" ]; then
+      headerdev="/dev/"$(lsblk -no pkname ${atfdev})
+      echo Writing ${target}-atf-${fipdev}-header.bin to $headerdev
+      dd of="${headerdev}" if=/boot/${target}-atf-${fipdev}-header.bin
+    fi
     echo -e "Target = ${target}, ATF device = ${fipdev}\nZeroing: $atfdev"
-    dd of="${atfdev}" if=/dev/zero 2>/dev/null
-    echo Writing HEADER to: $headerdev
-    dd of="${headerdev}" if=/boot/${target}-atf-${fipdev}-header.bin
-    echo Writing ATF to: $atfdev
+    dd bs=64k of="${atfdev}" if=/dev/zero 2>/dev/null
+    echo Writing ${target}-atf-${fipdev}-atf.bin to $atfdev
     dd bs=64k of="${atfdev}" if=/boot/${target}-atf-${fipdev}-atf.bin
   fi
 fi
