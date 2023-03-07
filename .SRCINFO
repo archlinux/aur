@@ -1,13 +1,26 @@
 pkgbase = adduser-deb
-	pkgdesc = Add and remove users and groups from Debian
-	pkgver = 3.113+nmu3
+	pkgdesc = Debian's 'adduser' and 'deluser' commands for creating and removing users
+	pkgver = 3.131
 	pkgrel = 1
-	url = http://alioth.debian.org/projects/adduser/
+	url = https://salsa.debian.org/debian/adduser
 	arch = any
-	license = GPLv2
-	depends = gawk
-	source = https://launchpad.net/debian/+archive/primary/+files/adduser_3.113+nmu3.tar.gz
-	md5sums = ccb5864bde56683182c89c44474e7182
+	license = GPL2
+	makedepends = po4a
+	depends = findutils
+	depends = perl
+	depends = shadow
+	depends = util-linux
+	optdepends = perl-locale-gettext: needed for localised/non-English output
+	optdepends = quota-tools: needed if enabling the `QUOTAUSER` option in `adduser.conf`
+	optdepends = tar: needed for `deluser --backup` or if enabling the `BACKUP*` options in `deluser.conf`
+	conflicts = adduser
+	backup = etc/adduser.conf
+	backup = etc/deluser.conf
+	source = https://salsa.debian.org/debian/adduser/-/archive/debian/3.131/adduser-debian-3.131.tar.gz
+	source = arch-license-path.patch
+	source = arch-policy.patch
+	sha256sums = 3ce6de32bce048d12429d9431b36d8437c1934266475b6a9f5235b3dff54f918
+	sha256sums = 2bb01846f0f3206796a817aacc65bef7d216ef7e0a89132661abb4182f0ba7d6
+	sha256sums = dc39d3588a408ab9caf24bda5813a2ce832a41cc4852cd5f2a60924d0847eeab
 
 pkgname = adduser-deb
-
