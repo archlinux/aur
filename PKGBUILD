@@ -3,8 +3,8 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}-hidpi-xprop-git"
-pkgver=r2569.4f647a8e
-pkgrel=1
+pkgver=r2551.c4440993
+pkgrel=2
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=(any)
 url="https://github.com/hyprwm/Hyprland"
@@ -83,8 +83,6 @@ prepare() {
 	git -c protocol.file.allow=always submodule update subprojects/hyprland-protocols
 	git -c protocol.file.allow=always submodule update subprojects/udis86
 	cd subprojects/wlroots
-	git revert -n c09d3450d494e21f065c12f199fa5ba8bfd946a9
-	git revert -n 79248e4961d49da1858917a902ba6b8fcc0bead1
 	git revert -n 18595000f3a21502fd60bf213122859cc348f9af
 	patch -Np1 -i "${srcdir}"/0001-xwayland-support-HiDPI-scale.patch
 	patch -Np1 -i "${srcdir}"/0002-Fix-configure_notify-event.patch
