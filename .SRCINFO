@@ -1,7 +1,7 @@
 pkgbase = freenom-script
 	pkgdesc = Freenom.com Domain Renewal and Dynamic DNS script.
-	pkgver = 20210824
-	pkgrel = 4
+	pkgver = 20230226
+	pkgrel = 1
 	url = https://github.com/mkorthof/freenom-script
 	install = freenom-script.install
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = freenom-script
 	source = 0001-Makefile-Support-staged-installs-with-DESTDIR.patch
 	source = 0002-send-mail-via-curl-command.patch
 	md5sums = SKIP
-	md5sums = 1747aec87824ab195db8a39803fc8d49
-	md5sums = be0f303a84acd3b6a8a5388bc17e3813
+	md5sums = 1bcaf7df11f92cdcb4f39499e3ec824a
+	md5sums = cb5b77eba766c5a36ede21abba6db514
 
 pkgname = freenom-script

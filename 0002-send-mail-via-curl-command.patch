@@ -1,34 +1,34 @@
-From 3060b7171a5108bcddf8e9a8af8dd625a9f3fcdb Mon Sep 17 00:00:00 2001
-From: atomlong <atom.long@hotmail.com>
-Date: Tue, 14 Sep 2021 16:04:31 +0800
+From 49d6d0809e7f81107623d1258bc59a63c77a2f80 Mon Sep 17 00:00:00 2001
+From: atom long <atom.long@hotmail.com>
+Date: Tue, 7 Mar 2023 23:33:41 +0800
 Subject: [PATCH 2/2] send mail via curl command. MTA is not needed anymore.
 
 ---
  CHANGES.md   |  1 +
  README.md    |  3 +-
  freenom.conf | 14 +++++----
- freenom.sh   | 81 +++++++++++++++++++++++++++++++++++++++++++---------
- 4 files changed, 80 insertions(+), 19 deletions(-)
+ freenom.sh   | 80 ++++++++++++++++++++++++++++++++++++++++++++--------
+ 4 files changed, 80 insertions(+), 18 deletions(-)
 
 diff --git a/CHANGES.md b/CHANGES.md
-index a7667bd..f3c39cf 100644
+index bfae997..4ae2699 100644
 --- a/CHANGES.md
 +++ b/CHANGES.md
-@@ -2,6 +2,7 @@
- 
- _order: latest/newest on top_
- 
+@@ -14,6 +14,7 @@ _order: latest/newest on top_
+     - `APPRISE="/usr/local/bin/apprise"` 
+     - `APPRISE_SERVER_URLS=( )`
+ - [**20211207**] fixed issue [#52](https://github.com/mkorthof/freenom-script/issues/52): sed removes CR using \r instead of ^M
 +- [**20210914**] send mail via curl command.
- - [**20210821**] fix issue [#50](https://github.com/mkorthof/freenom-script/issues/50)
+ - [**20210821**] fixed issue [#50](https://github.com/mkorthof/freenom-script/issues/50)
  - [**20210618**] added more config checks (PR [#43](https://github.com/mkorthof/freenom-script/issues/43) from nathanfranke)
  - [**20210612**] check for uaString and ipCmd settings ([#42](https://github.com/mkorthof/freenom-script/issues/42))
 diff --git a/README.md b/README.md
-index 43dbcb2..4db7c77 100644
+index cc3da5e..a9157f7 100644
 --- a/README.md
 +++ b/README.md
-@@ -58,7 +58,8 @@ NOTES:
+@@ -57,7 +57,8 @@ Examples    ./freenom.sh -r example.com
  
- ## Installation
+ Using a full Linux distro including coreutils is recommended (e.g. Debian). Embedded and BusyBox based systems are untested and will probably not work correctly or at all.
  
 -_Note that this shell script requires recent versions of "Bash" and "cURL"_
 +_Note that this shell script requires recent versions of "Bash" and "cURL";  
@@ -37,12 +37,12 @@ index 43dbcb2..4db7c77 100644
  ### Auto Installer
  
 diff --git a/freenom.conf b/freenom.conf
-index 2dea46d..a8acb52 100644
+index 29806ac..ac7b60f 100644
 --- a/freenom.conf
 +++ b/freenom.conf
-@@ -101,15 +101,19 @@ ipCmd+=("dig -4 +short whoami.akamai.net @ns1-1.akamaitech.net")
- # MAIL #
- ########
+@@ -102,15 +102,19 @@ ipCmd+=("dig -4 +short whoami.akamai.net @ns1-1.akamaitech.net")
+ # Mail Notifications #
+ ######################
  
 -# Mail Transfer Agent. A lightweight send-only MTA such as SSMTP should work fine. Or leave empty to disable sending mail.
 -# If you do not have a MTA installed you can use "bashmail.sh": https://git.io/JJdto. Default is "/usr/sbin/sendmail"
@@ -63,13 +63,13 @@ index 2dea46d..a8acb52 100644
 -#MAILFROM="Freenom Script <freenom-script@example.com>"
 +#MAILFROM="Freenom Script <${MAILUSERNAME}>"
  
- ######################
- # Domain name and id #
+ #########################
+ # Apprise Notifications #
 diff --git a/freenom.sh b/freenom.sh
-index 01ed3fe..5ec1ea3 100755
+index c30f28a..8a114a3 100755
 --- a/freenom.sh
 +++ b/freenom.sh
-@@ -159,15 +159,6 @@ if [ -z "$RCPTTO" ]; then
+@@ -169,14 +169,6 @@ if [ -z "$RCPTTO" ]; then
    RCPTTO="$freenom_email"
  fi
  
@@ -78,14 +78,13 @@ index 01ed3fe..5ec1ea3 100755
 -    MTA="/usr/sbin/sendmail"
 -  else
 -    MTA=""
--    echo "Warning: no MTA found, cant send email"
+-    echo "Warning: No MTA found, cant send email"
 -  fi
 -fi
--
+ 
  # set a few general variables
  
- c_opts="--connect-timeout 30 --compressed -L -s"
-@@ -476,22 +467,86 @@ func_sleep () {
+@@ -483,22 +475,86 @@ func_sleep() {
    fi
  }
  
@@ -154,7 +153,7 @@ index 01ed3fe..5ec1ea3 100755
 +}
 +
  # Function mailEvent: send mail
- #         parameters: $1: event 2: $messages
+ #         parameters: $1: $event 2: $messages
  mailEvent() {
 -  if [ "$MTA" != "" ] && [ "$RCPTTO" != "" ]; then
 +  if [ "$MAILUSERNAME" != "" ] && [ "$MAILPASSWD" != "" ]; then
@@ -163,11 +162,11 @@ index 01ed3fe..5ec1ea3 100755
 +      echo "DEBUG: $(date '+%H:%M:%S') email $pad4   HOSTNAME=$HOSTNAME RCPTTO=$RCPTTO 1=$1 2=$2"
      fi
      [ "$debug" -ge 3 ] && set -x
-     HEADER="To: <$RCPTTO>\n";
+     HEADER="To: <$RCPTTO>\n"
      if [ "$MAILFROM" ]; then
        HEADER+="From: $MAILFROM\n"
      fi
--    echo -e "${HEADER}Subject: freenom.sh: \"$1\" on \"$HOSTNAME\"\n\nDate: $( date +%F\ %T )\n\n$2" | "$MTA" "$RCPTTO"
+-    echo -e "${HEADER}Subject: freenom.sh: \"$1\" on \"$HOSTNAME\"\n\nDate: $(date +%F\ %T)\n\n$2" | "$MTA" "$RCPTTO"
 +    echo -e "${HEADER}Subject: freenom.sh: \"$1\" on \"$HOSTNAME\"\n\nDate: $( date +%F\ %T )\n\n$2" | func_mailto "$RCPTTO"
      EXITCODE="$?"
      if [ "$EXITCODE" -ne 0 ]; then
@@ -177,5 +176,5 @@ index 01ed3fe..5ec1ea3 100755
      [ "$debug" -ge 3 ] && set +x
    fi
 -- 
-2.33.0.windows.2
+2.39.2
 
