@@ -1,0 +1,15 @@
+pkgbase = haskell-wordexp
+	pkgdesc = wordexp(3) wrappers
+	pkgver = 0.2.2
+	pkgrel = 2
+	url = https://github.com/supki/wordexp
+	arch = x86_64
+	license = BSD
+	makedepends = ghc
+	makedepends = c2hs
+	depends = ghc-libs
+	depends = haskell-semigroups
+	source = wordexp-0.2.2.tar.gz::https://hackage.haskell.org/packages/archive/wordexp/0.2.2/wordexp-0.2.2.tar.gz
+	sha256sums = 64fdc6676c4fca51334ada49fe49bf6e11477c93801bc357640d7c9910ce6cd5
+
+pkgname = haskell-wordexp
