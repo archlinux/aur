@@ -1,0 +1,19 @@
+post_install() {
+    tput setaf 0 2>/dev/null
+    if [[ "$?" == "0" ]]; then
+        tput sgr0
+        printf "$(tput setaf 4)To configure tide you might want to run $(tput setaf 2)\$ tide configure$(tput sgr0)\n"
+    else
+        printf "To configure tide you might want to run \$ tide configure\n"
+    fi
+}
+
+post_remove() {
+    tput setaf 0 2>/dev/null
+    if [[ "$?" == "0" ]]; then
+        tput sgr0
+        printf "$(tput setaf 4)You might need to delete related shell variables from your fish config$(tput sgr0)\n"
+    else
+        printf "You might need to delete related shell variables from your fish config\n"
+    fi
+}
