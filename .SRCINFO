@@ -1,6 +1,6 @@
 pkgbase = autolibheif
 	pkgdesc = CLI utility for encoding and decoding the HEIF/HEIC file format
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/allddd/autolibheif
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = autolibheif
 	depends = python>=3.6.0
 	depends = libpng
 	depends = libjpeg-turbo
-	source = https://github.com/allddd/autolibheif/archive/refs/tags/v1.1.1.tar.gz
-	sha256sums = 3fa8e19416bccdca357a047598e5887ec624b8b31125322cf1396bc496e938df
+	source = https://github.com/allddd/autolibheif/archive/refs/tags/v1.1.2.tar.gz
+	sha256sums = 9014f37dbf704a5cd6a2de070ed773d0fc76300975a11c5116a2a67f86cc3b6f
 
 pkgname = autolibheif
