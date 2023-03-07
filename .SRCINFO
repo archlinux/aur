@@ -16,6 +16,7 @@ pkgbase = ps3-psl1ght
 	depends = ps3-ppu-gcc
 	depends = ps3-spu-binutils
 	depends = ps3-spu-gcc
+	depends = ps3-psl1ght-rules
 	options = !emptydirs
 	options = !strip
 	options = staticlibs
