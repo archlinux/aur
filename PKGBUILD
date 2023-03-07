@@ -1,18 +1,17 @@
 # Maintainer: zer0-x < Matrix: "@zer0-x:kde.org" >
 
 pkgname="cwitch"
-pkgver="0.2.1"
+pkgver="0.3.0"
 pkgrel=1
-pkgdesc="CLI tool to watch Twitch live streams and videos with the help of mpv and youtube-dl."
+pkgdesc="CLI tool to watch Twitch live streams and videos with the help of mpv and yt-dlp."
 arch=('any')
 url="https://github.com/zer0-x/cwitch"
 license=('GPL3')
-depends=('mpv' 'python-mpv' 'youtube-dl' 'python-prompt_toolkit')
+depends=('mpv' 'python-mpv' 'yt-dlp' 'python-prompt_toolkit')
 makedepends=('python-setuptools')
 # checkdepends = ('python-pytest')
-# changelog=
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zer0-x/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('8c22c93c2d8fd9f7fb1c0bd73a7bc10f80985feb0b85dd366f2e3e71e9d9031f05a289b83e5ac94b347bfbc22a8e0f85e0e761b47ee84f732bd946ef507fe595')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=("a45735c00868a65b177fcddecdd1326e9b14572f1353f99eb510a7a983dad0d220c5150db71bdeba6c97369e038449fbf50e2a7d1f8f4241afa12c8955ad477c")
 
 build() {
     cd "${pkgname}-${pkgver}"
