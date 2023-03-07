@@ -5,7 +5,7 @@ _repo="https://github.com/toitlang/toit.git"
 _commit=9a5e2548130614a0a425d1ea29e3cb340407e6a3
 _tag_no_dash="${_tag//-/}"
 pkgver="${_tag_no_dash#v}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Toit programming language SDK"
 arch=('x86_64')
 url="https://toitlang.org"
@@ -19,7 +19,6 @@ makedepends=(
 	# For xxd.
 	'vim'
 	# For the esp-tool.
-	'pyinstaller'
 	'python'
 	'python-pip'
 	'libusb'
