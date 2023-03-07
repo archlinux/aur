@@ -1,15 +1,14 @@
 pkgbase = azure-cli-bin
-	pkgdesc = Azure Command-Line Interface (Debian package)
+	pkgdesc = Azure Command-Line Interface (Ubuntu package)
 	pkgver = 2.46.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Azure/azure-cli
 	arch = x86_64
 	license = MIT
-	depends = openssl-1.1
 	depends = python
 	conflicts = azure-cli
 	conflicts = python-azure-cli
-	source = https://packages.microsoft.com/repos/azure-cli/pool/main/a/azure-cli/azure-cli_2.46.0-1~bullseye_amd64.deb
-	md5sums = ccc3e32f156dcf8e00e912b31242ed31
+	source = https://packages.microsoft.com/repos/azure-cli/pool/main/a/azure-cli/azure-cli_2.46.0-1~jammy_amd64.deb
+	md5sums = 560251e2e1f3acb9866adcc573916c1f
 
 pkgname = azure-cli-bin
