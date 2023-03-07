@@ -1,8 +1,8 @@
 # Maintainer: Mahmut Dikcizgi <boogiepop a~t gmx com>
 
 pkgname=gl4es-git
-pkgver=r2623.c156cc6b
-pkgrel=1
+pkgver=r2627.57240b0f
+pkgrel=2
 pkgdesc='OpenGL for GLES Hardware'
 arch=('aarch64' 'arm7h')
 url='https://github.com/ptitSeb/gl4es'
@@ -31,4 +31,5 @@ package() {
   	conflicts=(gl4es $pkgname)
   	cd gl4es/build
     DESTDIR="$pkgdir" make install
+    ln -s libGL.so.1 "$pkgdir"/usr/lib/gl4es/libGL.so
 }

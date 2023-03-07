@@ -1,7 +1,7 @@
 pkgbase = gl4es-git
 	pkgdesc = OpenGL for GLES Hardware
-	pkgver = r2623.c156cc6b
-	pkgrel = 1
+	pkgver = r2627.57240b0f
+	pkgrel = 2
 	url = https://github.com/ptitSeb/gl4es
 	arch = aarch64
 	arch = arm7h
