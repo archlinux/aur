@@ -4,7 +4,7 @@
 pkgname=namcap-improved
 _pkgname=namcap
 pkgver=3.3.1+r43+gb6265a7
-pkgrel=2
+pkgrel=3
 pkgdesc="Improved Pacman package analyzer"
 arch=('any')
 url='https://gitlab.archlinux.org/pacman/namcap'
@@ -28,6 +28,9 @@ prepare() {
 
   # pydepends: Various improvements
   git cherry-pick -n 07bade3b4694748b4208e3ef5eae8b032466c94d
+
+  # pcdepends: fix searching pc files
+  git cherry-pick -n f6af2776319fccb4fadcf5415d6c3665b1a9d651
 }
 
 build() {
