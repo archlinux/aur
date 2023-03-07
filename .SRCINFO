@@ -1,6 +1,6 @@
 pkgbase = mjai-reviewer
 	pkgdesc = A mahjong game log reviewer
-	pkgver = 1.5.2.r0.gde36a7c
+	pkgver = 1.5.3.r0.g0108dcd
 	pkgrel = 1
 	url = https://github.com/Equim-chan/mjai-reviewer
 	arch = any

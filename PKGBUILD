@@ -1,6 +1,6 @@
 # Maintainer: fanfly <fanfly at pm dot me>
 pkgname=mjai-reviewer
-pkgver=1.5.2.r0.gde36a7c
+pkgver=1.5.3.r0.g0108dcd
 pkgrel=1
 pkgdesc="A mahjong game log reviewer"
 arch=('any')
