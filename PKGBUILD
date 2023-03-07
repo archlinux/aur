@@ -2,8 +2,8 @@
 
 pkgname=kbd-tapper
 _pkgname=tapper
-pkgver=0.7.2
-_pkgver=0.7.2-0.vdb.1
+pkgver=0.7.4
+_pkgver=0.7.4-0.vdb.1
 pkgrel=1
 pkgdesc='A keyboard layout switcher for X Window System and Wayland'
 # 'Tapper selects specified keyboard layout when user *taps* specified key. It always *selects* layouts and never *toggles* them.'
@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('dconf' 'glibmm' 'libinput' 'libxtst')
 makedepends=('perl-path-tiny' 'perl-json')
 source=(https://sourceforge.net/projects/${pkgname}/files/${pkgver}/${_pkgname}-${_pkgver}.tar.gz)
-sha256sums=('2b49c70840254c885adcbb3438ae90821b9e6664cd16a82cfb96c0fa7b080040')
+sha256sums=('2392ecd1163f22e26d4d8c7e47d14f51fb67d8c2d4cc9054d31a0e882efbcf32')
 
 build() {
   cd ${_pkgname}-${_pkgver}
