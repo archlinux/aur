@@ -1,7 +1,7 @@
 pkgbase = python-jax
 	pkgdesc = Differentiate, compile, and transform Numpy code.
-	pkgver = 0.4.4
-	pkgrel = 2
+	pkgver = 0.4.5
+	pkgrel = 1
 	url = https://github.com/google/jax/
 	arch = any
 	groups = jax
@@ -16,7 +16,7 @@ pkgbase = python-jax
 	depends = python-opt_einsum
 	depends = python-scipy>=1.5
 	optdepends = python-protobuf: Australis
-	source = jax-0.4.4.tar.gz::https://github.com/google/jax/archive/refs/tags/jax-v0.4.4.tar.gz
-	sha256sums = 755eb9b12ab4880e78690f28fc7bd2b491be4e551d8b966e6974753c878dd2c0
+	source = jax-0.4.5.tar.gz::https://github.com/google/jax/archive/refs/tags/jax-v0.4.5.tar.gz
+	sha256sums = 9b2648f1c86bf6d97bc4f8ed0cfb04f9a48881790e243421996135ef2935eac2
 
 pkgname = python-jax
