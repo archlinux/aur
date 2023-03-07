@@ -1,0 +1,18 @@
+pkgbase = ecode-bin
+	pkgdesc = Lightweight multi-platform code editor designed for modern hardware with a focus on responsiveness and performance.
+	pkgver = 0.4.7
+	pkgrel = 1
+	url = https://github.com/SpartanJ/ecode
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	source = LICENSE::https://raw.githubusercontent.com/SpartanJ/ecode/main/LICENSE
+	source = ecode.sh
+	sha256sums = 5fcb9a831d8efabb08cd20b7ca6000ca333115d60de477fa27909a14306188b0
+	sha256sums = 40460ea0c5d9c523274b53cf41e642bf6ed36406c14f6ce95a33e42e68c71923
+	source_x86_64 = https://github.com/SpartanJ/ecode/releases/download/ecode-0.4.7/ecode-linux-0.4.7-x86_64.tar.gz
+	sha256sums_x86_64 = 77e1e55971a382b07098d1e525a8c6d3e054a7852cd1019df9e767fac328e7db
+	source_aarch64 = https://github.com/SpartanJ/ecode/releases/download/ecode-0.4.7/ecode-linux-0.4.7-aarch64.tar.gz
+	sha256sums_aarch64 = 23f6aa8ee8d4a4c061e0ede927bc99f0ac7cb68d37d026fc9f64471792cd10fe
+
+pkgname = ecode-bin
