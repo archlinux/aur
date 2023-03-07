@@ -1,0 +1,91 @@
+# Original from https://github.com/ps3dev/ps3toolchain
+diff --git a/ld/emulparams/elf32_spu.sh b/ld/emulparams/elf32_spu.sh
+index 6993ca7..bab3929 100644
+--- a/ld/emulparams/elf32_spu.sh
++++ b/ld/emulparams/elf32_spu.sh
+@@ -6,6 +6,8 @@ NO_REL_RELOCS=yes
+ ARCH=spu
+ MACHINE=
+ ALIGNMENT=16
++GENERATE_PIE_SCRIPT=yes
++GENERATE_COMBRELOC_SCRIPT=yes
+ TEXT_START_ADDR=0
+ INITIAL_READONLY_SECTIONS='.interrupt : { KEEP(*(.interrupt)) }'
+ if test -z "${CREATE_SHLIB}"; then
+diff --git a/ld/emultempl/spuelf.em b/ld/emultempl/spuelf.em
+index 92f2d16..a044661 100644
+--- a/ld/emultempl/spuelf.em
++++ b/ld/emultempl/spuelf.em
+@@ -258,6 +258,14 @@ spu_elf_load_ovl_mgr (void)
+   return total;
+ }
+ 
++static void
++spu_before_parse (void)
++{
++  gld${EMULATION_NAME}_before_parse ();
++
++  config.has_pie = `if test -n "$GENERATE_PIE_SCRIPT" ; then echo TRUE ; else echo FALSE ; fi`;
++}
++
+ /* Go find if we need to do anything special for overlays.  */
+ 
+ static void
+@@ -397,7 +405,11 @@ spu_elf_relink (void)
+   argv[my_argc++] = "-T";
+   argv[my_argc++] = auto_overlay_file;
+   argv[my_argc] = 0;
++#if defined(_WIN32)
++  execvp (argv[0], (const char* const*) argv);
++#else
+   execvp (argv[0], (char *const *) argv);
++#endif
+   perror (argv[0]);
+   _exit (127);
+ }
+@@ -821,5 +833,6 @@ PARSE_AND_LIST_ARGS_CASES='
+ 
+ LDEMUL_AFTER_OPEN=spu_after_open
+ LDEMUL_BEFORE_ALLOCATION=spu_before_allocation
++LDEMUL_BEFORE_PARSE=spu_before_parse
+ LDEMUL_FINISH=gld${EMULATION_NAME}_finish
+ LDEMUL_CHOOSE_TARGET=gld${EMULATION_NAME}_choose_target
+diff --git a/ld/ld.h b/ld/ld.h
+index a18b265..d504c3e 100644
+--- a/ld/ld.h
++++ b/ld/ld.h
+@@ -259,6 +259,9 @@ typedef struct {
+      parameter.  */
+   bfd_boolean has_shared;
+ 
++  /* If TRUE, -pie is supported.  */
++  bfd_boolean has_pie;
++
+   /* If TRUE, build constructors.  */
+   bfd_boolean build_constructors;
+ 
+diff --git a/ld/ldmain.c b/ld/ldmain.c
+index 7aacf0f..ac62d45 100644
+--- a/ld/ldmain.c
++++ b/ld/ldmain.c
+@@ -254,6 +254,7 @@ main (int argc, char **argv)
+   config.make_executable = TRUE;
+   config.magic_demand_paged = TRUE;
+   config.text_read_only = TRUE;
++  config.has_pie = FALSE;
+ 
+   command_line.warn_mismatch = TRUE;
+   command_line.warn_search_mismatch = TRUE;
+diff --git a/ld/lexsup.c b/ld/lexsup.c
+index 20e0271..48df959 100644
+--- a/ld/lexsup.c
++++ b/ld/lexsup.c
+@@ -1212,6 +1212,8 @@ parse_args (unsigned argc, char **argv)
+ 	      link_info.shared = TRUE;
+ 	      link_info.pie = TRUE;
+ 	    }
++	  else if (config.has_pie)
++	    link_info.pie = TRUE;
+ 	  else
+ 	    einfo (_("%P%F: -pie not supported\n"));
+ 	  break;

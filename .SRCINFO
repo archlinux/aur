@@ -1,0 +1,23 @@
+pkgbase = ps3-spu-binutils
+	pkgdesc = GNU Binutils for cross-compiling to spu (PS3 GameOS)
+	pkgver = 2.22
+	pkgrel = 1
+	url = https://gcc.gnu.org/
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	options = !emptydirs
+	options = !strip
+	options = staticlibs
+	options = !lto
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.22.tar.bz2
+	source = binutils-2.22-spu-ps3.patch
+	source = https://git.savannah.gnu.org/cgit/config.git/plain/config.guess
+	source = https://git.savannah.gnu.org/cgit/config.git/plain/config.sub
+	sha256sums = 6c7af8ed1c8cf9b4b9d6e6fe09a3e1d3d479fe63984ba8b9b26bf356b6313ca9
+	sha256sums = d07bf1bc0c334c556840c4785f6ba90cd4b0c0ad498bff0ece9ce682f1bd25de
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ps3-spu-binutils
