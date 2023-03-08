@@ -1,0 +1,15 @@
+pkgbase = diffuse-player-appimage
+	pkgdesc = A full-featured Subsonic/Jellyfin compatible desktop music player
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://diffuse.sh/
+	arch = x86_64
+	license = PPL2
+	depends = hicolor-icon-theme
+	depends = zlib
+	conflicts = diffuse-player-bin
+	options = !strip
+	source = diffuse-3.3.0.AppImage::https://github.com/icidasset/diffuse/releases/download/3.3.0/diffuse-linux-amd64.AppImage
+	sha256sums = 2daf98d617d871968a33b0f8f78b40247de4c20dc612e8d507af96a314cdb988
+
+pkgname = diffuse-player-appimage
