@@ -1,0 +1,12 @@
+[Unit]
+Description=X daemon that listens for middle mouse click events and clears the primary X selection
+After=gnome-session-initialized.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/xmousepasteblock
+Restart=always
+
+[Install]
+WantedBy=graphical-session.target
