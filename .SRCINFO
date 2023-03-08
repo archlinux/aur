@@ -8,6 +8,7 @@ pkgbase = python-nh3
 	checkdepends = python-pytest
 	makedepends = python-installer
 	makedepends = maturin
+	makedepends = rust
 	depends = python
 	source = https://files.pythonhosted.org/packages/source/n/nh3/nh3-0.2.8.tar.gz
 	sha256sums = 83814e5725f22eccc7f601b58846a7860d2490455777ad107fdc4b7127218920

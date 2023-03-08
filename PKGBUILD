@@ -10,7 +10,7 @@ url="https://pypi.org/project/nh3/"
 license=('MIT')
 depends=('python')
 checkdepends=('python-pytest')
-makedepends=('python-installer' 'maturin')
+makedepends=('python-installer' 'maturin' 'rust')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha256sums=('83814e5725f22eccc7f601b58846a7860d2490455777ad107fdc4b7127218920')
 
