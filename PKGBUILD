@@ -1,7 +1,7 @@
 # Maintainer: Struan Robertson <struanrobertson@protonmail.com>
 
 pkgname=grimblast-git
-pkgver=r21.d4eccc8
+pkgver=r33.d4eccc8
 pkgrel=1
 pkgdesc="A helper for screenshots within Hyprland."
 arch=("any")
