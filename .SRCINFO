@@ -1,7 +1,7 @@
 pkgbase = spotube-bin
 	pkgdesc = A lightweight free Spotify crossplatform-client which handles playback manually, streams music using Youtube & no Spotify premium account is needed
 	pkgver = 2.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KRTirtho/spotube/
 	arch = x86_64
 	license = BSD-4-Clause
@@ -10,6 +10,6 @@ pkgbase = spotube-bin
 	depends = gst-plugins-base
 	depends = gst-plugins-good
 	source = https://github.com/KRTirtho/spotube/releases/download/v2.7.0/Spotube-linux-x86_64.tar.xz
-	md5sums = 9a3651c813d73b4d4d6e0b95cb11e7aa
+	md5sums = b6bd836d9663dbd8afb6062bae22fea1
 
 pkgname = spotube-bin
