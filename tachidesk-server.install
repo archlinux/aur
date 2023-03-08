@@ -1,0 +1,12 @@
+post_install() {
+	echo " ==> Add the Tachidesk-Server daemon to system startup wtih 'rc-update add tachidesk-server default'"
+	echo " ==> Start the Tachidesk-Server daemon now with 'rc-service tachidesk-server start'"
+}
+
+post_upgrade() {
+	post_install "$1"
+}
+
+pre_remove() {
+	echo " ==> Make sure you run 'rc-update del tachidesk-server default'"
+}

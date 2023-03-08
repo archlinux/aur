@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+
+export "TACHIDESK_ROOT_DIR=/var/lib/tachidesk"
+export "JAVA_ARGS=-Dsuwayomi.tachidesk.config.server.initialOpenInBrowserEnabled=false -Dsuwayomi.tachidesk.config.server.systemTrayEnabled=false"
+
+name=$RC_SVCNAME
+description="A free and open source manga reader server that runs extensions built for Tachiyomi."
+supervisor="supervise-daemon"
+command="/usr/bin/java"
+command_args="$JAVA_ARGS -Dsuwayomi.tachidesk.config.server.rootDir="${TACHIDESK_ROOT_DIR}" -jar /usr/share/java/tachidesk-server/Tachidesk-Server.jar"
+command_user="tachidesk:tachidesk"
+
+depend() {
+	after net-online 
+} 

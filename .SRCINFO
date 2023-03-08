@@ -1,0 +1,16 @@
+pkgbase = tachidesk-openrc
+	pkgdesc = OpenRC service for Tachidesk-Server
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/tachidesk-openrc
+	arch = any
+	license = GPL
+	depends = openrc
+	depends = tachidesk
+	source = tachidesk-server.rc
+	source = tachidesk-server.install
+	sha256sums = 751396d20fb183a354ec95247a6e8bcfd3310d814841fd24b10cc535f65fa0f6
+	sha256sums = 9eed600123ec70eb0bfd3bbbc79535376646f90f5608ca761bb090ec86536bb8
+
+pkgname = tachidesk-openrc
+	install = tachidesk-server.install
