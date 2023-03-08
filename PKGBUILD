@@ -1,7 +1,7 @@
 # Maintainer: trilader <trilader@schroedingers-bit.net>
 pkgname=termpaint-git
 pkgver=r499.3823173
-pkgrel=1
+pkgrel=2
 pkgdesc="low level terminal interface library"
 arch=("x86_64")
 url="https://github.com/termpaint/termpaint"
@@ -19,6 +19,7 @@ pkgver() {
 
 build() {
     arch-meson -Ddefault_library=both termpaint _build
+    meson compile -C _build
 }
 
 check() {
