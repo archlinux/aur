@@ -1,7 +1,7 @@
 pkgbase = telegram-desktop-bin
 	pkgdesc = Official desktop version of Telegram messaging app - Static binaries
 	pkgver = 4.6.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/telegramdesktop/tdesktop
 	install = telegram-desktop-bin.install
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = telegram-desktop-bin
 	optdepends = xdg-utils: for automatic opening of URLs, files and directories in proper applications
 	provides = telegram-desktop
 	conflicts = telegram-desktop
-	source = telegram-desktop-bin.desktop
+	source = org.telegram.desktop
 	source = tg.protocol
 	source = https://github.com/telegramdesktop/tdesktop/raw/master/Telegram/Resources/art/icon16.png
 	source = https://github.com/telegramdesktop/tdesktop/raw/master/Telegram/Resources/art/icon32.png
