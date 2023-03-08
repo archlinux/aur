@@ -1,0 +1,18 @@
+pkgbase = wkhtmltox-bin
+	pkgdesc = Convert HTML to PDF and various image formats using QtWebkit
+	pkgver = 0.12.6
+	pkgrel = 3
+	url = https://wkhtmltopdf.org
+	arch = x86_64
+	license = LGPL3
+	optdepends = xorg-server: wkhtmltox needs X or Xvfb to operate
+	provides = wkhtmltopdf
+	provides = wkhtmltoimage
+	conflicts = wkhtmltox
+	conflicts = wkhtmltox-git
+	conflicts = wkhtmltopdf
+	conflicts = wkhtmltopdf-git
+	source = wkhtmltox-bin-0.12.6.pkg::https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-3/wkhtmltox-0.12.6-3.archlinux-x86_64.pkg.tar.xz
+	sha256sums = e84c2ef2c3d16eabd85a3dbb98195062910dfa66febca4f8ea58eb7445317242
+
+pkgname = wkhtmltox-bin
