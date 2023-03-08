@@ -1,6 +1,6 @@
 # Maintainer: AlieZ <aaliezz840@gmail.com>
 pkgname=reshade-steam-proton-git
-pkgver=r86.c3e3672
+pkgver=r93.c92eb5a
 pkgrel=1
 pkgdesc='Easy setup and updating of ReShade on Linux for games using wine or proton.'
 arch=('any')
