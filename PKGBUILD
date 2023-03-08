@@ -1,7 +1,7 @@
 # Maintainer: Debendra Oli <debendraoli@pm.me>
 
 pkgname=arduino-language-server-bin
-pkgver=0.6.0
+pkgver=0.7.4
 pkgrel=2
 pkgdesc="An Arduino Language Server based on Clangd to Arduino code autocompletion"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=('APACHE')
 provides=('arduino-language-server')
 conflicts=('arduino-language-server')
 source=("https://github.com/arduino/arduino-language-server/releases/download/${pkgver}/arduino-language-server_${pkgver}_Linux_64bit.tar.gz")
-sha256sums=('6d9398bd4a001a4bf77f12f9cc0e42212b48027973bdc5f25abf2c63d54f0cc1')
+sha256sums=('ec248bdee8fb8d6574f736fe42aa3ac4c192d418240bfa5b43f2dc518e9e2504')
 
 package() {
 	cd "$SOURCE_DIR" || exit 1
