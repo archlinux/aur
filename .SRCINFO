@@ -1,7 +1,7 @@
 pkgbase = perl-dbix-dbschema
 	pkgdesc = Perl modile providing database-independent schema objects
-	pkgver = 0.45
-	pkgrel = 2
+	pkgver = 0.47
+	pkgrel = 1
 	url = https://metacpan.org/release/DBIx-DBSchema
 	arch = any
 	license = PerlArtistic
@@ -9,8 +9,7 @@ pkgbase = perl-dbix-dbschema
 	depends = perl
 	depends = perl-dbi
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/I/IV/IVAN/DBIx-DBSchema-0.45.tar.gz
-	md5sums = 45f2d5c134fd3f74afa378c8e33bc65f
+	source = http://search.cpan.org/CPAN/authors/id/I/IV/IVAN/DBIx-DBSchema-0.47.tar.gz
+	md5sums = ca15737627155652949aa78e1a9c1ebf
 
 pkgname = perl-dbix-dbschema
-
