@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=skribilo
-pkgver=0.9.5
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="The Ultimate Document Programming Framework"
 url="http://www.nongnu.org/skribilo/"
@@ -14,7 +14,7 @@ optdepends=('texlive-core: for postscript or pdf output'
 	    'ploticus: for pie-charts'
 	    'guile-lib: to be able to use the RSS-2-reader')
 source=("http://download.savannah.gnu.org/releases/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('00826a21c4634fb0b410ee89eb48068c445d800825874654e3d53d5ca3f0bf09')
+sha256sums=('8cff48ee176cedfd5032649a349a46952bea50ec06720f829c1ccca29212f50e')
 options=('!makeflags')
 
 build() {
@@ -28,5 +28,5 @@ package() {
   make DESTDIR="$pkgdir" install
   rm "$pkgdir"/usr/share/info/*.png
   install -d "$pkgdir"/usr/share/doc/$pkgname
-  find $srcdir/ -name "*.png" -exec install -m644 {} "$pkgdir"/usr/share/doc/$pkgname \;
+  find "$srcdir" -name "*.png" -exec install -m644 {} "$pkgdir"/usr/share/doc/$pkgname \;
 }
