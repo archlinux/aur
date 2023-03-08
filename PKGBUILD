@@ -37,7 +37,13 @@ source=("$url/-/archive/v$pkgver/igt-gpu-tools-v$pkgver.tar.gz")
 sha256sums=('d6f6c26a86d95a74c20b911ded81ebfa8b0702a2786886b32e8aa891e703e4c1')
 
 prepare() {
-  arch-meson "$pkgname-v$pkgver" build
+  MESON_OPTS=()
+  if [ $CARCH != x86_64 ]
+  then
+    # overlay is x86-only
+    MESON_OPTS+=(-D overlay=disabled)
+  fi
+  arch-meson "$pkgname-v$pkgver" build "${MESON_OPTS[@]}"
 }
 
 build() {
