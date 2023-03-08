@@ -10,6 +10,7 @@ pkgbase = pot-translation-bin
 	depends = gtk3
 	depends = libayatana-appindicator
 	depends = xsel
+	depends = xdotool
 	provides = pot-translation
 	conflicts = pot-translation
 	conflicts = pot-translation-git
