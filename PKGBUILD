@@ -17,7 +17,7 @@ url='https://gcc.gnu.org/'
 license=(GPL3 LGPL FDL custom)
 makedepends=(patch python)
 checkdepends=(dejagnu expect inetutils python-pytest tcl)
-depends=(ps3-spu-binutils)
+depends=(ps3-ppu-binutils)
 options=(!emptydirs !strip staticlibs !lto)
 source=(
 	"https://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.tar.xz"
