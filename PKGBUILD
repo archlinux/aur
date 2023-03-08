@@ -24,19 +24,20 @@ optdepends=(
 )
 options=('!strip' 'staticlibs')
 source=(
-  "https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/${pkgname}_${pkgver}.orig.tar.gz"
+  "https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/google-cloud-cli_${pkgver}.orig.tar.gz"
   "google-cloud-sdk.sh"
   "0001-set-python2-for-dev-appserver-py.patch"
-  "0002-set-python2-for-endpointscfg-py.patch"
+  #"0002-set-python2-for-endpointscfg-py.patch"
   "0003-add-compdef-to-zsh-completion.patch"
-  "0004-collections-abc.patch"
+  #"0004-collections-abc.patch"
 )
-sha256sums=('0aad5e6a020df8fc810eb519d8430522581bbbd0794f9356c207ced830c43c2a'
+sha256sums=('a4ab47664fad8cc7d939aa8e774165a826c6d2cd2282fc03af53581211b9070e'
             'ecd7b3895f6ecf1c6411f385bee3a4b64139976d72069469d323c8a09b97aaea'
             '62ec7f56e09168d375823e9e99fcdcfbf40b0fffdd75f35cf91122c5902c82e9'
-            'ff6065ce2e54ac654605bd5fe554313b1d0def2c31ce56ff39429098dd1e39fe'
+            #'ff6065ce2e54ac654605bd5fe554313b1d0def2c31ce56ff39429098dd1e39fe'
             '4694f5191ceea7cf8076861ce5790ba9e809023da278b0f6ed862b9611e5aa93'
-            'ea39fc4907d8ddf28ebaeed4b7c4547936a602f907c7523fc62488771e0df043')
+            #'ea39fc4907d8ddf28ebaeed4b7c4547936a602f907c7523fc62488771e0df043'
+            )
 
 prepare() {
   cd "${srcdir}/${pkgname}"
@@ -60,13 +61,12 @@ package() {
   # The Google code uses a _TraceAction() method which spams the screen even
   # in "quiet" mode, we're throwing away output on purpose to keep it clean
   #  ref: lib/googlecloudsdk/core/platforms_install.py
-  python "${pkgdir}/opt/${pkgname}/bin/bootstrapping/install.py" \
+  "${pkgdir}/opt/${pkgname}/install.sh" \
     --quiet \
-    --usage-reporting False \
-    --path-update False \
-    --bash-completion False \
-    --additional-components "" \
-    1 > /dev/null
+    --usage-reporting false \
+    --path-update false \
+    --bash-completion false \
+    > /dev/null
 
   rm -rf "${pkgdir}/opt/${pkgname}/.install/.backup"
   mkdir "${pkgdir}/opt/${pkgname}/.install/.backup"
@@ -90,7 +90,7 @@ package() {
   for i in "${pkgdir}/opt/${pkgname}/bin"/*; do
     ln -st "${pkgdir}/usr/bin/" "${i#${pkgdir}}"
   done
-  rm -f "${pkgdir}"/usr/bin/{bq,dev_appserver.py*,endpointscfg.py*,java_dev_appserver.sh}
+  rm -f "${pkgdir}"/usr/bin/{bq,dev_appserver.py*,java_dev_appserver.sh}
 
   chmod -x "${pkgdir}"/usr/share/man/man1/*
   find "${pkgdir}/opt/${pkgname}" -name "*.html" -o -name "*.json" -exec chmod -x {} \;
