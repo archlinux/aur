@@ -8,10 +8,11 @@ pkgver="2.40"
 pkgrel=1
 pkgdesc="GNU Binutils for cross-compiling to ${_target_alias} (PS3 GameOS)"
 arch=(x86_64 aarch64 powerpc64le powerpc64 powerpc riscv64)
-url='https://gcc.gnu.org/'
-license=(GPL LGPL)
-depends=()
-checkdepends=(dejagnu)
+url='https://www.gnu.org/software/binutils/'
+license=('GPL3' 'GPL' 'FDL1.3' 'custom:FSFAP')
+depends=(glibc jansson libelf zlib zstd)
+makedepends=(patch)
+checkdepends=(dejagnu debuginfod bc)
 options=(!emptydirs !strip staticlibs !lto)
 source=(
 	"https://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}.tar.bz2"
