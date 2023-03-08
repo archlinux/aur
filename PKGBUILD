@@ -6,13 +6,12 @@ _pkgname=Qogir-theme
 _pkgver=2023-02-27
 pkgname="qogir-gtk-theme"
 pkgver=${_pkgver//-/.}
-pkgrel=8
+pkgrel=9
 pkgdesc="Qogir is a flat Design theme for GTK"
 arch=('any')
 url="https://github.com/vinceliuice/Qogir-theme"
 license=('GPL3')
 makedepends=('grep' 'sassc')
-depends=('gtk3')
 optdepends=(
 	'gtk-engines: For GTK2 support'
 	'gtk-engine-murrine: For GTK2 support'
