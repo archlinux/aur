@@ -1,7 +1,7 @@
 # Maintainer: hexchain <i at hexchain dot org>
 
 pkgname=pcm
-pkgver=202212
+pkgver=202302
 pkgrel=1
 pkgdesc="Processor Counter Monitor"
 url="https://github.com/opcm/pcm"
@@ -10,7 +10,7 @@ license=('custom:BSD-3-Clause')
 depends=('gcc-libs' 'simdjson')
 makedepends=('cmake' 'ninja')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('cebc053b42bbc78e19f53b3fbe7a9cb90bff8bcb17d9178e9542f5a661f0bef33b9f3cfd245fd0c055cd4353b00ad5d177fd8f1f55ff241212535daf34c3177d')
+sha512sums=('f38a23087759ca5a7b8c9bb74f8238da139ddb7ca9cf9cd60d084d4db969d792c243f6236ba692828076883168d589180f256d4208cccc597df762c2aac26d97')
 
 build() {
     cd "$srcdir"
