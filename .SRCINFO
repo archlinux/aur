@@ -6,6 +6,7 @@ pkgbase = termpaint-git
 	arch = x86_64
 	license = Boost
 	makedepends = meson
+	makedepends = git
 	options = !strip
 	source = git+https://github.com/termpaint/termpaint.git
 	md5sums = SKIP
