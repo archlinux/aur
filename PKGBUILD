@@ -43,7 +43,13 @@ pkgver() {
 }
 
 prepare() {
-  arch-meson "$_pkgname" build
+  MESON_OPTS=()
+  if [ $CARCH != x86_64 ]
+  then
+    # overlay is x86-only
+    MESON_OPTS+=(-D overlay=disabled)
+  fi
+  arch-meson "$pkgname-v$pkgver" build "${MESON_OPTS[@]}"
 }
 
 build() {
