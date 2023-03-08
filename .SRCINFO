@@ -1,0 +1,18 @@
+pkgbase = lovelive-music-player-appimage
+	pkgdesc = A LoveLiver Music Player
+	pkgver = 1.3.8
+	pkgrel = 1
+	url = https://github.com/LoveLiveMusicPlayer/LoveLiveMusicPlayer
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = fuse2
+	noextract = lovelive-music-player-appimage-1.3.8.AppImage
+	options = !strip
+	source_x86_64 = lovelive-music-player-appimage-1.3.8.AppImage::https://github.com/LoveLiveMusicPlayer/LoveLiveMusicPlayer/releases/download/1.3.8/LLMP-1.3.8-x64-linux.AppImage
+	source_x86_64 = https://raw.githubusercontent.com/LoveLiveMusicPlayer/LoveLiveMusicPlayer/1.3.8/LICENSE
+	sha256sums_x86_64 = 40b55713b828597dd7a292a407970bdf7c3811b3149a57c0dc4af1477f50e134
+	sha256sums_x86_64 = 5e98c15fe806a18f79422d2cd0c4587129f4e03081b5ab4c030627d6f6840d68
+
+pkgname = lovelive-music-player-appimage
