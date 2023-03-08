@@ -1,0 +1,19 @@
+[Unit]
+Description=MTA STS resolver daemon
+After=network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=simple
+User=mta-sts
+ExecStart=/usr/bin/mta-sts-daemon
+Restart=always
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

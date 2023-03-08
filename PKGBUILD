@@ -1,6 +1,6 @@
 # Maintainer: Toke Høiland-Jørgensen <toke@toke.dk>
 pkgname=postfix-mta-sts-resolver
-pkgver=1.1.4
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Daemon for MTA-STS policy enforcement for postfix"
 arch=('any')
@@ -10,14 +10,17 @@ depends=('python' 'python-aiohttp' 'python-aiodns' 'python-yaml'
          'python-pynetstring' 'python-sdnotify')
 makedepends=('python-pip')
 optdepends=('python-uvloop: For faster event loop handling'
+            'python-aioredis: For redis cache support'
             'python-aiosqlite: For sqlite cache support')
 source=("https://github.com/Snawoot/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc}
-       "postfix-mta-sts-resolver.install")
-sha256sums=('def07a92bb0fe86db96ef886dbb408fbd37224dd9828e3a63392a129472524f7'
+        "mta-sts-daemon.service"
+        "mta-sts-daemon-sysusers.conf")
+sha256sums=('e4373af51445427c0fe2c45d156e2e6ab4e2e0c2a8c35642dfb82e3a1887aafd'
             'SKIP'
-            '7dc78a1ad5620789bf230592fec93fca97f57827ef933f91c8c6e1b44ce8f5d5')
+            'bfc1b2c171ffae6af607ffbd9e8e913452c50073b298a16f6f1cda74f74c6b9c'
+            '8e7281deebdf71b4ffd63a2e265fd818459042004a36ca2e7284868cc182dcd5')
 validpgpkeys=('8EE97E32515D051898B1864AF6C5633BE5DE7127')
-install=$pkgname.install
+backup=(etc/mta-sts-daemon.yml)
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -32,4 +35,10 @@ package() {
           "$pkgdir/usr/share/doc/postfix-mta-sts-resolver/"
   install -m0644 config_examples/mta-sts-daemon.yml.sqlite_unixsock \
           "$pkgdir/usr/share/doc/postfix-mta-sts-resolver/"
+  install -d -m0755 "$pkgdir/usr/lib/sysusers.d/"
+  install -m0644 "$srcdir/mta-sts-daemon-sysusers.conf" \
+          "$pkgdir/usr/lib/sysusers.d/mta-sts-daemon.conf"
+  install -d -m0755 "$pkgdir/usr/lib/systemd/system/"
+  install -m0644 "$srcdir/mta-sts-daemon.service" \
+          "$pkgdir/usr/lib/systemd/system/mta-sts-daemon.system"
 }

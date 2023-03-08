@@ -1,9 +1,0 @@
-## arg 1:  the new package version
-## arg 2:  the old package version
-post_upgrade() {
-	if echo $2 | fgrep 0.4; then
-           echo ">>>> Note that the default config file location has changed"
-           echo ">>>> The default location is now /etc/mta-sts-daemon.yml"
-           echo ">>>> Your old config file in /etc/postfix/mta-sts-daemon.yml is NOT moved automatically!"
-        fi
-}
