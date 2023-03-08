@@ -1,6 +1,6 @@
 pkgbase = xyscan
 	pkgdesc = Tool to extract data points from graphical plots
-	pkgver = 4.5.0
+	pkgver = 4.6.4
 	pkgrel = 1
 	url = http://rhig.physics.yale.edu/~ullrich/software/xyscan/
 	arch = i686
@@ -9,10 +9,9 @@ pkgbase = xyscan
 	depends = qt5-charts
 	depends = qt5-multimedia>=5.2.0
 	depends = poppler-qt5
-	source = http://rhig.physics.yale.edu/~ullrich/software/xyscan/Distributions/4.50/xyscan-4.50-src.tgz
+	source = http://rhig.physics.yale.edu/~ullrich/software/xyscan/Distributions/4.64/xyscan-4.64-src.tgz
 	source = xyscan.desktop
-	md5sums = 6129579aa1b8c70c8a66d8e844c398ae
+	md5sums = 20226ddcba9f8054ac63dd19aa055669
 	md5sums = 2df01c952f8425d05e0d138778ca5be9
 
 pkgname = xyscan
-
