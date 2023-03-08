@@ -1,0 +1,38 @@
+post_install() {
+    printf "${bold}${yellow}==============================================================================${reset}\n"
+    echo ""
+    note_header "Important information about kubectl versions < 1.25"
+    echo ""
+    note "Starting in kubectl v1.25, this plugin will be required for authentication."
+    note "In order to run kubectl with the new plugin prior to the release of v1.25:"
+    note ""
+    note "    1) Set the USE_GKE_GCLOUD_AUTH_PLUGIN=True environment variable"
+    note ""
+    note "    2) Run the following command:"
+    note ""
+    note "       gcloud container clusters get-credentials CLUSTER_NAME"
+    note ""
+    note "       Replace the CLUSTER_NAME with the name of your cluster."
+    note "       This will force the config for this cluster to be updated to"
+    note "       the Client-go Credential Plugin configuration."
+    note ""
+    note "https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke"
+    echo ""
+    printf "${bold}${yellow}==============================================================================${reset}\n"
+}
+
+post_upgrade() {
+    post_install
+}
+
+# Pacman-like colors
+reset="$(tput sgr0)"
+bold="${reset}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+note_header() {
+    printf "${yellow}==> NOTE: ${bold}$1${reset}\n"
+}
+note() {
+    printf "${blue}  -> ${bold}$1${reset}\n"
+}
