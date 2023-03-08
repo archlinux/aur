@@ -1,13 +1,14 @@
 pkgbase = tensorflow-rocm
 	pkgdesc = Library for computation using data flow graphs for scalable machine learning
 	pkgver = 2.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tensorflow.org/
 	arch = x86_64
 	license = APACHE
 	makedepends = bazel
 	makedepends = python-numpy
 	makedepends = rocm-hip-sdk
+	makedepends = roctracer
 	makedepends = rccl
 	makedepends = git
 	makedepends = miopen
