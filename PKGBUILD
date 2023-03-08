@@ -8,7 +8,8 @@
 pkgname=stm32cubeprog
 _pkgname="STM32CubeProgrammer"
 pkgver=2.13.0
-pkgrel=1
+_pkg_file_name=en.stm32cubeprg-lin-v${pkgver//./-}.zip
+pkgrel=2
 pkgdesc="An all-in-one multi-OS software tool for programming STM32 products."
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stm32cubeprog.html"
@@ -33,11 +34,28 @@ makedepends=('xdotool'
              'gsfonts')
 provides=("${pkgname}rammer")
 options=('!strip')
+
+# Big thanks to user "yjun" for direct download link advice.
+# cURL inspiration from davinci-resolve package maintained by "Alex S".
+_curl_useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
+                        AppleWebKit/537.36 (KHTML, like Gecko) \
+                        Chrome/77.0.3865.75 \
+                        Safari/537.36"
+_curl_useragent="$(printf '%s' "$_curl_useragent" | sed 's/[[:space:]]\+/ /g')"
+_useragent_escaped="${_curl_useragent// /\\ }"
+_curl_req_url="https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-programmers/stm32cubeprog/_jcr_content/get-software/get-software-table-body.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html"
+
+_curl_req="$(curl -s --compressed -H "$_curl_useragent" "$_curl_req_url")"
+_curl_req="$(grep -m 1 "${_pkg_file_name}" <<< "$_curl_req")"
+_download_path="https://www.st.com""$(awk -F'"' '{print $4}' <<< "$_curl_req")"
+
+DLAGENTS=("https::/usr/bin/curl \
+              -gqb '' --retry 3 --retry-delay 3 \
+              -H ${_useragent_escaped} \
+              -o %o --compressed %u")
+
 _pkg_main_name="${pkgname//prog/prg}-lin-v${pkgver//./-}"
-# get New _pkg_main_url_index
-# curl https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-programmers/stm32cubeprog/_jcr_content/get-software/get-software-table-body.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html |& grep dlLink
-_pkg_main_url_index="ef/80/04/58/9a/5b/4c/41"
-source=("en.${_pkg_main_name}.zip::https://www.st.com/content/ccc/resource/technical/software/utility/group0/${_pkg_main_url_index}/${_pkg_main_name}/files/${_pkg_main_name}.zip/jcr:content/translations/en.${_pkg_main_name}.zip"
+source=("en.${_pkg_main_name}.zip::$_download_path"
         "${pkgname}.xdotool")
 sha256sums=('677847ed0289f14b26399b1d7ee67c669a491f10fe54d73c8d1c195872753c3e'
             '7896311cf3f4a49cafcd541d188543760ea0289bc327f183d5d38321b93db93b')
