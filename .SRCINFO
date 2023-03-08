@@ -9,6 +9,10 @@ pkgbase = pocket-station-devkit-git
 	source = psdevkit::git+ssh://git@127.0.0.1:/home/git/psdevkit#branch=develop
 	sha256sums = SKIP
 
+pkgname = pocket-station-devkit-git
+	depends = pocket-station-tools
+	depends = pocket-station-example-app
+
 pkgname = pocket-station-tools-git
 	provides = pocket-station-tools
 	conflicts = pocket-station-devkit

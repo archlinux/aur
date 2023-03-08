@@ -6,7 +6,8 @@ _target="arm-none-eabi"
 _platform="pocket-station"
 _pkgbase="${_platform}-devkit"
 pkgbase="${_pkgbase}-git"
-pkgname=("${_platform}-tools-git"
+pkgname=("${pkgbase}"
+         "${_platform}-tools-git"
          "${_platform}-example-app-git")
 pkgver=v
 pkgrel=1
@@ -30,6 +31,11 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${_pkg}" || exit
   echo "v$(git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
+}
+
+package_pocket-station-devkit-git() {
+  depends+=("${_platform}-tools"
+            "${_platform}-example-app")
 }
 
 # shellcheck disable=SC2154
