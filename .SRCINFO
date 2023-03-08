@@ -1,6 +1,6 @@
 pkgbase = strace-analyzer
 	pkgdesc = analyzes strace output
-	pkgver = 0.5.0
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/wookietreiber/strace-analyzer
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = strace-analyzer
 	license = GPL
 	makedepends = cargo
 	depends = gcc-libs
-	source = strace-analyzer-0.5.0.tar.gz::https://github.com/wookietreiber/strace-analyzer/archive/v0.5.0.tar.gz
-	md5sums = 67d84ca0b2deab820f27c0f692723176
+	source = strace-analyzer-0.5.2.tar.gz::https://github.com/wookietreiber/strace-analyzer/archive/v0.5.2.tar.gz
+	md5sums = 3cf1bcda8f267cee4360fced22eae7c9
 
 pkgname = strace-analyzer
