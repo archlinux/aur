@@ -1,4 +1,4 @@
-pkgbase = haunt-git
+pkgbase = haunt-go-git
 	pkgdesc = Live reload and task automation for go apps
 	pkgver = 0.2.6.r1.g4020301
 	pkgrel = 1
@@ -11,4 +11,4 @@ pkgbase = haunt-git
 	source = git+https://gitea.asdf.cafe/abs3nt/haunt.git
 	sha256sums = SKIP
 
-pkgname = haunt-git
+pkgname = haunt-go-git

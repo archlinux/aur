@@ -1,4 +1,4 @@
-pkgname=haunt-git
+pkgname=haunt-go-git
 _pkgname=haunt
 pkgver=0.2.6.r1.g4020301
 pkgrel=1
