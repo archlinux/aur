@@ -10,7 +10,7 @@
 
 pkgname=thunderbird-localized-beta-bin
 _pkgname=thunderbird-beta
-pkgver=110.0b4
+pkgver=111.0b3
 pkgrel=1
 pkgdesc='Standalone mail and news reader from mozilla.org — localized beta version'
 arch=('i686' 'x86_64')
@@ -31,7 +31,6 @@ optdepends=(
 )
 provides=("thunderbird=$pkgver" "thunderbird-beta=$pkgver")
 conflicts=("thunderbird-beta" "thunderbird-beta-bin")
-install=$pkgname.install
 
 _arch32='linux-i686'
 _arch64='linux-x86_64'
@@ -70,7 +69,7 @@ validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353')
 
 # Syntax: _dist_checksum 'linux-i686'/'linux-x86_64'
 _dist_checksum() {
-  curl --silent --fail "${_urlbase}/SHA256SUMS" | grep "${1}\/${_language}\/thunderbird-${pkgver}.tar.bz2" | cut -d ' ' -f1
+  curl --silent --fail "${_urlbase}/SHA256SUMS" | grep "${1}/${_language}/thunderbird-${pkgver}.tar.bz2" | cut -d ' ' -f1
 }
 
 source_i686=("${_urlbase}/${_arch32}/${_language}/thunderbird-${pkgver}.tar.bz2"{,.asc})
