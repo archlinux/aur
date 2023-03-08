@@ -2,7 +2,7 @@
 
 pkgname=clp
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='writes input files to stdout with syntax highlighting'
 arch=('x86_64' 'aarch64')
 url="https://git.sr.ht/~eskin/clp"
@@ -13,13 +13,13 @@ sha256sums=('a832775b68ba625106d0e58ec1ec646fe7f3abc8371e0a878c9ffe107be559bb')
 conflicts=("${pkgname}-git")
 
 build() {
-	cd "${pkgname}-v${pkgver}"
-	./configure
+  cd "${pkgname}-v${pkgver}"
+  ./configure --prefix=/usr
   make
 }
 
 package() {
-	cd "${pkgname}-v${pkgver}"
-	make MANPREFIX=/usr/share/man DESTDIR="${pkgdir}" PREFIX='/usr' install
+  cd "${pkgname}-v${pkgver}"
+  make MANPREFIX=/usr/share/man DESTDIR="${pkgdir}" install
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
