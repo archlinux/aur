@@ -1,7 +1,7 @@
 pkgbase = termpaint-git
 	pkgdesc = low level terminal interface library
 	pkgver = r499.3823173
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/termpaint/termpaint
 	arch = x86_64
 	license = Boost
