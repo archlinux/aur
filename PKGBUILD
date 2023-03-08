@@ -1,11 +1,11 @@
 # Maintainer: Florian Loitsch <florian@toit.io>
 pkgname=toit
-_tag="v2.0.0-alpha.60"
+_tag="v2.0.0-alpha.61"
 _repo="https://github.com/toitlang/toit.git"
-_commit=9a5e2548130614a0a425d1ea29e3cb340407e6a3
+_commit=c40b29951193fd8c752b23edc356a16291888260
 _tag_no_dash="${_tag//-/}"
 pkgver="${_tag_no_dash#v}"
-pkgrel=3
+pkgrel=1
 pkgdesc="Toit programming language SDK"
 arch=('x86_64')
 url="https://toitlang.org"
