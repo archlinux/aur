@@ -1,13 +1,15 @@
 pkgbase = sonixd-appimage
-	pkgdesc = The latest stable AppImage of Sonixd - a full-featured Subsonic API compatible cross-platform desktop client
-	pkgver = 0.15.3
+	pkgdesc = A full-featured Subsonic/Jellyfin compatible desktop music player
+	pkgver = 0.15.4
 	pkgrel = 1
 	url = https://github.com/jeffvli/sonixd
 	arch = x86_64
 	license = GPL3
-	depends = fuse2
+	depends = hicolor-icon-theme
+	depends = zlib
+	conflicts = sonixd
 	options = !strip
-	source = https://github.com/jeffvli/sonixd/releases/download/v0.15.3/Sonixd-0.15.3-linux-x86_64.AppImage
-	sha256sums = fb82f75c0b91ed3ff3e5ae7c497adeeb2522562ed3bd202cf2f3e0102ee1708c
+	source = sonixd-0.15.4.AppImage::https://github.com/jeffvli/sonixd/releases/download/v0.15.4/Sonixd-0.15.4-linux-x86_64.AppImage
+	sha256sums = 9f89f5e92f24b4f8957348b28d534d232a3da04201c0622ece3d31826fc44dea
 
 pkgname = sonixd-appimage
