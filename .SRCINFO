@@ -1,7 +1,7 @@
 pkgbase = mathics-scanner
 	pkgdesc = Mathics' tokeniser or scanner portion for the Wolfram Language.
-	pkgver = 1.2.4
-	pkgrel = 2
+	pkgver = 1.3.0
+	pkgrel = 1
 	url = https://mathics.org/
 	arch = any
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = mathics-scanner
 	depends = python-pyaml
 	depends = python-click
 	optdepends = python-ujson: faster than the native json library, but not supported in pyston
-	source = mathics-scanner-1.2.4.tar.gz::https://github.com/Mathics3/mathics-scanner/releases/download/1.2.4/Mathics_Scanner-1.2.4.tar.gz
-	sha256sums = 7b05939751aacea42f3fc4e7eb1ab111f9fe32bae827e89f46a50e04907b19ef
+	source = mathics-scanner-1.3.0.tar.gz::https://github.com/Mathics3/mathics-scanner/releases/download/1.3.0/Mathics_Scanner-1.3.0.tar.gz
+	sha256sums = 39751a2d28d40c88538cc03aa72a113dcae59fc49e8e7727f30219a6cc9ef997
 
 pkgname = mathics-scanner
