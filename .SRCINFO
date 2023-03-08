@@ -1,6 +1,6 @@
 pkgbase = python-hat-util
 	pkgdesc = Hat utility library
-	pkgver = 0.6.7
+	pkgver = 0.6.8
 	pkgrel = 1
 	url = https://github.com/hat-open/hat-util
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-hat-util
 	makedepends = python-hat-doit
 	makedepends = python-installer
 	depends = python
-	source = https://github.com/hat-open/hat-util/archive/refs/tags/v0.6.7.tar.gz
-	sha256sums = d80a3c10f0336d588630bf3adf6de5360e848a0698bc6414923e94e5c4b8b3b9
+	source = https://github.com/hat-open/hat-util/archive/refs/tags/v0.6.8.tar.gz
+	sha256sums = 7dd6717cfb0e817abd02954cf2249bdeec2dc3d45e20047155a3d38ffd66ba43
 
 pkgname = python-hat-util
