@@ -11,7 +11,7 @@ pkgdesc="A challenging 2D motocross platform game, where physics play an importa
 arch=('i686' 'x86_64')
 url="http://xmoto.tuxfamily.org"
 license=('GPL')
-depends=('curl' 'glu' 'libjpeg' 'libpng' 'libxml2' 'libxdg-basedir' 'lua'
+depends=('curl' 'glu' 'libjpeg' 'libpng' 'libxdg-basedir' 'libxml2' 'lua'
 	 'ode' 'sdl2_mixer' 'sdl2_net' 'sdl2_ttf' 'sqlite')
 makedepends=('cmake' 'ninja' 'git')
 conflicts=("$_basename")
