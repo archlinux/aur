@@ -1,7 +1,7 @@
 # Maintainer: hexchain <i at hexchain dot org>
 
 pkgname=netdata-go-plugins
-pkgver=0.50.0
+pkgver=0.51.2
 pkgrel=1
 pkgdesc="netdata go.d plugin"
 url="https://github.com/netdata/go.d.plugin"
@@ -28,9 +28,9 @@ build() {
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
-    export GOPATH="$srcdir/build"
-    export GOLDFLAGS="-linkmode=external -w -s -X main.version=$pkgver"
-    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+    export GOPATH="$srcdir"
+    export GOLDFLAGS="-linkmode=external -compressdwarf=false -X main.version=$pkgver"
+    export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw"
 
     cd "$srcdir/go.d.plugin-$pkgver"
     go build -v -ldflags="$GOLDFLAGS" -o go.d.plugin ./cmd/godplugin
@@ -43,6 +43,6 @@ package() {
     install -Dm755 "$srcdir/go.d.plugin-$pkgver/go.d.plugin" -t "$pkgdir/usr/lib/netdata/plugins.d/"
 }
 
-sha512sums=('068de2d8732f03063572dbe467e58aae95b58e9bf0de931fde56170cec03e8a300e061d972cd17287393c5b269c92e5ad268545a7a5a9b03e7e868f6a2920163'
-            '73310834da54dc8244c4cfcd719ee21f80cacd1e7ba5efd557ccefa391403c62c850d1e42c4e7c7543c4b74ee5de6de8ca9c04200eec6b4b7c604f32a0fd11be')
+sha512sums=('96938fb578b61de02c29580c5323d0dd15fdae2fe7103f780aa7a3dd04785a7e67d286b6496f689aa7aa9422b1b956aeee0a8a5257ea20d1405b7052504ca6a8'
+            '9008d70b84d30d641ad13b08c1b68bfa6ba67045bd48cd415bf538954827aa6abd4218ce502d5803dd7244aab25954d886527aafd0ac6b329e30dc02d625eee7')
 
