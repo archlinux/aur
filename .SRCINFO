@@ -1,6 +1,6 @@
 pkgbase = tuiwidgets-git
 	pkgdesc = Terminal user inferface toolkit
-	pkgver = r616.f664624
+	pkgver = r617.12a497a
 	pkgrel = 1
 	url = https://github.com/tuiwidgets/tuiwidgets
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = tuiwidgets-git
 	makedepends = git
 	depends = qt5-base
 	depends = termpaint-git
-	depends = posixsignalmanager
+	depends = posixsignalmanager-git
 	provides = tuiwidgets
 	conflicts = tuiwidgets
-	options = !strip
+	options = strip
 	source = git+https://github.com/tuiwidgets/tuiwidgets.git
 	md5sums = SKIP
 
