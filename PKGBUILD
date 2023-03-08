@@ -1,4 +1,5 @@
-# Maintainer: Benjamin Denhartog <ben@sudoforge.com>
+# Maintainer: Polarian <polarian@polaria.dev>
+# Contributor: Benjamin Denhartog <ben@sudoforge.com>
 # Contributor: Mansour Behabadi <mansour@oxplot.com>
 # Contributor: Troy Engel <troyengel+arch@gmail.com>
 # Contributor: Geoff Hill <geoff@geoffhill.org>
@@ -6,10 +7,11 @@
 # Contributor: Justin Dray <justin@dray.be>
 
 # For ISSUES, REQUESTS, and QUESTIONS:
-# https://github.com/sudoforge/pkgbuilds
+# New: https://onedev.polarian.dev/polarrepo/google-cloud-cli/~files
+# Old: https://github.com/sudoforge/pkgbuilds
 
-pkgname="google-cloud-sdk"
-pkgver=404.0.0
+pkgname="google-cloud-cli"
+pkgver=417.0.0
 pkgrel=1
 pkgdesc="A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq."
 url="https://cloud.google.com/sdk/"
