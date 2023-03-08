@@ -1,7 +1,7 @@
 pkgbase = devtoolbox
 	pkgdesc = Development tools at your fingertips
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 1.0.2
+	pkgrel = 1
 	url = https://github.com/aleiepure/devtoolbox
 	arch = any
 	license = unknown
@@ -28,7 +28,7 @@ pkgbase = devtoolbox
 	depends = python-textstat
 	depends = python-uuid6
 	depends = webkit2gtk-5.0
-	source = devtoolbox-1.0.1.tar.gz::https://github.com/aleiepure/devtoolbox/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = 06c448f6c846e46986710bde61bb4c791fb0fbada1bec0884c350976f6a46f28
+	source = devtoolbox-1.0.2.tar.gz::https://github.com/aleiepure/devtoolbox/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = fe6c63d2320c85082668c6a8ccf06900347d32039f44dcd3359392c2b7b0f859
 
 pkgname = devtoolbox
