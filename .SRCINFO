@@ -1,11 +1,11 @@
 pkgbase = otf-cooper-hewitt
 	pkgdesc = sans-serif font by Chester Jenkins
 	pkgver = 1.000
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.cooperhewitt.org/open-source-at-cooper-hewitt/cooper-hewitt-the-typeface-by-chester-jenkins/
 	arch = any
 	license = OFL
-	source = otf-cooper-hewitt-1.000.zip::https://uh8yh30l48rpize52xh0q1o6i-wpengine.netdna-ssl.com/wp-content/uploads/fonts/CooperHewitt-OTF-public.zip
+	source = otf-cooper-hewitt-1.000.zip::https://www.cooperhewitt.org/wp-content/uploads/fonts/CooperHewitt-OTF-public.zip
 	sha256sums = df5b0869296092fca85742a6295db8bbdedb4e1e19ecaafd195bbabd1ef22d4e
 
 pkgname = otf-cooper-hewitt

@@ -2,13 +2,13 @@
 # Contributor: Foppe Hemminga <foppe@foppe.org>
 pkgname=otf-cooper-hewitt
 pkgver=1.000
-pkgrel=3
+pkgrel=4
 pkgdesc="sans-serif font by Chester Jenkins"
 url="https://www.cooperhewitt.org/open-source-at-cooper-hewitt/cooper-hewitt-the-typeface-by-chester-jenkins/"
 arch=(any)
 license=('OFL')
 source=(
-"$pkgname-$pkgver.zip::https://uh8yh30l48rpize52xh0q1o6i-wpengine.netdna-ssl.com/wp-content/uploads/fonts/CooperHewitt-OTF-public.zip"
+"$pkgname-$pkgver.zip::https://www.cooperhewitt.org/wp-content/uploads/fonts/CooperHewitt-OTF-public.zip"
 )
 sha256sums=('df5b0869296092fca85742a6295db8bbdedb4e1e19ecaafd195bbabd1ef22d4e')
 
