@@ -39,7 +39,7 @@ package() {
     head -n-1 | \
     sed 's/^[[:space:]]*//' | \
     sed 's|$BIN|/usr/bin|' | \
-    sed 's|\$MAINPID|$MAINPID|' | \
+    sed 's|\\$MAINPID|$MAINPID|' | \
     sed 's| $DOCKERD_ROOTLESS_SH_FLAGS||' \
     > "$pkgdir/usr/lib/systemd/user/docker.service"
 
