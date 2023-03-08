@@ -2,7 +2,7 @@
 
 pkgname=kpt-bin
 _pkgname="${pkgname%-bin}"
-pkgver=1.0.0_beta.27
+pkgver=1.0.0_beta.29
 _pkgver="${pkgver/_/-}"
 pkgrel=1
 pkgdesc='Toolchain which simplifies managing Kubernetes platforms and KRM-driven infrastructure'
@@ -20,7 +20,7 @@ depends=(
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}-${_pkgver}"::"https://github.com/GoogleContainerTools/${_pkgname}/releases/download/v${_pkgver}/${_pkgname}_${_goos}_${_goarch}")
-b2sums=('d1239b6222c16c61f7bcf31680ef778ee8a9dcb4e055a3ca153268ef02c946b7ea68a0e4b32870729adae770ab295d0d77228abb10937430313661f2a52505b9')
+b2sums=('a3a9255eb6ad0090f776af97cd19079fe0172ed023238575a9254850f42e4c1d6bfb4fce124f9dacc701a9fdfe413f6e202e66d45ea54ea2752e064cd91ad9db')
 
 package() {
 	install -D --mode 755 "${_pkgname}-${_pkgver}" "${pkgdir}/usr/bin/${_pkgname}"
