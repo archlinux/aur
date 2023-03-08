@@ -1,13 +1,14 @@
-# Maintainer: XavierCLL <xavier.corredor.llano (a) gmail.com>
+# Maintainer: Utsav <aur at utsav2 dot dev>
+# Contributor: XavierCLL <xavier.corredor.llano (a) gmail.com>
 # Contributor: Tavian Barnes <tavianator@tavianator.com>
 # Contributor: jhorcl
 # Contributor: flbzh <frederic_lebouc (a) yahoo.fr>
+
 pkgname=mozillavpn
-pkgver=2.12.0
-_debian_series=kinetic1
+pkgver=2.13.1
 pkgrel=1
 pkgdesc="A fast, secure and easy to use VPN. Built by the makers of Firefox."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://vpn.mozilla.org/"
 license=('GPL')
 depends=('polkit'
@@ -30,19 +31,32 @@ depends=('polkit'
          'wireguard-tools'
          'WIREGUARD-MODULE'
          'openresolv')
-makedepends=('cmake' 'qt6-tools' 'go' 'flex' 'python-yaml' 'python-lxml' 'clang' 'cargo')
-# https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+packages
-source=("https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/${pkgver}-${_debian_series}/mozillavpn_${pkgver}.orig.tar.gz")
-sha256sums=('0d7143c07495601c90ca1c94c151c9b5b16921e1c8e3a64abad18d91db6bea29')
+makedepends=('cmake' 'qt6-tools' 'go' 'flex' 'python-yaml' 'python-lxml' 'clang' 'cargo' 'python-pip')
+# https://github.com/mozilla-mobile/mozilla-vpn-client
+source=(mozillavpn-v${pkgver}::git+https://github.com/mozilla-mobile/mozilla-vpn-client.git#tag=v${pkgver})
+
+sha256sums=(SKIP)
+
+prepare() {
+    cd mozillavpn-v${pkgver}
+        
+    rm -rf build
+    mkdir build
+
+    git submodule init
+    git submodule update
+}
 
 build() {
-    cd "${pkgname}-${pkgver}"
-    rm -rf build && mkdir build && cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+    cd mozillavpn-v${pkgver}
 
-    cmake --build build -j6
+    pip install --user glean_parser
+
+    cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+    cmake --build build -j$(nproc)
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
+    cd mozillavpn-v${pkgver}
     DESTDIR="$pkgdir" cmake --install build
 }
