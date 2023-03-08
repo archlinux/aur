@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Postman
+Comment=Build, test, and document your APIs faster
+Path=/opt/postman
+Exec=/opt/postman/Postman --enable-features=UseOzonePlatform --ozone-platform=wayland --ozone-platform-hint=auto %U
+Icon=postman
+Type=Application
+StartupNotify=true
+Categories=Development;Utility;
+StartupWMClass=postman
+MimeType=x-scheme-handler/postman

@@ -1,0 +1,25 @@
+pkgbase = postman-bin-wayland
+	pkgdesc = Build, test, and document your APIs faster
+	pkgver = 10.11.1
+	pkgrel = 1
+	url = https://www.getpostman.com
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = libxss
+	depends = nss
+	depends = gtk3
+	provides = postman
+	conflicts = postman
+	conflicts = postman-bin
+	options = !strip
+	source_x86_64 = postman-10.11.1-linux-x64.tar.gz::https://dl.pstmn.io/download/version/10.11.1/linux64
+	source_x86_64 = postman.desktop
+	sha256sums_x86_64 = b120f6b650a3608a80596f6e05af134d78c1ce02e97b154a1acc3dbc0409e38f
+	sha256sums_x86_64 = bf8e5abb016248f25d03ac593987dd128d552872c8a8195dae3a6e9ff448d0ec
+	source_aarch64 = postman-10.11.1-linux-arm64.tar.gz::https://dl.pstmn.io/download/version/10.11.1/linux_arm64
+	source_aarch64 = postman.desktop
+	sha256sums_aarch64 = e2ef879a2b7d5db428dfd024374e0b79c2514ec82ce0ab6a8389540ce6574a22
+	sha256sums_aarch64 = bf8e5abb016248f25d03ac593987dd128d552872c8a8195dae3a6e9ff448d0ec
+
+pkgname = postman-bin-wayland
