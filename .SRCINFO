@@ -1,12 +1,15 @@
 pkgbase = xandikos-git
 	pkgdesc = Lightweight yet complete CardDAV/CalDAV server that backs onto a Git repository
-	pkgver = 0.2.8.r63.g0b948e6
+	pkgver = 0.2.8.r178.g7816c4f
 	pkgrel = 1
 	url = https://www.xandikos.org
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-aiohttp
 	depends = python-defusedxml
 	depends = python-dulwich
