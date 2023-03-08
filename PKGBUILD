@@ -1,7 +1,7 @@
 pkgname=tailscaledesktop
 _pkgname=TailscaleDesktop
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Unnofficial Tailscale desktop application"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/tailscaledesktop/application"
