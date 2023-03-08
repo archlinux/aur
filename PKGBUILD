@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=advancescan
 pkgname=$_pkgname-git
-pkgver=1.18.r8.gab658de
+pkgver=1.18.r11.gc15ea1d
 pkgrel=1
 pkgdesc="A command line rom manager for AdvanceMAME and AdvanceMESS"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -25,7 +25,6 @@ prepare() {
 
 build() {
 	cd $_pkgname
-	CXXFLAGS+=" -std=gnu++14"
 	./configure --prefix=/usr
 	make
 }
