@@ -1,6 +1,6 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=tilemaker
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=2
 pkgdesc="Convert OpenStreetMap .pbf files into vector tiles without the stack"
 arch=('i686' 'x86_64')
@@ -10,13 +10,7 @@ install=$pkgname.install
 depends=('boost-libs' 'lua>=5.1' 'protobuf' 'sqlite' 'shapelib' 'rapidjson')
 makedepends=('boost')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/systemed/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('e006e9de422c5e4224456d9b08408dce380d776ddf07e643e9e686a03cf97fa24bc42143f3f09dd0e5e9186716d4665af93345e315d941b52561b8671e6e9e8b')
-
-prepare() {
-  cd "$pkgname-$pkgver"
-  curl -O https://github.com/systemed/tilemaker/commit/d2b4e6c0de2332d5995cd00d49a0dda4449a2773.diff
-  patch -p1 --input=d2b4e6c0de2332d5995cd00d49a0dda4449a2773.diff
-}
+sha512sums=('d9f6cbc8d2632a98f88b16d6e92d03f59f712469ce6cfc73e4b0d7d4d79f43238803b2a3e42b224734b1bb18dc77cfa63dd13a437efef0abf6e2f05ab38a5978')
 
 build() {
   cd "$pkgname-$pkgver"
