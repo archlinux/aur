@@ -7,7 +7,7 @@
 
 pkgname=telegram-desktop-bin
 pkgver=4.6.5
-pkgrel=1
+pkgrel=3
 pkgdesc="Official desktop version of Telegram messaging app - Static binaries"
 arch=(x86_64)
 url="https://github.com/telegramdesktop/tdesktop"
@@ -32,7 +32,7 @@ provides=(telegram-desktop)
 
 # Sources
 source=(
-	"$pkgname.desktop"
+	"org.telegram.desktop.desktop"
 	tg.protocol
 	$url/raw/master/Telegram/Resources/art/icon{16,32,48,64,128,256,512}.png
 	$url/releases/download/v${pkgver}/tsetup.${pkgver}.tar.xz
@@ -69,7 +69,7 @@ package() {
 
 	# Desktop launcher
 	install -Dm644 "$srcdir/icon256.png" "$pkgdir/usr/share/pixmaps/telegram.png"
-	install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/telegramdesktop.desktop"
+	install -Dm644 "$srcdir/org.telegram.desktop.desktop" "$pkgdir/usr/share/applications/org.telegram.desktop.desktop"
 
 	# KDE5 & KDE4 protocol file
 	install -d "$pkgdir/usr/share/kservices5"
