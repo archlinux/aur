@@ -4,7 +4,7 @@ _pkgname=ENmix
 _pkgver=1.34.01
 pkgname=r-${_pkgname,,}
 pkgver=1.34.01
-pkgrel=1
+pkgrel=3
 pkgdesc='Quality control and analysis tools for Illumina DNA methylation BeadChip'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -34,7 +34,10 @@ depends=(
 )
 optdepends=(
   r-biocgenerics
+  r-biocstyle
+  r-knitr
   r-minfidata
+  r-rmarkdown
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
