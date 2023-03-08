@@ -7,7 +7,7 @@ pkgbase = reshade-shaders-git
 	arch = any
 	license = custom
 	makedepends = git
-	source = git+https://github.com/crosire/reshade-shaders.git#branch=master
+	source = git+https://github.com/crosire/reshade-shaders.git#branch=slim
 	sha256sums = SKIP
 
 pkgname = reshade-shaders-git
