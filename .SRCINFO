@@ -1,0 +1,17 @@
+pkgbase = phantomsocks
+	pkgdesc = A cross-platform proxy client/server for Linux/Windows/macOS
+	pkgver = 1.0.4
+	pkgrel = 4
+	url = https://github.com/macronut/phantomsocks
+	arch = i686
+	arch = x86_64
+	license = LGPL-3.0
+	makedepends = go
+	source = git+https://github.com/macronut/phantomsocks#commit=a521259ffc1cfd8753845997c09644b976af2d6c
+	source = phantomsocks.service
+	source = phantomsocks@.service
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = phantomsocks

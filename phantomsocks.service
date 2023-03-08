@@ -1,0 +1,16 @@
+[Unit]
+Description=Phantomsocks process
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+Group=phantomsocks
+WorkingDirectory=/etc/phantomsocks
+ExecStart=/usr/bin/phantomsocks
+Restart=on-abnormal
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+Alias=
