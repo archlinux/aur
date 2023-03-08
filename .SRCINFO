@@ -1,0 +1,17 @@
+pkgbase = klevernotes-git
+	pkgdesc = A convergent markdown note taking application.
+	pkgver = 0.1_r83.g8e76043
+	pkgrel = 1
+	url = https://gitlab.com/schul9louis/klever
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = BSD
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = kio
+	depends = qt5-webengine
+	source = git+https://gitlab.com/schul9louis/klever.git
+	md5sums = SKIP
+
+pkgname = klevernotes-git
