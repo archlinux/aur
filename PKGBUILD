@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://cgru.info/"
 license=('LGPL')
 depends=('openexr' 'libpqxx')
-makedepends=('rpmextract')
+makedepends=('rpmextract' 'patch')
 conflicts=()
 source=(
 	https://sourceforge.net/projects/cgru/files/3.3.0/cgru.3.3.0.CentOS-7_x86_64.tar.gz

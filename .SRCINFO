@@ -6,6 +6,7 @@ pkgbase = cgru
 	arch = x86_64
 	license = LGPL
 	makedepends = rpmextract
+	makedepends = patch
 	depends = openexr
 	depends = libpqxx
 	source = https://sourceforge.net/projects/cgru/files/3.3.0/cgru.3.3.0.CentOS-7_x86_64.tar.gz
