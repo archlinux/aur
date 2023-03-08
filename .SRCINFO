@@ -1,5 +1,5 @@
 pkgbase = diffuse-player-bin
-	pkgdesc = A full-featured Subsonic/Jellyfin compatible desktop music player
+	pkgdesc = A music player that connects to your cloud/distributed storage.
 	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://diffuse.sh/
