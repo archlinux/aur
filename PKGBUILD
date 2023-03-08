@@ -1,16 +1,16 @@
 # Maintainer: bziemons <ben@rs485.network>
 pkgname=chr-editor-git
-pkgver=r497.fbb59e3
+pkgver=r519.5b7fbe5
 pkgrel=1
 pkgdesc="Console-based editor designed for simplified use like gedit"
 arch=("x86_64")
 url="https://github.com/istoph/editor"
 license=('Boost')
-depends=(tuiwidgets-git 'qt5-base' 'icu' 'gcc-libs')
+depends=('tuiwidgets-git' 'qt5-base' 'icu' 'gcc-libs')
 makedepends=(meson git)
 provides=(chr-editor)
 conflicts=(chr-editor)
-options=(!strip)
+options=(strip)
 source=("git+https://github.com/istoph/editor.git"
         "meson-install.patch")
 sha512sums=('SKIP'
@@ -27,10 +27,8 @@ prepare() {
 }
 
 build() {
-    meson setup --prefix /usr --buildtype=plain --wrap-mode nodownload -Db_lot=true -Db_pie=true -Ddefault_library=static editor _build
+    arch-meson editor _build
     meson compile -C _build
-
-    # install manpages
 }
 
 check() {
@@ -39,6 +37,8 @@ check() {
 
 package() {
     DESTDIR="$pkgdir" meson install -C _build
+
+    # install manpages
     install -d "${pkgdir}/usr/share/man/man1/"
     install -pm 644 "${srcdir}/editor/manpages/"* "${pkgdir}/usr/share/man/man1"
 }

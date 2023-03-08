@@ -1,6 +1,6 @@
 pkgbase = chr-editor-git
 	pkgdesc = Console-based editor designed for simplified use like gedit
-	pkgver = r492.cd6cac3
+	pkgver = r519.5b7fbe5
 	pkgrel = 1
 	url = https://github.com/istoph/editor
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = chr-editor-git
 	depends = gcc-libs
 	provides = chr-editor
 	conflicts = chr-editor
-	options = !strip
+	options = strip
 	source = git+https://github.com/istoph/editor.git
 	source = meson-install.patch
 	sha512sums = SKIP
