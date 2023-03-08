@@ -1,0 +1,16 @@
+pkgbase = tchap-desktop
+	pkgdesc = A native-like OS X, Windows, & Linux desktop app for tchap
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://tchap.gouv.fr
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = armv7h
+	arch = aarch64
+	license = custom
+	makedepends = nodejs-nativefier
+	source = https://raw.githubusercontent.com/dinsic-pim/tchap-desktop/main/assets/tchap-logo.png
+	sha256sums = 5a644f4a3a70f478c26dd7498fafdfea57e5b71cb1914115555e749bf1b0f08e
+
+pkgname = tchap-desktop
