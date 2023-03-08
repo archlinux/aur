@@ -1,10 +1,10 @@
 # Maintainer: Ildus Kurbangaliev <i.kurbangaliev@gmail.com>
 
 pkgname=verible-bin
-pkgver=0.0.2613
+pkgver=0.0.3029
 pkgrel=1
 pkgdesc='SystemVerilog parser, linter, formatter and etc from Google'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/google/verible'
 license=('Apache License 2.0')
 provides=('verible')
@@ -14,7 +14,15 @@ source=("https://api.github.com/repos/chipsalliance/verible/releases/latest")
 sha512sums=('SKIP')
 
 prepare() {
-  cat latest | jq '.assets[0]["browser_download_url"]' | xargs wget -O - | tar -xz
+  echo ${CARCH}
+  cat latest \
+	| jq '.assets' \
+	| grep -i --color=never browser_download_url \
+	| grep -i --color=never centos \
+	| grep -i --color=never "${CARCH}" \
+	| awk '{print $2}' \
+	| xargs wget -O - \
+	| tar -xz
 }
 
 pkgver() {
