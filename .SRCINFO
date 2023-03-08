@@ -1,5 +1,5 @@
 pkgbase = linux-aarch64-flippy
-	pkgver = 6.1.14
+	pkgver = 6.1.15
 	pkgrel = 1
 	url = https://github.com/unifreq/linux-6.1.y
 	arch = aarch64
@@ -9,10 +9,10 @@ pkgbase = linux-aarch64-flippy
 	makedepends = dtc
 	makedepends = uboot-tools
 	options = !strip
-	source = linux-6.1.y-b33cb9adf00ad50e6de135fe31b1a40c44bde3d3.tar.gz::https://github.com/unifreq/linux-6.1.y/archive/b33cb9adf00ad50e6de135fe31b1a40c44bde3d3.tar.gz
+	source = linux-6.1.y-42a98fe4d4aad2784f397bc7544b9977d4d1e30d.tar.gz::https://github.com/unifreq/linux-6.1.y/archive/42a98fe4d4aad2784f397bc7544b9977d4d1e30d.tar.gz
 	source = config
 	source = linux.preset
-	sha256sums = 6eb8d86f9a4a9f015ff39872d713f05a21e492afbee2c5b8d663be9a578bccb9
+	sha256sums = da1a318297b13a73851cc44f4987d78bd8cde5449b7de18d88ef3d2fc7abf739
 	sha256sums = c632d2e4383ec12206757bdade32b06539c25b39b2befd149e096b6dbaf57be7
 	sha256sums = bdcd6cbf19284b60fac6d6772f1e0ec2e2fe03ce7fe3d7d16844dd6d2b5711f3
 
@@ -36,12 +36,12 @@ pkgname = linux-aarch64-flippy-headers
 
 pkgname = linux-aarch64-flippy-dtb-allwinner
 	pkgdesc = DTB files for Allwinner SoCs for flippy's AArch64 kernel
-	provides = linux-aarch64-flippy-dtb=6.1.14
+	provides = linux-aarch64-flippy-dtb=6.1.15
 
 pkgname = linux-aarch64-flippy-dtb-amlogic
 	pkgdesc = DTB files for Amlogic SoCs for flippy's AArch64 kernel
-	provides = linux-aarch64-flippy-dtb=6.1.14
+	provides = linux-aarch64-flippy-dtb=6.1.15
 
 pkgname = linux-aarch64-flippy-dtb-rockchip
 	pkgdesc = DTB files for Rockchip SoCs for flippy's AArch64 kernel
-	provides = linux-aarch64-flippy-dtb=6.1.14
+	provides = linux-aarch64-flippy-dtb=6.1.15
