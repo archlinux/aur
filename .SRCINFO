@@ -1,7 +1,7 @@
 pkgbase = sibs-git
 	pkgdesc = A simple cross-platform build system and package manager for c, c++ and zig. Inspired by rusts cargo
 	pkgver = r314.0697f41
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.dec05eba.com/sibs
 	arch = x86_64
 	license = GPL3
@@ -10,6 +10,7 @@ pkgbase = sibs-git
 	depends = ninja
 	depends = cmake
 	depends = ccache
+	optdepends = mold: For using the mold linker which is faster than the lld/gold linker
 	optdepends = lld: For using the LLVM linker which is faster than the gold linker
 	provides = sibs
 	conflicts = sibs

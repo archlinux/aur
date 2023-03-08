@@ -2,13 +2,14 @@
 
 pkgname=sibs-git
 pkgver=r314.0697f41
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple cross-platform build system and package manager for c, c++ and zig. Inspired by rusts cargo'
 arch=('x86_64')
 url="https://git.dec05eba.com/sibs"
 license=('GPL3')
 depends=('curl' 'libarchive' 'ninja' 'cmake' 'ccache')
 optdepends=(
+    'mold: For using the mold linker which is faster than the lld/gold linker'
     'lld: For using the LLVM linker which is faster than the gold linker'
 )
 provides=('sibs')
