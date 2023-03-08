@@ -1,13 +1,13 @@
 pkgbase = openpnp
 	pkgdesc = Open Source SMT Pick and Place Hardware and Software
 	pkgver = 2023_02_11_15_19_43.ea84c95
-	pkgrel = 3
+	pkgrel = 4
 	url = https://openpnp.org/
 	arch = arm64
 	arch = x86_64
 	license = GPL3
-	depends = java-runtime>=11
-	depends = java-runtime<15
+	depends = java-runtime>=8
+	depends = java-runtime<=15
 	source = OpenPnP-2023-02-11_15-19-43.ea84c95.tar.gz::https://openpnp.s3-us-west-2.amazonaws.com/develop/2023-02-11_15-19-43.ea84c95/OpenPnP-unix-develop.tar.gz
 	source = OpenPnP.desktop
 	source = OpenPnP.png
