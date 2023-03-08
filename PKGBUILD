@@ -4,7 +4,7 @@ _pkgname=butcher
 _pkgver=0.3.2
 pkgname=r-${_pkgname,,}
 pkgver=0.3.2
-pkgrel=1
+pkgrel=3
 pkgdesc='Model Butcher'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -25,6 +25,7 @@ optdepends=(
   r-clusterr
   r-clustmixtype
   r-covr
+  r-dbarts
   r-ddalpha
   r-dimred
   r-dplyr
@@ -35,6 +36,7 @@ optdepends=(
   r-ipred
   r-kernlab
   r-kknn
+  r-klar
   r-knitr
   r-mass
   r-mda
@@ -59,6 +61,7 @@ optdepends=(
   r-th.data
   r-usethis
   r-xgboost
+  r-xrf
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('e653fcbd28f558cbca5b83a0fa01c82664fe8207b7212d688e4d8acc2c53f71f')
