@@ -1,0 +1,22 @@
+pkgbase = python-crispy-bootstrap3
+	pkgdesc = Bootstrap3 template pack for django-crispy-forms
+	pkgver = 2022.1
+	pkgrel = 1
+	url = https://github.com/django-crispy-forms/crispy-bootstrap3
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-coverage
+	checkdepends = python-pytest-django
+	checkdepends = python-pytest-cov
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-django
+	depends = python-django-crispy-forms
+	source = https://files.pythonhosted.org/packages/source/c/crispy-bootstrap3/crispy-bootstrap3-2022.1.tar.gz
+	sha256sums = f62729ed06976caf7fd5fd4fe009c0a702b0705db7765c2b486ba96c64341146
+
+pkgname = python-crispy-bootstrap3
