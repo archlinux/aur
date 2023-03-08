@@ -24,7 +24,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build .
+  go build -buildmode=pie -trimpath -ldflags="-linkmode=external -s -w -X 'github.com/abs3ntdev/haunt/cmd.Version=v${pkgver}'" -mod=readonly -modcacherw .
   ./${_pkgname} completion zsh > ${_pkgname}_zsh
   ./${_pkgname} completion bash > ${_pkgname}_bash
   ./${_pkgname} completion fish > ${_pkgname}_fish
