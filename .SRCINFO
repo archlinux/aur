@@ -1,0 +1,11 @@
+pkgbase = ktrain
+	pkgdesc = A terminal-based typing trainer
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/woowgers/ktrain
+	arch = any
+	license = MIT
+	source = ktrain-v0.0.0.tar.gz::https://github.com/woowgers/ktrain/archive/v0.0.0.tar.gz
+	sha256sums = c34a6448826038c4ab2f004a96ad3086c1ff2ef8ad81e18acaabb14bb38b64f4
+
+pkgname = ktrain
