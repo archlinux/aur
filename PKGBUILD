@@ -1,8 +1,8 @@
 # Maintainer: Bozo Kopic <bozo@kopic.xyz>
 
 pkgname=opcut
-pkgver=0.4.7
-pkgrel=2
+pkgver=0.4.8
+pkgrel=1
 pkgdesc="Cutting stock problem optimizer"
 url="https://github.com/bozokopic/opcut"
 license=('GPL3')
@@ -10,7 +10,7 @@ arch=('x86_64' 'armv7l' 'aarch64')
 depends=('python-aiohttp' 'python-hat-aio' 'python-hat-json' 'python-cairo')
 makedepends=('python-hat-doit' 'python-installer' 'yarn')
 source=("https://github.com/bozokopic/opcut/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('772191f7ca5995c205a15f3218b7d305a422f65888b1e16dbb3cf1b6f0b8547d')
+sha256sums=('d26303253186ad653da3dd897e7558de2eed963449180e1b258c08bef7533615')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
