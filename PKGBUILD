@@ -3,9 +3,9 @@
 
 pkgname=qt5-connectivity
 _basever=5.15.8
-pkgver=5.15.8+kde+r5
+pkgver=5.15.8+kde+r8
 pkgrel=1
-_commit=056294c0493f814c3951ef57e5d0656efe643fb5
+_commit=2d241e0b79971917845a6ed448e838ef273d73d7
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
