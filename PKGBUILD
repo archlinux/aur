@@ -10,6 +10,7 @@
 # New: https://onedev.polarian.dev/polarrepo/google-cloud-cli/~files
 # Old: https://github.com/sudoforge/pkgbuilds
 
+_extractedName="google-cloud-sdk"
 pkgname="google-cloud-cli"
 pkgver=417.0.0
 pkgrel=1
@@ -24,7 +25,7 @@ optdepends=(
 )
 options=('!strip' 'staticlibs')
 source=(
-  "https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/${pkgname}_${pkgver}.orig.tar.gz"
+  "$pkgname-$pkgver.orig.tar.gz::https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/${pkgname}_${pkgver}.orig.tar.gz"
   "google-cloud-sdk.sh"
   "0001-set-python2-for-dev-appserver-py.patch"
   #"0002-set-python2-for-endpointscfg-py.patch"
@@ -40,7 +41,7 @@ sha256sums=('a4ab47664fad8cc7d939aa8e774165a826c6d2cd2282fc03af53581211b9070e'
             )
 
 prepare() {
-  cd "${srcdir}/${pkgname}"
+  cd "${_extractedName}"
 
   for f in "${source[@]}"; do
     [[ "$f" =~ \.patch$ ]] && \
@@ -56,7 +57,7 @@ prepare() {
 
 package() {
   mkdir "${pkgdir}/opt"
-  cp -r "${srcdir}/${pkgname}" "${pkgdir}/opt"
+  cp -r "${_extractedName}" "${pkgdir}/opt/{$pkgname}"
 
   # The Google code uses a _TraceAction() method which spams the screen even
   # in "quiet" mode, we're throwing away output on purpose to keep it clean
