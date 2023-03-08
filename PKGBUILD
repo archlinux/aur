@@ -16,7 +16,7 @@ optdepends=("$pkgname-doc: API documentation")
 provides=(libqtutilities.so)
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('dbb9f519d3af3ade10a16053132aad117dbfc0bb768ea8af65aef083150471a4')
+sha256sums=('8b49fabea6f86a3665c4e3e7d4a9a4d4392549ce942f5de4f21b694126fea23b')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
