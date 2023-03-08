@@ -119,7 +119,7 @@ package() {
 
 	rm -f "${pkgdir}/${_prefix}/share/info/dir"
 
-	cd "${pkgdir}/${_prefix}/bin"
+	cd "${pkgdir}/${_prefix}/${_target_alias}/bin"
 	for b in ${_target}-*; do
 		ln -s "${b}" "${b/${_target}/${_target_alias}}"
 	done
