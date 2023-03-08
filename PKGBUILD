@@ -6,14 +6,14 @@ __pkgname="$pkgname"
 __PkgName="$(echo "$__pkgname" | sed -e "s/\b./\u\0/g")"
 __binname="$(echo "$__pkgname" | tr - _)"
 pkgver=0.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A free and open source manga reader to read manga from a Tachidesk-Server instance'
 arch=('x86_64')
 url="https://github.com/Suwayomi/$__PkgName"
 license=('MPL2')
 depends=('zenity' 'xdg-user-dirs')
 optdepends=('tachidesk-server')
-makedepends=('flutter-beta' 'cmake' 'clang' 'ninja')
+makedepends=('flutter' 'cmake' 'clang' 'ninja')
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('d5e72895138f5ddd206132d587d16bbf0f21fc21ac798781db492f1ebca6cf7b')
 
