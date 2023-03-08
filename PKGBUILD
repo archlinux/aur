@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=seriation
-_pkgver=1.4.1
+_pkgver=1.4.2
 pkgname=r-${_pkgname,,}
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc='Infrastructure for Ordering Objects Using Seriation'
 arch=('x86_64')
@@ -33,7 +33,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b9ce26a82f519f355c8054d10f78086e5c3f70fe998522408aa091ada83a1fad')
+sha256sums=('ad19ecbc375aa8121b8a60c6bbd0e7b3a5ab2779dab805c72124caa472ff5090')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
