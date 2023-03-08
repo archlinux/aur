@@ -1,8 +1,6 @@
 [Desktop Entry]
-Encoding=UTF-8
 Name=SDRTrunk
 Type=Application
 Comment=Decode, Monitor, Record and Stream trunked mobile and related radio protocols using SDR
-Exec=/opt/sdrtrunk/bin/sdr-trunk
-Icon=cat-radio-icon.png
-Categories=Utility;HamRadio;Java
+Exec=/usr/bin/sdr-trunk
+Categories=Utility
