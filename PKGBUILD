@@ -58,8 +58,8 @@ package_pocket-station-tools-git() {
 
 # shellcheck disable=SC2154
 package_pocket-station-example-app-git() {
-  provides+=("${_platform}-example-app-git")
-  conflicts=("${_platform}-example-app-git")
+  provides+=("${_platform}-example-app")
+  conflicts=("${_platform}-example-app")
   local _pin="${srcdir}/bin"
   cd "${_pkg}/Example" || exit
   ls

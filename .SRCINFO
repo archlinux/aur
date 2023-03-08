@@ -18,5 +18,5 @@ pkgname = pocket-station-tools-git
 	conflicts = pocket-station-devkit
 
 pkgname = pocket-station-example-app-git
-	provides = pocket-station-example-app-git
-	conflicts = pocket-station-example-app-git
+	provides = pocket-station-example-app
+	conflicts = pocket-station-example-app
