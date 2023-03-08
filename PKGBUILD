@@ -8,17 +8,13 @@ license=("Unlicense")
 arch=("any")
 depends=("sh")
 checkdepends=("shellspec" "man-db")
-optdepends=("man-db: for manual pages")
+optdepends=("man-db: for manual pages" "fish: for tab completion" "zsh: for tab completion")
 source=("git+https://github.com/FWDekker/mommy.git#tag=v$pkgver")
 sha256sums=("SKIP")
 
 check() {
     cd "$pkgname"
-    if [ "$(pacman-conf | grep "NoExtract.*usr/share/man" | wc -l)" -gt 0 ]; then
-        make -W test/man test
-    else
-        make test
-    fi
+    make test/unit
 }
 
 package() {

@@ -9,6 +9,8 @@ pkgbase = mommy
     checkdepends = man-db
     depends = sh
     optdepends = man-db: for manual pages
+    optdepends = fish: for tab completion
+    optdepends = zsh: for tab completion
     source = git+https://github.com/FWDekker/mommy.git#tag=v1.2.1
     sha256sums = SKIP
 
