@@ -1,6 +1,6 @@
 pkgbase = unciv-bin
 	pkgdesc = Open-source remake of Civilization V
-	pkgver = test_prerelease_2
+	pkgver = itchtest6
 	pkgrel = 0
 	url = https://github.com/yairm210/Unciv
 	arch = any
@@ -10,12 +10,12 @@ pkgbase = unciv-bin
 	depends = xorg-xrandr
 	provides = unciv
 	conflicts = unciv
-	noextract = Unciv-test-prerelease-2.jar
-	source = Unciv-test-prerelease-2.jar::https://github.com/yairm210/Unciv/releases/download/test-prerelease-2/Unciv.jar
-	source = Unciv-test-prerelease-2.png::https://raw.githubusercontent.com/yairm210/Unciv/test-prerelease-2/extraImages/Icons/Unciv%20icon%20v5.png
-	source = Unciv-test-prerelease-2.zip::https://github.com/yairm210/Unciv/releases/download/test-prerelease-2/linuxFilesForJar.zip
-	md5sums = 230d4faac2a2c93400718cd02f455215
+	noextract = Unciv-itchtest6.jar
+	source = Unciv-itchtest6.jar::https://github.com/yairm210/Unciv/releases/download/itchtest6/Unciv.jar
+	source = Unciv-itchtest6.png::https://raw.githubusercontent.com/yairm210/Unciv/itchtest6/extraImages/Icons/Unciv%20icon%20v5.png
+	source = Unciv-itchtest6.zip::https://github.com/yairm210/Unciv/releases/download/itchtest6/linuxFilesForJar.zip
+	md5sums = d60bad4cded729a91da6c095cf8a4204
 	md5sums = c3f79bbc7e80620b3cdc4f90f21f4d68
-	md5sums = b6c71b3bdd256b6a404b1fe0ae663f16
+	md5sums = b3503b1fc02b91d1fc1d811805e93101
 
 pkgname = unciv-bin
