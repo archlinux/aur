@@ -1,6 +1,6 @@
 pkgbase = chromium-no-extras
 	pkgdesc = Chromium without hangout services, widevine, or chromedriver
-	pkgver = 110.0.5481.177
+	pkgver = 111.0.5563.64
 	pkgrel = 1
 	url = https://www.chromium.org/Home
 	arch = x86_64
@@ -57,23 +57,21 @@ pkgbase = chromium-no-extras
 	optdepends = qt5-base: enable Qt5 with --enable-features=AllowQt
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
-	provides = chromium=110.0.5481.177
+	provides = chromium=111.0.5563.64
 	conflicts = chromium
 	options = !lto
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-110.0.5481.177.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-111.0.5563.64.tar.xz
 	source = https://github.com/foutrelis/chromium-launcher/archive/v8/chromium-launcher-8.tar.gz
-	source = https://github.com/stha09/chromium-patches/releases/download/chromium-110-patchset-4/chromium-110-patchset-4.tar.xz
-	source = fix-the-way-to-handle-codecs-in-the-system-icu.patch
-	source = v8-move-the-Stack-object-from-ThreadLocalTop.patch
+	source = https://github.com/stha09/chromium-patches/releases/download/chromium-111-patchset-2/chromium-111-patchset-2.tar.xz
+	source = sql-relax-constraints-on-VirtualCursor-layout.patch
 	source = REVERT-roll-src-third_party-ffmpeg-m102.patch
 	source = REVERT-roll-src-third_party-ffmpeg-m106.patch
 	source = disable-GlobalMediaControlsCastStartStop.patch
 	source = use-oauth2-client-switches-as-default.patch
-	sha256sums = 7b2f454d1195270a39f94a9ff6d8d68126be315e0da4e31c20f4ba9183a1c9b7
+	sha256sums = 7d5ca0e2bdb22a97713e6bfce74c651006d71aa883056c8e2c2a148039fe4074
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
-	sha256sums = 8c7f93037cc236024cc8be815b2c2bd84f6dc9e32685299e31d4c6c42efde8b7
-	sha256sums = a5d5c532b0b059895bc13aaaa600d21770eab2afa726421b78cb597a78a3c7e3
-	sha256sums = 49c3e599366909ddac6a50fa6f9420e01a7c0ffd029a20567a41d741a15ec9f7
+	sha256sums = a016588340f1559198e4ce61c6e91c48cf863600f415cb5c46322de7e1f77909
+	sha256sums = e66be069d932fe18811e789c57b96249b7250257ff91a3d82d15e2a7283891b7
 	sha256sums = 30df59a9e2d95dcb720357ec4a83d9be51e59cc5551365da4c0073e68ccdec44
 	sha256sums = 4c12d31d020799d31355faa7d1fe2a5a807f7458e7f0c374adf55edb37032152
 	sha256sums = 7f3b1b22d6a271431c1f9fc92b6eb49c6d80b8b3f868bdee07a6a1a16630a302
