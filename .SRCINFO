@@ -1,12 +1,12 @@
 pkgbase = moq-bin
 	pkgdesc = Interface mocking tool for go generate
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/matryer/moq
 	arch = x86_64
 	license = MIT
 	provides = moq
-	source = https://github.com/matryer/moq/releases/download/v0.3.0/moq_0.3.0_Linux_x86_64.tar.gz
-	sha256sums = f64bbdcfaa742d246b3833a268ee2e1c6eda4452a1e152dcbc091aa256e9bc0d
+	source = https://github.com/matryer/moq/releases/download/v0.3.1/moq_0.3.1_Linux_x86_64.tar.gz
+	sha256sums = b73add82ce2d9dc1bbc46e4dcfcfa04dcb022fb25d8922bf85f7521d5bff7e14
 
 pkgname = moq-bin
