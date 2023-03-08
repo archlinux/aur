@@ -33,30 +33,30 @@ depends=('polkit'
          'openresolv')
 makedepends=('cmake' 'qt6-tools' 'go' 'flex' 'python-yaml' 'python-lxml' 'clang' 'cargo' 'python-pip')
 # https://github.com/mozilla-mobile/mozilla-vpn-client
-source=(mozillavpn-v${pkgver}::git+https://github.com/mozilla-mobile/mozilla-vpn-client.git#tag=v${pkgver})
+source=(${pkgname}-v${pkgver}::git+https://github.com/mozilla-mobile/mozilla-vpn-client.git#tag=v${pkgver})
 
 sha256sums=(SKIP)
 
 prepare() {
-    cd mozillavpn-v${pkgver}
+    cd ${pkgname}-v${pkgver}
         
     rm -rf build
     mkdir build
+
+    pip install --user glean_parser
 
     git submodule init
     git submodule update
 }
 
 build() {
-    cd mozillavpn-v${pkgver}
-
-    pip install --user glean_parser
+    cd ${pkgname}-v${pkgver}
 
     cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
     cmake --build build -j$(nproc)
 }
 
 package() {
-    cd mozillavpn-v${pkgver}
+    cd ${pkgname}-v${pkgver}
     DESTDIR="$pkgdir" cmake --install build
 }
