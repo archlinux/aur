@@ -1,6 +1,6 @@
 pkgname=briar-desktop-git
 _pkgname=briar-desktop
-pkgver=r471.7ee4177
+pkgver=r597.cf74f07
 pkgrel=1
 _build_type=nightly
 pkgdesc='Prototyping the next generation for Briar on desktop devices'
@@ -46,13 +46,13 @@ prepare() {
   cd ${_pkgname}
   git submodule init
   git config submodule.briar.url "$srcdir/briar"
-  git submodule update --init --recursive
+  git -c protocol.file.allow=always submodule update --init --recursive
 }
 
 build() {
   cd "${_pkgname}"
   export PATH="/usr/lib/jvm/java-17-openjdk/jre/bin/:$PATH"
-  ./gradlew -Dorg.gradle.java.home=/usr/lib/jvm/java-17-openjdk --no-daemon -PbuildType=${_build_type} packageUberJarForCurrentOS
+  ./gradlew -Dorg.gradle.java.home=/usr/lib/jvm/java-17-openjdk --no-daemon -PbuildType=${_build_type} pinpitPackageDefaultUberJarForLinuxX64
 }
 
 package() {
@@ -65,7 +65,7 @@ exec /usr/lib/jvm/java-17-openjdk/bin/java -jar '/usr/share/java/briar-desktop.j
 EOF
   chmod +x "$pkgdir/usr/bin/$_pkgname"
 
-  install -m 644 -D "${srcdir}/${_pkgname}/${_pkgname}/build/compose/jars/Briar-linux-${_gradle_arch}-${_bin_ver}-${_build_type}.jar" "$pkgdir/usr/share/java/$_pkgname.jar"
+  install -m 644 -D "${srcdir}/${_pkgname}/${_pkgname}/build/pinpit/jars/Briar-linux-${_gradle_arch}-${_bin_ver}-${_build_type}.jar" "$pkgdir/usr/share/java/$_pkgname.jar"
 
   install -Dm644 ${srcdir}/${_pkgname}/${_pkgname}/src/main/resources/images/logo_circle.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
