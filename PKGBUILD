@@ -7,8 +7,8 @@ _shortname=ghostery
 # Warning: Don't forget to also change the first sha256sum hash with the
 # correct version bellow
 _lang=en-US
-pkgver=2022.8.2
-_builddate=2022-12-12
+pkgver=2023.1
+_builddate=2023-03-03
 pkgrel=2
 pkgdesc="Privacy aware web browser from Ghostery (binary release)."
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=("https://github.com/ghostery/user-agent-desktop/releases/download/${_bui
 # Hash to use with en-US: dab32f80be4a50b475810bfabaf524c28f79a60703e72db2337180dda5167ca1
 # Hash to use with de: 5fd034b9b6c45fad8c4b125f57faa36fed87478b49f621762d9d897382551c81
 # Hash to use with fr: 5a1cb447a021596f51fa37c0445c7d93b27e9b3b929ab693ca45296ac816fd3e
-sha256sums=('dab32f80be4a50b475810bfabaf524c28f79a60703e72db2337180dda5167ca1'
+sha256sums=('02cae41858166f46a18f0a5220550d6ad0405854caecf71f193afada50ff321f'
             '1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5'
             'ef652d37bf0e1c9087cba10ab41e5e8475ca8ce5a990b122b9bcdfd8f658af65'
             'dbdfb7e32bb874d6b0c67b10524508620e2137662b7f928750f41f0df926040f')
