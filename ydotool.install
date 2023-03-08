@@ -1,8 +1,8 @@
 post_install() {
-	echo 'Make sure your user is in the `input` group by running the following command:'
-	echo '  $ usermod -aG input $USER'
-	echo 'Also start the ydotool daemon'
-	echo ' $ systemctl start ydotool'
+	msg2 'Make sure your user is in the `input` group by running the following command:'
+	msg2 '  $ usermod -aG input $USER'
+	msg2 'Also start the ydotool daemon'
+	msg2 ' $ systemctl start ydotoot --user'
 }
 
 post_upgrade() {
