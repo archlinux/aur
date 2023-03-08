@@ -1,0 +1,17 @@
+pkgbase = kitty-img
+	pkgdesc = Print images inline in kitty
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://sr.ht/~zethra/kitty-img/
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	source = https://git.sr.ht/~zethra/kitty-img/archive/0.1.0.tar.gz
+	sha256sums = 49dd64b4b353a85a16488f9a293bafb7b68b811ef2fa8d7d24116e32e5854fe8
+
+pkgname = kitty-img
