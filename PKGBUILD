@@ -12,13 +12,15 @@
 
 _extractedName="google-cloud-sdk"
 pkgname="google-cloud-cli"
-pkgver=417.0.0
+pkgver=421.0.0
 pkgrel=1
 pkgdesc="A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq."
-url="https://cloud.google.com/sdk/"
+url="https://cloud.google.com/cli/"
 license=("Apache")
 arch=('x86_64')
 depends=('python')
+conflicts=('google-cloud-sdk')
+provides=('google-cloud-sdk')
 optdepends=(
   "python2: for dev_appserver.py and endpointscfg support"
   "python-crcmod: [gsutil] verify the integrity of GCS object contents"
@@ -26,18 +28,14 @@ optdepends=(
 options=('!strip' 'staticlibs')
 source=(
   "$pkgname-$pkgver.orig.tar.gz::https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/${pkgname}_${pkgver}.orig.tar.gz"
-  "google-cloud-sdk.sh"
+  "google-cloud-cli.sh"
   "0001-set-python2-for-dev-appserver-py.patch"
-  #"0002-set-python2-for-endpointscfg-py.patch"
   "0003-add-compdef-to-zsh-completion.patch"
-  #"0004-collections-abc.patch"
 )
-sha256sums=('a4ab47664fad8cc7d939aa8e774165a826c6d2cd2282fc03af53581211b9070e'
-            'ecd7b3895f6ecf1c6411f385bee3a4b64139976d72069469d323c8a09b97aaea'
+sha256sums=('2980ee1b5451736418882473cdb2fdf9e4aa11e86400ea822bf9017571b94ac2'
+            'e03ffb8a534b175dc497621a0396bcc29884279daa519e2cb90bd98c61d6530a'
             '62ec7f56e09168d375823e9e99fcdcfbf40b0fffdd75f35cf91122c5902c82e9'
-            #'ff6065ce2e54ac654605bd5fe554313b1d0def2c31ce56ff39429098dd1e39fe'
             '4694f5191ceea7cf8076861ce5790ba9e809023da278b0f6ed862b9611e5aa93'
-            #'ea39fc4907d8ddf28ebaeed4b7c4547936a602f907c7523fc62488771e0df043'
             )
 
 prepare() {
@@ -74,10 +72,10 @@ package() {
   find $pkgdir -name '__pycache__' -type d -exec rm -rf {} +
 
   install -D -m 0755 "${srcdir}/${source[1]}" \
-    "${pkgdir}/etc/profile.d/google-cloud-sdk.sh"
+    "${pkgdir}/etc/profile.d/google-cloud-cli.sh"
 
   install -D -m 0644 "${pkgdir}/opt/${pkgname}/completion.bash.inc" \
-    "${pkgdir}/etc/bash_completion.d/google-cloud-sdk"
+    "${pkgdir}/etc/bash_completion.d/google-cloud-cli"
 
   install -D -m 0644 "${pkgdir}/opt/${pkgname}/completion.zsh.inc" \
     "${pkgdir}/usr/share/zsh/site-functions/_gcloud"
