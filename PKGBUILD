@@ -7,26 +7,26 @@
 
 pkgname=mathics
 _pkgname=Mathics3
-pkgver=5.0.2
-pkgrel=2
+pkgver=6.0.1
+pkgrel=1
 pkgdesc="A general-purpose computer algebra system."
 arch=('any')
 url="https://mathics.org/"
 license=('GPL3')
 depends=('mathics-scanner' 'python-sympy' 'python-mpmath' 'python-numpy'
          'python-palettable' 'python-pint' 'python-dateutil' 'python-llvmlite'
-         'python-requests' 'cython' 'python-recordclass')
+         'python-requests' 'cython' 'python-recordclass' 'python-pillow')
 makedepends=('python-setuptools')
 optdepends=( 'python-psutil: SystemMemory and MemoryAvailable'
              'python-scikit-image: FindMinimum can use this'
              'python-lxml: for HTML parsing used in builtin/fileformats/html'
              'python-wordcloud: Used in builtin/image.py by WordCloud')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$_pkgname/$pkgname-core/releases/download/$pkgver/$_pkgname-$pkgver.tar.gz")
-sha256sums=('659293bf49c9654c6350bb2a26d1edc0bde79d0fed280e0ebc18a585cca6f2b5')
+sha256sums=('e96d6ba0e0efa79744add26b6fc081281a0b650f465ca5ac81f4885743a0eae1')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  sed -i 's/sympy>=1.8, < 1.11/sympy>=1.8, < 1.12/g' setup.py
+  sed -i 's/numpy<=1.24/numpy<1.25/g' setup.py
   python setup.py build
 }
 
