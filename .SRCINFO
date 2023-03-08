@@ -3,7 +3,6 @@ pkgbase = mozillavpn
 	pkgver = 2.13.1
 	pkgrel = 1
 	url = https://vpn.mozilla.org/
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
