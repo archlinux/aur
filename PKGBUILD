@@ -1,6 +1,6 @@
 # Maintainer: trilader <trilader@schroedingers-bit.net>
 pkgname=termpaint-git
-pkgver=r497.dc29355
+pkgver=r499.3823173
 pkgrel=1
 pkgdesc="low level terminal interface library"
 arch=("x86_64")
@@ -18,10 +18,7 @@ pkgver() {
 }
 
 build() {
-    #arch-meson -Ddefault_library=static termpaint _build
-    # This is "the good stuff" from the arch-meson script
-    meson setup --prefix /usr --libexecdir lib --sbindir bin --wrap-mode nodownload -Db_lot=true -Db_pie=true -Ddefault_library=static termpaint _build
-    meson compile -C _build
+    arch-meson -Ddefault_library=both termpaint _build
 }
 
 check() {
