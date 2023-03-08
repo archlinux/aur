@@ -8,6 +8,8 @@ pkgdesc='A fast static code analyzer & language server for Python - git version'
 arch=('any')
 url='https://github.com/mtshiba/pylyzer'
 license=('MIT')
+conflicts=( "$_pkgname" )
+provides=( "$_pkgname" )
 makedepends=(
     'cargo'
 )

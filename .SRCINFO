@@ -6,6 +6,8 @@ pkgbase = pylyzer-git
 	arch = any
 	license = MIT
 	makedepends = cargo
+	provides = pylyzer
+	conflicts = pylyzer
 	source = git+https://github.com/mtshiba/pylyzer
 	sha256sums = SKIP
 
