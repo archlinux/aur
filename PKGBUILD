@@ -3,12 +3,11 @@
 pkgname=csvq-bin
 _pkgname=csvq
 pkgver=1.17.11
-pkgrel=1
+pkgrel=2
 pkgdesc='SQL-like query language for csv'
 url='https://mithrandie.github.io/csvq/'
 license=('MIT')
 arch=('x86_64')
-makedepends=('go')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
