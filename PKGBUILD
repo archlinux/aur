@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/contrib"
-  printf "r%s.%s" "$(git rev-list --count HEAD -- grimblast/)" "$(git rev-parse --short HEAD -- grimblast/)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
