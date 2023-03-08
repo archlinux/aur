@@ -1,7 +1,7 @@
 pkgbase = dingtalk-bin
 	pkgdesc = 钉钉
 	pkgver = 1.6.0.230113
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.dingtalk.com/
 	arch = x86_64
 	license = custom
@@ -9,6 +9,7 @@ pkgbase = dingtalk-bin
 	depends = gtk2
 	depends = libxcrypt-compat
 	optdepends = zenity: fix crashes when downloading files, not required on kde.
+	optdepends = libxss: fix tray icon functionality in gnome.
 	provides = com.alibabainc.dingtalk
 	provides = dingtalk
 	conflicts = com.alibabainc.dingtalk

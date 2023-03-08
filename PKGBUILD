@@ -6,14 +6,16 @@ pkgname=dingtalk-bin
 _pkgname=dingtalk
 _pkgname2=com.alibabainc.dingtalk
 pkgver=1.6.0.230113
-pkgrel=2
+pkgrel=3
 pkgdesc="钉钉"
 arch=("x86_64")
 url="https://www.dingtalk.com/"
 license=("custom")
 depends=("glu" 'gtk2' 'libxcrypt-compat')
 #makedepends=("icoutils")
-optdepends=('zenity: fix crashes when downloading files, not required on kde.')
+optdepends=('zenity: fix crashes when downloading files, not required on kde.'
+'libxss: fix tray icon functionality in gnome.'
+)
 provides=('com.alibabainc.dingtalk' 'dingtalk')
 conflicts=('com.alibabainc.dingtalk')
 replaces=('com.alibabainc.dingtalk')
