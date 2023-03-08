@@ -1,0 +1,16 @@
+pkgbase = brother-dcp7090dw
+	pkgdesc = Brother DCP-7090DW lpr driver and CUPS wrapper.
+	pkgver = 4.0.0_1
+	pkgrel = 1
+	url = https://support.brother.com/g/b/downloadend.aspx?c=cn_ot&lang=en&prod=dcp7090dw_cn&os=127&dlid=dlf105153_000&flang=4&type3=10282
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = custom:brother
+	depends = cups
+	depends = lib32-glibc
+	optdepends = brscan4: scanner support.
+	source = https://download.brother.com/welcome/dlf105153/dcp7090dwpdrv-4.0.0-1.i386.rpm
+	md5sums = 17d13b1c8dc9c526add362e355e59372
+
+pkgname = brother-dcp7090dw
