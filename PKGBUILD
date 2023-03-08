@@ -1,9 +1,8 @@
-pkgbase='geany-plugin-preview'
 _gitname='geany-preview'
-pkgname="$pkgbase-git"
+pkgname='geany-plugin-preview'
 pkgdesc="Plugin for Geany to Preview lightweight markup languages, including AsciiDoc, DocBook, Fountain, LaTeX, Markdown, MediaWiki, reStructuredText, Textile, and Txt2Tags."
 url="https://github.com/xiota/geany-preview"
-pkgver=0.0.2.r0.gc83d1cf
+pkgver=0.0.2
 pkgrel=1
 arch=(x86_64)
 license=(GPL)
@@ -17,28 +16,15 @@ makedepends=(
   'git'
 )
 
-provides=("$pkgbase")
+provides=("$pkgname")
 conflicts=(${provides[@]})
 
-_branch="main"
 source=(
-  "$_gitname"::"git+$url#branch=$_branch"
+  "$_gitname"::"git+$url#tag=v$pkgver"
 )
 sha256sums=(
   'SKIP'
 )
-
-pkgver() {
-  cd "$srcdir/$_gitname"
-
-  if [ "$_branch" = "main" ] ; then
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-  else
-    printf "%s.%s" \
-      $(git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g') \
-      "$_branch"
-  fi
-}
 
 prepare() {
   cd "$srcdir/$_gitname"
