@@ -1,0 +1,7 @@
+pkg/
+src/
+*.gz
+*.xz
+*.zst
+*.sig
+config.new

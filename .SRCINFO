@@ -1,0 +1,42 @@
+pkgbase = linux-515-starfive-visionfive2
+	pkgver = 2.10.4
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/starfive-tech/linux/
+	arch = riscv64
+	license = GPL2
+	makedepends = bc
+	makedepends = libelf
+	makedepends = pahole
+	makedepends = cpio
+	makedepends = perl
+	makedepends = tar
+	makedepends = xz
+	options = !strip
+	source = https://github.com/starfive-tech/linux/archive/refs/tags/VF2_v2.10.4.tar.gz
+	source = 0001-csr-fix.patch::https://github.com/torvalds/linux/commit/6df2a016c0c8a3d0933ef33dd192ea6606b115e3.diff
+	source = config
+	source = linux.preset
+	source = 90-linux.hook
+	sha256sums = 5614f50f29fd4aa56525e0b002b5b03ef4109ef92484aab6747516efd2fb213b
+	sha256sums = 3459b3799b7f9b7d6129ca8996c40d6a12f89127fe54b4af99ec9512b711dced
+	sha256sums = 2fa9ceec6bf8dd882945a5fc5141ef47f1f04f4dffe2c0884c16af3f37f7c45e
+	sha256sums = 57acae869144508c5600d6c8f41664f073f731c40cad2c58d2a1d55240495ddb
+	sha256sums = 5308a6dcabff290c627cab5c9db23c739eddbf7aa8a4984468ed59e6a5250702
+
+pkgname = linux-515-starfive-visionfive2
+	pkgdesc = The Linux 5.15 for StarFive RISC-V VisionFive 2 Board kernel and modules
+	depends = coreutils
+	depends = kmod
+	depends = mkinitcpio
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = linux=2.10.4
+	provides = WIREGUARD-MODULE
+	conflicts = linux
+
+pkgname = linux-515-starfive-visionfive2-headers
+	pkgdesc = Headers and scripts for building modules for the Linux 5.15 for StarFive RISC-V VisionFive 2 Board kernel
+	depends = pahole
+	provides = linux-headers=2.10.4
+	conflicts = linux-headers
