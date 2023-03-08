@@ -57,7 +57,7 @@ prepare() {
 
 package() {
   mkdir "${pkgdir}/opt"
-  cp -r "${_extractedName}" "${pkgdir}/opt/{$pkgname}"
+  cp -r "${_extractedName}" "${pkgdir}/opt/$pkgname"
 
   # The Google code uses a _TraceAction() method which spams the screen even
   # in "quiet" mode, we're throwing away output on purpose to keep it clean
