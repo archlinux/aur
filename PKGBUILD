@@ -2,12 +2,12 @@
 # Upstream contact: silx at esrf dot fr
 pkgname=python-silx
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of Python packages for data analysis at synchrotron radiation facilities."
 arch=('any')
 url="http://www.silx.org"
 license=('MIT' 'LGPL')
-depends=('python-numpy' 'python-pyqt5' 'python-matplotlib')
+depends=('python-numpy' 'python-pyqt5' 'python-matplotlib' 'python-fabio')
 optdepends=('python-h5py-openmpi: for HDF5 input/output'
             'ipython: for interactive console'
             'python-qtconsole: for GUI console'
