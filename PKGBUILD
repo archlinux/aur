@@ -21,7 +21,9 @@ fi
 package() {
 	# Using /usr/share instead of /opt
 	mkdir -p "$pkgdir/usr/share"
-  rm -rf "$srcdir/opt/brother/Printers/${_model}/lpd/armv7l"
+	# delete armv7l files
+	rm -rf "$srcdir/opt/brother/Printers/${_model}/lpd/armv7l"
+	
 	cp -R "$srcdir/opt/brother" "$pkgdir/usr/share"
 	sed -i 's|\\\/opt\\\/|\\\/usr\\\/|' "$pkgdir/usr/share/brother/Printers/${_model}/cupswrapper/lpdwrapper"
 	sed -i 's|\\\/opt\\\/|\\\/usr\\\/|' "$pkgdir/usr/share/brother/Printers/${_model}/lpd/lpdfilter"
