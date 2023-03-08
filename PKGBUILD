@@ -8,7 +8,7 @@
 pkgname=adduser-deb
 _pkgname=adduser-debian
 pkgver=3.131
-pkgrel=1
+pkgrel=2
 pkgdesc="Debian's 'adduser' and 'deluser' commands for creating and removing users"
 arch=("any")
 url="https://salsa.debian.org/debian/adduser"
