@@ -1,6 +1,6 @@
 pkgbase = dapr-cli-bin
 	pkgdesc = Command-line tools for Dapr
-	pkgver = 1.9.1
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://github.com/dapr/cli
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = dapr-cli-bin
 	provides = dapr
 	options = !strip
 	options = !emptydirs
-	source = dapr-cli-1.9.1-linux-amd64.tar.gz::https://github.com/dapr/cli/releases/download/v1.9.1/dapr_linux_amd64.tar.gz
-	sha256sums = 896f1d7b1c244f06311354162b53b048885152df93c1a94abf06c76ac6837de6
+	source = dapr-cli-1.10.0-linux-amd64.tar.gz::https://github.com/dapr/cli/releases/download/v1.10.0/dapr_linux_amd64.tar.gz
+	sha256sums = 48063b751a08f4e311c56c4930cfec48bc25be62ceb61bf6691300a0b9729f61
 
 pkgname = dapr-cli-bin
