@@ -1,0 +1,22 @@
+pkgbase = pot-translation-git
+	pkgdesc = 一个跨平台的划词翻译软件
+	pkgver = 0.0.6.r0.g873fc5a
+	pkgrel = 1
+	url = https://github.com/Pylogmon/pot
+	arch = x86_64
+	license = GPL3
+	makedepends = nodejs
+	makedepends = pnpm
+	makedepends = rust
+	depends = libappindicator-gtk3
+	depends = webkit2gtk
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = xsel
+	provides = pot-translation
+	conflicts = pot-translation
+	conflicts = pot-translation-bin
+	source = git+https://github.com/Pylogmon/pot.git
+	sha512sums = SKIP
+
+pkgname = pot-translation-git
