@@ -1,7 +1,7 @@
 pkgbase = r-aplot
 	pkgdesc = Decorate a 'ggplot' with Associated Information
-	pkgver = 0.1.9
-	pkgrel = 3
+	pkgver = 0.1.10
+	pkgrel = 1
 	url = https://cran.r-project.org/package=aplot
 	arch = any
 	license = Artistic2.0
@@ -12,7 +12,7 @@ pkgbase = r-aplot
 	depends = r-magrittr
 	depends = r-patchwork
 	optdepends = r-ggtree
-	source = https://cran.r-project.org/src/contrib/aplot_0.1.9.tar.gz
-	sha256sums = af0763620a757571caac769bad5398c22a4890af6cb5646ac5fa9039a114bb12
+	source = https://cran.r-project.org/src/contrib/aplot_0.1.10.tar.gz
+	sha256sums = d937768241f887628b88bb3b49dd6cbe9b7dae39ae7054e7380a9836721a67d1
 
 pkgname = r-aplot
