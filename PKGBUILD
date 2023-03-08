@@ -1,12 +1,13 @@
 # Maintainer: yjun <jerrysteve1101@gmail.com>
 # Maintainer: Maik93 <michael.mugnai@gmail.com>
 # Maintainer: taotieren <admin@taotieren.com>
+# Maintainer: GPereira <goncalo_pereira@outlook.pt>
 
 # fork from https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=stm32cubeide
 
 pkgname=stm32cubeprog
 _pkgname="STM32CubeProgrammer"
-pkgver=2.12.0
+pkgver=2.13.0
 pkgrel=1
 pkgdesc="An all-in-one multi-OS software tool for programming STM32 products."
 arch=('x86_64')
@@ -26,7 +27,7 @@ license=('custom:SLA0048')
 depends=('stlink'
          'libusb')
 makedepends=('xdotool'
-#              'xorg-server-xvfb'
+             'xorg-server-xvfb'
              'icoutils'
              'fontconfig'
              'gsfonts')
@@ -35,10 +36,10 @@ options=('!strip')
 _pkg_main_name="${pkgname//prog/prg}-lin-v${pkgver//./-}"
 # get New _pkg_main_url_index
 # curl https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-programmers/stm32cubeprog/_jcr_content/get-software/get-software-table-body.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html |& grep dlLink
-_pkg_main_url_index="2c/71/de/d9/d5/2f/4f/4c"
+_pkg_main_url_index="ef/80/04/58/9a/5b/4c/41"
 source=("en.${_pkg_main_name}.zip::https://www.st.com/content/ccc/resource/technical/software/utility/group0/${_pkg_main_url_index}/${_pkg_main_name}/files/${_pkg_main_name}.zip/jcr:content/translations/en.${_pkg_main_name}.zip"
         "${pkgname}.xdotool")
-sha256sums=('239d222424ce8d6976e9800007e04db7ba96ff2148f96730b4dd1fdc6169b9a2'
+sha256sums=('677847ed0289f14b26399b1d7ee67c669a491f10fe54d73c8d1c195872753c3e'
             '7896311cf3f4a49cafcd541d188543760ea0289bc327f183d5d38321b93db93b')
 
 prepare() {

@@ -1,11 +1,12 @@
 pkgbase = stm32cubeprog
 	pkgdesc = An all-in-one multi-OS software tool for programming STM32 products.
-	pkgver = 2.12.0
+	pkgver = 2.13.0
 	pkgrel = 1
 	url = https://www.st.com/en/development-tools/stm32cubeprog.html
 	arch = x86_64
 	license = custom:SLA0048
 	makedepends = xdotool
+	makedepends = xorg-server-xvfb
 	makedepends = icoutils
 	makedepends = fontconfig
 	makedepends = gsfonts
@@ -13,9 +14,9 @@ pkgbase = stm32cubeprog
 	depends = libusb
 	provides = stm32cubeprogrammer
 	options = !strip
-	source = en.stm32cubeprg-lin-v2-12-0.zip::https://www.st.com/content/ccc/resource/technical/software/utility/group0/2c/71/de/d9/d5/2f/4f/4c/stm32cubeprg-lin-v2-12-0/files/stm32cubeprg-lin-v2-12-0.zip/jcr:content/translations/en.stm32cubeprg-lin-v2-12-0.zip
+	source = en.stm32cubeprg-lin-v2-13-0.zip::https://www.st.com/content/ccc/resource/technical/software/utility/group0/ef/80/04/58/9a/5b/4c/41/stm32cubeprg-lin-v2-13-0/files/stm32cubeprg-lin-v2-13-0.zip/jcr:content/translations/en.stm32cubeprg-lin-v2-13-0.zip
 	source = stm32cubeprog.xdotool
-	sha256sums = 239d222424ce8d6976e9800007e04db7ba96ff2148f96730b4dd1fdc6169b9a2
+	sha256sums = 677847ed0289f14b26399b1d7ee67c669a491f10fe54d73c8d1c195872753c3e
 	sha256sums = 7896311cf3f4a49cafcd541d188543760ea0289bc327f183d5d38321b93db93b
 
 pkgname = stm32cubeprog
