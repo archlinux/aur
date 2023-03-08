@@ -33,6 +33,7 @@ export PATH="${PATH}:${PS3DEV}/spu/bin"
 prepare() {
 	cd "${srcdir}/PSL1GHT"
 
+	# Weird different internal compiler errors with Os/O2/O3, only O1 works
 	sed -e "s/-O2/-O1/g" -i ppu/librsx/Makefile
 }
 
