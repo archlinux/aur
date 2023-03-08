@@ -14,7 +14,7 @@ license=('GPL')
 makedepends=('cmake' 'ninja' 'iso-codes' 'doxygen' 'graphviz' 'c++utilities')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('87aaa693769012a77b8b0d4f5a2bfd04c7591afd64266ae11c999bbe92f7d117')
+sha256sums=('298ff927e14860e97e5b75057ff50fe64e0e0521ca7253e8624be6db6ac77261')
 
 prepare() {
   [[ -d tagparser ]] || ln -s "${PROJECT_DIR_NAME:-$_reponame-$pkgver}" tagparser
