@@ -65,7 +65,7 @@ index 6c40d52..265196f 100644
  
  bool VaapiPictureNativePixmap::AllowOverlay() const {
 diff --git a/media/gpu/vaapi/vaapi_video_decode_accelerator.cc b/media/gpu/vaapi/vaapi_video_decode_accelerator.cc
-index 4e3a55f..bac0b48 100644
+index 07d39ba..344eceb 100644
 --- a/media/gpu/vaapi/vaapi_video_decode_accelerator.cc
 +++ b/media/gpu/vaapi/vaapi_video_decode_accelerator.cc
 @@ -560,12 +560,12 @@ void VaapiVideoDecodeAccelerator::InitiateSurfaceSetChange(
@@ -113,10 +113,10 @@ index 5555c11..844e1d8 100644
  
  }  // namespace ui
 diff --git a/ui/ozone/platform/wayland/ozone_platform_wayland.cc b/ui/ozone/platform/wayland/ozone_platform_wayland.cc
-index b3190c6..a3e0af3 100644
+index af254b7..77fb359 100644
 --- a/ui/ozone/platform/wayland/ozone_platform_wayland.cc
 +++ b/ui/ozone/platform/wayland/ozone_platform_wayland.cc
-@@ -309,6 +309,9 @@ class OzonePlatformWayland : public OzonePlatform,
+@@ -312,6 +312,9 @@ class OzonePlatformWayland : public OzonePlatform,
        properties->supports_global_screen_coordinates =
            features::IsWaylandScreenCoordinatesEnabled();
  
