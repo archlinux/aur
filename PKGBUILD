@@ -1,7 +1,7 @@
 pkgname='gnome-critical-packages'
 pkgver='1.0'
 pkgrel='1'
-pkgdesc="Just a thing to protect GNOME's various packages"
+pkgdesc="Dummy package to install and protect GNOME"
 arch=('x86_64')
 license=('GPL')
 groups=('gnome')
