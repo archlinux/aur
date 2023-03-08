@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Exec=/opt/packettracer/packettracer -uri=%u
+Name=Packet Tracer 8.2.1
+Icon=/opt/packettracer/art/app.png
+Terminal=false
+StartupNotify=true
+NoDisplay=true
+MimeType=x-scheme-handler/pttp;
+Categories=Network;
+
