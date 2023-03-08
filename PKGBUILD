@@ -1,7 +1,7 @@
 # Maintainer: UmamiAppearance <mail@umamiappearance.eu>
 
 pkgname=base-ex-cli
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="CLI for BaseEx -- Base2-Base62, Base16, Base32, Base58, Base64, UUencode, Base85, Base91, LEB128, Ecoji, Base2048, BasePhi"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=("GPL")
 makedepends=('npm')
 noextract=("${pkgname}-${pkgver}.tgz")
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=("6870b295f8056eab83af63bf26615868f7425f1cb91944a391026df604f125e4")
+sha256sums=("94441486dd7abf959b77cba12ec7ce43c3c1bb603873e462b96450e74d11a3d8")
 
 package() {
     npm install -g --prefix "${pkgdir}/usr" --cache "${srcdir}/npm-cache" "${srcdir}/${pkgname}-${pkgver}.tgz"
