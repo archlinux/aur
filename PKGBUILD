@@ -2,7 +2,7 @@
 
 _pkgname=flask-restx
 pkgname=python-${_pkgname}
-pkgver=1.0.3
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Flask extension that adds support for quickly building REST APIs"
 arch=('any')
@@ -11,7 +11,7 @@ license=('BSD')
 depends=(python python-{flask\>=0.8,aniso8601\>=0.82,jsonschema,pytz,werkzeug})
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('5fdacd23031d25ff4642f141a47a7fa877f07e3e261099ccc5ebc4fc254de84c')
+sha256sums=('e23dc4ff24869c92faa719b7a58be1203ed741275ff32c9f03d0ab56ed01546c')
 
 package() {
     cd "$_pkgname-$pkgver"
