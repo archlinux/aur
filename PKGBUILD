@@ -30,5 +30,5 @@ package() {
     mkdir -p "${pkgdir}/usr/share/sdrtrunk" "${pkgdir}/usr/bin"
     cp -ra * "${pkgdir}/usr/share/sdrtrunk"
 
-    ln -s "${pkgdir}/usr/share/sdrtrunk/bin/sdr-trunk" "${pkgdir}/usr/bin/sdr-trunk"
+    ln -s "/usr/share/sdrtrunk/bin/sdr-trunk" "${pkgdir}/usr/bin/sdr-trunk"
 }
