@@ -47,7 +47,7 @@ export PATH="${PATH}:${PS3DEV}/bin"
 export PATH="${PATH}:${PS3DEV}/ppu/bin"
 export PATH="${PATH}:${PS3DEV}/spu/bin"
 
-_prefix="${PS3DEV}/${_target}"
+_prefix="${PS3DEV}/${_target_alias}"
 
 prepare() {
 	patch -p1 -d "newlib-${_newlib_pkgver}" < "${srcdir}/newlib-${_newlib_pkgver}-ps3-${_target_alias}.patch"
@@ -119,7 +119,7 @@ package() {
 
 	rm -f "${pkgdir}/${_prefix}/share/info/dir"
 
-	cd "${pkgdir}/${_prefix}/${_target_alias}/bin"
+	cd "${pkgdir}/${_prefix}/bin"
 	for b in ${_target}-*; do
 		ln -s "${b}" "${b/${_target}/${_target_alias}}"
 	done
