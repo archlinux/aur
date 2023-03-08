@@ -1,8 +1,8 @@
 pkgbase = icingaweb2-module-incubator
 	pkgdesc = Bleeding edge libraries useful for Icinga Web 2 modules
 	pkgver = 0.20.0
-	pkgrel = 1
-	url = http://www.icinga.org
+	pkgrel = 2
+	url = https://github.com/Icinga/icingaweb2-module-incubator
 	arch = any
 	license = GPL
 	depends = icingaweb2
