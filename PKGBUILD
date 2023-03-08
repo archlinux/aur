@@ -24,7 +24,7 @@ optdepends=(
 )
 options=('!strip' 'staticlibs')
 source=(
-  "https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/google-cloud-cli_${pkgver}.orig.tar.gz"
+  "https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/${pkgname}_${pkgver}.orig.tar.gz"
   "google-cloud-sdk.sh"
   "0001-set-python2-for-dev-appserver-py.patch"
   #"0002-set-python2-for-endpointscfg-py.patch"
