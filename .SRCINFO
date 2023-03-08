@@ -1,6 +1,6 @@
 pkgbase = clp-git
 	pkgdesc = writes input files to stdout with syntax highlighting
-	pkgver = r66.8b7069b
+	pkgver = r68.8749f30
 	pkgrel = 1
 	url = https://git.sr.ht/~eskin/clp
 	arch = x86_64

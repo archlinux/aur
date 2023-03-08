@@ -2,7 +2,7 @@
 
 _pkgname=clp
 pkgname="${_pkgname}-git"
-pkgver=r66.8b7069b
+pkgver=r68.8749f30
 pkgrel=1
 pkgdesc='writes input files to stdout with syntax highlighting'
 arch=('x86_64' 'aarch64')
@@ -15,18 +15,18 @@ sha256sums=('SKIP')
 conflicts=("${_pkgname}")
 
 pkgver() {
-	cd "${_pkgname}"
- 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${_pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "${_pkgname}"
-	./configure
+  cd "${_pkgname}"
+  ./configure --prefix=/usr
   make
 }
 
 package() {
-	cd "${_pkgname}"
-	make MANPREFIX=/usr/share/man DESTDIR="${pkgdir}" PREFIX='/usr' install
+  cd "${_pkgname}"
+  make MANPREFIX=/usr/share/man DESTDIR="${pkgdir}" install
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
