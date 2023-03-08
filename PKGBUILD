@@ -11,7 +11,7 @@ url="https://github.com/Pylogmon/pot"
 license=('GPL3')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-bin")
-depends=('libappindicator-gtk3' 'webkit2gtk' 'gtk3' 'libayatana-appindicator' 'xsel')
+depends=('libappindicator-gtk3' 'webkit2gtk' 'gtk3' 'libayatana-appindicator' 'xsel' 'xdotool')
 makedepends=('nodejs' 'pnpm' 'rust')
 
 source=(git+$url.git)
