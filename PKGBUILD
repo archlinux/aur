@@ -1,6 +1,6 @@
 # Maintainer: asukaminato <asukaminato at nyan dot eu dot org>
 pkgname=erdtree-bin
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=2
 epoch=
 pkgdesc="A multi-threaded file-tree visualizer and disk usage analyzer."
@@ -22,8 +22,8 @@ changelog=
 source_x86_64=("$pkgname-x86_64-$pkgver-$pkgrel.tar.gz::https://github.com/solidiquis/erdtree/releases/download/v$pkgver/et-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$pkgname-aarch64-$pkgver-$pkgrel.tar.gz::https://github.com/solidiquis/erdtree/releases/download/v$pkgver/et-v$pkgver-aarch64-unknown-linux-gnu.tar.gz")
 noextract=()
-sha256sums_x86_64=('837f1e29af9c1971fd0f7ee08fe16ca47e77b9622c2960e9b568f6b5fbe20458')
-sha256sums_aarch64=('4f1375b893095f26e295c442dd4f0c6441892174b353235468f36383438f3e7f')
+sha256sums_x86_64=('5615409272ab10c046dfd763cf061207c3f0b78bc817a6d3edcce816dcc75e85')
+sha256sums_aarch64=('f60916f6a814b7bd44cc318d7fa15a14c6a9a4d3759aa6eb81dcf2bc60407b9d')
 validpgpkeys=()
 
 package() {
