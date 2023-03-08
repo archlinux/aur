@@ -1,6 +1,6 @@
 pkgbase = grimblast-git
 	pkgdesc = A helper for screenshots within Hyprland.
-	pkgver = r25.37c8121
+	pkgver = r21.d4eccc8
 	pkgrel = 1
 	url = https://github.com/hyprwm/contrib
 	arch = any

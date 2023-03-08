@@ -1,7 +1,7 @@
 # Maintainer: Struan Robertson <struanrobertson@protonmail.com>
 
 pkgname=grimblast-git
-pkgver=r25.37c8121
+pkgver=r21.d4eccc8
 pkgrel=1
 pkgdesc="A helper for screenshots within Hyprland."
 arch=("any")
@@ -17,8 +17,8 @@ source=("git+https://github.com/hyprwm/contrib.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/contrib/grimblast"
-  git log --pretty="format:%h" -n 1 grimblast | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/contrib"
+  printf "r%s.%s" "$(git rev-list --count HEAD -- grimblast/)" "$(git rev-parse --short HEAD -- grimblast/)"
 }
 
 build() {
