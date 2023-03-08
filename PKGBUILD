@@ -1,8 +1,8 @@
 # Maintainer: Debendra Oli <debendraoli [at] pm [dot] me>
 
 pkgname=ydotool-bin
-pkgver=1.0.1
-pkgrel=3
+pkgver=1.0.4
+pkgrel=1
 pkgdesc="Generic command-line automation tool (no X!)"
 arch=('x86_64' 'aarch64')
 conflicts=(ydotool)
@@ -23,6 +23,6 @@ package() {
 	install -Dm755 "$srcdir/ydotool-release-ubuntu-latest" "$pkgdir/usr/local/bin/ydotool"
 	install -Dm755 "$srcdir/ydotoold-release-ubuntu-latest" "$pkgdir/usr/local/bin/ydotoold"
 	install -Dm644 "$srcdir/80-uinput.rules" "$pkgdir/etc/udev/rules.d/80-uinput.rules"
-	install -dm755 "$pkgdir/usr/lib/systemd/system/"
-	install -Dm644 "$srcdir/ydotool.service" "$pkgdir/usr/lib/systemd/system/ydotool.service"
+	install -dm755 "$pkgdir/usr/lib/systemd/user/"
+	install -Dm644 "$srcdir/ydotool.service" "$pkgdir/usr/lib/systemd/user/ydotool.service"
 }
