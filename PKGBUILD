@@ -16,7 +16,7 @@ pkgname=()
 
 pkgver=2.11.0
 _pkgver=2.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
 license=('APACHE')
@@ -118,8 +118,8 @@ prepare() {
   export TF_IGNORE_MAX_BAZEL_VERSION=1
   export NCCL_INSTALL_PATH=/usr
   # Does tensorflow really need the compiler overridden in 5 places? Yes.
-  export CC=gcc-11
-  export CXX=g++-11
+  export CC=gcc
+  export CXX=g++
   export GCC_HOST_COMPILER_PATH=/opt/cuda/bin/gcc
   export HOST_C_COMPILER=/usr/bin/${CC}
   export HOST_CXX_COMPILER=/usr/bin/${CXX}
