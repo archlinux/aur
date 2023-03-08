@@ -6,6 +6,7 @@ pkgbase = nftwatch-git
 	arch = any
 	license = GPL3
 	makedepends = git
+	depends = nftables
 	depends = python-yaml
 	backup = etc/nftwatch.yml
 	source = git+https://github.com/flyingrhinonz/nftwatch.git
