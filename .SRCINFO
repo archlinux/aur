@@ -4,7 +4,7 @@ pkgbase = ps3toolchain
 	pkgrel = 1
 	url = https://github.com/ps3dev/ps3toolchain
 	arch = any
-	license = GPL
+	license = MIT
 	depends = ps3-ppu-binutils>=2.40
 	depends = ps3-ppu-gcc>=9.5.0
 	depends = ps3-spu-binutils>=2.22
