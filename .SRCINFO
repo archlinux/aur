@@ -1,0 +1,16 @@
+pkgbase = shadower-git
+	pkgdesc = A simple CLI utility to add rounded borders and shadows to images.
+	pkgver = r3.62f00fd
+	pkgrel = 1
+	url = https://github.com/n3oney/shadower
+	arch = any
+	license = MIT
+	makedepends = rustup
+	makedepends = cargo
+	makedepends = git
+	provides = shadower
+	conflicts = shadower
+	source = git+https://github.com/n3oney/shadower.git
+	md5sums = SKIP
+
+pkgname = shadower-git
