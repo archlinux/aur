@@ -1,16 +1,23 @@
-# Maintainer: peeweep <peeweep at 0x0 dot ee>
+# Maintainer: uriel <no public email for you>
 
+_pkgname=quark-engine
 pkgname=quark-engine
-pkgver=20.01
+pkgver=23.2.1
 pkgrel=1
 pkgdesc='An Obfuscation-Neglect Android Malware Scoring System'
 arch=('any')
 license=('GPL')
 url='https://github.com/quark-engine/quark-engine'
-depends=('python>=3.7' 'python-prettytable' 'python-androguard-git' 'python-tqdm' 'python-colorama' 'python-click')
-makedepends=('python-setuptools>=3.7')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('bf3578d3716b79a9d9098f7dd403b02be42a19322c0c37c936d824e09178ff43')
+depends=('python' 'python-prettytable' 'python-androguard' 'python-tqdm' 'python-colorama' 'python-graphviz' 'python-prompt-toolkit' 'python-plotly' 'python-rzpipe' 'python-click')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('8dba29cda97a4b86d60677130fbcaa71533f3a6443faff5335150ffe66eb7bac')
+
+prepare() {
+    # Hacky way to prevent it from installing tests to site-packages
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    rm -r tests
+}
 
 build () {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -23,4 +30,3 @@ package() {
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-# vim: ts=2 sw=2 et:
