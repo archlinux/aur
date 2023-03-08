@@ -2,7 +2,7 @@
 # Contributor:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: Kevin Majewski < kevin.majewski02 AT gmail.com >
 pkgname=video-downloader
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="Download videos from websites like YouTube and many others (based on yt-dlp)"
 arch=('any')
@@ -11,9 +11,9 @@ license=('GPL3')
 depends=('ffmpeg' 'libadwaita' 'python-brotli' 'python-gobject' 'python-mutagen'
          'python-pycryptodomex' 'python-pyxattr' 'python-websockets' 'yt-dlp')
 makedepends=('meson')
-checkdepends=('appstream-glib') # flake8: Lint python sources, currently fails
+checkdepends=('appstream-glib')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('48c92be013385d14d5b751ab9ef6c7cb6b7893d3d8bc88c2e833f3148b664255')
+sha256sums=('eded0dd77e5aecbf000ca0d43ed60a04529f56803cf803bd1ffc7375ce0f6cda')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
