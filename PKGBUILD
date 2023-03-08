@@ -2,7 +2,7 @@
 
 _name=hat-doit
 pkgname=python-$_name
-pkgver=0.11.10
+pkgver=0.12.5
 pkgrel=1
 pkgdesc="Hat build utility functions"
 url="https://github.com/hat-open/hat-doit"
@@ -14,7 +14,7 @@ depends=('python-build' 'python-doit' 'flake8' 'python-sphinx-furo'
          'python-setuptools' 'python-sphinx' 'python-wheel')
 makedepends=('python-installer')
 source=("https://github.com/hat-open/hat-doit/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1f84bb9c4000cfce20af215632dcc03e7473faba238a70572387bc8b072f7ce2')
+sha256sums=('7ad0718486239161ad027b2b8644fd6ecdb0056ab8b766110ad2bbd87449f9ac')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
