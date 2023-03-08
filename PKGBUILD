@@ -1,17 +1,17 @@
 # Maintainer: Marcus Hoffmann <bubu@bubu1.eu>
 _pkgname=language-data
 pkgname=python-weblate-language-data
-pkgver=2022.7
+pkgver=2023.3
 pkgrel=1
 pkgdesc="Language definitions used by Weblate"
 url="https://github.com/WeblateOrg/language-data"
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 license=('MIT')
 arch=('any')
 source=("https://github.com/WeblateOrg/language-data/archive/${pkgver}.tar.gz")
 
-sha256sums=('95241271ad22ad834d3f5dd3b2d33a31a828517b4b344d687321073401fe1ebf')
+sha256sums=('1c54f14ed24d5768101f8e17487ffa2f50124dae57b80d771d2d3f1334c6067a')
 
 #check() {
 #    pytest
@@ -19,11 +19,11 @@ sha256sums=('95241271ad22ad834d3f5dd3b2d33a31a828517b4b344d687321073401fe1ebf')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    python -m installer --destdir="${pkgdir}" dist/*.whl
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
