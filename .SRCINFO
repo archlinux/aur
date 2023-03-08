@@ -1,12 +1,12 @@
-pkgbase = pylyzer
-	pkgdesc = A fast static code analyzer & language server for Python
-	pkgver = 0.0.10
+pkgbase = pylyzer-git
+	pkgdesc = A fast static code analyzer & language server for Python - git version
+	pkgver = 0.0.10.r0.gf255d0e
 	pkgrel = 1
 	url = https://github.com/mtshiba/pylyzer
 	arch = any
 	license = MIT
 	makedepends = cargo
-	source = https://github.com/mtshiba/pylyzer/archive/refs/tags/v0.0.10.tar.gz
-	sha256sums = ea128f190391b1e98841eb371121630399971095dea5e42e7b5c09c2e1a7f518
+	source = git+https://github.com/mtshiba/pylyzer
+	sha256sums = SKIP
 
-pkgname = pylyzer
+pkgname = pylyzer-git

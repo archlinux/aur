@@ -1,9 +1,10 @@
 # Maintainer: Salamandar <felix@piedallu.me>
 
-pkgname=pylyzer
-pkgver=0.0.10
+_pkgname=pylyzer
+pkgname="${_pkgname}-git"
+pkgver=0.0.10.r0.gf255d0e
 pkgrel=1
-pkgdesc='A fast static code analyzer & language server for Python'
+pkgdesc='A fast static code analyzer & language server for Python - git version'
 arch=('any')
 url='https://github.com/mtshiba/pylyzer'
 license=('MIT')
@@ -14,34 +15,39 @@ depends=(
 )
 
 source=(
-    "${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "git+${url}"
 )
 sha256sums=(
-    'ea128f190391b1e98841eb371121630399971095dea5e42e7b5c09c2e1a7f518'
+    'SKIP'
 )
 # Disable checks for now...
 BUILDENV+=('!check')
 
+pkgver() {
+  cd "$_pkgname"
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 prepare() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$_pkgname"
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$_pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
 }
 
 check() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$_pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo test --frozen --all-features
 }
 
 package () {
-    cd "$srcdir/$pkgname-$pkgver"
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+    cd "$_pkgname"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"
 }
