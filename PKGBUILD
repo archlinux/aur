@@ -168,23 +168,62 @@ package() {
   install -Dm644 copyright NEWS README "${pkgdir}/usr/share/doc/adduser"
 
   # Manpages
-  # TODO: There's probably a way of doing this which is more concise and
-  # future-proofed, but probably more complicated.
+  # This is more than a mouthful, so let's work through it step-by-step.
+  # 1. Get a list of all of the available `*.po` files in the `doc/po4a/po`
+  #    directory and store the list in `$all_languages`
+  # 2. Remove all of the `.po` extensions from the list. This causes
+  #    `$all_languages` to contain just a list of allowed language codes.
+  # 3. Start scanning all of the files beginning with `adduser` and `deluser`.
+  # 4. If the current file name begins with `adduser.local` then we skip it and
+  #    return to step 3. This is because we don't install the `adduser.local`
+  #    script in this package (if present, it requires manual configuration
+  #    before `adduser` is safe to run) so we also don't want its manpages.
+  # 5. Extract the language code from the file name, if it exists. We do this
+  #    using a regex match.
+  #    5.1. The `$all_languages` variable has its spaces replaced with bar
+  #         characters. This means that the file name is matched against a
+  #         regex which looks like the following: \.(<lang>|<lang>|<lang>)\.
+  #         This matches a literal dot, followed by any one of the valid
+  #         language codes, followed by another dot. We match with the dots so
+  #         that we don't accidentally match other portions of the file name.
+  #    5.2. If a match was found, then the `BASH_REMATCH[0]` variable will
+  #         contain the matching string, which is the file's language code
+  #         surrounded by dots. We remove the dots and store the found language
+  #         code in the `$language` variable.
+  #    Note that if the regex didn't match, then the `$language` variable will
+  #    be empty to indicate that there is no language code for this file.
+  # 6. Use the information we now have to generate the destination path for the
+  #    current file and use `install` to put the file there.
+  #    6.1. If the language code existed, then the first part of the path will
+  #         expand as `/usr/share/man/<lang>/`. If there was no language code,
+  #         then the path will expand as `/usr/share/man/./` which is the same
+  #         as just `/usr/share/man/`. This matches the Arch policy where
+  #         non-English manpages are in dedicated language subdirectories, but
+  #         English manpages are not.
+  #    6.2. We figure out which section the manual should go into, by removing
+  #         all but the last character from the file name (which is a number,
+  #         either 5 or 8 as of this writing). For example, if the file name
+  #         was `adduser.conf.5` then it would go into the `man5` subdirectory.
+  #    6.3. Finally, if the file name contained a language code, we need to
+  #         remove it. If the language code existed, then Bash would match and
+  #         remove the language code as well as its preceding dot (i.e.
+  #         `adduser.conf.fr.5` would become `adduser.conf.5`). If the language
+  #         code did not exist, then Bash would attempt to match two
+  #         consecutive dot characters (`..`) which does not occur in our
+  #         dataset, so no removal occurs.
+  # 7. Return to step 3 with the next file in the list
+  #
+  # The overall result of this is that we get the desired path translations:
+  # * adduser.conf.5 goes directly to /usr/share/man/man5/adduser.conf.5
+  # * adduser.conf.fr.5 goes to /usr/share/man/fr/man5/adduser.conf.5
   cd ../doc
-  install -Dm644 adduser.8 "${pkgdir}/usr/share/man/man8/adduser.8"
-  install -Dm644 adduser.conf.5 "${pkgdir}/usr/share/man/man5/adduser.conf.5"
-  install -Dm644 adduser.fr.8 "${pkgdir}/usr/share/man/fr/man8/adduser.8"
-  #install -Dm644 adduser.local.8 "${pkgdir}/usr/share/man/man8/adduser.local.8"
-  install -Dm644 adduser.nl.8 "${pkgdir}/usr/share/man/nl/man8/adduser.8"
-  install -Dm644 adduser.pt.8 "${pkgdir}/usr/share/man/pt/man8/adduser.8"
-  install -Dm644 deluser.8 "${pkgdir}/usr/share/man/man8/deluser.8"
-  install -Dm644 deluser.conf.5 "${pkgdir}/usr/share/man/man5/deluser.conf.5"
-  install -Dm644 deluser.conf.fr.5 "${pkgdir}/usr/share/man/fr/man5/deluser.conf.5"
-  install -Dm644 deluser.conf.nl.5 "${pkgdir}/usr/share/man/nl/man5/deluser.conf.5"
-  install -Dm644 deluser.conf.pt.5 "${pkgdir}/usr/share/man/pt/man5/deluser.conf.5"
-  install -Dm644 deluser.fr.8 "${pkgdir}/usr/share/man/fr/man8/deluser.8"
-  install -Dm644 deluser.nl.8 "${pkgdir}/usr/share/man/nl/man8/deluser.8"
-  install -Dm644 deluser.pt.8 "${pkgdir}/usr/share/man/pt/man8/deluser.8"
+  local all_languages=$(cd po4a/po; echo *.po)
+  all_languages=${all_languages//.po}
+  for file in adduser* deluser*; do
+    [[ $file =~ adduser\.local ]] && continue
+    local language=$([[ $file =~ \.(${all_languages// /|})\. ]] && echo ${BASH_REMATCH[0]:1:-1})
+    install -Dm644 $file "${pkgdir}/usr/share/man/${language:-.}/man${file: -1:1}/${file//.${language:-.}}"
+  done
 
   # Locale/translation files
   cd ../po
