@@ -3,6 +3,7 @@ Description=Starts ydotoold service
 
 [Service]
 Type=simple
+Group=input
 Restart=always
 ExecStart=/usr/local/bin/ydotoold
 ExecReload=/usr/bin/kill -HUP $MAINPID

@@ -2,7 +2,7 @@
 
 pkgname=ydotool-bin
 pkgver=1.0.4
-pkgrel=5
+pkgrel=6
 pkgdesc="Generic command-line automation tool (no X!)"
 arch=('x86_64' 'aarch64')
 conflicts=(ydotool)
@@ -16,7 +16,7 @@ source=("$url/releases/download/v$pkgver/ydotool-release-ubuntu-latest"
 sha256sums=('daa83507a596d6839b7467540382dbdc6e4bf64ebfa4f7d6416e877d9a522c0c'
 	'3f14f96308935214c0fb154507360f7632e7deda1935dc2d538259fd9986ed36'
 	'e092f5e7e474aec6c980c458046d0ff11b18750b53de2bf0a0aba1ca26e6d58e'
-	'326822984a902fa2d476e636a914e2a192ec0fb905aa18173bd8e3f566f24ad6')
+	'aa97efd1dd47b02602b2111fe4c9b32cfd16aa75baf9c2127b3d18ea28c0758f')
 install=ydotool.install
 
 package() {
