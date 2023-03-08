@@ -2,15 +2,16 @@
 
 _gemname=git
 pkgname=ruby-$_gemname
-pkgver=1.13.2
+pkgver=1.17.2
 pkgrel=1
 pkgdesc="Ruby library to manipulate git repositories by wrapping system calls to the git binary"
 arch=(any)
 url=https://github.com/ruby-git/ruby-git
 license=(MIT)
 depends=(ruby git ruby-addressable ruby-rchardet)
-checkdepends=(ruby-bundler ruby-rake ruby-minitar ruby-test-unit ruby-yard)
-makedepends=(rubygems ruby-rdoc)
+checkdepends=(openssh ruby-bundler ruby-rake ruby-minitar ruby-test-unit
+              ruby-yard ruby-redcarpet ruby-yardstick)
+makedepends=(rubygems ruby-bump ruby-rdoc)
 source=(git+https://github.com/ruby-git/ruby-git.git#tag=v$pkgver)
 sha256sums=('SKIP')
 
@@ -18,8 +19,7 @@ prepare() {
   cd ${pkgname}
   sed -i 's|~>|>=|g' ${_gemname}.gemspec
 
-  # we don't care about docs coverage
-  sed -i -e "/require 'yardstick\/rake\/verify'/,+5d" Rakefile
+  sed -i -e '/create_github_release/d' ${_gemname}.gemspec
 }
 
 build() {
