@@ -1,6 +1,6 @@
 pkgbase = systemd-git
 	pkgdesc = systemd (git version)
-	pkgver = 253.r62798.7c78a19322
+	pkgver = 253.r62988.2208d96623
 	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
@@ -70,7 +70,7 @@ pkgbase = systemd-git
 	sha512sums = SKIP
 	sha512sums = 3ccf783c28f7a1c857120abac4002ca91ae1f92205dcd5a84aff515d57e706a3f9240d75a0a67cff5085716885e06e62597baa86897f298662ec36a940cf410e
 	sha512sums = f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73
-	sha512sums = c6c30042b9f11c04e4430a4f45cce09c2dcc706bac567d7f8ec93b92ef791cd726d81c5b7d5468b350377f6338fa24d39c1ee8f4e8ce5826a61f4a9d4de4b25b
+	sha512sums = 12f3c011a0164d28b092722639fff92c663c18b032d421695b0a72dbf123dd0908e3822087766ee922e131c02126f67ba2e1983c5cc244f5c4884dfed8605d00
 	sha512sums = a8c7e4a2cc9c9987e3c957a1fc3afe8281f2281fffd2e890913dcf00cf704024fb80d86cb75f9314b99b0e03bac275b22de93307bfc226d8be9435497e95b7e6
 	sha512sums = 61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648
 	sha512sums = c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5
@@ -125,9 +125,10 @@ pkgname = systemd-git
 	depends = openssl
 	depends = libcrypto.so
 	depends = libssl.so
-	optdepends = libmicrohttpd: remote journald capabilities
+	optdepends = libmicrohttpd: systemd-journal-gatewayd and systemd-journal-remote
 	optdepends = quota-tools: kernel-level quota management
 	optdepends = systemd-sysvcompat: symlink package to provide sysvinit binaries
+	optdepends = systemd-ukify-git: combine kernel and initrd into a signed Unified Kernel Image
 	optdepends = polkit: allow administration as unprivileged user
 	optdepends = python: Unified Kernel Image with ukify
 	optdepends = curl: systemd-journal-upload, machinectl pull-tar and pull-raw
@@ -137,9 +138,9 @@ pkgname = systemd-git
 	optdepends = libp11-kit: support PKCS#11
 	optdepends = tpm2-tss: unlocking LUKS2 volumes with TPM2
 	provides = nss-myhostname
-	provides = systemd-tools=253.r62798.7c78a19322
-	provides = udev=253.r62798.7c78a19322
-	provides = systemd=253.r62798.7c78a19322
+	provides = systemd-tools=253.r62988.2208d96623
+	provides = udev=253.r62988.2208d96623
+	provides = systemd=253.r62988.2208d96623
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -177,7 +178,7 @@ pkgname = systemd-libs-git
 	provides = libsystemd
 	provides = libsystemd.so
 	provides = libudev.so
-	provides = systemd-libs=253.r62798.7c78a19322
+	provides = systemd-libs=253.r62988.2208d96623
 	conflicts = libsystemd
 	conflicts = systemd-libs
 	replaces = libsystemd
@@ -188,7 +189,7 @@ pkgname = systemd-resolvconf-git
 	depends = systemd-git
 	provides = openresolv
 	provides = resolvconf
-	provides = systemd-resolvconf=253.r62798.7c78a19322
+	provides = systemd-resolvconf=253.r62988.2208d96623
 	conflicts = openresolv
 	conflicts = systemd-resolvconf
 
@@ -196,6 +197,18 @@ pkgname = systemd-sysvcompat-git
 	pkgdesc = sysvinit compat for systemd (git version)
 	license = GPL2
 	depends = systemd-git
-	provides = systemd-sysvcompat=253.r62798.7c78a19322
+	provides = systemd-sysvcompat=253.r62988.2208d96623
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
+
+pkgname = systemd-ukify-git
+	pkgdesc = Combine kernel and initrd into a signed Unified Kernel Image (git version)
+	license = GPL2
+	depends = binutils
+	depends = python-pefile
+	depends = systemd-git
+	optdepends = python-pillow: Show the size of splash image
+	optdepends = sbsigntools: Sign the embedded kernel
+	provides = ukify
+	provides = systemd-ukify=253.r62988.2208d96623
+	conflicts = systemd-ukify

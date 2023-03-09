@@ -3,9 +3,13 @@
 
 _pkgbase=systemd
 pkgbase=${_pkgbase}-git
-pkgname=('systemd-git' 'systemd-libs-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
+pkgname=('systemd-git'
+         'systemd-libs-git'
+         'systemd-resolvconf-git'
+         'systemd-sysvcompat-git'
+         'systemd-ukify-git')
 pkgdesc='systemd (git version)'
-pkgver=253.r62798.7c78a19322
+pkgver=253.r62988.2208d96623
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
@@ -39,7 +43,7 @@ source=('git+https://github.com/systemd/systemd'
 sha512sums=('SKIP'
             '3ccf783c28f7a1c857120abac4002ca91ae1f92205dcd5a84aff515d57e706a3f9240d75a0a67cff5085716885e06e62597baa86897f298662ec36a940cf410e'
             'f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73'
-            'c6c30042b9f11c04e4430a4f45cce09c2dcc706bac567d7f8ec93b92ef791cd726d81c5b7d5468b350377f6338fa24d39c1ee8f4e8ce5826a61f4a9d4de4b25b'
+            '12f3c011a0164d28b092722639fff92c663c18b032d421695b0a72dbf123dd0908e3822087766ee922e131c02126f67ba2e1983c5cc244f5c4884dfed8605d00'
             'a8c7e4a2cc9c9987e3c957a1fc3afe8281f2281fffd2e890913dcf00cf704024fb80d86cb75f9314b99b0e03bac275b22de93307bfc226d8be9435497e95b7e6'
             '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
             'c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5'
@@ -147,9 +151,10 @@ package_systemd-git() {
   replaces=('nss-myhostname' 'systemd-tools' 'udev')
   conflicts=('nss-myhostname' 'systemd-tools' 'udev')
   conflicts+=('systemd')
-  optdepends=('libmicrohttpd: remote journald capabilities'
+  optdepends=('libmicrohttpd: systemd-journal-gatewayd and systemd-journal-remote'
               'quota-tools: kernel-level quota management'
               'systemd-sysvcompat: symlink package to provide sysvinit binaries'
+              'systemd-ukify-git: combine kernel and initrd into a signed Unified Kernel Image'
               'polkit: allow administration as unprivileged user'
               'python: Unified Kernel Image with ukify'
               'curl: systemd-journal-upload, machinectl pull-tar and pull-raw'
@@ -182,8 +187,16 @@ package_systemd-git() {
   rmdir "$pkgdir"/var/log/journal/remote
 
   # runtime libraries shipped with systemd-libs
-  install -d -m0755 systemd-libs
-  mv "$pkgdir"/usr/lib/lib{nss,systemd,udev}*.so* systemd-libs
+  install -d -m0755 systemd-libs/lib/
+  mv "$pkgdir"/usr/lib/lib{nss,systemd,udev}*.so* systemd-libs/lib/
+  mv "$pkgdir"/usr/lib/pkgconfig systemd-libs/lib/pkgconfig
+  mv "$pkgdir"/usr/include systemd-libs/include
+  mv "$pkgdir"/usr/share/man/man3 systemd-libs/man3
+
+  # ukify shipped in separate package
+  install -d -m0755 systemd-ukify/{systemd,man1}
+  mv "$pkgdir"/usr/lib/systemd/ukify systemd-ukify/systemd/
+  mv "$pkgdir"/usr/share/man/man1/ukify.1 systemd-ukify/man1/
 
   # manpages shipped with systemd-sysvcompat
   rm "$pkgdir"/usr/share/man/man8/{halt,poweroff,reboot,shutdown}.8
@@ -239,8 +252,10 @@ package_systemd-libs-git() {
   conflicts+=('systemd-libs')
   replaces=('libsystemd')
 
-  install -d -m0755 "$pkgdir"/usr
-  mv systemd-libs "$pkgdir"/usr/lib
+  install -d -m0755 "$pkgdir"/usr/share/man
+  mv systemd-libs/lib "$pkgdir"/usr/lib
+  mv systemd-libs/include "$pkgdir"/usr/include
+  mv systemd-libs/man3 "$pkgdir"/usr/share/man/man3
 }
 
 package_systemd-resolvconf-git() {
@@ -277,4 +292,20 @@ package_systemd-sysvcompat-git() {
   for tool in halt poweroff reboot shutdown; do
     ln -s systemctl "$pkgdir"/usr/bin/$tool
   done
+}
+
+package_systemd-ukify-git() {
+  pkgdesc='Combine kernel and initrd into a signed Unified Kernel Image'
+  pkgdesc+=' (git version)'
+  license=('GPL2')
+  conflicts=('systemd-ukify')
+  provides=('ukify')
+  provides+=("systemd-ukify=$pkgver")
+  depends=('binutils' 'python-pefile' 'systemd-git')
+  optdepends=('python-pillow: Show the size of splash image'
+              'sbsigntools: Sign the embedded kernel')
+
+  install -d -m0755 "$pkgdir"/usr/{lib,share/man}
+  mv systemd-ukify/systemd "$pkgdir"/usr/lib/systemd
+  mv systemd-ukify/man1 "$pkgdir"/usr/share/man/man1
 }

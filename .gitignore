@@ -1,6 +1,5 @@
 systemd
-src
-pkg
-*.pkg.*
 splash-arch.bmp
+src
+*pkg*
 *.log
