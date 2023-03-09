@@ -2,7 +2,7 @@
 
 _pkgname=bumper
 pkgname="${_pkgname}-bin"
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Easily bump $pkgver in your AUR packages.'
 url='https://github.com/bcyran/bumper'
@@ -11,7 +11,7 @@ conflicts=('bumper')
 license=('MIT')
 arch=('x86_64')
 source=("${_pkgname}-${pkgver}-linux-amd64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.tar.gz")
-sha256sums=('c68c32b3ac77e531a3e9afec666308c06a6231fd89a66dd68e9305ce43d76c10')
+sha256sums=('594702636e89177ccc61a586b2f0ff47dbf28abec0bd981db995cc9003cb8bfb')
 
 build() {
     mkdir -p completions
