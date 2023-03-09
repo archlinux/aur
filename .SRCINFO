@@ -1,6 +1,6 @@
 pkgbase = onedev-bin
 	pkgver = 8.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.onedev.io/onedev/server
 	arch = x86_64
 	license = MIT
