@@ -1,6 +1,6 @@
 pkgbase = fdroidserver
 	pkgdesc = F-Droid repository management tools
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.com/fdroid/fdroidserver
@@ -39,7 +39,7 @@ pkgbase = fdroidserver
 	optdepends = virtualbox: Buildserver virtual machine support
 	optdepends = wordpress: Web repository plugin
 	options = !emptydirs
-	source = fdroidserver-2.2.0.tar.gz::https://gitlab.com/fdroid/fdroidserver/-/archive/2.2.0/fdroidserver-2.2.0.tar.gz
-	sha256sums = 2ac9b1afb63e4d5c44ee27f4fdbd3a5a9ecb90c63010acbe7498eab124ffc520
+	source = fdroidserver-2.2.1.tar.gz::https://gitlab.com/fdroid/fdroidserver/-/archive/2.2.1/fdroidserver-2.2.1.tar.gz
+	sha256sums = b239e40fdb80bcd2cd6935786f20c6379d903aa2e6b55992c12a93c22612fcb0
 
 pkgname = fdroidserver
