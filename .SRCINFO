@@ -1,0 +1,24 @@
+pkgbase = irpf2022
+	pkgdesc = Brazilian physical person income tax (IRPF) program (2022 version)
+	pkgver = 2022.1.8
+	pkgrel = 1
+	url = https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda
+	arch = any
+	license = custom
+	makedepends = imagemagick
+	makedepends = librsvg
+	depends = sh
+	depends = java-runtime=11
+	depends = hicolor-icon-theme
+	source = https://downloadirpf.receita.fazenda.gov.br/irpf/2022/irpf/arquivos/IRPF2022-1.8.zip
+	source = https://upload.wikimedia.org/wikipedia/commons/e/e8/Logo_Receita_Federal_do_Brasil.svg
+	source = irpf.desktop
+	source = irpf.sh
+	source = LICENSE
+	sha256sums = 33bbef2ad800b36734d5992210b58abd536fdaea7705a5fd8b384f56a627468d
+	sha256sums = 60c46521699aa3aeaadcb6a51b2727f3e9eb0c23a99334903c01f858c16f8f73
+	sha256sums = d6130e10bed2edb80c318a5646f4bcbddd8ebd27d68b126edb0ba5d538e9e686
+	sha256sums = ce78ae79d3c068d06a46bb71df8040a2f8ab9586bb449965f68bc74ccc712645
+	sha256sums = a406e102e2c10c202bd7a0ba775b004c0f04440544db73ce6923172a62aacd67
+
+pkgname = irpf2022

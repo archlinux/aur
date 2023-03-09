@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=IRPF
+Comment=Programa do Imposto de Renda Pessoa Física
+Path=/usr/bin
+Exec=irpf-2022
+Icon=irpf-2022
+Terminal=false
+StartupNotify=false
+Type=Application
+Categories=Application;
