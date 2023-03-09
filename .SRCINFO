@@ -1,6 +1,6 @@
 pkgbase = python-crossandra
-	pkgdesc = A simple, configurable tokenizer for python operating on enums
-	pkgver = 1.2.4
+	pkgdesc = A simple tokenizer operating on enums with a decent amount of configuration
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/trag1c/crossandra
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = python-crossandra
 	makedepends = mypy
 	depends = python>=3.9
 	depends = python-result
-	source = crossandra-1.2.4.tar.gz::https://files.pythonhosted.org/packages/source/c/crossandra/crossandra-1.2.4.tar.gz
-	sha256sums = e78e961d6543466ab4b1b491026e7da87b1b795407353c87e69c7facb4636f01
+	source = crossandra-1.3.0.tar.gz::https://files.pythonhosted.org/packages/source/c/crossandra/crossandra-1.3.0.tar.gz
+	sha512sums = d7614b82c91b4e9b5b633a4638807d5b55fb66ad23a5a202397a91cc85f9dc6d71158ff0df8477f9c25ca5bdc1a29d9a3940fc6d92f48aa9cae28aa392a57d65
 
 pkgname = python-crossandra
