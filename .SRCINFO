@@ -1,0 +1,15 @@
+pkgbase = python-ixia
+	pkgdesc = A library connecting secrets' security with random's versatility
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/trag1c/ixia
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	depends = python>=3.8
+	source = ixia-1.1.0.tar.gz::https://files.pythonhosted.org/packages/source/i/ixia/ixia-1.1.0.tar.gz
+	sha512sums = dfc5b801b1ea61df4d992dc73b637f20aad737506f6fcaa89e59a8ba8ce9fbc39230e485ae40c9d265be422b4dbde6f03ace997e2485947c6dbb44c9f93d8a52
+
+pkgname = python-ixia
