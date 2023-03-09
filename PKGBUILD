@@ -13,7 +13,7 @@ optdepends=()
 makedepends=(python-build python-installer python-wheel)
 provides=('procal')
 _pkgname=procal
-source=("${_pkgname}::git+https://github.com/joajfreitas/procal")
+source=("${_pkgname}::git+https://github.com/joajfreitas/procal#commit=$pkgver")
 sha256sums=('SKIP')
 
 pkgver() {
