@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Combine all arguments into a single string
+args="$*"
+
+# Use pipes to pass the arguments as input to the binary file
+steam -applaunch 1118310 "$@"
