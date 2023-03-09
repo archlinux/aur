@@ -1,6 +1,6 @@
 pkgbase = aurutils
 	pkgdesc = helper tools for the arch user repository
-	pkgver = 11
+	pkgver = 12.1
 	pkgrel = 1
 	url = https://github.com/AladW/aurutils
 	install = aurutils.install
@@ -11,6 +11,7 @@ pkgbase = aurutils
 	depends = jq
 	depends = pacutils
 	depends = curl
+	depends = perl
 	optdepends = bash-completion: bash completion
 	optdepends = zsh: zsh completion
 	optdepends = devtools: aur-chroot
@@ -19,8 +20,8 @@ pkgbase = aurutils
 	optdepends = ninja: aur-sync ninja support
 	optdepends = bat: view-delta example script
 	optdepends = git-delta: view-delta example script
-	optdepends = setconf: aur-build --rebuild
-	source = aurutils-11.tar.gz::https://github.com/AladW/aurutils/archive/refs/tags/11.tar.gz
-	sha256sums = 0f5732145f4793ac74eeb8461c66f5d37a1a3d562fbab0db473736475e8cedb1
+	optdepends = setconf: sync-rebuild example script
+	source = aurutils-12.1.tar.gz::https://github.com/AladW/aurutils/archive/refs/tags/12.1.tar.gz
+	sha256sums = ed5374ef8e98bda345d44b8d93fb30a96608a050e5ec30c57697a744c3c9ad6a
 
 pkgname = aurutils
