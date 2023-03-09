@@ -1,6 +1,6 @@
 pkgbase = java-openjdk-xdg
-	pkgver = 19.0.1.u10
-	pkgrel = 2
+	pkgver = 19.0.2.u7
+	pkgrel = 1
 	url = https://openjdk.java.net/
 	arch = x86_64
 	license = custom
@@ -40,13 +40,13 @@ pkgbase = java-openjdk-xdg
 	conflicts = openjdk-src
 	conflicts = openjdk-doc
 	options = !lto
-	source = https://github.com/openjdk/jdk19u/archive/jdk-19.0.1+10.tar.gz
+	source = https://github.com/openjdk/jdk19u/archive/jdk-19.0.2+7.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
 	source = xdg-basedir-compliant-fontconfig.patch
 	source = xdg-basedir-compliant-userPrefs.patch
-	sha256sums = cdc7e6d857ed87c8fe653609dc5a63f1f698b3aaf1eb7dc9d733832dab599514
+	sha256sums = 5903efd527dd08e9c235c8822e3d5699c3d18a8618c3e533307e8d6491ffbbf0
 	sha256sums = 37656108f25ca6943cc89ef09677bd53be0f6aee369f9acb3151803ed2b233f5
 	sha256sums = 766f83adcd3c7ae70808f3894a1b741681b4e3edc0ff9ee2b229f59bc3fd0a9d
 	sha256sums = d4846c8de3dc9056feeb6d0c1d5fc48b639d2e4ae9b94944cb2b1376cb431be6
@@ -73,7 +73,7 @@ pkgname = jre-openjdk-headless-xdg
 	optdepends = java-rhino: for some JavaScript support
 	provides = java-runtime-headless=19
 	provides = java-runtime-headless-openjdk=19
-	provides = jre19-openjdk-headless=19.0.1.u10-2
+	provides = jre19-openjdk-headless=19.0.2.u7-1
 	backup = etc/java-openjdk-xdg/logging.properties
 	backup = etc/java-openjdk-xdg/management/jmxremote.access
 	backup = etc/java-openjdk-xdg/management/jmxremote.password.template
@@ -92,7 +92,7 @@ pkgname = jre-openjdk-headless-xdg
 pkgname = jre-openjdk-xdg
 	pkgdesc = OpenJDK Java 19 full runtime environment - with improved Support for the XDG Base Directory Specification
 	install = install_jre-openjdk.sh
-	depends = jre19-openjdk-headless=19.0.1.u10-2
+	depends = jre19-openjdk-headless=19.0.2.u7-1
 	depends = giflib
 	depends = libgif.so
 	depends = glibc
@@ -103,12 +103,12 @@ pkgname = jre-openjdk-xdg
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=19
 	provides = java-runtime-openjdk=19
-	provides = jre19-openjdk=19.0.1.u10-2
+	provides = jre19-openjdk=19.0.2.u7-1
 
 pkgname = jdk-openjdk-xdg
 	pkgdesc = OpenJDK Java 19 development kit - with improved Support for the XDG Base Directory Specification
 	install = install_jdk-openjdk.sh
-	depends = jre19-openjdk=19.0.1.u10-2
+	depends = jre19-openjdk=19.0.2.u7-1
 	depends = java-environment-common=3
 	depends = hicolor-icon-theme
 	depends = libelf
@@ -116,14 +116,14 @@ pkgname = jdk-openjdk-xdg
 	depends = gcc-libs
 	provides = java-environment=19
 	provides = java-environment-openjdk=19
-	provides = jdk19-openjdk=19.0.1.u10-2
+	provides = jdk19-openjdk=19.0.2.u7-1
 
 pkgname = openjdk-src-xdg
 	pkgdesc = OpenJDK Java 19 sources - with improved Support for the XDG Base Directory Specification
-	depends = jdk19-openjdk=19.0.1.u10-2
-	provides = openjdk19-src=19.0.1.u10-2
+	depends = jdk19-openjdk=19.0.2.u7-1
+	provides = openjdk19-src=19.0.2.u7-1
 
 pkgname = openjdk-doc-xdg
 	pkgdesc = OpenJDK Java 19 documentation - with improved Support for the XDG Base Directory Specification
-	depends = jdk19-openjdk=19.0.1.u10-2
-	provides = openjdk19-doc=19.0.1.u10-2
+	depends = jdk19-openjdk=19.0.2.u7-1
+	provides = openjdk19-doc=19.0.2.u7-1

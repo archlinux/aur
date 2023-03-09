@@ -8,9 +8,9 @@ pkgbase=java-openjdk-xdg
 pkgname=('jre-openjdk-headless-xdg' 'jre-openjdk-xdg' 'jdk-openjdk-xdg' 'openjdk-src-xdg' 'openjdk-doc-xdg')
 _majorver=19
 _minorver=0
-_securityver=1
-_updatever=10
-pkgrel=2
+_securityver=2
+_updatever=7
+pkgrel=1
 pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
 #pkgver=${_majorver}.u${_updatever}
 _git_tag=jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}
@@ -29,7 +29,7 @@ source=(https://github.com/openjdk/jdk${_majorver}u/archive/${_git_tag}.tar.gz
         freedesktop-jshell.desktop
         xdg-basedir-compliant-fontconfig.patch
         xdg-basedir-compliant-userPrefs.patch)
-sha256sums=('cdc7e6d857ed87c8fe653609dc5a63f1f698b3aaf1eb7dc9d733832dab599514'
+sha256sums=('5903efd527dd08e9c235c8822e3d5699c3d18a8618c3e533307e8d6491ffbbf0'
             '37656108f25ca6943cc89ef09677bd53be0f6aee369f9acb3151803ed2b233f5'
             '766f83adcd3c7ae70808f3894a1b741681b4e3edc0ff9ee2b229f59bc3fd0a9d'
             'd4846c8de3dc9056feeb6d0c1d5fc48b639d2e4ae9b94944cb2b1376cb431be6'
@@ -47,10 +47,10 @@ _jvmdir=/usr/lib/jvm/java-${_majorver}-openjdk
 _jdkdir=jdk${_majorver}u-${_git_tag//+/-}
 _imgdir=${_jdkdir}/build/linux-${_JARCH}-server-release/images
 
-_nonheadless=(lib/libawt_xawt.{so,debuginfo}
-              lib/libjawt.{so,debuginfo}
-              lib/libjsound.{so,debuginfo}
-              lib/libsplashscreen.{so,debuginfo})
+_nonheadless=(lib/libawt_xawt.so
+              lib/libjawt.so
+              lib/libjsound.so
+              lib/libsplashscreen.so)
 
 prepare() {
   cd ${_jdkdir}
@@ -113,6 +113,7 @@ build() {
     --with-zlib=system \
     --with-harfbuzz=system \
     --with-jvm-features=zgc,shenandoahgc \
+    --with-native-debug-symbols=internal \
     --enable-unlimited-crypto \
     --disable-warnings-as-errors \
     ${NUM_PROC_OPT}
