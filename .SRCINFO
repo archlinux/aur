@@ -1,0 +1,15 @@
+pkgbase = muffon-appimage
+	pkgdesc = Music streaming browser,retrieves audio, video and metadata from various Internet sources.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://muffon.netlify.app/
+	arch = x86_64
+	license = MIT
+	depends = hicolor-icon-theme
+	depends = zlib
+	conflicts = muffon-bin
+	options = !strip
+	source = muffon-1.4.0.AppImage::https://github.com/staniel359/muffon/releases/download/v1.4.0/muffon-1.4.0-linux-x86_64.AppImage
+	sha512sums = d93bc2447bf72fc5d780d055e5be31920e6e3ede397b53af8e3b2c13b5422abd31e504aaf2f49fc83e4c4600c0431c5bc50d4b20f99cac0ac19a39ad30efe627
+
+pkgname = muffon-appimage
