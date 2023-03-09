@@ -3,7 +3,7 @@
 pkgbase=python-ndcube
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Package for multi-dimensional contiguious and non-contiguious coordinate aware arrays"
 arch=('any')
@@ -26,19 +26,20 @@ makedepends=('python-setuptools-scm'
 checkdepends=('python-pytest-doctestplus'
               'python-dask'
               'python-reproject')  # pytest-doctestplus gwcs mpl-animators sunpy already in makedep
-source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #       'doc-use-local-fits.patch'
 #       "https://www.astropy.org/astropy-data/tutorials/FITS-images/HorseHead.fits"
-        "https://github.com/sunpy/ndcube/raw/main/changelog/README.rst")
-md5sums=('f046a10f107da6b37238088a5efa2890'
+#       "https://github.com/sunpy/ndcube/raw/main/changelog/README.rst")
+md5sums=('5c17a5bce55d101870a588d93babd9d0')
 #        'b50513a0bb73290d65317d0d44ae9fb9'
 #        'SKIP'
-         'SKIP')
+#        'SKIP')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    install -Dm644 -t changelog ${srcdir}/README.rst
+#   install -Dm644 -t changelog ${srcdir}/README.rst # README not needed
+    mkdir -p changelog
 #   cp ${srcdir}/*.fits examples
 #   patch -Np1 -i "${srcdir}/doc-use-local-fits.patch"
 #   sed -e '/ignore:distutils/a \	ignore:"order" was deprecated in version 0.9' \
