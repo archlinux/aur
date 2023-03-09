@@ -1,6 +1,6 @@
 pkgname=rsgain-git
 _pkgname=rsgain
-pkgver=20220915.g9a58fc0db28a3e5b3a5e3fef3f9393920a9245df
+pkgver=3.2.1.r0.g7af783a
 pkgrel=1
 pkgdesc="ReplayGain 2.0 loudness normalizer"
 arch=('x86_64')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  date +"%Y%m%d"."g$(git rev-parse HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
