@@ -3,8 +3,8 @@
 _pkgname=paperbush
 pkgname="python-$_pkgname"
 pkgver=0.2.0
-pkgrel=1
-pkgdesc="A library connecting secrets' security with random's versatility"
+pkgrel=2
+pkgdesc='Super concise argument parsing tool'
 arch=(any)
 url="https://github.com/trag1c/$_pkgname"
 license=('MIT')

@@ -1,7 +1,7 @@
 pkgbase = python-paperbush
-	pkgdesc = A library connecting secrets' security with random's versatility
+	pkgdesc = Super concise argument parsing tool
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/trag1c/paperbush
 	arch = any
 	license = MIT
