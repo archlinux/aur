@@ -1,6 +1,6 @@
 pkgbase = jdk-openjdk-xdg-bin
-	pkgver = 19.0.1.u10
-	pkgrel = 2
+	pkgver = 19.0.2.u7
+	pkgrel = 1
 	url = https://openjdk.java.net/
 	arch = x86_64
 	license = custom
@@ -9,27 +9,29 @@ pkgbase = jdk-openjdk-xdg-bin
 	provides = jdk-openjdk
 	provides = openjdk-src
 	provides = openjdk-doc
+	provides = java-openjdk-xdg
 	conflicts = jre-openjdk-headless
 	conflicts = jre-openjdk
 	conflicts = jdk-openjdk
 	conflicts = openjdk-src
 	conflicts = openjdk-doc
-	noextract = jdk-openjdk-xdg-19.0.1.u10-2-x86_64.pkg.tar.zst
-	noextract = jre-openjdk-headless-xdg-19.0.1.u10-2-x86_64.pkg.tar.zst
-	noextract = jre-openjdk-xdg-19.0.1.u10-2-x86_64.pkg.tar.zst
-	noextract = openjdk-doc-xdg-19.0.1.u10-2-x86_64.pkg.tar.zst
-	noextract = openjdk-src-xdg-19.0.1.u10-2-x86_64.pkg.tar.zst
+	conflicts = java-openjdk-xdg
+	noextract = jdk-openjdk-xdg-19.0.2.u7-1-x86_64.pkg.tar.zst
+	noextract = jre-openjdk-headless-xdg-19.0.2.u7-1-x86_64.pkg.tar.zst
+	noextract = jre-openjdk-xdg-19.0.2.u7-1-x86_64.pkg.tar.zst
+	noextract = openjdk-doc-xdg-19.0.2.u7-1-x86_64.pkg.tar.zst
+	noextract = openjdk-src-xdg-19.0.2.u7-1-x86_64.pkg.tar.zst
 	options = !lto
-	source = https://github.com/noahvogt/java-openjdk-xdg-aur/releases/download/19.0.1.u10-2/jdk-openjdk-xdg-19.0.1.u10-2-x86_64.pkg.tar.zst
-	source = https://github.com/noahvogt/java-openjdk-xdg-aur/releases/download/19.0.1.u10-2/jre-openjdk-headless-xdg-19.0.1.u10-2-x86_64.pkg.tar.zst
-	source = https://github.com/noahvogt/java-openjdk-xdg-aur/releases/download/19.0.1.u10-2/jre-openjdk-xdg-19.0.1.u10-2-x86_64.pkg.tar.zst
-	source = https://github.com/noahvogt/java-openjdk-xdg-aur/releases/download/19.0.1.u10-2/openjdk-doc-xdg-19.0.1.u10-2-x86_64.pkg.tar.zst
-	source = https://github.com/noahvogt/java-openjdk-xdg-aur/releases/download/19.0.1.u10-2/openjdk-src-xdg-19.0.1.u10-2-x86_64.pkg.tar.zst
-	sha256sums = 429bd094265fed02975ad9b339cdd3edbe0c15da910e2e1ac8fe181443cd6ebd
-	sha256sums = ae6c957d9eb1d9a29add8adf0c13e31e32b3bd1dc8ec93a39a2966c9678a918a
-	sha256sums = 97e5b1cd9857626e9ef1bec005bf6bb771afef8123d8510878962ffc3b654228
-	sha256sums = bb565bf6d366ec2a20cb674228154168fb9964b2cd0d63e349c81bcb33b1ef63
-	sha256sums = bfb9a4495a2726a1870691da134f9c13126b3e968a4407a4ac3bbdff7029d81e
+	source = https://github.com/noahvogt/java-openjdk-xdg-aur/releases/download/19.0.2.u7-1/jdk-openjdk-xdg-19.0.2.u7-1-x86_64.pkg.tar.zst
+	source = https://github.com/noahvogt/java-openjdk-xdg-aur/releases/download/19.0.2.u7-1/jre-openjdk-headless-xdg-19.0.2.u7-1-x86_64.pkg.tar.zst
+	source = https://github.com/noahvogt/java-openjdk-xdg-aur/releases/download/19.0.2.u7-1/jre-openjdk-xdg-19.0.2.u7-1-x86_64.pkg.tar.zst
+	source = https://github.com/noahvogt/java-openjdk-xdg-aur/releases/download/19.0.2.u7-1/openjdk-doc-xdg-19.0.2.u7-1-x86_64.pkg.tar.zst
+	source = https://github.com/noahvogt/java-openjdk-xdg-aur/releases/download/19.0.2.u7-1/openjdk-src-xdg-19.0.2.u7-1-x86_64.pkg.tar.zst
+	sha256sums = b4b1a00bcef49f5cda49528e9cda31501e65b67427d451b96cbc009e5dd9966a
+	sha256sums = 323986ac08a5ffea918a59d9dd204969d6c60b4df737535aeec816f2ea1883fe
+	sha256sums = 00cba76a9cdc4c6a8064580ef70b8c2febb3726fbf9bd59fd4136d4f9441f634
+	sha256sums = 1710e11e6a9ed1252d1a284eae65bb10d0f0129d52f053d5a99de5e723e7befe
+	sha256sums = 2db3cb77b495033a9b0f46c7f51fb7a5dc19066336cf94f29786e3c37208f5c5
 
 pkgname = jre-openjdk-headless-xdg-bin
 	pkgdesc = OpenJDK Java 19 headless runtime environment - with improved Support for the XDG Base Directory Specification
@@ -51,7 +53,7 @@ pkgname = jre-openjdk-headless-xdg-bin
 	optdepends = java-rhino: for some JavaScript support
 	provides = java-runtime-headless=19
 	provides = java-runtime-headless-openjdk=19
-	provides = jre19-openjdk-headless=19.0.1.u10-2
+	provides = jre19-openjdk-headless=19.0.2.u7-1
 	backup = etc/jdk-openjdk-xdg/logging.properties
 	backup = etc/jdk-openjdk-xdg/management/jmxremote.access
 	backup = etc/jdk-openjdk-xdg/management/jmxremote.password.template
@@ -70,7 +72,7 @@ pkgname = jre-openjdk-headless-xdg-bin
 pkgname = jre-openjdk-xdg-bin
 	pkgdesc = OpenJDK Java 19 full runtime environment - with improved Support for the XDG Base Directory Specification
 	install = install_jre-openjdk.sh
-	depends = jre19-openjdk-headless=19.0.1.u10-2
+	depends = jre19-openjdk-headless=19.0.2.u7-1
 	depends = giflib
 	depends = libgif.so
 	depends = glibc
@@ -81,12 +83,12 @@ pkgname = jre-openjdk-xdg-bin
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=19
 	provides = java-runtime-openjdk=19
-	provides = jre19-openjdk=19.0.1.u10-2
+	provides = jre19-openjdk=19.0.2.u7-1
 
 pkgname = jdk-openjdk-xdg-bin
 	pkgdesc = OpenJDK Java 19 development kit - with improved Support for the XDG Base Directory Specification
 	install = install_jdk-openjdk.sh
-	depends = jre19-openjdk=19.0.1.u10-2
+	depends = jre19-openjdk=19.0.2.u7-1
 	depends = java-environment-common=3
 	depends = hicolor-icon-theme
 	depends = libelf
@@ -94,14 +96,14 @@ pkgname = jdk-openjdk-xdg-bin
 	depends = gcc-libs
 	provides = java-environment=19
 	provides = java-environment-openjdk=19
-	provides = jdk19-openjdk=19.0.1.u10-2
+	provides = jdk19-openjdk=19.0.2.u7-1
 
 pkgname = openjdk-src-xdg-bin
 	pkgdesc = OpenJDK Java 19 sources - with improved Support for the XDG Base Directory Specification
-	depends = jdk19-openjdk=19.0.1.u10-2
-	provides = openjdk19-src=19.0.1.u10-2
+	depends = jdk19-openjdk=19.0.2.u7-1
+	provides = openjdk19-src=19.0.2.u7-1
 
 pkgname = openjdk-doc-xdg-bin
 	pkgdesc = OpenJDK Java 19 documentation - with improved Support for the XDG Base Directory Specification
-	depends = jdk19-openjdk=19.0.1.u10-2
-	provides = openjdk19-doc=19.0.1.u10-2
+	depends = jdk19-openjdk=19.0.2.u7-1
+	provides = openjdk19-doc=19.0.2.u7-1
