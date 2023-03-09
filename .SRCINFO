@@ -1,0 +1,17 @@
+pkgbase = muffon-bin
+	pkgdesc = Music streaming browser,retrieves audio, video and metadata from various Internet sources.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://muffon.netlify.app/
+	arch = x86_64
+	license = MIT
+	depends = java-runtime
+	depends = at-spi2-core
+	depends = nss
+	depends = gtk3
+	depends = alsa-lib
+	conflicts = muffon-appimage
+	source = muffon-1.4.0.deb::https://github.com/staniel359/muffon/releases/download/v1.4.0/muffon-1.4.0-linux-amd64.deb
+	sha512sums = 2450f73ff5e96d32283f1898e730a8a6d8d4016368c06d87a4ac45ba39a1ab20e80559ecef5139b7e16be6b0febe54f2cc445eeb085821ad48d0b6f8d82b4e37
+
+pkgname = muffon-bin
