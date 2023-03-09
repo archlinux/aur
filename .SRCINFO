@@ -1,9 +1,10 @@
 pkgbase = python-jaxlib-cuda
 	pkgdesc = XLA library for JAX
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/google/jax/
 	arch = x86_64
+	groups = jax
 	license = Apache
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -18,7 +19,7 @@ pkgbase = python-jaxlib-cuda
 	depends = python-scipy
 	provides = python-jaxlib
 	conflicts = python-jaxlib
-	source = jaxlib-0.4.3.tar.gz::https://github.com/google/jax/archive/refs/tags/jaxlib-v0.4.3.tar.gz
-	sha256sums = 2104735dc22be2b105e5517bd5bc6ae97f40e8e9e54928cac1585c6112a3d910
+	source = jaxlib-0.4.4.tar.gz::https://github.com/google/jax/archive/refs/tags/jaxlib-v0.4.4.tar.gz
+	sha256sums = 881f402c7983b56b185e182d5315dd64c9f5320be96213d0415996ece1826806
 
 pkgname = python-jaxlib-cuda
