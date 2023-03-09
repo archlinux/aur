@@ -6,6 +6,7 @@ pkgbase = mow-git
 	arch = any
 	makedepends = cargo
 	makedepends = git
+	makedepends = libusb
 	provides = mow
 	source = git+https://github.com/korkje/mow.git
 	md5sums = SKIP
