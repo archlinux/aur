@@ -4,11 +4,11 @@
 # Contributor: Marco Donadoni <marcodonadoni at live dot it>
 # Contributor: Jeroen Rijken <jeroen dot rijken at gmail dot com>
 pkgname=archi
-_pkgver_major=4
-_pkgver_minor=10
+_pkgver_major=5
+_pkgver_minor=0
 _pkgver_patch=0
 pkgver=${_pkgver_major}.${_pkgver_minor}.${_pkgver_patch}
-pkgrel=4
+pkgrel=5
 pkgdesc="Free, open source, cross-platform tool and editor to create ArchiMate models."
 arch=('x86_64')
 url="http://www.archimatetool.com/"
@@ -17,11 +17,11 @@ depends=('java-runtime-openjdk=8' 'bash')
 optdepends=('webkitgtk2: hints view support')
 provides=('archi')
 
-source=("https://www.archimatetool.com/downloads/index.php?/downloads/archi/${pkgver}/Archi-Linux64-${pkgver}.tgz"
+source=("https://www.archimatetool.com/downloads/archi.php?/${pkgver}/Archi-Linux64-${pkgver}.tgz"
         "${pkgname}.desktop"
         "${pkgname}-launcher.sh"
         "LICENSE")
-md5sums=('8f79dc216e4cf833a2f8261feb283d26'
+md5sums=('c441b8f2294785e3137828896ddba1d2'
          '7b9a0cf8e67790ff9ca1afc6578e3adc'
          'da5e0498fe923984150c6dbb08ae9bd8'
          '66653b079752362c3e9fc7142027cb7e')
