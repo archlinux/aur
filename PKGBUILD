@@ -1,14 +1,14 @@
 # Maintainer: wilke
 pkgname=jcloisterzone
-pkgver=5.10.2
-pkgrel=1
+pkgver=5.11.0
+pkgrel=0
 pkgdesc="A Java version of the Carcassonne board game."
 arch=('any')
 url="https://github.com/farin/JCloisterZone-Client"
 license=('GPL3')
 options=('!strip')
 
-sha512sums=('4dfedc88f7a424e2d5b1026fbf95ff63f8952b3bc1fa9b394185341f88b8eeed1659238f629bfa067bb292dd2aaed149c3bd1c857fd2798e57a7df23ac2f8ec9')
+sha512sums=('d50fa9db79808b79ab1118fc2b291b8fd5ffa60d2e8ed2122869ef8a70381c7b24f30cace47102b7aafaf5bd2b0724ba1e21241b58492307c227d45219b0e331')
 
 source=("https://github.com/farin/JCloisterZone-Client/releases/download/v${pkgver}/jcloisterzone-${pkgver}.AppImage")
 
