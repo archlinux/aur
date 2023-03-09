@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
-Name=IRPF
-Comment=Programa do Imposto de Renda Pessoa Física
+Name=IRPF 2022
+Comment=Programa do Imposto de Renda Pessoa Física (versão 2022)
 Path=/usr/bin
 Exec=irpf-2022
 Icon=irpf-2022

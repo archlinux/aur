@@ -2,7 +2,7 @@
 
 pkgname=irpf2022
 pkgver=2022.1.8
-pkgrel=2
+pkgrel=3
 pkgdesc='Brazilian physical person income tax (IRPF) program (2022 version)'
 arch=('any')
 url='https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda'
@@ -16,7 +16,7 @@ source=("https://downloadirpf.receita.fazenda.gov.br/irpf/${pkgver%%.*}/irpf/arq
         'LICENSE')
 sha256sums=('33bbef2ad800b36734d5992210b58abd536fdaea7705a5fd8b384f56a627468d'
             '60c46521699aa3aeaadcb6a51b2727f3e9eb0c23a99334903c01f858c16f8f73'
-            'd6130e10bed2edb80c318a5646f4bcbddd8ebd27d68b126edb0ba5d538e9e686'
+            '1ecd7bda136768becefc2dbb7da7a1de3471f193b0242a2acf6413a3f5d04e8b'
             'ce78ae79d3c068d06a46bb71df8040a2f8ab9586bb449965f68bc74ccc712645'
             'a406e102e2c10c202bd7a0ba775b004c0f04440544db73ce6923172a62aacd67')
 
