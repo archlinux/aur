@@ -4,7 +4,7 @@ pkgbase=linux-515-starfive-visionfive2
 _variant=VF2
 pkgver=2.10.4
 epoch=1 #Change to use ver from StarFive's SDK
-pkgrel=1
+pkgrel=2
 _tag=VF2_v${pkgver}
 _desc='Linux 5.15 for StarFive RISC-V VisionFive 2 Board'
 _srcname=linux-$_tag
@@ -76,6 +76,7 @@ _package() {
 
   echo "Installing boot image..."
   install -Dm644 "arch/riscv/boot/Image.gz" "$modulesdir/vmlinuz"
+  install -Dm644 "arch/riscv/boot/Image" "$modulesdir/Image"
   install -Dm644 "arch/riscv/boot/Image.gz" "$pkgdir/boot/vmlinuz"
 
   echo "Installing modules..."

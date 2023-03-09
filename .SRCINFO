@@ -1,6 +1,6 @@
 pkgbase = linux-515-starfive-visionfive2
 	pkgver = 2.10.4
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/starfive-tech/linux/
 	arch = riscv64
