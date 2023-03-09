@@ -1,13 +1,13 @@
 # Maintainer: Gijs Burghoorn <me@gburghoorn.com>
 pkgname=lemurs-git
 _pkgname=lemurs
-pkgver=0.3.1.r1.gd84deac
+pkgver=0.3.1.r3.g60fda2a
 pkgrel=1
 pkgdesc="TUI Display/Login Manager"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/coastalwhite/lemurs"
 license=('MIT' 'APACHE')
-makedepends=('git' 'cargo' 'grep')
+makedepends=('git' 'rustup' 'grep')
 depends=('pam' 'systemd')
 optdepends=('xorg-xauth')
 conflicts=()

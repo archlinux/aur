@@ -1,6 +1,6 @@
 pkgbase = lemurs-git
 	pkgdesc = TUI Display/Login Manager
-	pkgver = 0.3.1.r0.gc64f69c
+	pkgver = 0.3.1.r1.gd84deac
 	pkgrel = 2
 	url = https://github.com/coastalwhite/lemurs
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = lemurs-git
 	license = MIT
 	license = APACHE
 	makedepends = git
-	makedepends = cargo
+	makedepends = rustup
 	makedepends = grep
 	depends = pam
 	depends = systemd
