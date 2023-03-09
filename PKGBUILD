@@ -2,7 +2,7 @@
 # Contributor: Antoine Viallon <antoine+aur@lesviallon.fr>
 
 pkgname=mfoc-hardnested-git
-pkgver=162.2c25bf0
+pkgver=0.10.9.r162.2c25bf0
 pkgrel=1
 pkgdesc="A fork of mfoc integrating hardnested code from the proxmark"
 arch=('i686' 'x86_64')
@@ -17,18 +17,19 @@ sha256sums=('SKIP')
 options=(!ccache)
 
 pkgver() {
-	cd "${srcdir}/${pkgname}"
-	printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$pkgname"
+	printf "%s.r%s.%s" "$(grep AC_INIT configure.ac | sed 's/.*\[\([0-9.]\+\)\].*/\1/')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --tags | sed 's/^mfoc-//;s/\([^-]*-g\)/r\1/;s/-/./;s/-/+/'
 }
 
 build() {
-	cd "${srcdir}/${pkgname}"
+	cd "$pkgname"
 	autoreconf -vis
 	./configure --prefix=/usr
 	make
 }
 
 package() {
-	cd "${srcdir}/${pkgname}"
+	cd "$pkgname"
 	make DESTDIR="${pkgdir}" install
 }

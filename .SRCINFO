@@ -1,6 +1,6 @@
 pkgbase = mfoc-hardnested-git
 	pkgdesc = A fork of mfoc integrating hardnested code from the proxmark
-	pkgver = 162.2c25bf0
+	pkgver = 0.10.9.r162.2c25bf0
 	pkgrel = 1
 	url = https://github.com/nfc-tools/mfoc-hardnested
 	arch = i686
