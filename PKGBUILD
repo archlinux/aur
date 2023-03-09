@@ -13,7 +13,7 @@
 
 pkgname=mesa-amdonly-gaming-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=23.1.0_devel.167746.399012a911b.932463d268438ce945b21718552d92ab
+pkgver=23.1.0_devel.167842.ff7446ba0c9.932463d268438ce945b21718552d92ab
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
@@ -39,6 +39,7 @@ sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2')
 
 optdepends=('clang: opencl' 'compiler-rt: opencl')
+options=(!lto) # LTO is bad for mesa, makes random applications crash on my system
 
 # NINJAFLAGS is an env var used to pass commandline options to ninja
 # NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
