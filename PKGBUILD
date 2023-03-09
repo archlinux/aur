@@ -2,7 +2,7 @@
 
 pkgname=httm-bin
 pkgver=0.23.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Prints the size, date and locations of available unique versions (deduplicated by modify time and size) of files residing on ZFS, BTRFS, or NILFS snapshots. (binary .deb)"
 arch=('x86_64')
 url="https://github.com/kimono-koans/httm"
@@ -45,7 +45,7 @@ package(){
 	install -Dm644 "${srcdir}/usr/share/man/man1/${_name}.1" "${pkgdir}/usr/share/man/man1/${_name}.1"
 
 	# install README.md
-	install -Dm644 "${srcdir}/usr/share/doc/${_name}/README" "${pkgdir}/usr/share/doc/${_name}/README"
+	install -Dm644 "${srcdir}/usr/share/doc/${_name}/README.md" "${pkgdir}/usr/share/doc/${_name}/README"
 
 	# install LICENSE
 	install -Dm644 "${srcdir}/usr/share/doc/httm/copyright" "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
