@@ -1,19 +1,19 @@
 pkgbase = mfoc-hardnested-git
-	pkgdesc = Mifare Classic Offline Cracker. Enhanced.
-	pkgver = 155.5c71af4
+	pkgdesc = A fork of mfoc integrating hardnested code from the proxmark
+	pkgver = 162.2c25bf0
 	pkgrel = 1
-	url = https://github.com/nfc-tools/mfoc
+	url = https://github.com/nfc-tools/mfoc-hardnested
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	depends = libnfc>=1.7.0
+	depends = xz
 	provides = mfoc
 	conflicts = mfoc
 	conflicts = mfoc-git
 	options = !ccache
-	source = mfoc-hardnested-git::git://github.com/nfc-tools/mfoc-hardnested.git
-	sha1sums = SKIP
+	source = mfoc-hardnested-git::git+https://github.com/nfc-tools/mfoc-hardnested.git
+	sha256sums = SKIP
 
 pkgname = mfoc-hardnested-git
-
