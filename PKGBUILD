@@ -3,7 +3,7 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=r23282.7afa8eb0f
+pkgver=r23372.9e9548d12
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
@@ -31,6 +31,7 @@ makedepends=('boost'
              'nlohmann-json'
              'qt5-tools'
              'robin-map')
+optdepends=("qt5-wayland: Wayland support")
 source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu-mainline"
         'git+https://github.com/lsalzman/enet.git'
         'git+https://github.com/benhoyt/inih.git'
