@@ -9,6 +9,7 @@ pkgbase = cavalier-git
 	makedepends = meson
 	depends = cava
 	depends = libadwaita
+	depends = python-cairo
 	depends = python-gobject
 	provides = cavalier
 	conflicts = cavalier
