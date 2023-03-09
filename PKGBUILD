@@ -2,7 +2,7 @@
 
 _pkgname='instalee'
 pkgname="${_pkgname}-full-git"
-pkgver=r74.a6235ac
+pkgver=r86.be52447
 pkgrel=1
 pkgdesc='Unixy universal package installation management with opinionated config'
 arch=('any')
@@ -16,10 +16,10 @@ source=("git+${url}")
 sha512sums=('SKIP')
 
 package() {
-  globalconfigdir=/etc/xdg
+  configdir=/etc/xdg
   case "$XDG_CONFIG_DIRS" in
     (""|*$configdir*);;
-    (*) globalconfigdir=$(echo $XDG_CONFIG_DIRS | cut -d: -f1);;
+    (*) configdir=$(echo $XDG_CONFIG_DIRS | cut -d: -f1);;
   esac
   mkdir -p "${pkgdir}${configdir}"
   cp -r "${srcdir}/${_pkgname}" "${pkgdir}${configdir}"
