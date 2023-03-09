@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=xemu
 pkgname=$_pkgname-git
-pkgver=0.7.55.r0.gdb389b1508
+pkgver=0.7.85.r0.g065c74a00f
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=('x86_64')
@@ -82,6 +82,7 @@ build() {
 
 package() {
 	depends+=(
+		'libcrypto.so'
 		'libepoxy.so'
 		'libgdk-3.so'
 		'libglib-2.0.so'
@@ -91,6 +92,7 @@ package() {
 		'libpixman-1.so'
 		'libsamplerate.so'
 		'libslirp.so'
+		'libssl.so'
 	)
 	cd $_pkgname
 	# shellcheck disable=SC2154
