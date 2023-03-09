@@ -4,11 +4,10 @@
 
 pkgname=crashplan-pro
 _pkgname=crashplan
-pkgver=10.4.1
-_pkgtimestamp=15252000061041
-_pkgbuild=19
+pkgver=11.0.0
+_pkgbuild=949
 pkgrel=2
-pkgdesc="An business online/offsite backup solution"
+pkgdesc="A business online/offsite backup solution"
 url="https://www.crashplan.com/en-us/small-business/"
 arch=('x86_64')
 license=('custom')
@@ -17,19 +16,19 @@ depends=('bash' 'java-runtime-headless=8' 'alsa-lib' 'gtk3' 'libxss' 'inetutils'
 makedepends=('cpio')
 conflicts=('crashplan')
 # install=crashplan-pro.install
-source=(https://download.crashplan.com/installs/agent/cloud/${pkgver}/${_pkgbuild}/install/CrashPlanSmb_${pkgver}_${_pkgtimestamp}_${_pkgbuild}_Linux.tgz
+source=(https://download.crashplan.com/installs/agent/cloud/${pkgver}/${_pkgbuild}/install/CrashPlanSmb_${pkgver}_${_pkgbuild}_Linux.tgz
         crashplan-pro.service
         upgrade.sh
         crashplan-pro_upgrade.service
         crashplan-pro_upgrade.path)
-sha1sums=('16333839698c7588b5863d2ffaa3feb43d9802b3'
+sha1sums=('424505cb799266aede43ea887bdc3502db42d816'
           'f73e2b1155744594303d81b394031159e248654c'
           'a3a5ead8b8fd867f47782b12bc27b1fb145565ac'
           'c24e2ba2b2d6831246ea4af072305ddf5d1fd774'
           '0dfbf0ef3df2ad386419def132c28d63560f6e4e')
 options=(!strip)
 build() {
-  cd $srcdir/code42-install
+  cd $srcdir/crashplan-install
 
   echo ""
   echo "You must review and agree to the EULA before using CrashPlan PRO."
@@ -46,7 +45,7 @@ MANIFESTDIR=/opt/$_pkgname/manifest
 INITDIR=/etc/init.d
 INSTALLDATE=`date +%Y%m%d`
 JAVACOMMON=/opt/$_pkgname/jre/bin/java
-APP_BASENAME=Code42
+APP_BASENAME=CrashPlan
 DIR_BASENAME=$_pkgname
 APP_DATA_BASE_NAME_LOWER=crashplan
 EOF
@@ -62,33 +61,23 @@ package() {
   mkdir -p $pkgdir/opt/$_pkgname
   cd $pkgdir/opt/$_pkgname
 
-  $srcdir/code42-install/install.sh -q -x $pkgdir/opt/ -u $USER
-
-  # As arch isnt a recognised flavour we manually extract the so files
-  cp nlib/common/* nlib/
-  cp nlib/ubuntu20/libuaw.so nlib/
-  rm -rf nlib/{rhel7,rhel8,ubuntu18,ubuntu20,common}
+  $srcdir/crashplan-install/install.sh -q -x $pkgdir/opt/ -u $USER
 
   sed -i "s|<manifestPath.*</manifestPath>|<manifestPath>/opt/$_pkgname/manifest</manifestPath>|g" $pkgdir/opt/$_pkgname/conf/default.service.xml
 
   mkdir -p $pkgdir/usr/bin
-  ln -s "/opt/$_pkgname/bin/CrashPlanDesktop" $pkgdir/usr/bin/CrashPlanDesktop
+  ln -s "/opt/$_pkgname/bin/desktop.sh" $pkgdir/usr/bin/CrashPlanDesktop
 
   # Fix for encoding troubles (CrashPlan ticket 178827)
   # Make sure the daemon is running using the same localization as
   # the (installing) user
-  echo "LC_ALL=$LANG" > $srcdir/code42-install/scripts/run.conf
+  echo "LC_ALL=$LANG" > $srcdir/crashplan-install/scripts/run.conf
 
-  install -D -m 644 $srcdir/code42-install/install.vars install.vars
-  install -D -m 644 $srcdir/code42-install/scripts/run.conf bin/run.conf
-  install -D -m 755 $srcdir/code42-install/scripts/code42.desktop $pkgdir/usr/share/applications/crashplan.desktop
-  install -D -m 755 $srcdir/code42-install/scripts/service.sh bin/service.sh
+  install -D -m 644 $srcdir/crashplan-install/install.vars install.vars
+  install -D -m 644 $srcdir/crashplan-install/scripts/run.conf bin/run.conf
+  install -D -m 755 $srcdir/crashplan-install/scripts/crashplan.desktop $pkgdir/usr/share/applications/crashplan.desktop
+  install -D -m 755 $srcdir/crashplan-install/scripts/service.sh bin/service.sh
   install -D -m 755 $srcdir/upgrade.sh bin/upgrade.sh
-
-  # We need to change the name for now
-  ln -sf "/opt/$_pkgname/bin/Code42Service" $pkgdir/opt/crashplan/bin/CrashPlanService
-  ln -sf "/opt/$_pkgname/bin/desktop.sh" $pkgdir/opt/crashplan/bin/CrashPlanDesktop
-  ln -sf "/opt/$_pkgname/bin/service.sh" $pkgdir/opt/crashplan/bin/CrashPlanEngine
 
   # systemd unit
   install -D -m 644 $srcdir/crashplan-pro.service $pkgdir/usr/lib/systemd/system/crashplan-pro.service
