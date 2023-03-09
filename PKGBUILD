@@ -1,18 +1,18 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 
-DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
-
 pkgname=obs-studio-tytan652
 pkgver=29.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integrations. Plus V4L2 devices by paths, my bind interface PR, and sometimes backported fixes"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
 license=("GPL3")
+# To manage dependency rebuild easily, this will prevent you to rebuild OBS on non-updated system
 _mbedtlsver=2.28
 _pythonver=3.10
 depends=(
   "jack" "gtk-update-icon-cache" "x264" "rnnoise" "pciutils" "qt6-svg"
+  "mbedtls>=$_mbedtlsver"
 
   # "libxinerama" provided by "vlc-luajit"
   # "libxkbcommon-x11" provided by "qt6-base"
@@ -31,16 +31,8 @@ depends=(
   "libxss" "libxrandr" "nss" "at-spi2-core"
          
   # AUR Packages
-  "ffmpeg-obs>=5" "vlc-luajit" "ftl-sdk"
+  "ffmpeg-obs>=6" "vlc-luajit" "ftl-sdk"
 )
-# To manage mbedtls rebuild easily, this will prevent you to rebuild OBS on non-updated system
-# For Manjaro user this feature is disabled
-# Also OBS will need a patch when mbedtls 3 is on the repo
-if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
-  depends+=('mbedtls')
-else
-  depends+=("mbedtls>=$_mbedtlsver")
-fi
 ## About vlc-luajit
 # The official VLC package will make OBS crash when a VLC source is used.
 # The issue is that VLC and OBS are compiled with different lua version.
@@ -50,7 +42,8 @@ fi
 ## About ffmpeg-obs
 # Read ffmpeg-obs PKGBUILD for more info
 makedepends=(
-  "cmake" "git" "libfdk-aac" "swig" "luajit" "sndio" "lsb-release"
+  "cmake" "git" "libfdk-aac" "swig" "luajit" "sndio"
+  "python>=$_pythonver"
 
   # Needed by obs-websocket
   'asio' 'nlohmann-json' 'websocketpp'
@@ -58,13 +51,6 @@ makedepends=(
   # AUR Packages
   "libajantv2"
 )
-# To manage python rebuild easily, this will prevent you to rebuild OBS on non-updated system
-# For Manjaro user this feature is disabled
-if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
-  makedepends+=('python')
-else
-  makedepends+=("python>=$_pythonver")
-fi
 optdepends=(
   "libfdk-aac: FDK AAC codec support"
   "intel-media-driver: Hardware encoding (>= Broadwell)"
@@ -72,17 +58,11 @@ optdepends=(
   "libva-mesa-driver: Hardware encoding"
   "swig: Scripting"
   "luajit: Lua scripting"
+  "python>=$_pythonver: Python scripting"
   "sndio: Sndio input client"
   "v4l2loopback-dkms: Virtual camera output"
   "libajantv2: AJA NTV 2 support"
 )
-# To manage python rebuild easily, this will prevent you to rebuild OBS on non-updated system
-# For Manjaro user this feature is disabled
-if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
-  optdepends+=("python: Python scripting")
-else
-  optdepends+=("python>=$_pythonver: Python scripting")
-fi
 provides=("obs-studio=$pkgver" "obs-vst" "obs-websocket")
 conflicts=(
   "obs-studio" "obs-vst" "obs-websocket"
@@ -106,17 +86,6 @@ sha256sums=(
   "ee54b9c6f7e17fcc62c6afc094e65f18b2e97963c2fe92289b2b91972ac206e5"
 )
 
-if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
-source+=(
-  "$pkgname.hook"
-  "$pkgname.sh"
-)
-sha256sums+=(
-  "486b8297a7cabccd552a4d49f994b231f87860d32d4535906abf776eee2a377b"
-  "4fb9dcb408f9481127546db0c5287e1f1b274d14cf8975b0f02c1bafb23a4c37"
-)
-fi
-
 if [[ $CARCH == 'x86_64' ]]; then
   optdepends+=("decklink: Blackmagic Design DeckLink support")
 fi
@@ -138,6 +107,8 @@ prepare() {
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git config submodule.plugins/obs-websocket.url $srcdir/obs-websocket
   git -c protocol.file.allow=always submodule update
+
+  git cherry-pick -n 2e79d4c902abf3e6bb4ad1b5bf779c0cc22a6fd0
 
   cd plugins/obs-websocket
   sed -i 's|EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/deps/json/CMakeLists.txt||' CMakeLists.txt
@@ -182,9 +153,4 @@ package() {
   cd obs-studio/build
 
   make install DESTDIR="$pkgdir"
-
-  if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
-    install -D -m644 "$srcdir/$pkgname.hook" -t "${pkgdir}"/usr/share/libalpm/hooks/
-    install -D -m755 "$srcdir/$pkgname.sh" -t "${pkgdir}"/usr/share/libalpm/scripts/
-  fi
 }
