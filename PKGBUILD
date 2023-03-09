@@ -3,8 +3,8 @@
 # vim:set ts=2 sw=2 et ft=sh tw=100: expandtab
 
 pkgname=itcl3
-pkgver=3.4.3
-pkgrel=2
+pkgver=3.4.4
+pkgrel=1
 pkgdesc="Provides the extra language support needed to build large Tcl/Tk applications, version 3.4"
 arch=('i686' 'x86_64')
 url="http://incrtcl.sourceforge.net/"
@@ -12,7 +12,7 @@ license=('custom')
 depends=('glibc' 'tcl')
 provides=(itcl)
 conflicts=(itcl)
-source=("https://downloads.sourceforge.net/project/incrtcl/%5BIncr%20Tcl_Tk%5D-source/Itcl%20$pkgver/itcl$pkgver.tar.gz")
+source=("https://downloads.sourceforge.net/project/incrtcl/%5BIncr%20Tcl_Tk%5D-source/itcl%20$pkgver/itcl$pkgver.tar.gz")
 
 prepare() {
   cd "$srcdir"/itcl$pkgver
@@ -46,4 +46,4 @@ package(){
   #cleaning
   rmdir "$pkgdir"/usr/bin
 }
-md5sums=('bea70fc6e6a3fb049fdada405161b934')
+md5sums=('74feb037705c6bfadf5a375bcb6c4483')
