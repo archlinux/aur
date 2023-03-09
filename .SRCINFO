@@ -1,6 +1,6 @@
 pkgbase = retroarch-session
 	pkgdesc = Start retroarch via login manager as wayland or X11 session.
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	arch = any
 	license = GPL

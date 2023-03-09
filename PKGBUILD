@@ -2,7 +2,7 @@
 # Contributor: Marcel Hoppe <hoppe.marcel@gmail.com>
 
 pkgname=retroarch-session
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc='Start retroarch via login manager as wayland or X11 session.'
 arch=('any')
@@ -18,7 +18,6 @@ depends=('xorg-xset' 'retroarch')
 package() {
   install -d -m755 "$pkgdir/etc/retroarch-session"
   install -D -m644 retroarch.desktop       "$pkgdir"/usr/share/wayland-sessions/retroarch.desktop
-  install -D -m644 retroarch.desktop       "$pkgdir"/usr/share/xsessions/retroarch.desktop
   install -D -m644 retroarch-xorg.desktop  "$pkgdir"/usr/share/xsessions/retroarch-xorg.desktop
   install -D -m755 retroarch-session.sh    "$pkgdir"/usr/bin/retroarch-session.sh
 }
