@@ -1,7 +1,7 @@
 pkgbase = ps3-ppu-gcc
 	pkgdesc = GCC for cross-compiling to ppu (PS3 GameOS)
 	pkgver = 9.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gcc.gnu.org/
 	arch = x86_64
 	arch = aarch64

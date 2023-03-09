@@ -1,6 +1,6 @@
 # Maintainer: Darjan Krijan [https://disc-kuraudo.eu]
 
-_target="powerpc-ps3-elf"
+_target="powerpc64-ps3-elf"
 _target_alias="ppu"
 _newlib_pkgver="1.20.0"
 _gmp_pkgver="6.1.0"
@@ -10,7 +10,7 @@ _mpfr_pkgver="3.1.4"
 _pkgname="gcc"
 pkgname="ps3-${_target_alias}-${_pkgname}"
 pkgver="9.5.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="GCC for cross-compiling to ${_target_alias} (PS3 GameOS)"
 arch=(x86_64 aarch64 powerpc64le powerpc64 powerpc riscv64)
 url='https://gcc.gnu.org/'
@@ -77,7 +77,7 @@ build() {
 
 	local _configure_flags=(
 		--prefix="${PS3DEV}/ppu"
-		--target="powerpc64-ps3-elf"
+		--target="${_target}"
 		--with-cpu="cell"
 		--with-newlib
 		--with-system-zlib
