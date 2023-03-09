@@ -18,6 +18,6 @@ md5sums=('37d1c9ac1b1d9f4ecb99ea6f5b6af5dc'
 	)
 
 package() {
-    install -Dm755 vhclientx86_64              "${pkgdir}/usr/sbin/vhclientx86_64"
+    install -Dm755 vhclientx86_64              "${pkgdir}/usr/bin/vhclientx86_64"
     install -Dm644 virtualhereclient.service "${pkgdir}/etc/systemd/system/virtualhereclient.service"
 }
