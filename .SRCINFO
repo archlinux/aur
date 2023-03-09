@@ -1,16 +1,18 @@
 pkgbase = yarsync
 	pkgdesc = Yet Another Rsync is a file synchronization and backup tool
-	pkgver = 0.1.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/ynikitenko/yarsync
 	install = yarsync.install
 	arch = any
 	license = GPL3
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = man-db
-	source = yarsync-0.1.1.tar.gz::https://github.com/ynikitenko/yarsync/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 3c306c737ba96c315d6c89b7fab875eb1253527ef954f0facf1c15db72ed44c8
+	source = yarsync-0.2.tar.gz::https://github.com/ynikitenko/yarsync/archive/refs/tags/v0.2.tar.gz
+	sha256sums = 3e877674bfd675ef6d77855e381ae9da7851623ee192ad2725e25099a227da54
 
 pkgname = yarsync
 	depends = python
