@@ -1,17 +1,16 @@
 # Maintainer: tytan652 <tytan652[at]tytanium[dot]xyz>
 
-DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
-
 pkgname=vlc-luajit
 _vlcver=3.0.18
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=${_vlcver}${_vlcfixupver//-/.r}
-pkgrel=4
+pkgrel=5
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
 url='https://www.videolan.org/vlc/'
 arch=('i686' 'x86_64' 'aarch64')
 license=('LGPL2.1' 'GPL2')
+# To manage dependency rebuild easily, this will prevent you to rebuild VLC on non-updated system
 _aomver=3
 _dav1dver=1.0.0
 _flacver=1.4.0
@@ -27,23 +26,11 @@ depends=(
   'a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'luajit' 'libidn'
   'libmatroska' 'taglib' 'libmpcdec' 'faad2' 'libmad'
   'libmpeg2' 'xcb-util-keysyms' 'libtar' 'libxinerama' 'libsecret'
-  'libarchive' 'qt5-base' "ffmpeg>=5"
+  'libarchive' 'qt5-base' "ffmpeg>=6"
   'qt5-x11extras' 'qt5-svg' 'freetype2' 'fribidi' 'harfbuzz'
   'fontconfig' 'libxml2' 'gnutls' 'libplacebo'
+  "libupnp>=$_libupnpver" "libplacebo>=$_libplacebover"
 )
-# To manage dependency rebuild easily, this will prevent you to rebuild VLC on non-updated system
-# For Manjaro user this feature is disabled
-if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
-  depends+=(
-    'libplacebo'
-    'libupnp'
-  )
-else
-  depends+=(
-    "libplacebo>=$_libplacebover"
-    "libupnp>=$_libupnpver"
-  )
-fi
 makedepends=(
   'gst-plugins-base-libs' 'live-media' 'libnotify' 'libbluray'
   'libdc1394' 'libavc1394' 'libcaca' 'gtk3'
@@ -55,36 +42,12 @@ makedepends=(
   'zvbi' 'libass' 'libkate' 'libtiger'
   'sdl_image' 'libpulse' 'alsa-lib' 'jack' 'libsamplerate' 'libsoxr'
   'lirc' 'libgoom2' 'projectm' 'chromaprint'
-  'aribb24' 'aribb25' 'pcsclite' 'lua51' 'lsb-release'
-  'wayland-protocols'
+  'aribb24' 'aribb25' 'pcsclite' 'lua51' 'wayland-protocols'
+  "aom>=$_aomver" "dav1d>=$_dav1dver" "flac>=$_flacver"
+  "libmicrodns>=$_libmicrodnsver" "libvpx>=$_libvpxver"
+  "x264>=$_x264ver" "x265>=$_x265ver" "protobuf>=$_protobufver"
+  "srt>=$_srtver"
 )
-# To manage dependency rebuild easily, this will prevent you to rebuild VLC on non-updated system
-# For Manjaro user this feature is disabled
-if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
-  makedepends+=(
-    'aom'
-    'dav1d'
-    'flac'
-    'libmicrodns'
-    'libvpx'
-    'x264'
-    'x265'
-    'protobuf'
-    'srt'
-  )
-else
-  makedepends+=(
-    "aom>=$_aomver"
-    "dav1d>=$_dav1dver"
-    "flac>=$_flacver"
-    "libmicrodns>=$_libmicrodnsver"
-    "libvpx>=$_libvpxver"
-    "x264>=$_x264ver"
-    "x265>=$_x265ver"
-    "protobuf>=$_protobufver"
-    "srt>=$_srtver"
-  )
-fi
 optdepends=(
   'avahi: service discovery using bonjour protocol'
   'gst-plugins-base-libs: for libgst plugins'
@@ -143,53 +106,26 @@ optdepends=(
   'aribb25: aribcam support'
   'pcsclite: aribcam support'
   'live-media: streaming over RTSP'
+  "aom>=$_aomver: AOM AV1 codec"
+  "dav1d>=$_dav1dver: dav1d AV1 decoder"
+  "flac>=$_flacver: Free Lossless Audio Codec plugin"
+  "protobuf>=$_protobufver: chromecast streaming"
+  "libmicrodns>=$_libmicrodnsver: mDNS services discovery (chromecast etc)"
+  "libvpx>=$_libvpxver: VP8 and VP9 codec"
+  "x264>=$_x264ver: H264 encoding"
+  "x265>=$_x265ver: HEVC/H.265 encoder"
+  "srt>=$_srtver: SRT input/output plugin"
 )
-# To manage dependency rebuild easily, this will prevent you to rebuild VLC on non-updated system
-if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
-  optdepends+=(
-    'aom: AOM AV1 codec'
-    'dav1d: dav1d AV1 decoder'
-    'flac: Free Lossless Audio Codec plugin'
-    'protobuf: chromecast streaming'
-    'libmicrodns: mDNS services discovery (chromecast etc)'
-    'libvpx: VP8 and VP9 codec'
-    'x264: H264 encoding'
-    'x265: HEVC/H.265 encoder'
-    'srt: SRT input/output plugin'
-  )
-else
-  optdepends+=(
-    "aom>=$_aomver: AOM AV1 codec"
-    "dav1d>=$_dav1dver: dav1d AV1 decoder"
-    "flac>=$_flacver: Free Lossless Audio Codec plugin"
-    "protobuf>=$_protobufver: chromecast streaming"
-    "libmicrodns>=$_libmicrodnsver: mDNS services discovery (chromecast etc)"
-    "libvpx>=$_libvpxver: VP8 and VP9 codec"
-    "x264>=$_x264ver: H264 encoding"
-    "x265>=$_x265ver: HEVC/H.265 encoder"
-    "srt>=$_srtver: SRT input/output plugin"
-  )
-fi
 _name=vlc
 conflicts=("${_name}" 'vlc-dev' 'vlc-plugin' 'vlc-stable-git')
 provides=("${_name}=${pkgver}")
-options=('debug' '!emptydirs')
+options=('!emptydirs')
 source=(https://download.videolan.org/${_name}/${_vlcver}/${_name}-${_vlcver}${_vlcfixupver}.tar.xz
         'update-vlc-plugin-cache.hook'
         'libplacebo-5.patch')
 sha512sums=('6fc8fdaa7e8862ad7133d69b3dab99ab9cd3945846a6ce5e2379b7f68ee9accd385c53b8573fc7c82f732c24678b4932b1154d2ad8accf06305f2f578d6fcd8e'
             'b247510ffeadfd439a5dadd170c91900b6cdb05b5ca00d38b1a17c720ffe5a9f75a32e0cb1af5ebefdf1c23c5acc53513ed983a736e8fa30dd8fad237ef49dd3'
             'a06b04a8b059dbbef77d27435bd5bec3c26f937390bd112b0843385587e866e617c3dd0e66f99eed5fa4a91bc5f0fd9b5623f65b2f2435a54456dde2aa96209b')
-
-if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
-source+=(
-  "$pkgname.hook"
-  "$pkgname.sh"
-)
-sha512sums+=(
-  "387bc13bd61ab926228d58e102271a964415f11a175778323487080a7ebc424d1a6148d5705e1563eee49c9ea6407643f82e274478b589664c9fcdffb6177f99"
-  "698b3ee23d02677cd46950adc5188320ff4e5ead76d655db8d276558ee6745a567bec878c68a76b65728a6d893919b2cd4c9c6fec544461762df52476e4a8fe6")
-fi
 
 prepare() {
   cd ${_name}-${_vlcver}
@@ -350,9 +286,4 @@ package() {
                      "${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/vlc.png"
   done
   install -Dm 644 "${srcdir}/update-vlc-plugin-cache.hook" -t "${pkgdir}/usr/share/libalpm/hooks"
-
-  if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
-    install -D -m644 "$srcdir/$pkgname.hook" -t "${pkgdir}"/usr/share/libalpm/hooks/
-    install -D -m755 "$srcdir/$pkgname.sh" -t "${pkgdir}"/usr/share/libalpm/scripts/
-  fi
 }

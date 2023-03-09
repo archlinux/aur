@@ -1,7 +1,7 @@
 pkgbase = vlc-luajit
 	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility
 	pkgver = 3.0.18
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.videolan.org/vlc/
 	arch = i686
 	arch = x86_64
@@ -60,17 +60,16 @@ pkgbase = vlc-luajit
 	makedepends = aribb25
 	makedepends = pcsclite
 	makedepends = lua51
-	makedepends = lsb-release
 	makedepends = wayland-protocols
-	makedepends = aom
-	makedepends = dav1d
-	makedepends = flac
-	makedepends = libmicrodns
-	makedepends = libvpx
-	makedepends = x264
-	makedepends = x265
-	makedepends = protobuf
-	makedepends = srt
+	makedepends = aom>=3
+	makedepends = dav1d>=1.0.0
+	makedepends = flac>=1.4.0
+	makedepends = libmicrodns>=0.2
+	makedepends = libvpx>=1.13
+	makedepends = x264>=0.164
+	makedepends = x265>=3.5
+	makedepends = protobuf>=21
+	makedepends = srt>=1.5
 	depends = a52dec
 	depends = libdvbpsi
 	depends = libxpm
@@ -90,7 +89,7 @@ pkgbase = vlc-luajit
 	depends = libsecret
 	depends = libarchive
 	depends = qt5-base
-	depends = ffmpeg>=5
+	depends = ffmpeg>=6
 	depends = qt5-x11extras
 	depends = qt5-svg
 	depends = freetype2
@@ -100,8 +99,8 @@ pkgbase = vlc-luajit
 	depends = libxml2
 	depends = gnutls
 	depends = libplacebo
-	depends = libplacebo
-	depends = libupnp
+	depends = libupnp>=1.14
+	depends = libplacebo>=4.208
 	optdepends = avahi: service discovery using bonjour protocol
 	optdepends = gst-plugins-base-libs: for libgst plugins
 	optdepends = dav1d: dav1d AV1 decoder
@@ -158,21 +157,20 @@ pkgbase = vlc-luajit
 	optdepends = aribb25: aribcam support
 	optdepends = pcsclite: aribcam support
 	optdepends = live-media: streaming over RTSP
-	optdepends = aom: AOM AV1 codec
-	optdepends = dav1d: dav1d AV1 decoder
-	optdepends = flac: Free Lossless Audio Codec plugin
-	optdepends = protobuf: chromecast streaming
-	optdepends = libmicrodns: mDNS services discovery (chromecast etc)
-	optdepends = libvpx: VP8 and VP9 codec
-	optdepends = x264: H264 encoding
-	optdepends = x265: HEVC/H.265 encoder
-	optdepends = srt: SRT input/output plugin
+	optdepends = aom>=3: AOM AV1 codec
+	optdepends = dav1d>=1.0.0: dav1d AV1 decoder
+	optdepends = flac>=1.4.0: Free Lossless Audio Codec plugin
+	optdepends = protobuf>=21: chromecast streaming
+	optdepends = libmicrodns>=0.2: mDNS services discovery (chromecast etc)
+	optdepends = libvpx>=1.13: VP8 and VP9 codec
+	optdepends = x264>=0.164: H264 encoding
+	optdepends = x265>=3.5: HEVC/H.265 encoder
+	optdepends = srt>=1.5: SRT input/output plugin
 	provides = vlc=3.0.18
 	conflicts = vlc
 	conflicts = vlc-dev
 	conflicts = vlc-plugin
 	conflicts = vlc-stable-git
-	options = debug
 	options = !emptydirs
 	source = https://download.videolan.org/vlc/3.0.18/vlc-3.0.18.tar.xz
 	source = update-vlc-plugin-cache.hook
