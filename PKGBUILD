@@ -6,7 +6,7 @@
 _quake=vkQuake
 pkgname=vkquake
 pkgver=1.22.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A modern Quake 1 engine. Forked from Fitzquake. This version contains Vulkan API support."
 arch=('x86_64')
 provides=('vkquake')
@@ -14,7 +14,7 @@ url="https://github.com/Novum/vkquake"
 license=('GPL2')
 depends=('flac' 'libmad'
 	 'libvorbis' 'opusfile' 'sdl2')
-makedepends=('vulkan-validation-layers' 'meson' 'vulkan-headers' 'zopfli' 'glslang' 'spirv-tools')
+makedepends=('vulkan-validation-layers' 'meson' 'vulkan-headers' 'glslang' 'spirv-tools')
 install=$pkgname.install
 source=("https://github.com/Novum/vkQuake/archive/${pkgver}.tar.gz"
 	'vkquake.desktop'
@@ -29,7 +29,7 @@ sha512sums=('f69e4341cef53b7e72ce37283d2ffff574325aa0b898c923ee3074b92bb917dcbe7
 build() {
   
   cd "$srcdir/$_quake-$pkgver"
-  [[ -d build ]] || rm -rf build
+  [[ -d build ]] && rm -rf build
   mkdir build && cd build
 
   export CFLAGS="$CFLAGS -DDO_USERDIRS=1"
@@ -50,11 +50,6 @@ build() {
 
   # Compile vkquake binary
   ninja
-
-  # Package vkquake.pak
-  cd "$srcdir/$_quake-$pkgver/Misc/vq_pak"
-  make
-
 }
 
 package() {
@@ -67,9 +62,6 @@ package() {
   # Make doc dir
   mkdir -p $pkgdir/usr/share/doc/vkquake/
   mkdir -p $pkgdir/usr/share/games/vkquake/
-
-  # pak files
-  install -Dm644 "$srcdir/$_quake-$pkgver/Misc/vq_pak/vkquake.pak" "$pkgdir/usr/share/games/vkquake/vkquake.pak" 
 
   # supplemental files
   install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/vkquake.desktop"
