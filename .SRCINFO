@@ -1,14 +1,19 @@
 pkgbase = rust-analyzer-nightly-bin
 	pkgdesc = An experimental Rust compiler front-end for IDEs (nightly)
-	pkgver = 0.4.1175standalone
+	pkgver = 0.4.1428standalone
 	pkgrel = 1
 	url = https://github.com/rust-analyzer/rust-analyzer
 	arch = x86_64
 	arch = i686
+	arch = aarch64
 	license = MIT
 	provides = rust-analyzer
 	conflicts = rust-analyzer
-	source = rust-analyzer.gz::https://github.com/rust-lang/rust-analyzer/releases/download/nightly/rust-analyzer-x86_64-unknown-linux-gnu.gz
-	sha256sums = SKIP
+	source_x86_64 = rust-analyzer.gz::https://github.com/rust-lang/rust-analyzer/releases/download/nightly/rust-analyzer-x86_64-unknown-linux-gnu.gz
+	sha256sums_x86_64 = SKIP
+	source_i686 = rust-analyzer.gz::https://github.com/rust-lang/rust-analyzer/releases/download/nightly/rust-analyzer-x86_64-unknown-linux-gnu.gz
+	sha256sums_i686 = SKIP
+	source_aarch64 = rust-analyzer.gz::https://github.com/rust-lang/rust-analyzer/releases/download/nightly/rust-analyzer-aarch64-unknown-linux-gnu.gz
+	sha256sums_aarch64 = SKIP
 
 pkgname = rust-analyzer-nightly-bin
