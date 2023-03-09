@@ -8,6 +8,7 @@ pkgbase = denaro-git
 	arch = x86_64
 	arch = i686
 	license = GPL3
+	makedepends = blueprint-compiler
 	makedepends = dotnet-sdk>=7
 	makedepends = git
 	makedepends = just
