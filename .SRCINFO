@@ -1,14 +1,14 @@
 pkgbase = sddm-kcm-git
 	pkgdesc = KDE Config Module for SDDM
-	pkgver = 5.24.90.24.g4d03c42
+	pkgver = 5.26.90.35.gbaa6c20
 	pkgrel = 1
 	url = https://projects.kde.org/projects/kdereview/sddm-kcm/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	makedepends = extra-cmake-modules
-	makedepends = knewstuff
+	makedepends = extra-cmake-modules-git
+	makedepends = knewstuff-git
 	depends = kcmutils-git
 	provides = sddm-kcm
 	conflicts = sddm-kcm
