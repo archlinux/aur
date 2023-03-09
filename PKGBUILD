@@ -2,20 +2,18 @@
 
 pkgname=samarium
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A dynamic, interpreted language that is transpiled to Python"
 arch=(any)
 url="https://github.com/samarium-lang/Samarium"
 license=('MIT')
 depends=('python>=3.9' 'python-dahlia' 'python-crossandra')
-makedepends=('python-build' 'python-installer' 'python-poetry')
+makedepends=('python-build' 'python-installer' 'python-poetry-core')
 checkdepends=()
 optdepends=()
-source=(
-	"$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
-)
-sha256sums=('07588ba3a0d7c1c4f99966f099b8fafb456623b0e6733088d715132bca2fb910')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
+sha512sums=('3ca56257a14c1b17dda6d7c58a9452adf6ca58b59597a3b78f29292c379758ebfe7bd4a555ba0bd1d693767adcbdc63e5c55536b57015d8cf1c1bd2b11ad74d1')
 
 build() {
 	cd ..
