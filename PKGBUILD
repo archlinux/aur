@@ -4,7 +4,7 @@
 # Contributor: Tuur Vanhoutte <vanhouttetuur at gmail dot com>
 pkgname=notes
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Note taking application, write down your thoughts'
 arch=('x86_64')
 url='https://www.get-notes.com/'
@@ -40,6 +40,7 @@ build() {
   cmake -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DUSE_QT_VERSION=6 \
     -Wno-dev
   cmake --build build
 }
