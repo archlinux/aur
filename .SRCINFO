@@ -1,25 +1,19 @@
 pkgbase = python-pyrad
 	pkgdesc = Python RADIUS Implementation
-	pkgver = 2.3
+	pkgver = 2.4
 	pkgrel = 1
-	url = https://pypi.org/project/pyrad/
+	url = https://github.com/pyradius/pyrad
 	arch = any
-	license = CUSTOM
-	makedepends = python
-	makedepends = python2
-	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	depends = python
-	depends = python2
-	source = https://files.pythonhosted.org/packages/source/p/pyrad/pyrad-2.3.tar.gz
-	source = pyrad-2.3.tar.gz.sig
-	validpgpkeys = 748231EBCBD808A14F5E85D28C004C2F93481F6B
-	sha512sums = a3703a6c1cb79735e8c55656e6472461504b4e8cf493caa69cb088e17f8f442184c51123a81ac42a8d94f439bcb164a230da91a377175eb1d35b979055e37359
-	sha512sums = SKIP
+	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry
+	makedepends = python-wheel
+	depends = python-netaddr
+	depends = python-six
+	source = python-pyrad-2.4.tar.gz::https://files.pythonhosted.org/packages/source/p/pyrad/pyrad-2.4.tar.gz
+	source = LICENSE
+	sha256sums = 057de4b7e89d8da57ba782c1bde45c63ebee720ae2c0b0a69beaff15c47e30d9
+	sha256sums = 998e0422ba4ca1519d7d61959e00b9eb8377253b00808b3bafdc85628d2be2b8
 
 pkgname = python-pyrad
-	depends = python
-
-pkgname = python2-pyrad
-	depends = python2
-
