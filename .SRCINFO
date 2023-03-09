@@ -1,12 +1,12 @@
 pkgbase = dracut-ukify
 	pkgdesc = Integration layer for dracut and systemd's ukify tool for Arch Linux
 	pkgver = 4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aur.archlinux.org/packages/dracut-ukify
 	arch = any
 	license = MIT
 	depends = dracut
-	depends = systemd>=253
+	depends = systemd-ukify
 	depends = python
 	depends = util-linux
 	depends = python-pefile
