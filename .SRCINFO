@@ -1,0 +1,21 @@
+pkgbase = yaopenvfd
+	pkgdesc = Yet Another openvfd Daemon
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/7Ji/YAopenvfD
+	arch = aarch64
+	license = GPL3
+	makedepends = gcc
+	depends = glibc
+	optdepends = openvfd-dkms: dynamiclly compiled openvfd kernel module
+	optdepends = linux-aarch64-flippy: kernel that has the openvfd kernel module built in tree
+	conflicts = openvfd-service
+	backup = etc/conf.d/YAopenvfD
+	source = YAopenvfD-1.0.1.tar.gz::https://github.com/7Ji/YAopenvfD/archive/refs/tags/v1.0.1.tar.gz
+	source = YAopenvfD.conf
+	source = YAopenvfD.service
+	sha256sums = 57597d9888af30447d41dd420382bb7913b73e398134a56e53283f442637d4b4
+	sha256sums = 7bda38711e099460f301d464d537c1269d7a204c0b305c3c92b1add3d85822ed
+	sha256sums = 376c0c22e9731b2954db4caca46653d448c17e7fe47d90e99668643e265e04f8
+
+pkgname = yaopenvfd
