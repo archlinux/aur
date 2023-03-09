@@ -8,6 +8,6 @@ pkgbase = rustotpony-bin
 	provides = totp
 	conflicts = rustotpony
 	source = https://github.com/zebradil/rustotpony/releases/download/0.4.1/totp-linux
-	sha256sums = 083163a99d84a6a398fb0c2bca3645c5f66c00603351884897f5c6c38fd743bc
+	sha256sums = dcb96179a0748a96a44ab0e9b3da508825fe70acf457277d3aff5130335d9d35
 
 pkgname = rustotpony-bin
