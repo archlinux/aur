@@ -1,42 +1,48 @@
-# Maintainer: s3lph <account-arch-aur-gzxkqqna at kernelpanic dot lol>
-# Contributor: Lukas Tobler <luk4s.tobler@gmail.com>
+# Maintainer: Stijn Seghers <stijnseghers at gmail dot com>
 
 pkgname=i3lock-lixxia-git
-pkgver=r297.a27257f
+pkgver=r344.be2a08a
 pkgrel=1
-pkgdesc="An improved screenlocker based upon XCB and PAM (Lixxia fork)"
+pkgdesc='Copy of i3lock that displays a 12-hour clock and always shows unlock indicator'
 arch=('i686' 'x86_64')
-url="https://github.com/Lixxia/i3lock"
-license=('MIT')
+url='https://github.com/Lixxia/i3lock'
+license=('BSD')
 groups=('i3')
-depends=('xcb-util-image' 'libev' 'cairo' 'libxkbcommon-x11' 'pam')
-makedepends=('autoconf' 'git' 'gzip' 'make')
+depends=('cairo' 'libev' 'libx11' 'libxcb' 'libxkbcommon' 'libxkbcommon-x11' 'pam' 'xcb-util')
 provides=('i3lock')
 conflicts=('i3lock')
-backup=("etc/pam.d/i3lock")
-source=("git://github.com/Lixxia/i3lock.git")
+backup=('etc/pam.d/i3lock')
+source=("${pkgname}::git+${url}")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/i3lock"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$pkgname"
+
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare() {
+    cd "$pkgname"
+
+    # Patch compilation error: https://github.com/Lixxia/i3lock/issues/22
+    sed -i 's/^int input_position;$/extern &/' unlock_indicator.c
 }
 
 build() {
-  cd "${srcdir}/i3lock"
-  autoreconf -fi
-  mkdir -p build
-  gzip -c i3lock.1 > build/i3lock.1.gz
-  cd "${srcdir}/i3lock/build"
-  ../configure \
-    --prefix=${pkgdir}/usr \
-    --sysconfdir=${pkgdir}/etc
-  make
+    cd "$pkgname"
+
+    autoreconf -fi
+    mkdir -p build
+    cd build
+    ../configure \
+        --prefix="${pkgdir}/usr" \
+        --sysconfdir="${pkgdir}/etc"
+    make
 }
 
 package() {
-  cd "${srcdir}/i3lock/build"
-  make install
-  install -Dm644 i3lock.1.gz ${pkgdir}/usr/share/man/man1/i3lock.1.gz
-  install -Dm644 ../LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+    cd "${pkgname}/build"
+
+    make install
+    install -Dm 644 ../LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

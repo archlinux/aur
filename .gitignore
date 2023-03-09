@@ -1,7 +1,6 @@
-*.pkg.tar.xz
-i3lock/
-src/
-pkg/
-
-*~
-\#*\#
+/pkg/
+/src/
+/i3lock-lixxia-git/
+*.xz
+*.tgz
+*.zst

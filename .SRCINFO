@@ -1,26 +1,24 @@
 pkgbase = i3lock-lixxia-git
-	pkgdesc = An improved screenlocker based upon XCB and PAM (Lixxia fork)
-	pkgver = r297.a27257f
+	pkgdesc = Copy of i3lock that displays a 12-hour clock and always shows unlock indicator
+	pkgver = r344.be2a08a
 	pkgrel = 1
 	url = https://github.com/Lixxia/i3lock
 	arch = i686
 	arch = x86_64
 	groups = i3
-	license = MIT
-	makedepends = autoconf
-	makedepends = git
-	makedepends = gzip
-	makedepends = make
-	depends = xcb-util-image
-	depends = libev
+	license = BSD
 	depends = cairo
+	depends = libev
+	depends = libx11
+	depends = libxcb
+	depends = libxkbcommon
 	depends = libxkbcommon-x11
 	depends = pam
+	depends = xcb-util
 	provides = i3lock
 	conflicts = i3lock
 	backup = etc/pam.d/i3lock
-	source = git://github.com/Lixxia/i3lock.git
+	source = i3lock-lixxia-git::git+https://github.com/Lixxia/i3lock
 	md5sums = SKIP
 
 pkgname = i3lock-lixxia-git
-
