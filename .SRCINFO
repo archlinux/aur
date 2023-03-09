@@ -1,0 +1,16 @@
+pkgbase = python-paperbush
+	pkgdesc = A library connecting secrets' security with random's versatility
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/trag1c/paperbush
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	depends = python>=3.8
+	depends = python-argparse
+	source = paperbush-0.2.0.tar.gz::https://files.pythonhosted.org/packages/source/p/paperbush/paperbush-0.2.0.tar.gz
+	sha512sums = 7947e21b1284292027d56c1d77ebf1e7dedf46108b52c5d9540946633cc036e6c600e9f29ff048d850859eba158c517a449ef433def03fa235a72ee98c23fa2b
+
+pkgname = python-paperbush
