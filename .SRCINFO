@@ -1,7 +1,7 @@
 pkgbase = irpf
 	pkgdesc = Brazilian physical person income tax (IRPF) program
 	pkgver = 2023.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda
 	arch = any
 	license = custom
