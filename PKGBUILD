@@ -3,7 +3,7 @@
 _pkgname=bumper
 pkgname="${_pkgname}-bin"
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Easily bump $pkgver in your AUR packages.'
 url='https://github.com/bcyran/bumper'
 provides=('bumper')
@@ -25,6 +25,6 @@ package() {
     install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}"
     install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
     install -Dm 644 "completions/${_pkgname}" -t "${pkgdir}/usr/share/bash-completion/completions"
-    install -Dm 644 "completions/${_pkgname}" -t "${pkgdir}/usr/share/zsh/site-functions"
-    install -Dm 644 "completions/${_pkgname}" -t "${pkgdir}/usr/share/fish/vendor_completions.d"
+    install -Dm 644 "completions/_${_pkgname}" -t "${pkgdir}/usr/share/zsh/site-functions"
+    install -Dm 644 "completions/${_pkgname}.fish" -t "${pkgdir}/usr/share/fish/vendor_completions.d"
 }
