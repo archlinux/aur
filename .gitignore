@@ -1,3 +1,8 @@
-/cosmic-text-editor*
-/pkg/
-/src/
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!cosmic-text-editor.desktop
