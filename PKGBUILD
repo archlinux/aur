@@ -5,19 +5,19 @@
 # Contributor: ArcticVanguard <LideEmily at gmail dot com>
 # Contributor: ledti <antergist at gmail dot com>
 
-DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
-
 pkgname=obs-studio-browser
 pkgver=29.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64")
 url="https://github.com/obsproject/obs-studio"
 license=("GPL3")
+# To manage dependency rebuild easily, this will prevent you to rebuild OBS on non-updated system
 _mbedtlsver=2.28
 _pythonver=3.10
 depends=(
   "jack" "gtk-update-icon-cache" "x264" "rnnoise" "pciutils" "qt6-svg"
+  "mbedtls>=$_mbedtlsver"
 
   # "libxinerama" provided by "vlc-luajit"
   # "libxkbcommon-x11" provided by "qt6-base"
@@ -36,16 +36,8 @@ depends=(
   "libxss" "libxrandr" "nss" "at-spi2-core"
          
   # AUR Packages
-  "ffmpeg-obs>=5" "vlc-luajit" "ftl-sdk"
+  "ffmpeg-obs>=6" "vlc-luajit" "ftl-sdk"
 )
-# To manage mbedtls rebuild easily, this will prevent you to rebuild OBS on non-updated system
-# For Manjaro user this feature is disabled
-# Also OBS will need a patch when mbedtls 3 is on the repo
-if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
-  depends+=('mbedtls')
-else
-  depends+=("mbedtls>=$_mbedtlsver")
-fi
 ## About vlc-luajit
 # The official VLC package will make OBS crash when a VLC source is used.
 # The issue is that VLC and OBS are compiled with different lua version.
@@ -55,7 +47,8 @@ fi
 ## About ffmpeg-obs
 # Read ffmpeg-obs PKGBUILD for more info
 makedepends=(
-  "cmake" "git" "libfdk-aac" "swig" "luajit" "sndio" "lsb-release"
+  "cmake" "git" "libfdk-aac" "swig" "luajit" "sndio"
+  "python>=$_pythonver"
 
   # Needed by obs-websocket
   'asio' 'nlohmann-json' 'websocketpp'
@@ -65,13 +58,6 @@ makedepends=(
 
   "cef-minimal-obs=103.0.0_5060_shared_textures_143.2591+g4204d54+chromium_103.0.5060.134_1"
 )
-# To manage python rebuild easily, this will prevent you to rebuild OBS on non-updated system
-# For Manjaro user this feature is disabled
-if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
-  makedepends+=('python')
-else
-  makedepends+=("python>=$_pythonver")
-fi
 optdepends=(
   "libfdk-aac: FDK AAC codec support"
   "intel-media-driver: Hardware encoding (>= Broadwell)"
@@ -79,18 +65,12 @@ optdepends=(
   "libva-mesa-driver: Hardware encoding"
   "swig: Scripting"
   "luajit: Lua scripting"
+  "python>=$_pythonver: Python scripting"
   "sndio: Sndio input client"
   "v4l2loopback-dkms: Virtual camera output"
   "libajantv2: AJA NTV 2 support"
   "decklink: Blackmagic Design DeckLink support"
 )
-# To manage python rebuild easily, this will prevent you to rebuild OBS on non-updated system
-# For Manjaro user this feature is disabled
-if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
-  optdepends+=("python: Python scripting")
-else
-  optdepends+=("python>=$_pythonver: Python scripting")
-fi
 provides=("obs-studio=$pkgver" "obs-vst" "obs-websocket" "obs-browser")
 conflicts=(
   "obs-studio" "obs-vst" "obs-websocket" "obs-browser"
@@ -112,22 +92,13 @@ sha256sums=(
   "SKIP"
 )
 
-if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
-source+=(
-  "$pkgname.hook"
-  "$pkgname.sh"
-)
-sha256sums+=(
-  "e65c155cb5c35160d44ae3117f1fc69a9300bf12bfcdd337b139197b48b86654"
-  "e5699cf7735c0d765b433d322917ae93238f26f5f332f2d351f1e85a3d1e2849"
-)
-fi
-
 prepare() {
   cd "$srcdir/obs-studio"
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git config submodule.plugins/obs-websocket.url $srcdir/obs-websocket
   git -c protocol.file.allow=always submodule update
+
+  git cherry-pick -n 2e79d4c902abf3e6bb4ad1b5bf779c0cc22a6fd0
 
   cd plugins/obs-websocket
   sed -i 's|EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/deps/json/CMakeLists.txt||' CMakeLists.txt
@@ -164,9 +135,4 @@ package() {
   cd obs-studio/build
 
   make install DESTDIR="$pkgdir"
-
-  if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
-    install -D -m644 "$srcdir/$pkgname.hook" -t "${pkgdir}"/usr/share/libalpm/hooks/
-    install -D -m755 "$srcdir/$pkgname.sh" -t "${pkgdir}"/usr/share/libalpm/scripts/
-  fi
 }

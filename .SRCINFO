@@ -1,7 +1,7 @@
 pkgbase = obs-studio-browser
 	pkgdesc = Free and open source software for video recording and live streaming. With everything except service integration
 	pkgver = 29.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
 	license = GPL3
@@ -11,19 +11,19 @@ pkgbase = obs-studio-browser
 	makedepends = swig
 	makedepends = luajit
 	makedepends = sndio
-	makedepends = lsb-release
+	makedepends = python>=3.10
 	makedepends = asio
 	makedepends = nlohmann-json
 	makedepends = websocketpp
 	makedepends = libajantv2
 	makedepends = cef-minimal-obs=103.0.0_5060_shared_textures_143.2591+g4204d54+chromium_103.0.5060.134_1
-	makedepends = python
 	depends = jack
 	depends = gtk-update-icon-cache
 	depends = x264
 	depends = rnnoise
 	depends = pciutils
 	depends = qt6-svg
+	depends = mbedtls>=2.28
 	depends = qt6-wayland
 	depends = libxcomposite
 	depends = pipewire
@@ -32,21 +32,20 @@ pkgbase = obs-studio-browser
 	depends = libxrandr
 	depends = nss
 	depends = at-spi2-core
-	depends = ffmpeg-obs>=5
+	depends = ffmpeg-obs>=6
 	depends = vlc-luajit
 	depends = ftl-sdk
-	depends = mbedtls
 	optdepends = libfdk-aac: FDK AAC codec support
 	optdepends = intel-media-driver: Hardware encoding (>= Broadwell)
 	optdepends = libva-intel-driver: Hardware encoding (<= Haswell)
 	optdepends = libva-mesa-driver: Hardware encoding
 	optdepends = swig: Scripting
 	optdepends = luajit: Lua scripting
+	optdepends = python>=3.10: Python scripting
 	optdepends = sndio: Sndio input client
 	optdepends = v4l2loopback-dkms: Virtual camera output
 	optdepends = libajantv2: AJA NTV 2 support
 	optdepends = decklink: Blackmagic Design DeckLink support
-	optdepends = python: Python scripting
 	provides = obs-studio=29.0.2
 	provides = obs-vst
 	provides = obs-websocket
