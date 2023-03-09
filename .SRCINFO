@@ -1,10 +1,10 @@
 pkgbase = fortune-mod-mingju-git
 	pkgdesc = Chinese mingju for fortune-mod
 	pkgver = r15.e2398a0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xuchunyang/mingju
 	arch = any
-	groups = fortune-mods
+	groups = fortune-mods-zh
 	license = custom
 	makedepends = git
 	makedepends = fortune-mod
