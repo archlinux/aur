@@ -1,6 +1,6 @@
 pkgbase = nanocurrency
 	pkgdesc = Nano (formerly RaiBlocks) is a cryptocurrency designed from the ground up for scalable instant transactions and zero transaction fees.
-	pkgver = 22.1
+	pkgver = 24.0
 	pkgrel = 2
 	url = https://nano.org/
 	install = install
@@ -9,8 +9,6 @@ pkgbase = nanocurrency
 	license = BSD 2-clause
 	makedepends = cmake
 	depends = qt5-base
-	depends = boost>=1.69.0
-	depends = boost-libs>=1.69.0
 	provides = raiblocks
 	provides = nanocurrency
 	conflicts = raiblocks
@@ -20,23 +18,25 @@ pkgbase = nanocurrency
 	source = nanowallet.desktop
 	source = nanowallet128.png
 	source = nano-node.service
-	source = fix-build-for-gcc11.patch
-	source = fix-build-for-boost-1.76.patch
-	source = git+https://github.com/nanocurrency/nano-node.git#tag=V22.1
+	source = provide-boost.patch
+	source = boost_1_75_0.tar.bz2::https://sourceforge.net/projects/boost/files/boost/1.75.0/boost_1_75_0.tar.bz2/download
+	source = git+https://github.com/nanocurrency/nano-node.git#tag=V24.0
 	source = git+https://github.com/weidai11/cryptopp.git
-	source = git+https://github.com/nanocurrency/lmdb.git
+	source = git+https://github.com/nanocurrency/lmdb.git#branch=lmdb_0_9_23
 	source = git+https://github.com/miniupnp/miniupnp.git
 	source = git+https://github.com/nanocurrency/phc-winner-argon2.git
 	source = git+https://github.com/google/flatbuffers.git
-	source = git+https://github.com/nanocurrency/rocksdb.git
+	source = git+https://github.com/nanocurrency/rocksdb.git#branch=6.13.3
 	source = git+https://github.com/cryptocode/cpptoml.git
 	source = git+https://github.com/google/googletest.git
 	source = git+https://github.com/nanocurrency/nano-pow-server.git
+	source = git+https://github.com/nanocurrency/diskhash.git
 	sha256sums = 6b824bfd5a9f2c1cd8d6a30f858a7bdc7813a448f4894a151da035dac5af2f91
 	sha256sums = 27179351dbc3e000d54b5b13f0c2326b4c4bd06e93b1d0b2ea1849609aeadc2e
 	sha256sums = c219c91db98f33097e7d96ef0f0c95e4b9d6226ac2ab90e30be7f955c43bfa35
-	sha256sums = fff6e6ab537c33e522a6c91d1d917c8298c3c2a92e291b343663793bcf60336f
-	sha256sums = 98ec1f48ecdcf5c6270ead3f50eae427b33a68eebcdf2c7432d91fabd12f1b81
+	sha256sums = dbfe2a1774c2c5c2567cbfa9731c431f01076b62f7ea9b3657c875d1dbe2dada
+	sha256sums = 953db31e016db7bb207f11432bef7df100516eeb746843fa0486a222e3fd49cb
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

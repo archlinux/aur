@@ -1,5 +1,5 @@
 pkgname=nanocurrency
-pkgver=22.1
+pkgver=24.0
 _tag="V$pkgver"
 pkgrel=2
 pkgdesc="Nano (formerly RaiBlocks) is a cryptocurrency designed from the ground up for scalable instant transactions and zero transaction fees."
@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="https://nano.org/"
 license=('BSD 2-clause')
 makedepends=('cmake')
-depends=('qt5-base'  'boost>=1.69.0' 'boost-libs>=1.69.0')
+depends=('qt5-base')
 provides=(raiblocks nanocurrency)
 conflicts=("raiblocks" "raiblocks-git" "raiblocks-node-git" "nanocurrency-node-git")
 install=install
@@ -15,25 +15,27 @@ install=install
 source=(nanowallet.desktop
   nanowallet128.png
   nano-node.service
-  fix-build-for-gcc11.patch
-  fix-build-for-boost-1.76.patch
+  provide-boost.patch
+  "boost_1_75_0.tar.bz2::https://sourceforge.net/projects/boost/files/boost/1.75.0/boost_1_75_0.tar.bz2/download"
   "git+https://github.com/nanocurrency/nano-node.git#tag=${_tag}"
   git+https://github.com/weidai11/cryptopp.git
-  git+https://github.com/nanocurrency/lmdb.git
+  "git+https://github.com/nanocurrency/lmdb.git#branch=lmdb_0_9_23"
   git+https://github.com/miniupnp/miniupnp.git
   git+https://github.com/nanocurrency/phc-winner-argon2.git
-  git+https://github.com/google/flatbuffers.git
-  git+https://github.com/nanocurrency/rocksdb.git
+  "git+https://github.com/google/flatbuffers.git"
+  "git+https://github.com/nanocurrency/rocksdb.git#branch=6.13.3"
   git+https://github.com/cryptocode/cpptoml.git
   git+https://github.com/google/googletest.git
   git+https://github.com/nanocurrency/nano-pow-server.git
+  git+https://github.com/nanocurrency/diskhash.git
   )
 
 sha256sums=('6b824bfd5a9f2c1cd8d6a30f858a7bdc7813a448f4894a151da035dac5af2f91'
             '27179351dbc3e000d54b5b13f0c2326b4c4bd06e93b1d0b2ea1849609aeadc2e'
             'c219c91db98f33097e7d96ef0f0c95e4b9d6226ac2ab90e30be7f955c43bfa35'
-            'fff6e6ab537c33e522a6c91d1d917c8298c3c2a92e291b343663793bcf60336f'
-            '98ec1f48ecdcf5c6270ead3f50eae427b33a68eebcdf2c7432d91fabd12f1b81'
+            'dbfe2a1774c2c5c2567cbfa9731c431f01076b62f7ea9b3657c875d1dbe2dada'
+            '953db31e016db7bb207f11432bef7df100516eeb746843fa0486a222e3fd49cb'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -44,6 +46,7 @@ sha256sums=('6b824bfd5a9f2c1cd8d6a30f858a7bdc7813a448f4894a151da035dac5af2f91'
             'SKIP'
             'SKIP'
             'SKIP')
+
 
 _submodule_config() {
   submodule_name=$1
@@ -69,12 +72,16 @@ prepare() {
   _submodule_config cpptoml
   _submodule_config googletest
   _submodule_config nano-pow-server
+  _submodule_config diskhash
   
   git submodule init
-  git submodule update --recursive
+  git -c protocol.file.allow=always submodule update --recursive
 
-  patch --forward -p1 -i $srcdir/fix-build-for-gcc11.patch
-  patch --forward -p1 -i $srcdir/fix-build-for-boost-1.76.patch
+  cd "${srcdir}/nano-node"
+  patch --forward -p0 -i $srcdir/provide-boost.patch
+  ln -sf "$srcdir/boost_1_75_0.tar.bz2" ./
+  ln -sf "$srcdir/boost_1_75_0" ./
+#  patch --forward -p1 -i $srcdir/fix-build-for-boost-1.76.patch
 }
 build() {
 
@@ -88,7 +95,7 @@ build() {
   tmp_path=${tmp_path#:}
   PATH=$tmp_path
   
-  _flags="-DNANO_GUI=ON -DFAIL_ON_WARNINGS=OFF"
+  _flags="-DNANO_GUI=ON -DFAIL_ON_WARNINGS=OFF -DFLATBUFFERS_STRICT_MODE=OFF -DCMAKE_CXX_FLAGS=\"-Wno-error\""
   
   if grep -q avx2 /proc/cpuinfo; then
     echo "using AVX2 optimizations"
@@ -106,9 +113,16 @@ build() {
   
   _cores=$(grep processor /proc/cpuinfo | wc -l)
   #_cores=1
+
+  export BOOST_ROOT="$srcdir/boost_build"
+  echo "build boost..."
+  pushd "$srcdir/nano-node" >/dev/null
+  bash util/build_prep/bootstrap_boost.sh -j $_cores -B 1.75 -m
+  popd >/dev/null
+  
   PATH=$PATH cmake $_flags ./
-  make -j${_cores} nano_wallet
-  make -j${_cores} nano_node
+  make -j${_cores} VERBOSE=1 nano_wallet
+  make -j${_cores} VERBOSE=1 nano_node
 }
 
 package() {

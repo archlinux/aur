@@ -1,0 +1,13 @@
+--- util/build_prep/bootstrap_boost.sh	2023-03-09 00:21:53.361480936 -0500
++++ util/build_prep/bootstrap_boost.sh.new	2023-03-09 00:22:05.781957983 -0500
+@@ -136,8 +136,8 @@
+ 	buildArgs+=(linkflags="${buildLDArgs[*]}")
+ fi
+ 
+-rm -rf "${BOOST_BASENAME}"
+-tar xf "${BOOST_ARCHIVE}"
++#rm -rf "${BOOST_BASENAME}"
++#tar xf "${BOOST_ARCHIVE}"
+ 
+ pushd "${BOOST_BASENAME}"
+ ./bootstrap.sh "${bootstrapArgs[@]}"
