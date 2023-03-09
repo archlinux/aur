@@ -2,7 +2,7 @@
 
 pkgname=python-jaxlib-cuda
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc='XLA library for JAX'
 arch=('x86_64')
 url='https://github.com/google/jax/'
@@ -12,7 +12,6 @@ depends=('absl-py'
          'cuda'
          'cudnn'
          'nccl'
-         'python'
          'python-flatbuffers'
          'python-numpy'
          'python-scipy')
