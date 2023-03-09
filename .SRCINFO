@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-obs
 	pkgdesc = Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD
-	pkgver = 5.1.2
-	pkgrel = 3
+	pkgver = 6
+	pkgrel = 1
 	url = https://ffmpeg.org/
 	arch = i686
 	arch = x86_64
@@ -16,10 +16,12 @@ pkgbase = ffmpeg-obs
 	makedepends = mesa
 	makedepends = nasm
 	makedepends = opencl-headers
-	makedepends = vulkan-headers
-	makedepends = lsb-release
+	makedepends = vulkan-headers>=1.3.240
+	depends = aom>=3
+	depends = srt>=1.5
 	depends = alsa-lib
 	depends = bzip2
+	depends = dav1d>=1.0.0
 	depends = fontconfig
 	depends = fribidi
 	depends = gmp
@@ -36,8 +38,8 @@ pkgbase = ffmpeg-obs
 	depends = libgl
 	depends = libiec61883
 	depends = libmodplug
+	depends = libopenmpt
 	depends = libpulse
-	depends = rav1e
 	depends = libraw1394
 	depends = librsvg
 	depends = libsoxr
@@ -47,39 +49,37 @@ pkgbase = ffmpeg-obs
 	depends = libvdpau
 	depends = vid.stab
 	depends = libvorbis
-	depends = vulkan-icd-loader
+	depends = libvpx>=1.13
 	depends = libwebp
 	depends = libx11
 	depends = libxcb
 	depends = libxext
 	depends = libxml2
 	depends = libxv
-	depends = xvidcore
-	depends = zimg
 	depends = ocl-icd
 	depends = opencore-amr
 	depends = openjpeg2
 	depends = opus
+	depends = rav1e
 	depends = sdl2
 	depends = speex
 	depends = v4l-utils
+	depends = vulkan-icd-loader
+	depends = x264>=0.164
+	depends = x265>=3.5
+	depends = xvidcore
 	depends = xz
+	depends = zimg
 	depends = zlib
-	depends = aom
-	depends = dav1d
-	depends = libvpx
-	depends = x264
-	depends = x265
-	depends = srt
-	depends = librist
+	depends = librist>=0.2.7
 	depends = libmfx
-	depends = svt-av1
-	depends = vmaf
+	depends = svt-av1>=1.1
+	depends = vmaf>=2
 	optdepends = avisynthplus: AviSynthPlus support
 	optdepends = ladspa: LADSPA filters
 	optdepends = nvidia-utils: Nvidia NVDEC/NVENC support
 	optdepends = intel-media-sdk: Intel QuickSync support
-	provides = ffmpeg=5.1.2
+	provides = ffmpeg=6
 	provides = libavcodec.so
 	provides = libavdevice.so
 	provides = libavfilter.so
@@ -89,8 +89,7 @@ pkgbase = ffmpeg-obs
 	provides = libswresample.so
 	provides = libswscale.so
 	conflicts = ffmpeg
-	options = debug
-	source = ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git#tag=05d6157aab34bc49f23284645a8f34ece870f44d
+	source = ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git#tag=ea3d24bbe3c58b171e55fe2151fc7ffaca3ab3d2
 	source = obs-deps::git+https://github.com/obsproject/obs-deps.git#tag=2022-08-02
 	source = add-av_stream_get_first_dts-for-chromium.patch
 	sha256sums = SKIP
