@@ -15,6 +15,7 @@ pkgbase = freecad-git
 	makedepends = python-shiboken2
 	makedepends = shiboken2
 	makedepends = swig
+	depends = adios2
 	depends = boost-libs
 	depends = fmt
 	depends = glew

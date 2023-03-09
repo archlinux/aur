@@ -9,6 +9,7 @@ arch=('x86_64')
 url='https://www.freecad.org/'
 license=('LGPL')
 depends=(
+adios2
 boost-libs
 fmt
 glew
