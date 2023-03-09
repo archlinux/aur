@@ -94,7 +94,6 @@ build() {
     -D CMAKE_CXX_FLAGS="${CXXFLAGS} -fPIC -w" \
     -D FREECAD_USE_EXTERNAL_PIVY=ON \
     -D FREECAD_USE_QT_FILEDIALOG=ON \
-    -D PYTHON_EXECUTABLE=/usr/bin/python \
     -D INSTALL_TO_SITEPACKAGES=ON \
     -D CMAKE_INSTALL_PREFIX='/usr/lib/freecad' \
     -D CMAKE_INSTALL_DATADIR='../../share/freecad' \
