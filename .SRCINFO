@@ -1,17 +1,17 @@
 pkgbase = mommy
-    pkgdesc = mommy's here to support you~
-    pkgver = 1.2.1
-    pkgrel = 2
-    url = https://github.com/FWDekker/mommy
-    arch = any
-    license = Unlicense
-    checkdepends = shellspec
-    checkdepends = man-db
-    depends = sh
-    optdepends = man-db: for manual pages
-    optdepends = fish: for tab completion
-    optdepends = zsh: for tab completion
-    source = git+https://github.com/FWDekker/mommy.git#tag=v1.2.1
-    sha256sums = SKIP
+	pkgdesc = mommy's here to support you~
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/FWDekker/mommy
+	arch = any
+	license = Unlicense
+	checkdepends = shellspec
+	checkdepends = man-db
+	depends = sh
+	optdepends = man-db: for manual pages
+	optdepends = fish: for tab completion
+	optdepends = zsh: for tab completion
+	source = git+https://github.com/FWDekker/mommy.git#tag=v1.2.2
+	sha256sums = SKIP
 
 pkgname = mommy
