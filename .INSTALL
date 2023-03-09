@@ -1,0 +1,26 @@
+#!/bin/sh
+
+post_install() {
+  set -e
+  echo "
+====================================================================================
+  IMPORTANT: dayz-linux-cli-launcher
+
+  In order to get the game running the vm.max_map_count kernel
+  parameter needs to be increased, because otherwise the game will
+  freeze while loading the main menu or after playing for a couple
+  of minutes.  1024*1024 seems to work reliably.
+  https://github.com/bastimeyer/dayz-linux-cli-launcher#important-notes
+
+  Temporarily set this value by running the command:
+     sudo systemctl -w vm.max_map_count=1048576
+
+  Or permanently apply this change with the command:
+     echo 'vm.max_map_count=1048576' | sudo tee /etc/sysctl.d/vm.max_map_count.conf
+====================================================================================
+"
+}
+
+post_upgrade() {
+  post_install "$@"
+}
