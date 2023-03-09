@@ -2,18 +2,18 @@
 
 _pkgname='fatrat'
 pkgname="$_pkgname-git"
-pkgver=1.2.0_beta2.52.gedfd535
+pkgver=1.2.0_beta2.60.g1b0dd1f
 pkgrel=1
 pkgdesc='Qt Download/Upload Manager'
 arch=('i686' 'x86_64')
 url='http://fatrat.dolezel.info'
 license=('custom: GPL2 + complement')
-depends=('curl' 'libtorrent-rasterbar' 'poco' "qt5-"{tools,svg,webengine})
+depends=('curl' 'libtorrent-rasterbar' "qt5-"{tools,svg,webengine})
 optdepends=('desktop-file-utils: add application to MIME database')
 makedepends=('git' 'cmake' 'boost')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+https://github.com/LubosD/fatrat.git#branch=feature/poconet_migration")
+source=("git+https://github.com/LubosD/fatrat.git#branch=develop")
 sha256sums=("SKIP")
 
 pkgver() {
@@ -33,7 +33,7 @@ build() {
         -DWITH_NLS=ON \
         -DWITH_CURL=ON \
         -DWITH_BITTORRENT=ON \
-        -DWITH_WEBINTERFACE=ON
+        -DWITH_WEBINTERFACE=OFF
   make
 
 }

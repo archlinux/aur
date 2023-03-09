@@ -1,6 +1,6 @@
 pkgbase = fatrat-git
 	pkgdesc = Qt Download/Upload Manager
-	pkgver = 1.2.0_beta2.52.gedfd535
+	pkgver = 1.2.0_beta2.60.g1b0dd1f
 	pkgrel = 1
 	url = http://fatrat.dolezel.info
 	arch = i686
@@ -11,15 +11,13 @@ pkgbase = fatrat-git
 	makedepends = boost
 	depends = curl
 	depends = libtorrent-rasterbar
-	depends = poco
 	depends = qt5-tools
 	depends = qt5-svg
 	depends = qt5-webengine
 	optdepends = desktop-file-utils: add application to MIME database
 	provides = fatrat
 	conflicts = fatrat
-	source = git+https://github.com/LubosD/fatrat.git#branch=feature/poconet_migration
+	source = git+https://github.com/LubosD/fatrat.git#branch=develop
 	sha256sums = SKIP
 
 pkgname = fatrat-git
-
