@@ -1,4 +1,9 @@
 # Maintainer: Darjan Krijan [https://disc-kuraudo.eu]
+#
+# Kept at version 2.22 because with 2.40 ps3-spu-gcc would not build:
+# /tmp/ccVRmFCg.s: Assembler messages:
+# /tmp/ccVRmFCg.s:50: Error: Relocation doesn't fit. (relocation value = 0x474)
+# make[2]: *** [../../../libgcc/config/spu/t-elf:33: cachemgr.o] Error 1
 
 _target="spu"
 _pkgname="binutils"
@@ -15,7 +20,7 @@ checkdepends=(dejagnu debuginfod bc)
 options=(!emptydirs !strip staticlibs !lto)
 source=(
 	"https://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}.tar.bz2"
-	"${_pkgname}-${pkgver}-${_target}-ps3.patch"
+	"${_pkgname}-${pkgver}-ps3-${_target}.patch"
 	"https://git.savannah.gnu.org/cgit/config.git/plain/config.guess"
 	"https://git.savannah.gnu.org/cgit/config.git/plain/config.sub"
 )
@@ -38,7 +43,7 @@ _prefix="${PS3DEV}/${_target}"
 prepare() {
 	cd "${_pkgname}-${pkgver}"
 
-	patch -p1 < "${srcdir}/${_pkgname}-${pkgver}-${_target}-ps3.patch"
+	patch -p1 < "${srcdir}/${_pkgname}-${pkgver}-ps3-${_target}.patch"
 }
 
 build() {
