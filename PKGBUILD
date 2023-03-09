@@ -1,245 +1,203 @@
-# $Id$
 # Maintainer: shmilee <shmilee.zju@gmail.com>
-# Contributor: Tobias Powalowski <tpowa@archlinux.org>
-# Contributor: Thomas Baechler <thomas@archlinux.org>
-# Contributor: Andreas Radke <andyrtr@archlinux.org>
+# Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
 # last/latest "longterm maintenance" kernel releases
 # https://www.kernel.org/category/releases.html
-# 5.15 Greg Kroah-Hartman & Sasha Levin 2021-10-31 Oct, 2023
-_LLL_VER=5.15
-_LLL_SUBVER=98
+# 6.1 Greg Kroah-Hartman & Sasha Levin 2022-12-11 Dec, 2026
+_LLL_VER=6.1
+_LLL_SUBVER=15
 
-# Bisect debug, v5.4.47 -> v5.4.48
-_Bisect_debug=off # on, test, off
-if [ "$_Bisect_debug" == "on" ]; then
-  _burlbase=https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
-  _bcommit=f7757368e0f0b3e108088ca7b5b8abda6faa7ebc #Peter, 8 x
-# _bcommit=2e256dd5b05561b051e895121530d2a0062c7a0f #Jann, 10 v
-# _bdiff="$_burlbase/diff/?h=linux-${_LLL_VER}.y&id2=v${_LLL_VER}.${_LLL_SUBVER}&id=$_bcommit"
-  _bpatch="$_burlbase/rawdiff/?h=linux-${_LLL_VER}.y&id2=v${_LLL_VER}.${_LLL_SUBVER}&id=$_bcommit"
-  msg "Bisect debug on: v${_LLL_VER}.${_LLL_SUBVER} --> $_bcommit"
-  msg "Bisect debug patch: $_bpatch"
+#PKGEXT='.pkg.tar'
+
+# Disable NUMA since most users do not have multiple processors. Breaks CUDA/NvEnc.
+## Archlinux and Xanmod enable it by default.
+# Set variable "use_numa" to: n to disable (possibly increase performance)
+#                             y to enable  (stock default)
+if [ -z ${use_numa+x} ]; then
+  use_numa=n
 fi
 
-# NUMA is optimized for multi-socket motherboards.
-# A single multi-core CPU can actually run slower with NUMA enabled.
-# Most users can disable NUMA.
-# see, https://bugs.archlinux.org/task/31187
-_NUMA_disable=y
+# Compile ONLY used modules to VASTLY reduce the number of modules built
+# and the build time.
+#
+# To keep track of which modules are needed for your specific system/hardware,
+# give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
+# This PKGBUILD read the database kept if it exists
+#
+# More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
+if [ -z ${_localmodcfg} ]; then
+  _localmodcfg=n
+fi
 
-# http://ck.kolivas.org/patches/5.0/
-# EOL: https://ck-hack.blogspot.com/2021/08/514-and-future-of-muqss-and-ck-once.html
-# xanmod:
-#   ck-hrtimer
-#   Graysky uarches
-#   intel partial Clear Linux patchset
-#   lib_zstd
-#   lrng framework
-_Xan_COMMIT=e66971a97b812487354914a47cdcc4d06403a717
-_Xan_PATCH_SRC="xanmod-$_Xan_COMMIT.tar.gz::https://github.com/xanmod/linux-patches/archive/$_Xan_COMMIT.tar.gz"
-_Xan_PATCH_PATCH=('xanmod-patch-for-5.15.58+.patch')
+# XanMod Kernel patch
+# https://xanmod.org/
+# https://github.com/xanmod
+_XanMod_VER=1
+_Xanmod_PATCH_SRC="https://github.com/xanmod/linux/releases/download/${_LLL_VER}.${_LLL_SUBVER}-xanmod${_XanMod_VER}/patch-${_LLL_VER}.${_LLL_SUBVER}-xanmod${_XanMod_VER}.xz"
+#_Xanmod_PATCH_PATCH=()
 
-# Ultra Kernel Samepage Merging
-# https://github.com/dolohow/uksm
-_UKSM_VER=0.1.2.6
-_UKSM_COMMIT=c806b3be64f2e6d2d27c8e258179a8794dac29bc
-_UKSM_PATCH_SRC="https://github.com/dolohow/uksm/raw/${_UKSM_COMMIT}/v5.x/uksm-${_LLL_VER}.patch"
-#_UKSM_COMMIT=80eb7b0e83af4e0b19eea5529082bfbdd5b4deae
-#_UKSM_PATCH_SRC="uksm-${_LLL_VER}.patch::https://gitlab.com/sirlucjan/kernel-patches/-/raw/${_UKSM_COMMIT}/${_LLL_VER}/uksm-patches/0001-UKSM-for-${_LLL_VER}.patch"
-_UKSM_PATCH_PATCH=()
-
-# CJKTTY patch 
+# CJKTTY patch
 # https://github.com/Gentoo-zh/linux-cjktty
 #_CJKTTY_PATCH_URL="https://github.com/torvalds/linux/compare/v${_LLL_VER}...Gentoo-zh:${_LLL_VER}-utf8.patch"
 #_CJKTTY_PATCH_SRC="cjktty-${_LLL_VER}.patch::${_CJKTTY_PATCH_URL}"
 # https://github.com/zhmars/cjktty-patches
-_CJKTTY_COMMIT=88b6f29be93285221a10ea7d2737f97793754ee4
-_CJKTTY_PATCH_SRC="https://github.com/zhmars/cjktty-patches/raw/${_CJKTTY_COMMIT}/v5.x/cjktty-${_LLL_VER}.patch"
+_CJKTTY_COMMIT=303dff435a7a0fadbd6215cb59e52dcd656e1d47
+_CJKTTY_PATCH_SRC="https://github.com/zhmars/cjktty-patches/raw/${_CJKTTY_COMMIT}/v6.x/cjktty-${_LLL_VER}.patch"
 _CJKTTY_PATCH_PATCH=()
 
-_PATHSET_DESC="some xanmod patchsets, uksm-${_UKSM_VER} and cjktty"
+_PATHSET_DESC="Xanmod patches, cjktty"
+
+_MORE_PATCH=(
+  #"0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch" in Xanmod
+)
+######## END ########
 
 pkgbase=linux-shmilee
-pkgname=("${pkgbase}" "${pkgbase}-headers")
-if [ "$_Bisect_debug" == "off" ]; then
-  pkgname+=("${pkgbase}-docs")
-fi
-_srcname=linux-${_LLL_VER}
+pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
 pkgver=${_LLL_VER}.${_LLL_SUBVER}
 pkgrel=1
-arch=('x86_64')
+pkgdesc='Linux-shmilee'
 url="https://www.kernel.org/"
-license=('GPL2')
+arch=(x86_64)
+license=(GPL2)
 makedepends=(
-    'bc' 'kmod' 'libelf' 'pahole' 'cpio' 'perl' 'tar' 'xz'
-    'xmlto' 'python-sphinx' 'python-sphinx_rtd_theme' 'graphviz' 'imagemagick')
+  bc libelf pahole cpio perl tar xz gettext
+  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
+  #texlive-latexextra
+)
+if [ "$_localmodcfg" = "y" ]; then
+  makedepends+=(modprobed-db)
+fi
 options=('!strip')
+_srcname=linux-${_LLL_VER}
 source=(
-        "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
-        "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
-        "https://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
-        #"https://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.sign"
-        ${_Xan_PATCH_SRC}
-        ${_Xan_PATCH_PATCH[@]}
-        ${_UKSM_PATCH_SRC}
-        ${_UKSM_PATCH_PATCH[@]}
-        ${_CJKTTY_PATCH_SRC}
-        ${_CJKTTY_PATCH_PATCH[@]}
-        'config'         # the main kernel config file
+  https://www.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.{xz,sign}
+  #https://www.kernel.org/pub/linux/kernel/v6.x/patch-${pkgver}.{xz,sign} # in Xanmod
+  ${_Xanmod_PATCH_SRC}
+  #${_Xanmod_PATCH_PATCH[@]}
+  ${_CJKTTY_PATCH_SRC}
+  ${_CJKTTY_PATCH_PATCH[@]}
+  ${_MORE_PATCH[@]}
+  config         # the main kernel config file
 )
 validpgpkeys=(
-              'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
-              '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman 
+  'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
+  '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-# https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
+# https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
+sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
             'SKIP'
-            '7348293e3730040137735bcc3300c432dc709fa0f14066183fb9c9f7508073db'
-            '34c9791cc0cacab354bdb0b283e1d429367bb78a060f89b1ef5a9add5880e339'
-            '05371d7a0b55daa630c7a9124798a06451d8ab2af4520d33e554995cc47bd5eb'
-            '7323d58e79dee3bd79431db134afb49e6024f0f63f821eebacf04d3c9d7645da'
-            '97a525e28a270c5e6e5a4fc4ab4920c42ceef2f9921857497ab3c56ec343803e'
-            'f4d2c31065975e07c37b56b70452be8583a7ab2e5041bfdb93bcd7dfc3f5d0eb')
+            '688d9da899bbf5758865d648dd99eaffafb4bb6a67c2d3182c2cd249e4a6be8e'
+            'c5bdf89d7867c368dfd7b7c16e5a50a99ca8022de28ab15315bdcb5dab8aad85'
+            'a8162641380b2681622d0f3c40ce130c9fd1cf6e176b5db18b95ba83609fbcf8')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
-_kernelname=${pkgbase#linux}
-
-if [ "$_Bisect_debug" != "off" ]; then
-  makedepends+=('wget' 'modprobed-db')
-  PKGEXT='.pkg.tar'
-fi
-
-patch_xanmod_dir() {
-  if [ -d "$1" ]; then
-    for i in "$1"/0*.patch; do
-      patch -Np1 -i $i
-    done
-  else
-    msg2 "----- $1 -----: not found!"
-  fi
-}
-
 prepare() {
-  cd ${_srcname}
+  cd $_srcname
 
-  msg2 "Setting version..."
-  scripts/setlocalversion --save-scmversion
-  echo "-$pkgrel" > localversion.10-pkgrel
-  echo "${pkgbase#linux}" > localversion.20-pkgname
+  msg2 "Patching with Xanmod(include upstream kernel patch-$pkgver)..."
+  patch -Np1 -i ../patch-${_LLL_VER}.${_LLL_SUBVER}-xanmod${_XanMod_VER}
 
-  # add upstream patch
-  patch -Np1 -i ../patch-${pkgver}
-
-  # https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/commit/scripts/pahole-flags.sh?h=v5.15.68&id=096e34b05a439f0e607529d9404be3c3f59d2064
-  if [ "${_LLL_VER}.${_LLL_SUBVER}" == "5.15.66" ]; then
-    chmod +x scripts/pahole-flags.sh
-  fi
-
-  # Bisect debug
-  if [ "$_Bisect_debug" == "on" ]; then
-    msg2 "Patching upstream v$pkgver --> $_bcommit"
-    if [ ! -f "${srcdir}/../v${pkgver}-${pkgrel}-$_bcommit" ]; then
-      wget "$_bpatch" -O "${srcdir}/../v${pkgver}-${pkgrel}-$_bcommit"
-    fi
-    patch -Np1 -i "${srcdir}/../v${pkgver}-${pkgrel}-$_bcommit"
-  fi
-  # Bisect debug result
-  if [ "$_Bisect_debug" != "on" ]; then
-    :
-  fi
-
-  msg2 "Patching source with some third-party patchsets in xanmod"
-  _Xan_patch_dir=../linux-patches-"$_Xan_COMMIT"/"linux-${_LLL_VER}.y-xanmod"
-  for p in ${_Xan_PATCH_PATCH[@]}; do
-    # -d Change to $_Xan_patch_dir/ immediately, before finding $p
-    # -p1 for ${_LLL_VER}.${_LLL_SUBVER}/xxxx
-    patch -Np1 -i ../../$p -d $_Xan_patch_dir/
-  done
-  msg2 "Patching with xanmod: CK's high-resolution kernel timers (hrtimer) patchsets ..."
-  patch_xanmod_dir $_Xan_patch_dir/ck-hrtimer
-  msg2 "Patching with xanmod: Graysky's additional CPU optimizations patchsets ..."
-  patch_xanmod_dir $_Xan_patch_dir/graysky
-  msg2 "Patching with xanmod: intel partial Clear Linux patchsets ..."
-  patch_xanmod_dir $_Xan_patch_dir/intel
-  msg2 "Patching with xanmod: ZSTD library for bug fixes and r/w performance patchsets..."
-  patch_xanmod_dir $_Xan_patch_dir/lib_zstd
-  msg2 "Patching with xanmod: Linux Random Number Generator (LRNG) framework patchsets..."
-  patch_xanmod_dir $_Xan_patch_dir/lrng
-
-  msg2 "Patching source with uksm ${_UKSM_VER} patches"
-  cp "../uksm-${_LLL_VER}.patch" "../uksm-${_LLL_VER}.${_LLL_SUBVER}.patch"
-  for p in ${_UKSM_PATCH_PATCH[@]}; do
-    patch -Ni ../$p "../uksm-${_LLL_VER}.${_LLL_SUBVER}.patch"
-  done
-  patch -Np1 -i "../uksm-${_LLL_VER}.${_LLL_SUBVER}.patch"
-
-  msg2 "Patching source with Gentoo-zh/linux-cjktty patches"
+  msg2 "Patching with Gentoo-zh/linux-cjktty patches..."
   cp "../cjktty-${_LLL_VER}.patch" "../cjktty-${_LLL_VER}.${_LLL_SUBVER}.patch"
   for p in ${_CJKTTY_PATCH_PATCH[@]}; do
     patch -Ni ../$p "../cjktty-${_LLL_VER}.${_LLL_SUBVER}.patch"
   done
   patch -Np1 -i "../cjktty-${_LLL_VER}.${_LLL_SUBVER}.patch"
 
-  echo "Setting config..."
-  cp -Tf ../config .config
+  local src
+  for src in "${_MORE_PATCH[@]}"; do
+    msg2 "Applying patch $src..."
+    patch -Np1 < "../$src"
+  done
 
-  # >>> ck hrtimer patch set, recommends 1000 Hz tick
-  scripts/config --enable CONFIG_HZ_1000
+  msg2 "Setting config..."
+  cp ../config .config
+
+  # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
+  scripts/config --enable CONFIG_STACK_VALIDATION
+
+  # Enable IKCONFIG following Arch's philosophy
+  scripts/config --enable CONFIG_IKCONFIG \
+                 --enable CONFIG_IKCONFIG_PROC
 
   # Optionally disable NUMA for 64-bit kernels only
-  if [ -n "$_NUMA_disable" ] && [ "${CARCH}" = "x86_64" ]; then
-      msg2 "Disabling NUMA from kernel config..."
-      sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
-        -i -e '/CONFIG_AMD_NUMA=y/d' \
-        -i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
-        -i -e '/CONFIG_NODES_SPAN_OTHER_NODES=y/d' \
-        -i -e '/# CONFIG_NUMA_EMU is not set/d' \
-        -i -e '/CONFIG_NODES_SHIFT=6/d' \
-        -i -e '/CONFIG_NEED_MULTIPLE_NODES=y/d' \
-        -i -e '/# CONFIG_MOVABLE_NODE is not set/d' \
-        -i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
-        -i -e '/CONFIG_ACPI_NUMA=y/d' .config
+  if [ "$use_numa" = "n" ] && [ "${CARCH}" = "x86_64" ]; then
+    msg2 "Disabling NUMA..."
+    scripts/config --disable CONFIG_NUMA
+    scripts/config --disable CONFIG_AMD_NUMA
+    scripts/config --disable CONFIG_X86_64_ACPI_NUMA
+    scripts/config --disable CONFIG_NODES_SPAN_OTHER_NODES
+    scripts/config --disable CONFIG_NUMA_EMU
+    scripts/config --disable CONFIG_NODES_SHIFT
+    scripts/config --disable CONFIG_NEED_MULTIPLE_NODES
+    scripts/config --disable CONFIG_USE_PERCPU_NUMA_NODE_ID
+    scripts/config --disable CONFIG_ACPI_NUMA
+    scripts/config --disable CONFIG_ARCH_SUPPORTS_NUMA_BALANCING
   fi
 
-  if [ "$_Bisect_debug" != "off" ]; then
-    if [ x"$USER" == x"builduser" ]; then
+  msg2 "Add anbox support..."
+  scripts/config --enable CONFIG_ASHMEM
+  # CONFIG_ION is not set
+  scripts/config --enable CONFIG_ANDROID
+  scripts/config --enable CONFIG_ANDROID_BINDER_IPC
+  scripts/config --enable CONFIG_ANDROID_BINDERFS
+  scripts/config --set-str CONFIG_ANDROID_BINDER_DEVICES "binder,hwbinder,vndbinder,binderfs"
+  scripts/config --enable CONFIG_FRAMEBUFFER_CONSOLE_LEGACY_ACCELERATION
+  # CONFIG_ANDROID_BINDER_IPC_SELFTEST is not set
+
+  ### Optionally load needed modules for the make localmodconfig
+  # See https://aur.archlinux.org/packages/modprobed-db
+  if [ "$_localmodcfg" = "y" ]; then
+    if [ ! -f $HOME/.config/modprobed.db ]; then
+      if [ x"$USER" == x"builduser" ]; then
         SUDO_USER=builduser modprobed-db
         SUDO_USER=builduser modprobed-db store # for makechrootpkg
+      else
+        modprobed-db
+        modprobed-db store
+      fi
     fi
-    yes "" | make LSMOD=$HOME/.config/modprobed.db localmodconfig
+    if [ -f $HOME/.config/modprobed.db ]; then
+      msg2 "Running Steven Rostedt's make localmodconfig now"
+      yes "" | make LSMOD=$HOME/.config/modprobed.db localmodconfig
+    else
+      msg2 "No modprobed.db data found"
+      exit 1
+    fi
   fi
 
   # rewrite configuration
-  yes "" | make olddefconfig >/dev/null
+  yes "" | make olddefconfig
   diff -u ../config .config || :
 
-  make -s kernelrelease >version
+  msg2 "Setting version..."
+  scripts/setlocalversion --save-scmversion
+  echo "" > localversion
+  echo "-$pkgrel" > localversion.10-pkgrel
+  echo "${pkgbase#linux}" > localversion.20-pkgname
+
+  make -s kernelrelease > version
   msg2 "Prepared $pkgbase version $(<version)"
 }
 
 build() {
-  cd ${_srcname}
-
-  if [ "$_Bisect_debug" == "off" ]; then
-    make ${MAKEFLAGS} all htmldocs
-  else
-    make ${MAKEFLAGS} all
-  fi
+  cd $_srcname
+  make htmldocs all
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with ${_PATHSET_DESC} patchsets"
-  depends=('coreutils' 'kmod' 'mkinitcpio')
-  optdepends=('crda: to set the correct wireless channels of your country'
+  pkgdesc="The $pkgdesc kernel and modules with ${_PATHSET_DESC} and ashmem, binder enabled"
+  depends=(coreutils kmod mkinitcpio)
+  optdepends=('wireless-regdb: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
-  provides=('VIRTUALBOX-GUEST-MODULES' 'WIREGUARD-MODULE')
-  replaces=('virtualbox-guest-modules-arch' 'wireguard-arch')
+  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
+  #replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
-  cd ${_srcname}
+  cd $_srcname
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
@@ -252,16 +210,19 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   msg2 "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    DEPMOD=/doesnt/exist modules_install  # Suppress depmod
+  # https://github.com/archlinux/svntogit-packages/commit/a65a47973b7676de60add0f40277900a91c115f1
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
+  pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
+  depends=(pahole)
 
-  cd ${_srcname}
+  cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   msg2 "Installing build files..."
@@ -275,10 +236,7 @@ _package-headers() {
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
   # required when DEBUG_INFO_BTF_MODULES is enabled
-  #install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
-
-  # add xfs and shmem for aufs building
-  mkdir -p "$builddir"/{fs/xfs,mm}
+  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   msg2 "Installing headers..."
   cp -t "$builddir" -a include
@@ -288,13 +246,16 @@ _package-headers() {
   install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
   install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
-  # http://bugs.archlinux.org/task/13146
+  # https://bugs.archlinux.org/task/13146
   install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-  # http://bugs.archlinux.org/task/20402
+  # https://bugs.archlinux.org/task/20402
   install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+
+  # https://bugs.archlinux.org/task/71392
+  install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
   msg2 "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
@@ -319,7 +280,7 @@ _package-headers() {
   msg2 "Stripping build tools..."
   local file
   while read -rd '' file; do
-    case "$(file -bi "$file")" in
+    case "$(file -Sib "$file")" in
       application/x-sharedlib\;*)      # Libraries (.so)
         strip -v $STRIP_SHARED "$file" ;;
       application/x-archive\;*)        # Libraries (.a)
@@ -340,9 +301,9 @@ _package-headers() {
 }
 
 _package-docs() {
-  pkgdesc="Documentation that comes with the ${pkgbase/linux/Linux} kernel"
+  pkgdesc="Documentation for the $pkgdesc kernel"
 
-  cd ${_srcname}
+  cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   msg2 "Installing documentation..."
@@ -358,9 +319,11 @@ _package-docs() {
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 }
 
-for _p in ${pkgname[@]}; do
-  eval "package_${_p}() {
-    $(declare -f "_package${_p#${pkgbase}}")
-    _package${_p#${pkgbase}}
+for _p in "${pkgname[@]}"; do
+  eval "package_$_p() {
+    $(declare -f "_package${_p#$pkgbase}")
+    _package${_p#$pkgbase}
   }"
 done
+
+# vim:set ts=8 sts=2 sw=2 et:
