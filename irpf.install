@@ -1,6 +1,0 @@
-post_install() {
-  echo "A Receita Federal recomenda a versão 11 do JAVA"
-  echo "Para configurar a versão recomendada como padrão, execute o comando abaixo como root:"
-  echo ""
-  echo "archlinux-java set java-11-openjdk"
-}

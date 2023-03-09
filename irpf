@@ -1,3 +1,0 @@
-#!/usr/bin/sh
-_JAVA_AWT_WM_NONREPARENTING=1 java -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -jar /usr/share/irpf/irpf.jar
-

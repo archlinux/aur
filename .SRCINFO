@@ -1,23 +1,21 @@
 pkgbase = irpf
-	pkgdesc = Programa Gerador de Declaração (PGD) da Declaração do Imposto sobre a Renda das Pessoas Físicas (DIRPF)
-	pkgver = 2022.1.4
-	pkgrel = 3
-	url = https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/dirpf
-	install = irpf.install
+	pkgdesc = Brazilian physical person income tax (IRPF) program
+	pkgver = 2023.1.0
+	pkgrel = 1
+	url = https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda
 	arch = any
 	license = custom
+	makedepends = icoutils
+	depends = sh
 	depends = java-runtime=11
 	depends = hicolor-icon-theme
-	depends = sh
-	source = https://downloadirpf.receita.fazenda.gov.br/irpf/2022/irpf/arquivos/IRPF2022-1.4.zip
-	source = Copyright
-	source = irpf.png
+	source = https://downloadirpf.receita.fazenda.gov.br/irpf/2023/irpf/arquivos/IRPF2023-1.0.zip
 	source = irpf.desktop
-	source = irpf
-	sha256sums = ac16918a9ad90268610b6cfdf4ac1c7ec65a7030f52dfce81a3fba4ddccfceda
-	sha256sums = abd34d009d96ec93b802f4215395bb317349867a3f4420bf398fc8ba8d9a71a7
-	sha256sums = 541a33893db3730e4d858d5656de055b957801ad958f827b6cd30f308f663684
-	sha256sums = da9f03823c2e4e444969fdf8937b003ca6f8cb1d81e176348870fd446d3afdfd
-	sha256sums = 3294115bcbaa3eac02826a0965f7646a940df4eab880a4c4d88c907c857df957
+	source = irpf.sh
+	source = LICENSE
+	sha256sums = 2b7f43836a44a8b7a23fe3b80558eec4dab6de7555e90d89659de49356baab8b
+	sha256sums = b5026060d73cc78e0c50a8cad2536dc1f186ba0202f1d51551e2411131008430
+	sha256sums = 71b397a128a71ab43591a868f309125193e19632972925f12335f8d5e65f1d08
+	sha256sums = a406e102e2c10c202bd7a0ba775b004c0f04440544db73ce6923172a62aacd67
 
 pkgname = irpf

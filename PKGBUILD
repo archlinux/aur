@@ -1,46 +1,45 @@
-# Maintainer: afterSt0rm <ateles.1@gmail.com>
- 
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
+# Contributor: afterSt0rm <ateles.1@gmail.com>
+# Contributor: Márcio Sousa Rocha <marciosr10@gmail.com>
+
 pkgname=irpf
-pkgver=2022.1.4
-pkgrel=3
+pkgver=2023.1.0
+pkgrel=1
+pkgdesc='Brazilian physical person income tax (IRPF) program'
+arch=('any')
+url='https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda'
 license=('custom')
-arch=(any)
-pkgdesc='Programa Gerador de Declaração (PGD) da Declaração do Imposto sobre a Renda das Pessoas Físicas (DIRPF)'
-url='https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/dirpf'
-depends=('java-runtime=11' 'hicolor-icon-theme' 'sh')
-install=$pkgname.install
-source=(https://downloadirpf.receita.fazenda.gov.br/irpf/2022/irpf/arquivos/IRPF2022-1.4.zip
-	Copyright
-	$pkgname.png
-	$pkgname.desktop
-	$pkgname)
-sha256sums=('ac16918a9ad90268610b6cfdf4ac1c7ec65a7030f52dfce81a3fba4ddccfceda'
-         'abd34d009d96ec93b802f4215395bb317349867a3f4420bf398fc8ba8d9a71a7'
-         '541a33893db3730e4d858d5656de055b957801ad958f827b6cd30f308f663684'
-         'da9f03823c2e4e444969fdf8937b003ca6f8cb1d81e176348870fd446d3afdfd'
-         '3294115bcbaa3eac02826a0965f7646a940df4eab880a4c4d88c907c857df957')
+depends=('sh' 'java-runtime=11' 'hicolor-icon-theme')
+makedepends=('icoutils')
+source=("https://downloadirpf.receita.fazenda.gov.br/irpf/${pkgver%%.*}/irpf/arquivos/IRPF${pkgver%%.*}-${pkgver#*.}.zip"
+		'irpf.desktop'
+		'irpf.sh'
+		'LICENSE')
+sha256sums=('2b7f43836a44a8b7a23fe3b80558eec4dab6de7555e90d89659de49356baab8b'
+            'b5026060d73cc78e0c50a8cad2536dc1f186ba0202f1d51551e2411131008430'
+            '71b397a128a71ab43591a868f309125193e19632972925f12335f8d5e65f1d08'
+            'a406e102e2c10c202bd7a0ba775b004c0f04440544db73ce6923172a62aacd67')
+
+prepare() {
+    wrestool -x -t14 -o "IRPF${pkgver%%.*}" "IRPF${pkgver%%.*}/IRPF${pkgver%%.*}.exe"
+    icotool -x  -o "IRPF${pkgver%%.*}" "IRPF${pkgver%%.*}/IRPF${pkgver%%.*}.exe"_*_*_*.ico
+}
 
 package() {
-	cd "$srcdir"/IRPF2022
-
-	mkdir -p "$pkgdir"/usr/share/{icons/hicolor/128x128/apps,applications,licenses/irpf,irpf}
-	mkdir "$pkgdir"/usr/bin
-
-	cp -rf lib "$pkgdir"/usr/share/irpf/
-	cp -rf lib-modulos "$pkgdir"/usr/share/irpf/
-	cp -rf help "$pkgdir"/usr/share/irpf/
-
-	install -Dm755 irpf.jar "$pkgdir"/usr/share/irpf/
-
-	install -Dm644 Leia-me.htm "$pkgdir"/usr/share/irpf/
-	install -Dm644 offline.png "$pkgdir"/usr/share/irpf/
-	install -Dm644 online.png "$pkgdir"/usr/share/irpf/
-	install -Dm644 pgd-updater.jar "$pkgdir"/usr/share/irpf/
-
-	install -Dm755 "$srcdir"/irpf "$pkgdir"/usr/bin/
-
-	install -Dm644 "$srcdir"/Copyright "$pkgdir"/usr/share/licenses/irpf/
-
-	install -Dm644 "$srcdir"/irpf.png "$pkgdir"/usr/share/icons/hicolor/128x128/apps/
-	install -Dm644 "$srcdir"/irpf.desktop "$pkgdir"/usr/share/applications/
+	install -D -m755 irpf.sh "${pkgdir}/usr/bin/irpf"
+	install -D -m644 irpf.desktop -t "${pkgdir}/usr/share/applications"
+	install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -D -m644 "IRPF${pkgver%%.*}"/{irpf,pgd-updater}.jar -t "${pkgdir}/usr/share/java/irpf"
+	install -D -m644 "IRPF${pkgver%%.*}/Leia-me.htm" -t "${pkgdir}/usr/share/doc/irpf"
+	cp -dr --no-preserve='ownership' "IRPF${pkgver%%.*}/help" "${pkgdir}/usr/share/doc/irpf"
+	cp -dr --no-preserve='ownership' "IRPF${pkgver%%.*}/"lib{,-modulos} "${pkgdir}/usr/share/java/irpf"
+	ln -s ../../doc/irpf/help "${pkgdir}/usr/share/java/irpf/help"
+	
+	local _file
+	local _res
+	while read -r -d '' _file
+	do
+		_res="$(printf '%s' "$_file" | sed 's/\.png$//;s/^.*_//;s/x.*$//')"
+		install -D -m644 "$_file" "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/irpf.png"
+	done < <(find "IRPF${pkgver%%.*}" -maxdepth 1 -type f -name "IRPF${pkgver%%.*}.exe"_*_*_*_*_*x*x*.png -print0)
 }

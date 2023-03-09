@@ -1,9 +1,11 @@
 [Desktop Entry]
-Name=Imposto de Renda Pessoa Física
-Comment=Programa Oficial da Receita para elaboração do IRPF
+Version=1.0
+Name=IRPF
+Comment=Programa do Imposto de Renda Pessoa Física
+Path=/usr/bin
 Exec=irpf
-StartupNotify=true
 Icon=irpf
 Terminal=false
+StartupNotify=false
 Type=Application
-Categories=Network;
+Categories=Application;
