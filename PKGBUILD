@@ -5,7 +5,7 @@
 # Contributor: Paul Oppenheimer <redg3ar@airmail.cc>
 _pkgname=kuro
 pkgname="$_pkgname"-electron
-pkgver=8.1.9
+pkgver=9.0.0
 pkgrel=1
 pkgdesc="An Electron wrapper for Microsoft To-Do, use system electron22"
 arch=('any')
@@ -15,7 +15,7 @@ depends=('libnotify' 'libxtst' 'libxss' 'electron22')
 provides=('ao' 'kuro')
 conflicts=('ao' 'kuro')
 source=("$url/releases/download/v$pkgver/kuro-$pkgver.pacman")
-sha256sums=('12653bda93f53ed0948c96af87c040305de35d17900bc77de52a326738026cbf')
+sha256sums=('49b928b0d807a71477ba1971741e30636d958bf2f650eebbc48c32bb5f869bb0')
 
 package() {
     install -Dm644 "$srcdir/opt/Kuro/resources/app.asar" "$pkgdir/usr/share/kuro/app.asar"
