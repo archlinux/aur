@@ -1,13 +1,13 @@
 pkgbase = ipmiview
 	pkgdesc = Supermicro IPMI tool
 	pkgver = 2.21.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.supermicro.com/products/nfo/ipmi.cfm
 	arch = x86_64
 	license = custom:"Super Micro Computer"
 	makedepends = tar
 	depends = glibc
-	depends = java-runtime=8
+	depends = java-runtime
 	backup = opt/ipmiview/account.properties
 	backup = opt/ipmiview/email.properties
 	backup = opt/ipmiview/iKVM.properties
