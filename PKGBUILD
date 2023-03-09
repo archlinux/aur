@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=grImport
-_pkgver=0.9-5
+_pkgver=0.9-7
 pkgname=r-${_pkgname,,}
-pkgver=0.9.5
-pkgrel=4
+pkgver=0.9.7
+pkgrel=1
 pkgdesc='Importing Vector Graphics'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -22,7 +22,7 @@ optdepends=(
   r-survival
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6a44b5d07571b6aef561e7e60fbcfa5fb7c98ab17f016e99bf0cdcc70b617f5d')
+sha256sums=('05f8b65a55c5fabce2afb74c2b843f5df772d1f931d1ba3ce5f3bfe0493cd0a4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
