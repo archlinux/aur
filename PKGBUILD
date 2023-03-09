@@ -10,6 +10,7 @@ url='https://www.freecad.org/'
 license=('LGPL')
 depends=(
 boost-libs
+fmt
 glew
 jsoncpp
 med
@@ -46,7 +47,6 @@ shiboken2
 swig
 )
 checkdepends=(
-fmt 
 pugixml
 )
 optdepends=(
