@@ -1,0 +1,18 @@
+pkgbase = cosmic-text-editor-git
+	pkgdesc = text editor of COSMIC desktop environment, rust, iced based.
+	pkgver = r8.aed6b9b
+	pkgrel = 1
+	url = https://github.com/pop-os/cosmic-text-editor
+	arch = x86_64
+	license = GPL
+	makedepends = cargo
+	makedepends = git
+	makedepends = mold
+	provides = cosmic-text-editor-git
+	conflicts = cosmic-text-editor-git
+	source = cosmic-text-editor-git::git+https://github.com/pop-os/cosmic-text-editor.git
+	source = cosmic-text-editor-git.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = cosmic-text-editor-git
