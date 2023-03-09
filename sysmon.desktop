@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Icon=utilities-system-monitor
+Name=SysMonitor
+GenericName=Graphical system monitor
+Exec=sysmon
+Terminal=false
+Hidden=false
+Categories=Utility;
+Comment=Information about CPU, GPU, Memory, HDD/SDD and your network connections
