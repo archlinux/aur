@@ -1,4 +1,4 @@
-# Maintainer: Polarian <polarian@polaria.dev>
+# Maintainer: Polarian <polarian@polarian.dev>
 # Contributor: Benjamin Denhartog <ben@sudoforge.com>
 # Contributor: Mansour Behabadi <mansour@oxplot.com>
 # Contributor: Troy Engel <troyengel+arch@gmail.com>
@@ -7,7 +7,7 @@
 # Contributor: Justin Dray <justin@dray.be>
 
 # For ISSUES, REQUESTS, and QUESTIONS:
-# New: https://onedev.polarian.dev/polarrepo/google-cloud-cli/~files
+# New: https://onedev.polarian.dev/polarrepo/google-cloud-cli
 # Old: https://github.com/sudoforge/pkgbuilds
 
 _extractedName="google-cloud-sdk"
