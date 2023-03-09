@@ -14,7 +14,7 @@ conflicts=("virtualhereclient")
 source=("https://www.virtualhere.com/sites/default/files/usbclient/scripts/virtualhereclient.service"
        "https://www.virtualhere.com/sites/default/files/usbclient/vhclientx86_64")
 md5sums=('37d1c9ac1b1d9f4ecb99ea6f5b6af5dc'
-	 'a91b625ab6789e4df49db7b647772786'
+	 '680e4bf4c0ab1b921dc2d4763b304ade'
 	)
 
 package() {
