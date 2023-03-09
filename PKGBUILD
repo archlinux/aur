@@ -1,7 +1,7 @@
 # Maintainer: somini <dev@somini.xyz>
 
 pkgname=go-hnrss
-pkgver=2.2
+pkgver=102.1
 _pkgver="v$pkgver"
 pkgrel=1
 pkgdesc='Hacker News RSS'
@@ -10,7 +10,8 @@ url='https://hnrss.github.io'
 license=('unknown')
 makedepends=('go' 'git')
 backup=("etc/${pkgname}.conf")
-# Use my fork for the extra features
+# Use my fork for a single extra feature:
+# https://github.com/hnrss/hnrss/pull/52
 source=(
   "https://gitlab.com/somini/go-hnrss/-/archive/v${pkgver}/${pkgname}-${_pkgver}.tar.gz"
   "${pkgname}.conf"
@@ -18,7 +19,7 @@ source=(
   "${pkgname}.sysusers"
 )
 
-sha512sums=('146e4688a6d5e1ed7f63607de61f240593a1dd859cc9e658b5574332de0a2e1e66bd3bf2ea8a42f64ed84f1f03f2fd24991d182b21545f07baa25590b6e4b11a'
+sha512sums=('89e3c9f399001d1751fec096a7592285bf2372146de44b1dcacfe549a711488f7dc82f14f4508f9f8dbc90c482a38adc017aa3e2bfd9d06fea72672257e96998'
             '5ec5300dac7db23ac3a9178106304f309a8cc5e472e96d9fc452fae2f78c7272f3cb6df20b318ec5151997872dc1226191e406ed0862920cf746a2acff4e7866'
             '1ea6327e9fc8593e8880676d582709fbb15aa63dbc3b4495f1ebc1ec71ac6658267f270256601c53515a5d9396f8a7c441c3deab527c1d533b2c76e52abc9b75'
             '4e938dda326ab2549d4f3076f72198f5d23ced3a46f1994a5c215fc5848b64a1737e9061bb75888f5acf81cede68949fc03a144a5fdf8da6e51800ebc7223d6b')
