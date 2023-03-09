@@ -1,7 +1,6 @@
 *
 !alps.conf
 !alps-fix-156.patch
-!alps-fix-160.patch
 !alps-plugins-path.patch
 !alps-system.service
 !alps-themes-path.patch
