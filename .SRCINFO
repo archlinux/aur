@@ -1,0 +1,20 @@
+pkgbase = soundsync-bin
+	pkgdesc = Virtual cables between any audio source and any speaker in your home
+	pkgver = 0.4.16
+	pkgrel = 1
+	url = https://soundsync.app/
+	arch = x86_64
+	license = BSL1.1
+	depends = python
+	depends = nss
+	depends = libpulse
+	depends = at-spi2-core
+	depends = gtk3
+	depends = nodejs-lts-fermium
+	conflicts = soundsync
+	source = soundsync-0.4.16.pacman::https://github.com/geekuillaume/soundsync/releases/download/v0.4.16/soundsync-x64-0.4.16.pacman
+	source = LICENSE::https://github.com/geekuillaume/soundsync/raw/master/LICENSE
+	sha256sums = 12bd6190537d80a29fa89fa2fa37da310593d5e6c54a7fe9f16c5f1509d4b94c
+	sha256sums = 28e0b8f26c2467e860d06defe5697014f09fcca5aeb7a56790e4269e025d80e3
+
+pkgname = soundsync-bin
