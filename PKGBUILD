@@ -19,7 +19,7 @@ sha256sums_aarch64=('SKIP')
 
 pkgver() {
     chmod +x rust-analyzer
-    ./rust-analyzer --version | cut -d' ' -f2 | sed 's/-//g'
+    ./rust-analyzer --version | cut -d' ' -f2 | tr -d "(-"
 }
 
 package() {
