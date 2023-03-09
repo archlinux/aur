@@ -1,0 +1,14 @@
+pkgbase = iana-root-hints
+	pkgdesc = Contains the names and IP addresses of the authoritative name servers for the root zone
+	pkgver = 2023022203
+	pkgrel = 1
+	url = https://www.iana.org/domains/root/files
+	arch = any
+	license = unknown
+	source = https://www.internic.net/domain/named.root
+	source = https://www.internic.net/domain/named.root.sig
+	validpgpkeys = F0CB1A326BDF3F3EFA3A01FA937BB869E3A238C5
+	sha256sums = 28e2aec65ff32a69f043db66121c07559bc4f1858e9d539714d2e74299a511b2
+	sha256sums = SKIP
+
+pkgname = iana-root-hints
