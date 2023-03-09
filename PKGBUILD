@@ -1,27 +1,30 @@
 # Maintainer: XavierCLL <xavier.corredor.llano at gmail.com>
-# Contributors: MikeBreytenbach <mike.breyten.bach at gmail dot com>
-# Contributors: edacval
+# Contributor: MikeBreytenbach <mike.breyten.bach at gmail dot com>
+# Contributor: edacval
+# Contributor: Ethan Reece <aur at ethanreece dot com>
 
 pkgname=pycharm-professional
-pkgver=2022.3.2
+pkgver=2022.3.3
 pkgrel=1
 pkgdesc="Python IDE for Professional Developers. Professional Edition"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://www.jetbrains.com/pycharm/'
-conflicts=('pycharm' 'pycharm-community-edition' 'pycharm-community-jre' 'pycharm-community-eap' 'pycharm-eap')
+conflicts=('pycharm' 'pycharm-community-edition' 'pycharm-community-jre' 'pycharm-community-eap' 'pycharm-eap' 'pycharm-community-jre-aarch64')
 provides=('pycharm')
 license=('custom')
 backup=("opt/$pkgname/bin/pycharm64.vmoptions"
         "opt/$pkgname/bin/idea.properties")
 depends=('giflib' 'glibc' 'sh' 'libxtst' 'libxslt' 'libxss' 'nss' 'python' 'libdbusmenu-glib')
-source=("https://download.jetbrains.com/python/$pkgname-$pkgver.tar.gz"
-        "pycharm-professional.desktop"
+source_x86_64=("https://download.jetbrains.com/python/$pkgname-$pkgver.tar.gz")
+source_aarch64=("https://download.jetbrains.com/python/$pkgname-$pkgver-aarch64.tar.gz")
+source=("pycharm-professional.desktop"
         "charm.desktop"
         "charm")
-sha256sums=('56430090dd471e106fdc48463027d89de624759f8757248ced9776978854e4f6'
-            'a75264959b06a45ea0801729bc1688bfbd52da3c5fbf3d5b1ad9267860439291'
+sha256sums=('a75264959b06a45ea0801729bc1688bfbd52da3c5fbf3d5b1ad9267860439291'
             '6996b38a3c2ba1e472838d7046a4c54a27822fd647be9ca590457e8c6a2d50c8'
             '2c520f63afffa5ef153077fc61e0c3b15a0a9bf8fd4973164af62ec64626a741')
+sha256sums_x86_64=('352bb13d352adb823828d74d50fd818f1216053afa66cd3f4aab94d47855ff3b')
+sha256sums_aarch64=('42d48d921a2621ab8e0e74a239abb997ad2a041c13a6ebb30391a76d4a306fd8')
 makedepends=('python-setuptools' 'cython')
 optdepends=('ipython: For enhanced interactive Python shell inside Pycharm'
             'openssh: For deployment and remote connections'
@@ -43,7 +46,11 @@ build() {
     
     # for attach debugger
     pushd pycharm-${pkgver}/plugins/python/helpers/pydev/pydevd_attach_to_process/linux_and_mac
-    g++ -m64 -shared -o ../attach_linux_amd64.so -fPIC -nostartfiles attach.cpp
+    if [[ $CARCH == "x86_64" ]]; then
+        g++ -m64 -shared -o ../attach_linux_amd64.so -fPIC -nostartfiles attach.cpp
+    elif [ "${CARCH}" == "aarch64" ]; then
+        g++ -march=armv8-a+crypto -shared -o ../attach_linux_amd64.so -fPIC -nostartfiles attach.cpp
+    fi
     popd
 
     rm -rf pycharm-${pkgver}/plugins/python/helpers/pydev/build/
