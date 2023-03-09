@@ -1,8 +1,8 @@
 --- a/libavformat/avformat.h
 +++ b/libavformat/avformat.h
-@@ -1128,6 +1128,10 @@ struct AVCodecParserContext *av_stream_get_parser(const AVStream *s);
-  */
+@@ -1019,6 +1019,10 @@ attribute_deprecated
  int64_t    av_stream_get_end_pts(const AVStream *st);
+ #endif
  
 +// Chromium: We use the internal field first_dts vvv
 +int64_t    av_stream_get_first_dts(const AVStream *st);
