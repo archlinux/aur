@@ -2,7 +2,7 @@
 
 pkgname=irpf2022
 pkgver=2022.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Brazilian physical person income tax (IRPF) program (2022 version)'
 arch=('any')
 url='https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda'
@@ -38,7 +38,6 @@ package() {
 	cp -dr --no-preserve='ownership' "IRPF${pkgver%%.*}/"lib{,-modulos} "${pkgdir}/usr/share/java/irpf-${pkgver%%.*}"
 	ln -s "../../doc/irpf-${pkgver%%.*}/help" "${pkgdir}/usr/share/java/irpf-${pkgver%%.*}/help"
 	
-	local _file
 	local _res
 	for _res in 16 32 48 64 128 256
 	do

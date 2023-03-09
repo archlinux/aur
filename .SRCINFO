@@ -1,7 +1,7 @@
 pkgbase = irpf2022
 	pkgdesc = Brazilian physical person income tax (IRPF) program (2022 version)
 	pkgver = 2022.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda
 	arch = any
 	license = custom
