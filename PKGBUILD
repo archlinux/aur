@@ -1,7 +1,7 @@
 # Maintainer: Barfin
 
 pkgname=openlara-bin
-pkgver=8.01.21
+pkgver=23.03.01
 pkgrel=1
 pkgdesc="Classic Tomb Raider open-source engine"
 arch=('i686' 'x86_64')
@@ -18,4 +18,4 @@ package() {
     install -Dm755 "${srcdir}/OpenLara" "${pkgdir}/usr/bin/openlara"
 }
 
-md5sums=('ef467d23c4fd6c566e1265df75afdd02')
+md5sums=('00ffcde7ed1d19ec85085429946c2827')
