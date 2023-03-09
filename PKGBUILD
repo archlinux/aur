@@ -3,8 +3,8 @@
 
 pkgname=blockbench
 _pkgname=Blockbench
-pkgver=4.6.4
-pkgrel=2
+pkgver=4.6.5
+pkgrel=1
 pkgdesc="A low-poly 3D model editor"
 arch=('x86_64')
 url="https://blockbench.net/"
