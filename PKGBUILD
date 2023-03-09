@@ -2,19 +2,19 @@
 
 pkgname=mongosh
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Node.js REPL for interacting with MongoDB instances.'
 arch=('x86_64')
-url='https://docs.mongodb.com/mongodb-shell/'
+url='https://www.mongodb.com/products/shell'
 license=('Apache')
 depends=(nodejs krb5 libuv)
 makedepends=(git jq npm modclean)
 source=(
   https://github.com/mongodb-js/$pkgname/archive/refs/tags/v$pkgver.tar.gz
-  mongosh.sh
+  mongosh.js
 )
 sha256sums=('2e10111950049345fd3c14148b94241a864f1f8ee85bb39054df808ab0900944'
-            '2238131962a4d5a60003edb356c02dddb6335179bf9d8b34a851bffed53e4e57')
+            '59387e21725568e848bd6da24cd5a8dcd00c7725e0fa99dcfdcfaf677c075e8c')
 
 prepare() {
   cd "$srcdir"/$pkgname-$pkgver
@@ -36,7 +36,7 @@ build() {
 package() {
   cd "$srcdir"/$pkgname-$pkgver
 
-  install -Dm0755 ../mongosh.sh "$pkgdir"/usr/bin/mongosh
+  install -Dm0755 "$srcdir"/mongosh.js "$pkgdir"/usr/bin/mongosh
   install -dm0755 "$pkgdir"/usr/lib/node_modules/mongosh
   cp -a packages node_modules package*.json "$pkgdir"/usr/lib/node_modules/mongosh
 

@@ -1,8 +1,8 @@
 pkgbase = mongosh
 	pkgdesc = Node.js REPL for interacting with MongoDB instances.
 	pkgver = 1.8.0
-	pkgrel = 1
-	url = https://docs.mongodb.com/mongodb-shell/
+	pkgrel = 2
+	url = https://www.mongodb.com/products/shell
 	arch = x86_64
 	license = Apache
 	makedepends = git
@@ -13,8 +13,8 @@ pkgbase = mongosh
 	depends = krb5
 	depends = libuv
 	source = https://github.com/mongodb-js/mongosh/archive/refs/tags/v1.8.0.tar.gz
-	source = mongosh.sh
+	source = mongosh.js
 	sha256sums = 2e10111950049345fd3c14148b94241a864f1f8ee85bb39054df808ab0900944
-	sha256sums = 2238131962a4d5a60003edb356c02dddb6335179bf9d8b34a851bffed53e4e57
+	sha256sums = 59387e21725568e848bd6da24cd5a8dcd00c7725e0fa99dcfdcfaf677c075e8c
 
 pkgname = mongosh
