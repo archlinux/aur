@@ -1,7 +1,7 @@
 pkgbase = gcc-ia16
 	pkgdesc = IA-16 (Intel 16-bit x86) port of GNU Gcc
 	pkgver = 20230119
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tkchia/gcc-ia16
 	arch = x86_64
 	license = GPL

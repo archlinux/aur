@@ -1,7 +1,7 @@
 # Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
 pkgname=gcc-ia16
 pkgver=20230119
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="IA-16 (Intel 16-bit x86) port of GNU Gcc"
 arch=('x86_64')
@@ -24,15 +24,23 @@ build() {
 		--bindir=/usr/bin \
 		--libdir=/usr/lib/ia16-elf/ \
 		--disable-multilib \
+		--disable-nls \
 		--without-headers \
 		--disable-libssp \
 		--without-isl \
 		--disable-werror
-	make
+	make all-gcc
+	make all-target-libgcc
+}
+
+check() {
+	# currently nope
+	true
 }
 
 package() {
 	cd build-gcc
-	make DESTDIR="$pkgdir/" install
+	make DESTDIR="$pkgdir/" install-gcc
+	make DESTDIR="$pkgdir/" install-target-libgcc
 	rm -rf "$pkgdir/usr/share"
 }
