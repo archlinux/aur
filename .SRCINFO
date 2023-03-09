@@ -1,0 +1,14 @@
+pkgbase = dell-g15-ledcontrol
+	pkgdesc = GUI RGB led controller for dell g15 and some other alienware laptops.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/cemkaya-mpi/Dell-G15-LedControl
+	arch = x86_64
+	license = GPLv3
+	depends = python
+	depends = python-pyusb
+	depends = pyside6
+	source = dell-g15-ledcontrol::https://github.com/cemkaya-mpi/Dell-G15-LedControl/archive/refs/tags/v1.0.tar.gz
+	sha256sums = b8c6a9f53844a07d8a3515aafcfdd0b0abdfc3c415622d0e7a60792045c55981
+
+pkgname = dell-g15-ledcontrol
