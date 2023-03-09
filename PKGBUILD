@@ -1,4 +1,5 @@
-# Maintainer: Gavin Lloyd <gavinhungry@gmail.com>
+# Maintainer: Christian Heusel <christian@heusel.eu>
+# Contributor: Gavin Lloyd <gavinhungry@gmail.com>
 # Contributor: Thorsten Töpper <atsutane-tu@freethoughts.de>
 # Contributor: SpepS <dreamspepser at yahoo dot it>
 # Contributor: Philipp Robbel <robbel@gmail.com>
