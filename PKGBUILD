@@ -6,11 +6,12 @@ pkgver=4.10.2257.0
 _debian_pkgname='libwidevinecdm0'
 _debian_pkgver=4.10.2252.0
 _debian_pkgrel=+1
-pkgrel=1
+pkgrel=2
 arch=('aarch64')
 url='https://www.widevine.com/'
 license=('custom')
 depends=('gcc-libs' 'glib2' 'glibc-widevine' 'nspr' 'nss')
+makedepends=('python')
 provides=('chromium-widevine')
 conflicts=('chromium-widevine')
 install="widevine-aarch64.install"
@@ -20,14 +21,14 @@ source=("chrome-eula_text.html::https://www.google.com/intl/en/chrome/privacy/eu
         "register_widevine_chromium"
         "register_widevine_firefox"
         "widevine-aarch64.install"
-        "ldadd_swp.c")
+        "widevine_fixup.py")
 
-sha256sums=(SKIP
+sha256sums=('106863de0f826ec32c09386a2a6278e013c6019b996934bb0f385f1233b72b03'
             'f11f2dabed4237b69d30c13083df5a867974bc91d888480cdf0d4cf5813583b7'
             'ebca260ca197c4eee5a8b76ae1fad2bf800ab99b40d8be0c2189b566bd9621d0'
             'b976bb594b8b51d5eee1929defaebd0313c54ddd6d62241bfa4a7d5421491e12'
-            '2afd684d8818acfb7a1d5abfc928a5c7aeeebad2195a0a90a9824d592e894d65'
-            'a86af0ab0d5350d70727e78e22fcc717ae1a0bf3d17167a9dd263bda00f6c198')
+            '6be10c8786b24f47dbbb54ff676f28a7b49771b8d5f7c03cc3f2e73b7e18c22f'
+            '2504018f9128ed2b7ebe00d332383a78fb7e2bc76ad58a3f88c2159234cf86cf')
 
 prepare() {
   # Extract data.tar.gz from deb package
@@ -60,9 +61,8 @@ prepare() {
 }
 
 build() {
-  gcc -Wall -c ../ldadd_swp.c
-  ar rcs libgcc_hide.a ldadd_swp.o
-  gcc -o libgcc_hide.so -shared -Wl,--whole-archive libgcc_hide.a -Wl,--no-whole-archive
+  # patch widevine lib to add missing functions and add support for non-4k systems
+  python ../widevine_fixup.py opt/WidevineCdm/_platform_specific/linux_arm64/libwidevinecdm.so libwidevinecdm.so
 }
 
 package() {
@@ -71,8 +71,7 @@ package() {
 
   # These are the files for the chromium metadata package
   install -d "${pkgdir}/opt/WidevineCdm/chromium/_platform_specific/linux_arm64"
-  install -Dm755 opt/WidevineCdm/_platform_specific/linux_arm64/libwidevinecdm.so -t "${pkgdir}/opt/WidevineCdm/chromium/"
-  install -m755 libgcc_hide.so -t "${pkgdir}/opt/WidevineCdm/"
+  install -Dm755 libwidevinecdm.so -t "${pkgdir}/opt/WidevineCdm/chromium/"
   install -m644 manifest.json -t "${pkgdir}/opt/WidevineCdm/chromium/"
   ln -s "../../libwidevinecdm.so" "${pkgdir}/opt/WidevineCdm/chromium/_platform_specific/linux_arm64/libwidevinecdm.so"
 
