@@ -11,6 +11,7 @@ pkgbase = cavalier
 	depends = cava
 	depends = libadwaita
 	depends = python-gobject
+	depends = python-cairo
 	source = git+https://github.com/fsobolev/cavalier#tag=2023.01.29
 	b2sums = SKIP
 

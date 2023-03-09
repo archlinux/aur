@@ -7,7 +7,7 @@ pkgdesc='Audio visualizer based on CAVA'
 arch=(any)
 url=https://github.com/fsobolev/$pkgname
 license=(MIT)
-depends=(cava libadwaita python-gobject)
+depends=(cava libadwaita python-gobject python-cairo)
 makedepends=(git meson)
 checkdepends=(appstream-glib)
 source=(git+$url#tag=$pkgver)
