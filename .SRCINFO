@@ -1,13 +1,13 @@
 pkgbase = mattermost-plugin-focalboard
 	pkgdesc = an open source, self-hosted alternative to Trello, Notion, and Asana
-	pkgver = 7.9.0
-	pkgrel = 2
+	pkgver = 7.9.1
+	pkgrel = 1
 	url = https://www.focalboard.com
 	arch = x86_64
 	license = MIT
 	makedepends = jq
 	options = !strip
-	source = mattermost-plugin-focalboard-7.9.0.tar.gz::https://github.com/mattermost/focalboard/releases/download/v7.9.0/mattermost-plugin-focalboard.tar.gz
-	sha256sums = a215c5ba27c1bae82bf0fa385958b55f7e84c5d2aeed330cdfbbb3f11b3f3284
+	source = mattermost-plugin-focalboard-7.9.1.tar.gz::https://github.com/mattermost/focalboard/releases/download/v7.9.1/mattermost-plugin-focalboard.tar.gz
+	sha256sums = a95c58ca2ccbfa0ae767da39faf26e69c0e0165f24208a8db0bbd618440234b6
 
 pkgname = mattermost-plugin-focalboard
