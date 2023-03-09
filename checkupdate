@@ -8,7 +8,7 @@ from typing import Dict, Tuple
 
 
 def parse_location(fname: str) -> Dict[str, str]:
-    pattern = r"CrashPlanSmb_(?P<ver>[0-9.]+)_(?P<timestamp>[0-9]{14})_(?P<build>[0-9]+)_Linux.tgz"
+    pattern = r"CrashPlanSmb_(?P<ver>[0-9.]+)_(?P<build>[0-9]+)_Linux.tgz"
     regex = re.compile(pattern)
     match = regex.match(fname)
     if match:
@@ -25,6 +25,7 @@ def get_upstream_ver():
     resp = conn.getresponse()
     loc = resp.headers.get("location")
     fname = loc.rsplit("/", 1)[-1]
+    print(f"Parsing upstream filename {fname}")
     info = parse_location(fname)
     return info["ver"]
 
