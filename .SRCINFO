@@ -1,18 +1,17 @@
 pkgbase = s2geometry
 	pkgdesc = A library for manipulating geometric shapes
-	pkgver = 0.9.0
-	pkgrel = 2
+	pkgver = 0.10.0
+	pkgrel = 1
 	url = https://s2geometry.io/
 	arch = x86_64
 	arch = aarch64
-	license = Apache-2.0
+	license = Apache
 	makedepends = cmake
+	makedepends = google-cloud-cpp
 	depends = openssl
-	source = https://github.com/google/s2geometry/archive/refs/tags/v0.9.0.tar.gz
-	source = 166.patch
-	source = 78.patch
-	sha256sums = 54c09b653f68929e8929bffa60ea568e26f3b4a51e1b1734f5c3c037f1d89062
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = s2geometry-0.10.0.tar.gz::https://github.com/google/s2geometry/archive/refs/tags/v0.10.0.tar.gz
+	source = 0007-Fix-DCMAKE_CXX_STANDARD-ignored-by-CMakeLists-273.patch
+	b2sums = c5beef41f0d7a68be2242901d58107dfb303ddce7ab5cc0cd292cc20affdcca5fc0c7fdec2282861f62c3dc3577b2fb5ebc83bb33ae56da7e5d3e9a3e9127c10
+	b2sums = 64bc0593be906d7c56bccc669f898bf4d79797b7239e08d04deb133ebb2fe86a798ab725c796f21bce0ba85d14aa1cc27c32f4507fe81c7040105bae374d3072
 
 pkgname = s2geometry

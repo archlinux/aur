@@ -1,0 +1,35 @@
+From 01d6a500e13f67c1f68c306ad43d4141e38dcc8c Mon Sep 17 00:00:00 2001
+From: Lafe Wessel <46427282+LafeWessel@users.noreply.github.com>
+Date: Thu, 15 Sep 2022 02:54:08 -0500
+Subject: [PATCH 07/20] Fix -DCMAKE_CXX_STANDARD ignored by CMakeLists (#273)
+
+* Fix -DCMAKE_CXX_STANDARD not being used.
+
+Add CACHE to setting CMAKE_CXX_STANDARD to allow for the user to override the default value.
+
+* Fix set not having proper arguments
+
+Fixes #270
+---
+ CMakeLists.txt | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 82155bd..2cbbf68 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -18,8 +18,9 @@ endif()
+ # s2geometry needs to use the same C++ standard that absl used to avoid
+ # undefined symbol errors since ABSL_HAVE_STD_STRING_VIEW etc will
+ # end up defined differently.  There is probably a better way to achieve
+-# this than assuming what absl used.
+-set(CMAKE_CXX_STANDARD 11)
++# this than assuming what absl used. 
++# Using CACHE allows the user to override the default.
++set(CMAKE_CXX_STANDARD 11 CACHE STRING "The C++ standard to build with")
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ # No compiler-specific extensions, i.e. -std=c++11, not -std=gnu++11.
+ set(CMAKE_CXX_EXTENSIONS OFF)
+-- 
+2.39.2
+
