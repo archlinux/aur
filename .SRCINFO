@@ -1,10 +1,12 @@
 pkgbase = carbonyl-bin
 	pkgdesc = Chromium-based browser built to run in a terminal
 	pkgver = 0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fathyb/carbonyl
 	arch = x86_64
 	license = BSD
+	depends = nss
+	depends = alsa-lib
 	provides = carbonyl
 	conflicts = carbonyl
 	noextract = carbonyl-0.0.3.zip

@@ -3,7 +3,7 @@
 pkgname=carbonyl-bin
 _pkgname=carbonyl
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Chromium-based browser built to run in a terminal"
 arch=('x86_64')
 url="https://github.com/fathyb/carbonyl"
@@ -11,6 +11,7 @@ license=('BSD')
 provides=("carbonyl")
 conflicts=('carbonyl')
 options=(!strip)
+depends=(nss alsa-lib)
 source=("${_pkgname}-${pkgver}.zip::https://github.com/fathyb/carbonyl/releases/download/v$pkgver/carbonyl.linux-amd64.zip"
         "${_pkgname}.sh")
 noextract=("${_pkgname}-${pkgver}.zip")
