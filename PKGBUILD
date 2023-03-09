@@ -1,22 +1,26 @@
-# Maintainer: Colin Reeder <colin@vpzom.click>
+# Maintainer: éclairevoyant
 
 pkgname=pure-maps
-pkgdesc="An application for Linux to display vector and raster maps, places, routes, etc."
-pkgver=2.9.2
-pkgrel=3
-arch=("x86_64" "aarch64")
-source=("https://github.com/rinigus/pure-maps/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('789dd7fdb865bd795e8695623a9c3dcbb0e22566614f0491069571fc211d7b89')
-depends=("s2geometry" "python3" "qt5-base" "qt5-location" "qt5-declarative" "qt5-quickcontrols2" "nemo-qml-plugin-dbus" "python-pyotherside" "mapbox-gl-qml" "qt5-sensors" "python-gpxpy" "python-geomag" "kirigami2" "qt5-multimedia")
-makedepends=("qt5-tools" "cmake")
-url="https://rinigus.github.io/pure-maps/"
-license=("GPL3")
+pkgdesc="Display vector and raster maps, places, routes, etc."
+pkgver=3.2.0
+pkgrel=1
+arch=('x86_64' 'aarch64')
+url="https://rinigus.github.io/$pkgname"
+license=(GPL3)
+depends=(abseil-cpp hicolor-icon-theme kirigami2 mapbox-gl-qml
+         nemo-qml-plugin-dbus python-geomag python-gpxpy python-pyotherside
+         qt5-location qt5-quickcontrols2 qt5-sensors s2geometry)
+makedepends=(cmake qt5-tools)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/rinigus/$pkgname/archive/refs/tags/$pkgver.tar.gz")
+b2sums=('66940e0d61706e010f9f2b38603a974f17424ea0fa69388db5c4a9ccbb690efcd7714b73a251805a5f62b74edab12c10c669f35f62c82f150b8c5ed939555871')
 
 build() {
-	cmake -B build -S "$pkgname-${pkgver}" \
-        -DCMAKE_INSTALL_PREFIX='/usr' \
-		-DUSE_BUNDLED_GEOMAG=OFF
-    make -C build
+	cmake -B build -S "$pkgname-$pkgver" \
+		-DCMAKE_INSTALL_PREFIX='/usr' \
+		-DUSE_BUNDLED_GEOMAG=OFF \
+		-Dflavor=kirigami \
+		-DCMAKE_CXX_STANDARD=17 # use the same C++ standard as abseil-cpp
+	make -C build
 }
 
 package() {

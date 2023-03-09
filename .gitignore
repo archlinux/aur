@@ -1,4 +1,4 @@
-*.pkg.*
-*.tar.gz
-/pkg
-/src
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
