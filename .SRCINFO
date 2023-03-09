@@ -1,7 +1,7 @@
 pkgbase = r-av
 	pkgdesc = Working with Audio and Video in R
 	pkgver = 0.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=av
 	arch = i686
 	arch = x86_64

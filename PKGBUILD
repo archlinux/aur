@@ -4,7 +4,7 @@ _cranname=av
 _cranver=0.8.3
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Working with Audio and Video in R"
 arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
