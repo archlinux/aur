@@ -34,6 +34,7 @@ qt5-base
 shared-mime-info
 xerces-c
 vtk
+verdict
 )
 makedepends=(
 boost
