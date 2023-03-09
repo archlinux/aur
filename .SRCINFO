@@ -1,7 +1,7 @@
 pkgbase = php-swow
 	pkgdesc = Swow coroutine IO extension for PHP
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/swow/swow
 	arch = x86_64
 	arch = arm64
@@ -16,10 +16,12 @@ pkgname = php-swow
 	depends = glibc
 	depends = php
 	provides = php-swow
+	conflicts = php-swow
 	backup = etc/php/conf.d/swow.ini
 
 pkgname = php-legacy-swow
 	depends = glibc
 	depends = php-legacy
 	provides = php-legacy-swow
+	conflicts = php-legacy-swow
 	backup = etc/php-legacy/conf.d/swow.ini
