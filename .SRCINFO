@@ -1,15 +1,13 @@
 pkgbase = google-cloud-cli
 	pkgdesc = A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq.
 	pkgver = 421.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cloud.google.com/cli/
 	arch = x86_64
 	license = Apache
 	depends = python
 	optdepends = python2: for dev_appserver.py and endpointscfg support
 	optdepends = python-crcmod: [gsutil] verify the integrity of GCS object contents
-	provides = google-cloud-sdk
-	conflicts = google-cloud-sdk
 	options = !strip
 	options = staticlibs
 	source = google-cloud-cli-421.0.0.orig.tar.gz::https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/google-cloud-cli_421.0.0.orig.tar.gz
