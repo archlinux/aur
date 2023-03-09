@@ -2,8 +2,9 @@
 # Co-Maintainer: Polarian <polarian@polarian.dev>
 _projectid=160
 _buildid=3476
-pkgname=('onedev' 'onedev-new')
-pkgbase=onedev
+_pkgname=onedev
+pkgname=('onedev-bin' 'onedev-new-bin')
+pkgbase=onedev-bin
 pkgver=8.0.5
 pkgrel=1
 arch=('x86_64')
@@ -25,38 +26,44 @@ backup=(opt/onedev/conf/hibernate.properties
         opt/onedev/conf/wrapper.conf
         opt/onedev/conf/wrapper-license.conf)
 
-package_onedev() {
+package_onedev-bin() {
   pkgdesc="A self-hosted Git server with CI/CD and Kanban"
 
+  # Install pkgbuild files
   install -D -m 0644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/onedev.conf"
   install -D -m 0644 onedev.service "$pkgdir/usr/lib/systemd/system/onedev.service"
-  install -o 663 -g 663 -d "$pkgdir/opt/onedev"
-  cp -r "$srcdir/$pkgbase-$pkgver"/* "$pkgdir/opt/onedev"
-  chown -R 663:663 "$pkgdir/opt/onedev"
-  install -D -m 0644 "$srcdir/$pkgbase-$pkgver/license.txt" "$pkgdir/usr/share/licenses/onedev/LICENSE"
-  install -D -m 0644 "$srcdir/$pkgbase-$pkgver/3rdparty-licenses/antlr-license.txt" "$pkgdir/usr/share/licenses/onedev/antlr/LICENSE"
-  install -D -m 0644 "$srcdir/$pkgbase-$pkgver/3rdparty-licenses/asm-license.txt" "$pkgdir/usr/share/licenses/onedev/asm/LICENSE"
-  install -D -m 0644 "$srcdir/$pkgbase-$pkgver/3rdparty-licenses/jetty-license.txt" "$pkgdir/usr/share/licenses/onedev/jetty/LICENSE"
-  install -D -m 0644 "$srcdir/$pkgbase-$pkgver/3rdparty-licenses/ojdbc-license.txt" "$pkgdir/usr/share/licenses/onedev/ojdbc/LICENSE"
-  install -D -m 0644 "$srcdir/$pkgbase-$pkgver/3rdparty-licenses/slf4j-license.txt" "$pkgdir/usr/share/licenses/onedev/slf4j/LICENSE"
-  install -D -m 0644 "$srcdir/$pkgbase-$pkgver/3rdparty-licenses/sqljdbc-license.txt" "$pkgdir/usr/share/licenses/onedev/sqljdbc/LICENSE"
-  install -D -m 0644 "$srcdir/$pkgbase-$pkgver/3rdparty-licenses/sun-license.txt" "$pkgdir/usr/share/licenses/onedev/sun/LICENSE"
+  install -o 663 -g 663 -d "$pkgdir/opt/$pkgname"
+  
+  # Install package contents
+  cd $_pkgname-$pkgver
+  cp -r * "$pkgdir/opt/$pkgname"
+  chown -R 663:663 "$pkgdir/opt/$pkgname"
+  install -D -m 0644 "license.txt" "$pkgdir/usr/share/licenses/onedev/LICENSE"
+  install -D -m 0644 "3rdparty-licenses/antlr-license.txt" "$pkgdir/usr/share/licenses/onedev/antlr/LICENSE"
+  install -D -m 0644 "3rdparty-licenses/asm-license.txt" "$pkgdir/usr/share/licenses/onedev/asm/LICENSE"
+  install -D -m 0644 "3rdparty-licenses/jetty-license.txt" "$pkgdir/usr/share/licenses/onedev/jetty/LICENSE"
+  install -D -m 0644 "3rdparty-licenses/ojdbc-license.txt" "$pkgdir/usr/share/licenses/onedev/ojdbc/LICENSE"
+  install -D -m 0644 "3rdparty-licenses/slf4j-license.txt" "$pkgdir/usr/share/licenses/onedev/slf4j/LICENSE"
+  install -D -m 0644 "3rdparty-licenses/sqljdbc-license.txt" "$pkgdir/usr/share/licenses/onedev/sqljdbc/LICENSE"
+  install -D -m 0644 "3rdparty-licenses/sun-license.txt" "$pkgdir/usr/share/licenses/onedev/sun/LICENSE"
 }
 
-package_onedev-new() {
+package_onedev-new-bin() {
   pkgdesc="Latest version of onedev, installed to a different directory, used to update onedev"
+  cd $_pkgname-$pkgver
 
-  install -o 663 -g 663 -d "$pkgdir/opt/onedev-new"
-  cp -r "$srcdir/$pkgbase-$pkgver"/* "$pkgdir/opt/onedev-new"
-  chown -R 663:663 "$pkgdir/opt/onedev-new"
-  install -D -m 0644 "$srcdir/$pkgbase-$pkgver/license.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -D -m 0644 "$srcdir/$pkgbase-$pkgver/3rdparty-licenses/antlr-license.txt" "$pkgdir/usr/share/licenses/$pkgname/antlr/LICENSE"
-  install -D -m 0644 "$srcdir/$pkgbase-$pkgver/3rdparty-licenses/asm-license.txt" "$pkgdir/usr/share/licenses/$pkgname/asm/LICENSE"
-  install -D -m 0644 "$srcdir/$pkgbase-$pkgver/3rdparty-licenses/jetty-license.txt" "$pkgdir/usr/share/licenses/$pkgname/jetty/LICENSE"
-  install -D -m 0644 "$srcdir/$pkgbase-$pkgver/3rdparty-licenses/ojdbc-license.txt" "$pkgdir/usr/share/licenses/$pkgname/ojdbc/LICENSE"
-  install -D -m 0644 "$srcdir/$pkgbase-$pkgver/3rdparty-licenses/slf4j-license.txt" "$pkgdir/usr/share/licenses/$pkgname/slf4j/LICENSE"
-  install -D -m 0644 "$srcdir/$pkgbase-$pkgver/3rdparty-licenses/sqljdbc-license.txt" "$pkgdir/usr/share/licenses/$pkgname/sqljdbc/LICENSE"
-  install -D -m 0644 "$srcdir/$pkgbase-$pkgver/3rdparty-licenses/sun-license.txt" "$pkgdir/usr/share/licenses/$pkgname/sun/LICENSE"
+  # Install only the contents of the package, as the -new package is used for updating the main package
+  install -o 663 -g 663 -d "$pkgdir/opt/$pkgname"
+  cp -r * "$pkgdir/opt/$pkgname"
+  chown -R 663:663 "$pkgdir/opt/$pkgname"
+  install -D -m 0644 "license.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -D -m 0644 "3rdparty-licenses/antlr-license.txt" "$pkgdir/usr/share/licenses/$pkgname/antlr/LICENSE"
+  install -D -m 0644 "3rdparty-licenses/asm-license.txt" "$pkgdir/usr/share/licenses/$pkgname/asm/LICENSE"
+  install -D -m 0644 "3rdparty-licenses/jetty-license.txt" "$pkgdir/usr/share/licenses/$pkgname/jetty/LICENSE"
+  install -D -m 0644 "3rdparty-licenses/ojdbc-license.txt" "$pkgdir/usr/share/licenses/$pkgname/ojdbc/LICENSE"
+  install -D -m 0644 "3rdparty-licenses/slf4j-license.txt" "$pkgdir/usr/share/licenses/$pkgname/slf4j/LICENSE"
+  install -D -m 0644 "3rdparty-licenses/sqljdbc-license.txt" "$pkgdir/usr/share/licenses/$pkgname/sqljdbc/LICENSE"
+  install -D -m 0644 "3rdparty-licenses/sun-license.txt" "$pkgdir/usr/share/licenses/$pkgname/sun/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
