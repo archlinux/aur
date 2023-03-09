@@ -9,7 +9,11 @@ pkgbase = ps3-psl1ght-rules
 	arch = powerpc64
 	arch = powerpc
 	arch = riscv64
-	license = GPL
+	license = MIT
+	depends = ps3-ppu-binutils
+	depends = ps3-ppu-gcc
+	depends = ps3-spu-binutils
+	depends = ps3-spu-gcc
 	options = !emptydirs
 	source = git+https://github.com/disc-kuraudo/PSL1GHT.git#commit=45cadf3bd523c9f26c5b0d8b536e59160ab0a54c
 	sha256sums = SKIP
