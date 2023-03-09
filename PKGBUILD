@@ -1,7 +1,7 @@
 # Maintainer: shmilee <shmilee.zju@gmail.com>
 # Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
-# last/latest "longterm maintenance" kernel releases
+# last/latest/longest "longterm maintenance" kernel releases
 # https://www.kernel.org/category/releases.html
 # 6.1 Greg Kroah-Hartman & Sasha Levin 2022-12-11 Dec, 2026
 _LLL_VER=6.1
@@ -9,12 +9,28 @@ _LLL_SUBVER=15
 
 #PKGEXT='.pkg.tar'
 
+# Use HZ ticks 500 instead of Arch default 300
+# 500 get from `CONFIGS/xanmod/gcc/config_x86-64-v*`
+if [ -z ${_use_HZ_500} ]; then
+  _use_HZ_500=y
+fi
+
+# Set CONFIG_KERNEL_{XZ,ZSTD} CONFIG_MODULE_COMPRESS_{XZ,ZSTD}
+# ZSTD: 164M linux-shmilee-6.1.15-1-x86_64.pkg.tar.xz
+#  XZ:  122M linux-shmilee-6.1.15-2-x86_64.pkg.tar.xz
+
+# Set variable "_use_zstd" to: n to use XZ (slower decompress, smaller size)
+#                              y to use ZSTD (faster decompress, larger size)
+if [ -z ${_use_zstd} ]; then
+  _use_zstd=n
+fi
+
 # Disable NUMA since most users do not have multiple processors. Breaks CUDA/NvEnc.
 ## Archlinux and Xanmod enable it by default.
-# Set variable "use_numa" to: n to disable (possibly increase performance)
-#                             y to enable  (stock default)
-if [ -z ${use_numa+x} ]; then
-  use_numa=n
+# Set variable "_use_numa" to: n to disable (possibly increase performance)
+#                              y to enable  (stock default)
+if [ -z ${_use_numa+x} ]; then
+  _use_numa=n
 fi
 
 # Compile ONLY used modules to VASTLY reduce the number of modules built
@@ -55,7 +71,7 @@ _MORE_PATCH=(
 pkgbase=linux-shmilee
 pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
 pkgver=${_LLL_VER}.${_LLL_SUBVER}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux-shmilee'
 url="https://www.kernel.org/"
 arch=(x86_64)
@@ -124,8 +140,31 @@ prepare() {
   scripts/config --enable CONFIG_IKCONFIG \
                  --enable CONFIG_IKCONFIG_PROC
 
+  # set CONFIG_HZ=500 instead of 300
+  if [ "$_use_HZ_500" = 'y' ]; then
+    msg2 "Setting ticks HZ to 500 ..."
+    scripts/config --enable CONFIG_HZ_500
+    scripts/config --disable CONFIG_HZ_300
+    scripts/config --set-val CONFIG_HZ 500
+  fi
+
+  # set KERNEL/MODULE compression mode (ZSTD/XZ)
+  if [ "$_use_zstd" = "n" ]; then
+    msg2 "Setting XZ compression mode for modules..."
+    scripts/config --enable CONFIG_KERNEL_XZ
+    scripts/config --enable CONFIG_MODULE_COMPRESS_XZ
+    scripts/config --disable CONFIG_KERNEL_ZSTD
+    scripts/config --disable CONFIG_MODULE_COMPRESS_ZSTD
+  else
+    msg2 "Setting ZSTD compression mode for modules..."
+    scripts/config --enable CONFIG_KERNEL_ZSTD
+    scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
+    scripts/config --disable CONFIG_KERNEL_XZ
+    scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
+  fi
+
   # Optionally disable NUMA for 64-bit kernels only
-  if [ "$use_numa" = "n" ] && [ "${CARCH}" = "x86_64" ]; then
+  if [ "$_use_numa" = "n" ] && [ "${CARCH}" = "x86_64" ]; then
     msg2 "Disabling NUMA..."
     scripts/config --disable CONFIG_NUMA
     scripts/config --disable CONFIG_AMD_NUMA

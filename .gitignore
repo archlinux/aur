@@ -11,6 +11,7 @@ cjktty-?.*.patch
 
 pkg/*
 src/*
+keys/*
 debug-*.*.*
 
 linux-shmilee-*.log
