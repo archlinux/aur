@@ -3,8 +3,8 @@
 # Contributor: Adrian Perez de Castro <aperez@igalia.com>
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-hidpi-xprop-git
-pkgver=0.17.0.20230306.122351
-pkgrel=2
+pkgver=0.17.0.20230309.185147
+pkgrel=1
 license=(MIT)
 pkgdesc='Modular Wayland compositor library (git version, with patches)'
 url=https://gitlab.freedesktop.org/wlroots/wlroots
@@ -42,8 +42,8 @@ source=("${pkgname}::git+${url}.git"
         0001-xwayland-support-HiDPI-scale.patch
         0002-Fix-configure_notify-event.patch)
 sha512sums=('SKIP'
-            'e03a3c9ac99645b46d583e6c00b7001bdc05738c1ac906e3e3f60e5893490f8c6da23a45e66a000a208e6ea8987294edd6cb13037b32a48d4e921492dcf0bb36'
-            '65d50ed5a1cb5b976e02da69280944bdcc924827ac16106750170b28d96aea42ce723366a44dd0b9c27fe6b2b862b9e7c7502570c05690bbcc46f78ac1c22324')
+            '0595261b7beaa382f351b74d207956a7d36e05db4e96093d68773975cd2a6d6022a03e2aee927b1286bfd382d7c9d5ec22c747b501c2b0cd9e33f1e031a00022'
+            '00c0c841f6c78d941d5128f9e0337dfd36245b74f82b53a73cc453b8cd4b09d3788f5d2d397db5cacd7445f17ff07dd8875954b5d570fcb6468e3b15060cb69a')
 install=wlroots-hidpi-xprop-git.install
 pkgver () {
   cd "${pkgname}"
