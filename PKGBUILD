@@ -1,7 +1,7 @@
 # Maintainer: Cristian Gutierrez <cristian@crstian.me>
 
 pkgname="mow-git"
-pkgver=v0.1
+pkgver=v0.2
 pkgrel=1
 pkgdesc="Cross platform CLI tool for Glorious Model O Wireless"
 arch=('any')
