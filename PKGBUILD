@@ -3,7 +3,7 @@
 
 pkgname='rp++'
 _name='rp'
-pkgver=2.1
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='A fast C++ ROP gadget finder for PE/ELF/Mach-O x86/x64/ARM binaries.'
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=(gcc-libs)
 makedepends=('cmake' 'ninja')
 source=(${_name}-${pkgver}.tar.gz::"https://github.com/0vercl0k/rp/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0c02ce21f546145fc2bcc4647818fd411c8f55ed8232e28efdee8dc04f150074')
+sha256sums=('474101ec7c63502e7452b4782de0891dc8f9b5178af52ae1c7c2bf0ca768bf77')
 
 build() {
     cd "${_name}-${pkgver}"
