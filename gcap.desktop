@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=GCAP 2022
+Comment=Programa de Apuração dos Ganhos de Capital (versão 2022)
+Path=/usr/bin
+Exec=gcap-2022
+Icon=gcap-2022
+Terminal=false
+StartupNotify=false
+Type=Application
+Categories=Application;
