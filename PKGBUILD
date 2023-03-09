@@ -3,7 +3,7 @@
 
 _pkgname=OpenLens
 pkgname=openlens-bin
-pkgver=6.4.4
+pkgver=6.4.6
 pkgrel=1
 pkgdesc='The Kubernetes IDE (fork lens-bin without lenscloud-lens-extension). Read more - https://github.com/lensapp/lens/issues/5444'
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ source=("${_pkgname}.desktop")
 source_x86_64=(${_pkgname}-${pkgver}-x86_64.AppImage::"https://github.com/beliys/OpenLens/releases/download/v${pkgver}/${_pkgname}-${pkgver}.x86_64.AppImage")
 source_aarch64=(${_pkgname}-${pkgver}-aarch64.AppImage::"https://github.com/beliys/OpenLens/releases/download/v${pkgver}/${_pkgname}-${pkgver}.arm64.AppImage")
 sha256sums=('30ab2e9f91ca6be993b5893fb385a225c6d06f6d11caa305e0d109348b5d132c')
-sha256sums_x86_64=('97ab12b1c4c4230857f16322411e3f46f775b8476ca699583d28f86f1f1caa8f')
-sha256sums_aarch64=('22bee91dfa6ab5b8d22e45c928802498f7c03ce979e7b27eb19fdeccc8cc1000')
+sha256sums_x86_64=('5faab33d80867e3bf7d2906f85cf356349a2d80bc8de1f48a7ed25dc4781282f')
+sha256sums_aarch64=('4d36a1504bb03df7d9db03b636e61c1efe862b7a47c9cd015b8e19529ac08dd5')
 
 prepare() {
   chmod +x "${_pkgname}-${pkgver}-${CARCH}.AppImage"
