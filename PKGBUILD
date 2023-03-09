@@ -3,7 +3,7 @@ pkgname=casparcg-server
 pkgver=2.3.3
 _pkgver=$pkgver-lts-stable
 _cef_version=3.3578.1870.gc974488
-pkgrel=8
+pkgrel=9
 pkgdesc="Software used to play out professional graphics, audio and video to multiple outputs"
 arch=('x86_64')
 url="https://github.com/CasparCG/server"
@@ -28,6 +28,8 @@ source=("https://github.com/CasparCG/server/archive/refs/tags/v$_pkgver.tar.gz"
         "https://patch-diff.githubusercontent.com/raw/CasparCG/server/pull/1466.patch"
         # included upstream, but doesn't apply cleaning to 2.3.3
         "ffmpeg-5.0.patch"
+        # made obsolete by upstream changes
+        "ffmpeg-6.0.patch"
         # included upstream, but in larger commits that we don't want to backport
         "missing-includes.patch"
         "ffmpeg-cmake.patch"
@@ -50,6 +52,7 @@ sha256sums=('6d8e973949009e95bb5a6496e26cbe680efd77666936e131df0da569f8f7c7e1'
             'fb6f4412629b4d1a149b7913c152857489394118a61b5925d4cc0dbf2c9c63d7'
             'ab1091e19cd1d3948be3ca80f5a8f2718b60ead3e63ad35dcff9246f95160791'
             '74258b79273b852209f03c826cd64879514929cd222fa03c924b71444c9110a1'
+            '856b943416759e011bcbf11bf82151e1afa2417ece3586ceda6cb30bf21980a9'
             '62f98bbf454b04d99df0b385a81dc902c3b8faf2c245ebded69e8597da793717'
             'e7f0e0dd123b1cccac21611f4e32ba7d27ce24a9a0587ef6f2180fb3c63894c0'
             'b7c5401f342917ece7be583566bfc48b5cc1a8ff9f6470d396130b4aca7dfb22'
