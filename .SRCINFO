@@ -1,12 +1,13 @@
 pkgbase = mattermost-plugin-jitsi
 	pkgdesc = Jitsi plugin for Mattermost
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mattermost/mattermost-plugin-jitsi
 	arch = x86_64
-	depends = mattermost
+	license = Apache2
+	makedepends = jq
 	options = !strip
-	source = mattermost-plugin-jitsi-2.0.1.tgz::https://github.com/mattermost/mattermost-plugin-jitsi/releases/download/v2.0.1/jitsi-2.0.1.tar.gz
+	source = https://github.com/mattermost/mattermost-plugin-jitsi/releases/download/v2.0.1/jitsi-2.0.1.tar.gz
 	sha256sums = 895996f5974d9f3ab4f1cf76f537f5fb19c0edc1d6bae8db9fc042a5fe99cdea
 
 pkgname = mattermost-plugin-jitsi
