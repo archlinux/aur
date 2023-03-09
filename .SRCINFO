@@ -1,6 +1,6 @@
 pkgbase = doublecmd-gtk2-alpha-bin
 	pkgdesc = A file manager with two panels side by side
-	pkgver = 1.1.0.svn.r10638
+	pkgver = 1.1.0.svn.r10640
 	pkgrel = 1
 	url = https://doublecmd.sourceforge.io
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = doublecmd-gtk2-alpha-bin
 	conflicts = doublecmd-gtk2-bin-nightly
 	replaces = doublecmd-gtk2-bin-nightly
 	options = !strip
-	source = https://download.opensuse.org/repositories/home:/Alexx2000:/doublecmd-svn/Fedora_37/x86_64/doublecmd-gtk-1.1.0+svn10638+gitb188817-610.1.x86_64.rpm
-	sha512sums = f4a704f3012d112dea4995e7d46b33f42fd550b59ffe02bd688f308bdcfc903f11e6bdda2e3fd5b4fafa01f174402ec32db80e17bdf06e88ad84f1ce587c082c
+	source = https://download.opensuse.org/repositories/home:/Alexx2000:/doublecmd-svn/Fedora_37/x86_64/doublecmd-gtk-1.1.0+svn10640+git6e79897-612.1.x86_64.rpm
+	sha512sums = a9131e66a5345e1d729adb92e191e408b4b90b311d6f91801e93862b76d56ef9f63544db8601ee6c7a703691b6cf3a130db082570a570ea0f051fedf71c1c713
 
 pkgname = doublecmd-gtk2-alpha-bin
