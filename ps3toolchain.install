@@ -1,0 +1,16 @@
+post_install() {
+	if pacman -Q env-modules &> /dev/null; then
+		echo "env-modules seems to be installed:"
+		echo "If configured correctly, you can conveniently use"
+		echo "  $ module load ps3toolchain"
+		echo "to set up the environment for ps3toolchain."
+		echo "Alternatively source /opt/ps3dev/ps3dev.sh."
+	else
+		echo "Source /opt/ps3dev/ps3dev.sh to use ps3toolchain."
+	fi
+
+}
+
+post_upgrade() {
+	post_install
+}

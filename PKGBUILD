@@ -2,7 +2,7 @@
 
 pkgname=ps3toolchain
 pkgver=20230307
-pkgrel=2
+pkgrel=3
 pkgdesc='Meta package for tools used in the creation of homebrew software for the Sony PlayStation 3 videogame system.'
 url='https://github.com/ps3dev/ps3toolchain'
 arch=('any')
@@ -15,3 +15,28 @@ depends=(
 	'ps3-psl1ght-rules=20230307'
 	'ps3-psl1ght=20230307'
 )
+optdepends=(env-modules)
+install=${pkgname}.install
+source=(
+	"modulefile"
+)
+sha256sums=(
+	'28cfac82649e70d080b3a41a82050c169eb8ed7d5a298cf0d68aa89d5b7cf136'
+)
+
+_prefix="/opt/ps3dev"
+
+package() {
+	mkdir -p "${pkgdir}${_prefix}"
+
+	echo "export PS3DEV=\"${_prefix}\""   > "${pkgdir}${_prefix}/${pkgname}.sh"
+	echo "export PSL1GHT=\"\${PS3DEV}\"" >> "${pkgdir}${_prefix}/${pkgname}.sh"
+	echo "export PATH=\"\${PATH}:\${PS3DEV}/bin\"" >> "${pkgdir}${_prefix}/${pkgname}.sh"
+	echo "export PATH=\"\${PATH}:\${PS3DEV}/ppu/bin\"" >> "${pkgdir}${_prefix}/${pkgname}.sh"
+	echo "export PATH=\"\${PATH}:\${PS3DEV}/spu/bin\"" >> "${pkgdir}${_prefix}/${pkgname}.sh"
+
+	# env-modules (optional)
+	cp "${srcdir}/modulefile" "${pkgdir}${_prefix}"
+	mkdir -p "${pkgdir}/etc/modules/modulefiles/"
+	ln -s "${_prefix}/modulefile" "${pkgdir}/etc/modules/modulefiles/${pkgname}"
+}

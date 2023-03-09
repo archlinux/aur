@@ -1,0 +1,25 @@
+#%Module1.0
+#
+# Created by Darjan Krijan [https://disc-kuraudo.eu]
+#
+
+set MODULE          "ps3toolchain"
+set BASE_DIR        "/opt/ps3dev"
+set VERSION         "20230307"
+set PS3TC_ROOT      "${BASE_DIR}"
+set PS3TC_TEXT      "Tools used in the creation of homebrew software for the Sony PlayStation 3 videogame system."
+
+setenv        PS3DEV           ${PS3TC_ROOT}
+setenv        PSL1GHT          ${PS3TC_ROOT}
+append-path   PATH             ${PS3TC_ROOT}/bin
+append-path   PATH             ${PS3TC_ROOT}/ppu/bin
+append-path   PATH             ${PS3TC_ROOT}/spu/bin
+
+module-whatis  "${PS3TC_TEXT} version ${VERSION}"
+
+proc ModulesHelp {} {
+	global PS3TC_TEXT
+	puts stderr "This module sets up the environment for ${PS3TC_TEXT}"
+	puts stderr "by adapting the following environment variables:"
+	puts stderr "PS3DEV, PSL1GHT, PATH"
+}
