@@ -3,7 +3,7 @@
 
 pkgname=powercap
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc='C bindings to the Linux Power Capping Framework in sysfs'
 arch=('x86_64')
 url='https://github.com/powercap/powercap'
@@ -13,9 +13,9 @@ source=("${pkgname}::git+https://github.com/powercap/${pkgname}#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
-  cd "${srcdir}/${pkgname}"
-  mkdir build && cd ./build
-  cmake .. -DBUILD_SHARED_LIBS=On \
+  mkdir "${srcdir}/${pkgname}/build" && cd "$_"
+  cmake .. \
+    -DBUILD_SHARED_LIBS=On \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib
@@ -23,7 +23,5 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
-  cd build
-  make DESTDIR=$pkgdir install
+  make --directory="${srcdir}/${pkgname}/build" DESTDIR="${pkgdir}" install
 }

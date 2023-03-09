@@ -1,7 +1,7 @@
 pkgbase = powercap
 	pkgdesc = C bindings to the Linux Power Capping Framework in sysfs
 	pkgver = 0.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/powercap/powercap
 	arch = x86_64
 	license = custom:BSD
