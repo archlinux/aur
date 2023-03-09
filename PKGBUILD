@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Gleb Sinyavskiy <zhulik.gleb@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
@@ -8,6 +9,7 @@
 
 # Documentation:
 # https://docs.nvidia.com/video-technologies/video-codec-sdk/ffmpeg-with-nvidia-gpu/
+# https://arnon.dk/matching-sm-architectures-arch-and-gencode-for-various-nvidia-cards/
 
 pkgname=ffmpeg-cuda
 pkgver=5.1.2
@@ -132,6 +134,22 @@ build() {
   local _cflags='-I/opt/cuda/include'
   local _ldflags='-L/opt/cuda/lib64'
   local _nvccflags='-gencode arch=compute_52,code=sm_52 -O2'
+
+#  local _nvccflags='-arch=sm_52 \
+#                    -gencode arch=compute_52,code=sm_52 \
+#                    -gencode arch=compute_53,code=sm_53 \
+#                    -gencode arch=compute_60,code=sm_60 \
+#                    -gencode arch=compute_61,code=sm_61 \
+#                    -gencode arch=compute_62,code=sm_62 \
+#                    -gencode arch=compute_70,code=sm_70 \
+#                    -gencode arch=compute_72,code=sm_72 \
+#                    -gencode arch=compute_75,code=sm_75 \
+#                    -gencode arch=compute_80,code=sm_80 \
+#                    -gencode arch=compute_86,code=sm_86 \
+#                    -gencode arch=compute_87,code=sm_87 \
+#                    -gencode arch=compute_89,code=sm_89 \
+#                    -gencode arch=compute_89,code=compute_89 \
+#                    -O2'
 
   cd ffmpeg
 
