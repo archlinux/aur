@@ -12,6 +12,6 @@ pkgbase = vivi
 	depends = libpulse
 	depends = libx11
 	source = vivi-3.4.3.deb::https://downloads.vivi.io/app/3.4.3/vivi.deb
-	md5sums = 1305d44d0e0db80f5ab61e2127623254
+	md5sums = ac38380b745bbc04450927ac337495a9
 
 pkgname = vivi
