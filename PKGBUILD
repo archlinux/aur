@@ -1,6 +1,6 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('azote')
-pkgver=1.10.0
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="Wallpaper & color manager for Sway, i3 and other WMs"
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=('imagemagick: for screen color picker'
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/$pkgname/archive/v$pkgver.tar.gz")
 
-md5sums=('9358ba0f39c659af0de5fe3ce3d9a55c')
+md5sums=('9490808393dbc115f659514e60978e99')
 
 package() {
   install -D -m 755 "$pkgname"-"$pkgver"/dist/azote "$pkgdir"/usr/bin/azote
