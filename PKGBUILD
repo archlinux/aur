@@ -2,8 +2,8 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts515
-pkgver=5.15.96
-pkgrel=2
+pkgver=5.15.98
+pkgrel=1
 pkgdesc='LTS Linux 5.15.x'
 url="https://www.kernel.org/"
 arch=(x86_64 pentium4 i686 i486)
@@ -28,9 +28,9 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-sha256sums=('348d974c143fdef8517ec703fdaa24bade12a49047848be92cb9e3253b19ef98'
+sha256sums=('7dc62cd3a45f95c9b60316a5886ea9406aee256308869dac1e4ec088fbb37787'
             'SKIP'
-            '49571e574f1fd7c23d42ce83b9287b19ffe7a8e8d7fd8ccb3f41ddecd1764ebc'
+            'a49b9224eb53b53074c4b13b12fcfc0c379347c228b04fc8ffebcc323ecfbf9c'
             '3b5cfc9ca9cf778ea2c4b619b933cda26519969df2d764b5a687f63cf59974cd'
             'c175fbb141c3cec013c799f694d88310375ac5456042f6a4a1adc7667836d786'
             '8357f000b2b622e73dcfd41c2bad42b5e99fffe8f7ee64f774aa771f86cef43c'
