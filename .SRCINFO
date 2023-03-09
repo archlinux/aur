@@ -1,7 +1,7 @@
 pkgbase = firefox-vaapi
 	pkgdesc = Standalone web browser from mozilla.org (with VA-API patches)
 	pkgver = 110.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
 	license = GPL
@@ -55,7 +55,7 @@ pkgbase = firefox-vaapi
 	source = firefox.desktop
 	source = identity-icons-brand.svg
 	source = 0001-libwebrtc-screen-cast-sync.patch
-	source = 0002-enable-vaapi.patch
+	source = 0003-enable-vaapi.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
 	sha256sums = f19bb74d684b992625abca68f5776198974cd2785eb5d02d51ba007fc998491f
 	sha256sums = SKIP

@@ -6,7 +6,7 @@
 pkgname=firefox-vaapi
 _pkgname=firefox
 pkgver=110.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org (with VA-API patches)"
 url="https://www.mozilla.org/firefox/"
 arch=(x86_64)
@@ -71,7 +71,7 @@ source=(
   $_pkgname.desktop
   identity-icons-brand.svg
   0001-libwebrtc-screen-cast-sync.patch
-  0002-enable-vaapi.patch
+  0003-enable-vaapi.patch
 )
 validpgpkeys=(
   '14F26682D0916CDD81E37B6D61B7B526D98F0353'  # Mozilla Software Releases <release@mozilla.com>
@@ -110,10 +110,15 @@ prepare() {
   # https://src.fedoraproject.org/rpms/firefox/blob/rawhide/f/libwebrtc-screen-cast-sync.patch
   patch -Np1 -i ../0001-libwebrtc-screen-cast-sync.patch
 
+  # workaround "maximum blob size (488.28KiB) exceeded" on git push towards AUR
+  wget -O 0002-Bug-1819374-Squashed-ffmpeg-6.0-update.patch https://raw.githubusercontent.com/archlinux/svntogit-packages/dd7a5fb35df6e31ee9591ab204fa2fe54e716155/trunk/0002-Bug-1819374-Squashed-ffmpeg-6.0-update.patch
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1819374
+  patch -Np1 -i 0002-Bug-1819374-Squashed-ffmpeg-6.0-update.patch
+
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1809068
   # https://bbs.archlinux.org/viewtopic.php?id=281398
   # https://src.fedoraproject.org/rpms/firefox/blob/rawhide/f/firefox-enable-vaapi.patch
-  patch -Np1 -i ../0002-enable-vaapi.patch
+  patch -Np1 -i ../0003-enable-vaapi.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
