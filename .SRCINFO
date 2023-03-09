@@ -1,0 +1,15 @@
+pkgbase = shantell-sans-font
+	pkgdesc = a marker-style font built for creative expression, typographic play, and animation
+	pkgver = 1.008
+	pkgrel = 1
+	url = https://shantellsans.com
+	arch = any
+	license = OFL
+	source = https://github.com/arrowtype/shantell-sans/releases/download/1.008/Shantell_Sans_1.008.zip
+	sha256sums = 28777e7e30a28f7ff2d7877633dbc3930b71b92862727fcd639dec3a332627c9
+
+pkgname = otf-shantell-sans
+	provides = shantell-sans-font
+
+pkgname = ttf-shantell-sans-variable
+	provides = shantell-sans-font
