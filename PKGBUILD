@@ -1,20 +1,26 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
-# Maintainer:  Joel Almeida <aullidolunar at gmail d0t k0m>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Contributor:  Joel Almeida <aullidolunar at gmail d0t k0m>
 
 pkgname=python-ebooklib
-pkgver=0.17.1
-pkgrel=2
+_pkg=EbookLib
+pkgver=0.18
+pkgrel=1
 pkgdesc='Python E-book library for handling books in EPUB2/EPUB3 format'
 arch=('any')
-url="https://ebooklib.readthedocs.io"
+url='https://github.com/aerkalov/ebooklib'
 license=('AGPL3')
-depends=('python-lxml'
-         'python-six')
-makedepends=('python-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aerkalov/ebooklib/archive/v${pkgver}.tar.gz")
-sha256sums=('9de472d1a1e434d781cd7001c8e6b36d0fffe765d23b494afe7d26d8c34fda57')
+depends=('python-lxml' 'python-six')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz")
+sha256sums=('38562643a7bc94d9bf56e9930b4927e4e93b5d1d0917f697a6454db5a1c1a533')
+
+build() {
+	cd "$_pkg-$pkgver"
+	python -m build --wheel --no-isolation
+}
 
 package() {
-  cd "ebooklib-${pkgver}"
-  python setup.py install --root="$pkgdir/" --optimize=1
+	cd "$_pkg-$pkgver"
+	python -m installer --destdir "$pkgdir" dist/*.whl
 }
