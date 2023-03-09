@@ -1,7 +1,7 @@
 pkgbase = mstflint3
 	pkgdesc = OpenFabrics Alliance firmware burning application (old version) for Mellanox ConnectX-2
 	pkgver = 3.8.0.27
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openfabrics.org/index.php/overview.html
 	arch = x86_64
 	arch = i686

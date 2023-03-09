@@ -4,7 +4,7 @@
 pkgname=mstflint3
 pkgver=3.8.0.27
 _pkgver=3.8.0-1.27.gf3d39b6
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenFabrics Alliance firmware burning application (old version) for Mellanox ConnectX-2'
 arch=('x86_64' 'i686')
 url='https://www.openfabrics.org/index.php/overview.html'
@@ -15,7 +15,8 @@ sha256sums=('SKIP')
 
 prepare() {
   cd mstflint-3.8.0
-  sed -i '/FLAGS/ s/-Werror/-std=gnu++98/' configure.ac
+  sed -i '/^CFLAGS=/ s/-Werror//' configure.ac
+  sed -i '/^CXXFLAGS=/ s/-Werror/-std=gnu++98 -Wno-c++11-compat/' configure.ac
   ./autogen.sh
 }
 
