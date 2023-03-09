@@ -1,4 +1,4 @@
-# Maintainer: Utsav <aur at utsav2 dot dev>
+# Maintainer: Utsav <aur (a) utsav2 [.] dev>
 # Contributor: XavierCLL <xavier.corredor.llano (a) gmail.com>
 # Contributor: Tavian Barnes <tavianator@tavianator.com>
 # Contributor: jhorcl
@@ -6,11 +6,11 @@
 
 pkgname=mozillavpn
 pkgver=2.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, secure and easy to use VPN. Built by the makers of Firefox."
 arch=('x86_64')
-url="https://vpn.mozilla.org/"
-license=('GPL')
+url="https://mozilla.org/products/vpn"
+license=('MPL2')
 depends=('polkit'
          'libxcb'
          'libxmu'
@@ -31,7 +31,7 @@ depends=('polkit'
          'wireguard-tools'
          'WIREGUARD-MODULE'
          'openresolv')
-makedepends=('cmake' 'qt6-tools' 'go' 'flex' 'python-yaml' 'python-lxml' 'clang' 'cargo' 'python-pip')
+makedepends=('cmake' 'qt6-tools' 'go' 'flex' 'clang' 'cargo' 'python-yaml' 'python-lxml' 'python-glean_parser' 'yamllint')
 # https://github.com/mozilla-mobile/mozilla-vpn-client
 source=(${pkgname}-v${pkgver}::git+https://github.com/mozilla-mobile/mozilla-vpn-client.git#tag=v${pkgver})
 
@@ -42,8 +42,6 @@ prepare() {
         
     rm -rf build
     mkdir build
-
-    pip install --user glean_parser
 
     git submodule init
     git submodule update
