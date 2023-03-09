@@ -1,19 +1,19 @@
 pkgbase = libviface-git
-	pkgdesc = Fork of the official libviface package. C++ bindings for Linux tun/tap and netdevice interface.
-	pkgver = v1.1.1
-	pkgrel = 4
-	url = https://github.com/Augugrumi/libviface
+	pkgdesc = C++ bindings for Linux tun/tap and netdevice interface
+	pkgver = r75.4f33d05
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/hpenetworking/libviface
 	arch = x86_64
 	groups = linux-tools
-	license = APACHE
-	makedepends = git
+	license = Apache
 	makedepends = cmake
+	makedepends = git
+	depends = gcc-libs
 	optdepends = libtins: packets manipulation
-	optdepends = gcc-libs: additional gcc support
-	provides = libviface-git
-	conflicts = libviface-git
-	source = libviface::git://github.com/Augugrumi/libviface.git
-	md5sums = SKIP
+	provides = libviface=1.1.0
+	conflicts = libviface
+	source = libviface::git+https://github.com/hpenetworking/libviface
+	sha256sums = SKIP
 
 pkgname = libviface-git
-

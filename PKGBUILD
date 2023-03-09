@@ -1,41 +1,38 @@
 # Maintainer: Augugrumi <augugrumi@gmail.com>
-pkgname=libviface-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=v1.1.1
-pkgrel=4
-pkgdesc="Fork of the official libviface package. C++ bindings for Linux tun/tap and netdevice interface."
+
+pkgname=libviface-git
+_pkg="${pkgname%-git}"
+pkgver=r75.4f33d05
+pkgrel=1
+epoch=1
+pkgdesc="C++ bindings for Linux tun/tap and netdevice interface"
 arch=('x86_64')
-url="https://github.com/Augugrumi/libviface"
-license=('APACHE')
+url="https://github.com/hpenetworking/libviface"
+license=('Apache')
 groups=('linux-tools')
-depends=()
-optdepends=('libtins: packets manipulation'
-            'gcc-libs: additional gcc support')
-makedepends=(git cmake) # 'bzr', 'git', 'mercurial' or 'subversion'
-provides=("${pkgname%-VCS}")
-conflicts=("${pkgname%-VCS}")
-replaces=()
-backup=()
-options=()
-source=("${pkgname%-git}::git://github.com/Augugrumi/libviface.git")
-noextract=()
-md5sums=('SKIP')
-srcdir=()
+depends=('gcc-libs')
+optdepends=('libtins: packets manipulation')
+makedepends=('cmake' 'git')
+provides=("$_pkg=1.1.0")
+conflicts=("$_pkg")
+source=("$_pkg::git+$url")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-  printf "%s" "$(git describe --tags)"
+	cd "$_pkg"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
-  rm -Rf ./build/
-  mkdir ./build/
-  cd ./build/
-  cmake -DCMAKE_INSTALL_PREFIX=/usr/ ..
-  make
+	cmake \
+		-B build \
+		-S "$_pkg" \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_BUILD_TYPE=None \
+		-Wno-dev
+	cmake --build build
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}/build/"
-	make DESTDIR="$pkgdir/" install/strip
+	DESTDIR="$pkgdir" cmake --install build
 }
