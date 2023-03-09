@@ -1,7 +1,7 @@
 pkgbase = posixsignalmanager-git
 	pkgdesc = Library for safe, synchronous and asynchronous handling of posix signals for Qt applications and libraries
 	pkgver = r81.4426a73
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/textshell/posixsignalmanager
 	arch = x86_64
 	license = Boost
@@ -11,7 +11,9 @@ pkgbase = posixsignalmanager-git
 	provides = posixsignalmanager
 	conflicts = posixsignalmanager
 	options = strip
+	source = posixsignalmanager-fix-tests.patch
 	source = git+https://github.com/textshell/posixsignalmanager.git
+	md5sums = 4b29a501d9632d17176cbaff69f9d3bd
 	md5sums = SKIP
 
 pkgname = posixsignalmanager-git

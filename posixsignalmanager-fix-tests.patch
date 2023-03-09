@@ -1,0 +1,12 @@
+diff --git a/tests/tests.cpp b/tests/tests.cpp
+index dde82e5..30f460e 100644
+--- a/tests/tests.cpp
++++ b/tests/tests.cpp
+@@ -1,5 +1,7 @@
+ // SPDX-License-Identifier: BSL-1.0
+ 
++#pragma GCC optimize("O1")
++
+ #if __has_include(<aio.h>)
+ #include <aio.h>
+ #endif
