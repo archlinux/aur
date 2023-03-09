@@ -35,6 +35,7 @@ pkgbase = mozillavpn
 	depends = wireguard-tools
 	depends = WIREGUARD-MODULE
 	depends = openresolv
+	optdepends = qt6-wayland: for Wayland support
 	source = mozillavpn-v2.13.1::git+https://github.com/mozilla-mobile/mozilla-vpn-client.git#tag=v2.13.1
 	sha256sums = SKIP
 

@@ -32,9 +32,9 @@ depends=('polkit'
          'WIREGUARD-MODULE'
          'openresolv')
 makedepends=('cmake' 'qt6-tools' 'go' 'flex' 'clang' 'cargo' 'python-yaml' 'python-lxml' 'python-glean_parser' 'yamllint')
+optdepends=('qt6-wayland: for Wayland support')
 # https://github.com/mozilla-mobile/mozilla-vpn-client
 source=(${pkgname}-v${pkgver}::git+https://github.com/mozilla-mobile/mozilla-vpn-client.git#tag=v${pkgver})
-
 sha256sums=(SKIP)
 
 prepare() {
