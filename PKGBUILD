@@ -8,7 +8,6 @@ url="https://github.com/kxxt/aspeak"
 license=('MIT')
 depends=('openssl' 'alsa-lib' 'gcc-libs')
 makedepends=('cargo')
-provides=('aspeak')
 conflicts=('aspeak')
 backup=()
 options=()

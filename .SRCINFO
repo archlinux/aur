@@ -12,7 +12,6 @@ pkgbase = aspeak
 	depends = openssl
 	depends = alsa-lib
 	depends = gcc-libs
-	provides = aspeak
 	conflicts = aspeak
 	source = aspeak-4.1.0.tar.gz::https://static.crates.io/crates/aspeak/aspeak-4.1.0.crate
 	b2sums = f8ac4a850029b303e9d39f2e779f6a57c0f32ef507ceabb96312b8ebc08da3da0cd6163831d21bd657ceb6d7b06662a6c65295b84b1fbd355383efdbac6d59cb
