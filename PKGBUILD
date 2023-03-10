@@ -2,7 +2,7 @@
 
 _pkgname=astronvim
 pkgname=${_pkgname}-git
-pkgver=v2.4.0
+pkgver=v3.0.1
 pkgrel=1
 pkgdesc="AstroNvim is an aesthetic and feature-rich neovim config that is extensible and easy to use with a great set of plugins"
 arch=('any')
@@ -27,5 +27,5 @@ package() {
 	cd "${pkgname}"
 	install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	mkdir -p "${pkgdir}${install_dir}"
-	cp -r {colors,init.lua,lua,packer_snapshot} "${pkgdir}${install_dir}"
+	cp -r {init.lua,lua} "${pkgdir}${install_dir}"
 }

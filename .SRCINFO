@@ -1,6 +1,6 @@
 pkgbase = astronvim-git
 	pkgdesc = AstroNvim is an aesthetic and feature-rich neovim config that is extensible and easy to use with a great set of plugins
-	pkgver = v2.4.0
+	pkgver = v3.0.1
 	pkgrel = 1
 	url = https://github.com/AstroNvim/AstroNvim
 	arch = any
