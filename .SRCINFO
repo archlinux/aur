@@ -1,0 +1,14 @@
+pkgbase = yuview-appimage
+	pkgdesc = The Free and Open Source Cross Platform YUV Viewer with an advanced analytics toolset
+	pkgver = 2.13
+	pkgrel = 1
+	url = http://ient.github.io/YUView
+	arch = any
+	license = GPL3
+	depends = zlib
+	depends = hicolor-icon-theme
+	options = !strip
+	source = yuview-2.13.AppImage::https://github.com/IENT/YUView/releases/download/v.2.13/YUView.AppImage
+	sha256sums = 91b521f1b55fb396e5b873c633d464d4fd33fb1ca95eeaedff3a7b8a06cf774f
+
+pkgname = yuview-appimage
