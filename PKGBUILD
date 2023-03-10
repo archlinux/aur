@@ -3,7 +3,7 @@
 
 pkgname=python-pymc
 _name=${pkgname#python-}
-pkgver=5.1.0
+pkgver=5.1.1
 pkgrel=1
 pkgdesc="Markov chain Monte Carlo for Python"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ depends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f327d8fee34b037e1209e6c8280f9a4cff77377287dbeec0f3bd37abf9b49cba')
+sha256sums=('6828983c600d5afa51b8d8643edb231e8e803658d2a546898d9f6fd521a9ce32')
 
 _archive="$_name-$pkgver"
 
