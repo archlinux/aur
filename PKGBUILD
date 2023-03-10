@@ -3,7 +3,7 @@
 pkgname=greenclip
 pkgver=4.1.0
 pkgrel=2
-pkgdesc='Simple clipboard manager to be integrated with rofi'
+pkgdesc='[Unofficial Package] Simple clipboard manager to be integrated with rofi'
 url='https://github.com/erebe/greenclip#readme'
 license=('BSD')
 arch=('x86_64')

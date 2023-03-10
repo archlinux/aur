@@ -1,5 +1,5 @@
 pkgbase = greenclip
-	pkgdesc = Simple clipboard manager to be integrated with rofi
+	pkgdesc = [Unofficial Package] Simple clipboard manager to be integrated with rofi
 	pkgver = 4.1.0
 	pkgrel = 2
 	url = https://github.com/erebe/greenclip#readme
