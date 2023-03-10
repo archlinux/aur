@@ -1,18 +1,20 @@
 pkgbase = python-sen
-	pkgdesc = sen is a terminal user interface for docker engine
-	pkgver = 0.6.1
+	pkgdesc = A terminal user interface for Docker
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/TomasTomecek/sen
 	arch = any
 	license = MIT
-	depends = python
-	depends = python-urwid
-	depends = python-humanize
+	checkdepends = python-pytest
+	checkdepends = python-flexmock
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-docker-py
+	depends = python-urwid
 	depends = python-urwidtrees
-	provides = sen=0.6.1
-	source = https://github.com/TomasTomecek/sen/archive/0.6.1.tar.gz
-	sha256sums = cf97b722f1fe49a99496fcaf955fcb54516210b26df5aad44d94a513c297fbe5
+	source = python-sen-0.6.2.tar.gz::https://files.pythonhosted.org/packages/source/s/sen/sen-0.6.2.tar.gz
+	sha256sums = 3895a5a8e1c4d950ee9ddee900e3e9f7019f9bf758724720a4dc543f205bace4
 
 pkgname = python-sen
-
