@@ -1,0 +1,37 @@
+From e9f85c078de17f006597e69a5c05b1b19982c86a Mon Sep 17 00:00:00 2001
+From: atom long <atom.long@hotmail.com>
+Date: Sat, 11 Mar 2023 00:59:17 +0800
+Subject: [PATCH] Fix Creation of dynamic property is deprecated
+
+---
+ app/Console/Upgrade.php       | 1 +
+ libs/MessageServices/Mail.php | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/app/Console/Upgrade.php b/app/Console/Upgrade.php
+index 4b348c6..5486d46 100644
+--- a/app/Console/Upgrade.php
++++ b/app/Console/Upgrade.php
+@@ -13,6 +13,7 @@ use GuzzleHttp\Client;
+ use Luolongfei\Libs\Log;
+ use Luolongfei\Libs\Message;
+ 
++#[\AllowDynamicProperties]
+ class Upgrade extends Base
+ {
+     const TIMEOUT = 33;
+diff --git a/libs/MessageServices/Mail.php b/libs/MessageServices/Mail.php
+index 7c4c765..f6c1960 100644
+--- a/libs/MessageServices/Mail.php
++++ b/libs/MessageServices/Mail.php
+@@ -15,6 +15,7 @@ use PHPMailer\PHPMailer\PHPMailer;
+ use PHPMailer\PHPMailer\Exception as MailException;
+ use Luolongfei\Libs\Connector\MessageGateway;
+ 
++#[\AllowDynamicProperties]
+ class Mail extends MessageGateway
+ {
+     /**
+-- 
+2.39.2.windows.1
+
