@@ -75,8 +75,8 @@ build() {
 package_etlegacy32-git() {
     pkgdesc="Wolfenstein: Enemy Territory 2.60b compatible client/server (etlegacy engine, 32 bit)"
     depends=('etlegacy32-mod-git')
-    depends_i686=('etlegacy32-mod-git' 'alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libtheora' 'libvorbis' 'lua' 'minizip' 'openal' 'sdl2' 'sqlite')
-    depends_x86_64=('etlegacy32-mod-git' 'lib32-alsa-lib' 'lib32-curl' 'lib32-freetype2' 'lib32-gcc-libs' 'lib32-glew' 'lib32-libjpeg-turbo' 'lib32-libtheora' 'lib32-libvorbis' 'lib32-lua' 'lib32-minizip' 'lib32-openal' 'lib32-sdl2' 'lib32-sqlite')
+    depends_i686=('etlegacy32-mod-git' 'alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libtheora' 'libvorbis' 'lua' 'minizip' 'openal' 'sdl2' 'sqlite' 'cjson')
+    depends_x86_64=('etlegacy32-mod-git' 'lib32-alsa-lib' 'lib32-curl' 'lib32-freetype2' 'lib32-gcc-libs' 'lib32-glew' 'lib32-libjpeg-turbo' 'lib32-libtheora' 'lib32-libvorbis' 'lib32-lua' 'lib32-minizip' 'lib32-openal' 'lib32-sdl2' 'lib32-sqlite' 'lib32-cjson')
     provides=('etlegacy32' 'etlegacy')
     conflicts=('etlegacy32' 'etlegacy')
     backup=('etc/xdg/etlegacy/etmain/etl_server.cfg'

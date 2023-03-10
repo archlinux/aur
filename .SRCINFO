@@ -55,6 +55,7 @@ pkgname = etlegacy32-git
 	depends_i686 = openal
 	depends_i686 = sdl2
 	depends_i686 = sqlite
+	depends_i686 = cjson
 	depends_x86_64 = etlegacy32-mod-git
 	depends_x86_64 = lib32-alsa-lib
 	depends_x86_64 = lib32-curl
@@ -69,6 +70,7 @@ pkgname = etlegacy32-git
 	depends_x86_64 = lib32-openal
 	depends_x86_64 = lib32-sdl2
 	depends_x86_64 = lib32-sqlite
+	depends_x86_64 = lib32-cjson
 
 pkgname = etlegacy32-mod-git
 	pkgdesc = Wolfenstein: Enemy Territory 2.60b compatible client/server (etlegacy mod, 32 bit)
