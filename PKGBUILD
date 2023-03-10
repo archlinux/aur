@@ -14,7 +14,7 @@ source=(
     "https://github.com/BRL-CAD/${pkgname}/archive/refs/tags/${_tag_name}.tar.gz")
 sha256sums=(
     'SKIP'
-    '004393cbf0eeb0955d0d4d7e91fbe7a22136df29774af71f24508d6863002fe7')
+    'bdaff958dee7b39ca66c777bb889878a707a10130ef76c47928870ff98d08c1e')
 
 
 _build_config='Release'
