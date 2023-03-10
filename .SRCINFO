@@ -1,7 +1,7 @@
 pkgbase = gr-framework-git
 	pkgdesc = A universal framework for cross-platform visualization applications.
 	pkgver = 0.71.7.r53.gb069b925
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gr-framework.org
 	arch = i686
 	arch = x86_64

@@ -2,7 +2,7 @@
 
 pkgname="gr-framework-git"
 pkgver="0.71.7.r53.gb069b925"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A universal framework for cross-platform visualization applications."
 arch=("i686" "x86_64" "armv6h" "armv7h" "aarch64")
 url="https://gr-framework.org"
@@ -34,5 +34,7 @@ build() {
 
 package() {
     cd "${srcdir}/${pkgname%-*}" || return
-    DESTDIR="${pkgdir}" cmake --install build
+    DESTDIR="${pkgdir}" cmake --install build && \
+    mkdir -p "${pkgdir}/usr/bin/" && \
+    ln -s /usr/gr/bin/grplot "${pkgdir}/usr/bin/"
 }
