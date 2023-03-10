@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=shisper-git
-pkgver=0.1.r0.gff52269
+pkgver=0.1.r2.g01451b3
 pkgrel=1
 pkgdesc="A quick & dirty script to generate subtitles and transcriptions for your multimedia files using ggerganov/whisper.cpp"
 arch=(any)
@@ -25,7 +25,10 @@ pkgver() {
 package() {
   cd "${srcdir}/${pkgname%%-git}"
   install -Dm755 "${pkgname%%-git}" \
-    "${pkgdir}/usr/bin/${pkgname%%-git}"
+    -t "${pkgdir}/usr/bin/"
+  install -Dm755 src/config.ini \
+    -t "${pkgdir}/etc/shisper/"
+
 }
 
 sha256sums=('SKIP')
