@@ -10,7 +10,7 @@ license=('custom')
 conflicts=('ja2-stracciatella')
 provides=('ja2-stracciatella')
 depends=('sdl2' 'sdl2>2.0.6' 'lua53' 'sol2')
-optdepends=('fltk')
+optdepends=('fltk: GUI launcher')
 makedepends=('git' 'cargo' 'cmake' 'ninja' 'string-theory' 'fltk')
 _magic_enum_ver='0.7.3'
 # This is version 0.11.1; miniaudio doesn't do tags apparently
