@@ -2,8 +2,8 @@
 
 pkgname=sing-box-beta
 _pkgname=sing-box
-_version="1.2-beta7"
-pkgver="${_version//[v-]/}"
+_version="1.2-beta8"
+pkgver="${_version//-/.}"
 pkgrel=1
 
 pkgdesc='The universal proxy platform (beta version).'
@@ -14,7 +14,7 @@ license=('GPL3')
 makedepends=('go')
 
 source=("${_pkgname}-${_version}.tar.gz::https://github.com/SagerNet/sing-box/archive/v${_version}.tar.gz")
-sha256sums=('f0c6d438fff54ac5dc0ff8ef01a2a016dc9dc8a6dd7e428fe7546d38daaa6e63')
+sha256sums=('dd2e843cbb9698f32ececd946d5f0a414977bc92f605f50b60f424bf7a5bee56')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -40,7 +40,7 @@ build(){
         -mod=readonly \
         -modcacherw \
         -tags "$_tags" \
-        -ldflags "-s -w -buildid= -X github.com/sagernet/sing-box/constant.Version=${pkgver} -linkmode=external" \
+        -ldflags "-s -w -buildid= -X github.com/sagernet/sing-box/constant.Version=v${_version} -linkmode=external" \
         ./cmd/sing-box
 
     sed -i "/^\[Service\]$/a User=${_pkgname}
