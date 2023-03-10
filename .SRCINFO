@@ -1,13 +1,13 @@
 pkgbase = ata-bin
 	pkgdesc = Ask the Terminal Anything
-	pkgver = 1.0.3
+	pkgver = 2.0.1
 	pkgrel = 0
 	url = https://github.com/rikhuijzer/ata
 	arch = x86_64
 	arch = aarch64
 	conflicts = ata
 	conflicts = ata-git
-	source = ata::https://github.com/rikhuijzer/ata/releases/download/v1.0.3/ata-x86_64-unknown-linux-gnu
+	source = ata::https://github.com/rikhuijzer/ata/releases/download/v2.0.1/ata-x86_64-unknown-linux-gnu
 	md5sums = SKIP
 
 pkgname = ata-bin

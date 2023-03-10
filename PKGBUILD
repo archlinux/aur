@@ -1,7 +1,7 @@
 # Maintainer: Victor Bonnelle <victor.bonnelle@proton.me>
 
 pkgname="ata-bin"
-pkgver=1.0.3
+pkgver=2.0.1
 pkgrel=0
 pkgdesc="Ask the Terminal Anything"
 arch=('x86_64' 'aarch64')
