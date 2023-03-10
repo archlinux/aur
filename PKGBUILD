@@ -2,7 +2,7 @@
 # Based on testing/linux by Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-amd-staging-drm-next-git
-pkgver=6.0.r1126268.4a5e4cc8c651
+pkgver=6.0.r1126357.63481cd532e2
 pkgrel=1
 pkgdesc='Linux kernel with WIP AMDGPU material'
 _product="${pkgbase%-git}"
@@ -22,7 +22,7 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            'f35bb39db7324a45e78e6c75c1a60f117fea3f7d0df9f4a32bed411751d6ffea')
+            'c92207f87f806209da2bda0a2044872fdf22fce9a45cf31d3579fdfedde8c17c')
 
 pkgver() {
   cd $_srcname
@@ -40,7 +40,7 @@ prepare() {
   cd $_srcname
 
   echo "Setting version..."
-  scripts/setlocalversion --save-scmversion
+  KERNELVERSION="${pkgver}" scripts/setlocalversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
 

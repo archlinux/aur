@@ -1,5 +1,3 @@
-linux-agd5f
-linux-amd*
+linux-amd-staging-drm-next-git
 src
-pkg
-*.pkg*
+*pkg*
