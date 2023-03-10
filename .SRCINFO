@@ -1,6 +1,6 @@
 pkgbase = openmrac
 	pkgdesc = OpenMRac, a split-screen racing game
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/Franticware/OpenMRac
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = openmrac
 	depends = openal
 	depends = glm
 	conflicts = openmrac-git
-	source = openmrac-1.1.tar.gz::https://github.com/Franticware/OpenMRac/archive/refs/tags/v1.1.tar.gz
-	sha256sums = f1af5baf644ba296ba7cd619315deceaa7ad743cd1d402f7e61f2debd51a1fad
+	source = openmrac-1.2.tar.gz::https://github.com/Franticware/OpenMRac/archive/refs/tags/v1.2.tar.gz
+	sha256sums = 7a1ea8e74c43d406756f55c477c76dcd2476cbc55ddd0afc23ded3afaa3bf812
 
 pkgname = openmrac
