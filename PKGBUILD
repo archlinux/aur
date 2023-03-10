@@ -2,7 +2,7 @@
 # Contributor: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=libdaq
-pkgver=3.0.10
+pkgver=3.0.11
 pkgrel=1
 pkgdesc='Data Acquisition library for packet I/O.'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('libpcap' 'libnetfilter_queue')
 makedepends=('ca-certificates')
 source=("libdaq-${pkgver}.tar.gz::https://github.com/snort3/libdaq/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('875fb3142f216e9a788000183d874fb677674fabf5bdcc5a8e8084a12581928dad4e92c2496476991316e4323aba7e559b929bd7ab553802019995835df16424')
+sha512sums=('b794da0a1297e74f29940eeb956a294ed1b3c77695659d9fa540a22f03ed466960c2f60fdc36ab8f4fdf56db11630da72bf5fd28361cfa6f043bf4c273e8bafd')
 provides=('libdaq-nfqueue')
 conflicts=('libdaq-nfqueue')
 replaces=('libdaq-nfqueue')
