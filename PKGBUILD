@@ -9,8 +9,9 @@ url="https://github.com/ja2-stracciatella/ja2-stracciatella"
 license=('custom')
 conflicts=('ja2-stracciatella')
 provides=('ja2-stracciatella')
-depends=('sdl2' 'sdl2>2.0.6' 'fltk' 'lua53' 'sol2')
-makedepends=('git' 'cargo' 'cmake' 'ninja' 'string-theory')
+depends=('sdl2' 'sdl2>2.0.6' 'lua53' 'sol2')
+optdepends=('fltk')
+makedepends=('git' 'cargo' 'cmake' 'ninja' 'string-theory' 'fltk')
 _magic_enum_ver='0.7.3'
 # This is version 0.11.1; miniaudio doesn't do tags apparently
 _miniaudio_commit='c153a947919808419b0bf3f56b6f2ee606d6c5f4'
