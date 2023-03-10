@@ -1,0 +1,14 @@
+pkgbase = python-lpips
+	pkgdesc = LPIPS Similarity metric
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/richzhang/PerceptualSimilarity
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/l/lpips/lpips-0.1.4.tar.gz
+	sha256sums = 3846331df6c69688aec3d300a5eeef6c529435bc8460bd58201c3d62e56188fa
+
+pkgname = python-lpips
+	depends = python
