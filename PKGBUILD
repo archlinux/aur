@@ -19,8 +19,8 @@ source=(https://gitlab.dune-project.org/pdelab/${pkgname}/-/archive/releases/${_
   supress-warnings.patch::https://gitlab.dune-project.org/pdelab/${pkgname}/-/commit/475c58bff8f702d0f8929d26a1de339f070e792e.patch
   pk-qk-warnings.patch::https://gitlab.dune-project.org/pdelab/${pkgname}/-/commit/d6479ff18077d8008dd8ca77181f6bb1524f4f0a.patch)
 sha512sums=('d639dd7d8289696262b13c848d2b8142e3f8ee1e5a6d440bdb629ae9d9abc57f0bfc2f31d8c17a366f7364c0e3e328c4a30d386e944e5aad4dbad820e7500edf'
-  '128791c38bc78db48ff778ec40a9b01edf252ddeb7e624627c7c166d608157b3892a56dd03aad740f2e2584d73ee908659e78092c07dccebc587365556bb8036'
-  'aa83770e5ad9e6e8c5e32d3b4b2cd8011c1975d66e29af91781c51ec3597aca50182f54d8d2c4db4d363cc0117974e06fa3f54e71edb5f9634b44a592d5236b5')
+  '7e21a09c0f4cdddf994ad381a6bdeb9e072fd82411a55150eb804349e8b3b553293c540549bc7fb1676823072bc0f6159c53a71ad8fb640a5fb74cb044021f59'
+  '82dde295880bc0a4f8477e36376415e20977278186e5407966a64720f3420d160c6a87272ff2763f8e36d0436e961069594322ab68c7f3900dae46b9251d4ca5')
 
 prepare() {
   cd ${pkgname}-releases-${_tarver}
