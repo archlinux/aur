@@ -1,6 +1,6 @@
 pkgbase = python-mesa
 	pkgdesc = Agent-based modeling (ABM) in Python 3+
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/projectmesa/mesa
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = python-mesa
 	depends = python-pandas
 	depends = python-tornado
 	depends = python-tqdm
-	noextract = Mesa-1.1.1-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/M/Mesa/Mesa-1.1.1-py3-none-any.whl
-	sha256sums = 65757c5fe189a1abd87829f1a4aed496bd08874ab77f4d326e0a83e76707d14d
+	noextract = Mesa-1.2.0-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/M/Mesa/Mesa-1.2.0-py3-none-any.whl
+	sha256sums = 01adf003367bd09070111e29327159d14c2bdf63b8ed135786e4dd0571b03b1e
 
 pkgname = python-mesa
