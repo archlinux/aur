@@ -2,7 +2,7 @@
 
 pkgname=i3lock-lixxia-git
 pkgver=r344.be2a08a
-pkgrel=1
+pkgrel=2
 pkgdesc='Copy of i3lock that displays a 12-hour clock and always shows unlock indicator'
 arch=('i686' 'x86_64')
 url='https://github.com/Lixxia/i3lock'
