@@ -3,13 +3,12 @@
 _srcname=iwlwifi-ax101
 pkgname=${_srcname}-dkms
 pkgver=6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Intel wireless chips driver fixed for ax101 from linux ($pkgver)"
 arch=('any')
 url="https://wireless.wiki.kernel.org/en/users/drivers/iwlwifi"
 license=('GPL2')
 depends=('dkms')
-makedepends=('git')
 source=("https://www.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/linux-${pkgver}.tar.xz"
         "dkms.conf"
         "0001-ax101.patch")

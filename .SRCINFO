@@ -1,11 +1,10 @@
 pkgbase = iwlwifi-ax101-dkms
 	pkgdesc = Intel wireless chips driver fixed for ax101 from linux (6.2)
 	pkgver = 6.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wireless.wiki.kernel.org/en/users/drivers/iwlwifi
 	arch = any
 	license = GPL2
-	makedepends = git
 	depends = dkms
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v6.x/linux-6.2.tar.xz
