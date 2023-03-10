@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=bob
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="A version manager for neovim"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('890a536a0b862d887e150bbaa5122adf15a66f5ae755cfd98fcb805d064735d8')
+sha256sums=('45693b493034bf016643cd371c2f03955f1ccb35fac6c66b351bbea77ca24105')
 options=('!lto')
 
 prepare() {
