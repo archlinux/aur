@@ -1,0 +1,30 @@
+pkgbase = fractal-next-git
+	pkgdesc = Matrix messaging app for GNOME written in Rust
+	pkgver = 5.alpha.r964.012b9856
+	pkgrel = 1
+	epoch = 1
+	url = https://gitlab.gnome.org/GNOME/fractal
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	makedepends = git
+	makedepends = meson
+	makedepends = clang
+	depends = gtk4
+	depends = gtksourceview5
+	depends = gst-plugins-base-libs
+	depends = gst-editing-services
+	depends = gspell
+	depends = libadwaita
+	depends = pipewire
+	depends = libshumate
+	depends = org.freedesktop.secrets
+	provides = fractal=5.alpha.r964.012b9856
+	provides = fractal-next
+	conflicts = fractal
+	replaces = fractal
+	source = git+https://gitlab.gnome.org/GNOME/fractal.git
+	md5sums = SKIP
+
+pkgname = fractal-next-git
