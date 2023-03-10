@@ -3,7 +3,7 @@
 
 pkgname=autenticacao-gov-pt-bin
 pkgver=3.9.1
-pkgrel=1
+pkgrel=3
 pkgdesc="Portuguese Citizen Card Application (Portugal eID) - version with pre compiled binaries by AMA"
 arch=('x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -48,7 +48,11 @@ prepare() {
 
 package() {
   mkdir -p "${pkgdir}/usr/"
+  mkdir -p "${pkgdir}/app/share"
   mv "${srcdir}"/pteid_out/files/{bin,include,lib,share} "${pkgdir}/usr/"
+  # Create symlinks: until better alternative
+  ln -sfn /usr/share/certs "${pkgdir}"/app/share/
+  ln -sfn /usr/bin "${pkgdir}"/app/
   # cleanup pre packaged libraries
   rm -rf "${pkgdir}"/usr/include/zip*
   rm -rf "${pkgdir}"/usr/lib/libzip*
