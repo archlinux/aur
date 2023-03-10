@@ -1,6 +1,6 @@
 pkgbase = ttop
 	pkgdesc = System monitoring tool with TUI, historical data service and triggers
-	pkgver = 0.8.8
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/inv2004/ttop
 	install = .INSTALL
