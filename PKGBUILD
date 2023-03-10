@@ -5,10 +5,10 @@ _pkgname=arandr-indicator
 pkgname="${_pkgname}-git"
 epoch=2
 pkgver=2.0.0+11.r26.20220728.aac95e3
-pkgrel=1
+pkgrel=2
 pkgdesc="Quick and simple tray icon menu for changing the monitor layout."
 arch=('any')
-url="https://github.com/denilsonsa/arandr-indicator" # original project
+url="https://github.com/denilsonsa/arandr-indicator" # Original project.
 license=('custom: BSD')
 depends=(
   'pygtk'
@@ -24,7 +24,7 @@ provides=("${_pkgname}=${pkgver}")
 replaces=()
 conflicts=("${_pkgname}")
 source=(
-  "${_pkgname}::git+https://github.com/denilsonsa/arandr-indicator.git" # original project (Python 2)
+  "${_pkgname}::git+${url}.git"
   'license-info.txt'
 )
 sha256sums=(
