@@ -1,8 +1,15 @@
-post_install() {
+do_setcap() {
   sudo setcap cap_sys_admin+p /usr/bin/$(readlink $(which sunshine))
+}
+
+post_install() {
+  do_setcap
   if ! getent group input > /dev/null; then
     echo "Creating group input"
     groupadd -r input
  fi
 }
 
+post_upgrade() {
+  do_setcap
+}
