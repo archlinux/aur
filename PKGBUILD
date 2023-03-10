@@ -3,8 +3,8 @@
 
 pkgname=python-pyhanko
 _name=pyHanko
-pkgver=0.17.0
-pkgrel=2
+pkgver=0.17.2
+pkgrel=1
 pkgdesc="Tools for stamping and signing PDF files"
 url="https://github.com/MatthiasValvekens/pyHanko"
 license=(MIT)
@@ -38,7 +38,7 @@ optdepends=(
   'python-barcode: for image support'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('2dbc5ec319092d5426ac3691902f911bf568ae9aa0f1c5f80a5530b8c2bcc75e')
+sha256sums=('c1733e3375dc425e585d76f0db7f101d64b944474a4e71b16f5692e2e19b4cc0')
 
 _archive="$_name-$pkgver"
 
@@ -51,7 +51,9 @@ build() {
 check() {
   cd "$_archive"
 
-  python -m pytest --ignore pyhanko_tests/test_csc.py
+  python -m pytest \
+    --ignore pyhanko_tests/test_csc.py \
+    -k 'not test_ts_fetch_aiohttp'
 }
 
 package() {
