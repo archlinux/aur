@@ -2,7 +2,7 @@
 
 _pkgname="psl1ght"
 pkgname="ps3-${_pkgname}"
-pkgver="20230307"
+pkgver="20230214"
 pkgrel=1
 pkgdesc="PSL1GHT lightweight PS3 GameOS SDK"
 arch=(x86_64 aarch64 powerpc64le powerpc64 powerpc riscv64)
@@ -17,7 +17,7 @@ depends=(
 )
 options=(!emptydirs !strip staticlibs)
 source=(
-	"git+https://github.com/disc-kuraudo/PSL1GHT.git#commit=45cadf3bd523c9f26c5b0d8b536e59160ab0a54c"
+	"git+https://github.com/ps3dev/PSL1GHT.git#commit=0f7ab5e4967ef0df877dd10f080b0ca771eac023"
 )
 sha256sums=(
 	'SKIP'
@@ -40,7 +40,10 @@ prepare() {
 build() {
 	cd "${srcdir}/PSL1GHT"
 
-	make
+	# Fake PSL1GHT variable to source to make it find *_rules files,
+	# this skips a separate '-rules' package with 'make install-ctrl'
+	# that would put them in /opt/ps3dev
+	PSL1GHT="${PWD}" make
 }
 
 package() {
@@ -49,10 +52,13 @@ package() {
 
 	mkdir powerpc64-ps3-elf
 	ln -s powerpc64-ps3-elf ppu
+	mkdir -p ppu/lib # ppu/crt/Makefile install rule doesn't create this
 
 	cd "${srcdir}/PSL1GHT"
 
-	make DESTDIR="${pkgdir}" install
+	# Special needs Makefile with no support for DESTDIR.
+	# Need to play around with both PSL1GHT and PS3DEV variables,
+	make PS3DEV="${pkgdir}${PS3DEV}" PSL1GHT="${pkgdir}${PSL1GHT}" install-ctrl install
 
 	unlink "${pkgdir}${PS3DEV}/ppu/ppu"
 }
