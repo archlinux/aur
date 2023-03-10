@@ -9,12 +9,12 @@ _pkgname=${_repo##*/}
 
 pkgname=perl-$(tr A-Z a-z <<<${_repo##*/})
 pkgver=${_upstreamver##v}
-pkgrel=1
+pkgrel=2
 pkgdesc="Reply plugin for powerlevel10k style prompt"
 arch=(any)
 url=https://github.com/$_repo
 license=(GPL3)
-depends=(perl-file-xdg perl-reply)
+depends=('perl-file-xdg>=1.00' perl-reply)
 source=("https://cpan.metacpan.org/authors/id/F/FR/FREED/$_pkgname-$pkgver.tar.gz")
 sha256sums=('a15a9c3f5abc1e7fbb2d4f7f347b42502cfbf95382751cb33cb1d87953373254')
 
