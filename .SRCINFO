@@ -1,6 +1,6 @@
 pkgbase = r-annotationdbi
 	pkgdesc = Manipulation of SQLite-based annotations in Bioconductor
-	pkgver = 1.60.0
+	pkgver = 1.60.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/AnnotationDbi
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-annotationdbi
 	optdepends = r-reactome.db
 	optdepends = r-runit
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/AnnotationDbi_1.60.0.tar.gz
-	sha256sums = 1767187f599341a51d375dfdfffad372b4b76cf1cfb1b45ed5f5f1faa3043beb
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/AnnotationDbi_1.60.1.tar.gz
+	sha256sums = 8a3c3095f535f67a96d2758ce743fb253a32082f9841dbec8c1604e3da55ff70
 
 pkgname = r-annotationdbi
