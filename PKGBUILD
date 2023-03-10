@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cargo-public-api-git
-pkgver=0.27.2.r0.ge733bb9
+pkgver=0.27.3.r4.g10e912b
 pkgrel=1
 pkgdesc="List and diff the public API of Rust library crates (git)"
 arch=('x86_64')
@@ -25,11 +25,16 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  mkdir completions
 }
 
 build() {
   cd "${pkgname%-git}"
   cargo build --release --frozen
+  local compgen="target/release/${pkgname%-git} completions"
+  $compgen bash > "completions/${pkgname%-git}"
+  $compgen fish > "completions/${pkgname%-git}.fish"
+  $compgen zsh  > "completions/_${pkgname%-git}"
 }
 
 # tests require nightly
@@ -43,4 +48,7 @@ package() {
   install -Dm 755 "target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm 644 "completions/${pkgname%-git}" -t "$pkgdir/usr/share/bash-completion/completions/"
+  install -Dm 644 "completions/${pkgname%-git}.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d/"
+  install -Dm 644 "completions/_${pkgname%-git}" -t "$pkgdir/usr/share/zsh/site-functions/"
 }
