@@ -1,6 +1,6 @@
 pkgbase = obs-ndi
 	pkgdesc = Network A/V in OBS Studio with NewTek's NDI technology
-	pkgver = 4.10.0
+	pkgver = 4.11.0
 	pkgrel = 1
 	url = https://github.com/Palakis/obs-ndi
 	install = obs-ndi.install
@@ -14,7 +14,7 @@ pkgbase = obs-ndi
 	provides = obs-ndi
 	conflicts = obs-ndi-bin
 	conflicts = obs-ndi-git
-	source = obs-ndi-4.10.0.tar.gz::https://github.com/Palakis/obs-ndi/archive/dummy-tag-4.10.0.tar.gz
-	sha256sums = 4c617c80aa5438ce5d2166f8b83a3ddb309f17a02b861da162a6ec481cd42a18
+	source = obs-ndi-4.11.0.tar.gz::https://github.com/Palakis/obs-ndi/archive/4.11.0.tar.gz
+	sha256sums = e0a119b869807c1d8887ea266c17a8ba5e10db7b05dfa0086d76a2bb394e7ee8
 
 pkgname = obs-ndi

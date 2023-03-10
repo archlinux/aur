@@ -1,7 +1,7 @@
 # Maintainer: Emily Maré (emileet) <emileet@plsnobully.me>
 
 pkgname=obs-ndi
-pkgver=4.10.0
+pkgver=4.11.0
 pkgrel=1
 pkgdesc="Network A/V in OBS Studio with NewTek's NDI technology"
 arch=('x86_64')
@@ -12,21 +12,23 @@ conflicts=('obs-ndi-bin' 'obs-ndi-git')
 depends=('avahi' 'libndi' 'obs-studio' 'sndio')
 makedepends=('cmake')
 install="${pkgname}.install"
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/dummy-tag-4.10.0.tar.gz")
-sha256sums=('4c617c80aa5438ce5d2166f8b83a3ddb309f17a02b861da162a6ec481cd42a18')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('e0a119b869807c1d8887ea266c17a8ba5e10db7b05dfa0086d76a2bb394e7ee8')
 
 build() {
-    cd ${pkgname}-dummy-tag-${pkgver}
+    cd ${pkgname}-${pkgver}
 
     cmake -B build -DCMAKE_INSTALL_PREFIX=/usr
     cmake --build build
 }
 
 package() {
-    cd ${pkgname}-dummy-tag-${pkgver}/build
+    cd ${pkgname}-${pkgver}
 
-    install -Dm755 obs-ndi.so ${pkgdir}/usr/lib/obs-plugins/obs-ndi.so
-    install -Dm644 ../data/locale/en-US.ini ${pkgdir}/usr/share/obs/obs-plugins/obs-ndi/locale/en-US.ini
+    install -Dm755 build/obs-ndi.so ${pkgdir}/usr/lib/obs-plugins/obs-ndi.so
 
-    install -Dm644 ../LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+    install -d ${pkgdir}/usr/share/obs/obs-plugins/obs-ndi/locale
+    cp -a data/locale/* ${pkgdir}/usr/share/obs/obs-plugins/obs-ndi/locale
+
+    install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
