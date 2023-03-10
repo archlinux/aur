@@ -1,19 +1,19 @@
-# Maintainer: teackot <k dot qovekt at gmail dot com>
+# Maintainer: teackot <teackot at gmail dot com>
 _prjname=MControlCenter
 pkgname=mcontrolcenter-bin
-pkgver=0.3.2
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc='An application that allows you to change the settings of MSI laptops'
 arch=('x86_64')
 url='https://github.com/dmitry-s93/MControlCenter'
 license=('GPL3')
 depends=('qt5-base' 'hicolor-icon-theme')
-source=(https://github.com/dmitry-s93/$_prjname/releases/download/${pkgver}/${_prjname}-${pkgver}.tar.gz)
-b2sums=('e62aa0348b31975d3fa14b8279e4781903b64fbbfd7f9f6068facbf7a4b8ce639af5c36f813255d089b9860f8ba5addce47d4ea8277d39c3fc1309a2f6a7fdfe')
+source=(https://github.com/dmitry-s93/$_prjname/releases/download/${pkgver}/${_prjname}-${pkgver}-bin.tar.gz)
+b2sums=('7aea529be439885dcf16dcfdb5666ca07758b41e068c91da1d3f2e202a98283616cfefbd25154592f825d8a956f54a550e9c0f7f4639c79c4079bac401561347')
 
 prepare() {
-    echo "ec_sys" >> $pkgname-kmod.conf
-    echo "options ec_sys write_support=1" >> $pkgname-opts.conf
+    echo "ec_sys" > $pkgname-kmod.conf
+    echo "options ec_sys write_support=1" > $pkgname-opts.conf
 }
 
 package() {
@@ -25,7 +25,7 @@ package() {
     # set ec_sys options
     install -Dm644 $pkgname-opts.conf $pkgdir/etc/modprobe.d/$_binname.conf
     
-    cd "$_prjname-$pkgver/app/"
+    cd "$_prjname-$pkgver-bin/app/"
     install -Dm755 $_binname $pkgdir/usr/bin/$_binname
     install -Dm644 $_binname.desktop $pkgdir/usr/share/applications/$_binname.desktop
     install -Dm644 $_binname.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/$_binname.svg

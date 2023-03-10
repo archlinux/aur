@@ -1,13 +1,13 @@
 pkgbase = mcontrolcenter-bin
 	pkgdesc = An application that allows you to change the settings of MSI laptops
-	pkgver = 0.3.2
-	pkgrel = 2
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://github.com/dmitry-s93/MControlCenter
 	arch = x86_64
 	license = GPL3
 	depends = qt5-base
 	depends = hicolor-icon-theme
-	source = https://github.com/dmitry-s93/MControlCenter/releases/download/0.3.2/MControlCenter-0.3.2.tar.gz
-	b2sums = e62aa0348b31975d3fa14b8279e4781903b64fbbfd7f9f6068facbf7a4b8ce639af5c36f813255d089b9860f8ba5addce47d4ea8277d39c3fc1309a2f6a7fdfe
+	source = https://github.com/dmitry-s93/MControlCenter/releases/download/0.4.0/MControlCenter-0.4.0-bin.tar.gz
+	b2sums = 7aea529be439885dcf16dcfdb5666ca07758b41e068c91da1d3f2e202a98283616cfefbd25154592f825d8a956f54a550e9c0f7f4639c79c4079bac401561347
 
 pkgname = mcontrolcenter-bin
