@@ -15,6 +15,7 @@ pkgbase = i3lock-lixxia-git
 	depends = libxkbcommon-x11
 	depends = pam
 	depends = xcb-util
+	depends = xcb-util-xrm
 	provides = i3lock
 	conflicts = i3lock
 	backup = etc/pam.d/i3lock
