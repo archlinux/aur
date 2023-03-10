@@ -5,7 +5,7 @@
 
 pkgname=picom-simpleanims-git
 _gitname=picom
-pkgver=1853__2023.03.05
+pkgver=1853__2023.03.10
 pkgrel=1
 pkgdesc="X compositor fork with animations (tested on qtile)"
 arch=(i686 x86_64)
@@ -21,7 +21,7 @@ optdepends=('dbus:          To control picom via D-Bus'
 provides=('compton' 'compton-git' 'picom')
 conflicts=('compton' 'compton-git' 'picom')
 replaces=('compton-git')
-source=(git+"https://github.com/fdev31/${_gitname}.git#branch=simpleanims")
+source=(git+"https://github.com/fdev31/${_gitname}.git#branch=animation-pr")
 md5sums=("SKIP")
 
 pkgver() {
