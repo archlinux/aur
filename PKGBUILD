@@ -1,20 +1,21 @@
-# Maintainer: Dan Johansen <strit@manjaro.org>
+# Maintainer: Samisafool <thenerdiestguy@gmail.com>
+# Contributor: Dan Johansen <strit@manjaro.org>
 
 _pkgname=login1
-pkgbase=dfl-login1
-pkgname=('dfl-login1' 'dfl-login1-qt6')
+pkgbase=dfl-login1-git
+pkgname=('dfl-login1-git' 'dfl-login1-qt6-git')
 pkgver=0.1.1
 pkgrel=1
 pkgdesc="Implementation of systemd/elogind for DFL"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/desktop-frameworks/$_pkgname"
 license=('GPL3')
-makedepends=('meson' 'ninja' 'qt5-base' 'qt6-base')
-source=("$url/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-sha256sums=('6cee2cb446425b477b2142278d0fde0db9bd6b1eb72ac5ec4f69cda817c3a174')
+makedepends=('git' 'meson' 'ninja' 'qt5-base' 'qt6-base')
+source=("login1::git+https://gitlab.com/desktop-frameworks/login1.git")
+sha256sums=('SKIP')
 
 build() {
-  cd "${_pkgname}-v${pkgver}"
+  cd "${_pkgname}"
   echo "Building QT5 version..."
   meson .build --prefix=/usr --buildtype=release
   ninja -C .build
@@ -24,14 +25,18 @@ build() {
   ninja -C .build-qt6
 }
 
-package_dfl-login1() {
+package_dfl-login1-git() {
   depends=('qt5-base')
-  cd "${_pkgname}-v${pkgver}"
+  conflicts=('dfl-login1')
+  provides=('dfl-login1')
+  cd "${_pkgname}"
   DESTDIR="${pkgdir}" ninja -C .build install
 }
 
-package_dfl-login1-qt6() {
+package_dfl-login1-qt6-git() {
   depends=('qt6-base')
-  cd "${_pkgname}-v${pkgver}"
+  conflicts=('dfl-login1-qt6')
+  provides=('dfl-login1-qt6')
+  cd "${_pkgname}"
   DESTDIR="${pkgdir}" ninja -C .build-qt6 install
 }
