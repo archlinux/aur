@@ -1,0 +1,14 @@
+pkgbase = python-vishop
+	pkgdesc = Vishop is command line VIM script publisher client.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/Xvezda/vishop
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/v/vishop/vishop-0.0.2.tar.gz
+	sha256sums = 2c3d1cb655d47871af652473d6ebc17cac196f6ecd1f5013585920cd63f67d9a
+
+pkgname = python-vishop
+	depends = python
