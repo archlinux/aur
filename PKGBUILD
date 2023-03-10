@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=firefox-stylus
-pkgver=1.5.29
+pkgver=1.5.30
 pkgrel=1
 pkgdesc='Easily install themes and skins for many popular sites'
 url=https://add0n.com/stylus.html
@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('firefox-addons')
 makedepends=('git' 'npm' 'strip-nondeterminism')
 source=("https://github.com/openstyles/stylus/archive/v$pkgver/stylus-$pkgver.tar.gz")
-md5sums=('026a63691a26ef707dc86b382c035acc')
+md5sums=('bf2d6e51830c9f32a8216f3eb8117fbb')
 
 prepare() {
   cd stylus-$pkgver
