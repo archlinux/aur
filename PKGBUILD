@@ -8,7 +8,7 @@ pkgdesc="Free and modern music player for VK. Meridius - it is a beautiful music
 arch=('x86_64')
 url="https://purplehorrorrus.github.io/meridius"
 license=('custom')
-makedepends=('git' 'gendesk' 'asar')
+makedepends=('git' 'asar')
 options=('!strip' '!emptydirs')
 source=(git+https://github.com/PurpleHorrorRus/Meridius.git)
 md5sums=('SKIP')
@@ -38,13 +38,14 @@ package_meridius-bin-git(){
         cp -r "meridius-${pkgver//v}" "${pkgdir}/opt/Meridius"
         install -Dm644 "${pkgdir}/opt/Meridius/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
         
-        gendesk -f --pkgname "meridius"                                \
-                --exec "/opt/Meridius/meridius %U"                     \
-                --icon "/opt/Meridius/builder/icons/linux/256x256.png" \
-                --categories "Audio;Music;Player;AudioVideo;"          \
-                --comment $pkgdesc
+        cd $srcdir/meridius-${pkgver//v}/
+        
+        sed -i "s!Exec=.*!Exec=/opt/Meridius/meridius!"         io.github.purplehorrorrus.Meridius.desktop
+        sed -i "s!AudioVideo;!Audio;Music;Player;AudioVideo;!"  io.github.purplehorrorrus.Meridius.desktop
+        
+        install -Dm644 builder/icons/linux/256x256.png ${pkgdir}/usr/share/pixmaps/io.github.purplehorrorrus.Meridius.png 
                 
-        install -Dm644 -t "$pkgdir/usr/share/applications" meridius.desktop
+        install -Dm644 -t "$pkgdir/usr/share/applications" io.github.purplehorrorrus.Meridius.desktop
 }
 
 package_meridius-bin-git-electron() {
