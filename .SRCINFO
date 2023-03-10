@@ -12,6 +12,6 @@ pkgbase = xx-net
 	source = https://github.com/XX-net/xx-net/archive/4.0.0.tar.gz
 	source = xx-net.service
 	md5sums = SKIP
-	md5sums = c0a4e9d6f4c8fcee0e8a26f3018dfe4f
+	md5sums = d439251c0022e4537231bbde87d36bac
 
 pkgname = xx-net

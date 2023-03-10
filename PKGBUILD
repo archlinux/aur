@@ -20,13 +20,13 @@ source=(
 		)
 noextract=()
 md5sums=('SKIP'
-         'c0a4e9d6f4c8fcee0e8a26f3018dfe4f')
+         'd439251c0022e4537231bbde87d36bac')
 install=$pkgname.install
 validpgpkeys=()
 
 package() {
 	mkdir -p $pkgdir/opt/XX-net/
-	cp -r ${srcdir}/$pkgname/* $pkgdir/opt/XX-net/
+	cp -r ${srcdir}/XX-Net-$pkgver/* $pkgdir/opt/XX-net/
 
 	mkdir -p $pkgdir/usr/bin/
 	ln -s /opt/XX-net/xx_net.sh $pkgdir/usr/bin/xx_net
