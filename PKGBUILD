@@ -20,7 +20,7 @@ source=(
 		)
 noextract=()
 md5sums=('SKIP'
-         'd439251c0022e4537231bbde87d36bac')
+         'c0a4e9d6f4c8fcee0e8a26f3018dfe4f')
 install=$pkgname.install
 validpgpkeys=()
 
