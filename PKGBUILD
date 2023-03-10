@@ -1,50 +1,35 @@
 # Maintainer: lisuke <1657787678@qq.com>
-
 pkgname=xx-net
-pkgver=3.12.10
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 
 pkgdesc="XX-Net, a web proxy tool."
-arch=('i686' 'x86_64' 'armv7h')
+arch=('any')
 url="https://github.com/XX-net/XX-Net"
 license=('unknown')
-depends=('python2')
+depends=('python' 'python-pycryptodome')
 options=('!strip')
 
-optdepends=(
-	'python2: A high-level scripting language'
-	'supervisor: A system for controlling process state under UNIX'
-	'miredo: a Teredo server/client, x86_64'
-	'miredo-debian: a Teredo client, armv7'
-		)
+optdepends=()
 makedepends=()
 checkdepends=()
 
-install=$pkgname.install
-
-
 source=(
-	"https://codeload.github.com/XX-net/XX-Net/tar.gz/$pkgver"
-	"XX-net.ini"
+	"https://github.com/XX-net/$pkgname/archive/$pkgver.tar.gz"
+	"xx-net.service"
 		)
 noextract=()
-md5sums=(
-	'8574635127126af3124061a1508f8566'
-	'd439251c0022e4537231bbde87d36bac'
-		)
+md5sums=('SKIP'
+         'd439251c0022e4537231bbde87d36bac')
+install=$pkgname.install
 validpgpkeys=()
 
 package() {
-	echo $pkgdir
-
 	mkdir -p $pkgdir/opt/XX-net/
-	cp -r ${srcdir}/XX-Net-$pkgver/* $pkgdir/opt/XX-net/
+	cp -r ${srcdir}/$pkgname/* $pkgdir/opt/XX-net/
 
 	mkdir -p $pkgdir/usr/bin/
 	ln -s /opt/XX-net/xx_net.sh $pkgdir/usr/bin/xx_net
 
-	mkdir -p $pkgdir/etc/supervisor.d/
-	cp ${srcdir}/XX-net.ini $pkgdir/etc/supervisor.d/
-
-	mkdir -p /var/log/supervisor/
+	install -D -m644 ${srcdir}/xx-net.service $pkgdir/usr/lib/systemd/system/xx-net.service
 }

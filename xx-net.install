@@ -1,33 +1,3 @@
-
-# arg 1:  the new package version
-pre_install() {
-	echo pre_install $1
-}
-
-# arg 1:  the new package version
-post_install() {
-	echo post_install $1
-}
-
-# arg 1:  the new package version
-# arg 2:  the old package version
-pre_upgrade() {
-	echo pre_upgrade $1 to $2
-}
-
-# arg 1:  the new package version
-# arg 2:  the old package version
-post_upgrade() {
-	echo post_upgrade $1 to $2
-}
-
-# arg 1:  the old package version
-pre_remove() {
-	echo pre_remove $1
-}
-
-# arg 1:  the old package version
 post_remove() {
-	echo post_remove $1
 	rm /opt/XX-net/{code,README.md,start,start.bat,start.vbs,SwitchyOmega,xx_net.sh} -rf
 }

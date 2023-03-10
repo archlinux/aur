@@ -1,23 +1,17 @@
 pkgbase = xx-net
 	pkgdesc = XX-Net, a web proxy tool.
-	pkgver = 3.12.10
-	pkgrel = 2
+	pkgver = 4.0.0
+	pkgrel = 1
 	url = https://github.com/XX-net/XX-Net
 	install = xx-net.install
-	arch = i686
-	arch = x86_64
-	arch = armv7h
+	arch = any
 	license = unknown
-	depends = python2
-	optdepends = python2: A high-level scripting language
-	optdepends = supervisor: A system for controlling process state under UNIX
-	optdepends = miredo: a Teredo server/client, x86_64
-	optdepends = miredo-debian: a Teredo client, armv7
+	depends = python
+	depends = python-pycryptodome
 	options = !strip
-	source = https://codeload.github.com/XX-net/XX-Net/tar.gz/3.12.10
-	source = XX-net.ini
-	md5sums = 8574635127126af3124061a1508f8566
+	source = https://github.com/XX-net/xx-net/archive/4.0.0.tar.gz
+	source = xx-net.service
+	md5sums = SKIP
 	md5sums = d439251c0022e4537231bbde87d36bac
 
 pkgname = xx-net
-
