@@ -1,4 +1,5 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
+# Maintainer: Torsten Keßler <tpkessler@archlinux.org>
 # Contributor: Stephen Zhang <zsrkmyn at gmail dot com>
 
 _pkgname=pytorch
@@ -6,7 +7,7 @@ pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda")
 pkgver=2.0.0rc5
 _pkgver=2.0.0-rc5
-pkgrel=2
+pkgrel=3
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -15,8 +16,13 @@ license=('BSD')
 depends=('google-glog' 'gflags' 'opencv' 'openmp' 'nccl' 'pybind11' 'python' 'python-yaml' 'libuv'
          'python-numpy' 'protobuf' 'ffmpeg4.4' 'python-future' 'qt5-base' 'intel-oneapi-mkl'
          'python-typing_extensions')
+# Exclude the magma package here and add the corresponding {cuda, rocm/hip} version
+# to makedepends of the split packages.
+# The magma package does not allow to build the cuda and rocm/hip code at the same time,
+# so we need to work with the split packages magma-{cuda,hip}.
 makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda'
-             'cudnn' 'git' 'magma' 'ninja' 'pkgconfig' 'doxygen' 'vulkan-headers' 'shaderc')
+             'cudnn' 'git' 'rocm-hip-sdk' 'roctracer' 'miopen'
+             'ninja' 'pkgconfig' 'doxygen' 'onednn' 'vulkan-headers' 'shaderc')
 source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         # generated using parse-submodules
         "${pkgname}-ARM_NEON_2_x86_SSE::git+https://github.com/intel/ARM_NEON_2_x86_SSE.git"
@@ -176,6 +182,9 @@ prepare() {
 
   git -c protocol.file.allow=always submodule update --init --recursive
 
+  # Fix include with GCC 12 
+  sed "1i#include <mutex>" -i third_party/kineto/libkineto/src/RoctracerActivityApi.h
+
   # https://bugs.archlinux.org/task/64981
   patch -N torch/utils/cpp_extension.py "${srcdir}"/fix_include_system.patch
 
@@ -202,6 +211,8 @@ prepare() {
   cp -r "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-opt"
   cp -r "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-cuda"
   cp -r "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-opt-cuda"
+  cp -r "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-rocm"
+  cp -r "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-opt-rocm"
 
   export VERBOSE=1
   export PYTORCH_BUILD_VERSION="${pkgver}"
@@ -241,46 +252,22 @@ prepare() {
   # CUDA arch 8.7 is not supported (needed by Jetson boards, etc.)
   export TORCH_CUDA_ARCH_LIST="5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6;8.9;9.0;9.0+PTX"  #include latest PTX for future compat
   export OVERRIDE_TORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST}"
+  export PYTORCH_ROCM_ARCH="gfx803;gfx900;gfx906;gfx908;gfx90a;gfx1030"
 
   # Hack to make sure that the generated dnnl_config.h from onednn can be inlcuded.
   export CXXFLAGS="${CXXFLAGS} -I third_party/ideep/mkl-dnn/third_party/oneDNN/include/"
 }
-
-build() {
-  echo "Building without cuda and without non-x86-64 optimizations"
-  export USE_CUDA=0
-  export USE_CUDNN=0
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  echo "add_definitions(-march=x86-64)" >> cmake/MiscCheck.cmake
-  # this horrible hack is necessary because the current release
-  # ships inconsistent CMake which tries to build objects before
-  # their dependencies, build twice when dependencies are available
-  python setup.py build || python setup.py build
-
-  echo "Building without cuda and with non-x86-64 optimizations"
-  export USE_CUDA=0
-  export USE_CUDNN=0
-  cd "${srcdir}/${_pkgname}-${pkgver}-opt"
-  echo "add_definitions(-march=haswell)" >> cmake/MiscCheck.cmake
-  # same horrible hack as above
-  python setup.py build || python setup.py build
-
-  echo "Building with cuda and without non-x86-64 optimizations"
-  export USE_CUDA=1
-  export USE_CUDNN=1
-  cd "${srcdir}/${_pkgname}-${pkgver}-cuda"
-  echo "add_definitions(-march=x86-64)" >> cmake/MiscCheck.cmake
-  # same horrible hack as above
-  python setup.py build || python setup.py build
-
-  echo "Building with cuda and with non-x86-64 optimizations"
-  export USE_CUDA=1
-  export USE_CUDNN=1
-  cd "${srcdir}/${_pkgname}-${pkgver}-opt-cuda"
-  echo "add_definitions(-march=haswell)" >> cmake/MiscCheck.cmake
-  # same horrible hack as above
-  python setup.py build || python setup.py build
-}
+#
+# Important note on the missing build() function
+#
+# We build the pytorch packages for the different backends directly in
+# corresponding package() functions. This change became necessary when
+# merging the two different GPU backends (CUDA and ROCm) into one package.
+# Both share a dependency on the magma package but compiled against
+# different GPU backends. This leads to two incompatible magma-{cuda,hip}
+# packages that cannot be installed side-by-side.
+# Therefore, we need to separately add magma-{cuda,hip} as (make-) dependencies
+# of pytorch-{cuda,rocm}.
 
 _package() {
   # Prevent setup.py from re-running CMake and rebuilding
@@ -317,6 +304,16 @@ package_python-pytorch() {
   pkgdesc="${_pkgdesc}"
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
+  echo "Building without cuda or rocm and without non-x86-64 optimizations"
+  export USE_CUDA=0
+  export USE_CUDNN=0
+  export USE_ROCM=0
+  echo "add_definitions(-march=x86-64)" >> cmake/MiscCheck.cmake
+  # this horrible hack is necessary because the current release
+  # ships inconsistent CMake which tries to build objects before
+  # thier dependencies, build twice when dependencies are available
+  python setup.py build || python setup.py build
+
   _package
 }
 
@@ -326,26 +323,91 @@ package_python-pytorch-opt() {
   provides=(python-pytorch)
 
   cd "${srcdir}/${_pkgname}-${pkgver}-opt"
+  echo "Building without cuda or rocm and with non-x86-64 optimizations"
+  export USE_CUDA=0
+  export USE_CUDNN=0
+  export USE_ROCM=0
+  echo "add_definitions(-march=haswell)" >> cmake/MiscCheck.cmake
+  # same horrible hack as above
+  python setup.py build || python setup.py build
+
   _package
 }
 
 package_python-pytorch-cuda() {
   pkgdesc="${_pkgdesc} (with CUDA)"
-  depends+=(cuda cudnn magma onednn)
+  depends+=(cuda cudnn magma-cuda onednn)
   conflicts=(python-pytorch)
   provides=(python-pytorch)
 
   cd "${srcdir}/${_pkgname}-${pkgver}-cuda"
+  echo "Building with cuda and without non-x86-64 optimizations"
+  export USE_CUDA=1
+  export USE_CUDNN=1
+  export USE_ROCM=0
+  cd "${srcdir}/${_pkgname}-${pkgver}-cuda"
+  echo "add_definitions(-march=x86-64)" >> cmake/MiscCheck.cmake
+  # same horrible hack as above
+  python setup.py build || python setup.py build
+
   _package
 }
 
 package_python-pytorch-opt-cuda() {
   pkgdesc="${_pkgdesc} (with CUDA and AVX2 CPU optimizations)"
-  depends+=(cuda cudnn magma onednn)
+  depends+=(cuda cudnn magma-cuda onednn)
   conflicts=(python-pytorch)
   provides=(python-pytorch python-pytorch-cuda)
 
   cd "${srcdir}/${_pkgname}-${pkgver}-opt-cuda"
+  echo "Building with cuda and with non-x86-64 optimizations"
+  export USE_CUDA=1
+  export USE_CUDNN=1
+  export USE_ROCM=0
+  echo "add_definitions(-march=haswell)" >> cmake/MiscCheck.cmake
+  # same horrible hack as above
+  python setup.py build || python setup.py build
+
+  _package
+}
+
+package_python-pytorch-rocm() {
+  pkgdesc="${_pkgdesc} (with ROCm)"
+  depends+=(rocm-hip-sdk roctracer miopen magma-hip onednn)
+  conflicts=(python-pytorch)
+  provides=(python-pytorch)
+
+  cd "${srcdir}/${_pkgname}-${pkgver}-rocm"
+  echo "Building with rocm and without non-x86-64 optimizations"
+  export USE_CUDA=0
+  export USE_CUDNN=0
+  export USE_ROCM=1
+  echo "add_definitions(-march=x86-64)" >> cmake/MiscCheck.cmake
+  # Conversion of CUDA to ROCm source files
+  python tools/amd_build/build_amd.py
+  # same horrible hack as above
+  python setup.py build || python setup.py build
+
+  _package
+}
+
+package_python-pytorch-opt-rocm() {
+  pkgdesc="${_pkgdesc} (with ROCm and AVX2 CPU optimizations)"
+  depends+=(rocm-hip-sdk roctracer miopen magma-hip onednn)
+  conflicts=(python-pytorch)
+  provides=(python-pytorch python-pytorch-rocm)
+
+  cd "${srcdir}/${_pkgname}-${pkgver}-opt-rocm"
+  echo "Building with rocm and with non-x86-64 optimizations"
+  export USE_CUDA=0
+  export USE_CUDNN=0
+  export USE_ROCM=1
+  echo "add_definitions(-march=haswell)" >> cmake/MiscCheck.cmake
+  # Conversion of CUDA to ROCm source files
+  python tools/amd_build/build_amd.py
+  # same horrible hack as above
+  python setup.py build || python setup.py build
+
   _package
 }
 
