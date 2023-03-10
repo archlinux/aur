@@ -11,9 +11,9 @@ set PS3TC_TEXT      "Tools used in the creation of homebrew software for the Son
 
 setenv        PS3DEV           ${PS3TC_ROOT}
 setenv        PSL1GHT          ${PS3TC_ROOT}
-append-path   PATH             ${PS3TC_ROOT}/bin
-append-path   PATH             ${PS3TC_ROOT}/ppu/bin
-append-path   PATH             ${PS3TC_ROOT}/spu/bin
+prepend-path  PATH             ${PS3TC_ROOT}/bin
+prepend-path  PATH             ${PS3TC_ROOT}/ppu/bin
+prepend-path  PATH             ${PS3TC_ROOT}/spu/bin
 
 module-whatis  "${PS3TC_TEXT} version ${VERSION}"
 
