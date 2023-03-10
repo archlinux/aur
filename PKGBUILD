@@ -52,7 +52,7 @@ fi
 
 pkgname=ffmpeg-obs
 pkgver=6
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('i686' 'x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -110,6 +110,7 @@ depends=(
   libxml2
   libxv
   ocl-icd
+  onevpl
   opencore-amr
   openjpeg2
   opus
@@ -217,6 +218,7 @@ _args=(
   --enable-libv4l2
   --enable-libvidstab
   --enable-libvorbis
+  --enable-libvpl
   --enable-libvpx
   --enable-libwebp
   --enable-libx264
@@ -260,9 +262,7 @@ _args+=(--enable-librist)
 
 ## Add upstream feature for x86_64 build
 if [[ $CARCH == 'x86_64' ]]; then
-  _args+=(--enable-lto --enable-libmfx --enable-libsvtav1)
-  depends+=('libmfx')
-  optdepends+=('intel-media-sdk: Intel QuickSync support')
+  _args+=(--enable-lto --enable-libsvtav1)
   depends+=("svt-av1>=$_svtav1ver")
 else
   _args+=(--disable-lto)
