@@ -2,13 +2,13 @@
 
 pkgname=ecal
 pkgver=5.11.3
-pkgrel=1
+pkgrel=2
 pkgdesc="enhanced Communication Abstraction Layer"
 arch=('x86_64' 'armv7h')
 url="https://github.com/eclipse-ecal/ecal"
 license=('Apache')
-depends=('curl' 'protobuf' 'qt5-base' 'qwt' 'hdf5' 'yaml-cpp')
-makedepends=('cmake' 'doxygen' 'git' 'graphviz')
+depends=('curl' 'protobuf' 'python' 'python-protobuf' 'qt5-base' 'qwt' 'hdf5' 'yaml-cpp')
+makedepends=('cmake' 'doxygen' 'git' 'graphviz' 'patchelf' 'python-build' 'python-installer' 'python-wheel')
 optdepends=()
 source=("https://github.com/eclipse-ecal/ecal/releases/download/v${pkgver}/ecal-fat-source.tar.gz")
 sha256sums=('6bd89248cb487cc30d599f89f160ef705749fabf1c2a263aaf269adb508ee4a1')
@@ -26,6 +26,8 @@ build() {
     cmake -E env CXXFLAGS="-Wno-error=restrict" \
     cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
              -DCMAKE_BUILD_TYPE=Release \
+             -DBUILD_PY_BINDING=ON \
+             -DBUILD_STANDALONE_PY_WHEEL=ON \
              -DECAL_THIRDPARTY_BUILD_PROTOBUF=OFF \
              -DECAL_THIRDPARTY_BUILD_CURL=OFF \
              -DECAL_THIRDPARTY_BUILD_HDF5=OFF \
@@ -51,4 +53,7 @@ package() {
     cd "${pkgname}"
     cd _build
     DESTDIR="$pkgdir" make install
+    cd python
+    python -m build --wheel --no-isolation
+    python -m installer --destdir="${pkgdir}" dist/*.whl   
 }
