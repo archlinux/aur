@@ -1,20 +1,15 @@
 pkgbase = melodie-appimage
 	pkgdesc = Melodie is a portable, simple-as-pie music player
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/feugy/melodie
 	arch = x86_64
 	license = MIT
 	depends = zlib
+	depends = hicolor-icon-theme
 	conflicts = melodie
 	options = !strip
-	source = melodie-2.0.0-x86_64.AppImage::https://github.com/feugy/melodie/releases/download/v2.0.0/melodie-2.0.0-x86_64.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/feugy/melodie/main/LICENSE
-	source = melodie.svg::https://github.com/feugy/melodie/raw/main/images/icon-1.svg
-	source = melodie.desktop
+	source = melodie-2.0.0.AppImage::https://github.com/feugy/melodie/releases/download/v2.0.0/melodie-2.0.0-x86_64.AppImage
 	sha512sums = 0adfe2d2dec430f748a8cd6a71ff101aa2929c6e3c4e4d34e097158018b700a70bfe4bce3fccb5dcd52cefdda9234442402c656dcc9016ee55e6c386e49a8bee
-	sha512sums = cc1e5c73b2e93199c16e49f3787b6350027478eb3c07f7b7f59de32b9607e3157736d9f8f3ae6b1bbbb5fdfffb6a73a19092c6b92496bd6d469c29ed16e519ad
-	sha512sums = fa909bc1c26b0553ad4890d91d86a87d4cba6788ae08dd1f30bd0455dda015b7777dac31984ecb1bc2d022fc2e62648ffa34c3353f0dbc02727862042fb7170d
-	sha512sums = 5f9150179b7cc9a35cae8459193b57365e04490261bd034027002f0876e4755833dd23d051436aa261dedbb854a12907fbb70af2723440e7278f3cf2af07af07
 
 pkgname = melodie-appimage
