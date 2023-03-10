@@ -35,6 +35,7 @@ package() {
 	# Symbolic link to fortivpn CLI
 	mkdir -p ${pkgdir}/usr/bin
 	ln -sf '/opt/forticlient/fortivpn' "${pkgdir}/usr/bin/fortivpn"
-
+	mkdir -p ${pkgdir}/var/lib/forticlient
+	
 }
 
