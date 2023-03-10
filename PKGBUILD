@@ -2,7 +2,7 @@
 # Maintainer: Iru Cai <mytbk920423@gmail.com>
 
 pkgname=coreboot-utils-git
-pkgver=4.15.r553.g4aaea850440
+pkgver=4.19.r781.g6b6b8f86df3
 pkgrel=1
 pkgdesc='Tools and utilities to work with coreboot firmware'
 url='https://www.coreboot.org/'
@@ -11,26 +11,29 @@ arch=(x86_64)
 depends=(pciutils)
 optdepends=("python: me_cleaner support")
 makedepends=(git)
-source=(git+https://review.coreboot.org/coreboot
-        git+https://review.coreboot.org/blobs
-        git+https://review.coreboot.org/nvidia-cbootimage
-        git+https://review.coreboot.org/vboot
-        git+https://review.coreboot.org/arm-trusted-firmware
-        git+https://review.coreboot.org/chrome-ec
-        git+https://review.coreboot.org/libhwbase
-        git+https://review.coreboot.org/libgfxinit
-        git+https://review.coreboot.org/fsp
-        git+https://review.coreboot.org/opensbi
-        git+https://review.coreboot.org/intel-microcode
-        git+https://review.coreboot.org/ffs
+source=(git+https://review.coreboot.org/coreboot.git
+        git+https://review.coreboot.org/blobs.git
+        git+https://review.coreboot.org/nvidia-cbootimage.git
+        git+https://review.coreboot.org/vboot.git#branch=main
+        git+https://review.coreboot.org/arm-trusted-firmware.git
+        git+https://review.coreboot.org/chrome-ec.git
+        git+https://review.coreboot.org/libhwbase.git
+        git+https://review.coreboot.org/libgfxinit.git
+        git+https://review.coreboot.org/fsp.git
+        git+https://review.coreboot.org/opensbi.git
+        git+https://review.coreboot.org/intel-microcode.git#branch=main
+        git+https://review.coreboot.org/ffs.git
         git+https://review.coreboot.org/amd_blobs
-        git+https://review.coreboot.org/cmocka
-        git+https://review.coreboot.org/qc_blobs
-        git+https://review.coreboot.org/9esec-security-tooling
-        git+https://review.coreboot.org/STM
+        git+https://review.coreboot.org/cmocka.git#branch=stable-1.1
+        git+https://review.coreboot.org/qc_blobs.git
+        git+https://review.coreboot.org/9esec-security-tooling.git
+        git+https://review.coreboot.org/STM#branch=stmpe
+        git+https://review.coreboot.org/goswid#branch=trunk
+
         # vboot provides vb2_api.h needed by cbfstool
         autoport-tool-paths.patch)
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -79,8 +82,9 @@ prepare() {
   git config -f .gitmodules 'submodule.3rdparty/qc_blobs.url' "$srcdir/qc_blobs"
   git config -f .gitmodules 'submodule.3rdparty/intel-sec-tools.url' "$srcdir/9esec-security-tooling"
   git config -f .gitmodules 'submodule.3rdparty/stm.url' "$srcdir/STM"
+  git config -f .gitmodules 'submodule.util/goswid.url' "$srcdir/goswid"
 
-  git submodule update --init
+  git -c protocol.file.allow=always submodule update --init
 
   patch -p1 -i "$srcdir/autoport-tool-paths.patch"
 }
