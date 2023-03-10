@@ -2,12 +2,14 @@
  
 _gitname="arm-trusted-firmware"
 _gitroot=https://github.com/ericwoud/${_gitname}
+#_gitroot=https://github.com/mtk-openwrt/${_gitname}
 _gitbranch="bpir"
 #_gitbranch="master"
+#_gitbranch="mtksoc"
 pkgname=bpir64-atf-git
 epoch=2
-pkgver=v2.8r12079.7155480e7
-pkgrel=2
+pkgver=v2.8r12166.296bf7500
+pkgrel=1
 pkgdesc='ATF BPI-R64 & BPI-R3 images including fiptool'
 url='https://github.com/mtk-openwrt/arm-trusted-firmware.git'
 arch=(aarch64)
@@ -35,6 +37,9 @@ prepare() {
 #  git config --global user.email "you@example.com"
 #  git config --global user.name "Your Name"
 #  rm -rf ${srcdir}/${_gitname}/.git/rebase-apply  
+#  echo -n -e "\n\nCOMMIT DATE:"
+#  git log -1 --format="%at" | xargs -I{} date -d @{} +%Y/%m/%d-%H:%M:%S
+#  echo -e "\n\n"
 #  git am --ignore-space-change --ignore-whitespace "${startdir}/"*.patch
 }
 
@@ -45,14 +50,16 @@ _buildimage() {
   touch plat/mediatek/${_plat}/platform.mk
   unset CXXFLAGS CPPFLAGS LDFLAGS
   export CFLAGS=-Wno-error
-  make PLAT=${_plat} BOOT_DEVICE=$_atfdev LOG_LEVEL=40 MTK_BL33_IS_64BIT=1 \
-       USE_MKIMAGE=1 MKIMAGE=$(which ${_bpir}-mkimage) ${_rest} all
+  make PLAT=${_plat} BOOT_DEVICE=$_atfdev LOG_LEVEL=40 \
+       USE_MKIMAGE=1 MKIMAGE=$(which ${_bpir}-mkimage) ${_rest} all # MTK_BL33_IS_64BIT=1 
   if [[ "${_bpir}" == "bpir64" ]]; then
     dd of=build/${_plat}/release/${_bpir}-atf-${_atfdev}-header.bin bs=1 count=440 if=build/${_plat}/release/bl2.img
     dd of=build/${_plat}/release/${_bpir}-atf-${_atfdev}-atf.bin         skip=34   if=build/${_plat}/release/bl2.img
   else
     dd of=build/${_plat}/release/${_bpir}-atf-${_atfdev}-atf.bin                   if=build/${_plat}/release/bl2.img
   fi
+#  BL31 will be inside BL2, so no need for it. If bl31 is present separately, it will be loaded from fip (not from bl2).
+# dd   of=build/${_plat}/release/${_bpir}-atf-${_atfdev}-bl31.bin                  if=build/${_plat}/release/bl31.bin
 }
 
 _installimage() {
