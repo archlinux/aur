@@ -1,4 +1,5 @@
-# Maintainer: Sebastian Lau <lauseb644 _at_ gmail _dot_ com>
+# Maintainer: Julian Flake <flake_at_uni-koblenz_dot_de>
+# Contributor: Sebastian Lau <lauseb644 _at_ gmail _dot_ com>
 # Contributor: Caleb Cushing <xenoterracide@gmail.com>
 # Contributor: Romain Schmitz <slopjong .at. slopjong .dot. de>
 # Forked from Phillipe Smith <phillipe@archlinux.com.br>
@@ -20,7 +21,7 @@ source=("https://cdn.change-vision.com/files/astah-professional_${pkgver}.${_pkg
 	"LICENSE"
 	"PRIVACY")
 md5sums=('1abc30ad92ae563f998f7d7decfad580'
-         '08f9bb42a865cda8e00dcfa210c757e0'
+         '979e8679714321d906983391b2b851b2'
          '6b77c443f8468a61dc027a042599abee'
          'fc2db9678cbfbec17049f050743e7960')
 install="astah-professional.install"
