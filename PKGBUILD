@@ -7,7 +7,7 @@
 
 pkgname=chromium-wayland-vaapi
 pkgver=111.0.5563.64
-pkgrel=1
+pkgrel=2
 _launcher_ver=8
 _gcc_patchset=2
 _manual_clone=0

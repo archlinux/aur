@@ -1,7 +1,7 @@
 pkgbase = chromium-wayland-vaapi
 	pkgdesc = Chromium, patched to enable VA-API video decoding on the Ozone Wayland backend
 	pkgver = 111.0.5563.64
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.chromium.org/Home
 	arch = x86_64
 	license = BSD
