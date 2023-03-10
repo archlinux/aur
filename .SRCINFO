@@ -1,0 +1,16 @@
+pkgbase = whisper.cpp
+	pkgdesc = Port of OpenAI's Whisper model in C/C++
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/ggerganov/whisper.cpp
+	arch = armv7h
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = sdl2
+	depends = sdl2
+	source = https://github.com/ggerganov/whisper.cpp/archive/v1.2.1.tar.gz
+	sha256sums = 69d47fc2ba982c42bd5bade4b7c827d5b3ed74b9c59323991c45a9f0f24eb6ed
+
+pkgname = whisper.cpp
