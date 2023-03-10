@@ -1,6 +1,6 @@
 pkgbase = mobsh-bin
 	pkgdesc = Fast git handover with mob
-	pkgver = 4.3.0
+	pkgver = 4.3.1
 	pkgrel = 1
 	url = https://github.com/remotemobprogramming/mob
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = mobsh-bin
 	provides = mobsh
 	conflicts = mobsh
 	conflicts = mob
-	source_x86_64 = https://github.com/remotemobprogramming/mob/releases/download/v4.3.0/mob_v4.3.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = d9dfb60d531ee7dc608cc43f719dfa87ac236e73b2eb4ddab238e3a5ea946a4d
+	source_x86_64 = https://github.com/remotemobprogramming/mob/releases/download/v4.3.1/mob_v4.3.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = c8bd570a7f17fb2bf06900dbfa63c121308925d3c301150eb429fac3c8dad9c1
 
 pkgname = mobsh-bin
