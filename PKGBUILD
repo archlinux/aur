@@ -4,11 +4,12 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: William Rea <sillywilly@gmail.com>
 # Contributor: Hans Janssen <hans@janserv.xs4all.nl>
+# Contributor: Edoardo Morandi <morandidodo@gmail.com>
 
 pkgname=simgear
 pkgver=2020.3.17
 _pkgver=${pkgver%.*}
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of open-source libraries designed to be used as building blocks for quickly assembling 3d simulations, games, and visualization applications."
 arch=('x86_64')
 url="http://home.flightgear.org/"
@@ -16,8 +17,19 @@ license=('GPL')
 depends=('glu' 'glut' 'freealut' 'plib' 'openscenegraph')
 makedepends=('boost' 'cmake' 'mesa')
 options=('staticlibs')
-source=("https://downloads.sourceforge.net/project/flightgear/release-${_pkgver}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('4c5e9cd0dcff1bd311c2460aa601230bd80abdbaec751b559c1d7147749f377c')
+source=(
+    "https://downloads.sourceforge.net/project/flightgear/release-${_pkgver}/${pkgname}-${pkgver}.tar.bz2"
+    "compositor-pass-missing-array-include.patch"
+)
+sha256sums=(
+    '4c5e9cd0dcff1bd311c2460aa601230bd80abdbaec751b559c1d7147749f377c'
+    '81f817ba0f54952ac5fea32ec717275cdb9804f9801def9ae1a00f019bcf968b'
+)
+
+prepare() {
+    cd "$pkgname-$pkgver"
+    patch --forward --strip=1 --input="${srcdir}/compositor-pass-missing-array-include.patch"
+}
 
 build() {
   rm -rf "$srcdir"/simgear-build
