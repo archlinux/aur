@@ -16,12 +16,14 @@ if [ "$SERVER" == "coleslaw" ] || [ "$SERVER" == "uranium" ]; then
   IDLERSC_JAR="/usr/share/java/idlersc/IdleRSC.jar"
   IDLERSC_DATA_DIR="/usr/share/idlersc"
 
-  # copy cache if the directory doesn't exist
+  # copy cache & map if the directory doesn't exist
   if [ ! -d "${USER_DATA_DIR}" ]; then
     printf "Creating cache for %s …\n" "${SERVER^}"
     mkdir -p "${USER_DATA_DIR}"
     cp -r "${IDLERSC_DATA_DIR}/${SERVER^}Cache" "${USER_DATA_DIR}/Cache"
     cp "${IDLERSC_DATA_DIR}/${SERVER^}Cache.hash" "${USER_DATA_DIR}/${SERVER^}Cache.hash"
+    cp "${IDLERSC_DATA_DIR}/Map" "${USER_DATA_DIR}"
+    cp "${IDLERSC_DATA_DIR}/Map.hash" "${USER_DATA_DIR}"
   fi
 
   # update cache if there is a hash mismatch
@@ -32,16 +34,18 @@ if [ "$SERVER" == "coleslaw" ] || [ "$SERVER" == "uranium" ]; then
     cp "${IDLERSC_DATA_DIR}/${SERVER^}Cache.hash" "${USER_DATA_DIR}/${SERVER^}Cache.hash"
   fi
 
-  # create bin directory if it doesn't exist
-  if [ ! -e "${USER_DATA_DIR}/bin" ]; then
-    printf "Creating scripting directory for %s …\n" "${SERVER^}"
-    mkdir -p "${USER_DATA_DIR}/bin"
+  # update map if there is a hash mismatch
+  if ! cmp --silent "${IDLERSC_DATA_DIR}/Map.hash" "${USER_DATA_DIR}/Map.hash"; then
+    printf "Updating map for %s …\n" "${SERVER^}"
+    rm -rf "${USER_DATA_DIR}/Map" "${USER_DATA_DIR}/Map.hash"
+    cp -r "${IDLERSC_DATA_DIR}/Map" "${USER_DATA_DIR}"
+    cp "${IDLERSC_DATA_DIR}/Map.hash" "${USER_DATA_DIR}/Map.hash"
   fi
 
-  # create scripting symlink if it doesn't exist
-  if [ ! -L "${USER_DATA_DIR}/bin/scripting" ]; then
-    printf "Creating scripting symlink for for %s …\n" "${SERVER^}"
-    ln -s "${IDLERSC_DATA_DIR}/bin/scripting" "${USER_DATA_DIR}/bin/scripting"
+  # remove obsolete bin directory
+  if [ -e "${USER_DATA_DIR}/bin" ]; then
+    printf "Removing obsolete scripting directory for %s …\n" "${SERVER^}"
+    rm -rf "${USER_DATA_DIR:?}/bin"
   fi
 
   # launch IdleRSC

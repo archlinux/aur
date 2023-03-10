@@ -1,15 +1,15 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=idlersc
-pkgver=r489.g6a7281f
-pkgrel=2
+pkgver=r504.g7824fd8
+pkgrel=1
 pkgdesc='A fork of IdleRSC for playing on OpenRSC servers'
 arch=('any')
 url='https://gitlab.com/open-runescape-classic/idlersc'
 license=('GPL3')
 depends=('jre-openjdk' 'hicolor-icon-theme')
 makedepends=('git' 'gradle' 'gendesk')
-_commit='6a7281fddb4cf2f1f6567336d9e4e8fe74170295'
+_commit='7824fd8211276b34fac30d40caf7deedd79432cc'
 source=(
   "$pkgname::git+https://gitlab.com/open-runescape-classic/idlersc.git#commit=$_commit"
   'idlersc.sh'
@@ -21,7 +21,7 @@ source=(
   'uranium_icon_128.png'
 )
 b2sums=('SKIP'
-        'ef68e1b337454a325a38edae5ed9dfb0b3e3d178393221c0bc76d819fe1efc8ee1dfcc52afd6d7cc39673fb31f6c13f36e4a574d9c9f1eb9d2320fd88ba1abd5'
+        '60646631c01804a4e4dfa7abd40b960eec642ebbcb0ff8867c07d3f89b57b0035f9d65e7997a378e095175e6b09445f3caf6683328b47652a38c1f879d9f3b15'
         '6e9005bc77036466f2e931adbcd880a704eedc89398ef0c32efc40bb5aebcad72a88479a71303bd9c496c84fce31d4f083464c4faa6df477281c5ad980aa2948'
         '7ac538f0cdde8efb76adbd1c35dd9f4a6e4d6f5a75704d745099f1b43a651a03d0e2b9b8f8f3cb7b6775dbd99c4d886ffb3ad3c1c7223922a1a31681579521d0'
         'e39fdd136683fd1c3124937d76bfebf431b6c7c705b3f08dc9b83248f99a4dbbccd491c77ea7b77ad938ddcb1e53435abb15c6863657356762acedf0d8c7b40d'
@@ -60,8 +60,16 @@ prepare() {
       sha256sum | \
       cut -d ' ' -f 1 > "../${server^}Cache.hash"
     popd
-
   done
+
+  # secondary hash for map contents
+  cd Map
+  find . \
+    -type f \
+    -exec sha256sum {} + | \
+    LC_ALL=C sort | \
+    sha256sum | \
+    cut -d ' ' -f 1 > "../Map.hash"
 }
 
 build() {
@@ -82,12 +90,8 @@ package() {
 
   # assets
   install -vd "$pkgdir/usr/share/$pkgname"
-  cp -vr {Coleslaw,Uranium}Cache{,.hash} "$pkgdir/usr/share/$pkgname"
+  cp -vr {Coleslaw,Uranium}Cache{,.hash} Map{,.hash} "$pkgdir/usr/share/$pkgname"
 
-  # scripts
-  install -vd "$pkgdir/usr/share/$pkgname/bin/scripting"
-  cp -vr bin/scripting/{apos,idlescript,sbot} "$pkgdir/usr/share/$pkgname/bin/scripting"
-  
   # desktop files & icons
   for server in coleslaw uranium; do
     install -vDm644 -t "$pkgdir/usr/share/applications" "vet.rsc.IdleRSC.${server}.desktop"
