@@ -9,7 +9,7 @@
 
 _pkg=asterisk
 pkgname=${_pkg}-lts-18
-pkgver=18.15.1
+pkgver=18.17.0
 pkgrel=1
 pkgdesc='A complete open source PBX toolkit - Long Term Support release 18'
 arch=(x86_64 i686 aarch64 armv7h)
@@ -168,7 +168,7 @@ source=("https://downloads.asterisk.org/pub/telephony/${_pkg}/releases/$_archive
         "${_pkg}.sysusers"
         "${_pkg}.logrotated"
         "${_pkg}.tmpfiles")
-sha256sums=('7594b045e1979a6e80f07ecfff634204830917fd2a7686b161cf4849454f4531'
+sha256sums=('e14158f32c304bb00ebcc4b8a83d9659aad2d5b1cdb2f2cf853d62d6ddc5fbc2'
             '38a53911647fb2308482179cba605ebf12345df37eed23eb4ea67bf0bf041486'
             'b97dc10a262621c95e4b75e024834712efd58561267b59b9171c959ecd9f7164'
             '1b6b489d4f71015bfc56ce739d92df7e9abdb349aed6f5a47dd9c18d84546c1b')
