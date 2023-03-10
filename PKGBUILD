@@ -2,16 +2,19 @@
 # Contributor: Dan Johansen <strit@manjaro.org>
 
 pkgname=box64
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.2
+pkgrel=1
 pkgdesc='Linux Userspace x86_64 Emulator with a twist'
 arch=('x86_64' 'aarch64' 'riscv64')
 url='https://github.com/ptitSeb/box64'
 license=('MIT')
+install="box64.install"
 depends=('gcc-libs')
 makedepends=('git' 'cmake' 'python')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ptitSeb/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('fd4440a8010320339c9c6c065f6a65fdb802d32cf8fa5f6fa750f368d4864b62')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ptitSeb/${pkgname}/archive/v${pkgver}.tar.gz"
+        "box64.install")
+sha256sums=('c8aec9540f66c0840253a1214bf622f2593a54e5cc96d7235457a0d0b207d0cc'
+            '7e94518dbd11121f150a51b64f4c0ec11f844a83f7b15205d28c1de63de699f2')
 
 build() {
     cd ${pkgname}-${pkgver}
