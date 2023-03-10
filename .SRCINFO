@@ -1,0 +1,14 @@
+pkgbase = python-torch-fidelity
+	pkgdesc = High-fidelity performance metrics for generative models in PyTorch
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://www.github.com/toshas/torch-fidelity
+	arch = any
+	license = unknown
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/t/torch-fidelity/torch-fidelity-0.3.0.tar.gz
+	sha256sums = 3d3e33db98919759cc4f3f24cb27e1e74bdc7c905d90a780630e4e1c18492b66
+
+pkgname = python-torch-fidelity
+	depends = python
