@@ -27,7 +27,7 @@ pkgver() {
 }
 
 prepare() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_pkgname}"
   git apply ${srcdir}/0001-Fix-Creation-of-dynamic-property-is-deprecated.patch
 }
 
