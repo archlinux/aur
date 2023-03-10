@@ -1,0 +1,13 @@
+[Unit]
+Description=Tango access control device server
+After=tango-database.service
+Requires=tango-database.service
+
+[Service]
+Restart=always
+RestartSec=10s
+User=tango-db
+ExecStart=/usr/bin/TangoAccessControl 1
+
+[Install]
+WantedBy=multi-user.target
