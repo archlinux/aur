@@ -17,6 +17,6 @@ pkgbase = brlcad
 	source = build.patch
 	source = https://github.com/BRL-CAD/brlcad/archive/refs/tags/rel-7-34-0.tar.gz
 	sha256sums = SKIP
-	sha256sums = 004393cbf0eeb0955d0d4d7e91fbe7a22136df29774af71f24508d6863002fe7
+	sha256sums = bdaff958dee7b39ca66c777bb889878a707a10130ef76c47928870ff98d08c1e
 
 pkgname = brlcad
