@@ -1,6 +1,6 @@
 # Maintainer: Alan Orth <aorth@mjanja.ch>
 pkgname=bandage
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Bioinformatics Application for Navigating De novo Assembly Graphs Easily"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('qt5-base' 'qt5-svg')
 source=("bandage-$pkgver.tar.gz::https://github.com/rrwick/Bandage/archive/v${pkgver}.tar.gz"
         "bandage.desktop")
-sha256sums=('f160b695e03f0b254ffdccfa35b45dc8a733e8161d9928441edb8b63c8e44452'
+sha256sums=('04de8152d8bf5e5aa32b41a63cf1c23e1fee7b67ccd9f1407db8dc2824ca4e30'
             '0996828261389a3e060918d5d1f04f5901cf1ec210333251871d06f9e575d0e9')
 
 build() {
