@@ -1,0 +1,16 @@
+pkgbase = python-async-tkinter-loop
+	pkgdesc = Asynchronous mainloop implementation for tkinter.
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/insolor/async-tkinter-loop
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/a/async_tkinter_loop/async_tkinter_loop-0.7.0.tar.gz
+	sha256sums = d6b2df2d1e30ce3cfb237a9352d4142f05f680e3b31b0cf87f3581e421fec9eb
+
+pkgname = python-async-tkinter-loop
