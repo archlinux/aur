@@ -36,4 +36,5 @@ pkgbase = rxvt-unicode-pixbuf-sixel-patched
 	sha1sums = dc01a8355b36d6efaea65716909ccd0f696f163f
 	sha1sums = da6e363bb7a3dbc164b58d5b457a6e9e5703df73
 
+
 pkgname = rxvt-unicode-pixbuf-sixel-patched
