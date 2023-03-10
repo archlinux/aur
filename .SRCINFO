@@ -1,13 +1,13 @@
 pkgbase = python-spectree
 	pkgdesc = API spec validator and OpenAPI document generator for Python web frameworks.
-	pkgver = 1.0.3
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/0b01001001/spectree
 	arch = any
 	license = Apache-2.0
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/0b01001001/spectree/archive/refs/tags/v1.0.3.tar.gz
-	sha256sums = 083f6b56be8b89c2c8359ea5d1d868800012e589f693c0902fec274805cfe139
+	source = https://github.com/0b01001001/spectree/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 7fd997aa89d5dc35df22ad129f2f09b7a93e64a4b46b58a37d68041fe1ed2103
 
 pkgname = python-spectree
