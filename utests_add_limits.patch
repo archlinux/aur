@@ -1,0 +1,11 @@
+diff -ru beignet.old/utests/utest_helper.hpp beignet.new/utests/utest_helper.hpp
+--- beignet.old/utests/utest_helper.hpp	2023-03-10 16:35:05.068061790 +0100
++++ beignet.new/utests/utest_helper.hpp	2023-03-10 16:35:46.962204258 +0100
+@@ -34,6 +34,7 @@
+ #include <cassert>
+ #include <cstdio>
+ #include <cstdlib>
++#include <limits>
+ 
+ #if defined(__ANDROID__)
+ #define __thread

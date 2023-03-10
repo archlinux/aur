@@ -14,8 +14,8 @@
 # - Michael
 
 pkgname=beignet-git
-pkgver=1.0.0.r1395.g419c0417
-pkgrel=3
+pkgver=1.0.0.r1396.gf72309a5
+pkgrel=1
 pkgdesc="An open source OpenCL implementation for Intel IvyBridge & Haswell iGPUs"
 arch=(x86_64)
 url="https://01.org/beignet"
@@ -24,15 +24,15 @@ depends=(glu clang70 mesa opencl-headers)
 makedepends=(git llvm70 cmake ninja python ocl-icd)
 provides=(beignet opencl-intel opencl-driver)
 conflicts=(beignet)
-source=(
-    "git+https://github.com/intel/beignet.git"
-    GBE-let-GenRegister-reg-never-return-uninitialized-m.patch
-    llvm8.patch
-    llvm9.patch
-    llvm10.patch
-)
+source=("git+https://github.com/intel/beignet.git"
+        GBE-let-GenRegister-reg-never-return-uninitialized-m.patch
+        utests_add_limits.patch
+        llvm8.patch
+        llvm9.patch
+        llvm10.patch)
 sha256sums=('SKIP'
             'c1f5880bb192103c371d51f57f646837ca01a8bbe012b9022d4e345c2f1187de'
+            '584dd293856ddfc76ca9e50488aa2076239ab568a945e957ca3221e2d30b1c52'
             'd24e4d8a1a791dc02c91117f900143789dd6f01eaa89292ad67c4fb4eaf84328'
             '5913a93fe6ef77b91480bb6d27c7875673294c0a8a924b2ac66756d0d3577908'
             '2eb9b0801e24f4e537033b41a6bc462e4082f6216d62933240ca3010020ea779')
@@ -66,6 +66,9 @@ prepare() {
     # https://lists.freedesktop.org/archives/beignet/2020-January/009251.html
     # https://github.com/intel/opencl-clang/commit/77ae1114c7bf79d724f5129461
     # patch -Np1 -i ../llvm10.patch
+
+    # Add missing <limits> include to utest header (required by some utests)
+    patch -p1 -i ../utests_add_limits.patch
 }
 
 build() {
@@ -77,6 +80,15 @@ build() {
         -DLLVM_INSTALL_DIR=/opt/llvm70/bin
     ninja -C build
 }
+
+# runtime_climage_from_boname fails on wayland because there is no DRI2 in xwayland
+#check() {
+#    ninja -C build utest_run
+#    (
+#        source build/utests/setenv.sh
+#        build/utests/utest_run
+#    )
+#}
 
 package() {
     DESTDIR="${pkgdir}" ninja -C build install
