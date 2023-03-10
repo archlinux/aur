@@ -2,7 +2,7 @@
 
 _pkgname=freenom
 pkgname=${_pkgname}-git
-pkgver=20211018
+pkgver=20230307
 pkgrel=1
 pkgdesc='Freenom domain name renews automatically'
 arch=('any')

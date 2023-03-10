@@ -1,6 +1,6 @@
 pkgbase = freenom-git
 	pkgdesc = Freenom domain name renews automatically
-	pkgver = 20211018
+	pkgver = 20230307
 	pkgrel = 1
 	url = https://github.com/luolongfei/freenom
 	install = freenom.install
