@@ -1,17 +1,17 @@
 pkgbase = peergos
 	pkgdesc = A p2p, secure file storage, social network and application protocol
-	pkgver = 0.10.0
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/Peergos/web-ui
 	arch = x86_64
 	license = AGPL3
 	depends = java-environment>=11
 	depends = java-environment-openjdk>=11
-	source = peergos-0.10.0.jar::https://github.com/Peergos/web-ui/releases/download/v0.10.0/Peergos.jar
+	source = peergos-0.12.0.jar::https://github.com/Peergos/web-ui/releases/download/v0.12.0/Peergos.jar
 	source = peergos.sh
 	source = peergos-LICENSE::https://raw.githubusercontent.com/Peergos/Peergos/master/Licence.txt
 	source = peergos-webui-LICENSE::https://raw.githubusercontent.com/Peergos/web-ui/master/LICENSE
-	sha256sums = 8b6b1efb5e956eb719927863290ece39391654098ea9c20d2ac0abd048a16071
+	sha256sums = 27563ab2e2fb31c5f99b88e2a88f6ca920a6ab45cf412cef471c0d74db2a7694
 	sha256sums = 37c237b578c5a1828cae720daaf6059e0451c0f9ab618089b9e8b3d972d327a6
 	sha256sums = 57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6
 	sha256sums = 589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2
