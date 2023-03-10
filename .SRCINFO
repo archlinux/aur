@@ -1,8 +1,8 @@
 pkgbase = hawck-git
-	pkgdesc = Keyboard macro/rebinding daemon
-	pkgver = 20210731
+	pkgdesc = Keyboard macro system
+	pkgver = 20230310
 	pkgrel = 1
-	url = https://github.com/snyball/Hawck
+	url = https://github.com/snyball/hawck
 	install = hawck-git.install
 	arch = x86_64
 	license = BSD
@@ -21,7 +21,7 @@ pkgbase = hawck-git
 	optdepends = doxygen
 	optdepends = zenity
 	optdepends = polkit-gnome
-	source = git+https://github.com/snyball/Hawck.git
+	source = git+https://github.com/snyball/hawck.git
 	md5sums = SKIP
 
 pkgname = hawck-git
