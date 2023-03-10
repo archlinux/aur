@@ -1,6 +1,6 @@
 # Maintainer: Sematre <sematre at gmx dot de>
 pkgname=rm2pdf
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 
 pkgdesc="Convert reMarkable tablet notebooks and annotated PDFs to layered PDF documents."
@@ -11,7 +11,7 @@ arch=('any')
 makedepends=('go')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6bacd90fa71630b9683df6a32ece19124a0b49ba072f5d63712952e81b1ef17a')
+sha256sums=('2001027ae49224d337721cd6fe85e99f82e30078dd95b5aa9f96fb09b3e9d41e')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

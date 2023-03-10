@@ -1,12 +1,12 @@
 pkgbase = rm2pdf
 	pkgdesc = Convert reMarkable tablet notebooks and annotated PDFs to layered PDF documents.
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/rorycl/rm2pdf
 	arch = any
 	license = MIT
 	makedepends = go
-	source = rm2pdf-0.1.5.tar.gz::https://github.com/rorycl/rm2pdf/archive/refs/tags/v0.1.5.tar.gz
-	sha256sums = 6bacd90fa71630b9683df6a32ece19124a0b49ba072f5d63712952e81b1ef17a
+	source = rm2pdf-0.1.6.tar.gz::https://github.com/rorycl/rm2pdf/archive/refs/tags/v0.1.6.tar.gz
+	sha256sums = 2001027ae49224d337721cd6fe85e99f82e30078dd95b5aa9f96fb09b3e9d41e
 
 pkgname = rm2pdf
