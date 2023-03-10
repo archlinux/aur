@@ -3,14 +3,14 @@
 _pkgname=godot4
 pkgname=${_pkgname}-bin
 pkgver=stable
-pkgrel=2
+pkgrel=3
 pkgdesc="Godot Game Engine: An advanced, feature packed, multi-platform 2D and 3D game engine."
 url="http://www.godotengine.org"
 license=('MIT')
 arch=('i686' 'x86_64')
 depends=('glu' 'libxcursor' 'libxinerama' 'alsa-lib' 'freetype2' 'mesa')
 optdepends=()
-conflicts=("godot4")
+conflicts=("godot4" "godot")
 provides=("godot4")
 
 source=(

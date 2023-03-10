@@ -1,7 +1,7 @@
 pkgbase = godot4-bin
 	pkgdesc = Godot Game Engine: An advanced, feature packed, multi-platform 2D and 3D game engine.
 	pkgver = stable
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.godotengine.org
 	arch = i686
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = godot4-bin
 	depends = mesa
 	provides = godot4
 	conflicts = godot4
+	conflicts = godot
 	source = godot4.desktop
 	source = icon.png
 	source = LICENSE
