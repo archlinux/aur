@@ -45,7 +45,7 @@ prepare() {
     echo "${pkgbase#linux}" > localversion.20-pkgname
   
     # upstream patch
-    patch -Np1 < ../patch-${pkgver}
+    patch -Nsp1 < ../patch-${pkgver}
   
     local src
     for src in "${source[@]}"; do
@@ -53,7 +53,7 @@ prepare() {
         src="${src##*/}"
         [[ $src = *.patch ]] || continue
         echo "Applying patch $src..."
-        patch -Np1 < "../$src"
+        patch -Nsp1 < "../$src"
     done
   
     echo "Setting config..."
