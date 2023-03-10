@@ -1,0 +1,15 @@
+pkgbase = wolai-appimage
+	pkgdesc = wolai是一种新形态的文档/笔记/信息系统,它与你过去使用的所有传统文档、在线文档都有很多不同,学会使用wolai就等于拥有了一个强大的个人与团队生产力工具。
+	pkgver = 1.2.6
+	pkgrel = 1
+	url = https://www.wolai.com
+	arch = x86_64
+	license = unknown
+	depends = hicolor-icon-theme
+	depends = zlib
+	conflicts = wolai-bin
+	options = !strip
+	source = wolai-1.2.6.AppImage::https://cdn.wostatic.cn/dist/installers/wolai-1.2.6.AppImage
+	sha256sums = 8e26a5be413d5cd9efe2bf5f37897d443fc6e7236e4ef2c1502ea69d59760013
+
+pkgname = wolai-appimage
