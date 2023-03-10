@@ -5,7 +5,7 @@ pkgname=(
   regclient-regsync
   regclient-regbot
 )
-pkgver=0.4.5
+pkgver=0.4.7
 pkgrel=0
 pkgdesc='Docker and OCI Registry tooling - regctl / regsync / regbot'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ makedepends=('go' 'git')
 source=("https://github.com/regclient/regclient/archive/v$pkgver/$pkgbase-$pkgver.tar.gz")
 # how to build git tag from github
 #source=("$pkgbase-$pkgver.tar.gz::https://github.com/regclient/regclient/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('298c6b8e6afd1557476339e5a5985ecf581b60816149e25fa7d1bcfe396b2a4f')
+sha256sums=('bfdc0ab0e194f9ed4bf9b7aefe15853445046dcf9708ed252473783c204aa9a8')
 _bins=('regctl' 'regsync' 'regbot')
 
 build() {
@@ -25,12 +25,14 @@ build() {
   # we want "clean" go binaries
   export CGO_ENABLED=0
 
-  ( cd "../$pkgbase-$pkgver" && echo "{\"VCSRef\": \"${_commit}\", \"VCSTag\": \"${pkgver}\"}" >./embed/version.json )
+  # FIXME - what is the correct version here? the aur repo it's build from or the upstream repo?
+  # currently the "real" program version is not shown beacuse it's implicitely taken from the git tag from repo...
+  #( cd "../$pkgbase-$pkgver" && echo "{\"VCSRef\": \"${_commit}\", \"VCSTag\": \"${pkgver}\"}" >./embed/version.json )
 
   for i in "${_bins[@]}"; do
     (
       cd "../$pkgbase-$pkgver"
-      cp ./embed/version.json "cmd/$i/embed/"
+      #cp ./embed/version.json "cmd/$i/embed/"
       go build -ldflags "-s -w -extldflags -static" -tags nolegacy -trimpath -o ../build ./cmd/$i
     )
 
@@ -40,9 +42,20 @@ build() {
 }
 
 check() {
-	cd "${pkgbase}-${pkgver}"
-	# ignore relative path errors because credhelper_test.go in regclient tests requires it
-	GODEBUG=execerrdot=0 go test -mod=readonly ./...
+    echo '# go test'
+    (
+        cd "${pkgbase}-${pkgver}"
+        go test -mod=readonly ./...
+    )
+    echo '# Check for unclean build'
+    # yea it's annoying for dev builds because it trips every time when git repo has uncommited changes
+    (
+        cd build/
+        for i in "${_bins[@]}"; do
+            echo "#  $i"
+            ./$i version |grep '^VCSState:\s*clean$'
+        done
+    )
 }
 
 _pkgcommon() {
