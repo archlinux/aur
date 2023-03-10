@@ -1,10 +1,10 @@
 # Maintainer: Estela ad Astra <i@estela.cn>
 
 pkgbase=linux-515-starfive-visionfive2
-_variant=VF2
+_variant=VF2 #5.15-VF2-xxx-x
 pkgver=2.10.4
 epoch=1 #Change to use ver from StarFive's SDK
-pkgrel=2
+pkgrel=3
 _tag=VF2_v${pkgver}
 _desc='Linux 5.15 for StarFive RISC-V VisionFive 2 Board'
 _srcname=linux-$_tag
@@ -15,20 +15,31 @@ makedepends=(bc libelf pahole cpio perl tar xz)
 options=('!strip')
 source=("https://github.com/starfive-tech/linux/archive/refs/tags/${_tag}.tar.gz"
   "0001-csr-fix.patch::https://github.com/torvalds/linux/commit/6df2a016c0c8a3d0933ef33dd192ea6606b115e3.diff"
+  "0002-realloc-fix.patch::https://github.com/torvalds/linux/commit/52a9dab6d892763b2a8334a568bd4e2c1a6fde66.diff"
+  "0003-constify-struct-dh.patch" #Modified from https://github.com/torvalds/linux/commit/215bebc8c6ac438c382a6a56bd2764a2d4e1da72.diff"
+  "0004-tda998x.patch"
+  "0005-pahole-flags.patch"
   'config'
   'linux.preset'
   '90-linux.hook')
 
 sha256sums=('5614f50f29fd4aa56525e0b002b5b03ef4109ef92484aab6747516efd2fb213b'
-  '3459b3799b7f9b7d6129ca8996c40d6a12f89127fe54b4af99ec9512b711dced'
-  '2fa9ceec6bf8dd882945a5fc5141ef47f1f04f4dffe2c0884c16af3f37f7c45e'
-  '57acae869144508c5600d6c8f41664f073f731c40cad2c58d2a1d55240495ddb'
-  '5308a6dcabff290c627cab5c9db23c739eddbf7aa8a4984468ed59e6a5250702')
+            '3459b3799b7f9b7d6129ca8996c40d6a12f89127fe54b4af99ec9512b711dced'
+            '26c03a99bb0f90e334289726f041f454ca9c54f2bbd553bff7ee5ab042f64775'
+            '10d29b13ebccd1ea836e89338f6e88874dd6bb80cd01324527cc3ea7108cd65f'
+            'f3bc5d054cde348d9bcb2f7eb2be7c3421e60e55efdc2c849f8058ab8e6b9c7a'
+            '5d7e122d49915adae57e7453082860950dc62d599602438e2f1d0ca226710c9b'
+            'b365069f42eaaf78ef4155b8526f3b6165f5bfe1a0ad7489f785d2ce2da77436'
+            '57acae869144508c5600d6c8f41664f073f731c40cad2c58d2a1d55240495ddb'
+            '5308a6dcabff290c627cab5c9db23c739eddbf7aa8a4984468ed59e6a5250702')
 
 if [ $(uname -m) != riscv64 ]; then
   shopt -s expand_aliases
   alias make="make ARCH=riscv CROSS_COMPILE=riscv64-linux-gnu-"
   alias strip=riscv64-linux-gnu-strip
+  CFLAGS="-march=rv64gc -mabi=lp64d -O2 -pipe -fno-plt -fexceptions \
+          -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security \
+          -fstack-clash-protection"
 fi
 
 prepare() {
@@ -76,7 +87,6 @@ _package() {
 
   echo "Installing boot image..."
   install -Dm644 "arch/riscv/boot/Image.gz" "$modulesdir/vmlinuz"
-  install -Dm644 "arch/riscv/boot/Image" "$modulesdir/Image"
   install -Dm644 "arch/riscv/boot/Image.gz" "$pkgdir/boot/vmlinuz"
 
   echo "Installing modules..."
@@ -111,7 +121,7 @@ _package-headers() {
   cp -t "$builddir" -a scripts
 
   # required when DEBUG_INFO_BTF_MODULES is enabled
-  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/*
+  cp --parents -r -t "$builddir/" tools/bpf/resolve_btfids
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
