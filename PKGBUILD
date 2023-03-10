@@ -4,7 +4,7 @@
 _pkgname=login1
 pkgbase=dfl-login1-git
 pkgname=('dfl-login1-git' 'dfl-login1-qt6-git')
-pkgver=0.1.1
+pkgver=v0.1.0.r3.g2f8335a
 pkgrel=1
 pkgdesc="Implementation of systemd/elogind for DFL"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ source=("login1::git+https://gitlab.com/desktop-frameworks/login1.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "$_pkgname"
   git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
