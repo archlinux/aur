@@ -14,6 +14,11 @@ makedepends=('git' 'meson' 'ninja' 'qt5-base' 'qt6-base')
 source=("login1::git+https://gitlab.com/desktop-frameworks/login1.git")
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "$pkgname"
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
   cd "${_pkgname}"
   echo "Building QT5 version..."
