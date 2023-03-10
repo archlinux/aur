@@ -1,13 +1,13 @@
 pkgbase = perl-reply-plugin-prompt
 	pkgdesc = Reply plugin for powerlevel10k style prompt
-	pkgver = 0.0.8
-	pkgrel = 2
+	pkgver = 0.0.9
+	pkgrel = 1
 	url = https://github.com/Freed-Wu/Reply-Plugin-Prompt
 	arch = any
 	license = GPL3
-	depends = perl-file-xdg>=1.00
 	depends = perl-reply
-	source = https://cpan.metacpan.org/authors/id/F/FR/FREED/Reply-Plugin-Prompt-0.0.8.tar.gz
-	sha256sums = a15a9c3f5abc1e7fbb2d4f7f347b42502cfbf95382751cb33cb1d87953373254
+	optdepends = perl-file-xdg>=1.00: support configure file
+	source = https://cpan.metacpan.org/authors/id/F/FR/FREED/Reply-Plugin-Prompt-0.0.9.tar.gz
+	sha256sums = 88e411d3529c0485add61a2d35407d5a584b25893f90a5e8be06d6935e2abec2
 
 pkgname = perl-reply-plugin-prompt
