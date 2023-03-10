@@ -1,13 +1,13 @@
 pkgbase = ncbi-datasets-cli
 	pkgdesc = An experimental resource for finding and building datasets across NCBI databases
-	pkgver = 14.15.0
+	pkgver = 14.16.0
 	pkgrel = 1
 	url = https://github.com/ncbi/datasets
 	arch = x86_64
 	license = custom
-	source = ncbi-datasets-cli-14.15.0.zip::https://github.com/ncbi/datasets/releases/download/v14.15.0/linux-amd64.cli.package.zip
-	source = ncbi-datasets-cli-14.15.0.tar.gz::https://github.com/ncbi/datasets/archive/refs/tags/v14.15.0.tar.gz
-	sha512sums = 7cd49d8725f74cdb577cc220080e9ef0258c10a453b8e38f321d6fa995baca4dada23d62c878172c2af0a283189f017a36e421c06ac34c72b5c71f3e3881df67
-	sha512sums = d70d740ea01dacef1c9e4a59dcb100e411926dbe8084a086ea0ed260f7c7bb7c9ba75f96981667aea809ff5f1a1ed6e199568acb82d27a2f1812a95ac181d76b
+	source = ncbi-datasets-cli-14.16.0.zip::https://github.com/ncbi/datasets/releases/download/v14.16.0/linux-amd64.cli.package.zip
+	source = ncbi-datasets-cli-14.16.0.tar.gz::https://github.com/ncbi/datasets/archive/refs/tags/v14.16.0.tar.gz
+	sha512sums = 94c26fe2dc83b8de9eba3f9e186db2f40eea49b4c30059701297a56527a56919c58517f449818429098071867bbaa92206b3e0ae590905cb7b0b1621b0827258
+	sha512sums = e1a64c7ad14cb03bc163b21666a680d21cc282d1dad7c7e7e56bf30ef9e0be39f08b8084defb5f849672446f0239d22543e8c1a503aad8cb0def1aad7df49446
 
 pkgname = ncbi-datasets-cli
