@@ -1,6 +1,6 @@
 pkgbase = ata
 	pkgdesc = Ask the Terminal Anything
-	pkgver = 1.0.3
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/rikhuijzer/ata
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = ata
 	makedepends = cargo
 	conflicts = ata-bin
 	conflicts = ata-git
-	source = git+https://github.com/rikhuijzer/ata.git#tag=v1.0.3
+	source = git+https://github.com/rikhuijzer/ata.git#tag=v2.0.1
 	md5sums = SKIP
 
 pkgname = ata
