@@ -35,8 +35,8 @@ sha1sums=(
 	'33d107d7f1d363fb98d0da225d4afec9644fb7b1'
 	'e4bbdc1d2d8cae060473dcdf75bb1c952cb0dbdf'
 	'ccf50bd1097a0558e2bf43a602a083960003e459'
-	'f5665db5c2ad9b73c4cc2e6a92dc3825098b5c67'
-	'17d8303318d726dd4d07695571d54cd75406de17')
+	'dc01a8355b36d6efaea65716909ccd0f696f163f'
+	'da6e363bb7a3dbc164b58d5b457a6e9e5703df73')
 
 prepare(){
 	cd "$_pkgname-$pkgver" || return 1
