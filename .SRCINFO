@@ -1,14 +1,13 @@
 pkgbase = google-cloud-cpp
 	pkgdesc = C++ Client Libraries for Google Cloud Services
 	pkgver = 2.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/googleapis/google-cloud-cpp/
 	arch = i686
 	arch = x86_64
 	license = Apache-2.0
-	makedepends = gcc
+	makedepends = base-devel
 	makedepends = cmake
-	makedepends = m4
 	depends = protobuf
 	depends = grpc
 	depends = nlohmann-json
