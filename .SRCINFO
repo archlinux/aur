@@ -1,0 +1,12 @@
+pkgbase = nvidia-initramfs-pacman-hook
+	pkgdesc = Update initramfs after a NVIDIA driver upgrade.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://wiki.archlinux.org/title/NVIDIA#pacman_hook
+	arch = any
+	license = GPL
+	optdepends = nvidia: it is the only reason to install this package
+	source = nvidia.hook
+	sha256sums = 0e9934103e63e59c401125ab62434dc86ffbb4395071e79088598ddf8be6fc14
+
+pkgname = nvidia-initramfs-pacman-hook
