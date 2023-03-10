@@ -2,7 +2,7 @@
 
 pkgname=hyprland-per-window-layout
 pkgver=2.1
-pkgrel=2.1
+pkgrel=3
 pkgdesc='Per window keyboard layout (language) for Hyprland wayland compositor'
 arch=('x86_64')
 url="https://github.com/coffebar/$pkgname"
@@ -14,12 +14,14 @@ source=("git+$url#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver(){
-  cd "$pkgname"
-  git describe --tags | sed 's/^v//;s/-/+/g'
+    cd "$pkgname"
+    git describe --tags | sed 's/^v//;s/-/+/g'
 }
 
 prepare() {
     cd "$pkgname"
+    export RUSTUP_TOOLCHAIN=stable
+    test -f /usr/bin/rustup && /usr/bin/rustup update --no-self-update $RUSTUP_TOOLCHAIN
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -32,5 +34,5 @@ build() {
 
 package() {
     cd "$pkgname"
-  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }

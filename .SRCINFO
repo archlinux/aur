@@ -1,7 +1,7 @@
 pkgbase = hyprland-per-window-layout
 	pkgdesc = Per window keyboard layout (language) for Hyprland wayland compositor
 	pkgver = 2.1
-	pkgrel = 2.1
+	pkgrel = 3
 	url = https://github.com/coffebar/hyprland-per-window-layout
 	arch = x86_64
 	license = GPL
