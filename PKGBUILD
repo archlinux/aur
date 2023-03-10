@@ -4,7 +4,7 @@
 ## GPG key: https://github.com/web-flow.gpg
 
 pkgname=fastly
-pkgver=7.0.1
+pkgver=8.0.0
 pkgrel=1
 pkgdesc='CLI for the Fastly platform'
 url='https://github.com/fastly/cli'
@@ -21,6 +21,7 @@ validpgpkeys=('A4C2C78656BA5E3DD5F122E4BCE379A5D550C407' ## Mark McDonnell (Inte
 prepare() {
 	cd "$pkgname"
 	go mod download
+	sed -i '/CGO_ENABLED=/s/0/1/g' Makefile
 }
 
 build() {
@@ -33,7 +34,8 @@ build() {
 	make build \
 		VERSION="$pkgver" \
 		CLI_ENV="production" \
-		GORELEASER_ARGS="--rm-dist --single-target"
+		GORELEASER_ARGS="--rm-dist --single-target" \
+		GO_ARGS="${GOFLAGS}"
 }
 
 check() {

@@ -1,5 +1,37 @@
 # Changelog
 
+## [v8.0.0](https://github.com/fastly/cli/releases/tag/v8.0.0) (2023-03-08)
+
+[Full Changelog](https://github.com/fastly/cli/compare/v7.0.1...v8.0.0)
+
+**Breaking:**
+
+This release contains a small breaking interface change that has required us to bump to a new major version.
+
+When viewing a profile token using `fastly profile token` the `--name` flag is no longer supported. It has been moved to a positional argument to make it consistent with the other profile subcommands. The `profile token` command now respects the global `--profile` flag, which allows a user to switch profiles for the lifetime of a single command execution.
+
+Examples:
+
+- `fastly profile token --name=example` -> `fastly profile token example`
+- `fastly profile token --profile=example`
+
+* breaking(profiles): replace `--name` with positional arg + allow global override [#862](https://github.com/fastly/cli/pull/862)
+
+**Bug fixes:**
+
+* fix(build): show build output with `--verbose` flag [#853](https://github.com/fastly/cli/pull/853)
+
+**Enhancements:**
+
+* fix(profile/update): update active profile as default behaviour [#857](https://github.com/fastly/cli/pull/857)
+* fix(compute/serve): allow overriding of viceroy binary [#859](https://github.com/fastly/cli/pull/859)
+* feat(compute/deploy): check service availability [#860](https://github.com/fastly/cli/pull/860)
+
+**Dependencies:**
+
+* build(deps): bump github.com/getsentry/sentry-go from 0.18.0 to 0.19.0 [#856](https://github.com/fastly/cli/pull/856)
+* build(deps): bump golang.org/x/crypto [#855](https://github.com/fastly/cli/pull/855)
+
 ## [v7.0.1](https://github.com/fastly/cli/releases/tag/v7.0.1) (2023-03-02)
 
 [Full Changelog](https://github.com/fastly/cli/compare/v7.0.0...v7.0.1)
