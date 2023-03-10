@@ -1,0 +1,32 @@
+# from archlinux grub2 theme install
+
+themename=deathnote
+grubconf=/etc/default/grub
+
+post_install() {
+  cat << _EOF
+
+==> Installation:
+==> Add theme to your /etc/default/grub: GRUB_THEME="/usr/share/grub/themes/${themename}/theme.txt"
+==> Then update grub:# grub-mkconfig -o /boot/grub/grub.cfg
+
+_EOF
+}
+
+post_remove()
+{
+    if pacman -Qq grub > /dev/null 2>&1
+    then
+        current_conf="$(grep -A 3 "^GRUB_THEME.*$themename.*" "$grubconf")"
+        if test -n "$current_conf"; then
+          cat << _EOF
+
+==> Note:
+==> Please change current theme in /etc/default/grub: GRUB_THEME
+==> Then update grub:# grub-mkconfig -o /boot/grub/grub.cfg
+
+_EOF
+        fi
+    fi
+}
+

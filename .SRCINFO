@@ -1,0 +1,20 @@
+pkgbase = grub2-theme-deathnote-git
+	pkgdesc = Opinionated grub2 deathnote theme based on crimson
+	pkgver = r13.ad2e80d
+	pkgrel = 1
+	url = https://github.com/worron/crimson
+	install = grub2-theme-deathnote-git.install
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = python
+	makedepends = imagemagick
+	depends = grub
+	provides = grub2-theme-deathnote
+	conflicts = grub2-theme-deathnote
+	source = git+https://github.com/worron/crimson
+	source = kira.png::file:///home/zecy/Pictures/grub2-theme-deathnote-kira.png
+	md5sums = SKIP
+	md5sums = e136b97344a7b24f94db469b947b95b0
+
+pkgname = grub2-theme-deathnote-git
