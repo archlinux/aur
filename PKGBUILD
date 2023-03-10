@@ -17,7 +17,8 @@ _cachy_config=${_cachy_config-y}
 # 'cfs' - select 'Completely Fair Scheduler'
 # 'tt' - select 'Task Type Scheduler by Hamad Marri'
 # 'hardened' - select 'BORE Scheduler hardened' ## kernel with hardened config and hardening patches with the bore scheduler
-_cpusched=${_cpusched-bore}
+# 'cachyos' - select BORE Scheduler with the EEVDF Algorithm; Latency Nice as default enabled (slightly modified then upstream)
+_cpusched=${_cpusched-cachyos}
 
 ## Apply some suggested sysctl values from the bore developer
 ## These are adjusted to BORE
@@ -182,7 +183,7 @@ _bcachefs=${_bcachefs-}
 # You need to set the values per task
 # Ananicy-cpp has a implementation for this
 # You need to configure ananicy-cpp for this or use existing settings
-_latency_nice=${_latency_nice-y}
+_latency_nice=${_latency_nice-}
 
 if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] && [ -n "$_use_lto_suffix" ]; then
     pkgsuffix=cachyos-lto
@@ -193,7 +194,7 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.2
-_minor=2
+_minor=3
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -241,6 +242,9 @@ if [ -n "$_latency_nice" ]; then
 fi
 
 case "$_cpusched" in
+    cachyos) # BMQ/PDS scheduler
+        source+=("${_patchsource}/sched/0001-EEVDF.patch"
+                 "${_patchsource}/sched/0001-bore-eevdf.patch");;
     pds|bmq) # BMQ/PDS scheduler
         source+=("${_patchsource}/sched/0001-prjc-cachy.patch");;
     tt) ## TT Scheduler
@@ -325,7 +329,7 @@ prepare() {
         pds) scripts/config -e SCHED_ALT -d SCHED_BMQ -e SCHED_PDS -e PSI_DEFAULT_DISABLED;;
         bmq) scripts/config -e SCHED_ALT -e SCHED_BMQ -d SCHED_PDS -e PSI_DEFAULT_DISABLED;;
         tt)  scripts/config -e TT_SCHED -e TT_ACCOUNTING_STATS;;
-        bore|hardened) scripts/config -e SCHED_BORE;;
+        bore|hardened|cachyos) scripts/config -e SCHED_BORE;;
         cfs) ;;
         *) _die "The value $_cpusched is invalid. Choose the correct one again.";;
     esac
@@ -841,9 +845,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('c12755a2bb0e19e83457727e949ee1020cc268f44222488256223da8eeecbfb0'
-            '25d4dd45636b0b2bfb6157578b5ee94b963c4560993a7dc1f7fe642d373e354a'
+sha256sums=('b36d0b54fc13770802aff37d8f8d6fec7b950e4f099884e30445ad2265063924'
+            '0a5944e9e1f9e99939550f5cabb68518721ed01aeb46082cb7a135d4e3c9f736'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
-            '2996582fd78eb03506bed903711382818252626b2e1ba5d1b498e8be9947e9c2'
-            'a744e56a322e87c3ab9d4ce5b9ffb42e197b66eb45bc1abf1a1a90dafa9aa06a'
-            '200b0b5469fc26e7c77857a13b2e79e85d87e9c8c5461a25ffd58be402a20631')
+            '7ea50eb9cceae74c2b4417ad3409396ed3e3bcd68b89513801024063be952051'
+            '76bb9dbca8cba96983e5bc2d55f8aa751f174ac4a508daef984102c4bf21fd64'
+            'd0cacc42325e9bb89588533048830dd5388c92ff3620cf79e73ad3ced9c65840')
