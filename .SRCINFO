@@ -1,6 +1,6 @@
 pkgbase = picom-simpleanims-git
 	pkgdesc = X compositor fork with animations (tested on qtile)
-	pkgver = 1853__2023.03.05
+	pkgver = 1853__2023.03.10
 	pkgrel = 1
 	url = https://github.com/fdev31/picom
 	arch = i686
@@ -36,7 +36,7 @@ pkgbase = picom-simpleanims-git
 	conflicts = compton-git
 	conflicts = picom
 	replaces = compton-git
-	source = git+https://github.com/fdev31/picom.git#branch=simpleanims
+	source = git+https://github.com/fdev31/picom.git#branch=animation-pr
 	md5sums = SKIP
 
 pkgname = picom-simpleanims-git
