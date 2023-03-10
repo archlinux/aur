@@ -1,0 +1,5 @@
+crimson/
+*.pkg.tar.zst
+*png
+src/
+pkg/

@@ -4,7 +4,7 @@ _srcname=crimson
 _theme=deathnote
 pkgname=grub2-theme-deathnote-git
 pkgver=r13.ad2e80d
-pkgrel=1
+pkgrel=2
 pkgdesc="Opinionated grub2 deathnote theme based on $_srcname"
 url=https://github.com/worron/$_srcname
 arch=(any)
@@ -29,7 +29,7 @@ pkgver() {
 prepare() {
   cd $_srcname
   sed -i 's/crimson/deathnote/g' build.py
-  sed -i 's/terminal_/terminal_box_/g; 16,18d' patterns/theme.tpt
+  sed -i '16,19d' patterns/theme.tpt
 }
 
 build() {
