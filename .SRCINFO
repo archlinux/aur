@@ -1,6 +1,6 @@
 pkgbase = dfl-login1-git
 	pkgdesc = Implementation of systemd/elogind for DFL
-	pkgver = 0.1.1
+	pkgver = v0.1.0.r3.g2f8335a
 	pkgrel = 1
 	url = https://gitlab.com/desktop-frameworks/login1
 	arch = x86_64
