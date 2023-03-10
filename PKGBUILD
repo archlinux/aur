@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=shisper-git
-pkgver=0.1.r2.g01451b3
+pkgver=0.1.r2.g2b34aa1
 pkgrel=1
 pkgdesc="A quick & dirty script to generate subtitles and transcriptions for your multimedia files using ggerganov/whisper.cpp"
 arch=(any)
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=(
   'ffmpeg'
   'mpv'
-  'whisper.cpp-git'
+  'whisper.cpp'
 )
 makedepends=('git')
 conflicts=("${pkgname%%-git}")

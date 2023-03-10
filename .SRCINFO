@@ -1,6 +1,6 @@
 pkgbase = shisper-git
 	pkgdesc = A quick & dirty script to generate subtitles and transcriptions for your multimedia files using ggerganov/whisper.cpp
-	pkgver = 0.1.r2.g01451b3
+	pkgver = 0.1.r2.g2b34aa1
 	pkgrel = 1
 	url = https://github.com/M0Rf30/shisper
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = shisper-git
 	makedepends = git
 	depends = ffmpeg
 	depends = mpv
-	depends = whisper.cpp-git
+	depends = whisper.cpp
 	provides = shisper
 	conflicts = shisper
 	source = shisper::git+https://github.com/M0Rf30/shisper
