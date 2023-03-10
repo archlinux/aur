@@ -28,7 +28,7 @@
 : "${COMPONENT:=4}"
 
 pkgname=brave
-pkgver=1.48.171
+pkgver=1.49.120
 pkgrel=1
 pkgdesc='Web browser that blocks ads and trackers by default'
 arch=(x86_64)
@@ -46,8 +46,8 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: support for storing passwords in KWallet on Plasma')
 options=('!lto') # Chromium adds its own flags for ThinLTO
-_chromium_ver=110.0.5481.177
-_gcc_patchset=4
+_chromium_ver=111.0.5563.64
+_gcc_patchset=2
 _patchset_name="chromium-${_chromium_ver%%.*}-patchset-$_gcc_patchset"
 _launcher_ver=8
 source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v$pkgver"
@@ -66,10 +66,10 @@ source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v$pkg
         brave-1.43-bitcoin-core_remove-serialize.h.patch
         brave-1.43-debounce-debounce_navigation_throttle_fix.patch
         brave-1.43-ntp_background_images-std-size_t.patch
-        brave-1.48-partitioned_host_state_map-cstring.patch)
-_arch_revision=4e362eccaf5b0391053136a28ec0afb6a04d9b09
-_patches=(fix-the-way-to-handle-codecs-in-the-system-icu.patch
-          v8-move-the-Stack-object-from-ThreadLocalTop.patch
+        brave-1.48-partitioned_host_state_map-cstring.patch
+        brave-1.49-brave_wallet-hd_key-vector_fix.patch)
+_arch_revision=d1f67365bf7e2076454823ed99602c8e7c9b9287
+_patches=(sql-relax-constraints-on-VirtualCursor-layout.patch
           REVERT-roll-src-third_party-ffmpeg-m102.patch
           REVERT-roll-src-third_party-ffmpeg-m106.patch
           disable-GlobalMediaControlsCastStartStop.patch
@@ -82,7 +82,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            '8c7f93037cc236024cc8be815b2c2bd84f6dc9e32685299e31d4c6c42efde8b7'
+            'a016588340f1559198e4ce61c6e91c48cf863600f415cb5c46322de7e1f77909'
             '9235485adc4acbfaf303605f4428a6995a7b0b3b5a95181b185afbcb9f1f6ae5'
             '404bf09df39310a1e374c5e7eb9c7311239798adf4e8cd85b7ff04fc79647f88'
             'a8b119138c7157a71f2d1240bea5a2af9593d6b774586f5cc337b344cd9a18b8'
@@ -94,8 +94,8 @@ sha256sums=('SKIP'
             '30a6a9ca2a6dd965cb2d9f02639079130948bf45d483f0c629f2cf8394a1c22f'
             'ea0cd714ccaa839baf7c71e9077264016aa19415600f16b77d5398fd49f5a70b'
             '3864fcb12aaec849fd0e5423c9c5dfb1fdd7805e298a52125776bb24abe71e3c'
-            'a5d5c532b0b059895bc13aaaa600d21770eab2afa726421b78cb597a78a3c7e3'
-            '49c3e599366909ddac6a50fa6f9420e01a7c0ffd029a20567a41d741a15ec9f7'
+            'f55438b4d5fd3c14e3e6c16383e6305ec52818c1fc9438d0d40ff72d157504a3'
+            'e66be069d932fe18811e789c57b96249b7250257ff91a3d82d15e2a7283891b7'
             '30df59a9e2d95dcb720357ec4a83d9be51e59cc5551365da4c0073e68ccdec44'
             '4c12d31d020799d31355faa7d1fe2a5a807f7458e7f0c374adf55edb37032152'
             '7f3b1b22d6a271431c1f9fc92b6eb49c6d80b8b3f868bdee07a6a1a16630a302'
@@ -222,12 +222,7 @@ prepare() {
   patch -Np1 -i "${srcdir}/use-oauth2-client-switches-as-default.patch"
 
   # Upstream fixes
-  patch -Np1 -i "${srcdir}/fix-the-way-to-handle-codecs-in-the-system-icu.patch"
-
-  # https://crbug.com/v8/13630
-  # https://crrev.com/c/4200636
-  # https://github.com/nodejs/node/pull/46125#issuecomment-1407721276
-  patch -Np1 -d v8 <"${srcdir}/v8-move-the-Stack-object-from-ThreadLocalTop.patch"
+  patch -Np1 -i "${srcdir}/sql-relax-constraints-on-VirtualCursor-layout.patch"
 
   # Revert ffmpeg roll requiring new channel layout API support
   # https://crbug.com/1325301
@@ -240,10 +235,6 @@ prepare() {
   patch -Np1 -i "${srcdir}/disable-GlobalMediaControlsCastStartStop.patch"
 
   # Fixes for building with libstdc++ instead of libc++
-  patch -Np1 -i "${srcdir}/patches/chromium-103-VirtualCursor-std-layout.patch"
-  patch -Np1 -i "${srcdir}/patches/chromium-110-NativeThemeBase-fabs.patch"
-  patch -Np1 -i "${srcdir}/patches/chromium-110-CredentialUIEntry-const.patch"
-  patch -Np1 -i "${srcdir}/patches/chromium-110-DarkModeLABColorSpace-pow.patch"
 
   # Hacky patching
   sed -e 's/\(enable_distro_version_check =\) true/\1 false/g' -i chrome/installer/linux/BUILD.gn
@@ -328,7 +319,7 @@ build() {
       'clang_base_path="/usr"'
       'clang_use_chrome_plugins=false'
       'symbol_level=0' # sufficient for backtraces on x86(_64)
-      #'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
+      'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
       'treat_warnings_as_errors=false'
       'disable_fieldtrial_testing_config=true'
       'blink_enable_generated_code_formatting=false'

@@ -1,0 +1,22 @@
+diff --git a/brave/components/brave_wallet/browser/internal/hd_key.cc b/brave/components/brave_wallet/browser/internal/hd_key.cc
+index e42c4094ab..42670dce00 100644
+--- a/brave/components/brave_wallet/browser/internal/hd_key.cc
++++ b/brave/components/brave_wallet/browser/internal/hd_key.cc
+@@ -546,7 +546,7 @@ std::unique_ptr<HDKeyBase> HDKey::DeriveChildFromPath(const std::string& path) {
+       hd_key->SetPrivateKey(private_key_);
+     else
+       hd_key->SetPublicKey(public_key_);
+-    hd_key->chain_code_ = chain_code_;
++    hd_key->chain_code_.assign(chain_code_.begin(), chain_code_.end());
+     return std::unique_ptr<HDKeyBase>{hd_key.release()};
+   }
+   std::vector<std::string> entries =
+@@ -565,7 +565,7 @@ std::unique_ptr<HDKeyBase> HDKey::DeriveChildFromPath(const std::string& path) {
+         hd_key->SetPrivateKey(private_key_);
+       else
+         hd_key->SetPublicKey(public_key_);
+-      hd_key->chain_code_ = chain_code_;
++      hd_key->chain_code_.assign(chain_code_.begin(), chain_code_.end());
+       continue;
+     }
+     bool is_hardened = entry.length() > 1 && entry.back() == '\'';
