@@ -1,0 +1,22 @@
+pkgbase = godot3-bin
+	pkgdesc = Advanced cross-platform 2D and 3D game engine (3.X Branch)
+	pkgver = 3.5.2
+	pkgrel = 1
+	url = https://godotengine.org
+	arch = x86_64
+	license = MIT
+	depends = libglvnd
+	depends = libxcursor
+	depends = libxi
+	depends = libxinerama
+	depends = libxrandr
+	optdepends = pipewire-alsa
+	optdepends = pipewire-pulse
+	provides = godot
+	conflicts = godot
+	source = https://github.com/godotengine/godot/releases/download/3.5.2-stable/Godot_v3.5.2-stable_x11.64.zip
+	source = desktop.tar.xz
+	sha256sums = fe2548c59e112a7495bf6a8b42b44ec19c80ea59d60208c185574bed17768044
+	sha256sums = 2c969b88ac07d96ad1c72b06ac5b0ce1307ebe6a6864a9885ece16b88c014805
+
+pkgname = godot3-bin
