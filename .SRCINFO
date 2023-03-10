@@ -1,13 +1,13 @@
 pkgbase = ps7b_libps5000a
 	pkgdesc = Library for PicoScope 5000a series in PicoScope 7 Beta
-	pkgver = 2.1.108_5r3405
+	pkgver = 2.1.109_5r3438
 	pkgrel = 1
 	url = https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libps5000a/
 	arch = x86_64
 	license = custom
 	depends = libusb
 	options = !strip
-	source = https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libps5000a/libps5000a_2.1.108-5r3405_amd64.deb
-	md5sums = e1c35a46e4654a3008a17bb49a6685f4
+	source = https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libps5000a/libps5000a_2.1.109-5r3438_amd64.deb
+	md5sums = 855d2c953feebc7b598dc8bc8556f139
 
 pkgname = ps7b_libps5000a
