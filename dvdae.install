@@ -1,0 +1,11 @@
+post_install() {
+  echo 'run as user'
+  setcap cap_dac_override,cap_sys_rawio=ep /usr/bin/dvdae
+  setcap cap_dac_override,cap_sys_rawio=ep /usr/bin/dvdae-gui
+}
+
+post_upgrade() {
+  echo 'run as user'
+  setcap cap_dac_override,cap_sys_rawio=ep /usr/bin/dvdae
+  setcap cap_dac_override,cap_sys_rawio=ep /usr/bin/dvdae-gui
+}
