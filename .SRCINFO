@@ -2,13 +2,13 @@ pkgbase = haunt-go-git
 	pkgdesc = Live reload and task automation for go apps
 	pkgver = 0.2.6.r2.gec35355
 	pkgrel = 1
-	url = https://github.com/abs3ntdev/haunt
+	url = https://git.asdf.cafe/abs3nt/haunt
 	arch = x86_64
 	license = GPL
 	makedepends = go
 	provides = haunt
 	conflicts = haunt
-	source = git+https://github.com/abs3ntdev/haunt.git
+	source = git+https://git.asdf.cafe/abs3nt/haunt.git
 	sha256sums = SKIP
 
 pkgname = haunt-go-git
