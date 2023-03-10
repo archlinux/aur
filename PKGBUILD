@@ -15,10 +15,10 @@ conflicts=(
 )
 
 pkgver() {
-  cd "${_pkgname}"
-  set -o pipefail
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${_pkgname}"
+    set -o pipefail
+    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
