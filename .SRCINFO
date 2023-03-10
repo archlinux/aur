@@ -1,0 +1,36 @@
+pkgbase = godot3-git
+	pkgdesc = Advanced cross-platform 2D and 3D game engine (3.x Branch)
+	pkgver = r34303.338114d
+	pkgrel = 1
+	url = https://godotengine.org
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = scons
+	makedepends = yasm
+	makedepends = alsa-lib
+	makedepends = pulseaudio
+	depends = embree
+	depends = freetype2
+	depends = libglvnd
+	depends = libtheora
+	depends = libvorbis
+	depends = libvpx
+	depends = libwebp
+	depends = libwslay
+	depends = libsquish
+	depends = libxcursor
+	depends = libxi
+	depends = libxinerama
+	depends = libxrandr
+	depends = mbedtls
+	depends = miniupnpc
+	depends = opusfile
+	optdepends = pipewire-alsa
+	optdepends = pipewire-pulse
+	provides = godot
+	conflicts = godot
+	source = git+https://github.com/godotengine/godot.git#branch=3.5
+	b2sums = SKIP
+
+pkgname = godot3-git
