@@ -1,0 +1,13 @@
+pkgbase = mdx2iso
+	pkgdesc = Convert mdx disc image files to iso
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gist.github.com/NikolasK-source/2a3b4d8841f5af59b93b859991204637
+	arch = any
+	license = MIT
+	depends = bash
+	depends = iat
+	source = git+https://github.com/NikolasK-source/mdx2iso.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = mdx2iso
