@@ -1,7 +1,7 @@
 pkgbase = perl-reply
 	pkgdesc = read, eval, print, loop, yay!
 	pkgver = 0.42
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/Reply
 	arch = any
 	license = PerlArtistic
@@ -15,7 +15,7 @@ pkgbase = perl-reply
 	depends = perl-padwalker>=0
 	depends = perl-try-tiny>=0
 	depends = perl>=5.006
-	depends = perl-proc-invoke-editor
+	depends = perl-proc-invokeeditor
 	depends = perl-app-nopaste
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/D/DO/DOY/Reply-0.42.tar.gz
