@@ -13,18 +13,30 @@ options=('!strip' '!emptydirs')
 source=(git+https://github.com/PurpleHorrorRus/Meridius.git)
 md5sums=('SKIP')
 
+sourceUrl="https://github.com/PurpleHorrorRus/Meridius"
+
 pkgver(){
     cd "Meridius"
-    git tag --sort=committerdate | tail -1
+    releases=(`git tag --sort=-refname`) # sadly not every release has linux version
+    for i in ${releases[*]}
+    do
+        _url="$sourceUrl/releases/download/$i/meridius-${i//v}.tar.gz"
+        [[ "$i" == "$pkgver" ]] && break
+        curl -o /dev/null --silent --head --fail "$_url" && break
+    done
+    
+    echo $i
 }         
          
 build(){
     cd $srcdir
-    file=meridius-${pkgver//v}.tar.gz
-    url=https://github.com/PurpleHorrorRus/Meridius/releases/download/$pkgver/$file
     
-    curl -qgb "" -fLC - --retry 3 --retry-delay 3 -o $file $url
-    bsdtar -xf $file
+    _file=meridius-${pkgver//v}.tar.gz
+    _url="$sourceUrl/releases/download/$pkgver/$_file"
+    
+    # it failes when file exists and is fully downloaded already
+    curl -qgb "" -fLC - --retry 3 --retry-delay 3 -o $_file $_url
+    bsdtar -xf $_file 
 }
     
 package_meridius-bin-git(){
