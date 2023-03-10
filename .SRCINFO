@@ -1,14 +1,14 @@
 pkgbase = jabba-bin
 	pkgdesc = (cross-platform) Java Version Manager
-	pkgver = 0.11.2
+	pkgver = 0.12.2
 	pkgrel = 1
-	url = https://github.com/shyiko/jabba
+	url = https://github.com/Jabba-Team/jabba
 	arch = x86_64
 	license = Apache
 	provides = java-environment
 	provides = jabba
 	conflicts = jabba
-	source = https://github.com/shyiko/jabba/releases/download/0.11.2/jabba-0.11.2-linux-arm64
+	source = https://github.com/Jabba-Team/jabba/releases/download/0.12.2/jabba-0.12.2-linux-amd64
 	sha256sums = e0d490c98a5252e12a20560c39b8320cf567f4c980ee80f127f2dd02ecbb01e1
 
 pkgname = jabba-bin
