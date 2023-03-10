@@ -3,7 +3,7 @@
 
 pkgname=html-query
 _pkgname=hq
-pkgver=0.2.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="jq, but for HTML"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('6114fcf0adf848efbffab1b9e37a63b6bdcb3f73209331823cc099445b5c184f4ad36d7f69916c443c2a27b013da9f28701e4032bcc7829f14666f9449375a76')
+sha512sums=('e94a72d8f87274f4880cf9d539645a31e2a6d972d6b9ec02e27e28cdc41f0b9e670e3e2d0a11661fb7fe8e65e67065a30f61feb003972b2016f14780b86435ec')
 
 prepare() {
   cd "$_pkgname-$pkgver"
