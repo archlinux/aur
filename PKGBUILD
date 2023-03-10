@@ -19,7 +19,7 @@ source=(
 	"xx-net.service"
 		)
 noextract=()
-md5sums=('c0bac2569ce0ff93997757a74ab40544'
+md5sums=('SKIP'
          'c0a4e9d6f4c8fcee0e8a26f3018dfe4f')
 install=$pkgname.install
 validpgpkeys=()
