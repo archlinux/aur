@@ -1,8 +1,8 @@
 # Maintainer: Roman Mishin <xtradev (a) yandex (.) ru>
 
-_commit=746b933baf3722d9b8c6940967558a83bafe3dc3
+_commit=8031fe436984a3431bdb0e4e71e6ae6df97fb80f
 pkgname=bracmat-git
-pkgver=6.12.8.r270
+pkgver=6.13.0.r271
 pkgrel=1
 pkgdesc='Programming language for symbolic computation with pattern matching features'
 arch=('i686' 'x86_64')
