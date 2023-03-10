@@ -1,0 +1,18 @@
+pkgbase = hakuneko-desktop-nightly
+	pkgdesc = Manga & Anime Downloader for Linux, Windows & MacOS
+	pkgver = 8.3.4
+	pkgrel = 1
+	url = https://github.com/manga-download/hakuneko
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = nss
+	depends = libxss
+	provides = hakuneko-desktop
+	conflicts = hakuneko-desktop
+	source = https://github.com/manga-download/hakuneko/releases/download/nightly-20200705.1/hakuneko-desktop_8.3.4_linux_amd64.deb
+	source = hakuneko-desktop-nightly.sh
+	sha256sums = 3bb20b23457a92ebfd8c2f746af09fd1be0ce41a93a10f57eb882e84dc14bd709905cac5b4fd853090105641c142f20d7c34681825fb2a1ce0758f3d7e769461
+	sha256sums = 4dc0f7c10d0567bda1cd7a8547f4ec6008f5926fb7b01bfcf3c25a758bb081a91ba787b51fb5bef34d5f68c5243817b65205a48aa6882410945292f2220cff0b
+
+pkgname = hakuneko-desktop-nightly
