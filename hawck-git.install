@@ -10,6 +10,9 @@ post_install() {
 
     ## Set up hawck-input home directory
     mkdir -p "/var/lib/hawck-input/keys"
+    mkdir -p "/var/lib/hawck-input/tmp"
+    chmod 770 "/var/lib/hawck-input/tmp"
+    chown hawck-input:hawck-input-share "/var/lib/hawck-input/tmp"
 
     chown hawck-input:hawck-input-share "/var/lib/hawck-input"
     chmod 770 /var/lib/hawck-input
