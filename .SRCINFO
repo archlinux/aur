@@ -1,20 +1,20 @@
 pkgbase = arandr-indicator-git
 	pkgdesc = Quick and simple tray icon menu for changing the monitor layout.
-	pkgver = r16.20200824.189890e
-	pkgrel = 6
+	pkgver = 2.0.0+11.r26.20220728.aac95e3
+	pkgrel = 1
 	epoch = 2
-	url = https://github.com/AdrianVollmer/arandr-indicator/tree/port-python3
+	url = https://github.com/denilsonsa/arandr-indicator
 	arch = any
-	license = custom
+	license = custom: BSD
 	makedepends = git
 	depends = pygtk
 	depends = python>=3
 	depends = python-gobject
 	optdepends = arandr: To configure monitor layouts.
 	optdepends = python-xdg: For Freedesktop.org directory specifications.
-	provides = arandr-indicator=r16.20200824.189890e
+	provides = arandr-indicator=2.0.0+11.r26.20220728.aac95e3
 	conflicts = arandr-indicator
-	source = arandr-indicator::git+https://github.com/AdrianVollmer/arandr-indicator#branch=port-python3
+	source = arandr-indicator::git+https://github.com/denilsonsa/arandr-indicator.git
 	source = license-info.txt
 	sha256sums = SKIP
 	sha256sums = e4f6da5d674b36b60640901d1a01a5deec77fd41ef31f713b1fc533c25d14f6d
