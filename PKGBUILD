@@ -28,13 +28,13 @@ pkgver() {
 
 prepare() {
   cd $_srcname
-  sed -i 's/crimson/deathnote/g' build.py
-  sed -i '16,19d' patterns/theme.tpt
+  sed -i "s/$_srcname/$_theme/g" build.py
+  sed -i "s/${_srcname^}/${_theme^}/g; 16,19d" patterns/theme.tpt
+  magick $srcdir/kira.png -crop 200x200+0+0 PNG:- | magick $srcdir/kira.png - -geometry +0+1961 -composite kira.png
 }
 
 build() {
   cd $_srcname
-  magick $srcdir/kira.png -crop 200x200+0+0 PNG:- | magick $srcdir/kira.png - -geometry +0+1961 -composite kira.png
   python ./build.py \
     -m b23425 \
     -s b0947c \
