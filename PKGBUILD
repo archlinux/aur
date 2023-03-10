@@ -1,7 +1,6 @@
 # vim:ts=2:sw=2:expandtab
 # Maintainer: peelz <peelz.dev+arch@gmail.com>
 
-_reponame='XMousePasteBlock'
 _commit='c45bd41d5a350317f9507ace7bed4c635cfe319c'
 pkgname=xmousepasteblock
 pkgver=1.2
