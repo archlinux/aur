@@ -1,0 +1,23 @@
+diff --git a/etc/pcscd.service.in b/etc/pcscd.service.in
+index 34e8572a..6b56ca7e 100644
+--- a/etc/pcscd.service.in
++++ b/etc/pcscd.service.in
+@@ -1,6 +1,7 @@
+ [Unit]
+ Description=PC/SC Smart Card Daemon
+ Requires=@pcscd@.socket
++Conflicts=pcscd.service
+ Documentation=man:pcscd(8)
+ 
+ [Service]
+diff --git a/etc/pcscd.socket.in b/etc/pcscd.socket.in
+index 0a5654b9..96d91f4f 100644
+--- a/etc/pcscd.socket.in
++++ b/etc/pcscd.socket.in
+@@ -1,5 +1,6 @@
+ [Unit]
+ Description=PC/SC Smart Card Daemon Activation Socket
++Conflicts=pcscd.socket
+ 
+ [Socket]
+ ListenStream=@ipcdir@/pcscd.comm

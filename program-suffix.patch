@@ -1,0 +1,48 @@
+diff --git a/etc/Makefile.am b/etc/Makefile.am
+index 37601067..0e8dec9d 100644
+--- a/etc/Makefile.am
++++ b/etc/Makefile.am
+@@ -12,7 +12,8 @@ CLEANFILES = $(systemdsystemunit_DATA)
+ edit = sed \
+ 	-e 's|@sysconfdir[@]|$(sysconfdir)|g' \
+ 	-e 's|@sbindir_exp[@]|$(sbindir_exp)|g' \
+-	-e 's|@ipcdir[@]|$(ipcdir)|g'
++	-e 's|@ipcdir[@]|$(ipcdir)|g' \
++	-e "s|@pcscd@|`echo pcscd | sed '$(transform)'`|g"
+ 
+ $(systemdsystemunit_DATA): Makefile
+ 	rm -f $@ $@.tmp
+@@ -26,4 +27,11 @@ $(systemdsystemunit_DATA): Makefile
+ pcscd.service: $(srcdir)/pcscd.service.in
+ pcscd.socket: $(srcdir)/pcscd.socket.in
+ 
++install-data-hook:
++	cd $(DESTDIR)$(systemdsystemunitdir); \
++	if test pcscd != `echo pcscd | sed '$(transform)'`; then \
++	  mv pcscd.service `echo pcscd | sed '$(transform)'`.service; \
++	  mv pcscd.socket `echo pcscd | sed '$(transform)'`.socket; \
++	fi;
++
+ endif
+diff --git a/etc/pcscd.service.in b/etc/pcscd.service.in
+index 65ad6a69..34e8572a 100644
+--- a/etc/pcscd.service.in
++++ b/etc/pcscd.service.in
+@@ -1,12 +1,12 @@
+ [Unit]
+ Description=PC/SC Smart Card Daemon
+-Requires=pcscd.socket
++Requires=@pcscd@.socket
+ Documentation=man:pcscd(8)
+ 
+ [Service]
+-ExecStart=@sbindir_exp@/pcscd --foreground --auto-exit $PCSCD_ARGS
+-ExecReload=@sbindir_exp@/pcscd --hotplug
+-EnvironmentFile=-@sysconfdir@/default/pcscd
++ExecStart=@sbindir_exp@/@pcscd@ --foreground --auto-exit $PCSCD_ARGS
++ExecReload=@sbindir_exp@/@pcscd@ --hotplug
++EnvironmentFile=-@sysconfdir@/default/@pcscd@
+ 
+ [Install]
+-Also=pcscd.socket
++Also=@pcscd@.socket
