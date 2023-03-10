@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _cranname=magick
-_cranver=2.7.3
+_cranver=2.7.4
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Advanced Graphics and Image-Processing in R"
 arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
@@ -32,7 +32,7 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
         "CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT")
-sha256sums=('83877b2e23ea43fbc1164de9c2422eafbe7858393ac384df5adf3a7eec122441'
+sha256sums=('e28d67737590f8c19e4cf00a9c74e59d0e45f9ece363ed105b5f40e821e8f02f'
             'e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b')
 
 build() {

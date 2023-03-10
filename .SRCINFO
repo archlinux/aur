@@ -1,7 +1,7 @@
 pkgbase = r-magick
 	pkgdesc = Advanced Graphics and Image-Processing in R
-	pkgver = 2.7.3
-	pkgrel = 2
+	pkgver = 2.7.4
+	pkgrel = 1
 	url = https://cran.r-project.org/package=magick
 	arch = i686
 	arch = x86_64
@@ -23,9 +23,9 @@ pkgbase = r-magick
 	optdepends = r-irdisplay
 	optdepends = r-tesseract
 	optdepends = r-gifski
-	source = https://cran.r-project.org/src/contrib/magick_2.7.3.tar.gz
+	source = https://cran.r-project.org/src/contrib/magick_2.7.4.tar.gz
 	source = CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT
-	sha256sums = 83877b2e23ea43fbc1164de9c2422eafbe7858393ac384df5adf3a7eec122441
+	sha256sums = e28d67737590f8c19e4cf00a9c74e59d0e45f9ece363ed105b5f40e821e8f02f
 	sha256sums = e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b
 
 pkgname = r-magick
