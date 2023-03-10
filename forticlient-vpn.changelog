@@ -1,4 +1,4 @@
-## forticlient-vpn - 7.0.7.0246 - 2022-03-09
+## forticlient-vpn - 7.0.7.0246 - 2023-03-09
 * forticlient-vpn - 7.0.7.0246 - `release 1`
   + updated `PKGBUILD` and install scripts to support the new version 7.0.7.0246
   + added gzip to `depends`
