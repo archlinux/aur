@@ -6,7 +6,7 @@ gitver=v6.2.3
 patchver=20230105
 patchname=more-uarches-for-kernel-5.17+.patch
 pkgver=6.2.v.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -52,12 +52,15 @@ prepare() {
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
 
-  # Implement all packaged patches. Ignore errors.
-  msg2 "Implementing custom kernel patches"
+  # Implement all packaged patches and reverts. Ignore errors.
+  msg2 "Implementing custom kernel patches/reverts"
   while read patch; do
    echo "Applying $patch"
    git apply $patch || echo "ERROR: something went wrong with $patch. Advancing anyway."
   done <<< $(ls ../*.patch)
+
+  git revert bfe46d2efe46c5c952f982e2ca94fe2ec5e58e2a --no-edit
+  git revert 57a425badc05c2e87e9f25713e5c3c0298e4202c --no-edit
 
   # get kernel version
   msg2 "Preparing kernel"
