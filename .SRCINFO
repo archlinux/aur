@@ -1,7 +1,7 @@
 pkgbase = intellij-idea-ultimate-edition
 	pkgdesc = An intelligent IDE for Java, Groovy and other programming languages with advanced refactoring features intensely focused on developer productivity.
 	pkgver = 2022.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jetbrains.com/idea/
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = intellij-idea-ultimate-edition
 	options = !strip
 	source = https://download.jetbrains.com/idea/ideaIU-2022.3.3.tar.gz
 	source = jetbrains-idea.desktop
-	sha256sums = 01102627a4ac17649cc83ac830366f84fe3147cdf56f3de04a22b49bfadcff3f
+	sha256sums = 47911b9d5a68d0ce32379adbfd2ec77b3bc10d0e4fd179cd7c10aff197c6c811
 	sha256sums = 83af2ba8f9f14275a6684e79d6d4bd9b48cd852c047dacfc81324588fa2ff92b
 	source_aarch64 = https://cache-redirector.jetbrains.com/intellij-jbr/jbr-17.0.4-linux-aarch64-b469.53.tar.gz
 	source_aarch64 = https://github.com/JetBrains/intellij-community/raw/master/bin/linux/aarch64/fsnotifier
