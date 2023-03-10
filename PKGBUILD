@@ -3,10 +3,10 @@
 # Based obs/linux-pf-edge by Oleksandr Natalenko aka post-factum <oleksandr@natalenko.name>
 
 pkgbase=linux-pf-git
-pkgver=6.2pf2.r3.gae2bdba8a0c7
+pkgver=6.3.r1169249.508fba29a479
 pkgrel=1
 pkgdesc='Linux pf-kernel (git version)'
-_kernel_rel=6.2
+_kernel_rel=6.3
 _branch=pf-${_kernel_rel}
 _product="${pkgbase%-git}"
 url=https://pfkernel.natalenko.name
@@ -24,11 +24,14 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            '2216a82037179bd337712e743c6a1f72a1c5d35ca28af8a99f0455e1faf16f98')
+            '0f22b780983df61452ae01cf48512f9eeca7eef79d01bed57e714e326705a2ae')
 
 pkgver() {
   cd $_srcname
-  git describe --long --tags | sed 's/^v//;s/-pf/pf/;s/-rc/rc/;s/\([^-]*-g\)/r\1/;s/-/./g'
+  local version="$(grep \^VERSION Makefile|cut -d"=" -f2|cut -d" " -f2)"
+  local patch="$(grep \^PATCHLEVEL Makefile|cut -d"=" -f2|cut -d" " -f2)"
+
+  printf "%s.%s.r%s.%s" "${version}" "${patch}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 export KBUILD_BUILD_HOST=archlinux
@@ -39,7 +42,7 @@ prepare() {
   cd $_srcname
 
   echo "Setting version..."
-  scripts/setlocalversion --save-scmversion
+  # scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
 
