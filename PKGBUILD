@@ -2,19 +2,22 @@
 
 _pkgname=box64
 pkgname=${_pkgname}-git
-pkgver=v0.2.0.r6.g554f4889
+pkgver=v0.2.2.r2.g706ebc39
 pkgrel=1
 pkgdesc='Linux Userspace x86_64 Emulator with a twist'
 arch=('x86_64' 'aarch64' 'riscv64')
 url='https://github.com/ptitSeb/box64'
 license=('MIT')
+install="box64-git.install"
 depends=('gcc-libs')
 #optdepends=('')
 makedepends=('git' 'cmake' 'python')
 provides=(box64)
 conflicts=(box64)
-source=("git+https://github.com/ptitSeb/box64.git#branch=main")
-sha256sums=('SKIP')
+source=("git+https://github.com/ptitSeb/box64.git#branch=main"
+        "box64-git.install")
+sha256sums=('SKIP'
+            '7e94518dbd11121f150a51b64f4c0ec11f844a83f7b15205d28c1de63de699f2')
 
 pkgver() {
     cd ${_pkgname}
