@@ -9,7 +9,7 @@
 
 pkgbase=intel-media-sdk-git
 pkgname=('intel-media-sdk-git' 'libmfx-git')
-pkgver=2022.4.4.r3.ge0fb307c
+pkgver=2023.1.3.r2.gaff8e8fa
 pkgrel=1
 pkgdesc='Legacy API for hardware video acceleration on Intel GPUs (Broadwell to Rocket Lake) (git version)'
 arch=('x86_64')
@@ -36,6 +36,7 @@ pkgver() {
 
 build() {
     cmake -B build -S MediaSDK \
+        -G 'Unix Makefiles' \
         -DBUILD_ALL:BOOL='ON' \
         -DBUILD_TOOLS:BOOL='ON' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
@@ -46,11 +47,11 @@ build() {
         -DENABLE_X11_DRI3:BOOL='ON' \
         -DMFX_APPS_DIR='/usr/lib/mfx' \
         -Wno-dev
-    make -C build
+    cmake --build build
 }
 
 check() {
-    make -C build test
+    ctest --test-dir build --output-on-failure
 }
 
 package_intel-media-sdk-git() {
@@ -59,7 +60,7 @@ package_intel-media-sdk-git() {
     conflicts=('intel-media-sdk')
     options=('!emptydirs')
     
-    make -C build DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake --install build
     ln -s mfx/samples/libcttmetrics.so "${pkgdir}/usr/lib/libcttmetrics.so"
     install -D -m644 MediaSDK/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     
