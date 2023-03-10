@@ -2,19 +2,22 @@
 
 _pkgname=box86
 pkgname=${_pkgname}-git
-pkgver=v0.2.4.r22.g4813a35e
+pkgver=v0.3.0.r2.ga43884ff
 pkgrel=1
 pkgdesc='Linux Userspace x86 Emulator with a twist'
 arch=('armv7h')
 url='https://github.com/ptitSeb/box86'
 license=('MIT')
+install="box86-git.install"
 depends=('gcc-libs')
 #optdepends=('')
 makedepends=('git' 'cmake' 'python')
 provides=(box86)
 conflicts=(box86)
-source=("git+https://github.com/ptitSeb/box86.git#branch=master")
-sha256sums=('SKIP')
+source=("git+https://github.com/ptitSeb/box86.git#branch=master"
+        "box86-git.install")
+sha256sums=('SKIP'
+            'ecd38bdad06c256b2655bd4707d7b5248611073f751357424f2fc6327743e299')
 
 pkgver() {
     cd ${_pkgname}

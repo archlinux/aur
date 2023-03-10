@@ -1,8 +1,9 @@
 pkgbase = box86-git
 	pkgdesc = Linux Userspace x86 Emulator with a twist
-	pkgver = v0.2.4.r22.g4813a35e
+	pkgver = v0.3.0.r2.ga43884ff
 	pkgrel = 1
 	url = https://github.com/ptitSeb/box86
+	install = box86-git.install
 	arch = armv7h
 	license = MIT
 	makedepends = git
@@ -12,6 +13,8 @@ pkgbase = box86-git
 	provides = box86
 	conflicts = box86
 	source = git+https://github.com/ptitSeb/box86.git#branch=master
+	source = box86-git.install
 	sha256sums = SKIP
+	sha256sums = ecd38bdad06c256b2655bd4707d7b5248611073f751357424f2fc6327743e299
 
 pkgname = box86-git
