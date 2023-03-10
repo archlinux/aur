@@ -60,7 +60,7 @@ build() {
             -DCMAKE_BUILD_TYPE=Release \
             ${srcdir}/llvm-project-${_pkgver_suffix}.src/llvm
 
-    ninja -C _build
+    time ninja -C _build
 }
 
 package() {
