@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=shisper-git
-pkgver=0.1.r2.g2b34aa1
+pkgver=0.1.r3.g24044fe
 pkgrel=1
 pkgdesc="A quick & dirty script to generate subtitles and transcriptions for your multimedia files using ggerganov/whisper.cpp"
 arch=(any)
@@ -15,6 +15,7 @@ depends=(
 makedepends=('git')
 conflicts=("${pkgname%%-git}")
 provides=("${pkgname%%-git}")
+backup=('etc/shisper/config.ini')
 source=("${pkgname%%-git}::git+${url}")
 
 pkgver() {
