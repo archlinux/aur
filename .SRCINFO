@@ -1,0 +1,15 @@
+pkgbase = comiconv
+	pkgdesc = A command line tool to convert comic book archives to other formats.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/chrontax/comiconv
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL-2.0
+	makedepends = rust
+	makedepends = cargo
+	makedepends = nasm
+
+pkgname = comiconv
