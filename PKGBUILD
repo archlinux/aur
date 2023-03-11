@@ -2,7 +2,7 @@
 
 pkgname=zzz
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple program to suspend or hibernate your computer"
 arch=(any)
 url="https://github.com/jirutka/zzz"
@@ -18,5 +18,5 @@ build() {
 
 package() {
   cd $pkgname-$pkgver
-  make install DESTDIR="$pkgdir" prefix=/usr
+  make install DESTDIR="$pkgdir" prefix=/usr sbindir=/usr/bin
 }

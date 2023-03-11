@@ -1,7 +1,7 @@
 pkgbase = zzz
 	pkgdesc = A simple program to suspend or hibernate your computer
 	pkgver = 0.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jirutka/zzz
 	arch = any
 	license = MIT
