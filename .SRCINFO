@@ -1,6 +1,6 @@
 pkgbase = ec
 	pkgdesc = A desk calculator with vectors and quotations
-	pkgver = 0.5.1
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://git.sr.ht/~subsetpark/ec
 	arch = x86_64
@@ -9,8 +9,7 @@ pkgbase = ec
 	depends = pkg-config
 	depends = libedit
 	provides = ec
-	source = https://git.sr.ht/~subsetpark/ec/archive/v0.5.1.tar.gz
-	sha256sums = 6efebf33462ae127d6f96ee3ba65b085ce912f0cda337d12b58be72a20519dbc
+	source = https://git.sr.ht/~subsetpark/ec/archive/v0.5.3.tar.gz
+	sha256sums = 536ecde6adcf7bf289eb16b2c40285b7e0c578ea94a26067a80b79c3bd4efa2e
 
 pkgname = ec
-
