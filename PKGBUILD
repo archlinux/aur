@@ -1,4 +1,4 @@
-# Maintainer: Debendra Oli <debendraoli [at] pm [dot] me>
+# Maintainer: Debendra Oli <mail@debendra.me>
 
 pkgname=ydotool-bin
 pkgver=1.0.4
@@ -9,8 +9,8 @@ conflicts=(ydotool)
 provides=(ydotool)
 url="https://github.com/ReimuNotMoe/ydotool"
 license=('AGPL3')
-source=("$url/releases/download/v$pkgver/ydotool-release-ubuntu-latest"
-	"$url/releases/download/v$pkgver/ydotoold-release-ubuntu-latest"
+source=("ydotool-$pkgver::$url/releases/download/v$pkgver/ydotool-release-ubuntu-latest"
+	"ydotoold-$pkgver::$url/releases/download/v$pkgver/ydotoold-release-ubuntu-latest"
 	"80-uinput.rules"
 	"ydotool.service")
 sha256sums=('daa83507a596d6839b7467540382dbdc6e4bf64ebfa4f7d6416e877d9a522c0c'
@@ -20,8 +20,9 @@ sha256sums=('daa83507a596d6839b7467540382dbdc6e4bf64ebfa4f7d6416e877d9a522c0c'
 install=ydotool.install
 
 package() {
-	install -Dm755 "$srcdir/ydotool-release-ubuntu-latest" "$pkgdir/usr/local/bin/ydotool"
-	install -Dm755 "$srcdir/ydotoold-release-ubuntu-latest" "$pkgdir/usr/local/bin/ydotoold"
+	cd "$srcdir/"
+	install -Dm755 "$srcdir/ydotool-$pkgver" "$pkgdir/usr/local/bin/ydotool"
+	install -Dm755 "$srcdir/ydotoold-$pkgver" "$pkgdir/usr/local/bin/ydotoold"
 	install -Dm644 "$srcdir/80-uinput.rules" "$pkgdir/etc/udev/rules.d/80-uinput.rules"
 	install -dm755 "$pkgdir/usr/lib/systemd/user/"
 	install -Dm644 "$srcdir/ydotool.service" "$pkgdir/usr/lib/systemd/user/ydotool.service"
