@@ -1,7 +1,7 @@
 # Maintainer: Jelle van der Waa <jelle@archlinux.org>
 
 pkgname=git-chglog
-pkgver=0.15.1
+pkgver=0.15.4
 pkgrel=1
 pkgdesc='git CHANGELOG generator'
 url="https://github.com/git-chglog/git-chglog"
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(git)
 makedepends=(go)
 source=($pkgname-$pkgver.tar.gz::https://github.com/git-chglog/git-chglog/archive/v${pkgver}.tar.gz)
-sha512sums=('1394ccb2684ab977c0b00cf146d748aee188c7d38362cafc93049120efd0827f8c33470151ffd15fcdf06a039c069e3d58f41a966c5194388da7fface27416d7')
+sha512sums=('753b14567348435ca9a3c469a470fad45b2be11f57d407f14af260b5895ca948ce8c39a6793dee8cf9490dfcc6ebc18e2d61b3ba7d8c8c333cbbf1568b2a6276')
 
 build() {
   cd "${pkgname}-${pkgver}"
