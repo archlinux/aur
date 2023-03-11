@@ -5,6 +5,7 @@ pkgbase = shopware-cli
 	url = https://github.com/FriendsOfShopware/shopware-cli
 	arch = x86_64
 	license = MIT
+	optdepends = dart-sass-embedded: For building admin SCSS using esbuild
 	source = shopware-cli-0.1.57.tar.gz::https://github.com/FriendsOfShopware/shopware-cli/releases/download/0.1.57/shopware-cli_Linux_x86_64.tar.gz
 	source = LICENSE-0.1.57::https://raw.githubusercontent.com/FriendsOfShopware/shopware-cli/main/LICENSE
 	sha256sums = 8f878fd790ee37536c09a5db0b45c8775f97579996a31d8b7e9564095daff010

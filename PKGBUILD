@@ -7,6 +7,9 @@ pkgdesc="A cli which contains handy helpful commands for daily Shopware tasks"
 arch=('x86_64')
 url="https://github.com/FriendsOfShopware/shopware-cli"
 license=('MIT')
+optdepends=(
+    'dart-sass-embedded: For building admin SCSS using esbuild'
+)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/FriendsOfShopware/shopware-cli/releases/download/${pkgver}/${pkgname}_Linux_x86_64.tar.gz"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/FriendsOfShopware/shopware-cli/main/LICENSE")
 sha256sums=('8f878fd790ee37536c09a5db0b45c8775f97579996a31d8b7e9564095daff010'
