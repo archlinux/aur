@@ -1,13 +1,13 @@
 pkgbase = shopware-cli
 	pkgdesc = A cli which contains handy helpful commands for daily Shopware tasks
-	pkgver = 0.1.43
+	pkgver = 0.1.57
 	pkgrel = 1
 	url = https://github.com/FriendsOfShopware/shopware-cli
 	arch = x86_64
 	license = MIT
-	source = shopware-cli-0.1.43.tar.gz::https://github.com/FriendsOfShopware/shopware-cli/releases/download/0.1.43/shopware-cli_Linux_x86_64.tar.gz
-	source = LICENSE-0.1.43::https://raw.githubusercontent.com/FriendsOfShopware/shopware-cli/main/LICENSE
-	sha256sums = b4f0b0189d21b298b0c506c5373e82f6ceedd5955e05bf4a4c07e6b5b59d25eb
+	source = shopware-cli-0.1.57.tar.gz::https://github.com/FriendsOfShopware/shopware-cli/releases/download/0.1.57/shopware-cli_Linux_x86_64.tar.gz
+	source = LICENSE-0.1.57::https://raw.githubusercontent.com/FriendsOfShopware/shopware-cli/main/LICENSE
+	sha256sums = 8f878fd790ee37536c09a5db0b45c8775f97579996a31d8b7e9564095daff010
 	sha256sums = d7aa16ba3040471c1f8958214ca26e957586f6a95434adc476edbaa9ca3a46ae
 
 pkgname = shopware-cli
