@@ -2,7 +2,7 @@
 
 pkgname=ruff-lsp
 _name=${pkgname/-/_}
-pkgver=0.0.21
+pkgver=0.0.22
 pkgrel=1
 pkgdesc='Language Server Protocol implementation for Ruff'
 arch=('any')
@@ -12,8 +12,8 @@ depends=('python-pygls' 'python-typing_extensions' 'ruff')
 makedepends=('python-build' 'python-hatchling' 'python-installer')
 checkdepends=('python-lsp-jsonrpc')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('7232819bf081b8886cdf58648befcfbace6e8985ea5dcad68d55fa7a83f74e31')
-b2sums=('ea57286c0428dc68c908aa5f4ad69a7119f4c883637f3d0294bdb59eec2b32b7190a3e78251c168a722cb3a56df4b1698d0f76e372b4fb3a606533ef3d2f02a4')
+sha256sums=('fb11678c0dcc30dbe5cb6282720cef4e7fc8c6e829b28a5f83ee43935a183a45')
+b2sums=('d869828d7a0de0314fa40c3188ca5a98007ded0fe2e07d161d5e6ef2d3cb96964232cf82e1896c36cfe39ffdf8d4e3caa9df439a889e87272f3497d58bdd8ae7')
 
 build() {
   cd "$_name"-$pkgver
