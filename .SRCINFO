@@ -1,5 +1,5 @@
-pkgbase = fatrace
-	pkgdesc = Reports file access events from all running processes.
+pkgbase = fatrace-minimal
+	pkgdesc = Reports file access events from all running processes. Without powertop and python dependency; i.e. without the 'power-usage-report' script.
 	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/martinpitt/fatrace
@@ -7,9 +7,12 @@ pkgbase = fatrace
 	arch = aarch64
 	arch = armv6l
 	license = GPL
-	depends = python
-	depends = powertop
-	source = https://github.com/martinpitt/fatrace/archive/0.17.0.tar.gz
+	depends = glibc
+	provides = fatrace
+	conflicts = fatrace
+	source = fatracetar.gz::https://github.com/martinpitt/fatrace/archive/0.17.0.tar.gz
+	source = Makefile.patch
 	sha256sums = 38f23014be5c2d5f7d40560931ae8bf24161db311d1795631bfaba02845eed90
+	sha256sums = 4b4c974c24d2ba9928ff578952656fa3383f6d5142b98b86aecb051668c43896
 
-pkgname = fatrace
+pkgname = fatrace-minimal

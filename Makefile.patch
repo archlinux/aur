@@ -1,0 +1,22 @@
+diff --color --unified --recursive --text a/fatrace-0.17.0/Makefile b/fatrace-0.17.0/Makefile
+--- a/fatrace-0.17.0/Makefile	2022-11-11 11:04:56.000000000 +0100
++++ b/fatrace-0.17.0/Makefile	2023-03-11 15:30:52.082983430 +0100
+@@ -1,5 +1,5 @@
+ CFLAGS ?= -O2 -g -Wall -Wextra -Werror
+-PREFIX ?= /usr/local
++PREFIX ?= /usr
+ 
+ fatrace: fatrace.o
+ 	$(CC) $(LDFLAGS) -o $@ $<
+@@ -10,9 +10,7 @@
+ distclean: clean
+ 
+ install: fatrace
+-	install -m 755 -D fatrace $(DESTDIR)$(PREFIX)/sbin/fatrace
+-	install -m 755 power-usage-report $(DESTDIR)$(PREFIX)/sbin/
+-	install -d $(DESTDIR)$(PREFIX)/share/man/man8/
+-	install -m 644 *.8 $(DESTDIR)$(PREFIX)/share/man/man8/
++	install -m 755 -D fatrace $(DESTDIR)$(PREFIX)/bin/fatrace
++	install -m 644 -D fatrace.8 $(DESTDIR)$(PREFIX)/share/man/man8/fatrace.8
+ 
+ .PHONY: clean distclean install
