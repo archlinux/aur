@@ -4,25 +4,25 @@
 
 --- a/base/nix/xdg_util.cc
 +++ b/base/nix/xdg_util.cc
-@@ -29,6 +29,8 @@
+@@ -30,6 +30,8 @@ const char kDotConfigDir[] = ".config";
  const char kXdgConfigHomeEnvVar[] = "XDG_CONFIG_HOME";
  const char kXdgCurrentDesktopEnvVar[] = "XDG_CURRENT_DESKTOP";
  const char kXdgSessionTypeEnvVar[] = "XDG_SESSION_TYPE";
 +const char kDotDataDir[] = ".local/share";
 +const char kXdgDataHomeEnvVar[] = "XDG_DATA_HOME";
- 
+
  FilePath GetXDGDirectory(Environment* env, const char* env_name,
                           const char* fallback_dir) {
 
 --- a/base/nix/xdg_util.h
 +++ b/base/nix/xdg_util.h
-@@ -37,6 +37,12 @@
+@@ -61,6 +61,12 @@ BASE_EXPORT extern const char kXdgCurrentDesktopEnvVar[];
  // The XDG session type environment variable.
  BASE_EXPORT extern const char kXdgSessionTypeEnvVar[];
- 
+
 +// The default XDG data directory name.
 +BASE_EXPORT extern const char kDotDataDir[];
-+ 
++
 +// The XDG data directory environment variable.
 +BASE_EXPORT extern const char kXdgDataHomeEnvVar[];
 +
@@ -39,11 +39,11 @@
 +#include "base/environment.h"
 +#include "base/nix/xdg_util.h"
 +#include "chrome/common/chrome_constants.h"
- 
+
  namespace crypto {
- 
-@@ -45,12 +48,21 @@
- 
+
+@@ -45,12 +48,21 @@ static const base::FilePath::CharType kReadOnlyCertDB[] =
+
  base::FilePath GetDefaultConfigDirectory() {
    base::FilePath dir;
 +#if defined(OS_LINUX)
@@ -65,21 +65,3 @@
    if (!base::CreateDirectory(dir)) {
      LOG(ERROR) << "Failed to create " << dir.value() << " directory.";
      dir.clear();
-@@ -136,7 +148,7 @@
-   NSSInitSingleton() {
-     // Initializing NSS causes us to do blocking IO.
-     // Temporarily allow it until we fix
--    //   http://code.google.com/p/chromium/issues/detail?id=59847
-+    //   http://code.9oo91e.qjz9zk/p/chromium/issues/detail?id=59847
-     base::ThreadRestrictions::ScopedAllowIO allow_io;
- 
-     EnsureNSPRInit();
-@@ -273,7 +285,7 @@
- 
-   // Shouldn't need to const_cast here, but SECMOD doesn't properly declare
-   // input string arguments as const.  Bug
--  // https://bugzilla.mozilla.org/show_bug.cgi?id=642546 was filed on NSS
-+  // https://bugzilla.m0z111a.qjz9zk/show_bug.cgi?id=642546 was filed on NSS
-   // codebase to address this.
-   SECMODModule* module = SECMOD_LoadUserModule(
-       const_cast<char*>(modparams.c_str()), nullptr, PR_FALSE);
