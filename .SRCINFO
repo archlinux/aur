@@ -1,13 +1,13 @@
 pkgbase = tallyard
-	pkgdesc = A peer-to-peer voting system that ensures voter privacy while preventing double-voting
-	pkgver = 0.6.0
+	pkgdesc = an authenticated voting system that ensures voter privacy while preventing double-voting
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://tallyard.xyz
 	arch = x86_64
 	license = MPL2
 	makedepends = go>=1.18
 	depends = libolm
-	source = tallyard-v0.6.0.tar.gz::https://git.hnitbjorg.xyz/~edwargix/tallyard/archive/v0.6.0.tar.gz
-	sha256sums = 30e59d67d2fa96e2df3f00c52a7ff20be5ad14815bdbe29251f65e7440852693
+	source = tallyard-v0.6.1.tar.gz::https://git.hnitbjorg.xyz/~edwargix/tallyard/archive/v0.6.1.tar.gz
+	sha256sums = 8bff6e1612dc076f710f23c4a057e02ad536c96e021f042e3a56f2eadc8f8dd8
 
 pkgname = tallyard
