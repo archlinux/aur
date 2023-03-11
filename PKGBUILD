@@ -64,8 +64,15 @@ _buildmkimage() {
   mv -vf tools/mkimage bpir64-mkimage
 }
 
+_buildfiptool() {
+  cd "${srcdir}/${_gitname}/tools/fiptool"
+  sed -i '/-Werror/d' ./Makefile
+  make HOSTCCFLAGS+="-D'SHA256(x,y,z)=nop'" LDLIBS=""
+}
+
 _buildimage() {
   _plat=$1; _bpir=$2; _atfdev=$3; _rest="${@:4}"
+  cd "${srcdir}/${_gitname}"
   sed -i 's/.*entry = get_partition_entry.*/\tentry = get_partition_entry("'${_bpir}'-'${_atfdev}'-fip");/' \
          plat/mediatek/${_plat}/bl2_boot_mmc.c
   touch plat/mediatek/${_plat}/platform.mk
@@ -93,10 +100,7 @@ build() {
   if [ ! -f "${srcdir}/u-boot-${_ubootpkgver}/bpir3-mkimage"  ] || \
      [ ! -f "${srcdir}/u-boot-${_ubootpkgver}/bpir64-mkimage" ]; then _buildmkimage
   fi
-  cd "${srcdir}/${_gitname}/tools/fiptool"
-  sed -i '/-Werror/d' ./Makefile
-  make HOSTCCFLAGS+="-D'SHA256(x,y,z)=nop'" LDLIBS=""
-  cd "${srcdir}/${_gitname}"
+  _buildfiptool
   _buildimage mt7622 bpir64 sdmmc DDR3_FLYBY=1 DEVICE_HEADER_OFFSET=0
   _buildimage mt7622 bpir64 emmc  DDR3_FLYBY=1 DEVICE_HEADER_OFFSET=0
   _buildimage mt7986 bpir3  sdmmc DRAM_USE_DDR4=1
