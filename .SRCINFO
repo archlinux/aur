@@ -1,6 +1,6 @@
 pkgbase = devtoolbox-git
 	pkgdesc = Development tools at your fingertips
-	pkgver = 1.0.2
+	pkgver = 1.0.2.r0.g72739c7
 	pkgrel = 1
 	url = https://github.com/aleiepure/devtoolbox
 	arch = any
@@ -29,6 +29,8 @@ pkgbase = devtoolbox-git
 	depends = python-textstat
 	depends = python-uuid6
 	depends = webkit2gtk-5.0
+	provides = devtoolbox
+	conflicts = devtoolbox
 	source = git+https://github.com/aleiepure/devtoolbox
 	b2sums = SKIP
 
