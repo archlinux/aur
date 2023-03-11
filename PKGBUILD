@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=jumpy-git
-pkgver=0.5.1.r0.g0cae1a6c
+pkgver=0.6.0.r1.gcd0fb59e
 pkgrel=1
 pkgdesc="Tactical 2D shooter in fishy pixels style"
 arch=('x86_64')
@@ -19,7 +19,7 @@ options=('!lto')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --match "v*" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
