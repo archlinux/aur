@@ -9,6 +9,7 @@ pkgbase = ds9
 	makedepends = make
 	makedepends = automake
 	makedepends = autoconf
+	makedepends = zip
 	depends = libx11
 	depends = zlib
 	depends = libxslt
