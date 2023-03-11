@@ -1,0 +1,17 @@
+pkgbase = git-remote-qubes-git
+	pkgdesc = Inter-VM Git for Qubes OS
+	pkgver = 0.1.0.r0.g8bc91a6
+	pkgrel = 1
+	url = https://github.com/Rudd-O/git-remote-qubes
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python
+	source = git+https://github.com/Rudd-O/git-remote-qubes.git
+	sha256sums = SKIP
+
+pkgname = git-remote-qubes-git
+	depends = git
+	depends = python
+	provides = git-remote-qubes
+	conflicts = git-remote-qubes
