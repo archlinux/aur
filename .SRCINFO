@@ -12,8 +12,7 @@ pkgbase = xts-windows10-theme
 	provides = xts-windows10-theme
 	conflicts = xts-windows10-theme
 	options = !strip
-	source = https://gitlab.com/linux-stuffs/xts-themes/raw/master/xts-windows10-theme/distrib/xts-windows10-theme-0.1-1.tar.gz
+	source = https://gitlab.com/linux-stuffs/xts-themes/-/raw/main/xts-windows10-theme/distrib/xts-windows10-theme-0.1-1.tar.gz
 	sha256sums = SKIP
 
 pkgname = xts-windows10-theme
-
