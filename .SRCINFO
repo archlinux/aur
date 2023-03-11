@@ -1,0 +1,12 @@
+pkgbase = ast-grep
+	pkgdesc = A fast and easy tool for code searching, linting, rewriting at large scale
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/ast-grep/ast-grep
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = ast-grep-0.3.2.tar.gz::https://static.crates.io/crates/ast-grep/ast-grep-0.3.2.crate
+	b2sums = 31d07763aa3f335a64236424c69b2628cefae4b805e20d358c8e461a81fca4da40a383b29754b19aeb74638212c44611c5ba637955ce1e4d4edecd12d2934231
+
+pkgname = ast-grep
