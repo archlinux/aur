@@ -1,12 +1,13 @@
 # Maintainer: Joan Figueras <ffigue at gmail dot com>
 # Contributor: Torge Matthies <openglfreak at googlemail dot com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Contributor: SoftExpert <softexpert at gmail dot com>
 
 _arch=x64v2
 pkgbase=linux-xanmod-linux-bin-${_arch}
 _pkgbase=linux-xanmod
 _major=6.2
-pkgver=${_major}.2
+pkgver=${_major}.3
 xanmod=1
 pkgrel=${xanmod}
 pkgdesc="The Linux kernel and modules with Xanmod patches - Current Stable (MAIN) - Prebuilt version - ${_arch}"
@@ -15,6 +16,13 @@ arch=(x86_64)
 license=(GPL2)
 options=('!strip')
 makedepends=('jq' 'curl')
+
+# Resolve URL of sources from GiHub provider
+#_url_image=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${xanmod} | jq --arg PKGVER "${pkgver}" --arg XANMOD "${xanmod}" --arg ARCH "${_arch}" -r '.assets[] | select(.name | contains("linux-image-" + $PKGVER + "-" + $ARCH + "-xanmod" + $XANMOD)).browser_download_url')
+#_url_headers=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${xanmod} | jq --arg PKGVER "${pkgver}" --arg XANMOD "${xanmod}" --arg ARCH "${_arch}" -r '.assets[] | select(.name | contains("linux-headers-" + $PKGVER + "-" + $ARCH + "-xanmod" + $XANMOD)).browser_download_url')
+#source=("${_url_image}" "${_url_headers}")
+#noextract=("${_url_image}" "${_url_headers}")
+
 
 # Resolve URL of sources from Sourceforge provider
 _image_files=($(curl -sL https://sourceforge.net/projects/xanmod/files/releases/main/${pkgver}-${_arch}-xanmod${xanmod}/ | grep net.sf.files | cut -d'=' -f2- | jq '.[].name' 2>/dev/null | grep "\.deb" | grep -v linux-libc-dev | cut -d'"' -f2))
@@ -26,8 +34,8 @@ validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha256sums=('71a0e9fd4782569a29a6ad2aec9eb92021d0ff45489e49445c1d8239cba6da05'
-            '9990c0b1ae5d91dc4e24ed69deb5af2b9b31bc793ce5786ad4a01f89a257fcd9')
+sha256sums=('c2cdd64ad00c621dd17f86e3527884b246e706977f6b590325c5693b08e52545'
+            '40f4eecc6ac591adf22a8f391f5c85712ec26a2ded355e233750bc38ccbe1d94')
 
 prepare() {
   for _f in ${_image_files[@]} ; do
