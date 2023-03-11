@@ -1,19 +1,18 @@
 pkgbase = s3backer-git
-	pkgdesc = FUSE-based single file backing store via Amazon S3
-	pkgver = r509.2ecf161
+	pkgdesc = FUSE-based single file backing store via Amazon S3 compatible services
+	pkgver = r827.6a07e58
 	pkgrel = 1
 	url = https://github.com/archiecobbs/s3backer
 	arch = x86_64
 	license = GPL
-	depends = fuse2
+	makedepends = git
 	depends = curl
 	depends = expat
-	depends = openssl
-	depends = zlib
+	depends = fuse2
+	optdepends = nbdkit
 	provides = s3backer
 	conflicts = s3backer
 	source = s3backer-git::git+https://github.com/archiecobbs/s3backer
 	sha512sums = SKIP
 
 pkgname = s3backer-git
-

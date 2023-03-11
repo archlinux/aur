@@ -1,15 +1,17 @@
-# Maintainer: DuckSoft <realducksoft@gmail.com>
+# Maintainer: Maximilian Stejskal <aur.max@sngn.net>
 
 pkgname='s3backer-git'
-pkgver=r509.2ecf161
+pkgver=r827.6a07e58
 pkgrel=1
-pkgdesc="FUSE-based single file backing store via Amazon S3"
+pkgdesc="FUSE-based single file backing store via Amazon S3 compatible services"
 arch=('x86_64')
 provides=('s3backer')
 conflicts=('s3backer')
 url="https://github.com/archiecobbs/s3backer"
 license=('GPL')
-depends=('fuse2' 'curl' 'expat' 'openssl' 'zlib')
+makedepends=('git')
+depends=('curl' 'expat' 'fuse2')
+optdepends=('nbdkit')
 source=("$pkgname::git+https://github.com/archiecobbs/s3backer")
 sha512sums=('SKIP')
 
@@ -20,12 +22,17 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  ./autogen.sh
-  ./configure --prefix="${pkgdir}/usr"
+
+  set -e
+  . ./cleanup.sh
+  mkdir m4
+  autoreconf -iv
+  ./configure
   make
 }
 
 package() {
   cd "${srcdir}/${pkgname}"
-  make install
+
+  make DESTDIR="$pkgdir/" install
 }
