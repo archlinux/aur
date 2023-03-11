@@ -1,7 +1,7 @@
 # Maintainer: lapinot <lapinot@sbi.re>
 pkgname=lldap-git
 pkgver=0.4.1.r88.g9e479d3
-pkgrel=1
+pkgrel=2
 pkgdesc="Light LDAP implementation"
 arch=('x86_64')
 url="https://github.com/nitnelave/lldap"
