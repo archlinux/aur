@@ -2,12 +2,15 @@
 
 pkgname=qatlib
 pkgver=23.02.0
-pkgrel=1
+pkgrel=2
 pkgdesc="User space library for Intel(R) QuickAssist Technology"
 url="https://github.com/intel/qatlib"
 license=(BSD)
 arch=(any)
-makedepends=(nasm)
+makedepends=(
+  nasm
+  systemd
+)
 
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
