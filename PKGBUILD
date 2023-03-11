@@ -4,7 +4,7 @@
 
 _name='dasbus'
 pkgname="python-${_name}"
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc='DBus library in Python 3'
 arch=('any')
@@ -14,7 +14,7 @@ depends=('python' 'python-gobject' 'dbus')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=("${_name}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('710617b229a9017b2d38b310b76fbac1a29976089cb8bfe4c01547dddb35d59e')
+sha256sums=('442a8df9330d4f55704c92cbed066cf0918378418be89d6fff67721d3cba5590')
 
 build() {
     cd "$_name-$pkgver"
