@@ -1,6 +1,6 @@
 pkgbase = fractal-git
 	pkgdesc = Matrix messaging app for GNOME written in Rust
-	pkgver = 5.alpha1.r55.g92692649
+	pkgver = 5.alpha1.r166.g52ed7d3c
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.gnome.org/GNOME/fractal
@@ -16,11 +16,11 @@ pkgbase = fractal-git
 	depends = gst-plugins-base-libs
 	depends = gst-editing-services
 	depends = gspell
-	depends = libadwaita>=1:1.2.alpha
+	depends = libadwaita>=1:1.3alpha
 	depends = pipewire
 	depends = libshumate
 	depends = org.freedesktop.secrets
-	provides = fractal=5.alpha1.r55.g92692649
+	provides = fractal=5.alpha1.r166.g52ed7d3c
 	provides = fractal-next
 	conflicts = fractal
 	replaces = fractal-next
