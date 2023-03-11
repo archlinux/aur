@@ -1,6 +1,6 @@
 pkgbase = bapctools-git
 	pkgdesc = Tools for developing ICPC-style programming contest problems.
-	pkgver = r1289.5469e2e
+	pkgver = r1310.16e23ee
 	pkgrel = 1
 	url = https://github.com/RagnarGrootKoerkamp/BAPCtools
 	install = bapctools.install
@@ -27,6 +27,7 @@ pkgbase = bapctools-git
 	optdepends = ghostscript: for LaTeX figures,
 	optdepends = python-matplotlib: for generating solve stats,
 	optdepends = python-questionary: for better prompts in new_contest and new_problem,
+	optdepends = python-requests: for better prompts in new_contest and new_problem,
 	optdepends = asymptote: for visualizations
 	source = bapctools::git+https://github.com/RagnarGrootKoerkamp/BAPCtools
 	md5sums = SKIP

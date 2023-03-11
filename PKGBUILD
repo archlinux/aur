@@ -1,7 +1,7 @@
 # Maintainer: Ragnar Groot Koerkamp <ragnar.grootkoerkamp@gmail.com>
 pkgname=bapctools-git
 _pkgname=bapctools
-pkgver=r1289.5469e2e
+pkgver=r1310.16e23ee
 pkgrel=1
 pkgdesc="Tools for developing ICPC-style programming contest problems."
 arch=('any')
@@ -22,6 +22,7 @@ optdepends=('gcc: for compiling c++ sources',
 	'ghostscript: for LaTeX figures',
 	'python-matplotlib: for generating solve stats',
 	'python-questionary: for better prompts in new_contest and new_problem',
+	'python-requests: for better prompts in new_contest and new_problem',
 	'asymptote: for visualizations'
 )
 makedepends=('git' 'rsync')
