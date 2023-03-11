@@ -1,9 +1,10 @@
-# Maintainer: GordonGR <ntheo1979@gmail.com>
+# Maintainer: Kostas Georgiadis <kot+aur@cons.gr>
+# Contributor: GordonGR <ntheo1979@gmail.com>
 # Contributor: Antonis G. <capoiosct at gmail dot com>
 # Contributor: Apostolos Bessas <mpessas at gmail dot com>
 
 pkgname=otf-gfs
-pkgver=20210802
+pkgver=20230311
 pkgrel=1
 pkgdesc='Selection of open type fonts from the Greek Font Society.'
 arch=(any)
@@ -46,7 +47,7 @@ sha256sums=('2103bb72f11d0746e5e27445a79dfb4acacfe9d60caeb0e483c68d81a5a01c31'
             '7243a2192b663751f18aaa87348385e2945d75e4e7e111c651631331936754ed'
             '913b18fd5fe073a1dc03a2086dd8dea63f5d7d5bacffa27808cfd70ac467f19b'
             '77cef2fdf15dc3e4ca4b469e84a507f1ba1c0cbf4685d0662ae42c72e409664a'
-            'fa11f27e2b64817f44b232a550100efc01319ecad13a54b016f8b269e9668f01'
+            '866855b0296579451c233fc78bec82918996a8df7341ee2f1c09d7bc94440680'
             '5b01ef4783db75327fb90165a243e0bd467cc5329623d769f6a3aaec7b6cf80b'
             '7dfe83c5a0155f9c7764dce7493b45ba2f1358ce251f9c621387a3a252cd08a6'
             '213347a31a0a50f47dd740454407c87d6c83df570f103a5fb74a5418df0d5b18'
@@ -55,7 +56,7 @@ sha256sums=('2103bb72f11d0746e5e27445a79dfb4acacfe9d60caeb0e483c68d81a5a01c31'
             '8aaed378127252c095fd93abb18c697b82cfa8792bc31826e23157e119f33723'
             '2c255771b704cd2e57c6b2dc0133715195bb6a127373aca8bf79cbd6f7524959'
             '9d02c294c33aad58de44c408d20f5a7b06aefad411bce9f2e096a4040900f702'
-            '9b3f63c792823e7d2cb7859432c40d008b7bc67cd4ef0d1424dc4565745ae999'
+            'ecdfcf5718ef20cd7979305a631a83922b4677822104d9f17126c3c9e91a8b91'
             '2e752e01e164cba7f0bebb30227cce93238308f443bfdf730ab5d622a568a4cc'
             '7bfe591a3d31d13edfe82f6ba968ad1b0fcd2ee5ecb579b9837181949679752c'
             '4cae1a7104be63627f04184e690514ca4371dc4e9ab2026694e03a44388b577a'
