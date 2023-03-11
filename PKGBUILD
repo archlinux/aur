@@ -7,11 +7,15 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgbase=systemd-selinux
-pkgname=('systemd-selinux' 'systemd-libs-selinux' 'systemd-resolvconf-selinux' 'systemd-sysvcompat-selinux')
-_tag='eb0f8fc41511dda1f9e0d19e830cc8c6668a2628' # git rev-parse v${_tag_name}
-_tag_name=253
+pkgname=('systemd-selinux'
+         'systemd-libs-selinux'
+         'systemd-resolvconf-selinux'
+         'systemd-sysvcompat-selinux'
+         'systemd-ukify-selinux')
+_tag='199399bb283701b6a4aaf5ace49f56f30f38e9a3' # git rev-parse v${_tag_name}
+_tag_name=253.1
 pkgver="${_tag_name/-/}"
-pkgrel=1
+pkgrel=3
 arch=('x86_64' 'aarch64')
 url='https://www.github.com/systemd/systemd'
 groups=('selinux')
@@ -51,13 +55,13 @@ sha512sums=('SKIP'
             'SKIP'
             '3ccf783c28f7a1c857120abac4002ca91ae1f92205dcd5a84aff515d57e706a3f9240d75a0a67cff5085716885e06e62597baa86897f298662ec36a940cf410e'
             'f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73'
-            'aeefb607471cffb5ed4c3d9f36dc0954a9a08cee4b7b4ff55468b561e089e3d8448398906a7df328049ba51b712e4d50698b96bc152bdb03a35ce39c3f51a7cb'
+            '12f3c011a0164d28b092722639fff92c663c18b032d421695b0a72dbf123dd0908e3822087766ee922e131c02126f67ba2e1983c5cc244f5c4884dfed8605d00'
             'a8c7e4a2cc9c9987e3c957a1fc3afe8281f2281fffd2e890913dcf00cf704024fb80d86cb75f9314b99b0e03bac275b22de93307bfc226d8be9435497e95b7e6'
             '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
             'c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5'
             '5a1d78b5170da5abe3d18fdf9f2c3a4d78f15ba7d1ee9ec2708c4c9c2e28973469bc19386f70b3cf32ffafbe4fcc4303e5ebbd6d5187a1df3314ae0965b25e75'
             'b90c99d768dc2a4f020ba854edf45ccf1b86a09d2f66e475de21fe589ff7e32c33ef4aa0876d7f1864491488fd7edb2682fc0d68e83a6d4890a0778dc2d6fe19'
-            '217a9dc3f9d8cd0c9fee54f777396f5a270c2e8a30c572ce5f635165adadcec275af0dae1456019cedb9cc93b7cef0862e5070aeb99a19e496625200e8dfac93'
+            'a586f62b92268ae1e8a9310b02693548fb114292e1252953b4c9475d29e2817b5042a612f3b3ef09fb5b18126e2c3486ff49dd764d97644f0c510ae0200e075b'
             '299dcc7094ce53474521356647bdd2fb069731c08d14a872a425412fcd72da840727a23664b12d95465bf313e8e8297da31259508d1c62cc2dcea596160e21c5'
             '0d6bc3d928cfafe4e4e0bc04dbb95c5d2b078573e4f9e0576e7f53a8fab08a7077202f575d74a3960248c4904b5f7f0661bf17dbe163c524ab51dd30e3cb80f7'
             '2b50b25e8680878f7974fa9d519df7e141ca11c4bfe84a92a5d01bb193f034b1726ea05b3c0030bad1fbda8dbb78bf1dc7b73859053581b55ba813c39b27d9dc'
@@ -69,6 +73,8 @@ sha512sums=('SKIP'
             '825b9dd0167c072ba62cabe0677e7cd20f2b4b850328022540f122689d8b25315005fa98ce867cf6e7460b2b26df16b88bb3b5c9ebf721746dce4e2271af7b97')
 
 _backports=(
+  # Revert "hwdb: fix swapped buttons for Logitech Lift left"
+  'ae9f36397f45dff8e2181c6af5f763e51a7c9639'
 )
 
 _reverts=(
@@ -175,9 +181,10 @@ package_systemd-selinux() {
             "${pkgname/-selinux}=${pkgver}-${pkgrel}")
   conflicts=('nss-myhostname' 'systemd-tools' 'udev'
              "${pkgname/-selinux}" 'selinux-systemd')
-  optdepends=('libmicrohttpd: remote journald capabilities'
+  optdepends=('libmicrohttpd: systemd-journal-gatewayd and systemd-journal-remote'
               'quota-tools: kernel-level quota management'
-              'systemd-sysvcompat: symlink package to provide sysvinit binaries'
+              'systemd-sysvcompat-selinux: symlink package to provide sysvinit binaries'
+              'systemd-ukify-selinux: combine kernel and initrd into a signed Unified Kernel Image'
               'polkit: allow administration as unprivileged user'
               'python: Unified Kernel Image with ukify'
               'curl: systemd-journal-upload, machinectl pull-tar and pull-raw'
@@ -210,8 +217,16 @@ package_systemd-selinux() {
   rmdir "$pkgdir"/var/log/journal/remote
 
   # runtime libraries shipped with systemd-libs
-  install -d -m0755 systemd-libs
-  mv "$pkgdir"/usr/lib/lib{nss,systemd,udev}*.so* systemd-libs
+  install -d -m0755 systemd-libs/lib/
+  mv "$pkgdir"/usr/lib/lib{nss,systemd,udev}*.so* systemd-libs/lib/
+  mv "$pkgdir"/usr/lib/pkgconfig systemd-libs/lib/pkgconfig
+  mv "$pkgdir"/usr/include systemd-libs/include
+  mv "$pkgdir"/usr/share/man/man3 systemd-libs/man3
+
+  # ukify shipped in separate package
+  install -d -m0755 systemd-ufify/{systemd,man1}
+  mv "$pkgdir"/usr/lib/systemd/ukify systemd-ufify/systemd/
+  mv "$pkgdir"/usr/share/man/man1/ukify.1 systemd-ufify/man1/
 
   # manpages shipped with systemd-sysvcompat
   rm "$pkgdir"/usr/share/man/man8/{halt,poweroff,reboot,shutdown}.8
@@ -266,8 +281,10 @@ package_systemd-libs-selinux() {
   conflicts=('libsystemd' 'libsystemd-selinux' "${pkgname/-selinux}")
   replaces=('libsystemd-selinux')
 
-  install -d -m0755 "$pkgdir"/usr
-  mv systemd-libs "$pkgdir"/usr/lib
+  install -d -m0755 "$pkgdir"/usr/share/man
+  mv systemd-libs/lib "$pkgdir"/usr/lib
+  mv systemd-libs/include "$pkgdir"/usr/include
+  mv systemd-libs/man3 "$pkgdir"/usr/share/man/man3
 }
 
 package_systemd-resolvconf-selinux() {
@@ -300,6 +317,19 @@ package_systemd-sysvcompat-selinux() {
   for tool in halt poweroff reboot shutdown; do
     ln -s systemctl "$pkgdir"/usr/bin/$tool
   done
+}
+
+package_systemd-ukify-selinux() {
+  pkgdesc='Combine kernel and initrd into a signed Unified Kernel Image'
+  license=('GPL2')
+  provides=('ukify' "${pkgname/-selinux}=${pkgver}-${pkgrel}")
+  depends=('binutils' 'python-pefile' 'systemd')
+  optdepends=('python-pillow: Show the size of splash image'
+              'sbsigntools: Sign the embedded kernel')
+
+  install -d -m0755 "$pkgdir"/usr/{lib,share/man}
+  mv systemd-ufify/systemd "$pkgdir"/usr/lib/systemd
+  mv systemd-ufify/man1 "$pkgdir"/usr/share/man/man1
 }
 
 # vim:ft=sh syn=sh et sw=2:
