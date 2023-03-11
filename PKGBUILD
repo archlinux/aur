@@ -24,13 +24,7 @@ prepare() {
 
 pkgver() {
 	cd "$_gitname"
-	(
-		set -o pipefail
-
-		# the -next rewrite is a completely separate git history, which does not have any tags yet
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "5.alpha.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+	git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
