@@ -2,12 +2,12 @@
 
 pkgname=mongosh
 pkgver=1.8.0
-pkgrel=2
-pkgdesc='Node.js REPL for interacting with MongoDB instances.'
+pkgrel=3
+pkgdesc='Rich Node.js REPL for interacting with MongoDB instances.'
 arch=('x86_64')
-url='https://www.mongodb.com/products/shell'
+url='https://github.com/mongodb-js/mongosh'
 license=('Apache')
-depends=(nodejs krb5 libuv)
+depends=(nodejs krb5)
 makedepends=(git jq npm modclean)
 source=(
   https://github.com/mongodb-js/$pkgname/archive/refs/tags/v$pkgver.tar.gz
@@ -42,7 +42,7 @@ package() {
 
   cd "$pkgdir"/usr/lib/node_modules/mongosh
   npm prune --omit=dev
-  modclean --path . -r -a "*.ts,.bin,.deps,.github,.vscode,bin.js" --ignore='license'
+  modclean --path . -r -a "*.ts,.bin,.deps,.github,.vscode,bin.js,makefile" --ignore="license,makefile*"
   cd -
 
   install -Dm0644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
