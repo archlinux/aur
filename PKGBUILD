@@ -2,11 +2,11 @@
 
 pkgbase=linux-amd
 _srcname=linux
-gitver=v6.2.3
+gitver=v6.2.4
 patchver=20230105
 patchname=more-uarches-for-kernel-5.17+.patch
-pkgver=6.2.v.3
-pkgrel=2
+pkgver=6.2.v.4
+pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -25,7 +25,7 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '190d4b9a3c3b55702f0974b7716d955f02074042f8f389766b949e622abf9460'
+            'f4642bc5056f6bf5a302e905a714d7ad9ce9e2fb55d07b640dff741feb33582e'
             #.preset file
             '60c6ba602443e94a9eba3aeee9d194027d69bffaa428c6d055348ebf03681b5c'
             #linux install file
@@ -58,9 +58,6 @@ prepare() {
    echo "Applying $patch"
    git apply $patch || exit 2
   done <<< $(ls ../*.patch)
-
-  git revert bfe46d2efe46c5c952f982e2ca94fe2ec5e58e2a --no-edit
-  git revert 57a425badc05c2e87e9f25713e5c3c0298e4202c --no-edit
 
   # get kernel version
   msg2 "Preparing kernel"
