@@ -1,3 +1,11 @@
+* Sat Mar 11 2023 Vladimir Svyatski <vsvyatski@yandex.ru> - 9.1.0-1
+  PeaZip 9.1.0 brings a major restyle in application's look & feel and themes, and many
+  usability improvements for the file manager, and archiving/extraction screens.
+  The scripting engine was refined, with the ability to adapt the syntax for a specific
+  7z version at runtime, and to export archive conversion tasks as scripts.
+  Support for TAR, Brotli, and Zstandard formats was improved.
+  A new PeaZip Portable package for BSD systems on x86_64 architecture is now available.
+
 * Wed Dec 21 2022 Vladimir Svyatski <vsvyatski@yandex.ru> - 9.0.0-1
   PeaZip 9.0.0 completes the GUI evolution of 8.x line, both with look&feel updates and
   with under the hood improvements, making the application easier to customize and adapt
@@ -33,10 +41,3 @@
   improved file manager, and refreshed themes.
   Sources package was re-organized for better usability.
   Updated backends: Pea 1.08, and 7z 22.00.
-
-* Mon Jun 20 2022 Vladimir Svyatski <vsvyatski@yandex.ru> - 8.6.0-1
-  PeaZip 8.6.0 release comes with new themes and improved, easier to customize UI layout.
-  It is now possible to use custom compression presets (either built-in or user defined)
-  from command line and scripts, and to set immediate execution for custom compression
-  presets.
-  Updated backends: Pea 1.07, and (Linux) Zstd 1.5.2.
