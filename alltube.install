@@ -1,0 +1,14 @@
+## arg 1:  the new package version
+post_install() {
+  echo "The alltube webapp has been installed to /usr/share/webapps/alltube"
+  echo "Configuration files are in /etc/webapps/alltube"
+  echo "You still have some work to do manually:"
+  echo "- You will want to edit the configuration file /etc/webapps/alltube/config/config.yml"
+  echo "  see also https://github.com/Rudloff/alltube/blob/master/config/config.example.yml"
+  echo "- You will need to configure a webserver with PHP capability to serve the app"
+  echo "  see https://github.com/Rudloff/alltube#web-server-configuration"
+  echo "- Finally, you will most likely need a more up to date version of youtube-dl"
+  echo "  or of yt-dl than the one packaged here."
+  echo "  see https://github.com/Rudloff/alltube/issues/388"
+}
+

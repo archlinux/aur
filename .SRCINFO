@@ -1,7 +1,7 @@
 pkgbase = alltube
 	pkgdesc = PHP youtube-dl frontend
-	pkgver = 3.1.0
-	pkgrel = 2
+	pkgver = 3.1.1
+	pkgrel = 1
 	url = https://github.com/Rudloff/alltube/
 	arch = any
 	license = GPL
@@ -9,8 +9,10 @@ pkgbase = alltube
 	depends = php-intl
 	depends = youtube-dl
 	depends = ffmpeg
-	backup = etc/webapps/alltube/config/
-	source = https://github.com/Rudloff/alltube/releases/download/3.1.0/alltube-3.1.0.zip
-	md5sums = 0a601b8c76c70a5eb6a33eafd0b59422
+	backup = etc/webapps/alltube/config/config.yml
+	source = https://github.com/Rudloff/alltube/releases/download/3.1.1/alltube-3.1.1.zip
+	source = alltube.install
+	md5sums = 8678dc570e33920051a75013aac68995
+	md5sums = 5610ceb1d74f728c3f2f4e7281dae546
 
 pkgname = alltube
