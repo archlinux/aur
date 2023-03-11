@@ -3,7 +3,7 @@
 # Contributor: Myles English <myles at rockhead dot biz>
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 pkgver=3.18.5
-pkgrel=1
+pkgrel=2
 pkgname=petsc
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
@@ -35,12 +35,20 @@ optdepends=('trilinos: support for trilinos'
 
 install=petsc.install
 source=(http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/${pkgname}-${pkgver}.tar.gz
-        test_optdepends.sh)
+        test_optdepends.sh
+        make.patch)
 sha512sums=('951614eda67636a12a69799ece8a2cb44b1e6238acc471cda63d1147861a2a15ce6af86c33ee80123d90be7b8f2a3494a9288997728737b33e28c77a5d53a7a6'
-            'bdbff55c99205ae6edf574af319d19133aaf91eeae2dbb826f207be9f77ec08dfaf4afca6642b1536f159b7516c1fdeb29f35356dbc69c53c4ce506d44bf5e40')
+            'bdbff55c99205ae6edf574af319d19133aaf91eeae2dbb826f207be9f77ec08dfaf4afca6642b1536f159b7516c1fdeb29f35356dbc69c53c4ce506d44bf5e40'
+            '1ec8805df29c87d482a4ff937353feae16830cec70743421b75dbe737c1d569b3995ad832aecd8126782e2ea8f56655285549acce098aad66e7902c78e3f5ad9')
 
 _install_dir=/opt/petsc/${_config}
 _petsc_arch=arch-${_config}
+
+
+prepare() {
+  cd ${srcdir}/${pkgname}-${pkgver}
+  patch --strip=1 --input=${srcdir}/make.patch
+}
 
 build() {
   _build_dir=${srcdir}/${pkgname}-${pkgver}
