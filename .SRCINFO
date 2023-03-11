@@ -11,5 +11,7 @@ pkgbase = comiconv
 	makedepends = rust
 	makedepends = cargo
 	makedepends = nasm
+	source = comiconv::git+https://github.com/chrontax/comiconv
+	sha512sums = SKIP
 
 pkgname = comiconv
