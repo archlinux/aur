@@ -54,6 +54,7 @@ _buildmkimage() {
   echo "CONFIG_TOOLS_LIBCRYPTO=n" | tee -a configs/my_defconfig
   # kwbimage needs libcrypto, so remove it from build
   sed -i '/kwbimage.o \\/d' ./tools/Makefile
+  # reduce objects being build, as they are not linked anyway
   sed -i 's/FIT_OBJS-y :=.*/FIT_OBJS-y := fit_common.o boot\/image-fit.o/' ./tools/Makefile
   ARCH=arm64 make clean
   ARCH=arm64 make my_defconfig
