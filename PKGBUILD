@@ -8,7 +8,7 @@
 pkgname=conky-lua-nv
 _pkgname=conky
 pkgver=1.18.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced system monitor for X based on torsmo with lua and nvidia enabled"
 arch=('i686' 'x86_64')
 url="https://github.com/brndnmtthws/conky"
@@ -74,8 +74,8 @@ package() {
   cd ${srcdir}/${_pkgname}-${pkgver}
   make -C build DESTDIR=${pkgdir} install
   install -D -m644 COPYING -t ${pkgdir}/usr/share/licenses/${pkgname}
-  install -D -m644 build/extras/vim/syntax/conkyrc.vim -t "${pkgdir}"/usr/share/vim/vimfiles/syntax/conkyrc.vim
-  install -D -m644 extras/vim/ftdetect/conkyrc.vim -t "${pkgdir}"/usr/share/vim/vimfiles/ftdetect/conkyrc.vim
+  install -D -m644 build/extras/vim/syntax/conkyrc.vim -t "${pkgdir}"/usr/share/vim/vimfiles/syntax/
+  install -D -m644 extras/vim/ftdetect/conkyrc.vim -t "${pkgdir}"/usr/share/vim/vimfiles/ftdetect/
 }
 
 # vim:ts=2:et:sw=2
