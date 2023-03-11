@@ -4,7 +4,7 @@ _p=re2g
 
 pkgname=${_p}-git
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="A grep-alike built on re2 pcre-like fast regexp library."
 arch=(i686 x86_64)
 url='https://github.com/akamai/re2g'
@@ -19,13 +19,14 @@ for p in ${_patches[@]}; do source+=($p); sha256sums+=(SKIP); done
 
 pkgver() {
 	cd $_p
-	printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s.%s.$pkgrel" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
 	cd $_p
-	for p in ${_patches[@]}
-	do patch --dry-run -tNp1 -R -i "$srcdir"/$p >/dev/null || patch -tNp1 -i "$srcdir"/$p
+	for p in ${_patches[@]}; do
+		patch --dry-run -tNp1 -R -i "$srcdir"/$p >/dev/null \
+			|| patch -tNp1 -i "$srcdir"/$p || { echo >&2 "ERROR: patch failed - $p"; exit 1; }
 	done
 }
 

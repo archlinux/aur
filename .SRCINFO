@@ -1,7 +1,7 @@
 pkgbase = re2g-git
 	pkgdesc = A grep-alike built on re2 pcre-like fast regexp library.
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/akamai/re2g
 	arch = i686
 	arch = x86_64
