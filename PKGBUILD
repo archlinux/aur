@@ -4,7 +4,7 @@
 pkgname=alist-bin
 _pkgname=${pkgname%-bin}
 pkgver=3.13.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Another file list program that supports multiple storage"
 arch=("aarch64" "x86_64")
 url="https://github.com/alist-org/alist"
