@@ -14,6 +14,8 @@ depends=('cups'
 	'zlib'
 	'wget')
 
+install=install.sh
+
 build() {
     wget https://gdlp01.c-wss.com/gds/6/0100009236/15/linux-UFRII-drv-v570-us-11.tar.gz
     tar -xf linux-UFRII-drv-v570-us-11.tar.gz
