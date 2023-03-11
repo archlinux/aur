@@ -2,12 +2,12 @@
 pkgname=mimic
 _pkgname=mimic3
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Text-to-speech voice synthesis from the Mycroft project."
 arch=(x86_64 i686)
 url="https://mimic.mycroft.ai/"
 license=('AGPL3')
-depends=('python' 'python-xdgenvpy')
+depends=('python' 'python-dataclasses-json' 'python-epitran' 'python-gruut-ipa' 'python-phonemes2ids' 'python-xdgenvpy')
 makedepends=('python')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MycroftAI/${_pkgname}/archive/refs/tags/release/v${pkgver}.tar.gz")
 
