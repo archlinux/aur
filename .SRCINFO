@@ -1,0 +1,14 @@
+pkgbase = ufrii-print
+	pkgver = 1.0
+	pkgrel = 1
+	arch = x86_64
+	depends = cups
+	depends = ghostscript
+	depends = gtk3
+	depends = libjpeg6-turbo
+	depends = libgcrypt
+	depends = libjbig-shared
+	depends = zlib
+	depends = wget
+
+pkgname = ufrii-print
