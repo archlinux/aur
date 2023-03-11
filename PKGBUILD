@@ -2,7 +2,7 @@
 
 pkgname=python-aeppl
 _name=${pkgname#python-}
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Tools for an Aesara-based PPL"
 arch=(any)
@@ -18,7 +18,7 @@ depends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ec2a77a7cedaa586393f6f79dbcfa352f30c394fb9040f9c1adac13828527e06')
+sha256sums=('326c38c29ef2b08deace532b5b5717b6403d0bacbe5a30ab55149ec6396a9c38')
 
 _archive="$_name-$pkgver"
 
