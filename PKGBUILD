@@ -13,7 +13,7 @@ conflicts=("${pkgname}")
 depends=('xfce4-theme-switcher' 'xfce4-whiskermenu-plugin' 'gtk-engine-murrine' 'gtk-engines' 'plank' 'whitesur-gtk-theme' 'whitesur-icon-theme' 'whitesur-cursor-theme-git' 'xfce4-docklike-plugin' 'vala-panel-appmenu-common' 'vala-panel-appmenu-registrar' 'vala-panel-appmenu-xfce' 'appmenu-gtk-module' 'rofi')
 options=('!strip')
 
-source=('https://gitlab.com/linux-stuffs/xts-themes/raw/master/xts-macos-big-sur-theme/distrib/xts-macos-big-sur-theme-0.1-2.tar.gz')
+source=('https://gitlab.com/linux-stuffs/xts-themes/-/raw/main/xts-macos-big-sur-theme/distrib/xts-macos-big-sur-theme-0.1-2.tar.gz')
 sha256sums=('SKIP')
 
 package() {
