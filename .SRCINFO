@@ -1,0 +1,17 @@
+pkgbase = ggmorse-git
+	pkgdesc = Morse code decoding library
+	pkgver = r58.55b4aad
+	pkgrel = 1
+	url = https://github.com/ggerganov/ggmorse
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = sdl2
+	provides = ggmorse-from-file
+	provides = ggmorse-gui
+	provides = ggmorse-to-file
+	source = git+https://github.com/ggerganov/ggmorse
+	sha256sums = SKIP
+
+pkgname = ggmorse-git
