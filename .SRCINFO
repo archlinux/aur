@@ -1,0 +1,14 @@
+pkgbase = oscal-cli
+	pkgdesc = A simple open source command line tool to support common operations over OSCAL content.
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/usnistgov/oscal-cli
+	arch = any
+	license = custom
+	makedepends = maven
+	makedepends = java-environment>=11
+	depends = java-environment>=11
+	source = oscal-cli-0.3.2.tar.gz::https://github.com/usnistgov/oscal-cli/archive/v0.3.2.tar.gz
+	sha256sums = 12e2ed6cef6ad8cdd7888a0a4f0aca64a8dae7d054b08163f3b807fca0241a2d
+
+pkgname = oscal-cli
