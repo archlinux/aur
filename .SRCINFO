@@ -22,7 +22,7 @@ pkgbase = xts-macos-sierra-theme
 	provides = xts-macos-sierra-theme
 	conflicts = xts-macos-sierra-theme
 	options = !strip
-	source = https://gitlab.com/linux-stuffs/xts-themes/raw/master/xts-macos-sierra-theme/distrib/xts-macos-sierra-theme-0.1-2.tar.gz
+	source = https://gitlab.com/linux-stuffs/xts-themes/-/raw/main/xts-macos-sierra-theme/distrib/xts-macos-sierra-theme-0.1-2.tar.gz
 	sha256sums = SKIP
 
 pkgname = xts-macos-sierra-theme
