@@ -6,7 +6,7 @@
 pkgname=firefox-vaapi
 _pkgname=firefox
 pkgver=110.0.1
-pkgrel=2
+pkgrel=4
 pkgdesc="Standalone web browser from mozilla.org (with VA-API patches)"
 url="https://www.mozilla.org/firefox/"
 arch=(x86_64)
@@ -71,7 +71,9 @@ source=(
   $_pkgname.desktop
   identity-icons-brand.svg
   0001-libwebrtc-screen-cast-sync.patch
-  0003-enable-vaapi.patch
+  0003-Bug-1820416-Use-correct-FFVPX-headers-from-ffmpeg-6..patch
+  0004-Bug-1821359-Disable-TLS-Key-Pinning-for-Twitter-Doma.patch
+  0005-enable-vaapi.patch
 )
 validpgpkeys=(
   '14F26682D0916CDD81E37B6D61B7B526D98F0353'  # Mozilla Software Releases <release@mozilla.com>
@@ -81,12 +83,16 @@ sha256sums=('f19bb74d684b992625abca68f5776198974cd2785eb5d02d51ba007fc998491f'
             '298eae9de76ec53182f38d5c549d0379569916eebf62149f9d7f4a7edef36abf'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
             '43c83101b7ad7dba6f5fffeb89b70a661a547d506a031ea2beada42ccf04eec7'
+            'be9ba079a931d5e881ce38430d418cc834e8c6b157af6c79ea267998caece806'
+            'e4193f0a31a11ec6f5e16ac8d25c866867742d2c6917f34a87d73fa35eb55c55'
             'f2b19e14d8add13930e2ce89fa5e1b252ac979c8177a78a6fa3eb4ae2ad56633')
 b2sums=('ff196016e0271f7828163b8f767f3321b5ee08ef6bd0b03b134e17a1e5b62666f10ae80a14569438f6ac1c995a7a8422265eaabbc505b6a86e95a66b5db07209'
         'SKIP'
         'e18f2c22e394ca3b6758bc130245b254947e4d15921be3da443d6d7c3c4b0d22ead1b39fbc10a4f896edd19e2a1dffbd1cbb34dc4beb0621a6ddb70ccc53b3a7'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
         '2bf65874c8c1f41c9273b68d74f4fe5c81dca5acbad0b9a5f917df1d46e1b2a1fb25d42a419eb885e76f4d193483cdeb6294e14ed4b2e241c34b84565b6ffd72'
+        'be47c370c1b765921a6ffbb0eeaceaabc26483629b2ebd73c38f36b3ac418d1746fa021b5d444264641ff7c0c13e688a752758bd75c84e0297aceeaec0062ff2'
+        '219ad84cbd9fe6284e61ded5813c1ca36158067e796ae6532cacfe9aeeb7c716c0382d991df5026c3f880dd39c271c6478bc4f56d4cecb14baa05921cf4dd567'
         '35a18c4fefac69bdbcabb5c0005a2cc3afb640a09ab92a9025c3d627a5be8857da7d182f203be55d1e64a07dd1d88d56247d8131bd45c7fa6e18526b30624a71')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -115,10 +121,18 @@ prepare() {
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1819374
   patch -Np1 -i 0002-Bug-1819374-Squashed-ffmpeg-6.0-update.patch
 
+  # https://bugs.archlinux.org/task/77796
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1820416
+  patch -Np1 -i ../0003-Bug-1820416-Use-correct-FFVPX-headers-from-ffmpeg-6..patch
+
+  # https://bugs.archlinux.org/task/77805
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1821359
+  patch -Np1 -i ../0004-Bug-1821359-Disable-TLS-Key-Pinning-for-Twitter-Doma.patch
+
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1809068
   # https://bbs.archlinux.org/viewtopic.php?id=281398
   # https://src.fedoraproject.org/rpms/firefox/blob/rawhide/f/firefox-enable-vaapi.patch
-  patch -Np1 -i ../0003-enable-vaapi.patch
+  patch -Np1 -i ../0005-enable-vaapi.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
