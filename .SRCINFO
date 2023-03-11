@@ -1,6 +1,6 @@
 pkgbase = pipes.js-git
 	pkgdesc = Rewrite of pipes.sh in nodejs. Faster, more config options, and overall better.
-	pkgver = 1.0.1
+	pkgver = 1.0.0
 	pkgrel = 1.0
 	url = https://github.com/Oman395/pipes.js
 	arch = x86_64
