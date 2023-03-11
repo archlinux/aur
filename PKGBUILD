@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=spatstat.utils
-_pkgver=3.0-1
+_pkgver=3.0-2
 pkgname=r-${_pkgname,,}
-pkgver=3.0.1
-pkgrel=3
+pkgver=3.0.2
+pkgrel=1
 pkgdesc="Utility Functions for 'spatstat'"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,7 +16,7 @@ optdepends=(
   r-spatstat.model
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cba1c7806564fd9145ca15edf77233d6ba5609f0989f7812221f5fc1ece0b91a')
+sha256sums=('be60cd2cf21a6b3f71ba60553c045fd87884a4e57744f60e6eb0a2d096314615')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
