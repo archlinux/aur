@@ -4,7 +4,9 @@
 
 pkgname=erg-git
 _pkg="${pkgname%-git}"
-pkgver=0.6.5.r34.g448fe4e6
+pkgver=0.6.7.r0.g86eaba39
+_tag=v0.6.7
+# _tag="$(git -C "$_pkg" describe --abbrev=0)"
 pkgrel=1
 pkgdesc='Statically typed language that builds upon the Python ecosystem'
 url="https://github.com/erg-lang/erg"
@@ -15,8 +17,11 @@ conflicts=("$_pkg" "$_pkg-bin")
 depends=('python')
 makedepends=('cargo' 'git')
 
-source=("$_pkg::git+$url.git")
-sha256sums=("SKIP")
+# If you want to use the latest commit, you can use the following command, but this can cause errors.
+# source=("$_pkg::git+$url.git")
+
+source=("$_pkg::git+$url.git#tag=$_tag")
+sha256sums=('SKIP')
 
 # By enabling the --features flag, you can change the language in which error messages are displayed.
 #
@@ -48,12 +53,11 @@ build() {
 	cargo build --release --frozen
 }
 
-# check() {
-	# Unable to compile in the case of check.
-# 	export RUSTUP_TOOLCHAIN=stable
-# 	cd "$_pkg"
-# 	cargo test --frozen
-# }
+check() {
+ 	export RUSTUP_TOOLCHAIN=stable
+ 	cd "$_pkg"
+ 	cargo test --frozen
+}
 
 package() {
 	cd "$_pkg"

@@ -1,6 +1,6 @@
 pkgbase = erg-git
 	pkgdesc = Statically typed language that builds upon the Python ecosystem
-	pkgver = 0.6.5.r34.g448fe4e6
+	pkgver = 0.6.7.r0.g86eaba39
 	pkgrel = 1
 	url = https://github.com/erg-lang/erg
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = erg-git
 	provides = erg
 	conflicts = erg
 	conflicts = erg-bin
-	source = erg::git+https://github.com/erg-lang/erg.git
+	source = erg::git+https://github.com/erg-lang/erg.git#tag=v0.6.7
 	sha256sums = SKIP
 
 pkgname = erg-git
