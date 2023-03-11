@@ -1,0 +1,1154 @@
+From 7c3c981442b11153ac1a2be678db727ff715253b Mon Sep 17 00:00:00 2001
+From: Arthur Eubanks <aeubanks@google.com>
+Date: Wed, 8 Mar 2023 15:07:17 -0800
+Subject: [PATCH] [Passes] Remove some legacy passes
+
+DFAJumpThreading
+JumpThreading
+LibCallsShrink
+LoopVectorize
+SLPVectorizer
+DeadStoreElimination
+AggressiveDCE
+CorrelatedValuePropagation
+IndVarSimplify
+
+These are part of the optimization pipeline, of which the legacy version is deprecated and being removed.
+---
+ .../LLJITWithOptimizingIRTransform.cpp        |  1 -
+ llvm/include/llvm/InitializePasses.h          |  4 -
+ llvm/include/llvm/LinkAllPasses.h             |  9 --
+ llvm/include/llvm/Transforms/Scalar.h         | 51 ----------
+ llvm/include/llvm/Transforms/Vectorize.h      | 14 ---
+ .../lib/Transforms/IPO/PassManagerBuilder.cpp | 19 ----
+ llvm/lib/Transforms/Scalar/ADCE.cpp           | 47 ---------
+ .../Scalar/CorrelatedValuePropagation.cpp     | 47 ---------
+ .../Transforms/Scalar/DFAJumpThreading.cpp    | 43 --------
+ .../Scalar/DeadStoreElimination.cpp           | 76 --------------
+ llvm/lib/Transforms/Scalar/IndVarSimplify.cpp | 51 ----------
+ llvm/lib/Transforms/Scalar/JumpThreading.cpp  | 87 ----------------
+ llvm/lib/Transforms/Scalar/Scalar.cpp         |  6 --
+ .../Transforms/Utils/LibCallsShrinkWrap.cpp   | 43 --------
+ llvm/lib/Transforms/Utils/Utils.cpp           |  1 -
+ .../Transforms/Vectorize/LoopVectorize.cpp    | 98 -------------------
+ .../Transforms/Vectorize/SLPVectorizer.cpp    | 71 --------------
+ llvm/lib/Transforms/Vectorize/Vectorize.cpp   |  2 -
+ .../hexagon_vector_loop_carried_reuse.ll      |  2 +-
+ ...n_vector_loop_carried_reuse_commutative.ll |  2 +-
+ ...agon_vector_loop_carried_reuse_constant.ll |  2 +-
+ .../scev-after-loopinstsimplify.ll            |  2 +-
+ .../AArch64/sleef-calls-aarch64.ll            |  2 +-
+ polly/lib/Transform/Canonicalization.cpp      |  1 -
+ 24 files changed, 5 insertions(+), 676 deletions(-)
+
+diff --git a/llvm/examples/OrcV2Examples/LLJITWithOptimizingIRTransform/LLJITWithOptimizingIRTransform.cpp b/llvm/examples/OrcV2Examples/LLJITWithOptimizingIRTransform/LLJITWithOptimizingIRTransform.cpp
+index a5fd384b65b5..069c8e8e8031 100644
+--- a/llvm/examples/OrcV2Examples/LLJITWithOptimizingIRTransform/LLJITWithOptimizingIRTransform.cpp
++++ b/llvm/examples/OrcV2Examples/LLJITWithOptimizingIRTransform/LLJITWithOptimizingIRTransform.cpp
+@@ -74,7 +74,6 @@ class MyOptimizationTransform {
+ public:
+   MyOptimizationTransform() : PM(std::make_unique<legacy::PassManager>()) {
+     PM->add(createTailCallEliminationPass());
+-    PM->add(createIndVarSimplifyPass());
+     PM->add(createCFGSimplificationPass());
+   }
+ 
+diff --git a/llvm/include/llvm/InitializePasses.h b/llvm/include/llvm/InitializePasses.h
+index 818dd2e5c45e..64a9f7b47112 100644
+--- a/llvm/include/llvm/InitializePasses.h
++++ b/llvm/include/llvm/InitializePasses.h
+@@ -99,7 +99,6 @@ void initializeCycleInfoWrapperPassPass(PassRegistry &);
+ void initializeDAEPass(PassRegistry&);
+ void initializeDAHPass(PassRegistry&);
+ void initializeDCELegacyPassPass(PassRegistry&);
+-void initializeDFAJumpThreadingLegacyPassPass(PassRegistry &);
+ void initializeDSELegacyPassPass(PassRegistry&);
+ void initializeDeadMachineInstructionElimPass(PassRegistry&);
+ void initializeDebugifyMachineModulePass(PassRegistry &);
+@@ -189,7 +188,6 @@ void initializeLegacyLoopSinkPassPass(PassRegistry&);
+ void initializeLegalizerPass(PassRegistry&);
+ void initializeGISelCSEAnalysisWrapperPassPass(PassRegistry &);
+ void initializeGISelKnownBitsAnalysisPass(PassRegistry &);
+-void initializeLibCallsShrinkWrapLegacyPassPass(PassRegistry&);
+ void initializeLintLegacyPassPass(PassRegistry &);
+ void initializeLiveDebugValuesPass(PassRegistry&);
+ void initializeLiveDebugVariablesPass(PassRegistry&);
+@@ -215,7 +213,6 @@ void initializeLoopSimplifyCFGLegacyPassPass(PassRegistry&);
+ void initializeLoopSimplifyPass(PassRegistry&);
+ void initializeLoopStrengthReducePass(PassRegistry&);
+ void initializeLoopUnrollPass(PassRegistry&);
+-void initializeLoopVectorizePass(PassRegistry&);
+ void initializeLowerAtomicLegacyPassPass(PassRegistry&);
+ void initializeLowerConstantIntrinsicsPass(PassRegistry&);
+ void initializeLowerEmuTLSPass(PassRegistry&);
+@@ -336,7 +333,6 @@ void initializeRewriteStatepointsForGCLegacyPassPass(PassRegistry &);
+ void initializeRewriteSymbolsLegacyPassPass(PassRegistry&);
+ void initializeSCCPLegacyPassPass(PassRegistry&);
+ void initializeSCEVAAWrapperPassPass(PassRegistry&);
+-void initializeSLPVectorizerPass(PassRegistry&);
+ void initializeSROALegacyPassPass(PassRegistry&);
+ void initializeSafeStackLegacyPassPass(PassRegistry&);
+ void initializeSafepointIRVerifierPass(PassRegistry&);
+diff --git a/llvm/include/llvm/LinkAllPasses.h b/llvm/include/llvm/LinkAllPasses.h
+index 3f20916af2f3..9e16054bfb9f 100644
+--- a/llvm/include/llvm/LinkAllPasses.h
++++ b/llvm/include/llvm/LinkAllPasses.h
+@@ -69,7 +69,6 @@ namespace {
+         return;
+ 
+       (void) llvm::createAAEvalPass();
+-      (void) llvm::createAggressiveDCEPass();
+       (void)llvm::createBitTrackingDCEPass();
+       (void) llvm::createAlignmentFromAssumptionsPass();
+       (void) llvm::createBasicAAWrapperPass();
+@@ -81,11 +80,9 @@ namespace {
+       (void) llvm::createCallGraphViewerPass();
+       (void) llvm::createCFGSimplificationPass();
+       (void) llvm::createStructurizeCFGPass();
+-      (void) llvm::createLibCallsShrinkWrapPass();
+       (void) llvm::createCostModelAnalysisPass();
+       (void) llvm::createDeadArgEliminationPass();
+       (void) llvm::createDeadCodeEliminationPass();
+-      (void) llvm::createDeadStoreEliminationPass();
+       (void) llvm::createDependenceAnalysisWrapperPass();
+       (void) llvm::createDomOnlyPrinterWrapperPassPass();
+       (void) llvm::createDomPrinterWrapperPassPass();
+@@ -96,7 +93,6 @@ namespace {
+       (void) llvm::createGuardWideningPass();
+       (void) llvm::createLoopGuardWideningPass();
+       (void) llvm::createInductiveRangeCheckEliminationPass();
+-      (void) llvm::createIndVarSimplifyPass();
+       (void) llvm::createInstSimplifyLegacyPass();
+       (void) llvm::createInstructionCombiningPass();
+       (void) llvm::createJMCInstrumenterPass();
+@@ -137,8 +133,6 @@ namespace {
+       (void) llvm::createSingleLoopExtractorPass();
+       (void) llvm::createTailCallEliminationPass();
+       (void)llvm::createTLSVariableHoistPass();
+-      (void) llvm::createJumpThreadingPass();
+-      (void) llvm::createDFAJumpThreadingPass();
+       (void) llvm::createUnifyFunctionExitNodesPass();
+       (void) llvm::createInstCountPass();
+       (void) llvm::createConstantHoistingPass();
+@@ -164,10 +158,7 @@ namespace {
+       (void) llvm::createLintLegacyPassPass();
+       (void) llvm::createSinkingPass();
+       (void) llvm::createLowerAtomicPass();
+-      (void) llvm::createCorrelatedValuePropagationPass();
+       (void) llvm::createMemDepPrinter();
+-      (void) llvm::createLoopVectorizePass();
+-      (void) llvm::createSLPVectorizerPass();
+       (void) llvm::createLoadStoreVectorizerPass();
+       (void) llvm::createPartiallyInlineLibCallsPass();
+       (void) llvm::createScalarizerPass();
+diff --git a/llvm/include/llvm/Transforms/Scalar.h b/llvm/include/llvm/Transforms/Scalar.h
+index ae91ddca7b81..e9b6dc40c913 100644
+--- a/llvm/include/llvm/Transforms/Scalar.h
++++ b/llvm/include/llvm/Transforms/Scalar.h
+@@ -47,13 +47,6 @@ Pass *createRedundantDbgInstEliminationPass();
+ //
+ FunctionPass *createDeadCodeEliminationPass();
+ 
+-//===----------------------------------------------------------------------===//
+-//
+-// DeadStoreElimination - This pass deletes stores that are post-dominated by
+-// must-aliased stores and are not loaded used between the stores.
+-//
+-FunctionPass *createDeadStoreEliminationPass();
+-
+ 
+ //===----------------------------------------------------------------------===//
+ //
+@@ -61,14 +54,6 @@ FunctionPass *createDeadStoreEliminationPass();
+ // values.
+ FunctionPass *createCallSiteSplittingPass();
+ 
+-//===----------------------------------------------------------------------===//
+-//
+-// AggressiveDCE - This pass uses the SSA based Aggressive DCE algorithm.  This
+-// algorithm assumes instructions are dead until proven otherwise, which makes
+-// it more successful are removing non-obviously dead instructions.
+-//
+-FunctionPass *createAggressiveDCEPass();
+-
+ //===----------------------------------------------------------------------===//
+ //
+ // GuardWidening - An optimization over the @llvm.experimental.guard intrinsic
+@@ -108,13 +93,6 @@ FunctionPass *createSROAPass(bool PreserveCFG = true);
+ //
+ Pass *createInductiveRangeCheckEliminationPass();
+ 
+-//===----------------------------------------------------------------------===//
+-//
+-// InductionVariableSimplify - Transform induction variables in a program to all
+-// use a single canonical induction variable per loop.
+-//
+-Pass *createIndVarSimplifyPass();
+-
+ //===----------------------------------------------------------------------===//
+ //
+ // LICM - This pass is a loop invariant code motion and memory promotion pass.
+@@ -188,22 +166,6 @@ extern char &DemoteRegisterToMemoryID;
+ //
+ FunctionPass *createReassociatePass();
+ 
+-//===----------------------------------------------------------------------===//
+-//
+-// JumpThreading - Thread control through mult-pred/multi-succ blocks where some
+-// preds always go to some succ. Thresholds other than minus one
+-// override the internal BB duplication default threshold.
+-//
+-FunctionPass *createJumpThreadingPass(int Threshold = -1);
+-
+-//===----------------------------------------------------------------------===//
+-//
+-// DFAJumpThreading - When a switch statement inside a loop is used to
+-// implement a deterministic finite automata we can jump thread the switch
+-// statement reducing number of conditional jumps.
+-//
+-FunctionPass *createDFAJumpThreadingPass();
+-
+ //===----------------------------------------------------------------------===//
+ //
+ // CFGSimplification - Merge basic blocks, eliminate unreachable blocks,
+@@ -327,12 +289,6 @@ Pass *createLowerWidenableConditionPass();
+ //
+ Pass *createMergeICmpsLegacyPass();
+ 
+-//===----------------------------------------------------------------------===//
+-//
+-// ValuePropagation - Propagate CFG-derived value information
+-//
+-Pass *createCorrelatedValuePropagationPass();
+-
+ //===----------------------------------------------------------------------===//
+ //
+ // InferAddressSpaces - Modify users of addrspacecast instructions with values
+@@ -428,13 +384,6 @@ FunctionPass *createNaryReassociatePass();
+ //
+ FunctionPass *createLoopDataPrefetchPass();
+ 
+-//===----------------------------------------------------------------------===//
+-//
+-// LibCallsShrinkWrap - Shrink-wraps a call to function if the result is not
+-// used.
+-//
+-FunctionPass *createLibCallsShrinkWrapPass();
+-
+ //===----------------------------------------------------------------------===//
+ //
+ // LoopSimplifyCFG - This pass performs basic CFG simplification on loops,
+diff --git a/llvm/include/llvm/Transforms/Vectorize.h b/llvm/include/llvm/Transforms/Vectorize.h
+index bca78d073003..b77ebbc55e7d 100644
+--- a/llvm/include/llvm/Transforms/Vectorize.h
++++ b/llvm/include/llvm/Transforms/Vectorize.h
+@@ -104,20 +104,6 @@ struct VectorizeConfig {
+   VectorizeConfig();
+ };
+ 
+-//===----------------------------------------------------------------------===//
+-//
+-// LoopVectorize - Create a loop vectorization pass.
+-//
+-Pass *createLoopVectorizePass();
+-Pass *createLoopVectorizePass(bool InterleaveOnlyWhenForced,
+-                              bool VectorizeOnlyWhenForced);
+-
+-//===----------------------------------------------------------------------===//
+-//
+-// SLPVectorizer - Create a bottom-up SLP vectorizer pass.
+-//
+-Pass *createSLPVectorizerPass();
+-
+ //===----------------------------------------------------------------------===//
+ /// Vectorize the BasicBlock.
+ ///
+diff --git a/llvm/lib/Transforms/IPO/PassManagerBuilder.cpp b/llvm/lib/Transforms/IPO/PassManagerBuilder.cpp
+index cd8523c215a0..ba7a7f9b121d 100644
+--- a/llvm/lib/Transforms/IPO/PassManagerBuilder.cpp
++++ b/llvm/lib/Transforms/IPO/PassManagerBuilder.cpp
+@@ -102,17 +102,12 @@ void PassManagerBuilder::addFunctionSimplificationPasses(
+   if (OptLevel > 1) {
+     // Speculative execution if the target has divergent branches; otherwise nop.
+     MPM.add(createSpeculativeExecutionIfHasBranchDivergencePass());
+-
+-    MPM.add(createJumpThreadingPass());         // Thread jumps.
+-    MPM.add(createCorrelatedValuePropagationPass()); // Propagate conditionals
+   }
+   MPM.add(
+       createCFGSimplificationPass(SimplifyCFGOptions().convertSwitchRangeToICmp(
+           true))); // Merge & remove BBs
+   // Combine silly seq's
+   MPM.add(createInstructionCombiningPass());
+-  if (SizeLevel == 0)
+-    MPM.add(createLibCallsShrinkWrapPass());
+ 
+   // TODO: Investigate the cost/benefit of tail call elimination on debugging.
+   if (OptLevel > 1)
+@@ -151,7 +146,6 @@ void PassManagerBuilder::addFunctionSimplificationPasses(
+       SimplifyCFGOptions().convertSwitchRangeToICmp(true)));
+   MPM.add(createInstructionCombiningPass());
+   // We resume loop passes creating a second loop pipeline here.
+-  MPM.add(createIndVarSimplifyPass());        // Canonicalize indvars
+ 
+   // Unroll small loops and perform peeling.
+   MPM.add(createSimpleLoopUnrollPass(OptLevel, DisableUnrollLoops,
+@@ -174,16 +168,10 @@ void PassManagerBuilder::addFunctionSimplificationPasses(
+   // Run instcombine after redundancy elimination to exploit opportunities
+   // opened up by them.
+   MPM.add(createInstructionCombiningPass());
+-  if (OptLevel > 1) {
+-    MPM.add(createJumpThreadingPass());         // Thread jumps
+-    MPM.add(createCorrelatedValuePropagationPass());
+-  }
+-  MPM.add(createAggressiveDCEPass()); // Delete dead instructions
+ 
+   MPM.add(createMemCpyOptPass());               // Remove memcpy / form memset
+   // TODO: Investigate if this is too expensive at O1.
+   if (OptLevel > 1) {
+-    MPM.add(createDeadStoreEliminationPass());  // Delete dead stores
+     MPM.add(createLICMPass(LicmMssaOptCap, LicmMssaNoAccForPromotionCap,
+                            /*AllowSpeculation=*/true));
+   }
+@@ -198,8 +186,6 @@ void PassManagerBuilder::addFunctionSimplificationPasses(
+ /// FIXME: Should LTO cause any differences to this set of passes?
+ void PassManagerBuilder::addVectorPasses(legacy::PassManagerBase &PM,
+                                          bool IsFullLTO) {
+-  PM.add(createLoopVectorizePass(!LoopsInterleaved, !LoopVectorize));
+-
+   if (IsFullLTO) {
+     // The vectorizer may have significantly shortened a loop body; unroll
+     // again. Unroll small loops to hide loop backedge latency and saturate any
+@@ -237,11 +223,6 @@ void PassManagerBuilder::addVectorPasses(legacy::PassManagerBase &PM,
+     PM.add(createBitTrackingDCEPass());
+   }
+ 
+-  // Optimize parallel scalar instruction chains into SIMD instructions.
+-  if (SLPVectorize) {
+-    PM.add(createSLPVectorizerPass());
+-  }
+-
+   if (!IsFullLTO) {
+     PM.add(createInstructionCombiningPass());
+ 
+diff --git a/llvm/lib/Transforms/Scalar/ADCE.cpp b/llvm/lib/Transforms/Scalar/ADCE.cpp
+index ec07c5341d18..b96feb905659 100644
+--- a/llvm/lib/Transforms/Scalar/ADCE.cpp
++++ b/llvm/lib/Transforms/Scalar/ADCE.cpp
+@@ -733,50 +733,3 @@ PreservedAnalyses ADCEPass::run(Function &F, FunctionAnalysisManager &FAM) {
+ 
+   return PA;
+ }
+-
+-namespace {
+-
+-struct ADCELegacyPass : public FunctionPass {
+-  static char ID; // Pass identification, replacement for typeid
+-
+-  ADCELegacyPass() : FunctionPass(ID) {
+-    initializeADCELegacyPassPass(*PassRegistry::getPassRegistry());
+-  }
+-
+-  bool runOnFunction(Function &F) override {
+-    if (skipFunction(F))
+-      return false;
+-
+-    // ADCE does not need DominatorTree, but require DominatorTree here
+-    // to update analysis if it is already available.
+-    auto *DTWP = getAnalysisIfAvailable<DominatorTreeWrapperPass>();
+-    auto *DT = DTWP ? &DTWP->getDomTree() : nullptr;
+-    auto &PDT = getAnalysis<PostDominatorTreeWrapperPass>().getPostDomTree();
+-    ADCEChanged Changed =
+-        AggressiveDeadCodeElimination(F, DT, PDT).performDeadCodeElimination();
+-    return Changed.ChangedAnything;
+-  }
+-
+-  void getAnalysisUsage(AnalysisUsage &AU) const override {
+-    AU.addRequired<PostDominatorTreeWrapperPass>();
+-    if (!RemoveControlFlowFlag)
+-      AU.setPreservesCFG();
+-    else {
+-      AU.addPreserved<DominatorTreeWrapperPass>();
+-      AU.addPreserved<PostDominatorTreeWrapperPass>();
+-    }
+-    AU.addPreserved<GlobalsAAWrapperPass>();
+-  }
+-};
+-
+-} // end anonymous namespace
+-
+-char ADCELegacyPass::ID = 0;
+-
+-INITIALIZE_PASS_BEGIN(ADCELegacyPass, "adce",
+-                      "Aggressive Dead Code Elimination", false, false)
+-INITIALIZE_PASS_DEPENDENCY(PostDominatorTreeWrapperPass)
+-INITIALIZE_PASS_END(ADCELegacyPass, "adce", "Aggressive Dead Code Elimination",
+-                    false, false)
+-
+-FunctionPass *llvm::createAggressiveDCEPass() { return new ADCELegacyPass(); }
+diff --git a/llvm/lib/Transforms/Scalar/CorrelatedValuePropagation.cpp b/llvm/lib/Transforms/Scalar/CorrelatedValuePropagation.cpp
+index a6293ee67123..1323d724a97c 100644
+--- a/llvm/lib/Transforms/Scalar/CorrelatedValuePropagation.cpp
++++ b/llvm/lib/Transforms/Scalar/CorrelatedValuePropagation.cpp
+@@ -97,43 +97,6 @@ STATISTIC(NumMinMax, "Number of llvm.[us]{min,max} intrinsics removed");
+ STATISTIC(NumUDivURemsNarrowedExpanded,
+           "Number of bound udiv's/urem's expanded");
+ 
+-namespace {
+-
+-  class CorrelatedValuePropagation : public FunctionPass {
+-  public:
+-    static char ID;
+-
+-    CorrelatedValuePropagation(): FunctionPass(ID) {
+-     initializeCorrelatedValuePropagationPass(*PassRegistry::getPassRegistry());
+-    }
+-
+-    bool runOnFunction(Function &F) override;
+-
+-    void getAnalysisUsage(AnalysisUsage &AU) const override {
+-      AU.addRequired<DominatorTreeWrapperPass>();
+-      AU.addRequired<LazyValueInfoWrapperPass>();
+-      AU.addPreserved<GlobalsAAWrapperPass>();
+-      AU.addPreserved<DominatorTreeWrapperPass>();
+-      AU.addPreserved<LazyValueInfoWrapperPass>();
+-    }
+-  };
+-
+-} // end anonymous namespace
+-
+-char CorrelatedValuePropagation::ID = 0;
+-
+-INITIALIZE_PASS_BEGIN(CorrelatedValuePropagation, "correlated-propagation",
+-                "Value Propagation", false, false)
+-INITIALIZE_PASS_DEPENDENCY(DominatorTreeWrapperPass)
+-INITIALIZE_PASS_DEPENDENCY(LazyValueInfoWrapperPass)
+-INITIALIZE_PASS_END(CorrelatedValuePropagation, "correlated-propagation",
+-                "Value Propagation", false, false)
+-
+-// Public interface to the Value Propagation pass
+-Pass *llvm::createCorrelatedValuePropagationPass() {
+-  return new CorrelatedValuePropagation();
+-}
+-
+ static bool processSelect(SelectInst *S, LazyValueInfo *LVI) {
+   if (S->getType()->isVectorTy()) return false;
+   if (isa<Constant>(S->getCondition())) return false;
+@@ -1221,16 +1184,6 @@ static bool runImpl(Function &F, LazyValueInfo *LVI, DominatorTree *DT,
+   return FnChanged;
+ }
+ 
+-bool CorrelatedValuePropagation::runOnFunction(Function &F) {
+-  if (skipFunction(F))
+-    return false;
+-
+-  LazyValueInfo *LVI = &getAnalysis<LazyValueInfoWrapperPass>().getLVI();
+-  DominatorTree *DT = &getAnalysis<DominatorTreeWrapperPass>().getDomTree();
+-
+-  return runImpl(F, LVI, DT, getBestSimplifyQuery(*this, F));
+-}
+-
+ PreservedAnalyses
+ CorrelatedValuePropagationPass::run(Function &F, FunctionAnalysisManager &AM) {
+   LazyValueInfo *LVI = &AM.getResult<LazyValueAnalysis>(F);
+diff --git a/llvm/lib/Transforms/Scalar/DFAJumpThreading.cpp b/llvm/lib/Transforms/Scalar/DFAJumpThreading.cpp
+index 658d0fcb53fa..ede98fc69e64 100644
+--- a/llvm/lib/Transforms/Scalar/DFAJumpThreading.cpp
++++ b/llvm/lib/Transforms/Scalar/DFAJumpThreading.cpp
+@@ -168,51 +168,8 @@ private:
+   OptimizationRemarkEmitter *ORE;
+ };
+ 
+-class DFAJumpThreadingLegacyPass : public FunctionPass {
+-public:
+-  static char ID; // Pass identification
+-  DFAJumpThreadingLegacyPass() : FunctionPass(ID) {}
+-
+-  void getAnalysisUsage(AnalysisUsage &AU) const override {
+-    AU.addRequired<AssumptionCacheTracker>();
+-    AU.addRequired<DominatorTreeWrapperPass>();
+-    AU.addPreserved<DominatorTreeWrapperPass>();
+-    AU.addRequired<TargetTransformInfoWrapperPass>();
+-    AU.addRequired<OptimizationRemarkEmitterWrapperPass>();
+-  }
+-
+-  bool runOnFunction(Function &F) override {
+-    if (skipFunction(F))
+-      return false;
+-
+-    AssumptionCache *AC =
+-        &getAnalysis<AssumptionCacheTracker>().getAssumptionCache(F);
+-    DominatorTree *DT = &getAnalysis<DominatorTreeWrapperPass>().getDomTree();
+-    TargetTransformInfo *TTI =
+-        &getAnalysis<TargetTransformInfoWrapperPass>().getTTI(F);
+-    OptimizationRemarkEmitter *ORE =
+-        &getAnalysis<OptimizationRemarkEmitterWrapperPass>().getORE();
+-
+-    return DFAJumpThreading(AC, DT, TTI, ORE).run(F);
+-  }
+-};
+ } // end anonymous namespace
+ 
+-char DFAJumpThreadingLegacyPass::ID = 0;
+-INITIALIZE_PASS_BEGIN(DFAJumpThreadingLegacyPass, "dfa-jump-threading",
+-                      "DFA Jump Threading", false, false)
+-INITIALIZE_PASS_DEPENDENCY(AssumptionCacheTracker)
+-INITIALIZE_PASS_DEPENDENCY(DominatorTreeWrapperPass)
+-INITIALIZE_PASS_DEPENDENCY(TargetTransformInfoWrapperPass)
+-INITIALIZE_PASS_DEPENDENCY(OptimizationRemarkEmitterWrapperPass)
+-INITIALIZE_PASS_END(DFAJumpThreadingLegacyPass, "dfa-jump-threading",
+-                    "DFA Jump Threading", false, false)
+-
+-// Public interface to the DFA Jump Threading pass
+-FunctionPass *llvm::createDFAJumpThreadingPass() {
+-  return new DFAJumpThreadingLegacyPass();
+-}
+-
+ namespace {
+ 
+ /// Create a new basic block and sink \p SIToSink into it.
+diff --git a/llvm/lib/Transforms/Scalar/DeadStoreElimination.cpp b/llvm/lib/Transforms/Scalar/DeadStoreElimination.cpp
+index d3757341ad20..9a7ad8d49222 100644
+--- a/llvm/lib/Transforms/Scalar/DeadStoreElimination.cpp
++++ b/llvm/lib/Transforms/Scalar/DeadStoreElimination.cpp
+@@ -2240,79 +2240,3 @@ PreservedAnalyses DSEPass::run(Function &F, FunctionAnalysisManager &AM) {
+   PA.preserve<LoopAnalysis>();
+   return PA;
+ }
+-
+-namespace {
+-
+-/// A legacy pass for the legacy pass manager that wraps \c DSEPass.
+-class DSELegacyPass : public FunctionPass {
+-public:
+-  static char ID; // Pass identification, replacement for typeid
+-
+-  DSELegacyPass() : FunctionPass(ID) {
+-    initializeDSELegacyPassPass(*PassRegistry::getPassRegistry());
+-  }
+-
+-  bool runOnFunction(Function &F) override {
+-    if (skipFunction(F))
+-      return false;
+-
+-    AliasAnalysis &AA = getAnalysis<AAResultsWrapperPass>().getAAResults();
+-    DominatorTree &DT = getAnalysis<DominatorTreeWrapperPass>().getDomTree();
+-    const TargetLibraryInfo &TLI =
+-        getAnalysis<TargetLibraryInfoWrapperPass>().getTLI(F);
+-    MemorySSA &MSSA = getAnalysis<MemorySSAWrapperPass>().getMSSA();
+-    PostDominatorTree &PDT =
+-        getAnalysis<PostDominatorTreeWrapperPass>().getPostDomTree();
+-    AssumptionCache &AC =
+-        getAnalysis<AssumptionCacheTracker>().getAssumptionCache(F);
+-    LoopInfo &LI = getAnalysis<LoopInfoWrapperPass>().getLoopInfo();
+-
+-    bool Changed = eliminateDeadStores(F, AA, MSSA, DT, PDT, AC, TLI, LI);
+-
+-#ifdef LLVM_ENABLE_STATS
+-    if (AreStatisticsEnabled())
+-      for (auto &I : instructions(F))
+-        NumRemainingStores += isa<StoreInst>(&I);
+-#endif
+-
+-    return Changed;
+-  }
+-
+-  void getAnalysisUsage(AnalysisUsage &AU) const override {
+-    AU.setPreservesCFG();
+-    AU.addRequired<AAResultsWrapperPass>();
+-    AU.addRequired<TargetLibraryInfoWrapperPass>();
+-    AU.addPreserved<GlobalsAAWrapperPass>();
+-    AU.addRequired<DominatorTreeWrapperPass>();
+-    AU.addPreserved<DominatorTreeWrapperPass>();
+-    AU.addRequired<PostDominatorTreeWrapperPass>();
+-    AU.addRequired<MemorySSAWrapperPass>();
+-    AU.addPreserved<PostDominatorTreeWrapperPass>();
+-    AU.addPreserved<MemorySSAWrapperPass>();
+-    AU.addRequired<LoopInfoWrapperPass>();
+-    AU.addPreserved<LoopInfoWrapperPass>();
+-    AU.addRequired<AssumptionCacheTracker>();
+-  }
+-};
+-
+-} // end anonymous namespace
+-
+-char DSELegacyPass::ID = 0;
+-
+-INITIALIZE_PASS_BEGIN(DSELegacyPass, "dse", "Dead Store Elimination", false,
+-                      false)
+-INITIALIZE_PASS_DEPENDENCY(DominatorTreeWrapperPass)
+-INITIALIZE_PASS_DEPENDENCY(PostDominatorTreeWrapperPass)
+-INITIALIZE_PASS_DEPENDENCY(AAResultsWrapperPass)
+-INITIALIZE_PASS_DEPENDENCY(GlobalsAAWrapperPass)
+-INITIALIZE_PASS_DEPENDENCY(MemorySSAWrapperPass)
+-INITIALIZE_PASS_DEPENDENCY(MemoryDependenceWrapperPass)
+-INITIALIZE_PASS_DEPENDENCY(TargetLibraryInfoWrapperPass)
+-INITIALIZE_PASS_DEPENDENCY(LoopInfoWrapperPass)
+-INITIALIZE_PASS_DEPENDENCY(AssumptionCacheTracker)
+-INITIALIZE_PASS_END(DSELegacyPass, "dse", "Dead Store Elimination", false,
+-                    false)
+-
+-FunctionPass *llvm::createDeadStoreEliminationPass() {
+-  return new DSELegacyPass();
+-}
+diff --git a/llvm/lib/Transforms/Scalar/IndVarSimplify.cpp b/llvm/lib/Transforms/Scalar/IndVarSimplify.cpp
+index 0c21ae26297d..64f5dcb94312 100644
+--- a/llvm/lib/Transforms/Scalar/IndVarSimplify.cpp
++++ b/llvm/lib/Transforms/Scalar/IndVarSimplify.cpp
+@@ -2223,54 +2223,3 @@ PreservedAnalyses IndVarSimplifyPass::run(Loop &L, LoopAnalysisManager &AM,
+     PA.preserve<MemorySSAAnalysis>();
+   return PA;
+ }
+-
+-namespace {
+-
+-struct IndVarSimplifyLegacyPass : public LoopPass {
+-  static char ID; // Pass identification, replacement for typeid
+-
+-  IndVarSimplifyLegacyPass() : LoopPass(ID) {
+-    initializeIndVarSimplifyLegacyPassPass(*PassRegistry::getPassRegistry());
+-  }
+-
+-  bool runOnLoop(Loop *L, LPPassManager &LPM) override {
+-    if (skipLoop(L))
+-      return false;
+-
+-    auto *LI = &getAnalysis<LoopInfoWrapperPass>().getLoopInfo();
+-    auto *SE = &getAnalysis<ScalarEvolutionWrapperPass>().getSE();
+-    auto *DT = &getAnalysis<DominatorTreeWrapperPass>().getDomTree();
+-    auto *TLIP = getAnalysisIfAvailable<TargetLibraryInfoWrapperPass>();
+-    auto *TLI = TLIP ? &TLIP->getTLI(*L->getHeader()->getParent()) : nullptr;
+-    auto *TTIP = getAnalysisIfAvailable<TargetTransformInfoWrapperPass>();
+-    auto *TTI = TTIP ? &TTIP->getTTI(*L->getHeader()->getParent()) : nullptr;
+-    const DataLayout &DL = L->getHeader()->getModule()->getDataLayout();
+-    auto *MSSAAnalysis = getAnalysisIfAvailable<MemorySSAWrapperPass>();
+-    MemorySSA *MSSA = nullptr;
+-    if (MSSAAnalysis)
+-      MSSA = &MSSAAnalysis->getMSSA();
+-
+-    IndVarSimplify IVS(LI, SE, DT, DL, TLI, TTI, MSSA, AllowIVWidening);
+-    return IVS.run(L);
+-  }
+-
+-  void getAnalysisUsage(AnalysisUsage &AU) const override {
+-    AU.setPreservesCFG();
+-    AU.addPreserved<MemorySSAWrapperPass>();
+-    getLoopAnalysisUsage(AU);
+-  }
+-};
+-
+-} // end anonymous namespace
+-
+-char IndVarSimplifyLegacyPass::ID = 0;
+-
+-INITIALIZE_PASS_BEGIN(IndVarSimplifyLegacyPass, "indvars",
+-                      "Induction Variable Simplification", false, false)
+-INITIALIZE_PASS_DEPENDENCY(LoopPass)
+-INITIALIZE_PASS_END(IndVarSimplifyLegacyPass, "indvars",
+-                    "Induction Variable Simplification", false, false)
+-
+-Pass *llvm::createIndVarSimplifyPass() {
+-  return new IndVarSimplifyLegacyPass();
+-}
+diff --git a/llvm/lib/Transforms/Scalar/JumpThreading.cpp b/llvm/lib/Transforms/Scalar/JumpThreading.cpp
+index eac41f05ca14..35daa8f3874d 100644
+--- a/llvm/lib/Transforms/Scalar/JumpThreading.cpp
++++ b/llvm/lib/Transforms/Scalar/JumpThreading.cpp
+@@ -115,64 +115,6 @@ static cl::opt<bool> ThreadAcrossLoopHeaders(
+     cl::desc("Allow JumpThreading to thread across loop headers, for testing"),
+     cl::init(false), cl::Hidden);
+ 
+-
+-namespace {
+-
+-  /// This pass performs 'jump threading', which looks at blocks that have
+-  /// multiple predecessors and multiple successors.  If one or more of the
+-  /// predecessors of the block can be proven to always jump to one of the
+-  /// successors, we forward the edge from the predecessor to the successor by
+-  /// duplicating the contents of this block.
+-  ///
+-  /// An example of when this can occur is code like this:
+-  ///
+-  ///   if () { ...
+-  ///     X = 4;
+-  ///   }
+-  ///   if (X < 3) {
+-  ///
+-  /// In this case, the unconditional branch at the end of the first if can be
+-  /// revectored to the false side of the second if.
+-  class JumpThreading : public FunctionPass {
+-  public:
+-    static char ID; // Pass identification
+-
+-    JumpThreading(int T = -1) : FunctionPass(ID) {
+-      initializeJumpThreadingPass(*PassRegistry::getPassRegistry());
+-    }
+-
+-    bool runOnFunction(Function &F) override;
+-
+-    void getAnalysisUsage(AnalysisUsage &AU) const override {
+-      AU.addRequired<DominatorTreeWrapperPass>();
+-      AU.addPreserved<DominatorTreeWrapperPass>();
+-      AU.addRequired<AAResultsWrapperPass>();
+-      AU.addRequired<LazyValueInfoWrapperPass>();
+-      AU.addPreserved<LazyValueInfoWrapperPass>();
+-      AU.addPreserved<GlobalsAAWrapperPass>();
+-      AU.addRequired<TargetLibraryInfoWrapperPass>();
+-      AU.addRequired<TargetTransformInfoWrapperPass>();
+-    }
+-  };
+-
+-} // end anonymous namespace
+-
+-char JumpThreading::ID = 0;
+-
+-INITIALIZE_PASS_BEGIN(JumpThreading, "jump-threading",
+-                "Jump Threading", false, false)
+-INITIALIZE_PASS_DEPENDENCY(DominatorTreeWrapperPass)
+-INITIALIZE_PASS_DEPENDENCY(LazyValueInfoWrapperPass)
+-INITIALIZE_PASS_DEPENDENCY(TargetLibraryInfoWrapperPass)
+-INITIALIZE_PASS_DEPENDENCY(AAResultsWrapperPass)
+-INITIALIZE_PASS_END(JumpThreading, "jump-threading",
+-                "Jump Threading", false, false)
+-
+-// Public interface to the Jump Threading pass
+-FunctionPass *llvm::createJumpThreadingPass(int Threshold) {
+-  return new JumpThreading(Threshold);
+-}
+-
+ JumpThreadingPass::JumpThreadingPass(int T) {
+   DefaultBBDupThreshold = (T == -1) ? BBDuplicateThreshold : unsigned(T);
+ }
+@@ -303,35 +245,6 @@ static void updatePredecessorProfileMetadata(PHINode *PN, BasicBlock *BB) {
+   }
+ }
+ 
+-/// runOnFunction - Toplevel algorithm.
+-bool JumpThreading::runOnFunction(Function &F) {
+-  if (skipFunction(F))
+-    return false;
+-  auto TTI = &getAnalysis<TargetTransformInfoWrapperPass>().getTTI(F);
+-  // Jump Threading has no sense for the targets with divergent CF
+-  if (TTI->hasBranchDivergence())
+-    return false;
+-  auto TLI = &getAnalysis<TargetLibraryInfoWrapperPass>().getTLI(F);
+-  auto DT = &getAnalysis<DominatorTreeWrapperPass>().getDomTree();
+-  auto LVI = &getAnalysis<LazyValueInfoWrapperPass>().getLVI();
+-  auto AA = &getAnalysis<AAResultsWrapperPass>().getAAResults();
+-
+-  LoopInfo LI{*DT};
+-  auto BPI = std::make_unique<BranchProbabilityInfo>(F, LI, TLI);
+-  auto BFI = std::make_unique<BlockFrequencyInfo>(F, *BPI, LI);
+-
+-  JumpThreadingPass Impl;
+-  bool Changed = Impl.runImpl(F, nullptr, TLI, TTI, LVI, AA,
+-                              std::make_unique<DomTreeUpdater>(
+-                                  DT, DomTreeUpdater::UpdateStrategy::Lazy),
+-                              BFI.get(), BPI.get());
+-  if (PrintLVIAfterJumpThreading) {
+-    dbgs() << "LVI for function '" << F.getName() << "':\n";
+-    LVI->printLVI(F, Impl.getDomTreeUpdater()->getDomTree(), dbgs());
+-  }
+-  return Changed;
+-}
+-
+ PreservedAnalyses JumpThreadingPass::run(Function &F,
+                                          FunctionAnalysisManager &AM) {
+   auto &TTI = AM.getResult<TargetIRAnalysis>(F);
+diff --git a/llvm/lib/Transforms/Scalar/Scalar.cpp b/llvm/lib/Transforms/Scalar/Scalar.cpp
+index 9a3d243859be..26a1e22f3317 100644
+--- a/llvm/lib/Transforms/Scalar/Scalar.cpp
++++ b/llvm/lib/Transforms/Scalar/Scalar.cpp
+@@ -29,15 +29,12 @@ using namespace llvm;
+ /// initializeScalarOptsPasses - Initialize all passes linked into the
+ /// ScalarOpts library.
+ void llvm::initializeScalarOpts(PassRegistry &Registry) {
+-  initializeADCELegacyPassPass(Registry);
+   initializeBDCELegacyPassPass(Registry);
+   initializeAlignmentFromAssumptionsPass(Registry);
+   initializeCallSiteSplittingLegacyPassPass(Registry);
+   initializeConstantHoistingLegacyPassPass(Registry);
+-  initializeCorrelatedValuePropagationPass(Registry);
+   initializeDCELegacyPassPass(Registry);
+   initializeScalarizerLegacyPassPass(Registry);
+-  initializeDSELegacyPassPass(Registry);
+   initializeGuardWideningLegacyPassPass(Registry);
+   initializeLoopGuardWideningLegacyPassPass(Registry);
+   initializeGVNLegacyPassPass(Registry);
+@@ -49,11 +46,8 @@ void llvm::initializeScalarOpts(PassRegistry &Registry) {
+   initializeGVNSinkLegacyPassPass(Registry);
+   initializeFlattenCFGLegacyPassPass(Registry);
+   initializeIRCELegacyPassPass(Registry);
+-  initializeIndVarSimplifyLegacyPassPass(Registry);
+   initializeInferAddressSpacesPass(Registry);
+   initializeInstSimplifyLegacyPassPass(Registry);
+-  initializeJumpThreadingPass(Registry);
+-  initializeDFAJumpThreadingLegacyPassPass(Registry);
+   initializeLegacyLICMPassPass(Registry);
+   initializeLegacyLoopSinkPassPass(Registry);
+   initializeLoopDataPrefetchLegacyPassPass(Registry);
+diff --git a/llvm/lib/Transforms/Utils/LibCallsShrinkWrap.cpp b/llvm/lib/Transforms/Utils/LibCallsShrinkWrap.cpp
+index 5dd469c7af4b..ff2d5a017590 100644
+--- a/llvm/lib/Transforms/Utils/LibCallsShrinkWrap.cpp
++++ b/llvm/lib/Transforms/Utils/LibCallsShrinkWrap.cpp
+@@ -50,27 +50,6 @@ using namespace llvm;
+ STATISTIC(NumWrappedOneCond, "Number of One-Condition Wrappers Inserted");
+ STATISTIC(NumWrappedTwoCond, "Number of Two-Condition Wrappers Inserted");
+ 
+-namespace {
+-class LibCallsShrinkWrapLegacyPass : public FunctionPass {
+-public:
+-  static char ID; // Pass identification, replacement for typeid
+-  explicit LibCallsShrinkWrapLegacyPass() : FunctionPass(ID) {
+-    initializeLibCallsShrinkWrapLegacyPassPass(
+-        *PassRegistry::getPassRegistry());
+-  }
+-  void getAnalysisUsage(AnalysisUsage &AU) const override;
+-  bool runOnFunction(Function &F) override;
+-};
+-}
+-
+-char LibCallsShrinkWrapLegacyPass::ID = 0;
+-INITIALIZE_PASS_BEGIN(LibCallsShrinkWrapLegacyPass, "libcalls-shrinkwrap",
+-                      "Conditionally eliminate dead library calls", false,
+-                      false)
+-INITIALIZE_PASS_DEPENDENCY(TargetLibraryInfoWrapperPass)
+-INITIALIZE_PASS_END(LibCallsShrinkWrapLegacyPass, "libcalls-shrinkwrap",
+-                    "Conditionally eliminate dead library calls", false, false)
+-
+ namespace {
+ class LibCallsShrinkWrap : public InstVisitor<LibCallsShrinkWrap> {
+ public:
+@@ -515,12 +494,6 @@ bool LibCallsShrinkWrap::perform(CallInst *CI) {
+   return performCallErrors(CI, Func);
+ }
+ 
+-void LibCallsShrinkWrapLegacyPass::getAnalysisUsage(AnalysisUsage &AU) const {
+-  AU.addPreserved<DominatorTreeWrapperPass>();
+-  AU.addPreserved<GlobalsAAWrapperPass>();
+-  AU.addRequired<TargetLibraryInfoWrapperPass>();
+-}
+-
+ static bool runImpl(Function &F, const TargetLibraryInfo &TLI,
+                     DominatorTree *DT) {
+   if (F.hasFnAttribute(Attribute::OptimizeForSize))
+@@ -534,21 +507,6 @@ static bool runImpl(Function &F, const TargetLibraryInfo &TLI,
+   return Changed;
+ }
+ 
+-bool LibCallsShrinkWrapLegacyPass::runOnFunction(Function &F) {
+-  auto &TLI = getAnalysis<TargetLibraryInfoWrapperPass>().getTLI(F);
+-  auto *DTWP = getAnalysisIfAvailable<DominatorTreeWrapperPass>();
+-  auto *DT = DTWP ? &DTWP->getDomTree() : nullptr;
+-  return runImpl(F, TLI, DT);
+-}
+-
+-namespace llvm {
+-char &LibCallsShrinkWrapPassID = LibCallsShrinkWrapLegacyPass::ID;
+-
+-// Public interface to LibCallsShrinkWrap pass.
+-FunctionPass *createLibCallsShrinkWrapPass() {
+-  return new LibCallsShrinkWrapLegacyPass();
+-}
+-
+ PreservedAnalyses LibCallsShrinkWrapPass::run(Function &F,
+                                               FunctionAnalysisManager &FAM) {
+   auto &TLI = FAM.getResult<TargetLibraryAnalysis>(F);
+@@ -559,4 +517,3 @@ PreservedAnalyses LibCallsShrinkWrapPass::run(Function &F,
+   PA.preserve<DominatorTreeAnalysis>();
+   return PA;
+ }
+-}
+diff --git a/llvm/lib/Transforms/Utils/Utils.cpp b/llvm/lib/Transforms/Utils/Utils.cpp
+index d86f20c7bb6f..59d1b8e42dc1 100644
+--- a/llvm/lib/Transforms/Utils/Utils.cpp
++++ b/llvm/lib/Transforms/Utils/Utils.cpp
+@@ -30,7 +30,6 @@ void llvm::initializeTransformUtils(PassRegistry &Registry) {
+   initializeCanonicalizeFreezeInLoopsPass(Registry);
+   initializeInstNamerPass(Registry);
+   initializeLCSSAWrapperPassPass(Registry);
+-  initializeLibCallsShrinkWrapLegacyPassPass(Registry);
+   initializeLoopSimplifyPass(Registry);
+   initializeLowerGlobalDtorsLegacyPassPass(Registry);
+   initializeLowerInvokeLegacyPassPass(Registry);
+diff --git a/llvm/lib/Transforms/Vectorize/LoopVectorize.cpp b/llvm/lib/Transforms/Vectorize/LoopVectorize.cpp
+index 9083b7b3c712..df6f3b33fac0 100644
+--- a/llvm/lib/Transforms/Vectorize/LoopVectorize.cpp
++++ b/llvm/lib/Transforms/Vectorize/LoopVectorize.cpp
+@@ -2250,73 +2250,6 @@ static void collectSupportedLoops(Loop &L, LoopInfo *LI,
+     collectSupportedLoops(*InnerL, LI, ORE, V);
+ }
+ 
+-namespace {
+-
+-/// The LoopVectorize Pass.
+-struct LoopVectorize : public FunctionPass {
+-  /// Pass identification, replacement for typeid
+-  static char ID;
+-
+-  LoopVectorizePass Impl;
+-
+-  explicit LoopVectorize(bool InterleaveOnlyWhenForced = false,
+-                         bool VectorizeOnlyWhenForced = false)
+-      : FunctionPass(ID),
+-        Impl({InterleaveOnlyWhenForced, VectorizeOnlyWhenForced}) {
+-    initializeLoopVectorizePass(*PassRegistry::getPassRegistry());
+-  }
+-
+-  bool runOnFunction(Function &F) override {
+-    if (skipFunction(F))
+-      return false;
+-
+-    auto *SE = &getAnalysis<ScalarEvolutionWrapperPass>().getSE();
+-    auto *LI = &getAnalysis<LoopInfoWrapperPass>().getLoopInfo();
+-    auto *TTI = &getAnalysis<TargetTransformInfoWrapperPass>().getTTI(F);
+-    auto *DT = &getAnalysis<DominatorTreeWrapperPass>().getDomTree();
+-    auto *BFI = &getAnalysis<BlockFrequencyInfoWrapperPass>().getBFI();
+-    auto *TLIP = getAnalysisIfAvailable<TargetLibraryInfoWrapperPass>();
+-    auto *TLI = TLIP ? &TLIP->getTLI(F) : nullptr;
+-    auto *AC = &getAnalysis<AssumptionCacheTracker>().getAssumptionCache(F);
+-    auto &LAIs = getAnalysis<LoopAccessLegacyAnalysis>().getLAIs();
+-    auto *DB = &getAnalysis<DemandedBitsWrapperPass>().getDemandedBits();
+-    auto *ORE = &getAnalysis<OptimizationRemarkEmitterWrapperPass>().getORE();
+-    auto *PSI = &getAnalysis<ProfileSummaryInfoWrapperPass>().getPSI();
+-
+-    return Impl
+-        .runImpl(F, *SE, *LI, *TTI, *DT, BFI, TLI, *DB, *AC, LAIs, *ORE, PSI)
+-        .MadeAnyChange;
+-  }
+-
+-  void getAnalysisUsage(AnalysisUsage &AU) const override {
+-    AU.addRequired<AssumptionCacheTracker>();
+-    AU.addRequired<BlockFrequencyInfoWrapperPass>();
+-    AU.addRequired<DominatorTreeWrapperPass>();
+-    AU.addRequired<LoopInfoWrapperPass>();
+-    AU.addRequired<ScalarEvolutionWrapperPass>();
+-    AU.addRequired<TargetTransformInfoWrapperPass>();
+-    AU.addRequired<LoopAccessLegacyAnalysis>();
+-    AU.addRequired<DemandedBitsWrapperPass>();
+-    AU.addRequired<OptimizationRemarkEmitterWrapperPass>();
+-    AU.addRequired<InjectTLIMappingsLegacy>();
+-
+-    // We currently do not preserve loopinfo/dominator analyses with outer loop
+-    // vectorization. Until this is addressed, mark these analyses as preserved
+-    // only for non-VPlan-native path.
+-    // TODO: Preserve Loop and Dominator analyses for VPlan-native path.
+-    if (!EnableVPlanNativePath) {
+-      AU.addPreserved<LoopInfoWrapperPass>();
+-      AU.addPreserved<DominatorTreeWrapperPass>();
+-    }
+-
+-    AU.addPreserved<BasicAAWrapperPass>();
+-    AU.addPreserved<GlobalsAAWrapperPass>();
+-    AU.addRequired<ProfileSummaryInfoWrapperPass>();
+-  }
+-};
+-
+-} // end anonymous namespace
+-
+ //===----------------------------------------------------------------------===//
+ // Implementation of LoopVectorizationLegality, InnerLoopVectorizer and
+ // LoopVectorizationCostModel and LoopVectorizationPlanner.
+@@ -7463,37 +7396,6 @@ LoopVectorizationCostModel::getInstructionCost(Instruction *I, ElementCount VF,
+   } // end of switch.
+ }
+ 
+-char LoopVectorize::ID = 0;
+-
+-static const char lv_name[] = "Loop Vectorization";
+-
+-INITIALIZE_PASS_BEGIN(LoopVectorize, LV_NAME, lv_name, false, false)
+-INITIALIZE_PASS_DEPENDENCY(TargetTransformInfoWrapperPass)
+-INITIALIZE_PASS_DEPENDENCY(BasicAAWrapperPass)
+-INITIALIZE_PASS_DEPENDENCY(GlobalsAAWrapperPass)
+-INITIALIZE_PASS_DEPENDENCY(AssumptionCacheTracker)
+-INITIALIZE_PASS_DEPENDENCY(BlockFrequencyInfoWrapperPass)
+-INITIALIZE_PASS_DEPENDENCY(DominatorTreeWrapperPass)
+-INITIALIZE_PASS_DEPENDENCY(ScalarEvolutionWrapperPass)
+-INITIALIZE_PASS_DEPENDENCY(LoopInfoWrapperPass)
+-INITIALIZE_PASS_DEPENDENCY(LoopAccessLegacyAnalysis)
+-INITIALIZE_PASS_DEPENDENCY(DemandedBitsWrapperPass)
+-INITIALIZE_PASS_DEPENDENCY(OptimizationRemarkEmitterWrapperPass)
+-INITIALIZE_PASS_DEPENDENCY(ProfileSummaryInfoWrapperPass)
+-INITIALIZE_PASS_DEPENDENCY(InjectTLIMappingsLegacy)
+-INITIALIZE_PASS_END(LoopVectorize, LV_NAME, lv_name, false, false)
+-
+-namespace llvm {
+-
+-Pass *createLoopVectorizePass() { return new LoopVectorize(); }
+-
+-Pass *createLoopVectorizePass(bool InterleaveOnlyWhenForced,
+-                              bool VectorizeOnlyWhenForced) {
+-  return new LoopVectorize(InterleaveOnlyWhenForced, VectorizeOnlyWhenForced);
+-}
+-
+-} // end namespace llvm
+-
+ void LoopVectorizationCostModel::collectValuesToIgnore() {
+   // Ignore ephemeral values.
+   CodeMetrics::collectEphemeralValues(TheLoop, AC, ValuesToIgnore);
+diff --git a/llvm/lib/Transforms/Vectorize/SLPVectorizer.cpp b/llvm/lib/Transforms/Vectorize/SLPVectorizer.cpp
+index bbaccb5cd282..91d99e5008cc 100644
+--- a/llvm/lib/Transforms/Vectorize/SLPVectorizer.cpp
++++ b/llvm/lib/Transforms/Vectorize/SLPVectorizer.cpp
+@@ -11645,60 +11645,6 @@ void BoUpSLP::computeMinimumValueSizes() {
+     MinBWs[Scalar] = std::make_pair(MaxBitWidth, !IsKnownPositive);
+ }
+ 
+-namespace {
+-
+-/// The SLPVectorizer Pass.
+-struct SLPVectorizer : public FunctionPass {
+-  SLPVectorizerPass Impl;
+-
+-  /// Pass identification, replacement for typeid
+-  static char ID;
+-
+-  explicit SLPVectorizer() : FunctionPass(ID) {
+-    initializeSLPVectorizerPass(*PassRegistry::getPassRegistry());
+-  }
+-
+-  bool doInitialization(Module &M) override { return false; }
+-
+-  bool runOnFunction(Function &F) override {
+-    if (skipFunction(F))
+-      return false;
+-
+-    auto *SE = &getAnalysis<ScalarEvolutionWrapperPass>().getSE();
+-    auto *TTI = &getAnalysis<TargetTransformInfoWrapperPass>().getTTI(F);
+-    auto *TLIP = getAnalysisIfAvailable<TargetLibraryInfoWrapperPass>();
+-    auto *TLI = TLIP ? &TLIP->getTLI(F) : nullptr;
+-    auto *AA = &getAnalysis<AAResultsWrapperPass>().getAAResults();
+-    auto *LI = &getAnalysis<LoopInfoWrapperPass>().getLoopInfo();
+-    auto *DT = &getAnalysis<DominatorTreeWrapperPass>().getDomTree();
+-    auto *AC = &getAnalysis<AssumptionCacheTracker>().getAssumptionCache(F);
+-    auto *DB = &getAnalysis<DemandedBitsWrapperPass>().getDemandedBits();
+-    auto *ORE = &getAnalysis<OptimizationRemarkEmitterWrapperPass>().getORE();
+-
+-    return Impl.runImpl(F, SE, TTI, TLI, AA, LI, DT, AC, DB, ORE);
+-  }
+-
+-  void getAnalysisUsage(AnalysisUsage &AU) const override {
+-    FunctionPass::getAnalysisUsage(AU);
+-    AU.addRequired<AssumptionCacheTracker>();
+-    AU.addRequired<ScalarEvolutionWrapperPass>();
+-    AU.addRequired<AAResultsWrapperPass>();
+-    AU.addRequired<TargetTransformInfoWrapperPass>();
+-    AU.addRequired<LoopInfoWrapperPass>();
+-    AU.addRequired<DominatorTreeWrapperPass>();
+-    AU.addRequired<DemandedBitsWrapperPass>();
+-    AU.addRequired<OptimizationRemarkEmitterWrapperPass>();
+-    AU.addRequired<InjectTLIMappingsLegacy>();
+-    AU.addPreserved<LoopInfoWrapperPass>();
+-    AU.addPreserved<DominatorTreeWrapperPass>();
+-    AU.addPreserved<AAResultsWrapperPass>();
+-    AU.addPreserved<GlobalsAAWrapperPass>();
+-    AU.setPreservesCFG();
+-  }
+-};
+-
+-} // end anonymous namespace
+-
+ PreservedAnalyses SLPVectorizerPass::run(Function &F, FunctionAnalysisManager &AM) {
+   auto *SE = &AM.getResult<ScalarEvolutionAnalysis>(F);
+   auto *TTI = &AM.getResult<TargetIRAnalysis>(F);
+@@ -14600,20 +14546,3 @@ bool SLPVectorizerPass::vectorizeStoreChains(BoUpSLP &R) {
+   }
+   return Changed;
+ }
+-
+-char SLPVectorizer::ID = 0;
+-
+-static const char lv_name[] = "SLP Vectorizer";
+-
+-INITIALIZE_PASS_BEGIN(SLPVectorizer, SV_NAME, lv_name, false, false)
+-INITIALIZE_PASS_DEPENDENCY(AAResultsWrapperPass)
+-INITIALIZE_PASS_DEPENDENCY(TargetTransformInfoWrapperPass)
+-INITIALIZE_PASS_DEPENDENCY(AssumptionCacheTracker)
+-INITIALIZE_PASS_DEPENDENCY(ScalarEvolutionWrapperPass)
+-INITIALIZE_PASS_DEPENDENCY(LoopSimplify)
+-INITIALIZE_PASS_DEPENDENCY(DemandedBitsWrapperPass)
+-INITIALIZE_PASS_DEPENDENCY(OptimizationRemarkEmitterWrapperPass)
+-INITIALIZE_PASS_DEPENDENCY(InjectTLIMappingsLegacy)
+-INITIALIZE_PASS_END(SLPVectorizer, SV_NAME, lv_name, false, false)
+-
+-Pass *llvm::createSLPVectorizerPass() { return new SLPVectorizer(); }
+diff --git a/llvm/lib/Transforms/Vectorize/Vectorize.cpp b/llvm/lib/Transforms/Vectorize/Vectorize.cpp
+index 6a335e9120bb..cea47334d507 100644
+--- a/llvm/lib/Transforms/Vectorize/Vectorize.cpp
++++ b/llvm/lib/Transforms/Vectorize/Vectorize.cpp
+@@ -22,8 +22,6 @@ using namespace llvm;
+ 
+ /// Initialize all passes linked into the Vectorization library.
+ void llvm::initializeVectorization(PassRegistry &Registry) {
+-  initializeLoopVectorizePass(Registry);
+-  initializeSLPVectorizerPass(Registry);
+   initializeLoadStoreVectorizerLegacyPassPass(Registry);
+ }
+ 
+diff --git a/llvm/test/CodeGen/Hexagon/hexagon_vector_loop_carried_reuse.ll b/llvm/test/CodeGen/Hexagon/hexagon_vector_loop_carried_reuse.ll
+index d7b18ae078ff..0771fda02cfb 100644
+--- a/llvm/test/CodeGen/Hexagon/hexagon_vector_loop_carried_reuse.ll
++++ b/llvm/test/CodeGen/Hexagon/hexagon_vector_loop_carried_reuse.ll
+@@ -1,4 +1,4 @@
+-; RUN: opt < %s -hexagon-vlcr -adce -S | FileCheck %s
++; RUN: opt < %s -hexagon-vlcr | opt -passes=adce -S | FileCheck %s
+ 
+ ; CHECK: %.hexagon.vlcr = tail call <32 x i32> @llvm.hexagon.V6.vmaxub.128B
+ ; ModuleID = 'hexagon_vector_loop_carried_reuse.c'
+diff --git a/llvm/test/CodeGen/Hexagon/hexagon_vector_loop_carried_reuse_commutative.ll b/llvm/test/CodeGen/Hexagon/hexagon_vector_loop_carried_reuse_commutative.ll
+index b280830d403a..25afb9f1a137 100644
+--- a/llvm/test/CodeGen/Hexagon/hexagon_vector_loop_carried_reuse_commutative.ll
++++ b/llvm/test/CodeGen/Hexagon/hexagon_vector_loop_carried_reuse_commutative.ll
+@@ -1,4 +1,4 @@
+-; RUN: opt -march=hexagon < %s -hexagon-vlcr -adce -S | FileCheck %s
++; RUN: opt < %s -march=hexagon -hexagon-vlcr | opt -passes=adce -S | FileCheck %s
+ 
+ ; CHECK: %v32.hexagon.vlcr = tail call <32 x i32> @llvm.hexagon.V6.vmaxub.128B
+ 
+diff --git a/llvm/test/CodeGen/Hexagon/hexagon_vector_loop_carried_reuse_constant.ll b/llvm/test/CodeGen/Hexagon/hexagon_vector_loop_carried_reuse_constant.ll
+index c64404f97775..53973423732c 100644
+--- a/llvm/test/CodeGen/Hexagon/hexagon_vector_loop_carried_reuse_constant.ll
++++ b/llvm/test/CodeGen/Hexagon/hexagon_vector_loop_carried_reuse_constant.ll
+@@ -1,4 +1,4 @@
+-; RUN: opt < %s -hexagon-vlcr -adce -S | FileCheck %s
++; RUN: opt < %s -hexagon-vlcr | opt -passes=adce -S | FileCheck %s
+ 
+ ; CHECK-NOT: %.hexagon.vlcr
+ ; ModuleID = 'hexagon_vector_loop_carried_reuse.c'
+diff --git a/llvm/test/Transforms/LoopStrengthReduce/scev-after-loopinstsimplify.ll b/llvm/test/Transforms/LoopStrengthReduce/scev-after-loopinstsimplify.ll
+index 6c91f643e7a9..6e059b5d8fa5 100644
+--- a/llvm/test/Transforms/LoopStrengthReduce/scev-after-loopinstsimplify.ll
++++ b/llvm/test/Transforms/LoopStrengthReduce/scev-after-loopinstsimplify.ll
+@@ -1,4 +1,4 @@
+-; RUN: opt %s -indvars -loop-instsimplify -loop-reduce
++; RUN: opt %s -passes=indvars,loop-instsimplify,loop-reduce
+ ; We are only checking that there is no crash!
+ 
+ ; https://bugs.llvm.org/show_bug.cgi?id=37936
+diff --git a/llvm/test/Transforms/LoopVectorize/AArch64/sleef-calls-aarch64.ll b/llvm/test/Transforms/LoopVectorize/AArch64/sleef-calls-aarch64.ll
+index ed9e1b4b6fb2..be4309996fbb 100644
+--- a/llvm/test/Transforms/LoopVectorize/AArch64/sleef-calls-aarch64.ll
++++ b/llvm/test/Transforms/LoopVectorize/AArch64/sleef-calls-aarch64.ll
+@@ -1,5 +1,5 @@
+ ; Do NOT use -O3. It will lower exp2 to ldexp, and the test will fail.
+-; RUN: opt -vector-library=sleefgnuabi -replace-with-veclib -loop-unroll -loop-vectorize -S < %s | FileCheck %s
++; RUN: opt -vector-library=sleefgnuabi -replace-with-veclib < %s | opt -vector-library=sleefgnuabi -passes=inject-tli-mappings,loop-unroll,loop-vectorize -S | FileCheck %s
+ 
+ target datalayout = "e-m:e-i8:8:32-i16:16:32-i64:64-i128:128-n32:64-S128"
+ target triple = "aarch64-unknown-linux-gnu"
+diff --git a/polly/lib/Transform/Canonicalization.cpp b/polly/lib/Transform/Canonicalization.cpp
+index 8cb235f94601..901299d8f02c 100644
+--- a/polly/lib/Transform/Canonicalization.cpp
++++ b/polly/lib/Transform/Canonicalization.cpp
+@@ -56,7 +56,6 @@ void polly::registerCanonicalicationPasses(llvm::legacy::PassManagerBase &PM) {
+     PM.add(createBarrierNoopPass());
+   }
+   PM.add(llvm::createInstructionCombiningPass());
+-  PM.add(llvm::createIndVarSimplifyPass());
+ }
+ 
+ /// Adapted from llvm::PassBuilder::buildInlinerPipeline
+-- 
+2.39.2
+
