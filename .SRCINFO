@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-improvedosk
 	pkgdesc = Makes GNOME's onscreen keyboard more useable.
 	pkgver = 11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nick-shmyrev/improved-osk-gnome-ext
 	arch = any
 	license = GPL3
