@@ -21,6 +21,17 @@ depends=(
 source=("${pkgname}-${pkgver}.zip::https://github.com/virtual-puppet-project/vpuppr/releases/download/${pkgver}/vpuppr_${pkgver}_linux.zip")
 sha256sums=('95c436e55a68e4abeb967acfa0ec9717dd6e0472ee72c346ded5aeb4a65ef587')
 
+pre_install() {
+  for v in "" "3" "3.10" "3.9" "3.8" "3.7"; do
+    if "python$v" --version 2> /dev/null | grep -E -q "3.([7-9]|10)\."; then
+      return
+    fi
+  done
+
+  echo "No valid python version detected. Please install any python version from 3.7 - 3.10 to run VPupPr correctly." >&2
+  exit 1
+}
+
 package() {
   mkdir -p $pkgdir/usr/{share/vpuppr,share/applications,bin}
   cp -rf ./flatpak/* $pkgdir/usr/share/vpuppr
@@ -42,13 +53,5 @@ EOF
   pip3 install opencv-python 2> /dev/null
   rm -r $pkgdir/usr/share/vpuppr/resources/extensions/openseeface-tracker/OpenSeeFace/cv2
   ln -s $(python3 -c 'import site; print(site.getsitepackages()[0])')/cv2 $pkgdir/usr/share/vpuppr/resources/extensions/openseeface-tracker/OpenSeeFace/cv2
-
-  for v in "" "3" "3.10" "3.9" "3.8" "3.7"; do
-    if "python$v" --version 2> /dev/null | grep -E -q "3.([7-9]|10)\."; then
-      return
-    fi
-  done
-
-  echo "No valid python version detected. Please install any python version from 3.7 - 3.10 to run VPupPr correctly." >&2
 }
 
