@@ -1,13 +1,12 @@
 pkgbase = dargui
 	pkgdesc = Graphical frontend for dar
-	pkgver = 1.0
+	pkgver = 1.3
 	pkgrel = 1
 	url = http://dargui.sourceforge.net
 	arch = x86_64
 	license = GPL
 	depends = dar
-	source = http://downloads.sourceforge.net/project/dargui/dargui/1.0/dargui-1.0-64bit.tar.gz
-	sha1sums = 467fcee36620fc3dd92f707713b0eb7e99d4d4d4
+	source = http://downloads.sourceforge.net/project/dargui/dargui/1.3/dargui-1.3-bin.tar.gz
+	sha1sums = 409c11f1a04fabba5ece305035a9eac3996dee54
 
 pkgname = dargui
-
