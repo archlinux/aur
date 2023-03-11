@@ -1,7 +1,7 @@
 pkgbase = implay
 	pkgdesc = Desktop media player built on top of mpv and imgui
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tsl0922/ImPlay
 	arch = x86_64
 	license = GPL3
@@ -10,6 +10,7 @@ pkgbase = implay
 	makedepends = freetype2
 	depends = mpv
 	depends = glfw
+	depends = xdg-desktop-portal
 	source = implay::git+https://github.com/tsl0922/ImPlay.git?tag=${pkgver}
 	source = 0001-disable-unneeded-imgui-demo-window.patch
 	sha256sums = SKIP

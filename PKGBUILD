@@ -1,7 +1,7 @@
 # Maintainer: Mole Shang <135e2@135e2.dev>
 pkgname=implay
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop media player built on top of mpv and imgui"
 arch=('x86_64')
 url="https://github.com/tsl0922/ImPlay"
@@ -9,6 +9,7 @@ license=('GPL3')
 depends=(
   'mpv'
   'glfw'
+  'xdg-desktop-portal'
 )
 makedepends=(
   'cmake'
@@ -33,7 +34,8 @@ build() {
   cd "${pkgname}"
   cmake -S . -B build \
     -DCMAKE_INSTALL_PREFIX="/usr" \
-    -DCMAKE_BUILD_TYPE=RELEASE
+    -DCMAKE_BUILD_TYPE=RELEASE \
+    -DUSE_XDG_PORTAL=ON
   cmake --build build
 }
 
