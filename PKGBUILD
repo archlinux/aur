@@ -1,13 +1,13 @@
 # Maintainer: lapinot <lapinot@sbi.re>
 pkgname=lldap-git
-pkgver=0.4.1.r80.g98acd68
+pkgver=0.4.1.r88.g9e479d3
 pkgrel=1
 pkgdesc="Light LDAP implementation"
 arch=('x86_64')
 url="https://github.com/nitnelave/lldap"
 license=('GPL3')
 depends=()
-makedepends=('findutils' 'curl' 'git' 'rust' 'rollup' 'wasm-pack')
+makedepends=('findutils' 'curl' 'git' 'rustup' 'gzip' 'wasm-pack')
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
@@ -27,10 +27,7 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname"
   cargo build --release -p lldap
-
-  cd app
-  wasm-pack build --target web
-  rollup ./main.js --format iife --file ./pkg/bundle.js --globals bootstrap:bootstrap
+  ./app/build.sh
 }
 
 check() {
@@ -51,4 +48,10 @@ package() {
   install -Dm644 -t "$pkgdir/var/lib/lldap/www/pkg" app/pkg/*
 
   install -Dm644 lldap_config.docker_template.toml "$pkgdir/var/lib/lldap/example_config.toml" 
+
+  mkdir -p "$pkgdir/usr/lib/sysusers.d"
+  mkdir -p "$pkgdir/usr/lib/tmpfiles.d"
+  echo 'u lldap - "lldap daemon user" /var/lib/lldap' > "$pkgdir/usr/lib/sysusers.d/lldap.conf"
+  echo 'g lldap' >> "$pkgdir/usr/lib/sysusers.d/lldap.conf"
+  echo 'd /var/lib/lldap 0755 lldap lldap - -' > "$pkgdir/usr/lib/tmpfiles.d/lldap.conf"
 }

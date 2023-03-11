@@ -1,6 +1,6 @@
 pkgbase = lldap-git
 	pkgdesc = Light LDAP implementation
-	pkgver = 0.4.1.r80.g98acd68
+	pkgver = 0.4.1.r88.g9e479d3
 	pkgrel = 1
 	url = https://github.com/nitnelave/lldap
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = lldap-git
 	makedepends = findutils
 	makedepends = curl
 	makedepends = git
-	makedepends = rust
+	makedepends = rustup
 	makedepends = rollup
 	makedepends = wasm-pack
 	source = lldap-git::git+https://github.com/nitnelave/lldap
