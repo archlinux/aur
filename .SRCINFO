@@ -1,6 +1,6 @@
 pkgbase = r-epigrahmm
 	pkgdesc = Epigenomic R-based analysis with hidden Markov models
-	pkgver = 1.6.2
+	pkgver = 1.6.3
 	pkgrel = 1
 	url = https://bioconductor.org/packages/epigraHMM
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = r-epigrahmm
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/epigraHMM_1.6.2.tar.gz
-	sha256sums = 4c1972a0c0d5f85c834eca02acfb3b598d0719dbd265df1bbc25f82093d30dca
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/epigraHMM_1.6.3.tar.gz
+	sha256sums = a32516d374c1df727b5a05387fe1cbd3f005ba5ae3619fc7c1eefcffca08d0e2
 
 pkgname = r-epigrahmm
