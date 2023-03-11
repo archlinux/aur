@@ -1,18 +1,20 @@
-# Maintainer: Noeljnuior <liamgliamgmailcom>
+# Maintainer: leuko <aur_2022_03@aydos.de>
+# Contributor: Noeljnuior <liamgliamgmailcom>
 
 pkgname=nextcloud-spreed-signaling
-pkgver=0.2.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Standalone signaling server for Nextcloud Talk.'
 arch=(any)
 url='https://github.com/strukturag/nextcloud-spreed-signaling'
 license=(AGPL3)
 makedepends=('git' 'go>=1.10')
-install="nextcloud-spreed-signaling.install"
+backup=(etc/signaling/server.conf)
+install=nextcloud-spreed-signaling.install
 depends=()
 optdepends=('nats-server' 'janus-gateway')
 source=("https://github.com/strukturag/nextcloud-spreed-signaling/releases/download/v$pkgver/nextcloud-spreed-signaling-v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=(78e8a7beb8097784cc131f031ebb48ff7f7c098c22d10b802e79ea527186ce4e)
 
 build() {
     cd "$srcdir/$pkgname-v$pkgver"
@@ -22,8 +24,8 @@ build() {
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-    make -j 1 build
-    make -j 1 client
+    make build
+    make client
 }
 
 package() {
