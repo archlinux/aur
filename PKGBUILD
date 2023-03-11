@@ -1,6 +1,6 @@
 # Maintainer: Jon Osterman <pro.dev.account@protonmail.com>
 pkgname=iroh-git
-pkgver=0.1.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='An Implementation IPFS in Rust'
 arch=(x86_64)
@@ -25,9 +25,6 @@ check() {
 package() {
 	cd $pkgname
 	install -Dm 755 target/release/iroh -t "$pkgdir/usr/bin"
-	install -Dm 755 target/release/iroh-p2p -t "$pkgdir/usr/bin"
-	install -Dm 755 target/release/iroh-gateway -t "$pkgdir/usr/bin"
-	install -Dm 755 target/release/iroh-store -t "$pkgdir/usr/bin"
 	install -Dm 644 LICENSE-MIT -t "$pkgdir/usr/share/licenses/$pkgname"
 	install -Dm 644 LICENSE-APACHE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
