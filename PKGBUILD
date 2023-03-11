@@ -4,7 +4,7 @@
 
 _pkgname='input-overlay'
 pkgname=obs-plugin-${_pkgname}
-pkgver=5.0.2
+pkgver=5.0.3
 pkgrel=1
 groups=('obs-plugins')
 pkgdesc='obs-studio plugin to show keyboard, gamepad and mouse input on stream.'
@@ -29,6 +29,8 @@ prepare() {
 	git config 'submodule.deps/libgamepad.url' "$srcdir/$pkgname-libgamepad"
 	git config 'submodule.deps/libuiohook.url' "$srcdir/$pkgname-libuiohook"
 	git -c 'protocol.file.allow=always' submodule update
+	
+	sed -i '/set(CMAKE_CXX_FLAGS "-march=native")/d' 'CMakeLists.txt'
 }
 
 build() {
