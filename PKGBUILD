@@ -9,18 +9,22 @@ _gitbranch="bpir"
 pkgname=bpir64-atf-git
 epoch=2
 pkgver=v2.8r12166.296bf7500
-pkgrel=1
+pkgrel=2
 pkgdesc='ATF BPI-R64 & BPI-R3 images including fiptool'
+_ubootpkgver=2023.01
 url='https://github.com/mtk-openwrt/arm-trusted-firmware.git'
 arch=(aarch64)
 depends=(linux)
-makedepends=(git bpir64-mkimage)
+makedepends=(git)
+replaces=(bpir64-mkimage)
 license=(GPL)
 source=("git+${_gitroot}.git#branch=${_gitbranch}"
+        "uboot${_ubootpkgver}::https://github.com/u-boot/u-boot/archive/refs/tags/v${_ubootpkgver}.tar.gz"
         '95-atf.hook'
         'bpir-writefip'
+        'mtkimage-gpt-expand.patch'
 )
-sha256sums=(SKIP SKIP SKIP)
+sha256sums=(SKIP SKIP SKIP SKIP SKIP)
 install=${pkgname}.install
  
 pkgver() {
@@ -43,6 +47,23 @@ prepare() {
 #  git am --ignore-space-change --ignore-whitespace "${startdir}/"*.patch
 }
 
+_buildmkimage() {
+  cd "${srcdir}/u-boot-${_ubootpkgver}"
+  cp -vf configs/mt7622_rfb_defconfig configs/my_defconfig
+  # No libcrypto (openssl)
+  echo "CONFIG_TOOLS_LIBCRYPTO=n" | tee -a configs/my_defconfig
+  # kwbimage needs libcrypto, so remove it from build
+  sed -i '/kwbimage.o \\/d' ./tools/Makefile
+  sed -i 's/FIT_OBJS-y :=.*/FIT_OBJS-y := fit_common.o boot\/image-fit.o/' ./tools/Makefile
+  ARCH=arm64 make clean
+  ARCH=arm64 make my_defconfig
+  ARCH=arm64 make tools-only
+  mv -vf tools/mkimage bpir3-mkimage
+  patch -p1 -N -r - < "${srcdir}/mtkimage-gpt-expand.patch"
+  ARCH=arm64 make tools-only
+  mv -vf tools/mkimage bpir64-mkimage
+}
+
 _buildimage() {
   _plat=$1; _bpir=$2; _atfdev=$3; _rest="${@:4}"
   sed -i 's/.*entry = get_partition_entry.*/\tentry = get_partition_entry("'${_bpir}'-'${_atfdev}'-fip");/' \
@@ -50,8 +71,8 @@ _buildimage() {
   touch plat/mediatek/${_plat}/platform.mk
   unset CXXFLAGS CPPFLAGS LDFLAGS
   export CFLAGS=-Wno-error
-  make PLAT=${_plat} BOOT_DEVICE=$_atfdev LOG_LEVEL=40 \
-       USE_MKIMAGE=1 MKIMAGE=$(which ${_bpir}-mkimage) ${_rest} all # MTK_BL33_IS_64BIT=1 
+  make PLAT=${_plat} BOOT_DEVICE=$_atfdev LOG_LEVEL=40 USE_MKIMAGE=1 \
+       MKIMAGE="${srcdir}/u-boot-${_ubootpkgver}/${_bpir}-mkimage" ${_rest} all # MTK_BL33_IS_64BIT=1 
   if [[ "${_bpir}" == "bpir64" ]]; then
     dd of=build/${_plat}/release/${_bpir}-atf-${_atfdev}-header.bin bs=1 count=440 if=build/${_plat}/release/bl2.img
     dd of=build/${_plat}/release/${_bpir}-atf-${_atfdev}-atf.bin         skip=34   if=build/${_plat}/release/bl2.img
@@ -69,6 +90,9 @@ _installimage() {
 }
 
 build() {
+  if [ ! -f "${srcdir}/u-boot-${_ubootpkgver}/bpir3-mkimage"  ] || \
+     [ ! -f "${srcdir}/u-boot-${_ubootpkgver}/bpir64-mkimage" ]; then _buildmkimage
+  fi
   cd "${srcdir}/${_gitname}/tools/fiptool"
   sed -i '/-Werror/d' ./Makefile
   make HOSTCCFLAGS+="-D'SHA256(x,y,z)=nop'" LDLIBS=""
