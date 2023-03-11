@@ -1,11 +1,17 @@
 pkgbase = ionosctl-bin
-	pkgdesc = IonosCTL is a tool to help you manage your Ionos Cloud resources directly from your terminal.
-	pkgver = 5.0.7
+	pkgdesc = IONOS Cloud CLI
+	pkgver = 6.5.2
 	pkgrel = 1
 	url = https://github.com/ionos-cloud/ionosctl
+	arch = aarch64
+	arch = i686
 	arch = x86_64
-	license = unknown
-	source_x86_64 = ionosctl-bin-5.0.7::https://github.com/ionos-cloud/ionosctl/releases/download/v5.0.7/ionosctl-5.0.7-linux-amd64.tar.gz
-	sha256sums_x86_64 = 5699325d140268be1ef2db0dbb0099f03249ea87414799cc420d88e7aee4aa39
+	license = Apache
+	source_aarch64 = https://github.com/ionos-cloud/ionosctl/releases/download/v6.5.2/ionosctl-6.5.2-linux-arm64.tar.gz
+	sha256sums_aarch64 = ca24aa924f3309c969eb4dcd576929305e362763d7201211d7a3086418baf7e9
+	source_i686 = https://github.com/ionos-cloud/ionosctl/releases/download/v6.5.2/ionosctl-6.5.2-linux-386.tar.gz
+	sha256sums_i686 = c08f67c380eee3319e44efa2e6cea9b68fc4ec02dc52b50c689a11e701f852e6
+	source_x86_64 = https://github.com/ionos-cloud/ionosctl/releases/download/v6.5.2/ionosctl-6.5.2-linux-amd64.tar.gz
+	sha256sums_x86_64 = 211f043b428b12ad56ef188345972bbaaf202d02b07b01f339858029e013afca
 
 pkgname = ionosctl-bin
