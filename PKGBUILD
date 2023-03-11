@@ -5,16 +5,17 @@
 
 pkgbase=bitbake
 pkgname=(bitbake bitbake-vim)
-pkgver=1.52.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Build tool executing tasks and managing metadata"
 url="https://www.openembedded.org/wiki/Main_Page"
 license=(GPL2)
 arch=(any)
-source=("https://git.openembedded.org/bitbake/snapshot/bitbake-${pkgver}.tar.gz"
-        "ignore-TestHashEquivalenceTCPServer.patch")
-sha256sums=('ec23630cff7da2fa6e686cd330cc50c834472433a3f1001bcb857c2f837519dd'
-            '0347fc61bb5e1b25e62b698470aaecf411680088c7d5c88a8a0e59138b620a33')
+depends=(python python-beautifulsoup4 python-ply python-codegen
+         python-progressbar python-pyinotify python-simplediff)
+#checkdepends=(git wget)
+source=("https://git.openembedded.org/bitbake/snapshot/bitbake-${pkgver}.tar.gz")
+sha256sums=('12eb41839071c60c60a005ffadbac13e1017a7cb4c2a38b04946471dc22bb5bc')
 
 #check() {
 #    if ! git config --global --get user.name; then
@@ -39,9 +40,6 @@ sha256sums=('ec23630cff7da2fa6e686cd330cc50c834472433a3f1001bcb857c2f837519dd'
 #}
 
 package_bitbake() {
-    depends=(python python-beautifulsoup4 python-ply python-codegen
-             python-progressbar python-pyinotify python-simplediff
-             cpio diffstat)
     install=bitbake.install
 
     _pythonver=$(python --version | awk '{print $2}' | awk -F. '{print $1"."$2}')
@@ -57,11 +55,11 @@ package_bitbake() {
     cp -Ra lib/hashserv "${pkgdir}/usr/lib/python${_pythonver}/site-packages"
     cp -Ra lib/bb/pysh "${pkgdir}/usr/lib/python${_pythonver}/site-packages"
 
-    install -d "${pkgdir}/usr/share/man/man1"
-    install doc/bitbake.1 "${pkgdir}/usr/share/man/man1"
+    install -D doc/bitbake.1 -t "${pkgdir}/usr/share/man/man1"
 }
 
 package_bitbake-vim() {
+  depends=()
     cd "${pkgbase}-${pkgver}"
 
     install -d "${pkgdir}/usr/share"

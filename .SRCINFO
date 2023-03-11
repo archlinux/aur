@@ -1,17 +1,10 @@
 pkgbase = bitbake
 	pkgdesc = Build tool executing tasks and managing metadata
-	pkgver = 1.52.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://www.openembedded.org/wiki/Main_Page
 	arch = any
 	license = GPL2
-	source = https://git.openembedded.org/bitbake/snapshot/bitbake-1.52.0.tar.gz
-	source = ignore-TestHashEquivalenceTCPServer.patch
-	sha256sums = ec23630cff7da2fa6e686cd330cc50c834472433a3f1001bcb857c2f837519dd
-	sha256sums = 0347fc61bb5e1b25e62b698470aaecf411680088c7d5c88a8a0e59138b620a33
-
-pkgname = bitbake
-	install = bitbake.install
 	depends = python
 	depends = python-beautifulsoup4
 	depends = python-ply
@@ -19,7 +12,11 @@ pkgname = bitbake
 	depends = python-progressbar
 	depends = python-pyinotify
 	depends = python-simplediff
-	depends = cpio
-	depends = diffstat
+	source = https://git.openembedded.org/bitbake/snapshot/bitbake-2.2.1.tar.gz
+	sha256sums = 12eb41839071c60c60a005ffadbac13e1017a7cb4c2a38b04946471dc22bb5bc
+
+pkgname = bitbake
+	install = bitbake.install
 
 pkgname = bitbake-vim
+	depends = 
