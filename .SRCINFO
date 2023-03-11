@@ -1,5 +1,5 @@
 pkgbase = tempenv
-	pkgdesc = Quick tool for environment tests creation
+	pkgdesc = A quick tool for environment tests creation
 	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/FuexFollets/tempenv
