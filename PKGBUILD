@@ -1,16 +1,16 @@
 # Maintainer: Vladimir Gorbunov <truedaemon@gmail.com>
 
 pkgname=gmtrn-cli
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
-pkgdesc="Simple CLI client for http://multitran.ru"
+pkgdesc="Simple CLI client for https://www.multitran.com"
 arch=('x86_64' 'i686')
 url="https://github.com/vladimir-g/gmtrn"
 license=('MIT')
 makedepends=('go')
-options=('!strip' '!emptydirs')
+options=('!emptydirs')
 source=("https://github.com/vladimir-g/gmtrn/archive/v${pkgver}.tar.gz")
-sha256sums=('13972a3a9b1871eb293793add083e9ff301f4bccca6a247aa21a70464cd905c5')
+sha256sums=('ca2fb0ee02d4990839ecc1e56c47752b1c357f388b4d4bdcdb1e53ab32c2b6f7')
 _srcname=gmtrn
 
 build() {
@@ -18,7 +18,10 @@ build() {
     cd ${_srcname}-${pkgver}/cmd/${pkgname}
     go build \
        -trimpath \
-       -ldflags "-extldflags $LDFLAGS" \
+       -buildmode=pie \
+       -mod=readonly \
+       -modcacherw \
+       -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
        -o $pkgname .
 }
 
