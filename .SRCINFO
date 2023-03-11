@@ -1,6 +1,6 @@
 pkgbase = handshake-cracker
 	pkgdesc = Capture handshakes with aircrack-ng, crack with hashcat using john the ripper mangled wordlists.
-	pkgver = 60.c795ef1
+	pkgver = 32.55ba7da
 	pkgrel = 1
 	url = https://github.com/semeion/handshake-cracker
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = handshake-cracker
 	depends = aircrack-ng
 	depends = hcxtools
 	depends = hashcat
-	depends = mdk3
+	depends = mdk4
 	depends = xterm
 	depends = ncurses
 	depends = psmisc
@@ -25,10 +25,9 @@ pkgbase = handshake-cracker
 	depends = sudo
 	depends = less
 	depends = john
-	depends = python2
-	depends = python2-lxml
+	depends = python
+	depends = python-lxml
 	source = git+https://github.com/semeion/handshake-cracker.git
 	sha256sums = SKIP
 
 pkgname = handshake-cracker
-

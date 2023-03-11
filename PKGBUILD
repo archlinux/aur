@@ -2,18 +2,18 @@
 # Maintainer: Alexandre Bolelli <semeion7@hotmail.com>
 
 pkgname=handshake-cracker
-pkgver=60.c795ef1
+pkgver=32.55ba7da
 pkgrel=1
 pkgdesc="Capture handshakes with aircrack-ng, crack with hashcat using john the ripper mangled wordlists."
 arch=('any')
 url='https://github.com/semeion/handshake-cracker'
 license=('GPL3')
-depends=('aircrack-ng' 'hcxtools' 'hashcat' 'mdk3' 'xterm' 'ncurses' 'psmisc' 'gawk'
-         'macchanger' 'coreutils' 'glibc' 'sed' 'gzip' 'bzip2' 'unzip' 'wget' 'sudo' 'less' 'john' 'python2' 'python2-lxml')
+depends=('aircrack-ng' 'hcxtools' 'hashcat' 'mdk4' 'xterm' 'ncurses' 'psmisc' 'gawk'
+         'macchanger' 'coreutils' 'glibc' 'sed' 'gzip' 'bzip2' 'unzip' 'wget' 'sudo' 'less' 'john' 'python' 'python-lxml')
 #optdepends=('hcxdumptool')
 makedepends=('git')
 source=('git+https://github.com/semeion/handshake-cracker.git')
-sha256sums=('SKIP') # use 'updpkgsums' if you want
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
