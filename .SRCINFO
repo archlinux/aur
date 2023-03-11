@@ -1,0 +1,19 @@
+pkgbase = mandrel-bin
+	pkgdesc = Mandrel is a downstream distribution of the GraalVM community edition. Mandrel's main goal is to provide a native-image release specifically to support Quarkus.
+	pkgver = 22.3.1.0
+	pkgrel = 1
+	url = https://github.com/graalvm/mandrel
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = java-runtime-common
+	depends = java-environment-common
+	provides = java-runtime=17
+	provides = java-environment=17
+	options = staticlibs
+	source_x86_64 = https://github.com/graalvm/mandrel/releases/download/mandrel-22.3.1.0-Final/mandrel-java17-linux-amd64-22.3.1.0-Final.tar.gz
+	sha256sums_x86_64 = 3c31169724c1fa23dc5cf5688d9d7f90d0d7bef9e90c9aea2419db9eb946b62c
+	source_aarch64 = https://github.com/graalvm/mandrel/releases/download/mandrel-22.3.1.0-Final/mandrel-java17-linux-aarch64-22.3.1.0-Final.tar.gz
+	sha256sums_aarch64 = e1146e100bf97c4adb67814fc7f6b52928eee02b61d5e54a789e1a590ac50fb0
+
+pkgname = mandrel-bin
