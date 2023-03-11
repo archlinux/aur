@@ -1,7 +1,7 @@
 # Maintainer: CleanMachine1 <cleanmachine1@duck.com>
 
 pkgname=tldr-git
-pkgver=1.4.2+7.gc5a1b0d70f
+pkgver=1.5.0.g821e08c4df
 pkgrel=1
 pkgdesc="C command line client for tldr"
 arch=('i686' 'x86_64' 'armv6h')
