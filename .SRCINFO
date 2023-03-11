@@ -1,6 +1,6 @@
 pkgbase = hugin-hg
 	pkgdesc = A frontend to the panorama-tools
-	pkgver = r8405.de3609447749
+	pkgver = r8480.907170838d2e
 	pkgrel = 1
 	url = http://hugin.sourceforge.net/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = hugin-hg
 	makedepends = tclap
 	makedepends = mesa
 	makedepends = swig
-	depends = wxgtk3
+	depends = wxwidgets-gtk3
 	depends = boost-libs
 	depends = libtiff
 	depends = libpano13

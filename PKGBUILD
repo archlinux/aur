@@ -2,13 +2,13 @@
 # Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 
 pkgname=hugin-hg
-pkgver=r8405.de3609447749
+pkgver=r8480.907170838d2e
 pkgrel=1
 pkgdesc="A frontend to the panorama-tools"
 arch=(x86_64)
 url="http://hugin.sourceforge.net/"
 license=(GPL)
-depends=(wxgtk3 boost-libs libtiff libpano13 libjpeg libpng openexr vigra
+depends=(wxwidgets-gtk3 boost-libs libtiff libpano13 libjpeg libpng openexr vigra
          exiv2 glew sqlite lcms2 lapack fftw glu libxi libxmu python
          lensfun enblend-enfuse)
 makedepends=(mercurial cmake boost tclap mesa swig)
@@ -38,7 +38,7 @@ build() {
     -DENABLE_LAPACK=yes \
     -DBUILD_HSI=ON \
     -DUSE_GDKBACKEND_X11=ON \
-    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3
+    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config
   make
 }
 
