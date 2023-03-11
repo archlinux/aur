@@ -1,45 +1,43 @@
 pkgbase = dbus-selinux
 	pkgdesc = Freedesktop.org message bus system with SELinux support
 	pkgver = 1.14.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.freedesktop.org/www/Software/dbus/
 	arch = x86_64
 	arch = aarch64
 	groups = selinux
 	license = GPL
 	license = custom
-	makedepends = systemd-selinux
-	makedepends = xmlto
+	makedepends = autoconf-archive
 	makedepends = docbook-xsl
-	makedepends = python
-	makedepends = yelp-tools
 	makedepends = doxygen
 	makedepends = git
-	makedepends = autoconf-archive
-	makedepends = audit
-	makedepends = libselinux
-	depends = systemd-libs-selinux>=242.84-2
-	depends = expat
+	makedepends = python
+	makedepends = systemd-selinux
+	makedepends = xmlto
+	makedepends = yelp-tools
 	depends = audit
+	depends = expat
+	depends = libselinux
+	depends = systemd-libs-selinux>=242.84-2
 	source = git+https://gitlab.freedesktop.org/dbus/dbus.git?signed#tag=dbus-1.14.6
 	source = dbus-reload.hook
-	source = no-fatal-warnings.diff
 	validpgpkeys = DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90
-	sha256sums = SKIP
-	sha256sums = d636205622d0ee3b0734360225739ef0c7ad2468a09489e6ef773d88252960f3
-	sha256sums = c10395be67e1127a58d7173b587fbbf16f8a8b271c41293558fcf9e27c185478
+	b2sums = SKIP
+	b2sums = 05ab81bf72e7cf45ad943f5b84eaecef4f06bed94979c579a3e23134cbabd7ea6f65fa9ac252f8b43ceb4a3295e0d2325f06560a044fe7ddf125fc30dfc2b7e2
 
 pkgname = dbus-selinux
-	depends = systemd-libs-selinux>=242.84-2
-	depends = expat
 	depends = audit
-	depends = libsystemd.so
+	depends = expat
+	depends = libselinux
+	depends = systemd-libs-selinux>=242.84-2
 	depends = libaudit.so
+	depends = libsystemd.so
 	provides = libdbus
 	provides = libdbus-1.so
 	provides = libdbus-selinux
-	provides = dbus=1.14.6-1
-	provides = selinux-dbus=1.14.6-1
+	provides = dbus=1.14.6-2
+	provides = selinux-dbus=1.14.6-2
 	conflicts = libdbus
 	conflicts = libdbus-selinux
 	conflicts = dbus
@@ -48,6 +46,6 @@ pkgname = dbus-selinux
 	replaces = libdbus-selinux
 
 pkgname = dbus-docs-selinux
-	pkgdesc = Freedesktop.org message bus system with SELinux support (documentation)
+	pkgdesc = Freedesktop.org message bus system with SELinux support - Documentation
 	depends = 
 	conflicts = dbus-docs

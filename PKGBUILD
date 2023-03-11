@@ -11,58 +11,79 @@
 # you need to update the remotes of the source git repository, for example with the following command:
 #   git -C dbus remote set-url origin https://gitlab.freedesktop.org/dbus/dbus.git
 pkgbase=dbus-selinux
-pkgname=(dbus-selinux dbus-docs-selinux)
+pkgname=(
+  dbus-selinux
+  dbus-docs-selinux
+)
 pkgver=1.14.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Freedesktop.org message bus system with SELinux support"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
 arch=(x86_64 aarch64)
-license=(GPL custom)
+license=(
+  GPL
+  custom
+)
 groups=(selinux)
 # Make sure systemd's hook supports reloading dbus: the following commit was introduced in package systemd 242.84-2
 # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/systemd&id=4e247891655844511c775fba566df270f8d0d55f
 # https://github.com/archlinux/svntogit-packages/commit/4e247891655844511c775fba566df270f8d0d55f
-depends=('systemd-libs-selinux>=242.84-2' expat audit)
-makedepends=(systemd-selinux xmlto docbook-xsl python yelp-tools doxygen git autoconf-archive audit libselinux)
-source=("git+https://gitlab.freedesktop.org/dbus/dbus.git?signed#tag=dbus-$pkgver"
-        dbus-reload.hook no-fatal-warnings.diff)
-sha256sums=('SKIP'
-            'd636205622d0ee3b0734360225739ef0c7ad2468a09489e6ef773d88252960f3'
-            'c10395be67e1127a58d7173b587fbbf16f8a8b271c41293558fcf9e27c185478')
+depends=(
+  audit
+  expat
+  libselinux
+  'systemd-libs-selinux>=242.84-2'
+)
+makedepends=(
+  autoconf-archive
+  docbook-xsl
+  doxygen
+  git
+  python
+  systemd-selinux
+  xmlto
+  yelp-tools
+)
+source=(
+  "git+https://gitlab.freedesktop.org/dbus/dbus.git?signed#tag=dbus-$pkgver"
+  dbus-reload.hook
+)
+b2sums=('SKIP'
+        '05ab81bf72e7cf45ad943f5b84eaecef4f06bed94979c579a3e23134cbabd7ea6f65fa9ac252f8b43ceb4a3295e0d2325f06560a044fe7ddf125fc30dfc2b7e2')
 validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90') # Simon McVittie <simon.mcvittie@collabora.co.uk>
 
 prepare() {
   cd dbus
 
-  # Allow us to enable checks without them being fatal
-  git apply -3 ../no-fatal-warnings.diff
-
   NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
+  local configure_options=(
+    --prefix=/usr
+    --sysconfdir=/etc
+    --localstatedir=/var
+    --libexecdir=/usr/lib/dbus-1.0
+    --runstatedir=/run
+    --with-console-auth-dir=/run/console/
+    --with-dbus-user=dbus
+    --with-system-pid-file=/run/dbus/pid
+    --with-system-socket=/run/dbus/system_bus_socket
+    --with-systemdsystemunitdir=/usr/lib/systemd/system
+    --enable-inotify
+    --enable-libaudit
+    --enable-systemd
+    --enable-user-session
+    --enable-xml-docs
+    --enable-doxygen-docs
+    --enable-ducktype-docs
+    --disable-static
+    --without-x
+    --enable-selinux
+  )
+
   cd dbus
-  ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --localstatedir=/var \
-    --libexecdir=/usr/lib/dbus-1.0 \
-    --runstatedir=/run \
-    --with-console-auth-dir=/run/console/ \
-    --with-dbus-user=dbus \
-    --with-system-pid-file=/run/dbus/pid \
-    --with-system-socket=/run/dbus/system_bus_socket \
-    --with-systemdsystemunitdir=/usr/lib/systemd/system \
-    --enable-inotify \
-    --enable-libaudit \
-    --enable-systemd \
-    --enable-user-session \
-    --enable-xml-docs \
-    --enable-doxygen-docs \
-    --enable-ducktype-docs \
-    --disable-static \
-    --without-x \
-    --enable-selinux --enable-libaudit
+  ./configure "${configure_options[@]}"
   make
 }
 
@@ -71,8 +92,17 @@ check() {
 }
 
 package_dbus-selinux() {
-  depends+=(libsystemd.so libaudit.so)
-  provides=(libdbus libdbus-1.so libdbus-selinux "${pkgname/-selinux}=${pkgver}-${pkgrel}" "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
+  depends+=(
+    libaudit.so
+    libsystemd.so
+  )
+  provides=(
+    libdbus
+    libdbus-1.so
+    libdbus-selinux 
+    "${pkgname/-selinux}=${pkgver}-${pkgrel}"
+    "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}"
+  )
   conflicts=(libdbus libdbus-selinux "${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
   replaces=(libdbus libdbus-selinux)
 
@@ -94,7 +124,7 @@ package_dbus-selinux() {
 }
 
 package_dbus-docs-selinux() {
-  pkgdesc+=" (documentation)"
+  pkgdesc+=" - Documentation"
   depends=()
   conflicts=("${pkgname/-selinux}")
 
