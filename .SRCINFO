@@ -1,6 +1,6 @@
 pkgbase = chordpro-git
 	pkgdesc = Reference implementation of the ChordPro standard for musical lead sheets.
-	pkgver = 5.985.r0.gfe3027b
+	pkgver = 6.000.r2.gfa9ba48d
 	pkgrel = 1
 	url = https://github.com/ChordPro/chordpro
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = chordpro-git
 	depends = perl-pod-parser
 	depends = perl-text-layout
 	depends = perl-file-homedir
-	optdepends = perl-wx
+	optdepends = perl-wx: for graphical wxchordpro
 	provides = chordpro
 	options = !emptydirs
 	options = !purge
