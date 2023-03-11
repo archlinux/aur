@@ -1,50 +1,95 @@
-# Maintainer: Xuanrui Qi <me@xuanruiqi.com>
+# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Contributor: Xuanrui Qi <me@xuanruiqi.com>
 # Contributor: Jean Lucas <jean@4ray.co>
 # Contributor: José Luis Lafuente <jl@lafuente.me>
 # Contributor: Michael Louis Thaler <michael.louis.thaler@gmail.com>
 
 pkgname=watchman
-pkgver=4.9.0
-pkgrel=6
-pkgdesc="An inotify-based file watching and job triggering command line utility"
-url="https://facebook.github.io/watchman/"
-arch=('i686' 'x86_64')
-license=('Apache')
-depends=('pcre' 'systemd' 'python')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/facebook/watchman/archive/v${pkgver}.tar.gz"
-        "${pkgname}.tmpfiles" "python3.patch" "autogen.patch")
-sha256sums=('1f6402dc70b1d056fffc3748f2fdcecff730d8843bb6936de395b3443ce05322'
-            '2b061865e10578a0477b9c7991a00594bc839c846b98896e93c75743dbf6a379'
-            '8aa32e37aef329e0873425d25e370d25b7aa0731f104a645737f1111f64a5a9e'
-            '1a86a52a434c034b4478af88f2789a1791e826f9ca4f1e8b1c421923b2dc2447')
+pkgver=2023.03.06.00
+pkgrel=1
+pkgdesc="Watches files and records, or triggers actions, when they change"
+url="https://github.com/facebook/watchman"
+arch=(x86_64)
+license=(MIT)
+makedepends=(
+  boost
+  cmake
+  edencommon
+  gmock
+  rust
+)
+depends=(
+  boost-libs
+  double-conversion
+  fmt
+  google-glog
+  libaio
+  libdwarf
+  libsodium
+  libunwind
+  liburing
+  pcre2
+  python
+  snappy
+)
+backup=(etc/watchman.json)
+
+source=(
+  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+  "https://src.fedoraproject.org/rpms/watchman/raw/a446ccc61c73d74053792656c3832f93bf0fe262/f/watchman-destdir.patch"
+  "watchman.conf"
+  "watchman.json"
+  "watchman.service"
+  "watchman.socket"
+)
+sha256sums=(
+  '5e9fcb2d8293e89d66ef0585a20bd20d786bb79abba61ebced260d5f4168d223'
+  'd40feab6aa7dc6522c648660e88642fdf721ee1f9d80c23f6891a6381067a38b'
+  '3ebc93cb91ec9b9603969e222fd3ffd9baa4a1d07a7b3bd7aabf956ec2e177c8'
+  'ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356'
+  '5b4b032b68d87d648e268c5c08b4d56993d5c1a661e3925b39f54bdef2dfbc42'
+  '853457ad70492fec9d7d020b9e067e2aec2ca419c0a5cddd5d93c5fab354c87a'
+)
+
+_archive="$pkgname-$pkgver"
 
 prepare() {
-  cd ${pkgname}-${pkgver}
-  patch -Np1 -i "${srcdir}"/autogen.patch
-  autoupdate
-  ./autogen.sh
+  cd "$_archive"
 
-  patch -Np1 -i "${srcdir}"/python3.patch
+  patch --forward --strip=1 --ignore-whitespace --fuzz=3 --input="$srcdir/watchman-destdir.patch"
 }
 
 build() {
-  cd ${pkgname}-${pkgver}
-  ./configure --prefix=/usr --disable-statedir --enable-lenient
-  make
+  cd "$_archive"
+
+  cmake -S . -B build \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -Wno-dev \
+    -DCMAKE_LIBRARY_ARCHITECTURE=x86_64_v3 \
+    -DWATCHMAN_STATE_DIR=/var/run/watchman \
+    -DUSE_SYS_PYTHON=ON \
+    -DWATCHMAN_VERSION_OVERRIDE="$pkgver" \
+    -DENABLE_EDEN_SUPPORT=OFF
+  cmake --build build
 }
 
 check() {
-  cd ${pkgname}-${pkgver}
-  # TODO: fix segfault in test
-  #make check
+  cd "$_archive"
+
+  ctest --test-dir build --output-on-failure \
+    -E "(test_full_capability_set|test_fstype)"
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
-  # Docs available online only; see https://github.com/facebook/watchman/issues/30
-  make DESTDIR="${pkgdir}" install
+  cd "$_archive"
 
-  install -Dm 644 "${srcdir}"/${pkgname}.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/${pkgname}.conf
+  DESTDIR="$pkgdir" cmake --install build
+
+  install -Dm644 "$srcdir/watchman.conf" "$pkgdir/usr/lib/tmpfiles.d/watchman.conf"
+  install -Dm644 "$srcdir/watchman.json" "$pkgdir/etc/watchman.json"
+  install -Dm644 "$srcdir/watchman.service" "$pkgdir/usr/lib/systemd/user/watchman.service"
+  install -Dm644 "$srcdir/watchman.socket" "$pkgdir/usr/lib/systemd/user/watchman.socket"
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-# vim:set ts=2 sw=2 et:

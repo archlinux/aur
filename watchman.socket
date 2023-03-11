@@ -1,0 +1,11 @@
+[Unit]
+Description=File watching service socket
+Documentation=https://github.com/facebook/watchman
+
+[Socket]
+ListenStream=/run/watchman/%u-state/sock
+SocketMode=0600
+DirectoryMode=0700
+
+[Install]
+WantedBy=sockets.target

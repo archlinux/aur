@@ -1,0 +1,13 @@
+[Unit]
+Description=File watching service
+Documentation=https://github.com/facebook/watchman
+Requires=watchman.socket
+
+[Service]
+ExecStart=/usr/bin/watchman --foreground --inetd --logfile=-
+StandardInput=socket
+StandardOutput=journal
+StandardError=inherit
+
+[Install]
+WantedBy=default.target

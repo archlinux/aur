@@ -1,8 +1,10 @@
 *
-
+!.gitignore
 !PKGBUILD
 !.SRCINFO
-!watchman.tmpfiles
+!watchman.conf
 !watchman.install
-!.gitignore
-!*.patch
+!watchman.json.default
+!watchman.service
+!watchman.socket
+!watchman.tmpfiles
