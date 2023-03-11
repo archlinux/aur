@@ -1,7 +1,9 @@
-# Maintainer: NebulaBC <contact@nebulabc.net>
+# Maintainer: NebulaBC <ufrii.print@nebulabc.net>
 pkgname='ufrii-print'
 pkgver=1.0
 pkgrel=1
+pkgdesc="Install the official Canon UFRII/UFRII LT driver made for Debian on ArchLinux"
+url="https://www.usa.canon.com/support/p/color-imageclass-mf644cdw"
 arch=('x86_64')
 depends=('cups'
 	'ghostscript'
@@ -23,10 +25,10 @@ build() {
     rm control.tar.xz debian-binary cnrdrvcups-ufr2-us_5.70-1.11_amd64.deb
     tar -xvf data.tar.xz
     rm data.tar.xz
-
 }
 
 package() {
     cd $srcdir
     mv * $pkgdir
+    echo "To open the setup GUI, you can run \`cnsetuputil2\`"
 }
