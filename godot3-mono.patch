@@ -1,0 +1,40 @@
+From 170a35983d6421b6c6f50e3211561688b914c960 Mon Sep 17 00:00:00 2001
+From: seth <getchoo@tuta.io>
+Date: Fri, 10 Mar 2023 19:28:55 -0500
+Subject: [PATCH] specify 3 in version
+
+this avoids conflicts with newer and older versions of godot
+---
+ misc/dist/linux/org.godotengine.Godot.desktop | 4 ++--
+ version.py                                    | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/misc/dist/linux/org.godotengine.Godot.desktop b/misc/dist/linux/org.godotengine.Godot.desktop
+index db0c80e4f1..71be0c88d3 100644
+--- a/misc/dist/linux/org.godotengine.Godot.desktop
++++ b/misc/dist/linux/org.godotengine.Godot.desktop
+@@ -8,8 +8,8 @@ Comment=Multi-platform 2D and 3D game engine with a feature-rich editor
+ Comment[el]=2D και 3D μηχανή παιχνιδιού πολλαπλών πλατφορμών με επεξεργαστή πλούσιο σε χαρακτηριστικά
+ Comment[fr]=Moteur de jeu 2D et 3D multiplateforme avec un éditeur riche en fonctionnalités
+ Comment[zh_CN]=多平台 2D 和 3D 游戏引擎，带有功能丰富的编辑器
+-Exec=godot %f
+-Icon=godot
++Exec=godot3-mono %f
++Icon=godot3-mono
+ Terminal=false
+ PrefersNonDefaultGPU=true
+ Type=Application
+diff --git a/version.py b/version.py
+index 153c199892..2376dcf2fc 100644
+--- a/version.py
++++ b/version.py
+@@ -1,5 +1,5 @@
+-short_name = "godot"
+-name = "Godot Engine"
++short_name = "godot3-mono"
++name = "Godot Engine 3 Mono"
+ major = 3
+ minor = 5
+ patch = 2
+-- 
+2.39.2.windows.1
