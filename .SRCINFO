@@ -1,25 +1,22 @@
 pkgbase = nushell-git
 	pkgdesc = A new type of shell
-	pkgver = 0.15.0.r2.ga268e825
+	pkgver = 0.76.0.r124.g7e82f8d
 	pkgrel = 1
 	url = https://www.nushell.sh
-	arch = i686
 	arch = x86_64
+	arch = i686
 	arch = armv6h
 	arch = armv7h
 	license = MIT
-	makedepends = rust
-	makedepends = cargo
-	makedepends = python
 	makedepends = git
+	makedepends = cargo
 	depends = openssl
 	depends = zlib
-	depends = e2fsprogs
-	depends = libx11
 	depends = curl
 	optdepends = libxcb
+	provides = nushell=0.76.0.r124.g7e82f8d
 	conflicts = nushell
-	source = nushell-git::git+https://github.com/nushell/nushell.git
+	source = nushell::git+https://github.com/nushell/nushell.git
 	sha256sums = SKIP
 
 pkgname = nushell-git

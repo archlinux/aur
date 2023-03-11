@@ -1,43 +1,62 @@
 # Maintainer: Flaviu Tamas <me@flaviutamas.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
+
+# Upstream tests have multiple issues including race conditions, using external
+# binaries, differing results based on unrelated system directories, etc.
+# See https://github.com/nushell/nushell/issues/7951
+# See https://github.com/nushell/nushell/issues/8404
+BUILDENV+=(!check)
 
 _pkgname=nushell
 pkgname=$_pkgname-git
-pkgver=0.60.0.r50.ga2872b4cc
+pkgver=0.76.0.r124.g7e82f8d
 pkgrel=1
-makedepends=('rust' 'cargo' 'python' 'git')
-# libx11 required for stable preset
-depends=('openssl' 'zlib' 'e2fsprogs' 'libx11' 'curl')
-optdepends=('libxcb')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-pkgdesc="A new type of shell"
-source=("$pkgname::git+https://github.com/nushell/nushell.git")
-url="https://www.nushell.sh"
+pkgdesc='A new type of shell'
+arch=('x86_64' 'i686' 'armv6h' 'armv7h')
+url='https://www.nushell.sh'
+_url="https://github.com/$_pkgname/$_pkgname"
 license=('MIT')
+depends=('openssl' 'zlib' 'curl')
+optdepends=('libxcb')
+makedepends=('git' 'cargo')
+conflicts=("$_pkgname")
+provides=("$_pkgname=$pkgver")
+source=("${pkgname%-git}::git+$_url.git")
 sha256sums=('SKIP')
-conflicts=('nushell')
 
-build() {
-    return 0
+prepare() {
+	cd "${pkgname%-git}"
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 pkgver() {
-    cd "$srcdir/$pkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "${pkgname%-git}"
+	git describe --long --abbrev=7 --tags HEAD |
+		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+	cd "${pkgname%-git}"
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --release --frozen --workspace --features=extra,dataframe
+}
+
+check() {
+	cd "${pkgname%-git}"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo test --frozen --workspace --features=extra,dataframe
 }
 
 package() {
-    case "$CFLAGS" in  *"-g"*) export RUSTFLAGS="-g";; esac
-    cd "$srcdir/$pkgname"
-
-    # user may not be using rustup, so always succeed
-    rustup override set stable || true
-
-    cargo install \
-        --locked \
-        --path . \
-        --features stable \
-        --root="$pkgdir/usr"
-
-    rm "$pkgdir/usr/.crates.toml" "$pkgdir/usr/.crates2.json"
+	cd "${pkgname%-git}"
+	find target/release \
+		-maxdepth 1 \
+		-executable \
+		-type f \
+		-name "nu*" \
+		-exec install -Dm0755 -t "$pkgdir/usr/bin/" {} +
+	install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
