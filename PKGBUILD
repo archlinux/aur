@@ -1,7 +1,7 @@
 # Maintainer: restitux <restitux at ohea dot xyz>
 
 pkgname=apollo-rover-bin
-pkgver=0.12.2
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="CLI for Apollo's suite of GraphQL developer productivity tools (binary release)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs' 'zlib')
 conflicts=('apollo-rover')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/rover-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('51dbd18b3e0797f54d8bac8e5b4bae2bbc1d33654548aa69323920892f8d5741')
+sha256sums=('d0b2675f0f0ddfa12c2833083f67c290979c4530f078209a5a8dda0c490d9a87')
 
 package() {
 	install -D "dist/rover" -t "$pkgdir/usr/bin/"
