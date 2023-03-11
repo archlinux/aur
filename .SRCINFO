@@ -1,0 +1,20 @@
+pkgbase = python-panphon
+	pkgdesc = Python package and data files for manipulating phonological segments (phones, phonemes) in terms of universal phonological features.
+	pkgver = 0.19.1
+	pkgrel = 1
+	url = https://github.com/dmort27/panphon
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-editdistance
+	depends = python-munkres
+	depends = python-numpy
+	depends = python-pyaml
+	depends = python-regex
+	depends = python-unicodecsv
+	options = !emptydirs
+	source = python-panphon-0.19.1.tar.gz::https://github.com/dmort27/panphon/archive/refs/tags/0.19.1.tar.gz
+	sha256sums = 9d5a189c8f8ef8cf4b1dfa90c0c0c66543d4257591b37d8b95fc8bfe81a09a0a
+
+pkgname = python-panphon
