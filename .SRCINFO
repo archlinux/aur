@@ -6,9 +6,7 @@ pkgbase = pipes.js-git
 	arch = x86_64
 	license = DBAD V1.1
 	depends = nodejs>=16.0.0
-	source = https://github.com/Oman395/pipes.js
-	sha256sums = 09c35316ea16a36100e97f0db02fa15dea4f06d4139a5fa59d298fb1e4f011b7
-	sha256sums = dd510a341964ef57e74bf28b7427d1da934a7a5295cf15531790709be3cc117e
-	sha256sums = 0c7203b6978d98b1885c62c995210059ad58d66c530f7d0c6a6da38e52a775d0
+	source = https://github.com/Oman395/pipes.js/archive/refs/heads/master.zip
+	sha256sums = 99693a3532b8471526eb543fe964faf915b5fa6ceb2042ee6614a5c17311767c
 
 pkgname = pipes.js-git
