@@ -1,0 +1,13 @@
+pkgbase = destiny-appimage
+	pkgdesc = The latest stable AppImage of Destiny - a Cross-platform Magic Wormhole graphical client
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/LeastAuthority/destiny
+	arch = x86_64
+	license = MIT
+	depends = fuse2
+	options = !strip
+	source = https://github.com/LeastAuthority/destiny/releases/download/v1.0.3/destiny_linux_amd64.AppImage
+	sha512sums = 7f3a197356f38e365fec1f473c06e4632de4e6c72fdd523d42c86d3d995af39931804d35c346121bb2bb72453fb97657fb7e065a18761172d48584065e03f5b8
+
+pkgname = destiny-appimage
