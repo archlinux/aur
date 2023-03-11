@@ -1,7 +1,7 @@
 # Maintainer: Norbert Preining <norbert@preining.info>
 _UpstreamPkgName=FastFlix
 pkgname=${_UpstreamPkgName,,}
-pkgver=5.1.0
+pkgver=5.2.3
 pkgrel=1
 pkgdesc="Simple and friendly GUI for encoding videos"
 arch=('x86_64')
@@ -15,20 +15,28 @@ optdepends=('nvenc: hardware accelerated encoding on NVIDIA cards'
             'rav1e: encoding to AV1'
 	    'libwebp: encoding to WebP')
 source=(git+${url}.git#tag=${pkgver}
+        allow-python310.patch
         FastFlix.desktop)
 sha256sums=('SKIP'
+            '7915817b3b4b7f987b50cf9bae60259ff7113c8c7985dc9b980ee5cb9154e754'
             'cbcb6f228b858a69a860aa6a3283f0f4293e1246485566d20f60a93030f1f847')
+
+prepare() {
+	cd $_UpstreamPkgName
+	patch --forward --strip=1 --input="${srcdir}/allow-python310.patch"
+}
 
 build() {
 	cd ${_UpstreamPkgName}
 	python -m venv venv
 	source ./venv/bin/activate
-	python -m pip install --upgrade pip setuptools --ignore-installed
-	python -m pip install --upgrade wheel typing_extensions pyinstaller
-	python -m pip install -r requirements.txt
+	python -m pip install --upgrade pip setuptools poetry --ignore-installed
+	poetry config virtualenvs.create false --local
+	poetry install --with dev --with test || true
+	poetry install --with dev --with test
 	cp $(python -c "import iso639; print(iso639.mapping.TABLE_PATH)") iso-639-3.tab
 	cp $(python -c "import iso639; print(iso639.mapping.MAPPING_PATH)") iso-639-3.json
-	python -m PyInstaller FastFlix_Nix_OneFile.spec
+	pyinstaller FastFlix_Nix_OneFile.spec
 	# convert icon.ico to png for desktop file
 	icotool --extract --index=1 -o FastFlix.png fastflix/data/icon.ico
 }
@@ -44,3 +52,11 @@ package() {
 	# install documentation
 	install -Dm 644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
 }
+
+check() {
+	cd ${_UpstreamPkgName}
+	chmod +x dist/FastFlix
+	dist/FastFlix --version
+	dist/FastFlix --test
+}
+
