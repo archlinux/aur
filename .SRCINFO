@@ -23,7 +23,7 @@ pkgbase = xts-macos-big-sur-theme
 	provides = xts-macos-big-sur-theme
 	conflicts = xts-macos-big-sur-theme
 	options = !strip
-	source = https://gitlab.com/linux-stuffs/xts-themes/raw/master/xts-macos-big-sur-theme/distrib/xts-macos-big-sur-theme-0.1-2.tar.gz
+	source = https://gitlab.com/linux-stuffs/xts-themes/-/raw/main/xts-macos-big-sur-theme/distrib/xts-macos-big-sur-theme-0.1-2.tar.gz
 	sha256sums = SKIP
 
 pkgname = xts-macos-big-sur-theme
