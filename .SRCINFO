@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-jxl
 	pkgdesc = Complete solution to record, convert and stream audio and video (with JPEG XL support, supporting jxl screenshots in mpv)
-	pkgver = 5.1.2
-	pkgrel = 3
+	pkgver = 6.0
+	pkgrel = 1
 	url = https://ffmpeg.org/
 	arch = x86_64
 	license = GPL3
@@ -89,12 +89,8 @@ pkgbase = ffmpeg-jxl
 	provides = libswscale.so
 	provides = ffmpeg
 	conflicts = ffmpeg
-	source = https://ffmpeg.org/releases/ffmpeg-5.1.2.tar.xz
+	source = https://ffmpeg.org/releases/ffmpeg-6.0.tar.xz
 	source = add-av_stream_get_first_dts-for-chromium.patch
-	source = ffmpeg-libjxl-primary.patch
-	source = vulkan-decode-defs.patch
-	b2sums = SKIP
-	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 
