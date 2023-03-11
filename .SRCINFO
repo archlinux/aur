@@ -1,6 +1,6 @@
 pkgbase = python-amulet-nbt
 	pkgdesc = A Python and Cython library for reading and writing binary NBT and stringified NBT
-	pkgver = 2.0.4
+	pkgver = 2.0.5
 	pkgrel = 1
 	url = https://github.com/Amulet-Team/Amulet-NBT
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = python-amulet-nbt
 	depends = python
 	depends = python-mutf8
 	depends = python-numpy
-	source = python-amulet-nbt-2.0.4.tar.gz::https://github.com/Amulet-Team/Amulet-NBT/archive/2.0.4.tar.gz
-	sha256sums = e45f6b8121a54a852f4a2716d2f0360ad0dac893ef5c7f0a1c49aa95b1ee90c5
+	source = python-amulet-nbt-2.0.5.tar.gz::https://github.com/Amulet-Team/Amulet-NBT/archive/2.0.5.tar.gz
+	sha256sums = d5dba1e6f037ba22155937304ffa03a235c2894edcfeced086413347e5e35b2b
 
 pkgname = python-amulet-nbt
