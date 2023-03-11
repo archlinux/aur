@@ -2,8 +2,8 @@
 # Maintainer: 1nikolas
 # Contributor: 1nikolas
 pkgname=purevpn-gui
-pkgver=2.4.0
-pkgrel=2
+pkgver=2.4.1
+pkgrel=1
 pkgdesc='PureVPN Linux Application (GUI)'
 arch=('x86_64')
 url='https://www.purevpn.com/download/linux-vpn'
@@ -17,7 +17,7 @@ source_x86_64=("https://purevpn-dialer-assets.s3.amazonaws.com/cross-platform/li
                'dpkg-query.c'
                'purevpn.desktop'
                'purevpn')
-sha512sums_x86_64=('ec61fe4d7bc088adad8c56b2530e3d64693cbe3969887939aa55db691de226416a6588cc4389747b241f82ad522aec1d20747921eeeaf95e948969cd1297f763'
+sha512sums_x86_64=('c4f0d22910b4d5388e967e200a7ca8f09bfc8fb30721afe04f068e8babcfc7c41d4261487d252efd724f5f708aad17222adb627650bf3fab126fe24af51da9e0'
                    '51b12c730cb87e6a2218e8d35d2076e553dd8c8fdf42cab8b462cc48e5222bde0fe822c9b50a75040eb1ab47fc9bcedbae58f63d0d04e27f6cfa33db501614b2'
                    '6d91106dee8fc9a61c5f111acb2153bbfc7212ee6feda7a744244e0da49f5b244f4a39853659c4834f9ab91683bcc4cf3eedbf64eae38828d4327c899b3f293c'
                    '20ca17878747f6c08bb8506a9e945f3475860b38a0be54e35155d920431a7250c6626b90d538d6823c52b5a56f1115ffafc2628e326326d9bc853bcdd169033a')
