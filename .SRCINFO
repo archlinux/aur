@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-dev
 	pkgdesc = Official Telegram Desktop client - development release
-	pkgver = 4.6.5
+	pkgver = 4.6.9
 	pkgrel = 1
 	url = https://desktop.telegram.org/
 	arch = x86_64
@@ -43,7 +43,7 @@ pkgbase = telegram-desktop-dev
 	optdepends = xdg-desktop-portal: desktop integration
 	provides = telegram-desktop
 	conflicts = telegram-desktop
-	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop#tag=v4.6.5
+	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop#tag=v4.6.9
 	source = ensure_qt6_build.patch
 	source = cld3::git+https://github.com/google/cld3.git
 	source = cmake::git+https://github.com/desktop-app/cmake_helpers.git
