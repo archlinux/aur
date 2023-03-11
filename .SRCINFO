@@ -1,0 +1,14 @@
+pkgbase = python-phonemes2ids
+	pkgdesc = Flexible tool for assigning integer ids to phonemes
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/rhasspy/phonemes2ids
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	options = !emptydirs
+	source = python-phonemes2ids-1.2.0.tar.gz::https://github.com/rhasspy/phonemes2ids/archive/v1.2.0.tar.gz
+	sha256sums = 4af10276c90a0713c0886c18fe4cbf3f8c66c9750b97ce1a818cfc742f69fad2
+
+pkgname = python-phonemes2ids
