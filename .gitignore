@@ -1,0 +1,8 @@
+# Ignore everything
+*
+
+# Add files
+!PKGBUILD
+!.SRCINFO
+
+!fastx.desktop

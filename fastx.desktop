@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=FastX
+GenericName=FastX desktop client
+Exec=/usr/bin/FastX3
+Terminal=false
