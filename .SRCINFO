@@ -1,7 +1,7 @@
 pkgbase = obs-studio-amf
 	pkgdesc = Free, open source software for live streaming and recording. Includes new AMF encoding patch & browser plugin
 	pkgver = 29.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://obsproject.com
 	arch = x86_64
 	license = GPL2
@@ -45,10 +45,12 @@ pkgbase = obs-studio-amf
 	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=29.0.2
 	source = cef_binary_4638_linux64.tar.bz2::https://cdn-fastly.obsproject.com/downloads/cef_binary_4638_linux64.tar.bz2
 	source = 7206.patch
+	source = ffmpeg-6.patch
 	source = com.obsproject.Studio.desktop
 	md5sums = SKIP
 	md5sums = 34fb1c611b3e278ca4d0d1d50e7bfb9b
 	md5sums = ed2f61a97081790221f80f231c8ec671
+	md5sums = b029caa35d8ad8d70ee94e37723f97ef
 	md5sums = 2f0f4b1f1814716d345a8f028b987361
 
 pkgname = obs-studio-amf
