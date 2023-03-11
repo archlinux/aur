@@ -1,34 +1,58 @@
-# Maintainer: Saurabh Kumar Sharma <saurabh000345 at gmail dot com>
+# Maintainer: Michael Hughes <mhughes+aur at mhughes dot dev>
+# Contributor: Saurabh Kumar Sharma <saurabh000345 at gmail dot com>
 
-pkgname=soundcloud-nativefier 
-pkgver=1.0
+pkgname="soundcloud-nativefier"
+pkgver=20230310
 pkgrel=1
-pkgdesc="Stream great music! SoundCloud Client built with nodejs-nativefier (electron)"
-arch=("i686" "x86_64")
-url="https://soundcloud.com/"
-license=("GPL")
-depends=("gtk3" "libxss" "nss")
-optdepends=("libindicator-gtk3")
-makedepends=("imagemagick" "nodejs-nativefier")
+pkgdesc="SoundCloud desktop app built with nativefier (electron)"
+arch=("x86_64")
+url="https://soundcloud.com"
+license=("MIT")
+_electron=22
+depends=("electron${_electron}")
+makedepends=(
+  "curl"
+  "gendesk"
+  "yarn"
+)
+_name="SoundCloud"
 
-source=("${pkgname}.desktop" "${pkgname}.png")
-sha256sums=("d01e431584e82f1481afbb78ce00bef41862505fd478a5c76f605f5b748479af"
-            "e9cc348d123c37aaf0e903313e1b728cdf482b70abf94ae927dbb117c4cbad15")
+prepare() {
+  cat > "${pkgname}" <<EOF
+#!/usr/bin/env bash
+exec electron${_electron} /usr/share/${pkgname} "\$@"
+EOF
+  gendesk \
+    --pkgname "${pkgname}" \
+    --pkgdesc "${pkgdesc}" \
+    --name "${_name}" \
+    --categories "Audio;AudioVideo;Player;" \
+    -n \
+    -f
+  curl \
+    "https://d21buns5ku92am.cloudfront.net/26628/images/419677-sc-logo-vertical-black%20%281%29-81a8fc-original-1645807040.png" \
+    > "${pkgname}.png"
+}
 
 build() {
-	cd "${srcdir}"
-	nativefier "https://soundcloud.com" --user-agent 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0' --name "SoundCloud" --internal-urls ".*soundcloud.com.*" -m -i "${pkgname}.png"
+  cd "${srcdir}"
+  yarn add nativefier
+  yarn nativefier \
+    https://soundcloud.com \
+    --name "${_name}" \
+    --icon "${pkgname}.png" \
+    --maximize \
+    --user-agent safari \
+    --single-instance \
+    --verbose
 }
 
 package() {
-	install -dm755 "${pkgdir}/"{opt,usr/share/applications,usr/bin}
-	cp -rL "${srcdir}/SoundCloud-linux"* "${pkgdir}/opt/${pkgname}"
-	chmod +x "${pkgdir}/opt/${pkgname}/SoundCloud"
-	ln -s "/opt/${pkgname}/SoundCloud" "${pkgdir}/usr/bin/${pkgname}"
-	install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-	for _size in "192x192" "128x128" "96x96" "64x64" "48x48" "32x32" "24x24" "22x22" "20x20" "16x16" "8x8"
-	do
-		install -dm755 "${pkgdir}/usr/share/icons/hicolor/${_size}/apps"
-		convert "${srcdir}/${pkgname}.png" -resize "${_size}" "${pkgdir}/usr/share/icons/hicolor/${_size}/apps/${pkgname}.png"
-	done
+  mkdir -p "${pkgdir}/usr/share"
+  local _x=`echo "${_name}-linux-"*`
+  cp -r "${_x}/resources/app" "${pkgdir}/usr/share/${pkgname}"
+  install -Dm755 -t "${pkgdir}/usr/bin/" "${pkgname}"
+  install -Dm644 -t "${pkgdir}/usr/share/applications/" "${pkgname}.desktop"
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_x}/LICENSE"
+  install -Dm644 -t "${pkgdir}/usr/share/pixmaps/" "${pkgname}.png"
 }

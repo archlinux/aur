@@ -1,21 +1,13 @@
 pkgbase = soundcloud-nativefier
-	pkgdesc = Stream great music! SoundCloud Client built with nodejs-nativefier (electron)
-	pkgver = 1.0
+	pkgdesc = SoundCloud desktop app built with nativefier (electron)
+	pkgver = 20230310
 	pkgrel = 1
-	url = https://soundcloud.com/
-	arch = i686
+	url = https://soundcloud.com
 	arch = x86_64
-	license = GPL
-	makedepends = imagemagick
-	makedepends = nodejs-nativefier
-	depends = gtk3
-	depends = libxss
-	depends = nss
-	optdepends = libindicator-gtk3
-	source = soundcloud-nativefier.desktop
-	source = soundcloud-nativefier.png
-	sha256sums = d01e431584e82f1481afbb78ce00bef41862505fd478a5c76f605f5b748479af
-	sha256sums = e9cc348d123c37aaf0e903313e1b728cdf482b70abf94ae927dbb117c4cbad15
+	license = MIT
+	makedepends = curl
+	makedepends = gendesk
+	makedepends = yarn
+	depends = electron22
 
 pkgname = soundcloud-nativefier
-
