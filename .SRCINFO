@@ -1,6 +1,6 @@
 pkgbase = git-credential-manager-core
 	pkgdesc = A secure Git credential helper built on .NET that runs on Windows, macOS, and Linux
-	pkgver = 2.0.931
+	pkgver = 2.0.935
 	pkgrel = 1
 	url = https://github.com/GitCredentialManager/git-credential-manager
 	install = git-credential-manager-core.install
@@ -14,9 +14,9 @@ pkgbase = git-credential-manager-core
 	makedepends = krb5
 	makedepends = zlib
 	options = !strip
-	source = git-credential-manager-core-2.0.931.tar.gz::https://github.com/GitCredentialManager/git-credential-manager/archive/refs/tags/v2.0.931.tar.gz
+	source = git-credential-manager-core-2.0.935.tar.gz::https://github.com/GitCredentialManager/git-credential-manager/archive/refs/tags/v2.0.935.tar.gz
 	source = trim-executables.diff
-	sha512sums = 24c043e39f6f7e7ea7081667b3e2ea7eced1ffcd84e140d0baf184fd208d6ae4f4de4ea172ce694a10082073d2f025e92504d4bb3ffb788b79732063d9c2bfc9
+	sha512sums = e4ef93138b962ed6da336555baa43d68efe1d70b4370d66c464f1909da7139cb6bfaaaadb810b65a7110e2cbb49763a698c60061d2d5ce20b0fe689f9b61dbc7
 	sha512sums = e5253397233ef8aee547402c4c1e2430ed8bf87346896d7052ce5ef4967fb705431b3516d53c1508aee9eb1fbe3204500c614be04fe2af326851a8a7d2fefd6d
 
 pkgname = git-credential-manager-core
