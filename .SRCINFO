@@ -1,6 +1,6 @@
 pkgbase = lagrange-nosse41
 	pkgdesc = Beautiful Gemini Client (compiled without SSE)
-	pkgver = 1.15.1
+	pkgver = 1.15.4
 	pkgrel = 1
 	url = https://git.skyjake.fi/skyjake/lagrange
 	install = lagrange.install
@@ -20,9 +20,10 @@ pkgbase = lagrange-nosse41
 	depends = sdl2
 	depends = zlib
 	depends = mpg123
+	optdepends = libwebp: Webp decode support
 	provides = lagrange
 	conflicts = lagrange
-	source = https://git.skyjake.fi/skyjake/lagrange/releases/download/v1.15.1/lagrange-1.15.1.tar.gz
-	sha256sums = 4c697d579da1babcd21bfb0c76fd98be0283c3170d52d64a29ff3a13d733a910
+	source = https://git.skyjake.fi/skyjake/lagrange/releases/download/v1.15.4/lagrange-1.15.4.tar.gz
+	sha256sums = a94e558effb1155b754ad2075781daa20d5f82fd423c94a0a2c6a4bcd10ef684
 
 pkgname = lagrange-nosse41
