@@ -33,7 +33,7 @@
 # have been modified.
 
 pkgname=ventoy
-pkgver=1.0.88
+pkgver=1.0.89
 _grub_ver=2.04                  # (Jul 2019)
 #_unifont_ver=15.0.01            # FIXME see NOTE below
 _ipxe_ver=3fe683e               # (Sep 29 2019)
@@ -93,7 +93,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/ventoy/Ventoy/archive/refs/tags/v$pkgver.tar.gz"
   https://ftp.gnu.org/gnu/grub/grub-"$_grub_ver".tar.xz
   ventoy-grub-fix-build-with-binutils-2.36.patch::https://git.savannah.gnu.org/cgit/grub.git/patch/configure.ac?id=b9827513
-#  https://ftp.gnu.org/gnu/unifont/unifont-"$_unifont_ver/unifont-$_unifont_ver".bdf.gz
+  # https://ftp.gnu.org/gnu/unifont/unifont-"$_unifont_ver/unifont-$_unifont_ver".bdf.gz
   git+https://github.com/ipxe/ipxe.git#commit="$_ipxe_ver"
   https://github.com/tianocore/edk2/archive/refs/tags/edk2-"$_edk2_ver".zip
   ventoy-fix-ucs-2-lookup-on-python-3.9.patch::https://github.com/tianocore/edk2/commit/5d864834.patch
@@ -112,7 +112,6 @@ source=(
   https://busybox.net/downloads/busybox-"$_busybox_ver".tar.bz2
   https://mirrors.edge.kernel.org/pub/linux/utils/cryptsetup/v"${_crypt_ver%.*}"/cryptsetup-"$_crypt_ver".tar.xz
   wimboot-"$_wimboot_ver".tar.gz::https://github.com/ipxe/wimboot/archive/v"$_wimboot_ver".tar.gz
-  "$pkgname"-post-release-fixes.patch::https://github.com/ventoy/Ventoy/commit/0501d03d.patch
 )
 noextract=(
   grub-"$_grub_ver".tar.xz
@@ -128,7 +127,7 @@ noextract=(
   cryptsetup-"$_crypt_ver".tar.xz
   wimboot-"$_wimboot_ver".tar.gz
 )
-sha256sums=('fd66c0a8c47bf91850df054ed29f5c43de9c29abd0088b8aec092e9051aa564f'
+sha256sums=('e5f82113f7423a8c82fe52e3ca7de4dc3cabf6665e9b540476e723f6e6886fc5'
             'e5292496995ad42dabe843a0192cf2a2c502e7ffcc7479398232b10a472df77d'
             'db2a9018392a3984d1e1e649bde0ffc19c90fa4d96b9fd2d4caaf9c1ca2af68b'
             'SKIP'
@@ -148,8 +147,7 @@ sha256sums=('fd66c0a8c47bf91850df054ed29f5c43de9c29abd0088b8aec092e9051aa564f'
             '19577e9f68a2d4e08bb5564e3946e35c6323276cb6749c101c86e26505e3bf0e'
             'c35d87f1d04b2b153d33c275c2632e40d388a88f19a9e71727e0bbbff51fe689'
             '2b30cd1d0dd606a53ac77b406e1d37798d4b0762fa89de6ea546201906a251bd'
-            '3cf04ca4a5b4466e624570d980638f8ab72feaed9b94106dd6ed2bed674a4cdf'
-            'b0998326fbde09918ced83db1cfe32c9f926422ad58f6221671c6b8d873d3efd')
+            '3cf04ca4a5b4466e624570d980638f8ab72feaed9b94106dd6ed2bed674a4cdf')
 
 # Some components below are notated as follows:
 #
@@ -167,9 +165,6 @@ prepare() {
   cd Ventoy-$pkgver
   : "${_DIFF:=0}" # "1" to generate diffs for easier inspection of Ventoy mod's.
 
-  # Post release fixes
-  patch -Np1 -i ../$pkgname-post-release-fixes.patch
-
   # Create our own INSTALL trees
   mv -v INSTALL{,.upstream}
   mv -v IMG/cpio_x86{,.upstream}
@@ -181,7 +176,7 @@ prepare() {
     tar -xf "$srcdir"/grub-$_grub_ver.tar.xz -C SRC
     cp -av MOD_SRC/grub-$_grub_ver SRC
 
-    if (( _DIFF )); then
+    if ((_DIFF)); then
       tar -xf "$srcdir"/grub-$_grub_ver.tar.xz -C SRC --xform "s|\(grub-$_grub_ver\)|\1.orig|"
       diff -urN SRC/grub-$_grub_ver{.orig,} > ventoy-$pkgver-grub-$_grub_ver.patch || :
     fi
@@ -194,7 +189,7 @@ prepare() {
 
     # NOTE: Upstream builds don't include this. Yet they ship their own
     # {ascii,unicode}.pf2 font files...how are they derived? FIXME
-#    gzip -cd "$srcdir"/unifont-$_unifont_ver.bdf.gz > SRC/grub-$_grub_ver/unifont.bdf
+    # gzip -cd "$srcdir"/unifont-$_unifont_ver.bdf.gz > SRC/grub-$_grub_ver/unifont.bdf
   )
 
   (
@@ -203,7 +198,7 @@ prepare() {
     tar -xf ipxe_org_code/ipxe-$_ipxe_ver.tar.bz2
     cp -av ipxe_mod_code/ipxe-$_ipxe_ver .
 
-    if (( _DIFF )); then
+    if ((_DIFF)); then
       # The bundled tarball has been independently verified as being identical
       # to a git checkout. But might as well use the git version for comparison.
       diff -urN -x .git "$srcdir"/ipxe ipxe-$_ipxe_ver > ventoy-$pkgver-ipxe-$_ipxe_ver.patch || :
@@ -218,7 +213,7 @@ prepare() {
     bsdtar -xf "$srcdir"/edk2-$_edk2_ver.zip
     cp -av edk2_mod/edk2-edk2-$_edk2_ver .
 
-    if (( _DIFF )); then
+    if ((_DIFF)); then
       bsdtar -xf "$srcdir"/edk2-$_edk2_ver.zip -s "|edk2-edk2-$_edk2_ver|~.orig|"
       diff -urN edk2-edk2-$_edk2_ver{.orig,} > ventoy-$pkgver-edk2-$_edk2_ver.patch || :
     fi
@@ -245,7 +240,7 @@ prepare() {
 
   (
     cd SQUASHFS
-    if (( _DIFF )); then
+    if ((_DIFF)); then
       tar -xf "$srcdir"/squashfs-tools-$_squash_ver.tar.gz --xform "s|\(squashfs-tools-$_squash_ver\)|\1.orig|"
       diff -urN squashfs-tools-$_squash_ver{.orig,} > ventoy-$pkgver-squashfs-tools-$_squash_ver.patch || :
     fi
@@ -253,7 +248,7 @@ prepare() {
 
   (
     cd Ventoy2Disk
-    if (( _DIFF )); then
+    if ((_DIFF)); then
       tar -xf "$srcdir"/xz-embedded-$_xz_embed_ver.tar.gz -C Ventoy2Disk --xform "s|\(xz-embedded-$_xz_embed_ver\)|\1.orig|"
       diff -urN Ventoy2Disk/xz-embedded-$_xz_embed_ver{.orig,} > ventoy-$pkgver-xz-embedded-$_xz_embed_ver.patch || :
     fi
@@ -263,7 +258,7 @@ prepare() {
     cd wimboot
     # Some *.S files are missing from the bundled source. We will grab them from the tarball.
     tar -xf "$srcdir"/wimboot-$_wimboot_ver.tar.gz --xform "s|\(wimboot-$_wimboot_ver\)|\1.orig|"
-    if (( _DIFF )); then
+    if ((_DIFF)); then
       diff -ur wimboot-$_wimboot_ver{.orig,}/src > ventoy-$pkgver-wimboot-$_wimboot_ver.patch || :
     fi
   )
@@ -354,7 +349,7 @@ _build_musl32() (
     cd musl-$_musl_ver
 
     CFLAGS=-m32 \
-    ./configure --prefix="$srcdir"/musl32 --syslibdir="$srcdir"/musl32/lib \
+      ./configure --prefix="$srcdir"/musl32 --syslibdir="$srcdir"/musl32/lib \
       --target=i386 --build=i386
     make
     make install
@@ -398,9 +393,9 @@ _build_vtoycli() (
     ar -rc libfat_io_64.a ./*.o
     rm -fv ./*.o
 
-#    gcc -m32 -O2 -D_FILE_OFFSET_BITS=64 fat*.c -c
-#    ar -rc libfat_io_32.a ./*.o
-#    rm -fv ./*.o
+    # gcc -m32 -O2 -D_FILE_OFFSET_BITS=64 fat*.c -c
+    # ar -rc libfat_io_32.a ./*.o
+    # rm -fv ./*.o
 
     mkdir -v ../{include,lib}
     mv -v ./*.a ../lib/
@@ -412,13 +407,13 @@ _build_vtoycli() (
   musl-gcc -Os -static -D_FILE_OFFSET_BITS=64 \
     "${_SRCS[@]}" -Ifat_io_lib/include fat_io_lib/lib/libfat_io_64.a -o vtoycli_64
 
-#  "$srcdir"/dietlibc-$_diet_ver/bin-i386/diet -Os gcc -D_FILE_OFFSET_BITS=64 -m32 \
-#    "${_SRCS[@]}" -Ifat_io_lib/include fat_io_lib/lib/libfat_io_32.a -o vtoycli_32
+  # "$srcdir"/dietlibc-$_diet_ver/bin-i386/diet -Os gcc -D_FILE_OFFSET_BITS=64 -m32 \
+  #   "${_SRCS[@]}" -Ifat_io_lib/include fat_io_lib/lib/libfat_io_32.a -o vtoycli_32
 
   strip --strip-all vtoycli_64
-#  strip --strip-all vtoycli_32
+  # strip --strip-all vtoycli_32
   install -Dv vtoycli_64 ../INSTALL/tool/x86_64/vtoycli
-#  install -Dv vtoycli_32 ../INSTALL/tool/i386/vtoycli
+  # install -Dv vtoycli_32 ../INSTALL/tool/i386/vtoycli
 )
 
 # IMG/USB
@@ -442,15 +437,15 @@ _build_fuseiso() (
     (
       cd build64
       CC=musl-gcc \
-      ../configure "${_conf_args[@]}"
+        ../configure "${_conf_args[@]}"
       make V=1
     )
 
     (
       cd build32
       CC="$srcdir/musl32/bin/musl-gcc -m32" \
-      LDFLAGS="-Wl,-melf_i386" \
-      ../configure "${_conf_args[@]}"
+        LDFLAGS="-Wl,-melf_i386" \
+        ../configure "${_conf_args[@]}"
       make V=1
     )
   )
@@ -497,10 +492,10 @@ _build_exfat() (
   # NOTE: AFAICT "mount.exfat-fuse" is used only in the LiveCD which is of no use to us.
   # If it turns out that it is required, a runtime dep on "fuse2" will be needed.
 
-#  strip --strip-all fuse/mount.exfat-fuse
+  # strip --strip-all fuse/mount.exfat-fuse
   strip --strip-all mkfs/mkexfatfs
 
-#  install -Dvt ../../INSTALL/tool/x86_64 fuse/mount.exfat-fuse
+  # install -Dvt ../../INSTALL/tool/x86_64 fuse/mount.exfat-fuse
   install -Dvt ../../INSTALL/tool/x86_64 mkfs/mkexfatfs
 )
 
@@ -529,7 +524,7 @@ _build_unsquashfs() (
     (
       cd lz4-$_lz4_ver-32
       CC="gcc -m32" \
-      make -C lib
+        make -C lib
       make -C lib install PREFIX="$_libdir"32/LZ4
     )
   )
@@ -564,7 +559,7 @@ _build_unsquashfs() (
     (
       cd liblzma-master-32
       CC="gcc -m32" \
-      ./configure --prefix="$_libdir"32/LZMA "${_conf_args[@]}"
+        ./configure --prefix="$_libdir"32/LZMA "${_conf_args[@]}"
       make
       make install
     )
@@ -592,7 +587,7 @@ _build_unsquashfs() (
     (
       cd lzo-$_lzo_ver-32
       CC="gcc -m32" \
-      ./configure --prefix="$_libdir"32/LZO
+        ./configure --prefix="$_libdir"32/LZO
       make V=1
       make install
     )
@@ -625,7 +620,7 @@ _build_unsquashfs() (
     cd zlib-$_zlib_ver
 
     CC="gcc -m32" \
-    ./configure --static
+      ./configure --static
     make
   )
 
@@ -654,7 +649,7 @@ _build_unsquashfs() (
     cd squashfs-tools-4.4/squashfs-tools-32
     sed -i "s|LIBS) -o|LIBS) ../../SRC/zlib-$_zlib_ver/libz.a -o|" Makefile
     CC="gcc -m32" \
-    make unsquashfs LZ4_LIBDIR="$_libdir"32/LZ4 LZMA_LIBDIR="$_libdir"32/LZMA \
+      make unsquashfs LZ4_LIBDIR="$_libdir"32/LZ4 LZMA_LIBDIR="$_libdir"32/LZMA \
       LZO_LIBDIR="$_libdir"32/LZO ZSTD_LIBDIR="$_libdir"32/ZSTD
 
     strip --strip-all unsquashfs
@@ -697,7 +692,7 @@ _EOF_
   (
     cd device-mapper.$_dm_ver
     CC="$srcdir/dietlibc-$_diet_ver/bin-x86_64/diet gcc" \
-    ./configure
+      ./configure
     sed -i '/rpl_malloc/d' include/configure.h
     make
     strip --strip-all dmsetup/dmsetup
@@ -707,7 +702,7 @@ _EOF_
   (
     cd device-mapper.$_dm_ver-32
     CC="$srcdir/dietlibc-$_diet_ver/bin-i386/diet gcc -m32" \
-    ./configure
+      ./configure
     sed -i '/rpl_malloc/d' include/configure.h
     make
     strip --strip-all dmsetup/dmsetup
@@ -764,15 +759,18 @@ _build_xzminidec() (
 
   make -f ventoy_makefile CC="$srcdir/dietlibc-$_diet_ver/bin-i386/diet gcc -Os -m32 -std=gnu89"
   mv -v xzminidec{,32}
-  make clean; rm -v bytetest.o
+  make clean
+  rm -v bytetest.o
 
   make -f ventoy_makefile CC="$srcdir/dietlibc-$_diet_ver/bin-x86_64/diet gcc -Os -std=gnu89"
   mv -v xzminidec{,64}
-  make clean; rm -v bytetest.o
+  make clean
+  rm -v bytetest.o
 
   make -f ventoy_makefile CC="musl-gcc -Os -static -std=gnu89"
   mv -v xzminidec{,64_musl}
-  make clean; rm -v bytetest.o
+  make clean
+  rm -v bytetest.o
 
   strip --strip-all xzminidec{32,64}*
   install -Dvt ../../../../IMG/cpio_x86/ventoy/busybox xzminidec{32,64}*
@@ -902,16 +900,16 @@ _build_verity() (
   # a 32-bit libdevmapper which doesn't actually exist in the repo. Just use the
   # upstream provided 32-bit binary for now. FIXME
 
-#  rm -v veritysetup32
-#  cd cryptsetup-$_crypt_ver-32
-#  CC="gcc -m32" \
-#  ./configure --enable-static --host=x86_64-pc-linux-gnu
-#  make
-#  cd src
-#  gcc -m32 -Wall -O2 -o veritysetup veritysetup-utils_crypt.o veritysetup-utils_loop.o veritysetup-utils_tools.o \
-#    veritysetup-veritysetup.o -lpopt -ldevmapper -lgcrypt -luuid .././lib/.libs/libcryptsetup.a
-#  strip --strip-all veritysetup
-#  cp -av veritysetup ../../veritysetup32
+  # rm -v veritysetup32
+  # cd cryptsetup-$_crypt_ver-32
+  # CC="gcc -m32" \
+  # ./configure --enable-static --host=x86_64-pc-linux-gnu
+  # make
+  # cd src
+  # gcc -m32 -Wall -O2 -o veritysetup veritysetup-utils_crypt.o veritysetup-utils_loop.o veritysetup-utils_tools.o \
+  #   veritysetup-veritysetup.o -lpopt -ldevmapper -lgcrypt -luuid .././lib/.libs/libcryptsetup.a
+  # strip --strip-all veritysetup
+  # cp -av veritysetup ../../veritysetup32
 )
 
 # IMG/USB
@@ -949,11 +947,11 @@ _pack_ventoy() (
     # 32-bit busybox ar binary FIXME
     # Refer "DOC/BuildVentoyFromSource.txt" Section 5.2
     cp -avt cpio_x86/ventoy/tool cpio_x86.upstream/ventoy/tool/ar
-   
+
     # 32-bit busybox inotifyd binary FIXME
     # Refer "DOC/BuildVentoyFromSource.txt" Section 5.3
     cp -avt cpio_x86/ventoy/tool cpio_x86.upstream/ventoy/tool/inotifyd
-   
+
     # 32-bit busybox ash binary FIXME
     # Refer "DOC/BuildVentoyFromSource.txt" Section 5.4
     cp -avt cpio_x86/ventoy/busybox cpio_x86.upstream/ventoy/busybox/ash
@@ -967,7 +965,7 @@ _pack_ventoy() (
     # patch for device-mapper kernel modules FIXME
     # Refer "DMPATCH/readme.txt"
     cp -avt cpio_x86/ventoy/tool cpio_x86.upstream/ventoy/tool/dm_patch_*
-   
+
     sh mkcpio.sh
     install -Dvm 644 -t ../INSTALL/ventoy ventoy.cpio ventoy_x86.cpio
 
@@ -1039,7 +1037,7 @@ _pack_ventoy() (
   local _efi_files=(
     BOOTIA32.EFI        # SUISBD [1]
     BOOTX64.EFI         # ? openSUSE ?
-    grub.efi            # SUISBD (grubx64.efi) [1] 
+    grub.efi            # SUISBD (grubx64.efi) [1]
     grubia32.efi        # ?
     mmia32.efi          # ? Fedora ?
     MokManager.efi      # ? openSUSE ?
@@ -1095,10 +1093,10 @@ _create_img() (
   guestfish add scratch.bin : run : mkfs ext4 /dev/sda1 label:SCRATCH
 
   # Copy our GRUB stuff into the scratch disk
-  tar -czvf - -C "$srcdir"/Ventoy-$pkgver/INSTALL grub/i386-pc \
-    | guestfish add scratch.bin : run : mount /dev/sda1 / : tar-in - / compress:gzip
-  tar -czvf - -C "$srcdir"/Ventoy-$pkgver/GRUB2 INSTALL \
-    | guestfish add scratch.bin : run : mount /dev/sda1 / : tar-in - / compress:gzip
+  tar -czvf - -C "$srcdir"/Ventoy-$pkgver/INSTALL grub/i386-pc |
+    guestfish add scratch.bin : run : mount /dev/sda1 / : tar-in - / compress:gzip
+  tar -czvf - -C "$srcdir"/Ventoy-$pkgver/GRUB2 INSTALL |
+    guestfish add scratch.bin : run : mount /dev/sda1 / : tar-in - / compress:gzip
 
   # Do the GRUB install business
   #
@@ -1157,10 +1155,10 @@ _create_img() (
   guestfish add img.bin : run : mount /dev/sda2 / : mkdir /grub : copy-in grub/grub.cfg /grub
 
   # ..and now the rest
-  tar -czvf - --exclude=grub.cfg -C grub . \
-    | guestfish add img.bin : run : mount /dev/sda2 / : tar-in - /grub compress:gzip
-  tar -czvf - ventoy EFI \
-    | guestfish add img.bin : run : mount /dev/sda2 / : tar-in - / compress:gzip
+  tar -czvf - --exclude=grub.cfg -C grub . |
+    guestfish add img.bin : run : mount /dev/sda2 / : tar-in - /grub compress:gzip
+  tar -czvf - ventoy EFI |
+    guestfish add img.bin : run : mount /dev/sda2 / : tar-in - / compress:gzip
   guestfish add img.bin : run : mount /dev/sda2 / : copy-in tool/ENROLL_THIS_KEY_IN_MOKMANAGER.cer /
 
   # Just *WTF* is going on here? FIXME

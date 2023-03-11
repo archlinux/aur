@@ -1,6 +1,6 @@
 pkgbase = ventoy
 	pkgdesc = A new bootable USB solution
-	pkgver = 1.0.88
+	pkgver = 1.0.89
 	pkgrel = 1
 	url = https://www.ventoy.net/
 	arch = x86_64
@@ -42,7 +42,7 @@ pkgbase = ventoy
 	noextract = cryptsetup-1.7.5.tar.xz
 	noextract = wimboot-2.7.3.tar.gz
 	options = !buildflags
-	source = ventoy-1.0.88.tar.gz::https://github.com/ventoy/Ventoy/archive/refs/tags/v1.0.88.tar.gz
+	source = ventoy-1.0.89.tar.gz::https://github.com/ventoy/Ventoy/archive/refs/tags/v1.0.89.tar.gz
 	source = https://ftp.gnu.org/gnu/grub/grub-2.04.tar.xz
 	source = ventoy-grub-fix-build-with-binutils-2.36.patch::https://git.savannah.gnu.org/cgit/grub.git/patch/configure.ac?id=b9827513
 	source = git+https://github.com/ipxe/ipxe.git#commit=3fe683e
@@ -63,8 +63,7 @@ pkgbase = ventoy
 	source = https://busybox.net/downloads/busybox-1.32.0.tar.bz2
 	source = https://mirrors.edge.kernel.org/pub/linux/utils/cryptsetup/v1.7/cryptsetup-1.7.5.tar.xz
 	source = wimboot-2.7.3.tar.gz::https://github.com/ipxe/wimboot/archive/v2.7.3.tar.gz
-	source = ventoy-post-release-fixes.patch::https://github.com/ventoy/Ventoy/commit/0501d03d.patch
-	sha256sums = fd66c0a8c47bf91850df054ed29f5c43de9c29abd0088b8aec092e9051aa564f
+	sha256sums = e5f82113f7423a8c82fe52e3ca7de4dc3cabf6665e9b540476e723f6e6886fc5
 	sha256sums = e5292496995ad42dabe843a0192cf2a2c502e7ffcc7479398232b10a472df77d
 	sha256sums = db2a9018392a3984d1e1e649bde0ffc19c90fa4d96b9fd2d4caaf9c1ca2af68b
 	sha256sums = SKIP
@@ -85,6 +84,5 @@ pkgbase = ventoy
 	sha256sums = c35d87f1d04b2b153d33c275c2632e40d388a88f19a9e71727e0bbbff51fe689
 	sha256sums = 2b30cd1d0dd606a53ac77b406e1d37798d4b0762fa89de6ea546201906a251bd
 	sha256sums = 3cf04ca4a5b4466e624570d980638f8ab72feaed9b94106dd6ed2bed674a4cdf
-	sha256sums = b0998326fbde09918ced83db1cfe32c9f926422ad58f6221671c6b8d873d3efd
 
 pkgname = ventoy
