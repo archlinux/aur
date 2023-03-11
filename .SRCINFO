@@ -1,6 +1,6 @@
 pkgbase = idlersc
 	pkgdesc = A fork of IdleRSC for playing on OpenRSC servers
-	pkgver = r504.g7824fd8
+	pkgver = r520.ga59120d
 	pkgrel = 1
 	url = https://gitlab.com/open-runescape-classic/idlersc
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = idlersc
 	makedepends = gendesk
 	depends = jre-openjdk
 	depends = hicolor-icon-theme
-	source = idlersc::git+https://gitlab.com/open-runescape-classic/idlersc.git#commit=7824fd8211276b34fac30d40caf7deedd79432cc
+	source = idlersc::git+https://gitlab.com/open-runescape-classic/idlersc.git#commit=a59120dc2a44bc43626969d46c297f8b03e4db63
 	source = idlersc.sh
 	source = coleslaw_icon_512.png
 	source = coleslaw_icon_256.png

@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=idlersc
-pkgver=r504.g7824fd8
+pkgver=r520.ga59120d
 pkgrel=1
 pkgdesc='A fork of IdleRSC for playing on OpenRSC servers'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://gitlab.com/open-runescape-classic/idlersc'
 license=('GPL3')
 depends=('jre-openjdk' 'hicolor-icon-theme')
 makedepends=('git' 'gradle' 'gendesk')
-_commit='7824fd8211276b34fac30d40caf7deedd79432cc'
+_commit='a59120dc2a44bc43626969d46c297f8b03e4db63'
 source=(
   "$pkgname::git+https://gitlab.com/open-runescape-classic/idlersc.git#commit=$_commit"
   'idlersc.sh'
