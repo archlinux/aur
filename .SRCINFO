@@ -1,7 +1,7 @@
 pkgbase = ignition-common-3
 	pkgdesc = Provides a set of libraries that cover many different use cases.
 	pkgver = 3.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gazebosim.org/libs/common
 	arch = x86_64
 	groups = development
@@ -17,7 +17,9 @@ pkgbase = ignition-common-3
 	provides = ignition-common=3
 	source = ignition-common-3-3.15.1.tar.gz::https://github.com/gazebosim/gz-common/archive/ignition-common3_3.15.1.tar.gz
 	source = missing-include-cstring.patch::https://github.com/gazebosim/gz-common/commit/465bb7780e552b278de559fafaffe3d061a99782.patch
+	source = ffmpeg6.patch
 	sha256sums = fc1bf79eb53e3b56b4b8e0eb6965ec68982da18ea42154dd4fd891ac739d65fb
 	sha256sums = 9a6f2d45a1c2146150336e25162f6ba46f19db1deb46b2b644a8faa3afe3d7af
+	sha256sums = bb8e5a620605b34815cfc649a96462e63fc301a88e15fb447bcc31f59a0d9a5e
 
 pkgname = ignition-common-3
