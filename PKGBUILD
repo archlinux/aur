@@ -2,12 +2,12 @@
 
 _app_name=grist-electron
 pkgname="${_app_name}-bin"
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="Unofficial Electron build of Grist, a modern relational spreadsheet. It combines the flexibility of a spreadsheet with the robustness of a database to organize your data and make you more productive."
 arch=('x86_64')
 url='https://github.com/paulfitz/grist-electron'
-license=('unknown')
+license=('Apache')
 provides=('grist-electron')
 depends=('libxss' 'libxtst' 'libappindicator-gtk2' 'libnotify' 'libxcrypt-compat')
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/paulfitz/${_app_name}/releases/download/v${pkgver}/${_app_name}-linux-${pkgver}-x86_64.AppImage"
@@ -18,7 +18,7 @@ source=("${pkgname}-${pkgver}.AppImage::https://github.com/paulfitz/${_app_name}
         "grist128.png"
         "grist192.png"
         "grist512.png")
-sha512sums=('74f97701b1f2a51ba5db1e8b791b4c4dd2b9fd23a2309749d5a244ae2600eaac00f7eeb77997d69fa7cc6fff4d4a8ad4b45a5480d315e322a6e53197b09a6b52'
+sha512sums=('d195c4bb9ed6c51eaf44dad555a034507b2294a0b68a905c130a84651dd6c4e4a7dd8ea37687da93993421ee63ba735a3ee050e1ed413efd699748b6226dea50'
             '9ba082a4d41a7aba98f9fd62a6960142f48d1c4793035b5bd013604420d49f926e17b6931d4caf8a34a97be151cbbf0a781bf1341311352516e61d17b5027e16'
             'cadb1529099f5e3d7d4c5236fcb18a8ffe8eeb0f3045b50fa321789c262d8e4edd6b8db56b899e8327350020b5ccd703b709172290f04544e7dfdc697784d37b'
             'd90b965e4426d04e6df6fb8374a66f9b8c30b8429ed0dbbf1a366403d1fe8be872e08e9ccdfff07b0c633df2218e83c86b93fb53ab4f4157540ca31c9a092e00'
