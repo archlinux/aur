@@ -6,7 +6,7 @@ url="https://github.com/virtual-puppet-project/vpuppr"
 license=('MIT')
 
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 
 replaces=(
   'openseeface-gd'
@@ -37,6 +37,11 @@ Type=Application
 Categories=Graphics;AudioVideo;Recoder;
 Terminal=False
 EOF
+
+  # the bundled opencv doesn't work in some cases. installing the newest version via pip and symlinking the opencv directory fixes this issues
+  pip3 install opencv-python 2> /dev/null
+  rm -r $pkgdir/usr/share/vpuppr/resources/extensions/openseeface-tracker/OpenSeeFace/cv2
+  ln -s $(python3 -c 'import site; print(site.getsitepackages()[0])')/cv2 $pkgdir/usr/share/vpuppr/resources/extensions/openseeface-tracker/OpenSeeFace/cv2
 
   for v in "" "3" "3.10" "3.9" "3.8" "3.7"; do
     if "python$v" --version 2> /dev/null | grep -E -q "3.([7-9]|10)\."; then

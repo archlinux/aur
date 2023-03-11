@@ -1,7 +1,7 @@
 pkgbase = vpuppr-bin
 	pkgdesc = VTuber application made with Godot 3.5
 	pkgver = 0.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/virtual-puppet-project/vpuppr
 	arch = x86_64
 	license = MIT
