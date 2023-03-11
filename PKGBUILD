@@ -1,5 +1,5 @@
 pkgname=calcure
-pkgver=2.7.1
+pkgver=2.8.2
 pkgrel=1
 pkgdesc='Modern TUI calendar and task manager'
 arch=('any')
