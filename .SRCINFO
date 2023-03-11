@@ -1,6 +1,6 @@
 pkgbase = chimera
 	pkgdesc = Configure and manage games in Steam
-	pkgver = 0.17.0
+	pkgver = 0.17.1
 	pkgrel = 1
 	url = https://github.com/chimeraos/chimera
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = chimera
 	depends = libretro-beetle-pce-fast
 	depends = libretro-flycast
 	depends = libretro-beetle-psx-hw
-	depends = libretro-play
+	depends = libretro-pcsx2
 	depends = libretro-kronos
 	depends = libretro-mame
 	depends = libretro-dolphin
@@ -59,7 +59,7 @@ pkgbase = chimera
 	provides = steam-buddy
 	conflicts = steam-tweaks
 	conflicts = steam-buddy
-	source = chimera-0.17.0.tar.gz::https://github.com/chimeraos/chimera/archive/0.17.0.tar.gz
-	md5sums = 578a94751c3cd8e8437070729d1bc608
+	source = chimera-0.17.1.tar.gz::https://github.com/chimeraos/chimera/archive/0.17.1.tar.gz
+	md5sums = 1e042b514e56b4124eda310e52ef77f6
 
 pkgname = chimera
