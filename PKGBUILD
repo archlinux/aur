@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Lyashuk <lyashuk.voxx at gmail dot com>
 pkgname=doom2df-bin
 pkgver=0.667
-pkgrel=2
+pkgrel=3
 pkgdesc="Doom-themed platformer with network play (binaries-only)"
 arch=(x86_64 i686)
 url="https://doom2d.org/"
@@ -35,12 +35,12 @@ md5sums=(
   'SKIP'
   'a529aca738b79f2099fcef6e583fbed3'
   '191cd29a6994ab257abf6c0b1060b2fd'
-  '59cf16e84a0f565375553551640b1f7d'
-  '361182e20bfc30f106719cd95b2b7819'
-  'dd542d64993023e05fb231fc899d1c1f'
-  'a9a5f2d672ea4091bb1b61383d509657'
-  '2a72b87d4d18fa3932807d4254905396'
-  'ed4e4cb20c96401514f6a813d6ef86bb'
+  '9da12c0a777cd8a745b2436369776a02'
+  '388ca9f19d43ff9b92194db07ddd6a1e'
+  '7cb7286de234ca4e50ea586ec9eca85d'
+  '1e7fc56216ab37431ef6e132bc9af63a'
+  'efb6a46c452a287766164565df484f72'
+  'c1c7e519214550516a8093b1a7729480'
 )
 options=(
   !strip
@@ -60,6 +60,7 @@ build() {
   # Export environment variable before building
   cd "${srcdir}/d2df-sdl/"
     export D2DF_BUILD_HASH="$(git rev-parse HEAD)"
+  git submodule update --init
   
   cd "src/game"
   
