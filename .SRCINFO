@@ -22,7 +22,7 @@ pkgbase = xts-macos-yosemite-theme
 	provides = xts-macos-yosemite-theme
 	conflicts = xts-macos-yosemite-theme
 	options = !strip
-	source = https://gitlab.com/linux-stuffs/xts-themes/raw/master/xts-macos-yosemite-theme/distrib/xts-macos-yosemite-theme-0.1-2.tar.gz
+	source = https://gitlab.com/linux-stuffs/xts-themes/-/raw/main/xts-macos-yosemite-theme/distrib/xts-macos-yosemite-theme-0.1-2.tar.gz
 	sha256sums = SKIP
 
 pkgname = xts-macos-yosemite-theme

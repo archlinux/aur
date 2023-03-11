@@ -13,7 +13,7 @@ conflicts=("${pkgname}")
 depends=('xfce4-theme-switcher' 'gtk-engine-murrine' 'gtk-engines' 'plank' 'whitesur-gtk-theme' 'whitesur-icon-theme' 'capitaine-cursors' 'xfce4-docklike-plugin' 'vala-panel-appmenu-common' 'vala-panel-appmenu-registrar' 'vala-panel-appmenu-xfce' 'appmenu-gtk-module' 'rofi')
 options=('!strip')
 
-source=('https://gitlab.com/linux-stuffs/xts-themes/raw/master/xts-macos-yosemite-theme/distrib/xts-macos-yosemite-theme-0.1-2.tar.gz')
+source=('https://gitlab.com/linux-stuffs/xts-themes/-/raw/main/xts-macos-yosemite-theme/distrib/xts-macos-yosemite-theme-0.1-2.tar.gz')
 sha256sums=('SKIP')
 
 package() {
