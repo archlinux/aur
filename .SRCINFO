@@ -1,6 +1,6 @@
 pkgbase = teamdrive
 	pkgdesc = Keeps data synchronised between various computers automatically.
-	pkgver = 4.8.0.3223
+	pkgver = 5.0.1.3296
 	pkgrel = 1
 	url = http://www.teamdrive.com/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = teamdrive
 	options = !strip
 	source = teamdrive.desktop
 	sha256sums = b81c4e2573b8478ce69a0ba66f5a493ecd73dbb8a94fe92fa33b1f5f14b8fb2c
-	source_x86_64 = https://download.teamdrive.net/4.8.0.3223/TMDR/linux-x86_64/Install-TeamDrive-4.8.0.3223_TMDR.run
-	sha256sums_x86_64 = 5579c324c12a05e03e895eecd2ef1ae713cb37d1488b23e3d2468684d77d4254
+	source_x86_64 = https://download.teamdrive.net/5.0.1.3296/TMDR/linux-x86_64/Install-TeamDrive-5.0.1.3296_TMDR.run
+	sha256sums_x86_64 = b40fb18ddacd3ef8f5e51c71bd970fc3b11c3bc07a137dfaf224fb726e5614db
 
 pkgname = teamdrive
