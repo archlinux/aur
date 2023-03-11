@@ -13,7 +13,7 @@ conflicts=("${pkgname}")
 depends=('xfce4-theme-switcher' 'xfce4-whiskermenu-plugin' 'arc-gtk-theme' 'gtk-engines' 'plank' 'conky' 'rofi')
 options=('!strip')
 
-source=('https://gitlab.com/linux-stuffs/xts-themes/raw/master/xts-dark-theme/distrib/xts-dark-theme-0.1-2.tar.gz')
+source=('https://gitlab.com/linux-stuffs/xts-themes/-/raw/main/xts-dark-theme/distrib/xts-dark-theme-0.1-2.tar.gz')
 sha256sums=('SKIP')
 
 package() {

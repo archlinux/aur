@@ -16,7 +16,7 @@ pkgbase = xts-dark-theme
 	provides = xts-dark-theme
 	conflicts = xts-dark-theme
 	options = !strip
-	source = https://gitlab.com/linux-stuffs/xts-themes/raw/master/xts-dark-theme/distrib/xts-dark-theme-0.1-2.tar.gz
+	source = https://gitlab.com/linux-stuffs/xts-themes/-/raw/main/xts-dark-theme/distrib/xts-dark-theme-0.1-2.tar.gz
 	sha256sums = SKIP
 
 pkgname = xts-dark-theme
