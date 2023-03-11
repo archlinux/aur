@@ -16,7 +16,7 @@
 
 pkgbase=llvm-minimal-git
 pkgname=('llvm-minimal-git' 'llvm-libs-minimal-git' 'spirv-llvm-translator-minimal-git')
-pkgver=17.0.0_r453589.44c6b905f852
+pkgver=17.0.0_r454285.890e6c871d31
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -27,9 +27,12 @@ source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
                 'local://llvm-config.h'
                 "git+https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git"
                 '0001-IPSCCP-Remove-legacy-pass.patch'
-                '0001-OCaml-Remove-all-PassManager-related-functions.patch'
-                '0001-llvm-c-Remove-bindings-for-creating-legacy-passes.patch'
-                '0001-IPO-Remove-various-legacy-passes.patch'
+                '0002-OCaml-Remove-all-PassManager-related-functions.patch'
+                '0003-IPO-Remove-various-legacy-passes.patch'
+                '0004-llvm-c-Remove-bindings-for-creating-legacy-passes.patch'
+                '0005-llvm-c-Remove-PassManagerBuilder-APIs.patch'
+                '0006-llvm-c-Remove-pointee-support-from-LLVMGetElementTyp.patch'
+                '0007-Passes-Remove-some-legacy-passes.patch'
                 )
                 
 md5sums=('SKIP'
@@ -37,15 +40,21 @@ md5sums=('SKIP'
          'SKIP'
          '245054bc67dec3eb30329bbdeed171b1'
          '4c5ac9bca18c8a92280b1699f2f85a16'
+         '179d535366bdb73c6b02850210aca69c'
          '286194131e1b5df0fe50ecd0f1b58eb2'
-         '179d535366bdb73c6b02850210aca69c')
+         '9e7e1648b472f83b054bf8dcbfc74175'
+         'a4604d7858e1536af63f52dcbc47fbb8'
+         'a09eda7d75c717aeb882fdfa67b028c3')
 sha512sums=('SKIP'
             '75e743dea28b280943b3cc7f8bbb871b57d110a7f2b9da2e6845c1c36bf170dd883fca54e463f5f49e0c3effe07fbd0db0f8cf5a12a2469d3f792af21a73fcdd'
             'SKIP'
             '4c1e8a455163ceb1e7d3f09f5e68f731e47f2346a2f62e1fe97b19f54c16781efc0b75d52304fe9d4aa62512fd6f32b7bd6e12b319cbe72e7831f1a056ffbfd0'
             '92f971db948e8acd4a55cb46ef28dc394c5df07f57844b63d82fc19436e2dfe7b184599ca17d84ef4fa63f6281628d8cc734d74dcc95bc0eee8a5e7c3778f49a'
+            'ab46bd37d540e9c62d99cc9e137079e077f032d0ba6531b0685d2bb91a4d832787dd12e3680c76b58d26ada7e81b3a7d8d138c303a6ffb21b593dc549aecb140'
             'd3f5df839b49e4a853e88efaf2fb31c36efb15a91b4803f7e52414ab0e3121f4bfafc7d39edaad52a29106ca648428577f97f4fd12e7575cd3bbe009a1111901'
-            'ab46bd37d540e9c62d99cc9e137079e077f032d0ba6531b0685d2bb91a4d832787dd12e3680c76b58d26ada7e81b3a7d8d138c303a6ffb21b593dc549aecb140')
+            '034b8262c2cec48fcdf1eef8f74332fc7016ecbf1627ab755f95f525c653cab0dd4199cd60b85dd09a63dc0b76bc9db9f85043c91801940294e42bc1feb1ea60'
+            '2f227060ab56e04bf3e74fbb785c2edf9fc55121c936ba17ac62275cacdacfb9cb84bfda0e6637e11e744e26212bbfa861fa320084502afb4b7fd247d832993b'
+            '6d77c23ad97c057898d97fd08af9714ff18c43026e082ad5e654b736caffb1ba814de0ebb9a7e169de9475d819df3cd0058805e4a0f020c55ce3b2272181802a')
 options=('staticlibs' '!lto')
 # explicitly disable lto to reduce number of build hangs / test failures
 
@@ -74,13 +83,19 @@ pkgver() {
 
 prepare() {
 
-    #more reverts to keep legacy passmanager working
-    patch --directory="llvm-project" --reverse --strip=1 --input="${srcdir}/0001-llvm-c-Remove-bindings-for-creating-legacy-passes.patch"
-    patch --directory="llvm-project" --reverse --strip=1 --input="${srcdir}/0001-IPO-Remove-various-legacy-passes.patch"
-    patch --directory="llvm-project" --reverse --strip=1 --input="${srcdir}/0001-OCaml-Remove-all-PassManager-related-functions.patch"
+    patch --directory="llvm-project" --reverse --strip=1 --input="${srcdir}"/0007-Passes-Remove-some-legacy-passes.patch
+    patch --directory="llvm-project" --reverse --strip=1 --input="${srcdir}"/0006-llvm-c-Remove-pointee-support-from-LLVMGetElementTyp.patch
+    patch --directory="llvm-project" --reverse --strip=1 --input="${srcdir}"/0005-llvm-c-Remove-PassManagerBuilder-APIs.patch
+    patch --directory="llvm-project" --reverse --strip=1 --input="${srcdir}"/0004-llvm-c-Remove-bindings-for-creating-legacy-passes.patch
+    patch --directory="llvm-project" --reverse --strip=1 --input="${srcdir}"/0003-IPO-Remove-various-legacy-passes.patch
+    patch --directory="llvm-project" --reverse --strip=1 --input="${srcdir}"/0002-OCaml-Remove-all-PassManager-related-functions.patch
     # reverting commit b677d0753c0a771c6203607f5dbb56189193a14c , see https://gitlab.freedesktop.org/mesa/mesa/-/issues/8297
-    patch --directory="llvm-project" --reverse --strip=1 --input="${srcdir}/0001-IPSCCP-Remove-legacy-pass.patch"
-    
+    patch --directory="llvm-project" --reverse --strip=1 --input="${srcdir}"/0001-IPSCCP-Remove-legacy-pass.patch
+
+
+
+
+#    patch --directory="llvm-project" --reverse --strip=1 --input="${srcdir}"/0001-IPSCCP-Remove-legacy-pass.patch
 }
 
 build() {

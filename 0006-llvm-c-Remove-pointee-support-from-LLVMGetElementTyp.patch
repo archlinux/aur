@@ -1,0 +1,56 @@
+From 9e0c2626f3d4282a135da112320139d9fba32fb5 Mon Sep 17 00:00:00 2001
+From: Arthur Eubanks <aeubanks@google.com>
+Date: Thu, 9 Mar 2023 15:42:27 -0800
+Subject: [PATCH] [llvm-c] Remove pointee support from LLVMGetElementType
+
+Reviewed By: nikic
+
+Differential Revision: https://reviews.llvm.org/D145717
+---
+ llvm/docs/ReleaseNotes.rst | 2 ++
+ llvm/include/llvm-c/Core.h | 2 --
+ llvm/lib/IR/Core.cpp       | 2 --
+ 3 files changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/llvm/docs/ReleaseNotes.rst b/llvm/docs/ReleaseNotes.rst
+index f6ac66df740a..4cf01ad8e284 100644
+--- a/llvm/docs/ReleaseNotes.rst
++++ b/llvm/docs/ReleaseNotes.rst
+@@ -149,6 +149,8 @@ Changes to the C API
+   have been removed.
+ * Removed ``LLVMPassManagerBuilderRef`` and functions interacting with it.
+   These belonged to the no longer supported legacy pass manager.
++* As part of the opaque pointer transition, ``LLVMGetElementType`` no longer
++  gives the pointee type of a pointer type.
+ 
+ Changes to the FastISel infrastructure
+ --------------------------------------
+diff --git a/llvm/include/llvm-c/Core.h b/llvm/include/llvm-c/Core.h
+index df9db59503c3..5454cc2d96c5 100644
+--- a/llvm/include/llvm-c/Core.h
++++ b/llvm/include/llvm-c/Core.h
+@@ -1411,8 +1411,6 @@ LLVMBool LLVMIsLiteralStruct(LLVMTypeRef StructTy);
+ /**
+  * Obtain the element type of an array or vector type.
+  *
+- * This currently also works for pointer types, but this usage is deprecated.
+- *
+  * @see llvm::SequentialType::getElementType()
+  */
+ LLVMTypeRef LLVMGetElementType(LLVMTypeRef Ty);
+diff --git a/llvm/lib/IR/Core.cpp b/llvm/lib/IR/Core.cpp
+index a0fade96daec..85b7d17ef56c 100644
+--- a/llvm/lib/IR/Core.cpp
++++ b/llvm/lib/IR/Core.cpp
+@@ -811,8 +811,6 @@ LLVMTypeRef LLVMScalableVectorType(LLVMTypeRef ElementType,
+ 
+ LLVMTypeRef LLVMGetElementType(LLVMTypeRef WrappedTy) {
+   auto *Ty = unwrap(WrappedTy);
+-  if (auto *PTy = dyn_cast<PointerType>(Ty))
+-    return wrap(PTy->getNonOpaquePointerElementType());
+   if (auto *ATy = dyn_cast<ArrayType>(Ty))
+     return wrap(ATy->getElementType());
+   return wrap(cast<VectorType>(Ty)->getElementType());
+-- 
+2.39.2
+

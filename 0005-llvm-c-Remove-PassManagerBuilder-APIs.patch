@@ -1,0 +1,239 @@
+From 0aac9a2875bad4f065367e4a6553fad78605f895 Mon Sep 17 00:00:00 2001
+From: Nikita Popov <npopov@redhat.com>
+Date: Mon, 6 Mar 2023 16:53:35 +0100
+Subject: [PATCH] [llvm-c] Remove PassManagerBuilder APIs
+
+The legacy PM is only supported for codegen, and PassManagerBuilder
+is exclusively about the middle-end optimization pipeline. Drop it.
+
+Differential Revision: https://reviews.llvm.org/D145387
+---
+ llvm/docs/ReleaseNotes.rst                    |  2 +
+ .../llvm-c/Transforms/PassManagerBuilder.h    | 81 -------------------
+ .../llvm/Transforms/IPO/PassManagerBuilder.h  |  9 ---
+ .../lib/Transforms/IPO/PassManagerBuilder.cpp | 66 ---------------
+ llvm/tools/llvm-c-test/include-all.c          |  1 -
+ 5 files changed, 2 insertions(+), 157 deletions(-)
+ delete mode 100644 llvm/include/llvm-c/Transforms/PassManagerBuilder.h
+
+diff --git a/llvm/docs/ReleaseNotes.rst b/llvm/docs/ReleaseNotes.rst
+index c136eb7f8fe7..f6ac66df740a 100644
+--- a/llvm/docs/ReleaseNotes.rst
++++ b/llvm/docs/ReleaseNotes.rst
+@@ -147,6 +147,8 @@ Changes to the C API
+   pointer, has been removed.
+ * Functions for adding legacy passes like ``LLVMAddInstructionCombiningPass``
+   have been removed.
++* Removed ``LLVMPassManagerBuilderRef`` and functions interacting with it.
++  These belonged to the no longer supported legacy pass manager.
+ 
+ Changes to the FastISel infrastructure
+ --------------------------------------
+diff --git a/llvm/include/llvm-c/Transforms/PassManagerBuilder.h b/llvm/include/llvm-c/Transforms/PassManagerBuilder.h
+deleted file mode 100644
+index 3ba75440129a..000000000000
+--- a/llvm/include/llvm-c/Transforms/PassManagerBuilder.h
++++ /dev/null
+@@ -1,81 +0,0 @@
+-/*===-- llvm-c/Transform/PassManagerBuilder.h - PMB C Interface ---*- C -*-===*\
+-|*                                                                            *|
+-|* Part of the LLVM Project, under the Apache License v2.0 with LLVM          *|
+-|* Exceptions.                                                                *|
+-|* See https://llvm.org/LICENSE.txt for license information.                  *|
+-|* SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception                    *|
+-|*                                                                            *|
+-|*===----------------------------------------------------------------------===*|
+-|*                                                                            *|
+-|* This header declares the C interface to the PassManagerBuilder class.      *|
+-|*                                                                            *|
+-\*===----------------------------------------------------------------------===*/
+-
+-#ifndef LLVM_C_TRANSFORMS_PASSMANAGERBUILDER_H
+-#define LLVM_C_TRANSFORMS_PASSMANAGERBUILDER_H
+-
+-#include "llvm-c/ExternC.h"
+-#include "llvm-c/Types.h"
+-
+-typedef struct LLVMOpaquePassManagerBuilder *LLVMPassManagerBuilderRef;
+-
+-LLVM_C_EXTERN_C_BEGIN
+-
+-/**
+- * @defgroup LLVMCTransformsPassManagerBuilder Pass manager builder
+- * @ingroup LLVMCTransforms
+- *
+- * @{
+- */
+-
+-/** See llvm::PassManagerBuilder. */
+-LLVMPassManagerBuilderRef LLVMPassManagerBuilderCreate(void);
+-void LLVMPassManagerBuilderDispose(LLVMPassManagerBuilderRef PMB);
+-
+-/** See llvm::PassManagerBuilder::OptLevel. */
+-void
+-LLVMPassManagerBuilderSetOptLevel(LLVMPassManagerBuilderRef PMB,
+-                                  unsigned OptLevel);
+-
+-/** See llvm::PassManagerBuilder::SizeLevel. */
+-void
+-LLVMPassManagerBuilderSetSizeLevel(LLVMPassManagerBuilderRef PMB,
+-                                   unsigned SizeLevel);
+-
+-/** See llvm::PassManagerBuilder::DisableUnitAtATime. */
+-void
+-LLVMPassManagerBuilderSetDisableUnitAtATime(LLVMPassManagerBuilderRef PMB,
+-                                            LLVMBool Value);
+-
+-/** See llvm::PassManagerBuilder::DisableUnrollLoops. */
+-void
+-LLVMPassManagerBuilderSetDisableUnrollLoops(LLVMPassManagerBuilderRef PMB,
+-                                            LLVMBool Value);
+-
+-/** See llvm::PassManagerBuilder::DisableSimplifyLibCalls */
+-void
+-LLVMPassManagerBuilderSetDisableSimplifyLibCalls(LLVMPassManagerBuilderRef PMB,
+-                                                 LLVMBool Value);
+-
+-/** See llvm::PassManagerBuilder::Inliner. */
+-void
+-LLVMPassManagerBuilderUseInlinerWithThreshold(LLVMPassManagerBuilderRef PMB,
+-                                              unsigned Threshold);
+-
+-/** See llvm::PassManagerBuilder::populateFunctionPassManager. */
+-void
+-LLVMPassManagerBuilderPopulateFunctionPassManager(LLVMPassManagerBuilderRef PMB,
+-                                                  LLVMPassManagerRef PM);
+-
+-/** See llvm::PassManagerBuilder::populateModulePassManager. */
+-void
+-LLVMPassManagerBuilderPopulateModulePassManager(LLVMPassManagerBuilderRef PMB,
+-                                                LLVMPassManagerRef PM);
+-
+-/**
+- * @}
+- */
+-
+-LLVM_C_EXTERN_C_END
+-
+-#endif
+diff --git a/llvm/include/llvm/Transforms/IPO/PassManagerBuilder.h b/llvm/include/llvm/Transforms/IPO/PassManagerBuilder.h
+index 3930cb8a0e05..a727ffed33cd 100644
+--- a/llvm/include/llvm/Transforms/IPO/PassManagerBuilder.h
++++ b/llvm/include/llvm/Transforms/IPO/PassManagerBuilder.h
+@@ -14,7 +14,6 @@
+ #ifndef LLVM_TRANSFORMS_IPO_PASSMANAGERBUILDER_H
+ #define LLVM_TRANSFORMS_IPO_PASSMANAGERBUILDER_H
+ 
+-#include "llvm-c/Transforms/PassManagerBuilder.h"
+ #include <functional>
+ #include <string>
+ #include <vector>
+@@ -122,13 +121,5 @@ public:
+   void populateModulePassManager(legacy::PassManagerBase &MPM);
+ };
+ 
+-inline PassManagerBuilder *unwrap(LLVMPassManagerBuilderRef P) {
+-    return reinterpret_cast<PassManagerBuilder*>(P);
+-}
+-
+-inline LLVMPassManagerBuilderRef wrap(PassManagerBuilder *P) {
+-  return reinterpret_cast<LLVMPassManagerBuilderRef>(P);
+-}
+-
+ } // end namespace llvm
+ #endif
+diff --git a/llvm/lib/Transforms/IPO/PassManagerBuilder.cpp b/llvm/lib/Transforms/IPO/PassManagerBuilder.cpp
+index 5fec9dcbadb3..cd8523c215a0 100644
+--- a/llvm/lib/Transforms/IPO/PassManagerBuilder.cpp
++++ b/llvm/lib/Transforms/IPO/PassManagerBuilder.cpp
+@@ -12,7 +12,6 @@
+ //===----------------------------------------------------------------------===//
+ 
+ #include "llvm/Transforms/IPO/PassManagerBuilder.h"
+-#include "llvm-c/Transforms/PassManagerBuilder.h"
+ #include "llvm/ADT/STLExtras.h"
+ #include "llvm/ADT/SmallVector.h"
+ #include "llvm/Analysis/GlobalsModRef.h"
+@@ -361,68 +360,3 @@ void PassManagerBuilder::populateModulePassManager(
+   MPM.add(createCFGSimplificationPass(
+       SimplifyCFGOptions().convertSwitchRangeToICmp(true)));
+ }
+-
+-LLVMPassManagerBuilderRef LLVMPassManagerBuilderCreate() {
+-  PassManagerBuilder *PMB = new PassManagerBuilder();
+-  return wrap(PMB);
+-}
+-
+-void LLVMPassManagerBuilderDispose(LLVMPassManagerBuilderRef PMB) {
+-  PassManagerBuilder *Builder = unwrap(PMB);
+-  delete Builder;
+-}
+-
+-void
+-LLVMPassManagerBuilderSetOptLevel(LLVMPassManagerBuilderRef PMB,
+-                                  unsigned OptLevel) {
+-  PassManagerBuilder *Builder = unwrap(PMB);
+-  Builder->OptLevel = OptLevel;
+-}
+-
+-void
+-LLVMPassManagerBuilderSetSizeLevel(LLVMPassManagerBuilderRef PMB,
+-                                   unsigned SizeLevel) {
+-  PassManagerBuilder *Builder = unwrap(PMB);
+-  Builder->SizeLevel = SizeLevel;
+-}
+-
+-void
+-LLVMPassManagerBuilderSetDisableUnitAtATime(LLVMPassManagerBuilderRef PMB,
+-                                            LLVMBool Value) {
+-  // NOTE: The DisableUnitAtATime switch has been removed.
+-}
+-
+-void
+-LLVMPassManagerBuilderSetDisableUnrollLoops(LLVMPassManagerBuilderRef PMB,
+-                                            LLVMBool Value) {
+-  PassManagerBuilder *Builder = unwrap(PMB);
+-  Builder->DisableUnrollLoops = Value;
+-}
+-
+-void
+-LLVMPassManagerBuilderSetDisableSimplifyLibCalls(LLVMPassManagerBuilderRef PMB,
+-                                                 LLVMBool Value) {
+-  // NOTE: The simplify-libcalls pass has been removed.
+-}
+-
+-void
+-LLVMPassManagerBuilderUseInlinerWithThreshold(LLVMPassManagerBuilderRef PMB,
+-                                              unsigned Threshold) {
+-  // TODO: remove this
+-}
+-
+-void
+-LLVMPassManagerBuilderPopulateFunctionPassManager(LLVMPassManagerBuilderRef PMB,
+-                                                  LLVMPassManagerRef PM) {
+-  PassManagerBuilder *Builder = unwrap(PMB);
+-  legacy::FunctionPassManager *FPM = unwrap<legacy::FunctionPassManager>(PM);
+-  Builder->populateFunctionPassManager(*FPM);
+-}
+-
+-void
+-LLVMPassManagerBuilderPopulateModulePassManager(LLVMPassManagerBuilderRef PMB,
+-                                                LLVMPassManagerRef PM) {
+-  PassManagerBuilder *Builder = unwrap(PMB);
+-  legacy::PassManagerBase *MPM = unwrap(PM);
+-  Builder->populateModulePassManager(*MPM);
+-}
+diff --git a/llvm/tools/llvm-c-test/include-all.c b/llvm/tools/llvm-c-test/include-all.c
+index eada03caf5e0..d5d07ff0b891 100644
+--- a/llvm/tools/llvm-c-test/include-all.c
++++ b/llvm/tools/llvm-c-test/include-all.c
+@@ -36,6 +36,5 @@
+ #include "llvm-c/Target.h"
+ #include "llvm-c/TargetMachine.h"
+ #include "llvm-c/Transforms/PassBuilder.h"
+-#include "llvm-c/Transforms/PassManagerBuilder.h"
+ #include "llvm-c/Types.h"
+ #include "llvm-c/lto.h"
+-- 
+2.39.2
+
