@@ -23,6 +23,9 @@ pre_install () {
 }
 
 pre_upgrade () {
+	
+	pre_install
+
 	# Check if forticlient is registered to EMS if it's an uninstall
 	if [ -f /opt/forticlient/.fct_ec_registered ] && [ "$action" != "upgrade" ]; then
 		echo "============================================================="
@@ -166,6 +169,9 @@ post_install() {
 }
 
 post_upgrade() {
+
+	post_install
+
 cat << EOF
 
 ==> After upgrade, to restore your configuration, copy /etc/forticlient/.old/* to /etc/forticlient/
