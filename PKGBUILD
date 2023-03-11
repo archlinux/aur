@@ -2,7 +2,7 @@
 
 pkgname=clipboard
 _pkgname=Clipboard
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Cut, copy, and paste anything in your terminal."
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -13,7 +13,7 @@ optdepends=('libx11: X11 support'
 	    'wayland: Wayland support'
 	    'wayland-protocols: Wayland support')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Slackadays/Clipboard/archive/${pkgver}.tar.gz")
-sha256sums=('ff4ebccdde9800d064b0c92fa4206770a5bf64826f0a0566416a7f3e6cedf997')
+sha256sums=('4ef29040b871c8d6238408e61a569b0a41609398e0360ab375b9a32be062de81')
 
 build () {
         export CFLAGS="${CFLAGS} -DNDEBUG"
