@@ -1,0 +1,25 @@
+From 0bd5f4f6e6548a63a60356f09c533f5ddada8990 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?F=C3=A9lix=20Pi=C3=A9dallu?= <felix@piedallu.me>
+Date: Sat, 11 Mar 2023 12:20:58 +0100
+Subject: [PATCH] Fix format string
+
+---
+ src/slic3r/GUI/ImGuiWrapper.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/slic3r/GUI/ImGuiWrapper.cpp b/src/slic3r/GUI/ImGuiWrapper.cpp
+index 6b85af966..d48b91522 100644
+--- a/src/slic3r/GUI/ImGuiWrapper.cpp
++++ b/src/slic3r/GUI/ImGuiWrapper.cpp
+@@ -460,7 +460,7 @@ bool ImGuiWrapper::button(const wxString &label, const wxString& tooltip)
+ 
+     if (!tooltip.IsEmpty() && ImGui::IsItemHovered()) {
+         auto tooltip_utf8 = into_u8(tooltip);
+-        ImGui::SetTooltip(tooltip_utf8.c_str());
++        ImGui::SetTooltip("%s", tooltip_utf8.c_str());
+     }
+ 
+     return ret;
+-- 
+2.39.2
+
