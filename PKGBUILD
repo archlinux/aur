@@ -5,20 +5,29 @@
 # https://www.kernel.org/category/releases.html
 # 6.1 Greg Kroah-Hartman & Sasha Levin 2022-12-11 Dec, 2026
 _LLL_VER=6.1
-_LLL_SUBVER=15
+_LLL_SUBVER=16
 
 #PKGEXT='.pkg.tar'
 
+# Set x86-64 psABI level: https://dl.xanmod.org/check_x86-64_psabi.sh
+# Need XanMod patch
+# Possible values: v1 / v2 / v3 (default) / v4
+# Default v3 which use CONFIG_GENERIC_CPU3:
+# ref: https://github.com/xanmod/linux/tree/6.1/CONFIGS/xanmod/gcc
+# ref: https://xanmod.org/
+if [ -z ${_psABI_level} ]; then
+  _psABI_level=v3
+fi
+
 # Use HZ ticks 500 instead of Arch default 300
-# 500 get from `CONFIGS/xanmod/gcc/config_x86-64-v*`
+# Need XanMod patch, 500 get from `CONFIGS/xanmod/gcc/config_x86-64-v*`
 if [ -z ${_use_HZ_500} ]; then
   _use_HZ_500=y
 fi
 
 # Set CONFIG_KERNEL_{XZ,ZSTD} CONFIG_MODULE_COMPRESS_{XZ,ZSTD}
-# ZSTD: 164M linux-shmilee-6.1.15-1-x86_64.pkg.tar.xz
 #  XZ:  122M linux-shmilee-6.1.15-2-x86_64.pkg.tar.xz
-
+# ZSTD: 164M linux-shmilee-6.1.15-1-x86_64.pkg.tar.xz
 # Set variable "_use_zstd" to: n to use XZ (slower decompress, smaller size)
 #                              y to use ZSTD (faster decompress, larger size)
 if [ -z ${_use_zstd} ]; then
@@ -35,11 +44,9 @@ fi
 
 # Compile ONLY used modules to VASTLY reduce the number of modules built
 # and the build time.
-#
 # To keep track of which modules are needed for your specific system/hardware,
 # give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
 # This PKGBUILD read the database kept if it exists
-#
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 if [ -z ${_localmodcfg} ]; then
   _localmodcfg=n
@@ -65,13 +72,16 @@ _PATHSET_DESC="Xanmod patches, cjktty"
 
 _MORE_PATCH=(
   #"0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch" in Xanmod
+  # 11??-*.patch:: online patches
+  '1101-Add-6.1.17-revert.patch::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/rawdiff/?h=linux-6.1.y&id=v6.1.17&id2=v6.1.16'
 )
 ######## END ########
 
 pkgbase=linux-shmilee
 pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
-pkgver=${_LLL_VER}.${_LLL_SUBVER}
-pkgrel=2
+pkgver=${_LLL_VER}.$((_LLL_SUBVER+1)) # 6.1.16 -> 6.1.17
+#pkgver=${_LLL_VER}.${_LLL_SUBVER}
+pkgrel=1
 pkgdesc='Linux-shmilee'
 url="https://www.kernel.org/"
 arch=(x86_64)
@@ -103,8 +113,9 @@ validpgpkeys=(
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
 sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
             'SKIP'
-            '688d9da899bbf5758865d648dd99eaffafb4bb6a67c2d3182c2cd249e4a6be8e'
+            '06241fa671f1a1ff795a3672a2b3412f459360be95077da7a8c8825c211bc0e7'
             'c5bdf89d7867c368dfd7b7c16e5a50a99ca8022de28ab15315bdcb5dab8aad85'
+            'f2192f60784db9e5835599cce1fc2607668932470de428f1beb07143cb83da7b'
             'a8162641380b2681622d0f3c40ce130c9fd1cf6e176b5db18b95ba83609fbcf8')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -126,6 +137,8 @@ prepare() {
 
   local src
   for src in "${_MORE_PATCH[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
     msg2 "Applying patch $src..."
     patch -Np1 < "../$src"
   done
@@ -139,6 +152,18 @@ prepare() {
   # Enable IKCONFIG following Arch's philosophy
   scripts/config --enable CONFIG_IKCONFIG \
                  --enable CONFIG_IKCONFIG_PROC
+
+  # Set CONFIG_GENERIC_CPU?
+  scripts/config --disable CONFIG_GENERIC_CPU
+  scripts/config --disable CONFIG_GENERIC_CPU2
+  scripts/config --disable CONFIG_GENERIC_CPU3
+  scripts/config --disable CONFIG_GENERIC_CPU4
+  if [ "${_psABI_level}" = 'v1' ]; then
+    scripts/config --enable CONFIG_GENERIC_CPU
+  else
+    msg2 "Setting 'CONFIG_GENERIC_CPU${_psABI_level/v/}' for x86-64-${_psABI_level} ..."
+    scripts/config --enable CONFIG_GENERIC_CPU${_psABI_level/v/}
+  fi
 
   # set CONFIG_HZ=500 instead of 300
   if [ "$_use_HZ_500" = 'y' ]; then
@@ -215,7 +240,13 @@ prepare() {
 
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
-  echo "" > localversion
+  if [ "${_psABI_level}" = 'v1' ]; then
+    echo "" > localversion
+  else
+    msg2 "Add localversion '-x64${_psABI_level}'"
+    #scripts/config --set-str CONFIG_LOCALVERSION "-x64${_psABI_level}"
+    echo "-x64${_psABI_level}" > localversion
+  fi
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
 

@@ -4,10 +4,9 @@ linux-?.*.tar.sign
 patch-?.*.*.xz
 patch-?.*.*.sign
 
-patch-?.*-ck?.xz
-xanmod-*.tar.gz
-uksm-?.*.patch
+patch-*xanmod?.xz
 cjktty-?.*.patch
+11??-*.patch
 
 pkg/*
 src/*
