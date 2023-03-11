@@ -1,7 +1,7 @@
 # Maintainer: Marc Tiehuis <marctiehuis at gmail.com>
 
 pkgname=zig-git
-pkgver=0.10.0.r931.gf211c1559a
+pkgver=0.10.0.r1928.g3169f0529b
 pkgrel=1
 pkgdesc="a programming language prioritizing robustness, optimality, and clarity"
 arch=('i686' 'x86_64' 'aarch64')
@@ -20,19 +20,17 @@ pkgver() {
 
 build() {
     cmake -B build -S zig \
+        -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=None \
-        -DZIG_PREFER_CLANG_CPP_DYLIB=ON \
-        -DZIG_STATIC_ZLIB=on
+        -DZIG_SHARED_LLVM=ON
     cmake --build build
-    cmake --install build
 }
 
-check() {
-    # omit full compiler test since it takes ages
-    build/stage3/bin/zig version
-}
+# No `check()` because zig currently doesn't have a test target. See:
+# https://github.com/ziglang/zig/issues/14240
+# NOTE: In the future, a check step will be provided, but will likely be slow. Use `makepkg --nocheck` to skip it.
 
 package() {
     install -Dm644 zig/LICENSE "$pkgdir/usr/share/licenses/$provides/LICENSE"
-    cp -a build/stage3/. "$pkgdir/usr"
+    DESTDIR="$pkgdir" cmake --install build
 }
