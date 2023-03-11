@@ -1,6 +1,6 @@
 pkgbase = aws-sam-cli
 	pkgdesc = CLI tool to build, test, debug, and deploy Serverless applications using AWS SAM
-	pkgver = 1.74.0
+	pkgver = 1.76.0
 	pkgrel = 1
 	url = https://github.com/aws/aws-sam-cli
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = aws-sam-cli
 	depends = python-ruamel-yaml
 	depends = python-cfn-lint
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/a/aws-sam-cli/aws-sam-cli-1.74.0.tar.gz
-	sha256sums = 86e77f74d0b3d2b7057e58020a090832c8757d8e1cd34ab2968144d571fb500b
+	source = https://files.pythonhosted.org/packages/source/a/aws-sam-cli/aws-sam-cli-1.76.0.tar.gz
+	sha256sums = 1d2ab13b415d73bbdf5ecde0dc6ff2eb952873fe1bba53c3910362453afcca70
 
 pkgname = aws-sam-cli
