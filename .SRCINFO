@@ -1,6 +1,6 @@
 pkgbase = python-recoverpy
 	pkgdesc = A TUI to recover overwritten or deleted data.
-	pkgver = 2.0.1
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/PabloLec/recoverpy
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-recoverpy
 	license = GPLv3
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/r/recoverpy/recoverpy-2.0.1.tar.gz
-	sha256sums = 94dcdf8bfaf8af2293cef4323cd90994ca58ea4f2988fe8ff4c8103e953e66f0
+	source = https://files.pythonhosted.org/packages/source/r/recoverpy/recoverpy-2.0.3.tar.gz
+	sha256sums = 9f250bc12f7af5b2f0cd07fb5bb497ee463661858959f91d90e7b6b6949b2b1a
 
 pkgname = python-recoverpy
 	depends = python
