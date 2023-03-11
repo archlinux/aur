@@ -1,10 +1,10 @@
 # Maintainer: David Florness <david at florness dot com>
 pkgname=tallyard-git
 _pkgname=tallyard
-pkgver=0.6.0.r0.gb7a7795
+pkgver=0.6.1.r0.g03a3e09
 pkgrel=1
 arch=('x86_64')
-pkgdesc="A peer-to-peer voting system that ensures voter privacy while preventing double-voting"
+pkgdesc="an authenticated voting system that ensures voter privacy while preventing double-voting"
 url="https://tallyard.xyz"
 license=('MPL2')
 depends=('libolm')
