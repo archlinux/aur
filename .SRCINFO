@@ -5,7 +5,6 @@ pkgbase = coursier-native
 	url = http://get-coursier.io
 	arch = x86_64
 	license = Apache
-	depends = gcc-libs
 	depends = zlib
 	source = coursier-2.1.0_RC6.gz::https://github.com/coursier/coursier/releases/download/v2.1.0-RC6/cs-x86_64-pc-linux.gz
 	sha256sums = ef2bc32c8d1975d9373f518ee24ecbd9a96e99cbb523afa309a45cb44009eeb7
