@@ -1,0 +1,23 @@
+pkgbase = arrpc-git
+	pkgdesc = Open Discord RPC server for atypical setups
+	pkgver = r85.4405d72
+	pkgrel = 1
+	url = https://arrpc.openasar.dev/
+	install = arrpc.install
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	options = !strip
+	source = arrpc-git::git+https://github.com/OpenAsar/arrpc.git
+	source = async.patch
+	source = arrpc.service
+	source = arrpc.install
+	sha256sums = SKIP
+	sha256sums = 38db355a3b5b7afc79b4722068733176cdee751e4e93653219288a6faebb0922
+	sha256sums = dccc409ef768766d8d4141f8d89366e0bbecd30d9b08d4d31856b01f180c4005
+	sha256sums = aa9d0d7e1340a11268a76c21a2fa18f09cea02174a5effbcbb2eb0144221869f
+
+pkgname = arrpc-git
