@@ -28,8 +28,8 @@ pkgbase = clash-for-windows-electron-zh
 	sha256sums = db2e160e5d5cf82ed69d0926ac51c0eccb9efc541f89be3bb467d85be509f735
 	sha256sums = 4bea2fe6e8580a4316451ca5c8b921bd908422d839f8bd9ceaddd709f9178153
 	sha256sums = d55c2f4088505116a5bad6d09f5ebe232e7c6a269ea6bf46daada02bc3a9f961
-	sha256sums = b3de4b33406e611b090c929203914a555631214b7b500c97fbb7d24a54ad8450
+	sha256sums = 7463d7f0d14766018fdb2b249ebd529265622e2b9fe1a07eeb78f6bcbd37b2a7
 	source_x86_64 = clash-for-windows-electron-zh-0.20.18-x86_64-linux.tar.gz::https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.18/Clash.for.Windows-0.20.18-x64-linux.tar.gz
-	sha256sums_x86_64 = df597d26b22fdd03fe252299afbb8ab73a7762e46a20eb9947adf94295d56de9
+	sha256sums_x86_64 = 67b9cbfbfb08122d4f55050f27dc41818334e0fa2f18f3329bd0fcab5a34059d
 
 pkgname = clash-for-windows-electron-zh
