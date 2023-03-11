@@ -13,16 +13,16 @@ _android_arch=aarch64
 pkgname=android-aarch64-qt6-base
 _qtver=6.4.2
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='A cross-platform application and UI framework (android)'
-depends=('java-runtime-headless-openjdk=8' 'ant' 'android-ndk' 'android-sdk' 'android-sdk-build-tools'
+depends=('java-runtime-headless-openjdk>=11' 'ant' 'android-ndk' 'android-sdk' 'android-sdk-build-tools'
          'android-sdk-platform-tools' 'android-platform' "android-${_android_arch}-libjpeg-turbo"
          "android-${_android_arch}-libpng" "android-${_android_arch}-openssl" "android-${_android_arch}-zlib")
 makedepends=('android-cmake' 'android-pkg-config'
-             'java-environment-openjdk=8' 'qt6-base' 'ninja')
+             'java-environment-openjdk>=11' 'qt6-base' 'ninja')
 optdepends=('qt6-base: development tools')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)

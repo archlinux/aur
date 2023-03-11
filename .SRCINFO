@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-qt6-base
 	pkgdesc = A cross-platform application and UI framework (android)
 	pkgver = 6.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.qt.io
 	arch = any
 	groups = android-aarch64-qt6
@@ -11,10 +11,10 @@ pkgbase = android-aarch64-qt6-base
 	license = custom
 	makedepends = android-cmake
 	makedepends = android-pkg-config
-	makedepends = java-environment-openjdk=8
+	makedepends = java-environment-openjdk>=11
 	makedepends = qt6-base
 	makedepends = ninja
-	depends = java-runtime-headless-openjdk=8
+	depends = java-runtime-headless-openjdk>=11
 	depends = ant
 	depends = android-ndk
 	depends = android-sdk
