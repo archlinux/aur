@@ -1,0 +1,18 @@
+pkgbase = python-epitran
+	pkgdesc = A library and tool for transliterating orthographic text as IPA (International Phonetic Alphabet).
+	pkgver = 1.24
+	pkgrel = 1
+	url = https://github.com/dmort27/epitran
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-marisa-trie
+	depends = python-panphon
+	depends = python-regex
+	depends = python-requests
+	options = !emptydirs
+	source = python-epitran-1.24.tar.gz::https://github.com/dmort27/epitran/archive/refs/tags/1.24.tar.gz
+	sha256sums = ca43d62a7c6f4441e409327cdf093a44758d82e8e71a5e6c59884d61621ced6e
+
+pkgname = python-epitran
