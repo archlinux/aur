@@ -1,6 +1,6 @@
 # Maintainer: ShutSentry <shutsentry@nospam.com>
 pkgname=shutsentry
-pkgver=2.7
+pkgver=2.71
 pkgrel=1
 pkgdesc="ShutSentry is a virtual dead-man-switch that protects computers from unauthorized physical access, by presenting an on-screen password-challenge prompt at regular time intervals, and/or reacting to other trigger events like USB/Bluetooth device changes."
 arch=(x86_64)
