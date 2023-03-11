@@ -1,6 +1,6 @@
 pkgbase = tgui-git
 	pkgdesc = Cross-platform modern c++ GUI library
-	pkgver = nightly_build.r0.g6ef550515
+	pkgver = nightly_build.r0.g8719a201
 	pkgrel = 1
 	url = https://tgui.eu/
 	arch = i686
@@ -17,6 +17,10 @@ pkgbase = tgui-git
 	provides = tgui
 	conflicts = tgui
 	source = git+https://github.com/texus/TGUI.git#branch=0.10
+	source = tgui-gui-builder.desktop
+	source = TexusGUI_48x48.png
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = tgui-git

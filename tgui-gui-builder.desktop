@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=TGUI Gui Builder
+Icon=TexusGUI
+Exec=/usr/share/tgui-0.10/gui-builder/gui-builder
