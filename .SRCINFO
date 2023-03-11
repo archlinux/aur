@@ -1,6 +1,6 @@
 pkgbase = briar-desktop
 	pkgdesc = Prototyping the next generation for Briar on desktop devices
-	pkgver = 0.4.0.beta
+	pkgver = 0.4.1.beta
 	pkgrel = 1
 	url = https://code.briarproject.org/briar/briar-desktop
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = briar-desktop
 	makedepends = java-environment=17
 	depends = java-runtime=17
 	depends = bash
-	source = briar-desktop::git+https://code.briarproject.org/briar/briar-desktop.git#tag=0.4.0-beta
-	source = briar::git+https://code.briarproject.org/briar/briar.git#commit=6b20b036982430c8069790382a159c66a27f22b0
+	source = briar-desktop::git+https://code.briarproject.org/briar/briar-desktop.git#tag=0.4.1-beta
+	source = briar::git+https://code.briarproject.org/briar/briar.git#commit=fbf0f63ff7c81d8379cd0c376aa7a348af094d5e
 	source = briar16.png
 	source = briar32.png
 	source = briar48.png

@@ -1,7 +1,7 @@
 pkgname=briar-desktop
-pkgver=0.4.0.beta
+pkgver=0.4.1.beta
 pkgrel=1
-_bin_ver=0.4.0
+_bin_ver=0.4.1
 _build_type=beta
 pkgdesc='Prototyping the next generation for Briar on desktop devices'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('java-runtime=17' 'bash')
 makedepends=('git' 'java-environment=17')
 source=("${pkgname}::git+https://code.briarproject.org/briar/briar-desktop.git#tag=${_bin_ver}-${_build_type}"
-        "briar::git+https://code.briarproject.org/briar/briar.git#commit=6b20b036982430c8069790382a159c66a27f22b0"
+        "briar::git+https://code.briarproject.org/briar/briar.git#commit=fbf0f63ff7c81d8379cd0c376aa7a348af094d5e"
         "briar16.png" "briar32.png" "briar48.png" "briar64.png" "briar128.png" "briar192.png"
         "${pkgname}.desktop")
 sha256sums=('SKIP'
