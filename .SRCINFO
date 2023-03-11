@@ -1,0 +1,15 @@
+pkgbase = torchstudio
+	pkgdesc = IDE for PyTorch and its ecosystem
+	pkgver = 0.9.14
+	pkgrel = 1
+	url = https://torchstudio.ai/
+	arch = x86_64
+	license = MIT
+	depends = python
+	provides = torchstudio
+	options = !strip
+	options = !zipman
+	source = https://github.com/TorchStudio/torchstudio/releases/download/0.9.14/TorchStudio_0.9.14-Linux_Installer.deb
+	sha256sums = c5c93535676e29048e122fabeffa0eb569496682c8e22b0aab6ba0013dfa4087
+
+pkgname = torchstudio
