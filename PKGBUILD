@@ -50,5 +50,5 @@ build() {
 package() {
 	pushd "ggmorse"
 	install -Dm755 ./build/bin/ggmorse* -t $pkgdir/usr/bin/
-	install -Dm644 LICENSE -t $pkgdir/usr/share/licenses/
+	install -Dm644 LICENSE -t $pkgdir/usr/share/licenses/$pkgname/
 }
