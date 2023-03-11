@@ -1,0 +1,6 @@
+/src
+/pkg
+*.png
+*.7z
+*.tar.gz
+*.zst

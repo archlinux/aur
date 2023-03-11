@@ -1,0 +1,8 @@
+post_install() {
+    echo 'You could use `ln -s /usr/share/applications/clash-for-windows-chinese.desktop /etc/xdg/autostart/` to enable auto start.'
+    echo 'Installing Service Mode may requires manually restart of program'
+}
+
+pre_remove() {
+    rm -f /etc/xdg/autostart/clash-for-windows-chinese.desktop 2>/dev/null
+}

@@ -1,0 +1,2 @@
+#!/bin/sh
+nohup /opt/clash-for-windows-chinese/cfw >/dev/null 2>&1 &
