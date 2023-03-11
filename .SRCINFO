@@ -1,0 +1,15 @@
+pkgbase = dokytree
+	pkgdesc = A versatil documentation system based on yaml files in directory tree with pugjs templates
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/matmoul/dokytree
+	arch = any
+	license = GPL3
+	depends = nodejs
+	optdepends = code: To edit doc
+	optdepends = chromium: To view and print as pdf doc
+	optdepends = wget: To export doc as static pages
+	source = dokytree::https://github.com/matmoul/dokytree/archive/refs/tags/v0.0.1.tar.gz
+	sha256sums = 56e34c4c4ca6966ab32bed6e8d0d41bff76b93290af28b5e3436c0c06a84e38c
+
+pkgname = dokytree
