@@ -1,4 +1,5 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
+# Contributor: seth <getchoo at tuta dot io>
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: loqs
 # Contributor: Jorge Araya Navarro <jorgejavieran@yahoo.com.mx>
@@ -9,7 +10,7 @@ _pkgname=godot
 pkgname=godot3-git
 pkgver=r34303.338114d
 _pkgverbranch=3.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Advanced cross-platform 2D and 3D game engine (3.x Branch)'
 url='https://godotengine.org'
 license=(MIT)
@@ -18,10 +19,12 @@ makedepends=(gcc scons yasm alsa-lib pulseaudio)
 depends=(embree freetype2 libglvnd libtheora libvorbis libvpx libwebp libwslay
          libsquish libxcursor libxi libxinerama libxrandr mbedtls miniupnpc opusfile)
 optdepends=(pipewire-alsa pipewire-pulse)
-provides=("godot")
-conflicts=("godot")
-source=("git+https://github.com/godotengine/godot.git#branch=$_pkgverbranch")
-b2sums=('SKIP')
+provides=("godot3")
+conflicts=("godot3")
+source=("git+https://github.com/godotengine/godot.git#branch=$_pkgverbranch"
+        "godot3.patch")
+b2sums=('SKIP'
+        '5ed41b79e0121e66614cce997d8c05b3efafefb45d93a426fe4f63bc9917a8dad8519d3f11021a62d6b3a8f7210f2cc86d03361a51dcf79007b0eb71289c1370')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -31,6 +34,9 @@ pkgver() {
 prepare() {
   # Disable the check that adds -no-pie to LINKFLAGS, for gcc != 6
   sed -i 's,0] >,0] =,g' $_pkgname/platform/x11/detect.py
+
+  cd "$srcdir/$_pkgname"
+  patch -p1 < "$srcdir/godot3.patch"
 }
 
 build() {
@@ -65,13 +71,18 @@ build() {
 }
 
 package() {
+  # make godot3 compatible with godot
+  cd "$srcdir/$_pkgname/misc/dist/linux/"
+
+  sed -i 's/Godot Engine/Godot Engine 3 LTS/g' org.godotengine.Godot.desktop
+
   cd $srcdir/$_pkgname
   install -Dm644 misc/dist/linux/org.godotengine.Godot.desktop \
-    "$pkgdir/usr/share/applications/godot.desktop"
-  install -Dm644 icon.svg "$pkgdir/usr/share/pixmaps/godot.svg"
-  install -Dm755 bin/godot.x11.opt.tools.64 "$pkgdir/usr/bin/$_pkgname"
-  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/godot/LICENSE"
-  install -Dm644 misc/dist/linux/godot.6 "$pkgdir/usr/share/man/man6/godot.6"
+    "$pkgdir/usr/share/applications/godot3.desktop"
+  install -Dm644 icon.svg "$pkgdir/usr/share/pixmaps/godot3.svg"
+  install -Dm755 bin/godot.x11.opt.tools.64 "$pkgdir/usr/bin/godot3"
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/godot3-git/LICENSE"
+  install -Dm644 misc/dist/linux/godot.6 "$pkgdir/usr/share/man/man6/godot3.6"
   install -Dm644 misc/dist/linux/org.godotengine.Godot.xml \
-    "$pkgdir/usr/share/mime/packages/org.godotengine.Godot.xml"
+    "$pkgdir/usr/share/mime/packages/org.godotengine.Godot3.xml"
 }
