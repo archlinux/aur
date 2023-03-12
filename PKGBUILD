@@ -2,8 +2,8 @@
 
 pkgname=zebrad
 pkgver=1.0.0_rc.5
-pkgrel=1
-pkgdesc="ZF's independent, consensus-compatible implementation of a Zcash node"
+pkgrel=2
+pkgdesc="A Rust implementation of a Zcash node. 🦓"
 url='https://github.com/ZcashFoundation/zebra'
 source=("zebra-${pkgver//_/-}.tar.gz::https://github.com/ZcashFoundation/zebra/archive/refs/tags/v${pkgver//_/-}.tar.gz")
 arch=('aarch64' 'x86_64')
