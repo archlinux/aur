@@ -1,6 +1,6 @@
 pkgbase = simple-usb-automount-git
 	pkgdesc = Really simple usb storage device auto mounter
-	pkgver = 11.b291847
+	pkgver = 12.2bbf5dd
 	pkgrel = 1
 	url = https://github.com/antonilol/simple-usb-automount
 	arch = any

@@ -1,7 +1,7 @@
 # Maintainer: Antoni Spaanderman <56turtle56@gmail.com>
 
 pkgname=simple-usb-automount-git
-pkgver=11.b291847
+pkgver=12.2bbf5dd
 pkgrel=1
 pkgdesc="Really simple usb storage device auto mounter"
 arch=('any')
