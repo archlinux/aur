@@ -2,16 +2,16 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 # Arch Linux kernel source
-_ver=6.1.arch1
+_ver=6.2.arch1
 _srcname=archlinux-linux
 _srcurl="https://github.com/archlinux/linux.git"
 # Bcachefs kernel source
-_bcachefstag=v6.1
+_bcachefstag=v6.2
 _bcachefsname=bcachefs-linux
 _bcachefsurl="https://evilpiepirate.org/git/bcachefs.git"
 
 pkgbase=linux-simple-bcachefs-git
-pkgver=6.1.arch1.r1813
+pkgver=6.2.arch1.r2547
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${_ver%.*}-${_ver##*.}
@@ -19,13 +19,13 @@ url="https://github.com/archlinux/linux/commits/$_srctag"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-  bc libelf pahole cpio perl tar xz
+  bc libelf pahole cpio perl tar xz gettext
   git
 )
 options=('!strip')
 source=(config         # the main kernel config file
 )
-sha256sums=('0571ea17a2e38458096b679418197bbea8c414388f628d122517f3a1f3a31b3a'
+sha256sums=('a80dfd64eca60673422052ac4d1444b0f9495a588c2595d413fd0687f3786586'
 )
 
 export KBUILD_BUILD_HOST=archlinux
