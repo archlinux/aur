@@ -1,6 +1,6 @@
 pkgbase = glcapsviewer-git
 	pkgdesc = OpenGL Hardware Capability Viewer
-	pkgver = r127.26e160c
+	pkgver = r137.85ee6ab
 	pkgrel = 1
 	url = https://opengl.gpuinfo.org/
 	arch = i686
@@ -13,11 +13,11 @@ pkgbase = glcapsviewer-git
 	depends = qt5-base
 	source = git+https://github.com/SaschaWillems/glCapsViewer
 	source = https://github.com/SaschaWillems/glCapsViewer/pull/15.patch
+	source = https://github.com/SaschaWillems/glCapsViewer/pull/34.patch
 	source = glcapsviewer.desktop
-	source = glcapsviewer
 	sha256sums = SKIP
 	sha256sums = 1bbc59c259e18a550d788688be7a731e1f379ee08902759cf3e802123b745493
+	sha256sums = 6ac078025a400b5ef90f3756a5207b0d326bb0bfcc4488468c0bb7c627397589
 	sha256sums = 3ff750cda95917ff93388dd373437b12129427bc33e52343247bf69bf1d24c02
-	sha256sums = 139ceb073a34bea5450ca2b6d7f50523f8986d9f5a6b069d36cf05d03609f352
 
 pkgname = glcapsviewer-git
