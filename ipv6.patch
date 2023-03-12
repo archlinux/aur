@@ -1,0 +1,792 @@
+From b6405cfb2d72a0ad53d78817825f5b484c240fc4 Mon Sep 17 00:00:00 2001
+From: detiam <dehe_tian@outlook.com>
+Date: Mon, 13 Mar 2023 00:22:31 +0800
+Subject: [PATCH] Merge branch 'ipv6' of
+ https://github.com/HexJacaranda/Sunshine
+
+---
+ src/config.cpp                           |  39 ++--
+ src/config.h                             |   1 +
+ src/network.cpp                          |  71 ++++++-
+ src/network.h                            |  18 +-
+ src/nvhttp.cpp                           |  14 +-
+ src/rtsp.cpp                             |   8 +-
+ src/stream.cpp                           |  22 ++-
+ src_assets/common/assets/web/config.html | 327 +++++++++++++++----------------
+ 8 files changed, 289 insertions(+), 211 deletions(-)
+
+diff --git a/src/config.cpp b/src/config.cpp
+index 7e93ee6..a2feb74 100644
+--- a/src/config.cpp
++++ b/src/config.cpp
+@@ -420,6 +420,7 @@ sunshine_t sunshine {
+   platf::appdata().string() + "/sunshine.conf", // config file
+   {},                                           // cmd args
+   47989,
++  "ipv4",
+   platf::appdata().string() + "/sunshine.log", // log file
+ };
+ 
+@@ -947,9 +948,11 @@ void apply_config(std::unordered_map<std::string, std::string> &&vars) {
+ 
+   string_restricted_f(vars, "gamepad"s, input.gamepad, platf::supported_gamepads());
+ 
+-  int port = sunshine.port;
++  int port = config::sunshine.port;
+   int_f(vars, "port"s, port);
+-  sunshine.port = (std::uint16_t)port;
++  config::sunshine.port = (std::uint16_t)port;
++
++  string_restricted_f(vars, "address_family", config::sunshine.address_family, { "ipv4"sv, "both"sv });
+ 
+   bool upnp = false;
+   bool_f(vars, "upnp"s, upnp);
+@@ -963,31 +966,31 @@ void apply_config(std::unordered_map<std::string, std::string> &&vars) {
+ 
+   if(!log_level_string.empty()) {
+     if(log_level_string == "verbose"sv) {
+-      sunshine.min_log_level = 0;
++      config::sunshine.min_log_level = 0;
+     }
+     else if(log_level_string == "debug"sv) {
+-      sunshine.min_log_level = 1;
++      config::sunshine.min_log_level = 1;
+     }
+     else if(log_level_string == "info"sv) {
+-      sunshine.min_log_level = 2;
++      config::sunshine.min_log_level = 2;
+     }
+     else if(log_level_string == "warning"sv) {
+-      sunshine.min_log_level = 3;
++      config::sunshine.min_log_level = 3;
+     }
+     else if(log_level_string == "error"sv) {
+-      sunshine.min_log_level = 4;
++      config::sunshine.min_log_level = 4;
+     }
+     else if(log_level_string == "fatal"sv) {
+-      sunshine.min_log_level = 5;
++      config::sunshine.min_log_level = 5;
+     }
+     else if(log_level_string == "none"sv) {
+-      sunshine.min_log_level = 6;
++      config::sunshine.min_log_level = 6;
+     }
+     else {
+       // accept digit directly
+       auto val = log_level_string[0];
+       if(val >= '0' && val < '7') {
+-        sunshine.min_log_level = val - '0';
++        config::sunshine.min_log_level = val - '0';
+       }
+     }
+   }
+@@ -999,7 +1002,7 @@ void apply_config(std::unordered_map<std::string, std::string> &&vars) {
+     vars.erase(it);
+   }
+ 
+-  if(sunshine.min_log_level <= 3) {
++  if(config::sunshine.min_log_level <= 3) {
+     for(auto &[var, _] : vars) {
+       std::cout << "Warning: Unrecognized configurable option ["sv << var << ']' << std::endl;
+     }
+@@ -1018,9 +1021,9 @@ int parse(int argc, char *argv[]) {
+     }
+     else if(*line == '-') {
+       if(*(line + 1) == '-') {
+-        sunshine.cmd.name = line + 2;
+-        sunshine.cmd.argc = argc - x - 1;
+-        sunshine.cmd.argv = argv + x + 1;
++        config::sunshine.cmd.name = line + 2;
++        config::sunshine.cmd.argc = argc - x - 1;
++        config::sunshine.cmd.argv = argv + x + 1;
+ 
+         break;
+       }
+@@ -1034,7 +1037,7 @@ int parse(int argc, char *argv[]) {
+ 
+       auto pos = std::find(line, line_end, '=');
+       if(pos == line_end) {
+-        sunshine.config_file = line;
++        config::sunshine.config_file = line;
+       }
+       else {
+         TUPLE_EL(var, 1, parse_option(line, line_end));
+@@ -1061,11 +1064,11 @@ int parse(int argc, char *argv[]) {
+   }
+ 
+   // create config file if it does not exist
+-  if(!fs::exists(sunshine.config_file)) {
+-    std::ofstream { sunshine.config_file }; // create empty config file
++  if(!fs::exists(config::sunshine.config_file)) {
++    std::ofstream { config::sunshine.config_file }; // create empty config file
+   }
+ 
+-  auto vars = parse_config(read_file(sunshine.config_file.c_str()));
++  auto vars = parse_config(read_file(config::sunshine.config_file.c_str()));
+ 
+   for(auto &[name, value] : cmd_vars) {
+     vars.insert_or_assign(std::move(name), std::move(value));
+diff --git a/src/config.h b/src/config.h
+index 77bf950..a05d501 100644
+--- a/src/config.h
++++ b/src/config.h
+@@ -131,6 +131,7 @@ struct sunshine_t {
+   } cmd;
+ 
+   std::uint16_t port;
++  std::string address_family;
+   std::string log_file;
+ };
+ 
+diff --git a/src/network.cpp b/src/network.cpp
+index 9025489..bbc920b 100644
+--- a/src/network.cpp
++++ b/src/network.cpp
+@@ -10,7 +10,7 @@ namespace net {
+ std::pair<std::uint32_t, std::uint32_t> ip_block(const std::string_view &ip);
+ 
+ std::vector<std::pair<std::uint32_t, std::uint32_t>> pc_ips {
+-  ip_block("127.0.0.1/32"sv)
++  ip_block("127.0.0.1/8"sv)
+ };
+ std::vector<std::tuple<std::uint32_t, std::uint32_t>> lan_ips {
+   ip_block("192.168.0.0/16"sv),
+@@ -92,11 +92,74 @@ std::string_view to_enum_string(net_e net) {
+   return "wan"sv;
+ }
+ 
+-host_t host_create(ENetAddress &addr, std::size_t peers, std::uint16_t port) {
+-  enet_address_set_host(&addr, "0.0.0.0");
++af_e af_from_enum_string(const std::string_view &view) {
++  if(view == "ipv4") {
++    return IPV4;
++  }
++  if(view == "both") {
++    return BOTH;
++  }
++
++  // avoid warning
++  return BOTH;
++}
++
++std::string_view af_to_enum_string(af_e af) {
++  switch(af) {
++  case IPV4:
++    return "ipv4"sv;
++  case BOTH:
++    return "both"sv;
++  }
++
++  // avoid warning
++  return "both"sv;
++}
++
++std::string_view af_to_any_address_string(af_e af) {
++  switch(af) {
++  case IPV4:
++    return "0.0.0.0"sv;
++  case BOTH:
++    return "::"sv;
++  }
++
++  // avoid warning
++  return "::"sv;
++}
++
++boost::asio::ip::address addr_to_normalized_addr(boost::asio::ip::address address) {
++  // Convert IPv6-mapped IPv4 addresses into regular IPv4 addresses
++  if(address.is_v6()) {
++    auto v6 = address.to_v6();
++    if(v6.is_v4_mapped()) {
++      return boost::asio::ip::make_address_v4(boost::asio::ip::v4_mapped, v6);
++    }
++  }
++
++  return address;
++}
++
++std::string addr_to_normalized_string(boost::asio::ip::address address) {
++  return addr_to_normalized_addr(address).to_string();
++}
++
++std::string addr_to_url_escaped_string(boost::asio::ip::address address) {
++  address = addr_to_normalized_addr(address);
++  if(address.is_v6()) {
++    return "["s + address.to_string() + "]";
++  }
++  else {
++    return address.to_string();
++  }
++}
++
++host_t host_create(af_e af, ENetAddress &addr, std::size_t peers, std::uint16_t port) {
++  auto any_addr = net::af_to_any_address_string(af);
++  enet_address_set_host(&addr, any_addr.data());
+   enet_address_set_port(&addr, port);
+ 
+-  return host_t { enet_host_create(AF_INET, &addr, peers, 1, 0, 0) };
++  return host_t { enet_host_create(af == IPV4 ? AF_INET : AF_INET6, &addr, peers, 1, 0, 0) };
+ }
+ 
+ void free_host(ENetHost *host) {
+diff --git a/src/network.h b/src/network.h
+index bd37184..d42fcc6 100644
+--- a/src/network.h
++++ b/src/network.h
+@@ -5,6 +5,8 @@
+ 
+ #include <tuple>
+ 
++#include <boost/asio.hpp>
++
+ #include <enet/enet.h>
+ 
+ #include "utility.h"
+@@ -22,12 +24,26 @@ enum net_e : int {
+   WAN
+ };
+ 
++enum af_e : int {
++  IPV4,
++  BOTH
++};
++
++
+ net_e from_enum_string(const std::string_view &view);
+ std::string_view to_enum_string(net_e net);
+ 
+ net_e from_address(const std::string_view &view);
+ 
+-host_t host_create(ENetAddress &addr, std::size_t peers, std::uint16_t port);
++af_e af_from_enum_string(const std::string_view &view);
++std::string_view af_to_any_address_string(af_e af);
++std::string_view af_to_enum_string(af_e af);
++
++host_t host_create(af_e af, ENetAddress &addr, std::size_t peers, std::uint16_t port);
++
++std::string addr_to_normalized_string(boost::asio::ip::address address);
++std::string addr_to_url_escaped_string(boost::asio::ip::address address);
++
+ } // namespace net
+ 
+ #endif // SUNSHINE_NETWORK_H
+diff --git a/src/nvhttp.cpp b/src/nvhttp.cpp
+index e83988d..0837994 100644
+--- a/src/nvhttp.cpp
++++ b/src/nvhttp.cpp
+@@ -596,9 +596,9 @@ void serverinfo(std::shared_ptr<typename SimpleWeb::ServerBase<T>::Response> res
+   tree.put("root.uniqueid", http::unique_id);
+   tree.put("root.HttpsPort", map_port(PORT_HTTPS));
+   tree.put("root.ExternalPort", map_port(PORT_HTTP));
+-  tree.put("root.mac", platf::get_mac_address(local_endpoint.address().to_string()));
++  tree.put("root.mac", platf::get_mac_address(net::addr_to_normalized_string(local_endpoint.address())));
+   tree.put("root.MaxLumaPixelsHEVC", config::video.hevc_mode > 1 ? "1869449984" : "0");
+-  tree.put("root.LocalIP", local_endpoint.address().to_string());
++  tree.put("root.LocalIP", net::addr_to_normalized_string(local_endpoint.address()));
+ 
+   if(config::video.hevc_mode == 3) {
+     tree.put("root.ServerCodecModeSupport", "3843");
+@@ -751,7 +751,7 @@ void launch(bool &host_audio, resp_https_t response, req_https_t request) {
+   stream::launch_session_raise(make_launch_session(host_audio, args));
+ 
+   tree.put("root.<xmlattr>.status_code", 200);
+-  tree.put("root.sessionUrl0", "rtsp://"s + request->local_endpoint().address().to_string() + ':' + std::to_string(map_port(stream::RTSP_SETUP_PORT)));
++  tree.put("root.sessionUrl0", "rtsp://"s + net::addr_to_url_escaped_string(request->local_endpoint().address()) + ':' + std::to_string(map_port(stream::RTSP_SETUP_PORT)));
+   tree.put("root.gamesession", 1);
+ }
+ 
+@@ -798,7 +798,7 @@ void resume(bool &host_audio, resp_https_t response, req_https_t request) {
+   stream::launch_session_raise(make_launch_session(host_audio, args));
+ 
+   tree.put("root.<xmlattr>.status_code", 200);
+-  tree.put("root.sessionUrl0", "rtsp://"s + request->local_endpoint().address().to_string() + ':' + std::to_string(map_port(stream::RTSP_SETUP_PORT)));
++  tree.put("root.sessionUrl0", "rtsp://"s + net::addr_to_url_escaped_string(request->local_endpoint().address()) + ':' + std::to_string(map_port(stream::RTSP_SETUP_PORT)));
+   tree.put("root.resume", 1);
+ }
+ 
+@@ -933,6 +933,8 @@ void start() {
+     tree.put("root.<xmlattr>.status_message"s, "The client is not authorized. Certificate verification failed."s);
+   };
+ 
++  auto address_family = net::af_from_enum_string(config::sunshine.address_family);
++
+   https_server.default_resource["GET"]            = not_found<SimpleWeb::HTTPS>;
+   https_server.resource["^/serverinfo$"]["GET"]   = serverinfo<SimpleWeb::HTTPS>;
+   https_server.resource["^/pair$"]["GET"]         = [&add_cert](auto resp, auto req) { pair<SimpleWeb::HTTPS>(add_cert, resp, req); };
+@@ -944,7 +946,7 @@ void start() {
+   https_server.resource["^/cancel$"]["GET"]       = cancel;
+ 
+   https_server.config.reuse_address = true;
+-  https_server.config.address       = "0.0.0.0"s;
++  https_server.config.address       = net::af_to_any_address_string(address_family);
+   https_server.config.port          = port_https;
+ 
+   http_server.default_resource["GET"]            = not_found<SimpleWeb::HTTP>;
+@@ -953,7 +955,7 @@ void start() {
+   http_server.resource["^/pin/([0-9]+)$"]["GET"] = pin<SimpleWeb::HTTP>;
+ 
+   http_server.config.reuse_address = true;
+-  http_server.config.address       = "0.0.0.0"s;
++  http_server.config.address       = net::af_to_any_address_string(address_family);
+   http_server.config.port          = port_http;
+ 
+   auto accept_and_run = [&](auto *http_server) {
+diff --git a/src/rtsp.cpp b/src/rtsp.cpp
+index 791d688..d5f131d 100644
+--- a/src/rtsp.cpp
++++ b/src/rtsp.cpp
+@@ -212,7 +212,7 @@ public:
+     clear();
+   }
+ 
+-  int bind(std::uint16_t port, boost::system::error_code &ec) {
++ int bind(net::af_e af, std::uint16_t port, boost::system::error_code &ec) {
+     {
+       auto lg = _session_slots.lock();
+ 
+@@ -220,14 +220,14 @@ public:
+       _slot_count = config::stream.channels;
+     }
+ 
+-    acceptor.open(tcp::v4(), ec);
++    acceptor.open(af == net::IPV4 ? tcp::v4() : tcp::v6(), ec);
+     if(ec) {
+       return -1;
+     }
+ 
+     acceptor.set_option(boost::asio::socket_base::reuse_address { true });
+ 
+-    acceptor.bind(tcp::endpoint(tcp::v4(), port), ec);
++    acceptor.bind(tcp::endpoint(af == net::IPV4 ? tcp::v4() : tcp::v6(), port), ec);
+     if(ec) {
+       return -1;
+     }
+@@ -715,7 +715,7 @@ void rtpThread() {
+   server.map("PLAY"sv, &cmd_play);
+ 
+   boost::system::error_code ec;
+-  if(server.bind(map_port(RTSP_SETUP_PORT), ec)) {
++  if(server.bind(net::af_from_enum_string(config::sunshine.address_family), map_port(RTSP_SETUP_PORT), ec)) {
+     BOOST_LOG(fatal) << "Couldn't bind RTSP server to port ["sv << map_port(RTSP_SETUP_PORT) << "], " << ec.message();
+     shutdown_event->raise(true);
+ 
+diff --git a/src/stream.cpp b/src/stream.cpp
+index c78fbbd..d763394 100644
+--- a/src/stream.cpp
++++ b/src/stream.cpp
+@@ -203,8 +203,8 @@ static inline void while_starting_do_nothing(std::atomic<session::state_e> &stat
+ 
+ class control_server_t {
+ public:
+-  int bind(std::uint16_t port) {
+-    _host = net::host_create(_addr, config::stream.channels, port);
++  int bind(net::af_e address_family, std::uint16_t port) {
++    _host = net::host_create(address_family, _addr, config::stream.channels, port);
+ 
+     return !(bool)_host;
+   }
+@@ -1225,39 +1225,41 @@ void audioBroadcastThread(udp::socket &sock) {
+ }
+ 
+ int start_broadcast(broadcast_ctx_t &ctx) {
+-  auto control_port = map_port(CONTROL_PORT);
+-  auto video_port   = map_port(VIDEO_STREAM_PORT);
+-  auto audio_port   = map_port(AUDIO_STREAM_PORT);
++  auto address_family = net::af_from_enum_string(config::sunshine.address_family);
++  auto protocol       = address_family == net::IPV4 ? udp::v4() : udp::v6();
++  auto control_port   = map_port(CONTROL_PORT);
++  auto video_port     = map_port(VIDEO_STREAM_PORT);
++  auto audio_port     = map_port(AUDIO_STREAM_PORT);
+ 
+-  if(ctx.control_server.bind(control_port)) {
++  if(ctx.control_server.bind(address_family, control_port)) {
+     BOOST_LOG(error) << "Couldn't bind Control server to port ["sv << control_port << "], likely another process already bound to the port"sv;
+ 
+     return -1;
+   }
+ 
+   boost::system::error_code ec;
+-  ctx.video_sock.open(udp::v4(), ec);
++  ctx.video_sock.open(protocol, ec);
+   if(ec) {
+     BOOST_LOG(fatal) << "Couldn't open socket for Video server: "sv << ec.message();
+ 
+     return -1;
+   }
+ 
+-  ctx.video_sock.bind(udp::endpoint(udp::v4(), video_port), ec);
++  ctx.video_sock.bind(udp::endpoint(protocol, video_port), ec);
+   if(ec) {
+     BOOST_LOG(fatal) << "Couldn't bind Video server to port ["sv << video_port << "]: "sv << ec.message();
+ 
+     return -1;
+   }
+ 
+-  ctx.audio_sock.open(udp::v4(), ec);
++  ctx.audio_sock.open(protocol, ec);
+   if(ec) {
+     BOOST_LOG(fatal) << "Couldn't open socket for Audio server: "sv << ec.message();
+ 
+     return -1;
+   }
+ 
+-  ctx.audio_sock.bind(udp::endpoint(udp::v4(), audio_port), ec);
++  ctx.audio_sock.bind(udp::endpoint(protocol, audio_port), ec);
+   if(ec) {
+     BOOST_LOG(fatal) << "Couldn't bind Audio server to port ["sv << audio_port << "]: "sv << ec.message();
+ 
+diff --git a/src_assets/common/assets/web/config.html b/src_assets/common/assets/web/config.html
+index 9fbc085..4dbe376 100644
+--- a/src_assets/common/assets/web/config.html
++++ b/src_assets/common/assets/web/config.html
+@@ -468,182 +468,171 @@
+       </div>
+     </div>
+     <div v-if="currentTab === 'advanced'" class="config-page">
+-      <!--Port family-->
+-      <div class="mb-3">
+-        <label for="port" class="form-label">Port</label>
+-        <input
+-          type="number"
+-          min="0"
+-          max="65529"
+-          class="form-control"
+-          id="port"
+-          placeholder="47989"
+-          v-model="config.port"
+-        />
+-        <div class="form-text">Set the family of ports used by Sunshine</div>
+-      </div>
+-      <!-- Quantization Parameter -->
+-      <div class="mb-3">
+-        <label for="qp" class="form-label">Quantization Parameter</label>
+-        <input
+-          type="number"
+-          class="form-control"
+-          id="qp"
+-          placeholder="28"
+-          v-model="config.qp"
+-        />
+-        <div class="form-text">
+-          Quantization Parameter<br />
+-          Some devices may not support Constant Bit Rate.<br />
+-          For those devices, QP is used instead.<br />
+-          Higher value means more compression, but less quality<br />
++        <!--Address family-->
++        <div class="mb-3">
++            <label for="address_family" class="form-label">Address Family</label>
++            <select id="address_family"
++                    class="form-select"
++                    v-model="config.address_family">
++                <option value="ipv4">IPv4 only</option>
++                <option value="both">IPv4+IPv6</option>
++            </select>
++            <div class="form-text">Set the address family used by Sunshine</div>
+         </div>
+-      </div>
+-      <!-- Min Threads -->
+-      <div class="mb-3">
+-        <label for="min_threads" class="form-label"
+-          >Minimum Software Encoding Thread Count</label
+-        >
+-        <input
+-          type="number"
+-          min="1"
+-          class="form-control"
+-          id="min_threads"
+-          placeholder="1"
+-          v-model="config.min_threads"
+-        />
+-        <div class="form-text">
+-          Increasing the value slightly reduces encoding efficiency, but the tradeoff is usually<br />
+-          worth it to gain the use of more CPU cores for encoding. The ideal value is the lowest<br />
+-          value that can reliably encode at your desired streaming settings on your hardware.
++        <!--Port family-->
++        <div class="mb-3">
++            <label for="port" class="form-label">Port</label>
++            <input type="number"
++                   min="0"
++                   max="65529"
++                   class="form-control"
++                   id="port"
++                   placeholder="47989"
++                   v-model="config.port" />
++            <div class="form-text">Set the family of ports used by Sunshine</div>
+         </div>
+-      </div>
+-      <!--HEVC Support -->
+-      <div class="mb-3">
+-        <label for="hevc_mode" class="form-label">HEVC Support</label>
+-        <select id="hevc_mode" class="form-select" v-model="config.hevc_mode">
+-          <option value="0">
+-            Sunshine will specify support for HEVC based on encoder
+-          </option>
+-          <option value="1">
+-            Sunshine will not advertise support for HEVC
+-          </option>
+-          <option value="2">
+-            Sunshine will advertise support for HEVC Main profile
+-          </option>
+-          <option value="3">
+-            Sunshine will advertise support for HEVC Main and Main10 (HDR) profiles
+-          </option>
+-        </select>
+-        <div class="form-text">
+-          Allows the client to request HEVC Main or HEVC Main10 video streams.<br />
+-          HEVC is more CPU-intensive to encode, so enabling this may reduce performance when using software encoding.
++        <!-- Quantization Parameter -->
++        <div class="mb-3">
++            <label for="qp" class="form-label">Quantization Parameter</label>
++            <input type="number"
++                   class="form-control"
++                   id="qp"
++                   placeholder="28"
++                   v-model="config.qp" />
++            <div class="form-text">
++                Quantization Parameter<br />
++                Some devices may not support Constant Bit Rate.<br />
++                For those devices, QP is used instead.<br />
++                Higher value means more compression, but less quality<br />
++            </div>
+         </div>
+-      </div>
+-      <!--Encoder -->
+-      <div class="mb-3">
+-        <label for="encoder" class="form-label">Force a Specific Encoder</label>
+-        <select id="encoder" class="form-select" v-model="config.encoder">
+-          <option value>Autodetect</option>
+-          <option value="nvenc" v-if="platform === 'windows' || platform === 'linux'">NVIDIA NVENC</option>
+-          <option value="quicksync" v-if="platform === 'windows'">Intel QuickSync</option>
+-          <option value="amdvce" v-if="platform === 'windows'">AMD AMF/VCE</option>
+-          <option value="vaapi" v-if="platform === 'linux'">VA-API</option>
+-          <option value="videotoolbox" v-if="platform === 'macos'">VideoToolbox</option>
+-          <option value="software">Software</option>
+-        </select>
+-        <div class="form-text">
+-          Force a specific encoder, otherwise Sunshine will use the first encoder that is available
++        <!-- Min Threads -->
++        <div class="mb-3">
++            <label for="min_threads" class="form-label">Minimum Software Encoding Thread Count</label>
++            <input type="number"
++                   min="1"
++                   class="form-control"
++                   id="min_threads"
++                   placeholder="1"
++                   v-model="config.min_threads" />
++            <div class="form-text">
++                Increasing the value slightly reduces encoding efficiency, but the tradeoff is usually<br />
++                worth it to gain the use of more CPU cores for encoding. The ideal value is the lowest<br />
++                value that can reliably encode at your desired streaming settings on your hardware.
++            </div>
+         </div>
+-      </div>
+-      <!--FEC Percentage-->
+-      <div class="mb-3">
+-        <label for="fec_percentage" class="form-label">FEC Percentage</label>
+-        <input
+-          type="text"
+-          class="form-control"
+-          id="fec_percentage"
+-          placeholder="20"
+-          v-model="config.fec_percentage"
+-        />
+-        <div class="form-text">
+-          Percentage of error correcting packets per data packet in each video frame.<br />
+-          Higher values can correct for more network packet loss, but at the cost of increasing bandwidth usage.<br />
+-          The default value of 20 is what GeForce Experience uses.
++        <!--HEVC Support -->
++        <div class="mb-3">
++            <label for="hevc_mode" class="form-label">HEVC Support</label>
++            <select id="hevc_mode" class="form-select" v-model="config.hevc_mode">
++                <option value="0">
++                    Sunshine will specify support for HEVC based on encoder
++                </option>
++                <option value="1">
++                    Sunshine will not advertise support for HEVC
++                </option>
++                <option value="2">
++                    Sunshine will advertise support for HEVC Main profile
++                </option>
++                <option value="3">
++                    Sunshine will advertise support for HEVC Main and Main10 (HDR) profiles
++                </option>
++            </select>
++            <div class="form-text">
++                Allows the client to request HEVC Main or HEVC Main10 video streams.<br />
++                HEVC is more CPU-intensive to encode, so enabling this may reduce performance when using software encoding.
++            </div>
+         </div>
+-      </div>
+-      <!--Channels-->
+-      <div class="mb-3">
+-        <label for="channels" class="form-label">Channels</label>
+-        <input
+-          type="text"
+-          class="form-control"
+-          id="channels"
+-          placeholder="1"
+-          v-model="config.channels"
+-        />
+-        <div class="form-text">
+-          When multicasting, it could be useful to have different configurations for each connected Client. For example:
+-          <ul>
+-            <li>
+-              Clients connected through WAN and LAN have different bitrate constraints.
+-            </li>
+-            <li>
+-              Decoders may require different settings for color
+-            </li>
+-          </ul>
+-          Unlike simply broadcasting to multiple Client, this will generate distinct video streams.<br />
+-          Note, CPU usage increases for each distinct video stream generated
++        <!--Encoder -->
++        <div class="mb-3">
++            <label for="encoder" class="form-label">Force a Specific Encoder</label>
++            <select id="encoder" class="form-select" v-model="config.encoder">
++                <option value>Autodetect</option>
++                <option value="nvenc" v-if="platform === 'windows' || platform === 'linux'">NVIDIA NVENC</option>
++                <option value="quicksync" v-if="platform === 'windows'">Intel QuickSync</option>
++                <option value="amdvce" v-if="platform === 'windows'">AMD AMF/VCE</option>
++                <option value="vaapi" v-if="platform === 'linux'">VA-API</option>
++                <option value="videotoolbox" v-if="platform === 'macos'">VideoToolbox</option>
++                <option value="software">Software</option>
++            </select>
++            <div class="form-text">
++                Force a specific encoder, otherwise Sunshine will use the first encoder that is available
++            </div>
+         </div>
+-      </div>
+-      <!--Credentials File-->
+-      <div class="mb-3">
+-        <label for="credentials_file" class="form-label"
+-          >Web Manager Credentials File</label
+-        >
+-        <input
+-          type="text"
+-          class="form-control"
+-          id="credentials_file"
+-          placeholder="sunshine_state.json"
+-          v-model="config.credentials_file"
+-        />
+-        <div class="form-text">
+-          Store Username/Password separately from Sunshine's state file.
++        <!--FEC Percentage-->
++        <div class="mb-3">
++            <label for="fec_percentage" class="form-label">FEC Percentage</label>
++            <input type="text"
++                   class="form-control"
++                   id="fec_percentage"
++                   placeholder="20"
++                   v-model="config.fec_percentage" />
++            <div class="form-text">
++                Percentage of error correcting packets per data packet in each video frame.<br />
++                Higher values can correct for more network packet loss, but at the cost of increasing bandwidth usage.<br />
++                The default value of 20 is what GeForce Experience uses.
++            </div>
+         </div>
+-      </div>
+-      <!--Origin PIN Allowed-->
+-      <div class="mb-3">
+-        <label for="origin_pin_allowed" class="form-label"
+-          >Origin PIN Allowed</label
+-        >
+-        <select
+-          id="origin_pin_allowed"
+-          class="form-select"
+-          v-model="config.origin_pin_allowed"
+-        >
+-          <option value="pc">Only localhost may access /pin</option>
+-          <option value="lan">Only those in LAN may access /pin</option>
+-          <option value="wan">Anyone may access /pin</option>
+-        </select>
+-        <div class="form-text">
+-          The origin of the remote endpoint address that is not denied for HTTP method /pin
++        <!--Channels-->
++        <div class="mb-3">
++            <label for="channels" class="form-label">Channels</label>
++            <input type="text"
++                   class="form-control"
++                   id="channels"
++                   placeholder="1"
++                   v-model="config.channels" />
++            <div class="form-text">
++                When multicasting, it could be useful to have different configurations for each connected Client. For example:
++                <ul>
++                    <li>
++                        Clients connected through WAN and LAN have different bitrate constraints.
++                    </li>
++                    <li>
++                        Decoders may require different settings for color
++                    </li>
++                </ul>
++                Unlike simply broadcasting to multiple Client, this will generate distinct video streams.<br />
++                Note, CPU usage increases for each distinct video stream generated
++            </div>
+         </div>
+-      </div>
+-      <!--External IP-->
+-      <div class="mb-3">
+-        <label for="external_ip" class="form-label">External IP</label>
+-        <input
+-          type="text"
+-          class="form-control"
+-          id="external_ip"
+-          placeholder="123.456.789.12"
+-          v-model="config.external_ip"
+-        />
+-        <div class="form-text">
+-          If no external IP address is given, Sunshine will automatically detect external IP
++        <!--Credentials File-->
++        <div class="mb-3">
++            <label for="credentials_file" class="form-label">Web Manager Credentials File</label>
++            <input type="text"
++                   class="form-control"
++                   id="credentials_file"
++                   placeholder="sunshine_state.json"
++                   v-model="config.credentials_file" />
++            <div class="form-text">
++                Store Username/Password separately from Sunshine's state file.
++            </div>
++        </div>
++        <!--Origin PIN Allowed-->
++        <div class="mb-3">
++            <label for="origin_pin_allowed" class="form-label">Origin PIN Allowed</label>
++            <select id="origin_pin_allowed"
++                    class="form-select"
++                    v-model="config.origin_pin_allowed">
++                <option value="pc">Only localhost may access /pin</option>
++                <option value="lan">Only those in LAN may access /pin</option>
++                <option value="wan">Anyone may access /pin</option>
++            </select>
++            <div class="form-text">
++                The origin of the remote endpoint address that is not denied for HTTP method /pin
++            </div>
++        </div>
++        <!--External IP-->
++        <div class="mb-3">
++            <label for="external_ip" class="form-label">External IP</label>
++            <input type="text"
++                   class="form-control"
++                   id="external_ip"
++                   placeholder="123.456.789.12"
++                   v-model="config.external_ip" />
++            <div class="form-text">
++                If no external IP address is given, Sunshine will automatically detect external IP
++            </div>
+         </div>
+-      </div>
+     </div>
+     <!--Software Settings-->
+     <div v-if="currentTab === 'sw'" class="config-page">
+@@ -951,7 +940,9 @@
+           this.config.origin_pin_allowed =
+             this.config.origin_pin_allowed || "pc";
+           this.config.origin_web_ui_allowed =
+-            this.config.origin_web_ui_allowed || "lan";
++                this.config.origin_web_ui_allowed || "lan";
++            this.config.address_family =
++                this.config.address_family || "ipv4";
+           this.config.hevc_mode = this.config.hevc_mode || 0;
+           this.config.encoder = this.config.encoder || "";
+           this.config.nv_preset = this.config.nv_preset || "p4";
