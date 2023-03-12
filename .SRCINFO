@@ -1,7 +1,8 @@
 pkgbase = pkgfile-git
 	pkgdesc = a pacman .files metadata explorer
-	pkgver = 21.52.g9c45690
+	pkgver = 21.r52.9c45690
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/falconindy/pkgfile
 	install = pkgfile.install
 	arch = x86_64
