@@ -6,7 +6,7 @@
 
 pkgname=watchman
 pkgver=2023.03.06.00
-pkgrel=1
+pkgrel=2
 pkgdesc="Watches files and records, or triggers actions, when they change"
 url="https://github.com/facebook/watchman"
 arch=(x86_64)
@@ -61,6 +61,8 @@ prepare() {
 
 build() {
   cd "$_archive"
+
+  export RUSTUP_TOOLCHAIN=stable
 
   cmake -S . -B build \
     -DCMAKE_BUILD_TYPE=None \
