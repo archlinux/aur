@@ -1,7 +1,7 @@
 # Maintainer: Samuel Sloniker <sam@kj7rrv.com>
 
 pkgname=hamclock
-pkgver=2.86
+pkgver=2.89
 pkgrel=1
 epoch=
 pkgdesc="Clock and world map with extra features for amateur radio (800x480 version)"
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://github.com/kj7rrv/hamclock/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-sha256sums=('c1613659ea35a3ecb1af23432e5fb046c6c0e0f8ded278c8cb4ffcbd9e9944e9')
+sha256sums=('d9c43d9824c051632962b3584e5e67508cc04274b29027d965d373072131d596')
 validpgpkeys=()
 
 prepare() {
