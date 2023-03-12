@@ -14,7 +14,6 @@ makedepends=(
   'mingw-w64-meson'
 )
 depends=(
-  'mingw-w64-fribidi>=0.19.7'
   'mingw-w64-glib2>=2.66.0'
   'mingw-w64-gtk4>=4.5.0'
 )
