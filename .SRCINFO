@@ -5,6 +5,7 @@ pkgbase = python-pympler
 	url = https://pypi.org/project/Pympler/
 	arch = any
 	license = Apache
+	makedepends = python-setuptools
 	depends = python
 	source = https://files.pythonhosted.org/packages/12/b7/9d17fbb2fde0b035dbd27e5d82dfbcd3fa990cf5a469cef8e89712d16113/Pympler-1.0.1.tar.gz
 	sha256sums = 993f1a3599ca3f4fcd7160c7545ad06310c9e12f70174ae7ae8d4e25f6c5d3fa

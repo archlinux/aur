@@ -10,6 +10,7 @@ url="https://pypi.org/project/${_realname_}/"
 arch=("any")
 license=("Apache")
 depends=("python")
+makedepends=("python-setuptools")
 source=("https://files.pythonhosted.org/packages/12/b7/9d17fbb2fde0b035dbd27e5d82dfbcd3fa990cf5a469cef8e89712d16113/${_realname_}-${pkgver}.tar.gz")
 
 build() {
