@@ -1,6 +1,6 @@
 pkgbase = citebib
 	pkgdesc = Generate a nice Bibtex or Latex bibliography according to the document content
-	pkgver = 0.4.4
+	pkgver = 0.4.5
 	pkgrel = 1
 	url = https://github.com/salsergey/CiteBib
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = citebib
 	makedepends = python-setuptools
 	depends = python
 	depends = python-bibtexparser
-	source = https://github.com/salsergey/CiteBib/archive/refs/tags/v0.4.4.tar.gz
-	sha256sums = 99e4f2afde109c2c220d4b97d8ac516879a900d4fbb9b68454934dcbe0fae61f
+	source = https://github.com/salsergey/CiteBib/releases/download/v0.4.5/CiteBib-0.4.5.tar.xz
+	sha256sums = d831b874da3de4a6cbf02a68bd04b0b42f5e120f2740c8f9b0f8d8c397d0fc36
 
 pkgname = citebib
