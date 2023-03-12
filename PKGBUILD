@@ -4,7 +4,7 @@
 pkgname='python-jetforce'
 _pkgname=${pkgname##python-}
 pkgver=0.9.1
-pkgrel=4
+pkgrel=5
 pkgdesc='An experimental Gemini server written in Python'
 arch=('any')
 license=('custom:Floodgap')
@@ -14,23 +14,28 @@ source=(
 )
 depends=(
   'python-argparse'
+  'python-dataclasses'
   'python-twisted'
   'python-pyopenssl'
 )
-makedepends=('python-setuptools')
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-wheel'
+)
 provides=('jetforce')
 conflicts=('jetforce')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver" || exit 1
 
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver" || exit 1
 
-  python setup.py install --root="$pkgdir" --prefix=/usr --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm0644 LICENSE    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
