@@ -9,7 +9,7 @@ license=('combined licenses')
 groups=('xfce4-goodies')
 
 provides=("${pkgname}")
-conflicts=("${pkgname}")
+conflicts=("${pkgname}" "xts-windows95-theme")
 depends=('xfce4-theme-switcher' 'xfce4-whiskermenu-plugin' 'gtk-engines' 'chicago95-gtk-theme-git' 'chicago95-icon-theme-git' 'xcursor-chicago95-git')
 options=('!strip')
 
