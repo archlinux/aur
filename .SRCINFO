@@ -1,0 +1,15 @@
+pkgbase = drawio-desktop-appimage
+	pkgdesc = Diagram drawing application built on web technology
+	pkgver = 20.8.16
+	pkgrel = 1
+	url = https://www.diagrams.net/
+	arch = x86_64
+	license = Apache2
+	depends = zlib
+	depends = hicolor-icon-theme
+	conflicts = drawio-desktop
+	options = !strip
+	source = drawio-20.8.16.AppImage::https://github.com/jgraph/drawio-desktop/releases/download/v20.8.16/drawio-x86_64-20.8.16.AppImage
+	sha512sums = 2940baa2afd0168e169c31b6533c12d4bcd91f8e28be9b8803a032d237ee41a73c7b1ceb7025792dd3f85acedffe184431b80fe2671a657553c84be2b46a05e2
+
+pkgname = drawio-desktop-appimage
