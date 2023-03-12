@@ -2,8 +2,8 @@
 
 _pkgname=cyber
 pkgname=${_pkgname}-dkms
-pkgver=42.1729.1812
-pkgrel=4
+pkgver=42.1729.1906
+pkgrel=1
 pkgdesc="CYBER for your system (DKMS)"
 arch=('i686' 'x86_64')
 url="https://github.com/fmorgner/dev-cyber"
@@ -13,7 +13,7 @@ source=("https://github.com/fmorgner/dev-cyber/archive/v${pkgver}.tar.gz"
         "dkms.conf"
         "uaccess.patch"
         "10-cyber.conf")
-sha256sums=('ffb268642b5823fc4f15a3d91c575c03f66c13d286d80dd09c2d94e9011b1e34'
+sha256sums=('57d5206311e32cafe2ecebdaedc2808cc63c6f87ea46d78255e39e22b3d30365'
             'd976032e9f79a5cc679872b48e1c38124411891b6ce01527bfe24ff8f3df3a16'
             '365d11440e7dfaf281ad6d844a0f93a2f7eaca68880bfa89da5c58aaba0164e5'
             '99100ac04db2147ef246377b1ea4fc0c17106d37286e5d61cc02201301a85bbb')
