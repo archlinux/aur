@@ -1,13 +1,13 @@
 # Maintainer: Alexey Rychkov <dev at nightfog.net>
 
 pkgname='simple-bcachefs-tools-git'
-pkgver=r858.bf7924f
+pkgver=r1036.46ba4fb
 pkgrel=1
 pkgdesc="BCacheFS filesystem utilities"
 arch=('x86_64')
 url="https://evilpiepirate.org/git/bcachefs-tools"
 license=('GPL2')
-depends=('util-linux-libs' 'libaio' 'keyutils' 'libsodium' 'liburcu' 'zstd' 'libscrypt')
+depends=('util-linux-libs' 'libaio' 'keyutils' 'libsodium' 'liburcu' 'zstd' 'libscrypt' 'rust')
 makedepends=('git' 'python-docutils')
 checkdepends=('python-pytest')
 provides=('bcachefs-tools')
@@ -15,7 +15,7 @@ conflicts=('bcachefs-tools')
 source=("${pkgname}::git+https://evilpiepirate.org/git/bcachefs-tools.git"
         "disable-initramfs-output.patch")
 sha256sums=('SKIP'
-            '13ca1e1a3c03f321fdf04d2d93367a443924bc19ea6b72f256c8a0ebaf64fe48')
+            '78c7c0d1cb5e7649a411738db270bad8a3b20820ef0cb4a8ba33596d7aeb62a0')
 
 prepare() {
   cd "$pkgname"
@@ -29,6 +29,7 @@ pkgver() {
 
 build() {
   cd "$pkgname"
+  make clean
   make PYTEST_CMD=pytest
 }
 
