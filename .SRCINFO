@@ -1,6 +1,6 @@
 pkgbase = heimdal-git
 	pkgdesc = Heimdal, an implementation of Kerberos and PKIX
-	pkgver = 7.99.1.r30688.gbcbe81696
+	pkgver = 7.99.r30417.gb19633f9b
 	pkgrel = 1
 	url = https://www.heimdal.software/
 	arch = x86_64
@@ -11,8 +11,9 @@ pkgbase = heimdal-git
 	depends = readline
 	depends = sqlite
 	optdepends = libldap
-	provides = heimdal=7.99.1.r30688.gbcbe81696
-	source = git+https://github.com/heimdal/heimdal#commit=bcbe816962f0f19112f5398cc0a770a7cfacf325
+	provides = heimdal=7.99.r30417.gb19633f9b
+	source = git+https://github.com/heimdal/heimdal#commit=b19633f9b94fbfff3777a432d02e0bf5405f372b
+	validpgpkeys = E65941B71CF3C459A34FA89C45E7572A28CD8CC8
 	sha256sums = SKIP
 
 pkgname = heimdal-git
