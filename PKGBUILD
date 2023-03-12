@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname=youtrack
-pkgver=2022.3.65372
+pkgver=2022.3.65373
 pkgrel=1
 pkgdesc='Issue tracker designed for development teams'
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ source=("youtrack-${pkgver}.jar::https://download.jetbrains.com/charisma/${pkgna
         youtrack.tmpfiles
         LICENSE)
 noextract=('youtrack.jar')
-b2sums=('bf34b8abcc901ac0435112904b8c460d1f415fca661f67bd259dfc8527f9486602a0acf7219599e0ed12b143d1269ac155df0201672ca9c2287a4277ea9be9e4'
+b2sums=('a77ec1c909bbfb838a6fd9c881f3ac1b2846e675dee606483414a495a80c97febb2cebf41f72cd9f008e9659186b4e203784a789d7a51d93761733e091831982'
         'bea90c36e6658a671ec99b99cf5c0ec6fa7abb5f744cc5738dd53833308f2b005353fb4621f9f8586384be54e42a7557fa94b6f10a3d8ab57fe81cd2e4006696'
         'a9267c85339b55dd68cdc110b8134495be9db3b99d38ac4b3e08d9862abb6817e58ced9071a04b5d65d72e7c6c5f9a92fe6d390eb647ae69ce265749b2a25ca6'
         '7f9ef6cd0e6feb97b2e700096e0bfad0b8d3abd4080bf9d5c8cf64a86e28ec4b8ff92787ebd8afa1dead5e56e771b1084e03f8cfd4045ed4d8ef4e5a2b8bbc5e'
