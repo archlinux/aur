@@ -2,8 +2,8 @@
 pkgname=ripcalc
 _binary=ripcalc
 pkgver=0.1.3
-pkgrel=0
-pkgdesc="ripcalc, an IP network address toool"
+pkgrel=1
+pkgdesc="ripcalc, an IP network address tool"
 url="https://gitlab.com/edneville/ripcalc"
 arch=('any')
 license=(GPL3)
