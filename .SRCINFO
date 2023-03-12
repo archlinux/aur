@@ -11,6 +11,7 @@ pkgbase = glew-osmesa-git
 	makedepends = git
 	makedepends = python
 	makedepends = perl
+	makedepends = wget
 	depends = libxmu
 	depends = libxi
 	depends = glu
