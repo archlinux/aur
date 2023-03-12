@@ -1,17 +1,14 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=far2l-git
-pkgver=r2796.e4088e64
+pkgver=r3246.f0e3340f
 pkgrel=1
 pkgdesc='Linux port of FAR v2'
 url='https://github.com/elfmz/far2l'
 arch=('i686' 'x86_64')
 license=('GPL2')
-source=('git+https://github.com/elfmz/far2l'
-        'far2l-desktop.patch')
-sha256sums=('SKIP'
-            'f279f4255d9015e087e036fb793de688b973b1d14afd30a55722cc6f591675ce'
-           )
+source=('git+https://github.com/elfmz/far2l')
+sha256sums=('SKIP')
 makedepends=('git' 'cmake')
 depends=('wxgtk3' 'openssl' 'spdlog' 'xerces-c' 'fmt' 'uchardet')
 optdepends=(
@@ -26,11 +23,6 @@ optdepends=(
 pkgver() {
   cd "$srcdir"/far2l
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$srcdir"/far2l
-  patch -p1 -i "$srcdir"/far2l-desktop.patch
 }
 
 package() {

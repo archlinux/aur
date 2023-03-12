@@ -1,6 +1,6 @@
 pkgbase = far2l-git
 	pkgdesc = Linux port of FAR v2
-	pkgver = r2796.e4088e64
+	pkgver = r3246.f0e3340f
 	pkgrel = 1
 	url = https://github.com/elfmz/far2l
 	arch = i686
@@ -21,8 +21,6 @@ pkgbase = far2l-git
 	optdepends = pcre: custom archives support in multiarc
 	optdepends = libarchive: more archive type support in multiarc
 	source = git+https://github.com/elfmz/far2l
-	source = far2l-desktop.patch
 	sha256sums = SKIP
-	sha256sums = f279f4255d9015e087e036fb793de688b973b1d14afd30a55722cc6f591675ce
 
 pkgname = far2l-git
