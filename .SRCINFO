@@ -16,7 +16,7 @@ pkgbase = syncthing-gtk-git
 	depends = python-gobject
 	depends = python-cairo
 	conflicts = syncthing-gtk
-	source = git+https://github.com/syncthing-gtk/syncthing-gtk#branch=meson
+	source = git+https://github.com/syncthing-gtk/syncthing-gtk
 	sha256sums = SKIP
 
 pkgname = syncthing-gtk-git

@@ -19,7 +19,7 @@ depends=(
     'syncthing>=0.14.50' 'gtk3' 'libnotify'
     'python3' 'python-bcrypt' 'python-dateutil' 'python-gobject' 'python-cairo'
 )
-source=( "git+$url#branch=meson" )
+source=( "git+$url" )
 sha256sums=( 'SKIP' )
 
 pkgver() {
