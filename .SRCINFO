@@ -1,18 +1,17 @@
 pkgbase = folder-color-nautilus
 	pkgdesc = Change your folder color in Nautilus
-	pkgver = 0.2.1
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://github.com/costales/folder-color
 	arch = any
 	license = GPL3
-	makedepends = dpkg
 	makedepends = git
 	makedepends = python-distutils-extra
 	depends = python-nautilus
 	conflicts = folder-color-bzr
 	conflicts = folder-color-common
 	replaces = folder-color-common
-	source = git+https://github.com/costales/folder-color.git#commit=ac74acd3ad283d11cac2b8c12484e93385158ccd
+	source = git+https://github.com/costales/folder-color.git#commit=f75be7281db5d77ee0231dccc440f69838628805
 	sha256sums = SKIP
 
 pkgname = folder-color-nautilus
