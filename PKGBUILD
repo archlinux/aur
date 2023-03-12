@@ -7,7 +7,7 @@ _major=6.2
 _minor=2
 _clr=1285
 pkgver=${_major}.${_minor}.${_clr}
-pkgrel=1
+pkgrel=2
 # use in case we need to update the Arch package without incrementing pkgrel
 epoch=0
 arch=('x86_64')
@@ -16,12 +16,12 @@ conflicts=("linux-clear-headers")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=38410
+_clear_version=38510
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 # hash of kernel config from Manifest.linux-dev, ie /usr/lib/kernel/config-5.3.1-843.native
 # there's no way to do this automatically in the PKGBUILD
 _config_hash=26cf3fd4119dd0974338bfde52adac65581aae798eeff1932d699f8b5753c900
-_config_hash_clear_version=38410
+_config_hash_clear_version=38510
 
 source=("Manifest.linux-dev.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
         "pack-linux-dev-from-0.${_clear_version}.tar::https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
@@ -53,6 +53,6 @@ package() {
     mkdir -p $pkgdir/usr/lib
     cp -Pr modules $pkgdir/usr/lib
 }
-b2sums=('c54361dc45b8f6b39c1ab20171976376d533b68bdc501a7b42f272110a2a9bee38e96cd1eabdf25dad4b56671230362636bfd8756c3cbf4ca53e1d7cbf1ac0b4'
-        'c45d6cb6221bbe2e506eaf52e7b9ce976d5843bb34fa6dc10e4e276a558813cfac0ecc245fdeee7c81d51d60ebbea0df7e023eee3052583ca4290e8d58c76558'
+b2sums=('8dc4cfae2e437756eed6e13210d9a241fe1d7e9c3a8006af5372e0b53d920053021bc794489a876794f9a00f845e5d51854c932fdd350b4179fb49506203ee5b'
+        '28fdc81c6cc71e1e5343791991ec32e7e61b87c0c686cf8ce278c4b525a3f86faf4d6601ac474e1f892490c3c5e548e3d51e9d8230281e23cc1548dfe6946e43'
         'f13c5049c07b00bcc66128419f57bc9d11e7c07347c48fbdeac55c0abff1d197be1d1ff5e60ae83107cf63faa29f0ba80ebed305aa54cecb13e7061f2a1cb5bb')
