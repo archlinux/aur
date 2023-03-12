@@ -1,6 +1,6 @@
 pkgbase = contour-git
 	pkgdesc = Modern C++ Terminal Emulator
-	pkgver = 0.3.10.r3391.f2a0c3d5
+	pkgver = 0.3.12.r3620.92f36466
 	pkgrel = 1
 	url = https://github.com/contour-terminal/contour
 	arch = x86_64

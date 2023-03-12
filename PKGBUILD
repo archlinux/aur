@@ -1,7 +1,7 @@
 # Maintainer: Vladislav Nepogodin <nepogodin.vlad@gmail.com>
 
 pkgname=contour-git
-pkgver=0.3.10.r3391.f2a0c3d5
+pkgver=0.3.12.r3620.92f36466
 pkgrel=1
 pkgdesc="Modern C++ Terminal Emulator"
 arch=(x86_64 aarch64)
@@ -47,7 +47,8 @@ check() {
 
   "${srcdir}"/build/src/contour/contour version
   "${srcdir}"/build/src/crispy/crispy_test
-  "${srcdir}"/build/src/vtbackend/terminal_test
+  "${srcdir}"/build/src/vtparser/vtparser_test
+  "${srcdir}"/build/src/vtbackend/vtbackend_test
 }
 
 package() {
