@@ -1,0 +1,18 @@
+pkgbase = pi400kb-git
+	pkgdesc = Raw HID keyboard forwarder to turn the Pi 400 into a USB keyboard
+	pkgver = 0.0.1.r4.g0a8cd14
+	pkgrel = 1
+	url = https://github.com/Gadgetoid/pi400kb
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = libconfig
+	makedepends = gcc
+	makedepends = make
+	makedepends = cmake
+	provides = pi400kb
+	conflicts = pi400kb
+	source = git+https://github.com/Gadgetoid/pi400kb
+	sha256sums = SKIP
+
+pkgname = pi400kb-git
