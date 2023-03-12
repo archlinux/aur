@@ -37,7 +37,5 @@ package() {
   cp "LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 
   mkdir -p "$pkgdir/usr/bin"
-  ls -lah build
   cp "build/$pkgname" "$pkgdir/usr/bin"
-  ls -lah "$pkgdir/usr/bin"
 }
