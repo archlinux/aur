@@ -1,9 +1,9 @@
 # Maintainer: Amanoel Dawod <amoka at amanoel dot com>
 
 pkgname=ttf-archivo-narrow
-pkgver=3.001
+pkgver=3.002
 pkgrel=1
-_commit='be3adf257a69c3bec73fb2d0819823de5dfb8658'
+_commit='9793ec77b6682a26bc7a6ed523ca65cc3cb90aec'
 pkgdesc="Grotesque sans serif typeface family from Omnibus-Type"
 arch=('any')
 url="https://github.com/Omnibus-Type/ArchivoNarrow"
@@ -17,15 +17,15 @@ source=("$url/raw/$_commit/fonts/ttf/ArchivoNarrow-Bold.ttf"
         "$url/raw/$_commit/fonts/ttf/ArchivoNarrow-SemiBold.ttf"
         "$url/raw/$_commit/fonts/ttf/ArchivoNarrow-SemiBoldItalic.ttf"
         "$url/raw/$_commit/OFL.txt")
-sha256sums=('cc3473ff135d77b582af97b0f9f576044fc3c021eee48414abac90f38a12b0e4'
-            'a6521daa8d953d13334f7c1a65d7931fe8cf523a18d63ff2e200c9727b2e5d77'
-            '8eba12933fa76f8e98f0cae8b82d2f0d413203876ca64b6f47b8840cf75b497d'
-            '8d51fdbeb05d0465931fa645845e3c18a7aa162e5537b2c8a462a749a0e9da6b'
-            '621fb8f58d705ba3bc534d4a463eb2203be5b3b2b7e6e432f21ca32f0eb0ad97'
-            'b1877ca4479765df2d0fa5de3bb86f83c86577862d1e25290cd5398dcbb22d54'
-            '64f06fa43714cf0697b503ed4f167ac24b60f2fcaeaa5ed9358846f97dbc3b03'
-            '3e70ce2ee8668b6e239895be84c87d038474b4809512913877e9b448601d10a7'
-            'a4087edf95fb2a6bd38073ad005ced611695dc9d7d8fd5d04a888ef4f9c748ea')
+sha256sums=('e1b016241fd2bf89796152d7875464ab0be7181160caa8a794b77cb94493fc1d'
+            '78448a55fce83cbb20bd171c34e8d9c0cd0bcbafd2f06cb262f6abfa4707a0b2'
+            '93f948c1856350b5a2cffa43d1a68e1f494dc3abe2668e94fe24817c4783ac83'
+            'b3475bbe5ce69c34c6d8f8b0ea854aecaf3aa34310ef03332d048db3afd02326'
+            'a114dee7974dab81632e773abc2ad9c9a612c98e8cc68f14df82eb8f8b1c2037'
+            '8b2f285c60e450933c7deb3ad5acba00e5b34fb1b36f07490ab23d3f5e6df9e0'
+            '9df253be88f7385c208c41339b03f02c860c04c0a9fba5fa2c9b959c612a9c77'
+            '2580b5a8ee04c55278f6ed457db0edfe48dc117e8de7007b44f8dcc9778dcc56'
+            'b2087ef3fb91248e346600d19021249152a9688efea72905aa1996bb16a4c8de')
 
 package() {
   install -Dt "$pkgdir"/usr/share/fonts/TTF -m644 *.ttf
