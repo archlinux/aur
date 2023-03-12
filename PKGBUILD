@@ -1,9 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sleek-appimage
 _pkgname=sleek
-pkgver=1.3.0
-pkgrel=2
-epoch=
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="todo.txt manager for Linux, Windows and MacOS, free and open-source (FOSS)"
 arch=("x86_64")
 url="https://github.com/ransome1/sleek"
@@ -11,11 +10,11 @@ license=('MIT')
 depends=(zlib hicolor-icon-theme)
 options=(!strip)
 optdepends=()
-provides=("ransome1")
+provides=("ransome")
 conflicts=('sleek')
 _install_path="/opt/appimages"
 source=("${_pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
-sha256sums=('2036165ee06c141b6a6e665a9601c403a2ad0b2ad1fb29334ce6eaa7e08f2e95')    
+sha256sums=('d3796449028e48f5fec5e4c3e4248799e4776a78a9766706d2deb9c8fa7256fb')
 prepare() {
     chmod a+x "${_pkgname}-${pkgver}.AppImage"
     "./${_pkgname}-${pkgver}.AppImage" --appimage-extract
