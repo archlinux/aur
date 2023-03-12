@@ -3,8 +3,8 @@
 
 pkgname=emacs-ng
 pkgver=30.0.50
-_fix_commit=97413cc
-pkgrel=7
+_fix_commit=d17245a
+pkgrel=8
 pkgdesc="A new approach to Emacs - Including TypeScript, Threading, Async I/O, and WebRender"
 arch=('x86_64')
 url="https://emacs-ng.github.io/emacs-ng"
@@ -18,7 +18,7 @@ depends=('jansson' 'ncurses' 'libgccjit' 'librsvg' 'libxcb' 'libxml2' 'gpm'
 makedepends=('cargo' 'rustup' 'git' 'python' 'texlive-core')
 source=("$pkgname-$pkgver_${_fix_commit}.tar.gz::https://github.com/emacs-ng/emacs-ng/archive/refs/tags/v0.0.${_fix_commit}.tar.gz")
 #source=(git+https://github.com/emacs-ng/emacs-ng)
-sha256sums=('ceee4fdf861afd9c56e7402ee33371c7af76f9bf5b2d7adb8b71dc4fd19fba87')
+sha256sums=('e1b8809e051bb46680bc3e6e25533d6b905f71cf39a09f0f827cd0520183d055')
  
 prepare() {
   cd ${pkgname}-0.0.${_fix_commit}
@@ -28,7 +28,7 @@ prepare() {
 build() {
   cd ${pkgname}-0.0.${_fix_commit}
   RUSTUP_TOOLCHAIN=$(cat rust-toolchain)
-
+  ./autogen.sh
   ./configure CFLAGS="-Wl,-rpath,shared -Wl,--disable-new-dtags" \
               --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib --localstatedir=/var \
               --with-json --with-modules --with-compress-install --with-threads \
