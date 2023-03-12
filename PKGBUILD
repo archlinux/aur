@@ -2,7 +2,7 @@
 
 _pkgname=onnxruntime
 pkgname=onnxruntime-git
-pkgver=orttraining_rc2.r5085.g432a9912a3
+pkgver=1.15.0.r8289.cce9e0eaad
 pkgrel=1
 pkgdesc="cross-platform inference and training machine-learning accelerator."
 arch=('x86_64')
@@ -26,7 +26,7 @@ prepare() {
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  echo $(cat ./VERSION_NUMBER).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
