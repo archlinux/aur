@@ -5,7 +5,7 @@
 
 pkgname=appleseed-git
 pkgver=2.1.0.beta.r283.g8c894f29d
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc="Physically-based global illumination rendering engine primarily designed for animation and visual effects (development vesion)."
 arch=(i686 x86_64)
@@ -71,6 +71,8 @@ CMAKE_FLAGS=( -DWITH_EMBREE=ON
               -DUSE_STATIC_OSL=OFF
               -DWARNINGS_AS_ERRORS=OFF
               -DWITH_BENCH=OFF
+              -DINSTALL_TESTS=OFF
+              -DINSTALL_API_EXAMPLES=OFF
               -DPYTHON3_INCLUDE_DIR="/usr/include/python${_pyver}"
               -Wno-dev
             )
