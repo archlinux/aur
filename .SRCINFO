@@ -1,7 +1,7 @@
 pkgbase = nsync
 	pkgdesc = A C library that exports various synchronization primitives, such as mutexes
 	pkgver = 1.25.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/google/nsync
 	arch = x86_64
 	license = Apache

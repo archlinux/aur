@@ -1,0 +1,5 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!0001-nsync-export.patch
