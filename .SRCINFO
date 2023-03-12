@@ -1,0 +1,15 @@
+pkgbase = rust-brotli-git
+	pkgdesc = brotli compressor, can append brotli files, rust.
+	pkgver = 3.3.4.r5.ge216a8a
+	pkgrel = 1
+	url = https://helix-editor.com
+	arch = aarch64
+	arch = x86_64
+	license = BSD
+	makedepends = cargo
+	makedepends = git
+	options = !lto
+	source = rust-brotli-git::git+https://github.com/dropbox/rust-brotli.git
+	sha256sums = SKIP
+
+pkgname = rust-brotli-git
