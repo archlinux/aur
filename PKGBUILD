@@ -1,5 +1,5 @@
 pkgname=python-assimulo
-pkgver=3.3
+pkgver=3.4
 pkgrel=1
 pkgdesc="A package for solving ordinary differential equations and differential algebraic equations"
 url="http://www.jmodelica.org/assimulo"
@@ -8,7 +8,7 @@ license=('LGPL')
 makedepends=('python-setuptools' 'cython' 'gcc-fortran')
 depends=('python-scipy' 'python-matplotlib' 'lapack' 'sundials')
 source=("https://github.com/modelon-community/Assimulo/archive/Assimulo-${pkgver}.tar.gz")
-sha256sums=('871741bf8314deb6860570011f1d095f7fa56bcad9bc60d4860f1e951b57f179')
+sha256sums=('585ae631947128bae3488993bc58ef6048ca70a2d0f88ed023e6d3f39288e26c')
 
 prepare() {
   cd "${srcdir}"/Assimulo-Assimulo-$pkgver
