@@ -3,7 +3,7 @@
 #shellcheck disable=SC2015
 
 pkgname=upbge-git
-pkgver=126159.652481335f6
+pkgver=127937.375859a6bb3
 pkgrel=1
 pkgdesc="Uchronia Project Blender Game Engine fork of Blender Game Engine"
 arch=("i686" "x86_64")
@@ -28,9 +28,9 @@ install=upbge.install
 source=(
   "upbge::git+https://github.com/UPBGE/upbge.git"
   "blender-addons.git::git+https://github.com/UPBGE/blender-addons.git"
-  "blender-addons-contrib.git::git://git.blender.org/blender-addons-contrib.git"
-  "blender-translations.git::git://git.blender.org/blender-translations.git"
-  "blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git"
+  "blender-addons-contrib.git::git+https://projects.blender.org/blender/blender-addons-contrib.git"
+  "blender-translations.git::git+https://projects.blender.org/blender/blender-translations.git"
+  "blender-dev-tools.git::git+https://projects.blender.org/blender/blender-dev-tools.git"
   upbge.desktop
   usd_python.patch
   SelectCudaComputeArch.patch
