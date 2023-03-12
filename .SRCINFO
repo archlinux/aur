@@ -8,7 +8,7 @@ pkgbase = simple-usb-automount-git
 	makedepends = git
 	depends = libnotify
 	depends = sudo
-	source = simple-usb-automount::git+https://github.com/antonilol/simple-usb-automount
+	source = simple-usb-automount-git::git+https://github.com/antonilol/simple-usb-automount
 	md5sums = SKIP
 
 pkgname = simple-usb-automount-git
