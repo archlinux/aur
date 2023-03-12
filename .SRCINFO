@@ -43,6 +43,7 @@ pkgbase = upbge-git
 	depends = openimagedenoise
 	optdepends = cuda: CUDA support in Cycles
 	optdepends = optix>=7.1.0: OptiX support in Cycles
+	optdepends = openpgl: Path guiding support in Cycles
 	optdepends = usd: USD export Scene
 	provides = blender
 	conflicts = blender

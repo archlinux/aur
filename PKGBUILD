@@ -13,6 +13,7 @@ depends=("alembic" "embree" "libgl" "python" "python-numpy" "openjpeg2" "libharu
          "openvdb" "opencollada" "opensubdiv" "openshadinglanguage" "libtiff" "libpng" "openimagedenoise")
 optdepends=("cuda: CUDA support in Cycles"
          "optix>=7.1.0: OptiX support in Cycles"
+         "openpgl: Path guiding support in Cycles"
          "usd: USD export Scene")
 makedepends=("git" "cmake" "clang" "boost" "ninja" "mesa" "llvm" wayland{,-protocols} "libxkbcommon")
 provides=("blender")
