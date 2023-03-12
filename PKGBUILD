@@ -1,7 +1,7 @@
 # Maintainer: Mintsuki <mintsuki@protonmail.com>
 pkgname=jinx
 pkgver=0.0.39
-pkgrel=1
+pkgrel=2
 pkgdesc="A meta-build-system for building OS distributions"
 arch=("any")
 url="https://github.com/mintsuki/jinx"
@@ -13,5 +13,5 @@ depends=('bash' 'findutils' 'libarchive' 'git' 'curl')
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 jinx "${pkgdir}/usr/bin/jinx"
-  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

@@ -1,7 +1,7 @@
 pkgbase = jinx
 	pkgdesc = A meta-build-system for building OS distributions
 	pkgver = 0.0.39
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mintsuki/jinx
 	arch = any
 	license = BSD
