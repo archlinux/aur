@@ -1,0 +1,6 @@
+pkgbase = ttc-iosevka-ss
+	pkgver = 0
+	pkgrel = 1
+	arch = any
+
+pkgname = ttc-iosevka-ss
