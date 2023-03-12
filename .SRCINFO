@@ -1,6 +1,6 @@
 pkgbase = topgrade
 	pkgdesc = Invoke the upgrade procedure of multiple package managers
-	pkgver = 10.3.1
+	pkgver = 10.3.2
 	pkgrel = 1
 	url = https://github.com/topgrade-rs/topgrade
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = topgrade
 	arch = armv7
 	license = GPL3
 	makedepends = rust
-	source = topgrade-10.3.1.tar.gz::https://github.com/topgrade-rs/topgrade/archive/v10.3.1.tar.gz
-	sha256sums = fad56a21c731b7868145af088f0b670792d6cbb5538251d8a37f3a1f9a7ea87e
+	source = topgrade-10.3.2.tar.gz::https://github.com/topgrade-rs/topgrade/archive/v10.3.2.tar.gz
+	sha256sums = 4522d82e46ecf36891b0b2750a06c535bbf59a86794b00e2a5cc3f5ef961d644
 
 pkgname = topgrade
