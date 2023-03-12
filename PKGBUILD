@@ -4,7 +4,7 @@ _name="middleclickclose"
 _uuid="middleclickclose@paolo.tranquilli.gmail.com"
 
 pkgname="gnome-shell-extension-${_name}"
-pkgver=1.7
+pkgver=1.8.1
 pkgrel=1
 epoch=1
 pkgdesc='Gnome shell extension for closing apps in overview with a middle click'
@@ -13,7 +13,7 @@ url="https://github.com/p91paul/middleclickclose"
 license=('GPL2')
 depends=("gnome-shell")
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('dd7b3cb6e5b8add28c08f7395754be23e1d6b2a67196dbbf25eb09a83c0ee463')
+sha256sums=('00e2fd0c2cef95a0924bd32a5a75c95347425a4bf383f4fc2132c301be9a3aa2')
 
 package() {
     local _source="${_name}-${pkgver}/${_uuid}"
