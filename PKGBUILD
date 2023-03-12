@@ -3,7 +3,7 @@ pkgname=deepin-wine-douyin
 _pkgname=com.douyin.spark
 _officalname=douyin
 _providername=ByteDance
-pkgver=1.9.1
+pkgver=2.0.0
 sparkver=1.7.1spark2
 pkgrel=1
 epoch=
@@ -11,28 +11,21 @@ pkgdesc="douyin,record beautify life;抖音，记录美好生活"
 arch=("x86_64")
 url="https://www.douyin.com"
 license=('custom')
-depends=(
-    'deepin-wine6-stable'
-    'spark-dwine-helper-git'
-    'xdg-utils'
-    )
-optdepends=(
-    'wqy-microhei'
-    'wqy-zenhei'
-    )
+depends=('deepin-wine6-stable' 'spark-dwine-helper-git' 'xdg-utils')
+optdepends=('wqy-microhei' 'wqy-zenhei')
 conflicts=()
-provides=("ByteDance")
-install="deepin-wine-douyin.install"
+provides=("${_providername}")
+install="${pkgname}.install"
 source=(
     "${_pkgname}_${sparkver}_i386.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/video/${_pkgname}/${_pkgname}_${sparkver}_i386.deb"
-	"${_officalname}-${pkgver}.exe::${url}/download/pc/obj/douyin-pc-client/7044145585217083655/releases/9962158/${pkgver}/win32-ia32/douyin-v${pkgver}-win32-ia32-douyinDownload1.exe"
-	deepin-wine-douyin.install
-    run.sh
+	"${_officalname}-${pkgver}.exe::${url}/download/pc/obj/${_officalname}-pc-client/7044145585217083655/releases/10050860/${pkgver}/win32-ia32/${_officalname}-v${pkgver}-win32-ia32-douyinDownload1.exe"
+	"${pkgname}.install"
+    "run.sh"
     )
 sha256sums=('ddb6e863b45e4eddee273119866e73de27b10efa5e57054933153fb442f1ce10'
-            '1defbe3ae36b46be90006bbab237ce401c597a1bc6e9c21eb00368e035f7fa39'
+            '881d38756b7c8be78f0bb4e1ba95b506d1b684934f7de0aff10a9cf413fdf171'
             'e476028b1c94fe6a4d1a24e4b603667a39276c21dfbe76433c42cf64a73d16be'
-            'd4740a8b43dd12f73892cef4dc35a219f1a26418fa43f37521ebc0b6e9dbad60')
+            'd5a35c9e693dc1ce627e69f4fa14519476db90c29ae294db2f7abfeee330ebbb')
 
 prepare() {
     bsdtar -xf data.tar.xz
@@ -54,16 +47,14 @@ prepare() {
     mv "${srcdir}/opt/apps/${pkgname}/entries/icons/hicolor/scalable/apps/${_pkgname}.png" "${srcdir}/opt/apps/${pkgname}/entries/icons/hicolor/scalable/apps/${pkgname}.png"
     sed 's/com.douyin.spark/deepin-wine-douyin/g' -i "${srcdir}/opt/apps/${pkgname}/entries/applications/${pkgname}.desktop"
     sed 's/Video/AudioVideo/g' -i "${srcdir}/opt/apps/${pkgname}/entries/applications/${pkgname}.desktop"
-
     echo "Icon=deepin-wine-douyin.png" >> "${srcdir}/opt/apps/${pkgname}/entries/applications/${pkgname}.desktop"
-
-    rm -rf ${srcdir}/opt/apps/${_pkgname}/info
+    rm -rf "${srcdir}/opt/apps/${_pkgname}/info"
 }
    
 package() {
     cp -r "${srcdir}/opt" "${pkgdir}"
     md5sum "${pkgdir}/opt/apps/${pkgname}/files/files.7z" | awk '{ print $1 }' > "${pkgdir}/opt/apps/${pkgname}/files/files.md5sum"
-    install -Dm644 ${srcdir}/opt/apps/${pkgname}/entries/applications/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
-    install -Dm644 ${srcdir}/opt/apps/${pkgname}/entries/icons/hicolor/scalable/apps/${pkgname}.png ${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.png
+    install -Dm644 "${srcdir}/opt/apps/${pkgname}/entries/applications/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm644 "${srcdir}/opt/apps/${pkgname}/entries/icons/hicolor/scalable/apps/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.png"
     install -Dm755 "run.sh" "${pkgdir}/opt/apps/${pkgname}/files/"
 }
