@@ -20,10 +20,9 @@ post_remove() {
 }
 
 directory_permissions() {
-  chown -R neo4j.neo4j /etc/neo4j/certificates
-  chown -R neo4j.neo4j /var/lib/neo4j
-  chown -R neo4j.neo4j /var/log/neo4j
-  chown -R neo4j.neo4j /etc/neo4j
+  chown -R neo4j:neo4j /var/lib/neo4j
+  chown -R neo4j:neo4j /var/log/neo4j
+  chown -R neo4j:neo4j /etc/neo4j
 }
 
 assert_user_and_group_exist() {

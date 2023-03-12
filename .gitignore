@@ -1,5 +1,9 @@
-neo4j-community-*-any.pkg.tar.xz
-neo4j-community-*-any.pkg.tar.zst
-neo4j-community-*-unix.tar.gz
-pkg/
-src/
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!cypher-shell
+!neo4j
+!neo4j-admin
+!neo4j.install
+!neo4j-tmpfile.conf
