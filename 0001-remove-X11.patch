@@ -1,0 +1,243 @@
+From 15bd3ce785f3552fd6f5d19f9b555ff3e6d22965 Mon Sep 17 00:00:00 2001
+From: 12101111 <w12101111@gmail.com>
+Date: Fri, 10 Jun 2022 22:19:20 +0800
+Subject: [PATCH 2/2] remove X11
+
+---
+ goldendict.pro   |  7 -------
+ hotkeywrapper.cc | 24 +++++++++++++++++++++---
+ hotkeywrapper.hh |  4 ++++
+ keyboardstate.cc |  5 +++--
+ main.cc          |  2 +-
+ scanpopup.cc     |  6 +++---
+ 6 files changed, 32 insertions(+), 16 deletions(-)
+
+diff --git a/goldendict.pro b/goldendict.pro
+index 7ddc9de4..03eb43d4 100644
+--- a/goldendict.pro
++++ b/goldendict.pro
+@@ -142,10 +142,6 @@ win32 {
+ }
+ 
+ unix:!mac {
+-    DEFINES += HAVE_X11
+-
+-    lessThan(QT_MAJOR_VERSION, 6):     QT += x11extras
+-
+     CONFIG += link_pkgconfig
+ 
+     PKGCONFIG += vorbisfile \
+@@ -159,9 +155,6 @@ unix:!mac {
+             libavcodec \
+             libswresample \
+     }
+-    !arm {
+-        LIBS += -lX11 -lXtst
+-    }
+ 
+     # Install prefix: first try to use qmake's PREFIX variable,
+     # then $PREFIX from system environment, and if both fails,
+diff --git a/hotkeywrapper.cc b/hotkeywrapper.cc
+index 1a26d9a4..70eba1c4 100644
+--- a/hotkeywrapper.cc
++++ b/hotkeywrapper.cc
+@@ -461,11 +461,14 @@ bool QHotkeyApplication::nativeEventFilter( const QByteArray & /*eventType*/, vo
+ #else
+ 
+ //////////////////////////////////////////////////////////////////////////
+-
++#ifdef HAVE_X11
+ #include <X11/keysym.h>
++#endif
++
+ 
+ void HotkeyWrapper::init()
+ {
++#ifdef HAVE_X11
+   keyToUngrab = grabbedKeys.end();
+ 
+ #if QT_VERSION < 0x060000
+@@ -534,18 +537,21 @@ void HotkeyWrapper::init()
+            this, SLOT( checkState( quint32, quint32 ) ),
+            Qt::QueuedConnection );
+ 
++#endif
+   start();
+ }
+ 
+ void HotkeyWrapper::run() // Runs in a separate thread
+ {
++#ifdef HAVE_X11
+   if ( !XRecordEnableContext( dataDisplay, recordContext,
+                               recordEventCallback,
+                               (XPointer) this ) )
+     GD_DPRINTF( "Failed to enable record context\n" );
++#endif
+ }
+ 
+-
++#ifdef HAVE_X11
+ void HotkeyWrapper::recordEventCallback( XPointer ptr, XRecordInterceptData * data )
+ {
+   ((HotkeyWrapper * )ptr)->handleRecordEvent( data );
+@@ -611,10 +617,12 @@ void HotkeyWrapper::handleRecordEvent( XRecordInterceptData * data )
+ 
+   XRecordFreeData( data );
+ }
++#endif
+ 
+ bool HotkeyWrapper::setGlobalKey( int key, int key2,
+                                   Qt::KeyboardModifiers modifier, int handle )
+ {
++#ifdef HAVE_X11
+   if ( !key )
+     return false; // We don't monitor empty combinations
+ 
+@@ -637,8 +645,12 @@ bool HotkeyWrapper::setGlobalKey( int key, int key2,
+     grabKey( vk, mod ); // Make sure it doesn't get caught by other apps
+ 
+   return true;
++#else
++  return false;
++#endif
+ }
+ 
++#ifdef HAVE_X11
+ bool HotkeyWrapper::isCopyToClipboardKey( quint32 keyCode, quint32 modifiers ) const
+ {
+   return modifiers == ControlMask &&
+@@ -763,9 +775,11 @@ void HotkeyWrapper::ungrabKey( GrabbedKeys::iterator i )
+     gdWarning( "Cannot ungrab the hotkey" );
+   }
+ }
++#endif
+ 
+ quint32 HotkeyWrapper::nativeKey(int key)
+ {
++#ifdef HAVE_X11
+   QString keySymName;
+ 
+   switch( key )
+@@ -785,10 +799,14 @@ quint32 HotkeyWrapper::nativeKey(int key)
+ #endif
+   Display * display = displayID;
+   return XKeysymToKeycode( display, XStringToKeysym( keySymName.toLatin1().data() ) );
++#else
++  return 0;
++#endif
+ }
+ 
+ void HotkeyWrapper::unregister()
+ {
++#ifdef HAVE_X11
+ #if QT_VERSION < 0x060000
+   Display *displayID = QX11Info::display();
+ #else
+@@ -808,7 +826,7 @@ void HotkeyWrapper::unregister()
+ 
+   while( grabbedKeys.size() )
+     ungrabKey( grabbedKeys.begin() );
+-
++#endif
+   (static_cast<QHotkeyApplication*>(qApp))->unregisterWrapper(this);
+ }
+ 
+diff --git a/hotkeywrapper.hh b/hotkeywrapper.hh
+index 00ad0965..1344c368 100644
+--- a/hotkeywrapper.hh
++++ b/hotkeywrapper.hh
+@@ -117,13 +117,16 @@ private:
+ 
+ #else
+ 
++#ifdef HAVE_X11
+   static void recordEventCallback( XPointer, XRecordInterceptData * );
+ 
+   /// Called by recordEventCallback()
+   void handleRecordEvent( XRecordInterceptData * );
++#endif
+ 
+   void run(); // QThread
+ 
++#ifdef HAVE_X11
+   // We do one-time init of those, translating keysyms to keycodes
+   KeyCode lShiftCode, rShiftCode, lCtrlCode, rCtrlCode, lAltCode, rAltCode,
+           cCode, insertCode, kpInsertCode, lMetaCode, rMetaCode;
+@@ -154,6 +157,7 @@ private:
+   /// Ungrabs the given key. erasing it from grabbedKeys. The key's provided
+   /// as an interator inside the grabbedKeys set.
+   void ungrabKey( GrabbedKeys::iterator );
++#endif
+ 
+ signals:
+ 
+diff --git a/keyboardstate.cc b/keyboardstate.cc
+index 2d336ed0..c481bc08 100644
+--- a/keyboardstate.cc
++++ b/keyboardstate.cc
+@@ -43,8 +43,7 @@ bool KeyboardState::checkModifiersPressed( int mask )
+     ( mask & Ctrl && !( keys & ( 1 << cmdKeyBit ) ) ) ||
+     ( mask & Shift && !( keys & ( 1 << shiftKeyBit ) ) ) ||
+     ( mask & Win && !( keys & ( 1 << controlKeyBit ) ) ) );
+-  #else
+-
++  #elif defined(HAVE_X11)
+ #if QT_VERSION < 0x060000
+   Display *displayID = QX11Info::display();
+ #else
+@@ -61,6 +60,8 @@ bool KeyboardState::checkModifiersPressed( int mask )
+     ( mask & Ctrl && !( state.base_mods & ControlMask ) ) ||
+     ( mask & Shift && !( state.base_mods & ShiftMask ) ) ||
+     ( mask & Win && !( state.base_mods & Mod4Mask ) ) );
++  #else
++    return false;
+   #endif
+ }
+ 
+diff --git a/main.cc b/main.cc
+index 52bec06a..b3a7d954 100644
+--- a/main.cc
++++ b/main.cc
+@@ -199,7 +199,7 @@ public:
+ 
+ int main( int argc, char ** argv )
+ {
+-#ifdef Q_OS_UNIX
++#if defined(Q_OS_UNIX) && defined(HAVE_X11)
+     // GoldenDict use lots of X11 functions and it currently cannot work
+     // natively on Wayland. This workaround will force GoldenDict to use
+     // XWayland.
+diff --git a/scanpopup.cc b/scanpopup.cc
+index b09984a6..9fe3a108 100644
+--- a/scanpopup.cc
++++ b/scanpopup.cc
+@@ -39,7 +39,7 @@ static const Qt::WindowFlags pinnedWindowFlags =
+ /// Qt::Window allows to use the scan popup and the main window independently.
+ Qt::Window
+ #else
+-Qt::Dialog
++Qt::Dialog | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint
+ #endif
+ ;
+ 
+@@ -700,7 +700,7 @@ void ScanPopup::engagePopup( bool forcePopup, bool giveFocus )
+ #endif
+ 
+   if ( ui.pinButton->isChecked() )
+-       setWindowTitle( tr( "%1 - %2" ).arg( elideInputWord(), "GoldenDict" ) );
++       setWindowTitle( tr( "%1 - %2" ).arg( elideInputWord(), "GoldenDict Popup" ) );
+ 
+   /// Too large strings make window expand which is probably not what user
+   /// wants
+@@ -1076,7 +1076,7 @@ void ScanPopup::pinButtonClicked( bool checked )
+       flags |= Qt::WindowStaysOnTopHint;
+     setWindowFlags( flags );
+ 
+-    setWindowTitle( tr( "%1 - %2" ).arg( elideInputWord(), "GoldenDict" ) );
++    setWindowTitle( tr( "%1 - %2" ).arg( elideInputWord(), "GoldenDict Popup" ) );
+     dictionaryBar.setMovable( true );
+     hideTimer.stop();
+   }
+-- 
+2.35.1
+
