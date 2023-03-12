@@ -1,13 +1,13 @@
 # Maintainer: liolok <aur@liolok.com>
 
-# https://extensions.gnome.org/extension-info/?pk=701&shell_version=40
+# https://extensions.gnome.org/extension-info/?pk=701&shell_version=43
 _gnome_site='https://extensions.gnome.org'
 _name='scroll-workspaces'
 _uuid='scroll-workspaces@gfxmonk.net'
 _pk=701
-_gnome_shell_version=40
-_version=31
-_version_tag=30573
+_gnome_shell_version=43
+_version=33
+_version_tag=38177
 
 pkgname="gnome-shell-extension-$_name"
 pkgver=$_version
@@ -18,7 +18,7 @@ url="$_gnome_site/extension/$_pk/$_name/"
 license=('GPL')
 depends=("gnome-shell>=$_gnome_shell_version")
 source=("$pkgname.zip::$_gnome_site/download-extension/$_uuid.shell-extension.zip?version_tag=$_version_tag")
-sha256sums=('673197de6cba1b9261a5af110b5df37ab8a047fd0a94d315d4e2d7455cd0b4da')
+sha256sums=('afa4c4a8c4cab1fcba0978bfd6ec62e39e2bc2ede34e332493f7dbb7820fdf43')
 
 package() {
     local _destdir="$pkgdir/usr/share/gnome-shell/extensions/$_uuid"

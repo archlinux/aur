@@ -1,12 +1,12 @@
 pkgbase = gnome-shell-extension-scroll-workspaces
 	pkgdesc = Change workspaces by scrolling while over the top panel in Gnome Shell
-	pkgver = 31
+	pkgver = 33
 	pkgrel = 1
 	url = https://extensions.gnome.org/extension/701/scroll-workspaces/
 	arch = any
 	license = GPL
-	depends = gnome-shell>=40
-	source = gnome-shell-extension-scroll-workspaces.zip::https://extensions.gnome.org/download-extension/scroll-workspaces@gfxmonk.net.shell-extension.zip?version_tag=30573
-	sha256sums = 673197de6cba1b9261a5af110b5df37ab8a047fd0a94d315d4e2d7455cd0b4da
+	depends = gnome-shell>=43
+	source = gnome-shell-extension-scroll-workspaces.zip::https://extensions.gnome.org/download-extension/scroll-workspaces@gfxmonk.net.shell-extension.zip?version_tag=38177
+	sha256sums = afa4c4a8c4cab1fcba0978bfd6ec62e39e2bc2ede34e332493f7dbb7820fdf43
 
 pkgname = gnome-shell-extension-scroll-workspaces
