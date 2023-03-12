@@ -1,7 +1,7 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=deckmaster
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="An application to control your Elgato Stream Deck"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('ttf-roboto')
 makedepends=('git' 'go')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('fa7af2822a894585559bd2b582568c1e1c86a6c55e9f5b2bff873f7c22c2574d')
+sha256sums=('b03dc58cf1eabe438a4845d3f96bdcd930ec0bb15489247eca7f1591bdac4830')
 
 build() {
     local commit
