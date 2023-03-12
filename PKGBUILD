@@ -13,7 +13,7 @@ conflicts=("${pkgname}" "xts-windows95-theme")
 depends=('xfce4-theme-switcher' 'xfce4-whiskermenu-plugin' 'gtk-engines' 'chicago95-gtk-theme-git' 'chicago95-icon-theme-git' 'xcursor-chicago95-git')
 options=('!strip')
 
-source=('https://gitlab.com/linux-stuffs/xts-themes/-/raw/main/xts-widows95-theme/distrib/xts-widows95-theme-0.1-2.tar.gz')
+source=('https://gitlab.com/linux-stuffs/xts-themes/-/raw/main/xts-windows95-theme/distrib/xts-windows95-theme-0.1-2.tar.gz')
 sha256sums=('SKIP')
 
 package() {
