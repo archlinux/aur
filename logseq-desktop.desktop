@@ -1,9 +1,10 @@
 [Desktop Entry]
 Name=Logseq
-Exec=/usr/bin/logseq
+Exec=/usr/bin/logseq %u
 Terminal=false
 Type=Application
 Icon=logseq
 StartupWMClass=logseq
 Comment=Open Source platform for knowledge sharing and management
+MimeType=x-scheme-handler/logseq
 Categories=Office
