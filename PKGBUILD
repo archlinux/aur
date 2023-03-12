@@ -1,12 +1,12 @@
-# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
-# Contributor:  twa022 <twa022 at gmail dot com>
+# Maintainer:  twa022 <twa022 at gmail dot com>
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 
 _pkgname=basilisk
 pkgname=${_pkgname}-bin
 epoch=1
-_buildid=20230126144905
-_date=2023.01.26
-pkgver=52.9.2023.01.26
+_buildid=20230307200707
+_date=2023.03.07
+pkgver=52.9.2023.03.07
 pkgrel=1
 pkgdesc="A XUL-based web-browser demonstrating the Unified XUL Platform (UXP)."
 url="https://www.basilisk-browser.org"
@@ -18,8 +18,8 @@ optdepends=('hunspell: spell checker and morphological analyzer'
             'ffmpeg: record, convert, and stream audio and video')
 source=(https://archive.basilisk-browser.org/${_date}/linux/x86_64/gtk3/basilisk-${_buildid}.linux-x86_64.{tar.xz,json}
         'basilisk.desktop')
-sha256sums=('3c705d8c1a2b1f9ba7c13118674d63ca22f438e0a7f7ee116fd508d61cd14634'
-            '6fa2a23379790667b157e1af7e917dbcf9abd1e1e8e293957c507733facf5410'
+sha256sums=('aa6f8b10c953556cb263f5c0804b1cd04e57e834f467cfe466960c3a20c03a52'
+            '76fb26c6c2683355029ca6aa8eedc17374eba2c935b42bb80182de4da1976138'
             'c4223e966bc404467fece4a524cc2db3e99c12455087da2ade9a47b8d99d3a45')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
