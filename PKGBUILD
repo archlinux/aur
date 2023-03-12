@@ -6,7 +6,7 @@
 
 pkgname=midori
 pkgver=9.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Lightweight web browser'
 arch=(x86_64)
 url='https://github.com/midori-browser/core'
