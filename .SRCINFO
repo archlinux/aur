@@ -1,4 +1,4 @@
-pkgbase = heimdal
+pkgbase = heimdal-git
 	pkgdesc = Heimdal, an implementation of Kerberos and PKIX
 	pkgver = 7.99.r30417.gb19633f9b
 	pkgrel = 1
@@ -16,4 +16,4 @@ pkgbase = heimdal
 	validpgpkeys = E65941B71CF3C459A34FA89C45E7572A28CD8CC8
 	sha256sums = SKIP
 
-pkgname = heimdal
+pkgname = heimdal-git

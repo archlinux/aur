@@ -1,4 +1,4 @@
-pkgname=heimdal
+pkgname=heimdal-git
 pkgdesc="Heimdal, an implementation of Kerberos and PKIX"
 _commit='b19633f9b94fbfff3777a432d02e0bf5405f372b'
 pkgver=7.99.r30417.gb19633f9b
