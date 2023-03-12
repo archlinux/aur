@@ -10,6 +10,8 @@ license=('BSD')
 # needs nightly at the moment, use rustup therefor
 makedepends=('cargo' 'git' 'rustup')
 options=('!lto')
+conflicts=(brotli)
+provides=(brotli)
 source=(
   "$pkgname::https://github.com/dropbox/rust-brotli/archive/refs/tags/$pkgver.tar.gz"
 )
