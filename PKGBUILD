@@ -3,8 +3,8 @@
 # Contributor: lsf
 # Contributor: Adam Hose <adis@blad.is>
 pkgname=opensnitch-git
-pkgver=1.6.0rc5.r7.c2352d0
-pkgrel=1
+pkgver=1.6.0rc5.r10.5f532e5
+pkgrel=2
 pkgdesc="A GNU/Linux port of the Little Snitch application firewall"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/evilsocket/opensnitch"
@@ -116,7 +116,13 @@ build() {
 
   pushd ui
   pyrcc5 -o opensnitch/resources_rc.py opensnitch/res/resources.qrc
-  # sed -i 's/^import ui_pb2/from . import ui_pb2/' opensnitch/ui_pb2*
+  # NOTE: yes, we do need this.
+  # Arch upstream uses a patch, but _also_ includes pb files pre-generated
+  # so it fails for this PKGBUILD.
+  # not seeing the files to be fixed with this in the tree _before_ building
+  # made me assume they were just not there anymore (and thus no need for the fix).
+  # I was wrong.
+  sed -i 's/^import ui_pb2/from . import ui_pb2/' opensnitch/ui_pb2*
   python -m build --wheel --no-isolation
   # python setup.py build
   popd
