@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=boxxy-git
-pkgver=0.3.5.r0.g0c07355
+pkgver=0.3.6.r0.g7f6f00a
 pkgrel=1
 pkgdesc="Put bad Linux applications in a box with only their files (git)"
 arch=('x86_64')

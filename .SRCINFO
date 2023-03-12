@@ -1,6 +1,6 @@
 pkgbase = boxxy-git
 	pkgdesc = Put bad Linux applications in a box with only their files (git)
-	pkgver = 0.3.5.r0.g0c07355
+	pkgver = 0.3.6.r0.g7f6f00a
 	pkgrel = 1
 	url = https://github.com/queer/boxxy
 	arch = x86_64
