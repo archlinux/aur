@@ -7,7 +7,7 @@ pkgdesc="brotli compressor, can append brotli files, rust."
 arch=('aarch64' 'x86_64')
 url="https://helix-editor.com"
 license=('BSD')
-makedepends=('cargo' 'git')
+makedepends=('cargo' 'git' 'rustup')
 options=('!lto')
 source=(
   "$pkgname::git+https://github.com/dropbox/rust-brotli.git"

@@ -8,6 +8,7 @@ pkgbase = rust-brotli-git
 	license = BSD
 	makedepends = cargo
 	makedepends = git
+	makedepends = rustup
 	options = !lto
 	source = rust-brotli-git::git+https://github.com/dropbox/rust-brotli.git
 	sha256sums = SKIP
