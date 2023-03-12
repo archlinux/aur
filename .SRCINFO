@@ -1,0 +1,22 @@
+pkgbase = xts-windows95-theme
+	pkgdesc = MS Windows 95 (Chicago) themes for xfce4-theme switcher.
+	pkgver = 0.1
+	pkgrel = 2
+	url = https://gitlab.com/linux-stuffs/xts-themes
+	arch = any
+	groups = xfce4-goodies
+	license = combined licenses
+	depends = xfce4-theme-switcher
+	depends = xfce4-whiskermenu-plugin
+	depends = gtk-engines
+	depends = chicago95-gtk-theme-git
+	depends = chicago95-icon-theme-git
+	depends = xcursor-chicago95-git
+	provides = xts-windows95-theme
+	conflicts = xts-windows95-theme
+	conflicts = xts-widows95-theme
+	options = !strip
+	source = https://gitlab.com/linux-stuffs/xts-themes/-/raw/main/xts-windows95-theme/distrib/xts-windows95-theme-0.1-2.tar.gz
+	sha256sums = SKIP
+
+pkgname = xts-windows95-theme
