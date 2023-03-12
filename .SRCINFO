@@ -1,14 +1,14 @@
 pkgbase = ruby-google-apis-storage_v1
 	pkgdesc = simple REST client for Cloud Storage JSON API V1
-	pkgver = 0.21.0
+	pkgver = 0.22.0
 	pkgrel = 1
 	url = https://rubygems.org/gems/google-apis-storage_v1
 	arch = any
 	license = Apache-2.0
 	depends = ruby-google-apis-core
-	noextract = google-apis-storage_v1-0.21.0.gem
+	noextract = google-apis-storage_v1-0.22.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/google-apis-storage_v1-0.21.0.gem
-	sha256sums = a79580c2049597fceea88bcb688145860f87e2115e790b78b24d58710da6756e
+	source = https://rubygems.org/downloads/google-apis-storage_v1-0.22.0.gem
+	sha256sums = 1ab6537ba087a1584a3a7c94c9f07c0d01de3d85d15883ea94805e78c2c0640b
 
 pkgname = ruby-google-apis-storage_v1
