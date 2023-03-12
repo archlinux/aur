@@ -1,43 +1,27 @@
 pkgbase = vpn-unlimited
 	pkgdesc = VPN Unlimited client application
-	pkgver = 8.5
-	pkgrel = 3
+	pkgver = 8.5.2
+	pkgrel = 1
 	url = https://www.vpnunlimitedapp.com
 	install = vpn-unlimited.install
 	arch = x86_64
-	license = custom:"Copyright (c) 2018 KeepSolid Inc."
-	depends = glibc>=2.9
-	depends = qt5-base>=5.2.1
-	depends = qt5-script>=5.2.1
-	depends = qt5-webkit>=5.2.1
-	depends = gcc-libs>=4.4.15
-	depends = zlib>=1.2.0
+	license = custom
+	makedepends = patchelf
+	depends = qt5-script
+	depends = qt5-webkit
 	depends = openvpn
 	depends = openresolv
-	depends = lzo>=2.0
-	depends = iproute2
 	depends = net-tools
-	depends = c-ares>=1.10.0
+	depends = c-ares
 	depends = lsb-release
-	depends = strongswan>=5.8.1
-	depends = qt5-webengine>=5.2.1
-	depends = curl>=7.68.0
-	depends = libnghttp2>=1.39.2
-	depends = libidn2>=2.3.0
-	depends = libssh2>=1.9.0
-	depends = libpsl>=0.21.0
-	depends = openssl-1.0
-	depends = krb5>=1.17.1
-	depends = e2fsprogs>=1.45.5
-	depends = zstd>=1.4.4
-	depends = libunistring>=0.9.10
-	depends = keyutils>=1.6.1
-	depends = pkcs11-helper>=1.26.0
+	depends = strongswan
+	depends = qt5-webengine
+	depends = openssl-1.1
 	depends = wireguard-tools
-	source_x86_64 = vpn-unlimited-daemon.service
-	source_x86_64 = http://apt.keepsolid.com/debian/dists/buster/main/binary-amd64/vpn-unlimited_8.5+deb10-amd64.deb
-	sha256sums_x86_64 = dd5ba49842bcbf4c5f722bac2ab3d4c919c676bc29c1ca269678e8a53c0e6a41
-	sha256sums_x86_64 = 6a16e29475cefde3709b499c6c738243bedb330eb0b1932f5ae5995c9474562b
+	depends = boost-libs=1.74.0
+	source = https://geo.keepsolidcdn.com/soft/vpn/Linux/VPN_Unlimited_8.5.2_amd64_mint.deb
+	source = vpn-unlimited-daemon.service
+	sha256sums = 43ed1a73d97dd33a87b77d319a9e0391a1077b8a0fe77190f13ae690b584a7ae
+	sha256sums = dd5ba49842bcbf4c5f722bac2ab3d4c919c676bc29c1ca269678e8a53c0e6a41
 
 pkgname = vpn-unlimited
-
