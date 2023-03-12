@@ -13,10 +13,14 @@ makedepends=('cargo' 'git' 'mold')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('!lto')
-source=('git+https://github.com/pop-os/cosmic-text-editor.git'
-        "${pkgname%-git}.desktop")
-sha256sums=('SKIP'
-            '5a1614e9d0a072d9711d17bdacf456ba8877fc365ad263cff7c0e8283f01a799')
+source=(
+  'git+https://github.com/pop-os/cosmic-text-editor.git'
+  "${pkgname%-git}.desktop"
+)
+sha256sums=(
+  'SKIP'
+  '5a1614e9d0a072d9711d17bdacf456ba8877fc365ad263cff7c0e8283f01a799'
+)
 
 pkgver() {
   cd "${pkgname%-git}"
