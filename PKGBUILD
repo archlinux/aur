@@ -5,15 +5,17 @@
 pkgname=python-ansi
 _pkgname=ansi
 pkgver=0.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc='ANSI cursor movement and graphics'
 arch=('any')
 url='https://github.com/tehmaze/ansi'
 license=('MIT')
-depends=('python')
-makedepends=(
-  'python-pip'
+depends=(
   'python-typing_extensions'
+)
+makedepends=(
+  'python-installer'
+  'python-wheel'
 )
 wheel="${_pkgname}-$pkgver-py3-none-any.whl"
 noextract=("$wheel")
@@ -30,15 +32,10 @@ sha256sums=(
 
 package() {
   umask 0022
-  pip install \
-    --force-reinstall \
-    --ignore-installed \
-    --no-warn-script-location \
-    --no-deps \
-    --compile \
-    --root="$pkgdir" \
-    --prefix='/usr' \
-     "$wheel"
+  python -m installer --destdir="$pkgdir" "$wheel"
+
+  install -dm0755 "$pkgdir/usr/share/licenses/$pkgname"
+  ln -sr $pkgdir/usr/lib/python*/site-packages/$_pkgname-*.dist-info/LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 # eof
