@@ -1,26 +1,25 @@
-# Maintainer: Michael Schubert <mschu.dev at gmail>
+# Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 # Contributor: Clint Valentine <valentine.clint@gmail.com>
 pkgname=python-pybigwig
-_pkgname=pyBigWig
-pkgver=0.3.18
-pkgrel=2
+_name=pyBigWig
+pkgver=0.3.20
+pkgrel=1
 pkgdesc="A Python extension for quick access to bigWig and bigBed files"
-arch=('any')
-url="https://github.com/deeptools/pyBigWig"
+arch=(any)
+url=https://github.com/deeptools/pyBigWig
 license=('MIT')
-depends=('curl' 'python-numpy')
-makedepends=('python-setuptools')
+depends=(curl python-numpy)
+makedepends=(python-build python-installer python-wheel)
 options=(!emptydirs)
-source=($_pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=('552564d8ce8720a8ae70ed5e5534617fb0cab306b666468d1c61b6d389b8a10c')
+source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
+sha256sums=('ba63ffb302647a6bcda75187a9d8576bb249e37ae6e83379ddb31e22cd7a8c0b')
 
-build(){
-  cd "$srcdir"/$_pkgname-$pkgver
-  python setup.py build
+build() {
+    cd "$_name-$pkgver"
+    python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {
-  cd $_pkgname-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
+    cd "$_name-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
