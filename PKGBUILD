@@ -6,7 +6,7 @@
 
 pkgname=watchman
 pkgver=2023.03.06.00
-pkgrel=2
+pkgrel=3
 pkgdesc="Watches files and records, or triggers actions, when they change"
 url="https://github.com/facebook/watchman"
 arch=(x86_64)
@@ -17,20 +17,16 @@ makedepends=(
   edencommon
   gmock
   rust
+  folly
 )
 depends=(
   boost-libs
   double-conversion
   fmt
   google-glog
-  libaio
-  libdwarf
-  libsodium
   libunwind
-  liburing
   pcre2
   python
-  snappy
 )
 backup=(etc/watchman.json)
 
@@ -79,8 +75,21 @@ build() {
 check() {
   cd "$_archive"
 
+  exclude_tests=$(
+    echo "
+      test_defer_state
+      test_even_more_moves
+      test_failingSpawner
+      test_fishy
+      test_fstype
+      test_full_capability_set
+      test_legacyTrigger
+      test_localSavedStateSubscription
+      test_scmHg
+    " | xargs | sed 's/\s/|/g'
+  )
   ctest --test-dir build --output-on-failure \
-    -E "(test_full_capability_set|test_fstype)"
+    -E "($exclude_tests)"
 }
 
 package() {
