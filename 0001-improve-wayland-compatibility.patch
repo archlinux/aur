@@ -1,0 +1,693 @@
+From 61ac9b7df1502b70cb3909f069501811b725adbd Mon Sep 17 00:00:00 2001
+From: softmix <mindmix@gmail.com>
+Date: Fri, 9 Sep 2022 21:14:19 +0200
+Subject: [PATCH] improve wayland compatibility
+
+this removes the x11 entanglements of goldedict at the expense of losing hotkey and scan popup functionality
+---
+ dictgroupwidget.ui |  15 -----
+ goldendict.pro     |  14 -----
+ groups_widgets.cc  |   4 --
+ main.cc            |  11 +---
+ mainwindow.cc      |  78 +-----------------------
+ mainwindow.hh      |  14 +----
+ preferences.cc     |  47 ---------------
+ preferences.hh     |   3 -
+ preferences.ui     | 145 ---------------------------------------------
+ scanpopup.cc       |  11 +---
+ 10 files changed, 6 insertions(+), 336 deletions(-)
+
+diff --git a/dictgroupwidget.ui b/dictgroupwidget.ui
+index 370255db..9e2ad910 100644
+--- a/dictgroupwidget.ui
++++ b/dictgroupwidget.ui
+@@ -67,16 +67,6 @@
+        </property>
+       </widget>
+      </item>
+-     <item>
+-      <widget class="QLabel" name="label_2">
+-       <property name="text">
+-        <string>Shortcut:</string>
+-       </property>
+-      </widget>
+-     </item>
+-     <item>
+-      <widget class="HotKeyEdit" name="shortcut"/>
+-     </item>
+     </layout>
+    </item>
+    <item>
+@@ -101,11 +91,6 @@
+    <extends>QListWidget</extends>
+    <header>groups_widgets.hh</header>
+   </customwidget>
+-  <customwidget>
+-   <class>HotKeyEdit</class>
+-   <extends>QLineEdit</extends>
+-   <header>hotkeyedit.hh</header>
+-  </customwidget>
+  </customwidgets>
+  <resources>
+   <include location="resources.qrc"/>
+diff --git a/goldendict.pro b/goldendict.pro
+index 241745f6..57cffbd5 100644
+--- a/goldendict.pro
++++ b/goldendict.pro
+@@ -149,17 +149,10 @@ win32 {
+ }
+ 
+ unix:!mac {
+-  DEFINES += HAVE_X11
+   # This is to keep symbols for backtraces
+   QMAKE_CXXFLAGS += -rdynamic
+   QMAKE_LFLAGS += -rdynamic
+ 
+-    greaterThan(QT_MAJOR_VERSION, 4) {
+-      greaterThan(QT_MINOR_VERSION, 0) {
+-        QT += x11extras
+-      }
+-    }
+-
+     CONFIG += link_pkgconfig
+     PKGCONFIG += vorbisfile \
+         vorbis \
+@@ -175,7 +168,6 @@ unix:!mac {
+     arm {
+         LIBS += -liconv
+     } else {
+-        LIBS += -lX11 -lXtst
+     }
+ 
+     # Install prefix: first try to use qmake's PREFIX variable,
+@@ -302,7 +294,6 @@ HEADERS += folding.hh \
+     externalviewer.hh \
+     wordfinder.hh \
+     groupcombobox.hh \
+-    keyboardstate.hh \
+     mouseover.hh \
+     preferences.hh \
+     mutex.hh \
+@@ -314,9 +305,7 @@ HEADERS += folding.hh \
+     wstring.hh \
+     wstring_qt.hh \
+     processwrapper.hh \
+-    hotkeywrapper.hh \
+     searchpanewidget.hh \
+-    hotkeyedit.hh \
+     langcoder.hh \
+     editdictionaries.hh \
+     loaddictionaries.hh \
+@@ -436,7 +425,6 @@ SOURCES += folding.cc \
+     externalviewer.cc \
+     wordfinder.cc \
+     groupcombobox.cc \
+-    keyboardstate.cc \
+     mouseover.cc \
+     preferences.cc \
+     mutex.cc \
+@@ -448,8 +436,6 @@ SOURCES += folding.cc \
+     wstring.cc \
+     wstring_qt.cc \
+     processwrapper.cc \
+-    hotkeywrapper.cc \
+-    hotkeyedit.cc \
+     langcoder.cc \
+     editdictionaries.cc \
+     loaddictionaries.cc \
+diff --git a/groups_widgets.cc b/groups_widgets.cc
+index 1a98a403..eb64c85b 100644
+--- a/groups_widgets.cc
++++ b/groups_widgets.cc
+@@ -61,8 +61,6 @@ DictGroupWidget::DictGroupWidget( QWidget * parent,
+   if ( usesIconData )
+     ui.groupIcon->setCurrentIndex( 1 );
+ 
+-  ui.shortcut->setHotKey( Config::HotKey( group.shortcut ) );
+-
+   ui.favoritesFolder->setText( group.favoritesFolder );
+ 
+   connect( ui.groupIcon, SIGNAL(activated(int)),this,SLOT(groupIconActivated(int)),
+@@ -129,8 +127,6 @@ Config::Group DictGroupWidget::makeGroup() const
+ 
+   g.icon = ui.groupIcon->itemData( currentIndex ).toString();
+ 
+-  g.shortcut = ui.shortcut->getHotKey().toKeySequence();
+-
+   g.favoritesFolder = ui.favoritesFolder->text().replace( '\\', '/' );
+ 
+   return g.makeConfigGroup();
+diff --git a/main.cc b/main.cc
+index f6a85c07..4c956697 100644
+--- a/main.cc
++++ b/main.cc
+@@ -6,12 +6,9 @@
+ #include "gdappstyle.hh"
+ #include "mainwindow.hh"
+ #include "config.hh"
++#include "qtsingleapplication.h"
+ 
+ #include "processwrapper.hh"
+-#include "hotkeywrapper.hh"
+-#ifdef HAVE_X11
+-#include <fixx11h.h>
+-#endif
+ 
+ //#define __DO_DEBUG
+ 
+@@ -298,7 +295,7 @@ int main( int argc, char ** argv )
+ 
+ #endif
+ 
+-  QHotkeyApplication app( "GoldenDict", argc, argv );
++  QtSingleApplication app( "GoldenDict", argc, argv );
+   LogFilePtrGuard logFilePtrGuard;
+ 
+   if ( app.isRunning() )
+@@ -440,8 +437,6 @@ int main( int argc, char ** argv )
+ 
+   MainWindow m( cfg );
+ 
+-  app.addDataCommiter( m );
+-
+   QObject::connect( &app, SIGNAL(messageReceived(const QString&)),
+     &m, SLOT(messageFromAnotherInstanceReceived(const QString&)));
+ 
+@@ -456,8 +451,6 @@ int main( int argc, char ** argv )
+ 
+   int r = app.exec();
+ 
+-  app.removeDataCommiter( m );
+-
+   if( logFilePtr->isOpen() )
+     logFilePtr->close();
+ 
+diff --git a/mainwindow.cc b/mainwindow.cc
+index 22487a69..c72dea41 100644
+--- a/mainwindow.cc
++++ b/mainwindow.cc
+@@ -43,6 +43,7 @@
+ #include "dictinfo.hh"
+ #include "fsencoding.hh"
+ #include "historypanewidget.hh"
++#include "qtsingleapplication.h"
+ #include "qt4x5.hh"
+ #include <QDesktopWidget>
+ #include "ui_authentication.h"
+@@ -835,9 +836,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
+   // Update autostart info
+   setAutostart(cfg.preferences.autoStart);
+ 
+-  // Initialize global hotkeys
+-  installHotKeys();
+-
+   if ( cfg.preferences.alwaysOnTop )
+   {
+     on_alwaysOnTop_triggered( true );
+@@ -880,7 +878,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
+   #endif
+ #ifdef Q_OS_WIN32
+   gdAskMessage = RegisterWindowMessage( GD_MESSAGE_NAME );
+-  ( static_cast< QHotkeyApplication * >( qApp ) )->setMainWindow( this );
++  ( static_cast< QtSingleApplication * >( qApp ) )->setMainWindow( this );
+ #endif
+ 
+ #if QT_VERSION >= QT_VERSION_CHECK(4, 6, 0)
+@@ -2026,7 +2024,6 @@ void MainWindow::updatePronounceAvailability()
+ 
+ void MainWindow::editDictionaries( unsigned editDictionaryGroup )
+ {
+-  hotkeyWrapper.reset(); // No hotkeys while we're editing dictionaries
+   scanPopup.reset(); // No scan popup either. No one should use dictionaries.
+   closeHeadwordsDialog();
+   closeFullTextSearchDialog();
+@@ -2087,7 +2084,6 @@ void MainWindow::editDictionaries( unsigned editDictionaryGroup )
+   }
+ 
+   makeScanPopup();
+-  installHotKeys();
+ 
+   for( unsigned x = 0; x < dictionaries.size(); x++ )
+   {
+@@ -2106,7 +2102,6 @@ void MainWindow::editCurrentGroup()
+ 
+ void MainWindow::editPreferences()
+ {
+-  hotkeyWrapper.reset(); // So we could use the keys it hooks
+   scanPopup.reset(); // No scan popup either. No one should use dictionaries.
+   closeHeadwordsDialog();
+   closeFullTextSearchDialog();
+@@ -2229,7 +2224,6 @@ void MainWindow::editPreferences()
+   }
+ 
+   makeScanPopup();
+-  installHotKeys();
+ 
+   ftsIndexing.setDictionaries( dictionaries );
+   ftsIndexing.doIndexing();
+@@ -3073,71 +3067,6 @@ void MainWindow::toggleMainWindow( bool onlyShow )
+   }
+ }
+ 
+-void MainWindow::installHotKeys()
+-{
+-  hotkeyWrapper.reset(); // Remove the old one
+-
+-  if ( cfg.preferences.enableMainWindowHotkey ||
+-       cfg.preferences.enableClipboardHotkey )
+-  {
+-    try
+-    {
+-      hotkeyWrapper = new HotkeyWrapper( this );
+-    }
+-    catch( HotkeyWrapper::exInit & )
+-    {
+-      QMessageBox::critical( this, "GoldenDict",
+-        tr( "Failed to initialize hotkeys monitoring mechanism.<br>"
+-            "Make sure your XServer has RECORD extension turned on." ) );
+-
+-      return;
+-    }
+-
+-    if ( cfg.preferences.enableMainWindowHotkey )
+-      hotkeyWrapper->setGlobalKey( cfg.preferences.mainWindowHotkey.key1,
+-                                   cfg.preferences.mainWindowHotkey.key2,
+-                                   cfg.preferences.mainWindowHotkey.modifiers,
+-                                   0 );
+-
+-    if ( cfg.preferences.enableClipboardHotkey && scanPopup.get() )
+-    {
+-      hotkeyWrapper->setGlobalKey( cfg.preferences.clipboardHotkey.key1,
+-                                   cfg.preferences.clipboardHotkey.key2,
+-                                   cfg.preferences.clipboardHotkey.modifiers,
+-                                   1 );
+-    }
+-
+-    connect( hotkeyWrapper.get(), SIGNAL( hotkeyActivated( int ) ),
+-             this, SLOT( hotKeyActivated( int ) ),
+-#ifdef Q_OS_WIN32
+-             hotkeyWrapper->handleViaDLL() ? Qt::QueuedConnection : Qt::AutoConnection );
+-#else
+-             Qt::AutoConnection );
+-#endif
+-  }
+-}
+-
+-void MainWindow::hotKeyActivated( int hk )
+-{
+-  if ( !hk )
+-    toggleMainWindow();
+-  else
+-  if ( scanPopup.get() )
+-  {
+-#ifdef HAVE_X11
+-    // When the user requests translation with the Ctrl+C+C hotkey in certain apps
+-    // on some GNU/Linux systems, GoldenDict appears to handle Ctrl+C+C before the
+-    // active application finishes handling Ctrl+C. As a result, GoldenDict finds
+-    // the clipboard empty, silently cancels the translation request, and users report
+-    // that Ctrl+C+C is broken in these apps. Slightly delay handling the clipboard
+-    // hotkey to give the active application more time and thus work around the issue.
+-    QTimer::singleShot( 10, scanPopup.get(), SLOT( translateWordFromClipboard() ) );
+-#else
+-    scanPopup->translateWordFromClipboard();
+-#endif
+-  }
+-}
+-
+ void MainWindow::prepareNewReleaseChecks()
+ {
+   if ( cfg.preferences.checkForNewReleases )
+@@ -3675,7 +3604,6 @@ void MainWindow::on_saveArticle_triggered()
+ 
+ void MainWindow::on_rescanFiles_triggered()
+ {
+-  hotkeyWrapper.reset(); // No hotkeys while we're editing dictionaries
+   scanPopup.reset(); // No scan popup either. No one should use dictionaries.
+   closeHeadwordsDialog();
+   closeFullTextSearchDialog();
+@@ -3702,7 +3630,6 @@ void MainWindow::on_rescanFiles_triggered()
+   updateGroupList();
+ 
+   makeScanPopup();
+-  installHotKeys();
+ 
+   updateSuggestionList();
+ }
+@@ -3733,7 +3660,6 @@ void MainWindow::on_alwaysOnTop_triggered( bool checked )
+       show();
+     }
+ 
+-    installHotKeys();
+ }
+ 
+ void MainWindow::zoomin()
+diff --git a/mainwindow.hh b/mainwindow.hh
+index 87cd959d..c4bdd398 100644
+--- a/mainwindow.hh
++++ b/mainwindow.hh
+@@ -31,11 +31,6 @@
+ #include "fulltextsearch.hh"
+ #include "helpwindow.hh"
+ 
+-#include "hotkeywrapper.hh"
+-#ifdef HAVE_X11
+-#include <fixx11h.h>
+-#endif
+-
+ using std::string;
+ using std::vector;
+ 
+@@ -59,7 +54,7 @@ public:
+   }
+ };
+ 
+-class MainWindow: public QMainWindow, public DataCommitter
++class MainWindow: public QMainWindow
+ {
+   Q_OBJECT
+ 
+@@ -165,8 +160,6 @@ private:
+ 
+   sptr< ScanPopup > scanPopup;
+ 
+-  sptr< HotkeyWrapper > hotkeyWrapper;
+-
+   QTimer newReleaseCheckTimer; // Countdown to a check for the new program
+                                // release, if enabled
+   QNetworkReply *latestReleaseReply;
+@@ -236,9 +229,6 @@ private:
+   void toggleMainWindow( bool onlyShow = false );
+ #endif
+ 
+-  /// Creates hotkeyWrapper and hooks the currently set keys for it
+-  void installHotKeys();
+-
+   void applyZoomFactor();
+   void adjustCurrentZoomFactor();
+ 
+@@ -274,8 +264,6 @@ private:
+ 
+ private slots:
+ 
+-  void hotKeyActivated( int );
+-
+   /// If new release checks are on, santizies the next check time and starts
+   /// the timer. Does nothing otherwise.
+   void prepareNewReleaseChecks();
+diff --git a/preferences.cc b/preferences.cc
+index 1e83f78f..ba5b9eb1 100644
+--- a/preferences.cc
++++ b/preferences.cc
+@@ -1,9 +1,7 @@
+ #include "preferences.hh"
+-#include "keyboardstate.hh"
+ #include "language.hh"
+ #include "langcoder.hh"
+ #include <QMessageBox>
+-#include "broken_xrecord.hh"
+ #include "mainwindow.hh"
+ 
+ 
+@@ -171,26 +169,10 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
+   ui.selectBySingleClick->setChecked( p.selectWordBySingleClick);
+   ui.escKeyHidesMainWindow->setChecked( p.escKeyHidesMainWindow );
+ 
+-  ui.enableMainWindowHotkey->setChecked( p.enableMainWindowHotkey );
+-  ui.mainWindowHotkey->setHotKey( p.mainWindowHotkey );
+-  ui.enableClipboardHotkey->setChecked( p.enableClipboardHotkey );
+-  ui.clipboardHotkey->setHotKey( p.clipboardHotkey );
+-
+   ui.enableScanPopup->setChecked( p.enableScanPopup );
+   ui.startWithScanPopupOn->setChecked( p.startWithScanPopupOn );
+   ui.enableScanPopupModifiers->setChecked( p.enableScanPopupModifiers );
+ 
+-  ui.altKey->setChecked( p.scanPopupModifiers & KeyboardState::Alt );
+-  ui.ctrlKey->setChecked( p.scanPopupModifiers & KeyboardState::Ctrl );
+-  ui.shiftKey->setChecked( p.scanPopupModifiers & KeyboardState::Shift );
+-  ui.winKey->setChecked( p.scanPopupModifiers & KeyboardState::Win );
+-  ui.leftAlt->setChecked( p.scanPopupModifiers & KeyboardState::LeftAlt );
+-  ui.rightAlt->setChecked( p.scanPopupModifiers & KeyboardState::RightAlt );
+-  ui.leftCtrl->setChecked( p.scanPopupModifiers & KeyboardState::LeftCtrl );
+-  ui.rightCtrl->setChecked( p.scanPopupModifiers & KeyboardState::RightCtrl );
+-  ui.leftShift->setChecked( p.scanPopupModifiers & KeyboardState::LeftShift );
+-  ui.rightShift->setChecked( p.scanPopupModifiers & KeyboardState::RightShift );
+-
+   ui.scanPopupAltMode->setChecked( p.scanPopupAltMode );
+   ui.scanPopupAltModeSecs->setValue( p.scanPopupAltModeSecs );
+   ui.ignoreOwnClipboardChanges->setChecked( p.ignoreOwnClipboardChanges );
+@@ -289,9 +271,6 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
+ 
+   ui.audioPlaybackProgram->setText( p.audioPlaybackProgram );
+ 
+-  if ( !isRECORDBroken() )
+-    ui.brokenXRECORD->hide();
+-
+   // Proxy server
+ 
+   ui.useProxyServer->setChecked( p.proxyServer.enabled );
+@@ -389,26 +368,10 @@ Config::Preferences Preferences::getPreferences()
+   p.selectWordBySingleClick = ui.selectBySingleClick->isChecked();
+   p.escKeyHidesMainWindow = ui.escKeyHidesMainWindow->isChecked();
+ 
+-  p.enableMainWindowHotkey = ui.enableMainWindowHotkey->isChecked();
+-  p.mainWindowHotkey = ui.mainWindowHotkey->getHotKey();
+-  p.enableClipboardHotkey = ui.enableClipboardHotkey->isChecked();
+-  p.clipboardHotkey = ui.clipboardHotkey->getHotKey();
+-
+   p.enableScanPopup = ui.enableScanPopup->isChecked();
+   p.startWithScanPopupOn = ui.startWithScanPopupOn->isChecked();
+   p.enableScanPopupModifiers = ui.enableScanPopupModifiers->isChecked();
+ 
+-  p.scanPopupModifiers += ui.altKey->isChecked() ? KeyboardState::Alt : 0;
+-  p.scanPopupModifiers += ui.ctrlKey->isChecked() ? KeyboardState::Ctrl: 0;
+-  p.scanPopupModifiers += ui.shiftKey->isChecked() ? KeyboardState::Shift: 0;
+-  p.scanPopupModifiers += ui.winKey->isChecked() ? KeyboardState::Win: 0;
+-  p.scanPopupModifiers += ui.leftAlt->isChecked() ? KeyboardState::LeftAlt: 0;
+-  p.scanPopupModifiers += ui.rightAlt->isChecked() ? KeyboardState::RightAlt: 0;
+-  p.scanPopupModifiers += ui.leftCtrl->isChecked() ? KeyboardState::LeftCtrl: 0;
+-  p.scanPopupModifiers += ui.rightCtrl->isChecked() ? KeyboardState::RightCtrl: 0;
+-  p.scanPopupModifiers += ui.leftShift->isChecked() ? KeyboardState::LeftShift: 0;
+-  p.scanPopupModifiers += ui.rightShift->isChecked() ? KeyboardState::RightShift: 0;
+-
+   p.scanPopupAltMode = ui.scanPopupAltMode->isChecked();
+   p.scanPopupAltModeSecs = ui.scanPopupAltModeSecs->value();
+   p.ignoreOwnClipboardChanges = ui.ignoreOwnClipboardChanges->isChecked();
+@@ -624,16 +587,6 @@ void Preferences::sideShiftClicked( bool )
+     ui.shiftKey->setChecked( false );
+ }
+ 
+-void Preferences::on_enableMainWindowHotkey_toggled( bool checked )
+-{
+-  ui.mainWindowHotkey->setEnabled( checked );
+-}
+-
+-void Preferences::on_enableClipboardHotkey_toggled( bool checked )
+-{
+-  ui.clipboardHotkey->setEnabled( checked );
+-}
+-
+ void Preferences::on_buttonBox_accepted()
+ {
+   if ( prevInterfaceLanguage != ui.interfaceLanguage->currentIndex() )
+diff --git a/preferences.hh b/preferences.hh
+index 71142091..256d02d7 100644
+--- a/preferences.hh
++++ b/preferences.hh
+@@ -44,9 +44,6 @@ private slots:
+   void sideCtrlClicked( bool );
+   void sideShiftClicked( bool );
+ 
+-  void on_enableMainWindowHotkey_toggled( bool checked );
+-  void on_enableClipboardHotkey_toggled( bool checked );
+-
+   void on_buttonBox_accepted();
+ 
+   void on_useExternalPlayer_toggled( bool enabled );
+diff --git a/preferences.ui b/preferences.ui
+index 073fad17..00cc8b8b 100644
+--- a/preferences.ui
++++ b/preferences.ui
+@@ -717,151 +717,6 @@ seconds, which is specified here.</string>
+        </item>
+       </layout>
+      </widget>
+-     <widget class="QWidget" name="tab_5">
+-      <attribute name="icon">
+-       <iconset resource="resources.qrc">
+-        <normaloff>:/icons/hotkeys.png</normaloff>:/icons/hotkeys.png</iconset>
+-      </attribute>
+-      <attribute name="title">
+-       <string>Hotkeys</string>
+-      </attribute>
+-      <layout class="QVBoxLayout" name="verticalLayout_12">
+-       <item>
+-        <spacer name="verticalSpacer_11">
+-         <property name="orientation">
+-          <enum>Qt::Vertical</enum>
+-         </property>
+-         <property name="sizeHint" stdset="0">
+-          <size>
+-           <width>20</width>
+-           <height>19</height>
+-          </size>
+-         </property>
+-        </spacer>
+-       </item>
+-       <item>
+-        <widget class="QCheckBox" name="enableMainWindowHotkey">
+-         <property name="text">
+-          <string>Use the following hotkey to show or hide the main window:</string>
+-         </property>
+-        </widget>
+-       </item>
+-       <item>
+-        <layout class="QHBoxLayout" name="horizontalLayout_7">
+-         <item>
+-          <spacer name="horizontalSpacer_2">
+-           <property name="orientation">
+-            <enum>Qt::Horizontal</enum>
+-           </property>
+-           <property name="sizeHint" stdset="0">
+-            <size>
+-             <width>40</width>
+-             <height>20</height>
+-            </size>
+-           </property>
+-          </spacer>
+-         </item>
+-         <item>
+-          <widget class="HotKeyEdit" name="mainWindowHotkey">
+-           <property name="enabled">
+-            <bool>false</bool>
+-           </property>
+-          </widget>
+-         </item>
+-        </layout>
+-       </item>
+-       <item>
+-        <widget class="QCheckBox" name="enableClipboardHotkey">
+-         <property name="text">
+-          <string>Use the following hotkey to translate a word from clipboard:</string>
+-         </property>
+-        </widget>
+-       </item>
+-       <item>
+-        <layout class="QHBoxLayout" name="horizontalLayout_8">
+-         <item>
+-          <spacer name="horizontalSpacer_4">
+-           <property name="orientation">
+-            <enum>Qt::Horizontal</enum>
+-           </property>
+-           <property name="sizeHint" stdset="0">
+-            <size>
+-             <width>40</width>
+-             <height>20</height>
+-            </size>
+-           </property>
+-          </spacer>
+-         </item>
+-         <item>
+-          <widget class="HotKeyEdit" name="clipboardHotkey">
+-           <property name="enabled">
+-            <bool>false</bool>
+-           </property>
+-          </widget>
+-         </item>
+-        </layout>
+-       </item>
+-       <item>
+-        <spacer name="verticalSpacer_13">
+-         <property name="orientation">
+-          <enum>Qt::Vertical</enum>
+-         </property>
+-         <property name="sizeType">
+-          <enum>QSizePolicy::Fixed</enum>
+-         </property>
+-         <property name="sizeHint" stdset="0">
+-          <size>
+-           <width>20</width>
+-           <height>16</height>
+-          </size>
+-         </property>
+-        </spacer>
+-       </item>
+-       <item>
+-        <widget class="QLabel" name="label_8">
+-         <property name="text">
+-          <string>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</string>
+-         </property>
+-         <property name="wordWrap">
+-          <bool>true</bool>
+-         </property>
+-        </widget>
+-       </item>
+-       <item>
+-        <widget class="QLabel" name="brokenXRECORD">
+-         <property name="text">
+-          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+-p, li { white-space: pre-wrap; }
+-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'DejaVu Sans'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Note: You appear to be running an X.Org XServer release which has the RECORD extension broken. Hotkeys in GoldenDict will probably not work. This must be fixed in the server itself. Please refer to the following &lt;/span&gt;&lt;a href=&quot;https://bugs.freedesktop.org/show_bug.cgi?id=20500&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;bug entry&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt; and leave a comment there if you like.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+-         </property>
+-         <property name="textFormat">
+-          <enum>Qt::RichText</enum>
+-         </property>
+-         <property name="wordWrap">
+-          <bool>true</bool>
+-         </property>
+-         <property name="openExternalLinks">
+-          <bool>true</bool>
+-         </property>
+-        </widget>
+-       </item>
+-       <item>
+-        <spacer name="verticalSpacer_12">
+-         <property name="orientation">
+-          <enum>Qt::Vertical</enum>
+-         </property>
+-         <property name="sizeHint" stdset="0">
+-          <size>
+-           <width>20</width>
+-           <height>53</height>
+-          </size>
+-         </property>
+-        </spacer>
+-       </item>
+-      </layout>
+-     </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="icon">
+        <iconset resource="resources.qrc">
+diff --git a/scanpopup.cc b/scanpopup.cc
+index 4de1ca95..2706d42e 100644
+--- a/scanpopup.cc
++++ b/scanpopup.cc
+@@ -590,7 +590,7 @@ void ScanPopup::handleInputWord( QString const & str, bool forcePopup )
+ 
+   // Check key modifiers
+ 
+-  if ( cfg.preferences.enableScanPopupModifiers && !checkModifiersPressed( cfg.preferences.scanPopupModifiers ) )
++  if ( cfg.preferences.enableScanPopupModifiers )
+   {
+     if ( cfg.preferences.scanPopupAltMode )
+     {
+@@ -1141,15 +1141,6 @@ void ScanPopup::altModePoll()
+     altModePollingTimer.stop();
+     altModeExpirationTimer.stop();
+   }
+-  else
+-  if ( checkModifiersPressed( cfg.preferences.scanPopupModifiers ) )
+-  {
+-    altModePollingTimer.stop();
+-    altModeExpirationTimer.stop();
+-
+-    inputPhrase = pendingInputPhrase;
+-    engagePopup( false );
+-  }
+ }
+ 
+ void ScanPopup::pageLoaded( ArticleView * )
+-- 
+2.39.2
+
