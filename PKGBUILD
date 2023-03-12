@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=boxxy
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="Put bad Linux applications in a box with only their files"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('53de81e99025cd852053f37769727990a5f854acd3516813e1efca8a145bb73b')
+sha256sums=('dde498512cb927ad9ab43f25bba2207446c96db83a6f066f7d19d526931716be')
 options=('!lto')
 
 prepare() {
