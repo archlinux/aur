@@ -1,27 +1,27 @@
-# Maintainer: T. Jameson Little <t.jameson.little@gmail.com>
- 
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: T. Jameson Little <t.jameson.little@gmail.com>
+
 pkgname=geckodriver-bin
-pkgver=0.11.1
-pkgrel=3
-pkgdesc="Proxy for using W3C WebDriver-compatible clients to interact with Gecko-based browsers."
-arch=('i686' 'x86_64')
-url="https://github.com/mozilla/geckodriver"
+pkgver=0.32.2
+pkgrel=1
+pkgdesc="WebDriver for Firefox"
+arch=('i686' 'x86_64' 'aarch64')
+url="https://firefox-source-docs.mozilla.org/testing/geckodriver/"
 license=('MPL')
-optdepends=('firefox')
-provides=('geckodriver')
+provides=("geckodriver=$pkgver")
 conflicts=('geckodriver')
- 
-if [ "$CARCH" = "i686" ]; then
-    _arch='linux32'
-    md5sums=('e116d4339739044d69461790f1ee244d')
-elif [ "$CARCH" = "x86_64" ]; then
-    _arch='linux64'
-    md5sums=('07fc72ee51fe79ed2906f1b79f124c1c')
-fi
- 
-source=("${pkgname}_${pkgver}_${_arch}.tar.gz::https://github.com/mozilla/geckodriver/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-${_arch}.tar.gz")
- 
+source_i686=("https://github.com/mozilla/geckodriver/releases/download/v${pkgver}/geckodriver-v${pkgver}-linux32.tar.gz"{,.asc})
+source_x86_64=("https://github.com/mozilla/geckodriver/releases/download/v${pkgver}/geckodriver-v${pkgver}-linux64.tar.gz"{,.asc})
+source_aarch64=("https://github.com/mozilla/geckodriver/releases/download/v${pkgver}/geckodriver-v${pkgver}-linux-aarch64.tar.gz"{,.asc})
+sha256sums_i686=('adc594696c6364d6068a27ba74c22650f3fa1f02cfb824123b439f17443d5577'
+                 'SKIP')
+sha256sums_x86_64=('1eab226bf009599f5aa1d77d9ed4c374e10a03fd848b500be1b32cefd2cbec64'
+                   'SKIP')
+sha256sums_aarch64=('abe7aa14104eacd451d06993c024b4cdb32bbded476230ae7e1c349b93b5601c'
+                    'SKIP')
+validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353')  # Mozilla Software Releases <release@mozilla.com>
+
+
 package() {
-  mkdir -p "${pkgdir}/usr/bin/"
-  install -D -m 755 "${srcdir}/${pkgname%-bin}" "${pkgdir}/usr/bin/"
+  install -Dm755 "$srcdir/geckodriver" -t "$pkgdir/usr/bin"
 }
