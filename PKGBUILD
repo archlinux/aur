@@ -2,7 +2,7 @@
 
 pkgname=morewaita-git
 _reponame=MoreWaita
-pkgver=r60.cfc2b56
+pkgver=43.3.r39.gb7bfe70
 pkgrel=1
 pkgdesc='An Adwaita style extra icons theme for Gnome Shell.'
 arch=(any)
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$_reponame"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 package() {

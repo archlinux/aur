@@ -1,6 +1,6 @@
 pkgbase = morewaita-git
 	pkgdesc = An Adwaita style extra icons theme for Gnome Shell.
-	pkgver = r60.cfc2b56
+	pkgver = 43.3.r39.gb7bfe70
 	pkgrel = 1
 	url = https://github.com/somepaulo/MoreWaita
 	arch = any
