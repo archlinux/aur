@@ -14,7 +14,6 @@ depends=('perl-apache-session' 'perl-cache-cache' 'perl-clone' 'perl-config-inif
          'perl-string-random' 'perl-unicode-string' 'perl-uri' 'perl-libwww' 'perl-lwp-protocol-https'
          'perl-xml-simple' 'perl-xml-libxslt' 'perl-crypt-urandom' 'perl-json-xs'
          'perl-module-pluggable' 'perl-convert-base32' 'perl-text-unidecode' 'imagemagick'
-         'perl-net-ip' # missing dependency on perl-authen-radius
          'perl-gssapi' 'perl-authen-radius'
 )
 makedepends=('uglify-js' 'python-sphinx' 'python-sphinx-bootstrap-theme')

@@ -47,7 +47,6 @@ pkgbase = lemonldap-ng
 	depends = perl-convert-base32
 	depends = perl-text-unidecode
 	depends = imagemagick
-	depends = perl-net-ip
 	depends = perl-gssapi
 	depends = perl-authen-radius
 	optdepends = uwsgi-plugin-psgi: for running under uWSGI
