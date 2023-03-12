@@ -1,11 +1,11 @@
 # Maintainer: Klaus Alexander Seistrup <klaus@seistrup.dk>
-# Contributor: Anna <cyber AT sysrq DOT in>
+# Contributor: Anna Vyalkova <cyber AT sysrq DOT in>
 # -*- sh -*-
 
 pkgname='offpunk-git'
 _pkgname='offpunk'
 pkgver=1.9.1.r1.g826aa4e
-pkgrel=2
+pkgrel=3
 epoch=2
 pkgdesc='Fork of the command-line Gemini client AV-98 with added offline capabilities'
 arch=('any')
