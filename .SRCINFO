@@ -1,0 +1,14 @@
+pkgbase = mockoon-appimage
+	pkgdesc = The easiest and quickest way to run mock APIs locally. No remote deployment, no account required, open source.
+	pkgver = 1.23.0
+	pkgrel = 1
+	url = https://mockoon.com/
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = hicolor-icon-theme
+	options = !strip
+	source = mockoon-1.23.0.AppImage::https://github.com/mockoon/mockoon/releases/download/v1.23.0/mockoon-1.23.0.AppImage
+	sha256sums = d5ecfe57a6d597292eff3af7a6e0da3f26be3fd09000a4cb305fc5db7cafa47d
+
+pkgname = mockoon-appimage
