@@ -1,7 +1,10 @@
 # Maintainer: Salamandar <felix@piedallu.me>
+# Contributor: Jaroslav Lichtblau <svetlemodry@archlinux.org>
+# Contributor: Martin Wimpress <code@flexion.org>
+# Contributor: kozec <kozec at kozec dot com>
 
 pkgname=syncthing-gtk
-pkgver=0.9.4.4.2
+pkgver=0.9.4.5
 pkgrel=1
 pkgdesc='GTK3 based GUI and notification area icon for Syncthing.'
 arch=('any')
@@ -11,23 +14,19 @@ replaces=( 'syncthing-gtk-python3' )
 provides=( 'syncthing-gtk-python3' )
 conflicts=('syncthing-gtk-python3' )
 depends=(
-    'syncthing>=0.14.50' 'gtk3' 'libnotify'
+    'syncthing>=1.0' 'gtk3' 'libnotify'
     'python-bcrypt' 'python-cairo' 'python-dateutil' 'python-gobject'
 )
 makedepends=('python-setuptools' 'git')
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
-    kde-statusicon.patch
 )
 sha256sums=(
-    '24d34699acd58af0933f51476fe3af655238788be52c4f1c96c6d0ebb1706703'
-    '109d8c970045e60251fc64865f05322b23a0995ee6725be02905941cb3a1ae0d'
+    '42758c3490a7f2ab1323c2ee6a6bef460ceb13b1f5d412c02f3b9347e798573c'
 )
 
 prepare() {
     cd "$pkgname-$pkgver"
-    # Enable Gtk.StatusIcon in KDE
-    patch -Np1 -i ../kde-statusicon.patch
 }
 
 build() {
