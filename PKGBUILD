@@ -16,7 +16,7 @@ options=('!lto')
 source=('git+https://github.com/pop-os/cosmic-text-editor.git'
         "${pkgname%-git}.desktop")
 sha256sums=('SKIP'
-            '058f525757372ac38dca257cf03a164cbcccb37c3b2b25f979be38aa2274947c')
+            '5a1614e9d0a072d9711d17bdacf456ba8877fc365ad263cff7c0e8283f01a799')
 
 pkgver() {
   cd "${pkgname%-git}"
