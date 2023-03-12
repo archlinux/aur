@@ -1,11 +1,13 @@
 pkgbase = perfetto-git
 	pkgdesc = System profiling, app tracing and trace analysis
-	pkgver = android.s.v2.preview.1.r1043.g1357bd1327
+	pkgver = android.security.13.0.0_r2.r6458.g07b15988f0
 	pkgrel = 1
 	url = https://perfetto.dev/
 	arch = x86_64
 	license = apache
 	makedepends = git
+	makedepends = python
+	makedepends = clang
 	depends = gcc-libs
 	provides = perfetto
 	conflicts = perfetto

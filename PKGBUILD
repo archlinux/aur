@@ -1,13 +1,13 @@
 # Maintainer: haagch <christoph.haag@collabora.com>
 pkgname=perfetto-git
-pkgver=android.s.v2.preview.1.r1043.g1357bd1327
+pkgver=android.security.13.0.0_r2.r6458.g07b15988f0
 pkgrel=1
 pkgdesc="System profiling, app tracing and trace analysis"
 arch=(x86_64)
 url="https://perfetto.dev/"
 license=('apache')
 depends=('gcc-libs')
-makedepends=('git')
+makedepends=('git' 'python' 'clang')
 provides=('perfetto')
 conflicts=('perfetto')
 options=()
