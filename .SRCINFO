@@ -1,0 +1,75 @@
+pkgbase = boost174
+	pkgdesc = Free peer-reviewed portable C++ source libraries (version 1.74)
+	pkgver = 1.74.0
+	pkgrel = 1
+	url = https://www.boost.org/
+	arch = x86_64
+	license = custom
+	makedepends = icu
+	makedepends = python39
+	makedepends = bzip2
+	makedepends = openmpi
+	makedepends = zstd
+	source = https://boostorg.jfrog.io/artifactory/main/release/1.74.0/source/boost_1_74_0.tar.bz2
+	source = boost174-ublas-c++20-allocator-patch1.patch::https://github.com/boostorg/ublas/commit/47a314dd01d1.patch
+	source = boost174-ublas-c++20-allocator-patch2.patch::https://github.com/boostorg/ublas/commit/a23a903f9a36.patch
+	source = boost174-ublas-c++20-iterator.patch::https://github.com/boostorg/ublas/commit/a31e5cffa85f.patch
+	sha256sums = 83bfc1507731a0906e387fc28b7ef5417d591429e51e788417fe9ff025e116b1
+	sha256sums = 3f42688a87c532ac916889f21a4487b9e94a38a047b18724385eaa474719a9f7
+	sha256sums = 67f413463a1a12bdf63c913acd318148dda618d3f994e466232e265bbf0c2903
+	sha256sums = aa38addb40d5f44b4a8472029b475e7e6aef1c460509eb7d8edf03491dc1b5ee
+
+pkgname = boost174
+	pkgdesc = Free peer-reviewed portable C++ source libraries (version 1.74) (development headers)
+	depends = boost-libs=1.74.0
+	optdepends = python39: for python bindings
+	provides = boost=1.74.0
+	options = staticlibs
+
+pkgname = boost174-libs
+	pkgdesc = Free peer-reviewed portable C++ source libraries (version 1.74) (runtime libraries)
+	depends = bzip2
+	depends = zlib
+	depends = icu
+	depends = zstd
+	optdepends = openmpi: for mpi support
+	provides = boost-libs=1.74.0
+	provides = libboost_atomic.so=1.74.0
+	provides = libboost_chrono.so=1.74.0
+	provides = libboost_container.so=1.74.0
+	provides = libboost_context.so=1.74.0
+	provides = libboost_contract.so=1.74.0
+	provides = libboost_coroutine.so=1.74.0
+	provides = libboost_date_time.so=1.74.0
+	provides = libboost_fiber.so=1.74.0
+	provides = libboost_filesystem.so=1.74.0
+	provides = libboost_graph.so=1.74.0
+	provides = libboost_graph_parallel.so=1.74.0
+	provides = libboost_iostreams.so=1.74.0
+	provides = libboost_locale.so=1.74.0
+	provides = libboost_log.so=1.74.0
+	provides = libboost_log_setup.so=1.74.0
+	provides = libboost_math_c99.so=1.74.0
+	provides = libboost_math_c99f.so=1.74.0
+	provides = libboost_math_c99l.so=1.74.0
+	provides = libboost_math_tr1.so=1.74.0
+	provides = libboost_math_tr1f.so=1.74.0
+	provides = libboost_math_tr1l.so=1.74.0
+	provides = libboost_mpi.so=1.74.0
+	provides = libboost_numpy39.so=1.74.0
+	provides = libboost_prg_exec_monitor.so=1.74.0
+	provides = libboost_program_options.so=1.74.0
+	provides = libboost_python39.so=1.74.0
+	provides = libboost_random.so=1.74.0
+	provides = libboost_regex.so=1.74.0
+	provides = libboost_serialization.so=1.74.0
+	provides = libboost_stacktrace_addr2line.so=1.74.0
+	provides = libboost_stacktrace_basic.so=1.74.0
+	provides = libboost_stacktrace_noop.so=1.74.0
+	provides = libboost_system.so=1.74.0
+	provides = libboost_thread.so=1.74.0
+	provides = libboost_timer.so=1.74.0
+	provides = libboost_type_erasure.so=1.74.0
+	provides = libboost_unit_test_framework.so=1.74.0
+	provides = libboost_wave.so=1.74.0
+	provides = libboost_wserialization.so=1.74.0
