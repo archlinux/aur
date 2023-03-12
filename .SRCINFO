@@ -1,0 +1,14 @@
+pkgbase = pg_squeeze
+	pkgdesc = A PostgreSQL extension for automatic bloat cleanup
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/cybertec-postgresql/pg_squeeze
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = clang
+	depends = postgresql
+	source = https://github.com/cybertec-postgresql/pg_squeeze/archive/refs/tags/REL1_5_0.tar.gz
+	sha256sums = 06313282414dc0d3e29a01272145b0e402d89bd90298f37f86f86f2ef2ddcd3a
+
+pkgname = pg_squeeze
