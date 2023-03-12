@@ -37,6 +37,7 @@ package() {
 	install -Dm644 "$srcdir/icon.png" "${pkgdir}/usr/share/pixmaps/godot2d.png"
 	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	rm LICENSE icon.png godot2d.desktop ./"godot-2d_v${_ver_tag}_"*
-	mkdir -p "$pkgdir/usr/share/godot/export_templates/${_pkgver_full}"
-	cp ./* "$pkgdir/usr/share/godot/export_templates/${_pkgver_full}"
+	mkdir -p "$pkgdir/usr/share/godot/export_templates/${pkgver}"
+	cp ./* "$pkgdir/usr/share/godot/export_templates/${pkgver}"
+	echo "templates in /usr/share/godot/export_templates/${pkgver}, please link to ~/.local/share/godot/export_templates/${pkgver}"
 }
