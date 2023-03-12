@@ -1,13 +1,14 @@
 pkgbase = nginx-mainline-mod-njs
 	pkgdesc = nginScript module for mainline nginx
 	pkgver = 0.7.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nginx.org/en/docs/njs_about.html
 	arch = i686
 	arch = x86_64
 	license = CUSTOM
 	makedepends = nginx-mainline-src
 	depends = nginx-mainline
+	depends = libxslt
 	source = njs-0.7.11.tar.gz::http://hg.nginx.org/njs/archive/0.7.11.tar.gz
 	sha256sums = 6661a8e545ffadf8561f2d4a097e75fed420141eebbb06a4d09d51a507a4938f
 

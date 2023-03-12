@@ -2,13 +2,13 @@
 
 pkgname=nginx-mainline-mod-njs
 pkgver=0.7.11 # http://hg.nginx.org/njs/tags
-pkgrel=1
+pkgrel=2
 
 _modname="${pkgname#nginx-mainline-mod-}"
 
 pkgdesc='nginScript module for mainline nginx'
 arch=('i686' 'x86_64')
-depends=('nginx-mainline')
+depends=('nginx-mainline' 'libxslt')
 makedepends=('nginx-mainline-src')
 url="https://nginx.org/en/docs/njs_about.html"
 license=('CUSTOM')
