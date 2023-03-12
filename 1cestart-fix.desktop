@@ -1,0 +1,21 @@
+[Desktop Entry]
+Categories=Office;Finance;
+Comment[ru_RU]=
+Comment=
+Exec='/usr/bin/1cestart-fix.sh'
+GenericName[ru_RU]=
+GenericName=
+Icon=/usr/share/1C_Fix/1cestart-fix.png
+MimeType=
+Name[ru_RU]=1С:Предприятие x64
+Name=1С:Предприятие x64 fix
+NoDisplay=false
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+Version=1.0
+X-Desktop-File-Install-Version=0.26
+X-KDE-SubstituteUID=false
+X-KDE-Username=

@@ -1,7 +1,7 @@
 pkgbase = 1c_enterprise_meta
 	pkgdesc = 1C 8.3 metapackage for Linux
 	pkgver = 8.3
-	pkgrel = 3
+	pkgrel = 4
 	arch = any
 	license = GPL
 	depends = freetype2
@@ -33,5 +33,11 @@ pkgbase = 1c_enterprise_meta
 	depends = aspell-ru
 	optdepends = ttf-ms-fonts: Core TTF Fonts from Microsoft
 	optdepends = aksusbd-bin: Sentinel AKSUSB daemon
+	source = 1cestart-fix.sh
+	source = 1cestart-fix.png
+	source = 1cestart-fix.desktop
+	sha256sums = 6e6102168c091f888e46cd2158ff9ced2f66148e5924b3107046fe9db6d3d548
+	sha256sums = 513fa9b55263b769717fd7ebec62cbd3147d2685686609c3ce906417b4553718
+	sha256sums = f2fabcd07eb76b7656584058b9805a3f1e2a5c4b6b5cee8c8071957c3c4f2373
 
 pkgname = 1c_enterprise_meta
