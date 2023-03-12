@@ -2,17 +2,20 @@
 
 pkgname=texttest
 pkgver=4.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for text-based functional testing"
 arch=('any')
 url="https://github.com/texttest/texttest"
 license=('LGPL')
 makedepends=(python-setuptools)
 depends=(
-  python
-  python-psutil
-  python-gobject
   gtk3
+  libblockdev
+  python-boto
+  python-certifi
+  python-gobject
+  python-matplotlib
+  python-psutil
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
@@ -25,6 +28,8 @@ build() {
 
   python setup.py build
 }
+
+
 
 package() {
   cd "$_archive"
