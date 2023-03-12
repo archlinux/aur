@@ -1,0 +1,15 @@
+pkgbase = utf8cpp-git
+	pkgdesc = UTF-8 with C++ in a Portable Way
+	pkgver = 3.2.3.r1.g2ad9957
+	pkgrel = 1
+	url = https://github.com/nemtrif/utfcpp
+	arch = any
+	license = custom:BSL
+	makedepends = git
+	makedepends = cmake
+	provides = utf8cpp=3.2.3.r1.g2ad9957
+	conflicts = utf8cpp
+	source = git+https://github.com/nemtrif/utfcpp.git
+	sha256sums = SKIP
+
+pkgname = utf8cpp-git
