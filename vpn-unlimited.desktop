@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+TryExec=vpn-unlimited
+Exec=vpn-unlimited
+Icon=vpn-unlimited
+Terminal=false
+Categories=Network;
+
+Name=VPN Unlimited
+Comment=VPN Unlimited is a high-quality cross-platform VPN service with no limits on traffic bandwidth and connection speed
+Keywords=vpn;unlimited;openvpn;security;network

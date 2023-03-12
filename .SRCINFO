@@ -1,7 +1,7 @@
 pkgbase = vpn-unlimited
 	pkgdesc = VPN Unlimited client application
 	pkgver = 8.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.vpnunlimitedapp.com
 	install = vpn-unlimited.install
 	arch = x86_64
@@ -21,7 +21,9 @@ pkgbase = vpn-unlimited
 	depends = boost-libs=1.74.0
 	source = https://geo.keepsolidcdn.com/soft/vpn/Linux/VPN_Unlimited_8.5.2_amd64_mint.deb
 	source = vpn-unlimited-daemon.service
+	source = vpn-unlimited.desktop
 	sha256sums = 43ed1a73d97dd33a87b77d319a9e0391a1077b8a0fe77190f13ae690b584a7ae
 	sha256sums = dd5ba49842bcbf4c5f722bac2ab3d4c919c676bc29c1ca269678e8a53c0e6a41
+	sha256sums = 039dd8ab8b49dfe20ce055b0069d018bc16706f5d9005503501a85b918635f7e
 
 pkgname = vpn-unlimited

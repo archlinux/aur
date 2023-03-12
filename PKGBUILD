@@ -3,7 +3,7 @@
 
 pkgname=vpn-unlimited
 pkgver=8.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="VPN Unlimited client application"
 arch=(x86_64)
 url="https://www.vpnunlimitedapp.com"
@@ -30,10 +30,12 @@ install=vpn-unlimited.install
 source=(
   "https://geo.keepsolidcdn.com/soft/vpn/Linux/VPN_Unlimited_${pkgver}_amd64_mint.deb"
   "vpn-unlimited-daemon.service"
+  "vpn-unlimited.desktop"
 )
 sha256sums=(
   '43ed1a73d97dd33a87b77d319a9e0391a1077b8a0fe77190f13ae690b584a7ae'
   'dd5ba49842bcbf4c5f722bac2ab3d4c919c676bc29c1ca269678e8a53c0e6a41'
+  '039dd8ab8b49dfe20ce055b0069d018bc16706f5d9005503501a85b918635f7e'
 )
 
 package() {
@@ -46,6 +48,9 @@ package() {
 
   install -Dm644 "$pkgdir/usr/share/doc/vpn-unlimited/copyright" "$pkgdir/usr/share/licenses/$pkgname/copyright"
   rm --recursive "$pkgdir/usr/share/doc"
+
+  rm "$pkgdir/usr/share/applications/vpn-unlimited.desktop"
+  install -Dm644 "$srcdir/vpn-unlimited.desktop" "$pkgdir/usr/share/applications/vpn-unlimited.desktop"
 
   find "$pkgdir/usr/lib" -type f -name "*.so*" -exec chmod +x {} +
 

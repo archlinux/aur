@@ -1,4 +1,7 @@
-pkg/
-src/
-*.deb
-*.pkg.tar*
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!vpn-unlimited-daemon.service
+!vpn-unlimited.desktop
+!vpn-unlimited.install
