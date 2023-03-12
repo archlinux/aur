@@ -1,6 +1,6 @@
 pkgbase = xemu-bin
 	pkgdesc = Original Xbox Emulator
-	pkgver = 0.7.84
+	pkgver = 0.7.85
 	pkgrel = 1
 	url = https://xemu.app/
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = xemu-bin
 	provides = xemu-bin
 	conflicts = xemu
 	conflicts = xemu-git
-	noextract = xemu-0.7.84.AppImage
+	noextract = xemu-0.7.85.AppImage
 	options = !strip
-	source = xemu-0.7.84.AppImage::https://github.com/xemu-project/xemu/releases/download/v0.7.84/xemu-v0.7.84-x86_64.AppImage
-	sha256sums = 3de2afbe8c7e2f0bdcde3cf1e8be3534b32027be026369d6697baa1962348cc1
+	source = xemu-0.7.85.AppImage::https://github.com/xemu-project/xemu/releases/download/v0.7.85/xemu-v0.7.85-x86_64.AppImage
+	sha256sums = b91739253b3af87aa6e6a4559d9d0d612a68ba210cebe19927d71d00ddc0d285
 
 pkgname = xemu-bin
