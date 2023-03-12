@@ -1,11 +1,9 @@
 pkgbase = unzipx-git
 	pkgdesc = Rust unzip, support for parallel decompression, automatic detection encoding
-	pkgver = 0.1.0.19.gc6ceb86
+	pkgver = 0.1.0.27.g1a4f74d
 	pkgrel = 1
 	url = https://github.com/quininer/unzipx
 	arch = x86_64
-	arch = i686
-	arch = aarch64
 	license = MIT
 	makedepends = cargo
 	makedepends = git
@@ -13,7 +11,7 @@ pkgbase = unzipx-git
 	depends = zstd
 	provides = unzipx
 	conflicts = unzipx
-	source = unzipx-git::git+https://github.com/quininer/unzipx.git
+	source = git+https://github.com/quininer/unzipx.git
 	sha256sums = SKIP
 
 pkgname = unzipx-git
