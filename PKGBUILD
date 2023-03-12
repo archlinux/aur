@@ -1,9 +1,9 @@
 pkgbase=kodi-eggz
 pkgname=kodi-eggz
-pkgver=20.0
-gittag=20.0-Nexus
+pkgver=20.1
+gittag=20.1-Nexus
 gittagvfs=20.1.0-Nexus
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
