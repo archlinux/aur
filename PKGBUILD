@@ -3,8 +3,8 @@
 pkgname=newleaf
 _repo=NewLeaf
 pkgdesc="A YouTube data extractor, compatible with the Invidious API."
-pkgver=r119.714f103
-pkgrel=3
+pkgver=r122.82f28cb
+pkgrel=1
 arch=('x86_64')
 url="https://sr.ht/~cadence/tube/"
 license=('AGPL3')
