@@ -6,9 +6,9 @@ _pkgbase="linux-$_target"
 pkgbase="$_pkgbase-bin"
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgver=5.10.110
-_armbver=22.11.2
+_armbver=23.02.2
 _kernver="$pkgver-$_target"
-pkgrel=4
+pkgrel=5
 arch=('aarch64')
 _desc="AArch64 multi-platform $_target"
 url="https://github.com/armbian/build"
@@ -17,17 +17,17 @@ options=('!strip')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 source=(
-    "linux.preset"
-    "https://apt.armbian.com/pool/main/l/linux-$_kernver/linux-dtb-legacy-${_target}_${_armbver}_arm64.deb"
-    "https://apt.armbian.com/pool/main/l/linux-$_kernver/linux-image-legacy-${_target}_${_armbver}_arm64.deb"
-    "https://apt.armbian.com/pool/main/l/linux-$_kernver/linux-headers-legacy-${_target}_${_armbver}_arm64.deb"
-    )
+  "linux.preset"
+  "https://apt.armbian.com/pool/main/l/linux-$_kernver/linux-dtb-legacy-${_target}_${_armbver}_arm64.deb"
+  "https://apt.armbian.com/pool/main/l/linux-$_kernver/linux-image-legacy-${_target}_${_armbver}_arm64.deb"
+  "https://apt.armbian.com/pool/main/l/linux-$_kernver/linux-headers-legacy-${_target}_${_armbver}_arm64.deb"
+)
 sha512sums=(
-    '15a035013f7cc21f8a4250d50f297d9bdef271ee06e83b4b5193432319ba45d1c892e79ec77f4e97ecdf9e7f90ef33f29454b53fa1653fe212054557afe2b91b'
-    '27ff3c018433a5bb05e66778a05bc8711ce579fc280284eabd2882346bc5317ec8c570d9132e20563df43819a163490e3b04a72b2f7f290907ee8702aef6457a'
-    '352b99578e0eb2f38c2f2f4ac7f2105a8bebcd91a949382a9bac5fef5c4890cd2ee8ebfa3c2d1bd7a03538b0046ac628fb88f4ca9c5b13eeaa05c259c97cf8cc'
-    'dd15832abc7e227bf1b40454b754374d2787868c77025f17b7062bc42a810e536118d86e1661ac19c5994aa1198b040f31d67b7a8795199605b35fe69361938b'
-    )
+  '15a035013f7cc21f8a4250d50f297d9bdef271ee06e83b4b5193432319ba45d1c892e79ec77f4e97ecdf9e7f90ef33f29454b53fa1653fe212054557afe2b91b'
+  '972e527b1877ae4f377f6a30175647d025ca5d81b85c466be0f4af99e0aab24a7da531dd5ac0128184a3adfebf04a129ac4cf6768e760301b5e203c1ce7dd3df'
+  '2f5cfe6118ae7cfd1ef6c0ff225cffb95a19e99a91e3bf17fafb8ccc0686398d0618bd7b44025553daffb9df08f6d3fcb9034c11461833616ef683c93863e627'
+  'f33ed660cfb561bc0463f7901254e7ee8419deb7c13cded3277eaf43ec41db5d313f7cb60d6d1b22d3100cd54b7da11b8224215b67968dbddf9f59aef66edcbe'
+)
 noextract=("${source[@]##*/}")
 
 prepare() {
