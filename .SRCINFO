@@ -1,7 +1,7 @@
 pkgbase = photosir-himirage-bin
 	pkgdesc = A multifunctional image processing software.悟空图像是一款多功能图像处理软件
-	pkgver = 2.0.4.20804
-	pkgrel = 2
+	pkgver = 2.5.1.30303
+	pkgrel = 1
 	url = https://photosir.com
 	arch = x86_64
 	license = unknown
@@ -16,7 +16,7 @@ pkgbase = photosir-himirage-bin
 	depends = unixodbc
 	depends = qt5-sensors
 	provides = photosir
-	source = cn.photosir.himirage-2.0.4.20804.deb::https://cdn.photosir.cn/package/uos/cn.photosir.himirage.amd.deb
+	source = cn.photosir.himirage-2.5.1.30303.deb::https://cdn.photosir.cn/package/uos/cn.photosir.himirage.amd.deb
 	sha256sums = e40acc218e5ca68910f383356ec79f3818a6898fc7b2594d37d44676c779416d
 
 pkgname = photosir-himirage-bin

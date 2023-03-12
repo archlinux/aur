@@ -1,9 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname='photosir-himirage-bin'
 _pkgname="cn.photosir.himirage"
-pkgver=2.0.4.20804
-pkgrel=2
-epoch=
+pkgver=2.5.1.30303
+pkgrel=1
 pkgdesc="A multifunctional image processing software.悟空图像是一款多功能图像处理软件"
 arch=('x86_64')
 license=('unknown')
