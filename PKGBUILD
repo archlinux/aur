@@ -5,7 +5,7 @@
 
 _pkgname=syncthing-gtk
 pkgname=$_pkgname-git
-pkgver=0.9.4.5
+pkgver=0.9.4.5.r2.g4064562
 pkgrel=1
 pkgdesc='GTK3 based GUI and notification area icon for Syncthing. Git version.'
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
     'python-bcrypt' 'python-cairo' 'python-dateutil' 'python-gobject'
 )
 makedepends=('python-setuptools' 'git')
-source=( "git+$url" )
+source=( "git+$url#branch=meson" )
 sha256sums=( 'SKIP' )
 
 pkgver() {
@@ -26,11 +26,12 @@ pkgver() {
 }
 
 build() {
-    cd "$_pkgname"
-    python3 setup.py build
+    meson setup "$srcdir/build" "$srcdir/$_pkgname" \
+        --prefix=/usr
+    ninja -C "$srcdir/build"
 }
 
 package() {
-    cd "$_pkgname"
-    python3 setup.py install --root="$pkgdir" --optimize=1
+    DESTDIR="$pkgdir" \
+    ninja -C "$srcdir/build" install
 }

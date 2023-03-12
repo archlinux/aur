@@ -1,6 +1,6 @@
 pkgbase = syncthing-gtk-git
 	pkgdesc = GTK3 based GUI and notification area icon for Syncthing. Git version.
-	pkgver = v0.9.4.4.2.r4.g07bd7ec
+	pkgver = 0.9.4.5.r2.g4064562
 	pkgrel = 1
 	url = https://github.com/syncthing-gtk/syncthing-gtk
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = syncthing-gtk-git
 	depends = python-dateutil
 	depends = python-gobject
 	conflicts = syncthing-gtk
-	source = git+https://github.com/syncthing-gtk/syncthing-gtk
+	source = git+https://github.com/syncthing-gtk/syncthing-gtk#branch=meson
 	sha256sums = SKIP
 
 pkgname = syncthing-gtk-git
