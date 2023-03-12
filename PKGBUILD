@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=protonup-rs
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="CLI program to automate the installation and update of Proton-GE"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('cargo')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d73e8b2ef9cfe5e70d1560851d4000dd0de4ff512634bc10fcbf456f50dafb5e')
+sha256sums=('3bea1b03fb993ed0e0d8656684c2857347e86f05b920c429b9f1c53d6f801371')
 
 prepare() {
   cd "Protonup-rs-$pkgver"
