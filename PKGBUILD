@@ -10,8 +10,8 @@ license=('BSD')
 # needs nightly at the moment, use rustup therefor
 makedepends=('cargo' 'git' 'rustup')
 options=('!lto')
-conflicts=(brotli)
-provides=(brotli)
+#conflicts=(brotli)
+#provides=(brotli)
 source=(
   "$pkgname::https://github.com/dropbox/rust-brotli/archive/refs/tags/$pkgver.tar.gz"
 )
@@ -42,7 +42,7 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 "$srcdir/$pkgname-$pkgver/target/release/catbrotli" "$pkgdir/usr/bin/catbrotli"
-  install -Dm755 "$srcdir/$pkgname-$pkgver/target/release/brotli" "$pkgdir/usr/bin/brotli"
+  install -Dm755 "$srcdir/$pkgname-$pkgver/target/release/brotli" "$pkgdir/usr/bin/brotlir"
 
   # TODO
 }
