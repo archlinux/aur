@@ -17,7 +17,7 @@ b2sums_aarch64=('20976e837888d628e1fd6c0e229514b25882622344966aab6e8c7a5ce92215f
 b2sums_armv7h=('fc9652c83bcd9ca2cacfcccb5b0525746b494ebb93bef1f4ada4d4b33737ee41be2fbc09058b30e8bf24490fbdfdb69ca3fdbe26a5d68850fc00508da4b08f84')
 package() {
 	# disable self-update as it won't work
-	echo '#!/bin/sh'$'\n\n''TOPGRADE_NO_SELF_UPGRADE=true /opt/topgrade/topgrade' > topgrade-sh
+	echo '#!/bin/sh'$'\n\n''TOPGRADE_NO_SELF_UPGRADE=true /opt/topgrade/topgrade "$@"' > topgrade-sh
 	# install binary
 	install -Dm755 ./topgrade "$pkgdir/opt/topgrade/topgrade"
 	install -Dm755 ./topgrade-sh "$pkgdir/usr/local/bin/topgrade"
