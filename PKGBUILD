@@ -3,7 +3,7 @@
 
 pkgname=contour
 pkgver=0.3.11.258
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern C++ Terminal Emulator"
 arch=(x86_64 aarch64)
 url="https://github.com/contour-terminal/contour"
@@ -39,7 +39,8 @@ check() {
 
   "${srcdir}"/build/src/contour/contour version
   "${srcdir}"/build/src/crispy/crispy_test
-  "${srcdir}"/build/src/vtbackend/terminal_test
+  "${srcdir}"/build/src/vtparser/vtparser_test
+  "${srcdir}"/build/src/vtbackend/vtbackend_test
 }
 
 package() {
