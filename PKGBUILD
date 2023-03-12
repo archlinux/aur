@@ -13,19 +13,19 @@ depends=('dbus-glib'
          'libdbusmenu-gtk2'
          'alsa-lib')
 makedepends=('gendesk' 'nodejs' 'yarn')
-source=("git+https://github.com/RedisInsight/RedisInsight.git")
-sha256sums=('SKIP')
+source=("$pkgname-$pkgver::https://github.com/RedisInsight/RedisInsight/archive/$pkgver.tar.gz")
+sha256sums=('f9e436bc20f566902e9291b6f45633ecd7b6d1110d22e0ee30a1a34e8d2216d6')
 
 build() {
-  cd "$srcdir/RedisInsight"
-  git checkout "release/$pkgver"
+  cd "$srcdir/RedisInsight-$pkgver"
   yarn install
   yarn --cwd redisinsight/api/
-  NODE_OPTIONS=--openssl-legacy-provider yarn package:prod
+  NODE_OPTIONS=--openssl-legacy-provider yarn build:prod
+  yarn electron-builder build --dir -p never
 }
 
 package() {
-  cd "$srcdir/RedisInsight/release/linux-unpacked"
+  cd "$srcdir/RedisInsight-$pkgver/release/linux-unpacked"
   install -Dm644 resources/resources/icons/512x512.png "${pkgdir}/usr/share/pixmaps/redisinsight.png"
   gendesk -f -n --pkgname "${pkgname}" \
           --pkgdesc "$pkgdesc" \
