@@ -22,8 +22,7 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build .
+  go build -buildmode=pie -trimpath -ldflags="-linkmode=external -s -w -X 'git.asdf.cafe/abs3nt/gospt/src.cmd.Version=v${pkgver}'" -mod=readonly -modcacherw .
   ./gospt completion zsh > gospt_zsh
   ./gospt completion bash > gospt_bash
   ./gospt completion fish > gospt_fish
