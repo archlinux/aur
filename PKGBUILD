@@ -4,34 +4,36 @@
 pkgname='python-runtype'
 _pkgname=${pkgname#python-}
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Python utilities for run-time type validation and multiple dispatch'
 arch=('any')
 license=('MIT')
 url='https://github.com/erezsh/runtype'
 source=("$url/archive/refs/tags/${pkgver}.tar.gz")
 depends=(
-  'python'
   'mypy'
+  'python-dataclasses'
 )
 makedepends=(
+  'python-build'
+  'python-installer'
   'python-recommonmark'
-  'python-setuptools'
   'python-sphinx'
   'python-sphinx-markdown-tables'
+  'python-wheel'
 )
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver" || exit 1
 
-  python setup.py build
+  python -m build --wheel --no-isolation
   make -C docs man
 }
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver" || exit 1
 
-  python setup.py install --root="$pkgdir" --prefix=/usr --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
