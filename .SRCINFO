@@ -1,6 +1,6 @@
 pkgbase = siyuan-appimage
 	pkgdesc = A local-first personal knowledge management system, support fine-grained block-level reference and Markdown WYSIWYG
-	pkgver = 2.7.8
+	pkgver = 2.7.9
 	pkgrel = 1
 	url = https://b3log.org/siyuan
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = siyuan-appimage
 	depends = fuse2
 	optdepends = pandoc: docx export
 	provides = siyuan
-	noextract = siyuan-2.7.8-linux.AppImage
+	noextract = siyuan-2.7.9-linux.AppImage
 	options = !strip
-	source = https://release.b3log.org/siyuan/siyuan-2.7.8-linux.AppImage
-	sha512sums = 931a62fd022e5ffbd45abf07e4116c51ac1c74fa4cb9cbc32df9a9709243195ad88ca45a39b26d2209d84e99dbe2f02e03e64888629ae32abc33dc89981e6e8a
+	source = https://release.b3log.org/siyuan/siyuan-2.7.9-linux.AppImage
+	sha512sums = ce5d21615ef443b33474aa6250d4911ba50455c3608b2ec54b42bb0c143d2fb03c4723d276b651c2eeb4db88b183630468f35e1f5b28ee9d1caf0a03df536a6a
 
 pkgname = siyuan-appimage
