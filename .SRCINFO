@@ -1,18 +1,20 @@
 pkgbase = heimdal
 	pkgdesc = Heimdal, an implementation of Kerberos and PKIX
-	pkgver = 7.7.0
+	pkgver = 7.8.0
 	pkgrel = 1
 	url = https://www.heimdal.software/
 	arch = x86_64
 	makedepends = libldap
+	makedepends = perl-json
 	depends = libcap-ng
 	depends = readline
 	depends = sqlite
 	optdepends = libldap
-	source = https://github.com/heimdal/heimdal/releases/download/heimdal-7.7.0/heimdal-7.7.0.tar.gz
-	source = https://github.com/heimdal/heimdal/releases/download/heimdal-7.7.0/heimdal-7.7.0.tar.gz.asc
+	source = https://github.com/heimdal/heimdal/releases/download/heimdal-7.8.0/heimdal-7.8.0.tar.gz
+	source = https://github.com/heimdal/heimdal/releases/download/heimdal-7.8.0/heimdal-7.8.0.tar.gz.sig
 	validpgpkeys = E65941B71CF3C459A34FA89C45E7572A28CD8CC8
-	sha256sums = f02d3314d634cc55eb9cf04a1eae0d96b293e45a1f837de9d894e800161b7d1b
+	validpgpkeys = FB925C7AFA000F52B4BBD1ED9A077911BB7DC320
+	sha256sums = fd87a207846fa650fd377219adc4b8a8193e55904d8a752c2c3715b4155d8d38
 	sha256sums = SKIP
 
 pkgname = heimdal
