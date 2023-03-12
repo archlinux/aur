@@ -1,7 +1,7 @@
 pkgbase = perl-crypt-openssl-x509
 	pkgdesc = Perl extension to OpenSSL's X509 API
 	pkgver = 1.914
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/Crypt-OpenSSL-X509
 	arch = x86_64
 	license = GPL
