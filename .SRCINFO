@@ -1,6 +1,6 @@
 pkgbase = calibre-unicode-path
 	pkgdesc = Ebook management application. With unicode filename and path patch.
-	pkgver = 6.8.0
+	pkgver = 6.14.0
 	pkgrel = 1
 	url = https://calibre-ebook.com
 	arch = x86_64
@@ -65,12 +65,12 @@ pkgbase = calibre-unicode-path
 	replaces = calibre
 	replaces = calibre-common
 	replaces = calibre-python3
-	source = https://download.calibre-ebook.com/6.8.0/calibre-6.8.0.tar.xz
-	source = https://calibre-ebook.com/signatures/calibre-6.8.0.tar.xz.sig
+	source = https://download.calibre-ebook.com/6.14.0/calibre-6.14.0.tar.xz
+	source = https://calibre-ebook.com/signatures/calibre-6.14.0.tar.xz.sig
 	source = 000-fix-unicode-filename.patch
 	validpgpkeys = 3CE1780F78DD88DF45194FD706BC317B515ACE7C
-	sha256sums = 77d25a5a30232732a5763cab76b97a3b25f52526ada7d53c6a046883b2b99f6b
+	sha256sums = 6c66f245554d35b58aa84b6cf3e30f1e3506cd50427f1454a11017f1ae931a2b
 	sha256sums = SKIP
-	sha256sums = f88174672c6086b81acd64ee3d9b1bfe14230a18599a28310c377eb409e17ea2
+	sha256sums = SKIP
 
 pkgname = calibre-unicode-path

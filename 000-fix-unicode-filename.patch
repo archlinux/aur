@@ -1,8 +1,8 @@
 diff --git a/src/calibre/db/backend.py b/src/calibre/db/backend.py
-index 4240333..9184319 100644
+index ffc13cf..8e5c922 100644
 --- a/src/calibre/db/backend.py
 +++ b/src/calibre/db/backend.py
-@@ -12,6 +12,7 @@ import glob
+@@ -11,6 +11,7 @@ import errno
  import hashlib
  import json
  import os
@@ -10,14 +10,14 @@ index 4240333..9184319 100644
  import shutil
  import sys
  import time
-@@ -39,7 +40,7 @@ from calibre.utils import pickle_binary_string, unpickle_binary_string
+@@ -38,7 +39,7 @@ from calibre.utils import pickle_binary_string, unpickle_binary_string
  from calibre.utils.config import from_json, prefs, to_json, tweaks
  from calibre.utils.date import EPOCH, parse_date, utcfromtimestamp, utcnow
  from calibre.utils.filenames import (
 -    WindowsAtomicFolderMove, ascii_filename, atomic_rename, copyfile_using_links,
 +    WindowsAtomicFolderMove, atomic_rename, copyfile_using_links,
      copytree_using_links, hardlink_file, is_case_sensitive, is_fat_filesystem,
-     remove_dir_if_empty, samefile
+     remove_dir_if_empty, samefile,
  )
 @@ -60,6 +61,10 @@ CUSTOM_DATA_TYPES = frozenset(('rating', 'text', 'comments', 'datetime',
  WINDOWS_RESERVED_NAMES = frozenset('CON PRN AUX NUL COM1 COM2 COM3 COM4 COM5 COM6 COM7 COM8 COM9 LPT1 LPT2 LPT3 LPT4 LPT5 LPT6 LPT7 LPT8 LPT9'.split())
@@ -30,7 +30,7 @@ index 4240333..9184319 100644
  class DynamicFilter:  # {{{
  
      'No longer used, present for legacy compatibility'
-@@ -1335,8 +1340,8 @@ class DB:
+@@ -1339,8 +1344,8 @@ class DB:
          '''
          book_id = ' (%d)' % book_id
          l = self.PATH_LIMIT - (len(book_id) // 2) - 2
@@ -41,7 +41,7 @@ index 4240333..9184319 100644
          if not title:
              title = 'Unknown'[:l]
          try:
-@@ -1345,7 +1350,7 @@ class DB:
+@@ -1349,7 +1354,7 @@ class DB:
          except IndexError:
              author = ''
          if not author:
@@ -50,7 +50,7 @@ index 4240333..9184319 100644
          if author.upper() in WINDOWS_RESERVED_NAMES:
              author += 'w'
          return f'{author}/{title}{book_id}'
-@@ -1362,15 +1367,15 @@ class DB:
+@@ -1366,15 +1371,15 @@ class DB:
          l = (self.PATH_LIMIT - (extlen // 2) - 2) if iswindows else ((self.PATH_LIMIT - extlen - 2) // 2)
          if l < 5:
              raise ValueError('Extension length too long: %d' % extlen)

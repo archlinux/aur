@@ -9,7 +9,7 @@
 
 _pkgname=calibre
 pkgname=calibre-unicode-path
-pkgver=6.8.0
+pkgver=6.14.0
 pkgrel=1
 pkgdesc='Ebook management application. With unicode filename and path patch.'
 arch=(x86_64)
@@ -78,9 +78,9 @@ _archive="$_pkgname-$pkgver"
 source=("https://download.calibre-ebook.com/$pkgver/$_archive.tar.xz"
         "$url/signatures/$_archive.tar.xz.sig"
         "000-fix-unicode-filename.patch")
-sha256sums=('77d25a5a30232732a5763cab76b97a3b25f52526ada7d53c6a046883b2b99f6b'
+sha256sums=('6c66f245554d35b58aa84b6cf3e30f1e3506cd50427f1454a11017f1ae931a2b'
             'SKIP'
-            'f88174672c6086b81acd64ee3d9b1bfe14230a18599a28310c377eb409e17ea2')
+            'SKIP')
 validpgpkeys=('3CE1780F78DD88DF45194FD706BC317B515ACE7C') # Kovid Goyal (New longer key) <kovid@kovidgoyal.net>
 
 prepare(){
@@ -95,47 +95,37 @@ prepare(){
 
   patch -p1 < "${srcdir}/000-fix-unicode-filename.patch"
 
-	cd resources
-
 	# Remove unneeded files
-	rm $_pkgname-portable.* mozilla-ca-certs.pem
-
-	# use system mathjax
-	rm -r mathjax
+	rm -f resources/$pkgname-portable.*
 }
 
 build() {
 	cd "$_archive"
-
-	LANG='en_US.UTF-8' python setup.py build
-	LANG='en_US.UTF-8' python setup.py gui
-	python setup.py liberation_fonts --path-to-liberation_fonts /usr/share/fonts/liberation --system-liberation_fonts
-	LANG='en_US.UTF-8' python setup.py mathjax --path-to-mathjax /usr/share/mathjax --system-mathjax
-	LANG='en_US.UTF-8' python setup.py rapydscript
+	export LANG='en_US.UTF-8'
+	python setup.py build
+	python setup.py gui
+	python setup.py liberation_fonts --system-liberation_fonts --path-to-liberation_fonts /usr/share/fonts/liberation
+	python setup.py mathjax --system-mathjax --path-to-mathjax /usr/share/mathjax
+	python setup.py iso639
+	python setup.py iso3166
+	python setup.py translations
+	python setup.py resources
 }
 
 check() {
 	cd "$_archive"
-
-	_test_excludes=(
-		# merely testing if a runtime-optional feature optdepend is importable
-		'speech_dispatcher'
-		# tests if a completely unused module is bundled
-		'pycryptodome'
-		# only fails on local builds, and that intermittently
-		'test_searching'
-	)
-
-	LANG='en_US.UTF-8' python setup.py test "${_test_excludes[@]/#/--exclude-test-name=}"
+	export LANG='en_US.UTF-8'
+	python -m unittest discover
 }
 
 package() {
 	cd "$_archive"
+        export LANG='en_US.UTF-8'
 
 	# If this directory doesn't exist, zsh completion won't install.
 	install -d "${pkgdir}/usr/share/zsh/site-functions"
 
-	LANG='en_US.UTF-8' python setup.py install \
+	python setup.py install \
 		--staging-root="${pkgdir}/usr" \
 		--prefix=/usr \
 		--system-plugins-location=/usr/share/calibre/system-plugins
