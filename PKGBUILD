@@ -19,8 +19,8 @@
 #  - hack around rockchips vp8&9 colorspace is not detected when used with Firefox
 
 pkgname=ffmpeg-mpp
-pkgver=5.1.2
-pkgrel=9
+pkgver=6.0
+pkgrel=3
 epoch=2
 pkgdesc='Complete solution to record, convert and stream audio and video supporting rockchip MPP hardware decoder'
 arch=(aarch64 arm7f)
@@ -37,7 +37,6 @@ depends=(
   gsm
   jack
   lame
-  libvpx
   libass.so
   libavc1394
   libbluray.so
@@ -48,6 +47,7 @@ depends=(
   libgl
   libiec61883
   libmodplug
+  libopenmpt.so
   libpulse
   libraw1394
   librsvg-2.so
@@ -61,6 +61,7 @@ depends=(
   libvidstab.so
   libvorbisenc.so
   libvorbis.so
+  libvpx.so	
   libwebp
   libx11
   libx264.so
@@ -114,21 +115,21 @@ conflicts=(
   $pkgname
   ffmpeg
 )
-_tag=1326fe9d4c85cca1ee774b072ef4fa337694f2e7
+_tag=3949db4d261748a9f34358a388ee255ad1a7f0c0
 source=(
   git+https://git.ffmpeg.org/ffmpeg.git?#tag=${_tag}
   add-av_stream_get_first_dts-for-chromium.patch
-  rkmpp-5.patch
+  rkmpp-6.patch
 )
 b2sums=('SKIP'
         '555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de'
-        '7fff16d721cfc6dcbe5081a4250686dd4941e31a3f1b745485dfb72a599c3d147d35d8055070e9fefed0340efc0ce13a2f30eacae8b33331e7de1aa45baea46f')
+        'c855795d756a78872ba97bcd4f1af383632a1b6b15beb18d660d16926dbdac21767db8e063364ad556d0895e07e7f3b50fff84b20f6bf3bc87783406d5ab68c2')
 validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
 
 prepare() {
   cd ffmpeg
   patch -Np1 -i ../add-av_stream_get_first_dts-for-chromium.patch # https://crbug.com/1251779
-  patch -Np1 -i ../rkmpp-5.patch
+  patch -Np1 -i ../rkmpp-6.patch
 }
 
 pkgver() {
@@ -139,7 +140,6 @@ pkgver() {
 build() {
   cd ffmpeg
   [[ $CARCH == "armv7h" || $CARCH == "aarch64" ]] && CONFIG='--host-cflags="-fPIC"'
-
   ./configure \
     --prefix=/usr \
     --disable-debug \
@@ -168,6 +168,7 @@ build() {
     --enable-libopencore_amrnb \
     --enable-libopencore_amrwb \
     --enable-libopenjpeg \
+    --enable-libopenmpt \
     --enable-libopus \
     --enable-libpulse \
     --enable-librsvg \

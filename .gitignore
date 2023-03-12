@@ -1,0 +1,5 @@
+ffmpeg
+src
+pkg
+.project
+*.tar.xz
