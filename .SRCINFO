@@ -1,0 +1,25 @@
+pkgbase = glew-wayland-git
+	pkgdesc = The OpenGL Extension Wrangler Library
+	pkgver = 2.2.0.r41.g5a2307f
+	pkgrel = 1
+	url = https://github.com/nigels-com/glew
+	arch = i686
+	arch = x86_64
+	license = BSD
+	license = MIT
+	license = GPL
+	makedepends = git
+	makedepends = python
+	makedepends = perl
+	depends = libxmu
+	depends = libxi
+	depends = glu
+	provides = glew
+	provides = libGLEW.so
+	conflicts = glew
+	source = git+https://github.com/nigels-com/glew.git
+	source = glew-install.patch
+	sha256sums = SKIP
+	sha256sums = 30c77b49ff64f5b936368426f957a217b6d8a3f8d0c83a7eaa69222ed45cd811
+
+pkgname = glew-wayland-git
