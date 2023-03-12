@@ -1,14 +1,14 @@
 pkgbase = sncli
 	pkgdesc = Simplenote Command Line Interface
-	pkgver = 0.4.1
-	pkgrel = 2
+	pkgver = 0.4.2
+	pkgrel = 1
 	url = https://github.com/insanum/sncli
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-simperium
 	depends = python-urwid
-	source = sncli-0.4.1.tar.gz::https://github.com/insanum/sncli/archive/refs/tags/0.4.1.tar.gz
-	sha256sums = 7fd4d4e65b3b728c446a9674ac45be860e974c63c7fc31621671444604eb35f9
+	source = sncli-0.4.2.tar.gz::https://github.com/insanum/sncli/archive/refs/tags/0.4.2.tar.gz
+	sha256sums = a155cdc6c05d03a4ceb2212670fff657bc5021e358931679d805eb2e8c227731
 
 pkgname = sncli

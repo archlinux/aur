@@ -2,8 +2,8 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=sncli
-pkgver=0.4.1
-pkgrel=2
+pkgver=0.4.2
+pkgrel=1
 pkgdesc="Simplenote Command Line Interface"
 arch=('any')
 url="https://github.com/insanum/sncli"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python-simperium' 'python-urwid')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/insanum/sncli/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('7fd4d4e65b3b728c446a9674ac45be860e974c63c7fc31621671444604eb35f9')
+sha256sums=('a155cdc6c05d03a4ceb2212670fff657bc5021e358931679d805eb2e8c227731')
 
 build() {
     cd "${pkgname}-${pkgver}"
