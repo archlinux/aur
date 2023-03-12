@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=spatstat.sparse
-_pkgver=3.0-0
+_pkgver=3.0-1
 pkgname=r-${_pkgname,,}
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc='Sparse Three-Dimensional Arrays and Linear Algebra Utilities'
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
   r-tensor
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('99be0a3c7592760fdf1668dc0811f75ed91c400390d1ecc3d5e643255f501ad2')
+sha256sums=('2c1cf0ddad366aa4230bd03241a1ef87ed635f53a6943fc4a6c2d371626d0d1c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
