@@ -1,6 +1,6 @@
 pkgbase = deepin-wine-weiyunsync
 	pkgdesc = WeiyunSync on Deepin Wine6.基于深度Wine6的微云同步助手
-	pkgver = 3.0.0.620
+	pkgver = 3.0.0.629
 	pkgrel = 1
 	url = https://www.weiyun.com/
 	install = deepin-wine-weiyunsync.install
@@ -13,14 +13,14 @@ pkgbase = deepin-wine-weiyunsync
 	optdepends = wqy-zenhei
 	provides = Tencent
 	source = com.weiyunsync.spark_3.0.0spark1_i386.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/network/com.weiyunsync.spark/com.weiyunsync.spark_3.0.0spark1_i386.deb
-	source = WeiyunSync-3.0.0.620.exe::https://dldir1.qq.com/weiyun/WeiyunSyncInstall_Beta_3.0.0.620_20230109_120158_r0.exe
+	source = WeiyunSync-3.0.0.629.exe::https://dldir1.qq.com/weiyun/WeiyunSyncInstall_Beta_1_3.0.0.629_20230222_104252_r0.exe
 	source = LICENSE::http://www.weiyun.com/xy.html
 	source = deepin-wine-weiyunsync.install
 	source = run.sh
 	sha256sums = 1c9361a9070ad2bfc85236397c75201c8e63374cc311514b68eae25877cadf84
-	sha256sums = 386b7a055ad3b2fc094a1a9ada9684041e3326820b55d5c628ae727b57ef4f4e
-	sha256sums = cd38449194d309d607c42567df9b1670b4eee9ef63398cfd4f9bc95517d38803
+	sha256sums = 299b040f447876a42214db1fd823a8d6c52d5d54962c58b32dc9f4a1efc28091
+	sha256sums = eae31c394abcc0e07da564118df96e62eb5dfcb24869e7d3e102fe13ad81c82c
 	sha256sums = 5176064feb5ba3a08e99ef4be8bf440957bdc3eae13b274d23cba1a9b4c951c1
-	sha256sums = 8e9f9bfec0a5d489f2e55b7c9670b6c4888a80bb8725030b27e57f22920e929b
+	sha256sums = ee47cd4e93bc18b6ea4d865720a2b88a1e2845a9f4d86c15c9bb1d43b7722246
 
 pkgname = deepin-wine-weiyunsync
