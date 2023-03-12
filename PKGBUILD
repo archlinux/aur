@@ -2,7 +2,7 @@
 # Contributor: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=mingw-w64-dav1d
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='AV1 cross-platform decoder focused on speed and correctness (mingw-w64)'
 arch=('any')
@@ -13,12 +13,12 @@ options=('!strip' '!buildflags' '!libtool' 'staticlibs')
 makedepends=('mingw-w64-gcc' 'mingw-w64-meson' 'mingw-w64-wine' 'mingw-w64-xxhash' 'nasm' 'ninja' 'doxygen' 'graphviz')
 source=(https://downloads.videolan.org/pub/videolan/dav1d/${pkgver}/dav1d-${pkgver}.tar.xz{,.asc}
         https://code.videolan.org/videolan/dav1d-test-data/-/archive/${pkgver}/dav1d-test-data-${pkgver}.tar.gz)
-sha512sums=('a3a7e162e45181449cd42af3a4d36669a850a4ee9ab17641dcd63d84406444566e8ebc7caa55b0620ab581039f36d19a90218a40f52ebbe525b37ed9493fb3f3'
+sha512sums=('b040688722a3fc7adc1fff77410c40239f6de9ccb4ea39f7c63ab04362dfd9759f98c4e2d5de0fb9e9d65208cd439d5d7eaa8c0982f773e110451a7ab9ed213f'
             'SKIP'
-            '6ce106e13217296ab9521dfb447c988f499770b201bc34b3aa4e161274139f6c6654d01b0a09f75e599c485ab8ff1bbac417acab6716f8f7c7c134278eea2e0e')
-b2sums=('792ba23ce3bd2ed9245d94daebf3a1e3e1df3cb463a9c54a0c23190801fc71c98c66f54f52b821f7741c818c80b308f41c5aed3ba68e234034285a48044f433e'
+            'e14a143a0d36c33d7985589367d7b7b5e7e733f23dac1fe83ae123e0cffe29f16e6f567046fe28e6b374c8370d1775a715919e2a43361f46d7baf117b5ffebdb')
+b2sums=('80b3921c66af2f8d4d2aeb5b0a7df43baa8c1b461d5f3395e77c3abe4a99606d2e034d4afc13b72705f61dea4eece1291c54a82d7020e9a52a45bdeb4cf1e405'
         'SKIP'
-        '76a41bdfa50c68cb1133b7669698e2f463c5ddd716919235d7b3624039dd4ed1e78b2e917796372caec2290affb3713d118373109d6baec921adeb7367a8117c')
+        '17dada333f90065ef115c9ba2e47db39f03eb5b3de626c92bb77e0085d6574ff8ee5b31765e877c450c7f4ddda8454a4f2637d1667c62f884525ed5acb4a6423')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 validpgpkeys=('65F7C6B4206BD057A7EB73787180713BE58D1ADC') # VideoLAN Release Signing Key
 
