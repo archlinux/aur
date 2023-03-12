@@ -2,7 +2,7 @@
 # CONTRIBUTOR: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=kimera-vio-monado-git
-pkgver=r3568.2bea61c5
+pkgver=r3580.a8aa8a03
 pkgrel=1
 pkgdesc="Visual Inertial Odometry pipeline for accurate State Estimation from
 Stereo/Mono + IMU data"
@@ -11,15 +11,15 @@ url="https://gitlab.freedesktop.org/mateosss/Kimera-VIO"
 license=('BSD')
 depends=('gtsam' 'opencv' 'opengv' 'dbow2' 'google-glog' 'gflags' 'kimera-rpgo')
 optdepends=()
-makedepends=('cmake' 'ninja')
+makedepends=('cmake' 'ninja' 'git' 'boost' 'qt5-base' 'vtk' 'glew' 'fmt')
 _pkgname="Kimera-VIO"
 source=('git+https://gitlab.freedesktop.org/mateosss/Kimera-VIO.git#branch=xrtslam')
 sha256sums=('SKIP')
 #options=(debug '!strip')
 
 pkgver() {
-cd "$_pkgname"
-printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$_pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
