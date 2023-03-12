@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=poketex
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Simple Pokedex based on TUI"
 arch=('x86_64')
@@ -10,14 +10,11 @@ url="https://github.com/ckaznable/poketex"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-        "$pkgname-$pkgver-cargo-lock.patch::$url/commit/161129b77f64a927b50ce40983cc2f092ac57fa5.patch")
-sha256sums=('7443ff0e7183c592446cf25c1d9ccb55d1a79a59ed016baac71a23b62f6edc0f'
-            '32087253723ebcb2e5e07d951bfd7c50b81a973c5f12d5e13bc9be1e19c5eba2')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('5e89e262d4b15556c64f185dc263c83966649abafe1ddf7ebdc98b858abf0e88')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  patch -Np1 -i "../$pkgname-$pkgver-cargo-lock.patch"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
