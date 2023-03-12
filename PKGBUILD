@@ -1,6 +1,6 @@
 # Maintainer: Samuel Bernard <samuel.bernard@gmail.com>
 pkgname=almond
-pkgver=0.13.3
+pkgver=0.13.4
 pkgrel=1
 _scalaver=3.1.3
 pkgdesc="A scala kernel for Jupyter"

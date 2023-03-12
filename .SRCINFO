@@ -1,6 +1,6 @@
 pkgbase = almond
 	pkgdesc = A scala kernel for Jupyter
-	pkgver = 0.13.3
+	pkgver = 0.13.4
 	pkgrel = 1
 	url = https://almond.sh/
 	arch = any
