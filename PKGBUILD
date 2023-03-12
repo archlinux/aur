@@ -1,6 +1,6 @@
 # Maintainer: Martin Diehl <aur@martin-diehl.net>
 
-pkgver=0.38.1
+pkgver=0.38.4
 pkgrel=1
 pkgname=python-pyvista
 _name=${pkgname#python-}
@@ -24,3 +24,4 @@ package() {
     python setup.py install --skip-build --root="$pkgdir" --optimize=1
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
+sha512sums=('5a091161fe4ebc6ab33195029f86c01bae251eed94ebd3cf7b048eef8cf7b0f2d9adcb6cdd5f0f9be31dee9acfe533d9d5491101b9f16192eec58ace6fa210a7')
