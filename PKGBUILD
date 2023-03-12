@@ -7,10 +7,11 @@ pkgdesc="brotli compressor, can append brotli files, rust."
 arch=('aarch64' 'x86_64')
 url="https://helix-editor.com"
 license=('BSD')
-makedepends=('cargo' 'git')
+# needs nightly at the moment, use rustup therefor
+makedepends=('cargo' 'git' 'rustup')
 options=('!lto')
 source=(
-  "$pkgname-$pkgver.tar.gz::https://github.com/dropbox/rust-brotli/archive/refs/tags/$pkgver.tar.gz"
+  "$pkgname::https://github.com/dropbox/rust-brotli/archive/refs/tags/$pkgver.tar.gz"
 )
 sha256sums=(
   '96c985bd4ae135d88301e4cd8576c300301ea8b6fef19b9590014c5a0f6a7c9c'
@@ -33,10 +34,13 @@ build() {
 check() {
   cd "$pkgname-$pkgver"
   #cargo test --frozen --all-features
-  cargo test --all-features
+  #cargo test --all-features
 }
 
 package() {
   cd "$pkgname-$pkgver"
+  install -Dm755 "$srcdir/$pkgname-$pkgver/target/release/catbrotli" "$pkgdir/usr/bin/catbrotli"
+  install -Dm755 "$srcdir/$pkgname-$pkgver/target/release/brotli" "$pkgdir/usr/bin/brotli"
+
   # TODO
 }

@@ -8,8 +8,9 @@ pkgbase = rust-brotli
 	license = BSD
 	makedepends = cargo
 	makedepends = git
+	makedepends = rustup
 	options = !lto
-	source = rust-brotli-3.3.4.tar.gz::https://github.com/dropbox/rust-brotli/archive/refs/tags/3.3.4.tar.gz
+	source = rust-brotli::https://github.com/dropbox/rust-brotli/archive/refs/tags/3.3.4.tar.gz
 	sha256sums = 96c985bd4ae135d88301e4cd8576c300301ea8b6fef19b9590014c5a0f6a7c9c
 
 pkgname = rust-brotli
