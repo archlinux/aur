@@ -2,15 +2,16 @@
 # Maintainer: Christoph Haag <haagch+aur@frickel.club>
 
 pkgname=adriconf-git
-pkgver=r169.0b3c97b
+pkgver=v2.5.1.r0.g9a08fc0
 pkgrel=1
 pkgdesc="Graphical configuration tool for the Direct Rendering Infrastructure"
 arch=('any')
 url="https://github.com/jlHertel/adriconf"
 license=('GPL')
 depends=('gtk3' 'libxml++2.6' 'boost')
-makedepends=('cmake' 'gtkmm3' 'boost' 'git' 'gtest')
-source=(git+https://github.com/jlHertel/adriconf.git
+makedepends=('cmake' 'gtkmm3' 'git' 'gtest')
+conflicts=('adriconf')
+source=(git+https://gitlab.freedesktop.org/mesa/adriconf.git
 	adriconf.desktop
 	adriconf-icon.png)
 sha256sums=('SKIP'
