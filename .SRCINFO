@@ -1,6 +1,6 @@
 pkgbase = python-qt5reactor
 	pkgdesc = Twisted and PyQt5 eventloop integration
-	pkgver = 0.5
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/sunu/qt5reactor
 	arch = any
@@ -9,8 +9,7 @@ pkgbase = python-qt5reactor
 	depends = python-pyqt5
 	depends = python-twisted
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/q/qt5reactor/qt5reactor-0.5.tar.gz
-	sha256sums = 58d71f17188c896596e5f23f0eb884c966208a4db935e506d931797cbd1c0cbe
+	source = https://pypi.python.org/packages/source/q/qt5reactor/qt5reactor-0.6.3.tar.gz
+	sha256sums = c3470a8a25d9a339f9ca6243502a9b2277f181d772b7acbff551d5bc363b7572
 
 pkgname = python-qt5reactor
-
