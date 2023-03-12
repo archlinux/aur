@@ -1,0 +1,19 @@
+pkgbase = sway-rofi-screenshot-git
+	pkgdesc = Interactively take screenshots using Rofi in Sway.
+	pkgver = r11.6f1014e
+	pkgrel = 1
+	url = https://github.com/gibbz00/sway-rofi-screenshot
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = jq
+	depends = rofi-lbonn-wayland-git
+	depends = grim
+	depends = slurp
+	depends = libnotify
+	depends = wl-clipboard
+	optdepends = swappy: edit screenshots
+	source = sway-rofi-screenshot-git::git+https://github.com/gibbz00/sway-rofi-screenshot
+	md5sums = SKIP
+
+pkgname = sway-rofi-screenshot-git
