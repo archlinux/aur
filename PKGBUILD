@@ -112,7 +112,7 @@ _tag=3d69f9682f06bbf72e0cdcdc9e66c9307ed6b24f
 source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
         rkmpp-4.patch)
 b2sums=('SKIP'
-        'd463068ecdf5ca2aeb99fb00a6fd06193e02bd9218b24774b1e618bf6cb4be055421889bd8bc099e41b5bb043cf6fed93a11cc8539f96cf2dd26ccf77074b108')
+        '9d36ef71fbede3b65c2b3066af2eae20d84d8cde2626f583a32d8ebd26724afbd34993b433b3275ce624db5474e64baefc72602faa667c11ff442f3f3fa7213f')
 
 pkgver() {
   cd ffmpeg
@@ -122,7 +122,7 @@ pkgver() {
 prepare() {
   cd ffmpeg
   git cherry-pick -n 988f2e9eb063db7c1a678729f58aab6eba59a55b # fix nvenc on older gpus
-  patch -p1 -i ../../rkmpp-4.patch
+  patch -Np1 -i ../../rkmpp-4.patch
 }
 
 build() {
