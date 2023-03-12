@@ -2,7 +2,7 @@
 pkgname="topgrade-bin"
 _pkgname="topgrade"
 pkgver=10.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Invoke the upgrade procedure of multiple package managers"
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/topgrade-rs/topgrade'
