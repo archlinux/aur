@@ -1,0 +1,13 @@
+pkgbase = vtm-bin
+	pkgdesc = Terminal multiplexer with window manager and session sharing
+	pkgver = 0.9.8v
+	pkgrel = 1
+	url = https://github.com/netxs-group/vtm
+	arch = x86_64
+	license = MIT
+	provides = vtm
+	conflicts = vtm-git
+	source = vtm-bin-0.9.8v.tar.gz::https://github.com/netxs-group/vtm/releases/download/v0.9.8v/vtm_linux_amd64.tar.gz
+	sha256sums = 55c409a8f55bdb2ef661adaf04407c2e6ff2af8d9a369fa39409ed9970697c9a
+
+pkgname = vtm-bin
