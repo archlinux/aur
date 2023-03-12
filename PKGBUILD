@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=mpv-thumbnail-script
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="A Lua script to show preview thumbnails in mpv's OSC seekbar, sans external dependencies"
 arch=('any')
@@ -15,9 +15,9 @@ backup=('etc/mpv/script-opts/mpv_thumbnail_script.conf')
 source=("${url}/releases/download/${pkgver}/mpv_thumbnail_script_server.lua"
     "${url}/releases/download/${pkgver}/mpv_thumbnail_script_client_osc.lua"
     'mpv_thumbnail_script.conf')
-sha256sums=('abd068fb57e3f58e61de9f5cb7278909f389412b9721199bc05533228d0e0f99'
-            '09a316b2e301a10ad204ee9984969c8e32ea6c82cc0f3242ff95e4d6946d535b'
-            'f3de4ac15a06b6d0f4e0668aeac348e97f502c9271e5a09da94d7b9a5b0156cb')
+sha256sums=('d8f37051ff18e3a1957abb463c8462ec7e302edcdf07154396a878af0f2d10e7'
+            '36bca9b679697236914b4969f470be52e306270e45f47cce6bfaff9943e44b68'
+            '6e56132597a906831e172900e88962c5cbe1a92495afe2d68b4cc7b193d28ab1')
 
 package() {
     local scripts="${pkgdir}/usr/share/mpv/scripts"
