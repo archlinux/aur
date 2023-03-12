@@ -2,8 +2,8 @@
 # shellcheck disable=SC2148,SC2034
 
 pkgname="godot2d"
-pkgver=fab9926a9
-_pkgver_full='4.0.beta'
+pkgver='4.0.stable'
+_pkgver_full='4.0'
 _ver_tag=$(echo "$_pkgver_full" | awk -F'.' '{print $1"."$2}') # 4.0
 pkgrel=2
 pkgdesc="Godot Game Engine: An advanced, feature packed, multi-platform 2D game engine."
@@ -26,10 +26,10 @@ provides=(godot2d godot2d-export-templates)
 groups=(godot)
 _repo="github.com/bend-n/godot-builds"
 
-pkgver() {
-	chmod +755 "godot-2d_v${_ver_tag}_linux.x86_64"
-	./"godot-2d_v${_ver_tag}_linux.x86_64" --version | rev | cut -d. -f1 | rev
-}
+#pkgver() {
+#	chmod +755 "godot-2d_v${_ver_tag}_linux.x86_64"
+#	./"godot-2d_v${_ver_tag}_linux.x86_64" --version | rev | cut -d. -f1 | rev
+#}
 
 package() {
 	install -Dm755 "godot-2d_v${_ver_tag}_linux.x86_64" "$pkgdir/usr/bin/godot2d"
