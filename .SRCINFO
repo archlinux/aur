@@ -1,6 +1,6 @@
 pkgbase = kodi-eggz
-	pkgver = 20.0
-	pkgrel = 2
+	pkgver = 20.1
+	pkgrel = 1
 	url = https://kodi.tv
 	arch = x86_64
 	license = GPL2
@@ -57,7 +57,7 @@ pkgbase = kodi-eggz
 	depends = libcec
 	depends = tinyxml
 	depends = shairplay
-	source = git+https://github.com/xbmc/xbmc.git#tag=20.0-Nexus
+	source = git+https://github.com/xbmc/xbmc.git#tag=20.1-Nexus
 	source = git+https://github.com/xbmc/vfs.rar.git#tag=20.1.0-Nexus
 	sha256sums = SKIP
 	sha256sums = SKIP
