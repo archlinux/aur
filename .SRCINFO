@@ -10,6 +10,7 @@ pkgbase = glew-osmesa-git
 	license = GPL
 	makedepends = git
 	makedepends = python
+	makedepends = perl
 	depends = libxmu
 	depends = libxi
 	depends = glu
