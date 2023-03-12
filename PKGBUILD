@@ -2,16 +2,21 @@
 
 pkgname=volapplet-git
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple GTK system tray volume controller applet."
 depends=('gtk3' 'pulseaudio')
-makedepends=('rust' 'cargo')
+makedepends=('rust' 'cargo' 'git')
 license=('GPL')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/jaspwr/vol-applet"
 
 source=("$pkgname::git+https://github.com/jaspwr/vol-applet#branch=main")
 sha256sums=('SKIP')
+
+pkgver() {
+    cd "$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
 
 prepare() {
     cd "$pkgname"
