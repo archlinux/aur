@@ -51,7 +51,6 @@ pkgname = util-linux-aes
 	depends = util-linux-libs-aes
 	depends = libmagic.so
 	depends = libncursesw.so
-	optdepends = python: python bindings to libmount
 	optdepends = words: default dictionary for look
 	provides = rfkill
 	provides = hardlink
@@ -71,6 +70,8 @@ pkgname = util-linux-aes
 
 pkgname = util-linux-libs-aes
 	pkgdesc = util-linux runtime libraries
+	depends = glibc
+	optdepends = python: python bindings to libmount
 	provides = libutil-linux
 	provides = libblkid.so
 	provides = libfdisk.so

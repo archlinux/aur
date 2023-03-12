@@ -76,8 +76,7 @@ package_util-linux-aes() {
   depends=('pam' 'shadow' 'coreutils' 'systemd-libs' 'libsystemd.so'
            'libudev.so' 'libcap-ng' 'libxcrypt' 'libcrypt.so' 'util-linux-libs-aes'
            'libmagic.so' 'libncursesw.so')
-  optdepends=('python: python bindings to libmount'
-              'words: default dictionary for look')
+  optdepends=('words: default dictionary for look')
   backup=(etc/pam.d/chfn
           etc/pam.d/chsh
           etc/pam.d/login
@@ -86,52 +85,59 @@ package_util-linux-aes() {
           etc/pam.d/su
           etc/pam.d/su-l)
 
-  cd "${_basename}-${_realver}"
+  make -C "${_basename}-${_realver}" DESTDIR="${pkgdir}" usrsbin_execdir=/usr/bin install
 
-  make DESTDIR="${pkgdir}" install
+  # remove static libraries
+  rm "${pkgdir}"/usr/lib/lib*.a*
 
   # setuid chfn and chsh
   chmod 4755 "${pkgdir}"/usr/bin/{newgrp,ch{sh,fn}}
 
   # install PAM files for login-utils
-  install -Dm0644 "${srcdir}/pam-common" "${pkgdir}/etc/pam.d/chfn"
-  install -m0644 "${srcdir}/pam-common" "${pkgdir}/etc/pam.d/chsh"
-  install -m0644 "${srcdir}/pam-login" "${pkgdir}/etc/pam.d/login"
-  install -m0644 "${srcdir}/pam-runuser" "${pkgdir}/etc/pam.d/runuser"
-  install -m0644 "${srcdir}/pam-runuser" "${pkgdir}/etc/pam.d/runuser-l"
-  install -m0644 "${srcdir}/pam-su" "${pkgdir}/etc/pam.d/su"
-  install -m0644 "${srcdir}/pam-su" "${pkgdir}/etc/pam.d/su-l"
+  install -Dm0644 pam-common "${pkgdir}/etc/pam.d/chfn"
+  install -m0644 pam-common "${pkgdir}/etc/pam.d/chsh"
+  install -m0644 pam-login "${pkgdir}/etc/pam.d/login"
+  install -m0644 pam-runuser "${pkgdir}/etc/pam.d/runuser"
+  install -m0644 pam-runuser "${pkgdir}/etc/pam.d/runuser-l"
+  install -m0644 pam-su "${pkgdir}/etc/pam.d/su"
+  install -m0644 pam-su "${pkgdir}/etc/pam.d/su-l"
 
   # TODO(dreisner): offer this upstream?
   sed -i '/ListenStream/ aRuntimeDirectory=uuidd' "${pkgdir}/usr/lib/systemd/system/uuidd.socket"
 
-  # adjust for usrmove
-  # TODO(dreisner): fix configure.ac upstream so that this isn't needed
-  cd "${pkgdir}"
-  mv usr/sbin/* usr/bin
-  rmdir usr/sbin
+  # runtime libs are shipped as part of util-linux-libs
+  install -d -m0755 util-linux-libs/lib/
+  mv "$pkgdir"/usr/lib/lib*.so* util-linux-libs/lib/
+  mv "$pkgdir"/usr/lib/pkgconfig util-linux-libs/lib/pkgconfig
+  mv "$pkgdir"/usr/include util-linux-libs/include
+  mv "$pkgdir"/usr/lib/python3.10/site-packages util-linux-libs/site-packages
+  rmdir "$pkgdir"/usr/lib/python3.10
+  mv "$pkgdir"/usr/share/man/man3 util-linux-libs/man3
 
-  ### runtime libs are shipped as part of util-linux-libs
-  rm "${pkgdir}"/usr/lib/lib*.{a,so}*
-
-  ### install systemd-sysusers
-  install -Dm0644 "${srcdir}/util-linux-aes.sysusers" \
+  # install systemd-sysusers
+  install -Dm0644 util-linux-aes.sysusers \
     "${pkgdir}/usr/lib/sysusers.d/util-linux-aes.conf"
 
-  install -Dm0644 "${srcdir}/60-rfkill.rules" \
+  install -Dm0644 60-rfkill.rules \
     "${pkgdir}/usr/lib/udev/rules.d/60-rfkill.rules"
 
-  install -Dm0644 "${srcdir}/rfkill-unblock_.service" \
+  install -Dm0644 rfkill-unblock_.service \
     "${pkgdir}/usr/lib/systemd/system/rfkill-unblock@.service"
-  install -Dm0644 "${srcdir}/rfkill-block_.service" \
+  install -Dm0644 rfkill-block_.service \
     "${pkgdir}/usr/lib/systemd/system/rfkill-block@.service"
 }
 
 package_util-linux-libs-aes() {
   pkgdesc="util-linux runtime libraries"
+  depends=('glibc')
   provides=('libutil-linux' 'libblkid.so' 'libfdisk.so' 'libmount.so' 'libsmartcols.so' 'libuuid.so' "${_basename}-libs=2.38")
   conflicts=('libutil-linux' "${_basename}-libs")
   replaces=('libutil-linux')
+  optdepends=('python: python bindings to libmount')
 
-  make -C "${_basename}-${_realver}" DESTDIR="${pkgdir}" install-usrlib_execLTLIBRARIES
+  install -d -m0755 "$pkgdir"/usr/{lib/python3.10/,share/man/}
+  mv util-linux-libs/lib/* "$pkgdir"/usr/lib/
+  mv util-linux-libs/include "$pkgdir"/usr/include
+  mv util-linux-libs/site-packages "$pkgdir"/usr/lib/python3.10/site-packages
+  mv util-linux-libs/man3 "$pkgdir"/usr/share/man/man3
 }
