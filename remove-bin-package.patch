@@ -1,0 +1,12 @@
+diff --unified --recursive --text aesara-rel-2.8.12.orig/pyproject.toml aesara-rel-2.8.12/pyproject.toml
+--- aesara-rel-2.8.12.orig/pyproject.toml	2023-03-12 15:03:30.366282899 +0100
++++ aesara-rel-2.8.12/pyproject.toml	2023-03-12 15:03:47.376336270 +0100
+@@ -95,7 +95,7 @@
+ ]
+ 
+ [tool.hatch.build.targets.wheel]
+-packages = ["aesara", "bin"]
++packages = ["aesara"]
+ 
+ [tool.coverage.run]
+ omit = [
