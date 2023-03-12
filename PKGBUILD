@@ -1,10 +1,11 @@
 # Maintainer: Klaus Alexander Seistrup <klaus@seistrup.dk>
+# Contributor: Anna <cyber AT sysrq DOT in>
 # -*- sh -*-
 
 pkgname='offpunk-git'
 _pkgname='offpunk'
-pkgver=1.9.r1.g1333d1b
-pkgrel=1
+pkgver=1.9.1.r1.g826aa4e
+pkgrel=2
 epoch=2
 pkgdesc='Fork of the command-line Gemini client AV-98 with added offline capabilities'
 arch=('any')
@@ -19,7 +20,9 @@ depends=(
 makedepends=(
   'coreutils'
   'git'
-  'python-setuptools'
+  'python-build'
+  'python-installer'
+  'python-wheel'
 )
 optdepends=(
   'chafa: chafa and ansiwrap are required to render images in terminal'
@@ -49,11 +52,16 @@ pkgver() {
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
+build() {
+  cd "$_pkgname" || exit 1
+
+  python -m build --wheel --no-isolation
+}
+
 package() {
   cd "$_pkgname" || exit 1
 
-  umask 0022
-  python setup.py install --root="$pkgdir" --prefix='/usr' --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   test -f man/offpunk.1 && \
   install -Dm0644 man/offpunk.1 "$pkgdir/usr/share/man/man1/offpunk.1"
