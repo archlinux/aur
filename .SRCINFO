@@ -1,11 +1,12 @@
 pkgbase = bagatto
 	pkgdesc = A transparent, extensible static site generator
 	pkgver = 0.6.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bagatto.co/
 	arch = x86_64
 	license = BSD3
-	depends = janet
+	makedepends = janet
+	optdepends = janet: use janet to extend sites
 	provides = bagatto
 	source = https://git.sr.ht/~subsetpark/bagatto/archive/v0.6.5.tar.gz
 	sha256sums = 837ba4482d2e53bd8a2214501e26a11cb2196a9e1a8fe05b7c07514c31680937

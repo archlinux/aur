@@ -1,11 +1,12 @@
 # Maintainer: Z. D. Smith <zd at zdsmith dot com>
 pkgname=bagatto
 pkgver=0.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A transparent, extensible static site generator'
 arch=('x86_64')
 url='https://bagatto.co/'
-depends=('janet')
+makedepends=('janet')
+optdepends=('janet: use janet to extend sites')
 license=('BSD3')
 provides=('bagatto')
 
