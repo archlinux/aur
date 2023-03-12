@@ -1,7 +1,7 @@
 pkgbase = unzrip-git
 	pkgdesc = Rust unzip, support for parallel decompression, automatic detection encoding
 	pkgver = 0.1.0.27.g1a4f74d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/quininer/unzrip
 	arch = x86_64
 	arch = i686
@@ -9,7 +9,6 @@ pkgbase = unzrip-git
 	license = MIT
 	makedepends = cargo
 	makedepends = git
-	depends = cargo
 	depends = zstd
 	provides = unzrip
 	conflicts = unzrip

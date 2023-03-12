@@ -1,11 +1,11 @@
 pkgname=unzrip-git
 pkgver=0.1.0.27.g1a4f74d
-pkgrel=1
+pkgrel=2
 pkgdesc="Rust unzip, support for parallel decompression, automatic detection encoding"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/quininer/unzrip"
 license=('MIT')
-depends=('cargo' 'zstd')
+depends=('zstd')
 makedepends=('cargo' 'git')
 optdepends=()
 provides=('unzrip')
