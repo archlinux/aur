@@ -3,7 +3,7 @@
 
 pkgname=qmdnsengine
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple multicast DNS library for Qt'
 arch=('x86_64')
 url='https://github.com/nitroshare/qmdnsengine'
