@@ -15,6 +15,7 @@ depends=('perl-apache-session' 'perl-cache-cache' 'perl-clone' 'perl-config-inif
          'perl-xml-simple' 'perl-xml-libxslt' 'perl-crypt-urandom' 'perl-json-xs'
          'perl-module-pluggable' 'perl-convert-base32' 'perl-text-unidecode' 'imagemagick'
          'perl-gssapi' 'perl-authen-radius'
+         'perl-email-address-xs' # https://bugs.archlinux.org/task/76304
 )
 makedepends=('uglify-js' 'python-sphinx' 'python-sphinx-bootstrap-theme')
 checkdepends=('perl-test-mockobject' 'perl-test-output' 'perl-time-fake')

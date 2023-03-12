@@ -49,6 +49,7 @@ pkgbase = lemonldap-ng
 	depends = imagemagick
 	depends = perl-gssapi
 	depends = perl-authen-radius
+	depends = perl-email-address-xs
 	optdepends = uwsgi-plugin-psgi: for running under uWSGI
 	source = https://release.ow2.org/lemonldap/lemonldap-ng-2.0.14.tar.gz
 	sha512sums = 1c6e37dac5bdbddcb93323dc0ac6e6b6ccd0c62a8186e4ff7f1d4a6bf824682212f315895670b314812df9dd44dd5f370de37a631efa169db2b44687c2da2c98
