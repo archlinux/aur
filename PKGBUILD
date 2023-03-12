@@ -3,7 +3,7 @@ _gitname='geany-preview'
 pkgname="$_pkgname-git"
 pkgdesc="Plugin for Geany to Preview lightweight markup languages, including AsciiDoc, DocBook, Fountain, LaTeX, Markdown, MediaWiki, reStructuredText, Textile, and Txt2Tags."
 url="https://github.com/xiota/geany-preview"
-pkgver=0.0.2.r2.gacd1f4e
+pkgver=0.0.2.r3.g10767ce
 pkgrel=1
 arch=(x86_64)
 license=(GPL)
@@ -43,7 +43,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/$_gitname"
   ./autogen.sh
-  ./configure --prefix=/usr
+  CFLAGS+=' -O3' CXXFLAGS+=' -O3' ./configure --prefix=/usr
 }
 
 build() {
