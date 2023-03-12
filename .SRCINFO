@@ -1,6 +1,6 @@
 pkgbase = openvr-git
 	pkgdesc = API and runtime that allows access to VR hardware from multiple vendors.
-	pkgver = 1.23.7.r0.g08de382
+	pkgver = 1.23.8.r0.g8f71cf8
 	pkgrel = 1
 	url = https://github.com/ValveSoftware/openvr
 	arch = x86_64
@@ -21,17 +21,11 @@ pkgbase = openvr-git
 	source = 0001-openvr_capi-Add-pragma-pack-around-VRControllerState.patch
 	source = 0002-samples-cmake-Remove-OpenVR-paths-check.patch
 	source = 0003-samples-compat-Use-correct-definition-for-vsprintf_s.patch
-	source = https://patch-diff.githubusercontent.com/raw/ValveSoftware/openvr/pull/1178.patch
-	source = https://patch-diff.githubusercontent.com/raw/ValveSoftware/openvr/pull/1524.patch
-	source = 0001-Add-include-stdarg.h-to-strtools_public.cpp.patch
-	source = 0008-hmderrors_public-Remove-usage-of-undefined-enum.patch
+	source = https://patch-diff.githubusercontent.com/raw/ValveSoftware/openvr/pull/1716.patch
 	md5sums = SKIP
 	md5sums = 4aa6ee8199d86dde2a563b4495f41a53
 	md5sums = d3dc9d20967362a2e92e3fb1c7f82b57
 	md5sums = e68ff412ff73b1ca75f8b17ab6c7069a
-	md5sums = b9ce6c53ec78251d82460f10e07e6645
-	md5sums = 30e13170804c6d6756d74fa1ee7bdcb0
-	md5sums = ac790ec12a558931895504f1ca92c364
-	md5sums = 9193a495096b6736d9aeb3ee2bad9808
+	md5sums = c936accff13f8d0bdc28deba2254503e
 
 pkgname = openvr-git

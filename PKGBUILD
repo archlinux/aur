@@ -1,5 +1,5 @@
 pkgname=openvr-git
-pkgver=1.23.7.r0.g08de382
+pkgver=1.23.8.r0.g8f71cf8
 pkgrel=1
 pkgdesc="API and runtime that allows access to VR hardware from multiple vendors."
 arch=('x86_64')
@@ -16,19 +16,14 @@ source=("git+https://github.com/ValveSoftware/openvr.git"
         '0001-openvr_capi-Add-pragma-pack-around-VRControllerState.patch'                   # openvr_capi: Add pragma pack around VRControllerState_t.
         '0002-samples-cmake-Remove-OpenVR-paths-check.patch'                                # samples/cmake: Remove OpenVR paths check.
         '0003-samples-compat-Use-correct-definition-for-vsprintf_s.patch'                   # Use correct C++11 definition for vsprintf_s https://github.com/ValveSoftware/openvr/pull/594
-        'https://patch-diff.githubusercontent.com/raw/ValveSoftware/openvr/pull/1178.patch' # Add ability to build with system installed jsoncpp
-        'https://patch-diff.githubusercontent.com/raw/ValveSoftware/openvr/pull/1524.patch' # fix broken 1.6.8 build https://github.com/ValveSoftware/openvr/issues/1525
-        '0001-Add-include-stdarg.h-to-strtools_public.cpp.patch'                            # missing include for va_start and va_end
-        '0008-hmderrors_public-Remove-usage-of-undefined-enum.patch'                        # Delete remains of removed enum
+        'https://patch-diff.githubusercontent.com/raw/ValveSoftware/openvr/pull/1716.patch' # Add ability to build with system installed jsoncpp
         )
 md5sums=('SKIP'
          '4aa6ee8199d86dde2a563b4495f41a53'
          'd3dc9d20967362a2e92e3fb1c7f82b57'
          'e68ff412ff73b1ca75f8b17ab6c7069a'
-         'b9ce6c53ec78251d82460f10e07e6645'
-         '30e13170804c6d6756d74fa1ee7bdcb0'
-         'ac790ec12a558931895504f1ca92c364'
-         '9193a495096b6736d9aeb3ee2bad9808')
+         'c936accff13f8d0bdc28deba2254503e'
+)
 
 install_examples=false
 
@@ -45,10 +40,7 @@ prepare() {
     "../0001-openvr_capi-Add-pragma-pack-around-VRControllerState.patch" \
     "../0002-samples-cmake-Remove-OpenVR-paths-check.patch" \
     "../0003-samples-compat-Use-correct-definition-for-vsprintf_s.patch" \
-    "../1178.patch" \
-    "../1524.patch" \
-    "../0001-Add-include-stdarg.h-to-strtools_public.cpp.patch" \
-    "../0008-hmderrors_public-Remove-usage-of-undefined-enum.patch"
+    "../1716.patch"
   do
     echo "Applying $i"
     git apply "$i"
