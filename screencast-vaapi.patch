@@ -7,15 +7,15 @@ index a01fbe3c9..5d3e27026 100644
                      /* Translators: this is a filename used for screencast
                       * recording, where "%d" and "%t" date and time, e.g.
 -                     * "Screencast from 07-17-2013 10:00:46 PM.webm" */
-+                     * "Screencast from 07-17-2013 10:00:46 PM.mkv" */
++                     * "Screencast from 07-17-2013 10:00:46 PM.mp4" */
                      /* xgettext:no-c-format */
 -                    _('Screencast from %d %t.webm'),
-+                    _('Screencast from %d %t.mkv'),
++                    _('Screencast from %d %t.mp4'),
                  ]),
 -                {'draw-cursor': new GLib.Variant('b', drawCursor)});
 +                {
 +                    'draw-cursor': new GLib.Variant('b', drawCursor),
-+                    'pipeline': new GLib.Variant('s', 'vaapipostproc ! video/x-raw,format=NV12,max-framerate=60/1 ! queue ! vaapih264enc ! video/x-h264,profile=main ! queue ! h264parse ! matroskamux'),
++                    'pipeline': new GLib.Variant('s', 'vaapipostproc ! video/x-raw,format=NV12,max-framerate=60/1 ! queue ! vaapih264enc ! video/x-h264,profile=main ! queue ! h264parse ! mp4mux'),
 +                });
              if (!success)
                  throw new Error();
