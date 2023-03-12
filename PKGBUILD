@@ -4,7 +4,7 @@
 pkgname='python-metno-locationforecast'
 _pkgname="${pkgname#python-}"
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python interface for the MET Norway Locationforecast/2.0 weather service'
 arch=('any')
 license=('MIT')
@@ -14,11 +14,12 @@ source=(
   'setup-py.diff'
 )
 depends=(
-  'python'
   'python-requests'
 )
 makedepends=(
-  'python-setuptools'
+  'python-build'
+  'python-installer'
+  'python-wheel'
 )
 provided=("$pkgname")
 conflicts=("$pkgname" "$pkgname-git")
@@ -44,13 +45,13 @@ prepare() {
 build() {
   cd "$srcdir/$_pkgname-$pkgver" || exit 1
 
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver" || exit 1
 
-  python setup.py install --root="$pkgdir" --prefix=/usr --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
