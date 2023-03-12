@@ -1,13 +1,12 @@
 # Maintainer: Z. D. Smith <zd at zdsmith dot com>
 pkgname=erasmus
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimal zettelkasten-inspired note-taking'
 arch=('x86_64')
 url='https://git.sr.ht/~subsetpark/erasmus'
-makedepends=('janet' 'pkg-config' 'libedit')
+makedepends=('zig')
 license=('BSD3')
-provides=('ec')
 
 source=("${url}/archive/v${pkgver}.tar.gz")
 

@@ -1,14 +1,11 @@
 pkgbase = erasmus
 	pkgdesc = Minimal zettelkasten-inspired note-taking
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~subsetpark/erasmus
 	arch = x86_64
 	license = BSD3
-	makedepends = janet
-	makedepends = pkg-config
-	makedepends = libedit
-	provides = ec
+	makedepends = zig
 	source = https://git.sr.ht/~subsetpark/erasmus/archive/v0.1.1.tar.gz
 	sha256sums = 5e9000dc9d67d5cd91c4eeb9794cfe7bdbb5d81af3be97fd349cf9c9918c64a9
 
