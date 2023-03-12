@@ -2,18 +2,19 @@
 # Contributor: Andrew Shark <ashark linuxcomp.ru>
 
 pkgname=supermicro-update-manager
-pkgver=2.8.1
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="Update the BMC and UEFI/BIOS firmware for Supermicro motherboards"
 arch=(x86_64)
 url="https://www.supermicro.com/en/solutions/management-software/supermicro-update-manager"
 license=('custom: EULA')
 backup=(etc/sumrc)
-_rel_date=20220506
+_rel_date=20221209
+_rel_ver=527
 source=(
-  "https://www.supermicro.com/Bios/sw_download/440/sum_${pkgver}_Linux_x86_64_${_rel_date}.tar.gz"
+  "https://www.supermicro.com/Bios/sw_download/${_rel_ver}/sum_${pkgver}_Linux_x86_64_${_rel_date}.tar.gz"
 )
-sha256sums=('f458076e94f9fd822b1a82a44bf7087a57e58c2ad47c6fe7e11091fe3e1cbff3')
+sha256sums=('4f64bde6c60250edb03935f7a8cad3e579e953a6822660b763d8694bfad6ea35')
 depends=('zlib')
 
 package() {
