@@ -26,12 +26,14 @@ build() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=nightly
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release
+  #cargo build --frozen --release
+  cargo build --release
 }
 
 check() {
   cd "$pkgname-$pkgver"
-  cargo test --frozen --all-features
+  #cargo test --frozen --all-features
+  cargo test --all-features
 }
 
 package() {
