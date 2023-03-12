@@ -16,7 +16,7 @@ depends=(python-scipy
 makedepends=(python-setuptools
              python-sphinx)
 #checkdepends=(python-nose)
-source=("https://github.com/${_name}/${_name}/archive/v${pkgver}.tar.gz" 
+source=("$pkgname-$pkgver.tar.gz::https://github.com/${_name}/${_name}/archive/v${pkgver}.tar.gz" 
 	"bumps.patch")
 sha256sums=('b0eeb89a976ed340983496d70a83416fa65e5ca3a2eec13967f892268836ab68'
             'dbe2b429a766f2c8b022f5745cc43d1cf947cb481c348f86fa551d592920e1c0')
