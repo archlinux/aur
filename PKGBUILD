@@ -14,5 +14,6 @@ package() {
     cd "${pkgname}-${pkgver}"
     install -Dm 755 nvx "${pkgdir}/usr/bin/nvx"
     install -Dm 644 nvx.service "${pkgdir}/usr/lib/systemd/system/nvx.service"
+    install -Dm 644 nvx-suspend-restore "${pkgdir}/usr/lib/systemd/system-sleep""
     install -Dm 644 modprobe.conf "${pkgdir}/usr/lib/modprobe.d/nvx.conf"
 }
