@@ -1,7 +1,7 @@
 # Maintainer: lantw44 (at) gmail (dot) com
 
 pkgname=mingw-w64-gtk4
-pkgver=4.8.3
+pkgver=4.10.0
 pkgrel=1
 pkgdesc='GObject-based multi-platform GUI toolkit (mingw-w64)'
 arch=('any')
@@ -18,10 +18,10 @@ depends=(
   'mingw-w64-crt'
   'mingw-w64-adwaita-icon-theme'
   'mingw-w64-cairo>=1.14.2-3'
-  'mingw-w64-fribidi>=0.19.7'
+  'mingw-w64-fribidi>=1.0.6'
   'mingw-w64-gdk-pixbuf2>=2.30.0'
-  'mingw-w64-glib2>=2.66.0'
-  'mingw-w64-graphene>=1.9.1'
+  'mingw-w64-glib2>=2.72.0'
+  'mingw-w64-graphene>=1.10.0'
   'mingw-w64-gst-plugins-bad>=1.12.3'
   'mingw-w64-harfbuzz>=2.6.0'
   'mingw-w64-libepoxy>=1.4'
@@ -34,7 +34,7 @@ options=('!strip' '!buildflags' 'staticlibs')
 source=(
   "https://download.gnome.org/sources/gtk/${pkgver%.*}/gtk-${pkgver}.tar.xz")
 sha256sums=(
-  'b362f968d085b4d3d9340d4d38c706377ded9d5374e694a2b6b7e6292e3cba74')
+  '8dc1e7c3b3a46772f0fa416a8ca3fd21d0d0b3b03fb307d2e7327ebee69626e4')
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
 
