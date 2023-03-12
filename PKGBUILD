@@ -1,20 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=srware-iron-bin
 _pkgname=iron
-pkgver=109.5550.0
+pkgver=110.5600.0
 pkgrel=1
 epoch=
 pkgdesc="SRWare Iron Browser is a light-weight browser,based on Chromium"
 arch=("x86_64")
 url="https://www.srware.net/"
 license=('custom:freeware')
-depends=(
-    'gtk2'
-    'alsa-lib'
-    'qt5-base'
-    'nss'
-    'at-spi2-core'
-)
+depends=('gtk2' 'alsa-lib' 'qt5-base' 'nss' 'at-spi2-core')
 optdepends=()
 conflicts=()
 provides=("SRWare")
@@ -24,7 +18,7 @@ source=(
     "LICENSE::https://www.srware.net/license.txt"
     "${pkgname}.desktop"
     )
-md5sums=('d441bd10ef3b84d8a694fe0fa96b2e53'
+md5sums=('155e21af68e45c78b3f203005b332a1e'
          '7e5c8bc3986be55cd2d4649361287a22'
          '7415fbccd4a3539dfdb2f410264d7871')
   

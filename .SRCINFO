@@ -1,6 +1,6 @@
 pkgbase = srware-iron-bin
 	pkgdesc = SRWare Iron Browser is a light-weight browser,based on Chromium
-	pkgver = 109.5550.0
+	pkgver = 110.5600.0
 	pkgrel = 1
 	url = https://www.srware.net/
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = srware-iron-bin
 	depends = nss
 	depends = at-spi2-core
 	provides = SRWare
-	source = iron_109.5550.0_amd64.deb::https://www.srware.net//downloads/iron64.deb
+	source = iron_110.5600.0_amd64.deb::https://www.srware.net//downloads/iron64.deb
 	source = LICENSE::https://www.srware.net/license.txt
 	source = srware-iron-bin.desktop
-	md5sums = d441bd10ef3b84d8a694fe0fa96b2e53
+	md5sums = 155e21af68e45c78b3f203005b332a1e
 	md5sums = 7e5c8bc3986be55cd2d4649361287a22
 	md5sums = 7415fbccd4a3539dfdb2f410264d7871
 
