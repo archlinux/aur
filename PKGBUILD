@@ -1,6 +1,6 @@
 # Maintainer: Strahinya Radich <contact@strahinja.org>
 pkgname=poe
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc=".po file editor"
 arch=('x86_64')
