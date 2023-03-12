@@ -2,12 +2,12 @@
 
 _realname='gulkan'
 pkgname="$_realname-git"
-pkgver=0.16.0.433.79ed354
+pkgver=0.16.0.442.54e80d2
 pkgrel=1
 pkgdesc='A GLib library for Vulkan abstraction.'
 arch=('i686' 'x86_64')
 url='https://gitlab.freedesktop.org/xrdesktop/gulkan'
-depends=('gdk-pixbuf2' 'vulkan-icd-loader' 'graphene' 'cairo' 'shaderc' 'json-glib' 'libxkbcommon' 'wayland' 'xcb-util-keysyms' 'libdrm' 'wayland-protocols')
+depends=('gdk-pixbuf2' 'vulkan-icd-loader' 'graphene' 'cairo' 'shaderc' 'json-glib' 'libxkbcommon' 'wayland' 'xcb-util-keysyms' 'libdrm' 'wayland-protocols' 'glfw')
 provides=("$_realname="$pkgver)
 conflicts=("$_realname")
 makedepends=('meson' 'git' 'vulkan-headers' 'gtk-doc')

@@ -1,6 +1,6 @@
 pkgbase = gulkan-git
 	pkgdesc = A GLib library for Vulkan abstraction.
-	pkgver = 0.16.0.433.79ed354
+	pkgver = 0.16.0.442.54e80d2
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/xrdesktop/gulkan
 	arch = i686
@@ -21,7 +21,8 @@ pkgbase = gulkan-git
 	depends = xcb-util-keysyms
 	depends = libdrm
 	depends = wayland-protocols
-	provides = gulkan=0.16.0.433.79ed354
+	depends = glfw
+	provides = gulkan=0.16.0.442.54e80d2
 	conflicts = gulkan
 	source = git+https://gitlab.freedesktop.org/xrdesktop/gulkan.git#branch=main
 	md5sums = SKIP
