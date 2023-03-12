@@ -2,7 +2,7 @@
 # Based on https://aur.archlinux.org/packages/mathematica/
 pkgname=wolframengine
 pkgver=13.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free Wolfram Engine(TM) for Developers"
 arch=('x86_64')
 url="https://www.wolfram.com/engine/"
@@ -124,9 +124,9 @@ package() {
     cp *.1 ${pkgdir}/usr/share/man/man1
 
     msg2 "Copying license"
-    mkdir -p ${pkgdir}/usr/share/license/WolframEngine/
+    mkdir -p ${pkgdir}/usr/share/licenses/WolframEngine/
     cp ${pkgdir}/opt/WolframEngine/LICENSE.txt \
-      ${pkgdir}/usr/share/license/WolframEngine/license.txt
+      ${pkgdir}/usr/share/licenses/WolframEngine/license.txt
 
     msg2 "Fixing file permissions"
     chmod go-w -R ${pkgdir}/*

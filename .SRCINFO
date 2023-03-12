@@ -1,7 +1,7 @@
 pkgbase = wolframengine
 	pkgdesc = Free Wolfram Engine(TM) for Developers
 	pkgver = 13.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.wolfram.com/engine/
 	arch = x86_64
 	license = proprietary
