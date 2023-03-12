@@ -1,6 +1,6 @@
 pkgbase = floorp
 	pkgdesc = Firefox-based browser with excellent privacy protection, developed by a community of students in Japan
-	pkgver = 10.10.0
+	pkgver = 10.10.1
 	pkgrel = 1
 	url = http://floorp.ablaze.one
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = floorp
 	optdepends = hunspell-en_US: Spell checking, American English
 	source = https://github.com/Floorp-Projects/About-Floorp-Projects/raw/main/Creater-pack/Creater_pack_Floorp.zip
 	source = floorp.desktop
-	source = https://github.com/Floorp-Projects/Floorp/releases/download/v10.10.0/floorp-10.10.0.en-US.linux-x86_64.tar.bz2
+	source = https://github.com/Floorp-Projects/Floorp/releases/download/v10.10.1/floorp-10.10.1.en-US.linux-x86_64.tar.bz2
 	md5sums = c12cf6c807ad562188e648c60b2b7289
 	md5sums = cecce3f030f194da95819cfaffe020e3
-	md5sums = 06bb900b0ad4a89c6bf0e38e6a99a21a
+	md5sums = 6891fd8b8d6f11e6384a17da29f1e5f2
 
 pkgname = floorp
