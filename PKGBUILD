@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=biocthis
-_pkgver=1.8.2
+_pkgver=1.8.3
 pkgname=r-${_pkgname,,}
-pkgver=1.8.2
+pkgver=1.8.3
 pkgrel=1
 pkgdesc='Automate package and project setup for Bioconductor packages'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-utils
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0121632e29cc035eff50d8d6d6b91a8cff90462b44b7c0c05756d4b7a5292ebb')
+sha256sums=('aafc4ea488b447af3690aec996aa485c7beef200bff7b69138ef8f6a72e42c40')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
