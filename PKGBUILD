@@ -1,7 +1,7 @@
 # Maintainer: Bao Trinh <qubidt at gmail>
 
 pkgname=prometheus-pve-exporter
-pkgver=2.2.2
+pkgver=2.2.4
 pkgrel=1
 pkgdesc="Proxmox VE exporter for the Prometheus monitoring system"
 arch=('any')
@@ -15,13 +15,13 @@ depends=('python'
          'python-werkzeug')
 backup=("etc/prometheus/pve.yml")
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${pkgname}/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/prometheus-pve/prometheus-pve-exporter/archive/refs/tags/v${pkgver}.tar.gz"
         "prometheus-pve-exporter.service"
         "prometheus-pve-exporter.sysusers"
         "prometheus-pve-exporter.tmpfiles"
         "https://raw.githubusercontent.com/prometheus-pve/prometheus-pve-exporter/v${pkgver}/pve.yml"
         )
-sha256sums=('f36465d5e6784834f8a9976fc214a022b5a65707463841b6e9f32369118f7a6f'
+sha256sums=('043045d0f25fa6c395b9dcb06955b6b9612f4b9653d31e398e17aa859f3caa96'
             '5d1227b6e2fdaa27d8ec4ceafebc95074e2f5a1c27df313c3f00f2f85ef3ee34'
             'd230b99e6ec3663ba8785cc61b8b8983a04596eaf0271bfea0d64189eabbd97f'
             'c9eb4acf94e5a7851e90e721e1baa9b77ae0a276975a2f21e74c569a159358a7'
