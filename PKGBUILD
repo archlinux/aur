@@ -3,7 +3,7 @@
 # Python package author: Steven Myint <UNKNOWN>
 _name=autoflake
 pkgname=python-autoflake
-pkgver=2.0.0
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='Removes unused imports and unused variables'
 arch=(any)
@@ -22,7 +22,7 @@ makedepends=(
     'python-pytest'
 )
 source=("https://github.com/myint/$_name/archive/v${pkgver}.tar.gz")
-sha256sums=('b8b945a9adf5c8231f49fde2c1422e3618af4826825f6f8033e29434c71bf1bc')
+sha256sums=('90fc6f7135047ba523d86d69860b8f63c7fd099f67b369f1d5dce39253ec09b1')
 
 build() {
   pwd
