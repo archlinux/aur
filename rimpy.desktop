@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=RimPy Mod Manager
+Comment=Mod manager for Rimworld game
+Exec=rimpy
+Icon=rimpy
+Categories=Game;Utility

@@ -1,0 +1,20 @@
+pkgbase = rimpy-bin
+	pkgdesc = Mod manager for Rimworld game
+	pkgver = 1.2.6.29
+	pkgrel = 1
+	url = https://github.com/rimpy-custom/RimPy
+	arch = x86_64
+	license = unknown
+	depends = glibc
+	noextract = RimPy_Linux.tar.gz
+	options = !strip
+	source = https://github.com/rimpy-custom/RimPy/releases/download/1.2.6.29/RimPy_Linux.tar.gz
+	source = wrapper.sh
+	source = rimpy.desktop
+	source = rimpy.png
+	sha256sums = 2c83a0c3446b8391e9ab98bf5e2332e718d0f0fb10e6b0035ffa45b55311a705
+	sha256sums = 479843351e53514493c9af7728801226ee8ca7278ca4235b1523e0881bf4901f
+	sha256sums = 71959966f6760755dc2a131634b197b989937789be95c9542e1ccee47a5db15e
+	sha256sums = a2a1030ff224391edf485e6372dbe246530ec6c96a03fd3c1705ffb37ee17cc2
+
+pkgname = rimpy-bin
