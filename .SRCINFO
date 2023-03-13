@@ -1,15 +1,15 @@
 pkgbase = ruby-ruby-openai
 	pkgdesc = A Ruby gem for the OpenAI GPT-3 API
-	pkgver = 3.3.0
+	pkgver = 3.5.0
 	pkgrel = 1
 	url = https://github.com/alexrudall/ruby-openai
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = ruby-httparty
-	noextract = ruby-openai-3.3.0.gem
+	noextract = ruby-openai-3.5.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/ruby-openai-3.3.0.gem
-	sha1sums = 7ec66c20f3e8399c9b10e6f32dd54afaa9980e73
+	source = https://rubygems.org/downloads/ruby-openai-3.5.0.gem
+	sha1sums = f1a9438577b32a226243e37de7973b81dc6fb524
 
 pkgname = ruby-ruby-openai

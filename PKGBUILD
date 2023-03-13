@@ -3,7 +3,7 @@
 
 _gemname=ruby-openai
 pkgname=ruby-$_gemname
-pkgver=3.3.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc='A Ruby gem for the OpenAI GPT-3 API'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby ruby-httparty)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('7ec66c20f3e8399c9b10e6f32dd54afaa9980e73')
+sha1sums=('f1a9438577b32a226243e37de7973b81dc6fb524')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
