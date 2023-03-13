@@ -1,6 +1,6 @@
 pkgbase = python-darker
 	pkgdesc = Apply black reformatting to Python files only in regions changed since a given commit
-	pkgver = 1.5.1
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/akaihola/darker
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-darker
 	depends = python-black
 	depends = python-toml
 	optdepends = python-isort: for sorting import statements
-	source = python-darker-1.5.1.tar.gz::https://github.com/akaihola/darker/releases/download/1.5.1/darker-1.5.1.tar.gz
-	sha512sums = affde57589dcc1ec6380f5ef1acde0f6f48342ee5dcc889fae31d4b97ae6c8467e93611d6474d28d9bbb6b50e484a473bc533e5b7af5048158e49e8974efdefb
+	source = python-darker-1.7.0.tar.gz::https://github.com/akaihola/darker/releases/download/1.7.0/darker-1.7.0.tar.gz
+	sha512sums = be45fa321ca2d74b4151480e2754c6a33f3cc6f9e37e3a8c0592fb4a5cf3a6f01ac4b88a515d7e1e20b4e3691789590e3ab2da4c038f3e5ff02efa4556b7db72
 
 pkgname = python-darker
