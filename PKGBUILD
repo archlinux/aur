@@ -1,31 +1,31 @@
 _pkgname=libsmallfry
-pkgname=$_pkgname-git
-pkgver=0.1.2.r0.ge6d4939
+pkgname="$_pkgname-git"
+pkgver=0.2.0.r2.gc31c6a4
 pkgrel=1
 pkgdesc='Smallfry metric for JPEG Optimization'
 arch=(x86_64)
-url="https://github.com/ImageProcessing-ElectronicPublications/$_pkgname"
+url="https://github.com/ImageProcessing-ElectronicPublications/libsmallfry"
 license=(BSD)
 depends=(glibc)
 makedepends=(git)
 optdepends=()
 provides=("$_pkgname")
 conflicts=(${provides[@]})
-source=("$pkgname"::"git+$url")
+source=("$_pkgname"::"git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_pkgname"
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_pkgname"
   make PREFIX="$pkgdir/usr" install
 
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname"

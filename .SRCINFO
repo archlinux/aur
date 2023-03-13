@@ -1,6 +1,6 @@
 pkgbase = libsmallfry-git
 	pkgdesc = Smallfry metric for JPEG Optimization
-	pkgver = 0.1.2.r0.ge6d4939
+	pkgver = 0.2.0.r2.gc31c6a4
 	pkgrel = 1
 	url = https://github.com/ImageProcessing-ElectronicPublications/libsmallfry
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = libsmallfry-git
 	depends = glibc
 	provides = libsmallfry
 	conflicts = libsmallfry
-	source = libsmallfry-git::git+https://github.com/ImageProcessing-ElectronicPublications/libsmallfry
+	source = libsmallfry::git+https://github.com/ImageProcessing-ElectronicPublications/libsmallfry
 	sha256sums = SKIP
 
 pkgname = libsmallfry-git
