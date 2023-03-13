@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=UKMM
+Comment=U-King Mod Manager is a tool for managing and merging mods for The Legend of Zelda: Breath of the Wild.
+Exec=/usr/bin/ukmm %U
+Icon=ukmm
+Terminal=false
+Type=Application
+Categories=Utilities;
