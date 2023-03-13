@@ -1,8 +1,8 @@
-# Maintainer: nixi <nixi at cock dot li>
+# Maintainer: Emil Miler <em@0x45.cz>
 
 pkgname=opener
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple xdg-open replacement written in Scheme'
 arch=('any')
 url='https://git.sr.ht/~dawidjkubis/opener'

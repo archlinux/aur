@@ -1,7 +1,7 @@
 pkgbase = opener
 	pkgdesc = Simple xdg-open replacement written in Scheme
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~dawidjkubis/opener
 	arch = any
 	license = UNLICENSE
