@@ -1,6 +1,6 @@
 pkgbase = linux-xanmod-bin
 	pkgdesc = The Linux kernel and modules with Xanmod patches - Prebuilt version
-	pkgver = 6.2.3
+	pkgver = 6.2.5
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = linux-xanmod-bin
 	provides = NTFS3-MODULE
 	conflicts = linux-xanmod
 	options = !strip
-	source = https://github.com/xanmod/linux/releases/download/6.2.3-xanmod1/linux-image-6.2.3-x64v1-xanmod1_6.2.3-x64v1-xanmod1-0.20230310.3706445_amd64.deb
+	source = https://github.com/xanmod/linux/releases/download/6.2.5-xanmod1/linux-image-6.2.5-x64v1-xanmod1_6.2.5-x64v1-xanmod1-0.20230312.ac76271_amd64.deb
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 2332d5fe58422b0d70be2c7427c04694101fda1393d91e0e714caadc3bade60d
+	sha256sums = 3640acc10415f1920e290c36473d23a7a2dd68803ba2949ee5fe37c293d36499
 
 pkgname = linux-xanmod-bin
