@@ -1,7 +1,7 @@
 pkgbase = nginx-mainline-mod-lua
 	pkgdesc = Lua script engine module for mainline nginx
-	pkgver = 0.10.22
-	pkgrel = 3
+	pkgver = 0.10.23
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/openresty/lua-nginx-module
 	arch = i686
@@ -13,9 +13,9 @@ pkgbase = nginx-mainline-mod-lua
 	depends = luajit
 	depends = lua-resty-core
 	depends = pcre
-	source = https://github.com/openresty/lua-nginx-module/archive/v0.10.22/lua-0.10.22.tar.gz
+	source = https://github.com/openresty/lua-nginx-module/archive/v0.10.23/lua-0.10.23.tar.gz
 	source = cookie.patch
-	sha256sums = 294d3d4b2d14fda1b8c539ff86f90047d203df861eb9a1ac44ec5c679ef55408
+	sha256sums = 2d29fa9771c9423b1d5c742d850b2f967948450cb67e26396d71534a6336b54d
 	sha256sums = 774e46d085ca8bd0d7cd84a36946cf1fd31f284ca9ebc90828b758297614975b
 
 pkgname = nginx-mainline-mod-lua
