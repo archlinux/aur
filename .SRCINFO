@@ -1,7 +1,7 @@
 pkgbase = revchatgpt-git
 	pkgdesc = Lightweight package for interacting with ChatGPT's API by OpenAI. Uses reverse engineered official API.
-	pkgver = 2.3.3+3.r980.20230219.39b7fee
-	pkgrel = 2
+	pkgver = 3.3.4+8.r1265.20230313.6a7bfbf
+	pkgrel = 1
 	url = https://github.com/acheong08/ChatGPT
 	install = revchatgpt.install
 	arch = any
@@ -17,9 +17,9 @@ pkgbase = revchatgpt-git
 	depends = python-requests
 	depends = python-tiktoken
 	depends = python-undetected-chromedriver
-	provides = revchatgpt=2.3.3+3.r980.20230219.39b7fee
-	provides = python-revchatgpt=2.3.3+3.r980.20230219.39b7fee
-	provides = python-revchatgpt-git=2.3.3+3.r980.20230219.39b7fee
+	provides = revchatgpt=3.3.4+8.r1265.20230313.6a7bfbf
+	provides = python-revchatgpt=3.3.4+8.r1265.20230313.6a7bfbf
+	provides = python-revchatgpt-git=3.3.4+8.r1265.20230313.6a7bfbf
 	conflicts = revchatgpt
 	conflicts = chatgpt<=0.0.48
 	conflicts = python-revchatgpt
