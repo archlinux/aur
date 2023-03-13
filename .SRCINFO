@@ -1,6 +1,6 @@
 pkgbase = namcap-git
 	pkgdesc = A Pacman package analyzer
-	pkgver = 3.3.1.r43.gb6265a7
+	pkgver = 3.4.0.r28.g57d1463
 	pkgrel = 1
 	url = https://gitlab.archlinux.org/pacman/namcap
 	arch = any
@@ -16,10 +16,11 @@ pkgbase = namcap-git
 	depends = binutils
 	depends = elfutils
 	depends = licenses
+	depends = pkgconfig
 	depends = python
 	depends = pyalpm
 	depends = python-pyelftools
-	provides = namcap
+	provides = namcap=3.4.0.r28.g57d1463
 	conflicts = namcap
 	source = git+https://gitlab.archlinux.org/pacman/namcap.git
 	sha256sums = SKIP
