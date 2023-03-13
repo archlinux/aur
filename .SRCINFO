@@ -10,7 +10,7 @@ pkgbase = frappe-books-bin
 	depends = at-spi2-core
 	depends = nss
 	conflicts = frappe-books
-	source = frappe-books-0.10.0.AppImage::https://github.com/frappe/books/releases/download/v0.10.0/frappe-books_0.10.0_amd64.deb
+	source = frappe-books-0.10.0.deb::https://github.com/frappe/books/releases/download/v0.10.0/frappe-books_0.10.0_amd64.deb
 	sha512sums = 39a096e11e0852008eb915ea756ec04c154cec384f0f6b425ed427ce09904cbcdb4a5892ebb7afd62ec6addfec724ca65475f6f79fd77b0c1b91a1b8c4588ad2
 
 pkgname = frappe-books-bin
