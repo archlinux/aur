@@ -1,6 +1,6 @@
 pkgbase = codevis-git
 	pkgdesc = A tool for turning your code into one large image (git)
-	pkgver = 0.6.1.r0.g3c5b70c
+	pkgver = 0.7.0.r0.g481b335
 	pkgrel = 1
 	url = https://github.com/sloganking/codevis
 	arch = x86_64
@@ -12,6 +12,8 @@ pkgbase = codevis-git
 	conflicts = codevis
 	options = !lto
 	source = git+https://github.com/sloganking/codevis
+	source = codevis-git-0.7.0.r0.g481b335-cargo-lock.patch::https://github.com/sloganking/codevis/commit/1040b13aa03836678ec4ac5660994708ca559518.patch
 	sha512sums = SKIP
+	sha512sums = 75ead7523ae0731f008b24eeec051adf48f48f97ad674be4d8eabc2e7f3eeb540bf45520f9a8c076fcc53b71e63d6b4a841c32b0b6451d1931da12a4c093fd73
 
 pkgname = codevis-git
