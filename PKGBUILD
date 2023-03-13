@@ -2,7 +2,7 @@
 
 pkgname=maa-assistant-arknights
 _pkgver=v4.12.2
-pkgver="$(echo ${_pkgver//-/.} | sed -e 's/^v//')"
+pkgver="$(echo ${_pkgver//-/} | sed -e 's/^v//')"
 pkgrel=1
 pkgdesc="An Arknights assistant"
 arch=(x86_64)
