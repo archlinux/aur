@@ -1,6 +1,7 @@
 # Maintainer: Polarian <polarian@polarian.dev>
 # Contributor: Holger Schramm <dev@strace.it>
-pkgname=mingo-bin
+
+pkgname=mingo
 pkgver=1.11.0
 pkgrel=1
 pkgdesc="A proprietary MongoDB GUI based on electron from developers for developers"

@@ -1,9 +1,9 @@
-pkgbase = mingo-bin
+pkgbase = mingo
 	pkgdesc = A proprietary MongoDB GUI based on electron from developers for developers
 	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://mingo.io/
-	install = mingo-bin.install
+	install = mingo.install
 	arch = x86_64
 	license = custom:mingo
 	depends = alsa-lib
@@ -33,4 +33,4 @@ pkgbase = mingo-bin
 	sha256sums = 75135d6b192080375a0e615c05827c50e620dd1ed582dfa731cb8b0a8480582e
 	sha256sums = c2cb424eaa10c1482ea736a9271f33449fec51e034ad13bde52d33b1dbe0a2ca
 
-pkgname = mingo-bin
+pkgname = mingo
