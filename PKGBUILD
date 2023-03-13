@@ -1,8 +1,8 @@
-# Maintainer: nixi <nixi at cock dot li>
+# Maintainer: Emil Miler <em@0x45.cz>
 
 pkgname=bch-gateway
 pkgver=1.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Hub Service for HARDWARIO USB Gateway'
 arch=('any')
 url='https://github.com/hardwario/bch-gateway'

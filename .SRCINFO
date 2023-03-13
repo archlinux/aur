@@ -1,7 +1,7 @@
 pkgbase = bch-gateway
 	pkgdesc = Hub Service for HARDWARIO USB Gateway
 	pkgver = 1.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hardwario/bch-gateway
 	arch = any
 	license = MIT
