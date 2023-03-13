@@ -1,7 +1,7 @@
 pkgbase = bch-firmware-tool
 	pkgdesc = HARDWARIO Firmware Tool
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hardwario/bch-firmware-tool
 	arch = any
 	license = MIT

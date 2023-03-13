@@ -1,8 +1,8 @@
-# Maintainer: nixi <nixi at cock dot li>
+# Maintainer: Emil Miler <em@0x45.cz>
 
 pkgname=bch-firmware-tool
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='HARDWARIO Firmware Tool'
 arch=('any')
 url='https://github.com/hardwario/bch-firmware-tool'
