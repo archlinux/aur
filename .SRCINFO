@@ -1,7 +1,7 @@
 pkgbase = bch-control-tool
 	pkgdesc = HARDWARIO Hub Control Tool
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hardwario/bch-control-tool
 	arch = any
 	license = MIT
