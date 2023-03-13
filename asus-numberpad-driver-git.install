@@ -1,0 +1,4 @@
+post_install() {
+	modprobe i2c-dev
+	echo "i2c-dev" | tee /etc/modules-load.d/i2c-dev.conf >/dev/null
+}

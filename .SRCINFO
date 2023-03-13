@@ -1,0 +1,37 @@
+pkgbase = asus-numberpad-driver-git
+	pkgdesc = Linux newest feature-rich configurable driver for Asus numberpad
+	pkgver = r482.3fb640f
+	pkgrel = 1
+	url = https://github.com/asus-linux-drivers/asus-numberpad-driver
+	install = asus-numberpad-driver-git.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = libevdev
+	depends = python-libevdev
+	depends = i2c-tools
+	depends = python-numpy
+	depends = python-evdev
+	depends = xorg-xinput
+	provides = asus-numberpad-driver
+	replaces = asus-touchpad-numpad-driver
+	source = git+https://github.com/asus-linux-drivers/asus-numberpad-driver.git
+	sha256sums = SKIP
+
+pkgname = asus-numberpad-driver-b7402-git
+
+pkgname = asus-numberpad-driver-e210ma-git
+
+pkgname = asus-numberpad-driver-g513-git
+
+pkgname = asus-numberpad-driver-g533-git
+
+pkgname = asus-numberpad-driver-gx551-git
+
+pkgname = asus-numberpad-driver-gx701-git
+
+pkgname = asus-numberpad-driver-up5401ea-git
+
+pkgname = asus-numberpad-driver-ux433fa-git
+
+pkgname = asus-numberpad-driver-ux581l-git
