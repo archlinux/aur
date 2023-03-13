@@ -1,6 +1,6 @@
 pkgbase = python-pymc
 	pkgdesc = Markov chain Monte Carlo for Python
-	pkgver = 5.1.1
+	pkgver = 5.1.2
 	pkgrel = 1
 	url = https://github.com/pymc-devs/pymc
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = python-pymc
 	depends = python-pytensor
 	depends = python-scipy
 	depends = python-typing_extensions
-	source = python-pymc-5.1.1.tar.gz::https://github.com/pymc-devs/pymc/archive/refs/tags/v5.1.1.tar.gz
-	sha256sums = 6828983c600d5afa51b8d8643edb231e8e803658d2a546898d9f6fd521a9ce32
+	source = python-pymc-5.1.2.tar.gz::https://github.com/pymc-devs/pymc/archive/refs/tags/v5.1.2.tar.gz
+	sha256sums = 8745f9cf9b121b0b3cfa3f5baae9e83a9658e8481a8cf20e6702cd96fd617d77
 
 pkgname = python-pymc
