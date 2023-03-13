@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
-	<mime-type type="application/x-java-jnlp-file">
-		<icon name="application-x-java-jnlp-file"/>
-	</mime-type>
+  <mime-type type="application/x-java-jnlp-file">
+    <icon name="application-x-java-jnlp-file"/>
+  </mime-type>
 </mime-info>

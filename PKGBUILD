@@ -1,55 +1,50 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
+# Maintainer: Fredy García <frealgagu at gmail dot com>
+# Contributor: Oscar Rainford <oscar@fourbs.com.au>
 
-# Maintainer: Oscar Rainford <oscar@fourbs.com.au>
 pkgname=openwebstart-bin
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
-epoch=
 pkgdesc="An open source reimplementation of the Java Web Start technology."
 arch=("x86_64")
-url="https://openwebstart.com"
-license=('GPL')
-groups=()
-depends=("java-runtime<18")
-makedepends=()
-checkdepends=()
-optdepends=()
+url="https://openwebstart.com/"
+license=("GPL2")
+depends=("java-runtime<18" "xdg-utils")
 provides=("openwebstart")
-conflicts=()
-replaces=()
-backup=()
-options=(!strip !zipman)
+conflicts=("icedtea-web")
 install="openwebstart.install"
-changelog=
 source=(
-	"https://github.com/karakun/OpenWebStart/releases/download/v1.6.0/OpenWebStart_linux_1_6_0.deb"
-	"jnlp.xml"
-	"javaws.desktop"
-	"itw-settings.desktop"
+  "${pkgname}.deb::https://github.com/karakun/OpenWebStart/releases/download/v${pkgver}/OpenWebStart_linux_${pkgver//./_}.deb"
+  "jnlp.xml"
+  "javaws.desktop"
+  "itw-settings.desktop"
 )
-md5sums=(
-	"43de50969e877cb5b7e56a97da2e2cdd"
-	"551218dd79f7600755d76ab733fdb5bc"
-	"325214a1c96b12461190320cd2201bf7"
-	"1443e7e283bbf7461e9829eeffd5966a"
+sha256sums=(
+  "e531b2fc040a9a71d7e3bf9eec2d147c9ed18c4d1fb7e5ef22fe46fec0a6b0a3"
+  "e8a2f8208cbfb350a0277102a71fb314da29203e60bf1a48122f3a06635da2f8"
+  "b7c75989d4b7cb8468956eebfcbe09ee1cc9e44d536ae5e4d27dddef95dfc9a5"
+  "3d7f40d37b54fe4257cf5e6f508ea90c439f54d646602982dd50d1ba7cde0835"
 )
-validpgpkeys=()
+
+build() {
+  cd "${srcdir}"
+
+  bsdtar -xf data.tar.gz -C .
+}
 
 package() {
-	bsdtar -xf data.tar.gz -C "$pkgdir/"
-	mkdir -p $pkgdir/usr/local/bin/
-	mkdir -p $pkgdir/usr/share/applications/
-	mkdir -p $pkgdir/usr/share/mime/packages/
+  install -d "${pkgdir}/usr/bin/"
+  install -d "${pkgdir}/usr/share/applications/"
+  install -d "${pkgdir}/usr/share/mime/packages/"
+  install -d "${pkgdir}/opt/"
 
-	ln -sf "$pkgdir/opt/OpenWebStart/itw-settings" "$pkgdir/usr/local/bin/"
-	ln -sf "$pkgdir/opt/OpenWebStart/javaws" "$pkgdir/usr/local/bin/"
+  cp -r "${srcdir}/opt/"* "${pkgdir}/opt"
 
-	install -Dm644 jnlp.xml $pkgdir/usr/share/mime/packages
-	install -Dm755 javaws.desktop $pkgdir/usr/share/applications
-	install -Dm755 itw-settings.desktop $pkgdir/usr/share/applications
+  ln -sf "/opt/OpenWebStart/itw-settings" "${pkgdir}/usr/bin/"
+  ln -sf "/opt/OpenWebStart/javaws" "${pkgdir}/usr/bin/"
+
+  install -Dm644 "${srcdir}/jnlp.xml" "${pkgdir}/usr/share/mime/packages"
+  install -Dm644 "${srcdir}/javaws.desktop" "${pkgdir}/usr/share/applications"
+  install -Dm644 "${srcdir}/itw-settings.desktop" "${pkgdir}/usr/share/applications"
 }
 
 

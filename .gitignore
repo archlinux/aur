@@ -1,4 +1,6 @@
+openwebstart-*.pkg.tar.zst
+openwebstart-*.deb
+openwebstart-*.log
+PKGBUILD-namcap.log
 pkg/
 src/
-*.pkg.tar.zst
-*.deb

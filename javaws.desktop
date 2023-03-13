@@ -1,8 +1,11 @@
 [Desktop Entry]
-Type=Application
-Version=1.0
 Name=OpenWebStart
-NoDisplay=true
-Exec=/usr/local/bin/javaws %u
+GenericName=Java Web Start
+Comment=OpenWebStart Application Launcher
+Exec=/usr/bin/javaws %u
 Icon=/opt/OpenWebStart/.install4j/javaws.png
-MimeType=application/x-java-jnlp-file;x-scheme-handler/jnlp;
+Terminal=false
+Type=Application
+NoDisplay=true
+Categories=Network;WebBrowser;
+MimeType=application/x-java-jnlp-file;x-scheme-handler/jnlp;x-scheme-handler/jnlps

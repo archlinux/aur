@@ -1,7 +1,12 @@
 #!/usr/bin/env xdg-open
 [Desktop Entry]
-Type=Application
 Name=OpenWebStart Settings
-Exec=/bin/sh "/opt/OpenWebStart/itw-settings" %U
-StartupWMClass=install4j-com-openwebstart-launcher-ControlPanelLauncher
+GenericName=Control Panel
+Comment=Configure OpenWebStart (javaws and plugin)
+Exec=/opt/OpenWebStart/itw-settings
 Icon=/opt/OpenWebStart/.install4j/itw-settings.png
+Terminal=false
+Type=Application
+Categories=Settings;
+StartupWMClass=install4j-com-openwebstart-launcher-ControlPanelLauncher
+Keywords=OpenWebStart;java;javaws;web;start;webstart;jnlp;
