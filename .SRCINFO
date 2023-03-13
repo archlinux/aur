@@ -1,6 +1,6 @@
 pkgbase = duckypad-git
 	pkgdesc = duckyPad configurator (git)
-	pkgver = r778.5dc53ed1
+	pkgver = r902.62e2b6cb
 	pkgrel = 1
 	url = https://github.com/jose1711/duckyPad
 	install = duckypad.install
@@ -13,6 +13,7 @@ pkgbase = duckypad-git
 	depends = python-appdirs
 	depends = python-pyautogui
 	depends = tk
+	depends = duckypad-udev
 	provides = duckypad
 	conflicts = duckypad
 	source = duckypad-git::git+https://github.com/jose1711/duckyPad#branch=pythonhid
