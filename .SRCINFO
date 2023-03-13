@@ -1,7 +1,7 @@
 pkgbase = cliphist
 	pkgdesc = clipboard history “manager” for wayland
-	pkgver = 0.3.1
-	pkgrel = 1
+	pkgver = 0.4.0
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/sentriz/cliphist
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = cliphist
 	depends = wl-clipboard
 	optdepends = xdg-utils
 	conflicts = cliphist-bin
-	source = cliphist-0.3.1.tar.gz::https://github.com/sentriz/cliphist/archive/v0.3.1.tar.gz
-	sha256sums = a0ff01e0d0fc601671d131773fc6f68a3116e631d74b97553dcf68502440e277
+	source = cliphist-0.4.0.tar.gz::https://github.com/sentriz/cliphist/archive/v0.4.0.tar.gz
+	sha256sums = e492d6cd4e1bfc77582e32e25a3683687f2ff22e8d390cd06e14d21d7bef32c2
 
 pkgname = cliphist
