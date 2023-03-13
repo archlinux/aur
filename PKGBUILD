@@ -1,32 +1,31 @@
 # Maintainer: Mahor1221 <mahor1221 at pm dot me>
 
 pkgname=codelldb-bin
-_reponame=vscode-lldb
 _pkgname="${pkgname%-bin}"
-pkgver=1.8.1
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="A native debugger extension for VSCode based on LLDB. Also known as vscode-lldb (NOT lldb-vscode)"
 arch=("x86_64" "armv7h" "aarch64")
-url="https://github.com/vadimcn/$_reponame"
+url="https://github.com/vadimcn/codelldb"
 license=("MIT")
-provides=("$_pkgname" "$_reponame")
+provides=("$_pkgname" "vscode-lldb")
 conflicts=("$_pkgname")
 
-source=("$_reponame-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 source_x86_64=("$_pkgname-$pkgver-x86_64-linux.vsix::$url/releases/download/v$pkgver/$_pkgname-x86_64-linux.vsix")
 source_armv7h=("$_pkgname-$pkgver-arm-linux.vsix::$url/releases/download/v$pkgver/$_pkgname-arm-linux.vsix")
 source_aarch64=("$_pkgname-$pkgver-aarch64-linux.vsix::$url/releases/download/v$pkgver/$_pkgname-aarch64-linux.vsix")
 
-sha256sums=('95b905f2fe5a9e216b95be198b2416f73956db6c22fdbfabb6f0b55568929b76')
-sha256sums_x86_64=('1183adbccf1bf0f6fa4344d278fd1c3963e90e2753c1cb1c6dbfafc8a5411049')
-sha256sums_armv7h=('21f648e522696e9af4c90cf7fcaa82b7ae52a72431140459fab2ffb3228ceaa5')
-sha256sums_aarch64=('45645d6cdbb96d5bdc802ea8a85245ea46315b3f17c47411030e8b6ae9bb3f3d')
+sha256sums=('dfec6ebd468aa1c1880fe546eade7e8f77b29424fb9a88adb4c5253f03e7150e')
+sha256sums_x86_64=('27af4b0821fd1843b04d3fa0ea1ecfb202cda6b869b67205685a29079caa22b7')
+sha256sums_armv7h=('211a68f25a1e28323e2f3101cd89438888b1e4bc182988c40f6a7a4162f390b1')
+sha256sums_aarch64=('879ac7cf1c6a7944f82c42ee8b8d3da79abf084d8539abba6551ac6b6bb5ce54')
 
 package() {
-  install -dm755 "$pkgdir/usr/lib/$_pkgname/"
-  install -dm755 "$pkgdir/usr/bin"
-  install -Dm644 "$srcdir/$_reponame-$pkgver/LICENSE" \
-    "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-  cp -a "$srcdir/extension"/* "$pkgdir/usr/lib/$_pkgname/"
-  ln -s "/usr/lib/$_pkgname/adapter/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  cd "$srcdir/$_pkgname-$pkgver"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$_pkgname/LICENSE" LICENSE
+  install -dm755    "$pkgdir/usr/lib/$_pkgname/"
+  cp      -a  -t    "$pkgdir/usr/lib/$_pkgname" "$srcdir"/extension/*
+  install -dm755    "$pkgdir/usr/bin/"
+  ln      -s  -t    "$pkgdir/usr/bin/" "/usr/lib/$_pkgname/adapter/$_pkgname"
 }
