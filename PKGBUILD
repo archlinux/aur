@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tiledb
-_pkgver=0.18.0
+_pkgver=0.19.0
 pkgname=r-${_pkgname,,}
-pkgver=0.18.0
-pkgrel=3
+pkgver=0.19.0
+pkgrel=1
 pkgdesc='Universal Storage Engine for Sparse and Dense Multidimensional Arrays'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -28,7 +28,7 @@ optdepends=(
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f0fae6bb8890ab278c1bc2ccbac1f0eefada1d4a1dc64eff9b861b7cf9f840b4')
+sha256sums=('f4eee353dbae8110b2992101fb5494553ad5948adc7a953584afe2ef30b587ff')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
