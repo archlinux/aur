@@ -3,7 +3,7 @@
 
 pkgname=python-pyscaffold
 _pkg=PyScaffold
-pkgver=4.3.1
+pkgver=4.4
 pkgrel=1
 pkgdesc="Python project template generator with batteries included"
 url="https://github.com/pyscaffold/pyscaffold"
@@ -33,7 +33,7 @@ makedepends=(
 # checkdepends=('git' 'python-pytest' 'python-pytest-virtualenv')
 changelog=CHANGELOG.rst
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('50cb1f910163204caec30c7c6bbe70f1a81c377538b8c8340d23abe31f5ca5b4')
+sha256sums=('94088d129b61cd9b4b4607c6a466759b1bb2ada36206d5ac20aa319edcc5d701')
 
 prepare() {
 	cd "$_pkg-$pkgver"
@@ -57,11 +57,9 @@ build() {
 
 package() {
 	cd "$_pkg-$pkgver"
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
-	install -Dm644 docs/_build/man/pyscaffold.1 -t "$pkgdir/usr/share/man/man1/"
+	python -m installer --destdir="$pkgdir/" dist/*.whl
+	install -Dvm644 docs/_build/man/pyscaffold.1 -t "$pkgdir/usr/share/man/man1/"
 	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-	install -d "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s \
-		"$_site/$_pkg-$pkgver.dist-info/LICENSE.txt" \
-		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -sv "$_site/$_pkg-$pkgver.dist-info/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
