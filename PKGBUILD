@@ -2,7 +2,7 @@
 _base=thumbnails-readme
 pkgname=python-${_base}
 pkgdesc="Create thumbnails from Git folders"
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 arch=(any)
 url="https://github.com/firefly-cpp/${_base}"
@@ -11,7 +11,7 @@ depends=(python-pdf2image python-pillow python-cairosvg)
 makedepends=(python-build python-installer python-poetry-core)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('0ebf0e85b8635f49efb09dc24176a0f647069ede6bc3c274536f5f3b70e4de4bf74df971b6bf4ff96b8747a4c503d5d39566a32dbf5b68f54888eacf9bcb95cf')
+sha512sums=('130571edf0cbefb0761e17f7d15c5b1d9137e48875058884f971b255113a0d6d87915ee989f2fec7e24b3057172d216c2e99326e84df5179b037525abc912b69')
 
 build() {
   cd ${_base}-${pkgver}
