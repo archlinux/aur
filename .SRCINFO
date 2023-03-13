@@ -1,18 +1,17 @@
 pkgbase = langmix-git
 	pkgdesc = Extract and merge multilingual subtitles into one file
-	pkgver = v0.2.r3.g6f9e278
+	pkgver = 0.2.1.r0.gbe671f7
 	pkgrel = 1
 	url = https://github.com/radioxoma/langmix
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python-pysrt
-	optdepends = ffmpeg: extract subtitles to SRT
+	optdepends = ffmpeg: extract SRT subtitles
 	provides = langmix
-	conflicts = langmix
 	source = langmix-git::git+https://github.com/radioxoma/langmix
 	sha256sums = SKIP
 
 pkgname = langmix-git
-
