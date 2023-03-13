@@ -1,4 +1,4 @@
 /pkg
 /src
-/vte
 /*.pkg.tar.*
+/*.tar.bz2
