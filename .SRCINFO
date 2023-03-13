@@ -1,0 +1,14 @@
+pkgbase = anifetch
+	pkgdesc = Simple OS information fetcher
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/anixne/anifetch
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = glibc
+	depends = glib2
+	source = anifetch-1.0.0::git+https://github.com/anixne/anifetch.git
+	md5sums = SKIP
+
+pkgname = anifetch
