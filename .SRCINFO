@@ -1,6 +1,6 @@
 pkgbase = kconfig-git
 	pkgdesc = Configuration system
-	pkgver = 5.240.0_r1049.g64d21919
+	pkgver = 5.240.0_r1060.gf2052acb
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = kconfig-git
 	makedepends = python-pyqt6
 	makedepends = doxygen
 	makedepends = sip4
+	makedepends = qt6-declarative
 	depends = qt6-base
 	optdepends = python-pyqt6: for the Python bindings
 	provides = kconfig
