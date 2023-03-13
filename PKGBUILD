@@ -7,7 +7,7 @@
 
 _pkgname=digikam
 pkgname=digikam-without-akonadi-mediawiki-vkontakte
-_pkgver=7.9.0
+_pkgver=7.10.0
 pkgver=${_pkgver//-/_} # for beta versions
 pkgrel=1
 pkgdesc='An advanced digital photo management application'
@@ -23,17 +23,14 @@ optdepends=('hugin: panorama tool' 'qt5-imageformats: support for additional ima
             'rawtherapee: RAW import' 'darktable: RAW import'
             'perl: for digitaglinktree')
 source=(https://download.kde.org/stable/$_pkgname/$pkgver/digiKam-$_pkgver.tar.xz{,.sig}
-        f2f86c3c.patch
         ffmpeg5.patch)
-sha256sums=('c3b80abc090da3cbbc42e67a403080d7f5fe0a7c98698735bda556c60314bab4'
+sha256sums=('a3f30f01b7d1b6d585822bcd5ebf8df69e0ff024563a72462ebf8069dbda22e1'
             'SKIP'
-            '93e3bf4a6d8118db45171acbab51381ee0806a98f3dc5be7f32727445ea80ac1'
             'ef2601f9b2e668116a3643b4bd7ddcfc233ccfc747d813955423ca17b6a23dee')
 validpgpkeys=(D1CF2444A7858C5F2FB095B74A77747BC2386E50) # digiKam.org (digiKam project) <digikamdeveloper@gmail.com>
 
 prepare() {
   patch -d $_pkgname-$_pkgver -p1 < ffmpeg5.patch # Fix build with FFmpeg 5
-  patch -d $_pkgname-$_pkgver -p1 < f2f86c3c.patch # Fix crashes on face recognition
 }
 
 build() {
