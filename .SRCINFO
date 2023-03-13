@@ -1,0 +1,14 @@
+pkgbase = python-trame-server
+	pkgdesc = Internal server side implementation of trame
+	pkgver = 2.9.1
+	pkgrel = 1
+	url = https://github.com/Kitware/trame-server
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-wslink
+	source = trame-server-2.9.1.tar.gz::https://github.com/Kitware/trame-server/archive/v2.9.1.tar.gz
+	sha512sums = 5ed3dce74025329b143824a175610ccad3757be075335028e9af5693a4dd51d6dd815bcd3aec7a4ca228adddff819d43c7ed1e858fd3bb46330b238cfc0fe837
+
+pkgname = python-trame-server
