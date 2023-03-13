@@ -25,6 +25,7 @@ pkgbase = colmap-git
 	depends = libjpeg
 	depends = boost-libs
 	depends = qt5-base
+	depends = flann
 	optdepends = libcudart.so: for cuda sfm/mvs acceleration
 	source = colmap-git::git+https://github.com/colmap/colmap.git#branch=dev
 	source = cuda11_gcc11.patch
