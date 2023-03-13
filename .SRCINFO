@@ -1,18 +1,14 @@
 pkgbase = yakyak-bin
 	pkgdesc = Desktop chat client for Google Hangouts
-	pkgver = 1.5.9
+	pkgver = 1.5.12
 	pkgrel = 1
 	url = https://github.com/yakyak/yakyak
 	arch = x86_64
-	arch = i686
 	license = MIT
 	optdepends = emojione-color-font: Emoji support
 	provides = yakyak
 	conflicts = yakyak
-	source_x86_64 = yakyak-bin-1.5.9.tar.gz::https://github.com/yakyak/yakyak/releases/download/v1.5.9/yakyak-1.5.9-linux-x64-pacman.tar.gz
-	sha256sums_x86_64 = 1a9bc89aff4de28b7826d2c7af487a9c894482b573d61bf08b35bd0dc0704e16
-	source_i686 = yakyak-bin-1.5.9.tar.gz::https://github.com/yakyak/yakyak/releases/download/v1.5.9/yakyak-1.5.9-linux-ia32-pacman.tar.gz
-	sha256sums_i686 = 1a9bc89aff4de28b7826d2c7af487a9c894482b573d61bf08b35bd0dc0704e16
+	source = yakyak-1.5.12.tar.gz::https://github.com/yakyak/yakyak/releases/download/v1.5.12-rolling-beta/yakyak-1.5.12-beta-linux-x64-pacman.tar.gz
+	sha256sums = 4b49ce5b110494928e72ae3bee99597920e71ff2a4343729f3eeca55cc8bea3a
 
 pkgname = yakyak-bin
-
