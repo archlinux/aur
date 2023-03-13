@@ -1,0 +1,23 @@
+diff --unified --recursive --text codechecker-6.21.0.orig/analyzer/tools/build-logger/Makefile codechecker-6.21.0/analyzer/tools/build-logger/Makefile
+--- codechecker-6.21.0.orig/analyzer/tools/build-logger/Makefile	2023-03-13 15:26:08.567805242 +0100
++++ codechecker-6.21.0/analyzer/tools/build-logger/Makefile	2023-03-13 15:26:47.491607966 +0100
+@@ -41,8 +41,6 @@
+ CPPFLAGS = -D_GNU_SOURCE
+ # C flags
+ CFLAGS = -std=c99 -pedantic -Wall -Wextra -O2
+-# Linker flags
+-LDFLAGS =
+ # Flags for ldlogger lib
+ LIB_CFLAGS= $(CFLAGS) \
+ 	-Wno-strict-aliasing -fno-exceptions -fPIC -fomit-frame-pointer -fvisibility=hidden
+@@ -132,8 +130,8 @@
+ 
+ # ldlogger lib 32
+ ldlogger_32.so: $(LDLOGGER_LIB_SOURCES) $(LDLOGGER_LIB_HEADERS)
+-	$(CC) -m32 $(CPPFLAGS) $(LIB_CFLAGS) $(LIB_LDFLAGS) $(LDLOGGER_LIB_SOURCES) $(LDLOGGER_SOURCES) -o $@
++	$(CC) -m32 $(CPPFLAGS) $(LIB_CFLAGS) $(LIB_LDFLAGS) $(LDFLAGS) $(LDLOGGER_LIB_SOURCES) $(LDLOGGER_SOURCES) -o $@
+ 
+ # ldlogger lib 64
+ ldlogger_64.so: $(LDLOGGER_LIB_SOURCES) $(LDLOGGER_LIB_HEADERS)
+-	$(CC) -m64 $(CPPFLAGS) $(LIB_CFLAGS) $(LIB_LDFLAGS) $(LDLOGGER_LIB_SOURCES) $(LDLOGGER_SOURCES) -o $@
++	$(CC) -m64 $(CPPFLAGS) $(LIB_CFLAGS) $(LIB_LDFLAGS) $(LDFLAGS) $(LDLOGGER_LIB_SOURCES) $(LDLOGGER_SOURCES) -o $@
