@@ -2,7 +2,7 @@
 # Maintainer: Jguer <pkgbuilds at jguer.space>
 pkgname="yay-git"
 _pkgname="yay"
-pkgver=11.3.1.r92.gc40e949
+pkgver=11.3.1.r134.gdfa7ed5
 pkgrel=1
 pkgdesc="Yet another yogurt. Pacman wrapper and AUR helper written in go. (development version)"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
