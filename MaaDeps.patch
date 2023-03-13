@@ -1,0 +1,112 @@
+diff --git a/vcpkg-overlay/ports/maa-fastdeploy/fastdeploy-ort_1_13.patch b/vcpkg-overlay/ports/maa-fastdeploy/fastdeploy-ort_1_13.patch
+new file mode 100644
+index 0000000..b95777e
+--- /dev/null
++++ b/vcpkg-overlay/ports/maa-fastdeploy/fastdeploy-ort_1_13.patch
+@@ -0,0 +1,41 @@
++diff --git a/fastdeploy/backends/ort/ort_backend.cc b/fastdeploy/backends/ort/ort_backend.cc
++index 1e6d8bfb..2295ba84 100644
++--- a/fastdeploy/backends/ort/ort_backend.cc
+++++ b/fastdeploy/backends/ort/ort_backend.cc
++@@ -151,31 +151,29 @@ bool OrtBackend::InitFromOnnx(const std::string& model_file,
++   Ort::Allocator allocator(session_, memory_info);
++   size_t n_inputs = session_.GetInputCount();
++   for (size_t i = 0; i < n_inputs; ++i) {
++-    auto input_name = session_.GetInputName(i, allocator);
+++    auto input_name = session_.GetInputNameAllocated(i, allocator);
++     auto type_info = session_.GetInputTypeInfo(i);
++     std::vector<int64_t> shape =
++         type_info.GetTensorTypeAndShapeInfo().GetShape();
++     ONNXTensorElementDataType data_type =
++         type_info.GetTensorTypeAndShapeInfo().GetElementType();
++-    inputs_desc_.emplace_back(OrtValueInfo{input_name, shape, data_type});
++-    allocator.Free(input_name);
+++    inputs_desc_.emplace_back(OrtValueInfo{input_name.get(), shape, data_type});
++   }
++ 
++   size_t n_outputs = session_.GetOutputCount();
++   for (size_t i = 0; i < n_outputs; ++i) {
++-    auto output_name = session_.GetOutputName(i, allocator);
+++    auto output_name = session_.GetOutputNameAllocated(i, allocator);
++     auto type_info = session_.GetOutputTypeInfo(i);
++     std::vector<int64_t> shape =
++         type_info.GetTensorTypeAndShapeInfo().GetShape();
++     ONNXTensorElementDataType data_type =
++         type_info.GetTensorTypeAndShapeInfo().GetElementType();
++-    outputs_desc_.emplace_back(OrtValueInfo{output_name, shape, data_type});
+++    outputs_desc_.emplace_back(OrtValueInfo{output_name.get(), shape, data_type});
++ 
++     Ort::MemoryInfo out_memory_info("Cpu", OrtDeviceAllocator, 0,
++                                     OrtMemTypeDefault);
++-    binding_->BindOutput(output_name, out_memory_info);
+++    binding_->BindOutput(output_name.get(), out_memory_info);
++ 
++-    allocator.Free(output_name);
++   }
++   initialized_ = true;
++   return true;
+diff --git a/vcpkg-overlay/ports/maa-fastdeploy/portfile.cmake b/vcpkg-overlay/ports/maa-fastdeploy/portfile.cmake
+index 6458212..f94665b 100644
+--- a/vcpkg-overlay/ports/maa-fastdeploy/portfile.cmake
++++ b/vcpkg-overlay/ports/maa-fastdeploy/portfile.cmake
+@@ -3,6 +3,7 @@ vcpkg_from_github(
+     REPO MaaAssistantArknights/FastDeploy
+     REF 5947e66d35744cbf94a3bf20fa7e5342752d0c26
+     SHA512 e69dfa5b9cd43ef0a7636970b0e14fee91a7bdaeb9483279d6b6efb9fadd09669b76960416d293b118acf1e8d649d3eb4f63aa1b8f19a25f4ddb0513d861d4ce
++    PATCHES fastdeploy-ort_1_13.patch
+ )
+ 
+ vcpkg_cmake_configure(
+diff --git a/vcpkg.json b/vcpkg.json
+index 329c6f0..e40fb34 100644
+--- a/vcpkg.json
++++ b/vcpkg.json
+@@ -1,36 +1,12 @@
+ {
+   "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+   "name": "maa-meta",
+-  "version": "2023-01-17",
++  "version": "2023-01-17-archlinux",
+   "description": "meta manifest that tracks dependencies for MAA",
+   "homepage": "https://github.com/MaaAssistantArknights/MaaDeps",
+   "license": null,
+   "dependencies": [
+-    {
+-      "name": "opencv",
+-      "default-features": false,
+-      "features": [
+-        "eigen",
+-        "jpeg",
+-        "png",
+-        "tiff",
+-        "world"
+-      ]
+-    },
+-    {
+-      "$FIXME": "default-features: false for opencv doesn't get propagated to opencv4",
+-      "name": "opencv4",
+-      "default-features": false,
+-      "features": [
+-        "eigen",
+-        "jpeg",
+-        "png",
+-        "tiff",
+-        "world"
+-      ]
+-    },
+     "maa-fastdeploy",
+-    "zlib",
+     "asio"
+   ]
+ }
+diff --git a/maadeps.cmake b/maadeps.cmake
+index cbc0aa1..985fcce 100644
+--- a/maadeps.cmake
++++ b/maadeps.cmake
+@@ -40,5 +40,5 @@ endif()
+ list(PREPEND CMAKE_PREFIX_PATH "${CMAKE_CURRENT_LIST_DIR}/vcpkg/installed/${MAADEPS_TRIPLET}")
+
+ function(maadeps_install)
+-  install(DIRECTORY "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/runtime/${MAADEPS_TRIPLET}/" DESTINATION . USE_SOURCE_PERMISSIONS)
++  install(DIRECTORY "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/runtime/${MAADEPS_TRIPLET}/" DESTINATION lib USE_SOURCE_PERMISSIONS)
+ endfunction()
