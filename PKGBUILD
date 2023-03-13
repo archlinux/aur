@@ -17,6 +17,8 @@ noextract=("${_appimage}")
 sha256sums_x86_64=('00f36dcdf795eb3f08176d1ba2672032aee6c1c2b57db0dd145efb5ebd143ceb')
 options+=('!strip')
 
+_desktop_file_name="via-nativia.desktop"
+
 prepare() {
     chmod +x "${_appimage}"
     ./"${_appimage}" --appimage-extract
@@ -25,7 +27,7 @@ prepare() {
 build() {
     # Adjust .desktop so it will work outside of AppImage container
     sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|"\
-        "squashfs-root/${_pkgname}-nativa.desktop"
+        "squashfs-root/${_desktop_file_name}"
     # Fix permissions; .AppImage permissions are 700 for all directories
     chmod -R a-x+rX squashfs-root/usr
 }
@@ -34,8 +36,8 @@ package() {
     # AppImage
     install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
     # Desktop file
-    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}-nativa.desktop"\
-            "${pkgdir}/usr/share/applications/${_pkgname}-nativa.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/${_desktop_file_name}"\
+        "${pkgdir}/usr/share/applications/${_desktop_file_name}"
 
     # Icon images
     install -dm755 "${pkgdir}/usr/share/"
