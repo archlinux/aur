@@ -33,6 +33,8 @@ prepare(){
 
 build() {
 	cd ${srcdir}/jamin
+	LDFLAGS="-ldl"
+	CFLAGS="-Wno-deprecated-declarations -Wno-pointer-sign -Wno-cpp -Wno-unused-but-set-variable -Wno-incompatible-pointer-types -Wno-unused-variable -fcommon"
 	./autogen.sh --prefix=/usr --libdir=/usr/lib
 	make
 }
