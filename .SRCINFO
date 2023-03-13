@@ -1,13 +1,13 @@
 pkgbase = fishnet
 	pkgdesc = Distributed Stockfish analysis for lichess.org
-	pkgver = 2.6.7
+	pkgver = 2.6.8
 	pkgrel = 1
 	url = https://github.com/lichess-org/fishnet
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = rust
-	source = git+https://github.com/lichess-org/fishnet#tag=v2.6.7
+	source = git+https://github.com/lichess-org/fishnet#tag=v2.6.8
 	source = git+https://github.com/official-stockfish/Stockfish
 	source = git+https://github.com/ianfab/Fairy-Stockfish
 	sha256sums = SKIP
