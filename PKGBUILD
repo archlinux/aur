@@ -1,9 +1,10 @@
 # Maintainer: Yukari Chiba <i@0x7f.cc>
 
 pkgname=(grasscutter-git grasscutter-resources-git)
-pkgver=1.4.6.70e448d
+pkgver=1.4.6.8d09b88
+_gcver=3.4
 _pkgname=grasscutter
-_commit=70e448d8bcc75f3ee04257d47f795bb07f6f9933
+_commit=8d09b8833c216c5f0b12d854d0424c66699dfc05
 pkgrel=2
 pkgdesc="A server software reimplementation for a certain anime game."
 arch=('any')
@@ -12,10 +13,10 @@ license=('AGPL3')
 depends=('java-runtime-headless>=17')
 makedepends=("java-environment>=17" 'gradle')
 source=("$_pkgname::git+${url}#commit=${_commit}"
-	"$_pkgname-resources.zip::https://git.crepe.moe/grasscutters/Grasscutter_Resources/-/raw/d3a5672a77180b7c74cb6c89422e0f6eed67a064/Grasscutter_Resources-3.3.zip?inline=false"
+	"$_pkgname-resources.tar.bz2::https://gitlab.com/YuukiPS/GC-Resources/-/archive/${_gcver}/GC-Resources-${_gcver}.tar.bz2"
         "grasscutter-run")
 b2sums=("SKIP"
-        "1cb209f62db28c6e7a4651b77567d088dd578efccd59fd020c733e1b46b1acea6f85f403954044fe9db9a41bd537168e2f83692e023453dea5f6851f7548812e"
+        "SKIP"
         "e9b4f7513617d040b41b4720fc611d1038f03ed2b4f86f9bf6276a43e3910e3cacbb7175a92ac068c6e57569c5ab145674b5a41aa9a74976db89a4cf68a7248e")
 
 build() {
@@ -40,5 +41,5 @@ package_grasscutter-resources-git() {
   provides=('grasscutter-resources')
   conflicts=('grasscutter-resources')
   install -d "${pkgdir}/usr/share/${_pkgname}"
-  cp -r "${srcdir}/Grasscutter_Resources-3.3/Resources" "${pkgdir}/usr/share/${_pkgname}/resources" 
+  cp -r "${srcdir}/GC-Resources-${_gcver}/Resources" "${pkgdir}/usr/share/${_pkgname}/resources" 
 }
