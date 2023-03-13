@@ -1,0 +1,16 @@
+pkgbase = pacgraph
+	pkgdesc = Draws a graph of installed packages to PNG/SVG/GUI/console. Good for finding bloat.
+	pkgver = 20110629
+	pkgrel = 7
+	url = http://kmkeen.com/pacgraph/
+	arch = any
+	license = GPL
+	depends = python
+	optdepends = inkscape: png backend
+	optdepends = imagemagick: png backend
+	optdepends = tk: gui version
+	source = http://kmkeen.com/pacgraph/pacgraph-20110629.tar.gz
+	md5sums = 8f6da3a2fc4b8c5bb924767014b1cfb2
+	sha256sums = 55c666d76cbf685f89c7242e44206a1b66922ea7d6394e8e19c9b9f189d349b6
+
+pkgname = pacgraph
