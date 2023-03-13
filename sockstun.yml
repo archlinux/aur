@@ -1,6 +1,6 @@
 tunnel:
   name: tun0
-  mtu: 9000
+  mtu: 8500
   multi-queue: true
   ipv4: '198.18.0.1'
   ipv6: 'fc00::1'
