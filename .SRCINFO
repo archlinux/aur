@@ -1,0 +1,13 @@
+pkgbase = stellwerksim-rich-presence
+	pkgdesc = Lightweight Discord rich presence plugin for StellwerkSim
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/NyCodeGHG/stellwerksim-rich-presence
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	conflicts = stellwerksim-rich-presence-bin
+	source = stellwerksim-rich-presence-0.1.0.tar.gz::https://github.com/NyCodeGHG/stellwerksim-rich-presence/archive/0.1.0.tar.gz
+	sha256sums = c6b5b1ec376452a01795c6b541b5d0e106e890a8619b1a4e82e58e70cff124d9
+
+pkgname = stellwerksim-rich-presence
