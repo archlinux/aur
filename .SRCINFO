@@ -1,6 +1,6 @@
 pkgbase = python-autoflake
 	pkgdesc = Removes unused imports and unused variables
-	pkgver = 2.0.0
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/myint/autoflake
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-autoflake
 	depends = python
 	depends = python-pyflakes
 	depends = python-tomli
-	source = https://github.com/myint/autoflake/archive/v2.0.0.tar.gz
-	sha256sums = b8b945a9adf5c8231f49fde2c1422e3618af4826825f6f8033e29434c71bf1bc
+	source = https://github.com/myint/autoflake/archive/v2.0.2.tar.gz
+	sha256sums = 90fc6f7135047ba523d86d69860b8f63c7fd099f67b369f1d5dce39253ec09b1
 
 pkgname = python-autoflake
