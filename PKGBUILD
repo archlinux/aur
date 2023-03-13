@@ -11,12 +11,12 @@ url="https://github.com/macronut/$_pkgname"
 #_commit=a521259ffc1cfd8753845997c09644b976af2d6c
 license=('LGPL-3.0')
 groups=()
-depends=('libpcap' 'systemd')
+depends=('systemd')
 makedepends=('go' 'git')
 checkdepends=()
 optdepends=(
 	'v2raya: for use with v2raya'
-#	'libpcap: for build tag pcap'
+	'libpcap: you can build pcap version if you want, see PKGBUILD build()'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -45,8 +45,9 @@ pkgver() {
 
 build() {
 	cd "$_pkgname"
-	#go build -tags rawsocket
-	go build -tags pcap
+	# Choose between them
+	go build -tags rawsocket
+	#go build -tags pcap
 }
 
 package() {
