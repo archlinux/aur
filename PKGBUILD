@@ -1,6 +1,6 @@
 # Maintainer: Felipe Contreras <felipe.contreras@gmail.com>
 
-# shellcheck disable=SC2034,SC2115
+# shellcheck disable=SC2034,SC2154,SC2115
 
 pkgname=vte3-nohang
 pkgver=0.70.3
