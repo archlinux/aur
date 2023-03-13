@@ -1,7 +1,7 @@
 pkgbase = zebrad
-	pkgdesc = ZF's independent, consensus-compatible implementation of a Zcash node
+	pkgdesc = A Rust implementation of a Zcash node. 🦓
 	pkgver = 1.0.0_rc.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ZcashFoundation/zebra
 	arch = aarch64
 	arch = x86_64
