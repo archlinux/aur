@@ -1,34 +1,33 @@
-# Maintainer: Jakub Klinkovský <j.l.k@gmx.com>
+# Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
+# Contributor: Jakub Klinkovský <j.l.k@gmx.com>
 
-pkgname="hyphen-cs"
+pkgname=hyphen-cs
 pkgdesc="Czech hyphenation rules"
-pkgver=20061030
-pkgrel=2
-arch=("any")
+pkgver=20210721
+_rev=b3a1c0be50d1ad0b404070124463fb4af90bbe39
+pkgrel=1
+arch=(any)
 optdepends=("hyphen: offers hyphenation library functions")
-url="http://download.services.openoffice.org/contrib/dictionaries/"
-license=("GPL2")
-source=(${url}hyph_cs_CZ.zip)
-md5sums=('7dc7192fb3c141db6518c54781df6846')
+url=https://github.com/LibreOffice/dictionaries
+license=(custom:GFDL)
+source=(https://github.com/LibreOffice/dictionaries/raw/${_rev}/cs_CZ/hyph_cs_CZ.dic
+		https://raw.githubusercontent.com/LibreOffice/dictionaries/${_rev}/cs_CZ/README_cs.txt)
+sha256sums=('a378d024438b446ac0524237dc6d728dc520550db5fe0fb1fdbb47c2ee0ca525'
+            '24d1d07409b62e8e6f0ee114991d4749d3e97b05ea19feca835916af67312720')
 
 build() {
-    /bin/true
+	true
 }
 
 package() {
-    cd "$srcdir"
-    install -dm755 ${pkgdir}/usr/share/hyphen
-    install -m644 hyph_cs_CZ.dic ${pkgdir}/usr/share/hyphen
+	install -Dt "${pkgdir}"/usr/share/hyphen -m0644 hyph_cs_CZ.dic
 
-    # the symlinks
-    install -dm755 ${pkgdir}/usr/share/myspell/dicts
-    pushd ${pkgdir}/usr/share/myspell/dicts
-        for file in ${pkgdir}/usr/share/hyphen/*; do
-            ln -sv /usr/share/hyphen/$(basename $file) .
-        done
-    popd
+	install -dm0755 "${pkgdir}"/usr/share/myspell/dicts
+	pushd "${pkgdir}"/usr/share/myspell/dicts
+		for file in "${pkgdir}"/usr/share/hyphen/*; do
+			ln -sv /usr/share/hyphen/$(basename $file) .
+		done
+	popd
 
-    # docs
-    install -dm755 ${pkgdir}/usr/share/doc/$pkgname
-    install -m644 README_hyph_cs_CZ.txt ${pkgdir}/usr/share/doc/$pkgname
+    install -Dt "${pkgdir}"/usr/share/doc/${pkgname} -m0644 README_cs.txt
 }

@@ -1,13 +1,14 @@
 pkgbase = hyphen-cs
 	pkgdesc = Czech hyphenation rules
-	pkgver = 20061030
-	pkgrel = 2
-	url = http://download.services.openoffice.org/contrib/dictionaries/
+	pkgver = 20210721
+	pkgrel = 1
+	url = https://github.com/LibreOffice/dictionaries
 	arch = any
-	license = GPL2
+	license = custom:GFDL
 	optdepends = hyphen: offers hyphenation library functions
-	source = http://download.services.openoffice.org/contrib/dictionaries/hyph_cs_CZ.zip
-	md5sums = 7dc7192fb3c141db6518c54781df6846
+	source = https://github.com/LibreOffice/dictionaries/raw/b3a1c0be50d1ad0b404070124463fb4af90bbe39/cs_CZ/hyph_cs_CZ.dic
+	source = https://raw.githubusercontent.com/LibreOffice/dictionaries/b3a1c0be50d1ad0b404070124463fb4af90bbe39/cs_CZ/README_cs.txt
+	sha256sums = a378d024438b446ac0524237dc6d728dc520550db5fe0fb1fdbb47c2ee0ca525
+	sha256sums = 24d1d07409b62e8e6f0ee114991d4749d3e97b05ea19feca835916af67312720
 
 pkgname = hyphen-cs
-
