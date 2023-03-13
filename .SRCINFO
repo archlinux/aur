@@ -1,12 +1,12 @@
 pkgbase = python-cron-descriptor
 	pkgdesc = A Python library that converts cron expressions into human readable strings.
-	pkgver = 1.2.24
-	pkgrel = 2
+	pkgver = 1.2.25
+	pkgrel = 1
 	url = https://github.com/Salamek/cron-descriptor
 	arch = any
 	license = MIT
-	source = python-cron-descriptor-1.2.24.tar.gz::https://github.com/Salamek/cron-descriptor/archive/1.2.24.tar.gz
-	sha256sums = 9b47d2e169f52293941bc64f57b3f6fef2e35f478c5bca5542388f7f6ed3d628
+	source = python-cron-descriptor-1.2.25.tar.gz::https://github.com/Salamek/cron-descriptor/archive/1.2.25.tar.gz
+	sha256sums = 500b343b7c119515bb0a091c37f3bce0885e67a776f94dea268a3be35934b6bb
 
 pkgname = python-cron-descriptor
 	depends = python
