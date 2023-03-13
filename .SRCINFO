@@ -1,0 +1,18 @@
+pkgbase = zui-bin
+	pkgdesc = Modern desktop accounting for freelancers and small-businesses.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.brimdata.io/
+	arch = x86_64
+	license = BSD-3-Clause
+	license = PPL1
+	depends = at-spi2-core
+	depends = python
+	depends = gtk3
+	depends = alsa-lib
+	depends = nss
+	conflicts = zui
+	source = zui-1.0.0.deb::https://github.com/brimdata/zui/releases/download/v1.0.0/zui_1.0.0_amd64.deb
+	sha512sums = 23d672f9b3080fc6e45b08c7cfff3cf7b06188edc4287aff6a14885b58f353a03e62fb378cff9fcb1a88e289ef87f899b5ed6c0e68264b9b7748346db1f519e6
+
+pkgname = zui-bin
