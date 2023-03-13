@@ -1,12 +1,13 @@
 pkgbase = duckypad_daemon
 	pkgdesc = A profile autoswitcher daemon for dekuNukem's duckypad
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/traumweh/duckypad_daemon
 	arch = x86_64
 	license = Apache
 	makedepends = cargo
 	depends = libusb
+	depends = duckypad-udev
 	provides = duckypad_daemon
 	source = https://github.com/traumweh/duckypad_daemon/releases/download/0.1.0/duckypad_daemon-0.1.0-x86_64-linux.tar.gz
 	sha512sums = 3148e9c9e4251917934fdbc24f461b06f6f9fbb6d95cdbb9b69b09bc676b39527e1048c75c248375807b916ef284e7f48a34f7a7f6982aaf3fc287deec4fb86e
