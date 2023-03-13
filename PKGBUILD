@@ -80,10 +80,10 @@ makedepends=(bc libelf cpio perl tar xz)
 [[ -n "$_clangbuild" ]] && makedepends+=(clang llvm lld python)
 options=('!strip')
 _srcname=linux-${pkgver}
-_kernel_base_commit=6ab3eda153b603d578a83e75dd1a58270ebfe3f2
+_kernel_base_commit=f4282872cef2e98b3358ea7aa93a03125051fec1
 _kernel_arch_tag=${pkgver}-arch1
-_arch_config_commit=a3c4af9c73ffc82ed960204f275602a808c1f050
-_prjc_version=6.2-r0
+_arch_config_commit=7b30d87d6f895209caa348fde7a58934f4f18a83
+_prjc_version=6.2-r1
 _prjc_patch="prjc_v${_prjc_version}.patch"
 _gcc_more_v=20230105
 source=(
@@ -100,8 +100,8 @@ validpgpkeys=(
 )
 b2sums=('7f0ace4eb3f3dbba6104adf1b64682ce3d76e96a33cd0500f9943c150b5aa17c9e25690615f9ab0bdabe33c3e13548d9cd9f1f3faecd0369554f2cb5982c44aa'
         'SKIP'
-        '45b53be3b62dff05e048bd2b79edb6540bad6d48b4f2e1ebae9ec660cfbc60cfc8290d32c3f325d30b653d3a463bca05dbd1fb488631e12118aa767d26471a5c'
-        '9f14aeebd39a59833dd16a0d245348a3be30b001d3a0cd0cbd665f73cd06113be4cdae4aecb840af3285f90c2e90b98236511e9685fd9fb93b117eb95a8a602f'
+        '0aecfcb84188ca2180cdf5fbf32fb0102e393ff7b1c5925482c32db1dda6697f62800c7c7cec422e7873de226164e987860d29f3c0980a1c081cf3d8305b1e40'
+        '602086c465010f53d0b3f47441de52f6c552b6fd2e6c3b311a9e8610960d3ea0ba9fb3ff813c9ea5ddc5cacee20ce983d3503ba4ec35270d0ad0bc303423a619'
         'd178dad69501967382d5c841f65e4f57651042bee8117041a9baa35ab3fa73af8174b8b999ae9e72ec381c52744ccaaabb77944d59f123c04b6ed5626432d843'
         'c0ee20e5578ca04e1f785672c437df9090846bc1d51d5c0b76f3ad84fe263bae3315d48e1d3324d21ea5465e1e615e5fb833b6f573f9f25a3eaa2cdee864c1f5')
 
