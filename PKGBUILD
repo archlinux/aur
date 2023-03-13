@@ -1,8 +1,8 @@
 # Maintainer: João Figueiredo <islandc0der@chaotic.cx>
 
 pkgname=fishnet-bin
-pkgver=2.6.6
-pkgrel=2
+pkgver=2.6.8
+pkgrel=1
 pkgdesc='Distributed Stockfish analysis for lichess.org'
 arch=(x86_64)
 url='https://github.com/lichess-org/fishnet'
