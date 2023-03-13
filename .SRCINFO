@@ -1,7 +1,7 @@
-pkgbase = php-swow
-	pkgdesc = Swow coroutine IO extension for PHP
-	pkgver = 1.2.0
-	pkgrel = 2
+pkgbase = php-swow-git
+	pkgdesc = Swow coroutine IO extension for PHP, git "develop" branch
+	pkgver = 1.2.0.r8.g6a901f36
+	pkgrel = 1
 	url = https://github.com/swow/swow
 	arch = x86_64
 	arch = arm64
@@ -9,17 +9,17 @@ pkgbase = php-swow
 	makedepends = php
 	makedepends = php-legacy
 	depends = glibc
-	source = swow-1.2.0.tar.gz::https://github.com/swow/swow/archive/refs/tags/v1.2.0.tar.gz
-	sha512sums = eb39340483472c4c1adfd15742d4a2600ec44035fe339cd6b8dda3662c4a1d732dc43ec1f3d8dbd978aa1791e2668af515bc4a7286fb32879df9221dfa21e511
+	source = swow-develop::git+https://github.com/swow/swow.git#branch=develop
+	sha512sums = SKIP
 
-pkgname = php-swow
+pkgname = php-swow-git
 	depends = glibc
 	depends = php
 	provides = php-swow
 	conflicts = php-swow
 	backup = etc/php/conf.d/swow.ini
 
-pkgname = php-legacy-swow
+pkgname = php-legacy-swow-git
 	depends = glibc
 	depends = php-legacy
 	provides = php-legacy-swow
