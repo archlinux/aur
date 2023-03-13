@@ -2,7 +2,7 @@
 # Contributer: Donn <me@donn.website>
 
 pkgname=cemu-bin
-pkgver=2.0.28
+pkgver=2.0.29
 pkgrel=1
 pkgdesc="Nintendo Wii U Emulator"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("https://github.com/cemu-project/Cemu/releases/download/v$_srcver/cemu-$
         "https://raw.githubusercontent.com/cemu-project/Cemu/main/dist/linux/info.cemu.Cemu.desktop"
         "https://github.com/cemu-project/Cemu/raw/main/dist/linux/info.cemu.Cemu.png"
         "https://raw.githubusercontent.com/cemu-project/Cemu/main/dist/linux/info.cemu.Cemu.metainfo.xml")
-sha256sums=('77fc2d0b9706cf53a392240a9a6ed002b99e8d77aba859db108019ff2ea9881d'
+sha256sums=('f7dab23afa9bbfa2b86a8f4649c83f765d828e7ec08cd294e83b3e5a645ac601'
             '3e9380eb47646fede56c0de59ddab872627c00629820ef5f974be0d07e4f3490'
             '6458a99b8bd54e44857efa0f82bfd6035e7e072e7e080e3330e4e2cfe89cbd33'
             '3c0ffba6874ebabb4341911b401d4b7062fefeb527badc5caa93355e5968848b')
