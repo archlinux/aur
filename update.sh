@@ -27,6 +27,11 @@ cd $s_dir
 git checkout master
 git pull -p --ff-only
 
+if git branch -r | grep release/ &>/dev/null; then
+    echo "Remote release branch detected ; will not create another, exiting"
+    exit
+fi
+
 build_ver=`grep ^pkgver= PKGBUILD | cut -d= -f2`
 release_ver=`curl --silent "https://api.github.com/repos/dzikoysk/reposilite/releases/latest" | jq -r .tag_name`
 new_ver=`echo -e "$release_ver\n$build_ver" | sort -rV | head -n 1`
