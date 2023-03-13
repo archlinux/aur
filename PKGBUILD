@@ -3,7 +3,7 @@
 pkgname=tt-rss-reddit-delay-git
 _gitname=ttrss-reddit-delay
 pkgver=74164e7
-pkgrel=1
+pkgrel=2
 pkgdesc="TT-RSS plugin to delay posts in Reddit feeds by a configurable time"
 arch=('any')
 url="https://dev.tt-rss.org/tt-rss/ttrss-reddit-delay"
@@ -21,7 +21,7 @@ pkgver() {
 }
 
 package() {
-  _instdir="$pkgdir/usr/share/webapps/tt-rss/plugins.local/$_gitname"
+  _instdir="$pkgdir/usr/share/webapps/tt-rss/plugins.local/reddit_delay"
   install -dm755 "$_instdir"
   install -vDm644 "$_gitname/init.php" "$_instdir/"
   install -vDm644 "$_gitname/Jenkinsfile" "$_instdir/"
