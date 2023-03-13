@@ -1,0 +1,14 @@
+pkgbase = python-trame-components
+	pkgdesc = Core components for trame widgets
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/Kitware/trame-components
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-trame-client
+	source = trame-components-2.1.1.tar.gz::https://github.com/Kitware/trame-components/archive/v2.1.1.tar.gz
+	sha512sums = 076a65c550f456f9e76c587796f504515c9db7f45e6c2b15ac2b95ad47ab0022544d0d93a5467ad4122c1ed46cb095f31e6c4133492625007bfe6a76c6ad19d2
+
+pkgname = python-trame-components
