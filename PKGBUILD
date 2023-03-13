@@ -3,7 +3,7 @@
 _pkgname='pyTooling'
 pkgname=python-${_pkgname,,}
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful collection of arbitrary useful classes, decorators, meta-classes and exceptions"
 arch=(any)
 url="https://github.com/pyTooling/$_pkgname"
@@ -17,7 +17,7 @@ checkdepends=(
 	'python-itertree'
 	'python-numpy'
 )
-replaces=('python-pytooling-packaging' 'python-pymetaclasses' 'python-pyexceptions')
+replaces=('python-pytooling-packaging' 'python-pymetaclasses' 'python-pyexceptions' 'python-pytooling-terminalui')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('0d6ddcb3703f1230f33afb8470401d74044a15c87fc40121d1eb1fda32eac50a')
 
