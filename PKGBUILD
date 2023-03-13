@@ -4,8 +4,8 @@
 _pkgname="via"
 
 pkgname="${_pkgname}-appimage"
-pkgver=2.0.5
-pkgrel=2
+pkgver=3.0.0
+pkgrel=1
 pkgdesc="Your keyboard's best friend."
 arch=('x86_64')
 url="https://caniusevia.com/"
@@ -14,7 +14,7 @@ depends=('libnotify' 'libappindicator-gtk3' 'fuse2' 'fuse3' 'fuse-common' 'libse
 _appimage="via-${pkgver}-linux.AppImage"
 source_x86_64=("${_appimage}::https://github.com/the-via/releases/releases/download/v${pkgver}/via-${pkgver}-linux.AppImage/")
 noextract=("${_appimage}")
-sha256sums_x86_64=('00f36dcdf795eb3f08176d1ba2672032aee6c1c2b57db0dd145efb5ebd143ceb')
+sha256sums_x86_64=('fae4ef9aba872bb2f9540fe550709965e4583d4adc540faf8c6eef7a7c6e1e1b')
 options+=('!strip')
 
 _desktop_file_name="via-nativia.desktop"
