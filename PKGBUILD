@@ -19,5 +19,4 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	install -Dm755 bin/main "$pkgdir/usr/bin/anifetch"
-	install -Dm644 ./README.md "$pkgdir/usr/share/doc/$pkgname"
 }
