@@ -1,9 +1,11 @@
+# Copyright (c) 2022 Alex313031, JPratama7, and StarterX4.
+# Maintainer: JPratama7 <josepratama080@gmail.com>
 # Maintainer: Dominik Adrian Grzywak <starterx4 at gmail dot com>
 
 _pkgname=thorium-browser
 pkgname=${_pkgname}-bin
 pkgver=110.0.5481.178
-pkgrel=1
+pkgrel=2
 pkgdesc="Chromium fork focused on high performance and security."
 arch=('x86_64')
 url="https://github.com/Alex313031/Thorium"
@@ -29,7 +31,7 @@ install=$_pkgname.install
 source=("https://github.com/Alex313031/Thorium/releases/download/M${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
 	"$_pkgname.sh")
 sha512sums=('14cf230d4baad970f744fe09aa623ec654a32c93d411c022b07be0643ba03f1248e37b656598d22f2fa91c25486f50820b3f8cf87149285a4ca1955c6e51fc75'
-            '5e34cfbd67d86b31292a61eb5dcee68aeb2c4818bb557fa9aee458215eef8042c57be43b2250f5d89a66df90e4df6473a85688aa63ba2255e789d0f37ed83d8b')
+            '91a532fde9e6e87d65b909a170d32808f1c05367104cdaab07043fef0de66bdfc307a4138584cd1eedc169a03207372df39c09268ab1ec741432e79e0dcc2dfb')
 
 package() {
 	echo "  -> Extracting the data.tar.xz..."
@@ -39,11 +41,15 @@ package() {
 	# Launcher
 	install -m755 $_pkgname.sh "$pkgdir"/usr/bin/$_pkgname
 
+	chmod 4755 "$pkgdir/opt/chromium.org/thorium/chrome-sandbox"
+	
 	# Icons
 	for i in 16x16 24x24 32x32 48x48 64x64 128x128 256x256; do
 		install -Dm644 "$pkgdir"/opt/chromium.org/thorium/product_logo_${i/x*/}.png \
-			"$pkgdir"/usr/share/icons/hicolor/$i/apps/thorium-browser-unstable.png
+			"$pkgdir"/usr/share/icons/hicolor/$i/apps/thorium-browser-stable.png
 	done
+	install -Dm644 "$pkgdir/opt/chromium.org/thorium/thorium_shell.png" -t \
+    "$pkgdir/usr/share/icons/hicolor/256x256/apps/"
 
 	echo "  -> Removing Debian Cron job, duplicate product logos and menu directory..."
 	rm -r \

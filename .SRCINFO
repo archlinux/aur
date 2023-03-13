@@ -1,7 +1,7 @@
 pkgbase = thorium-browser-bin
 	pkgdesc = Chromium fork focused on high performance and security.
 	pkgver = 110.0.5481.178
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Alex313031/Thorium
 	install = thorium-browser.install
 	arch = x86_64
@@ -23,6 +23,6 @@ pkgbase = thorium-browser-bin
 	source = https://github.com/Alex313031/Thorium/releases/download/M110.0.5481.178/thorium-browser_110.0.5481.178_amd64.deb
 	source = thorium-browser.sh
 	sha512sums = 14cf230d4baad970f744fe09aa623ec654a32c93d411c022b07be0643ba03f1248e37b656598d22f2fa91c25486f50820b3f8cf87149285a4ca1955c6e51fc75
-	sha512sums = 5e34cfbd67d86b31292a61eb5dcee68aeb2c4818bb557fa9aee458215eef8042c57be43b2250f5d89a66df90e4df6473a85688aa63ba2255e789d0f37ed83d8b
+	sha512sums = 91a532fde9e6e87d65b909a170d32808f1c05367104cdaab07043fef0de66bdfc307a4138584cd1eedc169a03207372df39c09268ab1ec741432e79e0dcc2dfb
 
 pkgname = thorium-browser-bin
