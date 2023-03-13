@@ -22,7 +22,7 @@ sha256sums=(
 options=('!lto' '!strip' 'debug')
 
 prepare() {
-    cd "$srcdir/${_pkgname}" || return
+    cd "${srcdir}/${_pkgname}" || return
     cargo fetch --locked --target "$(uname -m)-unknown-linux-gnu"
 }
 
