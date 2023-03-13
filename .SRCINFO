@@ -13,6 +13,7 @@ pkgbase = xts-dark-theme
 	depends = plank
 	depends = conky
 	depends = rofi
+	depends = sardi-icons
 	provides = xts-dark-theme
 	conflicts = xts-dark-theme
 	options = !strip
