@@ -27,6 +27,6 @@ build() {
 package() {
     cd $pkgname
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dm644 "$srcdir/$pkgname/heval.desktop" -t "$pkgdir/usr/share/applications"
-    install -Dm644 "$srcdir/$pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$_name"
+    install -Dm644 "heval.desktop" -t "$pkgdir/usr/share/applications"
+    install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$_name"
 }
