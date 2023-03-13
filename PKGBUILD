@@ -1,13 +1,13 @@
 # Maintainer: Zhang Hua <zhanghua.00 at qq dot com>
 
 pkgname=ariang-git
-pkgver=1.2.5.r37.ge095a19
-pkgrel=2
+pkgver=1.3.3.r0.g17e7714
+pkgrel=1
 pkgdesc="a modern web frontend making aria2 easier to use."
 arch=("any")
 url="https://github.com/mayswind/AriaNg"
 license=("MIT")
-makedepends=("git" "nodejs" "gulp")
+makedepends=("git" "nodejs" "gulp" "openssh")
 optdepends=(
     "aria2: if you use ariang locally"
     "apache: for web server"
