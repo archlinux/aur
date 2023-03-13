@@ -1,9 +1,8 @@
 pkgbase = cyberghostvpn
 	pkgdesc = CyberGhost VPN
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.cyberghostvpn.com
-	install = cyberghostvpn.install
 	arch = any
 	license = custom:cyberghostvpn
 	makedepends = zip
@@ -11,7 +10,7 @@ pkgbase = cyberghostvpn
 	depends = openvpn
 	depends = wireguard-tools
 	depends = systemd-resolvconf
-	source = https://download.cyberghostvpn.com/linux/cyberghostvpn-ubuntu-20.04-1.4.1.zip
-	sha256sums = 355ab80f3445968161f6db9565857a9af8df61fd6292b4c4267579ff128f3007
+	source = https://download.cyberghostvpn.com/linux/cyberghostvpn-fedora-32-1.4.1.zip
+	sha256sums = 772d3278eaffa7dd5f91a5d988efbf0ff6e0521188cfb5445c14207d3172ee44
 
 pkgname = cyberghostvpn
