@@ -4,7 +4,7 @@ _CUDA_ARCH_LIST="6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6;8.6;8.9;9.0;9.0+PTX"
 pkgname=(python-detectron2 python-detectron2-cuda)
 _pkgname=detectron2
 pkgver=0.6
-pkgrel=6
+pkgrel=7
 pkgdesc="FAIR's next-generation platform for object detection and segmentation"
 arch=('x86_64')
 url='https://github.com/facebookresearch/detectron2'
@@ -22,6 +22,7 @@ depends=(
   python-pillow
   python-pycocotools
   python-pydot
+  python-sympy
   python-tabulate
   python-termcolor
   python-tqdm
@@ -65,6 +66,7 @@ package_python-detectron2-cuda() {
   pkgdesc="${pkgdesc} (with CUDA)"
   depends+=(
     cuda
+    libcudart.so
     python-pytorch-cuda
   )
   provides=(python-detectron2=${pkgver})
