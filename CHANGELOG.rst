@@ -7,21 +7,34 @@ Changelog
     Development version
     ===================
 
-    Version 4.X.X, 2022-XX-XX
+    Version 4.X.X, 2023-XX-XX
     -------------------------
+
 
 Current versions
 ================
+
+Version 4.4, 2023-01-23
+-----------------------
+
+- Add ``codespell`` to ``pre-commit`` config, #674
+- Allow ``venv_install`` in config file, #680
+- Avoid problematic ``tox`` 4.0 and 4.1, #689
+- Update ``macos`` instances on Cirrus CI, #690
+- Replace deprecated ``set-output``, #688
+- Update CI templates, #693
+- Add comments about  building ``sdist`` in ``tox.ini`` and FAQ, #694
+- Update Python version in Read The Docs configuration, #695
+
+
+Older versions
+==============
 
 Version 4.3.1, 2022-09-20
 -------------------------
 
 - Modify ``tox.ini`` template to allow passing the ``TWINE_REPOSITORY_URL``
   environment variable, :pr:`666`.
-
-
-Older versions
-==============
 
 Version 4.3, 2022-07-20
 -----------------------
