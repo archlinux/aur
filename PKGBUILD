@@ -1,9 +1,9 @@
-# Maintainer: nixi <nixi at cock dot li>
+# Maintainer: Emil Miler <em@0x45.cz>
 
 pkgname=tripforce-git
 pkgdesc="Tripcode bruteforcer for Futaba-style imageboards"
 pkgver=r23.22d8c70
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/microsounds/tripforce"
 license=('GPL3')
@@ -19,11 +19,8 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-
-
 package() {
 	cd "$srcdir/$pkgname"
 	mkdir -p "$pkgdir"/usr/bin
 	make INSTALLDIR="$pkgdir/usr/bin" install
 }
-

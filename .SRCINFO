@@ -1,7 +1,7 @@
 pkgbase = tripforce-git
 	pkgdesc = Tripcode bruteforcer for Futaba-style imageboards
 	pkgver = r23.22d8c70
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/microsounds/tripforce
 	arch = any
 	license = GPL3
@@ -13,4 +13,3 @@ pkgbase = tripforce-git
 	md5sums = SKIP
 
 pkgname = tripforce-git
-
