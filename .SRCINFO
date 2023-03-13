@@ -1,0 +1,17 @@
+pkgbase = python-super-image
+	pkgdesc = State-of-the-art image super resolution models for PyTorch
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/eugenesiow/super-image
+	arch = any
+	license = Apache
+	makedepends = python-installer
+	depends = python-torchvision
+	depends = python-opencv
+	depends = python-h5py
+	depends = python-tqdm
+	depends = python-huggingface-hub
+	source = https://files.pythonhosted.org/packages/py3/s/super-image/super_image-0.1.7-py3-none-any.whl
+	sha256sums = e4344f6f080a4569ae88bbf8b13c6b4876df0911dbe57234a5154e4b0a3a0879
+
+pkgname = python-super-image
