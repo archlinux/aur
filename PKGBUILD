@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/NiceneNerd/${_pkgname}"
 license=('GPL3')
 depends=('gtk3')
-makedepends=('rust-nightly-bin' 'git' 'sed')
+makedepends=('rust-nightly-bin' 'git' 'coreutils' 'sed')
 optdepends=()
 source=(
     "git+${url}"

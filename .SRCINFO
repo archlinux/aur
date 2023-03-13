@@ -7,6 +7,7 @@ pkgbase = ukmm-git
 	license = GPL3
 	makedepends = rust-nightly-bin
 	makedepends = git
+	makedepends = coreutils
 	makedepends = sed
 	depends = gtk3
 	options = !lto
