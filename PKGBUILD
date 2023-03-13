@@ -1,40 +1,40 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Merged with official ABS gwenview PKGBUILD by João, 2023/03/13 (all respective contributors apply herein)
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=gwenview-git
-pkgver=r5432.be0da0e
+pkgver=23.07.70_r7068.g23987b45
 pkgrel=1
-pkgdesc='A fast and easy to use image viewer for KDE'
-arch=('i686' 'x86_64')
-url='http://kde.org/applications/graphics/gwenview/'
-license=('GPL')
-depends=('kactivities-git' 'kdelibs4support' 'exiv2' 'libkdcraw-git' 'libkipi-git')
-makedepends=('extra-cmake-modules' 'git' 'kdoctools' 'python')
-conflicts=('kdegraphics-gwenview' 'gwenview')
-provides=('gwenview')
-source=("git://anongit.kde.org/gwenview.git")
-install=$pkgname.install
+pkgdesc='A fast and easy to use image viewer'
+url='https://apps.kde.org/gwenview/'
+arch=($CARCH)
+license=(GPL LGPL FDL)
+groups=(kde-applications-git kde-graphics-git)
+depends=(kactivities-git baloo-git libkdcraw-git kparts-git kitemmodels-git cfitsio phonon-qt5-git purpose-git perl kimageannotator)
+optdepends=('qt5-imageformats: support for tiff, webp, and more image formats'
+            'kimageformats-git: support for dds, xcf, exr, psd, and more image formats'
+            'kamera-git: import pictures from gphoto2 cameras')
+makedepends=(git extra-cmake-modules-git kdoctools-git)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd gwenview
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  _major_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MAJOR' CMakeLists.txt | cut -d '"' -f2)"
+  _minor_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MINOR' CMakeLists.txt | cut -d '"' -f2)"
+  _micro_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MICRO' CMakeLists.txt | cut -d '"' -f2)"
+  echo "${_major_ver}.${_minor_ver}.${_micro_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  mkdir -p build
-}
-
-build() { 
-  cd build
-  cmake ../gwenview \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DLIB_INSTALL_DIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-  make
+build() {
+  cmake -B build -S ${pkgname%-git} \
+    -DGWENVIEW_SEMANTICINFO_BACKEND="Baloo" \
+    -DBUILD_TESTING=OFF
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
