@@ -1,0 +1,17 @@
+pkgbase = dumb-pulse-volume-git
+	pkgdesc = Very simple program to control volume of currently playing device or application (written in Rust)
+	pkgver = 0.1.0.6.g542b519
+	pkgrel = 1
+	url = https://github.com/m-khvoinitsky/dumb-pulse-volume
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = dbus
+	depends = libpulse
+	source = git+https://github.com/m-khvoinitsky/dumb-pulse-volume.git
+	sha256sums = SKIP
+
+pkgname = dumb-pulse-volume-git

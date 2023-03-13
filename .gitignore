@@ -1,0 +1,4 @@
+/pkg/
+/src/
+/dumb-pulse-volume/
+/*.pkg.tar.zst
