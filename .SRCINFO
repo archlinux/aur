@@ -1,12 +1,11 @@
 pkgbase = python-mulimgviewer
 	pkgdesc = A multi-image viewer that can open multiple images in one interface, which is convenient for image comparison and image stitching.
 	pkgver = 3.9.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nachifur/MulimgViewer
 	arch = any
 	license = GPLv3
 	makedepends = python-installer
-	depends = python-numpy
 	depends = python-piexif
 	depends = python-pillow
 	depends = python-requests

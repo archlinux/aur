@@ -10,12 +10,12 @@ _pypi_package=$_pkgname
 
 pkgname=python-$_pkgname
 pkgver=${_upstreamver##v}
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-image viewer that can open multiple images in one interface, which is convenient for image comparison and image stitching."
 arch=(any)
 url=https://github.com/$_repo
 makedepends=(python-installer)
-depends=(python-numpy python-piexif python-pillow python-requests python-wxpython)
+depends=(python-piexif python-pillow python-requests python-wxpython)
 license=(GPLv3)
 _py=py3
 source=(
