@@ -1,0 +1,19 @@
+pkgbase = ubdsrv
+	pkgdesc = The userspace part of the ublk framework.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/ming1/ubdsrv
+	arch = x86_64
+	arch = i686
+	arch = i486
+	arch = pentium4
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	license = GPL2
+	license = LGPL2.1
+	depends = liburing
+	source = ubdsrv-1.0.tar.gz::https://github.com/ming1/ubdsrv/archive/refs/tags/v1.0.tar.gz
+	b2sums = b9ea58346f98ea85f53304afe5afa61d7493f57ba83bacc03bab8fd5fe239d5cb45d6df0bdcdef773347ff0a895432bf886d9acd3616485f0d4cc1b7753967d5
+
+pkgname = ubdsrv
