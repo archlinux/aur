@@ -1,7 +1,7 @@
 pkgbase = nwg-icon-picker
-	pkgdesc = GTK icon chooser with textual search
-	pkgver = 0.0.1
-	pkgrel = 2
+	pkgdesc = GTK icon picker with textual search
+	pkgver = 0.1.0
+	pkgrel = 1
 	url = https://github.com/nwg-piotr/nwg-icon-picker
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = nwg-icon-picker
 	provides = nwg-icon-picker
 	conflicts = nwg-icon-picker
 	conflicts = nwg-icon-picker-git
-	source = nwg-icon-picker-0.0.1.tar.gz::https://github.com/nwg-piotr/nwg-icon-picker/archive/v0.0.1.tar.gz
-	md5sums = 7ed0b75ea5ad18ec1f69acf62e75e28c
+	source = nwg-icon-picker-0.1.0.tar.gz::https://github.com/nwg-piotr/nwg-icon-picker/archive/v0.1.0.tar.gz
+	md5sums = b219c223ef52affcbbfa653615e9b627
 
 pkgname = nwg-icon-picker
