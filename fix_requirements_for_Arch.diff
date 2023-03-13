@@ -1,5 +1,5 @@
---- a/gns3-server-2.2.36/requirements.txt	2023-01-04 12:46:30.000000000 +0100
-+++ b/gns3-server-2.2.36/requirements.txt	2023-01-07 14:55:51.718842857 +0100
+--- a/gns3-server-2.2.38/requirements.txt	2023-02-28 06:35:17.000000000 +0100
++++ b/gns3-server-2.2.38/requirements.txt	2023-03-13 18:52:58.262700832 +0100
 @@ -1,16 +1,11 @@
 -jsonschema>=4.17.3,<4.18; python_version >= '3.7'
 -jsonschema==3.2.0; python_version < '3.7'  # v3.2.0 is the last version to support Python 3.6
