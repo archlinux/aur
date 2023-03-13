@@ -1,33 +1,41 @@
 # Maintainer: Sam Stuewe <halosghost at archlinux dot info>
+# Contributor: unknowndev <unknowndev at archlinux dot info>
+
 _name='portspoof'
 pkgname="${_name}-git"
-pkgver=1.3
+pkgver=1.3.r31.g2a758db
 pkgrel=1
 pkgdesc='A lightweight, fast, portable and secure addition to any firewall system or security infrastructure.'
-url='http://portspoof.org/'
-arch=('i686' 'x86_64')
-license=('GPLv2')
-makedepends=('git')
-source=("${_name}::git://github.com/drk1wi/${_name}.git")
-sha256sums=('SKIP')
+url='https://drk1wi.github.io/portspoof'
+arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
+license=('GPL2')
+depends=('glibc' 'gcc-libs')
+makedepends=('automake' 'git')
+provides=("${_name}")
+source=("git+https://github.com/drk1wi/${_name}")
+sha512sums=('SKIP')
 
 pkgver() {
-   cd "${srcdir}/${_name}"
-   echo "$(git describe --always|cut -d 'v' -f2|sed -e 's|-|.|g' )"
+  cd "${_name}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-   cd "${srcdir}/${_name}"
-   ./configure --prefix=/usr
-   make
+  cd "${_name}"
+
+  ./configure --prefix=/usr --sysconfdir=/etc
+  # sysctl() is deprecated and may break build with glibc >= 2.30
+  # see: https://news.ycombinator.com/item?id=27055120
+  sed -i s+sys/sysctl+linux/sysctl+ ${srcdir}/${_name}/src/connection.h
+  make
 }
 
 package() {
-   install -d "${pkgdir}"/{usr/bin,etc/"${_name}"}
+  cd "${_name}"
 
-   cd "${srcdir}/${_name}/src"
-   install -Dm755 "${_name}" "${pkgdir}/usr/bin/${_name}"
-
-   cd "${srcdir}/${_name}/tools"
-   install -m644 -t "${pkgdir}/etc/${_name}/" "${_name}.conf" "${_name}_signatures"
+  install -Dm 0755 "src/${_name}" "${pkgdir}/usr/bin/${_name}"
+  install -Dm 0644 "tools/${_name}"{.conf,_signatures} -t "${pkgdir}/etc/${_name}/"
+  install -Dm 0644 COPY{ING,RIGHT.GPL} -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 0644 AUTHORS CREDITS FAQ ChangeLog INSTALL README{,.md} NEWS -t \
+    "${pkgdir}/usr/share/doc/${pkgname}"
 }

@@ -1,14 +1,20 @@
 pkgbase = portspoof-git
 	pkgdesc = A lightweight, fast, portable and secure addition to any firewall system or security infrastructure.
-	pkgver = 1.3
+	pkgver = 1.3.r31.g2a758db
 	pkgrel = 1
-	url = http://portspoof.org/
+	url = https://drk1wi.github.io/portspoof
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
 	arch = i686
 	arch = x86_64
-	license = GPLv2
+	license = GPL2
+	makedepends = automake
 	makedepends = git
-	source = portspoof::git://github.com/drk1wi/portspoof.git
-	sha256sums = SKIP
+	depends = glibc
+	depends = gcc-libs
+	provides = portspoof
+	source = git+https://github.com/drk1wi/portspoof
+	sha512sums = SKIP
 
 pkgname = portspoof-git
-
