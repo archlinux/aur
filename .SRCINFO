@@ -1,7 +1,7 @@
 pkgbase = python-nvidia-dali
 	pkgdesc = A library containing both highly optimized building blocks and an execution engine for data pre-processing in deep learning applications
 	pkgver = 1.23.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NVIDIA/DALI
 	arch = x86_64
 	license = Apache
@@ -12,6 +12,7 @@ pkgbase = python-nvidia-dali
 	makedepends = python-setuptools
 	depends = cuda
 	depends = ffmpeg
+	depends = libcudart.so
 	depends = libtar
 	depends = lmdb
 	depends = opencv
@@ -21,6 +22,8 @@ pkgbase = python-nvidia-dali
 	options = !emptydirs
 	options = !lto
 	source = python-nvidia-dali::git+https://github.com/NVIDIA/DALI.git#tag=v1.23.0
+	source = https://github.com/NVIDIA/DALI/pull/4692.patch
 	sha512sums = SKIP
+	sha512sums = b7d515e059406dcddf302e534b6040ea223dcfc1399f248d9af0b40e68013c346f67a7bc1d36f7fc6ea10d81437dc8e70c03454f47f7c2b62916ef0616ac5708
 
 pkgname = python-nvidia-dali
