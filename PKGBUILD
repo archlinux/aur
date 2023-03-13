@@ -2,8 +2,8 @@
 
 _pkgname=dragonfly-reverb
 pkgname=$_pkgname-git
-pkgver=3.2.7.r397.3523f70
-pkgrel=2
+pkgver=3.2.8.r406.1771d76
+pkgrel=1
 pkgdesc='An algorithmic hall, plate, room and ER reverb (git version)'
 arch=(x86_64)
 url='https://michaelwillis.github.io/dragonfly-reverb/'
@@ -11,6 +11,7 @@ license=(GPL3)
 groups=(pro-audio clap-plugins lv2-plugins vst-plugins vst3-plugins)
 depends=(gcc-libs glibc libglvnd libx11)
 makedepends=(freeverb3 gendesk git jack libsamplerate lv2)
+checkdepends=(lv2lint)
 optdepends=(
   'jack: for standalone applications'
   'clap-host: for CLAP plugins'

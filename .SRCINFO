@@ -1,7 +1,7 @@
 pkgbase = dragonfly-reverb-git
 	pkgdesc = An algorithmic hall, plate, room and ER reverb (git version)
-	pkgver = 3.2.7.r397.3523f70
-	pkgrel = 2
+	pkgver = 3.2.8.r406.1771d76
+	pkgrel = 1
 	url = https://michaelwillis.github.io/dragonfly-reverb/
 	arch = x86_64
 	groups = pro-audio
@@ -10,6 +10,7 @@ pkgbase = dragonfly-reverb-git
 	groups = vst-plugins
 	groups = vst3-plugins
 	license = GPL3
+	checkdepends = lv2lint
 	makedepends = freeverb3
 	makedepends = gendesk
 	makedepends = git
