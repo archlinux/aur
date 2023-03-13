@@ -4,7 +4,7 @@ All notable changes to Rover will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-<!-- # [x.x.x] (unreleased) - 2022-mm-dd
+<!-- # [x.x.x] (unreleased) - 2023-mm-dd
 
 > Important: x potentially breaking changes below, indicated by **❗ BREAKING ❗**
 
@@ -15,6 +15,21 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## 🛠 Maintenance
 
 ## 📚 Documentation -->
+
+
+# [0.13.0] - 2023-03-10
+
+## 🚀 Features
+
+- **Dynamic templates - @dbanty, #1388**
+
+  Rover now fetches templates from a GraphQL API. New templates can be contributed to [the templates repo](https://github.com/apollographql/templates) and will not require a new release of Rover to be used. To see the latest templates, run `rover template list`.
+
+## 🐛 Fixes
+
+- **Fixes behavior of `--router-config` in `rover dev` - @EverlastingBugstopper, #1536 fixes #1535**
+
+  Older versions of Rover did not respect the `supergraph` section of the `--router-config` file. This has been fixed in v0.13.0.
 
 # [0.12.2] - 2023-02-23
 
