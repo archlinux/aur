@@ -1,7 +1,7 @@
 pkgbase = anifetch
 	pkgdesc = Simple OS information fetcher
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/anixne/anifetch
 	arch = x86_64
 	license = GPL
