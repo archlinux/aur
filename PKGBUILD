@@ -28,6 +28,6 @@ build() {
 package() {
     cd $pkgname
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dm755 "$srcdir/$pkgname/extractors/langmix-extractsrt.sh" "$pkgdir/usr/bin/langmix-extractsrt"
-    install -Dm644 "$srcdir/$pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm755 "extractors/langmix-extractsrt.sh" "$pkgdir/usr/bin/langmix-extractsrt"
+    install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$_name"
 }
