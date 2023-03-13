@@ -2,8 +2,8 @@
 
 _pkgname=edgegpt
 pkgname="${_pkgname}-git"
-pkgver=0.0.51+7.r122.20230228.f7dc87d
-pkgrel=2
+pkgver=0.0.56.1.r144.20230313.2724ce1
+pkgrel=1
 pkgdesc="The reverse engineering the chat feature of the new version of Bing."
 arch=(
   'any'
