@@ -9,12 +9,16 @@ arch=('any')
 url="https://github.com/NiceneNerd/${_pkgname}"
 license=('GPL3')
 depends=('gtk3')
-makedepends=('cargo' 'git')
+makedepends=('rust-nightly-bin' 'git' 'sed')
 optdepends=()
-source=("git+${url}"
-        UKMM.desktop)
-sha256sums=('SKIP'
-            '921de35b2a4518ca9f89c1a8020cc1c3bafc24abb559ffb3cf5a1091d61d8aef')
+source=(
+    "git+${url}"
+    "UKMM.desktop"
+)
+sha256sums=(
+    'SKIP'
+    '4e513a4394d130a79803c9216586a31ae423656fafa731ac544325c0d2bc01f8'
+)
 options=('!lto' '!strip' 'debug')
 
 prepare() {
