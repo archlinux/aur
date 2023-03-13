@@ -1,0 +1,26 @@
+pkgbase = python-trame
+	pkgdesc = Framework to build applications in plain Python
+	pkgver = 2.3.2
+	pkgrel = 1
+	url = https://github.com/Kitware/trame
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-trame-server
+	depends = python-trame-client
+	depends = python-trame-router
+	depends = python-trame-components
+	depends = python-trame-plotly
+	depends = python-trame-markdown
+	depends = python-trame-matplotlib
+	depends = python-trame-deckgl
+	depends = python-trame-vega
+	depends = python-trame-vuetify
+	depends = python-trame-vtk
+	depends = python-trame-simput
+	depends = python-trame-rca
+	source = trame-2.3.2.tar.gz::https://github.com/Kitware/trame/archive/v2.3.2.tar.gz
+	sha512sums = 8ba978fe13e7d4d8626813ff5ebfb1c10a3b94edf7be331636d6329b16fa33c5c9da9f49241abf098b4861fdd9cc89b9c36c163823760ed31bd2dc3ca53f2f63
+
+pkgname = python-trame
