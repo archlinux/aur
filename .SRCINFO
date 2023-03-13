@@ -1,7 +1,7 @@
 pkgbase = evolution-on-appindicator
 	pkgdesc = Tray plugin for the Evolution email client
 	pkgver = 3.24.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/acidrain42/evolution-on
 	arch = x86_64
 	license = GPL2
@@ -9,7 +9,7 @@ pkgbase = evolution-on-appindicator
 	makedepends = gnome-common
 	depends = evolution
 	depends = libnotify
-	optdepends = libappindicator-gtk3
+	depends = libappindicator-gtk3
 	source = evolution-on-appindicator-3.24.2.tar.gz::https://github.com/acidrain42/evolution-on/archive/v3.24.2.tar.gz
 	sha512sums = 7f6c048c052ecab2efefaeddaba9db8f7f63035c5505fce0b9c260b5cf2044fe0c4d90a2e7461e1643f507daa1d3a871be9c16e58311d229697d9ce11faa82cf
 
