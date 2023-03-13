@@ -1,0 +1,21 @@
+pkgbase = python-transip
+	pkgdesc = Wrapper for the TransIP API
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/roaldnefs/transip
+	changelog = CHANGELOG.md
+	arch = any
+	license = LGPL3
+	license = GPL3
+	checkdepends = python-pytest
+	checkdepends = python-responses
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-cryptography
+	depends = python-requests
+	source = python-transip-0.6.0.tar.gz::https://files.pythonhosted.org/packages/source/p/python-transip/python-transip-0.6.0.tar.gz
+	sha256sums = d9fd984db4eda4f91b99083c21ad6e00c718c734ad200a53d113fe680c871fe0
+
+pkgname = python-transip
