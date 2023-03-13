@@ -1,18 +1,17 @@
 pkgbase = heval-git
 	pkgdesc = Medical calculator for intensive care unit (ICU)
-	pkgver = v0.0.5.r7.g0aa8c1b
+	pkgver = 0.1.5.r27.g994641f
 	pkgrel = 1
 	url = https://github.com/radioxoma/heval
 	arch = any
 	license = GPLv3
 	makedepends = git
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python
 	depends = tk
 	provides = heval
-	conflicts = heval
 	source = heval-git::git+https://github.com/radioxoma/heval
 	sha256sums = SKIP
 
 pkgname = heval-git
-
