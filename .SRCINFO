@@ -1,0 +1,14 @@
+pkgbase = python-trame-plotly
+	pkgdesc = Plotly figure widget for trame
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/Kitware/trame-plotly
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-trame-client
+	source = trame-plotly-2.1.1.tar.gz::https://github.com/Kitware/trame-plotly/archive/v2.1.1.tar.gz
+	sha512sums = 865608fcca8407f695699255cacd4a3f28551106396e213a9a219ff9defbdc552f938bcb7e3de13a957bbb38f32b936011928a6da7fffcf574fa98b38a8e2d53
+
+pkgname = python-trame-plotly
