@@ -1,7 +1,7 @@
 pkgbase = php-swow
 	pkgdesc = Swow coroutine IO extension for PHP
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/swow/swow
 	arch = x86_64
 	arch = arm64

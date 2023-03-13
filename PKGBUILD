@@ -5,7 +5,7 @@ _upstream=swow/swow
 pkgbase=php-swow
 pkgname=('php-swow' 'php-legacy-swow')
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Swow coroutine IO extension for PHP"
 arch=('x86_64' 'arm64')
 url="https://github.com/swow/swow"
@@ -18,7 +18,7 @@ sha512sums=('eb39340483472c4c1adfd15742d4a2600ec44035fe339cd6b8dda3662c4a1d732dc
 prepare() {
     mv -v "${_name}-${pkgver}" "$pkgbase-$pkgver"
 
-    echo -e "; the Swow extension requires curl to be activated first\n; and it's conflict with swoole\nextension=${_name}" > "$pkgname-$pkgver/ext/${_name}.ini"
+    echo -e "; the Swow extension requires curl to be activated first\n; and it's conflict with swoole\nextension=${_name}" > "$pkgbase-$pkgver/ext/${_name}.ini"
 
     cp -av "$pkgbase-$pkgver" "${pkgname[1]}-$pkgver"
 
@@ -54,16 +54,17 @@ build() {
 }
 
 check() {
+    local EXTRA_PHPT_ARGS="-n --show-diff"
     (
         export TEST_PHP_EXECUTABLE=/usr/bin/php
-        export TEST_PHP_ARGS="-d extension=${srcdir}/${pkgbase}-${pkgver}/ext/modules/swow.so"
+        local TEST_PHP_ARGS="${EXTRA_PHPT_ARGS} -d extension=${srcdir}/${pkgbase}-${pkgver}/ext/modules/swow.so"
         cd "$pkgbase-$pkgver/ext"
         $TEST_PHP_EXECUTABLE run-tests.php . $TEST_PHP_ARGS
     )
 
     (
         export TEST_PHP_EXECUTABLE=/usr/bin/php-legacy
-        export TEST_PHP_ARGS="-d extension=${srcdir}/${pkgname[1]}-${pkgver}/ext/modules/swow.so"
+        local TEST_PHP_ARGS="${EXTRA_PHPT_ARGS} -d extension=${srcdir}/${pkgname[1]}-${pkgver}/ext/modules/swow.so"
         cd "${pkgname[1]}-$pkgver/ext"
         $TEST_PHP_EXECUTABLE run-tests.php . $TEST_PHP_ARGS
     )
