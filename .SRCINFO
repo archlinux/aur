@@ -1,0 +1,22 @@
+pkgbase = kamera-git
+	pkgdesc = KDE integration for gphoto2 cameras
+	pkgver = 23.07.70_r811.g6e1612d
+	pkgrel = 1
+	url = https://apps.kde.org/kamera/
+	arch = x86_64
+	groups = kde-applications-git
+	groups = kde-graphics-git
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = kdoctools-git
+	depends = kio-git
+	depends = libgphoto2
+	provides = kamera
+	conflicts = kamera
+	source = git+https://github.com/KDE/kamera.git
+	sha256sums = SKIP
+
+pkgname = kamera-git
