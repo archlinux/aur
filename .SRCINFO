@@ -1,7 +1,7 @@
 pkgbase = kirigami2-git
 	pkgdesc = A QtQuick based components set
 	pkgver = 5.240.0_r3671.g5774a174
-	pkgrel = 1
+	pkgrel = 2
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
 	groups = kf6-git
@@ -12,7 +12,6 @@ pkgbase = kirigami2-git
 	makedepends = qt6-svg
 	makedepends = kpackage-git
 	makedepends = doxygen
-	makedepends = clang
 	makedepends = qt6-shadertools
 	depends = qt6-declarative
 	provides = kirigami2

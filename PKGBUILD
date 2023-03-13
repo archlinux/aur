@@ -3,14 +3,14 @@
 
 pkgname=kirigami2-git
 pkgver=5.240.0_r3671.g5774a174
-pkgrel=1
+pkgrel=2
 pkgdesc='A QtQuick based components set'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 groups=(kf6-git)
 depends=(qt6-declarative)
-makedepends=(git extra-cmake-modules-git qt6-tools qt6-svg kpackage-git doxygen clang qt6-shadertools)
+makedepends=(git extra-cmake-modules-git qt6-tools qt6-svg kpackage-git doxygen qt6-shadertools)
 conflicts=(${pkgname%-git} kirigami-git)
 provides=(${pkgname%-git} kirigami-git)
 source=("git+https://github.com/KDE/${pkgname%2-git}.git")
