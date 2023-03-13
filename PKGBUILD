@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=falcon-sensor
-pkgver=6.49.0_14604
+pkgver=6.50.0_14713
 pkgrel=1
 pkgdesc="Crowdstrike Falcon Sensor daemon and kernel modules"
 arch=("x86_64")
@@ -30,6 +30,8 @@ prepare() {
 }
 
 package() {
+  warning "You may need to uninstall the package first and remove the folder /opt/CrowdStrike"
+
   cd "${srcdir}/${pkgname}"
   cp -r "${srcdir}/${pkgname}/"* "${pkgdir}"
   install -dm755 "${pkgdir}/usr"
