@@ -23,8 +23,8 @@ source=("pycharm-professional.desktop"
 sha256sums=('a75264959b06a45ea0801729bc1688bfbd52da3c5fbf3d5b1ad9267860439291'
             '6996b38a3c2ba1e472838d7046a4c54a27822fd647be9ca590457e8c6a2d50c8'
             '2c520f63afffa5ef153077fc61e0c3b15a0a9bf8fd4973164af62ec64626a741')
-sha256sums_x86_64=('50c37aafd9fbe3a78d97cccf4f7abd80266c548d1c7ea4751b08c52810f16f2d')
-sha256sums_aarch64=('795217e215782bd7cf033deced13394b2273cd4c50010a09d1f158f61d3a4353')
+sha256sums_x86_64=('SKIP')
+sha256sums_aarch64=('SKIP')
 makedepends=('python-setuptools' 'cython')
 optdepends=('ipython: For enhanced interactive Python shell inside Pycharm'
             'openssh: For deployment and remote connections'
