@@ -14,7 +14,7 @@ pkgbase = asus-numberpad-driver-git
 	depends = python-evdev
 	depends = xorg-xinput
 	provides = asus-numberpad-driver
-	replaces = asus-touchpad-numpad-driver
+	replaces = asus-touchpad-numpad-driver-git
 	source = git+https://github.com/asus-linux-drivers/asus-numberpad-driver.git
 	sha256sums = SKIP
 
