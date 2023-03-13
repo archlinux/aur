@@ -14,4 +14,4 @@ pkgbase = ballerina-bin
 	sha256sums = 52abb0085381a1a0861970098dacc36d34350bf66648e4d23600c1f4a7fa89e4
 	sha256sums = 81b3b8645b563759edfd5041addd9672c110cd3e8b759d5914831aa037b25050
 
-pkgname = ballerina-swan-lake-bin
+pkgname = ballerina-bin
