@@ -1,10 +1,11 @@
 pkgbase = streamlink-handoff-host
 	pkgdesc = Streamlink Handoff native messaging host configuration
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bgh-github/streamlink-handoff
 	arch = any
 	license = GPL3
+	depends = xxd
 	depends = firefox
 	depends = streamlink
 	optdepends = vlc: streamlink default player
