@@ -1,6 +1,6 @@
 pkgbase = syntax-highlighting-git
 	pkgdesc = Syntax highlighting engine for structured text and code
-	pkgver = 5.240.0_r2122.g06d7258d
+	pkgver = 5.240.0_r2154.g370387c5
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -8,7 +8,6 @@ pkgbase = syntax-highlighting-git
 	license = GPL2
 	makedepends = git
 	makedepends = extra-cmake-modules-git
-	makedepends = qt6-xmlpatterns
 	makedepends = qt6-tools
 	makedepends = doxygen
 	depends = qt6-base
