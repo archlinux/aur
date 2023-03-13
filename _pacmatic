@@ -1,0 +1,9 @@
+#compdef pacmatic
+
+. /usr/share/zsh/site-functions/_pacman
+
+_pacmatic() {
+    _pacman_zsh_comp "$@"
+}
+
+_pacmatic "$@"
