@@ -53,8 +53,7 @@ build() {
         [ -f "$_cuda_gcc" ] && export CUDAHOSTCXX="$_cuda_gcc"
       fi
       _CMAKE_FLAGS+=( -DCUDA_ENABLED=ON
-                      -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda
-                      -DCUDA_ARCHS="$_CUDA_ARCH"
+                      -DCMAKE_CUDA_ARCHITECTURES="native"
                     )
     else
       _CMAKE_FLAGS+=( -DCUDA_ENABLED=OFF )
