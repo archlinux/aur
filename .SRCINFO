@@ -1,7 +1,7 @@
 pkgbase = davinci-resolve
 	pkgdesc = Professional A/V post-production software suite from Blackmagic Design
-	pkgver = 18.1.3
-	pkgrel = 2
+	pkgver = 18.1.4
+	pkgrel = 1
 	url = https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion
 	arch = x86_64
 	license = Commercial
@@ -33,7 +33,7 @@ pkgbase = davinci-resolve
 	conflicts = davinci-resolve-beta
 	conflicts = davinci-resolve-studio-beta
 	options = !strip
-	source = DaVinci_Resolve_18.1.3_Linux.zip::https://sw.blackmagicdesign.com/DaVinciResolve/v18.1.3/DaVinci_Resolve_18.1.3_Linux.zip?Key-Pair-Id=APKAJTKA3ZJMJRQITVEA&Signature=UYfm5ltHu9vALiMVtFiEw5ULTZurtwbVMqlbwtyT4PWR/iPxthHUyQQUJIM7osHt8RY4YwVasZuNIM3K/uZkgNgPypxSroMYIbhFhEGONiMOh5vL+ilXBchYblTXQ694+JOV4lns1SdMmaSM+WrYzgkGa0iryInqbiPL5QL8o0qHLBnHMO4OwLP+OCIMbXvpJahO/QcLl0WMic7Zm6Y20yejZz5VV3ZDTOrDINltwiXhyy7Ta9jbZsorZ73v3l9Al67hCacSvoxK2iLAydziLBBTTH901dKhYeKSjeZFujN4Ta1l4rCsyc/d1noc8NEJm5RilIR5VSvDgrDxf5jE3Q==&Expires=1676940988
-	sha256sums = 37a66cec936c104e11a1a87921228b89f92d521a8315ecc42a328f8f363e860a
+	source = DaVinci_Resolve_18.1.4_Linux.zip::https://sw.blackmagicdesign.com/DaVinciResolve/v18.1.4/DaVinci_Resolve_18.1.4_Linux.zip?Key-Pair-Id=APKAJTKA3ZJMJRQITVEA&Signature=o+lgFafwsiH/lsZuRqUn9ijba0kbd6wS95cKoc0DwUUZyLHEJnz6OExoQ2aTCCny+FbJS/ws54Our9DjF4BxoiH/22E47VB7r1XkVXwWRZR9kj8OjT6qAQeVp51uEmt/MLDMnh1j5eWLTwlZpo57kqJbFAGz2jqUw0jKIhQ1nDoSWZs9m63JEPiVT+YpJGr1/5x9bFH8cSJK4Z1S8Ke1B7lQxF53LSLkCBVH13yTbBNgaZqX1RiJpkaaZIUr869GAe6RoNQM41cFzZ14XGnhcRfW0yxM/I5hH0y/EMilw1wMRGzuIQPvzOQiDkwaU0eydj6lHrcO10DxWq8NTzMXAQ==&Expires=1678750284
+	sha256sums = 6d7c3ba49c73c7d4d4da26482eb2f7248c956ea035fcc0bd62b600a2f579e522
 
 pkgname = davinci-resolve
