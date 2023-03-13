@@ -5,12 +5,13 @@
 pkgname=codelldb
 _pkgname="$pkgname"
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A native debugger extension for VSCode based on LLDB. Also known as vscode-lldb (NOT lldb-vscode)"
 arch=("x86_64" "arm7h" "aarch64")
 url="https://github.com/vadimcn/codelldb"
 license=("MIT")
 provides=("$_pkgname" "vscode-lldb")
+depends=(lldb)
 makedepends=(cmake cargo npm python libc++)
 options=(!debug strip) #Debug package is broken
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
@@ -30,16 +31,16 @@ package() {
   shopt -s globstar
 
   cd "$_pkgname-$pkgver"
-  local _lib_dir="$pkgdir/usr/lib/$_pkgname"
+  local libdir="$pkgdir/usr/lib/$_pkgname"
 
   #https://github.com/vadimcn/codelldb/blob/v1.9.0/CMakeLists.txt#L187-L200
-  install -Dm644 -t "$_lib_dir"             build/platform.ok
-  install -Dm755 -t "$_lib_dir"/adapter     build/adapter/{codelldb,*.so}
-  install -Dm644 -t "$_lib_dir"/adapter     build/adapter/scripts/**/*.py
-  install -Dm644 -t "$_lib_dir"/formatters  build/formatters/**/*.py
+  install -Dm644 -t "$libdir"             build/platform.ok
+  install -Dm755 -t "$libdir"/adapter     build/adapter/{codelldb,*.so}
+  install -Dm644 -t "$libdir"/adapter     build/adapter/scripts/**/*.py
+  install -Dm644 -t "$libdir"/formatters  build/formatters/**/*.py
 
-  install -d "$_lib_dir"/lldb
-  ln -s -t "$_lib_dir"/lldb /usr/{bin,lib}
+  install -d "$libdir"/lldb
+  ln -s -t "$libdir"/lldb /usr/{bin,lib}
 
   install -d "$pkgdir"/usr/bin
   ln -s -t "$pkgdir"/usr/bin /usr/lib/"$_pkgname"/adapter/codelldb
