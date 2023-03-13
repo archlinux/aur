@@ -1,7 +1,7 @@
 # Maintainer: Anixne <mobilecoderdev@gmail.com>
 pkgname='anifetch'
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple OS information fetcher"
 arch=('x86_64')
 url="https://github.com/anixne/anifetch"
