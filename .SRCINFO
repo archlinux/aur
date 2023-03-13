@@ -1,7 +1,7 @@
 pkgbase = plugdata-bin
 	pkgdesc = Plugin wrapper around PureData with a new GUI made with JUCE, allowing patching in DAWs
 	pkgver = 0.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/timothyschoen/PlugData
 	arch = x86_64
 	arch = aarch64
@@ -23,7 +23,7 @@ pkgbase = plugdata-bin
 	depends = curl
 	conflicts = plugdata-git
 	replaces = plugdata-git
-	source = https://github.com/timothyschoen/PlugData/releases/download/v0.7.0/PlugData-Arch-x64.tar.gz
+	source = plugdata-bin-0.7.0.tar.gz::https://github.com/timothyschoen/PlugData/releases/download/v0.7.0/PlugData-Arch-x64.tar.gz
 	sha512sums = SKIP
 
 pkgname = plugdata-bin
