@@ -5,8 +5,8 @@
 # Contributor: carstene1ns <arch carsten-teibes de>
 
 pkgname=dropbox-cli
-pkgver=2020.03.04
-pkgrel=7
+pkgver=2022.12.05
+pkgrel=1
 pkgdesc="Command line interface for Dropbox"
 arch=("any")
 url="http://www.${pkgname%-cli}.com"
@@ -18,7 +18,7 @@ source=(
   "${pkgname%-cli}d-fallback.patch"
 )
 sha256sums=(
-  "e8fecc095561bf4a30a9889e25c3afa40c01e1554f3392a3b949b02ee1cf19ca"
+  "80170c4ab287e24dc131d32c237c2f44f811e33a393c32c32deae21875ad7894"
   "9ae702ebf0699ac56fbf99c577ddaf22701dfd1c9e40d6ec5ac56475c2636f48"
 )
 
