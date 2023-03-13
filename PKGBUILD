@@ -1,8 +1,9 @@
-# Maintainer: nixi <nixi@cock.li>
-# Contributor: DaZ <daz.root+arch@gmail.com> 
+# Maintainer: Orphaned
+# Contributor: Emil Miler <em@0x45.cz>
+# Contributor: DaZ <daz.root+arch@gmail.com>
 
 pkgname=slic3r-bin
-pkgrel=5
+pkgrel=6
 pkgdesc='Open Source toolpath generator for 3D printers'
 pkgver=1.3.0
 arch=('x86_64')
