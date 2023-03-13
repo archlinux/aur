@@ -1,5 +1,5 @@
 # Maintainer: Amurru Zerouk <ammarzerouk[at]gmail[dot]com>
-pkgname=ballerina-swan-lake-bin
+pkgname=ballerina-bin
 _pkgname=ballerina
 pkgver=2201.4.0
 pkgrel=1

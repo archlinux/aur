@@ -1,4 +1,4 @@
-pkgbase = ballerina-swan-lake-bin
+pkgbase = ballerina-bin
 	pkgdesc = Ballerina, an open-source programming language for the cloud
 	pkgver = 2201.4.0
 	pkgrel = 1
