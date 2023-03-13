@@ -1,6 +1,6 @@
 pkgbase = horizontallyspinningrat
 	pkgdesc = The horizontally spinning rat - now on your desktop!
-	pkgver = 1.0.5
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/mcharlsto/rat
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = horizontallyspinningrat
 	depends = bash
 	depends = sharutils
 	optdepends = lolcat: rainbow mode
-	source = https://github.com/mcharlsto/rat/releases/download/1.0.5/rat
-	sha256sums = SKIP
+	source = https://github.com/mcharlsto/rat/releases/download/1.1/rat
+	sha256sums = f77b2ca63bd714fa1c1853de085d405a8598c79848eef325b71f5243bc76e73e
 
 pkgname = horizontallyspinningrat
