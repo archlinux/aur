@@ -13,10 +13,12 @@ url="https://github.com/alvr-org/ALVR"
 license=('MIT')
 groups=()
 depends=('vulkan-driver' 'libunwind')
+makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'jack' 'libxrandr' 'nasm')
 if _ifmod nvidia_drm; then
     depends+=('ffmpeg')
+else
+    makedepends+=('unzip')
 fi
-makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'jack' 'libxrandr' 'nasm')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 options=('!lto')
