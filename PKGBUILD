@@ -1,8 +1,8 @@
-# Maintainer: nixi <nixi at cock dot li>
+# Maintainer: Emil Miler <em@0x45.cz>
 
 pkgname=ulozto-downloader
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Uloz.to quick multiple sessions downloader'
 arch=('any')
 url='https://github.com/setnicka/ulozto-downloader'

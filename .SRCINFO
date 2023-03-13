@@ -1,7 +1,7 @@
 pkgbase = ulozto-downloader
 	pkgdesc = Uloz.to quick multiple sessions downloader
 	pkgver = 3.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/setnicka/ulozto-downloader
 	arch = any
 	license = MIT
