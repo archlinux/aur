@@ -1,9 +1,9 @@
 # Maintainer: Lex Black <autumn-wind@web.de>
 
 pkgname=prosody-mod-register-apps
-pkgver=2022.08.25
+pkgver=2023.02.23
 pkgrel=1
-_commit="eb3f99d0e72d"
+_commit="556bf57d6417"
 pkgdesc="Manage list of compatible client apps"
 arch=('any')
 url="https://modules.prosody.im/mod_register_apps.html"
