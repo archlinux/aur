@@ -183,6 +183,7 @@ _bcachefs=${_bcachefs-}
 # You need to set the values per task
 # Ananicy-cpp has a implementation for this
 # You need to configure ananicy-cpp for this or use existing settings
+# Its default enabled at the "cachyos" scheduler option
 _latency_nice=${_latency_nice-}
 
 if [[ "$_use_llvm_lto" = "thin" || "$_use_llvm_lto" = "full" ]] && [ -n "$_use_lto_suffix" ]; then
@@ -194,7 +195,7 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.2
-_minor=5
+_minor=6
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -845,9 +846,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('65ab0192cf6e5808a075588944de8febf9e61f1a85147e479ffd440708cee5b9'
+sha256sums=('1fe2f1d7ceb7129c111159d8efd361971dbf212206f81e7078b98df8b00b3d9d'
             '0a5944e9e1f9e99939550f5cabb68518721ed01aeb46082cb7a135d4e3c9f736'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
-            'dd518bce2dbabbf3233b889be47ccac67baa995d5ac401e13f2081f4c227fdc7'
-            'c0adc508d7f1e16448cc166c0d3f6aa061b75e9a73fa79152aa1dd587fc5ede1'
-            'd0cacc42325e9bb89588533048830dd5388c92ff3620cf79e73ad3ced9c65840')
+            'faa6956e2e43fc6dd6b9ea32793cf45957babd48ebfae878dac445a4234c60ca'
+            '73b9699e2ab3e55e7da87035ef968df433b54e941f48aca2f5ae0361ff2aa73b'
+            '994e17f88265c84aad1c6e4609c0bd12f0f2650687a2aad219242ada41722d6c')
