@@ -2,7 +2,7 @@ pkgbase = coolapk_flutter-git
 	pkgdesc = flutter coolapk
 	pkgver = v0.2.8+1.r1.g3274dfb
 	pkgrel = 1
-	url = https://github.com/clinux-co/coolapk_flutter
+	url = https://github.com/skbeh/coolapk_flutter
 	arch = any
 	license = unknown
 	makedepends = clang
@@ -15,4 +15,3 @@ pkgbase = coolapk_flutter-git
 	sha256sums = SKIP
 
 pkgname = coolapk_flutter-git
-
