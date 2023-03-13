@@ -1,0 +1,15 @@
+pkgbase = netpad-bin
+	pkgdesc = A cross-platform C# editor and playground.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/tareqimbasher/NetPad
+	arch = x86_64
+	license = MIT
+	depends = at-spi2-core
+	depends = gtk3
+	depends = alsa-lib
+	depends = nss
+	source = netpad-0.1.0.deb::https://github.com/tareqimbasher/NetPad/releases/download/v0.1.0/netpad-0.1.0-amd64.deb
+	sha256sums = d3954a6464d5f74ff7251dff2f217c482d04b0091d2bdd74b4c0bc441fc1eef7
+
+pkgname = netpad-bin
