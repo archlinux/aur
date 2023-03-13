@@ -1,7 +1,7 @@
 pkgbase = jd-gui-bin
 	pkgdesc = A standalone graphical utility that displays Java source codes of .class files
 	pkgver = 1.6.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://jd.benow.ca/
 	arch = any
 	license = GPL3
@@ -15,7 +15,6 @@ pkgbase = jd-gui-bin
 	sha512sums = ac05eade3bc70ac72fe92d52f178a4a8a028f00430fa709bcbd4e43564589339e731eb2111c9ef64c0bed26f2edbb510afafc73a4891d0bd018e813539ac1227
 	sha512sums = 767c54d4147e5d223ffa453a3094d8f7f8a33832d1c92cd8a189fd8fbaa7dec00767a5ff8e29caf295de65780b0745e062f796c4aa2d8ab368b1fe20e03ff3b2
 	sha512sums = d073054480e06c9f124605bdbc5cee775e067115592f46bbcea2650d363b81f453b8e1a5e818a685eff7ba166631ebc79d14dc72e2d1dfae102f4cdf05188933
-	sha512sums = 9ddb8521c1791f5d3251f012e30b7d6aaa48b509e02af628f3b8a90fb6ba176de3f79fbfbec316c86c1594ac142ca4d85bcffff7ea8f0fba6f926ea78cd1f81d
+	sha512sums = b2328bed9c9191f1ee1292bb453f2f66a9db4990934d816d001ce7cbac3104da93e45aa37ec9e9bd3dac8fa4eb2f5b61e51a05c6126b837ae1634adfa6820af9
 
 pkgname = jd-gui-bin
-
