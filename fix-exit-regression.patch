@@ -1,7 +1,7 @@
-From 76bbbf8486d73bb830c5c513eefc3ba0d0656481 Mon Sep 17 00:00:00 2001
+From 2a882ba30beeb4ef2bba8607306d04a29ea7af4f Mon Sep 17 00:00:00 2001
 From: Felipe Contreras <felipe.contreras@gmail.com>
 Date: Sun, 23 Jan 2022 23:36:44 -0600
-Subject: [PATCH] Fix exit regression
+Subject: [PATCH 1/3] Fix exit regression
 
 Any time you start a job in the background vte gets confused and waits
 several seconds for nothing to happen before exiting.
@@ -14,24 +14,231 @@ It can be triggered by simply doing:
   sleep infinity &
   exit
 
-The maintainers of vte clearly have no intention fixing the issue that
-was reported more than three years ago.
+We shouldn't wait for a pending EOS unless there's an incoming queue,
+otherwise we would wait forever on shells with child processes, since
+they won't send EOS until all the children are done.
 
-  https://gitlab.gnome.org/GNOME/vte/-/issues/204
-
-We need to send the CHILD_EXITED signal regardless of whether or not
-there's a pending EOS.
+Fixes #204.
 
 Signed-off-by: Felipe Contreras <felipe.contreras@gmail.com>
 ---
- src/vte.cc | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ src/vte.cc | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/src/vte.cc b/src/vte.cc
-index 7cc26c48..80f26454 100644
+index 7cc26c48..236fd3c2 100644
 --- a/src/vte.cc
 +++ b/src/vte.cc
-@@ -10273,7 +10273,6 @@ Terminal::emit_pending_signals()
+@@ -3273,10 +3273,10 @@ Terminal::child_watch_done(pid_t pid,
+ 
+         m_pty_pid = -1;
+ 
+-        /* If we still have a PTY, or data to process, defer emitting the signals
++        /* If we still have data to process, defer emitting the signals
+          * until we have EOF on the PTY, so that we can process all pending data.
+          */
+-        if (pty() || !m_incoming_queue.empty()) {
++        if (!m_incoming_queue.empty()) {
+                 m_child_exit_status = status;
+                 m_child_exited_after_eos_pending = true;
+ 
+-- 
+2.39.2
+
+From d5a58bcbffac2986600df4d5bf678862283d8107 Mon Sep 17 00:00:00 2001
+From: Felipe Contreras <felipe.contreras@gmail.com>
+Date: Sun, 23 Jan 2022 22:08:34 -0600
+Subject: [PATCH 2/3] Remove timeout bullshit
+
+This reverts 058adf5f (pty: Fix indefinite wait for EOS after
+child-exited, 2019-12-01).
+
+Signed-off-by: Felipe Contreras <felipe.contreras@gmail.com>
+---
+ src/glib-glue.hh   |  4 ++--
+ src/vte.cc         | 29 -----------------------------
+ src/vteinternal.hh |  4 ----
+ 3 files changed, 2 insertions(+), 35 deletions(-)
+
+diff --git a/src/glib-glue.hh b/src/glib-glue.hh
+index c7839cfc..74840c9b 100644
+--- a/src/glib-glue.hh
++++ b/src/glib-glue.hh
+@@ -225,8 +225,8 @@ private:
+                         vte::log_exception();
+                 }
+ 
+-                /* The Timer may have been re-scheduled or removed from within
+-                 * the callback. In this case, the callback must return false!
++                /* The Timer may have been re-scheduled from within the callback.
++                 * In this case, the callback must return false!
+                  * m_source_id is now different (since the old source
+                  * ID is still associated with the main context until we return from
+                  * this function), after which invalidate_source() will be called,
+diff --git a/src/vte.cc b/src/vte.cc
+index 236fd3c2..cecb597e 100644
+--- a/src/vte.cc
++++ b/src/vte.cc
+@@ -992,23 +992,6 @@ Terminal::queue_child_exited()
+                         g_object_unref);
+ }
+ 
+-bool
+-Terminal::child_exited_eos_wait_callback()
+-{
+-        /* If we get this callback, there has been some time elapsed
+-         * after child-exited, but no EOS yet. This happens for example
+-         * when the primary child started other processes in the background,
+-         * which inherited the PTY, and thus keep it open, see
+-         * https://gitlab.gnome.org/GNOME/vte/issues/204
+-         *
+-         * Force an EOS.
+-         */
+-        if (pty())
+-                pty_io_read(pty()->fd(), G_IO_HUP);
+-
+-        return false; // don't run again
+-}
+-
+ /* Emit an "increase-font-size" signal. */
+ void
+ Terminal::emit_increase_font_size()
+@@ -3279,8 +3262,6 @@ Terminal::child_watch_done(pid_t pid,
+         if (!m_incoming_queue.empty()) {
+                 m_child_exit_status = status;
+                 m_child_exited_after_eos_pending = true;
+-
+-                m_child_exited_eos_wait_timer.schedule_seconds(2); // FIXME: better value?
+         } else {
+                 m_child_exited_after_eos_pending = false;
+ 
+@@ -4095,14 +4076,6 @@ out:
+                 chunk->set_sealed();
+                 chunk->set_eos();
+ 
+-                /* Cancel wait timer */
+-                m_child_exited_eos_wait_timer.abort();
+-
+-                /* Need to process the EOS */
+-		if (!is_processing()) {
+-			add_process_timeout(this);
+-		}
+-
+                 again = false;
+         }
+ 
+@@ -9976,8 +9949,6 @@ Terminal::unset_pty(bool notify_widget)
+         disconnect_pty_read();
+         disconnect_pty_write();
+ 
+-        m_child_exited_eos_wait_timer.abort();
+-
+         /* Clear incoming and outgoing queues */
+         m_input_bytes = 0;
+         m_incoming_queue = {};
+diff --git a/src/vteinternal.hh b/src/vteinternal.hh
+index 0d454649..8bcf40ba 100644
+--- a/src/vteinternal.hh
++++ b/src/vteinternal.hh
+@@ -294,10 +294,6 @@ public:
+         int m_child_exit_status{-1};   /* pid's exit status, or -1 */
+         bool m_eos_pending{false};
+         bool m_child_exited_after_eos_pending{false};
+-        bool child_exited_eos_wait_callback();
+-        vte::glib::Timer m_child_exited_eos_wait_timer{std::bind(&Terminal::child_exited_eos_wait_callback,
+-                                                                 this),
+-                                                       "child-exited-eos-wait-timer"};
+         VteReaper *m_reaper;
+ 
+ 	/* Queue of chunks of data read from the PTY.
+-- 
+2.39.2
+
+From b219092a03d7647f6b718c215183b7a45edb676e Mon Sep 17 00:00:00 2001
+From: Felipe Contreras <felipe.contreras@gmail.com>
+Date: Sun, 23 Jan 2022 23:21:15 -0600
+Subject: [PATCH 3/3] Cleanup child_exited bullshit
+
+There's no need to delay the child_exited signal.
+
+Signed-off-by: Felipe Contreras <felipe.contreras@gmail.com>
+---
+ src/vte.cc         | 60 ++--------------------------------------------
+ src/vteinternal.hh |  4 ----
+ 2 files changed, 2 insertions(+), 62 deletions(-)
+
+diff --git a/src/vte.cc b/src/vte.cc
+index cecb597e..a5e63c39 100644
+--- a/src/vte.cc
++++ b/src/vte.cc
+@@ -953,45 +953,6 @@ Terminal::queue_eof()
+                         g_object_unref);
+ }
+ 
+-void
+-Terminal::emit_child_exited()
+-{
+-        auto const status = m_child_exit_status;
+-        m_child_exit_status = -1;
+-
+-        if (widget())
+-                widget()->emit_child_exited(status);
+-}
+-
+-static gboolean
+-emit_child_exited_idle_cb(VteTerminal *terminal)
+-try
+-{
+-        _vte_terminal_get_impl(terminal)->emit_child_exited();
+-
+-        return G_SOURCE_REMOVE;
+-}
+-catch (...)
+-{
+-        vte::log_exception();
+-        return G_SOURCE_REMOVE;
+-}
+-
+-/* Emit a "child-exited" signal on idle, so that if the handler destroys
+- * the terminal, we're not deep within terminal code callstack
+- */
+-void
+-Terminal::queue_child_exited()
+-{
+-        _vte_debug_print(VTE_DEBUG_SIGNALS, "Queueing `child-exited'.\n");
+-        m_child_exited_after_eos_pending = false;
+-
+-        g_idle_add_full(G_PRIORITY_HIGH,
+-                        (GSourceFunc)emit_child_exited_idle_cb,
+-                        g_object_ref(m_terminal),
+-                        g_object_unref);
+-}
+-
+ /* Emit an "increase-font-size" signal. */
+ void
+ Terminal::emit_increase_font_size()
+@@ -3256,18 +3217,8 @@ Terminal::child_watch_done(pid_t pid,
+ 
+         m_pty_pid = -1;
+ 
+-        /* If we still have data to process, defer emitting the signals
+-         * until we have EOF on the PTY, so that we can process all pending data.
+-         */
+-        if (!m_incoming_queue.empty()) {
+-                m_child_exit_status = status;
+-                m_child_exited_after_eos_pending = true;
+-        } else {
+-                m_child_exited_after_eos_pending = false;
+-
+-                if (widget())
+-                        widget()->emit_child_exited(status);
+-        }
++        if (widget())
++                widget()->emit_child_exited(status);
+ }
+ 
+ static void
+@@ -10244,19 +10195,12 @@ Terminal::emit_pending_signals()
                  m_bell_pending = false;
          }
  
@@ -39,15 +246,48 @@ index 7cc26c48..80f26454 100644
          if (m_eos_pending) {
                  queue_eof();
                  m_eos_pending = false;
-@@ -10281,7 +10280,7 @@ Terminal::emit_pending_signals()
+ 
                  unset_pty();
          }
- 
+-
 -        if (m_child_exited_after_eos_pending && eos) {
-+        if (m_child_exited_after_eos_pending) {
-                 /* The signal handler could destroy the terminal, so send the signal on idle */
-                 queue_child_exited();
-                 m_child_exited_after_eos_pending = false;
+-                /* The signal handler could destroy the terminal, so send the signal on idle */
+-                queue_child_exited();
+-                m_child_exited_after_eos_pending = false;
+-        }
+ }
+ 
+ void
+diff --git a/src/vteinternal.hh b/src/vteinternal.hh
+index 8bcf40ba..1636d511 100644
+--- a/src/vteinternal.hh
++++ b/src/vteinternal.hh
+@@ -291,9 +291,7 @@ public:
+         guint m_pty_output_source{0};
+         bool m_pty_input_active{false};
+         pid_t m_pty_pid{-1};           /* pid of child process */
+-        int m_child_exit_status{-1};   /* pid's exit status, or -1 */
+         bool m_eos_pending{false};
+-        bool m_child_exited_after_eos_pending{false};
+         VteReaper *m_reaper;
+ 
+ 	/* Queue of chunks of data read from the PTY.
+@@ -984,7 +982,6 @@ public:
+         bool terminate_child () noexcept;
+         void child_watch_done(pid_t pid,
+                               int status);
+-        void emit_child_exited();
+ 
+         void im_commit(std::string_view const& str);
+         void im_preedit_set_active(bool active) noexcept;
+@@ -1124,7 +1121,6 @@ public:
+ 
+         void queue_cursor_moved();
+         void queue_contents_changed();
+-        void queue_child_exited();
+         void queue_eof();
+ 
+ #ifdef WITH_A11Y
 -- 
 2.39.2
 

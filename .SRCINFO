@@ -24,7 +24,7 @@ pkgbase = vte3-nohang
 	source = fix-exit-regression.patch
 	source = desktop-notification.patch
 	sha256sums = 94d0b6776d55252bc1f15995c1ade7eb44b4a2c99531487eba9b8bded1a0fe2f
-	sha256sums = 7c2e392a6178c6926458a7c79bfdbacac911632f799a98d581b69d2c5d1f9b86
+	sha256sums = 5236764e262d92c78d8af99c2114e8dcf625d61f76c49acca061756785f525d4
 	sha256sums = 905672bd0e2b5685aeddd035e502a7062c4ada16f8a8eae9813cca1974ea0f77
 
 pkgname = vte3-nohang
