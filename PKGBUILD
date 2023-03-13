@@ -4,7 +4,7 @@ _CUDA_ARCH_LIST="6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6;8.6;8.9;9.0;9.0+PTX"
 _pkgname=mmcv
 pkgname=(python-mmcv python-mmcv-full)
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='OpenMMLab Computer Vision Foundation'
 arch=('x86_64')
@@ -24,6 +24,7 @@ makedepends=(
   python-pip
   python-pytorch-cuda
   python-setuptools
+  python-sympy
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/open-mmlab/mmcv/archive/v${pkgver}.tar.gz"
 )
@@ -55,7 +56,7 @@ package_python-mmcv() {
 
 package_python-mmcv-full() {
   pkgdesc+=" (full version, with full features, include cuda ops)"
-  depends+=(cuda python-pytorch-cuda)
+  depends+=(cuda python-pytorch-cuda libcudart.so)
   provides=(python-mmcv=${pkgver})
   conflicts=(python-mmcv)
 
