@@ -1,7 +1,7 @@
 # Maintainer: Leonidas Spyropoulos <artafinde at gmail dot com>
 
 pkgname=python-prometheus-fastapi-instrumentator
-pkgver=5.10.0
+pkgver=5.11.1
 pkgrel=1
 pkgdesc="A configurable and modular Prometheus Instrumentator for your FastAPI."
 arch=('any')
@@ -10,7 +10,7 @@ license=('Apache2')
 depends=('python' 'python-fastapi' 'python-prometheus_client')
 makedepends=(python-build python-installer python-wheel  python-poetry-core)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('75e3575f6a871c84cd5a1bcae2c0554e0fb0b25a3e9ddd503b93adbe7cbd4249')
+sha256sums=('9de1a64bcc529769d2e9809eb2d92e90f87a90119fbe147c32a6ed2a80cce4e7')
 
 build() {
   cd "prometheus-fastapi-instrumentator-${pkgver}"
