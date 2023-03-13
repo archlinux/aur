@@ -4,4 +4,5 @@ Terminal=false
 Name=JD-GUI
 Exec=jd-gui
 Type=Application
+Categories=Development;Utility;
 Icon=jd-gui

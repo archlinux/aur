@@ -1,7 +1,7 @@
 pkgbase = jd-gui
 	pkgdesc = A standalone graphical utility that displays Java source codes of .class files
 	pkgver = 1.6.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://jd.benow.ca/
 	arch = any
 	license = GPL3
@@ -16,7 +16,7 @@ pkgbase = jd-gui
 	source = gradle-7-build.patch
 	b2sums = 8615221af81682a8f6f8143ef6b639842964a402fa6a703379d02aef993960891ed2fc1e49b7ac71ae9f556068c48a8cf75e67cf40ba82853239bd80a7b0720f
 	b2sums = df30247b24a2b1b65f2f9d7a9577e847349edb1e6f67fd5021bf1ce0cc4d6741d1df52b026a0dd2365c1e3138daad700dd495d362253b2f9259d0cc4556ddcae
-	b2sums = 351842e021620df3febf7cb5e6e6a97afd2d32b994ed6bf243020bc155acea64ee1751c4f10cf4bc9f1704114648aafcd5eccf3a3dc17d4c01e7aa18960c1dc5
+	b2sums = 7a1667fceea415d1788d0cf04bd482c5cbbab937d0835936809aa327aa9a81ab0d9a0fb5296b1853b1e38853de16924682a0afe73e1058cc5a8fd0b22b828ff6
 	b2sums = 9c56f2bd3ac89c6a5acb70b3a37a4b24277cf0a4487ed9fcf95c3833e5b8bae87f61da6a147e12f4ffbb3dae371d68803a97d09b088c7f807ffc1157d47a15b8
 
 pkgname = jd-gui
