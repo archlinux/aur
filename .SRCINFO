@@ -1,0 +1,14 @@
+pkgbase = frappe-books-appimage
+	pkgdesc = Modern desktop accounting for freelancers and small-businesses.
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://frappebooks.com/
+	arch = x86_64
+	license = AGPL3
+	depends = zlib
+	depends = hicolor-icon-theme
+	options = !strip
+	source = frappe-books-0.10.0.AppImage::https://github.com/frappe/books/releases/download/v0.10.0/Frappe-Books-0.10.0.AppImage
+	sha512sums = 9e50871411e7161c5b5d22aa8e6aaa2c9df1045395d1166b567b7c9e2bef7ce5953318aa5fda742c42179159d53dab197312057e278d88eacdd67641decffac3
+
+pkgname = frappe-books-appimage
