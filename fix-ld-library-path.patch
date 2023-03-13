@@ -1,0 +1,16 @@
+diff --unified --recursive --text codechecker-6.21.0.orig/analyzer/codechecker_analyzer/env.py codechecker-6.21.0/analyzer/codechecker_analyzer/env.py
+--- codechecker-6.21.0.orig/analyzer/codechecker_analyzer/env.py	2023-03-13 16:43:17.545768798 +0100
++++ codechecker-6.21.0/analyzer/codechecker_analyzer/env.py	2023-03-13 16:44:51.883337433 +0100
+@@ -30,10 +30,10 @@
+ 
+     try:
+         original_ld_library_path = new_env['LD_LIBRARY_PATH']
+-        new_env['LD_LIBRARY_PATH'] = context.path_logger_lib + ':' + \
++        new_env['LD_LIBRARY_PATH'] = context.path_logger_lib + '/x86_64' + ':' + \
+             original_ld_library_path
+     except KeyError:
+-        new_env['LD_LIBRARY_PATH'] = context.path_logger_lib
++        new_env['LD_LIBRARY_PATH'] = context.path_logger_lib + '/x86_64'
+ 
+     # Set ld logger logfile.
+     new_env[context.env_var_cc_logger_file] = logfile

@@ -2,7 +2,7 @@
 
 pkgname=codechecker
 pkgver=6.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Analyzer tooling, defect database and viewer extension for the Clang Static Analyzer and Clang Tidy"
 arch=(x86_64)
 url="https://github.com/Ericsson/codechecker"
@@ -25,10 +25,12 @@ optdepends=(
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   "fix-ldflags.patch"
+  "fix-ld-library-path.patch"
 )
 sha256sums=(
   '3c3ace15275dacb81d3fd7f004a96e7e230ffde4bfa125a7c4f7697d2b360c34'
   'e59cb4d96642ccea7c3536e020b3961c1717bc65983424ced48b0ae1b1a3871a'
+  'd64db1f8d867be0d201dd47593ea63ca3bedeef2a2f039789bde8adc8c010862'
 )
 
 _archive="$pkgname-$pkgver"
@@ -37,6 +39,7 @@ prepare() {
   cd "$_archive"
 
   patch --forward --strip=1 --input="${srcdir}/fix-ldflags.patch"
+  patch --forward --strip=1 --input="${srcdir}/fix-ld-library-path.patch"
 }
 
 build() {

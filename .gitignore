@@ -3,3 +3,4 @@
 !PKGBUILD
 !.SRCINFO
 !fix-ldflags.patch
+!fix-ld-library-path.patch
