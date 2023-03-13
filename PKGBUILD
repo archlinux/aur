@@ -1,7 +1,7 @@
 # Maintainer: Luis Aleman Vazquez <luisv@tuta.io>
 
 pkgname=cliphist
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=2
 epoch=1
 _tag='5a4258fa72c0e34625f949c8114da9ae46c91b6f'
