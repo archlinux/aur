@@ -1,6 +1,24 @@
 
 # Changelog
 
+* 0.0.8 (Released on 02.01.2023)
+    * Add option to `influx` to log to a backup file in case the database is unavailable
+    * Calculate `%downtime` since startup if no ping ever succeded
+    * Wait instead of shutting down when no default gateway was found (may happen if the service is started too early)
+    * Fixed missing decimal places for pings greater than 99ms
+    * Report targets which we stopped pinging
+        * may happen if we're stuck on resolving a domain name 
+    * Shut down after pressing ctrl + c
+    * Support for `%sut` (start uptime) placeholder
+    * Loglevels are now per target
+    * Report if there is a dependency loop
+    * Influx now has a timeout (10s for connecting; in total 30s for the request to be processed by the server)
+    * Influx: support for ipv6
+    * Cache which replacements need to be done in placeholders (command.cmd, log.message, influx.linedata)
+    * Calculate time taken for resolving hostnames (debug output)
+    * `down-new` also supports `delay`
+    * `%sdt` is now set when the first ping fails (if `num_pings` is greater than 1)
+
 * 0.0.7 (Released on 09.09.2022)
     * Pings now follow period more closely (and no longer shift)
         * Previously some shift occured as we waited `period` time between pings (and did not include actions which may take some time)

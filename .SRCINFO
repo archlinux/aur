@@ -1,8 +1,8 @@
 pkgbase = simple-reaction-daemon
 	pkgdesc = Simple Reaction Daemon - Periodically ping hosts and run custom actions if they fail/succeed
-	pkgver = 0.0.7
+	pkgver = 0.0.8
 	pkgrel = 1
-	url = https://github.com/dbernhard-0x7CD/simple-reaction-daemon/releases/tag/v0.0.7
+	url = https://github.com/dbernhard-0x7CD/simple-reaction-daemon/releases/tag/v0.0.8
 	changelog = CHANGELOG.md
 	arch = any
 	license = GPL2

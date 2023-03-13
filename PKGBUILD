@@ -1,6 +1,6 @@
 # Maintainer: David Bernhard <davidbernhard.w@gmail.com>
 pkgname=simple-reaction-daemon
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="Simple Reaction Daemon - Periodically ping hosts and run custom actions if they fail/succeed"
 arch=('any')
