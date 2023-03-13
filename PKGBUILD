@@ -1,25 +1,35 @@
-# Maintainer: Riccardo Berto <riccardobrt at gmail dot com>
+# Maintainer: Silvan Gümüsdere <silvan@trollbox.org>
+# Contributor: Riccardo Berto <riccardobrt at gmail dot com>
 
 pkgname=redis-graph
-pkgver=1.99.4
+_name=RedisGraph
+pkgver=2.10.9
 pkgrel=1
-pkgdesc="This project is a Redis module that implements a graph database."
+pkgdesc="A graph database as a Redis module"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
-url="https://github.com/RedisLabsModules/$pkgname"
-license=('AGPL-3.0')
+url="https://redis.io/docs/stack/graph/"
+license=("custom:SSPL1")
+makedepends=('git' 'peg')
 depends=('redis' 'cmake')
 conflicts=('redis-graph-git')
-source=("$url/archive/v1.99.4.tar.gz")
-install=$pkgname.install
-sha256sums=("SKIP")
+_tag=684918cc14df9a645fb40802cea07af07d49035e # git rev-parse v${pkgver}
+source=(git+https://github.com/${_name}/${_name}.git)
+sha256sums=('SKIP')
+
+prepare() {
+    cd ${_name}
+    git checkout ${_tag}
+    git submodule update --init --recursive
+}
 
 build() {
-	cd RedisGraph-$pkgver
-	make $MAKEFLAGS
+    cd ${_name}
+    make $MAKEFLAGS
 }
 
 package() {
-	cd RedisGraph-$pkgver
-        install -D src/redisgraph.so $pkgdir/usr/lib/redis/redisgraph.so
-        install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+    cd ${_name}
+    install -D src/redisgraph.so ${pkgdir}/usr/lib/redis/redisgraph.so
+    install -Dm644 LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt
 }
+

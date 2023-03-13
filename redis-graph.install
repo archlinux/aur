@@ -1,7 +1,0 @@
-post_install() {
-	printf "\nDon't forget to update your redis config file and restart Redis.\n\n"
-}
-
-post_remove() {
-	post_install
-}
