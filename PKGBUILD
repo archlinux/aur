@@ -8,7 +8,7 @@
 
 pkgname=asterisk
 pkgver=20.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A complete PBX solution'
 arch=(x86_64 i686 aarch64 armv7h)
 url=https://www.asterisk.org
@@ -148,11 +148,25 @@ _archive="$pkgname-$pkgver"
 source=("https://downloads.asterisk.org/pub/telephony/$pkgname/releases/$_archive.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.logrotated"
-        "$pkgname.tmpfiles")
+        "$pkgname.tmpfiles"
+        "fix-upnp.patch")
 sha256sums=('eca0f7ee7e49a72bdb0c26512db45c9683ca40c8fdf63466a04705ffaba04b85'
             '38a53911647fb2308482179cba605ebf12345df37eed23eb4ea67bf0bf041486'
             'b97dc10a262621c95e4b75e024834712efd58561267b59b9171c959ecd9f7164'
-            '1b6b489d4f71015bfc56ce739d92df7e9abdb349aed6f5a47dd9c18d84546c1b')
+            '1b6b489d4f71015bfc56ce739d92df7e9abdb349aed6f5a47dd9c18d84546c1b'
+            '55798baa02698de3d81c4b6e11097b3dee73b20e9dfa1e08091a7037830ad6d8')
+
+prepare() {
+	cd "$_archive"
+
+	local filename
+	for filename in "${source[@]}"; do
+		if [[ "$filename" =~ \.patch$ ]]; then
+			echo "Applying patch ${filename##*/}"
+			patch -p1 -N -i "$srcdir/${filename##*/}"
+		fi
+	done
+}
 
 build() {
 	cd "$_archive"

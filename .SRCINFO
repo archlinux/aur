@@ -1,7 +1,7 @@
 pkgbase = asterisk
 	pkgdesc = A complete PBX solution
 	pkgver = 20.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.asterisk.org
 	arch = x86_64
 	arch = i686
@@ -142,9 +142,11 @@ pkgbase = asterisk
 	source = asterisk.sysusers
 	source = asterisk.logrotated
 	source = asterisk.tmpfiles
+	source = fix-upnp.patch
 	sha256sums = eca0f7ee7e49a72bdb0c26512db45c9683ca40c8fdf63466a04705ffaba04b85
 	sha256sums = 38a53911647fb2308482179cba605ebf12345df37eed23eb4ea67bf0bf041486
 	sha256sums = b97dc10a262621c95e4b75e024834712efd58561267b59b9171c959ecd9f7164
 	sha256sums = 1b6b489d4f71015bfc56ce739d92df7e9abdb349aed6f5a47dd9c18d84546c1b
+	sha256sums = 55798baa02698de3d81c4b6e11097b3dee73b20e9dfa1e08091a7037830ad6d8
 
 pkgname = asterisk
