@@ -22,7 +22,7 @@ optdepends=('gcc: for compiling c++ sources',
 	'ghostscript: for LaTeX figures',
 	'python-matplotlib: for generating solve stats',
 	'python-questionary: for better prompts in new_contest and new_problem',
-	'python-requests: for better prompts in new_contest and new_problem',
+	'python-requests: for commands that call the DOMjudge or Slack API',
 	'asymptote: for visualizations'
 )
 makedepends=('git' 'rsync')
