@@ -1,0 +1,14 @@
+pkgbase = python-trame-matplotlib
+	pkgdesc = Matplotlib widget for trame
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/Kitware/trame-matplotlib
+	arch = any
+	license = custom:BSD-3-clause
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-trame-client
+	source = trame-matplotlib-2.0.2.tar.gz::https://github.com/Kitware/trame-matplotlib/archive/v2.0.2.tar.gz
+	sha512sums = 2758400fe658697dbb27eb4f2e0cb0acbe7116e912ca69f2d472fdeb129f8f243c51613e2d588f395ccd5cf070297df4546e1323e220ca419d716173540c0de2
+
+pkgname = python-trame-matplotlib
