@@ -6,7 +6,7 @@
 pkgbase=mutter-dynamic-buffering
 pkgname=(mutter-dynamic-buffering)
 pkgver=43.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Window manager and compositor for GNOME (with dynamic triple/double buffering)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -66,7 +66,7 @@ prepare() {
 
   # Fix broken focus handling with XWayland
   # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2848
-  # git cherry-pick -n d5e75bccdee7ea0e30cd860ca08ae109dcb311c8
+  git cherry-pick -n 12ce58dba4f96f6a948c1d166646d263253e3ee0
 
   patch -p1 < "$srcdir/mr1441.patch"
 }
