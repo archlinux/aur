@@ -1,0 +1,14 @@
+pkgbase = python-trame-markdown
+	pkgdesc = Markdown widget for trame
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/Kitware/trame-markdown
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-trame-client
+	source = trame-markdown-2.0.2.tar.gz::https://github.com/Kitware/trame-markdown/archive/v2.0.2.tar.gz
+	sha512sums = a1a1177ad1f1c55a3afeccf4c7f682dc08ff744eb1f6843f1085d5889a7c5853cfe2b292e46d420014c3ce6489bd2ffa05b8c6c704d988993de33b2d117dbde0
+
+pkgname = python-trame-markdown
