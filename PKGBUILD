@@ -3,10 +3,10 @@
 pkgname=python-transip
 _pkg="${pkgname#python-}"
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Wrapper for the TransIP API'
 arch=('any')
-url="https://github.com/roaldnefs/transip"
+url="https://github.com/roaldnefs/python-transip"
 license=('LGPL3' 'GPL3')
 depends=('python-cryptography' 'python-requests')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')

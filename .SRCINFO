@@ -1,8 +1,8 @@
 pkgbase = python-transip
 	pkgdesc = Wrapper for the TransIP API
 	pkgver = 0.6.0
-	pkgrel = 1
-	url = https://github.com/roaldnefs/transip
+	pkgrel = 2
+	url = https://github.com/roaldnefs/python-transip
 	changelog = CHANGELOG.md
 	arch = any
 	license = LGPL3
