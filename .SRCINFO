@@ -1,0 +1,12 @@
+pkgbase = ros2-humble-random-numbers
+	pkgdesc = This library contains wrappers for generating floating point values, integers, quaternions using boost libraries.
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://index.ros.org/p/random_numbers/
+	arch = any
+	depends = ros2-humble
+	depends = boost
+	source = https://github.com/ros-planning/random_numbers/archive/refs/tags/2.0.1.tar.gz
+	sha256sums = bbdc63312131245e69d590ada5adf9f741b4da084541e40091886f3cb83f83a6
+
+pkgname = ros2-humble-random-numbers
