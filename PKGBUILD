@@ -2,7 +2,7 @@
 
 pkgname=('python-django-celery-results')
 _pypi_pkgname=('django_celery_results')
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=0
 pkgdesc='Celery Result Backends using the Django ORM/Cache framework'
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=()
 conflicts=()
 provides=('python-django-celery-results')
 source=("https://pypi.io/packages/source/d/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('75aa51970db5691cbf242c6a0ff50c8cdf419e265cd0e9b772335d06436c4b99')
+sha256sums=('8631fd68158c41afddfc378840ecee2f10ddd7d4879e964f2597f483e4203269')
 
 build() {
   cd "$srcdir"/"$_pypi_pkgname-$pkgver"
