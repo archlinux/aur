@@ -1,0 +1,17 @@
+pkgbase = ros2-humble-srdfdom
+	pkgdesc = Parser for Semantic Robot Description Format (SRDF)
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = https://index.ros.org/p/srdfdom/
+	arch = any
+	depends = ros2-humble
+	depends = boost
+	depends = console-bridge
+	depends = tinyxml2
+	depends = urdfdom
+	depends = urdfdom-headers
+	depends = ros2-humble-urdf-parser-py
+	source = https://github.com/ros-planning/srdfdom/archive/refs/tags/2.0.4.tar.gz
+	sha256sums = 1a4077dc594ee0aed14775753b8ed0699d0f2d5defae0d5c2ff90081d93122c3
+
+pkgname = ros2-humble-srdfdom
