@@ -1,0 +1,15 @@
+pkgbase = clashr-auto-bin
+	pkgdesc = use clash.meta & speedtest & easy to use
+	pkgver = 2.4.8
+	pkgrel = 1
+	url = https://clashr-auto.gitbook.io/
+	arch = x86_64
+	license = unknown
+	depends = nss
+	depends = at-spi2-core
+	depends = alsa-lib
+	depends = gtk3
+	source = clash-auto-2.4.8.deb::https://github.com/ClashrAuto/Clashr-Auto-Desktop/releases/download/v2.4.8/clash-auto-amd64_2.4.8_amd64.deb
+	sha256sums = 96580e856ec3f28b9aab5fa298e33c09f4a6b90c2033117aa9ef5030761c32c6
+
+pkgname = clashr-auto-bin
