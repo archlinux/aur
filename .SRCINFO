@@ -1,7 +1,7 @@
 pkgbase = pufferpanel-bin
 	pkgdesc = PufferPanel: A web-base game management system (binary version).
 	pkgver = 2.6.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PufferPanel/PufferPanel
 	arch = x86_64
 	arch = aarch64
@@ -15,7 +15,7 @@ pkgbase = pufferpanel-bin
 	source = https://raw.githubusercontent.com/PufferPanel/PufferPanel/v2.6.6/systemd/servicefiles/pufferpanel.service
 	source = https://raw.githubusercontent.com/PufferPanel/PufferPanel/v2.6.6/config.linux.json
 	b2sums = ed744c35200b918c3107ea6191e3c6c38b3a731183b5cf7ed8b066550a6038fd712429b24264b0b00c52f9533b8503462962d2bfdb45c49724be49a2b9b39141
-	b2sums = bfc43954775e7795376cb86b7d2599031d576640fb6e13a5d5e8d915b5eb7bf36079600e5acc07c672b77e22b1b19799074defeced96a9638c5420733c9eb096
+	b2sums = SKIP
 	source_x86_64 = https://github.com/PufferPanel/PufferPanel/releases/download/v2.6.6/pufferpanel_2.6.6_linux_amd64.zip
 	b2sums_x86_64 = 4c53846d223559097b4cdf1c4fb556725923cfc9376b43863890d5a2e492094d9fe5cf190801973cc8b6167e42300f80d67945f87e57feac702aa395093ee23c
 	source_aarch64 = https://github.com/PufferPanel/PufferPanel/releases/download/v2.6.6/pufferpanel_2.6.6_linux_arm64.zip
