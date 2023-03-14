@@ -11,7 +11,10 @@ pkgbase = sfwbar
         depends = json-c
         depends = gtk-layer-shell
         depends = wayland-protocols
-	source = https://github.com/LBCrion/sfwbar/archive/v1.0_beta9.tar.gz
-	sha256sums = ad4e2599c34703298871511e013b183d2c9b6f3c42e75d8a7514fae162ba07b3
+        optdepends = libpulse: pulse audio volume control
+        optdepends = libmpdclient: music player daemon control
+        optdepends = libxkbcommon: xkb layout conversion support
+	source = https://github.com/LBCrion/sfwbar/archive/refs/tags/v1.0_beta10.tar.gz
+	sha256sums = 88d192940c8f4c74fbeab6f054fa9ec57b42f7053859317c9a0de9cf6995b2a3
 
 pkgname = sfwbar
