@@ -1,7 +1,7 @@
 pkgbase = r-posterior
 	pkgdesc = Tools for Working with Posterior Distributions
-	pkgver = 1.4.0
-	pkgrel = 3
+	pkgver = 1.4.1
+	pkgrel = 1
 	url = https://cran.r-project.org/package=posterior
 	arch = any
 	license = BSD
@@ -25,7 +25,7 @@ pkgbase = r-posterior
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-tidyr
-	source = https://cran.r-project.org/src/contrib/posterior_1.4.0.tar.gz
-	sha256sums = f546658678a2c8c86130922c06f9045b4078bc11a91fa98b0462a5d733133f9d
+	source = https://cran.r-project.org/src/contrib/posterior_1.4.1.tar.gz
+	sha256sums = 2b8953fa8d6890a105521023c431ddea725465eb95cf9454a88852e43ebb58d3
 
 pkgname = r-posterior
