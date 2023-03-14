@@ -7,7 +7,7 @@ pkgrel=2
 arch=(any)
 url="https://github.com/Kitware/${_base}"
 license=(Apache)
-depends=(python-trame-client)
+depends=(python-trame-client npm)
 makedepends=(python-setuptools)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
@@ -18,7 +18,10 @@ prepare() {
 }
 
 build() {
-  cd ${_base}-${pkgver}
+  cd ${srcdir}/${_base}-${pkgver}/vue-components
+  npm install
+  npm run build
+  cd ${srcdir}/${_base}-${pkgver}
   python setup.py build
 }
 
