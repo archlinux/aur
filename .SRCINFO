@@ -7,6 +7,7 @@ pkgbase = python-trame-deckgl
 	license = MIT
 	checkdepends = python-pytest
 	makedepends = python-setuptools
+	makedepends = npm
 	depends = python-trame-client
 	source = trame-deckgl-2.0.2.tar.gz::https://github.com/Kitware/trame-deckgl/archive/v2.0.2.tar.gz
 	sha512sums = c5b0529126d02c8bf768ad90187aba47d6a3a2f7e3555d6a69184f127779b45567201ecda187ca6805eb0de1802c42426fa8f539f9d12b31f9233fe494a083c5
