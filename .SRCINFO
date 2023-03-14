@@ -1,15 +1,15 @@
 pkgbase = python-jsonrpcclient
 	pkgdesc = Send JSON-RPC requests in Python.
-	pkgver = 4.0.2
+	pkgver = 4.0.3
 	pkgrel = 1
-	url = https://github.com/bcb/jsonrpcclient
+	url = https://github.com/explodinglabs/jsonrpcclient
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python-nose
 	depends = python
 	options = !emptydirs
-	source = python-jsonrpcclient-4.0.2.tar.gz::https://files.pythonhosted.org/packages/source/j/jsonrpcclient/jsonrpcclient-4.0.2.tar.gz
-	sha256sums = c0d475494b3e1b591ecdee7883739accaf5695edb673f16b7383b8c6bbdb1ca3
+	source = python-jsonrpcclient-4.0.3.tar.gz::https://github.com/explodinglabs/jsonrpcclient/archive/refs/tags/4.0.3.tar.gz
+	sha256sums = f2343c0f4cacb6c7fd0a824593c08dd58e9adf197d9d932fa20fdfeae68bc54e
 
 pkgname = python-jsonrpcclient

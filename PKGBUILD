@@ -2,34 +2,30 @@
 
 pkgname=python-jsonrpcclient
 _name=jsonrpcclient
-pkgver=4.0.2
+pkgver=4.0.3
 pkgrel=1
 pkgdesc="Send JSON-RPC requests in Python."
 arch=('any')
 depends=('python')
 makedepends=('python-setuptools' 'python-nose')
-url="https://github.com/bcb/jsonrpcclient"
+url="https://github.com/explodinglabs/jsonrpcclient"
 license=('MIT')
 options=('!emptydirs')
-source=($pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha256sums=('c0d475494b3e1b591ecdee7883739accaf5695edb673f16b7383b8c6bbdb1ca3')
+source=($pkgname-$pkgver.tar.gz::https://github.com/explodinglabs/$_name/archive/refs/tags/$pkgver.tar.gz)
+sha256sums=('f2343c0f4cacb6c7fd0a824593c08dd58e9adf197d9d932fa20fdfeae68bc54e')
 
 build() {
   cd "$srcdir/$_name-$pkgver"
-  python setup.py build
-  #namcap gives world bit not set in permissions
-  chmod 644 jsonrpcclient.egg-info/* 
+  python -m build --wheel --no-isolation
 }
 
 check(){
-    cd "$srcdir/$_name-$pkgver"
-
-    # For nosetests
-    nosetests
+  cd "$srcdir/$_name-$pkgver"
+  pytest
 }
 
 package() {
   cd "$srcdir/$_name-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/license"
 }
