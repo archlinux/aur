@@ -1,0 +1,10 @@
+post_install() {
+  printf "====> run following commands\n"
+  printf "mkdir -p ~/.config/bakadict/databases\n"
+  printf "cd ~/.config/bakadict/databases\n"
+  printf "wget https://github.com/flaribbit/bakadict/releases/download/databases/jp.db\n"
+}
+
+post_upgrade() {
+  post_install
+}

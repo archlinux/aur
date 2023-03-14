@@ -1,8 +1,9 @@
 pkgbase = bakadict-git
 	pkgdesc = 离线的命令行日语词典
 	pkgver = r19.1fa4f69
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flaribbit/bakadict
+	install = .install
 	arch = any
 	license = unknown
 	makedepends = git
@@ -10,8 +11,8 @@ pkgbase = bakadict-git
 	makedepends = rust
 	provides = dict
 	source = git+https://github.com/flaribbit/bakadict.git#branch=master
-	source = jp.db::https://github.com/flaribbit/bakadict/releases/download/databases/jp.db
+	source = .install
 	md5sums = SKIP
-	md5sums = 2d3b1ed834c3b36e31eef515400d7160
+	md5sums = 6ec265b382ab0a8f437ce4606b80181d
 
 pkgname = bakadict-git

@@ -3,15 +3,16 @@
 pkgname=bakadict-git
 pkgdesc=离线的命令行日语词典
 _name=bakadict
-pkgver=r19.1fa4f69
+pkgver=r21.3bb4f08
 pkgrel=1
 source=('git+https://github.com/flaribbit/bakadict.git#branch=master'
-        'jp.db::https://github.com/flaribbit/bakadict/releases/download/databases/jp.db')
+        .install)
 arch=('any')
 url='https://github.com/flaribbit/bakadict'
 md5sums=('SKIP'
-         '2d3b1ed834c3b36e31eef515400d7160')
+         'e6a7496670b5280d9bcd5bcf595849dd')
 license=('unknown')
+install=.install
 makedepends=('git' 'cargo' 'rust')
 provides=('dict')
 pkgver(){
@@ -23,7 +24,6 @@ build(){
   cargo build --release
 }
 package(){
-  install -Dm644 jp.db ~/.config/bakadict/databases/jp.db
   pushd $srcdir/$_name
   install -Dm755 target/release/dict $pkgdir/usr/bin/dict
   popd
