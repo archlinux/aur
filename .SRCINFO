@@ -1,5 +1,5 @@
 pkgbase = keenwrite-bin
-	pkgdesc = A full-featured Subsonic/Jellyfin compatible desktop music player
+	pkgdesc = Free, open-source, cross-platform desktop Markdown text editor with live preview, string interpolation, and math.
 	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://github.com/DaveJarvis/KeenWrite
