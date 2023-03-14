@@ -6,7 +6,7 @@
 
 pkgname=masterpdfeditor
 pkgver=5.9.40
-pkgrel=2
+pkgrel=3
 pkgdesc='A complete solution for viewing, creating and editing PDF files'
 url='https://code-industry.net/free-pdf-editor/'
 arch=('x86_64')
@@ -25,7 +25,7 @@ package() {
 
   cd "$pkgdir/opt/master-pdf-editor-${pkgver%%.*}"
   ln -sr masterpdfeditor${pkgver%%.*} -t "$pkgdir/usr/bin/"
-  install -Dm644 masterpdfeditor${pkgver%%.*}.desktop -t "$pkgdir/usr/share/applications/"
+  install -Dm644 ${srcdir}/masterpdfeditor${pkgver%%.*}.desktop -t "$pkgdir/usr/share/applications/"
   install -Dm644 license.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
   patchelf --remove-rpath masterpdfeditor${pkgver%%.*}
 }
