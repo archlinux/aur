@@ -1,0 +1,15 @@
+pkgbase = ros2-humble-moveit-ros-warehouse
+	pkgdesc = Components of MoveIt connecting to MongoDB
+	pkgver = 2.5.4
+	pkgrel = 1
+	url = https://index.ros.org/p/moveit_ros_warehouse/
+	arch = any
+	makedepends = ros2-humble-moveit-common
+	depends = ros2-humble
+	depends = ros2-humble-moveit-core
+	depends = ros2-humble-warehouse-ros
+	depends = ros2-humble-moveit-ros-planning
+	source = https://github.com/ros-planning/moveit2/archive/refs/tags/2.5.4.tar.gz
+	sha256sums = 42ac45e2631d59203edfdfc2f521312f7ddef04ff5baf1fec43c65f79495d7a6
+
+pkgname = ros2-humble-moveit-ros-warehouse
