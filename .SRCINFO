@@ -1,0 +1,19 @@
+pkgbase = ros2-humble-slam-toolbox
+	pkgdesc = This package provides a sped up improved slam karto with updated SDK and visualization and modification toolsets
+	pkgver = 2.6.4
+	pkgrel = 1
+	url = https://index.ros.org/p/slam_toolbox/
+	arch = any
+	depends = ros2-humble
+	depends = eigen
+	depends = boost-libs
+	depends = suitesparse
+	depends = ceres-solver
+	depends = lapack
+	depends = tbb
+	depends = qt5-base
+	depends = ros2-humble-nav2-map-server
+	source = https://github.com/SteveMacenski/slam_toolbox/archive/refs/tags/2.6.4.tar.gz
+	sha256sums = 27242664b7964180f48f53f7594a1e6a06a2f96e9d54285eb159be9fd7eedb08
+
+pkgname = ros2-humble-slam-toolbox
