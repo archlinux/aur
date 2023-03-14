@@ -1,0 +1,12 @@
+pkgbase = prometheus-mosquitto-exporter
+	pkgdesc = a prometheus exporter for the mosquitto mqtt server
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/sapcc/mosquitto-exporter
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	source = prometheus-mosquitto-exporter-0.8.0.tar.gz::https://github.com/sapcc/mosquitto-exporter/archive/v0.8.0.tar.gz
+	sha256sums = 47572232b5943630c3c24a10eac64c0010d68b33d591a39cc8870300c6fad291
+
+pkgname = prometheus-mosquitto-exporter
