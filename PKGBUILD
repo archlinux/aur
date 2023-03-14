@@ -7,7 +7,7 @@
 
 _gitname=znc
 pkgname=znc-git
-pkgver=1.8.2.r170.g9be0cae1
+pkgver=1.8.2.r252.g0772dd57
 pkgrel=1
 pkgdesc='An IRC bouncer with modules & scripts support'
 url='https://wiki.znc.in/ZNC'
@@ -22,7 +22,7 @@ optdepends=('tcl: modtcl module'
             'perl: modperl module'
             'cyrus-sasl: saslauth module')
 source=('git+https://github.com/znc/znc.git'
-        'git+https://github.com/jimloco/Csocket.git'
+        'git+https://github.com/znc/Csocket.git'
         'git+https://github.com/google/googletest.git'
         'znc.sysusers'
         'znc.tmpfiles')
@@ -47,7 +47,7 @@ prepare() {
 	git submodule init
 	git config submodule.Csocket.url "$srcdir/Csocket"
 	git config submodule.third_party/googletest.url "$srcdir/googletest"
-	git submodule update
+	git -c protocol.file.allow=always submodule update
 }
 
 build() {
