@@ -1,0 +1,33 @@
+Index: bestsource/meson.build
+===================================================================
+--- a/bestsource/meson.build
++++ b/bestsource/meson.build
+@@ -21,12 +21,12 @@ endif
+ 
+ libs += static_library('p2p_main',
+     [
+-        'libp2p/p2p_api.cpp',
+-        'libp2p/v210.cpp',
+-        'libp2p/simd/cpuinfo_x86.cpp',
+-        'libp2p/simd/p2p_simd.cpp'
++        '../libp2p/p2p_api.cpp',
++        '../libp2p/v210.cpp',
++        '../libp2p/simd/cpuinfo_x86.cpp',
++        '../libp2p/simd/p2p_simd.cpp'
+     ],
+-    include_directories: ['libp2p', 'libp2p/simd'],
++    include_directories: ['../libp2p', '../libp2p/simd'],
+     cpp_args: p2p_args
+ )
+ 
+@@ -34,8 +34,8 @@ if host_machine.cpu_family().startswith(
+     p2p_args += ['-msse4.1']
+ 
+     libs += static_library('p2p_sse41',
+-        'libp2p/simd/p2p_sse41.cpp',
+-        include_directories: ['libp2p', 'libp2p/simd'],
++        '../libp2p/simd/p2p_sse41.cpp',
++        include_directories: ['../libp2p', '../libp2p/simd'],
+         cpp_args: p2p_args
+     )
+ endif
