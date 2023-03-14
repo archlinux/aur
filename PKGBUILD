@@ -21,7 +21,7 @@ pkgver() {
 build() {
   cd "$_pkgname"
 
-  make bootstrap
+  make bootstrap PREFIX=/usr 
 }
 
 package() {
