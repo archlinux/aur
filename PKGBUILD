@@ -5,7 +5,7 @@
 
 # Maintainer: Asuka Minato <asukaminato at nyan dot eu dot org>
 pkgname=chatbox-bin
-pkgver=0.0.9
+pkgver=0.1.1
 pkgrel=1
 epoch=
 pkgdesc="a cross-platform desktop client for OpenAI API, also a prompt debugging and management tool."
@@ -13,7 +13,7 @@ arch=(x86_64)
 url="https://github.com/Bin-Huang/chatbox"
 license=('GPL')
 groups=()
-depends=(gtk3)
+depends=(gtk3 ffmpeg electron)
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -24,11 +24,23 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/Bin-Huang/chatbox/releases/download/v${pkgver}/chatbox_${pkgver}_amd64.deb")
+source=("https://github.com/Bin-Huang/chatbox/releases/download/v${pkgver}/chatbox_${pkgver}_amd64.deb"
+chatbox)
 noextract=()
-sha256sums=('4d0b2f23c3ae2cd753438df0ef58a83e27cad85317aebb8650797320f45ce795')
+sha256sums=('b6f086678480a2af75c9619b87da6c28f27b33dd125a54b4a9553f3276362cf0'
+            '0bc0ea7b2e9bf0a56f51e45afc74c34bf7ecfa5ea602905abed5b93495aee637')
 validpgpkeys=()
 
 package() {
-    tar xvpf data.tar.xz -C $pkgdir
+    tar -xvpf data.tar.xz -C $pkgdir
+    for i in $pkgdir/usr/lib/chatbox/*;
+    do
+        local fname=$(basename ${i})
+        if [ "$fname" != "resources" ] && [ "$fname" != "LICENSES.chromium.html" ] && [ "$fname" != "version" ];
+        then
+            rm -rf "$i"
+        fi
+    done
+    rm $pkgdir/usr/bin/chatbox
+    install -Dm755 chatbox -t $pkgdir/usr/bin/
 }
