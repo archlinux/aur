@@ -2,7 +2,7 @@
 # Maintainer: johnfanv2 <https://github.com/Petingoso>
 _pkgname=lenovolegionlinux
 pkgname=${_pkgname}-git
-pkgver=r01.3d5ebf4
+pkgver=r01.395feaa
 pkgrel=1
 pkgdesc="LenovoLegionLinux (LLL) brings additional drivers and tools for Lenovo Legion series laptops to Linux. It is the alternative to Lenovo Vantage or Legion Zone (both Windows only). PLEASE READ THE REPO BEFORE INSTALL THIS PACKAGE!!!"
 arch=("x86_64")
