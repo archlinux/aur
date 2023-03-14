@@ -2,7 +2,7 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}"
-pkgver="0.22.0beta"
+pkgver="0.23.0beta"
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=(x86_64 aarch64)
@@ -36,7 +36,9 @@ depends=(
 	seatd
 	vulkan-icd-loader
 	vulkan-validation-layers
-	xorg-xwayland)
+	xorg-xwayland
+	libliftoff
+	libdisplay-info)
 makedepends=(
 	git
 	cmake
@@ -57,8 +59,9 @@ build() {
 	cd "$srcdir/hyprland-source"
 	make fixwlr
 	cd "./subprojects/wlroots/" && meson build/ --prefix="${srcdir}/tmpwlr" --buildtype=release && ninja -C build/ && mkdir -p "${srcdir}/tmpwlr" && ninja -C build/ install && cd ../../
+	cd udis86 && cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -H./ -B./build -G Ninja && cmake --build ./build --config Release --target all -j$(shell nproc) && cd ../..
 	make protocols
-    make release
+	make release
 	cd ./hyprctl && make all && cd ..
 }
 
