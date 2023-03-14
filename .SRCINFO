@@ -1,22 +1,21 @@
 pkgbase = solid-git
 	pkgdesc = Hardware integration and detection
-	pkgver = v4.100.0.rc1.r421.g8e0957c
+	pkgver = 5.240.0_r861.g86e4d87
 	pkgrel = 1
-	url = https://projects.kde.org/projects/frameworks/solid
+	url = https://community.kde.org/Frameworks
 	arch = x86_64
-	groups = kf5
+	groups = kf6
 	license = LGPL
-	makedepends = extra-cmake-modules
+	makedepends = extra-cmake-modules-git
 	makedepends = git
-	makedepends = qt5-tools
-	depends = qt5-declarative
+	makedepends = qt6-tools
+	depends = qt6-declarative
 	depends = media-player-info
 	depends = udisks2
-	depends = upower
+	depends = upower-git
 	provides = solid
 	conflicts = solid
-	source = git+https://invent.kde.org/frameworks/solid.git
+	source = git+https://github.com/KDE/solid.git
 	md5sums = SKIP
 
 pkgname = solid-git
-

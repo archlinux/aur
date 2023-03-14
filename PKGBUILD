@@ -2,28 +2,31 @@
 # Contributor Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=solid-git
-_name=${pkgname%-git}
-pkgver=v4.100.0.rc1.r421.g8e0957c
+pkgver=5.240.0_r861.g86e4d87
 pkgrel=1
 pkgdesc='Hardware integration and detection'
 arch=(x86_64)
-url='https://projects.kde.org/projects/frameworks/solid'
+url='https://community.kde.org/Frameworks'
 license=(LGPL)
-depends=(qt5-declarative media-player-info udisks2 upower)
-makedepends=(extra-cmake-modules git qt5-tools)
-groups=(kf5)
+depends=(qt6-declarative media-player-info udisks2 upower-git)
+makedepends=(extra-cmake-modules-git git qt6-tools)
+groups=(kf6)
 conflicts=(solid)
 provides=(solid)
-source=("git+https://invent.kde.org/frameworks/$_name.git")
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd $_name
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd ${pkgname%-git}
+  _ver="$(grep -m1 'set(KF_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cmake -B build -S $_name
+  cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=ON
   cmake --build build
 }
 
