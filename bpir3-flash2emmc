@@ -16,7 +16,7 @@ while [ ! -e /sys/block/mmcblk0boot0 ]; do
   echo 11230000.mmc >/sys/bus/platform/drivers/mtk-msdc/unbind
   sleep 0.1
   echo 11230000.mmc >/sys/bus/platform/drivers/mtk-msdc/bind
-  echo "Flip SD/EMMC switch now!"
+  echo "Flip SD/EMMC switch now (most near to power plug)!"
   sleep 1.9
 done
 
@@ -29,4 +29,7 @@ echo "Copying atf partition to mmcblk0boot0"
 echo 0 >/sys/block/mmcblk0boot0/force_ro
 dd if=/dev/mmcblk0 of=/dev/mmcblk0boot0 bs=512 skip=34 count=1024 conv=fsync,notrunc
 echo 1 >/sys/block/mmcblk0boot0/force_ro
+
+echo "Flip other switch now (most far away from power plug)!"
+echo "Reboot and enjoy booting from EMMC."
 
