@@ -1,7 +1,7 @@
 # Maintainer: Jeff Dickey <releases at rtx dot pub>
 
 pkgname=rtx
-pkgver=1.23.5
+pkgver=1.23.6
 pkgrel=1
 pkgdesc='Polyglot runtime manager'
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cargo')
 provides=('rtx')
 conflicts=('rtx')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jdxcode/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('b2195a2fe7b614546af6af811ee202e8f9fd866ac1251c0a13032fb2afea9a9dd6076ea57ce624064a25ded329be2af7f2627d70abeaa0bde2ad9358289efe67')
+sha512sums=('0d5a03e884e1486e0b45d41a8b5e58a1abe23686912528d20b48cd9eecdf024289ff2464722196d709b780a4930ff1f9bde473609d7ff219f047450f749bf3cb')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
