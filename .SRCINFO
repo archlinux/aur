@@ -1,0 +1,17 @@
+pkgbase = ros2-humble-moveit-ros-visualization
+	pkgdesc = Components of MoveIt that offer visualization
+	pkgver = 2.5.4
+	pkgrel = 1
+	url = https://index.ros.org/p/moveit_ros_visualization/
+	arch = any
+	makedepends = eigen
+	makedepends = qt5-base
+	depends = ros2-humble
+	depends = ros2-humble-moveit-common
+	depends = ros2-humble-moveit-ros-robot-interaction
+	depends = ros2-humble-moveit-ros-planning-interface
+	depends = ros2-humble-moveit-ros-warehouse
+	source = https://github.com/ros-planning/moveit2/archive/refs/tags/2.5.4.tar.gz
+	sha256sums = 42ac45e2631d59203edfdfc2f521312f7ddef04ff5baf1fec43c65f79495d7a6
+
+pkgname = ros2-humble-moveit-ros-visualization
