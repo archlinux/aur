@@ -13,7 +13,7 @@ amdgpu_pro="opt/amdgpu-pro/lib/x86_64-linux-gnu/"
 pkgname=opencl-amd
 pkgdesc="ROCr OpenCL stack, supports Vega 10 and later products - Legacy OpenCL stack (Proprietary), supports legacy products older than Vega 10 - This package is intended to work along with the free amdgpu stack."            
 pkgver=5.4.3
-pkgrel=2
+pkgrel=3
 epoch=1
 arch=('x86_64')
 url='http://www.amd.com'
@@ -61,7 +61,7 @@ source=(
 "https://repo.radeon.com/rocm/apt/5.4.3/pool/main/r/rocm-dev/rocm-dev_5.4.3.50403-121~22.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/5.4.3/pool/main/h/hsa-amd-aqlprofile/hsa-amd-aqlprofile_1.0.0.50403-121~22.04_amd64.deb"
 # Proprietary
-#"https://repo.radeon.com/amdgpu/5.4.3/ubuntu/pool/proprietary/o/opencl-legacy-amdgpu-pro/opencl-legacy-amdgpu-pro-icd_22.40-1518373.22.04_amd64.deb"
+"https://repo.radeon.com/amdgpu/5.4.3/ubuntu/pool/proprietary/o/opencl-legacy-amdgpu-pro/opencl-legacy-amdgpu-pro-icd_22.40-1538781.22.04_amd64.deb"
 #"https://repo.radeon.com/amdgpu/22.20.3/ubuntu/pool/proprietary/c/clinfo-amdgpu-pro/clinfo-amdgpu-pro_22.10-1462318~22.04_amd64.deb"
 #"https://repo.radeon.com/amdgpu/22.20.3/ubuntu/pool/proprietary/o/ocl-icd-amdgpu-pro/ocl-icd-libopencl1-amdgpu-pro_22.10-1462318~22.04_amd64.deb"
 #"https://repo.radeon.com/amdgpu/22.20.3/ubuntu/pool/proprietary/a/amf-amdgpu-pro/amf-amdgpu-pro_1.4.24-1462318~22.04_amd64.deb"
@@ -100,7 +100,8 @@ sha256sums=(
 "bc1ce0d99a03200b94dc6dd05a888b56a7c3d42eed5107197362acbe96dd07b0"
 "67162af945c85baaa53fe16459e2d843fe0e725a96c807ad2ab79f41e3fb0bec"
 "8fa8910f2cb8ef443459bf99890c213824dc925cb1219a412e48cea9fbbc34f7"
-#"a72318ba004c92211e190f574e2bca509fb8d9c785055063c450c5ae4b748b4a"
+
+"ecd6fc900fe8d8b1c57e57c6e141230d9ea0584fe9a41234595c1eff850bfd14"
 #"d9d0182d372345a9e0b7df1e18da29aed6420edc9f948e7ffc2e8e66200db513"
 )
 
@@ -150,10 +151,10 @@ package() {
 	exz "${srcdir}/libdrm-amdgpu-amdgpu1_2.4.113.50403-1538762.22.04_amd64.deb"
 	egz "${srcdir}/openmp-extras-runtime_15.54.0.50403-121~22.04_amd64.deb"
 	egz "${srcdir}/rocm-gdb_12.1.50403-121~22.04_amd64.deb"
-	#exz "${srcdir}/opencl-legacy-amdgpu-pro-icd_22.40-1518373.22.04_amd64.deb"
+	exz "${srcdir}/opencl-legacy-amdgpu-pro-icd_22.40-1538781.22.04_amd64.deb"
 
-	#cd ${srcdir}/${amdgpu_pro}
-	#sed -i "s|libdrm_amdgpu|libdrm_amdgpo|g" libamdocl-orca64.so
+	cd ${srcdir}/${amdgpu_pro}
+	sed -i "s|libdrm_amdgpu|libdrm_amdgpo|g" libamdocl-orca64.so
 
 	cd ${srcdir}/${amdgpu}
 	rm "libdrm_amdgpu.so.1"
@@ -162,7 +163,7 @@ package() {
 
 	# legacy
 	mkdir -p ${pkgdir}/usr/lib
-	#mv "${srcdir}/${amdgpu_pro}/libamdocl-orca64.so" "${pkgdir}/usr/lib/"
+	mv "${srcdir}/${amdgpu_pro}/libamdocl-orca64.so" "${pkgdir}/usr/lib/"
 	mv "${srcdir}/${amdgpu}/libdrm_amdgpo.so.1.0.0" "${pkgdir}/usr/lib/"
 	mv "${srcdir}/${amdgpu}/libdrm_amdgpo.so.1" "${pkgdir}/usr/lib/"
 

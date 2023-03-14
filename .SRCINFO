@@ -1,7 +1,7 @@
 pkgbase = opencl-amd
 	pkgdesc = ROCr OpenCL stack, supports Vega 10 and later products - Legacy OpenCL stack (Proprietary), supports legacy products older than Vega 10 - This package is intended to work along with the free amdgpu stack.
 	pkgver = 5.4.3
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = http://www.amd.com
 	arch = x86_64
@@ -96,6 +96,7 @@ pkgbase = opencl-amd
 	source = https://repo.radeon.com/rocm/apt/5.4.3/pool/main/r/roctracer-dev/roctracer-dev_4.1.0.50403-121~22.04_amd64.deb
 	source = https://repo.radeon.com/rocm/apt/5.4.3/pool/main/r/rocm-dev/rocm-dev_5.4.3.50403-121~22.04_amd64.deb
 	source = https://repo.radeon.com/rocm/apt/5.4.3/pool/main/h/hsa-amd-aqlprofile/hsa-amd-aqlprofile_1.0.0.50403-121~22.04_amd64.deb
+	source = https://repo.radeon.com/amdgpu/5.4.3/ubuntu/pool/proprietary/o/opencl-legacy-amdgpu-pro/opencl-legacy-amdgpu-pro-icd_22.40-1538781.22.04_amd64.deb
 	sha256sums = 00bdf8491f90e08875b7b5990a18793908acf725ea244930a3f89fd26efd0ac1
 	sha256sums = f16677575d146e5b7b5194deaf6be7fb0ab57bb5b92065e5d3b2533bc32c473b
 	sha256sums = b966685a075d15b50d9d68f053e72b23cfcb627802fb507fdd24357a84fa48dc
@@ -126,5 +127,6 @@ pkgbase = opencl-amd
 	sha256sums = bc1ce0d99a03200b94dc6dd05a888b56a7c3d42eed5107197362acbe96dd07b0
 	sha256sums = 67162af945c85baaa53fe16459e2d843fe0e725a96c807ad2ab79f41e3fb0bec
 	sha256sums = 8fa8910f2cb8ef443459bf99890c213824dc925cb1219a412e48cea9fbbc34f7
+	sha256sums = ecd6fc900fe8d8b1c57e57c6e141230d9ea0584fe9a41234595c1eff850bfd14
 
 pkgname = opencl-amd
