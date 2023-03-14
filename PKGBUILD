@@ -9,19 +9,20 @@ arch=(any)
 _url="https://pypi.python.org/pypi/thefuzz"
 url="https://github.com/seatgeek/thefuzz"
 license=('GPL2')
-depends=('python')
+depends=(
+  'python-levenshtein'
+)
 provides=(${_pkgname})
 conflicts=(${provides[@]})
-optdepends=(
-  'python-levenshtein: provides a 4-10x speedup in string matching'
-)
 makedepends=(
   'git'
+  'python-build'
+  'python-installer'
   'python-setuptools'
+  'python-wheel'
 )
 checkdepends=(
   'python-hypothesis'
-  'python-levenshtein'
   'python-pycodestyle'
   'python-pytest'
 )
@@ -35,17 +36,18 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  python setup.py build
+  python -m build --no-isolation --wheel
 }
 
 check() {
   cd "$srcdir/$_pkgname"
-  # https://github.com/seatgeek/fuzzywuzzy/issues/284
-  #pytest --deselect test_fuzzywuzzy_pytest.py::test_process_warning
   pytest
 }
 
 package() {
   cd "$srcdir/$_pkgname"
-  python setup.py install --root="$pkgdir" --optimize=1
+  python -m installer \
+    --compile-bytecode 1 \
+    --destdir "$pkgdir" \
+    dist/*.whl
 }
