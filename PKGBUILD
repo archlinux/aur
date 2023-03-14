@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=halp-git
-pkgver=0.1.1.r1.gb434dc2
+pkgver=0.1.2.r0.gc5b0b6a
 pkgrel=1
 pkgdesc="A CLI tool to get help with CLI tools (git)"
 arch=('x86_64')
