@@ -1,5 +1,5 @@
 # Maintainer: MrDuartePT <gonegrier.duarte@gmail.com>
-# Maintainer: johnfanv2 <https://github.com/johnfanv2>
+# Maintainer: Petingoso <https://github.com/Petingoso>
 _pkgname=legion-fan-utils-linux
 pkgname=${_pkgname}-git
 pkgver=r01.f75b026
