@@ -1,7 +1,7 @@
 pkgbase = spwn-bin
 	pkgdesc = A language for Geometry Dash triggers.
 	pkgver = 0.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.github.com/Spu7Nix/SPWN-language
 	install = spwn-bin.install
 	arch = x86_64
