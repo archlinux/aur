@@ -1,6 +1,6 @@
 pkgbase = mun-bin
 	pkgdesc = A programming language empowering creation through iteration - prebuilt binary
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://mun-lang.org/
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = mun-bin
 	provides = mun
 	conflicts = mun
 	conflicts = mun-git
-	source = https://github.com/mun-lang/mun/releases/download/v0.3.0/mun-linux64-v0.3.0.tar.gz
-	md5sums = c924ae5ee8905a742fb0dc356035bbab
+	source = https://github.com/mun-lang/mun/releases/download/v0.4.0/mun-linux-x86_64-0.4.0.tar.gz
+	md5sums = 137933b8c9922b7f02e7a5c22574baf1
 
 pkgname = mun-bin
 
