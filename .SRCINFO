@@ -1,6 +1,6 @@
 pkgbase = weresocool
 	pkgdesc = *** WereSoCool __!Now In Stereo!__ *** Make cool sounds. Impress your friends/pets/plants
-	pkgver = 1.0.43
+	pkgver = 1.0.44
 	pkgrel = 1
 	url = https://github.com/xasopheno/weresocool
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = weresocool
 	depends = lame
 	depends = vorbis-tools
 	provides = weresocool
-	source = git+https://github.com/xasopheno/weresocool#tag=v1.0.43
+	source = git+https://github.com/xasopheno/weresocool#tag=v1.0.44
 	sha512sums = SKIP
 
 pkgname = weresocool

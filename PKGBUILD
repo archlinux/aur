@@ -1,6 +1,6 @@
 # Maintainer: Danny <weresocool@xasopheno.com>
 pkgname=weresocool
-pkgver=1.0.43
+pkgver=1.0.44
 pkgrel=1
 pkgdesc="*** WereSoCool __!Now In Stereo!__ *** Make cool sounds. Impress your friends/pets/plants"
 url="https://github.com/xasopheno/weresocool"
