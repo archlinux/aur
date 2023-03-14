@@ -3,7 +3,7 @@ _base=trame-vuetify
 pkgname=python-${_base}
 pkgdesc="Vuetify widgets for trame"
 pkgver=2.2.4
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/Kitware/${_base}"
 license=(MIT)
@@ -14,8 +14,6 @@ source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('8fc62453701d97b13b14984bd5c7a5611246aed39192cc4b749f997e1063225c8eaf4ea7bd9058476f90983fcb5c3a5a05061767a57b564fdaebaf017c47662c')
 
 prepare() {
-  sed -i 's/graft/#graft/' ${_base}-${pkgver}/MANIFEST.in
-  sed -i 's/recursive-include/#recursive-include/' ${_base}-${pkgver}/MANIFEST.in
   sed -i 's/include/#include/' ${_base}-${pkgver}/MANIFEST.in
 }
 

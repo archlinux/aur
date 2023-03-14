@@ -1,7 +1,7 @@
 pkgbase = python-trame-vuetify
 	pkgdesc = Vuetify widgets for trame
 	pkgver = 2.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kitware/trame-vuetify
 	arch = any
 	license = MIT
