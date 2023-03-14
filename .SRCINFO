@@ -7,7 +7,9 @@ pkgbase = ib-git
 	arch = aarch64
 	arch = armv7
 	license = CC0
-	source = git+https://github.com/Nik-Nothing/ibranching.git
+	provides = ib
+	conflicts = ib
+	source = ib::git+https://github.com/Nik-Nothing/ibranching.git
 	sha256sums = SKIP
 
 pkgname = ib-git
