@@ -50,7 +50,7 @@ makedepends=(
 	wayland-protocols
 	xorgproto)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hyprwm/Hyprland/releases/download/v${pkgver}/source-v${pkgver}.tar.gz")
-sha256sums=('4f8d20a12080926761913a2c7de136f77b718949667f4f2a4974ad34708fe524')
+sha256sums=('779c35b0256cffe681586e4c34d63cf46fe4f263eff5370d06ae77a96e5de01f')
 conflicts=("${_pkgname}")
 provides=(hyprland)
 options=(!makeflags !buildflags !strip)
