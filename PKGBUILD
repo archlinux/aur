@@ -3,7 +3,7 @@ _base=trame-markdown
 pkgname=python-${_base}
 pkgdesc="Markdown widget for trame"
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/Kitware/${_base}"
 license=(MIT)
@@ -14,8 +14,6 @@ source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('a1a1177ad1f1c55a3afeccf4c7f682dc08ff744eb1f6843f1085d5889a7c5853cfe2b292e46d420014c3ce6489bd2ffa05b8c6c704d988993de33b2d117dbde0')
 
 prepare() {
-  sed -i 's/graft/#graft/' ${_base}-${pkgver}/MANIFEST.in
-  sed -i 's/recursive-include/#recursive-include/' ${_base}-${pkgver}/MANIFEST.in
   sed -i 's/include/#include/' ${_base}-${pkgver}/MANIFEST.in
 }
 
