@@ -19,7 +19,7 @@
 
 pkgbase=lib32-llvm-minimal-git
 pkgname=('lib32-llvm-minimal-git' 'lib32-llvm-libs-minimal-git')
-pkgver=17.0.0_r454285.890e6c871d31
+pkgver=17.0.0_r454533.2ebbcfa07edd
 pkgrel=1
 arch=('x86_64')
 url="http://llvm.org/"
@@ -34,6 +34,7 @@ source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
                 '0005-llvm-c-Remove-PassManagerBuilder-APIs.patch'
                 '0006-llvm-c-Remove-pointee-support-from-LLVMGetElementTyp.patch'
                 '0007-Passes-Remove-some-legacy-passes.patch'
+                '0008-PassManagerBuilder-Remove-PassManagerBuilder.patch'
 )
 md5sums=('SKIP'
          '245054bc67dec3eb30329bbdeed171b1'
@@ -42,7 +43,8 @@ md5sums=('SKIP'
          '286194131e1b5df0fe50ecd0f1b58eb2'
          '9e7e1648b472f83b054bf8dcbfc74175'
          'a4604d7858e1536af63f52dcbc47fbb8'
-         'a09eda7d75c717aeb882fdfa67b028c3')
+         'a09eda7d75c717aeb882fdfa67b028c3'
+         '6f07ebda99c0c0cab5bb2ff063e05152')
 sha512sums=('SKIP'
             '4c1e8a455163ceb1e7d3f09f5e68f731e47f2346a2f62e1fe97b19f54c16781efc0b75d52304fe9d4aa62512fd6f32b7bd6e12b319cbe72e7831f1a056ffbfd0'
             '92f971db948e8acd4a55cb46ef28dc394c5df07f57844b63d82fc19436e2dfe7b184599ca17d84ef4fa63f6281628d8cc734d74dcc95bc0eee8a5e7c3778f49a'
@@ -50,7 +52,8 @@ sha512sums=('SKIP'
             'd3f5df839b49e4a853e88efaf2fb31c36efb15a91b4803f7e52414ab0e3121f4bfafc7d39edaad52a29106ca648428577f97f4fd12e7575cd3bbe009a1111901'
             '034b8262c2cec48fcdf1eef8f74332fc7016ecbf1627ab755f95f525c653cab0dd4199cd60b85dd09a63dc0b76bc9db9f85043c91801940294e42bc1feb1ea60'
             '2f227060ab56e04bf3e74fbb785c2edf9fc55121c936ba17ac62275cacdacfb9cb84bfda0e6637e11e744e26212bbfa861fa320084502afb4b7fd247d832993b'
-            '6d77c23ad97c057898d97fd08af9714ff18c43026e082ad5e654b736caffb1ba814de0ebb9a7e169de9475d819df3cd0058805e4a0f020c55ce3b2272181802a')
+            '6d77c23ad97c057898d97fd08af9714ff18c43026e082ad5e654b736caffb1ba814de0ebb9a7e169de9475d819df3cd0058805e4a0f020c55ce3b2272181802a'
+            '4e006cb70005a4116e8637d9dabf7d3f1668e5ad21429254b641fa9ee716c2822cc718cc91c58e29451e4ffde96d25abfd31813322b82b91f896656c05be1210')
 options=('staticlibs' '!lto')
 # explicitly disable lto to reduce number of build hangs / test failures
 
@@ -80,6 +83,7 @@ pkgver() {
 prepare() {
     
     # revert more commits so the passmanager patch keeps working
+    patch --directory="llvm-project" --reverse --strip=1 --input="${srcdir}"/0008-PassManagerBuilder-Remove-PassManagerBuilder.patch
     patch --directory="llvm-project" --reverse --strip=1 --input="${srcdir}"/0007-Passes-Remove-some-legacy-passes.patch
     patch --directory="llvm-project" --reverse --strip=1 --input="${srcdir}"/0006-llvm-c-Remove-pointee-support-from-LLVMGetElementTyp.patch
     patch --directory="llvm-project" --reverse --strip=1 --input="${srcdir}"/0005-llvm-c-Remove-PassManagerBuilder-APIs.patch

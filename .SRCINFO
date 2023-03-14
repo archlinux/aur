@@ -1,5 +1,5 @@
 pkgbase = lib32-llvm-minimal-git
-	pkgver = 17.0.0_r454285.890e6c871d31
+	pkgver = 17.0.0_r454533.2ebbcfa07edd
 	pkgrel = 1
 	url = http://llvm.org/
 	arch = x86_64
@@ -24,6 +24,7 @@ pkgbase = lib32-llvm-minimal-git
 	source = 0005-llvm-c-Remove-PassManagerBuilder-APIs.patch
 	source = 0006-llvm-c-Remove-pointee-support-from-LLVMGetElementTyp.patch
 	source = 0007-Passes-Remove-some-legacy-passes.patch
+	source = 0008-PassManagerBuilder-Remove-PassManagerBuilder.patch
 	md5sums = SKIP
 	md5sums = 245054bc67dec3eb30329bbdeed171b1
 	md5sums = 4c5ac9bca18c8a92280b1699f2f85a16
@@ -32,6 +33,7 @@ pkgbase = lib32-llvm-minimal-git
 	md5sums = 9e7e1648b472f83b054bf8dcbfc74175
 	md5sums = a4604d7858e1536af63f52dcbc47fbb8
 	md5sums = a09eda7d75c717aeb882fdfa67b028c3
+	md5sums = 6f07ebda99c0c0cab5bb2ff063e05152
 	sha512sums = SKIP
 	sha512sums = 4c1e8a455163ceb1e7d3f09f5e68f731e47f2346a2f62e1fe97b19f54c16781efc0b75d52304fe9d4aa62512fd6f32b7bd6e12b319cbe72e7831f1a056ffbfd0
 	sha512sums = 92f971db948e8acd4a55cb46ef28dc394c5df07f57844b63d82fc19436e2dfe7b184599ca17d84ef4fa63f6281628d8cc734d74dcc95bc0eee8a5e7c3778f49a
@@ -40,10 +42,11 @@ pkgbase = lib32-llvm-minimal-git
 	sha512sums = 034b8262c2cec48fcdf1eef8f74332fc7016ecbf1627ab755f95f525c653cab0dd4199cd60b85dd09a63dc0b76bc9db9f85043c91801940294e42bc1feb1ea60
 	sha512sums = 2f227060ab56e04bf3e74fbb785c2edf9fc55121c936ba17ac62275cacdacfb9cb84bfda0e6637e11e744e26212bbfa861fa320084502afb4b7fd247d832993b
 	sha512sums = 6d77c23ad97c057898d97fd08af9714ff18c43026e082ad5e654b736caffb1ba814de0ebb9a7e169de9475d819df3cd0058805e4a0f020c55ce3b2272181802a
+	sha512sums = 4e006cb70005a4116e8637d9dabf7d3f1668e5ad21429254b641fa9ee716c2822cc718cc91c58e29451e4ffde96d25abfd31813322b82b91f896656c05be1210
 
 pkgname = lib32-llvm-minimal-git
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies (32-bit)
-	depends = lib32-llvm-libs-minimal-git=17.0.0_r454285.890e6c871d31-1
+	depends = lib32-llvm-libs-minimal-git=17.0.0_r454533.2ebbcfa07edd-1
 	depends = llvm-minimal-git
 	provides = lib32-llvm
 	conflicts = lib32-llvm
