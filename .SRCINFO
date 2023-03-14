@@ -1,7 +1,7 @@
 pkgbase = python-trame-rca
 	pkgdesc = Remote Controlled Area widget for trame
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kitware/trame-rca
 	arch = any
 	license = Apache

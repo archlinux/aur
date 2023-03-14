@@ -3,7 +3,7 @@ _base=trame-rca
 pkgname=python-${_base}
 pkgdesc="Remote Controlled Area widget for trame"
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/Kitware/${_base}"
 license=(Apache)
@@ -12,10 +12,6 @@ makedepends=(python-setuptools)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('4d8c3514e3a55e4bf2f0d192bedab413298d28aff3a72e46ae6374c71009ddacf6cc67eec188414c55e266537deefe4589cc7e6a81f323c1ba4d9174d3884438')
-
-prepare() {
-  sed -i 's/^graft/#graft/' ${_base}-${pkgver}/MANIFEST.in
-}
 
 build() {
   cd ${_base}-${pkgver}
