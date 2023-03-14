@@ -1,6 +1,6 @@
 pkgbase = sway-git-wlroots-git
 	pkgdesc = sway with wlroots statically linked
-	pkgver = r6884.061ffc30.r5402.39b68ea4
+	pkgver = r7094.ebeed7e3.r6170.a3489f2c.1655945523.135449811
 	pkgrel = 1
 	url = https://swaywm.org
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = sway-git-wlroots-git
 	depends = gdk-pixbuf2
 	depends = glslang
 	depends = json-c
+	depends = libdisplay-info
 	depends = libinput
 	depends = libxcb
 	depends = libxkbcommon
