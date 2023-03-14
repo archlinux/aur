@@ -11,6 +11,7 @@ pkgbase = python-apex-git
 	depends = python
 	depends = cuda
 	depends = python-pytorch-cuda
+	depends = python-sympy
 	provides = python-apex
 	conflicts = python-apex
 	source = git+https://github.com/NVIDIA/apex
