@@ -1,6 +1,6 @@
 pkgbase = pyinstaller
 	pkgdesc = Bundles a Python application and all its dependencies into a single package
-	pkgver = 5.8.0
+	pkgver = 5.9.0
 	pkgrel = 1
 	url = http://www.pyinstaller.org
 	arch = any
@@ -34,11 +34,11 @@ pkgbase = pyinstaller
 	optdepends = python-tinyaes>=1.0.0: bytecode encryption support
 	optdepends = python-importlib-metadata: support for python 3.8 and lower
 	optdepends = python-importlib_resources: support for python 3.8 and lower
-	source = https://github.com/pyinstaller/pyinstaller/archive/refs/tags/v5.8.0.tar.gz
+	source = https://github.com/pyinstaller/pyinstaller/archive/refs/tags/v5.9.0.tar.gz
 	source = pyinstaller-5.7.0-bootloader-cmocka-fix.patch
-	sha512sums = b245fbfc625af532a2476462b05fa59dff061fdea9ef4b492635baa1d2967fdbd350e959eafd058f8939f4cfd41a8b5ce1667ff18add47cd911f97a965a52f4d
+	sha512sums = 9055c9d586ff4fbc7150cf52385f927f528d2831285ad8204474a317e5270b296b1d70a056b0ddf812a6b9fdc01b2cd05189b9f029354bc0e9cf4b82730186a5
 	sha512sums = ebee936836b68e6214cea72f65ec7e862fe8bac253913f57e7b36268a4c823219668b8f5d7295992b7cf0adb62954405ced2a588be7f1101995f7b0395c92f0c
-	b2sums = 70b1a39e9cdf4d4569e801cb7d385cd8c52fae34199b9232b537238618b467848a2940b9f759df0a96617d5f1028452dc1efc06de33cfbd432240e4b7caf518b
+	b2sums = fc6e29c7991e5b4b9d00db9956b0fbf4b6f6a7d259b804af59d616c7d3b49a48d0f58af0b50bdfbf26a7af709a98f492c67cdec6972bb5cf98f60e9f63badd6c
 	b2sums = 863322c8ae832b6e609135c31496481d7c337a38316dbafd442c010a4dac94b2f21407c1367c5374b6170035ec1ffba97c522ee64679adfa93247b31bf87b998
 
 pkgname = pyinstaller
