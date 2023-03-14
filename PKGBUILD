@@ -43,6 +43,6 @@ package() {
     cd "$srcdir/${_name}"
     python -m installer --destdir="$pkgdir" dist/*.whl
     pip install -r requirements.txt
-    mv $srcdir/${_name} $pkgdir/opt
+    mv $srcdir $pkgdir/opt
 }
 
