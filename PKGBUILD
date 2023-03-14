@@ -1,7 +1,7 @@
 # Maintainer: x2b <psaoj.10.Toranaga-San@spamgourmet.com>
 
 pkgname=highs
-pkgver=1.4.2
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Linear optimization software"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs' 'zlib')
 makedepends=('cmake')
 source=("https://github.com/ERGO-Code/HiGHS/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('29330e284491143cd53a547c23178221df46423679a98f6684251e65cc384d2b')
+sha256sums=('4b9441cb991e372b2d4fa4a85e89db199befa1b0017a3275b45ad5ef734efaca')
 
 prepare() {
     cd "$srcdir/${_pkgname}-${pkgver}"
