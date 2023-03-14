@@ -1,7 +1,7 @@
 # Maintainer: Thibaud Kehler <thibaud dot kehler at gmx dot net>
 
 pkgname=python-powerhub-git
-pkgver=1.11.r3.gcc6428e
+pkgver=2.0.2.r3.g1051252
 pkgrel=1
 pkgdesc="A post exploitation tool for PowerShell to help transferring data and code."
 arch=('any')
@@ -10,9 +10,13 @@ license=('MIT')
 depends=('python' 
          'python-cheroot' 
          'python-cryptography' 
+         'python-dnspython'
+         'python-eventlet'
          'python-flask' 
          'python-flask-socketio' 
          'python-flask-sqlalchemy'
+         'python-jinja'
+         'python-requests'
          'python-magic'
          'python-pyopenssl' 
          'python-pypykatz' 
@@ -23,7 +27,7 @@ depends=('python'
          'python-wsgidav')
 optdepends=('mingw-w64: Cross compilation of C/C++ payloads'
             'mono: Cross compilation of C# payloads')
-makedepends=('git' 'python-setuptools') 
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-setuptools-scm') 
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('python-powerhub::git+https://github.com/AdrianVollmer/PowerHub.git')
@@ -36,10 +40,10 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-    python setup.py build	
+    python -m build --wheel --no-isolation
 }
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-    python setup.py install --root="$pkgdir" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
