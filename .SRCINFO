@@ -14,7 +14,7 @@ pkgbase = python-sphinx_design
 	md5sums = 8283e2917f9bf3b1ab5688deb6a1aaa5
 
 pkgname = python-sphinx_design
-	depends = python-sphinx<6
+	depends = python-sphinx
 	optdepends = python-pre-commit: code_style
 	optdepends = python-myst-parser: rtd
 	optdepends = python-sphinx_design-doc: Documentation for sphinx_design

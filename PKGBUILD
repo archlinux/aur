@@ -35,7 +35,7 @@ check() {
 }
 
 package_python-sphinx_design() {
-    depends=('python-sphinx<6')
+    depends=('python-sphinx')
     optdepends=('python-pre-commit: code_style'
                 'python-myst-parser: rtd'
                 'python-sphinx_design-doc: Documentation for sphinx_design')
