@@ -1,21 +1,21 @@
 pkgbase = python-milksnake
 	pkgdesc = Distribute dynamic linked libraries in Python wheels
 	pkgver = 0.1.5.r3.gef0723e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/getsentry/milksnake
 	arch = any
 	license = Apache
 	checkdepends = cargo
 	checkdepends = python-pytest
 	checkdepends = python-virtualenv
-	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-cffi
-	source = git+https://github.com/getsentry/milksnake#commit=ef0723e41df23d8f6357570c69c1e69cb31f9e9e
+	source = python-milksnake-0.1.5.r3.gef0723e.tar.gz::https://github.com/getsentry/milksnake/archive/ef0723e41df23d8f6357570c69c1e69cb31f9e9e.tar.gz
 	source = python-milksnake-0.1.5-distutils.patch
-	sha512sums = SKIP
-	sha512sums = cee83c569881b0c30a31397b43997db6fd32518f34c871714eea0b722ebf974e550c0c40b6bfe3ab7e1dfaddee2d4fbaae31551f51d776337b38a7a26821814d
-	b2sums = SKIP
-	b2sums = 9c4abaf5623ee3ff2fe15e0f90afe94b9e1a46cfa45d73bb3ee0abd59acd7e030cc1123a3da77f917cbd91ba96bdc278bda8223ac4c7f4c6fb249da3d369937c
+	sha256sums = 42b89da523e0c530b3b9744dcd660adce3ff4a5dd4b11121a59c53ce992a76cc
+	sha256sums = 3de5520219bc857aa20a38af0eaf2562eb646b1445889ed6b2379f89d46ad1a6
 
 pkgname = python-milksnake
