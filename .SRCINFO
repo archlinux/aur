@@ -1,0 +1,23 @@
+pkgbase = github-desktop-bin-zh
+	pkgdesc = GUI for managing Git and GitHub.Chinese SC Version.Github Desktop 汉化版
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://desktop.github.com
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = at-spi2-core
+	depends = alsa-lib
+	depends = openssl-1.1
+	depends = libsecret
+	depends = nss
+	depends = perl
+	provides = github-desktop
+	provides = robotze
+	conflicts = github-desktop
+	source = github-desktop-3.2.0.deb::https://github.com/shiftkey/desktop/releases/download/release-3.2.0-linux1/GitHubDesktop-linux-3.2.0-linux1.deb
+	source = github-desktop-3.2.0-zh.7z::https://github.com/robotze/GithubDesktopZhTool/releases/download/3.2.0/GithubDesktop.7z
+	sha256sums = d435a8666cd0c27513c55577d19f4607cd5d95a3ce5e598607237932ed63a614
+	sha256sums = 1b935ad2da5f7187516dbe0044f36871e7dab251b540b632cac758ae8492392f
+
+pkgname = github-desktop-bin-zh
