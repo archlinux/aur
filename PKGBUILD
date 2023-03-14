@@ -1,5 +1,5 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname=defi-desktop-wallet-appimage
+pkgname=chain-desktop-wallet-appimage
 _pkgname=chain-desktop-wallet
 pkgver=1.4.1
 pkgrel=1
