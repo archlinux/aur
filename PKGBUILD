@@ -1,5 +1,5 @@
 # Maintainer: MrDuartePT <gonegrier.duarte@gmail.com>
-# Maintainer: johnfanv2 <https://github.com/Petingoso>
+# Maintainer: johnfanv2 <https://github.com/johnfanv2>
 _pkgname=lenovolegionlinux
 pkgname=${_pkgname}-git
 pkgver=r01.395feaa
