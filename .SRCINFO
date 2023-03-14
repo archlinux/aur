@@ -1,5 +1,5 @@
 pkgbase = lua-luasodium
-	pkgver = 2.2.1
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/jprjr/luasodium
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = lua-luasodium
 	makedepends = lua52
 	makedepends = lua53
 	depends = libsodium
-	source = https://github.com/jprjr/luasodium/releases/download/v2.2.1/luasodium-2.2.1.tar.gz
-	md5sums = fb89a2e24093dff771ab15a1e0c4a677
+	source = https://github.com/jprjr/luasodium/releases/download/v2.3.0/luasodium-2.3.0.tar.gz
+	md5sums = ad6bb1e9f7784c9d31b8ac1f0ac63b35
 
 pkgname = lua-luasodium
 	pkgdesc = Lua bindings for libsodium
