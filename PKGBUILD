@@ -2,18 +2,18 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=recastnavigation-openmw
 _pkgname=recastnavigation
-# since recastnavigation hasn't had an official release in a long time
-# but is now in debian repos maintained by an openmw dev
-# https://packages.debian.org/source/sid/recastnavigation
+# recastnavigation hasn't had an official release in a long time and openmw includes recast as external component
+# foolowing them to determine which commit to use.
+# for latest see https://gitlab.com/OpenMW/openmw/-/commit/35b2292e617bc1fbfe1e5f8351d77d3cd5906bdc
 _pkgver=1.5.1
-pkgver=1.5.1.r754.e75adf8
+pkgver=1.5.1.r797.405cc09
 pkgrel=1
 pkgdesc="Navigation-mesh Toolset for openmw"
 url="https://github.com/recastnavigation/recastnavigation"
 arch=(x86_64)
 license=('Zlib')
 makedepends=(git cmake sdl2 glut)
-source=("git+https://github.com/recastnavigation/recastnavigation.git#commit=e75adf86f91eb3082220085e42dda62679f9a3ea")
+source=("git+https://github.com/recastnavigation/recastnavigation.git#commit=405cc095ab3a2df976a298421974a2af83843baf")
 sha256sums=("SKIP")
 conflicts=('recastnavigation')
 options=(debug strip)
