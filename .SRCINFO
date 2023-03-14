@@ -1,6 +1,6 @@
 pkgbase = pot-translation-bin
 	pkgdesc = 一个跨平台的划词翻译软件
-	pkgver = 0.0.14
+	pkgver = 0.0.15
 	pkgrel = 0
 	url = https://github.com/Pylogmon/pot
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = pot-translation-bin
 	provides = pot-translation
 	conflicts = pot-translation
 	conflicts = pot-translation-git
-	source = pot-0.0.14-x86_64.deb::https://github.com/Pylogmon/pot/releases/download/0.0.14/pot_0.0.14_amd64.deb
-	sha512sums = c75be1cadd9b12689a34c1a3d0b2bca4ddc0211feb3b6c50e42424bb028e8a7bb0f5297eda3a8b3becfcbd63986a0507a13ff38eb996538e798220884aaf7759
+	source = pot-0.0.15-x86_64.deb::https://github.com/Pylogmon/pot/releases/download/0.0.15/pot_0.0.15_amd64.deb
+	sha512sums = 92828a4d9c4dc150d298033cd94b3a495e2137980baf305ef7fa7f7b05428c71044df5d60266fc990372c7ebf287a1961a087f5bac700293c8b1bc26aadb4f7a
 
 pkgname = pot-translation-bin
