@@ -2,8 +2,8 @@
 
 _pkgname=elasticsearch
 pkgname=elasticsearch7
-pkgver=7.17.8
-pkgrel=8
+pkgver=7.17.9
+pkgrel=1
 pkgdesc="Free and Open, Distributed, RESTful Search Engine"
 arch=('x86_64')
 url="https://www.elastic.co/elasticsearch/"
@@ -22,7 +22,7 @@ source=(
   elasticsearch-tmpfile.conf
   elasticsearch.default
 )
-b2sums=('b599311a1a74b382add4cd6ed2fed807a5925b1a5f42a458ffd2907479e77dbc3a8826bd8d54046908b233d035d552565fbc57f9f3a23b7cf82355ccb123d11a'
+b2sums=('d08e99a857de9cf3b2d1db4b1788c7340b0efdfe2e0b0ea0ed172a4c13dfafb67d6337e18f65ee7dedb217296ef4aff01dcf8a47c8855504fb2249ac48f0d5a2'
         '76e4098c4f2c0656e70590997ada2e489c53b61386fb92524ac34e09b7fd43b511e2305047754bba29883d388fec4855dd8fc429e0e3aa93068ab671b6bd1a79'
         '9b74e7ae392132056ab5e8a9e2637d71564fe736d10c16e07395878c4ef0a5498147d8a5b7a28dac6ef3722bc525bb8a57b01f9e185613c46c4f34f3a69990c8'
         '48a332da75e1d8c7624a5948c4b145ad6ec6aca7ed2da31802920fa99490cc99a354e06d635b8937217404bcb99302f8d95b7af99d6af8e3227e39cdb80fa3cd'
