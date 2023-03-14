@@ -1,14 +1,14 @@
 pkgbase = ignition-math-6
 	pkgdesc = General purpose math library for robot applications.
 	pkgver = 6.13.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://gazebosim.org/libs/math
 	arch = i686
 	arch = x86_64
 	groups = development
 	license = Apache
 	makedepends = ignition-cmake=2
-	makedepends = ignition-utils
+	makedepends = ignition-utils=1
 	makedepends = eigen
 	makedepends = python
 	makedepends = pybind11
