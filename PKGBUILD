@@ -2,7 +2,7 @@
 pkgname=olaris-git
 _pkgname=olaris-server
 epoch=1
-pkgver=0.4.0.r5.g8fb0611
+pkgver=0.4.0.r66.gbdb2aeb
 pkgrel=1
 pkgdesc='open-source, community driven, media manager and transcoding server'
 arch=('x86_64')
@@ -17,8 +17,6 @@ source=("${_pkgname}::git+https://gitlab.com/olaris/olaris-server.git"
     "olaris.service"
 )
 noextract=('react-static.zip' 'ffmpeg-build.zip')
-sha256sums=('SKIP' 'SKIP' 'SKIP'
-    '2592546c3ac1ee3c7c7120edbfeecfe1053106a78bd5179c4a2077f3c764c871')
 
 pkgver() {
   cd ${_pkgname}
@@ -47,3 +45,8 @@ package() {
   install -Dm644 doc/config-examples/systemd/olaris.service "$pkgdir"/usr/lib/systemd/user/olaris.service
   install -Dm644 $srcdir/olaris.service "$pkgdir"/usr/lib/systemd/system/olaris.service
 }
+
+sha256sums=('SKIP'
+            'd31b643147646c2955b645df34dcc817bc8150cde486c83843914b8032b3c3e7'
+            'b2c13331eff6dcdc0ff13a36cef8523beca22521b8f2ed56b9984e0f39f5e2b8'
+            '85650f61664eadb299212082ad54d6322ae3b63aa924fb64ab15591e1a0b32ff')

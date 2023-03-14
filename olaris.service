@@ -1,4 +1,3 @@
-# /etc/systemd/system/olaris.service
 [Unit]
 Description=Olaris Media Server
 
@@ -7,10 +6,11 @@ Type=exec
 DynamicUser=yes
 CacheDirectory=olaris
 StateDirectory=olaris
+RuntimeDirectory=olaris
 Environment=XDG_CACHE_HOME=/var/cache/olaris
 Environment=OLARIS_CONFIG_DIR=/var/lib/olaris
 WorkingDirectory=/var/lib/olaris
-ExecStart=/usr/bin/olaris
+ExecStart=/usr/bin/olaris --verbose=false
 Restart=on-failure
 
 [Install]
