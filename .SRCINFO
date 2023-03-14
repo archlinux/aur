@@ -1,20 +1,20 @@
 pkgbase = sdformat
 	pkgdesc = Simulation Description Format (SDFormat) parser and description files.
 	pkgver = 13.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sdformat.org/
 	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
 	makedepends = doxygen
-	makedepends = ignition-cmake
-	makedepends = ignition-utils
-	makedepends = ignition-tools
+	makedepends = ignition-cmake>2
+	makedepends = ignition-utils>1
+	makedepends = ignition-tools>1
 	makedepends = ruby
 	depends = boost
 	depends = tinyxml2
-	depends = ignition-math>=6
+	depends = ignition-math>6
 	depends = python-psutil
 	depends = urdfdom
 	source = sdformat-13.3.0.tar.gz::https://github.com/gazebosim/sdformat/archive/sdformat13_13.3.0.tar.gz
