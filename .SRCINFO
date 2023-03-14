@@ -1,0 +1,11 @@
+pkgbase = ros2-humble-tl-expected
+	pkgdesc = C++11/14/17 std::expected with functional-style extensions
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://index.ros.org/p/tl_expected/
+	arch = any
+	depends = ros2-humble
+	source = https://github.com/PickNikRobotics/cpp_polyfills/archive/refs/tags/1.0.2.tar.gz
+	sha256sums = b7dde11bd51f5a7ded145fbc9a66b5ec304063117da73e19212757cb39830c21
+
+pkgname = ros2-humble-tl-expected
