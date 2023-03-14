@@ -11,8 +11,8 @@
 
 ### PACKAGE OPTIONS
 ## MERGE REQUESTS SELECTION
-# Merge Requests List: ('579' '1441' '1880' '2702')
-_merge_requests_to_use=('1441' '1880' '2702')
+# Merge Requests List: ('579' '1441' '1880' '2702' '2790')
+_merge_requests_to_use=('1441' '1880' '2702' '2790')
 
 ## Disable building the DOCS package (Enabled if not set)
 # Remember to unset this variable when producing .SRCINFO
@@ -30,7 +30,7 @@ if [ -n "$_disable_docs" ]; then
 else
   pkgname=(mutter-performance mutter-performance-docs)
 fi
-pkgver=43.3+r2+g12ce58dba
+pkgver=43.3+r4+gc1133d2f9
 pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -45,15 +45,17 @@ makedepends=(gobject-introspection git egl-wayland meson xorg-server
 if [ -n "$_enable_check" ]; then
   checkdepends=(xorg-server-xvfb pipewire-session-manager python-dbusmock zenity)
 fi
-_commit=12ce58dba4f96f6a948c1d166646d263253e3ee0  # tags/43.3^2
+_commit=c1133d2f9d6a6a271b0790916470090fbd18f73c  # tags/43.3^4
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr1441.patch'
         'mr1880.patch'
-        'mr2702.patch')
+        'mr2702.patch'
+        'mr2790.patch')
 sha256sums=('SKIP'
             'ca6ea6aaa7d8fb2089d110a5ba48906caa29e6f240e1debd19bf62ea3a74c824'
             '37586730b26c476175d508288d537a38e3e828467163c2e7d91f1df76fd12cd2'
-            '917a3117a3f56245df47a4bac7affeb4bd91f0db2c6726e37b10e89fba9faf9d')
+            '917a3117a3f56245df47a4bac7affeb4bd91f0db2c6726e37b10e89fba9faf9d'
+            '0c3736b6a183955339bf4200fe828ea62d6bf4a2e54d1175c6148287efc26d84')
 
 pkgver() {
   cd $pkgname
@@ -154,6 +156,14 @@ prepare() {
   # Comment: Introduce transactions consisting of state changes for Wayland surfaces.
   #          Fixes: #1162
   pick_mr '1880' 'mr1880.patch' 'patch'
+
+  # Title: clutter/text: Don't call clutter_text_set_buffer() on finalize
+  # Author: Sebastian Keller <skeller@gnome.org>
+  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2790
+  # Type: 3
+  # Status: 4
+  # Comment: Fixes: #2566 (closed)
+  pick_mr '2790' 'mr2790.patch' 'patch'
 
 }
 
