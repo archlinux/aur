@@ -11,6 +11,11 @@ makedepends=("cmake" "pkg-config" "git")
 source=("$pkgname::git+https://github.com/kamui-fin/gazou.git")
 md5sums=('SKIP')
 
+pkgver() {
+  cd "${pkgname}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 prepare() {
   cd "${pkgname}"
   mkdir build
