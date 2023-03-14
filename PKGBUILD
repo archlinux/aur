@@ -1,10 +1,11 @@
 # Maintainer: BrLi <brli@chakralinux.org>
+# Maintainer: xatier
 
 _base_name=jf-openhuninn
 _repo=open-huninn-font
 pkgname=ttf-${_base_name}
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An opensource Chinese font by justfont, based on Kosugi Maru and Varela Round'
 arch=('any')
 url='https://justfont.com/huninn/'
