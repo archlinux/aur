@@ -1,6 +1,6 @@
 pkgbase = sfwbar
-	pkgdesc = Sway Floating Window taskBar
-	pkgver = 1.0_beta9
+	pkgdesc = S* Floating Window taskBar
+	pkgver = 1.0_beta10
 	pkgrel = 1
 	url = https://github.com/LBCrion/sfwbar
 	arch = x86_64
