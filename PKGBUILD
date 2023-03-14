@@ -3,7 +3,7 @@
 # Based obs/linux-pf-edge by Oleksandr Natalenko aka post-factum <oleksandr@natalenko.name>
 
 pkgbase=linux-pf-git
-pkgver=6.3.r1169249.508fba29a479
+pkgver=6.3.r1169532.cda647827052
 pkgrel=1
 pkgdesc='Linux pf-kernel (git version)'
 _kernel_rel=6.3
@@ -14,7 +14,7 @@ arch=(x86_64)
 license=(GPL2)
 makedepends=(
   bc libelf pahole cpio perl tar xz gettext
-  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
+  xmlto python-sphinx graphviz imagemagick texlive-latexextra
   git
 )
 options=('!strip')
@@ -24,10 +24,10 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            '0f22b780983df61452ae01cf48512f9eeca7eef79d01bed57e714e326705a2ae')
+            'd167f16931473403378cacc7fab0f246aef6782b2935f984a2cf43fad4a2fef4')
 
 pkgver() {
-  cd $_srcname
+  cd $srcdir/$_srcname
   local version="$(grep \^VERSION Makefile|cut -d"=" -f2|cut -d" " -f2)"
   local patch="$(grep \^PATCHLEVEL Makefile|cut -d"=" -f2|cut -d" " -f2)"
 
@@ -39,10 +39,10 @@ export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
-  cd $_srcname
+  cd $srcdir/$_srcname
 
   echo "Setting version..."
-  # scripts/setlocalversion --save-scmversion
+  KERNELVERSION="$(pkgver)" scripts/setlocalversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
 
