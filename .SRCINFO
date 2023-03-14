@@ -1,7 +1,7 @@
 pkgbase = paramountplus
 	pkgdesc = Unnofficial ParamountPlus desktop application
 	pkgver = 1.0.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.com/ParamountPlus-desktop/application
 	arch = x86_64
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = paramountplus
 	depends = libxss
 	depends = git
 	conflicts = ParamountPlus-bin
-	source = https://gitlab.com/paramountplus/application/-/archive/1.0.2-3/application-1.0.2-3.tar.bz2
+	source = https://gitlab.com/paramountplus/application/-/archive/1.0.2-4/application-1.0.2-4.tar.bz2
 	sha256sums = SKIP
 
 pkgname = paramountplus

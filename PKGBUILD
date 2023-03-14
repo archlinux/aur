@@ -1,7 +1,7 @@
 pkgname=paramountplus
 _pkgname=ParamountPlus
 pkgver=1.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Unnofficial ParamountPlus desktop application"
 arch=('x86_64')
 url="https://gitlab.com/ParamountPlus-desktop/application"
