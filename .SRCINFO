@@ -1,0 +1,20 @@
+pkgbase = mapeo-desktop-bin
+	pkgdesc = Local-first mapping and monitoring in remote environments
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = https://mapeo.app/
+	arch = x86_64
+	license = GPL3
+	depends = gtk3
+	depends = libxss
+	depends = libsodium
+	depends = nodejs-lts-fermium
+	depends = alsa-lib
+	depends = python
+	depends = nss
+	depends = at-spi2-core
+	conflicts = mapeo-desktop
+	source = mapeo-desktop-5.6.0.deb::https://github.com/digidem/mapeo-desktop/releases/download/v5.6.0/Install_Mapeo_v5.6.0_linux.deb
+	sha512sums = fad6cabfc264fc8d1bc156ae011fdda6f92af1de6f552d1fa8f97e0b771a4a8c3334774cf4c10b9e7a205d2195c13f78eba1978135ff5e6b2b49de814208d94e
+
+pkgname = mapeo-desktop-bin
