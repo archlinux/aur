@@ -1,0 +1,22 @@
+pkgbase = ros2-humble-moveit-kinematics
+	pkgdesc = Package for all inverse kinematics solvers in MoveIt
+	pkgver = 2.5.4
+	pkgrel = 1
+	url = https://index.ros.org/p/moveit_kinematics/
+	arch = any
+	makedepends = ros2-humble-moveit-common
+	makedepends = ros2-humble-moveit-ros-planning
+	makedepends = ros2-humble-moveit-resources-fanuc-description
+	makedepends = ros2-humble-moveit-resources-fanuc-moveit-config
+	makedepends = ros2-humble-moveit-resources-panda-description
+	makedepends = ros2-humble-moveit-resources-panda-moveit-config
+	makedepends = ros2-humble-moveit-configs-utils
+	depends = ros2-humble
+	depends = ros2-humble-moveit-core
+	depends = eigen
+	depends = orocos-kdl
+	depends = ros2-humble-moveit-msgs
+	source = https://github.com/ros-planning/moveit2/archive/refs/tags/2.5.4.tar.gz
+	sha256sums = 42ac45e2631d59203edfdfc2f521312f7ddef04ff5baf1fec43c65f79495d7a6
+
+pkgname = ros2-humble-moveit-kinematics
