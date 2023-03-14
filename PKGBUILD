@@ -2,7 +2,7 @@
 # Contributor: ml <>
 
 pkgname=helm-secrets
-pkgver=4.4.1
+pkgver=4.4.2
 pkgrel=1
 pkgdesc="Helm plugin to manage secrets with Git workflow and store them anywhere"
 arch=(any)
@@ -15,7 +15,7 @@ optdepends=(
   'vault: secret driver'
 )
 source=(https://github.com/jkroepke/helm-secrets/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('0d5a61e5d62f071f2ddecc64a75cef26925449bb72ee44f2328179d9851c6adb')
+sha256sums=('540d6edbfbb85dbe8f19759529d9a4ee8786266a235320aac290918bd11738f8')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
