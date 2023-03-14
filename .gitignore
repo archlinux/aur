@@ -3,3 +3,4 @@
 !.gitignore
 !.SRCINFO
 !gnome-shell-extension-gnome-clipboard-history.install
+!chroot-build.sh
