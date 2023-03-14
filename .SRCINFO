@@ -1,0 +1,14 @@
+pkgbase = gopeed-bin
+	pkgdesc = High speed downloader that supports all platforms.
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://gopeed.com/
+	arch = x86_64
+	license = GPL3
+	depends = at-spi2-core
+	depends = gtk3
+	conflicts = gopeed
+	source = gopeed-1.2.3.deb::https://github.com/GopeedLab/gopeed/releases/download/v1.2.3/Gopeed-v1.2.3-linux-amd64.deb
+	sha512sums = dc651692611357e20edc866945012c5712527882a9f384fe3e96c756eb425d0fb302d2e6702fe147700386f3a865436827f9bb91343cccbadfe6607af6d346b3
+
+pkgname = gopeed-bin
