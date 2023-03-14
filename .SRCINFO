@@ -1,6 +1,6 @@
 pkgbase = dataspell
 	pkgdesc = Python IDE for data scientists
-	pkgver = 2022.3.2
+	pkgver = 2022.3.3
 	pkgrel = 1
 	url = https://www.jetbrains.com/dataspell/
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = dataspell
 	depends = glib2
 	depends = python
 	options = !strip
-	source = https://download.jetbrains.com/python/dataspell-2022.3.2.tar.gz
+	source = https://download.jetbrains.com/python/dataspell-2022.3.3.tar.gz
 	source = jetbrains-dataspell.desktop
 	source = LICENSE
-	b2sums = be1b63c6d56babe7dbfee804bad2067b05f3e382a02e98f884cff09f216c98fbf799c88e8db865c2e95afe1b0a4525943f1af8560d7c77aceefcb086e519bef7
+	b2sums = 41e4a96f0704424275c4522f7a6f6e280a0ae9627f2a0a85009baaa40dd1d19c19962be3b84bceac1c3a7361965d9a8a53d007941cc79bfe8e0b378270b2e221
 	b2sums = 6bd52dffc824f7ece9255b36321915e9d488ee910969f317e0e8c1e1aa7d58e4c2cb2588941670d84c4226c8133f7435f3fdc8d65fd8b2cab84a0022b1c7f5e9
 	b2sums = dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77
 
