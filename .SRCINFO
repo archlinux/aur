@@ -1,0 +1,15 @@
+pkgbase = ros2-humble-pal-gazebo-plugins
+	pkgdesc = Common Gazebo v1.9+ plugins used by the PAL Robotics robots
+	pkgver = 4.0.4
+	pkgrel = 1
+	url = https://github.com/pal-robotics/pal_gazebo_plugins/
+	arch = any
+	depends = ros2-humble
+	depends = ros2-humble-gazebo-dev
+	depends = ros2-humble-gazebo-ros
+	depends = ros2-humble-gazebo-msgs
+	depends = ros2-humble-control-toolbox
+	source = https://github.com/pal-robotics/pal_gazebo_plugins/archive/refs/tags/4.0.4.tar.gz
+	sha256sums = a81cd4cd89b68a18917289590708656cac5e41c654991f5dd094960452a1fe90
+
+pkgname = ros2-humble-pal-gazebo-plugins
