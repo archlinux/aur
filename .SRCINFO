@@ -1,0 +1,13 @@
+pkgbase = ecgen-git
+	pkgdesc = Tool for generating Elliptic curve domain parameters
+	pkgver = 0.7.7.r0.gcfb85f1
+	pkgrel = 1
+	url = https://github.com/J08nY/ecgen
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = pari
+	source = ecgen::git+https://github.com/J08nY/ecgen
+	md5sums = SKIP
+
+pkgname = ecgen-git
