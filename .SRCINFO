@@ -1,6 +1,6 @@
 pkgbase = gazou-git
-	pkgdesc = A Japanese OCR application for linux
-	pkgver = 0.2.0
+	pkgdesc = A Japanese and Chinese OCR application for linux
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/kamui-fin/gazou
 	arch = i686

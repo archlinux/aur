@@ -1,8 +1,8 @@
 # Maintainer: Kamui
 pkgname=gazou-git
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
-pkgdesc="A Japanese OCR application for linux"
+pkgdesc="A Japanese and Chinese OCR application for linux"
 arch=("i686" "x86_64")
 url="https://github.com/kamui-fin/gazou"
 license=('GPL')
