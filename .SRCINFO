@@ -1,7 +1,7 @@
 pkgbase = python-trio-websocket
 	pkgdesc = WebSocket library for Trio
-	pkgver = 0.9.2
-	pkgrel = 3
+	pkgver = 0.10.0
+	pkgrel = 1
 	url = https://pypi.org/project/trio-websocket
 	arch = any
 	license = MIT
@@ -10,10 +10,10 @@ pkgbase = python-trio-websocket
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	depends = python-async_generator
+	depends = python-exceptiongroup
 	depends = python-trio
 	depends = python-wsproto
-	source = https://files.pythonhosted.org/packages/source/t/trio-websocket/trio-websocket-0.9.2.tar.gz
-	sha256sums = a3d34de8fac26023eee701ed1e7bf4da9a8326b61a62934ec9e53b64970fd8fe
+	source = https://files.pythonhosted.org/packages/source/t/trio-websocket/trio-websocket-0.10.0.tar.gz
+	sha256sums = 5a7a256cf45532a0e876b55c173f96228e95445869b6dfdb1556015de89796fa
 
 pkgname = python-trio-websocket
