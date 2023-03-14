@@ -1,7 +1,7 @@
 # Maintainer: Charles Vejnar <first name [dot] last name [at] gmail [dot] com>
 
 pkgname=python-fontools
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="FONtools: The Feature Object Notation tools"
 arch=("any")
@@ -16,7 +16,7 @@ makedepends=('python-build'
              'python-setuptools-scm'
              'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~vejnar/FONtools/archive/v${pkgver}.tar.gz")
-sha256sums=('2cd784f2a5aaef4114400832e1b9fa0c9eba8a6e0f2591d396510c27ece8aae0')
+sha256sums=('e96aafd50975df3f68f33386c62678e0cad9dac250b2d983a6f0364b18e9294f')
 
 build() {
     cd "$srcdir/FONtools-v$pkgver"
