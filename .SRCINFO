@@ -1,6 +1,6 @@
 pkgbase = mlir
 	pkgdesc = Multi-Level IR Compiler Framework for LLVM
-	pkgver = 13.0.0
+	pkgver = 15.0.7
 	pkgrel = 1
 	url = https://mlir.llvm.org/
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = mlir
 	makedepends = python-sphinx
 	makedepends = compiler-rt
 	makedepends = libc++
-	depends = llvm=13.0.0
-	noextract = llvm-project-13.0.0.src.tar.xz
+	depends = llvm=15.0.7
+	noextract = llvm-project-15.0.7.src.tar.xz
 	options = !debug
 	options = strip
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-13.0.0/llvm-project-13.0.0.src.tar.xz
-	sha256sums = 6075ad30f1ac0e15f07c1bf062c1e1268c241d674f11bd32cdf0e040c71f2bf3
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-15.0.7/llvm-project-15.0.7.src.tar.xz
+	sha256sums = 8b5fcb24b4128cf04df1b0b9410ce8b1a729cb3c544e6da885d234280dedeac6
 
 pkgname = mlir
