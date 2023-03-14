@@ -1,0 +1,19 @@
+pkgbase = keenwrite-bin
+	pkgdesc = A full-featured Subsonic/Jellyfin compatible desktop music player
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://github.com/DaveJarvis/KeenWrite
+	arch = x86_64
+	license = GPL3
+	depends = hicolor-icon-theme
+	depends = gendesk
+	conflicts = keenwrite
+	options = !strip
+	source = keenwrite-3.2.0.bin::https://github.com/DaveJarvis/KeenWrite/releases/download/3.2.0/keenwrite.bin
+	source = LICENSE::https://github.com/DaveJarvis/KeenWrite/raw/main/LICENSE.md
+	source = keenwrite.svg::https://github.com/DaveJarvis/KeenWrite/raw/main/docs/logo/logo-original.svg
+	sha256sums = b3be56d3c84b101f092fbde820d4eab11682b142b6c467a3a253f087ac2cc40b
+	sha256sums = 23e144b1e664fc4bf6a9fd0617c8435e96d4c69023223841b872665794caa8ff
+	sha256sums = 06227eca5759dded2d55052673cc2d287b548747d3228dfb0b001efaf9fd14c6
+
+pkgname = keenwrite-bin
