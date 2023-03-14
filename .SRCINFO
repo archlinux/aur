@@ -1,6 +1,6 @@
 pkgbase = core-lightning
 	pkgdesc = Lightning Network implementation focusing on specification compliance and performance.
-	pkgver = 23.02.1
+	pkgver = 23.02.2
 	pkgrel = 1
 	url = https://github.com/ElementsProject/lightning
 	arch = x86_64

@@ -9,7 +9,7 @@ declare -r _pkgname="lightning"
 declare -r _tag="be8ed8c7f00e9747cf199b85a3a5a38b0bb0fa48"
 
 pkgname="core-lightning"
-pkgver="23.02.1"
+pkgver="23.02.2"
 pkgrel="1"
 pkgdesc="Lightning Network implementation focusing on specification compliance and performance."
 arch=("x86_64")
