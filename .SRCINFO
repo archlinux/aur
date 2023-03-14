@@ -1,7 +1,7 @@
 pkgbase = python-trame-simput
 	pkgdesc = Simput implementation for trame
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kitware/trame-simput
 	arch = any
 	license = Apache

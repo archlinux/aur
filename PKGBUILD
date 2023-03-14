@@ -3,7 +3,7 @@ _base=trame-simput
 pkgname=python-${_base}
 pkgdesc="Simput implementation for trame"
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/Kitware/${_base}"
 license=(Apache)
@@ -12,10 +12,6 @@ makedepends=(python-setuptools)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('57be1b36a45ae1dc3c679e347a3258a4b2a1ab647108b4ab3d5c35e9841314455055a7030dc32a1ce191ac7c82ecca5d7a134f9071872bfee1a8e97e38746d21')
-
-prepare() {
-  sed -i 's/graft/#graft/' ${_base}-${pkgver}/MANIFEST.in
-}
 
 build() {
   cd ${_base}-${pkgver}
