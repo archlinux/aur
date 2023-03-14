@@ -2,8 +2,8 @@
 
 pkgname=python-adafruit-pureio
 _pypi_pkgname=adafruit-pureio
-pkgver=1.1.9
-pkgrel=3
+pkgver=1.1.10
+pkgrel=0
 pkgdesc="Pure python (i.e. no native extensions) access to Linux IO including I2C and SPI. Drop in replacement for smbus and spidev modules"
 arch=('any')
 url="https://github.com/adafruit/Adafruit_Python_PureIO"
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('python-setuptools' 'python-pip')
 depends=('python')
 source=("https://pypi.io/packages/source/a/${_pypi_pkgname}/Adafruit_PureIO-${pkgver}.tar.gz")
-sha256sums=('2caf22fb07c7f771d83267f331a76cde314723f884a9570ea6f768730c87a879')
+sha256sums=('1206883753c0966309e6d02da970676e9bc7b503bb4a26f736e01739f56a64b9')
 
 build() {
     cd "${srcdir}/Adafruit_PureIO-${pkgver}"
