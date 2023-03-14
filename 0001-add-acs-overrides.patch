@@ -1,7 +1,7 @@
-From 370afe321657e7306b3f93de710c837567c4820d Mon Sep 17 00:00:00 2001
+From b41eb63d48790c92ac171fd92ad6355cb724e7ad Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?=C3=A9clairevoyant?=
  <848000+eclairevoyant@users.noreply.github.com>
-Date: Sun, 8 Jan 2023 14:05:13 -0500
+Date: Tue, 14 Mar 2023 17:06:39 -0400
 Subject: [PATCH 1/2] add-acs-overrides
 
 ---
@@ -10,10 +10,10 @@ Subject: [PATCH 1/2] add-acs-overrides
  2 files changed, 110 insertions(+)
 
 diff --git a/Documentation/admin-guide/kernel-parameters.txt b/Documentation/admin-guide/kernel-parameters.txt
-index 6b838869554b..8471f29f8c8f 100644
+index 6cfa6e3996cf..fdbe34c0fbf3 100644
 --- a/Documentation/admin-guide/kernel-parameters.txt
 +++ b/Documentation/admin-guide/kernel-parameters.txt
-@@ -4162,6 +4162,14 @@
+@@ -4178,6 +4178,14 @@
  		nomsi		[MSI] If the PCI_MSI kernel config parameter is
  				enabled, this kernel boot option can be used to
  				disable the use of MSI interrupts system-wide.
@@ -29,7 +29,7 @@ index 6b838869554b..8471f29f8c8f 100644
  				Safety option to keep boot IRQs enabled. This
  				should never be necessary.
 diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
-index 285acc4aaccc..7ad267e87c34 100644
+index 494fa46f5767..41150eb8bd4c 100644
 --- a/drivers/pci/quirks.c
 +++ b/drivers/pci/quirks.c
 @@ -194,6 +194,106 @@ static int __init pci_apply_final_quirks(void)
@@ -139,15 +139,15 @@ index 285acc4aaccc..7ad267e87c34 100644
  /*
   * Decoding should be disabled for a PCI device during BAR sizing to avoid
   * conflict. But doing so may cause problems on host bridge and perhaps other
-@@ -4980,6 +5080,8 @@ static const struct pci_dev_acs_enabled {
- 	{ PCI_VENDOR_ID_NXP, 0x8d9b, pci_quirk_nxp_rp_acs },
- 	/* Zhaoxin Root/Downstream Ports */
+@@ -5002,6 +5102,8 @@ static const struct pci_dev_acs_enabled {
  	{ PCI_VENDOR_ID_ZHAOXIN, PCI_ANY_ID, pci_quirk_zhaoxin_pcie_ports_acs },
+ 	/* Wangxun nics */
+ 	{ PCI_VENDOR_ID_WANGXUN, PCI_ANY_ID, pci_quirk_wangxun_nic_acs },
 +	/* allow acs for any */
 +	{ PCI_ANY_ID, PCI_ANY_ID, pcie_acs_overrides },
  	{ 0 }
  };
  
 -- 
-2.38.1
+2.39.2
 

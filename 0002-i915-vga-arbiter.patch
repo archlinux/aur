@@ -1,7 +1,7 @@
-From efbf3120a8b4bbc66963a696de439501714a1718 Mon Sep 17 00:00:00 2001
+From 61009bd54ec93d15f9c26325cf5e5c68ac98becc Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?=C3=A9clairevoyant?=
  <848000+eclairevoyant@users.noreply.github.com>
-Date: Sun, 8 Jan 2023 14:05:15 -0500
+Date: Tue, 14 Mar 2023 17:07:40 -0400
 Subject: [PATCH 2/2] i915-vga-arbiter
 
 ---
@@ -14,10 +14,10 @@ Subject: [PATCH 2/2] i915-vga-arbiter
  6 files changed, 52 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/gpu/drm/i915/display/intel_display.c b/drivers/gpu/drm/i915/display/intel_display.c
-index de77054195c6..507ee4e0d1dc 100644
+index dedbdb175f8b..e7e95308f6e6 100644
 --- a/drivers/gpu/drm/i915/display/intel_display.c
 +++ b/drivers/gpu/drm/i915/display/intel_display.c
-@@ -8656,9 +8656,11 @@ int intel_modeset_init_noirq(struct drm_i915_private *i915)
+@@ -8646,9 +8646,11 @@ int intel_modeset_init_noirq(struct drm_i915_private *i915)
  
  	intel_bios_init(i915);
  
@@ -32,7 +32,7 @@ index de77054195c6..507ee4e0d1dc 100644
  
  	/* FIXME: completely on the wrong abstraction layer */
  	intel_power_domains_init_hw(i915, false);
-@@ -8807,6 +8809,12 @@ int intel_modeset_init(struct drm_i915_private *i915)
+@@ -8796,6 +8798,12 @@ int intel_modeset_init(struct drm_i915_private *i915)
  	if (ret)
  		return ret;
  
@@ -45,7 +45,7 @@ index de77054195c6..507ee4e0d1dc 100644
  	/* Only enable hotplug handling once the fbdev is fully set up. */
  	intel_hpd_init(i915);
  	intel_hpd_poll_disable(i915);
-@@ -8977,6 +8985,7 @@ void intel_modeset_driver_remove(struct drm_i915_private *i915)
+@@ -8966,6 +8974,7 @@ void intel_modeset_driver_remove(struct drm_i915_private *i915)
  	if (!HAS_DISPLAY(i915))
  		return;
  
@@ -54,10 +54,10 @@ index de77054195c6..507ee4e0d1dc 100644
  	flush_workqueue(i915->display.wq.modeset);
  
 diff --git a/drivers/gpu/drm/i915/display/intel_display.h b/drivers/gpu/drm/i915/display/intel_display.h
-index 884e8e67b17c..90f932db61f0 100644
+index 714030136b7f..fbd500249ab1 100644
 --- a/drivers/gpu/drm/i915/display/intel_display.h
 +++ b/drivers/gpu/drm/i915/display/intel_display.h
-@@ -576,6 +576,7 @@ void i830_disable_pipe(struct drm_i915_private *dev_priv, enum pipe pipe);
+@@ -535,6 +535,7 @@ void i830_disable_pipe(struct drm_i915_private *dev_priv, enum pipe pipe);
  int vlv_get_hpll_vco(struct drm_i915_private *dev_priv);
  int vlv_get_cck_clock(struct drm_i915_private *dev_priv,
  		      const char *name, u32 reg, int ref_freq);
@@ -66,10 +66,10 @@ index 884e8e67b17c..90f932db61f0 100644
  			   const char *name, u32 reg);
  void intel_init_display_hooks(struct drm_i915_private *dev_priv);
 diff --git a/drivers/gpu/drm/i915/display/intel_vga.c b/drivers/gpu/drm/i915/display/intel_vga.c
-index b5d058404c14..ad23732a9f21 100644
+index a69bfcac9a94..4cafe1f812f5 100644
 --- a/drivers/gpu/drm/i915/display/intel_vga.c
 +++ b/drivers/gpu/drm/i915/display/intel_vga.c
-@@ -45,6 +45,36 @@ void intel_vga_disable(struct drm_i915_private *dev_priv)
+@@ -46,6 +46,36 @@ void intel_vga_disable(struct drm_i915_private *dev_priv)
  	intel_de_posting_read(dev_priv, vga_reg);
  }
  
@@ -106,7 +106,7 @@ index b5d058404c14..ad23732a9f21 100644
  void intel_vga_redisable_power_on(struct drm_i915_private *dev_priv)
  {
  	i915_reg_t vga_reg = intel_vga_cntrl_reg(dev_priv);
-@@ -53,6 +83,7 @@ void intel_vga_redisable_power_on(struct drm_i915_private *dev_priv)
+@@ -54,6 +84,7 @@ void intel_vga_redisable_power_on(struct drm_i915_private *dev_priv)
  		drm_dbg_kms(&dev_priv->drm,
  			    "Something enabled VGA plane, disabling it\n");
  		intel_vga_disable(dev_priv);
@@ -154,5 +154,5 @@ index 2733cb6cfe09..f21c5b1529cc 100644
  	param(bool, load_detect_test, false, 0600) \
  	param(bool, force_reset_modeset_test, false, 0600) \
 -- 
-2.38.1
+2.39.2
 
