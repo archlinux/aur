@@ -6,7 +6,7 @@
 
 _pkgname='gnome-terminal'
 pkgname="${_pkgname}-fedora"
-pkgver=3.46.8
+pkgver=3.47.92
 pkgrel=1
 pkgdesc='The GNOME Terminal Emulator with Fedora patches'
 url='https://wiki.gnome.org/Apps/Terminal'
@@ -39,7 +39,7 @@ groups=('gnome')
 # Fedora patches: https://src.fedoraproject.org/cgit/rpms/gnome-terminal.git/tree/
 _frepourl='https://src.fedoraproject.org/rpms/gnome-terminal'
 _frepobranch='rawhide'
-_fcommit='07fad51112cadde640d1f19f00db8cdb4c51d305'
+_fcommit='2d0a9dcda94dc091cfa672760f84056c02fc8f40'
 _fpatchfile100='gnome-terminal-cntr-ntfy-autottl-ts.patch'
 _fgsoverridefile='org.gnome.Terminal.gschema.override'
 
@@ -50,7 +50,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  '9bb0b2058dfa2b99a59058b7aed5b1cb96010f43763dec2190b7cf59c32d03fa'
+  '8188cac2a08dafddbcbef99eb2deafdf3bc93d775159b78cae2ca6529ec93fbb'
   'a4a22834d6524fb697a8edf91c9489617d5ab2e513413fc84c6b8575320938f9'
 )
 
