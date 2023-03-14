@@ -1,0 +1,14 @@
+pkgbase = air-controller-desktop-appimage
+	pkgdesc = A new handy and powerful Android phone assistant,powered by Flutter.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = http://ac.yhdm360.cn/
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = hicolor-icon-theme
+	options = !strip
+	source = air_controller-0.4.0.AppImage::https://github.com/air-controller/air-controller-desktop/releases/download/0.4.0/AirController_0.4.0.AppImage
+	sha256sums = 9c81fa659acffa74b7576e5dfbc62486d8131157b9d4bfc2a34bdc567bc080c8
+
+pkgname = air-controller-desktop-appimage
