@@ -4,13 +4,13 @@
 pkgname=gajim-plugin-omemo
 _pkgname=omemo
 pkgver=2.9.0
-pkgrel=1
+pkgrel=2
 _pythonversion=3.10
 pkgdesc='Gajim plugin for OMEMO Multi-End Message and Object Encryption.'
 arch=(any)
 url='https://dev.gajim.org/gajim/gajim-plugins/wikis/OmemoGajimPlugin'
 license=('GPL')
-depends=('gajim>=1.6' 'gajim<=1.6.90' 'python-qrcode' 'python-setuptools' 'python-cryptography' 'python-axolotl')
+depends=('gajim>=1.6' 'python-qrcode' 'python-setuptools' 'python-cryptography' 'python-axolotl')
 provides=('gajim-plugin-omemo')
 conflicts=('gajim-plugin-omemo-git')
 source=("https://ftp.gajim.org/plugins/master/${_pkgname}/${_pkgname}_${pkgver}.zip")
