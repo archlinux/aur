@@ -2,7 +2,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sonixd-appimage
 _pkgname=sonixd
-pkgver=0.15.4
+pkgver=0.15.5
 pkgrel=1
 pkgdesc="A full-featured Subsonic/Jellyfin compatible desktop music player"
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=()
 conflicts=(sonixd)
 _install_path="/opt/appimages"
 source=("${_pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Sonixd-${pkgver}-linux-x86_64.AppImage")
-sha256sums=('9f89f5e92f24b4f8957348b28d534d232a3da04201c0622ece3d31826fc44dea')         
+sha256sums=('8fc07ea3f089e52b193cc35bba0c8fdd3f4a6fec6ec655711f4da5a31970c038')
 prepare() {
     chmod a+x "${_pkgname}-${pkgver}.AppImage"
     "./${_pkgname}-${pkgver}.AppImage" --appimage-extract
