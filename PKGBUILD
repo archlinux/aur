@@ -1,0 +1,27 @@
+# Maintainer: Oleg Hahm <oleg+aur@riot-os.org>
+_pkgname="bash-script-wttr"
+pkgname=wttr-git
+pkgver=v1.2.r39.gbf90e8d
+pkgrel=1
+pkgdesc="A simple script that helps you check weather condition using site: http://wttr.in (new repository version)"
+arch=('any')
+url="https://github.com/cblte/${_pkgname}"
+license=('MIT')
+makedepends=('git')
+provides=("${pkgname%-VCS}")
+conflicts=("${pkgname%-VCS}")
+depends=('curl')
+source=("git+https://github.com/cblte/${_pkgname}")
+md5sums=('SKIP')
+
+pkgver() {
+  cd ${_pkgname} 
+  git describe --tags --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+package() {
+    mkdir -p ${pkgdir}/usr/bin/
+        cd "${_pkgname}"
+        install -Dm0755 "wttr" ${pkgdir}/usr/bin/wttr
+        install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+}
