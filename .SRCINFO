@@ -1,6 +1,6 @@
 pkgbase = casile
 	pkgdesc = Caleb’s SILE publishing toolkit
-	pkgver = 0.10.15
+	pkgver = 0.10.16
 	pkgrel = 1
 	url = https://github.com/sile-typesetter/casile
 	arch = x86_64
@@ -42,6 +42,7 @@ pkgbase = casile
 	depends = povray
 	depends = procps-ng
 	depends = python
+	depends = sassc
 	depends = sile
 	depends = sqlite
 	depends = tex-gyre-fonts
@@ -64,7 +65,7 @@ pkgbase = casile
 	depends = python-ruamel-yaml
 	depends = python-usfm2osis-cw-git
 	depends = libgit2.so
-	source = https://github.com/sile-typesetter/casile/releases/download/v0.10.15/casile-0.10.15.tar.xz
-	sha256sums = 360bed645f22903baad4c3609485073911041d1aef3926a8f3ad8f936a46c0e9
+	source = https://github.com/sile-typesetter/casile/releases/download/v0.10.16/casile-0.10.16.tar.xz
+	sha256sums = aa69d6a8118f747182d220340622310fe9665aa1fa1aee25e27388fd4d3aae3a
 
 pkgname = casile

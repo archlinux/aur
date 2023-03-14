@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile
-pkgver=0.10.15
+pkgver=0.10.16
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
@@ -40,6 +40,7 @@ depends=(bc
          povray
          procps-ng
          python
+         sassc
          sile
          sqlite
          tex-gyre-fonts
@@ -71,7 +72,7 @@ makedepends=(autoconf-archive
              yarn)
 _archive="$pkgname-$pkgver"
 source=("$url/releases/download/v$pkgver/$_archive.tar.xz")
-sha256sums=('360bed645f22903baad4c3609485073911041d1aef3926a8f3ad8f936a46c0e9')
+sha256sums=('aa69d6a8118f747182d220340622310fe9665aa1fa1aee25e27388fd4d3aae3a')
 
 prepare() {
 	cd "$_archive"
