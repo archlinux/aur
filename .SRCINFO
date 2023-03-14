@@ -1,14 +1,14 @@
 pkgbase = ignition-common
 	pkgdesc = Provides a set of libraries that cover many different use cases.
 	pkgver = 5.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gazebosim.org/libs/common
 	arch = x86_64
 	license = Apache
-	makedepends = ignition-cmake>=3
+	makedepends = ignition-cmake>2
 	makedepends = util-linux
-	depends = ignition-math>=6
-	depends = ignition-utils
+	depends = ignition-math>6
+	depends = ignition-utils>1
 	depends = tinyxml2
 	depends = freeimage
 	depends = libutil-linux

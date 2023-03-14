@@ -2,14 +2,14 @@
 # Contributor: Tim Rakowski <tim.rakowski@gmail.com>
 pkgname=ignition-common
 pkgver=5.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Provides a set of libraries that cover many different use cases."
 arch=('x86_64')
 url="https://gazebosim.org/libs/common"
 license=('Apache')
-depends=('ignition-math>=6' 'ignition-utils' 'tinyxml2' 'freeimage'
+depends=('ignition-math>6' 'ignition-utils>1' 'tinyxml2' 'freeimage'
          'libutil-linux' 'gts' 'ffmpeg' 'gdal' 'assimp')
-makedepends=('ignition-cmake>=3' 'util-linux')
+makedepends=('ignition-cmake>2' 'util-linux')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gz-common/archive/gz-common5_${pkgver}.tar.gz")
 sha256sums=('dbb7eb6639fec27bb971d0df6a0d17d8076e82a7a7f3cadb570adab02ab7d9ad')
 
