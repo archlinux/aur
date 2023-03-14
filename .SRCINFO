@@ -10,6 +10,6 @@ pkgbase = applesmc-next-dkms
 	provides = APPLESMC-MODULE
 	provides = SBS-MODULE
 	source = https://github.com/c---/applesmc-next/archive/refs/tags/0.1.5.tar.gz
-	sha256sums = a95064c9a01806250247be5093458b149e06452735ae7dc2451e735ea0438ad2
+	sha256sums = 63b8516674d85422e91f72e0d565b6f000c51af4cbf28d29188c5ffb569390c2
 
 pkgname = applesmc-next-dkms
