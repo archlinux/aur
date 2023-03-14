@@ -1,0 +1,18 @@
+pkgbase = clonk-git
+	pkgdesc = A simple X11 clock widget like xclock
+	pkgver = 4c1eafa
+	pkgrel = 1
+	url = https://codeberg.org/pswilde/clonk.git
+	arch = any
+	license = AGPLv3
+	makedepends = git
+	makedepends = make
+	makedepends = nim
+	makedepends = nimble
+	depends = xorg-server
+	provides = clonk
+	conflicts = clonk-git
+	source = clonk-git::git+https://codeberg.org/pswilde/clonk
+	sha256sums = SKIP
+
+pkgname = clonk-git
