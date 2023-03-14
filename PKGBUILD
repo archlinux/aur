@@ -1,5 +1,6 @@
-# Maintainer: Niki <nik@cock.lu>
-_pkgname=ibranching
+# Maintainer: exkc <exxxxkc@getgoogleoff.me>
+# Co-Maintainer: Niki <nik@cock.lu>
+_pkgname=ib
 pkgname=ib-git
 pkgver=0.1.r1.g905836f
 pkgrel=1
@@ -7,7 +8,9 @@ pkgdesc=""
 arch=(x86_64 i686 aarch64 armv7)
 url="https://socki.moe"
 license=('CC0')
-source=("git+https://github.com/Nik-Nothing/ibranching.git")
+source=("${_pkgname}::git+https://github.com/Nik-Nothing/ibranching.git")
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
 sha256sums=('SKIP')
 
 pkgver() {
