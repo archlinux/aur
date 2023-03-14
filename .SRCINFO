@@ -1,6 +1,6 @@
 pkgbase = mtsieve
 	pkgdesc = Library for sieving various types of numbers
-	pkgver = 2.4.3.r264
+	pkgver = 2.4.4.r266
 	pkgrel = 1
 	url = https://sourceforge.net/projects/mtsieve/
 	arch = x86_64

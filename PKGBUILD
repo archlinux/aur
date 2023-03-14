@@ -1,7 +1,7 @@
 #Maintainer: Dylan Delgado <dylan1496@live.com>
 
 pkgname=mtsieve
-pkgver=2.4.3.r264
+pkgver=2.4.4.r266
 pkgrel=1
 pkgdesc='Library for sieving various types of numbers'
 url='https://sourceforge.net/projects/mtsieve/'
@@ -43,6 +43,7 @@ package() {
 	  install -Dm755 afsievecl "${pkgdir}"/usr/bin/afsievecl
 	  install -Dm755 ccsieve "${pkgdir}"/usr/bin/ccsieve
 	  install -Dm755 cksieve "${pkgdir}"/usr/bin/cksieve
+	  install -Dm755 cksievecl "${pkgdir}"/usr/bin/cksievecl
 	  install -Dm755 dmdsieve "${pkgdir}"/usr/bin/dmdsieve
 	  install -Dm755 gcwsieve "${pkgdir}"/usr/bin/gcwsieve
 	  install -Dm755 gcwsievecl "${pkgdir}"/usr/bin/gcwsievecl
