@@ -4,7 +4,7 @@
 
 _pkgname=libksysguard
 pkgname=libksysguard-light
-pkgver=5.27.2
+pkgver=5.27.3
 pkgrel=1
 pkgdesc='Libraries for ksysguard to retrieve information on the current status of computer hardware without the big dependency on qt5-webengine'
 arch=(x86_64)
@@ -18,7 +18,7 @@ replaces=(libksysguard)
 provides=(libksysguard)
 source=(https://download.kde.org/stable/plasma/$pkgver/$_pkgname-$pkgver.tar.xz{,.sig})
 install=libksysguard.install
-sha256sums=('d6ba78569cff361254625375c4aebe9bed4fe4982e3b1d6570060b75c0737a06'
+sha256sums=('3ff2bb6f7cd614e081729dd4dd99ae627b3a4a2f0e6953654db70093afd1bb1f'
             'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
