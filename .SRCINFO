@@ -6,6 +6,7 @@ pkgbase = hyprcwd-git
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	depends = jq
 	provides = hyprcwd
 	conflicts = hyprcwd
 	source = hyprcwd::git+https://github.com/vilari-mickopf/hyprcwd.git

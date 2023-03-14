@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="xcwd for Hyprland"
 arch=(x86_64 aarch64)
 url="https://github.com/vilari-mickopf/$_pkgname"
+depends=('jq')
 license=('MIT')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
