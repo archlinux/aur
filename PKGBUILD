@@ -3,7 +3,7 @@
 # Based obs/linux-pf-next by Oleksandr Natalenko aka post-factum <oleksandr@natalenko.name>
 
 pkgbase=linux-pf-stable-git
-pkgver=6.2.r1155773.9598e6c1f45f
+pkgver=6.2.r1157007.4ee087d62efc
 pkgrel=1
 pkgdesc='Linux pf-kernel (stable git version)'
 _kernel_rel=6.2
@@ -14,7 +14,7 @@ arch=(x86_64)
 license=(GPL2)
 makedepends=(
   bc libelf pahole cpio perl tar xz gettext
-  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
+  xmlto python-sphinx graphviz imagemagick texlive-latexextra
   git
 )
 options=('!strip')
@@ -24,7 +24,7 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            'dc67febd76c1980cb6bdf2681bf8fbe6da46f6fcb285070bfb3073baa16d8f25')
+            'd6d74cb62947b1afe70276acdb03bc53258cce6e44e0b9ba0c45ee5e97328d26')
 
 pkgver() {
   cd $_srcname

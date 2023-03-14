@@ -1,6 +1,6 @@
 pkgbase = linux-pf-stable-git
 	pkgdesc = Linux pf-kernel (stable git version)
-	pkgver = 6.2.r1155773.9598e6c1f45f
+	pkgver = 6.2.r1157007.4ee087d62efc
 	pkgrel = 1
 	url = https://pfkernel.natalenko.name
 	arch = x86_64
@@ -15,7 +15,6 @@ pkgbase = linux-pf-stable-git
 	makedepends = gettext
 	makedepends = xmlto
 	makedepends = python-sphinx
-	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
 	makedepends = imagemagick
 	makedepends = texlive-latexextra
@@ -24,7 +23,7 @@ pkgbase = linux-pf-stable-git
 	source = linux-pf-stable-git::git+https://codeberg.org/pf-kernel/linux.git#branch=pf-6.2
 	source = config
 	sha256sums = SKIP
-	sha256sums = dc67febd76c1980cb6bdf2681bf8fbe6da46f6fcb285070bfb3073baa16d8f25
+	sha256sums = d6d74cb62947b1afe70276acdb03bc53258cce6e44e0b9ba0c45ee5e97328d26
 
 pkgname = linux-pf-stable-git
 	pkgdesc = The Linux pf-kernel (stable git version) kernel and modules
