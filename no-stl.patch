@@ -1,0 +1,10 @@
+diff --git a/stlscad.thumbnailer b/stlscad.thumbnailer
+index 1a1a52d..600f008 100644
+--- a/stlscad.thumbnailer
++++ b/stlscad.thumbnailer
+@@ -1,4 +1,4 @@
+ [Thumbnailer Entry]
+ Exec=/usr/local/bin/stlscad_thumbnailer %i %o %s
+-MimeType=text/x-scad;application/x-openscad;application/sla;model/x.stl-binary;model/x.stl-ascii;model/stl
++MimeType=text/x-scad;application/x-openscad
+ 

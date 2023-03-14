@@ -1,0 +1,21 @@
+pkgbase = gnome-thumbnailers-git
+	pkgdesc = Thumbnailing utilities for 3D files for GNOME 42+
+	pkgver = r23.6d695f6
+	pkgrel = 1
+	url = https://github.com/rcarmo/gnome-thumbnailers
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	optdepends = xorg-server-xvfb: OpenSCAD support
+	optdepends = openscad: OpenSCAD support
+	optdepends = imagemagick: OpenSCAD support
+	optdepends = blender: Blender support
+	provides = gnome-thumbnailers
+	conflicts = gnome-thumbnailers
+	source = gnome-thumbnailers-git::git+https://github.com/rcarmo/gnome-thumbnailers.git
+	source = no-stl.patch
+	md5sums = SKIP
+	md5sums = f28a407987f6c319552ebf3d7fa19d5b
+
+pkgname = gnome-thumbnailers-git
