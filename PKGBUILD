@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Mozzherin <dmozzherin@gmail.com>
 
 pkgname=madcow
-pkgver=0.0.6.1
+pkgver=0.0.7
 pkgrel=1
 pkgdesc='ZFS snapshot manager command line tool'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("https://codeberg.org/dimus/madcow/archive/v$pkgver.tar.gz")
-sha256sums=('3c757ebb311c442636400b4fd3393cd525c7c4df729f37ae947aa67a2132bf7b')
+sha256sums=('b199848678d2986911bf91fd76b35410068ce415e6a525064e0fbfdb91632c49')
 
 prepare() {
   cd "$pkgname"
@@ -34,5 +34,5 @@ check() {
 package() {
   cd "$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm755 ./out/bin/$pkgname "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 ./$pkgname "$pkgdir/usr/bin/$pkgname"
 }
