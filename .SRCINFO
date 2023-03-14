@@ -1,6 +1,6 @@
 pkgbase = python-cad_to_openmc
 	pkgdesc = code to target the conversion from a step-file to a h5m-geometry for neutronics
-	pkgver = 0.2.2.r121.g70562a6
+	pkgver = 0.2.2.r122.gda5b16b
 	pkgrel = 1
 	url = https://github.com/openmsr/CAD_to_OpenMC
 	arch = x86_64
