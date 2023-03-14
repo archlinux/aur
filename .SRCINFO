@@ -1,8 +1,8 @@
 pkgbase = rustup-git
 	pkgdesc = The Rust toolchain installer
-	pkgver = 1.25.1.r39.gb3d53252
+	pkgver = 1.25.2.r221.gac7fb954
 	pkgrel = 1
-	url = https://github.com/rust-lang/rustup.rs
+	url = https://github.com/rust-lang/rustup
 	install = post.install
 	arch = x86_64
 	license = MIT
@@ -30,6 +30,8 @@ pkgbase = rustup-git
 	conflicts = rustup
 	replaces = cargo-tree
 	source = rustup-git::git+https://github.com/rust-lang/rustup.git
+	source = list-proxy-names.rs
 	sha512sums = SKIP
+	sha512sums = 3b8cca51fdf62bbd379a5a530e00609fc3192aa1e88b3f392621f356d5e9c6d93cb8767dee2d679bed86baaa369dec77ceb2e3d4d281e4c7c2098b324125deb4
 
 pkgname = rustup-git
