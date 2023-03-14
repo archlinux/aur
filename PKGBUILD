@@ -14,12 +14,12 @@ source=("https://pypi.io/packages/source/d/${_pypi_pkgname}/${_pypi_pkgname}-${p
 sha256sums=('5fbd58a6fb4119d975754b2bc090f35ec160a8373f276612c675b00e8a138739')
 
 build() {
-  cd ${srcdir}/django-cors-headers-${pkgver}
+  cd ${srcdir}/${_pypi_pkgname}-${pkgver}
   python setup.py build
 }
 
 package() {
-  cd ${srcdir}/django-cors-headers-${pkgver}
+  cd ${srcdir}/${_pypi_pkgname}-${pkgver}
   python setup.py install --prefix=/usr --root=${pkgdir}
 }
 
