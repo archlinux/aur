@@ -1,0 +1,14 @@
+pkgbase = ros2-humble-launch-param-builder
+	pkgdesc = Python library for loading parameters in launch files
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://index.ros.org/p/launch_param_builder/
+	arch = any
+	makedepends = python-pytest
+	depends = ros2-humble
+	depends = python-yaml
+	depends = ros2-humble-xacro
+	source = https://github.com/PickNikRobotics/launch_param_builder/archive/refs/tags/0.1.1.tar.gz
+	sha256sums = 2066c810d4ccc35577720f011e1a0daff5ed2b4bb9130d7fe64e48b3ed45cb07
+
+pkgname = ros2-humble-launch-param-builder
