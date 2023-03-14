@@ -3,7 +3,7 @@ _base=trame-vtk
 pkgname=python-${_base}
 pkgdesc="VTK widgets for trame"
 pkgver=2.3.4
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/Kitware/${_base}"
 license=('custom:BSD-3-clause')
@@ -14,7 +14,6 @@ source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('b7108a8cb53e269b1bdbb33d9a06f74eea66574ea9b3938cde3958e9479283d596b2be02ec467d7fd14e09d77de74a68be9886073f32e5dffe7092a8fb43ad36')
 
 prepare() {
-  sed -i 's/^graft/#graft/' ${_base}-${pkgver}/MANIFEST.in
   sed -i 's/^include/#include/' ${_base}-${pkgver}/MANIFEST.in
 }
 
