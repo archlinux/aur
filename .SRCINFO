@@ -1,0 +1,15 @@
+pkgbase = ros2-humble-parameter-traits
+	pkgdesc = Functions and types for rclcpp::Parameter
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://index.ros.org/p/parameter_traits/
+	arch = any
+	depends = ros2-humble
+	depends = fmt
+	depends = ros2-humble-tl-expected
+	depends = ros2-humble-rsl
+	depends = ros2-humble-tcb-span
+	source = https://github.com/PickNikRobotics/generate_parameter_library/archive/refs/tags/0.3.1.tar.gz
+	sha256sums = 1b0a4a2e30518ac3b416798cc593edfe1ec488d0c1ab05dbb31ae40c28f1edec
+
+pkgname = ros2-humble-parameter-traits
