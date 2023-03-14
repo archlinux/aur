@@ -1,0 +1,11 @@
+pkgbase = ros2-humble-ruckig
+	pkgdesc = Core libraries used by MoveIt
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://index.ros.org/p/ruckig/
+	arch = any
+	makedepends = cmake
+	source = https://github.com/pantor/ruckig/archive/refs/tags/v0.9.2.tar.gz
+	sha256sums = 9207db22604881b146ca2fbe79916ff4290c53eb5b46a0f3bbc606fb74bee13c
+
+pkgname = ros2-humble-ruckig
