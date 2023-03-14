@@ -3,7 +3,7 @@
 
 ## Configuration env vars:
 _BUILD_CUDA="${BUILD_CUDA:-ON}"
-_CUDA_ARCH="${CUDA_ARCH:-Auto}"
+_CUDA_ARCHITECTURES="${CUDA_ARCH:-native}"
 _fragment=#${FRAGMENT:-branch=dev}
 # Use CMAKE_FLAGS=xxx:yyy:zzz to define extra CMake flags
 [[ -v CMAKE_FLAGS ]] && mapfile -t -d: _CMAKE_FLAGS < <(echo -n "$CMAKE_FLAGS")
@@ -53,7 +53,7 @@ build() {
         [ -f "$_cuda_gcc" ] && export CUDAHOSTCXX="$_cuda_gcc"
       fi
       _CMAKE_FLAGS+=( -DCUDA_ENABLED=ON
-                      -DCMAKE_CUDA_ARCHITECTURES="native"
+                      -DCMAKE_CUDA_ARCHITECTURES=$_CUDA_ARCHITECTURES
                     )
     else
       _CMAKE_FLAGS+=( -DCUDA_ENABLED=OFF )
