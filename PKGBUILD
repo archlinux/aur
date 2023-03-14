@@ -1,7 +1,7 @@
 # Maintainer: Cyano Hao <c@cyano.cn>
 
 pkgname=wow.export-git
-pkgver=0.1.42.r78.g48c3bf0
+pkgver=0.1.48.r0.g03ffdfb
 pkgrel=1
 pkgdesc='Extracting and converting World of Warcraft files'
 arch=('x86_64')
@@ -10,17 +10,17 @@ url='https://www.kruithne.net/wow.export/'
 license=('MIT')
 # no runtime depends
 optdepends=(
-    'blender: Advanced map/model importing'
+    # 'blender: Advanced map/model importing'
 )
 makedepends=(
     'git'
     'nodejs-lts-gallium'
     'npm'
     'imagemagick'
-    'blender'
+    # 'blender'
 )
 source=(
-    'git+https://github.com/Kruithne/wow.export.git'
+    'git+https://github.com/Kruithne/wow.export.git#branch=temp-release'
     disable-updater.js
     wow.export.desktop
     run_wow.export.sh
@@ -51,6 +51,8 @@ package() {
     install -Dm644 wow.export.desktop -t "$pkgdir/usr/share/applications/"
 
     cd "$srcdir"/wow.export/bin/linux-x64/
+    find . -perm 600 -exec chmod 644 {} \;
+    find . -perm 700 -exec chmod 755 {} \;
     mkdir -p "$pkgdir"/usr/lib/wow.export/
     cp -r -- * "$pkgdir"/usr/lib/wow.export/
 
@@ -65,6 +67,6 @@ package() {
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # blender add-on
-    _blender=$(blender -v | head -n1 | cut -f2 -d ' ' | grep -oE '^[0-9]+.[0-9]+')
-    install -Dm644 addons/blender/2.80/io_scene_wowobj/{__init__,import_wowobj}.py -t "$pkgdir/usr/share/blender/${_blender}/scripts/addons/io_scene_wowobj/"
+    # _blender=$(blender -v | head -n1 | cut -f2 -d ' ' | grep -oE '^[0-9]+.[0-9]+')
+    # install -Dm644 addons/blender/2.80/io_scene_wowobj/{__init__,import_wowobj}.py -t "$pkgdir/usr/share/blender/${_blender}/scripts/addons/io_scene_wowobj/"
 }
