@@ -1,0 +1,13 @@
+pkgbase = ib-git
+	pkgver = 0.1.r1.g905836f
+	pkgrel = 1
+	url = https://socki.moe
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7
+	license = CC0
+	source = git+https://github.com/Nik-Nothing/ibranching.git
+	sha256sums = SKIP
+
+pkgname = ib-git
