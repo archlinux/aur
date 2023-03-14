@@ -1,6 +1,6 @@
 pkgbase = onedev-bin
 	pkgver = 8.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.onedev.io/onedev/server
 	arch = x86_64
 	license = MIT
@@ -12,8 +12,6 @@ pkgbase = onedev-bin
 	license = custom:Microsoft Software License
 	license = custom:Sun Microsystems Inc Binary Code License
 	license = custom:Jetty License
-	makedepends = gzip
-	makedepends = tar
 	depends = java-runtime-headless>11.0.0
 	depends = git>2.11.1
 	depends = fontconfig

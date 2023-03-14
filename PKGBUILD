@@ -7,7 +7,7 @@ _pkgname=onedev
 pkgname=('onedev-bin' 'onedev-new-bin')
 pkgbase=onedev-bin
 pkgver=8.0.9
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 depends=('java-runtime-headless>11.0.0' 'git>2.11.1' 'fontconfig' 'ttf-dejavu')
 url="https://code.onedev.io/onedev/server"
@@ -53,9 +53,9 @@ package_onedev-new-bin() {
   cd $_pkgname-$pkgver
 
   # Install only the contents of the package, as the -new package is used for updating the main package
-  install -o 663 -g 663 -d "$pkgdir/opt/$_pkgname"
-  cp -r * "$pkgdir/opt/$_pkgname"
-  chown -R 663:663 "$pkgdir/opt/$_pkgname"
+  install -o 663 -g 663 -d "$pkgdir/opt/$_pkgname-new"
+  cp -r * "$pkgdir/opt/$_pkgname-new"
+  chown -R 663:663 "$pkgdir/opt/$_pkgname-new"
   install -D -m 0644 "license.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -D -m 0644 "3rdparty-licenses/antlr-license.txt" "$pkgdir/usr/share/licenses/$pkgname/antlr/LICENSE"
   install -D -m 0644 "3rdparty-licenses/asm-license.txt" "$pkgdir/usr/share/licenses/$pkgname/asm/LICENSE"
