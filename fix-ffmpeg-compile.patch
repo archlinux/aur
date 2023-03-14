@@ -1,6 +1,15 @@
---- a/src/gfx/freeimage.cpp	2022-04-06 14:51:14.977994044 +0100
-+++ b/src/gfx/freeimage.cpp	2022-04-06 15:11:39.315991676 +0100
-@@ -236,7 +236,7 @@
+--- a/src/gfx/freeimage.cpp	2023-03-03 22:13:58.000000000 +0000
++++ b/src/gfx/freeimage.cpp	2023-03-14 10:03:10.950216675 +0000
+@@ -212,7 +212,7 @@
+ #ifdef AV_CODEC_CAP_TRUNCATED
+ #define CAP_TRUNCATED AV_CODEC_CAP_TRUNCATED
+ #else
+-#define CAP_TRUNCATED CODEC_CAP_TRUNCATED
++#define CAP_TRUNCATED 0
+ #endif
+ 
+ const char *GfxProviderFreeImage::supportedformatsFfmpeg()
+@@ -313,7 +313,7 @@
  
      // Find decoder for video stream
      AVCodecID codecId = codecParm->codec_id;
@@ -9,7 +18,7 @@
      if (!decoder)
      {
          LOG_warn << "Codec not found: " << codecId;
-@@ -253,7 +253,6 @@
+@@ -330,7 +330,6 @@
  
      // Force seeking to key frames
      formatContext->seek2any = false;
