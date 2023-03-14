@@ -1,0 +1,15 @@
+pkgbase = binfetch-git
+	pkgdesc = Neofetch inspired utility for binaries. CC0
+	pkgver = 0.1.r0.g4c63508
+	pkgrel = 1
+	url = https://socki.moe
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7
+	license = CC0
+	depends = ib-git
+	source = git+https://github.com/Nik-Nothing/binfetch.git
+	sha256sums = SKIP
+
+pkgname = binfetch-git
