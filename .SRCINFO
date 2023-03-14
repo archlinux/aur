@@ -1,6 +1,6 @@
 pkgbase = db-derby
 	pkgdesc = open source relational database implemented entirely in Java
-	pkgver = 10.15.2.0
+	pkgver = 10.16.1.1
 	pkgrel = 1
 	url = https://db.apache.org/derby/
 	install = derby.install
@@ -8,9 +8,9 @@ pkgbase = db-derby
 	license = Apache
 	depends = java-environment
 	depends = bash
-	source = https://dlcdn.apache.org//db/derby/db-derby-10.15.2.0/db-derby-10.15.2.0-bin.tar.gz
+	source = https://dlcdn.apache.org//db/derby/db-derby-10.16.1.1/db-derby-10.16.1.1-bin.tar.gz
 	source = derby.sh
-	sha256sums = ac51246a2d9eef70cecd6562075b30aa9953f622cbd2cd3551bc3d239dc6f02a
+	sha256sums = 37aef8dca42061d5867afb2009c8d7a80e68c16e56aecaf088f3e30e470d9ef6
 	sha256sums = bac5fc5a8f0d36785820774f31b89707d4063223718a5d309e1b7b6921a66222
 
 pkgname = db-derby

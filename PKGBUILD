@@ -1,6 +1,6 @@
 # Maintainer: Naleo Hyde <naleo dot hyde at gmail dot com>
 pkgname=db-derby
-pkgver=10.15.2.0
+pkgver=10.16.1.1
 pkgrel=1
 pkgdesc="open source relational database implemented entirely in Java"
 arch=('any')
@@ -28,5 +28,5 @@ package() {
   
 }
 
-sha256sums=('ac51246a2d9eef70cecd6562075b30aa9953f622cbd2cd3551bc3d239dc6f02a'
+sha256sums=('37aef8dca42061d5867afb2009c8d7a80e68c16e56aecaf088f3e30e470d9ef6'
             'bac5fc5a8f0d36785820774f31b89707d4063223718a5d309e1b7b6921a66222')
