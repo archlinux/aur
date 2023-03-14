@@ -43,6 +43,8 @@ package() {
     cd "$srcdir/${_name}"
     python -m installer --destdir="$pkgdir" dist/*.whl
     pip install -r requirements.txt
-    mv $srcdir $pkgdir/opt
+    cd "$srcdir"
+    cd.. 
+    mv CAD_to_OpenMC $pkgdir/opt
 }
 
