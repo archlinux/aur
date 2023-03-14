@@ -1,7 +1,7 @@
 pkgbase = python-trame-router
 	pkgdesc = Core components for trame widgets
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kitware/trame-router
 	arch = any
 	license = MIT

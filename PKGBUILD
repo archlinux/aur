@@ -3,7 +3,7 @@ _base=trame-router
 pkgname=python-${_base}
 pkgdesc="Core components for trame widgets"
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/Kitware/${_base}"
 license=(MIT)
@@ -14,7 +14,6 @@ source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('ca497ab2ac6423bc4d3620b6b531b6d6307a00ef997426a3fab76c1bb1efc31eb34383a808688a2f7794412520f709b120a11dcc8d505d774a4ddc412aa4c5f8')
 
 prepare() {
-  sed -i 's/^recursive-include/#recursive-include/' ${_base}-${pkgver}/MANIFEST.in
   sed -i 's/^include/#include/' ${_base}-${pkgver}/MANIFEST.in
 }
 
