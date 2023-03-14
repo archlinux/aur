@@ -1,6 +1,6 @@
 pkgbase = runst-bin
 	pkgdesc = A dead simple notification daemon
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/orhun/runst
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = runst-bin
 	depends = pango
 	provides = runst
 	conflicts = runst
-	source_x86_64 = runst-bin-0.1.2.tar.gz::https://github.com/orhun/runst/releases/download/v0.1.2/runst-0.1.2-x86_64-unknown-linux-gnu.tar.gz
-	sha512sums_x86_64 = 7ab2f7dd9f0134960f22b985dd547e1b53e9a1fb72bac794472ae41965adb75e723f073a099f132295665facc575e2e8cf9ecfbd63a406a996aa4cf13f2586e6
+	source_x86_64 = runst-bin-0.1.3.tar.gz::https://github.com/orhun/runst/releases/download/v0.1.3/runst-0.1.3-x86_64-unknown-linux-gnu.tar.gz
+	sha512sums_x86_64 = aed3315eb8eff4c8d43b5c2ed6d41b9293b5e653fed10fc693fad0a744015999eec5a50fbfc707945d3cd804f5472e1352c0875ffcc951f621ca4644041820e3
 
 pkgname = runst-bin

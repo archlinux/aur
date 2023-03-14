@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=runst-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A dead simple notification daemon"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('dbus' 'pango')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/${pkgname%-bin}-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha512sums_x86_64=('7ab2f7dd9f0134960f22b985dd547e1b53e9a1fb72bac794472ae41965adb75e723f073a099f132295665facc575e2e8cf9ecfbd63a406a996aa4cf13f2586e6')
+sha512sums_x86_64=('aed3315eb8eff4c8d43b5c2ed6d41b9293b5e653fed10fc693fad0a744015999eec5a50fbfc707945d3cd804f5472e1352c0875ffcc951f621ca4644041820e3')
 
 package() {
   cd "${pkgname%-bin}-$pkgver"
