@@ -1,0 +1,13 @@
+pkgbase = ros2-humble-hardware-interface
+	pkgdesc = ros2_control hardware interface
+	pkgver = 2.24.1
+	pkgrel = 1
+	url = https://index.ros.org/p/hardware_interface/
+	arch = any
+	makedepends = ros2-humble-ros2-control-test-assets
+	depends = ros2-humble
+	depends = ros2-humble-control-msgs
+	source = https://github.com/ros-controls/ros2_control/archive/refs/tags/2.24.1.tar.gz
+	sha256sums = ceaa6c11965e2136d1a511584bdaf5694f1e665429860ccac8b65f59230e14b2
+
+pkgname = ros2-humble-hardware-interface
