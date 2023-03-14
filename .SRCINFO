@@ -1,16 +1,16 @@
 pkgbase = terracognita
 	pkgdesc = Reads from existing Cloud Providers (reverse Terraform) and generates your infrastructure as code on Terraform configuration
-	pkgver = 0.8.2
+	pkgver = 0.8.3
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/cycloidio/terracognita
 	arch = i386
 	arch = x86_64
 	license = MIT
-	source_i386 = https://github.com/cycloidio/terracognita/releases/download/v0.8.2/terracognita-linux-386.tar.gz
-	sha256sums_i386 = d39705190239beeb578f2ac09eb7e05f51d02b92ed5c8b2ffedb5edac9feec0e
-	source_x86_64 = https://github.com/cycloidio/terracognita/releases/download/v0.8.2/terracognita-linux-amd64.tar.gz
-	sha256sums_x86_64 = 6f530e129d92f1f9853a9e113b3e2f27de6b1d92c2abb0db51f156a73ba43d33
+	source_i386 = https://github.com/cycloidio/terracognita/releases/download/v0.8.3/terracognita-linux-386.tar.gz
+	sha256sums_i386 = 24fa1f29e54442f9fbdaeb30815a664a1d73c10da7e67e839fbb7b9a543ab817
+	source_x86_64 = https://github.com/cycloidio/terracognita/releases/download/v0.8.3/terracognita-linux-amd64.tar.gz
+	sha256sums_x86_64 = c88be07da31070c9c6ae75ef0140ced755fa272594a588a7f1167865407d06b0
 
 pkgname = terracognita
 
