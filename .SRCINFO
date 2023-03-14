@@ -1,0 +1,75 @@
+pkgbase = mozc-with-jp-dict
+	pkgver = 2.28.5029.102.20230115
+	pkgrel = 1
+	url = https://github.com/fcitx/mozc
+	arch = x86_64
+	license = custom
+	makedepends = bazel
+	makedepends = git
+	makedepends = python
+	makedepends = python-six
+	makedepends = pkg-config
+	makedepends = curl
+	makedepends = gtk2
+	makedepends = mesa
+	makedepends = subversion
+	makedepends = clang
+	makedepends = emacs
+	makedepends = ibus
+	makedepends = ruby
+	source = git+https://github.com/fcitx/mozc.git#commit=2edd0933
+	source = https://osdn.net/projects/ponsfoot-aur/storage/mozc/x-ken-all-202110.zip
+	source = https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-202110.zip
+	source = git+https://github.com/phoepsilonix/mozcdict-ext.git
+	source = https://osdn.net/projects/naist-jdic/downloads/53500/mecab-naist-jdic-0.6.3b-20111013.tar.gz
+	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20230110/core_lex.zip
+	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20230110/notcore_lex.zip
+	source = https://github.com/utuhiro78/mozcdic-ut-alt-cannadic/raw/main/mozcdic-ut-alt-cannadic.txt.tar.bz2
+	source = https://github.com/utuhiro78/mozcdic-ut-edict2/raw/main/mozcdic-ut-edict2.txt.tar.bz2
+	source = https://github.com/utuhiro78/mozcdic-ut-jawiki/raw/main/mozcdic-ut-jawiki.txt.tar.bz2
+	source = https://github.com/utuhiro78/mozcdic-ut-personal-names/raw/main/mozcdic-ut-personal-names.txt.tar.bz2
+	source = https://github.com/utuhiro78/mozcdic-ut-place-names/raw/main/mozcdic-ut-place-names.txt.tar.bz2
+	source = https://github.com/utuhiro78/mozcdic-ut-skk-jisyo/raw/main/mozcdic-ut-skk-jisyo.txt.tar.bz2
+	sha512sums = SKIP
+	sha512sums = dec6479b42ddc1355cd882d17824cd874d8f103ad7767bac3f490f04551059d65b2806fa9e3f39a50ced2ecfdd37b75c9ed4536d9ad3bcef9e8c5ae1ec10e302
+	sha512sums = 606f45d48a9dad0e80a566cab0001910de3c6b2f634ec52c6ef6f44745b55ae8e181b3e3cdf90525a08be1f180eb35900672c90c6ab4f43679a178e863378bbc
+	sha512sums = SKIP
+	sha512sums = 03d04505d3d8d097d1389af987e87aca43d56ef36b0def9eb85e19ee15ffe3598d3acb1c78c6dde3b31519419acb87c595aaad594dd116b98ac5cabb82a2e61c
+	sha512sums = 46de5c238cdfe39e28d29cff317bdab1ad26a1f6999141efbcc443cb8269d714cbebf8ef9582d53b2ee722c2511d9d0735a67bdce345ad5a15d63ef42d2f5745
+	sha512sums = 53f319879a7bdd8b6d6a527901e8a25079a023799aa06b786aee67745739b7f81d157b2f065b4a4738ca9ec01519ab9f11be81565f1837de5df8010b3f345821
+	sha512sums = 30019a9ce73456046f67edd6fe8f4661bd9a8e9ca201f3bdf22d2fa70dad9544bd595a8820fbed402a0709809d02cabbdea9dc79ee1f5bf30f8ef722ba4a2c17
+	sha512sums = 52996288c74418809287d2f4bee0ff7c0544b6e8f1bfcd5cbca2363a20cb1769c2442ca423b26b9272a93c32d1fad710a61a5d4da85cba7ece425a6502a93217
+	sha512sums = 270db256901539afa91d79e49bea5181bfc7bb23a21d6fa02e7c8a3be1377d998cfc995477d4b75db800ea85abe7405373ced2eb8109053ac81e95bfc4e180b7
+	sha512sums = 5dabf327b0f19c68ef4a5224974a52bdbd62b22912e3151dc3ffe41a589c5e2e63f0014ba12f2eae18f93a3cfc480df1fa8e1ac3ba5e3226ccd1a146043e32de
+	sha512sums = 32c524caa7e9a9a2793c80d36b039fb3260e2a775e4e5529a816a5e6f499455472307b0f43fbfba8ca0c6f884e316e83d5d4a4ca032d4cabe2c9d3626fcaf16c
+	sha512sums = 0afd153746727edbba65523cad450928fb863185679c7eb241c4c2928006c196a43235245aee7e1e1c2294be71e6035e47585db1270773da894947ac19a4c0c6
+
+pkgname = mozc-with-jp-dict-common
+	pkgdesc = A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input)
+	depends = qt5-base
+	options = !docs
+
+pkgname = ibus-mozc-with-jp-dict
+	pkgdesc = IBus engine module for Mozc with UT dictionary
+	depends = ibus>=1.4.1
+	depends = qt5-base
+	depends = mozc-with-jp-dict-common
+	conflicts = ibus-mozc
+	replaces = ibus-mozc
+
+pkgname = fcitx5-mozc-with-jp-dict
+	pkgdesc = Fcitx5 module for Mozc with UT dictionary
+	depends = fcitx5
+	depends = hicolor-icon-theme
+	depends = mozc-with-jp-dict-common
+	provides = fcitx5-mozc
+	conflicts = fcitx-mozc
+	conflicts = fcitx5-mozc
+	replaces = fcitx5-mozc
+
+pkgname = emacs-mozc-with-jp-dict
+	pkgdesc = Emacs engine module for Mozc with UT dictionary
+	depends = gcc-libs
+	depends = mozc-with-jp-dict-common
+	conflicts = emacs-mozc
+	replaces = emacs-mozc
