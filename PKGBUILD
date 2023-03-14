@@ -1,7 +1,8 @@
 # $Id$
 # shellcheck disable=SC2034,SC2148,SC2154
-# Maintainer: BrLi <brli at chakralinux dot org>
-# Maintainer: UTUMI Hirosi <utuhiro78 at yahoo dot co dot jp>
+# Maintainer: Masato TOYOSHIMA <phoepsolonix at gmail dot com>
+# Contributor: UTUMI Hirosi <utuhiro78 at yahoo dot co dot jp>
+# Contributor: BrLi <brli at chakralinux dot org>
 # Contributor: Nocifer <apmichalopoulos at gmail dot com>
 # Contributor: Felix Yan <felixonmars@gmail.com>
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
