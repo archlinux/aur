@@ -1,0 +1,14 @@
+pkgbase = ros2-humble-nav2-core
+	pkgdesc = A set of headers for plugins core to the Nav2 stack
+	pkgver = 1.1.6
+	pkgrel = 1
+	url = https://index.ros.org/p/nav2_core/
+	arch = any
+	makedepends = ros2-humble-nav2-common
+	depends = ros2-humble
+	depends = ros2-humble-nav2-util
+	depends = ros2-humble-nav2-costmap-2d
+	source = https://github.com/ros-planning/navigation2/archive/refs/tags/1.1.6.tar.gz
+	sha256sums = 43abfa0eba8e3862e9f69e39399b0b6b627d2fa44faede494b09b7ee8c2626c1
+
+pkgname = ros2-humble-nav2-core
