@@ -8,6 +8,7 @@ pkgbase = python-trame-vuetify
 	checkdepends = python-pytest
 	checkdepends = python-trame-server
 	makedepends = python-setuptools
+	makedepends = npm
 	depends = python-trame-client
 	source = trame-vuetify-2.2.4.tar.gz::https://github.com/Kitware/trame-vuetify/archive/v2.2.4.tar.gz
 	sha512sums = 8fc62453701d97b13b14984bd5c7a5611246aed39192cc4b749f997e1063225c8eaf4ea7bd9058476f90983fcb5c3a5a05061767a57b564fdaebaf017c47662c
