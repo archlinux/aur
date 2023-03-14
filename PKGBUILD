@@ -1,7 +1,7 @@
 # Maintainer: Jason Nader <jason.nader@protonmail.com>
 
 pkgname=i3status-rust-git
-pkgver=0.30.0.r2848.gf2642f03
+pkgver=0.30.4.r3194.gbcbcc69f
 pkgrel=1
 pkgdesc='Very resourcefriendly and feature-rich replacement for i3status to use with bar programs (like i3bar and swaybar), written in pure Rust'
 arch=('x86_64')
@@ -32,6 +32,7 @@ pkgver() {
 build() {
   cd "${pkgname%-*}"
   cargo build --release --features 'pulseaudio maildir'
+  cargo xtask generate-manpage
 }
 
 package() {
