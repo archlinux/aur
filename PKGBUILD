@@ -8,13 +8,16 @@ arch=(any)
 url="https://github.com/Kitware/${_base}"
 license=(Apache)
 depends=(python-trame-client python-yaml)
-makedepends=(python-setuptools)
+makedepends=(python-setuptools npm)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('57be1b36a45ae1dc3c679e347a3258a4b2a1ab647108b4ab3d5c35e9841314455055a7030dc32a1ce191ac7c82ecca5d7a134f9071872bfee1a8e97e38746d21')
 
 build() {
-  cd ${_base}-${pkgver}
+  cd ${srcdir}/${_base}-${pkgver}/vue-components
+  npm install
+  npm run build
+  cd ${srcdir}/${_base}-${pkgver}
   python setup.py build
 }
 

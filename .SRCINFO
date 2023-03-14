@@ -7,6 +7,7 @@ pkgbase = python-trame-simput
 	license = Apache
 	checkdepends = python-pytest
 	makedepends = python-setuptools
+	makedepends = npm
 	depends = python-trame-client
 	depends = python-yaml
 	source = trame-simput-2.3.1.tar.gz::https://github.com/Kitware/trame-simput/archive/v2.3.1.tar.gz
