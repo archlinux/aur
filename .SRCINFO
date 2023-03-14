@@ -1,0 +1,18 @@
+pkgbase = ros2-humble-play-motion2
+	pkgdesc = A tool to play and handle pre-recorded motions in ROS2
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/pal-robotics/play_motion2/
+	arch = any
+	makedepends = ros2-humble-controller-manager
+	makedepends = ros2-humble-hardware-interface
+	makedepends = ros2-humble-joint-state-broadcaster
+	makedepends = ros2-humble-joint-trajectory-controller
+	makedepends = ros2-humble-xacro
+	depends = ros2-humble
+	depends = ros2-humble-control-msgs
+	depends = ros2-humble-play-motion2-msgs
+	source = https://github.com/pal-robotics/play_motion2/archive/refs/tags/0.0.5.tar.gz
+	sha256sums = 49195d29e6d05b4c8a3404369f40de14c2644e14ce3982e9c568bd841931260f
+
+pkgname = ros2-humble-play-motion2
