@@ -7,6 +7,7 @@ pkgbase = python-trame-rca
 	license = Apache
 	checkdepends = python-pytest
 	makedepends = python-setuptools
+	makedepends = nodejs-lts-fermium
 	depends = python-trame-client
 	depends = python-wslink
 	source = trame-rca-0.3.0.tar.gz::https://github.com/Kitware/trame-rca/archive/v0.3.0.tar.gz
