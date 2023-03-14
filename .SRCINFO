@@ -1,7 +1,7 @@
 pkgbase = python-trame-components
 	pkgdesc = Core components for trame widgets
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kitware/trame-components
 	arch = any
 	license = Apache

@@ -3,7 +3,7 @@ _base=trame-components
 pkgname=python-${_base}
 pkgdesc="Core components for trame widgets"
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/Kitware/${_base}"
 license=(Apache)
@@ -14,7 +14,6 @@ source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('076a65c550f456f9e76c587796f504515c9db7f45e6c2b15ac2b95ad47ab0022544d0d93a5467ad4122c1ed46cb095f31e6c4133492625007bfe6a76c6ad19d2')
 
 prepare() {
-  sed -i 's/^graft/#graft/' ${_base}-${pkgver}/MANIFEST.in
   sed -i 's/^include/#include/' ${_base}-${pkgver}/MANIFEST.in
 }
 
