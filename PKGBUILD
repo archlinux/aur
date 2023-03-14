@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://rptools.net/tools/maptool"
 license=('AGPL3')
 depends=('jre-openjdk')
-makedepends=('git' 'dpkg' 'jdk-openjdk' 'gradle' 'xdg-utils' 'rpm-tools')
+makedepends=('git' 'dpkg' 'jdk-openjdk' 'gradle7' 'xdg-utils' 'rpm-tools')
 optdepends=()
 source=("git+https://github.com/RPTools/${pkgname}.git#tag=${pkgver}")
 sha256sums=('SKIP')
@@ -23,6 +23,8 @@ prepare() {
 	cd "${pkgname}"
 	
 	_java_version=$(java --version | head -n 1 | sed -r 's/openjdk ([[:digit:]]+).*/\1/')
+	echo "Java version detected: $_java_version"
+	
 	if (( _java_version < _java_version_required )); then
 		>&2 echo
 		>&2 echo "MapTool require a version of java of a least $_java_version_required. See archlinux-java on how to change the default java on your system."
@@ -35,12 +37,12 @@ prepare() {
 
 build() {
 	cd "${pkgname}"
-	gradle --parallel jpackage
+	gradle7 --parallel jpackage
 }
 
 check() {
 	cd "${pkgname}"
-	gradle --parallel check
+	gradle7 --parallel check
 }
 
 package() {
