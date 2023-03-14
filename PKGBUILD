@@ -2,10 +2,10 @@
 
 pkgname=cuberite
 _pkgver=1.12.2
-_commit=efeedcb
-pkgver="${_pkgver}c1_${_commit}"
+_commit=cb2201d
+pkgver="${_pkgver}c2_${_commit}"
 pkgrel=1
-_mng_ver=1.0.1
+_mng_ver=1.0.2
 pkgdesc="A Minecraft-compatible multiplayer game server that is written in C++ and designed to be efficient with memory and CPU, as well as having a flexible Lua Plugin API. It is compatible with the vanilla Minecraft client."
 arch=('i686' 'x86_64' 'armv7h')
 url="https://cuberite.org/"
@@ -34,6 +34,8 @@ source=("git+https://github.com/cuberite/cuberite#commit=${_commit}"
 	"git+https://github.com/fmtlib/fmt"
 	"git+https://github.com/grafi-tt/lunajson"
 	"git+https://github.com/cuberite/libdeflate"
+	"git+https://github.com/cuberite/polarssl"
+	"git+https://github.com/cuberite/luaproxy"
 	"minecraft-server-${_mng_ver}.tar.gz"::"https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v${_mng_ver}.tar.gz")
 # FIXME Including "git+https://github.com/cuberite/polarssl#commit=193f373" yields a ref-error
 sha512sums=('SKIP'
@@ -53,7 +55,9 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '5fecf7bbcc5e2861640ae34bc32770a02a137cb4cf142adf565997c20141744b00517501ad717f390056bdcf59c4e03e365656454b427e771a15fcf152f1bc97')
+            'SKIP'
+            'SKIP'
+            '11d708d511b63e5541bcc1dbcaf29abbf7cb9583b1d313028770a39b26b41d48dcba023f7e1d6fe30f3c093d20e10a43363011edd432e5785a4580e5c5f852a6')
 
 _game="cuberite"
 _server_root="/srv/cuberite"
@@ -65,7 +69,7 @@ prepare() {
 	git config submodule.Server/Plugins/Core.url "${srcdir}"/Core
 	git config submodule.Server/Plugins/ProtectionAreas.url "${srcdir}"/ProtectionAreas
 	git config submodule.Server/Plugins/ChatLog.url "${srcdir}"/ChatLog
-	#git config submodule.lib/mbedtls.url "${srcdir}"/polarssl
+	git config submodule.lib/mbedtls.url "${srcdir}"/polarssl
 	git config submodule.lib/SQLiteCpp.url "${srcdir}"/SQLiteCpp
 	git config submodule.lib/libevent.url "${srcdir}"/libevent
 	git config submodule.lib/jsoncpp.url "${srcdir}"/jsoncpp
@@ -77,6 +81,7 @@ prepare() {
 	git config submodule.lib/sqlite.url "${srcdir}"/sqlite
 	git config submodule.lib/tolua++.url "${srcdir}"/toluapp
 	git config submodule.lib/fmt.url "${srcdir}"/fmt
+	git config submodule.lib/luaproxy.url "${srcdir}"/luaproxy
 	git config submodule.Tools/BlockTypePaletteGenerator/lib/lunajson.url "${srcdir}"/lunajson
 	git config submodule.lib/libdeflate.url "${srcdir}"/libdeflate
 	git submodule update

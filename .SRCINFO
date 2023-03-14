@@ -1,6 +1,6 @@
 pkgbase = cuberite
 	pkgdesc = A Minecraft-compatible multiplayer game server that is written in C++ and designed to be efficient with memory and CPU, as well as having a flexible Lua Plugin API. It is compatible with the vanilla Minecraft client.
-	pkgver = 1.12.2c1_efeedcb
+	pkgver = 1.12.2c2_cb2201d
 	pkgrel = 1
 	url = https://cuberite.org/
 	install = cuberite.install
@@ -24,7 +24,7 @@ pkgbase = cuberite
 	provides = minecraft-server=1.12.2
 	provides = spigot=1.12.2
 	backup = etc/conf.d/cuberite
-	source = git+https://github.com/cuberite/cuberite#commit=efeedcb
+	source = git+https://github.com/cuberite/cuberite#commit=cb2201d
 	source = git+https://github.com/cuberite/Core
 	source = git+https://github.com/cuberite/ProtectionAreas
 	source = git+https://github.com/cuberite/ChatLog
@@ -41,7 +41,9 @@ pkgbase = cuberite
 	source = git+https://github.com/fmtlib/fmt
 	source = git+https://github.com/grafi-tt/lunajson
 	source = git+https://github.com/cuberite/libdeflate
-	source = minecraft-server-1.0.1.tar.gz::https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v1.0.1.tar.gz
+	source = git+https://github.com/cuberite/polarssl
+	source = git+https://github.com/cuberite/luaproxy
+	source = minecraft-server-1.0.2.tar.gz::https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v1.0.2.tar.gz
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
@@ -59,6 +61,8 @@ pkgbase = cuberite
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = 5fecf7bbcc5e2861640ae34bc32770a02a137cb4cf142adf565997c20141744b00517501ad717f390056bdcf59c4e03e365656454b427e771a15fcf152f1bc97
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = 11d708d511b63e5541bcc1dbcaf29abbf7cb9583b1d313028770a39b26b41d48dcba023f7e1d6fe30f3c093d20e10a43363011edd432e5785a4580e5c5f852a6
 
 pkgname = cuberite
