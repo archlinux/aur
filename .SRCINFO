@@ -1,7 +1,7 @@
 pkgbase = linux-lts515
 	pkgdesc = LTS Linux 5.15.x
 	pkgver = 5.15.98
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/
 	arch = x86_64
 	arch = pentium4
@@ -16,7 +16,7 @@ pkgbase = linux-lts515
 	makedepends = tar
 	makedepends = xz
 	makedepends = xmlto
-	makedepends = python-sphinx<6.0.0
+	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
 	makedepends = imagemagick
