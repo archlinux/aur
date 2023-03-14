@@ -3,14 +3,14 @@
 
 pkgbase=linux-lts515
 pkgver=5.15.98
-pkgrel=1
+pkgrel=2
 pkgdesc='LTS Linux 5.15.x'
 url="https://www.kernel.org/"
 arch=(x86_64 pentium4 i686 i486)
 license=(GPL2)
 makedepends=(
   bc libelf pahole cpio perl tar xz
-  xmlto 'python-sphinx<6.0.0' python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
+  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
 )
 options=('!strip')
 _srcname=linux-$pkgver
@@ -271,7 +271,7 @@ if [ "${CARCH}" = "i486" -o  "${CARCH}" = "i686" -o "${CARCH}" = "pentium4" ]; t
       '
   )"
   makedepends=(${makedepends[@]//python-sphinx_rtd_theme/})
-  makedepends=(${makedepends[@]//python-sphinx<6.0.0/})
+  makedepends=(${makedepends[@]//python-sphinx/})
   makedepends=(${makedepends[@]//graphviz/})
   makedepends=(${makedepends[@]//imagemagick/})
   makedepends=(${makedepends[@]//texlive-latexextra/})
