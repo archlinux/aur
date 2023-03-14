@@ -1,0 +1,11 @@
+pkgbase = paping
+	pkgdesc = TCP port testing, emulating the functionality of ping (port ping)
+	pkgver = 1.5.5
+	pkgrel = 1
+	url = https://code.google.com/archive/p/paping/
+	arch = x86_64
+	license = MIT
+	source = paping-1.5.5.tar.gz::https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/paping/paping_1.5.5_source.tar.gz
+	sha256sums = 9aae26fedde0d9994b4ffc56b1df9a5450b9d9f7c557b26413b9d8f8adde5684
+
+pkgname = paping
