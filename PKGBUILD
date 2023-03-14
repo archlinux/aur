@@ -16,6 +16,7 @@ optdepends=(
 	'lxqt-policykit: for polkit authentication for the LXQt'
 )
 provides=('fortivpn' 'FortiClient')
+conflicts=('forticlient') 
 install='forticlient-vpn.install'
 source=("https://filestore.fortinet.com/forticlient/forticlient_vpn_${pkgver}_amd64.deb")
 sha256sums=('482f245df302417ab19b6501525acae6c62a022eec80baf5ad285a0fb1f5323e')
