@@ -2,7 +2,7 @@
 
 pkgname=python-adafruit-blinka-displayio
 _pypi_pkgname=adafruit-blinka-displayio
-pkgver=0.10.2
+pkgver=0.10.3
 pkgrel=0
 pkgdesc="displayio for Blinka"
 arch=('armv6h' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools' 'python-pip')
 depends=('python-numpy' 'python-adafruit-blinka' 'python-adafruit-circuitpython-typing')
 optdepends=()
 source=("https://pypi.io/packages/source/a/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('9b0b572067396ef6a1b097eefbeadb081b6358eea5e9feb7be6f52ec12a5c876')
+sha256sums=('fdb64f421070316cd536668961a7345f6ea6f1b6ed17c4ff67bf655d1475370d')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
