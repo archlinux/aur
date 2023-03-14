@@ -1,19 +1,20 @@
 pkgbase = anki-official-binary-bundle
 	pkgdesc = The official binary shipped with the tested versions of the dependent libraries.
-	pkgver = 2.1.58
+	pkgver = 2.1.60
 	pkgrel = 1
-	url = https://apps.ankiweb.net
+	url = https://github.com/ankitects/anki
 	install = anki-official-binary-bundle.install
 	arch = x86_64
-	license = GNU AGPL
+	license = AGPL
 	depends = libxkbcommon-x11
 	optdepends = mpv
 	provides = anki
 	conflicts = anki
+	conflicts = anki-bin
 	conflicts = anki-git
-	source = https://github.com/ankitects/anki/releases/download/2.1.58/anki-2.1.58-linux-qt6.tar.zst
+	source = https://github.com/ankitects/anki/releases/download/2.1.60/anki-2.1.60-linux-qt6.tar.zst
 	source = install_sh.patch
-	sha256sums = f6b94d4a16dda2c09aeb47f8265842d78765de3d83c6a16bdc680e38c59d5c56
+	sha256sums = 21780854c71a6414dab11b5e673ded45a0d0dabb167a5d9c3689dd2b6567cd35
 	sha256sums = 991297cb02434d753f55980205a22971ed98655b0f62f0104ae4692155355d8c
 
 pkgname = anki-official-binary-bundle
