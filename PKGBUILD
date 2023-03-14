@@ -2,14 +2,15 @@
 # Contributor: Victor Bayas <victorsbayas at gmail dot com>
 
 pkgname=envycontrol
-pkgver=3.0.3
+pkgver=3.2.0
 pkgrel=1
-pkgdesc="Easy GPU switching for Nvidia Optimus laptops under Linux"
-arch=(any)
+pkgdesc="CLI tool for Nvidia Optimus graphics mode switching on Linux"
+arch=('any')
 url="https://github.com/bayasdev/envycontrol"
-license=(MIT)
-depends=(python xorg-xrandr)
-makedepends=(python-setuptools git)
+license=('MIT')
+depends=('python' 'xorg-xrandr')
+makedepends=('python-setuptools' 'git')
+conflicts=('optimus-manager')
 source=("git+https://github.com/bayasdev/envycontrol.git#tag=v$pkgver")
 sha256sums=('SKIP')
 

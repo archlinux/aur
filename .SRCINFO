@@ -1,6 +1,6 @@
 pkgbase = envycontrol
-	pkgdesc = Easy GPU switching for Nvidia Optimus laptops under Linux
-	pkgver = 3.0.3
+	pkgdesc = CLI tool for Nvidia Optimus graphics mode switching on Linux
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://github.com/bayasdev/envycontrol
 	arch = any
@@ -9,7 +9,8 @@ pkgbase = envycontrol
 	makedepends = git
 	depends = python
 	depends = xorg-xrandr
-	source = git+https://github.com/bayasdev/envycontrol.git#tag=v3.0.3
+	conflicts = optimus-manager
+	source = git+https://github.com/bayasdev/envycontrol.git#tag=v3.2.0
 	sha256sums = SKIP
 
 pkgname = envycontrol
