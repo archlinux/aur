@@ -1,6 +1,6 @@
 pkgbase = cellframe-node
 	pkgdesc = Cellframe blockchain node with a powerful SDK
-	pkgver = 5.1.368
+	pkgver = 5.1.370
 	pkgrel = 1
 	url = https://cellframe.net
 	install = cellframe-node.install
@@ -18,8 +18,8 @@ pkgbase = cellframe-node
 	options = !buildflags
 	options = !makeflags
 	backup = opt/cellframe-node/etc/cellframe-node.cfg
-	source = git+https://gitlab.demlabs.net/cellframe/cellframe-node.git#commit=86b8078f34e2589b2714ca5d7a15bfeffd888dec
-	source = git+https://gitlab.demlabs.net/cellframe/cellframe-sdk.git#commit=646337ee2f6475b4023e4c64d21e38f9d8dce81d
+	source = git+https://gitlab.demlabs.net/cellframe/cellframe-node.git#commit=2d13b4ecb213e691bf89859622f98555833ed96c
+	source = git+https://gitlab.demlabs.net/cellframe/cellframe-sdk.git#commit=1a9952e1fc3b076d72b3eb58aa6c14bd07a9686a
 	source = git+https://gitlab.demlabs.net/cellframe/python-cellframe.git#commit=88df88a673fe5af91694d395691b851499c978f4
 	source = cellframe-node.cfg
 	source = Backbone.cfg
