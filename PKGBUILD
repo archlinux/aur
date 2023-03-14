@@ -2,7 +2,7 @@
 
 pkgname=rtl-sdr-exp-git
 pkgrel=1
-pkgver=v2023.2.1.0d6e2a2
+pkgver=v2023.2.2.bd46371
 pkgdesc="Turns your Realtek RTL2832 based DVB dongle into a SDR receiver. Experimental R820T/R820T2 rtl-sdr tuner driver that tunes down to 13 MHz or lower. (From my experiments up to 3.4 MHz on R820T2)."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/Mr-Precise/rtl-sdr"
