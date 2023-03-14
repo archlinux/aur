@@ -3,7 +3,7 @@ _base=trame-deckgl
 pkgname=python-${_base}
 pkgdesc="Deck.gl widget for trame"
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/Kitware/${_base}"
 license=(MIT)
@@ -14,7 +14,6 @@ source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('c5b0529126d02c8bf768ad90187aba47d6a3a2f7e3555d6a69184f127779b45567201ecda187ca6805eb0de1802c42426fa8f539f9d12b31f9233fe494a083c5')
 
 prepare() {
-  sed -i 's/recursive-include/#recursive-include/' ${_base}-${pkgver}/MANIFEST.in
   sed -i 's/include/#include/' ${_base}-${pkgver}/MANIFEST.in
 }
 
