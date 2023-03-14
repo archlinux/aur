@@ -3,7 +3,7 @@ _base=trame-plotly
 pkgname=python-${_base}
 pkgdesc="Plotly figure widget for trame"
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/Kitware/${_base}"
 license=(MIT)
@@ -14,7 +14,6 @@ source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('865608fcca8407f695699255cacd4a3f28551106396e213a9a219ff9defbdc552f938bcb7e3de13a957bbb38f32b936011928a6da7fffcf574fa98b38a8e2d53')
 
 prepare() {
-  sed -i 's/^graft/#graft/' ${_base}-${pkgver}/MANIFEST.in
   sed -i 's/^include/#include/' ${_base}-${pkgver}/MANIFEST.in
 }
 

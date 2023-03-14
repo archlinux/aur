@@ -1,7 +1,7 @@
 pkgbase = python-trame-plotly
 	pkgdesc = Plotly figure widget for trame
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kitware/trame-plotly
 	arch = any
 	license = MIT
