@@ -2,7 +2,7 @@
 Name=X Minecraft Launcher
 Comment=X Minecraft Launcher - 一个现代化的 Minecraft 启动器
 GenericName=X Minecraft Launcher
-Exec=/usr/share/xmcl/xmcl-0.33.1-x64/xmcl %U
+Exec=/usr/share/xmcl/xmcl-0.34.1-x64/xmcl %U
 Icon=xmcl
 Type=Application
 StartupNotify=false
