@@ -1,7 +1,7 @@
 pkgbase = python-syrupy
 	pkgdesc = The sweeter pytest snapshot plugin
 	pkgver = 4.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tophat/syrupy
 	arch = any
 	license = Apache
