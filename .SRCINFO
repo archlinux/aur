@@ -1,0 +1,18 @@
+pkgbase = ros2-humble-controller-manager
+	pkgdesc = Description of controller_manager
+	pkgver = 2.24.1
+	pkgrel = 1
+	url = https://index.ros.org/p/controller_manager/
+	arch = any
+	depends = ros2-humble
+	depends = ros2-humble-backward-ros
+	depends = ros2-humble-controller-interface
+	depends = ros2-humble-controller-manager-msgs
+	depends = ros2-humble-diagnostic-updater
+	depends = ros2-humble-hardware-interface
+	depends = ros2-humble-realtime-tools
+	depends = ros2-humble-ros2-control-test-assets
+	source = https://github.com/ros-controls/ros2_control/archive/refs/tags/2.24.1.tar.gz
+	sha256sums = ceaa6c11965e2136d1a511584bdaf5694f1e665429860ccac8b65f59230e14b2
+
+pkgname = ros2-humble-controller-manager
