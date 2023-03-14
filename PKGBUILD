@@ -11,7 +11,7 @@ BUILDENV+=(!check)
 _pkgname=nushell
 pkgname=$_pkgname-git
 pkgver=0.76.0.r134.gc7583ec
-pkgrel=1
+pkgrel=2
 pkgdesc='A new type of shell'
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 url='https://www.nushell.sh'
@@ -21,7 +21,6 @@ depends=('openssl' 'libxcb' 'curl' 'bzip2')
 makedepends=('git' 'cargo')
 conflicts=("$_pkgname")
 provides=("$_pkgname=$pkgver")
-options=('!lto')
 install=nushell.install
 source=("${pkgname%-git}::git+$_url.git")
 sha256sums=('SKIP')
@@ -41,6 +40,7 @@ build() {
 	cd "${pkgname%-git}"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+	CFLAGS+=" -ffat-lto-objects"
 	cargo build --release --frozen --workspace --features=extra,dataframe
 }
 
