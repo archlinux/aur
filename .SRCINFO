@@ -1,6 +1,6 @@
 pkgbase = maa-assistant-arknights
 	pkgdesc = An Arknights assistant
-	pkgver = 4.12.2
+	pkgver = 4.12.3
 	pkgrel = 1
 	url = https://github.com/MaaAssistantArknights/MaaAssistantArknights
 	install = maa-assistant-arknights.install
@@ -18,7 +18,7 @@ pkgbase = maa-assistant-arknights
 	makedepends = zip
 	depends = opencv
 	depends = onnxruntime
-	source = MaaAssistantArknights::git+https://github.com/MaaAssistantArknights/MaaAssistantArknights.git#tag=v4.12.2
+	source = MaaAssistantArknights::git+https://github.com/MaaAssistantArknights/MaaAssistantArknights.git#tag=v4.12.3
 	source = MaaDeps::git+https://github.com/MaaAssistantArknights/MaaDeps.git
 	source = vcpkg::git+https://github.com/microsoft/vcpkg.git
 	source = MaaDeps.patch
