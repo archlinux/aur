@@ -2,13 +2,13 @@
 
 pkgname=convco
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Conventional commits, changelog, versioning, validation'
 url='https://convco.github.io'
 license=('MIT')
 arch=('x86_64' 'i686' 'arm' 'aarch64')
 depends=('gcc-libs')
-makedepends=('cargo')
+makedepends=('cargo' 'cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/convco/convco/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('88c92b175163c8847da7dd201d32106c51ff85e2c992c2a3ff67e29ecbe57abb')
 b2sums=('04a6d1610651b7fd397ef72b850e07e59eee7e5f27086c817f88b4d8be69e0abf583fba43fce0281fdd8990bbda3c1a75b877017867241a7d3311d7939114781')
