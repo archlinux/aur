@@ -1,0 +1,23 @@
+post_install() {
+    systemctl enable --now lenovo-fancurve.service
+    systemctl enable --now lenovo-fancurve-restart.path
+    systemctl enable --now lenovo-fancurve-restart.service
+    systemctl status --now lenovo-fancurve.service
+    systemctl status --now lenovo-fancurve-restart.path
+    systemctl status --now lenovo-fancurve-restart.service
+	echo "Service was enable"
+    echo "If fail reboot the system because LenovoLegionLinux module was not install"
+}
+
+post_upgrade() {
+ post_install $1
+}
+
+pre_remove() {
+	depmod -a $(uname -r)
+    systemctl disable lenovo-fancurve.service
+    systemctl disable lenovo-fancurve-restart.path
+    systemctl disable lenovo-fancurve-restart.service
+	echo Uninstall finished.
+	echo Reboot the system.
+}
