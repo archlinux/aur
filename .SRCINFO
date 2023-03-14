@@ -1,0 +1,20 @@
+pkgbase = certbot-dns-dnspod-git
+	pkgdesc = A certbot dns plugin to obtain certificates using dnspod.
+	pkgver = r14.b8ce943
+	pkgrel = 1
+	url = https://github.com/tengattack/certbot-dns-dnspod
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-acme
+	depends = certbot
+	depends = python-zope-interface
+	depends = python-mock
+	depends = dns-lexicon
+	provides = certbot-dns-dnspod
+	source = git+https://github.com/tengattack/certbot-dns-dnspod.git
+	sha512sums = SKIP
+
+pkgname = certbot-dns-dnspod-git
