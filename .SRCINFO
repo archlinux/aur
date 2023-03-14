@@ -1,0 +1,20 @@
+pkgbase = diohsc
+	pkgdesc = Line-based command-oriented interactive client for the gemini protocol.
+	pkgver = 0.1.12
+	pkgrel = 1
+	url = https://mbays.sdf.org/diohsc/
+	arch = x86_64
+	license = GPL3
+	makedepends = ghc
+	makedepends = cabal-install
+	depends = haskell-terminal-size
+	depends = haskell-terminal-size
+	depends = haskell-random
+	depends = haskell-regex-posix
+	depends = haskell-network-uri
+	depends = haskell-network
+	depends = haskell-async
+	source = https://mbays.sdf.org/diohsc/diohsc-0.1.12-src.tgz
+	sha512sums = 34b5294ef688d535acbfb882348cf41ec642860ee113509a726c6e3c84ed724dae251252813e56cccc50423b0b1a64d915defd7db5efd164374db1b884021c6a
+
+pkgname = diohsc
