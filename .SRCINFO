@@ -8,8 +8,10 @@ pkgbase = binfetch-git
 	arch = aarch64
 	arch = armv7
 	license = CC0
-	depends = ib-git
-	source = git+https://github.com/Nik-Nothing/binfetch.git
+	depends = ib
+	provides = binfetch
+	conflicts = binfetch
+	source = binfetch::git+https://github.com/Nik-Nothing/binfetch.git
 	sha256sums = SKIP
 
 pkgname = binfetch-git
