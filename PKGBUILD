@@ -5,7 +5,7 @@
 pkgbase=snes9x-git
 _pkgbase=snes9x
 pkgname=(snes9x-git snes9x-gtk-git)
-pkgver=1.61.r13.g78d006ff
+pkgver=1.61.r180.gd8eb6c70
 pkgrel=1
 pkgdesc="Port of the Snes9x emulator (git version)"
 arch=('x86_64')
@@ -42,9 +42,11 @@ build() {
     --enable-netplay
   make
 
-  cd "${srcdir}"
-  arch-meson snes9x/gtk build
-  ninja -C build
+
+  cd "${srcdir}"/snes9x/gtk
+  cmake .
+  cmake --build .
+  
 }
 
 package_snes9x-git() {
@@ -72,24 +74,15 @@ package_snes9x-gtk-git() {
   conflicts=('snes9x-gtk')
   provides=('snes9x-gtk')
 
-  DESTDIR="${pkgdir}" ninja -C build install
+  cd ${srcdir}/snes9x/gtk
+  cmake --install . --prefix="${pkgdir}/usr"
 
-  cd "${_pkgbase}"
+  cd "${srcdir}/${_pkgbase}"
 
   install -d "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm644 {unix/snes9x.conf.default,docs/{control-inputs,controls,snapshots}.txt} \
     "${pkgdir}/usr/share/doc/${pkgname}/"
   install -vDm644 LICENSE -t \
     "${pkgdir}/usr/share/licenses/${pkgname}"
-
-   # Remove glslang files
-   rm "${pkgdir}/usr/bin/glslangValidator"
-   rm "${pkgdir}/usr/lib/libHLSL.a"
-   rm "${pkgdir}/usr/lib/libOGLCompiler.a"
-   rm "${pkgdir}/usr/lib/libOSDependent.a"
-   rm "${pkgdir}/usr/lib/libSPIRV.a"
-   rm "${pkgdir}/usr/lib/libSPVRemapper.a"
-   rm "${pkgdir}/usr/lib/libglslang.a"
-
 
 }
