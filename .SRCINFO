@@ -1,0 +1,18 @@
+pkgbase = ros2-humble-moveit-ros-planning
+	pkgdesc = Planning components of MoveIt that use ROS
+	pkgver = 2.5.4
+	pkgrel = 1
+	url = https://index.ros.org/p/moveit_ros_planning/
+	arch = any
+	makedepends = ros2-humble-moveit-common
+	depends = ros2-humble
+	depends = ros2-humble-moveit-core
+	depends = ros2-humble-moveit-ros-occupancy-map-monitor
+	depends = ros2-humble-moveit-msgs
+	depends = ros2-humble-srdfdom
+	depends = urdfdom
+	depends = eigen
+	source = https://github.com/ros-planning/moveit2/archive/refs/tags/2.5.4.tar.gz
+	sha256sums = 42ac45e2631d59203edfdfc2f521312f7ddef04ff5baf1fec43c65f79495d7a6
+
+pkgname = ros2-humble-moveit-ros-planning
