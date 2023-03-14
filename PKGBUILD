@@ -1,3 +1,4 @@
+# Maintainer: billow <billow.fun<at>gmail.com>
 _compiler=clang
 pkgname=mlir
 pkgver=15.0.7
