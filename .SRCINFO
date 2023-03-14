@@ -1,0 +1,15 @@
+pkgbase = ros2-humble-moveit-resources-panda-moveit-config
+	pkgdesc = MoveIt Resources for testing: Franka Emika Panda
+	pkgver = 2.0.6
+	pkgrel = 1
+	url = https://index.ros.org/p/panda_moveit_config/
+	arch = any
+	depends = ros2-humble
+	depends = ros2-humble-joint-state-publisher
+	depends = ros2-humble-joint-state-publisher-gui
+	depends = ros2-humble-xacro
+	depends = ros2-humble-moveit-resources-panda-description
+	source = https://github.com/ros-planning/moveit_resources/archive/refs/tags/2.0.6.tar.gz
+	sha256sums = 25d86930fd51927670ea3135ad398bc6b4a9ade2c6a629d63e02f818431a52ac
+
+pkgname = ros2-humble-moveit-resources-panda-moveit-config
