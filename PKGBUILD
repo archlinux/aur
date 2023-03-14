@@ -1,6 +1,8 @@
 _compiler=clang
 pkgname=mlir
-pkgver=13.0.0
+pkgver=15.0.7
+_url=https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}
+_file=llvm-project-${pkgver}.src.tar.xz
 pkgrel=1
 pkgdesc="Multi-Level IR Compiler Framework for LLVM"
 arch=('x86_64')
@@ -17,17 +19,16 @@ makedepends=("cmake"
                "gcc")
              )
 options=('!debug' 'strip')
-_url=https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}
 # No source package for MLIR: https://bugs.llvm.org/show_bug.cgi?id=52248
-source=("${_url}/llvm-project-${pkgver}.src.tar.xz")
-sha256sums=('6075ad30f1ac0e15f07c1bf062c1e1268c241d674f11bd32cdf0e040c71f2bf3')
+source=("${_url}/${_file}")
+sha256sums=('8b5fcb24b4128cf04df1b0b9410ce8b1a729cb3c544e6da885d234280dedeac6')
 noextract=(llvm-project-${pkgver}.src.tar.xz)
 
 prepare() {
   # Extracting llvm-project.src.tar.xz due to symlink(s) without pre-existing target(s)
   cd "${srcdir}"
   [[ -d mlir ]] && rm -rf mlir
-  tar --strip-components=1 -xJf ${srcdir}/llvm-project-${pkgver}.src.tar.xz -C ${srcdir} || true
+  tar --strip-components=1 -xJf ${srcdir}/${_file} -C ${srcdir} || true
 }
 
 build() {
