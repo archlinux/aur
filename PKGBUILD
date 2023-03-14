@@ -1,7 +1,7 @@
 # Maintainer: Charles Vejnar <first name [dot] last name [at] gmail [dot] com>
 
 pkgname=python-pyfnutils
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="Small utility functions for Python: logging, parallel tasks, zstd."
 arch=("any")
@@ -13,7 +13,7 @@ makedepends=('python-build'
              'python-setuptools'
              'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vejnar/pyfnutils/archive/refs/tags/v$pkgver.tar.gz")
-sha1sums=('055825e6dbeebde50e955535c22a7af973ea4d41')
+sha1sums=('289010ce86ddef22fe81245bca1cb7755883ad03')
 
 build() {
     cd "$srcdir/pyfnutils-$pkgver"
