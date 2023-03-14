@@ -5,13 +5,13 @@
 
 _pkgname=shattered-pixel-dungeon
 pkgname=$_pkgname-git
-pkgver=5932v1.4.3
+pkgver=6279v2.0.0
 pkgrel=1
 pkgdesc='Shattered fork of the popular rogue-like game'
 url='https://shatteredpixel.com'
 license=('GPL3')
 depends=('java-runtime' 'bash')
-makedepends=('git' 'jdk17-openjdk')
+makedepends=('git' 'jdk-openjdk')
 arch=('any')
 
 source=(
@@ -41,8 +41,7 @@ prepare() {
 build() {
   cd $_pkgname
   unset _JAVA_OPTIONS
-  export PATH=/usr/lib/jvm/java-17-openjdk/bin/:$PATH
-  GRADLE_USER_HOME="$srcdir" ./gradlew desktop:release
+  GRADLE_HOME="$srcdir" ./gradlew desktop:release
 }
 
 package() {
