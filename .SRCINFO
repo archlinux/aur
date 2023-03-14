@@ -1,17 +1,12 @@
 pkgbase = ten-hands-bin
 	pkgdesc = Simplest way to organize and run tasks
-	pkgver = 2.10.0
+	pkgver = 2.10.3
 	pkgrel = 1
 	url = https://tenhands.app
 	arch = x86_64
 	license = MIT
-	depends = gtk3
-	depends = nss
-	provides = ten-hands
-	source = ten-hands-bin-2.10.0.deb::https://github.com/saisandeepvaddi/ten-hands/releases/download/v2.10.0/ten-hands-app_2.10.0_amd64.deb
-	source = LICENSE::https://github.com/saisandeepvaddi/ten-hands/raw/master/LICENSE
-	sha256sums = 98990cc5088ae35becf0360a3e6906728ebca809b5b249598751d5658e7551fd
-	sha256sums = 6b30b7530e47b208e4da08c8813ca52c63aae00d74d0b2036548069f59588d02
+	provides = saisandeepvaddi
+	source = ten-hands-app-2.10.3.deb::https://github.com/saisandeepvaddi/ten-hands/releases/download/v2.10.3/ten-hands-app_2.10.3_amd64.deb
+	sha256sums = 5a1a4d3970a46d1fde2ccb506653f637a8b0edac5a77a64d12a45e723b555daa
 
 pkgname = ten-hands-bin
-
