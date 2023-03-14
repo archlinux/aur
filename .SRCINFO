@@ -1,17 +1,22 @@
 pkgbase = python-thefuzz
-	pkgdesc = Fuzzy string matching like a boss
+	pkgdesc = Fuzzy string matching in Python
 	pkgver = 0.19.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/seatgeek/thefuzz
 	arch = any
-	license = GPL-2.0
-	checkdepends = python-pycodestyle
+	license = GPL2
 	checkdepends = python-hypothesis
+	checkdepends = python-pycodestyle
 	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	depends = python
+	makedepends = python-wheel
 	depends = python-levenshtein
-	source = git+https://github.com/seatgeek/thefuzz.git
+	provides = python-thefuzz
+	conflicts = python-thefuzz
+	source = python-thefuzz::git+https://github.com/seatgeek/thefuzz#tag=0.19.0
 	sha256sums = SKIP
 
 pkgname = python-thefuzz

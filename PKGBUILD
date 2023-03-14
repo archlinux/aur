@@ -1,34 +1,48 @@
-# Maintainer: oldNo.7 <oldNo.7@archlinux.org>
+# Contributor: oldNo.7 <oldNo.7@archlinux.org>
 
-_name='thefuzz'
-pkgname="python-$_name"
+_pkgname=python-thefuzz
+pkgname=$_pkgname
 pkgver=0.19.0
-pkgrel=1
-pkgdesc='Fuzzy string matching like a boss'
-arch=('any')
+pkgrel=2
+pkgdesc='Fuzzy string matching in Python'
+arch=(any)
+_url="https://pypi.python.org/pypi/thefuzz"
 url="https://github.com/seatgeek/thefuzz"
-license=('GPL-2.0')
-depends=('python' 'python-levenshtein')
-makedepends=('python-setuptools')
-checkdepends=('python-pycodestyle' 'python-hypothesis' 'python-pytest')
-source=(
-	"git+$url.git"
+license=('GPL2')
+depends=(
+  'python-levenshtein'
 )
-sha256sums=('SKIP')
+provides=(${_pkgname})
+conflicts=(${provides[@]})
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+checkdepends=(
+  'python-hypothesis'
+  'python-pycodestyle'
+  'python-pytest'
+)
+source=("$_pkgname"::"git+$url#tag=$pkgver")
+sha256sums=(SKIP)
 
 build() {
-	cd "$_name"
-	python setup.py build
+  cd "$srcdir/$_pkgname"
+  python -m build --no-isolation --wheel
 }
 
 check() {
-	cd "$_name"
-	pytest
+  cd "$srcdir/$_pkgname"
+  pytest
 }
 
 package() {
-	cd "$_name"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd "$srcdir/$_pkgname"
+  python -m installer \
+    --compile-bytecode 1 \
+    --destdir "$pkgdir" \
+    dist/*.whl
 }
-
-# vim:set ts=4 sw=4 et:
