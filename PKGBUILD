@@ -3,7 +3,7 @@
 pkgname=tt-rss-no-autoplay-git
 _gitname=ttrss-no-autoplay
 pkgver=a50e6cf
-pkgrel=1
+pkgrel=2
 pkgdesc="TT-RSS plugin to stop autoplaying HTML5 videos"
 arch=('any')
 url="https://dev.tt-rss.org/tt-rss/ttrss-no-autoplay"
@@ -21,7 +21,7 @@ pkgver() {
 }
 
 package() {
-  _instdir="$pkgdir/usr/share/webapps/tt-rss/plugins.local/no-autoplay"
+  _instdir="$pkgdir/usr/share/webapps/tt-rss/plugins.local/af-zz-noautoplay"
   install -dm755 "$_instdir"
   install -vDm644 "$_gitname/init.php" "$_instdir/"
   install -vDm644 "$_gitname/init.js" "$_instdir/"
