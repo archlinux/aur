@@ -1,0 +1,12 @@
+#!/usr/bin/ash
+# SPDX-License-Identifier: GPL-2.0-only
+
+run_hook() {
+  read -n 1 -t 0.3 char
+  if [[ "$char" == "x" ]]; then
+    echo "Entering busybox ash shell."
+    echo "Enter 'bpir3-flash2emmc /tmp/bpir.img.xz' to flash it to the EMMC on th R3."
+    echo "Enter 'exit' to continue booting."
+    ash
+  fi
+}

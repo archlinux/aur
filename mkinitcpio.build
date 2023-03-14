@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# SPDX-License-Identifier: GPL-2.0-only
+
+build() {
+    add_runscript
+}
+
+help() {
+    cat <<HELPEOF
+This hook is for the Bananapi-R64/R3
+HELPEOF
+}

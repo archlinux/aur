@@ -12,8 +12,8 @@ _desc="AArch64 kernel for BPI-R64 and BPI-R3"
 _r3dts="https://github.com/torvalds/linux/raw/master/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts"
 _r3dtsi="https://github.com/torvalds/linux/raw/master/arch/arm64/boot/dts/mediatek/mt7986a.dtsi"
 #_lto="true"  # Uncomment this line to enable CLANG-LTO
-pkgver=6.2.2.bpi.r64.r3.1
-pkgrel=2
+pkgver=6.2.6.bpir
+pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -24,10 +24,14 @@ source=('defconfig'
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook'
+        'mkinitcpio.conf'
+        'mkinitcpio.hook'
+        'mkinitcpio.build'
+        'bpir3-flash2emmc'
 )
-md5sums=(SKIP SKIP SKIP SKIP)
+md5sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
 
-export LOCALVERSION="-${pkgrel}"
+export LOCALVERSION=""
 
 [[ "$_lto" == "true" ]] && _llvm="LLVM=1" || _llvm=""
 
@@ -135,6 +139,22 @@ _package() {
   # install mkinitcpio preset file
   sed "${_subst}" ../linux.preset |
     install -Dm644 /dev/stdin "${pkgdir}/etc/mkinitcpio.d/${pkgbase}.preset"
+
+  # install mkinitcpio conf file
+  sed "${_subst}" ../mkinitcpio.conf |
+    install -Dm644 /dev/stdin "${pkgdir}/etc/mkinitcpio-${pkgbase}.conf"
+
+  # install mkinitcpio runtime hook
+  sed "${_subst}" ../mkinitcpio.hook |
+    install -Dm644 /dev/stdin "${pkgdir}/etc/initcpio/hooks/${pkgbase}"
+
+  # install mkinitcpio build hook
+  sed "${_subst}" ../mkinitcpio.build |
+    install -Dm644 /dev/stdin "${pkgdir}/etc/initcpio/install/${pkgbase}"
+
+  # install R3 EMMC flash script
+  sed "${_subst}" ../bpir3-flash2emmc |
+    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/bpir3-flash2emmc"
 
   # install pacman hooks
   sed "${_subst}" ../60-linux.hook |
