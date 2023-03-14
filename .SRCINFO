@@ -1,0 +1,23 @@
+pkgbase = ros2-humble-moveit-ros-planning-interface
+	pkgdesc = Components of MoveIt that offer simpler interfaces to planning and execution
+	pkgver = 2.5.4
+	pkgrel = 1
+	url = https://index.ros.org/p/moveit_ros_planning_interface/
+	arch = any
+	makedepends = ros2-humble-moveit-common
+	makedepends = ros2-humble-moveit-resources-fanuc-moveit-config
+	makedepends = ros2-humble-moveit-resources-panda-moveit-config
+	makedepends = ros2-humble-moveit-simple-controller-manager
+	makedepends = ros2-humble-moveit-planners-ompl
+	makedepends = ros2-humble-moveit-configs-utils
+	depends = ros2-humble
+	depends = ros2-humble-moveit-core
+	depends = ros2-humble-moveit-ros-planning
+	depends = ros2-humble-moveit-ros-warehouse
+	depends = ros2-humble-moveit-ros-move-group
+	depends = ros2-humble-moveit-msgs
+	depends = python
+	source = https://github.com/ros-planning/moveit2/archive/refs/tags/2.5.4.tar.gz
+	sha256sums = 42ac45e2631d59203edfdfc2f521312f7ddef04ff5baf1fec43c65f79495d7a6
+
+pkgname = ros2-humble-moveit-ros-planning-interface
