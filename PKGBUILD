@@ -5,18 +5,15 @@
 # Upstream: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-vfio
-pkgver=6.2.1.arch1
+pkgver=6.2.5.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/archlinux/linux/commits/$_srctag"
 arch=(x86_64)
 license=(GPL2)
-makedepends=(
-  bc libelf pahole cpio perl tar xz gettext
-  xmlto 'python-sphinx<6.0.0' python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
-  git
-)
+makedepends=(bc libelf pahole cpio perl tar xz xmlto python-sphinx graphviz
+imagemagick texlive-latexextra git)
 options=('!strip')
 _srcname=archlinux-linux
 source=(
@@ -32,7 +29,7 @@ validpgpkeys=(
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
 sha256sums=('SKIP'
-            'f35bb39db7324a45e78e6c75c1a60f117fea3f7d0df9f4a32bed411751d6ffea'
+            'f9a0027bea53a7160759858c535eb0ba0b3bea34c0130f47f2d5bba75d102170'
             '46de3d90603a18762819a21605865e4b4a563744ff3ca73f7b2916c971b1188c'
             '2e383fe0b5e1ba907a4d50e8e04d233f2b5442bba97449e867ae6949ec14c190')
 

@@ -1,8 +1,8 @@
 pkgbase = linux-vfio
 	pkgdesc = Linux
-	pkgver = 6.2.1.arch1
+	pkgver = 6.2.5.arch1
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v6.2.1-arch1
+	url = https://github.com/archlinux/linux/commits/v6.2.5-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -12,16 +12,14 @@ pkgbase = linux-vfio
 	makedepends = perl
 	makedepends = tar
 	makedepends = xz
-	makedepends = gettext
 	makedepends = xmlto
-	makedepends = python-sphinx<6.0.0
-	makedepends = python-sphinx_rtd_theme
+	makedepends = python-sphinx
 	makedepends = graphviz
 	makedepends = imagemagick
 	makedepends = texlive-latexextra
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.2.1-arch1
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.2.5-arch1
 	source = config
 	source = 0001-add-acs-overrides.patch
 	source = 0002-i915-vga-arbiter.patch
@@ -30,7 +28,7 @@ pkgbase = linux-vfio
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	sha256sums = SKIP
-	sha256sums = f35bb39db7324a45e78e6c75c1a60f117fea3f7d0df9f4a32bed411751d6ffea
+	sha256sums = f9a0027bea53a7160759858c535eb0ba0b3bea34c0130f47f2d5bba75d102170
 	sha256sums = 46de3d90603a18762819a21605865e4b4a563744ff3ca73f7b2916c971b1188c
 	sha256sums = 2e383fe0b5e1ba907a4d50e8e04d233f2b5442bba97449e867ae6949ec14c190
 
