@@ -1,0 +1,13 @@
+pkgbase = ros2-humble-warehouse-ros
+	pkgdesc = Persistent storage of ROS messages
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = https://index.ros.org/p/warehouse_ros/
+	arch = any
+	depends = ros2-humble
+	depends = boost-libs
+	depends = openssl
+	source = https://github.com/ros-planning/warehouse_ros/archive/refs/tags/2.0.4.tar.gz
+	sha256sums = 84edb26f4e959ef193a02248bd1d8420b2e144520719189844bace97ee440ddc
+
+pkgname = ros2-humble-warehouse-ros
