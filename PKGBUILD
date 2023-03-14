@@ -1,6 +1,7 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
-pkgname=lfp
+_pkgname=lfp
+pkgname=lfp-git
 pkgver=3.1
 pkgrel=1
 pkgdesc='A wrapper for the lf file manager with in-terminal media previews, on-exit directory changing and much more'
@@ -16,12 +17,12 @@ source=("git+https://gitlab.com/a4to/lfp.git")
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$${_pkgname}"
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$${_pkgname}"
   make DESTDIR="$pkgdir" install
 }
 
