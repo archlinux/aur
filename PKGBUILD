@@ -1,7 +1,7 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 _name=pytest-datafiles
 pkgname=python-pytest-datafiles
-pkgver=2.0.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="py.test plugin to create a 'tmpdir' containing predefined files/directories."
 arch=(any)
@@ -10,7 +10,7 @@ license=('MIT')
 depends=(python-pytest)
 makedepends=(python-setuptools)
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('6f6558d2a6e7cbde714f62411ce84e5c02ccd195bd7a50263bfdd888be4a1544')
+sha256sums=('a70c4c66a36d1cdcfc095607f04eee66eaef3fa64cbb62d60c47ce169901d1d4')
 
 build() {
   cd "$srcdir/$_name-$pkgver"

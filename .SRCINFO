@@ -1,13 +1,13 @@
 pkgbase = python-pytest-datafiles
 	pkgdesc = py.test plugin to create a 'tmpdir' containing predefined files/directories.
-	pkgver = 2.0.1
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/omarkohl/pytest-datafiles
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-pytest
-	source = https://pypi.org/packages/source/p/pytest-datafiles/pytest-datafiles-2.0.1.tar.gz
-	sha256sums = 6f6558d2a6e7cbde714f62411ce84e5c02ccd195bd7a50263bfdd888be4a1544
+	source = https://pypi.org/packages/source/p/pytest-datafiles/pytest-datafiles-3.0.0.tar.gz
+	sha256sums = a70c4c66a36d1cdcfc095607f04eee66eaef3fa64cbb62d60c47ce169901d1d4
 
 pkgname = python-pytest-datafiles
