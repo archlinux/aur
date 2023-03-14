@@ -3,7 +3,7 @@ _base=trame-vega
 pkgname=python-${_base}
 pkgdesc="Vega widget for trame"
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/Kitware/${_base}"
 license=('custom:BSD-3-clause')
@@ -14,7 +14,6 @@ source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('0eadb709ee1de01781bfa0085ead316cd35fbd014151f969af5dd410134d8e3f24ceff69635ea0899ca9f39f6e2aba56a9939982d3040a9c7a5cb4d4831ea113')
 
 prepare() {
-  sed -i 's/recursive-include/#recursive-include/' ${_base}-${pkgver}/MANIFEST.in
   sed -i 's/include/#include/' ${_base}-${pkgver}/MANIFEST.in
 }
 
