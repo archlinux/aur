@@ -11,12 +11,14 @@ depends=('python')
 makedepends=('python-build'
              'python-installer'
              'python-setuptools'
+             'python-setuptools-scm'
              'python-wheel')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/vejnar/pyfnutils/archive/refs/tags/v$pkgver.tar.gz")
-sha1sums=('289010ce86ddef22fe81245bca1cb7755883ad03')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/vejnar/pyfnutils/archive/v$pkgver.tar.gz")
+sha256sums=('320bf31cab6d6197eacea5a20931b134890627534f418a9f8a1c1618344a6596')
 
 build() {
     cd "$srcdir/pyfnutils-$pkgver"
+    export SETUPTOOLS_SCM_PRETEND_VERSION="$pkgver"
     python -m build --wheel --no-isolation
 }
 
