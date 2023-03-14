@@ -1,12 +1,12 @@
 pkgbase = ignition-utils
 	pkgdesc = Classes and functions for robot applications
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gazebosim.org/libs/utils
 	arch = any
 	license = Apache
 	depends = cmake
-	depends = ignition-cmake
+	depends = ignition-cmake>=3
 	source = ignition-utils-2.0.0.tar.gz::https://github.com/gazebosim/gz-utils/archive/gz-utils2_2.0.0.tar.gz
 	sha256sums = af9e5b862e10aa0cedd97d9c5ca3eb9a443b7c9e560a083e8f0399e93e1cfafa
 
