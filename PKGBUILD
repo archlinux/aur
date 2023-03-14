@@ -9,7 +9,7 @@ _gitbranch="bpir"
 pkgname=bpir64-atf-git
 epoch=2
 pkgver=v2.8r12166.296bf7500
-pkgrel=2
+pkgrel=3
 pkgdesc='ATF BPI-R64 & BPI-R3 images including fiptool'
 _ubootpkgver=2023.01
 url='https://github.com/mtk-openwrt/arm-trusted-firmware.git'
@@ -59,10 +59,10 @@ _buildmkimage() {
   ARCH=arm64 make clean
   ARCH=arm64 make my_defconfig
   ARCH=arm64 make tools-only
-  mv -vf tools/mkimage bpir3-mkimage
+  mv -vf tools/mkimage nostretch-mkimage
   patch -p1 -N -r - < "${srcdir}/mtkimage-gpt-expand.patch"
   ARCH=arm64 make tools-only
-  mv -vf tools/mkimage bpir64-mkimage
+  mv -vf tools/mkimage stretch-mkimage
 }
 
 _buildfiptool() {
@@ -72,18 +72,19 @@ _buildfiptool() {
 }
 
 _buildimage() {
-  _plat=$1; _bpir=$2; _atfdev=$3; _rest="${@:4}"
+  _plat=$1; _bpir=$2; _atfdev=$3; _stretch=$4; _rest="${@:5}"
   cd "${srcdir}/${_gitname}"
+  rm -f build/${_plat}/release/${_bpir}-atf-${_atfdev}-*.bin
   sed -i 's/.*entry = get_partition_entry.*/\tentry = get_partition_entry("'${_bpir}'-'${_atfdev}'-fip");/' \
          plat/mediatek/${_plat}/bl2_boot_mmc.c
   touch plat/mediatek/${_plat}/platform.mk
   unset CXXFLAGS CPPFLAGS LDFLAGS
   export CFLAGS=-Wno-error
   make PLAT=${_plat} BOOT_DEVICE=$_atfdev LOG_LEVEL=40 USE_MKIMAGE=1 \
-       MKIMAGE="${srcdir}/u-boot-${_ubootpkgver}/${_bpir}-mkimage" ${_rest} all # MTK_BL33_IS_64BIT=1 
-  if [[ "${_bpir}" == "bpir64" ]]; then
+       MKIMAGE="${srcdir}/u-boot-${_ubootpkgver}/${_stretch}-mkimage" ${_rest} all # MTK_BL33_IS_64BIT=1 
+  if [[ "${_stretch}" == "stretch" ]]; then
     dd of=build/${_plat}/release/${_bpir}-atf-${_atfdev}-header.bin bs=1 count=440 if=build/${_plat}/release/bl2.img
-    dd of=build/${_plat}/release/${_bpir}-atf-${_atfdev}-atf.bin         skip=34   if=build/${_plat}/release/bl2.img
+    dd of=build/${_plat}/release/${_bpir}-atf-${_atfdev}-atf.bin          skip=34  if=build/${_plat}/release/bl2.img
   else
     dd of=build/${_plat}/release/${_bpir}-atf-${_atfdev}-atf.bin                   if=build/${_plat}/release/bl2.img
   fi
@@ -98,14 +99,14 @@ _installimage() {
 }
 
 build() {
-  if [ ! -f "${srcdir}/u-boot-${_ubootpkgver}/bpir3-mkimage"  ] || \
-     [ ! -f "${srcdir}/u-boot-${_ubootpkgver}/bpir64-mkimage" ]; then _buildmkimage
+  if [ ! -f "${srcdir}/u-boot-${_ubootpkgver}/nostretch-mkimage"  ] || \
+     [ ! -f "${srcdir}/u-boot-${_ubootpkgver}/stretch-mkimage" ]; then _buildmkimage
   fi
   _buildfiptool
-  _buildimage mt7622 bpir64 sdmmc DDR3_FLYBY=1 DEVICE_HEADER_OFFSET=0
-  _buildimage mt7622 bpir64 emmc  DDR3_FLYBY=1 DEVICE_HEADER_OFFSET=0
-  _buildimage mt7986 bpir3  sdmmc DRAM_USE_DDR4=1
-  _buildimage mt7986 bpir3  emmc  DRAM_USE_DDR4=1
+  _buildimage mt7622 bpir64 sdmmc stretch   DDR3_FLYBY=1 DEVICE_HEADER_OFFSET=0
+  _buildimage mt7622 bpir64 emmc  stretch   DDR3_FLYBY=1 DEVICE_HEADER_OFFSET=0
+  _buildimage mt7986 bpir3  sdmmc nostretch DRAM_USE_DDR4=1
+  _buildimage mt7986 bpir3  emmc  stretch   DRAM_USE_DDR4=1
 }
  
 package() {
