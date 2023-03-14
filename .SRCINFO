@@ -1,0 +1,12 @@
+pkgbase = ros2-humble-joint-state-publisher
+	pkgdesc = This package contains a tool for setting and publishing joint state values for a given URDF
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://index.ros.org/p/joint_state_publisher/
+	arch = any
+	makedepends = python-pytest
+	depends = ros2-humble
+	source = https://github.com/ros/joint_state_publisher/archive/refs/tags/2.3.0.tar.gz
+	sha256sums = 648d177b988b1da6316cea552cd999c37dd35ec514f7d1d9edd4a823ab2656d3
+
+pkgname = ros2-humble-joint-state-publisher
