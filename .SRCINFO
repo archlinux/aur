@@ -1,6 +1,6 @@
 pkgbase = linux-clear
 	pkgdesc = Clear Linux
-	pkgver = 6.2.2
+	pkgver = 6.2.6
 	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
@@ -14,20 +14,16 @@ pkgbase = linux-clear
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.2.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.2.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-6.2.2.xz
-	source = linux-clear::git+https://github.com/clearlinux-pkgs/linux.git#tag=6.2.1-1280
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-6.2.6.xz
+	source = linux-clear::git+https://github.com/clearlinux-pkgs/linux.git#tag=6.2.6-1290
 	source = more-uarches-20230105.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20230105.tar.gz
-	source = 0001-pci-Enable-overrides-for-missing-ACS-capabilities-c527f69aa31ddb2cc15b86951bd3c2610df77872.patch::https://raw.githubusercontent.com/xanmod/linux-patches/c527f69aa31ddb2cc15b86951bd3c2610df77872/linux-6.2.y-xanmod/pci_acso/0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch
-	source = 0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW-c527f69aa31ddb2cc15b86951bd3c2610df77872.patch::https://raw.githubusercontent.com/xanmod/linux-patches/c527f69aa31ddb2cc15b86951bd3c2610df77872/linux-6.2.y-xanmod/userns/0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 74862fa8ab40edae85bb3385c0b71fe103288bce518526d63197800b3cbdecb1
 	sha256sums = SKIP
-	sha256sums = a1699c7183afcbb2af7c0afb30a2680f867775f934b111a382cbb16760f2f8fa
+	sha256sums = b3276216581b98b777990b3d08aad9568db2665bf55c8d30f46f95643690286c
 	sha256sums = SKIP
 	sha256sums = 802946f623c69ae1a636b63697c23ca48af31a099415ed837d2c1e168a272d23
-	sha256sums = f9e2de1f448fcae193c2445658dbbc7b9c18f9d4e2a29a68e3e78fb63238b4b7
-	sha256sums = 999b1a2548afebcf88aa0e53b1261b36bb1a3b4d6c575048786f07c8266ee37f
 
 pkgname = linux-clear
 	pkgdesc = The Clear Linux kernel and modules
