@@ -6,7 +6,7 @@ gitver=v6.2.6
 patchver=20230105
 patchname=more-uarches-for-kernel-5.17+.patch
 pkgver=6.2.v.6
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -73,8 +73,8 @@ prepare() {
 
 build() {
   cd "${_srcname}"
-
-  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  #force znver2
+  make ${MAKEFLAGS} LOCALVERSION= bzImage modules KCFLAGS="-O2 -pipe -march=znver2 -mtune=znver2 -fstack-protector-strong"
 }
 
 _package() {
