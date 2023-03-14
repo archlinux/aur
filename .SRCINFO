@@ -1,0 +1,39 @@
+pkgbase = gradle7
+	pkgdesc = Powerful build system for the JVM (version 7)
+	pkgver = 7.6
+	pkgrel = 1
+	url = https://gradle.org/
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = asciidoc
+	makedepends = xmlto
+	makedepends = groovy
+	makedepends = java-environment=11
+	depends = java-environment
+	depends = bash
+	depends = which
+	depends = coreutils
+	depends = findutils
+	depends = sed
+	source = https://services.gradle.org/distributions/gradle-7.6-src.zip
+	source = https://services.gradle.org/distributions/gradle-7.6-all.zip
+	source = gradle7
+	sha256sums = 68132f789c2af4c5e36f07d9ad4869ffa16ee58c5ce6eae4af33bb3f0b5fe635
+	sha256sums = 312eb12875e1747e05c2f81a4789902d7e4ec5defbd1eefeaccc08acf096505d
+	sha256sums = 141ea6cd0b9fda4a9259bd086c2e5d0f6731a0618789623db502394feb2ed867
+	sha512sums = 6b3a86db2a9f590030773e059b2ab0840bc2334e99ddb23d2f85c7d6f0f17bce9d964b96b793f586c24e29186ce99a615a10009283bb14e2bfe59ddcc0d31c82
+	sha512sums = 5c5b9ade91898ec2fe142ff98dc7ae681a9f3b923ce40998a731cb84fdfcdbde6510cc9da026a9359526569e37472b06c1a6bc5a2794d2af5e9d6f1d13a21ac8
+	sha512sums = 99a07d5fe6ea3d0ba96834cd332504481e83a5e2888d4e54ba879d9d130f94f03c248eb63f1149c4abd8f02f9b33b6743b4f7fb4d6f90b9ec740bee6cebbcc6f
+
+pkgname = gradle7
+	optdepends = gradle7-doc: gradle documentation
+	optdepends = gradle7-src: gradle sources
+
+pkgname = gradle7-doc
+	pkgdesc = Powerful build system for the JVM (version 7) (documentation)
+	options = !strip
+
+pkgname = gradle7-src
+	pkgdesc = Powerful build system for the JVM (version 7) (sources)
+	options = !strip

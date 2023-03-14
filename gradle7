@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+export GRADLE_HOME=/usr/share/java/gradle7
+exec /usr/share/java/gradle7/bin/gradle ${1+"$@"}
