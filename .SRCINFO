@@ -1,0 +1,15 @@
+pkgbase = mapeo-desktop-appimage
+	pkgdesc = Local-first mapping and monitoring in remote environments
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = https://mapeo.app/
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	depends = hicolor-icon-theme
+	conflicts = mapeo-desktop
+	options = !strip
+	source = mapeo-desktop-5.6.0.AppImage::https://github.com/digidem/mapeo-desktop/releases/download/v5.6.0/Install_Mapeo_v5.6.0_linux.AppImage
+	sha512sums = d4b0bb1c2ffe52e29f04014b3fa00ed84d848529b196f530decbd3299d6992b2835c31133c75321932cbc34e48b1b57167ec759f24a514c18aa475f9b484926f
+
+pkgname = mapeo-desktop-appimage
