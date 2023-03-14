@@ -13,8 +13,8 @@
 
 pkgbase=imagemagick-full
 pkgname=('imagemagick-full' 'imagemagick-full-doc')
-pkgver=7.1.1.2
-pkgrel=2
+pkgver=7.1.1.3
+pkgrel=1
 arch=('x86_64')
 _qdepth='32'
 pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all possible features)"
@@ -33,20 +33,15 @@ makedepends=(
         'dmalloc' 'flif' 'libfpx' 'libumem-git'
 )
 source=("https://imagemagick.org/archive/releases/ImageMagick-${pkgver%.*}-${pkgver##*.}.tar.xz"{,.asc}
-        '010-imagemagick-fix-memory-leak.patch'::'https://github.com/ImageMagick/ImageMagick/commit/84d7ad135f61073304053a7d9ab2cf66b63df0ef.patch'
         'arch-fonts.diff')
-sha256sums=('d9b1c6e666e6886b8b8aab5d6ff06c3b51e229110115b585e2cf912e5715880a'
+sha256sums=('f47e2218c0d868c1afc065fce54fe073e4fb2269aa81cf98e1b61c2a8eaf417d'
             'SKIP'
-            'bd9d3622aa3b8484daaec20793f0082ea9d62bd9d7e32680c14db4bf90e0f08a'
             '290c6a87845b419459fb552c0e7dcd81fbeafcecc370818d442fedf4d315b7fb')
 validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A')  # Lexie Parsimoniae
 
 prepare() {
     # fix up typemaps to match Arch Linux packages, where possible
     patch -d "ImageMagick-${pkgver%.*}-${pkgver##*.}" -Np1 -i "${srcdir}/arch-fonts.diff"
-    
-    # https://github.com/ImageMagick/ImageMagick/issues/6149
-    patch -d "ImageMagick-${pkgver%.*}-${pkgver##*.}" -Np1 -i "${srcdir}/010-imagemagick-fix-memory-leak.patch"
 }
 
 build() {

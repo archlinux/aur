@@ -1,7 +1,7 @@
 pkgbase = imagemagick-full
 	pkgdesc = An image viewing/manipulation program (Q32 HDRI with all possible features)
-	pkgver = 7.1.1.2
-	pkgrel = 2
+	pkgver = 7.1.1.3
+	pkgrel = 1
 	url = https://www.imagemagick.org/
 	arch = x86_64
 	license = custom
@@ -55,14 +55,12 @@ pkgbase = imagemagick-full
 	makedepends = flif
 	makedepends = libfpx
 	makedepends = libumem-git
-	source = https://imagemagick.org/archive/releases/ImageMagick-7.1.1-2.tar.xz
-	source = https://imagemagick.org/archive/releases/ImageMagick-7.1.1-2.tar.xz.asc
-	source = 010-imagemagick-fix-memory-leak.patch::https://github.com/ImageMagick/ImageMagick/commit/84d7ad135f61073304053a7d9ab2cf66b63df0ef.patch
+	source = https://imagemagick.org/archive/releases/ImageMagick-7.1.1-3.tar.xz
+	source = https://imagemagick.org/archive/releases/ImageMagick-7.1.1-3.tar.xz.asc
 	source = arch-fonts.diff
 	validpgpkeys = D8272EF51DA223E4D05B466989AB63D48277377A
-	sha256sums = d9b1c6e666e6886b8b8aab5d6ff06c3b51e229110115b585e2cf912e5715880a
+	sha256sums = f47e2218c0d868c1afc065fce54fe073e4fb2269aa81cf98e1b61c2a8eaf417d
 	sha256sums = SKIP
-	sha256sums = bd9d3622aa3b8484daaec20793f0082ea9d62bd9d7e32680c14db4bf90e0f08a
 	sha256sums = 290c6a87845b419459fb552c0e7dcd81fbeafcecc370818d442fedf4d315b7fb
 
 pkgname = imagemagick-full
@@ -107,9 +105,9 @@ pkgname = imagemagick-full
 	depends = libfpx
 	depends = libumem-git
 	optdepends = imagemagick-full-doc: manual and API docs
-	provides = imagemagick=7.1.1.2
-	provides = libmagick=7.1.1.2
-	provides = libmagick-full=7.1.1.2
+	provides = imagemagick=7.1.1.3
+	provides = libmagick=7.1.1.3
+	provides = libmagick-full=7.1.1.3
 	conflicts = imagemagick
 	conflicts = libmagick
 	replaces = libmagick-full
@@ -131,5 +129,5 @@ pkgname = imagemagick-full
 pkgname = imagemagick-full-doc
 	pkgdesc = An image viewing/manipulation program (Q32 HDRI with all possible features) (manual and API docs)
 	arch = any
-	provides = imagemagick-doc=7.1.1.2
+	provides = imagemagick-doc=7.1.1.3
 	conflicts = imagemagick-doc
