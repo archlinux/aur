@@ -9,6 +9,7 @@ pkgbase = hyprprop-git
 	depends = hyprevents-git
 	depends = socat
 	depends = slurp
+	depends = jq
 	provides = hyprprop
 	conflicts = hyprprop
 	source = hyprprop::git+https://github.com/vilari-mickopf/hyprprop.git
