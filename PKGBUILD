@@ -3,7 +3,7 @@
 pkgname=python-xdg
 _name='xdg-base-dirs'
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="xdg-base-dirs (formerly xdg), an implementation of the XDG Base Directory Specification in Python"
 arch=('any')
 url="https://github.com/srstevenson/xdg-base-dirs"
@@ -11,7 +11,6 @@ license=('ISC')
 depends=('python')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest')
-conflicts=('python-pyxdg')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('f15938c99f4b03a98e3e8f3e122bc9b5b1c46cf284fe230dbda378f6a762ca4e')
 
