@@ -2,7 +2,7 @@
 
 pkgname=coolercontrol
 _app_id="org.$pkgname.CoolerControl"
-pkgver=0.14.6
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="A program to monitor and control your cooling devices"
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=('nvidia-utils: NVIDIA GPU support')
 provides=("$pkgname")
 conflicts=("$pkgname" coolero)
 source=("https://gitlab.com/coolercontrol/coolercontrol/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('39164b281bf7b08c333f0adfcdca6a67c14e0f5f48d99aab3166978eb627070f')
+sha256sums=('5f4c6c007fa6b29c86dfb661dc57afc6bd20a5a36b9332db6c334920bde582c6')
 
 build() {
   cd "${srcdir}/$pkgname-$pkgver/coolercontrol-gui"
