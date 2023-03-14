@@ -1,0 +1,13 @@
+diff --git a/src/main.rs b/src/main.rs
+index 1a63192..11049d3 100644
+--- a/src/main.rs
++++ b/src/main.rs
+@@ -380,7 +380,7 @@ fn idle_fn(cmd: &str, args: Vec<&str>) -> IdleResult {
+         };
+         let display = format!(":{}", device.chars().rev().next().unwrap_or('0'));
+         let mut output = Command::new("w")
+-            .arg("-hus")
++            .arg("-husf")
+             .stdout(Stdio::piped()).spawn()?;
+         let _ = output.wait()?;
+         let w_stdout = output.stdout
