@@ -2,7 +2,7 @@
 
 pkgname=sonixd-bin
 pkgver=0.15.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The latest stable binary release of Sonixd - a full-featured Subsonic API compatible cross-platform desktop client"
 arch=('x86_64')
 url="https://github.com/jeffvli/sonixd"
@@ -17,7 +17,7 @@ source=("${url}/releases/download/v${pkgver}/${_filename}.tar.xz"
         "sonixd.desktop"
         "sonixd.sh"
 )
-sha256sums=('833aa7328fe22748aea34a36a508c5a4fe6473407721cd26535e198572565a96'
+sha256sums=('0eb17e5e84369ece254aa29a95642ae05218c1168b2fc2d51e9a707300e40bb7'
             '9e2e1cce47b594b75b8df7a1cf3a5a6da340dda9d0cfdf2aa305d097fc0bbc7a'
             '6394706bb532ad4e01bd3f824e570c3361e1f03503b6bf4afb5b811c9d813e5e'
 )
