@@ -1,7 +1,7 @@
 pkgbase = stripe-cli
 	pkgdesc = CLI for Stripe
 	pkgver = 1.13.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stripe/stripe-cli
 	arch = x86_64
 	license = Apache

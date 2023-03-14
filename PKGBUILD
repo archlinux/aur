@@ -5,7 +5,7 @@
 
 pkgname=stripe-cli
 pkgver=1.13.12
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI for Stripe'
 arch=(x86_64)
 url=https://github.com/stripe/stripe-cli
@@ -45,6 +45,5 @@ package() {
   cd $pkgname-$pkgver
   install -D stripe -t "$pkgdir"/usr/bin
   install -Dm644 README.md -t "$pkgdir"/usr/share/doc/$pkgname
-  install -Dm644 stripe-completion.bash "$pkgdir"/usr/share/bash-completion/completions/stripe
   cp -a docs "$pkgdir"/usr/share/doc/$pkgname
 }
