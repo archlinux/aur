@@ -2,7 +2,7 @@
 
 pkgname=lb-planner
 pkgver=0.0.2
-pkgrel=4
+pkgrel=5
 pkgdesc='a Planning tool for students at the TGM Vienna'
 arch=('any')
 url='https://github.com/necodeIT/lb_planner'
@@ -19,7 +19,7 @@ conflicts=('lb-planner-git')
 pkgver() {
 	cd "$pkgname"
 	# getting the three-digit version and nothing else
-	git describe --tags | grep -P -e "(\d.\d.\d)" -o
+	git describe --tags | grep -P -e "(\d\.\d\.\d)" -o
 }
 
 prepare() {

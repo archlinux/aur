@@ -1,7 +1,7 @@
 pkgbase = lb-planner
 	pkgdesc = a Planning tool for students at the TGM Vienna
 	pkgver = 0.0.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/necodeIT/lb_planner
 	arch = any
 	license = CC-NC-SA 4.0
