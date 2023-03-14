@@ -8,13 +8,16 @@ arch=(any)
 url="https://github.com/Kitware/${_base}"
 license=(MIT)
 depends=(python)
-makedepends=(python-setuptools)
+makedepends=(python-setuptools npm)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('2bed92e70ba3ce47b6d5cd07cea0e9550804e451aff190068f82ba5f4b374fed76185f2953098e2baf4088c510ff426bbe5048ee1f81ed941d4680f57fce81d1')
 
 build() {
-  cd ${_base}-${pkgver}
+  cd ${srcdir}/${_base}-${pkgver}/vue2-app
+  npm install
+  npm run build
+  cd ${srcdir}/${_base}-${pkgver}
   python setup.py build
 }
 
