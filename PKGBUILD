@@ -9,7 +9,6 @@ url="https://firealpaca.com/download"
 license=('custom')
 depends=('wine')
 makedepends=('gendesk' 'icoutils' 'unzip')
-provides=('firealpaca')
 source=('firealpaca')
 source_i686=("https://firealpaca.com/download/win_zip")
 source_x86_64=("https://firealpaca.com/download/win64_zip")

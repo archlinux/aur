@@ -10,7 +10,6 @@ pkgbase = firealpaca
 	makedepends = icoutils
 	makedepends = unzip
 	depends = wine
-	provides = firealpaca
 	source = firealpaca
 	cksums = 1329839102
 	source_i686 = https://firealpaca.com/download/win_zip
