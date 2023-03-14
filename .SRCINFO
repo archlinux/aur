@@ -8,6 +8,7 @@ pkgbase = python-trame-plotly
 	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python-trame-client
+	depends = npm
 	source = trame-plotly-2.1.1.tar.gz::https://github.com/Kitware/trame-plotly/archive/v2.1.1.tar.gz
 	sha512sums = 865608fcca8407f695699255cacd4a3f28551106396e213a9a219ff9defbdc552f938bcb7e3de13a957bbb38f32b936011928a6da7fffcf574fa98b38a8e2d53
 
