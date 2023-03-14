@@ -10,18 +10,19 @@ BUILDENV+=(!check)
 
 _pkgname=nushell
 pkgname=$_pkgname-git
-pkgver=0.76.0.r124.g7e82f8d
+pkgver=0.76.0.r134.gc7583ec
 pkgrel=1
 pkgdesc='A new type of shell'
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 url='https://www.nushell.sh'
 _url="https://github.com/$_pkgname/$_pkgname"
 license=('MIT')
-depends=('openssl' 'zlib' 'curl')
-optdepends=('libxcb')
+depends=('openssl' 'libxcb' 'curl' 'bzip2')
 makedepends=('git' 'cargo')
 conflicts=("$_pkgname")
 provides=("$_pkgname=$pkgver")
+options=('!lto')
+install=nushell.install
 source=("${pkgname%-git}::git+$_url.git")
 sha256sums=('SKIP')
 
