@@ -1,8 +1,8 @@
 # Maintainer: Sintan Santorum <c1scu0hh at anonaddy dot me>
 pkgname="topgrade-bin"
 _pkgname="topgrade"
-pkgver=10.3.2
-pkgrel=3
+pkgver=10.3.3
+pkgrel=1
 pkgdesc="Invoke the upgrade procedure of multiple package managers"
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/topgrade-rs/topgrade'
@@ -12,9 +12,9 @@ conflicts=('topgrade')
 source_x86_64=("topgrade_x86_64-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("topgrade_aarch64-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-aarch64-unknown-linux-musl.tar.gz")
 source_armv7h=("topgrade_armv7h-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-armv7-unknown-linux-gnueabihf.tar.gz")
-b2sums_x86_64=('d852a826477489be8da9010f2519ca74d2f906fe2b4bf532e5722775fe3b6bc6d41e28068ac3b105ff307068b50df40327fec99ec2747ef9625b18be3a5aaf60')
-b2sums_aarch64=('20976e837888d628e1fd6c0e229514b25882622344966aab6e8c7a5ce92215f9e4636d282d3df99eb904919dea267ab8b1aea5b063afdca97b3e0dce749fdbb8')
-b2sums_armv7h=('fc9652c83bcd9ca2cacfcccb5b0525746b494ebb93bef1f4ada4d4b33737ee41be2fbc09058b30e8bf24490fbdfdb69ca3fdbe26a5d68850fc00508da4b08f84')
+b2sums_x86_64=('04d958508bfe975ca71863d13dd9cd733d707ff2154c918553700178062c55f801631c4f1ce82776826e6bfe3bcb2ebad8c8bcab9cccc3757bfdab462fd5bc78')
+b2sums_aarch64=('96c34b2da0a97451e0d090065b20567a3b1ddc2fd3d38c49d979d155364f9fdc33e978d999fc007093815a35fe3cb6e0e644e49c93c898a35d0e7661ca71e826')
+b2sums_armv7h=('97e2d84180cf6a2910c3b46d905777f48c849f5386d7dba386fd71d0116eb6b6e0b3cd85dc6db00d54b2d799cde40098e227a7070f91df5ce5be084835086f27')
 package() {
 	# disable self-update as it won't work
 	echo '#!/bin/sh'$'\n\n''TOPGRADE_NO_SELF_UPGRADE=true /opt/topgrade/topgrade "$@"' >topgrade-sh
