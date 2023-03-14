@@ -2,7 +2,7 @@
 
 pkgdesc='A cross platform utility to dump and modify audio metadata for a wide variety of formats.'
 pkgname=('tone-bin')
-pkgver=0.1.1
+pkgver=0.1.4
 pkgrel=1
 arch=('x86_64' 'aarch64')
 license=('MIT')
@@ -19,5 +19,5 @@ package() {
     install -Dm 755 tone*/tone "${pkgdir}/usr/local/bin/tone"
 }
 
-sha256sums_x86_64=('2079a42cc3d78f162a97cd3968955404afab8a1c648a9ddd1905ad575b3303b8')
-sha256sums_aarch64=('a7d19c2b62e6edd5335342ad8a3fde2f32cbc562c0779764eea71acb7ea17e9b')
+sha256sums_x86_64=('1bc7d7ade3241813bc8fdf1939dba21b0bd8497214780835806c21f47ec670fc')
+sha256sums_aarch64=('057e217ccdeb7acfeeb4305da0b7f08e838e278efbd6713e791350fa9bd7986e')
