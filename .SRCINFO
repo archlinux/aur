@@ -1,0 +1,12 @@
+pkgbase = ros2-humble-backward-ros
+	pkgdesc = The backward_ros package is a ros wrapper of backward-cpp
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://index.ros.org/p/backward_ros/
+	arch = any
+	depends = ros2-humble
+	depends = pahole
+	source = https://github.com/pal-robotics/backward_ros/archive/refs/tags/1.0.2.tar.gz
+	sha256sums = 4f5e81e20584493e4a9dd36a348e809058e38648f71fbf5fc529e8d880357251
+
+pkgname = ros2-humble-backward-ros
