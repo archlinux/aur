@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgname=lfp
-pkgver=3.0.1
+pkgver=3.1
 pkgrel=1
 pkgdesc='A wrapper for the lf file manager with in-terminal media previews, on-exit directory changing and much more'
 license=('MIT')
@@ -18,12 +18,12 @@ source=(
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
   )
 sha512sums=(
-  '44d937d6344cf24026d7ea64389598de215a4f3d99718e07f149177c72d0baba601b3f80452cb2579e1bef2652cadcaf0ebc544cbc9f9861dc789d2dd586634f'
-  '3a65566705bfe64e3b788b0130bd9bf41b2ddb8e6551f7aaa1cb03ac81bc417c628e604db9f1ede0bbad3a94fde141b6f81bc630957f3bbcbd89ac0a5b721f82'
+  'c239cc99402e8f38a6c5867f76e0d5af5bb9cb1d4ef70df7d0182d888432292e014907284aeb30b4fb12b312386e7162a3f5393e880afa91c3fc40c1eca6bb9f'
+  '8895cd8b233098ebd7d78d3d4388f79f5c0bf40505d3972174c99420ffecca28d7a378ddac25e0641da57710483cca22014bed59c7a40b4ccae8427890c1c115'
   )
 md5sums=(
-  'ff7d4a37ebac849005b4f5a83dc2d769'
-  '4207203ab7a493990b8d8c28f19b7e56'
+  'f016f35c8bda55f4cf8de1bcda6fc1b0'
+  '00423e28213b2c76aff535545c327edf'
   )
 validpgpkeys=('81BACEEBC3EA26E127166E4A819BB92A9A48160E')
 
