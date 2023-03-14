@@ -1,7 +1,7 @@
 pkgbase = ignition-msgs-5
 	pkgdesc = Messages for Gazebo robot simulation.
 	pkgver = 5.11.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gazebosim.org/libs/msgs
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = ignition-msgs-5
 	depends = protobuf
 	depends = protobuf-c
 	depends = ignition-math=6
-	depends = ignition-utils
+	depends = ignition-utils=1
 	depends = ignition-tools=1
 	depends = python
 	provides = ignition-msgs=5
