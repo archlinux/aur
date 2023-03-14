@@ -40,7 +40,7 @@ depends=(
 	libliftoff
 	libdisplay-info)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hyprwm/Hyprland/releases/download/v${pkgver}/v${pkgver}.tar.gz")
-sha256sums=('e20ba8e3013d99f21fb3ac6587bd2265b4f4fe37b1fd8f464edca59ff91c8ba5')
+sha256sums=('8fcc09d7b80f01be5e033d4d8c5f678beae3221b627525a711e16ee9a04b2af0')
 conflicts=("${_pkgname}")
 provides=(hyprland)
 
