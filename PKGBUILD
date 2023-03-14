@@ -1,17 +1,17 @@
 # Maintainer: fabon <syobon.hinata.public[at]gmail[dot]com>
 pkgname=hgrep-bin
-pkgver=0.2.3
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Grep with human-friendly search results"
 arch=('x86_64')
 url="https://github.com/rhysd/hgrep"
 license=('MIT')
-depends=('gcc-libs' 'glibc')
+depends=()
 makedepends=('zip')
 
-source=("hgrep.zip::https://github.com/rhysd/hgrep/releases/download/v${pkgver}/hgrep-v${pkgver}-x86_64-unknown-linux-gnu.zip")
+source=("hgrep.zip::https://github.com/rhysd/hgrep/releases/download/v${pkgver}/hgrep-v${pkgver}-x86_64-unknown-linux-musl.zip")
 noextract=('hgrep.zip')
-md5sums=('ba68a83dd4e20acc5d4a4621e962511d')
+md5sums=('679005cc6205df889a8266f0ba18666a')
 
 prepare() {
   unzip hgrep.zip
