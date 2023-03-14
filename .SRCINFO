@@ -1,0 +1,13 @@
+pkgbase = ros2-humble-control-toolbox
+	pkgdesc = The control toolbox contains modules that are useful across all controllers.
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://index.ros.org/p/control_toolbox/
+	arch = any
+	depends = ros2-humble
+	depends = ros2-humble-control-msgs
+	depends = ros2-humble-realtime-tools
+	source = https://github.com/ros-controls/control_toolbox/archive/refs/tags/2.2.0.tar.gz
+	sha256sums = 0f9b4ae39b6a0033cb7bd77de835d49acf8cb72bc0e71c143e0a1d1449df23a0
+
+pkgname = ros2-humble-control-toolbox
