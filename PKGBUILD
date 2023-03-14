@@ -10,7 +10,7 @@ url="http://www.math.uiuc.edu/Macaulay2/"
 license=('GPL')
 depends=('gcc-fortran' 'readline' 'gdbm' 'gc' 'mpir' 'mpfr' 'mpsolve-git' 'boost' 'lapack' 'cblas' 'eigen' 'ntl' 'scscp' 'singular-factory' 'frobby' 'flint' 'cddlib' 'glpk' 'gfan' 'gtest' 'givaro')
 makedepends=('git' 'unzip' 'emacs' 'texinfo')
-source=('git+https://github.com/Macaulay2/M2' 'pr2536.patch')
+source=('git+https://github.com/Macaulay2/M2')
 
 pkgver() {
   cd "${srcdir}"/M2
@@ -19,7 +19,6 @@ pkgver() {
 
 build() {
   cd "$srcdir"/M2
-  patch -Np1 -i ../pr2536.patch
   cd M2
 
   # Some provided examples will make M2 crash if the -q option is used.
@@ -52,4 +51,4 @@ package() {
   mkdir info
   mv info-mac info/Macaulay2
 }
-sha256sums=('SKIP' '90867bff358bc879cb447c62a54e9a71892a0fa3fe3aac1611703722fae10931')
+sha256sums=('SKIP')

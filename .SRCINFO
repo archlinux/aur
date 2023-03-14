@@ -32,8 +32,6 @@ pkgbase = macaulay2
 	depends = gtest
 	depends = givaro
 	source = git+https://github.com/Macaulay2/M2
-	source = pr2536.patch
 	sha256sums = SKIP
-	sha256sums = 90867bff358bc879cb447c62a54e9a71892a0fa3fe3aac1611703722fae10931
 
 pkgname = macaulay2
