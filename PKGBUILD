@@ -2,14 +2,14 @@
 # Contributor: Integral <luckys68@126.com>
 pkgname=linuxqq
 pkgver=3.1.0_9572
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc='New Linux QQ based on Electron'
 arch=('x86_64' 'aarch64')
 url="https://im.qq.com/linuxqq/"
 license=('custom')
 conflicts=('linuxqq-nt-bwrap')
-depends=('nss' 'alsa-lib' 'gtk3' 'gjs' 'at-spi2-core')
+depends=('nss' 'alsa-lib' 'gtk3' 'gjs' 'at-spi2-core' 'libvips')
 optdepends=('libappindicator-gtk3: Allow QQ to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).')
 source_x86_64=("https://dldir1.qq.com/qqfile/qq/QQNT/4b2e3220/${pkgname}_${pkgver//_/-}_amd64.deb")
 source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/4b2e3220/${pkgname}_${pkgver//_/-}_arm64.deb")
@@ -34,4 +34,7 @@ package() {
 	# License
 	install -Dm644 "${pkgdir}/opt/QQ/LICENSE.electron.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 	install -Dm644 "${pkgdir}/opt/QQ/LICENSES.chromium.html" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+
+	# Temporary Solution: Remove libvips which comes from package "linuxqq" itself
+	rm -f "${pkgdir}/opt/QQ/resources/app/sharp-lib/libvips-cpp.so.42"
 }

@@ -1,7 +1,7 @@
 pkgbase = linuxqq
 	pkgdesc = New Linux QQ based on Electron
 	pkgver = 3.1.0_9572
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = https://im.qq.com/linuxqq/
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = linuxqq
 	depends = gtk3
 	depends = gjs
 	depends = at-spi2-core
+	depends = libvips
 	optdepends = libappindicator-gtk3: Allow QQ to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).
 	conflicts = linuxqq-nt-bwrap
 	source_x86_64 = https://dldir1.qq.com/qqfile/qq/QQNT/4b2e3220/linuxqq_3.1.0-9572_amd64.deb
