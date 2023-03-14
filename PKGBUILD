@@ -1,7 +1,7 @@
 pkgname=netflix
 _pkgname=Netflix
 pkgver=1.0.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Unnofficial Netflix desktop application"
 arch=('x86_64')
 url="https://gitlab.com/netflix-desktop/application"
