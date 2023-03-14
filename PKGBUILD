@@ -6,7 +6,7 @@ pkgbase=podman-git
 pkgname=(podman-git podman-docker-git)
 _pkgname=podman
 _pkgname_docker=podman-docker
-pkgver=4.2.0_dev.r16114.g31bb53f5f
+pkgver=4.5.0_dev.r18231.g519cfa81f
 pkgrel=1
 pkgdesc="Tool and library for running OCI-based containers in pods (git)"
 arch=(x86_64 aarch64)
@@ -46,7 +46,7 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath"
 
   cd $_pkgname || exit 1
-  make EXTRA_LDFLAGS='-s -w -linkmode=external'
+  make EXTRA_LDFLAGS='-s -w -linkmode=external' PREFIX=/usr
 }
 
 package_podman-git() {
