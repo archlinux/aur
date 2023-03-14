@@ -1,7 +1,7 @@
 # Maintainer: Pranav S <pranav.ppanch@gmail.com>
 
 pkgname=freeciv21
-pkgver=3.0_rc.2
+pkgver=3.0_rc.3
 pkgrel=1
 pkgdesc="Freeciv for the 21st Century"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=( 'lua' 'qt5-base' 'qt5-svg' 'sdl2_mixer' 'karchive' 'libertinus-font')
 makedepends=('cmake' 'ninja' 'python')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/longturn/freeciv21/releases/download/v${pkgver//_/-}/Freeciv21-v${pkgver//_/-}.tar.gz")
-sha256sums=('ed77c1d0bdf0ce2c3db9952108f2d51eca346481d706423a104ae73fa3a5ffae')
+sha256sums=('42b7bdfe018c143672606ae6066996a5c5f8b573e335f17930a56e83918b2da4')
 
 build() {
     cd Freeciv21-v${pkgver//_/-}
