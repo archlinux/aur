@@ -1,0 +1,12 @@
+pkgbase = coreos-installer
+	pkgdesc = Installer for CoreOS disk images
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = https://github.com/coreos/coreos-installer
+	arch = x86_64
+	license = APACHE
+	depends = cargo
+	source = coreos-installer-0.17.0.tar.gz::https://github.com/coreos/coreos-installer/archive/refs/tags/v0.17.0.tar.gz
+	sha256sums = a8c7610bebef4acb4a2c4387cd58ecede78828c2da2de16546bea998045e3665
+
+pkgname = coreos-installer
