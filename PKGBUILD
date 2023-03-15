@@ -3,7 +3,7 @@
 _pkgname=nav2_util
 pkgname=ros2-humble-nav2-util
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="TODO"
 url="https://index.ros.org/p/nav2_util/"
 arch=('any')
@@ -30,6 +30,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
