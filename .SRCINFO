@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-joint-trajectory-controller
 	pkgdesc = Controller for executing joint-space trajectories on a group of joints
 	pkgver = 2.17.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/joint_trajectory_controller/
 	arch = any
 	makedepends = ros2-humble-controller-manager

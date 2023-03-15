@@ -3,7 +3,7 @@
 _pkgname=joint_trajectory_controller
 pkgname=ros2-humble-joint-trajectory-controller
 pkgver=2.17.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Controller for executing joint-space trajectories on a group of joints"
 url="https://index.ros.org/p/joint_trajectory_controller/"
 arch=('any')
@@ -34,6 +34,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
