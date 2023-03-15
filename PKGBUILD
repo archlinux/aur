@@ -5,7 +5,7 @@
 _hkgname=mime
 pkgname=haskell-mime
 pkgver=0.4.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Working with MIME types."
 url="https://github.com/GaloisInc/mime"
 license=("BSD")
