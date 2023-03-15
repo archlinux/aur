@@ -1,7 +1,7 @@
 # Maintainer: René Wagner <rwa AT clttr DOT info>
 # Contributor: Chocobo1 <chocobo1 AT archlinux DOT net>
 
-pkgname=lcms2-ff-git
+pkgname=lcms2-ff
 pkgver=2.15
 pkgrel=1
 pkgdesc="Small-footprint color management engine including fast_float plugin"
