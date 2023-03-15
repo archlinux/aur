@@ -1,8 +1,8 @@
 pkgbase = linux-pds
 	pkgdesc = Linux
-	pkgver = 6.1.10.arch1
+	pkgver = 6.2.6.arch1
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v6.1.10-arch1
+	url = https://github.com/archlinux/linux/commits/v6.2.6-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -14,16 +14,15 @@ pkgbase = linux-pds
 	makedepends = xz
 	makedepends = xmlto
 	makedepends = python-sphinx
-	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
 	makedepends = imagemagick
 	makedepends = texlive-latexextra
 	makedepends = git
 	options = !strip
-	source = linux-archlinux::git+https://github.com/archlinux/linux.git?signed#tag=v6.1.10-arch1
+	source = linux-archlinux::git+https://github.com/archlinux/linux.git?signed#tag=v6.2.6-arch1
 	source = git+https://github.com/graysky2/kernel_compiler_patch.git
 	source = config
-	source = 0009-prjc_v6.1-r1.patch
+	source = 0009-prjc_v6.2-r0.patch
 	source = 0005-glitched-pds.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
@@ -31,8 +30,8 @@ pkgbase = linux-pds
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = 88d6aab2e98b8d4204907b4b8b222b4cd831427e7d0e5b55e10fb62b9d94bf6d670cf9dfa595fa720c3d3012fa9c004069344209e47f12073cad88ecd4aff085
-	sha512sums = daf47c735da88d8d940b6025517a709fb102720c2d96fe0f966a2e6c0687159ea87654784371da269ee59fb87a5380e635f5bc0e47b22fec7f85f52f260fd3a0
+	sha512sums = 304708cc0cd582c10efac911e3e22b4003eef2cedb14c0c3bcbb0777480379ac14ea916b49869a1936b205044ecf9d14458263edc7de1feea61d479fce7c71db
+	sha512sums = b7eee7d016506236254f687ae45a87b4f3253efcd89c3f7092d08903586a8db9cad25277bb246b905452dce64b0aad0aa88baea0a57ce27780cfbb1a3cd90277
 	sha512sums = 889f0a49f326de3f119290256393b09a9e9241c2a297ca0b7967a2884e4e35d71388d2a559e4c206f55f67228b65e8f2013a1ec61f6ff8f1de3b6a725fd5fa57
 
 pkgname = linux-pds

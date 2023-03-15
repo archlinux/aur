@@ -60,7 +60,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=6.1.10.arch1
+pkgver=6.2.6.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -69,7 +69,7 @@ arch=(x86_64)
 license=(GPL2)
 makedepends=(
     bc libelf pahole cpio perl tar xz
-    xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
+    xmlto python-sphinx graphviz imagemagick texlive-latexextra
     git
 )
 options=('!strip')
@@ -84,7 +84,7 @@ _kernel_patch_name="more-uarches-for-kernel-5.17+.patch"
 _pkgdesc_extra="~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG"
 
 PatchesArray=(
-    0009-prjc_v6.1-r1.patch
+    0009-prjc_v6.2-r0.patch
     0005-glitched-pds.patch
 )
 
@@ -102,8 +102,8 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '88d6aab2e98b8d4204907b4b8b222b4cd831427e7d0e5b55e10fb62b9d94bf6d670cf9dfa595fa720c3d3012fa9c004069344209e47f12073cad88ecd4aff085'
-            'daf47c735da88d8d940b6025517a709fb102720c2d96fe0f966a2e6c0687159ea87654784371da269ee59fb87a5380e635f5bc0e47b22fec7f85f52f260fd3a0'
+            '304708cc0cd582c10efac911e3e22b4003eef2cedb14c0c3bcbb0777480379ac14ea916b49869a1936b205044ecf9d14458263edc7de1feea61d479fce7c71db'
+            'b7eee7d016506236254f687ae45a87b4f3253efcd89c3f7092d08903586a8db9cad25277bb246b905452dce64b0aad0aa88baea0a57ce27780cfbb1a3cd90277'
             '889f0a49f326de3f119290256393b09a9e9241c2a297ca0b7967a2884e4e35d71388d2a559e4c206f55f67228b65e8f2013a1ec61f6ff8f1de3b6a725fd5fa57')
 
 export KBUILD_BUILD_HOST=archlinux
