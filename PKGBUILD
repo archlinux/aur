@@ -1,9 +1,10 @@
-# Maintainer: LinArcx <linarcx@gmail.com>
+# Maintainer: Sai22 <sagittariusz548@gmail.com>
+# Contributor: LinArcx <linarcx@gmail.com>
 
 pkgname='qx-entity-editor'
 _pkgname='QxEntityEditor'
-pkgver=1.2.2
-pkgrel=1
+pkgver=1.2.6
+pkgrel=2
 pkgdesc="A graphic editor for QxOrm library."
 arch=('x86_64' 'i686')
 url="https://www.qxorm.com/qxorm_en/home.html"
@@ -19,12 +20,12 @@ source_i686=("https://www.qxorm.com/version/QxEntityEditor/${pkgver}/QxEntityEdi
             "QxEntityEditor.desktop"
             "QEELauncher.sh"
             )
-sha256sums_x86_64=('cfcbb7ce47b7d599f8372cfb4a5e6cdd676fdb1b42f604d8a6ed3c80ca0e0896'
+sha256sums_x86_64=('fe26ea154cf0c125a96b34cd0491d646366f0cdb105e9ea7ca395f03d1b2bee0'
                     '869286123d353ac0f7c21d2d387a08dd58075cad1d27c7088dae7ab3967c3a04'
                     '50ed62f00c3b67d29984554bccea2b810bddb516289decb0364ba6e64496d255'
                     '6565e7dc0c4a49e661ae9cae387c3387ff5a20ce79f2f4f1e64ef158c3d638e3'
                   )
-sha256sums_i686=('cfcbb7ce47b7d599f8372cfb4a5e6cdd676fdb1b42f604d8a6ed3c80ca0e0896'
+sha256sums_i686=('4c087df0e90c549c5c2af00492e7195d236f2b34b4a162afe67f6f58a2a8c0a9'
                   '869286123d353ac0f7c21d2d387a08dd58075cad1d27c7088dae7ab3967c3a04'
                   '50ed62f00c3b67d29984554bccea2b810bddb516289decb0364ba6e64496d255'
                   '6565e7dc0c4a49e661ae9cae387c3387ff5a20ce79f2f4f1e64ef158c3d638e3'
