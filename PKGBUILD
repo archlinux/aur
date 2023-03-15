@@ -3,7 +3,7 @@
 _pkgname=smclib
 pkgname=ros2-humble-smclib
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Converts a language-independent description of a state machine into the source code to support that state machine."
 url="https://index.ros.org/p/smclib/"
 arch=('any')
@@ -22,6 +22,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
