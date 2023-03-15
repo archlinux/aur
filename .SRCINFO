@@ -1,16 +1,14 @@
-pkgbase = iamroot
-	pkgdesc = Emulating the syscall chroot(2) in an unpriviliged process
+pkgbase = iamroot-armhf
+	pkgdesc = Emulating the syscall chroot(2) in an unpriviliged process (armhf)
 	pkgver = 8
 	pkgrel = 1
 	url = https://github.com/gportay/iamroot
 	arch = x86_64
 	license = GPL
 	checkdepends = shellcheck
-	makedepends = lib32-glibc
-	makedepends = i386-musl
-	makedepends = kernel-headers-musl-i386
-	makedepends = musl
-	makedepends = kernel-headers-musl
+	makedepends = armhf-musl
+	makedepends = arm-linux-gnueabihf-gcc
+	makedepends = kernel-headers-musl-armhf
 	makedepends = git
 	makedepends = asciidoctor
 	options = !strip
@@ -18,4 +16,4 @@ pkgbase = iamroot
 	validpgpkeys = 8F3491E60E62695ED780AC672FA122CA0501CA71
 	sha256sums = f1559d3a54fa251bd355cddb2b426bd5c8223adaa3bd6e9b34e7b05b2afe0539
 
-pkgname = iamroot
+pkgname = iamroot-armhf
