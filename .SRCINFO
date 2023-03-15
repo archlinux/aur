@@ -1,6 +1,6 @@
 pkgbase = selinux-dbus-config
 	pkgdesc = DBus service which allows managing SELinux configuration
-	pkgver = 3.4
+	pkgver = 3.5
 	pkgrel = 1
 	url = https://github.com/SELinuxProject/selinux/wiki
 	arch = any
@@ -9,10 +9,11 @@ pkgbase = selinux-dbus-config
 	depends = python
 	depends = selinux-python
 	conflicts = policycoreutils<2.7
-	source = https://github.com/SELinuxProject/selinux/releases/download/3.4/selinux-dbus-3.4.tar.gz
-	source = https://github.com/SELinuxProject/selinux/releases/download/3.4/selinux-dbus-3.4.tar.gz.asc
+	source = https://github.com/SELinuxProject/selinux/releases/download/3.5/selinux-dbus-3.5.tar.gz
+	source = https://github.com/SELinuxProject/selinux/releases/download/3.5/selinux-dbus-3.5.tar.gz.asc
+	validpgpkeys = 63191CE94183098689CAB8DB7EF137EC935B0EAF
 	validpgpkeys = E853C1848B0185CF42864DF363A8AD4B982C4373
-	sha256sums = b8282554199b31f5cd31b3fa25fcf4dbc8d4cb93026dffe91e61a97c4580e58b
+	sha256sums = 33ee256905e8a6c95a437293f99131a1c87de550d9d3617c5250682393dab511
 	sha256sums = SKIP
 
 pkgname = selinux-dbus-config
