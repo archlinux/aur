@@ -3,7 +3,7 @@
 _pkgname=ruckig
 pkgname=ros2-humble-ruckig
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Core libraries used by MoveIt"
 url="https://index.ros.org/p/ruckig/"
 arch=('any')
@@ -20,6 +20,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
