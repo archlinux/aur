@@ -3,7 +3,7 @@
 _pkgname=nav2_waypoint_follower
 pkgname=ros2-humble-nav2-waypoint-follower
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A waypoint follower navigation server"
 url="https://index.ros.org/p/nav2_waypoint_follower/"
 arch=('any')
@@ -28,6 +28,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
