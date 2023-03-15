@@ -1,7 +1,7 @@
 # Maintainer: Thiago França da Silva <tfsthiagobr98@outlook.com>
 
 pkgname=powershell-preview-bin
-_pkgver=7.3.0-preview.5
+_pkgver=7.4.0-preview.2
 _version=7-preview
 pkgver=${_pkgver/-/.}
 pkgrel=1
@@ -12,7 +12,7 @@ depends=('krb5' 'gcc-libs' 'glibc' 'lttng-ust' 'zlib' 'openssl' 'icu')
 provides=('powershell')
 options=(staticlibs !strip)
 install=powershell-preview.install
-sha256sums=('C6294B5E3F4CCD0BE66FBBAA85C712A6E8EA40B6B1EF21B2C0FA75665B2A2BBD')
+sha256sums=('573b9336334b5e4df31df0fc62ce82f186770a569d501fc643e15ee68262740b')
 source=("https://github.com/PowerShell/PowerShell/releases/download/v${_pkgver}/powershell-preview_${_pkgver}-1.deb_amd64.deb")
 
 # omi fix (details here https://github.com/jborean93/omi/): not tested, feedback needed
