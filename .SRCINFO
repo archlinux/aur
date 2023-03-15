@@ -1,7 +1,7 @@
 pkgbase = oed
 	pkgdesc = OpenED: Portable OpenBSD ed(1) editor.
 	pkgver = 7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ibara/oed
 	arch = x86_64
 	arch = i686
