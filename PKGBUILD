@@ -4,7 +4,7 @@
 # Based on official PKGBUILD from Arch Linux with an annoying bug reverted
 pkgname=telegram-desktop-kdefix
 pkgver=4.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Telegram Desktop client with KDE unread counter bug reverted'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
