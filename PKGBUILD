@@ -3,7 +3,7 @@
 _pkgname=nav2_dwb_controller/dwb_plugins
 pkgname=ros2-humble-dwb-plugins
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Standard implementations of the GoalChecker and TrajectoryGenerators for dwb_core"
 url="https://index.ros.org/p/dwb_plugins/"
 arch=('any')
@@ -27,6 +27,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
