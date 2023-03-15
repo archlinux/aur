@@ -1,0 +1,18 @@
+pkgbase = asrrgb
+	pkgdesc = Control ASRock's B550 and TRX40 motherboard series RGB LEDs
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/aedalzotto/asrrgb
+	arch = x86_64
+	license = GPL2
+	makedepends = boost
+	makedepends = meson
+	makedepends = ninja
+	depends = boost-libs
+	depends = libusb
+	provides = asrrgb-bin
+	conflicts = asrrgb-bin
+	source = https://github.com/aedalzotto/asrrgb/archive/refs/tags/1.1.0.tar.gz
+	sha256sums = 40773060e6a9d379d270b80b012c3230ff74dfb0ac9213f36a24af8b5df2e0d3
+
+pkgname = asrrgb
