@@ -1,6 +1,6 @@
 # Maintainer: Jonas Malaco <jonas@protocubo.io>
 pkgname=cargo-vet
-pkgver=0.3.0
+pkgver=0.4.0
 # Repository tag omits trailing .0: for example, the tag for v0.3.0 is 0.3.
 _tag=${pkgver%.0}
 pkgrel=1
@@ -14,11 +14,24 @@ depends=(
     glibc
     zlib
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$_tag.tar.gz")
-sha256sums=('801ce460dd7cd52b2a1fd39c0444c7dae21f80c756b9792f354d837db22e2596')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$_tag.tar.gz"
+        "update-lock-and-tests-for-0.4.0.patch::$url/commit/c0dd08419862.patch")
+sha256sums=('6558c4010241c146dfac540f5e4a14e8fa1256e7ac11e143fed0eb89e8601eba'
+            'd63425206d41e45dd8532ebad6b1b20f4c1a34fd833c04e5624b32fdb175de46')
 
 prepare() {
     cd "$pkgname-$_tag"
+
+    # Cargo.lock and tests not in sync with Cargo.toml in 0.4.0.
+    # TODO: remove when no longer necessary.
+    patch --forward --strip=1 --input="${srcdir}/update-lock-and-tests-for-0.4.0.patch"
+
+    # The tests depend on the value of Git core.abbrev, and assume it's the default: 7. As that's
+    # not sufficient in larger projects, and users may have set theirs to some other (larger) value,
+    # force core.abbrev=7 when running the tests.
+    export GIT_CONFIG_COUNT=1
+    export GIT_CONFIG_KEY_0=core.abbrev
+    export GIT_CONFIG_VALUE_0=7
 
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
