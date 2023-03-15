@@ -1,6 +1,6 @@
 pkgbase = r-qplexanalyzer
 	pkgdesc = Tools for qPLEX-RIME data analysis
-	pkgver = 1.16.0
+	pkgver = 1.16.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/qPLEXanalyzer
 	arch = any
@@ -34,7 +34,7 @@ pkgbase = r-qplexanalyzer
 	optdepends = r-testthat
 	optdepends = r-uniprot.ws
 	optdepends = r-vdiffr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/qPLEXanalyzer_1.16.0.tar.gz
-	sha256sums = a922b25802dc11de7a79bb7fc7d0b293a302dd81b522915bfab1eae41ce71aa2
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/qPLEXanalyzer_1.16.1.tar.gz
+	sha256sums = d059abf30a7d6a6f8974224217a54418ee5b3acc60667a63edfe504a0d04f34b
 
 pkgname = r-qplexanalyzer
