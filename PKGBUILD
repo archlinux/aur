@@ -3,7 +3,7 @@
 _pkgname=gazebo_msgs
 pkgname=ros2-humble-gazebo-msgs
 pkgver=3.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Message and service data structures for interacting with Gazebo from ROS"
 url="https://index.ros.org/p/gazebo_msgs/"
 arch=('any')
@@ -22,6 +22,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
