@@ -8,8 +8,8 @@ arch=(x86_64 aarch64)
 url='https://gitlab.gnome.org/Incubator/loupe'
 license=(GPL)
 depends=(
-	'gtk4>=1:4.9.0'
-	libadwaita
+	gtk4
+	'libadwaita>=1:1.2.99'
 	libgweather-4
 )
 makedepends=(

@@ -10,8 +10,8 @@ pkgbase = loupe-git
 	makedepends = itstool
 	makedepends = meson
 	makedepends = rust
-	depends = gtk4>=1:4.9.0
-	depends = libadwaita
+	depends = gtk4
+	depends = libadwaita>=1:1.2.99
 	depends = libgweather-4
 	provides = loupe
 	conflicts = loupe
