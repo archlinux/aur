@@ -1,9 +1,9 @@
 # Maintainer: Simon Brand <simon.brand@postadigitale.de>
 
 pkgname=cryptographic-id-rs
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
-protocol_ver=0.1.0
+protocol_ver=0.2.0
 pkgdesc='Attest the trustworthiness of a device against a human using asymmetric cryptography'
 arch=('x86_64')
 url='https://gitlab.com/cryptographic_id/cryptographic-id-rs'
@@ -20,10 +20,10 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://gitlab.com/cryptographic_id/cryptographic-id-rs/-/archive/v${pkgver}/cryptographic-id-rs-v${pkgver}.tar.gz"
   "${pkgname}-proto-${protocol_ver}.tar.gz::https://gitlab.com/cryptographic_id/cryptographic-id-protocol/-/archive/v${protocol_ver}/cryptographic-id-protocol-v${protocol_ver}.tar.gz"
 )
-sha512sums=('83e4d53664967288c89c5d7544f58e6e07ca0a852cd2152a14ff8f974c732737923a84e117f25d7614d26752a5c0b062bddd8e976095a38481342523c13af284'
-            '328a37f16ca4ca20f4ef9e978e2a88bbb28e685837c74ec6b687f41324739f03b24765896daf03bde88b42134784223fa4457de7edb61ef699bb31a9de78ece2')
-b2sums=('0ac2b7bef3ee1b200456aa70e8063f09bf87c9ecbcb0a28067f50394f62cac7575c28bfca9cbccf50e71bcabd3d3120780901bd10c4930b2ce8d30eec4c58193'
-        'bec00059a589f26799ea500461d1038becd5642fe1d55b0191dbd1ed961f80bb29fb380768b8826bcd72a3c2cde1daacc263fde8f58820a5a8cb2b5e2de94069')
+sha512sums=('1c15adfb50b9fe653bc551db5e1788aecdf327e1fc8d3a30bdbb95523cdee99f84092dfd138b244b86c8d2c30cc4b250757da462f2241e5b2e7bcdafbe06f68a'
+            '35263ae6d8745022f9a9fab98543459c6977d930cc54a92fe53e149f9b58af798908745696e142f0c7a997d0c9548d6cad408efcc8182fd736a567c76c98f6d0')
+b2sums=('9ea3db3e6773ce6954998de9e3652e5fd780212026a6ea9f9b4273384cc8133942a909cd01445f456efa786a553915465fa57967a26ec31c171eea59fe59c9c3'
+        '14daf4540eb8648b5d14c7b1338cc6d29d0e21bc8794416aaea25c5ae26ab2a159eac582c35e9dd40fab6d99c9a2f8aaf6ab597705737a947bdaec4d54ac3474')
 
 prepare() {
   cp "cryptographic-id-protocol-v${protocol_ver}"/* "${pkgname}-v${pkgver}/src/cryptographic-id-protocol/"
