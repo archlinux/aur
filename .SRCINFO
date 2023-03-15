@@ -1,6 +1,6 @@
 pkgbase = cryptomator
 	pkgdesc = Multiplatform transparent client-side encryption of your files in the cloud.
-	pkgver = 1.7.2
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = https://cryptomator.org/
 	arch = any
@@ -20,10 +20,10 @@ pkgbase = cryptomator
 	optdepends = keepassxc-cryptomator: Use KeePassXC to store vault passwords
 	optdepends = ttf-hanazono: Install this font when using Japanese system language
 	options = !strip
-	source = cryptomator-1.7.2.tar.gz::https://github.com/cryptomator/cryptomator/archive/refs/tags/1.7.2.tar.gz
-	source = cryptomator-1.7.2.tar.gz.asc::https://github.com/cryptomator/cryptomator/releases/download/1.7.2/cryptomator-1.7.2.tar.gz.asc
+	source = cryptomator-1.7.3.tar.gz::https://github.com/cryptomator/cryptomator/archive/refs/tags/1.7.3.tar.gz
+	source = cryptomator-1.7.3.tar.gz.asc::https://github.com/cryptomator/cryptomator/releases/download/1.7.3/cryptomator-1.7.3.tar.gz.asc
 	validpgpkeys = 58117AFA1F85B3EEC154677D615D449FE6E6A235
-	sha256sums = 7c2cd34ccf3736cdbd5113d44e0e70428a490e7fb42986a481f91b38ffb43568
+	sha256sums = f19c7c4a0d0d79e278498a4abf5bd9f395efcb464a8c03aa5df35ef1324c2faa
 	sha256sums = SKIP
 
 pkgname = cryptomator
