@@ -3,7 +3,7 @@
 _pkgname=gazebo_ros2_control
 pkgname=ros2-humble-gazebo-ros2-control
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="gazebo_ros2_control"
 url="https://index.ros.org/p/gazebo_ros2_control/"
 arch=('any')
@@ -27,6 +27,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 

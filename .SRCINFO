@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-gazebo-ros2-control
 	pkgdesc = gazebo_ros2_control
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/gazebo_ros2_control/
 	arch = any
 	depends = ros2-humble
