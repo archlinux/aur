@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-urdf-parser-py
 	pkgdesc = Python implementation of the URDF parser
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/urdf_parser_py/
 	arch = any
 	makedepends = python-mock
