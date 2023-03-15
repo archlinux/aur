@@ -22,7 +22,6 @@ optdepends=(
 		"legion-fan-utils-linux-git: Systemd service that will apply a given profile"
 )
 options=(!makeflags !buildflags !strip)
-changelog=
 source=("${_pkgname}::git+https://github.com/johnfanv2/LenovoLegionLinux")
 sha256sums=('SKIP')
 install="lenovolegionlinux.install"
@@ -37,7 +36,7 @@ build() {
 	cd "${srcdir}/${_pkgname}/kernel_module"
 	make
 	cd "${srcdir}/${_pkgname}/python/legion_linux"
-	python -m build
+	python setup.py build
 }
 package() {
 	cd "${srcdir}/${_pkgname}"
