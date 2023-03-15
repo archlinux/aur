@@ -3,7 +3,7 @@
 _pkgname=forward_command_controller
 pkgname=ros2-humble-forward-command-controller
 pkgver=2.17.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic controller for forwarding commands"
 url="https://index.ros.org/p/forward_command_controller/"
 arch=('any')
@@ -31,6 +31,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 

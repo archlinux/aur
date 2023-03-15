@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-forward-command-controller
 	pkgdesc = Generic controller for forwarding commands
 	pkgver = 2.17.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/forward_command_controller/
 	arch = any
 	makedepends = ros2-humble-controller-manager
