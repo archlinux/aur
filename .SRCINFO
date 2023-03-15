@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-nav2-voxel-grid
 	pkgdesc = voxel_grid provides an implementation of an efficient 3D voxel grid
 	pkgver = 1.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/nav2_voxel_grid/
 	arch = any
 	makedepends = ros2-humble-nav2-common

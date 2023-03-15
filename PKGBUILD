@@ -3,7 +3,7 @@
 _pkgname=nav2_voxel_grid
 pkgname=ros2-humble-nav2-voxel-grid
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="voxel_grid provides an implementation of an efficient 3D voxel grid"
 url="https://index.ros.org/p/nav2_voxel_grid/"
 arch=('any')
@@ -25,6 +25,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
