@@ -3,7 +3,7 @@
 _pkgname=controller_manager
 pkgname=ros2-humble-controller-manager
 pkgver=2.24.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Description of controller_manager"
 url="https://index.ros.org/p/controller_manager/"
 arch=('any')
@@ -29,6 +29,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 

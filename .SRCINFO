@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-controller-manager
 	pkgdesc = Description of controller_manager
 	pkgver = 2.24.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/controller_manager/
 	arch = any
 	depends = ros2-humble
