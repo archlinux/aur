@@ -3,7 +3,7 @@
 _pkgname=fanuc_moveit_config
 pkgname=ros2-humble-moveit-resources-fanuc-moveit-config
 pkgver=2.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="MoveIt Resources for testing: Fanuc M-10iA"
 url="https://index.ros.org/p/fanuc_moveit_config/"
 arch=('any')
@@ -25,6 +25,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
