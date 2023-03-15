@@ -2,7 +2,7 @@
 
 pkgname=diohsc
 pkgver=0.1.12
-pkgrel=2
+pkgrel=3
 pkgdesc="Line-based command-oriented interactive client for the gemini protocol"
 url="https://mbays.sdf.org/diohsc"
 license=("GPL3")
@@ -31,7 +31,7 @@ package() {
   cd $pkgname-$pkgver
 
   runhaskell Setup copy --destdir="$pkgdir"
-  install -D -m644 diohsc.1 -t "$pkgdir"/usr/share/man/man1/diohsc.1
-  install -D -m644 diohscrc.sample -t "$pkgdir"/usr/share/doc/$pkgname/diohscrc.sample
+  install -D -m644 diohsc.1 -t "$pkgdir"/usr/share/man/man1
+  install -D -m644 diohscrc.sample -t "$pkgdir"/usr/share/doc/$pkgname
   rm -f "$pkgdir"/usr/share/doc/$pkgname/COPYING
 }

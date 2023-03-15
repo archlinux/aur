@@ -1,7 +1,7 @@
 pkgbase = diohsc
 	pkgdesc = Line-based command-oriented interactive client for the gemini protocol
 	pkgver = 0.1.12
-	pkgrel = 2
+	pkgrel = 3
 	url = https://mbays.sdf.org/diohsc
 	arch = x86_64
 	license = GPL3
