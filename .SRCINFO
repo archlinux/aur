@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-nav2-simple-commander
 	pkgdesc = An importable library for writing mobile robot applications in python3
 	pkgver = 1.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/nav2_simple_commander/
 	arch = any
 	makedepends = python-pytest

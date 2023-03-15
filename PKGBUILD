@@ -3,7 +3,7 @@
 _pkgname=nav2_simple_commander
 pkgname=ros2-humble-nav2-simple-commander
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="An importable library for writing mobile robot applications in python3"
 url="https://index.ros.org/p/nav2_simple_commander/"
 arch=('any')
@@ -20,6 +20,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     cd navigation2-$pkgver/$_pkgname
     colcon build --merge-install
 }
