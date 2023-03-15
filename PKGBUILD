@@ -3,7 +3,7 @@
 _pkgname=moveit_ros/planning
 pkgname=ros2-humble-moveit-ros-planning
 pkgver=2.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Planning components of MoveIt that use ROS"
 url="https://index.ros.org/p/moveit_ros_planning/"
 arch=('any')
@@ -29,6 +29,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
