@@ -1,0 +1,15 @@
+pkgbase = haskell-rset
+	pkgdesc = Range set
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/lovasko/rset
+	arch = x86_64
+	license = BSD
+	makedepends = ghc
+	makedepends = haskell-quickcheck
+	depends = ghc-libs
+	depends = haskell-safe
+	source = https://hackage.haskell.org/packages/archive/rset/1.0.0/rset-1.0.0.tar.gz
+	sha256sums = f80e4f1092be752e7fc6ba965626d616b477a812c4425cab0c1456342e4c39b4
+
+pkgname = haskell-rset
