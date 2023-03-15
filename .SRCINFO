@@ -1,5 +1,5 @@
 pkgbase = ory-cli-bin
-	pkgdesc = OAuth 2.0 and OpenID Connect Provider
+	pkgdesc = ORY Command Line Interface (CLI)
 	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://ory.sh
