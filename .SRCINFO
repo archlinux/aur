@@ -1,6 +1,6 @@
 pkgbase = argc
-	pkgdesc = Easily create bash command line tool
-	pkgver = 0.13.0
+	pkgdesc = Easily create a feature-rich command-line application in Bash
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/sigoden/argc
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = argc
 	license = Apache
 	makedepends = cargo
 	depends = gcc-libs
-	source = argc-0.13.0.tar.gz::https://github.com/sigoden/argc/archive/v0.13.0.tar.gz
-	sha512sums = 93324b5a6887f74fc8518b17944c38d6b9b21679a01a01c65d076a0dfd088a6a687118f2325b15845590ce4bd46423c980d658ae2c94148e03ac920a9c8301d9
+	source = argc-0.14.0.tar.gz::https://github.com/sigoden/argc/archive/v0.14.0.tar.gz
+	sha512sums = 7afc7d6691abd604024fbf5296b2c7a2fa4db7d239a1fbac27287bc2df23aad180f9fae3c1368765481599b35dcebefa84cd8eeaea94a147647c40552b997282
 
 pkgname = argc
