@@ -1,6 +1,6 @@
 pkgbase = inko-git
 	pkgdesc = A language for building concurrent software with confidence
-	pkgver = 0.8.1.r2.g055b80da
+	pkgver = 0.10.0.r2.gcfc2dce6
 	pkgrel = 1
 	url = https://inko-lang.org
 	arch = x86_64
