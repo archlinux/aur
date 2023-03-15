@@ -2,7 +2,7 @@
 _name=eduvpn-common
 pkgname="python-${_name/-/_}"
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='EduVPN common library for python clients'
 arch=('x86_64')
 url="https://github.com/eduvpn/eduvpn-common"
@@ -22,7 +22,7 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw -tags=release"
   make
 
   # build wrapper

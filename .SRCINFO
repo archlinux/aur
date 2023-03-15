@@ -1,7 +1,7 @@
 pkgbase = python-eduvpn_common
 	pkgdesc = EduVPN common library for python clients
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/eduvpn/eduvpn-common
 	arch = x86_64
 	license = MIT
