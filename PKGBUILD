@@ -3,7 +3,7 @@
 _pkgname=fanuc_description
 pkgname=ros2-humble-moveit-resources-fanuc-description
 pkgver=2.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Fanuc Resources used for MoveIt testing"
 url="https://index.ros.org/p/fanuc_description/"
 arch=('any')
@@ -22,6 +22,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
