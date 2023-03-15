@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-nav2-collision-monitor
 	pkgdesc = Collision Monitor
 	pkgver = 1.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/nav2_collision_monitor/
 	arch = any
 	depends = ros2-humble

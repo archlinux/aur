@@ -3,7 +3,7 @@
 _pkgname=nav2_collision_monitor
 pkgname=ros2-humble-nav2-collision-monitor
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Collision Monitor"
 url="https://index.ros.org/p/nav2_collision_monitor/"
 arch=('any')
@@ -25,6 +25,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
