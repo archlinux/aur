@@ -8,23 +8,26 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=libselinux
-pkgver=3.4
+pkgver=3.5
 pkgrel=1
 pkgdesc="SELinux library and simple utilities"
 arch=('i686' 'x86_64' 'armv6h' 'aarch64')
 url='https://github.com/SELinuxProject/selinux'
 license=('custom')
 groups=('selinux')
-makedepends=('pkgconf' 'python' 'ruby' 'xz' 'swig')
-depends=('libsepol>=3.4' 'pcre')
+makedepends=('pkgconf' 'python' 'python-pip' 'python-setuptools' 'ruby' 'xz' 'swig')
+depends=('libsepol>=3.5' 'pcre')
 optdepends=('python: python bindings'
             'ruby: ruby bindings')
 conflicts=("selinux-usr-${pkgname}")
 provides=("selinux-usr-${pkgname}=${pkgver}-${pkgrel}")
-validpgpkeys=('E853C1848B0185CF42864DF363A8AD4B982C4373')  # Petr Lautrbach <plautrba@redhat.com>
+validpgpkeys=(
+  '63191CE94183098689CAB8DB7EF137EC935B0EAF'  # Jason Zaman <perfinion@gentoo.org>
+  'E853C1848B0185CF42864DF363A8AD4B982C4373'  # Petr Lautrbach <plautrba@redhat.com>
+)
 source=("https://github.com/SELinuxProject/selinux/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc}
         "libselinux.tmpfiles.d")
-sha256sums=('77c294a927e6795c2e98f74b5c3adde9c8839690e9255b767c5fca6acff9b779'
+sha256sums=('9a3a3705ac13a2ccca2de6d652b6356fead10f36fb33115c185c5ccdf29eec19'
             'SKIP'
             'afe23890fb2e12e6756e5d81bad3c3da33f38a95d072731c0422fbeb0b1fa1fc')
 
