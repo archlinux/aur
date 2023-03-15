@@ -1,21 +1,35 @@
-pkgbase = burpsuite-pro
-	pkgdesc = An integrated platform for performing security testing of web applications (professional edition)
-	pkgver = 2023.2.2
+pkgbase = burpsuite-pro-earlyadopter
+	pkgdesc = An integrated platform for performing security testing of web applications (professional edition) (early adopter)
+	pkgver = 2023.3
 	pkgrel = 1
 	url = https://portswigger.net/burp/
-	install = burpsuite-pro.install
 	arch = any
 	license = custom
 	makedepends = zip
-	depends = java-runtime>=9
-	noextract = burpsuite-pro-2023.2.2.jar
-	source = burpsuite-pro-2023.2.2.jar::https://portswigger.net/burp/releases/download?product=pro&version=2023.2.2&type=Jar
-	source = burpsuite-pro.desktop
-	source = icon128.png
+	depends = java-runtime>=17,
+	depends = hicolor-icon-theme
+	noextract = burpsuite-pro-earlyadopter-2023.3-orig.jar
+	source = burpsuite-pro-earlyadopter-2023.3-orig.jar::https://portswigger.net/burp/releases/download?product=pro&version=2023.3&type=Jar
+	source = burpsuite-pro-earlyadopter.desktop
 	source = splash.png
-	sha256sums = dd9fb2766358da09756001b3d4a4c616a48b9c83d623b42a4e9d07ec3ea89ab1
-	sha256sums = 740a01fd3feacee5b0563edc4c6634219d367bf2590ecfc954959a95354506c8
-	sha256sums = f9b8bedbab02c8f0e03b2f5e3f99fa003c58d767168c3c4aa135233b3b533d4b
-	sha256sums = 3aaa84dd4c3d31a88cd065b8445d164737c7fad4fb56833fb994de0bf6dbe3be
+	source = icon16.png
+	source = icon24.png
+	source = icon32.png
+	source = icon48.png
+	source = icon128.png
+	source = icon256.png
+	source = icon512.png
+	source = icon.svg
+	sha256sums = 5c280e1a7fd57573fc8114eb1ffcfc8b2a8724385545139c025d8ab2e3346da6
+	sha256sums = dabd0e917c65245aeab77f251481cdc77ac04bb756f757bb477d3969b12a75c5
+	sha256sums = be5226ff91b37f6102e143a1b8cf54c41ea66b2da6cff2d5df660b3b1a411c86
+	sha256sums = ff0b230af06fb76af053090ac021bf45b88341d746e67f6bb9e94ba40957d9d8
+	sha256sums = a6791fcaee558f6744b4f5a3fc0af2c9ad7ce244033e224c4e4464563ac9b911
+	sha256sums = 48d529f2a045b1179d9cd87ffdeb7fd469d963f7606fd22b7edc665d0515e1d2
+	sha256sums = 2b2407b8ab2ee181bfd64e3ba3e3090a328cbef8f53cce20ba76cffbfb3bc1d1
+	sha256sums = 28d17763c17e010936ad8ed44427d9ce6523510f580aefce52eb7c0f26b48045
+	sha256sums = da6469f32b0acfcad2057cf0920c128bbbf64bc72ec6a4d5e5ba10d5b8a2d859
+	sha256sums = 6bbfd022aa451efeb439a89527b814ae06f7ce6196f7ad8db276e9ad372a7e32
+	sha256sums = 8777077ed5b1809c8adde4c056a315f8ec8f1b79f4c4c0e60eb3582c4d7ab71d
 
-pkgname = burpsuite-pro
+pkgname = burpsuite-pro-earlyadopter

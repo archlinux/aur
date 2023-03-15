@@ -1,45 +1,61 @@
-# Maintainer: freb
+# Maintainer: Rasmus Moorats <xx+aur@nns.ee>
+# Contributor: freb
 
-pkgname=burpsuite-pro
-pkgver=2023.2.2
+pkgname=burpsuite-pro-earlyadopter
+pkgver=2023.3
 pkgrel=1
-pkgdesc="An integrated platform for performing security testing of web applications (professional edition)"
+pkgdesc="An integrated platform for performing security testing of web applications (professional edition) (early adopter)"
 url="https://portswigger.net/burp/"
-depends=('java-runtime>=9')
+depends=('java-runtime>=17', 'hicolor-icon-theme')
 makedepends=('zip')
 arch=('any')
 license=('custom')
-noextract=("${pkgname}-${pkgver}.jar")
-source=("${pkgname}-${pkgver}.jar::https://portswigger.net/burp/releases/download?product=pro&version=${pkgver}&type=Jar"
-        burpsuite-pro.desktop
-        icon128.png
-        splash.png)
-install=burpsuite-pro.install
-sha256sums=(
-  'dd9fb2766358da09756001b3d4a4c616a48b9c83d623b42a4e9d07ec3ea89ab1' # jar
-  '740a01fd3feacee5b0563edc4c6634219d367bf2590ecfc954959a95354506c8' # burpsuite-pro.desktop
-  'f9b8bedbab02c8f0e03b2f5e3f99fa003c58d767168c3c4aa135233b3b533d4b' # icon128.png
-  '3aaa84dd4c3d31a88cd065b8445d164737c7fad4fb56833fb994de0bf6dbe3be' # splash.png
-)
+noextract=("${pkgname}-${pkgver}-orig.jar")
+source=("${pkgname}-${pkgver}-orig.jar::https://portswigger.net/burp/releases/download?product=pro&version=${pkgver}&type=Jar"
+  ${pkgname}.desktop
+  splash.png
+  icon16.png
+  icon24.png
+  icon32.png
+  icon48.png
+  icon128.png
+  icon256.png
+  icon512.png
+  icon.svg)
+sha256sums=('5c280e1a7fd57573fc8114eb1ffcfc8b2a8724385545139c025d8ab2e3346da6'
+            'dabd0e917c65245aeab77f251481cdc77ac04bb756f757bb477d3969b12a75c5'
+            'be5226ff91b37f6102e143a1b8cf54c41ea66b2da6cff2d5df660b3b1a411c86'
+            'ff0b230af06fb76af053090ac021bf45b88341d746e67f6bb9e94ba40957d9d8'
+            'a6791fcaee558f6744b4f5a3fc0af2c9ad7ce244033e224c4e4464563ac9b911'
+            '48d529f2a045b1179d9cd87ffdeb7fd469d963f7606fd22b7edc665d0515e1d2'
+            '2b2407b8ab2ee181bfd64e3ba3e3090a328cbef8f53cce20ba76cffbfb3bc1d1'
+            '28d17763c17e010936ad8ed44427d9ce6523510f580aefce52eb7c0f26b48045'
+            'da6469f32b0acfcad2057cf0920c128bbbf64bc72ec6a4d5e5ba10d5b8a2d859'
+            '6bbfd022aa451efeb439a89527b814ae06f7ce6196f7ad8db276e9ad372a7e32'
+            '8777077ed5b1809c8adde4c056a315f8ec8f1b79f4c4c0e60eb3582c4d7ab71d')
 
 prepare() {
   cd ${srcdir}
+  cp ${pkgname}-${pkgver}-orig.jar ${pkgname}-${pkgver}.jar
   # remove useless chromium versions
   zip -d ${pkgname}-${pkgver}.jar 'chromium-macosx*.zip' 'chromium-win*.zip'
 }
 
 package() {
-  mkdir -p ${pkgdir}/usr/bin
-  mkdir -p ${pkgdir}/usr/share/{applications,pixmaps,${pkgname}}
-
   cd ${srcdir}
-  install -m644 ${pkgname}-${pkgver}.jar ${pkgdir}/usr/share/${pkgname}/${pkgname}.jar
-  install -m644 burpsuite-pro.desktop ${pkgdir}/usr/share/applications/
-  install -m644 icon128.png ${pkgdir}/usr/share/pixmaps/burpsuite-pro.png
-  install -m644 splash.png ${pkgdir}/usr/share/pixmaps/burpsuite-pro-splash.png
+  install -Dm644 ${pkgname}-${pkgver}.jar ${pkgdir}/usr/share/${pkgname}/${pkgname}.jar
+  install -Dm644 ${pkgname}.desktop -t ${pkgdir}/usr/share/applications/
+  install -Dm644 splash.png ${pkgdir}/usr/share/pixmaps/${pkgname}-splash.png
 
-  # Create startup file for burpsuite-pro.
+  # install icons
+  for size in {16,24,32,48,128,256,512}; do
+    install -Dm644 icon${size}.png ${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/burpsuite-pro-earlyadopter.png
+  done
+  install -Dm644 icon.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/burpsuite-pro-earlyadopter.svg
+
+  # create startup file for burpsuite-pro-earlyadopter.
+  mkdir -m755 ${pkgdir}/usr/bin
   echo "#!/bin/sh" > ${pkgdir}/usr/bin/${pkgname}
-  echo "exec \"\$JAVA_HOME/bin/java\" \"-splash:/usr/share/pixmaps/burpsuite-pro-splash.png\" \"--add-opens\" \"java.base/java.lang=ALL-UNNAMED\" \"--add-opens\" \"java.base/javax.crypto=ALL-UNNAMED\" \"--add-opens\" \"java.desktop/javax.swing=ALL-UNNAMED\" \"--illegal-access=permit\" \"-jar\" \"/usr/share/${pkgname}/${pkgname}.jar\" \"\$@\"" >> ${pkgdir}/usr/bin/${pkgname}
+  echo "exec \"\$JAVA_HOME/bin/java\" \"-splash:/usr/share/pixmaps/${pkgname}-splash.png\" \"--add-opens\" \"java.base/java.lang=ALL-UNNAMED\" \"--add-opens\" \"java.base/javax.crypto=ALL-UNNAMED\" \"--add-opens\" \"java.desktop/javax.swing=ALL-UNNAMED\" \"-jar\" \"/usr/share/${pkgname}/${pkgname}.jar\" \"\$@\"" >> ${pkgdir}/usr/bin/${pkgname}
   chmod 755 ${pkgdir}/usr/bin/${pkgname}
 }
