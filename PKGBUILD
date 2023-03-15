@@ -1,5 +1,5 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
-# Maintainer: Matej Grabovsky <matej.grabovsky at gmail>
+# Contributor: Matej Grabovsky <matej.grabovsky at gmail>
 _projectname='sedlex'
 pkgname="ocaml-$_projectname"
 pkgver='3.1'
