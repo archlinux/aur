@@ -1,7 +1,7 @@
 pkgbase = r-mutoss
 	pkgdesc = Unified Multiple Testing Procedures
-	pkgver = 0.1.12
-	pkgrel = 4
+	pkgver = 0.1.13
+	pkgrel = 1
 	url = https://cran.r-project.org/package=mutoss
 	arch = any
 	license = GPL
@@ -14,7 +14,7 @@ pkgbase = r-mutoss
 	optdepends = r-lattice
 	optdepends = r-qvalue
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/mutoss_0.1-12.tar.gz
-	sha256sums = 2889ae3d502157592697124eb86adc14911e2b7fdaa7204743a376b1eeb967fa
+	source = https://cran.r-project.org/src/contrib/mutoss_0.1-13.tar.gz
+	sha256sums = b60f6fcdce44dc60c7d34c6510047f756f1442366a3566661b22aae12f4ff141
 
 pkgname = r-mutoss
