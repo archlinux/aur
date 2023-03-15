@@ -1,0 +1,15 @@
+pkgbase = bobibo
+	pkgdesc = A cli-app, convert pictures to ascii arts.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/orzation/bobibo
+	arch = x86_64
+	license = GPL3
+	makedepends = go>=1.17
+	makedepends = upx
+	optdepends = sudo: privilege elevation
+	optdepends = doas: privilege elevation
+	source = bobibo-1.1.0.tar.gz::https://github.com/orzation/bobibo/archive/v1.1.0.tar.gz
+	sha256sums = 8aba2b783c8d6812ba893d8ac9fb867b74796d9df9f2a22cfd3aadface4f0eb8
+
+pkgname = bobibo
