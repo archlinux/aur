@@ -3,7 +3,7 @@
 _pkgname=panda_description
 pkgname=ros2-humble-moveit-resources-panda-description
 pkgver=2.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="panda Resources used for MoveIt testing"
 url="https://index.ros.org/p/panda_description/"
 arch=('any')
@@ -22,6 +22,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
