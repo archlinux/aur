@@ -1,6 +1,6 @@
 pkgbase = qarte
 	pkgdesc = Allow you to browse into the archive of arte+7 & arteLiveWeb sites and to record your prefered videos.
-	pkgver = 5.2.1
+	pkgver = 5.3.0
 	pkgrel = 1
 	url = https://launchpad.net/qarte
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = qarte
 	depends = qt5-multimedia
 	depends = python-m3u8
 	optdepends = cronie: for differed download
-	source = http://www.oqapy.eu/releases/qarte-5.2.1.tar.gz
-	sha256sums = 395b5461ae0f4157aff794b0de73df0dd80d768c034cc532a5d9fbedf08a0baf
+	source = http://www.oqapy.eu/releases/qarte-5.3.0.tar.gz
+	sha256sums = d8d61e547f142d5b069665c9c61f0616fe0119756ed9485ffd3da3e954c9fbcf
 
 pkgname = qarte
