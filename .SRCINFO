@@ -1,0 +1,18 @@
+pkgbase = xmlf90
+	pkgdesc = A fast XML parser and generator in Fortran
+	pkgver = 1.5.6
+	pkgrel = 1
+	url = https://gitlab.com/siesta-project/libraries/xmlf90
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = BSD2
+	checkdepends = gcc-fortran
+	checkdepends = cmake
+	makedepends = gcc-fortran
+	makedepends = cmake
+	options = staticlibs
+	source = https://gitlab.com/siesta-project/libraries/xmlf90/uploads/a22bcf780219eda20423d8aae6e72331/xmlf90-1.5.6.tar.gz
+	sha256sums = b45b1919a671de2bf7b5ebf0eeffffe5d78414fb367dc40ca6e718b22143c9b3
+
+pkgname = xmlf90
