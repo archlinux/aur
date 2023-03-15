@@ -1,6 +1,6 @@
 pkgbase = python-stlib
 	pkgdesc = Async library that provides features related to Steam client and compatible stuffs
-	pkgver = 1.1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/ShyPixie/stlib
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = python-stlib
 	depends = python-rsa
 	depends = steamworks-sdk
 	optdepends = python-stlib-plugins: A set of official plugins for stlib
-	source = https://github.com/ShyPixie/stlib/archive/v1.1.1.tar.gz
-	sha256sums = b22d84cfc4645a8710d8df24ef377c12304b0e02eb8e35c924c65578eda86c8e
+	source = https://github.com/ShyPixie/stlib/archive/v1.2.tar.gz
+	sha256sums = 8d146251f86e0f1e096215af575247d2e93936bddac57cb63871a8d237d43f6f
 
 pkgname = python-stlib
