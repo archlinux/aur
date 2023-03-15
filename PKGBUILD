@@ -3,7 +3,7 @@
 _pkgname=controller_interface
 pkgname=ros2-humble-controller-interface
 pkgver=2.24.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Description of controller_interface"
 url="https://index.ros.org/p/controller_interface/"
 arch=('any')
@@ -23,6 +23,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
