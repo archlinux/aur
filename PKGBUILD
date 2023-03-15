@@ -2,7 +2,7 @@
 
 pkgname=ros2-humble-xacro
 pkgver=2.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to construct shorter and more readable XML files by using macros that expand to larger XML expressions"
 url="https://index.ros.org/p/xacro/"
 arch=('any')
@@ -20,6 +20,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
