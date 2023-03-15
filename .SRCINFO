@@ -1,7 +1,7 @@
 pkgbase = duckdb-bin
 	pkgdesc = An in-process SQL OLAP database management system
 	pkgver = 0.7.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://duckdb.org
 	arch = x86_64
 	license = MIT

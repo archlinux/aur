@@ -1,7 +1,7 @@
 # Maintainer: Andre Smit <freevryheid@gmail.com>
 pkgname=duckdb-bin
 pkgver=0.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc="An in-process SQL OLAP database management system"
 arch=("x86_64")
 url="https://duckdb.org"
