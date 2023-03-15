@@ -2,18 +2,14 @@
 _target='compass-isolated'
 _edition=' Isolated Edition'
 pkgname="mongodb-$_target"
-_pkgver='1.35.0'
+_pkgver='1.36.0'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='2'
+pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Isolated Edition'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('custom:SSPL')
-if [[ "$_target" =~ -beta$ ]]; then
-	_electronpkg='electron'
-else
-	_electronpkg='electron15'
-fi
+_electronpkg='electron'
 depends=("$_electronpkg" 'krb5' 'libsecret' 'lsb-release')
 makedepends=('git' 'nodejs>=16.0.0' 'npm>=8.0.0' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
@@ -22,7 +18,7 @@ source=(
 	'hadron-build.diff'
 	'fix-argv.diff'
 )
-sha512sums=('b0fd7c9d2f8664972bcc80c7e58d8ba03d31ba7fe7407eea83233e60b9db8d5dcaec4a5430345251f929225ecd4ce6c1b02af8457f168fcc1837732ee55c99e5'
+sha512sums=('14de928e9e449105eea2261d88a29e9681434f5a7e3e3030fb417c9de72e8718509e18845a89a480a34981447cb6f6f6fa8388a16e8a8ec6e995b18d360b5501'
             '18029ff1479cbacb413f7154d5ca7589855273c559ee15bb5b5006eed65b8edcb58fac64cc8deabd20c36e06f298dc4b7152f61391975d2a3ecb6351b787fae7'
             '1a2345b90196d3c856d0288d9406cfd667d0ebcce400e6886c7eba2825fa52d7813d45f2c375fcaf4e28d116b68107219e6f662b5bdbb12bf0e402ca61194cf7')
 
