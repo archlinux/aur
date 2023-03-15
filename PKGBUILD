@@ -2,7 +2,7 @@
 
 pkgname=ros2-humble-pal-gazebo-plugins
 pkgver=4.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Common Gazebo v1.9+ plugins used by the PAL Robotics robots"
 url="https://github.com/pal-robotics/pal_gazebo_plugins/"
 arch=('any')
@@ -25,6 +25,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
