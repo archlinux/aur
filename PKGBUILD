@@ -3,7 +3,7 @@
 _plug=bestsource
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r59.3be2958
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?p=1972253'
@@ -20,13 +20,9 @@ provides=("vapoursynth-plugin-${_plug}"
           'libbestsource.so')
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/vapoursynth/bestsource.git"
-        "libp2p::git+https://github.com/sekrit-twc/libp2p.git"
-        "mesonp2pfix.patch"
-        )
+        "libp2p::git+https://github.com/sekrit-twc/libp2p.git")
 sha256sums=('SKIP'
-            'SKIP'
-            '15f207054d2e13ada7b1b56d21c770c47c8f19f2527ad712253f757dac3c967e'
-            )
+            'SKIP')
 options=('debug')
 
 pkgver() {
@@ -37,7 +33,7 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-  patch --strip=1 --input="${srcdir}/mesonp2pfix.patch"
+  ln -s "${srcdir}/libp2p" "${srcdir}/${_plug}/libp2p"
 }
 
 build() {
