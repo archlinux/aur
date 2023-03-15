@@ -1,7 +1,7 @@
 pkgbase = ptpython
 	pkgdesc = Python REPL build on top of prompt_toolkit
 	pkgver = 3.0.23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/prompt-toolkit/ptpython
 	arch = any
 	license = BSD
@@ -11,6 +11,7 @@ pkgbase = ptpython
 	depends = python-prompt_toolkit>=3.0.3
 	depends = python-pygments
 	depends = python-black
+	depends = python-appdirs
 	optdepends = ipython: ptipython (ptpython + ipython)
 	provides = ptpython3
 	source = ptpython-3.0.23.tar.gz::https://github.com/prompt-toolkit/ptpython/archive/refs/tags/3.0.23.tar.gz
