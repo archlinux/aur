@@ -3,7 +3,7 @@
 _pkgname=panda_moveit_config
 pkgname=ros2-humble-moveit-resources-panda-moveit-config
 pkgver=2.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="MoveIt Resources for testing: Franka Emika Panda"
 url="https://index.ros.org/p/panda_moveit_config/"
 arch=('any')
@@ -26,6 +26,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
