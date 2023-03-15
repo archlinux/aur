@@ -6,9 +6,9 @@
 
 pkgname=gimp-plugin-registry
 pkgver=9.20180625
-pkgrel=3
-debrel=1ubu18.04~ppa
-debrepo=https://launchpad.net/~ubuntuhandbook1/+archive/ubuntu/gimp/+files
+pkgrel=4
+_debrel=1ubu18.04~ppa
+_debrepo=https://launchpad.net/~ubuntuhandbook1/+archive/ubuntu/gimp/+files
 pkgdesc="Repository of optional extensions for GIMP"
 arch=('x86_64')
 url="https://launchpad.net/~ubuntuhandbook1/+archive/ubuntu/gimp"
@@ -22,9 +22,9 @@ install=${pkgname}.install
 
 sha256sums=('6686a6ef7340db8ad402f1c80e0d44a67a695642462674bae8673ab6cc225497')
 
-source=("${debrepo}/${pkgname}_${pkgver}-${debrel}_amd64.deb")
+source=("${_debrepo}/${pkgname}_${pkgver}-${_debrel}_amd64.deb")
 
 package() {
-      msg2 "Installing "$pkgname"..."
+#      msg2 "Installing "$pkgname"..."
       tar xvf data.tar.xz -C "${pkgdir}"/
 }

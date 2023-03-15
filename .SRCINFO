@@ -1,7 +1,7 @@
 pkgbase = gimp-plugin-registry
 	pkgdesc = Repository of optional extensions for GIMP
 	pkgver = 9.20180625
-	pkgrel = 3
+	pkgrel = 4
 	url = https://launchpad.net/~ubuntuhandbook1/+archive/ubuntu/gimp
 	install = gimp-plugin-registry.install
 	arch = x86_64
