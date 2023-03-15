@@ -3,7 +3,7 @@
 _pkgname=tl_expected
 pkgname=ros2-humble-tl-expected
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="C++11/14/17 std::expected with functional-style extensions"
 url="https://index.ros.org/p/tl_expected/"
 arch=('any')
@@ -22,6 +22,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
