@@ -3,7 +3,7 @@
 _pkgname=nav2_dwb_controller/dwb_msgs
 pkgname=ros2-humble-dwb-msgs
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Message/Service definitions specifically for the dwb_core"
 url="https://index.ros.org/p/dwb_msgs/"
 arch=('any')
@@ -23,6 +23,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
