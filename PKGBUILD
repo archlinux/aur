@@ -3,7 +3,7 @@
 _pkgname=diagnostic_updater
 pkgname=ros2-humble-diagnostic-updater
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="diagnostic_updater contains tools for easily updating diagnostics"
 url="https://index.ros.org/p/diagnostic_updater/"
 arch=('any')
@@ -22,6 +22,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
