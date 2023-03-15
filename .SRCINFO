@@ -6,7 +6,6 @@ pkgbase = signal-desktop-beta-bin
 	install = signal-desktop-beta-bin.install
 	arch = x86_64
 	license = GPL3
-	depends = gtk2
 	depends = libnotify
 	depends = libxtst
 	depends = nss

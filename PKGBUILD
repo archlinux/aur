@@ -1,11 +1,11 @@
 # Maintainer: Nemo <archlinux at captnemo dot in>
 pkgname=signal-desktop-beta-bin
-pkgrel=2
+pkgrel=3
 pkgdesc="Private messaging from your desktop"
 arch=('x86_64')
 url="https://github.com/WhisperSystems/Signal-Desktop#readme"
 license=('GPL3')
-depends=('gtk2' 'libnotify' 'libxtst' 'nss' 'xdg-utils' 'libxss')
+depends=('libnotify' 'libxtst' 'nss' 'xdg-utils' 'libxss')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 provides=('signal-desktop-beta')
