@@ -1,7 +1,7 @@
 pkgbase = wttr-git
 	pkgdesc = A simple script that helps you check weather condition using site: http://wttr.in (new repository version)
 	pkgver = v1.2.r39.gbf90e8d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cblte/bash-script-wttr
 	arch = any
 	license = MIT
