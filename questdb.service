@@ -1,0 +1,13 @@
+[Unit]
+Description=Questdb fast timeseries database
+Documentation=https://questdb.io/
+After=network.target
+
+[Service]
+Type=forking
+User=questdb
+ExecStart=/usr/bin/questdb start
+ExecStop=/usr/bin/questdb stop
+
+[Install]
+WantedBy=multi-user.target

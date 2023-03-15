@@ -1,0 +1,26 @@
+pkgbase = questdb-git
+	pkgdesc = Fast timeseries database
+	pkgver = 7.0.1.r16.g7fa73a2863
+	pkgrel = 1
+	url = https://questdb.io
+	arch = any
+	license = APACHE
+	makedepends = git
+	makedepends = maven
+	makedepends = java-environment
+	depends = java-runtime
+	depends = bash
+	provides = questdb
+	conflicts = questdb
+	source = questdb-git::git+https://github.com/questdb/questdb.git
+	source = questdb.sh
+	source = questdb.sysusers
+	source = questdb-tmpfile.conf
+	source = questdb.service
+	sha1sums = SKIP
+	sha1sums = 203b1916ebf8547cad1b144509029126d970836b
+	sha1sums = 79459d2e7ab4a78364359cb40368bbc0778fd9cf
+	sha1sums = bcd990f6257a0501c82a03384a9d4c5703b03abb
+	sha1sums = ec5400e458e7511abb8e455710041352f15b87ab
+
+pkgname = questdb-git
