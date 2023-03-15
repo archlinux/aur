@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-control-msgs
 	pkgdesc = control_msgs contains base messages and actions useful for controlling robots. It provides representations for controller setpoints and joint and cartesian trajectories.
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/control_msgs/
 	arch = any
 	depends = ros2-humble

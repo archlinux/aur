@@ -3,7 +3,7 @@
 _pkgname=control_msgs
 pkgname=ros2-humble-control-msgs
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="control_msgs contains base messages and actions useful for controlling robots. It provides representations for controller setpoints and joint and cartesian trajectories."
 url="https://index.ros.org/p/control_msgs/"
 arch=('any')
@@ -20,6 +20,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
