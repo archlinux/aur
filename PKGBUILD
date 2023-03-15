@@ -3,7 +3,7 @@
 _pkgname=moveit_ros/move_group
 pkgname=ros2-humble-moveit-ros-move-group
 pkgver=2.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The move_group node for MoveIt"
 url="https://index.ros.org/p/moveit_ros_move_group/"
 arch=('any')
@@ -32,6 +32,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 

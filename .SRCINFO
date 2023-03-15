@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-moveit-ros-move-group
 	pkgdesc = The move_group node for MoveIt
 	pkgver = 2.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/moveit_ros_move_group/
 	arch = any
 	makedepends = ros2-humble-moveit-common
