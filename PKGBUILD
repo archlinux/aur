@@ -17,6 +17,12 @@ build() {
 
 check() {
   cd $pkgname-$pkgver
+  # See https://github.com/nix-community/nix-user-chroot/tree/1.2.2#check-if-your-kernel-supports-user-namespaces-for-unprivileged-users
+  # Plus, ensure chroot works inside the user namespace (This fails, for example, inside a regular Podman container)
+  if ! unshare --user --pid --map-root-user chroot / true; then
+    echo "WARNING: Skipping tests because user namespaces are not supported or restricted" >&2
+    return
+  fi
   cargo test --release --locked
 }
 
