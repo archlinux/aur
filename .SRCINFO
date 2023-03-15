@@ -1,0 +1,13 @@
+pkgbase = caligula-bin
+	pkgdesc = A lightweight, user-friendly disk imaging tool
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/ifd3f/caligula
+	arch = x86_64
+	license = GPL-3.0
+	provides = caligula
+	conflicts = caligula
+	source = https://github.com/ifd3f/caligula/releases/download/v0.3.0/caligula-x86_64-linux
+	sha256sums = ae1dda2649d7c9152b032b8ded1623bef8705296ea11d6060471ff3f63aa1046
+
+pkgname = caligula-bin
