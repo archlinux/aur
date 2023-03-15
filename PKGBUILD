@@ -27,10 +27,10 @@ prepare() {
 
 build() {
   cmake -S ${pkgbase}-${pkgver_} -B build-grid -DDAMASK_SOLVER=grid -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Performance
-  cmake --build build-grid
+  cmake --build build-grid --parallel
 
   cmake -S ${pkgbase}-${pkgver_} -B build-mesh -DDAMASK_SOLVER=mesh -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Performance
-  cmake --build build-mesh
+  cmake --build build-mesh --parallel
 
   cd ${pkgbase}-${pkgver_}/python
   python -m build --wheel --no-isolation
