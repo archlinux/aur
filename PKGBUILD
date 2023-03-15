@@ -3,7 +3,7 @@
 _pkgname=moveit_kinematics
 pkgname=ros2-humble-moveit-kinematics
 pkgver=2.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Package for all inverse kinematics solvers in MoveIt"
 url="https://index.ros.org/p/moveit_kinematics/"
 arch=('any')
@@ -35,6 +35,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 

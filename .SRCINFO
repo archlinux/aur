@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-moveit-kinematics
 	pkgdesc = Package for all inverse kinematics solvers in MoveIt
 	pkgver = 2.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/moveit_kinematics/
 	arch = any
 	makedepends = ros2-humble-moveit-common
