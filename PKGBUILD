@@ -1,7 +1,7 @@
-# Maintainer: GI Jack <GI_Jack@hackermail.com>
+# Maintainer: mh4ckwascut <mh4ckt3mh4ckt1c4s@protonmail.com>
 
 pkgname=autopsy
-pkgver=4.19.2
+pkgver=4.20.0
 pkgrel=1
 pkgdesc='Digital forensics platform and graphical interface to The Sleuth Kit® and other digital forensic tools'
 arch=(x86_64)
@@ -13,7 +13,7 @@ makedepends=()
 optdepends=('opencv: media files (64-bit)'
 			'perl-parse-registry: regripper')
 source=(https://github.com/sleuthkit/${pkgname}/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.zip Autopsy.desktop)
-sha256sums=('b1ca770df47f09512276fee16c184644cdd9a2591edfdb622a3177896f299893'
+sha256sums=('60964ab135429c2636ab8a1b0da5ee18d232d4323db6ede1b6a9cfbf7e3500ce'
             'be382bc92f5e98dfebbbf31dc927fc44af0fecee6911f7122ba8e7c55d281262')
 
 package() {
