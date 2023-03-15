@@ -2,8 +2,8 @@
 # Based on https://aur.archlinux.org/packages/misskey
 
 pkgname=calckey
-pkgver=13.1.2
-pkgrel=2
+pkgver=13.1.3
+pkgrel=1
 pkgdesc='A greatly enhanced fork of Misskey with better UI/UX, security, features, and more! (Experimental)'
 url='https://calckey.cloud'
 arch=('x86_64')
@@ -15,7 +15,7 @@ install='calckey.install'
 optdepends=('elasticsearch: Search functionality'
             'ffmpeg: Media de-encode functionality'
             'nginx: Reverse-proxy usage')
-_commit='998e6fd4d262691e87beb5e46218490162d24452' #tag/13.0.5
+_commit='998e6fd4d262691e87beb5e46218490162d24452' #tag/13.1.3
 source=("git+https://codeberg.org/calckey/calckey.git#commit=${_commit}"
         "${pkgname}.install"
         "${pkgname}.service"
