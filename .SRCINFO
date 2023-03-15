@@ -1,12 +1,12 @@
 pkgbase = uarmsolver
 	pkgdesc = Universal Association Rule Mining Solver
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/firefly-cpp/uARMSolver
 	arch = any
 	license = MIT
 	makedepends = cmake
-	source = https://github.com/firefly-cpp/uARMSolver/archive/0.2.4.tar.gz
-	sha512sums = 9f693e0168e6715efb61ffbb2f1ea523bf554bb82741e2fe92a0ed770838431033fd035eef76a4c57675f9ccb08c551aeb6dedb5da2473364c63e4c6e7cd150b
+	source = uARMSolver-0.2.5.tar.gz::https://github.com/firefly-cpp/uARMSolver/archive/0.2.5.tar.gz
+	sha512sums = dd63b799a3e215dc0fc49636f81d2f3156e51657212469d05f05e4ce9cefbe386f74c414d8213cf9be0879e49a93ee923a1552b0cd6a5036ceee0e3c3ac3acd0
 
 pkgname = uarmsolver
