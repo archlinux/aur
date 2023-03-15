@@ -18,6 +18,6 @@ pkgbase = tremotesf
 	depends = hicolor-icon-theme
 	depends = libpsl
 	source = https://github.com/equeim/tremotesf2/releases/download/2.1.0/tremotesf-2.1.0.tar.zst
-	sha256sums = 9ff7e2f3ec074702398b5d3759279ae81397f552553e87ccf91ee4c275f4ad40
+	sha256sums = 78a41b7785cea93ffaddf47626e1c431b1ae3e1eaf9bce9f5e2a42a9c3ad756b
 
 pkgname = tremotesf

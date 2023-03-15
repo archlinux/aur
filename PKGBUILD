@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('qt5-base' 'kwidgetsaddons' 'kwindowsystem' 'fmt' 'hicolor-icon-theme' 'libpsl')
 makedepends=('qt5-tools' 'cmake' 'ninja' 'gettext' 'cxxopts' 'pkgconf')
 source=("${_github}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.zst")
-sha256sums=('9ff7e2f3ec074702398b5d3759279ae81397f552553e87ccf91ee4c275f4ad40')
+sha256sums=('78a41b7785cea93ffaddf47626e1c431b1ae3e1eaf9bce9f5e2a42a9c3ad756b')
 
 build() {
     cmake -B build -S "${pkgname}-${pkgver}" \
