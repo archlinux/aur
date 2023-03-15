@@ -3,7 +3,7 @@
 _pkgname=nav2_amcl
 pkgname=ros2-humble-nav2-amcl
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="amcl is a probabilistic localization system for a robot moving in 2D"
 url="https://index.ros.org/p/nav2_amcl/"
 arch=('any')
@@ -27,6 +27,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 

@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-nav2-amcl
 	pkgdesc = amcl is a probabilistic localization system for a robot moving in 2D
 	pkgver = 1.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/nav2_amcl/
 	arch = any
 	makedepends = ros2-humble-nav2-common
