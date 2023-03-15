@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-cv-bridge
 	pkgdesc = This contains CvBridge, which converts between ROS Image messages and OpenCV images.
 	pkgver = 3.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/cv_bridge/
 	arch = any
 	makedepends = boost
