@@ -3,7 +3,7 @@
 _pkgname=wayfarer
 pkgname=wayfarer-git
 pkgver=1.1.0.r0.b77ac60
-pkgrel=2
+pkgrel=3
 pkgdesc='Screen recorder for GNOME / Wayland or X11 / Pipewire / XDG Portal'
 arch=('i686' 'x86_64' 'arm' 'aarch64' 'armv7h' 'pentium4')
 url='https://github.com/stronnag/wayfarer.git'
@@ -22,12 +22,12 @@ pkgver() {
 
 build() {
   cd $_pkgname
-  meson setup build --prefix=/usr --buildtype=release --strip
-  meson compile -C build
+  arch-meson build
+  ninja -C build
 }
 
 package() {
   # executable
   cd $_pkgname
-  DESTDIR="$pkgdir" meson install -C build
+  DESTDIR="$pkgdir" ninja -C build install
 }
