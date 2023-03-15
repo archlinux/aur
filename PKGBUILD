@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=audiorelay
-pkgver=0.26.3
-pkgrel=6
+pkgver=0.27.3
+pkgrel=1
 _jre_ver=19
 pkgdesc="Stream your PC audio to your phone"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('unknown')
 depends=('alsa-lib' 'flac' 'harfbuzz' 'libogg' 'libpulse' # "java-runtime=${_jre_ver}"
          'libvorbis' 'libxau' 'libxcb' 'systemd-libs' 'xdg-utils') # 'opus' 'portaudio'
 source=("https://dl.audiorelay.net/setups/linux/$pkgname-$pkgver.deb")
-sha256sums=('a0d41972131c0733edf04bcdb4a5bab698ceb569bd75f7265b534ae53e5d50a6')
+sha256sums=('f991b34d88f9e9a94cd915ef0f74011099c5df7eec19352cbec595a54d0810b7')
 
 package() {
   bsdtar -xvf data.tar.xz -C "$pkgdir"
