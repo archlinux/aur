@@ -2,7 +2,7 @@
 pkgname=gopeed-bin
 _pkgname=gopeed
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="High speed downloader that supports all platforms."
 arch=('x86_64')
 url="https://gopeed.com/"
@@ -19,9 +19,12 @@ package() {
     bsdtar -xf data.tar.zst -C "${pkgdir}"
     chown -R root:root "${pkgdir}/"
     mkdir -p "${pkgdir}/opt"
-    mv "${pkgdir}/usr/local/lib/${_pkgname}" "${pkgdir}/opt"
+    mv "${pkgdir}/usr/local/lib/${_pkgname}" "${pkgdir}/opt"    
     rm -r "${pkgdir}/usr/local"
     sed 's/TryExec=/#TryExec=/g;s/Exec=/#Exec/g;s/Categories/#Categories/g' -i "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-    echo "Exec=/opt/${_pkgname}/${_pkgname}" >> "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
     echo "Categories=Network;Utility;" >> "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    echo "Icon=${_pkgname}" >> "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    echo "Exec=/opt/${_pkgname}/${_pkgname}" >> "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "${pkgdir}/usr/share/icons/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.png"
+    rm -r "${pkgdir}/usr/share/icons/${_pkgname}.png"
 }
