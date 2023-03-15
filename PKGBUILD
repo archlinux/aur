@@ -3,7 +3,7 @@
 _pkgname=nav2_behaviors
 pkgname=ros2-humble-nav2-behaviors
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="TODO"
 url="https://index.ros.org/p/nav2_behaviors/"
 arch=('any')
@@ -28,6 +28,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
