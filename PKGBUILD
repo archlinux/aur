@@ -1,8 +1,8 @@
 # Maintainer: Filippo Falezza <filippo dot falezza at outlook dot it>
 
 pkgname='geant4-full'
-pkgver=11.1.0
-pkgrel=9
+pkgver=11.1.1
+pkgrel=1
 pkgdesc="A simulation toolkit for particle physics interactions - includes all the optional libraries"
 depends=(
   'cmake>=3.16'
@@ -48,7 +48,7 @@ source=(
   'geant4-full.install'
 )
 sha256sums=(
-  "051e43066152c373f74746bdffe6f0c9e4175ad9cf1eb7b67da0dc1a05d0b985"
+  "d29122eb2a5df7715437340c1a3a293a29d47386ca15ceec8758aa439a2de469"
   'b03e886435addd44eea965c7a4a59deddc34c55381af2584042b2737c89b698e'
 )
 install="geant4-full.install"
@@ -57,7 +57,7 @@ build() {
 
   cd $srcdir
   echo "
-export PATH=\$PATH:/opt/Geant4/Geant4-v11.1.0/bin
+export PATH=\$PATH:/opt/Geant4/Geant4-v${pkgver}/bin
 export G4NEUTRONHPDATA=/opt/Geant4/Libraries/G4NDL4.7
 export G4LEDATA=/opt/Geant4/Libraries/G4EMLOW8.2
 export G4LEVELGAMMADATA=/opt/Geant4/Libraries/PhotonEvaporation5.7
@@ -73,7 +73,7 @@ export G4ENSDFSTATEDATA=/opt/Geant4/Libraries/G4ENSDFSTATE2.3
 export G4PARTICLEHPDATA=/opt/Geant4/Libraries/G4TENDL1.4" > Geant4.sh
 
   echo "
-setenv PATH \$PATH:/opt/Geant4/Geant4-v11.1.0/bin
+setenv PATH \$PATH:/opt/Geant4/Geant4-v${pkgver}/bin
 setenv G4NEUTRONHPDATA /opt/Geant4/data/G4NDL4.7
 setenv G4LEDATA /opt/Geant4/Libraries/G4EMLOW8.2
 setenv G4LEVELGAMMADATA /opt/Geant4/Libraries/PhotonEvaporation5.7
