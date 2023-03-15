@@ -2,7 +2,7 @@
 
 pkgname=ros2-humble-control-toolbox
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The control toolbox contains modules that are useful across all controllers."
 url="https://index.ros.org/p/control_toolbox/"
 arch=('any')
@@ -23,6 +23,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
