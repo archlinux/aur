@@ -1,0 +1,25 @@
+pkgbase = swaylock-1.5
+	pkgdesc = Screen locker for Wayland with layers support, enabling dynamic compositor blurring
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://github.com/swaywm/swaylock
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = meson
+	makedepends = git
+	makedepends = scdoc
+	makedepends = wayland-protocols
+	depends = wayland
+	depends = libxkbcommon
+	depends = pam
+	depends = cairo
+	depends = gdk-pixbuf2
+	provides = swaylock
+	conflicts = swaylock
+	source = swaylock-1.5::git+https://github.com/swaywm/swaylock
+	sha1sums = SKIP
+
+pkgname = swaylock-1.5
