@@ -2,7 +2,7 @@ pkgbase = swayimg-git
 	pkgdesc = Image viewer for Sway/Wayland
 	pkgver = 1.10
 	pkgrel = 1
-	url = https://github.com/cl4ptp42/swayimg
+	url = https://github.com/artemsen/swayimg
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -24,7 +24,7 @@ pkgbase = swayimg-git
 	optdepends = bash-completion: Bash completions
 	provides = swayimg
 	conflicts = swayimg
-	source = swayimg::git+https://github.com/cl4ptp42/swayimg.git
+	source = swayimg::git+https://github.com/artemsen/swayimg.git
 	md5sums = SKIP
 
 pkgname = swayimg-git
