@@ -3,7 +3,7 @@
 _pkgname=nav2_smoother
 pkgname=ros2-humble-nav2-smoother
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Smoother action interface"
 url="https://index.ros.org/p/nav2_smoother/"
 arch=('any')
@@ -32,6 +32,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 

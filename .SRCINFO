@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-nav2-smoother
 	pkgdesc = Smoother action interface
 	pkgver = 1.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/nav2_smoother/
 	arch = any
 	makedepends = ros2-humble-nav2-common
