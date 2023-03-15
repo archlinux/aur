@@ -1,7 +1,7 @@
 pkgbase = katago-avx2
 	pkgdesc = AlphaZero-like open source Go bot, built for AVX2
-	pkgver = 1.11.0
-	pkgrel = 3
+	pkgver = 1.12.4
+	pkgrel = 1
 	url = https://github.com/lightvector/KataGo
 	arch = x86_64
 	license = MIT
@@ -12,9 +12,9 @@ pkgbase = katago-avx2
 	depends = libzip
 	depends = boost-libs
 	provides = katago
-	source = git+https://github.com/lightvector/KataGo.git#tag=v1.11.0
-	source = https://media.katagotraining.org/uploaded/networks/models/kata1/kata1-b15c192-s1672170752-d466197061.txt.gz
+	source = git+https://github.com/lightvector/KataGo.git#tag=v1.12.4
+	source = https://media.katagotraining.org/uploaded/networks/models/kata1/kata1-b18c384nbt-s4975305984-d3174897359.bin.gz
 	sha256sums = SKIP
-	sha256sums = 09456899f1b9155217f4ca059cf8a68f79b7eba22cf6b7c00ffb7f17ce067967
+	sha256sums = 67f1f3be9979c4188075d591066acbd916f40925162b3bf172a07749d4919b5a
 
 pkgname = katago-avx2

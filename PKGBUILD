@@ -3,8 +3,8 @@
 
 pkgname=katago-avx2
 _pkgname=KataGo
-pkgver=1.11.0
-pkgrel=3
+pkgver=1.12.4
+pkgrel=1
 pkgdesc='AlphaZero-like open source Go bot, built for AVX2'
 url='https://github.com/lightvector/KataGo'
 provides=('katago')
@@ -13,12 +13,12 @@ license=('MIT')
 depends=('libzip' 'boost-libs')
 makedepends=('git' 'cmake' 'boost' 'eigen')
 source=("git+https://github.com/lightvector/KataGo.git#tag=v${pkgver}"
-	"https://media.katagotraining.org/uploaded/networks/models/kata1/kata1-b15c192-s1672170752-d466197061.txt.gz")
+	"https://media.katagotraining.org/uploaded/networks/models/kata1/kata1-b18c384nbt-s4975305984-d3174897359.bin.gz")
 sha256sums=('SKIP'
-            '09456899f1b9155217f4ca059cf8a68f79b7eba22cf6b7c00ffb7f17ce067967')
+            '67f1f3be9979c4188075d591066acbd916f40925162b3bf172a07749d4919b5a')
 
-# To enable fast playouts on this CPU-bound katago, we ship the strongest
-# 15-block, 192-channel neural network. See: https://katagotraining.org/
+# For fast playouts on this CPU-bound katago, we ship the strongest neural
+# network with reasonable number of blocks. See: https://katagotraining.org/
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
