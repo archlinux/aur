@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-nav2-velocity-smoother
 	pkgdesc = Nav2's Output velocity smoother
 	pkgver = 1.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/nav2_velocity_smoother/
 	arch = any
 	makedepends = ros2-humble-nav2-common

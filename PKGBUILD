@@ -3,7 +3,7 @@
 _pkgname=nav2_velocity_smoother
 pkgname=ros2-humble-nav2-velocity-smoother
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Nav2's Output velocity smoother"
 url="https://index.ros.org/p/nav2_velocity_smoother/"
 arch=('any')
@@ -27,6 +27,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
