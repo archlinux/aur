@@ -3,7 +3,7 @@
 _pkgname=nav2_bringup
 pkgname=ros2-humble-nav2-bringup
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Bringup scripts and configurations for the Nav2 stack"
 url="https://index.ros.org/p/nav2_bringup/"
 arch=('any')
@@ -25,6 +25,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 

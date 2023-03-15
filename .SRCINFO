@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-nav2-bringup
 	pkgdesc = Bringup scripts and configurations for the Nav2 stack
 	pkgver = 1.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/nav2_bringup/
 	arch = any
 	depends = ros2-humble
