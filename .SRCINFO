@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-nav2-msgs
 	pkgdesc = Messages and service files for the Nav2 stack
 	pkgver = 1.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/nav2_msgs/
 	arch = any
 	makedepends = ros2-humble-nav2-common
