@@ -49,6 +49,6 @@ makechrootpkg -c -r $CHROOT -- -Acsf .
 makepkg --printsrcinfo >.SRCINFO
 
 # Commit changes
-#git add PKGBUILD .SRCINFO
-#git commit -s -m "Update to v${VER}"
-#rm -rf *.deb *.log *.zst
+git add PKGBUILD .SRCINFO
+git commit -s -m "Update to ${VER}"
+rm -rf *.gz *.log *.zst
