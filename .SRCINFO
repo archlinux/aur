@@ -1,6 +1,6 @@
 pkgbase = systemd-cron
 	pkgdesc = systemd units to run cron scripts
-	pkgver = 1.15.19
+	pkgver = 1.15.20
 	pkgrel = 1
 	url = https://github.com/systemd-cron/systemd-cron
 	install = systemd-cron.install
@@ -12,9 +12,9 @@ pkgbase = systemd-cron
 	optdepends = smtp-forwarder: sending emails
 	provides = cron
 	conflicts = cron
-	source = systemd-cron-1.15.19.tar.gz::https://github.com/systemd-cron/systemd-cron/archive/v1.15.19.tar.gz
+	source = systemd-cron-1.15.20.tar.gz::https://github.com/systemd-cron/systemd-cron/archive/refs/tags/1.15.20.tar.gz
 	source = sysusers.conf
-	sha256sums = b0774d4ec41901b3358c939fb86080e2ea9f03250d552aedb4cdc6141f9487cf
+	sha256sums = c6b2d3c7b325f9878fac253454cb42e6d2527ec8141eb75703fe5c48b2fb4135
 	sha256sums = 9260221879cca05d4c82cd12deb88759c8d9148e106f4b9891700849cef5c41b
 
 pkgname = systemd-cron
