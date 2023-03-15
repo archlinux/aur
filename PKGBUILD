@@ -1,5 +1,6 @@
 # Maintainer: Stephan Springer <buzo+arch@Lini.de>
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
+# Contributor: Bruno Pagani <archange@archlinux.org>
 # Contributor: Doug Newgard <scimmia at archlinux dot org>
 # Contributor: XavierCLL <xavier.corredor.llano (a) gmail.com>
 # Contributor: SaultDon <sault.don gmail>
@@ -11,36 +12,31 @@
 
 _pkgname=qgis
 pkgname="$_pkgname"-ltr
-pkgver=3.22.16
+pkgver=3.28.4
 pkgrel=1
 pkgdesc='Geographic Information System (GIS); Long Term Release'
+arch=(x86_64)
 url='https://qgis.org/'
-license=('GPL')
-arch=('x86_64')
-depends=('exiv2' 'gdal' 'gsl' 'hicolor-icon-theme' 'libzip' 'ocl-icd' 'pdal' 'protobuf'
-         'python-gdal' 'python-jinja' 'python-owslib' 'python-psycopg2' 'python-pygments'
-         'python-qscintilla-qt5' 'python-yaml' 'qca' 'qt5-3d' 'qt5-imageformats'
-         'qt5-serialport' 'qt5-location' 'qtkeychain-qt5' 'qwt' 'spatialindex')
-makedepends=('cmake' 'fcgi' 'ninja' 'opencl-clhpp' 'python-setuptools' 'python-six' 'qt5-tools'
-             'txt2tags' 'sip' 'pyqt-builder')
+license=(GPL)
+depends=(ocl-icd proj geos gdal expat spatialindex qwt libzip sqlite3 protobuf
+         zlib exiv2 postgresql-libs libspatialite zstd pdal
+         qt5-base qt5-svg qt5-serialport qt5-location qt5-3d qt5-declarative
+         qscintilla-qt5 qtkeychain-qt5 qca-qt5 gsl python-pyqt5 python-qscintilla-qt5
+         hdf5 netcdf libxml2) # laz-perf
+makedepends=(cmake ninja opencl-clhpp fcgi qt5-tools sip pyqt-builder)
 optdepends=('fcgi: Map server'
             'gpsbabel: GPS Tools plugin')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("https://download.qgis.org/downloads/$_pkgname-$pkgver.tar.bz2"
-        qgstyle-infinite-loop.patch::https://github.com/qgis/QGIS/commit/19823b76.patch)
-sha256sums=('dbd1f8a639291bb2492eea61e4ef96079d7b27d3dfa538dab8cd98f31429254a'
-            'c5bc388da987c7c21451b3f0f74220c8bd82cfba04657ff599d1896e6ae4b304')
-# curl https://qgis.org/downloads/qgis-latest-ltr.tar.bz2.sha256
-
-prepare() {
-  patch -d "$_pkgname-$pkgver" -p1 < qgstyle-infinite-loop.patch # Fix infinite loop
-}
+source=("https://download.qgis.org/downloads/$_pkgname-$pkgver.tar.bz2")
+sha256sums=('521c914de3a6753876d5e5d9a5bf9753cfa7b57b565a2df8017858f04c1643e3')
+# curl https://download.qgis.org/downloads/qgis-latest-ltr.tar.bz2.sha256
 
 build() {
   cmake -G Ninja -B build -S "$_pkgname-$pkgver" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DWITH_3D=TRUE \
+    -DWITH_QUICK=TRUE \
     -DWITH_SERVER=TRUE \
     -DWITH_CUSTOM_WIDGETS=TRUE \
     -DBINDINGS_GLOBAL_INSTALL=TRUE \
@@ -51,7 +47,15 @@ build() {
     -DQWTPOLAR_INCLUDE_DIR=/usr/include/qwt \
     -DCMAKE_CXX_FLAGS="${CXXFLAGS} -DQWT_POLAR_VERSION=0x060200" \
     -DWITH_INTERNAL_QWTPOLAR=FALSE \
-    -DWITH_PDAL=TRUE
+    -DWITH_PDAL=TRUE \
+    -DHAS_KDE_QT5_PDF_TRANSFORM_FIX=TRUE \
+    -DHAS_KDE_QT5_SMALL_CAPS_FIX=TRUE \
+    -DHAS_KDE_QT5_FONT_STRETCH_FIX=TRUE
+    # https://github.com/qgis/QGIS/issues/48374
+    #-DWITH_INTERNAL_LAZPERF=FALSE \
+    # https://github.com/qgis/QGIS/issues/35440
+    #-DWITH_PY_COMPILE=TRUE \
+
   cmake --build build
 }
 
