@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-moveit-simple-controller-manager
 	pkgdesc = A generic, simple controller manager plugin for MoveIt
 	pkgver = 2.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/moveit_simple_controller_manager/
 	arch = any
 	makedepends = ros2-humble-moveit-common

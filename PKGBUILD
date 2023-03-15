@@ -3,7 +3,7 @@
 _pkgname=moveit_plugins/moveit_simple_controller_manager
 pkgname=ros2-humble-moveit-simple-controller-manager
 pkgver=2.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A generic, simple controller manager plugin for MoveIt"
 url="https://index.ros.org/p/moveit_simple_controller_manager/"
 arch=('any')
@@ -26,6 +26,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
