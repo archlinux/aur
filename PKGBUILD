@@ -4,7 +4,7 @@
 _pkgname=joint_state_publisher
 pkgname=ros2-humble-joint-state-publisher
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="This package contains a tool for setting and publishing joint state values for a given URDF"
 url="https://index.ros.org/p/joint_state_publisher/"
 arch=('any')
@@ -20,6 +20,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     cd joint_state_publisher-$pkgver/$_pkgname
     colcon build --merge-install
 }
