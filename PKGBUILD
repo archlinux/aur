@@ -3,7 +3,7 @@
 _pkgname=moveit_common
 pkgname=ros2-humble-moveit-common
 pkgver=2.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="CoCommon support functionality used throughout MoveIt"
 url="https://index.ros.org/p/moveit_common/"
 arch=('any')
@@ -23,6 +23,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
