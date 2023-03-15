@@ -1,9 +1,9 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
-# Contributors: carstene1ns, Arkham, Christoph Zeiler, JD Steffen
+# Contributors: carstene1ns, Arkham, Christoph Zeiler and JD Steffen
 
 pkgname=eduke32
-_pkgdate=20230123
-_pkgrev='10167-1a90b9883'
+_pkgdate=20230314
+_pkgrev='10168-ef5f15e45'
 pkgver=$_pkgdate.r${_pkgrev/-/_}
 pkgrel=1
 pkgdesc="An advanced Duke Nukem 3D source port"
