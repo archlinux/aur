@@ -1,6 +1,6 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
-_pkgtag=Beta_29_3_Build1 #auto updated by CI
+_pkgtag=Beta_30_1_Build1 #auto updated by CI
 #tags are sadly not very consistent #current tag    (original tag)      -> new tag
 pkgver=${_pkgtag/Beta_/0_}          #Beta_25_5      (Beta_25_5)         -> 0_25_5
 pkgver=${pkgver/Beta/0_}            #Beta28_Build2  (Beta28_Build2)     -> 0_28_Build2
@@ -19,7 +19,7 @@ depends=('qt6-declarative' 'qt6-multimedia')
 makedepends=('clang' 'cmake' 'ninja' 'qt6-tools')
 source=("https://github.com/Robosturm/Commander_Wars/archive/$_pkgtag.tar.gz"
         '0001-fix-QStandardPaths-include.patch')
-sha512sums=('6453104f77ccce0056dd0d87e49553d6a45c487e13875afc9c42405a885bb77b2379e6f7244ff5e036018de4ed066ebbcbd5fb434f1cab5f630050dbb8da4006'
+sha512sums=('fcb95390f7905fb70721cbc93b2c262bf5ec18e22a273d712719314864a6df7cae1b4fa6f813658113fc2dd0d6aa0142f775475710663498a6c108120cea7cb9'
             '2de911786944e44a18f524508827805992a02a6890638a0e24bfcbac02374df90e8334376973263492ea04454b9ac368e71d3aa91d4b7b33a0bbc5af661bfcc2')
 
 prepare()
