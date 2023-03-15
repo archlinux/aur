@@ -24,10 +24,10 @@ build() {
 	# Extract licenses from files
 	mkdir ../licenses
 	for f in *.c *.h; do
-	  license_file="../licenses/${f}.LICENSE"
-          sed '/Copyright/!d; :a; s/ \* \{0,1\}//; n; /\*\//d; $!ba' "$f" >"$license_file"
-          [ -s "$license_file" ] || rm -f -- "$license_file"
-        done
+		license_file="../licenses/${f}.LICENSE"
+		sed '/Copyright/!d; :a; s/ \* \{0,1\}//; n; /\*\//d; $!ba' "$f" >"$license_file"
+		[ -s "$license_file" ] || rm -f -- "$license_file"
+	done
 }
 
 package() {
@@ -38,6 +38,6 @@ package() {
 
 	# Install licenses
 	for f in ../licenses/*.LICENSE; do
-	  install -Dm644 "$f" "$pkgdir/usr/share/licenses/$pkgname/${f##*/}"
+		install -Dm644 "$f" "$pkgdir/usr/share/licenses/$pkgname/${f##*/}"
 	done
 }
