@@ -2,7 +2,7 @@
 pkgname="topgrade-bin"
 _pkgname="topgrade"
 pkgver=10.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Invoke the upgrade procedure of multiple package managers"
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/topgrade-rs/topgrade'
@@ -25,10 +25,10 @@ package() {
 	./topgrade --gen-manpage | sed 's/.TH Topgrade 1/.TH Topgrade 8/' >topgrade.8
 	install -Dm644 ./topgrade.8 "$pkgdir/usr/local/man/man8/topgrade.8"
 	# completions
-	if $(command -v fish &>/dev/null); then
-		./topgrade --gen-completion fish >topgrade.fish
-		install -Dm644 ./topgrade.fish "${pkgdir}/usr/share/fish/completions/topgrade.fish"
-	fi
+	# if $(command -v fish &>/dev/null); then
+	# 	./topgrade --gen-completion fish >topgrade.fish
+	# 	install -Dm644 ./topgrade.fish "${pkgdir}/usr/share/fish/completions/topgrade.fish"
+	# fi
 	if $(command -v bash &>/dev/null); then
 		./topgrade --gen-completion bash >topgrade.bash
 		install -Dm644 ./topgrade.bash "${pkgdir}/usr/share/bash-completion/completions/topgrade"
