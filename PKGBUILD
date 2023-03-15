@@ -3,7 +3,7 @@
 _pkgname=gazebo_ros
 pkgname=ros2-humble-gazebo-ros
 pkgver=3.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides ROS plugins that offer message and service publishers for interfacing with"
 url="https://index.ros.org/p/gazebo_ros/"
 arch=('any')
@@ -25,6 +25,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
