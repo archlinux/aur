@@ -1,8 +1,8 @@
 pkgbase = gimp-plugin-registry
 	pkgdesc = Repository of optional extensions for GIMP
 	pkgver = 9.20180625
-	pkgrel = 2
-	url = https://launchpad.net/~otto-kesselgulasch/+archive/ubuntu/gimp
+	pkgrel = 3
+	url = https://launchpad.net/~ubuntuhandbook1/+archive/ubuntu/gimp
 	install = gimp-plugin-registry.install
 	arch = x86_64
 	license = GPL
@@ -89,8 +89,7 @@ pkgbase = gimp-plugin-registry
 	conflicts = gimp-script-technicolor-3-color
 	conflicts = gimp-script-vintage-look
 	conflicts = gimp-script-white-balance-puzzle
-	source = https://launchpad.net/~otto-kesselgulasch/+archive/ubuntu/gimp/+files/gimp-plugin-registry_9.20180625-1ubu18.04~ppa_amd64.deb
+	source = https://launchpad.net/~ubuntuhandbook1/+archive/ubuntu/gimp/+files/gimp-plugin-registry_9.20180625-1ubu18.04~ppa_amd64.deb
 	sha256sums = 6686a6ef7340db8ad402f1c80e0d44a67a695642462674bae8673ab6cc225497
 
 pkgname = gimp-plugin-registry
-
