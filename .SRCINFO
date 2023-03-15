@@ -1,0 +1,15 @@
+pkgbase = totalmapper-git
+	pkgdesc = A simple utility for remapping keys using the Linux event handling system.
+	pkgver = 1.4.2.r3.g30cfc9a
+	pkgrel = 1
+	url = https://github.com/ellbur/totalmapper
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	provides = totalmapper
+	conflicts = totalmapper
+	conflicts = totalmapper-bin
+	source = totalmapper::git+https://github.com/ellbur/totalmapper
+	sha512sums = SKIP
+
+pkgname = totalmapper-git
