@@ -3,7 +3,7 @@
 
 pkgname=nodejs-sql-language-server
 _pkgname=sql-language-server
-pkgver=1.2.1
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="SQL Language Server"
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.com/${_pkgname}/-/${_pkgname}-${pkgver}.tgz")
-sha256sums=('d299d593dd759f9f9cf97bf5a55f5df1f324de8fda0e4a489156d73080f4bed6')
+sha256sums=('b0de352c455bf566c5b7fd4d97fa122c85c5d955f97f7bcc4580f4ac8cfcb724')
 
 package() {
     npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${_pkgname}-${pkgver}.tgz"
