@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=poketex
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Simple Pokedex based on TUI"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5e89e262d4b15556c64f185dc263c83966649abafe1ddf7ebdc98b858abf0e88')
+sha256sums=('76f050b47a54955eaf5ca89b6fe4cbbe5b52e6908d86df0290d74ec9a1e8ec19')
 
 prepare() {
   cd "$pkgname-$pkgver"
