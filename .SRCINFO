@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-rsl
 	pkgdesc = ROS Support Library
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/rsl/
 	arch = any
 	makedepends = clang

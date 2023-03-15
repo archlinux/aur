@@ -3,7 +3,7 @@
 _pkgname=RSL
 pkgname=ros2-humble-rsl
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="ROS Support Library"
 url="https://index.ros.org/p/rsl/"
 arch=('any')
@@ -30,6 +30,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
