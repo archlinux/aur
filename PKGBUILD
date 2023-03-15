@@ -3,7 +3,7 @@
 _pkgname=wayfarer
 pkgname=wayfarer-git
 pkgver=1.1.0.r0.b77ac60
-pkgrel=1
+pkgrel=2
 pkgdesc='Screen recorder for GNOME / Wayland or X11 / Pipewire / XDG Portal'
 arch=('i686' 'x86_64' 'arm' 'aarch64' 'armv7h' 'pentium4')
 url='https://github.com/stronnag/wayfarer.git'
