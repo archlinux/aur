@@ -5,7 +5,7 @@
 
 pkgname=p3x-onenote
 pkgver=2023.4.117
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux Electron Onenote - A Linux compatible version of OneNote"
 arch=('any')
 projecthost="https://github.com"
