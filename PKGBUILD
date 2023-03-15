@@ -3,7 +3,7 @@
 _pkgname=nav2_constrained_smoother
 pkgname=ros2-humble-nav2-constrained-smoother
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Ceres constrained smoother"
 url="https://index.ros.org/p/nav2_constrained_smoother/"
 arch=('any')
@@ -30,6 +30,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
