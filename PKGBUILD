@@ -2,17 +2,17 @@
 # Maintainer: Joe
 # Contributor: Joe
 pkgname=ringcentral-bin
-pkgver=21.4.53809.1206
-pkgrel=2
+pkgver=22.1.31.2868
+pkgrel=3
 pkgdesc="Video Conferencing and Web Conferencing Service."
 arch=('x86_64')
 url="https://www.ringcentral.com"
 license=('MIT')
-depends=('alsa-lib' 'anaconda' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'fontconfig' 'freetype2>=2.6' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'ibus' 'libdrm' 'libegl' 'libgl' 'libglvnd' 'libpulse' 'libsm' 'libx11' 'libxcb' 'libxcomposite' 'libxcursor' 'libxdamage' 'libxext' 'libxfixes' 'libxi' 'libxkbcommon' 'libxkbcommon-x11' 'libxrender' 'libxslt' 'libxtst' 'nspr' 'nss' 'pango' 'qt5-3d' 'qt5-base' 'qt5-declarative' 'qt5-gamepad' 'qt5-location' 'qt5-multimedia' 'qt5-quickcontrols2' 'qt5-remoteobjects' 'qt5-script' 'qt5-svg' 'qt5-wayland' 'qt5-webchannel' 'qt5-webengine' 'qt5-xmlpatterns' 'sqlite' 'wayland' 'xcb-util-image' 'xcb-util-keysyms' 'zlib')
+depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'fontconfig' 'freetype2>=2.6' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'ibus' 'libdrm' 'libegl' 'libgl' 'libglvnd' 'libpulse' 'libsm' 'libx11' 'libxcb' 'libxcomposite' 'libxcursor' 'libxdamage' 'libxext' 'libxfixes' 'libxi' 'libxkbcommon' 'libxkbcommon-x11' 'libxrender' 'libxslt' 'libxtst' 'nspr' 'nss' 'pango' 'qt5-3d' 'qt5-base' 'qt5-declarative' 'qt5-gamepad' 'qt5-location' 'qt5-multimedia' 'qt5-quickcontrols2' 'qt5-remoteobjects' 'qt5-script' 'qt5-svg' 'qt5-wayland' 'qt5-webchannel' 'qt5-webengine' 'qt5-xmlpatterns' 'sqlite' 'wayland' 'xcb-util-image' 'xcb-util-keysyms' 'zlib')
 optdepends=('cuda-tools')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=("https://rcm.ringcentral.com/client/latest/ringcentral_amd64.deb")
+source_x86_64=("https://downloads.ringcentral.com/RCM/RC/meetings/linux/RCMeetingsClientSetup.deb")
 sha512sums_x86_64=('dc97a72252cf1f9a082c2aa21132ba58e0237fec42731413397e8dda1ac30cb3b195604d3c3c3b5bea60344e1131ce05c87931d489c0b483be48d58e572ae56f')
 
 package(){

@@ -1,13 +1,12 @@
 pkgbase = ringcentral-bin
 	pkgdesc = Video Conferencing and Web Conferencing Service.
-	pkgver = 21.4.53809.1206
-	pkgrel = 2
+	pkgver = 22.1.31.2868
+	pkgrel = 3
 	url = https://www.ringcentral.com
 	install = ringcentral-bin.install
 	arch = x86_64
 	license = MIT
 	depends = alsa-lib
-	depends = anaconda
 	depends = at-spi2-core
 	depends = cairo
 	depends = dbus
@@ -64,7 +63,7 @@ pkgbase = ringcentral-bin
 	optdepends = cuda-tools
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://rcm.ringcentral.com/client/latest/ringcentral_amd64.deb
+	source_x86_64 = https://downloads.ringcentral.com/RCM/RC/meetings/linux/RCMeetingsClientSetup.deb
 	sha512sums_x86_64 = dc97a72252cf1f9a082c2aa21132ba58e0237fec42731413397e8dda1ac30cb3b195604d3c3c3b5bea60344e1131ce05c87931d489c0b483be48d58e572ae56f
 
 pkgname = ringcentral-bin
