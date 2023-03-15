@@ -1,6 +1,6 @@
 # Maintainer: Jonas Møller <jonas.moeller2@protonmail.com>
 pkgname=hawck-git
-_pkgname=Hawck
+_pkgname=hawck
 pkgver=20230310
 pkgrel=1
 pkgdesc="Keyboard macro system"
