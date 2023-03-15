@@ -3,7 +3,7 @@
 _pkgname=nav2_regulated_pure_pursuit_controller
 pkgname=ros2-humble-nav2-regulated-pure-pursuit-controller
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Regulated Pure Pursuit Controller"
 url="https://index.ros.org/p/nav2_regulated_pure_pursuit_controller/"
 arch=('any')
@@ -28,6 +28,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
