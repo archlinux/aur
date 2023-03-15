@@ -18,7 +18,7 @@ _CUDA_ARCH_LIST_CMAKE="52-real;53-real;60-real;61-real;62-real;70-real;72-real;7
 _pkgname=vision
 pkgbase='torchvision'
 pkgname=('torchvision' 'torchvision-cuda' 'python-torchvision' 'python-torchvision-cuda')
-pkgver=0.14.1
+pkgver=0.15.1
 pkgrel=1
 pkgdesc='Datasets, transforms, and models specific to computer vision'
 arch=('x86_64')
@@ -29,6 +29,7 @@ depends=(
   python-pillow
   python-requests
   python-scipy
+  python-sympy
 )
 optdepends=(
   'ffmpeg4.4: video reader backend (the recommended one with better performance)'
@@ -48,8 +49,8 @@ source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/pytorch/vision/archive
         "https://github.com/NVIDIA/DALI/raw/main/dali/operators/reader/loader/video/nvdecode/cuviddec.h"
         "https://github.com/NVIDIA/DALI/raw/main/dali/operators/reader/loader/video/nvdecode/nvcuvid.h"
 )
-b2sums=('0708635b00ac7c2cf4e54799f1190f01f3240f53233695819f691313b8a369b8922520e2f3cf96184bab671877b5826b84e0936d9ca5b58004d6e2a098c6cbbf'
-        '9ccff204a4e1e93340d8b12c2b1d17e01663c12957b4665c0043eccf76d507a7308745a5d9e4d89657840aaf8abf0aa8f51bd79d6e0d5dc57a376d54a754755a'
+b2sums=('4a2cdfb1067c9e1ce86cc632803e86e7133e63a79c7124afa5c514b6fa2a1e056316bb29d66a6d16ec976899ab7218b79572ae8673df2566b4a7b0d6238e8551'
+        'e0e3637aae332c9c9ba0546597685b0368cb569f6d5a0ce2e792e1c204dc787b88d8f149fd0a3fba12527fa3048e41ba8605c3215df5062e6988f22fc5caabc8'
         '7db5d621f3099bc5455f1faeb7f4c3575a9cf70153ba56a6efc6d67d0ef2ac5438f6e117e621c5ef35c239eb3bce3fe17ce160e6b7765e8203d67a7299085429')
 
 prepare() {
