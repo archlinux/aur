@@ -1,9 +1,9 @@
 # Maintainer: Marco Rubin <marco.rubin@protonmail.com>
 
 pkgname=cubeb
-pkgver=20221208
-_commit=51728e55cd9e11088da414d6ae1e21ef10cd83de
-pkgrel=3
+pkgver=20230201
+_commit=70b4e3db7822de4d534959885cda109d6edbee36
+pkgrel=1
 pkgdesc="Cross platform audio library"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/mozilla/cubeb"
@@ -26,6 +26,11 @@ pkgver() {
     git log -n1 --pretty='format:%cd' --date=format:'%Y%m%d' $_commit
 }
 
+prepare() {
+    cd $pkgname
+    # https://github.com/mozilla/cubeb/issues/736
+    sed -i '/cubeb_add_test(logging)/d' CMakeLists.txt
+}
 
 build() {
     cd $pkgname

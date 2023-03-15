@@ -1,7 +1,7 @@
 pkgbase = cubeb
 	pkgdesc = Cross platform audio library
-	pkgver = 20221208
-	pkgrel = 3
+	pkgver = 20230201
+	pkgrel = 1
 	url = https://github.com/mozilla/cubeb
 	arch = aarch64
 	arch = armv7h
@@ -23,10 +23,10 @@ pkgbase = cubeb
 	optdepends = jack: for JACK backend
 	optdepends = libpulse: for PulseAudio backend
 	optdepends = sndio: for sndio backend
-	provides = cubeb=20221208
+	provides = cubeb=20230201
 	provides = libcubeb.so
 	conflicts = cubeb-git
-	source = git+https://github.com/mozilla/cubeb#commit=51728e55cd9e11088da414d6ae1e21ef10cd83de
+	source = git+https://github.com/mozilla/cubeb#commit=70b4e3db7822de4d534959885cda109d6edbee36
 	b2sums = SKIP
 
 pkgname = cubeb
