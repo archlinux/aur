@@ -1,7 +1,7 @@
 pkgbase = gerb-git
 	pkgdesc = Graphical font editor (GTK + Rust)
 	pkgver = r310.735cc5e
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/epilys/gerb
 	arch = x86_64
 	license = GPL3
@@ -10,7 +10,9 @@ pkgbase = gerb-git
 	depends = gtk3
 	depends = librsvg
 	depends = python
-	depends = python-ufo2ft
+	optdepends = python-fonttools: Import UFOv2 or other font sources besides UFOv3
+	optdepends = python-glyphslib: Import Glyphs sources
+	optdepends = python-ufo2ft: Export OTF/TTF fonts
 	provides = gerb=r310.735cc5e
 	conflicts = gerb
 	source = git+https://github.com/epilys/gerb.git

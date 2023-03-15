@@ -3,15 +3,17 @@
 pkgname=gerb-git
 _pkgname=${pkgname%-git}
 pkgver=r310.735cc5e
-pkgrel=2
+pkgrel=3
 pkgdesc='Graphical font editor (GTK + Rust) '
 arch=(x86_64)
 url="https://github.com/epilys/$_pkgname"
 license=(GPL3)
 depends=(gtk3
          librsvg
-         python
-         python-ufo2ft)
+         python)
+optdepends=('python-fonttools: Import UFOv2 or other font sources besides UFOv3'
+            'python-glyphslib: Import Glyphs sources'
+            'python-ufo2ft: Export OTF/TTF fonts')
 makedepends=(cargo
              git)
 provides=("${pkgname%-git}=$pkgver")
