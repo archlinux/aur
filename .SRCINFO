@@ -1,7 +1,7 @@
 pkgbase = rocketchat-desktop
 	pkgdesc = Rocket.Chat Native Cross-Platform Desktop Application via Electron.
 	pkgver = 3.8.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RocketChat/Rocket.Chat.Electron
 	install = rocketchat-desktop.install
 	changelog = CHANGELOG.md
@@ -10,7 +10,7 @@ pkgbase = rocketchat-desktop
 	makedepends = node-gyp
 	makedepends = yarn
 	makedepends = asar
-	depends = electron
+	depends = electron21
 	depends = nodejs
 	depends = libvips
 	source = rocketchat-desktop-3.8.16.tar.gz::https://github.com/RocketChat/Rocket.Chat.Electron/archive/3.8.16/rocketchat-desktop-3.8.16.tar.gz
