@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 # Contributor: Julien Savard <juju@juju2143.ca>
 pkgname=x16-rom
-pkgver=r41
+pkgver=r42
 pkgrel=1
 pkgdesc="ROM files for The 8-Bit Guy's Commander X16"
 arch=('any')
@@ -14,12 +14,12 @@ optdepends=('x16-emulator: emulator for the ROMs')
 install=x16-rom.install
 
 source=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/commanderx16/$pkgname/archive/$pkgver.tar.gz"
-    "https://raw.githubusercontent.com/commanderx16/x16-emulator/$pkgver/github-pandoc.css"
+    "$pkgname-$pkgver.tar.gz::https://github.com/X16Community/$pkgname/archive/$pkgver.tar.gz"
+    "https://raw.githubusercontent.com/X16Community/x16-emulator/$pkgver/github-pandoc.css"
 )
 
 md5sums=(
-    '1d25134ecddedb0038e4ccf59008a0b5'
+    '74ce9ec43fbc664598eab9acb0f17d66'
     '3accdbadaf70264c743b1f655f5dc146'
 )
 
