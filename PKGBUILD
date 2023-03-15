@@ -3,7 +3,7 @@
 _pkgname=gazebo_ros
 pkgname=ros2-humble-gazebo-ros
 pkgver=3.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Provides ROS plugins that offer message and service publishers for interfacing with"
 url="https://index.ros.org/p/gazebo_ros/"
 arch=('any')
@@ -12,6 +12,8 @@ depends=(
     'ros2-humble-gazebo-dev'
     'ros2-humble-gazebo-msgs'
     'python-lxml'
+    'libdart'
+    'gdal'
 )
 source=("https://github.com/ros-simulation/gazebo_ros_pkgs/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('69093e3cc7c4194f958bff777e76ab7c9a8f5c880f764332eb961f791a5a73a4')
