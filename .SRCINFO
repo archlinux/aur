@@ -15,7 +15,6 @@ pkgbase = emacs-pgtk-git
 	depends = libxml2
 	depends = jansson
 	depends = harfbuzz
-	depends = harfbuzz-cairo
 	depends = libgccjit
 	depends = gtk3
 	depends = libjpeg-turbo
