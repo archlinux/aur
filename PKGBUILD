@@ -60,7 +60,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=6.1.10.arch1
+pkgver=6.2.6.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -69,7 +69,7 @@ arch=(x86_64)
 license=(GPL2)
 makedepends=(
     bc libelf pahole cpio perl tar xz
-    xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
+    xmlto python-sphinx graphviz imagemagick texlive-latexextra
     git
 )
 options=('!strip')
@@ -98,7 +98,7 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            'a59dd3beb40675616c13ec36443b4845f148644f2d5dffad76c7c42f6a9d0e2784436fd08dc698f0dbceb82c72d4f7978a825b507fa4b5abedf60044c7ed7907')
+            'be353144a3171d8555edf86241b585553981de309ae6c99f68595264d26380a6e092125e7f69d5f91e2281584f672fd0c9e762fb32d7e99e69ce1e35a4dd3267')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -112,7 +112,7 @@ prepare() {
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
-    msg2 "Fetch and merge stable tag from ${_repo_url_bcachefs} ..."
+    msg2 "Fetch and merge master from ${_repo_url_bcachefs} ..."
     git remote add bcachefs_master "${_repo_url_bcachefs}" || true
     git fetch bcachefs_master master
     git merge --no-edit --no-commit FETCH_HEAD
