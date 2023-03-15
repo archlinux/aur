@@ -3,7 +3,7 @@
 _pkgname=moveit_configs_utils
 pkgname=ros2-humble-moveit-configs-utils
 pkgver=2.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for loading moveit config parameters in launch files"
 url="https://index.ros.org/p/moveit_configs_utils/"
 arch=('any')
@@ -20,6 +20,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     cd moveit2-$pkgver/$_pkgname
     colcon build --merge-install
 }
