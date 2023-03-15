@@ -52,5 +52,5 @@ package() {
 	install -Dm775 legion_gui.policy "${pkgdir}/usr/share/polkit-1/actions/"
 	
 	python -m pip install --isolated --root="$pkgdir" --ignore-installed --no-deps -e .
-	mv $pkgdir/usr/bin $pkgdir/usr/local #move from /usr/bin to /usr/local/bin (for legion_gui.desktop to work)
+	mv $pkgdir/usr/bin $pkgdir/usr/local/ #move from /usr/bin to /usr/local/bin (for legion_gui.desktop to work)
 }
