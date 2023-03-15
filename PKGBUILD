@@ -3,7 +3,7 @@
 _pkgname=warehouse_ros
 pkgname=ros2-humble-warehouse-ros
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Persistent storage of ROS messages"
 url="https://index.ros.org/p/warehouse_ros/"
 arch=('any')
@@ -24,6 +24,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 

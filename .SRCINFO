@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-warehouse-ros
 	pkgdesc = Persistent storage of ROS messages
 	pkgver = 2.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/warehouse_ros/
 	arch = any
 	depends = ros2-humble
