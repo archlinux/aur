@@ -16,7 +16,9 @@ build() {
 
 	cd "$pkgname-$pkgname-$pkgver"
 
-	./configure --prefix=/usr --mandir=/usr/share/man
+	# On systems without ed installed, configure will default to building
+	# as ed instead of oed. Force the it to always build as oed instead.
+	./configure --prefix=/usr --mandir=/usr/share/man --program-name=oed
 	make
 
 	# Extract licenses from files
