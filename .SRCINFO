@@ -1,0 +1,17 @@
+pkgbase = gerb-git
+	pkgdesc = Graphical font editor (GTK + Rust)
+	pkgver = 1.1.1b2
+	pkgrel = 1
+	url = https://github.com/epilys/gerb
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	depends = gtk3
+	depends = librsvg
+	depends = python
+	depends = python-ufo2ft
+	source = git+https://github.com/epilys/gerb.git
+	sha256sums = SKIP
+
+pkgname = gerb-git
