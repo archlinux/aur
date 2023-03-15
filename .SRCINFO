@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-nav2-theta-star-planner
 	pkgdesc = Theta* Global Planning Plugin
 	pkgver = 1.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/nav2_theta_star_planner/
 	arch = any
 	depends = ros2-humble
