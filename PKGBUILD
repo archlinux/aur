@@ -4,19 +4,23 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=selinux-python
-pkgver=3.4
+pkgver=3.5
 pkgrel=1
 pkgdesc="SELinux python tools and libraries"
 groups=('selinux')
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/SELinuxProject/selinux/wiki'
 license=('GPL2')
-depends=('python' 'python-audit' 'python-ipy' 'libsemanage>=3.4' 'setools>=4.4.0')
+makedepends=('python-pip' 'python-setuptools')
+depends=('python' 'python-audit' 'python-ipy' 'libsemanage>=3.5' 'setools>=4.4.0')
 conflicts=('sepolgen<2.7' 'policycoreutils<2.7')
 provides=("sepolgen=${pkgver}-${pkgrel}")
-validpgpkeys=('E853C1848B0185CF42864DF363A8AD4B982C4373')  # Petr Lautrbach <plautrba@redhat.com>
+validpgpkeys=(
+  '63191CE94183098689CAB8DB7EF137EC935B0EAF'  # Jason Zaman <perfinion@gentoo.org>
+  'E853C1848B0185CF42864DF363A8AD4B982C4373'  # Petr Lautrbach <plautrba@redhat.com>
+)
 source=("https://github.com/SELinuxProject/selinux/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc})
-sha256sums=('1731065a58293b8a598c0f8b182fdd1a278959b1288747fcb17af392496bac32'
+sha256sums=('8245bb4dae59333461f19ca0c79a829081f07972fa5e3ad4c2b2b917dd71d96b'
             'SKIP')
 
 build() {
