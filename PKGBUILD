@@ -10,7 +10,6 @@ url="https://github.com/Petingoso/legion-fan-utils-linux"
 license=('GPL')
 depends=(
 		"python-psutil"
-		"python-glob2"
 		"python-argparse"
 		"lenovolegionlinux-git"
 )

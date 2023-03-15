@@ -9,7 +9,6 @@ pkgbase = legion-fan-utils-linux-git
 	makedepends = git
 	makedepends = python
 	depends = python-psutil
-	depends = python-glob2
 	depends = python-argparse
 	depends = lenovolegionlinux-git
 	options = !makeflags
