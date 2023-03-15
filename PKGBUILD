@@ -3,7 +3,7 @@
 _pkgname=nav2_map_server
 pkgname=ros2-humble-nav2-map-server
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Refactored map server for ROS2 Navigation"
 url="https://index.ros.org/p/nav2_map_server/"
 arch=('any')
@@ -28,6 +28,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 

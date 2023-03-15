@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-nav2-map-server
 	pkgdesc = Refactored map server for ROS2 Navigation
 	pkgver = 1.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/nav2_map_server/
 	arch = any
 	makedepends = ros2-humble-nav2-common
