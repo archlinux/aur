@@ -3,7 +3,7 @@
 _pkgname=nav2_dwb_controller/dwb_critics
 pkgname=ros2-humble-dwb-critics
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="The dwb_critics package"
 url="https://index.ros.org/p/dwb_critics/"
 arch=('any')
@@ -30,6 +30,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 

@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-dwb-critics
 	pkgdesc = The dwb_critics package
 	pkgver = 1.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/dwb_critics/
 	arch = any
 	makedepends = ros2-humble-nav2-common
