@@ -3,7 +3,7 @@
 _pkgname=gazebo_dev
 pkgname=ros2-humble-gazebo-dev
 pkgver=3.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides a cmake config for the default version of Gazebo for the ROS distribution."
 url="https://index.ros.org/p/gazebo_dev/"
 arch=('any')
@@ -23,6 +23,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
