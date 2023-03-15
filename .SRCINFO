@@ -1,10 +1,10 @@
 pkgbase = sticky-git
 	pkgdesc = A sticky notes app for the Linux desktop
-	pkgver = 1.4.r0.g45c90a4
+	pkgver = 1.14.r3.g2cb2742
 	pkgrel = 1
 	url = https://github.com/collinss/sticky
 	arch = any
-	license = GPL
+	license = GPL2
 	makedepends = git
 	depends = gtk3
 	depends = gspell

@@ -1,11 +1,11 @@
 # Maintainer: Mark Wagie <mark.wagie at tutanota dot com>
 pkgname=sticky-git
-pkgver=1.4.r0.g45c90a4
+pkgver=1.14.r3.g2cb2742
 pkgrel=1
 pkgdesc="A sticky notes app for the Linux desktop"
 arch=('any')
 url="https://github.com/collinss/sticky"
-license=('GPL')
+license=('GPL2')
 depends=('gtk3' 'gspell' 'python-gobject' 'python-xapp' 'xapps')
 makedepends=('git')
 provides=("${pkgname%-git}")
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --exclude master.* | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
