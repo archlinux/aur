@@ -2,7 +2,7 @@
 # Contributor: Julien Savard <juju@juju2143.ca>
 pkgname=x16-emulator
 pkgver=r42
-pkgrel=1
+pkgrel=2
 pkgdesc="An emulator for The 8-Bit Guy's Commander X16"
 arch=('x86_64')
 url="http://commanderx16.com/"
@@ -38,9 +38,12 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
     install -Dm755 x16emu "$pkgdir/usr/bin/x16emu"
+    install -Dm755 makecart "$pkgdir/usr/bin/makecart"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 github-pandoc.css "$pkgdir/usr/share/doc/$pkgname/github-pandoc.css"
     install -Dm644 README.html "$pkgdir/usr/share/doc/$pkgname/README.html"
+    install -Dm644 RELEASES.md "$pkgdir/usr/share/doc/$pkgname/RELEASES.md"
+    install -Dm644 quickstart-linux.md "$pkgdir/usr/share/doc/$pkgname/quickstart-linux.md"
     install -Dm644 .gh/logo.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
     install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
