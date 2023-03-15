@@ -11,7 +11,7 @@ license=('GPL')
 depends=(
 		"python-psutil"
 		"python-urlmatch"
-		"python-argparse"
+		"python-glob2"
 		"lenovolegionlinux-git"
 )
 makedepends=(
