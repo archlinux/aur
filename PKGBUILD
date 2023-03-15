@@ -1,8 +1,8 @@
 # Maintainer: Oleg Hahm <oleg+aur@riot-os.org>
 _pkgname="bash-script-wttr"
 pkgname=wttr-git
-pkgver=v1.2.r39.gbf90e8d
-pkgrel=3
+pkgver=1.55
+pkgrel=1
 pkgdesc="A simple script that helps you check weather condition using site: http://wttr.in (new repository version)"
 arch=('any')
 url="https://github.com/cblte/${_pkgname}"
