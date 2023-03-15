@@ -1,6 +1,6 @@
 pkgbase = cmst
 	pkgdesc = A QT based GUI front end for the connman connection manager
-	pkgver = 2022.11.30
+	pkgver = 2023.03.14
 	pkgrel = 1
 	url = https://github.com/andrew-bibb/cmst
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = cmst
 	depends = qt5-base
 	depends = hicolor-icon-theme
 	depends = connman
-	source = https://github.com/andrew-bibb/cmst/releases/download/cmst-2022.11.30/cmst-2022.11.30.tar.xz
-	sha256sums = fcf6b0ed58734be973bae0856b3e99d5d5bc2ed140bbbacc7ad3a948a1c3e7c6
+	source = https://github.com/andrew-bibb/cmst/releases/download/cmst-2023.03.14/cmst-2023.03.14.tar.xz
+	sha256sums = eba0ec46b3f79fa6cb29e9d6adae25ec366ed6c619ab5737b9fad0b1d3ff5d54
 
 pkgname = cmst
