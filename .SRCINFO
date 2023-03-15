@@ -1,6 +1,6 @@
 pkgbase = cargo-dist-git
 	pkgdesc = Shippable application packaging for Rust (git)
-	pkgver = 0.0.4.r1.gb0f820c
+	pkgver = 0.0.5.r0.gbbfa1d5
 	pkgrel = 1
 	url = https://github.com/axodotdev/cargo-dist
 	arch = x86_64
