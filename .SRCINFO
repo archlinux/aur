@@ -1,13 +1,13 @@
 pkgbase = zfs-linux-hardened
-	pkgver = 2.1.9_6.1.15.hardened1.1
+	pkgver = 2.1.9_6.1.19.hardened1.1
 	pkgrel = 1
 	url = https://openzfs.org/
 	arch = x86_64
 	license = CDDL
-	makedepends = linux-hardened-headers=6.1.15.hardened1-1
+	makedepends = linux-hardened-headers=6.1.19.hardened1-1
 	depends = kmod
 	depends = zfs-utils=2.1.9
-	depends = linux-hardened=6.1.15.hardened1-1
+	depends = linux-hardened=6.1.19.hardened1-1
 	source = https://github.com/openzfs/zfs/releases/download/zfs-2.1.9/zfs-2.1.9.tar.gz
 	sha256sums = 6b172cdf2eb54e17fcd68f900fab33c1430c5c59848fa46fab83614922fe50f6
 
