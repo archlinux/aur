@@ -2,9 +2,9 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=argc-git
-pkgver=0.13.0.r0.g3abc2d6
+pkgver=0.14.0.r0.gcfd6283
 pkgrel=1
-pkgdesc="Easily create bash command line tool"
+pkgdesc="Easily create a feature-rich command-line application in Bash"
 arch=('x86_64')
 url="https://github.com/sigoden/argc"
 license=('MIT' 'Apache')
@@ -42,5 +42,6 @@ package() {
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 LICENSE-MIT -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm 644 "completions/${pkgname%-git}.bash" "$pkgdir/usr/share/bash-completion/completions/${pkgname%-git}"
+  install -Dm 644 "completions/${pkgname%-git}.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d/"
   install -Dm 644 "completions/${pkgname%-git}.zsh" "$pkgdir/usr/share/zsh/site-functions/_${pkgname%-git}"
 }
