@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-twist-mux
 	pkgdesc = Twist multiplexer, which multiplex several velocity commands (topics) and allows to priorize or disable them (locks).
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/twist_mux/
 	arch = any
 	depends = ros2-humble

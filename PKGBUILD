@@ -3,7 +3,7 @@
 _pkgname=twist_mux
 pkgname=ros2-humble-twist-mux
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Twist multiplexer, which multiplex several velocity commands (topics) and allows to priorize or disable them (locks)."
 url="https://index.ros.org/p/twist_mux/"
 arch=('any')
@@ -23,6 +23,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
