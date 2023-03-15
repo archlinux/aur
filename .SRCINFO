@@ -2,12 +2,12 @@ pkgbase = haskell-mime
 	pkgdesc = Working with MIME types.
 	pkgver = 0.4.0.2
 	pkgrel = 1
-	url = https://hackage.haskell.org/package/mime
+	url = https://github.com/GaloisInc/mime
 	arch = x86_64
-	license = custom:BSD3
-	depends = ghc
+	license = BSD
+	makedepends = ghc
+	depends = ghc-libs
 	source = https://hackage.haskell.org/packages/archive/mime/0.4.0.2/mime-0.4.0.2.tar.gz
-	md5sums = b0c5345df0efca0d3a40931e981f081f
+	sha256sums = e7fa283e5caa6371d5b3978e152412a2dd2489eec43aee722caca9dc14ea3875
 
 pkgname = haskell-mime
-
