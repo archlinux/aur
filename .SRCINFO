@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-controller-manager-msgs
 	pkgdesc = Messages and services for the controller manager
 	pkgver = 2.24.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/controller_manager_msgs/
 	arch = any
 	depends = ros2-humble

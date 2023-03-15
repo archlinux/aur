@@ -3,7 +3,7 @@
 _pkgname=controller_manager_msgs
 pkgname=ros2-humble-controller-manager-msgs
 pkgver=2.24.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Messages and services for the controller manager"
 url="https://index.ros.org/p/controller_manager_msgs/"
 arch=('any')
@@ -22,6 +22,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
