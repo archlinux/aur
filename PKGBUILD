@@ -3,7 +3,7 @@
 _pkgname=generate_parameter_library
 pkgname=ros2-humble-generate-parameter-library
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="CMake to generate ROS parameter library"
 url="https://index.ros.org/p/generate_parameter_library/"
 arch=('any')
@@ -28,6 +28,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 

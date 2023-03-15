@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-generate-parameter-library
 	pkgdesc = CMake to generate ROS parameter library
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/generate_parameter_library/
 	arch = any
 	depends = ros2-humble
