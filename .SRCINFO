@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-realtime-tools
 	pkgdesc = Contains a set of tools that can be used from a hard realtime thread, without breaking the realtime behavior
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/realtime_tools/
 	arch = any
 	depends = ros2-humble

@@ -3,7 +3,7 @@
 _pkgname=realtime_tools
 pkgname=ros2-humble-realtime-tools
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Contains a set of tools that can be used from a hard realtime thread, without breaking the realtime behavior"
 url="https://index.ros.org/p/realtime_tools/"
 arch=('any')
@@ -22,6 +22,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
