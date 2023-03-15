@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=s2
-_cranver=1.1.1
+_cranver=1.1.2
 pkgname=r-${_cranname,,}
 pkgdesc="Spherical Geometry Operators Using the S2 Geometry Library"
 url="https://cran.r-project.org/package=s2"
@@ -11,7 +11,7 @@ pkgrel=1
 
 arch=("i686" "x86_64")
 depends=(
-    "openssl"
+    "openssl>=1.0.1"
     "r>=3.0.0"
     "r-rcpp"
     "r-wk>=0.6.0"
@@ -23,7 +23,7 @@ optdepends=(
 makedepends=()
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("4d8fa5c897330b878fbd9e824c2aa299029dfa077527c83b7b3dcc880f92caab90ebf0a221c896db73d729b47979de396cdb7fecd0dcc4bfe7ccca41a5f966ce")
+b2sums=("2590bb6f1e2817393e1ee5c21e58cb3891a8b782333a1548f584f0e426ce392c7a34890332a32dbb3f3ce3dddd4f20d158dac8bc4b100e35d6a9f0fc26af81d1")
 
 build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
