@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-navigation2
 	pkgdesc = ROS2 Navigation Stack
 	pkgver = 1.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/navigation2/
 	arch = any
 	depends = ros2-humble

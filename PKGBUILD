@@ -3,7 +3,7 @@
 _pkgname=navigation2
 pkgname=ros2-humble-navigation2
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="ROS2 Navigation Stack"
 url="https://index.ros.org/p/navigation2/"
 arch=('any')
@@ -49,6 +49,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
