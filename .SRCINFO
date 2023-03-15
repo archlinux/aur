@@ -1,7 +1,7 @@
 pkgbase = ganttproject
 	pkgdesc = A project scheduling application featuring gantt chart, resource management, calendaring.
 	pkgver = 3.2.3240
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ganttproject.biz/
 	arch = i686
 	arch = x86_64
