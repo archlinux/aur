@@ -3,7 +3,7 @@
 _pkgname=nav2_costmap_2d
 pkgname=ros2-humble-nav2-costmap-2d
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="This package provides an implementation of a 2D costmap that takes in sensor data from the world, builds a 2D or 3D occupancy grid of the data"
 url="https://index.ros.org/p/nav2_costmap_2d/"
 arch=('any')
@@ -32,6 +32,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
