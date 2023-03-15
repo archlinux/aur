@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-bondcpp
 	pkgdesc = C++ implementation of bond, a mechanism for checking when another process has terminated.
 	pkgver = 3.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/bondcpp/
 	arch = any
 	makedepends = pkgconf

@@ -3,7 +3,7 @@
 _pkgname=bondcpp
 pkgname=ros2-humble-bondcpp
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ implementation of bond, a mechanism for checking when another process has terminated."
 url="https://index.ros.org/p/bondcpp/"
 arch=('any')
@@ -27,6 +27,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
