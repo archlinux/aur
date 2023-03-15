@@ -3,7 +3,7 @@
 _pkgname=nav2_core
 pkgname=ros2-humble-nav2-core
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of headers for plugins core to the Nav2 stack"
 url="https://index.ros.org/p/nav2_core/"
 arch=('any')
@@ -27,6 +27,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 

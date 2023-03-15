@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-nav2-core
 	pkgdesc = A set of headers for plugins core to the Nav2 stack
 	pkgver = 1.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/nav2_core/
 	arch = any
 	makedepends = ros2-humble-nav2-common
