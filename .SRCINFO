@@ -1,6 +1,6 @@
 pkgbase = lcms2-ff-git
 	pkgdesc = Small-footprint color management engine including fast_float plugin
-	pkgver = 2.15.r4.g53bc7c5
+	pkgver = 2.15
 	pkgrel = 1
 	url = https://www.littlecms.com/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = lcms2-ff-git
 	provides = liblcms2.so
 	conflicts = lcms2
 	options = staticlibs
-	source = git+https://github.com/mm2/Little-CMS.git
+	source = git+https://github.com/mm2/Little-CMS.git#tag=lcms2.15
 	sha256sums = SKIP
 
 pkgname = lcms2-ff-git

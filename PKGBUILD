@@ -2,7 +2,7 @@
 # Contributor: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=lcms2-ff-git
-pkgver=2.15.r4.g53bc7c5
+pkgver=2.15
 pkgrel=1
 pkgdesc="Small-footprint color management engine including fast_float plugin"
 arch=('x86_64')
@@ -13,15 +13,8 @@ makedepends=('git')
 provides=('lcms2' 'liblcms2.so')
 conflicts=('lcms2')
 options=('staticlibs')
-source=("git+https://github.com/mm2/Little-CMS.git")
+source=("git+https://github.com/mm2/Little-CMS.git#tag=lcms${pkgver}")
 sha256sums=('SKIP')
-
-
-pkgver() {
-  cd "Little-CMS"
-
-  git describe --long --tags | sed 's/^lcms//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 build() {
   cd "Little-CMS"
