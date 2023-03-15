@@ -1,6 +1,6 @@
 # Maintainer: Rasmus Rosengren <rasmus@rsrp.se>
 pkgname=dfm
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Utility for managing dotfiles"
 arch=("x86_64")
@@ -10,7 +10,7 @@ depends=("gcc-libs" "difftastic")
 provides=("dfm")
 conflicts=("dfm")
 source_x86_64=("https://github.com/rosengrenen/dfm/releases/download/$pkgver/dfm-$pkgver-$CARCH.tar.gz")
-sha256sums_x86_64=("1085c690bd807dd185f6d7b86564a15810615b3b417ce2f3ada5e5542b8ae919")
+sha256sums_x86_64=("da21cbb90df7b2426c1b42be1e8cbfce8a469e7219e4badccc1da005a38dd8f3")
 
 package() {
   install -Dm755 dfm -t "$pkgdir/usr/bin"

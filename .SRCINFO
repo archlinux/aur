@@ -1,6 +1,6 @@
 pkgbase = dfm
 	pkgdesc = Utility for managing dotfiles
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/rosengrenen/dfm
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = dfm
 	depends = difftastic
 	provides = dfm
 	conflicts = dfm
-	source_x86_64 = https://github.com/rosengrenen/dfm/releases/download/0.3.0/dfm-0.3.0-x86_64.tar.gz
-	sha256sums_x86_64 = 1085c690bd807dd185f6d7b86564a15810615b3b417ce2f3ada5e5542b8ae919
+	source_x86_64 = https://github.com/rosengrenen/dfm/releases/download/0.3.1/dfm-0.3.1-x86_64.tar.gz
+	sha256sums_x86_64 = da21cbb90df7b2426c1b42be1e8cbfce8a469e7219e4badccc1da005a38dd8f3
 
 pkgname = dfm
