@@ -3,7 +3,7 @@
 _pkgname=nav2_dwb_controller/nav2_dwb_controller
 pkgname=ros2-humble-nav2-dwb-controller
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="ROS2 controller (DWB) metapackage"
 url="https://index.ros.org/p/nav2_dwb_controller/"
 arch=('any')
@@ -29,6 +29,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
