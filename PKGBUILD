@@ -9,6 +9,9 @@ arch=("x86_64")
 url="https://github.com/Petingoso/legion-fan-utils-linux"
 license=('GPL')
 depends=(
+		"python-psutil"
+		"python-urlmatch"
+		"python-argparse"
 		"lenovolegionlinux-git"
 )
 makedepends=(
