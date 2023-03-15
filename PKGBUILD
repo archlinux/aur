@@ -3,7 +3,7 @@
 _pkgname=srdfdom
 pkgname=ros2-humble-srdfdom
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Parser for Semantic Robot Description Format (SRDF)"
 url="https://index.ros.org/p/srdfdom/"
 arch=('any')
@@ -28,6 +28,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 

@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-srdfdom
 	pkgdesc = Parser for Semantic Robot Description Format (SRDF)
 	pkgver = 2.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/srdfdom/
 	arch = any
 	depends = ros2-humble
