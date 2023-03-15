@@ -3,7 +3,7 @@
 _pkgname=nav2_controller
 pkgname=ros2-humble-nav2-controller
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Controller action interface"
 url="https://index.ros.org/p/nav2_controller/"
 arch=('any')
@@ -29,6 +29,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
