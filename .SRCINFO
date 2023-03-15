@@ -1,6 +1,6 @@
 pkgbase = i3status-rust-git
 	pkgdesc = Very resourcefriendly and feature-rich replacement for i3status to use with bar programs (like i3bar and swaybar), written in pure Rust
-	pkgver = 0.30.4.r3194.gbcbcc69f
+	pkgver = 0.30.5.r3204.gffc645a1
 	pkgrel = 1
 	url = https://github.com/greshake/i3status-rust
 	install = i3status-rust.install
@@ -8,6 +8,7 @@ pkgbase = i3status-rust-git
 	license = GPL3
 	makedepends = git
 	makedepends = rust
+	makedepends = pandoc
 	depends = libpulse
 	depends = lm_sensors
 	optdepends = alsa-utils: for the volume block
