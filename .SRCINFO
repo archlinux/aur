@@ -1,10 +1,10 @@
 pkgbase = bibbja
 	pkgdesc = Maltese Catholic Bible in the terminal - Bibbja bil-Malti
-	pkgver = r1
+	pkgver = 1
 	pkgrel = 1
 	url = https://github.com/drmenguin/bibbja
 	arch = any
-	license = custom:Public Domain
+	license = GPL
 	depends = bash
 	source = bibbja::git+https://github.com/drmenguin/bibbja
 	md5sums = SKIP
