@@ -3,7 +3,7 @@
 _pkgname=bond
 pkgname=ros2-humble-bond
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A bond allows two processes, A and B, to know when the other has terminated, either cleanly or by crashing."
 url="https://index.ros.org/p/bond/"
 arch=('any')
@@ -22,6 +22,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
