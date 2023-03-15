@@ -2,7 +2,7 @@
 
 pkgname=ros2-humble-object-recognition-msgs
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Messages, services and actions used by MoveIt"
 url="https://index.ros.org/p/object_recognition_msgs/"
 arch=('any')
@@ -21,6 +21,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
