@@ -9,11 +9,7 @@ pkgdesc='The official GUI for MongoDB - beta version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('custom:SSPL')
-if [[ "$_target" =~ -beta$ ]]; then
-	_electronpkg='electron'
-else
-	_electronpkg='electron15'
-fi
+_electronpkg='electron'
 depends=("$_electronpkg" 'krb5' 'libsecret' 'lsb-release')
 makedepends=('git' 'nodejs>=16.0.0' 'npm>=8.0.0' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
