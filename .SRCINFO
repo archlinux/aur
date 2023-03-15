@@ -1,6 +1,6 @@
 pkgbase = gerb-git
 	pkgdesc = Graphical font editor (GTK + Rust)
-	pkgver = 1.1.1b2
+	pkgver = r310.735cc5e
 	pkgrel = 1
 	url = https://github.com/epilys/gerb
 	arch = x86_64

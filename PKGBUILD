@@ -2,7 +2,7 @@
 
 pkgname=gerb-git
 _pkgname=${pkgname%-git}
-pkgver=1.1.1b2
+pkgver=r310.735cc5e
 pkgrel=1
 pkgdesc='Graphical font editor (GTK + Rust) '
 arch=(x86_64)
@@ -22,17 +22,22 @@ prepare() {
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
+pkgver() {
+	cd "$_pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
 build() {
 	cd "$_pkgname"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cargo build --frozen --release --all-features
+	cargo build --frozen --release
 }
 
 check() {
 	cd "$_pkgname"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo test --frozen --all-features
+	cargo test --frozen
 }
 
 
