@@ -18,8 +18,7 @@ pkgbase = inko-git
 	options = !docs
 	options = !libtool
 	options = !staticlibs
-	source = inko::git+https://gitlab.com/inko-lang/inko.git
+	source = inko::git+https://github.com/inko-lang/inko.git
 	sha256sums = SKIP
 
 pkgname = inko-git
-

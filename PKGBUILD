@@ -12,7 +12,7 @@ makedepends=(coreutils clang 'rust>=1.34' make)
 provides=(inko)
 conflicts=(inko inko-bin)
 options=(strip !docs !libtool !staticlibs)
-source=('inko::git+https://gitlab.com/inko-lang/inko.git')
+source=('inko::git+https://github.com/inko-lang/inko.git')
 sha256sums=('SKIP')
 
 pkgver() {
