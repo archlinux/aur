@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-nav2-smac-planner
 	pkgdesc = Smac global planning plugin: A*, Hybrid-A*, State Lattice
 	pkgver = 1.1.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://index.ros.org/p/nav2_smac_planner/
 	arch = any
 	depends = ros2-humble
@@ -11,6 +11,7 @@ pkgbase = ros2-humble-nav2-smac-planner
 	depends = ros2-humble-nav2-costmap-2d
 	depends = ros2-humble-nav2-core
 	depends = ompl
+	depends = ode
 	depends = nlohmann-json
 	depends = ros2-humble-angles
 	depends = eigen
