@@ -2,7 +2,7 @@
 
 pkgname=ros2-humble-slam-toolbox
 pkgver=2.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="This package provides a sped up improved slam karto with updated SDK and visualization and modification toolsets"
 url="https://index.ros.org/p/slam_toolbox/"
 arch=('any')
@@ -29,6 +29,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 

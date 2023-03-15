@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-slam-toolbox
 	pkgdesc = This package provides a sped up improved slam karto with updated SDK and visualization and modification toolsets
 	pkgver = 2.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/slam_toolbox/
 	arch = any
 	depends = ros2-humble
