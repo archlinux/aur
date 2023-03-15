@@ -1,10 +1,10 @@
 # Maintainer: trumpetrespas <trumpetrespas1 at proton dot me>
 # Note about email. This is a different email than I normally use, so I do not check it that frequently. To reach me faster, comment on the package, that way I will get the message in my personal email.
-pkgname=kodi-addon-audiodecoder-openmpt
+pkgname=kodi-add-on-audiodecoder-openmpt
 pkgver=20.2.0
 _codename=Nexus
 pkgrel=0
-pkgdesc="Decoder for tracker formats such as xm"
+pkgdesc="Kodi add-on for decoding formats such as xm, and mod"
 arch=('x86_64')
 url="https://github.com/xbmc/audiodecoder.openmpt"
 license=('GPL2')
