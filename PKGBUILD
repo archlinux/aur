@@ -3,7 +3,7 @@
 _pkgname=nav2_dwb_controller/costmap_queue
 pkgname=ros2-humble-costmap-queue
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="The costmap_queue package"
 url="https://index.ros.org/p/costmap_queue/"
 arch=('any')
@@ -24,6 +24,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 

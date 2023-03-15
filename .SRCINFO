@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-costmap-queue
 	pkgdesc = The costmap_queue package
 	pkgver = 1.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/costmap_queue/
 	arch = any
 	makedepends = ros2-humble-nav2-common
