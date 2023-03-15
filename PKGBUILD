@@ -3,7 +3,7 @@
 _pkgname=launch_param_builder
 pkgname=ros2-humble-launch-param-builder
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for loading parameters in launch files"
 url="https://index.ros.org/p/launch_param_builder/"
 arch=('any')
@@ -23,6 +23,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     colcon build --merge-install
 }
 
