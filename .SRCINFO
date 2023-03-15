@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-moveit-planners-ompl
 	pkgdesc = MoveIt interface to OMPL
 	pkgver = 2.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/moveit_planners_ompl/
 	arch = any
 	makedepends = ros2-humble-moveit-common

@@ -3,7 +3,7 @@
 _pkgname=moveit_planners/ompl
 pkgname=ros2-humble-moveit-planners-ompl
 pkgver=2.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="MoveIt interface to OMPL"
 url="https://index.ros.org/p/moveit_planners_ompl/"
 arch=('any')
@@ -35,6 +35,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
