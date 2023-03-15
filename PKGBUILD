@@ -3,7 +3,7 @@
 _pkgname=tcb_span
 pkgname=ros2-humble-tcb-span
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Implementation of C++20's std::span"
 url="https://index.ros.org/p/tcb_span/"
 arch=('any')
@@ -22,6 +22,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
