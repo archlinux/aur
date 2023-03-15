@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-nav2-rotation-shim-controller
 	pkgdesc = Rotation Shim Controller
 	pkgver = 1.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/nav2_rotation_shim_controller/
 	arch = any
 	makedepends = ros2-humble-nav2-regulated-pure-pursuit-controller

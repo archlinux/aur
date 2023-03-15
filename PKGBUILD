@@ -3,7 +3,7 @@
 _pkgname=nav2_rotation_shim_controller
 pkgname=ros2-humble-nav2-rotation-shim-controller
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Rotation Shim Controller"
 url="https://index.ros.org/p/nav2_rotation_shim_controller/"
 arch=('any')
@@ -33,6 +33,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
