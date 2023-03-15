@@ -1,14 +1,14 @@
 # Maintainer :  Biginoz 
 # Contributor: syntheit <daniel@matv.io>
 pkgname='google-messages'
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A native-like OS X, Windows, & Linux desktop app for Google Messages"
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://www.messagesfordesktop.com/"
 license=('custom')
 makedepends=('nodejs-nativefier')
-source=("google-messages.png::https://raw.githubusercontent.com/kelyvin/Google-Messages-For-Desktop/v1.3.0/android-messages-logo.png"
+source=("google-messages.png::https://raw.githubusercontent.com/kelyvin/Google-Messages-For-Desktop/v1.4.0/android-messages-logo.png"
         "google-messages.desktop")
 sha256sums=('3c938c748fbef4cdd72e638b26aa35f3e2da8045a0c5490ede8b6ef5603f1b2c'
             '6909e255521af089883f18740fc91c7743897c99d4ece0784b969cea5bc480ae')
