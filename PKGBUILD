@@ -2,25 +2,19 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 
-# Upstream tests have multiple issues including race conditions, using external
-# binaries, differing results based on unrelated system directories, etc.
-# See https://github.com/nushell/nushell/issues/7951
-# See https://github.com/nushell/nushell/issues/8404
-BUILDENV+=(!check)
-
 _pkgname=nushell
 pkgname=$_pkgname-git
-pkgver=0.76.0.r134.gc7583ec
-pkgrel=2
+pkgver=0.77.0.r6.g24ee381
+pkgrel=1
 pkgdesc='A new type of shell'
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 url='https://www.nushell.sh'
 _url="https://github.com/$_pkgname/$_pkgname"
 license=('MIT')
-depends=('openssl' 'libxcb' 'curl' 'bzip2')
-makedepends=('git' 'cargo')
-conflicts=("$_pkgname")
+depends=('libcrypto.so' 'libssl.so' 'zlib')
+makedepends=('cargo' 'git')
 provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 install=nushell.install
 source=("${pkgname%-git}::git+$_url.git")
 sha256sums=('SKIP')
