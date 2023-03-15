@@ -1,0 +1,25 @@
+diff -Naur kwok-0.1.0/hack/releases.sh kwok-0.1.0.new/hack/releases.sh
+--- kwok-0.1.0/hack/releases.sh	2023-01-13 14:25:12.000000000 +0100
++++ kwok-0.1.0.new/hack/releases.sh	2023-03-15 01:28:22.546042305 +0100
+@@ -162,6 +162,12 @@
+   if [[ "${BINARY_NAME}" != "" ]]; then
+     LDFLAGS+=("-X sigs.k8s.io/kwok/pkg/consts.BinaryName=${BINARY_NAME}")
+   fi
++  if [[ "${EXT_LDFLAGS}" != "" ]]; then
++    LDFLAGS+=("-extldflags='${EXT_LDFLAGS}'")
++  fi
++  if [[ "${EXTRA_LDFLAGS}" != "" ]]; then
++    LDFLAGS+=(${EXTRA_LDFLAGS[*]})
++  fi
+   if [[ "${#LDFLAGS}" -gt 0 ]]; then
+     extra_args+=("-ldflags" "'${LDFLAGS[*]}'")
+   fi
+@@ -175,7 +181,7 @@
+       fi
+       dist="./bin/${platform}/${bin}"
+       src="./cmd/${binary}"
+-      CGO_ENABLED=0 dry_run GOOS="${platform%%/*}" GOARCH="${platform##*/}" go build "${extra_args[@]}" -o "${dist}" "${src}"
++      CGO_ENABLED=${CGO_ENABLED:-0} dry_run GOOS="${platform%%/*}" GOARCH="${platform##*/}" go build "${extra_args[@]}" -o "${dist}" "${src}"
+       if [[ "${PUSH}" == "true" ]]; then
+         if [[ "${BUCKET}" != "" ]]; then
+           prefix="${BUCKET}/releases/"

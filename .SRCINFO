@@ -1,0 +1,15 @@
+pkgbase = kwok
+	pkgdesc = Kubernetes WithOut Kubelet - set up a cluster of thousands of (fake) nodes in seconds
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/kubernetes-sigs/kwok
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	depends = glibc
+	source = kwok-0.1.0.tar.gz::https://github.com/kubernetes-sigs/kwok/archive/refs/tags/v0.1.0.tar.gz
+	source = use-goflags.patch
+	sha256sums = f8b5d01df09e1b68078c9754bb1922f1e9be3794fd519cd0de615280a0fff84d
+	sha256sums = 83cb15ccfed8df335747e65626d1159c3937b3445a51e36db28ee6778cbb9f39
+
+pkgname = kwok
