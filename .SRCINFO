@@ -1,6 +1,6 @@
 pkgbase = libsemanage
 	pkgdesc = SELinux binary policy manipulation library
-	pkgver = 3.4
+	pkgver = 3.5
 	pkgrel = 1
 	url = https://github.com/SELinuxProject/selinux
 	install = libsemanage.install
@@ -14,18 +14,19 @@ pkgbase = libsemanage
 	makedepends = python
 	makedepends = ruby
 	makedepends = swig
-	depends = libselinux>=3.4
+	depends = libselinux>=3.5
 	depends = audit
 	optdepends = python: python bindings
 	optdepends = ruby: ruby bindings
-	provides = selinux-usr-libsemanage=3.4-1
+	provides = selinux-usr-libsemanage=3.5-1
 	conflicts = selinux-usr-libsemanage
 	options = !emptydirs
-	source = https://github.com/SELinuxProject/selinux/releases/download/3.4/libsemanage-3.4.tar.gz
-	source = https://github.com/SELinuxProject/selinux/releases/download/3.4/libsemanage-3.4.tar.gz.asc
+	source = https://github.com/SELinuxProject/selinux/releases/download/3.5/libsemanage-3.5.tar.gz
+	source = https://github.com/SELinuxProject/selinux/releases/download/3.5/libsemanage-3.5.tar.gz.asc
 	source = semanage.conf
+	validpgpkeys = 63191CE94183098689CAB8DB7EF137EC935B0EAF
 	validpgpkeys = E853C1848B0185CF42864DF363A8AD4B982C4373
-	sha256sums = 93b423a21600b8e3fb59bb925d4583d1258f45bebf63c29bde304dfd3d52efd6
+	sha256sums = f53534e50247538280ed0d76c6ce81d8fb3939bd64cadb89da10dba42e40dd9c
 	sha256sums = SKIP
 	sha256sums = 5b0e6929428e095b561701ccdfa9c8b0c3d70dad3fc46e667eb46a85b246a4a0
 
