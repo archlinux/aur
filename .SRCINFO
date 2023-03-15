@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-nav2-bt-navigator
 	pkgdesc = TODO
 	pkgver = 1.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/nav2_bt_navigator/
 	arch = any
 	makedepends = ros2-humble-nav2-common
