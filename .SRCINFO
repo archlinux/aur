@@ -1,31 +1,18 @@
 pkgbase = mu-editor
 	pkgdesc = A simple Python editor for beginner programmers
-	pkgver = 1.0.3
+	pkgver = 1.2.0
 	pkgrel = 3
 	epoch = 1
 	url = https://codewith.mu/
-	arch = any
+	arch = x86_64
 	license = GPL3
 	makedepends = gendesk
-	makedepends = python-setuptools
-	depends = pigpio
-	depends = python-appdirs
-	depends = python-gpiozero
-	depends = python-guizero
-	depends = python-matplotlib
-	depends = python-nudatus
-	depends = python-pgzero
-	depends = python-pycodestyle
-	depends = python-pyflakes
-	depends = python-pyqt5-chart>=5.15
-	depends = python-pyserial
-	depends = python-qscintilla-qt5
-	depends = python-qtconsole
-	depends = python-requests
-	depends = python-semver
-	depends = qt5-serialport
-	source = mu-editor-1.0.3.tar.gz::https://github.com/mu-editor/mu/archive/1.0.3.tar.gz
-	sha256sums = d9917794de845231ffea671ceff24824bbe342c9d0da4340b237f7a915c0c358
+	depends = libxcrypt-compat
+	depends = fuse2
+	options = !strip
+	source = Mu_Editor-1.2.0.AppImage::https://github.com/mu-editor/mu/releases/download/v1.2.0/MuEditor-Linux-1.2.0-x86_64.AppImage
+	source = mueditor.png::https://codewith.mu/img/brand.png
+	sha256sums = 1a302a772dcc60b6353e44e4cc772a37fec7238c573bbb88d01ed7f6fcbf6abe
+	sha256sums = 8edbaf68c5982341aa2973136c90e6e985f4f86ed6bb69997abee3b7619e5e52
 
 pkgname = mu-editor
-

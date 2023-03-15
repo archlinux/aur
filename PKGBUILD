@@ -1,50 +1,44 @@
-# Maintainer: webmeister <aur -dot- 20 -dot- webmeister -at- spamgourmet -dot- com>
-# Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
+# Maintainer: Daniel Poellmann <aur@<lastname><firstname>.de>
+# Contributor: webmeister <aur -dot- 20 -dot- webmeister -at- spamgourmet -dot- com>
+# Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 pkgname=mu-editor
 epoch=1
-pkgver=1.0.3
+pkgver=1.2.0
 pkgrel=3
 pkgdesc='A simple Python editor for beginner programmers'
-arch=('any')
+arch=('x86_64')
 url='https://codewith.mu/'
 license=('GPL3')
-depends=('pigpio' 'python-appdirs' 'python-gpiozero' 'python-guizero'
-         'python-matplotlib' 'python-nudatus' 'python-pgzero'
-         'python-pycodestyle' 'python-pyflakes' 'python-pyqt5-chart>=5.15'
-         'python-pyserial' 'python-qscintilla-qt5' 'python-qtconsole'
-         'python-requests' 'python-semver' 'qt5-serialport')
-makedepends=('gendesk' 'python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/mu-editor/mu/archive/$pkgver.tar.gz")
-sha256sums=('d9917794de845231ffea671ceff24824bbe342c9d0da4340b237f7a915c0c358')
-
-
-prepare() {
-  cd "$srcdir/mu-$pkgver"
-  # Un-pin all dependencies, so package doesn't break when a dependency is updated
-  sed -i -e 's/==/>=/g' setup.py
-}
+depends=('libxcrypt-compat' 'fuse2')
+makedepends=('gendesk')
+source=("Mu_Editor-$pkgver.AppImage::https://github.com/mu-editor/mu/releases/download/v1.2.0/MuEditor-Linux-1.2.0-x86_64.AppImage" "mueditor.png::https://codewith.mu/img/brand.png")
+sha256sums=('1a302a772dcc60b6353e44e4cc772a37fec7238c573bbb88d01ed7f6fcbf6abe' '8edbaf68c5982341aa2973136c90e6e985f4f86ed6bb69997abee3b7619e5e52')
+options=(!strip)
 
 build() {
-  cd "$srcdir/mu-$pkgver"
-  python setup.py build
+  cd "$srcdir/"
   gendesk -f -n \
-    --pkgname=$pkgname \
-    "--pkgdesc=$pkgdesc" \
-    "--name=Mu" \
-    "--genericname=Code Editor" \
-    "--categories=Application;Development;TextEditor" \
-    --exec=$pkgname \
-    --terminal=false \
-    --startupnotify=true \
-    "--mimetypes=text/x-python;text/x-python3"
+     --pkgname=$pkgname \
+     "--pkgdesc=$pkgdesc" \
+     "--name=Mu" \
+     "--genericname=Code Editor" \
+     "--categories=Application;Development;TextEditor" \
+     "--icon=mueditor.png" \
+     --exec=/opt/mu-editor/Mu_Editor-$pkgver.AppImage \
+     --terminal=false \
+     --startupnotify=true \
+     "--mimetypes=text/x-python;text/x-python3"
 }
 
 package() {
-  cd "$srcdir/mu-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
-  install -Dm644 $pkgname.desktop -t "$pkgdir/usr/share/applications"
-  install -Dm644 conf/mu.codewith.editor.png "$pkgdir/usr/share/pixmaps/mu-editor.png"
-}
+    mkdir -p "$pkgdir/opt/mu-editor/"
+    install -Dm644 "$srcdir/Mu_Editor-$pkgver.AppImage" "$pkgdir/opt/mu-editor/Mu_Editor-$pkgver.AppImage"
+    chmod +x "$pkgdir/opt/mu-editor/Mu_Editor-$pkgver.AppImage"
 
-# vim:set ts=2 sw=2 et:
+    mkdir -p "$pkgdir/usr/share/applications/"
+    install -Dm644 "$srcdir/mu-editor.desktop" "$pkgdir/usr/share/applications/"
+
+    mkdir -p "$pkgdir/usr/share/pixmaps/"
+    install -Dm644 "$srcdir/mueditor.png" "$pkgdir/usr/share/pixmaps/"
+}
