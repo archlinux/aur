@@ -1,0 +1,18 @@
+pkgbase = bochs
+	pkgdesc = A portable x86 PC emulation software package, including GUI debugger
+	pkgver = 2.7
+	pkgrel = 2
+	url = http://bochs.sourceforge.net/
+	arch = x86_64
+	arch = pentium4
+	arch = i686
+	arch = i486
+	license = LGPL
+	depends = gcc-libs
+	depends = libxrandr
+	depends = libxpm
+	depends = gtk2
+	source = https://downloads.sourceforge.net/sourceforge/bochs/bochs-2.7.tar.gz
+	sha256sums = a010ab1bfdc72ac5a08d2e2412cd471c0febd66af1d9349bc0d796879de5b17a
+
+pkgname = bochs
