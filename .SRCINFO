@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-nav-2d-utils
 	pkgdesc = Basic message types for two dimensional navigation, extending from geometry_msgs::Pose2D.<
 	pkgver = 1.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/nav_2d_utils/
 	arch = any
 	makedepends = ros2-humble-nav2-common
