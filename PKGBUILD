@@ -1,8 +1,8 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=ffms2-git
-pkgver=2.40.43.g90975ec
-pkgrel=2
+pkgver=2.40.47.g1031029
+pkgrel=1
 pkgdesc="An FFmpeg/Libav based source library and Avisynth/Vapoursynth plugin for easy frame accurate access. (GIT version)"
 url='https://github.com/FFMS/ffms2'
 arch=('x86_64')
@@ -25,7 +25,7 @@ provides=('ffms2'
           )
 conflicts=('ffms2')
 optdepends=('vapoursynth: Vapoursynth support'
-            'avisynth: Avisynth support'
+            'avisynthplus: Avisynth support'
             )
 source=('git+https://github.com/FFMS/ffms2.git'
         'esee.patch'
