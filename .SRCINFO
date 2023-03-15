@@ -1,0 +1,17 @@
+pkgbase = ginvoice
+	pkgdesc = Creating LaTeX invoices with a GTK GUI
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://gitlab.gnome.org/MacLotsen/ginvoice
+	install = ginvoice.install
+	arch = x86_64
+	license = GPL3
+	depends = python-gobject
+	depends = python-distutils-extra
+	depends = python-xdg
+	depends = texlive-bin
+	optdepends = ttf-ms-win11-auto: Microsoft Windows 11 TrueType fonts
+	source = https://gitlab.gnome.org/MacLotsen/ginvoice/uploads/34210bc004de7ea0b1899a3b6848e890/ginvoice_1.0.3_all.deb
+	sha256sums = f85c2162d376cfbbed7615caa9ad809bbbe5e5c2da2aedeb55733a664b3d7db7
+
+pkgname = ginvoice
