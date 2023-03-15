@@ -1,11 +1,11 @@
 pkgbase = r-matrixstats
 	pkgdesc = Functions that Apply to Rows and Columns of Matrices (and to Vectors)
-	pkgver = 0.62.0
+	pkgver = 0.63.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=matrixStats
 	arch = i686
 	arch = x86_64
-	license = Artistic-2.0
+	license = Artistic2.0
 	depends = r>=2.12.0
 	optdepends = r-base64enc
 	optdepends = r-ggplot2
@@ -14,7 +14,7 @@ pkgbase = r-matrixstats
 	optdepends = r-microbenchmark
 	optdepends = r-r.devices
 	optdepends = r-r.rsp
-	source = https://cran.r-project.org/src/contrib/matrixStats_0.62.0.tar.gz
-	sha256sums = 85e2016b6dd20cbfe32d38a2ef2578ae80e688d9a3590aefd1d2f4bf4bd44eca
+	source = https://cran.r-project.org/src/contrib/matrixStats_0.63.0.tar.gz
+	b2sums = 4d2cb8b7c0f9f1e5656a0de081955a071af207089fc1ff2e4103465cb889c7a4a8a37a190d47fe0a32732137665b4ab753f39f53bbd503e5023cf7c8bfa1abef
 
 pkgname = r-matrixstats
