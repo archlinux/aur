@@ -3,7 +3,7 @@
 _pkgname=joy_teleop
 pkgname=ros2-humble-joy-teleop
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A (to be) generic joystick interface to control a robot"
 url="https://index.ros.org/p/joy_teleop/"
 arch=('any')
@@ -20,6 +20,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     cd teleop_tools-$pkgver/$_pkgname
     colcon build --merge-install
 }

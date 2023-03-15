@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-joy-teleop
 	pkgdesc = A (to be) generic joystick interface to control a robot
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/joy_teleop/
 	arch = any
 	depends = ros2-humble
