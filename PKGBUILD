@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=sf
-_cranver=1.0-10
+_cranver=1.0-11
 pkgname=r-${_cranname,,}
 pkgdesc="Simple Features for R"
 url="https://cran.r-project.org/package=sf"
@@ -62,7 +62,7 @@ optdepends=(
 )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=('ff7a5de4f4e6acb2899fef1bc402bb77b28dbc3fd6e62f48f6050d6eeb5ef90ed3294e240f15f0c1c12e1517634886a7bf292e9dc83bbdcbd34b2aa1fe3bbc1e')
+b2sums=("fd4a8505b7944d743b45272a45305db1674fe9ee08a553344ac204b2a75a1ec42a42854eb17ccd6ad6e49ae8d351ea994b0eb91ea06259d2f825dd2753ce51ce")
 
 build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
