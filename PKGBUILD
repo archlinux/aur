@@ -3,7 +3,7 @@
 _pkgname=nav2_dwb_controller/nav_2d_msgs
 pkgname=ros2-humble-nav-2d-msgs
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Basic message types for two dimensional navigation, extending from geometry_msgs::Pose2D.<"
 url="https://index.ros.org/p/nav_2d_msgs/"
 arch=('any')
@@ -22,6 +22,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
