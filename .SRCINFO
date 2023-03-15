@@ -1,7 +1,7 @@
 pkgbase = pjsua
 	pkgdesc = Open source command line SIP user agent
 	pkgver = 2.13
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.pjsip.org/pjsua.htm
 	arch = i686
 	arch = x86_64
