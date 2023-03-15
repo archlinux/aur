@@ -11,12 +11,13 @@ arch=('any')
 projecthost="https://github.com"
 developer="patrikx3"
 repo="onenote"
+url="$projecthost/$developer/$repo" 
 tarballpath="archive/refs/tags"
 license=('MIT')
 depends=('electron')
 makedepends=('npm')
 
-source=("$projecthost/$developer/$repo/$tarballpath/v${pkgver//_/-}.tar.gz"
+source=("$url/$tarballpath/v${pkgver//_/-}.tar.gz"
         "p3x-$repo.sh"
         "p3x-$repo.desktop")
 
