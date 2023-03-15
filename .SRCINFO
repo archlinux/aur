@@ -1,0 +1,12 @@
+pkgbase = notion2pandoc
+	pkgdesc = Notion page -> Pandoc AST
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/ho-oto/notion2pandoc
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = notion2pandoc-0.5.1.tar.gz::https://github.com/ho-oto/notion2pandoc/archive/v0.5.1.tar.gz
+	sha512sums = debde49736a9b4864c6c64c059fb75083f390ad1e064f19de539da0be0e3aabe7b45cb13e526caef609e0a0f413973bd5b3dc0c51417b9926f9be2c7d52d7364
+
+pkgname = notion2pandoc
