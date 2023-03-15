@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-diff-drive-controller
 	pkgdesc = Controller for a differential drive mobile base.
 	pkgver = 2.17.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/diff_drive_controller/
 	arch = any
 	makedepends = ros2-humble-generate-parameter-library

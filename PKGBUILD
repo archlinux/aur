@@ -3,7 +3,7 @@
 _pkgname=diff_drive_controller
 pkgname=ros2-humble-diff-drive-controller
 pkgver=2.17.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Controller for a differential drive mobile base."
 url="https://index.ros.org/p/diff_drive_controller/"
 arch=('any')
@@ -31,6 +31,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
