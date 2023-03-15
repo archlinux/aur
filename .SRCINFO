@@ -11,7 +11,6 @@ pkgbase = eclipse-jee
 	depends = unzip
 	provides = eclipse=4.27-1
 	conflicts = eclipse
-	backup = usr/lib/eclipse/eclipse.ini
 	source = eclipse-jee-2023-03-R-linux-gtk-x86_64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2023-03/R/eclipse-jee-2023-03-R-linux-gtk-x86_64.tar.gz&r=1
 	source = eclipse.desktop
 	sha512sums = 7ae753122dd0602f4cd0be915cc56fe0a62c4e336f78d111a2e9e12908bf7342c68089449221f705d746f45eb7003825468754f9e32990e145cd84d24f9fa267
