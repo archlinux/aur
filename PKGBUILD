@@ -3,7 +3,7 @@
 _pkgname=backward_ros
 pkgname=ros2-humble-backward-ros
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The backward_ros package is a ros wrapper of backward-cpp"
 url="https://index.ros.org/p/backward_ros/"
 arch=('any')
@@ -23,6 +23,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
