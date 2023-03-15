@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=webapp-manager-git
-pkgver=1.1.9.r8.g86db09b
+pkgver=1.2.8.r4.g4895615
 pkgrel=1
 pkgdesc="Run websites as if they were apps."
 arch=('any')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --exclude master* | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
