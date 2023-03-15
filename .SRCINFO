@@ -1,0 +1,23 @@
+pkgbase = python-polara
+	pkgdesc = Fast and flexible recommender systems framework
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = https://github.com/evfro/polara
+	arch = any
+	groups = recsys
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-numba
+	depends = python-numpy
+	depends = python-scipy
+	optdepends = python-turicreate: Apple's TuriCreate machine learning library
+	optdepends = mymedialite: Recommender system library for the CLR
+	optdepends = python-implicit: Fast Python Collaborative Filtering for Implicit Feedback
+	optdepends = python-lightfm: LightFM in Python
+	source = polara-0.7.3.tar.gz::https://github.com/evfro/polara/archive/refs/heads/develop.tar.gz
+	sha256sums = 59818bbac0078668f8914c13312788ec923c0d10fee275b6a64afa0b7fdad931
+
+pkgname = python-polara
