@@ -3,7 +3,7 @@
 _pkgname=moveit_core
 pkgname=ros2-humble-moveit-core
 pkgver=2.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Core libraries used by MoveIt"
 url="https://index.ros.org/p/moveit_core/"
 arch=('any')
@@ -43,6 +43,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
