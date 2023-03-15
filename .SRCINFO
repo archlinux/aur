@@ -1,0 +1,16 @@
+pkgbase = ywallet
+	pkgdesc = Ycash/Zcash wallet
+	pkgver = 1.3.5
+	pkgrel = 398
+	url = https://ywallet.app
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = gst-plugins-base-libs
+	noextract = zwallet.tgz
+	source = zwallet.tgz::https://github.com/hhanh00/zwallet/releases/download/v1.3.5%2B398/zwallet.tgz
+	source = libwarp_api_ffi.so::https://github.com/hhanh00/zwallet/releases/download/v1.3.5%2B398/libwarp_api_ffi.so
+	sha256sums = 69d28179d6dc7706737aa2fe122e0f55865c8e936ef5c7901193f706c3fc498f
+	sha256sums = 9ad22794ab965be36abb1bfb2a885c2d7cde3340bc0a3cbbc014f94376eba612
+
+pkgname = ywallet-bin
