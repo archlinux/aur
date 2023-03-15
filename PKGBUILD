@@ -1,7 +1,7 @@
 # Maintainer: Alexei Colin <ac@alexeicolin.com>
 
 pkgname=zephyr-sdk
-pkgver=0.15.2
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="SDK for Zephyr real-time operating system"
 arch=('x86_64')
@@ -27,10 +27,10 @@ depends=('python-breathe>=4.9.1' 'python-docutils>=0.14'
          'doxygen' 'dfu-util' 'dtc' 'cmake>=3.8.2')
 optdepends=('pyocd: programming and debugging ARM MCUs')
 makedepends=('patchelf' 'wget')
-source=("https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgver}/zephyr-sdk-${pkgver}_linux-x86_64.tar.gz"
+source=("https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgver}/zephyr-sdk-${pkgver}_linux-x86_64.tar.xz"
         "zephyrrc"
 )
-sha256sums=('8e3572fbca9f9ba18a4436c00d680af34a85e239f7fe66c7988da85571a0d23d'
+sha256sums=('63fd2a70fe941c92cc92bf13f5a50ff785c0bd1051460ec661542cd10b9052cd'
             '7a1257272c64bdec281283d391e3149cece065935c9e8394d6bece32d0f6fc05')
 
 
