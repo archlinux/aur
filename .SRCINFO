@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-moveit-resources-pr2-description
 	pkgdesc = PR2 Resources used for MoveIt! testing
 	pkgver = 2.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/moveit_resources_pr2_description/
 	arch = any
 	depends = ros2-humble
