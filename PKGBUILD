@@ -4,7 +4,7 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=restorecond
-pkgver=3.4
+pkgver=3.5
 pkgrel=1
 pkgdesc="SELinux restorecon daemon"
 arch=('i686' 'x86_64' 'aarch64')
@@ -14,9 +14,12 @@ groups=('selinux')
 makedepends=('pkgconf')
 depends=('dbus-glib' 'libselinux>=2.7')
 conflicts=('policycoreutils<2.7')
-validpgpkeys=('E853C1848B0185CF42864DF363A8AD4B982C4373')  # Petr Lautrbach <plautrba@redhat.com>
+validpgpkeys=(
+  '63191CE94183098689CAB8DB7EF137EC935B0EAF'  # Jason Zaman <perfinion@gentoo.org>
+  'E853C1848B0185CF42864DF363A8AD4B982C4373'  # Petr Lautrbach <plautrba@redhat.com>
+)
 source=("https://github.com/SELinuxProject/selinux/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc})
-sha256sums=('c7ace37dde5aed1eaebfcf43efc32f29a9babb93a430b666c4a5801f0211f5c2'
+sha256sums=('f00d8caddb6aba2793c65e69154d04671b52f3d37e081b0e96c1b443fe23c2fe'
             'SKIP')
 
 build() {
