@@ -1,6 +1,6 @@
 pkgbase = hysteria
 	pkgdesc = A feature-packed network utility optimized for networks of poor quality
-	pkgver = 1.3.3
+	pkgver = 1.3.4
 	pkgrel = 1
 	url = https://hysteria.network/
 	install = hysteria.install
@@ -11,7 +11,7 @@ pkgbase = hysteria
 	depends = glibc
 	depends = acl
 	depends = shadow
-	source = hysteria-git::git+https://github.com/apernet/hysteria.git#tag=v1.3.3
+	source = hysteria-git::git+https://github.com/apernet/hysteria.git#tag=v1.3.4
 	source = hysteria@.service
 	source = hysteria-server@.service
 	source = sysusers.conf
