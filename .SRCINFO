@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-play-motion2-msgs
 	pkgdesc = associated messages to play and handle pre-recorded motions in ROS2
 	pkgver = 0.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pal-robotics/play_motion2/
 	arch = any
 	depends = ros2-humble
