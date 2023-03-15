@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-teleop-twist-keyboard
 	pkgdesc = A robot-agnostic teleoperation node to convert keyboard commands to Twist messages
 	pkgver = 2.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/teleop_twist_keyboard/
 	arch = any
 	depends = ros2-humble

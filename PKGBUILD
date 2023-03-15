@@ -3,7 +3,7 @@
 _pkgname=teleop_twist_keyboard
 pkgname=ros2-humble-teleop-twist-keyboard
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A robot-agnostic teleoperation node to convert keyboard commands to Twist messages"
 url="https://index.ros.org/p/teleop_twist_keyboard/"
 arch=('any')
@@ -16,6 +16,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     colcon build --merge-install
 }
 
