@@ -3,7 +3,7 @@
 _pkgname=ros2_control_test_assets
 pkgname=ros2-humble-ros2-control-test-assets
 pkgver=2.24.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The package provides shared test resources for ros2_control stack"
 url="https://index.ros.org/p/ros2_control_test_assets/"
 arch=('any')
@@ -22,6 +22,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
