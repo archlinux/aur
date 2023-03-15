@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-eigen-stl-containers
 	pkgdesc = This package provides a set of typedef's that allow using Eigen datatypes in STL containers
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/eigen_stl_containers/
 	arch = any
 	depends = ros2-humble

@@ -3,7 +3,7 @@
 _pkgname=eigen_stl_containers
 pkgname=ros2-humble-eigen-stl-containers
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="This package provides a set of typedef's that allow using Eigen datatypes in STL containers"
 url="https://index.ros.org/p/eigen_stl_containers/"
 arch=('any')
@@ -23,6 +23,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
