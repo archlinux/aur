@@ -3,7 +3,7 @@ pkgname=cargo-vet
 pkgver=0.4.0
 # Repository tag omits trailing .0: for example, the tag for v0.3.0 is 0.3.
 _tag=${pkgver%.0}
-pkgrel=1
+pkgrel=2
 pkgdesc='Supply-chain security for Rust'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url='https://github.com/mozilla/cargo-vet'
@@ -26,13 +26,6 @@ prepare() {
     # TODO: remove when no longer necessary.
     patch --forward --strip=1 --input="${srcdir}/update-lock-and-tests-for-0.4.0.patch"
 
-    # The tests depend on the value of Git core.abbrev, and assume it's the default: 7. As that's
-    # not sufficient in larger projects, and users may have set theirs to some other (larger) value,
-    # force core.abbrev=7 when running the tests.
-    export GIT_CONFIG_COUNT=1
-    export GIT_CONFIG_KEY_0=core.abbrev
-    export GIT_CONFIG_VALUE_0=7
-
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -50,6 +43,13 @@ check() {
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+
+    # The tests depend on the value of Git core.abbrev, and assume it's the default: 7. As that's
+    # not sufficient in larger projects, and users may have set theirs to some other (larger) value,
+    # force core.abbrev=7 when running the tests.
+    export GIT_CONFIG_COUNT=1
+    export GIT_CONFIG_KEY_0=core.abbrev
+    export GIT_CONFIG_VALUE_0=7
 
     cargo test --frozen
 }
