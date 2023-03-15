@@ -1,7 +1,7 @@
 pkgbase = vte3-nohang
 	pkgdesc = Virtual Terminal Emulator widget (GTK3) (plus no-hang patch)
 	pkgver = 0.70.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Apps/Terminal/VTE
 	arch = x86_64
 	license = LGPL
