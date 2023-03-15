@@ -3,3 +3,5 @@ src/*
 .AURINFO
 *.tar.xz
 *.tar.gz
+*.tar.zst
+*.zip
