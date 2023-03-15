@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-vision-msgs
 	pkgdesc = Messages for interfacing with various computer vision pipelines, such as object detectors.
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/vision_msgs/
 	arch = any
 	depends = ros2-humble

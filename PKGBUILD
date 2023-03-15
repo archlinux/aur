@@ -3,7 +3,7 @@
 _pkgname=vision_msgs
 pkgname=ros2-humble-vision-msgs
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Messages for interfacing with various computer vision pipelines, such as object detectors."
 url="https://index.ros.org/p/vision_msgs/"
 arch=('any')
@@ -20,6 +20,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
