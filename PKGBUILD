@@ -1,8 +1,8 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
-# Maintainer: Matej Grabovsky <matej.grabovsky at gmail>
+# Contributor: Matej Grabovsky <matej.grabovsky at gmail>
 _projectname='gen'
 pkgname="ocaml-$_projectname"
-pkgver='1.0'
+pkgver='1.1'
 pkgrel='1'
 pkgdesc='Simple, efficient iterators for OCaml'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ depends=('ocaml>=4.03.0' 'ocaml-seq')
 makedepends=('dune>=1.1.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('fb4ec2ab35a1aba0dcc8439b11f14a0a785d939f661f505aec88a6f2ca6ca87e14ddfda860d9c180b215190b76690de87040c144582f069224f7e58d37ef48a0')
+sha512sums=('71a4b5c3666a7c11935398a78feea7383f61d2c549dfb96e324d40783ffa87b5ec492c5ec468803aabfb9b48e7d0ebaa30b24d2b974540afc7cca5feea3121c1')
 
 _sourcedirectory="$_projectname-$pkgver"
 
