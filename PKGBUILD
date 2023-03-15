@@ -3,7 +3,7 @@
 _pkgname=behaviortree-cpp-v3
 pkgname=ros2-humble-$_pkgname
 pkgver=3.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Behavior Trees Library in C++. Batteries included."
 url="https://index.ros.org/p/behaviortree_cpp/"
 arch=('any')
@@ -27,6 +27,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
