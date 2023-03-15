@@ -1,7 +1,7 @@
 pkgbase = dcvviewer-bin
 	pkgdesc = NICE DCV client for Linux. DCV is a desktop remotization server, with support for native as well as web-based clients.
 	pkgver = 2022.2.4804
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.nice-software.com/products/dcv
 	arch = x86_64
 	license = custom: commercial

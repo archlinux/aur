@@ -6,7 +6,7 @@ _pkgname=dcvviewer
 _majver=2022.2
 _minver=4804
 pkgver=${_majver}.${_minver}
-pkgrel=1
+pkgrel=2
 pkgdesc="NICE DCV client for Linux. DCV is a desktop remotization server, with support for native as well as web-based clients."
 arch=('x86_64')
 url="https://www.nice-software.com/products/dcv"
@@ -48,8 +48,8 @@ package(){
   # Might want to keep with same version of glib
   rm libffi.so.* libjson-glib-1.0.so.0
   # Codecs provided by ffmpeg, gst-plugins-base, lz4, zlib
-  rm libavcodec.so.* libturbojpeg.so.0 libavutil.so.* libopus.so.0 libjpeg.so.62 liblz4.so.1 libz.so.1
-  rm liblmdb.so libprotobuf-c.so.1
+  #rm libavcodec.so.* libturbojpeg.so.0 libavutil.so.* libopus.so.0 libjpeg.so.62 liblz4.so.1 libz.so.1
+  #rm liblmdb.so libprotobuf-c.so.1
   #
   rm libpcre.so.1
   # Keep these ones provided by DCV Viewer. There are symbols being looked up in the provided libsoup-3 not in the system one
