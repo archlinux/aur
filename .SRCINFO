@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-gazebo-plugins
 	pkgdesc = Robot-independent Gazebo plugins for sensors, motors and dynamic reconfigurable components.
 	pkgver = 3.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/gazebo_plugins/
 	arch = any
 	depends = ros2-humble

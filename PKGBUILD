@@ -3,7 +3,7 @@
 _pkgname=gazebo_plugins
 pkgname=ros2-humble-gazebo-plugins
 pkgver=3.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Robot-independent Gazebo plugins for sensors, motors and dynamic reconfigurable components."
 url="https://index.ros.org/p/gazebo_plugins/"
 arch=('any')
@@ -26,6 +26,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
