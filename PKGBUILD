@@ -3,7 +3,7 @@
 _pkgname=parameter_traits
 pkgname=ros2-humble-parameter-traits
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Functions and types for rclcpp::Parameter"
 url="https://index.ros.org/p/parameter_traits/"
 arch=('any')
@@ -26,6 +26,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
