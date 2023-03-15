@@ -3,7 +3,7 @@
 _pkgname=generate_parameter_library_py
 pkgname=ros2-humble-generate-parameter-library-py
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for loading parameters in launch files"
 url="https://index.ros.org/p/launch_param_builder/"
 arch=('any')
@@ -25,6 +25,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     cd generate_parameter_library-$pkgver/$_pkgname
     colcon build --merge-install
 }
@@ -32,7 +33,7 @@ build() {
 package() {
     # Copy build files
     mkdir -p $pkgdir/opt/ros/humble
-    cp -r $srcdir/install/* $pkgdir/opt/ros/humble/
+    cp -r $srcdir/generate_parameter_library-$pkgver/$_pkgname/install/* $pkgdir/opt/ros/humble/
     # Exclude files that clash with base ros installation
     rm $pkgdir/opt/ros/humble/*setup.*
     rm $pkgdir/opt/ros/humble/_local_setup*
