@@ -1,12 +1,12 @@
 pkgname=python-blosc2
 _pkgname=blosc2
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Wrapper for the blosc2 compressor'
 arch=('any')
 url='https://github.com/Blosc/python-blosc2'
 license=('BSD')
-depends=('python' 'python-setuptools' 'python-scikit-build' 'blosc2')
+depends=('python' 'python-setuptools' 'python-scikit-build' 'python-msgpack' 'python-ndindex' 'python-py-cpuinfo' 'python-rich' 'python-pytest' 'python-scipy' 'python-numpy' 'cmake')
 conflicts=('blosc2')
 provides=('blosc2')
 #source=("https://github.com/Blosc/python-blosc2/archive/refs/tags/v$pkgver.tar.gz") # git tarball does not contain required submodules...
