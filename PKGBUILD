@@ -2,7 +2,7 @@
 
 pkgname=ros2-humble-moveit-msgs
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Messages, services and actions used by MoveIt"
 url="https://index.ros.org/p/moveit_msgs/"
 arch=('any')
@@ -23,6 +23,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
