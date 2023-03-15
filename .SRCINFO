@@ -1,6 +1,6 @@
 pkgbase = pihpsdr-git
 	pkgdesc = SDR software for HPSDR radios like Anan and Hermes Lite 2
-	pkgver = 2.0.DL1YCF.r392.gf39632e
+	pkgver = r1524.380b614
 	pkgrel = 1
 	url = https://github.com/dl1ycf/pihpsdr
 	arch = x86_64

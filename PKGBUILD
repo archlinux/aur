@@ -3,7 +3,7 @@
 
 pkgname=pihpsdr-git
 _pkgname=pihpsdr
-pkgver=2.0.DL1YCF.r392.gf39632e
+pkgver=r1524.380b614
 pkgrel=1
 pkgdesc='SDR software for HPSDR radios like Anan and Hermes Lite 2'
 arch=('x86_64' 'aarch64')
@@ -26,7 +26,7 @@ sha512sums=('SKIP'
 
 pkgver() {
     cd "$_pkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
