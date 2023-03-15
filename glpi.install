@@ -19,6 +19,11 @@ pre_upgrade() {
 
 post_upgrade() {
    post_install
+   # Needed to update the translations
+   rm -f /var/lib/glpi/_sessions/*
+   echo ">============================================================<"
+   echo -e "To update translations, do the following:\nphp /usr/share/webapps/glpi/bin/console cache:clear\nsystemctl restart httpd\n"
+   echo ">============================================================<"
 }
 
 # vim:set ts=2 sw=2 et:
