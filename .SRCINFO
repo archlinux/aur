@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-moveit-ros-robot-interaction
 	pkgdesc = Components of MoveIt that offer interaction via interactive markers
 	pkgver = 2.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/moveit_ros_robot_interaction/
 	arch = any
 	depends = ros2-humble

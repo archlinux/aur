@@ -3,7 +3,7 @@
 _pkgname=moveit_ros/robot_interaction
 pkgname=ros2-humble-moveit-ros-robot-interaction
 pkgver=2.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Components of MoveIt that offer interaction via interactive markers"
 url="https://index.ros.org/p/moveit_ros_robot_interaction/"
 arch=('any')
@@ -25,6 +25,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
