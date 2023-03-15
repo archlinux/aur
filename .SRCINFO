@@ -1,6 +1,6 @@
 pkgbase = policycoreutils
 	pkgdesc = SELinux policy core utilities
-	pkgver = 3.4
+	pkgver = 3.5
 	pkgrel = 1
 	url = https://github.com/SELinuxProject/selinux
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = policycoreutils
 	arch = aarch64
 	groups = selinux
 	license = GPL2
-	depends = libsemanage>=3.4
+	depends = libsemanage>=3.5
 	depends = pam
 	optdepends = mcstrans: SELinux MCS translation daemon
 	optdepends = restorecond: SELinux daemon that fixes SELinux file contexts
@@ -17,12 +17,13 @@ pkgbase = policycoreutils
 	optdepends = selinux-python: Python tools and libraries for SELinux
 	optdepends = selinux-sandbox: sandboxing tool for SELinux
 	optdepends = semodule-utils: SELinux module tools
-	provides = selinux-usr-policycoreutils=3.4-1
+	provides = selinux-usr-policycoreutils=3.5-1
 	conflicts = selinux-usr-policycoreutils
-	source = https://github.com/SELinuxProject/selinux/releases/download/3.4/policycoreutils-3.4.tar.gz
-	source = https://github.com/SELinuxProject/selinux/releases/download/3.4/policycoreutils-3.4.tar.gz.asc
+	source = https://github.com/SELinuxProject/selinux/releases/download/3.5/policycoreutils-3.5.tar.gz
+	source = https://github.com/SELinuxProject/selinux/releases/download/3.5/policycoreutils-3.5.tar.gz.asc
+	validpgpkeys = 63191CE94183098689CAB8DB7EF137EC935B0EAF
 	validpgpkeys = E853C1848B0185CF42864DF363A8AD4B982C4373
-	sha256sums = bf049f31a7572a65cb796fa575f56c53327c839027d57782965c1682b33a7108
+	sha256sums = 78453e1529fbbf800e88860094d555e781ce1fba11a7ef77b5aabb43e1173276
 	sha256sums = SKIP
 
 pkgname = policycoreutils
