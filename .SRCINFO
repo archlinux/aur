@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-play-motion2
 	pkgdesc = A tool to play and handle pre-recorded motions in ROS2
 	pkgver = 0.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pal-robotics/play_motion2/
 	arch = any
 	makedepends = ros2-humble-controller-manager

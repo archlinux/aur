@@ -3,7 +3,7 @@
 _pkgname=play_motion2
 pkgname=ros2-humble-play-motion2
 pkgver=0.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to play and handle pre-recorded motions in ROS2"
 url="https://github.com/pal-robotics/play_motion2/"
 arch=('any')
@@ -27,7 +27,8 @@ prepare() {
 
     cmake -S play_motion2-$pkgver/$_pkgname -B build \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/humble
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/humble \
+        -DCMAKE_CXX_FLAGS="-include functional"
 }
 
 build() {
