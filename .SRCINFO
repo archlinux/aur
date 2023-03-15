@@ -1,0 +1,13 @@
+pkgbase = python-ndindex
+	pkgdesc = Library for manipulating indices of ndarrays
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://quansight-labs.github.io/ndindex/
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-setuptools
+	source = https://files.pythonhosted.org/packages/de/97/ec37f59dae9a762623851859af5e434cac25473c6c09ef60d35020e4a2ef/ndindex-1.6.tar.gz
+	sha256sums = 752e5a05c39883824316fdd7f7b650f6860eb71cecb9f15d811be2d879bebf02
+
+pkgname = python-ndindex
