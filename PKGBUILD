@@ -3,7 +3,7 @@
 pkgname=ros2-humble-octomap-msgs-git
 provides=('ros2-humble-octomap-msgs')
 pkgver=2.0.0.r58.67be62d
-pkgrel=1
+pkgrel=2
 pkgdesc="Messages, services and actions used by MoveIt"
 url="https://index.ros.org/p/octomap_msgs/"
 arch=('any')
@@ -26,6 +26,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     source /opt/ros/humble/setup.bash
     make -C build
 }

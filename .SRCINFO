@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-octomap-msgs-git
 	pkgdesc = Messages, services and actions used by MoveIt
 	pkgver = 2.0.0.r58.67be62d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/octomap_msgs/
 	arch = any
 	depends = ros2-humble
