@@ -3,7 +3,7 @@
 _pkgname=nav2_rviz_plugins
 pkgname=ros2-humble-nav2-rviz-plugins
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Navigation 2 plugins for rviz"
 url="https://index.ros.org/p/nav2_rviz_plugins/"
 arch=('any')
@@ -25,6 +25,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
