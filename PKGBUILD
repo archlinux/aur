@@ -3,7 +3,7 @@
 _pkgname=moveit_plugins/moveit_ros_control_interface
 pkgname=ros2-humble-moveit-ros-control-interface
 pkgver=2.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="ros_control controller manager interface for MoveIt"
 url="https://index.ros.org/p/moveit_ros_control_interface/"
 arch=('any')
@@ -26,6 +26,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
