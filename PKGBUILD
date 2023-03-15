@@ -3,7 +3,7 @@
 _pkgname=nav2_smac_planner
 pkgname=ros2-humble-nav2-smac-planner
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Smac global planning plugin: A*, Hybrid-A*, State Lattice"
 url="https://index.ros.org/p/nav2_smac_planner/"
 arch=('any')
@@ -31,6 +31,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
