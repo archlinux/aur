@@ -3,7 +3,7 @@
 pkgname=gerb-git
 _pkgname=${pkgname%-git}
 pkgver=r310.735cc5e
-pkgrel=1
+pkgrel=2
 pkgdesc='Graphical font editor (GTK + Rust) '
 arch=(x86_64)
 url="https://github.com/epilys/$_pkgname"
@@ -14,6 +14,8 @@ depends=(gtk3
          python-ufo2ft)
 makedepends=(cargo
              git)
+provides=("${pkgname%-git}=$pkgver")
+conflicts=("${pkgname%-git}")
 source=("git+$url.git")
 sha256sums=('SKIP')
 
@@ -43,5 +45,5 @@ check() {
 
 package() {
 	cd "$_pkgname"
-	install -Dm0755 "target/release/$_pkgname" "$pkgdir/usr/bin/$pkgname"
+	install -Dm0755 "target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 }
