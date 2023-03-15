@@ -3,7 +3,7 @@
 _pkgname=hardware_interface
 pkgname=ros2-humble-hardware-interface
 pkgver=2.24.1
-pkgrel=1
+pkgrel=2
 pkgdesc="ros2_control hardware interface"
 url="https://index.ros.org/p/hardware_interface/"
 arch=('any')
@@ -24,6 +24,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 

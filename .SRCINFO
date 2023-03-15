@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-hardware-interface
 	pkgdesc = ros2_control hardware interface
 	pkgver = 2.24.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/hardware_interface/
 	arch = any
 	makedepends = ros2-humble-ros2-control-test-assets
