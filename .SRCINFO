@@ -1,0 +1,14 @@
+pkgbase = python-connexion
+	pkgdesc = Design-First framework for Python with support for Swagger/OpenAPI, automatic endpoint validation & OAuth2
+	pkgver = 2.14.2
+	pkgrel = 1
+	url = https://github.com/spec-first/connexion
+	arch = any
+	license = Apache2
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	source = https://github.com/spec-first/connexion/archive/refs/tags/2.14.2.tar.gz
+	sha256sums = 6b436b8eb1b2e13a8a5f68918b44d3382a040574c267ced93aa4a61d958ae95a
+
+pkgname = python-connexion
