@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-nav2-lifecycle-manager
 	pkgdesc = A controller/manager for the lifecycle nodes of the Navigation 2 system
 	pkgver = 1.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/nav2_lifecycle_manager/
 	arch = any
 	makedepends = ros2-humble-nav2-common

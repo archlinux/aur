@@ -3,7 +3,7 @@
 _pkgname=nav2_lifecycle_manager
 pkgname=ros2-humble-nav2-lifecycle-manager
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A controller/manager for the lifecycle nodes of the Navigation 2 system"
 url="https://index.ros.org/p/nav2_lifecycle_manager/"
 arch=('any')
@@ -29,6 +29,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
