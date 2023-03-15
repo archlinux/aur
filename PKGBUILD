@@ -3,7 +3,7 @@ pkgbase=damask
 pkgname=('damask' 'damask-grid' 'damask-mesh' 'python-damask')
 pkgver=3.0.0~alpha7
 pkgver_=3.0.0-alpha7
-pkgrel=1
+pkgrel=2
 pkgdesc='DAMASK - The Duesseldorf Advanced Material Simulation Kit'
 arch=('x86_64')
 url='https://damask.mpie.de'
@@ -21,6 +21,7 @@ sha256sums=('442b06b824441293e72ff91b211a555c5d497aedf62be1c4332c426558b848a4'
             'c98b009ac98952528d3d50a0844d433b8635206df3e0525a8018ad68c6fad947')
 
 prepare() {
+    sed -i '73d;75d;77d' ${pkgname}-${pkgver_}/src/mesh/discretization_mesh.f90
     patch ${pkgname}-${pkgver_}/src/CMakeLists.txt "${srcdir}/CMakeLists.patch"
     patch ${pkgname}-${pkgver_}/python/setup.cfg "${srcdir}/setup.patch"
 }
