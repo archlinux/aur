@@ -12,15 +12,15 @@ license=('MIT')
 provides=('iitj-autoproxy')
 conflicts=('iitj-autoproxy')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/XanderWatson/iitj-autoproxy/releases/download/0.1.0-beta2/iitj-autoproxy_0.1.0-beta2_linux_arm64.tar.gz")
-sha256sums_aarch64=('058e126b0c8bfe4ea956b2509c8e1677dc5e92fd108a74501e4e131d12885d05')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/XanderWatson/iitj-autoproxy/releases/download/0.1.0-beta3/iitj-autoproxy_0.1.0-beta3_linux_arm64.tar.gz")
+sha256sums_aarch64=('ded4096907cc05dd9e056d90ed31743716bcb410e1738d162f4450fcc9929ec5')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/XanderWatson/iitj-autoproxy/releases/download/0.1.0-beta2/iitj-autoproxy_0.1.0-beta2_linux_amd64.tar.gz")
-sha256sums_x86_64=('e8f0758858ee470f459a085cc818f2f39702cd36585f6f66e356a833565905d8')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/XanderWatson/iitj-autoproxy/releases/download/0.1.0-beta3/iitj-autoproxy_0.1.0-beta3_linux_amd64.tar.gz")
+sha256sums_x86_64=('503139f2a297aff7eb93283db7722c5ace8504d8b8a7c7857121ca118fb73eda')
 
 package() {
-  install -Dm755 "./autoproxy" "${pkgdir}/usr/bin/autoproxy"
-  install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/iitj-autoproxy/LICENSE"
-  install -Dm644 "./base_config.json" "${pkgdir}~/.autoproxy.config.json"
-  install -Dm644 "./README.md" "${pkgdir}/usr/share/doc/iitj-autoproxy/README.md"
+  install -Dm755 "./*/autoproxy" "${pkgdir}/usr/bin/autoproxy"
+  install -Dm644 "./*/LICENSE" "${pkgdir}/usr/share/licenses/iitj-autoproxy/LICENSE"
+  install -Dm644 "./*/base_config.json" "${pkgdir}~/.autoproxy.config.json"
+  install -Dm644 "./*/README.md" "${pkgdir}/usr/share/doc/iitj-autoproxy/README.md"
 }
