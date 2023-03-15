@@ -3,7 +3,7 @@
 _pkgname=joint_state_broadcaster
 pkgname=ros2-humble-joint-state-broadcaster
 pkgver=2.17.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Broadcaster to publish joint state"
 url="https://index.ros.org/p/joint_state_broadcaster/"
 arch=('any')
@@ -31,6 +31,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
