@@ -3,7 +3,7 @@
 _pkgname=geometric_shapes
 pkgname=ros2-humble-geometric-shapes
 pkgver=2.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="This package contains generic definitions of geometric shapes and bodies."
 url="https://index.ros.org/p/geometric_shapes/"
 arch=('any')
@@ -31,6 +31,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
