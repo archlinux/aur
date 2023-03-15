@@ -1,9 +1,9 @@
 # Maintainer: Cian Ormond <aur@cianormond.com>
 pkgname='vatprism'
 pkgver=0.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="VATSIM map and data explorer"
-arch=(x86_64)
+arch=('x86_64' 'aarch64')
 url="https://vatprism.org"
 license=('AGPL3')
 depends=('java-runtime>=15')
