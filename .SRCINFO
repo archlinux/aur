@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-angles
 	pkgdesc = This package provides a set of simple math utilities to work with angles
 	pkgver = 1.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/angles/
 	arch = any
 	makedepends = python-setuptools
