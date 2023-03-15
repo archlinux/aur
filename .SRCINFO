@@ -1,4 +1,4 @@
-pkgbase = kodi-add-on-audiodecoder-openmpt
+pkgbase = kodi-addon-audiodecoder-openmpt
 	pkgdesc = Kodi add-on for decoding formats such as xm, and mod
 	pkgver = 20.2.0
 	pkgrel = 0
@@ -14,7 +14,7 @@ pkgbase = kodi-add-on-audiodecoder-openmpt
 	depends = tinyxml2
 	depends = libopenmpt
 	options = !lto
-	source = kodi-add-on-audiodecoder-openmpt-20.2.0.tar.gz::https://github.com/xbmc/audiodecoder.openmpt/archive/refs/tags/20.2.0-Nexus.zip
+	source = kodi-addon-audiodecoder-openmpt-20.2.0.tar.gz::https://github.com/xbmc/audiodecoder.openmpt/archive/refs/tags/20.2.0-Nexus.zip
 	sha256sums = 4f194cb43681f0221a9b78c1d7693c08b39ba97660d0d496e05c72b3e9f6ec2b
 
-pkgname = kodi-add-on-audiodecoder-openmpt
+pkgname = kodi-addon-audiodecoder-openmpt
