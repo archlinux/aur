@@ -1,11 +1,11 @@
 # Maintainer: Luke Collins <luke@collins.mt>
 pkgname=bibbja
-pkgver=r1
+pkgver=1
 pkgrel=1
 pkgdesc="Maltese Catholic Bible in the terminal - Bibbja bil-Malti"
 arch=(any)
 url="https://github.com/drmenguin/bibbja"
-license=('custom:Public Domain')
+license=('GPL')
 depends=(bash)
 source=('bibbja::git+https://github.com/drmenguin/bibbja')
 md5sums=('SKIP')
