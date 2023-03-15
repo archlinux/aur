@@ -1,0 +1,15 @@
+pkgbase = plymouth-theme-legion-git
+	pkgdesc = Plymouth theme with Lenovo Legion logo
+	pkgver = r1.4a99f4e
+	pkgrel = 1
+	url = https://github.com/MmAaXx500/plymouth-theme-legion
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = plymouth
+	provides = plymouth-theme-legion
+	conflicts = plymouth-theme-legion
+	source = plymouth-theme-legion::git+https://github.com/MmAaXx500/plymouth-theme-legion
+	sha256sums = SKIP
+
+pkgname = plymouth-theme-legion-git
