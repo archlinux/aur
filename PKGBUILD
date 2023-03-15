@@ -3,7 +3,7 @@
 _pkgname=teleop_tools_msgs
 pkgname=ros2-humble-teleop-tools-msgs
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The teleop_tools_msgs package"
 url="https://index.ros.org/p/teleop_tools_msgs/"
 arch=('any')
@@ -22,6 +22,7 @@ prepare() {
 }
 
 build() {
+source /opt/ros/humble/setup.bash
     make -C build
 }
 
