@@ -1,25 +1,16 @@
 pkgbase = qtcbm
 	pkgdesc = Qt GUI Frontend for the (Open)CBM utils
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 0
 	url = https://github.com/mveinot/QtCBM
 	arch = i686
 	arch = x86_64
 	license = GPLv2
 	depends = qt5-base
 	depends = opencbm-git
-	source = https://github.com/mveinot/QtCBM/archive/v1.0.0.tar.gz
-	source = git+https://git.gitorious.org/qt-solutions/qt-solutions.git
-	md5sums = d53f8b0c09059604ed698ac6c11ed061
+	source = git+https://github.com/mveinot/QtCBM.git
+	source = git+https://github.com/qtproject/qt-solutions.git
 	md5sums = SKIP
-	sha1sums = ff8f24fdf1b2316f65433766c72de58520512d06
-	sha1sums = SKIP
-	sha256sums = dbeb32a8c51c84c434918a9c31729ea37be2a7b9788d1417bac5cf8d88a49d2a
-	sha256sums = SKIP
-	sha384sums = eed22d0d693304d867fcaf5df3cf242e15bb17bd45889fe1ed063df22e8f95ffbd91d59ce44965d63900c6efc0a98eb7
-	sha384sums = SKIP
-	sha512sums = ee9c057e4f00916a0e2a450c4e4f50177ce76d54dd546786dd59903aa65883013bc811d82290e79e492da9c3c0b34b3eb83b8c377bba8255d53757c58b35e004
-	sha512sums = SKIP
+	md5sums = SKIP
 
 pkgname = qtcbm
-

@@ -1,0 +1,23 @@
+From f3491af99a97674510b9d0b908e3c537b6bf77a2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jochen=20J=C3=A4gers?= <jochen.jaegers@gmail.com>
+Date: Thu, 16 Mar 2023 18:46:05 +0100
+Subject: [PATCH] add missing include
+
+---
+ detailsinfodialog.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/detailsinfodialog.cpp b/detailsinfodialog.cpp
+index 33c5177..448e358 100644
+--- a/detailsinfodialog.cpp
++++ b/detailsinfodialog.cpp
+@@ -1,5 +1,6 @@
+ #include "detailsinfodialog.h"
+ #include "ui_detailsinfodialog.h"
++#include <QStyle>
+ 
+ detailsInfoDialog::detailsInfoDialog(QWidget *parent) :
+     QDialog(parent),
+-- 
+2.40.0
+

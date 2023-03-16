@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0.0
+Name=QtCBM
+Comment=GUI Frontend for the CBM utils
+Path=/usr/bin/
+Exec=qtcbm
+Icon=qtcbm.png
+Terminal=false
