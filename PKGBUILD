@@ -2,25 +2,33 @@
 
 pkgname=python-adafruit-circuitpython-bme280
 _pypi_pkgname=adafruit-circuitpython-bme280
-pkgver=2.6.16
+pkgver=2.6.19
 pkgrel=0
 pkgdesc="CircuitPython library for the Bosch BME280 temperature/humidity/pressure sensor"
-arch=('armv6h' 'armv7h' 'aarch64')
+arch=('any')
 url="https://github.com/adafruit/Adafruit_CircuitPython_BME280"
 license=('MIT')
-makedepends=('python-setuptools' 'python-pip')
-depends=('python' 'python-adafruit-circuitpython-busdevice')
+makedepends=(
+'python-build'
+'python-installer'
+'python-wheel'
+'python-setuptools-scm'
+)
+depends=(
+'python'
+'python-adafruit-circuitpython-busdevice'
+)
 optdepends=('python-rpi-gpio')
 source=("https://pypi.io/packages/source/a/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('7beb281052f5defea28849ff1705f8e90c78ffb09db51f2948bd12bf1adc1d10')
+sha256sums=('ee7cc9d3f14b370a907754ec74e95fe5e75f2a59a9e1be19cd02fede25ce30c4')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
-    python setup.py build || return 1
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
-    python setup.py install --root=${pkgdir} --optimize=1 || return 1
-    install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd "$srcdir/${_pypi_pkgname}-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -vDm644 -t "$pkgdir/usr/share/license/$pkgname" LICENSE
 }
