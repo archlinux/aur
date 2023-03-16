@@ -1,27 +1,25 @@
 pkgbase = josm-latest
-	pkgdesc = Nightly build of an editor for OpenStreetMap written in Java
-	pkgver = 13963
+	pkgdesc = An editor for OpenStreetMap written in Java
+	pkgver = 18693
 	pkgrel = 1
-	url = http://josm.openstreetmap.de/
+	url = https://josm.openstreetmap.de/
 	arch = any
 	license = GPL
-	depends = java-runtime>=8
+	makedepends = subversion
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = java-runtime>=11
 	depends = libxtst
 	depends = ttf-font
-	provides = josm
-	conflicts = josm
 	noextract = josm-latest.jar
 	backup = etc/conf.d/josm
-	source = josm13963_josm-latest.jar::https://josm.openstreetmap.de/josm-latest.jar
-	source = josm13963_josm.1.man::https://josm.openstreetmap.de/export/HEAD/josm/trunk/linux/latest/usr/share/man/man1/josm-latest.1
-	source = josm13963_josm.desktop::https://josm.openstreetmap.de/export/HEAD/josm/trunk/linux/tested/usr/share/applications/josm.desktop
-	source = josm.sh
+	source = https://josm.openstreetmap.de/download/josm-latest.jar
 	source = josm.conf.d
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = 97fe42c35e8a90fef9621de2ce027052
-	md5sums = bb7c9a6a06d6633aa091d80d3da96744
+	source = josm.sh
+	source = josm::svn+https://josm.openstreetmap.de/svn/trunk#revision=18693
+	sha256sums = 6a16f16cf12a01e0e43f40b25b4528ff3123ed860bb68a09dd8babd20f114698
+	sha256sums = 58ce8f552990b290449f2d67572c3e2773d0314cbdbcb659d3c54cd60b472147
+	sha256sums = a30c4824de1570af66e9df2bcbab777b9efea80914a07de498fcfac58789731e
+	sha256sums = SKIP
 
 pkgname = josm-latest
-
