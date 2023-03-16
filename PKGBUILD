@@ -1,8 +1,8 @@
 # Maintainer: traumweh <contact@traumweh.dev>
 
 pkgname="duckypad_daemon"
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="A profile autoswitcher daemon for dekuNukem's duckypad"
 arch=("x86_64")
 url="https://github.com/traumweh/duckypad_daemon"
@@ -11,7 +11,7 @@ provides=("duckypad_daemon")
 depends=("libusb" "duckypad-udev")
 makedepends=("cargo")
 source=("https://github.com/traumweh/duckypad_daemon/releases/download/$pkgver/$pkgname-$pkgver-$arch-linux.tar.gz")
-sha512sums=("3148e9c9e4251917934fdbc24f461b06f6f9fbb6d95cdbb9b69b09bc676b39527e1048c75c248375807b916ef284e7f48a34f7a7f6982aaf3fc287deec4fb86e")
+sha512sums=("34ee33b73f442888b97b9e6b6dcc74f6528f76dbdbebd78e3255aaf0789400d51911e6b714bff8d628a8c24fabbf2ca1dfe85870c461e6e449b562b1f12ce8af")
 
 prepare() {
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
@@ -23,4 +23,6 @@ build() {
 }
 package() {
   install -Dm0755 -t "$pkgdir/usr/bin" "target/release/$pkgname"
+  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
