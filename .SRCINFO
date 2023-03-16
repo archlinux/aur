@@ -1,0 +1,15 @@
+pkgbase = obs-3d-effect
+	pkgdesc = Plugin for OBS Studio adding 3D effect filter
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://obsproject.com/forum/resources/3d-effect.1692/
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	depends = obs-studio>=28
+	source = obs-3d-effect::git+https://github.com/exeldro/obs-3d-effect#commit=92d42e25378a8ab108a312609d2a9f38e6d186c4
+	sha256sums = SKIP
+
+pkgname = obs-3d-effect
