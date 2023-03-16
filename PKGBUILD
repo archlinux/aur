@@ -3,7 +3,7 @@
 pkgname=cachy-browser-firefox-shim
 pkgver=110.0.1
 pkgrel=1
-pkgdesc="A symlink for using Cachy Browser as a firefox"
+pkgdesc="A symlink for using Cachy Browser Firefox"
 arch=('any')
 url="https://github.com/CachyOS/CachyOS-Browser-Settings"
 license=('MIT')
