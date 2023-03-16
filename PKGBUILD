@@ -178,7 +178,7 @@ if ! $_build_from_local_src_tree; then
   sha256sums+=("SKIP")
   #if $_building; then echo ${source[@]}; fi
 fi
-echo "Source: ${source[@]}"
+#echo "Source: ${source[@]}"
 
 options=('!strip')
 
@@ -201,8 +201,6 @@ finish() {
 }
 
 build() {
-  echo ${srcdir}
-  echo ${_builddir}
   _srcdir="${srcdir}/${_source_package_name}"
 
   local _basedir="${_srcdir}/qtbase"
