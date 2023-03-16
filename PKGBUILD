@@ -1,6 +1,6 @@
 # Maintainer: René Wagner <rwa at clttr dot info>
 pkgname=art-rawconverter
-pkgver=1.18.1
+pkgver=1.19
 pkgrel=1
 pkgdesc="Raw image Converter forked from RawTherapee with ease of use in mind (including blackfoxx-theme)"
 arch=('i686' 'x86_64' 'aarch64')
