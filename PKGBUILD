@@ -2,7 +2,7 @@
 _pkgname="bash-script-wttr"
 pkgname=wttr-git
 pkgver=1.55
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple script that helps you check weather condition using site: http://wttr.in (new repository version)"
 arch=('any')
 url="https://github.com/cblte/${_pkgname}"
