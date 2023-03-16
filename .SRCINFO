@@ -1,0 +1,17 @@
+pkgbase = fudo-git
+	pkgdesc = A sudo to doas wrapper
+	pkgver = r2.c483344
+	pkgrel = 1
+	url = https://github.com/FragmentedCurve/fudo
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = doas
+	provides = fudo
+	provides = sudo
+	conflicts = fudo
+	conflicts = sudo
+	source = git+https://github.com/FragmentedCurve/fudo.git
+	md5sums = SKIP
+
+pkgname = fudo-git
