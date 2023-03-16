@@ -1,7 +1,7 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname=jdtls
-pkgver=1.20.0
+pkgver=1.21.0
 pkgrel=1
 pkgdesc="Eclipse Java language server"
 arch=(any)
@@ -10,8 +10,8 @@ license=('EPL')
 depends=('java-runtime>=17')
 optdepends=('python: for the official launcher script')
 makedepends=()
-source=("https://download.eclipse.org/jdtls/milestones/1.20.0/jdt-language-server-1.20.0-202302201605.tar.gz")
-sha256sums=('e62ccd18f6778d7b4910f588173af066c362f1eb318783d49fbc485a9e135765')
+source=("https://download.eclipse.org/jdtls/milestones/1.21.0/jdt-language-server-1.21.0-202303161431.tar.gz")
+sha256sums=('73c4434af3a02db974e4b0cd7a52a0417b9c6c99e327b19572eb7a9954fa1a30')
 
 package() {
     mkdir -p "${pkgdir}/usr/share/java/jdtls"
