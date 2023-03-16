@@ -5,19 +5,25 @@
 _checkoutdir='scheme-bytestructures'
 _pkgname='guile-bytestructures'
 pkgname="${_pkgname}-git"
-pkgver=latest
+pkgver=r306.a6d5d25
 pkgrel=1
 pkgdesc='Structured access library to bytevector contents for Guile.'
-arch=('any')
+arch=('x86_64')
 url='https://github.com/TaylanUB/scheme-bytestructures'
 license=('GPL3')
 options=('!strip')
 depends=('guile')
-makedepends=('autoconf' 'automake')
+makedepends=('git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=('git+https://github.com/TaylanUB/scheme-bytestructures.git')
 md5sums=('SKIP')
+
+pkgver() {
+    # Number of revisions since beginning of the history.
+    cd "${_checkoutdir}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
 
 prepare() {
     cd "${_checkoutdir}"
