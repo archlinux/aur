@@ -1,0 +1,11 @@
+pkgbase = imgdataopt-git
+	pkgdesc = converts PNG and PNM images with lossless size optimizations
+	pkgver = r71.413269e
+	pkgrel = 1
+	url = https://github.com/pts/imgdataopt
+	arch = x86_64
+	license = GPL
+	source = git+https://github.com/pts/imgdataopt
+	sha256sums = SKIP
+
+pkgname = imgdataopt-git
