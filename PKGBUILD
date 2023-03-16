@@ -14,8 +14,10 @@ depends=(curl
          lua53
          python)
 makedepends=(boost
-             libmicrohttpd
              cmake
+             cuda
+             libmicrohttpd
+             openimageio
              openssl
              git
              qt6-base)
