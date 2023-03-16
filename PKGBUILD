@@ -3,9 +3,9 @@
 
 # Remember to handle https://bugs.archlinux.org/task/74324 on major upgrades
 _use_suffix=0
-pkgver=20.3.8
-_commit=9fa958cb5fa02fbca258f8b6894d5371bf6e4415
-_chromiumver=104.0.5112.81
+pkgver=22.3.2
+_commit=5d3eea593437830ea16e4901f0410feadb0718d4
+_chromiumver=108.0.5359.215
 _gcc_patchset=2
 # shellcheck disable=SC2034
 pkgrel=1
@@ -36,6 +36,7 @@ makedepends=('clang' 'git' 'gn' 'gperf' 'harfbuzz-icu' 'http-parser'
 optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'libappindicator-gtk3: StatusNotifierItem support'
             'pipewire: WebRTC desktop sharing under Wayland'
+            'qt5-base: enable Qt5 with --enable-features=AllowQt'
             'trash-cli: file deletion support (trash-put)'
             'xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)')
 if [[ ${_use_suffix} == 0 ]]; then
@@ -59,46 +60,62 @@ source=('git+https://github.com/electron/electron.git'
         'jinja-python-3.10.patch'
         'use-system-libraries-in-node.patch'
         'std-vector-non-const.patch'
-        'x11-ozone-fix-X11-screensaver-suspension.patch'
-        'roll-src-third_party-ffmpeg.patch'
-        'chromium-tflite-system-zlib.patch'
-        'remove-no-opaque-pointers-flag.patch'
+        're-fix-TFLite-build-error-on-linux-with-system-zlib.patch'
+        'chromium-icu72.patch'
+        'v8-enhance-Date-parser-to-take-Unicode-SPACE.patch'
+        'REVERT-roll-src-third_party-ffmpeg-m102.patch'
+        'REVERT-roll-src-third_party-ffmpeg-m106.patch'
+        'angle-wayland-include-protocol.patch'
        )
 # shellcheck disable=SC2034
 sha256sums=('SKIP'
             'SKIP'
-            'ce702099849465927cf47f7bc3a4a27045d0e35e16b17481ebf35e14506bafa7'
+            '40ef8af65e78901bb8554eddbbb5ebc55c0b8e7927f6ca51b2a353d1c7c50652'
             '77817939c9833f8dda74a8c75620c15747170551ffa6f14f7c5b4071599e8831'
             '4484200d90b76830b69eea3a471c103999a3ce86bb2c29e6c14c945bf4102bae'
             'dd2d248831dd4944d385ebf008426e66efe61d6fdf66f8932c963a12167947b4'
             '55dbe71dbc1f3ab60bf1fa79f7aea7ef1fe76436b1d7df48728a1f8227d2134e'
-            'c70652a8b24c237bcfd27469de32797a2cb46d9f0d63d897bb6418314a25644c'
-            '76b969e1534e8c355b8b524a686cbf3b24136eaa6bd40b0c09fdd9866049f159'
-            '9956a843bc8a765c130080616ccd3ebc46ea95c3a2324c4b403bc293a8705eb2'
+            'ff588a8a4fd2f79eb8a4f11cf1aa151298ffb895be566c57cc355d47f161f53f'
+            '893bc04c7fceba2f0a7195ed48551d55f066bbc530ec934c89c55768e6f3949c'
+            '9015b9d6d5b4c1e7248d6477a4b4b6bd6a3ebdc57225d2d8efcd79fc61790716'
+            'dabb5ab204b63be73d3c5c8b7c1fa74053105a285852ba3bbc4fb77646608572'
+            'b83406a881d66627757d9cbc05e345cbb2bd395a48b6d4c970e5e1cb3f6ed454'
             '30df59a9e2d95dcb720357ec4a83d9be51e59cc5551365da4c0073e68ccdec44'
-            '588c166bf748793758a7df438cfa665b32e09ca8fbd6380be28bc5984a33523c'
-            'ab46b2c26a4dfe86486fd7e31bfc7211c515994a61a8c0cbd742f9c9e3c91873')
+            '4c12d31d020799d31355faa7d1fe2a5a807f7458e7f0c374adf55edb37032152'
+            'cd0d9d2a1d6a522d47c3c0891dabe4ad72eabbebc0fe5642b9e22efa3d5ee572')
 
-_system_libs=('ffmpeg'
-              'flac'
-              'fontconfig'
-              'freetype'
-              'harfbuzz-ng'
-              'icu'
-              'libdrm'
-              'libevent'
-              'libjpeg'
-              'libpng'
-#              'libvpx'
-              'libwebp'
-              'libxml'
-              'libxslt'
-#              'openh264'
-              'opus'
-              're2'
-              'snappy'
-              'zlib'
-             )
+# Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
+# Keys are the names in the above script; values are the dependencies in Arch
+declare -gA _system_libs=(
+  [brotli]=brotli
+  [dav1d]=dav1d
+  [ffmpeg]=ffmpeg
+  [flac]=flac
+  [fontconfig]=fontconfig
+  [freetype]=freetype2
+  [harfbuzz-ng]=harfbuzz
+  [icu]=icu
+  [jsoncpp]=jsoncpp
+  [libaom]=aom
+  [libavif]=libavif
+  [libdrm]=
+  [libjpeg]=libjpeg
+  [libpng]=libpng
+  #[libvpx]=libvpx
+  [libwebp]=libwebp
+  [libxml]=libxml2
+  [libxslt]=libxslt
+  [opus]=opus
+  [re2]=re2
+  [snappy]=snappy
+  [woff2]=woff2
+  [zlib]=minizip
+)
+_unwanted_bundled_libs=(
+  $(printf "%s\n" ${!_system_libs[@]} | sed 's/^libjpeg$/&_turbo/')
+)
+depends+=(${_system_libs[@]})
+
 # add custom patches by extending the bash array, as this is both cleaner
 # and easier to maintain
 source=(${source[@]}
@@ -121,23 +138,31 @@ prepare() {
   git clone --branch=${_chromiumver} --depth=1 \
       https://chromium.googlesource.com/chromium/src.git
 
-  echo "solutions = [
+  cat >.gclient <<EOF
+solutions = [
   {
-    \"name\": \"src/electron\",
-    \"url\": \"file://${srcdir}/electron@${_commit}\",
-    \"deps_file\": \"DEPS\",
-    \"managed\": False,
-    \"custom_deps\": {
-      \"src\": None,
+    "name": "src/electron",
+    "url": "file://${srcdir}/electron@${_commit}",
+    "deps_file": "DEPS",
+    "managed": False,
+    "custom_deps": {
+      "src": None,
     },
-    \"custom_vars\": {},
+    "custom_vars": {},
   },
-]" > .gclient
+]
+EOF
 
-  python "${srcdir}/depot_tools/gclient.py" sync \
+  export PATH+=":$PWD/depot_tools" DEPOT_TOOLS_UPDATE=0
+  export VPYTHON_BYPASS='manually managed python not supported by chrome operations'
+
+  echo "Fetching chromium..."
+  git clone -b ${_chromiumver} --depth=2 https://chromium.googlesource.com/chromium/src
+
+  depot_tools/gclient.py sync -D \
+      --nohooks \
       --with_branch_heads \
-      --with_tags \
-      --nohooks
+      --with_tags
 
   (
     cd src/electron || exit
@@ -152,23 +177,17 @@ prepare() {
     --revision-id-only --header src/gpu/config/gpu_lists_version.h
   src/build/util/lastchange.py -m SKIA_COMMIT_HASH \
     -s src/third_party/skia --header src/skia/ext/skia_commit_hash.h
+  src/build/util/lastchange.py \
+    -s src/third_party/dawn --revision src/gpu/webgpu/DAWN_VERSION
+  src/tools/update_pgo_profiles.py --target=linux update \
+    --gs-url-base=chromium-optimization-profiles/pgo_profiles
+  depot_tools/download_from_google_storage.py --no_resume --extract --no_auth \
+    --bucket chromium-nodejs -s src/third_party/node/node_modules.tar.gz.sha1
   # Create sysmlink to system clang-format
   ln -s /usr/bin/clang-format src/buildtools/linux64
   # Create sysmlink to system Node.js
   mkdir -p src/third_party/node/linux/node-linux-x64/bin
   ln -sf /usr/bin/node src/third_party/node/linux/node-linux-x64/bin
-  src/third_party/depot_tools/download_from_google_storage.py \
-    --no_resume --extract --no_auth --bucket chromium-nodejs \
-    -s src/third_party/node/node_modules.tar.gz.sha1
-  python src/tools/download_optimization_profile.py \
-    --newest_state=src/chrome/android/profiles/newest.txt \
-    --local_state=src/chrome/android/profiles/local.txt \
-    --output_name=src/chrome/android/profiles/afdo.prof \
-    --gs_url_base=chromeos-prebuilt/afdo-job/llvm
-  #vpython src/tools/update_pgo_profiles.py \
-  #  --target=linux \
-  #  update \
-  #  --gs-url-base=chromium-optimization-profiles/pgo_profiles
   src/electron/script/apply_all_patches.py \
       src/electron/patches/config.json
   cd src/electron || exit
@@ -176,49 +195,56 @@ prepare() {
   cd ..
 
   echo "Applying local patches..."
+
   # move ~/.pki directory to ${XDG_DATA_HOME:-$HOME/.local}/share/pki
   patch -p1 -i ../xdg-basedir.patch
 
-  # Remove '-Xclang -no-opaque-pointers' flag not supported by our clang
-  patch -Np1 -i ../remove-no-opaque-pointers-flag.patch
-
-  # Fix build with unbundled zlip (patch from Gentoo)
-  patch -Np1 -i ../chromium-tflite-system-zlib.patch
-
   # Upstream fixes
-  patch -Np1 -i ../x11-ozone-fix-X11-screensaver-suspension.patch
+  patch -Np1 -i ../re-fix-TFLite-build-error-on-linux-with-system-zlib.patch
+  patch -Np1 -i ../chromium-icu72.patch
+  patch -Np1 -d v8 <../v8-enhance-Date-parser-to-take-Unicode-SPACE.patch
 
   # Revert ffmpeg roll requiring new channel layout API support
   # https://crbug.com/1325301
-  patch -Rp1 -i ../roll-src-third_party-ffmpeg.patch
+  patch -Rp1 -i ../REVERT-roll-src-third_party-ffmpeg-m102.patch
+  # Revert switch from AVFrame::pkt_duration to AVFrame::duration
+  patch -Rp1 -i ../REVERT-roll-src-third_party-ffmpeg-m106.patch
+
+  # https://crbug.com/angleproject/7582
+  patch -Np0 -i ../angle-wayland-include-protocol.patch
 
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i ../patches/chromium-103-VirtualCursor-std-layout.patch
 
   # Electron specific fixes
   patch -d third_party/electron_node/tools/inspector_protocol/jinja2 \
-      -Np1 -i ../../../../../../jinja-python-3.10.patch
+    -Np1 -i ../../../../../../jinja-python-3.10.patch
   patch -Np1 -i ../use-system-libraries-in-node.patch
   patch -Np1 -i ../default_app-icon.patch  # Icon from .desktop file
 
+  # Allow building against system libraries in official builds
   echo "Patching Chromium for using system libraries..."
   sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
-      tools/generate_shim_headers/generate_shim_headers.py
-  for lib in $(printf "%s\n" "${_system_libs[@]}" | sed 's/^libjpeg$/&_turbo/'); do
-      third_party_dir="third_party/${lib}"
-      if [ ! -d "${third_party_dir}" ]; then
-        third_party_dir="base/${third_party_dir}"
-      fi
-      find "${third_party_dir}" -type f \
-          \! -path "${third_party_dir}/chromium/*" \
-          \! -path "${third_party_dir}/google/*" \
-          \! -path 'third_party/harfbuzz-ng/utils/hb_scoped.h' \
-          \! -regex '.*\.\(gn\|gni\|isolate\)' \
-          -delete
+    tools/generate_shim_headers/generate_shim_headers.py
+  # Remove bundled libraries for which we will use the system copies; this
+  # *should* do what the remove_bundled_libraries.py script does, with the
+  # added benefit of not having to list all the remaining libraries
+  local _lib
+  for _lib in ${_unwanted_bundled_libs[@]}; do
+    third_party_dir="third_party/$_lib"
+    if [ ! -d "${third_party_dir}" ]; then
+      third_party_dir="base/${third_party_dir}"
+    fi
+    find "${third_party_dir}" -type f \
+        \! -path "${third_party_dir}/chromium/*" \
+        \! -path "${third_party_dir}/google/*" \
+        \! -path 'third_party/harfbuzz-ng/utils/hb_scoped.h' \
+        \! -regex '.*\.\(gn\|gni\|isolate\)' \
+        -delete
   done
-  build/linux/unbundle/replace_gn_files.py \
-      --system-libraries \
-      "${_system_libs[@]}"
+
+  ./build/linux/unbundle/replace_gn_files.py \
+    --system-libraries "${!_system_libs[@]}"
 }
 
 build() {
@@ -266,27 +292,31 @@ build() {
   GN_EXTRA_ARGS='
     custom_toolchain = "//build/toolchain/linux/unbundle:default"
     host_toolchain = "//build/toolchain/linux/unbundle:default"
+    clang_base_path = "/usr"
     clang_use_chrome_plugins = false
-    symbol_level = 0
-    chrome_pgo_phase = 0
+    symbol_level = 0 # sufficient for backtraces on x86(_64)
+    chrome_pgo_phase = 2
     treat_warnings_as_errors = false
+    disable_fieldtrial_testing_config = true
+    blink_enable_generated_code_formatting = false
+    ffmpeg_branding = "Chrome"
     rtc_use_pipewire = true
     link_pulseaudio = true
+    use_custom_libcxx = false
     use_gnome_keyring = false
     use_sysroot = false
-    use_custom_libcxx = false
+    use_system_libwayland = true
+    use_system_wayland_scanner = true
     icu_use_data_file = false
     is_component_ffmpeg = false
   '
   gn gen out/Release \
       --args="import(\"//electron/build/args/release.gn\") ${GN_EXTRA_ARGS}"
   ninja -C out/Release electron
-  # Strip before zip to avoid
-  # zipfile.LargeZipFile: Filesize would require ZIP64 extensions
-  strip -s out/Release/electron
   ninja -C out/Release electron_dist_zip
   # ninja -C out/Release third_party/electron_node:headers
 }
+
 
 package() {
   install -dm755 "${pkgdir:?}/usr/lib/${pkgname%-*}"
