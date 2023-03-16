@@ -1,20 +1,18 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname='python-pytest-cython'
 _pkgname='pytest-cython'
-pkgver='0.1.1'
+pkgver='0.2.1'
 pkgrel=1
 pkgdesc="A plugin for testing Cython extension modules."
 url="https://github.com/lgpage/pytest-cython"
-checkdepends=('cython' 'python-pytest')
+checkdepends=('cython' 'python-nox' 'python-pytest')
 depends=()
 makedepends=('python-setuptools')
 optdepends=()
 license=('MIT')
 arch=('any')
-source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz"
-        "43f3d148738f77f8579caae49f74f8d548d3f0a9.patch")
-sha256sums=('93d80c38c38029b8cd97a6eff3972225cb69c489ee5cac54e668ff76f6200a90'
-            '0db1f2b6cd2b909fd0214d14a267a9342a74575ff3aa81ea51d3d997b8e11a61')
+source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha256sums=('38d10faee6fc974a9240dccf9f85dc2534baf6be6e02a3fc77a9db8b6a5b0558')
 
 package() {
     cd "${_pkgname}-${pkgver}"
@@ -24,7 +22,7 @@ package() {
 check() {
     cd "$_pkgname-${pkgver}/tests"
     pushd example-project > /dev/null
-    python setup.py build_ext --inplace --use-cython
+    python setup.py build_ext --inplace
     popd > /dev/null
     cd ..
     PY_IGNORE_IMPORTMISMATCH=1 PYTHONPATH=src pytest
