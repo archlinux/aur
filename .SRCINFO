@@ -1,6 +1,6 @@
 pkgbase = nodejs-browser-sync
 	pkgdesc = Live CSS Reload & Browser Syncing
-	pkgver = 2.27.10
+	pkgver = 2.29.0
 	pkgrel = 1
 	url = https://www.browsersync.io/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = nodejs-browser-sync
 	makedepends = npm>=7.4.0
 	makedepends = jq
 	depends = nodejs
-	noextract = nodejs-browser-sync-2.27.10.tgz
-	source = nodejs-browser-sync-2.27.10.tgz::http://registry.npmjs.org/browser-sync/-/browser-sync-2.27.10.tgz
-	sha256sums = bff863fb25760116b9f055c12b6d155281b59872258623eeab526feaa225ab4c
+	noextract = nodejs-browser-sync-2.29.0.tgz
+	source = nodejs-browser-sync-2.29.0.tgz::http://registry.npmjs.org/browser-sync/-/browser-sync-2.29.0.tgz
+	sha256sums = 661de72e187a3b64b738b08702a050125cc05e0ab0957f6fb3d8388ecd346c7a
 
 pkgname = nodejs-browser-sync
