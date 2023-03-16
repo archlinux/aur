@@ -2,7 +2,7 @@
 
 pkgname=dosbox-x-sdl2
 pkgver=2022.12.26
-pkgrel=1
+pkgrel=2
 pkgdesc="x86 emulator with builtin DOS, with patches and more features"
 arch=(i686 x86_64 aarch64)
 url="http://dosbox-x.com"
@@ -19,7 +19,7 @@ build() {
   ./autogen.sh
   export LDFLAGS="${LDFLAGS//,--as-needed}"
   chmod +x configure
-  ./configure --enable-core-inline --disable-debug --enable-avcodec --prefix=/usr --enable-sdl2
+  ./configure --enable-core-inline --enable-debug --enable-avcodec --prefix=/usr --enable-sdl2
   make -j$(nproc)
 }
 
