@@ -7,4 +7,4 @@ sed "s/:version:/$version/" PKGBUILD.template > PKGBUILD
 updpkgsums
 makepkg --printsrcinfo > .SRCINFO
 git commit -am "Autorelease version $version"
-#git push
+git push
