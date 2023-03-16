@@ -2,25 +2,30 @@
 
 pkgname=python-adafruit-circuitpython-typing
 _pypi_pkgname=adafruit-circuitpython-typing
-pkgver=1.8.1
+pkgver=1.8.3
 pkgrel=0
 pkgdesc="Definitions not in the standard typing module that are needed for type annotation of CircuitPython code"
-arch=('armv6h' 'armv7h' 'aarch64')
+arch=('any')
 url="https://github.com/adafruit/Adafruit_CircuitPython_Typing"
 license=('MIT')
-makedepends=('python-setuptools' 'python-pip')
+makedepends=(
+'python-build'
+'python-installer'
+'python-wheel'
+'python-setuptools-scm'
+)
 depends=('python')
 optdepends=()
 source=("https://pypi.io/packages/source/a/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('4f6c736a65f1313168bc77d1b6a1e346fd17cd771bf9b13ee71eef0a1ef0b8e1')
+sha256sums=('6c1c2db749a7daa1528548cb899397bf4793895c80ffe2a7ce0922ad3aeabf01')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
-    python setup.py build || return 1
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
-    python setup.py install --root=${pkgdir} --optimize=1 || return 1
-    install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -vDm644 -t "$pkgdir/usr/share/license/$pkgname" LICENSE
 }
