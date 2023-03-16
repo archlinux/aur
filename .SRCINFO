@@ -7,24 +7,24 @@ pkgbase = moonray
 	license = Apache2
 	makedepends = cmake
 	source = openmoonray::git+https://github.com/dreamworksanimation/openmoonray#tag=v1.0.0.0
-	source = git+https://github.com/dreamworksanimation/openmoonray/../arras4_core#commit=2157c5103156f652b0966f23e32b97597b7ff16f.git&prefix=arras
-	source = git+https://github.com/dreamworksanimation/openmoonray/../arras_render#commit=729c4039a72e2dacb810c17fd529eaa0308435f6.git&prefix=arras
-	source = git+https://github.com/dreamworksanimation/openmoonray/../arras4_node#commit=b02183bcab92f52d3041c254922c24fe9fc39e54.git&prefix=arras/distributed
-	source = git+https://github.com/dreamworksanimation/openmoonray/../minicoord#commit=b80aee65186dc36a81c1a682a471456014c6c5ec.git&prefix=arras/distributed
-	source = git+https://github.com/dreamworksanimation/openmoonray/../cmake_modules#commit=3ebea9665cadadf67a76387f21c0548dd82d1bac.git&prefix=
-	source = git+https://github.com/dreamworksanimation/openmoonray/../hdMoonray#commit=8fc04a550a80e819cc17f48dccced7a976ab1ee7.git&prefix=moonray/hydra
-	source = git+https://github.com/dreamworksanimation/openmoonray/../moonray_sdr_plugins#commit=01a274e5d14b0b8ba4a6d1b6cfaa5ca538e74938.git&prefix=moonray/hydra
-	source = git+https://github.com/dreamworksanimation/openmoonray/../mcrt_denoise#commit=710ca0bf75552b2f81e4a79f5ab614173a4c468c.git&prefix=moonray
-	source = git+https://github.com/dreamworksanimation/openmoonray/../moonray#commit=ba155b14779586254212c6973421ac2e7fcb47e9.git&prefix=moonray
-	source = git+https://github.com/dreamworksanimation/openmoonray/../mcrt_computation#commit=2e778a66ae685c7df11d61278f6f159cb9efab65.git&prefix=moonray/moonray_arras
-	source = git+https://github.com/dreamworksanimation/openmoonray/../mcrt_dataio#commit=6c84f98dc6341d6d414228bc573c8d2b5d745240.git&prefix=moonray/moonray_arras
-	source = git+https://github.com/dreamworksanimation/openmoonray/../mcrt_messages#commit=3e050e36e3db25433d27d7da75e34c5715e302d6.git&prefix=moonray/moonray_arras
-	source = git+https://github.com/dreamworksanimation/openmoonray/../moonray_dcc_plugins#commit=ce861215cf2c4fec77c8decdabd96755917ae742.git&prefix=moonray
-	source = git+https://github.com/dreamworksanimation/openmoonray/../moonray_gui#commit=606b411880cecab5a38392ee46a2edad7e652a7f.git&prefix=moonray
-	source = git+https://github.com/dreamworksanimation/openmoonray/../moonshine#commit=faa2940107c04676d4dd2537a8c60b62a2ec504b.git&prefix=moonray
-	source = git+https://github.com/dreamworksanimation/openmoonray/../moonshine_usd#commit=efe09ee4b75d678005061d121cf832fc3f2d9a9a.git&prefix=moonray
-	source = git+https://github.com/dreamworksanimation/openmoonray/../render_profile_viewer#commit=44bb5d66aa5295cc1176823d04a12cc4cd009e76.git&prefix=moonray
-	source = git+https://github.com/dreamworksanimation/openmoonray/../scene_rdl2#commit=fb0c969026b1e5a3c16cc75ee3ec9ff7df85ad98.git&prefix=moonray
+	source = openmoonray+arras+arras4_core::git+https://github.com/dreamworksanimation/arras4_core.git#commit=2157c5103156f652b0966f23e32b97597b7ff16f
+	source = openmoonray+arras+arras_render::git+https://github.com/dreamworksanimation/arras_render.git#commit=729c4039a72e2dacb810c17fd529eaa0308435f6
+	source = openmoonray+arras+distributed+arras4_node::git+https://github.com/dreamworksanimation/arras4_node.git#commit=b02183bcab92f52d3041c254922c24fe9fc39e54
+	source = openmoonray+arras+distributed+minicoord::git+https://github.com/dreamworksanimation/minicoord.git#commit=b80aee65186dc36a81c1a682a471456014c6c5ec
+	source = openmoonray+cmake_modules::git+https://github.com/dreamworksanimation/cmake_modules.git#commit=3ebea9665cadadf67a76387f21c0548dd82d1bac
+	source = openmoonray+moonray+hydra+hdMoonray::git+https://github.com/dreamworksanimation/hdMoonray.git#commit=8fc04a550a80e819cc17f48dccced7a976ab1ee7
+	source = openmoonray+moonray+hydra+moonray_sdr_plugins::git+https://github.com/dreamworksanimation/moonray_sdr_plugins.git#commit=01a274e5d14b0b8ba4a6d1b6cfaa5ca538e74938
+	source = openmoonray+moonray+mcrt_denoise::git+https://github.com/dreamworksanimation/mcrt_denoise.git#commit=710ca0bf75552b2f81e4a79f5ab614173a4c468c
+	source = openmoonray+moonray+moonray::git+https://github.com/dreamworksanimation/moonray.git#commit=ba155b14779586254212c6973421ac2e7fcb47e9
+	source = openmoonray+moonray+moonray_arras+mcrt_computation::git+https://github.com/dreamworksanimation/mcrt_computation.git#commit=2e778a66ae685c7df11d61278f6f159cb9efab65
+	source = openmoonray+moonray+moonray_arras+mcrt_dataio::git+https://github.com/dreamworksanimation/mcrt_dataio.git#commit=6c84f98dc6341d6d414228bc573c8d2b5d745240
+	source = openmoonray+moonray+moonray_arras+mcrt_messages::git+https://github.com/dreamworksanimation/mcrt_messages.git#commit=3e050e36e3db25433d27d7da75e34c5715e302d6
+	source = openmoonray+moonray+moonray_dcc_plugins::git+https://github.com/dreamworksanimation/moonray_dcc_plugins.git#commit=ce861215cf2c4fec77c8decdabd96755917ae742
+	source = openmoonray+moonray+moonray_gui::git+https://github.com/dreamworksanimation/moonray_gui.git#commit=606b411880cecab5a38392ee46a2edad7e652a7f
+	source = openmoonray+moonray+moonshine::git+https://github.com/dreamworksanimation/moonshine.git#commit=faa2940107c04676d4dd2537a8c60b62a2ec504b
+	source = openmoonray+moonray+moonshine_usd::git+https://github.com/dreamworksanimation/moonshine_usd.git#commit=efe09ee4b75d678005061d121cf832fc3f2d9a9a
+	source = openmoonray+moonray+render_profile_viewer::git+https://github.com/dreamworksanimation/render_profile_viewer.git#commit=44bb5d66aa5295cc1176823d04a12cc4cd009e76
+	source = openmoonray+moonray+scene_rdl2::git+https://github.com/dreamworksanimation/scene_rdl2.git#commit=fb0c969026b1e5a3c16cc75ee3ec9ff7df85ad98
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
