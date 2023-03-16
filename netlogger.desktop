@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=NetLogger
+Icon=netlogger
 Comment=Freeware Amateur Radio net logging tool
 Type=Application
 Exec=netlogger

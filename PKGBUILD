@@ -12,51 +12,41 @@
 # Contributor: Zeke Sonxx <zeke@zekesonxx.com>
 pkgname=netlogger
 pkgver=3.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Server-based amateur radio net logging programs"
 arch=('x86_64')
-url="http://www.netlogger.org"
+url="https://www.netlogger.org"
 license=('custom:freeware')
-groups=()
 depends=('qt5-base')
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=('netlogger.sh' 'netlogger.desktop')
-source_x86_64=("http://www.netlogger.org/downloads/NetLogger_${pkgver}_Linux_x64.tgz")
+provides=(netlogger)
+source=('netlogger.sh' 'netlogger.desktop' "https://www.netlogger.org/downloads/NetLogger_${pkgver}_Linux_x64.tgz" "https://www.netlogger.org/downloads/netlogger_${pkgver}_amd64.deb")
 noextract=()
-validpgpkeys=()
 sha256sums=('daed53263ec0cc784f6db24d33dfdc6075825ad45c0a8846a77604a28d6bf664'
-            '3a4acd1436ab61678bddc122589e82db74ae66d84606fc3911b72d50c97a102e')
-sha256sums_x86_64=('39b45a2ed07ebe2815490966c65a8796da8c89d0a4897312877c73c0e1e73a76')
+            'ae6c1e566ead11a5bb85770231e1c3414e98666e21f96c720aa784e00282bf46'
+            '39b45a2ed07ebe2815490966c65a8796da8c89d0a4897312877c73c0e1e73a76'
+            '9a10ec5fa51548a4fcb3703231b3903b0b62ca6fd52da35636eb9b075e1ecadc')
 
 prepare() {
-	cd "$srcdir" || exit
+	cd "${srcdir}"
   # extract the tgz within the tgz to a directory called 'tarball' so we can work with it
-  mkdir -p "$srcdir/tarball"
-	bsdtar -x -f netlogger_${pkgver}.tgz -C tarball
-
+  mkdir -p "${srcdir}/tarball"
+	bsdtar -xf netlogger_${pkgver}.tgz -C tarball
 	# copy out the license file for sticking in /usr/share/licenses later
-	# (install is a cheap way of also modifying file attributes)
-	install -m777 "$srcdir/tarball/License.rtf" "$srcdir/license.rtf"
-
+	cp "${srcdir}/tarball/License.rtf" "${srcdir}/license.rtf"
 	# get rid of the extra files
-	cd "$srcdir/tarball" || exit
+	cd "${srcdir}/tarball"
 	rm -f GNU_LGPL_v2.1.rtf GNU_LGPL_v3.rtf GNU_GPL_v3.rtf NetLogger24to30.pdf Release_Notes.html License.rtf
+	# extract deb for netlogger.png
+	mkdir -p "${srcdir}/deb"
+	bsdtar -xf data.tar.xz -C deb
 }
 
 package() {
-	cd "$pkgdir" || exit
+	cd "${pkgdir}"
 	mkdir -p "$pkgdir/opt/netlogger/"
 	cp -r "$srcdir/tarball/" -T "$pkgdir/opt/netlogger/"
 	install -D -m755 "${srcdir}/netlogger.sh" "${pkgdir}/usr/bin/netlogger"
 	install -D -m644 "${srcdir}/netlogger.desktop" "${pkgdir}/usr/share/applications/netlogger.desktop"
 	install -D -m644 "${srcdir}/license.rtf" "${pkgdir}/usr/share/licenses/netlogger/license.rtf"
+	install -D -m644 "${srcdir}/deb/usr/share/icons/hicolor/512x512/apps/netlogger.png" "${pkgdir}/usr/share/pixmaps/netlogger.png"
 }

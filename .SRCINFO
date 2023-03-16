@@ -1,16 +1,19 @@
 pkgbase = netlogger
 	pkgdesc = Server-based amateur radio net logging programs
 	pkgver = 3.1.7
-	pkgrel = 1
-	url = http://www.netlogger.org
+	pkgrel = 2
+	url = https://www.netlogger.org
 	arch = x86_64
 	license = custom:freeware
 	depends = qt5-base
+	provides = netlogger
 	source = netlogger.sh
 	source = netlogger.desktop
+	source = https://www.netlogger.org/downloads/NetLogger_3.1.7_Linux_x64.tgz
+	source = https://www.netlogger.org/downloads/netlogger_3.1.7_amd64.deb
 	sha256sums = daed53263ec0cc784f6db24d33dfdc6075825ad45c0a8846a77604a28d6bf664
-	sha256sums = 3a4acd1436ab61678bddc122589e82db74ae66d84606fc3911b72d50c97a102e
-	source_x86_64 = http://www.netlogger.org/downloads/NetLogger_3.1.7_Linux_x64.tgz
-	sha256sums_x86_64 = 39b45a2ed07ebe2815490966c65a8796da8c89d0a4897312877c73c0e1e73a76
+	sha256sums = ae6c1e566ead11a5bb85770231e1c3414e98666e21f96c720aa784e00282bf46
+	sha256sums = 39b45a2ed07ebe2815490966c65a8796da8c89d0a4897312877c73c0e1e73a76
+	sha256sums = 9a10ec5fa51548a4fcb3703231b3903b0b62ca6fd52da35636eb9b075e1ecadc
 
 pkgname = netlogger
