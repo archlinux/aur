@@ -7,6 +7,8 @@ pkgbase = tamzen-font-git
 	arch = any
 	license = custom
 	makedepends = git
+	conflicts = tamzen-font-git
+	replaces = tamzen-font-git
 	source = git+https://github.com/sunaku/tamzen-font.git
 	b2sums = SKIP
 

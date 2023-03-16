@@ -11,6 +11,8 @@ arch=(any)
 url="https://github.com/sunaku/$_pkgname"
 license=('custom')
 makedepends=(git)
+conflicts=('tamzen-font-git')
+replaces=('tamzen-font-git')
 source=("git+$url.git")
 b2sums=('SKIP')
 
