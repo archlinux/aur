@@ -1,7 +1,7 @@
 pkgbase = cython3
 	pkgdesc = C-Extensions for Python
-	pkgver = 3.0.0a11
-	pkgrel = 2
+	pkgver = 3.0.0b1
+	pkgrel = 1
 	url = https://cython.org
 	arch = x86_64
 	license = APACHE
@@ -9,7 +9,9 @@ pkgbase = cython3
 	depends = python
 	provides = cython
 	conflicts = cython
-	source = cython3-3.0.0a11.tar.gz::https://github.com/cython/cython/archive/3.0.0a11.tar.gz
-	sha256sums = 08dbdb6aa003f03e65879de8f899f87c8c718cd874a31ae9c29f8726da2f5ab0
+	source = cython3-3.0.0b1.tar.gz::https://github.com/cython/cython/archive/3.0.0b1.tar.gz
+	source = 5282.patch
+	sha256sums = bca121dbe96c88de9f2369d9d9231dd6b481cca486514421ed8252b4390eab5b
+	sha256sums = e44d7f30bab89135ecd83f3430c64259a2e0907f928d23ff2acec0e4045a574e
 
 pkgname = cython3

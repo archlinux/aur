@@ -1,0 +1,152 @@
+From 617510cb8f42d3da1195c25520744404e8c027dc Mon Sep 17 00:00:00 2001
+From: da-woods <dw-git@d-woods.co.uk>
+Date: Tue, 28 Feb 2023 20:45:24 +0000
+Subject: [PATCH 1/3] Order merged_in utility code
+
+Force utility code to come before pxd code which comes before
+module code. This specifically fixes #5269, (where the "ToPy"
+functions for cpdef enums weren't availbale when cyfunctions
+were created). But I think it's a good idea anyway.
+---
+ Cython/Compiler/ModuleNode.py | 21 ++++++++++++++++++---
+ Cython/Compiler/Pipeline.py   |  5 +++--
+ tests/run/cpdef_enums.pyx     | 13 +++++++++++++
+ 3 files changed, 34 insertions(+), 5 deletions(-)
+
+diff --git a/Cython/Compiler/ModuleNode.py b/Cython/Compiler/ModuleNode.py
+index 6b4e4a1870..7f7c8b9c75 100644
+--- a/Cython/Compiler/ModuleNode.py
++++ b/Cython/Compiler/ModuleNode.py
+@@ -121,25 +121,40 @@ class ModuleNode(Nodes.Node, Nodes.BlockNode):
+ 
+     child_attrs = ["body"]
+     directives = None
++    # internal - used in merging
++    pxd_stats = None
++    utility_code_stats = None
+ 
+-    def merge_in(self, tree, scope, merge_scope=False):
++
++    def merge_in(self, tree, scope, stage, merge_scope=False):
+         # Merges in the contents of another tree, and possibly scope. With the
+         # current implementation below, this must be done right prior
+         # to code generation.
++        # Stage is one of "pxd" or "utility" to indicate pxd file or utility
++        # code. This helps define the order.
+         #
+         # Note: This way of doing it seems strange -- I believe the
+         # right concept is to split ModuleNode into a ModuleNode and a
+         # CodeGenerator, and tell that CodeGenerator to generate code
+         # from multiple sources.
+         assert isinstance(self.body, Nodes.StatListNode)
++
++        if self.pxd_stats is None:
++            self.pxd_stats = Nodes.StatListNode(self.body.pos, stats=[])
++            self.utility_code_stats = Nodes.StatListNode(self.body.pos, stats=[])
++            self.body.stats.insert(0, self.pxd_stats)
++            self.body.stats.insert(0, self.utility_code_stats)
++
+         if scope.directives != self.scope.directives:
+             # merged in nodes should keep their original compiler directives
+             # (for example inline cdef functions)
+             tree = Nodes.CompilerDirectivesNode(tree.pos, body=tree, directives=scope.directives)
++        
++        target_stats = self.pxd_stats if stage == "pxd" else self.utility_code_stats
+         if isinstance(tree, Nodes.StatListNode):
+-            self.body.stats.extend(tree.stats)
++            target_stats.stats.extend(tree.stats)
+         else:
+-            self.body.stats.append(tree)
++            target_stats.stats.append(tree)
+ 
+         self.scope.utility_code_list.extend(scope.utility_code_list)
+ 
+diff --git a/Cython/Compiler/Pipeline.py b/Cython/Compiler/Pipeline.py
+index 2fd3a1d3f2..834eb0e6ab 100644
+--- a/Cython/Compiler/Pipeline.py
++++ b/Cython/Compiler/Pipeline.py
+@@ -58,7 +58,7 @@ def generate_pyx_code_stage(module_node):
+ def inject_pxd_code_stage_factory(context):
+     def inject_pxd_code_stage(module_node):
+         for name, (statlistnode, scope) in context.pxds.items():
+-            module_node.merge_in(statlistnode, scope)
++            module_node.merge_in(statlistnode, scope, stage="pxd")
+         return module_node
+     return inject_pxd_code_stage
+ 
+@@ -130,7 +130,8 @@ def inject_utility_code_stage(module_node):
+             tree = utilcode.get_tree(cython_scope=context.cython_scope)
+             if tree:
+                 module_node.merge_in(tree.with_compiler_directives(),
+-                                     tree.scope, merge_scope=True)
++                                     tree.scope, stage="utility",
++                                     merge_scope=True)
+         return module_node
+ 
+     return inject_utility_code_stage
+diff --git a/tests/run/cpdef_enums.pyx b/tests/run/cpdef_enums.pyx
+index 4a72565316..00c35681b5 100644
+--- a/tests/run/cpdef_enums.pyx
++++ b/tests/run/cpdef_enums.pyx
+@@ -161,3 +161,16 @@ def test_pickle():
+     True
+     """
+     pass
++
++def test_as_default_value(PxdEnum val=PxdEnum.RANK_1):
++    """
++    In order to work, this requires the utility code to be evaluated
++    before the function definition
++    >>> test_as_default_value()
++    True
++    >>> test_as_default_value(PxdEnum.RANK_2)
++    False
++    >>> test_as_default_value.__defaults__[0] == PxdEnum.RANK_1
++    True
++    """
++    return val == PxdEnum.RANK_1
+
+From a1056e39b7b4d140b223590bca2e6c8707a167bd Mon Sep 17 00:00:00 2001
+From: da-woods <dw-git@d-woods.co.uk>
+Date: Wed, 1 Mar 2023 08:19:39 +0000
+Subject: [PATCH 2/3] code style whitespace
+
+---
+ Cython/Compiler/ModuleNode.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Cython/Compiler/ModuleNode.py b/Cython/Compiler/ModuleNode.py
+index 7f7c8b9c75..5eeec2a41a 100644
+--- a/Cython/Compiler/ModuleNode.py
++++ b/Cython/Compiler/ModuleNode.py
+@@ -149,7 +149,7 @@ def merge_in(self, tree, scope, stage, merge_scope=False):
+             # merged in nodes should keep their original compiler directives
+             # (for example inline cdef functions)
+             tree = Nodes.CompilerDirectivesNode(tree.pos, body=tree, directives=scope.directives)
+-        
++
+         target_stats = self.pxd_stats if stage == "pxd" else self.utility_code_stats
+         if isinstance(tree, Nodes.StatListNode):
+             target_stats.stats.extend(tree.stats)
+
+From fa37c756ebe5dad2e25a290c1a4566d154a43126 Mon Sep 17 00:00:00 2001
+From: scoder <stefan_ml@behnel.de>
+Date: Wed, 1 Mar 2023 09:37:00 +0100
+Subject: [PATCH 3/3] Add guard against typos.
+
+---
+ Cython/Compiler/ModuleNode.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Cython/Compiler/ModuleNode.py b/Cython/Compiler/ModuleNode.py
+index 5eeec2a41a..f95595190d 100644
+--- a/Cython/Compiler/ModuleNode.py
++++ b/Cython/Compiler/ModuleNode.py
+@@ -138,6 +138,7 @@ def merge_in(self, tree, scope, stage, merge_scope=False):
+         # CodeGenerator, and tell that CodeGenerator to generate code
+         # from multiple sources.
+         assert isinstance(self.body, Nodes.StatListNode)
++        assert stage in ('pxd', 'utility')
+ 
+         if self.pxd_stats is None:
+             self.pxd_stats = Nodes.StatListNode(self.body.pos, stats=[])
