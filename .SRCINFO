@@ -6,7 +6,7 @@ pkgbase = filius
 	arch = any
 	license = GPL
 	depends = java-environment>=8
-  	source = https://www.lernsoftware-filius.de/downloads/Setup/filius-2.2.0.zip
+  	source = https://www.lernsoftware-filius.de/downloads/Setup/filius-2.3.1.zip
 	sha256sums = 6205b63cfdd98f732899dfd9069f85526a3b3687966feca411ca3570a1b42f6d
 pkgname = filius
 
