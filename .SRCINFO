@@ -1,0 +1,13 @@
+pkgbase = kvlibadwaita
+	pkgdesc = Libadwaita style theme for Kvantum. Based on Colloid-kde.
+	pkgver = r21.61f2e0b
+	pkgrel = 1
+	url = https://github.com/GabePoel/KvLibadwaita
+	arch = any
+	license = GPL3
+	depends = kvantum
+	provides = kvlibadwaita
+	source = git+https://github.com/GabePoel/KvLibadwaita
+	md5sums = SKIP
+
+pkgname = kvlibadwaita
