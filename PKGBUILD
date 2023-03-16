@@ -15,7 +15,8 @@ depends=(lua
 makedepends=(boost
              cmake
              git
-             usd)
+             #usd # in AUR but doesn’t build
+             )
 source=("$_pkgname::git+$_url/$_pkgname#tag=v$pkgver"
         "$_pkgname+arras+arras4_core::git+$_url/arras4_core.git#commit=2157c5103156f652b0966f23e32b97597b7ff16f"
         "$_pkgname+arras+arras_render::git+$_url/arras_render.git#commit=729c4039a72e2dacb810c17fd529eaa0308435f6"
@@ -59,6 +60,17 @@ sha256sums=('SKIP'
 
 prepare() {
 	cd "$_pkgname"
+	git submodule init
+	for s in ${source[@]%%::*}; do
+		case "$s" in
+			$_pkgname+*)
+				local module=${s#$_pkgname+}
+				local path=${module//+//}
+				git config submodule.$path.url "$srcdir/$s"
+				;;
+		esac
+	done
+	git -c protocol.file.allow=always submodule update
 }
 
 build() {
