@@ -10,8 +10,12 @@ arch=(x86_64)
 license=(Apache2)
 url="https://$_pkgname.org"
 _url="https://github.com/dreamworksanimation"
-depends=()
-makedepends=(cmake)
+depends=(lua
+         python)
+makedepends=(boost
+             cmake
+             git
+             usd)
 source=("$_pkgname::git+$_url/$_pkgname#tag=v$pkgver"
         "$_pkgname+arras+arras4_core::git+$_url/arras4_core.git#commit=2157c5103156f652b0966f23e32b97597b7ff16f"
         "$_pkgname+arras+arras_render::git+$_url/arras_render.git#commit=729c4039a72e2dacb810c17fd529eaa0308435f6"
@@ -59,6 +63,8 @@ prepare() {
 
 build() {
 	cd "$_pkgname"
+	cmake --preset dwa-release
+	cmake --build
 }
 
 package_moonray() {
@@ -66,6 +72,6 @@ package_moonray() {
 }
 
 package_moonray-gui() {
-        depends+=($pkgbase)
+	depends+=($pkgbase)
 	cd "$_pkgname"
 }
