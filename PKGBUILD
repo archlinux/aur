@@ -2,7 +2,7 @@
 
 pkgname=adebar
 pkgver=2.4.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Android DEvice Backup And Report, using Bash and ADB."
 arch=("any")
 url="https://codeberg.org/izzy/Adebar"
@@ -11,6 +11,20 @@ depends=('bash' 'android-tools')
 source=("https://codeberg.org/izzy/${pkgname}/archive/v${pkgver}.tar.gz")
 sha1sums=('5cc0773926f6a51ce601568c1ee033378940e8fb')
 
+build() {
+    cd "${srcdir}/${pkgname}"
+
+    #
+    sed -i -e 's|\(BINDIR=\).*|\1"/usr/share/adebar"|' adebar-cli
+	sed -i -e 's|\(LIBDIR=\).*|\1"/usr/lib/adebar"|' adebar-cli
+    # make sure $HOME/.config/adebar get created if it does not exist
+    sed -i '/^\ \ USER_CONF=/c\ \ mkdir -p "$USER_CONF"' adebar-cli
+
+    # gzip docs
+    gzip --best -f doc/*
+    gzip --best -f README.md
+}
+
 package() {
     # adebar
     mkdir -p ${pkgdir}/usr/bin
@@ -18,16 +32,18 @@ package() {
 
     # lib
     mkdir -p ${pkgdir}/usr/lib/adebar
-    install -D -m444 ${srcdir}/${pkgname}/lib/* ${pkgdir}/usr/lib/adebar
+    install -D -m644 ${srcdir}/${pkgname}/lib/* ${pkgdir}/usr/lib/adebar
 
     # tools
-    mkdir -p ${pkgdir}/usr/share/adebar
-    install -D -m755 ${srcdir}/${pkgname}/tools/* ${pkgdir}/usr/share/adebar
-}
+    mkdir -p ${pkgdir}/usr/share/adebar/tools
+    install -D -m755 ${srcdir}/${pkgname}/tools/* ${pkgdir}/usr/share/adebar/tools
 
-build() {
-    cd "${srcdir}/${pkgname}"
-    sed -i "/BINDIR=/d" adebar-cli
-    sed -i '/LIBDIR=/cLIBDIR=/usr/lib/adebar' adebar-cli
-    sed -i '/^\ \ USER_CONF=/c\ \ mkdir -p "$USER_CONF"' adebar-cli
+    # templates
+    mkdir -p ${pkgdir}/usr/share/adebar/templates/default
+    install -D -m755 ${srcdir}/${pkgname}/templates/default/* ${pkgdir}/usr/share/adebar/templates/default
+
+    # docs
+    mkdir -p ${pkgdir}/usr/share/doc/adebar
+    install -D -m644 ${srcdir}/${pkgname}/doc/* ${pkgdir}/usr/share/doc/adebar
+    install -D -m644 ${srcdir}/${pkgname}/README.md.gz ${pkgdir}/usr/share/doc/adebar/README.md.gz
 }
