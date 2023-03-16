@@ -2,7 +2,7 @@
 
 pkgname='geant4-full'
 pkgver=11.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simulation toolkit for particle physics interactions - includes all the optional libraries"
 depends=(
   'cmake>=3.16'
@@ -123,4 +123,5 @@ package() {
 
   cd ${srcdir}/build
   make DESTDIR="${pkgdir}" install
+  ln -s /opt/Geant4/Geant4-v${pkgver}/lib ${pkgdir}/opt/Geant4/Geant4-v${pkgver}/lib64
 }

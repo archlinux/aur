@@ -1,7 +1,7 @@
 pkgbase = geant4-full
 	pkgdesc = A simulation toolkit for particle physics interactions - includes all the optional libraries
 	pkgver = 11.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://geant4.cern.ch/
 	install = geant4-full.install
 	arch = x86_64
