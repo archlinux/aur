@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/vmware/govmomi/tree/master/govc"
 license=('Apache')
 source=(
-	"https://github.com/vmware/govmomi/releases/download/v$pkgver/govc_Linux_x86_64.tar.gz"
+	"$pkgname-$pkgver.tar.gz::https://github.com/vmware/govmomi/releases/download/v$pkgver/govc_Linux_x86_64.tar.gz"
 )
 sha256sums=('af3f441e1e9f29a87b4485178bc6d9ed9c4ebfb0ac1c45e25ad913573919d266')
 
