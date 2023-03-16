@@ -8,7 +8,6 @@ pkgbase = moonray-git
 	makedepends = boost
 	makedepends = cmake
 	makedepends = git
-	makedepends = usd
 	depends = lua
 	depends = python
 	source = openmoonray::git+https://github.com/dreamworksanimation/openmoonray
