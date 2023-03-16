@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=cui
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="http request/response tui"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(glibc)
 makedepends=(go)
 source=(${url}/releases/download/v${pkgver}/${pkgname}_v${pkgver}.tar.gz{,.asc})
 validpgpkeys=(7A701FCB0E832A8CDADADA907C3ACA9DD0C33A05)
-sha256sums=('92cdf1bc6a1041cd59a16b703053c699ff56e479c2e859e65a4771f8fa222e53'
+sha256sums=('5eba334c68ef5c2578b2620eafb6c7c0a9d21814f317eec4ee5626d18d90e55d'
             'SKIP')
 
 check() {
