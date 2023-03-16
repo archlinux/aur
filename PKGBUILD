@@ -3,7 +3,7 @@
 pkgbase=python-sunpy-sphinx-theme
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=1.2.37
+pkgver=1.2.39
 pkgrel=1
 pkgdesc="The sphinx theme for the SunPy website and documentation"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools-scm' 'python-wheel' 'python-build' 'python-insta
 #checkdepends=('python-pytest' 'python-sphinx')
 checkdepends=('python-nose' 'python-sphinx-bootstrap-theme')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('494d609ae0586a1acb5ff356cd9b3ef6')
+md5sums=('3231c3ae96b70282d9fa0a38109efa72')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
