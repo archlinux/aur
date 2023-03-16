@@ -1,16 +1,17 @@
+# Packager: Den Ivanov <securityxiii at gmail dot com>
 # Maintainer: Alex Talker <alextalker at yandex dot ru>
 # Contributor: Alessio Biancalana <dottorblaster@gmail.com>
 
 pkgname=4pane
-pkgver=7.0
-pkgrel=2
+pkgver=8.0
+pkgrel=0
 pkgdesc="A multi-pane, detailed-list file manager."
 arch=('i686' 'x86_64')
 url="http://www.4pane.co.uk/index.html"
 license=('GPL3')
-depends=('wxgtk2')
+depends=('wxgtk3')
 source=(http://downloads.sourceforge.net/project/fourpane/${pkgver}/${pkgname}-${pkgver}.tar.gz)
-md5sums=('21d0a32400aa5fb48b1e5f8c5c344c42')
+md5sums=('c3eb8f5f2a9857b824a79b8098ed1f25')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}

@@ -1,14 +1,14 @@
 pkgbase = 4pane
 	pkgdesc = A multi-pane, detailed-list file manager.
-	pkgver = 7.0
-	pkgrel = 2
+	pkgver = 8.0
+	pkgrel = 0
 	url = http://www.4pane.co.uk/index.html
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	depends = wxgtk2
-	source = http://downloads.sourceforge.net/project/fourpane/7.0/4pane-7.0.tar.gz
-	md5sums = 21d0a32400aa5fb48b1e5f8c5c344c42
+	depends = wxgtk3
+	source = http://downloads.sourceforge.net/project/fourpane/8.0/4pane-8.0.tar.gz
+	md5sums = c3eb8f5f2a9857b824a79b8098ed1f25
 
 pkgname = 4pane
 
