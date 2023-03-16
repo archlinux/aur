@@ -1,0 +1,17 @@
+pkgbase = chromatic-git
+	pkgdesc = Fine-tune your instruments
+	pkgver = r21.fe9d34e
+	pkgrel = 1
+	url = https://github.com/nate-xyz/chromatic
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	depends = libadwaita
+	depends = rust
+	provides = chromatic
+	conflicts = chromatic
+	source = git+https://github.com/nate-xyz/chromatic
+	b2sums = SKIP
+
+pkgname = chromatic-git
