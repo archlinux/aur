@@ -2,13 +2,14 @@
 
 pkgname=quarto-cli-bin-pre-release
 pkgver="1.3.271"
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source scientific and technical publishing system built on Pandoc  (pre-release binary from official repo)"
 arch=('x86_64')
 license=('GPL')
 url="http://quarto.org/"
 depends=('bash')
 makedepends=()
+conflicts=("quarto-cli" "quarto-cli-bin" "quarto-cli-git")
 provides=("quarto")
 options=(!strip)
 source=(https://github.com/quarto-dev/quarto-cli/releases/download/v${pkgver}/quarto-${pkgver}-linux-amd64.deb)
