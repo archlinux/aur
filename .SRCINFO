@@ -1,6 +1,6 @@
 pkgbase = qt6-location-dev
 	pkgdesc = QtLocation, built from dev branch, until it is officialy released.
-	pkgver = 6.4.2
+	pkgver = 6.4.3
 	pkgrel = 1
 	url = https://github.com/qt/qtlocation
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = qt6-location-dev
 	depends = qt6-base
 	depends = qt6-positioning
 	depends = qt6-shadertools
-	source = git+https://github.com/emericg/qtlocation.git#branch=dev_641
+	source = git+https://github.com/emericg/qtlocation.git#branch=dev_643
 	sha256sums = SKIP
 
 pkgname = qt6-location-dev
