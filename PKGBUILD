@@ -6,7 +6,7 @@
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname=openssh-dotconfig
-pkgver=9.2p1
+pkgver=9.3p1
 pkgrel=1
 pkgdesc='Premier connectivity tool for remote login with the SSH protocol - but moved $HOME/.ssh to $HOME/.config/ssh'
 url='https://www.openssh.com/portable.html'
@@ -24,13 +24,13 @@ source=("https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${pkgname%-*}-${pk
         'sshd.service'
         'sshd.conf'
         'sshd.pam')
-sha256sums=('3f66dbf1655fb45f50e1c56da62ab01218c228807b21338d634ebcdf9d71cf46'
+sha256sums=('e9baba7701a76a51f3d85a62c383a3c9dcd97fa900b859bc7db114c1868af8a8'
 			'27e43dfd1506c8a821ec8186bae65f2dc43ca038616d6de59f322bd14aa9d07f'
             'e5305767b2d317183ad1c5022a5f6705bd9014a8b22495a000fd482713738611'
             'e40f8b7c8e5e2ecf3084b3511a6c36d5b5c9f9e61f2bb13e3726c71dc7d4fbc7'
             '4effac1186cc62617f44385415103021f72f674f8b8e26447fc1139c670090f6'
             '64576021515c0a98b0aaf0a0ae02e0f5ebe8ee525b1e647ab68f369f81ecd846')
-b2sums=('8d0b5e43cb42cba105a1fe303c447a2b85151cb33ec7ed47747d75c5a61d0f07f0ee4b1020b79c13eb8de4b451c5a844a8afc7ebbbea7ffeceafc3bf59cb8d21'
+b2sums=('45578edf98bba3d23c7cefe60d8a7d3079e7c6676459f7422ace7a2461ab96943fbcadb478633a80f40bc098f2435722850b563714adb78b14922be53cb5753d'
         '29e1a1c2744e0234830c6f93a46338ea8dc943370e20a24883d207d611025e54643da678f2826050c073a36be48dfdc7329d4cfb144c2ff90607a5f10f73dc59'
 		'09fad3648f48f13ee80195b90913feeba21240d121b1178e0ce62f4a17b1f7e58e8edc22c04403e377ab300f5022a804c848f5be132765d5ca26a38aab262e50'
         '07ad5c7fb557411a6646ff6830bc9d564c07cbddc4ce819641d31c05dbdf677bfd8a99907cf529a7ee383b8c250936a6423f4b4b97ba0f1c14f627bbd629bd4e'
@@ -49,26 +49,27 @@ prepare() {
 }
 
 build() {
+    local configure_options=(
+		--prefix=/usr
+		--sbindir=/usr/bin
+		--libexecdir=/usr/lib/ssh
+		--sysconfdir=/etc/ssh
+		--disable-strip
+		--with-ldns
+		--with-libedit
+		--with-security-key-builtin
+		--with-ssl-engine
+		--with-pam
+		--with-privsep-user=nobody
+		--with-kerberos5=/usr
+		--with-xauth=/usr/bin/xauth
+		--with-pid-dir=/run
+		--with-default-path='/usr/local/sbin:/usr/local/bin:/usr/bin'
+    )
+
 	cd "$srcdir/${pkgname%-*}-$pkgver"
-
-	./configure \
-		--prefix=/usr \
-		--sbindir=/usr/bin \
-		--libexecdir=/usr/lib/ssh \
-		--sysconfdir=/etc/ssh \
-		--disable-strip \
-		--with-ldns \
-		--with-libedit \
-		--with-security-key-builtin \
-		--with-ssl-engine \
-		--with-pam \
-		--with-privsep-user=nobody \
-		--with-kerberos5=/usr \
-		--with-xauth=/usr/bin/xauth \
-		--with-pid-dir=/run \
-		--with-default-path='/usr/local/sbin:/usr/local/bin:/usr/bin' \
-
-	make
+	./configure "${configure_options[@]}"
+    make
 }
 
 check() {
