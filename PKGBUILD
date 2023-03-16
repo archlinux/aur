@@ -12,7 +12,7 @@
 # Contributor: Zeke Sonxx <zeke@zekesonxx.com>
 pkgname=netlogger
 pkgver=3.1.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Server-based amateur radio net logging programs"
 arch=('x86_64')
 url="https://www.netlogger.org"
@@ -33,12 +33,12 @@ prepare() {
 	bsdtar -xf netlogger_${pkgver}.tgz -C tarball
 	# copy out the license file for sticking in /usr/share/licenses later
 	cp "${srcdir}/tarball/License.rtf" "${srcdir}/license.rtf"
+		# extract deb for netlogger.png
+	mkdir -p "${srcdir}/deb"
+	bsdtar -xf data.tar.xz -C deb
 	# get rid of the extra files
 	cd "${srcdir}/tarball"
 	rm -f GNU_LGPL_v2.1.rtf GNU_LGPL_v3.rtf GNU_GPL_v3.rtf NetLogger24to30.pdf Release_Notes.html License.rtf
-	# extract deb for netlogger.png
-	mkdir -p "${srcdir}/deb"
-	bsdtar -xf data.tar.xz -C deb
 }
 
 package() {
