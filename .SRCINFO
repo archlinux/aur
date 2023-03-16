@@ -1,0 +1,25 @@
+pkgbase = minuimus
+	pkgdesc = file optimiser script: point it at a file, it makes it smaller without compromising content
+	pkgver = 3.8.1
+	pkgrel = 1
+	url = https://birds-are-nice.me/software/minuimus.html
+	arch = x86_64
+	license = GPL
+	depends = brotli
+	depends = gif2png
+	depends = gifsicle
+	depends = imagemagick
+	depends = jpegoptim
+	depends = libjpeg
+	depends = libwebp
+	depends = mupdf-tools
+	depends = optipng
+	depends = p7zip
+	depends = poppler
+	depends = qpdf
+	depends = unrar
+	depends = zip
+	source = https://birds-are-nice.me/software/minuimus.zip
+	sha256sums = 50360a6ce8570bd8252c342517d23853af59164492b3e280147ea8120f39efc0
+
+pkgname = minuimus
