@@ -10,7 +10,7 @@ _pypi_package=$_pkgname
 
 pkgname=python-$_pkgname
 pkgver=${_upstreamver##v}
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert --help and --version to man page."
 arch=(any)
 url=https://github.com/$_repo
@@ -31,9 +31,9 @@ source=(
 sha256sums=('09a3591327889729a0423947d88f74b1ab798df804b72fbdc45a81c471df635d'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             'fa9148fed0ebe3c1866b3b62f92f99a825dd2822623a9ca44c87fb469f6c640e'
-            '2645634ac4843e411e9b3dc5ff34c3922c5bb8729bac79ac1ab9860b68a8bbd4'
-            'bb90bd4fe6dac513f732cbc09fe778c3e8d5fd9f5982ecb366fdd869e2c351e1'
-            '35d15b8c28334f49f4222f70f6ff5e6c0ef9aa3ed233a84c472fab74aa1d1ba8')
+            'c5f5d75696d4e1a19fbcb9cadbfc9b70aa64e46813d2179dbfcd602e1cc25f55'
+            '5bc48f874f3d5b143b11f099937eca84a6018a21cdd35c2287b65c9ea18d481b'
+            'b9e94478fee4ad496026efa092a790c93f2ba2308e05ea1b47129206c6fdf5ef')
 
 package() {
 	cd "$srcdir" || return 1
