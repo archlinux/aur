@@ -9,6 +9,7 @@ pkgbase = chirp-next
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python-six
 	depends = python-pyserial
 	depends = python-future
