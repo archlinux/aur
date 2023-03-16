@@ -8,7 +8,7 @@
 
 pkgname=josm-latest
 pkgver=18693
-pkgrel=1
+pkgrel=2
 pkgdesc="An editor for OpenStreetMap written in Java"
 arch=('any')
 url="https://josm.openstreetmap.de/"
@@ -23,7 +23,7 @@ source=(https://josm.openstreetmap.de/download/josm-latest.jar
         josm::svn+https://josm.openstreetmap.de/svn/trunk#revision=$pkgver)
 noextract=(josm-latest.jar)
 sha256sums=('6a16f16cf12a01e0e43f40b25b4528ff3123ed860bb68a09dd8babd20f114698'
-            '58ce8f552990b290449f2d67572c3e2773d0314cbdbcb659d3c54cd60b472147'
+            '16bbb378a4e4d02c8ea321f3a3a65ad74007bc439720f44c597432a66d0d1646'
             'a30c4824de1570af66e9df2bcbab777b9efea80914a07de498fcfac58789731e'
             'SKIP')
 
