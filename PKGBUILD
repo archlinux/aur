@@ -1,8 +1,8 @@
 # Maintainer: Alonso Rodriguez <alonso.rodriguez (at) udc.es>
 
 pkgname=pato
-pkgver=0.0.2
-pkgrel=1
+pkgver=0.0.3
+pkgrel=0
 pkgdesc="PATO: high PerformAnce TriplexatOr is a high performance tool for the fast and efficient detection of triple helices and triplex features in nucleotide sequences"
 arch=('any')
 url="https://github.com/UDC-GAC/pato"
@@ -12,7 +12,7 @@ optdepends=()
 conflicts=('pato' 'pato-git')
 provides=('pato')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/UDC-GAC/pato/archive/v${pkgver}.tar.gz")
-sha256sums=('3763d7ff5d3f3e85baf8c97682b2b50bdb5f7d5d8ca1d818d25c61e79beabdb6')
+sha256sums=('e95a99ae1be1f19886b60abbd8a1ab4f0ed2474b824bf4e04f12e1072e0c9a42')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"

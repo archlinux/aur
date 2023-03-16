@@ -1,14 +1,14 @@
 pkgbase = pato
 	pkgdesc = PATO: high PerformAnce TriplexatOr is a high performance tool for the fast and efficient detection of triple helices and triplex features in nucleotide sequences
-	pkgver = 0.0.2
-	pkgrel = 1
+	pkgver = 0.0.3
+	pkgrel = 0
 	url = https://github.com/UDC-GAC/pato
 	arch = any
 	license = MIT
 	provides = pato
 	conflicts = pato
 	conflicts = pato-git
-	source = pato-0.0.2.tar.gz::https://github.com/UDC-GAC/pato/archive/v0.0.2.tar.gz
-	sha256sums = 3763d7ff5d3f3e85baf8c97682b2b50bdb5f7d5d8ca1d818d25c61e79beabdb6
+	source = pato-0.0.3.tar.gz::https://github.com/UDC-GAC/pato/archive/v0.0.3.tar.gz
+	sha256sums = e95a99ae1be1f19886b60abbd8a1ab4f0ed2474b824bf4e04f12e1072e0c9a42
 
 pkgname = pato
