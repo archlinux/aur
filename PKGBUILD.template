@@ -2,7 +2,7 @@
 
 pkgname=quarto-cli-bin-pre-release
 pkgver=:version:
-pkgrel=2
+pkgrel=1
 pkgdesc="An open-source scientific and technical publishing system built on Pandoc  (pre-release binary from official repo)"
 arch=('x86_64')
 license=('GPL')
