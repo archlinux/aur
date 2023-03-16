@@ -1,0 +1,11 @@
+[Desktop Entry]
+Categories=Chat;ConsoleOnly;InstantMessaging;Network;
+Comment=Messaging platform without user profile identifiers of any kind — 100% private by design
+Exec=simplex-chat
+GenericName=Secure chat client
+Icon=simplex-chat
+Keywords=chat;console;messaging;privacy;terminal;tty;
+Name=SimpleX
+Terminal=true
+Type=Application
+Version=1.0
