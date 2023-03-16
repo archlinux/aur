@@ -1,13 +1,11 @@
 pkgbase = guile-lzlib-git
 	pkgdesc = Guile-lzlib is a GNU Guile library providing bindings to lzlib.
-	pkgver = latest
-	pkgrel = 3
+	pkgver = r6.7a835a5
+	pkgrel = 1
 	url = https://notabug.org/guile-lzlib/guile-lzlib
-	arch = any
+	arch = x86_64
 	license = GPL3
-	makedepends = autoconf
-	makedepends = automake
-	makedepends = pkg-config
+	makedepends = git
 	depends = guile
 	depends = lzlib
 	provides = guile-lzlib
