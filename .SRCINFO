@@ -6,11 +6,17 @@ pkgbase = moonray
 	arch = x86_64
 	license = Apache2
 	makedepends = boost
+	makedepends = libmicrohttpd
 	makedepends = cmake
+	makedepends = openssl
 	makedepends = git
-	depends = lua
+	makedepends = qt6-base
+	depends = curl
+	depends = lua53
 	depends = python
+	optdepends = usd: hydra plugins and USD geometry objects
 	source = openmoonray::git+https://github.com/dreamworksanimation/openmoonray#tag=v1.0.0.0
+	source = CMakePresets.json
 	source = openmoonray+arras+arras4_core::git+https://github.com/dreamworksanimation/arras4_core.git#commit=2157c5103156f652b0966f23e32b97597b7ff16f
 	source = openmoonray+arras+arras_render::git+https://github.com/dreamworksanimation/arras_render.git#commit=729c4039a72e2dacb810c17fd529eaa0308435f6
 	source = openmoonray+arras+distributed+arras4_node::git+https://github.com/dreamworksanimation/arras4_node.git#commit=b02183bcab92f52d3041c254922c24fe9fc39e54
@@ -30,6 +36,7 @@ pkgbase = moonray
 	source = openmoonray+moonray+render_profile_viewer::git+https://github.com/dreamworksanimation/render_profile_viewer.git#commit=44bb5d66aa5295cc1176823d04a12cc4cd009e76
 	source = openmoonray+moonray+scene_rdl2::git+https://github.com/dreamworksanimation/scene_rdl2.git#commit=fb0c969026b1e5a3c16cc75ee3ec9ff7df85ad98
 	sha256sums = SKIP
+	sha256sums = 930a397214c3f66cc3466920e5c55db9bd687cf8ffd3f9ab095afe2ebf15bb95
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -52,6 +59,8 @@ pkgbase = moonray
 pkgname = moonray
 
 pkgname = moonray-gui
-	depends = lua
+	depends = curl
+	depends = lua53
 	depends = python
 	depends = moonray
+	depends = qt6-base
