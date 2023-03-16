@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# To get changes made somewhere else
+git pull
+
 maxVersionDifference=20
 
 scriptdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -39,6 +42,8 @@ if [[ $upstreamVersion -gt $pkgbuildVersion ]]; then
   sed -r -i -e 's/(pkgver = )[0-9]+/\1'$upstreamVersion'/' .SRCINFO
   sed -r -i -e 's/(pkgrel = )[0-9]+/\11/' .SRCINFO
   sed -r -i -e 's/(josm)[0-9]+/\1'$upstreamVersion'/' .SRCINFO
+
+  ./update-pkg-files.sh
 
   git commit --no-signoff PKGBUILD .SRCINFO -m "Automatic update ($pkgbuildVersion->$upstreamVersion)"
   git push
