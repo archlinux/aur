@@ -10,14 +10,18 @@ arch=(x86_64)
 license=(Apache2)
 url="https://$_pkgname.org"
 _url="https://github.com/dreamworksanimation"
-depends=(lua
+depends=(curl
+         lua53
          python)
 makedepends=(boost
+             libmicrohttpd
              cmake
+             openssl
              git
-             #usd # in AUR but doesn’t build
-             )
+             qt6-base)
+optdepends=('usd: hydra plugins and USD geometry objects')
 source=("$_pkgname::git+$_url/$_pkgname"
+        CMakePresets.json
         "$_pkgname+arras+arras4_core::git+$_url/arras4_core.git"
         "$_pkgname+arras+arras_render::git+$_url/arras_render.git"
         "$_pkgname+arras+distributed+arras4_node::git+$_url/arras4_node.git"
@@ -37,6 +41,7 @@ source=("$_pkgname::git+$_url/$_pkgname"
         "$_pkgname+moonray+render_profile_viewer::git+$_url/render_profile_viewer.git"
         "$_pkgname+moonray+scene_rdl2::git+$_url/scene_rdl2.git")
 sha256sums=('SKIP'
+            '930a397214c3f66cc3466920e5c55db9bd687cf8ffd3f9ab095afe2ebf15bb95'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -71,6 +76,7 @@ prepare() {
 		esac
 	done
 	git -c protocol.file.allow=always submodule update
+	cp ../CMakePresets.json .
 }
 
 pkgver() {
@@ -81,7 +87,7 @@ pkgver() {
 
 build() {
 	cd "$_pkgname"
-	cmake --preset dwa-release
+	cmake --preset arch-package
 	cmake --build
 }
 
@@ -95,6 +101,7 @@ package_moonray-git() {
 package_moonray-gui-git() {
 	provides=("${pkgname%-git}=$pkgver")
 	conflicts=(${pkgname%-git})
-	depends+=($pkgbase)
+	depends+=($pkgbase
+	          qt6-base)
 	cd "$_pkgname"
 }
