@@ -1,0 +1,15 @@
+pkgbase = browserpass-cachy-browser
+	pkgdesc = Cachy Browser extension for Browserpass, browser extension for zx2c4's pass (password manager)
+	pkgver = 3.7.2
+	pkgrel = 2
+	url = https://github.com/browserpass/browserpass-extension
+	arch = any
+	license = ISC
+	depends = cachy-browser
+	noextract = browserpass-cachy-browser-3.7.2.xpi
+	source = browserpass-cachy-browser-3.7.2.xpi::https://addons.mozilla.org/firefox/downloads/file/3711209/browserpass-3.7.2-fx.xpi
+	source = https://raw.githubusercontent.com/browserpass/browserpass-extension/master/LICENSE
+	sha256sums = b1781405b46f3274697885b53139264dca2ab56ffc4435c093102ad5ebc59297
+	sha256sums = 88c5889f0ef1f64a5e08408b51ce47a991087966b1bf127ec0ec39c9d7111f50
+
+pkgname = browserpass-cachy-browser
