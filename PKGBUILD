@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-network-displays-git
 pkgver=0.90.5.r33.g0e128d2
-pkgrel=3
+pkgrel=4
 pkgdesc="Miracast implementation for GNOME"
 arch=('x86_64')
 url="https://gitlab.gnome.org/GNOME/gnome-network-displays"
 license=('GPL3')
-depends=('gtk3' 'faac' 'gst-plugins-ugly' 'gst-rtsp-server' 'libpulse' 'libnm'
-         'protobuf-c' 'python-gobject' 'x264' 'xdg-desktop-portal')
+depends=('gtk3' 'faac' 'gst-plugins-good' 'gst-plugins-ugly' 'gst-rtsp-server'
+         'libpulse' 'libnm' 'protobuf-c' 'python-gobject' 'x264' 'xdg-desktop-portal')
 makedepends=('git' 'meson')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
