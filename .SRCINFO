@@ -9,6 +9,6 @@ pkgbase = bleachbit-root
 	depends = polkit
 	conflicts = bleachbit-cli
 	source = org.bleachbit.BleachBit-Root.desktop
-	sha256sums = aa95de7ccbd5802ca7aa94e1f1ba60b83df863dad042d66240c1ffd573bbedc4
+	sha256sums = bc8efe3ff4ea74ff526eb14d6155b87bc108a0edc7b487ee7275cd395212d172
 
 pkgname = bleachbit-root

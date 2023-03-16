@@ -11,7 +11,7 @@ depends=('bleachbit'
          'polkit')
 conflicts=('bleachbit-cli') # Requires desktop functions for bleachbit
 source=('org.bleachbit.BleachBit-Root.desktop')
-sha256sums=('aa95de7ccbd5802ca7aa94e1f1ba60b83df863dad042d66240c1ffd573bbedc4')
+sha256sums=('bc8efe3ff4ea74ff526eb14d6155b87bc108a0edc7b487ee7275cd395212d172')
 
 package() {
   install -Dm644 org.bleachbit.BleachBit-Root.desktop -t "$pkgdir"/usr/share/applications/
