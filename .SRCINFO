@@ -1,11 +1,12 @@
 pkgbase = qtcbm
 	pkgdesc = Qt GUI Frontend for the (Open)CBM utils
 	pkgver = 1.1.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/mveinot/QtCBM
 	arch = i686
 	arch = x86_64
 	license = GPLv2
+	makedepends = imagemagick
 	depends = qt5-base
 	depends = opencbm-git
 	source = git+https://github.com/mveinot/QtCBM.git

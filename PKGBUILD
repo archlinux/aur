@@ -7,7 +7,7 @@
 #
 pkgname=qtcbm
 pkgver=1.1.0
-pkgrel=0
+pkgrel=1
 epoch=
 pkgdesc="Qt GUI Frontend for the (Open)CBM utils"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ url="https://github.com/mveinot/QtCBM"
 license=('GPLv2')
 groups=()
 depends=('qt5-base' 'opencbm-git')
-makedepends=()
+makedepends=('imagemagick')
 checkdepends=()
 optdepends=()
 provides=()
