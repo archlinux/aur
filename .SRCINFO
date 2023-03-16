@@ -1,6 +1,6 @@
 pkgbase = linux-amd-git
 	pkgdesc = Linux kernel with WIP AMDGPU material
-	pkgver = 6.2.r1156464.f4658f434504
+	pkgver = 6.2.r1156607.7ee938ac0060
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/agd5f/linux
 	arch = x86_64
@@ -15,7 +15,6 @@ pkgbase = linux-amd-git
 	makedepends = gettext
 	makedepends = xmlto
 	makedepends = python-sphinx
-	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
 	makedepends = imagemagick
 	makedepends = texlive-latexextra
@@ -24,7 +23,7 @@ pkgbase = linux-amd-git
 	source = linux-amd-git::git+https://gitlab.freedesktop.org/agd5f/linux.git#branch=drm-next
 	source = config
 	sha256sums = SKIP
-	sha256sums = f35bb39db7324a45e78e6c75c1a60f117fea3f7d0df9f4a32bed411751d6ffea
+	sha256sums = f9a0027bea53a7160759858c535eb0ba0b3bea34c0130f47f2d5bba75d102170
 
 pkgname = linux-amd-git
 	pkgdesc = The Linux kernel with WIP AMDGPU material kernel and modules
