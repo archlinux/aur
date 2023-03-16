@@ -1,7 +1,7 @@
 pkgbase = wttr
 	pkgdesc = a simple script that checks the weather condition via http://wttr.in
 	pkgver = 1.55
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cblte/bash-script-wttr
 	install = wttr.install
 	arch = any

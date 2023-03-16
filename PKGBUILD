@@ -3,7 +3,7 @@
 _pkgname="bash-script-wttr"
 pkgname=wttr
 pkgver=1.55
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="a simple script that checks the weather condition via http://wttr.in"
 arch=('any')
@@ -26,10 +26,9 @@ pkgver() {
 
 package() {
     mkdir -p ${pkgdir}/usr/bin/
-    mkdir -p ${pkgdir}/usr/share/${pkgname}/
+    mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}/
         cd "${_pkgname}"
             install -Dm0755 "wttr" ${pkgdir}/usr/bin/wttr
-            install -Dm0644 "changelog" ${pkgdir}/usr/share/${pkgname}/changelog
-            install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+            install -Dm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
