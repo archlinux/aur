@@ -4,7 +4,7 @@
 pkgname='simplex-chat-bin'
 _pkgname="${pkgname%%-bin}"
 pkgver=4.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc='A 100% private-by-design chat platform (pre-compiled)'
 arch=('x86_64')
 _platform='ubuntu-20_04-x86-64'
@@ -34,10 +34,18 @@ conflicts=('simplex-chat')
 
 build() {
   case "${SIMPLEX_ICON:-light}" in
-    light ) _shade='light' ;;
-     dark ) _shade='dark'  ;;
-        * ) _shade='light' ;;
+    light ) _shade='light'; _other='dark'  ;;
+     dark ) _shade='dark' ; _other='light' ;;
+        * ) _shade='light'; _other='dark'  ;;
   esac
+
+  cat <<EOF
+Will package an icon suitable for a $_shade theme.
+If this is not what you want, set the environment
+variable \$SIMPLEX_ICON to “$_other”. E.g.:
+
+  env SIMPLEX_ICON=$_other makepkg [options …]
+EOF
 
   cp "logo-symbol-$_shade.svg" "$_pkgname.svg"
 }
