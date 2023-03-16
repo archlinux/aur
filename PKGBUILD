@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=lfe-git
-pkgver=r1018.d9d3f15
+pkgver=r1171.9a75089
 pkgrel=1
 epoch=1
 pkgdesc="Lisp Flavoured Erlang"
@@ -14,7 +14,7 @@ depends=('erlang-nox' 'rebar')
 makedepends=('pandoc')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
-source=('git+https://github.com/rvirding/lfe.git#branch=develop')
+source=('git+https://github.com/lfe/lfe.git#branch=develop')
 sha256sums=('SKIP')
 
 pkgver() {
