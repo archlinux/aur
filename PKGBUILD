@@ -7,7 +7,10 @@ pkgdesc="A LilyPond sheet music text editor."
 arch=('any')
 url="http://www.frescobaldi.org/"
 license=('GPL')
-makedepends=('git')
+makedepends=(
+  'git'
+  'python-setuptools'
+)
 depends=(
   'hyphen'
   'poppler'

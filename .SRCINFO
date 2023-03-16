@@ -6,6 +6,7 @@ pkgbase = frescobaldi-git
 	arch = any
 	license = GPL
 	makedepends = git
+	makedepends = python-setuptools
 	depends = hyphen
 	depends = poppler
 	depends = python>=3.3
