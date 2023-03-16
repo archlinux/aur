@@ -16,6 +16,7 @@ license=('GPL')
 depends=('desktop-file-utils' 'hicolor-icon-theme' 'java-runtime>=11' 'libxtst' 'ttf-font')
 makedepends=('subversion')
 backup=('etc/conf.d/josm')
+conflicts=('josm' 'josm-stable' 'josm-svn')
 source=(https://josm.openstreetmap.de/download/josm-latest.jar
         josm.conf.d
 		josm.sh
