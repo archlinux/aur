@@ -1,7 +1,7 @@
 # Maintainer: Cassandra Watergate (saltedcoffii) <cassandrajwatergate@gmail.com>
 
 pkgname=bleachbit-root
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Run bleachbit as root for cleaning system files"
 arch=('any')
