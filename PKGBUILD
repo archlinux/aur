@@ -1,34 +1,74 @@
-# Contributor: Peter Bui <pnutzh4x0r@gmail.com>
+# Maintainer: éclairevoyant
 
 _pkgname=tamzen-font
-pkgname=$_pkgname-git
-pkgver=93.7ea70cc
+pkgbase="$_pkgname-git"
+pkgname=({bdf,otb,pcf,psf,ttf}-$pkgbase)
+pkgver=1.11.6.r1.3255e82
 pkgrel=1
-pkgdesc="A monospaced bitmap font for the console and X11 (tamsyn-font fork)"
-arch=('any')
-url="https://github.com/sunaku/tamzen-font"
+epoch=1
+pkgdesc="Monospaced bitmap font for console and X11 (tamsyn-font fork)"
+arch=(any)
+url="https://github.com/sunaku/$_pkgname"
 license=('custom')
-depends=()
-makedepends=('git')
-install=tamzen-font.install
-source=("git://github.com/sunaku/$_pkgname.git")
-md5sums=('SKIP')
+makedepends=(git)
+source=("git+$url.git")
+b2sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+	cd $_pkgname
+	git describe --long --tags | sed 's/^Tamzen-//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
-package () {
-  cd "$srcdir/$_pkgname"
+package_bdf-tamzen-font-git() {
+	pkgdesc+='(BDF font)'
 
-  install -d "$pkgdir/usr/share/fonts/local"
-  install -m644 bdf/*.bdf "$pkgdir/usr/share/fonts/local/"
+	cd $_pkgname
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 
-  install -d "$pkgdir/usr/share/kbd/consolefonts"
-  gzip psf/*.psf
-  install -m644 psf/*.psf.gz "$pkgdir/usr/share/kbd/consolefonts/"
+	install -Dm644 bdf/*.bdf -t "$pkgdir/usr/share/fonts/X11/misc/"
+}
 
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README"
+package_otb-tamzen-font-git() {
+	pkgdesc+='(OTB font)'
+
+	cd $_pkgname
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+
+	install -Dm644 otb/*.otb -t "$pkgdir/usr/share/fonts/X11/misc/"
+}
+
+package_pcf-tamzen-font-git() {
+	pkgdesc+='(PCF font)'
+
+	cd $_pkgname
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+
+	install -Dm644 pcf/*.pcf -t "$pkgdir/usr/share/fonts/X11/misc/"
+}
+
+package_psf-tamzen-font-git() {
+	pkgdesc+='(PSF font)'
+
+	cd $_pkgname
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+
+	cd psf
+	install -dm755 "$pkgdir/usr/share/kbd/consolefonts/"
+	for i in *.psf; do
+		gzip -c $i > "$pkgdir/usr/share/kbd/consolefonts/$i.gz"
+	done
+}
+
+package_ttf-tamzen-font-git() {
+	pkgdesc+='(TTF font)'
+
+	cd $_pkgname
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+
+	install -Dm644 ttf/*.ttf -t "$pkgdir/usr/share/fonts/TTF/"
 }
