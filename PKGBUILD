@@ -1,6 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-pkgname=moonray-git
+pkgbase=moonray-git
+pkgname=($pkgbase moonray-gui-git)
 _pkgname=openmoonray
 pkgver=1.0.0.0.r0.g9b629e0
 pkgrel=1
@@ -11,9 +12,7 @@ url="https://$_pkgname.org"
 _url="https://github.com/dreamworksanimation"
 depends=()
 makedepends=(cmake)
-provides=("${pkgname%-git}=$pkgver")
-conflicts=(${pkgname%-git})
-source=("$_pkgname::git+$_url/$_pkgname#tag=v$pkgver"
+source=("$_pkgname::git+$_url/$_pkgname"
         "$_pkgname+arras+arras4_core::git+$_url/arras4_core.git"
         "$_pkgname+arras+arras_render::git+$_url/arras_render.git"
         "$_pkgname+arras+distributed+arras4_node::git+$_url/arras4_node.git"
@@ -68,6 +67,16 @@ build() {
 	cd "$_pkgname"
 }
 
-package() {
+
+package_moonray-git() {
+        provides=("${pkgname%-git}=$pkgver")
+        conflicts=(${pkgname%-git})
+	cd "$_pkgname"
+}
+
+package_moonray-gui-git() {
+        provides=("${pkgname%-git}=$pkgver")
+        conflicts=(${pkgname%-git})
+        depends+=($pkgbase)
 	cd "$_pkgname"
 }

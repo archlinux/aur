@@ -6,9 +6,7 @@ pkgbase = moonray-git
 	arch = x86_64
 	license = Apache2
 	makedepends = cmake
-	provides = moonray=1.0.0.0.r0.g9b629e0
-	conflicts = moonray
-	source = openmoonray::git+https://github.com/dreamworksanimation/openmoonray#tag=v1.0.0.0.r0.g9b629e0
+	source = openmoonray::git+https://github.com/dreamworksanimation/openmoonray
 	source = openmoonray+arras+arras4_core::git+https://github.com/dreamworksanimation/arras4_core.git
 	source = openmoonray+arras+arras_render::git+https://github.com/dreamworksanimation/arras_render.git
 	source = openmoonray+arras+distributed+arras4_node::git+https://github.com/dreamworksanimation/arras4_node.git
@@ -48,3 +46,10 @@ pkgbase = moonray-git
 	sha256sums = SKIP
 
 pkgname = moonray-git
+	provides = moonray=1.0.0.0.r0.g9b629e0
+	conflicts = moonray
+
+pkgname = moonray-gui-git
+	depends = moonray-git
+	provides = moonray-gui=1.0.0.0.r0.g9b629e0
+	conflicts = moonray-gui
