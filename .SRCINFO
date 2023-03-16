@@ -1,7 +1,7 @@
 pkgbase = agisoft-metashape
 	pkgdesc = Photogrammetric processing of digital images and 3D spatial data generation software. Standard edition
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.agisoft.com/
 	install = agisoft-metashape.install
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = agisoft-metashape
 	source = agisoft-metashape-icon-encoded.txt
 	source = agisoft-psx-mime-icon-encoded.txt
 	source = agisoft-psz-mime-icon-encoded.txt
-	sha256sums = 413285ad5e07f08780141e6a4e14f68bed195265f6143227d8521fcf90f07462
+	sha256sums = 037db9b3b85acc88cf533bd129a0a80dd1f228cc7d55b764dfdf4ffe75151b49
 	sha256sums = 959eb21ce482a5b1f84a0e04ec6f0d53aaf679c84bce9f813b350afe5dd201ba
 	sha256sums = 627df01b98f9f22b31d62ba039127b7809650990d1633e4190f1d9844830a0ff
 	sha256sums = d44fb70962175505fd3bfc0e96670e5bf4092c80446e0142cc91a3e0033e1009
