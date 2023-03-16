@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-command-source
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="This plugin provides a dummy source to execute arbitrary command when scene is switched"
 arch=("x86_64" "aarch64")
@@ -11,7 +11,7 @@ depends=("obs-studio>=28")
 makedepends=("cmake")
 options=('debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/norihiro/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=("06ba587fdb780a1502409d9d2a012c2cd11b4a1c1cabec7499105716a8fb7005")
+sha256sums=("a604d53553afb3e5ff050eaa43f468f07a3cc1573347889e6fab854569b01238")
 
 build() {
   cd "$pkgname-$pkgver"
