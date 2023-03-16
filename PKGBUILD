@@ -1,7 +1,7 @@
 # Maintainer: Alex Hirzel <alex at hirzel period us>
 
 pkgname=mitsuba3-git
-pkgver=3.2.0.r7.g0e497163
+pkgver=3.2.1.r25.g283e994d
 pkgrel=1
 pkgdesc="A Retargetable Forward and Inverse Renderer"
 arch=('x86_64')
@@ -53,7 +53,7 @@ md5sums=(
 	'SKIP'
 	'SKIP'
 	'9591ce4762b4bc3656eba529b608f067'
-	'b034d6ba2c9c5bbf66d3f7e9f6c9c46e'
+	'0f37038218fccc7f08e718f95d150213'
 	'1e1daddd0a6431bb524402eedc8d51c7'
 )
 

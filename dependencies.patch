@@ -58,7 +58,7 @@ index 7485f252..0859710f 100644
 -
 -mark_as_advanced(DFA_XTRA AWK PNG_FRAMEWORK PNG_HARDWARE_OPTIMIZATIONS
 -  PNG_PREFIX PNG_SHARED PNG_STATIC PNG_TESTS PNG_BUILD_ZLIB PNG_DEBUG
--  PNG_INTEL_SSE ld-version-script)
+-  PNG_INTEL_SSE M_LIBRARY ld-version-script)
  
  # ----------------------------------------------------------
  #  libjpeg 7

@@ -1,6 +1,6 @@
 pkgbase = mitsuba3-git
 	pkgdesc = A Retargetable Forward and Inverse Renderer
-	pkgver = 3.2.0.r7.g0e497163
+	pkgver = 3.2.1.r25.g283e994d
 	pkgrel = 1
 	url = https://www.mitsuba-renderer.org/
 	arch = x86_64
@@ -69,7 +69,7 @@ pkgbase = mitsuba3-git
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = 9591ce4762b4bc3656eba529b608f067
-	md5sums = b034d6ba2c9c5bbf66d3f7e9f6c9c46e
+	md5sums = 0f37038218fccc7f08e718f95d150213
 	md5sums = 1e1daddd0a6431bb524402eedc8d51c7
 
 pkgname = mitsuba3-git
