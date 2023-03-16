@@ -1,18 +1,18 @@
 pkgbase = amalthea-dmd
 	pkgdesc = Small general library for the D programming language, version for DMD
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://gitlab.com/os-18/amalthea
 	arch = x86_64
 	license = Boost or LGPL3
-	makedepends = make
 	makedepends = bash
 	makedepends = chrpath
 	makedepends = lsb-release
+	makedepends = pkgconf
 	makedepends = glib2
+	makedepends = dmd
 	depends = dmd
-	source = amalthea-dmd-1.3.0.tar.gz::https://gitlab.com/os-18/amalthea/-/archive/v1.3.0/amalthea-v1.3.0.tar.gz
-	sha256sums = 00bb6785f7b922ec280525b7097dab268e18046864cf4a15de3e1722204ce9d9
+	source = amalthea-dmd-1.4.0.tar.gz::https://gitlab.com/os-18/amalthea/-/archive/v1.4.0/amalthea-v1.4.0.tar.gz
+	sha256sums = d67e3a1dcba7a4f524916ea3ecfbba4ec7519ecce478e3f441b514773e36b1f0
 
 pkgname = amalthea-dmd
-
