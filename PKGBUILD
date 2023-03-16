@@ -2,7 +2,7 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=bzrtp
-pkgver=5.1.71
+pkgver=5.2.32
 pkgrel=1
 pkgdesc='Open source implementation of ZRTP keys exchange protocol'
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=(GPL2)
 depends=(libxml2 bctoolbox sqlite)
 makedepends=(bcunit cmake)
 source=(https://gitlab.linphone.org/BC/public/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2)
-sha256sums=('9072a8fa44ef5fc8d493f436cca1e9710f579ef9a0fc0d9dd709d1b209ea297d')
+sha256sums=('5632a958678ccdd2f22b141d13b487fe483d3ee9dd06868f2ceb3cce3a6a10ae')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
