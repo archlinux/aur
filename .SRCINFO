@@ -1,18 +1,18 @@
 pkgbase = today-todo
-	pkgdesc = A simple todo list with deadlines.
-	pkgver = 1.0.1
+	pkgdesc = A command line todo list
+	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/is3ny/today
+	url = https://github.com/heartheart3/today
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	makedepends = cmake
+	makedepends = gcc
 	makedepends = boost
 	makedepends = boost-libs
 	conflicts = today
-	source = today-1.0.1.tar.gz::https://github.com/is3ny/today/archive/v1.0.1.tar.gz
-	sha1sums = 7c6efe4ecb6d1d61dd5fe4b952302db612b85e38
+	source = today-1.0.0.tar.gz::https://github.com/heartheart3/today/archive/v1.0.0.tar.gz
+	sha1sums = 690f125d44a30157920bc27a14a3e5fbf8b0ac49
 
 pkgname = today-todo
-

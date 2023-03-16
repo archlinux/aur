@@ -1,20 +1,20 @@
-# Maintainer: Isabelle Lightray <supremeep@yandex.ru>
 pkgname=today-todo
-pkgver=1.0.1
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="A simple todo list with deadlines."
+pkgdesc="A command line todo list"
 arch=('i686' 'x86_64')
-url="https://github.com/is3ny/today"
+url="https://github.com/heartheart3/today"
 license=('BSD')
 conflicts=('today')
 makedepends=(
   'git'
   'cmake'
+  'gcc'
   'boost'
   'boost-libs'
 )
-source=("today-${pkgver}.tar.gz::https://github.com/is3ny/today/archive/v${pkgver}.tar.gz")
-sha1sums=('7c6efe4ecb6d1d61dd5fe4b952302db612b85e38')
+source=("today-${pkgver}.tar.gz::https://github.com/heartheart3/today/archive/v${pkgver}.tar.gz")
+sha1sums=('690f125d44a30157920bc27a14a3e5fbf8b0ac49')
 
 build() {
   cd "$srcdir/today-$pkgver"
