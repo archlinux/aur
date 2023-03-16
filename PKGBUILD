@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=bestNormalize
-_pkgver=1.8.3
+_pkgver=1.9.0
 pkgname=r-${_pkgname,,}
-pkgver=1.8.3
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='Normalizing Transformation Functions'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('70d677c5241d242d304dc88c3033e532fffcd4933df67b8ba5614cd3b709ff80')
+sha256sums=('ed8dbcb63e45d5a30e5752709cbad54777815dc0cec215f770ae10ccd51ae04f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

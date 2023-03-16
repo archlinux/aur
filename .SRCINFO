@@ -1,6 +1,6 @@
 pkgbase = r-bestnormalize
 	pkgdesc = Normalizing Transformation Functions
-	pkgver = 1.8.3
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=bestNormalize
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-bestnormalize
 	optdepends = r-rmarkdown
 	optdepends = r-scales
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/bestNormalize_1.8.3.tar.gz
-	sha256sums = 70d677c5241d242d304dc88c3033e532fffcd4933df67b8ba5614cd3b709ff80
+	source = https://cran.r-project.org/src/contrib/bestNormalize_1.9.0.tar.gz
+	sha256sums = ed8dbcb63e45d5a30e5752709cbad54777815dc0cec215f770ae10ccd51ae04f
 
 pkgname = r-bestnormalize
