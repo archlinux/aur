@@ -1,6 +1,6 @@
 # Maintainer: Noah Vogt (noahvogt) <noah@noahvogt.com>
 pkgname=openssh-dotconfig-bin
-pkgver=9.2p1
+pkgver=9.3p1
 pkgrel=1
 pkgdesc="NetworkManager VPN plugin for OpenVPN - with Support for the XDG Base Directory Specification (binary version)"
 pkgdesc='Premier connectivity tool for remote login with the SSH protocol - but moved $HOME/.ssh to $HOME/.config/ssh (binary version)'
@@ -13,7 +13,7 @@ optdepends=('xorg-xauth: X11 forwarding'
             'x11-ssh-askpass: input passphrase in X'
             'libfido2: FIDO/U2F support')
 source=("https://github.com/noahvogt/${pkgname%-*}-aur/releases/download/$pkgver-$pkgrel/${pkgname%-*}-$pkgver-$pkgrel-$arch.pkg.tar.zst")
-sha256sums=('ca44d8d22efefbffc3985d08e95ba0345219c23ac324e5546fa6489256b33b17')
+sha256sums=('41f2673e121b7dadd3674db657c7142abadf6d8274402c336cac2d3ee2ac83d2')
 provides=('openssh')
 conflicts=('openssh')
 
