@@ -1,32 +1,47 @@
 # Maintainer: Adrià Cabello <adro.cc79 at protonmail dot com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Started by https://github.com/qumaciel at https://github.com/PixarAnimationStudios/USD/issues/2000
 
 # WARNING This USD build is not intended for building Blender.
 
 _tbbmajorver=2019
 _tbbpkgminorver=6
-_opensubdivver=3.4.4
-_ver="v22.11"
-_fragment="#tag=$_ver"
 
 pkgname=usd
-pkgver=${_ver#v}
-pkgrel=2
-pkgdesc="3D VFX pipeline interchange file format."
-arch=('x86_64')
-url="https://graphics.pixar.com/usd/docs/index.html"
+pkgver=22.11
+pkgrel=3
+pkgdesc='3D VFX pipeline interchange file format'
+arch=(x86_64)
+url='https://openusd.org'
+_url='https://github.com/PixarAnimationStudios/USD'
 license=('Apache')
-depends+=('boost-libs' 'glew' 'openexr' 'python-opengl' 'pyside6' 'pyside2' 'opensubdiv')
-makedepends+=('boost' 'cmake' 'git' 'ninja' 'python-jinja' 'inetutils' 'doxygen' 'glfw' 'glew' 'python' 'python-pygments' 'python-docutils' 'opencl-headers' 'cuda')
-provides=("usd=${pkgver}")
-conflicts=("usd")
-source=("git+https://github.com/PixarAnimationStudios/USD.git${_fragment}"
-        https://github.com/oneapi-src/oneTBB/archive/refs/tags/${_tbbmajorver}_U${_tbbpkgminorver}.tar.gz
-        )
-sha512sums=('SKIP'
-            '6bcc014ec90cd62293811ac436eab03c7f7c7e3e03109efcab1c42cfed48d8bf83073d03ab381e5e63ee8c905f1792a7fdab272ec7e585df14102bad714ffc15'
-            )
+depends=(boost-libs
+         glew
+         jemalloc
+         openexr
+         opensubdiv
+         pyside2
+         pyside6
+         python-opengl)
+makedepends=(boost
+             cmake
+             cuda
+             doxygen
+             git
+             glew
+             glfw
+             inetutils
+             ninja
+             opencl-headers
+             python
+             python-docutils
+             python-jinja
+             python-pygments)
 options=(!lto)
+source=("git+$_url.git#tag=v$pkgver"
+        https://github.com/oneapi-src/oneTBB/archive/refs/tags/${_tbbmajorver}_U${_tbbpkgminorver}.tar.gz)
+sha512sums=('SKIP'
+            '6bcc014ec90cd62293811ac436eab03c7f7c7e3e03109efcab1c42cfed48d8bf83073d03ab381e5e63ee8c905f1792a7fdab272ec7e585df14102bad714ffc15')
 
 prepare() {
 
