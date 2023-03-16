@@ -1,0 +1,12 @@
+pkgbase = moonray-git
+	pkgdesc = DreamWorks’ production MCRT renderer
+	pkgver = 1.0.0.0
+	pkgrel = 1
+	url = https://openmoonray.org
+	arch = x86_64
+	license = Apache2
+	makedepends = cmake
+	source = openmoonray::git+https://github.com/dreamworksanimation/openmoonray#tag=v1.0.0.0
+	sha256sums = SKIP
+
+pkgname = moonray-git
