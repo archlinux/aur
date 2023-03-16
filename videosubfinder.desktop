@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+
+Name=VideoSubFinder
+Comment=Audio/Video processing software with focus on new generation HD formats, Blu-ray and HD DVD
+
+Exec=videosubfinder -o VideoSubFinder
+Icon=videosubfinder
+
+Terminal=false
+Categories=AudioVideo;Graphics;
