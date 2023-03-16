@@ -3,7 +3,7 @@
 pkgname=python-syncedlyrics
 _pkgname=syncedlyrics
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Get an LRC format (synchronized) lyrics for your music'
 arch=('any')
 url='https://github.com/rtcq/syncedlyrics'
@@ -18,7 +18,7 @@ sha256sums=('13672adb05ec6f51c3dafe6efb34b7379c3477f47ffaf9d87d9c1dbf70900956')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    python -m build --wheel --no-isolation
+    GIT_DIR=. python -m build --wheel --no-isolation
 }
 
 check() {
