@@ -2,8 +2,8 @@
 
 pkgname=gerb-git
 _pkgname=${pkgname%-git}
-pkgver=r310.735cc5e
-pkgrel=3
+pkgver=r314.0d61276
+pkgrel=1
 pkgdesc='Graphical font editor (GTK + Rust) '
 arch=(x86_64)
 url="https://github.com/epilys/$_pkgname"
@@ -35,13 +35,13 @@ build() {
 	cd "$_pkgname"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cargo build --frozen --release
+	cargo build --frozen --release --all-features
 }
 
 check() {
 	cd "$_pkgname"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo test --frozen
+	cargo test --frozen --all-features
 }
 
 
