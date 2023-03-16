@@ -1,18 +1,18 @@
 pkgbase = javahelp2
 	pkgdesc = Java based help system
 	pkgver = 2.0.05.r90
-	pkgrel = 5
+	pkgrel = 6
 	url = https://javaee.github.io/javahelp/
 	arch = any
 	license = custom
 	license = CDDL
 	license = GPL2
-	makedepends = apache-ant
+	makedepends = ant
 	makedepends = git
-	makedepends = jdk8-openjdk
 	depends = java-runtime
 	source = javahelp2::git+https://github.com/javaee/javahelp.git#commit=3ca862d8626096770598a3a256886d205246f4a4
-	sha256sums = SKIP
+	source = java9-fix.patch
+	sha512sums = SKIP
+	sha512sums = 089c778aa937cd288aeae6cc87aaa3747925bf32871266d5f1d2e243b105fb70823a9f4903e4c0fcb60f4c73ea62c2a2927ef56315a826c454a5be9b72b425a6
 
 pkgname = javahelp2
-
