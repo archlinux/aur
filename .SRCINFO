@@ -1,0 +1,18 @@
+pkgbase = seam-git
+	pkgdesc = Get real url, support douyu, huyu, bilibili etc
+	pkgver = 0.1.23.r20.g154a79e
+	pkgrel = 1
+	url = https://github.com/Borber/seam
+	arch = any
+	license = 
+	makedepends = git
+	makedepends = cargo
+	makedepends = rust
+	depends = openssl-1.1
+	depends = zlib
+	provides = seam
+	conflicts = seam
+	source = seam::git+https://github.com/Borber/seam.git
+	sha256sums = SKIP
+
+pkgname = seam-git
