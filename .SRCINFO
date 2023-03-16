@@ -1,13 +1,13 @@
 pkgbase = s5cmd
-	pkgdesc = Parallel S3 and local filesystem execution tool.
-	pkgver = 2.0.0
-	pkgrel = 3
+	pkgdesc = Parallel S3 and local filesystem execution tool
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = https://github.com/peak/s5cmd
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = go
-	source = https://github.com/peak/s5cmd/archive/v2.0.0.tar.gz
-	sha256sums = 016554a753830477c203d3ec11ad37eefce43ca7817856f861a173158c8f4a88
+	source = https://github.com/peak/s5cmd/archive/refs/tags/v2.1.0-beta.1.tar.gz
+	sha256sums = e14c7ecf04c6e195447c68347e428c2feb066dfe120d4573926a9baa55d8a9d6
 
 pkgname = s5cmd
