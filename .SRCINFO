@@ -8,6 +8,7 @@ pkgbase = i3status-rust-full-git
 	license = GPL3
 	makedepends = git
 	makedepends = rust
+	makedepends = pandoc
 	depends = libpulse
 	depends = lm_sensors
 	depends = notmuch

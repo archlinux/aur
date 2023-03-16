@@ -9,7 +9,7 @@ arch=('x86_64')
 url='https://github.com/greshake/i3status-rust'
 license=('GPL3')
 depends=('libpulse' 'lm_sensors' 'notmuch')
-makedepends=('git' 'rust')
+makedepends=('git' 'rust' 'pandoc')
 optdepends=('alsa-utils: for the volume block'
             'bluez: for the bluetooth block'
             'fakeroot: for the pacman block to show pending updates'
@@ -33,6 +33,7 @@ pkgver() {
 build() {
   cd "${shortname}"
   cargo build --release --features "pulseaudio maildir notmuch"
+  cargo xtask generate-manpage
 }
 
 package() {
