@@ -1,6 +1,6 @@
 pkgbase = bc-gh
 	pkgdesc = Implementation of dc and POSIX bc with GNU extensions
-	pkgver = 6.4.0
+	pkgver = 6.5.0
 	pkgrel = 1
 	url = https://github.com/gavinhoward/bc
 	arch = i686
@@ -14,12 +14,12 @@ pkgbase = bc-gh
 	provides = bc
 	conflicts = bc
 	options = lto
-	source = bc-gh-6.4.0.tar.xz::https://github.com/gavinhoward/bc/releases/download/6.4.0/bc-6.4.0.tar.xz
-	source = bc-gh-6.4.0.tar.xz.sig::https://github.com/gavinhoward/bc/releases/download/6.4.0/bc-6.4.0.tar.xz.sig
+	source = bc-gh-6.5.0.tar.xz::https://github.com/gavinhoward/bc/releases/download/6.5.0/bc-6.5.0.tar.xz
+	source = bc-gh-6.5.0.tar.xz.sig::https://github.com/gavinhoward/bc/releases/download/6.5.0/bc-6.5.0.tar.xz.sig
 	validpgpkeys = FF360647C7A7147F27DAAEC1B132F881C306590A
-	sha256sums = 614f59ce6b155a2f7d637112fa71156d890887967e63b97eccaa6a50b01ffbd4
-	sha256sums = cc7b36e2c53102ee6ed7957585f05b1bf61335e100c0ffb46cf715f8286e7ce6
-	sha512sums = 6c7a86c534214e765e3890dffe77fb85ddf0764cde0c6ceb0385cce7de4c0d2db0815faf6bcf161fad75591461c346811a61c42c5eced7c3d84fe5b7eb719b60
-	sha512sums = f0b6519c7d61d9be01c5643c1df0262a05772c38158eb0974bb98d04f6ef6072be427b7696b489dd6992cbc671b94bcd5159f8bee3cc85106d3bde7e12cd613d
+	sha256sums = b1afb1f50c0bce6119c98590bcc8afc22f520bc85c2b512c83938dbb8321cc30
+	sha256sums = c8675323d281c3a1b7ad54005d8bb254ae1bbfb6040d7a625e5edaba0cbca9fe
+	sha512sums = 1cb03038d828a0b10734c29931777add8b22f194c507b8ff538ec1aa52a2a97a4ac2733d72cdb0710fdc6937807074e929f7918c56aaf5be8fbe908ea7c5a401
+	sha512sums = af40494264af605339ddb6738c1f13ab7dd1cc2eba7b3a4ef98ed47094159950f4266876dd8fad179250ecad3c74cafa9791d5302d736eb5e0c5d3c77b000c4d
 
 pkgname = bc-gh
