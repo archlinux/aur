@@ -1,25 +1,35 @@
 # Maintainer: Amirreza Firoozi <firoozi128.af@gmail.com>
+# Maintainer: Oleg Hahm <oleg+aur@riot-os.org>
+_pkgname="bash-script-wttr"
 pkgname=wttr
-pkgver=1.2.1
-pkgrel=2
+pkgver=1.55
+pkgrel=1
 epoch=
-pkgdesc="a simple script that helps you check weather condition using site : http://wttr.in "
-arch=('i686' 'x86_64')
-url="https://Github.com/AmirrezaFiroozi/wttr"
-license=('GPL3')
+pkgdesc="a simple script that checks the weather condition via http://wttr.in"
+arch=('any')
+url="https://github.com/cblte/${_pkgname}"
+license=('MIT')
+makedepends=('git')
+provides=("wttr=${pkgver}")
+conflicts=("wttr")
 depends=('curl')
+source=("git+https://github.com/cblte/${_pkgname}")
 install=$pkgname.install
 md5sums=('SKIP')
 changelog=
-source=("https://github.com/AmirrezaFiroozi/wttr/archive/v1.2.1.tar.gz")
 noextract=()
 
+pkgver() {
+  cd ${_pkgname}
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 package() {
-mkdir -p $pkgname/usr/bin/
-mkdir -p $pkgname/usr/share/${pkgname}/
-cp -r "$srcdir"/${pkgname}-${pkgver}/* $srcdir/
-    cd "$srcdir"
-    install -Dm0755 "wttr_main" $pkgdir/usr/bin/wttr
-    install -Dm0755 "changelog" $pkgdir/usr/share/${pkgname}/changelog
+    mkdir -p ${pkgdir}/usr/bin/
+    mkdir -p ${pkgdir}/usr/share/${pkgname}/
+        cd "${_pkgname}"
+            install -Dm0755 "wttr" ${pkgdir}/usr/bin/wttr
+            install -Dm0644 "changelog" ${pkgdir}/usr/share/${pkgname}/changelog
+            install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
