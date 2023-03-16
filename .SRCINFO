@@ -46,3 +46,6 @@ pkgbase = moonray
 	sha256sums = SKIP
 
 pkgname = moonray
+
+pkgname = moonray-gui
+	depends = moonray

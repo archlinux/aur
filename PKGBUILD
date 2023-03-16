@@ -1,6 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-pkgname=moonray
+pkgbase=moonray
+pkgname=($pkgbase moonray-gui)
 _pkgname=openmoonray
 pkgver=1.0.0.0
 pkgrel=1
@@ -60,6 +61,11 @@ build() {
 	cd "$_pkgname"
 }
 
-package() {
+package_moonray() {
+	cd "$_pkgname"
+}
+
+package_moonray-gui() {
+        depends+=($pkgbase)
 	cd "$_pkgname"
 }
