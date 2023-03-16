@@ -1,5 +1,5 @@
 pkgbase = cachy-browser-firefox-shim
-	pkgdesc = A symlink for using Cachy Browser Firefox
+	pkgdesc = A symlink for using Cachy Browser as Firefox
 	pkgver = 110.0.1
 	pkgrel = 1
 	url = https://github.com/CachyOS/CachyOS-Browser-Settings
