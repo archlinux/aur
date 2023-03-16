@@ -1,6 +1,5 @@
 *.xpi
-*.pkg.*
+*pkg*
 src
-pkg
 venv
 .idea
