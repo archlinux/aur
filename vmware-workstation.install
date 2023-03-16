@@ -23,7 +23,7 @@ EOF
 post_remove() {
   cat << EOF
 
-==> To remove VMware settings, delete /etc/vmware and /etc/vmware-installer directories.
+==> To completely clean VMware installation, you may have to manually delete /etc/vmware, /etc/vmware-installer and /usr/lib/vmware-installer directories if they still exist.
 
 EOF
 }

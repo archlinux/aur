@@ -15,8 +15,8 @@
 
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation-openrc
-pkgver=17.0.0
-_buildver=20800274
+pkgver=17.0.1
+_buildver=21139696
 _pkgver=${pkgver}_${_buildver}
 pkgrel=2
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC. Modified to use OpenRC.'
@@ -77,7 +77,7 @@ source=(
   'vmnet.patch'
 )
 sha256sums=(
-  '9014e87066f5b60e62f9dbd698e68f7cf507c6b59c5fcfe86de2aa44647e9910'
+  '95fd421b8705bf6e57b893f2a4570928d702129249bc49fc5cc34cf779defb65'
 
   '67edc40e39686281f5101ced1a250648ae32e4cd5dffe4fd47bc3c7aed929d50'
   'da1698bf4e73ae466c1c7fc93891eba4b9c4581856649635e6532275dbfea141'
@@ -108,8 +108,8 @@ _isovirtualprinterimages=(Linux Windows)
 
 if [ -n "$_enable_macOS_guests" ]; then
 
-_vmware_fusion_ver=13.0.0
-_vmware_fusion_buildver=20802013
+_vmware_fusion_ver=13.0.1
+_vmware_fusion_buildver=21139760
 _vmware_fusion_ver_full=${_vmware_fusion_ver}_${_vmware_fusion_buildver}
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
@@ -117,7 +117,7 @@ makedepends+=(
   python
   dmg2img
   p7zip
-  uefipatch
+  uefitool
 )
 
 source+=(
@@ -126,7 +126,7 @@ source+=(
   "efi-patches.txt"
 )
 sha256sums+=(
-  '40bb9fbd4b2a18b48138a7fb3285d89187d50caab10506cff81b367b6edc858d'
+  'e92ebc38fd5b1a693168f837a31932558a641c84fb57ad72f55e47c8ac4332df'
   '8a61e03d0edbbf60c1c84a43aa87a6e950f82d2c71b968888f019345c2f684f3'
   '392c1effcdec516000e9f8ffc97f2586524d8953d3e7d6f2c5f93f2acd809d91'
 )
@@ -147,13 +147,13 @@ _create_database_file() {
   for isoimage in ${_isoimages[@]}
   do
 	local version=$(cat "$srcdir/extracted/vmware-tools-$isoimage/manifest.xml" | grep -oPm1 "(?<=<version>)[^<]+")
-	sqlite3 "$database_filename" "INSERT INTO components(name,version,buildNumber,component_core_id,longName,description,type) VALUES(\"vmware-tools-$isoimage\",\"$version\",\"${_pkgver#*_}\",1,\"$isoimage\",\"$isoimage\",1);"
+	sqlite3 "$database_filename" "INSERT INTO components(name,version,buildNumber,component_core_id,longName,description,type) VALUES('vmware-tools-$isoimage','$version',${_pkgver#*_},1,'$isoimage','$isoimage',1);"
   done
 
 if [ -n "$_enable_macOS_guests" ]; then
   for isoimage in ${_fusion_isoimages[@]}
   do
-	sqlite3 "$database_filename" "INSERT INTO components(name,version,buildNumber,component_core_id,longName,description,type) VALUES(\"vmware-tools-$isoimage\",\"1\",\"${_vmware_fusion_ver_full#*_}\",1,\"$isoimage\",\"$isoimage\",1);"
+	sqlite3 "$database_filename" "INSERT INTO components(name,version,buildNumber,component_core_id,longName,description,type) VALUES('vmware-tools-$isoimage','1',${_vmware_fusion_ver_full#*_},1,'$isoimage','$isoimage',1);"
   done
 fi
 }
