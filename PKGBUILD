@@ -52,7 +52,7 @@ fi
 
 pkgname=ffmpeg-obs
 pkgver=6
-pkgrel=2
+pkgrel=3
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('i686' 'x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -61,6 +61,7 @@ license=(GPL3)
 # Only for default set of features
 _aomver=3
 _dav1dver=1.0.0
+_ffnvcodecver=12.0.16.0
 _libristver=0.2.7
 _libvpxver=1.13
 _srtver=1.5
@@ -131,7 +132,7 @@ makedepends=(
   amf-headers
   avisynthplus
   clang
-  ffnvcodec-headers
+  "ffnvcodec-headers>=$_ffnvcodecver"
   ladspa
   mesa
   nasm
@@ -346,7 +347,7 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     rtmpdump 'shine' smbclient snappy tesseract
     twolame 'uavs3d-git' 'vo-amrwbenc' 'xavs' 'xavs2' zeromq
     zvbi lv2 lilv libmysofa openal
-    'pocketsphinx' vapoursynth libomxil-bellagio 'rockchip-mpp' libplacebo
+    vapoursynth libomxil-bellagio 'rockchip-mpp' libplacebo #'pocketsphinx'
     lcms2 'libjxl>=0.7.0'
   )
   _args+=(
@@ -357,7 +358,7 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     --enable-librtmp --enable-libshine --enable-libsmbclient --enable-libsnappy --enable-libtesseract
     --enable-libtwolame --enable-libuavs3d --enable-libvo-amrwbenc --enable-libxavs --enable-libxavs2 --enable-libzmq
     --enable-libzvbi --enable-lv2 --enable-libmysofa --enable-openal
-    --enable-pocketsphinx --enable-vapoursynth --enable-omx --enable-rkmpp --enable-libplacebo
+    --enable-vapoursynth --enable-omx --enable-rkmpp --enable-libplacebo #--enable-pocketsphinx
     --enable-lcms2 --enable-libjxl
   )
   provides+=(ffmpeg-full)
