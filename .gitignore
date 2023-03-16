@@ -1,0 +1,4 @@
+pkg/
+src/
+cubic-rce-bot-git/
+*.tar.zst

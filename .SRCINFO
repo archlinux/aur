@@ -1,0 +1,17 @@
+pkgbase = cubic-rce-bot-git
+	pkgdesc = Execute commands on a remote host via a Telegram bot
+	pkgver = 1.0.0.r0.g820c2d7
+	pkgrel = 1
+	url = https://github.com/database64128/cubic-rce-bot
+	arch = x86_64
+	arch = aarch64
+	license = AGPL3
+	makedepends = git
+	makedepends = go
+	provides = cubic-rce-bot
+	conflicts = cubic-rce-bot
+	backup = etc/cubic-rce-bot/config.json
+	source = cubic-rce-bot-git::git+https://github.com/database64128/cubic-rce-bot.git
+	b2sums = SKIP
+
+pkgname = cubic-rce-bot-git
