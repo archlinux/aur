@@ -1,6 +1,6 @@
 pkgbase = python-aioesphomeapi
 	pkgdesc = Python Client for ESPHome native API. Used by Home Assistant.
-	pkgver = 13.1.0
+	pkgver = 13.5.0
 	pkgrel = 1
 	url = https://github.com/esphome/aioesphomeapi
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-aioesphomeapi
 	depends = python-protobuf
 	depends = python-zeroconf
 	depends = python-noiseprotocol-git
-	source = https://github.com/esphome/aioesphomeapi/archive/refs/tags/v13.1.0.tar.gz
-	sha256sums = a29c1cca396219363197be4b1b14ca944c6b3b60e494307848118c6587c1329b
+	source = https://github.com/esphome/aioesphomeapi/archive/refs/tags/v13.5.0.tar.gz
+	sha256sums = c78e3de4b1c683a70b1d44badcbf6c4ae1001636762a15a85636b0d5fdfd2ace
 
 pkgname = python-aioesphomeapi
