@@ -14,7 +14,7 @@ optdepends=('python-aiohttp: adds support for the AIOHTTP-Server Web Framework'
             'python-arq: Arq integration'
             'python-bottle: adds support for the Bottle Web Framework'
             'python-celery: adds support for the Celery Task Queue System'
-            'python-chalice: for the Chalice web framework for AWS Lambda'\
+            'python-chalice: for the Chalice web framework for AWS Lambda'
             'python-django: adds support for the Django Web Framework'
             'python-falcon: adds support for the Falcon Web Framework'
             'python-fastapi: adds support for the FastAPI framework'
