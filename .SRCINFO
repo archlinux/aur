@@ -1,0 +1,13 @@
+pkgbase = stempel-bin
+	pkgdesc = Track the time you spent working
+	pkgver = 0.16.0
+	pkgrel = 1
+	url = https://github.com/KuabeM/stempel
+	arch = x86_64
+	license = MIT
+	provides = stempel
+	conflicts = stempel
+	source = https://github.com/KuabeM/stempel/releases/download/v0.16.0/stempel-0.16.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 71567b973afce8196799e3a89bed77eb6b293131eb60c5f8f80fc235656642b9
+
+pkgname = stempel-bin
