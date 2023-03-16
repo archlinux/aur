@@ -1,7 +1,7 @@
 pkgbase = hola-proxy
 	pkgdesc = Standalone Hola proxy client
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Snawoot/hola-proxy
 	arch = x86_64
 	license = MIT

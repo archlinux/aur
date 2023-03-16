@@ -2,7 +2,7 @@
 
 pkgname="hola-proxy"
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone Hola proxy client"
 arch=(x86_64)
 url="https://github.com/Snawoot/hola-proxy"
@@ -26,6 +26,8 @@ build() {
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
     
+    go mod edit -require=github.com/AdguardTeam/dnsproxy@v0.48.0
+    go get github.com/Snawoot/hola-proxy
     go build -o build .
 }
 
