@@ -1,0 +1,17 @@
+pkgbase = pet
+	pkgdesc = Tool to extract a polyhedral model from C source using LLVM/clang to parse C code and isl to represent sets and relations.
+	pkgver = 0.11.6
+	pkgrel = 1
+	url = https://repo.or.cz/pet.git
+	arch = any
+	license = Copyright Leiden University & Ecole Normale Superieure
+	makedepends = git
+	makedepends = llvm
+	makedepends = pkgconf
+	depends = libisl>0.19
+	depends = polylib-gmp
+	depends = libyaml
+	source = git+https://repo.or.cz/pet.git#tag=pet-0.11.6
+	sha256sums = SKIP
+
+pkgname = pet
