@@ -1,5 +1,5 @@
 pkgname=mingw-w64-netcdf
-pkgver=4.9.0
+pkgver=4.9.2
 pkgrel=1
 pkgdesc="network Common Data Form interface for array-oriented data access and corresponding library (mingw-w64)"
 arch=('any')
@@ -9,7 +9,7 @@ makedepends=('mingw-w64-cmake')
 options=('staticlibs' '!buildflags' '!strip')
 license=('custom')
 source=("https://github.com/Unidata/netcdf-c/archive/v${pkgver}.tar.gz")
-sha256sums=('9f4cb864f3ab54adb75409984c6202323d2fc66c003e5308f3cdf224ed41c0a6')
+sha256sums=('bc104d101278c68b303359b3dc4192f81592ae8640f1aee486921138f7f88cb7')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
