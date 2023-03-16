@@ -3,7 +3,7 @@
 _pkgname="hyprland"
 pkgname="${_pkgname}-nvidia"
 pkgver="0.23.0beta"
-pkgrel=1
+pkgrel=2
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (NVIDIA patch)"
 arch=(any)
 url="https://github.com/hyprwm/Hyprland"
@@ -61,7 +61,7 @@ build() {
 	cd "$srcdir/hyprland-source"
 	make fixwlr
 	patch --directory="$srcdir/hyprland-source/subprojects/wlroots/" --forward --strip=0 \
-		--input="${srcdir}/../nvidia.patch"
+		--input="${srcdir}/nvidia.patch"
 	cd "./subprojects/wlroots/" && meson build/ --prefix="${srcdir}/tmpwlr" --buildtype=release && ninja -C build/ && mkdir -p "${srcdir}/tmpwlr" && ninja -C build/ install && cd ../
     cd udis86 && cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -H./ -B./build -G Ninja && cmake --build ./build --config Release --target all -j$(shell nproc) && cd ../..
 	make protocols
