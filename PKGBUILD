@@ -1,6 +1,6 @@
 pkgname=python-wandb
-pkgver=0.12.11
-pkgrel=2
+pkgver=0.14.0
+pkgrel=1
 pkgdesc='Weights and Biases - organize and analyze machine learning experiments'
 arch=('any')
 url='https://wandb.ai'
@@ -10,10 +10,10 @@ makedepends=('git' 'python-setuptools')
 provides=('python-wandb')
 conflicts=("python-wandb-git")
 source=(
-    'https://files.pythonhosted.org/packages/a0/c4/37887f989bed4784bb11fc90201da76f45ac11c6582f9fed94ed1a7c8de1/wandb-0.12.11.tar.gz'
+    'https://files.pythonhosted.org/packages/10/b0/314ec38aa9ea79e98e755059369c39cf7cec9b3720fdfd1fd082c28d754b/wandb-0.14.0.tar.gz'
 )
 sha256sums=(
-    '808c832a109cdd49f85226446b4224c77ff3bd81c0a9470e8fce43e5306a39a0'
+    '2f17b570ca26619ca35bd4ea9628961aae1d91cad56cf26becb917854ea055d3'
 )
 
 build() {
