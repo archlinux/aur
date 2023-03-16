@@ -43,7 +43,7 @@ source=("$_pkgname::git+$_url/$_pkgname"
         "$_pkgname+moonray+render_profile_viewer::git+$_url/render_profile_viewer.git"
         "$_pkgname+moonray+scene_rdl2::git+$_url/scene_rdl2.git")
 sha256sums=('SKIP'
-            '930a397214c3f66cc3466920e5c55db9bd687cf8ffd3f9ab095afe2ebf15bb95'
+            'ae7c3cec15014ecf94bea90087d42b511d3bf906c9030c713ce01868562c8a4c'
             'SKIP'
             'SKIP'
             'SKIP'

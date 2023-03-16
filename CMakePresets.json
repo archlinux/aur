@@ -5,7 +5,7 @@
             "name": "arch-environment",
             "hidden": false,
             "environment": {
-                "DEPS_ROOT"                     : "/",
+                "DEPS_ROOT"                     : "/usr",
                 "BUILD_DIR"                     : "build",
                 "CPPUNIT_ROOT"                  : "$env{DEPS_ROOT}",
                 "ISPC"                          : "$env{DEPS_ROOT}/bin/ispc",
