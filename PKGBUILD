@@ -2,7 +2,7 @@
 
 pkgname=pato
 pkgver=0.0.2
-pkgrel=0
+pkgrel=1
 pkgdesc="PATO: high PerformAnce TriplexatOr is a high performance tool for the fast and efficient detection of triple helices and triplex features in nucleotide sequences"
 arch=('any')
 url="https://github.com/UDC-GAC/pato"
