@@ -1,0 +1,21 @@
+diff -ur a/src/tag.cc b/src/tag.cc
+--- a/src/tag.cc	2019-09-06 17:31:19.000000000 +0200
++++ b/src/tag.cc	2023-03-09 22:42:56.363890247 +0100
+@@ -490,7 +490,7 @@
+ 
+ void tag_remove_mp4(TagLib::MP4::Tag *tag) {
+   TagLib::String desc;
+-  TagLib::MP4::ItemListMap &items = tag->itemListMap();
++  TagLib::MP4::ItemListMap items = tag->itemListMap();
+ 
+   for(TagLib::MP4::ItemListMap::Iterator item = items.begin();
+       item != items.end(); ++item)
+@@ -568,7 +568,7 @@
+ 
+ void tag_remove_asf(TagLib::ASF::Tag *tag) {
+   TagLib::String desc;
+-  TagLib::ASF::AttributeListMap &items = tag->attributeListMap();
++  TagLib::ASF::AttributeListMap items = tag->attributeListMap();
+ 
+   for(TagLib::ASF::AttributeListMap::Iterator item = items.begin();
+       item != items.end(); ++item)
