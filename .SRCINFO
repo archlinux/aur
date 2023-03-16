@@ -1,17 +1,19 @@
 pkgbase = python-adafruit-circuitpython-displayio-ssd1306
 	pkgdesc = DisplayIO driver for SSD1306 monochrome displays
-	pkgver = 1.5.8
+	pkgver = 1.6.0
 	pkgrel = 0
 	url = https://github.com/adafruit/Adafruit_CircuitPython_DisplayIO_SSD1306
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
 	license = MIT
-	makedepends = python-setuptools
-	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
 	depends = python
 	depends = python-adafruit-blinka-displayio
-	source = https://pypi.io/packages/source/a/adafruit-circuitpython-displayio-ssd1306/adafruit-circuitpython-displayio-ssd1306-1.5.8.tar.gz
-	sha256sums = 4c698bc1caef25af0aab08258baa2a7778904717ff64fd8a6539e3660621a4ec
+	source = https://pypi.io/packages/source/a/adafruit-circuitpython-displayio-ssd1306/adafruit-circuitpython-displayio-ssd1306-1.6.0.tar.gz
+	sha256sums = a745d8ea6004053a99a4bcc18a63477026122444866eb7bca8556695a49fa6ea
 
 pkgname = python-adafruit-circuitpython-displayio-ssd1306
