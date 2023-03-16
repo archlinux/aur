@@ -19,11 +19,11 @@ sha256sums=('356758d7292e17c998c573c2c1a56aea61244171eb526844cbf0570c5627d95d')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
-    python setup.py build || return 1
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/${_pypi_pkgname}-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
-  install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd "$srcdir/${_pypi_pkgname}-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -vDm644 -t "$pkgdir/usr/share/license/$pkgname" LICENSE
 }
