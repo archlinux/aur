@@ -1,4 +1,4 @@
-# Maintainer: _void <?>
+# Maintainer: countzero <?>
 pkgname="rwc"
 pkgver=r21.80fee50
 pkgrel=1
