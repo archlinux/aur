@@ -1,6 +1,6 @@
 # Maintainer: Chris Rizzitello <sithlord48@gmail.com>
 pkgname=libff7tk
-pkgver=0.83.1
+pkgver=0.83.2
 pkgrel=1
 provides=('libff7tk')
 conflicts=('libff7tk-git')
@@ -12,8 +12,8 @@ makedepends=('cmake' 'doxygen' 'clang')
 depends=('qt6-base' 'qt6-tools' 'qt6-svg' 'qt6-declarative' 'qt6-5compat' 'zlib') #Qt6)
 #optdepends=('otf-ipafont: font for displaying japanese')
 install=$pkgname.install
-source=('https://github.com/sithlord48/ff7tk/archive/refs/tags/v0.83.1.tar.gz')
-sha256sums=('94a33f0b9fa77c43d0a3bf47939b97e5bc43bc6e2ec5d8b732a59d00e2be4298')
+source=('https://github.com/sithlord48/ff7tk/archive/refs/tags/v0.83.2.tar.gz')
+sha256sums=('2e0c7bf80b4cdb1ab63bc6d971312eb3ef7ea29dc1682746386b2b0858457241')
 options+=(!strip)
 
 build() {
