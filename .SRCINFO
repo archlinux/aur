@@ -1,17 +1,19 @@
 pkgbase = makoureactor
 	pkgdesc = Final Fantasy 7 Field Editor
-	pkgver = 1.8.3
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/myst6re/makoureactor
 	arch = i686
 	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = GPL3
-	depends = qt5-base
-	depends = freeglut
+	depends = qt6-base
 	depends = zlib
+	depends = libff7tk
 	conflicts = makoureactor-git
-	source = https://github.com/myst6re/makoureactor/archive/1.8.3.tar.gz
-	md5sums = 5748befdbad30c8de88634a88b302d30
+	source = https://github.com/myst6re/makoureactor/archive/2.0.0.tar.gz
+	sha256sums = 167d58cb904d3285321ba05447e9b1bacf80b87085562aafa1406d9d523721d9
 
 pkgname = makoureactor
-
