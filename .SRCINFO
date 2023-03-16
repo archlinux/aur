@@ -1,6 +1,6 @@
 pkgbase = depot-tools-git
 	pkgdesc = Tools for working with Chromium development
-	pkgver = r8355.04d9c8345
+	pkgver = r9431.c5b38329e
 	pkgrel = 1
 	url = https://chromium.googlesource.com/chromium/tools/depot_tools
 	install = depot-tools-git.install
