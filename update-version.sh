@@ -1,4 +1,4 @@
-set -xeu
+set -eu
 version=$(curl -sL \
   -H "Accept: application/vnd.github+json" \
   https://api.github.com/repos/quarto-dev/quarto-cli/releases  | jq "map(select(.prerelease))[0].name" | tr -d "v")
