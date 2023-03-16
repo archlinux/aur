@@ -14,16 +14,10 @@ provides=('pato')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/UDC-GAC/pato/archive/v${pkgver}.tar.gz")
 sha256sums=('3763d7ff5d3f3e85baf8c97682b2b50bdb5f7d5d8ca1d818d25c61e79beabdb6')
 
-# TODO FIX PARSING ARGUMENTS FROM makepkg VARS
-_wflags="-Wno-address"
-
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
   sed -i 's/-march=native//g' makefiles/Makefile.gnu
-  sed -i 's/-march=native//g' makefiles/Makefile.clang
-  sed -i 's/-xHost//g' makefiles/Makefile.intel
   sed -i "s/\"v${pkgver}\"/\"v${pkgver}-${pkgrel}arch\"/g" src/command_line_parser.hpp
-  sed -i "s/CXXFLAGS+=/CXXFLAGS+=${_wflags} /g" makefiles/Makefile.gnu
 }
 
 build() {
@@ -37,7 +31,7 @@ check() {
 
   make gnu BUILD=serial $MAKEFLAGS
 
-  ./test/test.bash  
+  ./test/test.bash gnu
 }
 
 package() {
