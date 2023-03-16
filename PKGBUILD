@@ -1,7 +1,7 @@
 # Maintainer: BrainDamage
 
 pkgname=python-metpy
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 _basename="MetPy"
 _dirname="${_basename}-${pkgver}"
@@ -18,7 +18,7 @@ makedepends=('python-setuptools' 'python-setuptools-scm')
 #makedepends+=('python-sphinx' 'python-sphinx-gallery' 'python-myst-parser' 'python-netcdf4')
 checkdepends=('python-pytest' 'python-pytest-mpl' 'python-cartopy' 'python-shapely' 'python-netcdf4')
 source=("${pkgname}-${pkgver}::https://github.com/Unidata/${_basename}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('951fa4377d4eaa570dff43d95fbb57f16ca72ea109a67addf0e91928bdd78a4e')
+sha256sums=('c8f0c6a449386844a3712b5bd95262ddb755aeceba7a68b429798ccaa3eb8699')
 
 build() {
 	cd "${srcdir}/${_dirname}"
