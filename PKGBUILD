@@ -1,7 +1,7 @@
 # Maintainer: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=manuskript
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc='Provides a rich environment to help writers create their first draft and then further refine and edit their masterpiece'
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('qt5-webengine: preview PDF export'
             'pandoc: export to various formats'
             'pdfjs: preview PDF export')
 source=("https://github.com/olivierkes/$pkgname/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('5d7326e4f9941e83a74e186d502c82306b8ae66dccf806bf0bc016e0e933d0ae')
+sha256sums=('e9139178c6c10f50817481037483c36329d7f0d5048f3ffecd0b0e9f9c02e027')
 
 prepare() {
   cd "$pkgname-$pkgver"
