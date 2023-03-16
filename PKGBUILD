@@ -1,8 +1,9 @@
 # Maintainer: CosmicHorror <CosmicHorrorDev@pm.me>
+# Maintainer: Aloso <ludwig.stecher@gmx.de>
 
 pkgname=to-html
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Render a terminal with ANSI colors as HTML'
 arch=(x86_64)
 url="https://github.com/Aloso/$pkgname"
