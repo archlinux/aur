@@ -1,7 +1,7 @@
 pkgbase = minuimus
-	pkgdesc = file optimiser script: point it at a file, it makes it smaller without compromising content
+	pkgdesc = file optimiser: makes files smaller without compromising content
 	pkgver = 3.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://birds-are-nice.me/software/minuimus.html
 	arch = x86_64
 	license = GPL
