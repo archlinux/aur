@@ -2,25 +2,30 @@
 
 pkgname=python-adafruit-circuitpython-st7735r
 _pypi_pkgname=adafruit-circuitpython-st7735r
-pkgver=1.5.8
+pkgver=1.5.10
 pkgrel=0
 pkgdesc="displayio driver for ST7735R TFT-LCD displays"
-arch=('armv6h' 'armv7h' 'aarch64')
+arch=('any')
 url="https://github.com/adafruit/Adafruit_CircuitPython_ST7735R"
 license=('MIT')
-makedepends=('python-setuptools' 'python-pip')
+makedepends=(
+'python-build'
+'python-installer'
+'python-wheel'
+'python-setuptools-scm'
+)
 depends=('python' 'python-adafruit-blinka-displayio')
 optdepends=()
 source=("https://pypi.io/packages/source/a/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('bd168df9df316bcd08e5bcab204657ad259024b19462fdea9e1cd8c389bdfd71')
+sha256sums=('8a2446179795b1ffd2cc2c9499b67351759473c9af2b937bd8d876866dfd3059')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
-    python setup.py build || return 1
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
-    python setup.py install --root=${pkgdir} --optimize=1 || return 1
-    install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -vDm644 -t "$pkgdir/usr/share/license/$pkgname" LICENSE
 }

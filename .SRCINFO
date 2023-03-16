@@ -1,17 +1,17 @@
 pkgbase = python-adafruit-circuitpython-st7735r
 	pkgdesc = displayio driver for ST7735R TFT-LCD displays
-	pkgver = 1.5.8
+	pkgver = 1.5.10
 	pkgrel = 0
 	url = https://github.com/adafruit/Adafruit_CircuitPython_ST7735R
-	arch = armv6h
-	arch = armv7h
-	arch = aarch64
+	arch = any
 	license = MIT
-	makedepends = python-setuptools
-	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
 	depends = python
 	depends = python-adafruit-blinka-displayio
-	source = https://pypi.io/packages/source/a/adafruit-circuitpython-st7735r/adafruit-circuitpython-st7735r-1.5.8.tar.gz
-	sha256sums = bd168df9df316bcd08e5bcab204657ad259024b19462fdea9e1cd8c389bdfd71
+	source = https://pypi.io/packages/source/a/adafruit-circuitpython-st7735r/adafruit-circuitpython-st7735r-1.5.10.tar.gz
+	sha256sums = 8a2446179795b1ffd2cc2c9499b67351759473c9af2b937bd8d876866dfd3059
 
 pkgname = python-adafruit-circuitpython-st7735r
