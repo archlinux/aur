@@ -2,7 +2,7 @@
 # Contributor: (XavierCLL) Xavier Corredor <xavier.corredor.llano (a) gmail.com>
 
 pkgname=ksvnupdater
-pkgver=2.2.4
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Utility oriented to KDE translation teams. You can have various local copies of repository, generating projects for Lokalize, checks and corrections using Pology and more."
 arch=('x86_64' 'i686')
@@ -19,8 +19,8 @@ optdepends=('git: download Scripty and Pology binaries'
             'pology: translations checks. Broken due to dependencies'
             'python2-pyenchant: spell checking functionality (needs a dictionary)')
 source=(https://www.eloihr.net/ksvnupdater/files/ksvnupdater-$pkgver.tar.bz2)
-md5sums=('986c0454ee974b4488cf1f2aa1e46613')
-sha1sums=('7f11d5ee3396e5f8f5b23eb9d34d223032513d15')
+md5sums=('6e88c47f49165c13ab4f3e925db4b296')
+sha1sums=('7cf1bf02ac5e49d582902ff50f86d559261776ce')
 
 build() {
   cd "$pkgname-$pkgver"
