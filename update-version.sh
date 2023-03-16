@@ -1,14 +1,10 @@
-#wget https://raw.githubusercontent.com/quarto-dev/quarto-web/main/docs/download/_prerelease.json
-
-version=$(jq -r '.version' _prerelease.json)
+version=$(curl -sL \
+  -H "Accept: application/vnd.github+json" \
+  https://api.github.com/repos/quarto-dev/quarto-cli/releases  | jq "map(select(.prerelease))[1].name" | tr -d "v")
 echo $version
-sed -i "s/^pkgver=.*/pkgver=${version}/" PKGBUILD
+sed "s/:version:/$version/" PKGBUILD.template > PKGBUILD
 
-checksum=$(jq -r '.assets[2].checksum' _prerelease.json)
-sed -i "s/^sha256sums=('.*/sha256sums=('${checksum}')/" PKGBUILD
-
-
+updpkgsums
 makepkg --printsrcinfo > .SRCINFO
-git add PKGBUILD .SRCINFO
-git commit -m "Pre-release version $version"
-git push aur master
+git commit -am "Autorelease version $version"
+#git push
