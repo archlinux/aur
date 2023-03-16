@@ -1,6 +1,4 @@
 *.tar.*
 src
-pkg
-*.pkg.*
-splash-arch.bmp
+*pkg*
 *.log
