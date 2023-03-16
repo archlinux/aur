@@ -2,25 +2,32 @@
 
 pkgname=python-adafruit-circuitpython-st7735
 _pypi_pkgname=adafruit-circuitpython-st7735
-pkgver=1.2.7
+pkgver=1.2.8
 pkgrel=0
 pkgdesc="CircuitPython library for SSD1306 OLED displays"
-arch=('armv6h' 'armv7h' 'aarch64')
+arch=('any')
 url="https://github.com/adafruit/Adafruit_CircuitPython_ssd1306"
 license=('MIT')
-makedepends=('python-setuptools' 'python-pip')
-depends=('python' 'python-adafruit-blinka-displayio')
+makedepends=(
+'python-build'
+'python-installer'
+'python-wheel'
+'python-setuptools-scm'
+)
+depends=('python'
+'python-adafruit-blinka-displayio'
+)
 optdepends=()
 source=("https://pypi.io/packages/source/a/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('0b5ec99a56dc626d4491a32d03d832890d66bb46453eb84e5b4a273d4f357075')
+sha256sums=('5cc963d681804e611d1c6820e44c758591396a2433b646d76ce5fd841b8c0317')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
-    python setup.py build || return 1
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
-    python setup.py install --root=${pkgdir} --optimize=1 || return 1
-    install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd "$srcdir/${_pypi_pkgname}-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -vDm644 -t "$pkgdir/usr/share/license/$pkgname" LICENSE
 }
