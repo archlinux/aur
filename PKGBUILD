@@ -3,8 +3,8 @@
 
 pkgbase=prusa-slicer
 pkgname=(prusa-slicer slicer-udev)
-pkgver=2.5.0
-pkgrel=5
+pkgver=2.5.1
+pkgrel=1
 pkgdesc="G-code generator for 3D printers (Prusa fork of Slic3r)"
 arch=(x86_64)
 url="https://github.com/prusa3d/PrusaSlicer"
@@ -28,7 +28,7 @@ source=(${url}/archive/version_${pkgver}/${pkgname}-${pkgver}.tar.gz
         ${pkgname}-boost-1.79-p3.patch
         ${pkgname}-uniqueptr.patch
         use-system-catch2.patch)
-sha256sums=('dbbf3e10c812d1dc7bae4bd6879e60f864d763b2738b099dd34b9636d0e5eb6a'
+sha256sums=('4fa14a4604ccf8042c3cbefe4c0a481d293e075030920799fe3f5e6247ef93ca'
             'b4f0f6aea13b779e87c227dd7a062a6c2af4cad2f4e92b1272e43e2d45eedf51'
             'fcccc601d893fc1988081e05fefe30f5561f1ef47aaf516295b31127326a4ae0'
             '0c1084277bc6b9f0e7c28d0e47f98a3a195cdfbb3f0fe973dcb22bf4e6b24670'
