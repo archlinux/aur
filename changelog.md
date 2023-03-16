@@ -1,3 +1,18 @@
+## GE-Proton7-51
+
+* added fix for halo infinite (thanks TheMaister):
+* HansKristian-Work/vkd3d-proton#1465
+* added fix for Anno 1800 multiplayer (thanks Knogle):
+* ValveSoftware/wine#181
+* added protonfix for Tokyo Necro (thanks R1kaB3rN)
+* fixed typo in Witcher 2 protonfix (thanks Bitwolfies)
+* updated wine to bleeding edge
+* updated dxvk to git
+* update vkd3d-proton to git
+* removed deprecated RE:0 protonfix (thanks Bitwolfies)
+* removed deprecated Jedi Fallen order protonfix (thanks Bitwolfies)
+* removed deprecated Pentiment protonfix (thanks tgurr)
+
 ## GE-Proton7-50
 
 * update dxvk to latest git
