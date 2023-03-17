@@ -1,6 +1,6 @@
 pkgbase = zcfan-openrc
 	pkgdesc = OpenRC init script for zcfan - Zero-configuration fan control for ThinkPads
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/MeganerdNL/zcfan-openrc
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = zcfan-openrc
 	depends = openrc
 	depends = zcfan
 	backup = etc/init.d/zcfan
-	source = https://github.com/MeganerdNL/zcfan-openrc/archive/1.1.0.zip
-	sha256sums = 6e0553a1bd228451d66f6c75c90e4caadfbcc342e59723ed366644d548045a34
+	source = https://github.com/MeganerdNL/zcfan-openrc/archive/1.1.1.zip
+	sha256sums = edc71fa22eef77a631b8143c37c11f0107e5b54ea951e84733f2d6528d8d8cc7
 
 pkgname = zcfan-openrc
