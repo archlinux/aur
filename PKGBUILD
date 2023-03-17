@@ -1,10 +1,10 @@
-# Maintainer: Felix Golatofski <contact {at} xdfr.de>
+# Maintainer: Felix Golatofski <contact {at} xdfr {dot} de>
 # Contributor: Philipp 'TamCore' B. <philipp {at} tamcore {dot} eu>
-# Contributor: Karel Louwagie <aur {at} karellouwagie.net>
-# Contributor: Idares <idares {at} seznam.cz>
-# Contributor: Enrico Morelli <morelli {at} cerm.unifi.it>
-# Contributor: Vadym Abramchuk <abramm {at} gmail.com>
-# Contributor: karol_007 <karol.blazewicz {at} gmail.com>
+# Contributor: Karel Louwagie <aur {at} karellouwagie {dot} net>
+# Contributor: Idares <idares {at} seznam {dot} cz>
+# Contributor: Enrico Morelli <morelli {at} cerm {dot} unifi {dot} it>
+# Contributor: Vadym Abramchuk <abramm {at} gmail {dot} com>
+# Contributor: karol_007 <karol {dot} blazewicz {at} gmail {dot} com>
 
 pkgname=zabbix-proxy-sqlite-lts
 pkgver=5.0.2
