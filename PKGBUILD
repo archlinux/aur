@@ -13,21 +13,19 @@ source=(
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
   )
 sha512sums=(
-  '19a19aee2474369a9a9bc6ffad2d3df4f99c98aecae2ff3b7860fd2bc57c8c953f3cafcbe86f90fc2f1bc115310819baa15ac9a3526d6668199f62cc5d271a39'
-  '939415833b1e3d7c88d28f78b903549c85db1b19601f82b58485c7fff7da1fb80eda79e02522a51680848da7e227b4b922b93979eab2706a44cf25569c99c0ad'
+  '1873c1c9df70003e57bfd595afc6975c84acdb6af60fb513927f2014730176c9f5d5d5bba5bba9e32e9fa1f8ab4dbb0e49d0fa79cb057e80e179e6697f048813'
+  '5ca7050ce792e70f6ff3310300326d56c8fc7294a876491978484b973079abc0f6d788410f6207f0c9ad69b5050e9fcee97f7032dfd2d37b1a52154c9fca87dd'
   )
 md5sums=(
-  'af929939bbdd78c7fae6513c76e9d601'
-  'e7876d8fed8e1660644918c1f3b40273'
+  '8399535c0766e53af502df0e6085a7ee'
+  'f5cce50f53627e970cdcf2e34325d472'
   )
 validpgpkeys=('81BACEEBC3EA26E127166E4A819BB92A9A48160E')
 
 package() {
-  cd "$srcdir"
-  mkdir -p "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/usr/share/$pkgname"
-  install -Dm755 "$pkgname/usr/bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 "$pkgname/usr/share/licenses/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  cp -r "$pkgname/usr/share/$pkgname" "$pkgdir/usr/share/$pkgname"
+  cd "$srcdir/${pkgname}" 2>/dev/null || cd "$srcdir" 2>/dev/null
+  install -Dm755 "usr/bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 "usr/share/licenses/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cp -r "usr/share/$pkgname" "$pkgdir/usr/share/$pkgname"
 }
 
