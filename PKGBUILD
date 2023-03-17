@@ -1,5 +1,5 @@
 # Maintainer: Yurii Kolesnykov <root at yurikoles {dot} com>
-# Contributor: Karel Louwagie <karel at louwagie {dot} net>
+# Contributor: Karel Louwagie <aur at karellouwagie {dot} net>
 # Contributor: Samuel Walladge <samuel at swalladge {dot} id {dot} au>
 
 pkgname=toggldesktop-dev-bin
