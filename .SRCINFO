@@ -1,7 +1,7 @@
 pkgbase = mdt
 	pkgdesc = Commandline markdown todo list manager
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/basilioss/mdt
 	arch = any
 	license = GPL3
