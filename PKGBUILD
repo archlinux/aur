@@ -10,7 +10,7 @@ pkgdesc="a graphical CD ripper and encoder"
 arch=('x86_64')
 url="http://littlesvr.ca/asunder/"
 license=('GPL2')
-depends=('gtk2' 'libcddb' 'cdparanoia')
+depends=('gdk-pixbuf2' 'glib2' 'glibc' 'gtk2' 'libcddb' 'cdparanoia')
 makedepends=('pkgconfig' 'intltool' 'gettext')
 optdepends=(
   'lame: for mp3 support'
