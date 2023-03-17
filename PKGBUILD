@@ -1,7 +1,7 @@
 pkgname=hostapd-wifi6
 pkgdesc="hostapd enabled IEEE802.11* in defconfig"
 pkgver=2.10
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url=https://w1.fi/hostapd
 license=('BSD')
@@ -27,7 +27,9 @@ prepare() {
       -i 'hostapd/hostapd.conf'
   cat "hostapd/README" | head -n47 | tail -n5 > LICENSE
   cp 'hostapd/defconfig' "hostapd/.config"
-  sed -e 's|^#CONFIG_IEEE80211AX=y|CONFIG_IEEE80211AX=y|g' -i "hostapd/.config"
+  sed -e 's|^#CONFIG_IEEE80211AX=y|CONFIG_IEEE80211AX=y|g' \
+      -e 's|^#CONFIG_ACS=y|CONFIG_ACS=y|g'
+      -i "hostapd/.config"
 }
 build(){
   make -C "hostapd-${pkgver}/hostapd"
