@@ -1,0 +1,14 @@
+pkgbase = glicol-cli
+	pkgdesc = Music live coding in terminal
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/glicol/glicol-cli
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = alsa-lib
+	source = glicol-cli-0.2.0.tar.gz::https://github.com/glicol/glicol-cli/archive/v0.2.0.tar.gz
+	sha256sums = b14c086ead33a00ec7739a510eec644312f6be87c3443c90fcf2e53719f30518
+
+pkgname = glicol-cli
