@@ -5,9 +5,9 @@
 
 pkgname=emacs-pretest
 _pkgname=emacs
-pkgver=28.1
-_pkgver=28.1.91
-pkgrel=0.91
+pkgver=28.3
+_pkgver=28.3-rc1
+pkgrel=0.1
 pkgdesc="The extensible, customizable, self-documenting real-time display editor -- pretest version."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
@@ -17,6 +17,7 @@ depends=(
   'gtk3'
   'jansson'
   'giflib'
+  'libotf'
   'libgccjit'
 )
 provides=('emacs' 'emacs-nativecomp')
@@ -26,7 +27,7 @@ conflicts=('emacs-nox')
 #validpgpkeys=('28D3BED851FDF3AB57FEF93C233587A47C207910')
 source=(https://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$_pkgver.tar.xz
         nemacs readme_or_weep.txt)
-b2sums=('98445c49d8709f0262a98f904828e604094f4f703548993e5d090c214e4bc7d19c174098f40a003aa2fe1f92aa8e44657d7b4ead9c81f0299cb25b7f5c78bc16'
+b2sums=('2d7da4a72cc1256c7b9d1157cd379a5373b6b55c01d94254d6aee25887991a8da694f3239a7f443adef0debbc300043ad4595b5934b6aa383daed10257bcbae0'
         '58e028b439d3c7cf03ea0be617b429a2c54e7aa1b8ca32b5ed489214daaa71e22c323de9662761ad2ce4de58e21dbe45ce6ce198f402686828574f8043d053d0'
         '98cb6458eebfa1440eea1318c6974c135d1b9e1a559fb1ca4bca35fb4697cc8cd6d33b19427efead0f3e061556ba19e774eee4f4566673494ac2470da4725b28')
 
@@ -45,7 +46,7 @@ build() {
     --with-modules
     --without-compress-install
     --without-m17n-flt
-    --without-libotf
+    --with-libotf
     --without-imagemagick
 # Beware https://debbugs.gnu.org/cgi/bugreport.cgi?bug=25228
 # dconf and gconf break font settings set in ~/.emacs
