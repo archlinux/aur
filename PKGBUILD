@@ -1,18 +1,27 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-lrps2
 pkgname=$_pkgname-git
-pkgver=r12983.406779452
+pkgver=r13104.f3c8743d6
 pkgrel=1
 pkgdesc="Sony PlayStation 2 core (fork of PCSX2)"
 arch=('x86_64')
 url="https://github.com/libretro/LRPS2"
 license=('GPL2' 'GPL3' 'LGPL3')
 groups=('libretro')
-depends=('libaio' 'libchdr' 'libretro-core-info' 'wxwidgets' 'yaml-cpp')
+depends=(
+	'gcc-libs'
+	'glibc'
+	'libaio'
+	'libchdr'
+	'libgl'
+	'libretro-core-info'
+	'wxwidgets'
+	'yaml-cpp'
+	'zlib'
+)
 makedepends=('cmake' 'git' 'xxd')
-provides=("$_pkgname=${pkgver#r}")
-conflicts=("$_pkgname")
-replaces=('libretro-pcsx2-git')
+provides=("$_pkgname=${pkgver#r}" 'libretro-pcsx2')
+conflicts=("$_pkgname" 'libretro-pcsx2')
 source=(
 	"$_pkgname::git+$url.git"
 	'fix-lto.patch'
