@@ -1,7 +1,7 @@
 # Maintainer: Ranadeep B < mail at rnbguy dot at >
 
 pkgname=decentr-browser
-pkgver=1.3.2
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='A secure browser that gives you access to the blockchain'
 arch=('x86_64')
@@ -10,15 +10,15 @@ license=('Apache')
 provides=($pkgname)
 conflicts=($pkgname $pkgname-unstable-bin)
 depends=()
-source=("https://decentr.net/files/Ubuntu_x64_Decentr_${pkgver}.zip")
-sha256sums=('0b0f9fa7d8e296a82fb081b1c984b92d989befb027ed9332d612b1e9f82b6be5')
+source=("https://decentr.net/Ubuntu_x64_Decentr_${pkgver}.zip")
+sha256sums=('0e7b4a53b0a09eb078f9c53cee62577a100db25c80b8e8108582efaa5e4d3dc6')
 
 _pkgver() {
-	curl -s "https://decentr.net" | grep -oP "(?<=https://decentr.net/files/Ubuntu_x64_Decentr_).*(?=.zip)"
+	curl -s "https://decentr.net" | grep -oP "(?<=https://decentr.net/Ubuntu_x64_Decentr_).*(?=.zip)"
 }
 
 package() {
-	bsdtar -xf ${srcdir}/Ubuntu_x64_Decentr_${pkgver}.deb -C "$srcdir/"
+	bsdtar -xf ${srcdir}/decentr-browser-stable_*_amd64.deb -C "$srcdir/"
 	bsdtar -xf ${srcdir}/data.tar.xz -C "$pkgdir/"
 
 	generic_path="decentr.org/decentr"
