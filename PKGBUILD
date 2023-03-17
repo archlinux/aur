@@ -2,7 +2,7 @@
 
 pkgname="sing-box-bin"
 _pkgname="sing-box"
-pkgver="1.1.6"
+pkgver="1.1.7"
 pkgrel="1"
 pkgdesc="The universal proxy platform."
 provides=("sing-box")
@@ -19,13 +19,13 @@ source=("${_pkgname}.service"
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.tar.gz")
 source_armv7h=("${_pkgname}-${pkgver}-armv7h.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-armv7.tar.gz")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.tar.gz")
-sha512sums=('bc2082cd73fe8a5be15399afcf8aef6f614b75596ac0e6a73614b2cfe09c440e9ecefe0c5c99959c7b1ef7ad6b3fac74af690baf098dd0384067f4ad2c801ef2'
-            '7361778f1f76b6c400d5617f2954086ca6611c955b8fc5a4f1a073a067ce340aefd30a40142dcd003ab1df7d4b428d81ae0e3593e8f949167f9886c3c7186fd8'
+sha512sums=('34243c22372fdfc82d8b9790c1dee8e4f5df964335301f4ce8bcfe056a5afedfa80894f118e947b47377ab4a27a365b3f3060515f516bea37f528ff1c9203421'
+            '2e8ebec11151a0d4b0b764dd36f772a45ed8a1fc972b96649ab743c821bbea85876fcc4c092f2999369bb7e9590bfaff388de8a61c309dca68640fa4319c59fc'
             'ec1c5248cfee2c5dd7179f7148c5aec85e3814702a767686053a007a3baa94b917bd29df3a019d1602fedc45438f1808105a65abb4ea1f4665274ce394f6312e'
             'a3eb0e5789f04069fc7fd55ff09c437e394ae370110a43d6a1000759a524ac7d1b9f8b664656c2c9fb94fc9eca4852fb338a24186d9e3da30aed02773edbab86')
-sha512sums_x86_64=('7167b2208f96bcd5c8717e69c709e4baeb0daf0797aef34003455219e09dce0febf51974ee12ba8029a751fc0087f7131a31d13c798b66d2a531fdf557f1e0e9')
-sha512sums_armv7h=('8c8bdb7001bd0c8c4381444c56d9844c4d00176c9aac6c5143661c8630cee801929f28bfcc9eabaf74b13b762a7de68922b62c8c81cf776198d211017aeb1792')
-sha512sums_aarch64=('928a8c41f9c3c6c56bca7f44dabb3f01f2fa80363bfa78a31c66c7b210bf81f7fc904686d089b3bcc248565a41c2f4c293180d1cdf212c3fb6a9b20e8dda9dfa')
+sha512sums_x86_64=('ffe1358ffe142bd6c1b6653b3440edd020d2b27130a4b05854e0ab8862fc723b5bdad34c9c0df0ba8bc727ee2984cae048130109144bfc92d7281eca10fcaaab')
+sha512sums_armv7h=('f2b2ab81e9dee13cb39b174784755015a2a4e8871ab26627dac8f7f963db6a305e52a3defb28dd448eb6688aede0778c8f7eb61641f982790632f82892ff8564')
+sha512sums_aarch64=('7e124ce53cedc41638f983e35cb888c858546d5c3cd54c7e59a9c90aecf5b32b64406e69d4a17c07c2bca663b05967930b63a3fcec26dda72b6b88edb0cef4d6')
 
 package() {
     declare -A ARCH_MAP
