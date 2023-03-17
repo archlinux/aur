@@ -1,10 +1,10 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=nanomq-git
-pkgver=0.5.8.r0.g7cf17a2
+pkgver=0.16.2.r0.g116439b
 pkgrel=1
 pkgdesc="Nano MQTT Broker - An Ultra-light and Blazing-fast MQTT Broker for IoT Edge"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/nanomq/nanomq"
 license=('MIT')
 provides=(${pkgname})
@@ -27,6 +27,7 @@ prepare() {
     cd "${srcdir}/${pkgname%-git}/"
     git submodule update --init --recursive
 }
+
 build() {
     cd "${srcdir}/${pkgname%-git}/"
     cmake -B build -G Ninja
