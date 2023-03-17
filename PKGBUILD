@@ -10,9 +10,11 @@ conflicts=('hostapd')
 provides=('hostapd')
 source=(
   "https://w1.fi/releases/hostapd-$pkgver.tar.gz"
+  'hostapd.service'
 )
 sha512sums=(
   '243baa82d621f859d2507d8d5beb0ebda15a75548a62451dc9bca42717dcc8607adac49b354919a41d8257d16d07ac7268203a79750db0cfb34b51f80ff1ce8f'
+  '34e16c5d46383477bcb9e0dba5073b7f01354a6adca8e591050aeff6319255f8939926b70d76d109735496bbaf9ff2d04be9cf6e0d057c4d2f4a4140067957a3'
 )
 prepare() {
   cd "hostapd-${pkgver}"
@@ -24,7 +26,8 @@ prepare() {
       -e 's|hostapd_wps_pin_requests|hostapd/wps_pin_requests|g' \
       -i 'hostapd/hostapd.conf'
   cat "hostapd/README" | head -n47 | tail -n5 > LICENSE
-  sed -e 's|^#ieee80211AX=y|ieee80211AX=y|g'
+  cp 'hostapd/defconfig' "hostapd/.config"
+  sed -e 's|^#ieee80211AX=y|ieee80211AX=y|g' -i "hostapd/.config"
 }
 build(){
   make -C "hostapd-${pkgver}/hostapd"
