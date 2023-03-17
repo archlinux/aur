@@ -3,15 +3,22 @@ From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Fri, 7 Jan 2022 18:59:10 +0000
 Subject: [PATCH] glib-compile-schemas: Remove noisy deprecation warnings
 
+While the warnings are useful for developers, Arch Linux users also see
+them when glib-compile-schemas gets run after upgrades, where they just
+add noise.
+
+The alternative to this patch would be redirecting the compiler's stderr
+to /dev/null, but that might also suppress more useful errors or
+warnings we want users to see.
 ---
  gio/glib-compile-schemas.c | 13 -------------
  1 file changed, 13 deletions(-)
 
 diff --git a/gio/glib-compile-schemas.c b/gio/glib-compile-schemas.c
-index 326658a88b35..f61d45b9a364 100644
+index efe6f8e77eb2..c3e5664e4f2f 100644
 --- a/gio/glib-compile-schemas.c
 +++ b/gio/glib-compile-schemas.c
-@@ -1234,19 +1234,6 @@ parse_state_start_schema (ParseState  *state,
+@@ -1231,19 +1231,6 @@ parse_state_start_schema (ParseState  *state,
        return;
      }
  

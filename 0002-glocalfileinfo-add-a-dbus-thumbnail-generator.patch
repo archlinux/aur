@@ -1,5 +1,14 @@
+From 23253d184e8769e3d596c58666c07fe0912000ae Mon Sep 17 00:00:00 2001
+From: Dudemanguy <random342@airmail.cc>
+Date: Fri, 17 Mar 2023 09:43:52 -0500
+Subject: [PATCH] glocalfileinfo: add a dbus thumbnail generator
+
+---
+ gio/glocalfileinfo.c | 181 +++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 174 insertions(+), 7 deletions(-)
+
 diff --git a/gio/glocalfileinfo.c b/gio/glocalfileinfo.c
-index 661d2266a..74e584653 100644
+index bccad04b9..4de0744d4 100644
 --- a/gio/glocalfileinfo.c
 +++ b/gio/glocalfileinfo.c
 @@ -68,6 +68,12 @@
@@ -15,7 +24,7 @@ index 661d2266a..74e584653 100644
  
  #ifdef G_OS_WIN32
  #include <windows.h>
-@@ -105,6 +111,16 @@ struct ThumbMD5Context {
+@@ -109,6 +115,16 @@ struct ThumbMD5Context {
  	unsigned char in[64];
  };
  
@@ -32,8 +41,8 @@ index 661d2266a..74e584653 100644
  #ifndef G_OS_WIN32
  
  typedef struct {
-@@ -1418,16 +1434,131 @@ get_content_type (const char          *basename,
-   
+@@ -1457,18 +1473,132 @@ get_thumbnail_dirname_from_size (ThumbnailSize size)
+   g_return_val_if_reached (NULL);
  }
  
 +#ifdef FREEDESKTOP_THUMBNAILER
@@ -152,35 +161,36 @@ index 661d2266a..74e584653 100644
  static void
  get_thumbnail_attributes (const char     *path,
                            GFileInfo      *info,
--                          const GLocalFileStat *stat_buf)
-+                          const GLocalFileStat *stat_buf,
+                           const GLocalFileStat *stat_buf,
+-                          ThumbnailSize   size)
++                          ThumbnailSize   size,
 +                          gboolean        generate)
-+
  {
    GChecksum *checksum;
+   const char *dirname;
    char *uri;
    char *filename = NULL;
    char *basename;
 +  const char *content_type;
-   const char *size_dirs[4] = { "xx-large", "x-large", "large", "normal" };
-   gsize i;
- 
-@@ -1455,6 +1586,7 @@ get_thumbnail_attributes (const char     *path,
-       _g_file_info_set_attribute_byte_string_by_id (info, G_FILE_ATTRIBUTE_ID_THUMBNAIL_PATH, filename);
-       _g_file_info_set_attribute_boolean_by_id (info, G_FILE_ATTRIBUTE_ID_THUMBNAIL_IS_VALID,
+   guint32 failed_attr_id;
+   guint32 is_valid_attr_id;
+   guint32 path_attr_id;
+@@ -1545,6 +1675,7 @@ get_thumbnail_attributes (const char     *path,
+       _g_file_info_set_attribute_byte_string_by_id (info, path_attr_id, filename);
+       _g_file_info_set_attribute_boolean_by_id (info, is_valid_attr_id,
                                                  thumbnail_verify (filename, uri, stat_buf));
 +      generate = FALSE;
      }
    else
      {
-@@ -1469,8 +1601,31 @@ get_thumbnail_attributes (const char     *path,
-           _g_file_info_set_attribute_boolean_by_id (info, G_FILE_ATTRIBUTE_ID_THUMBNAILING_FAILED, TRUE);
-           _g_file_info_set_attribute_boolean_by_id (info, G_FILE_ATTRIBUTE_ID_THUMBNAIL_IS_VALID,
+@@ -1559,9 +1690,31 @@ get_thumbnail_attributes (const char     *path,
+           _g_file_info_set_attribute_boolean_by_id (info, failed_attr_id, TRUE);
+           _g_file_info_set_attribute_boolean_by_id (info, is_valid_attr_id,
                                                      thumbnail_verify (filename, uri, stat_buf));
 +          generate = FALSE;
          }
      }
-+
+ 
 +  if (generate)
 +    {
 +#ifdef FREEDESKTOP_THUMBNAILER
@@ -191,7 +201,7 @@ index 661d2266a..74e584653 100644
 +          if(generate_thumbnail (uri, content_type))
 +            {
 +              /* Now that the thumbnail is generated, find it. */
-+              get_thumbnail_attributes (path, info, stat_buf, FALSE);
++              get_thumbnail_attributes (path, info, stat_buf, size, FALSE);
 +            }
 +          else
 +            {
@@ -205,7 +215,7 @@ index 661d2266a..74e584653 100644
    g_free (basename);
    g_free (filename);
    g_free (uri);
-@@ -1861,6 +2016,18 @@ _g_local_file_info_get (const char             *basename,
+@@ -1952,6 +2105,18 @@ _g_local_file_info_get (const char             *basename,
  
    info = g_file_info_new ();
  
@@ -224,7 +234,7 @@ index 661d2266a..74e584653 100644
    /* Make sure we don't set any unwanted attributes */
    g_file_info_set_attribute_mask (info, attribute_matcher);
    
-@@ -1993,7 +2160,9 @@ _g_local_file_info_get (const char             *basename,
+@@ -2087,7 +2252,9 @@ _g_local_file_info_get (const char             *basename,
        _g_file_attribute_matcher_matches_id (attribute_matcher,
  					    G_FILE_ATTRIBUTE_ID_STANDARD_ICON) ||
        _g_file_attribute_matcher_matches_id (attribute_matcher,
@@ -235,15 +245,51 @@ index 661d2266a..74e584653 100644
      {
        char *content_type = get_content_type (basename, path, stat_ok ? &statbuf : NULL, is_symlink, symlink_broken, flags, FALSE);
  
-@@ -2110,9 +2279,9 @@ _g_local_file_info_get (const char             *basename,
+@@ -2203,7 +2370,7 @@ _g_local_file_info_get (const char             *basename,
+       _g_file_attribute_matcher_matches_id (attribute_matcher,
                                              G_FILE_ATTRIBUTE_ID_THUMBNAILING_FAILED))
      {
-       if (stat_ok)
--          get_thumbnail_attributes (path, info, &statbuf);
-+          get_thumbnail_attributes (path, info, &statbuf, TRUE);
-       else
--          get_thumbnail_attributes (path, info, NULL);
-+          get_thumbnail_attributes (path, info, NULL, TRUE);
+-      get_thumbnail_attributes (path, info, stat_ok ? &statbuf : NULL, THUMBNAIL_SIZE_AUTO);
++      get_thumbnail_attributes (path, info, stat_ok ? &statbuf : NULL, THUMBNAIL_SIZE_AUTO, TRUE);
+     }
+ 
+   if (_g_file_attribute_matcher_matches_id (attribute_matcher,
+@@ -2213,7 +2380,7 @@ _g_local_file_info_get (const char             *basename,
+       _g_file_attribute_matcher_matches_id (attribute_matcher,
+                                             G_FILE_ATTRIBUTE_ID_THUMBNAILING_FAILED_NORMAL))
+     {
+-      get_thumbnail_attributes (path, info, stat_ok ? &statbuf : NULL, THUMBNAIL_SIZE_NORMAL);
++      get_thumbnail_attributes (path, info, stat_ok ? &statbuf : NULL, THUMBNAIL_SIZE_NORMAL, TRUE);
+     }
+ 
+   if (_g_file_attribute_matcher_matches_id (attribute_matcher,
+@@ -2223,7 +2390,7 @@ _g_local_file_info_get (const char             *basename,
+       _g_file_attribute_matcher_matches_id (attribute_matcher,
+                                             G_FILE_ATTRIBUTE_ID_THUMBNAILING_FAILED_LARGE))
+     {
+-      get_thumbnail_attributes (path, info, stat_ok ? &statbuf : NULL, THUMBNAIL_SIZE_LARGE);
++      get_thumbnail_attributes (path, info, stat_ok ? &statbuf : NULL, THUMBNAIL_SIZE_LARGE, TRUE);
+     }
+ 
+   if (_g_file_attribute_matcher_matches_id (attribute_matcher,
+@@ -2233,7 +2400,7 @@ _g_local_file_info_get (const char             *basename,
+       _g_file_attribute_matcher_matches_id (attribute_matcher,
+                                             G_FILE_ATTRIBUTE_ID_THUMBNAILING_FAILED_XLARGE))
+     {
+-      get_thumbnail_attributes (path, info, stat_ok ? &statbuf : NULL, THUMBNAIL_SIZE_XLARGE);
++      get_thumbnail_attributes (path, info, stat_ok ? &statbuf : NULL, THUMBNAIL_SIZE_XLARGE, TRUE);
+     }
+ 
+   if (_g_file_attribute_matcher_matches_id (attribute_matcher,
+@@ -2243,7 +2410,7 @@ _g_local_file_info_get (const char             *basename,
+       _g_file_attribute_matcher_matches_id (attribute_matcher,
+                                             G_FILE_ATTRIBUTE_ID_THUMBNAILING_FAILED_XXLARGE))
+     {
+-      get_thumbnail_attributes (path, info, stat_ok ? &statbuf : NULL, THUMBNAIL_SIZE_XXLARGE);
++      get_thumbnail_attributes (path, info, stat_ok ? &statbuf : NULL, THUMBNAIL_SIZE_XXLARGE, TRUE);
      }
  
    vfs = g_vfs_get_default ();
+-- 
+2.40.0
+
