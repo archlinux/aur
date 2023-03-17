@@ -1,6 +1,4 @@
 src
 pkg
-*.zip
 *.tar.gz
-*.pkg.tar.xz
-README.md
+*.pkg.tar*
