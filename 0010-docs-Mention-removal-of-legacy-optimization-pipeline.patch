@@ -1,0 +1,36 @@
+From a63270cda814a924f0ce35592a73dfd9f497ee00 Mon Sep 17 00:00:00 2001
+From: Arthur Eubanks <aeubanks@google.com>
+Date: Thu, 16 Mar 2023 10:05:34 -0700
+Subject: [PATCH] [docs] Mention removal of legacy optimization pipeline and
+ inliner alloca merging
+
+Reviewed By: asbirlea
+
+Differential Revision: https://reviews.llvm.org/D146243
+---
+ llvm/docs/ReleaseNotes.rst | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/llvm/docs/ReleaseNotes.rst b/llvm/docs/ReleaseNotes.rst
+index 56da5be434eb..2fe22e855f53 100644
+--- a/llvm/docs/ReleaseNotes.rst
++++ b/llvm/docs/ReleaseNotes.rst
+@@ -61,6 +61,15 @@ Changes to the LLVM IR
+ 
+   * ``select``
+ 
++Changes to LLVM infrastructure
++-----------------------------
++
++* The legacy optimization pipeline has been removed.
++
++* Alloca merging in the inliner has been removed, since it only worked with the
++  legacy inliner pass. Backend stack coloring should handle cases alloca
++  merging initially set out to handle.
++
+ Changes to building LLVM
+ ------------------------
+ 
+-- 
+2.40.0
+

@@ -1,0 +1,27 @@
+From d73c51bfda3719e698ef2e7ed973909d7138d882 Mon Sep 17 00:00:00 2001
+From: Aaron Ballman <aaron@aaronballman.com>
+Date: Thu, 16 Mar 2023 14:03:04 -0400
+Subject: [PATCH] Fix LLVM Sphinx build
+
+This addresses the issue found by:
+https://lab.llvm.org/buildbot/#/builders/30/builds/33006
+---
+ llvm/docs/ReleaseNotes.rst | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/llvm/docs/ReleaseNotes.rst b/llvm/docs/ReleaseNotes.rst
+index 2fe22e855f53..e0da56da6b69 100644
+--- a/llvm/docs/ReleaseNotes.rst
++++ b/llvm/docs/ReleaseNotes.rst
+@@ -62,7 +62,7 @@ Changes to the LLVM IR
+   * ``select``
+ 
+ Changes to LLVM infrastructure
+------------------------------
++------------------------------
+ 
+ * The legacy optimization pipeline has been removed.
+ 
+-- 
+2.40.0
+

@@ -1,0 +1,176 @@
+From c1b4240322bfaa43b7f02ca58cf9fe52744884b9 Mon Sep 17 00:00:00 2001
+From: Arthur Eubanks <aeubanks@google.com>
+Date: Tue, 14 Mar 2023 16:23:53 -0700
+Subject: [PATCH] [opt] Rename -enable-new-pm -> -bugpoint-enable-legacy-pm
+
+-enable-new-pm is no longer necessary except for bugpoint. Make the name more clunky so it hopefully won't be used.
+
+Reviewed By: nikic
+
+Differential Revision: https://reviews.llvm.org/D146103
+---
+ llvm/docs/NewPassManager.rst                  | 11 -----------
+ llvm/docs/WritingAnLLVMPass.rst               |  7 +++----
+ llvm/test/BugPoint/unsymbolized.ll            |  2 +-
+ llvm/test/Feature/load_extension.ll           |  4 ----
+ llvm/test/Other/opt-On.ll                     | 13 -------------
+ .../Other/opt-legacy-syntax-deprecation.ll    |  1 -
+ llvm/tools/bugpoint/OptimizerDriver.cpp       |  2 +-
+ llvm/tools/opt/opt.cpp                        | 19 ++++++++-----------
+ 8 files changed, 13 insertions(+), 46 deletions(-)
+
+diff --git a/llvm/docs/NewPassManager.rst b/llvm/docs/NewPassManager.rst
+index d115c4dbc401..7464110daa09 100644
+--- a/llvm/docs/NewPassManager.rst
++++ b/llvm/docs/NewPassManager.rst
+@@ -420,17 +420,6 @@ for more details.
+ Invoking ``opt``
+ ================
+ 
+-To use the legacy pass manager:
+-
+-.. code-block:: shell
+-
+-  $ opt -enable-new-pm=0 -pass1 -pass2 /tmp/a.ll -S
+-
+-This will be removed once the legacy pass manager is deprecated and removed for
+-the optimization pipeline.
+-
+-To use the new PM:
+-
+ .. code-block:: shell
+ 
+   $ opt -passes='pass1,pass2' /tmp/a.ll -S
+diff --git a/llvm/docs/WritingAnLLVMPass.rst b/llvm/docs/WritingAnLLVMPass.rst
+index 1e92be87e2e9..3e6063e58334 100644
+--- a/llvm/docs/WritingAnLLVMPass.rst
++++ b/llvm/docs/WritingAnLLVMPass.rst
+@@ -36,11 +36,10 @@ advanced features are discussed.
+ 
+ .. warning::
+   This document deals with the legacy pass manager. LLVM uses the new pass
+-  manager by default for the optimization pipeline (the codegen pipeline is
+-  still using the legacy pass manager), which has its own way of defining
++  manager for the optimization pipeline (the codegen pipeline
++  still uses the legacy pass manager), which has its own way of defining
+   passes. For more details, see :doc:`WritingAnLLVMNewPMPass` and
+-  :doc:`NewPassManager`. To use the legacy pass manager with ``opt``, pass
+-  the ``-enable-new-pm=0`` flag to all ``opt`` invocations.
++  :doc:`NewPassManager`.
+ 
+ Quick Start --- Writing hello world
+ ===================================
+diff --git a/llvm/test/BugPoint/unsymbolized.ll b/llvm/test/BugPoint/unsymbolized.ll
+index d0658b1b6b3a..b181cffd4370 100644
+--- a/llvm/test/BugPoint/unsymbolized.ll
++++ b/llvm/test/BugPoint/unsymbolized.ll
+@@ -3,7 +3,7 @@
+ ; RUN: echo "print('args = ' + str(sys.argv))" >> %t.py
+ ; RUN: echo "exit(1)" >> %t.py
+ ; RUN: not bugpoint -load %llvmshlibdir/BugpointPasses%pluginext %s -output-prefix %t -bugpoint-crashcalls -opt-command=%python -opt-args %t.py | FileCheck %s
+-; RUN: not --crash opt -enable-new-pm=0 -load %llvmshlibdir/BugpointPasses%pluginext %s -bugpoint-crashcalls -disable-symbolication 2>&1 | FileCheck --check-prefix=CRASH %s
++; RUN: not --crash opt -bugpoint-enable-legacy-pm -load %llvmshlibdir/BugpointPasses%pluginext %s -bugpoint-crashcalls -disable-symbolication 2>&1 | FileCheck --check-prefix=CRASH %s
+ ; RUN: not bugpoint -load %llvmshlibdir/BugpointPasses%pluginext %s -output-prefix %t -bugpoint-crashcalls -opt-command=%t.non.existent.opt.binary -opt-args %t.py 2>&1 | FileCheck %s --check-prefix=BAD-OPT
+ 
+ ; Test that bugpoint disables symbolication on the opt tool to reduce runtime overhead when opt crashes
+diff --git a/llvm/test/Feature/load_extension.ll b/llvm/test/Feature/load_extension.ll
+index 7c97262fdaa8..dd47f2abc541 100644
+--- a/llvm/test/Feature/load_extension.ll
++++ b/llvm/test/Feature/load_extension.ll
+@@ -7,10 +7,6 @@
+ ; REQUIRES: plugins, examples
+ ; UNSUPPORTED: target={{.*windows.*}}
+ ; CHECK: Bye
+-;
+-; Specifying a new PM pass plugin with the old PM is an error.
+-; RUN: ! opt %s %loadnewpmbye -goodbye -wave-goodbye -disable-output -enable-new-pm=0 2>&1 | FileCheck %s --check-prefix=ERROR
+-; ERROR: load-pass-plugin specified with legacy PM.
+ 
+ target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
+ target triple = "x86_64-unknown-linux-gnu"
+diff --git a/llvm/test/Other/opt-On.ll b/llvm/test/Other/opt-On.ll
+index 49f2d9d10dee..522f35578f96 100644
+--- a/llvm/test/Other/opt-On.ll
++++ b/llvm/test/Other/opt-On.ll
+@@ -19,16 +19,3 @@ define void @f() {
+   unreachable
+ }
+ 
+-
+-; Legacy PM deprecation tests (tests should be removed in the future).
+-;
+-; RUN: not opt -enable-new-pm=0 -O0 < %s -S 2>&1 | FileCheck %s --check-prefix=LEGACYPM-ERROR
+-; RUN: not opt -enable-new-pm=0 -O1 < %s -S 2>&1 | FileCheck %s --check-prefix=LEGACYPM-ERROR
+-; RUN: not opt -enable-new-pm=0 -O2 < %s -S 2>&1 | FileCheck %s --check-prefix=LEGACYPM-ERROR
+-; RUN: not opt -enable-new-pm=0 -O3 < %s -S 2>&1 | FileCheck %s --check-prefix=LEGACYPM-ERROR
+-; RUN: not opt -enable-new-pm=0 -Os < %s -S 2>&1 | FileCheck %s --check-prefix=LEGACYPM-ERROR
+-; RUN: not opt -enable-new-pm=0 -Oz < %s -S 2>&1 | FileCheck %s --check-prefix=LEGACYPM-ERROR
+-; RUN: not opt -O1 -codegenprepare < %s -S 2>&1 | FileCheck %s --check-prefix=LEGACYPM-ERROR
+-; RUN: not opt -codegenprepare -O2 < %s -S 2>&1 | FileCheck %s --check-prefix=LEGACYPM-ERROR
+-
+-; LEGACYPM-ERROR: Cannot use -O# with legacy PM
+diff --git a/llvm/test/Other/opt-legacy-syntax-deprecation.ll b/llvm/test/Other/opt-legacy-syntax-deprecation.ll
+index a5a33564fd7e..50162b333524 100644
+--- a/llvm/test/Other/opt-legacy-syntax-deprecation.ll
++++ b/llvm/test/Other/opt-legacy-syntax-deprecation.ll
+@@ -4,7 +4,6 @@
+ ; RUN: opt /dev/null -disable-output -passes=instcombine 2>&1 | FileCheck %s --check-prefix=OK --allow-empty
+ ; RUN: not opt /dev/null -disable-output -instcombine 2>&1 | FileCheck %s --check-prefix=WARN
+ ; RUN: not opt /dev/null -disable-output -instcombine -always-inline 2>&1 | FileCheck %s --check-prefix=WARN
+-; RUN: opt /dev/null -disable-output -instcombine -enable-new-pm=0 2>&1 | FileCheck %s --check-prefix=OK --allow-empty
+ ; RUN: opt /dev/null -disable-output -codegenprepare -mtriple=x86_64-unknown-linux-gnu 2>&1 | FileCheck %s --check-prefix=OK --allow-empty
+ 
+ ; OK-NOT: deprecated
+diff --git a/llvm/tools/bugpoint/OptimizerDriver.cpp b/llvm/tools/bugpoint/OptimizerDriver.cpp
+index 1197528d0dd3..f7239f5dc61b 100644
+--- a/llvm/tools/bugpoint/OptimizerDriver.cpp
++++ b/llvm/tools/bugpoint/OptimizerDriver.cpp
+@@ -207,7 +207,7 @@ bool BugDriver::runPasses(Module &Program,
+     Args.push_back(OptArgs[i]);
+   // Pin to legacy PM since bugpoint has lots of infra and hacks revolving
+   // around the legacy PM.
+-  Args.push_back("-enable-new-pm=0");
++  Args.push_back("-bugpoint-enable-legacy-pm");
+   Args.push_back("-disable-symbolication");
+   Args.push_back("-o");
+   Args.push_back(OutputFilename);
+diff --git a/llvm/tools/opt/opt.cpp b/llvm/tools/opt/opt.cpp
+index 1b07bbe09416..6a582fb0d425 100644
+--- a/llvm/tools/opt/opt.cpp
++++ b/llvm/tools/opt/opt.cpp
+@@ -68,12 +68,12 @@ static codegen::RegisterCodeGenFlags CFG;
+ static cl::list<const PassInfo *, bool, PassNameParser> PassList(cl::desc(
+     "Optimizations available (use '-passes=' for the new pass manager)"));
+ 
+-static cl::opt<bool> EnableNewPassManager(
+-    "enable-new-pm",
+-    cl::desc("Enable the new pass manager, translating "
+-             "'opt -foo' to 'opt -passes=foo'. This is strictly for the new PM "
+-             "migration, use '-passes=' when possible."),
+-    cl::init(true));
++static cl::opt<bool> EnableLegacyPassManager(
++    "bugpoint-enable-legacy-pm",
++    cl::desc(
++        "Enable the legacy pass manager. This is strictly for bugpoint "
++        "due to it not working with the new PM, please do not use otherwise."),
++    cl::init(false));
+ 
+ // This flag specifies a textual description of the optimization pass pipeline
+ // to run over the module. This flag switches opt to use the new pass manager
+@@ -485,11 +485,8 @@ int main(int argc, char **argv) {
+ 
+   LLVMContext Context;
+ 
+-  // If `-passes=` is specified, use NPM.
+-  // If `-enable-new-pm` is specified and there are no codegen passes, use NPM.
+-  // e.g. `-enable-new-pm -sroa` will use NPM.
+-  // but `-enable-new-pm -codegenprepare` will still revert to legacy PM.
+-  const bool UseNPM = (EnableNewPassManager && !shouldForceLegacyPM()) ||
++  // TODO: remove shouldForceLegacyPM().
++  const bool UseNPM = (!EnableLegacyPassManager && !shouldForceLegacyPM()) ||
+                       PassPipeline.getNumOccurrences() > 0;
+ 
+   if (UseNPM && !PassList.empty()) {
+-- 
+2.40.0
+

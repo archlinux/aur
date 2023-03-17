@@ -16,7 +16,7 @@
 
 pkgbase=llvm-minimal-git
 pkgname=('llvm-minimal-git' 'llvm-libs-minimal-git' 'spirv-llvm-translator-minimal-git')
-pkgver=17.0.0_r454521.e4ea2d59191c
+pkgver=17.0.0_r455043.b1e9baea3a2c
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -34,6 +34,11 @@ source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
                 '0006-llvm-c-Remove-pointee-support-from-LLVMGetElementTyp.patch'
                 '0007-Passes-Remove-some-legacy-passes.patch'
                 '0008-PassManagerBuilder-Remove-PassManagerBuilder.patch'
+                '0009-ConstExpr-Remove-select-constant-expression.patch'
+                '0010-docs-Mention-removal-of-legacy-optimization-pipeline.patch'
+                '0011-Fix-LLVM-Sphinx-build.patch'
+                '0012-Passes-Remove-some-legacy-passes.patch'
+                '0013-opt-Rename-enable-new-pm-bugpoint-enable-legacy-pm.patch'
                 )
                 
 md5sums=('SKIP'
@@ -46,7 +51,12 @@ md5sums=('SKIP'
          '9e7e1648b472f83b054bf8dcbfc74175'
          'a4604d7858e1536af63f52dcbc47fbb8'
          'a09eda7d75c717aeb882fdfa67b028c3'
-         '6f07ebda99c0c0cab5bb2ff063e05152')
+         '6f07ebda99c0c0cab5bb2ff063e05152'
+         'b43ad443cb817e1e341d25f0de6ba248'
+         '161e703a83b93d6266c47b9883e55541'
+         '8ce50e0f42ed9f4d26fff1233d21c055'
+         '5ae64f8df9f04ecba27765d2401b58b0'
+         'ff35711ebdb2833fc084f077c3cdc40f')
 sha512sums=('SKIP'
             '75e743dea28b280943b3cc7f8bbb871b57d110a7f2b9da2e6845c1c36bf170dd883fca54e463f5f49e0c3effe07fbd0db0f8cf5a12a2469d3f792af21a73fcdd'
             'SKIP'
@@ -57,7 +67,12 @@ sha512sums=('SKIP'
             '034b8262c2cec48fcdf1eef8f74332fc7016ecbf1627ab755f95f525c653cab0dd4199cd60b85dd09a63dc0b76bc9db9f85043c91801940294e42bc1feb1ea60'
             '2f227060ab56e04bf3e74fbb785c2edf9fc55121c936ba17ac62275cacdacfb9cb84bfda0e6637e11e744e26212bbfa861fa320084502afb4b7fd247d832993b'
             '6d77c23ad97c057898d97fd08af9714ff18c43026e082ad5e654b736caffb1ba814de0ebb9a7e169de9475d819df3cd0058805e4a0f020c55ce3b2272181802a'
-            '4e006cb70005a4116e8637d9dabf7d3f1668e5ad21429254b641fa9ee716c2822cc718cc91c58e29451e4ffde96d25abfd31813322b82b91f896656c05be1210')
+            '4e006cb70005a4116e8637d9dabf7d3f1668e5ad21429254b641fa9ee716c2822cc718cc91c58e29451e4ffde96d25abfd31813322b82b91f896656c05be1210'
+            'af7ee9560ac9346a9424706c1f5e7536f985c7fae74d6342429a8d865bfee529d694f6b835c5dc76952d45392f077c2d756f55d41a28075d8c999f847c5242a6'
+            'ed6ac398f3d7c141d789a700880a23ee0f7f82de87462a44941ede6ef9fea426138ce587077ded0265577c2a31b4de9ef7dfa4446be145bce8c1088092e6902b'
+            '55036920d244f97d9e03de34558f6c20af57e26652acdb1db9f1ee5022c09984d2db2e2d71178b5440d46145ff8ff33c7fbc657195073f630a17a6e6bce42b82'
+            '852b52175aab6eb6193e0a6a1f8a6e0031061c73158a292472b20a7ac99f00e04d4c8ac266e99c1c2d7e91d8d071dd4d6ad1737a4a2ecc31085153c44f09f9d7'
+            '3e37d9449d74477c0fc2a6c3af37e06aba6555cc8cef83c71e74cb34e5a6ae3b6a5bc6c3fbb6b88c9cd0684e2e40ae066e1eb56337f8980a4729780bc7f9bdd3')
             
 
 options=('staticlibs' '!lto')
@@ -88,6 +103,11 @@ pkgver() {
 
 prepare() {
 
+    patch --directory="llvm-project" --reverse --strip=1 --input="${srcdir}"/0013-opt-Rename-enable-new-pm-bugpoint-enable-legacy-pm.patch
+    patch --directory="llvm-project" --reverse --strip=1 --input="${srcdir}"/0012-Passes-Remove-some-legacy-passes.patch
+    patch --directory="llvm-project" --reverse --strip=1 --input="${srcdir}"/0011-Fix-LLVM-Sphinx-build.patch
+    patch --directory="llvm-project" --reverse --strip=1 --input="${srcdir}"/0010-docs-Mention-removal-of-legacy-optimization-pipeline.patch
+    patch --directory="llvm-project" --reverse --strip=1 --input="${srcdir}"/0009-ConstExpr-Remove-select-constant-expression.patch
     patch --directory="llvm-project" --reverse --strip=1 --input="${srcdir}"/0008-PassManagerBuilder-Remove-PassManagerBuilder.patch
     patch --directory="llvm-project" --reverse --strip=1 --input="${srcdir}"/0007-Passes-Remove-some-legacy-passes.patch
     patch --directory="llvm-project" --reverse --strip=1 --input="${srcdir}"/0006-llvm-c-Remove-pointee-support-from-LLVMGetElementTyp.patch

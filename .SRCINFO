@@ -1,5 +1,5 @@
 pkgbase = llvm-minimal-git
-	pkgver = 17.0.0_r454521.e4ea2d59191c
+	pkgver = 17.0.0_r455043.b1e9baea3a2c
 	pkgrel = 1
 	url = https://llvm.org/
 	arch = x86_64
@@ -29,6 +29,11 @@ pkgbase = llvm-minimal-git
 	source = 0006-llvm-c-Remove-pointee-support-from-LLVMGetElementTyp.patch
 	source = 0007-Passes-Remove-some-legacy-passes.patch
 	source = 0008-PassManagerBuilder-Remove-PassManagerBuilder.patch
+	source = 0009-ConstExpr-Remove-select-constant-expression.patch
+	source = 0010-docs-Mention-removal-of-legacy-optimization-pipeline.patch
+	source = 0011-Fix-LLVM-Sphinx-build.patch
+	source = 0012-Passes-Remove-some-legacy-passes.patch
+	source = 0013-opt-Rename-enable-new-pm-bugpoint-enable-legacy-pm.patch
 	md5sums = SKIP
 	md5sums = 295c343dcd457dc534662f011d7cff1a
 	md5sums = SKIP
@@ -40,6 +45,11 @@ pkgbase = llvm-minimal-git
 	md5sums = a4604d7858e1536af63f52dcbc47fbb8
 	md5sums = a09eda7d75c717aeb882fdfa67b028c3
 	md5sums = 6f07ebda99c0c0cab5bb2ff063e05152
+	md5sums = b43ad443cb817e1e341d25f0de6ba248
+	md5sums = 161e703a83b93d6266c47b9883e55541
+	md5sums = 8ce50e0f42ed9f4d26fff1233d21c055
+	md5sums = 5ae64f8df9f04ecba27765d2401b58b0
+	md5sums = ff35711ebdb2833fc084f077c3cdc40f
 	sha512sums = SKIP
 	sha512sums = 75e743dea28b280943b3cc7f8bbb871b57d110a7f2b9da2e6845c1c36bf170dd883fca54e463f5f49e0c3effe07fbd0db0f8cf5a12a2469d3f792af21a73fcdd
 	sha512sums = SKIP
@@ -51,10 +61,15 @@ pkgbase = llvm-minimal-git
 	sha512sums = 2f227060ab56e04bf3e74fbb785c2edf9fc55121c936ba17ac62275cacdacfb9cb84bfda0e6637e11e744e26212bbfa861fa320084502afb4b7fd247d832993b
 	sha512sums = 6d77c23ad97c057898d97fd08af9714ff18c43026e082ad5e654b736caffb1ba814de0ebb9a7e169de9475d819df3cd0058805e4a0f020c55ce3b2272181802a
 	sha512sums = 4e006cb70005a4116e8637d9dabf7d3f1668e5ad21429254b641fa9ee716c2822cc718cc91c58e29451e4ffde96d25abfd31813322b82b91f896656c05be1210
+	sha512sums = af7ee9560ac9346a9424706c1f5e7536f985c7fae74d6342429a8d865bfee529d694f6b835c5dc76952d45392f077c2d756f55d41a28075d8c999f847c5242a6
+	sha512sums = ed6ac398f3d7c141d789a700880a23ee0f7f82de87462a44941ede6ef9fea426138ce587077ded0265577c2a31b4de9ef7dfa4446be145bce8c1088092e6902b
+	sha512sums = 55036920d244f97d9e03de34558f6c20af57e26652acdb1db9f1ee5022c09984d2db2e2d71178b5440d46145ff8ff33c7fbc657195073f630a17a6e6bce42b82
+	sha512sums = 852b52175aab6eb6193e0a6a1f8a6e0031061c73158a292472b20a7ac99f00e04d4c8ac266e99c1c2d7e91d8d071dd4d6ad1737a4a2ecc31085153c44f09f9d7
+	sha512sums = 3e37d9449d74477c0fc2a6c3af37e06aba6555cc8cef83c71e74cb34e5a6ae3b6a5bc6c3fbb6b88c9cd0684e2e40ae066e1eb56337f8980a4729780bc7f9bdd3
 
 pkgname = llvm-minimal-git
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies
-	depends = llvm-libs-minimal-git=17.0.0_r454521.e4ea2d59191c-1
+	depends = llvm-libs-minimal-git=17.0.0_r455043.b1e9baea3a2c-1
 	depends = perl
 	optdepends = python: for using lit (LLVM Integrated Tester)
 	optdepends = python-setuptools: for using lit
@@ -78,7 +93,7 @@ pkgname = llvm-libs-minimal-git
 
 pkgname = spirv-llvm-translator-minimal-git
 	pkgdesc = Tool and a library for bi-directional translation between SPIR-V and LLVM IR, trunk version
-	depends = llvm-minimal-git=17.0.0_r454521.e4ea2d59191c-1
+	depends = llvm-minimal-git=17.0.0_r455043.b1e9baea3a2c-1
 	depends = spirv-tools-git
 	provides = spirv-llvm-translator
 	conflicts = spirv-llvm-translator
