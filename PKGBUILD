@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-torch-scatter
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='PyTorch Extension Library of Optimized Scatter Operations'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('python')
 makedepends=('python' 'python-build' 'python-installer' 'python-wheel'
              'python-setuptools')
 source=("$pkgname-$pkgver::https://github.com/rusty1s/pytorch_scatter/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('c587ddf7ffaf8e4ddc31d8016d7f445d5896ce491209574800166a9f85c29377')
+sha256sums=('ea4f4ac4210a983d878df29e82190f60a7e6e9a791adbe0c0d635040e6256c4d')
 
 _pkgname=pytorch_scatter
 
