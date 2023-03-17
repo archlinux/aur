@@ -1,7 +1,7 @@
 pkgbase = josm-latest
 	pkgdesc = An editor for OpenStreetMap written in Java
-	pkgver = 18693
-	pkgrel = 2
+	pkgver = 18694
+	pkgrel = 1
 	url = https://josm.openstreetmap.de/
 	arch = any
 	license = GPL
