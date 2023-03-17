@@ -2,7 +2,7 @@
 
 pkgname=gcap2022
 pkgver=2022.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Brazilian physical person income tax (IRPF) auxiliary program for calculation of capital gains (2022 version)'
 arch=('any')
 url='https://www.gov.br/pt-br/servicos/apurar-imposto-sobre-ganhos-de-capital'
@@ -37,7 +37,7 @@ package() {
     local _res
     while read -r -d '' _file
     do
-        _res="$(sed 's/\.png$//;s/^.*_//' <<< "$_file")"
-        install -D -m644 "$_file" "${pkgdir}/usr/share/icons/hicolor/${_res}/apps/gcap-${pkgver%%.*}.png"
+        _res="$(sed 's/\.png$//;s/^.*_//;s/x.*$//' <<< "$_file")"
+        install -D -m644 "$_file" "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/gcap-${pkgver%%.*}.png"
     done < <(find "GCAP${pkgver%%.*}" -maxdepth 1 -type f -name 'RFB_GCAP_*_*x*x*.png' -print0)
 }
