@@ -1,6 +1,6 @@
 % layout 'android-qt6-module', has_binaries => 1;
 \
-_qtver=6.4.2
+_qtver=6.4.3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -8,4 +8,4 @@ url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='A cross-platform application and UI framework (tools, android)'
 depends=(<%== qt6deps qw(base) %>)
-makedepends=('android-cmake<%== $static_suffix %>' <%== qt6deps qw(declarative) %> 'qt6-declarative' 'qt6-tools' 'ninja' 'java-environment-openjdk=8')
+makedepends=('android-cmake<%== $static_suffix %>' <%== qt6deps qw(declarative) %> 'qt6-declarative' 'qt6-tools' 'ninja' 'java-environment-openjdk>=11')
