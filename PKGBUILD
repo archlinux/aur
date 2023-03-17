@@ -2,8 +2,8 @@
 # Co-Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=steamtinkerlaunch
-pkgver=12.0
-pkgrel=2
+pkgver=12.12
+pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
 url="https://github.com/sonic2kk/steamtinkerlaunch"
@@ -36,7 +36,7 @@ optdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c20dabbf08722a3da207e6b5eaf515b5ca76c25138345940df689d5250c60e04')
+sha256sums=('b81b9fc1fe7b87ccd9f62b074ea1e09ce245b42c13b7e009e832272459e3a555')
 
 package() {
 	cd "$srcdir/$pkgname-${pkgver}"
