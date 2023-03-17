@@ -5,7 +5,7 @@ pkgver=1
 pkgrel=1
 pkgdesc="Tool for generating project templates written in go."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
-url="https://gitea.dancheg97.ru/templates/gen-tools"
+url="https://dancheg97.ru/dancheg97/gen-tools"
 options=(!lto)
 license=('GPL3')
 depends=(
@@ -20,7 +20,7 @@ makedepends=('go>=1.18')
 checks=("skip")
 
 build() {
-  git clone https://gitea.dancheg97.ru/templates/gen-tools
+  git clone https://dancheg97.ru/dancheg97/gen-tools
   cd gen-tools
   go build .
 }
