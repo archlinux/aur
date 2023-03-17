@@ -1,6 +1,6 @@
 pkgbase = python-imagecodecs
 	pkgdesc = Image transformation, compression, and decompression codecs
-	pkgver = 2023.1.23
+	pkgver = 2023.3.16
 	pkgrel = 1
 	url = https://github.com/cgohlke/imagecodecs
 	arch = x86_64
@@ -18,7 +18,6 @@ pkgbase = python-imagecodecs
 	depends = libavif
 	depends = libdeflate
 	depends = libheif
-	depends = libjpeg
 	depends = libjxl
 	depends = libmng
 	depends = libpng
@@ -30,7 +29,7 @@ pkgbase = python-imagecodecs
 	depends = snappy
 	depends = zfp
 	depends = zopfli
-	source = imagecodecs-2023.1.23.tar.gz::https://github.com/cgohlke/imagecodecs/archive/v2023.1.23.tar.gz
-	sha256sums = 1c8cad4df4fb0cacd291a9a263257fb8b2900686255049af6e94bbf407c74bbd
+	source = imagecodecs-2023.3.16.tar.gz::https://github.com/cgohlke/imagecodecs/archive/v2023.3.16.tar.gz
+	sha256sums = 314c51d574be27c3648b9ee05d035956469f6b98f61e55d07e0cfa9ac014e1d3
 
 pkgname = python-imagecodecs
