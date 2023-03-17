@@ -1,6 +1,6 @@
 pkgbase = sunvox
 	pkgdesc = Small, fast and powerful modular synthesizer with pattern-based sequencer (tracker).
-	pkgver = 2.1.b
+	pkgver = 2.1.c
 	pkgrel = 1
 	url = http://warmplace.ru/soft/sunvox/
 	arch = i686
@@ -19,10 +19,10 @@ pkgbase = sunvox
 	optdepends = libxdmcp: required for sunvox_opengl
 	optdepends = libxext: required for sunvox_opengl
 	optdepends = libxi: required for sunvox_opengl
-	source = http://warmplace.ru/soft/sunvox/sunvox-2.1b.zip
+	source = http://warmplace.ru/soft/sunvox/sunvox-2.1c.zip
 	source = sunvox.desktop
 	source = sunvox.xml
-	sha256sums = 2eb81fe55ef66f96261eab2d54197e8b02153bfa9593001dd8c7796274ce45cd
+	sha256sums = c8f55c6ed94055b3bdb8cb0595f679d53e34f2103554f24023e47e25d8dcca3c
 	sha256sums = b45ee10df93982ac0d36c6887fe637c28b3c3de7013aa3462291629eed2dcc8d
 	sha256sums = 7ac2192298abdda802832518c98721b08881e32e8b470f2989c614852dd44f67
 
