@@ -1,16 +1,14 @@
 pkgbase = upwork
 	pkgdesc = Track your time for Hourly Payment Protection. Stay connected.
 	pkgver = 5.8.0.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.upwork.com/ab/downloads/?os=linux
 	arch = x86_64
 	license = custom
 	depends = alsa-lib
-	depends = at-spi2-core
 	depends = gtk3
 	depends = libxss
 	depends = nss
-	depends = openssl-1.0
 	conflicts = upwork-beta
 	source = https://upwork-usw2-desktopapp.upwork.com/binaries/v5_8_0_24_aef0dc8c37cf46a8/upwork_5.8.0.24_amd64.deb
 	source = LICENSE
