@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-translations
-_qtver=6.4.2
+_qtver=6.4.3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -13,12 +13,12 @@ url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='A cross-platform application and UI framework (Translations, android)'
 depends=('android-aarch64-qt6-base')
-makedepends=('android-cmake' 'android-aarch64-qt6-tools' 'qt6-tools' 'ninja' 'java-environment-openjdk=8')
+makedepends=('android-cmake' 'android-aarch64-qt6-tools' 'qt6-tools' 'ninja' 'java-environment-openjdk>=11')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qttranslations-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('bbe0291502c2604b72fef730e1935bd22f8b921d8c473250f298a723b2a9c496')
+sha256sums=('79e56b7800d49649a8a8010818538c367a829e0b7a09d5f60bd3aecf5abe972c')
 
 build() {
   source android-env ${_android_arch}
