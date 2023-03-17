@@ -5,7 +5,6 @@ pkgbase = skoolkit
 	url = https://github.com/skoolkid/skoolkit
 	arch = x86_64
 	license = GPL
-	makedepends = cargo
 	options = !lto
 	source = skoolkit-8.9.tar.xz::https://github.com/skoolkid/skoolkit/releases/download/8.9/skoolkit-8.9.tar.xz
 	sha256sums = a3f5cf1fcf8320806f1594de73f68810da7a698635ba45e5f9ecdac4d4be2a0d
