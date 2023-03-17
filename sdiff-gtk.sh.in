@@ -1,0 +1,3 @@
+#!/bin/sh
+
+python %%PYTHON_SITEPACKAGES%%/sdiff_gtk/__init__.py "$@"

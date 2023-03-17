@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+TryExec=sdiff-gtk
+Exec=sdiff-gtk
+Terminal=false
+Categories=Graphics;Utility;
+Icon=applications-graphics
+
+Name=Stable Diffusion GTK
+Comment=GTK+ frontend for Stable Diffusion
