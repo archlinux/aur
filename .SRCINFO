@@ -1,6 +1,6 @@
 pkgbase = qt5ct-kde
 	pkgdesc = Qt5 Configuration Utility, patched to work correctly with KDE applications
-	pkgver = 1.5
+	pkgver = 1.7
 	pkgrel = 1
 	url = https://qt5ct.sourceforge.io/
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = qt5ct-kde
 	depends = qqc2-desktop-style
 	provides = qt5ct
 	conflicts = qt5ct
-	source = https://downloads.sourceforge.net/project/qt5ct/qt5ct-1.5.tar.bz2
+	source = https://downloads.sourceforge.net/project/qt5ct/qt5ct-1.7.tar.bz2
 	source = qt5ct-shenanigans.patch
-	sha256sums = d63d0ce16e02427207d86531f70a71c5b9c850044dd5b2dcb2285531f416e490
-	sha256sums = 3e9d5ed24366a674fa5ab2df52d1e01fb956598b27ffb4e8e2d06ba7bb355aa0
+	sha256sums = ed58546a6e4c50dfed1b9ff6a148d4a468fe9b4d7b5b2727b96501de2955b8d7
+	sha256sums = 56872b502f8bf6a3475e4ad0678a2f46d4e1cd544d8324c133442704c2388f7f
 
 pkgname = qt5ct-kde
