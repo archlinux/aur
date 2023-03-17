@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Digital Invisible Ink Toolkit
+Exec=diit
+Comment=DiiT is used for steganography
+Categories=Development;Security;Graphics
+Terminal=false
+MimeType=application/x-extension-iml;
