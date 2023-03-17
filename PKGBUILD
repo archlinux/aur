@@ -1,7 +1,7 @@
 # Maintainer: Jack Mitchell <jack@embed.me.uk>
 
 pkgname=buildkite-agent-bin
-pkgver=3.42.0
+pkgver=3.45.0
 pkgrel=1
 pkgdesc='The Buildkite Agent'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -20,9 +20,9 @@ source_aarch64=("https://github.com/buildkite/agent/releases/download/v$pkgver/b
 sha256sums=('SKIP'
             '60503a6e93dfdb533cd54c82bf9aa3087c907ce8c574b657ca4c4b102badcf71'
             '15f1019081d8255ac6ac121445ae4b39ef5e3f1446a319855c1f7524372366b0')
-sha256sums_x86_64=('2a1b36f02f46ecc445fb8b9839de737d3c94a8f6bc7fdff8981266ca690f3551')
-sha256sums_armv7h=('f750df714f1f4bd5e54720b6cf51ea92e85a7e4188ac0b5722e6c55b5b27b709')
-sha256sums_aarch64=('f88bda679e465e2bbc062d4900af4439ace66e1566a99ef4007788c63b15eeee')
+sha256sums_x86_64=('16a3c2418679a12540cc30e2b06b0b07532a229a2c09d5720aa03b78197b2f6c')
+sha256sums_armv7h=('261e869c7f83a1d1343dcbc02ba59639972445d627e6792e1876553b49d77438')
+sha256sums_aarch64=('54ac893ef548dfde8c7ada2bcd914f186231ad901ce830d7a44ad81906fd8a1f')
 
 package() {
   install -d -m 755 "${pkgdir}/usr/bin"
