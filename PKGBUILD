@@ -1,39 +1,33 @@
-# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Maintainer: Cobalt Space <cobaltspace at protonmail dot com>
+# Contributor: Chocobo1 <chocobo1 AT archlinux DOT net>
 
-pkgname=gxr
+_pkgname=gxr
+pkgname=${_pkgname}0.15
 pkgver=0.15.2
-pkgrel=3
+pkgrel=1
 pkgdesc="glib wrapper for the OpenVR and soon the OpenXR API"
 arch=('i686' 'x86_64')
 url="https://gitlab.freedesktop.org/xrdesktop/gxr"
 license=('MIT')
-depends=('glibc' 'glib2' 'gtk3' 'gulkan' 'openvr')
-makedepends=('meson' 'glslang' 'vulkan-headers')
+provides=("$_pkgname=$pkgver")
+depends=('glibc' 'glib2' 'gtk3' 'gulkan>=0.15' 'gulkan<0.16' 'openvr')
+makedepends=('meson' 'glslang' 'vulkan-headers' 'libxtst' 'libdrm' 'glew' 'glfw' 'libegl')
 optdepends=('glfw')
 source=("https://gitlab.freedesktop.org/xrdesktop/gxr/-/archive/$pkgver/gxr-$pkgver.tar.bz2")
 sha256sums=('2bd257d898f45b0c8510ce239604dd1ef4081cb8ee6079ac8042ed4c9e42ce4a')
 
 
 build() {
-  cd "$pkgname-$pkgver"
-
-  meson \
-    --buildtype=plain \
-    --prefix="/usr" \
-    --sbindir="bin" \
-    "_build"
-  meson compile -C "_build"
+  arch-meson "$_pkgname-$pkgver" build -Dexamples=false -Dtests=false
+  meson compile -C build
 }
 
 check() {
-  cd "$pkgname-$pkgver"
-
-  #meson test -C "_build"
+  true
+  #meson test -C build
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-
-  meson install -C "_build" --destdir "$pkgdir"
-  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/gxr"
+  meson install -C build --destdir "$pkgdir"
+  install -Dm644 "$_pkgname-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }

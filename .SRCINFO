@@ -1,7 +1,7 @@
-pkgbase = gxr
+pkgbase = gxr0.15
 	pkgdesc = glib wrapper for the OpenVR and soon the OpenXR API
 	pkgver = 0.15.2
-	pkgrel = 3
+	pkgrel = 1
 	url = https://gitlab.freedesktop.org/xrdesktop/gxr
 	arch = i686
 	arch = x86_64
@@ -9,13 +9,20 @@ pkgbase = gxr
 	makedepends = meson
 	makedepends = glslang
 	makedepends = vulkan-headers
+	makedepends = libxtst
+	makedepends = libdrm
+	makedepends = glew
+	makedepends = glfw
+	makedepends = libegl
 	depends = glibc
 	depends = glib2
 	depends = gtk3
-	depends = gulkan
+	depends = gulkan>=0.15
+	depends = gulkan<0.16
 	depends = openvr
 	optdepends = glfw
+	provides = gxr=0.15.2
 	source = https://gitlab.freedesktop.org/xrdesktop/gxr/-/archive/0.15.2/gxr-0.15.2.tar.bz2
 	sha256sums = 2bd257d898f45b0c8510ce239604dd1ef4081cb8ee6079ac8042ed4c9e42ce4a
 
-pkgname = gxr
+pkgname = gxr0.15
