@@ -204,7 +204,7 @@ END
 
   # Add LibreWolf logo to Debugging Page
   patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/lw-logo-devtools.patch
-<
+
   # Update privacy preferences
   patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/privacy-preferences.patch
 
