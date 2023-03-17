@@ -12,6 +12,6 @@ pkgbase = clash-verge-bin
 	depends = clash
 	optdepends = clash-meta: Another Clash Kernel
 	source = clash-verge-1.3.0-x86_64.deb::https://github.com/zzzgydi/clash-verge/releases/download/v1.3.0/clash-verge_1.3.0_amd64.deb
-	sha512sums = 555d7e5449f3e65e1ee61e1c7948a358bb96fc147daf4c5b413031364187c30555429581dd958749281f15f4e7ac89ddbfe67199764ce5a70f34c72a2734f374
+	sha512sums = 49d7e1931da8314456bfc928892da6538181db8b5cd3b85aadb1dac25c12c7a71530b9919b8040f25b036de910991aa9d3e05d0078a0cad9c89b353ac6ecc413
 
 pkgname = clash-verge-bin
