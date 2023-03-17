@@ -3,8 +3,8 @@
 # Contributor: Márcio Sousa Rocha <marciosr10@gmail.com>
 
 pkgname=irpf
-pkgver=2023.1.0
-pkgrel=2
+pkgver=2023.1.1
+pkgrel=1
 pkgdesc='Brazilian physical person income tax (IRPF) program'
 arch=('any')
 url='https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda'
@@ -15,14 +15,14 @@ source=("https://downloadirpf.receita.fazenda.gov.br/irpf/${pkgver%%.*}/irpf/arq
         'irpf.desktop'
         'irpf.sh'
         'LICENSE')
-sha256sums=('2b7f43836a44a8b7a23fe3b80558eec4dab6de7555e90d89659de49356baab8b'
+sha256sums=('7931112b9a826b3f17745248cfb5c417fc70b52c98553a33aa44fbd7dca555de'
             'b5026060d73cc78e0c50a8cad2536dc1f186ba0202f1d51551e2411131008430'
             '71b397a128a71ab43591a868f309125193e19632972925f12335f8d5e65f1d08'
             'a406e102e2c10c202bd7a0ba775b004c0f04440544db73ce6923172a62aacd67')
 
 prepare() {
-	wrestool -x -t14 -o "IRPF${pkgver%%.*}" "IRPF${pkgver%%.*}/IRPF${pkgver%%.*}.exe"
-	icotool -x  -o "IRPF${pkgver%%.*}" "IRPF${pkgver%%.*}/IRPF${pkgver%%.*}.exe"_*_*_*.ico
+	wrestool -x -t 14 -o "IRPF${pkgver%%.*}" "IRPF${pkgver%%.*}/IRPF${pkgver%%.*}.exe"
+	icotool -x -o "IRPF${pkgver%%.*}" "IRPF${pkgver%%.*}/IRPF${pkgver%%.*}.exe"_*_*_*.ico
 }
 
 package() {
@@ -39,7 +39,7 @@ package() {
 	local _res
 	while read -r -d '' _file
 	do
-		_res="$(printf '%s' "$_file" | sed 's/\.png$//;s/^.*_//;s/x.*$//')"
+		_res="$(sed 's/\.png$//;s/^.*_//;s/x.*$//' <<< "$_file")"
 		install -D -m644 "$_file" "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/irpf.png"
 	done < <(find "IRPF${pkgver%%.*}" -maxdepth 1 -type f -name "IRPF${pkgver%%.*}.exe"_*_*_*_*_*x*x*.png -print0)
 }
