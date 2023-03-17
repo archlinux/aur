@@ -1,5 +1,5 @@
 pkgname=flutter-dmzj-bin
-pkgver=2.0.2_beta
+pkgver=2.0.3_beta
 pkgrel=1
 pkgdesc="使用Flutter编写的动漫之家跨平台第三方客户端 "
 arch=('x86_64')
@@ -7,9 +7,9 @@ url="https://github.com/xiaoyaocz/flutter_dmzj"
 license=('GPL3')
 depends=('gtk3')
 source=(
-	"https://github.com/xiaoyaocz/flutter_dmzj/releases/download/v2.0.2-beta/flutter_dmzj-2.0.2+20002-linux.zip"
+	"https://github.com/xiaoyaocz/flutter_dmzj/releases/download/v2.0.3-beta/flutter_dmzj-2.0.3+20003-linux.zip"
 	flutter_dmzj.desktop)
-sha256sums=('e57579945d7c46e1a10c2e6e40d7e9608e26a0909038578a167238b1069b02c0'
+sha256sums=('68f8527daabc36eb942a94d432b2a0f74b5126700b70db484fe936e4ba750973'
             '962d471c2aa068e6daa4496a9104c58d41119d4106c09232e5b98d3ed4ecf11a')
 
 package() {
