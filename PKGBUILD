@@ -1,9 +1,9 @@
 # Maintainer: Slava Ganzin <slava.ganzin@gmail.com>
 
-pkgname=await-bin
-pkgver=0.91
+pkgname=await-git
+pkgver=0.99
 pkgrel=1
-pkgdesc="32kb small memory footprint single binary that run list of commands in parallel and waits for their termination"
+pkgdesc="28kb small memory footprint single binary that run list of commands in parallel and waits for their termination"
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 makedepends=('git' 'gcc' 'make')
 url="https://await-cli.app/"
