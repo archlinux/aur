@@ -1,6 +1,6 @@
-pkgbase = await-bin
-	pkgdesc = 32kb small memory footprint single binary that run list of commands in parallel and waits for their termination
-	pkgver = 2021.07.29.add.site.link
+pkgbase = await
+	pkgdesc = 28kb small memory footprint single binary that run list of commands in parallel and waits for their termination
+	pkgver = 0.99
 	pkgrel = 1
 	url = https://await-cli.app/
 	arch = aarch64
@@ -17,4 +17,4 @@ pkgbase = await-bin
 	source = git+https://github.com/slavaGanzin/await
 	sha256sums = SKIP
 
-pkgname = await-bin
+pkgname = await

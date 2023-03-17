@@ -1,6 +1,6 @@
 # Maintainer: Slava Ganzin <slava.ganzin@gmail.com>
 
-pkgname=await-git
+pkgname=await
 pkgver=0.99
 pkgrel=1
 pkgdesc="28kb small memory footprint single binary that run list of commands in parallel and waits for their termination"
