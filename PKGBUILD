@@ -4,7 +4,7 @@
 pkgname='simplex-chat-bin'
 _pkgname="${pkgname%%-bin}"
 pkgver=4.5.3
-pkgrel=3
+pkgrel=4
 pkgdesc='A 100% private-by-design chat platform (pre-compiled)'
 arch=('x86_64')
 _platform='ubuntu-20_04-x86-64'
@@ -24,6 +24,7 @@ source=(
 )
 license=('AGPL3')
 depends=(
+  'glibc'
   'gmp'
   'hicolor-icon-theme'
   'openssl-1.1'
@@ -56,6 +57,7 @@ package() {
   install -Dm0755 "$_pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
   install -Dm0644  message_views.sql "$pkgdir/usr/share/doc/$_pkgname/message_views.sql"
   install  -m0644 {PRIVACY,README,CLI,SIMPLEX,SQL}.md "$pkgdir/usr/share/doc/$_pkgname/"
+  install -Dm0644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
   install -Dm0644 "$_pkgname.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
 }
 
