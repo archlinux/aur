@@ -167,11 +167,6 @@ END
   # PGO improvements
   patch -Np1 -i "${_cachyos_patches_dir}"/gentoo/0016-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
 
-  # https://bugs.archlinux.org/task/76231
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1790496
-  # https://src.fedoraproject.org/rpms/firefox/blob/rawhide/f/libwebrtc-screen-cast-sync.patch
-  patch -Np1 -i "${_patches_dir}"/custom/libwebrtc-screen-cast-sync.patch
-
   # Remove some pre-installed addons that might be questionable
   patch -Np1 -i "${_librewolf_patches_dir}"/remove_addons.patch
 
@@ -202,10 +197,7 @@ END
   # UI patches
   # Remove references to firefox from the settings UI, change text in some of the links,
   # explain that we force en-US and suggest enabling history near the session restore checkbox.
-  patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/pref-naming.patch
-
-  # Remap help links
-  patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/remap-links.patch
+  # patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/pref-naming.patch
 
   # Don't nag to set default browser
   patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/hide-default-browser.patch
@@ -227,9 +219,6 @@ END
 
   # Hide "snippets" section from the home page settings, as it was already locked.
   patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/remove-snippets-from-home.patch
-
-  # Add patch to hide website appearance settings
-  patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/website-appearance-ui-rfp.patch
 
   # Update handler links
   patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/handlers.patch
