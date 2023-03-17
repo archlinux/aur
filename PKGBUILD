@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-charts
-_qtver=6.4.2
+_qtver=6.4.3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -13,12 +13,12 @@ url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Provides a set of easy to use chart components (android)'
 depends=('android-aarch64-qt6-declarative')
-makedepends=('android-cmake' 'qt6-declarative' 'ninja' 'java-environment-openjdk=8')
+makedepends=('android-cmake' 'qt6-declarative' 'ninja' 'java-environment-openjdk>=11')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtcharts-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('a1a7c0e08c8870cf97d1c3a2eb3f37681aaed00a63b5b2f70bdf2da878d0a9aa')
+sha256sums=('4a61e4f5ffb55df69fc58f88255aabca44fb51935b180c03ab81e098d437c346')
 
 build() {
   source android-env ${_android_arch}
