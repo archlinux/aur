@@ -1,10 +1,10 @@
 # Maintainer: Frederik Holm Strøm <frederikstroem@pm.me>
 
-# Thanks to AUR users: Trebuchette, tobtoht
+# Thanks to AUR users: Trebuchette, tobtoht, jahway603
 
 _pkgname=feather
 pkgname="monero-${_pkgname}-bin"
-pkgver=2.4.1
+pkgver=2.4.3
 pkgrel=1
 pkgdesc="A free Monero desktop wallet"
 arch=('x86_64')
@@ -12,7 +12,7 @@ url="https://featherwallet.org"
 license=('GPL')
 depends=('tor' 'fuse2fs')
 provides=("$pkgname")
-conflicts=("monero-${_pkgname}" "monero-${_pkgname}-git")
+conflicts=("monero-${_pkgname}" "monero-${_pkgname}-git" "${_pkgname}wallet-bin")
 options=(!strip)
 _appimage="${_pkgname}.AppImage"
 validpgpkeys=('8185E158A33330C7FD61BC0D1F76E155CEFBA71C')
