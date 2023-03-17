@@ -1,6 +1,6 @@
 pkgbase = hdrview-git
 	pkgdesc = High dynamic range (HDR) image viewer and comparison tool
-	pkgver = 1.7.1+1.g47da311b30
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/wkjarosz/hdrview
 	arch = x86_64
