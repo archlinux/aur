@@ -49,7 +49,7 @@ prepare() {
 	# Fix version number in profile file
 	gzip --decompress --keep --stdout "${_pkgname}.profile.gz" |
 		sed "s/DBEAVER_VERSION/${pkgver}/g" |
-		gzip -9 >"${_pkgname}.profile-${pkgver}.gz"
+		gzip -9 >"${pkgname}.profile.gz"
 
 	export JAVA_HOME="/usr/lib/jvm/$(archlinux-java status | tail -n +2 | sort | cut -d ' ' -f 3 | sort -nr -k 2 -t '-' | grep -E '17-|18-|19-' -m 1)"
 	cd "${_pkgname}"
@@ -109,7 +109,7 @@ package() {
 	rm -rf "${pkgdir}/usr/share/${_pkgname}/p2/org.eclipse.equinox.p2.core"
 	cd "${pkgdir}/usr/share/${_pkgname}/p2/org.eclipse.equinox.p2.engine/profileRegistry/DefaultProfile.profile"
 	find . -name "*.profile.gz" -delete
-	install -m 644 "${srcdir}/${_pkgname}.profile-${pkgver}.gz" "1502633007017.profile.gz"
+	install -m 644 "${srcdir}/${pkgname}.profile.gz" "1502633007017.profile.gz"
 	cd "${pkgdir}/usr/share/${_pkgname}/p2/org.eclipse.equinox.p2.engine"
 	rm -f ".settings/org.eclipse.equinox.p2.artifact.repository.prefs"
 	rm ".settings/org.eclipse.equinox.p2.metadata.repository.prefs"

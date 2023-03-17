@@ -1,0 +1,10 @@
+*
+!PKGBUILD
+!.SRCINFO
+!*.hook
+!*.install
+!*.sh
+!*.desktop
+!.gitignore
+!.gitattributes
+!dbeaver.profile.gz
