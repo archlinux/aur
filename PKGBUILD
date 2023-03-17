@@ -4,7 +4,7 @@
 
 _pkgname=swayimg
 pkgname=${_pkgname}-git
-pkgver=1.10
+pkgver=1.11
 pkgrel=1
 pkgdesc='Image viewer for Sway/Wayland'
 arch=('x86_64')
