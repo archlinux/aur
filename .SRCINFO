@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-qt6-lottie
 	pkgdesc = A family of player software for a certain json-based file format for describing 2d vector graphics animations (android)
-	pkgver = 6.4.2
+	pkgver = 6.4.3
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -13,14 +13,14 @@ pkgbase = android-aarch64-qt6-lottie
 	makedepends = android-aarch64-qt6-declarative
 	makedepends = qt6-declarative
 	makedepends = ninja
-	makedepends = java-environment-openjdk=8
+	makedepends = java-environment-openjdk>=11
 	depends = android-aarch64-qt6-base
 	optdepends = android-aarch64-qt6-declarative: QML bindings
 	options = !strip
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.4/6.4.2/submodules/qtlottie-everywhere-src-6.4.2.tar.xz
-	sha256sums = accc8869c72095ce5b373a30c362d21235145a79f9e270480712f861d1de1c56
+	source = https://download.qt.io/official_releases/qt/6.4/6.4.3/submodules/qtlottie-everywhere-src-6.4.3.tar.xz
+	sha256sums = ff6c52e04566ecadee351eb3b803237bf07d417e4bb27d2122a5879618f1693d
 
 pkgname = android-aarch64-qt6-lottie
