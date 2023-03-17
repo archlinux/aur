@@ -2,13 +2,23 @@
 # Contributor: Zion Nimchuk <zionnimchuk@gmail.com>
 _pkgname=cubeb
 pkgname=$_pkgname-git
-pkgver=0.2.r1420.gdbc6033
+pkgver=0.2.r1427.g70b4e3d
 pkgrel=1
 pkgdesc="Cross platform audio library"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/mozilla/cubeb"
 license=('ISC')
-makedepends=('alsa-lib' 'cmake' 'doxygen' 'git' 'jack' 'libpulse' 'sndio' 'speexdsp')
+depends=('gcc-libs' 'glibc')
+makedepends=(
+	'alsa-lib'
+	'cmake'
+	'doxygen'
+	'git'
+	'jack'
+	'libpulse'
+	'sndio'
+	'speexdsp'
+)
 checkdepends=('gtest')
 optdepends=(
 	'alsa-lib: for ALSA backend'
