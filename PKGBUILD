@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-networkauth
-_qtver=6.4.2
+_qtver=6.4.3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -17,7 +17,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtnetworkauth-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('deab17bd957d0a493bd7757bc71270918147596fb9661a886b3f1d305047c2ee')
+sha256sums=('4d115ba572f4b8c8fbb64f4c26a40723556d252bd337a643f2266f19c7716ae5')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
