@@ -6,6 +6,8 @@ arch=('x86_64')
 url=https://w1.fi/hostapd
 license=('BSD')
 depends=('glibc' 'libnl' 'openssl' 'sqlite')
+conflicts=('hostapd')
+provides=('hostapd')
 source=(
   "https://w1.fi/releases/hostapd-$pkgver.tar.gz"
 )
