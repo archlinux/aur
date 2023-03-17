@@ -3,7 +3,7 @@
 pkgname=mongodb50
 _pkgname=mongodb
 # #.<odd number>.# releases are unstable development/testing
-pkgver=5.0.14
+pkgver=5.0.15
 pkgrel=1
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64")
@@ -28,7 +28,7 @@ source=(https://fastdl.mongodb.org/src/mongodb-src-r$pkgver.tar.gz
         mongodb-5.0.2-boost-1.79.patch
         mongodb-5.0.5-no-force-lld.patch
         mongodb-4.4.10-boost-1.81.patch)
-sha256sums=('097152eb18f28aae04e523eb1e1421c391032f3d213ff674657dc610b13c38ae'
+sha256sums=('6f681ac44d494d4bc48de159080ccd53ae2fac337c6bde807f5f78ebd171f852'
             '3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795'
             'b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39'
             'd3bc20d0cb4b8662b5326b8a3f2215281df5aed57550fa13de465e05e2044c25'
