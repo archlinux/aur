@@ -2,7 +2,7 @@
 # Maintainer: Chmouel Boudjnah <chmouel@chmouel.com>
 
 pkgname='gosmee-bin'
-pkgver=0.14.2
+pkgver=0.15.0
 pkgrel=1
 pkgdesc='gosmee - A webhook and https://smee.io forwarder'
 url='https://github.com/chmouel/gosmee'
@@ -11,11 +11,11 @@ license=('Apache 2.0')
 provides=('gosmee')
 conflicts=('gosmee')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/chmouel/gosmee/releases/download/0.14.2/gosmee_0.14.2_Linux_arm64.tar.gz")
-sha256sums_aarch64=('3e5b594ee659492b840dc0b4a182a7f667110d02ebda41229b2725f217273b38')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/chmouel/gosmee/releases/download/0.15.0/gosmee_0.15.0_Linux_arm64.tar.gz")
+sha256sums_aarch64=('87ba9ee74d933aede47c819b34fd93962f42b1b84fd73ad866cdee12bd938510')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chmouel/gosmee/releases/download/0.14.2/gosmee_0.14.2_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('623c23907a68f0c81dba8349e2958b2e44a61a90adad0007e7559d4d944506e1')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chmouel/gosmee/releases/download/0.15.0/gosmee_0.15.0_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('6880cb5e6b1e2b19dc5677fbfb46f760751070dc2d715e8cbe7f2455e80a3c0e')
 
 package() {
   # bin
@@ -28,9 +28,11 @@ package() {
   mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
   mkdir -p "${pkgdir}/usr/share/zsh/site-functions/"
 
-  ./gosmee completion zsh > gosmee.zsh
-  ./gosmee completion bash > gosmee.bash
+  for i in zsh bash fish;do
+  ./gosmee completion ${i} > gosmee.${i}
+  done
 
-  install -Dm644 "gosmee.bash" "${pkgdir}/usr/share/bash-completion/completions/gosmee"
+  install -dm644 "gosmee.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/"
+  install -dm644 "gosmee.bash" "${pkgdir}/usr/share/bash-completion/completions/gosmee"
   install -Dm644 "gosmee.zsh" "${pkgdir}/usr/share/zsh/site-functions/_gosmee"
 }
