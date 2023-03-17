@@ -1,0 +1,1021 @@
+From bbfb13a5ffbccf1759ca6b75262a3ffdbe20496e Mon Sep 17 00:00:00 2001
+From: Nikita Popov <npopov@redhat.com>
+Date: Mon, 6 Mar 2023 10:46:22 +0100
+Subject: [PATCH] [ConstExpr] Remove select constant expression
+
+This removes the select constant expression, as part of
+https://discourse.llvm.org/t/rfc-remove-most-constant-expressions/63179.
+Uses of this expressions have already been removed in advance,
+so this just removes related infrastructure and updates tests.
+
+Differential Revision: https://reviews.llvm.org/D145382
+---
+ llvm/bindings/ocaml/llvm/llvm.ml              |  2 -
+ llvm/bindings/ocaml/llvm/llvm.mli             |  5 --
+ llvm/bindings/ocaml/llvm/llvm_ocaml.c         |  7 ---
+ llvm/docs/ReleaseNotes.rst                    | 11 ++++
+ llvm/include/llvm-c/Core.h                    |  3 -
+ llvm/include/llvm/IR/Constants.h              |  6 --
+ llvm/lib/AsmParser/LLParser.cpp               | 12 +---
+ llvm/lib/Bitcode/Reader/BitcodeReader.cpp     | 11 ++--
+ llvm/lib/Bitcode/Writer/BitcodeWriter.cpp     |  6 --
+ llvm/lib/IR/ConstantFold.cpp                  | 11 ----
+ llvm/lib/IR/Constants.cpp                     | 23 --------
+ llvm/lib/IR/ConstantsContext.h                | 33 -----------
+ llvm/lib/IR/Core.cpp                          |  8 ---
+ .../Transforms/Scalar/InferAddressSpaces.cpp  | 12 ----
+ .../ScalarEvolution/logical-operations.ll     |  7 ++-
+ llvm/test/Assembler/ConstantExprFoldSelect.ll |  8 +--
+ llvm/test/Bindings/OCaml/core.ml              |  5 --
+ llvm/test/Bitcode/select.ll                   | 18 ------
+ ...thinlto-function-summary-callgraph-cast.ll |  4 +-
+ llvm/test/Bitcode/vscale-round-trip.ll        |  8 +--
+ .../GlobalISel/irtranslator-constantexpr.ll   | 37 ------------
+ llvm/test/CodeGen/Generic/pr33094.ll          |  6 +-
+ .../CodeGen/PowerPC/ext-bool-trunc-repl.ll    | 23 +++++---
+ llvm/test/CodeGen/PowerPC/pr24636.ll          | 15 ++++-
+ llvm/test/CodeGen/WebAssembly/call.ll         |  7 ++-
+ .../CodeGen/X86/2008-09-19-RegAllocBug.ll     |  9 +--
+ llvm/test/CodeGen/X86/no-plt.ll               |  3 +-
+ llvm/test/CodeGen/X86/pr44749.ll              | 10 ++--
+ .../ThinLTO/X86/funcattrs-prop-unknown.ll     |  2 +-
+ .../AMDGPU/infer-address-space.ll             |  6 +-
+ .../InferAddressSpaces/AMDGPU/select.ll       | 58 -------------------
+ .../InstCombine/2010-03-03-ExtElim.ll         | 11 +++-
+ llvm/test/Transforms/InstCombine/cast.ll      |  3 +-
+ llvm/test/Transforms/InstCombine/pr28725.ll   |  3 +-
+ .../InstSimplify/ConstProp/constant-expr.ll   |  9 ---
+ llvm/test/Transforms/InstSimplify/pr28725.ll  |  6 +-
+ llvm/unittests/Analysis/ValueTrackingTest.cpp |  5 +-
+ llvm/unittests/IR/ConstantsTest.cpp           |  2 -
+ 38 files changed, 108 insertions(+), 307 deletions(-)
+ delete mode 100644 llvm/test/Bitcode/select.ll
+
+diff --git a/llvm/bindings/ocaml/llvm/llvm.ml b/llvm/bindings/ocaml/llvm/llvm.ml
+index 6962dce737d2..77de9a6e46fa 100644
+--- a/llvm/bindings/ocaml/llvm/llvm.ml
++++ b/llvm/bindings/ocaml/llvm/llvm.ml
+@@ -685,8 +685,6 @@ external const_pointercast : llvalue -> lltype -> llvalue
+ external const_intcast : llvalue -> lltype -> is_signed:bool -> llvalue
+                        = "llvm_const_intcast"
+ external const_fpcast : llvalue -> lltype -> llvalue = "llvm_const_fpcast"
+-external const_select : llvalue -> llvalue -> llvalue -> llvalue
+-                      = "llvm_const_select"
+ external const_extractelement : llvalue -> llvalue -> llvalue
+                               = "llvm_const_extractelement"
+ external const_insertelement : llvalue -> llvalue -> llvalue -> llvalue
+diff --git a/llvm/bindings/ocaml/llvm/llvm.mli b/llvm/bindings/ocaml/llvm/llvm.mli
+index 59ac5b855130..9c8b3b883e14 100644
+--- a/llvm/bindings/ocaml/llvm/llvm.mli
++++ b/llvm/bindings/ocaml/llvm/llvm.mli
+@@ -1268,11 +1268,6 @@ val const_intcast : llvalue -> lltype -> is_signed:bool -> llvalue
+     See the method [llvm::ConstantExpr::getFPCast]. *)
+ val const_fpcast : llvalue -> lltype -> llvalue
+ 
+-(** [const_select cond t f] returns the constant conditional which returns value
+-    [t] if the boolean constant [cond] is true and the value [f] otherwise.
+-    See the method [llvm::ConstantExpr::getSelect]. *)
+-val const_select : llvalue -> llvalue -> llvalue -> llvalue
+-
+ (** [const_extractelement vec i] returns the constant [i]th element of
+     constant vector [vec]. [i] must be a constant [i32] value unsigned less than
+     the size of the vector.
+diff --git a/llvm/bindings/ocaml/llvm/llvm_ocaml.c b/llvm/bindings/ocaml/llvm/llvm_ocaml.c
+index a9d25751fd2c..0154b2f49c25 100644
+--- a/llvm/bindings/ocaml/llvm/llvm_ocaml.c
++++ b/llvm/bindings/ocaml/llvm/llvm_ocaml.c
+@@ -1385,13 +1385,6 @@ value llvm_const_fpcast(value CV, value T) {
+   return to_val(Value);
+ }
+ 
+-/* llvalue -> llvalue -> llvalue -> llvalue */
+-value llvm_const_select(value Cond, value IfTrue, value IfFalse) {
+-  LLVMValueRef Value =
+-      LLVMConstSelect(Value_val(Cond), Value_val(IfTrue), Value_val(IfFalse));
+-  return to_val(Value);
+-}
+-
+ /* llvalue -> llvalue -> llvalue */
+ value llvm_const_extractelement(value V, value I) {
+   LLVMValueRef Value = LLVMConstExtractElement(Value_val(V), Value_val(I));
+diff --git a/llvm/docs/ReleaseNotes.rst b/llvm/docs/ReleaseNotes.rst
+index 4cf01ad8e284..56da5be434eb 100644
+--- a/llvm/docs/ReleaseNotes.rst
++++ b/llvm/docs/ReleaseNotes.rst
+@@ -56,6 +56,11 @@ Changes to the LLVM IR
+ * The ``nofpclass`` attribute was introduced. This allows more
+   optimizations around special floating point value comparisons.
+ 
++* The constant expression variants of the following instructions have been
++  removed:
++
++  * ``select``
++
+ Changes to building LLVM
+ ------------------------
+ 
+@@ -151,6 +156,12 @@ Changes to the C API
+   These belonged to the no longer supported legacy pass manager.
+ * As part of the opaque pointer transition, ``LLVMGetElementType`` no longer
+   gives the pointee type of a pointer type.
++* The following functions for creating constant expressions have been removed,
++  because the underlying constant expressions are no longer supported. Instead,
++  an instruction should be created using the ``LLVMBuildXYZ`` APIs, which will
++  constant fold the operands if possible and create an instruction otherwise:
++
++  * ``LLVMConstSelect``
+ 
+ Changes to the FastISel infrastructure
+ --------------------------------------
+diff --git a/llvm/include/llvm-c/Core.h b/llvm/include/llvm-c/Core.h
+index 5454cc2d96c5..f2959ac8d22d 100644
+--- a/llvm/include/llvm-c/Core.h
++++ b/llvm/include/llvm-c/Core.h
+@@ -2257,9 +2257,6 @@ LLVMValueRef LLVMConstPointerCast(LLVMValueRef ConstantVal,
+ LLVMValueRef LLVMConstIntCast(LLVMValueRef ConstantVal, LLVMTypeRef ToType,
+                               LLVMBool isSigned);
+ LLVMValueRef LLVMConstFPCast(LLVMValueRef ConstantVal, LLVMTypeRef ToType);
+-LLVMValueRef LLVMConstSelect(LLVMValueRef ConstantCondition,
+-                             LLVMValueRef ConstantIfTrue,
+-                             LLVMValueRef ConstantIfFalse);
+ LLVMValueRef LLVMConstExtractElement(LLVMValueRef VectorConstant,
+                                      LLVMValueRef IndexConstant);
+ LLVMValueRef LLVMConstInsertElement(LLVMValueRef VectorConstant,
+diff --git a/llvm/include/llvm/IR/Constants.h b/llvm/include/llvm/IR/Constants.h
+index e82c6a8e1eab..13d5fb218bed 100644
+--- a/llvm/include/llvm/IR/Constants.h
++++ b/llvm/include/llvm/IR/Constants.h
+@@ -1208,12 +1208,6 @@ public:
+   /// Return true if this is a compare constant expression
+   bool isCompare() const;
+ 
+-  /// Select constant expr
+-  ///
+-  /// \param OnlyIfReducedTy see \a getWithOperands() docs.
+-  static Constant *getSelect(Constant *C, Constant *V1, Constant *V2,
+-                             Type *OnlyIfReducedTy = nullptr);
+-
+   /// get - Return a binary or shift operator constant expression,
+   /// folding if possible.
+   ///
+diff --git a/llvm/lib/AsmParser/LLParser.cpp b/llvm/lib/AsmParser/LLParser.cpp
+index 8b8ba4107e71..8ee1b665c9b7 100644
+--- a/llvm/lib/AsmParser/LLParser.cpp
++++ b/llvm/lib/AsmParser/LLParser.cpp
+@@ -3882,6 +3882,8 @@ bool LLParser::parseValID(ValID &ID, PerFunctionState *PFS, Type *ExpectedTy) {
+     return error(ID.Loc, "frem constexprs are no longer supported");
+   case lltok::kw_fneg:
+     return error(ID.Loc, "fneg constexprs are no longer supported");
++  case lltok::kw_select:
++    return error(ID.Loc, "select constexprs are no longer supported");
+   case lltok::kw_icmp:
+   case lltok::kw_fcmp: {
+     unsigned PredVal, Opc = Lex.getUIntVal();
+@@ -4011,8 +4013,7 @@ bool LLParser::parseValID(ValID &ID, PerFunctionState *PFS, Type *ExpectedTy) {
+   case lltok::kw_getelementptr:
+   case lltok::kw_shufflevector:
+   case lltok::kw_insertelement:
+-  case lltok::kw_extractelement:
+-  case lltok::kw_select: {
++  case lltok::kw_extractelement: {
+     unsigned Opc = Lex.getUIntVal();
+     SmallVector<Constant*, 16> Elts;
+     bool InBounds = false;
+@@ -4091,13 +4092,6 @@ bool LLParser::parseValID(ValID &ID, PerFunctionState *PFS, Type *ExpectedTy) {
+ 
+       ID.ConstantVal = ConstantExpr::getGetElementPtr(Ty, Elts[0], Indices,
+                                                       InBounds, InRangeOp);
+-    } else if (Opc == Instruction::Select) {
+-      if (Elts.size() != 3)
+-        return error(ID.Loc, "expected three operands to select");
+-      if (const char *Reason = SelectInst::areInvalidOperands(Elts[0], Elts[1],
+-                                                              Elts[2]))
+-        return error(ID.Loc, Reason);
+-      ID.ConstantVal = ConstantExpr::getSelect(Elts[0], Elts[1], Elts[2]);
+     } else if (Opc == Instruction::ShuffleVector) {
+       if (Elts.size() != 3)
+         return error(ID.Loc, "expected three operands to shufflevector");
+diff --git a/llvm/lib/Bitcode/Reader/BitcodeReader.cpp b/llvm/lib/Bitcode/Reader/BitcodeReader.cpp
+index dd75542164d3..64616240d4a3 100644
+--- a/llvm/lib/Bitcode/Reader/BitcodeReader.cpp
++++ b/llvm/lib/Bitcode/Reader/BitcodeReader.cpp
+@@ -1417,7 +1417,13 @@ static bool isConstExprSupported(const BitcodeConstant *BC) {
+   if (Opcode == Instruction::GetElementPtr)
+     return ConstantExpr::isSupportedGetElementPtr(BC->SrcElemTy);
+ 
+-  return Opcode != Instruction::FNeg;
++  switch (Opcode) {
++  case Instruction::FNeg:
++  case Instruction::Select:
++    return false;
++  default:
++    return true;
++  }
+ }
+ 
+ Expected<Value *> BitcodeReader::materializeValue(unsigned StartValID,
+@@ -1549,9 +1555,6 @@ Expected<Value *> BitcodeReader::materializeValue(unsigned StartValID,
+                                              ArrayRef(ConstOps).drop_front(),
+                                              BC->Flags, BC->getInRangeIndex());
+           break;
+-        case Instruction::Select:
+-          C = ConstantExpr::getSelect(ConstOps[0], ConstOps[1], ConstOps[2]);
+-          break;
+         case Instruction::ExtractElement:
+           C = ConstantExpr::getExtractElement(ConstOps[0], ConstOps[1]);
+           break;
+diff --git a/llvm/lib/Bitcode/Writer/BitcodeWriter.cpp b/llvm/lib/Bitcode/Writer/BitcodeWriter.cpp
+index 51756eb8ecb0..a368ac303bd9 100644
+--- a/llvm/lib/Bitcode/Writer/BitcodeWriter.cpp
++++ b/llvm/lib/Bitcode/Writer/BitcodeWriter.cpp
+@@ -2676,12 +2676,6 @@ void ModuleBitcodeWriter::writeConstants(unsigned FirstVal, unsigned LastVal,
+         }
+         break;
+       }
+-      case Instruction::Select:
+-        Code = bitc::CST_CODE_CE_SELECT;
+-        Record.push_back(VE.getValueID(C->getOperand(0)));
+-        Record.push_back(VE.getValueID(C->getOperand(1)));
+-        Record.push_back(VE.getValueID(C->getOperand(2)));
+-        break;
+       case Instruction::ExtractElement:
+         Code = bitc::CST_CODE_CE_EXTRACTELT;
+         Record.push_back(VE.getTypeID(C->getOperand(0)->getType()));
+diff --git a/llvm/lib/IR/ConstantFold.cpp b/llvm/lib/IR/ConstantFold.cpp
+index 553bc1e277e3..59131a4264fc 100644
+--- a/llvm/lib/IR/ConstantFold.cpp
++++ b/llvm/lib/IR/ConstantFold.cpp
+@@ -593,17 +593,6 @@ Constant *llvm::ConstantFoldSelectInstruction(Constant *Cond,
+   if (isa<UndefValue>(V1) && NotPoison(V2)) return V2;
+   if (isa<UndefValue>(V2) && NotPoison(V1)) return V1;
+ 
+-  if (ConstantExpr *TrueVal = dyn_cast<ConstantExpr>(V1)) {
+-    if (TrueVal->getOpcode() == Instruction::Select)
+-      if (TrueVal->getOperand(0) == Cond)
+-        return ConstantExpr::getSelect(Cond, TrueVal->getOperand(1), V2);
+-  }
+-  if (ConstantExpr *FalseVal = dyn_cast<ConstantExpr>(V2)) {
+-    if (FalseVal->getOpcode() == Instruction::Select)
+-      if (FalseVal->getOperand(0) == Cond)
+-        return ConstantExpr::getSelect(Cond, V1, FalseVal->getOperand(2));
+-  }
+-
+   return nullptr;
+ }
+ 
+diff --git a/llvm/lib/IR/Constants.cpp b/llvm/lib/IR/Constants.cpp
+index 9348d1af65a4..51ad3a12c488 100644
+--- a/llvm/lib/IR/Constants.cpp
++++ b/llvm/lib/IR/Constants.cpp
+@@ -547,8 +547,6 @@ void llvm::deleteConstant(Constant *C) {
+       delete static_cast<CastConstantExpr *>(C);
+     else if (isa<BinaryConstantExpr>(C))
+       delete static_cast<BinaryConstantExpr *>(C);
+-    else if (isa<SelectConstantExpr>(C))
+-      delete static_cast<SelectConstantExpr *>(C);
+     else if (isa<ExtractElementConstantExpr>(C))
+       delete static_cast<ExtractElementConstantExpr *>(C);
+     else if (isa<InsertElementConstantExpr>(C))
+@@ -1488,8 +1486,6 @@ Constant *ConstantExpr::getWithOperands(ArrayRef<Constant *> Ops, Type *Ty,
+   case Instruction::BitCast:
+   case Instruction::AddrSpaceCast:
+     return ConstantExpr::getCast(getOpcode(), Ops[0], Ty, OnlyIfReduced);
+-  case Instruction::Select:
+-    return ConstantExpr::getSelect(Ops[0], Ops[1], Ops[2], OnlyIfReducedTy);
+   case Instruction::InsertElement:
+     return ConstantExpr::getInsertElement(Ops[0], Ops[1], Ops[2],
+                                           OnlyIfReducedTy);
+@@ -2441,23 +2437,6 @@ Constant *ConstantExpr::getCompare(unsigned short Predicate, Constant *C1,
+   }
+ }
+ 
+-Constant *ConstantExpr::getSelect(Constant *C, Constant *V1, Constant *V2,
+-                                  Type *OnlyIfReducedTy) {
+-  assert(!SelectInst::areInvalidOperands(C, V1, V2)&&"Invalid select operands");
+-
+-  if (Constant *SC = ConstantFoldSelectInstruction(C, V1, V2))
+-    return SC;        // Fold common cases
+-
+-  if (OnlyIfReducedTy == V1->getType())
+-    return nullptr;
+-
+-  Constant *ArgVec[] = { C, V1, V2 };
+-  ConstantExprKeyType Key(Instruction::Select, ArgVec);
+-
+-  LLVMContextImpl *pImpl = C->getContext().pImpl;
+-  return pImpl->ExprConstants.getOrCreate(V1->getType(), Key);
+-}
+-
+ Constant *ConstantExpr::getGetElementPtr(Type *Ty, Constant *C,
+                                          ArrayRef<Value *> Idxs, bool InBounds,
+                                          std::optional<unsigned> InRangeIndex,
+@@ -3439,8 +3418,6 @@ Instruction *ConstantExpr::getAsInstruction(Instruction *InsertBefore) const {
+   case Instruction::AddrSpaceCast:
+     return CastInst::Create((Instruction::CastOps)getOpcode(), Ops[0],
+                             getType(), "", InsertBefore);
+-  case Instruction::Select:
+-    return SelectInst::Create(Ops[0], Ops[1], Ops[2], "", InsertBefore);
+   case Instruction::InsertElement:
+     return InsertElementInst::Create(Ops[0], Ops[1], Ops[2], "", InsertBefore);
+   case Instruction::ExtractElement:
+diff --git a/llvm/lib/IR/ConstantsContext.h b/llvm/lib/IR/ConstantsContext.h
+index fbda443de7b2..6023216a5070 100644
+--- a/llvm/lib/IR/ConstantsContext.h
++++ b/llvm/lib/IR/ConstantsContext.h
+@@ -90,32 +90,6 @@ public:
+   }
+ };
+ 
+-/// SelectConstantExpr - This class is private to Constants.cpp, and is used
+-/// behind the scenes to implement select constant exprs.
+-class SelectConstantExpr final : public ConstantExpr {
+-public:
+-  SelectConstantExpr(Constant *C1, Constant *C2, Constant *C3)
+-    : ConstantExpr(C2->getType(), Instruction::Select, &Op<0>(), 3) {
+-    Op<0>() = C1;
+-    Op<1>() = C2;
+-    Op<2>() = C3;
+-  }
+-
+-  // allocate space for exactly three operands
+-  void *operator new(size_t S) { return User::operator new(S, 3); }
+-  void operator delete(void *Ptr) { User::operator delete(Ptr); }
+-
+-  /// Transparently provide more efficient getOperand methods.
+-  DECLARE_TRANSPARENT_OPERAND_ACCESSORS(Value);
+-
+-  static bool classof(const ConstantExpr *CE) {
+-    return CE->getOpcode() == Instruction::Select;
+-  }
+-  static bool classof(const Value *V) {
+-    return isa<ConstantExpr>(V) && classof(cast<ConstantExpr>(V));
+-  }
+-};
+-
+ /// ExtractElementConstantExpr - This class is private to
+ /// Constants.cpp, and is used behind the scenes to implement
+ /// extractelement constant exprs.
+@@ -279,11 +253,6 @@ struct OperandTraits<BinaryConstantExpr>
+     : public FixedNumOperandTraits<BinaryConstantExpr, 2> {};
+ DEFINE_TRANSPARENT_OPERAND_ACCESSORS(BinaryConstantExpr, Value)
+ 
+-template <>
+-struct OperandTraits<SelectConstantExpr>
+-    : public FixedNumOperandTraits<SelectConstantExpr, 3> {};
+-DEFINE_TRANSPARENT_OPERAND_ACCESSORS(SelectConstantExpr, Value)
+-
+ template <>
+ struct OperandTraits<ExtractElementConstantExpr>
+     : public FixedNumOperandTraits<ExtractElementConstantExpr, 2> {};
+@@ -523,8 +492,6 @@ public:
+         return new BinaryConstantExpr(Opcode, Ops[0], Ops[1],
+                                       SubclassOptionalData);
+       llvm_unreachable("Invalid ConstantExpr!");
+-    case Instruction::Select:
+-      return new SelectConstantExpr(Ops[0], Ops[1], Ops[2]);
+     case Instruction::ExtractElement:
+       return new ExtractElementConstantExpr(Ops[0], Ops[1]);
+     case Instruction::InsertElement:
+diff --git a/llvm/lib/IR/Core.cpp b/llvm/lib/IR/Core.cpp
+index 85b7d17ef56c..283296b639ff 100644
+--- a/llvm/lib/IR/Core.cpp
++++ b/llvm/lib/IR/Core.cpp
+@@ -1799,14 +1799,6 @@ LLVMValueRef LLVMConstFPCast(LLVMValueRef ConstantVal, LLVMTypeRef ToType) {
+                                       unwrap(ToType)));
+ }
+ 
+-LLVMValueRef LLVMConstSelect(LLVMValueRef ConstantCondition,
+-                             LLVMValueRef ConstantIfTrue,
+-                             LLVMValueRef ConstantIfFalse) {
+-  return wrap(ConstantExpr::getSelect(unwrap<Constant>(ConstantCondition),
+-                                      unwrap<Constant>(ConstantIfTrue),
+-                                      unwrap<Constant>(ConstantIfFalse)));
+-}
+-
+ LLVMValueRef LLVMConstExtractElement(LLVMValueRef VectorConstant,
+                                      LLVMValueRef IndexConstant) {
+   return wrap(ConstantExpr::getExtractElement(unwrap<Constant>(VectorConstant),
+diff --git a/llvm/lib/Transforms/Scalar/InferAddressSpaces.cpp b/llvm/lib/Transforms/Scalar/InferAddressSpaces.cpp
+index 114738a35fd1..b6713730bfa9 100644
+--- a/llvm/lib/Transforms/Scalar/InferAddressSpaces.cpp
++++ b/llvm/lib/Transforms/Scalar/InferAddressSpaces.cpp
+@@ -694,18 +694,6 @@ static Value *cloneConstantExprWithNewAddressSpace(
+     return ConstantExpr::getAddrSpaceCast(CE, TargetType);
+   }
+ 
+-  if (CE->getOpcode() == Instruction::Select) {
+-    Constant *Src0 = CE->getOperand(1);
+-    Constant *Src1 = CE->getOperand(2);
+-    if (Src0->getType()->getPointerAddressSpace() ==
+-        Src1->getType()->getPointerAddressSpace()) {
+-
+-      return ConstantExpr::getSelect(
+-          CE->getOperand(0), ConstantExpr::getAddrSpaceCast(Src0, TargetType),
+-          ConstantExpr::getAddrSpaceCast(Src1, TargetType));
+-    }
+-  }
+-
+   if (CE->getOpcode() == Instruction::IntToPtr) {
+     assert(isNoopPtrIntCastPair(cast<Operator>(CE), *DL, TTI));
+     Constant *Src = cast<ConstantExpr>(CE->getOperand(0))->getOperand(0);
+diff --git a/llvm/test/Analysis/ScalarEvolution/logical-operations.ll b/llvm/test/Analysis/ScalarEvolution/logical-operations.ll
+index e14f47f0e15a..d557f50326d5 100644
+--- a/llvm/test/Analysis/ScalarEvolution/logical-operations.ll
++++ b/llvm/test/Analysis/ScalarEvolution/logical-operations.ll
+@@ -410,11 +410,14 @@ define ptr @select_between_constantptrs(i1 %c, ptr %x) {
+ define ptr @tautological_select() {
+ ; CHECK-LABEL: 'tautological_select'
+ ; CHECK-NEXT:  Classifying expressions for: @tautological_select
+-; CHECK-NEXT:    %r = getelementptr i8, ptr @constant, i32 0
++; CHECK-NEXT:    %s = select i1 true, ptr @constant, ptr @another_constant
++; CHECK-NEXT:    --> @constant U: [0,-3) S: [-9223372036854775808,9223372036854775805)
++; CHECK-NEXT:    %r = getelementptr i8, ptr %s
+ ; CHECK-NEXT:    --> @constant U: [0,-3) S: [-9223372036854775808,9223372036854775805)
+ ; CHECK-NEXT:  Determining loop execution counts for: @tautological_select
+ ;
+-  %r = getelementptr i8, ptr select (i1 true, ptr @constant, ptr @another_constant), i32 0
++  %s = select i1 true, ptr @constant, ptr @another_constant
++  %r = getelementptr i8, ptr %s
+   ret ptr %r
+ }
+ 
+diff --git a/llvm/test/Assembler/ConstantExprFoldSelect.ll b/llvm/test/Assembler/ConstantExprFoldSelect.ll
+index 5d218a9570b9..1ece1f87c340 100644
+--- a/llvm/test/Assembler/ConstantExprFoldSelect.ll
++++ b/llvm/test/Assembler/ConstantExprFoldSelect.ll
+@@ -1,9 +1,9 @@
+-; RUN: llvm-as < %s | llvm-dis | FileCheck %s
++; RUN: opt -S -passes=instsimplify < %s | FileCheck %s
+ ; RUN: verify-uselistorder %s
+ ; PR18319
+ 
+-define void @function() {
+-  %c = trunc <4 x i16> select (<4 x i1> <i1 undef, i1 undef, i1 false, i1 true>, <4 x i16> <i16 undef, i16 2, i16 3, i16 4>, <4 x i16> <i16 -1, i16 -2, i16 -3, i16 -4>) to <4 x i8>
++define <4 x i16> @function() {
++  %s = select <4 x i1> <i1 undef, i1 undef, i1 false, i1 true>, <4 x i16> <i16 undef, i16 2, i16 3, i16 4>, <4 x i16> <i16 -1, i16 -2, i16 -3, i16 -4>
+ ; CHECK: <i16 undef, i16 -2, i16 -3, i16 4>
+-  ret void
++  ret <4 x i16> %s
+ }
+diff --git a/llvm/test/Bindings/OCaml/core.ml b/llvm/test/Bindings/OCaml/core.ml
+index 33841deb42cf..d2dd52c07608 100644
+--- a/llvm/test/Bindings/OCaml/core.ml
++++ b/llvm/test/Bindings/OCaml/core.ml
+@@ -333,7 +333,6 @@ let test_constants () =
+   group "misc constants";
+   (* CHECK: const_size_of{{.*}}getelementptr{{.*}}null
+    * CHECK: const_gep{{.*}}getelementptr
+-   * CHECK: const_select{{.*}}select
+    * CHECK: const_extractelement{{.*}}extractelement
+    * CHECK: const_insertelement{{.*}}insertelement
+    * CHECK: const_shufflevector = global <4 x i32> <i32 0, i32 1, i32 1, i32 0>
+@@ -341,10 +340,6 @@ let test_constants () =
+   ignore (define_global "const_size_of" (size_of (pointer_type context)) m);
+   ignore (define_global "const_gep" (const_gep i8_type foldbomb_gv [| five |])
+           m);
+-  ignore (define_global "const_select" (const_select
+-    (const_icmp Icmp.Sle foldbomb five)
+-    (const_int i8_type (-1))
+-    (const_int i8_type 0)) m);
+   let zero = const_int i32_type 0 in
+   let one  = const_int i32_type 1 in
+   ignore (define_global "const_extractelement" (const_extractelement
+diff --git a/llvm/test/Bitcode/select.ll b/llvm/test/Bitcode/select.ll
+deleted file mode 100644
+index 7e62361822a8..000000000000
+--- a/llvm/test/Bitcode/select.ll
++++ /dev/null
+@@ -1,18 +0,0 @@
+-; RUN: llvm-as < %s | llvm-dis | FileCheck %s
+-; RUN: verify-uselistorder < %s
+-
+-define <2 x i32> @main() {
+-  ret <2 x i32> select (<2 x i1> <i1 false, i1 undef>, <2 x i32> zeroinitializer, <2 x i32> <i32 0, i32 undef>)
+-}
+-
+-; CHECK: define <2 x i32> @main() {
+-; CHECK:   ret <2 x i32> <i32 0, i32 undef>
+-; CHECK: }
+-
+-define <2 x float> @f() {
+-  ret <2 x float> select (i1 ptrtoint (<2 x float> ()* @f to i1), <2 x float> <float 1.000000e+00, float 0.000000e+00>, <2 x float> zeroinitializer)
+-}
+-
+-; CHECK: define <2 x float> @f() {
+-; CHECK:   ret <2 x float> select (i1 ptrtoint (ptr @f to i1), <2 x float> <float 1.000000e+00, float 0.000000e+00>, <2 x float> zeroinitializer)
+-; CHECK: }
+diff --git a/llvm/test/Bitcode/thinlto-function-summary-callgraph-cast.ll b/llvm/test/Bitcode/thinlto-function-summary-callgraph-cast.ll
+index 1926603b8b1f..4d52edd6a085 100644
+--- a/llvm/test/Bitcode/thinlto-function-summary-callgraph-cast.ll
++++ b/llvm/test/Bitcode/thinlto-function-summary-callgraph-cast.ll
+@@ -9,7 +9,7 @@
+ ; "op7" is a call to "callee" function.
+ ; CHECK-NEXT:    <PERMODULE {{.*}} op7=3 op8=[[ALIASID:[0-9]+]]/>
+ ; "another_caller" has only references but no calls.
+-; CHECK-NEXT:    <PERMODULE {{.*}} op4=3 {{.*}} op9={{[0-9]+}}/>
++; CHECK-NEXT:    <PERMODULE {{.*}}/>
+ ; CHECK-NEXT:    <PERMODULE {{.*}} op0=[[ALIASEEID:[0-9]+]]
+ ; CHECK-NEXT:    <ALIAS {{.*}} op0=[[ALIASID]] {{.*}} op2=[[ALIASEEID]]/>
+ ; CHECK-NEXT:    <BLOCK_COUNT op0=3/>
+@@ -27,7 +27,7 @@ define void @caller() {
+ 
+ define void @another_caller() {
+     ; Test calls that aren't handled either as direct or indirect.
+-    call void select (i1 icmp eq (ptr @global, ptr null), ptr @f, ptr @g)()
++    call void getelementptr (i8, ptr @f, i64 ptrtoint (ptr @g to i64))()
+     ret void
+ }
+ 
+diff --git a/llvm/test/Bitcode/vscale-round-trip.ll b/llvm/test/Bitcode/vscale-round-trip.ll
+index 62a3479a3724..1962e90fa464 100644
+--- a/llvm/test/Bitcode/vscale-round-trip.ll
++++ b/llvm/test/Bitcode/vscale-round-trip.ll
+@@ -36,14 +36,14 @@ define <vscale x 4 x i32> @non_const_shufflevector(<vscale x 4 x i32> %lhs,
+ }
+ 
+ ; CHECK-LABEL: define <vscale x 4 x i32> @const_select()
+-; CHECK: <vscale x 4 x i32> select (<vscale x 4 x i1>
++; CHECK: select <vscale x 4 x i1>
+ 
+ define <vscale x 4 x i32> @const_select() {
+-  ret <vscale x 4 x i32> select
+-    (<vscale x 4 x i1> insertelement
++  %s = select <vscale x 4 x i1> insertelement
+       (<vscale x 4 x i1> undef,
+        i1 icmp ne (i32* @important_val, i32* null),
+        i32 0),
+      <vscale x 4 x i32> zeroinitializer,
+-     <vscale x 4 x i32> insertelement (<vscale x 4 x i32> undef, i32 1, i32 0))
++     <vscale x 4 x i32> insertelement (<vscale x 4 x i32> undef, i32 1, i32 0)
++  ret <vscale x 4 x i32> %s
+ }
+diff --git a/llvm/test/CodeGen/AMDGPU/GlobalISel/irtranslator-constantexpr.ll b/llvm/test/CodeGen/AMDGPU/GlobalISel/irtranslator-constantexpr.ll
+index 6a0975f7fa72..9f96b1d0d719 100644
+--- a/llvm/test/CodeGen/AMDGPU/GlobalISel/irtranslator-constantexpr.ll
++++ b/llvm/test/CodeGen/AMDGPU/GlobalISel/irtranslator-constantexpr.ll
+@@ -20,43 +20,6 @@ define i32 @test() {
+   ret i32 bitcast (<1 x i32> <i32 extractelement (<1 x i32> bitcast (i32 zext (i1 icmp eq (ptr @var, ptr inttoptr (i32 -1 to ptr)) to i32) to <1 x i32>), i64 0)> to i32)
+ }
+ 
+-@gint = external addrspace(1) global i8, align 4
+-
+-; Technically we should be able to fold away the compare to true, but
+-; currently constexpr doesn't understand null in non-0 address spaces.
+-define amdgpu_kernel void @constantexpr_select_0() {
+-  ; CHECK-LABEL: name: constantexpr_select_0
+-  ; CHECK: bb.1 (%ir-block.0):
+-  ; CHECK-NEXT:   [[GV:%[0-9]+]]:_(p1) = G_GLOBAL_VALUE @gint
+-  ; CHECK-NEXT:   [[C:%[0-9]+]]:_(p1) = G_CONSTANT i64 0
+-  ; CHECK-NEXT:   [[ICMP:%[0-9]+]]:_(s1) = G_ICMP intpred(eq), [[GV]](p1), [[C]]
+-  ; CHECK-NEXT:   [[C1:%[0-9]+]]:_(s32) = G_CONSTANT i32 1
+-  ; CHECK-NEXT:   [[C2:%[0-9]+]]:_(s32) = G_CONSTANT i32 0
+-  ; CHECK-NEXT:   [[SELECT:%[0-9]+]]:_(s32) = G_SELECT [[ICMP]](s1), [[C1]], [[C2]]
+-  ; CHECK-NEXT:   [[DEF:%[0-9]+]]:_(p1) = G_IMPLICIT_DEF
+-  ; CHECK-NEXT:   G_STORE [[SELECT]](s32), [[DEF]](p1) :: (store (s32) into `ptr addrspace(1) undef`, addrspace 1)
+-  ; CHECK-NEXT:   S_ENDPGM 0
+-  store i32 select (i1 icmp eq (ptr addrspace(1) @gint, ptr addrspace(1) null), i32 1, i32 0), ptr addrspace(1) undef, align 4
+-  ret void
+-}
+-
+-define amdgpu_kernel void @constantexpr_select_1() {
+-  ; CHECK-LABEL: name: constantexpr_select_1
+-  ; CHECK: bb.1 (%ir-block.0):
+-  ; CHECK-NEXT:   [[C:%[0-9]+]]:_(s64) = G_CONSTANT i64 1024
+-  ; CHECK-NEXT:   [[INTTOPTR:%[0-9]+]]:_(p1) = G_INTTOPTR [[C]](s64)
+-  ; CHECK-NEXT:   [[GV:%[0-9]+]]:_(p1) = G_GLOBAL_VALUE @gint
+-  ; CHECK-NEXT:   [[ICMP:%[0-9]+]]:_(s1) = G_ICMP intpred(eq), [[INTTOPTR]](p1), [[GV]]
+-  ; CHECK-NEXT:   [[C1:%[0-9]+]]:_(s32) = G_CONSTANT i32 1
+-  ; CHECK-NEXT:   [[C2:%[0-9]+]]:_(s32) = G_CONSTANT i32 0
+-  ; CHECK-NEXT:   [[SELECT:%[0-9]+]]:_(s32) = G_SELECT [[ICMP]](s1), [[C1]], [[C2]]
+-  ; CHECK-NEXT:   [[DEF:%[0-9]+]]:_(p1) = G_IMPLICIT_DEF
+-  ; CHECK-NEXT:   G_STORE [[SELECT]](s32), [[DEF]](p1) :: (store (s32) into `ptr addrspace(1) undef`, addrspace 1)
+-  ; CHECK-NEXT:   S_ENDPGM 0
+-  store i32 select (i1 icmp eq (ptr addrspace(1) @gint, ptr addrspace(1) inttoptr (i64 1024 to ptr addrspace(1))), i32 1, i32 0), ptr addrspace(1) undef, align 4
+-  ret void
+-}
+-
+ @a = external global [2 x i32], align 4
+ 
+ define i32 @test_fcmp_constexpr() {
+diff --git a/llvm/test/CodeGen/Generic/pr33094.ll b/llvm/test/CodeGen/Generic/pr33094.ll
+index f1cf67b0ae63..cd98ec3b139b 100644
+--- a/llvm/test/CodeGen/Generic/pr33094.ll
++++ b/llvm/test/CodeGen/Generic/pr33094.ll
+@@ -12,8 +12,8 @@
+ @B_Inst = global %B zeroinitializer
+ 
+ define i64 @foo() {
+-  %e = extractvalue %Tuple select (i1 icmp eq
+-                        (ptr @A_Inst, ptr @B_Inst),
+-                        %Tuple { i64 33 }, %Tuple { i64 42 }), 0
++  %s = select i1 icmp eq (ptr @A_Inst, ptr @B_Inst),
++       %Tuple { i64 33 }, %Tuple { i64 42 }
++  %e = extractvalue %Tuple %s, 0
+   ret i64 %e
+ }
+diff --git a/llvm/test/CodeGen/PowerPC/ext-bool-trunc-repl.ll b/llvm/test/CodeGen/PowerPC/ext-bool-trunc-repl.ll
+index b12414e159a7..a64354222fa7 100644
+--- a/llvm/test/CodeGen/PowerPC/ext-bool-trunc-repl.ll
++++ b/llvm/test/CodeGen/PowerPC/ext-bool-trunc-repl.ll
+@@ -11,26 +11,35 @@ define void @fn2() #0 {
+ 
+   br i1 undef, label %1, label %10
+ 
+-; <label>:1:                                      ; preds = %0
++1:                                                ; preds = %0
+   br i1 undef, label %3, label %2
+ 
+-; <label>:2:                                      ; preds = %2, %1
++2:                                                ; preds = %2, %1
+   br i1 undef, label %3, label %2
+ 
+-; <label>:3:                                      ; preds = %2, %1
++3:                                                ; preds = %2, %1
+   br i1 undef, label %8, label %4
+ 
+-; <label>:4:                                      ; preds = %4, %3
++4:                                                ; preds = %4, %3
+   %5 = phi i64 [ %6, %4 ], [ undef, %3 ]
+-  %6 = and i64 %5, and (i64 and (i64 and (i64 and (i64 and (i64 and (i64 and (i64 sext (i32 select (i1 icmp slt (i16 zext (i1 icmp eq (ptr getelementptr inbounds ([2 x i32], ptr @d, i64 0, i64 1), ptr @c) to i16), i16 0), i32 zext (i1 icmp eq (ptr getelementptr inbounds ([2 x i32], ptr @d, i64 0, i64 1), ptr @c) to i32), i32 lshr (i32 zext (i1 icmp eq (ptr getelementptr inbounds ([2 x i32], ptr @d, i64 0, i64 1), ptr @c) to i32), i32 6)) to i64), i64 sext (i32 select (i1 icmp slt (i16 zext (i1 icmp eq (ptr getelementptr inbounds ([2 x i32], ptr @d, i64 0, i64 1), ptr @c) to i16), i16 0), i32 zext (i1 icmp eq (ptr getelementptr inbounds ([2 x i32], ptr @d, i64 0, i64 1), ptr @c) to i32), i32 lshr (i32 zext (i1 icmp eq (ptr getelementptr inbounds ([2 x i32], ptr @d, i64 0, i64 1), ptr @c) to i32), i32 6)) to i64)), i64 sext (i32 select (i1 icmp slt (i16 zext (i1 icmp eq (ptr getelementptr inbounds ([2 x i32], ptr @d, i64 0, i64 1), ptr @c) to i16), i16 0), i32 zext (i1 icmp eq (ptr getelementptr inbounds ([2 x i32], ptr @d, i64 0, i64 1), ptr @c) to i32), i32 lshr (i32 zext (i1 icmp eq (ptr getelementptr inbounds ([2 x i32], ptr @d, i64 0, i64 1), ptr @c) to i32), i32 6)) to i64)), i64 sext (i32 select (i1 icmp slt (i16 zext (i1 icmp eq (ptr getelementptr inbounds ([2 x i32], ptr @d, i64 0, i64 1), ptr @c) to i16), i16 0), i32 zext (i1 icmp eq (ptr getelementptr inbounds ([2 x i32], ptr @d, i64 0, i64 1), ptr @c) to i32), i32 lshr (i32 zext (i1 icmp eq (ptr getelementptr inbounds ([2 x i32], ptr @d, i64 0, i64 1), ptr @c) to i32), i32 6)) to i64)), i64 sext (i32 select (i1 icmp slt (i16 zext (i1 icmp eq (ptr getelementptr inbounds ([2 x i32], ptr @d, i64 0, i64 1), ptr @c) to i16), i16 0), i32 zext (i1 icmp eq (ptr getelementptr inbounds ([2 x i32], ptr @d, i64 0, i64 1), ptr @c) to i32), i32 lshr (i32 zext (i1 icmp eq (ptr getelementptr inbounds ([2 x i32], ptr @d, i64 0, i64 1), ptr @c) to i32), i32 6)) to i64)), i64 sext (i32 select (i1 icmp slt (i16 zext (i1 icmp eq (ptr getelementptr inbounds ([2 x i32], ptr @d, i64 0, i64 1), ptr @c) to i16), i16 0), i32 zext (i1 icmp eq (ptr getelementptr inbounds ([2 x i32], ptr @d, i64 0, i64 1), ptr @c) to i32), i32 lshr (i32 zext (i1 icmp eq (ptr getelementptr inbounds ([2 x i32], ptr @d, i64 0, i64 1), ptr @c) to i32), i32 6)) to i64)), i64 sext (i32 select (i1 icmp slt (i16 zext (i1 icmp eq (ptr getelementptr inbounds ([2 x i32], ptr @d, i64 0, i64 1), ptr @c) to i16), i16 0), i32 zext (i1 icmp eq (ptr getelementptr inbounds ([2 x i32], ptr @d, i64 0, i64 1), ptr @c) to i32), i32 lshr (i32 zext (i1 icmp eq (ptr getelementptr inbounds ([2 x i32], ptr @d, i64 0, i64 1), ptr @c) to i32), i32 6)) to i64)), i64 sext (i32 select (i1 icmp slt (i16 zext (i1 icmp eq (ptr getelementptr inbounds ([2 x i32], ptr @d, i64 0, i64 1), ptr @c) to i16), i16 0), i32 zext (i1 icmp eq (ptr getelementptr inbounds ([2 x i32], ptr @d, i64 0, i64 1), ptr @c) to i32), i32 lshr (i32 zext (i1 icmp eq (ptr getelementptr inbounds ([2 x i32], ptr @d, i64 0, i64 1), ptr @c) to i32), i32 6)) to i64))
++  %constexpr = select i1 icmp slt (i16 zext (i1 icmp eq (ptr getelementptr inbounds ([2 x i32], ptr @d, i64 0, i64 1), ptr @c) to i16), i16 0), i32 zext (i1 icmp eq (ptr getelementptr inbounds ([2 x i32], ptr @d, i64 0, i64 1), ptr @c) to i32), i32 lshr (i32 zext (i1 icmp eq (ptr getelementptr inbounds ([2 x i32], ptr @d, i64 0, i64 1), ptr @c) to i32), i32 6)
++  %constexpr1 = sext i32 %constexpr to i64
++  %constexpr2 = and i64 %constexpr1, %constexpr1
++  %constexpr3 = and i64 %constexpr2, %constexpr1
++  %constexpr4 = and i64 %constexpr3, %constexpr1
++  %constexpr5 = and i64 %constexpr4, %constexpr1
++  %constexpr6 = and i64 %constexpr5, %constexpr1
++  %constexpr7 = and i64 %constexpr6, %constexpr1
++  %constexpr8 = and i64 %constexpr7, %constexpr1
++  %6 = and i64 %5, %constexpr8
+   %7 = icmp slt i32 undef, 6
+   br i1 %7, label %4, label %8
+ 
+-; <label>:8:                                      ; preds = %4, %3
++8:                                                ; preds = %4, %3
+   %9 = phi i64 [ undef, %3 ], [ %6, %4 ]
+   br label %10
+ 
+-; <label>:10:                                     ; preds = %8, %0
++10:                                               ; preds = %8, %0
+   ret void
+ }
+ 
+diff --git a/llvm/test/CodeGen/PowerPC/pr24636.ll b/llvm/test/CodeGen/PowerPC/pr24636.ll
+index d423e6a053f0..bb13a7aa6c2d 100644
+--- a/llvm/test/CodeGen/PowerPC/pr24636.ll
++++ b/llvm/test/CodeGen/PowerPC/pr24636.ll
+@@ -2,7 +2,7 @@
+ target datalayout = "e-m:e-i64:64-n32:64"
+ target triple = "powerpc64le-unknown-linux-gnu"
+ 
+-@c = external global i32, align 4
++@c = external unnamed_addr global i32, align 4
+ @b = external global [1 x i32], align 4
+ 
+ ; Function Attrs: nounwind
+@@ -25,7 +25,16 @@ define void @fn2() #0 align 4 {
+ 
+ .lr.ph.split.split:                               ; preds = %.lr.ph.split.split, %.lr.ph.split
+   %1 = phi i32 [ %2, %.lr.ph.split.split ], [ undef, %.lr.ph.split ]
+-  %2 = and i32 %1, and (i32 and (i32 and (i32 and (i32 and (i32 and (i32 and (i32 zext (i1 select (i1 icmp eq (ptr @c, ptr @b), i1 true, i1 false) to i32), i32 zext (i1 select (i1 icmp eq (ptr @c, ptr @b), i1 true, i1 false) to i32)), i32 zext (i1 select (i1 icmp eq (ptr @c, ptr @b), i1 true, i1 false) to i32)), i32 zext (i1 select (i1 icmp eq (ptr @c, ptr @b), i1 true, i1 false) to i32)), i32 zext (i1 select (i1 icmp eq (ptr @c, ptr @b), i1 true, i1 false) to i32)), i32 zext (i1 select (i1 icmp eq (ptr @c, ptr @b), i1 true, i1 false) to i32)), i32 zext (i1 select (i1 icmp eq (ptr @c, ptr @b), i1 true, i1 false) to i32)), i32 zext (i1 select (i1 icmp eq (ptr @c, ptr @b), i1 true, i1 false) to i32))
++  %constexpr = select i1 icmp eq (ptr @c, ptr @b), i1 true, i1 false
++  %constexpr1 = zext i1 %constexpr to i32
++  %constexpr2 = and i32 %constexpr1, %constexpr1
++  %constexpr3 = and i32 %constexpr2, %constexpr1
++  %constexpr4 = and i32 %constexpr3, %constexpr1
++  %constexpr5 = and i32 %constexpr4, %constexpr1
++  %constexpr6 = and i32 %constexpr5, %constexpr1
++  %constexpr7 = and i32 %constexpr6, %constexpr1
++  %constexpr8 = and i32 %constexpr7, %constexpr1
++  %2 = and i32 %1, %constexpr8
+   %3 = icmp slt i32 undef, 4
+   br i1 %3, label %.lr.ph.split.split, label %._crit_edge
+ 
+@@ -33,7 +42,7 @@ define void @fn2() #0 align 4 {
+   %.lcssa = phi i32 [ undef, %.lr.ph.split ], [ %2, %.lr.ph.split.split ]
+   br label %4
+ 
+-; <label>:4                                       ; preds = %._crit_edge, %0
++4:                                                ; preds = %._crit_edge, %0
+   ret void
+ }
+ 
+diff --git a/llvm/test/CodeGen/WebAssembly/call.ll b/llvm/test/CodeGen/WebAssembly/call.ll
+index 0fcc2bed2463..6e7a97118bc9 100644
+--- a/llvm/test/CodeGen/WebAssembly/call.ll
++++ b/llvm/test/CodeGen/WebAssembly/call.ll
+@@ -216,7 +216,10 @@ define void @coldcc_tail_call_void_nullary() {
+ ; CHECK-NEXT: i32.const $push[[L0:[0-9]+]]=, 2{{$}}
+ ; CHECK-NEXT: i32.const $push[[L1:[0-9]+]]=, 3{{$}}
+ ; CHECK-NEXT: call .Lvararg_func_bitcast, $pop[[L0]], $pop[[L1]]{{$}}
+-; CHECK-NEXT: call other_void_nullary{{$}}
++; CHECK-NEXT: i32.const	$push[[L3:[0-9]+]]=, void_nullary{{$}}
++; CHECK-NEXT: i32.const	$push[[L2:[0-9]+]]=, other_void_nullary{{$}}
++; CHECK-NEXT: i32.add 	$push[[L4:[0-9]+]]=, $pop[[L3]], $pop[[L2]]{{$}}
++; CHECK-NEXT: call_indirect	$pop[[L4]]{{$}}
+ ; CHECK-NEXT: call void_nullary{{$}}
+ ; CHECK-NEXT: return{{$}}
+ declare void @vararg_func(...)
+@@ -226,7 +229,7 @@ bb0:
+   call void @vararg_func(i32 2, i32 3)
+   br label %bb1
+ bb1:
+-  call void select (i1 0, ptr @void_nullary, ptr @other_void_nullary)()
++  call void getelementptr (i8, ptr @void_nullary, i32 ptrtoint (ptr @other_void_nullary to i32))()
+   br label %bb2
+ bb2:
+   call void inttoptr (i32 ptrtoint (ptr @void_nullary to i32) to ptr)()
+diff --git a/llvm/test/CodeGen/X86/2008-09-19-RegAllocBug.ll b/llvm/test/CodeGen/X86/2008-09-19-RegAllocBug.ll
+index 61b54ee271c2..f027f3aa77d7 100644
+--- a/llvm/test/CodeGen/X86/2008-09-19-RegAllocBug.ll
++++ b/llvm/test/CodeGen/X86/2008-09-19-RegAllocBug.ll
+@@ -9,10 +9,11 @@ entry:
+ 	%1 = trunc i32 %0 to i8		; <i8> [#uses=1]
+ 	%2 = sub i8 1, %1		; <i8> [#uses=1]
+ 	%3 = sext i8 %2 to i32		; <i32> [#uses=1]
+-	%.0 = ashr i32 %3, select (i1 icmp ne (i8 zext (i1 icmp ugt (i32 ptrtoint (ptr @func_4 to i32), i32 3) to i8), i8 0), i32 0, i32 ptrtoint (ptr @func_4 to i32))		; <i32> [#uses=1]
+-	%4 = urem i32 %0, %.0		; <i32> [#uses=1]
+-	%5 = icmp eq i32 %4, 0		; <i1> [#uses=1]
+-	br i1 %5, label %return, label %bb4
++	%s = select i1 icmp ne (i8 zext (i1 icmp ugt (i32 ptrtoint (ptr @func_4 to i32), i32 3) to i8), i8 0), i32 0, i32 ptrtoint (ptr @func_4 to i32)
++	%ashr = ashr i32 %3, %s
++	%urem = urem i32 %0, %ashr
++	%cmp = icmp eq i32 %urem, 0
++	br i1 %cmp, label %return, label %bb4
+ 
+ bb4:		; preds = %entry
+ 	ret i32 undef
+diff --git a/llvm/test/CodeGen/X86/no-plt.ll b/llvm/test/CodeGen/X86/no-plt.ll
+index d6285a828a3b..807731cea314 100644
+--- a/llvm/test/CodeGen/X86/no-plt.ll
++++ b/llvm/test/CodeGen/X86/no-plt.ll
+@@ -5,7 +5,8 @@
+ 
+ define i32 @fp_weakfunc() {
+ ; X64: weakfunc@GOTPCREL(%rip)
+-  ret i32 select (i1 icmp ne (ptr @weakfunc, ptr null), i32 1, i32 0)
++  %s = select i1 icmp ne (ptr @weakfunc, ptr null), i32 1, i32 0
++  ret i32 %s
+ }
+ declare extern_weak i32 @weakfunc() nonlazybind
+ 
+diff --git a/llvm/test/CodeGen/X86/pr44749.ll b/llvm/test/CodeGen/X86/pr44749.ll
+index b2c0e17fc668..cc9963dc2d8c 100644
+--- a/llvm/test/CodeGen/X86/pr44749.ll
++++ b/llvm/test/CodeGen/X86/pr44749.ll
+@@ -14,9 +14,9 @@ define i32 @a() {
+ ; CHECK-NEXT:    subq $-1, %rax
+ ; CHECK-NEXT:    setne %al
+ ; CHECK-NEXT:    movzbl %al, %eax
+-; CHECK-NEXT:    movl %eax, %ecx
+-; CHECK-NEXT:    leaq {{\.?LCPI[0-9]+_[0-9]+}}(%rip), %rax
+-; CHECK-NEXT:    movsd {{.*#+}} xmm0 = mem[0],zero
++; CHECK-NEXT:    cvtsi2sd %eax, %xmm0
++; CHECK-NEXT:    movsd {{.*#+}} xmm2 = mem[0],zero
++; CHECK-NEXT:    subsd %xmm2, %xmm0
+ ; CHECK-NEXT:    movsd {{.*#+}} xmm3 = mem[0],zero
+ ; CHECK-NEXT:    movsd {{.*#+}} xmm2 = mem[0],zero
+ ; CHECK-NEXT:    cmplesd %xmm1, %xmm0
+@@ -30,7 +30,9 @@ define i32 @a() {
+ entry:
+   %call = call i32 (...) @b()
+   %conv = sitofp i32 %call to double
+-  %fsub = fsub double sitofp (i32 select (i1 icmp ne (ptr getelementptr (i8, ptr @calloc, i64 1), ptr null), i32 1, i32 0) to double), 1.000000e+02
++  %sel = select i1 icmp ne (ptr getelementptr (i8, ptr @calloc, i64 1), ptr null), i32 1, i32 0
++  %sitofp = sitofp i32 %sel to double
++  %fsub = fsub double %sitofp, 1.000000e+02
+   %cmp = fcmp ole double %fsub, %conv
+   %cond = select i1 %cmp, double 1.000000e+00, double 3.140000e+00
+   %conv2 = fptosi double %cond to i32
+diff --git a/llvm/test/ThinLTO/X86/funcattrs-prop-unknown.ll b/llvm/test/ThinLTO/X86/funcattrs-prop-unknown.ll
+index f6f2dc8b1e82..48fa8f6bbffe 100644
+--- a/llvm/test/ThinLTO/X86/funcattrs-prop-unknown.ll
++++ b/llvm/test/ThinLTO/X86/funcattrs-prop-unknown.ll
+@@ -26,7 +26,7 @@ entry:
+ ; CHECK: define void @selectcallee() {
+ define void @selectcallee() {
+     ; Test calls that aren't handled either as direct or indirect.
+-    call void select (i1 icmp eq (ptr @global, ptr null), ptr @f, ptr @g)()
++    call void getelementptr (i8, ptr @f, i64 ptrtoint (ptr @g to i64))()
+     ret void
+ }
+ 
+diff --git a/llvm/test/Transforms/InferAddressSpaces/AMDGPU/infer-address-space.ll b/llvm/test/Transforms/InferAddressSpaces/AMDGPU/infer-address-space.ll
+index 57935cf7df14..72109d0cff43 100644
+--- a/llvm/test/Transforms/InferAddressSpaces/AMDGPU/infer-address-space.ll
++++ b/llvm/test/Transforms/InferAddressSpaces/AMDGPU/infer-address-space.ll
+@@ -166,10 +166,12 @@ exit:                                             ; preds = %loop
+ }
+ 
+ ; CHECK-LABEL: @select_bug(
+-; CHECK: %add.ptr157 = getelementptr inbounds i64, ptr undef, i64 select (i1 icmp ne (ptr inttoptr (i64 4873 to ptr), ptr null), i64 73, i64 93)
++; CHECK: %sel = select i1 icmp ne (ptr inttoptr (i64 4873 to ptr), ptr null), i64 73, i64 93
++; CHECK: %add.ptr157 = getelementptr inbounds i64, ptr undef, i64 %sel
+ ; CHECK: %cmp169 = icmp uge ptr undef, %add.ptr157
+ define void @select_bug() #0 {
+-  %add.ptr157 = getelementptr inbounds i64, ptr undef, i64 select (i1 icmp ne (ptr inttoptr (i64 4873 to ptr), ptr null), i64 73, i64 93)
++  %sel = select i1 icmp ne (ptr inttoptr (i64 4873 to ptr), ptr null), i64 73, i64 93
++  %add.ptr157 = getelementptr inbounds i64, ptr undef, i64 %sel
+   %cmp169 = icmp uge ptr undef, %add.ptr157
+   unreachable
+ }
+diff --git a/llvm/test/Transforms/InferAddressSpaces/AMDGPU/select.ll b/llvm/test/Transforms/InferAddressSpaces/AMDGPU/select.ll
+index 5562843a7dbf..9495c5566b36 100644
+--- a/llvm/test/Transforms/InferAddressSpaces/AMDGPU/select.ll
++++ b/llvm/test/Transforms/InferAddressSpaces/AMDGPU/select.ll
+@@ -54,22 +54,6 @@ define amdgpu_kernel void @store_select_mismatch_group_private_flat(i1 %c, ptr a
+ @lds0 = internal addrspace(3) global i32 123, align 4
+ @lds1 = internal addrspace(3) global i32 456, align 4
+ 
+-; CHECK-LABEL: @constexpr_select_group_flat(
+-; CHECK: %tmp = load i32, ptr addrspace(3) select (i1 icmp eq (i32 ptrtoint (ptr addrspace(3) @lds1 to i32), i32 4), ptr addrspace(3) @lds0, ptr addrspace(3) @lds1)
+-define i32 @constexpr_select_group_flat() #0 {
+-bb:
+-  %tmp = load i32, ptr select (i1 icmp eq (i32 ptrtoint (ptr addrspace(3) @lds1 to i32), i32 4), ptr addrspacecast (ptr addrspace(3) @lds0 to ptr), ptr addrspacecast (ptr addrspace(3) @lds1 to ptr))
+-  ret i32 %tmp
+-}
+-
+-; CHECK-LABEL: @constexpr_select_group_global_flat_mismatch(
+-; CHECK: %tmp = load i32, ptr select (i1 icmp eq (i32 ptrtoint (ptr addrspace(3) @lds1 to i32), i32 4), ptr addrspacecast (ptr addrspace(3) @lds0 to ptr), ptr addrspacecast (ptr addrspace(1) @global0 to ptr))
+-define i32 @constexpr_select_group_global_flat_mismatch() #0 {
+-bb:
+-  %tmp = load i32, ptr select (i1 icmp eq (i32 ptrtoint (ptr addrspace(3) @lds1 to i32), i32 4), ptr addrspacecast (ptr addrspace(3) @lds0 to ptr), ptr addrspacecast (ptr addrspace(1) @global0 to ptr))
+-  ret i32 %tmp
+-}
+-
+ ; CHECK-LABEL: @store_select_group_flat_null(
+ ; CHECK: %select = select i1 %c, ptr addrspace(3) %group.ptr.0, ptr addrspace(3) addrspacecast (ptr null to ptr addrspace(3))
+ ; CHECK: store i32 -1, ptr addrspace(3) %select
+@@ -185,48 +169,6 @@ define amdgpu_kernel void @store_select_group_global_mismatch_null_null(i1 %c) #
+   ret void
+ }
+ 
+-; CHECK-LABEL: @store_select_group_global_mismatch_null_null_constexpr(
+-; CHECK: store i32 7, ptr select (i1 icmp eq (i32 ptrtoint (ptr addrspace(3) @lds1 to i32), i32 4), ptr addrspacecast (ptr addrspace(3) null to ptr), ptr addrspacecast (ptr addrspace(1) null to ptr)), align 4
+-define amdgpu_kernel void @store_select_group_global_mismatch_null_null_constexpr() #0 {
+-  store i32 7, ptr select (i1 icmp eq (i32 ptrtoint (ptr addrspace(3) @lds1 to i32), i32 4), ptr addrspacecast (ptr addrspace(3) null to ptr), ptr addrspacecast (ptr addrspace(1) null to ptr)), align 4
+-  ret void
+-}
+-
+-; CHECK-LABEL: @store_select_group_global_mismatch_gv_null_constexpr(
+-; CHECK: store i32 7, ptr select (i1 icmp eq (i32 ptrtoint (ptr addrspace(3) @lds1 to i32), i32 4), ptr addrspacecast (ptr addrspace(3) @lds0 to ptr), ptr addrspacecast (ptr addrspace(1) null to ptr)), align 4
+-define amdgpu_kernel void @store_select_group_global_mismatch_gv_null_constexpr() #0 {
+-  store i32 7, ptr select (i1 icmp eq (i32 ptrtoint (ptr addrspace(3) @lds1 to i32), i32 4), ptr addrspacecast (ptr addrspace(3) @lds0 to ptr), ptr addrspacecast (ptr addrspace(1) null to ptr)), align 4
+-  ret void
+-}
+-
+-; CHECK-LABEL: @store_select_group_global_mismatch_null_gv_constexpr(
+-; CHECK: store i32 7, ptr select (i1 icmp eq (i32 ptrtoint (ptr addrspace(3) @lds1 to i32), i32 4), ptr addrspacecast (ptr addrspace(3) null to ptr), ptr addrspacecast (ptr addrspace(1) @global0 to ptr)), align 4
+-define amdgpu_kernel void @store_select_group_global_mismatch_null_gv_constexpr() #0 {
+-  store i32 7, ptr select (i1 icmp eq (i32 ptrtoint (ptr addrspace(3) @lds1 to i32), i32 4), ptr addrspacecast (ptr addrspace(3) null to ptr), ptr addrspacecast (ptr addrspace(1) @global0 to ptr)), align 4
+-  ret void
+-}
+-
+-; CHECK-LABEL: @store_select_group_global_mismatch_inttoptr_null_constexpr(
+-; CHECK: store i32 7, ptr select (i1 icmp eq (i32 ptrtoint (ptr addrspace(3) @lds1 to i32), i32 4), ptr addrspacecast (ptr addrspace(3) inttoptr (i64 123 to ptr addrspace(3)) to ptr), ptr addrspacecast (ptr addrspace(1) null to ptr)), align 4
+-define amdgpu_kernel void @store_select_group_global_mismatch_inttoptr_null_constexpr() #0 {
+-  store i32 7, ptr select (i1 icmp eq (i32 ptrtoint (ptr addrspace(3) @lds1 to i32), i32 4), ptr addrspacecast (ptr addrspace(3) inttoptr (i64 123 to ptr addrspace(3)) to ptr), ptr addrspacecast (ptr addrspace(1) null to ptr)), align 4
+-  ret void
+-}
+-
+-; CHECK-LABEL: @store_select_group_global_mismatch_inttoptr_flat_null_constexpr(
+-; CHECK: store i32 7, ptr addrspace(1) select (i1 icmp eq (i32 ptrtoint (ptr addrspace(3) @lds1 to i32), i32 4), ptr addrspace(1) addrspacecast (ptr inttoptr (i64 123 to ptr) to ptr addrspace(1)), ptr addrspace(1) null), align 4
+-define amdgpu_kernel void @store_select_group_global_mismatch_inttoptr_flat_null_constexpr() #0 {
+-  store i32 7, ptr select (i1 icmp eq (i32 ptrtoint (ptr addrspace(3) @lds1 to i32), i32 4), ptr inttoptr (i64 123 to ptr), ptr addrspacecast (ptr addrspace(1) null to ptr)), align 4
+-  ret void
+-}
+-
+-; CHECK-LABEL: @store_select_group_global_mismatch_undef_undef_constexpr(
+-; CHECK: store i32 7, ptr select (i1 icmp eq (i32 ptrtoint (ptr addrspace(3) @lds1 to i32), i32 4), ptr addrspacecast (ptr addrspace(3) null to ptr), ptr undef), align 4
+-define amdgpu_kernel void @store_select_group_global_mismatch_undef_undef_constexpr() #0 {
+-  store i32 7, ptr select (i1 icmp eq (i32 ptrtoint (ptr addrspace(3) @lds1 to i32), i32 4), ptr addrspacecast (ptr addrspace(3) null to ptr), ptr addrspacecast (ptr addrspace(1) undef to ptr)), align 4
+-  ret void
+-}
+-
+ @lds2 = external addrspace(3) global [1024 x i32], align 4
+ 
+ ; CHECK-LABEL: @store_select_group_constexpr_ptrtoint(
+diff --git a/llvm/test/Transforms/InstCombine/2010-03-03-ExtElim.ll b/llvm/test/Transforms/InstCombine/2010-03-03-ExtElim.ll
+index c9b2d6b41aa9..73fa613d0568 100644
+--- a/llvm/test/Transforms/InstCombine/2010-03-03-ExtElim.ll
++++ b/llvm/test/Transforms/InstCombine/2010-03-03-ExtElim.ll
+@@ -21,12 +21,19 @@ define i1 @PR6486() nounwind {
+ 
+ define i1 @PR16462_1() nounwind {
+ ; CHECK-LABEL: @PR16462_1(
+-  ret i1 icmp sgt (i32 sext (i16 trunc (i32 select (i1 icmp eq (ptr @a, ptr @d), i32 0, i32 1) to i16) to i32), i32 65535)
++  %constexpr = select i1 icmp eq (ptr @a, ptr @d), i32 0, i32 1
++  %constexpr1 = trunc i32 %constexpr to i16
++  %constexpr2 = sext i16 %constexpr1 to i32
++  %constexpr3 = icmp sgt i32 %constexpr2, 65535
++  ret i1 %constexpr3
+ ; CHECK: ret i1 false
+ }
+ 
+ define i1 @PR16462_2() nounwind {
+ ; CHECK-LABEL: @PR16462_2(
+-  ret i1 icmp sgt (i32 sext (i16 trunc (i32 select (i1 icmp eq (ptr @a, ptr @d), i32 0, i32 1) to i16) to i32), i32 42)
++  %constexpr = select i1 icmp eq (ptr @a, ptr @d), i32 0, i32 1
++  %constexpr1 = trunc i32 %constexpr to i16
++  %constexpr2 = icmp sgt i16 %constexpr1, 42
++  ret i1 %constexpr2
+ ; CHECK: ret i1 false
+ }
+diff --git a/llvm/test/Transforms/InstCombine/cast.ll b/llvm/test/Transforms/InstCombine/cast.ll
+index cd3b032d739d..5b480b115793 100644
+--- a/llvm/test/Transforms/InstCombine/cast.ll
++++ b/llvm/test/Transforms/InstCombine/cast.ll
+@@ -1441,7 +1441,8 @@ define i64 @PR28745() {
+ ; LE-LABEL: @PR28745(
+ ; LE-NEXT:    ret i64 0
+ ;
+-  %e = extractvalue { i32 } select (i1 icmp eq (i16 extractelement (<2 x i16> bitcast (<1 x i32> <i32 1> to <2 x i16>), i32 0), i16 0), { i32 } { i32 1 }, { i32 } zeroinitializer), 0
++  %s = select i1 icmp eq (i16 extractelement (<2 x i16> bitcast (<1 x i32> <i32 1> to <2 x i16>), i32 0), i16 0), { i32 } { i32 1 }, { i32 } zeroinitializer
++  %e = extractvalue { i32 } %s, 0
+   %b = zext i32 %e to i64
+   ret i64 %b
+ }
+diff --git a/llvm/test/Transforms/InstCombine/pr28725.ll b/llvm/test/Transforms/InstCombine/pr28725.ll
+index 26772eb7fe3a..688409c41f3c 100644
+--- a/llvm/test/Transforms/InstCombine/pr28725.ll
++++ b/llvm/test/Transforms/InstCombine/pr28725.ll
+@@ -3,7 +3,8 @@
+ 
+ define <2 x i16> @test1() {
+ entry:
+-  %e = extractvalue %S select (i1 icmp eq (i16 extractelement (<2 x i16> bitcast (<1 x i32> <i32 1> to <2 x i16>), i32 0), i16 0), %S zeroinitializer, %S { i16 0, i32 1 }), 0
++  %s = select i1 icmp eq (i16 extractelement (<2 x i16> bitcast (<1 x i32> <i32 1> to <2 x i16>), i32 0), i16 0), %S zeroinitializer, %S { i16 0, i32 1 }
++  %e = extractvalue %S %s, 0
+   %b = insertelement <2 x i16> <i16 undef, i16 0>, i16 %e, i32 0
+   ret <2 x i16> %b
+ }
+diff --git a/llvm/test/Transforms/InstSimplify/ConstProp/constant-expr.ll b/llvm/test/Transforms/InstSimplify/ConstProp/constant-expr.ll
+index 8978d9200afb..bdecda847d37 100644
+--- a/llvm/test/Transforms/InstSimplify/ConstProp/constant-expr.ll
++++ b/llvm/test/Transforms/InstSimplify/ConstProp/constant-expr.ll
+@@ -84,12 +84,3 @@
+ ; CHECK: pr9011_14 = constant i128 0
+ @pr9011_15 = constant i128 bitcast (<4 x i32> zeroinitializer to i128)
+ ; CHECK: pr9011_15 = constant i128 0
+-
+-@select = internal constant
+-          i32 select (i1 icmp ult (i32 ptrtoint (ptr @X to i32),
+-                                   i32 ptrtoint (ptr @Y to i32)),
+-            i32 select (i1 icmp ult (i32 ptrtoint (ptr @X to i32),
+-                                     i32 ptrtoint (ptr @Y to i32)),
+-               i32 10, i32 20),
+-            i32 30)
+-; CHECK: select = internal constant i32 select {{.*}} i32 10, i32 30
+diff --git a/llvm/test/Transforms/InstSimplify/pr28725.ll b/llvm/test/Transforms/InstSimplify/pr28725.ll
+index 67e6170c4f1b..8adfecc5128e 100644
+--- a/llvm/test/Transforms/InstSimplify/pr28725.ll
++++ b/llvm/test/Transforms/InstSimplify/pr28725.ll
+@@ -6,12 +6,14 @@
+ define <2 x i16> @test1() {
+ ; CHECK-LABEL: @test1(
+ ; CHECK-NEXT:  entry:
+-; CHECK-NEXT:    [[E:%.*]] = extractvalue [[S:%.*]] select (i1 icmp eq (i16 extractelement (<2 x i16> bitcast (<1 x i32> <i32 1> to <2 x i16>), i32 0), i16 0), [[S]] zeroinitializer, [[S]] { i16 0, i32 1 }), 0
++; CHECK-NEXT:    [[SEL:%.*]] = select i1 icmp eq (i16 extractelement (<2 x i16> bitcast (<1 x i32> <i32 1> to <2 x i16>), i32 0), i16 0), [[S:%.*]] zeroinitializer, [[S]] { i16 0, i32 1 }
++; CHECK-NEXT:    [[E:%.*]] = extractvalue [[S]] [[SEL]], 0
+ ; CHECK-NEXT:    [[B:%.*]] = insertelement <2 x i16> <i16 undef, i16 0>, i16 [[E]], i32 0
+ ; CHECK-NEXT:    ret <2 x i16> [[B]]
+ ;
+ entry:
+-  %e = extractvalue %S select (i1 icmp eq (i16 extractelement (<2 x i16> bitcast (<1 x i32> <i32 1> to <2 x i16>), i32 0), i16 0), %S zeroinitializer, %S { i16 0, i32 1 }), 0
++  %sel = select i1 icmp eq (i16 extractelement (<2 x i16> bitcast (<1 x i32> <i32 1> to <2 x i16>), i32 0), i16 0), %S zeroinitializer, %S { i16 0, i32 1 }
++  %e = extractvalue %S %sel, 0
+   %b = insertelement <2 x i16> <i16 undef, i16 0>, i16 %e, i32 0
+   ret <2 x i16> %b
+ }
+diff --git a/llvm/unittests/Analysis/ValueTrackingTest.cpp b/llvm/unittests/Analysis/ValueTrackingTest.cpp
+index ef130522f10f..713cfed808f1 100644
+--- a/llvm/unittests/Analysis/ValueTrackingTest.cpp
++++ b/llvm/unittests/Analysis/ValueTrackingTest.cpp
+@@ -1157,10 +1157,7 @@ TEST(ValueTracking, canCreatePoisonOrUndef) {
+       {{false, false}, "call noundef i32 @g(i32 %x)"},
+       {{true, false}, "fcmp nnan oeq float %fx, %fy"},
+       {{false, false}, "fcmp oeq float %fx, %fy"},
+-      {{true, false},
+-       "ashr <4 x i32> %vx, select (i1 icmp sgt (i32 ptrtoint (i32* @s to "
+-       "i32), i32 1), <4 x i32> zeroinitializer, <4 x i32> <i32 0, i32 1, i32 "
+-       "2, i32 3>)"},
++      {{true, false}, "ashr i32 %x, ptrtoint (i32* @s to i32)"},
+       {{false, false},
+        "call {i32, i1} @llvm.sadd.with.overflow.i32(i32 %x, i32 %y)"},
+       {{false, false},
+diff --git a/llvm/unittests/IR/ConstantsTest.cpp b/llvm/unittests/IR/ConstantsTest.cpp
+index 71ff311e7693..947cc7f89243 100644
+--- a/llvm/unittests/IR/ConstantsTest.cpp
++++ b/llvm/unittests/IR/ConstantsTest.cpp
+@@ -270,8 +270,6 @@ TEST(ConstantsTest, AsInstructionsTest) {
+   CHECK(ConstantExpr::getFPExtend(P1, DoubleTy),
+         "fpext float " P1STR " to double");
+ 
+-  CHECK(ConstantExpr::getSelect(P3, P0, P4),
+-        "select i1 " P3STR ", i32 " P0STR ", i32 " P4STR);
+   CHECK(ConstantExpr::getICmp(CmpInst::ICMP_EQ, P0, P4),
+         "icmp eq i32 " P0STR ", " P4STR);
+   CHECK(ConstantExpr::getFCmp(CmpInst::FCMP_ULT, P1, P5),
+-- 
+2.40.0
+
