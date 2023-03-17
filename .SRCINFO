@@ -1,0 +1,19 @@
+pkgbase = pcsx2-bin
+	pkgdesc = A Sony PlayStation 2 emulator
+	pkgver = 1.7.4239
+	pkgrel = 1
+	url = https://github.com/PCSX2/pcsx2
+	arch = x86_64
+	license = GPL3
+	license = LGPL3
+	makedepends = jq
+	makedepends = aria2
+	provides = pcsx2
+	provides = pcsx2-git
+	provides = pcsx2-qt
+	conflicts = pcsx2
+	conflicts = pcsx2-git
+	conflicts = pcsx2-qt
+
+pkgname = pcsx2-bin
+	depends = 
