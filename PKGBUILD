@@ -5,7 +5,7 @@
 
 pkgname=asunder
 pkgver=2.9.7
-pkgrel=5
+pkgrel=6
 pkgdesc="a graphical CD ripper and encoder"
 arch=('x86_64')
 url="http://littlesvr.ca/asunder/"
@@ -27,13 +27,13 @@ source=(http://littlesvr.ca/asunder/releases/${pkgname}-${pkgver}.tar.bz2)
 sha512sums=('ef5e998b3e3e552ac23696619742caff9c30e52cb2b11f75395cc6e4b2134c58df1c4a97e930db0e8c61dfc31e77b3d9a99a4c9ab6c07ae59b9e91f723401e23')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
 
