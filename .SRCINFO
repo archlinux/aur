@@ -8,9 +8,9 @@ pkgbase = web2desk
 	source = https://concise.cc/pkg/web2desk-0.1.0-1-any.pkg.tar.zst
 	source = https://concise.cc/pkg/web2desk-0.1.0-1-any.pkg.tar.zst.sig
 	validpgpkeys = 81BACEEBC3EA26E127166E4A819BB92A9A48160E
-	md5sums = 1cacc369802f1afbdc1f47f87975dca3
-	md5sums = fae83d9fe8a8d3f462ed338f5fd04667
-	sha512sums = 0c21a30d9ded4614f7b3474e327f6d977e448c835aca239d40650efd21217fbb4cd9a8e80c1c0762007827f6483211c670c96e0d5a8de5c244884aecb564f06a
-	sha512sums = bce6d9f4fc97f9bc00e1e07162e910fdf9d15c9f2329652acd9c1afd1bba7e2e4d6ff0e615bc0fad1fa314f06957be07c472b293125c2dcfc8d123c2d48f6a4c
+	md5sums = 6209ec53ec7edddf63662a76bc687e65
+	md5sums = c902aa80b5967d17c9975922aff7aa2f
+	sha512sums = 9b3a8d09125a5b7469bd0e8331e6375d6163f19d8f08a713696c938a24d2604051aacf3a046e0ac4f1595634e6f6d293a2c3c0a7caac0cbeea368f01f02db0e0
+	sha512sums = 8f4bd1dbc0827de617c499d42780d92d5f87966b2bf13fba2e34a2fc89f9f0d34dc13fb6bb2144c11e03049ab1719071a9973fa76cd488058eeb19250b5bd571
 
 pkgname = web2desk
