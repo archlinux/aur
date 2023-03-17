@@ -9,11 +9,9 @@ _gitroot="https://git.kernel.org/pub/scm/linux/kernel/git/stable/${_srcname}"
 _gitbranch="linux-rolling-stable"
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for BPI-R64 and BPI-R3"
-_r3dts="https://github.com/torvalds/linux/raw/master/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts"
-_r3dtsi="https://github.com/torvalds/linux/raw/master/arch/arm64/boot/dts/mediatek/mt7986a.dtsi"
 #_lto="true"  # Uncomment this line to enable CLANG-LTO
-pkgver=6.2.6.bpir
-pkgrel=2
+pkgver=6.2.7.bpir
+pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -28,8 +26,11 @@ source=('defconfig'
         'mkinitcpio.hook'
         'mkinitcpio.build'
         'bpir3-flash2emmc'
+        "src/configfs.c::https://github.com/Xilinx/linux-xlnx/raw/master/drivers/of/configfs.c"
+        "src/mt7986a-bananapi-bpi-r3.dts::https://github.com/torvalds/linux/raw/master/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts"
+        "src/mt7986a.dtsi::https://github.com/torvalds/linux/raw/master/arch/arm64/boot/dts/mediatek/mt7986a.dtsi"
 )
-md5sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
+md5sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
 
 export LOCALVERSION=""
 
@@ -42,7 +43,9 @@ prepare() {
     echo "LOCAL  HEAD: $(git rev-parse HEAD)"
     echo "REMOTE HEAD: $(git rev-parse @{u})"
     if [ "$(git rev-parse HEAD)" != "$(git rev-parse @{u})" ]; then
-      git pull --depth=1 --rebase=true --force origin "${_gitbranch}:${_gitbranch}"
+      git reset --hard
+#      git pull --depth=1 --rebase=true --force origin "${_gitbranch}:${_gitbranch}"
+      git pull --depth=1 --ff-only --force origin "${_gitbranch}:${_gitbranch}"
       git checkout "${_gitbranch}"
     fi
     echo
@@ -54,15 +57,20 @@ prepare() {
   fi
   cd "${srcdir}/${_srcname}/"
 
-  rm -f ./arch/arm64/boot/dts/mediatek/$(basename $_r3dts)
-  rm -f ./arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-  wget --no-verbose $_r3dts --no-clobber -P ./arch/arm64/boot/dts/mediatek/
-  wget --no-verbose $_r3dtsi --no-clobber -P ./arch/arm64/boot/dts/mediatek/
+  cp -vf "${srcdir}/mt7986a-bananapi-bpi-r3.dts" "./arch/arm64/boot/dts/mediatek/"
+  cp -vf "${srcdir}/mt7986a.dtsi"                "./arch/arm64/boot/dts/mediatek/"
   sed -i 's/mt6795-sony-xperia-m5/mt7986a-bananapi-bpi-r3/g' ./arch/arm64/boot/dts/mediatek/Makefile
 
   cp -vf ${startdir}/defconfig ./arch/arm64/configs/bpir64_defconfig
   make ${MAKEFLAGS} $_llvm bpir64_defconfig
   rm -vf ./arch/arm64/configs/bpir64_defconfig
+
+  if [ ! -z "$(cat .config | grep CONFIG_OF_OVERLAY=y)" ]; then
+    cp -vf "${srcdir}/configfs.c" "./drivers/of/"
+    if [ -z "$(cat ./drivers/of/Makefile | grep configfs.o)" ]; then
+      echo -e "\nobj-y	+= configfs.o\n" >>./drivers/of/Makefile
+    fi
+  fi
 
   # get kernel version
   make ${MAKEFLAGS} $_llvm prepare

@@ -1,29 +1,88 @@
 #!/usr/bin/ash
-
+ 
 # Tool for %PKGBASE% package, needs to run from initrd!
 # Connect UART and when kernel starts, keep 'x' key pressed.
+ 
+driver="mtk-msdc"
+addr="11230000"
+ 
+function get_sysmmc {
+  echo $(echo /sys/bus/platform/devices/${addr}.mmc/mmc_host/mmc*/mmc* | head -1)
+}
+function get_mmcblk {
+  echo "$(basename $(ls $(get_sysmmc)/block | head -1))"
+}
+function get_mmctype {
+  cat $(get_sysmmc)/type
+}
+ 
+function set_mmc {
+cat <<EOT | tee /tmp/mmc0.dts
+/dts-v1/;
+/plugin/;
+&mmc0 {
+  bus-width = <$1>;
+  max-frequency = <$2>;
+  cap-sd-highspeed;
+  cap-mmc-highspeed;
+  mmc-hs200-1_8v;
+  mmc-hs400-1_8v;
+#  hs400-ds-delay = <0x14014>;
+#  no-sd;
+  no-sdio;
+  status = "okay";
+};
+EOT
+mmcdtbo="/sys/kernel/config/device-tree/overlays/mmc0"
+mkdir -p ${mmcdtbo}
+dtc -@ -I dts -O dtb -o /tmp/mmc0.dtbo /tmp/mmc0.dts
+cat /tmp/mmc0.dtbo >${mmcdtbo}/dtbo 
+}
+ 
+function restart_driver {
+  [[ "$1" == "SD" ]] && pos="UP"
+  [[ "$1" == "MMC" ]] && pos="DOWN"
+  until [[ "$(get_mmctype)" == "$1" ]]; do
+    echo ${addr}.mmc >/sys/bus/platform/drivers/${driver}/unbind
+    sleep 0.1
+    echo ${addr}.mmc >/sys/bus/platform/drivers/${driver}/bind
+    echo "Flip SD/EMMC switch ${pos} (=$1) (most near to power plug), the rest stay up!"
+    sleep 1.9
+  done
+}
+ 
+mount -t configfs none /sys/kernel/config
+ 
+mmcblk=$(get_mmcblk)
+ 
+echo "Device = /dev/${mmcblk}"
+ 
+if [[ "$(get_mmctype)" == "SD" ]]; then
+  mkdir -p /tmp/mnt
+  mount --source /dev/disk/by-partlabel/*-sdmmc-root --target /tmp/mnt
+  [ $? -ne 0 ] && exit
+  echo "Reading file $1 now..."
+  cp -f "/tmp/mnt$1" "/tmp/tempfile"
+  umount /tmp/mnt
+  [ $? -ne 0 ] && exit
+  echo "Switching to EMMC..."
+  set_mmc 8 200000000
+  restart_driver "MMC"
+  mmcblk=$(get_mmcblk)
+  if [ -e "/tmp/tempfile" ]; then
+    echo "Setting up EMMC so that ${mmcblk} is the bootdevice."
+    mmc bootpart enable 7 1 /dev/${mmcblk}
+    echo "Writing $1 to EMMC now..."
+    xz -dcv "/tmp/tempfile" | dd of=/dev/${mmcblk} conv=fsync,notrunc
+    echo "Reboot and enjoy booting from EMMC."
+fi
+elif [[ "$(get_mmctype)" == "MMC" ]]; then
+  echo "Switching back to SDMMC..."
+  set_mmc 4 52000000
+  restart_driver "SD"
+  mmcblk=$(get_mmcblk)
+fi
 
-mkdir -p /tmp/mnt
-mount --source /dev/disk/by-partlabel/*-sdmmc-root --target /tmp/mnt
-[ $? -ne 0 ] && exit
-[ ! -e "/tmp/mnt$1" ] && exit
-echo "Reading file $1 now..."
-cp -f "/tmp/mnt$1" "/tmp/tempfile"
-umount /tmp/mnt
-[ $? -ne 0 ] && exit
-
-while [ ! -e /sys/block/mmcblk0boot0 ]; do
-  echo 11230000.mmc >/sys/bus/platform/drivers/mtk-msdc/unbind
-  sleep 0.1
-  echo 11230000.mmc >/sys/bus/platform/drivers/mtk-msdc/bind
-  echo "Flip SD/EMMC switch down (most near to power plug), the rest stay up!"
-  sleep 1.9
-done
-
-echo "Setting up EMMC so that mmcblk0 is the bootdevice."
-mmc bootpart enable 7 1 /dev/mmcblk0
-echo "Writing $1 to EMMC now..."
-xz -dcv "/tmp/tempfile" | dd of=/dev/mmcblk0 conv=fsync,notrunc
-
-echo "Reboot and enjoy booting from EMMC."
-
+#echo 0 > /sys/block/mmcblk0boot1/force_ro 
+#dd if=/dev/zero of=/dev/mmcblk0boot1
+                                                                                              
