@@ -3,7 +3,7 @@
 
 pkgname=ffmpeg-full
 pkgver=6.0
-pkgrel=1
+pkgrel=2
 _svt_hevc_ver='eb24a06ba4ee4948f219a3246b88439a8090bd37'
 _svt_vp9_ver='aaa8140c8cdf6c073eaa6aaa5d003d1535fd0059'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)'
@@ -119,7 +119,7 @@ depends=(
     'xavs'
     'xavs2'
 )
-makedepends=('clang' 'amf-headers' 'ffnvcodec-headers-git' 'nasm' 'opencl-headers'
+makedepends=('clang' 'amf-headers' 'ffnvcodec-headers' 'nasm' 'opencl-headers'
              'vulkan-headers' 'decklink-sdk')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libswscale.so' 'libswresample.so'
