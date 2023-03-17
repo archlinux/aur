@@ -39,6 +39,8 @@ package() {
   install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/opt"
   install -d "${pkgdir}/opt/${pkgname}"
+  # Refer to https://aur.archlinux.org/packages/redisinsight#comment-906529
+  install -d "${pkgdir}/opt/${pkgname}/resources/static/resources/plugins"
   cp -avR * "${pkgdir}/opt/${pkgname}"
   ln -s /opt/${pkgname}/redisinsight "${pkgdir}/usr/bin/redisinsight"
   find "${pkgdir}/opt/${pkgname}" -type d -exec chmod 755 {} +
