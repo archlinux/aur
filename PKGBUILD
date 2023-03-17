@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-5compat
-_qtver=6.4.2
+_qtver=6.4.3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -13,12 +13,12 @@ url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Module that contains unsupported Qt 5 APIs (android)'
 depends=('android-aarch64-qt6-base')
-makedepends=('android-cmake' 'qt6-base' 'ninja' 'java-environment-openjdk=8')
+makedepends=('android-cmake' 'qt6-base' 'ninja' 'java-environment-openjdk>=11')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qt5compat-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('f51f505c8e985b51b7d733e27d782c6fce181beef53364acb0368cc892c4b792')
+sha256sums=('d4b249abb823d575eee9045c24d924ba8d1276e6be7735b287689991d998aa7a')
 
 build() {
   source android-env ${_android_arch}
