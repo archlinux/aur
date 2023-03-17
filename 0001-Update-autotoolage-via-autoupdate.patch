@@ -1,0 +1,65 @@
+From e75f43be61781a3f4c627e70901240d7be9fc893 Mon Sep 17 00:00:00 2001
+From: Adam Borowski <kilobyte@angband.pl>
+Date: Sat, 3 Sep 2022 01:44:03 +0200
+Subject: [PATCH 1/2] Update autotoolage via autoupdate.
+
+---
+ configure.ac     |  9 ++++-----
+ libtty/formats.h | 10 ++--------
+ 2 files changed, 6 insertions(+), 13 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index ad0fd82..66725f9 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1,12 +1,12 @@
+ #                                               -*- Autoconf -*-
+ # Process this file with autoconf to produce a configure script.
+ 
+-AC_PREREQ(2.59)
+-AC_INIT(termrec, m4_esyscmd([./get_version -n]), [kilobyte@angband.pl])
++AC_PREREQ([2.71])
++AC_INIT([termrec],[m4_esyscmd(./get_version -n)],[kilobyte@angband.pl])
+ AM_INIT_AUTOMAKE([-Wall dist-xz no-dist-gzip foreign subdir-objects])
+ AC_CONFIG_MACRO_DIR([m4])
+ AC_CONFIG_SRCDIR([libtty/tty.h])
+-AC_CONFIG_HEADER([config.h])
++AC_CONFIG_HEADERS([config.h])
+ AC_CONFIG_FILES(Makefile
+         win32/icons/Makefile
+         )
+@@ -31,10 +31,9 @@ AX_CHECK_COMPILE_FLAG(-std=gnu11, [CFLAGS="$CFLAGS -std=gnu11"],
+ AC_SCO
+ 
+ # Checks for header files.
+-AC_HEADER_STDC
+ #AC_HEADER_TIOCGWINSZ
+ AX_CREATE_STDINT_H
+-AC_HEADER_TIME
++AC_CHECK_HEADERS_ONCE([sys/time.h])
+ AC_CHECK_HEADERS([fcntl.h stdlib.h string.h strings.h sys/ioctl.h termios.h \
+         unistd.h bzlib.h zlib.h sys/time.h sys/select.h langinfo.h \
+         netinet/in.h lzma.h pty.h libutil.h zstd.h])
+diff --git a/libtty/formats.h b/libtty/formats.h
+index 4bf8398..a19ac9e 100644
+--- a/libtty/formats.h
++++ b/libtty/formats.h
+@@ -1,13 +1,7 @@
+ #include <stdio.h>
+-#if TIME_WITH_SYS_TIME
++#include <time.h>
++#if HAVE_SYS_TIME_H
+ # include <sys/time.h>
+-# include <time.h>
+-#else
+-# if HAVE_SYS_TIME_H
+-#  include <sys/time.h>
+-# else
+-#  include <time.h>
+-# endif
+ #endif
+ 
+ typedef void play_func(FILE *f,
+-- 
+2.39.2
+
