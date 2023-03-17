@@ -1,9 +1,9 @@
-# Maintainer: Felix Golatofski <contact at xdfr.de>
-# Contributor: Karel Louwagie <aur at karellouwagie.net>
-# Contributor: Idares <idares at seznam.cz>
-# Contributor: Enrico Morelli <morelli at cerm.unifi.it>
-# Contributor: Vadym Abramchuk <abramm at gmail.com>
-# Contributor: karol_007 <karol.blazewicz at gmail.com>
+# Maintainer: Felix Golatofski <contact at xdfr dot de>
+# Contributor: Karel Louwagie <aur at karellouwagie dot net>
+# Contributor: Idares <idares at seznam dot cz>
+# Contributor: Enrico Morelli <morelli at cerm dot unifi dot it>
+# Contributor: Vadym Abramchuk <abramm at gmail dot com>
+# Contributor: karol_007 <karol dot blazewicz at gmail dot com>
 
 pkgname=zabbix-proxy-sqlite-2.4
 pkgver=2.4.8
