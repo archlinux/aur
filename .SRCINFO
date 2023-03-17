@@ -1,0 +1,17 @@
+pkgbase = amdgpu_top-git
+	pkgdesc = Tool that shows AMD GPU utilization
+	pkgver = r87.e80c558
+	pkgrel = 1
+	url = https://github.com/Umio-Yasuno/amdgpu_top
+	arch = any
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libdrm
+	depends = ncurses
+	provides = amdgpu_top
+	conflicts = amdgpu_top
+	source = git+https://github.com/Umio-Yasuno/amdgpu_top
+	sha256sums = SKIP
+
+pkgname = amdgpu_top-git
