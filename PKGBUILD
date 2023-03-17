@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-webchannel
-_qtver=6.4.2
+_qtver=6.4.3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -13,12 +13,12 @@ url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Provides access to QObject or QML objects from HTML clients for seamless integration of Qt applications with HTML/JavaScript clients (android)'
 depends=('android-aarch64-qt6-declarative')
-makedepends=('android-cmake' 'qt6-declarative' 'ninja' 'java-environment-openjdk=8')
+makedepends=('android-cmake' 'qt6-declarative' 'ninja' 'java-environment-openjdk>=11')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtwebchannel-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('06657b2b2509f26c733b7c40da0dbb8571a215b97f99685a6fc3bc51dcbebd87')
+sha256sums=('e955044587f0e74a64c88bbbe4d6be9fd869ac89d66a96cce4752756bcbef3a8')
 
 build() {
   source android-env ${_android_arch}
