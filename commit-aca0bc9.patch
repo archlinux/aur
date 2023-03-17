@@ -1,0 +1,41 @@
+From aca0bc94a5d525df914d1dbead30257ff6285776 Mon Sep 17 00:00:00 2001
+From: Calin Culianu <calin.culianu@gmail.com>
+Date: Sat, 4 Feb 2023 22:55:41 -0500
+Subject: Fix for build failing on latest arch
+
+Summary
+---
+
+See issue #480. This fixes #480. The reason for the build failure is
+that `std::deque` is being used in file(s) without `#include <deque>`.
+
+Test Plan
+---
+
+- `ninja all check`
+- Try building on latest arch and verify building succeeds.
+
+diff --git a/src/net_processing.cpp b/src/net_processing.cpp
+index 6f443d334..cac6f47a6 100644
+--- a/src/net_processing.cpp
++++ b/src/net_processing.cpp
+@@ -44,6 +44,7 @@
+ 
+ #include <chrono>
+ #include <cmath>
++#include <deque>
+ #include <memory>
+ #include <stdexcept>
+ #include <type_traits>
+diff --git a/src/validation.cpp b/src/validation.cpp
+index 99ab618e2..4fd04a7dc 100644
+--- a/src/validation.cpp
++++ b/src/validation.cpp
+@@ -57,6 +57,7 @@
+ 
+ #include <algorithm>
+ #include <atomic>
++#include <deque>
+ #include <limits>
+ #include <list>
+ #include <optional>

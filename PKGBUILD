@@ -1,6 +1,6 @@
 pkgname=bitcoincashd
-pkgver=24.1.0
-pkgrel=2
+pkgver=26.0.0
+pkgrel=1
 pkgdesc="Bitcoin Cash Node with bitcoincashd, bitcoincash-tx, and bitcoincash-cli"
 arch=('i686' 'x86_64')
 url="https://bitcoincashnode.org"
@@ -12,20 +12,22 @@ source=(https://github.com/bitcoin-cash-node/bitcoin-cash-node/archive/v$pkgver.
         bitcoincash.logrotate
         bitcoincash.service
         bitcoincash.sysusers
-        bitcoincash.tmpfiles)
-sha256sums=('2f2ff3c3759480b1c8f2d0d4b80c2b9f3c10d58d5e8ee9125584f2b5491c793d'
+        bitcoincash.tmpfiles
+        commit-aca0bc9.patch)
+sha256sums=('c87dfdf97ec8a1ee5ddb6447fcdea6e42714c79bb9424e5312dba5b083a8fcd2'
             '53d49ed7fbf6e0ed25c6c8d77d3ac1e40ac90804161eb3393c71e8c3071cca27'
             '98a89a694437c74950b8f2b157c24e07a2a99c7a78b73e86e989aa0bffc5442b'
             '8521616ae515786dca8b49bf2b156e18fd174955f8224bb94a409eccc8809f3c'
             'd65c37451f6838cfa64fb543c06165711ac1166997145fa7e9290f5c79560159'
-            '9f81b4bfaefad0a5cc3573f216e0d5a0b18e5fa782b5feb4261aa2e1081b650b')
+            '9f81b4bfaefad0a5cc3573f216e0d5a0b18e5fa782b5feb4261aa2e1081b650b'
+            '80b610b5f8f7cdfe45275d62d3545d003a2ad25d903a6c8d06a30d15748ebe09')
 backup=('etc/bitcoincash/bitcoincash.conf'
         'etc/logrotate.d/bitcoincash')
 provides=('bitcoincash-cli' 'bitcoincash-daemon' 'bitcoincash-tx')
 
 build() {
   cd "$srcdir/bitcoin-cash-node-$pkgver"
-
+  patch -p1 <$srcdir/commit-aca0bc9.patch
   msg2 'Building...'
   mkdir -p build
   pushd build
@@ -50,7 +52,7 @@ build() {
 package() {
   cd "$srcdir/bitcoin-cash-node-$pkgver"
 
-  install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/bitcoincash"
+  install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/bitcoincashd"
 
   install -dm 755 "$pkgdir/usr/share/doc/bitcoincash"
   for _doc in \
