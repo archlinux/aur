@@ -1,8 +1,8 @@
 pkgbase = buck2-git
 	pkgdesc = Successor to the Buck build system
-	pkgver = r69.71ef2ce8d
+	pkgver = r2836.b55dbd253c
 	pkgrel = 1
-	url = https://github.com/facebookincubator/buck2
+	url = https://github.com/facebook/buck2
 	arch = x86_64
 	license = Apache
 	makedepends = git
@@ -11,9 +11,9 @@ pkgbase = buck2-git
 	depends = openssl
 	depends = sqlite
 	provides = buck2
-	source = git+https://github.com/facebookincubator/buck2
+	source = git+https://github.com/facebook/buck2
 	source = unbundled-sqlite.patch
 	md5sums = SKIP
-	md5sums = 3e49b1c0a1a999e5b10844f8dc7aceb1
+	md5sums = SKIP
 
 pkgname = buck2-git

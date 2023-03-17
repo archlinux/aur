@@ -3,19 +3,19 @@
 # - This package requires nightly Rust to build, which can be fulfilled by
 #   the rust-nightly-bin AUR package, or rustup.
 pkgname=buck2-git
-pkgver=r69.71ef2ce8d
+pkgver=r2836.b55dbd253c
 pkgrel=1
 pkgdesc="Successor to the Buck build system"
 arch=("x86_64")
-url="https://github.com/facebookincubator/buck2"
+url="https://github.com/facebook/buck2"
 license=('Apache')
 depends=('openssl' 'sqlite')
 makedepends=('git' 'protobuf' 'rust-nightly')
 provides=('buck2')
-source=('git+https://github.com/facebookincubator/buck2'
+source=('git+https://github.com/facebook/buck2'
 	    'unbundled-sqlite.patch')
 md5sums=('SKIP'
-         '3e49b1c0a1a999e5b10844f8dc7aceb1')
+         '60d6555cd2ca80474087cb9bff5cf5d8')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
