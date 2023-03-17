@@ -1,10 +1,9 @@
 pkgbase = play.it-git
-	pkgver = r3072.bbf6b17e
+	pkgver = 2.22.2.r0.gc95b1519
 	pkgrel = 1
 	url = https://wiki.dotslashplay.it
 	arch = any
 	license = BSD
-	makedepends = pandoc
 	source = git+https://forge.dotslashplay.it/play.it/scripts.git
 	source = git+https://forge.dotslashplay.it/play.it/games.git
 	sha1sums = SKIP

@@ -3,12 +3,11 @@
 
 pkgbase=play.it-git
 pkgname=(play.it-git play.it-games-git)
-pkgver=r3072.bbf6b17e
+pkgver=2.22.2.r0.gc95b1519
 pkgrel=1
 arch=('any')
 url="https://wiki.dotslashplay.it"
 license=('BSD')
-makedepends=('pandoc')
 source=('git+https://forge.dotslashplay.it/play.it/scripts.git'
         'git+https://forge.dotslashplay.it/play.it/games.git')
 sha1sums=('SKIP' 'SKIP')
@@ -16,11 +15,6 @@ sha1sums=('SKIP' 'SKIP')
 pkgver() {
   cd scripts
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd scripts
-  sed -i '/^\s\+DEFAULT_OPTION_ARCHITECTURE=/s,=.*,=auto,' play.it-2/src/99_init.sh
 }
 
 build() {
@@ -42,7 +36,7 @@ package_play.it-git() {
   conflicts=('play.it')
 
   cd scripts
-  make DESTDIR="$pkgdir"/ prefix=/usr bindir=/usr/bin datadir=/usr/share install-library install-wrapper install-manpage
+  make DESTDIR="$pkgdir"/ prefix=/usr bindir=/usr/bin datadir=/usr/share install
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
