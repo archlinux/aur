@@ -1,8 +1,8 @@
 pkgbase = python-stlib-plugins
 	pkgdesc = A set of stlib official plugins
 	pkgver = 1.1.1
-	pkgrel = 1
-	url = https://github.com/ShyPixie/stlib-plugins
+	pkgrel = 2
+	url = https://github.com/calendulish/stlib-plugins
 	arch = any
 	license = GPL
 	makedepends = python-build
@@ -10,7 +10,7 @@ pkgbase = python-stlib-plugins
 	makedepends = python-wheel
 	depends = python>=3.9
 	depends = python-stlib
-	source = https://github.com/ShyPixie/stlib-plugins/archive/v1.1.1.tar.gz
+	source = https://github.com/calendulish/stlib-plugins/archive/v1.1.1.tar.gz
 	sha256sums = 1144f582460240933197390b83aa87356b29b763049b938f668114d5cd2f2761
 
 pkgname = python-stlib-plugins
