@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=ROX Filer
+Comment=File Manager
+Exec=rox
+Icon=rox
+Terminal=false
+Type=Application
+Categories=System;Utility;Core;FileManager;

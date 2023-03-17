@@ -1,0 +1,22 @@
+pkgbase = rox
+	pkgdesc = A small and fast file manager which can optionally manage the desktop background and panels
+	pkgver = 2.11
+	pkgrel = 7
+	url = http://rox.sourceforge.net/desktop/
+	arch = x86_64
+	license = GPL
+	makedepends = librsvg
+	makedepends = python
+	depends = sh
+	depends = libsm
+	depends = gtk2
+	source = https://downloads.sourceforge.net/rox/rox-filer-2.11.tar.bz2
+	source = rox.desktop
+	source = rox.svg
+	source = rox.sh
+	sha256sums = a929bd32ee18ef7a2ed48b971574574592c42e34ae09f36604bf663d7c101ba8
+	sha256sums = 183ba9abb8ab84e36b59287977a79e45b5530c8026b3f0b8d3f6ff3f3e311320
+	sha256sums = 6d48e937bec9027aacc9e2828467161ed1488c1e8587eb37a5681d3852b824ea
+	sha256sums = 5b2f007e304220551cfecdca28333f5421ecfb3f084c4b44bd0cb2321dc51c40
+
+pkgname = rox
