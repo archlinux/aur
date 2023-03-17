@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-svg-static
-_qtver=6.4.2
+_qtver=6.4.3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -17,7 +17,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtsvg-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('b746af3cb1793621d8ed7eae38d9ad5a15541dc2742031069f2ae3fe87590314')
+sha256sums=('88315f886cf81898705e487cedba6e6160724359d23c518c92c333c098879a4a')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
