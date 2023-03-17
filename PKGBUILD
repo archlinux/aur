@@ -3,7 +3,7 @@
 # Based on https://aur.archlinux.org/packages/monero-feather-git/
 
 pkgname='monero-feather'
-pkgver=2.4.2
+pkgver=2.4.3
 pkgrel=1
 pkgdesc='A free Monero desktop wallet'
 license=('BSD')
