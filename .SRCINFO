@@ -1,6 +1,6 @@
 pkgbase = keyboard-center
 	pkgdesc = Application to map G-keys on (some) Logitech Gaming Keyboards
-	pkgver = 0.2.8
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/zocker-160/keyboard-center
 	install = keyboard-center.install
@@ -16,7 +16,10 @@ pkgbase = keyboard-center
 	depends = hidapi>=0.10
 	depends = libnotify>=0.7.9
 	optdepends = openrgb: RGB control for your keyboard
-	source = keyboard-center-0.2.8::git+https://github.com/zocker-160/keyboard-center.git#tag=0.2.8
+	optdepends = xdotool: type strings for X11
+	optdepends = ydotool: type strings using uinput
+	optdepends = wtype: type strings for Wayland
+	source = keyboard-center-1.0.0::git+https://github.com/zocker-160/keyboard-center.git#tag=1.0.0
 	sha256sums = SKIP
 
 pkgname = keyboard-center
