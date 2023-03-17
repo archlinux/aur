@@ -1,6 +1,6 @@
 pkgbase = ansifilter
 	pkgdesc = remove or convert ANSI codes to another format
-	pkgver = 2.18
+	pkgver = 2.19
 	pkgrel = 1
 	url = http://www.andre-simon.de/doku/ansifilter/en/ansifilter.php
 	arch = i686
@@ -8,9 +8,10 @@ pkgbase = ansifilter
 	arch = pentium4
 	arch = i486
 	license = GPL3
+	depends = glibc
 	depends = gcc-libs
-	source = http://www.andre-simon.de/zip/ansifilter-2.18.tar.bz2
-	sha256sums = 66cf017d36a43d5f6ae20609ce3b58647494ee6c0e41fc682c598bffce7d7d39
+	options = !debug
+	source = http://www.andre-simon.de/zip/ansifilter-2.19.tar.bz2
+	sha256sums = f9c27b1883914a1b1d4965f4c49b2be502e2a9fc9dd3f61123abeae989c354bc
 
 pkgname = ansifilter
-
