@@ -30,4 +30,3 @@ pkgbase = zabbix-proxy-sqlite-2.4
 	sha512sums = 3c63a2791e6ac77cb3144eb47a275cc8748f5c8943a076052300d6964994b95b18d60f504584fdcb683739dc514261402895e3f30ae2fbdb218acbc42c3d72df
 
 pkgname = zabbix-proxy-sqlite-2.4
-
