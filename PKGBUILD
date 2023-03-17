@@ -1,13 +1,13 @@
 # Maintainer: Hans Müller <schreibemirhalt@gmail.com>
 pkgname=fakeaur
 pkgver=r11.37adea1
-pkgrel=2
+pkgrel=3
 pkgdesc="Edit names and descriptions of AUR packages. Meme mates with nani or btwiusearch"
 arch=('any')
 url="https://github.com/schrmh/fakeAUR"
 license=('unknown')
-depends=('bash')
-makedepends=('git' 'bash')
+depends=('jq')
+makedepends=('git')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("$pkgname::git+https://github.com/schrmh/fakeAUR.git")
