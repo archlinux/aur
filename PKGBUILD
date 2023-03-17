@@ -36,5 +36,7 @@ build() {
 package() {
   cd boost_$_boostver
   install -d "${pkgdir}"/usr/lib
+  install -d "${pkgdir}"/usr/lib/cmake
   cp -P stage/lib/libboost_stacktrace_backtrace.* "${pkgdir}"/usr/lib
+  cp -r stage/lib/cmake/boost_stacktrace_backtrace-"${pkgver}" "${pkgdir}"/usr/lib/cmake/
 }
