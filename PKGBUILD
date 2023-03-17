@@ -2,7 +2,7 @@
 
 pkgname=capa-bin
 _pkg=capa
-pkgver=4.0.1
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="The FLARE team's open-source tool to identify capabilities in executable files"
 url="https://github.com/mandiant/capa"
@@ -12,7 +12,7 @@ optdepends=('python2')
 conflicts=('capa')
 source=("$url/releases/download/v$pkgver/${_pkg}-v$pkgver-linux.zip"
         "https://raw.githubusercontent.com/mandiant/capa/master/LICENSE.txt")
-sha256sums=('537fd7e63108aa6f88e25e0f10e0a693b1a129f908db9039478e666d993bdcd0'
+sha256sums=('843dbed824c1cdf5a74f1f063dc63272cedc54b58a748a42f874db80627e345a'
             '275dbf7cc15d9c826b03638277eae17bb827fbdd5891a96a44708cf3abec458d')
 
 package() {
