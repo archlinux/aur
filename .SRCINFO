@@ -1,7 +1,7 @@
 pkgbase = swayfx
 	pkgdesc = SwayFX: Sway, but with eye candy!
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WillPower3309/swayfx
 	install = sway.install
 	arch = i686
