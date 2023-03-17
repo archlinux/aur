@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-virtualkeyboard
-_qtver=6.4.2
+_qtver=6.4.3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -13,12 +13,12 @@ url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Virtual keyboard framework (android)'
 depends=('android-aarch64-qt6-declarative' 'android-aarch64-qt6-svg')
-makedepends=('android-cmake' 'qt6-declarative' 'qt6-shadertools' 'ninja' 'java-environment-openjdk=8')
+makedepends=('android-cmake' 'qt6-declarative' 'qt6-shadertools' 'ninja' 'java-environment-openjdk>=11')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtvirtualkeyboard-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('9c3c830f6e17896efaca5fdc7c191088eedd70b07490b38835856579346a4f28')
+sha256sums=('3f4685226f5b00e65c8b304a47dd96c7d9b843649fba6e75421d055825de0ee5')
 
 build() {
   source android-env ${_android_arch}
