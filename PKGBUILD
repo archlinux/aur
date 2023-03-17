@@ -41,11 +41,12 @@ sha256sums=('8331b18f4b71532a00b8964e5db26fcd13adc485cb3b3715c3641977351405b5'
             'fc829dab031c3af0ec250e5e71efa805c482986dc1c7151eeb9584fdb4d01767')
 
 prepare() {
-  for _f in ${_image_files[@]} ; do
-    bsdtar -xf ${_f} data.tar.xz
-    bsdtar -xf data.tar.xz
-    rm -f data.tar.xz
-  done
+  bsdtar -xf ${_file_image} data.tar.xz
+  bsdtar -xf data.tar.xz
+  rm -f data.tar.xz
+  bsdtar -xf ${_file_headers} data.tar.xz
+  bsdtar -xf data.tar.xz
+  rm -f data.tar.xz
 }
 
 _package() {
