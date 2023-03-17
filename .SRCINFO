@@ -1,0 +1,22 @@
+pkgbase = featherwallet-appimage
+	pkgdesc = A free Monero desktop wallet
+	pkgver = 2.4.3
+	pkgrel = 1
+	url = https://featherwallet.org
+	arch = x86_64
+	license = GPL
+	depends = tor
+	depends = fuse2fs
+	provides = featherwallet-appimage
+	conflicts = monero-feather
+	conflicts = monero-feather-git
+	conflicts = featherwallet-bin
+	noextract = feather.AppImage
+	options = !strip
+	source = https://featherwallet.org/files/releases/linux-appimage/feather-2.4.3.AppImage
+	source = https://featherwallet.org/files/releases/linux-appimage/feather-2.4.3.AppImage.asc
+	validpgpkeys = 8185E158A33330C7FD61BC0D1F76E155CEFBA71C
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = featherwallet-appimage
