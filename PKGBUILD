@@ -15,7 +15,7 @@ md5sums_x86_64=('d77dec170c9f2fc28d0dbf9b9d348c81')
 
 package() {
 install -d -m 0755 ${pkgdir}/opt/${pkgname}
-cp -a ${srcdir}/TIB_js-studiocomm_${pkgver}/* ${pkgdir}/opt/${pkgname}
+cp -a ${srcdir}/js-studiocomm_${pkgver}/* ${pkgdir}/opt/${pkgname}
 install -d -m 0755 ${pkgdir}/usr/bin
 ln -sf "/opt/${pkgname}/${_binname}" ${pkgdir}/usr/bin/${pkgname}
 ln -sf "/opt/${pkgname}/${_binname}" ${pkgdir}/usr/bin/${pkgname}
