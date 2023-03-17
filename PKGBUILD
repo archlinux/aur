@@ -2,7 +2,7 @@
 # Maintained at: https://github.com/matt-h/aur-pkgbuilds
 
 pkgname=screamingfrogseospider
-pkgver=18.3
+pkgver=18.4
 pkgrel=1
 pkgdesc="A small desktop program you can install on your PC or Mac which spiders websites’ links, images, CSS, script and apps from an SEO perspective."
 arch=('x86_64' 'i686')
@@ -15,7 +15,7 @@ source=(
   "LICENSE"
   "screamingfrogseospider"
 )
-sha256sums=('81cdd087df66df55c635a73883bc6dee834e0a27ed90203b274fc6a9b7927c9c'
+sha256sums=('d3aba8062103982d90d2b5ea023d0b8a0ef8e1961e7a73d8421c9a36904022f6'
             '855f01069c19bb605e344fb9e42ca63caeeb2c214c4be04ad4990a749f3cf069'
             'b9d7e8c231070b293cc6f6e26f91645fa01db2c7ae368b1c6cb8aa2e6915c560')
 
