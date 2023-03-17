@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=git-branchless
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='High-velocity monorepo-scale workflow for Git'
 url="https://github.com/arxanas/$pkgname"
@@ -13,7 +13,7 @@ makedepends=(cargo)
 checkdepends=(git)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('13a7441be5c002b5a645dd9ad359dad5bdd46950b51b49e3cddccd9041deb5f5')
+sha256sums=('90a69356573acd0984607749cc18706c5a2410e1d59b553df5271ad3e4147dbf')
 
 prepare() {
 	cd "$_archive"
@@ -37,5 +37,7 @@ check() {
 
 package () {
 	cd "$_archive"
-	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+	local _target="target/release/$pkgname"
+	install -Dm0755 -t "$pkgdir/usr/bin/" "$_target"
+	$_target install-man-pages "$pkgdir/usr/share/man/man1/"
 }
