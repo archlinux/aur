@@ -1,0 +1,44 @@
+pkgbase = linux-hdr-git
+	pkgdesc = Linux kernel with support for HDR on AMDGPU
+	pkgver = 6.0.r2753.gff57328e5784
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/JoshuaAshton/linux-hdr
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = libelf
+	makedepends = pahole
+	makedepends = cpio
+	makedepends = perl
+	makedepends = tar
+	makedepends = xz
+	makedepends = gettext
+	makedepends = xmlto
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = texlive-latexextra
+	makedepends = git
+	options = !strip
+	source = linux-hdr-git::git+https://gitlab.freedesktop.org/JoshuaAshton/linux-hdr.git#branch=josh-hdr-colorimetry
+	source = config
+	sha256sums = SKIP
+	sha256sums = c92207f87f806209da2bda0a2044872fdf22fce9a45cf31d3579fdfedde8c17c
+
+pkgname = linux-hdr-git
+	pkgdesc = The Linux kernel with support for HDR on AMDGPU kernel and modules
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	provides = KSMBD-MODULE
+	replaces = virtualbox-guest-modules-arch
+	replaces = wireguard-arch
+
+pkgname = linux-hdr-headers-git
+	pkgdesc = Headers and scripts for building modules for the Linux kernel with support for HDR on AMDGPU kernel
+	depends = pahole
