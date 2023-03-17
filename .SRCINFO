@@ -1,13 +1,13 @@
 pkgbase = taschenrechner
 	pkgdesc = a cli-calculator written in rust
-	pkgver = 0.1.2
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://gitlab.fem-net.de/mabl/taschenrechner
 	arch = x86_64
 	license = GPL-3.0
 	makedepends = rust
 	provides = taschenrechner
-	source = https://gitlab.fem-net.de/mabl/taschenrechner/-/archive/0.1.2/taschenrechner-0.1.2.tar.gz
-	sha256sums = 1124f772c51003f2e8094bdb27456c5d8a880e8d2dd389c6d4cf7c0143fc0dba
+	source = https://gitlab.fem-net.de/mabl/taschenrechner/-/archive/1.0.0/taschenrechner-1.0.0.tar.gz
+	sha256sums = e1cec59388f2ed4eba3119db0d832b5dcb278ae13bec13512887d10720b27ce4
 
 pkgname = taschenrechner
