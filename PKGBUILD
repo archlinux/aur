@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-websockets
-_qtver=6.4.2
+_qtver=6.4.3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -14,12 +14,12 @@ license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Provides WebSocket communication compliant with RFC 6455 (android)'
 depends=('android-aarch64-qt6-base')
 optdepends=('android-aarch64-qt6-declarative: QML bindings')
-makedepends=('android-cmake' 'android-aarch64-qt6-declarative' 'qt6-declarative' 'ninja' 'java-environment-openjdk=8')
+makedepends=('android-cmake' 'android-aarch64-qt6-declarative' 'qt6-declarative' 'ninja' 'java-environment-openjdk>=11')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtwebsockets-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('71cf857582db20c20103a56f67d51c33c4ab0b72448209c963d3b449a527c626')
+sha256sums=('de27357eb55c5e83ae560371d7f76b36b5b2ba85caf8965c527f1d5d4b8d458f')
 
 build() {
   source android-env ${_android_arch}
