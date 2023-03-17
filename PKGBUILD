@@ -1,23 +1,17 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
-# Contributor: Khashayar Naderehvandi <khashayar_naderehvandi@yahoo.co.uk>
-# Contributor: imachine <m.jedrasik@gmail.com>
-# Contributor: Ng Oon-Ee <ngoonee.talk@gmail.com>
+# Maintainer: éclairevoyant
+
 pkgname=soundfont-unison
 pkgver=1.00
 pkgrel=3
-pkgdesc="A lean and clean GM/GS soundbank"
-arch=('any')
-license=("custom")
-url="http://www.personalcopy.com"
-groups=('soundfonts')
-source=("ftp://ftp.personalcopy.net/pub/Unison.sf2.gz")
-md5sums=('6775aad100fd758dc8300c511e4cc09f')
+pkgdesc="Lean and clean GM/GS soundbank, by Peter Jevnisek"
+arch=(any)
+license=(custom)
+url="https://musical-artifacts.com/artifacts/659"
+source=("$url/Unison.SF2" LICENSE)
+b2sums=('4ce51865458e72a3f4bad64021525bc5b67f0522ddbedcce588255b5e7b5c2ac5fcc90edac9853ebe44e7e6a7efd4299e1ab96b4ef9404dbdc1f889493f4e132'
+        '43534f6462af1779061591232745e44ed25be24c68777e170f6381253528776151b49a7a4aaa2ccd06f31c198a35a7e6dd9009f420da681901c5ee021083956e')
 
 package() {
-  cd "$srcdir"
-  install -D -m644 Unison.sf2 "$pkgdir/usr/share/soundfonts/Unison.sf2"
-  # from the README.txt in the zip version
-  echo "Unison is to be used for non-commercial purposes only! You may edit it for your own use, but do not distribute modified versions of Unison or any instruments/ sounds within that were created by me. EMU's terms and conditions of use apply to the rest of the instruments/sounds (Music Box, Jazz Guitar, Brass, Soprano Sax, Solo Vox, and Space Voice.)" > LICENSE
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 Unison.SF2 "$pkgdir/usr/share/soundfonts/Unison.sf2"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
-
