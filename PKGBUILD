@@ -204,7 +204,7 @@ END
 
   # Add LibreWolf logo to Debugging Page
   patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/lw-logo-devtools.patch
-
+<
   # Update privacy preferences
   patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/privacy-preferences.patch
 
@@ -225,9 +225,6 @@ END
 
   # Remove unified extensions recommendations
   patch -Np1 -i "${_librewolf_patches_dir}"/unified-extensions-dont-show-recommendations.patch
-
-  # RFP Performance API - should be merged in 111
-  patch -Np1 -i "${_librewolf_patches_dir}"/rfp-performance-api.patch
 
   # Fix telemetry removal, see https://gitlab.com/librewolf-community/browser/linux/-/merge_requests/17, for example
   patch -Np1 -i "${_librewolf_patches_dir}"/disable-data-reporting-at-compile-time.patch
