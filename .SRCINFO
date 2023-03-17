@@ -1,0 +1,19 @@
+pkgbase = codon
+	pkgdesc = A high-performance, zero-overhead, extensible Python compiler using LLVM
+	pkgver = 0.15.5
+	pkgrel = 1
+	url = https://github.com/exaloop/codon
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = llvm
+	depends = llvm-libs
+	depends = ncurses
+	depends = gcc-libs
+	depends = glibc
+	source = https://github.com/exaloop/codon/archive/refs/tags/v0.15.5.tar.gz
+	source = llvm15.patch
+	sha256sums = f17e79800c50adf5bf58cc4d374ef4304455011454cda37d3a2d9e837677f2ae
+	sha256sums = SKIP
+
+pkgname = codon

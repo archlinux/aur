@@ -1,0 +1,39 @@
+--- a/CMakeLists.txt	2023-02-06 01:05:30.000000000 +0100
++++ b/CMakeLists.txt	2023-03-17 16:28:27.484191793 +0100
+@@ -348,34 +348,14 @@
+   AllTargetsCodeGens
+   AllTargetsDescs
+   AllTargetsInfos
+-  AggressiveInstCombine
+-  Analysis
+-  AsmParser
+-  BitWriter
+-  CodeGen
+-  Core
+-  Extensions
+-  IPO
+-  IRReader
+-  InstCombine
+-  Instrumentation
+-  MC
+-  MCJIT
+-  ObjCARCOpts
+-  OrcJIT
+-  Remarks
+-  ScalarOpts
+   Support
+-  Symbolize
+-  Target
+-  TransformUtils
+-  Vectorize
+-  Passes)
++  )
+ if(APPLE)
+   target_link_libraries(codonc PRIVATE ${LLVM_LIBS} fmt dl codonrt)
+ else()
+   target_link_libraries(codonc PRIVATE ${STATIC_LIBCPP} ${LLVM_LIBS} fmt dl codonrt)
+ endif()
++target_link_libraries (codonc PUBLIC LLVM)
+ 
+ # Gather headers
+ add_custom_target(
