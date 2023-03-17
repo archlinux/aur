@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-imageformats
-_qtver=6.4.2
+_qtver=6.4.3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -13,12 +13,12 @@ url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Plugins for additional image formats: TIFF, TGA, WBMP (android)'
 depends=('android-aarch64-qt6-base' "android-${_android_arch}-libwebp")
-makedepends=('android-cmake' 'qt6-base' 'ninja' 'java-environment-openjdk=8')
+makedepends=('android-cmake' 'qt6-base' 'ninja' 'java-environment-openjdk>=11')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtimageformats-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('fc5f999ae0779a67d5507956d4dd315386eb81cf6ccba632de039bb9eee11707')
+sha256sums=('0aff58062e74b84617c5da8325d8cdad5368d8f4d2a11ceafcd58329fe99b798')
 
 build() {
   source android-env ${_android_arch}
