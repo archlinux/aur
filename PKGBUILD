@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=ffmpeg-full-git
-pkgver=5.2.r109965.ge50a02b0f6
+pkgver=5.2.r110024.g14719b7939
 pkgrel=1
 _svt_hevc_ver='eb24a06ba4ee4948f219a3246b88439a8090bd37'
 _svt_vp9_ver='aaa8140c8cdf6c073eaa6aaa5d003d1535fd0059'
@@ -118,7 +118,7 @@ depends=(
     'xavs'
     'xavs2'
 )
-makedepends=('git' 'clang' 'amf-headers' 'ffnvcodec-headers-git' 'nasm' 'opencl-headers'
+makedepends=('git' 'clang' 'amf-headers' 'ffnvcodec-headers' 'nasm' 'opencl-headers'
              'vulkan-headers' 'decklink-sdk')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libswscale.so' 'libswresample.so'
@@ -133,7 +133,7 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
         '060-ffmpeg-fix-segfault-with-avisynthplus.patch'
         'LICENSE')
 sha256sums=('SKIP'
-            '71a2d73579b5ee3d1cfd812bacd3c229785f5adcb5d8ff0590fc55b89f6fd5e2'
+            'b04d0707e14f43df1243a403d74cab434197ece9491d6590523a184e776496ba'
             'e8fdc940474f3819b9a8d30cab8164774584c051322acb6194bcb03d56e8175a'
             'd8b91ea5f07d0208cbe0290567083808708014a1953fda322d13cb619349c9ee'
             'd1ad786df86354d218a70b306a50961736c0a6e2d2716bf8de3db31d79957df9'

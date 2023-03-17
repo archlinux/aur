@@ -1,5 +1,14 @@
 --- a/030-ffmpeg-add-svt-vp9-gaaa8140.patch
 +++ b/030-ffmpeg-add-svt-vp9-gaaa8140.patch
+@@ -44,7 +44,7 @@ index 932805ccf3..45306434fb 100755
+  libwebp_encoder_deps="libwebp"
+  libwebp_anim_encoder_deps="libwebp"
+  libx262_encoder_deps="libx262"
+-@@ -6715,6 +6718,7 @@ enabled libvpx            && {
++@@ -6721,6 +6724,7 @@ enabled libvpx            && {
+      fi
+  }
+  
 @@ -56,10 +56,10 @@ diff --git a/libavcodec/Makefile b/libav
  index 389253f5d0..1573ae4c34 100644
  --- a/libavcodec/Makefile
@@ -14,3 +23,16 @@
  +OBJS-$(CONFIG_LIBSVT_VP9_ENCODER)         += libsvt_vp9.o
   OBJS-$(CONFIG_LIBWEBP_ENCODER)            += libwebpenc_common.o libwebpenc.o
   OBJS-$(CONFIG_LIBWEBP_ANIM_ENCODER)       += libwebpenc_common.o libwebpenc_animencoder.o
+@@ -68,10 +68,10 @@ diff --git a/libavcodec/allcodecs.c b/li
+ index e593ad19af..a5396c0477 100644
+ --- a/libavcodec/allcodecs.c
+ +++ b/libavcodec/allcodecs.c
+-@@ -799,6 +799,7 @@ extern const FFCodec ff_libvpx_vp8_encoder;
++@@ -799,6 +799,7 @@ extern const FFCodec ff_libvpx_vp8_encod
+  extern const FFCodec ff_libvpx_vp8_decoder;
+  extern FFCodec ff_libvpx_vp9_encoder;
+- extern FFCodec ff_libvpx_vp9_decoder;
++ extern const FFCodec ff_libvpx_vp9_decoder;
+ +extern FFCodec ff_libsvt_vp9_encoder;
+  /* preferred over libwebp */
+  extern const FFCodec ff_libwebp_anim_encoder;
