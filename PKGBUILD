@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=qpdf
-_pkgver=1.3.1
+_pkgver=1.3.2
 pkgname=r-${_pkgname,,}
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='Split, Combine and Compress PDF Files'
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('600c6ba670f691794611b1fc1486160d55ca2fdfa6bbc737cbe6db4073c59c5c')
+sha256sums=('d9c905a4879274d72de0c638f2e14737ec0a59895cbba9814e05c62b43e8e976')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
