@@ -3,7 +3,7 @@
 
 pkgname=penguin-subtitle-player
 pkgver=1.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Standalone subtitle player'
 arch=('x86_64')
 url='https://github.com/carsonip/Penguin-Subtitle-Player'
@@ -25,7 +25,7 @@ prepare() {
   cd Penguin-Subtitle-Player
   git submodule init
   git submodule set-url src/uchardet "$srcdir/uchardet"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 
   # Add better integration for Linux
   git cherry-pick -n 96ec9e4d7b1adf6de3b3ed71b6c57c8cb362fcae
