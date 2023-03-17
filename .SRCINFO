@@ -1,0 +1,14 @@
+pkgbase = thinkfan-openrc
+	pkgdesc = OpenRC init script for thinkfan - A minimalist fan control program. Supports the sysfs hwmon interface and thinkpad_acpi
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/MeganerdNL/thinkfan-openrc
+	arch = any
+	license = MIT
+	depends = openrc
+	depends = thinkfan
+	backup = etc/init.d/thinkfan
+	source = https://github.com/MeganerdNL/thinkfan-openrc/archive/1.0.0.zip
+	sha256sums = 87868bd0cefac8aa74fa34d713551c8c81e8357c0537a8481593b9426b94fe7c
+
+pkgname = thinkfan-openrc
