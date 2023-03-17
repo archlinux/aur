@@ -1,14 +1,13 @@
 pkgbase = oyepa
-	pkgdesc = A tagging file system emulator.
+	pkgdesc = Tagging file system emulator
 	pkgver = 3.2
-	pkgrel = 1
-	url = http://pages.stern.nyu.edu/~marriaga/software/oyepa/
+	pkgrel = 2
+	url = https://pages.stern.nyu.edu/~marriaga/software/oyepa
 	arch = any
 	license = GPL2
-	depends = python2-pyqt
 	depends = python2-pyinotify
-	source = http://pages.stern.nyu.edu/~marriaga/software/oyepa/oyepa-latest.tgz
-	md5sums = 099777c8b0601bdaa6ff2e6ab4fcfe8c
+	depends = python2-pyqt4
+	source = oyepa-3.2.tgz::https://pages.stern.nyu.edu/~marriaga/software/oyepa/oyepa-latest.tgz
+	b2sums = b7f6a7f0468144465b86262071ba743e1232bcc3cdb50324862a8fa7ffb85a1e8e29e2ca010091a6565e90fe4ad82dbecff80f61921de7387ab4d2fe71cf7fb5
 
 pkgname = oyepa
-

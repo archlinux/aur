@@ -1,0 +1,7 @@
+post_install() {
+	echo "Create the file ~/.oyepa/dirs with directories to watch. See /usr/share/oyepa/README for more info."
+}
+
+post_upgrade() {
+	post_install
+}
