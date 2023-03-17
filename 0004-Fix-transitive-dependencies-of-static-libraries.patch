@@ -1,4 +1,4 @@
-From 85b8d2551ba63f795fea58e97973a445ff0e0de4 Mon Sep 17 00:00:00 2001
+From 42c085d4a746a12ef0ffde8e29fc7fef048bfb19 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 5 Nov 2020 21:59:33 +0100
 Subject: [PATCH 04/12] Fix transitive dependencies (of static libraries)
@@ -36,17 +36,17 @@ index 24a194c9cb..a6a16b494f 100644
  endif()
  
 diff --git a/cmake/FindMySQL.cmake b/cmake/FindMySQL.cmake
-index a069a5eb12..0fcba2148e 100644
+index f5cad361d7..cdfb469c71 100644
 --- a/cmake/FindMySQL.cmake
 +++ b/cmake/FindMySQL.cmake
-@@ -40,6 +40,7 @@ if(MySQL_FOUND)
+@@ -80,6 +80,7 @@ if(MySQL_FOUND)
      add_library(MySQL::MySQL UNKNOWN IMPORTED)
      set_target_properties(MySQL::MySQL PROPERTIES
                            IMPORTED_LOCATION "${MySQL_LIBRARIES}"
 +                          INTERFACE_LINK_LIBRARIES "${MYSQL_DEPENDENCIES}"
                            INTERFACE_INCLUDE_DIRECTORIES "${MySQL_INCLUDE_DIRS}")
-   endif()
- endif()
+     if(MySQL_LIBRARY_DEBUG)
+       set_target_properties(MySQL::MySQL PROPERTIES
 diff --git a/cmake/FindWrapDBus1.cmake b/cmake/FindWrapDBus1.cmake
 index bdbcab9eb3..06e9af49f6 100644
 --- a/cmake/FindWrapDBus1.cmake
@@ -132,5 +132,5 @@ index d3a6a8588e..743154fc50 100644
          Qt::CorePrivate
          Qt::SqlPrivate
 -- 
-2.39.0
+2.39.2
 
