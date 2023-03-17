@@ -1,8 +1,8 @@
 pkgbase = goldendict-webengine-git
 	pkgdesc = A feature-rich dictionary lookup program, supporting multiple dictionary formats.
-	pkgver = 22.9.24.alpha.221116.9bb71336.r48.g9f65f3c1
+	pkgver = 23.02.07.alpha.230226.656cd373.r34.gfb6d4f9c
 	pkgrel = 1
-	url = http://goldendict.org/
+	url = https://github.com/xiaoyifang/goldendict
 	arch = i686
 	arch = x86_64
 	license = GPL3
