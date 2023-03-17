@@ -1,6 +1,6 @@
-# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
-# Contributor: Karel Louwagie <karel@louwagie.net>
-# Contributor: Samuel Walladge <samuel@swalladge.id.au>
+# Maintainer: Yurii Kolesnykov <root at yurikoles {dot} com>
+# Contributor: Karel Louwagie <karel at louwagie {dot} net>
+# Contributor: Samuel Walladge <samuel at swalladge {dot} id {dot} au>
 
 pkgname=toggldesktop-dev-bin
 _pkgname=toggldesktop
