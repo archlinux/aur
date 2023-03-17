@@ -17,7 +17,7 @@ depends=('kodi' 'kodi-addon-script-module-inputstreamhelper')
 source=("https://github.com/flubshi/${_gitname}/archive/${pkgver}-${_koditarget}.tar.gz"
         "https://github.com/xbmc/xbmc/archive/${_kodiver}-${_koditarget}.tar.gz"
 )
-sha256sums=('6de61dd6804cd868597e17c35ce229cc641238706179a0a75fb627dea47477cc'
+sha256sums=('311f42b32100324b14008ea1dd91ab6da0803562ebc48e81183473f4c0b72f1c'
             'cd4158b2bc2d9593ad2f5c1cd2494957ab726b13d8379bbfb09d7d36df7b7d7e')
 prepare() {
         cd xbmc-${_kodiver}-${_koditarget}
