@@ -16,7 +16,7 @@ build() {
 
     # change adebar to use tools and lib dir from package
     sed -i -e 's|\(BINDIR=\).*|\1"/usr/share/adebar"|' adebar-cli
-	sed -i -e 's|\(LIBDIR=\).*|\1"/usr/lib/adebar"|' adebar-cli
+    sed -i -e 's|\(LIBDIR=\).*|\1"/usr/lib/adebar"|' adebar-cli
     # make sure $HOME/.config/adebar get created if it does not exist
     sed -i '/^\ \ USER_CONF=/c\ \ mkdir -p "$USER_CONF"' adebar-cli
 
