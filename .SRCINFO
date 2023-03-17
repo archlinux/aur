@@ -1,6 +1,6 @@
 pkgbase = vulkan-caps-viewer-x11
 	pkgdesc = Vulkan Hardware Capability Viewer
-	pkgver = 3.28
+	pkgver = 3.29
 	pkgrel = 1
 	epoch = 1
 	url = https://vulkan.gpuinfo.org
@@ -12,7 +12,7 @@ pkgbase = vulkan-caps-viewer-x11
 	depends = qt5-x11extras
 	provides = vulkan-caps-viewer
 	conflicts = vulkan-caps-viewer
-	source = git+https://github.com/SaschaWillems/VulkanCapsViewer.git#commit=f28e0b8616627d089a9afb72041eea05ec6a6458
+	source = git+https://github.com/SaschaWillems/VulkanCapsViewer.git#commit=bf81c3dac833d53dc9137978c5d92549619217d5
 	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
 	sha256sums = SKIP
 	sha256sums = SKIP
