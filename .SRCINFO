@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt6-quicktimeline-static
 	pkgdesc = Qt module for keyframe-based timeline construction (mingw-w64)
-	pkgver = 6.4.2
+	pkgver = 6.4.3
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = mingw-w64-qt6-quicktimeline-static
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.4/6.4.2/submodules/qtquicktimeline-everywhere-src-6.4.2.tar.xz
-	sha256sums = 3088abb7f478362a354ea1509d1c3c3403e3f5adfb84f3e5cf30a1f2eff09a5e
+	source = https://download.qt.io/official_releases/qt/6.4/6.4.3/submodules/qtquicktimeline-everywhere-src-6.4.3.tar.xz
+	sha256sums = 3808c447c3a3af98c797f12f38d3c371c628c35d34123ce7a7e1f580e55e3da5
 
 pkgname = mingw-w64-qt6-quicktimeline-static
