@@ -1,6 +1,6 @@
 pkgbase = fakeaur
 	pkgdesc = Edit names and descriptions of AUR packages. Meme mates with nani or btwiusearch
-	pkgver = r11.37adea1
+	pkgver = V3
 	pkgrel = 3
 	url = https://github.com/schrmh/fakeAUR
 	arch = any
