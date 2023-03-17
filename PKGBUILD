@@ -1,7 +1,7 @@
 # Maintainer: Sematre <sematre at gmx dot de>
 pkgname=picotool
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Tool for inspecting RP2040 binaries and interacting with RP2040 devices."
 arch=('any')
@@ -28,6 +28,7 @@ build() {
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	install -Dm755 "build/picotool" -t "${pkgdir}/usr/bin/"
-	install -Dm644 "LICENSE.TXT"       "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm755 "build/picotool"         -t "${pkgdir}/usr/bin/"
+	install -Dm644 "udev/99-picotool.rules" -t "${pkgdir}/etc/udev/rules.d/"
+	install -Dm644 "LICENSE.TXT"               "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

@@ -1,7 +1,7 @@
 pkgbase = picotool
 	pkgdesc = Tool for inspecting RP2040 binaries and interacting with RP2040 devices.
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/raspberrypi/picotool
 	arch = any
 	license = BSD-3-Clause
