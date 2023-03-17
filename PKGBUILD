@@ -3,54 +3,43 @@ pkgname='mqtt-explorer-beta'
 gitver=0.4.0
 betaver=3
 pkgver=${gitver}.${betaver}
-pkgrel=2
+pkgrel=3
 pkgdesc="A comprehensive and easy-to-use MQTT Client"
-arch=('any')
+arch=('x86_64')
 url="https://mqtt-explorer.com/"
 license=('CCPL:by-nd')
-groups=()
-depends=('npm'
-         'yarn'
-             'git')
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=("~/.config/MQTT-Explorer/settings.json")
+depends=('nodejs>=17')
+makedepends=(
+    'git'
+    'npm'
+    'sed'
+    'yarn')
+conflicts=('mqtt-explorer')
+provides=('mqtt-explorer')
 options=(!strip)
-install=
-changelog=
 source=("$pkgname-${pkgver}-beta${betaver}.tar.gz::https://github.com/thomasnordquist/MQTT-Explorer/archive/refs/tags/${gitver}-beta${betaver}.tar.gz"
-        "$pkgname-${pkgver}-beta${betaver}-desktop.tar.gz::https://github.com/dave12311/mqtt-explorer.desktop/archive/1.1.tar.gz")
-validpgpkeys=()
+        "mqtt-explorer.desktop"
+        "mqtt-explorer-run.sh")
+md5sums=('754d67825c99508c80e4403cbed29b2b'
+         '8659ae3b43edeefb5f4be07a502a4c68'
+         '08bd1c33f5fdbdf8054ee1874289cf1b')
 
 build() {
-	export NODE_OPTIONS=--openssl-legacy-provider
-        cd "MQTT-Explorer-${gitver}-beta${betaver}"
+  cd "MQTT-Explorer-${gitver}-beta${betaver}"
 
-	sed -i 's/"heapdump": "^0.3.12",//' app/package.json
-	sed -i 's/if (!/\/*if (!/' app/src/components/Demo/index.tsx
-	sed -i 's/return path/\*\/return path/' app/src/components/Demo/index.tsx
+  sed -i 's/"heapdump": "^0.3.12",//' app/package.json
+  sed -i 's/if (!/\/*if (!/' app/src/components/Demo/index.tsx
+  sed -i 's/return path/\*\/return path/' app/src/components/Demo/index.tsx
 
-        yarn || sed -i 's/node-gyp rebuild/node-gyp rebuild --openssl_fips=X/' app/package.json
-        yarn build
+  export NODE_OPTIONS=--openssl-legacy-provider
+  yarn || sed -i 's/node-gyp rebuild/node-gyp rebuild --openssl_fips=X/' app/package.json
+  yarn build
 }
 
 package() {
-        mkdir -p "$pkgdir/usr/share/$pkgname"
-        cp -r MQTT-Explorer-${gitver}-beta${betaver}/* $pkgdir/usr/share/$pkgname/
-        mkdir -p "$pkgdir/usr/share/applications"
-        sed -i 's/MQTT Explorer/MQTT Explorer Beta/g' mqtt-explorer.desktop-1.1/mqtt-explorer.desktop
-        sed -i 's/mqtt-explorer/mqtt-explorer-beta/g' mqtt-explorer.desktop-1.1/mqtt-explorer.desktop
-        cp mqtt-explorer.desktop-1.1/mqtt-explorer.desktop $pkgdir/usr/share/applications/mqtt-explorer-beta.desktop
-        mkdir -p "$pkgdir/usr/bin"
-        echo "#!/bin/bash" > "$pkgdir/usr/share/$pkgname/$pkgname"
-        echo "yarn --cwd /usr/share/${pkgname} start" >> "$pkgdir/usr/share/$pkgname/$pkgname"
-        chmod 777 "$pkgdir/usr/share/$pkgname/$pkgname"
-        ln -s "/usr/share/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
-}
-md5sums=('754d67825c99508c80e4403cbed29b2b'
-         '306a5ee73ab04fee5eb0f8202d2d90a1')
+  mkdir -p "$pkgdir/usr/share/$pkgname"
+  cp -rT "MQTT-Explorer-${gitver}-beta${betaver}" "${pkgdir}/usr/share/${pkgname}"
 
+  install -Dm 0644 "${srcdir}/mqtt-explorer.desktop" "${pkgdir}/usr/share/applications/mqtt-explorer-beta.desktop"
+  install -Dm 0755 "${srcdir}/mqtt-explorer-run.sh" "${pkgdir}/usr/bin/mqtt-explorer-beta"
+}

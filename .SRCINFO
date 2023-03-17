@@ -1,18 +1,23 @@
 pkgbase = mqtt-explorer-beta
 	pkgdesc = A comprehensive and easy-to-use MQTT Client
 	pkgver = 0.4.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://mqtt-explorer.com/
-	arch = any
+	arch = x86_64
 	license = CCPL:by-nd
-	depends = npm
-	depends = yarn
-	depends = git
+	makedepends = git
+	makedepends = npm
+	makedepends = sed
+	makedepends = yarn
+	depends = nodejs>=17
+	provides = mqtt-explorer
+	conflicts = mqtt-explorer
 	options = !strip
-	backup = ~/.config/MQTT-Explorer/settings.json
 	source = mqtt-explorer-beta-0.4.0.3-beta3.tar.gz::https://github.com/thomasnordquist/MQTT-Explorer/archive/refs/tags/0.4.0-beta3.tar.gz
-	source = mqtt-explorer-beta-0.4.0.3-beta3-desktop.tar.gz::https://github.com/dave12311/mqtt-explorer.desktop/archive/1.1.tar.gz
+	source = mqtt-explorer.desktop
+	source = mqtt-explorer-run.sh
 	md5sums = 754d67825c99508c80e4403cbed29b2b
-	md5sums = 306a5ee73ab04fee5eb0f8202d2d90a1
+	md5sums = 8659ae3b43edeefb5f4be07a502a4c68
+	md5sums = 08bd1c33f5fdbdf8054ee1874289cf1b
 
 pkgname = mqtt-explorer-beta

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=MQTT Explorer Beta
+GenericName=MQTT Explorer Beta
+Comment=A comprehensive and easy-to-use MQTT Client.
+Exec=/usr/share/mqtt-explorer-beta/node_modules/.bin/electron /usr/share/mqtt-explorer-beta
+Icon=/usr/share/mqtt-explorer-beta/icon.png
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Utility;
+Keywords=MQTT;Explorer;

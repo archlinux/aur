@@ -1,0 +1,6 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!mqtt-explorer-run.sh
+!mqtt-explorer.desktop
