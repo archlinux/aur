@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-serialport
-_qtver=6.4.2
+_qtver=6.4.3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -13,12 +13,12 @@ url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Provides access to hardware and virtual serial ports (android)'
 depends=('android-aarch64-qt6-base')
-makedepends=('android-cmake' 'qt6-base' 'ninja' 'java-environment-openjdk=8')
+makedepends=('android-cmake' 'qt6-base' 'ninja' 'java-environment-openjdk>=11')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtserialport-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('336d95919037800184b3c3de8ccb6f62954b20f3756c05adce8d5010504340fa')
+sha256sums=('5f97ad9067efa39a8a2a39fbbc1e03d2191f305733d9c2f3060f8017ecfc95de')
 
 build() {
   source android-env ${_android_arch}
