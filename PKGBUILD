@@ -17,20 +17,28 @@ license=(GPL2)
 options=('!strip')
 makedepends=('jq' 'curl')
 
-#https://sourceforge.net/projects/xanmod/files/releases/lts/6.1.15-x64v3-xanmod1/linux-image-6.1.15-x64v3-xanmod1_6.1.15-x64v3-xanmod1-0~20230303.b9839d8_amd64.deb/download
-
 # Resolve URL of sources from Sourceforge provider
-_image_files=($(curl -sL https://sourceforge.net/projects/xanmod/files/releases/lts/${pkgver}-${_arch}-xanmod${xanmod}/ | grep net.sf.files | cut -d'=' -f2- | jq '.[].name' 2>/dev/null | grep "\.deb" | grep -v linux-libc-dev | cut -d'"' -f2))
-source=("${_image_files[0]}::https://sourceforge.net/projects/xanmod/files/releases/lts/${pkgver}-${_arch}-xanmod${xanmod}/${_image_files[0]}/download"
-        "${_image_files[1]}::https://sourceforge.net/projects/xanmod/files/releases/lts/${pkgver}-${_arch}-xanmod${xanmod}/${_image_files[1]}/download")
-noextract=("${_image_files[0]}" "${_image_files[1]}")
+#_image_files=($(curl -sL https://sourceforge.net/projects/xanmod/files/releases/lts/${pkgver}-${_arch}-xanmod${xanmod}/ | grep net.sf.files | cut -d'=' -f2- | jq '.[].name' 2>/dev/null | grep "\.deb" | grep -v linux-libc-dev | cut -d'"' -f2))
+#source=("${_image_files[0]}::https://sourceforge.net/projects/xanmod/files/releases/lts/${pkgver}-${_arch}-xanmod${xanmod}/${_image_files[0]}/download"
+#        "${_image_files[1]}::https://sourceforge.net/projects/xanmod/files/releases/lts/${pkgver}-${_arch}-xanmod${xanmod}/${_image_files[1]}/download")
+#noextract=("${_image_files[0]}" "${_image_files[1]}")
+
+# Resolve URL of sources
+_url_image=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${xanmod} | jq --arg PKGVER "${pkgver}" --arg XANMOD "${xanmod}" --arg ARCH "${_arch}" -r '.assets[] | select(.name | contains("linux-image-" + $PKGVER + "-" + $ARCH + "-xanmod" + $XANMOD)).browser_download_url')
+_url_headers=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${xanmod} | jq --arg PKGVER "${pkgver}" --arg XANMOD "${xanmod}" --arg ARCH "${_arch}" -r '.assets[] | select(.name | contains("linux-headers-" + $PKGVER + "-" + $ARCH + "-xanmod" + $XANMOD)).browser_download_url')
+source=("${_url_image}" "${_url_headers}")
+
+# Save files we will extract later manually
+_file_image="${_url_image##*/}"
+_file_headers="${_url_headers##*/}"
+noextract=("${_file_image}" "${_file_headers}")
 
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha256sums=('49c1b5d9f3c42d7dee179b08229e792da2496e70b647d247b909054bfd1814c9'
-            'f9c3d8aba5520d7ade2a33bfa626fb37cc86cf1fe3b16fc4817f81ed40b50ad6')
+sha256sums=('00592ebd61bfd9b63124e47c7987a5db237e0f2d59513a9c80d294a4f4b3c8ba'
+            'b199f11ac48d766d49694c38104bb249c6ca111fffb3ab6ebe379b17380ed914')
 
 prepare() {
   for _f in ${_image_files[@]} ; do

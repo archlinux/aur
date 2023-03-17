@@ -7,15 +7,15 @@ pkgbase = linux-xanmod-lts-linux-bin-x64v1
 	license = GPL2
 	makedepends = jq
 	makedepends = curl
-	noextract = 
-	noextract = 
+	noextract = linux-image-6.1.20-x64v1-xanmod1_6.1.20-x64v1-xanmod1-0.20230317.4b5d5b7_amd64.deb
+	noextract = linux-headers-6.1.20-x64v1-xanmod1_6.1.20-x64v1-xanmod1-0.20230317.4b5d5b7_amd64.deb
 	options = !strip
-	source = ::https://sourceforge.net/projects/xanmod/files/releases/lts/6.1.20-x64v1-xanmod1//download
-	source = ::https://sourceforge.net/projects/xanmod/files/releases/lts/6.1.20-x64v1-xanmod1//download
+	source = https://github.com/xanmod/linux/releases/download/6.1.20-xanmod1/linux-image-6.1.20-x64v1-xanmod1_6.1.20-x64v1-xanmod1-0.20230317.4b5d5b7_amd64.deb
+	source = https://github.com/xanmod/linux/releases/download/6.1.20-xanmod1/linux-headers-6.1.20-x64v1-xanmod1_6.1.20-x64v1-xanmod1-0.20230317.4b5d5b7_amd64.deb
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 49c1b5d9f3c42d7dee179b08229e792da2496e70b647d247b909054bfd1814c9
-	sha256sums = f9c3d8aba5520d7ade2a33bfa626fb37cc86cf1fe3b16fc4817f81ed40b50ad6
+	sha256sums = 00592ebd61bfd9b63124e47c7987a5db237e0f2d59513a9c80d294a4f4b3c8ba
+	sha256sums = b199f11ac48d766d49694c38104bb249c6ca111fffb3ab6ebe379b17380ed914
 
 pkgname = linux-xanmod-lts-linux-bin-x64v1
 
