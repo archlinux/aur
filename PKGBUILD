@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgbase=xguipro
-pkgname=(xguipro-gtk3 xguipro-gtk4)
-pkgver=0.6.3
+pkgname=(xguipro-gtk3)
+pkgver=0.6.4
 pkgrel=0
 pkgdesc="xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit."
 arch=('x86_64' 'aarch64' 'mips64' 'powerpc' 'powerpc64le')
@@ -12,105 +12,83 @@ groups=('hvml-git')
 provides=(${pkgbase}  'xGUI-Pro')
 conflicts=(${pkgbase})
 replaces=()
-depends=('glib2' 'gperf' 'enchant')
-makedepends=('git' 'cmake' 'ninja' 'ccache' 'gcc' 'python' 'libxml2' 'ruby' 'curl' 'openssl' 'sqlite' 'pkgconf' 'zlib' 'icu' 'webkit2gtk-hvml' 'patch')
-optdepends=('purc: The prime HVML interpreter for C Language.'
-            'purc-midnight-commander: A generic HVML renderer in text mode for development and debugging.'
-            'webkit2gtk-hvml: Web content engine for GTK (HVML)')
+depends=(webkit2gtk)
+makedepends=(ccache
+            cmake
+            curl
+            enchant
+            glib2
+            git
+            gcc
+            gtk3
+            gperf
+            libsoup
+            libxml2
+            ninja
+            icu
+            openssl
+            pkgconf
+            patch
+            purc
+            python
+            ruby
+            sqlite
+            zlib)
+optdepends=('webkit2gtk-hvml: Web content engine for GTK (HVML)')
 backup=()
 options=()
 install=
-source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/ver-${pkgver}.tar.gz")
-sha256sums=('5c89e990b35857f829f823e53991675d7e57a514c48e1057bff8ab750c67564b')
+source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/ver-${pkgver}.tar.gz"
+        "001-fix.patch::https://github.com/HVML/xGUI-Pro/commit/a6e4022fa599e5e98d92d8d2feb56fe689e16f1a.patch")
+sha256sums=('a1b004f9ec67a24ed8e6017575e3c3e425cff708d1efb76d0fc029e7cf826742'
+            'e8f91ed115d08495020052cf75f6141e60c55703d7305322b4de2dddf37df54e')
 
-# prepare() {
-#     cd "${srcdir}/xGUI-Pro-ver-${pkgver}/"
-#     patch -p1 < ../fix-ver-0.6.1.patch
-# }
+prepare() {
+    install -Dm644 /dev/stdin ${srcdir}/xguipro.csh <<EOF
+if (! \$?WEBKIT_WEBEXT_DIR ) then
+    set WEBKIT_WEBEXT_DIR=/bin/xguipro
+    if ( "\$WEBKIT_WEBEXT_DIR" != "" ) then
+        setenv WEBKIT_WEBEXT_DIR "\$WEBKIT_WEBEXT_DIR"
+    else
+        unset WEBKIT_WEBEXT_DIR
+    endif
+endif
+EOF
+    install -Dm644 /dev/stdin ${srcdir}/xguipro.sh <<EOF
+if [ -z "\$WEBKIT_WEBEXT_DIR" ]; then
+    WEBKIT_WEBEXT_DIR=/bin/xguipro
+    [ -n "\$WEBKIT_WEBEXT_DIR" ] && export WEBKIT_WEBEXT_DIR || unset WEBKIT_WEBEXT_DIR
+fi
+EOF
+
+    cd "${srcdir}/xGUI-Pro-ver-${pkgver}/"
+    patch -p1 < ${srcdir}/001-fix.patch
+}
 
 package_xguipro-gtk3() {
     pkgdesc+=" (gtk3)"
-    depends+=('gtk3' 'libsoup')
-    conflicts=(${pkgbase})
+    conflicts+=(${pkgname%-git})
 
     cd "${srcdir}/xGUI-Pro-ver-${pkgver}/"
 
-# CMake build
-#     cmake -DCMAKE_BUILD_TYPE=Release \
-#         -DPORT=GTK \
-#         -DCMAKE_INSTALL_PREFIX=/usr \
-#         -DCMAKE_INSTALL_LIBDIR=lib \
-#         -DCMAKE_INSTALL_LIBEXECDIR=lib \
-#         -DENABLE_GAMEPAD=OFF \
-#         -DENABLE_INTROSPECTION=OFF \
-#         -DUSE_SOUP2=ON \
-#         -DUSE_WPE_RENDERER=OFF \
-#         -DUSE_LCMS=OFF \
-#         -B build-gtk3 \
-
-#     cmake --build build-gtk3
 # Ninja build
-    cmake -DCMAKE_BUILD_TYPE=Release \
+# see：https://wiki.archlinux.org/title/CMake_package_guidelines
+#     cmake -DCMAKE_BUILD_TYPE=Release \
+    cmake -DCMAKE_BUILD_TYPE=None \
         -DPORT=GTK \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_LIBEXECDIR=lib \
-        -DENABLE_GAMEPAD=OFF \
-        -DENABLE_INTROSPECTION=OFF \
+        -DUSE_GTK4=OFF \
         -DUSE_SOUP2=ON \
-        -DUSE_WPE_RENDERER=OFF \
-        -DUSE_LCMS=OFF \
         -B build-gtk3 \
         -G Ninja
 
     ninja -C build-gtk3
-# make install
-#     make -C "${srcdir}"/xGUI-Pro-ver-${pkgver}/build-gtk3 install DESTDIR="${pkgdir}"
 
 # ninja install
     DESTDIR="${pkgdir}" ninja -C "${srcdir}"/xGUI-Pro-ver-${pkgver}/build-gtk3 install
-}
 
-package_xguipro-gtk4() {
-    pkgdesc+=" (gtk4)"
-    depends+=('gtk4' 'libsoup3')
-    conflicts=(${pkgbase})
-
-    cd "${srcdir}/xGUI-Pro-ver-${pkgver}/"
-
-# CMake build
-#     cmake -DCMAKE_BUILD_TYPE=Release \
-#         -DPORT=GTK \
-#         -DCMAKE_INSTALL_PREFIX=/usr \
-#         -DCMAKE_INSTALL_LIBDIR=lib \
-#         -DCMAKE_INSTALL_LIBEXECDIR=lib \
-#         -DENABLE_GAMEPAD=OFF \
-#         -DENABLE_INTROSPECTION=OFF \
-#         -DUSE_SOUP3=ON \
-#         -DUSE_WPE_RENDERER=OFF \
-#         -DUSE_LCMS=OFF \
-#         -B build-gtk4 \
-
-#     cmake --build build-gtk4
-
-# Ninja build
-    cmake -DCMAKE_BUILD_TYPE=Release \
-        -DPORT=GTK \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib \
-        -DCMAKE_INSTALL_LIBEXECDIR=lib \
-        -DENABLE_GAMEPAD=OFF \
-        -DENABLE_INTROSPECTION=OFF \
-        -DUSE_SOUP3=ON \
-        -DUSE_WPE_RENDERER=OFF \
-        -DUSE_LCMS=OFF \
-        -B build-gtk4 \
-        -G Ninja
-
-    ninja -C build-gtk4
-# make install
-#     make -C "${srcdir}"/xGUI-Pro-ver-${pkgver}/build-gtk4 install DESTDIR="${pkgdir}"
-
-# ninja install
-    DESTDIR="${pkgdir}" ninja -C "${srcdir}"/xGUI-Pro-ver-${pkgver}/build-gtk4 install
+    install -Dm644 ${srcdir}/xguipro.csh ${pkgdir}/etc/profile.d/xguipro.csh
+    install -Dm644 ${srcdir}/xguipro.sh ${pkgdir}/etc/profile.d/xguipro.sh
 }
