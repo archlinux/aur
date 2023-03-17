@@ -1,12 +1,13 @@
 pkgbase = python-pairinteraction
 	pkgdesc = A Rydberg Interaction Calculator
 	pkgver = 0.9.8a0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pairinteraction/pairinteraction
 	arch = x86_64
 	license = GPL3
 	license = LGPL3
 	makedepends = python-pip
+	makedepends = doctest
 	depends = python-numpy
 	depends = python-scipy
 	depends = python-pint
@@ -20,7 +21,7 @@ pkgbase = python-pairinteraction
 	options = staticlibs
 	options = !strip
 	options = libtool
-	source = https://files.pythonhosted.org/packages/ef/49/1377fdf569cd2774f75688a9cd6524c6dc06a99a60249f659a0a2bcb8e6a/pairinteraction-0.9.8a0-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
-	sha256sums = bba4a49b52e038d461d7a511d605fe22ac3dcbbe41ad3225f2dd3e86aa91a587
+	source = https://github.com/pairinteraction/pairinteraction/archive/refs/heads/master.zip
+	sha256sums = 4537da3806c20fbcd5a71686c8b50131d9704cb77e18792e1a84c03efb40ac10
 
 pkgname = python-pairinteraction
