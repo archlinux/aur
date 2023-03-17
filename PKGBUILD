@@ -2,13 +2,14 @@
 
 pkgname=mongosh
 pkgver=1.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Rich Node.js REPL for interacting with MongoDB instances.'
 arch=('x86_64')
 url='https://github.com/mongodb-js/mongosh'
 license=('Apache')
 depends=(nodejs krb5)
-makedepends=(git jq npm modclean)
+makedepends=(git jq npm modclean libmongocrypt)
+optdepends=('libmongocrypt: session encryption support')
 source=(
   https://github.com/mongodb-js/$pkgname/archive/refs/tags/v$pkgver.tar.gz
   mongosh.js
