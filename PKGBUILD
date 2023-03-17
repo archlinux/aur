@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
 pkgname=garage
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Garage, an S3-compatible distributed object store for self-hosted deployments"
 url="https://garagehq.deuxfleurs.fr"
@@ -10,8 +10,8 @@ arch=('x86_64' 'i686' 'arm' 'aarch64')
 depends=('gcc-libs' 'libsodium' 'zstd')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://git.deuxfleurs.fr/Deuxfleurs/garage/archive/v$pkgver.tar.gz")
-sha256sums=('99b33cef863195d41c0448f7951dc99dbf66680b606e69fe9e2bbbaef9ee2c83')
-b2sums=('cb74cb16de0d0741e4173b773e98dd65872b35ff3140d57d9eeceba4fca63cefebe2e1782a37ef76c8207350e247d968b991d61600eb66bd35a3ec96cb72571a')
+sha256sums=('bf5bdc4250f62d4bd9b1a35d8cbdd93b39f4ceb49bf0f44d74df6137b13a8809')
+b2sums=('a21f242fe2752ec0ed7376cb5c7e4560f86187991bb50d2f616a0e86f1078ff60507250215968b28b41ac46a16d4d668c1436f8ae18638eded09578f38799e5a')
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
 
@@ -32,7 +32,7 @@ build() {
   cd "$pkgname"
 
   CARGO_TARGET_DIR='target' \
-    cargo build --frozen --release --no-default-features --features 'system-libs,metrics,lmdb,k2v'
+    cargo build --frozen --release --no-default-features --features 'system-libs,metrics,k2v'
 }
 
 package() {
