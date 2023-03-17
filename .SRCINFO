@@ -1,6 +1,6 @@
 pkgbase = r-blob
 	pkgdesc = A Simple S3 Class for Representing Vectors of Binary Data ('BLOBS')
-	pkgver = 1.2.3
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=blob
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = r-blob
 	optdepends = r-crayon
 	optdepends = r-pillar
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/blob_1.2.3.tar.gz
+	source = https://cran.r-project.org/src/contrib/blob_1.2.4.tar.gz
 	source = CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT
-	sha256sums = 2d88d683ee3d1b56b332b5c7769979b5d3994b5d9285ea634ec919576da3631b
+	sha256sums = d08922ebc4147d930fe4762b1b289935217308c6d3fcaa5ae028ce3f5cf2728f
 	sha256sums = e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b
 
 pkgname = r-blob
