@@ -1,6 +1,6 @@
 pkgbase = staden-io_lib
 	pkgdesc = DNA sequence assembly (Gap4) and editing and analysis tools (Spin)
-	pkgver = 1.14.14
+	pkgver = 1.14.15
 	pkgrel = 1
 	url = https://github.com/jkbonfield/io_lib
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = staden-io_lib
 	depends = curl
 	provides = htscodecs
 	conflicts = htscodecs
-	source = staden-io_lib-1.14.14.tar.gz::https://github.com/jkbonfield/io_lib/releases/download/io_lib-1-14-14/io_lib-1.14.14.tar.gz
-	sha256sums = a471c79b9aede1776a895cb46fcb81b5d163d6ca9c3e1e33096346fef46d3598
+	source = staden-io_lib-1.14.15.tar.gz::https://github.com/jkbonfield/io_lib/releases/download/io_lib-1-14-15/io_lib-1.14.15.tar.gz
+	sha256sums = 20814c4365e1e2fe6630fb11d0df370dec4c5688af3871de7f1cb0129671401e
 
 pkgname = staden-io_lib
