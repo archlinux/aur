@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-qt6-multimedia
 	pkgdesc = Classes for audio, video, radio and camera functionality (android)
-	pkgver = 6.4.2
+	pkgver = 6.4.3
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -15,16 +15,16 @@ pkgbase = android-aarch64-qt6-multimedia
 	makedepends = qt6-declarative
 	makedepends = qt6-shadertools
 	makedepends = ninja
-	makedepends = java-environment-openjdk=8
+	makedepends = java-environment-openjdk>=11
 	depends = android-aarch64-qt6-base
 	optdepends = android-aarch64-qt6-declarative: QML bindings
 	options = !strip
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.4/6.4.2/submodules/qtmultimedia-everywhere-src-6.4.2.tar.xz
+	source = https://download.qt.io/official_releases/qt/6.4/6.4.3/submodules/qtmultimedia-everywhere-src-6.4.3.tar.xz
 	source = 0001-Fix-compile-flags-of-resonance-audio-for-mingw-w64.patch
-	sha256sums = 7f2b70deeada911c8e660e2801286657f297a5d1d543d1f6bfa856f28972c776
-	sha256sums = cc77d92e90bf09058e8d8470585cc8a87e8af99f9e2c99c4014ca6add638839a
+	sha256sums = a4a72469e12da1e59ee032ab2e6677d620a5663c354d0ba88906d2bec1567d00
+	sha256sums = ec618f9f2d2084793df3f78176344bb9005436084fd83e7b863915cce48c4f45
 
 pkgname = android-aarch64-qt6-multimedia
