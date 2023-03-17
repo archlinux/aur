@@ -1,6 +1,6 @@
 pkgbase = vrk-mpollux-digisign-client
 	pkgdesc = Client program for Finnish chip ID cards
-	pkgver = 4.2.2b_8136
+	pkgver = 4.2.4_8296
 	pkgrel = 1
 	epoch = 3
 	url = https://dvv.fi/linux-versiot
@@ -10,7 +10,7 @@ pkgbase = vrk-mpollux-digisign-client
 	depends = qt5-base
 	backup = etc/xdg/autostart/mpollux-digisign-client.desktop
 	backup = etc/xdg/Fujitsu/CCryptoLib.conf
-	source_x86_64 = vrk-mpollux-digisign-client-4.2.2b_8136.deb::https://dvv.fi/documents/16079645/118383788/mpollux-digisign-client-for-dvv_4.2.2b-8136_amd64.deb
-	sha256sums_x86_64 = 2157ec95827a0d0170c53bfeddeb2c0c90265aa034c4c1cecbf936df4e895b91
+	source_x86_64 = vrk-mpollux-digisign-client-4.2.4_8296.deb::https://dvv.fi/documents/16079645/152639034/mpollux-digisign-client-for-dvv_4.2.4-8296_amd64.deb
+	sha256sums_x86_64 = a4badf7ad2f87684419e19ee882564ce7068fd2f82fa6aa2cbe864a24b80112b
 
 pkgname = vrk-mpollux-digisign-client
