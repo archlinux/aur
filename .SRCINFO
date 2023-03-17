@@ -1,6 +1,6 @@
 pkgbase = sailboot
 	pkgdesc = Highly customizable framework for performing numerical bootstrap computations
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://gitlab.com/maneandrea/sailboot
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = sailboot
 	optdepends = sagemath
 	optdepends = scalar_blocks-git
 	optdepends = python-sympy
-	source = https://gitlab.com/maneandrea/sailboot/-/archive/v1.1/sailboot-v1.1.tar.gz
-	sha256sums = f024743e49296c23db48621e215ff9e979188e9d80d7cd30b5139cace90afaab
+	source = https://gitlab.com/maneandrea/sailboot/-/archive/v1.2/sailboot-v1.2.tar.gz
+	sha256sums = 073d13356e4c4a511c65eeef509a31930d8bca8bd60bcb5373279d6fa46499b3
 
 pkgname = sailboot
