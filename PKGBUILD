@@ -1,7 +1,7 @@
 # Maintainer: Jah Way <jahway603 at protonmail dot com>
 
 pkgname=ramfetch
-pkgver=1.0.4
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A fetch which displays memory info using /proc/meminfo"
 url='https://codeberg.org/o69mar/ramfetch'
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('make')
 conflicts=('ramfetch-git')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('7ce40609e34fd1983f3d386183f1ba0b5bd12f433ec0e871715d41ce2877a15e')
+sha256sums=('008bc8c91c4537256bb5c2af51ce34ce9949a327215d314c818dbff68fcd03d4')
 
 package() {
   mv $pkgname $pkgname-$pkgver
