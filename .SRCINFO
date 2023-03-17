@@ -1,0 +1,14 @@
+pkgbase = flutter-dmzj-bin
+	pkgdesc = 使用Flutter编写的动漫之家跨平台第三方客户端
+	pkgver = 2.0.2_beta
+	pkgrel = 1
+	url = https://github.com/xiaoyaocz/flutter_dmzj
+	arch = x86_64
+	license = GPL3
+	depends = gtk3
+	source = https://github.com/xiaoyaocz/flutter_dmzj/releases/download/v2.0.2-beta/flutter_dmzj-2.0.2+20002-linux.zip
+	source = flutter_dmzj.desktop
+	sha256sums = e57579945d7c46e1a10c2e6e40d7e9608e26a0909038578a167238b1069b02c0
+	sha256sums = 962d471c2aa068e6daa4496a9104c58d41119d4106c09232e5b98d3ed4ecf11a
+
+pkgname = flutter-dmzj-bin

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=2.0.2+20002
+Name=动漫之家X
+GenericName=动漫之家X
+Icon=flutter_dmzj
+Exec=flutter_dmzj %U
+Categories=Media;
+Keywords=动漫之家;DMZJ;
+StartupNotify=true
