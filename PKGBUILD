@@ -2,7 +2,7 @@
 # Contributor: Wojciech Kępka (wojciech@wkepka.dev) 
 pkgname=helix-git
 _pkgname=helix
-pkgver=22.08.1.555.gf712d316e
+pkgver=22.12.434.g21a3fb8f2
 pkgrel=1
 pkgdesc="A text editor written in rust"
 url="https://helix-editor.com"
@@ -50,6 +50,7 @@ check() {
 package() {
     cd "${_pkgname}"
     mkdir -p "${pkgdir}${_lib_path}"
+    rm -r  "runtime/grammars/sources" 
     cp -r "runtime" "${pkgdir}${_lib_path}"
     install -Dm 0755 "target/release/${_bin}" "${pkgdir}${_lib_path}/${_bin}"
     install -Dm 0644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
