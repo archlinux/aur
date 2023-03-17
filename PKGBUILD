@@ -7,8 +7,8 @@
 pkgbase=mesa-steamos
 pkgname=('vulkan-mesa-layers-steamos' 'opencl-mesa-steamos' 'vulkan-intel-steamos' 'vulkan-radeon-steamos' 'vulkan-swrast-steamos' 'libva-mesa-driver-steamos' 'mesa-vdpau-steamos' 'mesa-steamos')
 pkgdesc="An open-source implementation of the OpenGL specification"
-_tag=radeonsi-20220427
-pkgver=22.0.2.150118.radeonsi_20220427
+_tag=radeonsi-3.4.0-2
+pkgver=22.2.0.157821.radeonsi_3.4.0_2
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence' 'libxxf86vm'
@@ -31,7 +31,7 @@ validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D'  # Emil Velikov <emil.l
 pkgver() {
   cd steamos-jupiter-mesa
 
-  read -r _ver <VERSION
+  _ver=$(cat VERSION)
   #echo ${_ver/-/_}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
   echo "${_ver/-/_}.$(git rev-list --count HEAD).${_tag//-/_}"
 }
