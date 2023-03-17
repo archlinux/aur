@@ -1,7 +1,7 @@
 pkgbase = boost-stacktrace-backtrace
 	pkgdesc = Boost.stacktrace backtrace variant
-	pkgver = 1.76.0
-	pkgrel = 2
+	pkgver = 1.81.0
+	pkgrel = 1
 	url = https://www.boost.org/
 	arch = x86_64
 	license = custom
@@ -10,7 +10,7 @@ pkgbase = boost-stacktrace-backtrace
 	depends = libbacktrace-git
 	provides = libboost_stacktrace_backtrace.so
 	options = staticlibs
-	source = https://boostorg.jfrog.io/artifactory/main/release/1.76.0/source/boost_1_76_0.tar.gz
-	sha256sums = 7bd7ddceec1a1dfdcbdb3e609b60d01739c38390a5f956385a12f3122049f0ca
+	source = https://boostorg.jfrog.io/artifactory/main/release/1.81.0/source/boost_1_81_0.tar.gz
+	sha256sums = 205666dea9f6a7cfed87c7a6dfbeb52a2c1b9de55712c9c1a87735d7181452b6
 
 pkgname = boost-stacktrace-backtrace
