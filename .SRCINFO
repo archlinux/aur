@@ -1,6 +1,6 @@
 pkgbase = libretro-flycast-git
 	pkgdesc = Sega Dreamcast/NAOMI/NAOMI 2/Atomiswave core (fork of reicast)
-	pkgver = 2.1.r1.g253301ba4
+	pkgver = 2.1.r70.g415d8c2ea
 	pkgrel = 1
 	url = https://github.com/flyinghead/flycast
 	arch = aarch64
@@ -22,9 +22,11 @@ pkgbase = libretro-flycast-git
 	makedepends = vulkan-icd-loader
 	makedepends = xbyak
 	makedepends = xxhash
-	makedepends = zlib
+	depends = gcc-libs
+	depends = glibc
 	depends = glslang>=11.13
 	depends = libretro-core-info
+	depends = zlib
 	provides = libretro-flycast
 	conflicts = libretro-flycast
 	source = flycast::git+https://github.com/flyinghead/flycast.git
@@ -35,8 +37,11 @@ pkgbase = libretro-flycast-git
 	b2sums = 46548c4be0e6bdebaece4b3484fd6d05015a7cb07cef5054d25fe8df95ef1855eceea39ec3becd13e64e4753c7badcfb18a1b1f5eeedbb720f3c38c1cb0dc996
 
 pkgname = libretro-flycast-git
+	depends = gcc-libs
+	depends = glibc
 	depends = glslang>=11.13
 	depends = libretro-core-info
+	depends = zlib
 	depends = libchdr.so
 	depends = libGL.so
 	depends = libminiupnpc.so
