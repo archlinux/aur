@@ -8,7 +8,7 @@ pkgname=(
     $_pkgname-geosite-v2raycompat
 
 )
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A Linux lightweight and high-performance transparent proxy solution based on eBPF."
 arch=(x86_64)
@@ -19,7 +19,7 @@ source=(
     "$_pkgname::https://github.com/daeuniverse/dae/archive/refs/tags/v$pkgver.tar.gz"
     "dae_bpf_headers::https://github.com/daeuniverse/dae_bpf_headers/archive/$_header_commit.tar.gz"
 )
-sha256sums=('7c88888e3fb427c3567e2bb7ed123f578f67c6d7d67883e0a536c7afee0a3687'
+sha256sums=('2ce70276c9bf1293ad9d69fe22d53fdd097c1efca5e964424daf400e30e92234'
             '475387ddff6e281ee21a39948d1d90bf728e5bcb16ea678e9038ed6a350b7016')
 
 prepare() {
@@ -54,7 +54,7 @@ package_dae() {
 
 package_dae-geoip-v2raycompat() {
     arch=(any)
-    desc="v2ray geoip compat for dae"
+    pkgdesc="v2ray geoip compat for dae"
     depends=(v2ray-geoip)
     provides=($_pkgname-geoip)
 
@@ -64,7 +64,7 @@ package_dae-geoip-v2raycompat() {
 
 package_dae-geosite-v2raycompat() {
     arch=(any)
-    desc="v2ray geosite compat for dae"
+    pkgdesc="v2ray geosite compat for dae"
     depends=(v2ray-domain-list-community)
     provides=($_pkgname-geosite)
 
