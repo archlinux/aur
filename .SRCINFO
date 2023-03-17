@@ -1,6 +1,6 @@
 pkgbase = yabsnap
 	pkgdesc = Btrfs automated snapshot manager.
-	pkgver = 1.08
+	pkgver = 1.08.1
 	pkgrel = 1
 	url = https://github.com/hirak99/yabsnap
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = yabsnap
 	makedepends = rsync
 	depends = python3
 	provides = yabsnap
-	source = https://github.com/hirak99/yabsnap/archive/refs/tags/v1.08.tar.gz
-	md5sums = 2b8ec741c6af43adc6382058ded43efc
+	source = https://github.com/hirak99/yabsnap/archive/refs/tags/v1.08.1.tar.gz
+	md5sums = 2566bef4cb6f1d246c6dac334d07d44f
 
 pkgname = yabsnap
