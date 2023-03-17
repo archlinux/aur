@@ -1,7 +1,7 @@
 # Maintainer: Gary Wang <wzc782970009@gmail.com>
 
 pkgname=thplayer-git
-pkgver=r29.4ba4371
+pkgver=r53.cf74d30
 pkgrel=1
 pkgdesc='TouHou BGM player for all platform.'
 arch=('x86_64')
@@ -33,7 +33,7 @@ prepare() {
     cd ${srcdir}/thplayer
     git submodule init
     git config submodule.thtk.url ${srcdir}/thtk
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 }
 
 build () {
@@ -48,5 +48,5 @@ package() {
     install -D ./COPYING ${pkgdir}/usr/share/licenses/thplayer-git/LICENSE
     install -D ./assets/thplayer.desktop ${pkgdir}/usr/share/applications/thplayer.desktop
     install -D ./assets/thplayer.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/thplayer.svg
-    install -D ./assets/thplayer.png ${pkgdir}/usr/share/icons/hicolor/256x256/apps/thplayer.png
+    install -D ./assets/256-thplayer.png ${pkgdir}/usr/share/icons/hicolor/256x256/apps/thplayer.png
 }

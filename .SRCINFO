@@ -1,6 +1,6 @@
 pkgbase = thplayer-git
 	pkgdesc = TouHou BGM player for all platform.
-	pkgver = r29.4ba4371
+	pkgver = r53.cf74d30
 	pkgrel = 1
 	url = https://github.com/BearKidsTeam/thplayer
 	arch = x86_64
@@ -14,4 +14,3 @@ pkgbase = thplayer-git
 	md5sums = SKIP
 
 pkgname = thplayer-git
-
