@@ -1,7 +1,7 @@
 pkgbase = r-mlr3
 	pkgdesc = Machine Learning in R - Next Generation
-	pkgver = 0.14.1
-	pkgrel = 3
+	pkgver = 0.15.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=mlr3
 	arch = any
 	license = LGPL
@@ -31,7 +31,7 @@ pkgbase = r-mlr3
 	optdepends = r-remotes
 	optdepends = r-rpart
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/mlr3_0.14.1.tar.gz
-	sha256sums = cd0e68ae4345458867321860c30b19ce546f48e52f0a69d2a8e3785501db50a4
+	source = https://cran.r-project.org/src/contrib/mlr3_0.15.0.tar.gz
+	sha256sums = c0e3190553456e84126c459732f0855097c2ff8290e129b798c5b586f0d301bc
 
 pkgname = r-mlr3
