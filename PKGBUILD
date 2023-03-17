@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt6-base-headless
-_qtver=6.4.2
+_qtver=6.4.3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
@@ -21,12 +21,11 @@ optdepends=('postgresql-libs: PostgreSQL driver'
 groups=(qt6)
 conflicts=(qt6-base)
 provides=(qt6-base)
-options=(debug)
 _pkgfn="qtbase-everywhere-src-$_qtver"
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz
         qt6-base-cflags.patch
         qt6-base-nostrip.patch)
-sha256sums=('a88bc6cedbb34878a49a622baa79cace78cfbad4f95fdbd3656ddb21c705525d'
+sha256sums=('5087c9e5b0165e7bc3c1a4ab176b35d0cd8f52636aea903fa377bdba00891a60'
             '5411edbe215c24b30448fac69bd0ba7c882f545e8cf05027b2b6e2227abc5e78'
             '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094')
 
