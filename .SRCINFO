@@ -1,0 +1,16 @@
+pkgbase = libmongocrypt
+	pkgdesc = C library for client side and queryable encryption in MongoDB
+	pkgver = 1.7.2
+	pkgrel = 1
+	url = https://docs.mongodb.com/mongodb-shell/
+	arch = x86_64
+	license = Apache
+	license = BSD
+	makedepends = cmake
+	depends = libbson
+	source = https://github.com/mongodb/libmongocrypt/archive/refs/tags/1.7.2.tar.gz
+	source = shared-libbson.patch
+	sha256sums = 451d991747a34a06eb0534cb6ec5d486a05c1bd607e66ca5597da170e569cde9
+	sha256sums = 7d07b7f86d7c868e17d1c954d11aadd67e4c1f18455d029ee4afd0e0d132f841
+
+pkgname = libmongocrypt

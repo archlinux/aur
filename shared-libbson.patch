@@ -1,0 +1,20 @@
+--- a/cmake/ImportBSON.cmake
++++ b/cmake/ImportBSON.cmake
+@@ -110,16 +110,13 @@ function (_import_bson)
+    if (MONGOCRYPT_MONGOC_DIR STREQUAL "USE-SYSTEM" AND USE_SHARED_LIBBSON AND NOT ENABLE_ONLINE_TESTS)
+       message (STATUS "NOTE: Using system-wide libbson library. This is intended only for package maintainers.")
+       find_library (_MONGOCRYPT_SYSTEM_LIBBSON_SHARED "${CMAKE_SHARED_LIBRARY_PREFIX}bson-1.0${CMAKE_SHARED_LIBRARY_SUFFIX}")
+-      find_library (_MONGOCRYPT_SYSTEM_LIBBSON_STATIC "${CMAKE_STATIC_LIBRARY_PREFIX}bson-static-1.0${CMAKE_STATIC_LIBRARY_SUFFIX}")
+       find_path (_MONGOCRYPT_SYSTEM_LIBBSON_INCLUDE_DIR bson/bson.h PATH_SUFFIXES libbson-1.0)
+       add_library (bson_shared SHARED IMPORTED)
+-      add_library (bson_static STATIC IMPORTED)
+-      set_target_properties (bson_shared bson_static PROPERTIES
++      set_target_properties (bson_shared PROPERTIES
+          IMPORTED_CONFIGURATIONS "Release"
+          INTERFACE_INCLUDE_DIRECTORIES "${_MONGOCRYPT_SYSTEM_LIBBSON_INCLUDE_DIR}"
+          )
+       set_property (TARGET bson_shared PROPERTY IMPORTED_LOCATION "${_MONGOCRYPT_SYSTEM_LIBBSON_SHARED}")
+-      set_property (TARGET bson_static PROPERTY IMPORTED_LOCATION "${_MONGOCRYPT_SYSTEM_LIBBSON_STATIC}")
+       set_property (
+          CACHE _MONGOCRYPT_SYSTEM_LIBBSON_SHARED
+                _MONGOCRYPT_SYSTEM_LIBBSON_INCLUDE_DIR
