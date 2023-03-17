@@ -6,13 +6,30 @@
 
 pkgname=patchage
 pkgver=1.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A modular patch bay for audio and MIDI systems based on Jack and Alsa"
 arch=(x86_64)
 url="https://drobilla.net/software/patchage.html"
 license=(GPL3)
-depends=(atkmm gcc-libs glibc glibmm gtkmm)
-makedepends=(alsa-lib boost dbus-glib ganv glib2 gtk2 jack libsigc++ meson)
+depends=(
+  gcc-libs
+  glibc
+  gtkmm
+  hicolor-icon-theme
+)
+makedepends=(
+  alsa-lib
+  atkmm
+  boost
+  dbus-glib
+  ganv
+  glib2
+  glibmm
+  gtk2
+  jack
+  libsigc++
+  meson
+)
 source=(https://download.drobilla.net/$pkgname-$pkgver.tar.xz{,.sig})
 sha512sums=('c6c43afc50978db02517282c1e8c7aad131e30f6255e79e65ea17edcee0b470ec3172da2c057abe4cf4bb12a081a92165ac322cfc4ec77382bb992e74827831b'
             'SKIP')
@@ -30,9 +47,16 @@ check() {
 }
 
 package() {
-  depends+=(libasound.so libatkmm-1.6.so libganv-1.so libgdk-x11-2.0.so
-  libglibmm-2.4.so libglib-2.0.so libgobject-2.0.so libgtk-x11-2.0.so
-  libjack.so libsigc-2.0.so)
+  depends+=(
+    alsa-lib libasound.so
+    atkmm libatkmm-1.6.so
+    ganv libganv-1.so
+    glibmm libglibmm-2.4.so
+    glib2 libglib-2.0.so libgobject-2.0.so
+    gtk2 libgtk-x11-2.0.so
+    jack libjack.so
+    libsigc++ libsigc-2.0.so
+  )
 
   meson install -C build --destdir "$pkgdir"
   install -vDm 644 $pkgname-$pkgver/{AUTHORS,NEWS,README.md} -t "$pkgdir/usr/share/doc/$pkgname/"
