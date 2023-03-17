@@ -1,0 +1,15 @@
+pkgbase = gftp
+	pkgdesc = A multithreaded ftp client for X Windows
+	pkgver = 2.9.1b
+	pkgrel = 4
+	url = https://www.gftp.org/
+	arch = x86_64
+	license = MIT
+	makedepends = intltool
+	depends = gtk2
+	depends = openssl
+	depends = readline
+	source = gftp-2.9.1b.tgz::https://github.com/masneyb/gftp/archive/refs/tags/2.9.1b.tar.gz
+	sha256sums = fb134d5479a6b81251b9d37be7264fb8be6edb07bce98569e0e0ba9570587fd6
+
+pkgname = gftp
