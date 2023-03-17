@@ -4,14 +4,14 @@
 
 pkgname=steam-tools-ng
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Some useful tools for use with steam client or compatible programs, websites"
 arch=('any')
-url="https://github.com/ShyPixie/steam-tools-ng"
+url="https://github.com/calendulish/steam-tools-ng"
 depends=('python>=3.9' 'python-certifi' 'python-aiohttp' 'python-stlib>=1.1' 'python-stlib-plugins>=1.1' 'python-gobject' 'gtk4')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'imagemagick')
 license=('GPL')
-source=("https://github.com/ShyPixie/$pkgname/archive/v${pkgver}.tar.gz")
+source=("https://github.com/calendulish/$pkgname/archive/v${pkgver}.tar.gz")
 sha256sums=('78e6cbad64d73fa0ca2dec4a4586f8f15420e73fefdee10498ae8466da00e776')
 
 build() {
