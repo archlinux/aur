@@ -2,8 +2,8 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=cosmic-text-editor-git
-pkgver=r8.aed6b9b
-pkgrel=3
+pkgver=r11.1618c79
+pkgrel=1
 pkgdesc="Text editor of COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-text-editor"
