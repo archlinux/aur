@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-virtualkeyboard-static
-_qtver=6.4.2
+_qtver=6.4.3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -17,7 +17,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtvirtualkeyboard-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('9c3c830f6e17896efaca5fdc7c191088eedd70b07490b38835856579346a4f28')
+sha256sums=('3f4685226f5b00e65c8b304a47dd96c7d9b843649fba6e75421d055825de0ee5')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
