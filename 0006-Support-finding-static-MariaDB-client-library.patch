@@ -1,4 +1,4 @@
-From f3d993ac79528b4f6281d7458a51d850b06d0027 Mon Sep 17 00:00:00 2001
+From 4bd1150d0750b5eb0f9d2ca0aa262d34fcab11aa Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 8 Nov 2020 00:33:12 +0100
 Subject: [PATCH 06/12] Support finding static MariaDB client library
@@ -8,24 +8,31 @@ for mysql) because otherwise it would pick up the static library
 "libmysqlclient.a" (provided by mingw-w64-mariadb-connector-c during
 the shared build (leading to linker errors).
 
-Change-Id: I9559b97540f2f928b4dec990d497bf2911ad5b60
+Change-Id: I8f9ba27e638619dba411ad0e37f2f03eab4775bf
 ---
- cmake/FindMySQL.cmake | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ cmake/FindMySQL.cmake | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/cmake/FindMySQL.cmake b/cmake/FindMySQL.cmake
-index 0fcba2148e..ab4f6fdc9e 100644
+index cdfb469c71..bd634d6cbb 100644
 --- a/cmake/FindMySQL.cmake
 +++ b/cmake/FindMySQL.cmake
-@@ -27,7 +27,7 @@ find_path(MySQL_INCLUDE_DIR
-           PATH_SUFFIXES mysql mariadb)
+@@ -60,13 +60,13 @@ find_path(MySQL_INCLUDE_DIR
  
  find_library(MySQL_LIBRARY
+              NO_PACKAGE_ROOT_PATH
 -             NAMES libmysql mysql mysqlclient libmariadb mariadb
 +             NAMES libmariadb mariadb mariadbclient libmysql mysql mysqlclient
-              HINTS ${PC_MySQL_LIBDIR})
+              HINTS ${MySQL_library_hints})
  
- include(FindPackageHandleStandardArgs)
+ if(MySQL_library_hints_debug)
+     find_library(MySQL_LIBRARY_DEBUG
+                  NO_PACKAGE_ROOT_PATH
+-                 NAMES libmysql mysql mysqlclient libmariadb mariadb
++                 NAMES libmariadb mariadb mariadbclient libmysql mysql mysqlclient
+                  HINTS ${MySQL_library_hints_debug})
+ endif()
+ 
 -- 
-2.39.0
+2.39.2
 

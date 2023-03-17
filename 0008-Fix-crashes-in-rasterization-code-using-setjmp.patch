@@ -1,4 +1,4 @@
-From 38a9cc4ff30e6409a785cf422ed047c68cb0e5d7 Mon Sep 17 00:00:00 2001
+From 7d188c5f8e0fb4646ba339b429b94f400f7853b3 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 26 Jun 2021 22:24:12 +0200
 Subject: [PATCH 08/12] Fix crashes in rasterization code using setjmp
@@ -235,18 +235,18 @@ index 3c222c49e1..813cfc08dc 100644
          *araster = 0;
          return ErrRaster_Memory_Overflow;
 diff --git a/src/gui/painting/qt_attribution.json b/src/gui/painting/qt_attribution.json
-index 488daf07bf..24ef353da8 100644
+index d0f2468e6a..d1d7d2e17a 100644
 --- a/src/gui/painting/qt_attribution.json
 +++ b/src/gui/painting/qt_attribution.json
 @@ -4,7 +4,7 @@
          "Name": "Anti-aliasing rasterizer from FreeType 2",
          "QDocModule": "qtgui",
          "QtUsage": "Used in Qt GUI.",
--        "Path": "qgrayraster.c",
-+        "Path": "qgrayraster.cpp",
+-        "Files": "qgrayraster.c",
++        "Files": "qgrayraster.cpp",
  
          "Description": "FreeType is a freely available software library to render fonts.",
          "Homepage": "http://www.freetype.org",
 -- 
-2.39.0
+2.39.2
 
