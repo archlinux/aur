@@ -1,4 +1,6 @@
-# maintainer: chn <g897331845@gmail.com>
+# Maintainer: Tzu-Yu Lee <leejuyuu@gmail.com>
+# Contributor: chn <g897331845@gmail.com>
+# Contributor: xantares
 
 pkgname=boost-stacktrace-backtrace
 pkgver=1.81.0
