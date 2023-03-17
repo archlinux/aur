@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-declarative
-_qtver=6.4.2
+_qtver=6.4.3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -13,7 +13,7 @@ url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Classes for QML and JavaScript languages (android)'
 depends=('android-aarch64-qt6-base')
-makedepends=('android-cmake' 'qt6-declarative' 'qt6-shadertools' 'ninja' 'python' 'java-environment-openjdk=8')
+makedepends=('android-cmake' 'qt6-declarative' 'qt6-shadertools' 'ninja' 'python' 'java-environment-openjdk>=11')
 optdepends=('qt6-declarative: development tools')
 conflicts=('android-aarch64-qt6-quickcontrols2')
 provides=('android-aarch64-qt6-quickcontrols2')
@@ -23,8 +23,8 @@ groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtdeclarative-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Exclude-qmltime-when-cross-compiling.patch')
-sha256sums=('a4bdd983de4e9cbca0f85b767dbdd8598711554e370a06da8f509ded4430f5bd'
-            '6c81fd374061005704249559ac384941c9fc959e0946394f4944ae5927e87e6d')
+sha256sums=('67ded1b3b988135e3600916b34bb156fe3986c88420c6f87a6d0fd53521ba795'
+            '1f5b90f3a7b7121d071982d99435a9fa2a4fa19f026d439d393c0fd1c7f9059a')
 
 prepare () {
   cd $_pkgfqn
