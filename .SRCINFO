@@ -1,7 +1,7 @@
-pkgbase = xrdesktop
+pkgbase = xrdesktop0.15
 	pkgdesc = Library for XR interaction with classical desktop compositors
 	pkgver = 0.15.2
-	pkgrel = 3
+	pkgrel = 1
 	url = https://gitlab.freedesktop.org/xrdesktop/xrdesktop
 	arch = i686
 	arch = x86_64
@@ -13,10 +13,12 @@ pkgbase = xrdesktop
 	makedepends = vulkan-headers
 	depends = glibc
 	depends = glib2
-	depends = gulkan
-	depends = gxr
+	depends = gxr>=0.15
+	depends = gxr<0.16
 	optdepends = python
+	provides = xrdesktop=0.15.2
+	conflicts = xrdesktop
 	source = https://gitlab.freedesktop.org/xrdesktop/xrdesktop/-/archive/0.15.2/xrdesktop-0.15.2.tar.bz2
 	sha256sums = 4745f55298188a16e6411394bb55a691a251915c2857a6f594f9336721cc9e67
 
-pkgname = xrdesktop
+pkgname = xrdesktop0.15
