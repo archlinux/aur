@@ -3,14 +3,24 @@
 
 pkgname='mdsilo-bin'
 _pkgname="${pkgname%%-bin}"
-pkgver=0.5.3
-pkgrel=2
+pkgver=0.5.5
+pkgrel=1
 pkgdesc='Local-first, lightweight personal wiki, RSS and podcast client (pre-compiled)'
 arch=('x86_64')
 url='https://mdsilo.com/'
-_url='https://github.com/danloh/mdSilo-app'
+_url='https://github.com/mdSilo/mdSilo-app'
 license=('AGPL3')
-depends=('webkit2gtk')
+depends=(
+  'cairo'
+  'gcc-libs'
+  'gdk-pixbuf2'
+  'glib2'
+  'glibc'
+  'gtk3'
+  'hicolor-icon-theme'
+  'openssl'
+  'webkit2gtk'
+)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
@@ -23,13 +33,13 @@ package() {
 }
 
 sha256sums=(
-  'ab8bc4ee0162d497bf1d82a4b0baab5b1fb203ec789ba7569d2106696a1500bc'
+  '6fba1765bc02654a31f12058097d608c140d7047c73bac85b3bea55e7cbf656a'
 )
 sha512sums=(
-  'c370ec0ffd988c98aad452db3aee7b75449721c8c70503100829ac8fb04f5d6bbfcd038d578a22d7c36819c232ae252fbe9aab55b847de6207d07162c3f4eb31'
+  'dd78e1bb8a8f4554d16a898f7272921dfbcdb66bf42aab89aa09dac8cd8b64bd552dced39236feba7e4074096e6f6d560600e78d74474a043ed9bcaf43224e8b'
 )
 b2sums=(
-  'ac98fe5393d716f78a53bc1535fc455c59273f9b3053936db527fc0f0b26de34c919ab13ea9f18fd46a8fda87deec1d9b400d808351d2155ead38245dcbc6111'
+  '668e3e094ddf259823e44f47ba534d29adf136fa2f41652d1ce620b1d8b0d5a5791d0711cd9a1fd60e1d761c13c9c588a7c1d74d51879d8e78c2e31925395bec'
 )
 
 # eof
