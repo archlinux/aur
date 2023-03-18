@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=release-plz
-pkgver=0.2.55
+pkgver=0.2.56
 pkgrel=1
 pkgdesc="Release Rust packages without using the command line"
 arch=('x86_64')
@@ -13,7 +13,7 @@ checkdepends=('git')
 makedepends=('cargo')
 optdepends=('cargo-semver-checks: check for API breaking changes')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-v$pkgver.tar.gz")
-sha512sums=('9e338e0a6191bafdd0229bb29f1576807420a9fbb9162f8d272962dc12bfb511d06f9915c8b350ae5681423648ac086abde9f5608ae8a2f0af83cd1b94946ebc')
+sha512sums=('a4418cc1c27738b4a84a36feedc2090dcf286c467934df7060135ec83be956f92629d5baae40eb8042a3b600ac3badb35e8baa82c7cca319f3aee99781f3c7c0')
 options=('!lto')
 
 prepare() {
