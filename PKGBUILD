@@ -32,7 +32,8 @@ sha256sums=(
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
 
-	cargo fetch --offline --target "$CARCH-unknown-linux-gnu"
+	cargo update	
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 pkgver() {
