@@ -24,14 +24,15 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+$url")
+source=("git+$url#commit=952eee1a29219839df0c7fb2f442e60d41163551")
 noextract=()
 sha256sums=('SKIP')
 validpgpkeys=()
 
 package() {
-   # Compile
+   # Compile stable version
    cd "${srcdir}"/linux-command-gpt
+   git checkout v$pkgver
    go build -o lcg
    
    # Add it to /usr/bin to make it executable
