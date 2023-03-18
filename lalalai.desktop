@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=LALAL.AI
+Comment=Split vocal and instrumental tracks quickly and accurately with LALAL.AI.
+Path=/opt/lalalai
+Exec=lalalai
+Icon=lalalai
+Terminal=false
+Categories=AudioVideo;Audio;AudioVideoEditing;
