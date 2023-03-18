@@ -1,0 +1,12 @@
+diff --color --unified --recursive --text src.orig/spark2014/gnat2why/gnat2why_gnat.gpr src/spark2014/gnat2why/gnat2why_gnat.gpr
+--- src.orig/spark2014/gnat2why/gnat2why_gnat.gpr	2023-03-18 08:10:41.804020508 -0600
++++ src/spark2014/gnat2why/gnat2why_gnat.gpr	2023-03-18 08:11:36.097357323 -0600
+@@ -13,7 +13,7 @@
+ 
+    Build : Build_Type := External ("Build", "Devel");
+ 
+-   Common_Switches := ("-g", "-gnat2022");
++   Common_Switches := ("-g", "-gnat2022", "-gnatwU");
+    --  These are appended after other switches, in particular, after -gnatg,
+    --  which sets the Ada version to 2012.
+ 

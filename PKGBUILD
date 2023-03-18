@@ -3,7 +3,7 @@
 # https://git.sr.ht/~nytpu/PKGBUILDs/
 
 pkgname=spark2014-git
-pkgver=0.3.draft.r23009.gcf9fcdf75f
+pkgver=0.3.draft.r23092.g3e6f33a5e9
 pkgrel=1
 pkgdesc='Formally defined programming language based on Ada (GNAT FSF version)'
 url='https://www.spark-2014.org'
@@ -31,11 +31,13 @@ conflicts=('spark2014')
 source=('git+https://github.com/AdaCore/spark2014#branch=fsf'
         'why3-adacore::git+https://github.com/AdaCore/why3'
         'git+https://github.com/gcc-mirror/gcc'
-        'makefile-fixes.patch')
+        'makefile-fixes.patch'
+        'build-flags.patch')
 
 
 sha256sums=('SKIP' 'SKIP' 'SKIP'
-            '9985b6864849fb0210cdf40d64b7747cac2c8371385f9790b142d402b5b7d22a')
+            '4ba7b439be23cde5612f743fd552774f43312fdfacd64fb0c98b9b6a9f78f6b2'
+            '55d433193028ffce792e622eb54d9f206c441e1bdecb9492ccfef04843e62142')
 
 prepare() {
     cd spark2014
@@ -49,6 +51,7 @@ prepare() {
     # Use install instead of mv to install the various targets while also
     # houring the INSTALLDIR convention used within this Makefile.
     patch -Np2 -i "${srcdir}/makefile-fixes.patch"
+    patch -Np2 -i "${srcdir}/build-flags.patch"
 
     # Arch Linux doesn't use libexec, everything lives under lib.
     sed -i 's/libexec/lib/g' src/gnatprove/configuration.ads
@@ -62,6 +65,10 @@ pkgver() {
 
 build() {
     cd spark2014
+
+    CFLAGS="${CFLAGS//-Wformat}"
+    CFLAGS="${CFLAGS//-Werror=format-security}"
+
     make setup INSTALLDIR="${pkgdir}/usr"
     make
     make -C docs/lrm man

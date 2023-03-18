@@ -1,7 +1,7 @@
-diff --color --unified --recursive --text src.orig/spark2014/Makefile src.new/spark2014/Makefile
---- src.orig/spark2014/Makefile	2022-05-12 14:41:28.440880794 -0600
-+++ src.new/spark2014/Makefile	2022-05-12 14:44:29.869703151 -0600
-@@ -77,9 +77,9 @@
+diff --color --unified --recursive --text src.orig/spark2014/Makefile src/spark2014/Makefile
+--- src.orig/spark2014/Makefile	2023-03-18 08:37:08.487455631 -0600
++++ src/spark2014/Makefile	2023-03-18 08:39:01.057462841 -0600
+@@ -78,9 +78,9 @@
  #   install-all  install of gnatprove and why3
  
  setup:
@@ -13,9 +13,12 @@ diff --color --unified --recursive --text src.orig/spark2014/Makefile src.new/sp
  
  why3:
  	$(MAKE) -C why3 -j $(nproc)
-@@ -89,7 +89,7 @@
+@@ -89,9 +89,9 @@
+ install-all:
  	$(MAKE) install
  	$(MAKE) -C why3 install_spark2014_dev
+-	sha256sum install/libexec/spark/bin/gnatwhy3 | cut -d' ' -f1 > install/libexec/spark/bin/gnatwhy3.hash
++	sha256sum $(INSTALLDIR)/lib/spark/bin/gnatwhy3 | cut -d' ' -f1 > $(INSTALLDIR)/lib/spark/bin/gnatwhy3.hash
  	# Create the fake prover scripts to help extract benchmarks.
 -	$(CP) benchmark_script/fake_* install/libexec/spark/bin
 +	$(CP) benchmark_script/fake_* $(INSTALLDIR)/lib/spark/bin
