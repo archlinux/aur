@@ -1,15 +1,20 @@
-pkgbase = pkgbase
-	pkgdesc = Slovak -> English dictionary for dictd et al. from Freedict.org
-	pkgver = 0.2
+pkgbase = evdi-compat-git
+	pkgdesc = kernel module for DisplayLink driver, aimed at compatibility with DisplayLink package and Official kernels
+	pkgver = 1.12.1.r0.gc892401
 	pkgrel = 1
-	url = https://freedict.org/
-	install = install.sh
-	arch = any
+	url = https://github.com/Varun-garg/evdi-compat
+	arch = i686
+	arch = x86_64
 	license = GPL
-	makedepends = dictd
-	makedepends = freedict-tools
-	optdepends = dictd: dict client and server
-	source = https://download.freedict.org/dictionaries/slk-eng/0.2.1/freedict-slk-eng-0.2.1.src.tar.xz
-	sha512sums = ba7669020a12f64f7d2e2b6dfa90f1376df4a2fe764273bdb06f1e04998ee6dac9584b47f20f8e14cbaae5bf7271dd221032bcc34bd1ff7c93a93cf9de4429ac
+	makedepends = git
+	makedepends = libdrm
+	makedepends = linux-headers
+	depends = dkms
+	provides = evdi=1.12.1
+	conflicts = evdi
+	conflicts = evdi-git
+	source = git+https://github.com/Varun-garg/evdi-compat#branch=devel
+	md5sums = SKIP
+	sha256sums = SKIP
 
-pkgname = dict-freedict-slk-eng
+pkgname = evdi-compat-git

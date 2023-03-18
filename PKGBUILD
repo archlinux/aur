@@ -1,36 +1,86 @@
-# Maintainer : Juraj Matuš <matus.juraj at yandex dot com>
+# Maintainer: Varun Garg <connect at varun dot gg>
+# Contributors: Chris Severance <aur.severach aATt spamgourmet dott com>, ajs124
 
-_lang=slk-eng
-pkgname=dict-freedict-${_lang}
-pkgver=0.2
+# Tested with Kernel 6.2.6-zen1-1-zen, ThinkPad Hybrid USB-C with USB-A Dock
+
+pkgname='evdi-compat-git'
+src_pkgname='evdi-git'
+pkgver=1.12.1.r0.gc892401
+_pkgver="${pkgver%%.r*}"
 pkgrel=1
-pkgdesc="Slovak -> English dictionary for dictd et al. from Freedict.org"
-arch=('any')
-url="https://freedict.org/"
+pkgdesc='kernel module for DisplayLink driver, aimed at compatibility with DisplayLink package and Official kernels'
+arch=('i686' 'x86_64')
+url='https://github.com/Varun-garg/evdi-compat'
 license=('GPL')
-optdepends=('dictd: dict client and server')
-makedepends=('dictd' 'freedict-tools')
-install=install.sh
-source=("https://download.freedict.org/dictionaries/${_lang}/${pkgver}.${pkgrel}/freedict-${_lang}-${pkgver}.${pkgrel}.src.tar.xz")
-sha512sums=('ba7669020a12f64f7d2e2b6dfa90f1376df4a2fe764273bdb06f1e04998ee6dac9584b47f20f8e14cbaae5bf7271dd221032bcc34bd1ff7c93a93cf9de4429ac')
+depends=('dkms')
+makedepends=('git' 'libdrm')
+makedepends+=('linux-headers')
+provides=("evdi=${_pkgver}")
+conflicts=('evdi' 'evdi-git')
+_srcdir="${pkgname%-git}"
+source=(
+  'git+https://github.com/Varun-garg/evdi-compat'
+)
+source[0]+='#branch=devel'
+md5sums=('SKIP')
+sha256sums=('SKIP')
 
-build()
-{
-	cd $_lang
-	make FREEDICT_TOOLS=/usr/lib/freedict-tools build-dictd
+pkgver() {
+  cd "${_srcdir}"
+  local _modver _rev
+  _rev="$(git describe --long --tags | sed -e 's/^v//' -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g')"
+  if [ -z "${_modver:-}" ]; then
+    printf '%s\n' "${_rev}"
+  else
+    printf '%s.r%s\n' "${_modver}" "${_rev##*.r}"
+  fi
 }
 
-package()
-{
-	install -m 755 -d "${pkgdir}/usr/share/dictd"
-	install -m 644 -t "${pkgdir}/usr/share/dictd/" \
-		${_lang}/build/dictd/${_lang}.{dict.dz,index}
+prepare() {
+  cd "${_srcdir}"
+  local _src
+  for _src in "${source[@]%%::*}"; do
+    _src="${_src##*/}"
+    if [[ "${_src}" = *.patch ]]; then
+      msg2 "Patch ${_src}"
+      patch -Np1 -i "../${_src}"
+    fi
+  done
 
-	for file in ${_lang}/{AUTHORS,README,NEWS,ChangeLog}
-	do
-		if test -f ${file}
-		then
-			install -m 644 -Dt "${pkgdir}/usr/share/doc/freedict/${_lang}/" ${file}
-		fi
-	done
+  sed -e 's:-Werror::g' -i 'Makefile'
+}
+
+build() {
+  cd "${_srcdir}"
+  # DKMS builds are hard to debug. We can build it here to debug the errors.
+  if :; then
+    # We only need to build the library in this step, dmks will build the module
+    cd 'library'
+  fi
+  CFLAGS="${CFLAGS/-fno-plt/}"
+  make
+}
+
+package() {
+  cd "${_srcdir}"
+  install -Dpm755 "library/lib${src_pkgname%-git}.so"* -t "${pkgdir}/usr/lib/"
+
+if ! :; then
+  pushd "${pkgdir}/usr/lib/" > /dev/null
+  local _libs=(*.so.*)
+  if [ "${#_libs[@]}" -ne 1 ]; then
+    echo "Too many libs"
+    false
+  fi
+  _libs="${_libs[0]}"
+  local _libase="${_libs%.so*}.so"
+  ln -sf "${_libs}" "${_libase}"
+  ln -sf "${_libs}" "${_libase}.0" # bad soname
+  popd > /dev/null
+fi
+
+  local _DKMS="${pkgdir}/usr/src/${src_pkgname%-git}-${_pkgver}"
+  install -Dpm644 module/* -t "${_DKMS}/"
+  make -j1 -C "${_DKMS}" clean
+  rm -f "${_DKMS}/evdi.mod"
 }
