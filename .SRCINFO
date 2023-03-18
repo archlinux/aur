@@ -1,0 +1,14 @@
+pkgbase = memcardpro-git
+	pkgdesc = Utility for 8BitMods MemCard PRO
+	pkgver = 0.0.3.r14.gaba967e
+	pkgrel = 1
+	url = https://github.com/bodgit/memcardpro
+	arch = x86_64
+	license = BSD
+	makedepends = go
+	provides = memcardpro
+	conflicts = memcardpro
+	source = git+https://github.com/bodgit/memcardpro.git
+	sha256sums = SKIP
+
+pkgname = memcardpro-git
