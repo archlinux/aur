@@ -14,8 +14,8 @@ pkgname=()
 [ "$_build_no_opt" -eq 1 ] && pkgname+=(tensorflow-rocm python-tensorflow-rocm)
 [ "$_build_opt" -eq 1 ] && pkgname+=(tensorflow-opt-rocm python-tensorflow-opt-rocm)
 
-pkgver=2.12.0rc0
-_pkgver=2.12.0-rc0
+pkgver=2.12.0rc1
+_pkgver=2.12.0-rc1
 pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
@@ -28,14 +28,12 @@ makedepends=('bazel' 'python-numpy' 'rocm-hip-sdk' 'roctracer' 'rccl' 'git' 'mio
 optdepends=('tensorboard: Tensorflow visualization toolkit')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tensorflow/tensorflow/archive/v${_pkgver}.tar.gz"
         tensorflow-2.10-sparse-transpose-op2.patch
-        https://github.com/tensorflow/tensorflow/commit/478ea54bcf3a867af2ab39e93cfe80904d49ad0e.patch
         https://github.com/bazelbuild/bazel/releases/download/5.4.0/bazel_nojdk-5.4.0-linux-x86_64
         fix-c++17-compat.patch
         fix-cusolver-version.patch)
 
-sha512sums=('0f300dc976a72aa5332586988ed762879de981f398639bfe10559efec1608aadc6e55fbcd9fbe68a22c18d62b220868d9283f4832022354aa90d5f413d577025'
+sha512sums=('da6da20cc27714efae753bddca5e6cebad62bcf45e7c6d2f4284e3441492c5764fd53c023ad0ecee59ed063f7c4dbb2fe7d9fd56dcdabc1ce1f26607a971167b'
             '45325ef3130aa95d48121d8c39bb4e683bdb5faa936ff29af953a2c359edb441a29e2dc0cae53ec6c08eee0432c0eeeaa7a40fbd063467b7f3c250d0f7f8ffed'
-            '245f62473d96aede0f99d78ea5f4f08b5ca6a74971f2031c7457bec0e4b6596c87d2fdcf2ca9479d4cabbcd17fd2fa7f8167195d1510e761732305b3c62ed15f'
             'e2adb747cd1fe3c90686831703618af3f8bc8197a96d9e1e90e66db38dbc4e7a94d88dac755b25e288002983a87fcffbfb0d7c2e356d979d4635301c3daf9281'
             'f682368bb47b2b022a51aa77345dfa30f3b0d7911c56515d428b8326ee3751242f375f4e715a37bb723ef20a86916dad9871c3c81b1b58da85e1ca202bc4901e'
             '6f42455db1db0a5cd58ab5fe5554317e9ff648c046bb81cef9b4c61cce8380da08b681f825544b5388f02da863ff19f642efa9459691cbcf8852a21bd0dc7447')
@@ -88,7 +86,6 @@ prepare() {
   # manually specify cusolver .so version
   patch -Np1 -i "${srcdir}/fix-cusolver-version.patch" -d tensorflow-${_pkgver}
 
-  patch -Np1 -i "${srcdir}/478ea54bcf3a867af2ab39e93cfe80904d49ad0e.patch" -d tensorflow-${_pkgver}
   patch -Np1 -i "${srcdir}/tensorflow-2.10-sparse-transpose-op2.patch" -d tensorflow-${_pkgver}
 
   cp -r tensorflow-${_pkgver} tensorflow-${_pkgver}-rocm
