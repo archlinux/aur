@@ -1,5 +1,6 @@
-agent/
-*.pkg.tar.*
-buildkite-agent-linux-*.tar.gz
-pkg/
-src/
+*
+!.gitignore
+!.SRCINFO
+!buildkite-agent.sysusers
+!buildkite-agent.tmpfiles
+!PKGBUILD

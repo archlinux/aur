@@ -8,16 +8,20 @@ arch=('x86_64' 'armv7h' 'aarch64')
 url='https://buildkite.com/docs/agent/v3'
 license=('MIT')
 options=('!strip' 'staticlibs')
-source=("git+https://github.com/buildkite/agent.git#tag=v$pkgver"
-        'buildkite-agent.sysusers'
-        'buildkite-agent.tmpfiles')
 backup=('etc/buildkite-agent/buildkite-agent.cfg')
 
+source=(
+  "https://raw.githubusercontent.com/buildkite/agent/v$pkgver/packaging/linux/root/usr/share/buildkite-agent/systemd/buildkite-agent.service"
+  "https://raw.githubusercontent.com/buildkite/agent/v$pkgver/packaging/linux/root/usr/share/buildkite-agent/systemd/buildkite-agent@.service"
+  "buildkite-agent.sysusers"
+  "buildkite-agent.tmpfiles"
+)
 source_x86_64=("https://github.com/buildkite/agent/releases/download/v$pkgver/buildkite-agent-linux-amd64-$pkgver.tar.gz")
 source_armv7h=("https://github.com/buildkite/agent/releases/download/v$pkgver/buildkite-agent-linux-armhf-$pkgver.tar.gz")
 source_aarch64=("https://github.com/buildkite/agent/releases/download/v$pkgver/buildkite-agent-linux-arm64-$pkgver.tar.gz")
 
-sha256sums=('SKIP'
+sha256sums=('474a87811a15194e01097af13e0ce21b8a2ab0354e15bacead54e272087bc2c2'
+            '88ac986b1126f1817f7021210ec8e7dc5cab7b3f30b5e096f5041537b0edf149'
             '60503a6e93dfdb533cd54c82bf9aa3087c907ce8c574b657ca4c4b102badcf71'
             '15f1019081d8255ac6ac121445ae4b39ef5e3f1446a319855c1f7524372366b0')
 sha256sums_x86_64=('16a3c2418679a12540cc30e2b06b0b07532a229a2c09d5720aa03b78197b2f6c')
