@@ -5,7 +5,7 @@
 
 pkgname=mutt-kiss
 pkgver=2.2.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Small but very powerful text-based mail client. Sans POP/IMAP/SMTP/SSL"
 arch=('i686' 'x86_64')
 url="http://www.mutt.org/"
@@ -26,6 +26,7 @@ build() {
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
+    --enable-compressed \
     --enable-gpgme \
     --enable-hcache \
     --with-curses=/usr \
