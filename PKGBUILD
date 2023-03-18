@@ -5,7 +5,7 @@
 
 # Maintainer: Adrian Lopez <zeioth@hotmail.com>
 pkgname=linux-command-gpt-git
-pkgver=1.0.r3.7e6ecfa
+pkgver=1.0.r2.6a8403b
 pkgrel=1
 epoch=
 pkgdesc="Get Linux commands in natural language with the power of ChatGPT."
