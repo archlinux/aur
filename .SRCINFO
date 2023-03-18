@@ -9,7 +9,6 @@ pkgbase = vte3-tilix
 	makedepends = gperf
 	makedepends = meson
 	makedepends = vala
-	makedepends = git
 	depends = fribidi
 	depends = gnutls
 	depends = gtk3
@@ -22,10 +21,10 @@ pkgbase = vte3-tilix
 	provides = libvte-2.91.so
 	conflicts = vte3
 	options = !lto
-	source = git+https://gitlab.gnome.org/GNOME/vte.git#tag=0.70.3
+	source = https://gitlab.gnome.org/GNOME/vte/-/archive/0.70.3/vte-0.70.3.tar.bz2
 	source = alternate-screen.patch
 	source = vte291-cntnr-precmd-preexec-scroll.patch-de03576168f1ec4beeb7330239f4debf3234b842::https://src.fedoraproject.org/rpms/vte291/raw/de03576168f1ec4beeb7330239f4debf3234b842/f/vte291-cntnr-precmd-preexec-scroll.patch
-	sha256sums = SKIP
+	sha256sums = 94d0b6776d55252bc1f15995c1ade7eb44b4a2c99531487eba9b8bded1a0fe2f
 	sha256sums = 36fdf6a98c2be1b0c5b38a6116f160cdf0f270db688796ff1199234d64e49600
 	sha256sums = e5672a857c51a620ca5448da29e4ea5b0e319c2a54416a4ca615b0e0392e00a9
 
