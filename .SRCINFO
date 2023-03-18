@@ -1,6 +1,6 @@
 pkgbase = python-financedatabase
 	pkgdesc = Database of 300.000+ symbols containing Equities
-	pkgver = 1.0.2
+	pkgver = 2.0.9
 	pkgrel = 1
 	url = https://pypi.org/project/financedatabase
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-financedatabase
 	depends = python-dill
 	depends = python-tqdm
 	depends = python-requests
-	source = https://files.pythonhosted.org/packages/source/f/financedatabase/financedatabase-1.0.2.tar.gz
-	sha256sums = 7b03d37ef5eef8433380d92122f2fd24bad741971518eaf1bd4a9c6f30763e23
+	source = https://files.pythonhosted.org/packages/source/f/financedatabase/financedatabase-2.0.9.tar.gz
+	sha256sums = d2d7c005e6bc32246ef6d6d6e9631a7c918f092a2c28477d7a27585aa2595a25
 
 pkgname = python-financedatabase

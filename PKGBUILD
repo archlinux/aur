@@ -1,7 +1,7 @@
 # Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
 pkgname=python-financedatabase
 _pkgname=${pkgname:7}
-pkgver=1.0.2
+pkgver=2.0.9
 pkgrel=1
 pkgdesc="Database of 300.000+ symbols containing Equities"
 arch=('any')
@@ -18,7 +18,7 @@ depends=(
     python-requests
 )
 source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
-sha256sums=('7b03d37ef5eef8433380d92122f2fd24bad741971518eaf1bd4a9c6f30763e23')
+sha256sums=('d2d7c005e6bc32246ef6d6d6e9631a7c918f092a2c28477d7a27585aa2595a25')
 
 build() {
     cd ${srcdir}/${_pkgname}-${pkgver}
