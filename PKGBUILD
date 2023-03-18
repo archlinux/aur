@@ -3,7 +3,7 @@
 #shellcheck disable=SC2015
 
 pkgname=upbge-git
-pkgver=128099.f7197011182
+pkgver=128141.37504273e18
 pkgrel=1
 pkgdesc="Uchronia Project Blender Game Engine fork of Blender Game Engine"
 arch=("i686" "x86_64")
@@ -15,7 +15,8 @@ optdepends=("cuda: CUDA support in Cycles"
          "optix>=7.1.0: OptiX support in Cycles"
          "openpgl: Path guiding support in Cycles"
          "usd: USD export Scene")
-makedepends=("git" "cmake" "clang" "boost" "ninja" "mesa" "llvm" wayland{,-protocols} "libxkbcommon")
+makedepends=("git" "subversion" "make" "cmake" "clang" "boost" "ninja" "mesa" "llvm" wayland{,-protocols} 
+         "libxkbcommon")
 provides=("blender")
 conflicts=("blender")
 license=("GPL")
@@ -53,8 +54,8 @@ pkgver() {
 }
 
 prepare() {
-  # update the submodules
-  git -C "$srcdir/upbge" submodule update --init --recursive --remote
+  make -C "$srcdir/upbge" update
+
   if grep -q nvidia <(lsmod); then
     git -C "$srcdir/upbge" apply -v "${srcdir}"/SelectCudaComputeArch.patch
   fi
