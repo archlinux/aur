@@ -1,0 +1,22 @@
+From 6a6370afaf2012a02e50b0ae16aaf8d3cc508c74 Mon Sep 17 00:00:00 2001
+From: Christoph Heiss <christoph@c8h4.io>
+Date: Sun, 19 Mar 2023 00:11:03 +0100
+Subject: [PATCH] net: alx: Add MODULE_VERSION() to fix dkms override
+
+Signed-off-by: Christoph Heiss <christoph@c8h4.io>
+---
+ drivers/net/ethernet/atheros/alx/main.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/net/ethernet/atheros/alx/main.c b/drivers/net/ethernet/atheros/alx/main.c
+index 92a07d335e82..2ab91e987903 100644
+--- a/drivers/net/ethernet/atheros/alx/main.c
++++ b/drivers/net/ethernet/atheros/alx/main.c
+@@ -2166,3 +2166,4 @@ MODULE_AUTHOR("Qualcomm Corporation");
+ MODULE_DESCRIPTION(
+ 	"Qualcomm Atheros(R) AR816x/AR817x PCI-E Ethernet Network Driver");
+ MODULE_LICENSE("GPL");
++MODULE_VERSION("wol-dkms");
+-- 
+2.40.0
+

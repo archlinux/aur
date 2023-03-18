@@ -17,6 +17,7 @@ pkgbase = alx-wol-dkms
 	source = main.c::https://raw.githubusercontent.com/archlinux/linux/v6.1-arch1/drivers/net/ethernet/atheros/alx/main.c
 	source = reg.h::https://raw.githubusercontent.com/archlinux/linux/v6.1-arch1/drivers/net/ethernet/atheros/alx/reg.h
 	source = 0001-drivers-net-alx-Re-enable-WoL-functionality.patch
+	source = 0002-net-alx-Add-MODULE_VERSION-to-fix-dkms-override.patch
 	source = Kbuild
 	source = dkms.conf
 	sha256sums = 0ac6445e832c3413be3887917203699139ec05553270c5006b5a33ba5e2a158d
@@ -26,6 +27,7 @@ pkgbase = alx-wol-dkms
 	sha256sums = 2bd9ee44c72a657007a9bbaef332b9435e949295773733d0ca96cea8a69e075f
 	sha256sums = 88a23ab8e6fe814efe81910bd8806f5988d367a628458154edaebdf4ccbe4902
 	sha256sums = 98f1ad3377a1b0a96dfe7b71eb6dedc0f9779033c59f5dc093b4a7779d270a89
+	sha256sums = 560783c1d0cd19859047360c317312f23cf1caabbd9d15aa101e98d3219da9a5
 	sha256sums = 8a62bb5adf6e554f470f88f8da58da0ce05cb8276ab56fb45ed5d31c71665d39
 	sha256sums = f3aefc85fd246a74ee2be831c15b6440d22c497e84fba1f57e152c82f2946d1a
 
