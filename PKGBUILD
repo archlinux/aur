@@ -1,17 +1,20 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgname='ttf-monda'
-pkgver='1.0'
-pkgrel='2'
+pkgver='2.0'
+pkgrel='1'
 description='Geometric sans serif font by Vernon Adams.'
 arch=('any')
 license=('custom:OFL')
-_dl_base_url='https://github.com/vernnobile/mondaFont/raw/master/version1.00'
-source=("${_dl_base_url}/Monda-Bold.ttf"
-        "${_dl_base_url}/Monda-Regular.ttf"
-        "${_dl_base_url}/OFL.txt")
-sha512sums=('427769e6d69f7386ce8bde0f39a49887059f996232db9f60cd3bc547fdec3798b9ee9b12124d2fc93cdd241d16996c6a64807974208c710792157d0dc9a26cce'
-            '4a6b3fb92c1856c6a705ac1065cd64b921a4c678ba96bbe745a45a640489b3e3442132e6a4836b9c5c6bc118b74a3df018dd41954ec00f81c43f8f7702672f74'
-            'a5a9ab2e314cdfccf283c8b247293dec95ad7b13c9e746b158cd597a46699d3dd4152fec09f044850419b0d7dacf6e6b90a3c8362662b505cc1d48c6e6ee05fa')
+_commit='01a4f5d96cb52ed3c08b9553cf896427ed041a37'
+_dl_base_url="https://github.com/vernnobile/mondaFont/raw/${_commit}/version2.0"
+source=("${_dl_base_url}/Roman/Monda-Bold.ttf"
+        "${_dl_base_url}/Roman/Monda-Light.ttf"
+        "${_dl_base_url}/Roman/Monda-Regular.ttf"
+        "${_dl_base_url}/Roman/src/OFL.txt")
+b2sums=('5d4146e86e01eb1378a4c11be00ee4c95a0f7f3dfba2322c9e8a6beeb4d6298f0331dcf51b77b628279de14ecbcbba71eb59e64c9a2d1020093b82827b371c10'
+        '6cdc8db58641efa1c0f757c6eda7d806127095c4df78c821ad2a1868f9469b78f0dc940d9d37cdb05d1bcc1ba4d998a3962d5ef4f3f99c857a895a1662658574'
+        'ec9f5f2b11f9e5c6540a493d606750b1282a7f040b31f1470b10be2069744a559cb67e828d0fd2bc6b0329d305af912d098a41c07463512577e6cce766173cd5'
+        '8b3f2995a7f970f3e5ff14069263e40ba1df7a2f0e946c46d6a9ec387908af28e639e28eda21789f7dd84dbdc141f727b3a3d68c8159cced099fb6c12e25b474')
 
 package () {
         install -m755 -d "${pkgdir}/usr/share/fonts/${pkgname}"
