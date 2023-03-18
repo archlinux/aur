@@ -1,10 +1,10 @@
 # Maintainer: AltoXorg <atrl101 AT yahoo DOT com>
 
 _reponame=Shipwright
-_libultraship_commit=805b153861a3e3588fcc7f2b34d10ca00a6755c7
+_libultraship_commit=554078d082ee722ed51c196f59828de762ed2a9b
 pkgbase=soh
 pkgname=(soh soh-otr-exporter)
-pkgver=6.1.0
+pkgver=6.1.1
 pkgrel=1
 arch=("x86_64" "i686")
 url="https://shipofharkinian.com/"
@@ -18,8 +18,8 @@ source=("${_reponame}-${pkgver}.tar.gz::https://github.com/HarbourMasters/${_rep
         "soh-use-appbasedir.patch"
         "lus-install-paths.patch"
         "otrgui-wrapper.sh")
-sha256sums=('3c4b35c4c8d49e8f6184dda0fe538b13803820a0065608bdf1fa95d876221f4f'
-            '3017d79ba589d573a55df7b0fce92948e4aa854d4d2830cf6b773728e34f3892'
+sha256sums=('3862757d6aacd581e7aedbd04e5b5d77b83dbc6ff95b39f56c6b589d0711b26e'
+            '4f5c2d222e3ba1cee9bd63551e9956031468cdc89895bbbff5b9f31aea7a4848'
             'd93dbc5273eb6ab88aa4d99869a6ba7fce495253a953af269c28ec72c0b00eb6'
             'a7116d348afda424e3bcabda4a5cd4d6473039494bfe8ef1d81909f86ff0b72d'
             '3de25d94d28f58daec33539181a8a666a20545204089996acf485325124ff9bc'
