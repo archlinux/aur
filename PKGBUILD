@@ -1,18 +1,18 @@
 # vim:set ft=sh:
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
-pkgname=par2cmdline-git
-_gitname='par2cmdline'
-pkgver=20230126.0b266b5
+pkgname=par2cmdline-turbo-git
+_gitname='par2cmdline-turbo'
+pkgver=20230317.eaea6f4
 pkgrel=1
 pkgdesc="A file verification and repair tool"
-url="https://github.com/BlackIkeEagle/par2cmdline"
+url="https://github.com/animetosho/par2cmdline-turbo"
 license=("GPL")
 makedepends=('git')
 depends=('gcc-libs')
 arch=('x86_64')
 provides=('par2cmdline')
 conflicts=('par2cmdline')
-source=("$_gitname::git+https://github.com/BlackIkeEagle/par2cmdline.git")
+source=("$_gitname::git+https://github.com/animetosho/par2cmdline-turbo.git")
 sha256sums=('SKIP')
 
 pkgver() {

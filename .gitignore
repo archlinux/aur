@@ -3,3 +3,4 @@ pkg
 *.log
 *.log.*
 *.pkg.tar.?z
+*.pkg.zst
