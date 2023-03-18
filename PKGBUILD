@@ -6,7 +6,7 @@
 # Maintainer: Adrian Lopez <zeioth@hotmail.com>
 pkgname=linux-command-gpt
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Get Linux commands in natural language with the power of ChatGPT."
 arch=(any)
@@ -35,5 +35,5 @@ package() {
    go build -o lcg
    
    # Add it to /usr/bin to make it executable
-   sudo cp -nf "${srcdir}"/linux-command-gpt/lcg /usr/bin
+   sudo cp "${srcdir}"/linux-command-gpt/lcg /usr/bin/lcg
 }
