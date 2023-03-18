@@ -1,6 +1,6 @@
 # Maintainer: Alexander Shibaev <sashashibaev@gmail.com>
 pkgname=xarrow
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="An X11 arrow, watching your cursor."
 arch=('any')
