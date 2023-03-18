@@ -1,5 +1,5 @@
 pkgbase = onedev-bin
-	pkgver = 8.0.11
+	pkgver = 8.0.12
 	pkgrel = 1
 	url = https://code.onedev.io/onedev/server
 	arch = x86_64
@@ -21,10 +21,10 @@ pkgbase = onedev-bin
 	backup = opt/onedev/conf/server.properties
 	backup = opt/onedev/conf/wrapper.conf
 	backup = opt/onedev/conf/wrapper-license.conf
-	source = https://code.onedev.io/~downloads/projects/160/builds/3508/artifacts/onedev-8.0.11.tar.gz
+	source = https://code.onedev.io/~downloads/projects/160/builds/3516/artifacts/onedev-8.0.12.tar.gz
 	source = sysusers.conf
 	source = onedev.service
-	sha256sums = d7b896fe660f60719e92bc66a7dc17f43930232b9e61bbe12383bbf423ba4bcc
+	sha256sums = 4548229171738cfca278431585785937ddc08bf6d3c31c60ff66a923cb7afc29
 	sha256sums = ed8573826c9c89d7a35e3f8b52d4de69c9377fc713b5227bf30f12a45f0c2c82
 	sha256sums = 56c7dea1e61cf81d6dddc34fa098fa5a7ed892b1d3e506cf003b0c2c71bb5866
 
