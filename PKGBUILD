@@ -16,7 +16,7 @@ pkgname=(
 )
 
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Auto-enable Wayland (ozone) for apps that come with a vendored Electron'
 arch=('any')
 url='https://aur.archlinux.org/packages/electron-blur-me-not'
@@ -47,7 +47,6 @@ _pkgdesc() {
 _package() {
   local _executable
   _executable="${1?}"
-  depends=("${pkgname%-blur-me-not}")
   install="${pkgname}.install"
 
   mkdir -p \
@@ -91,21 +90,25 @@ _package() {
 }
 
 package_1password-blur-me-not() {
+  depends=("${pkgname%-blur-me-not}")
   pkgdesc="$(_pkgdesc '1Password')"
   _package '/opt/1Password/1password'
 }
 
 package_rambox-pro-bin-blur-me-not() {
+  depends=("${pkgname%-blur-me-not}")
   pkgdesc="$(_pkgdesc 'Rambox Pro')"
   _package '/opt/rambox/rambox'
 }
 
 package_signal-desktop-blur-me-not() {
+  depends=("${pkgname%-blur-me-not}")
   pkgdesc="$(_pkgdesc 'Signal Desktop')"
   _package '/usr/lib/signal-desktop/signal-desktop'
 }
 
 package_spotify-blur-me-not() {
+  depends=("${pkgname%-blur-me-not}")
   pkgdesc="$(_pkgdesc 'Spotify')"
   _package '/opt/spotify/spotify'
 }
