@@ -1,5 +1,5 @@
 pkgbase = redqu
-	pkgdesc = A reddit rss media queue extractor
+	pkgdesc = A media centric reddit client
 	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/port19x/redqu
