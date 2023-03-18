@@ -1,7 +1,7 @@
 pkgbase = ydotool-bin
 	pkgdesc = Generic command-line automation tool (no X!)
 	pkgver = 1.0.4
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/ReimuNotMoe/ydotool
 	install = ydotool.install
 	arch = x86_64
