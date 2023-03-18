@@ -5,7 +5,7 @@
 
 # Maintainer: Adrian Lopez <zeioth@hotmail.com>
 pkgname=linux-command-gpt-git
-pkgver=1.0
+pkgver=1.0.r3.7e6ecfa
 pkgrel=1
 epoch=
 pkgdesc="Get Linux commands in natural language with the power of ChatGPT."
@@ -17,8 +17,8 @@ depends=(go)
 makedepends=(go)
 checkdepends=()
 optdepends=()
-provides=(linux-command-gpt)
-conflicts=(linux-command-gpt-git)
+provides=(linux-command-gpt-git)
+conflicts=(linux-command-gpt)
 replaces=()
 backup=()
 options=()
@@ -29,6 +29,11 @@ noextract=()
 sha256sums=('SKIP')
 validpgpkeys=()
 
+pkgver() {
+  cd "${_pkgname}"
+  printf "1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 package() {
    # Compile
    cd "${srcdir}"/linux-command-gpt
@@ -36,5 +41,4 @@ package() {
    
    # Add it to /usr/bin to make it executable
    sudo ln -s "${srcdir}"/linux-command-gpt/lcg /usr/bin
-
 }
