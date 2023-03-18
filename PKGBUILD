@@ -2,13 +2,13 @@
 
 pkgname=sequoia-wot
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An implementation of OpenPGP's web of trust"
 arch=(x86_64)
 url="https://gitlab.com/sequoia-pgp/sequoia-wot"
 license=(GPL2)
 depends=(gcc-libs glibc gmp)
-makedepends=(bzip2 cargo clang nettle openssl)
+makedepends=(cargo clang nettle openssl)
 source=($url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz)
 sha512sums=('aa489eedc1c3f803cfebaf8acb8cffefd504f614e885bd1967d6d5557b9b28b4300e7909912243698d6ddefa1b8b8c7610652ed77912ddb9697dd417c4729a30')
 b2sums=('10431895479ba14e719df4980557456e7ef61c0656e342e388802cfca1576d58376a619f091dc215a18a3f9fcd3907cc6435a7bd142a10a4c1d4921ca7c0f98b')
@@ -33,7 +33,6 @@ check() {
 
 package() {
   depends+=(
-    bzip2 libbz2.so
     nettle libhogweed.so libnettle.so
     openssl libcrypto.so libssl.so
   )
