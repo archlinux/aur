@@ -16,23 +16,18 @@ pkgbase = vte3-tilix
 	depends = gtk3
 	depends = pcre2
 	depends = gnutls
-	options = !emptydirs
-	source = git+https://gitlab.gnome.org/GNOME/vte.git#tag=0.70.3
-	source = vte291-cntnr-precmd-preexec-scroll.patch-de03576168f1ec4beeb7330239f4debf3234b842::https://src.fedoraproject.org/rpms/vte291/raw/de03576168f1ec4beeb7330239f4debf3234b842/f/vte291-cntnr-precmd-preexec-scroll.patch
-	source = alternate-screen.patch
-	sha256sums = SKIP
-	sha256sums = e5672a857c51a620ca5448da29e4ea5b0e319c2a54416a4ca615b0e0392e00a9
-	sha256sums = 36fdf6a98c2be1b0c5b38a6116f160cdf0f270db688796ff1199234d64e49600
-
-pkgname = vte3-tilix
-	depends = gtk3
-	depends = pcre2
-	depends = gnutls
 	depends = vte-common
 	provides = vte3=0.70.3
-	provides = vte3-notification=0.70.3-2
+	provides = vte3-notification=0.70.3
 	provides = vte3-terminix-git
 	provides = libvte-2.91.so
 	conflicts = vte3
-	conflicts = vte3-notification
-	conflicts = vte3-terminix-git
+	options = !lto
+	source = git+https://gitlab.gnome.org/GNOME/vte.git#tag=0.70.3
+	source = alternate-screen.patch
+	source = vte291-cntnr-precmd-preexec-scroll.patch-de03576168f1ec4beeb7330239f4debf3234b842::https://src.fedoraproject.org/rpms/vte291/raw/de03576168f1ec4beeb7330239f4debf3234b842/f/vte291-cntnr-precmd-preexec-scroll.patch
+	sha256sums = SKIP
+	sha256sums = 36fdf6a98c2be1b0c5b38a6116f160cdf0f270db688796ff1199234d64e49600
+	sha256sums = e5672a857c51a620ca5448da29e4ea5b0e319c2a54416a4ca615b0e0392e00a9
+
+pkgname = vte3-tilix
