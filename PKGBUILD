@@ -56,9 +56,8 @@ package() {
 	rm -r "$pkgdir/opt/depot_tools/man/"
 
 	# Install bash completions
-	install -d "$pkgdir/usr/share/bash-completion/completions/"
-	mv "$pkgdir/opt/depot_tools/gclient_completion.sh" "$pkgdir/usr/share/bash-completion/completions/gclient"
-	mv "$pkgdir/opt/depot_tools/git_cl_completion.sh" "$pkgdir/usr/share/bash-completion/completions/git-cl"
+	install -Dm0644 "$pkgdir/opt/depot_tools/gclient_completion.sh" "$pkgdir/usr/share/bash-completion/completions/gclient"
+	install -Dm0644 "$pkgdir/opt/depot_tools/git_cl_completion.sh" "$pkgdir/usr/share/bash-completion/completions/git-cl"
 
 	# Install zsh completions
 	install -Dm0644 -t "$pkgdir/usr/share/zsh/site-functions/" "$pkgdir/opt/depot_tools/zsh-goodies/_gclient"
