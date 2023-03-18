@@ -1,7 +1,7 @@
 pkgbase = mutt-kiss
 	pkgdesc = Small but very powerful text-based mail client. Sans POP/IMAP/SMTP/SSL
 	pkgver = 2.2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mutt.org/
 	install = mutt-kiss.install
 	arch = i686
