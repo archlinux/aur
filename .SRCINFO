@@ -1,12 +1,12 @@
 pkgbase = balena-etcher-electron-bin
 	pkgdesc = Flash OS images to SD cards & USB drives, safely and easily (use system electron runtime)
 	pkgver = 1.18.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.balena.io/etcher
 	arch = x86_64
 	license = Apache License 2.0
 	makedepends = fuse2
-	depends = electron13
+	depends = electron
 	depends = gconf
 	depends = gtk3
 	depends = nss
