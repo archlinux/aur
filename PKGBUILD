@@ -24,7 +24,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+$url")
+source=("git+$url#commit=47e36b6fb5c1056878bad73451da067a2416f41e")
 noextract=()
 sha256sums=('SKIP')
 validpgpkeys=()

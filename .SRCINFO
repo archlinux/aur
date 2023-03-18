@@ -11,7 +11,7 @@ pkgbase = wofi-calc
 	depends = libqalculate
 	provides = wofi-calc
 	conflicts = wofi-calc-git
-	source = git+https://github.com/Zeioth/wofi-calc.git
+	source = git+https://github.com/Zeioth/wofi-calc.git#commit=47e36b6fb5c1056878bad73451da067a2416f41e
 	sha256sums = SKIP
 
 pkgname = wofi-calc
