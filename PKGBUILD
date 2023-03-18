@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=glicol-cli-git
-pkgver=0.2.0.r0.gc5f6493
+pkgver=0.2.0.r3.gf39a026
 pkgrel=1
 pkgdesc="Music live coding in terminal (git)"
 arch=('x86_64')
