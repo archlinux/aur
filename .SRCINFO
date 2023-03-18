@@ -1,6 +1,6 @@
 pkgbase = linux-command-gpt
 	pkgdesc = Get Linux commands in natural language with the power of ChatGPT.
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/asrul10/linux-command-gpt.git
 	arch = any
