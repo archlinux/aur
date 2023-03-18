@@ -1,0 +1,9 @@
+[Trigger]
+Type = Package
+Operation = Remove
+Target = discord
+
+[Action]
+Description = Reverting to the official asar...
+When = PreTransaction
+Exec = /usr/share/libalpm/scripts/openasar-all-git-pre-remove-discord discord

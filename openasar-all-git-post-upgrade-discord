@@ -1,0 +1,10 @@
+#!/bin/bash
+variant=$1
+if [ "${variant}" == "discord" ] || [ "${variant}" == "discord-ptb" ] || [ "${variant}" == "discord-canary" ] || [ "${variant}" == "discord-development" ]; then
+    var_asar_path="/opt/${variant}/resources/app.asar"
+    if [[ -f "${var_asar_path}" ]]; then
+        rm -rf -f "${var_asar_path}.backup"
+        mv "${var_asar_path}" "${var_asar_path}.backup"
+        cp -f "/opt/openasar-all-git/app.asar" "${var_asar_path}"
+    fi
+fi

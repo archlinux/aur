@@ -1,0 +1,34 @@
+_pkgname='openasar-all'
+pkgname="${_pkgname}-git"
+
+post_install() {
+    for var in discord discord-ptb discord-canary discord-development; do
+        var_asar_path="/opt/${var}/resources/app.asar"
+        if [ -f "${var_asar_path}" ]; then
+            mv "${var_asar_path}" "${var_asar_path}.backup"
+            cp -f "/opt/${pkgname}/app.asar" "${var_asar_path}"
+        fi
+    done
+}
+
+pre_upgrade() {
+    for var in discord discord-ptb discord-canary discord-development; do
+        rm -rf -f "/opt/${var}/resources/app.asar"
+    done
+}
+
+post_upgrade() {
+    for var in discord discord-ptb discord-canary discord-development; do
+        cp -f "/opt/${pkgname}/app.asar" "/opt/${var}/resources/app.asar"
+    done
+}
+
+post_remove() {
+    for var in discord discord-ptb discord-canary discord-development; do
+        var_asar_path="/opt/${var}/resources/app.asar"
+        if [ -f "${var_asar_path}.backup" ]; then
+            rm -rf -f "${var_asar_path}"
+            mv "${var_asar_path}.backup" "${var_asar_path}"
+        fi
+    done
+}

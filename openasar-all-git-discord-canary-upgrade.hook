@@ -1,0 +1,10 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Target = opt/discord-canary/resources/*
+
+[Action]
+Description = Replacing official asar with openasar...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/openasar-all-git-post-upgrade-discord discord-canary
