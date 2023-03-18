@@ -3,7 +3,7 @@
 pkgbase=monado
 pkgname=('monado' 'monado-doc')
 pkgver=21.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='An open source OpenXR runtime'
 arch=('x86_64')
 url='https://monado.dev/'
@@ -19,9 +19,9 @@ source=("https://gitlab.freedesktop.org/monado/monado/-/archive/v${pkgver}/${pkg
         '020-monado-gcc-10-fix-part001.patch'::'https://gitlab.freedesktop.org/monado/monado/-/commit/1a556740d5ba79af8f5e72d7145ab62b8867db0b.patch'
         '030-monado-gcc-10-fix-part002.patch'::'https://gitlab.freedesktop.org/monado/monado/-/commit/a0c8cc14f52f1b922c9c4fd1272652e01e130282.patch')
 sha256sums=('7849ef4123afef14ca401aa5f9b8923144bb6bc707fe35817a288285d4990458'
-            '902de0126f2279800acb9bff8a6db9e59932d4eaf8a5a7dcf3e6631a6aa00347'
-            '690fbd3f1d8e2f8b71924fc22dbfefe663dfa931741562033a9bcec5d2bb83b7'
-            'b1b430610995654ecfd8ea23d27543ba1e716076699fbc2eaf1fb622f111cf3e')
+            'f89f2c41911a71915eff3f8bd49d9f46dd5f945385695a41a4fef44788d169e0'
+            'c8d38b9ab966c56c76c8057b67766ddf31c127ef5c999c4aad6950b33c2d7955'
+            '36e8841786f373f96f6420581cac585699cd211e494cb2b0be8aba4dd0b23c31')
 
 prepare() {
     patch -d "${pkgname}-v${pkgver}" -Np1 -i "${srcdir}/010-monado-meson-0.61.0-fix.patch"
