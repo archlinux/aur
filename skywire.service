@@ -5,7 +5,7 @@ Wants=network-online.target
 [Service]
 Type=simple
 Environment="SYSTEMDCHILD=1"
-ExecStart=/bin/skywire -p --loglvl debug'
+ExecStart=/bin/skywire -p --loglvl debug
 Restart=always
 RestartSec=20
 TimeoutSec=30

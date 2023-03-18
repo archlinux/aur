@@ -28,7 +28,7 @@ sha256sums=('a55c345c144f18a1a58161630635aa08c7ff6cd4a73752368d0eaa43ecf7af92'
             '00da5a9afdf5a8c7033978d2074039ba1ff7bc7a7221fbd278eb1270bdeb8eae'
             'ec24750a99f5cda8d8a8dc94743943218e1b2088c2b2c7dc1644ee78d954fe7e'
             'a6941680b5858ca3e0c85d9bf5824455a0c95524b61e42352462f2abbb750495'
-            '88c55cc334eb8b0ba7557d3a4b3d1eaeec67cb29b4dfc396f796476bf82fead7'
+            '67977009c383b0249c0ca1b521ae3848bd55116da16a6a9790a9ab51f2cfc007'
             '8519d027325dcb34877bb5b0fb0c3c035d7589c0046b53935e2b949d436c4be3'
             'b8d0b0afd03bf6c1cf9814874d7aa465f4d7e57075260f797993e46b33ab8480'
             '41c0a4a42ae64479b008392053f4a947618acd6bb9c3ed2672dafdb2453caa14'
@@ -54,6 +54,8 @@ build() {
     echo "Maintainer: ${_githuborg}" >> ${srcdir}/${_pkgarch}.control
     echo "Description: ${pkgdesc}" >> ${srcdir}/${_pkgarch}.control
   done
+  echo -e '#!/bin/bash\n[[ -f /opt/skywire/scripts/skywire-autoconfig ]]  && /opt/skywire/scripts/skywire-autoconfig || echo "error: /opt/skywire/skywire-autoconfig missing"' | tee "${srcdir}/postinst.sh"
+  echo -e '#!/bin/bash\n[[ -d /opt/skywire ]]  && rm /opt/skywire || echo "error: directory /opt/skywire not present so not removed"' | tee "${srcdir}/prerm.sh"
 }
 
 package() {
@@ -88,14 +90,8 @@ _package
 
 _msg2 'installing control file and install scripts'
 install -Dm755 "${srcdir}/${_pkgarch}.control" "${_pkgdir}/DEBIAN/control"
-echo -e '#!/bin/bash
-[[ -f /opt/skywire/scripts/skywire-autoconfig ]]  && /opt/skywire/scripts/skywire-autoconfig
-' | tee "${_pkgdir}/DEBIAN/postinst"
-echo -e '#!/bin/bash' | tee "${_pkgdir}/DEBIAN/prerm"
-#echo -e '#!/bin/bash
-#[[ -d /opt/skywire ]] && rm -rf /opt/skywire/
-#'| tee "${_pkgdir}/DEBIAN/prerm"
-chmod +x "${_pkgdir}/DEBIAN/"*
+install -Dm755 "${srcdir}/postinst.sh" "${_pkgdir}/DEBIAN/postinst"
+install -Dm755 "${srcdir}/prerm.sh" "${_pkgdir}/DEBIAN/prerm"
 _msg2 'creating the debian package'
 #create the debian package!
 cd "${pkgdir}"
