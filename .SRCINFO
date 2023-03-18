@@ -1,0 +1,12 @@
+pkgbase = redqu
+	pkgdesc = A reddit rss media queue extractor
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/port19x/redqu
+	arch = any
+	license = Unlicense
+	depends = babashka-bin
+	source = redqu-1.1.tar.gz::https://github.com/port19x/redqu/archive/refs/tags/v1.1.tar.gz
+	sha256sums = 0781cf624224398ff5f0298575ef959225cb66bf0cf3f17d0d2dc65b77052961
+
+pkgname = redqu
