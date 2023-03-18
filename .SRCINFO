@@ -1,7 +1,7 @@
 pkgbase = librewolf
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
-	pkgver = 110.0.1
-	pkgrel = 1
+	pkgver = 111.0
+	pkgrel = 3
 	url = https://librewolf.net/
 	install = librewolf.install
 	arch = x86_64
@@ -56,30 +56,24 @@ pkgbase = librewolf
 	options = !strip
 	backup = usr/lib/librewolf/librewolf.cfg
 	backup = usr/lib/librewolf/distribution/policies.json
-	source = https://archive.mozilla.org/pub/firefox/releases/110.0.1/source/firefox-110.0.1.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/110.0.1/source/firefox-110.0.1.source.tar.xz.asc
+	source = https://archive.mozilla.org/pub/firefox/releases/111.0/source/firefox-111.0.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/111.0/source/firefox-111.0.source.tar.xz.asc
 	source = librewolf.desktop
-	source = git+https://gitlab.com/librewolf-community/browser/source.git#tag=110.0.1-1
-	source = git+https://gitlab.com/librewolf-community/settings.git#commit=ebec9c7db23ec1d1407da547b05207f49ff9c575
+	source = git+https://gitlab.com/librewolf-community/browser/source.git#commit=5a211f7bad8dcf188a96b408cc143082df8d30a8
+	source = git+https://gitlab.com/librewolf-community/settings.git#commit=e97fcae43f34885485b5c5d5cadd9129943a5fdf
 	source = default192x192.png
 	source = 0018-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
-	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/15a316eae92227054a924561172c8271bee7fc9c/trunk/0001-libwebrtc-screen-cast-sync.patch
-	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/dd7a5fb35df6e31ee9591ab204fa2fe54e716155/trunk/0002-Bug-1819374-Squashed-ffmpeg-6.0-update.patch
-	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/5605b5d61b53ca4efc69132483a50c7b4d349dc9/trunk/0003-Bug-1820416-Use-correct-FFVPX-headers-from-ffmpeg-6..patch
-	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/db42b54647606c5209acc94d94d95ae6cdeeef5d/trunk/0004-Bug-1821359-Disable-TLS-Key-Pinning-for-Twitter-Doma.patch
+	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/f72ed84a7907d387296811794d75da515525500e/trunk/0001-Bug-1819374-Squashed-ffmpeg-6.0-update.patch
+	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/f72ed84a7907d387296811794d75da515525500e/trunk/0002-Bug-1820416-Use-correct-FFVPX-headers-from-ffmpeg-6..patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = f19bb74d684b992625abca68f5776198974cd2785eb5d02d51ba007fc998491f
+	sha256sums = e1006c0872aa7eb30fb5a689413957f1e5fc8d2048b1637bf6f6fafdbd4ea55f
 	sha256sums = SKIP
 	sha256sums = 21054a5f41f38a017f3e1050ccc433d8e59304864021bef6b99f0d0642ccbe93
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1
 	sha256sums = 1d713370fe5a8788aa1723ca291ae2f96635b92bc3cb80aea85d21847c59ed6d
-	sha256sums = 43c83101b7ad7dba6f5fffeb89b70a661a547d506a031ea2beada42ccf04eec7
-	sha256sums = 9347e45cfe3e915b2293f7467fd61c216ec10823e91c70e5aeb9ca08cc5fcfcf
+	sha256sums = 802f9271a5f7c0ab581baae8c46fd5b29598025ee93bb2dac6b456f8e0ae6acc
 	sha256sums = be9ba079a931d5e881ce38430d418cc834e8c6b157af6c79ea267998caece806
-	sha256sums = e4193f0a31a11ec6f5e16ac8d25c866867742d2c6917f34a87d73fa35eb55c55
-	source_aarch64 = 0001-libwebrtc-screen-cast-sync_additional_aarch64.patch
-	sha256sums_aarch64 = 358655062957b12255977714f3d04123857e562679cd35efb2b67b2e182a464a
 
 pkgname = librewolf
