@@ -1,0 +1,12 @@
+pkgbase = qoauth
+	pkgdesc = Support with OAuth-powered network services
+	pkgver = 2.0.0
+	pkgrel = 3
+	url = https://github.com/ayoy/qoauth
+	arch = x86_64
+	license = GPL
+	depends = qca-qt5
+	source = qoauth-2.0.0::https://github.com/ayoy/qoauth/archive/v2.0.0.tar.gz
+	sha256sums = a28005986410d333e03d077679cdf6c504ec5a33342867dc0f9fb0b74285e333
+
+pkgname = qoauth
