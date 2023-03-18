@@ -1,7 +1,7 @@
 pkgbase = r-psych
 	pkgdesc = Procedures for Psychological, Psychometric, and Personality Research
-	pkgver = 2.2.9
-	pkgrel = 3
+	pkgver = 2.3.3
+	pkgrel = 1
 	url = https://cran.r-project.org/package=psych
 	arch = any
 	license = GPL
@@ -15,7 +15,7 @@ pkgbase = r-psych
 	optdepends = r-psychtools
 	optdepends = r-rcsdp
 	optdepends = r-rgraphviz
-	source = https://cran.r-project.org/src/contrib/psych_2.2.9.tar.gz
-	sha256sums = 4cd518bff387fef95067696b0a0b323310e6f4a063c3d242f2a50bcb17675571
+	source = https://cran.r-project.org/src/contrib/psych_2.3.3.tar.gz
+	sha256sums = 94a9f3c39f8243573752709b89eb8068e11dbe809f86ecf0225fb429556efb6f
 
 pkgname = r-psych
