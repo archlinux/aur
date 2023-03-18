@@ -5,7 +5,7 @@
 
 pkgname=circadian
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux auto-suspend/wake power management daemon"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mrmekon/${pkgname}"
@@ -17,7 +17,7 @@ optdepends=(
     'xprintidle: for monitoring x11 input'
     'procps: for monitoring tty input, uptime or processes'
     'net-tools: for monitoring nfs, smb or ssh'
-    'pulseaudio: audio detection support via pacmd')
+    'libpulse: audio detection support via pactl')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 b2sums=('d70793398437bf4fa37d27d7054cc24bbf0eef1680f832a15f94cf127f66d8d44150dcefee2ecbc66ecc45d240d04c896b59e7d0cf72f3ac9d2df57f134a3718')
 backup=('etc/circadian.conf')

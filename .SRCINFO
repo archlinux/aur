@@ -1,7 +1,7 @@
 pkgbase = circadian
 	pkgdesc = Linux auto-suspend/wake power management daemon
 	pkgver = 0.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mrmekon/circadian
 	arch = x86_64
 	arch = aarch64
@@ -17,7 +17,7 @@ pkgbase = circadian
 	optdepends = xprintidle: for monitoring x11 input
 	optdepends = procps: for monitoring tty input, uptime or processes
 	optdepends = net-tools: for monitoring nfs, smb or ssh
-	optdepends = pulseaudio: audio detection support via pacmd
+	optdepends = libpulse: audio detection support via pactl
 	backup = etc/circadian.conf
 	source = circadian-0.8.3.tar.gz::https://github.com/mrmekon/circadian/archive/refs/tags/v0.8.3.tar.gz
 	b2sums = d70793398437bf4fa37d27d7054cc24bbf0eef1680f832a15f94cf127f66d8d44150dcefee2ecbc66ecc45d240d04c896b59e7d0cf72f3ac9d2df57f134a3718
