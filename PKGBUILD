@@ -5,8 +5,8 @@ _pkgname=cryptodev-linux
 pkgname=cryptodev-linux-dkms
 pkgname=cryptodev-linux-dkms
 pkgdesc="Kernel module providing access to Linux kernel cryptographic drivers from userspace - sources"
-pkgver=1.12
-pkgrel=2
+pkgver=1.13
+pkgrel=1
 url='http://cryptodev-linux.org/'
 license=("GPL")
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -16,7 +16,7 @@ provides=('cryptodev_friendly')
 optdepends=('openssl-cryptodev: OpenSSL with cryptodev support')
 source=("https://github.com/${_pkgname}/${_pkgname}/archive/${_pkgname}-${pkgver}.tar.gz"
         "dkms.conf")
-sha256sums=('f51c2254749233b1b1d7ec9445158bd709f124f88e1c650fe2faac83c3a81938'
+sha256sums=('33b7915c46eb39a37110e88c681423c0dd0df25d784b6e1475ac3196367f0db5'
             '4c762bbea27edeb283d44af37be2faf2df21312853b200e6b93319d563f51d86')
 
 package() {
