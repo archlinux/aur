@@ -4,7 +4,7 @@ pkgname=sing-box-beta
 _pkgname=sing-box
 _version="1.2-beta9"
 pkgver="${_version//-/.}"
-pkgrel=1
+pkgrel=2
 
 pkgdesc='The universal proxy platform (beta version).'
 arch=('x86_64' 'i686')
@@ -24,7 +24,7 @@ optdepends=('sing-geosite: sing-geosite database'
 backup=("etc/${_pkgname}/config.json")
 
 
-_tags=with_gvisor,with_quic,with_wireguard,with_utls,with_clash_api
+_tags=with_gvisor,with_quic,with_wireguard,with_utls,with_reality_server,with_clash_api
 build(){
     cd "$_pkgname-$_version"
 
