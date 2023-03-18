@@ -1,5 +1,4 @@
-# Maintainer: Alex Dewar <alex.dewar@gmx.co.uk>
-# Contributer: Davi da Silva Böger <dsboger@gmail.com>
+# Maintainer: Felipe Contreras <felipe.contreras@gmail.com>
 
 pkgname='vte3-tilix'
 pkgver=0.70.3
