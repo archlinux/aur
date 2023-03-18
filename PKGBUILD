@@ -32,7 +32,6 @@ validpgpkeys=()
 package() {
    # Compile stable version
    cd "${srcdir}"/linux-command-gpt
-   git checkout v$pkgver
    go build -o lcg
    
    # Add it to /usr/bin to make it executable
