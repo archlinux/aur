@@ -1,0 +1,16 @@
+pkgbase = aprilasr-git
+	pkgdesc = A minimal offline speech-to-text library written in C
+	pkgver = r116.cb135ef
+	pkgrel = 1
+	url = https://abb128.github.io/april-asr
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = onnxruntime
+	optdepends = onnxruntime: dynamic linking support
+	provides = aprilasr
+	conflicts = aprilasr
+	source = git+https://github.com/abb128/april-asr.git
+	md5sums = SKIP
+
+pkgname = aprilasr-git
