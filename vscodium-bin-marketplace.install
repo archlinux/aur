@@ -1,15 +1,15 @@
 post_install() {
-  /opt/vscodium-bin/resources/app/patch.sh
+  /opt/vscodium-bin/resources/app/patch.py
 }
 
 pre_upgrade() {
-  /opt/vscodium-bin/resources/app/patch.sh -R
+  /opt/vscodium-bin/resources/app/patch.py -R
 }
 
 post_upgrade() {
-  /opt/vscodium-bin/resources/app/patch.sh
+  /opt/vscodium-bin/resources/app/patch.py
 }
 
 pre_remove() {
-  /opt/vscodium-bin/resources/app/patch.sh -R
+  /opt/vscodium-bin/resources/app/patch.py -R
 }
