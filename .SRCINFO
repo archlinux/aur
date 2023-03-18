@@ -6,7 +6,6 @@ pkgbase = ironwail
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = git
 	depends = sdl2
 	depends = libvorbis
 	depends = libmad
