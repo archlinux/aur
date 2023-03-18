@@ -1,6 +1,6 @@
 # Maintainer: Rojikku <RojikkuNoKami at gmail dot com>
 pkgname=remoteplaywhatever
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Tiny application that lets you force remote play together any game you have in your steam library including non-steam ones."
 arch=('x86_64')
