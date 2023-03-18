@@ -1,0 +1,19 @@
+pkgbase = libdex
+	pkgdesc = Future-based programming for GLib-based applications and libraries
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/libdex
+	arch = x86_64
+	arch = aarch64
+	license = LGPL
+	makedepends = meson
+	makedepends = vala
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = gobject-introspection
+	depends = liburing
+	source = https://gitlab.gnome.org/GNOME/libdex/-/archive/0.2.0/libdex-0.2.0.tar.gz
+	b2sums = fd7f648da1a8cfc2e6afc60dd1d48fd109ac7ac7bc5c58aebbd0f29e0dd6f0cc54a9059a10d184131229f906781dc3dd33105f5db6ea55d4fe4641377a6992fe
+
+pkgname = libdex
