@@ -2,7 +2,7 @@
 
 pkgname=v2raya-bin
 _pkgname=v2raya
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 install=.INSTALL
 pkgdesc="A web GUI client of Project V which supports VMess, VLESS, SS, SSR, Trojan and Pingtunnel protocols"
@@ -49,19 +49,19 @@ sha1sums=(
 )
 
 sha1sums_i686=(
-    '7f0d30b05b688d1eb9a1793c34b06b648c7eb5aa'
+    '8e610a2d7e91f7ad918fb6fe6d118ffdd7527ea5'
 )
 sha1sums_x86_64=(
-    'cfbe93c81cfc88b0c7afc6f0f076a9f81172f81f'
+    'bad2249e9d43416a54ff7f2ed93036525005e400'
 )
 sha1sums_aarch64=(
-    '146c31ac48b5bce8ef0bd4a909acd4789fb69f87'
+    'f8ea70d10000c20c2d81f39c7fa13730a3a35cc7'
 )
 sha1sums_armv6h=(
-    'f18264a5ca3dc9755741a0929ad6f9453889cfed'
+    '3ceb051921169317f39186d96f1ed949146d08aa'
 )
 sha1sums_armv7h=(
-    'f18264a5ca3dc9755741a0929ad6f9453889cfed'
+    '3ceb051921169317f39186d96f1ed949146d08aa'
 )
 
 build() {
@@ -74,6 +74,7 @@ build() {
 # change
 
 EOF
+    chmod +x ./v2raya_"${pkgver}"
     ./v2raya_"${pkgver}" --report config | sed '1,6d' | fold -s -w 78 | sed -E 's/^([^#].+)/# \1/'  >> "$srcdir/v2raya.conf"
 }
 
