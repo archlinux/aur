@@ -1,15 +1,13 @@
 pkgbase = pw-volume
 	pkgdesc = Basic interface to PipeWire volume controls
-	pkgver = 0.4.0
-	pkgrel = 2
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://github.com/smasher164/pw-volume
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = pipewire
-	source = pw-volume-0.4.0.tar.gz::https://github.com/smasher164/pw-volume/archive/refs/tags/v0.4.0.tar.gz
-	source = https://github.com/smasher164/pw-volume/commit/f4eff8c13cbe62744064d636eb4045a347695e15.patch
-	sha256sums = 402122ef612cc8b88ca9d73bda0ecba8f2474f18270c19ce1b51aadb81c800de
-	sha256sums = 82cb1170aa6ac5202f5beda427320047fb28210df183a2c367b39e5ddb38ba56
+	source = pw-volume-0.5.0.tar.gz::https://github.com/smasher164/pw-volume/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 7fbf6f44d3ec5f946693a36b136118f66f23bdf340342e3271babc4c97b0a2d4
 
 pkgname = pw-volume
