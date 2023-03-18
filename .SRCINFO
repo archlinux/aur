@@ -1,13 +1,12 @@
 pkgbase = ttf-istok
-	pkgver = 1.0.1
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://code.google.com/archive/p/istok/
 	arch = any
 	license = GPL3
 	provides = ttf-istok-ibx
 	conflicts = ttf-istok-ibx
-	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/istok/istok-ttf-1.0.1.tar.xz
-	sha512sums = 8971a7e54affe64e4f093415120e2ef7b7b3ae38bd3a49b83d8241e2dc346b63e25de9565fc2e4ea7845dad24babceba9c43cd2f7cc9a8359fde80d43e29a713
+	source = https://downloads.sourceforge.net/project/istok/istok-ttf-1.0.3.tar.xz
+	b2sums = 5f16fbf4af1dade8df3a7ece91f8393f19be03b45fce1dc059cf15cb4f02ee6bf45fc5a25423a1ec3119c6f8875d04e9f4c3b34adbbb95028cca9a01b8d2d86b
 
 pkgname = ttf-istok
-
