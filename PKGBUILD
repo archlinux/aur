@@ -2,7 +2,7 @@
 pkgname="libreoffice-sdk"
 pkgver="7.5.1"
 pkgrel="1"
-pkgdesc="LibreOffice 7.5.1 SDK"
+pkgdesc="LibreOffice SDK"
 arch=("x86_64")
 url="https://www.libreoffice.org"
 license=('MPL2')
