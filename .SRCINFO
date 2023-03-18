@@ -1,14 +1,16 @@
 pkgbase = python-pytest-archon
 	pkgdesc = A little tool that helps you structure (large) Python projects
-	pkgver = 0.0.3
-	pkgrel = 0
+	pkgver = 0.0.4
+	pkgrel = 1
 	url = https://github.com/jwbargsten/pytest-archon
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
 	depends = python-pytest
-	source = python-pytest-archon-0.0.3.tar.gz::https://github.com/jwbargsten/pytest-archon/archive/refs/tags/v0.0.3.tar.gz
-	sha256sums = 93ef6cf4248dca31b2ef9ea4b46ddf81f9f2eebbdd19cc283629a8462e911263
+	source = python-pytest-archon-0.0.4.tar.gz::https://github.com/jwbargsten/pytest-archon/archive/refs/tags/v0.0.4.tar.gz
+	source = python-pytest-archon-0.0.4.patch
+	sha256sums = c809faa1695a708d4dc5faad0811d7b28e2fd9f668d93bdbe9f3eb0e13698a7d
+	sha256sums = 7296e5208ce64fa6d2b71e6f38de94336e9f426d401797cb6029c241fc49008a
 
 pkgname = python-pytest-archon

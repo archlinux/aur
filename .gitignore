@@ -1,5 +1,6 @@
 *
 */
+!python-pytest-archon-0.0.4.patch
 !.gitignore
 !.SRCINFO
 !PKGBUILD

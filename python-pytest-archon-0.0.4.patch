@@ -1,0 +1,14 @@
+diff --unified --recursive --text pytest-archon-0.0.4.orig/pyproject.toml pytest-archon-0.0.4.new/pyproject.toml
+--- pytest-archon-0.0.4.orig/pyproject.toml	2023-03-18 17:12:16.949235589 +0100
++++ pytest-archon-0.0.4.new/pyproject.toml	2023-03-18 17:13:02.609505927 +0100
+@@ -6,8 +6,8 @@
+ name = "pytest-archon"
+ description = "Rule your architecture like a real developer"
+ authors = [
+-    { author = "Arjan Molenaar", email = "gaphor@gmail.com" },
+-    { author = "Joachim Bargsten", email = "jw@bargsten.org" }
++    { name = "Arjan Molenaar", email = "gaphor@gmail.com" },
++    { name = "Joachim Bargsten", email = "jw@bargsten.org" }
+ ]
+ readme = "README.md"
+ requires-python = ">=3.8"
