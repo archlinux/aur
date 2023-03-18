@@ -4,7 +4,7 @@ _pkgname=${pkgname/-bin/}
 _githuborg=skycoin
 pkgdesc="Skywire: Building a new Internet. Skycoin.com"
 pkgver='1.3.6'
-pkgrel='12'
+pkgrel='13'
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
@@ -21,11 +21,13 @@ _script=("skywire-autoconfig")
 _desktop=("skywire.desktop" "skywirevpn.desktop")
 _icon=("skywirevpn.png" "skywire.png")
 _service=("skywire.service" "skywire-autoconfig.service")
+_logrotate=("skywire.logrotate")
 _key=("skycoin")
 _source=("${_script[@]}"
 "${_desktop[@]}"
 "${_icon[@]}"
 "${_service[@]}"
+"${_logrotate[@]}"
 "${_key[@]}"
 "https://raw.githubusercontent.com/skycoin/skywire/develop/dmsghttp-config.json"
 )
@@ -37,6 +39,7 @@ sha256sums=('a55c345c144f18a1a58161630635aa08c7ff6cd4a73752368d0eaa43ecf7af92'
             'a6941680b5858ca3e0c85d9bf5824455a0c95524b61e42352462f2abbb750495'
             '44a25adf22c87bf7a2102a7fc1c9f566d239ef3f3d7b3dc2bcd0f2c632695a17'
             '8519d027325dcb34877bb5b0fb0c3c035d7589c0046b53935e2b949d436c4be3'
+            'b8d0b0afd03bf6c1cf9814874d7aa465f4d7e57075260f797993e46b33ab8480'
             '41c0a4a42ae64479b008392053f4a947618acd6bb9c3ed2672dafdb2453caa14'
             'dcb3b8bc1f6fa58dd64b95045b8b010489352c815f737bf2cbf8812973a8dc49')
 sha256sums_x86_64=('d6de9eaaafcbe0117e70be2bf490f1d43ce8c0ffb6348d68e24c7d4175025a53')
@@ -79,6 +82,7 @@ _bin="${_dir}/bin"
 _scriptsdir="${_dir}/scripts"
 _msg2 'creating dirs'
 mkdir -p "${_pkgdir}/usr/bin"
+mkdir -p "${_pkgdir}/etc/logrotate.d"
 mkdir -p "${_pkgdir}/${_dir}/bin"
 mkdir -p "${_pkgdir}/${_dir}/apps"
 mkdir -p "${_pkgdir}/${_dir}/local/custom"
@@ -113,6 +117,10 @@ for _i in "${_service[@]}" ; do
   _msg3 ${_i}
   install -Dm644 "${srcdir}/${_skywirebin}${_i}" "${_pkgdir}/${_systemddir}/${_i}"
   install -Dm644 "${srcdir}/${_skywirebin}${_i}" "${_pkgdir}/etc/skel/.config/systemd/user/${_i}"
+done
+for _i in "${_logrotate[@]}" ; do
+  _msg3 ${_i}
+  install -Dm644 "${srcdir}/${_skywirebin}${_i}" "${_pkgdir}/etc/logrotate.d/${_i/.logrotate}"
 done
 _msg2 'installing desktop files and icons'
 mkdir -p "${_pkgdir}/usr/share/applications/" "${_pkgdir}/usr/share/icons/hicolor/48x48/apps/"

@@ -1,0 +1,5 @@
+/opt/skywire/local/custom/skywire.log {
+daily
+rotate 7
+size 1M
+}
