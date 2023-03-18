@@ -1,5 +1,6 @@
 # vim:set ft=sh:
-# Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
+# Maintainer: Donald Webster <fryfrog@gmail.com>
+# Contributor: BlackEagle < ike DOT devolder AT gmail DOT com >
 pkgname=par2cmdline-turbo-git
 _gitname='par2cmdline-turbo'
 pkgver=20230317.eaea6f4
