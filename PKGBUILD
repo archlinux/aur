@@ -1,7 +1,7 @@
 # Maintainer: Marcello Haddeman <haddemanmarcello@gmail.com>
 pkgname=ironwail
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A fork of the popular GLQuake descendant QuakeSpasm with a focus on high performance instead of maximum compatibility, with a few extra features sprinkled on top."
 arch=('i686' 'x86_64')
 url="https://github.com/andrei-drexler/ironwail"
@@ -10,7 +10,7 @@ depends=('sdl2' 'libvorbis' 'libmad')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/andrei-drexler/ironwail/archive/refs/tags/v$pkgver.tar.gz"
 	"launch_ironwail.sh")
 md5sums=('2dab1470dbad83bfa141da754dff076b'
-	 '932be870cb7e5469b286e7a9937a5f35')
+	 'd9987f6cb32e318dff2e3172da6cc63c')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver/Quake"
