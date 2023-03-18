@@ -3,7 +3,7 @@
 pkgname=('clang-prefixed-release')
 #pkgver=15.0.7
 _pkgver=16.0.0
-_pkg_suffix=rc3
+_pkg_suffix=
 _pkgver_suffix=${_pkgver}
 _pkgver_dash_suffix=${_pkgver}
 if [[ -n ${_pkg_suffix} ]]; then
@@ -15,9 +15,8 @@ pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
-makedepends=('git' 'cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2' 'python-sphinx'
-             'python-sphinx-automodapi' 
-             'python-sphinx' 'python-recommonmark' 'swig' 'python' 'python-six' 'lua53'
+makedepends=('git' 'cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2'
+             'swig'
              'ocl-icd' 'opencl-headers' 'z3' 'jsoncpp' 'clang')
 checkdepends=("python-psutil")
 # stable
