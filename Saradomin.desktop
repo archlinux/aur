@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Saradomin Launcher
+Comment=Custom launcher for 2009Scape
+Exec=Saradomin
+Icon=saradomin-launcher
+Terminal=false
+Type=Application
+Categories=Application;Game;
+StartupWMClass=Saradomin

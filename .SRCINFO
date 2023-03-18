@@ -1,0 +1,18 @@
+pkgbase = saradomin-launcher-git
+	pkgdesc = A clean, modern launcher with all the bells and whistles written in C# and DotNet6 for 2009Scape.
+	pkgver = r117.a84c3a1
+	pkgrel = 1
+	url = https://gitlab.com/2009scape/Saradomin-Launcher
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = dotnet-sdk>=6
+	provides = saradomin-launcher=r117.a84c3a1
+	conflicts = saradomin-launcher
+	options = !strip
+	source = saradomin-launcher::git+https://gitlab.com/2009scape/Saradomin-Launcher.git
+	source = Saradomin.desktop
+	sha256sums = SKIP
+	sha256sums = a8ae565774939d1c2a48c2d4b69a150d23015fd3f09a69663dc410d5a9802957
+
+pkgname = saradomin-launcher-git
