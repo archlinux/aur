@@ -1,0 +1,30 @@
+diff --git a/meson.build b/meson.build
+index 9e5fe8038..4336243c5 100644
+--- a/meson.build
++++ b/meson.build
+@@ -24,9 +24,9 @@ libm_dep = cc.find_library('m', required: false)
+ libc_dep = cc.find_library('c', required: false)
+ 
+ # Optional deps
+-libpoppler_dep = dependency('poppler', version: '> 0.62.0', required: false)
+-libpopplercpp_dep = dependency('poppler-cpp', required: false)
+-conf.set('HAVE_POPPLER', libpoppler_dep.found() and libpopplercpp_dep.found())
++#libpoppler_dep = dependency('poppler', version: '> 0.62.0', required: false)
++#libpopplercpp_dep = dependency('poppler-cpp', required: false)
++#conf.set('HAVE_POPPLER', libpoppler_dep.found() and libpopplercpp_dep.found())
+ libemf_dep = cc.find_library('emf', required: false)
+ conf.set('HAVE_LIBEMF', libemf_dep.found())
+ libogdf_dep = cc.find_library('ogdf', required: false)
+diff --git a/plug-ins/meson.build b/plug-ins/meson.build
+index 7c386be11..73a646b3d 100644
+--- a/plug-ins/meson.build
++++ b/plug-ins/meson.build
+@@ -17,7 +17,7 @@ subdir('shape')
+ subdir('pixbuf')
+ subdir('layout')  # Non-standard: shared_module
+ subdir('metapost')
+-subdir('pdf')
++#subdir('pdf')
+ subdir('pgf')
+ subdir('postscript')
+ subdir('pstricks')
