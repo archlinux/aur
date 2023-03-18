@@ -1,6 +1,6 @@
 pkgbase = qutebrowser-qt6-git
 	pkgdesc = A keyboard-driven, vim-like browser based on PyQt5 (Qt 6 branch)
-	pkgver = 2.5.1.r258.g64e8c7132
+	pkgver = 2.5.4.r929.gcb9f3fa14
 	pkgrel = 1
 	url = https://www.qutebrowser.org/
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = qutebrowser-qt6-git
 	conflicts = qutebrowser
 	conflicts = qutebrowser-git
 	options = !emptydirs
-	source = git+https://github.com/qutebrowser/qutebrowser.git#branch=qt6-v2
+	source = git+https://github.com/qutebrowser/qutebrowser.git
 	sha256sums = SKIP
 
 pkgname = qutebrowser-qt6-git

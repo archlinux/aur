@@ -4,7 +4,7 @@
 # vim: set ts=4 sw=4 et ft=sh:
 
 pkgname=qutebrowser-qt6-git
-pkgver=2.5.1.r258.g64e8c7132
+pkgver=2.5.4.r929.gcb9f3fa14
 pkgrel=1
 pkgdesc="A keyboard-driven, vim-like browser based on PyQt5 (Qt 6 branch)"
 arch=("any")
@@ -17,7 +17,7 @@ optdepends=("python-adblock: ABP-style adblocking"
 options=(!emptydirs)
 conflicts=('qutebrowser' 'qutebrowser-git')
 provides=('qutebrowser')
-source=('git+https://github.com/qutebrowser/qutebrowser.git#branch=qt6-v2')
+source=('git+https://github.com/qutebrowser/qutebrowser.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -25,6 +25,11 @@ pkgver() {
     # Minor releases are not part of the master branch
     _tag=$(git tag --sort=v:refname | tail -n1)
     printf '%s.r%s.g%s' "${_tag#v}" "$(git rev-list "$_tag"..HEAD --count)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    cd "$srcdir/qutebrowser"
+    sed -i 's/_DEFAULT_WRAPPER = "PyQt5"/_DEFAULT_WRAPPER = "PyQt6"/' qutebrowser/qt/machinery.py
 }
 
 build() {
