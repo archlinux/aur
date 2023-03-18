@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Typing Tempo
+Comment=Typing Tempo is a 41-key 2D typing rhythm game currently in development, available for Windows and Linux.
+Exec=/usr/bin/typing-tempo
+Icon=/opt/typing-tempo/res/images/windowIcon.ico
+Categories=Game;
+Terminal=false

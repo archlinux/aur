@@ -1,0 +1,13 @@
+pkgbase = typing-tempo
+	pkgdesc = Typing Tempo is a 41-key 2D typing rhythm game currently in development, available for Windows and Linux.
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://rainbeatgames.itch.io/typing-tempo
+	arch = i686
+	arch = x86_64
+	source = file:///$HOME/Downloads/typing-tempo-$pkgver-linux.zip
+	source = typing-tempo.desktop
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = typing-tempo
