@@ -1,12 +1,12 @@
 pkgbase = nabud-git
 	pkgdesc = A server for the NABU PC
-	pkgver = v1.2
+	pkgver = v1.2.1
 	pkgrel = 1
 	url = https://github.com/thorpej/nabud
 	arch = x86_64
 	license = BSD
 	makedepends = git
-	source = nabud-git::git+https://github.com/thorpej/nabud.git#tag=v1.2
+	source = nabud-git::git+https://github.com/thorpej/nabud.git#tag=v1.2.1
 	md5sums = SKIP
 
 pkgname = nabud-git
