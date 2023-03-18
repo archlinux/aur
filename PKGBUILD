@@ -11,7 +11,7 @@ _bcachefsname=bcachefs-linux
 _bcachefsurl="https://evilpiepirate.org/git/bcachefs.git"
 
 pkgbase=linux-simple-bcachefs-git
-pkgver=6.2.arch1.r2547
+pkgver=6.2.arch1.r2581
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${_ver%.*}-${_ver##*.}
@@ -25,7 +25,7 @@ makedepends=(
 options=('!strip')
 source=(config         # the main kernel config file
 )
-sha256sums=('a80dfd64eca60673422052ac4d1444b0f9495a588c2595d413fd0687f3786586'
+sha256sums=('0de84fa8598e5896b82f12d5a72fbf1cbbbf31ed1b13ee3cdc18eb8ce06ed0f9'
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -95,10 +95,13 @@ prepare() {
 
   echo "Setting config..."
   cp ../config .config
-  printf '%s\n%s\n%s\n%s\n%s\n' \
+  # Tag testing is badly broken in 6.2
+  printf '%s\n%s\n%s\n%s\n%s\n%s\n%s\n' \
+    "CONFIG_CODE_TAG_TESTING=n" \
     "CONFIG_BCACHEFS_FS=y" \
     "CONFIG_BCACHEFS_QUOTA=y" \
     "CONFIG_BCACHEFS_POSIX_ACL=y" \
+    "CONFIG_BCACHEFS_DEBUG_TRANSACTIONS=n" \
     "# CONFIG_BCACHEFS_DEBUG is not set" \
     "# CONFIG_BCACHEFS_TESTS is not set" >> .config
   make olddefconfig
