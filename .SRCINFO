@@ -1,7 +1,7 @@
 pkgbase = linux-fsync-nobara-bin
 	pkgdesc = The Linux kernel and modules of Nobara Project - Prebuilt version
 	pkgver = 6.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nobaraproject.org
 	arch = x86_64
 	license = GPL2
@@ -17,13 +17,17 @@ pkgbase = linux-fsync-nobara-bin
 	options = !strip
 	source = https://download.copr.fedorainfracloud.org/results/sentry/kernel-fsync/fedora-37-x86_64/05654978-kernel/kernel-core-6.2.6-201.fsync.fc37.x86_64.rpm
 	source = https://download.copr.fedorainfracloud.org/results/sentry/kernel-fsync/fedora-37-x86_64/05654978-kernel/kernel-modules-6.2.6-201.fsync.fc37.x86_64.rpm
+	source = https://download.copr.fedorainfracloud.org/results/sentry/kernel-fsync/fedora-37-x86_64/05654978-kernel/kernel-modules-core-6.2.6-201.fsync.fc37.x86_64.rpm
 	source = https://download.copr.fedorainfracloud.org/results/sentry/kernel-fsync/fedora-37-x86_64/05654978-kernel/kernel-modules-extra-6.2.6-201.fsync.fc37.x86_64.rpm
+	source = https://download.copr.fedorainfracloud.org/results/sentry/kernel-fsync/fedora-37-x86_64/05654978-kernel/kernel-modules-internal-6.2.6-201.fsync.fc37.x86_64.rpm
 	source = https://download.copr.fedorainfracloud.org/results/sentry/kernel-fsync/fedora-37-x86_64/05654978-kernel/kernel-devel-6.2.6-201.fsync.fc37.x86_64.rpm
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 71856b34cafa28a8c5a20f1ffdaa539f97ba0c13b64237700e5aaa586435acf0
 	sha256sums = 149489ef1753d3b836ab468203562c6c811ffa88dbdc259577b25023d10fae48
+	sha256sums = c776a13062a35875071818ee5f093889fb5541fc95f8b588f41561dc26bcdd43
 	sha256sums = b27dc5f6e25839bb27a0bab6411a17143f79255fb87f7a840ac4273ed3601a1d
+	sha256sums = dc008f7550512bbb953a11cc3dffb6a186a8f9765fdd40fdbad055fdf530be0a
 	sha256sums = 8faa33d60d61e8d4067b3b3ee01278ed6710932cd75ae3fef09f4f3ac6c134b0
 
 pkgname = linux-fsync-nobara-bin
