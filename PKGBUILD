@@ -201,7 +201,7 @@ END
   # UI patches
   # Remove references to firefox from the settings UI, change text in some of the links,
   # explain that we force en-US and suggest enabling history near the session restore checkbox.
-  # patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/pref-naming.patch
+  patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/pref-naming.patch
 
   # Don't nag to set default browser
   patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/hide-default-browser.patch
