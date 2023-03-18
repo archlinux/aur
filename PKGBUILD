@@ -5,7 +5,7 @@
 
 # Maintainer: Asuka Minato <asukaminato at nyan dot eu dot org>
 pkgname=vtm-bin
-pkgver=0.9.8v
+pkgver=0.9.8w
 pkgrel=1
 epoch=
 pkgdesc="Terminal multiplexer with window manager and session sharing"
@@ -27,7 +27,7 @@ changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/netxs-group/vtm/releases/download/v$pkgver/vtm_linux_amd64.tar.gz"
 https://raw.githubusercontent.com/netxs-group/vtm/master/LICENSE)
 noextract=()
-sha256sums=('55c409a8f55bdb2ef661adaf04407c2e6ff2af8d9a369fa39409ed9970697c9a'
+sha256sums=('130346ec417a50797bba560f4557906437168699445526d18a77b0f0eaff5cec'
             '7b7086edfedec1a2d8b40bc3748c2b77688806b4ab1081c3570fd7bb9b2c7842')
 validpgpkeys=()
 
