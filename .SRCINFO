@@ -5,17 +5,16 @@ pkgbase = vte3-tilix
 	url = https://github.com/gnunn1/tilix/tree/master/experimental/vte
 	arch = x86_64
 	license = LGPL
-	makedepends = gi-docgen
-	makedepends = intltool
 	makedepends = gobject-introspection
-	makedepends = gtk-doc
-	makedepends = vala
 	makedepends = gperf
-	makedepends = glade
+	makedepends = meson
+	makedepends = vala
 	makedepends = git
+	depends = fribidi
+	depends = gnutls
 	depends = gtk3
 	depends = pcre2
-	depends = gnutls
+	depends = systemd-libs
 	depends = vte-common
 	provides = vte3=0.70.3
 	provides = vte3-notification=0.70.3

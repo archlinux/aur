@@ -8,8 +8,8 @@ pkgdesc='Virtual Terminal Emulator widget (GTK3) (Fedora and Tilix patches)'
 url='https://github.com/gnunn1/tilix/tree/master/experimental/vte'
 arch=('x86_64')
 license=('LGPL')
-depends=('gtk3' 'pcre2' 'gnutls' 'vte-common')
-makedepends=('gi-docgen' 'intltool' 'gobject-introspection' 'gtk-doc' 'vala' 'gperf' 'glade' 'git')
+depends=('fribidi' 'gnutls' 'gtk3' 'pcre2' 'systemd-libs' 'vte-common')
+makedepends=('gobject-introspection' 'gperf' 'meson' 'vala' 'git')
 options=('!lto')
 source=("git+https://gitlab.gnome.org/GNOME/vte.git#tag=$pkgver"
 	'alternate-screen.patch'
@@ -35,7 +35,7 @@ prepare() {
 }
 
 build() {
-	arch-meson vte build -D b_lto=false -D docs=true -D gtk4=false
+	arch-meson vte build -D b_lto=false -D docs=false -D gtk4=false
 	meson compile -C build
 }
 
