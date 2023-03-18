@@ -1,4 +1,5 @@
-# Maintainer: Jack Mitchell <jack@embed.me.uk>
+# Maintainer: Narthana Epa <narthana.epa@gmail.com>
+# Contributor: Jack Mitchell <jack@embed.me.uk>
 
 pkgname=buildkite-agent-bin
 pkgver=3.45.0
