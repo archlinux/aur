@@ -1,6 +1,6 @@
 pkgbase = python-goocalendar
 	pkgdesc = A calendar widget for GTK using PyGoocanvas
-	pkgver = 0.7.2
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = http://goocalendar.tryton.org/
 	arch = any
@@ -9,8 +9,7 @@ pkgbase = python-goocalendar
 	depends = goocanvas>=2.0
 	depends = gdk-pixbuf2
 	depends = gtk3
-	source = https://pypi.io/packages/source/g/goocalendar/GooCalendar-0.7.2.tar.gz
+	source = https://pypi.io/packages/source/g/goocalendar/GooCalendar-0.8.0.tar.gz
 	sha512sums = beae60423de205dfa4bc9c7dbd5c10903ac644abc452f72728eb4ae9581a7415950eadcacb569df805efb1be608a29977bc98d674f23fd131504e4adfc9961f9
 
 pkgname = python-goocalendar
-
