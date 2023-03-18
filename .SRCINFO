@@ -1,6 +1,6 @@
 pkgbase = qgroundcontrol
 	pkgdesc = Micro air vehicle ground control station.
-	pkgver = 4.2.4
+	pkgver = 4.2.5
 	pkgrel = 1
 	url = https://github.com/mavlink/qgroundcontrol
 	arch = x86_64
@@ -44,7 +44,7 @@ pkgbase = qgroundcontrol
 	depends = qt5-tools
 	depends = qt5-wayland
 	depends = qt5-x11extras
-	source = qgroundcontrol-4.2.4::git+https://github.com/mavlink/qgroundcontrol.git#tag=v4.2.4
+	source = qgroundcontrol-4.2.5::git+https://github.com/mavlink/qgroundcontrol.git#tag=v4.2.5
 	source = qgroundcontrol-GpsDrivers::git+https://github.com/PX4/GpsDrivers.git
 	source = qgroundcontrol-c_library_v2::git+https://github.com/mavlink/c_library_v2.git
 	source = qgroundcontrol-android_openssl::git+https://github.com/Auterion/android_openssl.git
@@ -53,8 +53,6 @@ pkgbase = qgroundcontrol
 	source = qgroundcontrol-libevents::git+https://github.com/mavlink/libevents.git
 	source = qgroundcontrol-eigen::git+https://gitlab.com/libeigen/eigen.git
 	source = qgroundcontrol-qmdnsengine::git+https://github.com/patrickelectric/qmdnsengine.git
-	source = gst-volatile.patch::https://patch-diff.githubusercontent.com/raw/mavlink/gst-plugins-good/pull/1.patch
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
