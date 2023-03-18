@@ -1,6 +1,6 @@
 # Maintainer: Ken Miller <ken plus aur at miller dot ec>
 # Contributor: Samuel Walladge <samuel at swalladge dot id dot au>
-# Contributor: Karel Louwagie <karel@louwagie.net>
+# Contributor: Karel Louwagie <aur at karellouwagie dot net>
 # Contributor: Serge Pavlyuk <flopss at gmail dot com>
 # Contributor: phi-mah
 
