@@ -1,17 +1,25 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=glib-networking
-pkgver=2.74.0
+pkgver=2.76.0
 pkgrel=1
 epoch=1
 pkgdesc="Network extensions for GLib"
 url="https://gitlab.gnome.org/GNOME/glib-networking"
 arch=(x86_64)
 license=(GPL2)
-depends=(glib2 libproxy gnutls gsettings-desktop-schemas)
-makedepends=(meson git)
+depends=(
+  glib2
+  gnutls
+  gsettings-desktop-schemas
+  libproxy
+)
+makedepends=(
+  git
+  meson
+)
 checkdepends=(ca-certificates)
-_commit=d17632fe495c573612dd69e982a0c49af2952178  # tags/2.74.0^0
+_commit=eab226398f9872c381033f7cb3af43dcb66600f4  # tags/2.76.0^0
 source=("git+https://gitlab.gnome.org/GNOME/glib-networking.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -37,4 +45,4 @@ package() {
   meson install -C build --destdir "$pkgdir"
 }
 
-# vim:set sw=2 et:
+# vim:set sw=2 sts=-1 et:
