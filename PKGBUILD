@@ -1,8 +1,9 @@
-# Maintainer: Grey Christoforo <first name [at] last name [dot] net>
+# Maintainer: Asuka Minato <asukaminato at nyan dot eu dot org>
+# Contributor: Grey Christoforo <first name [at] last name [dot] net>
 
 _modname=setuptools_scm_git_archive
 pkgname=python-${_modname//_/-}
-pkgver=1.1
+pkgver=1.4
 pkgrel=1
 pkgdesc="setuptools_scm plugin for git archives"
 arch=('any')

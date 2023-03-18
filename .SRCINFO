@@ -1,6 +1,6 @@
 pkgbase = python-setuptools-scm-git-archive
 	pkgdesc = setuptools_scm plugin for git archives
-	pkgver = 1.1
+	pkgver = 1.4
 	pkgrel = 1
 	url = https://github.com/Changaco/setuptools_scm_git_archive/
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = python-setuptools-scm-git-archive
 	makedepends = python-setuptools
 	depends = python
 	depends = python-setuptools-scm
-	source = git+https://github.com/Changaco/setuptools_scm_git_archive.git#tag=1.1
+	source = git+https://github.com/Changaco/setuptools_scm_git_archive.git#tag=1.4
 	md5sums = SKIP
 
 pkgname = python-setuptools-scm-git-archive
-
