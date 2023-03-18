@@ -3,8 +3,8 @@
 
 pkgname='simplex-chat-bin'
 _pkgname="${pkgname%%-bin}"
-pkgver=4.5.3
-pkgrel=4
+pkgver=4.5.4
+pkgrel=1
 pkgdesc='A 100% private-by-design chat platform (pre-compiled)'
 arch=('x86_64')
 _platform='ubuntu-20_04-x86-64'
@@ -41,9 +41,9 @@ build() {
   esac
 
   cat <<EOF
-Will package an icon suitable for a $_shade theme.
-If this is not what you want, set the environment
-variable \$SIMPLEX_ICON to “$_other”. E.g.:
+Will package an icon suitable for a $_shade theme. If this is
+not what you want, set the environment variable \$SIMPLEX_ICON
+to “$_other”. E.g.:
 
   env SIMPLEX_ICON=$_other makepkg [options …]
 EOF
@@ -62,15 +62,15 @@ package() {
 }
 
 sha256sums=(
-  '2bdf32935cc6d5228eb5e930fc07e32fd87e2894988f0a1d8e61dd1070f8cdec'
+  'c9ff5a5451a68a5540ca8816893484b5ea1bbb63614772137dbef719cc2e74bc'
   'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 )
 sha512sums=(
-  'a4249198730398dfee7eae880cf4c6cb4d741cf45c3ca2129396ba466a7b146cf985e06820241ccbac698e1c6cbf09ba1e24d22ba1b4a15a689e9e427da3aaf8'
+  '08434081f2ab0a8184479d754ea3a677c7283e29ba3e1f495c6e98a96c2d4496bf4ba78ab95d089b9fb1403cde578fb0a678105f90eb6d119efaade36bef7e86'
   'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 )
 b2sums=(
-  '4d1fabf40d84c1926ecab132ef9b040d5767bab20ed21e68d85637d8444884d94b83880140ca8fa8ea5b3708f2c074c0f0fc00217db18b807aaedb1d90386e6c'
+  '1575485866b311fc5119749da4ab0a276ee4d37158bc5d0623387faf6caf6cdc4831402f0c17a89f20463c85ab16533ff306b346b8bb0e6d78d8e6b3f71a918b'
   'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 )
 
