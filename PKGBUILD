@@ -4,7 +4,7 @@
 _pkgname=sdiff-gtk
 pkgname="${_pkgname}-git"
 pkgver=0.1.0+8.r18.20230317.4575251
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK+ frontend for Stable Diffusion. Latest git checkout."
 arch=(
   'any'
@@ -21,7 +21,6 @@ depends=(
   python-diffusers
   python-pillow
   python-pytorch
-  python-sympy
   python-transformers
   python-accelerate
 )
