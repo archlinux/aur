@@ -1,7 +1,7 @@
 pkgbase = firedragon-unsigned-extensions
 	pkgdesc = FireDragon modified to allow installation of unsigned extensions
 	pkgver = 111.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/dr460nf1r3/settings/
 	install = firedragon.install
 	arch = x86_64
