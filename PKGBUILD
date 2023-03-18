@@ -6,7 +6,7 @@ _githuborg=${FORK:-$_projectname}
 pkgdesc="Skywire Mainnet Node implementation. Skycoin.com"
 _pkggopath=github.com/${_githuborg}/${_pkgname}
 pkgver='1.3.6'
-pkgrel='12'
+pkgrel='13'
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
@@ -21,6 +21,7 @@ _script=("skywire-autoconfig")
 _desktop=("skywire.desktop" "skywirevpn.desktop")
 _icon=("skywirevpn.png" "skywire.png")
 _service=("skywire.service" "skywire-autoconfig.service")
+_logrotate=("skywire.logrotate")
 _key=("skycoin")
 _source=("skywire-bin::git+https://aur.archlinux.org/skywire-bin")
 source=("skywire-${_tag_ver}.tar.gz::${url}/archive/refs/tags/${_tag_ver}.tar.gz"
@@ -143,6 +144,10 @@ for _i in "${_service[@]}" ; do
   _msg3 ${_i}
   install -Dm644 "${srcdir}/${_skywirebin}${_i}" "${_pkgdir}/${_systemddir}/${_i}"
   install -Dm644 "${srcdir}/${_skywirebin}${_i}" "${_pkgdir}/etc/skel/.config/systemd/user/${_i}"
+done
+for _i in "${_logrotate[@]}" ; do
+  _msg3 ${_i}
+  install -Dm644 "${srcdir}/${_skywirebin}${_i}" "${_pkgdir}/etc/logrotate.d/${_i/.logrotate}"
 done
 _msg2 'installing desktop files and icons'
 mkdir -p "${_pkgdir}/usr/share/applications/" "${_pkgdir}/usr/share/icons/hicolor/48x48/apps/"
