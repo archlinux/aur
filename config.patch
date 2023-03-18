@@ -42,6 +42,5 @@ index 93526b4..c11e819 100644
 +replaceTwitter = "nitter.net"  # Use the same "hostname" as above
 +replaceYouTube = ""  # Default: piped.kavin.rocks
 +replaceReddit = ""   # Default: teddit.net
- replaceInstagram = ""
  proxyVideos = true
  hlsPlayback = false
