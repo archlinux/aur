@@ -1,6 +1,6 @@
 pkgbase = dolt-bin
 	pkgdesc = Git for data!
-	pkgver = 0.75.3
+	pkgver = 0.75.4
 	pkgrel = 1
 	url = https://www.dolthub.com/
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = dolt-bin
 	source = README.md::https://raw.githubusercontent.com/dolthub/dolt/main/README.md
 	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
 	sha256sums = 642068afa02aeedfd9be10f5e3d17e6fc10a920663f860b931f48a5ec01710d6
-	source_x86_64 = dolt-linux-0.75.3-amd64.tar.gz::https://github.com/liquidata-inc/dolt/releases/download/v0.75.3/dolt-linux-amd64.tar.gz
-	sha256sums_x86_64 = 62d0776de0b44b30ce470ac75920ed5b91d47069a3f87cd36462eb2a484a459d
-	source_aarch64 = dolt-linux-0.75.3-arm64.tar.gz::https://github.com/liquidata-inc/dolt/releases/download/v0.75.3/dolt-linux-arm64.tar.gz
-	sha256sums_aarch64 = 5c432200c2c413b582ad2f6fde02d0cf9b46dea31686cbd41f08da1c9e3e678b
+	source_x86_64 = dolt-linux-0.75.4-amd64.tar.gz::https://github.com/liquidata-inc/dolt/releases/download/v0.75.4/dolt-linux-amd64.tar.gz
+	sha256sums_x86_64 = 91556cda94edc4f405e0a8a0505c55d1261671cc93f750ca9855ee3aa7d4fb6b
+	source_aarch64 = dolt-linux-0.75.4-arm64.tar.gz::https://github.com/liquidata-inc/dolt/releases/download/v0.75.4/dolt-linux-arm64.tar.gz
+	sha256sums_aarch64 = 34209fed12307519d998014ab34a93d8b6bc38ceb27753496bf33b805d9df53d
 
 pkgname = dolt-bin
