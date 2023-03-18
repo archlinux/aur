@@ -1,13 +1,13 @@
 # Maintainer: Jacob Moody <moody at posixcafe dot org>
 pkgname=drawterm-9front-wl-git
-pkgver=r514.4fd4bb2
+pkgver=r522.05c9c55
 pkgrel=1
 pkgdesc="9front drawterm compiled targeting wayland + pipewire"
 arch=('i686' 'x86_64')
 url="http://drawterm.9front.org/"
 license=('MIT')
 depends=('pipewire' 'wayland')
-makedepends=('make' 'gcc' 'git')
+makedepends=('make' 'gcc' 'git' 'wayland-protocols')
 provides=('drawterm')
 conflicts=('drawterm')
 source=("$pkgname::git://git.9front.org/plan9front/drawterm")
