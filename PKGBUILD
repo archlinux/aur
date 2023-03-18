@@ -13,9 +13,9 @@ conflicts=('gosmee')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/chmouel/gosmee/releases/download/0.15.1/gosmee_0.15.1_Linux_arm64.tar.gz")
 sha256sums_aarch64=('b9e18c1017b4727c13f44a41f1a086371bc4bf1a5856a7c7b15343cbafd6fc1e')
+sha256sums_x86_64=('fc6e2d52681eb1087c0e770eedc22ac2e342acce31f43c634c53ed0e4a15820a')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chmouel/gosmee/releases/download/0.15.1/gosmee_0.15.1_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('fc6e2d52681eb1087c0e770eedc22ac2e342acce31f43c634c53ed0e4a15820a')
 
 package() {
   # bin
