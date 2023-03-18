@@ -35,5 +35,5 @@ package() {
    go build -o lcg
    
    # Add it to /usr/bin to make it executable
-   sudo ln -s "${srcdir}"/linux-command-gpt/lcg /usr/bin
+   sudo cp -nf "${srcdir}"/linux-command-gpt/lcg /usr/bin
 }
