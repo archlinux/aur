@@ -1,7 +1,7 @@
 # Maintainer: port19 <port19 at port19 dot xyz>
 pkgname='redqu'
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A media centric reddit client'
 arch=('any')
 url='https://github.com/port19x/redqu'

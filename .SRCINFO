@@ -1,7 +1,7 @@
 pkgbase = redqu
 	pkgdesc = A media centric reddit client
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/port19x/redqu
 	arch = any
 	license = Unlicense
