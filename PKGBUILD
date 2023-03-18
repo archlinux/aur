@@ -1,7 +1,7 @@
 # Maintainer: Achmad Fathoni <fathoni DOT id AT gmail DOT com>
 
 pkgname=evaltool-bin
-pkgver=1.9.0.d
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="Explore and test functionality of the Inertial Sense products in real-time"
 arch=('x86_64')
