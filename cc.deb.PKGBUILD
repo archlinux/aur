@@ -91,6 +91,7 @@ install -Dm755 "${srcdir}/${_pkgarch}.control" "${_pkgdir}/DEBIAN/control"
 echo -e '#!/bin/bash
 [[ -f /opt/skywire/scripts/skywire-autoconfig ]]  && /opt/skywire/scripts/skywire-autoconfig
 ' | tee "${_pkgdir}/DEBIAN/postinst"
+echo -e '#!/bin/bash' | tee "${_pkgdir}/DEBIAN/prerm"
 #echo -e '#!/bin/bash
 #[[ -d /opt/skywire ]] && rm -rf /opt/skywire/
 #'| tee "${_pkgdir}/DEBIAN/prerm"
