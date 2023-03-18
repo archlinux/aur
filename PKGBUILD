@@ -1,8 +1,7 @@
 # Maintainer: Alex Dewar <alex.dewar@gmx.co.uk>
 # Contributer: Davi da Silva Böger <dsboger@gmail.com>
 
-pkgbase='vte3-tilix'
-pkgname=("${pkgbase}" 'vte-tilix-common')
+pkgname='vte3-tilix'
 pkgver=0.70.3
 pkgrel=1
 pkgdesc='Virtual Terminal Emulator widget (GTK3) (Fedora and Tilix patches)'
@@ -47,20 +46,14 @@ build() {
 }
 
 package_vte3-tilix(){
-	depends+=('vte-tilix-common')
+	depends+=('vte-common')
 	provides=("vte3=${pkgver}" "vte3-notification=${pkgver}-2" 'vte3-terminix-git')
 	provides+=(libvte-2.91.so)
 	conflicts=('vte3' 'vte3-notification' 'vte3-terminix-git')
 	meson install -C build --destdir "$pkgdir"
 
-	rm "${pkgdir}/etc/profile.d/vte.sh"
-}
-
-package_vte-tilix-common() {
-	depends=('sh')
-	pkgdesc='Common files used by vte and vte3'
-	arch=('any')
-	provides=("vte-common=${pkgver}" "vte-notification-common=${pkgver}-2" 'vte-terminix-common-git')
-	conflicts=('vte-common' 'vte-notification-common' 'vte3-terminix-common-git')
-	install -Dm644 'build/src/vte.sh' "${pkgdir}/etc/profile.d/vte.sh"
+	# remove vte-common
+	rm -r "$pkgdir"/etc
+	rm -r "$pkgdir"/usr/lib/{systemd,vte-urlencode-cwd}
+	rm -r "$pkgdir"/usr/share/locale/
 }

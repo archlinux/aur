@@ -28,7 +28,7 @@ pkgname = vte3-tilix
 	depends = gtk3
 	depends = pcre2
 	depends = gnutls
-	depends = vte-tilix-common
+	depends = vte-common
 	provides = vte3=0.70.3
 	provides = vte3-notification=0.70.3-2
 	provides = vte3-terminix-git
@@ -36,14 +36,3 @@ pkgname = vte3-tilix
 	conflicts = vte3
 	conflicts = vte3-notification
 	conflicts = vte3-terminix-git
-
-pkgname = vte-tilix-common
-	pkgdesc = Common files used by vte and vte3
-	arch = any
-	depends = sh
-	provides = vte-common=0.70.3
-	provides = vte-notification-common=0.70.3-2
-	provides = vte-terminix-common-git
-	conflicts = vte-common
-	conflicts = vte-notification-common
-	conflicts = vte3-terminix-common-git
