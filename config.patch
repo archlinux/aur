@@ -44,3 +44,4 @@ index 93526b4..c11e819 100644
 +replaceReddit = ""   # Default: teddit.net
  proxyVideos = true
  hlsPlayback = false
+ infiniteScroll = false

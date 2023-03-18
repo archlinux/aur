@@ -2,7 +2,7 @@
 _pkgname=nitter
 pkgname=nitter-git
 pkgver=latest
-pkgrel=18
+pkgrel=19
 pkgdesc="Alternative Twitter front-end"
 url="https://github.com/zedeus/nitter"
 depends=('redis')
@@ -20,7 +20,7 @@ source=("$pkgname::git+$url.git#branch=master"
     "nitter.service"
     "nitter.install")
 sha256sums=('SKIP'
-            '8d45607eac254871fa4b73b4f90d9fc72f788d4f44c19a2ee0a9b07ea472bdbf'
+            'ee9c0b188dbdec4c1b4daa531e1b17dd718762bce8390f4301a1a956510695ad'
             '620e38c7bb978a64d276b499d097ec4967fe8bda16852fe0c416ed61744b6526'
             '79469c5cfeacf38c7469a2240ba5c19670ddaf757e6d1b5286206a18a0718487'
             '560d98833c56979cb6b5d187a827788dbbdff95871f957225604b58b15c1c219'

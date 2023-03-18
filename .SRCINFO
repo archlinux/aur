@@ -1,7 +1,7 @@
 pkgbase = nitter-git
 	pkgdesc = Alternative Twitter front-end
 	pkgver = latest
-	pkgrel = 18
+	pkgrel = 19
 	url = https://github.com/zedeus/nitter
 	install = nitter.install
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = nitter-git
 	source = nitter.service
 	source = nitter.install
 	sha256sums = SKIP
-	sha256sums = 8d45607eac254871fa4b73b4f90d9fc72f788d4f44c19a2ee0a9b07ea472bdbf
+	sha256sums = ee9c0b188dbdec4c1b4daa531e1b17dd718762bce8390f4301a1a956510695ad
 	sha256sums = 620e38c7bb978a64d276b499d097ec4967fe8bda16852fe0c416ed61744b6526
 	sha256sums = 79469c5cfeacf38c7469a2240ba5c19670ddaf757e6d1b5286206a18a0718487
 	sha256sums = 560d98833c56979cb6b5d187a827788dbbdff95871f957225604b58b15c1c219
