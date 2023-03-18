@@ -1,3 +1,3 @@
 #!/bin/bash
 
-exec electron22 /usr/lib/clipto/resources/app.asar "$@"
+exec electron21 /usr/lib/clipto/resources/app.asar "$@"
