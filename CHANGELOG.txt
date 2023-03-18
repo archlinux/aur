@@ -2,11 +2,152 @@ Changelog
 =========
 
 
+v2.4.169.2 (2023-03-17)
+-----------------------
+
+Changes
+~~~~~~~
+- Bump version. [Raphaël Vinot]
+- Include event reports by default in feed. [Raphaël Vinot]
+- Bump deps. [Raphaël Vinot]
+
+Fix
+~~~
+- Use proper parameter to trigger the request in search_galaxy_clusters.
+  [Raphaël Vinot]
+- Use POST in search galaxy cluster. [Raphaël Vinot]
+
+Other
+~~~~~
+- Rename include_event_reports kwarg to with_event_reports, in-line with
+  other kwarg naming. [UFOSmuggler]
+- Add kwarg to allow the inclusion of event reports into to_feed(),
+  honour with_distribution and valid_distributions kwargs. [UFOSmuggler]
+
+
+v2.4.169.1 (2023-03-14)
+-----------------------
+
+Changes
+~~~~~~~
+- Bump changelog. [Raphaël Vinot]
+- Bump version. [Raphaël Vinot]
+- Add greynoise-ip object. [Raphaël Vinot]
+
+  Fix #951
+
+
+v2.4.169 (2023-03-10)
+---------------------
+
+Changes
+~~~~~~~
+- Bump changelog. [Raphaël Vinot]
+- Bump version. [Raphaël Vinot]
+- Bump templates. [Raphaël Vinot]
+- Bump deps. [Raphaël Vinot]
+
+Fix
+~~~
+- Add local key in MISPTag. [Raphaël Vinot]
+
+  Related #947
+- Use pytest for the tests. [Raphaël Vinot]
+
+
+v2.4.168.1 (2023-02-28)
+-----------------------
+
+New
+~~~
+- [doc] added the Jupyter notebook used in a.7-rest-api-extensive-
+  restsearch. [Alexandre Dulaunoy]
+
+Changes
+~~~~~~~
+- Bump changelog, version. [Raphaël Vinot]
+- Bump templates, again. [Raphaël Vinot]
+- Bump templates. [Raphaël Vinot]
+- Bump deps, templates. [Raphaël Vinot]
+- Bump deps. [Raphaël Vinot]
+- Bump deps. [Raphaël Vinot]
+- Bump deps. [Raphaël Vinot]
+- Bump deps. [Raphaël Vinot]
+- Bump deps. [Raphaël Vinot]
+- Bump deps. [Raphaël Vinot]
+
+Fix
+~~~
+- Properly handle missing parameter in CSV importer. [Raphaël Vinot]
+
+  Fix #931
+- Undefined variable in event delegation. [Raphaël Vinot]
+- Remove reference to old pydeep. [Raphaël Vinot]
+
+  Fix #914
+
+
+v2.4.168 (2023-01-23)
+---------------------
+
+Changes
+~~~~~~~
+- Bump changelog. [Raphaël Vinot]
+- Bump version. [Raphaël Vinot]
+- Bump deps. [Raphaël Vinot]
+- Bump deps. [Raphaël Vinot]
+
+
+v2.4.167.2 (2023-01-17)
+-----------------------
+
+Changes
+~~~~~~~
+- Bump changelog. [Raphaël Vinot]
+- Bump deps, version. [Raphaël Vinot]
+
+Fix
+~~~
+- Set relationship_type default in MISPTag to empty string. [Raphaël
+  Vinot]
+- Another typo in readme. [Raphaël Vinot]
+- Typo in readme. [Raphaël Vinot]
+
+
+v2.4.167.1 (2023-01-16)
+-----------------------
+
+New
+~~~
+- Add relationship_type in Tag entries for feeds. [Raphaël Vinot]
+
+Changes
+~~~~~~~
+- Bump changelog. [Raphaël Vinot]
+- Bump version. [Raphaël Vinot]
+- Bump deps. [Raphaël Vinot]
+- Bump requests. [Raphaël Vinot]
+- Bump pyzmq. [Raphaël Vinot]
+- Bump deps. [Raphaël Vinot]
+- Bump python version used by read the docs. [Raphaël Vinot]
+- Bump warning to inform user that python 3.10 wil be required in 12
+  months. [Raphaël Vinot]
+- Bump minimal PyMISP version to 3.8. [Raphaël Vinot]
+- Re-bump changelog. [Raphaël Vinot]
+
+Fix
+~~~
+- Update whl files. [Raphaël Vinot]
+- Nvm, readthedocs requires python 3.8 at most. [Raphaël Vinot]
+
+
 v2.4.167 (2022-12-22)
 ---------------------
 
 Changes
 ~~~~~~~
+- Bump objects. [Raphaël Vinot]
+- Bump changelog. [Raphaël Vinot]
 - Bump version. [Raphaël Vinot]
 - Bump objects. [Raphaël Vinot]
 - Bump dependencies, move to poetry 1.3. [Raphaël Vinot]

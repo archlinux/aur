@@ -4,7 +4,7 @@
 
 pkgname=python-pymisp
 _pkg="${pkgname#python-}"
-pkgver=2.4.167
+pkgver=2.4.169.2
 pkgrel=1
 pkgdesc="Python library to access MISP platforms via their REST API"
 arch=('any')
@@ -14,15 +14,14 @@ depends=(
 	'python-dateutil'
 	'python-deprecated'
 	'python-jsonschema'
-	'python-requests'
-	'python>=3.8')
+	'python-requests')
 optdepends=(
 	'lief: python-pymisp[fileobjects] support'
 	'python-beautifulsoup4: python-pymisp[openioc] support'
 	'python-chardet: python-pymisp[url] support'
 	'python-magic: python-pymisp[fileobjects] support'
 	'python-oletools: python-pymisp[email] support'
-	'python-pyfaup: python-pymisp[url] support'
+	# 'python-pyfaup: python-pymisp[url] support'
 	'python-recommonmark: python-pymisp[docs] support'
 	'python-urllib3: python-pymisp[brotli] support'
 	'python-validators: python-pymisp[virustotal] support'
@@ -61,7 +60,5 @@ package() {
 	python -m installer --destdir="$pkgdir/" dist/*.whl
 	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
 	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -sv \
-		"$_site/$_pkg-$pkgver.dist-info/LICENSE" \
-		"$pkgdir/usr/share/licenses/$pkgname/"
+	ln -sv "$_site/$_pkg-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }

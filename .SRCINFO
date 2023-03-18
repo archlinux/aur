@@ -1,6 +1,6 @@
 pkgbase = python-pymisp
 	pkgdesc = Python library to access MISP platforms via their REST API
-	pkgver = 2.4.167
+	pkgver = 2.4.169.2
 	pkgrel = 1
 	url = https://github.com/MISP/PyMISP
 	changelog = CHANGELOG.txt
@@ -16,18 +16,16 @@ pkgbase = python-pymisp
 	depends = python-deprecated
 	depends = python-jsonschema
 	depends = python-requests
-	depends = python>=3.8
 	optdepends = lief: python-pymisp[fileobjects] support
 	optdepends = python-beautifulsoup4: python-pymisp[openioc] support
 	optdepends = python-chardet: python-pymisp[url] support
 	optdepends = python-magic: python-pymisp[fileobjects] support
 	optdepends = python-oletools: python-pymisp[email] support
-	optdepends = python-pyfaup: python-pymisp[url] support
 	optdepends = python-recommonmark: python-pymisp[docs] support
 	optdepends = python-urllib3: python-pymisp[brotli] support
 	optdepends = python-validators: python-pymisp[virustotal] support
 	optdepends = python-reportlab: python-pymisp[reportlab] support
-	source = python-pymisp::git+https://github.com/MISP/PyMISP#tag=v2.4.167?signed
+	source = python-pymisp::git+https://github.com/MISP/PyMISP#tag=v2.4.169.2?signed
 	source = remove-datafiles.patch
 	validpgpkeys = 8647F5A7FFD350AE38B6E22F32E4E1C133B3792F
 	sha256sums = SKIP
