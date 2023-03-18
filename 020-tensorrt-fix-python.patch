@@ -1,6 +1,6 @@
 --- a/python/CMakeLists.txt
 +++ b/python/CMakeLists.txt
-@@ -39,7 +39,7 @@ set(CMAKE_CXX_STANDARD ${CPP_STANDARD})
+@@ -40,7 +40,7 @@ set(CMAKE_CXX_STANDARD ${CPP_STANDARD})
  
  if (NOT MSVC)
      # This allows us to use TRT libs shipped with standalone wheels.
@@ -8,8 +8,8 @@
 +    #set(CMAKE_SHARED_LINKER_FLAGS -Wl,-rpath=$ORIGIN)
  endif()
  
- set(PY_MODULE_NAME tensorrt)
-@@ -78,7 +78,7 @@ if (MSVC)
+ # -------- PATHS --------
+@@ -91,7 +91,7 @@ if (MSVC)
      find_path(PY_LIB_DIR ${PYTHON_LIB_NAME}.lib HINTS ${WIN_EXTERNALS}/${PYTHON} ${EXT_PATH}/${PYTHON} PATH_SUFFIXES lib)
      message(STATUS "PY_LIB_DIR: ${PY_LIB_DIR}")
  else()
@@ -18,7 +18,7 @@
  endif()
  
  message(STATUS "PY_INCLUDE: ${PY_INCLUDE}")
-@@ -98,7 +98,7 @@ message(STATUS "PY_CONFIG_INCLUDE: ${PY_
+@@ -111,7 +111,7 @@ message(STATUS "PY_CONFIG_INCLUDE: ${PY_CONFIG_INCLUDE}")
  # -------- GLOBAL COMPILE OPTIONS --------
  
  include_directories(${TENSORRT_ROOT}/include ${PROJECT_SOURCE_DIR}/include ${CUDA_INCLUDE_DIRS} ${PROJECT_SOURCE_DIR}/docstrings ${ONNX_INC_DIR} ${PYBIND11_DIR})
@@ -26,18 +26,60 @@
 +link_directories(${TENSORRT_BUILD} $ENV{TRT_NONOSS_ROOT}/lib)
  
  if (MSVC)
-     include_directories(${MSVC_COMPILER_DIR}/include ${MSVC_COMPILER_DIR}/../ucrt/include ${NV_WDKSDK_INC}/um ${NV_WDKSDK_INC}/shared)
+     message(STATUS "include_dirs: ${MSVC_COMPILER_DIR}/include ${MSVC_COMPILER_DIR}/../ucrt/include ${NV_WDKSDK_INC}/um ${NV_WDKSDK_INC}/shared")
 --- a/python/build.sh
 +++ b/python/build.sh
-@@ -35,8 +35,9 @@ cmake .. -DCMAKE_BUILD_TYPE=Release \
+@@ -35,14 +35,17 @@ cmake .. -DCMAKE_BUILD_TYPE=Release \
           -DEXT_PATH=${EXT_PATH} \
           -DCUDA_INCLUDE_DIRS=${CUDA_ROOT}/include \
           -DTENSORRT_ROOT=${ROOT_PATH} \
 -         -DTENSORRT_BUILD=${ROOT_PATH}/build/
 -make -j12
 +         -DTENSORRT_BUILD=${ROOT_PATH}/build/ \
-+         -DCMAKE_SKIP_RPATH=YES
-+make
++         -DTENSORRT_MODULE=tensorrt \
++         -DCMAKE_SKIP_RPATH=YES \
++         -G 'Unix Makefiles'
++cmake --build .
  
  # Generate wheel
- TRT_MAJOR=$(awk '/^\#define NV_TENSORRT_MAJOR/ {print $3}' ${ROOT_PATH}/include/NvInferVersion.h)
+-TRT_MAJOR=$(awk '/^\#define NV_TENSORRT_MAJOR/ {print $3}' ${ROOT_PATH}/include/NvInferVersion.h)
+-TRT_MINOR=$(awk '/^\#define NV_TENSORRT_MINOR/ {print $3}' ${ROOT_PATH}/include/NvInferVersion.h)
+-TRT_PATCH=$(awk '/^\#define NV_TENSORRT_PATCH/ {print $3}' ${ROOT_PATH}/include/NvInferVersion.h)
+-TRT_BUILD=$(awk '/^\#define NV_TENSORRT_BUILD/ {print $3}' ${ROOT_PATH}/include/NvInferVersion.h)
++TRT_MAJOR=$(awk '/^#define NV_TENSORRT_MAJOR/ {print $3}' ${ROOT_PATH}/include/NvInferVersion.h)
++TRT_MINOR=$(awk '/^#define NV_TENSORRT_MINOR/ {print $3}' ${ROOT_PATH}/include/NvInferVersion.h)
++TRT_PATCH=$(awk '/^#define NV_TENSORRT_PATCH/ {print $3}' ${ROOT_PATH}/include/NvInferVersion.h)
++TRT_BUILD=$(awk '/^#define NV_TENSORRT_BUILD/ {print $3}' ${ROOT_PATH}/include/NvInferVersion.h)
+ TRT_VERSION=${TRT_MAJOR}.${TRT_MINOR}.${TRT_PATCH}.${TRT_BUILD}
+ TRT_MAJMINPATCH=${TRT_MAJOR}.${TRT_MINOR}.${TRT_PATCH}
+ 
+@@ -50,8 +53,8 @@ echo "Generating python ${PYTHON_MAJOR_VERSION}.${PYTHON_MINOR_VERSION} bindings
+ 
+ expand_vars_cp () {
+     test -f ${1} || (echo "ERROR: File: ${1} does not exist!" && exit 1); \
+-    sed -e "s|\#\#TENSORRT_VERSION\#\#|${TRT_VERSION}|g" \
+-        -e "s|\#\#TENSORRT_MAJMINPATCH\#\#|${TRT_MAJMINPATCH}|g" \
++    sed -e "s|##TENSORRT_PYTHON_VERSION##|${TRT_VERSION}|g" \
++        -e 's|##TENSORRT_MODULE##|tensorrt|g' \
+         ${1} > ${2}
+ }
+ 
+@@ -59,6 +62,6 @@ pushd ${ROOT_PATH}/python/packaging
+ for dir in $(find . -type d); do mkdir -p ${WHEEL_OUTPUT_DIR}/$dir; done
+ for file in $(find . -type f); do expand_vars_cp $file ${WHEEL_OUTPUT_DIR}/${file}; done
+ popd
+-python3 setup.py -q bdist_wheel --python-tag=cp${PYTHON_MAJOR_VERSION}${PYTHON_MINOR_VERSION} --plat-name=linux_${TARGET}
++python -m build --wheel --no-isolation
+ 
+ popd
+--- a/python/src/parsers/pyOnnx.cpp
++++ b/python/src/parsers/pyOnnx.cpp
+@@ -17,7 +17,7 @@
+ 
+ // Implementation of PyBind11 Binding Code for OnnxParser
+ #include "ForwardDeclarations.h"
+-#include "onnxOpenSource/NvOnnxParser.h"
++#include "onnx/NvOnnxParser.h"
+ #include "parsers/pyOnnxDoc.h"
+ #include "utils.h"
+ #include <pybind11/stl.h>

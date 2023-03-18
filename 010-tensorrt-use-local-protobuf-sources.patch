@@ -1,6 +1,6 @@
 --- a/third_party/protobuf.cmake
 +++ b/third_party/protobuf.cmake
-@@ -19,7 +19,7 @@ include(ExternalProject)
+@@ -20,7 +20,7 @@ include(ExternalProject)
  # with the include dir and binaries imported
  macro(configure_protobuf VERSION)
      set(protobufPackage "protobuf-cpp-${VERSION}.tar.gz")
