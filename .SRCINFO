@@ -1,7 +1,7 @@
 pkgbase = r-klar
 	pkgdesc = Classification and Visualization
-	pkgver = 1.7.1
-	pkgrel = 4
+	pkgver = 1.7.2
+	pkgrel = 1
 	url = https://cran.r-project.org/package=klaR
 	arch = any
 	license = GPL
@@ -16,7 +16,7 @@ pkgbase = r-klar
 	optdepends = r-rpart
 	optdepends = r-scatterplot3d
 	optdepends = r-som
-	source = https://cran.r-project.org/src/contrib/klaR_1.7-1.tar.gz
-	sha256sums = 0354bafb1a202bc439660ecfcfe78359bc2881a69d15ff64afa049e4eb171d25
+	source = https://cran.r-project.org/src/contrib/klaR_1.7-2.tar.gz
+	sha256sums = 8035c3edb8257973184ad5a2109fc7c77c32da913cb9dd0c2f1c373e6fccbd61
 
 pkgname = r-klar
