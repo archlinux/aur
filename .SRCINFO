@@ -1,8 +1,8 @@
 pkgbase = jsonnetfmt
-	pkgdesc = The data templating language
+	pkgdesc = The data templating language, formatter
 	pkgver = 0.19.1
 	pkgrel = 1
-	url = https://jsonnet.org/
+	url = https://jsonnet.org
 	arch = x86_64
 	license = Apache
 	checkdepends = python
