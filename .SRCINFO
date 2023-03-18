@@ -1,6 +1,6 @@
 pkgbase = drawterm-9front-wl-git
 	pkgdesc = 9front drawterm compiled targeting wayland + pipewire
-	pkgver = r514.4fd4bb2
+	pkgver = r522.05c9c55
 	pkgrel = 1
 	url = http://drawterm.9front.org/
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = drawterm-9front-wl-git
 	makedepends = make
 	makedepends = gcc
 	makedepends = git
+	makedepends = wayland-protocols
 	depends = pipewire
 	depends = wayland
 	provides = drawterm
