@@ -1,4 +1,4 @@
-From 5d788ca53658aa41cb76589b42664a7392f4ea2d Mon Sep 17 00:00:00 2001
+From a9497ee455674bd17baefb3a6a3f4bf9c789ac76 Mon Sep 17 00:00:00 2001
 From: Aviana Cruz <gwencroft@proton.me>
 Date: Sun, 6 Nov 2022 13:33:14 +0800
 Subject: [PATCH 2/2] Cleanup
@@ -218,10 +218,10 @@ index 9e519b09..00000000
 -    }
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java
-index 03be76c0..b74c333e 100644
+index 467a9fb2..cd5f899e 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java
-@@ -325,10 +325,6 @@ public final class Controllers {
+@@ -323,10 +323,6 @@ public final class Controllers {
  
      public static void onHyperlinkAction(String href) {
          if (href.startsWith("hmcl://")) {
@@ -340,7 +340,7 @@ index b43133a1..00000000
 -    }
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/CreateAccountPane.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/CreateAccountPane.java
-index 0b9f8a42..9dd5e457 100644
+index 44cc2307..7e095069 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/CreateAccountPane.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/CreateAccountPane.java
 @@ -58,7 +58,6 @@ import org.jackhuang.hmcl.ui.FXUtils;
@@ -701,7 +701,7 @@ index dc15b1d1..7cc36a80 100644
          FXUtils.checkFxUserThread();
          this.profile = profile;
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java
-index 378c16e2..b158bc33 100644
+index 0b3ab66d..b158bc33 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java
 @@ -41,7 +41,6 @@ import org.jackhuang.hmcl.ui.decorator.DecoratorPage;
@@ -731,7 +731,7 @@ index 378c16e2..b158bc33 100644
 -            multiplayerItem.setActionButtonVisible(false);
 -            multiplayerItem.setTitle(i18n("multiplayer"));
 -            JFXHyperlink link = new JFXHyperlink(i18n("multiplayer.hint.details"));
--            link.setOnAction(e -> FXUtils.openLink("https://hmcl.huangyuhui.net/api/redirect/multiplayer-migrate"));
+-            link.setExternalLink("https://hmcl.huangyuhui.net/api/redirect/multiplayer-migrate");
 -            multiplayerItem.setOnAction(e -> Controllers.dialog(
 -                    new MessageDialogPane.Builder(i18n("multiplayer.hint"), null, MessageDialogPane.MessageType.INFO)
 -                            .addAction(link)
@@ -2032,5 +2032,5 @@ index 5ec3d2e3..def97e1a 100644
              });
          } catch (Throwable handlingException) {
 -- 
-2.39.1
+2.40.0
 
