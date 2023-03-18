@@ -9,9 +9,10 @@
 # Contributor: Andreas Schrafl <aschrafl@gmail.com>
 # Contributor: piojo <aur@zwell.net>
 # Contributor: hack.augusto <hack.augusto@gmail.com>
+# Contributor: Rustmilian <Rustmilian@proton.me>
 
 pkgname=depot-tools-git
-pkgver=r9431.c5b38329e
+pkgver=r9435.249e9a26c
 pkgrel=1
 pkgdesc='Tools for working with Chromium development'
 arch=(x86_64)
@@ -31,24 +32,12 @@ package() {
 	install -d "$pkgdir/opt/"
 	cp -r "$srcdir/depot_tools/" "$pkgdir/opt/depot_tools/"
 	chmod 775 "$pkgdir/opt/depot_tools/"
-
-	rm -rf "$pkgdir/opt/depot_tools/.git/"
-
-	# Make Windows files non-executable
-	chmod a-x "$pkgdir/opt/depot_tools/"*.bat
-
-	# TODO: Consider removing unneeded files, for example:
-	# .git{ignore,attributes}
-	# *OWNERS
-	# WATCHLISTS
-	# bootstrap/
-	# infra/
-	# ninja-{mac,linux32}
-	# *.bat
-	# testing_support/
-	# tests/
-	# win32imports.py
-	# win_toolchain/
+	# Remove Git
+	rm -rf "${pkgdir}/opt/depot_tools/"{.git,.gitignore,.gitattributes}
+	# Remove Windows
+	rm -r "${pkgdir}/opt/depot_tools/"{*.bat,win32imports.py,win_toolchain}
+	# Remove Misc
+	rm -r "${pkgdir}/opt/depot_tools/"{bootstrap,infra,testing_support,tests,OWNERS,WATCHLISTS}
 
 	# Install license
 	install -d "$pkgdir/usr/share/licenses/$pkgname/"
@@ -71,5 +60,6 @@ package() {
 	mv "$pkgdir/opt/depot_tools/gclient_completion.sh" "$pkgdir/usr/share/bash-completion/completions/gclient"
 	mv "$pkgdir/opt/depot_tools/git_cl_completion.sh" "$pkgdir/usr/share/bash-completion/completions/git-cl"
 
-	# TODO: Install zsh-goodies/?
+	# Install zsh completions
+	install -Dm0644 -t "$pkgdir/usr/share/zsh/site-functions/" "$pkgdir/opt/depot_tools/zsh-goodies/_gclient"
 }
