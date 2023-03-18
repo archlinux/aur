@@ -1,6 +1,6 @@
 pkgbase = sheepit-client-git
 	pkgdesc = Client for the free and distributed render farm
-	pkgver = v6.21338.0r526.37244b4
+	pkgver = v7.23039.0r731.3f54c82
 	pkgrel = 1
 	url = https://www.sheepit-renderfarm.com/
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = sheepit-client-git
 	license = GPL
 	makedepends = git
 	makedepends = gradle
-	depends = java-runtime
+	depends = java-runtime>=11
 	depends = freetype2
 	depends = glew
 	depends = libxrender
@@ -26,11 +26,13 @@ pkgbase = sheepit-client-git
 	source = sheepit-client.sh
 	source = sheepit-client.sysusers
 	source = sheepit-client.tmpfiles
+	source = build.gradle.patch
 	sha256sums = SKIP
 	sha256sums = 69220c93518e1bbd034feded5c5deb4e29e21340151d51096adf269d9ec641af
 	sha256sums = 4181b60d36dda17a6d93698166e46e54049d14490993912eb4b31fa833711ee2
 	sha256sums = 18c3c158263861bca6f61204741f7c7c9ea8201b99ec711bc60d096598f4e8ed
 	sha256sums = 2ec4f41f996f149102403a0376da75bf6545a80883c595232aa27eedc2eb9803
 	sha256sums = ba7e49757345d04ae42a8a86fcee3ff53eb9fc86ef8a5b3db8895b5e4b42440a
+	sha256sums = 55aaa64e69451209d58bd452f776697fd0feb4ba56a81d6d7d5d7196928a8cb9
 
 pkgname = sheepit-client-git
