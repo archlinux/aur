@@ -4,7 +4,7 @@
 _pkgname=libadwaita
 pkgbase=libadwaita-testing
 pkgname=(libadwaita-testing libadwaita-testing-docs libadwaita-testing-demos)
-pkgver=1.3rc
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Building blocks for modern adaptive GNOME applications"
 url="https://gnome.pages.gitlab.gnome.org/libadwaita/"
@@ -14,7 +14,7 @@ depends=(gtk4)
 makedepends=(git meson gi-docgen sassc gobject-introspection vala libgtk-4.so)
 checkdepends=(weston)
 options=(debug)
-_commit=2e72b0ff7d441e6be335cc63d543c3ff0b4d2b08  # tags/1.3.rc
+_commit=7c842101b9dec7674f667acf8e86651baf2ef966  # tags/1.3.1
 source=("git+https://gitlab.gnome.org/GNOME/libadwaita.git#commit=$_commit")
 sha256sums=('SKIP')
 
