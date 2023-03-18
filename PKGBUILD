@@ -2,7 +2,7 @@
 # Maintainer: Eric Anderson <ejona86@gmail.com>
 
 pkgname=craftbukkit-spigot
-pkgver=1.19.3.3611
+pkgver=1.19.3.3658
 #### Minecraft version to build. Just change this to build a different branch.
 #### Makepkg will automatically (unless --holdver is specified) select the most
 #### recent Spigot version for this Minecraft version.
@@ -17,7 +17,7 @@ pkgdesc="CraftBukkit, Spigot, and vanilla Minecraft servers"
 arch=(any)
 url="https://www.spigotmc.org/"
 license=("GPL3")
-depends=(bash "java-runtime-headless-openjdk>=17" "java-runtime-headless-openjdk<19" fontconfig)
+depends=(bash "java-runtime-headless-openjdk>=17" "java-runtime-headless-openjdk<21" fontconfig)
 makedepends=(git)
 optdepends=("mcrcon: Notify users before shutdown and consistent backups")
 conflicts=(bukkit craftbukkit craftbukkit-stable)
