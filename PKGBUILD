@@ -21,18 +21,18 @@ sha256sums=('SKIP'
 
 prepare() {
     if [ $CARCH = "armv7h" ]; then
-	sed -i 's/CONFIG_PLATFORM_I386_PC = y/CONFIG_PLATFORM_I386_PC = n/g' ${srcdir}/8821cu-20210118/Makefile
-	sed -i 's/CONFIG_PLATFORM_ARM_RPI = n/CONFIG_PLATFORM_ARM_RPI = y/g' ${srcdir}/8821cu-20210118/Makefile
+	sed -i 's/CONFIG_PLATFORM_I386_PC = y/CONFIG_PLATFORM_I386_PC = n/g' ${srcdir}/8821cu-${repoversion}/Makefile
+	sed -i 's/CONFIG_PLATFORM_ARM_RPI = n/CONFIG_PLATFORM_ARM_RPI = y/g' ${srcdir}/8821cu-${repoversion}/Makefile
        
     elif [ $CARCH = "aarch64" ]; then
-	sed -i 's/CONFIG_PLATFORM_I386_PC = y/CONFIG_PLATFORM_I386_PC = n/g' ${srcdir}/8821cu-20210118/Makefile
-	sed -i 's/CONFIG_PLATFORM_ARM_RPI = y/CONFIG_PLATFORM_ARM_RPI = n/g' ${srcdir}/8821cu-20210118/Makefile
-	sed -i 's/CONFIG_PLATFORM_ARM64_RPI = n/CONFIG_PLATFORM_ARM64_RPI = y/g' ${srcdir}/8821cu-20210118/Makefile
+	sed -i 's/CONFIG_PLATFORM_I386_PC = y/CONFIG_PLATFORM_I386_PC = n/g' ${srcdir}/8821cu-${repoversion}/Makefile
+	sed -i 's/CONFIG_PLATFORM_ARM_RPI = y/CONFIG_PLATFORM_ARM_RPI = n/g' ${srcdir}/8821cu-${repoversion}/Makefile
+	sed -i 's/CONFIG_PLATFORM_ARM64_RPI = n/CONFIG_PLATFORM_ARM64_RPI = y/g' ${srcdir}/8821cu-${repoversion}/Makefile
    fi
 }
 
 pkgver() {
-    cd ${srcdir}/8821cu-20210916
+    cd ${srcdir}/8821cu-${repoversion}
     printf "%s" ${_pkgver} "." "$(git rev-list --count HEAD)" "." "$(git rev-parse --short HEAD)"
 
 }
