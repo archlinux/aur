@@ -1,6 +1,6 @@
 pkgbase = megabasterd-git
 	pkgdesc = MEGA.nz downloader/uploader/streaming suite
-	pkgver = 7.49.r0.03e1824dd
+	pkgver = 7.74.r2.77542e971
 	pkgrel = 1
 	url = https://github.com/tonikelope/megabasterd
 	arch = any
@@ -16,10 +16,8 @@ pkgbase = megabasterd-git
 	source = megabasterd-git::git+https://github.com/tonikelope/megabasterd.git
 	source = megabasterd.sh
 	source = megabasterd.desktop
-	source = remove-key-warning.patch
 	sha256sums = SKIP
 	sha256sums = 67711d7ef6fb46d6da0ad6e770dcd3dc778380f37f9b356af3cddc0a075fc3f0
 	sha256sums = a85b49dab7f58ab3c3b3e609a1c3c8e0fab2bedf5597a179aae82773681e7753
-	sha256sums = 77f26d31d9a9473739897cadf1bc047f11aa727c246891f5161ba53b8a10feab
 
 pkgname = megabasterd-git

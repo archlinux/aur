@@ -1,6 +1,6 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=megabasterd-git
-pkgver=7.49.r0.03e1824dd
+pkgver=7.74.r2.77542e971
 pkgrel=1
 pkgdesc="MEGA.nz downloader/uploader/streaming suite"
 arch=("any")
@@ -12,17 +12,10 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "megabasterd-bin")
 source=("$pkgname::git+https://github.com/tonikelope/megabasterd.git"
         "${pkgname%%-git}.sh"
-        "${pkgname%%-git}.desktop"
-        "remove-key-warning.patch")
+        "${pkgname%%-git}.desktop")
 sha256sums=('SKIP'
             '67711d7ef6fb46d6da0ad6e770dcd3dc778380f37f9b356af3cddc0a075fc3f0'
-            'a85b49dab7f58ab3c3b3e609a1c3c8e0fab2bedf5597a179aae82773681e7753'
-            '77f26d31d9a9473739897cadf1bc047f11aa727c246891f5161ba53b8a10feab')
-
-prepare() {
-    cd "$srcdir/${pkgname}"
-    patch -p1 -i "$srcdir/remove-key-warning.patch"
-}
+            'a85b49dab7f58ab3c3b3e609a1c3c8e0fab2bedf5597a179aae82773681e7753')
 
 pkgver() {
     cd "$srcdir/${pkgname}"
