@@ -97,7 +97,7 @@ else
 fi
 pkgver=30.0.50.165467
 pkgrel=1
-pkgdesc="GNU Emacs. Development master branch."
+pkgdesc="GNU Emacs. Development master branch with xwidgets & no-pgtk."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
 license=('GPL3')
