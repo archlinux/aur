@@ -1,0 +1,137 @@
+From a5272e25f5b8f95b341ec9682a0cdd7cb24b87b1 Mon Sep 17 00:00:00 2001
+From: gnunn1 <gerald.b.nunn@gmail.com>
+Date: Sat, 20 Aug 2016 14:25:54 -0400
+Subject: [PATCH] Add terminal-screen-changed signal
+
+---
+ src/vte/vteterminal.h |  6 ++++--
+ src/vtegtk.cc         | 19 +++++++++++++++++++
+ src/vtegtk.hh         |  1 +
+ src/vteinternal.hh    |  2 ++
+ src/vteseq.cc         | 14 ++++++++++++++
+ 5 files changed, 40 insertions(+), 2 deletions(-)
+
+diff --git a/src/vte/vteterminal.h b/src/vte/vteterminal.h
+index 12ecf181..bc953e21 100644
+--- a/src/vte/vteterminal.h
++++ b/src/vte/vteterminal.h
+@@ -116,11 +116,13 @@ struct _VteTerminalClass {
+ 
+         /* Add new vfuncs here, and subtract from the padding below. */
+ 
++        void (*terminal_screen_changed)(VteTerminal* terminal);
++
+         /* Padding for future expansion. */
+ #if _VTE_GTK == 3
+-        gpointer _padding[13];
++        gpointer _padding[12];
+ #elif _VTE_GTK == 4
+-        gpointer _padding[16];
++        gpointer _padding[15];
+ #endif /* _VTE_GTK */
+ 
+ // FIXMEgtk4 use class private data instead
+diff --git a/src/vtegtk.cc b/src/vtegtk.cc
+index 1c5a4983..4a5688fa 100644
+--- a/src/vtegtk.cc
++++ b/src/vtegtk.cc
+@@ -1306,6 +1306,8 @@ vte_terminal_class_init(VteTerminalClass *klass)
+ 
+         klass->bell = NULL;
+ 
++        klass->terminal_screen_changed = NULL;
++
+         /* GtkScrollable interface properties */
+         g_object_class_override_property (gobject_class, PROP_HADJUSTMENT, "hadjustment");
+         g_object_class_override_property (gobject_class, PROP_VADJUSTMENT, "vadjustment");
+@@ -2000,6 +2002,23 @@ vte_terminal_class_init(VteTerminalClass *klass)
+                                    G_OBJECT_CLASS_TYPE(klass),
+                                    g_cclosure_marshal_VOID__VOIDv);
+ 
++        /**
++         * VteTerminal::screen-changed:
++         * @vteterminal: the object which received the signal
++         *
++         * This signal is emitted when the terminal screen changes between
++         * normal and alternate screen.
++         */
++        signals[SIGNAL_TERMINAL_SCREEN_CHANGED] =
++                g_signal_new(I_("terminal-screen-changed"),
++                             G_OBJECT_CLASS_TYPE(klass),
++                             G_SIGNAL_RUN_LAST,
++                             G_STRUCT_OFFSET(VteTerminalClass, bell),
++                             NULL,
++                             NULL,
++                             g_cclosure_marshal_VOID__INT,
++                             G_TYPE_NONE, 1, G_TYPE_INT);
++
+         /**
+          * VteTerminal:allow-bold:
+          *
+diff --git a/src/vtegtk.hh b/src/vtegtk.hh
+index 0a31d205..64cb46f5 100644
+--- a/src/vtegtk.hh
++++ b/src/vtegtk.hh
+@@ -57,6 +57,7 @@ enum {
+         SIGNAL_SHELL_PREEXEC,
+         SIGNAL_NOTIFICATION_RECEIVED,
+ #endif
++        SIGNAL_TERMINAL_SCREEN_CHANGED,
+         SIGNAL_WINDOW_TITLE_CHANGED,
+         LAST_SIGNAL
+ };
+diff --git a/src/vteinternal.hh b/src/vteinternal.hh
+index 0c52442b..0f0243a3 100644
+--- a/src/vteinternal.hh
++++ b/src/vteinternal.hh
+@@ -1587,6 +1587,8 @@ public:
+ #undef _VTE_CMD_HANDLER
+ #undef _VTE_CMD_HANDLER_NOP
+ #undef _VTE_CMD_HANDLER_R
++
++        void emit_terminal_screen_changed(int screen);
+ };
+ 
+ } // namespace terminal
+diff --git a/src/vteseq.cc b/src/vteseq.cc
+index 8a7f5b34..5ec0448a 100644
+--- a/src/vteseq.cc
++++ b/src/vteseq.cc
+@@ -220,6 +220,14 @@ Terminal::emit_resize_window(guint columns,
+         g_signal_emit(m_terminal, signals[SIGNAL_RESIZE_WINDOW], 0, columns, rows);
+ }
+ 
++/* Emit a "terminal-screen-changed" signal */
++void
++Terminal::emit_terminal_screen_changed(int screen)
++{
++        _vte_debug_print(VTE_DEBUG_SIGNALS, "Emitting `terminal_screen_changed'.\n");
++        g_signal_emit(m_terminal, signals[SIGNAL_TERMINAL_SCREEN_CHANGED], 0, screen);
++}
++
+ /* Some common functions */
+ 
+ /* In Xterm, upon printing a character in the last column the cursor doesn't
+@@ -392,6 +400,9 @@ void
+ Terminal::switch_normal_screen()
+ {
+         switch_screen(&m_normal_screen);
++
++        /* Emit signal */
++        emit_terminal_screen_changed(0);
+ }
+ 
+ void
+@@ -426,6 +437,9 @@ void
+ Terminal::switch_alternate_screen()
+ {
+         switch_screen(&m_alternate_screen);
++
++        /* Emit signal */
++        emit_terminal_screen_changed(1);
+ }
+ 
+ void
+-- 
+2.39.2.13.g1fb56cf030
+

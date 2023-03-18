@@ -1,10 +1,11 @@
 pkgbase = vte3-tilix
-	pkgdesc = Virtual Terminal Emulator widget for use with GTK3 with Fedora and Tilix patches
-	pkgver = 0.56.3
+	pkgdesc = Virtual Terminal Emulator widget (GTK3) (Fedora and Tilix patches)
+	pkgver = 0.70.3
 	pkgrel = 1
 	url = https://github.com/gnunn1/tilix/tree/master/experimental/vte
 	arch = x86_64
 	license = LGPL
+	makedepends = gi-docgen
 	makedepends = intltool
 	makedepends = gobject-introspection
 	makedepends = gtk-doc
@@ -16,23 +17,24 @@ pkgbase = vte3-tilix
 	depends = pcre2
 	depends = gnutls
 	options = !emptydirs
-	source = git+https://git.gnome.org/browse/vte#tag=0.56.3
-	source = vte291-command-notify-scroll-speed.patch-94ec580d203552c728f6d46ce539fd321d991500::https://src.fedoraproject.org/rpms/vte291/raw/94ec580d203552c728f6d46ce539fd321d991500/f/vte291-command-notify-scroll-speed.patch
+	source = git+https://gitlab.gnome.org/GNOME/vte.git#tag=0.70.3
+	source = vte291-cntnr-precmd-preexec-scroll.patch-de03576168f1ec4beeb7330239f4debf3234b842::https://src.fedoraproject.org/rpms/vte291/raw/de03576168f1ec4beeb7330239f4debf3234b842/f/vte291-cntnr-precmd-preexec-scroll.patch
 	source = add-zsh-notfication-support.patch
-	source = alternate-screen.patch-c07d449d90f56c420003311ecab22f82c7c84956::https://github.com/gnunn1/tilix/raw/c07d449d90f56c420003311ecab22f82c7c84956/experimental/vte/0.54/alternate-screen.patch
+	source = alternate-screen.patch
 	sha256sums = SKIP
-	sha256sums = 5de49179d88acba730e7446913724ca012b4b5aedb6392b2547a11725829180b
+	sha256sums = e5672a857c51a620ca5448da29e4ea5b0e319c2a54416a4ca615b0e0392e00a9
 	sha256sums = 150a151404ca565f70259044661b2ef5cda43142ca677e7da324614eef8cf45a
-	sha256sums = 490c0e3ec3d44e6642e19de71843b7d4d1d2c56ae3b243a8fd432ad6fdb244db
+	sha256sums = 36fdf6a98c2be1b0c5b38a6116f160cdf0f270db688796ff1199234d64e49600
 
 pkgname = vte3-tilix
 	depends = gtk3
 	depends = pcre2
 	depends = gnutls
 	depends = vte-tilix-common
-	provides = vte3=0.56.3
-	provides = vte3-notification=0.56.3-2
+	provides = vte3=0.70.3
+	provides = vte3-notification=0.70.3-2
 	provides = vte3-terminix-git
+	provides = libvte-2.91.so
 	conflicts = vte3
 	conflicts = vte3-notification
 	conflicts = vte3-terminix-git
@@ -41,10 +43,9 @@ pkgname = vte-tilix-common
 	pkgdesc = Common files used by vte and vte3
 	arch = any
 	depends = sh
-	provides = vte-common=0.56.3
-	provides = vte-notification-common=0.56.3-2
+	provides = vte-common=0.70.3
+	provides = vte-notification-common=0.70.3-2
 	provides = vte-terminix-common-git
 	conflicts = vte-common
 	conflicts = vte-notification-common
 	conflicts = vte3-terminix-common-git
-
