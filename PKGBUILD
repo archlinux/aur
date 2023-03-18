@@ -32,6 +32,8 @@ package() {
 	mkdir -p "${pkgdir}/usr/share/applications/"
 	mv "${srcdir}/cisco-pt.desktop" "${pkgdir}/usr/share/applications/cisco-pt.desktop"
 	mv "${srcdir}/cisco-ptsa.desktop" "${pkgdir}/usr/share/applications/cisco-ptsa.desktop"
+	chmod a+x "${pkgdir}/usr/share/applications/cisco-pt.desktop"
+	chmod a+x "${pkgdir}/usr/share/applications/cisco-ptsa.desktop"
 	mkdir -p "${pkgdir}/usr/bin/"
 
 	find "${pkgdir}" -type d -exec chmod 755 {} \;
