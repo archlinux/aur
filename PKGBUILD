@@ -3,25 +3,31 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _cranname=gtable
-_cranver=0.3.1
+_cranver=0.3.2
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="Arrange 'Grobs' in Tables"
-arch=(i686 x86_64)
+pkgdesc="Arrange ‘Grobs’ in Tables"
+arch=("any")
 url="https://cran.r-project.org/package=${_cranname}"
 license=(MIT)
-depends=("r>=3.0")
+depends=(
+    "r>=3.5"
+    "r-cli"
+    "r-glue"
+    "r-lifecycle"
+    "r-rlang"
+)
 optdepends=(
-    r-covr
-    r-ggplot2
-    r-knitr
-    r-profvis
-    r-rmarkdown
-    r-testthat
+    "r-covr"
+    "r-ggplot2"
+    "r-knitr"
+    "r-profvis"
+    "r-rmarkdown"
+    "r-testthat>=3.0.0"
 )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('8bd62c5722d5188914d667cabab12991c555f657f4f5ce7b547571ae3aec7cb5')
+b2sums=("b955cc53bae14486a1d332f3e57248893d8ede557b23937a16a596f984e686b747a6d2ca2d390a171b678813a134b6dd1044d78e8387928119137bb1b575cce7")
 
 build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
