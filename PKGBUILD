@@ -3,7 +3,7 @@
 
 pkgname=python-torchaudio
 _pkgname=audio
-pkgver=0.11.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Data manipulation and transformation for audio signal processing, powered by PyTorch"
 arch=('any')
@@ -20,7 +20,7 @@ prepare() {
   cd "$srcdir/${_pkgname}"
   # Use sourceforge url to fetch zlib
   # See https://github.com/pytorch/audio/pull/2297
-  git cherry-pick -n e92a17c35fdff6b0622b0791b43e665c5d05c4b4
+  # git cherry-pick -n e92a17c35fdff6b0622b0791b43e665c5d05c4b4
 }
 
 build() {

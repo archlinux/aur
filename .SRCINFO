@@ -1,6 +1,6 @@
 pkgbase = python-torchaudio
 	pkgdesc = Data manipulation and transformation for audio signal processing, powered by PyTorch
-	pkgver = 0.11.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/pytorch/audio
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-torchaudio
 	depends = python-pytorch
 	optdepends = python-kaldi-io
 	conflicts = python-torchaudio-git
-	source = git+https://github.com/pytorch/audio#tag=v0.11.0
+	source = git+https://github.com/pytorch/audio#tag=v2.0.1
 	sha512sums = SKIP
 
 pkgname = python-torchaudio
