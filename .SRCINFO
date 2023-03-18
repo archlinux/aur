@@ -1,0 +1,15 @@
+pkgbase = jsonnetfmt
+	pkgdesc = The data templating language
+	pkgver = 0.19.1
+	pkgrel = 1
+	url = https://jsonnet.org/
+	arch = x86_64
+	license = Apache
+	checkdepends = python
+	makedepends = gtest
+	depends = gcc-libs
+	depends = nlohmann-json
+	source = jsonnet-0.19.1.tar.gz::https://github.com/google/jsonnet/archive/v0.19.1.tar.gz
+	sha512sums = 21312de71f63f4a74005f563290d67fcc2d220f043291a123af2fc834f4118f8bbc311ea8acc5dd52b13eff8c32f026a5ce6bfe3d88b4c6c770e585dd1f0b688
+
+pkgname = jsonnetfmt
