@@ -1,6 +1,6 @@
 pkgbase = reflex-3-3
 	pkgdesc = Fork of re/flex v3.3 (The regex-centric, fast lexical analyzer generator for C++) intended for use in EPITA school project TIGER.
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/MajorBarnulf/RE-flex
 	arch = x86_64
