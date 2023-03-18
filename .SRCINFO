@@ -3,13 +3,19 @@ pkgbase = powersave-git
 	pkgver = r2.180aa76
 	pkgrel = 1
 	url = https://github.com/semeion/powersave
-	arch = x86_64
+	arch = any
 	license = GPL3
 	makedepends = git
 	depends = systemd
+	depends = bash
+	optdepends = hdparm
+	optdepends = nvidia-utils
+	optdepends = iw
+	optdepends = ethtool
 	conflicts = indicator-powersave
+	backup = etc/throttle/powersave
+	backup = etc/throttle/performance
 	source = git+https://github.com/semeion/powersave.git
 	sha256sums = SKIP
 
 pkgname = powersave-git
-
