@@ -3,6 +3,7 @@ pkgbase = buildkite-agent-bin
 	pkgver = 3.45.0
 	pkgrel = 1
 	url = https://buildkite.com/docs/agent/v3
+	install = buildkite-agent-bin.install
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64

@@ -3,4 +3,5 @@
 !.SRCINFO
 !buildkite-agent.sysusers
 !buildkite-agent.tmpfiles
+!buildkite-agent-bin.install
 !PKGBUILD

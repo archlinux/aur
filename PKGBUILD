@@ -10,7 +10,7 @@ url='https://buildkite.com/docs/agent/v3'
 license=('MIT')
 options=('!strip' 'staticlibs')
 backup=('etc/buildkite-agent/buildkite-agent.cfg')
-
+install="$pkgname.install"
 source=(
   "https://raw.githubusercontent.com/buildkite/agent/v$pkgver/packaging/linux/root/usr/share/buildkite-agent/systemd/buildkite-agent.service"
   "https://raw.githubusercontent.com/buildkite/agent/v$pkgver/packaging/linux/root/usr/share/buildkite-agent/systemd/buildkite-agent@.service"

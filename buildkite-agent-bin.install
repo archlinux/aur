@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+post_install() {
+  echo "To start the buildkite-agent service run"
+  echo "  systemctl enable --now buildkite-agent"
+  echo "For multiple agents on the same machine, use the template"
+  echo "  systemctl enable --now buildkite-agent@1"
+  echo "  systemctl enable --now buildkite-agent@2"
+  echo "  ...etc..."
+}
+
+post_upgrade() {
+  echo "Restarting any existing buildkite-agent systemd services"
+  systemctl try-restart buildkite-agent.service 'buildkite-agent@*.service'
+}
+
+pre_remove() {
+  echo "Stopping and disabling any buildkite-agent systemd services"
+  systemctl disable --now buildkite-agent.service 'buildkite-agent@*.service'
+}
