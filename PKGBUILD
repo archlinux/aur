@@ -1,8 +1,8 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=d2vwitch-git
-pkgver=v5.2.gb379384
-pkgrel=2
+pkgver=v5.3.g4085afa
+pkgrel=1
 pkgdesc="Cross-platform D2V creator. (GIT version)"
 arch=('x86_64')
 url='http://forum.doom9.org/showthread.php?t=173090'
@@ -17,6 +17,7 @@ depends=('vapoursynth-plugin-d2vsource-git'
          )
 makedepends=('git'
              'meson'
+             'ffmpeg4.4'
              )
 provides=('d2vwitch')
 conflicts=('d2vwitch')
@@ -37,6 +38,8 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+
+  sed "s|'GUI'|'Gui'|g" -i d2vwitch/meson.build
 }
 
 build() {
