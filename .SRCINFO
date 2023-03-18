@@ -1,0 +1,19 @@
+pkgbase = debugedit-git
+	pkgdesc = Provides debugedits and scripts for creating debuginfo and source file distributions
+	pkgver = 5.0.r15.g60ee634
+	pkgrel = 1
+	url = https://sourceware.org/debugedit/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = help2man
+	depends = glibc
+	depends = libelf
+	optdepends = bash
+	provides = debugedit=5.0.r15.g60ee634
+	conflicts = debugedit
+	source = git+https://sourceware.org/git/debugedit.git
+	sha256sums = SKIP
+
+pkgname = debugedit-git
