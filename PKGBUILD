@@ -1,62 +1,53 @@
-# Maintainer: Navkamal Rakra <navkamal90[at]gmail[dot]com>
+# Contributor: Matthias Blankertz <matthias at blankertz dot org>
+# Contributor: Navkamal Rakra <navkamal90[at]gmail[dot]com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
-pkgname=ogdf
-pkgver=2015.05
+pkgname=('ogdf' 'ogdf-docs')
+pkgver=2022_02
 pkgrel=1
-epoch=
-pkgdesc="Open Graph Drawing Framework : Self-contained C++ class library for the automatic layout of 
-diagrams. Offers sophisticated algorithms and data structures to use within your own applications 
-or scientific projects"
-arch=('x86_64' 'i686')
-url="http://www.ogdf.net/doku.php/start"
+pkgdesc="OGDF is a self-contained C++ class library for the automatic layout of diagrams. OGDF offers sophisticated algorithms and data structures to use within your own applications or scientific projects."
+arch=('i686' 'x86_64')
+url="https://ogdf.uos.de/"
 license=('GPL')
-depends=()
-makedepends=(python2 unzip)
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=(OGDF)
-replaces=(OGDF)
-backup=()
-options=()
-install=
-changelog=
-source=("${pkgname}.v${pkgver}.zip::http://www.ogdf.net/lib/exe/fetch.php/tech:${pkgname}.v${pkgver}.zip")
-#source = (".v${pkgver}.zip")
-noextract=("${pkgname}.v${pkgver}.zip")
-md5sums=('b652b1b137e63245db6e412196551bc6')
-validpgpkeys=()
-
-prepare() {
-	unzip -L ${pkgname}.v${pkgver}.zip
-	sed -i 's/^\(installPrefix\s*=\s*\).*$/\1\/usr/' ${srcdir}/OGDF/makeMakefile.config
-}
+makedepends=('cmake' 'doxygen' 'graphviz' 'bash')
+source=("$pkgname-${pkgver//_/-}.zip::https://ogdf.uos.de/wp-content/uploads/${pkgver//_/\/}/$pkgname.v${pkgver//_/.}.zip")
+sha256sums=('5234b41dd8f52f5dda537794ecb26ccfeb928d8520e0c48e0f84bbc75f4b6c1e')
+options=('staticlibs')
 
 build() {
-	cd "OGDF"
-	python2 makeMakefile.py
-	make
+	cd "$srcdir/OGDF"
+	cmake -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS} ${CPPFLAGS} -Wno-class-memaccess -Wno-error=restrict -Wno-deprecated-copy -Wno-pessimizing-move -Wno-error=shadow" \
+		-DCMAKE_EXE_LINKER_FLAGS:STRING="${LDFLAGS}" \
+		-DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=true \
+	        -DCMAKE_INSTALL_PREFIX="$pkgdir" .
+	make OGDF
+	cd doc && ./build-ogdf-docs.sh
 }
 
-package() {
-	cd "${srcdir}/OGDF"
-	make DESTDIR="${pkgdir}" install
+package_ogdf() {
+	cd "$srcdir/OGDF"
+	conflicts=('ogdf' 'coin-or-clp' 'coin-or-osi' 'coin-or-coinutils')
+	provides=('ogdf')
+	install -Dm644 libOGDF.a "$pkgdir/usr/lib/libOGDF.a"
+	install -Dm644 libCOIN.a "$pkgdir/usr/lib/libCOIN.a"
 
-	mkdir -p ${pkgdir}/usr/lib/
-	cp -r _release ${pkgdir}/usr/lib/
-
-#	mkdir -p ${pkgdir}/usr/include/
-#	cp -r include ${pkgdir}/usr/include/
-
-	mkdir -p ${pkgdir}/etc/${pkgname}.v${pkgver}
-	cp -r config ${pkgdir}/etc/${pkgname}.v${pkgver}
-
-	mkdir -p ${pkgdir}/usr/share/doc/${pkgname}.v${pkgver}
-	cp -r doc ${pkgdir}/usr/share/doc/${pkgname}.v${pkgver}
-
-	mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}.v${pkgver}
-	install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}.v${pkgver}/LICENSE.txt"
-	install -Dm644 LICENSE_GPL_v2.txt "${pkgdir}/usr/share/licenses/${pkgname}.v${pkgver}/LICENSE_GPL_v2.txt"
-	install -Dm644 LICENSE_GPL_v3.txt "${pkgdir}/usr/share/licenses/${pkgname}.v${pkgver}/LICENSE_GPL_v3.txt"
-	
+	mkdir -p "$pkgdir/usr"
+	cp -r include "$pkgdir/usr"
 }
+
+package_ogdf-docs() {
+	arch=('any')
+
+	cd "$srcdir/OGDF"
+
+	install -d "$pkgdir/usr/share/doc/$pkgbase"
+	cp -r doc/* "$pkgdir/usr/share/doc/$pkgbase"
+	rm "$pkgdir/usr/share/doc/$pkgbase/build-ogdf-docs.sh"
+}
+
+# check() {
+# 	cd "$srcdir/OGDF"
+
+# 	# Skip repeated failing GraphCopy test (randomness issues?)
+# 	./tests --skip="works using source and target"
+# }
