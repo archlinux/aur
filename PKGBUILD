@@ -1,29 +1,36 @@
-# Maintainer: Alexander Fasching <fasching.a91@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Alexander Fasching <fasching.a91@gmail.com>
 # Contributor: Doron Behar <doron.behar@gmail.com>
 # Contributor: Dan "Streetwalrus" Elkouby <streetwalkermc@gmail.com>
 
 pkgname=python-vunit_hdl
-_name=vunit_hdl
-pkgver=4.6.1
+_pkg="${pkgname#python-}"
+pkgver=4.6.2
 pkgrel=1
-pkgdesc="Unit Testing Framework for VHDL/SystemVerilog"
+pkgdesc='Unit Testing Framework for VHDL/SystemVerilog'
 arch=('any')
-url="https://vunit.github.io/"
+url='https://github.com/vunit/vunit'
 license=('MPL2')
-depends=('python' 'python-colorama')
-makedepends=(python-setuptools)
-options=(!emptydirs)
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-md5sums=('aa07a0c75bceccf69c1a7027ed93c4bf')
+depends=('python-colorama')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-setuptools-scm' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/${_pkg}/${_pkg}-${pkgver}.tar.gz"
+        "$pkgname-fix-install.diff")
+sha256sums=('8e1ead85731c0d0f8964887f8c4be9319a32f4a0335d6da4c531d5994e94bbfd'
+            '42595142a253ccb115d5cdb33d07cd21dfd0ea52f365ae104d5cc82b63d96522')
+
+prepare() {
+  patch -Np1 -d "$_pkg-$pkgver" < "$pkgname-fix-install.diff"
+  rm -rf "$_pkg.egg-info"
+}
 
 build() {
-  cd "$srcdir/$_name-$pkgver"
-  python setup.py build
+  cd "$_pkg-$pkgver"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/$_name-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd "$_pkg-$pkgver"
+  python -m installer --destdir "$pkgdir" dist/*.whl
 }
 
 # vim:set ts=2 sw=2 et:

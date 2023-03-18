@@ -1,0 +1,29 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index d3724064..2db843b2 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,8 +1,5 @@
+ [build-system]
+-requires = [
+-    "setuptools >= 35.0.2",
+-    "setuptools_scm >= 2.0.0, <3"
+-]
++requires = ["setuptools", "setuptools_scm"]
+ build-backend = "setuptools.build_meta"
+ 
+ [tool.black]
+diff --git a/setup.py b/setup.py
+index edca6d9a..3d46fb53 100644
+--- a/setup.py
++++ b/setup.py
+@@ -44,10 +44,6 @@ setup(
+     name="vunit_hdl",
+     version=version(),
+     packages=[
+-        "tests",
+-        "tests.lint",
+-        "tests.unit",
+-        "tests.acceptance",
+         "vunit",
+         "vunit.com",
+         "vunit.parsing",
