@@ -1,16 +1,16 @@
 pkgbase = httraqt-git
 	pkgdesc = Is the clone from WinHTTrack tool. GUI is based on Qt libraries. (GIT Version)
-	pkgver = 1.4.10.4.gd3e085c
+	pkgver = 1.4.11.1.ga117556
 	pkgrel = 1
-	url = http://qt-apps.org/content/show.php/HTTraQt?content=155711
+	url = https://httraqt.sourceforge.net
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = cmake
-	depends = qt5-multimedia
+	makedepends = qt6-tools
+	depends = qt6-multimedia
 	depends = httrack>=3
 	source = httraqt::git://git.code.sf.net/p/httraqt/code
 	sha256sums = SKIP
 
 pkgname = httraqt-git
-
