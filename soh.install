@@ -4,7 +4,7 @@ post_upgrade() {
 *** Now install any of the OTR packages (ex. soh-otr-gc_nmq_d)
 *** in order for the game to work. (still requires ROM to build)
 ***
-*** If the game causes an "INVALID STORAGE ACCESS" crash,
+*** If the game causes an "INVALID ACCESS TO STORAGE" crash,
 *** rebuild any installed soh-otr packages.
 EOF
 }
