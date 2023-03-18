@@ -32,7 +32,7 @@ package() {
   ./gosmee completion ${i} > gosmee.${i}
   done
 
-  install -dm644 "gosmee.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/gosmee"
-  install -dm644 "gosmee.bash" "${pkgdir}/usr/share/bash-completion/completions/gosmee"
+  install -Dm644 "gosmee.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/gosmee"
+  install -Dm644 "gosmee.bash" "${pkgdir}/usr/share/bash-completion/completions/gosmee"
   install -Dm644 "gosmee.zsh" "${pkgdir}/usr/share/zsh/site-functions/_gosmee"
 }
