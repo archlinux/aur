@@ -1,13 +1,20 @@
 # Maintainer: RRRRRm <isxiongzj@gmail.com>
 pkgname=typing-tempo
 pkgver=0.4.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Typing Tempo is a 41-key 2D typing rhythm game currently in development, available for Windows and Linux."
 arch=('i686' 'x86_64')
 url="https://rainbeatgames.itch.io/typing-tempo"
 source=("file://$HOME/Downloads/typing-tempo-${pkgver}-linux.zip" 
 "typing-tempo.desktop")
 md5sums=('SKIP' 'SKIP')
+
+prepare() {
+  if [ ! -f "$HOME/Downloads/typing-tempo-${pkgver}-linux.zip" ]; then
+    echo "Error: $HOME/Downloads/typing-tempo-${pkgver}-linux.zip not found." >&2
+    exit 1
+  fi
+}
 
 package() {
   install -dm755 "$pkgdir/opt/typing-tempo"
