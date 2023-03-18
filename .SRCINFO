@@ -1,13 +1,13 @@
 pkgbase = ttf-golos
 	pkgver = 2.000
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.paratype.com/fonts/pt/golos-ui
 	arch = any
 	license = custom:OFL
 	source = ttf-golos-text-2.000.zip::https://api.paratype.com/api/editions/ofl/download/66963
 	source = b2sums
 	b2sums = SKIP
-	b2sums = 8fad5578971942fa47094bb6bcf9a8af8d40708b91be4cd0fe55120fa7c85cc636f5ff3e8114874ceb6fa3b437f3bd909bd296e587a0df099ce1e054a180b3ec
+	b2sums = 17aa3d35590a1619a3922e213c54e71f311f07fd54e6fbe4f100b4c38063ecfa7877af0cb8f193aa40d75cd99f6879a6d3ea8e6cb7cb35fd3eee463d5031d87a
 
 pkgname = ttf-golos-text
 	pkgdesc = Uniwidth sans-serif font suitable for text
