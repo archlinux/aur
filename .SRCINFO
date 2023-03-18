@@ -1,13 +1,13 @@
 pkgbase = tome4-zomnibus_addon
 	pkgdesc = ZOmnibus Addon for tome4.
-	pkgver = 17.5.3
+	pkgver = 17.6.0
 	pkgrel = 1
 	url = https://te4.org/
 	arch = any
 	license = custom
 	depends = tome4=1.7.4
-	noextract = tome-zomnibus_170.teaa
-	source = https://te4.org/sites/default/files/games-addons/tome-zomnibus_170.teaa
-	sha256sums = e582dd3e18d5a2ba84d0e48d4bb88bab004c7058b9b5ca3055b17aefebca1ac3
+	noextract = tome-zomnibus_171.teaa
+	source = https://te4.org/sites/default/files/games-addons/tome-zomnibus_171.teaa
+	sha256sums = 9aa089443e4134c24e7dfcd35ade0d6c174a14504f3a1329a7787d9f2109f8bc
 
 pkgname = tome4-zomnibus_addon
