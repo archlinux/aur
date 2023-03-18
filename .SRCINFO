@@ -1,6 +1,6 @@
 pkgbase = python-sv-ttk
 	pkgdesc = A gorgeous theme for ttk, based on Microsoft's Sun Valley visual styles
-	pkgver = 2.4
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://github.com/rdbende/Sun-Valley-ttk-theme
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-sv-ttk
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/s/sv_ttk/sv_ttk-2.4.tar.gz
-	sha256sums = 14c8186d9b933ea68f825f035d4e4b332a397de69f596e44d2db7c4e0acabd5f
+	source = https://files.pythonhosted.org/packages/source/s/sv_ttk/sv_ttk-2.4.2.tar.gz
+	sha256sums = eb045951e0d35c868a361946f71e222747c01462406a02e3deed18d4a2b463c8
 
 pkgname = python-sv-ttk
