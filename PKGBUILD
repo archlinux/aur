@@ -2,13 +2,13 @@
 # Co-maintainer: Henry-Joseph Audéoud <h.audeoud@gmail.com>
 
 pkgname=piwigo
-pkgver=13.1.0
+pkgver=13.6.0
 pkgrel=1
 pkgdesc='Photo gallery software for the web'
 arch=(any)
 url="https://piwigo.org/"
 license=("GPL")
-depends=('php>=7.3' 'mariadb>=10.1')
+depends=('php>=8.1' 'mariadb>=10.1')
 optdepends=('php-gd: graphic library (one graphic library is required)'
             'imagemagick: graphic library (one graphic library is required)'
             'php-apache: Apache Web Server (one web server is required)'
@@ -27,9 +27,9 @@ source=("${pkgname}-${pkgver}.zip::https://piwigo.org/download/dlcounter.php?cod
         'nginx.conf'
         'php-fpm.conf'
         'php-fpm.service.conf')
-md5sums=('9f0ce3027ff5488b2ab555c9ae47f418'  # Provided by upstream
+md5sums=('df228bb7ef19fa0165bad10d3904dcd5'  # Provided by upstream
          SKIP SKIP SKIP SKIP SKIP)
-sha256sums=('8964252a084669bd9e38eb0dcb356d6112e10b40a2717097adc664741f8cbc61'
+sha256sums=('b0060f52199afcf19e8fdc0d99b4f0be26df60dcd316f30f9094315635c6a2df'
             '64435b2f5fe29ab6201e00a755bff5dbe77bc4450559a2668a21e750ce13f8be'
             '0e6d4af6552f4eead62825999eee115152cf5f884f2c65b759379ac5b15d36f7'
             'f173b613e0b5bb1e3390066ddd362afc7904848f5959b65a03919ae8e7674f91'

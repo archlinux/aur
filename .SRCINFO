@@ -1,12 +1,12 @@
 pkgbase = piwigo
 	pkgdesc = Photo gallery software for the web
-	pkgver = 13.1.0
+	pkgver = 13.6.0
 	pkgrel = 1
 	url = https://piwigo.org/
 	arch = any
 	license = GPL
 	makedepends = unzip
-	depends = php>=7.3
+	depends = php>=8.1
 	depends = mariadb>=10.1
 	optdepends = php-gd: graphic library (one graphic library is required)
 	optdepends = imagemagick: graphic library (one graphic library is required)
@@ -19,19 +19,19 @@ pkgbase = piwigo
 	options = emptydirs
 	backup = etc/webapps/piwigo/apache.conf
 	backup = etc/php/php-fpm.d/piwigo.conf
-	source = piwigo-13.1.0.zip::https://piwigo.org/download/dlcounter.php?code=13.1.0
+	source = piwigo-13.6.0.zip::https://piwigo.org/download/dlcounter.php?code=13.6.0
 	source = apache.conf
 	source = piwigo.perm.sh
 	source = nginx.conf
 	source = php-fpm.conf
 	source = php-fpm.service.conf
-	md5sums = 9f0ce3027ff5488b2ab555c9ae47f418
+	md5sums = df228bb7ef19fa0165bad10d3904dcd5
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
-	sha256sums = 8964252a084669bd9e38eb0dcb356d6112e10b40a2717097adc664741f8cbc61
+	sha256sums = b0060f52199afcf19e8fdc0d99b4f0be26df60dcd316f30f9094315635c6a2df
 	sha256sums = 64435b2f5fe29ab6201e00a755bff5dbe77bc4450559a2668a21e750ce13f8be
 	sha256sums = 0e6d4af6552f4eead62825999eee115152cf5f884f2c65b759379ac5b15d36f7
 	sha256sums = f173b613e0b5bb1e3390066ddd362afc7904848f5959b65a03919ae8e7674f91
