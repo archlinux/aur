@@ -3,7 +3,7 @@
 
 pkgname=pdk
 _ubuntu_release=jammy
-pkgver=2.6.1.0
+pkgver=2.7.0.0
 _pkgver="${pkgver}-1${_ubuntu_release}"
 
 pkgrel=1
@@ -12,7 +12,7 @@ arch=('x86_64')
 url='https://github.com/puppetlabs/pdk'
 options=(staticlibs !strip)
 source=("https://apt.puppetlabs.com/pool/${_ubuntu_release}/puppet7/p/pdk/pdk_${_pkgver}_amd64.deb")
-sha256sums=('c508e7620ed70febf8cd5bc35e054dc05f3ed6cac242f5949fd52d823157e06b')
+sha512sums=('b781bfc682cd6cc9e00504fc43045b02e02cd34135637ec59f9336bf8e288c9cacd6b583980d95d592aebdbd161e5fa44ceb09d773807cc46c4a6a9189b326d0')
 depends=(libxcrypt-compat)
 
 package() {
