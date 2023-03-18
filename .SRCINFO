@@ -1,0 +1,16 @@
+pkgbase = vapoursynth-plugin-planestatsmod-git
+	pkgdesc = Plugin for Vapoursynth: planestatsmod (GIT version)
+	pkgver = r17.4b86d3b
+	pkgrel = 1
+	url = https://github.com/witchymary/VapourSynth-PlaneStatsMod
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	depends = vapoursynth
+	provides = vapoursynth-plugin-planestatsmod
+	conflicts = vapoursynth-plugin-planestatsmod
+	source = planestatsmod::git+https://github.com/witchymary/VapourSynth-PlaneStatsMod.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-planestatsmod-git
