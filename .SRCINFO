@@ -1,21 +1,21 @@
 pkgbase = flex-git
-	pkgdesc = A tool for generating text-scanning programs - from git
-	pkgver = 2.6.4.r89.gd3de49f
+	pkgdesc = The Fast Lexical Analyzer - scanner generator for lexing in C and C++
+	pkgver = 2.6.4.r439.g3aedd28
 	pkgrel = 1
-	epoch = 1
 	url = https://github.com/westes/flex
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = help2man
 	makedepends = git
+	makedepends = help2man
+	makedepends = texinfo
 	depends = glibc
 	depends = m4
 	depends = sh
-	provides = flex
+	provides = flex=2.6.4.r439.g3aedd28
 	conflicts = flex
+	options = staticlibs
 	source = git+https://github.com/westes/flex.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = flex-git
-
