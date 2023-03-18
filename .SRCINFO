@@ -1,7 +1,7 @@
 pkgbase = python-av
 	pkgdesc = Pythonic bindings for FFmpeg
 	pkgver = 10.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.mikeboers.com/pyav/
 	arch = x86_64
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = python-av
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = pkgconf
-	depends = ffmpeg
+	depends = ffmpeg4.4
 	depends = python
 	depends = python-numpy
 	depends = python-pillow
