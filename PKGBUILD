@@ -25,12 +25,10 @@ _vtetag=${pkgver}
 source=(
 	"git+https://gitlab.gnome.org/GNOME/vte.git#tag=$_vtetag"
 	"${_fpatchfile}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fpatchfile}"
-	'add-zsh-notfication-support.patch'
 	'alternate-screen.patch'
 )
 sha256sums=('SKIP'
             'e5672a857c51a620ca5448da29e4ea5b0e319c2a54416a4ca615b0e0392e00a9'
-            '150a151404ca565f70259044661b2ef5cda43142ca677e7da324614eef8cf45a'
             '36fdf6a98c2be1b0c5b38a6116f160cdf0f270db688796ff1199234d64e49600')
 
 prepare() {
@@ -38,7 +36,6 @@ prepare() {
 
 	echo '-> Applying Fedora patches'
 	patch -p1 -i "../${_fpatchfile}-${_fcommit}"
-	#patch -p1 -i '../add-zsh-notfication-support.patch'
 
 	echo '-> Applying tilix patch'
 	patch -p1 -i "../alternate-screen.patch"
