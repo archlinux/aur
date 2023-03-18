@@ -1,7 +1,9 @@
-# Maintainer: Saghm Rossi <aur@saghm.com>
+# Maintainer: Polarian <polarian@polarian.dev>
+# Contributor: Saghm Rossi <aur@saghm.com>
+
 pkgname=curseforge
 pkgver=0.219.2.8847
-pkgrel=1
+pkgrel=2
 pkgdesc="CurseForge desktop client for Linux"
 arch=('x86_64')
 depends=("fuse2")
@@ -9,7 +11,7 @@ url="https://curseforge.com/"
 source=("$pkgname-$pkgver.zip::https://curseforge.overwolf.com/downloads/curseforge-latest-linux.zip"
         'curseforge'
         'LICENSE')
-license=('custom:overwolf')
+license=('custom:overwolf' 'MIT' 'custom:chromium-licenses')
 options=(!strip)
 sha512sums=('5319ad58462b751784bd57ca3e95c365d54ed936dcd5c301ef4dfde4c659567dd7ddb744eca0331851055d5d4899873ebed7bf99b19862fb72a26ce0e049b193'
             'ef669b9423f685dc50f7d4db487fde5c4708ee3991517c3f6a28c0417368ffd9f0ba982e183471cef27e376bbb4f7c18c80eeb76dd189dc591e994049c421ddb'

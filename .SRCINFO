@@ -1,10 +1,12 @@
 pkgbase = curseforge
 	pkgdesc = CurseForge desktop client for Linux
 	pkgver = 0.219.2.8847
-	pkgrel = 1
+	pkgrel = 2
 	url = https://curseforge.com/
 	arch = x86_64
 	license = custom:overwolf
+	license = MIT
+	license = custom:chromium-licenses
 	depends = fuse2
 	options = !strip
 	source = curseforge-0.219.2.8847.zip::https://curseforge.overwolf.com/downloads/curseforge-latest-linux.zip
