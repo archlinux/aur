@@ -1,32 +1,36 @@
-# Maintainer: katt <magunasu.b97@gmail.com>
+# Contributor: katt <magunasu.b97@gmail.com>
 # Contributor: FadeMind <fademind@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
-pkgname=spectacle-git
-pkgver=22.04.0.r21.g8e00fd6
+_name=spectacle
+pkgname=${_name}-git
+pkgver=22.04.0.r311.gca6de42
 pkgrel=1
 pkgdesc='KDE screenshot capture utility'
-arch=(i686 x86_64)
-url=https://kde.org/applications/utilities/org.kde.spectacle
-license=(GPL)
-depends=(xcb-util-cursor purpose knewstuff kwayland qt5-tools kimageannotator)
-makedepends=(extra-cmake-modules kdoctools git)
-conflicts=("${pkgname%-git}")
-provides=("${pkgname%-git}")
-groups=(kde-applications kde-graphics)
-source=(git+https://invent.kde.org/graphics/spectacle.git)
-md5sums=('SKIP')
+arch=('x86_64')
+url='https://apps.kde.org/spectacle/'
+license=('GPL')
+groups=('kde-applications' 'kde-graphics')
+provides=("${_name}")
+conflicts=("${_name}")
+depends=('xcb-util-cursor' 'purpose' 'knewstuff' 'qt5-tools' 'kpipewire')
+makedepends=('git' 'extra-cmake-modules' 'kdoctools' 'plasma-wayland-protocols')
+source=("git+https://invent.kde.org/graphics/spectacle.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    git -C "${pkgname%-git}" describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${_name}"
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cmake -B build -S "${pkgname%-git}" \
+    cmake -B "build" -S "${_name}" \
+        -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_TESTING=OFF
-    cmake --build build
+
+    cmake --build "build"
 }
 
 package() {
-    DESTDIR="$pkgdir" cmake --install build
+    DESTDIR="${pkgdir}" cmake --install "build"
 }
