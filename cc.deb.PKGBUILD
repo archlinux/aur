@@ -93,7 +93,7 @@ echo -e "#!/bin/bash
 "| tee "${_pkgdir}/DEBIAN/postinst"
 echo -e "#!/bin/bash
 [[ -d /opt/skywire/ ]] && rm -rf /opt/skywire/
-"| tee "${_pkgdir}/DEBIAN/postrm"
+"| tee "${_pkgdir}/DEBIAN/prerm"
 chmod +x "${_pkgdir}/DEBIAN/"*
 _msg2 'creating the debian package'
 #create the debian package!
