@@ -1,14 +1,14 @@
 pkgbase = ruby-google-apis-compute_v1
 	pkgdesc = simple REST client for Compute Engine API V1
-	pkgver = 0.63.0
+	pkgver = 0.64.0
 	pkgrel = 1
 	url = https://rubygems.org/gems/google-apis-compute_v1
 	arch = any
 	license = Apache-2.0
 	depends = ruby-google-apis-core
-	noextract = google-apis-compute_v1-0.63.0.gem
+	noextract = google-apis-compute_v1-0.64.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/google-apis-compute_v1-0.63.0.gem
-	sha256sums = ccff9a277e3bf6a7a2093b0815f403953fa519278522aa90a652aad9ed84552b
+	source = https://rubygems.org/downloads/google-apis-compute_v1-0.64.0.gem
+	sha256sums = ff3ca06053ec4a16051917fdfedb43ec188b0b5572dbcf98580b53359387e0d8
 
 pkgname = ruby-google-apis-compute_v1
