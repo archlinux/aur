@@ -2,7 +2,7 @@
 
 pkgname=dxvk-mingw
 pkgver=2.1
-_asyncver=2.1
+_asyncver=v2.1
 pkgrel=1
 pkgdesc='Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, MingW version'
 arch=('x86_64')
@@ -18,17 +18,15 @@ source=(
     "git+https://github.com/KhronosGroup/Vulkan-Headers.git"
     "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
     "libdisplay-info-dxvk::git+https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info.git"
-    "dxvk-async-${_asyncver}.patch::https://gitlab.com/Ph42oN/dxvk-gplasync/-/raw/main/dxvk-gplasync.patch"
+    "dxvk-async-$_asyncver.patch::https://gitlab.com/Ph42oN/dxvk-gplasync/-/raw/$_asyncver/dxvk-gplasync.patch"
     "dxvk-async-conf.patch"
     "dxvk-extraopts.patch"
+    "setup_dxvk.sh::https://raw.githubusercontent.com/doitsujin/dxvk/4f90d7bf5f9ad785660507e0cb459a14dab5ac75/setup_dxvk.sh"
     "setup_dxvk"
 )
 
 prepare() {
     cd dxvk
-
-    git revert -n 7644776f7a3bc6a097f20c1465708acf88ad215f
-    git revert -n 64cb1ad208f80b11400eef779e99fec223754098
 
     git submodule init include/{vulkan,spirv} subprojects/libdisplay-info
     git submodule set-url include/vulkan "$srcdir"/Vulkan-Headers
@@ -112,7 +110,7 @@ build() {
 package() {
     DESTDIR="$pkgdir" ninja -C "build/x32" install
     DESTDIR="$pkgdir" ninja -C "build/x64" install
-    install -Dm 755 -t "$pkgdir/usr/share/dxvk" dxvk/setup_dxvk.sh
+    install -Dm 755 -t "$pkgdir/usr/share/dxvk" "$srcdir"/setup_dxvk.sh
     install -Dm 644 -t "$pkgdir/usr/share/dxvk" dxvk/dxvk.conf
     install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname" dxvk/README.md
     install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname" dxvk/LICENSE
@@ -126,4 +124,5 @@ sha256sums=('SKIP'
             'd127372403c16ff525bf9c96894a5f1c72e875a9d64068a526c96d1d60df76c5'
             'c9c2f02bce1e1e93d511aff73484208456835d4d7601a36ab4524939472fc401'
             'bcc15521e4c7f966a0192a1dabb7fb4935b33db39344ab5b861f9d81486f1362'
+            '0f688815530ab5e8cc89b9b45d9b1d66cd8cd5a7770fb8249339af555a30dfe7'
             'c1f6a18b03d1612b60f8081428f00cfac5e66315fe9d42719f01cf5564deeeff')
