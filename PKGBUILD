@@ -26,12 +26,13 @@ pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
 url="https://blender.org/"
 depends+=('alembic' 'embree' 'libgl' 'python' 'python-numpy' 'openjpeg2' 'libharu' 'potrace' 'openxr'
-         'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
-         'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
+          'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
+          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
 depends+=('libdecor' 'libepoxy')
 optdepends=('cuda: CUDA support in Cycles'
             'optix>=7.4.0: OptiX support in Cycles'
             'usd=21.05: USD export Scene'
+            'openpgl: Intel Path Guiding library in Cycles'
             'openimagedenoise: Intel Open Image Denoise support in compositing')
 makedepends=('git' 'cmake' 'boost' 'mesa' 'ninja' 'llvm')
 makedepends+=('wayland-protocols')
