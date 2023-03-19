@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=bdsup2subpp-git
-pkgver=1.0.3.34.g48e0395
+pkgver=1.0.3.37.g5f8c159
 pkgrel=1
 pkgdesc="Subtitle conversion tool for image based stream formats with scaling capabilities and some other nice features. (GIT version)"
 arch=('x86_64')
@@ -14,8 +14,12 @@ makedepends=('git'
              )
 provides=('bdsup2subpp')
 conflicts=('bdsup2subpp')
-source=('bdsup2subpp::git+https://github.com/TheGreatMcPain/BDSup2SubPlusPlus.git')
-sha256sums=('SKIP')
+source=('bdsup2subpp::git+https://github.com/amichaeltm/BDSup2SubPlusPlus.git'
+        'https://raw.githubusercontent.com/TheGreatMcPain/BDSup2SubPlusPlus/meson/meson.build'
+        )
+sha256sums=('SKIP'
+            'f20112aaccf38ee97b35a183182728ac3ecf58dd5b168ae7bac2432a59569417'
+            )
 
 pkgver() {
   cd bdsup2subpp
@@ -24,6 +28,8 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+
+  cp "${srcdir}/meson.build" bdsup2subpp/meson.build
 
   sed 's|bdsup2sub++|bdsup2subpp|g' \
     -i bdsup2subpp/meson.build \
