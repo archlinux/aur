@@ -124,3 +124,5 @@ package() {
     chmod 444 "$pkgdir"/usr/share/blender/${_suffix}/scripts/addons/cycles/lib/*
   fi
 }
+
+# vim: et:ts=2:sw=2
