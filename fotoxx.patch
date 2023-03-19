@@ -1,0 +1,13 @@
+diff -Naur fotoxx.orig/zfuncs.cc fotoxx.new/zfuncs.cc
+--- fotoxx.orig/zfuncs.cc	2023-01-31 22:43:57.000000000 +0100
++++ fotoxx.new/zfuncs.cc	2023-02-19 16:47:39.344711231 +0100
+@@ -6243,9 +6243,6 @@
+    Plog(1,"start %s %s \n",zappname,ch_time);
+    fflush(0);
+ 
+-   err = stat(zdatadir,&statB);                                                  //  missing files from .../appname/data
+-   if (! err) zshell("ack","cp -R -n %s/* %s",zdatadir,zhomedir);                //    --> user appname home folder
+-
+    tid_main = pthread_self();                                                    //  thread ID of main() process
+    
+    //  GTK initialization
