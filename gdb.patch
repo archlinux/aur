@@ -1,6 +1,6 @@
-diff -rup gdb-7.8+os161-2.1/gdb/python/python.c gdb-7.8+os161-2.1-new/gdb/python/python.c
+diff --color -rup gdb-7.8+os161-2.1/gdb/python/python.c gdb-7.8+os161-2.1-new/gdb/python/python.c
 --- gdb-7.8+os161-2.1/gdb/python/python.c	2014-09-30 23:00:34.000000000 -0300
-+++ gdb-7.8+os161-2.1-new/gdb/python/python.c	2019-09-17 22:09:14.270409170 -0300
++++ gdb-7.8+os161-2.1-new/gdb/python/python.c	2023-03-19 02:50:07.564662354 -0300
 @@ -108,7 +108,7 @@ int gdb_python_initialized;
  static PyMethodDef GdbMethods[];
  
@@ -10,7 +10,45 @@ diff -rup gdb-7.8+os161-2.1/gdb/python/python.c gdb-7.8+os161-2.1-new/gdb/python
  #endif
  
  PyObject *gdb_module;
-@@ -1556,6 +1556,17 @@ finalize_python (void *ignore)
+@@ -272,8 +272,16 @@ ensure_python_env (struct gdbarch *gdbar
+ static void
+ gdbpy_clear_quit_flag (const struct extension_language_defn *extlang)
+ {
++  if(!gdb_python_initialized)
++    return;
++
++  PyGILState_STATE m_state;
++  m_state = PyGILState_Ensure();
++
+   /* This clears the flag as a side effect.  */
+   PyOS_InterruptOccurred ();
++  PyGILState_Release(m_state);
++  return;
+ }
+ 
+ /* Set the quit flag.  */
+@@ -289,7 +297,14 @@ gdbpy_set_quit_flag (const struct extens
+ static int
+ gdbpy_check_quit_flag (const struct extension_language_defn *extlang)
+ {
+-  return PyOS_InterruptOccurred ();
++  if (!gdb_python_initialized)
++    return 0;
++
++  PyGILState_STATE m_state;
++  m_state = PyGILState_Ensure();
++  int res = PyOS_InterruptOccurred ();
++  PyGILState_Release(m_state);
++  return res;
+ }
+ 
+ /* Evaluate a Python command like PyRun_SimpleString, but uses
+@@ -1552,10 +1567,22 @@ finalize_python (void *ignore)
+ 
+   Py_Finalize ();
+ 
++  gdb_python_initialized = 0;
+   restore_active_ext_lang (previous_active);
  }
  #endif
  
@@ -28,7 +66,7 @@ diff -rup gdb-7.8+os161-2.1/gdb/python/python.c gdb-7.8+os161-2.1-new/gdb/python
  /* Provide a prototype to silence -Wmissing-prototypes.  */
  extern initialize_file_ftype _initialize_python;
  
-@@ -1677,6 +1688,9 @@ message == an error message without a st
+@@ -1677,6 +1704,9 @@ message == an error message without a st
       remain alive for the duration of the program's execution, so
       it is not freed after this call.  */
    Py_SetProgramName (progname_copy);
@@ -38,7 +76,7 @@ diff -rup gdb-7.8+os161-2.1/gdb/python/python.c gdb-7.8+os161-2.1-new/gdb/python
  #else
    Py_SetProgramName (progname);
  #endif
-@@ -1686,9 +1700,7 @@ message == an error message without a st
+@@ -1686,9 +1716,7 @@ message == an error message without a st
    PyEval_InitThreads ();
  
  #ifdef IS_PY3K
@@ -49,7 +87,17 @@ diff -rup gdb-7.8+os161-2.1/gdb/python/python.c gdb-7.8+os161-2.1-new/gdb/python
  #else
    gdb_module = Py_InitModule ("_gdb", GdbMethods);
  #endif
-@@ -2005,7 +2017,7 @@ Return a tuple containing all inferiors.
+@@ -1782,8 +1810,7 @@ message == an error message without a st
+     goto fail;
+ 
+   /* Release the GIL while gdb runs.  */
+-  PyThreadState_Swap (NULL);
+-  PyEval_ReleaseLock ();
++  PyEval_SaveThread();
+ 
+   make_final_cleanup (finalize_python, NULL);
+ 
+@@ -2005,7 +2032,7 @@ Return a tuple containing all inferiors.
  };
  
  #ifdef IS_PY3K
@@ -58,9 +106,9 @@ diff -rup gdb-7.8+os161-2.1/gdb/python/python.c gdb-7.8+os161-2.1-new/gdb/python
  {
    PyModuleDef_HEAD_INIT,
    "_gdb",
-diff -rup gdb-7.8+os161-2.1/sim/common/sim-arange.c gdb-7.8+os161-2.1-new/sim/common/sim-arange.c
+diff --color -rup gdb-7.8+os161-2.1/sim/common/sim-arange.c gdb-7.8+os161-2.1-new/sim/common/sim-arange.c
 --- gdb-7.8+os161-2.1/sim/common/sim-arange.c	2014-09-30 23:01:49.000000000 -0300
-+++ gdb-7.8+os161-2.1-new/sim/common/sim-arange.c	2019-09-17 21:43:20.400500779 -0300
++++ gdb-7.8+os161-2.1-new/sim/common/sim-arange.c	2023-03-19 02:50:07.841329026 -0300
 @@ -280,11 +280,7 @@ sim_addr_range_delete (ADDR_RANGE *ar, a
    build_search_tree (ar);
  }
@@ -80,9 +128,9 @@ diff -rup gdb-7.8+os161-2.1/sim/common/sim-arange.c gdb-7.8+os161-2.1-new/sim/co
  
 -#endif /* DEFINE_INLINE_P */
 +#endif /* DEFINE_NON_INLINE_P */
-diff -rup gdb-7.8+os161-2.1/sim/common/sim-arange.h gdb-7.8+os161-2.1-new/sim/common/sim-arange.h
+diff --color -rup gdb-7.8+os161-2.1/sim/common/sim-arange.h gdb-7.8+os161-2.1-new/sim/common/sim-arange.h
 --- gdb-7.8+os161-2.1/sim/common/sim-arange.h	2014-09-30 23:01:49.000000000 -0300
-+++ gdb-7.8+os161-2.1-new/sim/common/sim-arange.h	2019-09-17 21:43:20.400500779 -0300
++++ gdb-7.8+os161-2.1-new/sim/common/sim-arange.h	2023-03-19 02:50:07.841329026 -0300
 @@ -62,7 +62,7 @@ extern void sim_addr_range_delete (ADDR_
  
  /* Return non-zero if ADDR is in range AR, traversing the entire tree.
