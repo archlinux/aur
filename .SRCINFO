@@ -3,6 +3,7 @@ pkgbase = strongbox
 	pkgver = 6.0.0
 	pkgrel = 1
 	url = https://github.com/ogri-la/strongbox
+	changelog = changelog
 	arch = x86_64
 	license = AGPL
 	depends = zlib
@@ -12,6 +13,8 @@ pkgbase = strongbox
 	noextract = strongbox-6.0.0
 	options = !strip
 	source = strongbox-6.0.0::https://github.com/ogri-la/strongbox/releases/download/6.0.0/strongbox
+	source = strongbox.desktop
 	sha256sums = 0e25e7bdefedf67241dbfcfbecaf5daadcbd7052c0e3eaad6a16a80cad5bb71f
+	sha256sums = b021ee257f90c04e05e8819774956fe51a7312f126884d9a71b12e067df48aa4
 
 pkgname = strongbox
