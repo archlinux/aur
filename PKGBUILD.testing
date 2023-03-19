@@ -37,7 +37,8 @@ depends=(
 )
 
 makedepends=(autoconf bison perl flex mingw-w64-gcc
-  git wget rsync mingw-w64-tools lld nasm meson cmake afdko python-pefile
+  git wget rsync mingw-w64-tools lld nasm
+  meson cmake fontforge afdko python-pefile
   glslang vulkan-headers
   clang
   giflib                lib32-giflib

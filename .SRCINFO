@@ -21,6 +21,7 @@ pkgbase = proton-ge-custom
 	makedepends = nasm
 	makedepends = meson
 	makedepends = cmake
+	makedepends = fontforge
 	makedepends = afdko
 	makedepends = python-pefile
 	makedepends = glslang
