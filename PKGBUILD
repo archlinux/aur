@@ -1,4 +1,5 @@
-# Maintainer: Michael Duell <mail@akurei.me> PGP-Fingerprint: FF8C D50E 66E9 5491 F30C  B75E F32C 939C 5566 FF77
+# Maintainer: Adrian Groh <adrian[dot]groh[at]t[dash]online[dot]de>
+# Contributor: Michael Duell <mail@akurei.me> PGP-Fingerprint: FF8C D50E 66E9 5491 F30C  B75E F32C 939C 5566 FF77
 pkgname=rot13
 pkgver=3
 pkgrel=3
