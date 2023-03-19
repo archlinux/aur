@@ -15,5 +15,5 @@ package() {
   tar xvf data.tar.gz
 
   mkdir $pkgdir/usr
-  cp -r ./usr/* $pkgdir/usr/
+  cp -rf ./usr/* $pkgdir/usr/
 }
