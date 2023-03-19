@@ -1,6 +1,6 @@
 pkgbase = pacseek
 	pkgdesc = A terminal user interface for searching and installing Arch Linux packages
-	pkgver = 1.7.7
+	pkgver = 1.7.8
 	pkgrel = 1
 	url = https://github.com/moson-mo/pacseek
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = pacseek
 	depends = pacman
 	optdepends = xdg-utils: open URL on click support
 	optdepends = fakeroot: display upgrades support
-	source = https://github.com/moson-mo/pacseek/archive/v1.7.7.tar.gz
-	sha256sums = 3c9656dbe83d3aab6ded9055798e71c55c0ab492d3134b2d2cacedbdcb865d66
+	source = https://github.com/moson-mo/pacseek/archive/v1.7.8.tar.gz
+	sha256sums = ee1ddd1f6dffdd532e362d301d9382ce6988f58fa01c0f649baea78ee2b17095
 
 pkgname = pacseek
