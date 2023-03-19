@@ -1,13 +1,13 @@
 pkgbase = tnb
 	pkgdesc = CLI-based Telegram Notification Bot
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Wint3rmute/tnb.git
 	arch = x86_64
 	license = custom:WTFPL
 	makedepends = cargo
-	source = tnb::git+https://github.com/Wint3rmute/tnb.git#tag=2.0.0
+	source = tnb::git+https://github.com/Wint3rmute/tnb.git#tag=2.0.1
 	sha1sums = SKIP
 
 pkgname = tnb
