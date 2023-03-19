@@ -1,4 +1,5 @@
-# Maintainer: Mikael Blomstrand <gmail: kmbloms>
+# Maintainer: Adrian Groh <adrian[dot]groh[at]t[dash]online[dot]de>
+# Contributor: Mikael Blomstrand <gmail: kmbloms>
 
 pkgname=fahviewer-git
 pkgver=7.6.11.r82.3ab8029
