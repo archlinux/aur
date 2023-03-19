@@ -1,15 +1,15 @@
 # Maintainer: 6543 <6543 at obermui dot de>
 
 pkgname=adebar
-pkgver=2.4.0
-pkgrel=1
+pkgver=2.4.1
+pkgrel=0
 pkgdesc="Android DEvice Backup And Report, using Bash and ADB."
 arch=("any")
 url="https://codeberg.org/izzy/Adebar"
 license=('GPL2')
 depends=('bash' 'android-tools')
 source=("https://codeberg.org/izzy/${pkgname}/archive/v${pkgver}.tar.gz")
-sha1sums=('5cc0773926f6a51ce601568c1ee033378940e8fb')
+sha1sums=('2c899c59241ba10fe867d4ec92a3a9476cd02644')
 
 build() {
     cd "${srcdir}/${pkgname}"
