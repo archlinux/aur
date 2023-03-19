@@ -1,0 +1,16 @@
+pkgbase = redis-insight-bin
+	pkgdesc = GUI for Redis
+	pkgver = 2.20.0
+	pkgrel = 1
+	url = https://redis.com/redis-enterprise/redis-insight
+	arch = x86_64
+	license = custom:SSPL
+	makedepends = curl
+	makedepends = yq
+	makedepends = gendesk
+	provides = redis-insight
+	conflicts = redisinsight
+	source = redis-insight-bin-2.20.0.AppImage::https://download.redisinsight.redis.com/latest/RedisInsight-v2-linux-x86_64.AppImage
+	cksums = SKIP
+
+pkgname = redis-insight-bin

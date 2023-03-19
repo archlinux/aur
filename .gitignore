@@ -1,0 +1,4 @@
+*.AppImage
+src/
+pkg/
+
