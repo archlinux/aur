@@ -1,0 +1,14 @@
+pkgbase = coredns-openrc
+	pkgdesc = A DNS server that chains plugins - OpenRC init script
+	pkgver = 20230319
+	pkgrel = 1
+	arch = any
+	depends = coredns
+	depends = openrc
+	provides = init-coredns
+	conflicts = init-coredns
+	backup = etc/Corefile
+	source = coredns
+	md5sums = df5427f11ee2e3053b63f11cc13eddcd
+
+pkgname = coredns-openrc

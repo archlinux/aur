@@ -1,0 +1,28 @@
+#!/usr/bin/openrc-run
+
+description="A DNS server that chains plugins"
+
+supervisor="supervise-daemon"
+command="/usr/bin/coredns"
+command_args="-conf /etc/Corefile"
+command_background="yes"
+pidfile="/run/coredns.pid"
+error_log="/var/log/coredns.err"
+
+depend() {
+    need net
+    after clock
+    provide dns
+}
+
+start_pre(){
+    if [ -f "/etc/Corefile" ]; then
+        return 0
+    else
+        eerror "No '/etc/Corefile' config file found. Please create one and retry"
+        return 1
+    fi
+}
+
+# vim: filetype=sh
+
