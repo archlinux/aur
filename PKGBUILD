@@ -11,6 +11,8 @@ pkgdesc="Simplistic and highly configurable status panel for Wayland (No X11 sup
 arch=('any')
 url=https://codeberg.org/dnkl/yambar
 license=('MIT')
+conflicts=('yambar')
+provides=('yambar')
 makedepends=(
 	'meson'
 	'ninja'
@@ -40,7 +42,7 @@ build() {
 		-Db_lto=true \
 		-Dbackend-x11=disabled \
 		-Dbackend-wayland=enabled \
-		-D core-plugins-as-shared-libraries=true ./build
+		./build
 	ninja -C build
 }
 

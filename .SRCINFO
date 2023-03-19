@@ -19,6 +19,8 @@ pkgbase = yambar-wayland
 	optdepends = alsa-lib: for the ALSA module
 	optdepends = json-c: for the XKB module
 	optdepends = libmpdclient: for the MPD module
+	provides = yambar
+	conflicts = yambar
 	source = yambar-wayland-1.9.0.tar.gz::https://codeberg.org/dnkl/yambar/archive/1.9.0.tar.gz
 	sha256sums = 46f3002338f451c154678167bf3d5f593307954b6f381c50ddef2726b1a8c811
 
