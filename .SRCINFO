@@ -1,11 +1,11 @@
 pkgbase = vencord-installer-bin
 	pkgdesc = A GUI app for installing Vencord
-	pkgver = 1.2.5
+	pkgver = 1.2.6
 	pkgrel = 1
 	url = https://github.com/Vencord/Installer
 	arch = x86_64
 	license = GPL3
-	source = VencordInstaller::https://github.com/Vencord/Installer/releases/download/v1.2.5/VencordInstaller-x11
-	sha256sums = 2df1a1bbd97dd4a8383445c9410506f0692bccea4c49cdf941a76f7e27933feb
+	source = VencordInstaller::https://github.com/Vencord/Installer/releases/download/v1.2.6/VencordInstaller-x11
+	sha256sums = b6752fb31edeab46f33c4e9277920e37d6541585d86865a8d3a010d7276b583a
 
 pkgname = vencord-installer-bin
