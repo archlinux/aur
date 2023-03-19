@@ -3,7 +3,7 @@
 
 pkgname=linux-command-gpt
 pkgver=0.1.2
-pkgrel=5
+pkgrel=6
 pkgdesc='Get Linux commands in natural language with the power of ChatGPT'
 arch=('x86_64' 'aarch64')
 url='https://github.com/asrul10/linux-command-gpt'

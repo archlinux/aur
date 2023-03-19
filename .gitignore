@@ -1,5 +1,6 @@
 pkg/
 src/
+linux-command-gpt/
 
 *.pkg.*
 *.tar.*
