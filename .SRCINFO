@@ -1,7 +1,7 @@
 pkgbase = node-hp-scan-to
 	pkgdesc = Allow to send scan from HP All-in-One Printer to computer
-	pkgver = 1.2.1
-	pkgrel = 2
+	pkgver = 1.3.0
+	pkgrel = 0
 	url = https://github.com/manuc66/node-hp-scan-to
 	arch = any
 	license = MIT
@@ -11,6 +11,6 @@ pkgbase = node-hp-scan-to
 	depends = nodejs
 	noextract = node-hp-scan-to-1.3.0.tgz
 	source = node-hp-scan-to-1.3.0.tgz::https://registry.npmjs.org/node-hp-scan-to/-/node-hp-scan-to-1.3.0.tgz
-	sha512sums = 73322289bfe0440d0c844a3868b9adf6970487fdd3651c069123a84ca1740e81df02bca5544fba4cdde07f9a752845954ba07ea994b321c01bf464594f7ce20a
+	sha512sums = a2e10830bbed2572633f21c336ef586d82f5b69b81e63d285ab651b903a2643e7203dc90ead90e3388145052a0a8c94ba7ed1f96021a0bd3f443fe021ad25dc4
 
 pkgname = node-hp-scan-to
