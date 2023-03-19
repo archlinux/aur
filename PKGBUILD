@@ -5,7 +5,7 @@
 
 # Maintainer: Adrian Lopez <zeioth@hotmail.com>
 pkgname=rofi-zeal-git
-pkgver=1.0
+pkgver=1.0.r.
 pkgrel=1
 epoch=
 pkgdesc="Search code documentation from rofi"
@@ -35,9 +35,9 @@ pkgver() {
 }
 
 package() {
-    mkdir -p ~/.local/share/rofi/rofi-zeal/
+    sudo mkdir -p /usr/share/rofi/rofi-zeal/
     mkdir -p ~/.cache/rofi/rofi-zeal/
-    cp "${srcdir}"/rofi-zeal/rofi-zeal.sh ~/.local/share/rofi/rofi-zeal/rofi-zeal.sh
-    chmod u+x ~/.local/share/rofi/rofi-zeal/rofi-zeal.sh
-    ln -sf ~/.local/share/rofi/rofi-zeal/rofi-zeal.sh ~/.local/bin/rofi-zeal
+    sudo cp "${srcdir}"/rofi-zeal/rofi-zeal.sh /usr/share/rofi/rofi-zeal/rofi-zeal.sh
+    sudo chmod u+x /usr/share/rofi/rofi-zeal/rofi-zeal.sh
+    sudo cp /usr/share/rofi/rofi-zeal/rofi-zeal.sh /usr/bin/rofi-zeal
 }
