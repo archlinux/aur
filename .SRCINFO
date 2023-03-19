@@ -1,14 +1,14 @@
 pkgbase = adif2cabrillo
 	pkgdesc = Ham Radio - QSO log-file converter
 	pkgver = 1.0.5
-	pkgrel = 2
-	url = http://users.telenet.be/on4qz/a2c/index.html
+	pkgrel = 3
+	url = https://www.qsl.net/on4qz/a2c/index.html
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = qt5-base
 	depends = hamradio-menus
-	source = http://users.telenet.be/on4qz/a2c/downloads/adif2cabrillo_1.0.5.tar.gz
+	source = https://www.qsl.net/on4qz/a2c/downloads/adif2cabrillo_1.0.5.tar.gz
 	source = adif2cabrillo.desktop
 	md5sums = e236ede34ea7f5b7f92b97837ce3015a
 	md5sums = 4a27d24658775a0aa2cbd91ea8e54355
@@ -16,4 +16,3 @@ pkgbase = adif2cabrillo
 	sha256sums = 0e9aacd6da7e1c89f30cd72d9b6adc3b4050e018fba153d586bcc70d7f07355d
 
 pkgname = adif2cabrillo
-
