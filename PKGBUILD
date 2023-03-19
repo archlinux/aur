@@ -2,7 +2,7 @@
 _pkgname=linux_media
 _gitname=media_build
 pkgname="tbs-$_pkgname-git"
-pkgver=r1536.9a225f4_6.2.2_arch1_1
+pkgver=r1540.575a119_6.2.7_arch1_1
 _updatedmodules="$(uname -r)/updates"
 pkgrel=1
 pkgdesc="TBS linux open source drivers"
@@ -10,16 +10,20 @@ arch=('x86_64')
 url="https://github.com/tbsdtv/linux_media"
 license=('GPL2')
 depends=('tbs-firmware')
-makedepends=('git' 'linux-headers' 'patchutils' 'perl-proc-processtable')
+makedepends=('git' 'linux-headers' 'patchutils' 'perl-proc-processtable' 'dos2unix')
 provides=("$_pkgname")
 conflicts=('tbs-dvb-drivers')
 source=('kernel6.patch')
-sha256sums=('69475e8ef8526c4204721ce47696527abbca1a89bee414fc6ef62465aa0f8896')
+sha256sums=('6e1b9e1ac99ed240f7e38dbcd55510c2f5d2d40d215ee7ac61f79e600c01a81b')
 
 prepare() {
 
 	git clone https://github.com/tbsdtv/$_gitname.git
     git clone --depth=1 https://github.com/tbsdtv/$_pkgname.git -b latest "$srcdir/media"
+
+    dos2unix "$srcdir/media/drivers/media/dvb-frontends/gx1503.c"
+    dos2unix "$srcdir/media/drivers/media/tuners/mxl603.c"
+
 	cd "$srcdir"
 	patch -p0 -i ../kernel6.patch
 

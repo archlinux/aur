@@ -1,6 +1,6 @@
 pkgbase = tbs-linux_media-git
 	pkgdesc = TBS linux open source drivers
-	pkgver = r1536.9a225f4_6.2.2_arch1_1
+	pkgver = r1540.575a119_6.2.7_arch1_1
 	pkgrel = 1
 	url = https://github.com/tbsdtv/linux_media
 	arch = x86_64
@@ -9,10 +9,11 @@ pkgbase = tbs-linux_media-git
 	makedepends = linux-headers
 	makedepends = patchutils
 	makedepends = perl-proc-processtable
+	makedepends = dos2unix
 	depends = tbs-firmware
 	provides = linux_media
 	conflicts = tbs-dvb-drivers
 	source = kernel6.patch
-	sha256sums = 69475e8ef8526c4204721ce47696527abbca1a89bee414fc6ef62465aa0f8896
+	sha256sums = 6e1b9e1ac99ed240f7e38dbcd55510c2f5d2d40d215ee7ac61f79e600c01a81b
 
 pkgname = tbs-linux_media-git
