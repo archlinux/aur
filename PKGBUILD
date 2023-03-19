@@ -3,7 +3,7 @@
 _name=pytest-archon
 pkgname=python-${_name}
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A little tool that helps you structure (large) Python projects"
 arch=('any')
 url="https://github.com/jwbargsten/${_name}"
@@ -42,5 +42,5 @@ package() {
 	cd "${_name}-${pkgver}"
 	local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 	python -m installer --destdir="$pkgdir" dist/*.whl
-	rm -R "${pkgdir}/${site_packages}"/{tests,build}
+#	rm -R "${pkgdir}/${site_packages}"/{tests,build}
 }

@@ -1,7 +1,7 @@
 pkgbase = python-pytest-archon
 	pkgdesc = A little tool that helps you structure (large) Python projects
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jwbargsten/pytest-archon
 	arch = any
 	license = Apache
