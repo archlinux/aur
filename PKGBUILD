@@ -1,42 +1,36 @@
-# Maintainer: graysky <graysky AT archlinux DOT us>
+# Maintainer: graysky <therealgraysky AT proton DOT me>
+# Contributor: David Runge <dvzrv@archlinux.org>
 
-pkgname='profile-sync-daemon-git'
-_pkgname='profile-sync-daemon'
-pkgver=r648.18955ef
+pkgname=profile-sync-daemon-git
+_pkgname=${pkgname/-git/}
+_branch=fuse-overlayfs
+pkgver=r738.6c925e4
 pkgrel=1
-pkgdesc='Syncs browser profiles to tmpfs reducing SSD/HDD calls and speeding-up browsers.'
+pkgdesc="Symlinks and syncs browser profile dirs to RAM"
 arch=('any')
-url='https://github.com/graysky2/profile-sync-daemon'
+url="https://github.com/graysky2/profile-sync-daemon"
 license=('MIT')
-depends=('procps-ng' 'rsync' 'systemd' 'findutils')
-makedepends=('git')
-conflicts=('firefox-sync' 'goanysync' 'go-anysync-git' 'iceweasel-sync'
-'tmpfs-store' 'tmpfs-sync' 'user-profile-sync-daemon' 'profile-sync-daemon')
-provides=('profile-sync-daemon')
-_branch='master'
-#_branch='unstable'
-source=("git://github.com/graysky2/profile-sync-daemon#branch=$_branch")
-install=psd.install
-sha256sums=('SKIP')
+depends=('bash' 'findutils' 'procps-ng' 'rsync' 'systemd')
+optdepends=('zsh-completions: for completion when using zsh'
+            'fuse-overlayfs: for overlayfs mode')
+install="psd.install"
+conflicts=(profile-sync-daemon)
+source=("git+https://github.com/graysky2/profile-sync-daemon.git#branch=$_branch")
+b2sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$_pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-	cd "$srcdir/$_pkgname"
-	# set version of psd to match pkgver
-	sed -i "s/@VERSION@/$pkgver/" "$srcdir/$_pkgname/common/profile-sync-daemon.in"
+  cd "$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "$_pkgname"
-	make
+  cd "$_pkgname"
+  make
 }
 
 package() {
-	cd "$_pkgname"
-	make DESTDIR="$pkgdir" install
-	install -Dm644 MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$_pkgname"
+  make DESTDIR="$pkgdir/" install
+  install -vDm 644 MIT "${pkgdir}/usr/share/licenses/${pkgname/-git/}/LICENSE"
+  install -vDm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname/-git/}"
 }
