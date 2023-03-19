@@ -4,13 +4,13 @@
 pkgname=linux-command-gpt-git
 _pkgname=linux-command-gpt
 pkgver=v0.1.2.r0.g952eee1
-pkgrel=1
+pkgrel=2
 pkgdesc='Get Linux commands in natural language with the power of ChatGPT'
 arch=('x86_64' 'aarch64')
 url='https://github.com/asrul10/linux-command-gpt'
 license=('MIT')
 depends=('glibc')
-makedepends=('go')
+makedepends=('git' 'go')
 provides=('linux-command-gpt')
 conflicts=('linux-command-gpt')
 source=("git+${url}")
