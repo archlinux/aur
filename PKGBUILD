@@ -47,7 +47,6 @@ build() {
   yarn --cwd redisinsight/ install --ignore-optional
   yarn install
   yarn build:statics
-  NODE_OPTIONS=--openssl-legacy-provider
   yarn build:prod
   yarn electron-builder build --dir -p never
 }
