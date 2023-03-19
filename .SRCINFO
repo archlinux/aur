@@ -1,0 +1,22 @@
+pkgbase = google-breakpad
+	pkgdesc = An open-source multi-platform crash reporting system
+	pkgver = v2022.07.12
+	pkgrel = 1
+	url = https://chromium.googlesource.com/breakpad/breakpad/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = BSD
+	makedepends = git
+	depends = gcc-libs
+	provides = google-breakpad
+	conflicts = google-breakpad-git
+	noextract = lss-v2022.10.12.tar.gz
+	options = staticlibs
+	options = !strip
+	source = google-breakpad-v2022.07.12.tar.gz::https://chromium.googlesource.com/breakpad/breakpad/+archive/refs/tags/v2022.07.12.tar.gz
+	source = lss-v2022.10.12.tar.gz::https://chromium.googlesource.com/linux-syscall-support/+archive/refs/tags/v2022.10.12.tar.gz
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = google-breakpad
