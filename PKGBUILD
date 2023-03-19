@@ -4,8 +4,8 @@
 # then please put 'unknown'.
 
 # Maintainer: Adrian Lopez <zeioth@hotmail.com>
-pkgname=chatgpt-shell-cli-git
-pkgver=1.0.r.
+pkgname=chatgpt-shell-cli
+pkgver=0.1
 pkgrel=1
 epoch=
 pkgdesc="Use OpenAI's ChatGPT and DALL-E from the terminal."
@@ -17,27 +17,20 @@ depends=()
 makedepends=()
 checkdepends=()
 optdepends=()
-provides=(chatgpt-shell-cli-git)
-conflicts=(chatgpt-shell-cli)
+provides=(chatgpt-shell-cli)
+conflicts=(chatgpt-shell-cli-git)
 replaces=()
 backup=()
 options=()
 install=
 changelog=
-source=("git+$url")
+source=("git+$url#commit=e47853176d2cc36602ca04507fd3b5525f623737")
 noextract=()
 sha256sums=('SKIP')
 validpgpkeys=()
 
-pkgver() {
-  cd "${_pkgname}"
-  printf "1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 package() {
-   # Compile
-   cd "${srcdir}"/chatGPT-shell-cli
-   
    # Add it to /usr/local/bin to make it executable
+   cd "${srcdir}"/chatGPT-shell-cli
    sudo cp "${srcdir}"/chatGPT-shell-cli/chatgpt.sh /usr/local/bin/chatgpt
 }
