@@ -6,7 +6,7 @@
 # Maintainer: Adrian Lopez <zeioth@hotmail.com>
 pkgname=rofi-zeal-git
 pkgver=1.0.r.
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Search code documentation from rofi"
 arch=(x86_64 i686)
