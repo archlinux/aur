@@ -1,6 +1,6 @@
 pkgbase = odilia
 	pkgdesc = Odilia Screenreader -- Make Linux Accessible!
-	pkgver = 0.2b
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://odilia.app/
 	arch = x86_64

@@ -1,7 +1,7 @@
-# Maintainer Tait Hoyem <tait+ygg_aur@tait.tech>
+# Maintainer Tait Hoyem <tait+odilia_aur@tait.tech>
 
 pkgname=odilia
-pkgver=0.2b
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Odilia Screenreader -- Make Linux Accessible!"
 url="https://odilia.app/"
@@ -19,7 +19,7 @@ prepare() {
 
 build() {
     cd $srcdir/odilia
-    cargo build
+    cargo build --release
 }
 
 package() {
