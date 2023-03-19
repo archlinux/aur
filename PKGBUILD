@@ -20,7 +20,7 @@ _fragment="${FRAGMENT:-#branch=main}"
 _CMAKE_FLAGS+=( -DWITH_CYCLES_NETWORK=OFF )
 
 pkgname=blender-git
-pkgver=3.6.r122558.g45c4a0b1ef1
+pkgver=3.6.r122562.gd8a439ebaf2
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
@@ -112,7 +112,16 @@ build() {
         -DXR_OPENXR_SDK_ROOT_DIR=/usr \
         -DPYTHON_VERSION="${_pyver}" \
         "${_CMAKE_FLAGS[@]}"
-  ninja -C "$srcdir/build" ${MAKEFLAGS:--j1}
+  NINJA_CMD="ninja -C ""$srcdir/build"
+  if [[ "x$BLENDER_GIT_USE_SLICE_AUR" == "xy" ]]; then
+    ./../user-blender.slice.sh > user-blender.slice
+    mv user-blender.slice user-`id -u`-blender.slice
+    killninja() { killall ninja; }
+    trap killninja INT
+    systemd-run --uid=`whoami` --slice=user-`id -u`-blender.slice -P --working-directory="$PWD" --wait --send-sighup bash -c "$NINJA_CMD"
+  else
+    $NINJA_CMD
+  fi
 }
 
 package() {
