@@ -29,7 +29,7 @@ prepare() {
 }
 
 build() {
-  arch-meson "vte-$pkgver" build -D docs=false -D b_lto=false
+  arch-meson "vte-$pkgver" build -D docs=false -D b_lto=false -D gtk4=false
   meson compile -C build
 }
 
