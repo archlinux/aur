@@ -8,7 +8,7 @@ pkgdesc='A free, open-source Monero light wallet.'
 url='https://featherwallet.org'
 arch=('x86_64')
 license=('custom')
-conflicts=('featherwallet' 'monero-feather' 'monero-feather-git' 'monero-feather-bin' 'monero-feather-appimage')
+conflicts=('featherwallet' 'monero-feather' 'monero-feather-git' 'monero-feather-bin' 'monero-feather-appimage' 'featherwallet-appimage')
 source=("$url/files/releases/linux/feather-$pkgver-linux.zip"
         "https://raw.githubusercontent.com/feather-wallet/feather/master/LICENSE")
 sha512sums=('62caac73a91e1c064e43dc0fd77d6aae0a8a72a774fc40374984cde03029e88c5e1feee5cfbbf9e7d8f9ad32d21bffc618d83cef7f3f13d8a5ca071035967e11'

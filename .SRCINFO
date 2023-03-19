@@ -10,6 +10,7 @@ pkgbase = featherwallet-bin
 	conflicts = monero-feather-git
 	conflicts = monero-feather-bin
 	conflicts = monero-feather-appimage
+	conflicts = featherwallet-appimage
 	source = https://featherwallet.org/files/releases/linux/feather-2.4.3-linux.zip
 	source = https://raw.githubusercontent.com/feather-wallet/feather/master/LICENSE
 	sha512sums = 62caac73a91e1c064e43dc0fd77d6aae0a8a72a774fc40374984cde03029e88c5e1feee5cfbbf9e7d8f9ad32d21bffc618d83cef7f3f13d8a5ca071035967e11
