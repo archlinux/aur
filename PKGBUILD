@@ -2,12 +2,12 @@
 _pkgname=linuxqq
 pkgname=linuxqq-nt-bwrap
 pkgver=3.1.0_9572
-pkgrel=2
+pkgrel=3
 pkgdesc="New Linux QQ based on Electron, with bubblewrap sandbox and some tweaks"
 arch=('x86_64' 'aarch64')
 url='https://im.qq.com/linuxqq/index.shtml'
 license=('custom')
-depends=('at-spi2-core' 'alsa-lib' 'desktop-file-utils' 'gtk3' 'gtk-update-icon-cache' 'libnotify' 'nss' 'gnutls' 'bubblewrap' 'xdg-user-dirs' 'flatpak-xdg-utils' 'snapd-xdg-open-git')
+depends=('at-spi2-core' 'alsa-lib' 'desktop-file-utils' 'gtk3' 'gtk-update-icon-cache' 'libnotify' 'nss' 'gnutls' 'bubblewrap' 'xdg-user-dirs' 'flatpak-xdg-utils' 'snapd-xdg-open-git' 'libvips')
 makedepends=('p7zip')
 optdepends=('libappindicator-gtk3: 以显示托盘图标'
 			'gjs: 提供 GNOME Wayland 下的截图支持')
@@ -48,6 +48,9 @@ package() {
 	mkdir -p "${pkgdir}/usr/share/licenses/${_pkgname}"
 	ln -s "/opt/QQ/LICENSE.electron.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 	ln -s "/opt/QQ/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSES.chromium.html"
+
+	# 临时解决方案: 删除 linuxqq 自带的 libvips 以解决浏览图片崩溃问题
+	rm -f "${pkgdir}/opt/QQ/resources/app/sharp-lib/libvips-cpp.so.42"
 
 	# 对 desktop 文件做处理，使其使用正确的图标，启动 start.sh
 	cp "${srcdir}/start.sh" "${pkgdir}/opt/QQ/start.sh"
