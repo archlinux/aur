@@ -8,9 +8,9 @@ pkgdesc='A user-friendly IRC bouncer'
 arch=('x86_64')
 url='https://soju.im/'
 license=('AGPL3')
+depends=('sqlite')
 makedepends=('git' 'go' 'scdoc')
 optdepends=(
-    "sqlite: SQLite support"
     "postgresql: PostgreSQL support"
 )
 install=$_pkgname.install
@@ -43,7 +43,7 @@ build() {
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    export GOFLAGS="-tags=libsqlite3 -buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
     make PREFIX=/usr
 }
 
