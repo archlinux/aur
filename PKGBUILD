@@ -2,51 +2,72 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
-_pkgname=upower
 pkgname=upower-silent-mouse
-pkgver=0.99.13
-pkgrel=1
-pkgdesc="Abstraction for enumerating power devices, listening to device events and querying history and statistics, patched with guiambros' silent-mouse notification fix"
+pkgver=1.90.0
+pkgrel=3
+pkgdesc="Abstraction for enumerating power devices, listening to device events and querying history and statistics"
 url="https://upower.freedesktop.org"
 arch=(x86_64)
 license=(GPL)
-depends=(systemd libimobiledevice libgudev)
-makedepends=(docbook-xsl gobject-introspection python git gtk-doc)
+depends=(
+  libgudev
+  libimobiledevice
+  systemd
+  usbmuxd
+)
+makedepends=(
+  docbook-xsl
+  git
+  gobject-introspection
+  gtk-doc
+  meson
+  python
+)
+checkdepends=(
+  python-dbus
+  python-dbusmock
+  python-gobject
+  python-packaging
+  umockdev
+)
 provides=(upower)
 conflicts=(upower)
 backup=(etc/UPower/UPower.conf)
-_commit=0f6cc0a10be22d7ddd684e1cd851e4364a440494  # tags/UPOWER_0_99_13^0
+_commit=d4259c009b3ca1169dfd19231a040c233fc3b58d  # tags/v1.90.0^0
 source=("git+https://gitlab.freedesktop.org/upower/upower.git#commit=$_commit"
         "https://github.com/guiambros/silent-mouse/raw/main/up-device-0_99_13.patch")
-sha256sums=('SKIP'
-            'ebff59c52ea3d9ced604fd6507e8f99e62467785b40443da52f41bf3b5f941dd')
+b2sums=('SKIP'
+        'f06d23bfe0358e18a7fa02ecfcb8f0041fe0239042d43ce08dc63138ba7281a5106d7ebfb37495887fee6f8fb90150d4df23a443025ba72defa9e446744e8629')
 
 pkgver() {
-	cd $_pkgname
-	git describe --tags | sed -e 's/UPOWER_//' -e 's/_/\./g' -e 's/-/+/g'
+  cd upower
+  git describe --tags | sed -e 's/^v\|^UPOWER_//;s/_/\./g;s/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
-	cd "${srcdir}/${_pkgname}/src"
-	patch -Np0 -i "${srcdir}/up-device-0_99_13.patch"
+  cd upower
 
-	cd ..
-	NOCONFIGURE=1 ./autogen.sh
+  # Fix use of libimobiledevice
+  git cherry-pick -n 81a89385a45d3de1028bcd86b3688fb465b4035c
+
+  cd src
+  patch -Np0 -i "${srcdir}/up-device-0_99_13.patch"
 }
 
 build() {
-	cd $_pkgname
-	./configure \
-		--prefix=/usr \
-		--sysconfdir=/etc \
-		--localstatedir=/var \
-		--libexecdir=/usr/lib \
-		--disable-static \
-		--enable-gtk-doc
-	make
+  arch-meson upower build
+  meson compile -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
-	cd $_pkgname
-	make DESTDIR="$pkgdir" install
+  depends+=(libg{lib,object,io}-2.0.so)
+  provides+=(libupower-glib.so)
+
+  meson install -C build --destdir "$pkgdir"
 }
+
+# vim:set sw=2 sts=-1 et:
