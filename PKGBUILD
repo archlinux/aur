@@ -19,6 +19,25 @@ _fragment="${FRAGMENT:-#branch=main}"
 #some extra, unofficially supported stuff goes here:
 _CMAKE_FLAGS+=( -DWITH_CYCLES_NETWORK=OFF )
 
+__check_git_depth_blender_git_aur() {
+  for f in "${VCSCLIENTS[@]}"; do
+    if [[ "$(echo $f | grep -e '^git::' | grep -e 'depth.*1' | wc -l)" = "1" ]]; then
+      VCSCLIENTS_CONFIRMED=1 && export GITFLAGS="$GITFLAGS --depth 1" && break;
+    else
+      VCSCLIENTS_CONFIRMED=0
+    fi
+  done
+  if [[ "$VCSCLIENTS_CONFIRMED" != 1 && "$VCSCLIENTS_IGNORE_BLENDER_GIT_AUR" != "y" ]]; then
+    read -p "Warning: blender-git takes a lot of space to download. If you're using an AUR helper, or installing not to develop Blender, almost all of this is wasted. Consider temporarily modifying /etc/makepkg.conf such that \$VCSCLIENTS reads 'git::git --depth 1'. Ignore this warning? (You can export VCSCLIENTS_IGNORE_BLENDER_GIT_AUR=y to make this choice permanent.) [y/N]" BLENDER_GIT_VCSCLIENTS_ANSWER
+    if [[ "$BLENDER_GIT_VCSCLIENTS_ANSWER" != "y" ]]; then
+      exit 1
+    else
+      export GITFLAGS='--depth 1'
+    fi
+  fi
+}
+__check_git_depth_blender_git_aur
+
 pkgname=blender-git
 pkgver=3.6.r122558.g45c4a0b1ef1
 pkgrel=1
