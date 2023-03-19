@@ -4,15 +4,14 @@
 pkgname=qgrid
 pkgver=3.2
 _pkgver=3_2
-pkgrel=1
+pkgrel=2
 pkgdesc="Ham Radio - Maidenhead grid squares calculator"
 arch=('i686' 'x86_64')
-url="http://users.telenet.be/on4qz/qgrid/index.html"
+url="https://www.qsl.net/on4qz/qgrid/index.html"
 license=('GPL3')
 depends=('qt5-base' 'hamradio-menus')
 makedepends=('imagemagick')
-source=(http://users.telenet.be/on4qz/$pkgname/downloads/${pkgname}_${_pkgver}.tgz
-#http://users.telenet.be/on4qz/$pkgname/downloads/${pkgname}_$pkgver.tgz
+source=(https://www.qsl.net/on4qz/$pkgname/downloads/${pkgname}_${_pkgver}.tgz
 	$pkgname.desktop)
 
 prepare() {
