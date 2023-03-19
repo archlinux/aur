@@ -1,13 +1,16 @@
 pkgbase = python-pox
 	pkgdesc = utilities for filesystem exploration and automated builds
-	pkgver = 0.3.0
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/uqfoundation/pox
 	arch = any
 	license = BSD
-	makedepends = python-setuptools
-	depends = python
-	source = python-pox-0.3.0.tar.gz::https://github.com/uqfoundation/pox/archive/refs/tags/pox-0.3.0.tar.gz
-	sha256sums = c228f129e99cc871f25ec8c0c366c53ba773aa51613914e21581362c615e13d3
+	makedepends = python-setuptools>=42.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.7
+	source = python-pox-0.3.2.tar.gz::https://github.com/uqfoundation/pox/archive/refs/tags/pox-0.3.2.tar.gz
+	sha256sums = 4a2573d7b64a4fe3c337b9d996d80089d0920c60d7920f94a4a2d14a8da8b202
 
 pkgname = python-pox
