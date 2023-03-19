@@ -5,7 +5,7 @@
 # Contributor: Kevin Kyzer <kev@k3v.in>
 # Contributor: Xabre <xabre @archlinux.info>
 pkgname=mudlet
-pkgver=4.16.0
+pkgver=4.17.0
 pkgrel=1
 pkgdesc="A modern MUD client with a graphical user inteface and built in Lua scripting"
 arch=('i686' 'x86_64')
@@ -14,14 +14,13 @@ license=('GPL')
 depends=('qt5-multimedia' 'hunspell' 'libzip' 'glu' 'lua51-filesystem' 'luazip5.1' 'lua51-sql-sqlite' \
          'lrexlib-pcre5.1' 'qt5-gamepad' 'lua51-luautf8'  'ttf-font' 'pugixml' 'lua-yajl' 'qtkeychain-qt5' 'lua51-lcf')
 makedepends=('boost' 'qt5-tools')
-optdepends=('discord-rpc-api: discord integration'
-            'ttf-bitstream-vera: default font'
+optdepends=('ttf-bitstream-vera: default font'
             'ttf-ubuntu-font-family: default font'
             'noto-fonts-emoji: emoji font support')     
 #source=("http://www.mudlet.org/download/Mudlet-${pkgver}.tar.xz")
 ##using alternate link
 source=("https://www.mudlet.org/wp-content/files/Mudlet-${pkgver}.tar.xz")
-sha256sums=('aa36c80e6e75761f834032f9ca7573b3a7991998afe90017c535be5c523af30b')
+sha256sums=('9a95bde8cf8e5fe6839795a515dda79d037fc48077aed6ac346d8be0951084f2')
 
 
 build() {
