@@ -1,34 +1,39 @@
 # Maintainer: Adrian Lopez <zeioth@hotmail.com>
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
+
 pkgname=linux-command-gpt
 pkgver=0.1.2
-pkgrel=4
-epoch=
-pkgdesc="Get Linux commands in natural language with the power of ChatGPT."
-arch=(any)
-url="https://github.com/asrul10/linux-command-gpt.git"
+pkgrel=5
+pkgdesc='Get Linux commands in natural language with the power of ChatGPT'
+arch=('x86_64' 'aarch64')
+url='https://github.com/asrul10/linux-command-gpt'
 license=('MIT')
-groups=()
-depends=(go)
-makedepends=(go)
-checkdepends=()
-optdepends=()
-provides=(linux-command-gpt)
-conflicts=(linux-command-gpt-git)
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("git+$url#commit=952eee1a29219839df0c7fb2f442e60d41163551")
-noextract=()
+depends=('glibc')
+makedepends=('go')
+conflicts=('linux-command-gpt-git')
+source=("git+${url}#tag=v${pkgver}")
 sha256sums=('SKIP')
-validpgpkeys=()
+
+build() {
+    cd "${pkgname}"
+    # https://wiki.archlinux.org/index.php/Go_package_guidelines
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOPATH="${srcdir}/go"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    go build -o lcg
+}
+
+check() {
+  cd "${pkgname}"
+  go test ./...
+}
 
 package() {
-   # Compile stable version
-   cd "${srcdir}"/linux-command-gpt
-   go build -o lcg
-   
-   # Add it to /usr/bin to make it executable
-   install -Dm755 "${srcdir}/linux-command-gpt/lcg" "${pkgdir}/usr/bin/lcg"
+    cd "${pkgname}"
+    install -Dm755 "lcg" "${pkgdir}/usr/bin/lcg"
+    install -Dm755 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+

@@ -1,15 +1,15 @@
 pkgbase = linux-command-gpt
-	pkgdesc = Get Linux commands in natural language with the power of ChatGPT.
+	pkgdesc = Get Linux commands in natural language with the power of ChatGPT
 	pkgver = 0.1.2
-	pkgrel = 4
-	url = https://github.com/asrul10/linux-command-gpt.git
-	arch = any
+	pkgrel = 5
+	url = https://github.com/asrul10/linux-command-gpt
+	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = go
-	depends = go
-	provides = linux-command-gpt
+	depends = glibc
 	conflicts = linux-command-gpt-git
-	source = git+https://github.com/asrul10/linux-command-gpt.git#commit=952eee1a29219839df0c7fb2f442e60d41163551
+	source = git+https://github.com/asrul10/linux-command-gpt#tag=v0.1.2
 	sha256sums = SKIP
 
 pkgname = linux-command-gpt
