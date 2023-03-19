@@ -1,15 +1,15 @@
-pkgbase = php7-pdlib
+pkgbase = php70-pdlib
 	pkgdesc = PDlib - A PHP extension for Dlib
-	pkgver = 1.0.2
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/goodspb/pdlib
 	arch = x86_64
 	license = MIT License
 	makedepends = cmake
 	depends = dlib
-	depends = php7
+	depends = php70
 	depends = libx11
-	depends = openblas
+	depends = blas
 	depends = cblas
 	depends = lapack
 	depends = libsm
@@ -21,10 +21,9 @@ pkgbase = php7-pdlib
 	depends = libjpeg-turbo
 	depends = sqlite
 	depends = fftw
-	source = https://github.com/goodspb/pdlib/archive/v1.0.2.tar.gz
+	source = https://github.com/goodspb/pdlib/archive/v1.1.0.tar.gz
 	source = pdlib.ini
-	sha256sums = e91a3c7396ee2027f957fa34fcc2567e614e4e1c1570ae7d5d16d4203541ba4a
+	sha256sums = 6c255c07dfb70d34019faecd99160d03846c83925452c9e93d5606edc8d55803
 	sha256sums = c325ddedc2e685f12119a0f4e8a1a45430a1ecb15368179f4c0c7153352b8a0e
 
-pkgname = php7-pdlib
-
+pkgname = php70-pdlib
