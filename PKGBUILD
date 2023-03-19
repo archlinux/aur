@@ -10,7 +10,7 @@
 #Use: VAR1=0 VAR2=1 pamac
 
 # Use FRAGMENT=#{commit,tag,brach}=xxx for bisect build
-_fragment="${FRAGMENT:-#branch=master}"
+_fragment="${FRAGMENT:-#branch=main}"
 
 # Use CUDA_ARCH to build for specific GPU architecture
 # Supports: single arch (sm_52) and list of archs (sm_52;sm_60)
@@ -20,7 +20,7 @@ _fragment="${FRAGMENT:-#branch=master}"
 _CMAKE_FLAGS+=( -DWITH_CYCLES_NETWORK=OFF )
 
 pkgname=blender-git
-pkgver=3.5.r119175.g129197f20d3
+pkgver=3.6.r122558.g45c4a0b1ef1
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
@@ -43,11 +43,11 @@ license=('GPL')
 # the path in .gitmodules.
 # More info:
 #   http://wiki.blender.org/index.php/Dev:Doc/Tools/Git
-source=("git://git.blender.org/blender.git${_fragment}"
-        'blender-addons.git::git://git.blender.org/blender-addons.git'
-        'blender-addons-contrib.git::git://git.blender.org/blender-addons-contrib.git'
-        'blender-translations.git::git://git.blender.org/blender-translations.git'
-        'blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git'
+source=("git+https://projects.blender.org/blender/blender.git${_fragment}"
+        'git+https://projects.blender.org/blender/blender-addons.git'
+        'git+https://projects.blender.org/blender/blender-addons-contrib.git'
+        'git+https://projects.blender.org/blender/blender-translations.git'
+        'git+https://projects.blender.org/blender/blender-dev-tools.git'
         usd_python.patch #add missing python headers when building against python enabled usd.
         embree.patch #add missing embree link.
         )
@@ -71,7 +71,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/blender"
   # update the submodules
-  git -c protocol.file.allow=always submodule update --init --recursive --remote
+  git -c protocol.file.allow=always submodule update --init --recursive --remote $GITFLAGS
   git apply -v "${srcdir}"/{embree,usd_python}.patch
 }
 
