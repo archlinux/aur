@@ -1,7 +1,7 @@
 pkgbase = vstax
 	pkgdesc = Software to fill the tax forms of the canton of Valais, Switzerland
-	pkgver = 2022_1.0.2
-	pkgrel = 61
+	pkgver = 2022_1.0.4
+	pkgrel = 65
 	url = http://www.vs.ch/vstax
 	install = vstax.install
 	changelog = ChangeLog
@@ -10,9 +10,9 @@ pkgbase = vstax
 	depends = java-runtime
 	depends = shared-mime-info
 	depends = desktop-file-utils
-	source = https://sftp.vs.ch/vstax/2022/vstax2022_1.0.2-61_amd64.deb
+	source = https://sftp.vs.ch/vstax/2022/vstax2022_1.0.4-65_amd64.deb
 	source = archlinux.patch
-	sha256sums = 151c8b2c28c402e1748d67332f5d4a9d6f9ec800d59cf294611b8a1e55e6ec56
+	sha256sums = c4eb50859d91ea134e26358716d1ce9e740821cf44a480ead602d8b35295a39f
 	sha256sums = 65d318828d2a993056c0b405452f7d5fd0c9e9bd1b608b562cc59c297caef9d9
 
 pkgname = vstax
