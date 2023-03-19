@@ -1,0 +1,13 @@
+pkgbase = swirl-bin
+	pkgdesc = A High Level, statically typed, Compiled programming language
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/SwirlLang/Swirl
+	arch = x86_64
+	license = GPL
+	provides = swirl
+	conflicts = swirl
+	source = swirl::https://github.com/SwirlLang/Swirl/releases/download/v0.0.4-alpha/swirl-linux
+	md5sums = 810d7e3f525782c4a939f99ec5ba02c5
+
+pkgname = swirl-bin
