@@ -4,7 +4,7 @@
 
 _name=gaphor
 pkgname=python-${_name}
-pkgver=2.15.0
+pkgver=2.17.0
 pkgrel=1
 pkgdesc="Simple and easy to use modeling tool for UML using GTK3"
 arch=('any')
@@ -37,7 +37,7 @@ checkdepends=(
 	'xorg-server-xvfb'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('1a33317cd3bb9758e88eaaf87be028927f414cba2f608f1a90562cc51bdd9214')
+sha256sums=('c098fabf3fa7ccf6ea2408888667e8caeb34608c40c69ba57ea217020277c787')
 
 build() {
 	cd "${_name}-${pkgver}"
@@ -51,7 +51,7 @@ build() {
 check() {
 	cd "${srcdir}/${_name}-${pkgver}"
 #	xvfb-run --auto-servernum python -m pytest -k 'not' tests/
-	xvfb-run --auto-servernum python -m pytest tests/
+	xvfb-run --auto-servernum python -m pytest -s tests/
 }
 
 prepare() {
