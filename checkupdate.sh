@@ -42,6 +42,7 @@ if [[ $upstreamVersion -gt $pkgbuildVersion ]]; then
   sed -r -i -e 's/(pkgver = )[0-9]+/\1'$upstreamVersion'/' .SRCINFO
   sed -r -i -e 's/(pkgrel = )[0-9]+/\11/' .SRCINFO
   sed -r -i -e 's/(josm)[0-9]+/\1'$upstreamVersion'/' .SRCINFO
+  sed -r -i -e 's/(trunk#revision=)[0-9]+/\1'$upstreamVersion'/' .SRCINFO
 
   git commit --no-signoff PKGBUILD .SRCINFO -m "Automatic update ($pkgbuildVersion->$upstreamVersion)"
   git push
