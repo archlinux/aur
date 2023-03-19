@@ -35,9 +35,7 @@ pkgver() {
 }
 
 package() {
-    sudo mkdir -p /usr/share/rofi/rofi-zeal/
     mkdir -p ~/.cache/rofi/rofi-zeal/
-    sudo cp "${srcdir}"/rofi-zeal/rofi-zeal.sh /usr/share/rofi/rofi-zeal/rofi-zeal.sh
-    sudo chmod u+x /usr/share/rofi/rofi-zeal/rofi-zeal.sh
-    sudo cp /usr/share/rofi/rofi-zeal/rofi-zeal.sh /usr/bin/rofi-zeal
+    sudo cp "${srcdir}"/rofi-zeal/rofi-zeal.sh /usr/bin/rofi-zeal
+    sudo chmod u+x /usr/bin/rofi-zeal
 }
