@@ -8,7 +8,7 @@
 pkgname=wine-ge-custom
 _srctag=GE-Proton7-39
 pkgver=${_srctag//-/.}
-pkgrel=1
+pkgrel=2
 epoch=1
 
 #_winever=${pkgver%.*}
@@ -40,16 +40,11 @@ license=(LGPL)
 depends=(
   attr             lib32-attr
   fontconfig       lib32-fontconfig
-  lcms2            lib32-lcms2
-  libxml2          lib32-libxml2
   libxcursor       lib32-libxcursor
   libxrandr        lib32-libxrandr
-  libxdamage       lib32-libxdamage
   libxi            lib32-libxi
   gettext          lib32-gettext
   freetype2        lib32-freetype2
-  glu              lib32-glu
-  libsm            lib32-libsm
   gcc-libs         lib32-gcc-libs
   libpcap          lib32-libpcap
   desktop-file-utils
@@ -58,14 +53,11 @@ depends=(
 makedepends=(autoconf bison perl fontforge flex mingw-w64-gcc
   git
   giflib                lib32-giflib
-  libpng                lib32-libpng
   gnutls                lib32-gnutls
   libxinerama           lib32-libxinerama
   libxcomposite         lib32-libxcomposite
-  libxmu                lib32-libxmu
   libxxf86vm            lib32-libxxf86vm
   libldap               lib32-libldap
-  mpg123                lib32-mpg123
   openal                lib32-openal
   v4l-utils             lib32-v4l-utils
   alsa-lib              lib32-alsa-lib
@@ -73,7 +65,6 @@ makedepends=(autoconf bison perl fontforge flex mingw-w64-gcc
   mesa                  lib32-mesa
   mesa-libgl            lib32-mesa-libgl
   opencl-icd-loader     lib32-opencl-icd-loader
-  libxslt               lib32-libxslt
   libpulse              lib32-libpulse
   libva                 lib32-libva
   gtk3                  lib32-gtk3
@@ -82,27 +73,22 @@ makedepends=(autoconf bison perl fontforge flex mingw-w64-gcc
   sdl2                  lib32-sdl2
   vkd3d                 lib32-vkd3d
   libgphoto2
-  gsm
   ffmpeg
   opencl-headers
 )
 
 optdepends=(
   giflib                lib32-giflib
-  libpng                lib32-libpng
   libldap               lib32-libldap
   gnutls                lib32-gnutls
-  mpg123                lib32-mpg123
   openal                lib32-openal
   v4l-utils             lib32-v4l-utils
   libpulse              lib32-libpulse
   alsa-plugins          lib32-alsa-plugins
   alsa-lib              lib32-alsa-lib
-  libjpeg-turbo         lib32-libjpeg-turbo
   libxcomposite         lib32-libxcomposite
   libxinerama           lib32-libxinerama
   opencl-icd-loader     lib32-opencl-icd-loader
-  libxslt               lib32-libxslt
   libva                 lib32-libva
   gtk3                  lib32-gtk3
   gst-plugins-base-libs lib32-gst-plugins-base-libs
@@ -110,7 +96,6 @@ optdepends=(
   sdl2                  lib32-sdl2
   vkd3d                 lib32-vkd3d
   libgphoto2
-  gsm
   ffmpeg
   dosbox
 )
