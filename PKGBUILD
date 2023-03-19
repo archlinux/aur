@@ -1,12 +1,13 @@
 pkgname='enpass-bin'
 _pkgname='enpass'
 pkgver=6.8.5.1173
-pkgrel=1
+pkgrel=2
 pkgdesc='A multiplatform password manager'
 arch=('x86_64')
 url='http://enpass.io/'
 license=('custom')
-depends=('libxss' 'lsof' 'curl' 'libxkbcommon-x11' 'libxcb')
+depends=('libxss' 'lsof' 'curl' 'libxkbcommon-x11' 'libxcb' 'xcb-util-wm'
+         'xcb-util-image' 'xcb-util-keysyms' 'xcb-util-renderutil')
 optdepends=('libxdg-basedir: Open links in the default browser.'
             'libqtxdg: Open links in the default browser (Qt implementation)')
 provides=("${_pkgname}")
