@@ -6,7 +6,7 @@
 #   gpg --recv-keys 3CE464558A84FDC69DB40CFB090B11993D9AEBB5
 
 pkgname=guix
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='A purely functional package manager for the GNU system'
 arch=('x86_64' 'i686' 'armv7h')
@@ -23,16 +23,19 @@ makedepends=(
   'help2man'
   'po4a')
 depends=(
-  'guile>=2.2.4'
+  'guile>=3.0.3'
   'guile-gcrypt>=0.1.0'
+  'guile-gnutls'
   'guile-sqlite3>=0.1.0'
   'guile-zlib>=0.1.0'
   'guile-lzlib'
   'guile-avahi'
-  'guile-git-lib>=0.3.0'
+  'guile-git-lib>=0.5.0'
   'guile-json>=4.3.0'
+  'guile-lzma'
   'sqlite>=3.6.19'
   'bzip2'
+  'disarchive'
   'gnutls'
   'libgcrypt')
 optdepends=(
@@ -43,13 +46,15 @@ optdepends=(
   'guile-lib: to use the go importer')
 source=(
   "https://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig}
-  'guix-1.3.0-revert-display-download-progress-tty.patch')
+  'guix-1.4.0-tests-guix-home.patch'
+  'guix-1.4.0-guile-3.0.9.patch')
 install="${pkgname}.install"
 sha256sums=(
-  'cb0f461c48d5823dfef7f88879a179737ee14c4dd93732d671932fc4e25053e8'
-  '5c1c724a146e73b0e2b352dda1e1a4eb052e7dc89837f590693f0af23a6c404d'
-  '4e110acfc8b8940b5de880ba782f607be666327a36b2ca2a124e96cc6846a560')
-validpgpkeys=('27D586A4F8900854329FF09F1260E46482E63562')
+  '43c769cbf632ef05449ac1fa48c1ba152c33494c6abc7e47137bba7b2149f8a4'
+  'b30c7e63048c3fe4e72d6146f107e55e27d1ea1eb5bc7fd8818f20a1a32c8e10'
+  '930b94fae51eb84f8fd1ad5b6be373dc2a8c8887cf71d100d404159c079ddece'
+  'c4b746b0e90981b5efde1fde093632899950d1724df9182bc9a45b4773be1f43')
+validpgpkeys=('3CE464558A84FDC69DB40CFB090B11993D9AEBB5')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
@@ -90,8 +95,10 @@ check() {
 		error "The working directory cannot be longer than 36 bytes."
 		false
 	fi
-	# Make sure we have a valid shell accepting -c option
-	SHELL=/bin/sh make check
+	# Make sure we have a valid shell accepting -c option. We cannot run tests
+	# in parallel because it can cause permission denied error when copying
+	# gnu/packages/bootstrap/i686-linux/bash.
+	SHELL=/bin/sh make check -j1
 }
 
 package() {
@@ -110,9 +117,12 @@ package() {
 	local system_unit_dir="${pkgdir}/usr/lib/systemd/system"
 	local guix_daemon_default="${system_unit_dir}/guix-daemon.service"
 	local guix_daemon_upstream="${system_unit_dir}/guix-daemon-latest.service"
+	local guix_gc_default="${system_unit_dir}/guix-gc.service"
+	local guix_gc_upstream="${system_unit_dir}/guix-gc-latest.service"
 	local guix_publish_default="${system_unit_dir}/guix-publish.service"
 	local guix_publish_upstream="${system_unit_dir}/guix-publish-latest.service"
 	mv "${guix_daemon_default}" "${guix_daemon_upstream}"
+	mv "${guix_gc_default}" "${guix_gc_upstream}"
 	mv "${guix_publish_default}" "${guix_publish_upstream}"
 	# Generate default systemd service files from upstream ones by fixing paths
 	local guix_profile_root="/var/guix/profiles/per-user/root/current-guix"
@@ -122,14 +132,21 @@ package() {
 		> "${guix_daemon_default}"
 	sed -e "s|^ExecStart=${guix_profile_root}/bin|ExecStart=/usr/bin|" \
 		-e "s|^Description=\(.*\)|Description=\1 (default)|" \
+		-e "/^Environment=/d" "${guix_gc_upstream}" \
+		> "${guix_gc_default}"
+	sed -e "s|^ExecStart=${guix_profile_root}/bin|ExecStart=/usr/bin|" \
+		-e "s|^Description=\(.*\)|Description=\1 (default)|" \
 		-e "/^Environment=/d" "${guix_publish_upstream}" \
 		> "${guix_publish_default}"
 	# Make sure the above sed commands really work
 	! cmp "${guix_daemon_default}" "${guix_daemon_upstream}"
+	! cmp "${guix_gc_default}" "${guix_gc_upstream}"
 	! cmp "${guix_publish_default}" "${guix_publish_upstream}"
 	# Edit the description of upstream systemd service files
 	sed -i "s|^Description=\(.*\)|Description=\1 (upstream)|" \
-		"${guix_daemon_upstream}" "${guix_publish_upstream}"
+		"${guix_daemon_upstream}" \
+		"${guix_gc_upstream}" \
+		"${guix_publish_upstream}"
 	# The default makepkg strip option cannot be used here because binaries
 	# installed in /usr/share must not be stripped.
 	# To keep user-defined 'strip' and 'debug' options useful, we still

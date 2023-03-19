@@ -1,0 +1,52 @@
+From 8b2721de6af76780611fe9f86fa5d4cd062400d1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ludovic=20Court=C3=A8s?= <ludo@gnu.org>
+Date: Wed, 25 Jan 2023 17:29:09 +0100
+Subject: [PATCH] packages: Adjust 'generate-package-cache' for Guile 3.0.9.
+
+* gnu/packages.scm (generate-package-cache): Adjust for Guile 3.0.9.
+---
+ gnu/packages.scm | 16 +++++++++++-----
+ 1 file changed, 11 insertions(+), 5 deletions(-)
+
+diff --git a/gnu/packages.scm b/gnu/packages.scm
+index 61345f75a9..80c22d1d7f 100644
+--- a/gnu/packages.scm
++++ b/gnu/packages.scm
+@@ -1,5 +1,5 @@
+ ;;; GNU Guix --- Functional package management for GNU
+-;;; Copyright © 2012-2020, 2022 Ludovic Courtès <ludo@gnu.org>
++;;; Copyright © 2012-2020, 2022-2023 Ludovic Courtès <ludo@gnu.org>
+ ;;; Copyright © 2013 Mark H Weaver <mhw@netris.org>
+ ;;; Copyright © 2014 Eric Bavier <bavier@member.fsf.org>
+ ;;; Copyright © 2016, 2017 Alex Kost <alezost@gmail.com>
+@@ -38,6 +38,7 @@ (define-module (gnu packages)
+   #:use-module (ice-9 vlist)
+   #:use-module (ice-9 match)
+   #:use-module (ice-9 binary-ports)
++  #:autoload   (rnrs bytevectors) (bytevector?)
+   #:autoload   (system base compile) (compile)
+   #:use-module (srfi srfi-1)
+   #:use-module (srfi srfi-26)
+@@ -442,10 +443,15 @@ (define exp
+     (lambda (port)
+       ;; Store the cache as a '.go' file.  This makes loading fast and reduces
+       ;; heap usage since some of the static data is directly mmapped.
+-      (put-bytevector port
+-                      (compile `'(,@exp)
+-                               #:to 'bytecode
+-                               #:opts '(#:to-file? #t)))))
++      (match (compile `'(,@exp)
++                      #:to 'bytecode
++                      #:opts '(#:to-file? #t))
++        ((? bytevector? bv)
++         (put-bytevector port bv))
++        (proc
++         ;; In Guile 3.0.9, the linker can return a procedure instead of a
++         ;; bytevector.  Adjust to that.
++         (proc port)))))
+   cache-file)
+ 
+ 
+-- 
+2.40.0
+
