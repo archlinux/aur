@@ -3,7 +3,7 @@
 pkgbase=purc
 pkgname=purc
 pkgver=0.9.7
-pkgrel=1
+pkgrel=2
 pkgdesc="The prime HVML interpreter for C Language."
 arch=(x86_64
     aarch64
@@ -37,7 +37,7 @@ makedepends=(git
             pkgconf
             zlib
             icu)
-optdepends=('purc-midnight-commander: A generic HVML renderer in text mode for development and debugging.'
+optdepends=('python-numpy: Scientific tools for Python'
             'webkit2gtk-hvml: Web content engine for GTK (HVML)'
             'webkit2gtk: Web content engine for GTK'
             'xguipro: xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit.')

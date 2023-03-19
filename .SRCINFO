@@ -1,7 +1,7 @@
 pkgbase = purc
 	pkgdesc = The prime HVML interpreter for C Language.
 	pkgver = 0.9.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/HVML/PurC
 	arch = x86_64
 	arch = aarch64
@@ -27,7 +27,7 @@ pkgbase = purc
 	depends = glib2
 	depends = bison
 	depends = flex
-	optdepends = purc-midnight-commander: A generic HVML renderer in text mode for development and debugging.
+	optdepends = python-numpy: Scientific tools for Python
 	optdepends = webkit2gtk-hvml: Web content engine for GTK (HVML)
 	optdepends = webkit2gtk: Web content engine for GTK
 	optdepends = xguipro: xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit.
