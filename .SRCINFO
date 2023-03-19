@@ -1,0 +1,12 @@
+pkgbase = nsproxy
+	pkgdesc = A command-line tool that force applications to use a specific SOCKS5 or HTTP proxy.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/nlzy/nsproxy
+	arch = any
+	license = GPL2
+	depends = cmake
+	source = nsproxy-0.1.1.zip::https://github.com/nlzy/nsproxy/archive/refs/tags/v0.1.1.zip
+	sha512sums = a4b7679deda3dd735d496ba625fb5ad93ef4a542117ba6699be2af50ea3a30877688077cf13184ef73718eec5345ccf6cce65f26076e6a9a22fa11a093bee61f
+
+pkgname = nsproxy
