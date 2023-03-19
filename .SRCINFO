@@ -1,6 +1,6 @@
 pkgbase = blender-git
 	pkgdesc = A fully integrated 3D graphics creation suite (development)
-	pkgver = 3.6.r122558.g45c4a0b1ef1
+	pkgver = 3.6.r122562.gd8a439ebaf2
 	pkgrel = 1
 	url = https://blender.org/
 	arch = i686
@@ -40,14 +40,15 @@ pkgbase = blender-git
 	optdepends = cuda: CUDA support in Cycles
 	optdepends = optix>=7.4.0: OptiX support in Cycles
 	optdepends = usd=21.05: USD export Scene
+	optdepends = openpgl: Intel Path Guiding library in Cycles
 	optdepends = openimagedenoise: Intel Open Image Denoise support in compositing
 	provides = blender
 	conflicts = blender
-	source = git+https://projects.blender.org/blender/blender.git#branch=main
-	source = git+https://projects.blender.org/blender/blender-addons.git
-	source = git+https://projects.blender.org/blender/blender-addons-contrib.git
-	source = git+https://projects.blender.org/blender/blender-translations.git
-	source = git+https://projects.blender.org/blender/blender-dev-tools.git
+	source = blender::git+https://github.com/blender/blender#branch=main
+	source = blender-addons::git+https://github.com/blender/blender-addons
+	source = blender-addons-contrib::git+https://github.com/blender/blender-addons-contrib
+	source = blender-translations::git+https://github.com/blender/blender-translations
+	source = blender-dev-tools::git+https://github.com/blender/blender-dev-tools
 	source = usd_python.patch
 	source = embree.patch
 	sha256sums = SKIP
