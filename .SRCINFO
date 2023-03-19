@@ -1,7 +1,7 @@
 pkgbase = proton
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components
 	pkgver = 7.0.6.5
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/ValveSoftware/Proton
 	install = proton.install
@@ -242,7 +242,8 @@ pkgbase = proton
 	source = https://dl.winehq.org/wine/wine-gecko/2.47.3/wine-gecko-2.47.3-x86_64.tar.xz
 	source = https://github.com/madewokherd/wine-mono/releases/download/wine-mono-7.4.0/wine-mono-7.4.0-x86.tar.xz
 	source = 0001-wldap32-25946b48148784e8275c1685f6498ab88f553ca3.patch
-	source = 0001-AUR-pkgbuild-changes.patch
+	source = 0001-AUR-Pkgbuild-changes.patch
+	source = 0002-AUR-Do-not-update-cargo-crates.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -270,6 +271,7 @@ pkgbase = proton
 	sha256sums = 0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75
 	sha256sums = 9249ece664bcf2fecb1308ea1d2542c72923df9fe3df891986f137b2266a9ba3
 	sha256sums = 11aa65bb6b8da1814557edf18a3cdada80135b021634236feabf93d2a194838b
-	sha256sums = 4ef6d327b35eb3e91b2060c78971fae1b1c3d25b06cf436724646213fac5bc49
+	sha256sums = 6aca033616cc556d7d3c3708ccbe3438ad563c490e15e257efe6d38389dd5f91
+	sha256sums = 9c107461440cb8cd7d54f994b235dc0be6a11370e0a60578523633c07024c976
 
 pkgname = proton
