@@ -6,14 +6,11 @@ pkgbase = bdsup2subpp-git
 	arch = x86_64
 	license = Apache
 	makedepends = git
-	makedepends = meson
 	makedepends = qt5-tools
 	depends = qt5-base
 	provides = bdsup2subpp
 	conflicts = bdsup2subpp
 	source = bdsup2subpp::git+https://github.com/amichaeltm/BDSup2SubPlusPlus.git
-	source = https://raw.githubusercontent.com/TheGreatMcPain/BDSup2SubPlusPlus/meson/meson.build
 	sha256sums = SKIP
-	sha256sums = f20112aaccf38ee97b35a183182728ac3ecf58dd5b168ae7bac2432a59569417
 
 pkgname = bdsup2subpp-git
