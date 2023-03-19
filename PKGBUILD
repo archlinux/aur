@@ -180,8 +180,8 @@ _opt_pagesize="Letter" # A4, Letter, Legal
 set -u
 pkgname='hylafaxplus'
 _pkgnick='hylafax'
-pkgver='7.0.6' # remove TEMP706 patches below
-pkgrel='2'
+pkgver='7.0.7'
+pkgrel='1'
 _sendfaxvsicommit='18fabc74490362cd26690331d546d727c727db25'
 pkgdesc='Enterprise Fax Server'
 arch=('i686' 'x86_64')
@@ -189,7 +189,6 @@ url='http://hylafax.sourceforge.net/'
 license=('custom')
 depends=('dash' 'libtiff' 'pam' 'ghostscript' 'sharutils' 'jbigkit' 'lcms2' 'gawk') # 'gsfonts-type1') # 'cron'
 # BASE64 is the default so HylaFAX+ doesn't need uuencode but I put it in anyways to placate configure and the bin finder in faxsetup!
-makedepends=('python-html2text' 'curl') # TEMP706 patch until 7.0.7
 optdepends=(
   'smtp-server: email support' # this must be configured if installed or Hylafax will spam the process table with orphaned sendmail processes
   'avantfax: manage HylaFAX+ through web browser'
@@ -230,7 +229,7 @@ source=(
   '0006-hylafaxplus-jobfmt-assigned-modem-to-used-modem.patch'
   '1000-hylafaxplus-modem-support.patch'
 )
-md5sums=('84fd80dcd9e98d21b28b674ea7ab05b4'
+md5sums=('17ec4957f66ef422afe928eeb4a879d9'
          '3af38f1eaa4f9fb92cac2f0cf9544321'
          '916f2c100eb2b41ef6b35f96bdb9444a'
          'ae0a86260ab7ed94187a5d8e560a82ac'
@@ -242,7 +241,7 @@ md5sums=('84fd80dcd9e98d21b28b674ea7ab05b4'
          '0de848f554e2a93c09352eadb2b2e260'
          '151567ca960d860c88ff0e5154cb5b78'
          'dd1e2859dd1cc13db863ba74bc539ca0')
-sha256sums=('4877d7a498697e592dbcf37c2e9e1a8a8e0b90a03627baa6a49da8a42923c588'
+sha256sums=('8b9bcd4fe25f08b658e6cfcb3514183c22cbbfdf7166fa092510011a8228f88d'
             '0aed186ab30fdb7cf36895a0ff50b03bd4a68db63cf4f19763995dabd9caffb0'
             '466ab17cdaa1eb1f1f0b5bdc444a90df5835a1896b1363584264920bbc3929f2'
             '8b2dbf38d13d0c25e6164e691187b4f45ae971c009e80911cd96aac0f61cf871'
@@ -333,12 +332,6 @@ prepare() {
   # diff -pNau5 'hfaxd/Jobs.c++'{.Arch,} > '0006-hylafaxplus-jobfmt-assigned-modem-to-used-modem.patch'
   patch -Nup0 -i "${srcdir}/0006-hylafaxplus-jobfmt-assigned-modem-to-used-modem.patch"
   test ! -s 'hfaxd/Jobs.c++.Arch' || echo "${}"
-
-  # TEMP706 patch until 7.0.7
-  patch -Nup2 -i <(curl -s "https://sourceforge.net/p/hylafax/HylaFAX+/2695/tree//trunk/faxd/G3Decoder.c%2B%2B?diff=52195b74c4d1046daa201dfd:2694" | html2text)
-  patch -Nup2 -i <(curl -s "https://sourceforge.net/p/hylafax/HylaFAX+/2695/tree//trunk/faxd/G3Encoder.c%2B%2B?diff=52195b74c4d1046daa201dfd:2694" | html2text)
-  patch -Nup2 -i <(curl -s "https://sourceforge.net/p/hylafax/HylaFAX+/2695/tree//trunk/faxd/t4.h?diff=52195b74c4d1046daa201dfd:2694" | html2text)
-  patch -Nup2 -i <(curl -s "https://sourceforge.net/p/hylafax/HylaFAX+/2695/tree//trunk/faxd/tif_fax3.h?diff=52195b74c4d1046daa201dfd:2694" | html2text)
 
   #cp -pr 'config'{,.Arch}
   # diff -pNaru5 'config'{.Arch,} > '1000-hylafaxplus-modem-support.patch'
