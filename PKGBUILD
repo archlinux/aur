@@ -1,11 +1,6 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: Adrian Lopez <zeioth@hotmail.com>
 pkgname=linux-command-gpt-git
-pkgver=1.0.r2.6a8403b
+pkgver=1.0.r6.59125fa
 pkgrel=2
 epoch=
 pkgdesc="Get Linux commands in natural language with the power of ChatGPT."
@@ -40,5 +35,5 @@ package() {
    go build -o lcg
    
    # Add it to /usr/bin to make it executable
-   sudo cp "${srcdir}"/linux-command-gpt/lcg /usr/bin/lcg
+   install -Dm755 "${srcdir}/linux-command-gpt/lcg" "${pkgdir}/usr/bin/lcg"
 }
