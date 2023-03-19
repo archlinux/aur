@@ -20,7 +20,7 @@ pkgbase = soju-git
 	source = soju.tmpfiles
 	sha256sums = SKIP
 	sha256sums = c050d3f376f43e1cc22e75f445027862df8d09230e18cbb0913ab58ddced78aa
-	sha256sums = 4c609a9b267bb4877ba5e212f71146c87eccb13e2801edd7b68003e2ad8c2555
+	sha256sums = a6335600217d5e46b38ec4358fcc6533070dd910bb572d481c499f43eb54d2d2
 	sha256sums = 7d9e772f42765a82be0459bcbded2074f68d450ab09c3627ca3b59978188b61b
 
 pkgname = soju-git
