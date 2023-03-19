@@ -1,0 +1,13 @@
+pkgbase = python-anthemav
+	pkgdesc = Python asyncio module to interface with Anthem AVM and MRX receivers
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/nugget/python-anthemav
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = python-anthemav-1.4.2.tar.gz::https://github.com/nugget/python-anthemav/archive/refs/tags/v1.4.2.tar.gz
+	b2sums = 57941e90273adfa93db2f1fa647bf6a376ca55af9b3050b15da7dcacb2455e3fe25a07e82120059e280707d295e880a3e7d3b7255a481ba9ef3599a8b51cde28
+
+pkgname = python-anthemav
