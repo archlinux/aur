@@ -1,7 +1,7 @@
 pkgbase = strongbox
 	pkgdesc = World of Warcraft addon manager. F/OSS, ad-free and privacy respecting.
 	pkgver = 6.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ogri-la/strongbox
 	changelog = changelog
 	arch = x86_64
