@@ -22,7 +22,7 @@ then mount -t proc /proc $MOUNT_POINT/proc || exit 1
 fi
 
 # chroot exit signal pipe
-if [ ! -f $MOUNT_POINT/exit.fifo ]
+if [ ! -e $MOUNT_POINT/exit.fifo ]
 then mkfifo $MOUNT_POINT/exit.fifo
 fi
 
