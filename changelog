@@ -1,48 +1,12 @@
-# 2023-01-30: Stable release 18646 (23.01)
-
-Medium enhancements
-        Fix #21423: Prevent validation error codes from clashing. Note that the full effect of this change will not be visible until 2024-01-01 for backwards/forwards compatibility reasons.
-            See #18230: Move RightAngleBuildingTest error code to 4101 from 3701 -- this is due to a conflict with with pt_assistant, and all ignored entries with the group 3701 will be removed. 
-Add/improve/fix/change Internal Presets, Map Paint Style and Validation rules
-        Fix #21878: Add building types riding_hall and sports_hall
-        Fix #22588: Improve horse related presets (patch by Hufkratzer)
-        Fix #18626: Warn about amenity=marketplace together with highway
-        Fix #22574: Add amenity=animal_breeding and add Animal group in Facilities
-        Fix #22630: Add crossing:markings to the crossing preset (patch by Woazboat)
-        Fix #22561: Change site_type to archaeological_site (site_type has been deprecated since 2022-12-04)
-        Fix #22599: Add colour:back to City Limit Sign preset
-        Fix #22481: Deprecated building:level in favor of building:levels (not the trailing s)
-        Fix #22473: Don't warn about Way end node near other way for natural=arete and natural=ridge
-        Fix #20539, see #18659, see #18719 - Deprecate car in favor for motorcar also for non charging stations 
-More minor bug fixes, enhancements, stability improvements, translation updates, code improvements and code documentation, see SVN log messages of milestone 23.01 
-
-# 2023-01-04: Hotfix release 18622 for 22.12
-
-Medium enhancements
-	#22625 (hotfix): Fix SOE for GPX waypoint images in ImageViewer dialog (introduced after #22337 due to rework in #21605) 
-
-# 2023-01-01: Stable release 18621 (22.12)
+# 2023-03-02: Stable release 18678 (23.02)
 
 Major enhancements
-	#21605: Add tabs to Image Viewer Dialog. This allows users to have multiple geotagged image layers, and quickly switch between them. 
-Medium enhancements
-	#22337: View GPX waypoint images also in Image Viewer Dialog
-	#22504: Enhance Align Nodes in Circle tool: When multiple ways are selected and they are not connected in a ring, then each of the selected closed ways will be circularized. 
-Minor enhancements
-	#22489: Display JOSMs Mastodon account in about dialog
-	#22487: Don't re-enable object hover preview on layer change
-	r18598: Set Look And Feel back to default if an external Look and Feel blocks the JOSM start
-	#22515: Fix shortcuts for search string icons on toolbar made with Search tool
-	#20528: Allow to copy from welcome screen
-	#21324: Display correct number x of tags in Command stack when pasting tags instead of always "1" ("pasting x tags to y objects")
-	#13097: Allow Angle Snapping in WGS84 projection
-	#22064: Make Save Session available outside of Expert Mode 
+	Fix #20768: Add OAuth 2.0 support 
 Add/improve/fix/change Internal Presets, Map Paint Style and Validation rules
-	#19826: Fix cycleway rendering in combination with oneway:bicycle=no and for cycleway:both
-	#22375: Add subdivision Scotland (GB-SCT) and all subdivisions of Belgium - Flanders (BE-VLG), Wallonia (BE-WAL), Brussels (BE-BRU) to internal boundaries file
-	r18597: Update power=transformer preset: removed transformer=auto (replaced by windings:auto=true) and transformer=traction (replaced by transformer=main)
-	r18597: Update landuse=residential preset for newer in-use values: adds halting_site, single_family, and trailer_park 
+	Fix #22547: tunnel=culvert should have waterway=* or man_made=tunnel (patch by skyper)
+	Fix #22761: Don't warn about "value '<some value>' for key 'ref' not in presets"
+	Partially fix #21778: oneway + .*:(backward|forward):conditional should not have a warning (patch by Famlam) 
 
-More minor bug fixes, enhancements, stability improvements, translation updates, code improvements and code documentation, see SVN log messages of milestone 22.12:
+More minor bug fixes, enhancements, stability improvements, translation updates, code improvements and code documentation, see SVN log messages of milestone 23.02:
 
-https://josm.openstreetmap.de/log/josm/?rev=18621&stop_rev=18584
+https://josm.openstreetmap.de/log/josm/?rev=18678&stop_rev=18647
