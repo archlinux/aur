@@ -1,6 +1,6 @@
 pkgname=node-hp-scan-to
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Allow to send scan from HP All-in-One Printer to computer"
 arch=(any)
 url="https://github.com/manuc66/node-hp-scan-to"
@@ -21,7 +21,7 @@ After=syslog.target network-online.target
 [Service]
 Type=simple
 User=root
-Environment=NODE_CONFIG_DIR=/etc/bin/node-hp-scan-to
+Environment=NODE_CONFIG_DIR=/etc/node-hp-scan-to
 WorkingDirectory=/usr/bin/
 ExecStart=/usr/bin/node-hp-scan-to
 Restart=on-failure
