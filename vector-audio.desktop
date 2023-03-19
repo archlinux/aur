@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Vector Audio
+Comment=An Audio-For-VATSIM ATC Client for macOS, Linux and Windows
+Path=/usr/share/vector-audio/build
+Exec=./vector_audio
