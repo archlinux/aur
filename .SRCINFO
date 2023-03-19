@@ -1,7 +1,7 @@
 pkgbase = linuxqq-nt-bwrap
 	pkgdesc = New Linux QQ based on Electron, with bubblewrap sandbox and some tweaks
 	pkgver = 3.1.0_9572
-	pkgrel = 3
+	pkgrel = 4
 	url = https://im.qq.com/linuxqq/index.shtml
 	install = linuxqq-nt-bwrap.install
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = linuxqq-nt-bwrap
 	depends = flatpak-xdg-utils
 	depends = snapd-xdg-open-git
 	depends = libvips
+	depends = openslide
 	optdepends = libappindicator-gtk3: 以显示托盘图标
 	optdepends = gjs: 提供 GNOME Wayland 下的截图支持
 	provides = qq
