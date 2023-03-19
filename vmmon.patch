@@ -62,6 +62,18 @@
  #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 11, 0)
  LinuxDriverFault(struct vm_fault *fault)     //IN/OUT
  #else
+@@ -761,7 +768,11 @@ LinuxDriverMmap(struct file *filp,
+       return err;
+    }
+    /* Clear VM_IO, otherwise SuSE's kernels refuse to do get_user_pages */
++#if COMPAT_LINUX_VERSION_CHECK_LT(6, 3, 0)
+    vma->vm_flags &= ~VM_IO;
++#else
++   vm_flags_clear(vma, VM_IO);
++#endif
+ 
+    return 0;
+ }
 --- a/vmmon/linux/hostif.c
 +++ a/vmmon/linux/hostif.c
 @@ -47,6 +47,8 @@
