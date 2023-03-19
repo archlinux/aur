@@ -19,10 +19,10 @@ source_x86_64=("https://julianfairfax.gitlab.io/${_pkgname}-prebuilt/amd64/${_pk
                "https://julianfairfax.gitlab.io/${_pkgname}-prebuilt/amd64/${_pkgname}.asc")
 source_aarch64=("https://julianfairfax.gitlab.io/${_pkgname}-prebuilt/arm64/${_pkgname}"
                 "https://julianfairfax.gitlab.io/${_pkgname}-prebuilt/arm64/${_pkgname}.asc")
-sha256sums=('f51bedab7042b8efd4b86552b1571b443e4777da3ceba34d3ec1d3075bebe856')
+sha256sums=('6b5a4a8a9833c27ec3a0643e10bd321853f7d86a5f1b6e96c5c8bb53cb29a0f2')
 sha256sums_x86_64=('6b5a4a8a9833c27ec3a0643e10bd321853f7d86a5f1b6e96c5c8bb53cb29a0f2'
                   'SKIP')
-sha256sums_aarch64=('22445f29f48d0b22d651c06e87842d70ddcea895b9098d8b6c9a96d492a8519d'
+sha256sums_aarch64=('7f6bd9e1eee3007c7cc7d2172ace392fc8bc2343af6302ba03a601e9ed3d3984'
                    'SKIP')
 validpgpkeys=('C123CB2B21B9F68C80A03AE005B2039A85E7C70A')
 
