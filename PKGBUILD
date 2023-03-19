@@ -2,7 +2,7 @@
 pkgname=fchat-rising-git
 _pkgname=fchat-rising
 pkgver=1.21.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The F-Chat 3.0 client from F-List modifed by MrStallion. Uses a system-wide electron instead of the built in."
 arch=('x86_64')
 url="https://github.com/mrstallion/fchat-rising"
