@@ -1,37 +1,26 @@
 ### Added
 
-* support for six digit interface versions.
-    - Dragonflight is `100000`
-* 'Dragonflight' tooltip for 10.0 addons.
+* filtering search results by tag can now be switched between inclusive ('any of', default) and exclusive ('all of').
+* embedded font for glyphs used in the uber and star buttons for systems running with minimal fonts.
+    - https://github.com/ogri-la/strongbox/issues/384
+* an app launcher to desktop environments that support them.
+    - for me, `strongbox` was found under the `Games` menu item.
+    - only for installations via the AUR
+        - the `.desktop` file can be found here: https://github.com/ogri-la/strongbox-pkgbuild/blob/master/strongbox.desktop
 
 ### Changed
 
-* the slugify function used on a toc's 'title' value switched to the same one used when building catalogues.
-    - the 'title' value used to be more important as it was primarily used to match an addon within a catalogue.
-        - it's more of a fallback these days if the addon's `source` and `source-id` aren't found in the catalogue.
-* reviewed a lot of code, lots of very minor shuffling and tweaks that won't affect the user at all.
-    - unless of course it breaks something.
-    - I was taking advantage of the major version bump to do some unnecessary and hard to justify changes.
-        - plenty more could still be done but I'll tackle them individually.
+* search results filtered by tag are no longer sampled when no search input is available.
+    - this means you can now browse addons by tags alone if there are more addons that can fit on a single page of results.
+* glyphs used for the uber and star buttons switched to their close equivalents in the new embedded font
+    - they're a little chunkier now but also look a little better in my estimation.
+* moved some files used for building the AppImage from the root into a directory called `AppImage`.
 
 ### Fixed
 
-* fixed an issue with WotLK toc data having no priority in non-WotLK game tracks.
-    - for example, if an addon directory is using the 'Classic TBC' game track and an addon had 'Classic WotLK' toc data but no TBC toc data, the WotLK toc data would be ignored when it *should* be preferred over retail toc data.
-
-### Removed
-
-* removed support for building catalogues.
-    - this logic now lives in `ogri-la/strongbox-catalogue-builder`.
-* removed the command line actions:
-    - 'scrape-catalogue'
-    - 'write-catalogue'
-    - 'scrape-github-catalogue'
-    - 'scrape-wowinterface-catalogue'
-    - 'scrape-tukui-catalogue'
-* removed support for reading version 1 catalogues built using `wowman` 
-    - last release of `wowman` was 2020-06-01
-* removed the 'tag' logic used to normalise and map categories between addons and addon hosts.
-    - it was used exclusively for catalogue building and this logic now lives in `ogri-la/strongbox-catalogue-builder`.
-* removed dependencies `org.clojure/data.csv` and `enlive`.
-* removed support for finding `wowman`-era config files.
+* page >1 of search results that were then filtered further may have displayed the 'mascot' screen (ᕙ[°▿°]ᕗ)
+    - this was because the pagination wasn't being reset and there was no 'page N' for the given set of filters.
+    - the 'mascot' screen is still (deliberately) displayed in rare cases.
+* characters in multi-line messages in the notice logger no longer get their descenders ('y', 'g', 'p', etc) truncated.
+* ignored addons in the addon detail pane now display mutual dependencies (if any).
+* 'WoW' column text was black with a dark background in dark mode, making the value illegible.
