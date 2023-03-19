@@ -1,6 +1,6 @@
 pkgbase = fcitx5-mcbopomofo-git
 	pkgdesc = McBopomofo for fcitx5
-	pkgver = 2.4.2.r6.g777c808
+	pkgver = 2.5.r0.g777c808
 	pkgrel = 1
 	url = https://github.com/openvanilla/fcitx5-mcbopomofo
 	arch = x86_64
