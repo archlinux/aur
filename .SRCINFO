@@ -12,13 +12,13 @@ pkgbase = waked-bin
 	source = git+https://gitlab.com/seath1/waked.git#commit=05729fb50d6d032f7d269b5fd3068f8bd17b31fe
 	validpgpkeys = C123CB2B21B9F68C80A03AE005B2039A85E7C70A
 	sha256sums = SKIP
-	source_x86_64 = waked-bin::https://julianfairfax.gitlab.io/package-repo/waked/amd64/waked
-	source_x86_64 = waked-bin.asc::https://julianfairfax.gitlab.io/package-repo/waked/amd64/waked.asc
-	sha256sums_x86_64 = 1638e7419e0bb9679dc421958bf7735e93f4056d767c84abcf78f0ddbfcfb908
+	source_x86_64 = waked-bin::https://julianfairfax.gitlab.io/waked-prebuilt/amd64/waked
+	source_x86_64 = waked-bin.asc::https://julianfairfax.gitlab.io/waked-prebuilt/amd64/waked.asc
+	sha256sums_x86_64 = ed105a81e6907f355ebf1e6b0af5cb1d1c660e63cff4559c7a218fe6fa746a7e
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = waked-bin::https://julianfairfax.gitlab.io/package-repo/waked/arm64/waked
-	source_aarch64 = waked-bin.asc::https://julianfairfax.gitlab.io/package-repo/waked/arm64/waked.asc
-	sha256sums_aarch64 = 4c28cd04ace04ace5319daebec840a945a98fdc54c6493c33716b46928b89dda
+	source_aarch64 = waked-bin::https://julianfairfax.gitlab.io/waked-prebuilt/arm64/waked
+	source_aarch64 = waked-bin.asc::https://julianfairfax.gitlab.io/waked-prebuilt/arm64/waked.asc
+	sha256sums_aarch64 = b64620761728a4e51f9b2af27ccaa852700b4b725f478a1ced021fe9d88b1e17
 	sha256sums_aarch64 = SKIP
 
 pkgname = waked-bin

@@ -3,7 +3,7 @@ _pkgname=waked
 pkgname=${_pkgname}-bin
 pkgrel=1
 pkgver=0.1.1
-# See http://julianfairfax.gitlab.io/package-repo/waked/version.txt
+# See http://julianfairfax.gitlab.io/waked-prebuilt/version.txt
 pkgdesc="Daemon to let other applications wake up the system. Binary version."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/seath1/waked"
@@ -13,14 +13,14 @@ provides=("$_pkgname")
 conflicts=("${_pkgname}-git")
 _commit=05729fb50d6d032f7d269b5fd3068f8bd17b31fe
 source=("git+https://gitlab.com/seath1/waked.git#commit=${_commit}")
-source_x86_64=("${pkgname}::https://julianfairfax.gitlab.io/package-repo/waked/amd64/waked"
-               "${pkgname}.asc::https://julianfairfax.gitlab.io/package-repo/waked/amd64/waked.asc")
-source_aarch64=("${pkgname}::https://julianfairfax.gitlab.io/package-repo/waked/arm64/waked"
-                "${pkgname}.asc::https://julianfairfax.gitlab.io/package-repo/waked/arm64/waked.asc")
+source_x86_64=("${pkgname}::https://julianfairfax.gitlab.io/${_pkgname}-prebuilt/amd64/waked"
+               "${pkgname}.asc::https://julianfairfax.gitlab.io/${_pkgname}-prebuilt/amd64/waked.asc")
+source_aarch64=("${pkgname}::https://julianfairfax.gitlab.io/${_pkgname}-prebuilt/arm64/waked"
+                "${pkgname}.asc::https://julianfairfax.gitlab.io/${_pkgname}-prebuilt/arm64/waked.asc")
 sha256sums=('SKIP')
-sha256sums_x86_64=('1638e7419e0bb9679dc421958bf7735e93f4056d767c84abcf78f0ddbfcfb908'
+sha256sums_x86_64=('ed105a81e6907f355ebf1e6b0af5cb1d1c660e63cff4559c7a218fe6fa746a7e'
                   'SKIP')
-sha256sums_aarch64=('4c28cd04ace04ace5319daebec840a945a98fdc54c6493c33716b46928b89dda'
+sha256sums_aarch64=('b64620761728a4e51f9b2af27ccaa852700b4b725f478a1ced021fe9d88b1e17'
                    'SKIP')
 validpgpkeys=('C123CB2B21B9F68C80A03AE005B2039A85E7C70A')
 
