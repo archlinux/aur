@@ -1,6 +1,6 @@
 pkgbase = uhhyou-plugins
 	pkgdesc = A collection of synthesizer and effect VST3 plugins
-	pkgver = 0.53.0
+	pkgver = 0.54.1
 	pkgrel = 1
 	url = https://ryukau.github.io/VSTPlugins/
 	arch = aarch64
@@ -20,10 +20,10 @@ pkgbase = uhhyou-plugins
 	makedepends = xcb-util-keysyms
 	depends = xcb-util-cursor
 	optdepends = vst3-host: for running VST3 plugins
-	source = uhhyou-plugins-0.53.0.tar.gz::https://github.com/ryukau/VSTPlugins/archive/refs/tags/UhhyouPlugins0.53.0.tar.gz
+	source = uhhyou-plugins-0.54.1.tar.gz::https://github.com/ryukau/VSTPlugins/archive/refs/tags/UhhyouPlugins0.54.1.tar.gz
 	source = pocketfft-53e9dd4.tar.gz::https://gitlab.mpcdf.mpg.de/mtr/pocketfft/-/archive/53e9dd4/pocketfft-53e9dd4.tar.gz
 	source = vcl-4c90584.tar.gz::https://github.com/vectorclass/version2/archive/4c90584.tar.gz
-	sha256sums = 137957abc3eb777111f8305e81967af08e56aed838cbadf3e87404535453e067
+	sha256sums = f204e00fb6877dbb57fe345fc9226fca1d1b7e57b41bbd6c6be617c83a2d75ca
 	sha256sums = 0f2b09e14b1497c9a1283c5b64a6682fd43daa6ba7ca17eb3dbcc9b0ec46204f
 	sha256sums = d2a36ccedf4585b33fdba6cb38000aaa022c5b5306efeff2ad58cca52999c827
 
