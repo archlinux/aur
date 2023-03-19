@@ -1,15 +1,10 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: Adrian Lopez <zeioth@hotmail.com>
 pkgname=rofi-zeal-git
-pkgver=1.0.r.
+pkgver=1.0.r13.ef0a629
 pkgrel=2
 epoch=
 pkgdesc="Search code documentation from rofi"
-arch=(x86_64 i686)
+arch=(any)
 url="https://github.com/Zeioth/rofi-zeal.git"
 license=('MIT')
 groups=()
@@ -36,6 +31,5 @@ pkgver() {
 
 package() {
     mkdir -p ~/.cache/rofi/rofi-zeal/
-    sudo cp "${srcdir}"/rofi-zeal/rofi-zeal.sh /usr/bin/rofi-zeal
-    sudo chmod u+x /usr/bin/rofi-zeal
+    install -Dm755 "${srcdir}/rofi-zeal/rofi-zeal.sh" "${pkgdir}/usr/bin/rofi-zeal"
 }
