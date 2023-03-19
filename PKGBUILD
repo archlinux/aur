@@ -1,11 +1,6 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: Adrian Lopez <zeioth@hotmail.com>
 pkgname=chatgpt-shell-cli-git
-pkgver=1.0.r2.b117716
+pkgver=1.0.r3.91f1b13
 pkgrel=2
 epoch=
 pkgdesc="Use OpenAI's ChatGPT and DALL-E from the terminal."
@@ -35,7 +30,5 @@ pkgver() {
 }
 
 package() {
-   # Add it to /usr/local/bin to make it executable
-   cd "${srcdir}"/chatGPT-shell-cli
-   sudo cp "${srcdir}"/chatGPT-shell-cli/chatgpt.sh /usr/local/bin/chatgpt
+   install -Dm755 "${srcdir}/chatGPT-shell-cli/chatgpt.sh" "${pkgdir}/usr/local/bin/chatgpt"
 }
