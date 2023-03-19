@@ -2,11 +2,11 @@ pkgbase = fetcher-rs
 	pkgdesc = Automatic news fetching and parsing
 	pkgver = 0.12.2
 	pkgrel = 1
-	url = https://github.com/SergeyKasmy/fetcher-rs
+	url = https://github.com/SergeyKasmy/fetcher
 	arch = any
 	license = MPL-2.0
 	makedepends = rust
-	source = fetcher-rs-0.12.2::git+https://github.com/SergeyKasmy/fetcher-rs.git#tag=v0.12.2
+	source = fetcher-0.12.2::git+https://github.com/SergeyKasmy/fetcher.git#tag=v0.12.2
 	sha256sums = SKIP
 
 pkgname = fetcher-rs
