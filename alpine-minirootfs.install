@@ -1,0 +1,21 @@
+post_install() {
+  cp /etc/resolv.conf /usr/share/alpine-minirootfs/etc/
+}
+
+post_remove() {
+  rm -fr /usr/share/alpine-minirootfs
+}
+
+pre_remove() {
+  if grep -qs '/usr/share/alpine-minirootfs/sys' /proc/mounts
+  then umount -l /usr/share/alpine-minirootfs/sys
+  fi
+
+  if grep -qs '/usr/share/alpine-minirootfs/dev' /proc/mounts
+  then umount -l /usr/share/alpine-minirootfs/dev
+  fi
+
+  if grep -qs '/usr/share/alpine-minirootfs/proc' /proc/mounts
+  then umount -l /usr/share/alpine-minirootfs/proc 
+  fi
+}
