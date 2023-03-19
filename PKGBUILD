@@ -2,12 +2,12 @@
 _pkgname=linuxqq
 pkgname=linuxqq-nt-bwrap
 pkgver=3.1.0_9572
-pkgrel=4
+pkgrel=5
 pkgdesc="New Linux QQ based on Electron, with bubblewrap sandbox and some tweaks"
 arch=('x86_64' 'aarch64')
 url='https://im.qq.com/linuxqq/index.shtml'
 license=('custom')
-depends=('at-spi2-core' 'alsa-lib' 'desktop-file-utils' 'gtk3' 'gtk-update-icon-cache' 'libnotify' 'nss' 'gnutls' 'bubblewrap' 'xdg-user-dirs' 'flatpak-xdg-utils' 'snapd-xdg-open-git' 'libvips' 'openslide')
+depends=('at-spi2-core' 'alsa-lib' 'desktop-file-utils' 'gtk3' 'gtk-update-icon-cache' 'libnotify' 'nss' 'gnutls' 'bubblewrap' 'xdg-user-dirs' 'flatpak-xdg-utils' 'snapd-xdg-open-git' 'libvips' 'openslide' 'autoconf')
 makedepends=('p7zip')
 optdepends=('libappindicator-gtk3: 以显示托盘图标'
 			'gjs: 提供 GNOME Wayland 下的截图支持')
@@ -24,7 +24,7 @@ sha256sums_x86_64=('c6a6f2c94e094a561b02427fb6a2e854f29f42fc589ccc92471ef257512d
                    # 'e9d7d27c6df425dfface9398be2b14c24f32ae9d880e344ce599593f2919f6dd')  # 热更新补丁
 sha256sums_aarch64=('22d66a855f4e9b271d7d1865ccfda596bcdc219bda8940bf2c988327f90d2241' )  # 底包
                     # 'f17bbff10be65135130c7a4cd05ac5f6e324e560a5dafe27113f05a9e7bbc3d5')  # 热更新补丁
-sha256sums=('e25674466c92720bc73f1e98b8a668ad3b32735b774ed08d4aecd894f4cdac9d'  # start.sh
+sha256sums=('1d7db58d0746096781b51e74d6f5e0406db09029c94cd57c54bf8f6817a3f5d5'  # start.sh
             '14873a55c6f0402c8a424808848007d041ecaf8f72a00aac0d9be01270e4e87c'  # config.json
             '78a573867355fb4c3e728d0c8ac0746d47fa7d64f90ee2b62ee9f0ccae095edb')  # xdg-open.sh
 

@@ -82,7 +82,7 @@ bwrap --new-session --cap-drop ALL --unshare-user-try --unshare-pid --unshare-cg
     --bind "${QQ_APP_DIR}" "${QQ_APP_DIR}" \
     --ro-bind-try "${FONTCONFIG_HOME}" "${FONTCONFIG_HOME}" \
     --ro-bind-try "${HOME}/.icons" "${HOME}/.icons" \
-    --ro-bind-try "${HOME}/local/share/.icons" "${HOME}/local/share/.icons" \
+    --ro-bind-try "${HOME}/.local/share/.icons" "${HOME}/.local/share/.icons" \
     --ro-bind-try "${XDG_CONFIG_HOME}/gtk-3.0" "${XDG_CONFIG_HOME}/gtk-3.0" \
     --setenv IBUS_USE_PORTAL 1 \
     /opt/QQ/electron "${flags[@]}" "$@" /opt/QQ/resources/app
