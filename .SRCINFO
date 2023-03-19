@@ -1,0 +1,16 @@
+pkgbase = libkrun
+	pkgdesc = A dynamic library providing Virtualization-based process isolation capabilities
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/containers/libkrun
+	arch = x86_64
+	license = Apache
+	makedepends = cargo
+	makedepends = patchelf
+	depends = glibc
+	depends = gcc-libs
+	depends = libkrunfw
+	source = https://github.com/containers/libkrun/archive/refs/tags/v1.5.1/libkrun-1.5.1.tar.gz
+	sha256sums = dd2ac590bfa5f238b06f1ec0a8acdd92316e2ffc2d7e261a0ad802d0849677b6
+
+pkgname = libkrun
