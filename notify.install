@@ -1,0 +1,12 @@
+post_install() {
+    echo
+    echo 'Please make sure to fully-terminate Google Earth before relaunching it,'
+    echo 'so that the libraries can be reloaded:'
+    echo '$ killall googleearth-bin'
+    echo 'If in doubt, restart your computer.'
+    echo
+}
+
+post_upgrade() {
+    post_install
+}

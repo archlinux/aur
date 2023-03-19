@@ -1,0 +1,13 @@
+pkgbase = google-earth-pro-libproxy-patch
+	pkgdesc = Patch your Google Earth Pro installation with a libproxy library that's known to work.
+	pkgver = 0.4.17_7
+	pkgrel = 1
+	url = https://archive.archlinux.org/packages/l/libproxy
+	install = notify.install
+	arch = x86_64
+	license = LGPL
+	depends = google-earth-pro
+	source = https://archive.archlinux.org/packages/l/libproxy/libproxy-0.4.17-7-x86_64.pkg.tar.zst
+	sha512sums = b3b6ac4b35010bb67cb4915abe06c7351f97bdc42ed93c7f8113eb8966750fc442f1e8ff77e701c0478a90fa6aec64b04f618034369988a1fe5681830593518d
+
+pkgname = google-earth-pro-libproxy-patch
