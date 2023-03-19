@@ -1,7 +1,7 @@
 pkgbase = cellframe-wallet
 	pkgdesc = Cellframe wallet
 	pkgver = 1.1.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cellframe.net
 	install = cellframe-wallet.install
 	arch = x86_64
@@ -10,11 +10,13 @@ pkgbase = cellframe-wallet
 	makedepends = git
 	makedepends = qt5-base
 	makedepends = qt5-declarative
+	makedepends = qt5-svg
 	depends = cellframe-node
 	depends = qt5-graphicaleffects
 	depends = qt5-base
 	depends = qt5-quickcontrols2
 	depends = qt5-quickcontrols
+	depends = qt5-svg
 	source = git+https://gitlab.demlabs.net/cellframe/cellframe-wallet.git#commit=3477bbec4de917455e4fa1629eb7b2427835d5df
 	md5sums = SKIP
 

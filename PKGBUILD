@@ -1,13 +1,13 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=cellframe-wallet
 pkgver=1.1.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Cellframe wallet"
 arch=('x86_64' 'aarch64')
 url="https://cellframe.net"
 license=('GPL3')
-depends=(cellframe-node qt5-graphicaleffects qt5-base qt5-quickcontrols2 qt5-quickcontrols)
-makedepends=(git qt5-base qt5-declarative)
+depends=(cellframe-node qt5-graphicaleffects qt5-base qt5-quickcontrols2 qt5-quickcontrols qt5-svg)
+makedepends=(git qt5-base qt5-declarative qt5-svg)
 options=()
 source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=3477bbec4de917455e4fa1629eb7b2427835d5df)
 md5sums=('SKIP')
