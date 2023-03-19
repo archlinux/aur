@@ -1,4 +1,5 @@
-# Maintainer: katt <magunasu.b97@gmail.com>
+# Maintainer: Adrian Groh <adrian[dot]groh[at]t[dash]online[dot]de>
+# Contributor: katt <magunasu.b97@gmail.com>
 # Contributor: Mikael Blomstrand <gmail: kmbloms>
 # Contributor: Paul B <paul2lv@gmail.com>
 
