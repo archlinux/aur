@@ -1,0 +1,12 @@
+[Desktop Entry]
+# https://specifications.freedesktop.org/desktop-entry-spec/1.0/
+Type=Application
+Version=1.0
+Name=Strongbox
+GenericName=addon manager
+Comment=World of Warcraft addon manager
+Exec=strongbox
+Terminal=false
+Categories=Game;PackageManager;Java;
+#Icon=strongbox
+Keywords=warcraft;wow;world of warcraft;elvui;tukui;wowinterface;github;
