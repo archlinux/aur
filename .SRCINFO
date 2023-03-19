@@ -4,9 +4,10 @@ pkgbase = swayr
 	pkgrel = 1
 	url = https://git.sr.ht/~tsdh/swayr
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = cargo
 	source = swayr-0.24.1.tar.gz::https://static.crates.io/crates/swayr/swayr-0.24.1.crate
-	sha256sums = d4d3e1e76d7523843bfbab7c7273da234ba33949893c1be92e78f46ebf83d325
+	sha256sums = 1bec5fb0bd19b4524d931bc8fb6184c84d20c8aa89620453a87d5a8ca85b1d45
 
 pkgname = swayr
