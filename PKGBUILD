@@ -39,16 +39,11 @@ makedepends+=('wayland-protocols')
 provides=('blender')
 conflicts=('blender')
 license=('GPL')
-# NOTE: the source array has to be kept in sync with .gitmodules
-# the submodules has to be stored in path ending with git to match
-# the path in .gitmodules.
-# More info:
-#   http://wiki.blender.org/index.php/Dev:Doc/Tools/Git
-source=("git+https://projects.blender.org/blender/blender.git${_fragment}"
-        'git+https://projects.blender.org/blender/blender-addons.git'
-        'git+https://projects.blender.org/blender/blender-addons-contrib.git'
-        'git+https://projects.blender.org/blender/blender-translations.git'
-        'git+https://projects.blender.org/blender/blender-dev-tools.git'
+source=("blender::git+https://github.com/blender/blender${_fragment}"
+        'blender-addons::git+https://github.com/blender/blender-addons'
+        'blender-addons-contrib::git+https://github.com/blender/blender-addons-contrib'
+        'blender-translations::git+https://github.com/blender/blender-translations'
+        'blender-dev-tools::git+https://github.com/blender/blender-dev-tools'
         usd_python.patch #add missing python headers when building against python enabled usd.
         embree.patch #add missing embree link.
         )
@@ -72,7 +67,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/blender"
   # update the submodules
-  git -c protocol.file.allow=always submodule update --init --recursive --remote $GITFLAGS
+  git -c protocol.file.allow=always submodule update --init --recursive --remote
   git apply -v "${srcdir}"/{embree,usd_python}.patch
 }
 
