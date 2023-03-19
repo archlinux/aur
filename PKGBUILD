@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-experimental
-_srctag=7.0-20230201
+_srctag=7.0-20230313
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
@@ -125,11 +125,15 @@ source=(
     gst-plugins-rs::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git
     dxil-spirv::git+https://github.com/HansKristian-Work/dxil-spirv.git
     graphene::git+https://github.com/ebassi/graphene.git
-    libdisplay-info::git+https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info.git
+    libdisplay-info-dxvk::git+https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info.git
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
     0001-wldap32-25946b48148784e8275c1685f6498ab88f553ca3.patch
-    0001-AUR-pkgbuild-changes.patch
+    0001-AUR-Pkgbuild-changes.patch
+    0002-AUR-Do-not-update-cargo-crates.patch
+)
+# Optional patches
+source+=(
 )
 noextract=(
     wine-gecko-${_geckover}-{x86,x86_64}.tar.xz
@@ -219,7 +223,7 @@ prepare() {
         git -c protocol.file.allow=always submodule update include/{vulkan,spirv}
 
         git submodule init subprojects/libdisplay-info
-        git submodule set-url subprojects/libdisplay-info "$srcdir/libdisplay-info"
+        git submodule set-url subprojects/libdisplay-info "$srcdir/libdisplay-info-dxvk"
         git -c protocol.file.allow=always submodule update subprojects/libdisplay-info
     popd
 
@@ -248,7 +252,6 @@ prepare() {
     pushd $submodule
         export RUSTUP_TOOLCHAIN=stable
         export CARGO_HOME="${SRCDEST}"/proton-cargo
-        cargo update
         cargo fetch --locked --target "i686-unknown-linux-gnu"
         cargo fetch --locked --target "x86_64-unknown-linux-gnu"
     popd
@@ -263,7 +266,8 @@ prepare() {
         patch -p1 -i "$srcdir"/0001-wldap32-25946b48148784e8275c1685f6498ab88f553ca3.patch
     popd
 
-    patch -p1 -i "$srcdir"/0001-AUR-pkgbuild-changes.patch
+    patch -p1 -i "$srcdir"/0001-AUR-Pkgbuild-changes.patch
+    patch -p1 -i "$srcdir"/0002-AUR-Do-not-update-cargo-crates.patch
 
     # Remove repos from srcdir to save space
     for submodule in "${_submodules[@]}"; do
@@ -380,4 +384,9 @@ sha256sums=('SKIP'
             '0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75'
             '9249ece664bcf2fecb1308ea1d2542c72923df9fe3df891986f137b2266a9ba3'
             '11aa65bb6b8da1814557edf18a3cdada80135b021634236feabf93d2a194838b'
-            'caa5cdc0be010cf81ccc4478cf5b472090d648d2782a5816281fa3e0270a59ff')
+            'aa3d8d526823224a6690e8ae7bb821d247cd74d80c3e0c9fa05bc27179ce2cc6'
+            'a79f1326e4d166b3b947530dca9dc4ac1e91b43e60d93a2354184beb4acb384c')
+# Optional patches
+sha256sums+=(
+)
+
