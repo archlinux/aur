@@ -10,6 +10,7 @@ pkgbase = redisinsight
 	makedepends = yarn
 	makedepends = npm
 	makedepends = nvm
+	makedepends = jq
 	provides = redis-insight
 	conflicts = redis-insight-bin
 	source = redisinsight-2.20.0.tar.gz::https://github.com/RedisInsight/RedisInsight/archive/2.20.0.tar.gz

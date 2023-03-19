@@ -9,7 +9,14 @@ license=('custom:SSPL')
 depends=()
 provides=(redis-insight)
 conflicts=(redis-insight-bin)
-makedepends=('gendesk' 'nodejs' 'yarn' 'npm' 'nvm')
+makedepends=(
+gendesk
+nodejs
+yarn
+npm
+nvm
+jq
+)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RedisInsight/RedisInsight/archive/$pkgver.tar.gz")
 sha256sums=('f9e436bc20f566902e9291b6f45633ecd7b6d1110d22e0ee30a1a34e8d2216d6')
 
