@@ -3,7 +3,7 @@
 pkgbase=purc
 pkgname=purc
 pkgver=0.9.7
-pkgrel=0
+pkgrel=1
 pkgdesc="The prime HVML interpreter for C Language."
 arch=(x86_64
     aarch64
@@ -42,7 +42,7 @@ optdepends=('purc-midnight-commander: A generic HVML renderer in text mode for d
             'webkit2gtk: Web content engine for GTK'
             'xguipro: xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit.')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/ver-${pkgver}.tar.gz")
-sha256sums=('3100206269d0dddf13ab4f1138c21a692870ec4b82ce94c076f8786020a02336')
+sha256sums=('8dff65b5f2bce1e4743c062b29e6860f8e7d37dfa251437473cb5917fc1c37ed')
 
 build() {
     cd "${srcdir}/PurC-ver-${pkgver}/"
