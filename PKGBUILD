@@ -6,7 +6,7 @@
 pkgname=yambar-wayland
 _pkgname=yambar
 pkgver=1.9.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Simplistic and highly configurable status panel for Wayland (No X11 support)"
 arch=('any')
 url=https://codeberg.org/dnkl/yambar
