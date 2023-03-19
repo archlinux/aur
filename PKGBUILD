@@ -4,8 +4,8 @@
 # Contributor: Klemen Košir <klemen913@gmail.com>
 
 pkgname=cataclysm-dda-git
-pkgver=0.F.2022.05.24
-_pkgver=0.F
+pkgver=0.G.2023.03.19
+_pkgver=0.G
 pkgrel=1
 pkgdesc="A post-apocalyptic roguelike."
 #url="http://cataclysmrl.blogspot.com/"
@@ -15,7 +15,7 @@ url="https://cataclysmdda.org/"
 arch=('i686' 'x86_64')
 license=("CCPL:by-sa")
 conflicts=('cataclysm-dda' 'cataclysm-dda-ncurses' 'cataclysm-dda-tiles')
-depends=('ncurses')
+depends=('ncurses' 'gettext')
 makedepends=('sdl2_image' 'sdl2_ttf' 'sdl2_mixer' 'freetype2' 'git')
 optdepends=('sdl2_image: for tiles'
             'sdl2_ttf: for tiles'
@@ -27,10 +27,8 @@ optdepends=('sdl2_image: for tiles'
 # (you may uncomment the alternate source/pkgver() if you would prefer to use that)
 source=(
   'https://github.com/CleverRaven/Cataclysm-DDA/archive/master.zip'
-  "disable_bound_check.patch"
 )
-sha512sums=('SKIP'
-         '8f4324dc935d3db98a7d5a12b46f2c58c37b6b4b4f2cbcdacc0462b1efa89f191d9fd7a0c8280c21d0abc0d448f66dad015cde7686f498ed4d5ae3d20a0521b1')
+sha512sums=('SKIP')
 
 pkgver() {
   cd "Cataclysm-DDA-master"
@@ -42,13 +40,12 @@ pkgver() {
 prepare() {
   cd "Cataclysm-DDA-master"
   sed -i 's/ncursesw5-config/ncursesw6-config/' Makefile
-  patch --strip 1 < "${srcdir}/disable_bound_check.patch"
 }
 
 build() {
   cd "Cataclysm-DDA-master"
-  make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 LANGUAGE="all" RUNTESTS=0 LINTJSON=0 ASTYLE=0 PCH=0
-  make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 LANGUAGE="all" RUNTESTS=0 LINTJSON=0 ASTYLE=0 PCH=0 TILES=1 SOUND=1
+  make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 LANGUAGE="all" LTO=1 RUNTESTS=0 LINTJSON=0 ASTYLE=0 PCH=0
+  make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 LANGUAGE="all" LTO=1 RUNTESTS=0 LINTJSON=0 ASTYLE=0 PCH=0 TILES=1 SOUND=1
   # LOCALIZE = 0   to save 30MB
   # DYNAMIC_LINKING = 1 ?
 
