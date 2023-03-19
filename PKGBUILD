@@ -35,9 +35,7 @@ pkgver() {
 }
 
 package() {
-   # Compile
-   cd "${srcdir}"/chatGPT-shell-cli
-   
    # Add it to /usr/local/bin to make it executable
+   cd "${srcdir}"/chatGPT-shell-cli
    sudo cp "${srcdir}"/chatGPT-shell-cli/chatgpt.sh /usr/local/bin/chatgpt
 }
