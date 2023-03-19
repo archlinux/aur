@@ -1,7 +1,7 @@
 pkgbase = gnome-zoomer-git
 	pkgdesc = A simple command-line utility to allow custom-increment zooming of the GNOME desktop.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fgimian/gnome-zoomer
 	arch = x86_64
 	arch = i686
