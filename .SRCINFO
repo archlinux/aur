@@ -4,6 +4,7 @@ pkgbase = gpt-cli
 	pkgrel = 1
 	url = https://github.com/gustawdaniel/gpt-cli
 	arch = x86_64
+	license = MIT
 	depends = xorg-server-devel
 	depends = libxcb
 	source_x86_64 = https://github.com/gustawdaniel/gpt-cli/releases/download/v0.0.14/gpt-cli
