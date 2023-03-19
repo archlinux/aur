@@ -1,4 +1,5 @@
-# Maintainer: katt <magunasu.b97@gmail.com>
+# Maintainer: Adrian Groh <adrian[dot]groh[at]t[dash]online[dot]de>
+# Contributor: katt <magunasu.b97@gmail.com>
 
 pkgname=fahcontrol-git
 pkgver=r89.7016206
