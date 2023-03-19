@@ -24,7 +24,6 @@ pkgver() {
 }
 
 prepare() {
-  msg2 "Validating checksum..."
   _sha=$(curl -s https://download.redisinsight.redis.com/latest/latest-linux.yml | yq -r '.sha512' | base64 -d | od -t x1 -An | tr -d ' \n') 
   echo "${_sha}  ${pkgname}-${pkgver}.AppImage" > csum.txt
   sha512sum -c csum.txt
