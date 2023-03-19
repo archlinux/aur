@@ -1,4 +1,5 @@
-# Maintainer: katt <magunasu.b97@gmail.com>
+# Maintainer: Adrian Groh <adrian[dot]groh[at]t[dash]online[dot]de>
+# Contributor: katt <magunasu.b97@gmail.com>
 # Contributor: paul2lv <paul2lv@gmail.com>
 
 pkgname=fahcontrol
