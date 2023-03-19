@@ -439,3 +439,141 @@
           }
           e = e->nextEvent;
        }
+From 650fb3abeb82f2b7d3a14f9579a7529d153636b7 Mon Sep 17 00:00:00 2001
+From: Michal Kubecek <mkubecek@suse.cz>
+Date: Fri, 7 Oct 2022 12:56:44 +0200
+Subject: [PATCH] vmnet: work around field-spanning write warning (#195)
+
+While VMware 17.0.1 did work around the field-spanning write warning in
+VNetEvent_Send() by wrapping struct VNet_EventHeader into a union, they
+neglected to handle the same problem in VNetUserListenerEventHandler() so
+that running 17.0.1 on kernel >= 6.1-rc1 still issues
+
+  memcpy: detected field-spanning write (size 28) of single field "&t->event"
+
+only this time it happens on VM start rather than on module load. Apply the
+same workaround as in 17.0.0 branch to avoid the warning.
+---
+ vmnet-only/vnet.h             | 8 ++++++++
+ vmnet-only/vnetEvent.c        | 2 +-
+ vmnet-only/vnetUserListener.c | 2 +-
+ 3 files changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/vmnet-only/vnet.h b/vmnet-only/vnet.h
+index d6691d5c..d5bb5572 100644
+--- a/vmnet-only/vnet.h
++++ b/vmnet-only/vnet.h
+@@ -270,6 +270,7 @@ typedef struct VNet_EventHeader {
+    uint32 eventId;
+    uint32 classSet;
+    uint32 type;
++   char payload[];
+ } VNet_EventHeader;
+ #pragma pack(pop)
+ 
+@@ -287,6 +288,13 @@ typedef struct VNet_LinkStateEvent {
+ } VNet_LinkStateEvent;
+ #pragma pack(pop)
+ 
++static inline void VNet_Event_copy(VNet_EventHeader *dst,
++			      const VNet_EventHeader *src)
++{
++	*dst = *src;
++	memcpy(dst->payload, src->payload, src->size - sizeof(*src));
++}
++
+ /*
+  *----------------------------------------------------------------------------
+  */
+diff --git a/vmnet-only/vnetEvent.c b/vmnet-only/vnetEvent.c
+index f1579292..12036070 100644
+--- a/vmnet-only/vnetEvent.c
++++ b/vmnet-only/vnetEvent.c
+@@ -401,7 +401,7 @@ VNetEvent_Send(VNetEvent_Sender *s, // IN: a sender
+       p->nextEvent = s->firstEvent;
+       s->firstEvent = p;
+    }
+-   memcpy(&p->event, e, e->size);
++   VNet_Event_copy(&p->event.header, e);
+ 
+    /* send event */
+    classSet = e->classSet;
+diff --git a/vmnet-only/vnetUserListener.c b/vmnet-only/vnetUserListener.c
+index 114f3907..e9f51755 100644
+--- a/vmnet-only/vnetUserListener.c
++++ b/vmnet-only/vnetUserListener.c
+@@ -226,7 +226,7 @@ VNetUserListenerEventHandler(void *context,       // IN: the user listener
+       return;
+    }
+    t->nextEvent = NULL;
+-   memcpy(&t->event, e, e->size);
++   VNet_Event_copy(&t->event, e);
+ 
+    /* append event to event list */
+    userListener = (VNetUserListener*)context;
+From 0ca979d4bd06144204d720bb82f0a1e29024f9fa Mon Sep 17 00:00:00 2001
+From: Michal Kubecek <mkubecek@suse.cz>
+Date: Wed, 18 Jan 2023 00:19:52 +0100
+Subject: [PATCH] vmnet: use explicit module_init() and module_exit() (#187)
+
+While vmmon module already uses explicit module_init() and module_exit()
+for its init and cleanup function, vmnet relies on traditional magic names
+init_module() and cleanup_module(). Apparently this has an unfortunate side
+effect that the two functions are not identified as indirect call targets
+by objdump and they get "sealed" when the module is built against and
+loaded into an IBT enabled kernel.
+
+Starting with 6.3-rc1, objtool is going to warn about this issue,
+indicating that the legacy module initialization is deprecated and
+module_init() and module_exit() macros should be used instead so do that
+for vmnet as well.
+---
+ vmnet-only/driver.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/vmnet-only/driver.c b/vmnet-only/driver.c
+index 197a213..b22cbfb 100644
+--- a/vmnet-only/driver.c
++++ b/vmnet-only/driver.c
+@@ -279,7 +279,7 @@ VNetRemovePortFromList(const VNetPort *port) // IN: port to remove from list
+ /*
+  *----------------------------------------------------------------------
+  *
+- * init_module --
++ * vmnet_init_module --
+  *
+  *      linux module entry point. Called by /sbin/insmod command.
+  *      Initializes module and Registers this driver for a
+@@ -296,7 +296,7 @@ VNetRemovePortFromList(const VNetPort *port) // IN: port to remove from list
+  */
+ 
+ int
+-init_module(void)
++vmnet_init_module(void)
+ {
+    int retval;
+ 
+@@ -358,7 +358,7 @@ init_module(void)
+ /*
+  *----------------------------------------------------------------------
+  *
+- * cleanup_module --
++ * vmnet_cleanup_module --
+  *
+  *      Called by /sbin/rmmod.  Unregisters this driver for a
+  *      vnet major #, and deinitializes the modules.  The 64-bit
+@@ -375,7 +375,7 @@ init_module(void)
+  */
+ 
+ void
+-cleanup_module(void)
++vmnet_cleanup_module(void)
+ {
+    unregister_chrdev(VNET_MAJOR_NUMBER, "vmnet");
+    VNetProtoUnregister();
+@@ -1705,3 +1705,5 @@ MODULE_LICENSE("GPL v2");
+  * by default (i.e., neither mkinitrd nor modprobe will accept it).
+  */
+ MODULE_INFO(supported, "external");
++module_init(vmnet_init_module);
++module_exit(vmnet_cleanup_module);

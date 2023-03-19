@@ -159,6 +159,18 @@
  LinuxDriverFault(struct vm_fault *fault)     //IN/OUT
  #elif defined(VMW_NOPAGE_2624)
  static int LinuxDriverFault(struct vm_area_struct *vma, //IN
+@@ -1067,7 +1078,11 @@ LinuxDriverMmap(struct file *filp,
+       return err;
+    }
+    /* Clear VM_IO, otherwise SuSE's kernels refuse to do get_user_pages */
++#if COMPAT_LINUX_VERSION_CHECK_LT(6, 3, 0)
+    vma->vm_flags &= ~VM_IO;
++#else
++   vm_flags_clear(vma, VM_IO);
++#endif
+ 
+    return 0;
+ }
 --- a/vmmon/linux/hostif.c
 +++ b/vmmon/linux/hostif.c
 @@ -68,6 +68,8 @@
