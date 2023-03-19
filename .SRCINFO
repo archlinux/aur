@@ -1,6 +1,6 @@
 pkgbase = rime-latex-git
 	pkgdesc = Rime Latex 数学符号输入方案
-	pkgver = r34.f9a4514
+	pkgver = r36.f4aa38a
 	pkgrel = 1
 	url = https://github.com/shenlebantongying/rime_latex
 	arch = any
