@@ -8,7 +8,7 @@ url="https://github.com/woowgers/xarrow"
 license=('MIT')
 depends=('base-devel' 'libx11')
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/woowgers/xarrow/archive/v$pkgver.tar.gz")
-sha256sums=('9c135e6d600d0f8aa8d2936afbffcebe05c254e366c71f526dba65d806eedb5e')
+sha256sums=('dd10aec1362127478b99cbcf14f4f96465e13bf812442b0f25fd3d36541850b8')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
