@@ -3,11 +3,11 @@
 # Contributor: Conor Anderson <conor@conr.ca>
 
 pkgname=rstudio-desktop
-_vermajor="2022"
-_verminor="12"
+_vermajor="2023"
+_verminor="03"
 _verpatch="0"
-_versuffix="353"
-_gitcommit="7d165dc"
+_versuffix="386"
+_gitcommit="3c53477"
 _gitname=rstudio-rstudio-${_gitcommit}
 pkgver=${_vermajor}.${_verminor}.${_verpatch}.${_versuffix}
 _srcname=rstudio-${_vermajor}.${_verminor}.${_verpatch}-${_versuffix}
@@ -17,7 +17,7 @@ _nodever=16.14.0
 _pandocver="current"
 _quarto="FALSE"
 
-pkgrel=2
+pkgrel=1
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('x86_64')
 url="https://www.rstudio.com/products/rstudio/"
@@ -32,16 +32,16 @@ optdepends=('git: for git support'
 provides=('rstudio-desktop')
 conflicts=('rstudio-desktop' 'rstudio-desktop-bin' 'rstudio-desktop-preview' 'rstudio-desktop-git')
 source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/archive/refs/tags/v${_vermajor}.${_verminor}.${_verpatch}+${_versuffix}.tar.gz"
+        "https://github.com/quarto-dev/quarto/archive/refs/heads/release/rstudio-cherry-blossom.zip"
         "https://nodejs.org/dist/v${_nodever}/node-v${_nodever}-linux-x64.tar.gz"
         "qt.conf"
-        "pandoc_version.patch"
-        "boost_1.81.patch")
+        "pandoc_version.patch")
 
-sha256sums=('e4f3503e2ad4229301360f56fd5288e5c8e769c490073dae7fe40366237ecce0'
+sha256sums=('62a67f3b528dec3957e2ea0b172cedca792e4af6b50542d65d5a53e8ae0901dd'
+            'SKIP'
             '2c69e7b040c208b61ebf9735c63d2e5bcabfed32ef05a9b8dd5823489ea50d6b'
             '723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921'
-            '286925c442c1818979714feeec1577f03ae8a3527d2478b0f55238e2272a0b9e'
-            'f9ac8311181126f163898d9e02198765ac8b23ec70cb2ae0d910ac62017a9677')
+            '286925c442c1818979714feeec1577f03ae8a3527d2478b0f55238e2272a0b9e')
 
 noextract=("gin-${_ginver}.zip")
 
@@ -49,9 +49,6 @@ prepare() {
     cd ${srcdir}/${_srcname}
     # Do not use outdated version name of pandoc
     patch -p1 < ${srcdir}/pandoc_version.patch
-
-    # Boost 1.81 - see here https://github.com/jgenco/jgenco-overlay/issues/4#issuecomment-1368061420
-    patch -p1 < ${srcdir}/boost_1.81.patch
 
     cd "${srcdir}/${_srcname}/dependencies/common"
     install -d pandoc/${_pandocver}
@@ -63,15 +60,20 @@ prepare() {
     # Nodejs
     install -d node/${_nodever}
     cp -r "${srcdir}/node-v${_nodever}-linux-x64/"* node/${_nodever}
-    cd "${srcdir}/${_srcname}/src/gwt/panmirror/src/editor"
-    yarn config set ignore-engines true
-    yarn install
+    #cd "${srcdir}/${_srcname}/src/gwt/panmirror/src/editor"
+    # yarn config set ignore-engines true
+    #yarn install
 
     # Fix links for src/cpp/session/CMakeLists.txt
     cd "${srcdir}/${_srcname}/dependencies"
     ln -sfT /usr/share/myspell/dicts dictionaries
     ln -sfT /usr/share/mathjax2 mathjax-27
     #ln -sfT /usr/bin/pandoc pandoc
+
+    # Panmirror is picked up now from Quarto repo
+    # Ideally: git clone --branch release/rstudio-cherry-blossom https://github.com/quarto-dev/quarto.git "${srcdir}/${_srcname}/src/gwt/lib/quarto"
+    mkdir -p "${srcdir}/${_srcname}/src/gwt/lib/quarto"
+    cp -r "${srcdir}/quarto-release-rstudio-cherry-blossom/"* "${srcdir}/${_srcname}/src/gwt/lib/quarto"
 }
 
 build() {
