@@ -1,0 +1,19 @@
+pkgbase = unl0kr
+	pkgdesc = On-screen Keyboard for FDE
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/cherrypicker/unl0kr
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	depends = device-mapper
+	depends = cryptsetup
+	depends = mesa
+	source = git+https://gitlab.com/cherrypicker/unl0kr.git#commit=50b6a2373679d09c9bf59eb1933cf14c16428ed0
+	source = unl0kr-hooks
+	source = unl0kr-install
+	md5sums = SKIP
+	md5sums = bfb3b7489f6ad4eff1a934ee469dc101
+	md5sums = 79bb712c36c48179ab3eaab9d9d902db
+
+pkgname = unl0kr

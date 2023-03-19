@@ -1,0 +1,64 @@
+#!/bin/ash
+build() {
+    local mod
+
+    add_module "dm-crypt"
+    add_module 'dm-integrity'
+    if [[ $CRYPTO_MODULES ]]; then
+        for mod in $CRYPTO_MODULES; do
+            add_module "$mod"
+        done
+    else
+        add_all_modules "/crypto/"
+    fi
+
+    add_binary 'cryptsetup'
+
+    map add_udev_rule \
+        '10-dm.rules' \
+        '13-dm-disk.rules' \
+        '95-dm-notify.rules' \
+        '/usr/lib/initcpio/udev/11-dm-initramfs.rules'\
+
+    # cryptsetup calls pthread_create(), which dlopen()s libgcc_s.so.1
+    add_binary '/usr/lib/libgcc_s.so.1'
+
+    add_binary /usr/bin/unl0kr
+    add_file /etc/unl0kr.conf
+
+    # add DRI drivers so we can have hw accel
+    libdir=/usr/lib
+    DRI_drivers="vmgfx_dri.so virtio_gpu_dri.so i965_drv_video.so crocus_dri.so iris_dri.so nouveau_dri.so r300_dri.so r600_dri.so radeonsi_dri.so zink_dri.so kms_swrast_dri.so"
+    for so in $DRI_drivers; do
+      if [ -f "$libdir/dri/$so" ]; then
+          add_binary "$libdir/dri/$so"
+      fi
+    done
+
+    #add_file "/usr/lib/udev/libinput-device-group"
+    #add_file "/usr/lib/udev/libinput-fuzz-extract"
+    #add_file "/usr/lib/udev/libinput-fuzz-to-zero"
+    add_full_dir "/usr/lib/udev/rules.d"
+    add_full_dir "/usr/share/libinput"
+    add_full_dir "/usr/share/X11/xkb"
+
+    add_binary "$libdir/libGLESv2.so.2"
+
+    find -L "$libdir" -name "libGL*.so*" -o -name "libEGL*.so*" -o -name "libEGL_mesa.so*" -type f | while read -r so; do
+       add_binary "$so"
+    done
+
+    [ -f /usr/share/glvnd/egl_vendor.d/50_mesa.json ] && add_file /usr/share/glvnd/egl_vendor.d/50_mesa.json
+
+    ttf_font=$(grep "^keyboard-font\s" /etc/unl0kr.conf|cut -f3 -d' ')
+    [ -f "$ttf_font" ] && add_file "$ttf_font"
+
+    add_runscript
+}
+
+help() {
+    cat <<HELPEOF
+This hook loads unl0kr to decrypt the filesystem. Used on touchscreen devices like tablets and phones to provide an on screen keyboard in order to enter in a passphrase for decrypting encrypted systems when an keyboard is not present.
+Users should specify the device to be unlocked using 'cryptdevice=device:dmname' on the kernel command line, where 'device' is the path to the raw device, and 'dmname' is the name given to the device after unlocking, and will be available as /dev/mapper/dmname.
+HELPEOF
+}
