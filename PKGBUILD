@@ -1,6 +1,6 @@
 pkgname=node-hp-scan-to
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Allow to send scan from HP All-in-One Printer to computer"
 arch=(any)
 url="https://github.com/manuc66/node-hp-scan-to"
@@ -42,5 +42,7 @@ package() {
     chown -R root:root "$pkgdir"
 
     install -Dm0644 "$srcdir/$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
-    echo "Please enable the systemd service via 'sudo systemctl enable --now $pkgname.service"
+    echo "Please enable the systemd service via 'sudo systemctl enable --now $pkgname.service'"
+    mkdir -p /etc/node-hp-scan-to
+    touch /etc/node-hp-scan-to/default.json
 }
