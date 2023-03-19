@@ -1,7 +1,7 @@
 pkgbase = l5p-kbl-git
 	pkgdesc = Lenovo Legion 5 Pro 2021 Linux Keyboard Light Controller
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/imShara/l5p-kbl
 	arch = any
 	license = unknown
