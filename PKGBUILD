@@ -1,39 +1,39 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
-pkgname=("php7-pdlib")
+pkgname=("php71-pdlib")
 _pkgbase=("pdlib")
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="PDlib - A PHP extension for Dlib"
 arch=('x86_64')
 url="https://github.com/goodspb/pdlib"
 license=('MIT License')
 depends=('dlib'
-         'php7'
+         'php71'
          'libx11'
-         'openblas'
-	 'cblas'
+         'blas'
+         'cblas'
          'lapack'
-	 'libsm'
-	 'libice'
+         'libsm'
+         'libice'
          'libxext'
          'giflib4'
-	 'libpng'
-	 'zlib'
- 	 'libjpeg-turbo'
-	 'sqlite'
-	 'fftw'
+         'libpng'
+         'zlib'
+         'libjpeg-turbo'
+         'sqlite'
+         'fftw'
          )
 
 makedepends=('cmake')
 source=("https://github.com/goodspb/pdlib/archive/v$pkgver.tar.gz"
 	"pdlib.ini")
-sha256sums=('e91a3c7396ee2027f957fa34fcc2567e614e4e1c1570ae7d5d16d4203541ba4a'
+sha256sums=('6c255c07dfb70d34019faecd99160d03846c83925452c9e93d5606edc8d55803'
             'c325ddedc2e685f12119a0f4e8a1a45430a1ecb15368179f4c0c7153352b8a0e')
 
 build() {
     cd "${srcdir}/${_pkgbase}-${pkgver}"
-    phpize7
+    phpize71
     LDFLAGS="-L/usr/lib/giflib4" CXXFLAGS="-O2 -I/usr/include/giflib4" ./configure --with-libdir=/usr/lib/giflib4
     make
 }
@@ -45,8 +45,8 @@ check() {
 
 package() {
     cd "${srcdir}/${_pkgbase}-${pkgver}"
-    install -Dm755 "modules/pdlib.so" "${pkgdir}/usr/lib/php7/modules/pdlib.so"
+    install -Dm755 "modules/pdlib.so" "${pkgdir}/usr/lib/php71/modules/pdlib.so"
     # install ini file
-    install -Dm644 "../pdlib.ini" "${pkgdir}/etc/php7/conf.d/pdlib.ini"
+    install -Dm644 "../pdlib.ini" "${pkgdir}/etc/php71/conf.d/pdlib.ini"
 }
 
