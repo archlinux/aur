@@ -1,15 +1,17 @@
-# Maintainer: ml <ml@visu.li>
+# Maintainer: Fernandez Ludovic <lfernandez dot dev at gmail dot com>
 pkgname=golangci-lint
 pkgdesc='Linters Runner for Go. 5x faster than gometalinter.'
-pkgver=1.51.2
+pkgver=1.52.0
 pkgrel=1
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
 url='https://github.com/golangci/golangci-lint'
 license=('GPL3')
 depends=('glibc')
 makedepends=('git' 'go')
+
 source=("https://github.com/golangci/golangci-lint/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('7e5bc05ad3739cec5a8b4e947a02d540c657a06039175c8822e1000f6bf606bd')
+sha256sums=('e186a85b0e5af795da41da03a8ee1867482200a61e3cc7f4a6d92e663e6ec199')
+# https://github.com/golangci/golangci-lint/archive/v1.52.0/golangci-lint-v1.52.0.tar.gz
 
 build() {
   local _commit _flags
@@ -26,11 +28,13 @@ build() {
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS='-buildmode=pie -trimpath -modcacherw'
+  
   cd "$pkgname-$pkgver"
+  
   go build -o "$pkgname" -ldflags="${_flags[*]}" ./cmd/"$pkgname"
-  ./"$pkgname" completion bash >completion.bash
-  ./"$pkgname" completion zsh >completion.zsh
-  ./"$pkgname" completion fish >completion.fish
+  ./"$pkgname" completion bash > completion.bash
+  ./"$pkgname" completion zsh > completion.zsh
+  ./"$pkgname" completion fish > completion.fish
 }
 
 package() {
