@@ -1,12 +1,12 @@
 pkgbase = pantagruel
 	pkgdesc = An Extremely Lightweight Specification Language
-	pkgver = 0.11.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/subsetpark/pantagruel
 	arch = x86_64
 	license = BSD3
 	makedepends = janet
-	source = https://github.com/subsetpark/pantagruel/archive/refs/tags/v0.11.0.tar.gz
-	sha256sums = 269deaa9358ce8629f00ce529c47ff3083679d965382f343227b2e36e4a377c4
+	source = https://github.com/subsetpark/pantagruel/archive/refs/tags/v0.11.1.tar.gz
+	sha256sums = 5c8c43a0b6213940166caef956ef8884f5d6f5932a36ce0aae9c4edfff5d2461
 
 pkgname = pantagruel
