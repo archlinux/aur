@@ -1,0 +1,17 @@
+pkgbase = krunvm
+	pkgdesc = Create microVMs from OCI images
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/containers/krunvm
+	arch = x86_64
+	license = Apache
+	makedepends = cargo
+	makedepends = asciidoctor
+	depends = glibc
+	depends = gcc-libs
+	depends = libkrun
+	depends = buildah
+	source = https://github.com/containers/krunvm/archive/refs/tags/v0.2.3/krunvm-0.2.3.tar.gz
+	sha256sums = b290bcb70f341ac4814b0eb0e3a19084c301135f61e49f406168157b0d5f74c4
+
+pkgname = krunvm
