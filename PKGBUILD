@@ -3,7 +3,7 @@
 pkgbase=purc
 pkgname=purc
 pkgver=0.9.7
-pkgrel=2
+pkgrel=3
 pkgdesc="The prime HVML interpreter for C Language."
 arch=(x86_64
     aarch64
@@ -14,7 +14,6 @@ url="https://github.com/HVML/PurC"
 license=('LGPL-3.0')
 groups=('hvml')
 provides=(${pkgname}
-        PurC
         domruler
         purc-fetcher)
 conflicts=(${pkgname})
@@ -27,16 +26,21 @@ makedepends=(git
             cmake
             ninja
             ccache
-            gcc
-            python
-            libxml2
-            ruby
             curl
+            gcc
+            ncurses
+            libjpeg-turbo
+            libxml2
+            libxslt
+            libsoup
+            icu
+            mariadb
+            python
             openssl
             sqlite
+            systemd
             pkgconf
-            zlib
-            icu)
+            zlib)
 optdepends=('python-numpy: Scientific tools for Python'
             'webkit2gtk-hvml: Web content engine for GTK (HVML)'
             'webkit2gtk: Web content engine for GTK'
