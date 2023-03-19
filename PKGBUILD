@@ -1,6 +1,6 @@
 # Maintainer: LanjieYou <ylj18926385312@163.com>
 pkgname='cgame2'
-pkgver=1.5
+pkgver=1.5.1
 pkgrel=1
 epoch=0
 pkgdesc="五子棋游戏(Chinese Only)"
@@ -15,6 +15,8 @@ md5sums=("SKIP")
 
 build() {
 	cd "$pkgname"
+	git submodule init
+	git submodule update
 	make
 }
 
