@@ -11,7 +11,7 @@ arch=(x86_64)
 license=(LGPL)
 depends=(fribidi gnutls gtk3 pcre2 systemd-libs vte-common)
 makedepends=(gobject-introspection gperf meson vala)
-options=(!lto)
+options=('!lto')
 source=("https://gitlab.gnome.org/GNOME/vte/-/archive/$pkgver/vte-$pkgver.tar.bz2"
   fix-exit-regression.patch
   desktop-notification.patch)
@@ -19,8 +19,8 @@ sha256sums=('94d0b6776d55252bc1f15995c1ade7eb44b4a2c99531487eba9b8bded1a0fe2f'
   'f43611e7f8ffdc5f1fe52a6e1fe274cc0b2d421d88abb7c2b0d073cfea61f6eb'
   '905672bd0e2b5685aeddd035e502a7062c4ada16f8a8eae9813cca1974ea0f77')
 
-provides=("vte3=$pkgver" "vte3-notification=$pkgver" libvte-2.91.so)
-conflicts=(vte3)
+provides=("vte3=$pkgver" "vte3-notification=$pkgver" 'libvte-2.91.so')
+conflicts=('vte3')
 
 prepare() {
   cd "vte-$pkgver" || exit 1
