@@ -2,7 +2,7 @@
 pkgname=fchat-rising-git
 _pkgname=fchat-rising
 pkgver=1.21.1
-pkgrel=2
+pkgrel=3
 pkgdesc="The F-Chat 3.0 client from F-List modifed by MrStallion. Uses a system-wide electron instead of the built in."
 arch=('x86_64')
 url="https://github.com/mrstallion/fchat-rising"
@@ -25,7 +25,7 @@ source=(
 )
 sha256sums=(
     'SKIP'
-    'eaa27f1eb8bd228e9bd11a1cd068f30b3129abce85ab9f275de34dbf60ba8fba'
+    '9f1a95982e8327f32173056d03d79705c01f11307bae59e8f5d3ec3435421f1f'
     '249e4e9263098b64399ccc8bcd9c64dca5b3858c244c061ccc2ebe37f32cb258'
 )
 
