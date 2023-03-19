@@ -2,30 +2,16 @@
 
 pkgname=zephyr-sdk
 pkgver=0.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="SDK for Zephyr real-time operating system"
 arch=('x86_64')
 url="https://www.zephyrproject.org/"
 license=('Apache')
 
-# Some of these are dependencies of Zephyr RTOS, but instructions for Zephyr
-# tell user to pip install, so let's add them here instead.  (See
-# zephyr/scripts/requirements.txt in Zephyr distribution)
-# Missing (not packaged for Arch): junit2html, canopen, sphinx-tabs
-depends=('python-breathe>=4.9.1' 'python-docutils>=0.14'
-         'python-pyaml>=5.1'
-         'python-ply>=3.10' 'python-pip' 'python-setuptools' 'python-wheel'
-         'python-pyelftools>=0.24' 'python-pyserial' 'python-pykwalify'
-	 'python-pillow' 'python-anytree' 'python-intelhex' 'python-packaging'
-	 'python-progress' 'python-pyserial' 'python-cbor' 'python-psutil'
-	 'python-pytest' 'python-colorama'
-         'python-coverage' 'gcovr'
-         'python-sphinx>=1.7.5' 'python-sphinx_rtd_theme'
-	 'python-sphinxcontrib-svg2pdfconverter' 'python-tabulate'
-	 'python-west>=0.7.2'
-         'git-spindle' 'gitlint' 'ninja' 'gperf' 'gcovr' 'ccache'
-         'doxygen' 'dfu-util' 'dtc' 'cmake>=3.8.2')
-optdepends=('pyocd: programming and debugging ARM MCUs')
+depends=('cmake' 'ninja' 'gperf' 'ccache' 'dfu-util' 'dtc'
+         'python-pip' 'python-setuptools' 'python-wheel' 'tk' 'xz')
+optdepends=('pyocd: programming and debugging ARM MCUs'
+            'python-west: Zephyr RTOS Project meta-tool')
 makedepends=('patchelf' 'wget')
 source=("https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgver}/zephyr-sdk-${pkgver}_linux-x86_64.tar.xz"
         "zephyrrc"
@@ -75,11 +61,6 @@ package ()
   local _cmake_module_path="$pkgdir/usr/lib/cmake/Zephyr-sdk"
   mkdir -p "$_cmake_module_path"
   echo "/$_installdir" > "$_cmake_module_path/${_cmake_fname}"
-
-  echo ">>>"
-  echo ">>> Ignore the environment variable values printed above, instead do this:"
-  echo ">>>     cp /usr/share/zephyr-sdk/zephyrrc ~/.zephyrrc"
-  echo ">>>"
 
   # Strip package build path from prefix path
   sed -i "s@\(relocate_sdk.py\s\+\)${pkgdir}/${_installdir} ${pkgdir}/${_installdir}@\1 /${_installdir} /${_installdir}@g" relocate_sdk.sh
