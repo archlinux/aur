@@ -1,9 +1,10 @@
 # Maintainer: Tatsuyuki Ishi <ishitatsuyuki@gmail.com>
 # Contributor: Torge Matthies <openglfreak@googlemail.com>
+# Contributor: TheBill2001 <tuantran1632001@gmail.com>
 
 _pkgname=latencyflex
 pkgname=(latencyflex-git latencyflex-wine-git)
-pkgver=r40.9c2836f
+pkgver=r61.0470806
 pkgrel=1
 pkgdesc="Vendor and game agnostic latency reduction middleware"
 arch=('x86_64')
@@ -13,8 +14,12 @@ makedepends=('git' 'cmake' 'meson' 'vulkan-headers' 'vulkan-validation-layers' '
 source=("git+https://github.com/ishitatsuyuki/LatencyFleX.git"
         "git+https://github.com/kubo/funchook.git"
         "git+https://github.com/gdabah/distorm.git"
+        "git+https://android.googlesource.com/platform/external/perfetto"
+        "git+https://github.com/ishitatsuyuki/unhollowed-assemblies.git"
         "latencyflex-wine.install")
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             '30861957636eed47ee70461dc377e8dcd23b1acfa8b7bb570196e1347d121bb6')
@@ -29,12 +34,15 @@ pkgver() {
 prepare() {
     cd "$srcdir/$_vcsname"
 
-    git submodule init layer/subprojects/funchook
-    git config submodule.layer/subprojects/funchook.url "$srcdir/funchook"
-    git submodule update layer/subprojects/funchook
-    git -C layer/subprojects/funchook submodule init distorm
+    git submodule init
+    git config submodule.layer/funchook.url "$srcdir/funchook"
+    git config submodule.layer/subprojects/perfetto.url "$srcdir/perfetto"
+    git config submodule.layer/unity/unhollowed.url "$srcdir/unhollowed-assemblies"
+    git -c protocol.file.allow=always submodule update
+
+    git -C layer/subprojects/funchook submodule init
     git -C layer/subprojects/funchook config submodule.distorm.url "$srcdir/distorm"
-    git -C layer/subprojects/funchook submodule update distorm
+    git -c protocol.file.allow=always -C layer/subprojects/funchook submodule update
 }
 
 build() {
