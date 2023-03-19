@@ -1,0 +1,13 @@
+pkgbase = chatgpt-shell-cli-git
+	pkgdesc = Use OpenAI's ChatGPT and DALL-E from the terminal.
+	pkgver = 1.0.r.
+	pkgrel = 1
+	url = https://github.com/0xacx/chatGPT-shell-cli.git
+	arch = any
+	license = MIT
+	provides = chatgpt-shell-cli-git
+	conflicts = chatgpt-shell-cli
+	source = git+https://github.com/0xacx/chatGPT-shell-cli.git
+	sha256sums = SKIP
+
+pkgname = chatgpt-shell-cli-git
