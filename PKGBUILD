@@ -7,8 +7,8 @@
 pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
-pkgver=110.0.1
-pkgrel=2
+pkgver=111.0
+pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
 license=(
@@ -80,14 +80,16 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         "git+https://github.com/cachyos/cachyos-browser-settings.git"
         "git+https://github.com/cachyos/cachyos-browser-common.git"
         "match.patch"
-        "libwebrtc-screen-cast-sync.patch")
-sha256sums=('f19bb74d684b992625abca68f5776198974cd2785eb5d02d51ba007fc998491f'
+        "https://raw.githubusercontent.com/CachyOS/CachyOS-PKGBUILDS/master/cachy-browser/0002-Bug-1819374-Squashed-ffmpeg-6.0-update.patch"
+        "https://raw.githubusercontent.com/CachyOS/CachyOS-PKGBUILDS/master/cachy-browser/0003-Bug-1820416-Use-correct-FFVPX-headers-from-ffmpeg-6..patch")
+sha256sums=('e1006c0872aa7eb30fb5a689413957f1e5fc8d2048b1637bf6f6fafdbd4ea55f'
             'SKIP'
             'c0786df2fd28409da59d0999083914a65e2097cda055c9c6c2a65825f156e29f'
             'SKIP'
             'SKIP'
             '1fbb1971a1d0d4c875b1af0f9681601909cfbe4fe0cc2c2f42c523c84c934499'
-            'b1ce6936749ab1614bbce4fddc87058341ed207dde77af609fdc5ac83538517a')
+            '9347e45cfe3e915b2293f7467fd61c216ec10823e91c70e5aeb9ca08cc5fcfcf'
+            'be9ba079a931d5e881ce38430d418cc834e8c6b157af6c79ea267998caece806')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
 prepare() {
@@ -212,10 +214,10 @@ END
     patch -Np1 -i ${_patches_dir}/librewolf/faster-package-multi-locale.patch
 
     msg2 "remove references to firefox from the settings UI, change text in some of the links"
-    patch -Np1 -i ${_patches_dir}/librewolf-ui/pref-naming.patch
-    patch -Np1 -i ${_patches_dir}/librewolf-ui/remap-links.patch
-    patch -Np1 -i ${_patches_dir}/librewolf-ui/hide-default-browser.patch
-    patch -Np1 -i ${_patches_dir}/librewolf-ui/privacy-preferences.patch
+#    patch -Np1 -i ${_patches_dir}/librewolf-ui/pref-naming.patch
+#    patch -Np1 -i ${_patches_dir}/librewolf-ui/remap-links.patch
+#    patch -Np1 -i ${_patches_dir}/librewolf-ui/hide-default-browser.patch
+#    patch -Np1 -i ${_patches_dir}/librewolf-ui/privacy-preferences.patch
 
     msg2 "remove firefox references in the urlbar, when suggesting opened tabs."
     patch -Np1 -i ${_patches_dir}/librewolf-ui/remove-branding-urlbar.patch
@@ -260,17 +262,18 @@ END
     patch -Np1 -i ${_patches_dir}/kde/mozilla-nongnome-proxies.patch
     msg2  "some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)"
     patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
-    msg2  "RFP Performance API - should be merged in 111"
-    patch -Np1 -i ${_patches_dir}/librewolf/rfp-performance-api.patch
     msg2  "unified-extensions-dont-show-recommendations.patch"
     patch -Np1 -i ${_patches_dir}/librewolf/unified-extensions-dont-show-recommendations.patch
-    # https://bugs.archlinux.org/task/76231
-    # https://bugzilla.mozilla.org/show_bug.cgi?id=1790496
-    # https://src.fedoraproject.org/rpms/firefox/blob/rawhide/f/libwebrtc-screen-cast-sync.patch
+
     msg2 "Arch patch"
-    patch -Np1 -i ../libwebrtc-screen-cast-sync.patch
-#    msg2 "Match to system libs"
-#    patch -Np1 -i ../match.patch
+    # https://bugzilla.mozilla.org/show_bug.cgi?id=1819374
+    patch -Np1 -i ../0002-Bug-1819374-Squashed-ffmpeg-6.0-update.patch
+
+    # https://bugs.archlinux.org/task/77796
+    # https://bugzilla.mozilla.org/show_bug.cgi?id=1820416
+    patch -Np1 -i ../0003-Bug-1820416-Use-correct-FFVPX-headers-from-ffmpeg-6..patch
+    # msg2 "Match to system libs"
+    # patch -Np1 -i ../match.patch
 
     rm -f ${srcdir}/cachyos-browser-common/source_files/mozconfig
     cp -r ${srcdir}/cachyos-browser-common/source_files/browser ./
