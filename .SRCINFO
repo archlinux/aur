@@ -1,6 +1,6 @@
 pkgbase = chirp-next
 	pkgdesc = GUI tool for programming ham radios, built from daily build
-	pkgver = 20230317
+	pkgver = 20230319
 	pkgrel = 1
 	url = https://chirp.danplanet.com
 	install = chirp-next.install
@@ -22,9 +22,9 @@ pkgbase = chirp-next
 	conflicts = chirp
 	conflicts = chirp-daily
 	options = !emptydirs
-	source = chirp-next-20230317.tar.gz::https://trac.chirp.danplanet.com/chirp_next/next-20230317/chirp-20230317.tar.gz
-	source = https://trac.chirp.danplanet.com/chirp_next/next-20230317/chirp-next-20230317-win32.zip
-	sha1sums = 6c6625ca0d86b48ad97e1e3ed9b24e1a5e5f65c1
-	sha1sums = ce956d03b0205fb31fd67c12efa031fa60af3a3b
+	source = chirp-next-20230319.tar.gz::https://trac.chirp.danplanet.com/chirp_next/next-20230319/chirp-20230319.tar.gz
+	source = https://trac.chirp.danplanet.com/chirp_next/next-20230319/chirp-next-20230319-win32.zip
+	sha1sums = 8842bba89717628bafc491333bb42c5ed26e494a
+	sha1sums = 299c784d08b98271294a4cb2ad3bfdb371c30382
 
 pkgname = chirp-next
