@@ -1,7 +1,7 @@
 pkgbase = alx-wol-dkms
 	pkgdesc = The alx kernel module with a patch enabling WoL applied
 	pkgver = 6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bugzilla.kernel.org/show_bug.cgi?id=61651
 	arch = i686
 	arch = x86_64
