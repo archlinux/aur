@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=maxcso-git
-pkgver=1.13.0.r10.161f99d8
+pkgver=1.13.0.r26.2a26a153
 pkgrel=1
 pkgdesc='A fast ISO to CSO compression program for use with PSP and PS2 emulators'
 arch=(x86_64)
