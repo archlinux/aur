@@ -1,7 +1,7 @@
 # Maintainer: Slava Ganzin <slava.ganzin@gmail.com>
 
 pkgname=await
-pkgver=0.99
+pkgver=0.999
 pkgrel=1
 pkgdesc="28kb small memory footprint single binary that run list of commands in parallel and waits for their termination"
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')

@@ -1,6 +1,6 @@
 pkgbase = await
 	pkgdesc = 28kb small memory footprint single binary that run list of commands in parallel and waits for their termination
-	pkgver = 0.99
+	pkgver = 0.999
 	pkgrel = 1
 	url = https://await-cli.app/
 	arch = aarch64
