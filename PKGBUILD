@@ -2,8 +2,8 @@
 
 pkgname=python-html-sanitizer
 _name=html_sanitizer
-pkgver=1.9.2
-pkgrel=2
+pkgver=1.9.3
+pkgrel=1
 pkgdesc="Allowlist-based and very opinionated HTML sanitizer that can be used both for untrusted and trusted sources."
 arch=('any')
 url="https://pypi.org/project/html-sanitizer/"
