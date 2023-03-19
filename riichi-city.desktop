@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Riichi City
+Comment=A Riichi Mahjong client<F9>
+Exec=/usr/bin/riichi-city
+Terminal=false
+Type=Application
+Icon=riichi-city
+Categories=Games
+Name[ja]=麻雀一番街
