@@ -10,6 +10,7 @@ pkgbase = soju-git
 	makedepends = go
 	makedepends = scdoc
 	depends = sqlite
+	depends = pam
 	optdepends = postgresql: PostgreSQL support
 	provides = soju
 	conflicts = soju
