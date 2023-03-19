@@ -1,7 +1,7 @@
 pkgbase = wayback-spn-script-git
 	pkgdesc = a Bash script that asks the Internet Archive Wayback Machine's Save Page Now (SPN) to save live web pages
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/overcast07/wayback-machine-spn-scripts
 	arch = x86_64
 	arch = i686
