@@ -1,6 +1,6 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=gnome-shell-extension-dash-to-plank
-pkgver=14
+pkgver=15
 pkgrel=1
 pkgdesc="GNOME Shell extension to integrate Plank, the simplest dock on the planet."
 arch=("any")
@@ -10,7 +10,7 @@ depends=("gnome-shell" "plank")
 provides=("gnome-shell-extension-dash-to-plank")
 conflicts=("gnome-shell-extension-dash-to-plank-git")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-md5sums=('07c38decbdeb23a86a7a17faa09847f6')
+md5sums=('b0e5c8f55573b971e39f0e6cc930b485')
 
 package() {
   install -d "$pkgdir/usr/share/gnome-shell/extensions" \
