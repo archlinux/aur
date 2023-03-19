@@ -1,0 +1,60 @@
+From d0dc1750f0e5c1693852ba6d954eb3b9f2985d86 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=A9clairevoyant?=
+ <848000+eclairevoyant@users.noreply.github.com>
+Date: Sat, 18 Mar 2023 02:02:23 -0400
+Subject: [PATCH] remove box_syntax
+
+---
+ crates/eww/src/main.rs       | 1 -
+ crates/simplexpr/src/eval.rs | 8 ++++----
+ crates/simplexpr/src/lib.rs  | 1 -
+ 3 files changed, 4 insertions(+), 6 deletions(-)
+
+diff --git a/crates/eww/src/main.rs b/crates/eww/src/main.rs
+index 8e51a62..14bc819 100644
+--- a/crates/eww/src/main.rs
++++ b/crates/eww/src/main.rs
+@@ -1,6 +1,5 @@
+ #![feature(trace_macros)]
+ #![feature(drain_filter)]
+-#![feature(box_syntax)]
+ #![feature(box_patterns)]
+ #![feature(slice_concat_trait)]
+ #![feature(try_blocks)]
+diff --git a/crates/simplexpr/src/eval.rs b/crates/simplexpr/src/eval.rs
+index d0b4811..76f811d 100644
+--- a/crates/simplexpr/src/eval.rs
++++ b/crates/simplexpr/src/eval.rs
+@@ -93,14 +93,14 @@ impl SimplExpr {
+     pub fn try_map_var_refs<E, F: Fn(Span, VarName) -> Result<SimplExpr, E> + Copy>(self, f: F) -> Result<Self, E> {
+         use SimplExpr::*;
+         Ok(match self {
+-            BinOp(span, box a, op, box b) => BinOp(span, box a.try_map_var_refs(f)?, op, box b.try_map_var_refs(f)?),
++            BinOp(span, box a, op, box b) => BinOp(span, Box::new(a.try_map_var_refs(f)?), op, Box::new(b.try_map_var_refs(f)?)),
+             Concat(span, elems) => Concat(span, elems.into_iter().map(|x| x.try_map_var_refs(f)).collect::<Result<_, _>>()?),
+-            UnaryOp(span, op, box a) => UnaryOp(span, op, box a.try_map_var_refs(f)?),
++            UnaryOp(span, op, box a) => UnaryOp(span, op, Box::new(a.try_map_var_refs(f)?)),
+             IfElse(span, box a, box b, box c) => {
+-                IfElse(span, box a.try_map_var_refs(f)?, box b.try_map_var_refs(f)?, box c.try_map_var_refs(f)?)
++                IfElse(span, Box::new(a.try_map_var_refs(f)?), Box::new(b.try_map_var_refs(f)?), Box::new(c.try_map_var_refs(f)?))
+             }
+             JsonAccess(span, safe, box a, box b) => {
+-                JsonAccess(span, safe, box a.try_map_var_refs(f)?, box b.try_map_var_refs(f)?)
++                JsonAccess(span, safe, Box::new(a.try_map_var_refs(f)?), Box::new(b.try_map_var_refs(f)?))
+             }
+             FunctionCall(span, name, args) => {
+                 FunctionCall(span, name, args.into_iter().map(|x| x.try_map_var_refs(f)).collect::<Result<_, _>>()?)
+diff --git a/crates/simplexpr/src/lib.rs b/crates/simplexpr/src/lib.rs
+index 205b298..8a40287 100644
+--- a/crates/simplexpr/src/lib.rs
++++ b/crates/simplexpr/src/lib.rs
+@@ -1,6 +1,5 @@
+ #![feature(box_patterns)]
+ #![feature(pattern)]
+-#![feature(box_syntax)]
+ #![feature(try_blocks)]
+ #![feature(unwrap_infallible)]
+ #![feature(never_type)]
+-- 
+2.39.2
+

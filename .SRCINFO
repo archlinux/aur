@@ -1,6 +1,6 @@
 pkgbase = eww-wayland-git
 	pkgdesc = ElKowar's wacky widgets (Wayland build)
-	pkgver = 0.4.0.r20.g8ff4142
+	pkgver = 0.4.0.r21.g45154bb
 	pkgrel = 1
 	url = https://github.com/elkowar/eww
 	install = eww-wayland-git.install
@@ -13,8 +13,10 @@ pkgbase = eww-wayland-git
 	provides = eww=0.4.0
 	conflicts = eww
 	source = git+https://github.com/elkowar/eww.git?signed
+	source = 0001-remove-box_syntax.patch
 	validpgpkeys = B558974128820CB473BD9807E321AD71B1D1F27F
 	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
 	b2sums = SKIP
+	b2sums = 2953945ff2286fef89c5a08e834221b15900ef43c5422871e247ff5b6c13983f5c7a3869ae9dcc670809b10f921c6d4b822c77d07033bf36d7bf1d285589de20
 
 pkgname = eww-wayland-git

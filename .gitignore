@@ -3,3 +3,4 @@
 !/.SRCINFO
 !/PKGBUILD
 !/eww-wayland-git.install
+!/*.patch
