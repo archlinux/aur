@@ -1,7 +1,7 @@
 pkgbase = proton-ge-custom
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build
-	pkgver = GE.Proton7.50
-	pkgrel = 4
+	pkgver = GE.Proton7.51
+	pkgrel = 1
 	epoch = 2
 	url = https://github.com/GloriousEggroll/proton-ge-custom
 	install = proton-ge-custom.install
@@ -216,7 +216,7 @@ pkgbase = proton-ge-custom
 	options = !staticlibs
 	options = !lto
 	options = emptydirs
-	source = proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#commit=174db6e815ce5d8387b5cab8a115bba92f3229eb
+	source = proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#commit=6f12019635c059f35b1329301ec0a5e7fee7e436
 	source = wine-valve::git+https://github.com/ValveSoftware/wine.git
 	source = dxvk::git+https://github.com/doitsujin/dxvk.git
 	source = openvr::git+https://github.com/ValveSoftware/openvr.git
@@ -247,8 +247,8 @@ pkgbase = proton-ge-custom
 	source = https://dl.winehq.org/wine/wine-gecko/2.47.3/wine-gecko-2.47.3-x86.tar.xz
 	source = https://dl.winehq.org/wine/wine-gecko/2.47.3/wine-gecko-2.47.3-x86_64.tar.xz
 	source = https://github.com/madewokherd/wine-mono/releases/download/wine-mono-7.4.0/wine-mono-7.4.0-x86.tar.xz
-	source = 0001-AUR-pkgbuild-changes.patch
-	source = 0002-AUR-pkgbuild-changes.patch
+	source = 0001-AUR-Pkgbuild-changes.patch
+	source = 0002-AUR-Do-not-update-cargo-crates.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -280,7 +280,7 @@ pkgbase = proton-ge-custom
 	sha256sums = 08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3
 	sha256sums = 0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75
 	sha256sums = 9249ece664bcf2fecb1308ea1d2542c72923df9fe3df891986f137b2266a9ba3
-	sha256sums = 74f1c152a0bf75ddb9170136530249d0459173ceb641c0a6b9cd98cd81bf38b4
-	sha256sums = 7ed62873f78fc4e65b037ee52738ee15814a8f0599668690fe29311bf311432b
+	sha256sums = ee4952198ff3bb139d23f29fb591825c664c5df690d251a9716555d085e17c99
+	sha256sums = 697858a2455f05935172113c52ac60fc355d15bcc73270de5f969b3ecb2b2194
 
 pkgname = proton-ge-custom

@@ -1,3 +1,12 @@
+From ee7a8210660921e24a37789f40617c62b08ce11c Mon Sep 17 00:00:00 2001
+From: Stelios Tsampas <loathingkernel@gmail.com>
+Date: Sun, 19 Mar 2023 10:56:59 +0200
+Subject: [PATCH 2/2] AUR Do not update cargo crates
+
+---
+ make/rules-cargo.mk | 2 --
+ 1 file changed, 2 deletions(-)
+
 diff --git a/make/rules-cargo.mk b/make/rules-cargo.mk
 index 5ebcf009..4f5c3162 100644
 --- a/make/rules-cargo.mk
@@ -11,3 +20,6 @@ index 5ebcf009..4f5c3162 100644
  	cargo build \
  	      -j$$(SUBJOBS) --locked --offline --verbose \
  	      --target "$$(CARGO_TARGET_$(3))" \
+-- 
+2.40.0
+
