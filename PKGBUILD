@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=shisper-git
-pkgver=0.1.r3.g24044fe
+pkgver=0.2.r0.g08aa962
 pkgrel=1
 pkgdesc="A quick & dirty script to generate subtitles and transcriptions for your multimedia files using ggerganov/whisper.cpp"
 arch=(any)
