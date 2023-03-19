@@ -4,13 +4,13 @@ _appname=zeal
 _builddir=build
 
 pkgname=${_appname}-git
-pkgver=0.6.1.r228.g763edca
+pkgver=0.6.1.r271.g6c2160f
 pkgrel=1
 pkgdesc="A simple documentation browser"
 arch=('aarch64' 'i686' 'x86_64')
 url="https://zealdocs.org/"
 license=('GPL3')
-depends=('hicolor-icon-theme' 'libarchive' 'qt5-webengine' 'qt5-x11extras')
+depends=('hicolor-icon-theme' 'libarchive' 'qt6-webengine')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja')
 conflicts=(${_appname})
 source=("${_appname}::git+https://github.com/zealdocs/${_appname}")
