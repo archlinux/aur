@@ -19,13 +19,13 @@ build() {
 
 check() {
    cd $pkgname-$pkgver
-   RUSTUP_TOOLCHAIN=stable HOME=`pwd` cargo test --release --locked --target-dir=target
+   RUSTUP_TOOLCHAIN=stable HOME=$(pwd) cargo test --release --locked --target-dir=target
 }
 
 package() {
-    cd $pkgname-$pkgver
-    install -Dm755 "target/release/swayr" "$pkgdir/usr/bin/swayr"
-    install -Dm755 "target/release/swayrd" "$pkgdir/usr/bin/swayrd"
-    install -Dm644 "etc/swayrd.service" "$pkgdir/usr/lib/systemd/user/swayrd.service"
+   cd $pkgname-$pkgver
+   install -Dm755 "target/release/swayr" "$pkgdir/usr/bin/swayr"
+   install -Dm755 "target/release/swayrd" "$pkgdir/usr/bin/swayrd"
+   install -Dm644 "etc/swayrd.service" "$pkgdir/usr/lib/systemd/user/swayrd.service"
 }
 
