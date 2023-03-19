@@ -1,7 +1,7 @@
 # Maintainer: Yidaozhan Ya <yidaozhan_ya@outlook.com>
 
 pkgname=hoyo-glyphs
-pkgver=1.0
+pkgver=20230324
 pkgrel=1
 pkgdesc="Constructed scripts by HoYoverse 米哈游的架空文字 "
 arch=("any")
