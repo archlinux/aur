@@ -7,7 +7,7 @@ pkgdesc="A wrapper program that only opens a file if exec bit is set.(from mailc
 url=https://packages.ubuntu.com/search?keywords=mailcap
 arch=(any)
 license=(GPL)
-depends=()
+depends=(zenity)
 conflicts=()
 makedepends=()
 source=(http://archive.ubuntu.com/ubuntu/pool/main/m/mailcap/mailcap_${pkgver}${_ubunturel}.tar.xz)
