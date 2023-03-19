@@ -3,15 +3,20 @@
 
 pkgname=slrn-snapshot-canlock
 _pkgname=slrn
-pkgver=1.0.4.6
-_prever='pre1.0.4-6'
-pkgrel=5
+pkgver=1.0.4.9
+_prever='pre1.0.4-9'
+pkgrel=1
 pkgdesc='An easy-to-use, text-mode, threaded Usenet/NNTP client/newsreader (development snapshot with cancel-lock)'
-arch=('x86_64' 'armv7h' 'aarch64')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://jedsoft.org/snapshots/'
 license=('GPL')
 makedepends=('uudeview')
-depends=('openssl' 'slang' 'libcanlock')
+depends=(
+  'glibc'
+  'libcanlock'
+  'openssl'
+  'slang'
+)
 provides=('slrn')
 conflicts=('slrn')
 backup=(etc/slrnrc)
@@ -28,7 +33,7 @@ source=(
 )
 # Taken from https://jedsoft.org/snapshots/
 md5sums=(
-  '07cceea256b53b876ba3e684f7fb1174'
+  'f193d983e104a82ef4fd70b1037f8b60'
   'SKIP'
 )
 
@@ -98,15 +103,15 @@ package() {
 }
 
 sha256sums=(
-  'baa2d41d8b55896d393352ea7bb8ca130fa7d3a4d69094a71e6db7077d0333e0'
+  '827d01c529c658492e45a376b99495a932d0d6be1e8e207df6f0062a25f1cff8'
   'e70b6980b80d4fa65651fe9deb50c458943d833dddd39925fb53e5ded2059739'
 )
 sha512sums=(
-  '160eb6336ab694d15fa80b6746fca00fe02665cd1be55f5693790f4f0e91568a4d3ccb4af9cbdfbce252c637f4a09f64a64139dfc9ac04b067e3af91bb6f7d5e'
+  '05c05f523565d7af3936f98665a85a1cb0589f4b25dd4a957bcd309293a50c9d624104cca86dae28e37d56243af6296e237214cb767ba2418c21265d91381a5a'
   '31d88d6e4ddf24da0ed870001e1c41ccdb88c2d7c5bf8a5b1671cd2ac48c03a24343f2fa3590ad73c5f9e5ff603b2e3241959e8f8dc5f7a849f9f44c28c6f363'
 )
 b2sums=(
-  'ec48f0897fa536d11d0bd2ab600ef048a89d88b0e399a56e28716035b91ddb4d0f6e475c5c1eee4a096c45e108a104b05a970ff0706eea0121b14cd88c5fb6d7'
+  '667654876dfb087da62288d646a78454a3387e65555e56d34835b9bd6dfe3cf47d5e61ef52e3b11b2df377660db271d1a74e4e986fa826f475cf2bd51ddf6a5d'
   '0bfd30519f681636d33ade106b35672c9d43c024c9af6580f73b3b3ddc01137124b51a29c8b93810dbe200affa97206475876eff3fd7bccc5d4b0beca05d185f'
 )
 
