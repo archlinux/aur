@@ -5,7 +5,7 @@ pkgname="stm32cubeide"
 pkgver=1.12.0
 _pkgver_ext=1.12.0_14980_20230301_1550
 _pkg_file_name=st-stm32cubeide_1.12.0_14980_20230301_1550_amd64.sh.zip
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
 makedepends=('imagemagick')
@@ -98,7 +98,7 @@ Comment=STM32CubeIDE ${pkgver}
 GenericName=STM32CubeIDE
 #Exec=env GDK_BACKEND=x11 stm32cubeide %F
 #Exec=env WEBKIT_DISABLE_COMPOSITING_MODE=1 stm32cubeide %F
-Exec=stm32cubeide %F
+Exec=stm32cubeide_wayland %F
 Icon=stm32cubeide
 Path=/opt/stm32cubeide/
 Terminal=false

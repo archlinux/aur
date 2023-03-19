@@ -5,3 +5,4 @@ src/
 *.pkg.tar.xz
 *.pkg.tar.zst
 *.pdf
+*.part
