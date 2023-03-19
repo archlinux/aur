@@ -2,7 +2,7 @@
 
 pkgname=soju-git
 _pkgname=soju
-pkgver=v0.3.0.r6.ge3d7c33
+pkgver=v0.5.2.r126.gd2067f74d84a
 pkgrel=1
 pkgdesc='A user-friendly IRC bouncer'
 arch=('x86_64')
@@ -44,11 +44,7 @@ build() {
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-
-    go build ./cmd/soju
-    go build ./cmd/sojuctl
-
-    scdoc <doc/soju.1.scd >doc/soju.1
+    make
 }
 
 package() {
