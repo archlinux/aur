@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=dxvk-nvapi-mingw-git
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc='Alternative NVAPI implementation on top of DXVK. '
 arch=('x86_64')
@@ -9,6 +9,8 @@ url="https://github.com/jp7677/dxvk-nvapi"
 license=('MIT')
 depends=('vulkan-icd-loader' 'wine>=4.0rc1' 'lib32-vulkan-icd-loader' 'dxvk' 'bash')
 makedepends=('ninja' 'meson>=0.43' 'glslang' 'git' 'mingw-w64-gcc')
+provides=('dxvk-nvapi-mingw')
+conflicts=('dxvk-nvapi-mingw')
 options=(!lto)
 source=(
     "git+https://github.com/jp7677/dxvk-nvapi.git"

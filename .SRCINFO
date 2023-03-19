@@ -1,6 +1,6 @@
 pkgbase = dxvk-nvapi-mingw-git
 	pkgdesc = Alternative NVAPI implementation on top of DXVK.
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/jp7677/dxvk-nvapi
 	arch = x86_64
@@ -15,6 +15,8 @@ pkgbase = dxvk-nvapi-mingw-git
 	depends = lib32-vulkan-icd-loader
 	depends = dxvk
 	depends = bash
+	provides = dxvk-nvapi-mingw
+	conflicts = dxvk-nvapi-mingw
 	options = !lto
 	source = git+https://github.com/jp7677/dxvk-nvapi.git
 	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
