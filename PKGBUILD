@@ -7,16 +7,18 @@
 pkgname=firedragon
 _pkgname=FireDragon
 pkgver=111.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 x86_64_v3 aarch64)
 backup=('usr/lib/firedragon/firedragon.cfg'
   'usr/lib/firedragon/distribution/policies.json')
 license=(MPL GPL LGPL)
 url=https://gitlab.com/dr460nf1r3/settings/
+_arch_git=https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/firefox/trunk
+_arch_git_blob=https://raw.githubusercontent.com/archlinux/svntogit-packages
 depends=(gtk3 libxt mime-types dbus-glib nss ttf-font libpulse ffmpeg xdg-desktop-portal)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
-  autoconf2.13 rust clang llvm jack nodejs cbindgen nasm mold
+  autoconf2.13 rust clang llvm jack nodejs cbindgen nasm mold gawk
   python-setuptools python-zstandard git binutils dump_syms lld
   'wasi-compiler-rt>13' 'wasi-libc>=1:0+258+30094b6' 'wasi-libc++>13' 'wasi-libc++abi>13' pciutils) # pciutils: only to avoid some PGO warning
 optdepends=('firejail-git: Sandboxing the browser using the included profiles'
@@ -39,7 +41,9 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
   "git+https://gitlab.com/dr460nf1r3/settings.git"
   "librewolf-source::git+https://gitlab.com/librewolf-community/browser/source.git"
   "librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git"
-  "cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git")
+  "cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git"
+  "${_arch_git_blob}/f72ed84a7907d387296811794d75da515525500e/trunk/0001-Bug-1819374-Squashed-ffmpeg-6.0-update.patch"
+  "${_arch_git_blob}/f72ed84a7907d387296811794d75da515525500e/trunk/0002-Bug-1820416-Use-correct-FFVPX-headers-from-ffmpeg-6..patch")
 sha256sums=('e1006c0872aa7eb30fb5a689413957f1e5fc8d2048b1637bf6f6fafdbd4ea55f'
   'SKIP'
   '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
@@ -47,12 +51,15 @@ sha256sums=('e1006c0872aa7eb30fb5a689413957f1e5fc8d2048b1637bf6f6fafdbd4ea55f'
   'SKIP'
   'SKIP'
   'SKIP'
-  'SKIP')
+  'SKIP'
+  '802f9271a5f7c0ab581baae8c46fd5b29598025ee93bb2dac6b456f8e0ae6acc'
+  'be9ba079a931d5e881ce38430d418cc834e8c6b157af6c79ea267998caece806')
 # sha256sums_aarch64=()
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
-# change this to false if you do not want to run a PGO build for aarch64 as well
+# change this to false if you do not want to run a PGO build for aarch64 or x86_64
 _build_profiled_aarch64=true
+_build_profiled_x86_64=true
 
 # Fix some potential Python and a Rust error
 if [ "${CC}" != "gcc" ] || [ "${CXX}" != "g++" ]; then
@@ -166,6 +173,21 @@ END
   # Upstream patches from gentoo
   # PGO improvements
   patch -Np1 -i "${_cachyos_patches_dir}"/gentoo/0016-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1819374
+  # sooooo this will get a bit ugly, but I don't even want to find out if
+  # things would break on Manjaro until they update ffmpeg as well, so let's just
+  # not think tooooo much about it:
+  _ffmpeg_ver=$(pacman -Qi ffmpeg | gawk '/Version/{print $3}')
+  _ffmpeg_ver="${_ffmpeg_ver#*:}"
+  _ffmpeg_ver="${_ffmpeg_ver%.*}"
+  if [ "${_ffmpeg_ver}" -gt 5 ]; then
+    patch -Np1 -i ../0001-Bug-1819374-Squashed-ffmpeg-6.0-update.patch
+
+    # https://bugs.archlinux.org/task/77796
+    # https://bugzilla.mozilla.org/show_bug.cgi?id=1820416
+    patch -Np1 -i ../0002-Bug-1820416-Use-correct-FFVPX-headers-from-ffmpeg-6..patch
+  fi
 
   # Remove some pre-installed addons that might be questionable
   patch -Np1 -i "${_librewolf_patches_dir}"/remove_addons.patch
