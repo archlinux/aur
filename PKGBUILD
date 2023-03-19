@@ -13,11 +13,6 @@ sha256sums=('SKIP')
 provides=('await')
 conflicts=('await')
 
-pkgver() {
-  cd ${pkgname%-git}
-  git log -1 --format=format:'%as-%f' | tr - .
-}
-
 build() {
   cd ${pkgname%-git}
   ./build
