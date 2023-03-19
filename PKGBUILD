@@ -3,7 +3,7 @@
 pkgname=featherwallet-bin
 _pkgname=featherwallet
 pkgver=2.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A free, open-source Monero light wallet.'
 url='https://featherwallet.org'
 arch=('x86_64')
