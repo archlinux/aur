@@ -2,7 +2,7 @@
 
 pkgbase=purc-git
 pkgname=purc-git
-pkgver=0.9.7.r0.ga6cf75357
+pkgver=0.9.7.r24.g2c2495b06
 pkgrel=1
 pkgdesc="The prime HVML interpreter for C/C++ Language."
 arch=(x86_64
@@ -14,7 +14,6 @@ url="https://github.com/HVML/PurC"
 license=('LGPL-3.0')
 groups=('hvml-git')
 provides=(${pkgbase%-git}
-        PurC
         domruler
         purc-fetcher)
 conflicts=(${pkgbase%-git})
@@ -27,17 +26,22 @@ makedepends=(git
             cmake
             ninja
             ccache
-            gcc
-            python
-            libxml2
-            ruby
             curl
+            gcc
+            ncurses
+            libjpeg-turbo
+            libxml2
+            libxslt
+            libsoup
+            icu
+            mariadb
+            python
             openssl
             sqlite
+            systemd
             pkgconf
-            zlib
-            icu)
-optdepends=('purc-midnight-commander: A generic HVML renderer in text mode for development and debugging.'
+            zlib)
+optdepends=('python-numpy: Scientific tools for Python'
             'webkit2gtk-hvml: Web content engine for GTK (HVML)'
             'webkit2gtk: Web content engine for GTK'
             'xguipro: xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit.')
