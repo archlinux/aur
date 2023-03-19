@@ -5,8 +5,8 @@
 # Contributor: Pieter Kokx <pieter $at$ kokx $dot$ .nl>
 _tag=latest
 pkgname=whatpulse
-pkgver=5.1
-pkgrel=2
+pkgver=5.3
+pkgrel=1
 
 pkgdesc="Measures your keyboard, mouse and application usage, network traffic and uptime."
 arch=('x86_64')
