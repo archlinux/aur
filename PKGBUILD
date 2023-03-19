@@ -1,5 +1,5 @@
 pkgname=('alfis')
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc='Alternative Free Identity System using blockchain'
 arch=('x86_64')
