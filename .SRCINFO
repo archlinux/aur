@@ -1,6 +1,6 @@
 pkgbase = blender-git
 	pkgdesc = A fully integrated 3D graphics creation suite (development)
-	pkgver = 3.5.r119175.g129197f20d3
+	pkgver = 3.6.r122558.g45c4a0b1ef1
 	pkgrel = 1
 	url = https://blender.org/
 	arch = i686
@@ -43,11 +43,11 @@ pkgbase = blender-git
 	optdepends = openimagedenoise: Intel Open Image Denoise support in compositing
 	provides = blender
 	conflicts = blender
-	source = git://git.blender.org/blender.git#branch=master
-	source = blender-addons.git::git://git.blender.org/blender-addons.git
-	source = blender-addons-contrib.git::git://git.blender.org/blender-addons-contrib.git
-	source = blender-translations.git::git://git.blender.org/blender-translations.git
-	source = blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git
+	source = git+https://projects.blender.org/blender/blender.git#branch=main
+	source = git+https://projects.blender.org/blender/blender-addons.git
+	source = git+https://projects.blender.org/blender/blender-addons-contrib.git
+	source = git+https://projects.blender.org/blender/blender-translations.git
+	source = git+https://projects.blender.org/blender/blender-dev-tools.git
 	source = usd_python.patch
 	source = embree.patch
 	sha256sums = SKIP
@@ -55,7 +55,7 @@ pkgbase = blender-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 333b6fd864d55da2077bc85c55af1a27d4aee9764a1a839df26873a9f19b8703
+	sha256sums = c2db51a83a8d573aa76c760f10e541c84b108d64d05c9647681c4e633b3d0397
 	sha256sums = d587135fd9b815d60e8b7f48976aa835472922fc8f64c256dc397bfcd3c2642a
 
 pkgname = blender-git
