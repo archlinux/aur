@@ -50,8 +50,9 @@ depends=(
   desktop-file-utils
 )
 
-makedepends=(autoconf bison perl fontforge flex mingw-w64-gcc
+makedepends=(autoconf bison perl flex mingw-w64-gcc
   git
+  python
   giflib                lib32-giflib
   gnutls                lib32-gnutls
   libxinerama           lib32-libxinerama
@@ -105,6 +106,10 @@ conflicts=('wine' 'wine-wow64')
 install=wine.install
 
 prepare() {
+  # Get rid of old build dirs
+  rm -rf $pkgname-{32,64}-build
+  mkdir $pkgname-{32,64}-build
+
   pushd $pkgname
     git submodule init proton-wine
     git submodule set-url proton-wine "$srcdir"/proton-wine-ge
@@ -126,9 +131,9 @@ prepare() {
   # Fix openldap 2.5+ detection
   sed 's/-lldap_r/-lldap/' -i $pkgname/proton-wine/configure
 
-  # Get rid of old build dirs
-  rm -rf $pkgname-{32,64}-build
-  mkdir $pkgname-{32,64}-build
+  # Doesn't compile without remove these flags as of 4.10
+  export CFLAGS="${CFLAGS/-fno-plt/}"
+  export LDFLAGS="${LDFLAGS/,-z,now/}"
 }
 
 build() {
