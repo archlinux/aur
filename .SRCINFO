@@ -1,51 +1,26 @@
 pkgbase = zephyr-sdk
 	pkgdesc = SDK for Zephyr real-time operating system
 	pkgver = 0.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.zephyrproject.org/
 	install = zephyr-sdk.install
 	arch = x86_64
 	license = Apache
 	makedepends = patchelf
 	makedepends = wget
-	depends = python-breathe>=4.9.1
-	depends = python-docutils>=0.14
-	depends = python-pyaml>=5.1
-	depends = python-ply>=3.10
+	depends = cmake
+	depends = ninja
+	depends = gperf
+	depends = ccache
+	depends = dfu-util
+	depends = dtc
 	depends = python-pip
 	depends = python-setuptools
 	depends = python-wheel
-	depends = python-pyelftools>=0.24
-	depends = python-pyserial
-	depends = python-pykwalify
-	depends = python-pillow
-	depends = python-anytree
-	depends = python-intelhex
-	depends = python-packaging
-	depends = python-progress
-	depends = python-pyserial
-	depends = python-cbor
-	depends = python-psutil
-	depends = python-pytest
-	depends = python-colorama
-	depends = python-coverage
-	depends = gcovr
-	depends = python-sphinx>=1.7.5
-	depends = python-sphinx_rtd_theme
-	depends = python-sphinxcontrib-svg2pdfconverter
-	depends = python-tabulate
-	depends = python-west>=0.7.2
-	depends = git-spindle
-	depends = gitlint
-	depends = ninja
-	depends = gperf
-	depends = gcovr
-	depends = ccache
-	depends = doxygen
-	depends = dfu-util
-	depends = dtc
-	depends = cmake>=3.8.2
+	depends = tk
+	depends = xz
 	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
 	options = !strip
 	source = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.16.0/zephyr-sdk-0.16.0_linux-x86_64.tar.xz
 	source = zephyrrc
