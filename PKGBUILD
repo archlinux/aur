@@ -3,28 +3,28 @@
 
 pkgname=slrn-snapshot
 _pkgname=slrn
-pkgver=1.0.4.6
-_prever='pre1.0.4-6'
-pkgrel=4
+pkgver=1.0.4.9
+_prever='pre1.0.4-9'
+pkgrel=1
 pkgdesc='An easy-to-use, text-mode, threaded Usenet/NNTP client/newsreader (development snapshot)'
-arch=('x86_64' 'armv7h' 'aarch64')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://jedsoft.org/snapshots/'
 license=('GPL')
 makedepends=('uudeview')
-depends=('openssl' 'slang')
+depends=('glibc' 'openssl' 'slang')
 provides=('slrn')
 conflicts=('slrn')
 backup=(etc/slrnrc)
-options=('!makeflags' 'docs' 'zipman')
+options=('!makeflags' 'docs' 'zipman' 'lto')
 source=("https://jedsoft.org/snapshots/${_pkgname}-${_prever}.tar.gz")
 sha256sums=(
-  'baa2d41d8b55896d393352ea7bb8ca130fa7d3a4d69094a71e6db7077d0333e0'
+  '827d01c529c658492e45a376b99495a932d0d6be1e8e207df6f0062a25f1cff8'
 )
 sha512sums=(
-  '160eb6336ab694d15fa80b6746fca00fe02665cd1be55f5693790f4f0e91568a4d3ccb4af9cbdfbce252c637f4a09f64a64139dfc9ac04b067e3af91bb6f7d5e'
+  '05c05f523565d7af3936f98665a85a1cb0589f4b25dd4a957bcd309293a50c9d624104cca86dae28e37d56243af6296e237214cb767ba2418c21265d91381a5a'
 )
 b2sums=(
-  'ec48f0897fa536d11d0bd2ab600ef048a89d88b0e399a56e28716035b91ddb4d0f6e475c5c1eee4a096c45e108a104b05a970ff0706eea0121b14cd88c5fb6d7'
+  '667654876dfb087da62288d646a78454a3387e65555e56d34835b9bd6dfe3cf47d5e61ef52e3b11b2df377660db271d1a74e4e986fa826f475cf2bd51ddf6a5d'
 )
 
 # The current community/uudeview package is broken.
