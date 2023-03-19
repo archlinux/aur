@@ -1,12 +1,12 @@
 pkgbase = pdfbooklet
 	pkgdesc = pdfbooklet
 	pkgver = 3.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pdfbooklet.sourceforge.io
 	arch = any
 	license = GPL-3.0
 	depends = python3
-	source = https://sourceforge.net/projects/pdfbooklet/files/pdfbooklet 3.1.2/pdfbooklet-3.1.2-all_64.tar.gz
+	source = https://sourceforge.net/projects/pdfbooklet/files/pdfbooklet%203.1.2/pdfbooklet-3.1.2-all_64.tar.gz
 	sha256sums = f6171f34d2c7e922c5f1c9d03dec28e4ab706c1062ff39356e9f67be49e25ace
 
 pkgname = pdfbooklet
