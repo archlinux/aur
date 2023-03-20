@@ -1,6 +1,6 @@
 pkgbase = ruby-git
 	pkgdesc = Ruby library to manipulate git repositories by wrapping system calls to the git binary
-	pkgver = 1.17.2
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://github.com/ruby-git/ruby-git
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = ruby-git
 	depends = git
 	depends = ruby-addressable
 	depends = ruby-rchardet
-	source = git+https://github.com/ruby-git/ruby-git.git#tag=v1.17.2
+	source = git+https://github.com/ruby-git/ruby-git.git#tag=v1.18.0
 	sha256sums = SKIP
 
 pkgname = ruby-git
