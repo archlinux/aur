@@ -1,6 +1,6 @@
 pkgbase = deepin-wine-adrive
 	pkgdesc = Aliyun aDrive on Deepin Wine 6
-	pkgver = 4.0.1
+	pkgver = 4.1.2
 	pkgrel = 1
 	url = https://www.aliyundrive.com/
 	install = deepin-wine-adrive.install
@@ -8,13 +8,17 @@ pkgbase = deepin-wine-adrive
 	license = unknown
 	depends = deepin-wine6-stable
 	depends = xdg-utils
+	depends = lib32-glibc
+	depends = hicolor-icon-theme
+	depends = lib32-libxext
+	depends = lib32-libx11
 	source = com.adrive.deepin_2.2.6deepin8_i386.deb::https://com-store-packages.uniontech.com/appstore/pool/appstore/c/com.adrive.deepin/com.adrive.deepin_2.2.6deepin8_i386.deb
-	source = aDrive-4.0.1.exe::https://cdn.aliyundrive.net/downloads/apps/desktop/aDrive.exe?spm=aliyundrive.index.0.0.2d836f60Cqzbtc&file=aDrive.exe
+	source = aDrive-4.1.2.exe::https://cdn.aliyundrive.net/downloads/apps/desktop/aDrive.exe?spm=aliyundrive.index.0.0.2d836f60Cqzbtc&file=aDrive.exe
 	source = deepin-wine-adrive.install
 	source = run.sh
 	sha256sums = 9db53833b86b3ad941f23bdefa354170ec432c3b15980621e8011261d5617843
-	sha256sums = 0537e1eb0c322661eb48feb671703af1918e541cc08da5fc802c7556fed85c41
+	sha256sums = 1987310397ab88ddfa46c601630d36d628db4d39166ca9294f678ec85eb4cec4
 	sha256sums = 592a72685f9f3b69015259015d9eaa9701dbca5ef8289e178f89ee4c7311c1f6
-	sha256sums = 23e71c299f527fa5cdb1f80674ce4d9a03945188b229efb7a9803cabd25e6ae2
+	sha256sums = 78663cc7aa1bdbe52e3f126812aaf20408d55a8bbd0ae0511a0c9d7efcb999d3
 
 pkgname = deepin-wine-adrive

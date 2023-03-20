@@ -2,14 +2,14 @@
 pkgname=deepin-wine-adrive
 _pkgname=com.adrive.deepin
 _officalname=aDrive
-pkgver=4.0.1
+pkgver=4.1.2
 _deepinver=2.2.6deepin8
 pkgrel=1
 pkgdesc="Aliyun aDrive on Deepin Wine 6"
 arch=("x86_64")
 url="https://www.aliyundrive.com/"
 license=('unknown')
-depends=('deepin-wine6-stable' 'xdg-utils')
+depends=(deepin-wine6-stable xdg-utils lib32-glibc hicolor-icon-theme lib32-libxext lib32-libx11)
 optdepends=()
 conflicts=()
 install="deepin-wine-adrive.install"
@@ -20,9 +20,9 @@ source=(
     "run.sh"
     )
 sha256sums=('9db53833b86b3ad941f23bdefa354170ec432c3b15980621e8011261d5617843'
-            '0537e1eb0c322661eb48feb671703af1918e541cc08da5fc802c7556fed85c41'
+            '1987310397ab88ddfa46c601630d36d628db4d39166ca9294f678ec85eb4cec4'
             '592a72685f9f3b69015259015d9eaa9701dbca5ef8289e178f89ee4c7311c1f6'
-            '23e71c299f527fa5cdb1f80674ce4d9a03945188b229efb7a9803cabd25e6ae2')
+            '78663cc7aa1bdbe52e3f126812aaf20408d55a8bbd0ae0511a0c9d7efcb999d3')
 prepare() {
     bsdtar -xf data.tar.xz -C "${srcdir}"
     mv "${srcdir}/opt/apps/${_pkgname}" "${srcdir}/opt/apps/${pkgname}"
@@ -33,12 +33,12 @@ prepare() {
     msg "Copying latest ${_officalname} files to ${srcdir}/tmp/drive_c/Program Files/${_officalname} ..."
     rm -r "${srcdir}/tmp/drive_c/Program Files/${_officalname}"
     mkdir -p "${srcdir}/tmp/drive_c/Program Files/${_officalname}/"
-    cp "${srcdir}/${_officalname}-${pkgver}.exe" "${srcdir}/tmp/drive_c/Program Files/${_officalname}/"
+    7z x -aoa "${srcdir}/${_officalname}-${pkgver}.exe" -o"${srcdir}/tmp/drive_c/Program Files/${_officalname}/"
 
     msg "Repackaging app archive ..."
     rm -r "${srcdir}/opt/apps/${pkgname}/files/files.7z"
     7z a -t7z -r "${srcdir}/opt/apps/${pkgname}/files/files.7z" "${srcdir}/tmp/*"
-    rm -rf ${srcdir}/opt/apps/${pkgname}/info
+    rm -rf "${srcdir}/opt/apps/${pkgname}/info"
     sed 's/com.adrive.deepin/deepin-wine-adrive/g' -i "${srcdir}/opt/apps/${pkgname}/entries/applications/${_pkgname}.desktop"
     sed 's/Categories=internet/Categories=Network/g' -i "${srcdir}/opt/apps/${pkgname}/entries/applications/${_pkgname}.desktop"
 }
