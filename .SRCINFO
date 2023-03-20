@@ -1,0 +1,24 @@
+pkgbase = nix-init
+	pkgdesc = Generate Nix packages from URLs with hash prefetching, dependency inference, license detection, and more
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/nix-community/nix-init
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = aarch64
+	license = MPL2
+	makedepends = cargo
+	depends = gcc-libs
+	depends = openssl
+	depends = curl
+	depends = bzip2
+	depends = zlib
+	source = nix-init-0.2.0.tar.gz::https://static.crates.io/crates/nix-init/nix-init-0.2.0.crate
+	source = https://github.com/nix-community/nix-init/raw/f839a45b97f2130b55e97652dce9c82d00d2772d/LICENSE
+	sha256sums = 923e7df055f5c63f1f58b584af885339e742af09fe9d5e33119c18b610db1715
+	sha256sums = 1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5
+	b2sums = 4fc4c3d3d22bd0c7890a3d0e013ce8a340ee9e85f3fb053f755d74fac5012bb293bb9d08357b7423822919644bb3efb5a4730ebc8eb207056ccc7a6992562eaa
+	b2sums = 385ec46b62788d2cfed32d1de03728fdf3f36f1b90f726e2412969918ddd2c1859b26b722bd5b3806252620409550da6b9cbc8ab8583c1cb140b3043e8606f8c
+
+pkgname = nix-init
