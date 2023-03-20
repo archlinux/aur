@@ -2,14 +2,27 @@
 
 _pkgname=fdns
 pkgname=${_pkgname}-git
-pkgver=0.9.68+gee1991f
+pkgver=0.9.69+g3e5c7cd
 pkgrel=1
 pkgdesc="Firejail DNS-over-HTTPS proxy server - git version"
 arch=(x86_64)
-license=(GPL2)
 url="https://github.com/netblue30/fdns"
-depends=('libseccomp' 'openssl')
-makedepends=('git')
+license=(GPL2)
+backup=(
+    etc/fdns/adblocker
+    etc/fdns/coinblocker
+    etc/fdns/fp-trackers
+    etc/fdns/resolver.seccomp
+    etc/fdns/servers
+    etc/fdns/trackers
+)
+depends=(
+    libseccomp
+    openssl
+)
+makedepends=(
+    git
+)
 optdepends=('apparmor: support for apparmor profiles'
     'bash-completion: bash completion'
     'firejail: seamless integration support'
@@ -38,7 +51,7 @@ package() {
     make DESTDIR="$pkgdir" install
 
     # license
-    install -Dm0644 "${pkgdir}/usr/share/doc/${_pkgname}/COPYING" \
+    install -Dm644 "${pkgdir}/usr/share/doc/${_pkgname}/COPYING" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     rm -f "${pkgdir}/usr/share/doc/${_pkgname}/COPYING"
 }
