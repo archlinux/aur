@@ -6,7 +6,7 @@
 _tag=latest
 pkgname=whatpulse
 pkgver=5.3
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Measures your keyboard, mouse and application usage, network traffic and uptime."
 arch=('x86_64')
@@ -30,10 +30,10 @@ source=(
 	'whatpulse.desktop'
 	LICENSE
 )
-source_x86_64=("${pkgname}-${pkgver}-amd64.AppImage::https://d2bz2twqkobp4d.cloudfront.net/${_tag:-$pkgver}/linux/whatpulse-linux-${_tag:-$pkgver}_amd64.AppImage")
+source_x86_64=("${pkgname}-${pkgver}-amd64.AppImage::https://releases.whatpulse.org/${_tag:-$pkgver}/linux/whatpulse-linux-${_tag:-$pkgver}_amd64.AppImage")
 sha256sums=('5a4a6676a6b513824eeac8a2accd6de9e8bd2bc11b3e2967fa2b2a18d29fa35d'
             'cfea47f15bb3ba2494a7b1d50367139dc12709fc1e8ba0b25d86ee5f09748619')
-sha256sums_x86_64=('80e11e721c447f8d5137905a371a51ea5b21e9e55d2f5e0c00e48be28c0b2f87')
+sha256sums_x86_64=('78e40c4bb8167eb893cfda1d2e01d8d6f8ec481d1768629e4e9345bc83386e14')
 
 _extract() {
 	./"${pkgname}-${pkgver}-amd64.AppImage" --appimage-extract "$1"
