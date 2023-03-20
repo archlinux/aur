@@ -4,7 +4,7 @@ _pkgname=geneplast
 _pkgver=1.24.1
 pkgname=r-${_pkgname,,}
 pkgver=1.24.1
-pkgrel=1
+pkgrel=3
 pkgdesc='Evolutionary and plasticity analysis of orthologous groups'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -20,6 +20,7 @@ optdepends=(
   r-biocgenerics
   r-biocstyle
   r-fletcher2013b
+  r-geneplast.data
   r-geneplast.data.string.v91
   r-ggplot2
   r-ggpubr
