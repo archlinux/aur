@@ -18,6 +18,7 @@ pkgbase = eric
 	depends = python-tomlkit
 	depends = python-coverage
 	depends = python-semver
+	depends = qt6-serialport
 	conflicts = eric-common
 	replaces = eric-common
 	source = https://downloads.sourceforge.net/eric-ide/eric7-23.3.tar.gz
