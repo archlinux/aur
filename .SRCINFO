@@ -1,7 +1,7 @@
 pkgbase = advancescan-git
 	pkgdesc = A command line rom manager for AdvanceMAME and AdvanceMESS
 	pkgver = 1.18.r11.gc15ea1d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.advancemame.it/scan-readme
 	arch = aarch64
 	arch = armv7h
@@ -12,6 +12,7 @@ pkgbase = advancescan-git
 	license = GPL2
 	makedepends = git
 	depends = gcc-libs
+	depends = glibc
 	depends = zlib
 	provides = advancescan
 	conflicts = advancescan

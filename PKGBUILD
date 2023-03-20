@@ -2,12 +2,12 @@
 _pkgname=advancescan
 pkgname=$_pkgname-git
 pkgver=1.18.r11.gc15ea1d
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line rom manager for AdvanceMAME and AdvanceMESS"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://www.advancemame.it/scan-readme"
 license=('GPL2')
-depends=('gcc-libs' 'zlib')
+depends=('gcc-libs' 'glibc' 'zlib')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
