@@ -2,7 +2,7 @@
 pkgname=apifox-bin
 _pkgname=apifox
 pkgver=2.2.27
-pkgrel=1
+pkgrel=2
 pkgdesc="Apifox=Postman+Swagger+Mock+JMeter.API 文档、API 调试、API Mock、API 自动化测试"
 arch=('x86_64')
 url="https://www.apifox.cn/"
@@ -14,7 +14,7 @@ options=()
 source=(
   "${_pkgname}-deb-${pkgver}.zip::https://cdn.apifox.cn/download/Apifox-linux-deb-latest.zip"
 )
-sha512sums=('bc8bd275d5cefc54978540dd72ab382de20b34cd511f3c0943f85507886b4d91ac91fc43becf0b21fa3a62eef7599181987db0adaf7f4d6595b8d046c01c9bee')
+sha256sums=('90ed1e5cc5c731f76ba6ae19534b023d8dec959c07e2a2111216035fbfe43712')
    
 package() {
     ar -x "${_pkgname}_${pkgver}_amd64.deb"
