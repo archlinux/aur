@@ -1,7 +1,7 @@
 # Maintainer: Polarian <polarian@polarian.dev>
 pkgname=onedev-docs
 pkgver=20230320
-pkgrel=1
+pkgrel=2
 pkgdesc="Static site documentation for Onedev for offline browsing"
 arch=('any')
 url="https://code.onedev.io/onedev/docs"
@@ -19,8 +19,8 @@ prepare() {
     cd $pkgname
   fi
 
-  # Install git lfs if not already installed
-  git lfs install
+  # Fetch git lfs files
+  git lfs fetch
 
   # Checkout the commit designed to build
   git checkout f3177b6f52b98a7193664cd5aa50652590492ec9
