@@ -3,11 +3,11 @@
 pkgname=hunspell-ja-git
 conflicts=('hunspell-ja')
 provides=('hunspell-ja')
-pkgver=2023.03.11
+pkgver=1.r0.gf7c8e7e
 pkgrel=1
 pkgdesc="Japanese dictionary for Hunspell"
 arch=('any')
-url='https://github.com/epistularum/hunspell-ja-deinflection'
+url='https://github.com/Ajatt-Tools/hunspell-ja'
 license=('custom')
 optdepends=('hunspell: the spell checking libraries and apps')
 source=("${pkgname}::git+${url}")

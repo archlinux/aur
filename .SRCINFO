@@ -1,14 +1,14 @@
 pkgbase = hunspell-ja-git
 	pkgdesc = Japanese dictionary for Hunspell
-	pkgver = 2023.03.11
+	pkgver = 1.r0.gf7c8e7e
 	pkgrel = 1
-	url = https://github.com/epistularum/hunspell-ja-deinflection
+	url = https://github.com/Ajatt-Tools/hunspell-ja
 	arch = any
 	license = custom
 	optdepends = hunspell: the spell checking libraries and apps
 	provides = hunspell-ja
 	conflicts = hunspell-ja
-	source = hunspell-ja-git::git+https://github.com/epistularum/hunspell-ja-deinflection
+	source = hunspell-ja-git::git+https://github.com/Ajatt-Tools/hunspell-ja
 	sha512sums = SKIP
 
 pkgname = hunspell-ja-git
