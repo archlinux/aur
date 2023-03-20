@@ -68,32 +68,34 @@ license=('GPL')
 
 makedepends=('pkgconfig' 'cmake' 'ninja' 'clang')
 
-depends=('wxwidgets-gtk3'
-          'webkit2gtk'
-          'libedit'
-          'libssh'
-          'mariadb-libs'
-          'ncurses'
-          'uchardet'
-          'hunspell'
-          #'ctags'
-          #'universal-ctags'
-          #'xterm' 'wget' 'curl'
-          #'python2'
-          #'python'
-        )
+depends=(
+  #'wxwidgets-gtk3'
+  'wxgtk3'
+  'libedit'
+  'libssh'
+  'mariadb-libs'
+  'ncurses'
+  'uchardet'
+  'hunspell'
+  #'ctags'
+  #'xterm'
+  #'wget'
+  #'curl'
+  #'python'
+  #'python2'
+)
 
 optdepends=(
-             'clang: compiler'
-             'lldb: debugger'
-             'gcc: compiler'
-             'gdb: debugger'
-             'valgrind: debugger'
-             'rust: language'
-             'php: language'
-             'graphviz: callgraph visualization'
-             'cscope: CScope Integration for CodeLite'
-          )
+   'clang: compiler'
+   'lldb: debugger'
+   'gcc: compiler'
+   'gdb: debugger'
+   'valgrind: debugger'
+   'rust: language'
+   'php: language'
+   'graphviz: callgraph visualization'
+   'cscope: CScope Integration for CodeLite'
+)
 
 conflicts=('codelite')
 
