@@ -17,5 +17,5 @@ check() {
 
 package() {
   cd "$pkgname-$pkgver" || exit 1
-  DESTDIR="$pkgdir" make prefix=/usr install
+  DESTDIR="$pkgdir" make prefix=/usr VIM_DIR=/usr/share/vim/vimfiles install install-vim
 }
