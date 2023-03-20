@@ -3,7 +3,7 @@
 _pkgname="hyprland"
 pkgname="${_pkgname}-git"
 pkgver=r2580.71ef1bde
-pkgrel=2
+pkgrel=3
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=(any)
 url="https://github.com/hyprwm/Hyprland"
@@ -38,7 +38,8 @@ depends=(
 	vulkan-validation-layers
 	xorg-xwayland
 	libliftoff
-	libdisplay-info)
+	libdisplay-info
+	pango)
 makedepends=(
 	git
 	cmake
