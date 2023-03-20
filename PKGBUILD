@@ -7,7 +7,7 @@ url="https://github.com/manuc66/node-hp-scan-to"
 license=('MIT')
 depends=('nodejs')
 makedepends=('npm' 'jq' 'moreutils')
-
+backup=('etc/node-hp-scan-to/default.json')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 noextract=(${pkgname}-${pkgver}.tgz)
 sha512sums=('a2e10830bbed2572633f21c336ef586d82f5b69b81e63d285ab651b903a2643e7203dc90ead90e3388145052a0a8c94ba7ed1f96021a0bd3f443fe021ad25dc4')
@@ -31,6 +31,11 @@ KillMode=process
 [Install]
 WantedBy=multi-user.target
 EOF
+    cat > "$srcdir/default.json" <<EOF
+{
+  "debug": false,
+}
+EOF
 
 }
 
@@ -43,6 +48,7 @@ package() {
 
     install -Dm0644 "$srcdir/$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
     echo "Please enable the systemd service via 'sudo systemctl enable --now $pkgname.service'"
-    sudo mkdir -p /etc/node-hp-scan-to
-    sudo touch /etc/node-hp-scan-to/default.json
+
+    install -d "$pkgdir"/etc/node-hp-scan-to
+    install -m644 "$srcdir"/default.json "$pkgdir"/etc/node-hp-scan-to/default.json
 }
