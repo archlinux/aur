@@ -1,0 +1,13 @@
+pkgbase = sshb0t-bin
+	pkgdesc = A bot for keeping your ssh authorized_keys up to date with github keys
+	pkgver = 0.3.7
+	pkgrel = 1
+	url = https://github.com/genuinetools/sshb0t
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	conflicts = sshb0t-git
+	source = https://github.com/genuinetools/sshb0t/releases/download/v0.3.7/sshb0t-linux-amd64
+	sha256sums = 1b231c8ced77eef54c01b9d96c4278da0e02f362502096eee940d345b10a90e7
+
+pkgname = sshb0t-bin
