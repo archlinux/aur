@@ -1,0 +1,17 @@
+pkgbase = python-cdsapi
+	pkgdesc = Climate Data Store API
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/ecmwf/cdsapi
+	arch = x86_64
+	arch = armv7l
+	arch = armv7h
+	arch = aarch64
+	license = apache
+	makedepends = python-setuptools
+	depends = python-tqdm
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/c/cdsapi/cdsapi-0.6.1.tar.gz
+	b2sums = f1a06c822bde79d77c74e7e337e49f071e7a9561cf722b97f31fe5bc4dd860404552e1c4b3e2fefe9fd994a4a4a9211e37a4a01444fedaed46b53bf73e126a67
+
+pkgname = python-cdsapi
