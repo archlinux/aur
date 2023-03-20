@@ -1,6 +1,6 @@
 pkgbase = pingtunnel-git
 	pkgdesc = A tool that advertises TCP/UDP/SOCKS5 traffic as ICMP traffic for forwarding.
-	pkgver = 2.6.r11.g8d63ad5
+	pkgver = 2.7.r3.g7af41a7
 	pkgrel = 1
 	url = https://github.com/esrrhs/pingtunnel
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = pingtunnel-git
 	optdepends = geoip-database: geolite country database
 	provides = pingtunnel
 	conflicts = pingtunnel
-	source = pingtunnel::git+https://github.com/esrrhs/pingtunnel.git#branch=delete
+	source = pingtunnel::git+https://github.com/esrrhs/pingtunnel.git#branch=master
 	sha512sums = SKIP
 
 pkgname = pingtunnel-git
