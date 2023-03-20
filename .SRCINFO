@@ -1,7 +1,7 @@
 pkgbase = ory-cli-bin
 	pkgdesc = ORY Command Line Interface (CLI)
 	pkgver = 0.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ory.sh
 	arch = x86_64
 	license = Apache
