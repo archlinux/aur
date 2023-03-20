@@ -1,13 +1,17 @@
 pkgbase = python-xlsx2csv
 	pkgdesc = xlsx to csv converter
-	pkgver = 0.7.8
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/dilshod/xlsx2csv
 	arch = any
-	license = GPL
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
 	depends = python
-	options = !emptydirs
-	source = https://github.com/dilshod/xlsx2csv/archive/0.7.8.tar.gz
-	md5sums = 70296d89c84dec9e5da08bed4af14c17
+	source = https://github.com/dilshod/xlsx2csv/archive/0.8.1.tar.gz
+	md5sums = 5c105ac18e1573f453e646be2480a826
+	sha256sums = 720894b55f9229e693f389fa760ab4993b8fa17163a8e1beee21e7f975312766
 
 pkgname = python-xlsx2csv
