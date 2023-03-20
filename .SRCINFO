@@ -1,6 +1,6 @@
 pkgbase = chatbox-bin
 	pkgdesc = a cross-platform desktop client for OpenAI API, also a prompt debugging and management tool.
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/Bin-Huang/chatbox
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = chatbox-bin
 	depends = gtk3
 	depends = libayatana-appindicator
 	provides = chatbox
-	source = https://github.com/Bin-Huang/chatbox/releases/download/Chatbox-v0.2.0/chatbox_0.2.0_amd64.deb
-	sha256sums = afc7211cf5e993ffc8624a05163e8c085c1fe4345073aefd7dc0ff8af41226c4
+	source = https://github.com/Bin-Huang/chatbox/releases/download/Chatbox-v0.2.1/chatbox_0.2.1_amd64.deb
+	sha256sums = b1c49f526ef2849bff9042f05b0a9d1b1e32fde2b14db4e6ba0037a8aa65d1d7
 
 pkgname = chatbox-bin
