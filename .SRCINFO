@@ -1,0 +1,13 @@
+pkgbase = font-awesome-6
+	pkgdesc = Icon fonts from Font Awesome (version 6.x)
+	pkgver = 6.3.0
+	pkgrel = 1
+	url = https://fontawesome.com/
+	arch = any
+	license = custom:OFL
+	source = https://github.com/FortAwesome/Font-Awesome/archive/6.3.0.tar.gz
+	sha256sums = 3828163e4da4a513a8a2f21201915fc1e4d45f41ac440844c78a4d6d9ad44f59
+
+pkgname = ttf-font-awesome-6
+
+pkgname = otf-font-awesome-6
