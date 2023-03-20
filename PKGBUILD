@@ -2,12 +2,12 @@
 _pkgname=xemu
 pkgname=$_pkgname-git
 pkgver=0.7.85.r0.g065c74a00f
-pkgrel=1
+pkgrel=2
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=('x86_64')
 url="https://xemu.app/"
 license=('GPL2')
-depends=('sdl2')
+depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'sdl2' 'zlib')
 makedepends=(
 	'git'
 	'glib2'
