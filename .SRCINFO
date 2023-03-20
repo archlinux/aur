@@ -1,6 +1,6 @@
 pkgbase = cpeditor
 	pkgdesc = The editor for competitive programming
-	pkgver = 6.10.2
+	pkgver = 6.10.3
 	pkgrel = 1
 	url = https://github.com/cpeditor/cpeditor
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = cpeditor
 	optdepends = python: execute Python
 	optdepends = wakatime: track coding stats
 	conflicts = cpeditor-git
-	source = https://github.com/cpeditor/cpeditor/releases/download/6.10.2/cpeditor-6.10.2-full-source.tar.gz
-	sha256sums = e3485214b0a3fb9f8a16ca48947a16cfc7346a4c836d7d8e208ee0ac50b2d47e
+	source = https://github.com/cpeditor/cpeditor/releases/download/6.10.3/cpeditor-6.10.3-full-source.tar.gz
+	sha256sums = b7c1512904ed9bc23c2a622f8512cf6fb4055ce102d5f9db5fc927b6fcb46a64
 
 pkgname = cpeditor
