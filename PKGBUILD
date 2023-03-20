@@ -1,7 +1,7 @@
 pkgname=hostapd-wifi6
 pkgdesc="hostapd enabled IEEE802.11* in defconfig"
 pkgver=2.10
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url=https://w1.fi/hostapd
 license=('BSD')
@@ -11,10 +11,12 @@ provides=('hostapd')
 source=(
   "https://w1.fi/releases/hostapd-$pkgver.tar.gz"
   'hostapd.service'
+  'https://tildearrow.org/storage/hostapd-2.10-lar.patch'
 )
 sha512sums=(
   '243baa82d621f859d2507d8d5beb0ebda15a75548a62451dc9bca42717dcc8607adac49b354919a41d8257d16d07ac7268203a79750db0cfb34b51f80ff1ce8f'
   '34e16c5d46383477bcb9e0dba5073b7f01354a6adca8e591050aeff6319255f8939926b70d76d109735496bbaf9ff2d04be9cf6e0d057c4d2f4a4140067957a3'
+  '443e5c012b6e2d06ab812b87e995ca7e48751d43b81b3a26a722400f64ccdec0e9486a5e043121f2f1084cc59729f781b6e9d5c05031dac18cdeaaa86ed8ecea'
 )
 prepare() {
   cd "hostapd-${pkgver}"
@@ -31,6 +33,7 @@ prepare() {
       -e 's|^#CONFIG_IEEE80211AC=y|CONFIG_IEEE80211AC=y|g' \
       -e 's|^#CONFIG_ACS=y|CONFIG_ACS=y|g' \
       -i "hostapd/.config"
+  patch -p1 < "$srcdir/hostapd-2.10-lar.patch"
 }
 build(){
   make -C "hostapd-${pkgver}/hostapd"
