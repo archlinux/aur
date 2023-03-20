@@ -5,7 +5,7 @@
 
 pkgname=swift-bin
 pkgver=5.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary builds of the Swift programming language"
 arch=('x86_64')
 url="https://www.swift.org/"
@@ -15,7 +15,7 @@ optdepends=('python36: required for REPL')
 options=('!strip')
 provides=('swift-language')
 replaces=('swift-language-bin')
-source=("https://swift.org/builds/swift-$pkgver-release/centos7/swift-$pkgver-RELEASE/swift-$pkgver-RELEASE-centos7.tar.gz")
+source=("https://download.swift.org/swift-$pkgver-release/centos7/swift-$pkgver-RELEASE/swift-$pkgver-RELEASE-centos7.tar.gz")
 sha256sums=('10138dce4306309fdd77c530a7c19e4d00586cdaf5698dd7412004bcb6d86d28')
 
 package() {
