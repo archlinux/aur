@@ -4,7 +4,7 @@ _pkgname=clusterCrit
 _pkgver=1.2.8
 pkgname=r-${_pkgname,,}
 pkgver=1.2.8
-pkgrel=3
+pkgrel=8
 pkgdesc='Clustering Indices'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,7 +17,7 @@ optdepends=(
   r-rbenchmark
   r-runit
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('f375d68b94e5b473c94a439abb15559003b331b84fd93efc1475ae36e30aff82')
 
 build() {
