@@ -5,6 +5,8 @@ pkgbase = chatgpt-shell-cli
 	url = https://github.com/0xacx/chatGPT-shell-cli.git
 	arch = any
 	license = MIT
+	depends = jq
+	depends = curl
 	provides = chatgpt-shell-cli
 	conflicts = chatgpt-shell-cli-git
 	source = git+https://github.com/0xacx/chatGPT-shell-cli.git#commit=e47853176d2cc36602ca04507fd3b5525f623737
