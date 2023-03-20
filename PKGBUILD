@@ -3,11 +3,12 @@
 
 pkgname=telerising-api-bin
 pkgver=0.9.8
-pkgrel=1
+pkgrel=2
 pkgdesc='API web application providing Zattoo TV streams'
 arch=('x86_64')
 license=('custom')
 url='https://github.com/sunsettrack4/telerising-api'
+options=(!strip)
 source=(
 	"https://github.com/sunsettrack4/telerising-api/raw/main/telerising-v${pkgver}_x86-64_linux.zip"
 	"$pkgname.service"
