@@ -1,6 +1,6 @@
 pkgbase = jags
 	pkgdesc = Bayesian hierarchical models using Markov Chain Monte Carlo (MCMC) simulation
-	pkgver = 4.3.1
+	pkgver = 4.3.2
 	pkgrel = 1
 	url = https://mcmc-jags.sourceforge.io/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = jags
 	depends = lapack
 	depends = libtool
 	options = !libtool
-	source = https://downloads.sourceforge.net/project/mcmc-jags/JAGS/4.x/Source/JAGS-4.3.1.tar.gz
-	md5sums = 3b311562c2be7965072709f488600e5a
+	source = https://downloads.sourceforge.net/project/mcmc-jags/JAGS/4.x/Source/JAGS-4.3.2.tar.gz
+	sha1sums = 1659156ee49a81e5b2c84d6c9815f82379dce3e8
 
 pkgname = jags

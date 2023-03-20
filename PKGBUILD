@@ -3,7 +3,7 @@
 # Contributor: miggy <jkomdl at gmail dot com>
 
 pkgname=jags
-pkgver=4.3.1
+pkgver=4.3.2
 pkgrel=1
 pkgdesc="Bayesian hierarchical models using Markov Chain Monte Carlo (MCMC) simulation"
 arch=('any')
@@ -13,12 +13,14 @@ depends=('lapack' 'libtool')
 options=('!libtool')
 makedepends=('gcc-fortran' 'lapack')
 source=(https://downloads.sourceforge.net/project/mcmc-jags/JAGS/4.x/Source/JAGS-$pkgver.tar.gz)
-md5sums=('3b311562c2be7965072709f488600e5a')
+sha1sums=('1659156ee49a81e5b2c84d6c9815f82379dce3e8')
+
 build () {
 	cd "$srcdir/JAGS-$pkgver"
 	./configure --prefix=/usr --libexecdir=/usr/lib/${pkgname}
 	make
 }
+
 package() {
 	cd "$srcdir/JAGS-$pkgver"
 	make DESTDIR="$pkgdir/" install
