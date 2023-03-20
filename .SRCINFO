@@ -1,6 +1,6 @@
 pkgbase = nbqa
 	pkgdesc = Run any standard Python code quality tool on a Jupyter Notebook
-	pkgver = 1.6.0
+	pkgver = 1.6.4
 	pkgrel = 1
 	url = https://github.com/nbQA-dev/nbQA
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = nbqa
 	checkdepends = mdformat
 	checkdepends = python-autoflake
 	checkdepends = python-pylint
-	checkdepends = ruff
+	checkdepends = python-ruff
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -33,7 +33,7 @@ pkgbase = nbqa
 	optdepends = mypy: toolchain support
 	optdepends = python-pylint: toolchain support
 	optdepends = pyupgrade: toolchain support
-	source = nbQA-1.6.0.tar.gz::https://github.com/nbQA-dev/nbQA/archive/1.6.0.tar.gz
-	sha512sums = 67c6e94d003f9f4414a9f5818766e77f2210ee4c249db6552e34ce327ef32f2c8fc15bed029de77daa86fc785643d220ebeafdafe191bfbf2d5b32213309bd49
+	source = nbQA-1.6.4.tar.gz::https://github.com/nbQA-dev/nbQA/archive/1.6.4.tar.gz
+	sha512sums = 39f63b17cbf3b981d11e9d96c57cbf9f430063ca64f5cb02e656efb2384da0c16f96a5013cdc04ec38b3ac19a567d443e23c3c71acdebfe5828b827edeaf677a
 
 pkgname = nbqa

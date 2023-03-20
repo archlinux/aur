@@ -2,7 +2,7 @@
 _base=nbQA
 pkgname=${_base,,}
 pkgdesc="Run any standard Python code quality tool on a Jupyter Notebook"
-pkgver=1.6.0
+pkgver=1.6.4
 pkgrel=1
 arch=(any)
 url="https://github.com/${_base}-dev/${_base}"
@@ -11,7 +11,7 @@ depends=(ipython python-tokenize-rt python-tomli)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest python-jupytext yapf python-isort mypy flake8
   python-black blacken-docs python-pydocstyle autopep8 pyupgrade mdformat
-  python-autoflake python-pylint ruff)
+  python-autoflake python-pylint python-ruff)
 optdepends=('python-black: toolchain support'
   'flake8: toolchain support'
   'python-isort: toolchain support'
@@ -19,7 +19,7 @@ optdepends=('python-black: toolchain support'
   'python-pylint: toolchain support'
   'pyupgrade: toolchain support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('67c6e94d003f9f4414a9f5818766e77f2210ee4c249db6552e34ce327ef32f2c8fc15bed029de77daa86fc785643d220ebeafdafe191bfbf2d5b32213309bd49')
+sha512sums=('39f63b17cbf3b981d11e9d96c57cbf9f430063ca64f5cb02e656efb2384da0c16f96a5013cdc04ec38b3ac19a567d443e23c3c71acdebfe5828b827edeaf677a')
 
 build() {
   cd ${_base}-${pkgver}
