@@ -8,7 +8,7 @@ license=('AGPL3')
 depends=('webkit2gtk' 'gtk3')
 makedepends=('cargo' 'rust' 'atk' 'pango')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Revertron/Alfis/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('69a4e19ad0f45b2720c60ddee47ea82ab8278e7669f2cf11775d9036aade8cda')
+sha256sums=('6ad6b8e17e6e2efc70805a0a46ff56f502e1bd605c32e0dfcdb454b3690a958c')
 
 _dirname="Alfis-${pkgver}"
 

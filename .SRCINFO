@@ -12,6 +12,6 @@ pkgbase = alfis
 	depends = webkit2gtk
 	depends = gtk3
 	source = alfis-0.8.4.tar.gz::https://github.com/Revertron/Alfis/archive/v0.8.4/alfis-0.8.4.tar.gz
-	sha256sums = 69a4e19ad0f45b2720c60ddee47ea82ab8278e7669f2cf11775d9036aade8cda
+	sha256sums = 6ad6b8e17e6e2efc70805a0a46ff56f502e1bd605c32e0dfcdb454b3690a958c
 
 pkgname = alfis
