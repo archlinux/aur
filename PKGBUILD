@@ -1,7 +1,7 @@
 # Maintainer: Adrian Lopez <zeioth@hotmail.com>
 pkgname=chatgpt-shell-cli
 pkgver=0.1
-pkgrel=7
+pkgrel=1
 pkgdesc="Use OpenAI's ChatGPT and DALL-E from the terminal."
 arch=(any)
 url="https://github.com/0xacx/chatGPT-shell-cli.git"
