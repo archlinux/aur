@@ -5,7 +5,7 @@
 pkgbase=gpgme
 pkgname=(gpgme qgpgme python-gpgme)
 pkgver=1.19.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A C wrapper library for GnuPG'
 arch=('x86_64')
 url='https://www.gnupg.org/related_software/gpgme/'
@@ -39,8 +39,9 @@ build() {
 
   (
     # use a PEP517 workflow to get a reproducible Python package
+    # NOTE: top_builddir is required so that the build takes place against local gpgme, not system gpgme
     cd lang/python/
-    python -m build --wheel --no-isolation
+    top_builddir="$srcdir/$pkgbase-$pkgver" python -m build --wheel --no-isolation
   )
 }
 
