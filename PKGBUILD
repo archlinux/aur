@@ -1,6 +1,6 @@
 pkgname=gpt-cli
 pkgver=0.0.16
-pkgrel=3
+pkgrel=4
 pkgdesc="Run linux commands with natural language. Eg 'show my graphic card' instead 'lspci | grep VGA'"
 arch=('x86_64')
 url="https://github.com/gustawdaniel/gpt-cli"
