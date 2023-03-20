@@ -1,6 +1,6 @@
 pkgbase = sonarlint-ls
 	pkgdesc = SonarLint language server (used by SonarLint VSCode)
-	pkgver = 2.15.1.63583
+	pkgver = 2.16.0.65434
 	pkgrel = 1
 	url = https://github.com/SonarSource/sonarlint-language-server
 	arch = x86_64
@@ -8,9 +8,11 @@ pkgbase = sonarlint-ls
 	makedepends = git
 	makedepends = maven
 	depends = java-runtime>=11
-	source = https://github.com/SonarSource/sonarlint-language-server/archive/refs/tags/2.15.1.63583.tar.gz
+	source = https://github.com/SonarSource/sonarlint-language-server/archive/refs/tags/2.16.0.65434.tar.gz
 	source = sonarlint-ls
-	sha256sums = da29858824dca23f0d228f0e182de654bb01d9dc8f07b80e9250daa70ce3a288
+	source = python-version.patch
+	sha256sums = 4c9ea7e00b89a04634b42976110ab40fa62b7841536c2ff5338f487462ad50a4
 	sha256sums = b951d9b6f1e1f9f70430776d958487b385cc8290c0a48335d938b3128e1a80c4
+	sha256sums = de37805132570bc8f8329416cde45a8060d2257580bcf024f201aa4254188bd2
 
 pkgname = sonarlint-ls

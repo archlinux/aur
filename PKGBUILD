@@ -2,18 +2,20 @@
 pkgname=sonarlint-ls
 arch=('x86_64')
 url=https://github.com/SonarSource/sonarlint-language-server
-pkgver=2.15.1.63583
+pkgver=2.16.0.65434
 pkgrel=1
 pkgdesc="SonarLint language server (used by SonarLint VSCode)"
 license=('LGPLv3')
 depends=('java-runtime>=11')
 makedepends=('git' 'maven')
-source=("https://github.com/SonarSource/sonarlint-language-server/archive/refs/tags/${pkgver}.tar.gz" 'sonarlint-ls')
-sha256sums=('da29858824dca23f0d228f0e182de654bb01d9dc8f07b80e9250daa70ce3a288' 'b951d9b6f1e1f9f70430776d958487b385cc8290c0a48335d938b3128e1a80c4')
+source=("https://github.com/SonarSource/sonarlint-language-server/archive/refs/tags/${pkgver}.tar.gz" 'sonarlint-ls' 'python-version.patch')
+sha256sums=('4c9ea7e00b89a04634b42976110ab40fa62b7841536c2ff5338f487462ad50a4' 'b951d9b6f1e1f9f70430776d958487b385cc8290c0a48335d938b3128e1a80c4' 'de37805132570bc8f8329416cde45a8060d2257580bcf024f201aa4254188bd2')
 
 prepare() {
    cd "${srcdir}/sonarlint-language-server-${pkgver}"
    mvn --no-transfer-progress versions:set -DprocessAllModules "-DnewVersion=${pkgver}"
+
+   patch --forward --strip=1 --input="${srcdir}/python-version.patch"
 }
 
 build() {

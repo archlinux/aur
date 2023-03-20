@@ -1,0 +1,12 @@
+diff --unified --recursive --text package.orig/pom.xml package.new/pom.xml
+--- package.orig/pom.xml	2023-03-20 21:17:17.960946700 +0100
++++ package.new/pom.xml	2023-03-20 21:18:33.699695400 +0100
+@@ -31,7 +31,7 @@
+     <sonar.java.version>7.17.0.31219</sonar.java.version>
+     <sonar.javascript.version>10.0.1.20755</sonar.javascript.version>
+     <sonar.php.version>3.28.0.9490</sonar.php.version>
+-    <sonar.python.version>4.1.0.11182</sonar.python.version>
++    <sonar.python.version>4.1.0.11333</sonar.python.version>
+     <sonar.html.version>3.7.1.3306</sonar.html.version>
+     <sonar.xml.version>2.7.0.3820</sonar.xml.version>
+     <sonar.text.version>2.0.1.611</sonar.text.version>
