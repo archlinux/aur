@@ -52,7 +52,7 @@ fi
 
 pkgname=ffmpeg-obs
 pkgver=6
-pkgrel=3
+pkgrel=4
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('i686' 'x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -62,6 +62,7 @@ license=(GPL3)
 _aomver=3
 _dav1dver=1.0.0
 _ffnvcodecver=12.0.16.0
+_libjxl=0.7.0
 _libristver=0.2.7
 _libvpxver=1.13
 _srtver=1.5
@@ -91,6 +92,7 @@ depends=(
   freetype2
   libgl
   libiec61883
+  "libjxl>=$_libjxl"
   libmodplug
   libopenmpt
   libpulse
@@ -200,6 +202,7 @@ _args=(
   --enable-libgsm
   --enable-libiec61883
   --enable-libjack
+  --enable-libjxl
   --enable-libmodplug
   --enable-libmp3lame
   --enable-libopencore_amrnb
@@ -348,7 +351,7 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     twolame 'uavs3d-git' 'vo-amrwbenc' 'xavs' 'xavs2' zeromq
     zvbi lv2 lilv libmysofa openal
     vapoursynth libomxil-bellagio 'rockchip-mpp' libplacebo #'pocketsphinx'
-    lcms2 'libjxl>=0.7.0'
+    lcms2
   )
   _args+=(
     --enable-sndio --disable-rpath --enable-gray --enable-chromaprint --enable-frei0r --enable-gcrypt
@@ -359,7 +362,7 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     --enable-libtwolame --enable-libuavs3d --enable-libvo-amrwbenc --enable-libxavs --enable-libxavs2 --enable-libzmq
     --enable-libzvbi --enable-lv2 --enable-libmysofa --enable-openal
     --enable-vapoursynth --enable-omx --enable-rkmpp --enable-libplacebo #--enable-pocketsphinx
-    --enable-lcms2 --enable-libjxl
+    --enable-lcms2
   )
   provides+=(ffmpeg-full)
 else
