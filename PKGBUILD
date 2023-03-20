@@ -2,8 +2,8 @@
 # Contributor: eshrh <esrh at gatech dot edu>
 
 pkgname=mpv-mpvacious
-pkgver=0.20
-pkgrel=2
+pkgver=0.21
+pkgrel=1
 pkgdesc="Adds mpv keybindings to create Anki cards from movies and TV shows."
 arch=('any')
 url="https://github.com/Ajatt-Tools/mpvacious"
@@ -16,7 +16,7 @@ optdepends=(
 	'ffmpeg: using ffmpeg directly to encode media'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('2c557de6dc6e1faed90c0de62625944227b8914faa30a9974f5f908fe7cfc0a7b878fe35ed96c266ef287844ab988187ee6ac7598a5b32379fbcfd7a20f990f3')
+sha512sums=('afd10d5574a17981eeb45d2ee5e67634f58d107c72887e9edbb741e1dae78dafddff9bd3f930425a66404ae81c54002d4fad91c8ccebfbe6af28fc0a90949835')
 install="${pkgname#mpv-}.install"
 
 package() {
