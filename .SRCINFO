@@ -1,6 +1,6 @@
 pkgbase = yacd-git
 	pkgdesc = Yet Another Clash Dashboard
-	pkgver = 20230212
+	pkgver = 20230212.1
 	pkgrel = 1
 	url = https://github.com/haishanh/yacd
 	arch = any

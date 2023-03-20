@@ -2,7 +2,7 @@
 
 pkgname=yacd-git
 _pkgname=yacd
-pkgver=20230212
+pkgver=20230212.1
 pkgrel=1
 
 pkgdesc='Yet Another Clash Dashboard'
@@ -21,7 +21,7 @@ sha256sums=(SKIP)
 
 pkgver() {
   cd "$_pkgname"
-  git log -1 --format=%cs | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-//g'
+  git log --date=short --pretty=format:%ad | sort | uniq -c | awk '{print $2,$1}' | head -n1 | sed 's/-//g;s/ /./g'
 }
 
 package() {
