@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=AICcmodavg
-_pkgver=2.3-1
+_pkgver=2.3-2
 pkgname=r-${_pkgname,,}
-pkgver=2.3.1
-pkgrel=4
+pkgver=2.3.2
+pkgrel=1
 pkgdesc='Model Selection and Multimodel Inference Based on (Q)AIC(c)'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -33,7 +33,7 @@ optdepends=(
   r-r2winbugs
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d0517da15a38e9b1df20fa73f5342b586624e65792d266e7dff278ad7fc458b0')
+sha256sums=('899e5edb0858c218184d01b7de32dee991090c6593ee60669767b96b7037f353')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
