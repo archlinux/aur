@@ -1,13 +1,12 @@
 pkgbase = maestral
 	pkgdesc = Open-source Dropbox client
 	pkgver = 1.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SamSchott/maestral
 	changelog = CHANGELOG.md
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
-	checkdepends = python-pytest-benchmark
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel

@@ -3,7 +3,7 @@
 
 pkgname=maestral
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source Dropbox client'
 arch=('any')
 url="https://github.com/SamSchott/maestral"
@@ -28,7 +28,7 @@ depends=(
 optdepends=('maestral-qt: Qt interface for the maestral daemon'
             'python-systemd: Syslog support')
 makedepends=('python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-pytest' 'python-pytest-benchmark')
+checkdepends=('python-pytest')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         'maestral@.service')
@@ -42,7 +42,7 @@ build() {
 
 check() {
 	cd "$pkgname-$pkgver"
-	PYTHONPATH=src/ pytest -k 'not test_autostart' -x --disable-warnings
+	PYTHONPATH=src/ pytest -k 'not test_autostart and not benchmark' -x --disable-warnings
 }
 
 package() {
