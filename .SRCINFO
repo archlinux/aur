@@ -1,0 +1,15 @@
+pkgbase = go-mod-upgrade
+	pkgdesc = Update outdated Go dependencies interactively
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/oligot/go-mod-upgrade
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = go-mod-upgrade-0.9.1.tar.gz::https://github.com/oligot/go-mod-upgrade/archive/refs/tags/v0.9.1.tar.gz
+	sha256sums = 39d9a8bce860e49086cc45bf526d2e06f0f2ab7eac68c3af0d62d846782f3dfa
+	b2sums = 0ebce17d33207f620ea1f4ae90b28f7d946ebeacacd392383b71138660560c6c50c115b998a61877d4e62c69b5242d8049e77cef13768faffc794206e7c1d976
+
+pkgname = go-mod-upgrade
