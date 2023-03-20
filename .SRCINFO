@@ -1,16 +1,14 @@
 pkgbase = xpuz
 	pkgdesc = A fork of xjig 2.5, the jigsaw puzzle.
 	pkgver = 2.7.1
-	pkgrel = 1
-	url = http://webmayo.com/xjigsaw/
+	pkgrel = 2
+	url = https://xjigsaw.net/
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	depends = libx11
 	depends = libjpeg-turbo
 	source = xpuz::git+https://github.com/JeanLucJFr/xpuz.git
-	source = Makefile
 	md5sums = SKIP
 
 pkgname = xpuz
-
