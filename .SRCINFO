@@ -1,6 +1,6 @@
 pkgbase = pipelight
-	pkgdesc = A Rust/Typescript based absurd automation tool
-	pkgver = 0.4.2O
+	pkgdesc = A Rust based quick automation tool
+	pkgver = 0.4.21
 	pkgrel = 1
 	url = https://gitea.com/pipelight/pipelight.git
 	arch = x86_64
