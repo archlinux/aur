@@ -4,7 +4,7 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=imagemagick6
-_pkgver=6.9.12-80
+_pkgver=6.9.12-82
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="An image viewing/manipulation program (legacy 6.9.12-* series)"
@@ -33,7 +33,7 @@ backup=(etc/ImageMagick-6/{coder,colors,delegates,log,magic,mime,policy,quantiza
 provides=('libmagick6')
 source=("https://legacy.imagemagick.org/archive/releases/ImageMagick-$_pkgver.tar.gz"{,.asc}
         'arch-fonts.diff')
-sha256sums=('5c1d7e973a73cf94f2c395aaf4d7f8b8a0396ac0565b5ad17540bedf47833684'
+sha256sums=('996100def63692fd265e967a4cc8890ef541dc2a585eab68a078088f21b1dbda'
             'SKIP'
             'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73')
 validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A') # Lexie Parsimoniae (ImageMagick code signing key) <lexie.parsimoniae@imagemagick.org>
