@@ -1,6 +1,6 @@
 pkgbase = pvc-git
 	pkgdesc = command line tool to change version of aur packages
-	pkgver = 1.0.7
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://github.com/spynetS/pvc.git
 	arch = x86_64
