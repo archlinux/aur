@@ -1,7 +1,7 @@
 pkgbase = ydotool-bin
 	pkgdesc = Generic command-line automation tool (no X!)
 	pkgver = 1.0.4
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/ReimuNotMoe/ydotool
 	install = ydotool.install
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ydotool-bin
 	source = ydotool-1.0.4::https://github.com/ReimuNotMoe/ydotool/releases/download/v1.0.4/ydotool-release-ubuntu-latest
 	source = ydotoold-1.0.4::https://github.com/ReimuNotMoe/ydotool/releases/download/v1.0.4/ydotoold-release-ubuntu-latest
 	source = 80-uinput.rules
-	source = ydotool.service
+	source = ydotoold.service
 	sha256sums = daa83507a596d6839b7467540382dbdc6e4bf64ebfa4f7d6416e877d9a522c0c
 	sha256sums = 3f14f96308935214c0fb154507360f7632e7deda1935dc2d538259fd9986ed36
 	sha256sums = e092f5e7e474aec6c980c458046d0ff11b18750b53de2bf0a0aba1ca26e6d58e
