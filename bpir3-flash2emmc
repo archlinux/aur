@@ -7,36 +7,40 @@ driver="mtk-msdc"
 addr="11230000"
  
 function get_sysmmc {
-  echo $(echo /sys/bus/platform/devices/${addr}.mmc/mmc_host/mmc*/mmc* | head -1)
+  str=$(echo /sys/bus/platform/devices/${addr}.mmc/mmc_host/mmc*/mmc* | head -1)
+  [ -e "$str" ] && echo ${str} || echo ""
 }
 function get_mmcblk {
-  echo "$(basename $(ls $(get_sysmmc)/block | head -1))"
+  str=$(get_sysmmc)
+  [ ! -z "$str" ] &&  echo "$(basename $(ls ${str}/block | head -1))" || echo "/dev/null"
 }
 function get_mmctype {
-  cat $(get_sysmmc)/type
+  str=$(get_sysmmc)
+  [ ! -z "$str" ] && cat ${str}/type || echo "NONE"
 }
- 
-function set_mmc {
+
+function set_sdmmc {
+rmdir ${mmcdtbo}
+} 
+
+function set_emmc {
 cat <<EOT | tee /tmp/mmc0.dts
 /dts-v1/;
 /plugin/;
 &mmc0 {
-  bus-width = <$1>;
-  max-frequency = <$2>;
-  cap-sd-highspeed;
+  bus-width = <8>;
+  max-frequency = <200000000>;
   cap-mmc-highspeed;
   mmc-hs200-1_8v;
-  mmc-hs400-1_8v;
-#  hs400-ds-delay = <0x14014>;
-#  no-sd;
+//  mmc-hs400-1_8v;
+//  hs400-ds-delay = <0x14014>;
+  no-sd;
   no-sdio;
   status = "okay";
 };
 EOT
-mmcdtbo="/sys/kernel/config/device-tree/overlays/mmc0"
 mkdir -p ${mmcdtbo}
-dtc -@ -I dts -O dtb -o /tmp/mmc0.dtbo /tmp/mmc0.dts
-cat /tmp/mmc0.dtbo >${mmcdtbo}/dtbo 
+dtc -@ -I dts -O dtb -o ${mmcdtbo}/dtbo /tmp/mmc0.dts
 }
  
 function restart_driver {
@@ -54,6 +58,7 @@ function restart_driver {
 mount -t configfs none /sys/kernel/config
  
 mmcblk=$(get_mmcblk)
+mmcdtbo="/sys/kernel/config/device-tree/overlays/mmc0"
  
 echo "Device = /dev/${mmcblk}"
  
@@ -66,7 +71,7 @@ if [[ "$(get_mmctype)" == "SD" ]]; then
   umount /tmp/mnt
   [ $? -ne 0 ] && exit
   echo "Switching to EMMC..."
-  set_mmc 8 200000000
+  set_emmc
   restart_driver "MMC"
   mmcblk=$(get_mmcblk)
   if [ -e "/tmp/tempfile" ]; then
@@ -78,11 +83,12 @@ if [[ "$(get_mmctype)" == "SD" ]]; then
 fi
 elif [[ "$(get_mmctype)" == "MMC" ]]; then
   echo "Switching back to SDMMC..."
-  set_mmc 4 52000000
+  set_sdmmc
   restart_driver "SD"
   mmcblk=$(get_mmcblk)
 fi
 
+#echo "Testing on mmcblk0boot1..."
 #echo 0 > /sys/block/mmcblk0boot1/force_ro 
 #dd if=/dev/zero of=/dev/mmcblk0boot1
-                                                                                              
+
