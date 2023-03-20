@@ -1,0 +1,27 @@
+post_install() {
+  echo
+  echo 'gummy uses the i2c protocol to control external screen backlight'
+  echo 'to gain this functionality:'
+  echo '  - load the `i2c-dev` kernel module if needed'
+  echo '  <https://wiki.archlinux.org/title/I2C#Module_loading>'
+  echo '  - add your user to the `i2c` group'
+  echo '  <https://wiki.archlinux.org/title/Users_and_groups#Group_management>'
+  echo '  # sudo usermod --append --groups i2c <username>'
+  echo
+  echo 'reboot is generally required after installing gummy'
+  echo
+}
+
+post_upgrade() {
+  echo
+  echo 'gummy uses the i2c protocol to control external screen backlight'
+  echo 'to gain this functionality:'
+  echo '  - load the `i2c-dev` kernel module if needed'
+  echo '  <https://wiki.archlinux.org/title/I2C#Module_loading>'
+  echo '  - add your user to the `i2c` group'
+  echo '  <https://wiki.archlinux.org/title/Users_and_groups#Group_management>'
+  echo '  # sudo usermod --append --groups i2c <username>'
+  echo
+  echo 'reboot is generally required after upgrading gummy'
+  echo
+}
