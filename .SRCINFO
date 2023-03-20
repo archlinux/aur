@@ -1,6 +1,6 @@
 pkgbase = rpfm-bin
 	pkgdesc = A modding tool for modern (since Empire) Total War games. Precompiled version.
-	pkgver = 4.0.7
+	pkgver = 4.0.8
 	pkgrel = 1
 	url = https://github.com/Frodo45127/rpfm
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = rpfm-bin
 	depends = breeze-icons
 	provides = rpfm
 	conflicts = rpfm-git
-	source_x86_64 = https://github.com/Frodo45127/rpfm/releases/download/v4.0.7/rpfm-v4.0.7-x86_64-unknown-linux-gnu.tar.zst
-	sha256sums_x86_64 = 0d61901b89eca63620db215d61209c9b6ff820e5d64a8ff45dc45296f71768a6
+	source_x86_64 = https://github.com/Frodo45127/rpfm/releases/download/v4.0.8/rpfm-v4.0.8-x86_64-unknown-linux-gnu.tar.zst
+	sha256sums_x86_64 = 88a9024cb0b8ebb3457e8bdc037fce24e0caba8d4b4ffcf4b19e0ca63f02eebd
 
 pkgname = rpfm-bin
