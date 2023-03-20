@@ -1,18 +1,18 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=boostchanger-appimage
 _pkgname=boostchanger
-pkgver=5.0.1
+pkgver=5.0.2
 pkgrel=1
 pkgdesc="With this app you can control CPU turbo boost and the settings of the cpu speed in order to consuming less battery voltage on Linux"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/nbebaw/boostchanger"
 license=('MIT')
 options=(!strip)
 providers="nbebaw"
 conflits=(boostchanger-git boostchanger-py)
-depends=(zlib hicolor-icon-theme)
+depends=(zlib hicolor-icon-theme glibc)
 source=("${_pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
-sha256sums=('ddb3ffc3f6081e6ab735fd33a67c2cf64f26411056ab4c14108aad53a8c54372')
+sha256sums=('d252a46b2080546e5d372d44921a839b3d00485c63fed6c9c65121dd68738a61')
 _install_path="/opt/appimages"
 
 prepare() {
