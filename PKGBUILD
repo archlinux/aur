@@ -88,8 +88,9 @@ optdepends=(
              'lldb: debugger'
              'gcc: compiler'
              'gdb: debugger'
-             'php: language'
              'valgrind: debugger'
+             'rust: language'
+             'php: language'
              'graphviz: callgraph visualization'
              'cscope: CScope Integration for CodeLite'
           )
