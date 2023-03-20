@@ -1,13 +1,13 @@
 pkgbase = ftpgrab-bin
 	pkgdesc = A CLI application written in Go to grab your files from a remote FTP or SFTP server.
-	pkgver = 7.7.0
+	pkgver = 7.8.0
 	pkgrel = 1
 	url = https://ftpgrab.github.io
 	arch = x86_64
 	license = MIT
 	provides = ftpgrab
-	source = https://github.com/ftpgrab/ftpgrab/releases/download/6.3.0/ftpgrab_6.3.0_linux_x86_64.tar.gz
-	sha256sums = cc334bf948e3ade7906b7bb0e441bcf3c4fb7cbe1ea5a2c59dc2e3997c65c958
+	source = https://github.com/crazy-max/ftpgrab/releases/download/v7.8.0/ftpgrab_7.8.0_linux_amd64.tar.gz
+	sha256sums = 25018f5558fc9ed9e58bb3ee9eeb4ef4d3df5458ea7ab3377da7f9832deee7c0
 
 pkgname = ftpgrab-bin
 
