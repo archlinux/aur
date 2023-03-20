@@ -1,7 +1,7 @@
 pkgbase = ytsaurus
 	pkgdesc = A scalable and fault-tolerant open-source big data platform.
 	pkgver = 0.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ytsaurus.tech/
 	arch = x86_64
 	groups = yandex
@@ -10,13 +10,14 @@ pkgbase = ytsaurus
 	makedepends = clang
 	makedepends = lld
 	makedepends = lldb
-	makedepends = conan
-	makedepends = git
+	makedepends = conan1
 	makedepends = python
 	makedepends = python-pip
 	makedepends = ninja
 	makedepends = libidn
 	source = ytsaurus-0.0.0.tar.gz::https://github.com/ytsaurus/ytsaurus/archive/refs/heads/main.tar.gz
+	source = clang.toolchain.patch
 	sha256sums = dca3af5d65bee2c4cef10cc18094b6f82d95b2a528f26382f9bf77862ee3b849
+	sha256sums = SKIP
 
 pkgname = ytsaurus

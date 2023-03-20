@@ -1,0 +1,3 @@
+# Ignore common ABS directories.
+/pkg
+/src
