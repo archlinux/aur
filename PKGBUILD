@@ -1,6 +1,6 @@
 # Maintainer: Areskul <areskul@areskul.com>
 pkgname="pipelight"
-pkgver="0.4.21"
+pkgver="0.4.22"
 pkgrel=1
 pkgdesc="A Rust based quick automation tool"
 arch=(x86_64)

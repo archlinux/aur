@@ -2,3 +2,4 @@ pipelight
 src
 pkb
 *.tar.*
+.pipelight/logs
