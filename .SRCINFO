@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-openimageio
 	pkgdesc = A library for reading and writing images, including classes, utilities, and applications (mingw-w64)
 	pkgver = 2.4.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openimageio.org/
 	arch = any
 	license = BSD-3-Clause
@@ -13,7 +13,7 @@ pkgbase = mingw-w64-openimageio
 	depends = mingw-w64-libtiff
 	depends = mingw-w64-libpng
 	depends = mingw-w64-libjpeg-turbo
-	depends = mingw-w64-tbb
+	depends = mingw-w64-onetbb
 	depends = mingw-w64-giflib
 	depends = mingw-w64-libwebp
 	depends = mingw-w64-pugixml
