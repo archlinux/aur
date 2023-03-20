@@ -1,7 +1,7 @@
 # Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
 # Contributor: Bader <Bad3r@pm.me>
 pkgname=logseq-desktop-git
-pkgver=0.8.12.r132.022f990f2
+pkgver=0.8.18.r79.7a905583c
 pkgrel=1
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management."
 arch=("x86_64")
@@ -60,6 +60,9 @@ build() {
 }
 
 package() {
+
+    # change the folder permision
+    chmod a+rx "${srcdir}/${pkgname}/static/out/Logseq-linux-x64"
 
     # important files are under static/out/Logseq-linux-x64 
     cd "${srcdir}/${pkgname}/static/out/Logseq-linux-x64"
