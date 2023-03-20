@@ -14,13 +14,13 @@ pkgbase = josm-latest
 	conflicts = josm
 	conflicts = josm-stable
 	conflicts = josm-svn
-	noextract = josm-latest.jar
+	noextract = josm-snapshot-18694.jar
 	backup = etc/conf.d/josm
-	source = https://josm.openstreetmap.de/download/josm-latest.jar
+	source = https://josm.openstreetmap.de/download/josm-snapshot-18694.jar
 	source = josm.conf.d
 	source = josm.sh
 	source = josm::svn+https://josm.openstreetmap.de/svn/trunk#revision=18694
-	sha256sums = 6a16f16cf12a01e0e43f40b25b4528ff3123ed860bb68a09dd8babd20f114698
+	sha256sums = 83bc86029b9b5a44cec2986578a49b9e384e0fb318feb9e15a644b0d0447bc54
 	sha256sums = 16bbb378a4e4d02c8ea321f3a3a65ad74007bc439720f44c597432a66d0d1646
 	sha256sums = a30c4824de1570af66e9df2bcbab777b9efea80914a07de498fcfac58789731e
 	sha256sums = SKIP

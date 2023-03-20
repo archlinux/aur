@@ -17,12 +17,12 @@ depends=('desktop-file-utils' 'hicolor-icon-theme' 'java-runtime>=11' 'libxtst' 
 makedepends=('subversion')
 backup=('etc/conf.d/josm')
 conflicts=('josm' 'josm-stable' 'josm-svn')
-source=(https://josm.openstreetmap.de/download/josm-latest.jar
+source=(https://josm.openstreetmap.de/download/josm-snapshot-$pkgver.jar
         josm.conf.d
-		josm.sh
+        josm.sh
         josm::svn+https://josm.openstreetmap.de/svn/trunk#revision=$pkgver)
-noextract=(josm-latest.jar)
-sha256sums=('6a16f16cf12a01e0e43f40b25b4528ff3123ed860bb68a09dd8babd20f114698'
+noextract=(josm-snapshot-$pkgver.jar)
+sha256sums=('83bc86029b9b5a44cec2986578a49b9e384e0fb318feb9e15a644b0d0447bc54'
             '16bbb378a4e4d02c8ea321f3a3a65ad74007bc439720f44c597432a66d0d1646'
             'a30c4824de1570af66e9df2bcbab777b9efea80914a07de498fcfac58789731e'
             'SKIP')
@@ -47,7 +47,7 @@ package() {
 
   #executable file
   #install -d "${pkgdir}"/usr/bin
-  install -Dm644 josm-latest.jar "${pkgdir}"/usr/share/java/josm/josm.jar
+  install -Dm644 josm-snapshot-$pkgver.jar "${pkgdir}"/usr/share/java/josm/josm.jar
   install -Dm755 "josm.sh" "${pkgdir}"/usr/bin/josm
 
   # configuration
