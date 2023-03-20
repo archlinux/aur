@@ -4,6 +4,32 @@
 
 [1]: https://pypi.org/project/google-cloud-bigquery-storage/#history
 
+## [2.19.0](https://github.com/googleapis/python-bigquery-storage/compare/v2.18.1...v2.19.0) (2023-03-01)
+
+
+### Features
+
+* Add default_value_expression to TableFieldSchema ([#571](https://github.com/googleapis/python-bigquery-storage/issues/571)) ([277ed54](https://github.com/googleapis/python-bigquery-storage/commit/277ed5437d63f18b9a46eb89d28cfa3704ecb24e))
+
+## [2.18.1](https://github.com/googleapis/python-bigquery-storage/compare/v2.18.0...v2.18.1) (2023-01-20)
+
+
+### Bug Fixes
+
+* Add context manager return types ([ec04714](https://github.com/googleapis/python-bigquery-storage/commit/ec04714195a1fd13db626631d69124a6415977d3))
+
+
+### Documentation
+
+* Add documentation for enums ([ec04714](https://github.com/googleapis/python-bigquery-storage/commit/ec04714195a1fd13db626631d69124a6415977d3))
+
+## [2.18.0](https://github.com/googleapis/python-bigquery-storage/compare/v2.17.0...v2.18.0) (2023-01-10)
+
+
+### Features
+
+* Add support for python 3.11 ([#547](https://github.com/googleapis/python-bigquery-storage/issues/547)) ([7201f67](https://github.com/googleapis/python-bigquery-storage/commit/7201f67733d831622f36f454465f1a95ff42d17a))
+
 ## [2.17.0](https://github.com/googleapis/python-bigquery-storage/compare/v2.16.2...v2.17.0) (2022-12-14)
 
 
