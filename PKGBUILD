@@ -8,7 +8,7 @@ epoch=
 pkgdesc="In-process property graph database management system (GDBMS) built for query speed and scalability"
 arch=('i686' 'x86_64')
 url="kuzudb.com"
-license=('Apache')
+license=('MIT')
 groups=()
 depends=()
 checkdepends=()
@@ -39,6 +39,7 @@ package() {
   cp ${srcdir}/${_gitname}/src/include/main/* "$pkgdir/usr/include/kuzu"
   cp ${srcdir}/${_gitname}/build/release/src/libkuzu.* "$pkgdir/usr/lib"
   cp ${srcdir}/${_gitname}/build/release/tools/shell/kuzu_shell "$pkgdir/usr/bin/kuzu"
+  install -Dm644 ${srcdir}/${_gitname}/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
