@@ -1,7 +1,7 @@
 pkgbase = r-nmf
 	pkgdesc = Algorithms and Framework for Nonnegative Matrix Factorization (NMF)
-	pkgver = 0.25
-	pkgrel = 3
+	pkgver = 0.26
+	pkgrel = 1
 	url = https://cran.r-project.org/package=NMF
 	arch = x86_64
 	license = GPL
@@ -29,7 +29,7 @@ pkgbase = r-nmf
 	optdepends = r-runit
 	optdepends = r-synchronicity
 	optdepends = r-xtable
-	source = https://cran.r-project.org/src/contrib/NMF_0.25.tar.gz
-	sha256sums = 28b918765f6c579c46d9a0638408297df27b78e9c4392abcd1f59e4dbe3fb44d
+	source = https://cran.r-project.org/src/contrib/NMF_0.26.tar.gz
+	sha256sums = 8d44562ef5f33f3811929f944c9d029ec25526d2ddddfe7c8a5b6e23adbc2ec0
 
 pkgname = r-nmf
