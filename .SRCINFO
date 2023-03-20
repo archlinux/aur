@@ -1,6 +1,6 @@
 pkgbase = r-variancepartition
 	pkgdesc = Quantify and interpret divers of variation in multilevel gene expression experiments
-	pkgver = 1.28.7
+	pkgver = 1.28.9
 	pkgrel = 1
 	url = https://bioconductor.org/packages/variancePartition
 	arch = any
@@ -39,7 +39,7 @@ pkgbase = r-variancepartition
 	optdepends = r-runit
 	optdepends = r-tximport
 	optdepends = r-tximportdata
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/variancePartition_1.28.7.tar.gz
-	sha256sums = a985b6ce9a6183c91a2eb053fdbb6e9ce1411898b50ac3ac825d91076e616547
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/variancePartition_1.28.9.tar.gz
+	sha256sums = 5931bd12a5169e4581165bdaf24fe65ddb5f070308bf60d46af419b1d7e487aa
 
 pkgname = r-variancepartition
