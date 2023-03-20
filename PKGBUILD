@@ -1,16 +1,17 @@
 # Maintainer: mi544 (sd32 at protonmail.com)
 
 pkgname=gummy
-pkgver=0.4.1
+pkgver=0.5
 pkgrel=1
 pkgdesc="Screen brightness/temperature manager for Linux/X11"
 arch=('x86_64')
-url="https://github.com/Fushko/$pkgname"
+url="https://github.com/Fushko/gummy"
 license=('GPL3')
-depends=('libxcb' 'xcb-util-image' 'systemd-libs' 'sdbus-cpp')
+depends=('libxcb' 'xcb-util-image' 'systemd-libs' 'sdbus-cpp' 'ddcutil')
 makedepends=('git' 'cmake')
-provides=("$pkgname")
-conflicts=("$pkgname-git")
+provides=('gummy')
+conflicts=('gummy-git')
+install="gummy.install"
 source=("git+$url#tag=$pkgver")
 md5sums=('SKIP')
 
