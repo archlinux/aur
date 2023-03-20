@@ -6,7 +6,7 @@ pkgdesc="Open CASCADE Technology, 3D modeling & numerical simulation (mingw-w64)
 arch=('any')
 url="https://www.opencascade.org"
 license=('custom')
-depends=('mingw-w64-tk' 'mingw-w64-ffmpeg' 'mingw-w64-freeimage' 'mingw-w64-tbb' 'mingw-w64-rapidjson')
+depends=('mingw-w64-tk' 'mingw-w64-ffmpeg' 'mingw-w64-freeimage' 'mingw-w64-onetbb' 'mingw-w64-rapidjson')
 #TODO: 'mingw-w64-vtk'
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
