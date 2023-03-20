@@ -17,7 +17,7 @@ optdepends=(
 	'dnsmasq: DNS support'
 	'dhcpcd: DHCP support'
 	'openresolv: for dhcpcd')
-makedepends=('git' 'libxslt' 'docbook-xsl' 'docbook5-xml' 'cmake')
+makedepends=('git' 'libxslt' 'docbook-xsl-ns' 'cmake')
 sha256sums=('SKIP')
 source=("git+https://gitlab.com/patlefort/${_pkgname}")
 options=('!strip')
