@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=argc
-pkgver=0.14.0
+pkgver=0.15.1
 pkgrel=1
 pkgdesc="Easily create a feature-rich command-line application in Bash"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT' 'Apache')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('7afc7d6691abd604024fbf5296b2c7a2fa4db7d239a1fbac27287bc2df23aad180f9fae3c1368765481599b35dcebefa84cd8eeaea94a147647c40552b997282')
+sha512sums=('499c26688ee654d24de8804184c9c4c2ed558c2c1a3f3d0228bf0916a5a9eb80d7cc931117d575f5cc2a0c616bcc4a2b92fd1bf130f11746b7bd2a40668f65a8')
 
 prepare() {
   cd "$pkgname-$pkgver"
