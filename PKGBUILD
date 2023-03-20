@@ -1,11 +1,11 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 pkgname=ytsaurus
 pkgver=0.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A scalable and fault-tolerant open-source big data platform."
 arch=('x86_64')
 url='https://ytsaurus.tech/'
-license=('Yandex')
+license=('Apache')
 groups=('yandex')
 depends=()
 makedepends=(

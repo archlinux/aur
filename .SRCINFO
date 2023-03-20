@@ -1,11 +1,11 @@
 pkgbase = ytsaurus
 	pkgdesc = A scalable and fault-tolerant open-source big data platform.
 	pkgver = 0.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ytsaurus.tech/
 	arch = x86_64
 	groups = yandex
-	license = Yandex
+	license = Apache
 	makedepends = cmake
 	makedepends = clang
 	makedepends = lld
