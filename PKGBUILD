@@ -5,8 +5,8 @@
 pkgname=dingtalk-bin
 _pkgname=dingtalk
 _pkgname2=com.alibabainc.dingtalk
-pkgver=1.6.0.230113
-pkgrel=3
+pkgver=1.6.0.230309
+pkgrel=1
 pkgdesc="钉钉"
 arch=("x86_64")
 url="https://www.dingtalk.com/"
@@ -32,7 +32,7 @@ source=("${_pkgname}_${pkgver}-${arch}.deb::https://dtapp-pub.dingtalk.com/dingt
 
 # DebSource & pkgver can be get here: https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Update/other/linux_dingtalk_update.json
 
-sha512sums=('6da9577f3c80a2db84408c4786411e77a785adce9e8e71ec3522e703428e29036c45073a4d8dd0f73493ebf3494bf0f4681e3634ecaf8b76bd2615e15e2e50db'
+sha512sums=('3c780f548449b8b95e6575d4ec316c42b5f17538d6baa16235f5e23f51c91d435fbd532f7d0cd051b9874e8c485b676ada2e3ce8ae54d3650f455c412ff78954'
             'b83d493ed68be0f5a6b851fd93d819bb3a6e62feeb71a5bef10bad24b5ea8f3cf09deea4f31ed727449888a6eae1be99fa9cf263bc921cb8bb2958e2f37a7d64'
             'c8570ec4cd978e26ac622a83db053a0555324752f5000dc5b3cd680d782138e8ef856f09ec9b7850e04e1faa1e39de94dabeb16fbfbe0fd44af43247b30e8b2f'
             '4dde27376ed3ed5fed5da2a94f45e2556c7bd0fe5086351a9fd204a08b52823d70d60024b91c1f1cc023f5a276442537c0789ffbefa9ef7aa2be2b6e10c99071'
