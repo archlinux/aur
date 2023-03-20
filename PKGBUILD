@@ -2,7 +2,7 @@
 
 pkgname=skoolkit
 pkgver=8.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A suite of tools for creating disassemblies of ZX Spectrum games."
 arch=('x86_64')
 url="https://github.com/skoolkid/skoolkit"
