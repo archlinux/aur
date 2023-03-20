@@ -1,5 +1,6 @@
-src
-pkg
+src/
+pkg/
+
 *.pkg.*
-*.zip
+flaresolverr_linux_x64
 
