@@ -8,14 +8,11 @@
 #               Vufa <countstarlight@gmail.com>
   
 BOTTLENAME="Deepin-TXEDU"
-APPVER="3.0.3.55deepin6"
+APPVER="4.3.1.1"
 WINEPREFIX="$HOME/.deepinwine/${BOTTLENAME}"
 EXEC_PATH="c:/Program Files/Tencent/EDU/bin/TXEDU.exe"
 EXEC_FILE="${WINEPREFIX}/drive_c/Program Files/Tencent/EDU/bin/TXEDU.exe"
 START_SHELL_PATH="/opt/deepinwine/tools/run_v4.sh"
-UPDATEAPP_INSTALLER="TXEDU"
-UPDATEAPP_VER="4.2.2.8"
-UPDATEAPP_INSTALLER_PATH="c:/Program Files/Tencent/EDU/bin/${UPDATEAPP_INSTALLER}-${UPDATEAPP_VER}.exe"
 export MIME_TYPE=""
 export DEB_PACKAGE_NAME="deepin-wine-tencent-edu"
 export APPRUN_CMD="deepin-wine6-stable"
@@ -42,20 +39,7 @@ OpenWinecfg() {
     msg 0 "Launching winecfg with ${APPRUN_CMD} in ${WINEPREFIX} ..."
     env WINEPREFIX="${WINEPREFIX}" ${APPRUN_CMD} winecfg
 }
-  
-DeployApp() {
-    # deploy bottle
-    msg 0 "Deploying ${WINEPREFIX} ..."
-    rm -rf "${WINEPREFIX}"
-    # run installer
-    msg 0 "Launching ${UPDATEAPP_INSTALLER_PATH} ..."
-    env WINEDLLOVERRIDES="winemenubuilder.exe=d" ${START_SHELL_PATH} ${BOTTLENAME} ${APPVER} "${UPDATEAPP_INSTALLER_PATH}" "$@"
- 
-    touch "${WINEPREFIX}"/reinstalled
-    msg 0 "Creating ${WINEPREFIX}/PACKAGE_VERSION ..."
-    cat /opt/apps/${DEB_PACKAGE_NAME}/files/files.md5sum >"${WINEPREFIX}"/PACKAGE_VERSION
-}
- 
+
 WakeApp() {
     env WINEPREDLL="${ARCHIVE_FILE_DIR}/dlls" \
         WINEDLLPATH=/opt/${APPRUN_CMD}/lib:/opt/${APPRUN_CMD}/lib64 \
@@ -72,11 +56,6 @@ Run() {
     fi
   
     if [ -n "${EXEC_PATH}" ]; then
-        if [ ! -f "${WINEPREFIX}/reinstalled" ] || [ ! -f "$EXEC_FILE" ]; then
-            DeployApp "$@"
-            exit 0
-        fi
-  
         if [ -z "${EXEC_PATH##*.lnk*}" ]; then
             msg 0 "Launching  ${EXEC_PATH} lnk file ..."
             ${START_SHELL_PATH} ${BOTTLENAME} ${APPVER} "C:/windows/command/start.exe" "/Unix" "${EXEC_PATH}" "$@"
