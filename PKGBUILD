@@ -17,3 +17,4 @@ install -Dm755 "$srcdir/gpt-cli.gnu" "$pkgdir/usr/bin/gpt-cli"
 # Create a symbolic link
 ln -s "/usr/bin/gpt-cli" "$pkgdir/usr/bin/p"
 }
+
