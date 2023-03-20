@@ -5,13 +5,22 @@
 pkgbase=gpgme
 pkgname=(gpgme qgpgme python-gpgme)
 pkgver=1.19.0
-pkgrel=1
-_python_ver=3.10
+pkgrel=2
 pkgdesc='A C wrapper library for GnuPG'
 arch=('x86_64')
 url='https://www.gnupg.org/related_software/gpgme/'
 license=('LGPL')
-makedepends=('libgpg-error' 'gnupg' 'qt5-base' 'python' 'python-setuptools' 'swig')
+makedepends=(
+  'gnupg'
+  'libgpg-error'
+  'python'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+  'qt5-base'
+  'swig'
+)
 validpgpkeys=('6DAA6E64A76D2840571B4902528897B826403ADA'  # Werner Koch (dist signing 2020)
               'AC8E115BF73E2D8D47FA9908E98E9B2D19C6C8BD') # Niibe Yutaka (GnuPG Release Key)
 source=("https://www.gnupg.org/ftp/gcrypt/${pkgbase}/${pkgbase}-${pkgver}.tar.bz2"{,.sig})
@@ -28,11 +37,11 @@ build() {
     --disable-gpgsm-test
   make
 
-  # ensure reproducibility of .pyc files
-  touch -d @$SOURCE_DATE_EPOCH lang/python/version.py
-  touch -d @$SOURCE_DATE_EPOCH lang/python/python${_python_ver}-gpg/lib.linux-x86_64-cpython-${_python_ver/./}/gpg/gpgme.py
-
-  # .pyc files will be created if check() is used - generate them here
+  (
+    # use a PEP517 workflow to get a reproducible Python package
+    cd lang/python/
+    python -m build --wheel --no-isolation
+  )
 }
 
 check() {
@@ -42,9 +51,6 @@ check() {
   sed -i 's#"t-keylist-secret",##' tests/json/t-json.c
 
   make check
-
-  # ensure reproducibilty whether test-suite is run or not
-  find . -name *.pyc -exec rm {} +
 }
 
 package_gpgme() {
@@ -77,5 +83,5 @@ package_python-gpgme() {
   depends=('gpgme' 'python')
 
   cd ${pkgbase}-${pkgver}/lang/python
-  make DESTDIR="${pkgdir}" install
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
