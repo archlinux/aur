@@ -2,7 +2,7 @@
 
 pkgname=linux-beep-music2
 _gitname=beep-melodies
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Collection of more beep melodies"
 arch=('any')
@@ -37,7 +37,7 @@ package() {
   install -m 755 -D pachelbel-canon.sh                 "${pkgdir}/usr/bin/beep-song-pachelbel-canon"
   install -m 755 -D phaser_orig.sh                     "${pkgdir}/usr/bin/beep-song-phaser-orig"
   install -m 755 -D ring_orig.sh                       "${pkgdir}/usr/bin/beep-song-ring-orig"
-  install -m 755 -D sandstorm.sh                       "${pkgdir}/usr/bin/beep-song-sandstorm"
+  install -m 755 -D sandstorm.sh                       "${pkgdir}/usr/bin/beep-song-sandstorm2"
   install -m 755 -D scale_orig.sh                      "${pkgdir}/usr/bin/beep-song-scale-orig"
   install -m 755 -D shutdown.sh                        "${pkgdir}/usr/bin/beep-song-shutdown"
   install -m 755 -D startup.sh                         "${pkgdir}/usr/bin/beep-song-startup"
@@ -45,7 +45,7 @@ package() {
   install -m 755 -D super-mario.sh                     "${pkgdir}/usr/bin/beep-song-super-mario"
   install -m 755 -D super-mario-victory.sh             "${pkgdir}/usr/bin/beep-song-super-mario-victory"
   install -m 755 -D taps_orig.sh                       "${pkgdir}/usr/bin/beep-song-taps-orig"
-  install -m 755 -D tetris.sh                          "${pkgdir}/usr/bin/beep-song-tetris"
+  install -m 755 -D tetris.sh                          "${pkgdir}/usr/bin/beep-song-tetris2"
   install -m 755 -D torrent-completion_orig.sh         "${pkgdir}/usr/bin/beep-song-torrent-completion-orig"
   install -m 755 -D upanddown_orig.sh                  "${pkgdir}/usr/bin/beep-song-upanddown-orig"
   install -m 755 -D vader-jacob.sh                     "${pkgdir}/usr/bin/beep-song-vader-jacob"
