@@ -1,12 +1,13 @@
 # Maintainer: Kusoneko <kusoneko@kusoneko.moe>
 
 pkgname=pounce-git
-pkgver=3.0.r462.f2ca5b0
+pkgver=3.1.r470.2abf0df
 pkgrel=1
 pkgdesc="A multi-client, TLS-only IRC bouncer"
 arch=('x86_64')
 url="https://git.causal.agency/pounce"
 license=('GPL3')
+makedepends=('git')
 depends=('libretls' 'libxcrypt')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
