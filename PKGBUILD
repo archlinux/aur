@@ -13,7 +13,7 @@
 
 pkgname=codelite-git
 _gitname=codelite
-pkgver=17.0.0.r1.g636e07593
+pkgver=17.2.0.r3.g1b06b5d34
 pkgrel=1
 pkgdesc="Cross platform IDE for C, C++, Rust, Python, PHP and Node.js written in C++"
 arch=('i686' 'x86_64' 'aarch64')
@@ -28,22 +28,26 @@ depends=(
   'libssh'
   'mariadb-libs'
   'ncurses'
-  'clang'
-  'lldb'
+  'uchardet'
   'hunspell'
+  #'ctags'
   #'xterm'
   #'wget'
   #'curl'
+  #'python'
   #'python2'
 )
 
 optdepends=(
-  'graphviz: callgraph visualization'
-  'cscope: CScope Integration for CodeLite'
   'clang: compiler'
+  'lldb: debugger'
   'gcc: compiler'
   'gdb: debugger'
   'valgrind: debugger'
+  'rust: language'
+  'php: language'
+  'graphviz: callgraph visualization'
+  'cscope: CScope Integration for CodeLite'
 )
 
 conflicts=('codelite' 'codelite-bin')
@@ -82,6 +86,8 @@ prepare() {
 
   # Apply patches here:
   # example: patch -p0 < "${startdir}/codelite-feature.patch"
+
+  patch -p0 < "${startdir}/codelite-DebugAdapterClient-CMakeLists-cxx17.patch"
 
   #patch -p0 < "${startdir}/codelite-fsw-symlink.patch"
 }

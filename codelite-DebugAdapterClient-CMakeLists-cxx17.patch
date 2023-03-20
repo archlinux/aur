@@ -1,0 +1,11 @@
+diff --git DebugAdapterClient/CMakeLists.txt DebugAdapterClient/CMakeLists.txt
+index 93d69c075..61a2b31f4 100644
+--- DebugAdapterClient/CMakeLists.txt
++++ DebugAdapterClient/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ # lldb requires C++11
+-add_definitions(-std=c++11)
++add_definitions(-std=c++17)
+ set(PLUGIN_NAME "DebugAdapterClient")
+ project(DebugAdapterClient)
+ 

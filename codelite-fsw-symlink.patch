@@ -1,32 +1,48 @@
 diff --git CodeLite/clFilesCollector.cpp CodeLite/clFilesCollector.cpp
-index 6bbdc24c5..462fcdc13 100644
+index a57949053..d6b785f48 100644
 --- CodeLite/clFilesCollector.cpp
 +++ CodeLite/clFilesCollector.cpp
-@@ -9,6 +9,12 @@
+@@ -2,6 +2,7 @@
+ 
+ #include "file_logger.h"
+ #include "fileutils.h"
++//#include "globals.h"
+ 
+ #include <queue>
+ #include <vector>
+@@ -9,6 +10,11 @@
  #include <wx/filename.h>
  #include <wx/tokenzr.h>
  
-+
-+static wxString RealPath(const wxString& fullpath)
++static wxString CLRealPath(const wxString& str)
 +{
-+    return fullpath;
++    return str;
 +}
 +
  clFilesScanner::clFilesScanner() {}
  
  clFilesScanner::~clFilesScanner() {}
-@@ -102,12 +108,12 @@ size_t clFilesScanner::Scan(const wxString& rootFolder, std::vector<wxString>& f
+@@ -95,19 +101,19 @@ size_t clFilesScanner::Scan(const wxString& rootFolder, std::vector<wxString>& f
+             wxString fullpath;
+             fullpath << dir.GetNameWithSep() << filename;
+             bool isDirectory = wxFileName::DirExists(fullpath);
+-            // Use FileUtils::RealPath() here to cope with symlinks on Linux
++            // Use CLRealPath() here to cope with symlinks on Linux
+             bool isExcludeDir =
+                 isDirectory &&
+                 (
  #if defined(__FreeBSD__)
-                     ((FileUtils::IsSymlink(fullpath) && excludeFolders.count(FileUtils::RealPath(fullpath)))
+-                    ((FileUtils::IsSymlink(fullpath) && excludeFolders.count(FileUtils::RealPath(fullpath)))
++                    ((FileUtils::IsSymlink(fullpath) && excludeFolders.count(CLRealPath(fullpath)))
  #else
 -                    (excludeFolders.count(FileUtils::RealPath(fullpath))
-+                    (excludeFolders.count(RealPath(fullpath))
++                    (excludeFolders.count(CLRealPath(fullpath))
  #endif
                       || IsRelPathContainedInSpec(rootFolder, fullpath, excludeFolders)));
              if(isDirectory && !isExcludeDir) {
                  // Traverse into this folder
 -                wxString realPath = FileUtils::RealPath(fullpath);
-+                wxString realPath = RealPath(fullpath);
++                wxString realPath = CLRealPath(fullpath);
                  if(Visited.insert(realPath).second) {
                      Q.push(fullpath);
                  }
@@ -36,17 +52,22 @@ index 6bbdc24c5..462fcdc13 100644
  
 -    Q.push(FileUtils::RealPath(rootFolder));
 -    Visited.insert(FileUtils::RealPath(rootFolder));
-+    Q.push(RealPath(rootFolder));
-+    Visited.insert(RealPath(rootFolder));
++    Q.push(CLRealPath(rootFolder));
++    Visited.insert(CLRealPath(rootFolder));
  
      size_t nCount = 0;
      while(!Q.empty()) {
-@@ -163,7 +169,7 @@ size_t clFilesScanner::Scan(const wxString& rootFolder, const wxString& filespec
+@@ -159,11 +165,11 @@ size_t clFilesScanner::Scan(const wxString& rootFolder, const wxString& filespec
+             fullpath << dir.GetNameWithSep() << filename;
+             bool isDirectory = wxFileName::DirExists(fullpath);
+             bool isFile = !isDirectory;
+-            // Use FileUtils::RealPath() here to cope with symlinks on Linux
++            // Use CLRealPath() here to cope with symlinks on Linux
              if(isDirectory /* a folder */ &&
                 !FileUtils::WildMatch(excludeFoldersSpecArr, filename) /* does not match the exclude folder spec */) {
                  // Traverse into this folder
 -                wxString real_path = FileUtils::RealPath(fullpath);
-+                wxString real_path = RealPath(fullpath);
++                wxString real_path = CLRealPath(fullpath);
                  if(Visited.count(real_path) == 0) {
                      Visited.insert(real_path);
                      Q.push(fullpath);
@@ -56,50 +77,43 @@ index 6bbdc24c5..462fcdc13 100644
  
 -    Q.push_back(FileUtils::RealPath(rootFolder));
 -    Visited.insert(FileUtils::RealPath(rootFolder));
-+    Q.push_back(RealPath(rootFolder));
-+    Visited.insert(RealPath(rootFolder));
++    Q.push_back(CLRealPath(rootFolder));
++    Visited.insert(CLRealPath(rootFolder));
  
      while(!Q.empty()) {
          wxString dirpath = Q.front();
 @@ -284,7 +290,7 @@ void clFilesScanner::ScanWithCallbacks(const wxString& rootFolder, std::function
  
-                 if(on_folder_cb(fullpath)) {
+                 if(on_folder_cb && on_folder_cb(fullpath)) {
                      // Traverse into this folder
 -                    wxString real_path = FileUtils::RealPath(fullpath);
-+                    wxString real_path = RealPath(fullpath);
++                    wxString real_path = CLRealPath(fullpath);
                      if(Visited.insert(real_path).second) {
                          Q.push_back(fullpath);
                      }
-@@ -298,4 +304,4 @@ void clFilesScanner::ScanWithCallbacks(const wxString& rootFolder, std::function
-         // notify about this batch of files
-         on_file_cb(files);
-     }
--}
-\ No newline at end of file
-+}
 diff --git LiteEditor/mainbook.cpp LiteEditor/mainbook.cpp
-index acc395b44..98aba584e 100644
+index 5d95db144..d1f1ecfe8 100644
 --- LiteEditor/mainbook.cpp
 +++ LiteEditor/mainbook.cpp
-@@ -435,7 +435,7 @@ int MainBook::FindEditorIndexByFullPath(const wxString& fullpath)
+@@ -467,7 +467,7 @@ int MainBook::FindEditorIndexByFullPath(const wxString& fullpath)
  {
  #ifdef __WXGTK__
      // On gtk either fileName or the editor filepath (or both) may be (or their paths contain) symlinks
 -    wxString fileNameDest = CLRealPath(fullpath);
-+    wxString fileNameDest = FileUtils::RealPath(fullpath);
++    wxString fileNameDest = CLRealPath_forced(fullpath);
  #endif
  
      for(size_t i = 0; i < m_book->GetPageCount(); i++) {
-@@ -469,7 +469,7 @@ int MainBook::FindEditorIndexByFullPath(const wxString& fullpath)
+@@ -501,7 +501,7 @@ int MainBook::FindEditorIndexByFullPath(const wxString& fullpath)
  
  #if defined(__WXGTK__)
                  // Try again, dereferencing the editor fpath
 -                wxString editorDest = CLRealPath(unixStyleFile);
-+                wxString editorDest = FileUtils::RealPath(unixStyleFile);
++                wxString editorDest = CLRealPath_forced(unixStyleFile);
                  if(editorDest.Cmp(fullpath) == 0 || editorDest.Cmp(fileNameDest) == 0) {
                      return i;
                  }
-@@ -563,6 +563,13 @@ clEditor* MainBook::OpenFile(const wxString& file_name, const wxString& projectN
+@@ -595,6 +595,13 @@ clEditor* MainBook::OpenFile(const wxString& file_name, const wxString& projectN
                               int bmp /*= wxNullBitmap*/, const wxString& tooltip /* wxEmptyString */)
  {
      wxFileName fileName(CLRealPath(file_name));
@@ -113,16 +127,16 @@ index acc395b44..98aba584e 100644
      fileName.MakeAbsolute();
  
  #ifdef __WXMSW__
-@@ -1746,7 +1753,7 @@ WelcomePage* MainBook::GetOrCreateWelcomePage()
+@@ -1786,7 +1793,7 @@ WelcomePage* MainBook::GetOrCreateWelcomePage()
  
  clEditor* MainBook::OpenFileAsync(const wxString& file_name, std::function<void(IEditor*)>&& callback)
  {
 -    wxString real_path = CLRealPath(file_name);
-+    wxString real_path = FileUtils::RealPath(file_name);
++    wxString real_path = CLRealPath_forced(file_name);
      auto editor = FindEditor(real_path);
      if(editor) {
          push_callback(std::move(callback), real_path);
-@@ -1757,7 +1764,7 @@ clEditor* MainBook::OpenFileAsync(const wxString& file_name, std::function<void(
+@@ -1797,7 +1804,7 @@ clEditor* MainBook::OpenFileAsync(const wxString& file_name, std::function<void(
              m_book->SetSelection(index);
          }
      } else {
@@ -131,17 +145,17 @@ index acc395b44..98aba584e 100644
          if(editor) {
              push_callback(std::move(callback), real_path);
          }
-@@ -1813,7 +1820,7 @@ void MainBook::OnIdle(wxIdleEvent& event)
+@@ -1856,7 +1863,7 @@ void MainBook::OnIdle(wxIdleEvent& event)
      auto editor = GetActiveEditor(false);
      CHECK_PTR_RET(editor);
  
 -    execute_callbacks_for_file(CLRealPath(editor->GetFileName().GetFullPath()));
-+    execute_callbacks_for_file(FileUtils::RealPath(editor->GetFileName().GetFullPath()));
++    execute_callbacks_for_file(CLRealPath_forced(editor->GetFileName().GetFullPath()));
  }
  
  void MainBook::OnEditorModified(clCommandEvent& event)
 diff --git Plugin/globals.cpp Plugin/globals.cpp
-index b4c591b8b..4d3e7133c 100644
+index 0d5bc4c30..bbff31a5f 100644
 --- Plugin/globals.cpp
 +++ Plugin/globals.cpp
 @@ -1092,7 +1092,7 @@ wxFileName wxReadLink(const wxFileName& filename)
@@ -153,12 +167,36 @@ index b4c591b8b..4d3e7133c 100644
  
  #else  // OSX
          wxFileName realFileName;
-@@ -1115,7 +1115,7 @@ wxFileName wxReadLink(const wxFileName& filename)
- wxString CLRealPath(const wxString& filepath) // This is readlink on steroids: it also makes-absolute, and dereferences
-                                               // any symlinked dirs in the path
- {
--    return FileUtils::RealPath(filepath);
-+    return filepath;
+@@ -1112,12 +1112,19 @@ wxFileName wxReadLink(const wxFileName& filename)
+ #endif
  }
  
+-wxString CLRealPath(const wxString& filepath) // This is readlink on steroids: it also makes-absolute, and dereferences
++wxString CLRealPath_forced(const wxString& filepath) // This is readlink on steroids: it also makes-absolute, and dereferences
+                                               // any symlinked dirs in the path
+ {
+     return FileUtils::RealPath(filepath);
+ }
+ 
++wxString CLRealPath(const wxString& filepath) // This is readlink on steroids: it also makes-absolute, and dereferences
++                                              // any symlinked dirs in the path
++{
++    //return CLRealPath_forced(filepath);
++    return filepath;
++}
++
  int wxStringToInt(const wxString& str, int defval, int minval, int maxval)
+ {
+     long v;
+diff --git Plugin/globals.h Plugin/globals.h
+index 736bd3d47..a41977b46 100644
+--- Plugin/globals.h
++++ Plugin/globals.h
+@@ -379,6 +379,7 @@ WXDLLIMPEXP_SDK wxFileName wxReadLink(const wxFileName& filename);
+  * @brief makes-absolute filepath, and dereferences it and any symlinked dirs in the path
+  */
+ WXDLLIMPEXP_SDK wxString CLRealPath(const wxString& filepath);
++WXDLLIMPEXP_SDK wxString CLRealPath_forced(const wxString& filepath);
+ 
+ /**
+  * @brief convert string to integer using range validation and default value
