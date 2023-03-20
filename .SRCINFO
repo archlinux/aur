@@ -1,17 +1,15 @@
 pkgbase = yacd-git
 	pkgdesc = Yet Another Clash Dashboard
-	pkgver = 0.3.6.r12.ge405512
-	pkgrel = 3
+	pkgver = 20230212
+	pkgrel = 1
 	url = https://github.com/haishanh/yacd
 	arch = any
 	license = MIT
-	makedepends = git
-	makedepends = pnpm
 	optdepends = clash: A rule-based tunnel in Go
 	optdepends = sing-box: The universal proxy platform
 	provides = yacd
 	conflicts = yacd
-	source = yacd::git+https://github.com/haishanh/yacd.git#branch=master
+	source = yacd::git+https://github.com/haishanh/yacd.git#branch=gh-pages
 	sha256sums = SKIP
 
 pkgname = yacd-git
