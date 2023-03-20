@@ -1,7 +1,7 @@
 # Maintainer: Ruben Kharel <talkto at rubenk dot com dot np>
 
 pkgname=chatgpt-nativefier
-pkgver=1
+pkgver=1.1
 pkgrel=1
 pkgdesc="ChatGPT desktop built with nativefier (electron)"
 arch=("armv7l" "i686" "x86_64")
@@ -29,7 +29,7 @@ build() {
     --icon "${pkgname}.png" \
     --width "800px" \
     --height "600px" \
-		--user-agent "safari" \
+		--user-agent "firefox" \
     --verbose \
 		--internal-urls "(.*?)(chat.openai.com)" \
     --single-instance \

@@ -1,6 +1,6 @@
 pkgbase = chatgpt-nativefier
 	pkgdesc = ChatGPT desktop built with nativefier (electron)
-	pkgver = 1
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://chat.openai.com/
 	arch = armv7l
