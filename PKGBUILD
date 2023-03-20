@@ -1,32 +1,30 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=deepin-wine-ximalaya
 _officalname=ximalaya
-pkgver=3.3.4_99B
+pkgver=3.3.5_99B
 _sparkpkgname=com.ximalaya.spark
 _sparkver=3.3.0spark6
 pkgrel=1
-epoch=
 pkgdesc="喜马拉雅，是中国领先的音频分享平台。用声音分享人类智慧，用声音服务美好生活，做一家人一辈子的精神食粮，是平台的使命和初心。"
 arch=("x86_64")
 url="https://www.ximalaya.com"
 license=('custom:freeware')
-depends=('deepin-wine6-stable' 'spark-dwine-helper-git' 'xdg-utils')
+depends=('deepin-wine6-stable' 'xdg-utils' 'hicolor-icon-theme')
 optdepends=('wqy-microhei' 'wqy-zenhei')
-conflicts=()
-provides=()
-install="deepin-wine-ximalaya.install"
+provides=(ximalaya)
+install="${pkgname}.install"
 source=(
     "${_sparkpkgname}_${_sparkver}_amd64.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/music/${_sparkpkgname}/${_sparkpkgname}_${_sparkver}_amd64.deb"
     "${_officalname}-${pkgver}.exe::${url}/down/lite/v2?client=win&channelId=99&subChannelId=100002"
     "LICENSE::https://passport.ximalaya.com/page/register_rule"
-    deepin-wine-ximalaya.install
+    "${pkgname}".install
     run.sh
     )
 sha256sums=('54989d78270b73e473e71eaa5676eb668976232fb06fff0cd4d62336d00da71e'
-            '1c8e23a00301a42265519d4ad75334ce31365df99939ade154e171c346fc94ef'
+            '3197ea21b88398008eda74cbbf4e38ddcbb276581c97135d5524235ab49d01e5'
             '49d0dbd526a0e15cb24cc6ab7bb6f9205198688ab1f7d184740ee6cbf2ef1558'
             '6f2e0e87fe8f1abbd947d311b0fcad50c9c4c22a2531b8277db4e28e0a2d78dd'
-            '0f440a5e1f15cc0a50f45b840d8b78f9e9d230ba1f9b025d24fd58e34189fdbe')
+            'ba810342c668ec3346dbb90811f090254a46b32964e074d3d3dbc806ed2e7116')
  
 package() {
     bsdtar -xf data.tar.xz -C "${pkgdir}"
