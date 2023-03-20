@@ -2,7 +2,7 @@ pkgbase = swift-bin
 	pkgdesc = Binary builds of the Swift programming language
 	pkgver = 5.7.3
 	pkgrel = 1
-	url = https://swift.org
+	url = https://www.swift.org/
 	arch = x86_64
 	license = apache
 	depends = libutil-linux
@@ -13,6 +13,6 @@ pkgbase = swift-bin
 	replaces = swift-language-bin
 	options = !strip
 	source = https://swift.org/builds/swift-5.7.3-release/centos7/swift-5.7.3-RELEASE/swift-5.7.3-RELEASE-centos7.tar.gz
-	sha256sums = 8622569f57c7e325ab02d5f6605e55d1e1fe04ab7ccae8fab8334532959750c6
+	sha256sums = 10138dce4306309fdd77c530a7c19e4d00586cdaf5698dd7412004bcb6d86d28
 
 pkgname = swift-bin
