@@ -1,16 +1,15 @@
 pkgbase = chessx
 	pkgdesc = Cross-platform chess database and PGN viewer
-	pkgver = 1.5.6
-	pkgrel = 3
+	pkgver = 1.5.8
+	pkgrel = 1
 	url = http://chessx.sourceforge.net
-	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = qt5-tools
 	depends = qt5-svg
 	depends = qt5-speech
 	conflicts = chessx-svn
-	source = https://sourceforge.net/projects/chessx/files/chessx/1.5.6/chessx-1.5.6.tgz
-	sha256sums = d09a4b534a909c5f1a398c64065049a2fdf30497bc81ccbdf0d940412364d205
+	source = https://sourceforge.net/projects/chessx/files/chessx/1.5.8/chessx-1.5.8.tgz
+	sha256sums = 7affad2b50872c5b7f46f9b3c8f559d9cd27c5f470c1bf647bbb939a6ed111a3
 
 pkgname = chessx
