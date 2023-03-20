@@ -22,7 +22,12 @@ sha512sums=('SKIP')
 
 prepare() {
 	cd "${srcdir}/${dirname}"
-	./autogen.sh --prefix =/usr/lib/xfce4/panel/plugins/
+	./autogen.sh
+        --prefix=/usr \
+
+
+
+
 }
 
 build() {
