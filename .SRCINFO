@@ -1,0 +1,19 @@
+pkgbase = shell-velocity-git
+	pkgdesc = A portable notational velocity for your shell
+	pkgver = 55.849e2f2
+	pkgrel = 1
+	url = https://github.com/saccarosium/shell-velocity
+	arch = any
+	license = MIT
+	makedepends = git
+	optdepends = fzf: default picker
+	optdepends = fzy: alternative picker
+	optdepends = peco: alternative picker
+	optdepends = gum: alternative picker
+	optdepends = dmenu: alternative picker
+	optdepends = rofi: alternative picker
+	provides = shv
+	source = git+https://github.com/saccarosium/shell-velocity.git
+	md5sums = SKIP
+
+pkgname = shell-velocity-git
