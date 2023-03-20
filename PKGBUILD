@@ -2,7 +2,7 @@
 
 _name=calmjs
 pkgname=python-calmjs
-pkgver=3.4.3
+pkgver=3.4.4
 pkgrel=1
 pkgdesc="Framework for building toolchains and utilities for working with the JavaScript/Node.js ecosystem"
 arch=(any)
@@ -12,8 +12,8 @@ depends=(python python-calmjs.parse python-calmjs.types python-setuptools)
 makedepends=(python-build python-installer python-wheel)
 checkdepends=(npm yarn)
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.zip)
-sha512sums=('3fac1089a4743466dbc41c7963b0e9bdb64ef369a96420bfb3dea4070be5b5b9bb86109e70cc93983762bf1911a1d5dce11dd5870fbd3c939c6778e9a787bcc9')
-b2sums=('7b081a58574810addf863cd0a400bc2142c5589ad68e3d5aef407d260f694e986b854db45cd8f37ad15541a78f934b36a671b9874a928559b9b23de055ce61dd')
+sha512sums=('77a69a0318f1d254ee80fa51d585442b65e6569231370e02f0e0f1b23f66445aa25d2ae8e774a616718d7107bdf2fc130952a4f5418972aa9b2b2b51cd02a69e')
+b2sums=('14558a865da131f87852932185b61e3a52ac963c4fa1782013214f79ced5e8745d527b27ac453a1c1d02c47f251fa926653241ac69aee1363b003e007dbd0597')
 
 build() {
   cd $_name-$pkgver
