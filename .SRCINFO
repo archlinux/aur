@@ -1,6 +1,6 @@
 pkgbase = cpp-httplib-git
 	pkgdesc = A C++ HTTP/HTTPS server and client library
-	pkgver = 0.12.0.r11.g7b69999
+	pkgver = 0.12.1.r2.g88a9278
 	pkgrel = 1
 	url = https://github.com/yhirose/cpp-httplib
 	arch = aarch64
@@ -16,14 +16,18 @@ pkgbase = cpp-httplib-git
 	makedepends = git
 	makedepends = openssl>=1.1.1
 	makedepends = python
+	depends = gcc-libs
+	depends = glibc
 	depends = zlib
-	provides = cpp-httplib=0.12.0.r11.g7b69999
+	provides = cpp-httplib=0.12.1.r2.g88a9278
 	provides = libhttplib.so
 	conflicts = cpp-httplib
 	source = cpp-httplib::git+https://github.com/yhirose/cpp-httplib.git
 	b2sums = SKIP
 
 pkgname = cpp-httplib-git
+	depends = gcc-libs
+	depends = glibc
 	depends = zlib
 	depends = libbrotlidec.so
 	depends = libbrotlienc.so
