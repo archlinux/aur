@@ -1,6 +1,6 @@
 pkgname=node-hp-scan-to
 pkgver=1.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Allow to send scan from HP All-in-One Printer to computer"
 arch=(any)
 url="https://github.com/manuc66/node-hp-scan-to"
