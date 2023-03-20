@@ -219,18 +219,19 @@ build() {
   #-D_CMAKE_TOOLCHAIN_PREFIX=llvm \
   #-DCMAKE_BUILD_TYPE=RelWithDebInfo \
   #-DINPUT_linker=lld \
+  #-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
 
   # using clang like this results in a broken moc
   #export CC=clang
   #export CXX=clang++
+  #-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+  #-DFEATURE_separate_debug_info=ON \
   local _configure_line_fn=configure_line
   local _configure_line="cmake \
                                 -GNinja \
-                                -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-                                -DFEATURE_separate_debug_info=ON \
+                                -DCMAKE_BUILD_TYPE=Rel \
                                 -DFEATURE_reduce_exports=ON \
                                 -DFEATURE_reduce_relocations=ON \
-                                -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
                                 -DBUILD_WITH_PCH=ON \
                                 -DQT_BUILD_TESTS=OFF \
                                 -DQT_BUILD_EXAMPLES=OFF \
