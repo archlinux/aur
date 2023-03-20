@@ -5,6 +5,7 @@ pkgbase = scooper-git
 	url = https://git.causal.agency/scooper
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	depends = kcgi
 	provides = scooper
 	conflicts = scooper

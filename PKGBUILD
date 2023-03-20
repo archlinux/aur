@@ -7,6 +7,7 @@ pkgdesc="CGI and FastCGI web interface for litterbox IRC logger"
 arch=('x86_64')
 url="https://git.causal.agency/scooper"
 license=('GPL3')
+makedepends=('git')
 depends=('kcgi')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -20,7 +21,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	./configure --prefix=/usr
+	./configure --prefix=/usr --mandir=/usr/share/man
 	make all
 }
 
