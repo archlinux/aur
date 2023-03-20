@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=python-ocp
-pkgver=7.6.3.0.r0.g6b7b7325
+pkgver=7.6.3.0
 pkgrel=1
 pkgdesc="Python wrapper for OCCT generated using pywrap"
 arch=(x86_64)
@@ -9,9 +9,10 @@ url=https://github.com/CadQuery/OCP
 license=('Apache')
 depends=(
 python
-opencascade
-vtk
+'opencascade=1:7.6.3'
+'vtk=9.1.0'
 fmt
+glew
 )
 makedepends=(
 git
@@ -33,35 +34,33 @@ python-jinja
 python-toml
 python-lief
 openmpi
+python-pyparsing
 )
 conflicts=(python-ocp-git)
-_hash_OCP=6b7b7325ab4599a8ba9049f176f099574fe64dfc
-_hash_pywrap=66e7376d3a27444393fc99acbdbef40bbc7031ae
 source=(
-git+https://github.com/CadQuery/OCP.git#commit=${_hash_OCP}
-git+https://github.com/CadQuery/pywrap.git#commit=${_hash_pywrap}
+git+https://github.com/CadQuery/OCP.git#tag=${pkgver}
+git+https://github.com/CadQuery/pywrap.git
 )
-sha256sums=('SKIP'
-            'SKIP'
+cksums=(
+'SKIP'
+'SKIP'
 )
 
 # needed to prevent memory exhaustion, 10 seems to consume about 14.5 GiB in the build step
 _n_parallel_build_jobs=1
+#_n_parallel_build_jobs=10  # consumes ~14.5 GiB of ram
+#_n_parallel_build_jobs=30  # consumes ~30 GiB of ram
+#_n_parallel_build_jobs=60  # consumes ~34 GiB of ram
 
 # pick where the opencascade is installed
 #_opencascade_install_prefix="/opt/opencascade-cadquery/usr"
 _opencascade_install_prefix="/usr"
 
-pkgver(){
-  cd OCP
-  git describe --long --tags | sed 's/-/.r/;s/-/./'
-}
-
 prepare(){
   cd OCP
   git submodule init
   git config submodule.pywrap.url "${srcdir}"/pywrap
-  git submodule--helper update -q  # use the submodule commit hashes specified
+  git -c protocol.file.allow=always submodule update
 
   sed "s,^libs_linux = .*,libs_linux = prefix_linux.glob('**/libTK*.so')," -i dump_symbols.py
 
