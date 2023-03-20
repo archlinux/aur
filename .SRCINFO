@@ -1,6 +1,6 @@
 pkgbase = reshade-steam-proton-git
 	pkgdesc = Easy setup and updating of ReShade on Linux for games using wine or proton.
-	pkgver = r109.e627979
+	pkgver = r110.a48a0e7
 	pkgrel = 1
 	url = https://github.com/kevinlekiller/reshade-steam-proton
 	arch = any
