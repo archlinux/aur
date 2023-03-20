@@ -1,6 +1,6 @@
 pkgbase = dune-vtk
 	pkgdesc = File reader and writer for the VTK XML Format
-	pkgver = 2.9
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = https://dune-project.org/modules/dune-vtk
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = dune-vtk
 	license = custom:GPL2 with runtime exception
 	makedepends = doxygen
 	makedepends = graphviz
-	depends = dune-grid>=2.9
-	depends = dune-localfunctions>=2.9
+	depends = dune-grid>=2.9.0
+	depends = dune-localfunctions>=2.9.0
 	optdepends = doxygen: Generate the class documentation from C++ sources
 	optdepends = graphviz: Graph visualization software
-	source = https://gitlab.dune-project.org/extensions/dune-vtk/-/archive/releases/2.9/dune-vtk-releases-2.9.tar.gz
-	sha512sums = 0173bcd60b19cdf1e74a12c4c41ae05142467140dd32f947b9d0fd0b234cdb654b68f026711de11701a264cbef8f614823f7641eaf4805a09bb73dc197344212
+	source = https://gitlab.dune-project.org/extensions/dune-vtk/-/archive/v2.9.0/dune-vtk-v2.9.0.tar.gz
+	sha512sums = 32e10a5b3969e946ec9ad0f0d1d2a8d34cf86b4a7b09320abf1b209c5093a1c0e3c40b819ca1bb46410a0187201f83b5b965c0d83a194d02f0b60264ef1aecec
 
 pkgname = dune-vtk
