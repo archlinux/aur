@@ -1,6 +1,6 @@
 # Maintainer: Nox04 <contact@juanangarita.com>
 pkgname=crypto-tracker
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="This program allows you to track the value of multiple cryptocurrencies and output a JSON object that you can use in Waybar or similar programs."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('go' 'git')
 provides=(crypto-tracker)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Nox04/crypto-tracker/archive/v$pkgver.tar.gz")
-sha512sums=('26258700854bdacc1fed5d20c1fee732e8474bc703a966c07bda0173181441c5c7e9ae962921e7993d2127dc5fd094c87b0c3058a14fa3bc10d27ad4aee32953')
+sha512sums=('cbd5d72b9f3e01d3469242e5ef1190c7161a73c46fec0dfb0dce2902b0f49c664ae4422a7a7f2430dd8582dd4681a5f5c59dabacbb596431540659bfec4ecb6d')
 
 build() {
 	cd "$pkgname-$pkgver"
