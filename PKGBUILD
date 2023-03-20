@@ -1,7 +1,7 @@
 # Maintainer: necklace <ns@nsz.no>
 
 pkgname=iridium-rpm
-pkgver=110.0
+pkgver=111.0
 pkgrel=1
 _folder='iridium-browser'
 _name='iridium-browser'
@@ -15,9 +15,9 @@ depends=('ffmpeg4.4' 'pipewire' 're2' 'snappy' 'minizip')
 options=('!emptydirs' '!strip')
 makedepends=('patchelf')
 
-source=('https://downloads.iridiumbrowser.de/epel8/iridium-browser-2023.02.110-1.el8.x86_64.rpm')
+source=('https://downloads.iridiumbrowser.de/epel9/iridium-browser-2023.03.111-1.el9.x86_64.rpm')
 
-sha256sums=('80247b68a0ae6aacc4f80d88dfe5d2a325f94fbfe508c543a7b15efb2f8eb86b')
+sha256sums=('e2f3503b3c6d60352b4b19f9843ab008debf7837ce0b3bad699b0763a6e77c7b')
 
 package() (
     mkdir -p "${pkgdir}/usr/share/"
@@ -28,7 +28,7 @@ package() (
     cp -r "${srcdir}/usr/lib64/." "${pkgdir}/usr/lib/"
     cp -r "${srcdir}/usr/bin/." "${pkgdir}/usr/bin/"
     cp -r "${srcdir}/etc/iridium-browser" "${pkgdir}/etc/"
-    ln -s "/usr/lib/libffi.so" "${pkgdir}/usr/lib/libffi.so.6"
+    #ln -s "/usr/lib/libffi.so" "${pkgdir}/usr/lib/libffi.so.6"
     #ln -s "/usr/lib/libavformat.so.58.76.100" "${pkgdir}/usr/lib/libavformat.so.58.76"
     #ln -s "/usr/lib/libavutil.so.56.70.100" "${pkgdir}/usr/lib/libavutil.so.56.70"
     #ln -s "/usr/lib/libevent-2.1.so" "${pkgdir}/usr/lib/libevent-2.1.so.6"
