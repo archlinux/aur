@@ -4,7 +4,7 @@ Description=Starts ydotoold service
 [Service]
 Type=simple
 Restart=always
-ExecStart=/usr/local/bin/ydotoold
+ExecStart=/usr/bin/ydotoold
 ExecReload=/usr/bin/kill -HUP $MAINPID
 KillMode=process
 TimeoutSec=180
