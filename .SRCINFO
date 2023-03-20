@@ -6,7 +6,6 @@ pkgbase = mingw-w64-glib2
 	arch = any
 	license = LGPL2.1
 	makedepends = mingw-w64-meson
-	makedepends = git
 	depends = mingw-w64-libffi
 	depends = mingw-w64-pcre2
 	depends = mingw-w64-gettext
