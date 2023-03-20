@@ -3,7 +3,7 @@
 # Original Contributor: Bob Finch <w9ya@arrl.net>
 
 pkgname=xpsk31
-pkgver=3.6.1
+pkgver=3.6.2
 pkgrel=1
 pkgdesc="Ham Radio PSK31 engine using X/GTK+"
 arch=('i686' 'x86_64')
@@ -13,22 +13,22 @@ depends=('gtk3' 'hamradio-menus')
 makedepends=('autoconf' 'automake' 'intltool' 'pkg-config')
 # 'imagemagick: used IF you want to convert icons/images')
 source=(http://www.qsl.net/5b4az/pkg/psk31/$pkgname/$pkgname-$pkgver.tar.bz2
-#	diff.Makefile.am
+	diff.Makefile.am
 	$pkgname.desktop
 	$pkgname.1
 	xdemorse.png
 #	$pkgname.man.1.gz
 )
 
-#prepare() {
-#	cd $srcdir/$pkgname-$pkgver
-#
-#	patch -p0 < ../diff.Makefile.am
-#
-##	sed -i s:xpm:png: Makefile.am
-##	convert files/$pkgname.xpm files/$pkgname.png
-##	install -m644 ../$pkgname.desktop files/$pkgname.desktop
-#}
+prepare() {
+	cd $srcdir/$pkgname-$pkgver
+
+	patch -p0 < ../diff.Makefile.am
+
+#	sed -i s:xpm:png: Makefile.am
+#	convert files/$pkgname.xpm files/$pkgname.png
+#	install -m644 ../$pkgname.desktop files/$pkgname.desktop
+}
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
@@ -50,8 +50,8 @@ check() {
 package() {
 	cd $srcdir/$pkgname-$pkgver
 
-	mkdir -p $pkgdir/usr/share/doc/$pkgname/examples/
-	mkdir -p $pkgdir/usr/share/{applications,pixmaps,man/man1}
+#	mkdir -p $pkgdir/usr/share/doc/$pkgname/examples/
+#	mkdir -p $pkgdir/usr/share/{applications,pixmaps,man/man1}
 	make DESTDIR=$pkgdir install
 
 	mkdir -p $pkgdir/usr/bin
@@ -64,11 +64,13 @@ package() {
 
 	rm $pkgdir/usr/share/doc/$pkgname/$pkgname.1.gz
 }
-md5sums=('346093bdef71823451e11a304cb1007d'
+md5sums=('fe24677f3261b5d3b63fea7dd5b35c44'
+         '988264985f99e2869c590897c4219357'
          'c784ec5d71a3897c515add6aa370cccd'
-         '27f0893852750dbbb51239c4725442c2'
+         '0dd0a9e1cc2d745ef93333f97b2e138d'
          'edcd3f301ec8ea95453d40534beb6ede')
-sha256sums=('3ac59f04fe694e920c887508d5c1df8006cebac3dc5d27cf869139d9f8c39e70'
+sha256sums=('a713c45b48fbb0f3c162a9b2125dda5dac36f9c57b7f7a289253188dd06ddbf4'
+            '5259e4e44cf4adffdb7a6d506958aa523523e3317554d180c6346348a59801a4'
             'd1afe06070b7a6eec1967194c2d7a5a38cf29e73dca35976a72d52707dece0a5'
-            'ee8bb6a89eb145b4da83c4a737bc0fcc1856b5e032dad35161bc6dc514e3ac90'
+            '1095a3122d3d448b8c2c48d8810ca37dbd8b9ec06b6fc51bc75ceb39c8eef071'
             '857eb46c32c12333a7110fb3ea99d2246084724856638f2e04324fc2a576626d')
