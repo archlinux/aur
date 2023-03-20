@@ -1,6 +1,6 @@
 pkgbase = r-singlecellexperiment
 	pkgdesc = S4 Classes for Single Cell Data
-	pkgver = 1.20.0
+	pkgver = 1.20.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SingleCellExperiment
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-singlecellexperiment
 	optdepends = r-rtsne
 	optdepends = r-scrnaseq
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SingleCellExperiment_1.20.0.tar.gz
-	sha256sums = 4fa8af4bb12c045628b6448d63a8fad302e700abfafe0120263c01301c4f2cf9
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SingleCellExperiment_1.20.1.tar.gz
+	sha256sums = a7a58cfdb50f504f644d4708fc1aec0be7b4d24d7ab5d03f51415c5c99358af7
 
 pkgname = r-singlecellexperiment
