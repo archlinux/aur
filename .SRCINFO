@@ -1,0 +1,19 @@
+pkgbase = insomnia-bin-electron
+	pkgdesc = API Client and Design Platform for GraphQL and REST
+	pkgver = 2023.1.0
+	pkgrel = 1
+	url = https://insomnia.rest
+	arch = any
+	license = MIT
+	makedepends = asar
+	depends = electron22
+	provides = insomnia
+	conflicts = insomnia
+	source = https://github.com/Kong/insomnia/releases/download/core@2023.1.0/Insomnia.Core-2023.1.0.deb
+	source = https://github.com/Kong/insomnia/raw/core@2023.1.0/LICENSE
+	source = insomnia.desktop
+	sha256sums = b2b63292e1835c2a6315e06050530eec80fa204fad446f6047b190c5e100fd46
+	sha256sums = cc91b5641bbbf592a69ca5f7b45807efba470068e815fc7682a42022bbd3cbb9
+	sha256sums = 05518f8a162253949c508642dd9c01a1f23d1cf772cc31b225de99b9ca52382f
+
+pkgname = insomnia-bin-electron
