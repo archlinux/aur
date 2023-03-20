@@ -1,0 +1,17 @@
+pkgbase = tile-driller-git
+	pkgdesc = Yet another simple tile painting program for GTK 2
+	pkgver = r10.a877795
+	pkgrel = 1
+	url = https://github.com/vhelin/tile-driller
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = gtk2
+	depends = libpng
+	depends = libjpeg
+	depends = zlib
+	source = git+https://github.com/vhelin/tile-driller.git#branch=master
+	sha256sums = SKIP
+
+pkgname = tile-driller-git
