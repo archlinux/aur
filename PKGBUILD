@@ -12,7 +12,7 @@ makedepends=(
 url='https://nodegui.org/'
 license=('Custom')
 source=("https://github.com/nodegui/qodejs/releases/download/v$pkgver-qode/v$pkgver-qode-linux-x64.tar.gz")
-sha256sums=('9d77da927b9393ae44d2dab19726a847ae5dc5f57bf07faeee4443a723e57599')
+sha256sums=('8837b690a2a030d6105a056fb14ecfe4a586f5656598f531fde79a45b1e849d4')
 
 package() {
     mkdir -p "$pkgdir/usr/bin"
