@@ -1,10 +1,10 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 _pkgname=netns-helper
-pkgname=netns-helper-git
+pkgname=${_pkgname}-git
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-pkgver=r68.c32c9c5
+pkgver=r74.e52bba7
 pkgrel=1
 pkgdesc='Helper systemd services to create network namespaces for other programs and services.'
 url="https://gitlab.com/patlefort/${_pkgname}"
@@ -14,8 +14,8 @@ arch=('any')
 optdepends=(
 	'nftables: nat feature'
 	'bash-completion'
-	'dnsmasq'
-	'dhcpcd'
+	'dnsmasq: DNS support'
+	'dhcpcd: DHCP support'
 	'openresolv: for dhcpcd')
 makedepends=('git' 'libxslt' 'docbook-xsl' 'docbook5-xml' 'cmake')
 sha256sums=('SKIP')
@@ -38,5 +38,6 @@ build() {
 package() {
 	DESTDIR="${pkgdir}" cmake --install 'build'
 	
+	install -dm755 "${pkgdir}/etc/netns-helper/ns"
 	install -Dm644 "${_pkgname}/license.txt" -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
