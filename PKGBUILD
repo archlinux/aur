@@ -2,12 +2,12 @@
 
 pkgname=nix-init
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Generate Nix packages from URLs with hash prefetching, dependency inference, license detection, and more'
 url='https://github.com/nix-community/nix-init'
 license=('MPL2')
 arch=('x86_64' 'i686' 'arm' 'aarch64')
-depends=('gcc-libs' 'openssl' 'curl' 'bzip2' 'zlib')
+depends=('gcc-libs' 'openssl' 'curl' 'bzip2' 'zlib' 'nurl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate"
         "https://github.com/nix-community/nix-init/raw/f839a45b97f2130b55e97652dce9c82d00d2772d/LICENSE")
