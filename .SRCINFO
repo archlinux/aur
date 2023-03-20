@@ -1,0 +1,15 @@
+pkgbase = shufflecake
+	pkgdesc = Shufflecake - Plausible deniability layer for Linux (Userland tool)
+	pkgver = v0.1
+	pkgrel = 1
+	url = https://shufflecake.net/
+	arch = any
+	license = GPLv3
+	makedepends = make
+	depends = dm-sflc-git-dkms
+	provides = shufflecake
+	conflicts = shufflecake
+	source = https://codeberg.org/shufflecake/shufflecake-userland/archive/v0.1.tar.gz
+	sha256sums = 471bdab0da3fc67d78b46373fc1a33d01b92cb5927d12818149a75b9992e3ebf
+
+pkgname = shufflecake
