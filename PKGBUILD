@@ -2,8 +2,8 @@
 # Contributer: nsz32 <nszabo2 at gmail dot com>, bittin
 
 pkgname="xfce4-docklike-plugin"
-pkgver="0.4.0"
-pkgrel=3
+pkgver="0.4.1"
+pkgrel=1
 pkgdesc='A modern, docklike, minimalist taskbar for XFCE'
 arch=('i686' 'x86_64' "aarch64")
 url='https://gitlab.xfce.org/panel-plugins/xfce4-docklike-plugin'
@@ -22,8 +22,7 @@ sha512sums=('SKIP')
 
 prepare() {
 	cd "${srcdir}/${dirname}"
-	./autogen.sh
-        --prefix=/usr \
+	./autogen.sh --prefix=/usr \
 
 
 
@@ -39,3 +38,4 @@ package() {
 	cd "${srcdir}/${dirname}"
 	make DESTDIR="${pkgdir}" install
 }
+
