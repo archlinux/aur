@@ -1,7 +1,7 @@
 # Maintainer: Pig Fang <g-plane@hotmail.com>
 # Maintainer: Mateusz Galazyn <carbolymer@gmail.com>
 pkgname=cabal-install-bin
-pkgver=3.8.1.0
+pkgver=3.10.1.0
 pkgrel=1
 pkgdesc="The command-line interface for Cabal and Hackage."
 arch=(x86_64 aarch64)
@@ -14,8 +14,8 @@ source=(
   https://downloads.haskell.org/~cabal/cabal-install-$pkgver/cabal-install-$pkgver-$arch-linux-deb10.tar.xz
   https://downloads.haskell.org/~cabal/cabal-install-$pkgver/cabal-install-$pkgver.tar.gz
 )
-sha256sums=('c71a1a46fd42d235bb86be968660815c24950e5da2d1ff4640da025ab520424b'
-            '61ce436f2e14e12bf07ea1c81402362f46275014cd841a76566f0766d0ea67e6')
+sha256sums=('9c89f7150a6d09e653ca7d08d22922be2d9f750d0314d9a0a7e2103fac021fac'
+            '995de368555449230e0762b259377ed720798717f4dd26a4fa711e8e41c7838d')
 
 package() {
   install -Dm755 "$srcdir/cabal" "$pkgdir/usr/bin/cabal"
