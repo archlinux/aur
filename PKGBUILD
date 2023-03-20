@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tidySummarizedExperiment
-_pkgver=1.8.0
+_pkgver=1.8.1
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
-pkgrel=3
+pkgver=1.8.1
+pkgrel=1
 pkgdesc='Brings SummarizedExperiment to the Tidyverse'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -37,7 +37,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c391c26e613934b5d58b60c17a56921bf29de73e0f71396cdf1474c9b606f378')
+sha256sums=('b86793aa34cfa9dae50169719eb3e04b5290dd0eb03d48b9d4510bf7053a3eeb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
