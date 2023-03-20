@@ -1,7 +1,7 @@
-From 6b9ecc5eb21be3e36a6e6030c7e514ae72b8fa21 Mon Sep 17 00:00:00 2001
+From 9590c16111eb27ba8cb1b5c46ea57dc9052e82ed Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Wed, 4 Sep 2019 17:24:37 +0800
-Subject: [PATCH 01/15] avcodec/rkmppdec: Clear eos flag after reset
+Subject: [PATCH 01/17] avcodec/rkmppdec: Clear eos flag after reset
 
 Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
 ---
@@ -9,7 +9,7 @@ Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
  1 file changed, 1 insertion(+)
 
 diff --git a/libavcodec/rkmppdec.c b/libavcodec/rkmppdec.c
-index 8bf7c6ed16..e31e0c44dc 100644
+index a60962dc86..3654437268 100644
 --- a/libavcodec/rkmppdec.c
 +++ b/libavcodec/rkmppdec.c
 @@ -544,6 +544,7 @@ static void rkmpp_flush(AVCodecContext *avctx)
@@ -24,10 +24,10 @@ index 8bf7c6ed16..e31e0c44dc 100644
 2.39.2
 
 
-From 813c793c9fe63361721ca0b52548328902397890 Mon Sep 17 00:00:00 2001
+From 43fc7807c58999a57d4c407dcda0d3d2fac7405b Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Wed, 4 Sep 2019 17:27:46 +0800
-Subject: [PATCH 02/15] avcodec/rkmppdec: Compatible with old reordered_opaque
+Subject: [PATCH 02/17] avcodec/rkmppdec: Compatible with old reordered_opaque
  and pkt_pts
 
 Some users might still using these deprecated APIs.
@@ -38,7 +38,7 @@ Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
  1 file changed, 9 insertions(+)
 
 diff --git a/libavcodec/rkmppdec.c b/libavcodec/rkmppdec.c
-index e31e0c44dc..7ae4682f1b 100644
+index 3654437268..6256abe63c 100644
 --- a/libavcodec/rkmppdec.c
 +++ b/libavcodec/rkmppdec.c
 @@ -93,6 +93,9 @@ static int rkmpp_write_data(AVCodecContext *avctx, uint8_t *buffer, int size, in
@@ -68,10 +68,10 @@ index e31e0c44dc..7ae4682f1b 100644
 2.39.2
 
 
-From eb58482785f794935924c9d6f0edb00fc998ed41 Mon Sep 17 00:00:00 2001
+From 6b5e686cea5638fe6c2c92eeaaabe16d9a72121b Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Wed, 19 May 2021 09:55:03 +0800
-Subject: [PATCH 03/15] rkmppdec: Remove frame buffer limit
+Subject: [PATCH 03/17] rkmppdec: Remove frame buffer limit
 
 It would hang when reaching the limit.
 
@@ -81,7 +81,7 @@ Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
  1 file changed, 8 deletions(-)
 
 diff --git a/libavcodec/rkmppdec.c b/libavcodec/rkmppdec.c
-index 7ae4682f1b..f4b6d98e6a 100644
+index 6256abe63c..96696e84dc 100644
 --- a/libavcodec/rkmppdec.c
 +++ b/libavcodec/rkmppdec.c
 @@ -39,7 +39,6 @@
@@ -110,10 +110,10 @@ index 7ae4682f1b..f4b6d98e6a 100644
 2.39.2
 
 
-From 0d9141fac8e4f168c8292e8d25662c8b9f262f40 Mon Sep 17 00:00:00 2001
+From 668ec8c36d1112c5c4939ddc3d3b7cff487cedc1 Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Thu, 20 May 2021 10:19:15 +0800
-Subject: [PATCH 04/15] avcodec/rkmppdec: Rework decoding flow
+Subject: [PATCH 04/17] avcodec/rkmppdec: Rework decoding flow
 
 Stop using the deprecated MPP_DEC_GET_STREAM_COUNT API.
 
@@ -123,7 +123,7 @@ Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
  1 file changed, 270 insertions(+), 256 deletions(-)
 
 diff --git a/libavcodec/rkmppdec.c b/libavcodec/rkmppdec.c
-index f4b6d98e6a..18af1f0ef7 100644
+index 96696e84dc..7c28378120 100644
 --- a/libavcodec/rkmppdec.c
 +++ b/libavcodec/rkmppdec.c
 @@ -38,17 +38,15 @@
@@ -794,10 +794,10 @@ index f4b6d98e6a..18af1f0ef7 100644
 2.39.2
 
 
-From 6ddc3d6d2c5f0b0802dee00dd06cdd4188daa894 Mon Sep 17 00:00:00 2001
+From 3f94c029c3eeca764c63e32435e8ca8241a87dfc Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Fri, 21 May 2021 04:23:36 +0800
-Subject: [PATCH 05/15] HACK: avcodec/rkmppdec: Force aligning coded width and
+Subject: [PATCH 05/17] HACK: avcodec/rkmppdec: Force aligning coded width and
  height to 64
 
 The chromium would try to align planes' width and height to 32, which
@@ -811,7 +811,7 @@ Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
  1 file changed, 5 insertions(+)
 
 diff --git a/libavcodec/rkmppdec.c b/libavcodec/rkmppdec.c
-index 18af1f0ef7..bf9d91607a 100644
+index 7c28378120..bae3ca6cb5 100644
 --- a/libavcodec/rkmppdec.c
 +++ b/libavcodec/rkmppdec.c
 @@ -309,6 +309,11 @@ static int rkmpp_get_frame(AVCodecContext *avctx, AVFrame *frame, int timeout)
@@ -830,10 +830,10 @@ index 18af1f0ef7..bf9d91607a 100644
 2.39.2
 
 
-From 2ca547d0d02008311cf8b17a96eaf3ff70cf5ec1 Mon Sep 17 00:00:00 2001
+From 804808de6c6af583b71526ff9e11196e1515e542 Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Thu, 20 May 2021 10:20:17 +0800
-Subject: [PATCH 06/15] HACK: avcodec/rkmppdec: Support outputing YUV420P
+Subject: [PATCH 06/17] HACK: avcodec/rkmppdec: Support outputing YUV420P
 
 Lots of users support YUV420P format rather than DRM_PRIME.
 
@@ -846,10 +846,10 @@ Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
  2 files changed, 125 insertions(+), 2 deletions(-)
 
 diff --git a/configure b/configure
-index b6616f00b6..b2b6d45e78 100755
+index 89af70d72f..9e08481e11 100755
 --- a/configure
 +++ b/configure
-@@ -349,6 +349,7 @@ External library support:
+@@ -345,6 +345,7 @@ External library support:
    --enable-omx             enable OpenMAX IL code [no]
    --enable-omx-rpi         enable OpenMAX IL code for Raspberry Pi [no]
    --enable-rkmpp           enable Rockchip Media Process Platform code [no]
@@ -857,15 +857,15 @@ index b6616f00b6..b2b6d45e78 100755
    --disable-v4l2-m2m       disable V4L2 mem2mem code [autodetect]
    --disable-vaapi          disable Video Acceleration API (mainly Unix/Intel) code [autodetect]
    --disable-vdpau          disable Nvidia Video Decode and Presentation API for Unix code [autodetect]
-@@ -1892,6 +1893,7 @@ HWACCEL_AUTODETECT_LIBRARY_LIST="
+@@ -1848,6 +1849,7 @@ HWACCEL_AUTODETECT_LIBRARY_LIST="
      videotoolbox
-     vulkan
      v4l2_m2m
+     xvmc
 +    librga
  "
  
  # catchall list of things that require external libs to link
-@@ -6789,10 +6791,13 @@ enabled openssl           && { { check_pkg_config openssl "openssl >= 3.0.0" ope
+@@ -6539,10 +6541,13 @@ enabled openssl           && { check_pkg_config openssl openssl openssl/ssl.h OP
                                 check_lib openssl openssl/ssl.h SSL_library_init -lssl -lcrypto -lws2_32 -lgdi32 ||
                                 die "ERROR: openssl not found"; }
  enabled pocketsphinx      && require_pkg_config pocketsphinx pocketsphinx pocketsphinx/pocketsphinx.h ps_init
@@ -881,7 +881,7 @@ index b6616f00b6..b2b6d45e78 100755
  enabled vapoursynth       && require_pkg_config vapoursynth "vapoursynth-script >= 42" VSScript.h vsscript_init
  
 diff --git a/libavcodec/rkmppdec.c b/libavcodec/rkmppdec.c
-index bf9d91607a..3fd5f908b4 100644
+index bae3ca6cb5..c621e687e0 100644
 --- a/libavcodec/rkmppdec.c
 +++ b/libavcodec/rkmppdec.c
 @@ -38,6 +38,11 @@
@@ -1053,9 +1053,9 @@ index bf9d91607a..3fd5f908b4 100644
  };
  
 @@ -595,6 +712,7 @@ static const AVCodecHWConfigInternal *const rkmpp_hw_configs[] = {
-         .p.priv_class   = &rkmpp_##NAME##_dec_class, \
-         .p.capabilities = AV_CODEC_CAP_DELAY | AV_CODEC_CAP_AVOID_PROBING | AV_CODEC_CAP_HARDWARE, \
-         .p.pix_fmts     = (const enum AVPixelFormat[]) { AV_PIX_FMT_DRM_PRIME, \
+         .priv_class     = &rkmpp_##NAME##_dec_class, \
+         .capabilities   = AV_CODEC_CAP_DELAY | AV_CODEC_CAP_AVOID_PROBING | AV_CODEC_CAP_HARDWARE, \
+         .pix_fmts       = (const enum AVPixelFormat[]) { AV_PIX_FMT_DRM_PRIME, \
 +                                                         AV_PIX_FMT_YUV420P, \
                                                           AV_PIX_FMT_NONE}, \
          .hw_configs     = rkmpp_hw_configs, \
@@ -1064,10 +1064,10 @@ index bf9d91607a..3fd5f908b4 100644
 2.39.2
 
 
-From 696294810aca963490ce50c3e9a9174829b32e63 Mon Sep 17 00:00:00 2001
+From ad6f4d3518eea4795f457b81d44d27da943be982 Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Mon, 27 Sep 2021 10:20:54 +0800
-Subject: [PATCH 07/15] avcodec/rkmppdec: Support logging fps
+Subject: [PATCH 07/17] avcodec/rkmppdec: Support logging fps
 
 Set env FFMPEG_RKMPP_LOG_FPS=1 to enable it.
 
@@ -1077,7 +1077,7 @@ Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
  1 file changed, 46 insertions(+)
 
 diff --git a/libavcodec/rkmppdec.c b/libavcodec/rkmppdec.c
-index 3fd5f908b4..0e5c22290e 100644
+index c621e687e0..82834c27a6 100644
 --- a/libavcodec/rkmppdec.c
 +++ b/libavcodec/rkmppdec.c
 @@ -25,6 +25,7 @@
@@ -1087,7 +1087,7 @@ index 3fd5f908b4..0e5c22290e 100644
 +#include <sys/time.h>
  
  #include "avcodec.h"
- #include "codec_internal.h"
+ #include "decode.h"
 @@ -43,6 +44,8 @@
  #include <rga/RgaApi.h>
  #endif
@@ -1186,55 +1186,31 @@ index 3fd5f908b4..0e5c22290e 100644
 2.39.2
 
 
-From 723ec8aea503280855798c2a10c4550a128299e3 Mon Sep 17 00:00:00 2001
+From 64a938f131b053a736d1158069300813cf2d16cc Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Date: Sat, 7 Jan 2023 00:43:42 +0100
-Subject: [PATCH 08/15] HACK: libavcodec & rkmppdec: Add
+Date: Thu, 5 Jan 2023 22:41:48 +0100
+Subject: [PATCH 08/17] HACK: libavcodec & rkmppdec: Add
  FF_CODEC_CAP_CONTIGUOUS_BUFFERS
 
 Add FF_CODEC_CAP_CONTIGUOUS_BUFFERS to alloc contiguous buffers.
-Allow Probing
 
 Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
 ---
- libavcodec/codec_internal.h |  4 ++++
- libavcodec/get_buffer.c     | 24 ++++++++++++++++++++++++
- libavcodec/rkmppdec.c       | 19 +++++++++++--------
- 3 files changed, 39 insertions(+), 8 deletions(-)
+ libavcodec/decode.c   | 23 +++++++++++++++++++++++
+ libavcodec/internal.h |  4 ++++
+ libavcodec/rkmppdec.c | 19 ++++++++++---------
+ 3 files changed, 37 insertions(+), 9 deletions(-)
 
-diff --git a/libavcodec/codec_internal.h b/libavcodec/codec_internal.h
-index 130a7dc3cd..bb47578997 100644
---- a/libavcodec/codec_internal.h
-+++ b/libavcodec/codec_internal.h
-@@ -93,6 +93,10 @@
-  * FFCodec.codec_tags termination value
-  */
- #define FF_CODEC_TAGS_END -1
-+/**
-+ * The decoder requires contiguous buffers.
-+ */
-+#define FF_CODEC_CAP_CONTIGUOUS_BUFFERS     (1 << 31)
- 
- typedef struct FFCodecDefault {
-     const char *key;
-diff --git a/libavcodec/get_buffer.c b/libavcodec/get_buffer.c
-index a04fd878de..1f12962205 100644
---- a/libavcodec/get_buffer.c
-+++ b/libavcodec/get_buffer.c
-@@ -31,6 +31,7 @@
- #include "libavutil/version.h"
- 
- #include "avcodec.h"
-+#include "codec_internal.h"
- #include "internal.h"
- 
- typedef struct FramePool {
-@@ -147,6 +148,14 @@ FF_ENABLE_DEPRECATION_WARNINGS
+diff --git a/libavcodec/decode.c b/libavcodec/decode.c
+index 936e5d63da..dfd9ed656d 100644
+--- a/libavcodec/decode.c
++++ b/libavcodec/decode.c
+@@ -1549,6 +1549,14 @@ static int update_frame_pool(AVCodecContext *avctx, AVFrame *frame)
  
          for (i = 0; i < 4; i++) {
              pool->linesize[i] = linesize[i];
 +
-+            if (avctx->codec->capabilities & FF_CODEC_CAP_CONTIGUOUS_BUFFERS) {
++            if (avctx->codec->caps_internal & FF_CODEC_CAP_CONTIGUOUS_BUFFERS) {
 +                if (!i)
 +                    size[0] += size[1] + size[2] + size[3];
 +                else
@@ -1244,12 +1220,12 @@ index a04fd878de..1f12962205 100644
              if (size[i]) {
                  if (size[i] > INT_MAX - (16 + STRIDE_ALIGN - 1)) {
                      ret = AVERROR(EINVAL);
-@@ -265,6 +274,21 @@ static int video_get_buffer(AVCodecContext *s, AVFrame *pic)
+@@ -1675,6 +1683,21 @@ static int video_get_buffer(AVCodecContext *s, AVFrame *pic)
  
          pic->data[i] = pic->buf[i]->data;
      }
 +
-+    if (s->codec->capabilities & FF_CODEC_CAP_CONTIGUOUS_BUFFERS) {
++    if (s->codec->caps_internal & FF_CODEC_CAP_CONTIGUOUS_BUFFERS) {
 +        int size;
 +
 +        for (i = 1; i < 4; i++) {
@@ -1266,11 +1242,26 @@ index a04fd878de..1f12962205 100644
      for (; i < AV_NUM_DATA_POINTERS; i++) {
          pic->data[i] = NULL;
          pic->linesize[i] = 0;
+diff --git a/libavcodec/internal.h b/libavcodec/internal.h
+index d889c1883e..47e6a1d13b 100644
+--- a/libavcodec/internal.h
++++ b/libavcodec/internal.h
+@@ -89,6 +89,10 @@
+  */
+ #define FF_CODEC_TAGS_END -1
+ 
++/**
++ * The decoder requires contiguous buffers.
++ */
++#define FF_CODEC_CAP_CONTIGUOUS_BUFFERS     (1 << 31)
+ 
+ #ifdef TRACE
+ #   define ff_tlog(ctx, ...) av_log(ctx, AV_LOG_TRACE, __VA_ARGS__)
 diff --git a/libavcodec/rkmppdec.c b/libavcodec/rkmppdec.c
-index 0e5c22290e..930a4434a8 100644
+index 82834c27a6..a05c77977d 100644
 --- a/libavcodec/rkmppdec.c
 +++ b/libavcodec/rkmppdec.c
-@@ -501,20 +501,18 @@ static int rkmpp_get_frame(AVCodecContext *avctx, AVFrame *frame, int timeout)
+@@ -501,20 +501,15 @@ static int rkmpp_get_frame(AVCodecContext *avctx, AVFrame *frame, int timeout)
  
      rkmpp_update_fps(avctx);
  
@@ -1278,8 +1269,7 @@ index 0e5c22290e..930a4434a8 100644
 -    frame->format           = avctx->pix_fmt;
 -    frame->width            = mpp_frame_get_width(mppframe);
 -    frame->height           = mpp_frame_get_height(mppframe);
-+
- 
+-
      if (avctx->pix_fmt != AV_PIX_FMT_DRM_PRIME) {
          ret = ff_get_buffer(avctx, frame, 0);
          if (ret < 0)
@@ -1288,7 +1278,7 @@ index 0e5c22290e..930a4434a8 100644
 -        ret = rkmpp_convert_frame(avctx, frame, mppframe, buffer);
 -        goto out;
      }
- 
+-
 +    // setup general frame fields
 +    frame->format           = avctx->pix_fmt;
 +    frame->width            = mpp_frame_get_width(mppframe);
@@ -1296,7 +1286,7 @@ index 0e5c22290e..930a4434a8 100644
      frame->pts              = mpp_frame_get_pts(mppframe);
  #if FF_API_PKT_PTS
      FF_DISABLE_DEPRECATION_WARNINGS;
-@@ -531,6 +529,11 @@ static int rkmpp_get_frame(AVCodecContext *avctx, AVFrame *frame, int timeout)
+@@ -531,6 +526,11 @@ static int rkmpp_get_frame(AVCodecContext *avctx, AVFrame *frame, int timeout)
      frame->interlaced_frame = ((mode & MPP_FRAME_FLAG_FIELD_ORDER_MASK) == MPP_FRAME_FLAG_DEINTERLACED);
      frame->top_field_first  = ((mode & MPP_FRAME_FLAG_FIELD_ORDER_MASK) == MPP_FRAME_FLAG_TOP_FIRST);
  
@@ -1308,23 +1298,22 @@ index 0e5c22290e..930a4434a8 100644
      mppformat = mpp_frame_get_fmt(mppframe);
      drmformat = rkmpp_get_frameformat(mppformat);
  
-@@ -756,7 +759,7 @@ static const AVCodecHWConfigInternal *const rkmpp_hw_configs[] = {
-         FF_CODEC_RECEIVE_FRAME_CB(rkmpp_receive_frame), \
+@@ -757,6 +757,7 @@ static const AVCodecHWConfigInternal *const rkmpp_hw_configs[] = {
          .flush          = rkmpp_flush, \
-         .p.priv_class   = &rkmpp_##NAME##_dec_class, \
--        .p.capabilities = AV_CODEC_CAP_DELAY | AV_CODEC_CAP_AVOID_PROBING | AV_CODEC_CAP_HARDWARE, \
-+        .p.capabilities = AV_CODEC_CAP_DELAY | FF_CODEC_CAP_CONTIGUOUS_BUFFERS | AV_CODEC_CAP_HARDWARE, \
-         .p.pix_fmts     = (const enum AVPixelFormat[]) { AV_PIX_FMT_DRM_PRIME, \
+         .priv_class     = &rkmpp_##NAME##_dec_class, \
+         .capabilities   = AV_CODEC_CAP_DELAY | AV_CODEC_CAP_AVOID_PROBING | AV_CODEC_CAP_HARDWARE, \
++        .caps_internal  = FF_CODEC_CAP_CONTIGUOUS_BUFFERS, \
+         .pix_fmts       = (const enum AVPixelFormat[]) { AV_PIX_FMT_DRM_PRIME, \
                                                           AV_PIX_FMT_YUV420P, \
                                                           AV_PIX_FMT_NONE}, \
 -- 
 2.39.2
 
 
-From d3cd21e137f3f81d865dfabe390e6a5c2fb29cea Mon Sep 17 00:00:00 2001
+From ff895c90cca06ec9e0235d5aa06c25eaeb4b9f3f Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Mon, 13 Dec 2021 15:44:43 +0800
-Subject: [PATCH 09/15] HACK: avcodec/rkmppdec: Define DRM_FORMAT_NV12_10
+Subject: [PATCH 09/17] HACK: avcodec/rkmppdec: Define DRM_FORMAT_NV12_10
 
 DRM_FORMAT_NV12_10 is a downstream custom format for Rockchip.
 
@@ -1334,7 +1323,7 @@ Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
  1 file changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/libavcodec/rkmppdec.c b/libavcodec/rkmppdec.c
-index 930a4434a8..1d8a3703dc 100644
+index a05c77977d..2aa3ee2a30 100644
 --- a/libavcodec/rkmppdec.c
 +++ b/libavcodec/rkmppdec.c
 @@ -44,6 +44,10 @@
@@ -1362,10 +1351,10 @@ index 930a4434a8..1d8a3703dc 100644
 2.39.2
 
 
-From 96b0f9d033270d03bffa65a9eeb039de8c980e93 Mon Sep 17 00:00:00 2001
+From c36fb133a52a3b80b682b97b37b9e754de62eca0 Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Wed, 15 Dec 2021 15:34:48 +0800
-Subject: [PATCH 10/15] avcodec/rkmppdec: Support NV16
+Subject: [PATCH 10/17] avcodec/rkmppdec: Support NV16
 
 The MPP might output NV16 format.
 
@@ -1375,7 +1364,7 @@ Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
  1 file changed, 13 insertions(+), 2 deletions(-)
 
 diff --git a/libavcodec/rkmppdec.c b/libavcodec/rkmppdec.c
-index 1d8a3703dc..edb88a7867 100644
+index 2aa3ee2a30..82288cad03 100644
 --- a/libavcodec/rkmppdec.c
 +++ b/libavcodec/rkmppdec.c
 @@ -94,6 +94,17 @@ static uint32_t rkmpp_get_frameformat(MppFrameFormat mppformat)
@@ -1421,10 +1410,10 @@ index 1d8a3703dc..edb88a7867 100644
 2.39.2
 
 
-From 76c40354c615e42905a4b0a90e21c4ed631cc34d Mon Sep 17 00:00:00 2001
+From 31cbeac7974485c9bbf55d155ebc742f87e98f11 Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Wed, 23 Mar 2022 14:20:16 +0800
-Subject: [PATCH 11/15] avcodec/rkmppdec: Support sync mode
+Subject: [PATCH 11/17] avcodec/rkmppdec: Support sync mode
 
 Some people just don't know how to handle async APIs :(
 
@@ -1438,7 +1427,7 @@ Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
  1 file changed, 13 insertions(+)
 
 diff --git a/libavcodec/rkmppdec.c b/libavcodec/rkmppdec.c
-index edb88a7867..6e742e5407 100644
+index 82288cad03..c8b400e910 100644
 --- a/libavcodec/rkmppdec.c
 +++ b/libavcodec/rkmppdec.c
 @@ -66,6 +66,8 @@ typedef struct {
@@ -1464,7 +1453,7 @@ index edb88a7867..6e742e5407 100644
      return 0;
  }
  
-@@ -724,6 +733,10 @@ static int rkmpp_receive_frame(AVCodecContext *avctx, AVFrame *frame)
+@@ -721,6 +730,10 @@ static int rkmpp_receive_frame(AVCodecContext *avctx, AVFrame *frame)
              } else {
                  av_packet_unref(packet);
                  packet->size = 0;
@@ -1479,32 +1468,32 @@ index edb88a7867..6e742e5407 100644
 2.39.2
 
 
-From 2c6cdbc2acd2c5cf35d239abda24ec9af72ddbd3 Mon Sep 17 00:00:00 2001
-From: Jeffy Chen <jeffy.chen@rock-chips.com>
-Date: Sun, 8 Jan 2023 01:32:15 +0100
-Subject: [PATCH 12/15] Add rkmpp H263 MPEG1 MPEG2 MPEG4 DECODERS Priotize
- RKMPP decoders first Allow NV15
+From 39331ceceb6ca0122eb1ee0a1e441e2fa2e25bcc Mon Sep 17 00:00:00 2001
+From: boogie <boogiepop@gmx.com>
+Date: Thu, 5 Jan 2023 23:04:45 +0100
+Subject: [PATCH 12/17] avcodec/rkmppdec: Add H263/MPEG1/MPEG2/MPEG4
 
+Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
 ---
- configure              |  4 ++++
- libavcodec/Makefile    |  5 +++++
- libavcodec/allcodecs.c | 13 +++++++++----
- libavcodec/rkmppdec.c  | 11 ++++++++++-
- 4 files changed, 28 insertions(+), 5 deletions(-)
+ configure              | 4 ++++
+ libavcodec/Makefile    | 4 ++++
+ libavcodec/allcodecs.c | 4 ++++
+ libavcodec/rkmppdec.c  | 8 ++++++++
+ 4 files changed, 20 insertions(+)
 
 diff --git a/configure b/configure
-index b2b6d45e78..bcc1d9a35d 100755
+index 9e08481e11..6e72375e09 100755
 --- a/configure
 +++ b/configure
-@@ -3166,6 +3166,7 @@ av1_nvenc_encoder_select="atsc_a53"
+@@ -3074,6 +3074,7 @@ ac3_mf_encoder_deps="mediafoundation"
+ av1_cuvid_decoder_deps="cuvid CUVIDAV1PICPARAMS"
  h263_v4l2m2m_decoder_deps="v4l2_m2m h263_v4l2_m2m"
  h263_v4l2m2m_encoder_deps="v4l2_m2m h263_v4l2_m2m"
- h264_amf_encoder_deps="amf"
 +h263_rkmpp_decoder_deps="rkmpp"
+ h264_amf_encoder_deps="amf"
  h264_crystalhd_decoder_select="crystalhd h264_mp4toannexb_bsf h264_parser"
  h264_cuvid_decoder_deps="cuvid"
- h264_cuvid_decoder_select="h264_mp4toannexb_bsf"
-@@ -3218,6 +3219,7 @@ mjpeg_vaapi_encoder_select="cbs_jpeg jpegtables vaapi_encode"
+@@ -3119,6 +3120,7 @@ mjpeg_vaapi_encoder_select="cbs_jpeg jpegtables vaapi_encode"
  mp3_mf_encoder_deps="mediafoundation"
  mpeg1_cuvid_decoder_deps="cuvid"
  mpeg1_v4l2m2m_decoder_deps="v4l2_m2m mpeg1_v4l2_m2m"
@@ -1512,7 +1501,7 @@ index b2b6d45e78..bcc1d9a35d 100755
  mpeg2_crystalhd_decoder_select="crystalhd"
  mpeg2_cuvid_decoder_deps="cuvid"
  mpeg2_mmal_decoder_deps="mmal"
-@@ -3226,6 +3228,7 @@ mpeg2_qsv_decoder_select="qsvdec"
+@@ -3127,6 +3129,7 @@ mpeg2_qsv_decoder_select="qsvdec"
  mpeg2_qsv_encoder_select="qsvenc"
  mpeg2_vaapi_encoder_select="cbs_mpeg2 vaapi_encode"
  mpeg2_v4l2m2m_decoder_deps="v4l2_m2m mpeg2_v4l2_m2m"
@@ -1520,96 +1509,82 @@ index b2b6d45e78..bcc1d9a35d 100755
  mpeg4_crystalhd_decoder_select="crystalhd"
  mpeg4_cuvid_decoder_deps="cuvid"
  mpeg4_mediacodec_decoder_deps="mediacodec"
-@@ -3233,6 +3236,7 @@ mpeg4_mmal_decoder_deps="mmal"
+@@ -3134,6 +3137,7 @@ mpeg4_mmal_decoder_deps="mmal"
  mpeg4_omx_encoder_deps="omx"
  mpeg4_v4l2m2m_decoder_deps="v4l2_m2m mpeg4_v4l2_m2m"
  mpeg4_v4l2m2m_encoder_deps="v4l2_m2m mpeg4_v4l2_m2m"
 +mpeg4_rkmpp_decoder_deps="rkmpp"
  msmpeg4_crystalhd_decoder_select="crystalhd"
- vc1_crystalhd_decoder_select="crystalhd"
- vc1_cuvid_decoder_deps="cuvid"
+ nvenc_h264_encoder_select="h264_nvenc_encoder"
+ nvenc_hevc_encoder_select="hevc_nvenc_encoder"
 diff --git a/libavcodec/Makefile b/libavcodec/Makefile
-index 389253f5d0..a7f5e1d71e 100644
+index b3d284d7d0..345b6a5816 100644
 --- a/libavcodec/Makefile
 +++ b/libavcodec/Makefile
-@@ -62,6 +62,11 @@ OBJS = ac3_parser.o                                                     \
-        xiph.o                                                           \
- 
- # subsystems
+@@ -364,6 +364,7 @@ OBJS-$(CONFIG_H263_ENCODER)            += mpeg4video.o  \
+                                           h263.o ituh263enc.o h263data.o
+ OBJS-$(CONFIG_H263_V4L2M2M_DECODER)    += v4l2_m2m_dec.o
+ OBJS-$(CONFIG_H263_V4L2M2M_ENCODER)    += v4l2_m2m_enc.o
 +OBJS-$(CONFIG_H263_RKMPP_DECODER)      += rkmppdec.o
+ OBJS-$(CONFIG_H264_DECODER)            += h264dec.o h264_cabac.o h264_cavlc.o \
+                                           h264_direct.o h264_loopfilter.o  \
+                                           h264_mb.o h264_picture.o \
+@@ -488,6 +489,7 @@ OBJS-$(CONFIG_MPEG1VIDEO_DECODER)      += mpeg12dec.o mpeg12.o mpeg12data.o
+ OBJS-$(CONFIG_MPEG1VIDEO_ENCODER)      += mpeg12enc.o mpeg12.o
+ OBJS-$(CONFIG_MPEG1_CUVID_DECODER)     += cuviddec.o
+ OBJS-$(CONFIG_MPEG1_V4L2M2M_DECODER)   += v4l2_m2m_dec.o
 +OBJS-$(CONFIG_MPEG1_RKMPP_DECODER)     += rkmppdec.o
+ OBJS-$(CONFIG_MPEG2_MMAL_DECODER)      += mmaldec.o
+ OBJS-$(CONFIG_MPEG2_QSV_DECODER)       += qsvdec.o
+ OBJS-$(CONFIG_MPEG2_QSV_ENCODER)       += qsvenc_mpeg2.o
+@@ -497,6 +499,7 @@ OBJS-$(CONFIG_MPEG2_CUVID_DECODER)     += cuviddec.o
+ OBJS-$(CONFIG_MPEG2_MEDIACODEC_DECODER) += mediacodecdec.o
+ OBJS-$(CONFIG_MPEG2_VAAPI_ENCODER)     += vaapi_encode_mpeg2.o
+ OBJS-$(CONFIG_MPEG2_V4L2M2M_DECODER)   += v4l2_m2m_dec.o
 +OBJS-$(CONFIG_MPEG2_RKMPP_DECODER)     += rkmppdec.o
+ OBJS-$(CONFIG_MPEG4_DECODER)           += xvididct.o
+ OBJS-$(CONFIG_MPEG4_ENCODER)           += mpeg4videoenc.o
+ OBJS-$(CONFIG_MPEG4_CUVID_DECODER)     += cuviddec.o
+@@ -504,6 +507,7 @@ OBJS-$(CONFIG_MPEG4_MEDIACODEC_DECODER) += mediacodecdec.o
+ OBJS-$(CONFIG_MPEG4_OMX_ENCODER)       += omx.o
+ OBJS-$(CONFIG_MPEG4_V4L2M2M_DECODER)   += v4l2_m2m_dec.o
+ OBJS-$(CONFIG_MPEG4_V4L2M2M_ENCODER)   += v4l2_m2m_enc.o
 +OBJS-$(CONFIG_MPEG4_RKMPP_DECODER)     += rkmppdec.o
-+
- OBJS-$(CONFIG_AANDCTTABLES)            += aandcttab.o
- OBJS-$(CONFIG_AC3DSP)                  += ac3dsp.o ac3.o ac3tab.o
- OBJS-$(CONFIG_ADTS_HEADER)             += adts_header.o mpeg4audio_sample_rates.o
+ OBJS-$(CONFIG_MPL2_DECODER)            += mpl2dec.o ass.o
+ OBJS-$(CONFIG_MSA1_DECODER)            += mss3.o
+ OBJS-$(CONFIG_MSCC_DECODER)            += mscc.o
 diff --git a/libavcodec/allcodecs.c b/libavcodec/allcodecs.c
-index e593ad19af..f8180d848e 100644
+index 2e9a3581de..5b2d8abe80 100644
 --- a/libavcodec/allcodecs.c
 +++ b/libavcodec/allcodecs.c
-@@ -34,6 +34,15 @@
- #include "codec_id.h"
- #include "codec_internal.h"
- 
-+extern const FFCodec ff_h263_rkmpp_decoder;
-+extern const FFCodec ff_h264_rkmpp_decoder;
-+extern const FFCodec ff_hevc_rkmpp_decoder;
-+extern const FFCodec ff_mpeg4_rkmpp_decoder;
-+extern const FFCodec ff_mpeg1_rkmpp_decoder;
-+extern const FFCodec ff_mpeg2_rkmpp_decoder;
-+extern const FFCodec ff_vp8_rkmpp_decoder;
-+extern const FFCodec ff_vp9_rkmpp_decoder;
-+
- extern const FFCodec ff_a64multi_encoder;
- extern const FFCodec ff_a64multi5_encoder;
- extern const FFCodec ff_aasc_decoder;
-@@ -157,12 +166,10 @@ extern const FFCodec ff_h264_mediacodec_decoder;
- extern const FFCodec ff_h264_mediacodec_encoder;
- extern const FFCodec ff_h264_mmal_decoder;
- extern const FFCodec ff_h264_qsv_decoder;
--extern const FFCodec ff_h264_rkmpp_decoder;
- extern const FFCodec ff_hap_encoder;
- extern const FFCodec ff_hap_decoder;
- extern const FFCodec ff_hevc_decoder;
- extern const FFCodec ff_hevc_qsv_decoder;
--extern const FFCodec ff_hevc_rkmpp_decoder;
- extern const FFCodec ff_hevc_v4l2m2m_decoder;
- extern const FFCodec ff_hnm4_video_decoder;
- extern const FFCodec ff_hq_hqa_decoder;
-@@ -377,10 +384,8 @@ extern const FFCodec ff_vp6a_decoder;
- extern const FFCodec ff_vp6f_decoder;
- extern const FFCodec ff_vp7_decoder;
- extern const FFCodec ff_vp8_decoder;
--extern const FFCodec ff_vp8_rkmpp_decoder;
- extern const FFCodec ff_vp8_v4l2m2m_decoder;
- extern const FFCodec ff_vp9_decoder;
--extern const FFCodec ff_vp9_rkmpp_decoder;
- extern const FFCodec ff_vp9_v4l2m2m_decoder;
- extern const FFCodec ff_vqa_decoder;
- extern const FFCodec ff_vqc_decoder;
+@@ -140,6 +140,7 @@ extern AVCodec ff_h263_decoder;
+ extern AVCodec ff_h263i_decoder;
+ extern AVCodec ff_h263p_encoder;
+ extern AVCodec ff_h263p_decoder;
++extern AVCodec ff_h263_rkmpp_decoder;
+ extern AVCodec ff_h263_v4l2m2m_decoder;
+ extern AVCodec ff_h264_decoder;
+ extern AVCodec ff_h264_crystalhd_decoder;
+@@ -199,11 +200,14 @@ extern AVCodec ff_mpeg2video_decoder;
+ extern AVCodec ff_mpeg4_encoder;
+ extern AVCodec ff_mpeg4_decoder;
+ extern AVCodec ff_mpeg4_crystalhd_decoder;
++extern AVCodec ff_mpeg4_rkmpp_decoder;
+ extern AVCodec ff_mpeg4_v4l2m2m_decoder;
+ extern AVCodec ff_mpeg4_mmal_decoder;
+ extern AVCodec ff_mpegvideo_decoder;
++extern AVCodec ff_mpeg1_rkmpp_decoder;
+ extern AVCodec ff_mpeg1_v4l2m2m_decoder;
+ extern AVCodec ff_mpeg2_mmal_decoder;
++extern AVCodec ff_mpeg2_rkmpp_decoder;
+ extern AVCodec ff_mpeg2_crystalhd_decoder;
+ extern AVCodec ff_mpeg2_v4l2m2m_decoder;
+ extern AVCodec ff_mpeg2_qsv_decoder;
 diff --git a/libavcodec/rkmppdec.c b/libavcodec/rkmppdec.c
-index 6e742e5407..f2cb8e6a0b 100644
+index c8b400e910..79baab932d 100644
 --- a/libavcodec/rkmppdec.c
 +++ b/libavcodec/rkmppdec.c
-@@ -28,6 +28,7 @@
- #include <sys/time.h>
- 
- #include "avcodec.h"
-+#include "internal.h"
- #include "codec_internal.h"
- #include "decode.h"
- #include "hwconfig.h"
-@@ -45,7 +46,7 @@
- #endif
- 
- #ifndef DRM_FORMAT_NV12_10
--#define DRM_FORMAT_NV12_10 fourcc_code('N', 'A', '1', '2')
-+#define DRM_FORMAT_NV12_10 fourcc_code('N', 'A', '1', '5')
- #endif
- 
- #define FPS_UPDATE_INTERVAL     120
-@@ -83,10 +84,14 @@ typedef struct {
+@@ -83,10 +83,14 @@ typedef struct {
  static MppCodingType rkmpp_get_codingtype(AVCodecContext *avctx)
  {
      switch (avctx->codec_id) {
@@ -1624,8 +1599,8 @@ index 6e742e5407..f2cb8e6a0b 100644
      default:                        return MPP_VIDEO_CodingUnused;
      }
  }
-@@ -795,7 +800,11 @@ static const AVCodecHWConfigInternal *const rkmpp_hw_configs[] = {
-         .caps_internal  = FF_CODEC_CAP_NOT_INIT_THREADSAFE, \
+@@ -792,7 +796,11 @@ static const AVCodecHWConfigInternal *const rkmpp_hw_configs[] = {
+         .wrapper_name   = "rkmpp", \
      };
  
 +RKMPP_DEC(h263,  AV_CODEC_ID_H263,          NULL)
@@ -1640,12 +1615,133 @@ index 6e742e5407..f2cb8e6a0b 100644
 2.39.2
 
 
-From 906b0decaee22732b756aad86f602ca4012e641c Mon Sep 17 00:00:00 2001
-From: icecream95 <the.real.icecream95@gmail.com>
+From dd669498b8c9ea4911b5f6ee964a1f958f06235b Mon Sep 17 00:00:00 2001
+From: boogie <boogiepop@gmx.com>
+Date: Fri, 6 Jan 2023 20:39:23 +0100
+Subject: [PATCH 13/17] allow nv15 and allow probing
+
+---
+ libavcodec/rkmppdec.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/libavcodec/rkmppdec.c b/libavcodec/rkmppdec.c
+index 79baab932d..93c426eeb3 100644
+--- a/libavcodec/rkmppdec.c
++++ b/libavcodec/rkmppdec.c
+@@ -45,7 +45,7 @@
+ #endif
+ 
+ #ifndef DRM_FORMAT_NV12_10
+-#define DRM_FORMAT_NV12_10 fourcc_code('N', 'A', '1', '2')
++#define DRM_FORMAT_NV12_10 fourcc_code('N', 'A', '1', '5')
+ #endif
+ 
+ #define FPS_UPDATE_INTERVAL     120
+@@ -786,7 +786,7 @@ static const AVCodecHWConfigInternal *const rkmpp_hw_configs[] = {
+         .receive_frame  = rkmpp_receive_frame, \
+         .flush          = rkmpp_flush, \
+         .priv_class     = &rkmpp_##NAME##_dec_class, \
+-        .capabilities   = AV_CODEC_CAP_DELAY | AV_CODEC_CAP_AVOID_PROBING | AV_CODEC_CAP_HARDWARE, \
++        .capabilities   = AV_CODEC_CAP_DELAY | AV_CODEC_CAP_HARDWARE, \
+         .caps_internal  = FF_CODEC_CAP_CONTIGUOUS_BUFFERS, \
+         .pix_fmts       = (const enum AVPixelFormat[]) { AV_PIX_FMT_DRM_PRIME, \
+                                                          AV_PIX_FMT_YUV420P, \
+-- 
+2.39.2
+
+
+From a304373e258f2573878fa0d2ad13fe7c48eb4799 Mon Sep 17 00:00:00 2001
+From: boogie <boogiepop@gmx.com>
+Date: Fri, 6 Jan 2023 21:36:04 +0100
+Subject: [PATCH 14/17] priotrize the rkmpp variants first
+
+---
+ libavcodec/allcodecs.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/libavcodec/allcodecs.c b/libavcodec/allcodecs.c
+index 5b2d8abe80..409e7f33e4 100644
+--- a/libavcodec/allcodecs.c
++++ b/libavcodec/allcodecs.c
+@@ -135,25 +135,25 @@ extern AVCodec ff_gif_encoder;
+ extern AVCodec ff_gif_decoder;
+ extern AVCodec ff_h261_encoder;
+ extern AVCodec ff_h261_decoder;
++extern AVCodec ff_h263_rkmpp_decoder;
+ extern AVCodec ff_h263_encoder;
+ extern AVCodec ff_h263_decoder;
+ extern AVCodec ff_h263i_decoder;
+ extern AVCodec ff_h263p_encoder;
+ extern AVCodec ff_h263p_decoder;
+-extern AVCodec ff_h263_rkmpp_decoder;
+ extern AVCodec ff_h263_v4l2m2m_decoder;
++extern AVCodec ff_h264_rkmpp_decoder;
+ extern AVCodec ff_h264_decoder;
+ extern AVCodec ff_h264_crystalhd_decoder;
+ extern AVCodec ff_h264_v4l2m2m_decoder;
+ extern AVCodec ff_h264_mediacodec_decoder;
+ extern AVCodec ff_h264_mmal_decoder;
+ extern AVCodec ff_h264_qsv_decoder;
+-extern AVCodec ff_h264_rkmpp_decoder;
+ extern AVCodec ff_hap_encoder;
+ extern AVCodec ff_hap_decoder;
++extern AVCodec ff_hevc_rkmpp_decoder;
+ extern AVCodec ff_hevc_decoder;
+ extern AVCodec ff_hevc_qsv_decoder;
+-extern AVCodec ff_hevc_rkmpp_decoder;
+ extern AVCodec ff_hevc_v4l2m2m_decoder;
+ extern AVCodec ff_hnm4_video_decoder;
+ extern AVCodec ff_hq_hqa_decoder;
+@@ -193,21 +193,21 @@ extern AVCodec ff_mjpegb_decoder;
+ extern AVCodec ff_mmvideo_decoder;
+ extern AVCodec ff_mobiclip_decoder;
+ extern AVCodec ff_motionpixels_decoder;
++extern AVCodec ff_mpeg1_rkmpp_decoder;
+ extern AVCodec ff_mpeg1video_encoder;
+ extern AVCodec ff_mpeg1video_decoder;
+ extern AVCodec ff_mpeg2video_encoder;
+ extern AVCodec ff_mpeg2video_decoder;
++extern AVCodec ff_mpeg4_rkmpp_decoder;
+ extern AVCodec ff_mpeg4_encoder;
+ extern AVCodec ff_mpeg4_decoder;
+ extern AVCodec ff_mpeg4_crystalhd_decoder;
+-extern AVCodec ff_mpeg4_rkmpp_decoder;
+ extern AVCodec ff_mpeg4_v4l2m2m_decoder;
+ extern AVCodec ff_mpeg4_mmal_decoder;
+ extern AVCodec ff_mpegvideo_decoder;
+-extern AVCodec ff_mpeg1_rkmpp_decoder;
+ extern AVCodec ff_mpeg1_v4l2m2m_decoder;
+-extern AVCodec ff_mpeg2_mmal_decoder;
+ extern AVCodec ff_mpeg2_rkmpp_decoder;
++extern AVCodec ff_mpeg2_mmal_decoder;
+ extern AVCodec ff_mpeg2_crystalhd_decoder;
+ extern AVCodec ff_mpeg2_v4l2m2m_decoder;
+ extern AVCodec ff_mpeg2_qsv_decoder;
+@@ -360,11 +360,11 @@ extern AVCodec ff_vp6_decoder;
+ extern AVCodec ff_vp6a_decoder;
+ extern AVCodec ff_vp6f_decoder;
+ extern AVCodec ff_vp7_decoder;
+-extern AVCodec ff_vp8_decoder;
+ extern AVCodec ff_vp8_rkmpp_decoder;
++extern AVCodec ff_vp8_decoder;
+ extern AVCodec ff_vp8_v4l2m2m_decoder;
+-extern AVCodec ff_vp9_decoder;
+ extern AVCodec ff_vp9_rkmpp_decoder;
++extern AVCodec ff_vp9_decoder;
+ extern AVCodec ff_vp9_v4l2m2m_decoder;
+ extern AVCodec ff_vqa_decoder;
+ extern AVCodec ff_webp_decoder;
+-- 
+2.39.2
+
+
+From 5223ade800d37d41467d2f5e13390dc0ec9c64ef Mon Sep 17 00:00:00 2001
+From: boogie <boogiepop@gmx.com>
 Date: Fri, 13 Jan 2023 22:27:01 +0100
-Subject: [PATCH 13/15] rkmpp: interface with kernel directly for rga and ditch
+Subject: [PATCH 15/17] rkmpp: interface with kernel directly for rga and ditch
  librga
 
+credit goes to icecream95: https://gitlab.com/-/snippets/2460396
 ---
  libavcodec/rga.h      | 574 ++++++++++++++++++++++++++++++++++++++++++
  libavcodec/rkmppdec.c | 272 ++++++++++++++++----
@@ -2233,7 +2329,7 @@ index 0000000000..9595558de0
 +};
 +#endif /*_RGA_DRIVER_H_*/
 diff --git a/libavcodec/rkmppdec.c b/libavcodec/rkmppdec.c
-index f2cb8e6a0b..d15016fbd2 100644
+index 93c426eeb3..325150f483 100644
 --- a/libavcodec/rkmppdec.c
 +++ b/libavcodec/rkmppdec.c
 @@ -18,6 +18,10 @@
@@ -2256,8 +2352,8 @@ index f2cb8e6a0b..d15016fbd2 100644
 +#include <fcntl.h>
  
  #include "avcodec.h"
- #include "internal.h"
-@@ -39,11 +46,8 @@
+ #include "decode.h"
+@@ -38,11 +45,8 @@
  #include "libavutil/hwcontext_drm.h"
  #include "libavutil/imgutils.h"
  #include "libavutil/log.h"
@@ -2270,7 +2366,7 @@ index f2cb8e6a0b..d15016fbd2 100644
  
  #ifndef DRM_FORMAT_NV12_10
  #define DRM_FORMAT_NV12_10 fourcc_code('N', 'A', '1', '5')
-@@ -51,11 +55,16 @@
+@@ -50,11 +54,16 @@
  
  #define FPS_UPDATE_INTERVAL     120
  
@@ -2287,7 +2383,7 @@ index f2cb8e6a0b..d15016fbd2 100644
      int8_t eos;
      int8_t draining;
  
-@@ -116,17 +125,15 @@ static uint32_t rkmpp_get_avformat(MppFrameFormat mppformat)
+@@ -115,17 +124,15 @@ static uint32_t rkmpp_get_avformat(MppFrameFormat mppformat)
      }
  }
  
@@ -2309,7 +2405,7 @@ index f2cb8e6a0b..d15016fbd2 100644
  
  static int rkmpp_close_decoder(AVCodecContext *avctx)
  {
-@@ -139,6 +146,8 @@ static int rkmpp_close_decoder(AVCodecContext *avctx)
+@@ -138,6 +145,8 @@ static int rkmpp_close_decoder(AVCodecContext *avctx)
      return 0;
  }
  
@@ -2318,7 +2414,7 @@ index f2cb8e6a0b..d15016fbd2 100644
  static void rkmpp_release_decoder(void *opaque, uint8_t *data)
  {
      RKMPPDecoder *decoder = (RKMPPDecoder *)data;
-@@ -154,6 +163,20 @@ static void rkmpp_release_decoder(void *opaque, uint8_t *data)
+@@ -153,6 +162,20 @@ static void rkmpp_release_decoder(void *opaque, uint8_t *data)
          decoder->frame_group = NULL;
      }
  
@@ -2339,7 +2435,7 @@ index f2cb8e6a0b..d15016fbd2 100644
      av_buffer_unref(&decoder->frames_ref);
      av_buffer_unref(&decoder->device_ref);
  
-@@ -251,13 +274,27 @@ static int rkmpp_init_decoder(AVCodecContext *avctx)
+@@ -250,13 +273,27 @@ static int rkmpp_init_decoder(AVCodecContext *avctx)
          goto fail;
      }
  
@@ -2368,7 +2464,7 @@ index f2cb8e6a0b..d15016fbd2 100644
      ret = decoder->mpi->control(decoder->ctx, MPP_DEC_SET_EXT_BUF_GROUP, decoder->frame_group);
      if (ret) {
          av_log(avctx, AV_LOG_ERROR, "Failed to assign buffer group (code = %d)\n", ret);
-@@ -308,13 +345,14 @@ static void rkmpp_release_frame(void *opaque, uint8_t *data)
+@@ -307,13 +344,14 @@ static void rkmpp_release_frame(void *opaque, uint8_t *data)
  static int rkmpp_convert_frame(AVCodecContext *avctx, AVFrame *frame,
                                 MppFrame mppframe, MppBuffer buffer)
  {
@@ -2386,7 +2482,7 @@ index f2cb8e6a0b..d15016fbd2 100644
      int width = mpp_frame_get_width(mppframe);
      int height = mpp_frame_get_height(mppframe);
      int hstride = mpp_frame_get_hor_stride(mppframe);
-@@ -322,29 +360,41 @@ static int rkmpp_convert_frame(AVCodecContext *avctx, AVFrame *frame,
+@@ -321,29 +359,41 @@ static int rkmpp_convert_frame(AVCodecContext *avctx, AVFrame *frame,
      int y_pitch = frame->linesize[0];
      int u_pitch = frame->linesize[1];
      int v_pitch = frame->linesize[2];
@@ -2445,7 +2541,7 @@ index f2cb8e6a0b..d15016fbd2 100644
          goto bail;
  
      if (u_pitch != y_pitch / 2 || v_pitch != y_pitch / 2 ||
-@@ -352,23 +402,13 @@ static int rkmpp_convert_frame(AVCodecContext *avctx, AVFrame *frame,
+@@ -351,23 +401,13 @@ static int rkmpp_convert_frame(AVCodecContext *avctx, AVFrame *frame,
          dst_v != dst_u + u_pitch * dst_height / 2)
          goto bail;
  
@@ -2471,7 +2567,7 @@ index f2cb8e6a0b..d15016fbd2 100644
      if (mpp_frame_get_fmt(mppframe) != MPP_FMT_YUV420SP) {
          av_log(avctx, AV_LOG_WARNING, "Unable to convert\n");
          return -1;
-@@ -424,6 +464,150 @@ static void rkmpp_update_fps(AVCodecContext *avctx)
+@@ -423,6 +463,150 @@ static void rkmpp_update_fps(AVCodecContext *avctx)
             fps, decoder->frames);
  }
  
@@ -2622,8 +2718,8 @@ index f2cb8e6a0b..d15016fbd2 100644
  static int rkmpp_get_frame(AVCodecContext *avctx, AVFrame *frame, int timeout)
  {
      RKMPPDecodeContext *rk_context = avctx->priv_data;
-@@ -531,6 +715,8 @@ static int rkmpp_get_frame(AVCodecContext *avctx, AVFrame *frame, int timeout)
- 
+@@ -528,6 +712,8 @@ static int rkmpp_get_frame(AVCodecContext *avctx, AVFrame *frame, int timeout)
+     rkmpp_update_fps(avctx);
  
      if (avctx->pix_fmt != AV_PIX_FMT_DRM_PRIME) {
 +    	avctx->get_buffer2 = rkmpp_get_buffer2;
@@ -2635,20 +2731,20 @@ index f2cb8e6a0b..d15016fbd2 100644
 2.39.2
 
 
-From f0d0d122ad7de33891a47c9f73b25ca37cc3c0f0 Mon Sep 17 00:00:00 2001
+From a4c3cf4cc26b138b4f2f6c362075e7b638a40a3e Mon Sep 17 00:00:00 2001
 From: boogie <boogiepop@gmx.com>
 Date: Tue, 17 Jan 2023 01:02:19 +0100
-Subject: [PATCH 14/15] ugliest hack: vp8&9 color space workaround
+Subject: [PATCH 16/17] ugliest hack: vp8&9 color space workaround
 
 ---
  libavcodec/rkmppdec.c | 15 +++++++++++++++
  1 file changed, 15 insertions(+)
 
 diff --git a/libavcodec/rkmppdec.c b/libavcodec/rkmppdec.c
-index d15016fbd2..94d38b1886 100644
+index 325150f483..ad9208f0e6 100644
 --- a/libavcodec/rkmppdec.c
 +++ b/libavcodec/rkmppdec.c
-@@ -738,6 +738,21 @@ static int rkmpp_get_frame(AVCodecContext *avctx, AVFrame *frame, int timeout)
+@@ -734,6 +734,21 @@ static int rkmpp_get_frame(AVCodecContext *avctx, AVFrame *frame, int timeout)
      frame->color_trc        = mpp_frame_get_color_trc(mppframe);
      frame->colorspace       = mpp_frame_get_colorspace(mppframe);
  
@@ -2674,59 +2770,60 @@ index d15016fbd2..94d38b1886 100644
 2.39.2
 
 
-From d41c46e520ce5890ecb0e09113ee99f38fa00fbd Mon Sep 17 00:00:00 2001
+From 7a957fd8a0632b29ae69b869da9c436475f9b071 Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Tue, 17 Jan 2023 18:31:57 +0800
-Subject: [PATCH 15/15] rkmppdec: AV1 support
+Subject: [PATCH 17/17] rkmppdec: AV1 support
 
 ---
  configure              |  1 +
- libavcodec/Makefile    |  1 +
+ libavcodec/Makefile    |  2 ++
  libavcodec/allcodecs.c |  1 +
  libavcodec/rkmppdec.c  | 14 ++------------
- 4 files changed, 5 insertions(+), 12 deletions(-)
+ 4 files changed, 6 insertions(+), 12 deletions(-)
 
 diff --git a/configure b/configure
-index bcc1d9a35d..13271e2650 100755
+index 6e72375e09..6926a58f95 100755
 --- a/configure
 +++ b/configure
-@@ -3163,6 +3163,7 @@ av1_mediacodec_decoder_deps="mediacodec"
- av1_mediacodec_decoder_extralibs="-landroid"
- av1_nvenc_encoder_deps="nvenc NV_ENC_PIC_PARAMS_AV1"
- av1_nvenc_encoder_select="atsc_a53"
+@@ -3072,6 +3072,7 @@ nvenc_encoder_deps="nvenc"
+ aac_mf_encoder_deps="mediafoundation"
+ ac3_mf_encoder_deps="mediafoundation"
+ av1_cuvid_decoder_deps="cuvid CUVIDAV1PICPARAMS"
 +av1_rkmpp_decoder_deps="rkmpp"
  h263_v4l2m2m_decoder_deps="v4l2_m2m h263_v4l2_m2m"
  h263_v4l2m2m_encoder_deps="v4l2_m2m h263_v4l2_m2m"
- h264_amf_encoder_deps="amf"
+ h263_rkmpp_decoder_deps="rkmpp"
 diff --git a/libavcodec/Makefile b/libavcodec/Makefile
-index a7f5e1d71e..f3548d3d5e 100644
+index 345b6a5816..004a00c761 100644
 --- a/libavcodec/Makefile
 +++ b/libavcodec/Makefile
-@@ -66,6 +66,7 @@ OBJS-$(CONFIG_H263_RKMPP_DECODER)      += rkmppdec.o
- OBJS-$(CONFIG_MPEG1_RKMPP_DECODER)     += rkmppdec.o
- OBJS-$(CONFIG_MPEG2_RKMPP_DECODER)     += rkmppdec.o
- OBJS-$(CONFIG_MPEG4_RKMPP_DECODER)     += rkmppdec.o
-+OBJS-$(CONFIG_AV1_RKMPP_DECODER)       += rkmppdec.o
+@@ -60,6 +60,8 @@ OBJS = ac3_parser.o                                                     \
+        xiph.o                                                           \
  
+ # subsystems
++OBJS-$(CONFIG_AV1_RKMPP_DECODER)       += rkmppdec.o
++
  OBJS-$(CONFIG_AANDCTTABLES)            += aandcttab.o
  OBJS-$(CONFIG_AC3DSP)                  += ac3dsp.o ac3.o ac3tab.o
+ OBJS-$(CONFIG_ADTS_HEADER)             += adts_header.o mpeg4audio.o
 diff --git a/libavcodec/allcodecs.c b/libavcodec/allcodecs.c
-index f8180d848e..38f6f9e27c 100644
+index 409e7f33e4..dc9104fb75 100644
 --- a/libavcodec/allcodecs.c
 +++ b/libavcodec/allcodecs.c
-@@ -42,6 +42,7 @@ extern const FFCodec ff_mpeg1_rkmpp_decoder;
- extern const FFCodec ff_mpeg2_rkmpp_decoder;
- extern const FFCodec ff_vp8_rkmpp_decoder;
- extern const FFCodec ff_vp9_rkmpp_decoder;
-+extern const FFCodec ff_av1_rkmpp_decoder;
+@@ -29,6 +29,7 @@
+ #include "avcodec.h"
+ #include "version.h"
  
- extern const FFCodec ff_a64multi_encoder;
- extern const FFCodec ff_a64multi5_encoder;
++extern AVCodec ff_av1_rkmpp_decoder;
+ extern AVCodec ff_a64multi_encoder;
+ extern AVCodec ff_a64multi5_encoder;
+ extern AVCodec ff_aasc_decoder;
 diff --git a/libavcodec/rkmppdec.c b/libavcodec/rkmppdec.c
-index 94d38b1886..626a962f85 100644
+index ad9208f0e6..452c89a590 100644
 --- a/libavcodec/rkmppdec.c
 +++ b/libavcodec/rkmppdec.c
-@@ -96,6 +96,7 @@ static MppCodingType rkmpp_get_codingtype(AVCodecContext *avctx)
+@@ -95,6 +95,7 @@ static MppCodingType rkmpp_get_codingtype(AVCodecContext *avctx)
      case AV_CODEC_ID_H263:          return MPP_VIDEO_CodingH263;
      case AV_CODEC_ID_H264:          return MPP_VIDEO_CodingAVC;
      case AV_CODEC_ID_HEVC:          return MPP_VIDEO_CodingHEVC;
@@ -2734,7 +2831,7 @@ index 94d38b1886..626a962f85 100644
      case AV_CODEC_ID_VP8:           return MPP_VIDEO_CodingVP8;
      case AV_CODEC_ID_VP9:           return MPP_VIDEO_CodingVP9;
      case AV_CODEC_ID_MPEG1VIDEO:    /* fallthrough */
-@@ -187,20 +188,8 @@ static int rkmpp_prepare_decoder(AVCodecContext *avctx)
+@@ -186,20 +187,8 @@ static int rkmpp_prepare_decoder(AVCodecContext *avctx)
  {
      RKMPPDecodeContext *rk_context = avctx->priv_data;
      RKMPPDecoder *decoder = (RKMPPDecoder *)rk_context->decoder_ref->data;
@@ -2755,7 +2852,7 @@ index 94d38b1886..626a962f85 100644
      if (getenv("FFMPEG_RKMPP_SYNC")) {
          // wait for decode result after feeding any packets
          decoder->sync = 1;
-@@ -1004,6 +993,7 @@ static const AVCodecHWConfigInternal *const rkmpp_hw_configs[] = {
+@@ -1000,6 +989,7 @@ static const AVCodecHWConfigInternal *const rkmpp_hw_configs[] = {
  RKMPP_DEC(h263,  AV_CODEC_ID_H263,          NULL)
  RKMPP_DEC(h264,  AV_CODEC_ID_H264,          "h264_mp4toannexb")
  RKMPP_DEC(hevc,  AV_CODEC_ID_HEVC,          "hevc_mp4toannexb")
