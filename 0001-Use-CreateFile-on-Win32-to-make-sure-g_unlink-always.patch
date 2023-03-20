@@ -1,12 +1,12 @@
-diff -rupN --no-dereference glib-2.72.2/gio/tests/org.gtk.test.gschema.override.orig glib-2.72.2-new/gio/tests/org.gtk.test.gschema.override.orig
---- glib-2.72.2/gio/tests/org.gtk.test.gschema.override.orig	2022-05-30 15:26:47.000000000 +0200
-+++ glib-2.72.2-new/gio/tests/org.gtk.test.gschema.override.orig	1970-01-01 01:00:00.000000000 +0100
+diff -rupN --no-dereference glib-2.76.0/gio/tests/org.gtk.test.gschema.override.orig glib-2.76.0-new/gio/tests/org.gtk.test.gschema.override.orig
+--- glib-2.76.0/gio/tests/org.gtk.test.gschema.override.orig	2023-03-10 15:33:15.000000000 +0100
++++ glib-2.76.0-new/gio/tests/org.gtk.test.gschema.override.orig	1970-01-01 01:00:00.000000000 +0100
 @@ -1,2 +0,0 @@
 -[org.gtk.test.per-desktop:GNOME-Classic]
 -desktop = "GNOME Classic"
-diff -rupN --no-dereference glib-2.72.2/gio/tests/org.gtk.test.gschema.xml.orig glib-2.72.2-new/gio/tests/org.gtk.test.gschema.xml.orig
---- glib-2.72.2/gio/tests/org.gtk.test.gschema.xml.orig	2022-05-30 15:26:47.000000000 +0200
-+++ glib-2.72.2-new/gio/tests/org.gtk.test.gschema.xml.orig	1970-01-01 01:00:00.000000000 +0100
+diff -rupN --no-dereference glib-2.76.0/gio/tests/org.gtk.test.gschema.xml.orig glib-2.76.0-new/gio/tests/org.gtk.test.gschema.xml.orig
+--- glib-2.76.0/gio/tests/org.gtk.test.gschema.xml.orig	2023-03-10 15:33:15.000000000 +0100
++++ glib-2.76.0-new/gio/tests/org.gtk.test.gschema.xml.orig	1970-01-01 01:00:00.000000000 +0100
 @@ -1,222 +0,0 @@
 -<schemalist>
 -
@@ -230,10 +230,10 @@ diff -rupN --no-dereference glib-2.72.2/gio/tests/org.gtk.test.gschema.xml.orig 
 -  </schema>
 -
 -</schemalist>
-diff -rupN --no-dereference glib-2.72.2/glib/gstdio.c glib-2.72.2-new/glib/gstdio.c
---- glib-2.72.2/glib/gstdio.c	2022-05-30 15:26:47.000000000 +0200
-+++ glib-2.72.2-new/glib/gstdio.c	2022-05-31 08:56:18.761043527 +0200
-@@ -1045,6 +1045,11 @@ g_open (const gchar *filename,
+diff -rupN --no-dereference glib-2.76.0/glib/gstdio.c glib-2.76.0-new/glib/gstdio.c
+--- glib-2.76.0/glib/gstdio.c	2023-03-10 15:33:15.000000000 +0100
++++ glib-2.76.0-new/glib/gstdio.c	2023-03-19 11:46:00.290491195 +0100
+@@ -1052,6 +1052,11 @@ g_open (const gchar *filename,
  	int          mode)
  {
  #ifdef G_OS_WIN32
@@ -245,7 +245,7 @@ diff -rupN --no-dereference glib-2.72.2/glib/gstdio.c glib-2.72.2-new/glib/gstdi
    wchar_t *wfilename = g_utf8_to_utf16 (filename, -1, NULL, NULL, NULL);
    int retval;
    int save_errno;
-@@ -1055,12 +1060,114 @@ g_open (const gchar *filename,
+@@ -1062,12 +1067,114 @@ g_open (const gchar *filename,
        return -1;
      }
  
@@ -363,7 +363,7 @@ diff -rupN --no-dereference glib-2.72.2/glib/gstdio.c glib-2.72.2-new/glib/gstdi
    return retval;
  #else
    int fd;
-@@ -1108,6 +1215,8 @@ g_creat (const gchar *filename,
+@@ -1115,6 +1222,8 @@ g_creat (const gchar *filename,
  	 int          mode)
  {
  #ifdef G_OS_WIN32
@@ -372,7 +372,7 @@ diff -rupN --no-dereference glib-2.72.2/glib/gstdio.c glib-2.72.2-new/glib/gstdi
    wchar_t *wfilename = g_utf8_to_utf16 (filename, -1, NULL, NULL, NULL);
    int retval;
    int save_errno;
-@@ -1118,12 +1227,41 @@ g_creat (const gchar *filename,
+@@ -1125,12 +1234,41 @@ g_creat (const gchar *filename,
        return -1;
      }
  
@@ -417,7 +417,7 @@ diff -rupN --no-dereference glib-2.72.2/glib/gstdio.c glib-2.72.2-new/glib/gstdi
    return retval;
  #else
    return creat (filename, mode);
-@@ -1565,34 +1703,102 @@ g_fopen (const gchar *filename,
+@@ -1572,34 +1710,102 @@ g_fopen (const gchar *filename,
  	 const gchar *mode)
  {
  #ifdef G_OS_WIN32
