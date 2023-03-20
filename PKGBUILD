@@ -54,6 +54,7 @@ package() {
     install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/an-anime-game-launcher.png"
     ln -s "/usr/lib/${pkgname}/an-anime-game-launcher_${pkgver}" "${pkgdir}/usr/bin/an-anime-game-launcher"
     install -Dm644 "${srcdir}/an-anime-game-launcher.desktop" -t "${pkgdir}/usr/share/applications"
+    mkdir -p $HOME/.local/share/icons/
     cp icon.png $HOME/.local/share/icons/moe.launcher.an-anime-game-launcher.png
 }
 
