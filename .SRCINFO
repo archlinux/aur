@@ -1,21 +1,19 @@
 pkgbase = r-robma
 	pkgdesc = Robust Bayesian Meta-Analyses
 	pkgver = 2.3.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=RoBMA
 	arch = x86_64
 	license = GPL
 	depends = jags
 	depends = r
 	depends = r-bayestools
-	depends = r-bridgesampling
 	depends = r-coda
-	depends = r-extradistr
 	depends = r-ggplot2
 	depends = r-mvtnorm
-	depends = r-psych
 	depends = r-rdpack
 	depends = r-rjags
+	depends = r-rlang
 	depends = r-runjags
 	depends = r-scales
 	optdepends = r-covr
