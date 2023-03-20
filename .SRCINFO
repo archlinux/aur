@@ -1,11 +1,12 @@
 pkgbase = radu-cloud-desktop
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
-	url = github.com/coderadu/radu-cloud-desktop
+	url = https://github.com/coderadu/radu-cloud-desktop
 	arch = x86_64
 	license = MIT
 	makedepends = nodejs
-	source = git+https://github.com/coderadu/radu-cloud-desktop.git
-	md5sums = SKIP
+	source = git+https://github.com/coderadu/radu-cloud-desktop.git?signed
+	validpgpkeys = C06C15AA341165311DB6964132802AA0C3BC2982
+	sha256sums = SKIP
 
 pkgname = radu-cloud-desktop

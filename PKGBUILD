@@ -1,18 +1,18 @@
-# Maintainer: CodeRadu
+# Maintainer: CodeRadu <radu.gabi.m@gmail.com>
 pkgname=radu-cloud-desktop
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 arch=("x86_64")
-url="github.com/coderadu/radu-cloud-desktop"
+url="https://github.com/coderadu/radu-cloud-desktop"
 license=('MIT')
 depends=()
 makedepends=("nodejs")
 install=
 changelog=
-source=("git+https://$url.git")
+source=("git+$url.git?signed")
+validpgpkeys=("C06C15AA341165311DB6964132802AA0C3BC2982") # CodeRadu <radu.gabi.m@gmail.com>
 noextract=()
-md5sums=("SKIP")
-validpgpkeys=()
+sha256sums=("SKIP")
 
 build() {
 	cd "$srcdir/$pkgname"
