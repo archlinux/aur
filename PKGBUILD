@@ -28,7 +28,7 @@ prepare() {
   cat "hostapd/README" | head -n47 | tail -n5 > LICENSE
   cp 'hostapd/defconfig' "hostapd/.config"
   sed -e 's|^#CONFIG_IEEE80211AX=y|CONFIG_IEEE80211AX=y|g' \
-      -e 's|^#CONFIG_ACS=y|CONFIG_ACS=y|g'
+      -e 's|^#CONFIG_ACS=y|CONFIG_ACS=y|g' \
       -i "hostapd/.config"
 }
 build(){
