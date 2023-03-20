@@ -1,0 +1,13 @@
+pkgbase = linux-beep-music2
+	pkgdesc = Collection of more beep melodies
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Josef-Friedrich/beep-melodies
+	arch = any
+	license = 
+	makedepends = git
+	depends = beep
+	source = git+https://github.com/Josef-Friedrich/beep-melodies.git
+	md5sums = SKIP
+
+pkgname = linux-beep-music2
