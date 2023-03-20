@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggfortify
-_pkgver=0.4.15
+_pkgver=0.4.16
 pkgname=r-${_pkgname,,}
-pkgver=0.4.15
-pkgrel=3
+pkgver=0.4.16
+pkgrel=1
 pkgdesc='Data Visualization Tools for Statistical Analysis Results'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -51,7 +51,7 @@ optdepends=(
   r-zoo
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a8760ac0b73e9bdb13d93440cb03fe796f2503c5885ccb0b05d3072f25dadcb1')
+sha256sums=('bb1bee685cb97a9ac1b1a6592b96571752a9e195575a1584f1c046c53c510316')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

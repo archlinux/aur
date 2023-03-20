@@ -1,7 +1,7 @@
 pkgbase = r-ggfortify
 	pkgdesc = Data Visualization Tools for Statistical Analysis Results
-	pkgver = 0.4.15
-	pkgrel = 3
+	pkgver = 0.4.16
+	pkgrel = 1
 	url = https://cran.r-project.org/package=ggfortify
 	arch = any
 	license = MIT
@@ -42,7 +42,7 @@ pkgbase = r-ggfortify
 	optdepends = r-vars
 	optdepends = r-xts
 	optdepends = r-zoo
-	source = https://cran.r-project.org/src/contrib/ggfortify_0.4.15.tar.gz
-	sha256sums = a8760ac0b73e9bdb13d93440cb03fe796f2503c5885ccb0b05d3072f25dadcb1
+	source = https://cran.r-project.org/src/contrib/ggfortify_0.4.16.tar.gz
+	sha256sums = bb1bee685cb97a9ac1b1a6592b96571752a9e195575a1584f1c046c53c510316
 
 pkgname = r-ggfortify
