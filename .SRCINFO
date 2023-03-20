@@ -1,6 +1,6 @@
 pkgbase = passer-git
 	pkgdesc = passer is a password generator based on passphrases
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://github.com/spynetS/passer
 	arch = any

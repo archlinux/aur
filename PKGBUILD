@@ -1,6 +1,6 @@
 
 pkgname=passer-git
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="passer is a password generator based on passphrases"
 arch=(any)
