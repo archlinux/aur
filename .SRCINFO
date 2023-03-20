@@ -1,0 +1,19 @@
+pkgbase = dm-sflc-git-dkms
+	pkgdesc = Linux kernel module for Shufflecake
+	pkgver = v1.0.8.g4374989
+	pkgrel = 1
+	url = https://shufflecake.net/
+	arch = any
+	license = GPLv3
+	makedepends = git
+	makedepends = linux-headers
+	depends = dkms
+	provides = dm-sflc-dkms
+	conflicts = dm-sflc
+	conflicts = dm-sflc-dkms
+	source = dm-sflc::git+https://codeberg.org/shufflecake/dm-sflc.git#branch=dev_elia_refactor
+	source = dm-sflc.conf
+	sha256sums = SKIP
+	sha256sums = 78633ce04767d596b4da903c18c2d7e8d46cc07cf4ac3bc8a228f1023870259e
+
+pkgname = dm-sflc-git-dkms
