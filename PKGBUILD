@@ -4,7 +4,7 @@ _pkgname=motifbreakR
 _pkgver=2.12.3
 pkgname=r-${_pkgname,,}
 pkgver=2.12.3
-pkgrel=1
+pkgrel=3
 pkgdesc='A Package For Predicting The Disruptiveness Of Single Nucleotide Polymorphisms On Transcription Factor Binding Sites'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -35,8 +35,7 @@ optdepends=(
   r-bsgenome.hsapiens.ucsc.hg19
   r-knitr
   r-rmarkdown
-  r-snplocs.hsapiens.dbsnp.20120608
-  r-snplocs.hsapiens.dbsnp142.grch37
+  r-snplocs.hsapiens.dbsnp155.grch37
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 sha256sums=('519bd06cebb6c5c669a5ed478374795d635fa6420efb2d2450584fe58dd87d1c')
