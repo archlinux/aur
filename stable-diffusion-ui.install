@@ -16,5 +16,7 @@ post_upgrade() {
 	cecho Stable Diffusion UI has been upgraded
 	echo I don\'t know if you need to do this, or what might happen.
 	cecho 'It is probably a good idea to run `stable-diffusion-ui-server` and see what happens'
+	echo /opt/stable-diffusion-ui
+	cecho 'If it does not work, try removing the files in the above directory and reinstalling the package'
 	echo
 }
