@@ -2,8 +2,8 @@
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 
 pkgname=maestral-qt
-pkgver=1.6.3
-pkgrel=2
+pkgver=1.7.1
+pkgrel=1
 pkgdesc='Qt interface for Maestral'
 arch=('any')
 url="https://github.com/SamSchott/maestral-qt"
@@ -16,10 +16,10 @@ depends=(
 	'python-pyqt6'
 	'qt6-svg')
 optdepends=('gnome-shell-extension-appindicator: Gnome integration')
-makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 changelog=CHANGELOG.md
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f0bb25e0ea6b996ffc2602cd91f98f65f56f147a8fee2fd5c8f49eacb9dff8ee')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/m/$pkgname/$pkgname-$pkgver.tar.gz")
+sha256sums=('ea487da376092307eeb6ca32135a3d7e383546a7fbf142adc84f69f6f24f6525')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -28,11 +28,8 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
-
+	python -m installer --destdir="$pkgdir/" dist/*.whl
 	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-	install -d "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s \
-		"$_site/maestral_qt-$pkgver.dist-info/LICENSE.txt" \
-		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -sv "$_site/maestral_qt-$pkgver.dist-info/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
