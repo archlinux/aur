@@ -1,14 +1,17 @@
 pkgbase = h-m-m-git
 	pkgdesc = h-m-m is a keyboard-centric terminal-based tool for working with mind maps.
-	pkgver = r136.8c4c8f8
+	pkgver = r148.86a9b3d
 	pkgrel = 1
 	url = https://github.com/nadrad/h-m-m
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = php
 	optdepends = xclip: clipboard support (x11)
 	optdepends = xsel: clipboard support (x11)
 	optdepends = wl-clipboard: clipboard support (wayland)
+	provides = h-m-m
+	conflicts = h-m-m
 	source = h-m-m-git::git+https://github.com/nadrad/h-m-m
 	md5sums = SKIP
 
