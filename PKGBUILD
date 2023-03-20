@@ -1,12 +1,13 @@
 # Maintainer: Kusoneko <kusoneko@kusoneko.moe>
 
 pkgname=libretls-git
-pkgver=3.5.2.r65.d1db6f6
+pkgver=3.7.0.r70.7f5dbfe
 pkgrel=1
 pkgdesc="libtls for OpenSSL"
 arch=('x86_64')
 url="https://git.causal.agency/libretls"
 license=('BSD' 'ISC' 'MIT')
+makedepends=('git')
 depends=('openssl')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -21,7 +22,7 @@ pkgver() {
 build() {
 	cd "$srcdir/${pkgname%-git}"
 	autoreconf -fi
-	./configure --prefix=/usr
+	./configure --prefix=/usr --mandir=/usr/share/man
 	make all
 }
 

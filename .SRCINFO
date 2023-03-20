@@ -1,12 +1,13 @@
 pkgbase = libretls-git
 	pkgdesc = libtls for OpenSSL
-	pkgver = 3.5.2.r65.d1db6f6
+	pkgver = 3.7.0.r70.7f5dbfe
 	pkgrel = 1
 	url = https://git.causal.agency/libretls
 	arch = x86_64
 	license = BSD
 	license = ISC
 	license = MIT
+	makedepends = git
 	depends = openssl
 	provides = libretls
 	conflicts = libretls
