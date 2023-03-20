@@ -2,7 +2,7 @@
 
 _name=click-command-tree
 pkgname=python-click-command-tree
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Click plugin to show the command tree of your CLI"
 arch=(any)
@@ -14,8 +14,8 @@ checkdepends=(python-pytest)
 # tests not in sdist tarball: https://github.com/whwright/click-command-tree/issues/5
 # source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
 source=($_name-$pkgver.tar.gz::https://github.com/whwright/$_name/archive/refs/tags/$pkgver.tar.gz)
-sha256sums=('4cdbb2eb8f83134acb9400cf9b61bcce2f9533a4c2d004fe60a72a2a2142361a')
-b2sums=('5a8626c747cefb670dfa0443a1ec0a6a4c613cc4593a001e5991ed6e5f3ac2c545312927885af02dc3ca9d60092d55605c56000b74eb6dcf2a505dbc645812c8')
+sha256sums=('0bb9c223cedf72af004ae6ba6daf916a21300d03d5fb8e939a7265fbe481f6d2')
+b2sums=('7fc40e8273c05aedb8f71ddfe33d640761f3fe8c02afdb8973828b8c247910c67e7469aa43e41bc003dadd741736c0b4ffc48d146cd417051a4b939299a49033')
 
 prepare() {
   cd $_name-$pkgver
