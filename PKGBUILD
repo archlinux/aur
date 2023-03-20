@@ -1,6 +1,6 @@
 # Maintainer: Polarian <polarian@polarian.dev>
 pkgname=onedev-docs
-pkgver=20230222
+pkgver=20230320
 pkgrel=1
 pkgdesc="Static site documentation for Onedev for offline browsing"
 arch=('any')
