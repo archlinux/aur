@@ -1,6 +1,6 @@
 pkgbase = guzuta-git
 	pkgdesc = Custom repository manager for ArchLinux pacman
-	pkgver = v0.4.0.r10.48561de
+	pkgver = v0.4.1.r4.075f9f2
 	pkgrel = 1
 	url = https://github.com/eagletmt/guzuta
 	arch = x86_64

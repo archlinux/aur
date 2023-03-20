@@ -1,7 +1,7 @@
 # Maintainer: DrRac27 <drrac27 at riseup dot net>
 
 pkgname=guzuta-git
-pkgver=v0.4.0.r10.48561de
+pkgver=v0.4.1.r4.075f9f2
 pkgrel=1
 pkgdesc="Custom repository manager for ArchLinux pacman"
 arch=("x86_64" "aarch64")
@@ -15,7 +15,8 @@ sha1sums=("SKIP")
 
 build() {
     cd "$pkgname"
-    cargo build --release --locked --all-features --target-dir=target
+    sed -i 's/gpgme = "0.10"/gpgme = "0.11"/g' Cargo.toml
+    cargo build --release --all-features --target-dir=target
 }
 
 pkgver() {
