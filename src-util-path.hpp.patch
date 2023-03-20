@@ -1,0 +1,17 @@
+--- src/util/path.hpp	2023-01-20 12:36:53.000000000 +0300
++++ src/util/path.hpp	2023-03-20 19:13:54.296451843 +0300
+@@ -33,10 +33,10 @@
+ #endif
+ 
+ /* inverted flags with lower priority */
+-#define MS_ALLOW_WRITE  (1ull << 60)
+-#define MS_ALLOW_EXEC   (1ull << 61)
+-#define MS_ALLOW_SUID   (1ull << 62)
+-#define MS_ALLOW_DEV    (1ull << 63)
++#define MS_ALLOW_WRITE  static_cast<decltype(MS_RDONLY)>(1ull << 60)
++#define MS_ALLOW_EXEC   static_cast<decltype(MS_NOEXEC)>(1ull << 61)
++#define MS_ALLOW_SUID   static_cast<decltype(MS_NOSUID)>(1ull << 62)
++#define MS_ALLOW_DEV    static_cast<decltype(MS_NODEV)>(1ull << 63)
+ 
+ class TPath {
+ private:

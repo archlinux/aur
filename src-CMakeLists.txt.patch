@@ -1,0 +1,12 @@
+--- src/CMakeLists.txt	2023-01-20 12:36:53.000000000 +0300
++++ src/CMakeLists.txt	2023-03-20 20:13:37.964069467 +0300
+@@ -51,8 +51,7 @@
+ target_link_libraries(portod portocore)
+ 
+ add_executable(portoctl portoctl.cpp cli.cpp)
+-target_link_libraries(portoctl version porto utilbase fmt ${PROTOBUF_LIBRARY} pthread rt)
+-set_target_properties(portoctl PROPERTIES LINK_FLAGS "-static -Wl,--whole-archive -lrt -lpthread -Wl,--no-whole-archive")
++target_link_libraries(portoctl version porto utilbase fmt protobuf::libprotobuf pthread rt)
+ 
+ add_executable(portoctl-top portotop.cpp)
+ target_link_libraries(portoctl-top version porto util pthread

@@ -1,0 +1,9 @@
+--- src/api/python/CMakeLists.txt	2023-03-20 20:23:31.686983238 +0300
++++ src/api/python/CMakeLists.txt	2023-03-20 20:39:12.255268824 +0300
+@@ -8,5 +8,4 @@
+ 
+ add_custom_target(python_rpc_proto ALL DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/porto/rpc_pb2.py)
+ 
+-install(CODE "execute_process(WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} COMMAND ${PYTHON_EXECUTABLE} -uB setup.py install --root=\$ENV{DESTDIR} --prefix=\${CMAKE_INSTALL_PREFIX})")
+-install(CODE "execute_process(WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} COMMAND python3 -uB setup.py install --root=\$ENV{DESTDIR} --prefix=\${CMAKE_INSTALL_PREFIX})")
++install(CODE "execute_process(WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} COMMAND ${PYTHON_EXECUTABLE} -uB setup.py install --prefix=\${CMAKE_INSTALL_PREFIX})")

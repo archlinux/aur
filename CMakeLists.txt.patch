@@ -1,0 +1,11 @@
+--- CMakeLists.txt	2023-03-20 19:44:22.898781728 +0300
++++ CMakeLists.txt	2023-01-20 12:36:53.000000000 +0300
+@@ -103,7 +103,7 @@
+ SET(LIBCRYPTO ${INSTALL_DIR}/lib/libcrypto.a)
+ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DCPPHTTPLIB_OPENSSL_SUPPORT")
+ 
+-find_library(PB NAMES libprotobuf.a)
++set(PB protobuf::libprotobuf)
+ find_package(Protobuf REQUIRED)
+ # FindProtobuf requires only the libraries to be present
+ if(NOT PROTOBUF_PROTOC_EXECUTABLE)
