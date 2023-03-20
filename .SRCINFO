@@ -1,6 +1,6 @@
 pkgbase = plasticity-bin
 	pkgdesc = Plasticity is a 3d modelling software for concept artists. Modeling in Plasticity is quick and efficient due to the unique gizmos, shortcuts, and thoughtful workflow.
-	pkgver = 0.5.46
+	pkgver = 0.9.16
 	pkgrel = 2
 	url = https://github.com/nkallen/plasticity
 	arch = x86_64
