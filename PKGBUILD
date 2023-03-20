@@ -4,7 +4,7 @@ _pkgname=insight
 _pkgver=0.19.1
 pkgname=r-${_pkgname,,}
 pkgver=0.19.1
-pkgrel=1
+pkgrel=3
 pkgdesc='Easy Access to Model Information for Various Model Objects'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -72,6 +72,8 @@ optdepends=(
   r-mcmcglmm
   r-mertools
   r-metabma
+  r-metafor
+  r-metaplus
   r-mgcv
   r-mhurdle
   r-mice

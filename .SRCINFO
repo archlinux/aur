@@ -1,7 +1,7 @@
 pkgbase = r-insight
 	pkgdesc = Easy Access to Model Information for Various Model Objects
 	pkgver = 0.19.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=insight
 	arch = any
 	license = GPL
@@ -65,6 +65,8 @@ pkgbase = r-insight
 	optdepends = r-mcmcglmm
 	optdepends = r-mertools
 	optdepends = r-metabma
+	optdepends = r-metafor
+	optdepends = r-metaplus
 	optdepends = r-mgcv
 	optdepends = r-mhurdle
 	optdepends = r-mice
