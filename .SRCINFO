@@ -1,6 +1,6 @@
 pkgbase = shell-velocity-git
 	pkgdesc = A portable notational velocity for your shell
-	pkgver = 55.849e2f2
+	pkgver = r55.849e2f2
 	pkgrel = 1
 	url = https://github.com/saccarosium/shell-velocity
 	arch = any

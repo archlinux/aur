@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Neidel <aur@jneidel.com>
 
 pkgname=shell-velocity-git
-pkgver=55.849e2f2
+pkgver=r55.849e2f2
 pkgrel=1
 pkgdesc="A portable notational velocity for your shell"
 arch=(any)
@@ -24,7 +24,7 @@ md5sums=("SKIP")
 
 pkgver() {
   cd "$srcdir/${pkgname/-git/}"
-  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
