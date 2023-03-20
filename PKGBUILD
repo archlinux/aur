@@ -4,7 +4,7 @@ _pkgname=bestNormalize
 _pkgver=1.9.0
 pkgname=r-${_pkgname,,}
 pkgver=1.9.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Normalizing Transformation Functions'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,6 +16,7 @@ depends=(
   r-dorng
   r-dplyr
   r-foreach
+  r-generics
   r-lambertw
   r-nortest
   r-purrr

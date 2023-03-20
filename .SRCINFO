@@ -1,7 +1,7 @@
 pkgbase = r-bestnormalize
 	pkgdesc = Normalizing Transformation Functions
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=bestNormalize
 	arch = any
 	license = GPL
@@ -11,6 +11,7 @@ pkgbase = r-bestnormalize
 	depends = r-dorng
 	depends = r-dplyr
 	depends = r-foreach
+	depends = r-generics
 	depends = r-lambertw
 	depends = r-nortest
 	depends = r-purrr
