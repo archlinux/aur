@@ -23,15 +23,15 @@ _ctags_pkg_name="eranif-ctags"
 _ctags_pkg_ident="3e173d8d82fd2d3534feff0d822d6de36ca3d74e"
 _ctags_pkg_name_ident="${_ctags_pkg_name}-${_ctags_pkg_ident:0:7}"
 
-# wxdap/wxdap submodule: https://github.com/eranif/wxdap
-_wxdap_pkg_name="eranif-wxdap"
-_wxdap_pkg_ident="6b4f0310c632776575495487f74b77c80732e747"
-_wxdap_pkg_name_ident="${_wxdap_pkg_name}-${_wxdap_pkg_ident:0:7}"
-
 # wxcfg/wx-config-msys2s submodule: https://github.com/eranif/wx-config-msys2.git
 _wxcfg_pkg_name="eranif-wxcfg"
 _wxcfg_pkg_ident="fe65daf2a49e2a1f218ea3106a26d5ae7c4235fb"
 _wxcfg_pkg_name_ident="${_wxcfg_pkg_name}-${_wxcfg_pkg_ident:0:7}"
+
+# wxdap/wxdap submodule: https://github.com/eranif/wxdap
+_wxdap_pkg_name="eranif-wxdap"
+_wxdap_pkg_ident="f8f7afaecf522c7a1126e798310b1e5f986ace6a"
+_wxdap_pkg_name_ident="${_wxdap_pkg_name}-${_wxdap_pkg_ident:0:7}"
 
 # yaml-cpp submodule: https://github.com/jbeder/yaml-cpp
 _yaml_pkg_name="jbeder-yaml-cpp"
@@ -76,36 +76,39 @@ depends=('wxwidgets-gtk3'
           'ncurses'
           'uchardet'
           'hunspell'
-          'ctags'
+          #'ctags'
           #'universal-ctags'
           #'xterm' 'wget' 'curl'
           #'python2'
           #'python'
         )
 
-optdepends=('graphviz: callgraph visualization'
+optdepends=(
              'clang: compiler'
              'lldb: debugger'
              'gcc: compiler'
              'gdb: debugger'
+             'php: language'
              'valgrind: debugger'
-            )
+             'graphviz: callgraph visualization'
+             'cscope: CScope Integration for CodeLite'
+          )
 
 conflicts=('codelite')
 
 source=(
     "${_pkg_name_ident}.tar.gz::https://github.com/eranif/${_pkg_name}/archive/${_pkg_ident}.tar.gz"
     "codelite-ctags.tar.gz::https://github.com/eranif/ctags/tarball/${_ctags_pkg_ident}"
-    "codelite-wxdap.tar.gz::https://github.com/eranif/wxdap/tarball/${_wxdap_pkg_ident}"
     "codelite-wxcfg.tar.gz::https://github.com/eranif/wx-config-msys2/tarball/${_wxcfg_pkg_ident}"
+    "codelite-wxdap.tar.gz::https://github.com/eranif/wxdap/tarball/${_wxdap_pkg_ident}"
     "jbeder-yaml-cpp.tar.gz::https://github.com/jbeder/yaml-cpp/tarball/${_yaml_pkg_ident}"
     "http://repos.codelite.org/wxCrafterLibs/wxgui.zip"
   )
 
 sha256sums=('47e12e03446866504db3345e821bc9572589fba1569c13c139343893d7627f7d'
             'aa48f2744a85c34fbaae845eecbc8862e453b8b754fec63938fc5ceef6c26189'
-            '3aa515f4dd9bffa55f4293651cb687b682208dc361e88b89e33eb98ef0d616d9'
             '70aca36b95e2245740c17fc9a164fd6edabfd9c631184ea66cc5ee03ff54c028'
+            '318d875955fe5b2b84be5ce0b50055d1fd12ad4bdcd54713e85add21f693f7df'
             '57f06c89f41cc2cd250b8b1db582fe27a0da67eb7a480cd8eb3d35cde64b58cd'
             '498c39ad3cc46eab8232d5fa37627c27a27f843cbe9521f05f29b19def436e12')
 
