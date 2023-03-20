@@ -44,7 +44,7 @@ pkgname="${_pkg_name}-unstable"
 #pkgver=${_pkg_ver}
 #pkgver="${_pkg_ver//_/-}"
 pkgver="${_pkg_ver/-*/}"
-pkgrel=0
+pkgrel=1
 
 # generic: pre
 _pkg_ver="${pkgver}"
@@ -153,6 +153,8 @@ prepare()
   ln -s ../${_yaml_pkg_name_ident} yaml-cpp
 
   # apply patches
+
+  patch -p0 < "${startdir}/codelite-DebugAdapterClient-CMakeLists-cxx17.patch"
 
   #patch -p0 < "${startdir}/codelite-fsw-symlink.patch"
 

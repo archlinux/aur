@@ -1,7 +1,7 @@
 pkgbase = codelite-unstable
 	pkgdesc = Cross platform IDE for C, C++, Rust, Python, PHP and Node.js written in C++
 	pkgver = 17.2.0
-	pkgrel = 0
+	pkgrel = 1
 	url = http://www.codelite.org/
 	arch = i686
 	arch = x86_64
