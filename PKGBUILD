@@ -1,32 +1,27 @@
 # Maintainer: Jack Chen <redchenjs@live.com>
 
-_srcname=SNANDer
-_version=v.1.7.7
-_version_pkg_updates=1
-_gitcommit=6786ecf9183228a4cbdb91e49d277511b5afb42d
-
 pkgname=snander
-pkgver="${_version}+${_version_pkg_updates}+${_gitcommit::7}"
+pkgver=v.1.7.7
 pkgrel=1
 pkgdesc="SNANDer - Serial Nor/nAND/Eeprom programmeR (based on CH341A)"
 url="https://github.com/McMCCRU/SNANDer"
 arch=('any')
 license=('GPL-2.0')
-source=("git+${url}.git#commit=${_gitcommit}")
-sha256sums=('SKIP')
+source=("SNANDer-$pkgver.tar.gz::https://codeload.github.com/McMCCRU/SNANDer/tar.gz/refs/tags/$pkgver")
+sha512sums=('fea53de1d3b14042eb020ea9f0856567df908668eb117beb50d5015d973fc44bfbc73689ce7f604d88c30878bcb6055a34be629c2ac86d0dbd3c8b6884062829')
 
 build() {
-  cd "${srcdir}/${_srcname}/src"
+  cd "${srcdir}/SNANDer/src"
 
   sed -i -r "s|^(SNANDer:).*$|\1 \$(OBJS)|g" Makefile
 
   cd libusb-*
-  autoreconf && ./configure --prefix="${srcdir}/${_srcname}/src/lusb_build" --disable-udev
+  autoreconf && ./configure --prefix="${srcdir}/SNANDer/src/lusb_build" --disable-udev
   make && make install
 
-  cd ../ && make 
+  cd ../ && make
 }
 
 package() {
-  install -D -m755 "${srcdir}/${_srcname}/src/SNANDer" "${pkgdir}/usr/bin/snander"
+  install -D -m755 "${srcdir}/SNANDer/src/SNANDer" "${pkgdir}/usr/bin/snander"
 }
