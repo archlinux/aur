@@ -3,7 +3,7 @@
 pkgname=pingtunnel-git
 _pkgname=${pkgname%-git}
 pkgver=2.7.r3.g7af41a7
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool that advertises TCP/UDP/SOCKS5 traffic as ICMP traffic for forwarding."
 depends=(glibc)
 optdepends=('geoip-database: geolite country database')
@@ -25,14 +25,13 @@ build() {
     # NOTE: uncomment this if you are in mainland china
     # export GOPROXY="https://goproxy.cn,direct"
     export CGO_ENABLED=1
-    export GO111MODULE=off
     
     cd "$srcdir"/$_pkgname
-    go get -v -t -d ./...
+    go mod tidy
     go build -v \
         -buildmode=pie -trimpath \
         -ldflags="-s -w -extldflags=-Wl,-z,now,-z,relro" \
-        -o pingtunnel .
+        -o pingtunnel cmd/main.go
 }
 
 package() {
