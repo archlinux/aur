@@ -1,6 +1,6 @@
 pkgbase = werf-bin
 	pkgdesc = Kubernetes build and delivery tool
-	pkgver = 1.2.212
+	pkgver = 1.2.214
 	pkgrel = 1
 	url = https://werf.io
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = werf-bin
 	depends = git
 	provides = werf
 	conflicts = werf-git
-	source = https://tuf.werf.io/targets/releases/1.2.212/linux-amd64/bin/werf
-	sha256sums = 8ee07571684065b35126ee1e0d54447ac7a0193286d9fb22aa19f2e6c35a1469
+	source = https://tuf.werf.io/targets/releases/1.2.214/linux-amd64/bin/werf
+	sha256sums = f381c83fd3c31bb3be07f12cc5bd4753a5b835c13a4dc26d40999ef418099f89
 
 pkgname = werf-bin
