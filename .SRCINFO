@@ -1,7 +1,7 @@
 pkgbase = telegram-desktop-bin
 	pkgdesc = Official desktop version of Telegram messaging app - Static binaries
-	pkgver = 4.6.5
-	pkgrel = 3
+	pkgver = 4.7.0
+	pkgrel = 1
 	url = https://github.com/telegramdesktop/tdesktop
 	install = telegram-desktop-bin.install
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = telegram-desktop-bin
 	source = https://github.com/telegramdesktop/tdesktop/raw/master/Telegram/Resources/art/icon128.png
 	source = https://github.com/telegramdesktop/tdesktop/raw/master/Telegram/Resources/art/icon256.png
 	source = https://github.com/telegramdesktop/tdesktop/raw/master/Telegram/Resources/art/icon512.png
-	source = https://github.com/telegramdesktop/tdesktop/releases/download/v4.6.5/tsetup.4.6.5.tar.xz
+	source = https://github.com/telegramdesktop/tdesktop/releases/download/v4.7.0/tsetup.4.7.0.tar.xz
 	sha256sums = 32d1597d67a7ef519367e499fcc978da4cce104e370b3787853446d93b1533d6
 	sha256sums = d4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb
 	sha256sums = ea1f36152b143cc2664daef5026656d55be2230ed42d43628e17ef7d2fff718c
@@ -36,6 +36,6 @@ pkgbase = telegram-desktop-bin
 	sha256sums = 731431e47a5bc91c697d25c3a54fe7ba004752f5b66e0f282c47588ff7a314e6
 	sha256sums = 3fb1400c7dc9bbc3b5cb3ffedcbf4a9b09c53e28b57a7ff33a8a6b9048864090
 	sha256sums = e297771c75bd2f81d637a3234f83568be62092f67d16946be23895fa92fa7119
-	sha256sums = a604e0aa6c3fe4aba96e18425cdc88dce88377a6e831b0b454a2ca27e53368d7
+	sha256sums = 46711cfeb7ce37d726f7bd50b0c8ccb612f46fdc4aaf18e81c58607b5d3f3b77
 
 pkgname = telegram-desktop-bin
