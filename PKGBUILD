@@ -22,7 +22,7 @@ sha512sums=('SKIP')
 
 prepare() {
 	cd "${srcdir}/${dirname}"
-	./autogen.sh
+	./autogen.sh --prefix =/usr
 }
 
 build() {
