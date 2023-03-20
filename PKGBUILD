@@ -4,7 +4,7 @@ _pkgname=golem
 _pkgver=0.4.0
 pkgname=r-${_pkgname,,}
 pkgver=0.4.0
-pkgrel=1
+pkgrel=3
 pkgdesc='A Framework for Robust Shiny Applications'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -12,39 +12,39 @@ license=('MIT')
 depends=(
   r
   r-attempt
-  r-cli
   r-config
-  r-crayon
-  r-desc
-  r-fs
   r-here
   r-htmltools
-  r-pkgload
-  r-roxygen2
-  r-rstudioapi
+  r-rlang
   r-shiny
-  r-usethis
   r-yaml
 )
 optdepends=(
   r-attachment
+  r-cli
   r-covr
+  r-crayon
+  r-desc
   r-devtools
   r-dockerfiler
+  r-fs
   r-knitr
   r-pkgbuild
   r-pkgdown
+  r-pkgload
   r-processx
   r-purrr
   r-rcmdcheck
   r-renv
-  r-rlang
   r-rmarkdown
+  r-roxygen2
   r-rsconnect
+  r-rstudioapi
   r-spelling
   r-stringr
   r-testthat
   r-tools
+  r-usethis
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
