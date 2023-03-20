@@ -6,6 +6,7 @@ pkgbase = configuradorfnmt
 	arch = x86_64
 	license = custom
 	depends = java-runtime
+	optdepends = icedtea-web: If the certificate renewal does not work, install this
 	optdepends = pcsclite: Use smartcard readers
 	noextract = configuradorfnmt-1.0.1-amd64.deb
 	source = configuradorfnmt-1.0.1-amd64.deb::https://descargas.cert.fnmt.es/Linux/configuradorfnmt_1.0.1-0_amd64.deb
@@ -16,4 +17,3 @@ pkgbase = configuradorfnmt
 	sha256sums = 72810bbdee86003d80e694302391548cae2dc32c1eb779373cdf500c4b5f4f18
 
 pkgname = configuradorfnmt
-

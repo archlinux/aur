@@ -8,7 +8,8 @@ arch=('x86_64')
 url="https://www.sede.fnmt.gob.es/descargas/descarga-software/instalacion-software-generacion-de-claves"
 license=('custom')
 depends=('java-runtime')
-optdepends=('pcsclite: Use smartcard readers')
+optdepends=('icedtea-web: If the certificate renewal does not work, install this'
+            'pcsclite: Use smartcard readers')
 source=("${pkgname}-${pkgver}-amd64.deb::https://descargas.cert.fnmt.es/Linux/configuradorfnmt_${pkgver}-0_amd64.deb"
         "${pkgname}.desktop"
         "${pkgname}")
