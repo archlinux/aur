@@ -19,11 +19,12 @@ provides=(${pkgbase%-git}
 conflicts=(${pkgbase%-git})
 replaces=(domruler
         purc-fetcher)
-depends=(glib2
-        bison
-        flex)
-makedepends=(git
+depends=(glib2)
+makedepends=(bison
             cmake
+            cython
+            flex
+            git
             ninja
             ccache
             curl
@@ -40,6 +41,7 @@ makedepends=(git
             sqlite
             systemd
             pkgconf
+            wtf
             zlib)
 optdepends=('python-numpy: Scientific tools for Python'
             'webkit2gtk-hvml: Web content engine for GTK (HVML)'
