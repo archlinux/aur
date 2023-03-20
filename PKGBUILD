@@ -4,7 +4,7 @@
 
 pkgbase=jellyfin-git
 pkgname=(jellyfin-git jellyfin-web-git jellyfin-server-git)
-pkgver=10.8.0.alpha5.r1185.g16fdb127ab
+pkgver=10.8.0.alpha5.r1656.g2ce08eb184
 pkgrel=1
 pkgdesc='The Free Software Media System'
 arch=('i686' 'x86_64' 'armv6h')
@@ -37,6 +37,7 @@ build(){
   cd jellyfin-web
 
   npm ci --no-audit
+  npm run build:production
 
   # Build jellyfin-server
   cd ../jellyfin

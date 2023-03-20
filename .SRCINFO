@@ -1,6 +1,6 @@
 pkgbase = jellyfin-git
 	pkgdesc = The Free Software Media System
-	pkgver = 10.8.0.alpha5.r1185.g16fdb127ab
+	pkgver = 10.8.0.alpha5.r1656.g2ce08eb184
 	pkgrel = 1
 	url = https://github.com/jellyfin/jellyfin
 	arch = i686
@@ -26,8 +26,8 @@ pkgbase = jellyfin-git
 	sha512sums = 45a62b62d97b9a83289d4dfde684163b1bcf340c1921fb958e5a701812c61b392901841940c67e5fa5148783277d5b4dc65ba01d3a22e8f855ea62154ad9be33
 
 pkgname = jellyfin-git
-	depends = jellyfin-web-git=10.8.0.alpha5.r1185.g16fdb127ab
-	depends = jellyfin-server-git=10.8.0.alpha5.r1185.g16fdb127ab
+	depends = jellyfin-web-git=10.8.0.alpha5.r1656.g2ce08eb184
+	depends = jellyfin-server-git=10.8.0.alpha5.r1656.g2ce08eb184
 
 pkgname = jellyfin-web-git
 	pkgdesc = Jellyfin web client
