@@ -13,11 +13,11 @@ source=("git+$url#commit=e47853176d2cc36602ca04507fd3b5525f623737")
 sha256sums=('SKIP')
 
 package() {
- # Install
- install -Dm755 "${srcdir}/chatGPT-shell-cli/chatgpt.sh" "${pkgdir}/usr/local/bin/chatgpt"
-
  # Replace open image command with xdg-open for linux systems
  if [[ "$OSTYPE" == "linux-gnu"* ]] || [[ "$OSTYPE" == "freebsd"* ]]; then
-   sudo sed -i 's/open "\${image_url}"/xdg-open "\${image_url}"/g' '/usr/local/bin/chatgpt'
+   sed -i 's/open "\${image_url}"/xdg-open "\${image_url}"/g' "${srcdir}/chatGPT-shell-cli/chatgpt.sh" 
  fi
+
+# Install
+ install -Dm755 "${srcdir}/chatGPT-shell-cli/chatgpt.sh" "${pkgdir}/usr/local/bin/chatgpt"
 }
