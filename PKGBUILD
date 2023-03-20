@@ -6,7 +6,7 @@ pkgdesc="Static site documentation for Onedev for offline browsing"
 arch=('any')
 url="https://code.onedev.io/onedev/docs"
 license=('unknown')
-makedepends=('nodejs' 'yarn' 'git' 'git-lfs')
+makedepends=('nodejs-lts-hydrogen' 'yarn' 'git' 'git-lfs')
 optdepends=('python: For http server following ArchWiki guide'
             'nginx: For http server, python http is recommended')
 
@@ -19,16 +19,20 @@ prepare() {
     cd $pkgname
   fi
 
+  # Install git lfs if not already installed
+  git lfs install
+
   # Checkout the commit designed to build
-  git checkout 06fbb9ec919244516b110828c18b6570e666d15a
+  git checkout f3177b6f52b98a7193664cd5aa50652590492ec9
 
   # Pull dependencies before building, allows offline building
   yarn
 }
 
 build() {
+  cd $pkgname
+
   # Build the static site
-  cd onedev-docs/
   yarn build
 }
 
