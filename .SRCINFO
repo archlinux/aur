@@ -1,6 +1,6 @@
 pkgbase = argc-git
 	pkgdesc = Easily create a feature-rich command-line application in Bash
-	pkgver = 0.14.0.r0.gcfd6283
+	pkgver = 0.15.1.r0.g21e7d04
 	pkgrel = 1
 	url = https://github.com/sigoden/argc
 	arch = x86_64

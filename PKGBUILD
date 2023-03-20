@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=argc-git
-pkgver=0.14.0.r0.gcfd6283
+pkgver=0.15.1.r0.g21e7d04
 pkgrel=1
 pkgdesc="Easily create a feature-rich command-line application in Bash"
 arch=('x86_64')
