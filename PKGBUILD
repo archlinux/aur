@@ -1,12 +1,13 @@
 # Maintainer: Kusoneko <kusoneko@kusoneko.moe>
 
 pkgname=catgirl-git
-pkgver=2.1.r1030.0b79737
+pkgver=2.1.r1032.4961fdf
 pkgrel=1
 pkgdesc="TLS-only terminal IRC client"
 arch=('x86_64')
 url="https://git.causal.agency/catgirl"
 license=('GPL3')
+makedepends=('git')
 depends=('libretls' 'ncurses')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -20,7 +21,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	./configure --prefix=/usr
+	./configure --prefix=/usr --mandir=/usr/share/man
 	make all
 }
 
