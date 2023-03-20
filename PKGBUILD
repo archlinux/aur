@@ -1,7 +1,7 @@
 # Maintainer: nezu <nezu@nezu.cc>
 pkgname=givemebadge-git
 _pkgname=givemebadge
-pkgver=53514fc
+pkgver=82d0c5c
 pkgrel=1
 pkgdesc="Pretty simple Discord bot to get the active developer badge"
 arch=('any')
