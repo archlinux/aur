@@ -64,6 +64,9 @@ package() {
         "build/release/portodshim" \
         "$pkgdir/usr/sbin/portodshim"
 
+    # In arch /usr/sbin is a symlink to /usr/bin.
+    mv $pkgdir/usr/sbin $pkgdir/usr/bin
+
     # Install Python package manually.
     rm -rf $pkgdir/usr/lib/python*
     python -m installer \
