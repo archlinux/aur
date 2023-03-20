@@ -2,8 +2,8 @@
 # Contributor: Beej <beej@beej.us>
 
 pkgname=inform
-pkgver=6.41.r3
-_ifrel="6.41-r3"
+_pkgver=6.41-r4
+pkgver="${_pkgver//-/.}"
 pkgrel=1
 pkgdesc="The Inform 6 compiler, standard library, and PunyInform library"
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -12,16 +12,16 @@ license=('Artistic2.0' 'MIT')
 groups=(inform)
 depends=('perl' 'ruby')
 provides=('punyinform=4.0')
-source=("http://ifarchive.org/if-archive/infocom/compilers/inform6/source/${pkgname}-${_ifrel}.tar.gz")
-md5sums=('5ef54d9938852ec6f765d1c16189d4d8')
+source=("http://ifarchive.org/if-archive/infocom/compilers/inform6/source/${pkgname}-${_pkgver}.tar.gz")
+md5sums=('1dc445772f6639248742ac751449ad88')
 
 build() {
-  cd "${srcdir}/${pkgname}-${_ifrel}"
+  cd "${srcdir}/${pkgname}-${_pkgver}"
   make PREFIX=/usr
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${_ifrel}"
+  cd "${srcdir}/${pkgname}-${_pkgver}"
   make REAL_PREFIX=/usr PREFIX="${pkgdir}"/usr install
 
   cd "${pkgdir}"/usr/share/inform/std/lib
