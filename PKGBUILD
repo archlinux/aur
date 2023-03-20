@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=keras
-_pkgver=2.11.0
+_pkgver=2.11.1
 pkgname=r-${_pkgname,,}
-pkgver=2.11.0
-pkgrel=3
+pkgver=2.11.1
+pkgrel=1
 pkgdesc="R Interface to 'Keras'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -33,7 +33,7 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('77d3c3c9cc77a279037a5fc253ea9346890ea5a5ee73a78f4b80b6db690d21a7')
+sha256sums=('195587d5beae607345b43b118f29c18de53fe65414bc2f3a2084a2c534447740')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
