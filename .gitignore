@@ -8,5 +8,4 @@
 !config.json
 !sing-box.service
 !sing-box@.service
-!sing-box-bin.install
 !sing-box.sysusers
