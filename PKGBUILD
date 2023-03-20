@@ -1,7 +1,7 @@
 # Maintainer: Adrian Lopez <zeioth@hotmail.com>
 pkgname=chatgpt-shell-cli
 pkgver=0.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Use OpenAI's ChatGPT and DALL-E from the terminal."
 arch=(any)
 url="https://github.com/0xacx/chatGPT-shell-cli.git"
@@ -18,5 +18,5 @@ package() {
 
   # Install
   install -Dm755 "${srcdir}/chatGPT-shell-cli/chatgpt.sh" "${pkgdir}/usr/local/bin/chatgpt"
-  install -Dm755 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 "${srcdir}/chatGPT-shell-cli/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
