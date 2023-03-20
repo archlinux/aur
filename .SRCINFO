@@ -1,0 +1,14 @@
+pkgbase = ansible-gopass
+	pkgdesc = a ansible plugin to lookup passwords in the gopass password manager
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/christian-heusel/ansible-lookup-plugin-gopass
+	arch = any
+	license = GPL3
+	depends = ansible-core
+	depends = gopass
+	depends = python
+	source = ansible-gopass-1.0.0.tar.gz::https://github.com/christian-heusel/ansible-lookup-plugin-gopass/archive/v1.0.0.tar.gz
+	sha256sums = 19186193bc731269303c45ec8ffde4c4386f36c8482fb64ae0cf113aee8b5d4f
+
+pkgname = ansible-gopass
