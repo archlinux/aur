@@ -1,0 +1,4 @@
+kuzu
+src
+pkg
+*.zst

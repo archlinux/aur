@@ -1,0 +1,12 @@
+pkgbase = kuzu-git
+	pkgdesc = In-process property graph database management system (GDBMS) built for query speed and scalability
+	pkgver = v0.0.2.r114.gff3c5038
+	pkgrel = 1
+	url = kuzudb.com
+	arch = i686
+	arch = x86_64
+	license = Apache
+	source = kuzu::git+https://github.com/kuzudb/kuzu.git
+	sha256sums = SKIP
+
+pkgname = kuzu-git
