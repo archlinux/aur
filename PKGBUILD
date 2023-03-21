@@ -1,4 +1,4 @@
-# Maintainer: David Mehren <david.mehren@udo.edu>
+# Maintainer: Anagastes
 
 pkgname=element-desktop-stable-bin
 pkgver=1.11.25
