@@ -13,7 +13,7 @@
 
 pkgname=codelite-git
 _gitname=codelite
-pkgver=17.2.0.r3.g1b06b5d34
+pkgver=17.2.0.r5.gc5c975afa
 pkgrel=1
 pkgdesc="Cross platform IDE for C, C++, Rust, Python, PHP and Node.js written in C++"
 arch=('i686' 'x86_64' 'aarch64')
@@ -87,9 +87,9 @@ prepare() {
   # Apply patches here:
   # example: patch -p0 < "${startdir}/codelite-feature.patch"
 
-  patch -p0 < "${startdir}/codelite-DebugAdapterClient-CMakeLists-cxx17.patch"
-
   #patch -p0 < "${startdir}/codelite-fsw-symlink.patch"
+
+  #patch -p0 < "${startdir}/codelite-DebugAdapterClient-CMakeLists-cxx17.patch"
 }
 
 build() {
