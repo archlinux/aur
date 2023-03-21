@@ -10,14 +10,21 @@ pkgbase = python-astroscrappy
 	checkdepends = python-scipy
 	makedepends = python-setuptools-scm
 	makedepends = cython
-	makedepends = python-astropy
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-extension-helpers
+	makedepends = python-numpy
 	makedepends = python-sphinx-astropy
+	makedepends = python-astropy
 	source = https://files.pythonhosted.org/packages/source/a/astroscrappy/astroscrappy-1.1.0.tar.gz
 	md5sums = 43e189d666fab2ecf476f2a569f37760
 
 pkgname = python-astroscrappy
 	depends = python
 	depends = python-astropy
-	depends = cython>=0.21
 	optdepends = python-astroscrappy-doc: Documentation for Astro-SCRAPPY
+
+pkgname = python-astroscrappy-doc
+	pkgdesc = Documentation for Astro-SCRAPPY
+	arch = any
