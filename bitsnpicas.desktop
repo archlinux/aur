@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Bits'N'Picas
+Comment=Font converter and editor
+Exec=bitsnpicas %f
+Icon=fonts
+Terminal=false
+Type=Application
+GenericName=Font Editor
+Categories=Graphics;
+Keywords=Font;
