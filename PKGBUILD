@@ -37,6 +37,7 @@ build() {
 	cd "${srcdir}/${_pkgname}/kernel_module"
 	make
 	cd "${srcdir}/${_pkgname}/python/legion_linux"
+	python3 -m pip install --upgrade build
 	python -m build
 }
 package() {
