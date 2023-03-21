@@ -1,0 +1,10 @@
+@@ -2512,9 +2512,6 @@
+     die("  Failed when copying to $tmpfolder - possible permissions or free space issue. Terminating.");
+   }
+   my @leanify_parms = ('leanify', '-q');
+-  if("$^O" ne 'MSWin32'){
+-    push(@leanify_parms, '--keep-icc');
+-  }
+   $discard_meta && push(@leanify_parms, '--keep-exif');
+   push(@leanify_parms, $file);
+   my $ret=system(@leanify_parms);

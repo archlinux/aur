@@ -1,7 +1,7 @@
 # Maintainer: Mark Collins <tera_1225 [aaht] hotmail ðot com>
 pkgname=minuimus
 pkgver="3.8.1"
-pkgrel=2
+pkgrel=3
 pkgdesc="file optimiser: makes files smaller without compromising content"
 arch=(x86_64)
 url="https://birds-are-nice.me/software/minuimus.html"
@@ -29,14 +29,19 @@ optdeps=(
   'pngout'         # AUR
   'pdfsizeopt-git' # AUR
 )
-source=("https://birds-are-nice.me/software/minuimus.zip")
-sha256sums=('50360a6ce8570bd8252c342517d23853af59164492b3e280147ea8120f39efc0')
+source=("https://birds-are-nice.me/software/minuimus.zip"
+        "minuimus_leanify_keep_icc.patch")
+sha256sums=('50360a6ce8570bd8252c342517d23853af59164492b3e280147ea8120f39efc0'
+            '463cbe3a0f3aa53e3dfccd515a53d101905b9d5beb98ec80b140cadd90e88ce0')
 
 prepare() {
   cd "$srcdir"
   echo "Fixing minuimus.pl for imagemagick binary identify-im6 => identify and convert-im6 => convert"
   sed -i -e 's/convert-im6/convert/g' minuimus.pl
   sed -i -e 's/identify-im6/identify/g' minuimus.pl
+
+  echo "Fixing minuimus.pl for leanify spurious option --keep-icc"
+  patch minuimus.pl minuimus_leanify_keep_icc.patch
 }
 
 build() {
