@@ -4,7 +4,7 @@
 # $ updaurpkg --apply
 _repo=Freed-Wu/translate-shell
 _source_type=pypi-releases
-_upstreamver='0.0.17'
+_upstreamver='0.0.18'
 _pkgname=$(tr A-Z a-z <<<${_repo##*/})
 _pypi_package=$_pkgname
 
@@ -16,7 +16,8 @@ arch=(any)
 url=https://github.com/$_repo
 makedepends=(python-installer)
 optdepends=(
-	'python-colorama: color'
+	'python-repl-python-wakatime: wakatime support'
+	'python-colorama: color support'
 	'python-rich: better logger'
 	'python-yaml: output yaml format'
 	'python-keyring: store APP secrets securely'
@@ -41,13 +42,13 @@ source=(
 	"$url/releases/download/$pkgver/_$_bin"
 	"$url/releases/download/$pkgver/$_bin.csh"
 )
-sha256sums=('0e3f7ffa0939f876c8d11a82075197cb416b7f9a4965bf8d9fe803a5c4444593'
+sha256sums=('5821b9842a7d35a6732da3420278bcab47e32de24032f2f8c8757e3ea80184f5'
             '11f0c6092d30867b09ea9f2f1562169ce8cc0c4476181dd62dbad63b16752972'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            '6b7a53d253a0aec48cbf2a134ec382383d545dfe35c19a2d03e9d11cc659c9ee'
+            '5b6958399a7e222002a6317282802cf9b7d544eee17815894671d0395bb2f3c1'
             '3a111e40861566af47f0c440c8d5989f9fd5971bf4d57789d8c2e0cce81cf2dc'
             '6a437deae1674c41648bfc8f7ab0272a564213d43fa2e29a664b9e3256ab8214'
-            'bc69ce45658427a760a19a03690bf860f55a70a443020153e6b2bf565bedf48a')
+            '85ca52dfe53aa61fdf9ed935dd238c38789d6e69471eefeab1315bf59492b3e9')
 
 package() {
 	cd "$srcdir" || return 1
