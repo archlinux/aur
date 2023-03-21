@@ -2,7 +2,7 @@
 # Contributor: Robson Roberto Souza Peixoto <robsonpeixoto@gmail.com>
 
 pkgname=funcoeszz
-pkgver=15.5
+pkgver=21.1
 pkgrel=1
 pkgdesc="Brazilian script with 134 useful mini applications"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('bash' 'sed' 'grep' 'lynx' 'sox' 'bc' 'diffutils' 'coreutils' \
          'gawk' 'ncurses' 'gcc' 'findutils' 'procps' 'glibc')
 source=(http://funcoeszz.net/download/${pkgname}-${pkgver}.sh)
-md5sums=('25b8ef28e897c064af9f91a12b5f0eb2')
+md5sums=('d8abfb135a82f787794fc3a1558f7ed2')
 
 package() {
   cd "${srcdir}"
