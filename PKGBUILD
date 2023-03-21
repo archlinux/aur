@@ -6,7 +6,7 @@ arch=("i686" "x86_64" "armv6h" "armv7h" "aarch64")
 url="http://httpd.apache.org/"
 license=("Apache")
 depends=("apr-util" "pcre")
-makedepends=("apr-util")
+makedepends=("apr-util" "db")
 conflicts=(apache)
 source=(http://www.apache.org/dist/httpd/httpd-$pkgver.tar.bz2
         $pkgname-Makefile.patch)

@@ -10,6 +10,7 @@ pkgbase = apache-tools
 	arch = aarch64
 	license = Apache
 	makedepends = apr-util
+	makedepends = db
 	depends = apr-util
 	depends = pcre
 	conflicts = apache
