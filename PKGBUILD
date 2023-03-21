@@ -1,51 +1,38 @@
+# Maintainer: Justine Smithies <justine at smithies dot me dot uk>
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 
-CAIRO=enabled        # disabled|enabled
-PNG_BACKEND=libpng   # none|libpng
-SVG_BACKEND=librsvg  # none|librsvg|nanosvg (librsvg force-enables cairo, nanosvg is bundled)
-
 pkgname=fuzzel-git
+_pkgname=fuzzel
+pkgver=1.8.2.r12.gf1ab7eb
+pkgrel=1
+pkgdesc='Application launcher for wlroots based Wayland compositors.'
+arch=('x86_64')
+url='https://codeberg.org/dnkl/fuzzel'
+license=('MIT')
 provides=('fuzzel')
 conflicts=('fuzzel')
-pkgver=1.6.5
-pkgrel=1
-pkgdesc="Application launcher for wlroots based Wayland compositors"
-arch=('x86_64' 'aarch64')
-url=https://codeberg.org/dnkl/fuzzel
-license=(mit)
-makedepends=('meson' 'ninja' 'scdoc' 'wayland-protocols' 'tllist')
-depends=('libxkbcommon' 'wayland' 'pixman' 'fcft')
-source=("git+https://codeberg.org/dnkl/fuzzel.git")
-sha256sums=("SKIP")
+depends=('git' 'pixman' 'wayland' 'libxkbcommon' 'cairo' 'libpng' 'librsvg' 'fcft')
+makedepends=('meson' 'ninja' 'wayland-protocols' 'scdoc' 'tllist')
+source=("git+$url")
+sha256sums=('SKIP')
 
-if [[ ${PNG_BACKEND} == libpng ]]; then
-    depends+=( 'libpng' )
-fi
-
-if [[ ${SVG_BACKEND} == librsvg ]]; then
-    depends+=( 'librsvg' )
-    CAIRO=enabled
-fi
-
-if [[ ${CAIRO} == enabled ]]; then
-    depends+=( 'cairo' )
-fi
+pkgver() {
+    cd "$srcdir/$_pkgname"
+    git describe --long | sed 's/-/.r/;s/-/./'
+}
 
 build() {
-  cd fuzzel
-
-  meson                          \
-    --prefix=/usr                \
-    --buildtype=release          \
-    -Denable-cairo=${CAIRO}      \
-    -Dpng-backend=${PNG_BACKEND} \
-    -Dsvg-backend=${SVG_BACKEND} \
-    . build
-  ninja -C build
+    cd "$srcdir/$_pkgname"
+    arch-meson . build \
+        -Denable-cairo=enabled \
+        -Dpng-backend=libpng \
+        -Dsvg-backend=librsvg
+    meson compile -C build
 }
 
 package() {
-  cd fuzzel
-  DESTDIR="${pkgdir}/" ninja -C build install
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd "$srcdir/$_pkgname"
+    meson install -C build --destdir "$pkgdir"
+    rm -f "$pkgdir/usr/share/doc/$_pkgname/LICENSE"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
