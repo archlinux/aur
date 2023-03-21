@@ -3,7 +3,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=dada2
-_bcver=1.24.0
+_bcver=1.26.0
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -30,7 +30,7 @@ optdepends=(
 	r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-sha256sums=("9dd083928fc06d53cdb0a2e2d35be7c304fac74a300f8d3c3026022859b5725b")
+sha256sums=('6c9ee66abfa2e21096b8a3669346a445ee051308d9773f2d9e6e4ea230c1aeb1')
 
 build() {
   R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
@@ -40,7 +40,7 @@ package() {
   install -dm0755 "${pkgdir}/usr/lib/R/library"
   cp -a --no-preserve=ownership "${_bcname}" "${pkgdir}/usr/lib/R/library"
 
-  if [[ -f "${_cranname}/LICENSE" ]]; then
-    install -Dm0644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  if [[ -f "${_bcname}/LICENSE" ]]; then
+    install -Dm0644 "${_bcname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   fi
 }

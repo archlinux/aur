@@ -1,6 +1,6 @@
 pkgbase = r-dada2
 	pkgdesc = Accurate, high-resolution sample inference from amplicon sequencing data
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/release/bioc/html/dada2.html
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = r-dada2
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/dada2_1.24.0.tar.gz
-	sha256sums = 9dd083928fc06d53cdb0a2e2d35be7c304fac74a300f8d3c3026022859b5725b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/dada2_1.26.0.tar.gz
+	sha256sums = 6c9ee66abfa2e21096b8a3669346a445ee051308d9773f2d9e6e4ea230c1aeb1
 
 pkgname = r-dada2
