@@ -69,8 +69,8 @@ build() {
 		-DVIEWER_CHANNEL="Alchemy Test"
 		-DCMAKE_C_FLAGS="$AL_ARCH_FLAGS"
 		-DCMAKE_CXX_FLAGS="$AL_ARCH_FLAGS"
-		-DCMAKE_C_COMPILER=clang
-		-DCMAKE_CXX_COMPILER=clang++
+		-DCMAKE_C_COMPILER="${CC:-gcc}"
+		-DCMAKE_CXX_COMPILER="${CXX:-g++}"
 		)
 	# I could not find the documentation on how to handle BUILDENV/OPTION in
 	# makepkg.conf. If you are reading this and know where it is,

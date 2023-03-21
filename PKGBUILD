@@ -5,14 +5,14 @@
 #
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-next-viewer-git
-pkgver=6.9.50471.6252c244f0
-pkgrel=2
+pkgver=6.10.50645.fc66e8157b
+pkgrel=1
 pkgdesc="A Second Life client with focus on performance and code correctness. - Git Source build"
 arch=('x86_64')
 url=https://www.alchemyviewer.org
 license=('LGPL')
 depends=(dbus-glib glu gtk3 libgl libiconv libidn libjpeg-turbo libpng libxss libxml2 mesa nss openal sdl2 vlc zlib)
-makedepends=('cmake' 'clang' 'lld' 'python-virtualenv' 'python-pip' 'git' 'boost' 'xz' 'ninja')
+makedepends=('cmake' 'gcc' 'lld' 'python-virtualenv' 'python-pip' 'git' 'boost' 'xz' 'ninja')
 optdepends=(
     'alsa-lib: ALSA support'
     'freealut: OpenAL support'
@@ -31,7 +31,7 @@ install=alchemy.install
 source=("${pkgname}"::'git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch='"${AL_BRANCH_OVERRIDE:-main}"
 'compile.bash')
 sha256sums=('SKIP'
-            '3e00fe0baac4ac938d79bcc591b04183c0d8e6fa266ecf69e864ede66d7a0846')
+            '49def0cfca9afb8c20712d74a38b9b95fc9526317be63ae3d08cee1f2835c564')
 
 pkgver() {
     cd "${pkgname}" || exit 1
