@@ -1,5 +1,6 @@
 # Maintainer: Donald Carr <d at chaos-reins dot com>
 
+# warning, you will need to install onetbb-git due to a bug which has yet to be included in a tagged release
 # Cross compilation is currently broken due to Qt 6 changes
 
 #set -x
@@ -225,11 +226,16 @@ build() {
   #export CXX=clang++
   #-DCMAKE_BUILD_TYPE=RelWithDebInfo \
   #-DFEATURE_separate_debug_info=ON \
+
+  # pch are massive running out of space on 22GB drive vs 6GB build
   local _configure_line_fn=configure_line
   local _configure_line="cmake \
                                 -GNinja \
                                 -DCMAKE_BUILD_TYPE=Rel \
+                                -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+                                -DFEATURE_separate_debug_info=ON \
                                 -DBUILD_WITH_PCH=OFF \
+                                -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
                                 -DFEATURE_reduce_exports=ON \
                                 -DFEATURE_reduce_relocations=ON \
                                 -DQT_BUILD_TESTS=OFF \
