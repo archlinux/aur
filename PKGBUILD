@@ -1,6 +1,6 @@
 # Maintainer: Firegem <mrfiregem@protonmail.ch>
 pkgname=erdtree
-pkgver=1.5.2
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='multi-threaded file-tree visualizer and disk usage analyzer'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('cargo')
 optdepends=('nerd-fonts: Used for --icons flag')
 provides=('et')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8bf5693e3649def61c3bc12f42a3a019647c4efda4bbaafb13a7bf84de67d668')
+sha256sums=('e44c4d079515c5aa0491486106c04678e67cb2962c43b52b56ee70426709cbe3')
 
 prepare() {
 	cd "$pkgname-$pkgver"
