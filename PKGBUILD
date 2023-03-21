@@ -5,7 +5,7 @@ _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Sphinx extension to embed content in a tooltip on xref hover"
 arch=('any')
 url="https://sphinx-hoverxref.readthedocs.io"
@@ -53,7 +53,7 @@ check() {
 }
 
 package_python-sphinx-hoverxref() {
-    depends=('python-sphinx>=1.8' 'python-sphinxcontrib.jquery')
+    depends=('python-sphinx>=1.8' 'python-sphinxcontrib-jquery')
 #   optdepends=('python-sphinx-hoverxref-doc: Documentation for sphinx-hoverxref')
     cd ${srcdir}/${_pyname}-${pkgver}
 
