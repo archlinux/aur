@@ -1,11 +1,12 @@
 pkgbase = r-wk
 	pkgdesc = Lightweight Well-Known Geometry Parsing
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=wk
 	arch = i686
 	arch = x86_64
 	license = MIT
+	checkdepends = r-testthat>=3.0.0
 	depends = r>=2.10
 	depends = r-cpp11
 	optdepends = r-readr

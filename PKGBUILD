@@ -7,7 +7,7 @@ pkgdesc="Lightweight Well-Known Geometry Parsing"
 url="https://cran.r-project.org/package=${_cranname}"
 license=("MIT")
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 
 arch=("i686" "x86_64")
 depends=(
@@ -22,17 +22,26 @@ optdepends=(
     "r-vctrs>=0.3.0"
 )
 makedepends=()
+checkdepends=(
+    "r-testthat>=3.0.0"
+)
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 b2sums=("27a66b2b587491152832f2baf64521db8c051c57860087a38df7835bacdb1691b60ac69ec992abf2d77943d7c03babd45511dea2ef939837058775ae85889d78")
 
 build() {
-    R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
+    mkdir -p "${srcdir}/build/"
+    R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/build/"
+}
+
+check() {
+    cd "${srcdir}/${_cranname}/tests"
+    R_LIBS="${srcdir}/build" Rscript --vanilla testthat.R
 }
 
 package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
-    cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+    cp -a --no-preserve=ownership "${srcdir}/build/" "${pkgdir}/usr/lib/R/library"
 
     if [[ -f "${_cranname}/LICENSE" ]]; then
         install -Dm0644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
