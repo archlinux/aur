@@ -1,31 +1,39 @@
 pkgbase = r-r5r
 	pkgdesc = Rapid Realistic Routing with ‘R5’
-	pkgver = 0.7.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=r5r
 	arch = any
 	license = MIT
-	depends = java-r5
-	depends = java-r5rcore
-	depends = r
+	checkdepends = r-covr
+	checkdepends = r-dplyr
+	checkdepends = r-ggplot2>=3.3.1
+	checkdepends = r-interp
+	checkdepends = r-knitr
+	checkdepends = r-patchwork
+	checkdepends = r-rmarkdown
+	checkdepends = r-testthat
 	depends = r-checkmate
 	depends = r-curl
 	depends = r-data.table
 	depends = r-httr
+	depends = r-jsonlite
 	depends = r-raster
-	depends = r-rjava
-	depends = r-sf
+	depends = r-rjava>=0.9.10
+	depends = r-sf>=1.0.6
 	depends = r-sfheaders
-	optdepends = r-akima
+	depends = r-zip
+	depends = r>=3.6
 	optdepends = r-covr
 	optdepends = r-dplyr
-	optdepends = r-ggplot2
+	optdepends = r-ggplot2>=3.3.1
+	optdepends = r-gtfstools
+	optdepends = r-h3jsr>=1.3.0
+	optdepends = r-interp
 	optdepends = r-knitr
-	optdepends = r-mapview
+	optdepends = r-patchwork
 	optdepends = r-rmarkdown
-	optdepends = r-rgdal
-	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/r5r_0.7.0.tar.gz
-	sha512sums = 506bdff1403dec41843fd8a2a53b78328898c42d3f048213e1f9009a93ef6b9df90dbf5d78a365cb8514df6825b86acf5d2aa65887603a769c73d5b5dff18679
+	source = https://cran.r-project.org/src/contrib/r5r_1.0.1.tar.gz
+	b2sums = 052f76d4ef0c0ef4a6e3aeeca361715e53dfea0b86394562e9acd7fdc066e442d2b12163d894293e96d1726dec2501259003b6f0be5a9f11690f26db05884460
 
 pkgname = r-r5r
