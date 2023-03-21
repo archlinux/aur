@@ -1,7 +1,7 @@
 pkgbase = jdk11-jetbrains-bin
 	pkgdesc = OpenJDK development kit with some fixes and enhancements by JetBrains
 	pkgver = 11.0.16b2043.64
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JetBrains/JetBrainsRuntime/releases
 	arch = x86_64
 	license = GPL2
