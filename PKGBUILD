@@ -4,7 +4,7 @@ _bcname=BSgenome.Hsapiens.NCBI.GRCh38
 _bcver=1.3.1000
 pkgname="r-${_bcname,,}"
 pkgver="${_bcver//[:-]/.}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Full genome sequences for Homo sapiens (GRCh38)"
 arch=("any")
 url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
@@ -26,7 +26,7 @@ package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
     cp -a --no-preserve=ownership "${srcdir}/build/${_bcname}" "${pkgdir}/usr/lib/R/library"
 
-    if [[ -f "${_cranname}/LICENSE" ]]; then
-        install -Dm0644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    if [[ -f "${_bcname}/LICENSE" ]]; then
+        install -Dm0644 "${_bcname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   fi
 }
