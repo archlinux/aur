@@ -7,6 +7,7 @@ pkgbase = r-biocparallel
 	arch = x86_64
 	license = GPL2
 	license = GPL3
+	makedepends = r-cpp11
 	depends = r>=3.5.0
 	depends = r-futile.logger
 	depends = r-snow
@@ -31,6 +32,6 @@ pkgbase = r-biocparallel
 	optdepends = r-batchtools
 	optdepends = r-data.table
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocParallel_1.32.6.tar.gz
-	sha256sums = 40d26698c2fa5e33418d41e6b95657b5ee6f9f5122a5e1ac6940222d5d5903ab
+	b2sums = 3cca882014984bc6192e9bf2af3049342c617023e7abf93ec50380000d7a9847c8c3b2e4d400961983fc1dcd6a2340e2f04396fb2e53f790776bf57a47f0c269
 
 pkgname = r-biocparallel

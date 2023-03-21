@@ -13,33 +13,36 @@ url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
 license=(GPL2 GPL3)
 depends=(
     "r>=3.5.0"
-	r-futile.logger
-	r-snow
-	r-bh
+    "r-futile.logger"
+    "r-snow"
+    "r-bh"
 )
 optdepends=(
-    r-biocgenerics
-	r-foreach
-	r-batchjobs
-	r-bbmisc
-	r-doparallel
-	r-rmpi
-	r-genomicranges
-	r-rnaseqdata.hnrnpc.bam.chr14
-	r-txdb.hsapiens.ucsc.hg19.knowngene
-	r-variantannotation
-	r-rsamtools
-	r-genomicalignments
-	r-shortread
-	r-codetools
-	r-runit
-	r-biocstyle
-	r-knitr
-	r-batchtools
-	r-data.table
+    "r-biocgenerics"
+    "r-foreach"
+    "r-batchjobs"
+    "r-bbmisc"
+    "r-doparallel"
+    "r-rmpi"
+    "r-genomicranges"
+    "r-rnaseqdata.hnrnpc.bam.chr14"
+    "r-txdb.hsapiens.ucsc.hg19.knowngene"
+    "r-variantannotation"
+    "r-rsamtools"
+    "r-genomicalignments"
+    "r-shortread"
+    "r-codetools"
+    "r-runit"
+    "r-biocstyle"
+    "r-knitr"
+    "r-batchtools"
+    "r-data.table"
+)
+makedepends=(
+    "r-cpp11"
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-sha256sums=('40d26698c2fa5e33418d41e6b95657b5ee6f9f5122a5e1ac6940222d5d5903ab')
+b2sums=("3cca882014984bc6192e9bf2af3049342c617023e7abf93ec50380000d7a9847c8c3b2e4d400961983fc1dcd6a2340e2f04396fb2e53f790776bf57a47f0c269")
 
 build() {
   R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
