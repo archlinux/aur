@@ -3,7 +3,7 @@
 
 _pkgname="sat-yt"
 pkgname="$_pkgname"
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 pkgdesc="YouTube viewer based on saturnon"
 arch=('any')
