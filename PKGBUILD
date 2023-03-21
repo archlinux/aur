@@ -1,12 +1,14 @@
 # Maintainer: SandaruKasa <sandarukasa plus aur at ya dot ru>
+# Contributor: handsomexdd1024
 # Based upon orphaned 'jdk-jetbrains' by Travis Weir <tweirtx at gmail dot com>
 
 pkgname=jdk17-jetbrains-bin
 _major=17
 _minor=0.6
 _build=829.1
+_prefix="/usr/lib/jvm/java-${_major}-jetbrains"
 pkgver="${_major}.${_minor}b${_build}"
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenJDK development kit with some fixes and enhancements by JetBrains'
 arch=('x86_64')
 url="https://github.com/JetBrains/JetBrainsRuntime/releases"
@@ -23,6 +25,6 @@ sha512sums=('779cf632a70e77143248f4b0149d8bd4ea4641164652043a8908aa7383001f78d27
 package() {
   find . -exec chmod g+r,o+r {} +
   mkdir -p "${pkgdir}"/usr/lib/jvm
-  cp -a "${_basename}" "${pkgdir}"/usr/lib/jvm/${pkgname}
-  ln -sf /etc/ssl/certs/java/cacerts "${pkgdir}"/usr/lib/jvm/${pkgname}/lib/security/cacerts
+  cp -a "${_basename}" "${pkgdir}""${_prefix}"
+  ln -sf /etc/ssl/certs/java/cacerts "${pkgdir}""${_prefix}"/lib/security/cacerts
 }
