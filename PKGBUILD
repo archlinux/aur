@@ -7,7 +7,7 @@ pkgdesc="Simple Features for R"
 url="https://cran.r-project.org/package=sf"
 license=("GPL-2 | MIT")
 pkgver=${_cranver//[:-]/.}
-pkgrel=2
+pkgrel=3
 
 arch=("i686" "x86_64")
 depends=(
@@ -74,10 +74,10 @@ build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/build/"
 }
 
-#check() {
-#    cd "${srcdir}/${_cranname}/tests"
-#    R_LIBS="${srcdir}/build/" Rscript --vanilla testthat.R
-#}
+check() {
+    cd "${srcdir}/${_cranname}/tests"
+    R_LIBS="${srcdir}/build/" Rscript --vanilla testthat.R
+}
 
 package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
