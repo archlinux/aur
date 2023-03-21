@@ -1,0 +1,24 @@
+pkgbase = onetbb-git
+	pkgdesc = High level abstract threading library (oneAPI Threading Building Blocks)
+	pkgver = r345.ga6a884ad
+	pkgrel = 1
+	url = https://oneapi-src.github.io/oneTBB/
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = inetutils
+	makedepends = ninja
+	makedepends = python
+	makedepends = swig
+	depends = gcc-libs
+	depends = hwloc
+	provides = intel-tbb
+	provides = tbb
+	conflicts = intel-tbb
+	conflicts = tbb
+	replaces = intel-tbb
+	replaces = tbb
+	source = git+https://github.com/oneapi-src/onetbb.git
+	sha512sums = SKIP
+
+pkgname = onetbb-git
