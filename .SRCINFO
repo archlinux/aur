@@ -1,0 +1,14 @@
+pkgbase = typst
+	pkgdesc = A new markup-based typesetting system that is powerful and easy to learn.
+	pkgver = 22_03_21
+	pkgrel = 1
+	url = https://github.com/typst/typst
+	arch = any
+	license = Apache
+	makedepends = cargo
+	depends = gcc-libs
+	depends = ttf-linux-libertine
+	source = typst-22_03_21.tar.gz::https://github.com/typst/typst/archive/22-03-21/22-03-21.tar.gz
+	sha256sums = 201b1980ab25d87400a9031cfb6e4e09d6328f4ff507d82f1b1bbdf0c008632e
+
+pkgname = typst
