@@ -2,7 +2,7 @@
 # Contributor: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=libva-headless
-pkgver=2.17.0
+pkgver=2.18.0
 pkgrel=1
 pkgdesc='Video Acceleration (VA) API for Linux headless systems'
 arch=(i686 x86_64 armv7h aarch64)
@@ -18,7 +18,7 @@ optdepends=(
     'libva-mesa-driver: backend for AMD and Nvidia GPUs'
 )
 backup=(etc/libva.conf)
-source=(git+https://github.com/intel/libva.git#tag=df3c584bb79d1a1e521372d62fa62e8b1c52ce6c)
+source=(git+https://github.com/intel/libva.git#tag=b06ccb323cd68bc5ce3fa9861c831766d6355d88)
 sha256sums=(SKIP)
 
 pkgver() {
