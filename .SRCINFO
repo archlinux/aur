@@ -1,11 +1,13 @@
 pkgbase = r-s2
 	pkgdesc = Spherical Geometry Operators Using the S2 Geometry Library
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=s2
 	arch = i686
 	arch = x86_64
 	license = Apache
+	checkdepends = r-testthat>=3.0.0
+	checkdepends = r-vctrs
 	depends = openssl>=1.0.1
 	depends = r>=3.0.0
 	depends = r-rcpp
