@@ -1,21 +1,21 @@
 pkgbase = java-openjdk-bin
-	pkgdesc = Java OpenJDK 19.0.2 Oracle Build.
-	pkgver = 19.0.2.u7
+	pkgdesc = Java OpenJDK 20 Oracle Build.
+	pkgver = 20.u36
 	pkgrel = 1
-	url = https://jdk.java.net/19
+	url = https://jdk.java.net/20
 	arch = x86_64
 	license = GPL2
 	depends = java-environment-common
 	depends = java-runtime-common
 	depends = ca-certificates-utils
 	depends = nss
-	provides = java-environment=19
-	provides = java-environment-openjdk=19
-	provides = java-runtime=19
-	provides = java-runtime-openjdk=19
-	provides = java-runtime-headless=19
-	provides = java-runtime-headless-openjdk=19
-	source = https://download.java.net/java/GA/jdk19.0.2/fdb695a9d9064ad6b064dc6df578380c/7/GPL/openjdk-19.0.2_linux-x64_bin.tar.gz
-	sha256sums = 34cf8d095cc071e9e10165f5c45023f96ec68397fdaabf6c64bfec1ffeee6198
+	provides = java-environment=20
+	provides = java-environment-openjdk=20
+	provides = java-runtime=20
+	provides = java-runtime-openjdk=20
+	provides = java-runtime-headless=20
+	provides = java-runtime-headless-openjdk=20
+	source = https://download.java.net/java/GA/jdk20/bdc68b4b9cbc4ebcb30745c85038d91d/36/GPL/openjdk-20_linux-x64_bin.tar.gz
+	sha256sums = bb863b2d542976d1ae4b7b81af3e78b1e4247a64644350b552d298d8dc5980dc
 
 pkgname = java-openjdk-bin
