@@ -2,7 +2,7 @@
 
 pkgname=odilia
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Building a better screen reader for the Linux desktop, one step at a time. "
 url="https://odilia.app/"
 license=('GPL3')
