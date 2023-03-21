@@ -1,3 +1,5 @@
+# Maintainer: Mattia Borda <mattiagiovanni.borda@icloud.com>
+
 pkgname=chromatic-git
 pkgver=r21.fe9d34e
 pkgrel=1
