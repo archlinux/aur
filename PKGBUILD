@@ -3,7 +3,7 @@ pkgbase=python-asdf
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=2.14.3
+pkgver=2.14.4
 pkgrel=1
 pkgdesc="A Python tool for reading and writing Advanced Scientific Data Format (ASDF) files"
 arch=('any')
@@ -44,7 +44,7 @@ checkdepends=('python-pytest-doctestplus'
               'python-requests')    # psutil pulled in by pytest-openfiles
 #              'python-virtualenv'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('4b7198bc06a8d2c81e5296c7e7d7a9b0')
+md5sums=('4a0e9398373d84478c76154e1fdeeb15')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -68,14 +68,13 @@ build() {
 #   msg "Building Docs"
 #   ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
 #       build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver).egg-info
-#   cd ${srcdir}/${_pyname}-${pkgver}/docs
-#   PYTHONPATH="../build/lib" make html
+#   PYTHONPATH="../build/lib" make -C docs html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    PYTHONPATH="build/lib:${PYTHONPATH}" pytest "build/lib" --remote-data || warning "Tests failed" # -vv --color=yes
+    PYTHONPATH="build/lib:${PYTHONPATH}" pytest "build/lib" --remote-data -vv --color=yes #|| warning "Tests failed" # -vv --color=yes
 }
 
 package_python-asdf() {
