@@ -3,14 +3,14 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=DelayedArray
-_bcver=0.22.0
+_bcver=0.24.0
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
 pkgdesc="A unified framework for working transparently with on-disk and in-memory array-like datasets"
 arch=(i686 x86_64)
 url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
-license=("Artistic-2.0")
+license=("Artistic2.0")
 depends=(
     "r>=4.0.0"
 	"r-biocgenerics>=0.37.0"
@@ -32,7 +32,7 @@ optdepends=(
 	r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-sha256sums=("1ee707dc606f257020c2654b21305045f4da9dc2943e6246a0bd25f5f1302d86")
+sha256sums=('d764b4f487b49ca04150ea7d8f5f180683cd80575d67a162e4a99cd52bd8815a')
 
 build() {
   R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
@@ -42,7 +42,7 @@ package() {
   install -dm0755 "${pkgdir}/usr/lib/R/library"
   cp -a --no-preserve=ownership "${_bcname}" "${pkgdir}/usr/lib/R/library"
 
-  if [[ -f "${_cranname}/LICENSE" ]]; then
-    install -Dm0644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  if [[ -f "${_bcname}/LICENSE" ]]; then
+    install -Dm0644 "${_bcname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   fi
 }
