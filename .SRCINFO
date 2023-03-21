@@ -1,4 +1,4 @@
-pkgbase = ttf-monaco-nerd-font
+pkgbase = ttf-monaco-nerd-font-git
 	pkgdesc = Monaco font patched with ryanoasis’s nerd patcher
 	pkgver = 2.2.2
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = ttf-monaco-nerd-font
 	sha256sums = 75b450280572bdc340a5eac682ea7320776db78e378b5f0bd414a9f3538ee654
 	sha256sums = SKIP
 
-pkgname = ttf-monaco-nerd-font
+pkgname = ttf-monaco-nerd-font-git
