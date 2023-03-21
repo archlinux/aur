@@ -1,0 +1,16 @@
+pkgbase = r-diffviewer
+	pkgdesc = HTML Widget to Show File Differences
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=diffviewer
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-htmlwidgets
+	depends = r-jsonlite
+	optdepends = r-covr
+	optdepends = r-shiny
+	source = https://cran.r-project.org/src/contrib/diffviewer_0.1.1.tar.gz
+	b2sums = 6d90157d0e3bb7cdadc79f6ec259fad8b8b8e6f614fb3be68609c8f475dc4b207116c0e78078773ac52af0fefcee1c59cf22ea197442b6d9afed16ef5f0a3a81
+
+pkgname = r-diffviewer
