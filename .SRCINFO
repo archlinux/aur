@@ -1,7 +1,7 @@
 pkgbase = r-bsgenome.scerevisiae.ucsc.saccer2
 	pkgdesc = Saccharomyces cerevisiae (Yeast) full genome (UCSC version sacCer2)
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/release/bioc/html/BSgenome.Scerevisiae.UCSC.sacCer2.html
 	arch = any
 	license = Artistic2.0
