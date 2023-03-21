@@ -5,7 +5,7 @@
 
 pkgname=evince-no-gnome
 _pkgname=evince
-pkgver=43.1
+pkgver=44.0
 pkgrel=1
 pkgdesc="Document viewer, no gnome dependencies"
 url="https://wiki.gnome.org/Apps/Evince"
@@ -18,7 +18,7 @@ optdepends=('texlive-bin: DVI support'
 provides=("$_pkgname" libev{document,view}3.so)
 conflicts=("$_pkgname" libev{document,view}3.so)
 options=('!emptydirs')
-_commit=47461d6dfbf2bb5d183f8db5dc43d205b68241e6 # tags/43.1^0
+_commit=9912cf2cb589f493b3c193fb76e73d00c20fc1ba # tags/44.0^0
 source=("git+https://gitlab.gnome.org/GNOME/evince.git#commit=$_commit")
 sha256sums=('SKIP')
 
