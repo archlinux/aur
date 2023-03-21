@@ -8,6 +8,7 @@ pkgbase = python-django-ipware
 	makedepends = python-build
 	makedepends = python-installer
 	depends = python
+	depends = python-django
 	source = https://github.com/un33k/django-ipware/archive/refs/tags/v5.0.0.tar.gz
 	sha256sums = 2d3579bb3fdf966311167bf490f8183ac48f6b8c05cfc845c3b2af7b9db61bc5
 
