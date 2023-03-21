@@ -1,11 +1,11 @@
 pkgbase = r-shortread
 	pkgdesc = FASTQ input and manipulation
-	pkgver = 1.54.0
+	pkgver = 1.56.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/release/bioc/html/ShortRead.html
 	arch = i686
 	arch = x86_64
-	license = Artistic-2.0
+	license = Artistic2.0
 	depends = r
 	depends = r-biobase
 	depends = r-biocgenerics>=0.23.3
@@ -16,18 +16,19 @@ pkgbase = r-shortread
 	depends = r-genomicranges>=1.31.8
 	depends = r-hwriter
 	depends = r-iranges>=2.13.12
+	depends = r-lattice
 	depends = r-latticeextra
 	depends = r-rhtslib
 	depends = r-rsamtools>=1.31.2
 	depends = r-s4vectors>=0.17.25
 	depends = r-xvector
 	depends = r-zlibbioc
+	optdepends = r-biocstyle
 	optdepends = r-biomart
 	optdepends = r-genomicfeatures
 	optdepends = r-runit
 	optdepends = r-yeastnagalakshmi
-	optdepends = r-biocstyle
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ShortRead_1.54.0.tar.gz
-	sha256sums = 18ca2c82688c158cdc952436434d4a608000ec4c02b199a0925c6cb2500a030c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ShortRead_1.56.1.tar.gz
+	b2sums = 89c018481902c53f76294aefc618eaa3d8fd1cf7ba01590466abde38ac9004e1f0258db32192f9efd89249e87887f4d8425f7a3d0722072e7e46882b8cbfb4de
 
 pkgname = r-shortread
