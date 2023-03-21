@@ -3,7 +3,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=BiocParallel
-_bcver=1.30.3
+_bcver=1.32.6
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -39,7 +39,7 @@ optdepends=(
 	r-data.table
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-sha256sums=("22318a3b47b56492445c1f2125a4dcef6dbb40dd94c594863bbd26aa55e543e7")
+sha256sums=('40d26698c2fa5e33418d41e6b95657b5ee6f9f5122a5e1ac6940222d5d5903ab')
 
 build() {
   R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
@@ -49,8 +49,8 @@ package() {
   install -dm0755 "${pkgdir}/usr/lib/R/library"
   cp -a --no-preserve=ownership "${_bcname}" "${pkgdir}/usr/lib/R/library"
 
-  if [[ -f "${_cranname}/LICENSE" ]]; then
-    install -Dm0644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  if [[ -f "${_bcname}/LICENSE" ]]; then
+    install -Dm0644 "${_bcname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   fi
 
 }

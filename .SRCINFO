@@ -1,6 +1,6 @@
 pkgbase = r-biocparallel
 	pkgdesc = Bioconductor facilities for parallel evaluation
-	pkgver = 1.30.3
+	pkgver = 1.32.6
 	pkgrel = 1
 	url = https://bioconductor.org/packages/release/bioc/html/BiocParallel.html
 	arch = i686
@@ -30,7 +30,7 @@ pkgbase = r-biocparallel
 	optdepends = r-knitr
 	optdepends = r-batchtools
 	optdepends = r-data.table
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocParallel_1.30.3.tar.gz
-	sha256sums = 22318a3b47b56492445c1f2125a4dcef6dbb40dd94c594863bbd26aa55e543e7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocParallel_1.32.6.tar.gz
+	sha256sums = 40d26698c2fa5e33418d41e6b95657b5ee6f9f5122a5e1ac6940222d5d5903ab
 
 pkgname = r-biocparallel
