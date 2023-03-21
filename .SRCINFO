@@ -1,6 +1,6 @@
 pkgbase = heimer
 	pkgdesc = Cross-platform mind map, diagram, and note-taking tool written in Qt
-	pkgver = 3.7.0
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://github.com/juzzlin/heimer
 	changelog = CHANGELOG
@@ -10,7 +10,7 @@ pkgbase = heimer
 	makedepends = qt5-tools
 	depends = hicolor-icon-theme
 	depends = qt5-svg
-	source = heimer-3.7.0.tar.gz::https://github.com/juzzlin/heimer/archive/3.7.0.tar.gz
-	sha256sums = 1c5dd94f3265150728662f09370fb732c6e491df91d4a8a89661364583c8d5c9
+	source = heimer-4.1.0.tar.gz::https://github.com/juzzlin/heimer/archive/4.1.0.tar.gz
+	sha256sums = 6c89a5b4e334d41f34615c3a82c8f6827a4ee47e5c1a68dec3a13fdf00fc3e6e
 
 pkgname = heimer

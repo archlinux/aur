@@ -1,13 +1,89 @@
-x.y.z
+4.1.0
 =====
 
 Release date:
 
+Fri, 17 Mar 2023 19:48:40 -0000
+
 New features:
+
+* Add setting for shadow effect optimization
+
+* Layout optimization
+  - Allow bigger aspect ratio
+  - Allow longer edges
+
+* Darker default outline for nodes
+
+* Add subtle outline for edge labels
 
 Bug fixes:
 
+* Fix GitHub Issue #238: Shadow effects introduce performance issues
+
+* Fix GitHub Issue #239: Cannot drag if the drag position is inside the virtual rectangle spanned by an edge
+
 Other:
+
+* Update Italian translations
+
+* Update Dutch translations
+
+* Performance
+  - Don't update scene rect when adding edges
+  - Remove shadow effects from edges as long edges can make dragging stutter
+
+4.0.0
+=====
+
+Release date:
+
+Fri, 10 Mar 2023 17:28:44 -0000
+
+New features:
+
+* Add setting for 'inverted controls'
+  - Pan the view with a modifier key (Ctrl) and select a group of items without a modifier key being pressed
+
+* Add parameter initialization options to layout optimization dialog
+
+* Add progress indicator when opening a mind map
+
+* Add tool tips for optimizer parameters
+
+* Add tool tip text for selecting node group by intersection
+
+* Change help texts into tool tips
+
+Bug fixes:
+
+* Fix tab key not working properly with node and edge text inputs
+
+* Unselect implicitly selected node after context menu has closed
+
+* Don't autosave unmodified mind map on exit
+
+* Don't autosave unmodified mind map on new file or open file
+
+Other:
+
+* More subtle new version indicator with a timeout
+
+* Change help texts to tool tips in edit settings
+
+* Update Italian translations
+
+* Update Dutch translations
+
+* Breaking changes to ALZ-format (old files can still be opened normally)
+
+  * Move style data into style element
+
+  * Move layout optimizer config into metadata element
+
+  * Save and load application and format versions separately
+
+  * Rename index => i, index0 => i0, index1 => i1
 
 3.7.0
 =====
