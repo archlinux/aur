@@ -1,11 +1,11 @@
 pkgbase = r-rsamtools
 	pkgdesc = Binary alignment (BAM), FASTA, variant call (BCF), and tabix file import
 	pkgver = 2.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/release/bioc/html/Rsamtools.html
 	arch = i686
 	arch = x86_64
-	license = Artistic-2.0
+	license = Artistic2.0
 	makedepends = make
 	depends = r>=3.5.0
 	depends = r-biocgenerics>=0.25.1

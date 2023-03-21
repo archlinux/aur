@@ -6,11 +6,11 @@ _bcname=Rsamtools
 _bcver=2.14.0
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary alignment (BAM), FASTA, variant call (BCF), and tabix file import"
 arch=(i686 x86_64)
 url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
-license=("Artistic-2.0")
+license=("Artistic2.0")
 depends=(
     "r>=3.5.0"
     "r-biocgenerics>=0.25.1"
@@ -50,7 +50,7 @@ package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
     cp -a --no-preserve=ownership "${_bcname}" "${pkgdir}/usr/lib/R/library"
 
-    if [[ -f "${_cranname}/LICENSE" ]]; then
-        install -Dm0644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    if [[ -f "${_bcname}/LICENSE" ]]; then
+        install -Dm0644 "${_bcname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     fi
 }
