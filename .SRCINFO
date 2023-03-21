@@ -1,0 +1,14 @@
+pkgbase = fftools-bin
+	pkgdesc = FFMPEG-based toolkit for easy media manipulation
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/gatomo-oficial/fftools
+	arch = x86_64
+	license = Apache-2.0
+	depends = ffmpeg
+	provides = fftools
+	conflicts = fftools
+	source = https://github.com/gatomo-oficial/fftools/releases/download/v1.0.0/fftools-1.0.0-x86_64.tar.gz
+	sha256sums = 841c85f41ae41a2a6d0e3c047ca913a979556618ca1e4c26612f7065ec386cc8
+
+pkgname = fftools-bin
