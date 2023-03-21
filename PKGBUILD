@@ -2,8 +2,8 @@
 
 pkgname=sing-geosite-git
 _pkgname=sing-geosite
-pkgver=20220916160215
-pkgrel=2
+pkgver=20230320093818
+pkgrel=1
 
 pkgdesc='sing-geosite database'
 arch=('any')
@@ -12,7 +12,6 @@ url="https://github.com/${_repo}"
 license=('GPL3')
 
 makedepends=('go')
-optdepends=('sing-box: The universal proxy platform')
 conflicts=('sing-geosite')
 provides=('sing-geosite')
 

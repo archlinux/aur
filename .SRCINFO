@@ -1,15 +1,14 @@
 pkgbase = sing-geosite-git
 	pkgdesc = sing-geosite database
-	pkgver = 20220916160215
-	pkgrel = 2
+	pkgver = 20230320093818
+	pkgrel = 1
 	url = https://github.com/SagerNet/sing-geosite
 	arch = any
 	license = GPL3
 	makedepends = go
-	optdepends = sing-box: The universal proxy platform
 	provides = sing-geosite
 	conflicts = sing-geosite
-	source = src.20220916160215.tar.gz::https://codeload.github.com/SagerNet/sing-geosite/tar.gz/refs/heads/main
+	source = src.20230320093818.tar.gz::https://codeload.github.com/SagerNet/sing-geosite/tar.gz/refs/heads/main
 	sha256sums = SKIP
 
 pkgname = sing-geosite-git
