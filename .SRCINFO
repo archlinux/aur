@@ -1,6 +1,6 @@
 pkgbase = python-asyncstdlib
 	pkgdesc = The missing toolbox for an async world
-	pkgver = 3.10.5
+	pkgver = 3.10.6
 	pkgrel = 1
 	url = https://github.com/maxfischer2781/asyncstdlib
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-asyncstdlib
 	makedepends = python-build
 	makedepends = python-flit-core
 	makedepends = python-installer
-	depends = python-typing_extensions
-	source = asyncstdlib-3.10.5.tar.gz::https://github.com/maxfischer2781/asyncstdlib/archive/refs/tags/v3.10.5.tar.gz
-	sha256sums = ae1064f7d4ef3270dc80520cc23fb684a064c6a67d422d9eb9042a74289f9f1a
+	depends = python
+	source = asyncstdlib-3.10.6.tar.gz::https://github.com/maxfischer2781/asyncstdlib/archive/refs/tags/v3.10.6.tar.gz
+	sha256sums = dc867827d6d41c03212323f78acdd2c5ee50ff7d2631e53195286e944f6a9cd1
 
 pkgname = python-asyncstdlib
