@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-gstreamer
 	pkgdesc = GStreamer Multimedia Framework (mingw-w64)
-	pkgver = 1.20.5
+	pkgver = 1.22.1
 	pkgrel = 1
 	url = http://gstreamer.freedesktop.org/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = mingw-w64-gstreamer
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.20.5.tar.xz
-	sha256sums = 5a19083faaf361d21fc391124f78ba6d609be55845a82fa8f658230e5fa03dff
+	source = http://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.22.1.tar.xz
+	sha256sums = cd3ca759f926763615fdfcea63c9761198c42889bc0615ceec73e22b24fde771
 
 pkgname = mingw-w64-gstreamer
