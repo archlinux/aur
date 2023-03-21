@@ -115,7 +115,7 @@ _local_qt_repo="${local_qt_repo}"
 _pkgvermajmin="6.5"
 _pkgverpatch=".0"
 # {alpha/beta/beta2/rc}
-_dev_suffix="beta3"
+_dev_suffix="rc"
 pkgrel=2
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_local_src_tree && pkgver=6.6.6
@@ -171,11 +171,10 @@ _provider=https://download.qt.io
 _tmpfs_dir=/vortex/build
 
 source=()
-sha256sums=()
+sha256sums=('5216feaff1396237a5f43137166c4f8f131cfb3cfd884d1dcef37c4df72d31a6')
 
 if ! $_build_from_local_src_tree; then
   source+=("${_provider}/${_release_type}/qt/${_pkgvermajmin}/${_pkgver}/single/${_source_package_name}.tar.xz")
-  sha256sums+=("SKIP")
   #if $_building; then echo ${source[@]}; fi
 fi
 #echo "Source: ${source[@]}"
@@ -201,15 +200,15 @@ finish() {
 }
 
 build() {
-  _srcdir="${srcdir}/${_source_package_name}"
+  local _builddir=${srcdir}/build
+  local _srcdir="${srcdir}/${_source_package_name}"
 
   local _basedir="${_srcdir}/qtbase"
   local _mkspec_dir="${_basedir}/mkspecs/devices/${_mkspec}"
 
-  #local _builddir=${BUILDDIR}/${pkgbase}
-  #rm -Rf ${_builddir}
-  #mkdir -p ${_builddir}
-  #cd ${_builddir}
+  rm -Rf ${_builddir}
+  mkdir -p ${_builddir}
+  cd ${_builddir}
 
   # Just because you can enable something doesnt mean you should
   # Prepare for breakage in all your Qt derived projects
@@ -230,9 +229,9 @@ build() {
   local _configure_line="cmake \
                                 -GNinja \
                                 -DCMAKE_BUILD_TYPE=Rel \
+                                -DBUILD_WITH_PCH=OFF \
                                 -DFEATURE_reduce_exports=ON \
                                 -DFEATURE_reduce_relocations=ON \
-                                -DBUILD_WITH_PCH=ON \
                                 -DQT_BUILD_TESTS=OFF \
                                 -DQT_BUILD_EXAMPLES=OFF \
                                 -DCMAKE_INSTALL_PREFIX:PATH=${_installprefix} \
@@ -292,10 +291,12 @@ package() {
   local _installed_dir="${pkgdir}/${_sysroot}/${_installprefix}"
   local _installed_dir_sans_sysroot_offset="${pkgdir}/${_installprefix}"
 
+  local _builddir=${srcdir}/build
+
   rm -Rf ${_libspkgdir} ${_libsdebugpkgdir} ${pkgdir}
   mkdir -p ${_libspkgdir} ${_libsdebugpkgdir} ${pkgdir}
 
-  #cd "${_bindir}"
+  cd "${_builddir}"
   echo "Installing to ${pkgdir}"
   DESTDIR="$pkgdir" cmake --install .
   #DESTDIR="$pkgdir" cmake --install . --target install_docs
