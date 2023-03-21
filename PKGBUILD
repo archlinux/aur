@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=sf
-_cranver=1.0-11
+_cranver=1.0-12
 pkgname=r-${_cranname,,}
 pkgdesc="Simple Features for R"
 url="https://cran.r-project.org/package=sf"
@@ -60,17 +60,29 @@ optdepends=(
     "r-vctrs"
     "r-wk"
 )
+checkdepends=(
+    "r-testthat>=3.0.0"
+)
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("fd4a8505b7944d743b45272a45305db1674fe9ee08a553344ac204b2a75a1ec42a42854eb17ccd6ad6e49ae8d351ea994b0eb91ea06259d2f825dd2753ce51ce")
+b2sums=("c7c4b9c95e9b2f3a60a9ba561a0db8b4361ad9be83506b64a8bb5456d71ef436295c3a7af5629b4e65d33243f9829580389f2fa23455bf9e00a76d7ea15a117f")
 
 build() {
-    R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
+    R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/${_cranname}/build/"
+}
+
+check() {
+    cd "${srcdir}/${_cranname}/tests"
+    R_LIBS="${srcdir}/${_cranname}/build" Rscript --vanilla testthat.R
 }
 
 package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
-    cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+    cp \
+        -a \
+        --no-preserve=ownership \
+        "${srcdir}/${_cranname}/build/" \
+        "${pkgdir}/usr/lib/R/library"
 
     if [[ -f "${_cranname}/LICENSE" ]]; then
         install -Dm0644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
