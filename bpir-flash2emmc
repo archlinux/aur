@@ -54,7 +54,7 @@ function restart_driver {
 
 driver="mtk-msdc"
 addr="11230000"
-compatible="$(tr -d '\0' 2>/dev/null </proc/device-tree/compatible)"
+compatible="$(cat /proc/device-tree/compatible)"
 
 if [[ "$compatible" == *"bananapi"*"mediatek,mt7622"* ]]; then # BPI-R64
   mmcblk=$(get_mmcblk)
