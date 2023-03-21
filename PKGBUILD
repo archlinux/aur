@@ -1,7 +1,7 @@
 # Maintainer: David Mehren <david.mehren@udo.edu>
 
 pkgname=element-desktop-stable-bin
-pkgver=1.11.24
+pkgver=1.11.25
 pkgrel=1
 pkgdesc="All-in-one secure chat app for teams, friends and organisations (stable .deb build)."
 arch=('x86_64')
