@@ -36,7 +36,7 @@ build() {
 	cd "${srcdir}/${_pkgname}/kernel_module"
 	make
 	cd "${srcdir}/${_pkgname}/python/legion_linux"
-	python setup.py build
+	python -m build
 }
 package() {
 	cd "${srcdir}/${_pkgname}"
