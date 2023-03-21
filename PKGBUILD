@@ -6,7 +6,7 @@
 
 pkgname=firefox-bin
 _pkgname=firefox
-pkgver=111.0
+pkgver=111.0.1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Static binaries from upstream"
 arch=('x86_64')
@@ -21,10 +21,10 @@ optdepends=('ffmpeg: H264/AAC/MP3 decoding'
             'hunspell-en_US: Spell checking, American English')
 provides=("firefox=$pkgver")
 conflicts=('firefox')
-source=("http://archive.mozilla.org/pub/firefox/releases/111.0/linux-x86_64/en-US/firefox-$pkgver.tar.bz2"
+source=("http://archive.mozilla.org/pub/firefox/releases/111.0.1/linux-x86_64/en-US/firefox-$pkgver.tar.bz2"
         $_pkgname.sh
         $_pkgname.desktop)
-sha256sums=('49599b5b0b24400b564af91f4578314c0e069347aea76602e7eca9d8055b6fc0'
+sha256sums=('923da36b1917fbd46809d91758d776be2cea7e157e0f59c3e0d4275d1af87701'
             '9491f195066aa56f4f0bbc83e5f0581a460f4c34ee455ba24db312b540322703'
             'c64008cbf01956ce3dba693230670de58fa9487ad19f4ba76614af13beb1b8ef')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
