@@ -6,11 +6,11 @@ _bcname=GenomeInfoDbData
 _bcver=1.2.9
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Species and taxonomy ID look up tables used by GenomeInfoDb"
 arch=(any)
 url="https://bioconductor.org/packages/release/data/annotation/html/${_bcname}.html"
-license=(Artistic-2.0)
+license=(Artistic2.0)
 depends=('r>=3.5.0')
 source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_bcname}_${_bcver}.tar.gz")
 sha256sums=('e63a719a8eceefeda39fc95de83e7aa41caad39705efc712a44ab4021adc45fa')
@@ -23,7 +23,7 @@ package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
     cp -a --no-preserve=ownership "${_bcname}" "${pkgdir}/usr/lib/R/library"
 
-    if [[ -f "${_cranname}/LICENSE" ]]; then
-        install -Dm0644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    if [[ -f "${_bcname}/LICENSE" ]]; then
+        install -Dm0644 "${_bcname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     fi
 }
