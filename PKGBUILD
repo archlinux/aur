@@ -4,14 +4,14 @@ _font="formal-script-for-the-web"
 _group="impallari"
 pkgname=ttf-${_group}-${_font}
 pkgver=1.001
-pkgrel=3
+pkgrel=4
 pkgdesc="A Formal Script for the web, from Pablo Impallari"
 arch=(any)
 #url="http://www.impallari.com/projects/overview/formal-script-for-the-web"
 url="https://github.com/impallari"
 license=('custom:OFL')
 groups=("${_group}-fonts")
-depends=('fontconfig' 'xorg-font-utils')
+depends=('fontconfig')
 #install=updatefont.install
 source=("${_font}-${pkgver}.zip::https://fonts.google.com/download?family=Petit%20Formal%20Script")
 md5sums=('c9e8e974e2f5f75570dc9ecbe290b709')

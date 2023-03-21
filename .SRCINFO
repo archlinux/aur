@@ -1,13 +1,12 @@
 pkgbase = ttf-impallari-formal-script-for-the-web
 	pkgdesc = A Formal Script for the web, from Pablo Impallari
 	pkgver = 1.001
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/impallari
 	arch = any
 	groups = impallari-fonts
 	license = custom:OFL
 	depends = fontconfig
-	depends = xorg-font-utils
 	source = formal-script-for-the-web-1.001.zip::https://fonts.google.com/download?family=Petit%20Formal%20Script
 	md5sums = c9e8e974e2f5f75570dc9ecbe290b709
 
