@@ -1,5 +1,5 @@
 # Maintainer: kmz <valesail7@gmail.com>
-pkgname=ttf-monaco-nerd-font
+pkgname=ttf-monaco-nerd-font-git
 pkgver=2.2.2
 pkgrel=1
 pkgdesc='Monaco font patched with ryanoasis’s nerd patcher'
