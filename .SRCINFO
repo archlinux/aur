@@ -1,11 +1,18 @@
 pkgbase = r-terra
 	pkgdesc = Spatial Data Analysis
 	pkgver = 1.7.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=terra
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	checkdepends = r-deldir
+	checkdepends = r-leaflet
+	checkdepends = r-ncdf4
+	checkdepends = r-sf>=0.9.8
+	checkdepends = r-tinytest
+	checkdepends = r-xml
+	checkdepends = r-rcmdcheck
 	depends = gdal>=2.2.3
 	depends = geos>=3.4.0
 	depends = proj>=4.9.3
