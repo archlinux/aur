@@ -5,7 +5,7 @@
 _pkgname=r8125
 pkgname=${_pkgname}-dkms
 pkgver=9.011.00
-pkgrel=1
+pkgrel=2
 url="https://www.realtek.com/en/component/zoo/category/network-interface-controllers-10-100-1000m-gigabit-ethernet-pci-express-software"
 pkgdesc="Kernel module for RTL8125"
 license=('GPL2')
