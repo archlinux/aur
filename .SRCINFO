@@ -1,7 +1,7 @@
 pkgbase = adwsteamgtk
 	pkgdesc = A simple Gtk wrapper for Adwaita-for-Steam
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Foldex/AdwSteamGtk
 	arch = any
 	license = GPL3
