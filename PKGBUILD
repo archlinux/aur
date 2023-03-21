@@ -5,7 +5,7 @@
 _pkgbasename=zimg
 pkgname=("lib32-$_pkgbasename")
 pkgver=3.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Scaling, colorspace conversion, and dithering library'
 arch=(x86_64)
 url=https://github.com/sekrit-twc/zimg
@@ -55,7 +55,13 @@ package(){
   cd ${_pkgbasename}
 
   make DESTDIR="${pkgdir}" install
+
+  rm -r "${pkgdir}"/usr/include
+  rm -r "${pkgdir}"/usr/share/doc/zimg/
+
   mkdir -p "${pkgdir}/usr/share/doc/${pkgname}/"
+  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
+  ln -s "/usr/share/doc/${_pkgbasename}/"README.md "${pkgdir}/usr/share/doc/${pkgname}/"
   ln -s "/usr/share/doc/${_pkgbasename}/COPYING" "${pkgdir}/usr/share/doc/${pkgname}/"
 }
 
