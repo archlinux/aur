@@ -1,6 +1,6 @@
 pkgbase = gprojector
 	pkgdesc = Interactive tool for exploring map projections
-	pkgver = 3.0.4
+	pkgver = 3.0.7
 	pkgrel = 1
 	url = https://www.giss.nasa.gov/tools/gprojector/
 	install = gprojector.install
@@ -11,7 +11,7 @@ pkgbase = gprojector
 	depends = java-runtime>=9
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
-	source = https://www.giss.nasa.gov/tools/gprojector/download/G.ProjectorJ-3.0.4.zip
+	source = https://www.giss.nasa.gov/tools/gprojector/download/G.ProjectorJ-3.0.7.zip
 	source = LICENSES
 	source = gprojector-script.patch
 	source = gprojector16.png
@@ -20,7 +20,7 @@ pkgbase = gprojector
 	source = gprojector64.png
 	source = gprojector128.png
 	source = gprojector.desktop
-	sha1sums = e679ff6909ebdec3cadf950ffabc8816fc3ecc38
+	sha1sums = 7c26b5f627b58f6e27e2af6037c185cd4187ce2c
 	sha1sums = 01c11fd7393d5043e7444743cbbc343b1904c729
 	sha1sums = 35633c41c1c97ad6b708e2075637590dc5c401d7
 	sha1sums = d33941fd5b6d9baab4af8a83539a599eff7046b3

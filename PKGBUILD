@@ -1,6 +1,6 @@
 # Maintainer: deserts <int8@foxmail.com>
 pkgname=gprojector
-pkgver=3.0.4
+pkgver=3.0.7
 pkgrel=1
 pkgdesc="Interactive tool for exploring map projections"
 arch=("any")
