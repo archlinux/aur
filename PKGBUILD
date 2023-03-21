@@ -10,7 +10,7 @@ pkgdesc="Easy Pre and Post Assertions"
 url="https://cran.r-project.org/package=${_cranname}"
 license=("GPL3")
 pkgver=${_cranver//[:-]/.}
-pkgrel=2
+pkgrel=3
 
 arch=("any")
 depends=(
@@ -18,7 +18,6 @@ depends=(
 )
 optdepends=(
     "r-covr"
-    "r-testthat"
 )
 checkdepends=(
     "${optdepends[@]}"
