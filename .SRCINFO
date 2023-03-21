@@ -1,6 +1,6 @@
 pkgbase = astiga-nativefier
 	pkgdesc = Astiga desktop built with nativefier (electron)
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://asti.ga
 	arch = armv7l
