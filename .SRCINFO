@@ -1,6 +1,6 @@
 pkgbase = purc-git
 	pkgdesc = The prime HVML interpreter for C/C++ Language.
-	pkgver = 0.9.7.r24.g2c2495b06
+	pkgver = 0.9.7.r32.g2e2fb8bec
 	pkgrel = 1
 	url = https://github.com/HVML/PurC
 	arch = x86_64
