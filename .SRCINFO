@@ -1,14 +1,17 @@
 pkgbase = r-assertthat
 	pkgdesc = Easy Pre and Post Assertions
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=assertthat
 	arch = any
 	license = GPL3
+	checkdepends = r-covr
+	checkdepends = r-testthat
+	checkdepends = r-testthat
 	depends = r
-	optdepends = r-testthat
 	optdepends = r-covr
+	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/assertthat_0.2.1.tar.gz
-	sha256sums = 85cf7fcc4753a8c86da9a6f454e46c2a58ffc70c4f47cac4d3e3bcefda2a9e9f
+	b2sums = 831657a08c7e41a4a0fdb9695b8ccaa802aeeaf1f8d7df501b9810b6a367f8c77e05a75c3345ad9042b60a2956d049b823ac673023df93b5345250d8b44124dc
 
 pkgname = r-assertthat
