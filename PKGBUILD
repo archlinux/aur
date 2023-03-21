@@ -1,19 +1,22 @@
-# Maintainer: loredan13
+# Maintainer: Darrell Enns <darrell at darrellenns dot com>
+# Contributor: qubidt <qubidt at gmail dot com>
+# Contributor: loredan13
 # Contributor: lf <packages at lfcode dot ca>
 pkgname=klipper-git
-pkgver=r3853.338bc82d0
+_pkgname=klipper
+pkgver=r4940.e2d7c5981
 pkgrel=1
 pkgdesc="3D printer firmware with motion planning on the host"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url="https://github.com/KevinOConnor/klipper"
+url="https://www.klipper3d.org/"
 license=('GPL3')
 groups=()
 depends=(
-	python2-cffi
-	python2-pyserial
-	python2-greenlet
-	python2-jinja
-	python2-can
+	python-cffi
+	python-pyserial
+	python-greenlet
+	python-jinja
+	python-can
 	libusb
 )
 optdepends=(
@@ -23,45 +26,74 @@ optdepends=(
 	'avr-gcc: for AVR MCU firmware compilation'
 	'avr-binutils: for AVR MCU firmware compilation'
 	'avr-libc: for AVR MCU firmware compilation'
-	'python2-numpy: for resonance measurement'
-	'python2-matplotlib: for resonance measurement'
+	'python-numpy: for resonance measurement'
+	'python-matplotlib: for resonance measurement'
+	'dfu-util: for flashing firmware on STM32 MCUs'
 )
 optdepends_x86_64=(
-	'arm-none-eabi-gcc: for ARM MCU firmware compilation'
-	'arm-none-eabi-binutils'
 	'arm-none-eabi-newlib: for ARM MCU firmware compilation'
+	'arm-none-eabi-gcc: for ARM MCU firmware compilation'
+	'arm-none-eabi-binutils: for ARM MCU firmware compilation'
 )
 makedepends=('git')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 replaces=()
-backup=()
+backup=("etc/${_pkgname}/klipper.cfg"
+        "usr/lib/klipper/.config")
 options=()
-install=
-source=('git+https://github.com/KevinOConnor/klipper#branch=master' 'klipper.service' 'sysusers.conf' 'tmpfiles.conf')
+install='klipper.install'
+source=("${_pkgname}::git+https://github.com/Klipper3d/klipper"
+        'klipper.service'
+        'sysusers.conf'
+        'tmpfiles.conf')
 noextract=()
 md5sums=('SKIP'
-         'ab5efd8e525d971b482a0fee94a7e7ff'
-         '61912d101dc7c68c7314882b80621454'
-         'dd799b9d55045d950d407740d4a9a5c5')
+         '4ccfb9669d304b99146b92a4912ae1fd'
+         'cf3715af9f53cc1660e412abe3697342'
+         'd707e8986ed6cf189461f03bdaf365aa')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/$_pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package() {
-	cd "$srcdir/${pkgname%-git}"
-	install -Dm644 "$srcdir/klipper.service" "$pkgdir/usr/lib/systemd/system/klipper.service"
-	install -Dm644 "$srcdir/sysusers.conf" "$pkgdir/usr/lib/sysusers.d/klipper.conf"
-	install -Dm644 "$srcdir/tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/klipper.conf"
-	install -dm755 "$pkgdir/opt/klipper"
-	install -dm775 "$pkgdir/etc/klipper"
-	python2 scripts/make_version.py ARCHLINUX > klippy/.version
-    python2 -m compileall klippy
-	python2 klippy/chelper/__init__.py
-	GLOBIGNORE=.git cp -r * "$pkgdir/opt/klipper"
+build() {
+	cd "$srcdir/$_pkgname"
+	python -m compileall klippy
+	python klippy/chelper/__init__.py
+}
 
-	echo
-	echo "Before launching, copy one of example configs in /opt/klipper/config/ to /etc/klipper/klipper.cfg and adjust it to suit your printer"
+package() {
+	cd "$srcdir/$_pkgname"
+	install -Dm644 "$srcdir/klipper.service" "$pkgdir/usr/lib/systemd/system/${_pkgname}.service"
+	install -Dm644 "$srcdir/sysusers.conf" "$pkgdir/usr/lib/sysusers.d/${_pkgname}.conf"
+	install -Dm644 "$srcdir/tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/${_pkgname}.conf"
+
+	install -m775 -d "$pkgdir/usr/lib/${_pkgname}"
+	install -m755 -d "$pkgdir/usr/lib/${_pkgname}/docs"
+	install -m755 -d "$pkgdir/usr/lib/${_pkgname}/config"
+	install -m775 -d "$pkgdir/usr/lib/${_pkgname}/klippy"
+	install -m755 -d "$pkgdir/usr/lib/${_pkgname}/lib"
+	install -m755 -d "$pkgdir/usr/lib/${_pkgname}/src"
+	install -m755 -d "$pkgdir/usr/lib/${_pkgname}/scripts"
+	install -m2775 -d "$pkgdir/etc/${_pkgname}"
+	install -m2775 -d "$pkgdir/usr/lib/${_pkgname}/out"
+	install -m2775 -d "$pkgdir/var/lib/${_pkgname}"
+
+	cp -ra "$srcdir/${_pkgname}/docs"/* "$pkgdir/usr/lib/${_pkgname}/docs"/
+	cp -ra "$srcdir/${_pkgname}/config/"* "$pkgdir/usr/lib/${_pkgname}/config"/
+	cp -ra "$srcdir/${_pkgname}/klippy/"* "$pkgdir/usr/lib/${_pkgname}/klippy"/
+	cp -ra "$srcdir/${_pkgname}/scripts/"* "$pkgdir/usr/lib/${_pkgname}/scripts"/
+	cp -ra "$srcdir/${_pkgname}/lib/"* "$pkgdir/usr/lib/${_pkgname}/lib"/
+	cp -ra "$srcdir/${_pkgname}/Makefile" "$pkgdir/usr/lib/${_pkgname}"/
+	cp -ra "$srcdir/${_pkgname}/src/"* "$pkgdir/usr/lib/${_pkgname}/src"/
+
+	mkdir -p "$pkgdir//usr/share/doc"
+	ln -s "/usr/lib/${_pkgname}/docs" "$pkgdir/usr/share/doc/${_pkgname}"
+
+	touch "$srcdir/${_pkgname}/.config"
+	install -m664 "$srcdir/${_pkgname}/.config" "$pkgdir/usr/lib/${_pkgname}/.config"
+
+	python scripts/make_version.py ARCHLINUX > "$pkgdir/usr/lib/${_pkgname}/klippy/.version"
 }
