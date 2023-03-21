@@ -1,0 +1,18 @@
+[Unit]
+Description=Prometheus exporter for mosquitto metrics
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=mosquitto_exporter
+Group=mosquitto_exporter
+Restart=on-failure
+EnvironmentFile=-/etc/conf.d/prometheus-mosquitto-exporter
+ExecStart=/usr/bin/mosquitto-exporter $NODE_EXPORTER_ARGS
+ExecReload=/bin/kill -HUP $MAINPID
+NoNewPrivileges=true
+ProtectHome=read-only
+ProtectSystem=strict
+
+[Install]
+WantedBy=multi-user.target
