@@ -1,7 +1,7 @@
-# Maintainer: J. Brongers <jkhbrongers at outlook dot com>
+# Maintainer: Cambionn <cambionn.anon+archlinux at proton dot me>
 
 pkgname=astiga-nativefier
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Astiga desktop built with nativefier (electron)"
 arch=("armv7l" "i686" "x86_64")
@@ -31,7 +31,7 @@ build() {
     --tray \
     --maximize \
     --disable-dev-tools \
-    "https://play.asti.ga/overview"
+    "https://play.asti.ga/"
 }
 
 package() {
