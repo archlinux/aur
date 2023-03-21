@@ -20,8 +20,9 @@ source_armv7h=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_${
 source_aarch64=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_${pkgver//_/-}_arm64.deb")
 sha256sums_x86_64=('ca6dcafff50256e8ed350257c361b4dec1971f86a0bd9eaae00c88f3d1e0ea73')
 sha256sums_i686=('cf3c747a238a2fb340e0a4aa0ca820bd822b83d31fb2f8eac742e208e7bf5b2d')
-sha256sums_armhf=('a9d40844114b93b25b43230464eea59bf8833be2fbee94c9ec060972dbd5cb5c')
+sha256sums_armv7h=('a9d40844114b93b25b43230464eea59bf8833be2fbee94c9ec060972dbd5cb5c')
 sha256sums_aarch64=('ca6dcafff50256e8ed350257c361b4dec1971f86a0bd9eaae00c88f3d1e0ea73')
+
 package() {
     bsdtar -O -xf *.deb data.tar.gz | bsdtar -C "${pkgdir}" -xJf -
     
