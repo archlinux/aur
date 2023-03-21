@@ -1,9 +1,9 @@
 # Maintainer: Jonas Malaco <jonas@protocubo.io>
 pkgname=cargo-vet
-pkgver=0.4.0
+pkgver=0.5.1
 # Repository tag omits trailing .0: for example, the tag for v0.3.0 is 0.3.
 _tag=${pkgver%.0}
-pkgrel=2
+pkgrel=1
 pkgdesc='Supply-chain security for Rust'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url='https://github.com/mozilla/cargo-vet'
@@ -14,17 +14,11 @@ depends=(
     glibc
     zlib
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$_tag.tar.gz"
-        "update-lock-and-tests-for-0.4.0.patch::$url/commit/c0dd08419862.patch")
-sha256sums=('6558c4010241c146dfac540f5e4a14e8fa1256e7ac11e143fed0eb89e8601eba'
-            'd63425206d41e45dd8532ebad6b1b20f4c1a34fd833c04e5624b32fdb175de46')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$_tag.tar.gz")
+sha256sums=('b555e72029fe1ac87eaa732c804de8d1eb6a7fcf90ce9bc1ea1e43caa0280e50')
 
 prepare() {
     cd "$pkgname-$_tag"
-
-    # Cargo.lock and tests not in sync with Cargo.toml in 0.4.0.
-    # TODO: remove when no longer necessary.
-    patch --forward --strip=1 --input="${srcdir}/update-lock-and-tests-for-0.4.0.patch"
 
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
