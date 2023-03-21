@@ -1,0 +1,11 @@
+pkgbase = umicons
+	pkgdesc = Created Icons by mattahan
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.deviantart.com/mattahan/art/Umicons-Volume-3-2211092
+	arch = any
+	license = cc-by-nc-sa
+	source = https://github.com/robson-66/Umicons/archive/refs/heads/master.zip
+	sha256sums = SKIP
+
+pkgname = umicons
