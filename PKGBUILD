@@ -4,7 +4,7 @@
 # $ updaurpkg --apply
 _repo=wakatime/repl-python-wakatime
 _source_type=pypi-releases
-_upstreamver='0.0.5'
+_upstreamver='0.0.6'
 _pkgname=$(tr A-Z a-z <<<${_repo##*/})
 _pypi_package=$_pkgname
 
@@ -25,7 +25,7 @@ _py=py3
 source=(
 	"https://files.pythonhosted.org/packages/$_py/${_pkgname:0:1}/$_pkgname/${_pkgname//-/_}-$pkgver-$_py-none-any.whl"
 )
-sha256sums=('f1a8135672c888962291b8347eb43cc5abb3d928c39d6ca0f037ee4d71d11477')
+sha256sums=('3583e66feb0fb80e9410de20e851cc5b65d789868674606aa3c41941b0c09aaf')
 
 package() {
 	cd "$srcdir" || return 1
