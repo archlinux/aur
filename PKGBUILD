@@ -5,16 +5,33 @@
 _name=Cadence
 pkgname=cadence
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="JACK toolbox for audio production."
 arch=(x86_64)
 url="https://kx.studio/Applications:Cadence"
 license=(GPL2)
-# NOTE: alsa-utils is required for aplay/ arecord calls
-depends=(alsa-utils gcc-libs glibc hicolor-icon-theme jack2-dbus python-dbus
-python-pyqt5 qt5-base qt5-svg)
-makedepends=(a2jmidid jack_capture libpulse pulseaudio-jack
-python-rdflib zita-ajbridge)
+depends=(
+  alsa-utils # for aplay/ arecord calls
+  bash
+  gcc-libs
+  glibc
+  hicolor-icon-theme
+  jack2-dbus
+  python
+  python-dbus
+  python-pyqt5
+  qt5-base
+  qt5-svg
+  sh
+)
+makedepends=(
+  a2jmidid
+  jack_capture
+  libpulse
+  pulseaudio-jack
+  python-rdflib
+  zita-ajbridge
+)
 optdepends=(
   'a2jmidid: ALSA to JACK MIDI bridge'
   'jack_capture: recording via Cadence-Render'
@@ -22,7 +39,7 @@ optdepends=(
   'python-rdflib: LADSPA-RDF support in Carla'
   'zita-ajbridge: ALSA to JACK bridge'
 )
-source=($pkgname-$pkgver.tar.gz::https://github.com/falkTX/$pkgname/archive/v$pkgver.tar.gz)
+source=(https://github.com/falkTX/$pkgname/archive/v$pkgver/$pkgname-v$pkgver.tar.gz)
 sha512sums=('d8a1b52c361e3e18a193d1c283bb69abe18ce667b554fc53cb9b752d92747269145144ae512895ffbb5df76efe8671cfc0782f29e59d0d7cd3d97c97240bdecf')
 b2sums=('a5422e4d74618e2e45d9c6f275393a6e918783fc37d60a54142725aa54e691435c41f76dd0346fae7684c452988b07a18d817902abd917dbceaff5fb4aaa6c47')
 
