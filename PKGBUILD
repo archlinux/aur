@@ -2,7 +2,7 @@
 # Contributor: Butui Hu <hot123tea123@gmail.com>
 
 pkgname=texlive-full
-pkgver=2022.20221031
+pkgver=2023.20230321
 pkgrel=1
 epoch=1
 pkgdesc="This packages provides texlive-full in /opt.  It also tricks ArchLinux into thinking it has its texlive packages installed."
@@ -10,18 +10,16 @@ url="http://www.tug.org/texlive/"
 arch=("x86_64")
 license=('custom')
 makedepends=('rsync')
-depends=('libxcrypt-compat')
-provides=('asymptote' 'git-latexdiff'  'psutils' 't1utils'
+depends=('libxcrypt-compat' 'asymptote' 'psutils' 't1utils')
+provides=('git-latexdiff'
 'texlive-bin'
 'texlive-bibtexextra'  'texlive-core' 'texlive-fontsextra'
 'texlive-formatsextra' 'texlive-games' 'texlive-humanities' 'texlive-latexextra'
 'texlive-music' 'texlive-pictures' 'texlive-pstricks' 'texlive-publishers'
 'texlive-science'
-#
-# 'haskell-citeproc' is not provided, only citeproc-lua is provided.
 'texlive-langchinese' 'texlive-langcyrillic' 'texlive-langextra'
 'texlive-langgreek' 'texlive-langjapanese' 'texlive-langkorean' 'texlive-htmlxml')
-conflicts=('asymptote' 'git-latexdiff' 'haskell-citeproc' 'psutils' 't1utils'
+conflicts=('git-latexdiff'
 'texlive-bin'
 'texlive-bibtexextra'  'texlive-core' 'texlive-fontsextra'
 'texlive-formatsextra' 'texlive-games' 'texlive-humanities' 'texlive-latexextra'
@@ -71,6 +69,26 @@ prepare(){
 
 }
 
+_postfix(){
+    # remove files provided by other packages
+    # we do not link the executables from the depends to /opt/texlive/bin
+    # as it's too complicated.
+
+    cd ${pkgdir}
+    # asymptote
+    rm -rf usr/bin/{asy,xasy}
+    rm -rf usr/share/info/asy-faq.info
+    rm -rf usr/share/man/man1/{asy,xasy}.1
+
+    # psutils
+    rm -rf usr/bin/{epsffit,extractres,includeres,psbook,psjoin,psnup,psresize,psselect,pstops}
+    rm -rf usr/share/man/man1/{epsffit,extractres,includeres,psbook,psjoin,psnup,psresize,psselect,pstops,psutils}.1
+
+    # t1utils
+    rm -rf usr/bin/{t1ascii,t1asm,t1binary,t1disasm,t1mac,t1unmac}
+    rm -rf usr/share/man/man1/{t1ascii,t1asm,t1binary,t1disasm,t1mac,t1unmac}.1
+}
+
 package() {
     local _tldate=$(ls  | grep -E '[0-9]+' -o | sort -r | head -1)
     local _year=$(cat ${srcdir}/install-tl-${_tldate}/release-texlive.txt| grep -E '[0-9]+' -o)
@@ -90,12 +108,13 @@ package() {
 
     msg2 "Linking manpage"
     mkdir -p ${pkgdir}/usr/share/man/{man1,man5}
-    for mann in {man1,man5}
+    for mann in {1,5}
     do
-        cd ${pkgdir}/opt/texlive/${_year}/texmf-dist/doc/man/$mann
-        find . -type f,l  -print0 |sed "s|\./||g"| while read -d $'\0' man
+        cd ${pkgdir}/opt/texlive/${_year}/texmf-dist/doc/man/man${mann}
+        #  only link .1 and .5 files, not pdf
+        find . -type f,l -name "*.${mann}" -print0 |sed "s|\./||g"| while read -d $'\0' man
         do
-            ln -s "/opt/texlive/${_year}/texmf-dist/doc/man/$mann/${man}"  "${pkgdir}/usr/share/man/$mann/"
+            ln -s "/opt/texlive/${_year}/texmf-dist/doc/man/man${mann}/${man}"  "${pkgdir}/usr/share/man/man${mann}/"
         done
     done
 
@@ -125,5 +144,7 @@ package() {
 
     msg2 "Install license file"
     install -Dm644 "$srcdir"/LICENSE.TL "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE.TL
+
+    _postfix
 }
 # vim:set ts=2 sw=2 et:
