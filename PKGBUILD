@@ -7,7 +7,7 @@ pkgdesc="Create Interactive Web Maps with the JavaScript ‘Leaflet’ Library"
 url="https://cran.r-project.org/package=${_cranname}"
 license=("GPL3")
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 
 arch=("any")
 depends=(
@@ -36,7 +36,6 @@ optdepends=(
     "r-s2"
     "r-sf>=0.9.6"
     "r-shiny"
-    "r-testthat>=3.0.0"
 )
 checkdepends=(
     "${optdepends[@]}"

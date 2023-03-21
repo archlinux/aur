@@ -1,7 +1,7 @@
 pkgbase = r-leaflet
 	pkgdesc = Create Interactive Web Maps with the JavaScript ‘Leaflet’ Library
 	pkgver = 2.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=leaflet
 	arch = any
 	license = GPL3
@@ -14,7 +14,6 @@ pkgbase = r-leaflet
 	checkdepends = r-s2
 	checkdepends = r-sf>=0.9.6
 	checkdepends = r-shiny
-	checkdepends = r-testthat>=3.0.0
 	checkdepends = r-testthat>=3.0.0
 	depends = r-base64enc
 	depends = r-crosstalk
@@ -39,7 +38,6 @@ pkgbase = r-leaflet
 	optdepends = r-s2
 	optdepends = r-sf>=0.9.6
 	optdepends = r-shiny
-	optdepends = r-testthat>=3.0.0
 	source = https://cran.r-project.org/src/contrib/leaflet_2.1.2.tar.gz
 	b2sums = 64dcf4edbcd8e4318c54fda03eff193f7a39ce309cdadf53bee628b78a642bbc6df6a29f7f5ff48178465057d08012fd105156c61f59a18c33d41fca01a2cabd
 
