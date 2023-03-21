@@ -1,14 +1,14 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RTCGAToolbox
-_pkgver=2.28.0
+_pkgver=2.28.1
 pkgname=r-${_pkgname,,}
-pkgver=2.28.0
+pkgver=2.28.1
 pkgrel=1
 pkgdesc='A new tool for exporting TCGA Firehose data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
-license=('custom')
+license=('GPL2')
 depends=(
   r
   r-biocgenerics
@@ -37,7 +37,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c86ca89453eba231e30b8f26c27915693202dc187910cffd559c2469430a0270')
+sha256sums=('629b6f8b8d465251f2b7974fb7caed60827c817021ddbfcc85a74614156cc2f1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
@@ -46,6 +46,5 @@ build() {
 package() {
   install -dm0755 "${pkgdir}/usr/lib/R/library"
   cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 # vim:set ts=2 sw=2 et:
