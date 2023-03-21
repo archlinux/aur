@@ -9,7 +9,7 @@ pkgdesc="Encapsulated Classes with Reference Semantics"
 url="https://cran.r-project.org/package=${_cranname}"
 license=("MIT")
 pkgver=${_cranver//[:-]/.}
-pkgrel=2
+pkgrel=3
 
 arch=("any")
 depends=(
@@ -17,7 +17,6 @@ depends=(
 )
 optdepends=(
     "r-pryr"
-    "r-testthat"
 )
 checkdepends=(
     "${optdepends[@]}"

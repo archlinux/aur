@@ -1,16 +1,14 @@
 pkgbase = r-r6
 	pkgdesc = Encapsulated Classes with Reference Semantics
 	pkgver = 2.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=R6
 	arch = any
 	license = MIT
 	checkdepends = r-pryr
 	checkdepends = r-testthat
-	checkdepends = r-testthat
 	depends = r>=3.0
 	optdepends = r-pryr
-	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/R6_2.5.1.tar.gz
 	b2sums = 0045d7c37dfb7a773cd24e85e695575eaf6aa5c9392fb6888c10aa9fb3e35b13a230ed0aabcf84d52e656ef506ab58371044c4179b3380f5324b217fae6daeb4
 
