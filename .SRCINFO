@@ -1,6 +1,6 @@
 pkgbase = klipper-py3-git
 	pkgdesc = 3D printer firmware with motion planning on the host
-	pkgver = r4374.7c0559c6
+	pkgver = r4940.e2d7c5981
 	pkgrel = 1
 	url = https://www.klipper3d.org/
 	install = klipper.install
