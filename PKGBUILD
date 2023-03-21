@@ -11,7 +11,7 @@ pkgdesc="Lightweight Well-Known Geometry Parsing"
 url="https://cran.r-project.org/package=${_cranname}"
 license=("GPL3")
 pkgver=${_cranver//[:-]/.}
-pkgrel=2
+pkgrel=3
 
 arch=("i686" "x86_64")
 depends=(
@@ -22,7 +22,6 @@ optdepends=(
     "r-covr"
     "r-knitr"
     "r-rmarkdown>=0.2.65"
-    "r-testthat"
 )
 checkdepends=(
     "${optdepends[@]}"
