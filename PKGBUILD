@@ -2,7 +2,7 @@
 
 pkgname=sing-geoip-git
 _pkgname=sing-geoip
-pkgver=20230212
+pkgver=20230312
 pkgrel=1
 
 pkgdesc='sing-geoip database'
@@ -12,7 +12,6 @@ url="https://github.com/${_repo}"
 license=('GPL3')
 
 makedepends=('go')
-optdepends=('sing-box: The universal proxy platform')
 conflicts=("$_pkgname")
 provides=("$_pkgname")
 
