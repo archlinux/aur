@@ -1,6 +1,6 @@
-src
-pkg
-FlareSolverr
+src/
+pkg/
+FlareSolverr/
 
 *.pkg.*
 *.zip
