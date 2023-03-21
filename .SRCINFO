@@ -1,0 +1,14 @@
+pkgbase = figma-linux-git
+	pkgdesc = Figma-linux is an unofficial Electron-based Figma desktop app for Linux.
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/Figma-Linux/figma-linux
+	arch = x86_64
+	license = GPL
+	makedepends = rust
+	makedepends = npm
+	conflicts = figma-linux
+	source = figma-linux::git+https://github.com/Figma-Linux/figma-linux.git
+	sha256sums = SKIP
+
+pkgname = figma-linux-git

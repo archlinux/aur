@@ -1,0 +1,6 @@
+# ignore all
+*
+
+# pkg
+!PKGBUILD
+!.SRCINFO
