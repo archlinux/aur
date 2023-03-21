@@ -5,28 +5,28 @@
 
 pkgname=penguins-eggs
 pkgver=9.4.2 # autoupdate
-pkgrel=1
-pkgdesc="A terminal utility that allows you to remaster your system and redistribute it as an ISO image, either on a USB stick or over the network via remote boot PXE"
+pkgrel=2
+pkgdesc="A console tool, under continuous development, that allows you to remaster your system and redistribute it as live images on usb sticks or via PXE"
 arch=('any')
 url='https://penguins-eggs.net'
 license=('GPL2')
 
 # from branch (development)
-#_url="https://github.com/pieroproietti/penguins-eggs"
-#_branch="master"
-#source=("git+${_url}.git#branch=${_branch}")
-#sha256sums=('SKIP')
+_url="https://github.com/pieroproietti/penguins-eggs"
+_branch="master"
+source=("git+${_url}.git#branch=${_branch}")
+sha256sums=('SKIP')
 
-#pkgver() {
-#	cd ${srcdir}/${pkgname}
-#  grep 'version' package.json | awk 'NR==1 {print $2 }' | awk -F '"' '{print $2}'
-#	cd ..
-#	mv ${srcdir}/${pkgname} ${srcdir}/${pkgname}-${pkgver}
-#}
+pkgver() {
+	cd ${srcdir}/${pkgname}
+  grep 'version' package.json | awk 'NR==1 {print $2 }' | awk -F '"' '{print $2}'
+	cd ..
+	mv ${srcdir}/${pkgname} ${srcdir}/${pkgname}-${pkgver}
+}
 
 # from release
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/pieroproietti/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('621f8712a3ae4b45db7991b8d1389cdd2b150ec8d1b9bfcd61697f9ad5147a74')
+#source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/pieroproietti/${pkgname}/archive/v${pkgver}.tar.gz")
+#sha256sums=('621f8712a3ae4b45db7991b8d1389cdd2b150ec8d1b9bfcd61697f9ad5147a74')
 
 options=('!strip')
 makedepends=('npm')
@@ -90,7 +90,7 @@ package() {
   find node_modules -type f -print0 | xargs --null sed -i "s#${srcdir}/${pkgname}-${pkgver}/#/usr/lib/eggs/#"
 
   install -m 755 -d "${pkgdir}/usr/lib/${pkgname}"
-  cp -r -t "${pkgdir}/usr/lib/${pkgname}/" addons assets bin conf dist ipxe node_modules mkinitcpio pnpm-lock.yaml scripts
+  cp -r -t "${pkgdir}/usr/lib/${pkgname}/" addons assets bin conf dist ipxe node_modules mkinitcpio pnpm-lock.yaml scripts .oclif.manifest.json
   install -m 644 -D package.json -t "${pkgdir}/usr/lib/${pkgname}/"
 
   # Install documentation
