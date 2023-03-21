@@ -2,18 +2,31 @@
 # Contributor: Static_Rocket
 
 pkgbase=asusctl
-pkgname=(asusctl rog-control-center)
-pkgver=4.5.8
+pkgname=(
+  asusctl
+  rog-control-center
+)
+pkgver=4.6.0
 pkgrel=1
 pkgdesc="A control daemon, tools, and a collection of crates for interacting with ASUS ROG laptops"
 arch=('x86_64')
 url="https://gitlab.com/asus-linux/asusctl"
 license=('MPL2')
-makedepends=('cmake' 'clang' 'git' 'rust'
-             'fontconfig' 'hicolor-icon-theme' 'libappindicator-gtk3'
-             'libusb' 'power-profiles-daemon' 'supergfxctl' 'systemd')
-conflicts=('asusctl-git')
-_commit=067738b94f4547b1015e1327e9e35b12177df78d # tags/4.5.8^0
+makedepends=(
+  clang
+  cmake
+  fontconfig
+  git
+  hicolor-icon-theme
+  libappindicator-gtk3
+  libusb
+  power-profiles-daemon
+  rust
+  supergfxctl
+  systemd
+)
+conflicts=(asusctl-git)
+_commit=ec5e6d2e7cd52226d108e16a3dd92d04b7a1d37d # tags/4.6.0^0
 source=("git+${url}.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -43,12 +56,19 @@ _pick() {
 
 package_asusctl() {
   pkgdesc="${pkgdesc/tools/CLI tools}"
-  depends=('libusb' 'systemd' 'power-profiles-daemon' 'hicolor-icon-theme')
-  install='asusctl.install'
-  optdepends=('acpi_call: fan control'
-            'supergfxctl: hybrid GPU control'
-            'asusctltray: tray profile switcher'
-            'rog-control-center: app to control asusctl')
+  depends=(
+    hicolor-icon-theme
+    libusb
+    power-profiles-daemon
+    systemd
+  )
+  install=asusctl.install
+  optdepends=(
+    'acpi_call: fan control'
+    'supergfxctl: hybrid GPU control'
+    'asusctltray: tray profile switcher'
+    'rog-control-center: app to control asusctl'
+  )
 
   cd "${pkgbase}"
   make DESTDIR="${pkgdir}" install
@@ -60,7 +80,12 @@ package_asusctl() {
 }
 
 package_rog-control-center() {
-  depends=('asusctl' 'fontconfig' 'libappindicator-gtk3' 'supergfxctl')
+  depends=(
+    asusctl
+    fontconfig
+    libappindicator-gtk3
+    supergfxctl
+  )
   pkgdesc="App to control asusctl"
   mv rogcc/* "${pkgdir}"
 }

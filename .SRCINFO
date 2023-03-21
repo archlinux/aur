@@ -1,32 +1,32 @@
 pkgbase = asusctl
 	pkgdesc = A control daemon, tools, and a collection of crates for interacting with ASUS ROG laptops
-	pkgver = 4.5.8
+	pkgver = 4.6.0
 	pkgrel = 1
 	url = https://gitlab.com/asus-linux/asusctl
 	arch = x86_64
 	license = MPL2
-	makedepends = cmake
 	makedepends = clang
-	makedepends = git
-	makedepends = rust
+	makedepends = cmake
 	makedepends = fontconfig
+	makedepends = git
 	makedepends = hicolor-icon-theme
 	makedepends = libappindicator-gtk3
 	makedepends = libusb
 	makedepends = power-profiles-daemon
+	makedepends = rust
 	makedepends = supergfxctl
 	makedepends = systemd
 	conflicts = asusctl-git
-	source = git+https://gitlab.com/asus-linux/asusctl.git#commit=067738b94f4547b1015e1327e9e35b12177df78d
+	source = git+https://gitlab.com/asus-linux/asusctl.git#commit=ec5e6d2e7cd52226d108e16a3dd92d04b7a1d37d
 	sha256sums = SKIP
 
 pkgname = asusctl
 	pkgdesc = A control daemon, CLI tools, and a collection of crates for interacting with ASUS ROG laptops
 	install = asusctl.install
-	depends = libusb
-	depends = systemd
-	depends = power-profiles-daemon
 	depends = hicolor-icon-theme
+	depends = libusb
+	depends = power-profiles-daemon
+	depends = systemd
 	optdepends = acpi_call: fan control
 	optdepends = supergfxctl: hybrid GPU control
 	optdepends = asusctltray: tray profile switcher
