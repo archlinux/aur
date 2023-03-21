@@ -1,6 +1,6 @@
 pkgbase = thunderbird-localized-beta-bin
 	pkgdesc = Standalone mail and news reader from mozilla.org — localized beta version
-	pkgver = 112.0b1
+	pkgver = 112.0b2
 	pkgrel = 1
 	url = https://www.mozilla.org/thunderbird
 	arch = i686
@@ -61,20 +61,20 @@ pkgbase = thunderbird-localized-beta-bin
 	depends = json-c
 	optdepends = libotr: OTR support for active one-to-one chats
 	optdepends = libnotify: Notification integration
-	provides = thunderbird=112.0b1
-	provides = thunderbird-beta=112.0b1
+	provides = thunderbird=112.0b2
+	provides = thunderbird-beta=112.0b2
 	conflicts = thunderbird-beta
 	conflicts = thunderbird-beta-bin
 	source = thunderbird-localized-beta-bin.desktop
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
 	sha256sums = 4890cc98cc21f3f2dbf4134627217b11167c73954a549fbe7ca0bbc8ca79b2d4
-	source_i686 = https://ftp.mozilla.org/pub/thunderbird/releases/112.0b1/linux-i686/en-US/thunderbird-112.0b1.tar.bz2
-	source_i686 = https://ftp.mozilla.org/pub/thunderbird/releases/112.0b1/linux-i686/en-US/thunderbird-112.0b1.tar.bz2.asc
-	sha256sums_i686 = b61c12895c179c639b5118225f2be79425b4d31db3fd5364d1a6299b13748f4f
+	source_i686 = https://ftp.mozilla.org/pub/thunderbird/releases/112.0b2/linux-i686/en-US/thunderbird-112.0b2.tar.bz2
+	source_i686 = https://ftp.mozilla.org/pub/thunderbird/releases/112.0b2/linux-i686/en-US/thunderbird-112.0b2.tar.bz2.asc
+	sha256sums_i686 = 9bab26b59222bfac439844ace83c99205a3f6739b18e4a27adecdb6307e191da
 	sha256sums_i686 = SKIP
-	source_x86_64 = https://ftp.mozilla.org/pub/thunderbird/releases/112.0b1/linux-x86_64/en-US/thunderbird-112.0b1.tar.bz2
-	source_x86_64 = https://ftp.mozilla.org/pub/thunderbird/releases/112.0b1/linux-x86_64/en-US/thunderbird-112.0b1.tar.bz2.asc
-	sha256sums_x86_64 = 264e378aa87784d1a9ae3599fa9c8fe2e44ebbd4dcca0ac4997c4914cd7617d8
+	source_x86_64 = https://ftp.mozilla.org/pub/thunderbird/releases/112.0b2/linux-x86_64/en-US/thunderbird-112.0b2.tar.bz2
+	source_x86_64 = https://ftp.mozilla.org/pub/thunderbird/releases/112.0b2/linux-x86_64/en-US/thunderbird-112.0b2.tar.bz2.asc
+	sha256sums_x86_64 = 3f510d0cd5eb72071fae717c759ca08eeac8559f55a402f7e4d4e76a1dfcaa82
 	sha256sums_x86_64 = SKIP
 
 pkgname = thunderbird-localized-beta-bin
