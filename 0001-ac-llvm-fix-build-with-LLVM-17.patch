@@ -1,0 +1,185 @@
+From aeea383a0b1c4a812d38ae963134dc07a5165cff Mon Sep 17 00:00:00 2001
+From: Pierre-Eric Pelloux-Prayer <pierre-eric.pelloux-prayer@amd.com>
+Date: Mon, 20 Mar 2023 10:26:11 +0100
+Subject: [PATCH] ac/llvm: fix build with LLVM 17
+
+This builds with LLVM 12 -> 17 and a running a simple app seems to work.
+
+I couldn't test LLVM 11 because meson fails with:
+
+    Looking for a fallback subproject for the dependency llvm (modules:
+    bitwriter, engine, mcdisassembler, mcjit, core, executionengine,
+    scalaropts, transformutils, instcombine, amdgpu, bitreader, ipo, native)
+
+Closes: https://gitlab.freedesktop.org/mesa/mesa/-/issues/8297
+Cc: mesa-stable
+---
+ src/amd/llvm/ac_llvm_build.h    |  2 --
+ src/amd/llvm/ac_llvm_helper.cpp | 50 ++++++++++++++++++++++++++++-----
+ src/amd/llvm/ac_llvm_util.c     | 41 ---------------------------
+ src/amd/llvm/ac_llvm_util.h     |  3 +-
+ 4 files changed, 45 insertions(+), 51 deletions(-)
+
+diff --git a/src/amd/llvm/ac_llvm_build.h b/src/amd/llvm/ac_llvm_build.h
+index 197a30bb154..8a7f079912a 100644
+--- a/src/amd/llvm/ac_llvm_build.h
++++ b/src/amd/llvm/ac_llvm_build.h
+@@ -586,8 +586,6 @@ LLVMValueRef ac_build_atomic_rmw(struct ac_llvm_context *ctx, LLVMAtomicRMWBinOp
+ LLVMValueRef ac_build_atomic_cmp_xchg(struct ac_llvm_context *ctx, LLVMValueRef ptr,
+                                       LLVMValueRef cmp, LLVMValueRef val, const char *sync_scope);
+ 
+-void ac_add_sinking_pass(LLVMPassManagerRef PM);
+-
+ void ac_export_mrt_z(struct ac_llvm_context *ctx, LLVMValueRef depth, LLVMValueRef stencil,
+                      LLVMValueRef samplemask, LLVMValueRef mrt0_alpha, bool is_last,
+                      struct ac_export_args *args);
+diff --git a/src/amd/llvm/ac_llvm_helper.cpp b/src/amd/llvm/ac_llvm_helper.cpp
+index 7b0e7049486..9d831f37a65 100644
+--- a/src/amd/llvm/ac_llvm_helper.cpp
++++ b/src/amd/llvm/ac_llvm_helper.cpp
+@@ -32,7 +32,11 @@
+ #include <llvm/Support/CommandLine.h>
+ #include <llvm/Transforms/IPO.h>
+ #include <llvm/Transforms/Scalar.h>
+-
++#include <llvm/Transforms/Utils.h>
++#include <llvm/CodeGen/Passes.h>
++#include <llvm/Transforms/IPO/AlwaysInliner.h>
++#include <llvm/Transforms/InstCombine/InstCombine.h>
++#include <llvm/Transforms/IPO/SCCP.h>
+ #if LLVM_VERSION_MAJOR >= 15
+ #include "llvm/CodeGen/SelectionDAGNodes.h"
+ #endif
+@@ -292,9 +296,46 @@ bool ac_compile_module_to_elf(struct ac_compiler_passes *p, LLVMModuleRef module
+    return true;
+ }
+ 
+-void ac_llvm_add_barrier_noop_pass(LLVMPassManagerRef passmgr)
++LLVMPassManagerRef ac_create_passmgr(LLVMTargetLibraryInfoRef target_library_info,
++                                     bool check_ir)
+ {
++   LLVMPassManagerRef passmgr = LLVMCreatePassManager();
++   if (!passmgr)
++      return NULL;
++
++   if (target_library_info)
++      LLVMAddTargetLibraryInfo(target_library_info, passmgr);
++
++   if (check_ir)
++      unwrap(passmgr)->add(createMachineVerifierPass("mesa ir"));
++
++   unwrap(passmgr)->add(createAlwaysInlinerLegacyPass());
++
++   /* Normally, the pass manager runs all passes on one function before
++    * moving onto another. Adding a barrier no-op pass forces the pass
++    * manager to run the inliner on all functions first, which makes sure
++    * that the following passes are only run on the remaining non-inline
++    * function, so it removes useless work done on dead inline functions.
++    */
+    unwrap(passmgr)->add(createBarrierNoopPass());
++
++   /* This pass eliminates all loads and stores on alloca'd pointers. */
++   unwrap(passmgr)->add(createPromoteMemoryToRegisterPass());
++   #if LLVM_VERSION_MAJOR >= 16
++   unwrap(passmgr)->add(createSROAPass(true));
++   #else
++   unwrap(passmgr)->add(createSROAPass());
++   #endif
++   /* TODO: restore IPSCCP */
++   if (LLVM_VERSION_MAJOR >= 16)
++      unwrap(passmgr)->add(createLoopSinkPass());
++   /* TODO: restore IPSCCP */
++   unwrap(passmgr)->add(createLICMPass());
++   unwrap(passmgr)->add(createCFGSimplificationPass());
++   /* This is recommended by the instruction combining pass. */
++   unwrap(passmgr)->add(createEarlyCSEPass(true));
++   unwrap(passmgr)->add(createInstructionCombiningPass());
++   return passmgr;
+ }
+ 
+ LLVMValueRef ac_build_atomic_rmw(struct ac_llvm_context *ctx, LLVMAtomicRMWBinOp op,
+@@ -364,8 +405,3 @@ LLVMValueRef ac_build_atomic_cmp_xchg(struct ac_llvm_context *ctx, LLVMValueRef
+                                               AtomicOrdering::SequentiallyConsistent,
+                                               AtomicOrdering::SequentiallyConsistent, SSID));
+ }
+-
+-void ac_add_sinking_pass(LLVMPassManagerRef PM)
+-{
+-  unwrap(PM)->add(createLoopSinkPass());
+-}
+diff --git a/src/amd/llvm/ac_llvm_util.c b/src/amd/llvm/ac_llvm_util.c
+index 8af0ef15b13..d1dec4d2853 100644
+--- a/src/amd/llvm/ac_llvm_util.c
++++ b/src/amd/llvm/ac_llvm_util.c
+@@ -31,9 +31,6 @@
+ #include "util/u_math.h"
+ #include <llvm-c/Core.h>
+ #include <llvm-c/Support.h>
+-#include <llvm-c/Transforms/IPO.h>
+-#include <llvm-c/Transforms/Scalar.h>
+-#include <llvm-c/Transforms/Utils.h>
+ 
+ #include <assert.h>
+ #include <stdio.h>
+@@ -219,44 +216,6 @@ static LLVMTargetMachineRef ac_create_target_machine(enum radeon_family family,
+    return tm;
+ }
+ 
+-static LLVMPassManagerRef ac_create_passmgr(LLVMTargetLibraryInfoRef target_library_info,
+-                                            bool check_ir)
+-{
+-   LLVMPassManagerRef passmgr = LLVMCreatePassManager();
+-   if (!passmgr)
+-      return NULL;
+-
+-   if (target_library_info)
+-      LLVMAddTargetLibraryInfo(target_library_info, passmgr);
+-
+-   if (check_ir)
+-      LLVMAddVerifierPass(passmgr);
+-
+-   LLVMAddAlwaysInlinerPass(passmgr);
+-
+-   /* Normally, the pass manager runs all passes on one function before
+-    * moving onto another. Adding a barrier no-op pass forces the pass
+-    * manager to run the inliner on all functions first, which makes sure
+-    * that the following passes are only run on the remaining non-inline
+-    * function, so it removes useless work done on dead inline functions.
+-    */
+-   ac_llvm_add_barrier_noop_pass(passmgr);
+-
+-   /* This pass eliminates all loads and stores on alloca'd pointers. */
+-   LLVMAddPromoteMemoryToRegisterPass(passmgr);
+-   LLVMAddScalarReplAggregatesPass(passmgr);
+-   LLVMAddIPSCCPPass(passmgr);
+-   if (LLVM_VERSION_MAJOR >= 16)
+-      ac_add_sinking_pass(passmgr);
+-   LLVMAddLICMPass(passmgr);
+-   LLVMAddAggressiveDCEPass(passmgr);
+-   LLVMAddCFGSimplificationPass(passmgr);
+-   /* This is recommended by the instruction combining pass. */
+-   LLVMAddEarlyCSEMemSSAPass(passmgr);
+-   LLVMAddInstructionCombiningPass(passmgr);
+-   return passmgr;
+-}
+-
+ LLVMAttributeRef ac_get_llvm_attribute(LLVMContextRef ctx, const char *str)
+ {
+    return LLVMCreateEnumAttribute(ctx, LLVMGetEnumAttributeKindForName(str, strlen(str)), 0);
+diff --git a/src/amd/llvm/ac_llvm_util.h b/src/amd/llvm/ac_llvm_util.h
+index a22c3fabca6..6ff98c8a370 100644
+--- a/src/amd/llvm/ac_llvm_util.h
++++ b/src/amd/llvm/ac_llvm_util.h
+@@ -110,7 +110,8 @@ struct ac_compiler_passes *ac_create_llvm_passes(LLVMTargetMachineRef tm);
+ void ac_destroy_llvm_passes(struct ac_compiler_passes *p);
+ bool ac_compile_module_to_elf(struct ac_compiler_passes *p, LLVMModuleRef module,
+                               char **pelf_buffer, size_t *pelf_size);
+-void ac_llvm_add_barrier_noop_pass(LLVMPassManagerRef passmgr);
++LLVMPassManagerRef ac_create_passmgr(LLVMTargetLibraryInfoRef target_library_info,
++                                     bool check_ir);
+ 
+ static inline bool ac_has_vec3_support(enum amd_gfx_level chip, bool use_format)
+ {
+-- 
+2.40.0
+
