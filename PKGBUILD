@@ -11,17 +11,13 @@ pkgdesc="Praise users"
 url="https://cran.r-project.org/package=${_cranname}"
 license=("MIT")
 pkgver=${_cranver//[:-]/.}
-pkgrel=2
+pkgrel=3
 
 arch=("any")
 depends=(
     "r"
 )
-optdepends=(
-    "r-testthat"
-)
 checkdepends=(
-    "${optdepends[@]}"
     "r-testthat"
 )
 

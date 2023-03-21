@@ -1,14 +1,12 @@
 pkgbase = r-praise
 	pkgdesc = Praise users
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=praise
 	arch = any
 	license = MIT
 	checkdepends = r-testthat
-	checkdepends = r-testthat
 	depends = r
-	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/praise_1.0.0.tar.gz
 	b2sums = 4f1450811b1bd99aae8e72daccba12612798e8ac521e059b74c02b7589c85842feec4ef49969b516d1a4c91a2d68a5a6fed627da5f07a26bffc39e2168e12afb
 
