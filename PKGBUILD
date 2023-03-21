@@ -2,7 +2,7 @@
 # Maintained at: https://github.com/matt-h/aur-pkgbuilds
 
 pkgname=headscale
-pkgver=0.20.0
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="An open source, self-hosted implementation of the Tailscale coordination server."
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -23,7 +23,7 @@ source=(
 	'headscale.sysusers'
 	'headscale.tmpfiles'
 )
-sha256sums=('9deac67fd76fcc11d63b19a120cf961e14c7d1526bf83f44393edf3f0c99e35c'
+sha256sums=('2afbdc038508cb694be496db9ba6b63bbc611b7038e8299e60eef0f1b227f12f'
             '3cae7a3bfbb70bfda8dc4323d27cdcde0d841d1b3335c0f10525907eb3f6e650'
             '059353f4843dec6eb447c567fac890ef63cc9c8acea18840fcfc3f4a76d596db'
             '8a22d7193ceeac0be32725cf8108f963be3a21855e6099de964f810094d0adc7')
