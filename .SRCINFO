@@ -1,0 +1,21 @@
+pkgbase = karamel-git
+	pkgdesc = a tool for extracting low-level F* programs to readable C code
+	pkgver = fstar.v2022.11.19.r846.g71facac.karamel.v1.0.0.r421.gbd359d8
+	pkgrel = 1
+	url = https://github.com/FStarLang/karamel
+	arch = i686
+	arch = x86_64
+	license = Apache-2.0
+	depends = python2
+	depends = opam
+	depends = which
+	conflicts = fstar
+	options = !strip
+	options = !makeflags
+	options = staticlibs
+	source = git+https://github.com/FStarLang/FStar.git
+	source = git+https://github.com/FStarLang/karamel.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = karamel-git
