@@ -1,7 +1,7 @@
 # Maintainer: yavavz <snakesoid666 at gmail dot com>
 
 pkgname=picacg-qt-appimage
-pkgver=1.4.0
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="PicACG Comic PC Client For Linux"
 arch=("x86_64")
@@ -16,7 +16,7 @@ optdepends=('python-waifu2x-vulkan: Waifu2x-Vulkan support')
 provides=('bika')
 conflicts=('bika')
 source=("${url}/releases/download/v${pkgver}/${_pkgname}")
-sha256sums=('e7ac813bdfc54d577de3255271c61b03dba9f9d3efd20a1cbe252e08d5a24cd1')
+sha256sums=('30c9d40583a7ae73f29ab334a636040de33428d79dcf5a17ea91fe6997f1cbdd')
 
 _installdir=/opt/appimages
 _installname=picacg
