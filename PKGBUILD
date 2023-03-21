@@ -2,7 +2,7 @@
 # Maintainer: Dmitry Rubtsov <me@mazy.wtf>
 
 pkgname='mcli-bin'
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='Simple shortcut menu for shell commands.'
 url='https://github.com/mazzz1y/mcli'
@@ -11,14 +11,14 @@ license=('MIT')
 provides=('mcli')
 conflicts=('mcli')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/mazzz1y/mcli/releases/download/v1.1.1/mcli_1.1.1_linux_arm64.tar.gz")
-sha256sums_aarch64=('cc4ae739f78ec034e2af4dbebd325aadbc191e1ff36fb6eee273b6e226405c5c')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/mazzz1y/mcli/releases/download/v1.1.2/mcli_1.1.2_linux_arm64.tar.gz")
+sha256sums_aarch64=('09e6595c574c74d82549417e8365b1477261a2a4d3b31a7347dff266f2a0b38a')
 
-source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/mazzz1y/mcli/releases/download/v1.1.1/mcli_1.1.1_linux_armv6.tar.gz")
-sha256sums_armv6h=('7f22a545bb2f13c6550a776dbfaf7d1d6d09f6e27038cf56eaca8b3e4beae610')
+source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/mazzz1y/mcli/releases/download/v1.1.2/mcli_1.1.2_linux_armv6.tar.gz")
+sha256sums_armv6h=('b0459cb7acb08891bd9954c71ff2506e4ef9d5eda23dfd89701a802b44078411')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/mazzz1y/mcli/releases/download/v1.1.1/mcli_1.1.1_linux_amd64.tar.gz")
-sha256sums_x86_64=('29e7ff6a909b31bbd65aac4e3b35911e7b4a4a19eb5c0e8859fc68d2e866358a')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/mazzz1y/mcli/releases/download/v1.1.2/mcli_1.1.2_linux_amd64.tar.gz")
+sha256sums_x86_64=('0afa09b884d7722a7aab9201b43678577b25cb8a8796fd4aa40d794fe2d56a38')
 
 package() {
   install -Dm755 "./mcli" "${pkgdir}/usr/bin/mcli"
