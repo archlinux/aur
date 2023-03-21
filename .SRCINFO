@@ -1,0 +1,33 @@
+pkgbase = r-webfakes
+	pkgdesc = Fake Web Apps for HTTP Testing
+	pkgver = 1.1.7
+	pkgrel = 1
+	url = https://cran.r-project.org/package=webfakes
+	arch = i686
+	arch = x86_64
+	license = MIT
+	checkdepends = r-callr
+	checkdepends = r-covr
+	checkdepends = r-curl
+	checkdepends = r-glue
+	checkdepends = r-httpuv
+	checkdepends = r-httr
+	checkdepends = r-jsonlite
+	checkdepends = r-testthat>=3.0.0
+	checkdepends = r-withr
+	checkdepends = r-xml2
+	depends = r>=3.5.0
+	optdepends = r-callr
+	optdepends = r-covr
+	optdepends = r-curl
+	optdepends = r-glue
+	optdepends = r-httpuv
+	optdepends = r-httr
+	optdepends = r-jsonlite
+	optdepends = r-testthat>=3.0.0
+	optdepends = r-withr
+	optdepends = r-xml2
+	source = https://cran.r-project.org/src/contrib/webfakes_1.1.7.tar.gz
+	b2sums = ce1fbe037f8417308e3c7347ec3c67a84a428fa26a00c8053ae5c0ae1a164cb7c358e366214032c9ca77403b0636d8acd283d58f07c8debf8cc05af05147dce4
+
+pkgname = r-webfakes
