@@ -5,14 +5,14 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.12.r299.g83b037cc
+pkgver=0.5.13.beta1.r57.g0eea95f7d
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
 url='https://lutris.net/'
 license=('GPL3')
 depends=('cabextract' 'curl' 'glib2' 'gtk3' 'mesa-utils' 'p7zip' 'psmisc'
-         'python-certifi' 'python-dbus' 'python-distro' 'python-gobject'
+         'python-cairo' 'python-certifi' 'python-dbus' 'python-distro' 'python-gobject'
          'python-lxml' 'python-pillow' 'python-requests' 'python-yaml' 'unzip'
          'webkit2gtk-4.1' 'xdg-utils' 'xorg-xrandr')
 makedepends=('git' 'meson')
@@ -36,7 +36,7 @@ optdepends=(
   'python-evdev: Controller support'
   'python-moddb: Handle ModDB downloads in installers'
   'python-pefile: Extract icons from Windows executables'
-  'python-protobuf: BattleNet support'
+  'python-protobuf: BattleNet integration'
   'python-pypresence: Discord Rich Presence integration'
   'vkd3d: Vulkan 3D support'
   'vulkan-icd-loader: Vulkan support'
