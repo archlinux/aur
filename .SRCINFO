@@ -1,17 +1,17 @@
 pkgbase = balena-etcher-appimage
 	pkgdesc = Flash OS images to SD cards & USB drives, safely and easily
-	pkgver = 1.18.5
+	pkgver = 1.18.6
 	pkgrel = 1
 	url = https://www.balena.io/etcher
 	arch = x86_64
 	license = Apache
 	depends = fuse2
-	provides = balena-etcher-appimage=1.18.5
+	provides = balena-etcher-appimage=1.18.6
 	conflicts = balena-etcher-appimage
 	conflicts = balena-etcher
 	conflicts = balena-etcher-electron-bin
 	options = !strip
-	source = https://github.com/balena-io/etcher/releases/download/v1.18.5/balenaEtcher-1.18.5-x64.AppImage
-	sha256sums = 4291590e42c1ecf5099804f9fb8982c74680fc01854337e8edb6cd3c42eb4fbc
+	source = https://github.com/balena-io/etcher/releases/download/v1.18.6/balenaEtcher-1.18.6-x64.AppImage
+	sha256sums = a21e64e6709c8741a5283d915c4acfa89643a901ceb9e7589d7a50b29a74f4d9
 
 pkgname = balena-etcher-appimage
