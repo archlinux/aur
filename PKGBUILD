@@ -6,7 +6,7 @@ _bcname=GenomeInfoDb
 _bcver=1.34.9
 pkgname="r-${_bcname,,}"
 pkgver="${_bcver//[:-]/.}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Utilities for manipulating chromosome names, including modifying them to follow a particular naming style"
 arch=("any")
 url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
@@ -55,7 +55,7 @@ package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
     cp -a --no-preserve=ownership "${srcdir}/build/${_bcname}" "${pkgdir}/usr/lib/R/library"
 
-    if [[ -f "${_cranname}/LICENSE" ]]; then
-        install -Dm0644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    if [[ -f "${_bcname}/LICENSE" ]]; then
+        install -Dm0644 "${_bcname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   fi
 }
