@@ -1,18 +1,22 @@
 pkgbase = r-magrittr
 	pkgdesc = A Forward-Pipe Operator for R
 	pkgver = 2.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=magrittr
 	arch = i686
 	arch = x86_64
 	license = MIT
+	checkdepends = r-covr
+	checkdepends = r-knitr
+	checkdepends = r-rlang
+	checkdepends = r-rmarkdown
+	checkdepends = r-testthat
 	depends = r>=3.4.0
 	optdepends = r-covr
 	optdepends = r-knitr
 	optdepends = r-rlang
 	optdepends = r-rmarkdown
-	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/magrittr_2.0.3.tar.gz
-	sha256sums = a2bff83f792a1acb801bfe6330bb62724c74d5308832f2cb6a6178336ace55d2
+	b2sums = f4ebee352cc6e3de831d7a596d7f44b94bc77a19ad110fe53d6cb7d872bd71c0c83da7b6fad8063823fef6e42a12827b01cd2c5ce77b4e274a3abbcf68a0e772
 
 pkgname = r-magrittr
