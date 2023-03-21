@@ -1,6 +1,6 @@
 pkgbase = hyprland-legacyrenderer-hidpi-xprop-git
 	pkgdesc = A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (Legacy Renderer with HiDPI fix)
-	pkgver = r2557.5184b542
+	pkgver = r2633.cb229f64
 	pkgrel = 1
 	url = https://github.com/hyprwm/Hyprland
 	arch = any
@@ -9,7 +9,6 @@ pkgbase = hyprland-legacyrenderer-hidpi-xprop-git
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = gcc
-	makedepends = gdb
 	makedepends = meson
 	makedepends = vulkan-headers
 	makedepends = wayland-protocols
@@ -58,7 +57,7 @@ pkgbase = hyprland-legacyrenderer-hidpi-xprop-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 304aaf12cbd7dc198bf7e418d729b297ea61186d27c035e4a63a337399fcec76
-	sha256sums = e7cf16e39db2bde4dbc9d7ec3b4753f7643b1bf198a3179e6802a9c603437fe9
+	sha256sums = e3e3dab89f6cadeb330e03921c0485b2802be6a1267747237e702cbe6d02d65f
+	sha256sums = 97105bee80596fd4aa21dde35d23847604a5b0e36c04b1679f7a2b9213774561
 
 pkgname = hyprland-legacyrenderer-hidpi-xprop-git
