@@ -1,12 +1,12 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 pkgname=go2tv
-pkgver=1.13.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='cast your videos to UPnP/DLNA MediaRenderer'
 arch=('x86_64')
 url="https://github.com/alexballas/${pkgname}"
 license=('MIT')
-depends=('libglvnd')
+depends=('glibc' 'libx11' 'libglvnd')
 makedepends=('go' 'libxcursor' 'libxrandr' 'libxinerama' 'libxi')
 optdepends=('ffmpeg: transcoding support')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
@@ -27,4 +27,4 @@ package() {
   install -Dm644 $pkgname-$pkgver/LICENSE    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
-sha256sums=('d5841839c796930a4a0c72a76f4b0ae6ad20b956af8003b287c142eb008fe6d1')
+sha256sums=('e2541440f9788056ce4e32797c5dabba276183060788aa817f3d263a7b79ea31')
