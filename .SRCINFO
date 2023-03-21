@@ -1,7 +1,7 @@
 pkgbase = r-snow
 	pkgdesc = Simple Network of Workstations
 	pkgver = 0.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=snow
 	arch = any
 	license = GPL2
@@ -9,6 +9,6 @@ pkgbase = r-snow
 	depends = r>=2.13.1
 	optdepends = r-rlecuyer
 	source = https://cran.r-project.org/src/contrib/snow_0.4-4.tar.gz
-	sha256sums = 84587f46f222a96f3e2fde10ad6ec6ddbd878f4e917cd926d632f61a87db13c9
+	b2sums = 9b7a477e7b99064df4793de21a1092f83c27bccce5101b6900a5f2395bad108911ab2aa3e8d23dec6f5a5b18b793d75216c343b9bb74c7bee197219d8a2d030d
 
 pkgname = r-snow
