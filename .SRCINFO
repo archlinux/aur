@@ -1,11 +1,10 @@
 pkgbase = sing-geoip
 	pkgdesc = sing-geoip database
 	pkgver = 20230112
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SagerNet/sing-geoip
 	arch = any
 	license = GPL3
-	optdepends = sing-box: The universal proxy platform
 	source = 20230112.geoip-cn.db::https://github.com/SagerNet/sing-geoip/releases/download/20230112/geoip-cn.db
 	source = 20230112.geoip.db::https://github.com/SagerNet/sing-geoip/releases/download/20230112/geoip.db
 	source = 20230112.LICENSE::https://raw.githubusercontent.com/SagerNet/sing-geoip/20230112/LICENSE

@@ -2,15 +2,13 @@
 
 pkgname=sing-geoip
 pkgver=20230112
-pkgrel=1
+pkgrel=2
 
 pkgdesc='sing-geoip database'
 arch=('any')
 _repo="SagerNet/${pkgname}"
 url="https://github.com/${_repo}"
 license=('GPL3')
-
-optdepends=('sing-box: The universal proxy platform')
 
 source=("${pkgver}.geoip-cn.db::${url}/releases/download/${pkgver}/geoip-cn.db"
         "${pkgver}.geoip.db::${url}/releases/download/${pkgver}/geoip.db"
