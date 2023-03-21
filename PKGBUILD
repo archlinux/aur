@@ -1,26 +1,50 @@
+# Maintainer: peippo <christoph+aur@christophfink.com>
 # Maintainer: Alex Branham <branham@utexas.edu>
+
 _cranname=debugme
 _cranver=1.1.0
-_pkgtar=${_cranname}_${_cranver}.tar.gz
-pkgname=r-debugme
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
-pkgdesc="Debug R Packages"
-arch=('any')
+pkgname=r-${_cranname,,}
+pkgdesc="Specify debug messages as special string constants, and control
+debugging of packages via environment variables."
 url="https://cran.r-project.org/package=${_cranname}"
-license=('MIT')
-depends=('r' 'r-crayon')
+license=("MIT")
+pkgver=${_cranver//[:-]/.}
+pkgrel=2
 
-optdepends=('r-covr' 'r-mockery' 'r-r6' 'r-testthat' 'r-withr')
+arch=("any")
+depends=(
+    "r"
+    "r-crayon"
+)
+optdepends=(
+    "r-covr"
+    "r-mockery"
+    "r-r6"
+    "r-withr"
+)
+checkdepends=(
+    "${optdepends[@]}"
+    "r-testthat"
+)
 
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('0b7946be7d9420c63a4d02a937e46227')
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+b2sums=("5c52733e28d0728629183f2c66a53bcd5309fbb67750e4ee3cfefa58a92f02fd97bda2ca1c2c0ad8abc69be10b16c9d07b8c36818f92325ce9f1ee52ed8ae0c9")
 
-build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+build() {
+    mkdir -p "${srcdir}/build/"
+    R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/build/"
 }
+
+check() {
+    cd "${srcdir}/${_cranname}/tests"
+    R_LIBS="${srcdir}/build/" Rscript --vanilla testthat.R
+}
+
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
-}
+    install -dm0755 "${pkgdir}/usr/lib/R/library"
+    cp -a --no-preserve=ownership "${srcdir}/build/${_cranname}" "${pkgdir}/usr/lib/R/library"
 
+    if [[ -f "${_cranname}/LICENSE" ]]; then
+        install -Dm0644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    fi
+}
