@@ -8,8 +8,8 @@ url="https://github.com/artemvlas/veretino"
 license=('GPL3')
 depends=('qt5-base' 'make')
 
-source=(https://github.com/artemvlas/veretino/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=(9dcfceb93c056ab15bc8848e05d9cf5a7aba13835279453f798bcdbce189e9ff)
+source=(https://github.com/artemvlas/veretino/archive/refs/tags/$pkgver.tar.gz)
+sha256sums=(fca239aeb912f9e7f51c7b2486b5697b33da55bd74c313a7bfbfb9532a78cc48)
 
 build() {
 	cd "$pkgname-$pkgver"
