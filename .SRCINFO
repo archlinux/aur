@@ -1,0 +1,34 @@
+pkgbase = r-gtfstools
+	pkgdesc = Read, manipulate, analyse and write transit feeds in the General Transit Feed Specification (GTFS) data format
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=gtfstools
+	arch = i686
+	arch = x86_64
+	license = MIT
+	checkdepends = r-covr
+	checkdepends = r-ggplot2
+	checkdepends = r-jsonlite
+	checkdepends = r-knitr
+	checkdepends = r-rmarkdown
+	checkdepends = r-testthat
+	depends = r>=2.10
+	depends = r-checkmate
+	depends = r-cpp11
+	depends = r-curl
+	depends = r-data.table
+	depends = r-gtfsio>=1.0.0
+	depends = r-processx
+	depends = r-sf
+	depends = r-sfheaders
+	depends = r-units
+	depends = r-zip
+	optdepends = r-covr
+	optdepends = r-ggplot2
+	optdepends = r-jsonlite
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/gtfstools_1.2.0.tar.gz
+	b2sums = daacc3945c0127277f42fd1bd48ad7914447b2a78871af0e1d22f8a4c6bd68d577bd4c6dd3767a28553f53ed3b4c72a7c025f9abf2d8dda45403404f64e79050
+
+pkgname = r-gtfstools
