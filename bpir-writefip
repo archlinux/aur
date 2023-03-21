@@ -33,7 +33,7 @@ mkdir -p $tmp
 cp -vf "/boot/dtbs/${dtb}.dtb" "/boot/dtbs/${dtb}-fixed.dtb"
 for bp in /boot/dtbos/*.dts; do
   echo "Creating .dtbo from $(basename $bp)"
-  dtc -q -I dts -O dtb -o ${bp/".dts"/".dtbo"} $bp
+  dtc -@ -q -I dts -O dtb -o ${bp/".dts"/".dtbo"} $bp
   cat $bp | grep "//fdtput" | while read -r line ; do
     echo fdtput "/boot/dtbs/${dtb}-fixed.dtb" ${line/"//fdtput"/""}
          fdtput "/boot/dtbs/${dtb}-fixed.dtb" ${line/"//fdtput"/""}
