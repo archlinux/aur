@@ -13,7 +13,7 @@
 pkgbase=mesa-minimal-git
 pkgname=('mesa-minimal-git' 'rusticl-mesa-minimal-git')
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=23.1.0_devel.167082.22c1f4be8c1
+pkgver=23.1.0_devel.168501.957186102f9
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'meson' 'ninja' 'libglvnd' 'python-mako' 'xorgproto' 'libxml2' 'libx11'  'libva' 'elfutils' 'libxrandr'
@@ -27,11 +27,17 @@ url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git'
                 'LICENSE'
+                '0001-ac-llvm-fix-build-with-LLVM-17.patch'
+                '0002-gallivm-llvm17-deleted-includefiles.patch'
 )
 md5sums=('SKIP'
-         '5c65a0fe315dd347e09b1f2826a1df5a')
+         '5c65a0fe315dd347e09b1f2826a1df5a'
+         '26f7e45bb2beec9cddcc1584473cd5f9'
+         '942f95c6f7e795abd9df755b43cf0239')
 sha512sums=('SKIP'
-            '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2')
+            '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
+            '71ff8ac66810f010468eb1410eaadb2524da105dc0bf7c36e4c0572dbe758a2c962631c03a4849825cd0456873266096b6de39fb5ffc41c979c43b9c44c16ea5'
+            'ee81e9a1d23ff7265310da3231b7eebe1f6d49dd4c568781e2da0ac494e04ff074901cedc66e04c727eb120fad563db9693da509d69f738e3e2f108afc383c0a')
 options=(!emptydirs)
 
 # ninja grabs all available cores and leaves almost nothing for other processes.
@@ -43,6 +49,13 @@ pkgver() {
     cd mesa
     read -r _ver <VERSION
     echo ${_ver/-/_}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+
+    patch --directory="mesa" --forward --strip=1 --input="${srcdir}"/0001-ac-llvm-fix-build-with-LLVM-17.patch
+    patch --directory="mesa" --forward --strip=1 --input="${srcdir}"/0002-gallivm-llvm17-deleted-includefiles.patch
+
 }
 
 build () {
