@@ -1,21 +1,35 @@
 pkgbase = r-remotes
-	pkgdesc = R Package Installation from Remote Repositories, Including 'GitHub'
+	pkgdesc = R package installation from remote repositories, including GitHub
 	pkgver = 2.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=remotes
 	arch = any
 	license = MIT
+	checkdepends = r-brew
+	checkdepends = r-callr
+	checkdepends = r-codetools
+	checkdepends = r-curl
+	checkdepends = r-covr
+	checkdepends = r-git2r>=0.23.0
+	checkdepends = r-knitr
+	checkdepends = r-mockery
+	checkdepends = r-pkgbuild>=1.0.1
+	checkdepends = r-pingr
+	checkdepends = r-rmarkdown
+	checkdepends = r-rprojroot
+	checkdepends = r-testthat
+	checkdepends = r-webfakes
+	checkdepends = r-withr
 	depends = r>=3.0.0
-	depends = subversion
-	depends = git
 	optdepends = r-brew
 	optdepends = r-callr
+	optdepends = r-codetools
 	optdepends = r-curl
 	optdepends = r-covr
-	optdepends = r-git2r
+	optdepends = r-git2r>=0.23.0
 	optdepends = r-knitr
 	optdepends = r-mockery
-	optdepends = r-pkgbuild
+	optdepends = r-pkgbuild>=1.0.1
 	optdepends = r-pingr
 	optdepends = r-rmarkdown
 	optdepends = r-rprojroot
@@ -23,6 +37,6 @@ pkgbase = r-remotes
 	optdepends = r-webfakes
 	optdepends = r-withr
 	source = https://cran.r-project.org/src/contrib/remotes_2.4.2.tar.gz
-	sha256sums = f2ef875f24a485bf4f55a8c830f87cdd5db868f9a8cdb624dc452d0bf66ba516
+	b2sums = f189cbdd6d687145a031f6e3e267e68db891f526e61acf16e93c7af3aa1af8fbffb713d8b00af9d9ad52c4dd1fedad72fed528b319f996ef6b0060ebf607102d
 
 pkgname = r-remotes
