@@ -11,7 +11,7 @@ if [[ -n ${_pkg_suffix} ]]; then
     _pkgver_dash_suffix=${_pkgver_dash_suffix}-${_pkg_suffix}
 fi
 pkgver=${_pkgver}${_pkg_suffix}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -39,12 +39,12 @@ build() {
     env > _build/makepkg_env_dump
     set > _build/makepkg_set_dump
 
-    #        -DLLVM_ENABLE_LTO=Thin 
     #        "clang;clang-tools-extra;libc;libclc;lld;lldb;openmp;polly;pstl;bolt;flang;libcxx;libcxxabi;libunwind"
 
     # https://llvm.org/docs/CMake.html
     cmake   -B _build \
             -GNinja \
+            -DCLANG_DEFAULT_PIE_ON_LINUX=ON \
             -DLLVM_USE_LINKER=lld \
             -DCMAKE_C_COMPILER=clang \
             -DCMAKE_CXX_COMPILER=clang++ \

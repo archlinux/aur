@@ -1,6 +1,6 @@
 pkgbase = clang-prefixed-release
 	pkgver = 16.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://llvm.org/
 	arch = x86_64
 	license = custom:Apache 2.0 with LLVM Exception
