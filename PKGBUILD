@@ -2,7 +2,7 @@
 _pkgname="glyphr-studio"
 pkgname="${_pkgname}-nativefier"
 pkgver=1.13.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Glyphr Studio is a free, web based font designer."
 arch=("x86_64")
 url="http://glyphrstudio.com/"
@@ -46,6 +46,6 @@ package() {
     local _x=`echo "${_pkgname}-linux-"*`
     cp -r "${_x}/"* "${pkgdir}/opt/${_pkgname}"
     install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-    install -Dm644 "${srcdir}/${_x}/LICENSE" "${pkgdir}/usr/share/license/${_pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/${_x}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
     install -Dm644 "${srcdir}/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.png"
 }

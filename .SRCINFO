@@ -1,7 +1,7 @@
 pkgbase = glyphr-studio-nativefier
 	pkgdesc = Glyphr Studio is a free, web based font designer.
 	pkgver = 1.13.18
-	pkgrel = 1
+	pkgrel = 2
 	url = http://glyphrstudio.com/
 	arch = x86_64
 	license = GPL3
