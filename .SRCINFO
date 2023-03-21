@@ -1,14 +1,16 @@
 pkgbase = vim-wiki-git
 	pkgdesc = A wiki plugin for Vim
-	pkgver = 0.1.r163.g97aec64
+	pkgver = 0.5.r33.g113c8a5
 	pkgrel = 1
 	url = https://github.com/lervag/wiki.vim
 	arch = any
 	groups = vim-plugins
 	license = MIT
 	makedepends = git
+	depends = python
 	depends = vim-plugin-runtime
 	optdepends = vim-wiki-ft: Wiki filetype plugin
+	optdepends = pandoc: WikiExport support
 	provides = vim-wiki
 	provides = vim-ctrlp-wiki
 	provides = vim-coc-wiki
@@ -18,4 +20,3 @@ pkgbase = vim-wiki-git
 	sha256sums = SKIP
 
 pkgname = vim-wiki-git
-
