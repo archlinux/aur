@@ -2,7 +2,7 @@
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=lib32-glib-networking
-pkgver=2.74.0
+pkgver=2.76.0
 pkgrel=1
 pkgdesc="Network extensions for GLib (32-bit)"
 url="https://gitlab.gnome.org/GNOME/glib-networking"
@@ -18,10 +18,8 @@ makedepends=(
   git
   meson
 )
-checkdepends=(
-  ca-certificates
-)
-_commit=d17632fe495c573612dd69e982a0c49af2952178  # tags/2.74.0^0
+checkdepends=(ca-certificates)
+_commit=eab226398f9872c381033f7cb3af43dcb66600f4  # tags/2.76.0^0
 source=("git+https://gitlab.gnome.org/GNOME/glib-networking.git#commit=${_commit}")
 sha256sums=('SKIP')
 
@@ -49,4 +47,4 @@ package() {
   rm -r "${pkgdir}"/usr/{lib,share}
 }
 
-# vim:set ts=2 sw=2 et:
+# vim:set sw=2 sts=-1 et:
