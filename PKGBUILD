@@ -1,19 +1,14 @@
 # Maintainer: Jason Nader <jason *add-dot-here* nader *you-know-what-goes-here* protonmail.com>
 
 _pkgname='catt'
-pkgname=$_pkgname-git
-pkgver=0.12.9.r7.gddc5989
+pkgname="$_pkgname-git"
+pkgver=0.12.10.r1.g82cd0fe
 pkgrel=1
 pkgdesc='Cast All The Things - Send videos from many, many online sources to your Chromecast.'
 arch=('any')
 url="https://github.com/skorokithakis/catt"
 license=('BSD')
-depends=()    # needed to run *and* build
-_rundepends=( # needed to run, but not build
-  'python-click'
-  'python-pychromecast>=7.5.0'
-  'yt-dlp'
-)
+depends=()
 makedepends=(
   'git'
   'python-installer'
@@ -36,7 +31,12 @@ build() {
 }
 
 package() {
-  depends=(${_rundepends[@]})  # needed to run, but not build
+  depends+=(
+    'python-click'
+    'python-importlib-metadata'  # silence namcap warning
+    'python-pychromecast'
+    'yt-dlp'
+  )
 
   cd "$_pkgname"
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
