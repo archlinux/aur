@@ -1,10 +1,11 @@
-# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+# Maintainer : Fredrick R. Brennan <copypaste@kittens.ph>
+# Contributor: bartus <arch-user-repoᘓbartus.33mail.com>
 # Contributor: Ivan Shapovalov <intelfx100@gmail.com>
 # Contributor: Mika Fischer <mika.fischer@zoopnet.de>
 # Contributor: Gergely Imreh <imrehgATgmailDOTcom>
 # shellcheck disable=SC2034,SC2164,SC2154
 
-_ver="v1.10.0"
+_ver="v1.11.1"
 _fragment="#tag=$_ver"
 pkgname=ninja-mem
 pkgver=${_ver%v}
@@ -21,20 +22,14 @@ install=ninja-git.install
 
 source=("git+https://github.com/ninja-build/ninja.git${_fragment}"
 	'0001-Limit-job-execution-dependant-on-available-memory-m.patch')
-sha1sums=('SKIP'
-          'a0841bd3d367f04169456525878e4b34079808ff')
+b2sums=('SKIP'
+        '210babd66ba92b920f2e0374e0575f58f866cf0f0a1e6d32b79b009e4a9646504daaafaea6443331c749a048e69418006de4194e080d555ad34a500ce78a30e0')
 
 function prepare {
 	cd ninja
 
 	git apply -v "${srcdir}/0001-Limit-job-execution-dependant-on-available-memory-m.patch"
 }
-
-#function pkgver {
-#	cd ninja
-#
-#	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-#}
 
 function build {
 	cd ninja

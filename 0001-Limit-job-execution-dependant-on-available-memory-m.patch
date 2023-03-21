@@ -1,16 +1,12 @@
-From 91380241e7a8b16033978087d18fef157ccc0301 Mon Sep 17 00:00:00 2001
-From: bartus <szczepaniak.bartek+github@gmail.com>
-Date: Thu, 20 Feb 2020 22:32:12 +0100
+From ff2fa001eb1ad5e24850eacc4cbed66ecf038de0 Mon Sep 17 00:00:00 2001
+From: Fredrick Brennan <copypaste@kittens.ph>
+Date: Mon, 20 Mar 2023 20:07:19 -0400
 Subject: [PATCH] Limit job execution dependant on available memory (-m)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
-Setting a value in range [0,100] for -m limits starting of new jobs. once
-the limit has been exceeded at most one single job is run at a time.
-
-This aims at C++ make projects that run into memory limitations when
-building expensive (in regards to memory) compilation units, e.g. caused
-by massive template instantiations.
-
-The implementation currently covers support for Apple, Linux and Windows.
+Co-Authored-By: bartus <arch-user-repoᘓbartus.33mail.com>
 ---
  doc/manual.asciidoc |  9 +++++++
  src/build.cc        |  4 ++-
@@ -18,14 +14,14 @@ The implementation currently covers support for Apple, Linux and Windows.
  src/ninja.cc        | 14 +++++++++-
  src/util.cc         | 64 +++++++++++++++++++++++++++++++++++++++++++++
  src/util.h          |  6 ++++-
- src/util_test.cc    | 31 ++++++++++++++++++++++
- 7 files changed, 131 insertions(+), 4 deletions(-)
+ src/util_test.cc    | 30 +++++++++++++++++++++
+ 7 files changed, 130 insertions(+), 4 deletions(-)
 
 diff --git a/doc/manual.asciidoc b/doc/manual.asciidoc
-index 9976ce4c..918f5f58 100644
+index 659c68b1..a914c403 100644
 --- a/doc/manual.asciidoc
 +++ b/doc/manual.asciidoc
-@@ -186,6 +186,15 @@ match those of Make; e.g `ninja -C build -j 20` changes into the
+@@ -187,6 +187,15 @@ match those of Make; e.g `ninja -C build -j 20` changes into the
  Ninja defaults to running commands in parallel anyway, so typically
  you don't need to pass `-j`.)
  
@@ -42,10 +38,10 @@ index 9976ce4c..918f5f58 100644
  Environment variables
  ~~~~~~~~~~~~~~~~~~~~~
 diff --git a/src/build.cc b/src/build.cc
-index cd8df4e0..65d564e7 100644
+index 6f11ed7a..9dd0eb69 100644
 --- a/src/build.cc
 +++ b/src/build.cc
-@@ -696,7 +696,9 @@ bool RealCommandRunner::CanRunMore() const {
+@@ -478,7 +478,9 @@ bool RealCommandRunner::CanRunMore() const {
        subprocs_.running_.size() + subprocs_.finished_.size();
    return (int)subproc_number < config_.parallelism
      && ((subprocs_.running_.empty() || config_.max_load_average <= 0.0f)
@@ -57,10 +53,10 @@ index cd8df4e0..65d564e7 100644
  
  bool RealCommandRunner::StartCommand(Edge* edge) {
 diff --git a/src/build.h b/src/build.h
-index 97773c49..981921a8 100644
+index d697dfb8..5748c70b 100644
 --- a/src/build.h
 +++ b/src/build.h
-@@ -159,7 +159,8 @@ struct CommandRunner {
+@@ -156,7 +156,8 @@ struct CommandRunner {
  /// Options (e.g. verbosity, parallelism) passed to a build.
  struct BuildConfig {
    BuildConfig() : verbosity(NORMAL), dry_run(false), parallelism(1),
@@ -69,8 +65,8 @@ index 97773c49..981921a8 100644
 +                  max_memory_usage(-0.0f) {}
  
    enum Verbosity {
-     NORMAL,
-@@ -173,6 +174,10 @@ struct BuildConfig {
+     QUIET,  // No output -- used when testing.
+@@ -171,6 +172,10 @@ struct BuildConfig {
    /// The maximum load average we must not exceed. A negative value
    /// means that we do not have any limit.
    double max_load_average;
@@ -82,10 +78,10 @@ index 97773c49..981921a8 100644
  };
  
 diff --git a/src/ninja.cc b/src/ninja.cc
-index 14296392..8be04f43 100644
+index 2b71eb17..c92515b8 100644
 --- a/src/ninja.cc
 +++ b/src/ninja.cc
-@@ -214,6 +214,10 @@ void Usage(const BuildConfig& config) {
+@@ -229,6 +229,10 @@ void Usage(const BuildConfig& config) {
  "  -j N     run N jobs in parallel (0 means infinity) [default=%d on this system]\n"
  "  -k N     keep going until N jobs fail (0 means infinity) [default=1]\n"
  "  -l N     do not start new jobs if the load average is greater than N\n"
@@ -96,7 +92,7 @@ index 14296392..8be04f43 100644
  "  -n       dry run (don't run commands but act like they succeeded)\n"
  "\n"
  "  -d MODE  enable debugging (use '-d list' to list modes)\n"
-@@ -1268,7 +1272,7 @@ int ReadFlags(int* argc, char*** argv,
+@@ -1428,7 +1432,7 @@ int ReadFlags(int* argc, char*** argv,
  
    int opt;
    while (!options->tool &&
@@ -105,7 +101,7 @@ index 14296392..8be04f43 100644
                              NULL)) != -1) {
      switch (opt) {
        case 'd':
-@@ -1309,6 +1313,14 @@ int ReadFlags(int* argc, char*** argv,
+@@ -1470,6 +1474,14 @@ int ReadFlags(int* argc, char*** argv,
          config->max_load_average = value;
          break;
        }
@@ -121,7 +117,7 @@ index 14296392..8be04f43 100644
          config->dry_run = true;
          break;
 diff --git a/src/util.cc b/src/util.cc
-index 4df2bb23..1f70a807 100644
+index ef5f1033..2c754bc4 100644
 --- a/src/util.cc
 +++ b/src/util.cc
 @@ -19,6 +19,7 @@
@@ -140,8 +136,8 @@ index 4df2bb23..1f70a807 100644
  #if defined(__APPLE__) || defined(__FreeBSD__)
  #include <sys/sysctl.h>
  #elif defined(__SVR4) && defined(__sun)
-@@ -51,6 +53,13 @@
- #include <sys/sysinfo.h>
+@@ -58,6 +60,13 @@
+ #include <sys/cpuset.h>
  #endif
  
 +// to determine the memory usage
@@ -152,9 +148,9 @@ index 4df2bb23..1f70a807 100644
 +#endif
 +
  #include "edit_distance.h"
- #include "metrics.h"
  
-@@ -595,6 +604,61 @@ double GetLoadAverage() {
+ using namespace std;
+@@ -830,6 +839,61 @@ double GetLoadAverage() {
  }
  #endif // _WIN32
  
@@ -217,10 +213,10 @@ index 4df2bb23..1f70a807 100644
    switch (width) {
        case 0: return "";
 diff --git a/src/util.h b/src/util.h
-index 6a4a7a9f..e6cad933 100644
+index 4a7fea22..20a3018e 100644
 --- a/src/util.h
 +++ b/src/util.h
-@@ -94,9 +94,13 @@ string StripAnsiEscapeCodes(const string& in);
+@@ -100,9 +100,13 @@ std::string StripAnsiEscapeCodes(const std::string& in);
  int GetProcessorCount();
  
  /// @return the load average of the machine. A negative value is returned
@@ -234,26 +230,25 @@ index 6a4a7a9f..e6cad933 100644
 +
  /// Elide the given string @a str with '...' in the middle if the length
  /// exceeds @a width.
- string ElideMiddle(const string& str, size_t width);
+ std::string ElideMiddle(const std::string& str, size_t width);
 diff --git a/src/util_test.cc b/src/util_test.cc
-index b43788d3..13d2821f 100644
+index d58b1708..157da34d 100644
 --- a/src/util_test.cc
 +++ b/src/util_test.cc
-@@ -16,6 +16,13 @@
- 
+@@ -17,6 +17,12 @@
  #include "test.h"
  
+ using namespace std;
 +#ifdef _WIN32
 +#define WIN32_LEAN_AND_MEAN
 +#include <windows.h>
 +#else
 +#include <unistd.h>
 +#endif
-+
+ 
  namespace {
  
- bool CanonicalizePath(string* path, string* err) {
-@@ -416,6 +423,30 @@ TEST(StripAnsiEscapeCodes, StripColors) {
+@@ -408,6 +414,30 @@ TEST(StripAnsiEscapeCodes, StripColors) {
              stripped);
  }
  
@@ -285,5 +280,5 @@ index b43788d3..13d2821f 100644
    string input = "Nothing to elide in this short string.";
    EXPECT_EQ(input, ElideMiddle(input, 80));
 -- 
-2.25.1
+2.40.0
 

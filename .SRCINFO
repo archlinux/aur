@@ -1,23 +1,23 @@
 pkgbase = ninja-mem
 	pkgdesc = Small build system with a focus on speed (with trashing feature)
-	pkgver = v1.10.0
+	pkgver = v1.11.1
 	pkgrel = 1
 	url = https://ninja-build.org/
 	install = ninja-git.install
 	arch = i686
 	arch = x86_64
 	license = Apache
-	makedepends = git
-	makedepends = asciidoc
-	makedepends = python2
+	makedepends = python
 	makedepends = re2c
+	makedepends = emacs-nox
+	makedepends = git
+	makedepends = asciidoctor
 	depends = gcc-libs
 	provides = ninja
 	conflicts = ninja
-	source = git+https://github.com/ninja-build/ninja.git#tag=v1.10.0
+	source = git+https://github.com/ninja-build/ninja.git#tag=v1.11.1
 	source = 0001-Limit-job-execution-dependant-on-available-memory-m.patch
-	md5sums = SKIP
-	md5sums = 94c5cf27d2fbcd8f2b04db3c10038cf3
+	b2sums = SKIP
+	b2sums = 210babd66ba92b920f2e0374e0575f58f866cf0f0a1e6d32b79b009e4a9646504daaafaea6443331c749a048e69418006de4194e080d555ad34a500ce78a30e0
 
 pkgname = ninja-mem
-
