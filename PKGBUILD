@@ -6,11 +6,11 @@ _bcname=BiocGenerics
 _bcver=0.44.0
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="S4 generic functions used in Bioconductor"
 arch=(any)
 url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
-license=("Artistic-2.0")
+license=("Artistic2.0")
 
 depends=("r>=4.0.0")
 optdepends=(
@@ -41,7 +41,7 @@ package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
     cp -a --no-preserve=ownership "${_bcname}" "${pkgdir}/usr/lib/R/library"
 
-    if [[ -f "${_cranname}/LICENSE" ]]; then
-      install -Dm0644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    if [[ -f "${_bcname}/LICENSE" ]]; then
+      install -Dm0644 "${_bcname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     fi
 }

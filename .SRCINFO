@@ -1,10 +1,10 @@
 pkgbase = r-biocgenerics
 	pkgdesc = S4 generic functions used in Bioconductor
 	pkgver = 0.44.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/release/bioc/html/BiocGenerics.html
 	arch = any
-	license = Artistic-2.0
+	license = Artistic2.0
 	depends = r>=4.0.0
 	optdepends = r-biobase
 	optdepends = r-s4vectors
