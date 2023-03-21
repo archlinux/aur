@@ -1,0 +1,15 @@
+pkgbase = prettier-plugin-solidity
+	pkgdesc = A Prettier plugin for automatically formatting your Solidity code.
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = https://github.com/prettier-solidity/prettier-plugin-solidity
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	depends = prettier
+	noextract = prettier-plugin-solidity-1.1.3.tgz
+	source = https://registry.npmjs.org/prettier-plugin-solidity/-/prettier-plugin-solidity-1.1.3.tgz
+	sha256sums = ae248c815621e78cdb271cfacfa79adaff88d4b680e9ee6b0d4807778651f5bc
+
+pkgname = prettier-plugin-solidity
