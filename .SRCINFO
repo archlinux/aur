@@ -1,0 +1,14 @@
+pkgbase = wechat-backup
+	pkgdesc = 微信聊天记录持久化备份本地硬盘，释放手机存储空间。
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/greycodee/wechat-backup
+	arch = x86_64
+	license = MIT
+	options = !strip
+	source = wechat-backup-1.0.0.tar.gz::https://github.com/greycodee/wechat-backup/releases/download/v1.0.0/wechat-backup_linux_v1.0.0.tar.gz
+	source = LICENSE::https://github.com/greycodee/wechat-backup/raw/master/LICENSE
+	sha256sums = f24aed56689610453f001b4ee3ee32cae2a528d618f51d4888ea6cd2b1870eb0
+	sha256sums = b005601baa4543fdcf1b9e9409b97f6697f58f303c8013398d252017d2c0d407
+
+pkgname = wechat-backup
