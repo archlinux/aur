@@ -8,7 +8,7 @@ pkgdesc="A Logging Utility for R"
 url="https://cran.r-project.org/package=${_cranname}"
 license=("LGPL3")
 pkgver=${_cranver//[:-]/.}
-pkgrel=2
+pkgrel=3
 
 arch=("any")
 depends=(
@@ -18,7 +18,6 @@ depends=(
 )
 optdepends=(
     "r-jsonlite"
-    "r-testthat"
 )
 checkdepends=(
     "${optdepends[@]}"
