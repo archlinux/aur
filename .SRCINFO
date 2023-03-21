@@ -1,0 +1,16 @@
+pkgbase = aawmtt
+	pkgdesc = Another AwesomeWM Testing Tool, with Live Reload and 'proper' display detection
+	pkgver = r1.00c8a35
+	pkgrel = 1
+	url = https://github.com/Curve/aawmtt
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	provides = aawmtt
+	conflicts = aawmtt
+	source = git+https://github.com/Curve/aawmtt
+	sha256sums = SKIP
+
+pkgname = aawmtt
