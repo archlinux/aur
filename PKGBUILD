@@ -1,15 +1,15 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=('system76-firmware' 'system76-firmware-daemon')
 pkgbase=system76-firmware
-pkgver=1.0.50+4+gd24f401
+pkgver=1.0.50+6+g9028102
 pkgrel=1
 pkgdesc="System76 CLI tool for installing firmware updates and systemd service that exposes a DBUS API for handling firmware updates"
 arch=('x86_64')
 url="https://github.com/pop-os/system76-firmware"
 license=('GPL3')
 makedepends=('cargo' 'dbus' 'git')
-_commit=d24f401e382affec462b8b21382d003b23cd3bcc
+_commit=902810262902f04ad0d81eae2aed993dddfe22cb  # master
 source=("git+https://github.com/pop-os/system76-firmware.git#commit=${_commit}")
 sha256sums=('SKIP')
 #validpgpkeys=('D3FB3AF9711C1CD12639C9F587F211AF2BE4C2FE') # Jeremy Soller (https://soller.dev) <jackpot51@gmail.com>

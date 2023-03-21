@@ -1,6 +1,6 @@
 pkgbase = system76-firmware
 	pkgdesc = System76 CLI tool for installing firmware updates and systemd service that exposes a DBUS API for handling firmware updates
-	pkgver = 1.0.50+4+gd24f401
+	pkgver = 1.0.50+6+g9028102
 	pkgrel = 1
 	url = https://github.com/pop-os/system76-firmware
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = system76-firmware
 	makedepends = cargo
 	makedepends = dbus
 	makedepends = git
-	source = git+https://github.com/pop-os/system76-firmware.git#commit=d24f401e382affec462b8b21382d003b23cd3bcc
+	source = git+https://github.com/pop-os/system76-firmware.git#commit=902810262902f04ad0d81eae2aed993dddfe22cb
 	sha256sums = SKIP
 
 pkgname = system76-firmware
