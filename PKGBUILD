@@ -1,9 +1,10 @@
-# Maintainer: qubidt <qubidt at gmail dot com>
+# Maintainer: Darrell Enns <darrell at darrellenns dot com>
+# Contributor: qubidt <qubidt at gmail dot com>
 # Contributor: loredan13
 # Contributor: lf <packages at lfcode dot ca>
 pkgname=klipper-py3-git
 _pkgname=klipper
-pkgver=r4660.1636a9759
+pkgver=r4940.e2d7c5981
 pkgrel=1
 pkgdesc="3D printer firmware with motion planning on the host"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -69,8 +70,8 @@ package() {
 	install -Dm644 "$srcdir/tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/${_pkgname}.conf"
 
 	install -m775 -d "$pkgdir/usr/lib/${_pkgname}"
-	install -m755 -d "$pkgdir/usr/share/doc/${_pkgname}"
-	install -m755 -d "$pkgdir/usr/share/${_pkgname}/examples"
+	install -m755 -d "$pkgdir/usr/lib/${_pkgname}/docs"
+	install -m755 -d "$pkgdir/usr/lib/${_pkgname}/config"
 	install -m775 -d "$pkgdir/usr/lib/${_pkgname}/klippy"
 	install -m755 -d "$pkgdir/usr/lib/${_pkgname}/lib"
 	install -m755 -d "$pkgdir/usr/lib/${_pkgname}/src"
@@ -79,13 +80,16 @@ package() {
 	install -m2775 -d "$pkgdir/usr/lib/${_pkgname}/out"
 	install -m2775 -d "$pkgdir/var/lib/${_pkgname}"
 
-	cp -ra "$srcdir/${_pkgname}/docs"/* "$pkgdir/usr/share/doc/${_pkgname}"/
-	cp -ra "$srcdir/${_pkgname}/config/"* "$pkgdir/usr/share/${_pkgname}/examples"/
+	cp -ra "$srcdir/${_pkgname}/docs"/* "$pkgdir/usr/lib/${_pkgname}/docs"/
+	cp -ra "$srcdir/${_pkgname}/config/"* "$pkgdir/usr/lib/${_pkgname}/config"/
 	cp -ra "$srcdir/${_pkgname}/klippy/"* "$pkgdir/usr/lib/${_pkgname}/klippy"/
 	cp -ra "$srcdir/${_pkgname}/scripts/"* "$pkgdir/usr/lib/${_pkgname}/scripts"/
 	cp -ra "$srcdir/${_pkgname}/lib/"* "$pkgdir/usr/lib/${_pkgname}/lib"/
 	cp -ra "$srcdir/${_pkgname}/Makefile" "$pkgdir/usr/lib/${_pkgname}"/
 	cp -ra "$srcdir/${_pkgname}/src/"* "$pkgdir/usr/lib/${_pkgname}/src"/
+
+	mkdir -p "$pkgdir//usr/share/doc"
+	ln -s "/usr/lib/${_pkgname}/docs" "$pkgdir/usr/share/doc/${_pkgname}"
 
 	touch "$srcdir/${_pkgname}/.config"
 	install -m664 "$srcdir/${_pkgname}/.config" "$pkgdir/usr/lib/${_pkgname}/.config"
