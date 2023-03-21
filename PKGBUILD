@@ -1,9 +1,8 @@
 # Maintainer: Areskul <areskul@areskul.com>
 pkgname="pipelight"
-pkgver="0.4.22"
 pkgrel=1
 pkgdesc="A Rust based quick automation tool"
-arch=(x86_64)
+arch=("any")
 url="https://gitea.com/pipelight/pipelight.git"
 license=('GPL2')
 depends=(deno)
@@ -24,4 +23,9 @@ package() {
   install -Dm755 $bin -t $pkgdir/usr/bin
   install -Dm755 $bin-run -t $pkgdir/usr/bin
   install -Dm755 $bin-trigger -t $pkgdir/usr/bin
+}
+
+pkgver() {
+  cd "$pkgname"
+  git describe | sed s/v//
 }
