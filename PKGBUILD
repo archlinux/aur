@@ -3,7 +3,7 @@ pkgrel=1
 _pkgname='jsettlers'
 pkgname=${_pkgname}'-git'
 
-pkgver=0.6.0.4.alpha.r1.ga78705865
+pkgver=0.6.0.6.alpha.r2.gf7597a2f2
 pkgver() {
   cd  ${_pkgname}
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
@@ -48,7 +48,6 @@ package() {
     
     _progName='JSettlers'
     
-    _workingDir='~/.'${_pkgname}
     _mapCreatorName='MapCreator'
     _mapCreatorScript=${_pkgname}'-'${_mapCreatorName,,}
 
@@ -73,17 +72,20 @@ package() {
     # create launch-scripts
     mkdir -p ${bin}
     echo '#!/bin/sh' > ${bin}/${_pkgname}
-    echo 'cd '${_workingDir} >> ${bin}/${_pkgname}
+    echo 'mkdir -p "${XDG_DATA_HOME:-$HOME/.local/share}/'${_pkgname}'"' >> ${bin}/${_pkgname}
+    echo 'cd "${XDG_DATA_HOME:-$HOME/.local/share}/'${_pkgname}'"' >> ${bin}/${_pkgname}
     echo 'exec /usr/bin/java -jar /usr/share/java/'${_pkgname}'/'${_progName}'.jar --maps=/usr/share/'${_pkgname}'/maps "$@"' >> ${bin}/${_pkgname}
     chmod +x ${bin}/${_pkgname}
 
     echo '#!/bin/sh' > ${bin}/${_mapCreatorScript}
-    echo 'cd '${_workingDir} >> ${bin}/${_mapCreatorScript}
+    echo 'mkdir -p "${XDG_DATA_HOME:-$HOME/.local/share}/'${_pkgname}'"' >> ${bin}/${_mapCreatorScript}
+    echo 'cd "${XDG_DATA_HOME:-$HOME/.local/share}/'${_pkgname}'"' >> ${bin}/${_mapCreatorScript}
     echo 'exec /usr/bin/java -jar /usr/share/java/'${_pkgname}'/'${_mapCreatorName}'.jar --maps=/usr/share/'${_pkgname}'/maps "$@"' >> ${bin}/${_mapCreatorScript}
     chmod +x ${bin}/${_mapCreatorScript}
 
     echo '#!/bin/sh' > ${bin}/${_serverScript}
-    echo 'cd '${_workingDir} >> ${bin}/${_serverScript}
+    echo 'mkdir -p "${XDG_DATA_HOME:-$HOME/.local/share}/'${_pkgname}'"' >> ${bin}/${_serverScript}
+    echo 'cd "${XDG_DATA_HOME:-$HOME/.local/share}/'${_pkgname}'"' >> ${bin}/${_serverScript}
     echo 'exec /usr/bin/java -jar /usr/share/java/'${_pkgname}'/'${_serverJar}' "$@"' >> ${bin}/${_serverScript}
     chmod +x ${bin}/${_serverScript}
 

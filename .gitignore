@@ -1,5 +1,5 @@
 pkg/
 src/
 jsettlers/
-jsettlers-git-*.pkg.tar.xz
+jsettlers-git-*.pkg.tar.*
 gradle-*.zip

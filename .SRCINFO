@@ -1,6 +1,6 @@
 pkgbase = jsettlers-git
 	pkgdesc = A Remake of "The Settlers III" for Windows, Linux, Mac and Android - forked by paulwedeck
-	pkgver = 0.6.0.4.alpha.r1.ga78705865
+	pkgver = 0.6.0.6.alpha.r2.gf7597a2f2
 	pkgrel = 1
 	url = https://github.com/paulwedeck/settlers-remake
 	install = jsettlers-git.install
