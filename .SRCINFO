@@ -1,19 +1,19 @@
 pkgbase = vim-wiki
 	pkgdesc = A wiki plugin for Vim
-	pkgver = 0.4
-	pkgrel = 2
+	pkgver = 0.5
+	pkgrel = 1
 	url = https://github.com/lervag/wiki.vim
-	install = vim-wiki.install
 	arch = any
 	groups = vim-plugins
 	license = MIT
+	depends = python
 	depends = vim-plugin-runtime
 	optdepends = vim-wiki-ft: Wiki filetype plugin
 	optdepends = pandoc: WikiExport support
 	provides = vim-ctrlp-wiki
 	provides = vim-coc-wiki
 	provides = vim-unite-wiki
-	source = vim-wiki-0.4.tar.gz::https://github.com/lervag/wiki.vim/archive/refs/tags/v0.4.tar.gz
-	sha256sums = 673c90ca0928081ce67fe240a94ce9ee0849b013e1af50c25b95bc8f1fa9294a
+	source = vim-wiki-0.5.tar.gz::https://github.com/lervag/wiki.vim/archive/v0.5.tar.gz
+	sha256sums = 8c262565c21679e861d211649bcea778ad495774ba172d7de778195bdd2da942
 
 pkgname = vim-wiki

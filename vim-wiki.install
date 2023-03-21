@@ -1,5 +1,0 @@
-post_upgrade() {
-	echo ":: 0.4 contains breaking changes."
-	echo ':: The lists functionality has been moved to lists.vim, a separate plugin.'
-	echo ':: Check upstream for more information.'
-}
