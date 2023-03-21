@@ -1,0 +1,13 @@
+pkgbase = ttf-monaco-nerd-font
+	pkgdesc = Monaco font patched with ryanoasis’s nerd patcher
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = https://github.com/Karmenzind/monaco-nerd-fonts
+	arch = any
+	license = custom:Apple
+	source = COPYRIGHT
+	source = monaco-git::git+https://github.com/Karmenzind/monaco-nerd-fonts
+	sha256sums = 75b450280572bdc340a5eac682ea7320776db78e378b5f0bd414a9f3538ee654
+	sha256sums = SKIP
+
+pkgname = ttf-monaco-nerd-font
