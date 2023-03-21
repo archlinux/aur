@@ -23,6 +23,7 @@ prepare() {
 
 build() {
     cd $srcdir/odilia
+    git checkout "v$pkgver"
     cargo build --release
 }
 
