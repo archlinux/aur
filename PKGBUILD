@@ -3,7 +3,7 @@
 pkgbase=purc
 pkgname=purc
 pkgver=0.9.7
-pkgrel=3
+pkgrel=4
 pkgdesc="The prime HVML interpreter for C Language."
 arch=(x86_64
     aarch64
@@ -19,11 +19,12 @@ provides=(${pkgname}
 conflicts=(${pkgname})
 replaces=(domruler
         purc-fetcher)
-depends=(glib2
-        bison
-        flex)
-makedepends=(git
+depends=(glib2)
+makedepends=(bison
             cmake
+            cython
+            flex
+            git
             ninja
             ccache
             curl
@@ -40,6 +41,7 @@ makedepends=(git
             sqlite
             systemd
             pkgconf
+            wtf
             zlib)
 optdepends=('python-numpy: Scientific tools for Python'
             'webkit2gtk-hvml: Web content engine for GTK (HVML)'
