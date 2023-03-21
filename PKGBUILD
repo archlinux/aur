@@ -6,7 +6,7 @@
 # Contributor: Vitaliy Berdinskikh ur6lad[at]i.ua
 
 pkgname=sqlite-jdbc
-pkgver=3.39.3.0
+pkgver=3.41.0.1
 pkgrel=1
 pkgdesc='JDBC driver for SQLite'
 arch=('x86_64')
@@ -15,29 +15,28 @@ license=('Apache')
 depends=('java-runtime>=8')
 makedepends=('maven')
 source=("https://github.com/xerial/sqlite-jdbc/archive/${pkgver}.tar.gz")
-sha256sums=('810263f4c7e019a0b47012a4977dd174673fec56467145f502dee5ea977dc7bc')
+sha256sums=('a018d1afd00f7678c6f8cbb964accbb01f601c02b81d63e5496e13bc19f26734')
 
 prepare() {
-  cd "${srcdir}"
-  ln -s "${pkgname}-${pkgver}" "${pkgname}"
+  ln -s ${pkgname}-${pkgver} ${pkgname}
   # remove unused sqlite binaries
-  cd "${srcdir}/${pkgname}-${pkgver}/src/main/resources/org/sqlite/native"
+  cd ${pkgname}/src/main/resources/org/sqlite/native
   find . ! -path "./Linux/$CARCH/*" -type f -delete
   find . -type d -empty -delete
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd ${pkgname}
   mvn package -DskipTests
 }
 
 check() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd ${pkgname}
   mvn verify
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}/target"
+  cd ${pkgname}/target
 
   install -Dm644 "${pkgname}-${pkgver}.jar" \
     "${pkgdir}/usr/share/java/${pkgname}/${pkgname}-${pkgver}.jar"
