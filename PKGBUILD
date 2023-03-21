@@ -48,9 +48,9 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
   "cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git"
   "${_arch_git_blob}/f72ed84a7907d387296811794d75da515525500e/trunk/0001-Bug-1819374-Squashed-ffmpeg-6.0-update.patch"
   "${_arch_git_blob}/f72ed84a7907d387296811794d75da515525500e/trunk/0002-Bug-1820416-Use-correct-FFVPX-headers-from-ffmpeg-6..patch")
-sha256sums=('e1006c0872aa7eb30fb5a689413957f1e5fc8d2048b1637bf6f6fafdbd4ea55f'
+sha256sums=('84a4f3aba62df6e0451cdd28f8f1e59840d77c4062311947b0e59325c2ebdce8'
   'SKIP'
-  '84a4f3aba62df6e0451cdd28f8f1e59840d77c4062311947b0e59325c2ebdce8'
+  '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
   'SKIP'
   'SKIP'
   'SKIP'
