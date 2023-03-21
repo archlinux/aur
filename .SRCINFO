@@ -1,7 +1,7 @@
 pkgbase = r-wk
 	pkgdesc = Lightweight Well-Known Geometry Parsing
 	pkgver = 0.7.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://cran.r-project.org/package=wk
 	arch = i686
 	arch = x86_64
