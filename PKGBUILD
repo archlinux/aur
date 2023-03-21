@@ -20,7 +20,7 @@ _fragment="${FRAGMENT:-#branch=main}"
 _CMAKE_FLAGS+=( -DWITH_CYCLES_NETWORK=OFF )
 
 pkgname=blender-git
-pkgver=3.6.r122562.gd8a439ebaf2
+pkgver=3.6.r122604.g0323f8d1d9c
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
@@ -46,6 +46,7 @@ source=("blender::git+https://github.com/blender/blender${_fragment}"
         'blender-dev-tools::git+https://github.com/blender/blender-dev-tools'
         usd_python.patch #add missing python headers when building against python enabled usd.
         embree.patch #add missing embree link.
+        user-blender.slice.sh #generate systemd compilation unit
         )
 sha256sums=('SKIP'
             'SKIP'
@@ -53,7 +54,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'c2db51a83a8d573aa76c760f10e541c84b108d64d05c9647681c4e633b3d0397'
-            'd587135fd9b815d60e8b7f48976aa835472922fc8f64c256dc397bfcd3c2642a')
+            'd587135fd9b815d60e8b7f48976aa835472922fc8f64c256dc397bfcd3c2642a'
+            'a62b23567d520984f36d6a3158fd99f463e3187f2ad062ead418c260fac5ea8a')
 
 pkgver() {
   blender_version=$(grep -Po "BLENDER_VERSION \K[0-9]{3}" "$srcdir"/blender/source/blender/blenkernel/BKE_blender_version.h)
@@ -65,7 +67,9 @@ pkgver() {
 }
 
 prepare() {
-  cd "$srcdir/blender"
+  cd "$srcdir"
+  ../user-blender.slice.sh > user-`id -u`-blender.slice
+  cd "blender"
   # update the submodules
   git -c protocol.file.allow=always submodule update --init --recursive --remote
   git apply -v "${srcdir}"/{embree,usd_python}.patch
@@ -114,13 +118,12 @@ build() {
         "${_CMAKE_FLAGS[@]}"
   NINJA_CMD="ninja -C ""$srcdir/build"
   if [[ "x$BLENDER_GIT_USE_SLICE_AUR" == "xy" ]]; then
-    ./../user-blender.slice.sh > user-blender.slice
-    mv user-blender.slice user-`id -u`-blender.slice
     killninja() { killall ninja; }
     trap killninja INT
     systemd-run --uid=`whoami` --slice=user-`id -u`-blender.slice -P --working-directory="$PWD" --wait --send-sighup bash -c "$NINJA_CMD"
   else
-    $NINJA_CMD
+    warning 'If you use systemd, consider trying `BLENDER_GIT_USE_SLICE_AUR=y`.'
+    $NINJA_CMD ${MAKEFLAGS:--j1}
   fi
 }
 
