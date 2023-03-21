@@ -22,7 +22,7 @@ source=(https://josm.openstreetmap.de/download/josm-snapshot-$pkgver.jar
         josm.sh
         josm::svn+https://josm.openstreetmap.de/svn/trunk#revision=$pkgver)
 noextract=(josm-snapshot-$pkgver.jar)
-sha256sums=('83bc86029b9b5a44cec2986578a49b9e384e0fb318feb9e15a644b0d0447bc54'
+sha256sums=('SKIP'
             '16bbb378a4e4d02c8ea321f3a3a65ad74007bc439720f44c597432a66d0d1646'
             'a30c4824de1570af66e9df2bcbab777b9efea80914a07de498fcfac58789731e'
             'SKIP')
