@@ -7,7 +7,7 @@
 _pkgbasename=ffmpeg
 pkgname=("lib32-$_pkgbasename" "lib32-lib$_pkgbasename")
 pkgver=6.0
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
@@ -61,7 +61,7 @@ depends=(
   'lib32-libxml2'
   'lib32-libxv'
   'lib32-xvidcore'
-#  'lib32-libzimg'
+  'lib32-zimg'
   'lib32-ocl-icd'
   'lib32-opencore-amr'
   'lib32-openjpeg2'
@@ -175,6 +175,7 @@ build() {
     --enable-libxcb \
     --enable-libxvid \
     --enable-libxml2 \
+    --enable-libzimg \
     --enable-nvenc \
     --enable-nvdec \
     --enable-opencl \
@@ -196,7 +197,6 @@ build() {
 #    --enable-libuavs3d
 #    --enable-libvidstab \
 #    --enable-libmfx \
-#    --enable-libzimg \
 
   make
 }
@@ -225,7 +225,7 @@ package_lib32-libffmpeg() {
 package_lib32-ffmpeg() {
   pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
   depends=(
-    "lib32-libffmpeg=${pkgver}"
+    "lib32-libffmpeg"
   )
 
   cd ${_pkgbasename}

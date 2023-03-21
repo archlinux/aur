@@ -1,7 +1,7 @@
 pkgbase = lib32-ffmpeg
 	pkgdesc = Complete solution to record, convert and stream audio and video (32 bit)
 	pkgver = 6.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = http://ffmpeg.org/
 	arch = x86_64
@@ -54,6 +54,7 @@ pkgbase = lib32-ffmpeg
 	depends = lib32-libxml2
 	depends = lib32-libxv
 	depends = lib32-xvidcore
+	depends = lib32-zimg
 	depends = lib32-ocl-icd
 	depends = lib32-opencore-amr
 	depends = lib32-openjpeg2
@@ -77,7 +78,7 @@ pkgbase = lib32-ffmpeg
 
 pkgname = lib32-ffmpeg
 	pkgdesc = Complete solution to record, convert and stream audio and video (32 bit)
-	depends = lib32-libffmpeg=6.0
+	depends = lib32-libffmpeg
 
 pkgname = lib32-libffmpeg
 	pkgdesc = Complete solution to record, convert and stream audio and video - library (32 bit)
