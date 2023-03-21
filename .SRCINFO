@@ -1,17 +1,23 @@
 pkgbase = r-lazyeval
-	pkgdesc = Lazy (Non-Standard) Evaluation
+	pkgdesc = Lightweight Well-Known Geometry Parsing
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=lazyeval
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	checkdepends = r-covr
+	checkdepends = r-knitr
+	checkdepends = r-rmarkdown>=0.2.65
+	checkdepends = r-testthat
+	checkdepends = r-testthat
 	depends = r>=3.1.0
-	optdepends = r-knitr
-	optdepends = r-rmarkdown
-	optdepends = r-testthat
+	depends = r-cpp11
 	optdepends = r-covr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown>=0.2.65
+	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/lazyeval_0.2.2.tar.gz
-	sha256sums = d6904112a21056222cfcd5eb8175a78aa063afe648a562d9c42c6b960a8820d4
+	b2sums = 94f69fe95a8ef8bf98421ae8570c6d381183f242e6f74334ed1886033b0ec3228e25b5412b89fe97fd4268f77b6be1c3fbe0113035b1afdee398898c732d67ff
 
 pkgname = r-lazyeval
