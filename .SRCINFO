@@ -1,0 +1,20 @@
+pkgbase = r-nycflights13
+	pkgdesc = Airline on-time data for all flights departing NYC in 2013
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=nycflights13
+	arch = any
+	license = custom:CC0
+	depends = r>=2.10
+	depends = r-cpp11
+	depends = r-tibble
+	optdepends = r-readr
+	optdepends = r-sf
+	optdepends = r-vctrs>=0.3.0
+	noextract = nycflights13_1.0.2.tar.gz
+	source = https://cran.r-project.org/src/contrib/nycflights13_1.0.2.tar.gz
+	source = LICENSE-CC0::https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt
+	b2sums = f729b52cd181602df4d8fab55c178c935621a1baab9fedf98a35a02cfdd52f82608fd95a5f1c0dcd5704c5ae9c5c51b7517170e1507b194c9877e63f5a1a68d3
+	b2sums = c67b16d3d41480fdaf6d3aaf8fdb05d207ea9c9dd773bbe34a8c13eb5a666bc62a0b3eb2c41954f13d90ed1c031a3956ea287f0aca486d942b829ee4cfdfa3d6
+
+pkgname = r-nycflights13
