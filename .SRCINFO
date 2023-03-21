@@ -1,11 +1,20 @@
 pkgbase = r-matrixstats
 	pkgdesc = Functions that Apply to Rows and Columns of Matrices (and to Vectors)
 	pkgver = 0.63.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=matrixStats
 	arch = i686
 	arch = x86_64
 	license = Artistic2.0
+	checkdepends = qpdf
+	checkdepends = r-base64enc
+	checkdepends = r-ggplot2
+	checkdepends = r-knitr
+	checkdepends = r-markdown
+	checkdepends = r-microbenchmark
+	checkdepends = r-r.devices
+	checkdepends = r-r.rsp
+	checkdepends = r-rcmdcheck
 	depends = r>=2.12.0
 	optdepends = r-base64enc
 	optdepends = r-ggplot2
