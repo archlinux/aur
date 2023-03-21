@@ -10,7 +10,7 @@ license=('Apache')
 depends=('sqlcipher')
 source=("https://packages.element.io/debian/pool/main/e/element-desktop/element-desktop_"${pkgver}"_amd64.deb"
         "element-desktop-stable-bin.sh")
-sha256sums=('848e89a64530bae86d5130ec5d57f10cdd9cbb0892efa0a092f042b66bd410af'
+sha256sums=('2712b5aaebb8b85576bdb21b5bc8fa2fe0f359dfedaf35dd5992b40b2e8254a4'
             'b682d6ec847e0b6e5406313fbb6a5ed8c445eda2a873432b5645693a258ba98b')
 replaces=('element-desktop')
 conflicts=('element-desktop')
