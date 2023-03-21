@@ -1,6 +1,6 @@
 # Maintainer: VHSgunzo <vhsgunzo.github.io>
 pkgname='lutris-wine-git'
-pkgver='0.76.6.r0.ga968aff'
+pkgver='0.76.7.r0.g5d9ca3b'
 pkgrel='1'
 pkgdesc='Easy launch of your Windows applications and games with Wine/Proton'
 arch=('x86_64')
