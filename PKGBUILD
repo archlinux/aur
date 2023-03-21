@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MALDIquant
-_pkgver=1.22
+_pkgver=1.22.1
 pkgname=r-${_pkgname,,}
-pkgver=1.22
+pkgver=1.22.1
 pkgrel=1
 pkgdesc='Quantitative Analysis of Mass Spectrometry Data'
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7b01a2e05f3bcccc426d8175b289255a8c2976ea8ab0e20eec18d442d2c9d015')
+sha256sums=('0a52a55dbe76a7e7ca50c5555fea4381eeda0c215c66e420d8dc9bfd2992411c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
