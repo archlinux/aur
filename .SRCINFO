@@ -1,6 +1,6 @@
 pkgbase = r-xml
 	pkgdesc = An ODBC database interface
-	pkgver = 3.99.0.10
+	pkgver = 3.99.0.14
 	pkgrel = 1
 	url = https://cran.r-project.org/package=XML
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-xml
 	license = GPL3
 	depends = libxml2
 	depends = r
-	source = https://cran.r-project.org/src/contrib/XML_3.99-0.10.tar.gz
-	md5sums = afadf2d014806bc9908a11e414dfb3ad
+	source = https://cran.r-project.org/src/contrib/XML_3.99-0.14.tar.gz
+	md5sums = ad0cff9a90183f905d9ac874e9e411ab
 
 pkgname = r-xml
