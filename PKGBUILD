@@ -7,7 +7,7 @@ pkgdesc="Fast Extraction from Raster Datasets using Polygons"
 url="https://cran.r-project.org/package=${_cranname}"
 license=("MIT")
 pkgver=${_cranver//[:-]/.}
-pkgrel=5
+pkgrel=6
 
 arch=("i686" "x86_64")
 depends=(
@@ -25,7 +25,6 @@ optdepends=(
     "r-rgdal"
     "r-rmarkdown"
     "r-terra>=1.5.17"
-    "r-testthat"
 )
 checkdepends=(
     "${optdepends[@]}"
