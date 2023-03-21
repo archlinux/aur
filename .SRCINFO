@@ -1,17 +1,15 @@
 pkgbase = r-rematch2
 	pkgdesc = Tidy Output from Regular Expression Matching
 	pkgver = 2.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=rematch2
 	arch = any
 	license = MIT
 	checkdepends = r-covr
 	checkdepends = r-testthat
-	checkdepends = r-testthat
 	depends = r
 	depends = r-tibble
 	optdepends = r-covr
-	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/rematch2_2.1.2.tar.gz
 	b2sums = 3825627d76b85206d8afb47a730d6cb2179d6e12a586312a4df9a20068a66410a4df3054b3ceee6aef45c8aae5383fe19e4b4c5db6d5a5f57ad8a4953a7f6db9
 

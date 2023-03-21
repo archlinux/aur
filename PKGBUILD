@@ -8,7 +8,7 @@ pkgdesc="Tidy Output from Regular Expression Matching"
 url="https://cran.r-project.org/package=${_cranname}"
 license=("MIT")
 pkgver=${_cranver//[:-]/.}
-pkgrel=2
+pkgrel=3
 
 arch=("any")
 depends=(
@@ -17,7 +17,6 @@ depends=(
 )
 optdepends=(
     "r-covr"
-    "r-testthat"
 )
 checkdepends=(
     "${optdepends[@]}"
