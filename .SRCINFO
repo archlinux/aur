@@ -19,7 +19,7 @@ pkgbase = funcoeszz
 	depends = findutils
 	depends = procps
 	depends = glibc
-	source = http://funcoeszz.net/download/funcoeszz-15.5.sh
+	source = http://funcoeszz.net/download/funcoeszz-21.1.sh
 	md5sums = d8abfb135a82f787794fc3a1558f7ed2
 
 pkgname = funcoeszz
