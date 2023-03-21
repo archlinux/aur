@@ -8,7 +8,7 @@ pkgdesc="Open standard for representing rich material and look-development conte
 arch=('x86_64')
 url="https://materialx.org/"
 license=('Apache')
-depends+=('python')
+depends+=('python' 'pybind11' 'openshadinglanguage' 'openimageio' 'pugixml' 'glfw')
 provides=('materialx')
 source=(git+"https://github.com/AcademySoftwareFoundation/MaterialX.git#tag=v${pkgver}")
 md5sums=('SKIP')
