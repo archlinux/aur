@@ -1,6 +1,6 @@
 pkgbase = linux-bpir64-git
 	pkgver = 6.2.7.bpir
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.kernel.org/
 	arch = aarch64
 	license = GPL2
@@ -16,7 +16,7 @@ pkgbase = linux-bpir64-git
 	source = mkinitcpio.conf
 	source = mkinitcpio.hook
 	source = mkinitcpio.build
-	source = bpir3-flash2emmc
+	source = bpir-flash2emmc
 	source = src/configfs.c::https://github.com/Xilinx/linux-xlnx/raw/master/drivers/of/configfs.c
 	source = src/mt7986a-bananapi-bpi-r3.dts::https://github.com/torvalds/linux/raw/master/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
 	source = src/mt7986a.dtsi::https://github.com/torvalds/linux/raw/master/arch/arm64/boot/dts/mediatek/mt7986a.dtsi

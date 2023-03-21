@@ -11,7 +11,7 @@ _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for BPI-R64 and BPI-R3"
 #_lto="true"  # Uncomment this line to enable CLANG-LTO
 pkgver=6.2.7.bpir
-pkgrel=1
+pkgrel=2
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -25,7 +25,7 @@ source=('defconfig'
         'mkinitcpio.conf'
         'mkinitcpio.hook'
         'mkinitcpio.build'
-        'bpir3-flash2emmc'
+        'bpir-flash2emmc'
         "src/configfs.c::https://github.com/Xilinx/linux-xlnx/raw/master/drivers/of/configfs.c"
         "src/mt7986a-bananapi-bpi-r3.dts::https://github.com/torvalds/linux/raw/master/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts"
         "src/mt7986a.dtsi::https://github.com/torvalds/linux/raw/master/arch/arm64/boot/dts/mediatek/mt7986a.dtsi"
@@ -161,8 +161,8 @@ _package() {
     install -Dm644 /dev/stdin "${pkgdir}/etc/initcpio/install/${pkgbase}"
 
   # install R3 EMMC flash script
-  sed "${_subst}" ../bpir3-flash2emmc |
-    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/bpir3-flash2emmc"
+  sed "${_subst}" ../bpir-flash2emmc |
+    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/bpir-flash2emmc"
 
   # install pacman hooks
   sed "${_subst}" ../60-linux.hook |

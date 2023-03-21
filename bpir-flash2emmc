@@ -3,9 +3,6 @@
 # Tool for %PKGBASE% package, needs to run from initrd!
 # Connect UART and when kernel starts, keep 'x' key pressed.
  
-driver="mtk-msdc"
-addr="11230000"
- 
 function get_sysmmc {
   str=$(echo /sys/bus/platform/devices/${addr}.mmc/mmc_host/mmc*/mmc* | head -1)
   [ -e "$str" ] && echo ${str} || echo ""
@@ -20,7 +17,7 @@ function get_mmctype {
 }
 
 function set_sdmmc {
-rmdir ${mmcdtbo}
+  rmdir ${mmcdtbo}
 } 
 
 function set_emmc {
@@ -54,38 +51,51 @@ function restart_driver {
     sleep 1.9
   done
 }
- 
-mount -t configfs none /sys/kernel/config
- 
-mmcblk=$(get_mmcblk)
-mmcdtbo="/sys/kernel/config/device-tree/overlays/mmc0"
- 
-echo "Device = /dev/${mmcblk}"
- 
-if [[ "$(get_mmctype)" == "SD" ]]; then
+
+driver="mtk-msdc"
+addr="11230000"
+compatible="$(tr -d '\0' 2>/dev/null </proc/device-tree/compatible)"
+
+if [[ "$compatible" == *"bananapi"*"mediatek,mt7622"* ]]; then # BPI-R64
+  mmcblk=$(get_mmcblk)
+  echo "EMMC Device = /dev/${mmcblk}"
   mkdir -p /tmp/mnt
   mount --source /dev/disk/by-partlabel/*-sdmmc-root --target /tmp/mnt
   [ $? -ne 0 ] && exit
-  echo "Reading file $1 now..."
-  cp -f "/tmp/mnt$1" "/tmp/tempfile"
+  echo "Flashing file $1 now..."
+  dd if="/tmp/mnt$1" of=/dev/${mmcblk} bs=1M conv=fsync,notrunc
   umount /tmp/mnt
-  [ $? -ne 0 ] && exit
-  echo "Switching to EMMC..."
-  set_emmc
-  restart_driver "MMC"
+elif [[ "$compatible" == *"bananapi"*"mediatek,mt7986"* ]]; then # BPI-R3
+  addr="11230000"
+  mount -t configfs none /sys/kernel/config
   mmcblk=$(get_mmcblk)
-  if [ -e "/tmp/tempfile" ]; then
-    echo "Setting up EMMC so that ${mmcblk} is the bootdevice."
-    mmc bootpart enable 7 1 /dev/${mmcblk}
-    echo "Writing $1 to EMMC now..."
-    xz -dcv "/tmp/tempfile" | dd of=/dev/${mmcblk} conv=fsync,notrunc
-    echo "Reboot and enjoy booting from EMMC."
-fi
-elif [[ "$(get_mmctype)" == "MMC" ]]; then
-  echo "Switching back to SDMMC..."
-  set_sdmmc
-  restart_driver "SD"
-  mmcblk=$(get_mmcblk)
+  mmcdtbo="/sys/kernel/config/device-tree/overlays/mmc0"
+  echo "EMMC Device = /dev/${mmcblk}"
+  if [[ "$(get_mmctype)" == "SD" ]]; then
+    mkdir -p /tmp/mnt
+    mount --source /dev/disk/by-partlabel/*-sdmmc-root --target /tmp/mnt
+    [ $? -ne 0 ] && exit
+    echo "Reading file $1 now..."
+    cp -f "/tmp/mnt$1" "/tmp/tempfile"
+    umount /tmp/mnt
+    [ $? -ne 0 ] && exit
+    echo "Switching to EMMC..."
+    set_emmc
+    restart_driver "MMC"
+    mmcblk=$(get_mmcblk)
+    if [ -e "/tmp/tempfile" ]; then
+      echo "Setting up EMMC so that ${mmcblk} is the bootdevice."
+      mmc bootpart enable 7 1 /dev/${mmcblk}
+      echo "Writing $1 to EMMC now..."
+      xz -dcv "/tmp/tempfile" | dd of=/dev/${mmcblk} conv=fsync,notrunc
+      echo "Reboot and enjoy booting from EMMC."
+  fi
+  elif [[ "$(get_mmctype)" == "MMC" ]]; then
+    echo "Switching back to SDMMC..."
+    set_sdmmc
+    restart_driver "SD"
+    mmcblk=$(get_mmcblk)
+  fi
 fi
 
 #echo "Testing on mmcblk0boot1..."
