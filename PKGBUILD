@@ -2,7 +2,7 @@
 # Based on testing/linux by Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-amd-staging-drm-next-git
-pkgver=6.0.r1126357.63481cd532e2
+pkgver=6.0.r1126446.5f30521b5f5e
 pkgrel=1
 pkgdesc='Linux kernel with WIP AMDGPU material'
 _product="${pkgbase%-git}"
@@ -22,10 +22,11 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            'c92207f87f806209da2bda0a2044872fdf22fce9a45cf31d3579fdfedde8c17c')
+            'f9a0027bea53a7160759858c535eb0ba0b3bea34c0130f47f2d5bba75d102170')
 
 pkgver() {
   cd $_srcname
+
   local version="$(grep \^VERSION Makefile|cut -d"=" -f2|cut -d" " -f2)"
   local patch="$(grep \^PATCHLEVEL Makefile|cut -d"=" -f2|cut -d" " -f2)"
 
@@ -40,7 +41,7 @@ prepare() {
   cd $_srcname
 
   echo "Setting version..."
-  KERNELVERSION="${pkgver}" scripts/setlocalversion
+  # KERNELVERSION="${pkgver}" scripts/setlocalversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
 
@@ -64,7 +65,7 @@ prepare() {
 
 build() {
   cd $_srcname
-  make htmldocs all
+  make all
 }
 
 _package() {
@@ -196,7 +197,7 @@ _package-docs() {
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 }
 
-pkgname=("${_product}-git" "${_product}-headers-git" "${_product}-docs-git")
+pkgname=("${_product}-git" "${_product}-headers-git") #"${_product}-docs-git")
 for _package in "${pkgname[@]}"; do
   local _package_no_git="${_package%-git}"
   local _package_stripped="${_package_no_git#$_product}"
