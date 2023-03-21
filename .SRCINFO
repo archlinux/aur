@@ -1,7 +1,7 @@
 pkgbase = r-vctrs
 	pkgdesc = Vector Helpers
 	pkgver = 0.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=vctrs
 	arch = i686
 	arch = x86_64
