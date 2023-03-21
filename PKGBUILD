@@ -2,9 +2,9 @@
 
 pkgname=trayscale
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An unofficial GUI wrapper for the Tailscale CLI client."
-arch=(i686 x86_64)
+arch=(i686 x86_64 aarch64)
 url="https://github.com/DeedleFake/trayscale"
 license=('MIT')
 depends=('gtk4' 'libadwaita')
