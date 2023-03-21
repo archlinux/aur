@@ -1,11 +1,21 @@
 pkgbase = r-raster
 	pkgdesc = Geographic Data Analysis and Modeling
 	pkgver = 3.6.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=raster
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	checkdepends = r-exactextractr
+	checkdepends = r-fields
+	checkdepends = r-gstat
+	checkdepends = r-igraph
+	checkdepends = r-mass
+	checkdepends = r-ncdf4
+	checkdepends = r-rastervis
+	checkdepends = r-sf
+	checkdepends = r-tinytest
+	checkdepends = r-tinytest
 	depends = r-rcpp
 	depends = r-sp>=1.4.5
 	depends = r-terra>=1.6.41

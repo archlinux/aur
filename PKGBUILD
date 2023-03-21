@@ -9,7 +9,7 @@ pkgdesc="Geographic Data Analysis and Modeling"
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL3)
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 
 arch=(i686 x86_64)
 depends=(
@@ -29,17 +29,27 @@ optdepends=(
     "r-sf"
     "r-tinytest"
 )
+checkdepends=(
+    "${optdepends[@]}"
+    "r-tinytest"
+)
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 b2sums=('812d94fe51922ff4347be9271ffe30ca61b70a60be44466cd9f53526a237298f5cc3c657cc6a3d344ce6eeddf553dfbaf1c3e73ec686db4aa56bd818d66d4fdc')
 
 build() {
-    R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
+    mkdir -p "${srcdir}/build/"
+    R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/build/"
+}
+
+check() {
+    cd "${srcdir}/${_cranname}/tests"
+    R_LIBS="${srcdir}/build/" Rscript tinytest.R
 }
 
 package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
-    cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+    cp -a --no-preserve=ownership "${srcdir}/build/${_cranname}" "${pkgdir}/usr/lib/R/library"
 
     if [[ -f "${_cranname}/LICENSE" ]]; then
         install -Dm0644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
