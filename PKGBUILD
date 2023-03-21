@@ -11,6 +11,7 @@ pkgrel=1
 
 arch=("any")
 depends=(
+    "jdk11-openjdk"
     "r-checkmate"
     "r-curl"
     "r-data.table"
@@ -35,13 +36,7 @@ optdepends=(
     "r-rmarkdown"
 )
 checkdepends=(
-    "r-covr"
-    "r-dplyr"
-    "r-ggplot2>=3.3.1"
-    "r-interp"
-    "r-knitr"
-    "r-patchwork"
-    "r-rmarkdown"
+    "${optdepends[@]}"
     "r-testthat"
 )
 
@@ -54,8 +49,11 @@ build() {
 }
 
 check() {
+    #export R_HOME="${srcdir}/R_HOME/"
+    #mkdir -p "${R_HOME}"
+    #R CMD javareconf
     cd "${srcdir}/${_cranname}/tests"
-    R_LIBS="${srcdir}/build/" Rscript --vanilla testthat.R
+    NOT_CRAN=true R_LIBS="${srcdir}/build/" Rscript --vanilla testthat.R
 }
 
 package() {
