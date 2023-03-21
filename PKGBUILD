@@ -7,7 +7,7 @@ pkgdesc="Third-party map tiles for r-leaflet"
 url="https://cran.r-project.org/package=${_cranname}"
 license=("BSD")
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 
 arch=("any")
 depends=(
@@ -15,7 +15,6 @@ depends=(
 )
 optdepends=(
     "r-jsonlite"
-    "r-testthat>=2.1.0"
     "r-v8"
 )
 checkdepends=(
