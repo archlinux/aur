@@ -3,4 +3,4 @@ a=ab.Assembly()
 a.stp_files=["./fuel_pins.step"]
 a.import_stp_files()
 a.merge_all()
-a.solids_to_h5m()
+a.solids_to_h5m(backend="stl")
