@@ -1,5 +1,5 @@
-pkg/
-src/
-basez/
-*.tar.gz
-*.tar.xz
+/*
+!/.gitignore
+!/.SRCINFO
+!/PKGBUILD
+!/basez-*.patch

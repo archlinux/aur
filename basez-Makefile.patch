@@ -1,0 +1,39 @@
+--- a/Makefile.src
++++ b/Makefile.src
+@@ -281,6 +281,7 @@
+           done
+ 
+ install-unix: install-common
++	@$(INST) -d $(DESTDIR)$(BINDIR)
+ 	@$(INST) -m 755 $(BINS) $(DESTDIR)$(BINDIR)/
+ 	@[ -n "${BINLINKS}" ] && \
+           for LINK in ${BINLINKS} ; do \
+@@ -289,6 +290,7 @@
+           done
+ 
+ install-mans: basez.1
++	@$(INST) -d $(DESTDIR)$(MANDIR)/man1
+ 	@$(INST) -m 644 @SRCS@ $(DESTDIR)$(MANDIR)/man1/
+ 	@[ -n "${BINLINKS}" ] && \
+           for LINK in ${BINLINKS} ; do \
+@@ -297,9 +299,11 @@
+           done
+ 
+ install-docs: LICENSE
++	@$(INST) -d $(DESTDIR)$(DOCDIR)
+ 	@$(INST) -m 644 @SRCS@ $(DESTDIR)$(DOCDIR)/
+ 
+ install-completion: basez-completion
++	@$(INST) -d $(DESTDIR)$(DATADIR)/bash-completion/completions
+ 	@$(INST) -m 644 @SRCS@ $(DESTDIR)$(DATADIR)/bash-completion/completions/
+ 	@[ -n "${BINLINKS}" ] && \
+           for LINK in ${BINLINKS} basez ; do \
+@@ -307,7 +311,7 @@
+                   $(DESTDIR)$(DATADIR)/bash-completion/completions/$${LINK}; \
+           done
+ 
+-install-common: all installdirs install-docs install-mans install-completion
++install-common: install-mans install-completion
+ 
+ uninstallfiles:
+ 	@-rm -f -- \

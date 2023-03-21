@@ -1,13 +1,24 @@
 pkgbase = basez
-	pkgdesc = Encodes/decodes base16, base32, base32hex, base64, base64url, base64mime, base64pem PEM, base32plain, base64plain. base16 and base32 are NOT included in this package since they would conflict with the one already in coreutils.
+	pkgdesc = En/decodes base16/32/64, including RFC-compliant URL, MIME, PEM encodings
 	pkgver = 1.6.2
-	pkgrel = 2
-	url = http://www.quarkline.net/basez/
+	pkgrel = 3
+	url = http://www.quarkline.net/basez
 	arch = x86_64
-	license = GPL
-	depends = gcc-libs
+	license = GPL3
+	license = CCPL:by-sa
+	license = BSD
+	makedepends = help2man
+	depends = glibc
 	source = http://www.quarkline.net/basez/download/basez-1.6.2.tar.gz
-	md5sums = b026890b9565bd2cba93afdbcd3213aa
+	source = http://www.quarkline.net/basez/download/basez-1.6.2.tar.gz.sig
+	source = http://www.quarkline.net/basez/download/sha256checksums
+	source = http://www.quarkline.net/basez/download/sha256checksums.sig
+	source = basez-Makefile.patch
+	validpgpkeys = 2C5CF8210CDF553B9521DE76223AE055BD94E154
+	sha256sums = 2a9f821488791c2763ef0120c75c43dc83dd16567b7c416f30331889fd598937
+	sha256sums = SKIP
+	sha256sums = 2f055c0f842094d29ccd1bdb56053bd980480fa8b4784f6cc3a630b4d474a308
+	sha256sums = SKIP
+	sha256sums = 3e65ba68e04385331b8f5c1fd2208b9c85e0ffd3873c910c197d84ef418bbb8d
 
 pkgname = basez
-
