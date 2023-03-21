@@ -3,7 +3,7 @@
 
 pkgname=plasma-meta
 pkgver=5.27
-pkgrel=2
+pkgrel=3
 pkgdesc='Meta package to install KDE Plasma'
 arch=(any)
 license=(None)
@@ -40,5 +40,7 @@ depends=(bluedevil
          xdg-desktop-portal-kde
 )
 optdepends=('breeze-grub: Breeze theme for GRUB'
+            'breeze-plymouth: Breeze theme for Plymouth'
             'flatpak-kcm: Manage Flatpak applications from systemsettings'
+            'plymouth-kcm: Configure Plymouth from systemsettings'
             'plasma-sdk: Development tools')
