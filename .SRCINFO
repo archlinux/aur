@@ -1,0 +1,21 @@
+pkgbase = r-whoami
+	pkgdesc = Username, Full Name, Email Address, 'GitHub' Username of the Current User
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=whoami
+	arch = any
+	license = MIT
+	checkdepends = r-covr
+	checkdepends = r-mockery
+	checkdepends = r-withr
+	checkdepends = r-testthat
+	depends = r
+	depends = r-httr
+	depends = r-jsonlite
+	optdepends = r-covr
+	optdepends = r-mockery
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/whoami_1.3.0.tar.gz
+	b2sums = e9c1b67039a52387bc5c8a2e394b45f8283a4aa0f93b11483ff7e99d740366df7269d11a0930f4107d51cf12959e039de577e1012bd58d58c629bd7972cbb08c
+
+pkgname = r-whoami
