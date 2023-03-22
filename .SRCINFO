@@ -1,6 +1,6 @@
 pkgbase = erdtree-bin
 	pkgdesc = A multi-threaded file-tree visualizer and disk usage analyzer.
-	pkgver = 1.4.1
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/solidiquis/erdtree/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = erdtree-bin
 	license = MIT
 	provides = et
 	conflicts = erdtree
-	source_x86_64 = erdtree-bin-x86_64-1.4.1-1.tar.gz::https://github.com/solidiquis/erdtree/releases/download/v1.4.1/et-v1.4.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = b9421127d0fc0f53ed049d0b27f9304c2efa59ceb33601a9ef1aadae7ca85f2c
-	source_aarch64 = erdtree-bin-aarch64-1.4.1-1.tar.gz::https://github.com/solidiquis/erdtree/releases/download/v1.4.1/et-v1.4.1-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 9ecd1d285da18f41d5f1db6a440f1174f78f5bad3de28e7e101d21d3e4d2326b
+	source_x86_64 = erdtree-bin-x86_64-1.6.0-1.tar.gz::https://github.com/solidiquis/erdtree/releases/download/v1.6.0/et-v1.6.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 191713c05a08095a6f85e7828abd2837914a083c6cf6c5a90faabe10ce1cc9c7
+	source_aarch64 = erdtree-bin-aarch64-1.6.0-1.tar.gz::https://github.com/solidiquis/erdtree/releases/download/v1.6.0/et-v1.6.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = d2a5e2f37a152c532f2470904d828fef2033e013d9505f211cf21bdab5782fe5
 
 pkgname = erdtree-bin
