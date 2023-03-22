@@ -1,6 +1,6 @@
 pkgbase = par2cmdline-turbo-git
-	pkgdesc = A file verification and repair tool
-	pkgver = 20230126.0b266b5
+	pkgdesc = A faster PAR 2.0 compatible file verification and repair tool, forked from par2cmdline
+	pkgver = 20230317.eaea6f4
 	pkgrel = 1
 	url = https://github.com/animetosho/par2cmdline-turbo
 	arch = x86_64

@@ -5,7 +5,7 @@ pkgname=par2cmdline-turbo-git
 _gitname='par2cmdline-turbo'
 pkgver=20230317.eaea6f4
 pkgrel=1
-pkgdesc="A file verification and repair tool"
+pkgdesc="A faster PAR 2.0 compatible file verification and repair tool, forked from par2cmdline"
 url="https://github.com/animetosho/par2cmdline-turbo"
 license=("GPL")
 makedepends=('git')
@@ -22,23 +22,20 @@ pkgver() {
 }
 
 build() {
-	msg "Starting make..."
 	cd ${_gitname}
 
 	# automake
 	aclocal
 	automake --add-missing
 	autoconf
-	# configure
+
 	./configure --prefix=/usr
-	# make
 	make
 }
 
 check() {
 	cd ${_gitname}
-	export MAKEFLAGS="-j1"
-	make check
+	make -j1 check
 }
 
 package() {
