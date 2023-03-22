@@ -6,7 +6,7 @@ _sign_location="etc/secureboot/keys"
 
 # Maintainer: BrLi <brli@chakralinux.org>
 pkgname=secureboot-helper
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Kernel signing helper for UEFI secure boot"
 arch=('any')
@@ -68,8 +68,8 @@ package() {
     cd $pkgdir/$_sign_location/KEK
     openssl req -newkey rsa:2048 -nodes -keyout KEK.key -new -x509 -sha256 -days 3650 -subj "/CN=Self-generated Key Exchange Key/" -out KEK.crt
     openssl x509 -outform DER -in KEK.crt -out KEK.cer
-    cert-to-efi-sig-list -g "$(< GUID.txt)" KEK.crt KEK.esl
-    sign-efi-sig-list -g "$(< GUID.txt)" -k ../PK/PK.key -c ../PK/PK.crt KEK KEK.esl KEK.auth
+    cert-to-efi-sig-list -g "$(< ../GUID.txt)" KEK.crt KEK.esl
+    sign-efi-sig-list -g "$(< ../GUID.txt)" -k ../PK/PK.key -c ../PK/PK.crt KEK KEK.esl KEK.auth
 
     # Signature Database key
     msg 'Generating DB.key'

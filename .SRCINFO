@@ -1,6 +1,6 @@
 pkgbase = secureboot-helper
 	pkgdesc = Kernel signing helper for UEFI secure boot
-	pkgver = 1.1.2
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Secure_Boot#Signing_kernel_with_pacman_hook
 	arch = any
