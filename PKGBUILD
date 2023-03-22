@@ -2,17 +2,17 @@
 # Contributor: Rene Hickersberger <r@renehsz.com>
 pkgname=mepo
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast, simple, and hackable OSM map viewer for Linux"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="https://git.sr.ht/~mil/mepo"
 license=('GPL3')
-depends=('jq' 'curl' 'zenity' 'xorg-xwininfo' 'geoclue' 'ncurses' 'findutils' 'sdl2_gfx')
-makedepends=('zig>=0.10.1' 'sdl2' 'sdl2_image' 'sdl2_ttf')
+depends=('jq' 'curl' 'zenity' 'xorg-xwininfo' 'geoclue' 'ncurses' 'findutils' 'sdl2_gfx' 'sdl2_image' 'sdl2_ttf')
+makedepends=('zig>=0.10.1' 'sdl2')
 checkdepends=('zig>=0.10.1')
 changelog=
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('568a5f397c15123928e47fe8a1b372bb9f3470b9dd511bfce3b42610b992eaf7a252d4e9e2a63e7c5e908b1da71cad7b344409a8cbd5314bb2fd630eafe41409')
+sha512sums=('bc65abf5d6fc4433d8b6ce4d7efa78f09239f70cc2ef816706ad81d5748132bcf3fa9ba50147cd7e633a9fd306fdb00e886b31b6645444b1b1e5906bf28e4eb7')
 
 build() {
   cd "$pkgname-$pkgver"
