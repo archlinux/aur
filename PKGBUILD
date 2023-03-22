@@ -3,8 +3,8 @@
 # Contributor: Jordan Klassen <forivall@gmail.com>
 _pkgname='flow'
 pkgname="$_pkgname-bin"
-pkgver='0.201.0'
-pkgrel='2'
+pkgver='0.202.0'
+pkgrel='1'
 pkgdesc='A static type checker for JavaScript - binary version'
 arch=('x86_64' 'aarch64')
 url="https://$_pkgname.org"
@@ -25,10 +25,10 @@ source=(
 )
 sha512sums=('50dd81cc39c67bc463e51a2d492119a2533548cb7e3f765e02cf9ada999397710351a1c4deadc4ffc59f4c2347b2e6ba2d4c42cbb63026ef48d50a2f2f5ee87a'
             '3b8288e5dac996da44bd81b0eb1d96905c4b90ad9154f3d29d073c96890b75cd281fa03af0b77f331dbec239d341363b5f9b328bafea0d4b8d0a3e900d150f80')
-sha512sums_x86_64=('1ad39722c9352f93161283f9f4cf7bc9cd12e02363431f1f1074ddfe87875b03ae54b8991b23a2f24bd0bffa4f0b32a5c200ed1f28c1528bf4cea7dfe9243869'
-                   'cb1e1d2d3c9895b70aa3d696fdc9237ef04e452cef5a89f99cca38833820af320629e33a89fc5ef423c42e66685afd302b478218f06521c2e08b181a09393ffc')
-sha512sums_aarch64=('5cf739b138e7b28c790a12d4ebe7a7bcf5d873c1a735f7aeb564c4ecabc18d9e376ac00689c4cfb8e58903b6b21fba022ec2f2a6b22e4edca156ebf153c7087f'
-                    'd47513e08efdec8e7cf62f77c9c44019763fa6e05b1ddf2ff979cea0eec27caef45e1b1a1afecf195a6cec726c031a207115830ea95d94d91d13ad1969dbe95e')
+sha512sums_x86_64=('505cd3689ba51f02b0d3721396dda635b3ee0a9832603eac56b17c2efaf90f6ab6bc3ff33fa1eacbec0a16f182d3c603d7c90054969d697e5d48aaa11393e0c9'
+                   '3ce5d9b4da6266b0546c727308d7c124acef588913e5f76e2f249a6a1765b6a977f1a4d0f689c7b4588e6683629971ae668fa181e080a98cdf48f0b9fa54ea6a')
+sha512sums_aarch64=('5dd649b7185bb526b0e380dd8fec3d8686dd6b8d742c96e73c1b5356c214d025af6e1b8aabc3a793b8843c2a242309708eef5ac1fc590dc6bf5cdb7bdc85d86a'
+                    '87f6de6bad58364eaad692bb838dd48c48989193f2ac9ff4334c862b6a1e4ecae808e2bcf6fa4d64d2e430838ca47f797d66023d222c9e00fa27bcfcc5aacc2c')
 
 package() {
 	cd "$srcdir/"
