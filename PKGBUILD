@@ -2,34 +2,60 @@
 pkgbase=python-asdf_coordinates_schemas
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=0.1.0
+#"python-${_pyname}-doc")
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="ASDF schemas for coordinates"
 arch=('any')
 url="https://github.com/asdf-format/asdf-coordinates-schemas"
 license=('BSD')
-makedepends=('python-setuptools')
-checkdepends=('python-pytest' 'python-asdf')
+makedepends=('python-setuptools-scm'
+             'python-wheel'
+             'python-build'
+             'python-installer')
+#            'python-sphinx-asdf'
+#            'python-numpy')    # avoid cascading dep of sphinx-asdf
+checkdepends=('python-pytest'
+              'python-asdf')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('f446e656c78dbb66e24010211e3a9979')
+md5sums=('848423bc8a4370534fc9a7f321e6395b')
+
+get_pyver() {
+    python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
+}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
+    python -m build --wheel --no-isolation
 
-    python setup.py build
+#   msg "Building Docs"
+#   ln -rs ${srcdir}/${_pyname}-${pkgver}/src/${_pyname/-/_}*egg-info \
+#       build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver .).egg-info
+#   PYTHONPATH="../build/lib" make -C docs html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed"
+    ln -rs ${srcdir}/${_pyname}-${pkgver}/src/${_pyname/-/_}*egg-info \
+        build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver .).egg-info
+    PYTHONPATH="build/lib" pytest || warning "Tests failed" # -vv --color=yes
 }
 
 package_python-asdf_coordinates_schemas() {
-    depends=('python>=3.7' 'python-asdf>=2.8.0')
+    depends=('python>=3.8' 'python-asdf>=2.12.1')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
-    python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
+
+#package_python-asdf_coordinates_schemas-doc() {
+#    pkgdesc="Documentation for Python ASDF coordinates schemas"
+#    cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
+#
+#    install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../../LICENSE
+#    install -dm755 "${pkgdir}/usr/share/doc/${pkgbase}"
+#    cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
+#}
