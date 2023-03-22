@@ -1,0 +1,13 @@
+pkgbase = sbctl-initcpio-post-hook
+	pkgdesc = a mkinitcpio post hook to sign uki images with sbctl
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/sbctl-initcpio-post-hook
+	arch = any
+	license = GPL
+	depends = mkinitcpio
+	depends = sbctl
+	source = sbctl-initcpio-post-hook
+	sha256sums = 830cf5297513253c4da69e2edc123b828b540f33033c1e36701feb3cfc517eda
+
+pkgname = sbctl-initcpio-post-hook

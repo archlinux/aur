@@ -1,0 +1,7 @@
+#! /bin/sh
+
+if [ -n "$3" ]; then
+  exec /usr/bin/sbctl sign "$3"
+fi
+
+echo "Only UKI files can be signed by sbctl."
