@@ -5,7 +5,7 @@
 # Contributor: eolianoe <eolianoe [at] gmail [DoT] com>
 
 pkgname=seadrive-gui
-pkgver=2.0.26
+pkgver=2.0.27
 pkgrel=1
 pkgdesc="GUI part of seadrive"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -14,7 +14,7 @@ license=('Apache')
 depends=('qt5-webengine' 'qt5-tools' 'seadrive-daemon')
 makedepends=("cmake")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('1c9f55ddc61e6c8eab808bd3f8bae42ff0dfbc02cbfc9e3f580d351b7745b9ce')
+sha256sums=('703870022ba4dd0cf37df2e2288d7bf7af2fcc4a99423195fd550207007b5307')
 
 prepare() {
     # Create build dir
