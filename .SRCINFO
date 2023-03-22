@@ -1,0 +1,40 @@
+pkgbase = r-asciicast
+	pkgdesc = Create ‘Ascii’ Screen Casts from R Scripts
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=asciicast
+	arch = i686
+	arch = x86_64
+	license = MIT
+	checkdepends = r-callr>=3.7.0
+	checkdepends = r-covr
+	checkdepends = r-cpp11
+	checkdepends = r-decor
+	checkdepends = r-htmlwidgets
+	checkdepends = r-knitr
+	checkdepends = r-mockery
+	checkdepends = r-rmarkdown
+	checkdepends = r-rstudioapi
+	checkdepends = r-testthat>=3.0.0
+	depends = r
+	depends = r-cli>=3.3.0.9000
+	depends = r-curl
+	depends = r-jsonlite
+	depends = r-magick>=2.2.9002
+	depends = r-processx>=3.7.0
+	depends = r-tibble
+	depends = r-v8
+	depends = r-withr
+	optdepends = r-callr>=3.7.0
+	optdepends = r-covr
+	optdepends = r-cpp11
+	optdepends = r-decor
+	optdepends = r-htmlwidgets
+	optdepends = r-knitr
+	optdepends = r-mockery
+	optdepends = r-rmarkdown
+	optdepends = r-rstudioapi
+	source = https://cran.r-project.org/src/contrib/asciicast_2.3.0.tar.gz
+	b2sums = a8483ae9699f4b7235a1ba90e38597c7e71b7c230da6d72b2a77d561227b1f5475134f28cd1095099b5f5e4519c47797efbe4f6fad134a8be9b635b4b9e63dc8
+
+pkgname = r-asciicast
