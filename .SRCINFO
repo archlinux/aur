@@ -1,0 +1,18 @@
+pkgbase = r-parsedate
+	pkgdesc = Recognize and Parse Dates in Various Formats
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=parsedate
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	checkdepends = r-covr
+	checkdepends = r-withr
+	checkdepends = r-testthat
+	depends = r
+	optdepends = r-covr
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/parsedate_1.3.1.tar.gz
+	b2sums = 61cce210fc9232d364aa72d78911af243cf9ea452f7c96e41a612b4dceef5b03929a3711c8cc0b51395aabd46d24cd652922a2938250db67a741b8d669104289
+
+pkgname = r-parsedate
