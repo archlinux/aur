@@ -1,7 +1,7 @@
 # Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=zimg-git
-pkgver=3.0.3.127.g48eec5c
+pkgver=3.0.3.132.g71394bd
 pkgrel=1
 pkgdesc="Scaling, colorspace conversion, and dithering library. (GIT version)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs'
          'glibc'
          )
 makedepends=('git')
-provides=('zimg'
+provides=("zimg=${pkgver}"
           'libzimg.so'
           )
 conflicts=('zimg'
@@ -20,8 +20,10 @@ conflicts=('zimg'
            )
 source=('git+https://github.com/sekrit-twc/zimg.git'
         'git+https://github.com/sekrit-twc/graphengine.git'
+        'git+https://github.com/google/googletest.git'
         )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             )
 options=('debug')
@@ -36,8 +38,10 @@ prepare() {
 
   cd zimg
   git config submodule.graphengine.url "${srcdir}/graphengine"
+  git config submodule.test/extra/googletest.url "${srcdir}/googletest"
   git -c protocol.file.allow=always submodule update --init \
-    graphengine
+    graphengine \
+    test/extra/googletest
 }
 
 build() {
@@ -46,9 +50,19 @@ build() {
 
   cd "${srcdir}/build"
   ../zimg/configure \
-    --prefix=/usr
+    --prefix=/usr \
+    --enable-testapp \
+    --enable-example \
+    --enable-unit-test
 
   make
+  make test/unit_test
+}
+
+check() {
+  cd build
+  ./testapp cpuinfo
+  ./test/unit_test
 }
 
 package(){
