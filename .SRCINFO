@@ -1,6 +1,6 @@
 pkgbase = mcomix-git
 	pkgdesc = A user-friendly, customizable image viewer specifically designed to handle comic books
-	pkgver = r1619.77450a3
+	pkgver = r1649.a0187eb
 	pkgrel = 1
 	url = https://sourceforge.net/projects/mcomix/
 	install = mcomix-git.install
