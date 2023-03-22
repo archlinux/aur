@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=commit
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Commit message editor."
 arch=('any')
 url="https://apps.gnome.org/app/re.sonny.Commit"
@@ -13,7 +13,7 @@ optdepends=('git: git support'
             'mercurial: mercurial support'
 #            'gspell: spell checking support' # Spell checking has been temporarily removed
             )
-_commit=296e3fcc2990e3197c30d308cf1ce577ffddc044  # tags/v4.0^0
+_commit=a2dfeddd38ed96bbd0f4ce29fb6a1bc5b215ee44  # tags/v4.0^0
 source=("git+https://github.com/sonnyp/Commit.git#commit=$_commit"
         'git+https://github.com/sonnyp/troll.git')
 sha256sums=('SKIP'
