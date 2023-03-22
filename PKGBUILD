@@ -1,8 +1,8 @@
 # Maintainer: Bandie <bandie@chaospott.de>
 
 pkgname=pam_panic
-pkgver=0.3.4
-pkgrel=2
+pkgver=0.3.5
+pkgrel=1
 pkgdesc="A PAM module that protects sensitive data and provides a panic function for emergency situations. Authentication through passwords or removable media."
 arch=('any')
 url="https://github.com/pampanic/pam_panic"
@@ -16,8 +16,8 @@ source=(
   "https://github.com/pampanic/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz.asc"
 )
 sha512sums=(
-  '7355ec1ce3d5f83147fe2e5aa5cb40f8ac121f8b34c9a01d5465a7a9df8e9b911adacb798f44a09f5505490860fc9d219cd3f7a397bf3ec454ba13a0d2e5b60b'
-  'c48bf558d402f397dd838dde2c306df9d698b917ac49c2ad0725df2feed6494c81c526ca5ba48c88e918f57bae4f20fb492995075f2b84a9a54ecfbe205bb56a'
+  '3552cfc92c38eaedcda4fe436915128447c718f4e4ceefeff0427ab9860ce2925b8795e8ca74c5d77ded4b897dc20bab3a7b63f8dcaafac3bb979760a374007c'
+  '50fcc895f982b61cc5d8b8cd0f2100ed74b9a225e0fa365a4c19a8f5f2a0465a1ebca83d605c22ebfb040046bc708608984ae849f7db12e0b54c2985efb46a54'
 )
 
 build() {
