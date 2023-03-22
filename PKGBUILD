@@ -1,19 +1,19 @@
-# Maintainer: musiclover <musiclover382@protonmail.com>
+# Maintainer: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=furtherance
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='Track your time without being tracked'
-arch=('x86_64' 'aarch64')
+arch=(any)
 url=https://github.com/lakoliu/$pkgname
 license=(GPL3)
-depends=('gtk4' 'libadwaita' 'sqlite')
-makedepends=('meson' 'rust')
-source=($url/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('9bc237920417ace23b1719fff89bc979e1bc7d4c488d66125eaac7f1ee54c5f1')
+depends=(libadwaita sqlite)
+makedepends=(git meson rust)
+source=(git+$url#tag=v$pkgver)
+b2sums=(SKIP)
 
 prepare() {
-	cd Furtherance-$pkgver
+	cd $pkgname
 	cargo update
 }
 
