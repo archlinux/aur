@@ -1,15 +1,19 @@
 # Maintainer: Robin Candau <antiz@archlinux.org>
 
 pkgname=zaman
-pkgver=1.1.0
-pkgrel=3
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Print man pages in a PDF file (with vim keys support) for an easier reading"
 arch=('any')
 url="https://github.com/Antiz96/zaman"
 license=('GPL3')
-depends=('man-db' 'zathura' 'zathura-pdf-poppler' 'dmenu')
+depends=('man-db' 'zathura')
+optdepends=('zathura-pdf-poppler: PDF support for zathura using the poppler engine'
+	    'zathura-pdf-mupdf: PDF support for zathura using the MuPDF backend'
+	    'rofi: Rofi support'
+	    'dmenu: Dmenu support')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('314d791c0bb8f7378ec830003c654610bffa0b0ab7a9f49053d24e2b9591f502')
+sha256sums=('3dbca5713a15e45ac7c2ce9d8a7e050a9e4dd12524d21e98215c57363412b005')
 
 package() {
 	cd "${pkgname}-${pkgver}"
