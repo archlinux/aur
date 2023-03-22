@@ -1,0 +1,18 @@
+pkgbase = r-decor
+	pkgdesc = Retrieve Code Decorations
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=decor
+	arch = i686
+	arch = x86_64
+	license = MIT
+	checkdepends = r-covr
+	checkdepends = r-testthat
+	depends = r>=3.3.0
+	depends = r-tibble
+	depends = r-vctrs
+	optdepends = r-covr
+	source = https://cran.r-project.org/src/contrib/decor_1.0.1.tar.gz
+	b2sums = 52e4f122fc2c93bcded0f19c290a005a1d907c5560d710bb81023df66a14678a17b8b3514fbaccc535049cd947cafb0bd8a78c0f05a43c9e9621eff630b8bd5a
+
+pkgname = r-decor
