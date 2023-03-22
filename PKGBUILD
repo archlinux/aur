@@ -1,7 +1,7 @@
 # Maintainer:  Joshua Holmer <jholmer.in@gmail.com>
 
 pkgname=libjxl-metrics-git
-pkgver=0.7.0.r201.g5853ad97
+pkgver=0.8.1.r209.g5f50bbb9
 pkgrel=1
 pkgdesc="JPEG XL image format reference implementation with butteraugli, ssimulacra, and ssimulacra2 (git version)"
 arch=('x86_64')
@@ -120,6 +120,10 @@ package() {
 
     # Work around for outdated tools
     # This will break in the future and needs to be kept track of
+    ln -s "/usr/lib/libjxl.so.0.9.0" "$pkgdir/usr/lib/libjxl.so.0.8"
+    ln -s "/usr/lib/libjxl.so.0.9.0" "$pkgdir/usr/lib/libjxl.so.0.8.0"
+    ln -s "/usr/lib/libjxl_threads.so.0.9.0" "$pkgdir/usr/lib/libjxl_threads.so.0.8"
+    ln -s "/usr/lib/libjxl_threads.so.0.9.0" "$pkgdir/usr/lib/libjxl_threads.so.0.8.0"
     ln -s "/usr/lib/libjxl.so.0.8.0" "$pkgdir/usr/lib/libjxl.so.0.7"
     ln -s "/usr/lib/libjxl.so.0.8.0" "$pkgdir/usr/lib/libjxl.so.0.7.0"
     ln -s "/usr/lib/libjxl_threads.so.0.8.0" "$pkgdir/usr/lib/libjxl_threads.so.0.7"
