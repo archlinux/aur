@@ -5,7 +5,7 @@
 
 pkgname=penguins-eggs
 pkgver=9.4.2 # autoupdate
-pkgrel=3
+pkgrel=4
 pkgdesc="A console tool, under continuous development, that allows you to remaster your system and redistribute it as live images on usb sticks or via PXE"
 arch=('any')
 url='https://penguins-eggs.net'
@@ -57,13 +57,16 @@ depends=(
   'xdg-utils'
 )
 
-# Check OS
-if [[ $(grep 'Manjaro' /etc/lsb-release) ]]; then
-	depends+=('manjaro-tools-iso')
+# Verifica se è in esecuzione Arch Linux
+if [ "$(uname -r | grep '^ARCH')" ]; then
+  _initcpio=mkinitcpio-archiso
 else
-	depends+=('mkinitcpio-archiso')
+  _initcpio=manjaro-tools-iso
 fi
- 
+
+# aggiunge la dipendenta giusta
+depends+=$_initcpio
+
 optdepends=(
   'bash-completion: enable eggs commands automatic completion' 
   'calamares: system installer GUI' 
@@ -78,7 +81,7 @@ build() {
   pnpm-dir/bin/pnpm install
   pnpm-dir/bin/pnpm build
 }
- 
+
 package() {
   cd "${pkgname}-${pkgver}"
 

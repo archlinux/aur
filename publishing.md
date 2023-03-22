@@ -4,8 +4,7 @@ penguins-eggs (stable) è pubblicato su [AUR](https://aur.archlinux.org/packages
 
 
 # La chiave
-Per l'accesso in scrittura ad AUR, è necessario disporre di una coppia di chiavi SSH. Il contenuto della chiave pubblica deve essere copiato nel proprio profilo in My Account e la chiave privata 
-corrispondente deve essere configurata per l'host aur.archlinux.org. Ad esempio:
+Per l'accesso in scrittura ad AUR, è necessario disporre di una coppia di chiavi SSH. Il contenuto della chiave pubblica deve essere copiato nel proprio profilo in My Account e la chiave privata corrispondente deve essere configurata per l'host aur.archlinux.org. Ad esempio:
 ```
 ~/.ssh/config
 Host aur.archlinux.org
@@ -22,7 +21,7 @@ ssh-keygen -f ~/.ssh/aur
 
 Suggerimento: è possibile aggiungere più chiavi pubbliche al proprio profilo separandole con un trattino nel campo di immissione.
 
-# Aggiornamento
+# Push su AUR
 
 Per aggiornare, occorre eseguire il clone per lettura/scrittura con un utente in possesso della chiave privata che DEVE essere copiata in ~/.ssh/:
 
@@ -33,9 +32,11 @@ git clone ssh://aur@aur.archlinux.org/penguins-eggs.git
 ## .SRCINFO
 Prima di poter pubblicare occorre ri-creare il file .SRCINFO con il comando:
 
-```makepkg --printsrcinfo > .SRCINFO```
+```
+makepkg --printsrcinfo > .SRCINFO
+```
 
-Quindi, immagino si effettua normalmente il push
+Quindi, si effettua normalmente il push:
 ```
 git add -A
 git commit -m "modifiche effettuate"
