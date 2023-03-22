@@ -1,7 +1,7 @@
 # Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
 pkgname=python-financedatabase
 _pkgname=${pkgname:7}
-pkgver=2.0.9
+pkgver=2.0.10
 pkgrel=1
 pkgdesc="Database of 300.000+ symbols containing Equities"
 arch=('any')
