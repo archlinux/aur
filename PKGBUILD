@@ -2,7 +2,7 @@
 
 pkgname=('siyuan-kernel')
 _pkgname=siyuan
-pkgver=2.6.0
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="Build Your Eternal Digital Garden."
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('GPL3')
 makedepends=('go' 'pnpm')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/siyuan-note/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
         'siyuan-kernel.service')
-sha256sums=('2283f4dd384b514ced186a2120af96a3d1acc91a50aadfbbdc85cec19829f96e'
+sha256sums=('00ba814ede981b44753694b64fb7e29d2d0cc2130ee479d2f28b0bd303b28cca'
 		    '3a264b1e664521d43daf33bf7966edd3beaf0e26a700c3a8b39a42800f990a53')
 
 build() {
