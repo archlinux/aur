@@ -1,13 +1,13 @@
 pkgbase = poketex
 	pkgdesc = Simple Pokedex based on TUI
-	pkgver = 1.1.2
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/ckaznable/poketex
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = poketex-1.1.2.tar.gz::https://github.com/ckaznable/poketex/archive/v1.1.2.tar.gz
-	sha256sums = 76f050b47a54955eaf5ca89b6fe4cbbe5b52e6908d86df0290d74ec9a1e8ec19
+	source = poketex-1.2.0.tar.gz::https://github.com/ckaznable/poketex/archive/v1.2.0.tar.gz
+	sha256sums = 63f96bf89823ce77f9ea736183e7dbaf3aa95af40e95dca8f375f1ed01151987
 
 pkgname = poketex
