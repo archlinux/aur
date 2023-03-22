@@ -1,0 +1,15 @@
+pkgbase = hyprsome-git
+	pkgver = r17.e3dfeb9
+	pkgrel = 1
+	url = https://github.com/sopa0/hyprsome
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	depends = hyprland
+	provides = hyprsome=r17.e3dfeb9
+	conflicts = hyprsome
+	source = git+https://github.com/sopa0/hyprsome.git
+	sha256sums = SKIP
+
+pkgname = hyprsome-git
