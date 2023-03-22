@@ -1,6 +1,6 @@
 pkgbase = android-sdk-build-tools
 	pkgdesc = Build-Tools for Google Android SDK (aapt, aidl, dexdump, dx, llvm-rs-cc)
-	pkgver = r33.0.2
+	pkgver = r34.0.0
 	pkgrel = 1
 	url = https://developer.android.com/studio/releases/build-tools
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = android-sdk-build-tools
 	optdepends = lib32-gcc-libs
 	optdepends = lib32-zlib
 	options = !strip
-	source = https://dl-ssl.google.com/android/repository/build-tools_r33.0.2-linux.zip
+	source = https://dl-ssl.google.com/android/repository/build-tools_r34-rc2-linux.zip
 	source = package.xml
-	sha512sums = a4bee308b31ffaf08437f4ab2d0e9e84242946f440f33096b9eecbd7a28adc29bfcdd5e028a3a4696be82923e38f6bf9285b880100177110255d70b170853b14
-	sha512sums = 3bbb3283d80e42a21e05cd44d0a46a95c6a832c31993cb896a2620f6c39ebd33b0c1ec668e4b79e3f28d25e55e99f6940eff6b85e937e930b6d1326be4ae9e36
+	sha512sums = 1b52510ad3f7724728979a794560410cab2850b0f22efc8c824458af871ccc6e6532592bf72117d50f28b6d8c741a4b846df9c68aa18b82721112958a4040073
+	sha512sums = 501211771b02940010420a4003b8396d3d6599fb339c2f64959335ab1c3cf615811cc62acaa093c9f4e14bbc019a9e493835573a5136383617d8b5184509d3f8
 
 pkgname = android-sdk-build-tools
