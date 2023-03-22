@@ -1,0 +1,12 @@
+pkgbase = bike
+	pkgdesc = Tool that prints “bike” to the standard output.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://git.tebibyte.media/emma/bike
+	arch = any
+	license = CC0
+	provides = bike
+	source = https://git.tebibyte.media/emma/bike/archive/1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = bike
