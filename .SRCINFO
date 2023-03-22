@@ -1,7 +1,7 @@
 pkgbase = slf4j
 	pkgdesc = Simple Logging Facade for Java for various logging frameworks (e.g. java.util.logging, logback, log4j)
 	pkgver = 2.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.slf4j.org
 	arch = any
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = slf4j
 	noextract = slf4j-migrator-2.0.7.jar
 	noextract = slf4j-nop-2.0.7.jar
 	noextract = slf4j-simple-2.0.7.jar
-	source = https://raw.githubusercontent.com/qos-ch/slf4j/v_2.0.7/LICENSE.txt
+	source = https://raw.githubusercontent.com/qos-ch/slf4j/master/LICENSE.txt
 	source = https://repo1.maven.org/maven2/org/slf4j/jcl-over-slf4j/2.0.7/jcl-over-slf4j-2.0.7.jar
 	source = https://repo1.maven.org/maven2/org/slf4j/jul-to-slf4j/2.0.7/jul-to-slf4j-2.0.7.jar
 	source = https://repo1.maven.org/maven2/org/slf4j/log4j-over-slf4j/2.0.7/log4j-over-slf4j-2.0.7.jar

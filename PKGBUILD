@@ -4,13 +4,13 @@
 
 pkgname=slf4j
 pkgver=2.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple Logging Facade for Java for various logging frameworks (e.g. java.util.logging, logback, log4j)"
 arch=('any')
 url="https://www.slf4j.org"
 license=('MIT')
 depends=('java-runtime')
-source=("https://raw.githubusercontent.com/qos-ch/slf4j/v_${pkgver}/LICENSE.txt"
+source=("https://raw.githubusercontent.com/qos-ch/slf4j/master/LICENSE.txt"
         "https://repo1.maven.org/maven2/org/slf4j/jcl-over-slf4j/${pkgver}/jcl-over-slf4j-${pkgver}.jar"
         "https://repo1.maven.org/maven2/org/slf4j/jul-to-slf4j/${pkgver}/jul-to-slf4j-${pkgver}.jar"
         "https://repo1.maven.org/maven2/org/slf4j/log4j-over-slf4j/${pkgver}/log4j-over-slf4j-${pkgver}.jar"
