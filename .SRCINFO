@@ -1,7 +1,7 @@
 pkgbase = koodo-reader-bin
 	pkgdesc = A cross-platform ebook reader
-	pkgver = 1.5.2
-	pkgrel = 1
+	pkgver = 1.5.3
+	pkgrel = 2
 	url = https://koodo.960960.xyz/
 	arch = x86_64
 	license = AGPL-3.0
@@ -16,9 +16,9 @@ pkgbase = koodo-reader-bin
 	depends = libappindicator-gtk3
 	depends = libsecret
 	provides = koodo-reader
-	source = koodo-reader-bin-1.5.2.deb::https://github.com/troyeguo/koodo-reader/releases/download/v1.5.2/Koodo.Reader-1.5.2.deb
+	source = koodo-reader-bin-1.5.3.deb::https://github.com/troyeguo/koodo-reader/releases/download/v1.5.3/Koodo.Reader-1.5.3-amd64.deb
 	source = koodo-reader.desktop
-	sha256sums = b47a57562d58ed3c537c22fd096cf59d1b5bc59ac348c19cd6ab5f8c7422e513
+	sha256sums = 443991e8250c3c19efad826d8aeb37cfe3183ed8fbd49239cc799c40e5990b42
 	sha256sums = 9fd70a6316a1fd9369bd1c1c0b1b6583da0eed85502804deea2042b4a38aaa0e
 
 pkgname = koodo-reader-bin
