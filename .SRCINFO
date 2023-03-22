@@ -1,7 +1,7 @@
 pkgbase = xorg-xwayland-hidpi-xprop
 	pkgdesc = run X clients under wayland, with !733 HiDPI patch
 	pkgver = 22.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xorg.freedesktop.org
 	arch = x86_64
 	license = custom
@@ -27,6 +27,7 @@ pkgbase = xorg-xwayland-hidpi-xprop
 	depends = mesa
 	provides = xorg-server-xwayland
 	provides = xorg-xwayland
+	provides = xorg-xwayland-lily
 	conflicts = xorg-server-xwayland
 	conflicts = xorg-xwayland
 	replaces = xorg-server-xwayland
@@ -37,6 +38,6 @@ pkgbase = xorg-xwayland-hidpi-xprop
 	validpgpkeys = 67DC86F2623FC5FD4BB5225D14706DBE1E4B4540
 	sha512sums = f52c6f99d8ef7605bc1c651d5ee5e306c12af30649a2d712b1c4c3cf4c7c80246ae24bd9ac39461d47aafc78f5d659446a459cd6259e05ef3128b204981d114a
 	sha512sums = SKIP
-	sha512sums = 7132c44d9bbf1c5f93906ef301a6e946f0909da0b9273f397281e681ad0da77d62b960a9dd0a640c7209548192fefba9bde03c493f3a89d08cd73a12844bb518
+	sha512sums = 2e16d1e3222b02d27a544c8df5132cf22c7fd0601c3a967a603cf2e14b7154ac1d3d6e4ea66e0bf4086f9f18fe0bc2428653ecbd8b23a0e90c3f0a9b1ecf36d9
 
 pkgname = xorg-xwayland-hidpi-xprop
