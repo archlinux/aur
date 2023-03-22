@@ -1,6 +1,6 @@
 pkgbase = r-enrichedheatmap
 	pkgdesc = Making Enriched Heatmaps
-	pkgver = 1.27.2
+	pkgver = 1.28.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/EnrichedHeatmap
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = r-enrichedheatmap
 	optdepends = r-rcolorbrewer
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/EnrichedHeatmap_1.27.2.tar.gz
-	sha256sums = e517fec10e995c3276c6f2b4190469dd9374b50d52dfc4731b97cbfa8b6485c6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/EnrichedHeatmap_1.28.1.tar.gz
+	sha256sums = 2c47fe0aaa599194ffe31eec5b4cff1afc7c2c58c55e7305f3966b8743d27b46
 
 pkgname = r-enrichedheatmap
