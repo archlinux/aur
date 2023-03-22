@@ -2,7 +2,7 @@
 
 _plug=soifunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=52.88c6080
+pkgver=58.50abfaf
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -20,6 +20,7 @@ depends=('vapoursynth'
   'vapoursynth-plugin-dfttest2-git'
   'vapoursynth-plugin-fft3dfilter-git'
   'vapoursynth-plugin-mvtools-git'
+  'vapoursynth-plugin-vsdenoise-git'
 )
 optdepends=('vapoursynth-plugin-bm3dcuda-git: BM3D cuda/cuda_rtc + fast cpu support'
   'vapoursynth-plugin-bm3dcuda-cpu-git: BM3D fast cpu support, without cuda'

@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-soifunc-git
 	pkgdesc = Plugin for Vapoursynth: soifunc (GIT version)
-	pkgver = 52.88c6080
+	pkgver = 58.50abfaf
 	pkgrel = 1
 	url = https://github.com/shssoichiro/soifunc
 	arch = any
@@ -19,6 +19,7 @@ pkgbase = vapoursynth-plugin-soifunc-git
 	depends = vapoursynth-plugin-dfttest2-git
 	depends = vapoursynth-plugin-fft3dfilter-git
 	depends = vapoursynth-plugin-mvtools-git
+	depends = vapoursynth-plugin-vsdenoise-git
 	optdepends = vapoursynth-plugin-bm3dcuda-git: BM3D cuda/cuda_rtc + fast cpu support
 	optdepends = vapoursynth-plugin-bm3dcuda-cpu-git: BM3D fast cpu support, without cuda
 	provides = vapoursynth-plugin-soifunc
