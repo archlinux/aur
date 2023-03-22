@@ -1,12 +1,12 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=dynarmic
 pkgver=6.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="An ARM dynamic recompiler"
 arch=('aarch64' 'x86_64')
 url="https://github.com/merryhime/dynarmic"
 license=('BSD')
-depends=('llvm-libs')
+depends=('gcc-libs' 'glibc' 'llvm-libs')
 makedepends=(
 	'boost>=1.57'
 	'cmake>=3.12'

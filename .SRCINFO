@@ -1,7 +1,7 @@
 pkgbase = dynarmic
 	pkgdesc = An ARM dynamic recompiler
 	pkgver = 6.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/merryhime/dynarmic
 	arch = aarch64
 	arch = x86_64
@@ -14,12 +14,16 @@ pkgbase = dynarmic
 	makedepends = robin-map>=0.6.2
 	makedepends = xbyak>=6.68
 	makedepends = zydis>=4
+	depends = gcc-libs
+	depends = glibc
 	depends = llvm-libs
 	provides = libdynarmic.so
 	source = dynarmic-6.4.5.tar.gz::https://github.com/merryhime/dynarmic/archive/refs/tags/6.4.5.tar.gz
 	b2sums = 07e48b284816dfe7a94b15499945068bb25410e4c735f0119768db91ff7de54c719ddcb8cd340c8f0865d3c79985cde57adb144a7416bb362860b8ae0e7a5c60
 
 pkgname = dynarmic
+	depends = gcc-libs
+	depends = glibc
 	depends = llvm-libs
 	depends = libfmt.so
 	depends = libZydis.so
