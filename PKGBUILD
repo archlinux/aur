@@ -1,5 +1,6 @@
+# Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-libidn2
-pkgver=2.3.2
+pkgver=2.3.4
 pkgrel=1
 pkgdesc="A free software implementation of IDNA2008 (mingw-w64)"
 arch=(any)
@@ -9,7 +10,7 @@ makedepends=(mingw-w64-configure)
 depends=(mingw-w64-crt mingw-w64-libunistring)
 options=(staticlibs !strip !buildflags)
 source=("https://ftp.gnu.org/pub/gnu/libidn/libidn2-${pkgver}.tar.gz")
-sha256sums=('76940cd4e778e8093579a9d195b25fff5e936e9dc6242068528b437a76764f91')
+sha256sums=('93caba72b4e051d1f8d4f5a076ab63c99b77faee019b72b9783b267986dbb45f')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -32,3 +33,5 @@ package() {
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
 }
+
+# vim: ts=2 sw=2 et:
