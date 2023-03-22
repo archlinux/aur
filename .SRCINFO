@@ -1,7 +1,7 @@
 pkgbase = odilia
 	pkgdesc = Building a better screen reader for the Linux desktop, one step at a time.
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.1.1
+	pkgrel = 1
 	url = https://odilia.app/
 	arch = x86_64
 	arch = aarch64
