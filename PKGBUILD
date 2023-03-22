@@ -10,7 +10,7 @@ depends=('nss' 'alsa-lib' 'gtk3' 'at-spi2-core' 'xdg-utils')
 provides=('f1multiviewer')
 conflicts=('f1multiviewer')
 install=f1multiviewer-bin.install
-source=("https://releases.multiviewer.io/download/99812515/MultiViewer.for.F1-linux-x64-1.14.2.zip"
+source=("https://releases.multiviewer.app/download/99812515/MultiViewer.for.F1-linux-x64-1.14.2.zip"
     "f1multiviewer.desktop")  # This URL changes for every release, you must grab it from https://multiviewer.app/download each time.
 noextract=()
 sha256sums=('e60fd49612b25c1625100bf57ca215a7c367ea8bcaf7a57a9e0d0b15550e6ce3'
