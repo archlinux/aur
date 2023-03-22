@@ -1,21 +1,22 @@
 # Maintainer: Alynx Zhou <alynx.zhou@gmail.com>
 _pkgname=ansel
 pkgname="${_pkgname}-git"
-pkgver=r34946.d6dac29c8
+pkgver=r35126.34f3da09a
 pkgrel=1
 pkgdesc="Ansel is an open-source photo-editing software for digital artists, designed to help you achieve your own interpretation of raw digital photographs."
 arch=("i686" "x86_64")
 url="https://ansel.photos/"
 license=("GPL3")
 depends=(pugixml libjpeg-turbo colord-gtk openexr lensfun iso-codes zlib exiv2
-         flickcurl openjpeg2 graphicsmagick lua53 osm-gps-map libsecret openmp
-         gmic libavif)
+         flickcurl openjpeg2 graphicsmagick lua osm-gps-map libsecret openmp
+         gmic libavif jasper libjxl)
 optdepends=("dcraw: base curve script"
             "perl-image-exiftool: base curve script"
             "imagemagick: base curve and noise profile scripts"
             "ghostscript: noise profile script"
+            "portmidi: game and midi controller input devices"
             "gnuplot: noise profile script")
-makedepends=(git cmake intltool desktop-file-utils llvm clang python-jsonschema libwebp)
+makedepends=(git cmake intltool desktop-file-utils llvm clang portmidi python-jsonschema libwebp)
 conflicts=(ansel)
 provides=(ansel)
 options=(!emptydirs !libtool)
