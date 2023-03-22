@@ -7,9 +7,9 @@
 # Contributor: Edoardo Morandi <morandidodo@gmail.com>
 
 pkgname=simgear
-pkgver=2020.3.17
+pkgver=2020.3.18
 _pkgver=${pkgver%.*}
-pkgrel=2
+pkgrel=1
 pkgdesc="A set of open-source libraries designed to be used as building blocks for quickly assembling 3d simulations, games, and visualization applications."
 arch=('x86_64')
 url="http://home.flightgear.org/"
@@ -22,7 +22,7 @@ source=(
     "compositor-pass-missing-array-include.patch"
 )
 sha256sums=(
-    '4c5e9cd0dcff1bd311c2460aa601230bd80abdbaec751b559c1d7147749f377c'
+    '6cc1cf2556b172407929ecf2bab2432c6fb05ee16dd19026e90369f2573636ca'
     '81f817ba0f54952ac5fea32ec717275cdb9804f9801def9ae1a00f019bcf968b'
 )
 
