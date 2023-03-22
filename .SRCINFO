@@ -1,10 +1,18 @@
 pkgbase = r-withr
-	pkgdesc = Run Code 'With' Temporarily Modified Global State
+	pkgdesc = Lightweight Well-Known Geometry Parsing
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=withr
 	arch = any
 	license = MIT
+	checkdepends = r-callr
+	checkdepends = r-covr
+	checkdepends = r-dbi
+	checkdepends = r-knitr
+	checkdepends = r-rmarkdown
+	checkdepends = r-rsqlite
+	checkdepends = r-testthat
+	checkdepends = texlive-core
 	depends = r>=3.2.0
 	optdepends = r-callr
 	optdepends = r-covr
@@ -12,8 +20,7 @@ pkgbase = r-withr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-rsqlite
-	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/withr_2.5.0.tar.gz
-	sha256sums = 37317b3ed790a08407072993a05ab255f6305f95a12a16e0e28aa6aa80fc8bc0
+	b2sums = b472aef752317feedab16ab01557f28cdd30d8f2c6902b1a496f308165c1e02f7a8859cc791acf714748ad0a1b2d58dc9567cacfa0083a8427eb487820d8ab10
 
 pkgname = r-withr
