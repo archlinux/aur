@@ -1,6 +1,6 @@
 # Maintainer: Lorenzo Nizzi <lorenzo.nizzi.grifi@gmail.com>
 pkgname=gosign
-pkgver=1.3.1
+pkgver=1.3.9
 pkgrel=1
 pkgdesc="Nuovo tool di firma e rinnovo online per i certificati digitali emessi da InfoCert"
 arch=('x86_64')
