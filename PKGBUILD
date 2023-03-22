@@ -1,6 +1,7 @@
 # Maintainer: Areskul <areskul@areskul.com>
 pkgname="pipelight"
 pkgrel=1
+pkgver=0.4.23
 pkgdesc="A Rust based quick automation tool"
 arch=("any")
 url="https://gitea.com/pipelight/pipelight.git"
@@ -27,5 +28,5 @@ package() {
 
 pkgver() {
   cd "$pkgname"
-  git describe | sed s/v//
+  git describe --tags --abbrev=0 | sed s/v//
 }
