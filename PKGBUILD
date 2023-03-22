@@ -1,9 +1,9 @@
 # Maintainer: Brandon Barker <bbarker.py@protonmail.ch>
 pkgname=mplcolors
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="CLI to display matplotlib colors, colorbars, and other useful functions."
-arch=('x86_64')
+arch=('any')
 url="https://github.com/AstroBarker/mplcolors"
 depends=("bash" "python")
 makedepends=("git")
