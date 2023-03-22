@@ -3,7 +3,7 @@
 
 pkgname=otpclient
 _pkgname=OTPClient
-pkgver=3.1.5
+pkgver=3.1.6
 pkgrel=1
 pkgdesc="A simple GTK+ v3 TOTP/HOTP client"
 url="https://github.com/paolostivanin/OTPClient"
@@ -15,7 +15,7 @@ provides=(otpclient)
 validpgpkeys=('060C6B7D3869F148C4C4ACD43C9BE9B64EC1EA64')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 	"$pkgname-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver/v$pkgver.tar.gz.asc")
-sha256sums=('ccb298b30b7664c6197480fb708709e1fe3b7ad0b18a771f004e31bf33a1128f'
+sha256sums=('ef82c0ec51ad1f9f108a1b0e919e128d8f6e07852cec3f919ba25aace266de94'
             'SKIP')
 
 build() {
