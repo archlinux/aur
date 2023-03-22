@@ -1,7 +1,7 @@
 pkgbase = ly
 	pkgdesc = TUI display manager
 	pkgver = 0.5.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/fairyglade/ly
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ly
 	license = custom:WTFPL
 	makedepends = git
 	depends = pam
-	depends = xorg-xauth
+	optdepends = xorg-xauth: for X server sessions
 	conflicts = python-ly
 	backup = etc/ly/config.ini
 	backup = etc/ly/wsetup.sh
