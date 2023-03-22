@@ -1,0 +1,15 @@
+pkgbase = xr-picker-git
+	pkgdesc = easily change your active OpenXR runtime
+	pkgver = 2.0.0.r2.gdf61067
+	pkgrel = 1
+	url = https://github.com/rpavlik/xr-picker
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	provides = xr-picker
+	conflicts = xr-picker
+	source = git+https://github.com/rpavlik/xr-picker.git
+	sha256sums = SKIP
+
+pkgname = xr-picker-git
