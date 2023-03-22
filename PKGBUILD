@@ -10,7 +10,7 @@ license=('LGPL')
 depends=('mingw-w64-gst-plugins-base-git' 'mingw-w64-orc' 'mingw-w64-bzip2')
 makedepends=('git' 'mingw-w64-meson' 'mingw-w64-libsoup3' 'mingw-w64-cairo' 'mingw-w64-gdk-pixbuf2' 'mingw-w64-libvpx' 'mingw-w64-speex' 'mingw-w64-flac' 'mingw-w64-wavpack' 'mingw-w64-mpg123' 'mingw-w64-lame')
 optdepends=(
-  "mingw-w64-libsoup: libsoup HTTP client source/sink plugin"
+  "mingw-w64-libsoup3: libsoup HTTP client source/sink plugin"
   "mingw-w64-cairo: Cairo overlay plugin"
   "mingw-w64-gdk-pixbuf2: gdk-pixbuf image decoder, overlay, and sink plugin"
   "mingw-w64-libpng: PNG image codec plugin"
