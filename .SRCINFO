@@ -1,7 +1,7 @@
 pkgbase = penguins-eggs
 	pkgdesc = A console tool, under continuous development, that allows you to remaster your system and redistribute it as live images on usb sticks or via PXE
 	pkgver = 9.4.2
-	pkgrel = 8
+	pkgrel = 9
 	url = https://penguins-eggs.net
 	arch = any
 	license = GPL2
@@ -30,7 +30,7 @@ pkgbase = penguins-eggs
 	depends = sshfs
 	depends = syslinux
 	depends = xdg-utils
-	depends = manjaro-tools-iso
+	depends = mkinitcpio-archiso
 	optdepends = bash-completion: eggs autocomplete
 	optdepends = zsh-autosuggestions: eggs autocomplete
 	optdepends = calamares: system installer GUI
