@@ -1,14 +1,14 @@
 pkgname=gpt-cli
-pkgver=0.0.18
-pkgrel=6
+pkgver=0.0.19
+pkgrel=7
 pkgdesc="Run linux commands with natural language. Eg 'show my graphic card' instead 'lspci | grep VGA'"
 arch=('x86_64')
 url="https://github.com/gustawdaniel/gpt-cli"
 license=('MIT')
 depends=('xorg-server-devel' 'libxcb')
 options=()
-source_x86_64=("https://github.com/gustawdaniel/gpt-cli/releases/download/v0.0.18/gpt-cli.gnu")
-sha512sums_x86_64=('eabba0d6f0743390cf0d169133799617079dc1c878f4fdd66db57eb8768af347945303e458209e4ae5d174079e78b239d0ed48e97379fa9be6b16e160ddfd913')
+source_x86_64=("https://github.com/gustawdaniel/gpt-cli/releases/download/v0.0.19/gpt-cli.gnu")
+sha512sums_x86_64=('0d0cf4481533013082562f8fa5474fc0015df089bb059900b0a38a3ac5b2e0b5346074a60e80e53eb288cc5db40117b57c02520c81f4c6bdd7f134fbf77413ff')
 
 package() {
 # Install the binary
