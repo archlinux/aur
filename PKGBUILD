@@ -2,7 +2,7 @@
 _projname=wstunnel
 _pkgname=haskell-"${_projname}"
 pkgname="${_pkgname}"-bin
-pkgver=4.1
+pkgver=5.0
 pkgrel=1
 pkgdesc="Tunneling over websocket protocol"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -14,13 +14,13 @@ conflicts=("${_pkgname}" 'nodejs-wstunnel')
 source=("${pkgname}-${pkgver}-LICENSE::https://github.com/erebe/${_projname}/raw/v${pkgver}/LICENSE"
         "${pkgname}-${pkgver}-README.md::https://github.com/erebe/${_projname}/raw/v${pkgver}/README.md"
         "${pkgname}-${pkgver}-logo.png::https://github.com/erebe/${_projname}/raw/v${pkgver}/logo_${_projname}.png")
-source_x86_64=("${pkgname}-${pkgver}-x86_64::https://github.com/erebe/${_projname}/releases/download/v${pkgver}/${_projname}-x64-linux")
-source_aarch64=("${pkgname}-${pkgver}-aarch64.zip::https://github.com/erebe/${_projname}/releases/download/v${pkgver}/${_projname}-aarch64-linux.zip")
+source_x86_64=("${pkgname}-${pkgver}-x86_64::https://github.com/erebe/${_projname}/releases/download/v${pkgver}/${_projname}-linux-x64")
+source_aarch64=("${pkgname}-${pkgver}-aarch64.zip::https://github.com/erebe/${_projname}/releases/download/v${pkgver}/${_projname}-linux-aarch64.zip")
 sha256sums=('eaea4f8a2ebca92e3ca13f77d01364b110723c70ed6370ce1ecdb4f84261d411'
-            '0c36b137a787f94d66a9abc9bbc240da0fb3ac3624bcc573a55df3dfe063ac6a'
+            'fe741dbc74317e774f80e47cf532e2ad482360381b352ff4c0a58ff89541335a'
             'e193de98502986dfb54639058b1409e92282f78b54d04b0d2735d4b4c9be2b77')
-sha256sums_x86_64=('2c900b3390a439730449cf804d18020c43e9b2883d0c0f6ad3140c22f2a26d07')
-sha256sums_aarch64=('a765f7ce669454fd4124b5cace7a240d9ead4e8c504cced4f7c486a3845a1239')
+sha256sums_x86_64=('7f55e2e138f430f799a0794f45cdad4619295492a4a88380af07050900a2d61b')
+sha256sums_aarch64=('4b5308ac84b5852d45542c9f1e792a19bcc279aec08c2f5c1f702f3f097f3d12')
 
 prepare() {
   sed -i "s|https://github.com/erebe/${_projname}/raw/master/logo_${_projname}.png|logo.png|g" "${pkgname}-${pkgver}-README.md"
