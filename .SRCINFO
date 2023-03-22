@@ -1,0 +1,26 @@
+pkgbase = ps3dec-git
+	pkgdesc = ISO encryptor/decryptor for PS3 disc images
+	pkgver = r2.7d1d27f
+	pkgrel = 1
+	url = https://github.com/al3xtjames/PS3Dec
+	arch = aarch64
+	arch = armv7h
+	arch = i486
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	license = custom:WTFPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = mbedtls
+	depends = gcc-libs
+	depends = glibc
+	provides = ps3dec=r2.7d1d27f
+	conflicts = ps3dec
+	source = ps3dec::git+https://github.com/al3xtjames/PS3Dec.git
+	b2sums = SKIP
+
+pkgname = ps3dec-git
+	depends = gcc-libs
+	depends = glibc
+	depends = libmbedcrypto.so
