@@ -5,7 +5,7 @@
 
 pkgname=penguins-eggs
 pkgver=9.4.2 # autoupdate
-pkgrel=6
+pkgrel=7
 pkgdesc="A console tool, under continuous development, that allows you to remaster your system and redistribute it as live images on usb sticks or via PXE"
 arch=('any')
 url='https://penguins-eggs.net'
@@ -58,14 +58,15 @@ depends=(
 )
 
 # checkOS
-if [[ $(grep -q 'Manjaro' /etc/lsb-release) ]]; then
+if [[ $(grep 'Manjaro' /etc/lsb-release) ]]; then
 	depends+=('manjaro-tools-iso')
 else
 	depends+=('mkinitcpio-archiso')
 fi
 
 optdepends=(
-  'bash-completion: enable eggs commands automatic completion' 
+  'bash-completion: eggs autocomplete' 
+  'zsh-autosuggestions: eggs autocomplete' 
   'calamares: system installer GUI' 
 )
 
