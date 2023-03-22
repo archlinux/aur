@@ -1,0 +1,8 @@
+src
+pkg
+par2cmdline-turbo
+*.log
+*.log.*
+*.tar.gz
+*.pkg.tar.?z
+*.pkg.tar.zst
