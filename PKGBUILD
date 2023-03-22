@@ -1,7 +1,7 @@
 # Maintainer: Marvin Dalheimer <me@marvin-dalheimer.de>
 pkgname=godot-mono-bin
-pkgver=4.0
-pkgrel=2
+pkgver=4.0.1
+pkgrel=1
 pkgdesc="Godot is an advanced, feature packed, multi-platform 2D and 3D game engine. It provides a huge set of common tools, so you can just focus on making your game without reinventing the wheel."
 arch=("i686" "x86_64")
 url="https://www.godotengine.org"
@@ -44,5 +44,5 @@ package() {
 }
 md5sums=('c8ba9f7656b2c2db9a3ec385b3848bf5'
          '281c83d55c6a4d39fb9710e6f143bc5a')
-md5sums_i686=('183a1b9b3976e29f8f99eac993891feb')
-md5sums_x86_64=('e719e0c19f4166ef39309ea2cafe6ce9')
+md5sums_i686=('d78df48fbe84cfa6d7ef2c0373365ac1')
+md5sums_x86_64=('2ed5d26ef55898bc7790eb1d832ffd4c')
