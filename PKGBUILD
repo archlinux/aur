@@ -1,23 +1,33 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=commit
-pkgver=3.3.0
+pkgver=4.0
 pkgrel=1
 pkgdesc="Commit message editor."
-arch=('x86_64')
+arch=('any')
 url="https://apps.gnome.org/app/re.sonny.Commit"
 license=('GPL3')
 depends=('libadwaita' 'gjs' 'gtksourceview5')
-makedepends=('meson')
+makedepends=('blueprint-compiler' 'git' 'meson')
 checkdepends=('appstream-glib')
 optdepends=('git: git support'
             'mercurial: mercurial support'
 #            'gspell: spell checking support' # Spell checking has been temporarily removed
             )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/sonnyp/Commit/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b993a2786b022b748959ba096fdf9248ab02ca52b400295484e0646e8ff220a4')
+_commit=296e3fcc2990e3197c30d308cf1ce577ffddc044  # tags/v4.0^0
+source=("git+https://github.com/sonnyp/Commit.git#commit=$_commit"
+        'git+https://github.com/sonnyp/troll.git')
+sha256sums=('SKIP'
+            'SKIP')
+
+prepare() {
+  cd Commit
+  git submodule init
+  git config submodule.src/troll.url "$srcdir/troll"
+  git -c protocol.file.allow=always submodule update
+}
 
 build() {
-  arch-meson Commit-$pkgver build
+  arch-meson Commit build
   meson compile -C build
 }
 
