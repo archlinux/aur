@@ -14,27 +14,27 @@ diff '--color=auto' --unified --recursive --text chromaprint-1.5.1.orig/CMakeLis
 +endif()
 +
 +project(chromaprint C CXX)
- 
+
  set(chromaprint_VERSION_MAJOR 1)
  set(chromaprint_VERSION_MINOR 5)
  set(chromaprint_VERSION_PATCH 1)
  set(chromaprint_VERSION "${chromaprint_VERSION_MAJOR}.${chromaprint_VERSION_MINOR}.${chromaprint_VERSION_PATCH}")
- 
+
 -project(chromaprint LANGUAGES C CXX VERSION "${chromaprint_VERSION}")
 +set(PROJECT_VERSION "${chromaprint_VERSION}")
- 
+
  set(chromaprint_SOVERSION 1)
- 
+
 @@ -24,12 +34,14 @@
- 
+
  option(BUILD_SHARED_LIBS "Build shared libraries" ON)
- 
+
 -set(CMAKE_CXX_STANDARD 11)
-+check_cxx_compiler_flag("-std=c++11" COMPILER_SUPPORTS_CXX11)
++check_cxx_compiler_flag("-std=c++14" COMPILER_SUPPORTS_CXX11)
 +if(COMPILER_SUPPORTS_CXX11)
-+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
++	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
 +endif()
- 
+
 -if(BUILD_SHARED_LIBS)
 -	set(CMAKE_C_VISIBILITY_PRESET hidden)
 -	set(CMAKE_CXX_VISIBILITY_PRESET hidden)
@@ -43,5 +43,5 @@ diff '--color=auto' --unified --recursive --text chromaprint-1.5.1.orig/CMakeLis
 +	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=hidden -fvisibility-inlines-hidden")
 +	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fvisibility=hidden")
  endif()
- 
+
  if(CMAKE_COMPILER_IS_GNUCXX AND CMAKE_BUILD_TYPE STREQUAL "Debug")
