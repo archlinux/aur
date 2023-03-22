@@ -1,7 +1,7 @@
 # Maintainer: mi544 (sd32 at protonmail.com)
 
 pkgname=gummy
-pkgver=0.5
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Screen brightness/temperature manager for Linux/X11"
 arch=('x86_64')
