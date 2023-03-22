@@ -1,6 +1,6 @@
 pkgbase = r-hexbin
 	pkgdesc = Hexagonal Binning Routines
-	pkgver = 1.28.2
+	pkgver = 1.28.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=hexbin
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = r-hexbin
 	optdepends = r-biobase
 	optdepends = r-limma
 	optdepends = r-knitr
-	source = https://cran.r-project.org/src/contrib/hexbin_1.28.2.tar.gz
-	sha256sums = 6241f8d3a6c6be2c1c693c3ddb99554bc103e3c6cf602d0c2787c0ce6fd1702d
+	source = https://cran.r-project.org/src/contrib/hexbin_1.28.3.tar.gz
+	sha256sums = 0eb33511c1a4ff29dda8b89fee420ea7041033f981c7f16484c9f504d749de5f
 
 pkgname = r-hexbin
