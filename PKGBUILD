@@ -1,7 +1,7 @@
 # Maintainer: bitcoinlizard <bitcoinlizard at fastmail dot com>
 
 pkgname=c-lightning-rest
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="REST APIs for c-lightning written in Node.js"
 arch=(any)
@@ -11,16 +11,16 @@ depends=("nodejs>=12")
 makedepends=("npm" "jq" "moreutils")
 optdepends=("lnd" "core-lightning")
 backup=("usr/lib/systemd/system/REST.service")
-install=c-lightning-REST.install
+install=$pkgname.install
 source=("https://github.com/Ride-The-Lightning/c-lightning-REST/archive/refs/tags/v${pkgver}.tar.gz"
 	"https://github.com/Ride-The-Lightning/c-lightning-REST/releases/download/v${pkgver}/v${pkgver}.tar.gz.asc"
 	"REST.service"
-	"c-lightning-REST.install"
+	"c-lightning-rest.install"
 	"REST.sysusers"
 	"REST.tmpfiles")
 
 #noextract=("v${pkgver}.tar.gz")
-sha256sums=('64a5f3e61f7aef829b61729cc0f17996a5cac8354003c1bb6edd30c9b6ccdb78'
+sha256sums=('b161da886684077bbc66f4d2cc8a9757583773c0ebc4ce32c143eb4681681738'
             'SKIP'
             'c20528fb2c185771dff808ab288ae2c739ef431017fba93814e07852ac65eb3f'
             '83b8752bcc6a68df21540d2ce2809059639de97516e0a3f66b6a2c0f24f40d7c'
