@@ -1,0 +1,15 @@
+pkgbase = move-to-previous-monitor
+	pkgdesc = Move windows from one monitor to the previous
+	pkgver = r21.1405add
+	pkgrel = 1
+	url = https://github.com/xavierbaez/move-to-previous-monitor
+	arch = any
+	license = GPL-3.0-only
+	depends = bash
+	depends = xdotool
+	depends = wmctrl
+	depends = xorg-xwininfo
+	source = move-to-previous-monitor::git+https://github.com/xavierbaez/move-to-previous-monitor.git
+	md5sums = SKIP
+
+pkgname = move-to-previous-monitor
