@@ -1,18 +1,16 @@
 pkgbase = zchunk-git
-	pkgdesc = A file format that allows easy deltas while maintaining good compression (git version)
-	pkgver = 1.2.3
+	pkgdesc = A file format designed for highly efficient deltas while maintaining good compression (git version)
+	pkgver = 1.3.0.r0.g1d8f144
 	pkgrel = 1
 	url = https://github.com/zchunk/zchunk
-	arch = x86
 	arch = x86_64
 	license = BSD
 	makedepends = meson
-	makedepends = ninja
 	makedepends = git
 	depends = libcurl.so
 	depends = zstd
-	provides = zchunk
 	provides = libzck.so
+	provides = zchunk=1.3.0.r0.g1d8f144
 	conflicts = zchunk
 	source = zchunk-git::git+https://github.com/zchunk/zchunk
 	sha256sums = SKIP

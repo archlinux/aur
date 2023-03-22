@@ -1,38 +1,41 @@
-# Maintainer: Nikita Puzyryov <PuzyryovN@gmail.com>
+# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
+# Ex-Maintainer: Nikita Puzyryov <PuzyryovN@gmail.com>
+#
+# PRs are welcome here: https://github.com/yurikoles-aur/zchunk-git
+#
+
 pkgname=zchunk-git
-pkgver=1.2.3
+pkgver=1.3.0.r0.g1d8f144
 pkgrel=1
-pkgdesc="A file format that allows easy deltas while maintaining good compression (git version)"
-arch=(x86 x86_64)
-url="https://github.com/zchunk/zchunk"
-license=('BSD')
-depends=('libcurl.so' 'zstd')
-makedepends=('meson' 'ninja' 'git')
-provides=('zchunk' 'libzck.so')
-conflicts=('zchunk')
+pkgdesc='A file format designed for highly efficient deltas while maintaining good compression'
+pkgdesc+=' (git version)'
+arch=(x86_64)
+url=https://github.com/zchunk/zchunk
+license=(BSD)
+depends=(libcurl.so zstd)
+makedepends=(meson)
+makedepends+=(git)
+provides=(libzck.so)
+provides+=(zchunk="${pkgver}")
+conflicts=(zchunk)
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  ( set -o pipefail
-    git describe --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  git describe --long --tags --abbrev=7 | sed 's/-/.r/;s/-/./'
 }
 
 build() {
-  cd "$srcdir/$pkgname"
-  arch-meson build/
-  ninja -C build/
+  arch-meson "${pkgname}" build
+  meson compile -C build
 }
 
 check() {
-  cd "$srcdir/$pkgname/build"
-  meson test
+  meson test -C build
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  DESTDIR="$pkgdir/" ninja -C build/ install
+  DESTDIR="${pkgdir}" meson install -C build
+  install -Dm644 "${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
