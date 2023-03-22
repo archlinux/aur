@@ -1,0 +1,15 @@
+pkgbase = post-clock
+	pkgdesc = A clock using the POST codes display
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jonasmalacofilho/post-clock
+	arch = x86_64
+	arch = i686
+	license = Unlicense
+	depends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = post-clock-0.1.0.tar.gz::https://github.com/jonasmalacofilho/post-clock/archive/v0.1.0.tar.gz
+	sha256sums = 5204b80edcdb47ad969f2f8558a6f294fecc8d01cbc477faf3d74b91223d9cb2
+
+pkgname = post-clock
