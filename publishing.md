@@ -48,3 +48,15 @@ Rimozione di tutti i file untracked:
 ```
 git clean -dfX
 ```
+
+# testing with yay
+
+Create a symbolic link inside ```~/.cache/yay``` pointing to my local AUR package. This way, when I issue:
+```
+yay -S penguins-eggs
+```, yay builds and installs my local copy.
+
+```
+cd .cache/yay
+ln -s ../../penguins-eggs-arch/ penguins-eggs
+```
