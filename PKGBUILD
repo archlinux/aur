@@ -6,7 +6,7 @@
 
 pkgname=musescore3
 pkgver=3.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Create, play and print beautiful sheet music -- Version 3; End-of-life'
 arch=(x86_64)
 url=https://musescore.org/
@@ -17,9 +17,9 @@ depends=(
   freetype2
   libpulse
   libsndfile
-  libvorbisfile.so
-  libportaudio.so
-  libportmidi.so
+  libvorbis # libvorbisfile.so
+  portaudio # libportaudio.so
+  portmidi # libportmidi.so
   qt5-base
   qt5-declarative
   qt5-graphicaleffects
