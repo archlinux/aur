@@ -1,0 +1,16 @@
+pkgbase = crunch-git
+	pkgdesc = A wordlist generator where you can specify a standard character set or a character set you specify and generate all possible combinations and permutations
+	pkgver = r4.g99f164f
+	pkgrel = 1
+	url = https://sourceforge.net/projects/crunch-wordlist/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = glibc
+	provides = crunch=r4.g99f164f
+	conflicts = crunch
+	source = git+https://git.code.sf.net/p/crunch-wordlist/code
+	sha256sums = SKIP
+
+pkgname = crunch-git
