@@ -9,9 +9,13 @@ done
 DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
 cd "${DIR}" || return
 
+# Pull the aur repository first
+git reset --hard HEAD
+git pull
+
 # Weird pgrep fail with the complete binary name
-if pgrep -a do-not-directly|grep alchemy ; then
-	echo "Aborting package build because Alchemy is running"
-	exit 0
-fi
-makepkg --cleanbuild --clean --sync --install --noconfirm --needed
+#if pgrep -a do-not-directly|grep alchemy ; then
+#	echo "Aborting package build because Alchemy is running"
+#	exit 0
+#fi
+makepkg --sync --needed --noconfirm
