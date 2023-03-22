@@ -69,7 +69,7 @@ _package() {
   install -Dm644 "boot/vmlinuz-$pkgver-$_arch-xanmod$xanmod" "$modulesdir/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
-  echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/$pkgbase"
+  echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 }
 
 _package-headers() {
@@ -81,7 +81,7 @@ _package-headers() {
   cp -r usr/src "$pkgdir/usr/"
 }
 
-pkgname=("$_pkgbase-linux-bin-$_arch-$pkgver" "$_pkgbase-linux-headers-bin-$_arch-$pkgver")
+pkgname=("$_pkgbase-linux-bin-$_arch" "$_pkgbase-linux-headers-bin-$_arch")
 eval "package_${pkgname[0]}() { _package \"\$@\"; }"
 eval "package_${pkgname[1]}() { _package-headers \"\$@\"; }"
 
