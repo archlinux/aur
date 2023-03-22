@@ -1,0 +1,12 @@
+pkgbase = r-measurements
+	pkgdesc = Tools for Units of Measurement
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=measurements
+	arch = any
+	license = GPL3
+	depends = r
+	source = https://cran.r-project.org/src/contrib/measurements_1.5.0.tar.gz
+	b2sums = 02c442a7e0dfacb25902d96ef2fd72c80f60e559b3b9fd56ea1fc608c66a6f720b55a1c4f12774f6d71b021cf837112dc5a460a0c41fcb8647c01b33d0c0d928
+
+pkgname = r-measurements
