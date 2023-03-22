@@ -1,7 +1,7 @@
 pkgbase = rstudio-bin
 	pkgdesc = An integrated development environment (IDE) for R (binary from RStudio official repository)
 	pkgver = 2023.03.0.386
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.rstudio.org/
 	install = rstudio-bin.install
 	arch = x86_64
@@ -16,7 +16,6 @@ pkgbase = rstudio-bin
 	depends = sqlite
 	depends = nss
 	depends = openssl-1.1
-	depends = jq
 	optdepends = clang: C/C++ and Rcpp support
 	provides = rstudio-desktop=2023.03.0.386
 	conflicts = rstudio-desktop
