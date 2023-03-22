@@ -1,4 +1,3 @@
-#!/bin/bash
 # Maintainer: Piero Proietti <piero.proietti_at_gmail.com>
 # Contributor: Stefano Capitani <stefano_at_manjaro_org>
 # Contributor: Muflone http://www.muflone.com/contacts/english/
@@ -6,7 +5,7 @@
 
 pkgname=penguins-eggs
 pkgver=9.4.2 # autoupdate
-pkgrel=9
+pkgrel=10
 pkgdesc="A console tool, under continuous development, that allows you to remaster your system and redistribute it as live images on usb sticks or via PXE"
 arch=('any')
 url='https://penguins-eggs.net'
@@ -42,6 +41,7 @@ depends=(
   'libisoburn' 
   'lsb-release' 
   'lvm2' 
+  'mkinitcpio-archiso'
   'mkinitcpio-nfs-utils' 
   'mtools' 
   'nbd' 
@@ -57,13 +57,6 @@ depends=(
   'syslinux' 
   'xdg-utils'
 )
-
-# checkOS
-if [[ $(grep 'Manjaro' /etc/lsb-release) ]]; then
-	depends+=('manjaro-tools-iso')
-else
-	depends+=('mkinitcpio-archiso')
-fi
 
 optdepends=(
   'bash-completion: eggs autocomplete' 
