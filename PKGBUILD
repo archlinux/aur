@@ -1,30 +1,37 @@
 # Maintainer: Christian Heusel <christian@heusel.eu>
-pkgname=prometheus-mosquitto-exporter
-_pkgname=mosquitto-exporter
-pkgver=0.8.0
-pkgrel=2
+pkgname=prometheus-mosquitto-exporter-git
+_reponame=mosquitto-exporter
+pkgver=r36.e097dec
+pkgrel=1
 pkgdesc='a prometheus exporter for the mosquitto mqtt server'
 arch=('x86_64')
-url="https://github.com/sapcc/$_pkgname"
+url="https://github.com/sapcc/$_reponame"
 license=('Apache')
-makedepends=('go')
+makedepends=('go' 'git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 backup=("etc/conf.d/prometheus-mosquitto-exporter")
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+source=("$_reponame::git+https://github.com/sapcc/$_reponame.git#branch=master"
         prometheus-mosquitto-exporter.conf
         prometheus-mosquitto-exporter.service
         prometheus-mosquitto-exporter.sysusers)
-sha256sums=('47572232b5943630c3c24a10eac64c0010d68b33d591a39cc8870300c6fad291'
+sha256sums=('SKIP'
             '4a6a6f5adee31f3b53f5c4f2de4d3cc73e97e9175c23640214ae5c5199c319f6'
             '2bf191446d190249b6fb90b2a0ed4c4c96403082f05942a9665039cff6001bc0'
             'fd8eac813579e3deca842c6da328d8429e3b4d039e5cd9b596cfe0bb2113d9ff')
 
+pkgver() {
+  cd "$srcdir/${_reponame}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 prepare(){
-  cd "$_pkgname-$pkgver"
+  cd "$srcdir/${_reponame}"
   mkdir -p build/
 }
 
 build() {
-  cd "$_pkgname-$pkgver"
+  cd "$srcdir/${_reponame}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -38,6 +45,6 @@ package() {
   install -Dm644 prometheus-mosquitto-exporter.service  "$pkgdir"/usr/lib/systemd/system/prometheus-mosquitto-exporter.service
   install -Dm644 prometheus-mosquitto-exporter.sysusers "$pkgdir"/usr/lib/sysusers.d/prometheus-mosquitto-exporter.conf
 
-  cd "$_pkgname-$pkgver"
-  install -Dm755 build/$_pkgname "$pkgdir"/usr/bin/$_pkgname
+  cd "$srcdir/${_reponame}"
+  install -Dm755 build/$_reponame "$pkgdir"/usr/bin/$_reponame
 }
