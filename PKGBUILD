@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TarSeqQC
-_pkgver=1.27.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.27.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='TARgeted SEQuencing Experiment Quality Control'
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f8be56edb6e8bfc0737af18b6371d221c4bd3e38a3186b4b3c3c8626073b3b46')
+sha256sums=('65c8426620a3cede237452b3ff7bb84577a90e364fdb06e7a521ad563d523592')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
