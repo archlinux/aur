@@ -10,7 +10,8 @@ depends=(glibc)
 makedepends=(help2man)
 license=(GPL3 CCPL:by-sa BSD)
 source=("$url/download/$pkgname-$pkgver.tar.gz"{,.sig}
-        "$url/download/sha256checksums"{,.sig}
+        "$pkgname.sha256sum::$url/download/sha256checksums"
+        "$pkgname.sha256sum.sig::$url/download/sha256checksums.sig"
         $pkgname-Makefile.patch)
 sha256sums=('2a9f821488791c2763ef0120c75c43dc83dd16567b7c416f30331889fd598937'
             'SKIP'
@@ -20,6 +21,8 @@ sha256sums=('2a9f821488791c2763ef0120c75c43dc83dd16567b7c416f30331889fd598937'
 validpgpkeys=('2C5CF8210CDF553B9521DE76223AE055BD94E154') # Milan Kupcevic <milan@debian.org>
 
 prepare() {
+	sha256sum -c $pkgname.sha256sum --ignore-missing
+
 	cd $pkgname-$pkgver
 	patch -Np1 -i ../$pkgname-Makefile.patch
 }
