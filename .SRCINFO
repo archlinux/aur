@@ -1,12 +1,12 @@
 pkgbase = penguins-eggs
 	pkgdesc = A console tool, under continuous development, that allows you to remaster your system and redistribute it as live images on usb sticks or via PXE
 	pkgver = 9.4.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://penguins-eggs.net
 	arch = any
 	license = GPL2
 	makedepends = npm
-	depends = arch-install-scriptsmanjaro-tools-iso
+	depends = arch-install-scriptsmkinitcpio-archiso
 	depends = dosfstools
 	depends = erofs-utils
 	depends = findutils
