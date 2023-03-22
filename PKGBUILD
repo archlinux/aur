@@ -5,7 +5,7 @@
 
 # Maintainer: Asuka Minato <asukaminato at nyan dot eu dot org>
 pkgname=llama-rs-git
-pkgver=r32.90703d9
+pkgver=r121.6403f09
 pkgrel=1
 epoch=
 pkgdesc="Run LLaMA inference on CPU, with Rust 🦀🚀🦙"
@@ -17,7 +17,7 @@ depends=()
 makedepends=(git cargo)
 checkdepends=()
 optdepends=()
-provides=(llama-rs)
+provides=(llama-cli)
 conflicts=()
 replaces=()
 backup=()
@@ -41,7 +41,7 @@ build() {
 
 package() {
 	cd llama-rs
-	install -Dm755 target/release/llama-rs -t $pkgdir/usr/bin/
+	install -Dm755 target/release/llama-cli -t $pkgdir/usr/bin/
 	install -Dm644 LICENSE -t $pkgdir/usr/share/licenses/$pkgname/
 	install -Dm644 README.md -t $pkgdir/usr/share/doc/$pkgname/
 }
