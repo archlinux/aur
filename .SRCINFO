@@ -1,6 +1,6 @@
 pkgbase = linux-aarch64-orangepi5
 	pkgver = 5.10.110
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/orangepi-xunlong/linux-orangepi
 	arch = aarch64
 	license = GPL2
@@ -9,13 +9,13 @@ pkgbase = linux-aarch64-orangepi5
 	makedepends = dtc
 	makedepends = uboot-tools
 	options = !strip
-	source = linux-orangepi-161606b049488da100e5d7ec95c8997d3b59b20d.tar.gz::https://github.com/orangepi-xunlong/linux-orangepi/archive/161606b049488da100e5d7ec95c8997d3b59b20d.tar.gz
+	source = linux-orangepi-88961a71100e64a97124a674eff8b71863d4cbbc.tar.gz::https://github.com/orangepi-xunlong/linux-orangepi/archive/88961a71100e64a97124a674eff8b71863d4cbbc.tar.gz
 	source = gcc12-fixups.patch::https://github.com/7Ji/linux-orangepi/compare/161606b049488da100e5d7ec95c8997d3b59b20d...5ed23c49bee59e066cdaa3ea2f540bb545aa1afe.patch
 	source = config
 	source = linux.preset
-	sha256sums = e35af8b8631c64083c992d697cc7b91613af69daab4670bfe0ce704e3a6db592
+	sha256sums = 13e21a457fdf6760d146dafe51c16b2cecfce310262416b06841fbb9d7b86d14
 	sha256sums = 211d3b30c81d9369dda18d0c891cd1846d9a5b447aeceea49ed0cf2b01e613b5
-	sha256sums = 1049189e20fbd9a514da524f25118399bcb0b1a73d3ac08486be82bed32bd57c
+	sha256sums = 801ba636d9b1e4109990827eb1fbb351f1fff56a4f74c7f1b424b5e23174bc4b
 	sha256sums = bdcd6cbf19284b60fac6d6772f1e0ec2e2fe03ce7fe3d7d16844dd6d2b5711f3
 
 pkgname = linux-aarch64-orangepi5
