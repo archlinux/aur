@@ -17,6 +17,6 @@ pkgbase = linux-xanmod-linux-bin-x64v2
 	sha256sums = 1057af9d7f4073f5c9a0d2bd8cfc2be34edc77b1c4197f456c6ed3bcaa6cc92d
 	sha256sums = de3c8027ffa42c3c4a4ed0aefe4881fffa7ac1d7185a672625cda53e300541e9
 
-pkgname = linux-xanmod-linux-bin-x64v2-linux-bin-x64v2-6.2.7
+pkgname = linux-xanmod-linux-bin-x64v2-6.2.7
 
 pkgname = linux-xanmod-linux-headers-bin-x64v2-6.2.7
