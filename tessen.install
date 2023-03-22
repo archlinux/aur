@@ -3,7 +3,7 @@ post_install() {
 tessen needs at least one
 
 - pass backend (pass or gopass)
-- wayland native dmenu backend (fuzzel, tofi, bemenu, wofi, wayland fork of rofi)
+- wayland native dmenu backend (fuzzel, tofi, bemenu, yofi, wofi, wayland fork of rofi)
 - action backend (wtype, wl-clipboard)
 
 to work. Please install the backends you prefer to use after installing tessen.
