@@ -1,6 +1,6 @@
 pkgbase = weber-git
 	pkgdesc = compiles html components to pages
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/SharkooMaster/weber.git
 	arch = x86_64

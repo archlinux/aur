@@ -1,7 +1,7 @@
 
 # Maintainer: Alfred Roos alfred@stensatter.se
 pkgname=weber-git
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 epoch=
 pkgdesc="compiles html components to pages"
