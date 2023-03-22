@@ -1,10 +1,15 @@
 pkgbase = r-waldo
-	pkgdesc = Find Differences Between R Objects
+	pkgdesc = Anything to ‘POSIXct’ or ‘Date’ Converter
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=waldo
 	arch = any
 	license = MIT
+	checkdepends = r-covr
+	checkdepends = r-r6
+	checkdepends = r-withr
+	checkdepends = r-xml2
+	checkdepends = r-testthat
 	depends = r
 	depends = r-cli
 	depends = r-diffobj>=0.3.4
@@ -15,10 +20,9 @@ pkgbase = r-waldo
 	depends = r-tibble
 	optdepends = r-covr
 	optdepends = r-r6
-	optdepends = r-testthat
 	optdepends = r-withr
 	optdepends = r-xml2
 	source = https://cran.r-project.org/src/contrib/waldo_0.4.0.tar.gz
-	sha256sums = 57ee89eec9bcbba58cf8fa29c8e097f038768c30833eaf812682826333127eaa
+	b2sums = aaf9e2146afd7b3bc4b21f75a47c85358c02978c4250a33255a501db4b27b4254d060d31651d3dee35ae8e0438810aae8d5e6c5ff1466d5af1d654d751731a2f
 
 pkgname = r-waldo
