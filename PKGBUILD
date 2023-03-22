@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
 pkgname=cargo-semver-checks
-pkgver=0.18.3
+pkgver=0.19.0
 pkgrel=1
 pkgdesc='Scan your Rust crate for semver violations'
 url='https://github.com/obi1kenobi/cargo-semver-checks'
@@ -10,8 +10,8 @@ arch=('x86_64' 'i686' 'arm' 'aarch64')
 depends=('libgit2' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/obi1kenobi/cargo-semver-checks/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2957b2314d71f157b6f21c3ab767ebaa251d3c46d301dba9ec0e987cbe00382a')
-b2sums=('517d1f696e24258e1f30d53ecffd52139fd7c88b3967fd961b00fbc558410f18eecacafac9403434a93ef541ac750b39cf40f0aa885f05246642af9bb7c3c437')
+sha256sums=('0a962dfad0474bb5e419953543d08f319eb07a916bb6581e65d8de32b4d7aa31')
+b2sums=('6f5b45538e7c73132d3669db5a084efa05b28cb1d6007bb651a0a2a591589a67ca8b6909d673a23b2c9fae45cd16248f96cf4fa1dddaa2bbf6fc81a31ceddea7')
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
 
