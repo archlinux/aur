@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=NPARC
-_pkgver=1.10.0
+_pkgver=1.10.1
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.10.1
 pkgrel=1
 pkgdesc='Non-parametric analysis of response curves for thermal proteome profiling experiments'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('23af85b884d7b78211ef07503b052eed93b565af794d79125259fbc33b2df07e')
+sha256sums=('09322c286a395fe6694d9c6e0a2bc064158400caf98667f2523f89b40742b027')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
