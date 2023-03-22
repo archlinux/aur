@@ -1,6 +1,6 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 pkgname=systemd-suspend-modules
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Reload modules on suspend/hibernate with systemd"
 arch=('any')
@@ -17,4 +17,4 @@ package() {
     touch ${pkgdir}/etc/suspend-modules.conf
 }
 
-sha256sums=('f71db2eb6b720f5049df9e8ed69e1e455704b75b70588bbade762a1bc8e815ad')
+sha256sums=('d847f2ea5a5ef63473bed0200d5c15e74b93ac8ec88fce811f80340701d18e67')

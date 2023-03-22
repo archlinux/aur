@@ -4,11 +4,13 @@ readarray -t modules < /etc/suspend-modules.conf
 
 case $1 in
   pre)
+    # unload modules before sleeping
     for mod in "${modules[@]}"; do
-      rmmod $mod
+      modprobe -r $mod
     done
   ;;
   post)
+    # load modules back after sleep
     for mod in "${modules[@]}"; do
       modprobe $mod
     done
