@@ -7,16 +7,21 @@ pkgdesc="A collection of dmenu scripts"
 arch=('any')
 url="https://gitlab.com/dwt1/dmscripts.git"
 license=('GPL3')
-depends=(dmenu ffmpeg mpv findutils xclip xdotool xorg-xrandr bind jq)
+depends=(dmenu ffmpeg mpv findutils xclip xdotool xorg-xrandr bind jq youtube-dl)
 groups=()
 makedepends=(pandoc git)
 checkdepends=()
 optdepends=(
   'emacs: editor for dm-confedit'
+  'didyoumean: used by dm-dictionary'
+  'translate-shell: used by dm-dictionary'
   'libnotify: used by dm-logout'
   'maim: used by dm-main'
+  'pipewire: used by dm-pipewire-out-switcher'
   'mpc: used by dm-music'
   'mpd: used by dm-music'
+  'timidity++: used by dm-music'
+  'wildmidi: used by dm-music'
   'qutebrowser: used by dm-bookman'
   'reddio: used by dm-reddit'
   'yad: used by dm-reddit and dm-weather'
