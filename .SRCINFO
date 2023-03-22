@@ -1,0 +1,17 @@
+pkgbase = fermi-lite
+	pkgdesc = Standalone C library for assembling Illumina short reads in small regions
+	pkgver = 0.1.r13.g85f159e
+	pkgrel = 2
+	url = https://github.com/lh3/fermi-lite
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = patch
+	depends = zlib
+	source = git+https://github.com/lh3/fermi-lite.git
+	source = 001-bwa.patch::https://github.com/lh3/fermi-lite/compare/master...walaj:fermi-lite:master.diff
+	sha256sums = SKIP
+	sha256sums = 9f77d739ad2b276344d4ee3301c41247550242c7ad26dd47088934c1341e3bda
+
+pkgname = fermi-lite
