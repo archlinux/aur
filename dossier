@@ -2,17 +2,20 @@
 
 ProgName="$(basename -- "$0")"
 ProgName="${ProgName:-dossier}"
-Version="0.0.4"
+Version="0.0.5"
 
 sub_help(){
     echo -e "\e[38;5;212;1mUsage:\e[0;38;5;114m $ProgName \e[0;38;5;230;1m<\e[0;38;5;230msubcommand\e[1m>\e[0m"
     echo -e "\e[38;5;212;1mSubcommands:\e[0m"
     echo -e "    \e[38;5;114minstall     \e[38;5;230;1mInstall dotfiles in the current directory\e[0m"
     echo -e "    \e[38;5;114muninstall   \e[38;5;230;1mUninstall dotfiles in the current directory\e[0m"
-     echo -e "    \e[38;5;114mreinstall   \e[38;5;230;1mReinstall dotfiles in the current directory\e[0m"
+    echo -e "    \e[38;5;114mreinstall   \e[38;5;230;1mReinstall dotfiles in the current directory\e[0m"
     echo -e "    \e[38;5;114minit        \e[38;5;230;1mCreate a basic dossier.config.json\e[0m"
+    echo -e "    \e[38;5;114mpreview     \e[38;5;230;1mShow where files will be symlinked\e[0m"
     echo -e "    \e[38;5;114madd         \e[38;5;230;1mAdd a file to your dossier config\e[0m"
     echo -e "    \e[38;5;114mremove      \e[38;5;230;1mRemove a file from your dossier config\e[0m"
+    echo ""
+    echo -e "    \e[38;5;114mhelp        \e[38;5;230;1mShow this text\e[0m"
     echo ""
 }
 
@@ -199,7 +202,8 @@ sub_add() {
             echo "You need to specify if this is a file or folder!"
             exit
         fi
-        jq ".files += [{\"name\": \"$NAME\", \"location\": \"$LOCATION\", \"type\": \"$FILEFOLDER\"}]" < dossier.config.json | tee 'dossier.config.json' &>/dev/null
+        out="$(jq ".files += [{\"name\": \"$NAME\", \"location\": \"$LOCATION\", \"type\": \"$FILEFOLDER\"}]" < dossier.config.json)"
+        echo $out > dossier.config.json
         if [ "$FILEFOLDER" == 'same' ]; then
             echo -e "\e[38;5;212m${PWD}/${NAME} will be symlinked to ${LOCATION}/${NAME} next time you install!\e[0m"
         else
@@ -221,7 +225,8 @@ sub_remove() {
             echo "You need to specify what file to stop tracking!"
             exit
         fi
-        jq "del(.files[] | select(.name == \"$NAME\"))" < dossier.config.json | tee 'dossier.config.json' &>/dev/null
+        out="$(jq "del(.files[] | select(.name == \"$NAME\"))" < dossier.config.json)"
+        echo $out > dossier.config.json
     else
         echo "This directory does not have a dossier config!"
     fi
