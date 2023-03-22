@@ -1,10 +1,12 @@
 pkgbase = typst-bin
 	pkgdesc = A new markup-based typesetting system that is powerful and easy to learn.
 	pkgver = 22_03_21_2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/typst/typst
 	arch = x86_64
 	license = Apache
+	depends = glibc
+	depends = gcc-libs
 	provides = typst
 	conflicts = typst
 	conflicts = typst-git

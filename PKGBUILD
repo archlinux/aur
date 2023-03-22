@@ -6,14 +6,14 @@
 # Maintainer: Asuka Minato <asukaminato at nyan dot eu dot org>
 pkgname=typst-bin
 pkgver=22_03_21_2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A new markup-based typesetting system that is powerful and easy to learn."
 arch=('x86_64')
 url="https://github.com/typst/typst"
 license=('Apache')
 groups=()
-depends=()
+depends=(glibc gcc-libs)
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -33,6 +33,6 @@ package() {
 	pushd "typst-x86_64-unknown-linux-gnu"
 	install -Dm755 typst -t "$pkgdir/usr/bin/"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm644 README.md NOTICE -t "$pkgdir/usr/doc/$pkgname/"
+	install -Dm644 README.md NOTICE -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
