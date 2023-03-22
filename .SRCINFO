@@ -1,17 +1,21 @@
 pkgbase = r-zeallot
 	pkgdesc = Multiple, Unpacking, and Destructuring Assignment
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=zeallot
 	arch = any
 	license = MIT
+	checkdepends = r-knitr
+	checkdepends = r-rmarkdown
+	checkdepends = r-purrr
+	checkdepends = r-magrittr
+	checkdepends = r-testthat
 	depends = r
-	optdepends = r-testthat
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-purrr
 	optdepends = r-magrittr
 	source = https://cran.r-project.org/src/contrib/zeallot_0.1.0.tar.gz
-	sha256sums = 439f1213c97c8ddef9a1e1499bdf81c2940859f78b76bc86ba476cebd88ba1e9
+	b2sums = 89f29b5d4a20dd6dfcbbe678ed11e59abffff1b93bfed9bccf9365eac910aed5036b2e4ab662700564687c38323d57e248963a59858c535b1852a19b619ae017
 
 pkgname = r-zeallot
