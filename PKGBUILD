@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CNVfilteR
-_pkgver=1.12.1
+_pkgver=1.12.2
 pkgname=r-${_pkgname,,}
-pkgver=1.12.1
+pkgver=1.12.2
 pkgrel=1
 pkgdesc='Identifies false positives of CNV calling tools by using SNV calls'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('de5b2d1f391d2e3d0a51a661ec55a651a54a85641ee90e5ecefc2dcd6c316d4a')
+sha256sums=('eb5f0765cd71aa2660d39fc345c4b70f3680572981478e1607622ee4e6cf521e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
