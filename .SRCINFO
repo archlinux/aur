@@ -1,10 +1,17 @@
 pkgbase = r-pkgbuild
 	pkgdesc = Find Tools Needed to Build R Packages
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=pkgbuild
 	arch = any
 	license = MIT
+	checkdepends = r-covr
+	checkdepends = r-cpp11
+	checkdepends = r-knitr
+	checkdepends = r-mockery
+	checkdepends = r-rcpp
+	checkdepends = r-rmarkdown
+	checkdepends = r-testthat>=3.0.0
 	depends = r>=3.4
 	depends = r-callr>=3.2.0
 	depends = r-cli>=3.4.0
@@ -22,7 +29,6 @@ pkgbase = r-pkgbuild
 	optdepends = r-mockery
 	optdepends = r-rcpp
 	optdepends = r-rmarkdown
-	optdepends = r-testthat>=3.0.0
 	source = https://cran.r-project.org/src/contrib/pkgbuild_1.4.0.tar.gz
 	b2sums = 23e88c9a0bdb934823a2360ed40742695f615a1545a3d637c09c1a9af5752b1d0cbe01202b5b756b74745bdac4b3dcbdc83ce5cf9634ccadabb6d32ee46d9ad5
 
