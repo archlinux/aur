@@ -1,4 +1,5 @@
-# Contributor: Anonymous
+# Maintainer: András Wacha < awacha at gmail >
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-starlink-ast'
