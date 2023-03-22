@@ -1,17 +1,16 @@
 pkgbase = seqlib
 	pkgdesc = C++ htslib/bwa-mem/fermi interface for interrogating sequence data
 	pkgver = 1.2.0
-	pkgrel = 3
+	pkgrel = 9
 	url = https://github.com/walaj/SeqLib
 	arch = i686
 	arch = x86_64
 	license = Apache
-	makedepends = autoconf
-	makedepends = git
 	depends = htslib
-	source = seqlib::git+https://github.com/walaj/SeqLib.git#tag=1.2.0
-	source = fermi-lite::git+https://github.com/walaj/fermi-lite.git
-	sha256sums = SKIP
-	sha256sums = SKIP
+	depends = bwa
+	depends = fermi-lite
+	depends = jsoncpp
+	source = seqlib-1.2.0.tar.gz::https://github.com/walaj/SeqLib/archive/refs/tags/1.2.0.tar.gz
+	sha256sums = 6892bdb5cae88d8d8acbbfadd351cfa00004bc7c0fd1ae912dc1ff1ccfd61a70
 
 pkgname = seqlib

@@ -1,46 +1,37 @@
 pkgname=seqlib
 pkgver=1.2.0
-pkgrel=3
+pkgrel=9
 pkgdesc="C++ htslib/bwa-mem/fermi interface for interrogating sequence data"
 arch=('i686' 'x86_64')
 url="https://github.com/walaj/SeqLib"
 license=('Apache')
-depends=('htslib')
-# Do NOT add 'bwa' to depends, this package uses a flavored version of bwa.
-makedepends=('autoconf' 'git')
-source=("${pkgname}::git+https://github.com/walaj/SeqLib.git#tag=${pkgver}"
-"fermi-lite::git+https://github.com/walaj/fermi-lite.git"
-)
+depends=('htslib' 'bwa' 'fermi-lite' 'jsoncpp')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('6892bdb5cae88d8d8acbbfadd351cfa00004bc7c0fd1ae912dc1ff1ccfd61a70')
 
 prepare(){
-    cd $srcdir/${pkgname}
-    git submodule update --init --recursive
-    sed -i '33c extern const uint8_t rle_auxtab[8];' bwa/rle.h fermi-lite/rle.h
+    mv SeqLib-${pkgver} ${pkgname}-${pkgver}
+    cd $srcdir/${pkgname}-${pkgver}
+    sed -i 's|htslib/htslib/|htslib/|g' SeqLib/*.h src/*.cpp
+    cd src
+    rm -rf jsoncpp.cpp
+
 }
 build() {
-  cd ${pkgname}
-  ./configure LDFLAGS='-lcurl -lcrypto' CFLAGS='-fPIC' CXXFLAGS='-fPIC'
-  make
-  make seqtools
+  cd $srcdir/${pkgname}-${pkgver}/src
+  gcc *.c *.cpp -I/usr/include -I.. -fPIC -O2 -o libseqlib.so -shared  -lhts -lbwa -lfml -ljsoncpp
+  cd seqtools
+  gcc seqtools.cpp -I/usr/include  -I../.. -L../ -O2 -o seqtools -lbwa -lhts -lseqlib -lfml -lz  -lstdc++
+
 }
 
 package() {
-  cd ${pkgname}
-  make install
-  install -d ${pkgdir}/usr
-  mv bin lib ${pkgdir}/usr
-  cd ${pkgdir}/usr/lib
-  # {bwa,fml,hts,seqlib};
-  for mylib in {seqlib,};
-  do
-    ar -x lib${mylib}.a
-    gcc  -shared *.o -o lib${mylib}.so
-    rm -rf *.o
-  done
-  cd $srcdir/${pkgname}
-  sed -i 's|htslib/htslib/|htslib/|g' SeqLib/*.h
+  cd $srcdir/${pkgname}-${pkgver}/src
+  install -Dm755 libseqlib.so  -t ${pkgdir}/usr/lib/
+  cd seqtools
+  install -Dm755 seqtools -t ${pkgdir}/usr/bin/
+
+  cd $srcdir/${pkgname}-${pkgver}/
   mkdir -p ${pkgdir}/usr/include/
   cp -rf SeqLib ${pkgdir}/usr/include/
 }
-sha256sums=('SKIP'
-            'SKIP')
