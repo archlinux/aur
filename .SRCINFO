@@ -1,0 +1,14 @@
+pkgbase = r-gettz
+	pkgdesc = Get the Timezone Information
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://cran.r-project.org/package=gettz
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = GPL3
+	depends = r
+	source = https://cran.r-project.org/src/contrib/gettz_0.0.5.tar.gz
+	b2sums = 3ce9f447a174a47c251ed1f1cee314721b75dd9a32f3fcee96b5c84d5ec40dcf6456636509c73b815a201a79353d664490a343b6eef221bdcdcdb6ca45b45a39
+
+pkgname = r-gettz
