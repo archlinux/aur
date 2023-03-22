@@ -1,5 +1,5 @@
 pkgbase = firestorm
-	pkgdesc = An open source viewer for accessing virtual worlds
+	pkgdesc = An open source 3D browser for Second Life & OpenSIM metaverse.
 	pkgver = 6.6.8
 	pkgrel = 1
 	url = https://www.firestormviewer.org

@@ -5,7 +5,7 @@
 pkgname=firestorm
 pkgver=6.6.8
 pkgrel=1
-pkgdesc="An open source viewer for accessing virtual worlds"
+pkgdesc="An open source 3D browser for Second Life & OpenSIM metaverse."
 arch=('i686' 'x86_64')
 url=https://www.firestormviewer.org
 license=('LGPL')
