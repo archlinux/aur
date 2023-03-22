@@ -1,0 +1,20 @@
+pkgbase = specterext-stacktrack
+	pkgdesc = Specter Desktop plugin to add time series charts for visualizing wallet balances.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://specter.solutions
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-embit
+	depends = python-flask
+	depends = python-flask-sqlalchemy
+	depends = python-psycopg2
+	depends = python-pytest
+	depends = python-pysocks
+	source = https://github.com/cryptoadvance/specterext-stacktrack/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 5adebe57c8eb142e3d0d1563031b22ef802f6e343a2cacb29e602dd06e6ca405
+
+pkgname = specterext-stacktrack
