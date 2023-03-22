@@ -1,5 +1,6 @@
-pkgname="auto-commit"
-pkgver=0.1.5
+_pkgname="auto-commit"
+pkgname="$_pkgname-git"
+pkgver=0.1.5.r8.gc23c442
 pkgrel=1
 pkgdesc="A CLI tool that generates commit messages from your staged changes, built in Rust and using OpenAI's Codex."
 arch=("x86_64" "arm")
@@ -10,7 +11,7 @@ source=("git+https://github.com/m1guelpf/auto-commit.git")
 sha512sums=("SKIP")
 
 pkgver() {
-  cd "$pkgname"
+  cd "$_pkgname"
   git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 

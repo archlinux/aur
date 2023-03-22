@@ -1,6 +1,6 @@
-pkgbase = auto-commit
+pkgbase = auto-commit-git
 	pkgdesc = A CLI tool that generates commit messages from your staged changes, built in Rust and using OpenAI's Codex.
-	pkgver = 0.1.5
+	pkgver = 0.1.5.r8.gc23c442
 	pkgrel = 1
 	url = https://github.com/m1guelpf/auto-commit
 	arch = x86_64
@@ -10,4 +10,4 @@ pkgbase = auto-commit
 	source = git+https://github.com/m1guelpf/auto-commit.git
 	sha512sums = SKIP
 
-pkgname = auto-commit
+pkgname = auto-commit-git
