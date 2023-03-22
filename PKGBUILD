@@ -1,11 +1,9 @@
-# Maintainer: Joan Figueras <ffigue at gmail dot com>
-# Contributor: Torge Matthies <openglfreak at googlemail dot com>
-# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Contributor: SoftExpert <softexpert at gmail dot com>
+# Maintainer: SoftExpert <softexpert at gmail dot com>
+# Contributor: Joan Figueras <ffigue at gmail dot com>
 
 _arch=x64v2
-pkgbase=linux-xanmod-lts-linux-bin-${_arch}
 _pkgbase=linux-xanmod-lts
+pkgbase=${_pkgbase}-linux-bin-${_arch}
 _major=6.1
 pkgver=${_major}.21
 xanmod=1
@@ -17,15 +15,7 @@ license=(GPL2)
 options=('!strip')
 makedepends=('jq' 'curl')
 
-# Resolve URL of sources from Sourceforge provider
-#_image_files=($(curl -sL https://sourceforge.net/projects/xanmod/files/releases/lts/${pkgver}-${_arch}-xanmod${xanmod}/ | grep net.sf.files | cut -d'=' -f2- | jq '.[].name' 2>/dev/null | grep "\.deb" | grep -v linux-libc-dev | cut -d'"' -f2))
-#source=("${_image_files[0]}::https://sourceforge.net/projects/xanmod/files/releases/lts/${pkgver}-${_arch}-xanmod${xanmod}/${_image_files[0]}/download"
-#        "${_image_files[1]}::https://sourceforge.net/projects/xanmod/files/releases/lts/${pkgver}-${_arch}-xanmod${xanmod}/${_image_files[1]}/download")
-#noextract=("${_image_files[0]}" "${_image_files[1]}")
-
 # Resolve URL of sources
-
-# _url_image=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${xanmod} | jq --arg PKGVER "${pkgver}" --arg XANMOD "${xanmod}" --arg ARCH "${_arch}" -r '.assets[] | select(.name | contains("linux-image-" + $PKGVER + "-" + $ARCH + "-xanmod" + $XANMOD)).browser_download_url')
 _url_image=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${xanmod} | jq --arg PKGVER "${pkgver}" --arg XANMOD "${xanmod}" --arg ARCH "${_arch}" -r '.assets[] | select(.name | startswith("linux-image-" + $PKGVER + "-" + $ARCH + "-xanmod" + $XANMOD) and endswith(".deb")).browser_download_url')
 _url_headers=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${xanmod} | jq --arg PKGVER "${pkgver}" --arg XANMOD "${xanmod}" --arg ARCH "${_arch}" -r '.assets[] | select(.name | startswith("linux-headers-" + $PKGVER + "-" + $ARCH + "-xanmod" + $XANMOD) and endswith(".deb")).browser_download_url')
 source=("${_url_image}" "${_url_headers}")
@@ -77,7 +67,7 @@ _package() {
   install -Dm644 "boot/vmlinuz-${pkgver}-${_arch}-xanmod${xanmod}" "$modulesdir/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
-  echo "${pkgname}" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
+  echo "${_pkgbase}-linux-bin-${_arch}" | install -Dm644 /dev/stdin "$modulesdir/$pkgbase"
 }
 
 _package-headers() {
