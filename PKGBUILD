@@ -1,44 +1,41 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 # Contributor: Clint Valentine <valentine.clint@gmail.com>
 pkgname=freebayes
-pkgver=1.3.6
-pkgrel=4
+pkgver=1.3.7
+pkgrel=1
 pkgdesc="About Bayesian haplotype-based genetic polymorphism discovery and genotyping"
 arch=('x86_64')
 url="https://github.com/freebayes/freebayes"
 license=('MIT')
-
-depends=('tabixpp' 'htslib')
+depends=('tabixpp' 'seqlib' 'vcflib')
 makedepends=('ninja' 'meson' 'git' 'cmake' 'make'
-'vcflib' 'vcftools' 'samtools' 'parallel' 'bc')
-optdepends=()
-
-source=("git+https://github.com/freebayes/freebayes.git#tag=v${pkgver}")
-noextract=()
-sha256sums=('SKIP')
+'vcftools' 'samtools' 'parallel' 'bc' 'perl'
+)
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('89c2202aaa82925bc6a49e04df593e5ef3b1547b3b514efcbd490a54d8ad200b')
 prepare() {
-  cd "$pkgname"
-  git submodule update --init --recursive
+  cd "${pkgname}-${pkgver}"
 
-  # fix limits
-  sed -i "/#include <limits>/d" intervaltree/IntervalTree.h
-  sed -i "8i #include <limits>" intervaltree/IntervalTree.h
-  cp vcflib/tabixpp/tabix.*   vcflib/src
+  sed -i "s|dependency('libvcflib'|cc.find_library('libvcflib'|g" meson.build
+  sed -i "s|dependency('libseqlib'|cc.find_library('libseqlib'|g" meson.build
+  sed -i 's|#include "../intervaltree/IntervalTree.h"|#include <IntervalTree.h>|g' src/{*.cpp,*.h}
 }
 build() {
-  cd "$pkgname"
+  cd "${pkgname}-${pkgver}"
   test -d build || mkdir build
-  meson --prefix=/usr --buildtype=release --includedir=/usr/include/vcflib build
-  #marked it because meson.build:9:0: ERROR: Unknown options: "prefer_system_deps"
-  #-Dprefer_system_deps=true
+  meson setup --prefix=/usr --buildtype=release \
+   -Dprefer_system_deps=true  -Dstatic=false \
+   --default-library=shared \
+   build
   cd build
   ninja -v
 }
 
 package() {
-  cd "$pkgname"
+  cd "${pkgname}-${pkgver}"
   install -Dm 755 build/freebayes  -t $pkgdir/usr/bin/
   install -Dm 755 build/bamleftalign -t  $pkgdir/usr/bin/
+  install -Dm644 LICENSE -t $pkgdir/usr/share/licenses/${pkgname}/
   cd build/libfreebayes_common.a.p
   gcc -shared *.o -o libfreebayes_common.so
   install -Dm755 libfreebayes_common.so -t $pkgdir/usr/lib/
