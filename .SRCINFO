@@ -1,13 +1,13 @@
 pkgbase = bun-bin
 	pkgdesc = Incredibly fast JavaScript runtime, bundler, transpiler and package manager – all in one.
-	pkgver = 0.5.7
+	pkgver = 0.5.8
 	pkgrel = 1
 	url = https://github.com/oven-sh/bun
 	arch = x86_64
 	license = MIT
-	provides = bun=0.5.7
+	provides = bun=0.5.8
 	provides = bun
-	source = bun-linux-x64-0.5.7.zip::https://github.com/oven-sh/bun/releases/download/bun-v0.5.7/bun-linux-x64.zip
-	sha512sums = 19d25b1f17badc708ad3e1c75bb896840c846b231526fb100b29ee0230bfdb96cac01fca13f115eadc2e3f0286c93c20f5989d71dedaf6ca9e55b0e0553187ef
+	source = bun-linux-x64-0.5.8.zip::https://github.com/oven-sh/bun/releases/download/bun-v0.5.8/bun-linux-x64.zip
+	sha512sums = 8e5c50770bb40ab2bf445866f4da881abd79f599a63c895ef2de0a8e2cfde3c1f5821c9d69005f45e5bbc150c542ac3c1221f90bf96d3596e438dd4da208f9d4
 
 pkgname = bun-bin
