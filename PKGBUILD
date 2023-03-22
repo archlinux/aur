@@ -3,7 +3,7 @@
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Asuka Minato <asukaminato at nyan dot eu dot org>
 pkgname=typst-bin
 pkgver=22_03_21_2
 pkgrel=1
