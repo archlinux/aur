@@ -46,7 +46,9 @@ build() {
 }
 
 check() {
-    R_LIBS="${srcdir}/build/" R CMD check --no-manual --as-cran "${srcdir}/${_cranname}"
+    export R_BUILD_TAR=tar
+    export R_LIBS="${srcdir}/build/"
+    R CMD check --no-manual --as-cran "${srcdir}/${_cranname}"
 }
 
 package() {
