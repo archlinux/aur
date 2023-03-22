@@ -16,5 +16,5 @@ post_upgrade() {
 
 pre_remove() {
   echo "Stopping and disabling any buildkite-agent systemd services"
-  systemctl disable --now buildkite-agent.service 'buildkite-agent@*.service'
+  systemctl list-units --plain --no-legend --all | awk '{print $1}' | grep '^buildkite-agent' | xargs -I {} systemctl disable --now {} || true
 }
