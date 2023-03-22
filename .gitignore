@@ -1,3 +1,3 @@
-evince
 pkg/evince-no-gnome
-*.pkg.tar.zst
+*.tar.xz
+src

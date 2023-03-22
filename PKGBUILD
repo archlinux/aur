@@ -1,11 +1,13 @@
-# Maintainer: Yiyao Yu <yyudevel at protonmail dot com>
+# Maintainer : Hauke Ingwersen <hauing@pm.me>
+# Contributor: Yiyao Yu <yyudevel at protonmail dot com>
 # Contributor: GordonGR <ntheo1979@gmail.com>
 # Contributor: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani at gmail dot com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=evince-no-gnome
 _pkgname=evince
-pkgver=44.0
+pkgver=44.1
+_milestone=44
 pkgrel=1
 pkgdesc="Document viewer, no gnome dependencies"
 url="https://wiki.gnome.org/Apps/Evince"
@@ -18,17 +20,15 @@ optdepends=('texlive-bin: DVI support'
 provides=("$_pkgname" libev{document,view}3.so)
 conflicts=("$_pkgname" libev{document,view}3.so)
 options=('!emptydirs')
-_commit=9912cf2cb589f493b3c193fb76e73d00c20fc1ba # tags/44.0^0
-source=("git+https://gitlab.gnome.org/GNOME/evince.git#commit=$_commit")
-sha256sums=('SKIP')
+source=("https://download.gnome.org/sources/evince/${_milestone}/evince-${pkgver}.tar.xz")
+sha256sums=('15afd3bb15ffb38fecab34c23350950ad270ab03a85b94e333d9dd7ee6a74314')
 
-pkgver() {
-  cd $_pkgname
-  git describe --tags | sed 's/-/+/g'
+prepare () {
+    tar -xvf evince-${pkgver}.tar.xz
 }
 
 build() {
-    arch-meson "$_pkgname" build \
+    arch-meson "$srcdir/evince-${pkgver}" build \
         -D ps=enabled \
         -D nautilus=false \
         -D introspection=false \
