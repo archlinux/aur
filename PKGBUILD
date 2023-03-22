@@ -21,17 +21,17 @@ sha256sums=('SKIP'
             'fd8eac813579e3deca842c6da328d8429e3b4d039e5cd9b596cfe0bb2113d9ff')
 
 pkgver() {
-  cd "$srcdir/${_reponame}"
+  cd "${_reponame}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare(){
-  cd "$srcdir/${_reponame}"
+  cd "${_reponame}"
   mkdir -p build/
 }
 
 build() {
-  cd "$srcdir/${_reponame}"
+  cd "${_reponame}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -45,6 +45,6 @@ package() {
   install -Dm644 prometheus-mosquitto-exporter.service  "$pkgdir"/usr/lib/systemd/system/prometheus-mosquitto-exporter.service
   install -Dm644 prometheus-mosquitto-exporter.sysusers "$pkgdir"/usr/lib/sysusers.d/prometheus-mosquitto-exporter.conf
 
-  cd "$srcdir/${_reponame}"
+  cd "${_reponame}"
   install -Dm755 build/$_reponame "$pkgdir"/usr/bin/$_reponame
 }
