@@ -2,7 +2,7 @@
 # Contributor: Pavel Merzlyakov <pavel.merzlyakov@gmail.com>
 _base=allure
 pkgname=python-${_base}-commons
-pkgver=2.13.0
+pkgver=2.13.1
 pkgrel=1
 pkgdesc="Common module for integrate allure with python-based frameworks"
 arch=(any)
@@ -13,11 +13,11 @@ source=("git+${url}.git#tag=${pkgver}")
 sha512sums=('SKIP')
 
 build() {
-  cd "${_base}-python/${_base}-python-commons"
+  cd ${_base}-python/${_base}-python-commons
   python setup.py build
 }
 
 package() {
-  cd "${_base}-python/${_base}-python-commons"
+  cd ${_base}-python/${_base}-python-commons
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 }
