@@ -1,6 +1,6 @@
 pkgbase = vym-devel
 	pkgdesc = A mindmapping tool
-	pkgver = 2.8.8
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = https://www.insilmaril.de/vym/
 	install = vym-devel.install
@@ -8,6 +8,7 @@ pkgbase = vym-devel
 	arch = x86_64
 	license = GPL
 	makedepends = qt5-tools
+	depends = cmake
 	depends = zip
 	depends = unzip
 	depends = qt5-svg
@@ -15,9 +16,9 @@ pkgbase = vym-devel
 	depends = desktop-file-utils
 	depends = hicolor-icon-theme
 	depends = ruby
-	source = https://altushost-swe.dl.sourceforge.net/project/vym/2.8.8/vym-2.8.8.tar.bz2
+	source = https://github.com/insilmaril/vym/archive/refs/tags/v2.9.0.tar.gz
 	source = vym.desktop
-	sha256sums = 405b6d58ea4a201e7aa32f2b65c61d3bec50f914486d02394842bdd7f8f41f08
+	sha256sums = 72451681a3a4e1494f25c1ff9d4110c138095d63ed4d1471c76ed907606a7cdb
 	sha256sums = e299c69c213e7aac3f5b5d0ab088132b4ec7cb63a391f272e75ed64f049d541b
 
 pkgname = vym-devel
