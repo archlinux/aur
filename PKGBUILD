@@ -1,42 +1,31 @@
-# Maintainer: Robert Greener <me@r0bert.dev>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Robert Greener <me@r0bert.dev>
 
 _cranname=mockr
-_cranver=0.2.0
+_cranver=0.2.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="Provides a means to mock a package function, i.e., temporarily substitute it for testing"
+pkgdesc="Mocking in R"
 arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL3)
-depends=(
-	r
-	r-rlang
-	r-withr
-)
-checkdepends=(
-	r-testthat
-)
+depends=(r-rlang r-withr)
 optdepends=(
-	r-covr
-	r-fs
-	r-knitr
-	r-pkgload
-	r-rmarkdown
-	r-testthat
-	r-usethis
+    r-covr
+    r-fs
+    r-knitr
+    r-pkgload
+    r-rmarkdown
+    r-testthat
+    r-usethis
 )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("aaa04da0af31028290f6dd72cc089d5a0f725bcc63648964a78325d76edad54ada33ba3530f6af3bbd9f164fee485cbcac548a55674675cb53929ee7b2b7870d")
+sha256sums=("23ef5941eeed6a20b7670e78ef54a406ecd1eb9b57da2d4ca92ae03696f27a58")
 
 build() {
-	mkdir -p build
-	R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/build"
-}
-
-check() {
-	cd "${_cranname}/tests"
-	R_LIBS="${srcdir}/build" NOT_CRAN=true Rscript --vanilla testthat.R
+  mkdir -p build
+  R CMD INSTALL "${_cranname}" -l "${srcdir}/build"
 }
 
 package() {
