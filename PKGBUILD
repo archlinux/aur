@@ -4,7 +4,7 @@
 pkgname=etcher-cli-bin
 _pkgname=etcher-cli
 pkgver=1.4.9
-pkgrel=3
+pkgrel=4
 pkgdesc="Burn images to SD cards & USB drives, safe & easy"
 arch=('i686' 'x86_64')
 url="http://www.etcher.io/"

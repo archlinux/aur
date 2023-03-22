@@ -1,7 +1,7 @@
 pkgbase = etcher-cli-bin
 	pkgdesc = Burn images to SD cards & USB drives, safe & easy
 	pkgver = 1.4.9
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.etcher.io/
 	arch = i686
 	arch = x86_64
