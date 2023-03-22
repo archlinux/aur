@@ -1,7 +1,7 @@
 # Maintainer: Paul Colin Hennig <aur at y dot gy>
 
 pkgname=mozart-bin
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 license=('AGPL')
 pkgdesc="A swiss army knife for everything around the docker compose universe"
