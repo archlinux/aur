@@ -1,15 +1,18 @@
 pkgbase = r-viridislite
 	pkgdesc = Colorblind-Friendly Color Maps (Lite Version)
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=viridisLite
 	arch = any
 	license = MIT
+	checkdepends = r-covr
+	checkdepends = r-hexbin>=1.27.0
+	checkdepends = r-ggplot2>=1.0.1
+	checkdepends = r-testthat
 	depends = r>=2.10
 	optdepends = r-covr
 	optdepends = r-hexbin>=1.27.0
 	optdepends = r-ggplot2>=1.0.1
-	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/viridisLite_0.4.1.tar.gz
 	b2sums = 024b7470a96a8f487ddf58b02f3efd96ccd7d54ee2de6a1ff88b070570543d8f08e6a95dc5530d197d45014b6f5403c8375a572f96f84693bb010725a04893cd
 
