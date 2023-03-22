@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-strenum
 _name=StrEnum
-pkgver=0.4.9
+pkgver=0.4.10
 pkgrel=1
 pkgdesc="A Python Enum that inherits from str."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest-black' 'python-pytest-cov' 'python-pytest-pylint' 'python-pytest-runner')
 source=("$_name-$pkgver.tar.gz::https://github.com/irgeek/StrEnum/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e4300e79a5ee3295fa3fe1980fd74ce01489c71250497f45a88553a93009fb0c')
+sha256sums=('eb505e5a9de3215e3edeef7bba75414af939c18a3e6678fe49a0441005379c0a')
 
 build() {
   cd "$_name-$pkgver"
