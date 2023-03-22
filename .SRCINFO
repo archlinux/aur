@@ -1,0 +1,14 @@
+pkgbase = sherly-git
+	pkgdesc = Sherly is a Multithreaded Duplicate File Finder for your Terminal, written in java
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = https://github.com/BlyDoesCoding/Sherly
+	arch = any
+	license = BSD2
+	makedepends = git
+	depends = jre>=1.19.0
+	provides = sherly
+	source = git+https://github.com/BlyDoesCoding/Sherly
+	md5sums = SKIP
+
+pkgname = sherly-git
