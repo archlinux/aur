@@ -24,7 +24,7 @@ conflicts=('firefox')
 source=("http://archive.mozilla.org/pub/firefox/releases/111.0.1/linux-x86_64/en-US/firefox-$pkgver.tar.bz2"
         $_pkgname.sh
         $_pkgname.desktop)
-sha256sums=('923da36b1917fbd46809d91758d776be2cea7e157e0f59c3e0d4275d1af87701'
+sha256sums=('a4075387fd907882c80a03169df258b329a29d605d7e76afe6f2d4a82a8f66c8'
             '9491f195066aa56f4f0bbc83e5f0581a460f4c34ee455ba24db312b540322703'
             'c64008cbf01956ce3dba693230670de58fa9487ad19f4ba76614af13beb1b8ef')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
