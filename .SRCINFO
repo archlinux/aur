@@ -8,6 +8,7 @@ pkgbase = ly
 	arch = aarch64
 	license = custom:WTFPL
 	makedepends = git
+	makedepends = libxcb
 	depends = pam
 	optdepends = xorg-xauth: for X server sessions
 	conflicts = python-ly
