@@ -1,6 +1,6 @@
 packager='Aditya Mahajan <adityam at umich dot edu>'
 pkgname=luametatex
-pkgver=2023.02.23
+pkgver=2023.03.20
 pkgrel=1
 pkgdesc="ConTeXt LuaMetaTeX distribution"
 url="http://www.contextgarden.net"
@@ -113,32 +113,35 @@ prepare() {
  # Generate a setuptex file
  mkdir -p $srcdir/tex
  cat <<- _EOF_ > $srcdir/tex/setuptex
-	_OLD_PATH=\$PATH
+    _OLD_PATH=\$PATH
     _OLD_CONTEXTDIST=$CONTEXTDIST
 
-	TEXMFOS=${_dest}/texmf-${_platform}
-	export TEXMFOS
+    TEXMFOS=${_dest}/texmf-${_platform}
+    export TEXMFOS
 
-	TEXMFCACHE=\$HOME/.cache/luametatex
-	export TEXMFCACHE
+    TEXMFCACHE=\$HOME/.cache/luametatex
+    export TEXMFCACHE
 
-	PATH=\$TEXMFOS/bin:\$PATH
-	export PATH
+    CONTEXTDIST="lmtx"
+    export CONTEXTDIST
 
-	OSFONTDIR="$_userfontdir;$_osfontdir;"
-	export OSFONTDIR
+    PATH=\$TEXMFOS/bin:\$PATH
+    export PATH
 
-	resettex () {
-	    PATH=\$_OLD_PATH
-	    export PATH
-	    unset _OLD_PATH
+    OSFONTDIR="$_userfontdir;$_osfontdir;"
+    export OSFONTDIR
+
+    resettex () {
+        PATH=\$_OLD_PATH
+        export PATH
+        unset _OLD_PATH
 
         CONTEXTDIST=$_OLD_CONTEXTDIST
         export CONTEXTDIST
         unset _OLD_CONTEXTDIST
 
-	    unset -f resettex
-}
+        unset -f resettex
+    }
 _EOF_
 
  # If texlive exists, use fonts from texlive
