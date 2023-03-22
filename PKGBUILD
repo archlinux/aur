@@ -2,9 +2,9 @@
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Maxim Baz <$pkgname at maximbaz dot com>
 pkgname=dell-command-configure
-_pkgver=4.7.0-433
+_pkgver=4.10.0-5
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc='Configure various BIOS features on Dell laptops'
 arch=('x86_64')
 url='https://www.dell.com/support/kbdoc/000178000/dell-command-configure'
@@ -15,8 +15,8 @@ provides=('libdchtvm.so=9' 'libdchipm.so=9' 'libdchesm.so=9' 'libdchcfl.so=9'
           'srvadmin-hapi')
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 install=dell-command-configure.install
-source=("${pkgname}-${pkgver}.tar.gz::https://dl.dell.com/FOLDER08385603M/1/command-configure_${_pkgver}.ubuntu20_amd64.tar.gz")
-sha256sums=('8c07db9dd7a0e1f450bd58c1649ef654f3afc2cc5b28ba2b2fbdcb243bb4738b')
+source=("${pkgname}-${pkgver}.tar.gz::https://dl.dell.com/FOLDER09518608M/1/command-configure_${_pkgver}.ubuntu22_amd64.tar.gz")
+sha256sums=('1e27b2f75b53af67ed8b3d720314ef071e860183c891a4371db187a8c4b320d4')
 
 prepare() {
   ar xf srvadmin-hapi_*.deb
