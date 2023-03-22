@@ -1,12 +1,12 @@
 pkgbase = protonkey
 	pkgdesc = ProtonMail PGP Key Downloader
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://git.tebibyte.media/emma/protonkey
 	arch = any
 	license = AGPL3
 	provides = protonkey
-	source = https://git.tebibyte.media/emma/protonkey/archive/1.0.0.tar.gz
+	source = https://git.tebibyte.media/emma/protonkey/archive/1.0.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = protonkey

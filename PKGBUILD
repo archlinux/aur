@@ -1,13 +1,13 @@
 # Maintainer: Emma Tebibyte <emma@tebibyte.media>
 
 pkgname="protonkey"
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="ProtonMail PGP Key Downloader"
 arch=("any")
 url="https://git.tebibyte.media/emma/protonkey"
 license=("AGPL3")
-source=("https://git.tebibyte.media/emma/protonkey/archive/1.0.0.tar.gz")
+source=("https://git.tebibyte.media/emma/protonkey/archive/1.0.1.tar.gz")
 provides=("protonkey")
 
 sha256sums=("SKIP")
