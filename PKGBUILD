@@ -6,7 +6,7 @@ _sign_location="etc/secureboot/keys"
 
 # Maintainer: BrLi <brli@chakralinux.org>
 pkgname=secureboot-helper
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Kernel signing helper for UEFI secure boot"
 arch=('any')
@@ -37,7 +37,7 @@ source=(secureboot-helper-kernel.hook
         secureboot-helper-ucode.hook
         systemd-boot-update.hook
         secureboot-helper.sysusers)
-sha256sums=('0e52f034ba8576b1723e07f974ea8a7d689cc41488cee731a6e0cb510a2cd4be'
+sha256sums=('431c8804e41f42ef71e461c322e53908474982f011a19c69dc6776a5fefe2371'
             'fa56188cb7d1175283ad7bbdc06a540ba8c1a2fc1b5ea55011a3a2cca0f7ac4c'
             'badc4c0a167af7606df2076929d3ccede9da971b9e6c7bc24e9dfb22ea29cd3a'
             '3f7f448987c82b9475182cc2bf5b861780e9da2a121b3607c5d24bc836846e86'

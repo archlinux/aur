@@ -10,7 +10,7 @@ Target = linux-hardened
 [Action]
 Description = Signing Kernel for SecureBoot
 When = PostTransaction
-Exec = /usr/bin/find /boot/ -maxdepth 1 -name 'vmlinuz-*' -exec /usr/bin/sh -c 'if ! /usr/bin/sbverify --list {} 2>/dev/null | /usr/bin/grep -q "signature certificates"; then /usr/bin/sbsign --key /%SIGN_LOCATION%/db.key --cert /%SIGN_LOCATION%/db.crt --output {} {}; fi' \ ;
+Exec = /usr/bin/find /boot/ -maxdepth 1 -name 'vmlinuz-*' -exec /usr/bin/sh -c 'if ! /usr/bin/sbverify --list {} 2>/dev/null | /usr/bin/grep -q "signature certificates"; then /usr/bin/sbsign --key /%SIGN_LOCATION%/db/db.key --cert /%SIGN_LOCATION%/db/db.crt --output {} {}; fi' \ ;
 Depends = sbsigntools
 Depends = findutils
 Depends = grep
