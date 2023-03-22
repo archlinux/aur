@@ -2,7 +2,7 @@
 pkgname=feroxbuster-bin
 pkgver=2.9.2
 pkgrel=1
-pkgdesc="A rewrite of the pfetch system information tool in Rust"
+pkgdesc="A fast, simple, recursive content discovery tool written in Rust"
 url="https://github.com/epi052/feroxbuster"
 license=("MIT")
 arch=("x86_64")

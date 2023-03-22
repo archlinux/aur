@@ -1,5 +1,5 @@
 pkgbase = feroxbuster-bin
-	pkgdesc = A rewrite of the pfetch system information tool in Rust
+	pkgdesc = A fast, simple, recursive content discovery tool written in Rust
 	pkgver = 2.9.2
 	pkgrel = 1
 	url = https://github.com/epi052/feroxbuster
