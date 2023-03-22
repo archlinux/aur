@@ -4,9 +4,9 @@
 
 pkgname=crashplan-pro
 _pkgname=crashplan
-pkgver=11.0.0
-_pkgbuild=949
-pkgrel=2
+pkgver=11.0.1
+_pkgbuild=33
+pkgrel=1
 pkgdesc="A business online/offsite backup solution"
 url="https://www.crashplan.com/en-us/small-business/"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(https://download.crashplan.com/installs/agent/cloud/${pkgver}/${_pkgbuil
         upgrade.sh
         crashplan-pro_upgrade.service
         crashplan-pro_upgrade.path)
-sha1sums=('424505cb799266aede43ea887bdc3502db42d816'
+sha1sums=('900872eac50395f7b432f7c1241a8fc335b52d14'
           'f73e2b1155744594303d81b394031159e248654c'
           'a3a5ead8b8fd867f47782b12bc27b1fb145565ac'
           'c24e2ba2b2d6831246ea4af072305ddf5d1fd774'
