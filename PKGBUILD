@@ -3,7 +3,7 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=r23396.c1730f5d8
+pkgver=r23453.76289c2e9
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
@@ -16,8 +16,8 @@ depends=('fmt'
          'cubeb'
          'mbedtls'
          'libinih'
-         'qt6-multimedia'
-         'qt6-webengine'
+         'qt5-multimedia'
+         'qt5-webengine'
          'sdl2'
          'enet'
          'boost-libs')
@@ -30,9 +30,9 @@ makedepends=('boost'
              'git'
              'ninja'
              'nlohmann-json'
-             'qt6-tools'
+             'qt5-tools'
              'robin-map')
-optdepends=("qt6-wayland: Wayland support")
+optdepends=("qt5-wayland: Wayland support")
 source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu-mainline"
         'git+https://github.com/lsalzman/enet.git'
         'git+https://github.com/benhoyt/inih.git'
@@ -121,7 +121,7 @@ build() {
       -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
       -DYUZU_USE_QT_WEB_ENGINE=ON \
       -DYUZU_USE_QT_MULTIMEDIA=ON \
-      -DENABLE_QT6=ON \
+      -DENABLE_QT6=OFF \
       -DYUZU_USE_EXTERNAL_SDL2=OFF \
       -DUSE_DISCORD_PRESENCE=ON \
       -DENABLE_QT_TRANSLATION=ON \
