@@ -1,10 +1,18 @@
 pkgbase = r-scales
 	pkgdesc = Scale Functions for Visualization
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=scales
 	arch = any
 	license = MIT
+	checkdepends = r-bit64
+	checkdepends = r-covr
+	checkdepends = r-dichromat
+	checkdepends = r-ggplot2
+	checkdepends = r-hms>=0.5.0
+	checkdepends = r-stringi
+	checkdepends = r-waldo>=0.4.0
+	checkdepends = r-testthat>=3.0.0
 	depends = r>=3.2
 	depends = r-farver>=2.0.3
 	depends = r-labeling
@@ -20,9 +28,8 @@ pkgbase = r-scales
 	optdepends = r-ggplot2
 	optdepends = r-hms>=0.5.0
 	optdepends = r-stringi
-	optdepends = r-testthat>=3.0.0
 	optdepends = r-waldo>=0.4.0
 	source = https://cran.r-project.org/src/contrib/scales_1.2.1.tar.gz
-	sha256sums = 59453e6dbdafee93dfb101e4d86048a62a12898134259d3ef02d65aeec57ed08
+	b2sums = db15b378fafb37a4adb5bb426582d2ab4ef53ba76ac88fabfe2c87f813e0863f8d89dd2a24cae9e9657c4f0bf889dba1b5d75cc1345496dc163d61b45b1ace33
 
 pkgname = r-scales
