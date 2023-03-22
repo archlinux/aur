@@ -1,7 +1,8 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-pyetrade
-pkgver=1.3.6
+_pkg="${pkgname#python-}"
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Python E-Trade API wrapper"
 arch=('any')
@@ -9,38 +10,32 @@ url="https://github.com/jessecooper/pyetrade"
 license=('GPL3')
 depends=(
 	'python-dateutil'
+	'python-jxmlease'
 	'python-requests'
 	'python-requests-oauthlib'
-	'python-xmltodict'
-	'python-jxmlease')
-makedepends=('python-setuptools' 'python-sphinx')
+	'python-xmltodict')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-sphinx' 'python-wheel')
 checkdepends=('python-pytest-runner' 'python-pytest-mock')
 changelog=
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-        "__init__.py.patch::$url/commit/26f33ca6.diff")
-sha256sums=('d13c785c76ffd13658d6a459bd81008167fb2222a4c24b92b27499b588d1fb80'
-            '62e7f7370ac8f306fc6d729c9a83f3134df212533918b7dcffa94eaddac5883d')
-
-prepare() {
-	patch -p1 -d "pyetrade-$pkgver" < __init__.py.patch
-}
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('f55db6f5545ed105863f237209ebc3be15d658c9416e67a0d76fe47ac8c65ee5')
 
 build() {
-	cd "pyetrade-$pkgver"
-	python setup.py build
-	cd docs
-	make man
+	cd "$_pkg-$pkgver"
+	python -m build --wheel --no-isolation
+	make -C docs man
 }
 
 check() {
-	cd "pyetrade-$pkgver"
-	python setup.py pytest
+	cd "$_pkg-$pkgver"
+	pytest -x
 }
 
 package() {
-	export PYTHONHASHSEED=0
-	cd "pyetrade-$pkgver"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	cd "$_pkg-$pkgver"
+	python -m installer --destdir "$pkgdir" dist/*.whl
 	install -Dm644 docs/_build/man/pyetrade.1 -t "$pkgdir/usr/share/man/man1/"
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -sv "$_site/$_pkg-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
