@@ -2,8 +2,8 @@
 
 pkgname=zaman
 pkgver=1.2.0
-pkgrel=1
-pkgdesc="Print man pages in a PDF file (with vim keys support) for an easier reading"
+pkgrel=2
+pkgdesc="A simple cli tool that prints (or saves) man pages in a PDF file for an easier reading"
 arch=('any')
 url="https://github.com/Antiz96/zaman"
 license=('GPL3')
