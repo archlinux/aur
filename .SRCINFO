@@ -1,0 +1,19 @@
+pkgbase = git-lfs-ipfs-git
+	pkgdesc = A git-lfs custom transfer & extension that makes it easy to store large files with IPFS.
+	pkgver = 0.0.0.r0.g03db01295
+	pkgrel = 1
+	url = https://github.com/sameer/git-lfs-ipfs
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = git
+	makedepends = cargo
+	makedepends = rust
+	depends = git
+	depends = git-lfs
+	provides = git-lfs-ipfs
+	conflicts = git-lfs-ipfs
+	source = git+https://github.com/sameer/git-lfs-ipfs.git
+	b2sums = SKIP
+
+pkgname = git-lfs-ipfs-git
