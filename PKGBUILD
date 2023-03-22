@@ -1,9 +1,10 @@
 # Maintainer: Niklas Krafczyk <krafczyk.n at gmail dot com>
 # Contributor: r7v
 # Contributor: gilcu3
+# Contributor: nickolai
 pkgname=klee
 pkgver=2.3
-pkgrel=13
+pkgrel=14
 epoch=
 pkgdesc="Symbolic virtual machine built on top of the LLVM compiler infrastructure"
 arch=('x86_64')
@@ -14,13 +15,13 @@ depends=('gperftools'
          'z3'
          'libcap'
          'python'
-         'llvm-libs>=14.0'
+         'llvm14-libs'
          'klee-uclibc'
          'sqlite')
 makedepends=('gperftools'
              'z3'
-             'llvm>=14.0'
-             'clang'
+             'llvm14'
+             'clang14'
              'cmake'
              'git')
 checkdepends=('python-tabulate')
@@ -62,6 +63,10 @@ prepare() {
           -DGTEST_SRC_DIR="$srcdir/googletest/googletest" \
           -DENABLE_UNIT_TESTS=ON \
           -DENABLE_SYSTEM_TESTS=ON \
+          -DUSE_CMAKE_FIND_PACKAGE=false \
+          -DLLVM_CONFIG_BINARY=/usr/bin/llvm-config-14 \
+          -DLLVMCC=/usr/lib/llvm14/bin/clang \
+          -DLLVMCXX=/usr/lib/llvm14/bin/clang++ \
           "$srcdir/$pkgname"
 }
 
