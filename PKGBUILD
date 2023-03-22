@@ -1,6 +1,6 @@
 # Maintainer: Echo https://github.com/CallMeEchoCodes
 pkgname=dossier
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc='A lightweight dotfile bootstrapper!'
 arch=('any')
@@ -12,4 +12,4 @@ source=("dossier::https://github.com/CallMeEchoCodes/Dossier/releases/download/$
 package() {
    install -Dm755 "$srcdir/dossier" "$pkgdir/usr/bin/dossier"
 }
-sha256sums=('adf3e9c27f9aa71a622e1b38de0a12e1957420fa137a2ca15b162078d94b6587')
+sha256sums=('1c0610d7c002e40184d731b5c5554a67612974eae7c71c241474556e76c9de51')

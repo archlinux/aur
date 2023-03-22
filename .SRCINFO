@@ -1,6 +1,6 @@
 pkgbase = dossier
 	pkgdesc = A lightweight dotfile bootstrapper!
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/CallMeEchoCodes/dossier
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = dossier
 	depends = jq
 	depends = gum
 	provides = dossier
-	source = dossier::https://github.com/CallMeEchoCodes/Dossier/releases/download/0.0.3/dossier
-	sha256sums = adf3e9c27f9aa71a622e1b38de0a12e1957420fa137a2ca15b162078d94b6587
+	source = dossier::https://github.com/CallMeEchoCodes/Dossier/releases/download/0.0.4/dossier
+	sha256sums = 1c0610d7c002e40184d731b5c5554a67612974eae7c71c241474556e76c9de51
 
 pkgname = dossier
