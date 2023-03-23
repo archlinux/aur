@@ -84,7 +84,7 @@ prepare()
     
     git config --global protocol.file.allow always
     local submodule
-    for submodule in 3rdparty/{glslang/glslang,libchdr/libchdr,rapidyaml/rapidyaml,rcheevos/rcheevos}; do
+    for submodule in 3rdparty/{glslang/glslang,libchdr/libchdr,rapidyaml/rapidyaml,rcheevos/rcheevos,vulkan-headers}; do
         git submodule init ${submodule}
         git submodule set-url ${submodule} "${srcdir}/${submodule##*/}"
         git submodule update ${submodule}
