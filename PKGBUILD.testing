@@ -8,7 +8,7 @@
 pkgname=wine-ge-custom
 _srctag=GE-Proton7-39
 pkgver=${_srctag//-/.}
-pkgrel=2
+pkgrel=3
 epoch=1
 
 #_winever=${pkgver%.*}
@@ -150,8 +150,8 @@ build() {
   # MingW Wine builds fail with relro
   export LDFLAGS="${LDFLAGS/,-z,relro/}"
 
-  export CFLAGS="-O3 -march=haswell -mtune=haswell -pipe -fno-semantic-interposition"
-  export CXXFLAGS="-O3 -march=haswell -mtune=haswell -pipe -fno-semantic-interposition"
+  export CFLAGS="-O2 -march=haswell -mtune=haswell -pipe -ftree-vectorize -fno-semantic-interposition"
+  export CXXFLAGS="-O2 -march=haswell -mtune=haswell -pipe -ftree-vectorize -fno-semantic-interposition"
   export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
 
   export CFLAGS+=" -mno-avx2 -mfpmath=sse -fwrapv -fno-strict-aliasing -gdwarf-2 -gstrict-dwarf"

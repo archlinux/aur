@@ -8,7 +8,7 @@
 pkgname=wine-ge-custom
 _srctag=GE-Proton7-39
 pkgver=${_srctag//-/.}
-pkgrel=2
+pkgrel=3
 epoch=1
 
 #_winever=${pkgver%.*}

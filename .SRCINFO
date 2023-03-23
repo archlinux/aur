@@ -1,7 +1,7 @@
 pkgbase = wine-ge-custom
 	pkgdesc = A compatibility layer for running Windows programs - GloriousEggroll branch
 	pkgver = GE.Proton7.39
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/GloriousEggroll/wine-ge-custom
 	install = wine.install
