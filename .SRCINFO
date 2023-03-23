@@ -1,0 +1,15 @@
+pkgbase = worldvu
+	pkgdesc = Text UI library and applications
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://codeberg.org/dyfet/worldvu
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = GPL3
+	makedepends = cmake>=3.1.0
+	source = worldvu-v2.0.3.tar.gz::https://codeberg.org/dyfet/worldvu/archive/v2.0.3.tar.gz
+	sha256sums = 0d00825c9ffe0fe0b78131b4bb7a44630657e2e0f96eff035c1443afc6c558cc
+
+pkgname = worldvu
