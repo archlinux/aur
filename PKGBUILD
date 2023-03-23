@@ -1,10 +1,10 @@
 #Maintainer: Evert Vorster <evorster@gmail.com>
 pkgname=vegastrike-engine-release-git
 pkgver=rev.14708
-pkgrel=1
+pkgrel=2
 pkgdesc="VegaStrike game engine, latest released version"
 arch=('i686' 'x86_64')
-url="www.vega-strike.org"
+url="https://www.vega-strike.org"
 license=('GPL')
 depends=('boost-libs' 'python' 'freeglut' 'gtk3' 'openal' 'sdl' 'glu' 'libvorbis')
 #optdepends=('vegastrike-data: original dataset')
