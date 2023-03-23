@@ -1,6 +1,6 @@
 pkgbase = python-pyvista
 	pkgdesc = 3D plotting and mesh analysis through a streamlined interface for the Visualization Toolkit (VTK)
-	pkgver = 0.38.4
+	pkgver = 0.38.5
 	pkgrel = 1
 	url = https://www.pyvista.org
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-pyvista
 	depends = python-scooby
 	depends = vtk
 	optdepends = python-meshio
-	source = https://files.pythonhosted.org/packages/source/p/pyvista/pyvista-0.38.4.tar.gz
-	sha512sums = 5a091161fe4ebc6ab33195029f86c01bae251eed94ebd3cf7b048eef8cf7b0f2d9adcb6cdd5f0f9be31dee9acfe533d9d5491101b9f16192eec58ace6fa210a7
+	source = https://files.pythonhosted.org/packages/source/p/pyvista/pyvista-0.38.5.tar.gz
+	sha512sums = 51d785259fa2a0ff79bfbb5b1db764a49c13724562e5882295ea05ce1100043c68a1f730bc2188df7e28f0f5d6a1958b9cadec021c58d046c1b586b38d1a469f
 
 pkgname = python-pyvista
