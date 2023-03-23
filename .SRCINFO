@@ -1,0 +1,35 @@
+pkgbase = jami-qt-wtf
+	pkgdesc = Free and universal communication platform which preserves the users’ privacy and freedoms (Qt client)
+	pkgver = 20230207
+	pkgrel = 1
+	url = https://jami.net
+	arch = x86_64
+	groups = jami
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = python
+	makedepends = qt6-networkauth
+	makedepends = qt6-tools
+	depends = jami-daemon
+	depends = glib2
+	depends = gdk-pixbuf2
+	depends = libnm
+	depends = libnotify
+	depends = qrencode
+	depends = qt6-declarative
+	depends = qt6-multimedia
+	depends = qt6-svg
+	depends = qt6-5compat
+	depends = qt6-webengine
+	depends = qt6-webchannel
+	provides = jami-qt
+	conflicts = jami-gnome
+	conflicts = jami-libclient
+	conflicts = jami-qt
+	replaces = jami-gnome
+	replaces = jami-libclient
+	source = git+https://git.jami.net/savoirfairelinux/jami-client-qt.git#commit=6498dadd68689d75baae3126e6b164791da5ee75
+	sha256sums = SKIP
+
+pkgname = jami-qt-wtf
