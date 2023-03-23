@@ -4,10 +4,11 @@
 # Contributor: SoftExpert <softexpert at gmail dot com>
 
 _arch=x64v3
-pkgbase=linux-xanmod-linux-bin-${_arch}
 _pkgbase=linux-xanmod
+pkgbase=${_pkgbase}-linux-bin-${_arch}
 _major=6.2
-pkgver=${_major}.7
+pkgver=${_major}.8
+_branch=6.x
 xanmod=1
 pkgrel=${xanmod}
 pkgdesc="The Linux kernel and modules with Xanmod patches - Current Stable (MAIN) - Prebuilt version - ${_arch}"
@@ -18,8 +19,8 @@ options=('!strip')
 makedepends=('jq' 'curl')
 
 # Resolve URL of sources from GiHub provider
-_url_image=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${xanmod} | jq --arg PKGVER "${pkgver}" --arg XANMOD "${xanmod}" --arg ARCH "${_arch}" -r '.assets[] | select(.name | contains("linux-image-" + $PKGVER + "-" + $ARCH + "-xanmod" + $XANMOD)).browser_download_url')
-_url_headers=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${xanmod} | jq --arg PKGVER "${pkgver}" --arg XANMOD "${xanmod}" --arg ARCH "${_arch}" -r '.assets[] | select(.name | contains("linux-headers-" + $PKGVER + "-" + $ARCH + "-xanmod" + $XANMOD)).browser_download_url')
+_url_image=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${xanmod} | jq --arg PKGVER "${pkgver}" --arg XANMOD "${xanmod}" --arg ARCH "${_arch}" -r '.assets[] | select(.name | startswith("linux-image-" + $PKGVER + "-" + $ARCH + "-xanmod" + $XANMOD) and endswith(".deb")).browser_download_url')
+_url_headers=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${xanmod} | jq --arg PKGVER "${pkgver}" --arg XANMOD "${xanmod}" --arg ARCH "${_arch}" -r '.assets[] | select(.name | startswith("linux-headers-" + $PKGVER + "-" + $ARCH + "-xanmod" + $XANMOD) and endswith(".deb")).browser_download_url')
 source=("${_url_image}" "${_url_headers}")
 noextract=("${_url_image}" "${_url_headers}")
 # Save files we will extract later manually
@@ -34,26 +35,12 @@ prepare() {
   rm -f data.tar.xz
 }
 
-# Resolve URL of sources from Sourceforge provider
-#_image_files=($(curl -sL https://sourceforge.net/projects/xanmod/files/releases/main/${pkgver}-${_arch}-xanmod${xanmod}/ | grep net.sf.files | cut -d'=' -f2- | jq '.[].name' 2>/dev/null | grep "\.deb" | grep -v linux-libc-dev | cut -d'"' -f2))
-#source=("${_image_files[0]}::https://sourceforge.net/projects/xanmod/files/releases/main/${pkgver}-${_arch}-xanmod${xanmod}/${_image_files[0]}/download"
-#        "${_image_files[1]}::https://sourceforge.net/projects/xanmod/files/releases/main/${pkgver}-${_arch}-xanmod${xanmod}/${_image_files[1]}/download")
-#noextract=("${_image_files[0]}" "${_image_files[1]}")
-#prepare() {
-#  for _f in ${_image_files[@]} ; do
-#    bsdtar -xf ${_f} data.tar.xz
-#    bsdtar -xf data.tar.xz
-#    rm -f data.tar.xz
-#  done
-#}
-
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha256sums=('4a4353f4841d6af66258051d56c37b6a0f77d5366dd5afeea9afda22271058e8'
-            'cb805a89bf1e1c144f1764bc14d933c64062783f743c0f33e7947303d5539c9e')
-
+sha256sums=('df529720a77cdb27cbe314a83eb54e944a51858f05141b24834cc2ed36e05613'
+            '606118be911feec2cd866d8183dfc7f26e6f9dbe4a1f5d27b06847cf450a8716')
 
 _package() {
   pkgdesc="The Linux kernel and modules with Xanmod patches - Current Stable (MAIN) - Prebuilt version - ${_arch}"
@@ -65,35 +52,35 @@ _package() {
             KSMBD-MODULE
             NTFS3-MODULE)
 
-  local kernver="${pkgver}-${_arch}-xanmod${xanmod}"
-  local modulesdir="${pkgdir}/usr/lib/modules/${kernver}"
-  mkdir -p "${modulesdir}" "${pkgdir}/usr/share/doc"
+  local kernver="$pkgver-$_arch-xanmod$xanmod"
+  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
+  mkdir -p "$modulesdir" "$pkgdir/usr/share/doc"
 
   msg2 "Installing modules..."
-  cp -r lib/modules/${kernver}/* "${modulesdir}/"
+  cp -r lib/modules/$kernver/* "$modulesdir/"
 
   # Docs
-  cp -r usr/share/doc/linux-image-* "${pkgdir}/usr/share/doc/"
+  cp -r usr/share/doc/linux-image-* "$pkgdir/usr/share/doc/"
 
   msg2 "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  install -Dm644 "boot/vmlinuz-${pkgver}-${_arch}-xanmod${xanmod}" "$modulesdir/vmlinuz"
+  install -Dm644 "boot/vmlinuz-$pkgver-$_arch-xanmod$xanmod" "$modulesdir/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
-  echo "${pkgname}" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
+  echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 }
 
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the Linux Xanmod - Current Stable (MAIN) - Prebuilt version - ${_arch}"
   depends=(pahole)
 
-  mkdir -p "${pkgdir}"/usr/share/doc
-  cp -r usr/share/doc/linux-headers-* "${pkgdir}/usr/share/doc/"
-  cp -r usr/src "${pkgdir}/usr/"
+  mkdir -p "$pkgdir"/usr/share/doc
+  cp -r usr/share/doc/linux-headers-* "$pkgdir/usr/share/doc/"
+  cp -r usr/src "$pkgdir/usr/"
 }
 
-pkgname=("${_pkgbase}-linux-bin-${_arch}" "${_pkgbase}-linux-headers-bin-${_arch}")
+pkgname=("$_pkgbase-linux-bin-$_arch" "$_pkgbase-linux-headers-bin-$_arch")
 eval "package_${pkgname[0]}() { _package \"\$@\"; }"
 eval "package_${pkgname[1]}() { _package-headers \"\$@\"; }"
 
