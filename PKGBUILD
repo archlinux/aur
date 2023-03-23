@@ -1,7 +1,7 @@
 # Maintainer: Filipe Nascimento <flipee at tuta dot io>
 
 pkgname=ffuf
-pkgver=1.5.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Fast web fuzzer written in Go"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('70dc411c014c826f9c8a7b021e01d5bc50e2cba17e0dcc4df3e2e2574ad12073')
+sha256sums=('80b42fe3dda8b24e10bade7b18651d402d1acf5031baedd0b344985721f3d8cd')
 
 build() {
     cd $pkgname-$pkgver
@@ -26,7 +26,7 @@ build() {
         -mod=readonly \
         -modcacherw \
         -ldflags "-linkmode=external
-            -X github.com/ffuf/ffuf/pkg/ffuf.VERSION_APPENDIX= " \
+            -X github.com/ffuf/ffuf/v2/pkg/ffuf.VERSION_APPENDIX= " \
         -o $pkgname
 }
 
