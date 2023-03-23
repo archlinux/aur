@@ -1,7 +1,7 @@
 pkgbase = kotatogram-desktop-beta
 	pkgdesc = Kotatogram – experimental Telegram Desktop fork - Beta version
 	pkgver = 1.4.9
-	pkgrel = 4
+	pkgrel = 5
 	url = https://kotatogram.github.io
 	arch = x86_64
 	license = GPL3

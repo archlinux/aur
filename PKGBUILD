@@ -6,7 +6,7 @@
 pkgname=kotatogram-desktop-beta
 _pkgname=kotatogram-desktop
 pkgver=1.4.9
-pkgrel=4
+pkgrel=5
 pkgdesc='Kotatogram – experimental Telegram Desktop fork - Beta version'
 arch=('x86_64')
 url="https://kotatogram.github.io"
