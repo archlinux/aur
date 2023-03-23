@@ -2,8 +2,8 @@
 # Based on testing/linux by Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-drm-next-git
-pkgver=6.2.r1156403.a48bba98380c
-pkgrel=2
+pkgver=6.3.r1170167.d36d68fd1925
+pkgrel=1
 pkgdesc='Linux kernel with bleeding-edge GPU drivers'
 _product="${pkgbase%-git}"
 _branch="${_product#linux-}"
@@ -12,7 +12,7 @@ url='https://cgit.freedesktop.org/drm/drm'
 license=(GPL2)
 makedepends=(
   bc libelf pahole cpio perl tar xz gettext
-  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
+  xmlto python-sphinx graphviz imagemagick texlive-latexextra
   git
 )
 options=('!strip')
@@ -22,10 +22,11 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            'f35bb39db7324a45e78e6c75c1a60f117fea3f7d0df9f4a32bed411751d6ffea')
+            'aa354003751aeeadba82211ab9e4da0ef672cb6838a64cc5d5d1a47292583a69')
 
 pkgver() {
   cd $_srcname
+
   local version="$(grep \^VERSION Makefile|cut -d"=" -f2|cut -d" " -f2)"
   local patch="$(grep \^PATCHLEVEL Makefile|cut -d"=" -f2|cut -d" " -f2)"
 
@@ -40,7 +41,7 @@ prepare() {
   cd $_srcname
 
   echo "Setting version..."
-  scripts/setlocalversion --save-scmversion
+  # KERNELVERSION="${pkgver}" scripts/setlocalversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
 
