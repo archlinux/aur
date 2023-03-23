@@ -23,7 +23,7 @@ checkdepends=("python-psutil")
 #source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/llvm-project-${pkgver}.src.tar.xz")
 source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${_pkgver_dash_suffix}/llvm-project-${_pkgver_suffix}.src.tar.xz")
 
-sha512sums=('SKIP')
+sha512sums=('3f040abc1b03205693824aeff2ee6efb0cff25fe04bd5265141c093f294655a1f3fcda73cab9c57cbed7523c8f186a7e2484afce0792c55e90e3fb80450fabb7')
 
 prefix_path="/opt/clang"
 install_path="${prefix_path}/${pkgver}"
