@@ -1,0 +1,24 @@
+pkgbase = zulu-20-bin
+	pkgdesc = Azul Zulu builds of OpenJDK are open source, TCK-tested and certified builds of OpenJDK.
+	pkgver = 20.0.0
+	pkgrel = 1
+	url = https://www.azul.com/downloads/
+	install = zulu-20-bin.install
+	arch = aarch64
+	arch = x86_64
+	license = custom
+	depends = java-environment-common>=3
+	depends = java-runtime-common>=3
+	depends = ca-certificates-utils
+	provides = java-environment=20
+	provides = java-environment-openjdk=20
+	provides = java-runtime-headless=20
+	provides = java-runtime-headless-openjdk=20
+	provides = java-runtime=20
+	provides = java-runtime-openjdk=20
+	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu20.28.85-ca-jdk20.0.0-linux_aarch64.tar.gz
+	sha256sums_aarch64 = 47CE58EAD9A05D5D53B96706FF6FA0EB2E46755EE67E2B416925E28F5B55038A
+	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu20.28.85-ca-jdk20.0.0-linux_x64.tar.gz
+	sha256sums_x86_64 = 0386418DB7F23AE677D05045D30224094FC13423593CE9CD087D455069893BAC
+
+pkgname = zulu-20-bin
