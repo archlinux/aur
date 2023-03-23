@@ -1,0 +1,34 @@
+From c3c2de748e155f496a6dc3fc7bdb2fabd698e7d0 Mon Sep 17 00:00:00 2001
+From: Shohei Maruyama <cheat.sc.linux@outlook.com>
+Date: Fri, 24 Mar 2023 03:00:41 +0900
+Subject: [PATCH] cli: internal: ffi: Fix missing library
+
+go-turbo requires libgit2 at linkage as follows:
+
+  /usr/bin/ld: /home/shohei/pkgbuilds/turbo/src/turbo-1.8.5/cli/internal/ffi/libturborepo_ffi_linux_amd64.a(git2-c77affaa1e7e43cb.git2.dccd2a89-cgu.13.rcgu.o): in function `git2::remote_callbacks::credentials_cb::{closure#0}::{closure#2}':
+  /home/shohei/.cargo/registry/src/index.crates.io-6f17d22bba15001f/git2-0.16.1/src/remote_callbacks.rs:293: undefined reference to `git_error_set_str'
+  ...snip...
+
+Signed-off-by: Shohei Maruyama <cheat.sc.linux@outlook.com>
+---
+ cli/internal/ffi/ffi.go | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/cli/internal/ffi/ffi.go b/cli/internal/ffi/ffi.go
+index 499e2c04e..10b6698ac 100644
+--- a/cli/internal/ffi/ffi.go
++++ b/cli/internal/ffi/ffi.go
+@@ -11,8 +11,8 @@ package ffi
+ // #cgo darwin,amd64 LDFLAGS:  -L${SRCDIR} -lturborepo_ffi_darwin_amd64  -lz -liconv
+ // #cgo linux,arm64,staticbinary LDFLAGS:   -L${SRCDIR} -lturborepo_ffi_linux_arm64 -lunwind
+ // #cgo linux,amd64,staticbinary LDFLAGS:   -L${SRCDIR} -lturborepo_ffi_linux_amd64 -lunwind
+-// #cgo linux,arm64,!staticbinary LDFLAGS:   -L${SRCDIR} -lturborepo_ffi_linux_arm64 -lz
+-// #cgo linux,amd64,!staticbinary LDFLAGS:   -L${SRCDIR} -lturborepo_ffi_linux_amd64 -lz
++// #cgo linux,arm64,!staticbinary LDFLAGS:   -L${SRCDIR} -lturborepo_ffi_linux_arm64 -lz -lgit2
++// #cgo linux,amd64,!staticbinary LDFLAGS:   -L${SRCDIR} -lturborepo_ffi_linux_amd64 -lz -lgit2
+ // #cgo windows,amd64 LDFLAGS: -L${SRCDIR} -lturborepo_ffi_windows_amd64 -lole32 -lbcrypt -lws2_32 -luserenv
+ import "C"
+ 
+-- 
+2.40.0
+
