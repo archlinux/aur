@@ -1,4 +1,5 @@
-# Maintainer: jonathanh
+# Maintainer: Christian Heusel <christian (at) heusel (dot) eu>
+# Contributor: jonathanh
 # Contributor: dszryan
 # Contributor: Bryce Beagle <first dot last at gmail dot com>
 # Contributor: Giampaolo Mancini <mancho at trmpln dot com>
@@ -8,39 +9,37 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=rider-eap
-eapver=2022.3
-eaprelease=6
-pkgver=223.7255.82
-_dlver="${eapver}-EAP${eaprelease}-${pkgver}.Checked"
+pkgver=231.8109.136
 pkgrel=1
+_eapver=2023.1
+_eaprelease=9
 epoch=1
 pkgdesc="A cross-platform .NET IDE by JetBrains."
 arch=('any')
-options=('!strip' 'staticlibs')
+options=('!strip')
 url="https://www.jetbrains.com/rider/eap/"
 license=("custom")
 optdepends=('mono: .NET runtime' 'msbuild: build .NET Core projects')
-provides=("rider-eap")
+provides=("rider")
+conflicts=("rider")
 groups=("development" "IDE" "editor" "jetbrains")
 
-source=("https://download.jetbrains.com/rider/JetBrains.Rider-${_dlver}.tar.gz"
+source=("https://download-cdn.jetbrains.com/rider/JetBrains.Rider-${_eapver}-EAP${_eaprelease}-${pkgver}.Checked.tar.gz"
         "${pkgname}.desktop"
         "ResharperHost-runtime-folder.sh")
-sha256sums=('1b6b0e6ed9095171217baee2378a5eec8d4c3681a8f3841c3f29278ee5b789be'
+sha256sums=('11d0213f6cf1d6f6e8415057a7b32fdef86289866e1e2ee9863caa672b165a9e'
             'ada362803d6d2b5ff84680277694d0ecdcb97d46f85d140f79850500966f1ecf'
             '4bc086ff245cf18c5fd2351008b05a0d0e792e8af0394fb094a9118c312c373d')
 
 package() {
     cd "${srcdir}"
-    install -dm 755 \
-        "${pkgdir}/usr/share/${pkgname}" \
-        "${pkgdir}/usr/bin/" \
-        "${pkgdir}/usr/share/applications/" \
-        "${pkgdir}/usr/share/licenses/${pkgname}/"
+    # create the target folders
+    install -dm 755 "${pkgdir}/usr/share/licenses/${pkgname}" "${pkgdir}/usr/bin/" "${pkgdir}/opt/"
 
-    cp -R --no-preserve=ownership "${srcdir}/JetBrains Rider-${pkgver}/"* "${pkgdir}/usr/share/${pkgname}"
-    cp -R --no-preserve=ownership "${srcdir}/JetBrains Rider-${pkgver}/license/"* "${pkgdir}/usr/share/licenses/${pkgname}"
+    # install the package content
+    cp -rdp --no-preserve=ownership "${srcdir}/JetBrains Rider-${pkgver}/" "${pkgdir}/opt/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/rider.desktop"
 
-    install -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
-    ln -s "/usr/share/${pkgname}/bin/rider.sh" "${pkgdir}/usr/bin/rider-eap"
+    ln -s "/opt/${pkgname}/bin/rider.sh" "${pkgdir}/usr/bin/rider"
+    ln -s "/opt/${pkgname}/license" "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
