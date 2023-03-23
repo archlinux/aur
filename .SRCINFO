@@ -1,7 +1,7 @@
 pkgbase = stan-desktop
 	pkgdesc = Unnofficial Stan desktop application
 	pkgver = 1.0.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.com/Stan-desktop/application
 	arch = x86_64
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = stan-desktop
 	depends = libxss
 	depends = git
 	conflicts = Stan-bin
-	source = https://gitlab.com/Stan-desktop/application/-/archive/1.0.2-3/application-1.0.2-3.tar.bz2
+	source = https://gitlab.com/Stan-desktop/application/-/archive/1.0.2-4/application-1.0.2-4.tar.bz2
 	sha256sums = SKIP
 
 pkgname = stan-desktop
