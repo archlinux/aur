@@ -13,7 +13,9 @@ depends=('alsa-lib' 'libnotify' 'opus' 'openssl')
 optdepends=('bash: for tab completions'
             'fish: for tab completions'
             'zsh: for tab completions')
-makedepends=('git' 'rust')
+makedepends=('git' 'cargo')
+conflicts=('mum')
+provides=('mum')
 source=("git+$url")
 
 pkgver() {
@@ -23,7 +25,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${pkgname%-git}"
-    RUSTFLAGS="--remap-path-prefix=$(pwd)=" cargo build --locked --release --target-dir=target
+    RUSTFLAGS="--remap-path-prefix=$(pwd)=" cargo +stable build --locked --release --target-dir=target
 
     ./target/release/mumctl completions bash > mumctl.bash
     ./target/release/mumctl completions fish > mumctl.fish
@@ -32,7 +34,7 @@ build() {
 
 check() {
     cd "${srcdir}/${pkgname%-git}"
-    RUSTFLAGS="--remap-path-prefix=$(pwd)=" cargo test --locked --release --target-dir=target
+    RUSTFLAGS="--remap-path-prefix=$(pwd)=" cargo +stable test --locked --release --target-dir=target
 }
 
 package() {
@@ -48,5 +50,5 @@ package() {
 
     install -Dm 755 target/release/mumctl "${pkgdir}/usr/bin/mumctl"
     install -Dm 755 target/release/mumd "${pkgdir}/usr/bin/mumd"
-    install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

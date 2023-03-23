@@ -6,7 +6,7 @@ pkgbase = mum-git
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = rust
+	makedepends = cargo
 	depends = alsa-lib
 	depends = libnotify
 	depends = opus
@@ -14,6 +14,8 @@ pkgbase = mum-git
 	optdepends = bash: for tab completions
 	optdepends = fish: for tab completions
 	optdepends = zsh: for tab completions
+	provides = mum
+	conflicts = mum
 	source = git+https://github.com/mum-rs/mum.git
 	sha256sums = SKIP
 
