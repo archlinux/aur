@@ -1,11 +1,12 @@
 # Maintainer: @RubenKelevra <cyrond@gmail.com>
 
 pkgname='python-dirhash'
-_module='dirhash'
+_module=${pkgname#python-}
 pkgver='0.2.1'
-pkgrel=1
+pkgrel=2
 pkgdesc="Python module and CLI for hashing of file system directories."
 url="https://github.com/andhus/dirhash-python"
+makedepends=('python-setuptools')
 depends=('python')
 license=('MIT')
 arch=('any')
