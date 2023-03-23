@@ -1,0 +1,17 @@
+pkgbase = xplist-appimage
+	pkgdesc = Cross-platform Plist Editor
+	pkgver = 1.2.47
+	pkgrel = 1
+	url = https://github.com/ic005k/Xplist
+	arch = x86_64
+	license = MIT
+	depends = hicolor-icon-theme
+	depends = zlib
+	depends = glibc
+	options = !strip
+	source = xplist-1.2.47.AppImage::https://github.com/ic005k/Xplist/releases/download/1.2.47/Xplist-Linux-x86_64.AppImage
+	source = LICENSE::https://github.com/ic005k/Xplist/raw/main/LICENSE
+	sha256sums = 9319fd1f4ccda8abe34ab18390f3cd81d69c442c5030f7583e59c8bc4c1395eb
+	sha256sums = bd3712bc99be8022441e1b3f3d473848abef0b814ae1cb1b2d65abbe3ed6a71f
+
+pkgname = xplist-appimage
