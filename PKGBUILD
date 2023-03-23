@@ -3,17 +3,17 @@
 # Contributor: aksr <aksr at t-com dot me>
 
 pkgname=pyradio
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Internet radio player for the command line"
 arch=('any')
 url="https://github.com/coderholic/pyradio"
 license=('MIT')
-depends=('python-dnspython' 'python-requests' 'python-psutil' 'python-netifaces')
+depends=('python-dnspython' 'python-requests' 'python-psutil' 'python-netifaces' 'python-rich')
 optdepends=('mplayer: as backend' 'mpv: as backend' 'vlc: as backend')
 makedepends=('python-pip' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/coderholic/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('0510eabdc5473b90821b38c142cf4dfa8229cb3c52d534fbfc625a0515f6f1e3')
+sha256sums=('aa2fbbdff2a0239d9b62880b091f595c59bde182ac9555bfec046a3fe8762bdd')
 
 prepare() {
   cd $pkgname-$pkgver
