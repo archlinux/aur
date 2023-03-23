@@ -2,12 +2,11 @@
 pkgname="an-anime-game-launcher-git"
 _pkgname="${pkgname%-git}"
 pkgver=3.2.1.r7.g711cc82
-pkgrel=1
+pkgrel=2
 pkgdesc="A Launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 arch=("x86_64")
 url="https://github.com/an-anime-team/an-anime-game-launcher"
 license=("GPL3")
-groups=()
 depends=(
   cabextract
   curl
@@ -21,19 +20,11 @@ depends=(
   xdelta3
 )
 makedepends=(rust)
-checkdepends=()
 optdepends=(
   "mangohud: FPS Hud/GUI"
   "gamemode: Game Optimizations"
   "gamescope: a tool from Valve that allows for games to run in an isolated Xwayland instance"
 )
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=(
   "git+https://github.com/an-anime-team/an-anime-game-launcher"
   "${_pkgname}.desktop"
