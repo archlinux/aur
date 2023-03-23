@@ -1,0 +1,23 @@
+pkgbase = aria2-unlimited
+	pkgdesc = Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink
+	pkgver = 1.36.0
+	pkgrel = 1
+	url = http://aria2.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	checkdepends = cppunit
+	depends = gnutls
+	depends = libxml2
+	depends = sqlite
+	depends = c-ares
+	depends = ca-certificates
+	depends = libssh2
+	provides = aria2
+	conflicts = aria2
+	options = strip
+	source = https://github.com/aria2/aria2/releases/download/release-1.36.0/aria2-1.36.0.tar.xz
+	source = unlimited-max-connection.patch
+	sha512sums = 8203dbb75274455a78c50dd4f894e631de6931ac889f26896dceed78ec38c98cdbcf07e164744f308f2bfffeae1016beec1bfdbe8cad7f3280d11376aa0c2542
+	sha512sums = a4c418b4a43203703e4f63357f64e31cd13c79d5f156cd87eb1e62fbf4e8578873d12dfdd5fd28fda517cce4a69af3c78e5b6cb0766f55891d885ad0ecb5dea3
+
+pkgname = aria2-unlimited
