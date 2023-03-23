@@ -18,7 +18,7 @@ pkgbase = nordvpn-bin
 	sha256sums_i686 = cf3c747a238a2fb340e0a4aa0ca820bd822b83d31fb2f8eac742e208e7bf5b2d
 	source_armv7h = https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_3.16.0_armhf.deb
 	sha256sums_armv7h = a9d40844114b93b25b43230464eea59bf8833be2fbee94c9ec060972dbd5cb5c
-	source_aarch64 = https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_3.16.0_amd64.deb
+	source_aarch64 = https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_3.16.0_arm64.deb
 	sha256sums_aarch64 = 6fa4a80b3c835efa7e03da4a1846ea9c9f4eb53dbc1ef45f2789c370f8244c2b
 
 pkgname = nordvpn-bin
