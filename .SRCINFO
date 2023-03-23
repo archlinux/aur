@@ -1,6 +1,6 @@
 pkgbase = cloud-sql-proxy-bin
 	pkgdesc = Google Cloud SQL Auth proxy
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/GoogleCloudPlatform/cloudsql-proxy
 	install = cloud-sql-proxy-bin.install
@@ -8,12 +8,12 @@ pkgbase = cloud-sql-proxy-bin
 	arch = x86_64
 	arch = aarch64
 	license = Apache
-	provides = cloud-sql-proxy=2.1.1
-	source_i686 = cloud-sql-proxy-2.1.1-i686::https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v2.1.1/cloud-sql-proxy.linux.386
-	sha256sums_i686 = dd89b6141bf9a2f688b4c37c939e0b9a16a5dce5968ee737a3099fe1b3b5d00c
-	source_x86_64 = cloud-sql-proxy-2.1.1-x86_64::https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v2.1.1/cloud-sql-proxy.linux.amd64
-	sha256sums_x86_64 = 60ae4f1e4d45e990bdca12b2fb36767508b6c4da7c59d1510ebbb400f6c8ada5
-	source_aarch64 = cloud-sql-proxy-2.1.1-aarch64::https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v2.1.1/cloud-sql-proxy.linux.arm64
-	sha256sums_aarch64 = a6b6b14b165903935a9f6e98a63739c15b54ae60b5b9abc09a23be90ca4b4e99
+	provides = cloud-sql-proxy=2.1.2
+	source_i686 = cloud-sql-proxy-2.1.2-i686::https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v2.1.2/cloud-sql-proxy.linux.386
+	sha256sums_i686 = 4493a797de03b4434b8553986d3bc81e917477aa3ea45ee02f1a0b6cd8e35d4b
+	source_x86_64 = cloud-sql-proxy-2.1.2-x86_64::https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v2.1.2/cloud-sql-proxy.linux.amd64
+	sha256sums_x86_64 = 7f6e0e75de223a2a0c843f261098b74190108acfa7f69eaf7bee703fd7ffba57
+	source_aarch64 = cloud-sql-proxy-2.1.2-aarch64::https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v2.1.2/cloud-sql-proxy.linux.arm64
+	sha256sums_aarch64 = a8e5963a0cd97f997bea898cb05cb2075add2a44879a4c92d8523a79f951e4ab
 
 pkgname = cloud-sql-proxy-bin
