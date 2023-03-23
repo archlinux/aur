@@ -1,7 +1,7 @@
-From 5d03cddd1c0d8eb7acef44ff7272176d33e6be51 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Thomas Deutschmann <whissi@gentoo.org>
 Date: Mon, 6 Apr 2020 19:34:44 +0200
-Subject: [PATCH 05/34] bmo#847568: Support system graphite2
+Subject: [PATCH] Bug 847568 -  Support system graphite2
 
 Allow building against system-wide graphite2.
 
@@ -20,10 +20,10 @@ Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
  create mode 100644 gfx/graphite2/geckoextra/moz.build
 
 diff --git a/config/system-headers.mozbuild b/config/system-headers.mozbuild
-index 7178ada497..4e3aef0f24 100644
+index 4886a4ef96ef739ee795e0309b7783c3f33856fd..004f941135a7d1045a697182b269063f2b38ff70 100644
 --- a/config/system-headers.mozbuild
 +++ b/config/system-headers.mozbuild
-@@ -1243,6 +1243,12 @@ if CONFIG['MOZ_SYSTEM_HARFBUZZ']:
+@@ -1244,6 +1244,12 @@ if CONFIG['MOZ_SYSTEM_HARFBUZZ']:
  	'harfbuzz/hb.h',
      ]
  
@@ -38,7 +38,7 @@ index 7178ada497..4e3aef0f24 100644
          'jack/jack.h',
 diff --git a/gfx/graphite2/geckoextra/moz.build b/gfx/graphite2/geckoextra/moz.build
 new file mode 100644
-index 0000000000..24e8d7a032
+index 0000000000000000000000000000000000000000..24e8d7a03274aa43ddbd64b4e740a476244b0bf0
 --- /dev/null
 +++ b/gfx/graphite2/geckoextra/moz.build
 @@ -0,0 +1,21 @@
@@ -64,7 +64,7 @@ index 0000000000..24e8d7a032
 +
 +FINAL_LIBRARY = 'gkmedias'
 diff --git a/gfx/graphite2/moz-gr-update.sh b/gfx/graphite2/moz-gr-update.sh
-index b91d9c161c..a97e6eb203 100755
+index b91d9c161cc71e89024dad9fd87e358a147d3593..a97e6eb20322f952bd504b51faf92dc72735e943 100755
 --- a/gfx/graphite2/moz-gr-update.sh
 +++ b/gfx/graphite2/moz-gr-update.sh
 @@ -1,6 +1,7 @@
@@ -94,7 +94,7 @@ index b91d9c161c..a97e6eb203 100755
  echo
  echo If gfx/graphite2/src/files.mk has changed, please make corresponding
 diff --git a/gfx/moz.build b/gfx/moz.build
-index 8222b72333..16a2b401db 100644
+index 4c88ac6ad8cd53d7fcf89722b44ea17c88dd3242..f77097768a99a49c0aba9dbe96e67aca8e2beda5 100644
 --- a/gfx/moz.build
 +++ b/gfx/moz.build
 @@ -10,6 +10,11 @@ with Files("**"):
@@ -118,10 +118,10 @@ index 8222b72333..16a2b401db 100644
      "thebes",
      "ipc",
 diff --git a/gfx/thebes/moz.build b/gfx/thebes/moz.build
-index 4bb25233e7..a2dd99ceb4 100644
+index 34ac0598acb48e21f866eedff83a22b5f7b244f1..a2f8bed555d8c95ad9d3b8d460d65e8f91876510 100644
 --- a/gfx/thebes/moz.build
 +++ b/gfx/thebes/moz.build
-@@ -285,7 +285,10 @@ if CONFIG["MOZ_WAYLAND"]:
+@@ -292,7 +292,10 @@ if CONFIG["MOZ_WAYLAND"]:
  
  LOCAL_INCLUDES += CONFIG["SKIA_INCLUDES"]
  
@@ -134,12 +134,12 @@ index 4bb25233e7..a2dd99ceb4 100644
  if CONFIG["MOZ_SYSTEM_HARFBUZZ"]:
      CXXFLAGS += CONFIG["MOZ_HARFBUZZ_CFLAGS"]
 diff --git a/old-configure.in b/old-configure.in
-index 1707e98471..95098e4638 100644
+index 4050cd65514b38e561751f7010d45438d2e7d5e4..aceb744de1de9044ee380528c053d958e1b037ca 100644
 --- a/old-configure.in
 +++ b/old-configure.in
-@@ -2204,6 +2204,27 @@ if test "$USE_FC_FREETYPE"; then
-     fi
- fi
+@@ -1185,6 +1185,27 @@ fi
+ AC_DEFINE_UNQUOTED(MOZ_MACBUNDLE_ID,$MOZ_MACBUNDLE_ID)
+ AC_SUBST(MOZ_MACBUNDLE_ID)
  
 +dnl ========================================================
 +dnl Check for graphite2
@@ -163,13 +163,13 @@ index 1707e98471..95098e4638 100644
 +fi
 +
  dnl ========================================================
- dnl Check if we need the 32-bit Linux SSE2 error dialog
+ dnl = Child Process Name for IPC
  dnl ========================================================
 diff --git a/toolkit/library/moz.build b/toolkit/library/moz.build
-index dd6901ba9a..be73ac4bee 100644
+index a6c079d252d153041db3ee13d0f1031e4c795d70..32c8208306be5fc2302686e681ef576e30326241 100644
 --- a/toolkit/library/moz.build
 +++ b/toolkit/library/moz.build
-@@ -260,6 +260,9 @@ if CONFIG["MOZ_ANDROID_GOOGLE_VR"]:
+@@ -291,6 +291,9 @@ if CONFIG["MOZ_ANDROID_GOOGLE_VR"]:
          "-lgvr",
      ]
  
@@ -180,11 +180,11 @@ index dd6901ba9a..be73ac4bee 100644
      OS_LIBS += CONFIG["MOZ_HARFBUZZ_LIBS"]
  
 diff --git a/toolkit/moz.configure b/toolkit/moz.configure
-index fb1c48abc3..d98e748bb9 100644
+index 98cc8c2fb173ba3b5b70beafce37c11a037ca1a1..e2e0bc4063d460fd4a21bde7278bc26845a048ed 100644
 --- a/toolkit/moz.configure
 +++ b/toolkit/moz.configure
-@@ -460,6 +460,19 @@ add_old_configure_assignment(
- )
+@@ -629,6 +629,19 @@ def freetype2_combined_info(fontconfig_info, freetype2_info):
+ 
  set_define("MOZ_HAVE_FREETYPE2", depends_if(freetype2_info)(lambda _: True))
  
 +# Graphite2
@@ -203,6 +203,3 @@ index fb1c48abc3..d98e748bb9 100644
  # HarfBuzz
  # ==============================================================
  option('--with-system-harfbuzz', help="Use system harfbuzz (located with pkgconfig)")
--- 
-2.33.1
-

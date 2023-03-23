@@ -1,7 +1,33 @@
-diff -r 8753b16d88a2 browser/installer/package-manifest.in
---- a/browser/installer/package-manifest.in	Sat Mar 05 00:24:48 2022 +0000
-+++ b/browser/installer/package-manifest.in	Sun Mar 06 15:04:56 2022 +0200
-@@ -139,9 +139,11 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bj=C3=B6rn=20Bidar?= <bjorn.bidar@jolla.com>
+Date: Mon, 6 Mar 2023 05:17:15 +0200
+Subject: [PATCH] Bug 1611386 - Reenable support for --enable-system-sqlite
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Revert "Bug 1611386 - Drop support for --enable-system-sqlite. r=asuth,glandium"
+
+This reverts commit b5b6473a6d6d59e1361e529db9b8b6e1f7448f29.
+
+Signed-off-by: Björn Bidar <bjorn.bidar@jolla.com>
+---
+ browser/installer/package-manifest.in  |  2 ++
+ config/external/sqlite/moz.build       | 22 +++++++++------
+ storage/SQLiteMutex.h                  |  6 ++--
+ storage/moz.build                      |  6 ++++
+ storage/mozStorageConnection.cpp       |  4 +++
+ storage/mozStorageService.cpp          | 39 ++++++++++++++++++++++++++
+ third_party/sqlite3/src/moz.build      |  2 ++
+ third_party/sqlite3/src/sqlite.symbols |  1 +
+ toolkit/moz.configure                  | 14 +++++++++
+ 9 files changed, 84 insertions(+), 12 deletions(-)
+
+diff --git a/browser/installer/package-manifest.in b/browser/installer/package-manifest.in
+index 9229a0bd0e041815331aaf2973afda22c007423d..42e26fafdf7e90a5fbda3d798d1e1d807a5b4a69 100644
+--- a/browser/installer/package-manifest.in
++++ b/browser/installer/package-manifest.in
+@@ -143,9 +143,11 @@
  @RESPATH@/update-settings.ini
  #endif
  @RESPATH@/platform.ini
@@ -13,69 +39,44 @@ diff -r 8753b16d88a2 browser/installer/package-manifest.in
  @BINPATH@/@DLL_PREFIX@lgpllibs@DLL_SUFFIX@
  #ifdef MOZ_FFVPX
  @BINPATH@/@DLL_PREFIX@mozavutil@DLL_SUFFIX@
-diff -r 8753b16d88a2 config/external/sqlite/moz.build
---- a/config/external/sqlite/moz.build	Sat Mar 05 00:24:48 2022 +0000
-+++ b/config/external/sqlite/moz.build	Sun Mar 06 15:04:56 2022 +0200
-@@ -4,15 +4,18 @@
+diff --git a/config/external/sqlite/moz.build b/config/external/sqlite/moz.build
+index 6294924c564ae8c2ebc0033895be91069179fcd2..b978fd9caba375242de1be25072b251461010044 100644
+--- a/config/external/sqlite/moz.build
++++ b/config/external/sqlite/moz.build
+@@ -4,15 +4,19 @@
  # License, v. 2.0. If a copy of the MPL was not distributed with this
  # file, You can obtain one at http://mozilla.org/MPL/2.0/.
  
 -DIRS += ["../../../third_party/sqlite3/src"]
 -if CONFIG["MOZ_FOLD_LIBS"]:
--    Library("sqlite")
++if CONFIG["MOZ_SYSTEM_SQLITE"]:
+     Library("sqlite")
 -    # When folding libraries, sqlite is actually in the nss library.
 -    USE_LIBS += [
 -        "nss",
 -    ]
-+if CONFIG['MOZ_SYSTEM_SQLITE']:
-+    Library('sqlite')
-+    OS_LIBS += CONFIG['SQLITE_LIBS']
++    OS_LIBS += CONFIG["SQLITE_LIBS"]
  else:
 -    SharedLibrary("sqlite")
 -    SHARED_LIBRARY_NAME = "mozsqlite3"
--
--    SYMBOLS_FILE = "/third_party/sqlite3/src/sqlite.symbols"
-+    if CONFIG['MOZ_FOLD_LIBS']:
-+        Library('sqlite')
++    DIRS += ["../../../third_party/sqlite3/src"]
++    if CONFIG["MOZ_FOLD_LIBS"]:
++        Library("sqlite")
 +        # When folding libraries, sqlite is actually in the nss library.
 +        USE_LIBS += [
-+            'nss',
++            "nss",
 +        ]
 +    else:
-+        SharedLibrary('sqlite')
-+        SHARED_LIBRARY_NAME = 'mozsqlite3'
-+        SYMBOLS_FILE = '/third_party/sqlite3/src/sqlite.symbols'
-+
-
-diff -r 0f0ba6e8029d toolkit/moz.configure
---- a/toolkit/moz.configure     Sat Feb 05 20:57:50 2022 +0000
-+++ b/toolkit/moz.configure     Sun Mar 06 17:23:39 2022 +0200
-@@ -237,6 +237,21 @@
- set_config("MOZ_AUDIOUNIT_RUST", True, when=enable_audiounit_rust)
- set_define("MOZ_AUDIOUNIT_RUST", True, when=enable_audiounit_rust)
++        SharedLibrary("sqlite")
++        SHARED_LIBRARY_NAME = "mozsqlite3"
  
-+
-+# SQLite
-+# ==============================================================
-+option('--with-system-sqlite', help="Use system sqlite (located with pkgconfig")
-+
-+@depends('--with-system-sqlite')
-+def check_for_sqlite(value):
-+    return bool(value)
-+
-+system_sqlite = pkg_check_modules('SQLITE', 'sqlite3',
-+                                     when=check_for_sqlite)
-+
-+set_config('MOZ_SYSTEM_SQLITE', depends_if(system_sqlite)(lambda _: True))
-+set_define('MOZ_SYSTEM_SQLITE', depends_if(system_sqlite)(lambda _: True))
-+
- # Javascript engine
- # ==============================================================
- include("../js/moz.configure")
-diff -r 8753b16d88a2 storage/SQLiteMutex.h
---- a/storage/SQLiteMutex.h	Sat Mar 05 00:24:48 2022 +0000
-+++ b/storage/SQLiteMutex.h	Sun Mar 06 15:04:56 2022 +0200
-@@ -56,7 +56,7 @@
+-    SYMBOLS_FILE = "/third_party/sqlite3/src/sqlite.symbols"
++        SYMBOLS_FILE = "/third_party/sqlite3/src/sqlite.symbols"
+diff --git a/storage/SQLiteMutex.h b/storage/SQLiteMutex.h
+index b7198b1912fdc8d1182a445421aec3450474c23d..3ecc0bb997cf376e996bff2d9c184ecffc78b4be 100644
+--- a/storage/SQLiteMutex.h
++++ b/storage/SQLiteMutex.h
+@@ -56,7 +56,7 @@ class SQLiteMutex : private BlockingResourceBase {
     */
    void lock() {
      MOZ_ASSERT(mMutex, "No mutex associated with this wrapper!");
@@ -84,7 +85,7 @@ diff -r 8753b16d88a2 storage/SQLiteMutex.h
      // While SQLite Mutexes may be recursive, in our own code we do not want to
      // treat them as such.
      CheckAcquire();
-@@ -64,7 +64,7 @@
+@@ -64,7 +64,7 @@ class SQLiteMutex : private BlockingResourceBase {
  
      ::sqlite3_mutex_enter(mMutex);
  
@@ -93,7 +94,7 @@ diff -r 8753b16d88a2 storage/SQLiteMutex.h
      Acquire();  // Call is protected by us holding the mutex.
  #endif
    }
-@@ -74,7 +74,7 @@
+@@ -74,7 +74,7 @@ class SQLiteMutex : private BlockingResourceBase {
     */
    void unlock() {
      MOZ_ASSERT(mMutex, "No mutex associated with this wrapper!");
@@ -102,10 +103,11 @@ diff -r 8753b16d88a2 storage/SQLiteMutex.h
      // While SQLite Mutexes may be recursive, in our own code we do not want to
      // treat them as such.
      Release();  // Call is protected by us holding the mutex.
-diff -r 8753b16d88a2 storage/moz.build
---- a/storage/moz.build	Sat Mar 05 00:24:48 2022 +0000
-+++ b/storage/moz.build	Sun Mar 06 15:04:56 2022 +0200
-@@ -99,6 +99,12 @@
+diff --git a/storage/moz.build b/storage/moz.build
+index 3d8b15e9c7f3f67bc61ffc72db5f28fe2f44ba06..7cbecf3314b61179db355f80c5cc3d9de75eb4ab 100644
+--- a/storage/moz.build
++++ b/storage/moz.build
+@@ -100,6 +100,12 @@ if CONFIG["MOZ_THUNDERBIRD"] or CONFIG["MOZ_SUITE"]:
  # will need to change it here as well.
  DEFINES["SQLITE_MAX_LIKE_PATTERN_LENGTH"] = 50000
  
@@ -118,10 +120,11 @@ diff -r 8753b16d88a2 storage/moz.build
  LOCAL_INCLUDES += [
      "/dom/base",
      "/third_party/sqlite3/src",
-diff -r 8753b16d88a2 storage/mozStorageConnection.cpp
---- a/storage/mozStorageConnection.cpp	Sat Mar 05 00:24:48 2022 +0000
-+++ b/storage/mozStorageConnection.cpp	Sun Mar 06 15:04:56 2022 +0200
-@@ -877,6 +877,10 @@
+diff --git a/storage/mozStorageConnection.cpp b/storage/mozStorageConnection.cpp
+index 0f0d76839114d22eef341190b982ad4f386909ae..bce31015580acd68ba90ea1d5efef1bb18a40d6b 100644
+--- a/storage/mozStorageConnection.cpp
++++ b/storage/mozStorageConnection.cpp
+@@ -869,6 +869,10 @@ nsresult Connection::initializeInternal() {
      return convertResultCode(srv);
    }
  
@@ -132,9 +135,10 @@ diff -r 8753b16d88a2 storage/mozStorageConnection.cpp
    // Register our built-in SQL functions.
    srv = registerFunctions(mDBConn);
    if (srv != SQLITE_OK) {
-diff -r 8753b16d88a2 storage/mozStorageService.cpp
---- a/storage/mozStorageService.cpp	Sat Mar 05 00:24:48 2022 +0000
-+++ b/storage/mozStorageService.cpp	Sun Mar 06 15:04:56 2022 +0200
+diff --git a/storage/mozStorageService.cpp b/storage/mozStorageService.cpp
+index 73cf85ff197d877d42a60f4c7606ac4ca43d3ab5..e1cc43d9c060517c8b385c15ba6dab8ffb61bd9c 100644
+--- a/storage/mozStorageService.cpp
++++ b/storage/mozStorageService.cpp
 @@ -35,6 +35,20 @@
  
  using mozilla::intl::Collator;
@@ -156,7 +160,7 @@ diff -r 8753b16d88a2 storage/mozStorageService.cpp
  namespace mozilla {
  namespace storage {
  
-@@ -167,6 +181,31 @@
+@@ -167,6 +181,31 @@ already_AddRefed<Service> Service::getSingleton() {
      return do_AddRef(gService);
    }
  
@@ -188,10 +192,11 @@ diff -r 8753b16d88a2 storage/mozStorageService.cpp
    // The first reference to the storage service must be obtained on the
    // main thread.
    NS_ENSURE_TRUE(NS_IsMainThread(), nullptr);
-diff -r 8753b16d88a2 third_party/sqlite3/src/moz.build
---- a/third_party/sqlite3/src/moz.build	Sat Mar 05 00:24:48 2022 +0000
-+++ b/third_party/sqlite3/src/moz.build	Sun Mar 06 15:04:56 2022 +0200
-@@ -79,6 +79,7 @@
+diff --git a/third_party/sqlite3/src/moz.build b/third_party/sqlite3/src/moz.build
+index 0742b37700999fac57077eebaae21f1c94ea3990..6c03d19006088448e91b57af42d18e2236ecc208 100644
+--- a/third_party/sqlite3/src/moz.build
++++ b/third_party/sqlite3/src/moz.build
+@@ -79,6 +79,7 @@ DEFINES['SQLITE_OMIT_BUILTIN_TEST'] = True
  # Try to use a MEMORY temp store when possible. That allows for better
  # performance and doesn't suffer from a full separate tmp partition.
  # Exclude 32bit platforms due to address space fragmentation issues.
@@ -199,7 +204,7 @@ diff -r 8753b16d88a2 third_party/sqlite3/src/moz.build
  if CONFIG['OS_TARGET'] == 'Android':
      # On Android there's no tmp partition, so always use a MEMORY temp store.
      DEFINES['SQLITE_TEMP_STORE'] = 3
-@@ -88,6 +89,7 @@
+@@ -88,6 +89,7 @@ elif CONFIG['HAVE_64BIT_BUILD']:
  
  # Change the default temp files prefix, to easily distinguish files we created
  # vs files created by other Sqlite instances in the system.
@@ -207,10 +212,11 @@ diff -r 8753b16d88a2 third_party/sqlite3/src/moz.build
  DEFINES['SQLITE_TEMP_FILE_PREFIX'] = '"mz_etilqs_"'
  
  # Enabling sqlite math functions
-diff -r 8753b16d88a2 third_party/sqlite3/src/sqlite.symbols
---- a/third_party/sqlite3/src/sqlite.symbols	Sat Mar 05 00:24:48 2022 +0000
-+++ b/third_party/sqlite3/src/sqlite.symbols	Sun Mar 06 15:04:56 2022 +0200
-@@ -38,6 +38,7 @@
+diff --git a/third_party/sqlite3/src/sqlite.symbols b/third_party/sqlite3/src/sqlite.symbols
+index 4ee20bc0d53556e9713f49f9b70ee30b45a138f8..903d6b29f62528b6ecd762ef69fb5f206cc87fde 100644
+--- a/third_party/sqlite3/src/sqlite.symbols
++++ b/third_party/sqlite3/src/sqlite.symbols
+@@ -39,6 +39,7 @@ sqlite3_column_text16
  sqlite3_column_type
  sqlite3_column_value
  sqlite3_commit_hook
@@ -218,3 +224,28 @@ diff -r 8753b16d88a2 third_party/sqlite3/src/sqlite.symbols
  sqlite3_complete
  sqlite3_complete16
  sqlite3_config
+diff --git a/toolkit/moz.configure b/toolkit/moz.configure
+index e2e0bc4063d460fd4a21bde7278bc26845a048ed..be091370a786c902a736a2950c01a0c50bc30748 100644
+--- a/toolkit/moz.configure
++++ b/toolkit/moz.configure
+@@ -378,6 +378,20 @@ sndio = pkg_check_modules("MOZ_SNDIO", "sndio", when="--enable-sndio")
+ 
+ set_config("MOZ_SNDIO", depends_if(sndio)(lambda _: True))
+ 
++# SQLite
++# ==============================================================
++option('--with-system-sqlite', help="Use system sqlite (located with pkgconfig")
++
++@depends('--with-system-sqlite')
++def check_for_sqlite(value):
++    return bool(value)
++
++system_sqlite = pkg_check_modules('SQLITE', 'sqlite3',
++                                     when=check_for_sqlite)
++
++set_config('MOZ_SYSTEM_SQLITE', depends_if(system_sqlite)(lambda _: True))
++set_define('MOZ_SYSTEM_SQLITE', depends_if(system_sqlite)(lambda _: True))
++
+ # Javascript engine
+ # ==============================================================
+ include("../js/moz.configure")

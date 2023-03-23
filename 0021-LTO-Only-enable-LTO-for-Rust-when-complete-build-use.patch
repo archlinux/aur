@@ -1,8 +1,7 @@
-From 3e2964adcd0b04dd72a5c0a1d6ad8e1680e6a429 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Thomas Deutschmann <whissi@gentoo.org>
 Date: Sat, 29 Aug 2020 22:30:59 +0200
-Subject: [PATCH 27/34] LTO: Only enable LTO for Rust when complete build uses
- LTO
+Subject: [PATCH] LTO: Only enable LTO for Rust when complete build uses LTO
 
 Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
 ---
@@ -10,10 +9,10 @@ Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
  1 file changed, 2 insertions(+)
 
 diff --git a/config/makefiles/rust.mk b/config/makefiles/rust.mk
-index e5a6d57ba7..1d7d80ca3f 100644
+index 602ba4538829bf5e082f4c9601cae67541fd3905..f3db8cf699a4bfff443f92e1640d71d6fa5ecebf 100644
 --- a/config/makefiles/rust.mk
 +++ b/config/makefiles/rust.mk
-@@ -62,6 +62,7 @@ endif
+@@ -82,6 +82,7 @@ endif
  # These flags are passed via `cargo rustc` and only apply to the final rustc
  # invocation (i.e., only the top-level crate, not its dependencies).
  cargo_rustc_flags = $(CARGO_RUSTCFLAGS)
@@ -21,7 +20,7 @@ index e5a6d57ba7..1d7d80ca3f 100644
  ifndef DEVELOPER_OPTIONS
  ifndef MOZ_DEBUG_RUST
  # Enable link-time optimization for release builds, but not when linking
-@@ -75,6 +76,7 @@ RUSTFLAGS += -Cembed-bitcode=yes
+@@ -101,6 +102,7 @@ endif
  endif
  endif
  endif
@@ -29,6 +28,3 @@ index e5a6d57ba7..1d7d80ca3f 100644
  
  ifdef CARGO_INCREMENTAL
  export CARGO_INCREMENTAL
--- 
-2.33.1
-

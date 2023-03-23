@@ -1,0 +1,31 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "M. Sirringhaus" <msirringhaus@suse.de>
+Date: Tue, 22 Feb 2022 09:24:46 +0100
+Subject: [PATCH] imported patch svg-rendering.patch
+
+---
+ image/imgFrame.cpp | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/image/imgFrame.cpp b/image/imgFrame.cpp
+index 4ff6dcec197733d03e50eade0471834473bece7c..ed3e311f7a3e1b4d9e36b5cd39da1099845ce408 100644
+--- a/image/imgFrame.cpp
++++ b/image/imgFrame.cpp
+@@ -372,6 +372,17 @@ nsresult imgFrame::InitWithDrawable(gfxDrawable* aDrawable,
+     return NS_ERROR_OUT_OF_MEMORY;
+   }
+ 
++#if MOZ_BIG_ENDIAN()
++  if (aBackend == gfx::BackendType::SKIA && canUseDataSurface) {
++      // SKIA is lying about what format it returns on big endian
++      for (int ii=0; ii < mRawSurface->GetSize().Height()*mRawSurface->Stride() / 4; ++ii) {
++        uint32_t *vals = (uint32_t*)(mRawSurface->GetData());
++        uint32_t val = ((vals[ii] << 8) & 0xFF00FF00 ) | ((vals[ii] >> 8) & 0xFF00FF );
++        vals[ii] = (val << 16) | (val >> 16);
++      }
++  }
++#endif
++
+   if (!canUseDataSurface) {
+     // We used an offscreen surface, which is an "optimized" surface from
+     // imgFrame's perspective.

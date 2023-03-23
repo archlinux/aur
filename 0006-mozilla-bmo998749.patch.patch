@@ -1,0 +1,31 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "msirringhaus@suse.de" <msirringhaus@suse.de>
+Date: Mon, 9 Mar 2020 08:26:10 +0100
+Subject: [PATCH] mozilla-bmo998749.patch
+
+---
+ gfx/2d/FilterProcessing.h | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/gfx/2d/FilterProcessing.h b/gfx/2d/FilterProcessing.h
+index d6beb626119f430cb1890685eac2dac58eccc91b..1f609c8e500612579fb31b1795381fd987126187 100644
+--- a/gfx/2d/FilterProcessing.h
++++ b/gfx/2d/FilterProcessing.h
+@@ -13,10 +13,17 @@
+ namespace mozilla {
+ namespace gfx {
+ 
++#if MOZ_BIG_ENDIAN()
++const ptrdiff_t B8G8R8A8_COMPONENT_BYTEOFFSET_B = 3;
++const ptrdiff_t B8G8R8A8_COMPONENT_BYTEOFFSET_G = 2;
++const ptrdiff_t B8G8R8A8_COMPONENT_BYTEOFFSET_R = 1;
++const ptrdiff_t B8G8R8A8_COMPONENT_BYTEOFFSET_A = 0;
++#else
+ const ptrdiff_t B8G8R8A8_COMPONENT_BYTEOFFSET_B = 0;
+ const ptrdiff_t B8G8R8A8_COMPONENT_BYTEOFFSET_G = 1;
+ const ptrdiff_t B8G8R8A8_COMPONENT_BYTEOFFSET_R = 2;
+ const ptrdiff_t B8G8R8A8_COMPONENT_BYTEOFFSET_A = 3;
++#endif
+ 
+ class FilterProcessing {
+  public:

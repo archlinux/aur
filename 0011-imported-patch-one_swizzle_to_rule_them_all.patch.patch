@@ -1,0 +1,35 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "M. Sirringhaus" <msirringhaus@suse.de>
+Date: Tue, 22 Feb 2022 09:24:46 +0100
+Subject: [PATCH] imported patch one_swizzle_to_rule_them_all.patch
+
+---
+ gfx/webrender_bindings/RenderCompositorSWGL.cpp | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/gfx/webrender_bindings/RenderCompositorSWGL.cpp b/gfx/webrender_bindings/RenderCompositorSWGL.cpp
+index e52b8eba50cd6c243aa671285d2419e84834a898..b6d6cd0de300d2b553a22825380bb9b22a0929e4 100644
+--- a/gfx/webrender_bindings/RenderCompositorSWGL.cpp
++++ b/gfx/webrender_bindings/RenderCompositorSWGL.cpp
+@@ -7,6 +7,7 @@
+ #include "RenderCompositorSWGL.h"
+ 
+ #include "mozilla/gfx/Logging.h"
++#include "mozilla/gfx/Swizzle.h"
+ #include "mozilla/widget/CompositorWidget.h"
+ 
+ #ifdef MOZ_WIDGET_GTK
+@@ -235,6 +236,13 @@ void RenderCompositorSWGL::CommitMappedBuffer(bool aDirty) {
+   }
+   mDT->Flush();
+ 
++#if MOZ_BIG_ENDIAN()
++  // One swizzle to rule them all.
++  gfx::SwizzleData(mMappedData, mMappedStride, gfx::SurfaceFormat::B8G8R8A8,
++                   mMappedData, mMappedStride, gfx::SurfaceFormat::A8R8G8B8,
++                   mDT->GetSize());
++#endif
++
+   // Done with the DT. Hand it back to the widget and clear out any trace of it.
+   mWidget->EndRemoteDrawingInRegion(mDT, mDirtyRegion);
+   mDirtyRegion.SetEmpty();

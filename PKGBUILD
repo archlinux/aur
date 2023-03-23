@@ -71,52 +71,39 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
         mozconfig
         firefox.desktop
         vendor.js
-        kde.js
-	# Firefox patchset
-	firefox-branded-icons-$_patchrev.patch::$_patchurl/firefox/firefox-branded-icons.patch
-	firefox-kde-$_patchrev.patch::$_patchurl/firefox/firefox-kde.patch
-	# Gecko/toolkit patchset
-	mozilla-kde-$_patchrev.patch::$_patchurl/mozilla-kde.patch
-	mozilla-nongnome-proxies-$_patchrev.patch::$_patchurl/mozilla-nongnome-proxies.patch
-        # globalmenu patch:
-        # to support globalmenu a patch from ubuntu is applied
-        # source:
-        # http://bazaar.launchpad.net/~mozillateam/firefox/firefox-trunk.head
-        # /view/head:/debian/patches/unity-menubar.patch
-	unity-menubar.patch
-        # end
-	add_missing_pgo_rule.patch
-        pgo_fix_missing_kdejs.patch
-        # use system harfbuzz
-        0004-bmo-847568-Support-system-harfbuzz.patch
-        # use system graphite2
-        0005-bmo-847568-Support-system-graphite2.patch
-        # use sytem av1
-        0006-bmo-1559213-Support-system-av1.patch
-        # reenable system sqlite
-        5022efe33088.patch
-        # Force disable elfhack to fix build errors
-        build-disable-elfhack.patch
-        # patches from gentoo:
-        # https://dev.gentoo.org/~whissi/mozilla/patchsets/firefox-89-patches-01.tar.xz
-        0020-Make-PGO-use-toolchain.patch
-        # Fix MOZILLA#1516803
-        # https://bugzilla.mozilla.org/show_bug.cgi?id=1516803
-        0022-bmo-1516803-force-one-LTO-partition-for-sandbox-when.patch
-        # PGO/LTO GCC patches
-        0024-Fix-building-with-PGO-when-using-GCC.patch
-        0027-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
-        # end
-        # Fix CSD when globalmenu is active #8
-        fix_csd_window_buttons.patch
-        # Workaround #14
-        fix-wayland-build.patch
-        # WebRTC - screen cast sync for Wayland
-        # MOZILLLA#1672944
-        https://src.fedoraproject.org/rpms/firefox/raw/f0029706cee042f03f836e10d51bb2245e9fa392/f/libwebrtc-screen-cast-sync.patch
-        # Unbreak build with python-zstandard 0.18.0 #23
-        bump-pypip-zstandard-0.18.diff
-        # end
+        0001-Bug-1005535-Get-skia-GPU-building-on-big-endian.patch
+        0002-Allow-to-override-build-date-with-SOURCE_DATE_EPOCH.patch
+        0003-Bug-1504834-Rough-progress-patch.patch
+        0004-Bug-1504834-XULText-AA-fix-BE.patch
+        0005-Fix-top-level-asm-issue.patch
+        0006-mozilla-bmo998749.patch.patch
+        0007-mozilla-s390x-skia-gradient.patch.patch
+        0008-mozilla-libavcodec58_91.patch.patch
+        0009-mozilla-silence-no-return-type.patch-to-fix-build-er.patch
+        0010-Bug-531915-mozilla-bmo531915.patch.patch
+        0011-imported-patch-one_swizzle_to_rule_them_all.patch.patch
+        0012-imported-patch-svg-rendering.patch.patch
+        0013-Bug-1792159-Add-missing-includes-to-AtomicOperations.patch
+        0014-mozilla-s390-context.patch.patch
+        0015-bsc-991344-Rpi3-Firefox-crashes-after-a-few-seconds-.patch
+        0016-mozilla-fix-aarch64-libopus.patch.patch
+        0017-Bug-634334-call-to-the-ntlm_auth-helper-fails.patch
+        0018-Make-PGO-use-toolchain.patch
+        0019-bmo-1516803-force-one-LTO-partition-for-sandbox-when.patch
+        0020-Fix-building-with-PGO-when-using-GCC.patch
+        0021-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
+        0022-Bug-1516081-Disable-watchdog-during-FDO-train.patch
+        0023-Bug-559213-Support-system-av1.patch
+        0024-Bug-847568-Support-system-harfbuzz.patch
+        0025-Bug-847568-Support-system-graphite2.patch
+        0026-Bug-1611386-Reenable-support-for-enable-system-sqlit.patch
+        0027-Bug-1419151-Add-Unity-menubar-support.patch
+        0028-Do-not-use-gconf-for-proxy-settings-if-not-running-w.patch
+        0029-Add-KDE-integration-to-Firefox-toolkit-parts.patch
+        0030-Add-KDE-integration-to-Firefox.patch
+        0031-Imported-patch-firefox-branded-icons.patch.patch
+        0032-Bug-1807652-Rename-some-methods-to-not-conflict-with.patch
+        0033-Allow-Eme-for-arm-and-Aarch64.patch
 )
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -147,62 +134,11 @@ prepare() {
 
   echo -n "$_mozilla_api_key" >mozilla-api-key
   echo "ac_add_options --with-mozilla-api-keyfile=\"$PWD/mozilla-api-key\"" >>.mozconfig
-  
-  msg "Patching for KDE"
-  patch -Np1 -i "$srcdir/mozilla-nongnome-proxies-$_patchrev.patch"
-  patch -Np1 -i "$srcdir/mozilla-kde-$_patchrev.patch"
 
-  patch -Np1 -i "$srcdir/firefox-kde-$_patchrev.patch"
-  patch -Np1 -i "$srcdir/firefox-branded-icons-$_patchrev.patch"
-  
-  # Add globalmenu support
-  patch -Np1 -i "$srcdir/unity-menubar.patch"
-
-  # use system harfbuzz
-  patch -Np1 -i "$srcdir"/0004-bmo-847568-Support-system-harfbuzz.patch
-  # use system graphite2
-  patch -Np1 -i "$srcdir"/0005-bmo-847568-Support-system-graphite2.patch
-  # use sytem av1
-  patch -Np1 -i "$srcdir"/0006-bmo-1559213-Support-system-av1.patch
-
-  # reenable system sqlite
-  patch -p1 -i "$srcdir"/5022efe33088.patch
-
-  # Force disable elfhack to fix build errors
-  patch -Np1 -i "$srcdir"/build-disable-elfhack.patch
-
-  # Fix CSD when globalmenu is active #8
-  patch -Np1 -i "$srcdir"/fix_csd_window_buttons.patch
-
-  # Workaround #14
-  patch -Np1 -i "$srcdir"/fix-wayland-build.patch
-
-  # WebRTC - screen cast sync for Wayland
-  patch -Np1 -i "$srcdir"/libwebrtc-screen-cast-sync.patch
-
-  # Unbreak build with python-zstandard 0.18.0 #23
-  patch -Np1 -i "$srcdir"/bump-pypip-zstandard-0.18.diff
-
-
-  if [ $_pgo ] ; then
-    # Fix MOZILLA#1516803
-    # sandbox needs to be built with --param lto-partitions=1 when
-    # GCC LTO is enabled
-    patch -Np1 -i "$srcdir"/0022-bmo-1516803-force-one-LTO-partition-for-sandbox-when.patch
-
-    # PGO/LTO GCC patches
-    patch -Np1 -i "$srcdir"/0020-Make-PGO-use-toolchain.patch
-    patch -Np1 -i "$srcdir"/0024-Fix-building-with-PGO-when-using-GCC.patch
-    patch -Np1 -i "$srcdir"/0027-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
-
-    # add missing rule for pgo builds
-    patch -Np1 -i "$srcdir"/add_missing_pgo_rule.patch
-
-    # add missing file Makefile for pgo builds
-    patch -Np1 -i "$srcdir"/pgo_fix_missing_kdejs.patch
-
-    echo "ac_add_options --enable-lto" >> .mozconfig
-  fi
+  for patch in "$srcdir/*.patch" ; do
+    echo "Applying $patch"
+    patch -p1 -i "$patch"
+  done
 }
 
 build() {
@@ -316,24 +252,36 @@ md5sums=('SKIP'
          '9530b0395a095c0b47ee42d0996ec163'
          'a26a061efb4def6572d5b319d657f1d6'
          '4c23d9c0a691d70919beb1dafbbecbd3'
-         '05bb69d25fb3572c618e3adf1ee7b670'
-         '800d337d558de8201c8828252c1cd199'
-         '2e2e0721f1c29b2ae786d8c6e34fa65f'
-         '4819b01c44ce3f6bdc3fbc096d717ca0'
-         '0a5733b7a457a2786c2dd27626a1bf88'
-         'ee09a0bdeadfedc76c0379f170ab2dc1'
-         'fe24f5ea463013bb7f1c12d12dce41b2'
-         '3c383d371d7f6ede5983a40310518715'
-         'dc47b8b0582ca8e97d68e5636b72853c'
-         '9e518b30cf2ff9afd0423c79d12ae7b2'
-         '0ba70a7a61493cb053f93d6560b8be32'
-         '548de130fc0f470bff0b6d994a0a91cd'
-         'c7b492df4fbf42ffe8aea4c0afb89921'
-         '316d71d9cec400890db2ee8c362e672f'
-         'c6c0e47c9b517e5146a8925f442b811b'
-         '943b9fe2ba474f7809a41622744f97f9'
-         '31f950a94966287bfa6ccf03030781cc'
-         'f49ac3b9f5146e33ce587e6b23eb1a86'
-         '2cf74781f6b742d6b7e6f7251f49311a'
-         '015dbab57c0d9c65d7a94a29dd8bf8a4'
-         'c36ef413ef998444d7d1dd543fd8f58b')
+         'e48cd51c49f5b8b1595f9cd8f55ce819'
+         '6945bb71f87e01743a6736fbdb845cfd'
+         '954e7d1ff4452e3c8895a186ff815383'
+         'f6e793369b22bd607403d9b9f0565a3c'
+         '8df09195607f90a097f21d35dc4d9c30'
+         'a1b878f2e22f096ad907630aa873698f'
+         '3256d35703c9a2857503921eb10c3dd7'
+         'efe01b463d50e30de15c03f391e0b366'
+         'ab2a8a5aa3aa2b52f7102466aab7eb7e'
+         '63a6be4970c5a999adad40f9e021c366'
+         '1c1ce911bbbe548f130e6fca5e136bdd'
+         '831c2ccaf07c68cf4f9008692475c1d9'
+         'cc679a9a9abbb9e8a33800b4cb5f4deb'
+         '8c0af75143b8f8d4b86e0f438bd8ccc8'
+         'e13a08af8fa75cfebd2ca5d509784046'
+         '379b26ef4582c6d15ab61c7944540c7f'
+         '7ee193a7b8230b68036f6db5d188f7fc'
+         '9266d9fa0c39e30ae2e9c93b3d7822e7'
+         '101080a6f3639db7c36dcf1218a83d1a'
+         '39a5aa662bd007d0562beaeae4edc175'
+         'a067121f85949a76e709d53871f09834'
+         '12f66e9f224381e73aa7e7fb6c535c13'
+         'ad886aed59f72e6f1ad470ab4e96ebd8'
+         'b69acf75b1649f965ac1637e34356038'
+         'd1dfbcdc4951a5d279071323160fe856'
+         '3db73a1168751e27a66d7564a9492312'
+         'b30750c85f239ba19b6b0ba308e86990'
+         '401a4da2cadcaf12546cb495d63407e4'
+         '42ce462dcbdaaed8ffb45b1b5d10a49d'
+         'f792d0ce1e4f3f260862ec70295f2f81'
+         'bc7676460d246f57e8f4e5db1850eaf8'
+         '1bc91fa92a1a7ce337ec9b398290f5e8'
+         '15a701ef094073919c43701ef4b8b85f')

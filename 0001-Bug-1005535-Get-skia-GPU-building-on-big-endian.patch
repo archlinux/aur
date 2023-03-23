@@ -1,0 +1,22 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Steve Singer <steve@ssinger.info>
+Date: Tue, 21 May 2019 17:12:20 +0200
+Subject: [PATCH] Bug 1005535 - Get skia GPU building on big endian.
+
+---
+ gfx/skia/skia/src/gpu/GrColor.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gfx/skia/skia/src/gpu/GrColor.h b/gfx/skia/skia/src/gpu/GrColor.h
+index 39e7bfa7bf19799bfafa5d3f5371d96138f0bd7f..57b405f3b7599689f1c3a7a7b31b0039b2a8c98d 100644
+--- a/gfx/skia/skia/src/gpu/GrColor.h
++++ b/gfx/skia/skia/src/gpu/GrColor.h
+@@ -64,7 +64,7 @@ static inline GrColor GrColorPackRGBA(unsigned r, unsigned g, unsigned b, unsign
+  *  Since premultiplied means that alpha >= color, we construct a color with
+  *  each component==255 and alpha == 0 to be "illegal"
+  */
+-#define GrColor_ILLEGAL     (~(0xFF << GrColor_SHIFT_A))
++#define GrColor_ILLEGAL     ((uint32_t)(~(0xFF << GrColor_SHIFT_A)))
+ 
+ /** Normalizes and coverts an uint8_t to a float. [0, 255] -> [0.0, 1.0] */
+ static inline float GrNormalizeByteToFloat(uint8_t value) {

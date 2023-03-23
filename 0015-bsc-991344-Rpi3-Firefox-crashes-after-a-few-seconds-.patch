@@ -1,0 +1,29 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "msirringhaus@suse.de" <msirringhaus@suse.de>
+Date: Tue, 21 May 2019 15:49:58 +0200
+Subject: [PATCH] bsc#991344 - Rpi3: Firefox crashes after a few seconds of
+ usage
+
+bmo#1302554 - ARM/AARCH64: Firefox crashes on NULL nsIChannel** result pointer in nsIOService::NewChannelFromURIWithProxyFlagsInternal()
+---
+ netwerk/base/nsIOService.cpp | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/netwerk/base/nsIOService.cpp b/netwerk/base/nsIOService.cpp
+index de506f59a1f38b1a90b236518395e60cf46b15f1..70473efabab7ea9fb4fc121e81a5ebdb7c94cf8f 100644
+--- a/netwerk/base/nsIOService.cpp
++++ b/netwerk/base/nsIOService.cpp
+@@ -1159,7 +1159,13 @@ nsresult nsIOService::NewChannelFromURIWithProxyFlagsInternal(
+     }
+   }
+ 
++#if defined(__aarch64__)
++  if (result) {
++    channel.forget(result);
++  }
++#else
+   channel.forget(result);
++#endif
+   return NS_OK;
+ }
+ 

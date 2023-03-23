@@ -1,0 +1,1600 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Wolfgang Rosenauer <wr@rosenauer.org>
+Date: Sun, 27 Dec 2020 10:48:12 +0100
+Subject: [PATCH] mozilla-silence-no-return-type.patch to fix build errors on
+ some Leap versions
+
+---
+ Cargo.lock                                           |  2 --
+ Cargo.toml                                           |  1 +
+ gfx/skia/skia/include/codec/SkEncodedOrigin.h        |  1 +
+ gfx/skia/skia/include/private/GrTypesPriv.h          |  3 +++
+ gfx/skia/skia/src/core/SkGeometry.h                  |  2 ++
+ gfx/skia/skia/src/core/SkTextBlob.cpp                |  1 +
+ gfx/skia/skia/src/core/SkTypeface_remote.cpp         |  1 +
+ gfx/skia/skia/src/core/SkTypeface_remote.h           | 12 +++++++++++-
+ .../src/effects/imagefilters/SkBlurImageFilter.cpp   |  1 +
+ .../effects/imagefilters/SkLightingImageFilter.cpp   |  1 +
+ gfx/skia/skia/src/fonts/SkFontMgr_indirect.cpp       |  1 +
+ gfx/skia/skia/src/gpu/GrDataUtils.cpp                |  2 ++
+ gfx/skia/skia/src/gpu/GrFragmentProcessor.h          |  1 +
+ gfx/skia/skia/src/gpu/GrPathRendering.cpp            |  1 +
+ gfx/skia/skia/src/gpu/GrPathRendering.h              |  1 +
+ gfx/skia/skia/src/gpu/GrProcessorUnitTest.cpp        |  1 +
+ gfx/skia/skia/src/gpu/GrReducedClip.cpp              |  2 ++
+ gfx/skia/skia/src/gpu/GrResourceCache.cpp            |  2 ++
+ gfx/skia/skia/src/gpu/GrShaderVar.cpp                |  2 ++
+ gfx/skia/skia/src/gpu/SkGpuDevice.cpp                |  1 +
+ gfx/skia/skia/src/gpu/SkGr.h                         |  1 +
+ gfx/skia/skia/src/gpu/ccpr/GrCCCoverageProcessor.h   |  1 +
+ gfx/skia/skia/src/gpu/ccpr/GrCCStrokeGeometry.cpp    |  1 +
+ gfx/skia/skia/src/gpu/ccpr/GrCCStrokeGeometry.h      |  1 +
+ .../src/gpu/ccpr/GrCoverageCountingPathRenderer.cpp  |  1 +
+ gfx/skia/skia/src/gpu/ccpr/GrVSCoverageProcessor.cpp |  1 +
+ gfx/skia/skia/src/gpu/dawn/GrDawnOpsRenderPass.cpp   |  2 ++
+ gfx/skia/skia/src/gpu/dawn/GrDawnUniformHandler.cpp  |  2 ++
+ gfx/skia/skia/src/gpu/dawn/GrDawnVaryingHandler.cpp  |  1 +
+ .../skia/src/gpu/effects/GrConstColorProcessor.fp    |  1 +
+ gfx/skia/skia/src/gpu/effects/GrCoverageSetOpXP.cpp  |  1 +
+ .../src/gpu/effects/GrPorterDuffXferProcessor.cpp    |  1 +
+ gfx/skia/skia/src/gpu/effects/GrSkSLFP.cpp           |  2 ++
+ .../gpu/effects/generated/GrConstColorProcessor.h    |  1 +
+ gfx/skia/skia/src/gpu/geometry/GrShape.cpp           |  2 ++
+ gfx/skia/skia/src/gpu/gl/GrGLCaps.cpp                |  1 +
+ gfx/skia/skia/src/gpu/gl/GrGLGLSL.cpp                |  1 +
+ gfx/skia/skia/src/gpu/gl/GrGLGpu.cpp                 | 12 +++++++++---
+ gfx/skia/skia/src/gpu/gl/GrGLPath.cpp                |  1 +
+ gfx/skia/skia/src/gpu/gl/GrGLTexture.cpp             |  3 +++
+ gfx/skia/skia/src/gpu/gl/GrGLVertexArray.cpp         |  1 +
+ gfx/skia/skia/src/gpu/glsl/GrGLSL.cpp                |  1 +
+ gfx/skia/skia/src/gpu/glsl/GrGLSLVarying.cpp         |  1 +
+ .../skia/src/gpu/glsl/GrGLSLVertexGeoBuilder.cpp     |  2 ++
+ gfx/skia/skia/src/gpu/mtl/GrMtlCaps.mm               |  2 ++
+ .../skia/src/gpu/mtl/GrMtlPipelineStateBuilder.mm    |  2 ++
+ gfx/skia/skia/src/gpu/mtl/GrMtlSampler.mm            |  1 +
+ gfx/skia/skia/src/gpu/mtl/GrMtlUniformHandler.mm     |  2 ++
+ gfx/skia/skia/src/gpu/mtl/GrMtlUtil.mm               |  1 +
+ gfx/skia/skia/src/gpu/ops/GrDrawVerticesOp.cpp       |  2 ++
+ gfx/skia/skia/src/gpu/ops/GrFillRRectOp.cpp          |  1 +
+ gfx/skia/skia/src/gpu/ops/GrOvalOpFactory.cpp        |  3 +++
+ gfx/skia/skia/src/gpu/ops/GrShadowRRectOp.cpp        |  3 +++
+ gfx/skia/skia/src/gpu/text/GrTextBlob.h              |  1 +
+ .../src/gpu/text/GrTextBlobVertexRegenerator.cpp     |  1 +
+ gfx/skia/skia/src/gpu/vk/GrVkCaps.cpp                |  2 ++
+ gfx/skia/skia/src/gpu/vk/GrVkMemory.cpp              |  1 +
+ gfx/skia/skia/src/gpu/vk/GrVkPipeline.cpp            |  3 +++
+ gfx/skia/skia/src/gpu/vk/GrVkSampler.cpp             |  1 +
+ gfx/skia/skia/src/gpu/vk/GrVkTransferBuffer.h        |  1 +
+ gfx/skia/skia/src/gpu/vk/GrVkUniformHandler.cpp      |  2 ++
+ gfx/skia/skia/src/gpu/vk/GrVkVaryingHandler.cpp      |  1 +
+ gfx/skia/skia/src/pdf/SkPDFTag.cpp                   |  1 +
+ .../skia/src/ports/SkFontMgr_FontConfigInterface.cpp |  6 ++++++
+ gfx/skia/skia/src/shaders/SkImageShader.cpp          |  1 +
+ gfx/skia/skia/src/utils/SkShadowUtils.cpp            |  1 +
+ intl/icu/source/i18n/number_rounding.cpp             |  2 ++
+ third_party/libwebrtc/api/adaptation/resource.cc     |  1 +
+ third_party/libwebrtc/api/rtp_parameters.cc          |  1 +
+ .../libwebrtc/api/video/video_frame_buffer.cc        |  2 ++
+ .../libwebrtc/api/video_codecs/video_codec.cc        |  1 +
+ .../video_encoder_software_fallback_wrapper.cc       |  2 ++
+ .../call/adaptation/video_stream_adapter.cc          |  5 +++++
+ third_party/libwebrtc/call/video_send_stream.cc      |  1 +
+ .../audio_processing/agc/clipping_predictor.cc       |  1 +
+ .../modules/audio_processing/agc2/rnn_vad/rnn_fc.cc  |  2 ++
+ .../audio_processing/audio_processing_impl.cc        |  2 ++
+ .../audio_processing/include/audio_processing.cc     |  2 ++
+ .../rtp_rtcp/source/create_video_rtp_depacketizer.cc |  1 +
+ .../libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc  |  1 +
+ .../modules/rtp_rtcp/source/rtp_sender_audio.cc      |  1 +
+ .../codecs/vp8/temporal_layers_checker.cc            |  1 +
+ .../video_stream_encoder_resource_manager.cc         |  1 +
+ .../glsl-optimizer/src/compiler/glsl/ast_to_hir.cpp  |  1 +
+ .../glslopt/glsl-optimizer/src/compiler/glsl/ir.cpp  |  1 +
+ .../src/compiler/glsl/loop_analysis.cpp              |  1 +
+ .../src/compiler/glsl/opt_vectorize.cpp              |  1 +
+ .../glsl-optimizer/src/compiler/glsl_types.cpp       |  5 +++++
+ .../glslopt/glsl-optimizer/src/mesa/main/shaderobj.h |  4 ++++
+ 89 files changed, 154 insertions(+), 6 deletions(-)
+
+diff --git a/Cargo.lock b/Cargo.lock
+index 5dde1f1aeb43728d0784cbd1b256ecdbbf7e5698..dc8f980658c2a247ed4ead378ee726bf6ecb1da3 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -2375,8 +2375,6 @@ dependencies = [
+ [[package]]
+ name = "glslopt"
+ version = "0.1.9"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "74a3f5c04450dfdadb4b08f6e5ee6f5110f674de1acbd6199bfec68392a8cbaf"
+ dependencies = [
+  "cc",
+ ]
+diff --git a/Cargo.toml b/Cargo.toml
+index 1909f0cebe4d71ab5b3ffa214372c053c99d41e0..ba23ffb01a87ff0a68395d91b7d5efd8450ab3b1 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -163,6 +163,7 @@ midir = { git = "https://github.com/mozilla/midir.git", rev = "519e651241e867af3
+ minidump-writer = { git = "https://github.com/rust-minidump/minidump-writer.git", rev = "7d76616d27b9dc87fe3a94639b8b4f947d52a6aa" }
+ # warp 0.3.3 + https://github.com/seanmonstar/warp/pull/1007
+ warp = { git = "https://github.com/glandium/warp", rev = "4af45fae95bc98b0eba1ef0db17e1dac471bb23d" }
++glslopt = { path = "third_party/rust/glslopt/" }
+ 
+ cssparser = { git = "https://github.com/servo/rust-cssparser", rev = "d3670a89bae26ba3a8db4758eb7976616113987d" }
+ 
+diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
+index 2eed1c6ac6cc1ba8512cbff3c5f255ef33ec1645..49d03090341e6e08525c1a0e34f5b04e6e2cfb73 100644
+--- a/gfx/skia/skia/include/codec/SkEncodedOrigin.h
++++ b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
+@@ -41,6 +41,7 @@ static inline SkMatrix SkEncodedOriginToMatrix(SkEncodedOrigin origin, int w, in
+         case  kLeftBottom_SkEncodedOrigin: return SkMatrix::MakeAll( 0,  1, 0, -1,  0, w, 0, 0, 1);
+     }
+     SK_ABORT("Unexpected origin");
++    SkUNREACHABLE;
+ }
+ 
+ 
+diff --git a/gfx/skia/skia/include/private/GrTypesPriv.h b/gfx/skia/skia/include/private/GrTypesPriv.h
+index 90718038e037bddf0633f33eaeef26306e8f79f9..4ec7729ab8e0885b3c5d16febd39a469a562c0a9 100644
+--- a/gfx/skia/skia/include/private/GrTypesPriv.h
++++ b/gfx/skia/skia/include/private/GrTypesPriv.h
+@@ -540,6 +540,7 @@ static inline GrSLType GrSLCombinedSamplerTypeForTextureType(GrTextureType type)
+         default:
+             SK_ABORT("Unexpected texture type");
+     }
++    SkUNREACHABLE;
+ }
+ 
+ /** Rectangle and external textures only support the clamp wrap mode and do not support
+@@ -556,6 +557,7 @@ static inline bool GrTextureTypeHasRestrictedSampling(GrTextureType type) {
+         default:
+             SK_ABORT("Unexpected texture type");
+     }
++    SkUNREACHABLE;
+ }
+ 
+ static constexpr bool GrSLTypeIsCombinedSamplerType(GrSLType type) {
+@@ -858,6 +860,7 @@ static inline size_t GrCompressedFormatDataSize(SkImage::CompressionType compres
+     }
+ 
+     SK_ABORT("Invalid pixel config");
++    SkUNREACHABLE;
+ }
+ 
+ /**
+diff --git a/gfx/skia/skia/src/core/SkGeometry.h b/gfx/skia/skia/src/core/SkGeometry.h
+index 23bdbc1c42591b45115d9fd025f373365c8c14d6..ea2d23f6e8e5e6cdc0a5e76d1ae265bb0bae4285 100644
+--- a/gfx/skia/skia/src/core/SkGeometry.h
++++ b/gfx/skia/skia/src/core/SkGeometry.h
+@@ -182,6 +182,7 @@ static inline bool SkCubicIsDegenerate(SkCubicType type) {
+             return true;
+     }
+     SK_ABORT("Invalid SkCubicType");
++    SkUNREACHABLE;
+ }
+ 
+ static inline const char* SkCubicTypeName(SkCubicType type) {
+@@ -194,6 +195,7 @@ static inline const char* SkCubicTypeName(SkCubicType type) {
+         case SkCubicType::kLineOrPoint: return "kLineOrPoint";
+     }
+     SK_ABORT("Invalid SkCubicType");
++    SkUNREACHABLE;
+ }
+ 
+ /** Returns the cubic classification.
+diff --git a/gfx/skia/skia/src/core/SkTextBlob.cpp b/gfx/skia/skia/src/core/SkTextBlob.cpp
+index 3c84bda6f8e1119db457468ec257cdf876432647..e2fba375ccd358264ed64caa333abe58b8c125be 100644
+--- a/gfx/skia/skia/src/core/SkTextBlob.cpp
++++ b/gfx/skia/skia/src/core/SkTextBlob.cpp
+@@ -201,6 +201,7 @@ void SkTextBlob::operator delete(void* p) {
+ 
+ void* SkTextBlob::operator new(size_t) {
+     SK_ABORT("All blobs are created by placement new.");
++    SkUNREACHABLE;
+ }
+ 
+ void* SkTextBlob::operator new(size_t, void* p) {
+diff --git a/gfx/skia/skia/src/core/SkTypeface_remote.cpp b/gfx/skia/skia/src/core/SkTypeface_remote.cpp
+index 838a78331359ea7f8d5be746af804cb810aba7a5..d878fadc080914b7cc244be30b1a281f0ef89621 100644
+--- a/gfx/skia/skia/src/core/SkTypeface_remote.cpp
++++ b/gfx/skia/skia/src/core/SkTypeface_remote.cpp
+@@ -29,6 +29,7 @@ void SkScalerContextProxy::initCache(SkStrike* cache, SkStrikeCache* strikeCache
+ 
+ unsigned SkScalerContextProxy::generateGlyphCount()  {
+     SK_ABORT("Should never be called.");
++    SkUNREACHABLE;
+ }
+ 
+ bool SkScalerContextProxy::generateAdvance(SkGlyph* glyph) {
+diff --git a/gfx/skia/skia/src/core/SkTypeface_remote.h b/gfx/skia/skia/src/core/SkTypeface_remote.h
+index 3d454cf760f284f7df56cf17afa50e02c4ee2cfe..554f7c0617cd9a1a71b43abb425b97f3e3a08ffd 100644
+--- a/gfx/skia/skia/src/core/SkTypeface_remote.h
++++ b/gfx/skia/skia/src/core/SkTypeface_remote.h
+@@ -63,23 +63,28 @@ public:
+     bool isLogging() const {return fIsLogging;}
+ 
+ protected:
+-    int onGetUPEM() const override { SK_ABORT("Should never be called."); }
++    int onGetUPEM() const override { SK_ABORT("Should never be called."); SkUNREACHABLE; }
+     std::unique_ptr<SkStreamAsset> onOpenStream(int* ttcIndex) const override {
+         SK_ABORT("Should never be called.");
++	SkUNREACHABLE;
+     }
+     std::unique_ptr<SkFontData> onMakeFontData() const override {
+         SK_ABORT("Should never be called.");
++	SkUNREACHABLE;
+     }
+     sk_sp<SkTypeface> onMakeClone(const SkFontArguments& args) const override {
+         SK_ABORT("Should never be called.");
++	SkUNREACHABLE;
+     }
+     int onGetVariationDesignPosition(SkFontArguments::VariationPosition::Coordinate coordinates[],
+                                      int coordinateCount) const override {
+         SK_ABORT("Should never be called.");
++	SkUNREACHABLE;
+     }
+     int onGetVariationDesignParameters(SkFontParameters::Variation::Axis parameters[],
+                                        int parameterCount) const override {
+         SK_ABORT("Should never be called.");
++	SkUNREACHABLE;
+     }
+     void onGetFamilyName(SkString* familyName) const override {
+         // Used by SkStrikeCache::DumpMemoryStatistics.
+@@ -87,12 +92,15 @@ protected:
+     }
+     SkTypeface::LocalizedStrings* onCreateFamilyNameIterator() const override {
+         SK_ABORT("Should never be called.");
++	SkUNREACHABLE;
+     }
+     int onGetTableTags(SkFontTableTag tags[]) const override {
+         SK_ABORT("Should never be called.");
++	SkUNREACHABLE;
+     }
+     size_t onGetTableData(SkFontTableTag, size_t offset, size_t length, void* data) const override {
+         SK_ABORT("Should never be called.");
++	SkUNREACHABLE;
+     }
+     SkScalerContext* onCreateScalerContext(const SkScalerContextEffects& effects,
+                                            const SkDescriptor* desc) const override {
+@@ -116,6 +124,7 @@ protected:
+ 
+     std::unique_ptr<SkAdvancedTypefaceMetrics> onGetAdvancedMetrics() const override {
+         SK_ABORT("Should never be called.");
++	SkUNREACHABLE;
+     }
+     void onCharsToGlyphs(const SkUnichar* chars, int count, SkGlyphID glyphs[]) const override {
+         SK_ABORT("Should never be called.");
+@@ -126,6 +135,7 @@ protected:
+ 
+     void* onGetCTFontRef() const override {
+         SK_ABORT("Should never be called.");
++	SkUNREACHABLE;
+     }
+ 
+ private:
+diff --git a/gfx/skia/skia/src/effects/imagefilters/SkBlurImageFilter.cpp b/gfx/skia/skia/src/effects/imagefilters/SkBlurImageFilter.cpp
+index 2dde5e2be77afdf4896e01b8ab8e3842e2a68b8c..dd8550dfad56c43244b6afa7c2c5b27aa2ef0068 100644
+--- a/gfx/skia/skia/src/effects/imagefilters/SkBlurImageFilter.cpp
++++ b/gfx/skia/skia/src/effects/imagefilters/SkBlurImageFilter.cpp
+@@ -144,6 +144,7 @@ static GrTextureDomain::Mode to_texture_domain_mode(SkTileMode tileMode) {
+             return GrTextureDomain::kRepeat_Mode;
+         default:
+             SK_ABORT("Unsupported tile mode.");
++	    SkUNREACHABLE;
+     }
+ }
+ #endif
+diff --git a/gfx/skia/skia/src/effects/imagefilters/SkLightingImageFilter.cpp b/gfx/skia/skia/src/effects/imagefilters/SkLightingImageFilter.cpp
+index 43d32dcc915e197158858f2bf4dde206a55a951d..4a8143e2e2120ec603b7f0e0d5eceb2c5920a319 100644
+--- a/gfx/skia/skia/src/effects/imagefilters/SkLightingImageFilter.cpp
++++ b/gfx/skia/skia/src/effects/imagefilters/SkLightingImageFilter.cpp
+@@ -1701,6 +1701,7 @@ static SkImageFilterLight* create_random_light(SkRandom* random) {
+         }
+         default:
+             SK_ABORT("Unexpected value.");
++	    SkUNREACHABLE;
+     }
+ }
+ 
+diff --git a/gfx/skia/skia/src/fonts/SkFontMgr_indirect.cpp b/gfx/skia/skia/src/fonts/SkFontMgr_indirect.cpp
+index da7678a725e7ce076705620fe17228272e29c8f4..63330e58c2b39afc20f78acd4caa11a12cd477df 100644
+--- a/gfx/skia/skia/src/fonts/SkFontMgr_indirect.cpp
++++ b/gfx/skia/skia/src/fonts/SkFontMgr_indirect.cpp
+@@ -69,6 +69,7 @@ void SkFontMgr_Indirect::onGetFamilyName(int index, SkString* familyName) const
+ 
+ SkFontStyleSet* SkFontMgr_Indirect::onCreateStyleSet(int index) const {
+     SK_ABORT("Not implemented");
++    SkUNREACHABLE;
+ }
+ 
+ SkFontStyleSet* SkFontMgr_Indirect::onMatchFamily(const char familyName[]) const {
+diff --git a/gfx/skia/skia/src/gpu/GrDataUtils.cpp b/gfx/skia/skia/src/gpu/GrDataUtils.cpp
+index 6265aaec2893f1c457218441d37a75595a750b7b..0da5190e4a857028117d05c50c0e1e5b0bd4fa22 100644
+--- a/gfx/skia/skia/src/gpu/GrDataUtils.cpp
++++ b/gfx/skia/skia/src/gpu/GrDataUtils.cpp
+@@ -128,6 +128,7 @@ size_t GrCompressedDataSize(SkImage::CompressionType type, int width, int height
+             return numBlocks * sizeof(ETC1Block);
+     }
+     SK_ABORT("Unexpected compression type");
++    SkUNREACHABLE;
+ }
+ 
+ size_t GrCompressedRowBytes(SkImage::CompressionType type, int width) {
+@@ -137,6 +138,7 @@ size_t GrCompressedRowBytes(SkImage::CompressionType type, int width) {
+             return numBlocksWidth * sizeof(ETC1Block);
+     }
+     SK_ABORT("Unexpected compression type");
++    SkUNREACHABLE;
+ }
+ 
+ // Fill in 'dest' with ETC1 blocks derived from 'colorf'
+diff --git a/gfx/skia/skia/src/gpu/GrFragmentProcessor.h b/gfx/skia/skia/src/gpu/GrFragmentProcessor.h
+index 21e27b868b52d729a67938a67eda960ef36ebc61..5b96868075be7ef2e81ea175c2525a4a50c9ffc4 100644
+--- a/gfx/skia/skia/src/gpu/GrFragmentProcessor.h
++++ b/gfx/skia/skia/src/gpu/GrFragmentProcessor.h
+@@ -375,6 +375,7 @@ protected:
+ private:
+     virtual SkPMColor4f constantOutputForConstantInput(const SkPMColor4f& /* inputColor */) const {
+         SK_ABORT("Subclass must override this if advertising this optimization.");
++	SkUNREACHABLE;
+     }
+ 
+     /** Returns a new instance of the appropriate *GL* implementation class
+diff --git a/gfx/skia/skia/src/gpu/GrPathRendering.cpp b/gfx/skia/skia/src/gpu/GrPathRendering.cpp
+index 5e44531d2e95d496e8472ff97e16d0c6503fc063..a6bd5e4cbcf60a2f7e49e8400beab6c504ff03d5 100644
+--- a/gfx/skia/skia/src/gpu/GrPathRendering.cpp
++++ b/gfx/skia/skia/src/gpu/GrPathRendering.cpp
+@@ -19,6 +19,7 @@ const GrUserStencilSettings& GrPathRendering::GetStencilPassSettings(FillType fi
+     switch (fill) {
+         default:
+             SK_ABORT("Unexpected path fill.");
++	    SkUNREACHABLE;
+         case GrPathRendering::kWinding_FillType: {
+             constexpr static GrUserStencilSettings kWindingStencilPass(
+                 GrUserStencilSettings::StaticInit<
+diff --git a/gfx/skia/skia/src/gpu/GrPathRendering.h b/gfx/skia/skia/src/gpu/GrPathRendering.h
+index 3e143e4d0f2e03c33b77302cef56e44c26ae169b..3a672fabc60da04b6d84b39b52503a6fd334a409 100644
+--- a/gfx/skia/skia/src/gpu/GrPathRendering.h
++++ b/gfx/skia/skia/src/gpu/GrPathRendering.h
+@@ -63,6 +63,7 @@ public:
+ 
+             default:
+                 SK_ABORT("Unknown path transform type");
++		SkUNREACHABLE;
+         }
+     }
+ 
+diff --git a/gfx/skia/skia/src/gpu/GrProcessorUnitTest.cpp b/gfx/skia/skia/src/gpu/GrProcessorUnitTest.cpp
+index 8d8efa7685b0a30f51ab9843977e0e8aa9c963fa..2d56d2cb09fd7d83fcd7073651086458d1f1f02e 100644
+--- a/gfx/skia/skia/src/gpu/GrProcessorUnitTest.cpp
++++ b/gfx/skia/skia/src/gpu/GrProcessorUnitTest.cpp
+@@ -20,6 +20,7 @@ std::unique_ptr<GrFragmentProcessor> GrProcessorUnitTest::MakeChildFP(GrProcesso
+     return fp;
+ #else
+     SK_ABORT("Should not be called if !SK_ALLOW_STATIC_GLOBAL_INITIALIZERS");
++    SkUNREACHABLE;
+ #endif
+ }
+ #endif
+diff --git a/gfx/skia/skia/src/gpu/GrReducedClip.cpp b/gfx/skia/skia/src/gpu/GrReducedClip.cpp
+index 9224e005c6886358c2c6eb037c786bc5281bcdeb..5c1d44b613bc1aa6a1f436acfe4b46ffd35c7c32 100644
+--- a/gfx/skia/skia/src/gpu/GrReducedClip.cpp
++++ b/gfx/skia/skia/src/gpu/GrReducedClip.cpp
+@@ -525,6 +525,7 @@ GrReducedClip::ClipResult GrReducedClip::clipInsideElement(const Element* elemen
+     }
+ 
+     SK_ABORT("Unexpected DeviceSpaceType");
++    SkUNREACHABLE;
+ }
+ 
+ GrReducedClip::ClipResult GrReducedClip::clipOutsideElement(const Element* element) {
+@@ -591,6 +592,7 @@ GrReducedClip::ClipResult GrReducedClip::clipOutsideElement(const Element* eleme
+     }
+ 
+     SK_ABORT("Unexpected DeviceSpaceType");
++    SkUNREACHABLE;
+ }
+ 
+ inline void GrReducedClip::addWindowRectangle(const SkRect& elementInteriorRect, bool elementIsAA) {
+diff --git a/gfx/skia/skia/src/gpu/GrResourceCache.cpp b/gfx/skia/skia/src/gpu/GrResourceCache.cpp
+index 6d9a961886ffd764dfe80b0c247c562a6d12817c..5f2e68dd7ba9e91d7f649c8185f21c6eafc87667 100644
+--- a/gfx/skia/skia/src/gpu/GrResourceCache.cpp
++++ b/gfx/skia/skia/src/gpu/GrResourceCache.cpp
+@@ -40,6 +40,7 @@ GrScratchKey::ResourceType GrScratchKey::GenerateResourceType() {
+     int32_t type = nextType++;
+     if (type > SkTo<int32_t>(UINT16_MAX)) {
+         SK_ABORT("Too many Resource Types");
++	SkUNREACHABLE;
+     }
+ 
+     return static_cast<ResourceType>(type);
+@@ -51,6 +52,7 @@ GrUniqueKey::Domain GrUniqueKey::GenerateDomain() {
+     int32_t domain = nextDomain++;
+     if (domain > SkTo<int32_t>(UINT16_MAX)) {
+         SK_ABORT("Too many GrUniqueKey Domains");
++	SkUNREACHABLE;
+     }
+ 
+     return static_cast<Domain>(domain);
+diff --git a/gfx/skia/skia/src/gpu/GrShaderVar.cpp b/gfx/skia/skia/src/gpu/GrShaderVar.cpp
+index 6f7ccccd603807f58295e7915420bc24254b8656..67156a74bc6f79956c3256c0a9bac62466848e68 100644
+--- a/gfx/skia/skia/src/gpu/GrShaderVar.cpp
++++ b/gfx/skia/skia/src/gpu/GrShaderVar.cpp
+@@ -18,6 +18,7 @@ static const char* type_modifier_string(GrShaderVar::TypeModifier t) {
+         case GrShaderVar::kUniform_TypeModifier: return "uniform";
+     }
+     SK_ABORT("Unknown shader variable type modifier.");
++    SkUNREACHABLE;
+ }
+ 
+ void GrShaderVar::setIOType(GrIOType ioType) {
+@@ -32,6 +33,7 @@ void GrShaderVar::setIOType(GrIOType ioType) {
+             return;
+     }
+     SK_ABORT("Unknown io type.");
++    SkUNREACHABLE;
+ }
+ 
+ void GrShaderVar::appendDecl(const GrShaderCaps* shaderCaps, SkString* out) const {
+diff --git a/gfx/skia/skia/src/gpu/SkGpuDevice.cpp b/gfx/skia/skia/src/gpu/SkGpuDevice.cpp
+index 77b9963ba5cb9c37bfb0942b5d8b3525aa78335a..f6d7ca05dd018368107ebe6d915e8a19f85b326f 100644
+--- a/gfx/skia/skia/src/gpu/SkGpuDevice.cpp
++++ b/gfx/skia/skia/src/gpu/SkGpuDevice.cpp
+@@ -283,6 +283,7 @@ static inline GrPrimitiveType point_mode_to_primitive_type(SkCanvas::PointMode m
+             return GrPrimitiveType::kLineStrip;
+     }
+     SK_ABORT("Unexpected mode");
++    SkUNREACHABLE;
+ }
+ 
+ void SkGpuDevice::drawPoints(SkCanvas::PointMode mode,
+diff --git a/gfx/skia/skia/src/gpu/SkGr.h b/gfx/skia/skia/src/gpu/SkGr.h
+index 79a68822b91b8846a71ad843e3f268200ca9025c..716f59d7e62401b9a287206fd7ffc47d7e6b0deb 100644
+--- a/gfx/skia/skia/src/gpu/SkGr.h
++++ b/gfx/skia/skia/src/gpu/SkGr.h
+@@ -159,6 +159,7 @@ static inline GrPrimitiveType SkVertexModeToGrPrimitiveType(SkVertices::VertexMo
+             break;
+     }
+     SK_ABORT("Invalid mode");
++    SkUNREACHABLE;
+ }
+ 
+ //////////////////////////////////////////////////////////////////////////////
+diff --git a/gfx/skia/skia/src/gpu/ccpr/GrCCCoverageProcessor.h b/gfx/skia/skia/src/gpu/ccpr/GrCCCoverageProcessor.h
+index 5fdb488ea5a286a953c452d5ad7957df87f47765..eb81f47ba607cb9ae4f3eb916a4896f9e51402f3 100644
+--- a/gfx/skia/skia/src/gpu/ccpr/GrCCCoverageProcessor.h
++++ b/gfx/skia/skia/src/gpu/ccpr/GrCCCoverageProcessor.h
+@@ -240,6 +240,7 @@ inline const char* GrCCCoverageProcessor::PrimitiveTypeName(PrimitiveType type)
+         case PrimitiveType::kConics: return "kConics";
+     }
+     SK_ABORT("Invalid PrimitiveType");
++    SkUNREACHABLE;
+ }
+ 
+ inline void GrCCCoverageProcessor::TriPointInstance::set(
+diff --git a/gfx/skia/skia/src/gpu/ccpr/GrCCStrokeGeometry.cpp b/gfx/skia/skia/src/gpu/ccpr/GrCCStrokeGeometry.cpp
+index 40884d7d8f2906d48d6a3a1d5852cd5d35d9a67c..c920365f50a51727d451db3788d2f385820b753e 100644
+--- a/gfx/skia/skia/src/gpu/ccpr/GrCCStrokeGeometry.cpp
++++ b/gfx/skia/skia/src/gpu/ccpr/GrCCStrokeGeometry.cpp
+@@ -60,6 +60,7 @@ static GrCCStrokeGeometry::Verb join_verb_from_join(SkPaint::Join join) {
+             return Verb::kRoundJoin;
+     }
+     SK_ABORT("Invalid SkPaint::Join.");
++    SkUNREACHABLE;
+ }
+ 
+ void GrCCStrokeGeometry::beginPath(const SkStrokeRec& stroke, float strokeDevWidth,
+diff --git a/gfx/skia/skia/src/gpu/ccpr/GrCCStrokeGeometry.h b/gfx/skia/skia/src/gpu/ccpr/GrCCStrokeGeometry.h
+index 24569accc4e521796f7d2916d3f5e7f8c96088c3..d105836141e4b5f06b1608e2579c5255ed5d7afc 100644
+--- a/gfx/skia/skia/src/gpu/ccpr/GrCCStrokeGeometry.h
++++ b/gfx/skia/skia/src/gpu/ccpr/GrCCStrokeGeometry.h
+@@ -175,5 +175,6 @@ inline bool GrCCStrokeGeometry::IsInternalJoinVerb(Verb verb) {
+             return false;
+     }
+     SK_ABORT("Invalid GrCCStrokeGeometry::Verb.");
++    SkUNREACHABLE;
+ }
+ #endif
+diff --git a/gfx/skia/skia/src/gpu/ccpr/GrCoverageCountingPathRenderer.cpp b/gfx/skia/skia/src/gpu/ccpr/GrCoverageCountingPathRenderer.cpp
+index 4e86d7e07147c78b68583fbd14f41d8f9381644e..0376cf40c3bdd0462c9eaf7d42321cadfd0ba740 100644
+--- a/gfx/skia/skia/src/gpu/ccpr/GrCoverageCountingPathRenderer.cpp
++++ b/gfx/skia/skia/src/gpu/ccpr/GrCoverageCountingPathRenderer.cpp
+@@ -164,6 +164,7 @@ GrPathRenderer::CanDrawPath GrCoverageCountingPathRenderer::onCanDrawPath(
+     }
+ 
+     SK_ABORT("Invalid stroke style.");
++    SkUNREACHABLE;
+ }
+ 
+ bool GrCoverageCountingPathRenderer::onDrawPath(const DrawPathArgs& args) {
+diff --git a/gfx/skia/skia/src/gpu/ccpr/GrVSCoverageProcessor.cpp b/gfx/skia/skia/src/gpu/ccpr/GrVSCoverageProcessor.cpp
+index ae5cfca504c21fbc9ced4e66b2e853a17db8a5d8..89beff076a875913592ca7b41af9200995d33d64 100644
+--- a/gfx/skia/skia/src/gpu/ccpr/GrVSCoverageProcessor.cpp
++++ b/gfx/skia/skia/src/gpu/ccpr/GrVSCoverageProcessor.cpp
+@@ -550,4 +550,5 @@ GrGLSLPrimitiveProcessor* GrVSCoverageProcessor::onCreateGLSLInstance(
+             return new Impl(std::move(shader), 4);
+     }
+     SK_ABORT("Invalid PrimitiveType");
++    SkUNREACHABLE;
+ }
+diff --git a/gfx/skia/skia/src/gpu/dawn/GrDawnOpsRenderPass.cpp b/gfx/skia/skia/src/gpu/dawn/GrDawnOpsRenderPass.cpp
+index 48fc8a7f48a8aa3c0905db0c293f8b4215285e5e..9321f43b7eacd990225eea6241211b57e73635cb 100644
+--- a/gfx/skia/skia/src/gpu/dawn/GrDawnOpsRenderPass.cpp
++++ b/gfx/skia/skia/src/gpu/dawn/GrDawnOpsRenderPass.cpp
+@@ -39,7 +39,9 @@ static dawn::LoadOp to_dawn_load_op(GrLoadOp loadOp) {
+             return dawn::LoadOp::Clear;
+         default:
+             SK_ABORT("Invalid LoadOp");
++	    SkUNREACHABLE;
+     }
++    SkUNREACHABLE;
+ }
+ 
+ GrDawnOpsRenderPass::GrDawnOpsRenderPass(GrDawnGpu* gpu, GrRenderTarget* rt, GrSurfaceOrigin origin,
+diff --git a/gfx/skia/skia/src/gpu/dawn/GrDawnUniformHandler.cpp b/gfx/skia/skia/src/gpu/dawn/GrDawnUniformHandler.cpp
+index 74fd1e31a4b602cf9240214b4adce6e224da629c..25461264066172fd62932563b08899a472ea6b19 100644
+--- a/gfx/skia/skia/src/gpu/dawn/GrDawnUniformHandler.cpp
++++ b/gfx/skia/skia/src/gpu/dawn/GrDawnUniformHandler.cpp
+@@ -95,6 +95,7 @@ uint32_t grsltype_to_alignment_mask(GrSLType type) {
+             break;
+     }
+     SK_ABORT("Unexpected type");
++    SkUNREACHABLE;
+ }
+ 
+ static inline uint32_t grsltype_to_size(GrSLType type) {
+@@ -173,6 +174,7 @@ static inline uint32_t grsltype_to_size(GrSLType type) {
+             break;
+     }
+     SK_ABORT("Unexpected type");
++    SkUNREACHABLE;
+ }
+ 
+ uint32_t get_ubo_offset(uint32_t* currentOffset,
+diff --git a/gfx/skia/skia/src/gpu/dawn/GrDawnVaryingHandler.cpp b/gfx/skia/skia/src/gpu/dawn/GrDawnVaryingHandler.cpp
+index b3885d20c903a7eba2742560161190bd2f14defc..0d2bac39def57ab1d7479e8651527815b9f940bc 100644
+--- a/gfx/skia/skia/src/gpu/dawn/GrDawnVaryingHandler.cpp
++++ b/gfx/skia/skia/src/gpu/dawn/GrDawnVaryingHandler.cpp
+@@ -76,6 +76,7 @@ static inline int grsltype_to_location_size(GrSLType type) {
+              return 0;
+     }
+     SK_ABORT("Unexpected type");
++    SkUNREACHABLE;
+ }
+ 
+ static void finalize_helper(GrDawnVaryingHandler::VarArray& vars) {
+diff --git a/gfx/skia/skia/src/gpu/effects/GrConstColorProcessor.fp b/gfx/skia/skia/src/gpu/effects/GrConstColorProcessor.fp
+index 18cc91a4b12d7467f49cda9995b28ab5898a4d67..fd6694bb7648f84b0dc19f494d358a71cb47b14a 100644
+--- a/gfx/skia/skia/src/gpu/effects/GrConstColorProcessor.fp
++++ b/gfx/skia/skia/src/gpu/effects/GrConstColorProcessor.fp
+@@ -58,6 +58,7 @@ void main() {
+                 return color * input;
+         }
+         SK_ABORT("Unexpected mode");
++	SkUNREACHABLE;
+     }
+ }
+ 
+diff --git a/gfx/skia/skia/src/gpu/effects/GrCoverageSetOpXP.cpp b/gfx/skia/skia/src/gpu/effects/GrCoverageSetOpXP.cpp
+index b75842c94a04f8c3bea4b4cd0ff4d30b6f668acc..714fc350d5f9211dab3dc57a2c3c489ee5d6118a 100644
+--- a/gfx/skia/skia/src/gpu/effects/GrCoverageSetOpXP.cpp
++++ b/gfx/skia/skia/src/gpu/effects/GrCoverageSetOpXP.cpp
+@@ -204,6 +204,7 @@ const GrXPFactory* GrCoverageSetOpXPFactory::Get(SkRegion::Op regionOp, bool inv
+     }
+ #undef _CONSTEXPR_
+     SK_ABORT("Unknown region op.");
++    SkUNREACHABLE;
+ }
+ 
+ sk_sp<const GrXferProcessor> GrCoverageSetOpXPFactory::makeXferProcessor(
+diff --git a/gfx/skia/skia/src/gpu/effects/GrPorterDuffXferProcessor.cpp b/gfx/skia/skia/src/gpu/effects/GrPorterDuffXferProcessor.cpp
+index 47d92dbde49572daf4fd8e77e7c271f29c02559b..1d44d9ad825945a0aea60403ff2ed7e19dcf4be6 100644
+--- a/gfx/skia/skia/src/gpu/effects/GrPorterDuffXferProcessor.cpp
++++ b/gfx/skia/skia/src/gpu/effects/GrPorterDuffXferProcessor.cpp
+@@ -753,6 +753,7 @@ const GrXPFactory* GrPorterDuffXPFactory::Get(SkBlendMode blendMode) {
+             return &gScreenPDXPF;
+         default:
+             SK_ABORT("Unexpected blend mode.");
++	    SkUNREACHABLE;
+     }
+ }
+ 
+diff --git a/gfx/skia/skia/src/gpu/effects/GrSkSLFP.cpp b/gfx/skia/skia/src/gpu/effects/GrSkSLFP.cpp
+index 9269ebf668fff1988ba67f1fcddd17a670bf1c57..3169ab6e3f74d4c2648c40760b7a97e51a57e923 100644
+--- a/gfx/skia/skia/src/gpu/effects/GrSkSLFP.cpp
++++ b/gfx/skia/skia/src/gpu/effects/GrSkSLFP.cpp
+@@ -154,6 +154,7 @@ public:
+         }
+         printf("%s\n", SkSL::String(type.fName).c_str());
+         SK_ABORT("unsupported uniform type");
++	SkUNREACHABLE;
+     }
+ 
+     void emitCode(EmitArgs& args) override {
+@@ -568,6 +569,7 @@ std::unique_ptr<GrFragmentProcessor> GrSkSLFP::TestCreate(GrProcessorTestData* d
+         }
+     }
+     SK_ABORT("unreachable");
++    SkUNREACHABLE;
+ }
+ 
+ #endif
+diff --git a/gfx/skia/skia/src/gpu/effects/generated/GrConstColorProcessor.h b/gfx/skia/skia/src/gpu/effects/generated/GrConstColorProcessor.h
+index df64bce9b79c1014c74645a8eaaaa320e527afaa..bc9024cb07ef75890c00b6e68a507c0ef29821ea 100644
+--- a/gfx/skia/skia/src/gpu/effects/generated/GrConstColorProcessor.h
++++ b/gfx/skia/skia/src/gpu/effects/generated/GrConstColorProcessor.h
+@@ -41,6 +41,7 @@ public:
+                 return color * input;
+         }
+         SK_ABORT("Unexpected mode");
++	SkUNREACHABLE;
+     }
+     static std::unique_ptr<GrFragmentProcessor> Make(SkPMColor4f color, InputMode mode) {
+         return std::unique_ptr<GrFragmentProcessor>(new GrConstColorProcessor(color, mode));
+diff --git a/gfx/skia/skia/src/gpu/geometry/GrShape.cpp b/gfx/skia/skia/src/gpu/geometry/GrShape.cpp
+index 4fc3472ffb31ae7e4ee6035bd230d4e86ec87eb4..f16a2c536e617f8da21f53141b86bea65a1d0cb3 100644
+--- a/gfx/skia/skia/src/gpu/geometry/GrShape.cpp
++++ b/gfx/skia/skia/src/gpu/geometry/GrShape.cpp
+@@ -164,6 +164,7 @@ SkRect GrShape::bounds() const {
+             return this->path().getBounds();
+     }
+     SK_ABORT("Unknown shape type");
++    SkUNREACHABLE;
+ }
+ 
+ SkRect GrShape::styledBounds() const {
+@@ -254,6 +255,7 @@ int GrShape::unstyledKeySize() const {
+         }
+     }
+     SK_ABORT("Should never get here.");
++    SkUNREACHABLE;
+ }
+ 
+ void GrShape::writeUnstyledKey(uint32_t* key) const {
+diff --git a/gfx/skia/skia/src/gpu/gl/GrGLCaps.cpp b/gfx/skia/skia/src/gpu/gl/GrGLCaps.cpp
+index 3142399c583b971fb2cb66ed82c17f7d0bb57249..2dab83639a9a23758d89c930200047c13c66ab57 100644
+--- a/gfx/skia/skia/src/gpu/gl/GrGLCaps.cpp
++++ b/gfx/skia/skia/src/gpu/gl/GrGLCaps.cpp
+@@ -4159,6 +4159,7 @@ GrBackendFormat GrGLCaps::getBackendFormatFromCompressionType(
+             return GrBackendFormat::MakeGL(GR_GL_COMPRESSED_ETC1_RGB8, GR_GL_TEXTURE_2D);
+     }
+     SK_ABORT("Invalid compression type");
++    SkUNREACHABLE;
+ }
+ 
+ GrSwizzle GrGLCaps::getTextureSwizzle(const GrBackendFormat& format, GrColorType colorType) const {
+diff --git a/gfx/skia/skia/src/gpu/gl/GrGLGLSL.cpp b/gfx/skia/skia/src/gpu/gl/GrGLGLSL.cpp
+index 2ad38bc35ecd413d7d4fb40485c088c2f2d09e74..8dc730f1b784b7df57f7c7da92ab647358759004 100644
+--- a/gfx/skia/skia/src/gpu/gl/GrGLGLSL.cpp
++++ b/gfx/skia/skia/src/gpu/gl/GrGLGLSL.cpp
+@@ -68,4 +68,5 @@ bool GrGLGetGLSLGeneration(const GrGLInterface* gl, GrGLSLGeneration* generation
+         return true;
+     }
+     SK_ABORT("Unknown GL Standard");
++    SkUNREACHABLE;
+ }
+diff --git a/gfx/skia/skia/src/gpu/gl/GrGLGpu.cpp b/gfx/skia/skia/src/gpu/gl/GrGLGpu.cpp
+index 937e168db5c988477610ab8668216762d5820fba..da66902895d597988feeebe3a24ee1cbc501e35f 100644
+--- a/gfx/skia/skia/src/gpu/gl/GrGLGpu.cpp
++++ b/gfx/skia/skia/src/gpu/gl/GrGLGpu.cpp
+@@ -196,6 +196,7 @@ static int gl_target_to_binding_index(GrGLenum target) {
+             return 2;
+     }
+     SK_ABORT("Unexpected GL texture target.");
++    SkUNREACHABLE;
+ }
+ 
+ GrGpuResource::UniqueID GrGLGpu::TextureUnitBindings::boundID(GrGLenum target) const {
+@@ -234,6 +235,7 @@ static GrGLenum filter_to_gl_mag_filter(GrSamplerState::Filter filter) {
+         case GrSamplerState::Filter::kMipMap:  return GR_GL_LINEAR;
+     }
+     SK_ABORT("Unknown filter");
++    SkUNREACHABLE;
+ }
+ 
+ static GrGLenum filter_to_gl_min_filter(GrSamplerState::Filter filter) {
+@@ -243,6 +245,7 @@ static GrGLenum filter_to_gl_min_filter(GrSamplerState::Filter filter) {
+         case GrSamplerState::Filter::kMipMap:  return GR_GL_LINEAR_MIPMAP_LINEAR;
+     }
+     SK_ABORT("Unknown filter");
++    SkUNREACHABLE;
+ }
+ 
+ static inline GrGLenum wrap_mode_to_gl_wrap(GrSamplerState::WrapMode wrapMode,
+@@ -257,6 +260,7 @@ static inline GrGLenum wrap_mode_to_gl_wrap(GrSamplerState::WrapMode wrapMode,
+             return GR_GL_CLAMP_TO_BORDER;
+     }
+     SK_ABORT("Unknown wrap mode");
++    SkUNREACHABLE;
+ }
+ 
+ ///////////////////////////////////////////////////////////////////////////////
+@@ -1107,7 +1111,7 @@ static bool renderbuffer_storage_msaa(const GrGLContext& ctx,
+             break;
+         case GrGLCaps::kNone_MSFBOType:
+             SK_ABORT("Shouldn't be here if we don't support multisampled renderbuffers.");
+-            break;
++	    SkUNREACHABLE;
+     }
+     return (GR_GL_NO_ERROR == CHECK_ALLOC_ERROR(ctx.interface()));
+ }
+@@ -2275,9 +2279,10 @@ static GrGLenum gr_primitive_type_to_gl_mode(GrPrimitiveType primitiveType) {
+             return GR_GL_LINE_STRIP;
+         case GrPrimitiveType::kPath:
+             SK_ABORT("non-mesh-based GrPrimitiveType");
+-            return 0;
++            SkUNREACHABLE;
+     }
+     SK_ABORT("invalid GrPrimitiveType");
++    SkUNREACHABLE;
+ }
+ 
+ void GrGLGpu::sendMeshToGpu(GrPrimitiveType primitiveType, const GrBuffer* vertexBuffer,
+@@ -4006,7 +4011,8 @@ int GrGLGpu::TextureToCopyProgramIdx(GrTexture* texture) {
+         case kTextureExternalSampler_GrSLType:
+             return 2;
+         default:
+-            SK_ABORT("Unexpected samper type");
++            SK_ABORT("Unexpected sampler type");
++	    SkUNREACHABLE;
+     }
+ }
+ 
+diff --git a/gfx/skia/skia/src/gpu/gl/GrGLPath.cpp b/gfx/skia/skia/src/gpu/gl/GrGLPath.cpp
+index e001bf93a1fc1f637e7f30b95605da3a99864ad8..8d51f00e4b0e88d0c2b3f7a6fed06d53915643cd 100644
+--- a/gfx/skia/skia/src/gpu/gl/GrGLPath.cpp
++++ b/gfx/skia/skia/src/gpu/gl/GrGLPath.cpp
+@@ -197,6 +197,7 @@ static GrPathRendering::FillType convert_skpath_filltype(SkPath::FillType fill)
+     switch (fill) {
+         default:
+             SK_ABORT("Incomplete Switch\n");
++	    SkUNREACHABLE;
+         case SkPath::kWinding_FillType:
+         case SkPath::kInverseWinding_FillType:
+             return GrPathRendering::kWinding_FillType;
+diff --git a/gfx/skia/skia/src/gpu/gl/GrGLTexture.cpp b/gfx/skia/skia/src/gpu/gl/GrGLTexture.cpp
+index a5a1a3708bd6fbcd2a853e39b7e1a120e562f9c2..1a223cf1e2735682f4ef66ff814ca913a86b2dcd 100644
+--- a/gfx/skia/skia/src/gpu/gl/GrGLTexture.cpp
++++ b/gfx/skia/skia/src/gpu/gl/GrGLTexture.cpp
+@@ -25,6 +25,7 @@ GrTextureType GrGLTexture::TextureTypeFromTarget(GrGLenum target) {
+             return GrTextureType::kExternal;
+     }
+     SK_ABORT("Unexpected texture target");
++    SkUNREACHABLE;
+ }
+ 
+ static inline GrGLenum target_from_texture_type(GrTextureType type) {
+@@ -37,8 +38,10 @@ static inline GrGLenum target_from_texture_type(GrTextureType type) {
+             return GR_GL_TEXTURE_EXTERNAL;
+         default:
+             SK_ABORT("Unexpected texture target");
++	    SkUNREACHABLE;
+     }
+     SK_ABORT("Unexpected texture type");
++    SkUNREACHABLE;
+ }
+ 
+ // Because this class is virtually derived from GrSurface we must explicitly call its constructor.
+diff --git a/gfx/skia/skia/src/gpu/gl/GrGLVertexArray.cpp b/gfx/skia/skia/src/gpu/gl/GrGLVertexArray.cpp
+index cfac573241220f12bff64b051aeca6bf8c42b5b8..4d878af131818193f6b04d13bd2e93f32c0d7c9d 100644
+--- a/gfx/skia/skia/src/gpu/gl/GrGLVertexArray.cpp
++++ b/gfx/skia/skia/src/gpu/gl/GrGLVertexArray.cpp
+@@ -80,6 +80,7 @@ static AttribLayout attrib_layout(GrVertexAttribType type) {
+             return {true, 4, GR_GL_UNSIGNED_SHORT};
+     }
+     SK_ABORT("Unknown vertex attrib type");
++    SkUNREACHABLE;
+ };
+ 
+ void GrGLAttribArrayState::set(GrGLGpu* gpu,
+diff --git a/gfx/skia/skia/src/gpu/glsl/GrGLSL.cpp b/gfx/skia/skia/src/gpu/glsl/GrGLSL.cpp
+index afa9159bb0c8360d5960019c52c2ec393e90720b..d073fa6f8bbe4c7d997df4c312415e29947c9eb4 100644
+--- a/gfx/skia/skia/src/gpu/glsl/GrGLSL.cpp
++++ b/gfx/skia/skia/src/gpu/glsl/GrGLSL.cpp
+@@ -98,4 +98,5 @@ const char* GrGLSLTypeString(GrSLType t) {
+             return "sampler";
+     }
+     SK_ABORT("Unknown shader var type.");
++    SkUNREACHABLE;
+ }
+diff --git a/gfx/skia/skia/src/gpu/glsl/GrGLSLVarying.cpp b/gfx/skia/skia/src/gpu/glsl/GrGLSLVarying.cpp
+index ce086a9082b1e733e575658732945c076953dee0..16a0171e7dc228bb283881de11630ffdabe06e9d 100644
+--- a/gfx/skia/skia/src/gpu/glsl/GrGLSLVarying.cpp
++++ b/gfx/skia/skia/src/gpu/glsl/GrGLSLVarying.cpp
+@@ -35,6 +35,7 @@ static bool use_flat_interpolation(GrGLSLVaryingHandler::Interpolation interpola
+             return true;
+     }
+     SK_ABORT("Invalid interpolation");
++    SkUNREACHABLE;
+ }
+ 
+ void GrGLSLVaryingHandler::addVarying(const char* name, GrGLSLVarying* varying,
+diff --git a/gfx/skia/skia/src/gpu/glsl/GrGLSLVertexGeoBuilder.cpp b/gfx/skia/skia/src/gpu/glsl/GrGLSLVertexGeoBuilder.cpp
+index ccec08db8b57f97bae484ec378872859f16c5f90..751b40e9fe366d95c94a4eb6b1fab94b28f1d456 100644
+--- a/gfx/skia/skia/src/gpu/glsl/GrGLSLVertexGeoBuilder.cpp
++++ b/gfx/skia/skia/src/gpu/glsl/GrGLSLVertexGeoBuilder.cpp
+@@ -51,6 +51,7 @@ static const char* input_type_name(GrGLSLGeometryBuilder::InputType in) {
+         case InputType::kTriangles: return "triangles";
+     }
+     SK_ABORT("invalid input type");
++    SkUNREACHABLE;
+ }
+ 
+ static const char* output_type_name(GrGLSLGeometryBuilder::OutputType out) {
+@@ -61,6 +62,7 @@ static const char* output_type_name(GrGLSLGeometryBuilder::OutputType out) {
+         case OutputType::kTriangleStrip: return "triangle_strip";
+     }
+     SK_ABORT("invalid output type");
++    SkUNREACHABLE;
+ }
+ 
+ void GrGLSLGeometryBuilder::configure(InputType inputType, OutputType outputType, int maxVertices,
+diff --git a/gfx/skia/skia/src/gpu/mtl/GrMtlCaps.mm b/gfx/skia/skia/src/gpu/mtl/GrMtlCaps.mm
+index 7511f263663bb0f86bea52f5fe862e67c7a12f88..82ff3db7721001b47b68150033873679c103e3fe 100644
+--- a/gfx/skia/skia/src/gpu/mtl/GrMtlCaps.mm
++++ b/gfx/skia/skia/src/gpu/mtl/GrMtlCaps.mm
+@@ -506,6 +506,7 @@ size_t GrMtlCaps::GetFormatIndex(MTLPixelFormat pixelFormat) {
+         }
+     }
+     SK_ABORT("Invalid MTLPixelFormat");
++    SkUNREACHABLE;
+ }
+ 
+ void GrMtlCaps::initFormatTable() {
+@@ -1011,6 +1012,7 @@ GrBackendFormat GrMtlCaps::getBackendFormatFromCompressionType(
+ #endif
+     }
+     SK_ABORT("Invalid compression type");
++    SkUNREACHABLE;
+ }
+ 
+ GrSwizzle GrMtlCaps::getTextureSwizzle(const GrBackendFormat& format, GrColorType colorType) const {
+diff --git a/gfx/skia/skia/src/gpu/mtl/GrMtlPipelineStateBuilder.mm b/gfx/skia/skia/src/gpu/mtl/GrMtlPipelineStateBuilder.mm
+index 090c41b9de6623618f52b141044909369b84cb29..4be37d4c53deeda93f16f247e96e99865a3146c3 100644
+--- a/gfx/skia/skia/src/gpu/mtl/GrMtlPipelineStateBuilder.mm
++++ b/gfx/skia/skia/src/gpu/mtl/GrMtlPipelineStateBuilder.mm
+@@ -155,6 +155,7 @@ static inline MTLVertexFormat attribute_type_to_mtlformat(GrVertexAttribType typ
+             return MTLVertexFormatUShort4Normalized;
+     }
+     SK_ABORT("Unknown vertex attribute type");
++    SkUNREACHABLE;
+ }
+ 
+ static MTLVertexDescriptor* create_vertex_descriptor(const GrPrimitiveProcessor& primProc) {
+@@ -276,6 +277,7 @@ static MTLBlendFactor blend_coeff_to_mtl_blend(GrBlendCoeff coeff) {
+     }
+ 
+     SK_ABORT("Unknown blend coefficient");
++    SkUNREACHABLE;
+ }
+ 
+ static MTLBlendOperation blend_equation_to_mtl_blend_op(GrBlendEquation equation) {
+diff --git a/gfx/skia/skia/src/gpu/mtl/GrMtlSampler.mm b/gfx/skia/skia/src/gpu/mtl/GrMtlSampler.mm
+index 2d7344eff7b7a5e900e02a350950b93df4f968c4..2d03c968bfa52e607f0d58967c4f0db8e90be604 100644
+--- a/gfx/skia/skia/src/gpu/mtl/GrMtlSampler.mm
++++ b/gfx/skia/skia/src/gpu/mtl/GrMtlSampler.mm
+@@ -38,6 +38,7 @@ static inline MTLSamplerAddressMode wrap_mode_to_mtl_sampler_address(
+             }
+     }
+     SK_ABORT("Unknown wrap mode.");
++    SkUNREACHABLE;
+ }
+ 
+ GrMtlSampler* GrMtlSampler::Create(const GrMtlGpu* gpu, const GrSamplerState& samplerState) {
+diff --git a/gfx/skia/skia/src/gpu/mtl/GrMtlUniformHandler.mm b/gfx/skia/skia/src/gpu/mtl/GrMtlUniformHandler.mm
+index 89e1263eaf9b33badf0e0ffd9be54b47c32e6de0..7a2d0079184d09b00ca0e6356a40817eee8342ef 100644
+--- a/gfx/skia/skia/src/gpu/mtl/GrMtlUniformHandler.mm
++++ b/gfx/skia/skia/src/gpu/mtl/GrMtlUniformHandler.mm
+@@ -90,6 +90,7 @@ static uint32_t grsltype_to_alignment_mask(GrSLType type) {
+             break;
+     }
+     SK_ABORT("Unexpected type");
++    SkUNREACHABLE;
+ }
+ 
+ /** Returns the size in bytes taken up in Metal buffers for GrSLTypes. */
+@@ -172,6 +173,7 @@ static inline uint32_t grsltype_to_mtl_size(GrSLType type) {
+             break;
+     }
+     SK_ABORT("Unexpected type");
++    SkUNREACHABLE;
+ }
+ 
+ // Given the current offset into the ubo, calculate the offset for the uniform we're trying to add
+diff --git a/gfx/skia/skia/src/gpu/mtl/GrMtlUtil.mm b/gfx/skia/skia/src/gpu/mtl/GrMtlUtil.mm
+index eccf435074c84c2a6580637f371094471a6a21d4..b49a43b7ec758e8a16fd4e766f15423d64d08e7b 100644
+--- a/gfx/skia/skia/src/gpu/mtl/GrMtlUtil.mm
++++ b/gfx/skia/skia/src/gpu/mtl/GrMtlUtil.mm
+@@ -112,6 +112,7 @@ bool GrPixelConfigToMTLFormat(GrPixelConfig config, MTLPixelFormat* format) {
+             return true;
+     }
+     SK_ABORT("Unexpected config");
++    SkUNREACHABLE;
+ }
+ 
+ MTLTextureDescriptor* GrGetMTLTextureDescriptor(id<MTLTexture> mtlTexture) {
+diff --git a/gfx/skia/skia/src/gpu/ops/GrDrawVerticesOp.cpp b/gfx/skia/skia/src/gpu/ops/GrDrawVerticesOp.cpp
+index 4b311b5207082e612a2941d5ec0aeab948ac4a28..8a010a1de1fe3a708851de59b8274ea57e391dd5 100644
+--- a/gfx/skia/skia/src/gpu/ops/GrDrawVerticesOp.cpp
++++ b/gfx/skia/skia/src/gpu/ops/GrDrawVerticesOp.cpp
+@@ -610,6 +610,7 @@ static uint32_t seed_vertices(GrPrimitiveType type) {
+             return 0;
+     }
+     SK_ABORT("Incomplete switch\n");
++    SkUNREACHABLE;
+ }
+ 
+ static uint32_t primitive_vertices(GrPrimitiveType type) {
+@@ -627,6 +628,7 @@ static uint32_t primitive_vertices(GrPrimitiveType type) {
+             return 0;
+     }
+     SK_ABORT("Incomplete switch\n");
++    SkUNREACHABLE;
+ }
+ 
+ static SkPoint random_point(SkRandom* random, SkScalar min, SkScalar max) {
+diff --git a/gfx/skia/skia/src/gpu/ops/GrFillRRectOp.cpp b/gfx/skia/skia/src/gpu/ops/GrFillRRectOp.cpp
+index 6b3c023ff689df22cdd9c74ddc34e9770d50f07d..6b28723bd5c84bff56a17d8983777d8a4775ffd2 100644
+--- a/gfx/skia/skia/src/gpu/ops/GrFillRRectOp.cpp
++++ b/gfx/skia/skia/src/gpu/ops/GrFillRRectOp.cpp
+@@ -823,4 +823,5 @@ static bool can_use_hw_derivatives_with_coverage(
+         }
+     }
+     SK_ABORT("Invalid round rect type.");
++    SkUNREACHABLE;
+ }
+diff --git a/gfx/skia/skia/src/gpu/ops/GrOvalOpFactory.cpp b/gfx/skia/skia/src/gpu/ops/GrOvalOpFactory.cpp
+index b32758150f42c6fe7a413f8b820e2c0171f9bd77..10f0d968891f894866216e49c23cc8d7f47e1e4c 100644
+--- a/gfx/skia/skia/src/gpu/ops/GrOvalOpFactory.cpp
++++ b/gfx/skia/skia/src/gpu/ops/GrOvalOpFactory.cpp
+@@ -2283,6 +2283,7 @@ static int rrect_type_to_vert_count(RRectType type) {
+             return kVertsPerOverstrokeRRect;
+     }
+     SK_ABORT("Invalid type");
++    SkUNREACHABLE;
+ }
+ 
+ static int rrect_type_to_index_count(RRectType type) {
+@@ -2295,6 +2296,7 @@ static int rrect_type_to_index_count(RRectType type) {
+             return kIndicesPerOverstrokeRRect;
+     }
+     SK_ABORT("Invalid type");
++    SkUNREACHABLE;
+ }
+ 
+ static const uint16_t* rrect_type_to_indices(RRectType type) {
+@@ -2306,6 +2308,7 @@ static const uint16_t* rrect_type_to_indices(RRectType type) {
+             return gOverstrokeRRectIndices;
+     }
+     SK_ABORT("Invalid type");
++    SkUNREACHABLE;
+ }
+ 
+ ///////////////////////////////////////////////////////////////////////////////////////////////////
+diff --git a/gfx/skia/skia/src/gpu/ops/GrShadowRRectOp.cpp b/gfx/skia/skia/src/gpu/ops/GrShadowRRectOp.cpp
+index 546933bb8a46eb79ae456936e4977e68d7459b28..fadf6096c339f1ae48670fad99dd35b6a70d016e 100644
+--- a/gfx/skia/skia/src/gpu/ops/GrShadowRRectOp.cpp
++++ b/gfx/skia/skia/src/gpu/ops/GrShadowRRectOp.cpp
+@@ -155,6 +155,7 @@ static int rrect_type_to_vert_count(RRectType type) {
+             return kVertsPerOverstrokeRRect;
+     }
+     SK_ABORT("Invalid type");
++    SkUNREACHABLE;
+ }
+ 
+ static int rrect_type_to_index_count(RRectType type) {
+@@ -167,6 +168,7 @@ static int rrect_type_to_index_count(RRectType type) {
+             return kIndicesPerOverstrokeRRect;
+     }
+     SK_ABORT("Invalid type");
++    SkUNREACHABLE;
+ }
+ 
+ static const uint16_t* rrect_type_to_indices(RRectType type) {
+@@ -178,6 +180,7 @@ static const uint16_t* rrect_type_to_indices(RRectType type) {
+             return gRRectIndices;
+     }
+     SK_ABORT("Invalid type");
++    SkUNREACHABLE;
+ }
+ 
+ ///////////////////////////////////////////////////////////////////////////////
+diff --git a/gfx/skia/skia/src/gpu/text/GrTextBlob.h b/gfx/skia/skia/src/gpu/text/GrTextBlob.h
+index ddea88d15fe5bbae3661d656768d1058209931e0..d82e84704f9038c22615e4d79c83c5b5fd02014e 100644
+--- a/gfx/skia/skia/src/gpu/text/GrTextBlob.h
++++ b/gfx/skia/skia/src/gpu/text/GrTextBlob.h
+@@ -125,6 +125,7 @@ public:
+ 
+     void* operator new(size_t) {
+         SK_ABORT("All blobs are created by placement new.");
++	SkUNREACHABLE;
+     }
+ 
+     void* operator new(size_t, void* p) { return p; }
+diff --git a/gfx/skia/skia/src/gpu/text/GrTextBlobVertexRegenerator.cpp b/gfx/skia/skia/src/gpu/text/GrTextBlobVertexRegenerator.cpp
+index 976beaf3d4e336e6b8b6ae45eb69b76ca8e0814a..f9c01dd217d9f6fc7f202b9e22558b3561699b8b 100644
+--- a/gfx/skia/skia/src/gpu/text/GrTextBlobVertexRegenerator.cpp
++++ b/gfx/skia/skia/src/gpu/text/GrTextBlobVertexRegenerator.cpp
+@@ -284,4 +284,5 @@ bool GrTextBlob::VertexRegenerator::regenerate(GrTextBlob::VertexRegenerator::Re
+         return true;
+     }
+     SK_ABORT("Should not get here");
++    SkUNREACHABLE;
+ }
+diff --git a/gfx/skia/skia/src/gpu/vk/GrVkCaps.cpp b/gfx/skia/skia/src/gpu/vk/GrVkCaps.cpp
+index 36e2436a85483fafc17a517d4e4e3b98baaf8915..a914f5a4d5ec49cd4d935c7f03899dae323878cf 100644
+--- a/gfx/skia/skia/src/gpu/vk/GrVkCaps.cpp
++++ b/gfx/skia/skia/src/gpu/vk/GrVkCaps.cpp
+@@ -108,6 +108,7 @@ static FormatCompatibilityClass format_compatibility_class(VkFormat format) {
+ 
+         default:
+             SK_ABORT("Unsupported VkFormat");
++	    SkUNREACHABLE;
+     }
+ }
+ 
+@@ -1656,6 +1657,7 @@ GrBackendFormat GrVkCaps::getBackendFormatFromCompressionType(
+             return GrBackendFormat::MakeVk(VK_FORMAT_ETC2_R8G8B8_UNORM_BLOCK);
+     }
+     SK_ABORT("Invalid compression type");
++    SkUNREACHABLE;
+ }
+ 
+ GrSwizzle GrVkCaps::getTextureSwizzle(const GrBackendFormat& format, GrColorType colorType) const {
+diff --git a/gfx/skia/skia/src/gpu/vk/GrVkMemory.cpp b/gfx/skia/skia/src/gpu/vk/GrVkMemory.cpp
+index ed14a643ec94ec5b9b7c7d2c02198d328650b238..3675c953d4705bf0f79b83565312ae75cde39594 100644
+--- a/gfx/skia/skia/src/gpu/vk/GrVkMemory.cpp
++++ b/gfx/skia/skia/src/gpu/vk/GrVkMemory.cpp
+@@ -28,6 +28,7 @@ static BufferUsage get_buffer_usage(GrVkBuffer::Type type, bool dynamic) {
+             return BufferUsage::kCpuOnly;
+     }
+     SK_ABORT("Invalid GrVkBuffer::Type");
++    SkUNREACHABLE;
+ }
+ 
+ bool GrVkMemory::AllocAndBindBufferMemory(const GrVkGpu* gpu,
+diff --git a/gfx/skia/skia/src/gpu/vk/GrVkPipeline.cpp b/gfx/skia/skia/src/gpu/vk/GrVkPipeline.cpp
+index 6868ff5babfe4009510b4a49bfc011c8a7d728a0..2c7a20a7dbe396c1c29650f4f59f9109b4c8b020 100644
+--- a/gfx/skia/skia/src/gpu/vk/GrVkPipeline.cpp
++++ b/gfx/skia/skia/src/gpu/vk/GrVkPipeline.cpp
+@@ -80,6 +80,7 @@ static inline VkFormat attrib_type_to_vkformat(GrVertexAttribType type) {
+             return VK_FORMAT_R16G16B16A16_UNORM;
+     }
+     SK_ABORT("Unknown vertex attrib type");
++    SkUNREACHABLE;
+ }
+ 
+ static void setup_vertex_input_state(const GrPrimitiveProcessor& primProc,
+@@ -162,8 +163,10 @@ static VkPrimitiveTopology gr_primitive_type_to_vk_topology(GrPrimitiveType prim
+             return VK_PRIMITIVE_TOPOLOGY_LINE_STRIP;
+         case GrPrimitiveType::kPath:
+             SK_ABORT("Unsupported primitive type");
++	    SkUNREACHABLE;
+     }
+     SK_ABORT("invalid GrPrimitiveType");
++    SkUNREACHABLE;
+ }
+ 
+ static void setup_input_assembly_state(GrPrimitiveType primitiveType,
+diff --git a/gfx/skia/skia/src/gpu/vk/GrVkSampler.cpp b/gfx/skia/skia/src/gpu/vk/GrVkSampler.cpp
+index 5dc3544f008951b8e5ec530d4a1f00a723e7febc..306bd96816694e7970207789717fccac478a91e7 100644
+--- a/gfx/skia/skia/src/gpu/vk/GrVkSampler.cpp
++++ b/gfx/skia/skia/src/gpu/vk/GrVkSampler.cpp
+@@ -23,6 +23,7 @@ static inline VkSamplerAddressMode wrap_mode_to_vk_sampler_address(
+             return VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER;
+     }
+     SK_ABORT("Unknown wrap mode.");
++    SkUNREACHABLE;
+ }
+ 
+ GrVkSampler* GrVkSampler::Create(GrVkGpu* gpu, const GrSamplerState& samplerState,
+diff --git a/gfx/skia/skia/src/gpu/vk/GrVkTransferBuffer.h b/gfx/skia/skia/src/gpu/vk/GrVkTransferBuffer.h
+index 210cf228d93cae644bc933a903e1b5e8c6400309..6a6fd90d96decd88bba9011ee5c553a42c696a74 100644
+--- a/gfx/skia/skia/src/gpu/vk/GrVkTransferBuffer.h
++++ b/gfx/skia/skia/src/gpu/vk/GrVkTransferBuffer.h
+@@ -34,6 +34,7 @@ private:
+ 
+     bool onUpdateData(const void* src, size_t srcSizeInBytes) override {
+         SK_ABORT("Not implemented for transfer buffers.");
++	SkUNREACHABLE;
+     }
+ 
+     GrVkGpu* getVkGpu() const {
+diff --git a/gfx/skia/skia/src/gpu/vk/GrVkUniformHandler.cpp b/gfx/skia/skia/src/gpu/vk/GrVkUniformHandler.cpp
+index 6df62ce6a9016e97b3eb41532b5457c2adbcd77d..4ac68735639857d0be48d759aaf2540411c45064 100644
+--- a/gfx/skia/skia/src/gpu/vk/GrVkUniformHandler.cpp
++++ b/gfx/skia/skia/src/gpu/vk/GrVkUniformHandler.cpp
+@@ -89,6 +89,7 @@ static uint32_t grsltype_to_alignment_mask(GrSLType type) {
+             break;
+     }
+     SK_ABORT("Unexpected type");
++    SkUNREACHABLE;
+ }
+ 
+ /** Returns the size in bytes taken up in vulkanbuffers for GrSLTypes. */
+@@ -172,6 +173,7 @@ static inline uint32_t grsltype_to_vk_size(GrSLType type) {
+             break;
+     }
+     SK_ABORT("Unexpected type");
++    SkUNREACHABLE;
+ }
+ 
+ 
+diff --git a/gfx/skia/skia/src/gpu/vk/GrVkVaryingHandler.cpp b/gfx/skia/skia/src/gpu/vk/GrVkVaryingHandler.cpp
+index 5fe2f45373674abfc750720ba43ceef25347e7a1..4b6d61813ddf56078a32c7505cf744070a7ab4ad 100644
+--- a/gfx/skia/skia/src/gpu/vk/GrVkVaryingHandler.cpp
++++ b/gfx/skia/skia/src/gpu/vk/GrVkVaryingHandler.cpp
+@@ -74,6 +74,7 @@ static inline int grsltype_to_location_size(GrSLType type) {
+              return 1;
+     }
+     SK_ABORT("Unexpected type");
++    SkUNREACHABLE;
+ }
+ 
+ static void finalize_helper(GrVkVaryingHandler::VarArray& vars) {
+diff --git a/gfx/skia/skia/src/pdf/SkPDFTag.cpp b/gfx/skia/skia/src/pdf/SkPDFTag.cpp
+index a2248070e89cdc269614fbf19a3402dcffb5b324..15122d50477f98e92afbd48afcc68c7fdbf6fe1a 100644
+--- a/gfx/skia/skia/src/pdf/SkPDFTag.cpp
++++ b/gfx/skia/skia/src/pdf/SkPDFTag.cpp
+@@ -64,6 +64,7 @@ static const char* tag_name_from_type(SkPDF::DocumentStructureType type) {
+         #undef M
+     }
+     SK_ABORT("bad tag");
++    SkUNREACHABLE;
+ }
+ 
+ struct SkPDFTagNode {
+diff --git a/gfx/skia/skia/src/ports/SkFontMgr_FontConfigInterface.cpp b/gfx/skia/skia/src/ports/SkFontMgr_FontConfigInterface.cpp
+index 23986cbaaa9329d7a55fcfb654f2ca786f8f9e17..e78c47b11ad9f7483a41e0271305e4ca2de96509 100644
+--- a/gfx/skia/skia/src/ports/SkFontMgr_FontConfigInterface.cpp
++++ b/gfx/skia/skia/src/ports/SkFontMgr_FontConfigInterface.cpp
+@@ -173,18 +173,22 @@ public:
+ protected:
+     int onCountFamilies() const override {
+         SK_ABORT("Not implemented.");
++	SkUNREACHABLE;
+     }
+ 
+     void onGetFamilyName(int index, SkString* familyName) const override {
+         SK_ABORT("Not implemented.");
++	SkUNREACHABLE;
+     }
+ 
+     SkFontStyleSet* onCreateStyleSet(int index) const override {
+         SK_ABORT("Not implemented.");
++	SkUNREACHABLE;
+     }
+ 
+     SkFontStyleSet* onMatchFamily(const char familyName[]) const override {
+         SK_ABORT("Not implemented.");
++	SkUNREACHABLE;
+     }
+ 
+     SkTypeface* onMatchFamilyStyle(const char requestedFamilyName[],
+@@ -215,10 +219,12 @@ protected:
+                                             const char* bcp47[], int bcp47Count,
+                                             SkUnichar character) const override {
+         SK_ABORT("Not implemented.");
++	SkUNREACHABLE;
+     }
+ 
+     SkTypeface* onMatchFaceStyle(const SkTypeface*, const SkFontStyle&) const override {
+         SK_ABORT("Not implemented.");
++	SkUNREACHABLE;
+     }
+ 
+     sk_sp<SkTypeface> onMakeFromData(sk_sp<SkData> data, int ttcIndex) const override {
+diff --git a/gfx/skia/skia/src/shaders/SkImageShader.cpp b/gfx/skia/skia/src/shaders/SkImageShader.cpp
+index 5bc13e587c796656e5b9205d295f9e9ea5a88174..968e3cffaedb016659aef8d21dc1b1d16bf296a6 100644
+--- a/gfx/skia/skia/src/shaders/SkImageShader.cpp
++++ b/gfx/skia/skia/src/shaders/SkImageShader.cpp
+@@ -183,6 +183,7 @@ static GrSamplerState::WrapMode tile_mode_to_wrap_mode(const SkTileMode tileMode
+             return GrSamplerState::WrapMode::kClampToBorder;
+     }
+     SK_ABORT("Unknown tile mode.");
++    SkUNREACHABLE;
+ }
+ 
+ std::unique_ptr<GrFragmentProcessor> SkImageShader::asFragmentProcessor(
+diff --git a/gfx/skia/skia/src/utils/SkShadowUtils.cpp b/gfx/skia/skia/src/utils/SkShadowUtils.cpp
+index 1b47af5523749d42226401118704b9d6e19dc036..f0ae0411d0f9642c3bec9417178769d2d0c7936b 100644
+--- a/gfx/skia/skia/src/utils/SkShadowUtils.cpp
++++ b/gfx/skia/skia/src/utils/SkShadowUtils.cpp
+@@ -149,6 +149,7 @@ struct SpotVerticesFactory {
+                 return false;
+         }
+         SK_ABORT("Uninitialized occluder type?");
++	SkUNREACHABLE;
+     }
+ 
+     sk_sp<SkVertices> makeVertices(const SkPath& path, const SkMatrix& ctm,
+diff --git a/intl/icu/source/i18n/number_rounding.cpp b/intl/icu/source/i18n/number_rounding.cpp
+index a9b3f16c050d946c9084fe2dd3b5c567726e185f..48b2e9867350c83a7e309163bd88ec5a8ca1335e 100644
+--- a/intl/icu/source/i18n/number_rounding.cpp
++++ b/intl/icu/source/i18n/number_rounding.cpp
+@@ -283,6 +283,7 @@ FractionPrecision Precision::constructFraction(int32_t minFrac, int32_t maxFrac)
+     settings.fMaxFrac = static_cast<digits_t>(maxFrac);
+     settings.fMinSig = -1;
+     settings.fMaxSig = -1;
++    settings.fPriority = UNUM_ROUNDING_PRIORITY_RELAXED;
+     PrecisionUnion union_;
+     union_.fracSig = settings;
+     return {RND_FRACTION, union_};
+@@ -294,6 +295,7 @@ Precision Precision::constructSignificant(int32_t minSig, int32_t maxSig) {
+     settings.fMaxFrac = -1;
+     settings.fMinSig = static_cast<digits_t>(minSig);
+     settings.fMaxSig = static_cast<digits_t>(maxSig);
++    settings.fPriority = UNUM_ROUNDING_PRIORITY_RELAXED;
+     PrecisionUnion union_;
+     union_.fracSig = settings;
+     return {RND_SIGNIFICANT, union_};
+diff --git a/third_party/libwebrtc/api/adaptation/resource.cc b/third_party/libwebrtc/api/adaptation/resource.cc
+index dac03fe019d89482e91a29242b3027da80f28c8b..e18a04b4c5c95d1449662cfd8f7a7f978f6461c3 100644
+--- a/third_party/libwebrtc/api/adaptation/resource.cc
++++ b/third_party/libwebrtc/api/adaptation/resource.cc
+@@ -22,6 +22,7 @@ const char* ResourceUsageStateToString(ResourceUsageState usage_state) {
+       return "kUnderuse";
+   }
+   RTC_CHECK_NOTREACHED();
++  return nullptr;
+ }
+ 
+ ResourceListener::~ResourceListener() {}
+diff --git a/third_party/libwebrtc/api/rtp_parameters.cc b/third_party/libwebrtc/api/rtp_parameters.cc
+index c1d12e5d8dc4be47fd751d656c99174b1433de09..e7fdfc2b7fc14a30df1d8770365985f219e7d4b7 100644
+--- a/third_party/libwebrtc/api/rtp_parameters.cc
++++ b/third_party/libwebrtc/api/rtp_parameters.cc
+@@ -32,6 +32,7 @@ const char* DegradationPreferenceToString(
+       return "balanced";
+   }
+   RTC_CHECK_NOTREACHED();
++  return "";
+ }
+ 
+ const double kDefaultBitratePriority = 1.0;
+diff --git a/third_party/libwebrtc/api/video/video_frame_buffer.cc b/third_party/libwebrtc/api/video/video_frame_buffer.cc
+index 398e30b606fe8bc24fe6d89bbdaf4176507ff2d6..598ead31e889f0a67112094b08dac5f0f1248a62 100644
+--- a/third_party/libwebrtc/api/video/video_frame_buffer.cc
++++ b/third_party/libwebrtc/api/video/video_frame_buffer.cc
+@@ -99,6 +99,8 @@ const char* VideoFrameBufferTypeToString(VideoFrameBuffer::Type type) {
+     default:
+       RTC_DCHECK_NOTREACHED();
+   }
++  RTC_DCHECK_NOTREACHED();
++  return nullptr;
+ }
+ 
+ int I420BufferInterface::ChromaWidth() const {
+diff --git a/third_party/libwebrtc/api/video_codecs/video_codec.cc b/third_party/libwebrtc/api/video_codecs/video_codec.cc
+index c6122d3f6ac3056ebcc654e1c268923f6057a738..1c78e6c0071a4ae36913d47e67d05389270f5095 100644
+--- a/third_party/libwebrtc/api/video_codecs/video_codec.cc
++++ b/third_party/libwebrtc/api/video_codecs/video_codec.cc
+@@ -118,6 +118,7 @@ const char* CodecTypeToPayloadString(VideoCodecType type) {
+       return kPayloadNameGeneric;
+   }
+   RTC_CHECK_NOTREACHED();
++  return "";
+ }
+ 
+ VideoCodecType PayloadStringToCodecType(const std::string& name) {
+diff --git a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc b/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
+index 39c52a008181cd2cf5fb2b3589816dfd3f03a6ba..24df68f62d0f27d3f0e2e099f1f694fe2fd4e982 100644
+--- a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
++++ b/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
+@@ -163,6 +163,7 @@ class VideoEncoderSoftwareFallbackWrapper final : public VideoEncoder {
+         return fallback_encoder_.get();
+     }
+     RTC_CHECK_NOTREACHED();
++    return nullptr;
+   }
+ 
+   // Updates encoder with last observed parameters, such as callbacks, rates,
+@@ -343,6 +344,7 @@ int32_t VideoEncoderSoftwareFallbackWrapper::Encode(
+       return fallback_encoder_->Encode(frame, frame_types);
+   }
+   RTC_CHECK_NOTREACHED();
++  return WEBRTC_VIDEO_CODEC_ERROR;
+ }
+ 
+ int32_t VideoEncoderSoftwareFallbackWrapper::EncodeWithMainEncoder(
+diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
+index f30a4d7abb37a63eeea637b52d0dc8103c2fefe0..42dbaa0e8c84c6edc2c77f505a78ac47815fae3d 100644
+--- a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
++++ b/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
+@@ -168,6 +168,7 @@ const char* Adaptation::StatusToString(Adaptation::Status status) {
+       return "kRejectedByConstraint";
+   }
+   RTC_CHECK_NOTREACHED();
++  return "";
+ }
+ 
+ Adaptation::Adaptation(int validation_id,
+@@ -390,6 +391,7 @@ VideoStreamAdapter::RestrictionsOrState VideoStreamAdapter::GetAdaptationUpStep(
+       return Adaptation::Status::kAdaptationDisabled;
+   }
+   RTC_CHECK_NOTREACHED();
++  return Adaptation::Status::kAdaptationDisabled;
+ }
+ 
+ Adaptation VideoStreamAdapter::GetAdaptationDown() {
+@@ -472,6 +474,7 @@ VideoStreamAdapter::GetAdaptationDownStep(
+       return Adaptation::Status::kAdaptationDisabled;
+   }
+   RTC_CHECK_NOTREACHED();
++  return Adaptation::Status::kAdaptationDisabled;
+ }
+ 
+ VideoStreamAdapter::RestrictionsOrState VideoStreamAdapter::DecreaseResolution(
+@@ -625,6 +628,8 @@ Adaptation VideoStreamAdapter::GetAdaptDownResolution() {
+     }
+   }
+   RTC_CHECK_NOTREACHED();
++  return RestrictionsOrStateToAdaptation(
++         Adaptation::Status::kAdaptationDisabled, input_state);
+ }
+ 
+ VideoStreamAdapter::RestrictionsOrState
+diff --git a/third_party/libwebrtc/call/video_send_stream.cc b/third_party/libwebrtc/call/video_send_stream.cc
+index 241d44a2303a10c7a13557080665ee677835c4d0..0e4e28a70c76220121bedbc7e670045b63238a9b 100644
+--- a/third_party/libwebrtc/call/video_send_stream.cc
++++ b/third_party/libwebrtc/call/video_send_stream.cc
+@@ -30,6 +30,7 @@ const char* StreamTypeToString(VideoSendStream::StreamStats::StreamType type) {
+       return "flexfec";
+   }
+   RTC_CHECK_NOTREACHED();
++  return "";
+ }
+ 
+ }  // namespace
+diff --git a/third_party/libwebrtc/modules/audio_processing/agc/clipping_predictor.cc b/third_party/libwebrtc/modules/audio_processing/agc/clipping_predictor.cc
+index 58b3a2769cdaa72ff4045c7c23fd006237140198..ce0fa8e417c8e77e7d449ca9d65dabf1e0b160ff 100644
+--- a/third_party/libwebrtc/modules/audio_processing/agc/clipping_predictor.cc
++++ b/third_party/libwebrtc/modules/audio_processing/agc/clipping_predictor.cc
+@@ -378,6 +378,7 @@ std::unique_ptr<ClippingPredictor> CreateClippingPredictor(
+           /*adaptive_step_estimation=*/false);
+   }
+   RTC_DCHECK_NOTREACHED();
++  return nullptr;
+ }
+ 
+ }  // namespace webrtc
+diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc b/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
+index 91501fb6e32cb00fa79ce170e95d7e49301717e6..d87d9586e103a8e5edf703a3e516f73e91e3516d 100644
+--- a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
++++ b/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
+@@ -59,6 +59,8 @@ rtc::FunctionView<float(float)> GetActivationFunction(
+     case ActivationFunction::kSigmoidApproximated:
+       return ::rnnoise::SigmoidApproximated;
+   }
++  // supposed to be never reached apparently therefore returning bogus
++  return ::rnnoise::TansigApproximated;
+ }
+ 
+ }  // namespace
+diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc b/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
+index 81d96609a4bc796c4ef7b1fdfed53b63d57037d3..946045e0e85b89fb771a0b8ff69b9154c06f1871 100644
+--- a/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
++++ b/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
+@@ -120,6 +120,7 @@ GainControl::Mode Agc1ConfigModeToInterfaceMode(
+       return GainControl::kFixedDigital;
+   }
+   RTC_CHECK_NOTREACHED();
++  return GainControl::kAdaptiveAnalog;
+ }
+ 
+ bool MinimizeProcessingForUnusedOutput() {
+@@ -1985,6 +1986,7 @@ void AudioProcessingImpl::InitializeNoiseSuppressor() {
+               return NsConfig::SuppressionLevel::k21dB;
+           }
+           RTC_CHECK_NOTREACHED();
++	  return NsConfig::SuppressionLevel::k6dB;
+         };
+ 
+     NsConfig cfg;
+diff --git a/third_party/libwebrtc/modules/audio_processing/include/audio_processing.cc b/third_party/libwebrtc/modules/audio_processing/include/audio_processing.cc
+index 86edaee0878d3e51b41b0a9f1679a6ebf825d167..784f7ad2029cb586a55c8cbb8600b09b8f80cce9 100644
+--- a/third_party/libwebrtc/modules/audio_processing/include/audio_processing.cc
++++ b/third_party/libwebrtc/modules/audio_processing/include/audio_processing.cc
+@@ -32,6 +32,7 @@ std::string NoiseSuppressionLevelToString(
+       return "VeryHigh";
+   }
+   RTC_CHECK_NOTREACHED();
++  return "";
+ }
+ 
+ std::string GainController1ModeToString(const Agc1Config::Mode& mode) {
+@@ -44,6 +45,7 @@ std::string GainController1ModeToString(const Agc1Config::Mode& mode) {
+       return "FixedDigital";
+   }
+   RTC_CHECK_NOTREACHED();
++  return "";
+ }
+ 
+ }  // namespace
+diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
+index f1e4eddb4b9d8855f6accf24ef980cbc11d0077d..b3fde3cda3c7c636b8f37f3778fb3b735a61d66d 100644
+--- a/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
++++ b/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
+@@ -38,6 +38,7 @@ std::unique_ptr<VideoRtpDepacketizer> CreateVideoRtpDepacketizer(
+       return std::make_unique<VideoRtpDepacketizerGeneric>();
+   }
+   RTC_CHECK_NOTREACHED();
++  return nullptr;
+ }
+ 
+ }  // namespace webrtc
+diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
+index b45fb12e4893fffb88b7bccff347258acada9202..22b8ef99bc77925ab8bc69f9e489d98a52c37dfa 100644
+--- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
++++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
+@@ -142,6 +142,7 @@ bool IsNonVolatile(RTPExtensionType type) {
+ #endif
+   }
+   RTC_CHECK_NOTREACHED();
++  return false;
+ }
+ 
+ bool HasBweExtension(const RtpHeaderExtensionMap& extensions_map) {
+diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
+index 244f644bd1a1ee8f61e322270012b2cfbec5afda..c2187e469c1b078223a1fdf0266a3e82d9d9a64f 100644
+--- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
++++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
+@@ -45,6 +45,7 @@ namespace {
+       return "audio_cn";
+   }
+   RTC_CHECK_NOTREACHED();
++  return "";
+ }
+ 
+ constexpr char kIncludeCaptureClockOffset[] =
+diff --git a/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc b/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc
+index 5aebd2c5268e8c58b07be4bc393f83ac5abd1c09..8d18446430ff4b7f6d0d669416e3493de3b41411 100644
+--- a/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc
++++ b/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc
+@@ -30,6 +30,7 @@ TemporalLayersChecker::CreateTemporalLayersChecker(Vp8TemporalLayersType type,
+       return std::make_unique<TemporalLayersChecker>(num_temporal_layers);
+   }
+   RTC_CHECK_NOTREACHED();
++  return nullptr;
+ }
+ 
+ TemporalLayersChecker::TemporalLayersChecker(int num_temporal_layers)
+diff --git a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc b/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
+index 2470bc889383a572605021edbaec01ac5ed34ddb..37309e4822f16d3f4a38d4c6719b6773b30b8372 100644
+--- a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
++++ b/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
+@@ -63,6 +63,7 @@ std::string ToString(VideoAdaptationReason reason) {
+       return "cpu";
+   }
+   RTC_CHECK_NOTREACHED();
++  return "";
+ }
+ 
+ std::vector<bool> GetActiveLayersFlags(const VideoCodec& codec) {
+diff --git a/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/ast_to_hir.cpp b/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/ast_to_hir.cpp
+index c00298a160519c604ab84e089ed4dfdcc92cd28c..74b9d1aef31c0738c89423d3c5377c271dfb1f4f 100644
+--- a/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/ast_to_hir.cpp
++++ b/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/ast_to_hir.cpp
+@@ -2651,6 +2651,7 @@ get_type_name_for_precision_qualifier(const glsl_type *type)
+    default:
+       unreachable("Unsupported type");
+    } /* base type */
++   return "";
+ }
+ 
+ static unsigned
+diff --git a/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/ir.cpp b/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/ir.cpp
+index 9ea8e00d310a0d14b3a8618c78b0afa377f90da7..2dee2ccdcd16b9e562fc6961c0b7bb497cf868eb 100644
+--- a/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/ir.cpp
++++ b/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/ir.cpp
+@@ -624,6 +624,7 @@ ir_expression::get_num_operands(ir_expression_operation op)
+       return 4;
+ 
+    unreachable("Could not calculate number of operands");
++   return -1;
+ }
+ 
+ #include "ir_expression_operation_strings.h"
+diff --git a/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/loop_analysis.cpp b/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/loop_analysis.cpp
+index 9429e69c2a7fe4c7176bf60164bcb7e311336425..8d9da42434c5877d6d5e5c91a8ebc38fd8ba2569 100644
+--- a/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/loop_analysis.cpp
++++ b/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/loop_analysis.cpp
+@@ -239,6 +239,7 @@ incremented_before_terminator(ir_loop *loop, ir_variable *var,
+    }
+ 
+    unreachable("Unable to find induction variable");
++   return false;
+ }
+ 
+ /**
+diff --git a/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/opt_vectorize.cpp b/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/opt_vectorize.cpp
+index 88318cd8a6eb7326d3b6a860918b38dcdf662536..63a535c8021436bf44bee45c571ce3e98c3b90b9 100644
+--- a/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/opt_vectorize.cpp
++++ b/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/opt_vectorize.cpp
+@@ -229,6 +229,7 @@ write_mask_to_swizzle(unsigned write_mask)
+    case WRITEMASK_W: return SWIZZLE_W;
+    }
+    unreachable("not reached");
++   return 0;
+ }
+ 
+ /**
+diff --git a/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl_types.cpp b/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl_types.cpp
+index 445659599c2230dc21e9122b029eefccd4da3b1e..615ab6215a76ed2bb2d5a354923468765582455a 100644
+--- a/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl_types.cpp
++++ b/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl_types.cpp
+@@ -460,6 +460,7 @@ const glsl_type *glsl_type::get_bare_type() const
+    }
+ 
+    unreachable("Invalid base type");
++   return nullptr;
+ }
+ 
+ const glsl_type *glsl_type::get_float16_type() const
+@@ -2016,6 +2017,7 @@ glsl_type::get_explicit_std140_type(bool row_major) const
+       return type;
+    } else {
+       unreachable("Invalid type for UBO or SSBO");
++      return nullptr;
+    }
+ }
+ 
+@@ -2374,6 +2376,7 @@ glsl_type::get_explicit_std430_type(bool row_major) const
+       return type;
+    } else {
+       unreachable("Invalid type for SSBO");
++      return nullptr;
+    }
+ }
+ 
+@@ -2448,6 +2451,7 @@ glsl_type::get_explicit_type_for_size_align(glsl_type_size_align_func type_info,
+                                      this->matrix_columns, stride, false);
+    } else {
+       unreachable("Unhandled type.");
++      return nullptr;
+    }
+ }
+ 
+@@ -2948,6 +2952,7 @@ glsl_get_sampler_dim_coordinate_components(enum glsl_sampler_dim dim)
+       return 3;
+    default:
+       unreachable("Unknown sampler dim");
++      return -1;
+    }
+ }
+ 
+diff --git a/third_party/rust/glslopt/glsl-optimizer/src/mesa/main/shaderobj.h b/third_party/rust/glslopt/glsl-optimizer/src/mesa/main/shaderobj.h
+index 0d512550de470344cb8eb371bd7fa1ed22cad6e0..ef940cabdd6e7c9326c283ae6a90e3e387bc0b51 100644
+--- a/third_party/rust/glslopt/glsl-optimizer/src/mesa/main/shaderobj.h
++++ b/third_party/rust/glslopt/glsl-optimizer/src/mesa/main/shaderobj.h
+@@ -185,6 +185,7 @@ _mesa_shader_stage_from_subroutine_uniform(GLenum subuniform)
+       return MESA_SHADER_TESS_EVAL;
+    }
+    unreachable("not reached");
++   return MESA_SHADER_NONE;
+ }
+ 
+ static inline gl_shader_stage
+@@ -205,6 +206,7 @@ _mesa_shader_stage_from_subroutine(GLenum subroutine)
+       return MESA_SHADER_TESS_EVAL;
+    }
+    unreachable("not reached");
++   return MESA_SHADER_NONE;
+ }
+ 
+ static inline GLenum
+@@ -230,6 +232,7 @@ _mesa_shader_stage_to_subroutine(gl_shader_stage stage)
+       break;
+    }
+    unreachable("not reached");
++   return GL_VERTEX_PROGRAM_ARB;
+ }
+ 
+ static inline GLenum
+@@ -253,6 +256,7 @@ _mesa_shader_stage_to_subroutine_uniform(gl_shader_stage stage)
+       break;
+    }
+    unreachable("not reached");
++   return GL_VERTEX_PROGRAM_ARB;
+ }
+ 
+ extern bool

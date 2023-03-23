@@ -1,0 +1,22 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Petr Cerny <pcerny@novell.com>
+Date: Tue, 15 Feb 2011 00:04:06 +0100
+Subject: [PATCH] Bug 634334 - call to the ntlm_auth helper fails
+
+---
+ extensions/auth/nsAuthSambaNTLM.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/extensions/auth/nsAuthSambaNTLM.cpp b/extensions/auth/nsAuthSambaNTLM.cpp
+index 5b701f2379784d3b79a5d3e4d40e414bec3d03f5..4004a5cfc79a3ea16ea20e7915b4fcacd039f6a4 100644
+--- a/extensions/auth/nsAuthSambaNTLM.cpp
++++ b/extensions/auth/nsAuthSambaNTLM.cpp
+@@ -160,7 +160,7 @@ nsresult nsAuthSambaNTLM::SpawnNTLMAuthHelper() {
+   const char* username = PR_GetEnv("USER");
+   if (!username) return NS_ERROR_FAILURE;
+ 
+-  const char* const args[] = {"ntlm_auth",
++  const char* const args[] = {"/usr/bin/ntlm_auth",
+                               "--helper-protocol",
+                               "ntlmssp-client-1",
+                               "--use-cached-creds",

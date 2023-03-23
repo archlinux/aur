@@ -1,7 +1,7 @@
-From bb0d0a304ff3b88ab43209cca723a1fa03904aad Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Thomas Deutschmann <whissi@gentoo.org>
 Date: Mon, 6 Apr 2020 20:13:34 +0200
-Subject: [PATCH 20/34] Make PGO use toolchain
+Subject: [PATCH] Make PGO use toolchain
 
 Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
 ---
@@ -9,7 +9,7 @@ Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
  1 file changed, 9 insertions(+)
 
 diff --git a/build/unix/mozconfig.unix b/build/unix/mozconfig.unix
-index 9ca9c97fce..9f86fe0940 100644
+index 22db5d401cd0b1081edd0ca558dfff3a77e5bd2a..b2fde82694b81eb3e2ec316088070051ad073db9 100644
 --- a/build/unix/mozconfig.unix
 +++ b/build/unix/mozconfig.unix
 @@ -4,6 +4,15 @@ if [ -n "$FORCE_GCC" ]; then
@@ -27,7 +27,4 @@ index 9ca9c97fce..9f86fe0940 100644
 +
      # We want to make sure we use binutils and other binaries in the tooltool
      # package.
-     mk_add_options "export PATH=$MOZ_FETCHES_DIR/gcc/bin:$PATH"
--- 
-2.33.1
-
+     mk_add_options "export PATH=$MOZ_FETCHES_DIR/gcc/bin:$MOZ_FETCHES_DIR/binutils/bin:$PATH"

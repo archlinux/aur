@@ -1,0 +1,51 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Jan Hubicka <hubicka@ucw.cz>
+Date: Sat, 22 Dec 2018 09:32:00 +0200
+Subject: [PATCH] Bug 1516081 - Disable watchdog during FDO train
+
+Bug: https://bugzilla.mozilla.org/show_bug.cgi?id=1516081
+---
+ build/moz.configure/lto-pgo.configure          | 4 ++--
+ toolkit/components/terminator/nsTerminator.cpp | 7 +++++++
+ 2 files changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/build/moz.configure/lto-pgo.configure b/build/moz.configure/lto-pgo.configure
+index de7e424326c47799b7a81f3812d5402f24b6a9f3..61310ce33a3897357a7bf75a1317c66744098c13 100644
+--- a/build/moz.configure/lto-pgo.configure
++++ b/build/moz.configure/lto-pgo.configure
+@@ -85,7 +85,7 @@ def pgo_flags(compiler, profdata, target_is_windows):
+     if compiler.type == "gcc":
+         profile_use = "-fprofile-use"
+         return namespace(
+-            gen_cflags=["-fprofile-generate"],
++            gen_cflags=["-fprofile-generate", "-DMOZ_PROFILE_INSTRUMENTATION"],
+             gen_ldflags=["-fprofile-generate"],
+             use_cflags=[profile_use, "-fprofile-correction", "-Wcoverage-mismatch"],
+             use_ldflags=[profile_use],
+@@ -99,7 +99,7 @@ def pgo_flags(compiler, profdata, target_is_windows):
+         else:
+             gen_ldflags = ["-fprofile-generate"]
+ 
+-        gen_cflags = [prefix + "-fprofile-generate"]
++        gen_cflags = [prefix + "-fprofile-generate", "-DMOZ_PROFILE_INSTRUMENTATION"]
+         if target_is_windows:
+             # native llvm-profdata.exe on Windows can't read profile data
+             # if name compression is enabled (which cross-compiling enables
+diff --git a/toolkit/components/terminator/nsTerminator.cpp b/toolkit/components/terminator/nsTerminator.cpp
+index 3a8f9f4ba63e64695083a70ccfe38cc8baeb7654..b96d9ef138b42fb114d755218c2622b40d6a3bee 100644
+--- a/toolkit/components/terminator/nsTerminator.cpp
++++ b/toolkit/components/terminator/nsTerminator.cpp
+@@ -460,6 +460,13 @@ void nsTerminator::StartWatchdog() {
+   }
+ #endif
+ 
++  // Disable watchdog for PGO train builds - writting profile information at
++  // exit may take time and it is better to make build hang rather than
++  // silently produce poorly performing binary.
++#ifdef MOZ_PROFILE_INSTRUMENTATION
++  crashAfterMS = INT32_MAX;
++#endif
++
+   UniquePtr<Options> options(new Options());
+   // crashAfterTicks is guaranteed to be > 0 as
+   // crashAfterMS >= ADDITIONAL_WAIT_BEFORE_CRASH_MS >> HEARTBEAT_INTERVAL_MS

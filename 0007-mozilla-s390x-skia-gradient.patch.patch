@@ -1,0 +1,58 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Martin Sirringhaus <msirringhaus@suse.de>
+Date: Fri, 27 Mar 2020 13:42:24 +0100
+Subject: [PATCH] mozilla-s390x-skia-gradient.patch
+
+---
+ .../shaders/gradients/Sk4fLinearGradient.cpp  | 20 ++++++++++++++++---
+ 1 file changed, 17 insertions(+), 3 deletions(-)
+
+diff --git a/gfx/skia/skia/src/shaders/gradients/Sk4fLinearGradient.cpp b/gfx/skia/skia/src/shaders/gradients/Sk4fLinearGradient.cpp
+index b4266ced9d26cb6a6a44ae3d9a84de1080a0e6cb..89b478fd1c4a540ee4d275018703bb347b46c3ba 100644
+--- a/gfx/skia/skia/src/shaders/gradients/Sk4fLinearGradient.cpp
++++ b/gfx/skia/skia/src/shaders/gradients/Sk4fLinearGradient.cpp
+@@ -7,7 +7,7 @@
+ 
+ #include "include/core/SkPaint.h"
+ #include "src/shaders/gradients/Sk4fLinearGradient.h"
+-
++#include "src/core/SkEndian.h"
+ #include <cmath>
+ #include <utility>
+ 
+@@ -28,6 +28,9 @@ void ramp(const Sk4f& c, const Sk4f& dc, SkPMColor dst[], int n,
+ 
+     while (n >= 4) {
+         DstTraits<premul>::store4x(c0, c1, c2, c3, dst, bias0, bias1);
++#ifdef SK_CPU_BENDIAN
++        SkEndianSwap32s(dst, 4);
++#endif
+         dst += 4;
+ 
+         c0 = c0 + dc4;
+@@ -37,12 +40,23 @@ void ramp(const Sk4f& c, const Sk4f& dc, SkPMColor dst[], int n,
+         n -= 4;
+     }
+     if (n & 2) {
+-        DstTraits<premul>::store(c0, dst++, bias0);
+-        DstTraits<premul>::store(c1, dst++, bias1);
++        DstTraits<premul>::store(c0, dst, bias0);
++#ifdef SK_CPU_BENDIAN
++        *dst = SkEndianSwap32(*dst);
++#endif
++        ++dst;
++        DstTraits<premul>::store(c1, dst, bias1);
++#ifdef SK_CPU_BENDIAN
++        *dst = SkEndianSwap32(*dst);
++#endif
++        ++dst;
+         c0 = c0 + dc2;
+     }
+     if (n & 1) {
+         DstTraits<premul>::store(c0, dst, bias0);
++#ifdef SK_CPU_BENDIAN
++        *dst = SkEndianSwap32(*dst);
++#endif
+     }
+ }
+ 

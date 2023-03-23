@@ -1,0 +1,33 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Wolfgang Rosenauer <wolfgang@rosenauer.org>
+Date: Tue, 21 May 2019 14:48:35 +0200
+Subject: [PATCH] Do not use gconf for proxy settings if not running within
+ Gnome
+
+---
+ .../system/unixproxy/nsUnixSystemProxySettings.cpp   | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp b/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp
+index 982faf7d7968430cdf44928f2408847df55170d2..185dc1e22a903cec95b212d1713dddf764b9b198 100644
+--- a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp
++++ b/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp
+@@ -52,10 +52,14 @@ nsUnixSystemProxySettings::GetMainThreadOnly(bool* aMainThreadOnly) {
+ }
+ 
+ void nsUnixSystemProxySettings::Init() {
+-  mGSettings = do_GetService(NS_GSETTINGSSERVICE_CONTRACTID);
+-  if (mGSettings) {
+-    mGSettings->GetCollectionForSchema("org.gnome.system.proxy"_ns,
+-                                       getter_AddRefs(mProxySettings));
++  const char* sessionType = PR_GetEnv("DESKTOP_SESSION");
++  if (sessionType && !strcmp(sessionType, "gnome")) {
++    mGSettings = do_GetService(NS_GSETTINGSSERVICE_CONTRACTID);
++    if (mGSettings) {
++      mGSettings->GetCollectionForSchema(
++          "org.gnome.system.proxy"_ns,
++          getter_AddRefs(mProxySettings));
++    }
+   }
+ }
+ 

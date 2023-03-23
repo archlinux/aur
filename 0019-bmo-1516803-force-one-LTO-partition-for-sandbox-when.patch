@@ -1,8 +1,8 @@
-From 0539ac3b5a6574e8ba3a27b62681c0a49d89edcb Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Thomas Deutschmann <whissi@gentoo.org>
 Date: Wed, 15 Apr 2020 00:27:25 +0200
-Subject: [PATCH 22/34] bmo#1516803: force one LTO partition for sandbox when
- using GCC
+Subject: [PATCH] bmo#1516803: force one LTO partition for sandbox when using
+ GCC
 
 Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
 ---
@@ -10,8 +10,10 @@ Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
  1 file changed, 4 insertions(+), 3 deletions(-)
 
 diff --git a/security/sandbox/linux/moz.build b/security/sandbox/linux/moz.build
-index 81c89bd947..a5b76067a7 100644
-@@ -114,9 +114,10 @@
+index be5120e4aac7b3a5b589a2c88a0218123a4adec7..908e124f9e00ec28354031d5c2c9b9efb3a7bae4 100644
+--- a/security/sandbox/linux/moz.build
++++ b/security/sandbox/linux/moz.build
+@@ -117,9 +117,10 @@ if CONFIG["CC_TYPE"] in ("clang", "gcc"):
  # gcc lto likes to put the top level asm in syscall.cc in a different partition
  # from the function using it which breaks the build.  Work around that by
  # forcing there to be only one partition.
@@ -25,6 +27,3 @@ index 81c89bd947..a5b76067a7 100644
  
  DEFINES["NS_NO_XPCOM"] = True
  DisableStlWrapping()
--- 
-2.33.1
-

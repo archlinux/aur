@@ -1,0 +1,26 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bj=C3=B6rn=20Bidar?= <bjorn.bidar@jolla.com>
+Date: Sat, 11 Feb 2023 14:57:59 +0200
+Subject: [PATCH] Allow Eme for arm and Aarch64
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Björn Bidar <bjorn.bidar@jolla.com>
+---
+ toolkit/moz.configure | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/toolkit/moz.configure b/toolkit/moz.configure
+index be091370a786c902a736a2950c01a0c50bc30748..1c61f8fbb8807221449d95c9edaa4b3d5dd907e4 100644
+--- a/toolkit/moz.configure
++++ b/toolkit/moz.configure
+@@ -875,7 +875,7 @@ def eme_choices(target):
+     if (
+         target.kernel in ("WINNT", "Linux")
+         and target.os != "Android"
+-        and target.cpu in ("x86", "x86_64")
++        and target.cpu in ("x86", "x86_64", "arm", "aarch64")
+     ):
+         return ("widevine",)
+     if target.kernel == "WINNT" and target.cpu == "aarch64":

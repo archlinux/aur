@@ -1,0 +1,30 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Wolfgang Rosenauer <wr@rosenauer.org>
+Date: Sun, 17 Oct 2021 20:18:18 +0200
+Subject: [PATCH] Bug 531915 - mozilla-bmo531915.patch
+
+https://bugzilla.mozilla.org/show_bug.cgi?id=1729459
+---
+ modules/fdlibm/src/math_private.h | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/modules/fdlibm/src/math_private.h b/modules/fdlibm/src/math_private.h
+index f4373f27834ab794d3ea7bf5fa72caa0a2480e8f..4430e496e8e9251e702b47e68ec88b4f9f0fa3f2 100644
+--- a/modules/fdlibm/src/math_private.h
++++ b/modules/fdlibm/src/math_private.h
+@@ -30,9 +30,14 @@
+  * Adapted from https://github.com/freebsd/freebsd-src/search?q=__double_t
+  */
+ 
++#ifdef __i386__
++typedef long double __double_t;
++typedef long double __float_t;
++#else
+ typedef double      __double_t;
+-typedef __double_t  double_t;
+ typedef float       __float_t;
++#endif
++typedef __double_t  double_t;
+ 
+ /*
+  * The original fdlibm code used statements like:

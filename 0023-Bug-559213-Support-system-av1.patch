@@ -1,24 +1,25 @@
-From 34a104c3cc36d9a4297a51d7b1cf7195c8c28a1d Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Thomas Deutschmann <whissi@gentoo.org>
 Date: Mon, 6 Apr 2020 19:36:02 +0200
-Subject: [PATCH 06/34] bmo#1559213: Support system av1
+Subject: [PATCH] Bug 559213 - Support system av1
 
 Allow building against system-wide av1.
 
 Bug: https://bugzilla.mozilla.org/show_bug.cgi?id=1559213
 Signed-off-by: Thomas Deutschmann <whissi@gentoo.org>
 ---
- config/external/moz.build      |  5 +++--
- config/system-headers.mozbuild |  8 ++++++++
- dom/media/platforms/moz.build  |  5 +++++
- toolkit/moz.configure          | 20 ++++++++++++++++++--
- 4 files changed, 34 insertions(+), 4 deletions(-)
+ config/external/moz.build        |  5 +++--
+ config/system-headers.mozbuild   |  8 ++++++++
+ dom/media/platforms/moz.build    |  5 +++++
+ media/ffvpx/libavcodec/moz.build | 12 ++++++++----
+ toolkit/moz.configure            | 20 ++++++++++++++++++--
+ 5 files changed, 42 insertions(+), 8 deletions(-)
 
 diff --git a/config/external/moz.build b/config/external/moz.build
-index 6a2ed9e4a2..697bb9d0bf 100644
+index a0877c9d717e84489e19ee532d61df43b8a19889..5caa2036e0ece1404b16c52a31235f12addda08b 100644
 --- a/config/external/moz.build
 +++ b/config/external/moz.build
-@@ -46,8 +46,9 @@ if not CONFIG["MOZ_SYSTEM_LIBVPX"]:
+@@ -45,8 +45,9 @@ if not CONFIG["MOZ_SYSTEM_LIBVPX"]:
      external_dirs += ["media/libvpx"]
  
  if CONFIG["MOZ_AV1"]:
@@ -31,10 +32,10 @@ index 6a2ed9e4a2..697bb9d0bf 100644
  if not CONFIG["MOZ_SYSTEM_PNG"]:
      external_dirs += ["media/libpng"]
 diff --git a/config/system-headers.mozbuild b/config/system-headers.mozbuild
-index 4e3aef0f24..14bd336df4 100644
+index 9c07dba2f456b03cb39e6954369cf94d6b68b333..b2ccfe5a41b1026cde2184b2881754a5a9b455a5 100644
 --- a/config/system-headers.mozbuild
 +++ b/config/system-headers.mozbuild
-@@ -1300,6 +1300,14 @@ if CONFIG['MOZ_ENABLE_LIBPROXY']:
+@@ -1293,6 +1293,14 @@ if CONFIG['MOZ_ENABLE_LIBPROXY']:
          'proxy.h',
      ]
  
@@ -50,10 +51,10 @@ index 4e3aef0f24..14bd336df4 100644
      system_headers += [
          'vpx_mem/vpx_mem.h',
 diff --git a/dom/media/platforms/moz.build b/dom/media/platforms/moz.build
-index 16ca8a9cbc..b349dcbe6d 100644
+index c71f22a22eeead703192edfb710cc6113d42c11c..e91f57de9017e74436b03b769f04668d9dc2a869 100644
 --- a/dom/media/platforms/moz.build
 +++ b/dom/media/platforms/moz.build
-@@ -78,6 +78,11 @@ if CONFIG["MOZ_AV1"]:
+@@ -80,6 +80,11 @@ if CONFIG["MOZ_AV1"]:
          "agnostic/AOMDecoder.cpp",
          "agnostic/DAV1DDecoder.cpp",
      ]
@@ -65,11 +66,34 @@ index 16ca8a9cbc..b349dcbe6d 100644
  
  if CONFIG["MOZ_OMX"]:
      EXPORTS += [
+diff --git a/media/ffvpx/libavcodec/moz.build b/media/ffvpx/libavcodec/moz.build
+index 61d9962a712616cd0f90332b466ecd0d9eff77c3..29b6ede31baddaa3ad8a5e0d98c1ea0b00d27c88 100644
+--- a/media/ffvpx/libavcodec/moz.build
++++ b/media/ffvpx/libavcodec/moz.build
+@@ -109,10 +109,14 @@ if not CONFIG['MOZ_FFVPX_AUDIOONLY']:
+         'vp9recon.c',
+         'vpx_rac.c',
+     ]
+-    USE_LIBS += [
+-        'dav1d',
+-        'media_libdav1d_asm',
+-    ]
++    if CONFIG["MOZ_SYSTEM_AV1"]:
++        CFLAGS += CONFIG['MOZ_SYSTEM_LIBDAV1D_CFLAGS']
++        OS_LIBS += CONFIG['MOZ_SYSTEM_LIBDAV1D_LIBS']
++    else:
++        USE_LIBS += [
++            'dav1d',
++            'media_libdav1d_asm',
++        ]
+     if CONFIG['MOZ_WAYLAND']:
+         LOCAL_INCLUDES += ['/media/mozva']
+         SOURCES += [
 diff --git a/toolkit/moz.configure b/toolkit/moz.configure
-index d98e748bb9..1e704a4765 100644
+index 78f31128853925cc31d754f8b42c3406ac10079a..daa9bbd9d6bc1df6ae7442e5037ac24379815d86 100644
 --- a/toolkit/moz.configure
 +++ b/toolkit/moz.configure
-@@ -544,14 +544,29 @@ def av1(value):
+@@ -712,14 +712,29 @@ def av1(value):
      if value:
          return True
  
@@ -101,7 +125,7 @@ index d98e748bb9..1e704a4765 100644
  def dav1d_nasm(target):
      if target.cpu in ("x86", "x86_64"):
          return namespace(version="2.14", what="AV1")
-@@ -561,6 +576,7 @@ set_config("MOZ_DAV1D_ASM", dav1d_asm)
+@@ -729,6 +744,7 @@ set_config("MOZ_DAV1D_ASM", dav1d_asm)
  set_define("MOZ_DAV1D_ASM", dav1d_asm)
  set_config("MOZ_AV1", av1)
  set_define("MOZ_AV1", av1)
@@ -109,30 +133,3 @@ index d98e748bb9..1e704a4765 100644
  
  # JXL Image Codec Support
  # ==============================================================
--- 
-2.33.1
-
-diff --git a/media/ffvpx/libavcodec/moz.build b/media/ffvpx/libavcodec/moz.build
-index 0069865..e806fc8 100644
---- a/media/ffvpx/libavcodec/moz.build
-+++ b/media/ffvpx/libavcodec/moz.build
-@@ -108,10 +108,14 @@
-         'vp9prob.c',
-         'vp9recon.c'
-     ]
--    USE_LIBS += [
--        'dav1d',
--        'media_libdav1d_asm',
--    ]
-+    if CONFIG["MOZ_SYSTEM_AV1"]:
-+        CFLAGS += CONFIG['MOZ_SYSTEM_LIBDAV1D_CFLAGS']
-+        OS_LIBS += CONFIG['MOZ_SYSTEM_LIBDAV1D_LIBS']
-+    else:
-+        USE_LIBS += [
-+            'dav1d',
-+            'media_libdav1d_asm',
-+        ]
-     if CONFIG['MOZ_WAYLAND']:
-         LOCAL_INCLUDES += ['/media/mozva']
-         SOURCES += [
- 
