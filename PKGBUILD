@@ -4,7 +4,7 @@
 
 _pkg="apt"
 pkgname="python-${_pkg}"
-pkgver=2.5.2
+pkgver=2.5.3
 pkgrel=1
 pkgdesc="Python binding of lib${_pkg}-pkg"
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=('python-setuptools' 'python-distutils-extra')
 conflicts=()
 options=(!emptydirs)
 source=("${_url}/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('b299e818ff542e179d00d41a42b1e40b4be73547c393a38e845b6b623cb20c5e0dbd8b5c3aeec3a82faf80ed9614f35a425afa44f53dbcfe7a58c3fb5e7da5e6')
+sha512sums=('94170f309feed8dd61825ab62743ef586993e5ddd20180fdfd2be584a2e21eafe9fff47b885213ea95d4df38cd573f5c4b3324ba057ef240a3bbfface98e598d')
 
 package_python-apt() {
   depends+=('python')
