@@ -1,6 +1,6 @@
 pkgbase = r-glmnet
 	pkgdesc = Lasso and Elastic-Net Regularized Generalized Linear Models
-	pkgver = 4.1.6
+	pkgver = 4.1.7
 	pkgrel = 1
 	url = https://cran.r-project.org/package=glmnet
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = r-glmnet
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-xfun
-	source = https://cran.r-project.org/src/contrib/glmnet_4.1-6.tar.gz
-	sha256sums = bec4c6cea284d0dc24bbdac3e623f0772cea1d74ef77e718651e3830c74b7e30
+	source = https://cran.r-project.org/src/contrib/glmnet_4.1-7.tar.gz
+	sha256sums = b3a0b606d99df0256eb68e6ebd271e071b246900a4379641af2e7d548c70eaa8
 
 pkgname = r-glmnet
