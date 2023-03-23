@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=vars
-_pkgver=1.5-6
+_pkgver=1.5-9
 pkgname=r-${_pkgname,,}
-pkgver=1.5.6
+pkgver=1.5.9
 pkgrel=1
 pkgdesc='VAR Modelling'
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
   r-urca
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ddfe3351b13f71b7ed58989bb6d21396f85b0efc0b14366b309caf5874abf3bd')
+sha256sums=('285e5f9faee703f5f337d50bf4ba24524501910d1a0cffe7d1f77e0de2167cac')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
