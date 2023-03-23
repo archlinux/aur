@@ -1,6 +1,6 @@
 pkgname=opengamepadui-session-git
 _gitdir=OpenGamepadUI-session
-pkgver=r3.3c4522c
+pkgver=r4.e168bcf
 pkgrel=1
 pkgdesc="OpenGamepadUI Gamescope session for ChimeraOS Experimental"
 arch=('any')
