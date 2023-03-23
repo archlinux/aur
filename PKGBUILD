@@ -3,7 +3,7 @@
 
 pkgname=ratarmount-git
 _pkgname="${pkgname%-git}"
-pkgver=0.13.0.r0.ge61800c
+pkgver=0.13.0.r6.g4906de6
 pkgrel=2
 epoch=1
 pkgdesc="Mount tar files via fusepy. Supports Recursive Mounting, Compressed Files, Read-Only Bind Mounting, Union Mounting and Write Overlays. A fast random access alternative to archivemount."
@@ -19,7 +19,9 @@ depends=(
 )
 makedepends=(
 	'git'
-	'python-setuptools'
+	'python-build'
+	'python-installer'
+	'python-wheel'
 )
 optdepends=(
 	'pragzip: Option 1 for support for gzip-compressed tar files'
@@ -42,17 +44,17 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$_pkgname/core"
-	python setup.py build
+	python -m build --wheel --no-isolation
 	cd "$srcdir/$_pkgname"
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 
 package() {
 	cd "$srcdir/$_pkgname/core"
-	python setup.py install --root="$pkgdir" --optimize=1
+	python -m installer --compile-bytecode=2 --destdir="$pkgdir" dist/*.whl
 	cd "$srcdir/$_pkgname"
-	python setup.py install --root="$pkgdir" --optimize=1
+	python -m installer --compile-bytecode=2 --destdir="$pkgdir" dist/*.whl
 	install -Dm755 "README.md" "$pkgdir/usr/share/doc/$_pkgname/README.md"
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
