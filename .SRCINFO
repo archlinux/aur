@@ -1,7 +1,7 @@
 pkgbase = ocat-appimage
 	pkgdesc = OpenCore Auxiliary Tools is a GUI-based Configurator for editing config.plist files for Acidanthera's OpenCore Boot Manager.
 	pkgver = 20230019
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ic005k/OCAuxiliaryTools
 	arch = x86_64
 	license = MIT

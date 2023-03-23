@@ -1,8 +1,8 @@
-# Maintainer: LeSnake04 <dev.lesnake@posteo.de>
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=ocat
 pkgname="${_pkgname}-appimage"
 pkgver=20230019
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenCore Auxiliary Tools is a GUI-based Configurator for editing config.plist files for Acidanthera's OpenCore Boot Manager."
 arch=("x86_64")
 url="https://github.com/ic005k/OCAuxiliaryTools"
