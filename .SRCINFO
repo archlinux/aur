@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-curl
 	pkgdesc = An URL retrival utility and library (mingw-w64)
 	pkgver = 8.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://curl.haxx.se
 	arch = any
 	license = MIT
@@ -12,6 +12,8 @@ pkgbase = mingw-w64-curl
 	depends = mingw-w64-libssh2
 	depends = mingw-w64-openssl
 	depends = mingw-w64-libnghttp2
+	depends = mingw-w64-zstd
+	depends = mingw-w64-brotli
 	depends = mingw-w64-zlib
 	options = staticlibs
 	options = !strip

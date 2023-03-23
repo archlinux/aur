@@ -3,7 +3,7 @@
 
 pkgname=mingw-w64-curl
 pkgver=8.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An URL retrival utility and library (mingw-w64)"
 arch=('any')
 url="https://curl.haxx.se"
@@ -14,6 +14,8 @@ depends=('mingw-w64-crt'
          'mingw-w64-libssh2'
          'mingw-w64-openssl'
          'mingw-w64-libnghttp2'
+         'mingw-w64-zstd'
+         'mingw-w64-brotli'
          'mingw-w64-zlib')
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!strip' '!buildflags')
@@ -39,7 +41,7 @@ prepare() {
 build() {
   cd "${srcdir}"/${pkgname#mingw-w64-}-${pkgver}
   for _arch in ${_architectures}; do
-    configure_args="--with-openssl --enable-ipv6 --with-libidn2 --with-libssh2 --without-ca-bundle --without-random --with-libpsl"
+    configure_args="--with-openssl --enable-ipv6 --with-libidn2 --with-libssh2 --without-ca-bundle --without-random --with-libpsl --with-brotli --with-zstd"
     mkdir -p build-${_arch}-static && pushd build-${_arch}-static
     ${_arch}-configure $configure_args \
       --enable-static --disable-shared ..
