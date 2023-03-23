@@ -1,0 +1,12 @@
+pkgbase = smlfmt
+	pkgdesc = An auto-formatter for Standard ML
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/shwestrick/smlfmt
+	arch = x86_64
+	license = MIT
+	makedepends = mlton
+	source = smlfmt-1.0.0.tgz::https://github.com/shwestrick/smlfmt/archive/refs/tags/v1.0.0.tar.gz
+	md5sums = 0c575c98db4a434eaddb10dd3d813f75
+
+pkgname = smlfmt
