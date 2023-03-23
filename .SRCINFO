@@ -1,6 +1,6 @@
 pkgbase = brave
 	pkgdesc = Web browser that blocks ads and trackers by default
-	pkgver = 1.49.120
+	pkgver = 1.49.128
 	pkgrel = 1
 	url = https://www.brave.com/download
 	arch = x86_64
@@ -66,9 +66,9 @@ pkgbase = brave
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
 	options = !lto
-	source = brave-browser::git+https://github.com/brave/brave-browser.git#tag=v1.49.120
-	source = brave::git+https://github.com/brave/brave-core.git#tag=v1.49.120
-	source = chromium::git+https://chromium.googlesource.com/chromium/src.git#tag=111.0.5563.64
+	source = brave-browser::git+https://github.com/brave/brave-browser.git#tag=v1.49.128
+	source = brave::git+https://github.com/brave/brave-core.git#tag=v1.49.128
+	source = chromium::git+https://chromium.googlesource.com/chromium/src.git#tag=111.0.5563.110
 	source = depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
 	source = https://github.com/foutrelis/chromium-launcher/archive/refs/tags/v8/chromium-launcher-8.tar.gz
 	source = https://github.com/stha09/chromium-patches/releases/download/chromium-111-patchset-2/chromium-111-patchset-2.tar.xz
@@ -84,11 +84,9 @@ pkgbase = brave
 	source = brave-1.43-ntp_background_images-std-size_t.patch
 	source = brave-1.48-partitioned_host_state_map-cstring.patch
 	source = brave-1.49-brave_wallet-hd_key-vector_fix.patch
-	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/d1f67365bf7e2076454823ed99602c8e7c9b9287/trunk/sql-relax-constraints-on-VirtualCursor-layout.patch
-	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/d1f67365bf7e2076454823ed99602c8e7c9b9287/trunk/REVERT-roll-src-third_party-ffmpeg-m102.patch
-	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/d1f67365bf7e2076454823ed99602c8e7c9b9287/trunk/REVERT-roll-src-third_party-ffmpeg-m106.patch
-	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/d1f67365bf7e2076454823ed99602c8e7c9b9287/trunk/disable-GlobalMediaControlsCastStartStop.patch
-	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/d1f67365bf7e2076454823ed99602c8e7c9b9287/trunk/use-oauth2-client-switches-as-default.patch
+	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/c762dd2d9d0eaa900772315d57bb5ed7dfdf895d/trunk/sql-relax-constraints-on-VirtualCursor-layout.patch
+	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/c762dd2d9d0eaa900772315d57bb5ed7dfdf895d/trunk/disable-GlobalMediaControlsCastStartStop.patch
+	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/c762dd2d9d0eaa900772315d57bb5ed7dfdf895d/trunk/use-oauth2-client-switches-as-default.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -108,8 +106,6 @@ pkgbase = brave
 	sha256sums = 3864fcb12aaec849fd0e5423c9c5dfb1fdd7805e298a52125776bb24abe71e3c
 	sha256sums = f55438b4d5fd3c14e3e6c16383e6305ec52818c1fc9438d0d40ff72d157504a3
 	sha256sums = e66be069d932fe18811e789c57b96249b7250257ff91a3d82d15e2a7283891b7
-	sha256sums = 30df59a9e2d95dcb720357ec4a83d9be51e59cc5551365da4c0073e68ccdec44
-	sha256sums = 4c12d31d020799d31355faa7d1fe2a5a807f7458e7f0c374adf55edb37032152
 	sha256sums = 7f3b1b22d6a271431c1f9fc92b6eb49c6d80b8b3f868bdee07a6a1a16630a302
 	sha256sums = e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711
 

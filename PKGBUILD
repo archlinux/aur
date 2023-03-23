@@ -28,7 +28,7 @@
 : "${COMPONENT:=4}"
 
 pkgname=brave
-pkgver=1.49.120
+pkgver=1.49.128
 pkgrel=1
 pkgdesc='Web browser that blocks ads and trackers by default'
 arch=(x86_64)
@@ -46,7 +46,7 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: support for storing passwords in KWallet on Plasma')
 options=('!lto') # Chromium adds its own flags for ThinLTO
-_chromium_ver=111.0.5563.64
+_chromium_ver=111.0.5563.110
 _gcc_patchset=2
 _patchset_name="chromium-${_chromium_ver%%.*}-patchset-$_gcc_patchset"
 _launcher_ver=8
@@ -68,10 +68,8 @@ source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v$pkg
         brave-1.43-ntp_background_images-std-size_t.patch
         brave-1.48-partitioned_host_state_map-cstring.patch
         brave-1.49-brave_wallet-hd_key-vector_fix.patch)
-_arch_revision=d1f67365bf7e2076454823ed99602c8e7c9b9287
+_arch_revision=c762dd2d9d0eaa900772315d57bb5ed7dfdf895d
 _patches=(sql-relax-constraints-on-VirtualCursor-layout.patch
-          REVERT-roll-src-third_party-ffmpeg-m102.patch
-          REVERT-roll-src-third_party-ffmpeg-m106.patch
           disable-GlobalMediaControlsCastStartStop.patch
           use-oauth2-client-switches-as-default.patch)
 for _patch in "${_patches[@]}"; do
@@ -96,8 +94,6 @@ sha256sums=('SKIP'
             '3864fcb12aaec849fd0e5423c9c5dfb1fdd7805e298a52125776bb24abe71e3c'
             'f55438b4d5fd3c14e3e6c16383e6305ec52818c1fc9438d0d40ff72d157504a3'
             'e66be069d932fe18811e789c57b96249b7250257ff91a3d82d15e2a7283891b7'
-            '30df59a9e2d95dcb720357ec4a83d9be51e59cc5551365da4c0073e68ccdec44'
-            '4c12d31d020799d31355faa7d1fe2a5a807f7458e7f0c374adf55edb37032152'
             '7f3b1b22d6a271431c1f9fc92b6eb49c6d80b8b3f868bdee07a6a1a16630a302'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 
@@ -223,12 +219,6 @@ prepare() {
 
   # Upstream fixes
   patch -Np1 -i "${srcdir}/sql-relax-constraints-on-VirtualCursor-layout.patch"
-
-  # Revert ffmpeg roll requiring new channel layout API support
-  # https://crbug.com/1325301
-  patch -Rp1 -i "${srcdir}/REVERT-roll-src-third_party-ffmpeg-m102.patch"
-  # Revert switch from AVFrame::pkt_duration to AVFrame::duration
-  patch -Rp1 -i "${srcdir}/REVERT-roll-src-third_party-ffmpeg-m106.patch"
 
   # Disable kGlobalMediaControlsCastStartStop by default
   # https://crbug.com/1314342
