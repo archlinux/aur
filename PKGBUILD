@@ -3,8 +3,8 @@
 
 # Remember to handle https://bugs.archlinux.org/task/74324 on major upgrades
 _use_suffix=0
-pkgver=22.3.2
-_commit=5d3eea593437830ea16e4901f0410feadb0718d4
+pkgver=22.3.3
+_commit=a831d69dfdd74655e95f93130c286662e1ba343d
 _chromiumver=108.0.5359.215
 _gcc_patchset=2
 # shellcheck disable=SC2034
