@@ -64,6 +64,9 @@ source=(
     git+https://github.com/microsoft/wil.git
     git+https://github.com/rtissera/libchdr.git
     git+https://github.com/biojppm/rapidyaml.git
+    git+https://github.com/biojppm/cmake.git
+    git+https://github.com/biojppm/c4core.git
+    git+https://github.com/biojppm/debugbreak.git
     git+https://github.com/KhronosGroup/glslang.git
     git+https://github.com/KhronosGroup/Vulkan-Headers.git
     git+https://github.com/libsdl-org/SDL.git
@@ -146,6 +149,9 @@ package()
 # vim: ts=2 sw=2 et:
 
 sha256sums=(
+    'SKIP'
+    'SKIP'
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
