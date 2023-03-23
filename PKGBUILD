@@ -1,6 +1,6 @@
 # Maintainer: David Sugar <tychosoft@gmail.com>
 pkgname=storehouse
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 epoch=
 pkgdesc="Storehouse for release tarballs"
@@ -9,7 +9,7 @@ arch=(x86_64 aarch64)
 license=('GPL')
 source=($pkgname-v$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz $pkgname.service)
 makedepends=(make go)
-sha256sums=('508e33ae55f473c2c8eae10cff944c502c8324fc673c394d31b2a79493d81d8f' '5dadefb0087e72740da262520a9c6bc7f202911c1ce30125d4a80f958d13336c') 
+sha256sums=('e0b56f389864d719ba6b8872c2d8d06d02f6d822f1df1a397d666f4cc343c5e5' '5dadefb0087e72740da262520a9c6bc7f202911c1ce30125d4a80f958d13336c') 
 
 build() {
     cd "$pkgname"
