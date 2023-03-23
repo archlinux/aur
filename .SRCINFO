@@ -1,0 +1,14 @@
+pkgbase = psx-mc-cli
+	pkgdesc = Crossplatform cli utilities for working with PSX memory card files.
+	pkgver = v0.2.1
+	pkgrel = 1
+	url = https://metacpan.org/pod/PlayStation::MemoryCard
+	arch = any
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/G/GA/GAHAYES/PlayStation-MemoryCard-v0.2.1.tar.gz
+	sha512sums = 2dde79bd95f31319ea315981028837c5e7730b184051f3b09701d46b8956fed62a4860bffa239cef4f8136923188223da12779e8d816b3419fd39faba213bfb2
+
+pkgname = psx-mc-cli
