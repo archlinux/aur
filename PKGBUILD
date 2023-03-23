@@ -2,13 +2,14 @@
 _pkgname=flawesome
 pkgname="${_pkgname}-bin"
 pkgver=0.2.3
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="Flawesome is a modern productivity tool that will help you organise your day-today work and thoughts."
 arch=("x86_64")
 url="https://github.com/ashishBharadwaj/flawesome"
 license=('GPL3')
-depends=('at-spi2-core' 'gtk3' 'alsa-lib' 'nss' 'libxss')
+depends=(at-spi2-core gtk3 alsa-lib nss libxss libx11 gcc-libs glib2 libxdamage libcups libxcomposite libxcb cairo libxext dbus libxtst libxrender \
+        glibc libxcursor hicolor-icon-theme libxfixes gdk-pixbuf2 libxi libxrandr pango nspr expat)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
