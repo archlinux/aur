@@ -1,0 +1,11 @@
+[Unit]
+Description=Preserve DSCP markings on wireguard packets outside some iface
+Documentation=man:tc-cake(8) man:ip(7)
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+Environment=IFUPDOWN=%i
+WorkingDirectory=/opt/preserve-dscp
+ExecStart=/bin/bash -c "/opt/preserve-dscp/preserve-dscp ${IFUPDOWN/:/ }"
+ExecStop=/bin/bash -c "/opt/preserve-dscp/preserve-dscp ${IFUPDOWN/:/ } --unload"

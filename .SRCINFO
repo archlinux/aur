@@ -1,0 +1,18 @@
+pkgbase = preserve-dscp-git
+	pkgdesc = Preserve DSCP marking outside of a wireguard tunnel
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/xdp-project/bpf-examples
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = clang
+	makedepends = llvm
+	makedepends = bpf
+	depends = libbpf
+	source = git+https://github.com/xdp-project/bpf-examples
+	source = preserve-dscp@.service
+	sha256sums = SKIP
+	sha256sums = 8070158ae5a3ad5e9e694954d03e0e15ceb33ded57e9a35a6f5070499ae5f101
+
+pkgname = preserve-dscp-git
