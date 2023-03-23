@@ -1,0 +1,16 @@
+pkgbase = python-irc3-plugins-test
+	pkgdesc = Test plugin for IRC3
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/gtmanfred/irc3-plugins-test
+	arch = any
+	license = unknown
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = python-irc3-plugins-test-0.0.3.tar.gz::https://files.pythonhosted.org/packages/source/i/irc3-plugins-test/irc3-plugins-test-0.0.3.tar.gz
+	sha256sums = 092ab4c12d874cda3856b44ab7b66ee12f75c41df545464f259b1a65ec700beb
+
+pkgname = python-irc3-plugins-test
