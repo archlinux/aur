@@ -1,21 +1,21 @@
-# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
-# Contributor:  Ludwig Stecher <ludwig {dot} stecher {at} gmx {dot} de>
+# Maintainer: Ludwig Stecher <ludwig.stecher@gmx.de>
+# Contributor: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 # -*- mode: sh -*-
 
 pkgname='pomsky-bin'
 _pkgname=${pkgname%%-bin}
-pkgver=0.9
+pkgver=0.10
 pkgrel=1
 pkgdesc='A portable, modern regular expression language written in Rust (pre-compiled)'
 arch=('x86_64')
 url='https://pomsky-lang.org/'
-_rawurl='https://raw.githubusercontent.com/rulex-rs/pomsky/main'
+_rawurl='https://raw.githubusercontent.com/pomsky-lang/pomsky/main'
 license=(
   'Apache'
   'MIT'
 )
 source=(
-  "https://github.com/rulex-rs/${_pkgname}/releases/download/v$pkgver/pomsky_linux_v$pkgver"
+  "https://github.com/pomsky-lang/${_pkgname}/releases/download/v$pkgver/pomsky_linux_v$pkgver"
   "$_rawurl/CHANGELOG.md"
   "$_rawurl/LICENSE-APACHE"
   "$_rawurl/LICENSE-MIT"
@@ -39,15 +39,15 @@ package() {
 }
 
 sha256sums=(
-  '6ccece1e505382dc5e57dd73f8b5ca90002c9cc0ede5c31bf76b601685c9e932'
+  'c0b256ac904b995cf08819b97dee8779bd167186ed580e2395e30c5e4c5f54e0'
   SKIP SKIP SKIP SKIP
 )
 sha512sums=(
-  'e8426c79a2270bc07ed7acba31bf04a9fe787b73d0583baea823262b3d91669a998ac76207636933fe18e881ee96a31749a4a84947a9f27a5c799e879b352dd5'
+  '205e39dd76e22caab5675952c13498291e84931b30066413964b44de6106c14fde22906621512f364a1283de7a345aed3bdce212d2c113b22c0a8d12b7f557c3'
   SKIP SKIP SKIP SKIP
 )
 b2sums=(
-  'acdbdca7f8755921ba88d7bbd3a5e991e23bbc2ac5ae6f0bc721d4b339b4057e584dd0fce53c0f390093d77e2a9aa493bcd91b420bbe417ed404ec6b571846af'
+  '5c73860e2708ba1e4cc27aa4d5260e1a4be099d212942d5a7b87208951ea6d1db6a7fb7970b8b19e2d86105d5499d6483cc80f1a405e741c8b43371bc46eb998'
   SKIP SKIP SKIP SKIP
 )
 
