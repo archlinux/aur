@@ -57,7 +57,7 @@ source=("${_pkgname}::git+https://github.com/kotatogram/${_pkgname}.git#tag=k${p
         "${_pkgname}-kwayland::git+https://github.com/KDE/kwayland.git"
         "${_pkgname}-dispatch::git+https://github.com/apple/swift-corelibs-libdispatch.git"
         "${_pkgname}-tg_owt::git+https://github.com/desktop-app/tg_owt.git#commit=${_tg_owt_commit}"
-       
+
         "${_pkgname}-tg_owt-libvpx::git+https://chromium.googlesource.com/webm/libvpx.git"
         "${_pkgname}-tg_owt-libyuv::git+https://chromium.googlesource.com/libyuv/libyuv.git"
         "${_pkgname}-tg_owt-pipewire::git+https://github.com/PipeWire/pipewire.git"
@@ -69,7 +69,7 @@ source=("${_pkgname}::git+https://github.com/kotatogram/${_pkgname}.git#tag=k${p
         "https://patch-diff.githubusercontent.com/raw/kotatogram/kotatogram-desktop/pull/334.patch"
         "https://patch-diff.githubusercontent.com/raw/kotatogram/kotatogram-desktop/pull/335.patch"
         "https://patch-diff.githubusercontent.com/raw/kotatogram/kotatogram-desktop/pull/337.patch"
-        
+
         "https://patch-diff.githubusercontent.com/raw/desktop-app/tg_owt/pull/101.patch"
 
         "0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch"
@@ -201,7 +201,7 @@ build() {
         -DBUILD_SHARED_LIBS=OFF \
         -DTG_OWT_USE_PROTOBUF=OFF \
         -DTG_OWT_PACKAGED_BUILD=ON
-        
+
     CFLAGS+=" -ffat-lto-objects" CXXFLAGS+=" -ffat-lto-objects -I/usr/include/libdrm" cmake --build build
 
     cd "${srcdir}/${_pkgname}"
