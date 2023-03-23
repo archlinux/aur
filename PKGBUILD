@@ -1,9 +1,9 @@
 # Maintainer: Florian Maunier <fmauneko@dissidence.ovh>
 pkgname=msquic
-pkgver=2.1.7
+pkgver=2.1.8
 _clog_commit=a4f472c5fe2c8298c0ada2e24717458c45a17eb1
 _googletest_commit=dd7a9d29a33de34836c345c3b753d4eba15c5f44
-_openssl_commit=6d6e737a473eba179ea9b666a7bc2e3873c1c5c7
+_openssl_commit=c3f5f36f5dadfa334119e940b7576a4abfa428c8
 pkgrel=1
 epoch=1
 pkgdesc="Microsoft implementation of the IETF QUIC protocol (release)"
@@ -18,10 +18,10 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/microsoft/$pkgname/archive/
         "clog-$_clog_commit.tar.gz::https://github.com/microsoft/CLOG/archive/$_clog_commit.tar.gz"
         "googletest-$_googletest_commit.tar.gz::https://github.com/google/googletest/archive/$_googletest_commit.tar.gz"
         "openssl-$_openssl_commit.tar.gz::https://github.com/quictls/openssl/archive/$_openssl_commit.tar.gz")
-sha512sums=('23ef4cc3794180b06d0ed138d6e96e37ef5f15ea0ccbf405f95f13c9fbd5aedc8a9c5c403b38b2381801796c50907ee36ebed1161da687bacd82cdea6880475a'
+sha512sums=('bbe73fcb69f067accd0f8f2a6ac73d030971d70de1f3b3d1ab1bbc43a885639d414b20cbd202d89de145e3bba40a91466ac6709b53bc6d7d0788e52d8865b50c'
             '593ebae4f2dd0f76c56b21b849cceaa9847bd2fc5eea511b3c6236c577e869134381e3d20a1511e7c649b4e305501f6689004880d8155fb0e3ce8cbe18e4f2c2'
             'ad897fa82f7b17c8ad59376e039b026b092973495a41b30527afd656714302bb05dd8564c77f18cf13a8e6f952df2e6483d79a25ee30cdfd9211078ecd1ee5cb'
-            'fd3ed9465b8ed260264df3b34aea38f4380ca3667142cd67e7e2641cb2e70d0b32d37e6d504ff8bac5b67fa876d18d3b4fd6bb5f77f43a04b96bf414781899b2')
+            '04197a62a2e5ae8e280f45dae5a72d039d5c139f775b9f91e54985949e07ce13e347b5f46463bb68b3e8e2d78314c10311a7c11e5b606bbb1ba7ef60bedd7c74')
 noextract=("clog-$_clog_commit.tar.gz"
            "googletest-$_googletest_commit.tar.gz"
            "openssl-$_openssl_commit.tar.gz")
