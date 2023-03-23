@@ -2,10 +2,10 @@
 pkgname=vegastrike-release-git
 _pkgname=vegastrike
 pkgver=rev.11493
-pkgrel=1
+pkgrel=2
 pkgdesc="Vega Strike - Upon the Coldest Sea. Latest Release of game Assets"
 arch=('any')
-url="www.vega-strike.org"
+url="https://www.vega-strike.org"
 license=('GPL')
 depends=('expat' 'vegastrike-engine')
 optdepends=()

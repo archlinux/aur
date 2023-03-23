@@ -1,8 +1,8 @@
 pkgbase = vegastrike-release-git
 	pkgdesc = Vega Strike - Upon the Coldest Sea. Latest Release of game Assets
 	pkgver = rev.11493
-	pkgrel = 1
-	url = www.vega-strike.org
+	pkgrel = 2
+	url = https://www.vega-strike.org
 	arch = any
 	license = GPL
 	makedepends = git
