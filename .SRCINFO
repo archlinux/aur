@@ -1,0 +1,14 @@
+pkgbase = sbsign-refind-initcpio-post-hook
+	pkgdesc = a mkinitcpio post hook to sign kernels for refind and secureboot.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/sbsign-refind-initcpio-post-hook
+	arch = any
+	license = GPL
+	depends = mkinitcpio
+	depends = refind
+	depends = sbsigntools
+	source = sbsign-refind-initcpio-post-hook
+	sha256sums = b7818eb37c4d2df574d9fe4726ac9dfafc349012759ae51934b52ff30631b171
+
+pkgname = sbsign-refind-initcpio-post-hook
