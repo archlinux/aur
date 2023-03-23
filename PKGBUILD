@@ -18,7 +18,7 @@ source=(
   'doom2d.sh'
 )
 noextract=(
-  'd2d.1.gz'
+  'd2d_rembo.1.gz'
 )
 md5sums=(
   'SKIP'
