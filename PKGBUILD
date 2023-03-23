@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="gcs-bin"
-pkgver=5.7.1
+pkgver=5.8.0
 pkgrel=1
 pkgdesc="WYSIWYG editor for building character sheets for GURPS 4th Edition"
 url="https://gurpscharactersheet.com"
@@ -13,7 +13,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/richardwilkes/gcs/releases/
         "gcs.desktop"
         "gcs.png"
         "LICENSE")
-sha256sums=('d5cbc073a3a2cbbbe4c83142b6cbeb508232a7b4cec5177891dc35d9c8de9a7e'
+sha256sums=('9ac9d1a10acab412b5f76b65b491601c0cd8726a9fe63d82e49f65d35be687cd'
             '16e44836bb5939a825fb58e87ecf517bb74ed2fbbc148fe743fd69483af55b7b'
             'c04ae3c2efe1d6f7b02188233d99170f46e0ed912a115de8eae6f0a99d54b5ce'
             'fad8352cbe354588751cbe40e2c7b2b6a748be35c0903d408a3aba15f1aa9ed1')
