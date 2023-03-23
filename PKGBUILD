@@ -1,14 +1,14 @@
 _name=gimp
 pkgname=${_name}-devel-stripped
 pkgver=2.99.14
-pkgrel=4
+pkgrel=5
 pkgdesc='GNU Image Manipulation Program (development version, stripped from most unnecessary dependencies)'
 url='https://www.gimp.org/'
 arch=('x86_64')
 license=('GPL' 'LGPL')
 conflicts=("${_name}")
 provides=("${_name}")
-depends=('gtk3' 'babl' 'gegl' 'glib-networking' 'mypaint-brushes1' 'appstream-glib' 'libgexiv2')
+depends=('gtk3' 'babl>=0.1.98' 'gegl>=0.4.40' 'glib-networking' 'mypaint-brushes1' 'appstream-glib' 'libgexiv2' 'adwaita-icon-theme')
 makedepends=('meson' 'intltool' 'iso-codes' 'gobject-introspection' 'libxslt' 'libxmu')
 
 _snapshot="${_name}-${pkgver}"
