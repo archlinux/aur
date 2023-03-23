@@ -3,7 +3,7 @@
 # Maintainer: dalto <dalto[at]fastmail.com>
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=slimjet
-pkgver=38.0.5.0
+pkgver=38.0.6.0
 pkgrel=1
 _libffmpegverurl="https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases"
 _libffmpegver=0.73.0
@@ -22,7 +22,7 @@ source=(
     "libffmpeg-${_libffmpegver}.zip::${_libffmpegverurl}/download/${_libffmpegver}/${_libffmpegver}-linux-x64.zip"
     "LICENSE"    
     )
-sha256sums=('6e5f9c1819dd35a89b7eac36b0788a4693a5d76b62f333278a71ac9a5e20cb3b'
+sha256sums=('ecf843076df2d911c5fd81ccd6513df4d897a6655d3f289da79db64c776c3cfd'
             '8cad02e111745402d411414d8f8d15f1504bbcd884ccf050dfad252a63ad633a'
             'fc0297ac9ec689eeb610024c9f59d5f47661d5e1fdf18bd3c5e456068c47d15e')
 
