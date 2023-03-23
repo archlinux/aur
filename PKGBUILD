@@ -1,6 +1,6 @@
 # Maintainer: Richard Garber <rg.1029384756@gmail.com>
 pkgname=sbsign-refind-initcpio-post-hook
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="a mkinitcpio post hook to sign kernels for refind and secureboot."
 arch=('any')
@@ -13,4 +13,4 @@ package() {
   install -Dm755 "${srcdir}/sbsign-refind-initcpio-post-hook" "${pkgdir}/usr/lib/initcpio/post/sbsign-refind-initcpio-post-hook"
 }
 
-sha256sums=('b7818eb37c4d2df574d9fe4726ac9dfafc349012759ae51934b52ff30631b171')
+sha256sums=('02bc8f3434998583444e4bb48247da3a93461c7ca45f82a8e986886079c277b7')
