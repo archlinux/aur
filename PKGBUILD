@@ -4,7 +4,7 @@
 
 pkgname=flyspray
 pkgver=1.0rc10
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight, web-based bug tracking system written in PHP'
 url="https://www.flyspray.org/"
 arch=('any')
