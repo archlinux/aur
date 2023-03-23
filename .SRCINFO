@@ -1,0 +1,11 @@
+pkgbase = doom2d-res
+	pkgdesc = Resources for Doom2D
+	pkgver = 1.35
+	pkgrel = 1
+	url = https://doom2d.org/
+	arch = any
+	license = proprietary
+	source = https://deadsoftware.ru/files/terminalhash/doom2df-packages/d2d-res.zip
+	md5sums = d125fd71fc07830d4e36e7405885a0da
+
+pkgname = doom2d-res
