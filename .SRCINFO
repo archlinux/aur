@@ -1,15 +1,16 @@
 pkgbase = python-multibase
 	pkgdesc = Multibase implementation for Python (no active development)
 	pkgver = 1.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/multiformats/py-multibase
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	depends = python
 	depends = python-six
 	depends = python-morphys
 	depends = python-baseconv
-	source = py-multibase-1.0.3.tar.gz::https://github.com/multiformats/py-multibase/archive/v1.0.3.tar.gz
+	source = multibase-1.0.3.tar.gz::https://github.com/multiformats/py-multibase/archive/v1.0.3.tar.gz
 	b2sums = 291789d166cc076137df512f75b052f6cee2c8ea98f5fd46005246096d448fb932fef59b1f11c7f1e1f17ac7fd4eaa7cf022120b083323e588e240de48529f3e
 
 pkgname = python-multibase
