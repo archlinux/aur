@@ -3,7 +3,7 @@
 
 pkgname=ratarmount
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Mount tar files via fusepy. Supports Recursive Mounting, Compressed Files, Read-Only Bind Mounting, Union Mounting and Write Overlays. A fast random access alternative to archivemount."
 arch=(any)
 url="https://github.com/mxmlnkn/$pkgname"
@@ -17,7 +17,7 @@ depends=(
 	'python-fusepy'
 )
 makedepends=(
-        'python-setuptools'
+	'python-setuptools'
 )
 optdepends=(
 	'pragzip: Option 1 for support for gzip-compressed tar files'
@@ -34,16 +34,16 @@ b2sums=('8074e44c1575cd3a8c8488747e0dad0edef124d1fb745b0a7045a7fde89583003fb7afa
 
 build() {
 	cd "$srcdir/${pkgname}-${pkgver}/core"
-        python setup.py build
+	python -m build --wheel --no-isolation
 	cd "$srcdir/${pkgname}-${pkgver}"
-        python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 package() {
 	cd "$srcdir/${pkgname}-${pkgver}/core"
-        python setup.py install --root="$pkgdir" --optimize=1
+	python -m installer --compile-bytecode=2 --destdir="$pkgdir" dist/*.whl	
 	cd "$srcdir/${pkgname}-${pkgver}"
-        python setup.py install --root="$pkgdir" --optimize=1
-        install -Dm755 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
-        install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	python -m installer --compile-bytecode=2 --destdir="$pkgdir" dist/*.whl
+	install -Dm755 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
