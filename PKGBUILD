@@ -2,7 +2,7 @@
 pkgbase=python-ablog
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.10.33.post1
+pkgver=0.11.1
 pkgrel=1
 pkgdesc=" ABlog for blogging with Sphinx"
 arch=('any')
@@ -14,17 +14,17 @@ makedepends=('python-setuptools-scm'
              'python-installer'
              'python-sphinx-automodapi'
              'python-nbsphinx'
+             'python-myst-parser'
              'python-feedgen'
              'python-invoke'
-             'python-myst-parser'
              'python-watchdog'
              'pandoc'
              'graphviz')
-checkdepends=('python-pytest>=6.0.0')
+checkdepends=('python-pytest')
 # sphinx feedgen already in makedepends, feedgen depends on lxml
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #source=("https://github.com/sunpy/ablog/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('0272709e2d32e522e634e3789281be92')
+md5sums=('bfa94d6081e8be4b7ebe36a56bfaa251')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -39,7 +39,7 @@ build() {
     python -m build --wheel --no-isolation
 
     msg "Building Docs"
-    ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
+    ln -rs ${srcdir}/${_pyname}-${pkgver}/src/${_pyname/-/_}*egg-info \
         build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver .).egg-info
     PYTHONPATH="../build/lib" make -C docs html
 }
@@ -51,9 +51,9 @@ check() {
 }
 
 package_python-ablog() {
-    depends=('python-sphinx>=4.0.0' 'python-feedgen>=0.9.0' 'python-invoke>=1.6.0' 'python-watchdog>=2.0.0')    # dateutil pulled by feedgen; docutils by sphinx
-    optdepends=('ipython: notebook'
-                'python-nbsphinx: notebook'
+    depends=('python-sphinx>=5.0.0' 'python-feedgen>=0.9.0' 'python-invoke>=1.6.0' 'python-watchdog>=2.1.0' 'python-packaging>=19.0')    # dateutil pulled by feedgen; docutils by sphinx
+    optdepends=('ipython>=7.30.0: notebook'
+                'python-nbsphinx>=0.8.0: notebook'
                 'python-myst-parser>=0.17.0: markdown'
                 'python-ablog-doc: Documentation')
     cd ${srcdir}/${_pyname}-${pkgver}
