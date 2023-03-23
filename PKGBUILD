@@ -1,7 +1,7 @@
 # Maintainer: Sven Karsten Greiner <sven@sammyshp.de>
 
 pkgname=cruiser
-pkgver=3.0.13
+pkgver=3.0.14
 pkgrel=1
 pkgdesc="Map and navigation application using offline vector maps"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('java-runtime')
 conflicts=('atlas-maps')
 replaces=('atlas-maps' 'atlas-maps-bin' 'atlas-maps-beta-bin')
 source=("https://github.com/devemux86/cruiser/releases/download/${pkgver}/cruiser-${pkgver}.zip")
-md5sums=('15bee68e129a1b4a256c5cbbd7b2771d')
+md5sums=('896c8cd2382e31f040df6b65172f1de3')
 noextract=("cruiser-$pkgver.zip")
 _extractname="${pkgname}_${pkgver}-${pkgrel}"
 
