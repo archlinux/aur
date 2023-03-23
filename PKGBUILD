@@ -1,15 +1,15 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=geopard
-pkgver=1.3.0+10+g8481743
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Colorful, adaptive gemini browser"
 arch=('x86_64' 'aarch64')
 url="https://ranfdev.com/projects/Geopard"
 license=('GPL3')
-depends=('libadwaita' 'python-gobject')
-makedepends=('blueprint-compiler' 'cargo' 'git' 'gobject-introspection' 'meson')
+depends=('libadwaita')
+makedepends=('blueprint-compiler' 'cargo' 'git' 'meson')
 checkdepends=('appstream-glib')
-_commit=848174316d39bee3aec2fb156757bf49a0de6499
+_commit=9f9abcdd5d117ff808eb5d4cc22e06fd210c9d2c  # tags/v1.4.0^0
 source=("git+https://github.com/ranfdev/Geopard.git#commit=$_commit")
 sha256sums=('SKIP')
 
