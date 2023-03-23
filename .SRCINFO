@@ -1,0 +1,12 @@
+pkgbase = festival-cli-bin
+	pkgdesc = Festival music player CLI
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/hinto-janai/festival
+	arch = x86_64
+	license = custom
+	source = https://github.com/hinto-janai/festival/releases/download/v0.0.0/festival-cli-v0.0.0-linux-x64.tar.gz
+	validpgpkeys = 31C5145AAFA5A8DF1C1DB2A6D47CE05FA175A499
+	sha256sums = 6975dcfba3f62c8c39e3006735cbf2501f537c9840593fc96ef4013dd0f6b4da
+
+pkgname = festival-cli-bin
