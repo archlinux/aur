@@ -2,9 +2,9 @@
 # Contributor: Jose Riha <jose1711 [at] gmail (dot) com>
 
 pkgname=ratarmount
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
-pkgdesc="Mount tar file using fuse with fast read-only random access"
+pkgdesc="Mount tar files via fusepy. Supports Recursive Mounting, Compressed Files, Read-Only Bind Mounting, Union Mounting and Write Overlays. A fast random access alternative to archivemount."
 arch=(any)
 url="https://github.com/mxmlnkn/$pkgname"
 conflict=("${_pkgname}-git")
@@ -20,14 +20,17 @@ makedepends=(
         'python-setuptools'
 )
 optdepends=(
-	'python-indexed-gzip: Support for gzip-compressed tar files'
+	'pragzip: Option 1 for support for gzip-compressed tar files'
+	'python-indexed-gzip: Option 2 for support for gzip-compressed tar files'
 	'python-indexed-zstd: Support for zstd-compressed tar files'
 	'python-indexed-bzip2: Support for bzip2-compressed tar files'
 	'python-rarfile: Support for rar-compressed tar files'
+	'lzmaffi: Option 1 for support for xz-compressed tar files'
+	'python-xz: Option 2 for support for xz-compressed tar files' 
 )
 _pkg_ext='.tar.gz'
 source=("${pkgname}-${pkgver}${_pkg_ext}::${url}/archive/refs/tags/v${pkgver}${_pkg_ext}")
-b2sums=('ee9130add5243f4fff398d05995cda22cb3546ac78faeadac3589b404bb52d74a17628f99626c4c2636fa9ae23d694d4f2d939a9ac51e6325390edd88789a338')
+b2sums=('8074e44c1575cd3a8c8488747e0dad0edef124d1fb745b0a7045a7fde89583003fb7afa56b3bf90e3bef28dbab9dc6f79a0429a237be0eddc5ed8ef9026023fe')
 
 build() {
 	cd "$srcdir/${pkgname}-${pkgver}/core"
