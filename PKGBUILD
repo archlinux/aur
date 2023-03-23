@@ -3,7 +3,7 @@
 
 pkgname=gzdoom
 pkgver=4.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Feature centric port for all Doom engine games'
 arch=('i686' 'x86_64' 'aarch64')
 url='http://www.zdoom.org/'
@@ -12,7 +12,7 @@ depends=('gtk3'
          'hicolor-icon-theme'
          'libgl'
          'libjpeg'
-         'libvpx'
+         'libvpx>=1.13'
          'openal'
          'sdl2'
          'zmusic>=1.1.8')

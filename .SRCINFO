@@ -1,7 +1,7 @@
 pkgbase = gzdoom
 	pkgdesc = Feature centric port for all Doom engine games
 	pkgver = 4.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.zdoom.org/
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = gzdoom
 	depends = hicolor-icon-theme
 	depends = libgl
 	depends = libjpeg
-	depends = libvpx
+	depends = libvpx>=1.13
 	depends = openal
 	depends = sdl2
 	depends = zmusic>=1.1.8
