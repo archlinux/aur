@@ -24,10 +24,12 @@ pkgbase = flatwaifu
 	source = doom2d.desktop
 	source = doom2d.png
 	source = doom2d.sh
+	source = local-cfg-write.patch
 	md5sums = SKIP
 	md5sums = 5d02fd2f50a6de16dc5e4bdfaae494bd
 	md5sums = 045e4e63fdcc5f6dddb7cc396eab16ee
 	md5sums = 9e3f78a5f7d779b4050bc7e7659822f4
 	md5sums = 0c92ce494d887acf4e9199368d9b2456
+	md5sums = 2c06d1f7119043eef2ad35f79e9fc668
 
 pkgname = flatwaifu

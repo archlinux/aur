@@ -17,6 +17,7 @@ source=(
   'doom2d.desktop'
   'doom2d.png'
   'doom2d.sh'
+  'local-cfg-write.patch'
 )
 noextract=(
   'd2d.1.gz'
@@ -27,6 +28,7 @@ md5sums=(
   '045e4e63fdcc5f6dddb7cc396eab16ee'
   '9e3f78a5f7d779b4050bc7e7659822f4'
   '0c92ce494d887acf4e9199368d9b2456'
+  '2c06d1f7119043eef2ad35f79e9fc668'
 )
 options=(
   !strip
@@ -39,7 +41,12 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir"/flatwaifu/src
+  cd "$srcdir"
+
+  # Patching cfg writing, because we executing binary from root directory
+  patch -uN flatwaifu/src/sdl2/main.c local-cfg-write.patch || return 1
+
+  cd flatwaifu/src
    mkdir build 
    cd build
    cmake -DSYSTEM_DRIVER=SDL2 -DRENDER_DRIVER=OPENGL -DSOUND_DRIVER=OPENAL ..
