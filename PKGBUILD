@@ -1,7 +1,8 @@
 # Maintainer: Ashley Bone <ashley DOT bone AT pm DOT me>
 
 pkgname=healthchecks
-pkgver=2.6.1
+_pkgver=2.7
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="A cron monitoring service with a web-based dashboard, API, and notification integrations."
 arch=('any')
@@ -14,7 +15,7 @@ optdepends=('python-psycopg2: Add support for postgreSQL.'
 	    'python-apprise: Add support for the Apprise integration.')
 backup=("var/lib/$pkgname/local_settings.py" "etc/uwsgi/$pkgname.ini")
 install="$pkgname.install"
-source=("$url/archive/refs/tags/v$pkgver.tar.gz"
+source=("$url/archive/refs/tags/v$_pkgver.tar.gz"
 	"hc-clean-db"
 	"hc-manage"
 	"$pkgname-clean-db.service"
@@ -26,7 +27,7 @@ source=("$url/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.tmpfiles"
 	"local_settings.py"
         "settings.patch")
-sha256sums=('3a203a086104553c2c99ca02611b3ba3d357f5d58b56c99880d84a8078e43f80'
+sha256sums=('8781b00846bc148362d1fe3cb791ec3f4ac2b9b574ab1ff09967c559852679f1'
 	    'a7b75bdd35c6952e06e1cd3824450f7c613aff5e3fb1d9f4f57f517b57cefbde'
 	    '355ac237284642e24a3cbe7ddb285bf7dbb802e72ea7fe7c68f0476178ab94fc'
 	    '9d32c4d1404079cac9b7a4ccbc97e01d867735c2536f915220d2ac5dffc333e7'
@@ -40,13 +41,13 @@ sha256sums=('3a203a086104553c2c99ca02611b3ba3d357f5d58b56c99880d84a8078e43f80'
 	    '6daf90731364cfb1b80fb94438d93891be6565cbbf220fbe4ba11b1f3fdbc777')
 
 prepare () {
-    cd "$pkgname-$pkgver/hc"
+    cd "$pkgname-$_pkgver/hc"
     echo $(pwd)
     patch -p0 -i '../../settings.patch'
 }
     
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$_pkgver"
     
     # create the python compiled files, static-collected files and an initial database
     python -m compileall .
@@ -55,12 +56,12 @@ build() {
 }
 
 check() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$_pkgver"
     ./manage.py test
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$_pkgver"
     
     # create directories
     install -dm755 "$pkgdir/etc/uwsgi"
