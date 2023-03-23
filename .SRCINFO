@@ -1,7 +1,7 @@
 pkgbase = festival-web-bin
 	pkgdesc = Festival music player (Web)
 	pkgver = 0.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hinto-janai/festival
 	arch = x86_64
 	license = custom
