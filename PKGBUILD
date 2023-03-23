@@ -3,7 +3,7 @@
 # Contributor: aksr <aksr at t-com dot me>
 
 pkgname=jove
-pkgver=4.17.5.2
+pkgver=4.17.5.3
 pkgrel=1
 pkgdesc="Jonathan's Own Version of Emacs is an Emacs-like editor without Lisp."
 url="https://github.com/jonmacs/jove"
@@ -14,7 +14,7 @@ makedpends=('pkgconf')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/${pkgver}.tar.gz" jmake.patch)
-sha256sums=('e28836e23001b79cd2d2e9e0174de426be46388e28b7086c57d3d072481af9b8'
+sha256sums=('ca5a5fcf71009c7389d655d1f1ae8139710f6cc531be95581e4b375e67f098d2'
             '381638fcdb02d36ec311a8c3ce404257635c78854004ee4cd7b78a9a690877eb')
 
 prepare() {
