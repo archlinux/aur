@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=h7toolpc-wine
-pkgver=2.1.9
-pkgrel=1
+pkgver=2.2.0
+pkgrel=0
 pkgdesc="Wine H7-TOOL 的 PC 上位机，支持串口、CAN、示波器、CMSIS-DAP、DS18B20、RTT Viewer、脱机烧录等"
 arch=('x86_64')
 url="http://www.armbbs.cn/forum.php?mod=viewthread&tid=95468"
@@ -10,27 +10,26 @@ license=('unknow')
 provides=(${pkgname})
 conflicts=(${pkgname} ${pkgname%-wine} 'h7toolpc-bin')
 replaces=(h7toolpc-bin)
-depends=('wine' 'wqy-microhei')
-optdepends=("wine-mono-gecko-version-fix: Fix the version numbers of wine-mono and wine-gecko files to solve the dialog box that pops up when starting wine.")
-makedepends=('unarchiver')
+depends=(wine
+        wqy-microhei)
+optdepends=()
+makedepends=(unzip)
 backup=()
 options=('!strip')
 install=${pkgname}.install
-source=("${pkgname/pc-wine/PC_release}-${pkgver}.zip::http://download.armfly.com/armbbs/bbs/95468/${pkgname/pc-wine/PC_release}(V${pkgver}).zip"
+source=("${pkgname/pc-wine/PC_release}-${pkgver}.zip::http://www.armfly.com/download/H7-TOOL/${pkgname/pc-wine/PC_release}(V${pkgver}).zip"
         "icons.tar.gz"
         "${pkgname}.install")
-sha256sums=('9ccbb64bd0411136dbb392267cc7e41a13ba13b7ba9b20b8a2833b41b66aaa68'
+sha256sums=('ec1b31dd8be0698046676e24024f3e1de29ed0e1194f6b8943439bb20545c2f0'
             '6823224b5699dc17c41efdcbc8465554f007cb62cadea0aad9b67c08c5698142'
             '078a64b4818c65daabe24ad31ead1912ee564b15da79084fa1c7d1a004f30cef')
 noextract=("${pkgname/pc-wine/PC_release}-${pkgver}.zip"
             "icons.tar.gz")
 
-prepare() {
-    unar -e GBK "${srcdir}/${pkgname/pc-wine/PC_release}-${pkgver}.zip"
-}
-
 package() {
     export LC_CTYPE="zh_CN.UTF-8"
+
+    unzip -O gbk -o "${srcdir}/${pkgname/pc-wine/PC_release}-${pkgver}.zip" -d "${srcdir}"
 
     armfly="opt/armfly"
 
@@ -106,7 +105,19 @@ REGEDIT4
 "COM4"="/dev/ttyUSB3"
 "COM5"="/dev/ttyUSB4"
 "COM6"="/dev/ttyUSB5"
-"COM7"="/dev/ttyACM0"
+"COM7"="/dev/ttyUSB6"
+"COM8"="/dev/ttyUSB7"
+"COM9"="/dev/ttyUSB8"
+"COM10"="/dev/ttyACM0"
+"COM11"="/dev/ttyACM1"
+"COM12"="/dev/ttyACM2"
+"COM13"="/dev/ttyACM3"
+"COM14"="/dev/ttyACM4"
+"COM15"="/dev/ttyACM5"
+"COM16"="/dev/ttyACM6"
+"COM17"="/dev/ttyACM7"
+"COM18"="/dev/ttyACM8"
+"COM19"="/dev/ttyACM9"
 
 EOF
 
