@@ -18,7 +18,7 @@ _license="mixed"
 _gitlab="https://gitlab.com/tallero"
 _local="ssh://git@127.0.0.1:/home/git"
 url="${_gitlab}/${_pkg}"
-depends=()
+depends=("psx-mc-cli")
 _gccver="55"
 _include="/usr/${_target}/include"
 makedepends=("${_target}-gcc${_gccver}")
@@ -66,5 +66,5 @@ package_pocket-station-example-app-git() {
   PATH="${PATH}:${_pin}" make
   "${_pin}/bin2mcs" "BESNESP00000GAMETEST" test.bin test.mcs
   ls
-  # make DESTDIR="${pkgdir}" PREFIX='/usr' install
+  make DESTDIR="${pkgdir}" PREFIX='/usr' install
 }
