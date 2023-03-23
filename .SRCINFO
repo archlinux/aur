@@ -1,7 +1,7 @@
 pkgbase = jami-daemon-wtf
 	pkgdesc = Free and universal communication platform which preserves the users’ privacy and freedoms (daemon component)
 	pkgver = 20230123
-	pkgrel = 2
+	pkgrel = 3
 	url = https://jami.net
 	arch = x86_64
 	groups = jami
@@ -39,6 +39,7 @@ pkgbase = jami-daemon-wtf
 	depends = libarchive
 	provides = jami-daemon
 	conflicts = jami-daemon
+	conflicts = jami-daemon-git
 	noextract = pjproject-3b78ef1c48732d238ba284cdccb04dc6de79c54f.tar.gz
 	source = git+https://git.jami.net/savoirfairelinux/jami-daemon.git#commit=5e35e71d0959923ee3a0180b988ea7175f1530fb
 	source = https://github.com/savoirfairelinux/pjproject/archive/3b78ef1c48732d238ba284cdccb04dc6de79c54f/pjproject-3b78ef1c48732d238ba284cdccb04dc6de79c54f.tar.gz

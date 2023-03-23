@@ -5,7 +5,7 @@
 pkgname=jami-daemon-wtf
 _pkgname=jami-daemon
 pkgver=20230123
-pkgrel=2
+pkgrel=3
 pkgdesc="Free and universal communication platform which preserves the users’ privacy and freedoms (daemon component)"
 arch=(x86_64)
 url="https://jami.net"
@@ -18,7 +18,7 @@ depends=(glibc opendht gnutls nettle libgit2 libsecp256k1 ffmpeg speexdsp
 makedepends=(git cmake perl asio msgpack-c msgpack-cxx restinio systemd meson)
 checkdepends=(cppunit)
 provides=(jami-daemon)
-conflicts=(jami-daemon)
+conflicts=(jami-daemon jami-daemon-git)
 _commit=5e35e71d0959923ee3a0180b988ea7175f1530fb
 _pjprojectver=3b78ef1c48732d238ba284cdccb04dc6de79c54f
 source=(git+https://git.jami.net/savoirfairelinux/${_pkgname}.git#commit=${_commit}
