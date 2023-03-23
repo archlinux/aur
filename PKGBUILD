@@ -1,29 +1,52 @@
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: quininer kel <quininer@live.com>
+
 pkgname=watchexec-git
-pkgver=1.0.0.62
+pkgver=1.22.2.r0.ge8391cd
 pkgrel=1
 pkgdesc="Executes commands in response to file modifications"
-arch=('x86_64' 'i686')
-url="https://github.com/mattgreen/watchexec"
-license=('Apache-2.0')
-depends=()
-makedepends=('cargo')
-optdepends=()
-provides=('watchexec')
+arch=('i686' 'x86_64')
+url="https://watchexec.github.io/"
+license=('apache')
+depends=('gcc-libs')
+makedepends=('git' 'rust')
+provides=("watchexec=$pkgver")
 conflicts=('watchexec')
-source=($pkgname::git+https://github.com/mattgreen/watchexec)
-md5sums=('SKIP')
+source=("git+https://github.com/watchexec/watchexec.git")
+sha256sums=('SKIP')
 
-pkgver() {
-    cd $pkgname
-	echo $(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2).$(git rev-list --count HEAD)
+
+prepare() {
+  cd "watchexec"
+
+  if [ ! -f "Cargo.lock" ]; then
+    cargo update
+  fi
+  cargo fetch
 }
 
-build() {
-    cd $pkgname
-	cargo build --release
+pkgver() {
+  cd "watchexec"
+
+  _tag=$(git tag -l --sort -v:refname | grep -P '^v?[\d\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
+}
+
+check() {
+  cd "watchexec"
+
+  #cargo test \
+  #  --frozen
 }
 
 package() {
-	cd $pkgname
-	install -D -m755 "$srcdir/$pkgname/target/release/watchexec" "$pkgdir/usr/bin/watchexec"
+  cd "watchexec"
+
+  cargo install \
+    --locked \
+    --no-track \
+    --root "$pkgdir/usr" \
+    --path "crates/cli"
 }
