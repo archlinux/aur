@@ -8,13 +8,15 @@
 # Contributor: Herman Rimm <herman_rimm@pm.me>
 # Contributor: huyz
 
-_pkgname=libadwaita
-pkgbase=$_pkgname-git
-pkgname=($_pkgname-git $_pkgname-git-docs $_pkgname-git-demos)
-pkgver=1.2.0+26+ge97d36dc
+_pkgname="libadwaita"
+pkgbase="${_pkgname}-git"
+pkgname=("${_pkgname}-git"
+         "${_pkgname}-git-docs"
+         "${_pkgname}-git-demos")
+pkgver=1.3.rc+60+g24f9bbe0
 pkgrel=1
 pkgdesc="Building blocks for modern adaptive GNOME applications"
-url="https://gnome.pages.gitlab.gnome.org/$_pkgname"
+url="https://gnome.pages.gitlab.gnome.org/${_pkgname}"
 arch=('x86_64' 'i686' 'pentium4')
 license=(LGPL)
 depends=(gtk4)
