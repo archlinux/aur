@@ -1,12 +1,13 @@
 # Maintainer: @RubenKelevra <cyrond@gmail.com>
 
 pkgname='python-securetar'
-_module='securetar'
+_module=${pkgname#python-}
 pkgver='2022.2.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="Python module to handle tarfile backups."
 url="https://github.com/pvizeli/securetar"
 depends=('python' 'python-cryptography')
+makedepends=('python-setuptools')
 license=('Apache')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
