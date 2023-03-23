@@ -4,7 +4,12 @@ pkgname=tuba
 pkgver=0.1.0
 pkgrel=1
 pkgdesc='Browse the Fediverse'
-arch=('x86_64')
+arch=(
+  aarch64 #ALARM
+  armv7h  #ALARM
+  i686    #Arch Linux32
+  x86_64  #Arch Linux
+)
 url='https://tuba.geopjr.dev/'
 license=('GPL3')
 depends=(
