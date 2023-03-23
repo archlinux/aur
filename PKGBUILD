@@ -3,7 +3,7 @@
 # Maintainer: sukanka < su975853527 [at] gmail dot com >
 pkgname=aliyunpan-odomu-git
 url="https://github.com/odomu/aliyunpan"
-pkgrel=2
+pkgrel=3
 pkgver=r32.cc78aea
 pkgdesc="阿里云盘小白羊版，odomu's fork"
 arch=("any")
@@ -11,6 +11,8 @@ license=("None")
 _electron=electron20
 depends=("$_electron" 'aria2' 'bubblewrap')
 optdepends=('mpv: media preview support')
+provides=("aliyunpan-odomu")
+conflicts=("aliyunpan-odomu")
 source=("git+${url}.git" 'app.png')
 sha256sums=('SKIP' '2847ab9e9c9cea5fbee331dd34abc8a8cebef232dcfb4f739da7a36d9bed4c79')
 

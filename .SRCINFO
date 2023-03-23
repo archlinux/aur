@@ -1,7 +1,7 @@
 pkgbase = aliyunpan-odomu-git
 	pkgdesc = 阿里云盘小白羊版，odomu's fork
 	pkgver = r32.cc78aea
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/odomu/aliyunpan
 	arch = any
 	license = None
@@ -9,6 +9,8 @@ pkgbase = aliyunpan-odomu-git
 	depends = aria2
 	depends = bubblewrap
 	optdepends = mpv: media preview support
+	provides = aliyunpan-odomu
+	conflicts = aliyunpan-odomu
 	source = git+https://github.com/odomu/aliyunpan.git
 	source = app.png
 	sha256sums = SKIP
