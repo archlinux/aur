@@ -3,17 +3,14 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=cosmic-epoch-git
-pkgver=r52.277cf9e
+pkgver=r57.f0b63f7
 pkgrel=1
-pkgdesc="Rust, Iced based desktop environment, GNOME inspired, by System76, Pop! OS."
+pkgdesc="Next generation Cosmic desktop environment (Currently an incomplete pre-alpha)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-epoch"
 license=('GPL3')
-# notes on dependencies: 
-# seatd is required for libseat, not for a running daemon for both building and running,
-# (https://github.com/pop-os/cosmic-epoch/issues/79, https://github.com/pop-os/cosmic-epoch/issues/61)
-depends=('fontconfig' 'gtk4' 'libinput' 'libpulse' 'libxkbcommon' 'mesa' 'pipewire'
-         'pop-icon-theme' 'seatd' 'systemd-libs' 'wayland')
+depends=('fontconfig' 'gtk4' 'libinput' 'libpulse' 'libseat.so' 'libxkbcommon' 'mesa' 'pipewire'
+         'pop-icon-theme' 'systemd-libs' 'wayland')
 makedepends=('cargo' 'clang' 'desktop-file-utils' 'git' 'just' 'meson' 'mold')
 checkdepends=('appstream-glib')
 optdepends=('ksnip: Screenshots' # See https://github.com/pop-os/cosmic-epoch#screenshots
@@ -21,11 +18,11 @@ optdepends=('ksnip: Screenshots' # See https://github.com/pop-os/cosmic-epoch#sc
 provides=('cosmic-epoch' 'cosmic-applets' 'cosmic-applibrary' 'cosmic-bg'
           'cosmic-comp' 'cosmic-launcher' 'cosmic-osd' 'cosmic-panel'
           'cosmic-session' 'cosmic-settings' 'cosmic-settings-daemon'
-          'xdg-desktop-portal-cosmic')
+          'cosmic-workspaces-epoch' 'xdg-desktop-portal-cosmic')
 conflicts=('cosmic-epoch' 'cosmic-applets' 'cosmic-applibrary' 'cosmic-bg'
            'cosmic-comp' 'cosmic-launcher' 'cosmic-osd' 'cosmic-panel'
            'cosmic-session' 'cosmic-settings' 'cosmic-settings-daemon'
-           'xdg-desktop-portal-cosmic')
+           'cosmic-workspaces-epoch' 'xdg-desktop-portal-cosmic')
 backup=('etc/cosmic-comp/config.ron'
         'etc/cosmic-panel/config.ron')
 options=('!lto')
@@ -40,8 +37,10 @@ source=('git+https://github.com/pop-os/cosmic-epoch.git'
         'git+https://github.com/pop-os/cosmic-session.git'
         'git+https://github.com/pop-os/cosmic-settings.git'
         'git+https://github.com/pop-os/cosmic-settings-daemon.git'
+        'git+https://github.com/pop-os/cosmic-workspaces-epoch.git'
         'git+https://github.com/pop-os/xdg-desktop-portal-cosmic.git')
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -70,6 +69,7 @@ _submodules=(
   cosmic-session
   cosmic-settings
   cosmic-settings-daemon
+  cosmic-workspaces-epoch
   xdg-desktop-portal-cosmic
 )
 
@@ -120,9 +120,10 @@ check() {
 
 #  export RUSTUP_TOOLCHAIN=stable
 #  for p in cosmic-applibrary cosmic-bg cosmic-settings do;
-#  pushd ${p}
-#  nice just test
-#  popd
+#    pushd ${p}
+#    nice just test
+#    popd
+#  done
 }
 
 package() {
