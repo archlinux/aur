@@ -1,13 +1,13 @@
 # Maintainer: MGislv <nocentinigabriele91@gmail.com>
 
 pkgname=lib32-mozjpeg-git
-pkgver=4.0.3.r198.g5552483d
-pkgrel=3
+pkgver=4.1.1.r67.gaf265e75
+pkgrel=1
 pkgdesc='Improved JPEG encoder (32-bit)'
 url='https://github.com/mozilla/mozjpeg'
 arch=('x86_64')
 license=('BSD')
-depends=('lib32-glibc' 'mozjpeg-git')
+depends=('lib32-glibc')
 makedepends=('git' 'cmake' 'nasm' 'lib32-gcc-libs' 'lib32-libpng')
 provides=('lib32-libjpeg' 'libjpeg.so' 'libturbojpeg.so' 'lib32-libjpeg-turbo' 'lib32-mozjpeg')
 conflicts=('lib32-libjpeg' 'lib32-mozjpeg' 'lib32-libjpeg-turbo')
