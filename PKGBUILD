@@ -2,8 +2,7 @@
 _pkgname=webkitty
 pkgname="${_pkgname}-appimage"
 pkgver=3.0.0
-pkgrel=1
-epoch=
+pkgrel=2
 pkgdesc="Local web development IDE"
 arch=("x86_64")
 url="https://dartfling.com/product?pid=3"
