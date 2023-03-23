@@ -1,0 +1,46 @@
+# Maintainer: Fabian Bornschein <fabiscafe-cat-mailbox-dog-org>
+
+pkgname=tuba
+pkgver=0.1.0
+pkgrel=1
+pkgdesc='Browse the Fediverse'
+arch=('x86_64')
+url='https://tuba.geopjr.dev/'
+license=('GPL3')
+depends=(
+  gtk4
+  libadwaita
+  libgee
+  libsoup
+)
+makedepends=(
+  git
+  meson
+  vala
+)
+_commit=3d952be8d31136873fe1261c460baf88aafb8e7f # tags/0.1.0^0
+source=("git+https://github.com/GeopJr/Tuba.git#commit=$_commit")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd Tuba
+  git describe --tags | sed -r 's/^v//;s/[^-]*-g/r&/;s/-/+/g'
+}
+
+prepare() {
+  cd Tuba
+}
+
+build() {
+  arch-meson Tuba build
+  meson compile -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
+}
+
+package() {
+  meson install -C build --destdir "$pkgdir"
+  ln -s "/usr/bin/dev.geopjr.Tuba" "$pkgdir/usr/bin/tuba" 
+}

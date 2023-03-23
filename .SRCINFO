@@ -1,0 +1,18 @@
+pkgbase = tuba
+	pkgdesc = Browse the Fediverse
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://tuba.geopjr.dev/
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = gtk4
+	depends = libadwaita
+	depends = libgee
+	depends = libsoup
+	source = git+https://github.com/GeopJr/Tuba.git#commit=3d952be8d31136873fe1261c460baf88aafb8e7f
+	sha256sums = SKIP
+
+pkgname = tuba
