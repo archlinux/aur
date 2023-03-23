@@ -4,68 +4,36 @@
 # Contributor: osiixy <osiixy at gmail dot com>
 
 pkgname=penguins-eggs
-pkgver=9.4.2 # autoupdate
-pkgrel=10
+pkgver=9.4.3
+pkgrel=11
 pkgdesc="A console tool, under continuous development, that allows you to remaster your system and redistribute it as live images on usb sticks or via PXE"
 arch=('any')
 url='https://penguins-eggs.net'
 license=('GPL2')
-
-# from branch (development)
-#_url="https://github.com/pieroproietti/penguins-eggs"
-#_branch="master"
-#source=("git+${_url}.git#branch=${_branch}")
-#sha256sums=('SKIP')
-
-#pkgver() {
-#	cd ${srcdir}/${pkgname}
-#  grep 'version' package.json | awk 'NR==1 {print $2 }' | awk -F '"' '{print $2}'
-#	cd ..
-#	mv ${srcdir}/${pkgname} ${srcdir}/${pkgname}-${pkgver}
-#}
-
-# from release
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/pieroproietti/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('621f8712a3ae4b45db7991b8d1389cdd2b150ec8d1b9bfcd61697f9ad5147a74')
-
-options=('!strip')
-makedepends=('npm')
-depends=(
-  'arch-install-scripts' 
-  'dosfstools' 
-  'erofs-utils' 
-  'findutils' 
-  'grub' 
-  'jq' 
-  'libarchive' 
-  'libisoburn' 
-  'lsb-release' 
-  'lvm2' 
-  'mkinitcpio-archiso'
-  'mkinitcpio-nfs-utils' 
-  'mtools' 
-  'nbd' 
-  'nodejs' 
-  'pacman-contrib' 
-  'parted' 
-  'procps-ng' 
-  'pv' 
-  'python' 
-  'rsync' 
-  'squashfs-tools' 
-  'sshfs' 
-  'syslinux' 
-  'xdg-utils'
-)
-
+depends=('arch-install-scripts' 'dosfstools' 'erofs-utils' 'findutils' 'grub' 
+         'jq' 'libarchive' 'libisoburn' 'lsb-release' 'lvm2' 'mkinitcpio-archiso'
+  'mkinitcpio-nfs-utils' 'mtools' 'nbd' 'nodejs' 'npm' 'pacman-contrib' 'parted' 
+  'procps-ng' 'pv' 'python' 'rsync' 'squashfs-tools' 'sshfs' 'syslinux' 
+  'xdg-utils')
 optdepends=(
   'bash-completion: eggs autocomplete' 
   'zsh-autosuggestions: eggs autocomplete' 
   'calamares: system installer GUI' 
 )
+makedepends=('git')
+options=('!strip')
+_commit=d42e7f82fc620f1031165510184f293ffc93c2e8  # v9.4.3
+source=("git+https://github.com/pieroproietti/penguins-eggs.git#commit=${_commit}")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${pkgname}"
+  grep 'version' package.json | awk 'NR==1 {print $2 }' | awk -F '"' '{print $2}'
+}
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
+
   # Install pnpm into "pnpm-dir"
   npm set prefix "pnpm-dir"
   npm install -g pnpm
@@ -75,7 +43,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
 
   # Fix permissions
   chown root:root "dist" "node_modules"
