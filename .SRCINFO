@@ -1,0 +1,16 @@
+pkgbase = yacd-ghp-bin
+	pkgdesc = Yet Another Clash Dashboard (prebuild gh-pages)
+	pkgver = 20230212.1
+	pkgrel = 1
+	url = https://github.com/haishanh/yacd
+	arch = any
+	license = MIT
+	makedepends = git
+	optdepends = clash: A rule-based tunnel in Go
+	optdepends = sing-box: The universal proxy platform
+	provides = yacd
+	conflicts = yacd
+	source = yacd::git+https://github.com/haishanh/yacd.git#branch=gh-pages
+	sha256sums = SKIP
+
+pkgname = yacd-ghp-bin
