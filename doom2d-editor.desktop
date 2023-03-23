@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Name=Doom 2D Editor
+Name[ru]= Редактор карт для Doom 2D
+Exec=doom2d-editor
+Icon=doom2d-editor
+Terminal=false
+Type=Application
+Categories=Game;Shooter;ActionGame
+Comment=Powerful map editor for Doom 2D Classsic.
+Comment[ru]=Мощный редактор карт для Doom 2D Classic.
+Keywords=Doom;Doom2D;Doom2D Classic;Doom 2D Classic;Classic;Shooter;Doom 2D;

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+set -e
+
+cd /opt/doom2d;
+exec dosbox doom2d.exe

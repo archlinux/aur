@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Doom 2D Classic
+Exec=doom2d-classic
+Icon=doom2d-classic
+Terminal=false
+Type=Application
+Categories=Game;Shooter;ActionGame
+Comment=Doom-themed platformer by Prikol Software, original (classic) version
+Comment[ru]=Платформер во вселенной Doom от Prikol Software, оригинальная (классическая) версия
+Keywords=Doom;Doom2D;Doom2D Classic;Doom 2D Classic;Classic;Shooter;Doom 2D;

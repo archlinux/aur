@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Name=Doom 2D Classic Setup
+Name[ru]= Настройка Doom 2D Classic
+Exec=doom2d-setup
+Icon=doom2d-setup
+Terminal=false
+Type=Application
+Categories=Utility
+Comment=Edit settings for your Doom 2D Classic instance
+Comment[ru]=Настрой свой Doom 2D Classic
+Keywords=Doom;Doom2D;Doom2D Classic;Doom 2D Classic;Classic;Shooter;Doom 2D;

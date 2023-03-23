@@ -1,0 +1,14 @@
+post_install() {
+  echo '-- -- -- -- -- -- -- -- --'
+  echo "Thanks for installation Doom 2D Classic!"
+  echo "Read Doom2d.txt and weapons.txt (ru only) for some information."
+  echo ""
+  echo "Set owner of directory /opt/doom2d for your user before play/using editor/run setup! Example:"
+  echo "cd /opt"
+  echo "sudo chown -R user:user doom2d"
+  echo ""
+  echo "After this, run doom2d-setup and edit sound device to Sound Blaster."
+  echo "Good luck!"
+  echo '-- -- -- -- -- -- -- -- --'
+}
+
