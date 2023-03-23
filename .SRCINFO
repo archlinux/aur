@@ -1,0 +1,14 @@
+pkgbase = llvm-mos-git
+	pkgver = r452222.b05db96bef68
+	pkgrel = 1
+	url = https://llvm-mos.org/wiki/Welcome
+	arch = x86_64
+	license = custom:Apache 2.0 with LLVM Exception
+	makedepends = cmake
+	makedepends = ninja
+	options = staticlibs
+	options = !lto
+	source = git+https://github.com/llvm-mos/llvm-mos.git
+	sha256sums = SKIP
+
+pkgname = llvm-mos-git
