@@ -1,6 +1,6 @@
 pkgbase = electron-xdg-bin
 	pkgdesc = Build cross platform desktop apps with web technologies - without creating a useless ~/.pki directory (binary version)
-	pkgver = 22.3.2
+	pkgver = 22.3.3
 	pkgrel = 1
 	url = https://electronjs.org/
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = electron-xdg-bin
 	provides = electron
 	conflicts = electron22
 	conflicts = electron
-	source = https://github.com/noahvogt/electron-xdg/releases/download/22.3.2-1/electron-xdg-22.3.2-1-x86_64.pkg.tar.zst
-	sha256sums = 43b96a1e25854c84ad28361b6a863057c26e8ba9715817be3daffbb177ffd9ac
+	source = https://github.com/noahvogt/electron-xdg/releases/download/22.3.3-1/electron-xdg-22.3.3-1-x86_64.pkg.tar.zst
+	sha256sums = 34aeb76558d23827c30bcca03703ec55af4ecd4d80677dd6b3c0e79aae0d8f92
 
 pkgname = electron-xdg-bin

@@ -3,7 +3,7 @@
 
 # Remember to handle https://bugs.archlinux.org/task/74324 on major upgrades
 _use_suffix=0
-pkgver=22.3.2
+pkgver=22.3.3
 pkgrel=1
 
 _major_ver=${pkgver%%.*}
@@ -31,7 +31,7 @@ else
   conflicts=("electron")
 fi
 source=("https://github.com/noahvogt/${pkgname%-*}/releases/download/$pkgver-$pkgrel/${pkgname%-*}-$pkgver-$pkgrel-x86_64.pkg.tar.zst")
-sha256sums=('43b96a1e25854c84ad28361b6a863057c26e8ba9715817be3daffbb177ffd9ac')
+sha256sums=('34aeb76558d23827c30bcca03703ec55af4ecd4d80677dd6b3c0e79aae0d8f92')
 
 package() {
   cp -R "${srcdir}/usr/" "${pkgdir}/usr"
