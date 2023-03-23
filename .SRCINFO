@@ -1,7 +1,7 @@
 pkgbase = sonarlint-ls
 	pkgdesc = SonarLint language server (used by SonarLint VSCode)
 	pkgver = 2.16.0.65434
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SonarSource/sonarlint-language-server
 	arch = x86_64
 	license = LGPLv3
