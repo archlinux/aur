@@ -1,0 +1,12 @@
+pkgbase = festival-web-bin
+	pkgdesc = Festival music player (Web)
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/hinto-janai/festival
+	arch = x86_64
+	license = custom
+	source = https://github.com/hinto-janai/festival/releases/download/v0.0.0/festival-web-v0.0.0-linux-x64.tar.gz
+	validpgpkeys = 31C5145AAFA5A8DF1C1DB2A6D47CE05FA175A499
+	sha256sums = 882a81121f9ebbf4edb7663fa3814c7e37fe73cc504f554832312aab98d363c4
+
+pkgname = festival-web-bin
