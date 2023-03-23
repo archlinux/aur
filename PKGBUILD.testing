@@ -6,7 +6,7 @@ _commit=6f12019635c059f35b1329301ec0a5e7fee7e436
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=7.4.0
-pkgrel=2
+pkgrel=3
 epoch=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -286,9 +286,9 @@ build() {
     # This overrides FLAGS from makepkg.conf, if you comment these you are on your own
     # If you want the "best" possible optimizations for your system you can use
     # `-march=native` and remove the `-mtune=core-avx2` option.
-    export CFLAGS="-O3 -march=haswell -mtune=haswell -pipe -fno-semantic-interposition"
-    export CXXFLAGS="-O3 -march=haswell -mtune=haswell -pipe -fno-semantic-interposition"
-    export RUSTFLAGS="-C opt-level=3 -C target-cpu=haswell"
+    export CFLAGS="-O2 -march=haswell -mtune=haswell -pipe -ftree-vectorize -fno-semantic-interposition"
+    export CXXFLAGS="-O2 -march=haswell -mtune=haswell -pipe -ftree-vectorize -fno-semantic-interposition"
+    export RUSTFLAGS="-C opt-level=2 -C target-cpu=haswell"
     export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
 
     # If using -march=native and the CPU supports AVX, launching a d3d9
