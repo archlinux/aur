@@ -1,0 +1,7 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!joplin.desktop
+!joplin.sh
+!0001-support-enable-wayland-ime.patch
