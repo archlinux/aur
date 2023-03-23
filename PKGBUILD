@@ -1,7 +1,7 @@
 # Maintainer: hinto.janai <hinto.janai@protonmail.com>
 pkgname=festival-cli-bin
 pkgver=0.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Festival music player CLI"
 arch=('x86_64')
 url="https://github.com/hinto-janai/festival"
@@ -12,5 +12,5 @@ validpgpkeys=('31C5145AAFA5A8DF1C1DB2A6D47CE05FA175A499')
 
 package() {
 	# Binary
-	install -Dm755 "${srcdir}/festival-cli" "${pkgdir}/usr/bin/festival-cli"
+	install -Dm755 "${srcdir}/festival-cli-v${pkgver}-linux-x64/festival-cli" "${pkgdir}/usr/bin/festival-cli"
 }
