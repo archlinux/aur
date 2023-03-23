@@ -68,6 +68,7 @@ source=(
     git+https://github.com/biojppm/c4core.git
     git+https://github.com/biojppm/debugbreak.git
     git+https://github.com/KhronosGroup/glslang.git
+    git+https://github.com/fastfloat/fast_float.git
     git+https://github.com/KhronosGroup/Vulkan-Headers.git
     git+https://github.com/libsdl-org/SDL.git
     git+https://github.com/nih-at/libzip.git
@@ -149,6 +150,7 @@ package()
 # vim: ts=2 sw=2 et:
 
 sha256sums=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
