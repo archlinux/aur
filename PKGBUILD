@@ -2,7 +2,7 @@
 pkgname="an-anime-game-launcher-git"
 _pkgname="${pkgname%-git}"
 pkgver=3.2.1.r7.g711cc82
-pkgrel=2
+pkgrel=3
 pkgdesc="A Launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 arch=("x86_64")
 url="https://github.com/an-anime-team/an-anime-game-launcher"
@@ -54,11 +54,11 @@ build() {
 package() {
   cd "${_pkgname}"
 
-  install -dm755 "${pkgdir}/usr/lib/${_pkgname}"
+  install -dm755 "${pkgdir}/usr/lib/${pkgname}"
   install -dm755 "${pkgdir}/usr/bin/"
 
-  cp target/release/anime-game-launcher "${pkgdir}/usr/lib/${_pkgname}/${_pkgname}"
-  ln -s "${pkgdir}/usr/lib/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  cp target/release/anime-game-launcher "${pkgdir}/usr/lib/${pkgname}/${_pkgname}"
+  ln -s "/usr/lib/${pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
   install -Dm644 "assets/images/icon.png" "${pkgdir}/usr/share/pixmaps/an-anime-game-launcher.png"
   install -Dm644 "assets/images/icon.png" "${pkgdir}/usr/share/icons/moe.launcher.an-anime-game-launcher.png"
