@@ -3,7 +3,7 @@
 pkgname='python-scantree'
 _module=${pkgname#python-}
 pkgver='0.0.1'
-pkgrel=1
+pkgrel=2
 pkgdesc='Flexible recursive directory iterator: scandir meets glob("**", recursive=True)'
 url="https://github.com/andhus/scantree"
 depends=('python')

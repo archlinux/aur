@@ -1,7 +1,7 @@
 pkgbase = python-scantree
 	pkgdesc = Flexible recursive directory iterator: scandir meets glob("**", recursive=True)
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/andhus/scantree
 	arch = any
 	license = MIT
