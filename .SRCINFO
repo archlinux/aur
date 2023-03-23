@@ -1,6 +1,6 @@
 pkgbase = libc++-msan
-	pkgver = 14.0.6
-	pkgrel = 1
+	pkgver = 15.0.7
+	pkgrel = 3
 	url = https://libcxx.llvm.org/
 	arch = x86_64
 	license = custom:Apache 2.0 with LLVM Exception
@@ -11,15 +11,15 @@ pkgbase = libc++-msan
 	makedepends = python
 	depends = gcc-libs
 	options = !lto
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.6/llvm-project-14.0.6.src.tar.xz
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.6/llvm-project-14.0.6.src.tar.xz.sig
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-15.0.7/llvm-project-15.0.7.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-15.0.7/llvm-project-15.0.7.src.tar.xz.sig
 	validpgpkeys = 474E22316ABF4785A88C6E8EA2C794A986419D8A
-	sha512sums = 6fc6eeb60fac698702d1aac495fc0161eb7216a1f8db2020af8fccec5837831f7cc20dc2a169bf4f0b5f520748280b4a86621f3697d622aa58faaa45dbfaad13
+	sha512sums = 4836d3603f32e8e54434cbfa8ef33d9d473ac5dc20ebf9c67132653c73f4524931abd1084655eaee5f20bcfcb91bcc4bbc5c4a0b603ad0c9029c556e14dc4c52
 	sha512sums = SKIP
 
 pkgname = libc++-msan
 	pkgdesc = LLVM C++ standard library - with support for memory sanitizers.
-	depends = libc++abi-msan=14.0.6-1
+	depends = libc++abi-msan=15.0.7-3
 	provides = libc++
 	conflicts = libc++
 	options = staticlibs
@@ -29,9 +29,3 @@ pkgname = libc++abi-msan
 	provides = libc++abi
 	conflicts = libc++abi
 	options = staticlibs
-
-pkgname = libc++experimental-msan
-	pkgdesc = LLVM C++ experimental library - with support for memory sanitizers.
-	depends = libc++-msan=14.0.6-1
-	provides = libc++experimental
-	conflicts = libc++experimental
