@@ -1,24 +1,15 @@
 pkgbase = iwant
-	pkgdesc = CLI based decentralized peer to peer file sharing
-	pkgver = 1.0.14
+	pkgdesc = Install applications what I WANT.
+	pkgver = 0.2.0
 	pkgrel = 1
-	url = https://github.com/nirvik/iWant
-	arch = any
+	url = https://github.com/TD-Sky/iwant
+	arch = x86_64
 	license = MIT
-	depends = python2-twisted
-	depends = python2-netifaces
-	depends = python2-watchdog
-	depends = python2-time_uuid
-	depends = python2-fuzzywuzzy
-	depends = python2-tabulate>=0.7.7
-	depends = python2-service-identity
-	depends = python2-cryptography
-	depends = python2-levenshtein
-	depends = python2-progressbar
-	depends = python2-pyasn1
-	depends = python2-docopt
-	source = https://pypi.python.org/packages/0d/82/a8a6efa0a11dd5a2e0b7f427f59253af9f1c00dad61f86e2c93f9ae2aec8/iwant-1.0.14.tar.gz
-	md5sums = 6dcb4219cc5976c7c62b4bb058d7490a
+	makedepends = cargo
+	optdepends = paru: AUR support
+	optdepends = flatpak: flathub support
+	optdepends = npm: npm support
+	source = iwant-0.2.0.tar.gz::https://github.com/TD-Sky/iwant/archive/v0.2.0.tar.gz
+	sha256sums = 9c7c0f6f74b513a23f4f27312a11b057f102bbcb18eca82630ff7328543678a5
 
 pkgname = iwant
-

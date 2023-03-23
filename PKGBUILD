@@ -1,29 +1,37 @@
-# Maintainer: j605
+# Maintainer: Collide <three-dim-sky@foxmail.com>
+# https://github.com/TD-Sky/PKGBUILDs
 
-_name=iWant
 pkgname=iwant
-pkgver=1.0.14
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="CLI based decentralized peer to peer file sharing"
-arch=('any')
-url="https://github.com/nirvik/iWant"
+pkgdesc="Install applications what I WANT."
+arch=('x86_64')
+url="https://github.com/TD-Sky/iwant"
 license=('MIT')
-depends=('python2-twisted' 'python2-netifaces' 'python2-watchdog'
-         'python2-time_uuid' 'python2-fuzzywuzzy' 'python2-tabulate>=0.7.7'
-         'python2-service-identity' 'python2-cryptography'
-         'python2-levenshtein' 'python2-progressbar' 'python2-pyasn1'
-         'python2-docopt')
-source=("https://pypi.python.org/packages/0d/82/a8a6efa0a11dd5a2e0b7f427f59253af9f1c00dad61f86e2c93f9ae2aec8/$pkgname-$pkgver.tar.gz")
-md5sums=("6dcb4219cc5976c7c62b4bb058d7490a")
+makedepends=('cargo')
+optdepends=('paru: AUR support'
+            'flatpak: flathub support'
+            'npm: npm support')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('9c7c0f6f74b513a23f4f27312a11b057f102bbcb18eca82630ff7328543678a5')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
-  cd "${srcdir}/$pkgname-$pkgver"
-  python2 setup.py build --executable=/usr/bin/python2
+  cd "$pkgname-$pkgver"
+  cargo build --release --frozen
 }
 
 package() {
-  cd "${srcdir}/$pkgname-$pkgver"
-  python2 setup.py install --root="$pkgdir" --prefix=/usr --optimize=2
-
-  install -Dm 644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "$pkgname-$pkgver"
+  install -Dm 755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm 644 "completions/$pkgname.bash" -t "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+  install -Dm 644 "completions/_$pkgname" -t "$pkgdir/usr/share/zsh/site-functions"
+  install -Dm 644 "completions/$pkgname.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d"
+  install -Dm 644 "completions/$pkgname.nu" -t "$pkgdir/usr/share/nushell/completions"
 }
