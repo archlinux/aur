@@ -1,6 +1,6 @@
 pkgbase = doom2d-classic
 	pkgdesc = Doom-themed platformer by Prikol Software, original (classic) version.
-	pkgver = 1.30
+	pkgver = 1.41b
 	pkgrel = 1
 	url = https://doom2d.org/
 	install = doom2d.install

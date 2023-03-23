@@ -1,6 +1,6 @@
 # Maintainer: Dmitry Lyashuk <lyashuk.voxx at gmail dot com>
 pkgname=doom2d-classic
-pkgver=1.30
+pkgver=1.41b
 pkgrel=1
 pkgdesc="Doom-themed platformer by Prikol Software, original (classic) version."
 arch=(any)
