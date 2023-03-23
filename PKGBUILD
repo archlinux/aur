@@ -62,6 +62,7 @@ source=(
     git+https://github.com/google/googletest.git
     git+https://github.com/fmtlib/fmt.git
     git+https://github.com/microsoft/wil.git
+    git+https://github.com/rtissera/libchdr.git
     git+https://github.com/biojppm/rapidyaml.git
     git+https://github.com/KhronosGroup/glslang.git
     git+https://github.com/KhronosGroup/Vulkan-Headers.git
@@ -145,6 +146,7 @@ package()
 # vim: ts=2 sw=2 et:
 
 sha256sums=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
