@@ -1,6 +1,6 @@
 pkgbase = subtitld
 	pkgdesc = Subtitld: An open source software to create, edit and transcribe subtitles
-	pkgver = 22.10
+	pkgver = 23.02
 	pkgrel = 1
 	url = https://www.subtitld.org/
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = subtitld
 	depends = python-google-api-python-client
 	depends = python-pysrt
 	depends = python-certifi
-	source = https://gitlab.com/jonata/subtitld/-/archive/22.10/subtitld-22.10.tar.gz
-	sha256sums = 51228b7520ce843926a799526b419939baed2a487d0bee75a6563a15aa006500
+	source = https://gitlab.com/jonata/subtitld/-/archive/23.02/subtitld-23.02.tar.gz
+	sha256sums = 83381cd697fa4355bc0d4689dfc063efe9ec41c8e177b8e55e35b7b4e6af3ace
 
 pkgname = subtitld

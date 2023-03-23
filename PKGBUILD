@@ -1,7 +1,7 @@
 # Maintainer: Vekhir <vekhir AT yahoo DOT com>
 
 pkgname='subtitld'
-pkgver=22.10
+pkgver=23.02
 pkgrel=1
 pkgdesc='Subtitld: An open source software to create, edit and transcribe subtitles'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('pyside6' 'python-pyffms2' 'python-mpv'
          'python-pysrt' 'python-certifi')
 makedepends=('git' 'python-setuptools')
 source=("https://gitlab.com/jonata/$pkgname/-/archive/$pkgver/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('51228b7520ce843926a799526b419939baed2a487d0bee75a6563a15aa006500')
+sha256sums=('83381cd697fa4355bc0d4689dfc063efe9ec41c8e177b8e55e35b7b4e6af3ace')
 
 build() {
   cd ${pkgname}-${pkgver}/
