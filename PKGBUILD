@@ -5,7 +5,7 @@
 
 pkgname=penguins-eggs
 pkgver=9.4.3
-pkgrel=11
+pkgrel=1
 pkgdesc="A console tool, under continuous development, that allows you to remaster your system and redistribute it as live images on usb sticks or via PXE"
 arch=('any')
 url='https://penguins-eggs.net'
