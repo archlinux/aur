@@ -1,21 +1,21 @@
 # Maintainer: xgjmibzr <xgjmibzr@gmail.com>
 
 pkgname=httm
-pkgver=0.17.10
-pkgrel=2
+pkgver=0.24.1
+pkgrel=1
 pkgdesc="Prints the size, date and locations of available unique versions (deduplicated by modify time and size) of files residing on ZFS or BTRFS snapshots."
 arch=('x86_64')
 url="https://github.com/kimono-koans/httm"
 license=('MPL-2.0')
-conflicts=('httm-bin')
+conflicts=('httm-bin' 'httm-git')
 options=('!strip' '!emptydirs')
-install='httm.install'
+#install='httm.install'
 depends=('gcc-libs')
 optdepends=('btrfs-progs: BTRFS support'
             'zfs-utils: ZFS support')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha512sums=('c858fd1f37d707ceb6468a970ed5fb96dc4377fe954b193ed9fea8f912a359f785bdfdd1ab66aedffe2e88ed16a60e4fefff016aa313e5bc83039e7af8a9dc66')
+sha512sums=('a5082eb147f04b5e8eeb22df6248ba26ecebd4c6bfa6124b2a329eeb2e51ab31c6fb15e6d92f291276455b81df602cd34621584ed62491b3565d0ab054721a6f')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"

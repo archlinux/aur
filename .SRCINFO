@@ -1,9 +1,8 @@
 pkgbase = httm
 	pkgdesc = Prints the size, date and locations of available unique versions (deduplicated by modify time and size) of files residing on ZFS or BTRFS snapshots.
-	pkgver = 0.17.10
-	pkgrel = 2
+	pkgver = 0.24.1
+	pkgrel = 1
 	url = https://github.com/kimono-koans/httm
-	install = httm.install
 	arch = x86_64
 	license = MPL-2.0
 	makedepends = cargo
@@ -11,9 +10,10 @@ pkgbase = httm
 	optdepends = btrfs-progs: BTRFS support
 	optdepends = zfs-utils: ZFS support
 	conflicts = httm-bin
+	conflicts = httm-git
 	options = !strip
 	options = !emptydirs
-	source = httm-0.17.10.tar.gz::https://static.crates.io/crates/httm/httm-0.17.10.crate
-	sha512sums = c858fd1f37d707ceb6468a970ed5fb96dc4377fe954b193ed9fea8f912a359f785bdfdd1ab66aedffe2e88ed16a60e4fefff016aa313e5bc83039e7af8a9dc66
+	source = httm-0.24.1.tar.gz::https://static.crates.io/crates/httm/httm-0.24.1.crate
+	sha512sums = a5082eb147f04b5e8eeb22df6248ba26ecebd4c6bfa6124b2a329eeb2e51ab31c6fb15e6d92f291276455b81df602cd34621584ed62491b3565d0ab054721a6f
 
 pkgname = httm
