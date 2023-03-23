@@ -3,7 +3,7 @@
 # Maintainer: sukanka < su975853527 [at] gmail dot com >
 pkgname=aliyunpan-odomu-git
 url="https://github.com/odomu/aliyunpan"
-pkgrel=1
+pkgrel=2
 pkgver=r32.cc78aea
 pkgdesc="阿里云盘小白羊版，odomu's fork"
 arch=("any")
@@ -39,10 +39,9 @@ set -eu
 
 if [[ \$EUID -ne 0 ]] || [[ \$ELECTRON_RUN_AS_NODE ]]; then
   exec bwrap \
-		--new-session \
 		--dev-bind / / \
 		--tmpfs /usr/lib/$_electron/resources \
-		--bind /usr/lib/$_electron/resources/* /usr/lib/$_electron/resources/* \
+		--bind /usr/lib/$_electron/resources/default_app.asar /usr/lib/$_electron/resources/default_app.asar \
 		--setenv ELECTRON_FORCE_IS_PACKAGED true \
 		$_electron /usr/lib/aliyunpan-odomu/app.asar "\$@"
 else
