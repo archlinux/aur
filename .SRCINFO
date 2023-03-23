@@ -1,29 +1,23 @@
 pkgbase = python-asdf-astropy
 	pkgdesc = ASDF serialization support for astropy
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://asdf-astropy.readthedocs.io
 	arch = any
 	license = BSD
-	checkdepends = python-pytest-doctestplus
-	checkdepends = python-pytest-astropy-header
-	checkdepends = python-asdf
-	checkdepends = python-astropy
-	checkdepends = python-scipy
-	checkdepends = python-asdf_coordinates_schemas
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/a/asdf_astropy/asdf_astropy-0.3.0.tar.gz
-	md5sums = f8a62c505d4ae633e4beb63844114afa
+	source = https://files.pythonhosted.org/packages/source/a/asdf-astropy/asdf-astropy-0.4.0.tar.gz
+	md5sums = b00f9596935cd6acf763e04b9b6f6408
 
 pkgname = python-asdf-astropy
 	depends = python>=3.8
 	depends = python-astropy>=5.0.4
-	depends = python-asdf>=2.8.0
+	depends = python-asdf>=2.13
 	depends = python-importlib_resources>=3
-	depends = python-asdf_coordinates_schemas
+	depends = python-asdf_coordinates_schemas>=0.1
 	depends = python-asdf_transform_schemas>=0.2.2
-	depends = python-packaging>=16.0
+	depends = python-packaging>=19.0
 	optdepends = python-asdf-astropy-doc: Documentation for Python ASDF-AstroPy

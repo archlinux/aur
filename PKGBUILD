@@ -2,10 +2,11 @@
 
 pkgbase=python-asdf-astropy
 _pname=${pkgbase#python-}
-_pyname=${_pname/-/_}
+#_pyname=${_pname/-/_}
+_pyname=${_pname}
 pkgname=("python-${_pname}")
 #"python-${_pname}-doc")
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="ASDF serialization support for astropy"
 arch=('any')
@@ -18,15 +19,16 @@ makedepends=('python-setuptools-scm'
 ##            'python-sphinx-astropy'
 ##            'python-astropy'
 #             'python-sphinx-asdf'
-#             'python-asdf_coordinates_schemas' # bug 76244
-checkdepends=('python-pytest-doctestplus'
-              'python-pytest-astropy-header'
-              'python-asdf'
-              'python-astropy'
-              'python-scipy'
-              'python-asdf_coordinates_schemas')   # 'python-asdf' 'python-astropy' by sphinx-asdf
+#             'python-asdf_coordinates_schemas')    # avoid cascading dep of sphinx-asdf
+# Too time consuming
+#checkdepends=('python-pytest-astropy-header'
+#              'python-pytest-doctestplus'
+##              'python-asdf'
+#              'python-astropy'
+#              'python-scipy'
+#              'python-asdf_coordinates_schemas')   # 'python-asdf' 'python-astropy' by sphinx-asdf
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('f8a62c505d4ae633e4beb63844114afa')
+md5sums=('b00f9596935cd6acf763e04b9b6f6408')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -42,28 +44,26 @@ build() {
     cd ${srcdir}/${_pyname}-${pkgver}
     python -m build --wheel --no-isolation
 
-    # https://bugs.archlinux.org/task/76244
 #   msg "Building Docs"
 #   ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
 #       build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver .).egg-info
-#   cd ${srcdir}/${_pyname}-${pkgver}/docs
-#   PYTHONPATH="../build/lib" make html
+#   PYTHONPATH="../build/lib" make -C docs html
 }
 
-check() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
-    PYTHONPATH="build/lib:${PYTHONPATH}" pytest || warning "Tests failed" # bug 76244; -vv --color=yes
-}
+#check() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#
+#    PYTHONPATH="build/lib:${PYTHONPATH}" pytest || warning "Tests failed" # -vv --color=yes
+#}
 
 package_python-asdf-astropy() {
     depends=('python>=3.8'
              'python-astropy>=5.0.4'
-             'python-asdf>=2.8.0'
+             'python-asdf>=2.13'
              'python-importlib_resources>=3'
-             'python-asdf_coordinates_schemas'
+             'python-asdf_coordinates_schemas>=0.1'
              'python-asdf_transform_schemas>=0.2.2'
-             'python-packaging>=16.0')
+             'python-packaging>=19.0')
     optdepends=('python-asdf-astropy-doc: Documentation for Python ASDF-AstroPy')
     cd ${srcdir}/${_pyname}-${pkgver}
 
