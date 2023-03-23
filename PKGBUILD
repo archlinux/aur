@@ -3,7 +3,7 @@
 # Contributor: Corpswalker <corpswalker@gmail.com>
 _base=mamba
 pkgname=micro${_base}-bin
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Tiny version of mamba, the fast conda package installer"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ options=(strip)
 depends=(glibc)
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-sha512sums_x86_64=('95659e6652c0fc12e66891fc626593652026c83437fdd4658044126a1569a4160dc22d07541355c5e81d7e07996fa9b3d412ffc111ddf666a642637fbb42ebd7')
-sha512sums_aarch64=('4cf3f8ca8a421602a46bbff46b083a5290950fa9ead579d28e2d025f745d31aae8c61385eff58a63667bae9504d066c9e902f4e7a06f67421c940ffc04ce0c87')
+sha512sums_x86_64=('3b9059ef011dec55acf4a468c5567c2d1a1010bcdff485b1a69d4405ef7de7ddf97b6e7840bb7dce738a3e38ff4f73e402b0454da8aed0d34dee928a41582bbf')
+sha512sums_aarch64=('0268470cdb045adb6c2d4f8f44e5191006bd7e88ef486032c312620f034ccffb25e77e8d05c8033a336db002dfde5ed51d28835b6b4419eb5f78e76183271467')
 
 check() {
   export PREFIX="${srcdir}"
