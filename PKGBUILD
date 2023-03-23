@@ -3,18 +3,18 @@
 
 _archive_extension="tar.gz"
 pkgname=ipfs-desktop
-pkgver=0.26.1 # REMEMBER TO UPDATE CHANGELOG!
+pkgver=0.27.0 # REMEMBER TO UPDATE CHANGELOG!
 pkgrel=1
 pkgdesc="Desktop client for the InterPlanetary File System"
 arch=(x86_64)
 url="https://github.com/ipfs/$pkgname"
 license=(MIT)
 depends=(gtk3 alsa-lib)
-makedepends=("nodejs>=16" "npm>=9.4.2" node-gyp libxcrypt-compat libnotify snappy libappindicator-gtk3 re2 nss minizip libxss libxslt libvpx http-parser c-ares libevent)
+makedepends=("nodejs>=16" npm node-gyp libxcrypt-compat libnotify snappy libappindicator-gtk3 re2 nss minizip libxss libxslt libvpx http-parser c-ares libevent)
 install=$pkgname.install
 changelog='changelog'
 source=("$pkgname-$pkgver.$_archive_extension::https://github.com/ipfs/ipfs-desktop/archive/refs/tags/v$pkgver.$_archive_extension")
-b2sums=('96098da2f6311691218201ce6c8288a9d60fd0fc34dacf8800d9ba6640c34967489e831944334f9be4ff866379109c24c29185fa0b76c3f8f9050ce3d63aefe7')
+b2sums=('895977549d5f64468d57a109783c77ba815d0ec7d2cdde3b6fa233ee390777d8878d9bcb0f8a4ab3b29ad686563b64514c061586f02fef2d6c2bb639cc728b4f')
 
 prepare() {
 	cd "$pkgname-$pkgver"
