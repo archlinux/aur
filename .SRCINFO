@@ -1,14 +1,17 @@
 pkgbase = subtitler-appimage
 	pkgdesc = Quickly download subtitles
 	pkgver = 1.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://s8sachin.github.io/subtitler/
 	arch = x86_64
 	license = MIT
 	depends = hicolor-icon-theme
 	depends = zlib
+	depends = glibc
 	options = !strip
 	source = subtitler-1.5.5.AppImage::https://github.com/s8sachin/subtitler/releases/download/v1.5.5/Subtitler-1.5.5.AppImage
+	source = LICENSE::https://github.com/s8sachin/subtitler/raw/master/LICENSE
 	sha256sums = 031b8a772c86dfe024c768149b1dfaf42cbc88f415d1864563b6a41bee67f5d6
+	sha256sums = 910e8030c09f74d9e027c4cd75ad09484e4897c4a92c7114651a188cbaf3a80d
 
 pkgname = subtitler-appimage
