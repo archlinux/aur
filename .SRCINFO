@@ -1,6 +1,6 @@
 pkgbase = espeak-ng-git
 	pkgdesc = Multi-lingual software speech synthesizer (development version)
-	pkgver = 1.51.r260.g4acc2954
+	pkgver = 1.51.r708.gff46761d
 	pkgrel = 1
 	url = https://github.com/espeak-ng/espeak-ng
 	arch = aarch64
@@ -10,6 +10,7 @@ pkgbase = espeak-ng-git
 	arch = x86_64
 	license = GPL3
 	checkdepends = python
+	makedepends = cmake
 	makedepends = git
 	makedepends = ruby-ronn-ng
 	depends = pcaudiolib
@@ -22,7 +23,6 @@ pkgbase = espeak-ng-git
 	conflicts = espeak
 	replaces = espeak-ng-espeak-git
 	replaces = espeak-ng-espeak
-	options = debug
 	source = espeak-ng::git+https://github.com/espeak-ng/espeak-ng.git
 	md5sums = SKIP
 
