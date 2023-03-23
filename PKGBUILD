@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=alternatives
-pkgver=1.21
+pkgver=1.22
 pkgrel=1
 pkgdesc="A tool to maintain symbolic links determining default commands."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=()
 checkdepends=('beakerlib')
 conflicts=('chkconfig' 'dpkg')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fedora-sysv/chkconfig/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('329abd518c46d5afc4a2ce8fd1653d8af576ec09c5dde8ea28facf4b29800c9e')
+sha256sums=('cb5369a8591ef96a1e4da71b97701de33a7d1b9e3dfa42d49444b7ec5d3def91')
 
 _srcdir="chkconfig-${pkgver}"
 
@@ -20,7 +20,7 @@ build() {
 	cd "${_srcdir}"
 	make alternatives
 	
-	cd "po"
+	cd 'po'
 	make
 }
 
