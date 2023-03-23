@@ -164,7 +164,7 @@ prepare() {
     git config submodule.Telegram/ThirdParty/kwayland.url "${srcdir}/${_pkgname}-kwayland"
     git config submodule.Telegram/ThirdParty/dispatch.url "${srcdir}/${_pkgname}-dispatch"
 
-    git submodule update --init
+    git -c protocol.file.allow=always submodule update --init
 
     #patches
     patch -Np1 -i "${srcdir}/kf594.patch"
@@ -182,7 +182,7 @@ prepare() {
     git config submodule.src/third_party/libvpx/source/libvpx.url "${srcdir}/${_pkgname}-tg_owt-libvpx"
     git config submodule.src/third_party/libyuv.url "${srcdir}/${_pkgname}-tg_owt-libyuv"
     git config submodule.src/third_party/pipewire.url "${srcdir}/${_pkgname}-tg_owt-pipewire"
-    git submodule update --init
+    git -c protocol.file.allow=always submodule update --init
     patch -Np1 -i "$srcdir/101.patch"
     patch -Np1 -i "$srcdir/include.patch"
 }
