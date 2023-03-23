@@ -1,0 +1,15 @@
+pkgbase = k8jam
+	pkgdesc = Fork of JAM build system, by ketmar
+	pkgver = r718.84bf025
+	pkgrel = 1
+	url = https://repo.or.cz/k8jam.git
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	makedepends = gcc
+	provides = k8jam
+	source = git://repo.or.cz/k8jam.git
+	md5sums = SKIP
+
+pkgname = k8jam
