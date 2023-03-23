@@ -9,7 +9,7 @@
 # Maintainer: Jesse R Codling <codling@umich.edu>
 pkgname=armbian-firmware-git
 pkgver=20230211.56ada00
-pkgrel=1
+pkgrel=2
 pkgdesc="Armbian-Specific Linux Firmware Files, useful for some SBCs"
 arch=(any)
 url="https://github.com/armbian/firmware"
@@ -113,6 +113,10 @@ prepare() {
 package() {
 	install -d "$srcdir/firmware" ${pkgdir}/usr/lib/firmware
 	cp -rpdt ${pkgdir}/usr/lib/firmware/ "$srcdir/firmware"/*
+	if [ ! -e ${pkgdir}/usr/lib/firmware/brcm/BCM4345C0.hcd ]; then
+		ln -sr ${pkgdir}/usr/lib/firmware/brcm/BCM4345C0.radxa,zero2.hcd ${pkgdir}/usr/lib/firmware/brcm/BCM4345C0.hcd
+		# add generic symlink for BCM4345C0 if missing
+	fi
 
 
 }
