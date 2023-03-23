@@ -1,7 +1,7 @@
 # Maintainer: hinto.janai <hinto.janai@protonmail.com>
 pkgname=festival-gui-bin
 pkgver=0.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Festival music player GUI"
 arch=('x86_64')
 url="https://github.com/hinto-janai/festival"
