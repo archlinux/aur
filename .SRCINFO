@@ -1,10 +1,11 @@
 pkgbase = ike
 	pkgdesc = Shrew Soft VPN client for Linux
 	pkgver = 2.2.1
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.shrew.net
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = BSD
 	makedepends = cmake
 	depends = openssl
@@ -16,9 +17,13 @@ pkgbase = ike
 	source = iked.service
 	source = openssl-1.1.0.patch
 	source = cmake-threadlib.patch
+	source = fix_double_free.patch
+	source = fix_file_eof.patch
 	md5sums = 3dac18a2da5809ccb38c50cd4a455897
 	md5sums = 3cb3ff3b663805f76be1efd527ae436c
 	md5sums = 57348fe9112555c0204709c1716e5fff
 	md5sums = 4c823bae9e006cf7bfb11fa633a59837
+	md5sums = 57f7f50b68020b5df6d54288757249c1
+	md5sums = 05e75984d6e8982859339fd2a42d43a1
 
 pkgname = ike

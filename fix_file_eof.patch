@@ -1,0 +1,24 @@
+diff --git a/old/source/libike/manager.file.cpp b/new/source/libike/manager.file.cpp
+index 42d2938..08f7c9b 100644
+--- a/source/libike/manager.file.cpp
++++ b/source/libike/manager.file.cpp
+@@ -208,8 +208,8 @@ bool _CONFIG_MANAGER::file_vpn_load( CONFIG & config, const char * path, bool sa
+ 
+ 	while( true )
+ 	{
+-		char	next;
+-		char	type;
++		int next;
++		int type;
+ 		BDATA	name;
+ 		BDATA	data;
+ 
+@@ -410,7 +410,7 @@ bool _CONFIG_MANAGER::file_vpn_del( CONFIG & config )
+ 
+ bool read_line_pcf( FILE * fp, BDATA & name, BDATA & data )
+ {
+-	char	next;
++	int next;
+ 	BDATA	line;
+ 
+ 	name.del();
