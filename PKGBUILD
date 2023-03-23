@@ -3,7 +3,7 @@
 
 pkgname=dotter-rs
 _pkgname=dotter
-pkgver=0.12.14
+pkgver=0.12.15
 pkgrel=1
 pkgdesc="A dotfile manager and templater written in Rust"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=("$_pkgname")
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('b61f855bdb01257f4f3f72630918a4c2d0b94be0d0e4b47e81f6ecf2517413b7ebc44645f28f58f2fb11db22d2739ed2845ee324fdfd215e102c0301ccc7ee5a')
+sha512sums=('2894dea68b97b5b74c56f14b82b4768185794cda1515d465aad63d505f3b74bc58c2f8ab7769691f5a9cdc0bd31030f429ddf6bc3861e57714b979c4bf9c8a4e')
 
 prepare() {
   cd "$_pkgname-$pkgver"
