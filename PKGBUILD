@@ -3,7 +3,7 @@
 
 pkgname=audacity-local-git
 pkgver=3.3.0.0.r16635
-pkgrel=1
+pkgrel=2
 pkgdesc="Record and edit audio files - Built with package versions as recommended by Audacity team"
 arch=('x86_64')
 url="https://audacityteam.org"
@@ -14,9 +14,10 @@ depends=('gtk3' 'gtk2' 'ffmpeg' 'portmidi' 'python' 'vst3sdk'
 makedepends=('cmake' 'autoconf' 'automake' 'libtool' 'git' 'conan' 'catch2')
 provides=("audacity")
 conflicts=("audacity")
-source=(
-"git+https://github.com/audacity/audacity.git"
-)
+source=("git+https://github.com/audacity/audacity.git")
+## Comment out the source variable above and uncomment the one below for the last version where the calf plugins work properly
+#
+#source=("git+https://github.com/audacity/audacity.git#branch=release-3.1.3")
 sha512sums=('SKIP')
 
 pkgver() {
