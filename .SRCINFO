@@ -12,4 +12,3 @@ pkgbase = python-aiogithubapi
 	b2sums = 7971519028bb72b9147b5deed274b4cd3a17bfe2607fc6b00e84942d02e72496437d4e5dcdadbce1ad1c5d374815a5053743b4e2cd92be79965b34b6d8058eb6
 
 pkgname = python-aiogithubapi
-	depends = python

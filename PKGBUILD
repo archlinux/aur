@@ -1,8 +1,7 @@
 # Maintainer: @RubenKelevra <cyrond@gmail.com>
 
-pkgbase='python-aiogithubapi'
-pkgname=('python-aiogithubapi')
-_module='aiogithubapi'
+pkgname='python-aiogithubapi'
+_module=${pkgname#python-}
 pkgver='22.10.1' # REMEMBER TO UPDATE CHANGELOG!
 pkgrel=1
 changelog='changelog'
@@ -21,7 +20,6 @@ build() {
 }
 
 package() {
-    depends+=()
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
