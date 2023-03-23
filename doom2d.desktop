@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Doom 2D
+Exec=/usr/share/doom2d/doom2d.sh
+Icon=doom2d
+Terminal=false
+Type=Application
+Categories=Game;Shooter;ActionGame
+Comment=Doom-themed platformer by Prikol Software
+Comment[ru]=Платформер во вселенной Doom от Prikol Software
+Keywords=Doom;Doom2D;Shooter;Doom 2D;
