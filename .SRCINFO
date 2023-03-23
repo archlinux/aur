@@ -5,9 +5,9 @@ pkgbase = python-scantree
 	url = https://github.com/andhus/scantree
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	depends = python
 	source = https://files.pythonhosted.org/packages/source/s/scantree/scantree-0.0.1.tar.gz
 	b2sums = c891396ca2388457b3394e5e87cb29a92fe16f480e013ef560168cbeef4e2f9a1d9dab055945de34d2086032b12c8fec0d8a56f9dd0cdacd910250840e040490
 
 pkgname = python-scantree
-	depends = python

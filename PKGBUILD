@@ -1,12 +1,13 @@
 # Maintainer: @RubenKelevra <cyrond@gmail.com>
 
 pkgname='python-scantree'
-_module='scantree'
+_module=${pkgname#python-}
 pkgver='0.0.1'
 pkgrel=1
 pkgdesc='Flexible recursive directory iterator: scandir meets glob("**", recursive=True)'
 url="https://github.com/andhus/scantree"
 depends=('python')
+makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
@@ -18,7 +19,6 @@ build() {
 }
 
 package() {
-    depends+=()
     cd "${srcdir}/${_module}-${pkgver}"
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/python-scantree/LICENSE"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
