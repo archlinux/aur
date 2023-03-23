@@ -81,10 +81,12 @@ prepare()
 {
     cd pcsx2
     git apply -3 "${srcdir}/0001-Fix-resources-Fix-CMake.patch"
-    
-    git config --global protocol.file.allow always
+    git -c protocol.file.allow=always submodule update
     local submodule
-    for submodule in 3rdparty/{glslang/glslang,libchdr/libchdr,rapidyaml/rapidyaml,rcheevos/rcheevos,vulkan-headers}; do
+    git submodule init 3rdparty/vulkan-headers
+    git submodule set-url 3rdparty/vulkan-headers "${srcdir}"/Vulkan-Headers
+    git submodule update 3rdparty/vulkan-headers
+    for submodule in 3rdparty/{glslang/glslang,libchdr/libchdr,rapidyaml/rapidyaml,rcheevos/rcheevos}; do
         git submodule init ${submodule}
         git submodule set-url ${submodule} "${srcdir}/${submodule##*/}"
         git submodule update ${submodule}
