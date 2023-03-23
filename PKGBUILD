@@ -10,6 +10,7 @@ license=('MIT')
 depends=(
    python
    python-pip
+   moab
 )
 
 makedepends=(
@@ -46,7 +47,7 @@ package() {
 
     # make git repo available in opt 
     cd "$srcdir"
-    mkdir $pkgdir/opt
-    cp -r "$_name" $pkgdir/opt
+    mkdir $pkgdir/opt/$pkgname
+    cp -r "$_name" $pkgdir/opt/$pkgname
 }
 
