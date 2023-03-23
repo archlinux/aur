@@ -1,0 +1,13 @@
+diff --git i/Makefile w/Makefile
+index a31a38d..325a825 100644
+--- i/Makefile
++++ w/Makefile
+@@ -7,7 +7,7 @@ DESTDIR ?=
+ all: $(TARGETS)
+ 
+ %: %.c
+-	$(CC) -O2 -Wall -I. -s -o $@ $<
++	$(CC) $(CFLAGS) $(LDFLAGS) -O2 -Wall -I. -s -o $@ $<
+ 
+ install: flterm
+ 	install -d $(DESTDIR)$(PREFIX)/bin
