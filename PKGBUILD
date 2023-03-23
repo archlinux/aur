@@ -1,11 +1,12 @@
-# Maintainer: RubenKelevra
+# Maintainer: @RubenKelevra <cyrond@gmail.com>
 
 pkgname=python-morphys
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Smart conversions between unicode and bytes types for common cases (no active development)"
 url="https://github.com/mkalinski/morphys"
 depends=('python')
+makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("${pkgname}-${pkgver}.tar.gz::https://codeload.github.com/mkalinski/morphys/zip/0642a71126c32cd26b3a443a5cac27e4e1f7240f")
@@ -19,5 +20,5 @@ build() {
 
 package() {
     cd $srcdir/${pkgname}-${pkgver}
-    python setup.py install --root="$pkgdir" --optimize=1 
+    python setup.py install --root="$pkgdir" --optimize=1  --skip-build
 }
