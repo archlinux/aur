@@ -1,0 +1,15 @@
+pkgbase = the-powder-toy-bin
+	pkgdesc = The Powder Toy is a free physics sandbox game.
+	pkgver = 97.0
+	pkgrel = 1
+	url = https://powdertoy.co.uk
+	arch = x86_64
+	license = GPL
+	source = https://powdertoy.co.uk/Download/powder-lin64.zip
+	source = the-powder-toy.png
+	source = the-powder-toy.desktop
+	sha256sums = f78422521ac05833082b5bb82457d89831da199085dcea2e13878739ca9fe181
+	sha256sums = 292ef3dfefa8367bb7daa1c634612492d7636d9ecf9d8d51af45d036e0b491b0
+	sha256sums = 199222c2306f8704eb6fdb6f509cfd94a5ab433578049e73ed35e869e9c3fc56
+
+pkgname = the-powder-toy-bin

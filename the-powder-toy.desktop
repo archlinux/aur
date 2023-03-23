@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=The Powder Toy
+Icon=/usr/share/icons/hicolor/256x256/apps/the-powder-toy.png
+Exec=/usr/bin/powder
+Type=Application
+Categories=Game
+Terminal=false
