@@ -3,10 +3,10 @@
 
 pkgname=ratarmount-git
 _pkgname="${pkgname%-git}"
-pkgver=0.12.0.r1.gc25a2bd
-pkgrel=3
+pkgver=0.13.0.r0.ge61800c
+pkgrel=2
 epoch=1
-pkgdesc="Mount tar file using fuse with fast read-only random access (git version)"
+pkgdesc="Mount tar files via fusepy. Supports Recursive Mounting, Compressed Files, Read-Only Bind Mounting, Union Mounting and Write Overlays. A fast random access alternative to archivemount."
 arch=('any')
 url="https://github.com/mxmlnkn/$_pkgname"
 license=('MIT')
@@ -22,10 +22,13 @@ makedepends=(
 	'python-setuptools'
 )
 optdepends=(
-	'python-indexed-gzip: Support for gzip-compressed tar files'
+	'pragzip: Option 1 for support for gzip-compressed tar files'
+	'python-indexed-gzip: Option 2 for support for gzip-compressed tar files'
 	'python-indexed-zstd: Support for zstd-compressed tar files'
 	'python-indexed-bzip2: Support for bzip2-compressed tar files'
 	'python-rarfile: Support for rar-compressed tar files'
+	'lzmaffi: Option 1 for support for xz-compressed tar files'
+	'python-xz: Option 2 for support for xz-compressed tar files' 
 )
 conflicts=("$_pkgname")
 provides=("$_pkgname")
@@ -53,4 +56,3 @@ package() {
 	install -Dm755 "README.md" "$pkgdir/usr/share/doc/$_pkgname/README.md"
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
-
