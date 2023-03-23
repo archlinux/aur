@@ -1,6 +1,6 @@
 pkgbase = eww-wayland-unsigned-git
 	pkgdesc = ElKowar's wacky widgets (Wayland build)
-	pkgver = 0.4.0.r21.g45154bb
+	pkgver = 0.4.0.r23.gc72b881
 	pkgrel = 1
 	url = https://github.com/elkowar/eww
 	arch = x86_64
@@ -11,7 +11,9 @@ pkgbase = eww-wayland-unsigned-git
 	depends = gtk-layer-shell
 	provides = eww=0.4.0
 	conflicts = eww
+	conflicts = eww-git
+	conflicts = eww-wayland-git
 	source = git+https://github.com/elkowar/eww.git
-	b2sums = SKIP
+	md5sums = SKIP
 
 pkgname = eww-wayland-unsigned-git
