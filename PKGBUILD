@@ -21,7 +21,8 @@ url="${_gitlab}/${_pkg}"
 depends=("psx-mc-cli")
 _gccver="55"
 _include="/usr/${_target}/include"
-makedepends=("${_target}-gcc${_gccver}")
+makedepends=("${_target}-gcc${_gccver}"
+             "${_target}-newlib")
 checkdepends=()
 optdepends=()
 _branch="develop"
