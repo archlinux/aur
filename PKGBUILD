@@ -3,7 +3,7 @@
 pkgname=yacd-ghp-bin
 _pkgname=yacd
 pkgver=20230212.1
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Yet Another Clash Dashboard (prebuild gh-pages)'
 arch=('any')
@@ -28,5 +28,5 @@ pkgver() {
 package() {
   cd "$_pkgname"
 
-  find . -type f -exec install -Dm 644 {} "${pkgdir}"/usr/share/"${_pkgname}"/{} \;
+  find . -type f -not -path '*/\.git/*' -exec install -Dm 644 {} "${pkgdir}"/usr/share/"${_pkgname}"/{} \;
 }

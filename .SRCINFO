@@ -1,7 +1,7 @@
 pkgbase = yacd-ghp-bin
 	pkgdesc = Yet Another Clash Dashboard (prebuild gh-pages)
 	pkgver = 20230212.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/haishanh/yacd
 	arch = any
 	license = MIT
