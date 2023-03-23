@@ -4,13 +4,13 @@
 
 pkgname=cosmic-epoch-git
 pkgver=r57.f0b63f7
-pkgrel=1
+pkgrel=2
 pkgdesc="Next generation Cosmic desktop environment (Currently an incomplete pre-alpha)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-epoch"
 license=('GPL3')
-depends=('fontconfig' 'gtk4' 'libinput' 'libpulse' 'libseat.so' 'libxkbcommon' 'mesa' 'pipewire'
-         'pop-icon-theme' 'systemd-libs' 'wayland')
+depends=('fontconfig' 'gtk4' 'libinput' 'libpipewire' 'libpulse' 'libseat.so'
+         'libxkbcommon' 'mesa' 'pop-icon-theme' 'systemd-libs' 'wayland')
 makedepends=('cargo' 'clang' 'desktop-file-utils' 'git' 'just' 'meson' 'mold')
 checkdepends=('appstream-glib')
 optdepends=('ksnip: Screenshots' # See https://github.com/pop-os/cosmic-epoch#screenshots
