@@ -1,6 +1,6 @@
 _pkgname=art-rawconverter
 pkgname="$_pkgname-bin"
-pkgver=1.19.1
+pkgver=1.19.3
 pkgrel=1
 pkgdesc="Raw image Converter forked from RawTherapee with ease of use in mind (including blackfoxx-theme)"
 arch=('x86_64')
@@ -30,19 +30,26 @@ optdepends=(
 conflicts=('art-rawconverter')
 provides=('art-rawconverter')
 
-#_dl_url="$url/downloads/ART-$pkgver-linux64.tar.xz"
-#_pkg=0
-_url="https://cdn-mirror.chaotic.cx/chaotic-aur/$CARCH"
-_dl_url="$_url/art-rawconverter-$pkgver-1-$CARCH.pkg.tar.zst"
-_pkg=1
+# 0 for bitbucket, 1 for chaotic-aur
+_pkg=0
+case "$_pkg" in
+  '1')
+    _url="https://cdn-mirror.chaotic.cx/chaotic-aur/$CARCH"
+    _dl_url="$_url/art-rawconverter-$pkgver-$pkgrel-$CARCH.pkg.tar.zst"
+    ;;
+  '0'|*)
+    _dl_url="$url/downloads/ART-$pkgver-linux64.tar.xz"
+    ;;
+esac
+
 source=(
   "$_pkgname-$pkgver.tar.xz"::"$_dl_url"
-  #"bft_20.zip::https://discuss.pixls.us/uploads/short-url/fG7iCaIWBWBem30O67V15EfO521.zip"
+  "bft_20.zip::https://discuss.pixls.us/uploads/short-url/fG7iCaIWBWBem30O67V15EfO521.zip"
 )
 
 sha256sums=(
-  '55db835909ef7df9882814201474a6024e2e8a3810f4ee19f7c0835caa294fe8'
-  #'7381c57e48b1437bec6b775029370f99f6fc14eced53678972e9f0b7e02a4346'
+  '36ff594aaf3db0e9095f64e6ee3747ae9730e1a16109fcdea804ca242fd29dfe'
+  '7381c57e48b1437bec6b775029370f99f6fc14eced53678972e9f0b7e02a4346'
 )
 
 prepare() {
