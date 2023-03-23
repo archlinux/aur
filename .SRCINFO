@@ -1,0 +1,12 @@
+pkgbase = ldetect
+	pkgdesc = Tools to redirect stdin on different commands according to detected language
+	pkgver = v1.0.0
+	pkgrel = 1
+	url = https://git.sr.ht/~primalmotion/ldetect
+	arch = any
+	license = GPL3
+	makedepends = go
+	source = https://git.sr.ht/~primalmotion/ldetect/archive/v1.0.0.tar.gz
+	sha256sums = 490a73263f8048d95234e7917817d379ad7acc4ae4cb5e839012d7bb440bb5f4
+
+pkgname = ldetect
