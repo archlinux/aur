@@ -1,7 +1,7 @@
-# Maintainer: RubenKelevra
+# Maintainer: @RubenKelevra <cyrond@gmail.com>
 
 pkgname='python-baseconv'
-_module='baseconv'
+_module=${pkgname#python-}
 pkgver=1.2.2
 pkgrel=3
 pkgdesc="Convert numbers from base 10 integers to base X strings and back again (no active development)"
