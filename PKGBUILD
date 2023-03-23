@@ -1,7 +1,7 @@
 # Maintainer: Alan Sartorio
 
 pkgname=orchis-theme
-pkgver=2023_01_15
+pkgver=2023_03_18
 pkgrel=1
 pkgdesc="A Material Design theme for GNOME/GTK based desktop environments."
 options=(!strip)
@@ -10,7 +10,7 @@ arch=('any')
 conflicts=("${pkgname}")
 url="https://github.com/vinceliuice/${pkgname}"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver//_/-}.tar.gz")
-sha256sums=('3a78d769360bf39939f3606775c178b8ec94c51ecb88eb770a485a3c1abc084a')
+sha256sums=('ff1d69b0614d2d4f9d03b5e3c388e0dc38f93f02b74d32330a8eaee5b4310848')
 license=('GPL3')
 
 
