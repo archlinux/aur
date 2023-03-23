@@ -3,12 +3,15 @@ pkgbase = webkitty-appimage
 	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://dartfling.com/product?pid=3
-	arch = any
+	arch = x86_64
 	license = MIT
 	depends = hicolor-icon-theme
 	depends = zlib
+	depends = glibc
 	options = !strip
 	source = webkitty-3.0.0.AppImage::https://github.com/yikuansun/webkitty/releases/download/v3.0.0/WebKitty-3.0.0.AppImage
+	source = LICENSE::https://github.com/yikuansun/webkitty/raw/master/LICENSE
 	sha256sums = 7d4cc208478c90e3a82945af7c086952a9c64caa9b60abd0407bf8e543ca58e1
+	sha256sums = 38149891459513ff7df2dec243d70c880950572bf1f01a1f3402034406b7d886
 
 pkgname = webkitty-appimage
