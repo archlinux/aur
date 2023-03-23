@@ -1,0 +1,31 @@
+diff --git a/old/source/ikec/main.cpp b/new/source/ikec/main.cpp
+index 488b92b..c6cf19b 100644
+--- a/source/ikec/main.cpp
++++ b/source/ikec/main.cpp
+@@ -72,7 +72,9 @@ int main( int argc, char ** argv )
+ 
+ 		if( ikec.auto_connect() )
+ 			ikec.vpn_connect( true );
+-	}
++	} else {
++            return 0;
++        }
+ 
+ 	// process user input
+ 
+diff --git a/old/source/libike/manager.file.cpp b/new/source/libike/manager.file.cpp
+index 113486a..42d2938 100644
+--- a/source/libike/manager.file.cpp
++++ b/source/libike/manager.file.cpp
+@@ -178,6 +178,11 @@ bool _CONFIG_MANAGER::file_vpn_load( CONFIG & config )
+ 	else
+ 		path.add( sites_user );
+ 
++        if (path.size() == 0) {
++            //Empty path. Below ins will fail with -1, so abort now.
++            return false;
++        }
++
+ 	path.ins( PATH_DELIM, 1, path.size() - 1 );
+ 	path.ins( config.get_id(), strlen( config.get_id() ), path.size() - 1 );
+ 
