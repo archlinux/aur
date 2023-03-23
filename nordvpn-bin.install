@@ -17,10 +17,16 @@ post_upgrade() {
 }
 
 pre_install() {
+  echo ":: WARNING: "
+  echo "::   '/var/lib/nordvpn/data/countries.dat' may stop your attempt on installing new nordvpn versions."
+  echo "::   Please, remove the file or make a backup before upgrading new packages."
   chattr -i /var/lib/nordvpn/data/*
 }
 
 pre_upgrade() {
+  echo ":: WARNING: "
+  echo "::   '/var/lib/nordvpn/data/countries.dat' may stop your attempt on installing new nordvpn versions."
+  echo "::   Please, remove the file or make a backup before upgrading new packages."
   chattr -i /var/lib/nordvpn/data/*
 }
 
