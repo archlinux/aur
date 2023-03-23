@@ -130,7 +130,7 @@ prepare() {
     git config submodule.Telegram/ThirdParty/tgcalls.url "${srcdir}/${pkgname}-tgcalls"
     git config submodule.Telegram/ThirdParty/jemalloc.url "${srcdir}/${pkgname}-jemalloc"
 
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 
     #patches
     patch -p1 < "${srcdir}/0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch"
