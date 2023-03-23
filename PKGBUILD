@@ -2,27 +2,22 @@
 # Contributor: lp76 <l.peduto@gmail.com>
 
 pkgname=ts
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
-_debrevision="dfsg1"
-_debfullrev="dfsg1-1"
 pkgdesc="A Unix batch system where the tasks spooled run one after the other"
 arch=('i686' 'x86_64')
-url="http://vicerveza.homeunix.net/~viric/soft/ts/"
+url="https://viric.name/soft/ts/"
 license=('GPL2')
 source=(
-  "http://deb.debian.org/debian/pool/main/t/task-spooler/task-spooler_${pkgver}+${_debrevision}.orig.tar.xz"
-  "http://deb.debian.org/debian/pool/main/t/task-spooler/task-spooler_${pkgver}+${_debfullrev}.debian.tar.xz"
+  "https://viric.name/soft/ts/ts-${pkgver}.tar.gz"
+  "ts-to-tsp.patch"
 )
-md5sums=(
-  '6cd744c43f36d432f303957d60474570'
-  '943491a4775c81d020e12c9ba2ca42ea'
-)
+sha256sums=('f73452aed80e2f9a7764883e9353aa7f40e65d3c199ad1f3be60fd58b58eafec'
+            '4ced7e1810d89e5b24686108a25e60eb8079748681e13f87ee2dee5554b77ed1')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-  patch < ../debian/patches/tsp.patch
-  patch < ../debian/patches/manpage.patch
+  patch -p1 < "$srcdir/ts-to-tsp.patch"
 }
 
 build() {

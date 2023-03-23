@@ -1,0 +1,275 @@
+diff --git a/Makefile b/Makefile
+index 2ea45e6..02c42ec 100644
+--- a/Makefile
++++ b/Makefile
+@@ -20,12 +20,12 @@ OBJECTS=main.o \
+ 	tail.o
+ INSTALL=install -c
+ 
+-all: ts
++all: tsp
+ 
+ tsretry: tsretry.c
+ 
+-ts: $(OBJECTS)
+-	$(CC) $(LDFLAGS) -o ts $^
++tsp: $(OBJECTS)
++	$(CC) $(LDFLAGS) -o tsp $^
+ 
+ # Test our 'tail' implementation.
+ ttail: tail.o ttail.o
+@@ -52,10 +52,10 @@ tail.o: tail.c main.h
+ ttail.o: ttail.c main.h
+ 
+ clean:
+-	rm -f *.o ts
++	rm -f *.o tsp
+ 
+ install: ts
+ 	$(INSTALL) -d $(PREFIX)/bin
+-	$(INSTALL) ts $(PREFIX)/bin
++	$(INSTALL) tsp $(PREFIX)/bin
+ 	$(INSTALL) -d $(PREFIX)/share/man/man1
+-	$(INSTALL) -m 644 ts.1 $(PREFIX)/share/man/man1
++	$(INSTALL) -m 644 tsp.1 $(PREFIX)/share/man/man1
+diff --git a/TRICKS b/TRICKS
+index 1572da2..a39511c 100644
+--- a/TRICKS
++++ b/TRICKS
+@@ -1,9 +1,9 @@
+ System wide queue
+ -------------------------
+ You can set the $TS_SOCKET variable to the same name path for all your
+-'ts' processes, and then
++'tsp' processes, and then
+ they'll use the same socket for intercommunication. This means - single queue.
+-You should be certain that any 'ts' can read/write to that socket, using
++You should be certain that any 'tsp' can read/write to that socket, using
+ chmod.
+ 
+ 
+@@ -11,42 +11,42 @@ A queue for each resource
+ -------------------------
+ You can use $TS_SOCKET and aliases/scripts for having different queues for
+ different resources. For instance, using bash:
+-alias tsdisk='TS_SOCKET=/tmp/socket.disk ts'
+-alias tsram='TS_SOCKET=/tmp/socket.ram ts'
+-alias tsnet='TS_SOCKET=/tmp/socket.net ts'
++alias tsdisk='TS_SOCKET=/tmp/socket.disk tsp'
++alias tsram='TS_SOCKET=/tmp/socket.ram tsp'
++alias tsnet='TS_SOCKET=/tmp/socket.net tsp'
+ 
+ You can also create shell scripts like this:
+ << FILE ts2
+ #!/bin/sh
+ export TS_SOCKET=/tmp/socket-ts2.$USER
+-ts "$@"
++tsp "$@"
+ >> END OF FILE ts2
+ 
+ 
+ Be notified of a task finished
+ -------------------------
+ In X windows, inside bash, after submitting the task, I use:
+-$ ( ts -w ; xmessage Finished! ) &
++$ ( tsp -w ; xmessage Finished! ) &
+ 
+ 
+ Killing process groups
+ -------------------------
+-ts creates a new session for the job, so the pid of the command run can be
++tsp creates a new session for the job, so the pid of the command run can be
+ used as the process group id for the command and its childs. So, you can use
+ something like:
+-$ kill -- -`ts -p`
++$ kill -- -`tsp -p`
+ in order to kill the job started and all its childs. I find it useful when
+ killing 'make's.
+ 
+ 
+-Limiting the number of ts processes
++Limiting the number of tsp processes
+ -------------------------
+ Each queued job remains in the system as a waiting process. On environments
+ where the number of processes is quite limited, the user can select the amount
+-of the maximum number of ts server connections to ts clients. That will be
++of the maximum number of tsp server connections to tsp clients. That will be
+ read from the environment variable TS_MAXCONN at the server start, and cannot be
+ set again once the server runs:
+-$ ts -K     # we assure we will start the server at the next ts call
+-$ TS_MAXCONN=5 ts
+-Internally there is a maximum of 1000 connexions that cannot be exceeded without
++$ tsp -K     # we assure we will start the server at the next tsp call
++$ TS_MAXCONN=5 tsp
++Internally there is a maximum of 1000 connections that cannot be exceeded without
+ modifying the source code (server.c).
+diff --git a/ts.1 b/tsp.1
+similarity index 93%
+rename from ts.1
+rename to tsp.1
+index 5feba5a..54dca87 100644
+--- a/ts.1
++++ b/tsp.1
+@@ -7,9 +7,9 @@
+ .\" Note: I took the gnu 'ls' man page as an example.
+ .TH TS 1 2020-12 "Task Spooler 1.0.2"
+ .SH NAME
+-ts \- task spooler. A simple unix batch system
++tsp \- task spooler. A simple unix batch system
+ .SH SYNOPSIS
+-.BI "ts [" actions "] [" options "] [" command... ]
++.BI "tsp [" actions "] [" options "] [" command... ]
+ .sp
+ Actions:
+ .BI "[\-KClhV]
+@@ -32,17 +32,17 @@ Options:
+ .BI "[\-D <"id >]
+ 
+ .SH DESCRIPTION
+-.B ts
++.B tsp
+ will run by default a per user unix task queue. The user can add commands to
+ the queue, watch that queue at any moment, and look at the task results
+ (actually, standard output and exit error).
+ .SH SIMPLE USE
+ Calling
+-.B ts
++.B tsp
+ with a command will add that command to the queue, and calling it without
+ commands or parameters will show the task list.
+ .SH COMMAND OPTIONS
+-When adding a job to ts, we can specify how it will be run and how will the
++When adding a job to tsp, we can specify how it will be run and how will the
+ results be collected:
+ .TP
+ .B "\-n"
+@@ -93,12 +93,12 @@ as if the job failed.
+ .TP
+ .B "\-B"
+ In the case the queue is full (due to \fBTS_MAXCONN\fR or system limits),
+-by default ts will block the enqueuing command. Using \fB\-B\fR,
++by default tsp will block the enqueuing command. Using \fB\-B\fR,
+ if the queue is full it will exit returning the value 2 instead of blocking.
+ .TP
+ .B "\-E"
+ Keep two different output files for the command stdout and stderr. stdout goes to
+-the file announced by ts (look at \fB\-o\fR), and stderr goes to the stdout file
++the file announced by tsp (look at \fB\-o\fR), and stderr goes to the stdout file
+ with an additional ".e". For example, /tmp/ts-out.SKsDw8 and /tmp/ts-out.SKsDw8.e.
+ Only the stdout file gets created with \fBmkstemp\fR, ensuring it does not overwrite
+ any other; the ".e" will be overwritten if it existed.
+@@ -107,21 +107,21 @@ any other; the ".e" will be overwritten if it existed.
+ Run the command only if there are \fbnum\fB slots free in the queue. Without it,
+ the job will run if there is one slot free. For example, if you use the
+ queue to feed cpu cores, and you know that a job will take two cores, with \fB\-N\fB
+-you can let ts know that.
++you can let tsp know that.
+ .SH ACTIONS
+ Instead of giving a new command, we can use the parameters for other purposes:
+ .TP
+ .B "\-K"
+ Kill the
+-.B ts
++.B tsp
+ server for the calling client. This will remove the unix socket and
+ all the
+-.B ts
++.B tsp
+ processes related to the queue. This will not kill the command being
+ run at that time.
+ 
+ It is not reliable to think that
+-.B ts -K
++.B tsp -K
+ will finish when the server is really killed. By now it is a race condition.
+ .TP
+ .B "\-C"
+@@ -130,7 +130,7 @@ Clear the results of finished jobs from the queue.
+ .B "\-l"
+ Show the list of jobs - to be run, running and finished - for the current queue.
+ This is the default behaviour if
+-.B ts
++.B tsp
+ is called without options.
+ .TP
+ .B "\-t [id]"
+@@ -165,7 +165,7 @@ Wait for the named job, or for the last in the queue.
+ Kill the process group of the named job (SIGTERM),
+ or the last running/run job if not specified.
+ Equivalent to
+-.B kill -- -`ts -p`
++.B kill -- -`tsp -p`
+ .TP
+ .B "\-u [id]"
+ Make the named job (or the last in the queue) urgent - this means that it goes
+@@ -186,7 +186,7 @@ Show help on standard output.
+ .B "\-V"
+ Show the program version.
+ .SH MULTI-SLOT
+-.B ts
++.B tsp
+ by default offers a queue where each job runs only after the previous finished.
+ Nevertheless, you can change the maximum number of jobs running at once with
+ the
+@@ -215,7 +215,7 @@ option if you are tired of
+ .B \-C.
+ .TP
+ .B "TS_MAXCONN"
+-The maximum number of ts server connections to clients. This will make the ts clients
++The maximum number of tsp server connections to clients. This will make the tsp clients
+ block until connections are freed. This helps, for example, on systems with a limited
+ number of processes, because each job waiting in the queue remains as a process. This
+ variable has to be set at server start, and cannot be modified later.
+@@ -244,7 +244,7 @@ otherwise.
+ Each queue has a related unix socket. You can specify the socket path with this
+ environment variable. This way, you can have a queue for your heavy disk
+ operations, another for heavy use of ram., and have a simple script/alias
+-wrapper over ts for those special queues. If it is not specified, it will be
++wrapper over tsp for those special queues. If it is not specified, it will be
+ .B $TMPDIR/socket-ts.[uid].
+ .TP
+ .B "TS_SLOTS"
+@@ -252,7 +252,7 @@ Set the number of slots at the start of the server, similar to
+ .B \-S,
+ but the contents of the variable are read only when running
+ the first instance of
+-.B ts.
++.B tsp.
+ .TP
+ .B "TS_MAILTO"
+ Send the letters with job results to the address specified in this variable.
+@@ -275,7 +275,7 @@ is not specified.
+ .TP
+ .B "TS_SAVELIST"
+ If it is defined when starting the queue server (probably the first
+-.B ts
++.B tsp
+ command run), on SIGTERM the queue status will be saved to the file pointed
+ by this environment variable - for example, at system shutdown.
+ .TP
+@@ -288,12 +288,12 @@ For example, you may use \fBTS_ENV='pwd;set;mount'\fR.
+ .TP
+ .B /tmp/ts.error
+ if
+-.B ts
++.B tsp
+ finds any internal problem, you should find an error report there.
+ Please send this to the author as part of the bug report.
+ 
+ .SH BUGS
+-.B ts
++.B tsp
+ expects a simple command line. It does not start a shell parser.
+ If you want to run complex shell commands, you may want to run them through
+ .B sh -c 'commands...'
+@@ -313,8 +313,8 @@ is created, which you can submit to the developer in order to fix the bug.
+ Lluis Batlle i Rossell
+ .SH NOTES
+ This page describes
+-.B ts
++.B tsp
+ as in version 1.0. Other versions may differ. The file
+ .B TRICKS
+ found in the distribution package can show some ideas on special uses of
+-.B ts.
++.B tsp.
