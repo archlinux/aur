@@ -1,7 +1,7 @@
 pkgbase = tal-chorus-lx
 	pkgdesc = A Simple Algorithmic Chorus By TAL Software
 	pkgver = 1.6.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://tal-software.com/products/tal-chorus-lx
 	arch = x86_64
 	groups = pro-audio
