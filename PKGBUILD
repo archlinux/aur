@@ -1,18 +1,18 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname=netsend-bin
-_pkgname=NetSend
-pkgver=2.0.1
-_githubver=2.0.0
-pkgrel=2
+_pkgname=netsend
+pkgname="${_pkgname}-bin"
+pkgver=2.0.5
+pkgrel=1
 pkgdesc="An intranet file transfer tool based on umijs + electron + javascript.一个基于 umijs + electron + javascript 构建的内网文件传输工具"
 arch=('x86_64')
 url="https://github.com/williamnie/netSend"
 license=('GPL2')
 conflicts=()
-depends=('nss' 'alsa-lib' 'at-spi2-core' 'gtk3')
+depends=(nss alsa-lib at-spi2-core gtk3 libxfixes dbus libxext cairo mesa glib2 libxcb hicolor-icon-theme expat \
+    glibc nspr wayland libdrm pango libx11 gcc-libs libxkbcommon libxcomposite libxrandr libcups libxdamage)
 options=()
-source=("${_pkgname}_${_githubver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${_githubver}_amd64.deb")
-sha512sums=('d59f56f31ab8892f748373fadc6f915e51decf3e109ef107c4f9eb89147abfafb9223b42ee1ecb2388fae7be168a6c5cadfac85b1dc193d58de0a27fa46356bd')
+source=("${_pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}.5/NetSend_${pkgver}_amd64.deb")
+sha256sums=('88f7f7cfc21efbe66ab34b1283763c10b37bde802d2d53a329eed62d49779f0b')
 package() {
     bsdtar -xf data.tar.xz -C "${pkgdir}"
 }
