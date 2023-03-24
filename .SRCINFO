@@ -1,16 +1,18 @@
 pkgbase = csbooks-appimage
-	pkgdesc = csBooks is the best epub reader, pdf reader, mobi book reader and djvu reader for windows, linux and mac os. It solves your problems if you need ebook manager, library manager on linux, best comic book reader, cbz file reader, cbr file reader etc.
+	pkgdesc = csBooks is the best epub reader, pdf reader, mobi book reader and djvu reader.
 	pkgver = 7.5.0
-	pkgrel = 2
-	url = https://caesiumstudio.com/csbooks/
+	pkgrel = 3
+	url = https://caesiumstudio.com/csbooks
 	arch = x86_64
-	license = unknown
+	license = custom
 	depends = zlib
 	depends = hicolor-icon-theme
+	depends = glibc
 	conflicts = csbooks
-	conflicts = csbooks-bin
 	options = !strip
 	source = csbooks-7.5.0.AppImage::https://github.com/caesiumstudio/csBooks-updates/releases/download/latest/csBooks-7.5.0.AppImage
-	sha512sums = 64ee1f59ef0e5cfab64ab1082e056c64ae0c5e2e1153c7bd5937d477d634d70a3c3791b1e1ce3317dd17fbdf432f9575a463fcf19e01f7d39fbafda5574cd9a7
+	source = LICENSE::https://caesiumstudio.com/csbooks/privacy-policy
+	sha256sums = cd3f352fede998f933eaa929809e60cb15745968ae01460845bb531d471e57fa
+	sha256sums = 9e45f7627b17b6f7dbfa93c96c98c88e90405629835ffaf3c3acab2243f2ef64
 
 pkgname = csbooks-appimage
