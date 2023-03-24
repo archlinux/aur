@@ -3,7 +3,7 @@
 pkgname=gpu-screen-recorder-gtk-git
 pkgver=r104.e745e9a
 pkgrel=1
-pkgdesc='Gtk frontend to gpu-screen-recorder, a shadowplay-like screen recorder for Linux. The fastest screen recorder for Linux.'
+pkgdesc='Gtk frontend to gpu-screen-recorder, a shadowplay-like screen recorder for Linux. The fastest screen recorder for Linux. Currently only available for NVIDIA (on x11)'
 arch=('x86_64')
 url="https://git.dec05eba.com/gpu-screen-recorder-gtk"
 license=('GPL3')
