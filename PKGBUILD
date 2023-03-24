@@ -3,7 +3,7 @@
 
 pkgname=pyglossary
 pkgver=4.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for converting dictionary files aka glossaries with various formats for different dictionary applications"
 arch=(any)
 url="https://github.com/ilius/pyglossary"
@@ -24,6 +24,7 @@ optdepends=(
   'libplist: Required for AppleDict support'
   'gtk4: Required for the new Gtk4-based interface'
   'python-psutil: Required to show memory usage'
+  'python-polib: Required for gettext support'
 )
 makedepends=('python-setuptools')
 provides=("${pkgname}=${pkgver}")

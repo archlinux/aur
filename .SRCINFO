@@ -1,7 +1,7 @@
 pkgbase = pyglossary
 	pkgdesc = A tool for converting dictionary files aka glossaries with various formats for different dictionary applications
 	pkgver = 4.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ilius/pyglossary
 	install = pyglossary.install
 	arch = any
@@ -21,6 +21,7 @@ pkgbase = pyglossary
 	optdepends = libplist: Required for AppleDict support
 	optdepends = gtk4: Required for the new Gtk4-based interface
 	optdepends = python-psutil: Required to show memory usage
+	optdepends = python-polib: Required for gettext support
 	provides = pyglossary=4.6.1
 	source = pyglossary-4.6.1.tar.gz::https://github.com/ilius/pyglossary/archive/refs/tags/4.6.1.tar.gz
 	sha256sums = 1eb56bc7e670b5908ad0997ca5974bee11e717ee186fe19cc8d5c7fcecafead2
