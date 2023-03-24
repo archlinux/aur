@@ -4,7 +4,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.4269.r0.g72b38ce71
+pkgver=1.7.4272.r0.g42155dd11
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -18,26 +18,18 @@ license=(
 
 depends=(
     libaio
-    libjpeg-turbo
     libpcap
-    libzip
-    libgl # For Steam Deck
-    xorg-xrandr # For Steam Deck
-    libxrender # For Steam Deck
-    linux-api-headers # For Steam Deck
-    libpulse
+    libglvnd
+    libxrandr
+    alsa-lib
     ffmpeg
-    portaudio
-    libsamplerate
     sdl2
-    rapidyaml
     qt6-base
-    qt6-wayland
-    qt6-tools
     qt6-svg
     soundtouch
     wayland
-    zstd
+    libpng
+    hicolor-icon-theme
 )
 makedepends=(
     cmake
@@ -45,20 +37,24 @@ makedepends=(
     lld
     llvm
     git
-    xorgproto
     ninja
-    swig
-    python
-    vulkan-headers
+    libpulse
+    p7zip
+    qt6-wayland
+    qt6-tools
 )
-install=pcsx2-git.install
-provides=(pcsx2 pcsx2-qt)
-conflicts=(pcsx2)
-
+optdepends=(
+    'qt6-wayland: Wayland support'
+    'libpulse: Pulseaudio support'
+)
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
+options=(!lto)
 source=(
     git+https://github.com/PCSX2/pcsx2.git
-    git+https://github.com/PCSX2/xz.git
-    gtest::git+https://github.com/google/googletest.git
+    git+https://github.com/PCSX2/pcsx2_patches.git
+    xz-pcsx2::git+https://github.com/PCSX2/xz.git
+    git+https://github.com/google/googletest.git
     git+https://github.com/fmtlib/fmt.git
     git+https://github.com/microsoft/wil.git
     git+https://github.com/rtissera/libchdr.git
@@ -66,67 +62,45 @@ source=(
     git+https://github.com/biojppm/cmake.git
     git+https://github.com/biojppm/c4core.git
     git+https://github.com/biojppm/debugbreak.git
-    git+https://github.com/KhronosGroup/glslang.git
     git+https://github.com/fastfloat/fast_float.git
-    vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
-    git+https://github.com/libsdl-org/SDL.git
+    git+https://github.com/KhronosGroup/glslang.git
+    git+https://github.com/KhronosGroup/Vulkan-Headers.git
     git+https://github.com/nih-at/libzip.git
     git+https://github.com/facebook/zstd.git
     git+https://github.com/RetroAchievements/rcheevos.git
-    0001-Fix-resources-Fix-CMake.patch
+    pcsx2-qt.sh
 )
-b2sums=('SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'db0e71c76fc59f8e07684d032a3ab145eaff8964900a1690010ac1963513a050be438f651209b0cb160559c16d50d2cf5b0b8035f40c5f82e4c199d459dcec9d')
+install=pcsx2-git.install
 
-prepare()
-{
+prepare() {
     cd pcsx2
-    git apply -3 ../0001-Fix-resources-Fix-CMake.patch
-
     local submodule
     _pcsx2_submodules=(
-        3rdparty/xz/xz
-        3rdparty/gtest
-        3rdparty/fmt/fmt
-        3rdparty/libchdr/libchdr
-        3rdparty/wil
-        3rdparty/rapidyaml/rapidyaml
-        3rdparty/glslang/glslang
-        3rdparty/vulkan-headers
-        3rdparty/sdl2/SDL
-        3rdparty/libzip/libzip
-        3rdparty/zstd/zstd
-        3rdparty/rcheevos/rcheevos
+        xz-pcsx2::3rdparty/xz/xz
+        googletest::3rdparty/gtest
+        fmt::3rdparty/fmt/fmt
+        wil::3rdparty/wil
+        libchdr::3rdparty/libchdr/libchdr
+        rapidyaml::3rdparty/rapidyaml/rapidyaml
+        glslang::3rdparty/glslang/glslang
+        Vulkan-Headers::3rdparty/vulkan-headers
+        libzip::3rdparty/libzip/libzip
+        zstd::3rdparty/zstd/zstd
+        rcheevos::3rdparty/rcheevos/rcheevos
     )
     for submodule in ${_pcsx2_submodules[@]}; do
-        git submodule init ${submodule}
-        git submodule set-url ${submodule} "${srcdir}/${submodule##*/}"
-        git -c protocol.file.allow=always submodule update ${submodule}
+        git submodule init "${submodule#*::}"
+        git submodule set-url "${submodule#*::}" "$srcdir"/"${submodule%::*}"
+        git -c protocol.file.allow=always submodule update "${submodule#*::}"
     done
-
+    
     cd 3rdparty/rapidyaml/rapidyaml
     for submodule in ext/c4core; do
         git submodule init ${submodule}
         git submodule set-url ${submodule} "${srcdir}/${submodule##*/}"
         git -c protocol.file.allow=always submodule update ${submodule}
     done
-
+    
     cd ext/c4core
     for submodule in cmake src/c4/ext/{debugbreak,fast_float}; do
         git submodule init ${submodule}
@@ -135,38 +109,67 @@ prepare()
     done
 }
 
-pkgver()
-{
+pkgver() {
     cd pcsx2
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
-build()
-{
-    cmake -B build -S pcsx2 \
+build() {
+    cmake -S pcsx2 -B build \
+    -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
     -DCMAKE_C_COMPILER=clang \
     -DCMAKE_CXX_COMPILER=clang++ \
+    -DCMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
     -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
     -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld" \
-    -DWAYLAND_API=ON \
+    -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
     -DQT_BUILD=ON \
-    -DUSE_VULKAN=ON \
+    -DCUBEB_API=ON \
+    -DX11_API=ON \
+    -DWAYLAND_API=ON \
+    -DENABLE_SETCAP=OFF \
+    -DUSE_SYSTEM_LIBS=OFF \
+    -DUSE_SYSTEM_FMT=OFF \
+    -DUSE_SYSTEM_LIBZIP=OFF \
+    -DUSE_SYSTEM_RYML=OFF \
+    -DUSE_SYSTEM_SDL2=ON \
+    -DUSE_SYSTEM_ZSTD=OFF \
     -DDISABLE_ADVANCE_SIMD=ON \
-    -GNinja \
-    -DPACKAGE_MODE=ON
-
-    ninja -C build
-
-    cp pcsx2/.github/workflows/scripts/linux/pcsx2-qt.desktop build/bin/PCSX2.desktop
+    -DDISABLE_BUILD_DATE=ON
+    ninja -C build -v
+    
+    7z a -r cheats_ni.zip pcsx2_patches/cheats_ni/*
+    7z a -r cheats_ws.zip pcsx2_patches/cheats_ws/*
 }
 
-package()
-{
-    DESTDIR="${pkgdir}" cmake --install build
-    install -Dm644 pcsx2/pcsx2/Resources/AppIcon64.png "$pkgdir/usr/share/icons/hicolor/64x64/apps/PCSX2.png"
+package() {
+    install -dm755  "${pkgdir}"/opt/
+    cp -r build/bin "${pkgdir}"/opt/"${pkgname%-git}"
+    install -Dm755 pcsx2-qt.sh "$pkgdir"/usr/bin/pcsx2-qt
+    install -Dm644 pcsx2/.github/workflows/scripts/linux/pcsx2-qt.desktop \
+    "${pkgdir}"/usr/share/applications/PCSX2.desktop
+    install -Dm644 pcsx2/pcsx2/Resources/AppIcon64.png \
+    "${pkgdir}"/usr/share/icons/hicolor/64x64/apps/PCSX2.png
+    install -Dm644 -t "${pkgdir}"/opt/"${pkgname%-git}"/resources/ cheats_ni.zip
+    install -Dm644 -t "${pkgdir}"/opt/"${pkgname%-git}"/resources/ cheats_ws.zip
 }
 
-# vim: ts=2 sw=2 et:
+b2sums=('SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+'20a92373a9434f285f8d51d7e615bf53843a59abf40f2e2a22464fe1680fb077ed4a5d97cf8ecb0fca3b5a0a4d2b5e2864af656052c2dc55cc6f54eea16d4449')
