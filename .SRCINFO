@@ -1,7 +1,7 @@
 pkgbase = freedv-gui
 	pkgdesc = Digital Voice for Radio Amateurs
-	pkgver = 1.8.7
-	pkgrel = 2
+	pkgver = 1.8.8
+	pkgrel = 1
 	url = https://freedv.org/
 	arch = x86_64
 	arch = aarch64
@@ -18,7 +18,7 @@ pkgbase = freedv-gui
 	depends = gsm
 	depends = libsndfile
 	depends = lpcnetfreedv
-	source = freedv-gui-1.8.7.tar.gz::https://github.com/drowe67/freedv-gui/archive/refs/tags/v1.8.7.tar.gz
-	sha512sums = 8aa88ca5f15998410f84d2e41972090312c4ab1dfac908690ad436ce06242aa5d686ea87a67ccce46d1f63ba89c12b7640160fb25c216052f158d245a39f6aab
+	source = freedv-gui-1.8.8.tar.gz::https://github.com/drowe67/freedv-gui/archive/refs/tags/v1.8.8.tar.gz
+	sha512sums = bfc675c365f0caf5a8d5a394c1008e077d5b2c1ae57376ce15b93ae58902e3fdd1b433e18d39d0e9ee0c63557c1a6b187767974a9c5946865d5cb64c949d9a2b
 
 pkgname = freedv-gui
