@@ -1,3 +1,28 @@
+## GE-Proton7-53
+
+This is a hotfix that brings the Star Citizen specific EAC patch to upstream. It allows Star Citizen to run without needing to change the /etc/hosts file and does not interfere with EAC for other games.
+
+Note:
+
+Before running Star Citizen
+(1) You must set SteamGameId=starcitizen environment variable to trigger the EAC workaround
+(2) this script should be run to remove existing EAC files:
+
+```
+#!/bin/sh
+if [ -d \"$WINEPREFIX/drive_c/users/$USER/AppData/Roaming/EasyAntiCheat\" ]; then rm -rf \"$WINEPREFIX/drive_c/users/$USER/AppData/Roaming/EasyAntiCheat\"; fi
+```
+
+## GE-Proton7-52
+
+* Diablo IV proper fix from proton upstream added
+* Halo Infinite fix/patches from proton upstream added/updated
+* protonfix for Outlaws + A Handful of Missions (thanks Stereophonick)
+* protonfix for Underdog Detective (thanks Neodamode)
+* dxvk updated to git
+* vkd3d-protonupdated to git
+* wine updated to bleeding edge
+
 ## GE-Proton7-51
 
 * added fix for halo infinite (thanks TheMaister):
