@@ -1,6 +1,6 @@
 pkgbase = ferium-bin
 	pkgdesc = Fast and multi-source CLI program for managing Minecraft mods and modpacks from Modrinth, CurseForge, and Github Releases
-	pkgver = 4.3.4
+	pkgver = 4.4.0
 	pkgrel = 1
 	url = https://github.com/gorilla-devs/ferium
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = ferium-bin
 	conflicts = ferium-gui-bin
 	conflicts = ferium-git
 	conflicts = ferium-gui-git
-	source_x86_64 = ferium-4.3.4-1.x86_64.zip::https://github.com/gorilla-devs/ferium/releases/download/v4.3.4/ferium-linux-nogui.zip
-	sha256sums_x86_64 = 2078f96e77e759f3ac6df5d5415849c22557803eb961ba4d39fa76c3b5fdcf98
-	source_aarch64 = ferium-4.3.4-1.aarch64.zip::https://github.com/gorilla-devs/ferium/releases/download/v4.3.4/ferium-linux-arm64-nogui.zip
-	sha256sums_aarch64 = 2a3ca302e8c9919f883ee55ca366f017c315148a74d37c9af5748dacc2d8b8f6
+	source_x86_64 = ferium-4.4.0-1.x86_64.zip::https://github.com/gorilla-devs/ferium/releases/download/v4.4.0/ferium-linux-nogui.zip
+	sha256sums_x86_64 = e1d7e89c529581e793c887abfeddd89e68024c777f336e41f6623777cff6f05c
+	source_aarch64 = ferium-4.4.0-1.aarch64.zip::https://github.com/gorilla-devs/ferium/releases/download/v4.4.0/ferium-linux-arm64-nogui.zip
+	sha256sums_aarch64 = 387d9f671e19729fbf9b9e9a94ecaa3270de7a4d12f5f28c416b0a443d39b3de
 
 pkgname = ferium-bin
