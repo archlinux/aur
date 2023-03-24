@@ -1,6 +1,6 @@
 # Maintainer: James Read <contact@jread.com>
 pkgname=olivetin
-pkgver=2022.11.14
+pkgver=2023.03.22
 pkgrel=2
 pkgdesc="Give safe and simple access to predefined shell commands from a web interface."
 arch=('x86_64')
