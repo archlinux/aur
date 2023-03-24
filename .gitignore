@@ -1,0 +1,11 @@
+# path:   /home/klassiker/.local/share/repos/aur/iwd-git/.gitignore
+# author: klassiker [mrdotx]
+# github: https://aur.archlinux.org/packages/iwd-git
+# date:   2023-03-24T14:15:32+0100
+
+*
+!ChangeLog
+!iwd.install
+!PKGBUILD
+!.SRCINFO
+!.gitignore
