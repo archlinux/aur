@@ -3,7 +3,7 @@
 # Based obs/linux-pf-next by Oleksandr Natalenko aka post-factum <oleksandr@natalenko.name>
 
 pkgbase=linux-pf-stable-git
-pkgver=6.2.r1157007.4ee087d62efc
+pkgver=6.2.r1157370.c0c8865e54a3
 pkgrel=1
 pkgdesc='Linux pf-kernel (stable git version)'
 _kernel_rel=6.2
@@ -24,10 +24,11 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            'd6d74cb62947b1afe70276acdb03bc53258cce6e44e0b9ba0c45ee5e97328d26')
+            '5d8dd8d4f01bac5ced54a12db84fbe7c399105f55edc0d3c77a125c44dea5b12')
 
 pkgver() {
   cd $_srcname
+
   local version="$(grep \^VERSION Makefile|cut -d"=" -f2|cut -d" " -f2)"
   local patch="$(grep \^PATCHLEVEL Makefile|cut -d"=" -f2|cut -d" " -f2)"
 
