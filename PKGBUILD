@@ -22,12 +22,12 @@ build() {
 package() {
   cd $name
   bin="target/release/$name"
-  install -Dm755 $bin -t $pkgdir/usr/bin
-  install -Dm755 $bin-run -t $pkgdir/usr/bin
-  install -Dm755 $bin-trigger -t $pkgdir/usr/bin
+  install -Dm755 $bin -t pkg/$name/usr/bin
+  install -Dm755 $bin-run -t pkg/$name/usr/bin
+  install -Dm755 $bin-trigger -t pkg/$name/usr/bin
 }
 
 pkgver() {
-  cd "$name"
+  cd $name
   git describe --tags --abbrev=0 | sed s/v//
 }
