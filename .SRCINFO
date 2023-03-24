@@ -1,7 +1,7 @@
 pkgbase = cloak-obfuscation
 	pkgdesc = A pluggable transport that works alongside traditional proxy tools like OpenVPN to evade deep-packet-inspection based censorship
-	pkgver = 2.6.0
-	pkgrel = 5
+	pkgver = 2.6.1
+	pkgrel = 1
 	url = https://github.com/cbeuw/Cloak
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = cloak-obfuscation
 	conflicts = cloak-obfuscation-git
 	backup = etc/cloak/ckclient.json
 	backup = etc/cloak/ckserver.json
-	source = cloak-obfuscation-2.6.0.tar.gz::https://github.com/cbeuw/Cloak/archive/refs/tags/v2.6.0.tar.gz
-	sha512sums = cbb73e87b94ed63603b550ad8e0596865f8547c36f109f0d1e6ca31b9c522571c9f2ac8c2f6caa006a12b3f2126a313c1b2448f57ed9dcf5804f7e2bc8717b60
+	source = cloak-obfuscation-2.6.1.tar.gz::https://github.com/cbeuw/Cloak/archive/refs/tags/v2.6.1.tar.gz
+	sha512sums = 58699b92359f43cd3a250eb7d60a322c69252c631e5018790290172f82dbd6982d74890c5a7f6635ef7f25d421c36291cf0d6fc5ace29363e9220db076fba5e9
 
 pkgname = cloak-obfuscation
