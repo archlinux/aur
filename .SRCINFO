@@ -1,6 +1,6 @@
 pkgbase = scalasca
 	pkgdesc = Tool for measuring and analyzing runtime behavior of parallel programs.
-	pkgver = 2.6
+	pkgver = 2.6.1
 	pkgrel = 1
 	url = http://www.scalasca.org/start.html
 	install = scalasca.install
@@ -14,8 +14,7 @@ pkgbase = scalasca
 	makedepends = scorep
 	makedepends = openmpi
 	depends = openmpi
-	source = http://apps.fz-juelich.de/scalasca/releases/scalasca/2.6/dist/scalasca-2.6.tar.gz
-	sha256sums = b3f9cb1d58f3e25090a39da777bae8ca2769fd10cbd6dfb9a4887d873ee2441e
+	source = http://apps.fz-juelich.de/scalasca/releases/scalasca/2.6/dist/scalasca-2.6.1.tar.gz
+	md5sums = 56a49be3c2fe1c021ceeb8780a73757d
 
 pkgname = scalasca
-

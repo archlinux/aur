@@ -1,8 +1,9 @@
 # Maintainer: James Spencer <james.s.spencer@gmail.com>
 # Contributor: Ghislain Viguier <ghislain.viguier@gmail.com>
+# Contributor: Darjan Krijan [https://disc-kuraudo.eu]
 
 pkgname=scalasca
-pkgver=2.6
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="Tool for measuring and analyzing runtime behavior of parallel programs."
 arch=('i686' 'x86_64')
@@ -11,8 +12,8 @@ license=('custom')
 depends=('openmpi')
 makedepends=('cubelib' 'cubew' 'cubegui' 'otf2' 'scorep' 'openmpi')
 install=scalasca.install
-source=(http://apps.fz-juelich.de/scalasca/releases/$pkgname/$pkgver/dist/$pkgname-$pkgver.tar.gz)
-sha256sums=('b3f9cb1d58f3e25090a39da777bae8ca2769fd10cbd6dfb9a4887d873ee2441e')
+source=("http://apps.fz-juelich.de/scalasca/releases/${pkgname}/${pkgver::-2}/dist/${pkgname}-${pkgver}.tar.gz")
+md5sums=('56a49be3c2fe1c021ceeb8780a73757d')
 
 
 build() {
