@@ -72,7 +72,7 @@ package() {
     echo /etc/thelounge > "$pkgdir/usr/lib/thelounge/node_modules/thelounge/.thelounge_home"
 
     # add default config
-    install -Dm 644 "$pkgdir/usr/lib/thelounge/node_modules/thelounge/defaults/config.js" "$pkgdir/etc/thelounge/config.js"
+    install -Dm 644 "$pkgdir/usr/lib/thelounge/node_modules/thelounge/dist/defaults/config.js" "$pkgdir/etc/thelounge/config.js"
 
     # services
     install -Dm644 "$srcdir/system.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
