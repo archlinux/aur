@@ -1,0 +1,14 @@
+pkgbase = papa
+	pkgdesc = A cli mod manager for the Northstar launcher
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/AnActualEmerald/papa
+	arch = any
+	license = MIT
+	makedepends = cargo
+	provides = papa
+	conflicts = papa
+	source = git+https://github.com/AnActualEmerald/papa.git#commit=ecb6306027e12007da86541fbdac145fa69bc2d4
+	sha256sums = SKIP
+
+pkgname = papa
