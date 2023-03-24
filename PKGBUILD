@@ -71,6 +71,12 @@ build() {
     ninja -C build
 }
 
+check() {
+    cd "${srcdir}/${pkgname%-git}/build"
+#     ctest --test-dir build --output-on-failure
+    bash run_all_tests.sh
+}
+
 package() {
     DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgname%-git}/build install
 }
