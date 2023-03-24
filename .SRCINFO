@@ -1,0 +1,13 @@
+pkgbase = nsd-exporter-git
+	pkgdesc = Prometheus exporter for NSD (Name Server Daemon)
+	pkgver = v0.3.1.r0.g1d75ba5
+	pkgrel = 1
+	url = https://github.com/optix2000/nsd_exporter
+	arch = i686
+	arch = x86_64
+	license = BSD 3-Clause License
+	makedepends = go
+	source = git+https://github.com/optix2000/nsd_exporter
+	sha1sums = SKIP
+
+pkgname = nsd-exporter-git
