@@ -1,7 +1,7 @@
 # Maintainer: mosquito <mosquito@email.cn>
 pkgname=bobibo
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cli-app, convert pictures to ascii arts."
 arch=("x86_64")
 url="https://github.com/orzation/bobibo"
@@ -14,6 +14,12 @@ optdepends=(
   'sudo: privilege elevation'
   'doas: privilege elevation'
 )
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  export GOPATH="$srcdir"/gopath
+  go clean -modcache
+}
 
 build() {
   export GOPATH="$srcdir"/gopath
