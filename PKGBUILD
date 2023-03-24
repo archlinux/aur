@@ -2,8 +2,8 @@
 
 _pkgname=python-openaiauth
 pkgname="${_pkgname}-git"
-pkgver=0.3.2.r51.20230219.4dbb23e
-pkgrel=3
+pkgver=0.3.2+3.r54.20230303.a51f183
+pkgrel=1
 pkgdesc="OpenAI Authentication Library for ChatGPT."
 arch=(
   'any'
