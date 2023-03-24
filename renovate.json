@@ -19,7 +19,8 @@
         "pkgver=(?<currentValue>.*?)\n"
       ],
       "depNameTemplate": "puppetlabs/puppet-editor-services",
-      "datasourceTemplate": "github-tags"
+      "datasourceTemplate": "github-tags",
+      "extractVersionTemplate": "^v(?<version>.*)$"
     }
   ]
 }
