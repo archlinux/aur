@@ -1,16 +1,19 @@
 # Maintainer: steffeno <steffeno dash etc at protonmail dot com>
-pkgname=ly-git
-pkgver=0.5.3.r82.g5db09ce
+_pkgname=ly
+pkgname="$_pkgname"-git
+pkgver=0.5.3.r89.gc64f806
 pkgrel=1
 pkgdesc="TUI display manager"
-arch=('i686' 'x86_64' 'aarch64')
-url="https://github.com/nullgemm/ly"
+arch=(i686 x86_64 aarch64)
+url="https://github.com/fairyglade/$_pkgname"
 license=('custom:WTFPL')
-makedepends=('git')
-depends=('pam' 'xorg-xauth')
-conflicts=('ly' 'python-ly-git')
-backup=('etc/ly/config.ini')
-source=('git+https://github.com/nullgemm/ly.git')
+depends=(pam)
+makedepends=(git libxcb)
+optdepends=('xorg-xauth: for X server sessions')
+conflicts=(ly python-ly)
+provides=(ly)
+backup=(etc/"$_pkgname"/{config.ini,wsetup.sh,xsetup.sh})
+source=("git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -20,7 +23,7 @@ pkgver() {
 
 prepare() {
 	cd ly
-    git submodule update --init --recursive
+  git submodule update --init --recursive
 }
 
 build() {
