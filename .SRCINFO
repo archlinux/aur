@@ -10,7 +10,7 @@ pkgbase = pipelight
 	makedepends = cargo
 	depends = deno
 	provides = pipelight
-	conflicts = pipelight
+	conflicts = pipelight-git
 	source = git+https://gitea.com/pipelight/pipelight.git
 	md5sums = SKIP
 
