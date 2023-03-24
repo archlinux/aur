@@ -1,0 +1,31 @@
+From 79832c9358cc78aad3308d407a14718aa8b24846 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jo=C3=A3o=20de=20Felipe?= <joaodefelipe@gmail.com>
+Date: Fri, 24 Mar 2023 14:54:55 -0300
+Subject: [PATCH] Fix builds on iptables version 1.8.9 or newer
+
+Ever since iptables commit ef108943f69a6e20533d58823740d3f0534ea8ec,
+the _init macro has become guarded by XTABLES_INTERNAL, thus breaking
+this extension.
+
+Explicitly specify the constructor attribute on the initialization
+function, which works on all versions.
+---
+ src/libxt_WGOBFS.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/libxt_WGOBFS.c b/src/libxt_WGOBFS.c
+index e811a5b..818d209 100644
+--- a/src/libxt_WGOBFS.c
++++ b/src/libxt_WGOBFS.c
+@@ -139,7 +139,7 @@ static struct xtables_target wg_obfs_reg[] = {
+           },
+ };
+ 
+-static void _init(void)
++static void __attribute__((constructor)) _init(void)
+ {
+         xtables_register_targets(wg_obfs_reg,
+                                  sizeof(wg_obfs_reg) / sizeof(*wg_obfs_reg));
+-- 
+2.39.2
+
