@@ -4,12 +4,12 @@
 _pkgname=upscayl
 pkgname=$_pkgname-bin
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Free and Open Source AI Image Upscaler'
 url='https://github.com/upscayl/upscayl'
 license=('AGPL3')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-depends=('fuse2' 'zlib')
+depends=('fuse2' 'nss' 'zlib')
 makedepends=('util-linux')
 provides=($_pkgname)
 conflicts=($_pkgname)
