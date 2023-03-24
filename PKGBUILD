@@ -11,7 +11,7 @@
 _pkgname=conky
 pkgname=conky-git
 pkgver=1.18.3.r14.ga9cecaf9
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight system monitor for X"
 url="https://github.com/brndnmtthws/conky"
 license=('BSD' 'GPL')
@@ -54,12 +54,12 @@ source=("$pkgname::git+https://github.com/brndnmtthws/conky.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$pkgname"
+    cd "$pkgname"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "$srcdir/$pkgname"
+    cd "$pkgname"
 
     # Unbundle catch2 to fix build with glibc 2.35
     rm -r tests/catch2
@@ -67,7 +67,7 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/$pkgname"
+    cd "$pkgname"
 
     cmake \
         -B build \
@@ -93,7 +93,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/$pkgname"
+    cd "$pkgname"
     make -C build DESTDIR="$pkgdir" install
     install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$_pkgname"
     install -Dm644 extras/vim/syntax/conkyrc.vim.j2 -t \

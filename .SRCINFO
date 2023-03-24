@@ -1,7 +1,7 @@
 pkgbase = conky-git
 	pkgdesc = Lightweight system monitor for X
 	pkgver = 1.18.3.r14.ga9cecaf9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/brndnmtthws/conky
 	arch = x86_64
 	license = BSD
