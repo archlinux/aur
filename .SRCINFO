@@ -1,27 +1,27 @@
 pkgbase = jdk
 	pkgdesc = Oracle Java
-	pkgver = 19.0.2
+	pkgver = 20
 	pkgrel = 1
 	url = https://www.oracle.com/java/
 	arch = x86_64
 	license = custom
 	makedepends = python-html2text
-	noextract = jdk-19.0.2_doc-all.zip
-	source = https://download.oracle.com/java/19/archive/jdk-19.0.2_linux-x64_bin.tar.gz
-	source = https://download.oracle.com/otn_software/java/jdk/19.0.2+7/fdb695a9d9064ad6b064dc6df578380c/jdk-19.0.2_doc-all.zip
-	source = jdk-19_doc-license.html::https://download.oracle.com/otndocs/jcp/java_se-19-final-spec/license.html
+	noextract = jdk-20_doc-all.zip
+	source = https://download.oracle.com/java/20/archive/jdk-20_linux-x64_bin.tar.gz
+	source = https://download.oracle.com/otn_software/java/jdk/20+36/bdc68b4b9cbc4ebcb30745c85038d91d/jdk-20_doc-all.zip
+	source = jdk-20_doc-license.html::https://download.oracle.com/otndocs/jcp/java_se-20-final-spec/license.html
 	source = java.desktop
 	source = jconsole.desktop
 	source = jshell.desktop
 	source = java_16.png
 	source = java_48.png
 	source = LICENSE
-	sha256sums = 59f26ace2727d0e9b24fc09d5a48393c9dbaffe04c932a02938e8d6d582058c6
-	sha256sums = f7f978225836e96cb0729f1341a26a55e33801b5091eee44f7a11080256f56ae
-	sha256sums = 9e601ec00778d4ca3a604298802f1bc8f5dfe274f0ecda397fbb9d641bdc7dcc
+	sha256sums = 1157bba2126efd115b5133cc078e6bcc52b15583657e980a5197f34a7505222e
+	sha256sums = 39ac14b6caea4552777b92baf11b4afbeb05192ca2aebc8b752ff21f52b43e64
+	sha256sums = b5703ac13aa6ff7c8323b090a2996adc262895b6fcba6264262db3ac4789aec9
 	sha256sums = 572c5542bb6debfde01388197e429844679f1e6be7c7a39fd129a8f8cad2c562
 	sha256sums = 8b1699882c1a28b841bfc60fa958ddd5db80c56987d9da8735d31209a145f92f
-	sha256sums = 37053c3ba8bf933fb76e27b9c686019f00a260c9401e279a575584e633911ff7
+	sha256sums = b51dda29ac5b8a0d3386354010ccaae1de628c462d1f6bde3cfc28729b24ae0c
 	sha256sums = d27fec1d74f7a3081c3d175ed184d15383666dc7f02cc0f7126f11549879c6ed
 	sha256sums = 7cf8ca096e6d6e425b3434446b0835537d0fc7fe64b3ccba7a55f7bd86c7e176
 	sha256sums = 20becfcac0bdeaa29a76e6966d727f8cc79381354cbd5d530cdec823954df19f
@@ -40,12 +40,12 @@ pkgname = jre
 	optdepends = alsa-lib: for basic sound support
 	optdepends = gtk2: for the Gtk+ 2 look and feel - desktop usage
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
-	provides = java-runtime=19
-	provides = java-runtime-jdk19
-	provides = jre19-jdk=19.0.2-1
-	provides = java-runtime-headless=19
-	provides = java-runtime-headless-jdk=19
-	provides = jre19-jdk-headless=19.0.2-1
+	provides = java-runtime=20
+	provides = java-runtime-jdk20
+	provides = jre20-jdk=20-1
+	provides = java-runtime-headless=20
+	provides = java-runtime-headless-jdk=20
+	provides = jre20-jdk-headless=20-1
 	backup = etc/java-jdk/management/jmxremote.access
 	backup = etc/java-jdk/management/jmxremote.password.template
 	backup = etc/java-jdk/management/management.properties
@@ -65,12 +65,12 @@ pkgname = jdk
 	pkgdesc = Oracle Java Development Kit
 	install = jdk.install
 	depends = java-environment-common
-	depends = jre=19.0.2-1
+	depends = jre=20-1
 	depends = zlib
 	depends = hicolor-icon-theme
-	provides = java-environment=19
-	provides = java-environment-jdk=19
-	provides = jdk19-jdk=19.0.2-1
+	provides = java-environment=20
+	provides = java-environment-jdk=20
+	provides = jdk20-jdk=20-1
 
 pkgname = jdk-doc
 	pkgdesc = Oracle Java documentation
