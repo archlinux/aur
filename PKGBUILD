@@ -3,7 +3,7 @@
 
 pkgbase=linux-lts-515-git
 pkgname=linux-lts-515-git
-pkgver=5.15.102
+pkgver=5.15.104
 pkgrel=1
 pkgdesc='LTS Linux 5.15.x series'
 url="https://www.kernel.org/"
@@ -29,9 +29,9 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('441cddfb970b97759eebdb9b142673662ce0770500e3ae8bcd4b90af369b01e6'
+sha256sums=('71c532ce09992e470f3259ffeb38d2b5bba990c243a559e4726a57412bd36b54'
             'SKIP'
-            '7c4482c8a787db9dfa73d0789b734a298e83be17625dce8d9d6fdcdfbabbb34e'
+            '4ee23f956aa44936643a3a5dc68f4d2f321ce3e12665d0ec6f4af6b7a07cc1c0'
             '770791beba1cfc9ed8e5dfa2702de2ca33ae4cc9db7f3823316f075f8b117321'
             '5e19b88a2bbb0806bb4721535f614769ba74e65913e27ac3e708e3c7f4d3a0d0'
             '7c7707c738983f3683d76295b496f578996b7341fa39ad334ec2833bfe4b966e'
