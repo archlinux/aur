@@ -1,15 +1,19 @@
 pkgbase = yana-appimage
 	pkgdesc = Powerful note-taking app with nested documents, full-text search, rich-text editor, code snippet editor and more
 	pkgver = 1.0.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://yana.js.org/
 	arch = x86_64
 	license = MIT
 	depends = hicolor-icon-theme
 	depends = zlib
+	depends = glibc
+	provides = yana
 	conflicts = yana-bin
 	options = !strip
 	source = yana-1.0.13.AppImage::https://github.com/lukasbach/yana/releases/download/v1.0.13/Yana-1.0.13.AppImage
+	source = LICENSE::https://github.com/lukasbach/yana/raw/master/LICENSE
 	sha256sums = f8377ecede1247c44742e76ef9f2cbae1050e9390970a9b40dd512542347cfb2
+	sha256sums = ebb422a6231ddde433e1d601377c455aefcc96cdc27662bd3ce07d08f1110152
 
 pkgname = yana-appimage
