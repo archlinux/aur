@@ -1,6 +1,6 @@
 pkgbase = tal-reverb4
 	pkgdesc = A Simple Algorithmic Reverb V4 By TAL Software
-	pkgver = 4.0.2
+	pkgver = 4.0.3
 	pkgrel = 1
 	url = https://tal-software.com/tal-reverb-4
 	arch = x86_64
@@ -10,6 +10,6 @@ pkgbase = tal-reverb4
 	depends = libcurl-gnutls
 	depends = glibc
 	source = https://tal-software.com/downloads/plugins/TAL-Reverb-4_64_linux.zip
-	md5sums = bd843ccba98aa0d24b0393bb6de9e255
+	md5sums = 180ea564293a99cdb5841b63264ade98
 
 pkgname = tal-reverb4-bin
