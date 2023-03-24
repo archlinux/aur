@@ -3,7 +3,7 @@
 pkgname=tauon-music-box
 _pkgname=tauonmb
 _gitname=TauonMusicBox
-pkgver=7.5.0
+pkgver=7.6.1
 pkgrel=1
 _kissfftver=131.1.0
 _miniaudiocommit=1778a5e839514f35f41d31449f3573e3adffc51a
@@ -88,6 +88,6 @@ package() {
     install -Dm755 "extra/tauonmb.sh" "$pkgdir/usr/bin/tauon"
 }
 
-md5sums=('abb4f5e10a5f2dbdf4e76f68fb97bf9d'
+md5sums=('706b0d9b53926c9e281fd35f2f35d150'
          '981ad3e496fbd8edb99704fc0e2aa939'
          '5739102b8a42d944b1d5cb6e2c95b44c')
