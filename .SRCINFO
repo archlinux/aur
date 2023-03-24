@@ -1,6 +1,6 @@
 pkgbase = iwd-git
 	pkgdesc = Internet Wireless Daemon
-	pkgver = r2423.5c5bfbb
+	pkgver = r6868.e82dac4
 	pkgrel = 1
 	url = https://git.kernel.org/cgit/network/wireless/iwd.git/
 	install = iwd.install
@@ -10,6 +10,8 @@ pkgbase = iwd-git
 	license = LGPL
 	makedepends = git
 	makedepends = python-docutils
+	makedepends = dbus
+	makedepends = systemd
 	depends = glibc
 	depends = readline
 	depends = libreadline.so
@@ -22,4 +24,3 @@ pkgbase = iwd-git
 	sha256sums = SKIP
 
 pkgname = iwd-git
-

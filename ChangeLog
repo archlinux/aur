@@ -1,3 +1,200 @@
+ver 2.3:
+	Fix issue with length calculation for WMM IE.
+	Fix issue with channel number allocation off-by-one.
+	Fix issue with cached session when TLS phase2 fails.
+	Add support for FastReauthentication setting for EAP-TLS.
+
+ver 2.2:
+	Fix issue with handling FT and multiple roaming scans.
+	Fix issue with handling multiple wiphy registrations.
+	Fix issue with with EAP-PEAP session resumption.
+	Add support for using PTK rekeying in AP mode.
+	Add support for setting country IE in AP mode.
+	Add support for setting WMM parameter IE in AP mode.
+
+ver 2.1:
+	Fix issue with handling FT-over-DS action.
+	Fix issue with handling scan and 6 GHz support check.
+	Fix issue with handling when periodic scans get aborted.
+	Add support for using 5 GHz frequencies in AP mode.
+
+ver 2.0:
+	Fix issue with handling P2P and limiting ciphers to CCMP.
+	Fix issue with scanning before forced roaming action.
+	Fix issue with provided scan frequencies from RRM.
+	Fix issue with handling Michael MIC failure message.
+	Fix issue with handling timestamp size in MPDU frames.
+	Fix issue with handling enablement of OCVC for FT AKMs.
+	Fix issue with handling FT work as highest priority.
+	Fix issue with handling roaming events and Multi-BSS.
+	Add support for utilizing roaming candidates list.
+	Add support for utilizing TLS session caching.
+	Add support for ciphers with 256 bits key size.
+	Add support for Access Point mode with legacy TKIP.
+	Add support for MAC address changes while powered.
+	Add support for IPv4 and IPv6 network configuration.
+
+ver 1.30:
+	Fix issue with handling OWE if buggy AP is detected.
+	Fix issue with handling quick scan and enabling 6GHz.
+	Fix issue with handling tags for extended IEs.
+	Add support for handling HE capabilities.
+	Add support for handling regulatory domain changes.
+	Add support for handling netdev packet loss events.
+
+ver 1.29:
+	Fix issue with handling EAP-Success message.
+	Fix issue with handling secure setting and EAPoL.
+	Add support for DeviceProvisioning API properties.
+
+ver 1.28:
+	Fix issue with handling invalid EAPoL frames.
+	Fix issue with handling unexpectedly unencrypted EAP frames.
+	Fix issue with handling AlwaysRandomizeAddress/AddressOverride.
+	Fix issue with handling initial signal level notification.
+	Fix issue with handling sorting of scan requests.
+	Fix issue with handling frame type check in FT.
+
+ver 1.27:
+	Fix issue with hidden networks on connection error.
+	Fix issue with directed roams if already trying to roam.
+	Fix issue with checking for connected in FT frame event.
+
+ver 1.26:
+	Fix issue with handling BSS that changed frequency.
+	Fix issue with handling frequencies in neighbor report.
+	Fix issue with operating classes for 802.11ax standard.
+	Fix issue with enforcing of MFPR for 6 GHz frequencies.
+	Add support for band defined in the WiFi 6E amendment.
+	Add support for scanning while in AP mode.
+
+ver 1.25:
+	Fix issue with handling abort of periodic scans.
+	Fix issue with handling connection when link goes down.
+	Fix issue with handling operating channel information.
+	Add support for encrypted network profile storage.
+	Add support for DPP initiating as a configurator.
+
+ver 1.24:
+	Fix issue with handshake and missing rekeying support.
+	Fix issue with BSS ranking and zero signal strength.
+	Fix issue with setting OWE IE length correctly.
+
+ver 1.23:
+	Fix issue with handling handshake offloading.
+	Fix issue with at_console and D-Bus policy.
+
+ver 1.22:
+	Fix issue with handling periodic scanning.
+	Fix issue with handling scanning completion.
+	Fix issue with handling scanning for OWE auto-connect.
+	Add support for additional DPP features.
+
+ver 1.21:
+	Fix issue with handling disconnect events issued by AP.
+	Add experimental support for DPP feature.
+
+ver 1.20:
+	Fix issue with handling Hotspot 2.0 requirements.
+	Add support for evict_nocarrier setting during roaming.
+	Add support for experimental NetworkConfigurationAgent API.
+
+ver 1.19:
+	Fix issue with handling OCV if offloading is supported.
+	Fix issue with handling SA Query on channel switch event.
+	Fix issue with starting FT-over-DS actions after roaming.
+	Add support for OWE transition networks.
+	Add support for extended key IDs.
+
+ver 1.18:
+	Fix issue with handling faulty SAE duplicate commits.
+	Add support for Access Point FILS IP Address Assignment IE.
+	Add support for P2P GO-side 4-way handshake IP allocation.
+	Add support for forcing SAE group 19 if BSS requires it.
+
+ver 1.17:
+	Fix issue with sending additional and vendor IEs.
+	Fix issue with IE ordering for 802.11-2020 support.
+	Fix issue with frequency update on channel switch events.
+	Fix issue with drivers and handling of IF_OPER_UP setting.
+
+ver 1.16:
+	Fix issue with writing provisioning files with a passphrase.
+	Add support for Authenticator & Supplicant RSN Extension elements.
+	Add support for handling Transition Disable info.
+	Add support for SAE Hash-to-Element feature.
+
+ver 1.15:
+	Add support for FT-over-DS procedure with multiple BSS.
+	Add support for estimation of VHT RX data rate.
+	Add support for exporting Daemon information.
+
+ver 1.14:
+	Fix issue with scanning property and quick scan cancellation.
+	Fix issue with handling authentication timeouts from SAE.
+	Fix issue with handling association timeouts and retries.
+	Fix issue with handling roaming frequencies after roaming.
+	Fix issue with requesting neighbor report after roaming.
+	Add support for handling PSK offload connections.
+
+ver 1.13:
+	Fix issue with EAPoL protocol version 2010 handling.
+	Fix issue with authenticator method logic handling.
+	Fix issue with getting scan results from firmware.
+	Add support for handling SAE offload connections.
+	Add support for roaming with FullMAC devices.
+
+ver 1.12:
+	Fix issue with handling retry roaming without higher RSSI.
+	Fix issue with WPA3, OWE and FILS authentication handling.
+	Fix issue with handling locally generated deauth frames.
+	Fix issue with quick scanning and connect interaction.
+	Add support for diagnostic D-Bus interfaces.
+
+ver 1.11:
+	Add support for ACD client for static configuration.
+	Add support for intelligent scan of all frequencies.
+
+ver 1.10:
+	Add support for DHCP v6 configuration.
+	Add support for DHCP server operation with AP mode.
+	Add support for IP allocation during the 4-Way Handshake.
+	Add support for P2P Group-owner handling.
+
+ver 1.9:
+	Fix issue with WPA3 connections in transition mode.
+	Fix issue with handling roaming attempt failures.
+	Add support for radio management work queue.
+	Add support P2P service manager interface.
+	Add support for WiFi Display client API.
+
+ver 1.8:
+	Fix issue with handling FT AKMs when not supported.
+	Fix issue with handling FILS and RSNE in authenticate.
+	Fix issue with handling auto-connection and quick scan.
+	Fix issue with sending multiple scan requests.
+	Add support for P2P feature and API.
+
+ver 1.7:
+	Fix issue with APs that send IGTK falsely in big endian.
+	Fix issue with setting linkmode & operstate for open networks.
+
+ver 1.6:
+	Fix issue with handling missing AP stop events.
+	Fix issue with handling out-of-order disconnect events.
+	Fix issue with handling missing auth/assoc support.
+	Fix issue with handling omitted EAP-TLS-CACert.
+	Fix issue with handling OWE PTK derivation.
+	Add support for internal frame exchange API.
+	Add support for MAC randomization and override.
+	Add support for per-network MAC addresses.
+
+ver 1.5:
+	Fix issue with handling missing NEW_WIPHY events.
+	Fix issue with interface creation and NEW_WIPHY events.
+	Fix issue with handling LastConnectedTime property change.
+	Fix issue with PEAPv0 interoperability with Windows.
+
 ver 1.4:
 	Fix issue with handling Crypto-Binding and invalid MACs.
 	Fix issue with handling change station error results.
