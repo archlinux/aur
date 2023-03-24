@@ -1,32 +1,31 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname=esearch-appimage
-_pkgname=eSearch
-pkgver=1.9.8
-pkgrel=2
-epoch=
+_pkgname=esearch
+pkgname="${_pkgname}-appimage"
+pkgver=1.10.0
+pkgrel=1
 pkgdesc="截屏 离线OCR 搜索翻译 以图搜图 贴图 录屏 滚动截屏 Screenshot OCR search translate search for picture paste the picture on the screen screen recorder"
 arch=("x86_64")
 url="https://esearch-app.netlify.app/"
 _githuburl="https://github.com/xushengfeng/eSearch"
 license=('GPL3')
-depends=('hicolor-icon-theme' 'zlib')
+depends=(hicolor-icon-theme zlib glibc)
 optdepends=()
 options=(!strip)
-provides=()
-conflicts=(esearch-bin)
-install=
-source=("${_pkgname}-${pkgver}.AppImage::${_githuburl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.AppImage")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 _install_path="/opt/appimages"
-sha256sums=('cb48cdef279e2813df6228a66f0d19992b148c021903cc8d92c581bf7d2c33d0')
+source=("${_pkgname}-${pkgver}.AppImage::${_githuburl}/releases/download/${pkgver}-beta.5/eSearch-${pkgver}-beta.5-linux-x86_64.AppImage")
+sha256sums=('7da637aaa206b7c7dc741475ebe3ce023d812b7a4728d1f547e0bc86ce38a17b')
 prepare() {
     chmod a+x "${_pkgname}-${pkgver}.AppImage"
-    "./${_pkgname}-${pkgver}.AppImage" --appimage-extract
-    sed 's/Exec=/\#Exec=/g;s/Icon=/\#Icon=e/g' -i "${srcdir}/squashfs-root/esearch.desktop"
-    echo "Exec=/opt/appimages/eSearch.AppImage" >> "${srcdir}/squashfs-root/esearch.desktop"
-    echo "Icon=esearch-appimage" >> "${srcdir}/squashfs-root/esearch.desktop"
+    "./${_pkgname}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed 's/Exec=AppRun/Exec=\/opt\/appimages\/esearch.AppImage/g' -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${_pkgname}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${_pkgname}.AppImage"
-    install -Dm644 "${srcdir}/squashfs-root/resources/app/assets/icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
-    install -Dm644 "${srcdir}/squashfs-root/esearch.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
+        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png"
+    done
+    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 }
