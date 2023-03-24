@@ -1,36 +1,23 @@
-# Maintainer: Tony Morello <tony@morellowebdesign.com>
+# Maintainer: éclairevoyant
+
 pkgname=trash
-pkgver=1.5
+pkgver=1.5.2
 pkgrel=1
-epoch=
-pkgdesc="A CLI trash can (recycle bin)"
-arch=('i686' 'x86_64')
-url="https://github.com/tonymorello/trash"
-license=('GPL')
-groups=()
-depends=()
+pkgdesc="CLI trash can (recycle bin)"
+arch=(i686 x86_64)
+url="https://github.com/tonymorello/$pkgname"
+license=('custom:unlicense')
+depends=(glibc)
 makedepends=(shc)
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("$pkgname-$pkgver.tar.gz")
-noextract=()
-md5sums=(SKIP)
-validpgpkeys=()
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+b2sums=(SKIP)
 
 build() {
-	cd "${srcdir}/$pkgname-$pkgver"
-	make
+	make -C $pkgname-$pkgver
 }
 
 package() {
-	cd "${srcdir}/$pkgname-$pkgver"
-	rm makefile trash.sh trash.sh.x.c
-	install -Dm755 "${srcdir}/$pkgname-$pkgver"/trash "${pkgdir}"/usr/bin/trash
+	cd $pkgname-$pkgver
+	install -Dm755 $pkgname -t "$pkgdir/usr/bin/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

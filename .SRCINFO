@@ -1,14 +1,14 @@
 pkgbase = trash
-	pkgdesc = A CLI trash can (recycle bin)
-	pkgver = 1.5
+	pkgdesc = CLI trash can (recycle bin)
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/tonymorello/trash
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = custom:unlicense
 	makedepends = shc
-	source = trash-1.5.tar.gz
-	md5sums = SKIP
+	depends = glibc
+	source = trash-1.5.2.tar.gz::https://github.com/tonymorello/trash/archive/refs/tags/v1.5.2.tar.gz
+	b2sums = SKIP
 
 pkgname = trash
-
