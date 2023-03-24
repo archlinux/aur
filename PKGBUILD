@@ -1,6 +1,6 @@
 # Maintainer: Pfych <contact at pfy dot ch>
 pkgname=lr2oraja
-pkgver=build4501107977
+pkgver=build4501107977 
 pkgrel=1
 pkgdesc="The latest build of beatoraja, but compiled using LR2 judges and gauges."
 arch=('x86_64')
