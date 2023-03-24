@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/puppetlabs/puppet-editor-services"
 license=('Apache')
 depends=('ruby' 'puppet')
-source=(https://github.com/puppetlabs/puppet-editor-services/archive/${pkgver}.tar.gz
+source=(https://github.com/puppetlabs/puppet-editor-services/archive/v${pkgver}.tar.gz
         puppet-languageserver
         puppet-debugserver)
 sha256sums=('5a3b6ed6c8db3a76356cdcc65a43208be4ee9549be1b3ecf0eef8904470292da'
