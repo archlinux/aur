@@ -1,13 +1,14 @@
 pkgbase = droppoint-appimage
 	pkgdesc = Make drag-and-drop easier using DropPoint. Drag content without having to open side-by-side windows
 	pkgver = 1.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://droppoint.netlify.app/
 	arch = x86_64
 	license = GPL3
 	depends = zlib
 	depends = hicolor-icon-theme
 	depends = glibc
+	conflicts = droppoint
 	options = !strip
 	source = droppoint-1.2.1.AppImage::https://github.com/GameGodS3/DropPoint/releases/download/v1.2.1/DropPoint-1.2.1.AppImage
 	sha256sums = deace06f391479922fd5832f85f0d7d5017cff7495ce96a93c93da48d383a893
