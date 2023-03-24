@@ -1,4 +1,4 @@
-# Maintainer: Alexey Peschany <nelex111@gmail.com>
+# Maintainer: Alexey Peschany <archlinux at sandboiii dot xyz>
 # Contributor: Frederik Schwan <freswa at archlinux dot org>
 # Contributor: Giovanni Harting <539@idlegandalf.com>
 # Contributor: aimileus <me at aimileus dot nl>
