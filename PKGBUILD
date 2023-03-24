@@ -45,7 +45,9 @@ build() {
     cmake   -B _build \
             -GNinja \
             -DCLANG_DEFAULT_PIE_ON_LINUX=ON \
-            -DLLVM_USE_LINKER=lld \
+            -DLLVM_ENABLE_PIC=ON \
+            -DLLVM_ENABLE_LLD=ON \
+            -DLLVM_ENABLE_LIBCXX=ON \
             -DCMAKE_C_COMPILER=clang \
             -DCMAKE_CXX_COMPILER=clang++ \
             -DCMAKE_INSTALL_PREFIX:PATH=${install_path} \
