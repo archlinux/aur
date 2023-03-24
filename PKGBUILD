@@ -11,7 +11,8 @@ license=('MIT')
 options=()
 providers=("${_pkgname}")
 conflicts=("${_pkgname}")
-depends=(at-spi2-core alsa-lib nodejs-lts-fermium gtk3 nss python)
+depends=(at-spi2-core alsa-lib nodejs-lts-fermium gtk3 nss python gdk-pixbuf2 dbus expat libcups libxcomposite libx11 cairo \
+    glibc gcc-libs pango mesa hicolor-icon-theme libxcb nspr libxrandr libdrm libxfixes libxkbcommon glib2 libxext libxdamage )
 source=("${_pkgname}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/NxShell-amd64-linux-${pkgver}-202303220832.deb"
     "LICENSE::${_githuburl}/raw/main/LICENSE")
 sha256sums=('3f32cfb803930aee09660dad0aa156beabb8f910b76fdaca6ebfb25ed5d2d6be'
