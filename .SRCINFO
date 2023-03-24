@@ -1,0 +1,19 @@
+pkgbase = papa-bin
+	pkgdesc = A cli mod manager for the Northstar launcher (binary release)
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/AnActualEmerald/papa
+	arch = any
+	license = MIT
+	provides = papa
+	conflicts = papa
+	source = https://github.com/AnActualEmerald/papa/releases/download/v2.2.0/papa
+	source = https://raw.githubusercontent.com/AnActualEmerald/papa/ecb6306027e12007da86541fbdac145fa69bc2d4/CHANGELOG.md
+	source = https://raw.githubusercontent.com/AnActualEmerald/papa/ecb6306027e12007da86541fbdac145fa69bc2d4/LICENSE
+	source = https://raw.githubusercontent.com/AnActualEmerald/papa/ecb6306027e12007da86541fbdac145fa69bc2d4/README.md
+	sha256sums = 0d00b8afbaafce809d2d36123e50bf23c1518cffc093aca12b81e02319793caf
+	sha256sums = 645dbd5e1f9a6d863b3d233b729e57095082e61d612eeb384b2894bfe2766071
+	sha256sums = b6558cba3beba86187261c81219ae2bbb69273c325ade0d7f41c24ebc17dc9c2
+	sha256sums = 8ee6662dbc213e1a0bbaaeabd8193f8abc8c06180ca8889dd0f01cf700aeabf3
+
+pkgname = papa-bin
