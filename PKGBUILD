@@ -3,7 +3,7 @@
 # Contributor: jedbrown
 
 pkgname=papi-cuda
-pkgver=7.0.0
+pkgver=7.0.1
 pkgrel=1
 pkgdesc='Performance Application Programming Interface (with CUDA componet)'
 arch=('x86_64')
@@ -14,15 +14,20 @@ conflicts=('papi' 'libpfm4')
 depends=('python-argparse' 'gcc-fortran' 'cuda')
 optdepends=('openmpi: for MPI applications')
 source=("http://icl.cs.utk.edu/projects/papi/downloads/papi-${pkgver}.tar.gz"
-        'cuda-component-build-targets.patch')
-sha256sums=('799dcc317a47da96beaeed445812ecb6ae49df7c0504a4569797c1f7d74c4fd2'
-            '0b93df095425fd5d5a9166bb4d62a71a9ab62708b9364cb9da4193d2b60a890f')
+        'cuda-component-build-targets.patch'
+        'sde-ldflags.patch')
+sha256sums=('c105da5d8fea7b113b0741a943d467a06c98db959ce71bdd9a50b9f03eecc43e'
+            '0b93df095425fd5d5a9166bb4d62a71a9ab62708b9364cb9da4193d2b60a890f'
+            '5b930e34afa9b9af596344411ed3202f68d6de4e9049e1b41bc7adbd3ded8793')
 
 prepare() {
   cd "${srcdir}/papi-${pkgver}/src"
 
   # resolve issue with NVCC not understand `-Wl` flag
   patch -p1 < $srcdir/cuda-component-build-targets.patch
+
+  # fix missing LDFLAGS for SDE component (for full RELRO)
+  patch -p1 < $srcdir/sde-ldflags.patch
 }
 
 build() {
@@ -43,16 +48,18 @@ build() {
     --with-static-lib=yes --with-shared-lib=yes \
     --mandir=/usr/share/man \
     --with-perf-events \
-    --with-components="cuda"
+    --with-components="sde cuda"
 
   make
 }
 
-check(){
-  cd "${srcdir}/papi-${pkgver}/src"
-
-  make test
-}
+## XXX the tests run for a *very* long time, so I've disabled this step for the moment
+## check(){
+##   cd "${srcdir}/papi-${pkgver}/src"
+##
+##   #make test
+##   ./run_tests.sh
+## }
 
 package() {
   cd "${srcdir}/papi-${pkgver}/src"

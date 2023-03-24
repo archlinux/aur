@@ -1,6 +1,6 @@
 pkgbase = papi-cuda
 	pkgdesc = Performance Application Programming Interface (with CUDA componet)
-	pkgver = 7.0.0
+	pkgver = 7.0.1
 	pkgrel = 1
 	url = http://icl.cs.utk.edu/papi/
 	arch = x86_64
@@ -9,12 +9,14 @@ pkgbase = papi-cuda
 	depends = gcc-fortran
 	depends = cuda
 	optdepends = openmpi: for MPI applications
-	provides = papi=7.0.0
+	provides = papi=7.0.1
 	conflicts = papi
 	conflicts = libpfm4
-	source = http://icl.cs.utk.edu/projects/papi/downloads/papi-7.0.0.tar.gz
+	source = http://icl.cs.utk.edu/projects/papi/downloads/papi-7.0.1.tar.gz
 	source = cuda-component-build-targets.patch
-	sha256sums = 799dcc317a47da96beaeed445812ecb6ae49df7c0504a4569797c1f7d74c4fd2
+	source = sde-ldflags.patch
+	sha256sums = c105da5d8fea7b113b0741a943d467a06c98db959ce71bdd9a50b9f03eecc43e
 	sha256sums = 0b93df095425fd5d5a9166bb4d62a71a9ab62708b9364cb9da4193d2b60a890f
+	sha256sums = 5b930e34afa9b9af596344411ed3202f68d6de4e9049e1b41bc7adbd3ded8793
 
 pkgname = papi-cuda

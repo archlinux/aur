@@ -1,0 +1,11 @@
+--- src/sde_lib/Makefile	2023-03-24 22:22:33.906517802 +0100
++++ src/sde_lib/Makefile	2023-03-24 22:22:56.826913916 +0100
+@@ -14,7 +14,7 @@
+ all: dynamic static
+
+ dynamic: $(DOBJS)
+-	$(CC) -Bdynamic -fPIC -shared -Wl,-soname -Wl,libsde.so -fvisibility=hidden -Wextra -Wall -g -O2 $(DOBJS) -lrt -ldl -pthread -o libsde.so.1.0
++	$(CC) -Bdynamic -fPIC -shared -Wl,-soname -Wl,libsde.so $(LDFLAGS) -fvisibility=hidden -Wextra -Wall -g -O2 $(DOBJS) -lrt -ldl -pthread -o libsde.so.1.0
+ 	rm -f *_d.o
+
+ static: $(SOBJS)
