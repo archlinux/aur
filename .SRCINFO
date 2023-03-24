@@ -1,0 +1,27 @@
+pkgbase = warpgui-bin
+	pkgdesc = GUI for Cloudflare ™ WARP
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/AKotov-dev/warpgui
+	arch = x86_64
+	license = GPL3
+	depends = nftables
+	depends = zenity
+	depends = p7zip
+	depends = fping
+	depends = curl
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = at-spi2-core
+	depends = glibc
+	depends = pango
+	depends = cairo
+	depends = libx11
+	depends = gtk2
+	depends = hicolor-icon-theme
+	provides = warpgui
+	conflicts = warpgui
+	source = warpgui-1.4.rpm::https://github.com/AKotov-dev/warpgui/releases/download/v1.4/warpgui-1.4-0.mrx9.x86_64.rpm
+	sha256sums = 7baeb719c1f43209a6694410f0807200972d8c6387fe89cfb3607f2fb8d4b433
+
+pkgname = warpgui-bin
