@@ -1,6 +1,6 @@
 pkgbase = tauon-music-box
 	pkgdesc = A modern streamlined music player
-	pkgver = 7.6.1
+	pkgver = 7.6.2
 	pkgrel = 1
 	url = https://tauonmusicbox.rocks
 	arch = any
@@ -45,10 +45,10 @@ pkgbase = tauon-music-box
 	optdepends = python-jxlpy: JPEG XL image support
 	optdepends = python-tekore: Spotify feature support
 	optdepends = librespot: Spotify audio playback
-	source = tauon-music-box-7.6.1.tar.gz::https://github.com/Taiko2k/TauonMusicBox/archive/v7.6.1.tar.gz
+	source = tauon-music-box-7.6.2.tar.gz::https://github.com/Taiko2k/TauonMusicBox/archive/v7.6.2.tar.gz
 	source = kissfft.tar.gz::https://github.com/mborgerding/kissfft/archive/refs/tags/131.1.0.tar.gz
 	source = miniaudio.tar.gz::https://github.com/mackron/miniaudio/archive/1778a5e839514f35f41d31449f3573e3adffc51a.tar.gz
-	md5sums = 706b0d9b53926c9e281fd35f2f35d150
+	md5sums = 6f19e6b1e5c81093d6ebf38f3187fda8
 	md5sums = 981ad3e496fbd8edb99704fc0e2aa939
 	md5sums = 5739102b8a42d944b1d5cb6e2c95b44c
 
