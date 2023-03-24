@@ -1,0 +1,11 @@
+pkgbase = python311-as-default-interpreter
+	pkgdesc = Add necessary linking to make the python311 package the default interpreter; remove the 'python' package by conflicting it
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = python311
+	conflicts = python<3.11
+	conflicts = python312-as-default-interpreter
+
+pkgname = python311-as-default-interpreter
