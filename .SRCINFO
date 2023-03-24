@@ -1,0 +1,12 @@
+pkgbase = neofetch-port
+	pkgdesc = A port that just reponse with the output of neofetch...
+	pkgver = r2.0fc08c9
+	pkgrel = 1
+	url = https://github.com/LevitatingBusinessMan/neofetch-port
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	source = git+https://github.com/LevitatingBusinessMan/neofetch-port.git
+	sha256sums = SKIP
+
+pkgname = neofetch-port
