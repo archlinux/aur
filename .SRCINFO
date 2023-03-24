@@ -1,7 +1,7 @@
 pkgbase = papa-bin
 	pkgdesc = A cli mod manager for the Northstar launcher (binary release)
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AnActualEmerald/papa
 	arch = any
 	license = MIT

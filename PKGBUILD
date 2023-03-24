@@ -3,7 +3,7 @@
 _pkgname=papa
 pkgname=${_pkgname}-bin
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cli mod manager for the Northstar launcher (binary release)"
 arch=('any')
 url="https://github.com/AnActualEmerald/papa"
@@ -11,7 +11,6 @@ license=('MIT')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _commit=ecb6306027e12007da86541fbdac145fa69bc2d4
-
 source=("https://github.com/AnActualEmerald/papa/releases/download/v$pkgver/papa"
         "https://raw.githubusercontent.com/AnActualEmerald/papa/$_commit/CHANGELOG.md"
         "https://raw.githubusercontent.com/AnActualEmerald/papa/$_commit/LICENSE"
