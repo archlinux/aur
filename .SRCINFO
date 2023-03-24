@@ -1,0 +1,17 @@
+pkgbase = zelda3-git
+	pkgdesc = A reverse engineered implementation of Zelda 3 - A Link to the Past
+	pkgver = r312.a23632a
+	pkgrel = 1
+	url = https://github.com/snesrev/zelda3
+	arch = x86_64
+	license = MIT
+	depends = python
+	depends = python-pillow
+	depends = python-yaml
+	depends = sdl2
+	source = git+https://github.com/snesrev/zelda3.git
+	source = local://zelda3.sfc
+	sha256sums = SKIP
+	sha256sums = 66871d66be19ad2c34c927d6b14cd8eb6fc3181965b6e517cb361f7316009cfb
+
+pkgname = zelda3-git
