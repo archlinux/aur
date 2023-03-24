@@ -1,6 +1,6 @@
 pkgbase = taskopen
 	pkgdesc = Script for taking notes and open urls with taskwarrior
-	pkgver = 2.0.0beta
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = http://github.com/jschlatow/taskopen/
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = taskopen
 	makedepends = nim
 	depends = task>=2.5.0
 	optdepends = xdg-utils: easily use default application associated with a file type
-	source = https://codeload.github.com/jschlatow/taskopen/tar.gz/v2.0.0beta
-	sha256sums = 2487cc132118041b9a49a4ff956caedfa6ec70d93d3cd903601de166e2d0246a
+	source = https://codeload.github.com/jschlatow/taskopen/tar.gz/v2.0.1
+	sha256sums = d6749ff4933393d2b4f7e9e222c19ba3cea546e4e74bdc96c7e4a31a76fd7861
 
 pkgname = taskopen
