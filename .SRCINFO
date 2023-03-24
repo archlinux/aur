@@ -1,15 +1,18 @@
 pkgbase = nxshell-appimage
 	pkgdesc = An easy to use new terminal.
-	pkgver = 1.9.0
+	pkgver = 1.9.3
 	pkgrel = 1
 	url = https://nxshell.github.io/
 	arch = x86_64
 	license = MIT
 	depends = zlib
 	depends = hicolor-icon-theme
-	conflicts = nxshell-bin
+	depends = glibc
+	conflicts = nxshell
 	options = !strip
-	source = nxshell-1.9.0.AppImage::https://github.com/nxshell/nxshell/releases/download/v1.9.0/NxShell-x86_64-linux-1.9.0-202211250327.AppImage
-	sha512sums = d8078cec45a794d0abc6c2544f87a47560d03b6d4d04082610e05afb380cea1692d823f90c1c320402455b6aeaf7761b5138c774bb3b5f554db6aabfe9fe0767
+	source = nxshell-1.9.3.AppImage::https://github.com/nxshell/nxshell/releases/download/v1.9.3/NxShell-x86_64-linux-1.9.3-202303220832.AppImage
+	source = LICENSE::https://github.com/nxshell/nxshell/raw/main/LICENSE
+	sha256sums = 6824f48a9b3d453bc6ec660bc566d07defac8be9a60a7798a1f2122b4a16631d
+	sha256sums = 66cb6bb15c338de5a7aa8356fd76f3db92151ef80405bcfeb573b7d39f9333ce
 
 pkgname = nxshell-appimage
