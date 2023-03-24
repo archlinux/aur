@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=('pop-launcher-git' 'pop-shell-plugin-system76-power-git')
 pkgbase=pop-launcher-git
-pkgver=1.2.1.r43.gf8ec5b8
+pkgver=1.2.1.r47.gce2ba21
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/launcher"
 license=('MPL2')
 depends=('fd' 'libqalculate' 'sh' 'xdg-utils')
-makedepends=('cargo' 'git' 'just' 'libglvnd' 'libxkbcommon')
+makedepends=('cargo' 'git' 'just' 'libegl' 'libxkbcommon')
 options=('!lto')
 source=('git+https://github.com/pop-os/launcher.git')
 sha256sums=('SKIP')
@@ -23,6 +23,10 @@ prepare() {
   just vendor
 
   sed -i 's|{{bin-path}}|/usr/bin/pop-launcher|g' justfile
+
+  # change session-lock script icon to one more common
+  # so pop-icon-theme is not required
+  sed -i 's/locked/object-locked/g' scripts/session/session-lock.sh
 }
 
 build() {
