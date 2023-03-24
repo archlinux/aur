@@ -1,0 +1,27 @@
+pkgbase = python-platformio
+	pkgdesc = A professional collaborative platform for embedded development. Cross-platform IDE and Unified Debugger. Static Code Analyzer and Remote Unit Testing. Multi-platform and Multi-architecture Build System. Firmware File Explorer and Memory Inspection.
+	pkgver = 6.1.6
+	pkgrel = 1
+	url = https://platformio.org
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = python-bottle>=0.12
+	depends = python-click>=8.0.4
+	depends = python-colorama
+	depends = python-marshmallow>=3
+	depends = python-pyelftools>=0.27
+	depends = python-pyserial>=3.5
+	depends = python-requests>=2
+	depends = python-semantic-version>=2.10
+	depends = python-tabulate>=0.9
+	depends = python-aiofiles>=22.1
+	depends = python-ajsonrpc>=1
+	depends = python-starlette>=0.23
+	depends = uvicorn>=0.20
+	depends = python-wsproto>=1.2
+	source = https://files.pythonhosted.org/packages/source/p/platformio/platformio-6.1.6.tar.gz
+	b2sums = d8163775942cd780f8d2eb6d5c1109bb4771669d41e915772c4b1c14d9773ee5e17b9b03b8791328f63d6b1af1a0cca15dba3b5e7fef3eceb180073dd4437266
+
+pkgname = python-platformio
