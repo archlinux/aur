@@ -1,7 +1,7 @@
 #Maintainer: Jamie Steven (gritty.water0696@fastmail.com)
 _name=pixlet
 pkgname=${_name}-bin
-pkgver=0.25.1
+pkgver=0.25.2
 pkgrel=1
 arch=("x86_64" "aarch64")
 pkgdesc='Build apps for pixel-based displays'
@@ -12,8 +12,8 @@ provides=("${_name}")
 source_x86_64=("https://github.com/tidbyt/pixlet/releases/download/v${pkgver}/pixlet_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("https://github.com/tidbyt/pixlet/releases/download/v${pkgver}/pixlet_${pkgver}_linux_arm64.tar.gz")
 
-sha1sums_x86_64=('25850ffaafe002a91424e3c783ca499165dcccc2')
-sha1sums_aarch64=('e3c305ba0d7abcaaaa34541fbcadc94a29bc1d9e')
+sha1sums_x86_64=('145da129a79deaef007f6eeae852ab02548b1217')
+sha1sums_aarch64=('6cec888af7c14dc193068219bd3f6c03348b8bc1')
 
 package() {
   install -Dm755 ${_name} ${pkgdir}/usr/bin/${_name}
