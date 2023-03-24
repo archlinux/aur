@@ -1,6 +1,6 @@
 # Maintainer: Armin Preiml <apreiml@strohwolke.at>
 pkgname=haredo
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 license=("custom:WTFPL")
 pkgdesc="A simple and unix-idiomatic build automator."
@@ -31,4 +31,4 @@ package() {
 	make PREFIX="$pkgdir/usr" install
 }
 
-sha256sums=('2a209b9e2d8fb4eb6ff5ab9762b2fd745ec636bf50373dcebe693076be54be4d')
+sha256sums=('025d8f787a1b872972fcad08bad9aa7ada5e2ae7f193d4bb0264d331f4f26ff3')
