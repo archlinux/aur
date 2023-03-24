@@ -5,7 +5,7 @@
 
 # Maintainer: Lia Brueggemann <brueggemann.l@proton.me>
 pkgname=sherly-git
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 epoch=
 pkgdesc="Sherly is a Multithreaded Duplicate File Finder for your Terminal, written in java"
