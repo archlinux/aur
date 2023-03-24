@@ -5,7 +5,7 @@
 
 # Maintainer: Asuka Minato <asukaminato at nyan dot eu dot org>
 pkgname=chatbox-bin
-pkgver=0.2.3
+pkgver=0.2.6
 pkgrel=1
 epoch=
 pkgdesc="a cross-platform desktop client for OpenAI API, also a prompt debugging and management tool."
@@ -26,7 +26,7 @@ install=
 changelog=
 source=("https://github.com/Bin-Huang/chatbox/releases/download/Chatbox-v${pkgver}/chatbox_${pkgver}_amd64.deb")
 noextract=()
-sha256sums=('f4943a7c9499422b4bcf571268c2f114e55d62c18fbf141b836a7daa5621bdf7')
+sha256sums=('451cdaa1304eb82750d37520b3b64533ed18350c725923b4d77b7d93825b9905')
 validpgpkeys=()
 
 package() {
