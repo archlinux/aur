@@ -11,9 +11,9 @@
 _pkgname=conky
 pkgname=conky-git
 pkgver=1.18.3.r14.ga9cecaf9
-pkgrel=2
-pkgdesc="Lightweight system monitor for X"
-url="https://github.com/brndnmtthws/conky"
+pkgrel=3
+pkgdesc='Lightweight system monitor for X'
+url='https://github.com/brndnmtthws/conky'
 license=('BSD' 'GPL')
 arch=('x86_64')
 makedepends=(
@@ -42,24 +42,24 @@ depends=(
     'systemd-libs'
     'ncurses'
     'curl'
-    libncursesw.so
-    libXNVCtrl.so
-    libsystemd.so
-    libpulse.so
-    libcurl.so
+    'libncursesw.so'
+    'libXNVCtrl.so'
+    'libsystemd.so'
+    'libpulse.so'
+    'libcurl.so'
 )
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("$pkgname::git+https://github.com/brndnmtthws/conky.git")
+provides=('conky')
+conflicts=('conky')
+source=('git+https://github.com/brndnmtthws/conky.git')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
+    cd "$_pkgname"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "$pkgname"
+    cd "$_pkgname"
 
     # Unbundle catch2 to fix build with glibc 2.35
     rm -r tests/catch2
@@ -67,7 +67,7 @@ prepare() {
 }
 
 build() {
-    cd "$pkgname"
+    cd "$_pkgname"
 
     cmake \
         -B build \
@@ -93,7 +93,7 @@ build() {
 }
 
 package() {
-    cd "$pkgname"
+    cd "$_pkgname"
     make -C build DESTDIR="$pkgdir" install
     install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$_pkgname"
     install -Dm644 extras/vim/syntax/conkyrc.vim.j2 -t \
