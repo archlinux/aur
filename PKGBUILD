@@ -5,11 +5,11 @@
 # Contributor: Emīls Piņķis <emil at mullvad dot net>
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn-beta
-_pkgver=2023.2
-_channel=stable
+_pkgver=2023.3
+_channel=beta
 _rel=1
-#pkgver=${_pkgver}.${_channel}${_rel}  # beta
-pkgver=${_pkgver}.${_channel}  # stable
+pkgver=${_pkgver}.${_channel}${_rel}  # beta
+#pkgver=${_pkgver}.${_channel}  # stable
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
 arch=('x86_64')
@@ -21,8 +21,8 @@ provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 options=('!lto')
 install="${pkgname%-beta}.install"
-_tag=ccfbaa279d04b4f93dff489880e3fb3ae67025bd  # tags/2023.2^0
-_commit=f6dca66645c82501a330416ad39c7e63bcdae57d
+_tag=3598eead7d65184dcf83a27a79b9b11887d70e2b  # tags/2023.3-beta1^0
+_commit=29a4c7205e78c651fcd1b8c3a55181c0d86a50d3
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#commit=${_tag}?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed"
         'no-rpm.diff'
@@ -91,11 +91,11 @@ build() {
   cargo build --frozen --release
 
   echo "Preparing for packaging Mullvad VPN ${PRODUCT_VERSION}..."
-  mkdir -p dist-assets/shell-completions
+  mkdir -p build/shell-completions
   for sh in bash zsh fish; do
     echo "Generating shell completion script for ${sh}..."
     cargo run --bin mullvad --frozen --release -- shell-completions ${sh} \
-      dist-assets/shell-completions/
+      build/shell-completions/
   done
 
   echo "Updating relays.json..."
@@ -145,11 +145,11 @@ package() {
   install -m755 "$srcdir/${pkgname%-beta}.sh" "$pkgdir/usr/bin/${pkgname%-beta}"
 
   # Install completions
-  install -Dm644 dist-assets/shell-completions/mullvad.bash \
+  install -Dm644 build/shell-completions/mullvad.bash \
     "$pkgdir/usr/share/bash-completion/completions/mullvad"
-  install -Dm644 dist-assets/shell-completions/_mullvad -t \
+  install -Dm644 build/shell-completions/_mullvad -t \
     "$pkgdir/usr/share/zsh/site-functions/"
-  install -Dm644 dist-assets/shell-completions/mullvad.fish -t \
+  install -Dm644 build/shell-completions/mullvad.fish -t \
     "$pkgdir/usr/share/fish/vendor_completions.d/"
 
   # Install desktop file & icons from deb
