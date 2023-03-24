@@ -3,10 +3,9 @@ Type = Path
 Operation = Install
 Operation = Upgrade
 Operation = Remove
-Target = usr/lib/gio/modules/
+Target = usr/lib/gio/modules/*.so
 
 [Action]
 Description = Updating GIO module cache...
 When = PostTransaction
-Exec = /usr/share/libalpm/scripts/gio-querymodules
-NeedsTargets
+Exec = /usr/bin/gio-querymodules /usr/lib/gio/modules
