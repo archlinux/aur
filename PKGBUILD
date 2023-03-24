@@ -1,7 +1,7 @@
 # Maintainer: Magnus Groß, for email contact please see the relevant AUR commits email
 _pkgname=quickcurver
 pkgname="$_pkgname"-git
-pkgver=0.1.r47.g6923c36
+pkgver=0.1.r59.gd9293b6
 pkgrel=1
 pkgdesc="Qt Material design implementation of Achtung die Kurve with online multiplayer"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=(qt6-base qt6-declarative qt6-svg)
 makedepends=(git cmake ninja imagemagick)
 source=("git+$url.git"
-		"git+https://github.com/google/material-design-icons.git")
+		"git+https://github.com/feathericons/feather.git")
 md5sums=('SKIP'
          'SKIP')
 
@@ -25,7 +25,7 @@ pkgver() {
 prepare() {
 	cd "$_pkgname"
 	git submodule init
-	git config submodule.material-design-icons.url $srcdir/material-design-icons
+	git config submodule.feather $srcdir/feather
 	git -c protocol.file.allow=always submodule update
 }
 
