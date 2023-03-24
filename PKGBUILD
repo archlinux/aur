@@ -4,11 +4,13 @@ pkgver=2022.11.14
 pkgrel=2
 pkgdesc="Give safe and simple access to predefined shell commands from a web interface."
 arch=('x86_64')
+provides=("olivetin")
+conflicts=("olivetin-bin")
 url="http://www.olivetin.app"
 license=('GPL')
 makedepends=('go'
 	'git')
-source=("$pkgname-$pkgver::git+https://github.com/OliveTin/OliveTin.git?tag=2022.11.14"
+source=("$pkgname-$pkgver::git+https://github.com/OliveTin/OliveTin.git?tag=${pkgver}"
 	"systemd-unit-usr-bin.patch")
 noextract=()
 md5sums=('SKIP'
