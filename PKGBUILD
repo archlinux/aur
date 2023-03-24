@@ -3,10 +3,15 @@
 pkgname='python-aiogithubapi'
 _module=${pkgname#python-}
 pkgver='23.2.1'
-pkgrel=1
+pkgrel=2
 pkgdesc="Asynchronous Python client for the GitHub API"
 url="https://github.com/ludeeus/aiogithubapi"
-depends=('python')
+depends=(
+	'python>3.8'
+	'python-aiohttp>3.8'
+	'python-backoff<3'
+)
+
 makedepends=('python-build' 'python-installer' 'python-wheel')
 license=('MIT')
 arch=('any')
