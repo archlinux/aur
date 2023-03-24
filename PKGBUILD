@@ -1,11 +1,11 @@
 pkgname=nanolist-git
 _pkgname=nanolist
 pkgdesc="mailing lists - the unix way"
-pkgver=r19.ba179b7
+pkgver=v1.0.0.r0.gbfd770a
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://github.com/eXeC64/nanolist'
-source=('git+git://github.com/eXeC64/nanolist')
+source=('git+https://github.com/eXeC64/nanolist')
 depends=()
 makedepends=('go')
 sha1sums=('SKIP')
@@ -21,13 +21,12 @@ pkgver() {
 
 build(){
   cd "$srcdir/$_pkgname"
-  GO111MODULE=on go build -o "$srcdir/bin/nanolist"
+  GO111MODULE=on go build
 }
 
 package() {
-  cd "$srcdir/bin"
-  install -Dm755 'nanolist' "$pkgdir/usr/bin/nanolist"
   cd "$srcdir/$_pkgname"
+  install -Dm755 'nanolist' "$pkgdir/usr/bin/nanolist"
   install -Dm644 'README.md' "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   sed -n '/^```ini$/,/^```$/{//!p}' README.md > "$pkgdir/usr/share/doc/$pkgname/nanolist.ini.sample"
