@@ -1,6 +1,6 @@
 pkgbase = python-cocotbext-axi
 	pkgdesc = AXI, AXI lite, and AXI stream modules for cocotb
-	pkgver = 0.1.20
+	pkgver = 0.1.22
 	pkgrel = 1
 	url = https://github.com/alexforencich/cocotbext-axi
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-cocotbext-axi
 	makedepends = python-setuptools
 	depends = python-cocotb
 	depends = python-cocotb-bus
-	source = cocotbext-axi-0.1.20.tar.gz::https://github.com/alexforencich/cocotbext-axi/archive/v0.1.20.tar.gz
-	sha256sums = 363ec019f7f54e0dbf262306cac0c732bfd5e903eef97bf804de17092fa1229e
+	source = cocotbext-axi-0.1.22.tar.gz::https://github.com/alexforencich/cocotbext-axi/archive/v0.1.22.tar.gz
+	sha256sums = c0e444c780bb403b5a14928e5ca6c3c4d66625b8ab387593b9d068bd622bda58
 
 pkgname = python-cocotbext-axi
