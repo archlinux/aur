@@ -1,6 +1,6 @@
 pkgbase = linux-pf-git
 	pkgdesc = Linux pf-kernel (git version)
-	pkgver = 6.3.r1169532.cda647827052
+	pkgver = 6.3.r1170002.93a405045bab
 	pkgrel = 1
 	url = https://pfkernel.natalenko.name
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = linux-pf-git
 	source = linux-pf-git::git+https://codeberg.org/pf-kernel/linux.git#branch=pf-6.3
 	source = config
 	sha256sums = SKIP
-	sha256sums = d167f16931473403378cacc7fab0f246aef6782b2935f984a2cf43fad4a2fef4
+	sha256sums = 52ff2f0ab814308ccfdf8b5cb980f0ff248ddf01629c2b9c0a8f9df757f47805
 
 pkgname = linux-pf-git
 	pkgdesc = The Linux pf-kernel (git version) kernel and modules

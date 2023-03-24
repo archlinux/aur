@@ -3,7 +3,7 @@
 # Based obs/linux-pf-edge by Oleksandr Natalenko aka post-factum <oleksandr@natalenko.name>
 
 pkgbase=linux-pf-git
-pkgver=6.3.r1169532.cda647827052
+pkgver=6.3.r1170002.93a405045bab
 pkgrel=1
 pkgdesc='Linux pf-kernel (git version)'
 _kernel_rel=6.3
@@ -24,10 +24,11 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            'd167f16931473403378cacc7fab0f246aef6782b2935f984a2cf43fad4a2fef4')
+            '52ff2f0ab814308ccfdf8b5cb980f0ff248ddf01629c2b9c0a8f9df757f47805')
 
 pkgver() {
-  cd $srcdir/$_srcname
+  cd $_srcname
+
   local version="$(grep \^VERSION Makefile|cut -d"=" -f2|cut -d" " -f2)"
   local patch="$(grep \^PATCHLEVEL Makefile|cut -d"=" -f2|cut -d" " -f2)"
 
@@ -39,10 +40,10 @@ export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
-  cd $srcdir/$_srcname
+  cd $_srcname
 
   echo "Setting version..."
-  KERNELVERSION="$(pkgver)" scripts/setlocalversion
+  # scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
 
