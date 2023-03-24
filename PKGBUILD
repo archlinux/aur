@@ -1,50 +1,32 @@
 # Maintainer: Martin Reboredo <yakoyoku@gmail.com>
 
 pkgname=mongosh
-pkgver=1.8.0
-pkgrel=4
+pkgver=1.9.1
+pkgrel=1
 pkgdesc='Rich Node.js REPL for interacting with MongoDB instances.'
 arch=('x86_64')
 url='https://github.com/mongodb-js/mongosh'
 license=('Apache')
 depends=(nodejs krb5)
-makedepends=(git jq npm modclean libmongocrypt)
+makedepends=(git npm modclean libmongocrypt)
 optdepends=('libmongocrypt: session encryption support')
 source=(
-  https://github.com/mongodb-js/$pkgname/archive/refs/tags/v$pkgver.tar.gz
-  mongosh.js
+  https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz
 )
-sha256sums=('2e10111950049345fd3c14148b94241a864f1f8ee85bb39054df808ab0900944'
-            '59387e21725568e848bd6da24cd5a8dcd00c7725e0fa99dcfdcfaf677c075e8c')
-
-prepare() {
-  cd "$srcdir"/$pkgname-$pkgver
-
-  jq '.workspaces = ["packages/*"]' package.json > temp.json
-  mv temp.json package.json
-  jq '.useWorkspaces = true' lerna.json > temp.json
-  mv temp.json lerna.json
-}
-
-build() {
-  cd "$srcdir"/$pkgname-$pkgver
-
-  export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1
-  npm install --build-from-source
-  npm run compile-cli
-}
+sha256sums=('d84d76067b9aa8851aa52eccf2996bb711a36b0e497b1af0506b0334c74fd901')
 
 package() {
-  cd "$srcdir"/$pkgname-$pkgver
+  export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1
+  npm install -g --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$pkgver.tgz
+  install -Dm0644 "$srcdir"/package/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
-  install -Dm0755 "$srcdir"/mongosh.js "$pkgdir"/usr/bin/mongosh
-  install -dm0755 "$pkgdir"/usr/lib/node_modules/mongosh
-  cp -a packages node_modules package*.json "$pkgdir"/usr/lib/node_modules/mongosh
+  cd "$pkgdir"/usr/lib/node_modules/$pkgname
+  modclean --path . -r -a "*.ts,.bin,.deps,.github,.vscode,bin.js" --ignore="license,makefile.*"
 
-  cd "$pkgdir"/usr/lib/node_modules/mongosh
-  npm prune --omit=dev
-  modclean --path . -r -a "*.ts,.bin,.deps,.github,.vscode,bin.js,makefile" --ignore="license,makefile*"
-  cd -
-
-  install -Dm0644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  # Non-deterministic race in npm gives 777 permissions to random directories.
+  # See https://github.com/npm/npm/issues/9359 for details.
+  chmod -R u=rwX,go=rX "$pkgdir"
+  # npm installs package.json owned by build user
+  # https://bugs.archlinux.org/task/63396
+  chown -R root:root "$pkgdir"
 }
