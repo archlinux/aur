@@ -7,7 +7,7 @@ arch=('x86_64')
 provides=("olivetin")
 conflicts=("olivetin-bin")
 url="http://www.olivetin.app"
-license=('GPL')
+license=('AGPLv3')
 makedepends=('go'
 	'git')
 source=("$pkgname-$pkgver::git+https://github.com/OliveTin/OliveTin.git?tag=${pkgver}"
