@@ -15,6 +15,8 @@ pkgbase = swim-git
 	optdepends = prjtrellis-nightly: utilities for ECP5-devices
 	optdepends = tinyprog: upload to devices supported by tinyprog
 	optdepends = yosys-nightly: synthesising using the yosys suite
+	provides = swim
+	conflicts = swim
 	source = git+https://gitlab.com/spade-lang/swim.git
 	sha256sums = SKIP
 

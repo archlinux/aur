@@ -7,7 +7,8 @@ pkgdesc="Build tool for the Spade programming language"
 arch=('x86_64')
 url="https://gitlab.com/spade-lang/swim.git"
 license=('custom')
-sha256sums=('SKIP')
+conflicts=('swim')
+provides=('swim')
 depends=('git' 'cargo')
 optdepends=('fujprog: upload to devices supported by fujprog'
             'icestorm-nightly: pack and upload to iCE40-devices'
@@ -18,6 +19,7 @@ optdepends=('fujprog: upload to devices supported by fujprog'
             'tinyprog: upload to devices supported by tinyprog'
             'yosys-nightly: synthesising using the yosys suite')
 source=("git+$url")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
