@@ -27,6 +27,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$_pkgname"
+	export LDFLAGS=${LDFLAGS#"-Wl,"}
 	haredo
 }
 
