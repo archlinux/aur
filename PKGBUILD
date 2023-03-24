@@ -1,21 +1,24 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fcitx-huayupinyin
+_deepinname="com.thunisoft.input"
 pkgver=2.4.8.198
-pkgrel=2
+pkgrel=3
 pkgdesc="The Input Method Developed by thunisoft"
-providers="thunisoft"
 arch=('x86_64')
 url="https://pinyin.thunisoft.com"
-license=('unknown')
+license=(custom)
 conflicts=()
-depends=('libxtst' 'qt5-svg' 'fcitx' 'fcitx-qt5')
+providers=(thunisoft)
+depends=(libxtst qt5-svg qt5-base fcitx fcitx-qt5 fcitx-configtool glibc cairo libx11 gcc-libs sh dbus)
 options=()
-source=("${pkgname}_${pkgver}.deb::https://com-store-packages.uniontech.com/appstore/pool/appstore/c/com.thunisoft.input/com.thunisoft.input_2.4.8.198_amd64.deb")
-sha512sums=('37b827751e0549cd6eda47b10902dd527550ce9674fc278940ff6f70cafd83349a9a3e9d2934894605cc6364ecf8c62e65a3de7f5a14e200288d9581aa56a814')
+source=("${pkgname}-${pkgver}.deb::https://com-store-packages.uniontech.com/appstore/pool/appstore/c/${_deepinname}/${_deepinname}_${pkgver}_amd64.deb")
+sha256sums=('286e5afd96c15dc3c3691061d77aabae0f02abe4031d7a483a6e537a0ebb719f')
 package() {
     bsdtar -xvf data.tar.xz -C "${pkgdir}"
     mv "${pkgdir}/usr/lib/x86_64-linux-gnu/fcitx" "${pkgdir}/usr/lib/"
     rmdir "${pkgdir}/usr/lib/x86_64-linux-gnu"
-    rm -r "${pkgdir}/opt/apps/com.thunisoft.input/info"
+    rm -r "${pkgdir}/opt/apps/${_deepinname}/info"
     find "${pkgdir}" -type d -exec chmod 755 {} \;
+    echo -e "Icon=fcitx-huayupy \nCategories=System;Utility; \nStartupNotify=false \nNoDisplay=true" >> "${pkgdir}/opt/apps/${_deepinname}/entries/autostart/${_deepinname}.desktop"
+    install -Dm644 "${pkgdir}/opt/apps/${_deepinname}/entries/autostart/${_deepinname}.desktop" "${pkgdir}/etc/xdg/autostart/${pkgname}.desktop"
 }
