@@ -3,13 +3,14 @@
 
 pkgname='makesure'
 pkgver=0.9.20
-pkgrel=3
+pkgrel=4
 pkgdesc="Simple AWK-based task/command runner with declarative goals and dependencies"
 arch=('any')
 url='https://github.com/xonixx/makesure'
 license=('MIT')
 depends=('awk' 'sh')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+install="$pkgname.install"
 
 package() {
   cd "$pkgname-$pkgver"
@@ -18,25 +19,6 @@ package() {
   install -Dm0644 completion.bash "$pkgdir/usr/share/bash-completion/completions/makesure"
   install -Dm0644 LICENSE         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm0644 README.md       "$pkgdir/usr/share/docs/$pkgname/README.md"
-}
-
-check() {
-  command -v gawk >/dev/null 2>&1 && {
-
-  cat <<EOF
-NB: makesure will use the installed gawk to provide awk.
-
-Gawk v5.2.1 is known to produce a warning like this:
-
-  gawk: warning: The time extension is obsolete. Use the timex extension from gawkextlib instead.
-
-This annoyance that should go away with the next version of gawk.
-
-Please see https://github.com/xonixx/makesure/issues/118 for details.
-EOF
-
-  }
-  true
 }
 
 sha256sums=(

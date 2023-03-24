@@ -1,8 +1,9 @@
 pkgbase = makesure
 	pkgdesc = Simple AWK-based task/command runner with declarative goals and dependencies
 	pkgver = 0.9.20
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/xonixx/makesure
+	install = makesure.install
 	arch = any
 	license = MIT
 	depends = awk
