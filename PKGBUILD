@@ -2,7 +2,7 @@
 # Contributor: Christian Rebischke <chris.rebischke@archlinux.org>
 _pkgname='iwd'
 pkgname=iwd-git
-pkgver=r6868.e82dac4
+pkgver=2.3.r14.ge82dac4b
 pkgrel=1
 pkgdesc='Internet Wireless Daemon'
 arch=('i686' 'x86_64')
@@ -33,8 +33,7 @@ install=iwd.install
 
 pkgver() {
     cd "$_pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" \
-        "$(git rev-parse --short=7 HEAD)"
+    git describe --long | sed -r 's/^r//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {

@@ -1,6 +1,6 @@
 pkgbase = iwd-git
 	pkgdesc = Internet Wireless Daemon
-	pkgver = r6868.e82dac4
+	pkgver = 2.3.r14.ge82dac4b
 	pkgrel = 1
 	url = https://git.kernel.org/cgit/network/wireless/iwd.git/
 	install = iwd.install
