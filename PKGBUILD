@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=mawk
-pkgver=1.3.4_20230203
+pkgver=1.3.4_20230322
 pkgrel=1
 pkgdesc="An interpreter for the AWK Programming Language"
 arch=('i686' 'x86_64')
@@ -27,4 +27,4 @@ package () {
   make BINDIR="$pkgdir"/usr/bin \
     MANDIR="$pkgdir"/usr/share/man/man1 install 
 }
-sha256sums=('6db7a32ac79c51107ad31a407d4f92c6b842dde2f68a7533b4e7b7b03e8900be')
+sha256sums=('cafaa642c6d738484dedcb24e8433bf57ff1f7ee958cfa547603e433135d9d89')
