@@ -3,14 +3,14 @@
 _pkgname=papa
 pkgname=${_pkgname}
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cli mod manager for the Northstar launcher"
 arch=('any')
 url="https://github.com/AnActualEmerald/papa"
 license=('MIT')
-makedepends=(cargo)
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+makedepends=('cargo' 'openssl' 'pkgconf')
+provides=(${_pkgname})
+conflicts=(${_pkgname})
 _commit=ecb6306027e12007da86541fbdac145fa69bc2d4
 source=("git+https://github.com/AnActualEmerald/papa.git#commit=$_commit")
 sha256sums=('SKIP')
