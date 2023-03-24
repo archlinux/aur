@@ -1,9 +1,9 @@
 pkgbase=tal-reverb4
 pkgname=("${pkgbase}-bin")
 pkgver=4.0.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
-groups=('pro-audio''vst-plugins' 'vst3-plugins')
+groups=('pro-audio' 'clap-plugins' 'vst-plugins' 'vst3-plugins')
 pkgdesc="A Simple Algorithmic Reverb V4 By TAL Software"
 url="https://tal-software.com/tal-reverb-4"
 license=('EULA')
