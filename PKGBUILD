@@ -1,7 +1,7 @@
 # Maintainer: Konstantin Podsvirov <konstantin@podsvirov.pro>
 
 pkgname=mdbook-pikchr
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='A mdbook preprocessor to render pikchr code blocks as images in your book'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('mdbook')
 makedepends=('rust')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('6c93dff0d7d50cf1759485853b0dcf925ddbaa671906a0a3bf7ff1fd88453c00')
+sha256sums=('5b762d0b8774bddcfc61bd7485ae51d4985266882a02837782112981dc368a16')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
