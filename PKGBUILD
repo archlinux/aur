@@ -1,13 +1,13 @@
 # Maintainer: Ivan 'ivabus' Bushchik ivabus@ivabus.dev -> https://github.com/ivabus
 
 pkgname=plainabout
-pkgver=0.4.2
+pkgver=0.5
 pkgrel=1
 pkgdesc="plainDE about screen"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
 url="https://plainde.org"
 license=(GPL3)
-depends=(qt6-base noto-fonts-emoji polkit ttf-opensans make plainbase)
+depends=(qt5-base noto-fonts-emoji polkit ttf-opensans make plainbase)
 makedepends=(git)
 source=("git+https://github.com/plainDE/plainAbout.git#tag=${pkgver}")
 sha256sums=('SKIP')
