@@ -1,6 +1,6 @@
 pkgbase = ddccontrol-git
 	pkgdesc = Control your monitor by software using the DDC/CI protocol.
-	pkgver = 20180317.r7a7cdb4
+	pkgver = 20220914.r26957e0
 	pkgrel = 1
 	url = https://github.com/ddccontrol/ddccontrol
 	arch = i686
@@ -18,4 +18,3 @@ pkgbase = ddccontrol-git
 	md5sums = SKIP
 
 pkgname = ddccontrol-git
-
