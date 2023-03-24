@@ -2,21 +2,20 @@
 # Contributor: Dustin Childers <dchilders@gmail.com>
 
 pkgname=berty-bin
-pkgver=2.453.1 # REMEMBER TO UPDATE CHANGELOG!
+_pkgname="${pkgname%-bin}"
+pkgver=2.461.0
 pkgrel=1
 pkgdesc="A secure peer-to-peer messenger which works with or without internet access, cellular data or trust in the network and uses IPFS."
 arch=('x86_64')
-changelog=changelog
-url="https://github.com/${pkgname::-4}/${pkgname::-4}"
+url="https://github.com/${_pkgname}/${_pkgname}"
 license=('Apache' 'MIT')
 depends=('glibc')
 provides=('berty')
 conflicts=('berty')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v${pkgver}/berty_linux_amd64.tar.gz")
-b2sums=('1e8bd07e55013c327a88838b7a6d57cae4b70f7b65d07fcba4c4d040fb05d70c7ce8f9036e0ff1e008df9d013184a5b46e956789bd17c593d61750b583672de2')
+b2sums=('adb8ba6ae0f0c587a3200b27fd5644637b10f4fd0de7ba26c8eb2748a249e9a2abbba7e8700e740cb9610e12670234ace04bfb78a925c4a6444bc9d8db4b078e')
 
 package() {
-	install -Dm0644 "${srcdir}/berty_linux_amd64/LICENSE-APACHE" "${pkgdir}/usr/share/licenses/berty-bin/LICENSE-APACHE"
-	install -Dm0644 "${srcdir}/berty_linux_amd64/LICENSE-MIT" "${pkgdir}/usr/share/licenses/berty-bin/LICENSE-MIT"
+	install -Dm0644 "${srcdir}/berty_linux_amd64/LICENSE-MIT" "${pkgdir}/usr/share/licenses/berty-bin/LICENSE"
 	install -Dm0755 "${srcdir}/berty_linux_amd64/berty" "${pkgdir}/usr/bin/berty"
 }
