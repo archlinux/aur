@@ -1,0 +1,20 @@
+pkgbase = vapoursynth-plugin-vsmasktools-git
+	pkgdesc = Plugin for Vapoursynth: vsmasktools (GIT version)
+	pkgver = 0.9.2.2.gbb3fc6d
+	pkgrel = 1
+	url = https://github.com/Irrational-Encoding-Wizardry/vs-masktools
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-pip
+	makedepends = python-wheel
+	depends = vapoursynth-plugin-vstools-git
+	depends = vapoursynth-plugin-vskernels-git
+	depends = vapoursynth-plugin-vsexprtools-git
+	depends = vapoursynth-plugin-vsrgtools-git
+	provides = vapoursynth-plugin-vsmasktools
+	conflicts = vapoursynth-plugin-vsmasktools
+	source = vsmasktools::git+https://github.com/Irrational-Encoding-Wizardry/vs-masktools.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-vsmasktools-git
