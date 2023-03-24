@@ -1,5 +1,6 @@
 # Maintainer: Areskul <areskul@areskul.com>
 pkgname="pipelight-git"
+name="pipelight"
 pkgrel=1
 pkgver=0
 pkgdesc="A Rust based quick automation tool"
@@ -14,19 +15,19 @@ source=(git+$url)
 md5sums=('SKIP') #autofill using updpkgsums
 
 build() {
-  cd $pkgname
+  cd $name
   cargo build --release
 }
 
 package() {
-  cd $pkgname
-  bin="target/release/$pkgname"
+  cd $name
+  bin="target/release/$name"
   install -Dm755 $bin -t $pkgdir/usr/bin
   install -Dm755 $bin-run -t $pkgdir/usr/bin
   install -Dm755 $bin-trigger -t $pkgdir/usr/bin
 }
 
 pkgver() {
-  cd "$pkgname"
+  cd "$name"
   git describe --tags --abbrev=0 | sed s/v//
 }
