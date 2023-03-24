@@ -8,8 +8,8 @@ pkgdesc="A port that just reponse with the output of neofetch..."
 license=("MIT")
 makedepends=("make")
 url="https://github.com/LevitatingBusinessMan/$pkgname"
-source=("git+https://github.com/LevitatingBusinessMan/$pkgname.git")
-sha256sums=("SKIP")
+source=("git+https://github.com/LevitatingBusinessMan/$pkgname.git" "neofetch-port.service")
+sha256sums=("SKIP" "411b172f7f877c29ac4083c065de63fd63e0e02fccd2d603b6701e9ab37a12ef")
 
 pkgver() {
 	cd "$pkgname"
@@ -22,6 +22,8 @@ build() {
 }
 
 package() {
+	mkdir -p "$pkgdir/usr/lib/systemd/system/"
+	cp "neofetch-port.service" "$pkgdir/usr/lib/systemd/system/"
 	cd "${srcdir}/${pkgname}"
 	mkdir -p "$pkgdir/usr/bin/"
 	mv $pkgname "$pkgdir/usr/bin/$pkgname"

@@ -7,6 +7,8 @@ pkgbase = neofetch-port
 	license = MIT
 	makedepends = make
 	source = git+https://github.com/LevitatingBusinessMan/neofetch-port.git
+	source = neofetch-port.service
 	sha256sums = SKIP
+	sha256sums = 411b172f7f877c29ac4083c065de63fd63e0e02fccd2d603b6701e9ab37a12ef
 
 pkgname = neofetch-port

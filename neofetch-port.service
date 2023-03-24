@@ -1,0 +1,9 @@
+[Unit]
+Description=Run neofetch-port
+
+[Service]
+ExecStart=/usr/bin/neofetch-port
+Restart=on-failure
+
+[Install]
+WantedBy=network.target
