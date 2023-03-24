@@ -4,25 +4,46 @@
 
 pkgname=marsyas
 pkgver=0.5.0
-pkgrel=9
+pkgrel=10
 pkgdesc="Music Analysis, Retrieval and Synthesis for Audio Signals"
 arch=(x86_64)
 url="http://marsyas.info"
 license=(GPL2)
-groups=(pd-externals pro-audio vamp-plugins)
-depends=(gcc-libs glibc lame libmad)
-makedepends=(alsa-lib cmake doxygen extra-cmake-modules jack libvorbis pd
-qt5-base qt5-declarative vamp-plugin-sdk)
-optdepends=('pd: for ibt_pd external'
-            'qt5-base: for MarGrid2, MarLpc, MarPhasevocoder, MarPlayer and marsyas-inspector'
-            'qt5-declarative: for marsyas-inspector'
-            'vamp-plugin-sdk: for vamp plugin')
+groups=(
+  pd-externals
+  pro-audio
+  vamp-plugins
+)
+depends=(
+  gcc-libs
+  glibc
+  lame
+  libmad
+)
+makedepends=(
+  alsa-lib
+  cmake
+  doxygen
+  extra-cmake-modules
+  jack
+  libvorbis
+  pd
+  qt5-base
+  qt5-declarative
+  vamp-plugin-sdk
+)
+optdepends=(
+  'pd: for ibt_pd external'
+  'qt5-base: for MarGrid2, MarLpc, MarPhasevocoder, MarPlayer and marsyas-inspector'
+  'qt5-declarative: for marsyas-inspector'
+  'vamp-plugin-sdk: for vamp plugin'
+)
 provides=(libmarsyas.so)
 source=(
-  "$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/version-$pkgver.tar.gz"
-  "${pkgname}-0.5.0-qpainterpath.patch"
-  "${pkgname}-0.5.0-vamp_include_dirs.patch"
-  "${pkgname}-0.5.0-pd_extension.patch"
+  https://github.com/$pkgname/$pkgname/archive/version-$pkgver/$pkgname-version-$pkgver.tar.gz
+  $pkgname-0.5.0-qpainterpath.patch
+  $pkgname-0.5.0-vamp_include_dirs.patch
+  $pkgname-0.5.0-pd_extension.patch
 )
 sha512sums=('0ff8943028753c70d409e78a8c5487da2006b7599c8909c0e0050433a6e7051f32b3c5f31fe833085a479d0486e4c96c5f4a4bd63ac00ee68b89dee941aebc9a'
             'a1a61964f3588b58ee95c16b70a1641b13032c07ec1fba030a9f5fa62c9f355f0c67a147dcdd04d70b0ef5d3a513fbe07341e73abeab3cce82cdfa65385fe22e'
@@ -34,51 +55,62 @@ b2sums=('d30b3f2ab5c2f71c56a86f8a23a3001122115ed97012347a1a3ede2b028c5a4398f7127
         '3d41f3c13a9b313a7a1e25bcc6c8f6d194ec93bac390d9d9ba61c4cdf9a2ba45227679be8fe36bc421025894ed6e86d5621aef9bdc4431892ec5c2a935c927ae')
 
 prepare() {
-  mv -v "${pkgname}-version-${pkgver}" "${pkgname}-${pkgver}"
-  cd "${pkgname}-${pkgver}"
   # add missing include for QPainterPath (offered upstream):
   # https://github.com/marsyas/marsyas/issues/77
-  patch -Np1 -i ../"${pkgname}-0.5.0-qpainterpath.patch"
+  patch -Np1 -d $pkgname-version-$pkgver -i ../$pkgname-0.5.0-qpainterpath.patch
   # fix include dirs for vamp plugins (offered upstream):
   # https://github.com/marsyas/marsyas/issues/79
-  patch -Np1 -i ../"${pkgname}-0.5.0-vamp_include_dirs.patch"
+  patch -Np1 -d $pkgname-version-$pkgver -i ../$pkgname-0.5.0-vamp_include_dirs.patch
 
   # fixing build of pd external (offered upstream):
   # https://github.com/marsyas/marsyas/issues/81
-  patch -Np1 -i ../"${pkgname}-0.5.0-pd_extension.patch"
+  patch -Np1 -d $pkgname-version-$pkgver -i ../$pkgname-0.5.0-pd_extension.patch
 }
 
 build() {
+  local cmake_options=(
+    -B build
+    -D CMAKE_BUILD_TYPE=None
+    -D CMAKE_INSTALL_PREFIX=/usr
+    -D CMAKE_SKIP_RPATH=ON
+    -D WITH_LAME=ON
+    -D WITH_MAD=ON
+    -D WITH_PD=ON
+    # disable build of python module, as it is python2 only:
+    # https://github.com/marsyas/marsyas/issues/71
+    -D WITH_SWIG=OFF
+    -D WITH_VAMP=ON
+    -D WITH_VORBIS=ON
+    -S $pkgname-version-$pkgver
+    -W no-dev
+  )
+
   CXXFLAGS+=' -ffat-lto-objects'
-  # disable build of python module, as it is python2 only:
-  # https://github.com/marsyas/marsyas/issues/71
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_SKIP_RPATH=ON \
-        -DWITH_MAD=ON \
-        -DWITH_LAME=ON \
-        -DWITH_PD=ON \
-        -DWITH_SWIG=OFF \
-        -DWITH_VAMP=ON \
-        -DWITH_VORBIS=ON \
-        -Wno-dev \
-        -B build \
-        -S "${pkgname}-${pkgver}"
-  make VERBOSE=1 -C build
+  cmake "${cmake_options[@]}"
+  cmake --build build --verbose
+}
+
+check() {
+  ctest --test-dir build --output-on-failure
 }
 
 package() {
-  depends+=(libasound.so libjack.so libvorbisfile.so)
+  depends+=(
+    alsa-lib libasound.so
+    jack libjack.so
+    libvorbis libvorbisfile.so
+  )
 
-  make DESTDIR="$pkgdir" install -C build
+  DESTDIR="$pkgdir" cmake --install build
   # pd external
-  install -vDm 755 build/lib/ibt_pd.pd_linux -vDm 644 "${pkgname}-${pkgver}/src/${pkgname}_pd/ibt_pd-help.pd" -t "${pkgdir}/usr/lib/pd/extra/"
+  install -vDm 755 build/lib/ibt_pd.pd_linux -vDm 644 "$pkgname-version-$pkgver/src/${pkgname}_pd/ibt_pd-help.pd" -t "$pkgdir/usr/lib/pd/extra/"
   # vamp plugin
-  install -vDm 755 build/lib/mvamp.so -t "${pkgdir}/usr/lib/vamp"
+  install -vDm 755 build/lib/mvamp.so -t "$pkgdir/usr/lib/vamp"
   # docs
-  install -vDm 644 "${pkgname}-${pkgver}/"{AUTHORS,README,TODO} -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -vDm 644 $pkgname-version-$pkgver/{AUTHORS,README,TODO} -t "$pkgdir/usr/share/doc/$pkgname/"
 
   # rename sfinfo https://bugs.archlinux.org/task/60787
-  mv -v "${pkgdir}/usr/bin/sfinfo" "${pkgdir}/usr/bin/${pkgname}-sfinfo"
+  mv -v "$pkgdir/usr/bin/sfinfo" "$pkgdir/usr/bin/$pkgname-sfinfo"
   # rename record: https://bugs.archlinux.org/task/69837
-  mv -v "${pkgdir}/usr/bin/record" "${pkgdir}/usr/bin/${pkgname}-record"
+  mv -v "$pkgdir/usr/bin/record" "$pkgdir/usr/bin/$pkgname-record"
 }
