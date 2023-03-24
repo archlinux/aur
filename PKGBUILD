@@ -1,4 +1,5 @@
 # Maintainer: Fabian Bornschein <fabiscafe-cat-mailbox-dog-org>
+# Fediverse: @fabiscafe@mstdn.social
 
 pkgname=tuba
 pkgver=0.1.0
