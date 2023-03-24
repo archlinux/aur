@@ -9,7 +9,7 @@ pkgdesc="Support access to ssl vpn. With easyconect,you can secure and speed up 
 arch=('x86_64')
 url="http://www.sangfor.com.cn"
 license=('custom')
-depends=(libxdamage libxrandr libcups gcc-libs zlib nss gtk2 fontconfig fribidi dbus-glib libxcursor glibc libxft nspr libthai libxi at-spi2-core\
+depends=(libxdamage libxrandr libcups gcc-libs zlib nss gtk2 fontconfig fribidi dbus-glib libxcursor glibc libxft nspr libthai libxi at-spi2-core \
 libxtst freetype2 libxrender expat alsa-lib libxcb libxcomposite libxext pango dbus sqlite cairo libx11 harfbuzz gdk-pixbuf2 libxfixes glib2 bash)
 makedepends=(meson gobject-introspection)
 install="${pkgname}.install"
