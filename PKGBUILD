@@ -2,7 +2,7 @@
 _pkgname=ia
 pkgname=${_pkgname}-bin
 pkgver=3.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Python and Command-Line Interface to Archive.org"
 arch=('x86_64')
 url="https://archive.org/download/ia-pex/"

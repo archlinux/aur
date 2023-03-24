@@ -1,7 +1,7 @@
 pkgbase = ia-bin
 	pkgdesc = A Python and Command-Line Interface to Archive.org
 	pkgver = 3.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://archive.org/download/ia-pex/
 	arch = x86_64
 	license = GPL
