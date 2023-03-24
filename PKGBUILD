@@ -10,7 +10,7 @@ license=('Apache')
 depends=(
 python
 'opencascade=1:7.6.3'
-'vtk=9.1.0'
+'vtk=9.1'
 fmt
 glew
 )

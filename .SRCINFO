@@ -27,7 +27,7 @@ pkgbase = python-ocp
 	makedepends = python-pyparsing
 	depends = python
 	depends = opencascade=1:7.6.3
-	depends = vtk=9.1.0
+	depends = vtk=9.1
 	depends = fmt
 	depends = glew
 	conflicts = python-ocp-git
