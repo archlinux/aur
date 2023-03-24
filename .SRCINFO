@@ -1,6 +1,6 @@
 pkgbase = rtx
 	pkgdesc = Polyglot runtime manager
-	pkgver = 1.27.1
+	pkgver = 1.27.2
 	pkgrel = 1
 	url = https://github.com/jdxcode/rtx
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = rtx
 	makedepends = cargo
 	provides = rtx
 	conflicts = rtx
-	source = rtx-1.27.1.tar.gz::https://github.com/jdxcode/rtx/archive/v1.27.1.tar.gz
-	sha512sums = 9fc22e85f8a555a7543c226decb599bfe1f9842481f61eadbb31cb10d45a39ee8c0f1ab3c2ec7c767534bd52a6d9359d4588d84655d382d5ccd4afaf87a06138
+	source = rtx-1.27.2.tar.gz::https://github.com/jdxcode/rtx/archive/v1.27.2.tar.gz
+	sha512sums = 1baf64c6054d25bb8a95b8e486ffbc6b6c0d8e595a6361ab266c99d41235bea4b858b6fc80af91898074933a4f3e76b4422571eb0f7a62d52480d3554a605716
 
 pkgname = rtx
