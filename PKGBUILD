@@ -2,15 +2,15 @@
 # Maintainer: Sergej Pupykin <arch+pub@sergej.pp.ru>
 
 pkgname=bluez-hcitool
-pkgver=5.63
+pkgver=5.66
 pkgrel=1
 pkgdesc="deprecated hcitool from bluez"
 url="http://www.bluez.org/"
 arch=('i686' 'x86_64')
 license=('GPL2')
-depends=("bluez")
+depends=("bluez-libs")
 source=(https://www.kernel.org/pub/linux/bluetooth/bluez-${pkgver}.tar.xz)
-sha256sums=('9349e11e8160bb3d720835d271250d8a7424d3690f5289e6db6fe07cc66c6d76')
+sha256sums=('39fea64b590c9492984a0c27a89fc203e1cdc74866086efb8f4698677ab2b574')
 
 build() {
   cd bluez-${pkgver}/tools
