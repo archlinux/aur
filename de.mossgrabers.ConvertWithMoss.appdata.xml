@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+
+  <id>de.mossgrabers.ConvertWithMoss</id>
+  <metadata_license>FSFAP</metadata_license>
+  <!-- TODO: or LGPL-3.0-or-later ? -->
+  <project_license>LGPL-3.0-only</project_license>
+  <name>ConvertWithMoss</name>
+  <summary>A tool for converting multi-sample from one format to another.</summary>
+  <content_rating type="oars-1.0" />
+
+  <description>
+    <p>
+      ConvertWithMoss is a free and open source tool that converts multisamples
+      in a specific source format to a different destination format.
+      Furthermore, it can create multisample files from plain WAV files.
+    </p>
+  </description>
+  <!-- TODO: Can AppStream support YT videos?
+  <screenshots>
+    <screenshot>
+      <caption>ConvertWithMoss presentation</caption>
+      <video>https://youtu.be/Zmbclwce5kA</video>
+    </screenshot>
+  </screenshots>
+  -->
+  <url type="homepage">https://mossgrabers.de/Software/ConvertWithMoss/ConvertWithMoss.html</url>
+  <url type="bugtracker">https://github.com/git-moss/ConvertWithMoss/issues</url>
+  <url type="help">https://www.kvraudio.com/forum/viewtopic.php?f=42&amp;t=575352</url>
+
+  <provides>
+    <binary>convertwithmoss</binary>
+  </provides>
+
+</component>

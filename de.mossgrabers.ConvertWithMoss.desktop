@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=ConvertWithMoss
+Comment=A tool for converting multi-sample from one format to another.
+Exec=convertwithmoss
+Icon=convertwithmoss
+Categories=AudioVideo;Audio;
+Terminal=false

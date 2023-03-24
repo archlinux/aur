@@ -1,13 +1,22 @@
 pkgbase = convertwithmoss
-	pkgdesc = Converts multisamples in a specific source format to a different destination format
-	pkgver = 5.2
+	pkgdesc = A tool for converting multi-sample from one format to another.
+	pkgver = 6.0.0
 	pkgrel = 1
-	url = http://mossgrabers.de/Software/ConvertWithMoss/ConvertWithMoss.html
-	arch = x86_64
-	groups = pro-audio
+	url = https://mossgrabers.de/Software/ConvertWithMoss/ConvertWithMoss.html
+	arch = any
 	license = LGPL3
-	depends = java-runtime
-	source = http://mossgrabers.de/Software/ConvertWithMoss/convertwithmoss_5.2-1_amd64.deb
-	sha256sums = 40c563e7700bb8734c34f99c9ce5b53afd17cae1ed3a98c3f8b77e8d34e6e4a5
+	makedepends = maven
+	depends = java-runtime>=16
+	depends = java-openjfx
+	source = convertwithmoss-6.0.0.tar.gz::https://github.com/git-moss/ConvertWithMoss/archive/refs/tags/6.0.0.tar.gz
+	source = convertwithmoss.png
+	source = convertwithmoss.sh
+	source = de.mossgrabers.ConvertWithMoss.appdata.xml
+	source = de.mossgrabers.ConvertWithMoss.desktop
+	sha512sums = fe1b1c5b86584b99ca9df4ae0488ea428621d27a179afbb548d0951c16b47e68f39780739b617293c3682eb7c92eec785f0a9bc62606b6660991a628812d7709
+	sha512sums = 66e6a1c66f170186825d52a92706b6681321732232455398352e64a8ef2e26f164b9b6dcfaa7dd9aef6f8796be9bd4f5933706afdc1b32c607c034916823418e
+	sha512sums = 6f5d1c5ebd37efd092bd8057b7e19d77be6176a3704795ee9bb3efe2557711afa3442f5e5fa28d1c6e305f1e42fe5efc2781a2301de09115b7e8393e9efd2577
+	sha512sums = 4d734b40bd2348c9edf199d40a85bfb53e717c407d851a391083f7f08923ffbc03cf6601042d6cfac9f2b08c88b9668efa518f06537f7860099c7c686b10185b
+	sha512sums = e6dbbb8c29ec86719806bf6ca45f24e99df0a6fa18b735617d00f21141212045f43246feb6bc075e2db6a577ed0091f8a464ca9ae1de33864135f6e85897dfb3
 
 pkgname = convertwithmoss
