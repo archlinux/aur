@@ -11,12 +11,12 @@ if [[ -n ${_pkg_suffix} ]]; then
     _pkgver_dash_suffix=${_pkgver_dash_suffix}-${_pkg_suffix}
 fi
 pkgver=${_pkgver}${_pkg_suffix}
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=('git' 'cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2'
-             'swig'
+             'swig' 'lld'
              'ocl-icd' 'opencl-headers' 'z3' 'jsoncpp' 'clang')
 checkdepends=("python-psutil")
 # stable
