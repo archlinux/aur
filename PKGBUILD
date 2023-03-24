@@ -1,18 +1,21 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname=csbooks-bin
+_pkgname=csbooks
+pkgname="${_pkgname}-bin"
 pkgver=7.5.0
-pkgrel=2
-pkgdesc="csBooks is the best epub reader, pdf reader, mobi book reader and djvu reader for windows, linux and mac os. 
-        It solves your problems if you need ebook manager, library manager on linux, best comic book reader, cbz file reader, cbr file reader etc."
+pkgrel=3
+pkgdesc="csBooks is the best epub reader, pdf reader, mobi book reader and djvu reader"
 arch=('x86_64')
 url="https://caesiumstudio.com/csbooks/"
 _githuburl="https://github.com/caesiumstudio/csBooks-updates"
 license=('custom')
-conflicts=('csbooks' 'csbooks-appimage')
-depends=('alsa-lib' 'gtk3' 'nss' 'at-spi2-core')
-options=()
-source=("${pkgname}-${pkgver}.pacman::${_githuburl}/releases/download/latest/csBooks-${pkgver}.pacman")
-sha512sums=('59d1aa3fe1b242eed38470c23ecd90855ce4077ae94b5bd2584654c3287c451834b4c449966604bd26871593b8fb2d7809d103ef967e09e0b1ed74cffb825d74')
+conflicts=("${_pkgname}-appimage" "${_pkgname}")
+depends=(alsa-lib gtk3 nss at-spi2-core libdrm glib2 dbus gdk-pixbuf2 libxrandr libx11 libxfixes pango glibc libxkbcommon \
+    libxdamage hicolor-icon-theme libxshmfence gcc-libs libxcomposite libxcb cairo libxext mesa expat libcups nspr)
+source=("${pkgname}-${pkgver}.pacman::${_githuburl}/releases/download/latest/csBooks-${pkgver}.pacman"
+    "LICENSE::${url}/privacy-policy")
+sha256sums=('b1dfc2d6b137580b7bba60da5d97886369170f6b38b3154ad919847b9eca7afc'
+            '9e45f7627b17b6f7dbfa93c96c98c88e90405629835ffaf3c3acab2243f2ef64')
 package() {
     cp --parents -a {opt,usr} "${pkgdir}"
+    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
