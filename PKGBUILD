@@ -10,11 +10,6 @@ makedepends=('go>=1.17' 'upx')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/orzation/bobibo/archive/v${pkgver}.tar.gz")
 sha256sums=('8aba2b783c8d6812ba893d8ac9fb867b74796d9df9f2a22cfd3aadface4f0eb8')
 
-optdepends=(
-  'sudo: privilege elevation'
-  'doas: privilege elevation'
-)
-
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
   export GOPATH="$srcdir"/gopath
@@ -31,6 +26,7 @@ build() {
 
   cd "$srcdir/$pkgname-$pkgver/cli"
   make build
+  go clean -modcache
 }
 
 package() {
