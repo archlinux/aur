@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Tilde Podcast
-GenericName=Tilde Podcast
-Comment=Podcast client to listen to all you favorite podcasts
-Icon=tilde-podcast-appimage
-Exec="/opt/appimages/tilde.AppImage" %F
-Terminal=false
-Categories=AudioVideo;
