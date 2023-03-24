@@ -1,10 +1,12 @@
 pkgbase = olivetin
 	pkgdesc = Give safe and simple access to predefined shell commands from a web interface.
 	pkgver = 2023.03.22
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.olivetin.app
 	arch = x86_64
 	license = AGPLv3
+	provides = olivetin
+	conflicts = olivetin-bin
 	makedepends = go
 	makedepends = git
 	source = olivetin-2023.03.22::git+https://github.com/OliveTin/OliveTin.git?tag=2023.03.22
