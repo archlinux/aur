@@ -1,6 +1,6 @@
 pkgbase = python-cocotbext-axi-git
 	pkgdesc = AXI, AXI lite, and AXI stream modules for cocotb
-	pkgver = 0.1.22.r0.g50cf2af
+	pkgver = 0.1.24.r0.gaf377b2
 	pkgrel = 1
 	url = https://github.com/alexforencich/cocotbext-axi
 	arch = any
