@@ -8,6 +8,7 @@ pkgbase = cryptographic-id-rs
 	checkdepends = shellcheck
 	makedepends = cargo
 	makedepends = rust
+	makedepends = protobuf
 	depends = coreutils
 	depends = openssl
 	depends = tpm2-tools
