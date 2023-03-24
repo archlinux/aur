@@ -1,26 +1,25 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname=chord-appimage
 _pkgname=chord
+pkgname="${_pkgname}-appimage"
 pkgver=0.2.40
-pkgrel=1
+pkgrel=2
 pkgdesc="Chord - A Modern Music Player"
 arch=('x86_64')
 url="https://github.com/PeterDing/chord"
 license=('MIT')
-conflicts=(chord-bin)
-depends=(zlib hicolor-icon-theme)
+conflicts=("${_pkgname}")
+depends=(zlib hicolor-icon-theme glibc)
 options=(!strip)
 _install_path="/opt/appimages"
-source=(
-  "${_pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.AppImage"
-)
-sha512sums=('60ad941f1b2d65799eb9e94e21082b90ab4f0d726e1af706053a17a5c1decff58ab3fe4d585fdffe4be670703951eaa7079ea28e4f6c121e9823235ea9a2cf9a')
+source=("${_pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.AppImage"
+    "LICENSE::${url}/raw/master/LICENSE")
+sha256sums=('d0787da2e42a84df7b7e7eb1e59669d718dcd37b0f440018d992467aef4d8e7e'
+            'aab9ba9322a4e18a0018d15f83b99c7b10d77d5e301579fc249efef89bc2836c')
   
 prepare() {
     chmod a+x "${_pkgname}-${pkgver}.AppImage"
-    "./${_pkgname}-${pkgver}.AppImage" --appimage-extract
-    sed 's/Exec=/\#Exec=/g;' -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
-    echo "Exec=${_install_path}/${_pkgname}.AppImage --no-sandbox %U" >> "${srcdir}/squashfs-root/${_pkgname}.desktop"
+    "./${_pkgname}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed 's/Exec=/Exec=\/opt\/appimages\/chord.AppImage/g;' -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
 }
   
 package() {
@@ -30,4 +29,5 @@ package() {
             "${pkgdir}/usr/share/icons/hicolor/${icons}/apps/${_pkgname}.png"
     done
     install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
