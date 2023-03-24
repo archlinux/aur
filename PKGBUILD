@@ -2,7 +2,7 @@
 
 pkgname=bctoolbox-git
 _pkgname=bctoolbox
-pkgver=4.5.0.alpha.r54.gab40b02
+pkgver=5.3.0.alpha.r10.gb0027df
 pkgrel=1
 pkgdesc="Utilities library for Belledonne Communications software"
 arch=('x86_64')
@@ -26,6 +26,7 @@ build() {
     -DENABLE_STATIC="NO" \
     -DENABLE_TESTS="YES" \
     -DENABLE_TESTS_COMPONENT="YES" \
+    -DCMAKE_C_FLAGS="${CFLAGS} -Wno-error=unused-parameter" \
     -Wno-dev
   make -C build
 }
