@@ -3,7 +3,7 @@
 # Contributor: Bill Kolokithas <kolokithas.b@gmail.com>
 pkgname=j4-dmenu-desktop-git
 pkgver=2.18.r11.g7a64862
-pkgrel=2
+pkgrel=3
 pkgdesc="A rewrite of i3-dmenu-desktop, which is much faster"
 arch=('i686' 'x86_64')
 url="https://github.com/enkore/j4-dmenu-desktop"
@@ -21,17 +21,17 @@ source=("$pkgname::git+https://github.com/enkore/j4-dmenu-desktop.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd $pkgname
-	git describe --long | sed -r 's/^r//;s/([^-]*-g)/r\1/;s/-/./g'
+    cd $pkgname
+    git describe --long | sed -r 's/^r//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-	cd $pkgname
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DNO_TESTS=1 .
-	make
+    cd $pkgname
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DNO_TESTS=1 .
+    make
 }
 
 package() {
-	cd $pkgname
-	make DESTDIR="$pkgdir"/ install
+    cd $pkgname
+    make DESTDIR="$pkgdir"/ install
 }
