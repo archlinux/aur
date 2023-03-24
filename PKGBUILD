@@ -1,6 +1,6 @@
 # Maintainer: Kingtous <me@kingtous.cn>
 pkgname=fclash
-pkgver=1.3.11
+pkgver=1.4.0
 pkgrel=1
 epoch=
 pkgdesc="A Clash Proxy Fronted based on Clash"
@@ -19,19 +19,20 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/Fclash/Fclash/archive/refs/tags/v1.3.11.zip" "https://github.com/Fclash/Fclash/releases/download/v1.3.11/cn.kingtous.fclash-1.3.11-x86_64.deb")
+source=("https://github.com/Fclash/Fclash/releases/download/v1.4.0/cn.kingtous.fclash-1.4.0-x86_64.deb")
 noextract=()
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP')
 validpgpkeys=()
 
 
 build() {
     # Download prebuilt deb package
-    unzip -d extract v1.3.11.zip
+    bsdtar -xf cn.kingtous.fclash-1.4.0-x86_64.deb
+    tar -xf data.tar.xz
 }
 
 
 package() {
-    cp -r "${srcdir}/extract/opt"  "${pkgdir}/opt"
-	install -Dm0755 "${srcdir}/${pkgname%-git}/debian/build-src/opt/apps/cn.kingtous.fclash/entries/applications/cn.kingtous.fclash.desktop" "${pkgdir}/usr/share/applications/cn.kingtous.fclash.desktop"
+    cp -r "${srcdir}/opt"  "${pkgdir}/opt"
+	install -Dm0755 "${pkgdir}/opt/apps/cn.kingtous.fclash/entries/applications/cn.kingtous.fclash.desktop" "${pkgdir}/usr/share/applications/cn.kingtous.fclash.desktop"
 }
