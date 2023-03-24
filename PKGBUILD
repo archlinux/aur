@@ -3,7 +3,7 @@
 # Contributor: Bill Kolokithas <kolokithas.b@gmail.com>
 pkgname=j4-dmenu-desktop-git
 pkgver=2.18.r11.g7a64862
-pkgrel=1
+pkgrel=2
 pkgdesc="A rewrite of i3-dmenu-desktop, which is much faster"
 arch=('i686' 'x86_64')
 url="https://github.com/enkore/j4-dmenu-desktop"
@@ -12,8 +12,8 @@ makedepends=(
     'git'
     'cmake')
 optdepends=(
-    'dmenu'
-    'bemenu'
+    'dmenu: the default backend'
+    'bemenu: an alternative backend'
 )
 provides=('j4-dmenu-desktop')
 conflicts=('j4-dmenu-desktop')
