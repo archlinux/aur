@@ -1,4 +1,5 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb@dralias.com>
+# Contributor: AnActualEmerald <emerald@mecha.garden>
 
 _pkgname=papa
 pkgname=${_pkgname}
