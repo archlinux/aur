@@ -3,16 +3,26 @@
 
 pkgname=libgdata
 pkgver=0.18.1
-pkgrel=2
+pkgrel=3
 pkgdesc="GLib-based library for accessing online service APIs using the GData protocol"
 url="https://wiki.gnome.org/Projects/libgdata"
 arch=(x86_64)
 license=(GPL)
-depends=(libsoup gcr gnome-online-accounts)
-makedepends=(gobject-introspection vala uhttpmock git gtk-doc meson)
+depends=(
+  gcr
+  libgoa
+  libsoup
+)
+makedepends=(
+  git
+  gobject-introspection
+  gtk-doc
+  meson
+  vala
+)
 _commit=eb7db048e5445ad567817dced344c47a20c6ea6b  # tags/0.18.1^0
 source=("git+https://gitlab.gnome.org/GNOME/libgdata.git#commit=$_commit")
-sha256sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
   cd libgdata
@@ -24,7 +34,15 @@ prepare() {
 }
 
 build() {
-  arch-meson libgdata build -D man=true -D gtk_doc=true
+  local meson_options=(
+    # needs uhttpmock with libsoup 2
+    -D always_build_tests=false
+
+    -D gtk_doc=true
+    -D man=true
+  )
+
+  arch-meson libgdata build "${meson_options[@]}"
   meson compile -C build
 }
 
@@ -39,4 +57,4 @@ package() {
   meson install -C build --destdir "$pkgdir"
 }
 
-# vim:set sw=2 et:
+# vim:set sw=2 sts=-1 et:
