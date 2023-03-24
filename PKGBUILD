@@ -5,6 +5,7 @@
 
 # Maintainer: Lia Brueggemann <brueggemann.l@proton.me>
 pkgname=sherly-git
+_pkgname=Sherly
 pkgver=1.1.4
 pkgrel=1
 epoch=
@@ -30,23 +31,28 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 prepare() {
-	cd "Sherly"
+	cd "$srcdir/$_pkgname"
 }
 
 build() {
-	cd "Sherly"
+	cd "$srcdir/$_pkgname"
 	mkdir -p Bin
-	javac -d Bin src/*.java
+	javac -d Bin src/*.java -Xlint
 	cd Bin
 	jar cfe sherly.jar Main ConsoleColors.class Main.class ThreadedCompare.class
 }
 
 
 package() {
-	cd "Sherly"
+	cd "$srcdir/$_pkgname"
+
 	mkdir -p "${pkgdir}/usr/bin"
-	mkdir -p "$pkgdir/usr/share/java/sherly"
-	cp Bin/sherly.jar "$pkgdir/usr/share/java/sherly/"
-	cp src/sherly "$pkgdir/usr/bin/sherly"
+	mkdir -p "${pkgdir}/usr/share/java/"
+	mkdir -p "${pkgdir}/usr/share/java/sherly"
+	echo copy
+	cp Bin/sherly.jar "${pkgdir}/usr/share/java/sherly/sherly.jar"
+	cp src/sherly "${pkgdir}/usr/bin/sherly"
 	chmod +x "${pkgdir}/usr/bin/sherly"
 }
+
+
