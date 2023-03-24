@@ -2,7 +2,7 @@
 
 pkgname=sing-box
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc='The universal proxy platform.'
 arch=('x86_64' 'i686')
@@ -20,7 +20,7 @@ optdepends=('sing-geosite: sing-geosite database'
 
 backup=("etc/${pkgname}/config.json")
 
-_tags=with_gvisor,with_quic,with_wireguard,with_utls,with_clash_api
+_tags=with_gvisor,with_quic,with_wireguard,with_utls,with_reality_server,with_clash_api
 build(){
     cd "$pkgname-$pkgver"
 
