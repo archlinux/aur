@@ -1,15 +1,18 @@
 pkgbase = ppet3-appimage
 	pkgdesc = Put a cute girl on your desk for more fun.在你的桌面放一个萌妹子，多一点乐趣
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zenghongtu/PPet
 	arch = x86_64
 	license = MIT
 	depends = hicolor-icon-theme
 	depends = zlib
-	conflicts = ppet3-bin
+	depends = glibc
+	conflicts = ppet3
 	options = !strip
 	source = ppet3-3.3.0.AppImage::https://github.com/zenghongtu/PPet/releases/download/v3.3.0/PPet3-3.3.0.AppImage
-	sha512sums = ef6da0f31b16f289cec24a6ba1f8e630660373cb3961bf057895e8ccb0898387092b8119f4f860b11f759c70f3d610086d5af54392a80248470a535aa16ae34f
+	source = LICENSE::https://github.com/zenghongtu/PPet/raw/master/LICENSE.md
+	sha256sums = cdd4599b44fab41a8dc6f6946a25809407eeba0fc2417d12f81e6e0cd76243fb
+	sha256sums = 4c34d72ca8a05bdc5568a82327063da521dfc431737c448fafeb97c7f98e006a
 
 pkgname = ppet3-appimage
