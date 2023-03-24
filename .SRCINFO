@@ -1,6 +1,6 @@
 pkgbase = sdaps
 	pkgdesc = Scripts for data acquisition with paper based surveys
-	pkgver = 1.9.11
+	pkgver = 1.9.12
 	pkgrel = 1
 	url = https://github.com/sdaps/sdaps
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = sdaps
 	checkdepends = hdf5
 	checkdepends = python-numpy
 	checkdepends = python-gobject
-	makedepends = python-pkgconfig
+	makedepends = meson
 	depends = python-setuptools
 	depends = python-cairo
 	depends = libtiff
@@ -33,7 +33,7 @@ pkgbase = sdaps
 	optdepends = python-pandas: Export to feather format
 	optdepends = python-pyarrow: Export to feather format
 	conflicts = sdaps-git
-	source = https://github.com/sdaps/sdaps/archive/refs/tags/v1.9.11.tar.gz
-	sha1sums = 19bd8aa81bada3f1cb274a94fb80639dd8fa813a
+	source = https://github.com/sdaps/sdaps/releases/download/v1.9.12/sdaps-1.9.12.tar.xz
+	sha256sums = 1f4723946ecf17d5a9e40ff3a42010d6dff46ad67a6592fc6668268fd3d3ccf0
 
 pkgname = sdaps

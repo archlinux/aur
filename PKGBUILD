@@ -1,7 +1,7 @@
 # Maintainer: Paolo Palmieri <palmaway@gmx.it>
 # Contributor: David Mehren <david.mehren@udo.edu>
 pkgname=sdaps
-pkgver=1.9.11
+pkgver=1.9.12
 pkgrel=1
 pkgdesc="Scripts for data acquisition with paper based surveys"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('python-setuptools'
          'texlive-latexextra'
          'texlive-pictures'
          'texlive-science')
-makedepends=('python-pkgconfig')
+makedepends=('meson')
 optdepends=('python-pillow: reportlab based reports (report)'
             'python-reportlab: reportlab based reports (report)'
             'opencv: Import of other image formats (convert, add --convert)'
@@ -37,22 +37,20 @@ checkdepends=('python-pillow'
 )
 conflicts=('sdaps-git')
 
-source=('https://github.com/sdaps/sdaps/archive/refs/tags/v1.9.11.tar.gz')
-sha1sums=('19bd8aa81bada3f1cb274a94fb80639dd8fa813a')
+source=('https://github.com/sdaps/sdaps/releases/download/v1.9.12/sdaps-1.9.12.tar.xz')
+sha256sums=('1f4723946ecf17d5a9e40ff3a42010d6dff46ad67a6592fc6668268fd3d3ccf0')
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
-	python setup.py build
+	arch-meson $pkgname-$pkgver build
+	meson compile -C build
 }
 
 check() {
-	cd "$srcdir/$pkgname-$pkgver/test"
-	./run-test-locally.sh
+	meson test -C build --print-errorlogs
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
-	python setup.py install --root="$pkgdir/" --optimize=1
+	meson install -C build --destdir "$pkgdir"
 	mkdir -p $pkgdir/usr/share/texmf/tex/latex/sdaps
 	cp $pkgdir/usr/share/sdaps/tex/* $pkgdir/usr/share/texmf/tex/latex/sdaps
 }
