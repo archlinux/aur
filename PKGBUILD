@@ -1,29 +1,35 @@
-# Maintainer: Sanjay Pavan <withercubes@protonmail.com>
+# Maintainer: Christian Heusel <christian@heusel.eu>
+# Contributor: Sanjay Pavan <withercubes@protonmail.com>
 
 pkgname=nsxiv
-_pkgname=nsxiv
-pkgver=30
-pkgrel=2
+pkgver=31
+pkgrel=1
 pkgdesc='Neo (or New or Not) Simple (or Small or Suckless) X Image Viewer'
 arch=('x86_64')
 license=('GPL2')
-conflicts=('nsxiv-git')
 url='https://codeberg.org/nsxiv/nsxiv'
-depends=('imlib2' 'desktop-file-utils' 'xdg-utils' 'hicolor-icon-theme' 'libexif' 'libxft' 'giflib' 'libwebp')
+
+depends=('imlib2' 'libx11'                 # core dependencies
+         'libxft' 'fontconfig' 'freetype2' # status bar
+         'giflib'                          # display gif images
+         'libexif'                         # display exif images
+         'libwebp'                         # display webp images
+         'hicolor-icon-theme')             # make icon
+
 source=("$pkgname-$pkgver.tar.gz"::"https://codeberg.org/nsxiv/nsxiv/archive/v$pkgver.tar.gz")
-sha256sums=('a916d1385872ccf0b55fbf6b8546d05fcbbbb8b0a92579494e64c6bd22fc7941')
+sha256sums=('035fbb3fb3ffec45555afd718947ec8a7d7dfac3c5abc7ba6863cc075720d7f2')
 
 prepare() {
-  cd "$srcdir/$_pkgname"
+  cd "$pkgname"
   [ ! -f config.h ] && cp config.def.h config.h
+  # TODO: upstream this
   sed -i -e '/^install: / s|: all|:|' Makefile
 }
 
 build() {
-  make -C "$_pkgname"
+  make -C "$pkgname" OPT_DEP_DEFAULT=1
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-  make PREFIX=/usr DESTDIR="$pkgdir" install-all
+  make -C "$pkgname" PREFIX=/usr DESTDIR="$pkgdir" install-all
 }
