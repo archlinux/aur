@@ -1,14 +1,14 @@
 # Maintainer: Gustav Sörnäs <gustav at sornas dot net>
 
 pkgname=swim-git
-pkgver=r75.1892912
-pkgrel=2
+pkgver=r120.00f2935
+pkgrel=1
 pkgdesc="Build tool for the Spade programming language"
 arch=('x86_64')
 url="https://gitlab.com/spade-lang/swim.git"
-license=('EUPL-1.2')
+license=('custom')
 sha256sums=('SKIP')
-depends=('gcc-libs' 'git')
+depends=('git' 'cargo')
 optdepends=('fujprog: upload to devices supported by fujprog'
             'icestorm-nightly: pack and upload to iCE40-devices'
             'nextpnr-ice40-nightly: pnr for iCE40-devices'
@@ -17,7 +17,6 @@ optdepends=('fujprog: upload to devices supported by fujprog'
             'prjtrellis-nightly: utilities for ECP5-devices'
             'tinyprog: upload to devices supported by tinyprog'
             'yosys-nightly: synthesising using the yosys suite')
-makedepends=('rust')
 source=("git+$url")
 
 pkgver() {
@@ -32,7 +31,7 @@ build() {
 
 check() {
     cd "${srcdir}/${pkgname%-git}"
-    SWIM_DOWNLOAD_SPADE=1 cargo test --locked --target-dir=target
+    RUSTFLAGS="--remap-path-prefix=$(pwd)=" SWIM_DOWNLOAD_SPADE=1 cargo test --locked --release --target-dir=target
 }
 
 package() {

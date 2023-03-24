@@ -1,13 +1,12 @@
 pkgbase = swim-git
 	pkgdesc = Build tool for the Spade programming language
-	pkgver = r75.1892912
-	pkgrel = 2
+	pkgver = r120.00f2935
+	pkgrel = 1
 	url = https://gitlab.com/spade-lang/swim.git
 	arch = x86_64
-	license = EUPL-1.2
-	makedepends = rust
-	depends = gcc-libs
+	license = custom
 	depends = git
+	depends = cargo
 	optdepends = fujprog: upload to devices supported by fujprog
 	optdepends = icestorm-nightly: pack and upload to iCE40-devices
 	optdepends = nextpnr-ice40-nightly: pnr for iCE40-devices
