@@ -1,10 +1,10 @@
 pkgbase=tal-chorus-lx
 pkgname=("${pkgbase}-bin")
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc="A Simple Algorithmic Chorus By TAL Software"
-groups=('pro-audio' 'vst-plugins' 'vst3-plugins')
+groups=('pro-audio' 'clap-plugins' 'vst-plugins' 'vst3-plugins')
 url="https://tal-software.com/products/tal-chorus-lx"
 license=('EULA')
 depends=('libcurl-gnutls' 'glibc')
