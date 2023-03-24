@@ -5,8 +5,8 @@
 
 # Maintainer: Asuka Minato <asukaminato at nyan dot eu dot org>
 pkgname=typst-bin
-pkgver=22_03_21_2
-pkgrel=2
+pkgver=23_03_21_2
+pkgrel=1
 epoch=
 pkgdesc="A new markup-based typesetting system that is powerful and easy to learn."
 arch=('x86_64')
@@ -24,7 +24,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/typst/typst/releases/download/${pkgver//_/-}/typst-x86_64-unknown-linux-gnu.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/typst/typst/releases/download/v${pkgver//_/-}/typst-x86_64-unknown-linux-gnu.tar.gz")
 noextract=()
 sha256sums=('9d14f7fa1f6674623502dc5280867066dea41ece560c3fc1887eafe43ac287dc')
 validpgpkeys=()
