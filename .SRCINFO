@@ -1,0 +1,15 @@
+pkgbase = python-accessible-pygments
+	pkgdesc = A collection of accessible pygments styles
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://quansight-labs.github.io/accessible-pygments
+	arch = any
+	license = BSD
+	checkdepends = python-nose
+	makedepends = python-setuptools
+	makedepends = python-pygments
+	source = https://files.pythonhosted.org/packages/source/a/accessible-pygments/accessible-pygments-0.0.4.tar.gz
+	md5sums = ecacd117d7258a285ccc282a33abd906
+
+pkgname = python-accessible-pygments
+	depends = python-pygments>=1.5
