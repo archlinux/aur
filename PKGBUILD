@@ -4,9 +4,9 @@ _pkgname=mercury-browser
 pkgname=${_pkgname}-bin
 pkgver=110.0a1 
 pkgrel=1
-pkgdesc="The fastest Firefox fork on Earth with compiler optimizations and patches from Librewolf, Waterfox, and GNU IceCat."
+pkgdesc="Firefox fork with compiler optimizations and patches from Librewolf, Waterfox, and GNU IceCat."
 arch=('x86_64')
-url="https://github.com/Alex313031/Mercury"
+url="https://thorium.rocks/mercury"
 license=('MPL' 'GPL' 'LGPL')
 depends=('dbus-glib' 'gtk3' 'libxt' 'nss')
 optdepends=('ffmpeg: H264/AAC/MP3 decoding'
@@ -25,12 +25,10 @@ sha256sums=('63e327b78b6688b1c0482f4b927027e2d358aa68182cc8eaa8b70d56796d4228'
 
 package() {
   # Create directories
-  msg2 "Creating directory structure..."
   mkdir -p "$pkgdir"/usr/bin
   mkdir -p "$pkgdir"/usr/share/applications
   mkdir -p "$pkgdir"/opt
 
-  msg2 "Moving stuff in place..."
   # Install
   cp -r Mercury/ "$pkgdir"/opt/$_pkgname
 
