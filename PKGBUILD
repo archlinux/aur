@@ -3,7 +3,7 @@
 
 pkgname=tuba
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Browse the Fediverse'
 arch=(
   aarch64 #ALARM
@@ -18,6 +18,12 @@ depends=(
   libadwaita
   libgee
   libsoup
+  # Not a hard dependency of Tuba
+  ## but it's UX breaking & so important
+  ## enough to be in this list instead of
+  ## optdepends
+  ## https://github.com/GeopJr/Tuba/issues/32#issuecomment-1483280966
+  webp-pixbuf-loader
 )
 makedepends=(
   git
