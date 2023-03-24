@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=iSEEu
-_pkgver=1.10.0
+_pkgver=1.10.1
 pkgname=r-${_pkgname,,}
-pkgver=1.10.0
+pkgver=1.10.1
 pkgrel=1
 pkgdesc='iSEE Universe'
 arch=('any')
@@ -44,7 +44,7 @@ optdepends=(
   r-uwot
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fa1ff447de4def34c19f73bd4934c60f97be3111410d5d0c108fd6156e9a8000')
+sha256sums=('981067b7932031c2e960b2e1823c9034c6eaf7ff5017533118733ba289828211')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
