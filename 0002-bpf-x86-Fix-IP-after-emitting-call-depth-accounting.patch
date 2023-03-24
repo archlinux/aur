@@ -1,0 +1,37 @@
+From cdcbbe9863053c039e61e2779c0b07760af7a780 Mon Sep 17 00:00:00 2001
+From: Joan Bruguera <joanbrugueram@gmail.com>
+Date: Sat, 7 Jan 2023 05:14:56 +0000
+Subject: [PATCH 2/3] bpf, x86: Fix IP after emitting call depth accounting
+
+Adjust the IP passed to `emit_patch` so it calculates the correct offset
+for the CALL instruction if `x86_call_depth_emit_accounting` emits code.
+Otherwise we will skip some instructions and most likely crash.
+
+Fixes: b2e9dfe54be4 ("x86/bpf: Emit call depth accounting if required")
+Link: https://lore.kernel.org/lkml/20230105214922.250473-1-joanbrugueram@gmail.com/
+Signed-off-by: Joan Bruguera <joanbrugueram@gmail.com>
+For: https://bugs.archlinux.org/task/77601
+---
+ arch/x86/net/bpf_jit_comp.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/arch/x86/net/bpf_jit_comp.c b/arch/x86/net/bpf_jit_comp.c
+index b808be77635e..6e696c6b7018 100644
+--- a/arch/x86/net/bpf_jit_comp.c
++++ b/arch/x86/net/bpf_jit_comp.c
+@@ -343,9 +343,10 @@ static int emit_call(u8 **pprog, void *func, void *ip)
+ 
+ static int emit_rsb_call(u8 **pprog, void *func, void *ip)
+ {
++	void *adjusted_ip;
+ 	OPTIMIZER_HIDE_VAR(func);
+-	x86_call_depth_emit_accounting(pprog, func);
+-	return emit_patch(pprog, func, ip, 0xE8);
++	adjusted_ip = (u8 *)ip + x86_call_depth_emit_accounting(pprog, func);
++	return emit_patch(pprog, func, adjusted_ip, 0xE8);
+ }
+ 
+ static int emit_jump(u8 **pprog, void *func, void *ip)
+-- 
+2.40.0
+

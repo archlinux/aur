@@ -68,7 +68,7 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=6.1.13
+pkgver=6.2.8
 pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -81,8 +81,8 @@ options=('!strip')
 
 # https://ck-hack.blogspot.com/2021/08/514-and-future-of-muqss-and-ck-once.html
 # acknowledgment to xanmod for initially keeping the hrtimer patches up to date
-_ckhrtimer=linux-6.1.y
-_commit=fdbdf7e0ec56cd59e11d024c473e766429271a5c
+_ckhrtimer=linux-6.2.y
+_commit=a27ac12de07749d0c935249d5031514b6cbd1a35
 
 _gcc_more_v=20221217
 source=(
@@ -91,17 +91,19 @@ source=(
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
   "ck-hrtimer-$_commit.tar.gz::https://github.com/graysky2/linux-patches/archive/$_commit.tar.gz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0002-bpf-x86-Fix-IP-after-emitting-call-depth-accounting.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('48841319f4b0077da15e4176e624032d8332d961ee660e1b85e1ce73ded17a67'
+sha256sums=('fed0ad87d42f83a70ce019ff2800bc30a855e672e72bf6d54a014d98d344f665'
             'SKIP'
-            '81a9379fd2eac51bb2dc69d83737d7fbdd41fcaca5af4873e3666d3c706760d1'
+            'f9a0027bea53a7160759858c535eb0ba0b3bea34c0130f47f2d5bba75d102170'
             'f1d586e111932890ad5e0df15d092fb9b3f87bae4ea17812aae9b0ec98fe2db0'
-            '6d3b9cb4639c1c5eb4e2697aed0dbffa5b4a37d63a0861dec8315dd052723e0e'
-            'a730917aa1ab33e79c094b69c3eb3ce080e6f9f4cb7a5b64c3e6b9ef0c53e631')
+            'e3384a43f291452057aa72dff0903e39e381253e396e5337ab93c0bf6f66ba7c'
+            '2e7592ff8fb3cd0c461abb6524bc9f097033abe7fb9d464702b307eab97bd58f'
+            '9a289c848cd8ead4024aeaed951bfbc643686ea0a01fd14160d8031cdf976ae3')
 
 prepare() {
   cd linux-${pkgver}
@@ -199,7 +201,7 @@ build() {
 
 _package() {
   pkgdesc="The Linux kernel and modules with ck's hrtimer patches"
-  depends=(coreutils kmod initramfs)
+  depends=(coreutils kmod initramfs pahole)
   optdepends=('wireless-regdb: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
