@@ -1,17 +1,17 @@
 pkgbase = ipfs-desktop-appimage
 	pkgdesc = An unobtrusive and user-friendly desktop application for IPFS on Linux.
-	pkgver = 0.26.1
+	pkgver = 0.27.0
 	pkgrel = 1
 	url = https://github.com/ipfs/ipfs-desktop
 	arch = x86_64
 	license = MIT
 	provides = ipfs-desktop
 	conflicts = ipfs-desktop
-	noextract = ipfs-desktop-0.26.1-linux-x86_64.AppImage
+	noextract = ipfs-desktop-0.27.0-linux-x86_64.AppImage
 	options = !strip
-	source = https://github.com/ipfs/ipfs-desktop/releases/download/v0.26.1/ipfs-desktop-0.26.1-linux-x86_64.AppImage
-	source = ipfs-desktop-0.26.1-LICENSE::https://raw.githubusercontent.com/ipfs/ipfs-desktop/v0.26.1/LICENSE
-	b2sums = d0eae5f78ed034870daf98d77a4ba17348c7279fc70fb161ee5c364af5b5adb511f0264086776f2eae4e66df98a488e5d1df5b1db7e79fccf2e301ccf6b516fd
+	source = https://github.com/ipfs/ipfs-desktop/releases/download/v0.27.0/ipfs-desktop-0.27.0-linux-x86_64.AppImage
+	source = ipfs-desktop-0.27.0-LICENSE::https://raw.githubusercontent.com/ipfs/ipfs-desktop/v0.27.0/LICENSE
+	b2sums = 9635fe692ef2d434f04bab2cd306c874192f7f62db7976310ced6acad7331d69710b793dc59e213c69ec163fefb25168c0597679e5b7915e43375b709aaa1a3a
 	b2sums = 2c3fb2af6c8e92bcacb15b3878b1125fd4f8b4d48e37b2b3ce818517b7a7a94f68ef3c155e8d8cb5b2d39727fe916e293b892c48ee59167b4ee564bbedc70d9d
 
 pkgname = ipfs-desktop-appimage
