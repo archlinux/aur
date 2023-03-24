@@ -3,7 +3,7 @@
 
 pkgname=bottles
 pkgver=51.5
-pkgrel=2
+pkgrel=3
 epoch=2
 pkgdesc='Easily manage wine and proton prefix'
 arch=('x86_64')
