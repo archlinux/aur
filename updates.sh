@@ -1,8 +1,12 @@
 #!/bin/bash
+if [[ -z $_pvernew ]] ; then
 _version=$(git ls-remote --tags --refs --sort="version:refname" https://github.com/skycoin/skywire.git | tail -n1)
 _version=${_version##*/}
 _version=${_version%%-*}
 _version=${_version//v/}
+else
+  _version=$_pvernew
+fi
 #override
 #_version=1.3.4
 #Uncomment to use release candidates or pre-releases for testing
