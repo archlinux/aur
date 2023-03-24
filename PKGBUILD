@@ -1,17 +1,17 @@
 # Maintainer: Ilaï Deutel <PlMWPh1WSmypRv0JQljz> (echo ... | tr 'A-Za-z' 'l-za-kL-ZA-K' | base64 -d)
 
 pkgname=typst
-pkgver=22_03_21
+pkgver=22_03_21_2
 pkgrel=1
 pkgdesc='A new markup-based typesetting system that is powerful and easy to learn.'
 url='https://github.com/typst/typst'
 makedepends=('cargo')
-depends=('gcc-libs' 'ttf-linux-libertine')
+depends=('gcc-libs')
 arch=('any')
 license=('Apache')
 _pkgver="${pkgver//_/-}"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/typst/typst/archive/${_pkgver}/${_pkgver}.tar.gz")
-sha256sums=('201b1980ab25d87400a9031cfb6e4e09d6328f4ff507d82f1b1bbdf0c008632e')
+sha256sums=('fdd3d53496844f22c1ae1b4122250bc33ebb55c3ee12dc22cd1d1f0433724c35')
 
 prepare() {
     cd "$srcdir/$pkgname-${_pkgver}"
