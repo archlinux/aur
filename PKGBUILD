@@ -14,11 +14,11 @@ source=("https://pypi.io/packages/source/f/feeluown_bilibili/feeluown_bilibili-$
 sha512sums=('e32b7ad1f9fa59fd5e61ab0b3863188c9348980ca083aed69a72655cc5ed06713d80949750038fe6646ee682c87a131feadbd8b2fcf174a37d91fa9c8a0f669d')
 
 build() {
-  cd feeluown-bilibili-$pkgver
+  cd feeluown_bilibili-$pkgver
   python setup.py build
 }
 
 package() {
-  cd feeluown-bilibili-$pkgver
+  cd feeluown_bilibili-$pkgver
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
