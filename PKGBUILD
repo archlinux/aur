@@ -2,7 +2,7 @@
 
 _pkgname=python-tiktoken
 pkgname="${_pkgname}-git"
-pkgver=0.3.1.r15.20230312.3e86200
+pkgver=0.3.2+1.r18.20230317.82facf9
 pkgrel=1
 pkgdesc="A fast BPE tokeniser for use with OpenAI's models."
 arch=(
