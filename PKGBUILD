@@ -5,7 +5,7 @@ pkgname="stm32cubeide"
 pkgver=1.12.0
 _pkgver_ext=1.12.0_14980_20230301_1550
 _pkg_file_name=st-stm32cubeide_1.12.0_14980_20230301_1550_amd64.sh.zip
-pkgrel=2
+pkgrel=3
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
 makedepends=('imagemagick')
@@ -82,10 +82,14 @@ package() {
 	#install -D -o root -g root -m 644 -t "${pkgdir}/usr/lib/udev/rules.d/" "$srcdir/build/jlink-udev/"*.rules
 	#patch -i "${srcdir}/99-jlink.rules.patch" "${pkgdir}/usr/lib/udev/rules.d/99-jlink.rules"
 
-	msg2 'Installation of binary file'
+	msg2 'Installation of binary files'
 	install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<END
 #!/bin/sh
 /opt/stm32cubeide/stm32cubeide "\$@"
+END
+	install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}_wayland" <<END
+#!/bin/sh
+/opt/stm32cubeide/stm32cubeide_wayland "\$@"
 END
 
 	msg2 'Installing desktop shortcut and icon'
