@@ -1,7 +1,7 @@
 # Maintainer: Horror Proton <https://github.com/horror-proton>
 
 pkgname=maa-assistant-arknights
-_pkgver=v4.12.3
+_pkgver=v4.13.0-beta.1
 pkgver="$(echo ${_pkgver//-/} | sed -e 's/^v//')"
 pkgrel=1
 pkgdesc="An Arknights assistant"
@@ -18,7 +18,7 @@ install="${pkgname}.install"
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
-         '3a24dda8815a4f2ccd3caa26cdb9f17f')
+         '23125b9fda151d9388e035c3ad8f2437')
 
 _vcpkg_empty_overlay() {
     mkdir -p "$1"
@@ -31,7 +31,7 @@ prepare() {
 
     git submodule init
     git config submodule.MaaDeps.url "$srcdir/MaaDeps"
-    git -c protocol.file.allow=always submodule update MaaDeps
+    git -c protocol.file.allow=always submodule update --force MaaDeps
 
     sed -i 's/RUNTIME\sDESTINATION\s\./ /g; s/LIBRARY\sDESTINATION\s\./ /g; s/PUBLIC_HEADER\sDESTINATION\s\./ /g' CMakeLists.txt
 
@@ -60,7 +60,7 @@ build() {
     cd "$srcdir"
     cmake -B build -S MaaAssistantArknights \
         -DCMAKE_BUILD_TYPE=None \
-        -DCMAKE_CXX_FLAGS=-I"$PWD"/MaaAssistantArknights/MaaDeps/vcpkg/installed/maa-x64-linux/include \
+        -DCMAKE_CXX_FLAGS=-isystem\ "$PWD"/MaaAssistantArknights/MaaDeps/vcpkg/installed/maa-x64-linux/include \
         -DINSTALL_THIRD_LIBS=ON \
         -DINSTALL_RESOURCE=ON \
         -DINSTALL_PYTHON=ON \

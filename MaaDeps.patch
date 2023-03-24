@@ -58,7 +58,7 @@ index 6458212..f94665b 100644
  
  vcpkg_cmake_configure(
 diff --git a/vcpkg.json b/vcpkg.json
-index 329c6f0..e40fb34 100644
+index 27282bc..250bcf0 100644
 --- a/vcpkg.json
 +++ b/vcpkg.json
 @@ -1,36 +1,12 @@
@@ -96,9 +96,9 @@ index 329c6f0..e40fb34 100644
 -    },
      "maa-fastdeploy",
 -    "zlib",
-     "asio"
-   ]
- }
+     "asio",
+     {
+       "name": "range-v3",
 diff --git a/maadeps.cmake b/maadeps.cmake
 index cbc0aa1..985fcce 100644
 --- a/maadeps.cmake
