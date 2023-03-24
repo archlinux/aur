@@ -1,13 +1,12 @@
 pkgbase = dpic
-	pkgdesc = A pic language interpreter
-	pkgver = 2021.01.01
+	pkgdesc = A pic language interpreter.
+	pkgver = 2023.02.01
 	pkgrel = 1
 	url = http://www.ece.uwaterloo.ca/~aplevich/dpic/
-	arch = x86_64
 	arch = i686
+	arch = x86_64
 	license = BSD
-	source = https://ece.uwaterloo.ca/~aplevich/dpic/dpic-2021.01.01.tar.gz
-	sha256sums = beb0624d0a9d688b250ddfd658c6dd828ae74646660b69be445d89efc1793e6f
+	source = https://ece.uwaterloo.ca/~aplevich/dpic/dpic-2023.02.01.tar.gz
+	sha256sums = d059ff28c04552066c164fb146fee8e0101b953e46e75919b3dcfaa99b031ae6
 
 pkgname = dpic
-
