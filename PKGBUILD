@@ -1,6 +1,6 @@
 # Maintainer: John-Michael Mulesa <jmulesa@gmail.com>
 pkgname=owntone-server
-pkgver=28.5
+pkgver=28.6
 pkgrel=1
 pkgdesc="iTunes-compatible media server previously known as forked-daapd, originally intended as a rewrite of Firefly Media Server (mt-daapd)."
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=(gperf)
 backup=(etc/owntone.conf)
 install=owntone.install
 source=(https://github.com/owntone/owntone-server/archive/$pkgver.tar.gz owntone.install)
-sha256sums=('cf8cc5979eef026104d79cf3bd133f7ce4838232f0605fb54ea493f057a0a2c8'
+sha256sums=('a88115d3507889ccc1f0923ec31ad7e3b907e85d74ccd86a4b97173cbf36eae7'
             'c21617a866ecd4ae1ea81b372e7ad3a782e6b6bcf3b1c03e6f0666953b1844f2')
 
 build() {
