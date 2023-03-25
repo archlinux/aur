@@ -2,7 +2,7 @@
 # Contributor: Isabella Basso <isabellabdoamaral@usp.br>
 
 pkgname=asus-fan-control
-pkgver=3.12.0
+pkgver=3.13.0
 pkgrel=1
 pkgdesc="Fan control for ASUS devices running Linux."
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('acpi_call-lts: for the linux-lts kernel'
             'acpi_call-dkms: for other non-standard kernels')
 install=$pkgname.install
 source=(${pkgname}_${pkgver}.tar.gz::https://github.com/dominiksalvet/$pkgname/archive/$pkgver.tar.gz)
-sha256sums=('53d1c9b75da788efc5357641901222171ada824d7f38d02d33cad7d7b5fee4ee')
+sha256sums=('a815f1599a80be5aee6728de64ce93277fcc969a9d36916563799446aad84ffb')
 
 prepare(){
     cd "$pkgname-$pkgver"
