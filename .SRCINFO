@@ -1,0 +1,14 @@
+pkgbase = r-bde
+	pkgdesc = Bounded Density Estimation
+	pkgver = 1.0.1.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=bde
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-ggplot2
+	depends = r-shiny
+	source = https://cran.r-project.org/src/contrib/bde_1.0.1.1.tar.gz
+	sha256sums = 69d9bf5757ee7cf9fe1f5cf4d603570ae1d0b8210968e6ac5dfe7c3cbde6aa45
+
+pkgname = r-bde
