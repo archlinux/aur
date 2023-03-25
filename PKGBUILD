@@ -5,10 +5,10 @@
 
 # Maintainer: Anthony HAMON <hamon.anth@gmail.com>
 pkgname=yogo
-pkgver=3.7.1
-pkgchecksum=0a3d4a29793d17f907ef5c5af5b4f753
+pkgver=3.10.1
+pkgchecksum=cbaa1b2bf139b69fa23c8533b4772d2b
 pkgrel=1
-pkgdesc="Interact with yopmail from command-line"
+pkgdesc="Check yopmail mails from command line"
 arch=('x86_64')
 url="https://github.com/antham/yogo"
 license=('GPL')
