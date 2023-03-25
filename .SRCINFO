@@ -1,7 +1,7 @@
 pkgbase = shadowgrounds-survivor
 	pkgdesc = A 3D sci-fi alien shooter - sequel to Shadowgrounds (game sold separately)
 	pkgver = beta11_update1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://shadowgroundsgame.com/survivor/
 	arch = i686
 	arch = x86_64
@@ -24,4 +24,3 @@ pkgbase = shadowgrounds-survivor
 	md5sums = 6c38a1f3fe555b4d3f3e0a9a81a7d743
 
 pkgname = shadowgrounds-survivor
-

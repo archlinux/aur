@@ -3,7 +3,7 @@
 
 pkgname=shadowgrounds-survivor
 pkgver=beta11_update1
-pkgrel=3
+pkgrel=4
 pkgdesc='A 3D sci-fi alien shooter - sequel to Shadowgrounds (game sold separately)'
 arch=('i686' 'x86_64')
 url='http://shadowgroundsgame.com/survivor/'
@@ -57,7 +57,6 @@ package(){
   rm "${pkgdir}/opt/${pkgname}/lib32/libasound_module_pcm_pulse.so"
   rm "${pkgdir}/opt/${pkgname}/lib32/libasound.so.2"
   rm "${pkgdir}/opt/${pkgname}/lib32/libexpat.so.1"
-  rm "${pkgdir}/opt/${pkgname}/lib32/libFLAC.so.8"
   rm "${pkgdir}/opt/${pkgname}/lib32/libgcc_s.so.1"
   rm "${pkgdir}/opt/${pkgname}/lib32/libgmodule-2.0.so.0"
   rm "${pkgdir}/opt/${pkgname}/lib32/libgomp.so.1"
@@ -69,11 +68,9 @@ package(){
   rm "${pkgdir}/opt/${pkgname}/lib32/libopenal.so.1"
   rm "${pkgdir}/opt/${pkgname}/lib32/libpng12.so.0"
   rm "${pkgdir}/opt/${pkgname}/lib32/librt.so.1"
-  rm "${pkgdir}/opt/${pkgname}/lib32/libSDL-1.2.so.0"
   rm "${pkgdir}/opt/${pkgname}/lib32/libSDL_image-1.2.so.0"
   rm "${pkgdir}/opt/${pkgname}/lib32/libSDL_sound-1.0.so.1"
   rm "${pkgdir}/opt/${pkgname}/lib32/libSDL_ttf-2.0.so.0"
-  rm "${pkgdir}/opt/${pkgname}/lib32/libsmpeg-0.4.so.0"
   rm "${pkgdir}/opt/${pkgname}/lib32/libSM.so.6"
   rm "${pkgdir}/opt/${pkgname}/lib32/libspeex.so.1"
   rm "${pkgdir}/opt/${pkgname}/lib32/libstdc++.so.6"
