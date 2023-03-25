@@ -3,7 +3,7 @@
 
 _basename=gossip
 pkgname=${_basename}-git
-pkgver=0.3.91.r215.gab25e37
+pkgver=0.3.91.r308.gcf530a8
 pkgrel=1
 pkgdesc="gossip nostr client, rust, egui based."
 arch=('x86_64')
