@@ -2,7 +2,7 @@
 
 _git_repo_name="Electra-Lang"
 pkgname="electra-git"
-pkgver=1.2.0
+pkgver=1.2.0-1-gcd2c12c
 pkgrel=1
 epoch=
 pkgdesc="Electra is an esolang where you code like an electrician"
@@ -28,7 +28,7 @@ validpgpkeys=()
 
 pkgver() {
 	cd "$_git_repo_name"
-	git describe --tags --abbrev=0 | cut -c2-99 # Only if I published a new tag
+	git describe --tags | cut -c2-99
 }
 
 build() {
