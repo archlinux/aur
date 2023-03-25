@@ -3,7 +3,7 @@
 pkgname=vaa3d-bin
 _pkgname=${pkgname%-bin}
 pkgver=v3.601
-pkgrel=3
+pkgrel=4
 pkgdesc="3D Visualization-Assisted Analysis"
 arch=("any")
 url="https://www.vaa3d.org"

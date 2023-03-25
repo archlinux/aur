@@ -1,7 +1,7 @@
 pkgbase = vaa3d-bin
 	pkgdesc = 3D Visualization-Assisted Analysis
 	pkgver = v3.601
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.vaa3d.org
 	arch = any
 	license = custom
