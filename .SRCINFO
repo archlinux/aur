@@ -1,6 +1,6 @@
 pkgbase = davmail
 	pkgdesc = a POP/IMAP/SMTP/Caldav/LDAP gateway for the exchange service
-	pkgver = 6.0.1
+	pkgver = 6.1.0
 	pkgrel = 1
 	url = http://davmail.sourceforge.net/
 	install = davmail.install
@@ -13,14 +13,12 @@ pkgbase = davmail
 	depends = java-runtime
 	optdepends = java-openjfx: Office 365 browser based authentication
 	optdepends = swt: Fix issues with the tray icon
-	source = http://downloads.sourceforge.net/davmail/davmail-6.0.1-3390.zip
+	source = http://downloads.sourceforge.net/davmail/davmail-6.1.0-3423.zip
 	source = davmail.desktop
-	source = davmail.sh
 	source = davmail@.system_service
 	source = davmail@.user_service
-	md5sums = b48b08a59f4a51efba7b0009a4d72dce
+	md5sums = e26b7e5a363dd53b76393966f1d47db6
 	md5sums = 1df37a6120d88de8df3cb735977336ba
-	md5sums = 1eb24ff2a814058e55846a8e8f238f9b
 	md5sums = 8d373851babe1d8bb860228c8b4db702
 	md5sums = 271e9e66dfdb496d242c9a6102937c65
 
