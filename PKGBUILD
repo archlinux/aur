@@ -5,7 +5,7 @@
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-xz
-pkgver=5.4.1
+pkgver=5.4.2
 pkgrel=1
 pkgdesc="Library and command line tools for XZ and LZMA compressed files (mingw-w64)"
 arch=('any')
@@ -15,7 +15,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-configure')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("${url}/xz-${pkgver}.tar.gz"{,.sig})
-sha256sums=('e4b0f81582efa155ccf27bb88275254a429d44968e488fc94b806f2a61cd3e22'
+sha256sums=('87947679abcf77cc509d8d1b474218fd16b72281e2797360e909deaee1ac9d05'
             'SKIP')
 validpgpkeys=('3690C240CE51B4670D30AD1C38EE757D69184620') # Lasse Collin <lasse.collin@tukaani.org>
 
