@@ -1,4 +1,4 @@
-# Maintainer: archcrack <johndoe.arch@outlook.com>
+# Maintainer: archcrack <leo.clifm@outlook.com>
 
 pkgname=clifm-bin
 _pkgname="${pkgname%-bin}"
