@@ -3,7 +3,7 @@
 _pkgname=norm2
 _pkgver=2.0.4
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=2.0.4
 pkgrel=1
 pkgdesc='Analysis of Incomplete Multivariate Data under a Normal Model'
 arch=('x86_64')
