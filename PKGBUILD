@@ -30,7 +30,6 @@ sha512sums=('SKIP'
 
 prepare() {
   cd "${pkgname}"
-  git checkout dev
   git submodule init
   git config submodule.external/unbound.url "$srcdir/unbound"
   git config submodule.external/supercop.url "$srcdir/supercop"
