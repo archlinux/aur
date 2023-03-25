@@ -1,7 +1,7 @@
 pkgbase = tmux-fastcopy
 	pkgdesc = easymotion-style text copying for tmux.
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/abhinav/tmux-fastcopy
 	arch = any
 	license = MIT

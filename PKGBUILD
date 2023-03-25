@@ -1,7 +1,7 @@
 # Maintainer: Abhinav Gupta <mail@abhinavg.net>
 pkgname=tmux-fastcopy
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='easymotion-style text copying for tmux.'
 arch=(any)
 url="https://github.com/abhinav/tmux-fastcopy"
@@ -33,5 +33,7 @@ check() {
 package() {
 	cd "$pkgname-$pkgver"
 	install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/tmux-fastcopy/LICENSE"
+	install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/tmux-fastcopy/LICENSE"
+	install -Dm644 "./README.md" "${pkgdir}/usr/share/doc/tmux-fastcopy/README.md"
+	install -Dm644 "./CHANGELOG.md" "${pkgdir}/usr/share/doc/tmux-fastcopy/CHANGELOG.md"
 }
