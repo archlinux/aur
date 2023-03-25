@@ -2,7 +2,7 @@
 
 _pkgname="rock-paper-scissor"
 pkgname="${_pkgname}-git"
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
 pkgdesc="an rock paper scissor game for linux"
 arch=('any')
