@@ -2,7 +2,7 @@
 
 pkgname=clipboard-git
 _pkgname="${pkgname%-git}"
-pkgver=0.3.2.r660.b551bb9
+pkgver=0.5.0.r981.6068d3a
 pkgrel=1
 pkgdesc="Cut, copy, and paste anything in your terminal (git version)."
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -10,7 +10,7 @@ url="https://getclipboard.app"
 license=('GPL3')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'libx11' 'wayland' 'wayland-protocols')
 optdepends=('libx11: X11 support'
 	    'wayland: Wayland support'
 	    'wayland-protocols: Wayland support')
