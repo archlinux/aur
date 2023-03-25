@@ -1,7 +1,7 @@
 pkgbase = shadowgrounds
 	pkgdesc = A 3D sci-fi alien shooter (game sold separately)
 	pkgver = beta12_update1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://shadowgroundsgame.com/
 	arch = i686
 	arch = x86_64
@@ -24,4 +24,3 @@ pkgbase = shadowgrounds
 	md5sums = 7c9913f754168742973edfeb66ba8f1c
 
 pkgname = shadowgrounds
-
