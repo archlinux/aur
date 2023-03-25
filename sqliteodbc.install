@@ -1,15 +1,23 @@
 post_install() {
+	# Not all architectures work with /usr/lib64.
+	# Therefore, test where our .so went.
+	SQLITE_LIB64='/usr/lib64/libsqlite3odbc.so'
+	if [ -e $SQLITE_LIB64 ]
+	then SQLITE_LIB=$SQLITE_LIB64
+	else SQLITE_LIB='/usr/lib/libsqlite3odbc.so'
+	fi
+
 	odbcinst -i -d -r <<-EOS
 [SQLite3]
 Description=SQLite ODBC Driver
-Driver=/usr/lib64/libsqlite3odbc.so
-Setup=/usrl/lib64/libsqlite3odbc.so
+Driver=$SQLITE_LIB
+Setup=$SQLITE_LIB
 Threading=2
 
 [SQLite]
 Description=SQLite ODBC Driver
-Driver=/usr/lib64/libsqliteodbc.so
-Setup=/usrl/lib64/libsqliteodbc.so
+Driver=$SQLITE_LIB
+Setup=$SQLITE_LIB
 Threading=2
 	EOS
 }

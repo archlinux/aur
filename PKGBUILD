@@ -3,9 +3,9 @@
 
 pkgname=sqliteodbc
 pkgver=0.9998
-pkgrel=1
+pkgrel=2
 pkgdesc="ODBC driver for SQLite"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 depends=('unixodbc' 'sqlite' 'libxml2')
 url="http://www.ch-werner.de/sqliteodbc/"
 license=('BSD')
@@ -14,6 +14,15 @@ install=sqliteodbc.install
 
 build() {
     cd "$srcdir/${pkgname}-$pkgver"
+
+    # Autotools are from 2003. We have to autoreconf.
+    rm aclocal.m4
+    mv configure.in configure.ac
+    aclocal
+    libtoolize --force
+    autoupdate --force
+    autoreconf --force --install
+
     ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
     make -j1
 }
