@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb@dralias.com>
 
 _pkgname=flightcore
-pkgname=flightcore-bin
+pkgname=$_pkgname-bin
 pkgver=1.10.2
 pkgrel=2
 pkgdesc="A Northstar launcher installer, updater, and mod-manager (AppImage release)"
@@ -13,7 +13,7 @@ makedepends=('util-linux')
 provides=($_pkgname)
 conflicts=($_pkgname)
 options=('!strip')
-source=("https://github.com/R2NorthstarTools/FlightCore/releases/download/v$pkgver/flight-core_${pkgver}_amd64.AppImage")
+source=("$url/releases/download/v$pkgver/flight-core_${pkgver}_amd64.AppImage")
 sha256sums=('75629c4c83d9748e1b6b2814568596789254ec9df0a29e5463a70de19bf85e05')
 
 prepare() {
@@ -25,7 +25,7 @@ prepare() {
 }
 
 package() {
-  install -Dm 644 squashfs-root/usr/share/icons/hicolor/256x256@2/apps/flight-core.png "$pkgdir/usr/share/pixmaps/flightcore.png"
-  install -Dm 644 squashfs-root/flight-core.desktop "$pkgdir/usr/share/applications/flightcore.desktop"
-  install -Dm 755 flight-core_${pkgver}_amd64.AppImage "$pkgdir/usr/bin/$_pkgname"
+  install -Dm644 squashfs-root/usr/share/icons/hicolor/256x256@2/apps/flight-core.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+  install -Dm644 squashfs-root/flight-core.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  install -Dm755 flight-core_${pkgver}_amd64.AppImage "$pkgdir/usr/bin/$_pkgname"
 }
