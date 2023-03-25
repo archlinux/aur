@@ -1,8 +1,8 @@
 # Maintainer: ThatOneCalculator <kainoa@t1c.dev>
 
 _pkgname="hyprland"
-pkgname="${_pkgname}-opti-git"
-pkgver=r2551.c4440993
+pkgname="${_pkgname}-git"
+pkgver=r2651.41f7736c
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=(any)
@@ -36,7 +36,10 @@ depends=(
 	seatd
 	vulkan-icd-loader
 	vulkan-validation-layers
-	xorg-xwayland)
+	xorg-xwayland
+	libliftoff
+	libdisplay-info
+	pango)
 makedepends=(
 	git
 	cmake
@@ -46,12 +49,9 @@ makedepends=(
 	meson
 	vulkan-headers
 	wayland-protocols
-	xorgproto
-	libliftoff
-	libdisplay-info)
+	xorgproto)
 source=("${_pkgname}::git+https://github.com/hyprwm/Hyprland.git")
-conflicts=("${_pkgname}"
-	hyprland-git)
+conflicts=("${_pkgname}")
 provides=(hyprland)
 sha256sums=('SKIP')
 options=(!makeflags !buildflags !strip)
@@ -66,10 +66,11 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	patch Makefile < ../../opti.patch
+	#patch Makefile < ../../opti.patch
 	git submodule update --init
 	make fixwlr
-	cd "./subprojects/wlroots/" && meson build/ --prefix="${srcdir}/tmpwlr" --buildtype=release && ninja -C build/ && mkdir -p "${srcdir}/tmpwlr" && ninja -C build/ install && cd ../../
+	cd "./subprojects/wlroots/" && meson build/ --prefix="${srcdir}/tmpwlr" --buildtype=release && ninja -C build/ && mkdir -p "${srcdir}/tmpwlr" && ninja -C build/ install && cd ../
+	cd udis86 && cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -H./ -B./build -G Ninja && cmake --build ./build --config Release --target all -j$(shell nproc) && cd ../..
 	make protocols
     make release
 	cd ./hyprctl && make all && cd ..
