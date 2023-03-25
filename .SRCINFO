@@ -1,9 +1,10 @@
 pkgbase = cef-minimal-obs-bin
 	pkgdesc = Chromium Embedded Framework minimal release needed by OBS Studio release in /opt/cef-obs
 	pkgver = 103.0.0_5060_shared_textures_143.2591+g4204d54+chromium_103.0.5060.134_1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/obsproject/cef/tree/5060-shared-textures
 	arch = x86_64
+	arch = aarch64
 	license = BSD
 	makedepends = cmake
 	depends = nss
@@ -20,7 +21,9 @@ pkgbase = cef-minimal-obs-bin
 	options = !lto
 	options = !strip
 	options = debug
-	source_x86_64 = https://cdn-fastly.obsproject.com/downloads/cef_binary_5060_linux64.tar.bz2
-	sha256sums_x86_64 = ac4e2a8ebf20700e4e36353e314f876623633dd5b474778a2548bb66bdbea11d
+	source_x86_64 = https://cdn-fastly.obsproject.com/downloads/cef_binary_5060_linux_x86_64.tar.xz
+	sha256sums_x86_64 = bf4aa9388bab7e94fa945cc3bba16b6da63b6a30f9c0342d42235468b39d84bf
+	source_aarch64 = https://cdn-fastly.obsproject.com/downloads/cef_binary_5060_linux_aarch64.tar.xz
+	sha256sums_aarch64 = 68d915c9ba2639cba762a54cd3430fce2527aa6355d831d3cfcb6157664206b0
 
 pkgname = cef-minimal-obs-bin
