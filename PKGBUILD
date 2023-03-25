@@ -1,4 +1,5 @@
-# Maintainer: Firas Zaidan <firas@zaidan.de>
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Firas Zaidan <firas@zaidan.de>
 # Contributor: Andrzej Giniewicz <gginiu at gmail.com>
 # Contributor: Sebastien Binet <binet at cern.ch>
 
@@ -10,7 +11,7 @@ pkgdesc="A package for managing hierarchical datasets and designed to efficientl
 url="http://www.pytables.org"
 license=("BSD")
 makedepends=('lzo' 'hdf5' 'python2-numexpr' 'python2-setuptools' 'cython2' 'blosc' 'bzip2')
-source=(${pkgname}-${pkgver}::"https://github.com/PyTables/PyTables/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/PyTables/PyTables/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=('72598482c5824b79a5bd60e5ca544f874936be9ce38de6d8f4297d895635cb2522fe0af07788a3370813a8bf04142edf1503cdef87cf570581da9915ced5ad93')
 
 build() {
