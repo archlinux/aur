@@ -1,9 +1,10 @@
-# Maintainer: Lorenz Steinert <lsteinert@uraziel.de>
+# Maintainer: Mark Collins <tera_1225 hat hotmail dot com>
+# Contributor: Lorenz Steinert <lsteinert@uraziel.de>
 
 pkgname=python-matrix-synapse-shared-secret-auth
 _name=${pkgname#python-}
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Shared Secret Authenticator password provider module for Matrix Synapse"
 url="https://github.com/devture/matrix-synapse-shared-secret-auth"
 arch=('x86_64')
