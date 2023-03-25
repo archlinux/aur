@@ -12,15 +12,12 @@ post_install() {
   YELLOW='\033[1;33m'
   RED='\033[0;31m'
   NC='\033[0m' # No Color
-  printf "${RED}> ${NC}To start headshotbox run:${NC}\n"
-  printf "${RED}> ${YELLOW}\$ systemctl --user start headshotbox${NC}"
+  printf "  ${RED}> ${NC}To start headshotbox on default 4000 port run:${NC}\n"
+  printf "  ${RED}> ${YELLOW}\$ systemctl --user start headshotbox${NC}\n"
+  printf "  ${RED}> ${NC}To start it on custom port (for example 3187) run:${NC}\n"
+  printf "  ${RED}> ${YELLOW}\$ systemctl --user start headshotbox@3187${NC}\n"
 }
 
 post_upgrade() {
-  YELLOW='\033[1;33m'
-  RED='\033[0;31m'
-  NC='\033[0m' # No Color
-  printf "\t${YELLOW}To start headshotbox run:${NC}\n"
-  printf "\t$ ${YELLOW}systemctl --user daemon-reload${NC}\n"
-  printf "\t$ ${YELLOW}systemctl --user start headshotbox${NC}\n"
+  post_install
 }

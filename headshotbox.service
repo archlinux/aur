@@ -3,7 +3,7 @@ Description=Headshot Box daemon
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/bash /usr/share/headshotbox/headshotbox.sh
+ExecStart=/usr/bin/bash /usr/share/headshotbox/headshotbox-p.sh %i
 WorkingDirectory=/usr/share/headshotbox/
 Restart=on-failure
 
