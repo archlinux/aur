@@ -2,9 +2,9 @@
 # https://github.com/TD-Sky/PKGBUILDs
 
 pkgname=conceal
-pkgver=0.1.5
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="A trash collector."
+pkgdesc="Command line recycle bin"
 arch=('x86_64')
 url="https://github.com/TD-Sky/conceal"
 license=('MIT')
@@ -12,7 +12,7 @@ conflicts=('conceal-bin')
 depends=('skim')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f721f8683d2d457a7f60088acf01edd4f2c68381b111dc9d104555f95b0ce56d')
+sha256sums=('1f9bd11863fb5ca0dd28bc710457882a31f979eb1e090e979dc46112bc7b5d74')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -26,10 +26,19 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
+
+  install -Dm 755 "target/release/conceal" -t "$pkgdir/usr/bin"
+  install -Dm 644 "completions/conceal/_conceal" -t "$pkgdir/usr/share/zsh/site-functions"
+  install -Dm 644 "completions/conceal/conceal.bash" "$pkgdir/usr/share/bash-completion/completions/conceal"
+  install -Dm 644 "completions/conceal/conceal.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d"
+  install -Dm 644 "completions/conceal/conceal.nu" -t "$pkgdir/usr/share/nushell/completions"
+
   install -Dm 755 "target/release/cnc" -t "$pkgdir/usr/bin"
+  install -Dm 644 "completions/cnc/_cnc" -t "$pkgdir/usr/share/zsh/site-functions"
+  install -Dm 644 "completions/cnc/cnc.bash" "$pkgdir/usr/share/bash-completion/completions/cnc"
+  install -Dm 644 "completions/cnc/cnc.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d"
+  install -Dm 644 "completions/cnc/cnc.nu" -t "$pkgdir/usr/share/nushell/completions"
+
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm 644 "completions/cnc.bash" -t "$pkgdir/usr/share/bash-completion/completions"
-  install -Dm 644 "completions/cnc.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d"
-  install -Dm 644 "completions/cnc.nu" -t "$pkgdir/usr/share/nushell/completions"
 }
