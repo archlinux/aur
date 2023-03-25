@@ -23,6 +23,6 @@ sha256sums=('0d00b8afbaafce809d2d36123e50bf23c1518cffc093aca12b81e02319793caf'
 
 package() {
   install -Dm644 CHANGELOG.md README.md -t "$pkgdir/usr/share/doc/$_pkgname"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
   install -Dm755 papa -t "$pkgdir/usr/bin"
 }
