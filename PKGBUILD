@@ -4,15 +4,14 @@ _pkgname=MicroTex
 pkgname="${_pkgname,,}-git"
 pkgver=2022.12.23
 pkgrel=1
-provides=('clatexmath')
+provides=("clatexmath" "${_pkgname,,}")
 pkgdesc="A dynamic, cross-platform, and embeddable LaTeX rendering library"
 arch=("x86_64")
-url="https://github.com/NanoMichael/cLaTeXMath"
+url="https://github.com/NanoMichael/${_pkgname}"
 license=('MIT')
 depends=("gtkmm3" "gtksourceviewmm" "tinyxml2")
 makedepends=("git" "meson")
-provides=("${_pkgname}")
-source=("${_pkgname}::git+https://github.com/NanoMichael/${_pkgname}.git")
+source=("${_pkgname}::git+${url}.git")
 sha256sums=("SKIP")
 
 pkgver() {
