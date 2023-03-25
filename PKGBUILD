@@ -3,7 +3,7 @@
 # Contributor: GI Jack <GI_Jack@hackermail.com>
 
 pkgname=guilded
-pkgver=1.0.9185218
+pkgver=1.0.9188326
 pkgrel=1
 pkgdesc="Chat for Gaming Communities"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('custom')
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core'
 	 'util-linux-libs' 'libappindicator-gtk3' 'libsecret' 'libxkbcommon-x11' "alsa-lib" "libxkbfile")
 source=("${pkgname}-${pkgver}.deb::https://www.guilded.gg/downloads/Guilded-Linux.deb")
- sha256sums=('2c62c63dab482be49280e237379ff4eb67041893375b0373ff6bc8cbd57f7a09')
+ sha256sums=('1a79a656e0860a91cfa418acb6dff90923c5d8eb729ddd06c7eda8d64ff819a4')
 
 prepare() {
   tar Jxvf data.tar.xz
