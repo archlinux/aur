@@ -1,6 +1,6 @@
 # Maintainer: JOLIMAITRE Matthieu <matthieu@imagevo.fr>
 pkgname="reflex-3-3"
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Fork of re/flex v3.3 (The regex-centric, fast lexical analyzer generator for C++) intended for use in EPITA school project TIGER."
 url="https://github.com/MajorBarnulf/RE-flex"
@@ -22,8 +22,8 @@ build() {
 package() {
     cd "$srcdir"
     install -Dm 755 "bin/reflex" "$pkgdir/usr/bin/reflex"
-    install -Dm 755 "lib/libreflex.so" "$pkgdir/lib/libreflex.so"
-    install -Dm 755 "lib/libreflex.so" "$pkgdir/lib/libreflexmin.so"
+    install -Dm 755 "lib/libreflex.so" "$pkgdir/usr/lib/libreflex.so"
+    install -Dm 755 "lib/libreflex.so" "$pkgdir/usr/lib/libreflexmin.so"
     cd "include/reflex"
     install -Dm 644 "abslexer.h" "$pkgdir/usr/include/reflex/abslexer.h"
     install -Dm 644 "absmatcher.h" "$pkgdir/usr/include/reflex/absmatcher.h"
