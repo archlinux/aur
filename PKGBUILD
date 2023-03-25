@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=nanomq-git
-pkgver=0.16.2.r0.g116439b
+pkgver=0.16.5.r0.gaa188a4
 pkgrel=1
 pkgdesc="Nano MQTT Broker - An Ultra-light and Blazing-fast MQTT Broker for IoT Edge"
 arch=('x86_64')
@@ -9,12 +9,10 @@ url="https://github.com/nanomq/nanomq"
 license=('MIT')
 provides=(${pkgname})
 conflicts=(${pkgname} ${pkgname%-git})
-#replaces=(${pkgname})
 depends=()
 makedepends=('git' 'cmake' 'ninja')
 backup=()
 options=('!strip')
-#install=${pkgname}.install
 source=("${pkgname%-git}::git+https://ghproxy.com/${url}.git")
 sha256sums=('SKIP')
 
@@ -30,7 +28,10 @@ prepare() {
 
 build() {
     cd "${srcdir}/${pkgname%-git}/"
-    cmake -B build -G Ninja
+    cmake -DCMAKE_BUILD_TYPE=None \
+          -DCMAKE_INSTALL_PREFIX=${pkgdir} \
+          -B build \
+          -G Ninja
     ninja -C build
 }
 
