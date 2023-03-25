@@ -7,7 +7,7 @@
 # installation.
 
 pkgname=jabref-git
-pkgver=20221226
+pkgver=20230324
 pkgrel=1
 epoch=2
 pkgdesc="GUI frontend for BibTeX, written in Java -- built from git"
@@ -16,8 +16,7 @@ url="https://www.jabref.org"
 license=('MIT')
 depends=('freetype2' 'libnet' 'libxrender' 'libxtst' 'alsa-lib'
 	'libjpeg-turbo' 'lcms2' 'giflib')
-makedepends=('git' 'java-environment=19') # tested with opejdk from the repos
-                                           
+makedepends=('git' 'java-environment=19') # tested with openjdk from the repos
 optdepends=('gsettings-desktop-schemas: For web search support')
 provides=('jabref')
 conflicts=('jabref')
@@ -37,7 +36,8 @@ build() {
   cd ${pkgname%-git}
   [[ -d "$srcdir"/gradle ]] && install -d "$srcdir"/gradle
   export GRADLE_USER_HOME="$srcdir"/gradle
-  export DEFAULT_JVM_OPTS='"-Xmx128m" "-Xms64m"'
+  export DEFAULT_JVM_OPTS='"-Xmx1g" "-Xms64m"'
+  pwd
   ./gradlew --no-daemon -PprojVersion="${pkgver}" \
 	    -PprojVersionInfo="${pkgver}--ArchLinux--${pkgrel}" assemble
   ./gradlew --no-daemon --no-parallel -PprojVersion="${pkgver}" \
