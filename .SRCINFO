@@ -1,11 +1,11 @@
 pkgbase = livsdiary
 	pkgdesc = A simple, free/libre and open source command-line diary
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/olivia-livs/livsdiary
 	arch = x86_64
 	license = GPL3
-	source = https://github.com/olivia-livs/livsdiary/archive/v1.2.0.tar.gz
-	sha256sums = 94842e015512bcdc899e69a85194aa5046c7afff4f8f24476d833e0a10024d52
+	source = https://github.com/olivia-livs/livsdiary/archive/v1.3.0.tar.gz
+	sha256sums = a55e6acbaacc2ac465824406e20a78403ea1bd6fe37caf811a65bf2828e8b63f
 
 pkgname = livsdiary
