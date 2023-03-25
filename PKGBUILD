@@ -3,12 +3,12 @@
 pkgname=clipboard
 _pkgname=Clipboard
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cut, copy, and paste anything in your terminal."
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://getclipboard.app"
 license=('GPL3')
-makedepends=('cmake')
+makedepends=('cmake' 'libx11' 'wayland' 'wayland-protocols')
 optdepends=('libx11: X11 support'
 	    'wayland: Wayland support'
 	    'wayland-protocols: Wayland support')
