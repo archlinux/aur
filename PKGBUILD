@@ -2,7 +2,7 @@
 
 pkgname=sbupdate-mkinitcpio
 _srcname=sbupdate
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Generate (signed) Unified Kernel Images"
 arch=('any')
@@ -11,15 +11,15 @@ license=('GPL3')
 provides=('sbupdate')
 conflicts=('sbupdate' 'sbupdate-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('8de4fe17e5a4e3fb2311feb5aa073e975b53054f4a3f3fead6b95a1b2d097ea5ecc9709236324231e75267613019ec407bfee0e59c6c739e7e9fcf77ef086a0d')
+b2sums=('d274c7900d9c4ada1c0570731f6dc3ec597ee4f94af5394d693cf495c6a63b6c8608ae0ba5a575458a6c7bb365e7b17c95df7f4d410bd39c2262a881496d577e')
 
 package() {
     depends=('bash' 'systemd' 'systemd-ukify' 'mkinitcpio' 'sbsigntools')
 
     cd "$_srcname-$pkgver"
 
-    sed -e 's|\(^_f_config\)=.*|\1=/etc/sbupdate.conf|' \
-        -e 's|\(^_f_functions\)=.*|\1=/usr/lib/initcpio/functions|' \
+    sed -e 's|\(_f_config\)=.*|\1=/etc/sbupdate.conf|' \
+        -e 's|\(_f_functions\)=.*|\1=/usr/lib/initcpio/functions|' \
         -i sbupdate
 
     install -Dm755 sbupdate "$pkgdir/usr/bin/sbupdate"
