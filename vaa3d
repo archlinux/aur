@@ -1,0 +1,3 @@
+#!/bin/sh
+export LD_LIBRARY_PATH=/opt/vaa3d-bin
+/opt/vaa3d-bin/vaa3d $@

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Vaa3D
+Comment=3D Visualization-Assisted Analysis
+Icon=vaa3d
+Path=/usr/bin
+Exec=vaa3d
+Categories=Science;DataVisualization;
