@@ -5,7 +5,7 @@ index 5b5203ca..915abd76 100755
 @@ -4,11 +4,11 @@ PATH="$PATH:/usr/local/bin"
  dir="$(dirname $0)"
  [ -x "$dir/node" ] && node="$dir/node" || node="$(command -v node || command -v nodejs)"
-
+ 
 -# if current file is a symlink (e.g. installed via npm) we'll append
 +# if current file is a symlink (e.g. installed via pacman) we'll append
  # the relative path to where the package is actually installed.
@@ -14,39 +14,39 @@ index 5b5203ca..915abd76 100755
 -  dir="$dir/$rel"
 +  dir="$rel"
  fi
-
+ 
  script="lib/agent/cli.js"
 diff --git lib/conf/gui/linux/prey-config.py lib/conf/gui/linux/prey-config.py
 index 51b4fc18..859b0191 100755
 --- lib/conf/gui/linux/prey-config.py
 +++ lib/conf/gui/linux/prey-config.py
 @@ -44,7 +44,7 @@ OUT = STDOUT # None
-
+ 
  SCRIPT_PATH = os.sys.path[0]
  PACKAGE_PATH = SCRIPT_PATH + '/../../../..'
 -PREY_BIN = PACKAGE_PATH + '/bin/prey'
 +PREY_BIN = PACKAGE_PATH + '/bin/prey-tracker'
  PREY_CONFIG = PREY_BIN + ' config'
-
+ 
  PACKAGE_JSON = open(PACKAGE_PATH + '/package.json', 'r')
 diff --git lib/conf/gui/linux/prey-config3.py lib/conf/gui/linux/prey-config3.py
 index eec738f6..9815c90a 100755
 --- lib/conf/gui/linux/prey-config3.py
 +++ lib/conf/gui/linux/prey-config3.py
 @@ -44,7 +44,7 @@ OUT = STDOUT  # None
-
+ 
  SCRIPT_PATH = os.sys.path[0]
  PACKAGE_PATH = SCRIPT_PATH + "/../../../.."
 -PREY_BIN = PACKAGE_PATH + "/bin/prey"
 +PREY_BIN = PACKAGE_PATH + "/bin/prey-tracker"
  PREY_CONFIG = PREY_BIN + " config"
-
+ 
  PACKAGE_JSON = open(PACKAGE_PATH + "/package.json", "r")
 diff --git package.json package.json
-index 895f44ec..c502916f 100644
+index 875caeda..f066871f 100644
 --- package.json
 +++ package.json
-@@ -84,7 +84,7 @@
+@@ -90,7 +90,7 @@
    },
    "main": "./lib/common",
    "bin": {
@@ -55,7 +55,7 @@ index 895f44ec..c502916f 100644
    },
    "directories": {
      "bin": "./bin",
-@@ -93,12 +93,12 @@
+@@ -99,12 +99,12 @@
      "test": "./test"
    },
    "scripts": {
@@ -66,10 +66,10 @@ index 895f44ec..c502916f 100644
      "coverage": "istanbul cover _mocha -- lib/agent/plugins test --recursive",
 -    "postinstall": "./bin/prey config hooks post_install",
 -    "postupdate": "./bin/prey config hooks post_install",
--    "preuninstall": "./bin/prey config hooks pre_uninstall"
+-    "preuninstall": "./bin/prey config hooks pre_uninstall",
 +    "postinstall": "./bin/prey-tracker config hooks post_install",
 +    "postupdate": "./bin/prey-tracker config hooks post_install",
-+    "preuninstall": "./bin/prey-tracker config hooks pre_uninstall"
-   },
-   "bugs": {
-     "url": "http://github.com/prey/prey-node-client/issues"
++    "preuninstall": "./bin/prey-tracker config hooks pre_uninstall",
+     "lint": "eslint .",
+     "lint-fix": "eslint . --fix",
+     "format": "npx prettier --write"
