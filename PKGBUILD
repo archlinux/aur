@@ -24,6 +24,6 @@ build() {
 package() {
   cd papa
   install -Dm644 CHANGELOG.md README.md -t "$pkgdir/usr/share/doc/$_pkgname"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
   install -Dm755 target/release/$pkgname -t "$pkgdir/usr/bin"
 }
