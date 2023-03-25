@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Wreckfest GOG
+Comment=Wreckfest WINE - GOG Version
+Exec=/usr/bin/wreckfest-gog
+Icon=wreckfest-gog
+Terminal=false
+Type=Application
+Categories=Application;Game;
