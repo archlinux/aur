@@ -2,7 +2,7 @@
 
  pkgname=sierra-breeze-enhanced
  _gitname=SierraBreezeEnhanced
- pkgver=1.3.1
+ pkgver=1.3.3
  pkgrel=1
  pkgdesc="A kwin decoration with support for transparency, rounded corners, multiple titlebar button presets and more"
  arch=('x86_64')
@@ -11,7 +11,7 @@
  depends=('kwin')
  makedepends=('cmake' 'extra-cmake-modules')
  source=("${url}archive/refs/tags/V${pkgver}.tar.gz")
- sha256sums=('e507084f359ceb1fd11f4b1a54cbd350601d6cebae837765412da7b5d2744b8c')
+ sha256sums=('37d10ee089091e33b48d27829c0659a2240c55bcb8b762fddd03cc6ab59458c0')
 
  build() {
 
