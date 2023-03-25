@@ -4,13 +4,14 @@
 
 pkgname=mawk
 pkgver=1.3.4_20230322
-pkgrel=1
+pkgrel=2
 pkgdesc="An interpreter for the AWK Programming Language"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('glibc')
 url="http://invisible-island.net/mawk/"
-source=("$pkgname-$pkgver.tar.gz::http://invisible-island.net/datafiles/release/$pkgname.tar.gz")
+source=("https://invisible-island.net/archives/$pkgname/$pkgname-${pkgver//_/-}.tgz")
+sha256sums=('cafaa642c6d738484dedcb24e8433bf57ff1f7ee958cfa547603e433135d9d89')
 
 build() {
   cd $pkgname-${pkgver/_/-}
@@ -27,4 +28,3 @@ package () {
   make BINDIR="$pkgdir"/usr/bin \
     MANDIR="$pkgdir"/usr/share/man/man1 install 
 }
-sha256sums=('cafaa642c6d738484dedcb24e8433bf57ff1f7ee958cfa547603e433135d9d89')
