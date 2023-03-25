@@ -3,17 +3,17 @@
 # Contributer: Danct12 <danct12@disroot.org>
 # Contributor: Bart Ribbers <bribbers@disroot.org>
 
-_pkgver_images_system="18.1-20230318"
-_pkgver_images_vendor="18.1-20230318"
+_pkgver_images_system="18.1-20230325"
+_pkgver_images_vendor="18.1-20230325"
 
-_pkgver_images_system_x86="18.1-20230318"
-_pkgver_images_vendor_x86="18.1-20230318"
+_pkgver_images_system_x86="18.1-20230325"
+_pkgver_images_vendor_x86="18.1-20230325"
 
-_pkgver_images_system_arm64="18.1-20230318"
-_pkgver_images_vendor_arm64="18.1-20230318"
+_pkgver_images_system_arm64="18.1-20230325"
+_pkgver_images_vendor_arm64="18.1-20230325"
 
-_pkgver_images_system_arm="18.1-20230318"
-_pkgver_images_vendor_arm="18.1-20230318"
+_pkgver_images_system_arm="18.1-20230325"
+_pkgver_images_vendor_arm="18.1-20230325"
 
 pkgname=waydroid-image-gapps
 pkgver="${_pkgver_images_system//-/_}"
@@ -47,11 +47,11 @@ package() {
   mv "$srcdir/vendor.img" "$pkgdir/usr/share/waydroid-extra/images"
 }
 
-sha256sums_x86_64=('5fd0f3215626827a982d8db0c675b9be18f108dc93c555ceb746c8d4322d7533'
-                   '2fcbe079346a609b9f8fadbe2911c9363ec1d19fc7debe435f5ff580778fb3a3')
-sha256sums_i686=('40cb2e4d94dbf586ebc7a3643c88d8ff322bc3839372d873dec8e602d2b0fe22'
-                 '6707c1ed32d997e36bcbf86a064e781e338f7a63b614557ab1f07c76a577263c')
-sha256sums_armv7h=('a62b6cfe8596a8543c3ea79ee8760847f40296c617196752ba453b5f49811bfe'
-                   '875710284f2f1d6694ca047cedc8d6275269779be7225b231c68e02d0413159d')
-sha256sums_aarch64=('0485c332b226edc998404f40200c9acb88a721ae0435672658ba61e3b3af99e0'
-                    '8f23f214f27d4800b58b509bd0ff824dd54b6cbe803af7412d7aae68fb73a59c')
+sha256sums_x86_64=('81c10a4ebd274fe7f102affc1b9ef0cd38cccb502fff4224602c9b40ac7fb397'
+                   '00ce9c2493ba3d0a454d312a0b4bea947c713ec8652fe66603caceb45658e9c6')
+sha256sums_i686=('1325d53ac47479be0335b105cd9db2e70642ffb163b6644cc4cfcccc74e6749a'
+                 'd012fb0663324d51491d13f2f6786bbcdc9790c415bda0c0ea868f6bd22e651e')
+sha256sums_armv7h=('11227aa5ac1efa4026328b2943e5c5335d0b578f203ca264974642b7a869df69'
+                   '06b5e97cd4cc66d299386bdeea1e65317329435845df4dd27ca5618af191fb04')
+sha256sums_aarch64=('1064a85df0de99e442b430d6dcdbe8aa535f64c2c0b238d86e2de7881d7deafd'
+                    '98720578c9d45bfe333f38a14c18cdbdac53710805951d9862f14e453f3b8a06')
