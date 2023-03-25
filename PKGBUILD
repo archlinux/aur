@@ -1,6 +1,6 @@
 # Maintainer: Z. D. Smith <zd at zdsmith dot com>
 pkgname=pantagruel
-pkgver=0.13.0
+pkgver=0.13.1
 pkgrel=1
 pkgdesc='An Extremely Lightweight Specification Language'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('BSD3')
 
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('e7e131e4862dfca88eb214452d7e0231c57fcbba0ad1d36162d8d596e428c43d')
+sha256sums=('271e55b8684e6acb8d903b7e35b269c5b76ef3c31670980448f1ab06111ea1db')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
