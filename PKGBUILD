@@ -2,7 +2,7 @@
 pkgname=lemurs-git
 _pkgname=lemurs
 pkgver=0.3.1.r3.g60fda2a
-pkgrel=2
+pkgrel=3
 pkgdesc="TUI Display/Login Manager"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/coastalwhite/lemurs"
@@ -24,15 +24,14 @@ build() {
     cd "$srcdir/$_pkgname"
 
     # If there was no toolchain installed at all, install the stable toolchain
-    rustup default > /dev/null 2>&1
-    if [ $? -ne 0 ]; then
+    
+    if ! (rustup default > /dev/null 2>&1); then
         echo "No Rust Toolchain found. Installing the default toolchain"
         rustup default stable
     fi
 
 	# Ensure there is a stable version of rust installed
-	rustup toolchain list | grep 'stable' > /dev/null
-	if [ $? -ne 0 ]; then
+	if ! (rustup toolchain list | grep 'stable' > /dev/null); then
 		rustup toolchain install stable
 	fi
 
