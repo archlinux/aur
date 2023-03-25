@@ -9,6 +9,7 @@ arch=('any')
 url="https://github.com/bugdone/headshotbox"
 license=('MIT')
 depends=(
+  java-runtime
 )
 install=headshotbox.install
 
