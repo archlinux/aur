@@ -1,7 +1,7 @@
 # Maintainer: otreblan <otreblain@gmail.com>
 
 pkgname=trantor
-pkgver=1.5.10
+pkgver=1.5.11
 pkgrel=1
 pkgdesc='A non-blocking I/O tcp network lib based on c++14/17'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('c-ares' 'openssl' 'gcc-libs')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('2d47775b3091a1a103bea46f5da017dc03c39883f8d717cf6ba24bdcdf01a15d')
+sha256sums=('3cff9653380f65acaa6ffa191620a2783e866a4552c3408a6919759ce4cfc1dc')
 
 build() {
 	cmake -B build -S "$pkgname-$pkgver" \
