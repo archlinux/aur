@@ -1,6 +1,6 @@
 # Arch
 #
-# Maintainer: Stefano Capitani <stefano_at_manjaro_org>
+# Mantainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Piero Proietti <piero.proietti_at_gmail.com>
 
 pkgname=penguins-eggs
