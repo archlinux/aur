@@ -1,7 +1,7 @@
 pkgbase = raspotify-git
 	pkgdesc = A spotify connect client that just works
-	pkgver = 0.14.0.r0.822c0d8
-	pkgrel = 2
+	pkgver = 0.43.34.r0.d989394
+	pkgrel = 1
 	url = https://github.com/dtcooper/raspotify
 	arch = any
 	license = MIT
@@ -16,4 +16,3 @@ pkgbase = raspotify-git
 	md5sums = 719300eb8f7d4f933c56c06a6ebaa9c1
 
 pkgname = raspotify-git
-

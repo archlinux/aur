@@ -1,9 +1,7 @@
-# Maintainer: Michael Taboada <michael@2mb.solutions>
-# Maintainer: Storm Dragon <stormdragon2976@gmail.com>
 _pkgname=raspotify
 pkgname=raspotify-git
-pkgver=0.14.0.r0.822c0d8
-pkgrel=2
+pkgver=0.43.34.r0.d989394
+pkgrel=1
 pkgdesc="A spotify connect client that just works"
 arch=('any')
 url="https://github.com/dtcooper/raspotify"
@@ -28,5 +26,5 @@ package() {
   install -Dm644 "raspotify/lib/systemd/system/raspotify.service" "${pkgdir}/usr/lib/systemd/system/raspotify.service"
   install -Dm644 "../raspotify.sysusers" "${pkgdir}/usr/lib/sysusers.d/raspotify.conf"
   install -Dm644 "../raspotify.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/raspotify.conf"
-  install -Dm644 "raspotify/etc/default/raspotify" "${pkgdir}/etc/default/raspotify"
+  install -Dm644 "raspotify/etc/raspotify/conf" "${pkgdir}/etc/default/raspotify"
 }
