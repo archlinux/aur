@@ -1,0 +1,11 @@
+pkgbase = edk2-ovmf-fedora-bin
+	pkgdesc = edk2-ovmf from fedora. includes VARS file preconfigured for secureboot
+	pkgver = 20220826gitba0e0e4c6a17_1.fc37
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/edk2-ovmf-secure-vars
+	arch = any
+	license = BSD
+	source = https://download.fedoraproject.org/pub/fedora/linux/releases/37/Everything/x86_64/os/Packages/e/edk2-ovmf-20220826gitba0e0e4c6a17-1.fc37.noarch.rpm
+	sha256sums = 3cf55dd9550fcd96b50af469fea0e33c8b913e2c04d159439bd8c260259fa966
+
+pkgname = edk2-ovmf-fedora-bin
