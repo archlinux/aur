@@ -4,10 +4,10 @@
 # Contributor: Alex Branham <alex.branham@gmail.com>
 
 _pkgname=covr
-_pkgver=3.6.1
+_pkgver=3.6.2
 pkgname=r-${_pkgname,,}
-pkgver=3.6.1
-pkgrel=5
+pkgver=3.6.2
+pkgrel=1
 pkgdesc='Test Coverage for Packages'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -39,7 +39,7 @@ optdepends=(
   r-xml2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ffbe15438c1a4f274c14cacfb944480e284f1ab60808d5e840c015cc57c51157')
+sha256sums=('ace68ce7516147b4d77f591a498cbd7b2803062c1b47252e7a35081af0ea485b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
