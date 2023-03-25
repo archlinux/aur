@@ -1,6 +1,6 @@
 # Maintainer: Adrian Lopez <zeioth@hotmail.com>
 pkgname=chatgpt-shell-cli
-pkgver=0.1
+pkgver=0.2
 pkgrel=3
 pkgdesc="Use OpenAI's ChatGPT and DALL-E from the terminal."
 arch=(any)
@@ -9,7 +9,7 @@ license=('MIT')
 depends=(jq curl)
 provides=(chatgpt-shell-cli)
 conflicts=(chatgpt-shell-cli-git)
-source=("git+$url#commit=e47853176d2cc36602ca04507fd3b5525f623737")
+source=("git+$url#commit=34c809111ff6fb9724256b9dcbfe4033b0d9a32a")
 sha256sums=('SKIP')
 
 package() {
