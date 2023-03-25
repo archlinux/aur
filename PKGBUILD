@@ -20,7 +20,7 @@ _fragment=${FRAGMENT:-#branch=main}
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.4'); }
 
 pkgname=blender-develop-git
-pkgver=3.5.r119173.g74140d41b1d
+pkgver=3.6.r122732.g847bc5c2fd6
 pkgrel=1
 pkgdesc="Development version of Blender (non-conflicting version)"
 changelog=blender.changelog
