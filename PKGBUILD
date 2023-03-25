@@ -2,13 +2,13 @@
 
 pkgname=sloc
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple source-lines-of-code counter'
 arch=('i686' 'x86_64')
 url="https://github.com/bytbox/sloc/"
 license=('MIT')
 optdepends=('perl-datetime' 'perl-json' 'perl-switch' 'gnuplot')
-makedepends=('git' 'go')
+makedepends=('git' 'go' 'perl')
 source=("sloc::git+$url#tag=v$pkgver")
 md5sums=('SKIP')
 
