@@ -2,7 +2,7 @@
 # Maintainer: soloturn@gmail.com
 
 pkgname=gossip
-pkgver=0.5.0
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="gossip nostr client, rust, egui based."
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
   "$pkgname.desktop"
 )
 sha256sums=(
-  '90b850808bbf4b727bf69fb62a91a9d14f12d7a339e63c5375f04a3b94a2d70a'
+  '18cbbc23f08d2357b7ef1167385fb21714d2d2c9468ee4e20f0f50bc77597152'
   'cf28c5863c0f5f6766d98cb18189761f95f2a0a7c166a39afa4ffa2578a703af'
 )
 
