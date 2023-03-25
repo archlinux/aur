@@ -1,13 +1,13 @@
 pkgbase = player432hz-appimage
 	pkgdesc = Plays music in 432hz
-	pkgver = 2.2
+	pkgver = 3.0
 	pkgrel = 1
 	url = https://github.com/mysteryx93/NaturalGroundingPlayer/wiki/432hz-Player
 	arch = x86_64
 	license = MIT
-	noextract = player432hz-appimage-2.2.AppImage
+	noextract = player432hz-appimage-3.0.AppImage
 	options = !strip
-	source_x86_64 = player432hz-appimage-2.2.AppImage::https://github.com/mysteryx93/NaturalGroundingPlayer/releases/download/v2.2/Player432hz-2.2_Linux_x64.AppImage
-	sha256sums_x86_64 = f037e05fd99a9dc0e5bc957f7cdde21aa1a6fbebaff5bcab9eee671af3f65a2a
+	source_x86_64 = player432hz-appimage-3.0.AppImage::https://github.com/mysteryx93/NaturalGroundingPlayer/releases/download/v3.0/Player432hz-3.0_Linux_x64.AppImage
+	sha256sums_x86_64 = 65003a1a8879aa978f6a641ffcbcd08f69d6bc29c4bdb39848d37e7346459f6d
 
 pkgname = player432hz-appimage
