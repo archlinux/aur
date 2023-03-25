@@ -1,5 +1,5 @@
 pkgname=nerd-fonts-sarasa-term
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 epoch=1
 pkgdesc='Sarasa Term SC font patched with Nerd fonts.'
@@ -8,11 +8,11 @@ license=('OFL')
 makedepends=('fontconfig')
 arch=('any')
 source=(
-    "${url}/releases/download/v${pkgver}/sarasa-term-sc-nerd.tar.gz"
+    "${url}/releases/download/v${pkgver}/sarasa-term-sc-nerd.ttc.tar.gz"
     "https://raw.githubusercontent.com/laishulu/Sarasa-Term-SC-Nerd/main/LICENSE"
 )
 sha256sums=(
-    'a7649ddef20dc11dcaf80792c4e38bb9e9015d77310df66080078a304ea9c215'
+    '57028dc7e0c58fa2e0aa41b8a4c2a060925f3d6c0877d737d4516661a676dfe4'
     '5e24aa89c520df12115f37591daf3affe87737da068227f1648ea01d70d70147'
     )
 
