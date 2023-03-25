@@ -11,7 +11,7 @@ EOF
 
 pre_remove(){
     systemctl disable afc.service
-    echo 'You mihgt want to reboot your system to restore the default fan speed'
+    echo 'You might want to reboot your system to restore the default fan speed'
     if [ -f /etc/asus-fan-control/temps ]; then
         echo "You might also want to remove '/etc/asus-fan-control/temps'"
     fi
