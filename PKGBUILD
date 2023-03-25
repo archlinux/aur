@@ -15,7 +15,7 @@ sha256sums=('a55e6acbaacc2ac465824406e20a78403ea1bd6fe37caf811a65bf2828e8b63f')
 build()
 {
         cd "$pkgname-$pkgver"
-        make
+	make -j$(nproc)
 }
 package()
 {
