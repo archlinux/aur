@@ -8,6 +8,6 @@ pkgbase = xarrow
 	depends = base-devel
 	depends = libx11
 	source = xarrow-v0.0.2.tar.gz::https://github.com/woowgers/xarrow/archive/v0.0.2.tar.gz
-	sha256sums = 9c135e6d600d0f8aa8d2936afbffcebe05c254e366c71f526dba65d806eedb5e
+	sha256sums = 0ef2f2ab7598987335a86b44dfee36d57ceed76935656975b52de42a5203e995
 
 pkgname = xarrow
