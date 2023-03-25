@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: Slimbook <dev at slimbook dot es>
 pkgname=slimbookintelcontroller
-pkgver=0.6beta
+pkgver=1.0beta
 pkgrel=1
 pkgdesc="Application for the performance management of Intel processors"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('dbus-python' 'gtk3' 'intel-undervolt' 'libayatana-appindicator' 'libno
          'mokutil' 'pciutils' 'python-gobject' 'python-pillow' 'systemd-libs')
 install="$pkgname.install"
 source=("https://launchpad.net/~slimbook/+archive/ubuntu/slimbook/+files/${pkgname}_${pkgver}_all.deb")
-sha256sums=('df3529147772d220691c9bd249ac9c9a79cbc6bc928ce3d8316309286990647d')
+sha256sums=('d0d031f4313d6bc5aae420406af8b796610f311171fb2410febf6090876acc57')
 
 package() {
   bsdtar xf data.tar.zst -C "$pkgdir"
