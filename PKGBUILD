@@ -175,6 +175,7 @@ _package() {
 
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for Linux kernel (tagged git version)"
+  depends=('dkms' 'lld>=14' 'clang>=14')
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
   mkdir -p "${pkgdir}/usr/lib/modules/build/"{include,arch/x86}
