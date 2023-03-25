@@ -66,7 +66,7 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	#patch Makefile < ../../opti.patch
+	patch Makefile < ../../opti.patch
 	git submodule update --init
 	make fixwlr
 	cd "./subprojects/wlroots/" && meson build/ --prefix="${srcdir}/tmpwlr" --buildtype=release && ninja -C build/ && mkdir -p "${srcdir}/tmpwlr" && ninja -C build/ install && cd ../
