@@ -1,7 +1,7 @@
 # Maintainer: Etienne Charland <mysteryx93 at protonmail dot com>
 _pkgname=yangdownloader
 pkgname=${_pkgname}-appimage
-pkgver=2.2
+pkgver=3.0
 pkgrel=1
 pkgdesc="Downloads best-quality audio and video from YouTube"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://github.com/mysteryx93/HanumanInstituteApps/releases/download/v${pkgver}/YangDownloader-${pkgver}_Linux_x64.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('c1e3d50cc71b69a4576298228010dacb3cf104a73bec88a8ee5c594168560f15')
+sha256sums_x86_64=('367fa088fbc196b9b5a1ddaa4c3a295863bee54876d00b00490d87fdad8ff0e8')
 
 prepare() {
     chmod +x "${_appimage}"
