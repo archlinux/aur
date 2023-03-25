@@ -1,7 +1,7 @@
 # Maintainer: Scott Lawrence <bytbox@gmail.com>
 
 pkgname=sloc
-pkgver=1.2
+pkgver=1.3
 pkgrel=2
 pkgdesc='Simple source-lines-of-code counter'
 arch=('i686' 'x86_64')
