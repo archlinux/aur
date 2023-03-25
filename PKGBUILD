@@ -2,7 +2,7 @@
 
 pkgname=wiliwili-git
 _pkg=wiliwili
-pkgver=v0.6.0.r10.g07548e2
+pkgver=v0.6.0.r24.g9ae65e2
 pkgrel=1
 pkgdesc='A 3rd party bilibili client'
 url="https://github.com/xfangfang/wiliwili"
@@ -19,11 +19,11 @@ source=("${_pkg}::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_pkg"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+	cd "$_pkg"
+	( set -o pipefail
+		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
 }
 
 prepare() {
@@ -32,22 +32,38 @@ prepare() {
 }
 
 build() {
+	# if you need run on wayland, you need add cmake options to cmake.
+	# -DGLFW_BUILD_WAYLAND=ON -DGLFW_BUILD_X11=OFF
 
-	# If you want to use Debug mode, deleate -DCMAKE_BUILD_TYPE=Release
-	# It look like this:
-	# cmake -B build -S "$_pkg" DCMAKE_INSTALL_PREFIX=/usr/ -DPLATFORM_DESKTOP=ON -DINSTALL=ON
+	# If you want to use Debug mode, deleate -DCMAKE_BUILD_TYPE=Releas
 
-	cmake -B build -S "$_pkg" DCMAKE_INSTALL_PREFIX=/usr/ -DPLATFORM_DESKTOP=ON -DINSTALL=ON -DCMAKE_BUILD_TYPE=Release
-	pwd
+	cmake \
+		-B build \
+		-S "$_pkg" \
+		-DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+		-DPLATFORM_DESKTOP=ON \
+		-DINSTALL=ON \
+		-DCMAKE_BUILD_TYPE=Release \
+		-Wno-dev
 	make -C build wiliwili -j$(nproc)
 }
 
-#check() {
-#}
+check() {
+	cd "build"
+	ctest --output-on-failure --stop-on-failure -j1
+}
 
 package() {
-	install -Dm755 build/"$_pkg" -t "$pkgdir/usr/bin/"
-	install -Dm755 "$_pkg/scripts/linux/cn.xfangfang.wiliwili.desktop" -t "$pkgdir/usr/share/applications/"
-	install -Dm644 "build/resources/icon/cn.xfangfang.wiliwili.png" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
-	cp -dr --no-preserve=ownership "build/resources/" "$pkgdir/usr/share/$_pkg/"
+	# main
+	DESTDIR="${pkgdir}" cmake --install "build"
+
+	# deleate don't need glfw files, because it conflicts with glfw.
+	rm -rf $pkgdir/usr/lib/
+	rm -rf $pkgdir/usr/include/
+
+	# Now cmake will copy this files.
+	# cp -dr --no-preserve=ownership "build/resources/" "$pkgdir/usr/share/$_pkg/"
+	# install -Dm755 "$_pkg/scripts/linux/cn.xfangfang.wiliwili.desktop" -t "$pkgdir/usr/share/applications/"
+	# install -Dm644 "build/resources/icon/cn.xfangfang.wiliwili.png" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
 }
+

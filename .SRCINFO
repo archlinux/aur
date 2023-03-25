@@ -1,6 +1,6 @@
 pkgbase = wiliwili-git
 	pkgdesc = A 3rd party bilibili client
-	pkgver = v0.6.0.r10.g07548e2
+	pkgver = v0.6.0.r24.g9ae65e2
 	pkgrel = 1
 	url = https://github.com/xfangfang/wiliwili
 	arch = x86_64
