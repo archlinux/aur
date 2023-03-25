@@ -3,7 +3,7 @@
 
 pkgname=raxml-ng
 pkgver=1.1.0
-pkgrel=21
+pkgrel=22
 pkgdesc="A phylogenetic tree inference tool which uses maximum-likelihood (ML) optimality criterion. https://doi.org/10.1093/bioinformatics/btz305"
 url='https://github.com/amkozlov/raxml-ng'
 arch=('x86_64')
@@ -17,6 +17,7 @@ conflicts=('raxml-ng-mpi')
 prepare(){
   cd ${srcdir}/raxml-ng
   git submodule update --init --recursive
+  sed -i "s@-std=c++11@-std=c++14@g" CMakeLists.txt
 }
 build(){
   cd "${srcdir}"/raxml-ng
