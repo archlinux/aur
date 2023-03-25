@@ -3,7 +3,7 @@
 _pkgname=bde
 _pkgver=1.0.1.1
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=1.0.1.1
 pkgrel=1
 pkgdesc='Bounded Density Estimation'
 arch=('any')
