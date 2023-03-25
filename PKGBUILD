@@ -4,7 +4,7 @@ _pkgname=uncoverappLib
 _pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=1.8.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Interactive graphical application for clinical assessment of sequence coverage at the base-pair level'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -12,8 +12,6 @@ license=('MIT')
 depends=(
   r
   r-biocfilecache
-  r-bsgenome.hsapiens.ucsc.hg19
-  r-bsgenome.hsapiens.ucsc.hg38
   r-condformat
   r-dt
   r-ensdb.hsapiens.v75

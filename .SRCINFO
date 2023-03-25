@@ -1,14 +1,12 @@
 pkgbase = r-uncoverapplib
 	pkgdesc = Interactive graphical application for clinical assessment of sequence coverage at the base-pair level
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://bioconductor.org/packages/uncoverappLib
 	arch = any
 	license = MIT
 	depends = r
 	depends = r-biocfilecache
-	depends = r-bsgenome.hsapiens.ucsc.hg19
-	depends = r-bsgenome.hsapiens.ucsc.hg38
 	depends = r-condformat
 	depends = r-dt
 	depends = r-ensdb.hsapiens.v75
