@@ -7,7 +7,7 @@
 pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
-pkgver=111.0
+pkgver=111.0.1
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
@@ -82,7 +82,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         "match.patch"
         "https://raw.githubusercontent.com/CachyOS/CachyOS-PKGBUILDS/master/cachy-browser/0002-Bug-1819374-Squashed-ffmpeg-6.0-update.patch"
         "https://raw.githubusercontent.com/CachyOS/CachyOS-PKGBUILDS/master/cachy-browser/0003-Bug-1820416-Use-correct-FFVPX-headers-from-ffmpeg-6..patch")
-sha256sums=('e1006c0872aa7eb30fb5a689413957f1e5fc8d2048b1637bf6f6fafdbd4ea55f'
+sha256sums=('84a4f3aba62df6e0451cdd28f8f1e59840d77c4062311947b0e59325c2ebdce8'
             'SKIP'
             'c0786df2fd28409da59d0999083914a65e2097cda055c9c6c2a65825f156e29f'
             'SKIP'
@@ -214,10 +214,9 @@ END
     patch -Np1 -i ${_patches_dir}/librewolf/faster-package-multi-locale.patch
 
     msg2 "remove references to firefox from the settings UI, change text in some of the links"
-#    patch -Np1 -i ${_patches_dir}/librewolf-ui/pref-naming.patch
-#    patch -Np1 -i ${_patches_dir}/librewolf-ui/remap-links.patch
-#    patch -Np1 -i ${_patches_dir}/librewolf-ui/hide-default-browser.patch
-#    patch -Np1 -i ${_patches_dir}/librewolf-ui/privacy-preferences.patch
+    patch -Np1 -i ${_patches_dir}/librewolf-ui/pref-naming.patch
+    patch -Np1 -i ${_patches_dir}/librewolf-ui/hide-default-browser.patch
+    patch -Np1 -i ${_patches_dir}/librewolf-ui/privacy-preferences.patch
 
     msg2 "remove firefox references in the urlbar, when suggesting opened tabs."
     patch -Np1 -i ${_patches_dir}/librewolf-ui/remove-branding-urlbar.patch
