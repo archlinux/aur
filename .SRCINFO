@@ -1,6 +1,6 @@
 pkgbase = rtorrent-headless
 	pkgdesc = Sysuser and systemd unit for headless rTorrent operation
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	install = rtorrent-headless.install
 	arch = any

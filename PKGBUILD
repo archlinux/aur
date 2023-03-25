@@ -1,6 +1,6 @@
 # Maintainer: Leon Möller <jkhsjdhjs@totally.rip>
 pkgname=rtorrent-headless
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="Sysuser and systemd unit for headless rTorrent operation"
 arch=('any')
