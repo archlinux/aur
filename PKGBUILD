@@ -2,7 +2,7 @@
 
 pkgname=wiliwili-git
 _pkg=wiliwili
-pkgver=v0.6.0.r24.g9ae65e2
+pkgver=v0.6.0.r47.gd1a0e52
 pkgrel=1
 pkgdesc='A 3rd party bilibili client'
 url="https://github.com/xfangfang/wiliwili"
@@ -56,10 +56,6 @@ check() {
 package() {
 	# main
 	DESTDIR="${pkgdir}" cmake --install "build"
-
-	# deleate don't need glfw files, because it conflicts with glfw.
-	rm -rf $pkgdir/usr/lib/
-	rm -rf $pkgdir/usr/include/
 
 	# Now cmake will copy this files.
 	# cp -dr --no-preserve=ownership "build/resources/" "$pkgdir/usr/share/$_pkg/"
