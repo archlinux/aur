@@ -1,28 +1,13 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 5a8662d..c9f81b1 100644
+index d745832..924ac65 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -153,7 +153,7 @@ install(TARGETS ${PROJECT_NAME}
-     RUNTIME DESTINATION bin
+@@ -168,7 +168,7 @@ install(TARGETS ${PROJECT_NAME}
  )
- install(FILES systemd/airsaned.service
+ configure_file(systemd/airsaned.service.in ${CMAKE_BINARY_DIR}/airsaned.service @ONLY)
+ install(FILES ${CMAKE_BINARY_DIR}/airsaned.service
 -    DESTINATION /lib/systemd/system
 +    DESTINATION /usr/lib/systemd/system
  )
  install(FILES systemd/airsaned.default
      DESTINATION /etc/default
-diff --git a/systemd/airsaned.service b/systemd/airsaned.service
-index 0f95309..ed155f2 100644
---- a/systemd/airsaned.service
-+++ b/systemd/airsaned.service
-@@ -7,8 +7,8 @@ EnvironmentFile=-/etc/default/airsane
- ExecStart=/usr/local/bin/airsaned --interface=${INTERFACE} --listen-port=${LISTEN_PORT} --access-log=${ACCESS_LOG} --hotplug=${HOTPLUG} --mdns-announce=${MDNS_ANNOUNCE} --announce-secure=${ANNOUNCE_SECURE} --unix-socket=${UNIX_SOCKET} --web-interface=${WEB_INTERFACE} --random-paths=${RANDOM_PATHS} --compatible-path=${COMPATIBLE_PATH} --local-scanners-only=${LOCAL_SCANNERS_ONLY} --disclose-version=${DISCLOSE_VERSION} --reset-option=${RESET_OPTION} --options-file=${OPTIONS_FILE} --ignore-list=${IGNORE_LIST}
- ExecReload=/bin/kill -HUP $MAINPID
- ExecStartPre=/bin/sleep 15
--User=saned
--Group=saned
-+DynamicUser=true
-+Group=scanner
- Type=simple
- 
- [Install]
