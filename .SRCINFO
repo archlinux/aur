@@ -1,11 +1,18 @@
 pkgbase = modeltest-ng
-	pkgdesc = A New and Scalable Tool for the Selection of DNA and Protein Evolutionary Models
+	pkgdesc = A New and Scalable Tool for the Selection of DNA and Protein Evolutionary Models. https://doi.org/10.1093/molbev/msz189
 	pkgver = 0.1.7
-	pkgrel = 1
+	pkgrel = 6
 	url = https://github.com/ddarriba/modeltest
 	arch = x86_64
 	license = GPL3
-	source = https://github.com/ddarriba/modeltest/files/6192913/modeltest-ng-0.1.7-static.tar.gz
-	sha256sums = aab174ad96a420829ae02b0ed9802d008c7a67d5b48e4a7e7741d29b186a1097
+	makedepends = bison
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = flex
+	provides = modeltest-ng
+	conflicts = modeltest-ng-mpi
+	source = git+https://github.com/ddarriba/modeltest.git#tag=v0.1.7
+	sha256sums = SKIP
 
 pkgname = modeltest-ng
