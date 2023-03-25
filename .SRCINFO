@@ -1,6 +1,6 @@
 pkgbase = nextcloud-app-maps
 	pkgdesc = OpenStreetMap layers including POIs
-	pkgver = 0.2.4
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/nextcloud/maps
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = nextcloud-app-maps
 	makedepends = yq
 	depends = nextcloud
 	options = !strip
-	source = https://github.com/nextcloud/maps/releases/download/v0.2.4/maps-0.2.4.tar.gz
-	sha256sums = 424c894d3407a77b0e849484d13d672a96e0bfbe513b0fe82963ad45ca6223e1
+	source = https://github.com/nextcloud/maps/releases/download/v1.0.2/maps-1.0.2.tar.gz
+	sha256sums = 5e1e5c1bf483a1e7aa6f1f8cd5c1d2c8c6aa86e3d3fb734961e097bfd2b2a6c1
 
 pkgname = nextcloud-app-maps
 	depends = nextcloud>=
