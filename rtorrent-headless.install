@@ -1,0 +1,6 @@
+post_install() {
+    echo "On first install, you need to copy the default config from"
+    echo "/usr/share/doc/rtorrent/rtorrent.rc to /var/lib/rtorrent"
+    echo "and adjust it to your liking."
+    echo "Refer to https://wiki.archlinux.org/title/RTorrent for further instructions."
+}

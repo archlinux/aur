@@ -6,7 +6,7 @@ After=network.target
 Type=simple
 User=rtorrent
 Group=rtorrent
-ExecStart=/usr/bin/rtorrent -o import=/var/lib/sabnzbd/rtorrent.rc
+ExecStart=/usr/bin/rtorrent -o system.daemon.set=true,import=/var/lib/rtorrent/rtorrent.rc
 Restart=on-failure
 RestartSec=3
 
