@@ -1,8 +1,8 @@
 # Maintainer: wowario <wowario[at]protonmail[dot]com>
 
 pkgname=wownero-git
-pkgver=0.11.0.1.a21819cc225
-pkgrel=3
+pkgver=0.11.0.1.a21819cc2
+pkgrel=1
 pkgdesc="Wownero: a fairly launched privacy-centric meme coin with no premine and a finite supply"
 license=('BSD')
 arch=('x86_64')
@@ -11,9 +11,8 @@ depends=('boost-libs' 'libunwind' 'openssl' 'readline' 'zeromq' 'pcsclite' 'hida
 makedepends=('boost' 'cmake' 'git' 'python')
 source=(
     "${pkgname}"::"git+https://git.wownero.com/wownero/wownero.git"
-    "git+https://github.com/monero-project/unbound.git"
     "git+https://github.com/monero-project/supercop.git"
-    "git+https://github.com/monero-project/miniupnp.git"
+    "git+https://github.com/miniupnp/miniupnp.git"
     "git+https://github.com/Tencent/rapidjson.git"
     "git+https://git.wownero.com/wownero/RandomWOW.git"
     "wownero.sysusers"
@@ -24,14 +23,12 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
             '29f050d4063b6309885f1d675c96f2e45cbe8565c74240e5db4e3ac2cecbc7ebf643f948a05e4273607fae528302d525398fdb9e6bf330dcd88890e55a7a482f'
             'a7c8170462e7578eced13908a27955128cc0c002c4bcff0d8c42719f1d7ee0dd33fa793c86c7ded52215cd22ba884569d69043c4d008d2597e33eb7ca1df9972')
 
 prepare() {
   cd "${pkgname}"
   git submodule init
-  git config submodule.external/unbound.url "$srcdir/unbound"
   git config submodule.external/supercop.url "$srcdir/supercop"
   git config submodule.external/miniupnp.url "$srcdir/miniupnp"
   git config submodule.external/rapidjson.url "$srcdir/rapidjson"
@@ -63,4 +60,4 @@ package() {
                  -t "${pkgdir}/usr/bin"
 }
 
-# vim: ts=2 sw=2 et:][;pl.;o0;-lkm
+# vim: ts=2 sw=2 et:
