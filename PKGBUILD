@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MuMIn
-_pkgver=1.47.1
+_pkgver=1.47.5
 pkgname=r-${_pkgname,,}
-pkgver=1.47.1
+pkgver=1.47.5
 pkgrel=1
 pkgdesc='Multi-Model Inference'
 arch=('any')
@@ -11,6 +11,7 @@ url="https://cran.r-project.org/package=${_pkgname}"
 license=('GPL')
 depends=(
   r
+  r-insight
 )
 optdepends=(
   r-aod
@@ -34,13 +35,12 @@ optdepends=(
   r-ordinal
   r-pscl
   r-spatialreg
-  r-spdep
   r-splm
   r-survival
   r-unmarked
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1223b5ada6f7d58220ac0267fa3473993190742646cbbb3dfe63895e61621af6')
+sha256sums=('6ff3554d8a503f29b1bd9e94dc2d4e1a9bcde5cd9faa5f8473b0559aced20a77')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
