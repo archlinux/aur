@@ -1,0 +1,14 @@
+[Unit]
+Description=rTorrent System Daemon
+After=network.target
+
+[Service]
+Type=simple
+User=rtorrent
+Group=rtorrent
+ExecStart=/usr/bin/rtorrent -o import=/var/lib/sabnzbd/rtorrent.rc
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

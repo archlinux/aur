@@ -1,0 +1,2 @@
+d /var/lib/rtorrent 0755 rtorrent rtorrent
+Z /var/lib/rtorrent - rtorrent rtorrent
