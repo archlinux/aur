@@ -1,12 +1,13 @@
 pkgbase = rock-paper-scissor-git
 	pkgdesc = an rock paper scissor game for linux
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kybe236/rock-paper-scissor
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = python
+	depends = python-requests
 	source = git+https://github.com/kybe236/rock-paper-scissor.git
 	md5sums = SKIP
 

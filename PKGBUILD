@@ -3,12 +3,12 @@
 _pkgname="rock-paper-scissor"
 pkgname="${_pkgname}-git"
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="an rock paper scissor game for linux"
 arch=('any')
 url="https://github.com/kybe236/rock-paper-scissor"
 license=('MIT')
-depends=("python")
+depends=("python" "python-requests")
 makedepends=('git')
 source=('git+https://github.com/kybe236/rock-paper-scissor.git')
 md5sums=('SKIP')
