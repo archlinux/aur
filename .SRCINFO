@@ -53,4 +53,4 @@ pkgbase = hyprland-opti-git
 	source = hyprland::git+https://github.com/hyprwm/Hyprland.git
 	sha256sums = SKIP
 
-pkgname = hyprland-git
+pkgname = hyprland-opti-git
