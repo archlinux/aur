@@ -4,7 +4,7 @@ _pkgname=smurf
 _pkgver=1.1.5
 pkgname=r-${_pkgname,,}
 pkgver=1.1.5
-pkgrel=1
+pkgrel=3
 pkgdesc='Sparse Multi-Type Regularized Feature Modeling'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,7 +16,6 @@ depends=(
   r-rcolorbrewer
   r-rcpp
   r-rcpparmadillo
-  r-speedglm
 )
 optdepends=(
   r-bookdown
