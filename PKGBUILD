@@ -1,7 +1,7 @@
 
 # Maintainer: Alfred Roos alfred@stensatter.se
 pkgname=weber-git
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 epoch=
 pkgdesc="compiles html components to pages"
@@ -35,4 +35,5 @@ package() {
     sed -i -e '1i#!/bin/python\' ./compile.py
     install -Dm755 ./compile.py "$pkgdir/usr/bin/weber" 
     install -Dm755 ./watcher.py "$pkgdir/usr/bin/watcher.py" 
+    install -Dm755 ./generateFiles.py "$pkgdir/usr/bin/generateFiles.py" 
 }
