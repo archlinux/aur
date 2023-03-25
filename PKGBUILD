@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cargo-public-api-git
-pkgver=0.27.3.r4.g10e912b
+pkgver=0.28.0.r3.g290d789
 pkgrel=1
 pkgdesc="List and diff the public API of Rust library crates (git)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ options=('!lto')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --match "v*" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
