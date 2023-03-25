@@ -6,7 +6,7 @@
 _pkgtype=sdl2
 pkgname=tuxpaint
 pkgver=0.9.28
-pkgrel=2
+pkgrel=3
 pkgdesc='Drawing program designed for young children'
 arch=('x86_64')
 url='https://tuxpaint.org/'
