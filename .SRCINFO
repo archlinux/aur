@@ -1,7 +1,7 @@
 pkgbase = iwant
 	pkgdesc = Install applications what I WANT.
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TD-Sky/iwant
 	arch = x86_64
 	license = MIT
