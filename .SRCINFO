@@ -1,0 +1,21 @@
+pkgbase = shellgpt-git
+	pkgdesc = A command-line productivity tool powered by OpenAI's ChatGPT (GPT-3.5)
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/sergeyleschev/shell_gpt
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-typer
+	depends = python-requests
+	depends = python-rich
+	depends = python-click
+	depends = python-distro
+	depends = python-setuptools
+	depends = python-importlib-metadata
+	provides = shellgpt-git
+	source = git+https://github.com/sergeyleschev/shell_gpt.git
+	sha256sums = SKIP
+
+pkgname = shellgpt-git
