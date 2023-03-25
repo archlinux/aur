@@ -3,7 +3,7 @@
 
 pkgname='tmux-fastcopy-bin'
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='easymotion-style text copying for tmux.'
 url='https://github.com/abhinav/tmux-fastcopy'
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -28,5 +28,7 @@ sha256sums_x86_64=('fa5fcaf2de47d0a17c4b9b56d6dc3849be92cf38d6f13cb6bf3267bc2e23
 
 package() {
   install -Dm755 "./tmux-fastcopy" "${pkgdir}/usr/bin/tmux-fastcopy"
-  install -Dm755 "./LICENSE" "${pkgdir}/usr/share/licenses/tmux-fastcopy/LICENSE"
+  install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/tmux-fastcopy/LICENSE"
+  install -Dm644 "./README.md" "${pkgdir}/usr/share/doc/tmux-fastcopy/README.md"
+  install -Dm644 "./CHANGELOG.md" "${pkgdir}/usr/share/doc/tmux-fastcopy/CHANGELOG.md"
 }
