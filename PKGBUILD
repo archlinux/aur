@@ -82,7 +82,7 @@ options=('!strip')
 # https://ck-hack.blogspot.com/2021/08/514-and-future-of-muqss-and-ck-once.html
 # acknowledgment to xanmod for initially keeping the hrtimer patches up to date
 _ckhrtimer=linux-6.2.y
-_commit=a27ac12de07749d0c935249d5031514b6cbd1a35
+_commit=a8be5531ff07e300525c20bdbbe38cc6a665a0c4
 
 _gcc_more_v=20221217
 source=(
@@ -101,7 +101,7 @@ sha256sums=('fed0ad87d42f83a70ce019ff2800bc30a855e672e72bf6d54a014d98d344f665'
             'SKIP'
             'f9a0027bea53a7160759858c535eb0ba0b3bea34c0130f47f2d5bba75d102170'
             'f1d586e111932890ad5e0df15d092fb9b3f87bae4ea17812aae9b0ec98fe2db0'
-            'e3384a43f291452057aa72dff0903e39e381253e396e5337ab93c0bf6f66ba7c'
+            '8cc3b4abb89c539fa1588aad65cd5bc79abbf8fcc1c885652e52fb8f66bf0199'
             '2e7592ff8fb3cd0c461abb6524bc9f097033abe7fb9d464702b307eab97bd58f'
             '9a289c848cd8ead4024aeaed951bfbc643686ea0a01fd14160d8031cdf976ae3')
 
