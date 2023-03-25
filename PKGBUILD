@@ -1,4 +1,6 @@
 # Maintainer: Alex Agura <agura@tfwno.gf>
+# Contributor: Isabella Basso <isabellabdoamaral@usp.br>
+
 pkgname=asus-fan-control
 pkgver=3.12.0
 pkgrel=1
@@ -11,7 +13,7 @@ makedepends=(git)
 optdepends=('acpi_call-lts: for the linux-lts kernel'
             'acpi_call-dkms: for other non-standard kernels')
 install=$pkgname.install
-source=("https://github.com/dominiksalvet/$pkgname/archive/$pkgver.tar.gz")
+source=(${pkgname}_${pkgver}.tar.gz::https://github.com/dominiksalvet/$pkgname/archive/$pkgver.tar.gz)
 sha256sums=('53d1c9b75da788efc5357641901222171ada824d7f38d02d33cad7d7b5fee4ee')
 
 prepare(){
