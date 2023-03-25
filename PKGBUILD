@@ -2,7 +2,7 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 # Configuration.
-_fragment=${FRAGMENT:-#branch=master}
+_fragment=${FRAGMENT:-#branch=main}
 # shellcheck disable=SC2206
 [[ -v CUDA_ARCH ]] && _cuda_capability=(${CUDA_ARCH})
 
@@ -41,11 +41,11 @@ license=('GPL')
 # the path in .gitmodules.
 # More info:
 #   http://wiki.blender.org/index.php/Dev:Doc/Tools/Git
-source=("git://git.blender.org/blender.git${_fragment}"
-        'blender-addons.git::git://git.blender.org/blender-addons.git'
-        'blender-addons-contrib.git::git://git.blender.org/blender-addons-contrib.git'
-        'blender-translations.git::git://git.blender.org/blender-translations.git'
-        'blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git'
+source=("blender::git+https://github.com/blender/blender${_fragment}"
+        'blender-addons::git+https://github.com/blender/blender-addons'
+        'blender-addons-contrib::git+https://github.com/blender/blender-addons-contrib'
+        'blender-translations::git+https://github.com/blender/blender-translations'
+        'blender-dev-tools::git+https://github.com/blender/blender-dev-tools'
         SelectCudaComputeArch.patch
         usd_python.patch #add missing python headers when building against python enabled usd.
         embree.patch #add missing embree link.
