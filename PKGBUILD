@@ -41,8 +41,3 @@ package() {
   desktop-file-install --dir $pkgdir/usr/share/applications/ $_pkgname.desktop
   install -Dm644 $_pkgname.png -t $pkgdir/usr/share/pixmaps
 }
-sha256sums=('613a69f7e4bb63cddc26a42d2d5f037bf9f710e718f5171b89ac7d132d802697'
-            'd6f102c502a7be367ea7854bf561e492997ce0c19b4a0ad926fe1b308eead4f0'
-            'fb3875215bc639cef05e0d67d58a57ebffaf404b9bbbc2e247c8813c533b3265'
-            'f21e57d1823dc89dba830b85078b942b113145b4e75cb3bc5a1db96fe9e5e00b'
-            '7648b51b9c220a7f7448ac55e98b56d96d291fcea83244292a6c852414e8f2ac')
