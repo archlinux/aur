@@ -2,7 +2,7 @@
 
 pkgname=yacd-git
 _pkgname=yacd
-pkgver=0.3.8.r20.g0b254f1
+pkgver=0.3.8.r24.g2236c0d
 pkgrel=1
 
 pkgdesc='Yet Another Clash Dashboard'
@@ -17,8 +17,14 @@ optdepends=('clash: A rule-based tunnel in Go'
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
-source=("${_pkgname}::git+${url}.git#branch=master")
-sha256sums=(SKIP)
+source=(
+  "${_pkgname}::git+${url}.git#branch=master"
+  "issues#751.patch::https://patch-diff.githubusercontent.com/raw/haishanh/yacd/pull/753.patch"
+)
+sha256sums=(
+  SKIP
+  e27451911f48aed1127b1d3baa1d3a9d52ac8c74012a571b5c013f8ca9ed43c8
+)
 
 pkgver() {
   cd "$_pkgname"
@@ -27,7 +33,7 @@ pkgver() {
 
 build () {
   cd "$_pkgname"
-  pnpm i && pnpm build
+  git am "../issues#751.patch" && pnpm i && pnpm build
 }
 
 package() {

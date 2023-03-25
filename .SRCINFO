@@ -1,6 +1,6 @@
 pkgbase = yacd-git
 	pkgdesc = Yet Another Clash Dashboard
-	pkgver = 0.3.8.r20.g0b254f1
+	pkgver = 0.3.8.r24.g2236c0d
 	pkgrel = 1
 	url = https://github.com/haishanh/yacd
 	arch = any
@@ -12,6 +12,8 @@ pkgbase = yacd-git
 	provides = yacd
 	conflicts = yacd
 	source = yacd::git+https://github.com/haishanh/yacd.git#branch=master
+	source = issues#751.patch::https://patch-diff.githubusercontent.com/raw/haishanh/yacd/pull/753.patch
 	sha256sums = SKIP
+	sha256sums = e27451911f48aed1127b1d3baa1d3a9d52ac8c74012a571b5c013f8ca9ed43c8
 
 pkgname = yacd-git
