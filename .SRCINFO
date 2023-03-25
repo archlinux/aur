@@ -1,0 +1,17 @@
+pkgbase = microtex-git
+	pkgdesc = A dynamic, cross-platform, and embeddable LaTeX rendering library
+	pkgver = 2022.12.23
+	pkgrel = 1
+	url = https://github.com/NanoMichael/cLaTeXMath
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	depends = gtkmm3
+	depends = gtksourceviewmm
+	depends = tinyxml2
+	provides = MicroTex
+	source = MicroTex::git+https://github.com/NanoMichael/MicroTex.git
+	sha256sums = SKIP
+
+pkgname = microtex-git
