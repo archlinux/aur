@@ -10,7 +10,7 @@
 
 pkgname=rider-eap
 pkgver=231.8109.136
-pkgrel=2
+pkgrel=3
 _eapver=2023.1
 _eaprelease=9
 epoch=1
@@ -20,11 +20,9 @@ options=('!strip')
 url="https://www.jetbrains.com/rider/eap/"
 license=("custom")
 optdepends=('mono: .NET runtime' 'msbuild: build .NET Core projects')
-provides=("rider")
-conflicts=("rider")
 
 source=("https://download-cdn.jetbrains.com/rider/JetBrains.Rider-${_eapver}-EAP${_eaprelease}-${pkgver}.Checked.tar.gz"
-        "rider.desktop")
+        "${pkgname}.desktop")
 sha256sums=('11d0213f6cf1d6f6e8415057a7b32fdef86289866e1e2ee9863caa672b165a9e'
             'cbb7c9b847c92c95403be237ab01183eb0516b4a9b46c8ba27c87243fed8cbb8')
 
@@ -34,8 +32,8 @@ package() {
 
     # install the package content
     cp -rdp --no-preserve=ownership "./JetBrains Rider-${pkgver}/" "${pkgdir}/opt/${pkgname}"
-    install -Dm644 "./rider.desktop" "${pkgdir}/usr/share/applications/rider.desktop"
+    install -Dm644 "./${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-    ln -s "/opt/${pkgname}/bin/rider.sh" "${pkgdir}/usr/bin/rider"
+    ln -s "/opt/${pkgname}/bin/rider.sh" "${pkgdir}/usr/bin/${pkgname}"
     ln -s "/opt/${pkgname}/license" "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
