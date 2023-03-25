@@ -5,7 +5,7 @@ _vlcver=3.0.18
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=${_vlcver}${_vlcfixupver//-/.r}
-pkgrel=5
+pkgrel=6
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
 url='https://www.videolan.org/vlc/'
 arch=('i686' 'x86_64' 'aarch64')
@@ -122,10 +122,12 @@ provides=("${_name}=${pkgver}")
 options=('!emptydirs')
 source=(https://download.videolan.org/${_name}/${_vlcver}/${_name}-${_vlcver}${_vlcfixupver}.tar.xz
         'update-vlc-plugin-cache.hook'
-        'libplacebo-5.patch')
+        'libplacebo-5.patch'
+        'fix-flac-playback.patch')
 sha512sums=('6fc8fdaa7e8862ad7133d69b3dab99ab9cd3945846a6ce5e2379b7f68ee9accd385c53b8573fc7c82f732c24678b4932b1154d2ad8accf06305f2f578d6fcd8e'
             'b247510ffeadfd439a5dadd170c91900b6cdb05b5ca00d38b1a17c720ffe5a9f75a32e0cb1af5ebefdf1c23c5acc53513ed983a736e8fa30dd8fad237ef49dd3'
-            'a06b04a8b059dbbef77d27435bd5bec3c26f937390bd112b0843385587e866e617c3dd0e66f99eed5fa4a91bc5f0fd9b5623f65b2f2435a54456dde2aa96209b')
+            'a06b04a8b059dbbef77d27435bd5bec3c26f937390bd112b0843385587e866e617c3dd0e66f99eed5fa4a91bc5f0fd9b5623f65b2f2435a54456dde2aa96209b'
+            '10801260f94c38b57d1c5666dc1772296537dbfd11d132e46fce98c3b185d9c3861a0b4e9076091990bf035525ed4f67376d4766eae63059f025c76251b6379b')
 
 prepare() {
   cd ${_name}-${_vlcver}
