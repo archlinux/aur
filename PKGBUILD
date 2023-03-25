@@ -1,6 +1,6 @@
 # Maintainer: Jonas Malaco <jonas@protocubo.io>
 pkgname=post-clock
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='A clock using the POST codes display'
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ depends=(
     glibc
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5204b80edcdb47ad969f2f8558a6f294fecc8d01cbc477faf3d74b91223d9cb2')
+sha256sums=('ac0770ef404723cf4afb603f2c5a15a8f5611b10b1c81ba9f69d1431b7eb80d3')
 
 prepare() {
     cd "$pkgname-$pkgver"
