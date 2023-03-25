@@ -3,10 +3,10 @@
 pkgname=shellgpt-git
 _pkgname=shell_gpt
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line productivity tool powered by OpenAI's ChatGPT (GPT-3.5)"
 arch=('any')
-url="https://github.com/sergeyleschev/shell_gpt"
+url="https://github.com/TheR1D/shell_gpt"
 license=('MIT')
 provides=("${pkgname}")
 makedepends=('git')
@@ -20,7 +20,7 @@ depends=(
     'python-setuptools'
     'python-importlib-metadata'
 )
-source=("git+https://github.com/sergeyleschev/shell_gpt.git")
+source=("git+https://github.com/TheR1D/shell_gpt.git")
 sha256sums=('SKIP')
 
 package() {
