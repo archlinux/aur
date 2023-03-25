@@ -1,0 +1,15 @@
+pkgbase = headshotbox
+	pkgdesc = Headshot Box generates statistics for your Counter-Strike: Global Offensive matches.
+	pkgver = 0.18.2
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/bugdone/headshotbox
+	install = headshotbox.install
+	arch = any
+	license = MIT
+	source = https://github.com/bugdone/headshotbox/releases/download/0.18.2/headshotbox-0.18.2-linux.zip
+	source = headshotbox.service
+	sha512sums = f1d21c69e8ff13eb7694a39d10b19e15bf821cda82c827b7e4c2400fa357cab13797341daa8284b84aee6c742d56f273bf69e0a4684f49225efc275a507c3208
+	sha512sums = c8414a71d82c024cf223557ffdfe2b3a9d4398298d5b83960b51c668fc8042718d33c491783dd08ccaeee232915566943138b811b1b2a0dd7790be1fae8af2f8
+
+pkgname = headshotbox

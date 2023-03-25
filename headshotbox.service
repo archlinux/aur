@@ -1,0 +1,11 @@
+[Unit]
+Description=Headshot Box daemon
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/bash /usr/share/headshotbox/headshotbox.sh
+WorkingDirectory=/usr/share/headshotbox/
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
