@@ -7,10 +7,10 @@
 # This PKGBUILD is maintained on github:
 # https://github.com/michaellass/AUR
 
-_majorver=19
-_completever=19.0.2
-_updatever=7
-pkgrel=2
+_majorver=20
+_completever=20
+_updatever=36
+pkgrel=1
 pkgver=${_completever}.u${_updatever}
 _tag_ver=${_completever}+${_updatever}
 _versuffix=U
@@ -61,10 +61,10 @@ source=(https://github.com/adoptium/temurin${_majorver}-binaries/releases/downlo
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop)
-sha256sums=('3a3ba7a3f8c3a5999e2c91ea1dca843435a0d1c43737bd2f6822b2f02fc52165'
-            'dfb606cf295bc30471e327032540de9c6d2dcc992e7929a7aa75a620436b44a4'
-            '36d69d869c81463b394905ffbab5ff3d7f6d3fb3174c7c10fe3c760b34712763'
-            'a3826e4ee0cf51219c9d128787d9845ca0429b89b8004fca0d0b0cec9ca9a8a2')
+sha256sums=('fb6000faf47fffcda8caf01f60097d582728a6fffb6c1b85c8075c674f0c9281'
+            '82b3b6b982a59738e9a97540672d0867bc5415f929e7f8b9c36840544cfaea32'
+            'a18f6c0eb5adf2da8dffd16b354583a0d351656c9995f0e1b7eca8c3a859f823'
+            '6db0c5a77bef9284af1275720e0cf4c0c4ad952ac8d1e6d5ffeeb28feb4b50a4')
 
 _jvmdir=/usr/lib/jvm/java-${_majorver}-temurin
 _jdkdir=jdk-${_tag_ver}

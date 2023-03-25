@@ -1,7 +1,7 @@
 pkgbase = jdk-temurin
-	pkgdesc = Temurin (OpenJDK 19 Java binaries by Adoptium, formerly AdoptOpenJDK)
-	pkgver = 19.0.2.u7
-	pkgrel = 2
+	pkgdesc = Temurin (OpenJDK 20 Java binaries by Adoptium, formerly AdoptOpenJDK)
+	pkgver = 20.u36
+	pkgrel = 1
 	url = https://adoptium.net/
 	install = install_jdk-temurin.sh
 	arch = x86_64
@@ -15,20 +15,20 @@ pkgbase = jdk-temurin
 	depends = alsa-lib
 	optdepends = gtk2: for the Gtk+ 2 look and feel
 	optdepends = gtk3: for the Gtk+ 3 look and feel
-	provides = java-runtime-headless=19
-	provides = java-runtime-headless-openjdk=19
-	provides = jre19-openjdk-headless=19.0.2.u7
-	provides = jre-openjdk-headless=19.0.2.u7
-	provides = java-runtime=19
-	provides = java-runtime-openjdk=19
-	provides = jre19-openjdk=19.0.2.u7
-	provides = jre-openjdk=19.0.2.u7
-	provides = java-environment=19
-	provides = java-environment-openjdk=19
-	provides = jdk19-openjdk=19.0.2.u7
-	provides = jdk-openjdk=19.0.2.u7
-	provides = openjdk19-src=19.0.2.u7
-	provides = openjdk-src=19.0.2.u7
+	provides = java-runtime-headless=20
+	provides = java-runtime-headless-openjdk=20
+	provides = jre20-openjdk-headless=20.u36
+	provides = jre-openjdk-headless=20.u36
+	provides = java-runtime=20
+	provides = java-runtime-openjdk=20
+	provides = jre20-openjdk=20.u36
+	provides = jre-openjdk=20.u36
+	provides = java-environment=20
+	provides = java-environment-openjdk=20
+	provides = jdk20-openjdk=20.u36
+	provides = jdk-openjdk=20.u36
+	provides = openjdk20-src=20.u36
+	provides = openjdk-src=20.u36
 	replaces = jdk-adoptopenjdk
 	options = !strip
 	backup = etc/java-temurin/logging.properties
@@ -46,13 +46,13 @@ pkgbase = jdk-temurin
 	backup = etc/java-temurin/security/policy/unlimited/default_local.policy
 	backup = etc/java-temurin/security/policy/unlimited/default_US_export.policy
 	backup = etc/java-temurin/sound.properties
-	source = https://github.com/adoptium/temurin19-binaries/releases/download/jdk-19.0.2%2B7/OpenJDK19U-jdk_x64_linux_hotspot_19.0.2_7.tar.gz
+	source = https://github.com/adoptium/temurin20-binaries/releases/download/jdk-20%2B36/OpenJDK20U-jdk_x64_linux_hotspot_20_36.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
-	sha256sums = 3a3ba7a3f8c3a5999e2c91ea1dca843435a0d1c43737bd2f6822b2f02fc52165
-	sha256sums = dfb606cf295bc30471e327032540de9c6d2dcc992e7929a7aa75a620436b44a4
-	sha256sums = 36d69d869c81463b394905ffbab5ff3d7f6d3fb3174c7c10fe3c760b34712763
-	sha256sums = a3826e4ee0cf51219c9d128787d9845ca0429b89b8004fca0d0b0cec9ca9a8a2
+	sha256sums = fb6000faf47fffcda8caf01f60097d582728a6fffb6c1b85c8075c674f0c9281
+	sha256sums = 82b3b6b982a59738e9a97540672d0867bc5415f929e7f8b9c36840544cfaea32
+	sha256sums = a18f6c0eb5adf2da8dffd16b354583a0d351656c9995f0e1b7eca8c3a859f823
+	sha256sums = 6db0c5a77bef9284af1275720e0cf4c0c4ad952ac8d1e6d5ffeeb28feb4b50a4
 
 pkgname = jdk-temurin
