@@ -1,8 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="olivetin-bin"
-_pkgver=2022-10-19
-pkgver="${_pkgver//-/.}"
+pkgver=2023.03.25
 pkgrel=1
 pkgdesc="Safe and simple access to predefined shell commands from a web interface"
 url="https://www.olivetin.app/"
@@ -10,20 +9,20 @@ license=("AGPL3")
 arch=("x86_64" "armv5h" "armv6h" "armv7h" "aarch64")
 provides=("olivetin")
 conflicts=("olivetin")
-source_x86_64=("https://github.com/OliveTin/OliveTin/releases/download/$_pkgver/OliveTin-linux-amd64.tar.gz")
-source_armv5h=("https://github.com/OliveTin/OliveTin/releases/download/$_pkgver/OliveTin-linux-arm32v5.tar.gz")
-source_armv6h=("https://github.com/OliveTin/OliveTin/releases/download/$_pkgver/OliveTin-linux-arm32v6.tar.gz")
-source_armv7h=("https://github.com/OliveTin/OliveTin/releases/download/$_pkgver/OliveTin-linux-arm32v7.tar.gz")
-source_aarch64=("https://github.com/OliveTin/OliveTin/releases/download/$_pkgver/OliveTin-linux-arm64.tar.gz")
+source_x86_64=("https://github.com/OliveTin/OliveTin/releases/download/$pkgver/OliveTin-linux-amd64.tar.gz")
+source_armv5h=("https://github.com/OliveTin/OliveTin/releases/download/$pkgver/OliveTin-linux-arm32v5.tar.gz")
+source_armv6h=("https://github.com/OliveTin/OliveTin/releases/download/$pkgver/OliveTin-linux-arm32v6.tar.gz")
+source_armv7h=("https://github.com/OliveTin/OliveTin/releases/download/$pkgver/OliveTin-linux-arm32v7.tar.gz")
+source_aarch64=("https://github.com/OliveTin/OliveTin/releases/download/$pkgver/OliveTin-linux-arm64.tar.gz")
 source=("olivetin.service"
         "olivetin@.service")
 sha256sums=('7d69ac6da345c383b616df7bab83257efa63c7c3574991dfe6e7b8976664ddb3'
             '23d7f8b5bdc5d508cb8c23efd356d99ea5ad6d29f79c1cd4084f7d0f302ac49a')
-sha256sums_x86_64=('95e8a37ff01d85736db155be4d763fdc6d444414dbbd66e2f2749ee73eef6bbb')
-sha256sums_armv5h=('422ced0e3afba7c0ca937a3c5833c2693b196f61d5e0dadae6ece748d7f4a0b8')
-sha256sums_armv6h=('ec12b5db6ddc00acc778950d5b5a4bcd2d188338fb8bb802bffb6a21ba0e790d')
-sha256sums_armv7h=('cf311c4e25c7278e3ed53378ff260bcc4945efc9c29efcae2f60fce94aee5f56')
-sha256sums_aarch64=('a0cc96d3f33c95a0f3c76c7177d3b01de9846226d8b8bc434bfce21719602bd2')
+sha256sums_x86_64=('b3ee849b4af4ddd89c4cee01ae07ee689628836f9448996f14e1a7030f5b0f71')
+sha256sums_armv5h=('b03fa6a960bd5e6cf9c3348f4b857cb0296f2283163d946b2081bbaede5fdc23')
+sha256sums_armv6h=('9bf9611363d6febab79ff4f195323d7ae83d1fefe566e83b32f14157961ea63e')
+sha256sums_armv7h=('4c0d687bb108d2cf4e6dea4582c1c2e16b7e285a462e00efcd14aa3cad4a3e54')
+sha256sums_aarch64=('cce2f55d7faa932fd874c96563c2d571731b1ea8d34761b7b5994c45a1874559')
 backup=("etc/olivetin/config.yaml")
 
 prepare(){
