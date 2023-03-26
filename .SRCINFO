@@ -15,6 +15,7 @@ pkgbase = telegrand-git
 	depends = gtk4-telegrand
 	depends = libadwaita-git
 	depends = libtd-dev
+	depends = rlottie-telegrand-git
 	depends = libtdjson.so
 	provides = telegrand
 	conflicts = telegrand
