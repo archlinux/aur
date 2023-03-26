@@ -1,13 +1,13 @@
 # Maintainer: Daniel Araujo <contact@daniel-araujo.pt>
 pkgname='click4ever'
 pkgver='1.3.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='An auto clicker for Linux running X11. Generates mouse clicks at a specified location. Can pause when moving away and resume when going back.'
 url='https://github.com/daniel-araujo/click4ever'
 arch=('x86_64')
 license=('GPL3')
-depends=('xdotool')
-makedepends=('git' 'cmake' 'boost')
+depends=('xdotool' 'boost')
+makedepends=('git' 'cmake')
 source=("git+https://github.com/daniel-araujo/click4ever.git#tag=v1.3.0")
 md5sums=('SKIP')
 
