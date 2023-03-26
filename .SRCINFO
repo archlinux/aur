@@ -1,17 +1,11 @@
 pkgbase = r-stringr
 	pkgdesc = Simple, Consistent Wrappers for Common String Operations
 	pkgver = 1.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=stringr
 	arch = i686
 	arch = x86_64
 	license = MIT
-	checkdepends = r-covr
-	checkdepends = r-htmltools
-	checkdepends = r-htmlwidgets
-	checkdepends = r-knitr
-	checkdepends = r-rmarkdown
-	checkdepends = r-testthat>=3.0.0
 	depends = r>=3.3
 	depends = r-cli
 	depends = r-glue>=1.6.1
