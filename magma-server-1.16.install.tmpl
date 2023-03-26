@@ -1,0 +1,7 @@
+post_install() {
+	echo "The world data is stored under ${_server_root} and the server runs as ${_user} user to increase security."
+	echo "Use the ${_game} script under /usr/bin/${_game}d to start, stop or backup the server."
+	echo "Adjust the configuration file under /etc/conf.d/${_game} to your liking."
+	echo "For the server to start you have to accept the EULA in ${_server_root}/eula.txt !"
+	echo "The EULA file is generated after the first server start."
+}
