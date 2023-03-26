@@ -4,7 +4,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.4272.r0.g42155dd11
+pkgver=1.7.4275.r0.g66a13d4c3
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -56,7 +56,6 @@ source=(
     xz-pcsx2::git+https://github.com/PCSX2/xz.git
     git+https://github.com/google/googletest.git
     git+https://github.com/fmtlib/fmt.git
-    git+https://github.com/microsoft/wil.git
     git+https://github.com/rtissera/libchdr.git
     git+https://github.com/biojppm/rapidyaml.git
     git+https://github.com/biojppm/cmake.git
@@ -64,7 +63,7 @@ source=(
     git+https://github.com/biojppm/debugbreak.git
     git+https://github.com/fastfloat/fast_float.git
     git+https://github.com/KhronosGroup/glslang.git
-    git+https://github.com/KhronosGroup/Vulkan-Headers.git
+    vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
     git+https://github.com/nih-at/libzip.git
     git+https://github.com/facebook/zstd.git
     git+https://github.com/RetroAchievements/rcheevos.git
@@ -79,11 +78,10 @@ prepare() {
         xz-pcsx2::3rdparty/xz/xz
         googletest::3rdparty/gtest
         fmt::3rdparty/fmt/fmt
-        wil::3rdparty/wil
         libchdr::3rdparty/libchdr/libchdr
         rapidyaml::3rdparty/rapidyaml/rapidyaml
         glslang::3rdparty/glslang/glslang
-        Vulkan-Headers::3rdparty/vulkan-headers
+        vulkan-headers::3rdparty/vulkan-headers
         libzip::3rdparty/libzip/libzip
         zstd::3rdparty/zstd/zstd
         rcheevos::3rdparty/rcheevos/rcheevos
@@ -117,25 +115,18 @@ pkgver() {
 build() {
     cmake -S pcsx2 -B build \
     -G Ninja \
+    -DCMAKE_CXX_FLAGS_RELEASE="-O2" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_C_COMPILER=clang \
     -DCMAKE_CXX_COMPILER=clang++ \
     -DCMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
     -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
     -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+    -DUSE_VULKAN=ON \
     -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
-    -DQT_BUILD=ON \
-    -DCUBEB_API=ON \
-    -DX11_API=ON \
-    -DWAYLAND_API=ON \
-    -DENABLE_SETCAP=OFF \
-    -DUSE_SYSTEM_LIBS=OFF \
-    -DUSE_SYSTEM_FMT=OFF \
-    -DUSE_SYSTEM_LIBZIP=OFF \
-    -DUSE_SYSTEM_RYML=OFF \
+    -DDISABLE_ADVANCE_SIMD=ON \
     -DUSE_SYSTEM_SDL2=ON \
     -DUSE_SYSTEM_ZSTD=OFF \
-    -DDISABLE_ADVANCE_SIMD=ON \
     -DDISABLE_BUILD_DATE=ON
     ninja -C build -v
     
@@ -156,7 +147,6 @@ package() {
 }
 
 b2sums=('SKIP'
-    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
