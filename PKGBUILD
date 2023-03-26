@@ -128,7 +128,7 @@ build() {
     -DUSE_SYSTEM_SDL2=ON \
     -DUSE_SYSTEM_ZSTD=OFF \
     -DDISABLE_BUILD_DATE=ON
-    ninja -C build -v
+    ninja -C build
     
     7z a -r cheats_ni.zip pcsx2_patches/cheats_ni/*
     7z a -r cheats_ws.zip pcsx2_patches/cheats_ws/*
