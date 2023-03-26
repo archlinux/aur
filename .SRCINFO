@@ -1,13 +1,13 @@
 pkgbase = passless-boot
 	pkgdesc = Perform a one-time password-less reboot on a luks encrypted root
-	pkgver = 0.3.1
-	pkgrel = 2
+	pkgver = 0.4.1
+	pkgrel = 1
 	url = https://gitlab.com/Marcool04/reboot-hdpassless/
 	arch = any
 	license = GPL
 	depends = cryptsetup
-	depends = reboot-guard
-	source = https://gitlab.com/Marcool04/passless-boot/-/archive/0.3.1/passless-boot-0.3.1.tar.gz
-	sha256sums = 9630f74064d08bd80ee92d61c3f07cadbd667014b5d4069cfc11ae66f532a221
+	optdepends = reboot-guard
+	source = https://gitlab.com/Marcool04/passless-boot/-/archive/0.4.1/passless-boot-0.4.1.tar.gz
+	sha256sums = 7ad0ef5bc89cc588417ebfa795f125c3e668c6de59e2fe5989ba341988cd9b78
 
 pkgname = passless-boot
