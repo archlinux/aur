@@ -35,7 +35,6 @@ prepare() {
   sed -i '1 i\Exec=flightcore %U' $_desktop
   sed -i '1 i\Name=FlightCore' $_desktop
   sed -i '1 i\[Desktop Entry]' $_desktop
-  mv $_desktop src
 
   # Extract AppImage
   [[ -d squashfs-root ]] && rm -rf squashfs-root
@@ -45,7 +44,7 @@ prepare() {
 
 package() {
   install -Dm644 squashfs-root/usr/share/icons/hicolor/256x256@2/apps/flight-core.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
-  install -Dm644 src "$pkgdir/usr/share/applications/$_desktop"
+  install -Dm644 $_desktop "$pkgdir/usr/share/applications/$_desktop"
   install -Dm644 FAQ.md README.md -t "$pkgdir/usr/share/doc/$_pkgname"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
   install -Dm755 flight-core_${pkgver}_amd64.AppImage "$pkgdir/usr/bin/$_pkgname"
