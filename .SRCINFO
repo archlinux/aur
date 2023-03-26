@@ -1,5 +1,5 @@
 pkgbase = flightcore-bin
-	pkgdesc = A Northstar launcher installer, updater, and mod-manager (AppImage release)
+	pkgdesc = A Northstar installer, updater, and mod-manager (AppImage release)
 	pkgver = 1.10.2
 	pkgrel = 2
 	url = https://github.com/R2NorthstarTools/FlightCore
