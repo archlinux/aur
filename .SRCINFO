@@ -1,0 +1,13 @@
+pkgbase = mcpat-git
+	pkgdesc = An integrated power, area, and timing modeling framework for multicore and manycore architectures
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://www.hpl.hp.com/research/mcpat/
+	arch = any
+	license = 
+	makedepends = make
+	depends = glibc
+	source = git+https://github.com/HewlettPackard/mcpat
+	md5sums = SKIP
+
+pkgname = mcpat-git
