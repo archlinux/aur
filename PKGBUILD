@@ -29,7 +29,7 @@ sha256sums_armv7h=('f7befcc7f20c55c22710707dac42f4f31cfbb0d2c0e12c4114d7424aa0b4
 
 package() {
     # Install binary
-	install -D -m 0755 ${pkgname} "$pkgdir/usr/bin/mpd-mpris"
+	install -D -m 0755 mpd-mpris "$pkgdir/usr/bin/mpd-mpris"
 	# Install other files
 	install -D -m 0644 ${pkgname}-README "$pkgdir/usr/doc/mpd-mpris/README"
 	install -D -m 0644 ${pkgname}.service "$pkgdir/usr/lib/systemd/user/mpd-mpris.service"
