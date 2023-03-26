@@ -5,10 +5,10 @@ pkgname=firefox-beta-bin-all-localizations
 _pkgname=firefox-beta
 pkgdesc='Perl script for installing latest FF beta in the language of your choice'
 url='https://www.mozilla.com/firefox/channel/#beta'
-pkgver=112.0b6.5
+pkgver=112.0b7
 pkgrel=1
 arch=('i686' 'x86_64')
-license=('MP5' 'GPL' 'LGPL')
+license=('MPL' 'GPL' 'LGPL')
 depends=('gtk3' 'libxt' 'dbus-glib' 'nss')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'ffmpeg: additional video and audio decoders'  # Not sure this is useful
