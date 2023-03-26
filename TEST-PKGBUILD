@@ -2,8 +2,8 @@
 
 pkgname=coolercontrol
 _app_id="org.$pkgname.CoolerControl"
-pkgver=0.14.3
-branch="92-error-communicating-with-nvidia-setti"
+pkgver=1.0.0
+branch="main"
 pkgrel=1
 pkgdesc="A program to monitor and control your cooling devices"
 arch=('any')
@@ -18,6 +18,8 @@ checkdepends=('appstream-glib' 'desktop-file-utils')
 optdepends=('nvidia-utils: NVIDIA GPU support')
 provides=("$pkgname")
 conflicts=("$pkgname" coolero)
+# lto is handled by cargo settings
+options=(!lto)
 #source=("https://gitlab.com/coolercontrol/coolercontrol/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 source=("https://gitlab.com/coolercontrol/coolercontrol/-/archive/$branch/$pkgname-$branch.tar.gz")
 #sha256sums=('580d787b4bb174bb073f06d8f362f50ad5ece8d236094d0b5b77949912b6f878')
