@@ -1,12 +1,10 @@
 pkgbase = r-lambda.r
 	pkgdesc = Functions that Apply to Rows and Columns of Matrices (and to Vectors)
 	pkgver = 1.2.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=lambda.r
 	arch = any
 	license = LGPL3
-	checkdepends = r-rcmdcheck
-	checkdepends = r-testit
 	depends = r>=3.0.0
 	depends = r-formatr
 	source = https://cran.r-project.org/src/contrib/lambda.r_1.2.4.tar.gz
