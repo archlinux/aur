@@ -1,0 +1,260 @@
+#!/usr/bin/perl -w
+# (Taken from Debian’s ncbi-entrez-direct package)
+# Detect whether to run einfo.epub or edirect -info.
+
+use strict;
+
+my $usage = <<EOF;
+USAGE: einfo [<epub einfo options>] <filename>
+ -or-  einfo [<NCBI Entrez Direct einfo options>]
+
+per, respectively,
+
+    einfo.epub -h (or man einfo.epub)
+    einfo.ncbi -help (or man einfo)
+EOF
+
+if ( !@ARGV  ||  ! -x '/usr/bin/einfo.epub' ) {
+    ExecNCBI();
+} elsif (grep /--?help/, @ARGV) {
+    print $usage;
+    exit 0;
+}
+
+my $epub_flags = 'qvdp';
+my $epub_keys  = 't';
+
+my %ncbi_supported = (
+    'db'          => 's',
+    'dbs'         => undef,
+    'field'       => undef,
+    'fields'      => undef,
+    'link'        => undef,
+    'links'       => undef,
+    'test'        => undef,
+    'tests'       => undef,
+    'external'    => undef,
+    'ext'         => undef,
+    'email'       => 's',
+    'tool'        => 's',
+    'repeat'      => undef,
+    'repeats'     => undef,
+    'error'       => undef,
+    'errors'      => undef,
+    'help'        => undef,
+    'debug'       => undef,
+    'oldmode'     => undef,
+    'newmode'     => undef,
+    'verbose'     => undef,
+    'tranquil'    => undef,
+    'log'         => undef,
+    'immediate'   => undef,
+    'express'     => undef,
+    'base'        => 's',
+    'web'         => 's',
+    'step'        => 'i',
+    'label'       => 's',
+    'timer'       => undef,
+    'version'     => undef);
+
+my %ncbi_abbrev = ();
+{
+    my @names = sort keys %ncbi_supported;
+    unshift @names, '';
+    push @names, '';
+    my $i;
+    my $j;
+    for ($i = 1;  $i + 1 < @names;  ++$i) {
+        my $name      = $names[$i];
+        my $prev_name = $names[$i - 1];
+        my $next_name = $names[$i + 1];
+        for ($j = 1;  $j < length($name);  ++$j) {
+            my $abbrev = substr($name, 0, $j);
+            if ($abbrev ne substr($prev_name, 0, $j)
+                &&  $abbrev ne substr($next_name, 0, $j)) {
+                $ncbi_abbrev{$abbrev} = $name;
+            }
+        }
+    }
+}
+
+my @epub_red_flags;
+my @epub_yellow_flags;
+my $epub_value_expected;
+my $epub_query;
+my @ncbi_red_flags;
+my @ncbi_yellow_flags;
+my $ncbi_value_expected;
+
+for (@ARGV) {
+    if (/^-\d+$/  ||  !/^-/) {
+        if ( !defined $epub_value_expected ) {
+            if (defined $epub_query) {
+                push @epub_red_flags, "$epub_query $_";
+            }
+            $epub_query = $_;
+        }
+        if ( !defined $ncbi_value_expected ) {
+            push @ncbi_red_flags, $_;
+        }
+        undef $epub_value_expected;
+        undef $ncbi_value_expected;
+    } else {
+        my $epub_type;
+        if (defined $epub_value_expected) {
+            push @epub_red_flags, "$epub_value_expected $_";
+            $epub_type = 'nominal-value';
+            undef $epub_value_expected;
+        } elsif (/^-[ho]$/  ||  /^-[$epub_flags]*(?:[$epub_keys].+)?$/) {
+            $epub_type = 'flag';
+        } elsif (/^-[$epub_flags]*([$epub_keys])$/) {
+            $epub_type = 'key';
+            $epub_value_expected = "-$1";
+        } else {
+            $epub_type = 'invalid';
+            push @epub_red_flags, $_;
+        }
+
+        my $ncbi_type;
+        if (defined $ncbi_value_expected) {
+            push @ncbi_red_flags, "$ncbi_value_expected $_";
+            $ncbi_type = 'nominal-value';
+            undef $ncbi_value_expected;
+        } elsif (/^--?([^=]+)(=.*)?/) {
+            my $base = lc($1);
+            my $has_value = defined $2;
+            if (exists $ncbi_abbrev{$base}) {
+                $base = $ncbi_abbrev{$base};
+                push @ncbi_yellow_flags, $_;
+            }
+            if ( !exists $ncbi_supported{$base}
+                 ||  ($has_value  &&  !defined $ncbi_supported{$base})) {
+                $ncbi_type = 'invalid';
+                push @ncbi_red_flags, $_;
+            } else {
+                if (lc($1) eq $base  &&  $1 =~ /[A-Z]/) {
+                    # Worry about capitalization only if otherwise OK
+                    push @ncbi_yellow_flags, $_;
+                }
+                if (defined $ncbi_supported{$base}  &&  !$has_value) {
+                    $ncbi_type = 'key';
+                    $ncbi_value_expected = $_;
+                } else {
+                    $ncbi_type = 'flag';
+                }
+            }
+        } else {
+            $ncbi_type = 'invalid';
+            push @ncbi_red_flags, $_;
+        }
+
+        if ($epub_type =~ /^[fk]/  &&  $ncbi_type =~ /^[fk]/) {
+            # Could technically be valid for einfo.epub, but far likelier
+            # to have been intended for edirect -info.
+            push @epub_yellow_flags, $_;
+        }
+    }
+}
+
+if ( !defined $epub_query ) {
+    push @epub_red_flags, "no filename";
+}
+if (defined $epub_value_expected) {
+    push @epub_red_flags, "$epub_value_expected with no value";
+}
+if (defined $ncbi_value_expected) {
+    push @ncbi_red_flags, "$ncbi_value_expected with no value";
+}
+
+my $epub_red  = @epub_red_flags;
+my $epub_ylw  = @epub_yellow_flags;
+my $ncbi_red   = @ncbi_red_flags;
+my $ncbi_ylw   = @ncbi_yellow_flags;
+
+if ($epub_red  &&  !$ncbi_red) {
+    # clear-cut, even if there happen to be NCBI yellow flags
+    ExecNCBI();
+} elsif ($ncbi_red  &&  !$epub_red) {
+    ExecEpub();
+}
+
+my $epub_misgivings = "EPUB misgivings ($epub_red major, $epub_ylw minor):";
+my $ncbi_misgivings  = "NCBI misgivings ($ncbi_red major, $ncbi_ylw minor):";
+
+for (@epub_red_flags) {
+    $epub_misgivings .= "\n  $_ (major)";
+}
+for (@epub_yellow_flags) {
+    $epub_misgivings .= "\n  $_ (minor)";
+}
+for (@ncbi_red_flags) {
+    $ncbi_misgivings .= "\n  $_ (major)";
+}
+for (@ncbi_yellow_flags) {
+    $ncbi_misgivings .= "\n  $_ (minor)";
+}
+
+if ($ncbi_red > $epub_red
+    ||  ($ncbi_red == $epub_red  &&  $ncbi_ylw > $epub_ylw)) {
+    if ($epub_red  ||  $epub_ylw) {
+        warn <<EOF;
+Launching EPUB einfo rather than NCBI einfo despite misgivings,
+due to more severe misgivings about NCBI syntax compatibility.  If you
+meant to run NCBI einfo, please explicitly run it via edirect -info.
+$ncbi_misgivings
+$epub_misgivings
+EOF
+    }
+    ExecEpub();
+}
+
+if ($epub_red > $ncbi_red
+    ||  ($epub_red == $ncbi_red  &&  $epub_ylw > $ncbi_ylw)) {
+    if ($ncbi_red  ||  $ncbi_ylw) {
+        warn <<EOF;
+Launching NCBI einfo rather than EPUB einfo despite misgivings,
+due to more severe misgivings about EPUB syntax compatibility.  If you
+meant to run EPUB einfo, please explicitly run it via einfo.epub.
+$epub_misgivings
+$ncbi_misgivings
+EOF
+    }
+    ExecNCBI();
+}
+
+if ($epub_red) {
+    die <<EOF;
+Usage equally bad for both EPUB einfo and NCBI einfo.  Please double
+check your usage or explicitly run einfo.epub or edirect -info.
+$epub_misgivings
+$ncbi_misgivings
+
+$usage
+EOF
+} elsif ($epub_ylw) {
+    die <<EOF;
+Usage equally suspect (but still technically valid, at least to first
+approximation) for both EPUB einfo and NCBI einfo.  Please double
+check your usage or explicitly run einfo.epub or edirect -info.
+$epub_misgivings
+$ncbi_misgivings
+
+$usage
+EOF
+} else {
+    die <<EOF;
+Usage apparently valid (at least to first approximation) for both
+EPUB einfo and NCBI einfo.  Please disambiguate your usage or
+explicitly run einfo.epub or edirect -info.
+EOF
+}
+
+sub ExecEpub
+{
+    # exec {'/usr/bin/einfo.epub'} ('/usr/bin/einfo', @ARGV);
+    exec('/usr/bin/einfo.epub', @ARGV);
+}
+sub ExecNCBI
+{
+    exec('/usr/bin/einfo.ncbi', @ARGV);
+}

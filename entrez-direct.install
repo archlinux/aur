@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+post_install() {
+    if [[ -f /usr/bin/einfo ]]; then
+        # Move 'einfo' from the ebook-tools package to a different location
+        # to allow installing our own script. The installed script will choose
+        # to call Entrez’s einfo or ebook-tools’s einfo depending on the
+        # command line arguments
+        mv /usr/bin/einfo /usr/bin/einfo.epub
+        mv /usr/bin/einfo.wrapper /usr/bin/einfo
+    fi
+}
+
+pre_remove() {
+    if [[ -f /usr/bin/einfo.epub ]]; then
+        # Move 'einfo' from the ebook-tools package back to its original location
+        mv /usr/bin/einfo /usr/bin/einfo.wrapper
+        mv /usr/bin/einfo.epub /usr/bin/einfo
+    fi
+}
