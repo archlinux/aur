@@ -1,7 +1,7 @@
 pkgbase = woterm
 	pkgdesc = 支持SSH/SFTP/RLOGIN/TELNET/SERIALlPORT/VNC/RDP的跨平台远程管理工具
 	pkgver = 9.26.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aoyiduo/woterm/
 	arch = x86_64
 	license = GPL 3.0
