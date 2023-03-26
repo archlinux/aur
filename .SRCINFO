@@ -1,0 +1,15 @@
+pkgbase = tabby-latest-bin
+	pkgdesc = Tabby (formerly Terminus) is a highly configurable terminal emulator, SSH and serial client for Windows, macOS and Linux
+	pkgver = 1.0.196
+	pkgrel = 1
+	url = https://github.com/Eugeny/tabby
+	arch = x86_64
+	license = MIT
+	makedepends = curl
+	provides = tabby
+	conflicts = tabby
+	replaces = tabby
+	source = tabby-1.0.196-linux.pacman::https://github.com/Eugeny/tabby/releases/download/v1.0.196/tabby-1.0.196-linux-x64.pacman
+	sha256sums = SKIP
+
+pkgname = tabby-latest-bin
