@@ -1,11 +1,10 @@
 pkgbase = r-jose
 	pkgdesc = JavaScript Object Signing and Encryption
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=jose
 	arch = any
 	license = MIT
-	checkdepends = r-testthat
 	depends = r
 	depends = r-jsonlite
 	depends = r-openssl>=1.2.1
