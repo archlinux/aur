@@ -1,6 +1,6 @@
 pkgbase = openrct2-git
 	pkgdesc = Open source re-implementation of Roller Coaster Tycoon 2 (requires full copy of the game)
-	pkgver = r21143.594b08c91
+	pkgver = 0.4.3.r416.g62b0a5edfe
 	pkgrel = 1
 	url = https://openrct2.io
 	install = openrct2.install
@@ -11,19 +11,21 @@ pkgbase = openrct2-git
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
-	makedepends = discord-rpc-api
+	makedepends = nlohmann-json
 	depends = hicolor-icon-theme
 	depends = sdl2
 	depends = curl
-	depends = nlohmann-json
 	depends = speexdsp
 	depends = fontconfig
 	depends = libpng
 	depends = openssl
 	depends = libzip
 	depends = icu
-	depends = duktape
 	depends = benchmark
+	depends = libogg
+	depends = libvorbis
+	depends = flac
+	depends = discord-rpc
 	optdepends = zenity: System dialog box support (GNOME/GTK)
 	optdepends = kdialog: System dialog box support (KDE)
 	optdepends = alsa-lib: ALSA audio driver
@@ -34,4 +36,3 @@ pkgbase = openrct2-git
 	sha256sums = SKIP
 
 pkgname = openrct2-git
-
