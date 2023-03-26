@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=('gdb-git' 'gdb-common-git')
-pkgver=112405.2e55fbce03a
+pkgver=114029.bc8b216886e
 pkgrel=1
 pkgdesc="The GNU Debugger from git"
 arch=('i686' 'x86_64')
@@ -12,22 +12,13 @@ license=('GPL3')
 makedepends=('git' 'source-highlight')
 provides=('gdb-common' 'gdb')
 conflicts=('gdb-common' 'gdb')
-backup=('etc/gdb/gdbinit')
 options=('!libtool')
-source=('gdb::git+https://sourceware.org/git/binutils-gdb.git#branch=gdb-12-branch')
-sha256sums=('SKIP')
+source=('gdb::git+https://sourceware.org/git/binutils-gdb.git')
+md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/gdb"
   echo $(git rev-list --count master).$(git rev-parse --short master)
-}
-
-prepare() {
-  cd "$srcdir/gdb"
-
-  # fixes build, copied from the gdb PKGBUILD
-  # hack! - libiberty configure tests for header files using "$CPP $CPPFLAGS"
-  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
 }
 
 build() {
@@ -59,12 +50,9 @@ package_gdb-git() {
   make DESTDIR="$pkgdir/" install-gdb
 
   # install "custom" system gdbinit
-  install -dm755 $pkgdir/etc/gdb
-  touch $pkgdir/etc/gdb/gdbinit
-  
-  # comes from gdb-common
-  rm -r "$pkgdir/usr/share/gdb/"
-}
+  install -dm755 "$pkgdir"/etc/gdb
+  touch "$pkgdir"/etc/gdb/gdbinit
+  }
 
 package_gdb-common-git() {
   provides=('gdb-common')

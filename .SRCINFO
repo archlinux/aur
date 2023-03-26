@@ -1,6 +1,6 @@
 pkgbase = gdb-git
 	pkgdesc = The GNU Debugger from git
-	pkgver = 112405.2e55fbce03a
+	pkgver = 114029.bc8b216886e
 	pkgrel = 1
 	url = http://www.gnu.org/software/gdb/
 	arch = i686
@@ -13,9 +13,8 @@ pkgbase = gdb-git
 	conflicts = gdb-common
 	conflicts = gdb
 	options = !libtool
-	backup = etc/gdb/gdbinit
-	source = gdb::git+https://sourceware.org/git/binutils-gdb.git#branch=gdb-12-branch
-	sha256sums = SKIP
+	source = gdb::git+https://sourceware.org/git/binutils-gdb.git
+	md5sums = SKIP
 
 pkgname = gdb-git
 	depends = expat
