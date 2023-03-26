@@ -1,0 +1,19 @@
+pkgbase = rlottie-telegrand-git
+	pkgdesc = A platform independent standalone library that plays Lottie Animation (Version required by Telegrand)
+	pkgver = r860.327fb7d
+	pkgrel = 1
+	url = https://github.com/melix99/rlottie
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = LGPL-v2.1
+	makedepends = cmake
+	makedepends = git
+	depends = libpng
+	provides = rlottie
+	source = git+https://github.com/melix99/rlottie#branch=fix-build
+	sha256sums = SKIP
+
+pkgname = rlottie-telegrand-git
