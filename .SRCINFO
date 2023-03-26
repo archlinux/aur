@@ -1,15 +1,10 @@
 pkgbase = r-rstudioapi
 	pkgdesc = Safely Access the RStudio API
 	pkgver = 0.14
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=rstudioapi
 	arch = any
 	license = MIT
-	checkdepends = r-clipr
-	checkdepends = r-covr
-	checkdepends = r-knitr
-	checkdepends = r-rmarkdown
-	checkdepends = r-testthat
 	depends = r
 	optdepends = r-clipr
 	optdepends = r-covr
