@@ -2,8 +2,8 @@
 
 _pkgname=flightcore
 pkgname=$_pkgname-bin
-pkgver=1.10.2
-pkgrel=2
+pkgver=1.11.0
+pkgrel=1
 pkgdesc="A Northstar installer, updater, and mod-manager (AppImage release)"
 arch=('x86_64')
 url="https://github.com/R2NorthstarTools/FlightCore"
@@ -14,7 +14,7 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 options=('!strip')
 source=("$url/releases/download/v$pkgver/flight-core_${pkgver}_amd64.AppImage")
-sha256sums=('75629c4c83d9748e1b6b2814568596789254ec9df0a29e5463a70de19bf85e05')
+sha256sums=('5b696ec1d113b49849c0c5fe99247865d476c866f9adffc9d81687fd88be4c2d')
 
 prepare() {
   [[ -d squashfs-root ]] && rm -rf squashfs-root

@@ -1,7 +1,7 @@
 pkgbase = flightcore-bin
 	pkgdesc = A Northstar installer, updater, and mod-manager (AppImage release)
-	pkgver = 1.10.2
-	pkgrel = 2
+	pkgver = 1.11.0
+	pkgrel = 1
 	url = https://github.com/R2NorthstarTools/FlightCore
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = flightcore-bin
 	provides = flightcore
 	conflicts = flightcore
 	options = !strip
-	source = https://github.com/R2NorthstarTools/FlightCore/releases/download/v1.10.2/flight-core_1.10.2_amd64.AppImage
-	sha256sums = 75629c4c83d9748e1b6b2814568596789254ec9df0a29e5463a70de19bf85e05
+	source = https://github.com/R2NorthstarTools/FlightCore/releases/download/v1.11.0/flight-core_1.11.0_amd64.AppImage
+	sha256sums = 5b696ec1d113b49849c0c5fe99247865d476c866f9adffc9d81687fd88be4c2d
 
 pkgname = flightcore-bin
