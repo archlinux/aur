@@ -8,7 +8,7 @@ arch=("x86_64")
 url="https://github.com/aoyiduo/woterm/"
 license=('GPL 3.0')
 #makedepends=("imagemagick")
-source=("${_pkgname}.tar.gz::https://github.com/aoyiduo/woterm/releases/download/v${pkgver}/woterm-linux-x86_64-v${pkgver}-202303232209.tar.gz"
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/aoyiduo/woterm/releases/download/v${pkgver}/woterm-linux-x86_64-v${pkgver}-202303232209.tar.gz"
   	"${_pkgname}.desktop")
 sha256sums=("8d298581a61eb2eb5a68e75938d7e30a5f959a2782b2b16c9cc173b4c24f0647"
 	   "d36005e302f489f0b04e9f391fc1ed7b32fbf1d4315f397e9abc5fee18555cc7" )
