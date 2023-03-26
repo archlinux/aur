@@ -1,9 +1,9 @@
-# Maintainer: Ivan Gabaldon <ivan [d0t] gab [at] inetol [d0t] net>
+# Maintainer: Ivan Gabaldon <maintainer[at]inetol.net>
 
 pkgname=mcreator
-pkgver=2022.3.48217
-_pkgvermajor=2022.3
-_pkgverbuild=48217
+pkgver=2023.1.10610
+_pkgvermajor=2023.1
+_pkgverbuild=10610
 pkgrel=1
 pkgdesc='Make Minecraft Java Edition mods, Bedrock Edition Add-Ons, and data packs using visual graphical programming or integrated IDE'
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=("$pkgname-eap")
 noextract=("$pkgname-$pkgver.tar.gz")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/releases/download/$pkgver/MCreator.$_pkgvermajor.Linux.64bit.tar.gz"
         "$pkgname.desktop")
-b2sums=('707e89bd66dfc81dea137a801938a10fc74aaab7f58fb1292f8ce054748e68776a8b437d6bf61162ddec51bf529bd22b5d8e1d23d86efdf4d3ed9322add9a46f'
+b2sums=('c13a9fca83ad16bdf7818c1584d9d1f59f48918312a887098308679100348d970d730fb46fc489801f1fb7e067b56d052afb644bba77426fe50bfb26a06bcfa5'
         '8efa7edb9abe7b66a2a9482702e80cbebbcf390f8442daf280f9fd0e05610a831ab54fdedbf4bbe58662f4fdef4b5e7a15547883aaee006c35915a453dafb343')
 
 prepare() {
