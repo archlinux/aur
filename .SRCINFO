@@ -1,7 +1,7 @@
 pkgbase = gti-git
 	pkgdesc = A silly git launcher
-	pkgver = v1.7.0.13.g69bd9a7
-	pkgrel = 3
+	pkgver = v1.8.0
+	pkgrel = 1
 	url = http://r-wos.org/hacks/gti
 	arch = i686
 	arch = x86_64

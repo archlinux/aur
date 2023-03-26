@@ -1,8 +1,8 @@
 # Maintainer: Antoine Lubineau <antoine@lubignon.info>
 
 pkgname=gti-git
-pkgver=v1.7.0.13.g69bd9a7
-pkgrel=3
+pkgver=v1.8.0
+pkgrel=1
 pkgdesc='A silly git launcher'
 arch=('i686' 'x86_64')
 url='http://r-wos.org/hacks/gti'
@@ -21,6 +21,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/${pkgname%-git}"
   sed '/Copyright/,$! d' README.md > "$srcdir/LICENSE"
+  sed -i "s/=install/=install -D/" Makefile
 }
 
 build() {
