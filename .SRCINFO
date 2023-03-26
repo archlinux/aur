@@ -1,30 +1,20 @@
 pkgbase = maa-assistant-arknights
 	pkgdesc = An Arknights assistant
 	pkgver = 4.13.0beta.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MaaAssistantArknights/MaaAssistantArknights
 	install = maa-assistant-arknights.install
 	arch = x86_64
 	license = AGPL
+	makedepends = asio
 	makedepends = eigen
 	makedepends = git
 	makedepends = cmake
-	makedepends = python
-	makedepends = ninja
-	makedepends = python-pyelftools
-	makedepends = elfutils
-	makedepends = patchelf
-	makedepends = unzip
-	makedepends = zip
 	depends = opencv
 	depends = onnxruntime
 	source = MaaAssistantArknights::git+https://github.com/MaaAssistantArknights/MaaAssistantArknights.git#tag=v4.13.0-beta.1
-	source = MaaDeps::git+https://github.com/MaaAssistantArknights/MaaDeps.git
-	source = vcpkg::git+https://github.com/microsoft/vcpkg.git
-	source = MaaDeps.patch
+	source = FastDeploy::git+https://github.com/MaaAssistantArknights/FastDeploy.git
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = 23125b9fda151d9388e035c3ad8f2437
 
 pkgname = maa-assistant-arknights
