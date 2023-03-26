@@ -1,8 +1,8 @@
 # Maintainer: mcarni <michele DOT carnaghi AT googlemail DOT com>
 
 pkgname=kodi-addon-game-libretro-mrboom
-pkgver=5.2.0.145
-_codename=Matrix
+pkgver=5.2.0.148
+_codename=Nexus
 pkgrel=1
 pkgdesc="This add-on provides a wrapper that allows Libretro cores to be loaded as game add-ons"
 arch=('aarch64' 'armv7h')
@@ -12,7 +12,7 @@ groups=('kodi-addons' 'kodi-addons-game')
 makedepends=('cmake' 'kodi-dev' 'kodi-addon-game-libretro' 'libretro-mrboom')
 options=(!lto debug)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kodi-game/game.libretro.mrboom/archive/refs/tags/$pkgver-$_codename.tar.gz")
-sha512sums=('41e1c119b3fff46e330c8f02f303abb8a09ef7ae1fa966a050cbca6f569b16eaff9c05a7ea52e65d922e6a5674245d748d9ea6c64d8e4fcc1af1ab2154c7f377')
+sha512sums=('4abeb26fd008a3ea1b0b343befdc6a8f08c2b9a4098c626abddca89a5c8d99947dd397ac43eb953b38a0843090ebeddaddeca3c446e2672b40f7c98b318b46e2')
 
 build() {
     cd "game.libretro.mrboom-$pkgver-$_codename"
