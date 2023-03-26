@@ -1,11 +1,12 @@
 pkgbase = r-leaflet
 	pkgdesc = Create Interactive Web Maps with the JavaScript ‘Leaflet’ Library
 	pkgver = 2.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=leaflet
 	arch = any
 	license = GPL3
 	checkdepends = r-knitr
+	checkdepends = r-maps
 	checkdepends = r-purrr
 	checkdepends = r-r6
 	checkdepends = r-rgdal
@@ -30,6 +31,7 @@ pkgbase = r-leaflet
 	depends = r-viridis>=0.5.1
 	depends = r>=3.1.0
 	optdepends = r-knitr
+	optdepends = r-maps
 	optdepends = r-purrr
 	optdepends = r-r6
 	optdepends = r-rgdal
