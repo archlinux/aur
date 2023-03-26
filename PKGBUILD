@@ -7,7 +7,7 @@ pkgdesc="Retrieve Code Decorations"
 url="https://cran.r-project.org/package=${_cranname}"
 license=("MIT")
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 
 arch=("i686" "x86_64")
 depends=(
@@ -18,6 +18,7 @@ depends=(
 optdepends=(
     "r-covr"
 )
+
 checkdepends=(
     "${optdepends[@]}"
     "r-testthat"
@@ -32,13 +33,13 @@ build() {
 }
 
 check() {
-    R_LIBS="build/" R CMD check --no-manual --as-cran "${_cranname}"
+    export R_LIBS="build/"
+    R CMD check --no-manual "${_cranname}"
 }
 
 package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
     cp -a --no-preserve=ownership "${srcdir}/build/${_cranname}" "${pkgdir}/usr/lib/R/library"
-
     if [[ -f "${_cranname}/LICENSE" ]]; then
         install -Dm0644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     fi
