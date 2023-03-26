@@ -1,7 +1,7 @@
 # Maintainer: Duncan Russell <duncan at anomalocaris dot xyz>
 
 pkgname=handlr-regex
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="Fork of handlr with regex support"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cargo')
 provides=(handlr)
 conflicts=(handlr)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('a5d8eabe54753004e49486c98b8456d537fe674feabb4c7354f04a909dbec5b09e1a3549d4bc32d0ecc27544c9f69e07d07830c32d674025257a564cba4597f6')
+b2sums=('4d9b9b630817563bd6732998cf313236706a566f579eb793d22710443d05903b0cf853071ddafdfdf820158841a243354601fb74794ae24d214a0ba44d86bb8a')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
