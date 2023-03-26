@@ -1,7 +1,7 @@
 # Maintainer: mcarni <michele DOT carnaghi AT googlemail DOT com>
 
 pkgname=kodi-addon-game-libretro-tyrquake
-pkgver=0.62.0.35
+pkgver=0.62.0.37
 _codename=Nexus
 pkgrel=1
 pkgdesc="This add-on provides a wrapper that allows Libretro cores to be loaded as game add-ons"
@@ -12,7 +12,7 @@ groups=('kodi-addons' 'kodi-addons-game')
 makedepends=('cmake' 'kodi-dev' 'kodi-addon-game-libretro' 'libretro-tyrquake')
 options=(!lto debug)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kodi-game/game.libretro.tyrquake/archive/refs/tags/$pkgver-$_codename.tar.gz")
-sha512sums=('f0910a375446226b14b1f3bfa6960a9c35815c8ff3c8f4393faa270a76a575fa03d2631a0c15b99bb2a2c06a90f3cbeeb66ef9758d14fb55e0784e12a14febf3')
+sha512sums=('f07815ace8909f3abb4b2a0517c5f5dd4b61b9244da7af10cc362f66ca9422767cd0552cee6fcb117306a588db6b2a61e3c44109bcc3c9f83c995df868aa2a50')
 
 build() {
     cd "game.libretro.tyrquake-$pkgver-$_codename"
