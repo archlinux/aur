@@ -1,0 +1,4 @@
+/python-parsing-bin-*.pkg.tar.zst
+/*.log
+/pkg/
+/src/

@@ -1,0 +1,12 @@
+pkgbase = python-parsing-bin
+	pkgdesc = A pure-Python module that implements an LR(1) parser generator, as well as CFSM and GLR parser drivers.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = http://www.canonware.com/Parsing/
+	arch = x86_64
+	license = MIT
+	makedepends = python-pip
+	depends = python>=3.7
+	provides = python-parsing=2.0.0
+
+pkgname = python-parsing-bin
