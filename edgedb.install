@@ -1,0 +1,9 @@
+post_install() {
+	if [ -s /etc/hostname ]; then
+	    hostname=$(cat /etc/hostname)
+	else
+	    hostname="localhost"
+	fi
+
+	echo "EDGEDB_SERVER_INSTANCE_NAME=$hostname" >> /etc/edgedb/server.conf
+}

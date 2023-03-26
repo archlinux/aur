@@ -1,0 +1,2 @@
+d /var/lib/edgedb/pgdata 700 edgedb edgedb
+h /var/lib/edgedb/pgdata -   -      -      - +C

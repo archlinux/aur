@@ -1,0 +1,6 @@
+/edgedb/
+/edgedb-*.pkg.tar.zst
+/*.zip
+/*.log
+/pkg/
+/src/

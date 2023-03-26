@@ -1,0 +1,17 @@
+diff --git a/setup.py b/setup.py
+index f49dbedab..a01813390 100644
+--- a/setup.py
++++ b/setup.py
+@@ -623,8 +623,10 @@ class build_ext(setuptools_build_ext.build_ext):
+             self.distribution.ext_modules,
+             compiler_directives=directives,
+             annotate=self.cython_annotate,
+-            include_path=["edb/server/pgproto/"])
+-
++            include_path=["edb/server/pgproto/"],
++            nthreads=max(os.cpu_count() - 1, 1),
++        )
++        self.parallel = max(os.cpu_count() - 1, 1)
+         super(build_ext, self).finalize_options()
+ 
+     def run(self):

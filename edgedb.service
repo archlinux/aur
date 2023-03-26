@@ -1,0 +1,42 @@
+[Unit]
+Description=EdgeDB server
+After=network.target
+
+[Service]
+Type=notify
+TimeoutSec=120
+User=edgedb
+Group=edgedb
+
+EnvironmentFile=/etc/edgedb/server.conf
+
+SyslogIdentifier=edgedb
+RuntimeDirectory=edgedb
+RuntimeDirectoryMode=755
+
+ExecStart=/usr/bin/edgedb-server
+ExecReload=/bin/kill -HUP ${MAINPID}
+KillMode=mixed
+KillSignal=SIGINT
+
+# Due to PostgreSQL's use of shared memory, OOM killer is often overzealous in
+# killing Postgres, so adjust it downward
+OOMScoreAdjust=-200
+
+# Additional security-related features
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=full
+NoNewPrivileges=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+PrivateDevices=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=true
+RestrictRealtime=true
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=multi-user.target
+
