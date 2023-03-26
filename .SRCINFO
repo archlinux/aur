@@ -1,21 +1,10 @@
 pkgbase = r-pkgsearch
 	pkgdesc = Search and Query CRAN R Packages
 	pkgver = 3.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=pkgsearch
 	arch = any
 	license = MIT
-	checkdepends = r-mockery
-	checkdepends = r-covr
-	checkdepends = r-memoise
-	checkdepends = r-pillar
-	checkdepends = r-pingr>=2.0.0
-	checkdepends = r-rstudioapi
-	checkdepends = r-shiny
-	checkdepends = r-shinyjs
-	checkdepends = r-shinywidgets
-	checkdepends = r-whoami
-	checkdepends = r-testthat>=2.1.0
 	depends = r
 	depends = r-curl
 	depends = r-jsonlite
