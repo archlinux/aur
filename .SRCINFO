@@ -1,7 +1,7 @@
 pkgbase = keptn-bin
 	pkgdesc = The Keptn CLI includes commands to perform various tasks to manage the Keptn installation and projects
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/keptn/keptn
 	arch = x86_64
 	arch = armv7l

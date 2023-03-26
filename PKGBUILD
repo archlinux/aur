@@ -2,7 +2,7 @@
 pkgname=keptn-bin
 pkgdesc="The Keptn CLI includes commands to perform various tasks to manage the Keptn installation and projects"
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="https://github.com/keptn/keptn"
 license=('Apache')
@@ -31,6 +31,8 @@ source+=(${pkgname/-bin/}-${pkgver}-${_pkgarch}::"https://github.com/keptn/keptn
 package() {
   _output="${srcdir}/${pkgname/-bin/}-${pkgver}-${_pkgarch}"
   install -Dm 0755 "${pkgname/-bin/}-${pkgver}-linux-${_pkgarch}" "${pkgdir}/usr/bin/keptn"
+  # Disable daily automatic version check or else the completion output is incorrect
+  ${pkgdir}/usr/bin/keptn set config AutomaticVersionCheck false
   # Shell completions
   mkdir -p completions
   ${pkgdir}/usr/bin/keptn completion bash > completions/keptn
@@ -39,6 +41,4 @@ package() {
   install -D -m 0644 completions/keptn ${pkgdir}/usr/share/bash-completion/completions/keptn
   install -D -m 0644 completions/_keptn ${pkgdir}/usr/share/zsh/site-functions/_keptn
   install -D -m 0644 completions/keptn.fish ${pkgdir}/usr/share/fish/vendor_completions.d/keptn.fish
-  # Uncomment to disable daily automatic version check (optional)
-  # ${pkgdir}/usr/bin/keptn set config AutomaticVersionCheck false
 }
