@@ -8,12 +8,12 @@ provides=("python-fasttext")
 conflicts=("python-fasttext")
 
 pkgver=v0.9.2.r8.g3697152
-pkgrel=1
+pkgrel=2
 
 arch=("any")
 license=("BSD")
 
-makedepends=("python-setuptools")
+makedepends=("python-setuptools" "git")
 depends=("pybind11" "python-future" "python-numpy" "python-scipy" "python-pytorch")
 
 source=("${pkgname}::git+https://github.com/facebookresearch/fastText.git")
