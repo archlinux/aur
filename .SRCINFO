@@ -1,15 +1,10 @@
 pkgbase = r-zeallot
 	pkgdesc = Multiple, Unpacking, and Destructuring Assignment
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=zeallot
 	arch = any
 	license = MIT
-	checkdepends = r-knitr
-	checkdepends = r-rmarkdown
-	checkdepends = r-purrr
-	checkdepends = r-magrittr
-	checkdepends = r-testthat
 	depends = r
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
