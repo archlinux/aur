@@ -6,7 +6,7 @@ pkgdesc="Pick the most common user-agents on the Internet"
 url="https://github.com/lobstrio/shadow-useragent"
 
 pkgver=0.0.17
-pkgrel=4
+pkgrel=5
 
 arch=("any")
 license=("MIT")
@@ -25,10 +25,8 @@ source=(
     "https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
     "https://raw.githubusercontent.com/lobstrio/shadow-useragent/master/LICENSE"
 )
-sha256sums=(
-    "ace3f53c0ec697b36eb35bb04ccc04d4727bf924edd5bf7caad78b64d272d755"
-    "ae4f776adf4385747f78ad16b5a162814fefe8557f18433cc772a9734716b3a7"
-)
+sha256sums=("ace3f53c0ec697b36eb35bb04ccc04d4727bf924edd5bf7caad78b64d272d755"
+            "55c77c92b416cef25358a86bfaf96568b5fdead5914ccebd681893b874fa3bba")
 
 build() {
     cd "${srcdir}"/${_name}-${pkgver}
