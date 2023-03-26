@@ -2,7 +2,7 @@
 
 pkgname=sbupdate-mkinitcpio
 _srcname=sbupdate
-pkgver=0.9
+pkgver=0.10
 pkgrel=1
 pkgdesc="Generate (signed) Unified Kernel Images"
 arch=('any')
@@ -11,8 +11,9 @@ license=('GPL3')
 provides=('sbupdate')
 conflicts=('sbupdate' 'sbupdate-git')
 backup=("etc/sbupdate.conf")
+install=sbupdate.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('7d7d005be487c00aadd1ba8bb29e4ad8dd6251a1a714e9bb1cae6a83057e8efc221e5bc5c77baa957a8af3dc6849711019035d7d789cd92226a5e9315ead2adb')
+b2sums=('74efcdec8a3ec3b3a4e14b0b2048000e979cccaf4f6f203ea8c430990a51fba8d7effb7d40fa5063b3e3d100ffcdd650d45f961995c7e6272fce2ff2be96e596')
 
 package() {
     depends=('bash' 'systemd' 'systemd-ukify' 'mkinitcpio' 'sbsigntools')
