@@ -1,0 +1,13 @@
+pkgbase = fuc
+	pkgdesc = Modern, performance focused unix commands
+	pkgver = 1.1.6
+	pkgrel = 1
+	url = https://github.com/SUPERCILEX/fuc
+	arch = x86_64
+	license = Apache
+	makedepends = cargo
+	depends = gcc-libs
+	source = fuc-1.1.6.tar.gz::https://github.com/SUPERCILEX/fuc/archive/refs/tags/1.1.6.tar.gz
+	sha256sums = 94be9005ea08a2b1cd2d5732df47abad7e4ca68b864fb832f8bd47e42cd2f5fd
+
+pkgname = fuc
