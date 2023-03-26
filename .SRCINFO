@@ -1,7 +1,7 @@
 pkgbase = r-rjava
 	pkgdesc = Low-Level R to Java Interface
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=rJava
 	arch = i686
 	arch = x86_64
