@@ -1,12 +1,12 @@
 #Maintainer: Rein Fernhout (LevitatingBusinessMan) <me@levitati.ng>
 
 pkgname=openai-cli
-pkgver=r7.a2f1526
+pkgver=r19.a0165e2
 arch=("x86_64")
 pkgrel=1
 pkgdesc="CLI for the GPT model"
 license=("MIT")
-makedepends=("cargo")
+makedepends=("cargo" "git")
 url="https://github.com/LevitatingBusinessMan/$pkgname"
 source=("git+https://github.com/LevitatingBusinessMan/$pkgname")
 sha256sums=("SKIP")
@@ -18,7 +18,7 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${pkgname}"
-	cargo build --release
+	cargo +nightly build --release
 }
 
 package() {

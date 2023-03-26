@@ -1,11 +1,12 @@
 pkgbase = openai-cli
 	pkgdesc = CLI for the GPT model
-	pkgver = r7.a2f1526
+	pkgver = r19.a0165e2
 	pkgrel = 1
 	url = https://github.com/LevitatingBusinessMan/openai-cli
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
+	makedepends = git
 	source = git+https://github.com/LevitatingBusinessMan/openai-cli
 	sha256sums = SKIP
 
