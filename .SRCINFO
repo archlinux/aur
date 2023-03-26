@@ -1,7 +1,7 @@
 pkgbase = r-asciicast
 	pkgdesc = Create ‘Ascii’ Screen Casts from R Scripts
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=asciicast
 	arch = i686
 	arch = x86_64
