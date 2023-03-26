@@ -18,7 +18,7 @@ prepare() {
 }
 
 build() {
-	arch-meson Furtherance-$pkgver build
+	arch-meson $pkgname build
 	meson compile -C build
 }
 
