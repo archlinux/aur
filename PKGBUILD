@@ -3,14 +3,14 @@
 
 _pkgname="xdg-desktop-portal-hyprland"
 pkgname="${_pkgname}-git"
-pkgver=r231.bd91bd0
+pkgver=r261.ge1f145d
 pkgrel=1
 pkgdesc="xdg-desktop-portal backend for hyprland"
 url="https://github.com/hyprwm/xdg-desktop-portal-hyprland"
 arch=(x86_64)
 license=(custom:MIT)
-provides=("${pkgname%-git}" "xdg-desktop-portal-impl")
-conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}" "xdg-desktop-portal-impl" "xdg-desktop-portal-wlr")
+conflicts=("${pkgname%-git}" "xdg-desktop-portal-wlr")
 depends=(xdg-desktop-portal pipewire libinih qt6-base qt6-wayland)
 makedepends=(git meson wayland-protocols wayland scdoc cmake)
 optdepends=(
