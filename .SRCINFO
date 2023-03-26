@@ -1,16 +1,11 @@
 pkgbase = r-openssl
 	pkgdesc = Encryption, Signatures and Certificates Based on OpenSSLi
 	pkgver = 2.0.6
-	pkgrel = 4
+	pkgrel = 5
 	url = https://cran.r-project.org/package=openssl
 	arch = i686
 	arch = x86_64
 	license = MIT
-	checkdepends = r-curl
-	checkdepends = r-digest
-	checkdepends = r-jsonlite
-	checkdepends = r-sodium
-	checkdepends = r-testthat
 	depends = r
 	depends = r-askpass
 	depends = openssl>=1.0.2
