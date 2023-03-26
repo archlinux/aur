@@ -1,0 +1,7 @@
+src
+*.py
+*.tar.gz
+*.pkg*
+pkg
+snapshot
+/.project
