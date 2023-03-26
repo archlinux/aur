@@ -18,12 +18,14 @@ sha256sums=('ae0e238ba5ccb9770afefb3692d57360c9577e76d8c45b212dd7a733e610e2a9')
 
 prepare() {
   # Create a shortcut
-  echo "Type=Application" >> $_desktop
-  sed -i '1 i\Terminal=false' $_desktop
-  sed -i '1 i\Name=FlightCore' $_desktop
+  echo "Categories=Game;" >> $_desktop
+  sed -i '1 i\Comment=Installer/Updater/Launcher for Northstar' $_desktop
+  sed -i '1 i\StartupWMClass=FlightCore' $_desktop
   sed -i '1 i\Icon=flightcore' $_desktop
-  sed -i '1 i\Exec=flightcore' $_desktop
-  sed -i '1 i\Categories=Development;' $_desktop
+  sed -i '1 i\Type=Application' $_desktop
+  sed -i '1 i\Terminal=false' $_desktop
+  sed -i '1 i\Exec=flightcore %U' $_desktop
+  sed -i '1 i\Name=FlightCore' $_desktop
   sed -i '1 i\[Desktop Entry]' $_desktop
   mv $_desktop FlightCore-$pkgver
 
