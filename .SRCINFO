@@ -1,25 +1,10 @@
 pkgbase = r-remotes
 	pkgdesc = R package installation from remote repositories, including GitHub
 	pkgver = 2.4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=remotes
 	arch = any
 	license = MIT
-	checkdepends = r-brew
-	checkdepends = r-callr
-	checkdepends = r-codetools
-	checkdepends = r-curl
-	checkdepends = r-covr
-	checkdepends = r-git2r>=0.23.0
-	checkdepends = r-knitr
-	checkdepends = r-mockery
-	checkdepends = r-pkgbuild>=1.0.1
-	checkdepends = r-pingr
-	checkdepends = r-rmarkdown
-	checkdepends = r-rprojroot
-	checkdepends = r-testthat
-	checkdepends = r-webfakes
-	checkdepends = r-withr
 	depends = r>=3.0.0
 	optdepends = r-brew
 	optdepends = r-callr
