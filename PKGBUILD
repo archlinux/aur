@@ -1,6 +1,6 @@
 # Maintainer: Arvid Norlander <VorpalBlade@users.noreply.github.com>
 pkgname=keyboard-backlightd-git
-pkgver=v0.1.1.r3.0948c9f
+pkgver=0.1.3.r0.be7799c
 pkgrel=1
 pkgdesc="Automatic keyboard backlight management on Thinkpads"
 arch=(x86_64)
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-    printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+    printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^v//')"
 }
 
 prepare() {
