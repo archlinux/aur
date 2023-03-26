@@ -1,4 +1,4 @@
-pkgbase = journal-viewer-bin
+pkgbase = journal-viewer
 	pkgdesc = A modern linux desktop application to visualize systemd logs.
 	pkgver = 0.1.0
 	pkgrel = 1
