@@ -1,0 +1,16 @@
+pkgbase = python-hologram
+	pkgdesc = JSON schema generation from dataclasses
+	pkgver = 0.0.16
+	pkgrel = 1
+	url = https://github.com/dbt-labs/hologram
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-pytest
+	depends = python
+	depends = python-dateutil
+	depends = python-jsonschema
+	source = python-hologram-0.0.16.tar.gz::https://github.com/dbt-labs/hologram/archive/v0.0.16.tar.gz
+	md5sums = 58420586cfd00ce2d8239c615324e484
+
+pkgname = python-hologram
