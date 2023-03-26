@@ -3,16 +3,18 @@
 
 _pkgname=rlottie
 pkgname=rlottie-telegrand-git
-pkgver=r860.327fb7d
+pkgver=r676.1dd47ce
 pkgrel=1
 pkgdesc='A platform independent standalone library that plays Lottie Animation (Version required by Telegrand)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/melix99/rlottie'
 license=('LGPL-v2.1')
-makedepends=('cmake' 'git')
+makedepends=('meson' 'git')
 depends=('libpng')
 provides=(${_pkgname})
-source=("git+$url#branch=fix-build")
+conflicts=(${_pkgname})
+
+source=("git+$url#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -20,25 +22,15 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-    cd "${_pkgname}"
-
-    rm -rf build
-    mkdir build
-}
-
 build() {
-    cd "${_pkgname}/build"
+    arch-meson "${_pkgname}" build \
+      -Dwerror=false
 
-    cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=release || return 1
-    make || return 1
+    meson compile -C build
 }
 
 package() {
-    cd "${_pkgname}/build"
-
-    make DESTDIR=${pkgdir} install || return 1
-    install -Dm755 example/lottie2gif "${pkgdir}/usr/bin/lottie2gif"
+    DESTDIR="${pkgdir}" meson install -C build
 }
 
 # vim:set ts=8 sts=2 sw=2 et:
