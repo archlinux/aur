@@ -1,16 +1,11 @@
 pkgbase = r-magrittr
 	pkgdesc = A Forward-Pipe Operator for R
 	pkgver = 2.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=magrittr
 	arch = i686
 	arch = x86_64
 	license = MIT
-	checkdepends = r-covr
-	checkdepends = r-knitr
-	checkdepends = r-rlang
-	checkdepends = r-rmarkdown
-	checkdepends = r-testthat
 	depends = r>=3.4.0
 	optdepends = r-covr
 	optdepends = r-knitr
