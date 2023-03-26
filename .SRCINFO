@@ -1,13 +1,13 @@
 pkgbase = cro-chain-desktop
 	pkgdesc = Crypto.com DeFi Desktop Wallet
 	pkgver = 1.4.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/crypto-com/chain-desktop-wallet
 	arch = x86_64
 	license = Apache
 	makedepends = yarn
 	makedepends = fnm
-	makedepends = electron19
+	depends = electron19
 	source = chain-desktop-wallet-1.4.1.tar.gz::https://github.com/crypto-com/chain-desktop-wallet/archive/refs/tags/v1.4.1.tar.gz
 	source = chain-desktop-wallet.desktop
 	source = chain-desktop-wallet.sh
