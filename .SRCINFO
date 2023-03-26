@@ -9,6 +9,7 @@ pkgbase = gnome-network-displays-git
 	makedepends = git
 	makedepends = meson
 	depends = gtk3
+	depends = gst-plugins-bad
 	depends = gst-plugins-good
 	depends = gst-plugins-ugly
 	depends = gst-rtsp-server

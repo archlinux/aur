@@ -6,9 +6,9 @@ pkgdesc="Miracast implementation for GNOME"
 arch=('x86_64')
 url="https://gitlab.gnome.org/GNOME/gnome-network-displays"
 license=('GPL3')
-depends=('gtk3' 'gst-plugins-good' 'gst-plugins-ugly' 'gst-rtsp-server'
-         'libpulse' 'networkmanager' 'protobuf-c' 'python-gobject'
-         'xdg-desktop-portal')
+depends=('gtk3' 'gst-plugins-bad' 'gst-plugins-good' 'gst-plugins-ugly'
+         'gst-rtsp-server' 'libpulse' 'networkmanager' 'protobuf-c'
+         'python-gobject' 'xdg-desktop-portal')
 makedepends=('git' 'meson')
 checkdepends=('appstream-glib')
 optdepends=('dnsmasq' 'gst-plugin-pipewire' 'gstreamer-vaapi')
