@@ -1,18 +1,11 @@
 pkgbase = r-biocmanager
 	pkgdesc = A convenient tool to install and update Bioconductor packages.
 	pkgver = 1.30.20
-	pkgrel = 2
+	pkgrel = 3
 	url = https://CRAN.R-project.org/package=BiocManager
 	arch = i686
 	arch = x86_64
 	license = Artistic2.0
-	checkdepends = r-biocversion
-	checkdepends = r-curl
-	checkdepends = r-knitr
-	checkdepends = r-remotes
-	checkdepends = r-rmarkdown
-	checkdepends = r-withr
-	checkdepends = r-testthat>=3.0.0
 	depends = r
 	optdepends = r-biocversion
 	optdepends = r-curl
