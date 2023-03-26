@@ -1,17 +1,17 @@
 # Maintainer: Andrew O'Neill <andrew at haunted dot sh>
 
 pkgname=musikcube
-pkgver=0.99.5
+pkgver=0.99.7
 pkgrel=1
 pkgdesc='A terminal-based cross-platform music player, audio engine, metadata indexer, and server'
 arch=('x86_64')
 url="https://github.com/clangen/${pkgname}"
 license=('BSD')
-depends=('faad2' 'libogg' 'libvorbis' 'flac' 'libmicrohttpd' 'lame' 'ncurses' 'pulseaudio' 'libpulse' 'libev' 'alsa-lib' 'curl' 'ffmpeg' 'taglib' 'libgme')
-makedepends=('asio' 'cmake')
+depends=('faad2' 'libogg' 'libvorbis' 'flac' 'libmicrohttpd' 'lame' 'ncurses' 'libpipewire' 'pulseaudio' 'libpulse' 'libev' 'alsa-lib' 'curl' 'ffmpeg' 'taglib' 'libgme')
+makedepends=('asio' 'cmake' 'patchelf')
 optdepends=('libopenmpt: OpenMPT support')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('917fe53dc01a9d88b769e52c42f3332ddd35d354b399eded093c0b27f0aab319')
+sha256sums=('60796ff96e2b760350181609d9b838e96efdb1231a421407db55eba157fea4d5')
 
 build() {
   cd "${pkgname}-${pkgver}"
