@@ -92,6 +92,7 @@ prepare() {
   sed -i 's/lld/mold/g' cosmic-settings/justfile
 
   # libexec > lib
+  # see discussion: https://github.com/pop-os/cosmic-epoch/issues/87
   sed -i 's|libexecdir = $(prefix)/libexec|libexecdir = $(libdir)|g' \
     xdg-desktop-portal-cosmic/Makefile
   sed -i 's/libexec/lib/g' cosmic-session/src/main.rs
