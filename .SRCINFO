@@ -1,6 +1,6 @@
 pkgbase = dl-librescore
 	pkgdesc = Download sheet music from MuseScore.
-	pkgver = 0.34.43
+	pkgver = 0.34.44
 	pkgrel = 1
 	url = https://github.com/LibreScore/dl-librescore
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = dl-librescore
 	makedepends = npm
 	depends = bash
 	depends = nodejs
-	noextract = dl-librescore-v0.34.43.tgz
-	source = dl-librescore-v0.34.43.tgz::https://registry.npmjs.org/dl-librescore/-/dl-librescore-0.34.43.tgz
-	sha512sums = 08d0595455b3a7b8e9ead7926a4f276371c4af446bcfe3aae70b82cb8c269c07bcf07955a27933c6c75651576cd9d5c74b2fbdc779dd1fc098362e394fc1406c
+	noextract = dl-librescore-v0.34.44.tgz
+	source = dl-librescore-v0.34.44.tgz::https://registry.npmjs.org/dl-librescore/-/dl-librescore-0.34.44.tgz
+	sha512sums = 3043bfb7573cb417ae58a189cc94ba616592cb54dec0b979ccead6dc70dee982b84cb54548d7166cf26da2333fda622f424e3794b4c34e9297999f7e6b983260
 
 pkgname = dl-librescore
