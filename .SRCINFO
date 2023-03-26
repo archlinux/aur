@@ -1,7 +1,7 @@
 pkgbase = r-testthat
 	pkgdesc = Unit Testing for R
 	pkgver = 3.1.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://cran.r-project.org/package=testthat
 	arch = i686
 	arch = x86_64
