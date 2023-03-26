@@ -3,17 +3,21 @@
 # Contributor: Daniel J. Campos <dcampos2015 at my dot fit dot edu>
 
 pkgname=btrbk-git
-pkgver=0.32.5.r28.ga75765c
+pkgver=0.32.6.r0.g5e44bc6
 pkgrel=1
-pkgdesc="Backup tool for btrfs subvolumes, taking advantage of btrfs specific capabilities to create atomic snapshots and transfer them incrementally to your backup locations"
-arch=('any')
+pkgdesc="Tool for creating snapshots and remote backups of btrfs subvolumes"
+arch=(any)
 url="https://digint.ch/btrbk/"
-license=('GPL3')
-depends=('btrfs-progs' 'perl')
-makedepends=('asciidoctor' 'git')
-optdepends=('mbuffer: send/receive buffering and rate limiting, progress bars'
-            'openssh: transfer backups from/to remote locations'
-            'sudo: btrfs-progs-sudo backend')
+license=(GPL3)
+depends=(btrfs-progs perl)
+makedepends=(asciidoctor git)
+optdepends=(
+  'bash: for contrib scripts'
+  'mbuffer: for rate limiting and progress bars'
+  'openssh: for transfering backups to/from remote hosts'
+  'python: for contrib scripts'
+  'sudo: for btrfs-progs-sudo backend'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+https://github.com/digint/btrbk.git")
@@ -23,7 +27,10 @@ pkgver() {
   git -C $pkgname describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+build() {
+  make -C $pkgname
+}
+
 package() {
   make -C $pkgname DESTDIR="$pkgdir/" install
 }
-
