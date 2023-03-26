@@ -2,7 +2,7 @@
 
 pkgname="wlroots-nvidia"
 pkgver="0.16.2"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Modular Wayland compositor library, with fix for nvidia flickering"
 license=("MIT")
 
@@ -50,11 +50,13 @@ source=(
 	"$wl_pkgname-$pkgver.tar.gz::https://gitlab.freedesktop.org/wlroots/wlroots/-/releases/$pkgver/downloads/wlroots-$pkgver.tar.gz"
 	"https://gitlab.freedesktop.org/wlroots/wlroots/-/releases/$pkgver/downloads/wlroots-$pkgver.tar.gz.sig"
 	"nvidia.patch"
+	"dmabuf-capture-example.patch"
 )
 sha256sums=(
 	'83e9a11605f23d4bf781ab1947089483d9ec3f7e9ba65398e0609593b77d44aa'
 	'SKIP'
 	'83cbb8211265fed66b4320e6fd986606731b8f5f04bf6cabe7280e8f5fdba783'
+	'7d6690e2d59c17830b7e3a8004b58d07b03be50f50e1e8190430ebf8c1971353'
 )
 validpgpkeys=(
 	'34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48' # Simon Ser
@@ -65,6 +67,8 @@ validpgpkeys=(
 prepare() {
 	patch --directory="$wl_pkgname-$pkgver" --forward --strip=0 \
 		--input="$srcdir/nvidia.patch"
+	patch --directory="$wl_pkgname-$pkgver" --forward --strip=0 \
+		--input="$srcdir/dmabuf-capture-example.patch"
 }
 
 build() {
