@@ -6,7 +6,7 @@ pkgdesc="Pick the most common user-agents on the Internet"
 url="https://github.com/lobstrio/shadow-useragent"
 
 pkgver=0.0.17
-pkgrel=5
+pkgrel=6
 
 arch=("any")
 license=("MIT")
@@ -23,7 +23,7 @@ depends=(
 
 source=(
     "https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
-    "https://raw.githubusercontent.com/lobstrio/shadow-useragent/master/LICENSE"
+    "${_name}-LICENSE::https://raw.githubusercontent.com/lobstrio/shadow-useragent/master/LICENSE"
 )
 sha256sums=("ace3f53c0ec697b36eb35bb04ccc04d4727bf924edd5bf7caad78b64d272d755"
             "55c77c92b416cef25358a86bfaf96568b5fdead5914ccebd681893b874fa3bba")
@@ -37,7 +37,7 @@ package() {
     cd "${srcdir}/${_name}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
-    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/${_name}-LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 \
         "${srcdir}/${_name}-${pkgver}/README.md" \
         "${pkgdir}/usr/share/doc/${pkgname}/README.md"
