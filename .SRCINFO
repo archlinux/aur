@@ -1,12 +1,10 @@
 pkgbase = r-futile.logger
 	pkgdesc = A Logging Utility for R
 	pkgver = 1.4.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://cran.r-project.org/package=futile.logger
 	arch = any
 	license = LGPL3
-	checkdepends = r-jsonlite
-	checkdepends = r-testthat
 	depends = r-futile.options
 	depends = r-lambda.r>=1.1.0
 	depends = r>=3.0.0
