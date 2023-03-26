@@ -1,30 +1,27 @@
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Jelle van der Waa <jelle@archlinux.org>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
-pkgname=nyacc 
-pkgver=0.99.2
+pkgname=nyacc
+pkgver=1.05.1
 pkgrel=1
 pkgdesc="Not Yet Another Compiler Compiler"
 url="http://www.nongnu.org/nyacc"
 arch=('any')
 license=('GPL' 'LGPL' 'FDL')
-depends=('guile')
-makedepends=()
+depends=('guile' 'guile-bytestructures')
+makedepends=('guile')
 source=("http://download-mirror.savannah.gnu.org/releases/nyacc/$pkgname-$pkgver.tar.gz"{,.sig})
-sha256sums=('f182d097b1e2d8a75a8d7c857171131f0361da3a9087096b768ffda4ecf6e3a7'
+sha256sums=('c32042c1524646ba1a27b515203fab2240e6151fdb9e306e55b0154bbf7f63b2'
             'SKIP')
 validpgpkeys=('7C9EDA8DCE5DC8AE2C675EC9EE4F2A40097B7C03') # Marc Wette
 
 build() {
   cd $pkgname-$pkgver
-  GUILD=/usr/bin/guild ./configure 
+  ./configure --prefix=/usr
   make
 }
  
 package() {
   cd $pkgname-$pkgver
-  make SITE_SCM_DIR="$pkgdir"/usr/share/guile/2.2/ \
-       SITE_SCM_GO_dir="$pkgdir"/usr/lib/guile/2.2/ccache install-srcs
-  install -d "$pkgdir"/usr/share/doc/$pkgname
-  cd doc/$pkgname
-  cp nyacc*.{pdf,html} "$pkgdir"/usr/share/doc/$pkgname
+  make install DESTDIR=$pkgdir
 }
