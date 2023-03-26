@@ -1,12 +1,13 @@
 pkgbase = matrix-conduit-git
 	pkgdesc = A Matrix homeserver written in Rust
-	pkgver = 0.3.0.1470.g8bb5806
+	pkgver = 0.6.0.1841.gf704169a
 	pkgrel = 1
 	url = https://conduit.rs
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
+	arch = aarch64
 	license = Apache
 	makedepends = rust
 	makedepends = cargo

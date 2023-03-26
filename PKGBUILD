@@ -1,9 +1,9 @@
 # Maintainer: Till Faelligen <tfaelligen at gmail dot com>
 pkgname='matrix-conduit-git'
 _pkgname='conduit'
-pkgver=0.3.0.1470.g8bb5806
+pkgver=0.6.0.1841.gf704169a
 pkgrel=1
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://conduit.rs'
 pkgdesc='A Matrix homeserver written in Rust'
 license=('Apache')
