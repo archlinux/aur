@@ -5,7 +5,7 @@
 pkgname=figtree
 _pkgname=Figtree
 pkgver=1.4.4
-pkgrel=8
+pkgrel=9
 pkgdesc='Graphical viewer of phylogenetic trees'
 arch=('any')
 url='http://tree.bio.ed.ac.uk/software/figtree'
@@ -25,7 +25,7 @@ build() {
 }
 package() {
   install -Dm 755 $srcdir/$_pkgname $pkgdir/usr/bin/$pkgname
-  install -Dm 755 $srcdir/$pkgname.desktop $pkgdir/usr/bin/$pkgname.desktop
+  install -Dm 755 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
 
   cd $srcdir/$pkgname
   install -Dm 755 dist/$pkgname.jar $pkgdir/usr/share/$pkgname/$pkgname.jar
