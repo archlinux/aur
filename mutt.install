@@ -1,0 +1,11 @@
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  if (( $(vercmp "$2" '2.2.9-3') <= 0)); then
+    cat <<MSG
+>>> The system-wide configuration location has moved to /etc/mutt/Muttrc.
+    Samples can be found below /usr/share/doc/mutt/samples/.
+MSG
+  fi
+}
+
