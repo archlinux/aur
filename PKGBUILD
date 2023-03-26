@@ -10,7 +10,7 @@ license=('MIT')
 depends=('wayland')
 makedepends=('meson' 'wayland-protocols' 'scdoc')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~kennylevinsen/wlsunset/archive/${pkgver}.tar.gz")
-sha256sums=('88bce695722a09d79545f14d404cc0659f7176bb08d5db5f4f23228b6ba8bb03')
+sha256sums=('0aaf5fc414170e5300a83962de2582dc8f10e3fbd6a0c2ca79dc806a581adc36')
 
 build() {
     cd "$pkgname-$pkgver"
