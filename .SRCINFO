@@ -1,7 +1,7 @@
 pkgbase = r-gettz
 	pkgdesc = Get the Timezone Information
 	pkgver = 0.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=gettz
 	arch = i686
 	arch = x86_64
