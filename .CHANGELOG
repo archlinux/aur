@@ -1,6 +1,40 @@
 Version history
 ===============
 
+0.10.7
+------
+
+2023-03-25
+
+Fix #451: In the connection picker of the networking screen, the 3D outlines
+of the buttons for IP address and ports were sometimes mispainted. Now, the
+buttons are drawn correctly.
+
+Radio button options, e.g., for screen mode, show a tooltip per possible choice
+instead of a catch-all tooltip for the entire option.
+
+Don't play music during player name entry on a fresh installation before
+reaching the main menu. Play music only when we enter the main menu.
+The music might be too loud or unexpected, and it's more obvious how to
+exit from the main menu than from the player name entry screen.
+
+Replace "No" with "Cancel" in two dialog boxes: Really delete this level?
+Delete, Cancel. Really overwrite this level? Overwrite, Cancel.
+
+Explain the command-line switches for screen modes in the main readme.
+
+When you run Lix's unittests (`$ dub test`), the tests will scan all installed
+languages in `./data/transl/` and print missing and unnecessary translations.
+to stdout. Such translation issues do not abort or fail the unittests.
+As before, Lix logs during play the missing and unnecessary translation lines
+for your chosen language in the log file `./user/log.txt`.
+
+Use handwritten recoloring code from magic pink to alpha transparency instead
+of the Allegro 5 recoloring function, in hopes of avoiding #431: Magic pink
+won't become transparent on macOS. I doubt that this fixes #431.
+
+
+
 0.10.6
 ------
 
