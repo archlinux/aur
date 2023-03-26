@@ -1,15 +1,11 @@
 pkgbase = r-lazyeval
 	pkgdesc = Lightweight Well-Known Geometry Parsing
 	pkgver = 0.2.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://cran.r-project.org/package=lazyeval
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	checkdepends = r-covr
-	checkdepends = r-knitr
-	checkdepends = r-rmarkdown>=0.2.65
-	checkdepends = r-testthat
 	depends = r>=3.1.0
 	depends = r-cpp11
 	optdepends = r-covr
