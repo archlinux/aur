@@ -18,7 +18,7 @@ provides=('polarssl' 'mbedtls' 'libmbedcrypto.so' 'libmbedtls.so' 'libmbedx509.s
 replaces=('polarssl' 'mbedtls')
 conflicts=('polarssl' 'mbedtls')
 options=('staticlibs')
-source=(https://github.com/Mbed-TLS/mbedtls/archive/refs/${opkgnm}-${pkgver}.tar.gz)
+source=(https://github.com/Mbed-TLS/mbedtls/archive/refs/tags/${opkgnm}-${pkgver}.tar.gz)
 sha256sums=('a22ff38512697b9cd8472faa2ea2d35e320657f6d268def3a64765548b81c3ec')
 b2sums=('e85e141a78d06482324a966b29a9948ff7e4a83a1940cca1a99839925212d02df724b4843592700c34d675c8e9f49b4e57da7445e77fdcbc1362f76d28fd0d73')
 
