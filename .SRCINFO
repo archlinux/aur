@@ -1,15 +1,10 @@
 pkgbase = r-debugme
 	pkgdesc = Specify debug messages as special string constants, and control debugging of packages via environment variables.
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=debugme
 	arch = any
 	license = MIT
-	checkdepends = r-covr
-	checkdepends = r-mockery
-	checkdepends = r-r6
-	checkdepends = r-withr
-	checkdepends = r-testthat
 	depends = r
 	depends = r-crayon
 	optdepends = r-covr
