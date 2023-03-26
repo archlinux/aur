@@ -3,7 +3,7 @@
 pkgname=coolercontrol
 _app_id="org.$pkgname.CoolerControl"
 pkgver=0.15.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A program to monitor and control your cooling devices"
 arch=('any')
 url="https://gitlab.com/coolercontrol/coolercontrol"
