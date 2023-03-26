@@ -1,5 +1,5 @@
 pkgbase = papa
-	pkgdesc = A cli mod manager for the Northstar launcher
+	pkgdesc = Mod manager CLI for Northstar
 	pkgver = 2.2.0
 	pkgrel = 2
 	url = https://github.com/AnActualEmerald/papa
