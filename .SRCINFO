@@ -1,0 +1,17 @@
+pkgbase = keptn-bin
+	pkgdesc = The Keptn CLI includes commands to perform various tasks to manage the Keptn installation and projects
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/keptn/keptn
+	arch = x86_64
+	arch = armv7l
+	arch = armv7h
+	arch = aarch64
+	license = Apache
+	optdepends = kubectl
+	provides = keptn
+	conflicts = keptn
+	source = keptn-1.2.0-amd64::https://github.com/keptn/keptn/releases/download/1.2.0/keptn-1.2.0-linux-amd64.tar.gz
+	b2sums = d0df968e164d9da783d6517a445d2652ba03c823303633bd6b84811a599c671900d005f97c227ceadd5825c9a083dda7bb35c7a87626615aa37ebe0513aac8be
+
+pkgname = keptn-bin
