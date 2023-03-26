@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Lameta
+Comment=Metadata Editor for Transparent Archiving of language document materials
+Exec=/opt/lameta/lameta
+Terminal=false
+Type=Application
+Icon=/opt/lameta/assets/Icon.svg
