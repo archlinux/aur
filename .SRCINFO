@@ -1,6 +1,6 @@
 pkgbase = python-ink-extensions-git
 	pkgdesc = Python dependencies for running Inkscape extensions outside of Inkscape
-	pkgver = r20.6a246a5
+	pkgver = r27.8246f22
 	pkgrel = 1
 	url = https://github.com/evil-mad/ink_extensions
 	arch = any
@@ -16,10 +16,6 @@ pkgbase = python-ink-extensions-git
 	conflicts = python-ink-extensions
 	options = !strip
 	source = python-ink-extensions-git::git+https://github.com/evil-mad/ink_extensions.git
-	source = github-pr-8.patch
-	source = github-pr-9.patch
 	sha512sums = SKIP
-	sha512sums = b1ce78e3e79631359f76476d67a515a2f7e68a08c78e36717a4a8c038fb8fd8adca7002611c26412f997cad66b96215af8587b8038644861ab872e61e3dc4089
-	sha512sums = 10dc10a5fc741332b35479af26bbd4867015df2580e0530e4ff77cfcc9a8ebb36e2b4c7b3cb123a22eab6cb1af49b34f2b8f9e908037786b9294c152eff447fe
 
 pkgname = python-ink-extensions-git
