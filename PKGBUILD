@@ -1,6 +1,6 @@
 # Maintainer: Peter K. Moss <peter@moss.dk>
 pkgname=qmarkdown-git
-pkgver=r164.9a6e5fd
+pkgver=r170.044f179
 pkgrel=1
 pkgdesc="qMarkdown - minimal markdown viewer"
 arch=("x86_64")
