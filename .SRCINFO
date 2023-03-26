@@ -1,17 +1,10 @@
 pkgbase = r-rprojroot
 	pkgdesc = Find Files in Project Subdirectories
 	pkgver = 2.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=rprojroot
 	arch = any
 	license = MIT
-	checkdepends = r-covr
-	checkdepends = r-knitr
-	checkdepends = r-lifecycle
-	checkdepends = r-mockr
-	checkdepends = r-rmarkdown
-	checkdepends = r-withr
-	checkdepends = r-testthat
 	depends = r>=3.0.0
 	optdepends = r-covr
 	optdepends = r-knitr
