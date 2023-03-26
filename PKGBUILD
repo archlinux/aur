@@ -5,7 +5,7 @@
 
 pkgname=aur-mbedtls
 opkgnm=mbedtls
-pkgver=3.2.1
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Portable cryptographic and SSL/TLS library, aka polarssl"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -13,14 +13,14 @@ url="https://tls.mbed.org"
 license=('Apache')
 depends=('glibc' 'sh')
 checkdepends=('python')
-makedepends=('cmake')
+makedepends=('cmake' 'python-jsonschema' 'python-jinja')
 provides=('polarssl' 'mbedtls' 'libmbedcrypto.so' 'libmbedtls.so' 'libmbedx509.so')
 replaces=('polarssl' 'mbedtls')
 conflicts=('polarssl' 'mbedtls')
 options=('staticlibs')
-source=(https://github.com/ARMmbed/mbedtls/archive/${opkgnm}-${pkgver}.tar.gz)
-sha256sums=('5850089672560eeaca03dc36678ee8573bb48ef6e38c94f5ce349af60c16da33')
-b2sums=('4f33172c9c7a3ffbad6600c41d9b574a79e512ec417c3ec90a04085cce393456e8502e94150094bc80a217c352c8148d67bdab1bf0cb311c8dc88d653475a003')
+source=(https://github.com/Mbed-TLS/mbedtls/archive/refs/${opkgnm}-${pkgver}.tar.gz)
+sha256sums=('a22ff38512697b9cd8472faa2ea2d35e320657f6d268def3a64765548b81c3ec')
+b2sums=('e85e141a78d06482324a966b29a9948ff7e4a83a1940cca1a99839925212d02df724b4843592700c34d675c8e9f49b4e57da7445e77fdcbc1362f76d28fd0d73')
 
 prepare() {
 	cd "$opkgnm-$opkgnm-$pkgver"
