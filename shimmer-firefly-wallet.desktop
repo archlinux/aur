@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Shimmer Firefly Wallet
+Comment=Desktop wallet for SMR
+Exec=/usr/bin/shimmer-firefly-wallet
+Icon=shimmer-firefly-desktop
+Terminal=false
+Type=Application
+Categories=Office;Utility;Application;Finance;
+MimeType=x-scheme-handler/iota;
+Name[en_US]=shimmer-firefly-wallet.desktop
