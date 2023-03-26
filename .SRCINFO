@@ -1,13 +1,10 @@
 pkgbase = r-leaflet.providers
 	pkgdesc = Third-party map tiles for r-leaflet
 	pkgver = 1.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=leaflet.providers
 	arch = any
 	license = BSD
-	checkdepends = r-jsonlite
-	checkdepends = r-v8
-	checkdepends = r-testthat>=2.1.0
 	depends = r>=2.10
 	optdepends = r-jsonlite
 	optdepends = r-v8
