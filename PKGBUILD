@@ -2,7 +2,7 @@
 
 _pkgname=viper-sh
 pkgname=$_pkgname
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A Bourne Shell, CLI only, Northstar updater and mod manager "
 arch=('any')

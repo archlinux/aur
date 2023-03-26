@@ -1,13 +1,13 @@
 pkgbase = viper-sh
 	pkgdesc = A Bourne Shell, CLI only, Northstar updater and mod manager
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/0neGal/viper-sh
 	arch = any
 	license = GPL3
 	provides = viper-sh
 	conflicts = viper-sh
-	source = https://github.com/0neGal/viper-sh/archive/refs/tags/v1.0.1.tar.gz
+	source = https://github.com/0neGal/viper-sh/archive/refs/tags/v1.0.2.tar.gz
 	sha256sums = e1b0492914ebe63241592cd32b903dba5c692543456bec687ab8b97602e0dd72
 
 pkgname = viper-sh
