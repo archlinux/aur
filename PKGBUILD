@@ -2,7 +2,7 @@
 # Contributor: BlackEagle <ike DOT devolder AT gmail DOT com>>
 
 pkgname=kodi-addon-game-libretro-nestopia
-pkgver=1.52.0.34
+pkgver=1.52.0.37
 _codename=Nexus
 pkgrel=1
 pkgdesc="Libretro wrapper for Kodi's Game API"
@@ -13,7 +13,7 @@ groups=('kodi-addons' 'kodi-addons-game')
 makedepends=('cmake' 'kodi-dev' 'kodi-addon-game-libretro' 'libretro-nestopia')
 options=(!lto debug)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kodi-game/game.libretro.nestopia/archive/$pkgver-$_codename.tar.gz")
-sha512sums=('859ac0b95ba5005c4127259fc26facf46b373160e82c06493d30dad7755da1513e0140cf952a9affd55bc8ab051c0978bc7bb09c6d390161ddaad81e49414e81')
+sha512sums=('a568005583d1349b9d619382c88558693da4ac4bc933ca10dda1fb716dd7a4ce97ca76b5b9052d2068700857e2d201efc8de74fca1cc71f4a259216c8a3ef231')
 
 build() {
     cd "game.libretro.nestopia-$pkgver-$_codename"
