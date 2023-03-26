@@ -1,32 +1,10 @@
 pkgbase = r-pak
 	pkgdesc = Another Approach to R Package Installation
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=pak
 	arch = any
 	license = GPL3
-	checkdepends = r-callr>=3.7.0
-	checkdepends = r-cli>=3.2.0
-	checkdepends = r-covr
-	checkdepends = r-curl>=4.3.2
-	checkdepends = r-desc>=1.4.1
-	checkdepends = r-digest
-	checkdepends = r-distro
-	checkdepends = r-filelock>=1.0.2
-	checkdepends = r-gitcreds
-	checkdepends = r-glue>=1.6.2
-	checkdepends = r-jsonlite>=1.8.0
-	checkdepends = r-mockery
-	checkdepends = r-pingr
-	checkdepends = r-pkgcache>=2.0.4
-	checkdepends = r-pkgsearch>=3.1.0
-	checkdepends = r-prettyunits
-	checkdepends = r-processx>=3.5.2
-	checkdepends = r-ps>=1.6.0
-	checkdepends = r-rprojroot>=2.0.2
-	checkdepends = r-rstudioapi
-	checkdepends = r-withr
-	checkdepends = r-testthat
 	depends = r>=3.2
 	optdepends = r-callr>=3.7.0
 	optdepends = r-cli>=3.2.0
