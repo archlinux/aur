@@ -31,16 +31,16 @@ prepare() {
   sed -i '18s/.*/      "active": false,/' tauri.conf.json
   # Disable the updater
   sed -i '54s/.*/      "active": false,/' tauri.conf.json
+
+  # Install npm dependencies
+  cd ..
+  npm install
+  cd src-vue
+  npm install
 }
 
 build() {
-  cd FlightCore-$pkgver
-  npm install
-
-  cd src-vue
-  npm install
-
-  cd ../src-tauri
+  cd FlightCore-$pkgver/src-tauri
   npm run tauri build
 }
 
