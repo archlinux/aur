@@ -1,7 +1,7 @@
 # Maintainer: Kevin Wheelans <kevin dot wheelans at proton dot me>
 
 pkgname="certbot-dns-google-domains"
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="A Certbot DNS Authenticator for Google Domains"
 arch=("any")
@@ -16,7 +16,7 @@ depends=("certbot>=1.23.0"
          )
 makedepends=("python-build" "python-installer" "python-poetry-core" "python-wheel")
 source=("https://github.com/aaomidi/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5e6fd2362c07756a5849fb9f4dd1cd2dc2c78ae90b78af97986856417c1fa252')
+sha256sums=('17fdbfb03873ae059785728279d05cdec836211fcaa99a8672dda9a8a2b88495')
 
 build(){
  cd "$pkgname-$pkgver"
