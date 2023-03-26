@@ -3,8 +3,8 @@
 # Contributor: AndyRTR <andyrtr@archlinux.org>
 
 pkgname=xorg-xwayland-hidpi-xprop
-pkgver=22.1.8
-pkgrel=2
+pkgver=23.1.0
+pkgrel=1
 arch=('x86_64')
 license=('custom')
 url="https://xorg.freedesktop.org"
@@ -19,9 +19,9 @@ makedepends=('meson' 'xorgproto' 'xtrans' 'libxkbfile' 'dbus'
              'egl-wayland'
 )
 source=(https://xorg.freedesktop.org/archive/individual/xserver/xwayland-$pkgver.tar.xz{,.sig} hidpi.patch)
-sha512sums=('f52c6f99d8ef7605bc1c651d5ee5e306c12af30649a2d712b1c4c3cf4c7c80246ae24bd9ac39461d47aafc78f5d659446a459cd6259e05ef3128b204981d114a'
+sha512sums=('984213a193b903e6023ecb3144a15f483dc3e9ec7cb02c36d8e67c6859b501b8b3e5a6e1ade9cb245450ad93002322f392b81d9286377ac34350cc3ea1f9679f'
             'SKIP'
-            '2e16d1e3222b02d27a544c8df5132cf22c7fd0601c3a967a603cf2e14b7154ac1d3d6e4ea66e0bf4086f9f18fe0bc2428653ecbd8b23a0e90c3f0a9b1ecf36d9')
+            '603278d45ae29b65d5bea806abb98d22b6ecc7501199ae23f40e01adcfc29a3d7432e3dec1864b6eb3ba6d02998c68f6a455d389875fec40d9baa880c85f815a')
 provides=('xorg-server-xwayland' 'xorg-xwayland' 'xorg-xwayland-lily')
 conflicts=('xorg-server-xwayland' 'xorg-xwayland')
 replaces=('xorg-server-xwayland')
@@ -53,10 +53,11 @@ build() {
 
 package() {
 
-  # bin + manpage + .pc file
-  install -m755 -Dt "${pkgdir}"/usr/bin build/hw/xwayland/Xwayland
-  install -m644 -Dt "${pkgdir}"/usr/share/man/man1 build/hw/xwayland/Xwayland.1
-  install -m644 -Dt "${pkgdir}"/usr/lib/pkgconfig build/hw/xwayland/xwayland.pc
+  DESTDIR="${pkgdir}" ninja -C build install
+  # xorg-server-common file /usr/lib/xorg/protocol.txt
+  rm "${pkgdir}"/usr/lib/xorg/protocol.txt
+  rmdir "${pkgdir}"/usr/lib/xorg
+  rm "${pkgdir}"/usr/share/man/man1/Xserver.1
 
   # license
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xwayland-$pkgver/COPYING
