@@ -1,18 +1,10 @@
 pkgbase = r-scales
 	pkgdesc = Scale Functions for Visualization
 	pkgver = 1.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=scales
 	arch = any
 	license = MIT
-	checkdepends = r-bit64
-	checkdepends = r-covr
-	checkdepends = r-dichromat
-	checkdepends = r-ggplot2
-	checkdepends = r-hms>=0.5.0
-	checkdepends = r-stringi
-	checkdepends = r-waldo>=0.4.0
-	checkdepends = r-testthat>=3.0.0
 	depends = r>=3.2
 	depends = r-farver>=2.0.3
 	depends = r-labeling
