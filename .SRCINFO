@@ -1,14 +1,11 @@
 pkgbase = r-anytime
 	pkgdesc = Anything to ‘POSIXct’ or ‘Date’ Converter
 	pkgver = 0.3.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=anytime
 	arch = i686
 	arch = x86_64
 	license = MIT
-	checkdepends = r-gettz
-	checkdepends = texlive-core
-	checkdepends = r-tinytest
 	depends = r>=3.2.0
 	depends = r-bh
 	depends = r-rcpp>=0.12.9
