@@ -14,11 +14,11 @@ conflicts=('mpd-mpris')
 source=(
     "${pkgname}.service::https://raw.githubusercontent.com/natsukagami/mpd-mpris/v${_pkgver}/mpd-mpris.service"
     "${pkgname}-README::https://raw.githubusercontent.com/natsukagami/mpd-mpris/v${_pkgver}/README.md")
-source_x86_64=("${pkgname}-x86_64-${_pkgver}::${url}/releases/download/v${_pkgver}/mpd-mpris_${_pkgver}_linux_amd64.tar.gz")
-source_i686=("${pkgname}-386-${_pkgver}::${url}/releases/download/v${_pkgver}/mpd-mpris_${_pkgver}_linux_386.tar.gz")
-source_aarch64=("${pkgname}-aarch64-${_pkgver}::${url}/releases/download/v${_pkgver}/mpd-mpris_${_pkgver}_linux_arm64.tar.gz")
-source_armv6h=("${pkgname}-armv6h-${_pkgver}::${url}/releases/download/v${_pkgver}/mpd-mpris_${_pkgver}_linux_armv6.tar.gz")
-source_armv7h=("${pkgname}-armv7h-${_pkgver}::${url}/releases/download/v${_pkgver}/mpd-mpris_${_pkgver}_linux_armv7.tar.gz")
+source_x86_64=("${pkgname}-x86_64-${_pkgver}.tar.gz::${url}/releases/download/v${_pkgver}/mpd-mpris_${_pkgver}_linux_amd64.tar.gz")
+source_i686=("${pkgname}-386-${_pkgver}.tar.gz::${url}/releases/download/v${_pkgver}/mpd-mpris_${_pkgver}_linux_386.tar.gz")
+source_aarch64=("${pkgname}-aarch64-${_pkgver}.tar.gz::${url}/releases/download/v${_pkgver}/mpd-mpris_${_pkgver}_linux_arm64.tar.gz")
+source_armv6h=("${pkgname}-armv6h-${_pkgver}.tar.gz::${url}/releases/download/v${_pkgver}/mpd-mpris_${_pkgver}_linux_armv6.tar.gz")
+source_armv7h=("${pkgname}-armv7h-${_pkgver}.tar.gz::${url}/releases/download/v${_pkgver}/mpd-mpris_${_pkgver}_linux_armv7.tar.gz")
 sha256sums=('e36b7de3fcb9eb53ad62944115b8e43181e34bae1b7068a428f19da5c44b6dc9'
             '6086e1dc23d3eba00b1a11e45c87f3b8495b286b921a717d8e012ee03403d89d')
 sha256sums_x86_64=('451dec98e41a42aa5aa3f26e5379ba8959e85c87c5751353ec2c75e80ed29bcf')
@@ -29,7 +29,7 @@ sha256sums_armv7h=('f7befcc7f20c55c22710707dac42f4f31cfbb0d2c0e12c4114d7424aa0b4
 
 package() {
     # Install binary
-	install -D -m 0755 ${pkgname}-*-${_pkgver} "$pkgdir/usr/bin/mpd-mpris"
+	install -D -m 0755 ${pkgname} "$pkgdir/usr/bin/mpd-mpris"
 	# Install other files
 	install -D -m 0644 ${pkgname}-README "$pkgdir/usr/doc/mpd-mpris/README"
 	install -D -m 0644 ${pkgname}.service "$pkgdir/usr/lib/systemd/user/mpd-mpris.service"
