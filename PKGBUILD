@@ -3,7 +3,7 @@
 
 _pkgname=libtd-dev
 pkgname=${_pkgname}
-pkgver=1.8.10
+pkgver=1.8.13
 pkgrel=1
 pkgdesc='Cross-platform library for building Telegram clients (Development version)'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -13,7 +13,7 @@ depends=('openssl' 'zlib')
 makedepends=('make' 'gcc' 'cmake' 'gperf' 'git')
 provides=('telegram-tdlib' 'libtd' 'libtdjson.so')
 conflicts=('telegram-tdlib' 'libtd')
-_commit=93c42f6d7c1209937431469f80427d48907f1b8d  # commit=Update version to 1.8.10.
+_commit=eb664b4e9f71945ef3faa802af779e1630fedb8f  # commit=Update version to 1.8.13.
 source=("git+https://github.com/tdlib/td.git#commit=$_commit")
 sha256sums=('SKIP')
 
