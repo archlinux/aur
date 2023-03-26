@@ -1,13 +1,13 @@
 pkgbase = csvq-bin
 	pkgdesc = SQL-like query language for csv
-	pkgver = 1.17.11
+	pkgver = 1.18.1
 	pkgrel = 2
 	url = https://mithrandie.github.io/csvq/
 	arch = x86_64
 	license = MIT
 	provides = csvq
 	conflicts = csvq
-	source = https://github.com/mithrandie/csvq/releases/download/v1.17.11/csvq-v1.17.11-linux-amd64.tar.gz
-	sha256sums = 7427274b99470758f64fd42a0163c0205680f49e8fa2fd3fecb22bc63cf10a94
+	source = https://github.com/mithrandie/csvq/releases/download/v1.18.1/csvq-v1.18.1-linux-amd64.tar.gz
+	sha256sums = f22a3f96cd00e9b58cd55f0515427b2058d7b13c89b62d24a4867405d4ccc588
 
 pkgname = csvq-bin
