@@ -7,7 +7,7 @@ pkgdesc="Access Uber's H3 Library"
 url="https://cran.r-project.org/package=${_cranname}"
 license=("Apache")
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 
 arch=("any")
 depends=(
@@ -24,6 +24,7 @@ optdepends=(
     "r-knitr"
     "r-rmarkdown"
 )
+
 checkdepends=(
     "${optdepends[@]}"
     "r-testthat"
@@ -38,14 +39,13 @@ build() {
 }
 
 check() {
-    cd "${srcdir}/${_cranname}/tests"
-    R_LIBS="${srcdir}/build/" Rscript --vanilla testthat.R
+    export R_LIBS="build/"
+    R CMD check --no-manual --no-vignettes "${_cranname}"
 }
 
 package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
     cp -a --no-preserve=ownership "${srcdir}/build/${_cranname}" "${pkgdir}/usr/lib/R/library"
-
     if [[ -f "${_cranname}/LICENSE" ]]; then
         install -Dm0644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     fi

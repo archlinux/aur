@@ -1,7 +1,7 @@
 pkgbase = r-h3jsr
 	pkgdesc = Access Uber's H3 Library
 	pkgver = 1.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=h3jsr
 	arch = any
 	license = Apache
