@@ -1,0 +1,11 @@
+diff --color --unified --recursive --text --color MounRiver_Studio_Community_Linux_x64_V130/beforeinstall/50-wch.rules MounRiver_Studio_Community_Linux_x64_V130.new/beforeinstall/50-wch.rules
+--- MounRiver_Studio_Community_Linux_x64_V130/beforeinstall/50-wch.rules	2022-05-25 10:56:05.000000000 +0800
++++ MounRiver_Studio_Community_Linux_x64_V130.new/beforeinstall/50-wch.rules	2023-03-26 23:46:42.224383602 +0800
+@@ -1,4 +1,4 @@
+-SUBSYSTEM=="usb", ATTR{idVendor}="1a86", ATTR{idProduct}=="8010", GROUP="plugdev"
++SUBSYSTEM=="usb", ATTR{idVendor}=="1a86", ATTR{idProduct}=="8010", GROUP="plugdev", MODE="660", TAG+="uaccess"
+
+-SUBSYSTEM=="usb", ATTR{idVendor}="4348", ATTR{idProduct}=="55e0", GROUP="plugdev"
+-SUBSYSTEM=="usb", ATTR{idVendor}="1a86", ATTR{idProduct}=="8012", GROUP="plugdev"
++SUBSYSTEM=="usb", ATTR{idVendor}=="4348", ATTR{idProduct}=="55e0", GROUP="plugdev", MODE="660", TAG+="uaccess"
++SUBSYSTEM=="usb", ATTR{idVendor}=="1a86", ATTR{idProduct}=="8012", GROUP="plugdev", MODE="660", TAG+="uaccess"

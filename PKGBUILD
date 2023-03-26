@@ -2,7 +2,7 @@
 
 pkgname=mounriver-studio-community
 pkgver=1.30
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc="为 Eclipse 平台爱好者提供的一款 RISC-V 内核芯片集成开发环境，支持 WCH 系列 MCU 的工程模板、代码编译、下载、调试等功能。 "
 url='www.mounriver.com'
@@ -18,14 +18,21 @@ optdepends=('ch34x-dkms-git: CH341SER driver with fixed bug'
             'ch341prog-git: A simple command line tool (programmer) interfacing with ch341a'
             'ch341eeprom-git: A libusb based programming tool for 24xx I²C EEPROMs using the WCH CH341A')
 options=('!strip')
-source=("${pkgname}-${pkgver}.tar.xz::http://file.mounriver.com/upgrade/MounRiver_Studio_Community_Linux_x64_V${pkgver//./}.tar.xz")
-sha256sums=('dd692f617b1c67a66d27a85d3e19e65668e8f462df7a732d6cd40803d663c762')
+source=("${pkgname}-${pkgver}.tar.xz::http://file.mounriver.com/upgrade/MounRiver_Studio_Community_Linux_x64_V${pkgver//./}.tar.xz"
+        "udev-rules.patch")
+sha256sums=('dd692f617b1c67a66d27a85d3e19e65668e8f462df7a732d6cd40803d663c762'
+            '7ed97c1a494ddbd5b6d594223bc35aa31949c416c0b23a3adabfda239b9f3c73')
+
+prepare() {
+    cd "$srcdir/MounRiver_Studio_Community_Linux_x64_V${pkgver//./}"
+    patch --forward --strip=1 --input="${srcdir}/udev-rules.patch"
+    find MRS_Community -perm 600 -exec chmod 644 {} \;
+}
 
 package() {
     cd "$srcdir/MounRiver_Studio_Community_Linux_x64_V${pkgver//./}"
     install -dm0755 "$pkgdir/usr/share/$pkgname"
     cp -afr MRS_Community/* "$pkgdir/usr/share/$pkgname"
-    find "$pkgdir/usr/share/$pkgname" -perm 600 -exec chmod 644 {} \;
 
     install -Dm0644 "beforeinstall/50-wch.rules" "${pkgdir}/usr/lib/udev/rules.d/50-wch-community.rules"
     install -Dm0644 "beforeinstall/60-openocd.rules" "${pkgdir}/usr/lib/udev/rules.d/60-openocd-wch-community.rules"
