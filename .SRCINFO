@@ -1,15 +1,15 @@
 pkgbase = youtube-dl-gui
 	pkgdesc = A cross-platform GUI for youtube-dl made in Electron and node.js
-	pkgver = 2.4.0
-	pkgrel = 2
-	url = https://github.com/jely2002/youtube-dl-gui
+	pkgver = 2.4.8
+	pkgrel = 1
+	url = https://github.com/StefanLobbenmeier/youtube-dl-gui
 	arch = x86_64
 	license = ISC
-	depends = nodejs
-	depends = npm
+	makedepends = nodejs
+	makedepends = npm
 	depends = python-mutagen
 	options = !strip
-	source = https://github.com/jely2002/youtube-dl-gui/archive/refs/tags/v2.4.0.tar.gz
-	md5sums = f4d2e5faaeb47cfa3c1294be80fb8f49
+	source = https://github.com/StefanLobbenmeier/youtube-dl-gui/archive/refs/tags/v2.4.8.tar.gz
+	md5sums = c1c8dcafa3b5599f9d37e9a40c5fb69c
 
 pkgname = youtube-dl-gui
