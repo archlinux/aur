@@ -3,19 +3,20 @@
 # Contributor: Severin Glöckner <severin.gloeckner@imn.htwk-leipzig.de>
 
 pkgname=gti
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.8.0
+pkgrel=1
 pkgdesc="A silly git launcher"
 arch=('x86_64')
 url="https://r-wos.org/hacks/gti"
 license=('custom')
 depends=('git')
 source=("https://github.com/rwos/gti/archive/v$pkgver.tar.gz")
-sha512sums=('7a176a36dfa73f2da1ba624bc7a721445112d7c87cf3442ba38e051c32d4d983f462f61feb797db25c575af4fde0daa402e2ebc78df81336b09c2904cdb0ca8a')
+sha256sums=('65339ee1d52dede5e862b30582b2adf8aff2113cd6b5ece91775e1510b24ffb9')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
   sed '/Copyright/,$! d' README.md > "$srcdir"/LICENSE
+  sed -i "s/=install/=install -D/" Makefile
 }
 
 build() {
