@@ -1,22 +1,18 @@
 pkgbase = r-jdx
 	pkgdesc = ‘Java’ Data Exchange for ‘R’ and ‘rJava’
 	pkgver = 0.1.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://cran.r-project.org/package=jdx
 	arch = any
 	license = GPL2
 	license = BSD
-	checkdepends = r-knitr
-	checkdepends = r-pander
-	checkdepends = r-rmarkdown
-	checkdepends = r-testthat>=3.0.0
 	depends = jdk11-openjdk
 	depends = r
 	depends = r-rjava
 	optdepends = r-knitr
 	optdepends = r-pander
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/Archive/jdx/jdx_0.1.4.tar.gz
+	source = https://cran.r-project.org/src/contrib/jdx_0.1.4.tar.gz
 	b2sums = f49d89823da03762cc88711bbfe613cdbfc332c7910e9926bbf95a4fd3dd82ea54c99bf696c11e4b020a7adc5a274dfbc2d7672e5aa13d1d6f000c2db3f33720
 
 pkgname = r-jdx
