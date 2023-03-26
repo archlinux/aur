@@ -1,7 +1,7 @@
 pkgbase = flightcore
 	pkgdesc = A Northstar installer, updater, and mod-manager
 	pkgver = 1.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/R2NorthstarTools/FlightCore
 	arch = x86_64
 	license = MIT
