@@ -7,7 +7,7 @@ pkgdesc="Rapid Realistic Routing with ‘R5’"
 url="https://cran.r-project.org/package=r5r"
 license=("MIT")
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 
 arch=("any")
 depends=(
@@ -35,13 +35,14 @@ optdepends=(
     "r-patchwork"
     "r-rmarkdown"
 )
+
 checkdepends=(
     "${optdepends[@]}"
     "r-testthat"
 )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=('052f76d4ef0c0ef4a6e3aeeca361715e53dfea0b86394562e9acd7fdc066e442d2b12163d894293e96d1726dec2501259003b6f0be5a9f11690f26db05884460')
+b2sums=("052f76d4ef0c0ef4a6e3aeeca361715e53dfea0b86394562e9acd7fdc066e442d2b12163d894293e96d1726dec2501259003b6f0be5a9f11690f26db05884460")
 
 build() {
     mkdir -p "${srcdir}/build/"
@@ -49,17 +50,14 @@ build() {
 }
 
 check() {
-    #export R_HOME="${srcdir}/R_HOME/"
-    #mkdir -p "${R_HOME}"
-    #R CMD javareconf
-    cd "${srcdir}/${_cranname}/tests"
-    NOT_CRAN=true R_LIBS="${srcdir}/build/" Rscript --vanilla testthat.R
+    export R_LIBS="build/"
+    export NOT_CRAN=true
+    R CMD check --no-manual --no-vignettes "${_cranname}"
 }
 
 package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
     cp -a --no-preserve=ownership "${srcdir}/build/${_cranname}" "${pkgdir}/usr/lib/R/library"
-
     if [[ -f "${_cranname}/LICENSE" ]]; then
         install -Dm0644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     fi

@@ -1,7 +1,7 @@
 pkgbase = r-r5r
 	pkgdesc = Rapid Realistic Routing with ‘R5’
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=r5r
 	arch = any
 	license = MIT
