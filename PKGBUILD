@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=mfem
-pkgver=4.5
+pkgver=4.5.2
 pkgrel=1
 pkgdesc="Lightweight, general, scalable C++ library for finite element methods"
 arch=('x86_64')
@@ -9,10 +9,10 @@ url='https://github.com/mfem/mfem'
 license=('BSD')
 depends=('gcc-libs')
 makedepends=('cmake')
-provides=('libmfem.so=4.5.0-64')
+provides=("libmfem.so=$pkgver-64")
 changelog=CHANGELOG
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ee0e640286ea370aaf5c973e8f08eb648fa650e3e30f296e68bfc10c3dcfa9b8')
+sha256sums=('9431d72a2834078f25c58430767bf2fd62bf43a0feb003189a86847c68b8af4a')
 
 build() {
 	cmake \
