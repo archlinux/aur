@@ -3,8 +3,8 @@
 # Contributor: Christian Cornelssen <email@address.invalid>
 
 pkgname=theia-electron
-pkgver=1.34.2
-pkgrel=2
+pkgver=1.34.4
+pkgrel=3
 arch=('i686' 'x86_64' 'aarch64')
 url='https://www.theia-ide.org/'
 pkgdesc="Cloud & Desktop IDE Platform"
@@ -27,7 +27,7 @@ source=(
 )
 sha256sums=('49dc3027c1bed942afde93608248765178d8f32145c1f8c75b68f4b191bf0af0'
             'a1d37799b39c75329d4ef8083e21282ccec02b4af7c0228c413f4e5359c67458'
-            '330ad76b972458a6a28c35a933397e3f7fae69ab18c71b42726faa04bada08d7'
+            '4acf7df64d6b5e1786bd7ad18431ffe2c54b5941b4ccd35e88acafff95898587'
             'f43cc8aaf4738166acdf4e54817ad7e9c031c4dacf23eb8496f9edae33b3f1d0'
             '76f48bbc421d298113c73cee628c9d0fd8b14381590d871928f4f0bd87e812ce'
             '25f7748c49f29bd35a28b1f9509357367f2c83c5a275162a969e3c2210432d54'
@@ -36,8 +36,9 @@ sha256sums=('49dc3027c1bed942afde93608248765178d8f32145c1f8c75b68f4b191bf0af0'
 prepare() {
   cd "$srcdir"
   # @theia/secondary-window as of 1.30.0 said to have issues with electron
+  # Remove @theia/preview in favor of vscode.markdown*
   bash make-package-json.sh "${pkgver/.next./-next.}" | \
-  grep -vF "@theia/secondary-window" >package.json
+  grep -vE "@theia/(secondary-window|preview)\b" >package.json
 }
 
 build() {
