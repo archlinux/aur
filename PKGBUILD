@@ -3,8 +3,8 @@
 
 pkgname=emacs-ng
 pkgver=30.0.50
-_fix_commit=d17245a
-pkgrel=8
+_fix_commit=1ce413e
+pkgrel=9
 pkgdesc="A new approach to Emacs - Including TypeScript, Threading, Async I/O, and WebRender"
 arch=('x86_64')
 url="https://emacs-ng.github.io/emacs-ng"
@@ -17,8 +17,9 @@ depends=('jansson' 'ncurses' 'libgccjit' 'librsvg' 'libxcb' 'libxml2' 'gpm'
 	 'gtk3' 'libsm' 'xcb-util' 'libxcb' 'libwebp')
 makedepends=('cargo' 'rustup' 'git' 'python' 'texlive-core')
 source=("$pkgname-$pkgver_${_fix_commit}.tar.gz::https://github.com/emacs-ng/emacs-ng/archive/refs/tags/v0.0.${_fix_commit}.tar.gz")
+sha256sums=('00ca2dd49671952849c062d127cbf7fe4d0b8fba3a212f8d0129771f52667a92')
+
 #source=(git+https://github.com/emacs-ng/emacs-ng)
-sha256sums=('e1b8809e051bb46680bc3e6e25533d6b905f71cf39a09f0f827cd0520183d055')
  
 prepare() {
   cd ${pkgname}-0.0.${_fix_commit}
@@ -30,14 +31,29 @@ build() {
   RUSTUP_TOOLCHAIN=$(cat rust-toolchain)
   ./autogen.sh
   ./configure CFLAGS="-Wl,-rpath,shared -Wl,--disable-new-dtags" \
-              --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib --localstatedir=/var \
-              --with-json --with-modules --with-compress-install --with-threads \
-	      --with-included-regex --with-zlib --with-libsystemd --with-rsvg \
-	      --with-native-compilation=aot --without-imagemagick \
-	      --with-gpm --with-gtk --without-xaw3d --with-dbus --without-pop \
-	      --with-mailutils --with-gsettings --disable-build-details 
+              --prefix=/usr \
+	      --sysconfdir=/etc \
+	      --libexecdir=/usr/lib \
+	      --localstatedir=/var \
+              --with-json \
+	      --with-modules \
+	      --with-compress-install \
+	      --with-threads \
+	      --with-included-regex \
+	      --with-zlib \
+	      --with-libsystemd \
+	      --with-rsvg \
+	      --with-native-compilation=aot \
+	      --without-imagemagick \
+	      --with-gpm \
+	      --without-xaw3d \
+	      --with-dbus \
+	      --without-pop \
+	      --with-mailutils \
+	      --with-gsettings \
+	      --disable-build-details 
         
-  make V=1 PATH="$HOME/.rustup/toolchains/${RUSTUP_TOOLCHAIN}-$(uname -m)-unknown-linux-gnu/bin:$PATH" 
+  make V=1 PATH="$HOME/.rustup/toolchains/${RUSTUP_TOOLCHAIN}-$(uname -m)-unknown-linux-gnu/bin:$PATH" bootstrap
   make pdf
 }
 
