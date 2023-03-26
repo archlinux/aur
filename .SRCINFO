@@ -1,13 +1,13 @@
 pkgbase = mari0-ae
 	pkgdesc = Mari0: Alesan99's Entities
 	pkgver = 13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alesan99/mari0_ae
 	arch = i386
 	arch = x86_64
 	license = custom
 	makedepends = zip
-	depends = love-0102-bin
+	depends = love10
 	conflicts = mari0
 	source = git+https://github.com/alesan99/mari0_ae.git
 	sha256sums = SKIP

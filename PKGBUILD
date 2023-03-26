@@ -1,12 +1,12 @@
 # Maintainer: YidaozhanYa <yidaozhan_ya@outlook.com>
 pkgname=mari0-ae
 pkgver=13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Mari0: Alesan99's Entities"
 arch=('i386' 'x86_64')
 url="https://github.com/alesan99/mari0_ae"
 license=('custom')
-depends=('love-0102-bin')
+depends=('love10')
 makedepends=('zip')
 conflicts=('mari0')
 source=("git+https://github.com/alesan99/mari0_ae.git")
@@ -20,7 +20,7 @@ package() {
     mkdir -p "${pkgdir}/usr/bin"
     install -Dm0644 "${srcdir}/mari0_ae/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     echo "#!/bin/bash
-    love /usr/share/mari0/mari0-ae.love" > "${pkgdir}/usr/bin/mari0-ae"
+    love10 /usr/share/mari0/mari0-ae.love" > "${pkgdir}/usr/bin/mari0-ae"
     chmod 755 "${pkgdir}/usr/bin/mari0-ae"
     echo "[Desktop Entry]
     Version=0.10.0-13
