@@ -2,7 +2,7 @@
 # Contributor: sergej@aur.archlinux.org
 
 pkgname=slack-libpurple-git
-pkgver=r200.be97802
+pkgver=r369.6778b7c
 pkgver() {
   cd "$srcdir/slack-libpurple/"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -14,7 +14,7 @@ arch=('i686' 'x86_64')
 license=('GPL3')
 makedepends=('git')
 options=(!strip)
-depends=('libpurple' 'json-parser-git')
+depends=('libpurple')
 source=('slack-libpurple::git+https://github.com/dylex/slack-libpurple.git')
 sha256sums=('SKIP')
 

@@ -1,4 +1,5 @@
 /src/
+/pkg/
 /*.pkg.tar*
 
 /slack-libpurple/
