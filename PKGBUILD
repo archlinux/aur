@@ -1,17 +1,18 @@
-# Maintainer: lantw44 (at) gmail (dot) com
+# Maintainer: Jelle van der Waa <jelle@archlinux.org>
+# Contributor: lantw44 (at) gmail (dot) com
 
 pkgname=guile-bytestructures
 _pkgname=bytestructures
-pkgver=1.0.6
+pkgver=1.0.10
 pkgrel=1
 pkgdesc='Structured access library to bytevector contents for Guile'
-arch=('x86_64' 'i686' 'armv7h')
+arch=('x86_64')
 url="https://github.com/TaylanUB/scheme-bytestructures"
 license=('GPL3')
 depends=('guile')
 makedepends=('git')
 source=("https://github.com/TaylanUB/scheme-${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('d35edf088a450a8ac6f9465c5421f8f77fb826c5b95dc06b4ddc32c36a76ae1d')
+sha256sums=('bb8a78c1e570f90e344368196844ee0f143682b3d4c6ab69d6de0fa0d7b7c20d')
 
 build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"

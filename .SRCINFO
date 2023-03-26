@@ -1,16 +1,13 @@
 pkgbase = guile-bytestructures
 	pkgdesc = Structured access library to bytevector contents for Guile
-	pkgver = 1.0.6
+	pkgver = 1.0.10
 	pkgrel = 1
 	url = https://github.com/TaylanUB/scheme-bytestructures
 	arch = x86_64
-	arch = i686
-	arch = armv7h
 	license = GPL3
 	makedepends = git
 	depends = guile
-	source = https://github.com/TaylanUB/scheme-bytestructures/releases/download/v1.0.6/bytestructures-1.0.6.tar.gz
-	sha256sums = d35edf088a450a8ac6f9465c5421f8f77fb826c5b95dc06b4ddc32c36a76ae1d
+	source = https://github.com/TaylanUB/scheme-bytestructures/releases/download/v1.0.10/bytestructures-1.0.10.tar.gz
+	sha256sums = bb8a78c1e570f90e344368196844ee0f143682b3d4c6ab69d6de0fa0d7b7c20d
 
 pkgname = guile-bytestructures
-
