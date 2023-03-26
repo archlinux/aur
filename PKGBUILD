@@ -12,19 +12,20 @@ depends=('gtk3' 'webkit2gtk-4.1' 'libappindicator-gtk3' 'librsvg')
 makedepends=('npm' 'rust')
 provides=($_pkgname)
 conflicts=($_pkgname)
+_desktop=flightcore.desktop
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('ae0e238ba5ccb9770afefb3692d57360c9577e76d8c45b212dd7a733e610e2a9')
 
 prepare() {
   # Create a shortcut
-  echo "Type=Application" >> $_pkgname.desktop
-  sed -i '1 i\Terminal=false' $_pkgname.desktop
-  sed -i '1 i\Name=FlightCore' $_pkgname.desktop
-  sed -i '1 i\Icon=flightcore' $_pkgname.desktop
-  sed -i '1 i\Exec=flightcore' $_pkgname.desktop
-  sed -i '1 i\Categories=Development;' $_pkgname.desktop
-  sed -i '1 i\[Desktop Entry]' $_pkgname.desktop
-  mv ${pkgname}.desktop FlightCore-$pkgver
+  echo "Type=Application" >> $_desktop
+  sed -i '1 i\Terminal=false' $_desktop
+  sed -i '1 i\Name=FlightCore' $_desktop
+  sed -i '1 i\Icon=flightcore' $_desktop
+  sed -i '1 i\Exec=flightcore' $_desktop
+  sed -i '1 i\Categories=Development;' $_desktop
+  sed -i '1 i\[Desktop Entry]' $_desktop
+  mv $_desktop FlightCore-$pkgver
 
   # Only build the excutable
   cd FlightCore-$pkgver/src-tauri
@@ -47,7 +48,7 @@ build() {
 package() {
   cd FlightCore-$pkgver
   install -Dm644 docs/assets/Square310x310Logo.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
-  install -Dm644 flightcore.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  install -Dm644 ${_desktop} "$pkgdir/usr/share/applications/$_desktop"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
   install -Dm644 docs/FAQ.md -t "$pkgdir/usr/share/doc/$_pkgname"
   install -Dm755 src-tauri/target/release/flight-core "$pkgdir/usr/bin/$_pkgname"
