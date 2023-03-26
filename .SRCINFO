@@ -1,7 +1,7 @@
 pkgbase = entrez-direct
 	pkgdesc = Entrez Direct - CLI utilities for accessing NCBI databases
 	pkgver = 19.2.20230324
-	pkgrel = 1
+	pkgrel = 2
 	url = https://eutils.ncbi.nlm.nih.gov/
 	install = entrez-direct.install
 	arch = x86_64

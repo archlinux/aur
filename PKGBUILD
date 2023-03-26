@@ -1,7 +1,7 @@
 # Maintainer: Mattéo Delabre <aur.matteo@delab.re>
 pkgname=entrez-direct
 pkgver=19.2.20230324
-pkgrel=1
+pkgrel=2
 pkgdesc='Entrez Direct - CLI utilities for accessing NCBI databases'
 arch=('x86_64')
 url='https://eutils.ncbi.nlm.nih.gov/'
@@ -38,9 +38,9 @@ _fronttools=(
 )
 
 prepare() {
-    # Make Bash scripts source shared definitions from the /usr/lib location
+    # Execute Bash scripts as from $_libdir
     for tool in "${_fronttools[@]}"; do
-        sed -i "s,pth=\$( dirname \"\$0\" ),pth=\"$_libdir\",g" edirect/"$tool"
+        sed -i "2i BASH_ARGV0=$_libdir/$tool" edirect/"$tool"
     done
 }
 
