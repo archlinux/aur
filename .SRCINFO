@@ -1,0 +1,15 @@
+pkgbase = quand-git
+	pkgdesc = A simple calendar written in POSIX sh
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/ratakor/quand
+	arch = any
+	license = GPL
+	depends = coreutils
+	depends = sh
+	optdepends = util-linux: use cal for c option
+	provides = quand
+	source = git+https://github.com/ratakor/quand
+	md5sums = SKIP
+
+pkgname = quand-git
