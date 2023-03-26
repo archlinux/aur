@@ -1,19 +1,11 @@
 pkgbase = r-exactextractr
 	pkgdesc = Fast Extraction from Raster Datasets using Polygons
 	pkgver = 0.9.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://cran.r-project.org/package=exactextractr
 	arch = i686
 	arch = x86_64
 	license = MIT
-	checkdepends = r-dplyr
-	checkdepends = r-foreign
-	checkdepends = r-knitr
-	checkdepends = r-ncdf4
-	checkdepends = r-rgdal
-	checkdepends = r-rmarkdown
-	checkdepends = r-terra>=1.5.17
-	checkdepends = r-testthat
 	depends = geos>=3.5.0
 	depends = r-raster
 	depends = r-rcpp>=0.12.12
