@@ -1,18 +1,10 @@
 pkgbase = r-withr
 	pkgdesc = Lightweight Well-Known Geometry Parsing
 	pkgver = 2.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=withr
 	arch = any
 	license = MIT
-	checkdepends = r-callr
-	checkdepends = r-covr
-	checkdepends = r-dbi
-	checkdepends = r-knitr
-	checkdepends = r-rmarkdown
-	checkdepends = r-rsqlite
-	checkdepends = r-testthat
-	checkdepends = texlive-core
 	depends = r>=3.2.0
 	optdepends = r-callr
 	optdepends = r-covr
