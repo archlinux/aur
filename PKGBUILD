@@ -11,7 +11,7 @@ license=('GPL3')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e1b0492914ebe63241592cd32b903dba5c692543456bec687ab8b97602e0dd72')
+sha256sums=('a19871ff450f2ae3d1d69b93a16126bf7c4df8dadc27e842209b409fef128304')
 
 package() {
   cd viper-sh-$pkgver
