@@ -1,25 +1,11 @@
 pkgbase = r-rlang
 	pkgdesc = Functions for Base Types and Core R and ‘Tidyverse’ Features
 	pkgver = 1.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://cran.r-project.org/package=rlang
 	arch = i686
 	arch = x86_64
 	license = MIT
-	checkdepends = r-cli>=3.1.0
-	checkdepends = r-covr
-	checkdepends = r-crayon
-	checkdepends = r-fs
-	checkdepends = r-glue
-	checkdepends = r-knitr
-	checkdepends = r-magrittr
-	checkdepends = r-pillar
-	checkdepends = r-rmarkdown
-	checkdepends = r-tibble
-	checkdepends = r-usethis
-	checkdepends = r-vctrs>=0.2.3
-	checkdepends = r-withr
-	checkdepends = r-testthat
 	depends = r>=3.5.0
 	optdepends = r-cli>=3.1.0
 	optdepends = r-covr
