@@ -1,14 +1,10 @@
 pkgbase = r-gtfsio
 	pkgdesc = Read and Write General Transit Feed Specification (GTFS) Files
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=gtfsio
 	arch = any
 	license = MIT
-	checkdepends = r-knitr
-	checkdepends = r-rmarkdown
-	checkdepends = r-rcmdcheck
-	checkdepends = r-tinytest
 	depends = r
 	depends = r-data.table
 	depends = r-zip
