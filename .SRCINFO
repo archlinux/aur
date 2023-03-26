@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-game-libretro-mame
 	pkgdesc = This add-on provides a wrapper that allows Libretro cores to be loaded as game add-ons
-	pkgver = 0.251.0.16
+	pkgver = 0.251.0.17
 	pkgrel = 1
 	url = https://github.com/kodi-game/game.libretro.mame
 	arch = aarch64
@@ -14,8 +14,8 @@ pkgbase = kodi-addon-game-libretro-mame
 	makedepends = libretro-mame
 	options = !lto
 	options = debug
-	source = kodi-addon-game-libretro-mame-0.251.0.16.tar.gz::https://github.com/kodi-game/game.libretro.mame/archive/refs/tags/0.251.0.16-Nexus.tar.gz
-	sha512sums = 835aca41cfd556eadedea1fd650ac437782cdad4f24569e631b86cd0f5c2e0fefffe07a4daff898924e73f5372e03ae910b822d38259dd4ad34698024051bc21
+	source = kodi-addon-game-libretro-mame-0.251.0.17.tar.gz::https://github.com/kodi-game/game.libretro.mame/archive/refs/tags/0.251.0.17-Nexus.tar.gz
+	sha512sums = f459316c242b2b7934954c06896a1d6d0a208c1bc1c8c47fe56a118a8917515a32d433240678b30a3d6b502b593271acebf58fc3f8343eff864ef5af7f06cb17
 
 pkgname = kodi-addon-game-libretro-mame
 	depends = kodi-addon-game-libretro
