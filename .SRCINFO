@@ -1,0 +1,13 @@
+pkgbase = plank-theme-arian-git
+	pkgdesc = Arian Theme for Plank | My favorite plank theme which I think it's pretty cool, Isn't it?!
+	pkgver = 1.1.r1.g6152e63
+	pkgrel = 1
+	url = https://github.com/ryanhosseini/arian-plank-theme
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = plank
+	source = plank-theme-arian-git::git+https://github.com/ryanhosseini/arian-plank-theme.git
+	md5sums = SKIP
+
+pkgname = plank-theme-arian-git
