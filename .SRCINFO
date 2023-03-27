@@ -1,0 +1,15 @@
+pkgbase = embark-alacritty-git
+	pkgdesc = An ambitious theme for alacritty
+	pkgver = r7.9a99e7a
+	pkgrel = 1
+	url = https://embark-theme.github.io
+	arch = any
+	license = MIT
+	makedepends = git
+	optdepends = alacritty
+	provides = embark-alacritty
+	conflicts = embark-alacritty
+	source = embark-alacritty::git+https://github.com/embark-theme/alacritty.git
+	b2sums = SKIP
+
+pkgname = embark-alacritty-git
