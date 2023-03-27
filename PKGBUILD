@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=('gdb-git' 'gdb-common-git')
-pkgver=114029.bc8b216886e
+pkgver=114034.eb42b9d6f91
 pkgrel=1
 pkgdesc="The GNU Debugger from git"
 arch=('i686' 'x86_64')
@@ -40,7 +40,8 @@ build() {
 }
 
 package_gdb-git() {
-  depends=('expat' 'guile' 'ncurses' 'xz' 'python' 'source-highlight' 'mpfr' 'xxhash' 'libelf' 'gdb-common-git')
+  depends=('expat' 'guile' 'ncurses' 'xz' 'python' 'source-highlight'
+	   'mpfr' 'xxhash' 'libelf' 'gdb-common-git')
   provides=('gdb')
   conflicts=('gdb')
   backup=(etc/gdb/gdbinit)
@@ -52,7 +53,10 @@ package_gdb-git() {
   # install "custom" system gdbinit
   install -dm755 "$pkgdir"/etc/gdb
   touch "$pkgdir"/etc/gdb/gdbinit
-  }
+  
+  # comes from gdb-common
+  rm -r "$pkgdir/usr/share/gdb/"
+}
 
 package_gdb-common-git() {
   provides=('gdb-common')
