@@ -14,7 +14,6 @@ pkgbase = stellarium
 	depends = freetype2
 	depends = openssl
 	depends = gpsd
-	depends = calcmysky
 	depends = qt6-charts
 	depends = qt6-serialport
 	depends = qt6-multimedia
