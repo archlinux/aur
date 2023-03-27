@@ -2,7 +2,7 @@
 
 pkgname=skoolkit
 pkgver=8.9
-pkgrel=2
+pkgrel=3
 pkgdesc="A suite of tools for creating disassemblies of ZX Spectrum games."
 arch=('x86_64')
 url="https://github.com/skoolkid/skoolkit"
@@ -33,4 +33,13 @@ package() {
   install -Dm 644 docs/_sources/man/*.txt -t "$pkgdir/usr/share/doc/$pkgname/docs/_sources/man"
   install -Dm 644 docs/_static/* -t "$pkgdir/usr/share/doc/$pkgname/docs/_static"
   install -Dm 644 COPYING "$pkgdir/usr/share/licenses/$pkgname"
+
+  local pyver="$(python -c 'import platform; print(platform.python_version()[:4])')"
+
+  install -d -m 755 "$pkgdir/usr/lib/python$pyver/site-packages/skoolkit"
+  cp -r skoolkit/*.py "$pkgdir/usr/lib/python$pyver/site-packages/skoolkit/"
+  
+  install -d -m 755 "$pkgdir/usr/lib/python$pyver/site-packages/skoolkit/resources"
+  cp -r skoolkit/resources/* "$pkgdir/usr/lib/python$pyver/site-packages/skoolkit/resources/"
+
 }
