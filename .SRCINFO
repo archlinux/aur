@@ -1,6 +1,6 @@
 pkgbase = rtaudio-git
 	pkgdesc = RTAudio git version without JACK support(fix for pipewire)
-	pkgver = r581.e9b1d02
+	pkgver = r647.268e64a
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
@@ -18,8 +18,6 @@ pkgbase = rtaudio-git
 	provides = librtaudio.so
 	conflicts = rtaudio
 	source = git+https://github.com/thestk/rtaudio
-	source = alsa_pcm.patch
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = rtaudio-git
