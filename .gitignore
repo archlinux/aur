@@ -1,0 +1,6 @@
+/pkg
+/src
+/python-zunclient
+
+*.tar
+*.tar.*
