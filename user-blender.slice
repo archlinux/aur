@@ -1,0 +1,4 @@
+[Service]
+MemoryMax=75%
+MemoryHigh=66%
+CPUQuota=75%

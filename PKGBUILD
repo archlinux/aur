@@ -1,4 +1,4 @@
-#!/bin/hint/bash
+#!/bin/bash
 # Maintainer: Fredrick Brennan <copypaste@kittens.ph>
 # Submitter: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 # Co-maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
@@ -20,42 +20,50 @@ _fragment="${FRAGMENT:-#branch=main}"
 _CMAKE_FLAGS+=( -DWITH_CYCLES_NETWORK=OFF )
 
 pkgname=blender-git
-pkgver=3.6.r122604.g0323f8d1d9c
+pkgver=3.6.r122735.g2f4a7d67b7b
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
 url="https://blender.org/"
 depends+=('alembic' 'embree' 'libgl' 'python' 'python-numpy' 'openjpeg2' 'libharu' 'potrace' 'openxr'
           'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
-          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
+          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng'
+          'python' 'python-zstandard')
 depends+=('libdecor' 'libepoxy')
 optdepends=('cuda: CUDA support in Cycles'
             'optix>=7.4.0: OptiX support in Cycles'
             'usd=21.05: USD export Scene'
             'openpgl: Intel Path Guiding library in Cycles'
-            'openimagedenoise: Intel Open Image Denoise support in compositing')
-makedepends=('git' 'cmake' 'boost' 'mesa' 'ninja' 'llvm')
+            'openimagedenoise: Intel Open Image Denoise support in compositing'
+            'level-zero-headers: Intel OpenCL FPGA kernels (all four needed)'
+            'intel-compute-runtime: Intel OpenCL FPGA kernels (all four needed)'
+            'intel-graphics-compiler: Intel OpenCL FPGA kernels (all four needed)'
+            'intel-oneapi-basekit: Intel OpenCL FPGA kernels (all four needed)')
+makedepends=('git' 'cmake' 'boost' 'mesa' 'ninja' 'llvm' 'clang' 'svn')
 makedepends+=('wayland-protocols')
 provides=('blender')
 conflicts=('blender')
 license=('GPL')
 source=("blender::git+https://github.com/blender/blender${_fragment}"
-        'blender-addons::git+https://github.com/blender/blender-addons'
-        'blender-addons-contrib::git+https://github.com/blender/blender-addons-contrib'
-        'blender-translations::git+https://github.com/blender/blender-translations'
-        'blender-dev-tools::git+https://github.com/blender/blender-dev-tools'
-        usd_python.patch #add missing python headers when building against python enabled usd.
-        embree.patch #add missing embree link.
-        user-blender.slice.sh #generate systemd compilation unit
+        'blender/scripts/addons::git+https://github.com/blender/blender-addons'
+        'blender/translations::git+https://github.com/blender/blender-translations'
+        'blender/addons_contrib::git+https://github.com/blender/blender-addons-contrib'
+        'blender/dev_tools::git+https://github.com/blender/blender-dev-tools'
+        'user-blender.slice' #systemd compilation unit
+        # Patches...
+        '0001-Use-github.com-for-make-update-git.patch'
+        '0003-usd_python.patch' #add missing python headers when building against python enabled usd.
+        '0002-embree.patch' #add missing embree link.
         )
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            '10cf3652cf16f8042437bb511e2b030035433978f71cf1da8028711f49599074'
+            '52da80b721efb6a6d579adf531640becfac1955a88857ca46ca16030a52c3b1c'
             'c2db51a83a8d573aa76c760f10e541c84b108d64d05c9647681c4e633b3d0397'
-            'd587135fd9b815d60e8b7f48976aa835472922fc8f64c256dc397bfcd3c2642a'
-            'a62b23567d520984f36d6a3158fd99f463e3187f2ad062ead418c260fac5ea8a')
+            'd587135fd9b815d60e8b7f48976aa835472922fc8f64c256dc397bfcd3c2642a')
 
 pkgver() {
   blender_version=$(grep -Po "BLENDER_VERSION \K[0-9]{3}" "$srcdir"/blender/source/blender/blenkernel/BKE_blender_version.h)
@@ -68,16 +76,24 @@ pkgver() {
 
 prepare() {
   cd "$srcdir"
-  ../user-blender.slice.sh > user-`id -u`-blender.slice
+  cp user-blender.slice user-`id -u`-blender.slice
   cd "blender"
+  make update
   # update the submodules
   git -c protocol.file.allow=always submodule update --init --recursive --remote
-  git apply -v "${srcdir}"/{embree,usd_python}.patch
+  git apply -v "${srcdir}"/*.patch
 }
 
 build() {
   _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
   msg "python version detected: ${_pyver}"
+
+  # determine whether we can install python modules
+  if [ "$_pyver" != "" ]; then
+    _CMAKE_FLAGS+=( -DWITH_PYTHON=ON
+                    -DWITH_PYTHON_MODULE=OFF
+                    -DWITH_PYTHON_INSTALL=ON )
+  fi
 
   # determine whether we can precompile CUDA kernels
   _CUDA_PKG=$(pacman -Qq cuda 2>/dev/null) || true
@@ -106,6 +122,19 @@ build() {
                     -DUSD_ROOT=/usr )
   fi
 
+  CC=`which clang`
+  CXX=`which clang++`
+  # check for oneapi
+  _ONEAPI_SETVARS=/opt/intel/oneapi/setvars.sh
+  [ -f "$_ONEAPI_SETVARS" ] && . "$_ONEAPI_SETVARS" --force
+  _ONEAPI_CLANG=/opt/intel/oneapi/compiler/latest/linux/bin-llvm/clang
+  [ -f "$_ONEAPI_CLANG" ] && (
+    warning "Intel's clang will be used."
+    _CMAKE_FLAGS+=( -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON )
+    CC="${_ONEAPI_CLANG}"
+    CXX="$CC"
+  )
+
   cmake -G Ninja -S "$srcdir/blender" -B build \
         -C "${srcdir}/blender/build_files/cmake/config/blender_release.cmake" \
         -DCMAKE_INSTALL_PREFIX=/usr \
@@ -115,6 +144,8 @@ build() {
         -DWITH_PYTHON_INSTALL=OFF \
         -DXR_OPENXR_SDK_ROOT_DIR=/usr \
         -DPYTHON_VERSION="${_pyver}" \
+        -DCMAKE_C_COMPILER="$CC" \
+        -DCMAKE_CXX_COMPILER="$CXX" \
         "${_CMAKE_FLAGS[@]}"
   NINJA_CMD="ninja -C ""$srcdir/build"
   if [[ "x$BLENDER_GIT_USE_SLICE_AUR" == "xy" ]]; then
@@ -135,6 +166,12 @@ package() {
     # make sure the cuda kernels are not stripped
     chmod 444 "$pkgdir"/usr/share/blender/${_suffix}/scripts/addons/cycles/lib/*
   fi
+
+  # This prevents an error due to missing file in LD_LIBRARY_PATH when using Intel OpenCL kernels.
+  mkdir -p "$pkgdir"/usr/lib
+  [ -f "$pkgdir/usr/share/blender/lib/libcycles_kernel_oneapi_jit.so" ] && \
+    ln -s "$pkgdir/usr/share/blender/lib/libcycles_kernel_oneapi_jit.so" "$pkgdir/usr/lib/libcycles_kernel_oneapi_jit.so"
+  chmod 444 "$pkgdir"/usr/lib/libcycles_kernel_oneapi_jit.so
 }
 
 # vim: et:ts=2:sw=2

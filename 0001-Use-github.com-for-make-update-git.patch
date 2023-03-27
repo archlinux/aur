@@ -1,0 +1,25 @@
+From 290e1e73342b5704a9a6a017ad1f208d9d00316f Mon Sep 17 00:00:00 2001
+From: Fredrick Brennan <copypaste@kittens.ph>
+Date: Tue, 21 Mar 2023 07:25:32 -0400
+Subject: [PATCH] Use github.com for `make update` git
+
+---
+ build_files/utils/make_update.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/build_files/utils/make_update.py b/build_files/utils/make_update.py
+index f4c16ead87a..5a56212bd03 100755
+--- a/build_files/utils/make_update.py
++++ b/build_files/utils/make_update.py
+@@ -325,7 +325,7 @@ def external_script_initialize_if_needed(args: argparse.Namespace,
+     # When running `make update` from a freshly cloned fork check whether the fork of the submodule is
+     # available, If not, switch to the submodule relative to the main blender repository.
+     if origin_name == "origin" and not make_utils.git_is_remote_repository(args.git_command, external_url):
+-        external_url = resolve_external_url("https://projects.blender.org/blender/blender", repo_name)
++        external_url = resolve_external_url("https://github.com/blender/blender", repo_name)
+ 
+     call((args.git_command, "clone", "--origin", origin_name, external_url, str(external_dir)))
+ 
+-- 
+2.40.0
+
