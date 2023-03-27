@@ -1,6 +1,6 @@
 pkgbase = smarthome-commander
 	pkgdesc = Microservice for executing shell commands via API requests
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 5
 	url = https://github.com/smarthome-go/commander
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = smarthome-commander
 	license = GPL2
 	makedepends = cargo
 	depends = gcc-libs
-	source = smarthome-commander-0.2.0.tar.gz::https://github.com/smarthome-go/commander/archive/refs/tags/v0.2.0.tar.gz
-	b2sums = ddf4f04b4dd2206e6eab906a29997bad10c0682fb5fa70585f255af7ac17482cc4369bb4a53cb0a47fd2ff4a07b151df7d70549d623caa06c1c188360a5ea6a9
+	source = smarthome-commander-0.2.1.tar.gz::https://github.com/smarthome-go/commander/archive/refs/tags/v0.2.1.tar.gz
+	b2sums = 36590de9c7f31a5d17dad443759155fc53bf9efc6e6cdb4467745c769b18c05df4f8bd74918d2586182cdda53b069b644a76949418abf21988a50d3239402383
 
 pkgname = smarthome-commander
