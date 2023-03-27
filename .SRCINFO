@@ -1,4 +1,4 @@
-pkgbase = js.design-appimage
+pkgbase = js-design-appimage
 	pkgdesc = 即时设计 A professional UI design software tailored for Chinese designers.
 	pkgver = 1.0.5
 	pkgrel = 2
@@ -15,4 +15,4 @@ pkgbase = js.design-appimage
 	sha256sums = 93b6795fc40a82d2fe6a2231626bda36d8cc4c56ac0c7234e090984e01d58120
 	sha256sums = 98442aa8cf4da4f76c96be562c6f0b2c9a8369f44517b7fd801a1020a299a9fa
 
-pkgname = js.design-appimage
+pkgname = js-design-appimage

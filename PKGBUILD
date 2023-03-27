@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=js.design
-pkgname="${_pkgname}-appimage"
+pkgname=js-design-appimage
 pkgver=1.0.5
 pkgrel=2
 pkgdesc="即时设计 A professional UI design software tailored for Chinese designers."
