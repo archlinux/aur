@@ -1,12 +1,12 @@
 pkgbase = kcodecs-git
 	pkgdesc = Plugins allowing Qt applications to access further types of images
-	pkgver = 5.240.0_r481.gb52a6dc
+	pkgver = 5.240.0_r491.g49a2729
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
 	groups = kf6-git
 	license = LGPL
-	makedepends = extra-cmake-modules
+	makedepends = extra-cmake-modules-git
 	makedepends = gperf
 	makedepends = git
 	makedepends = qt6-tools

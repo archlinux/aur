@@ -1,14 +1,14 @@
 # Maintainer: Rustmilian <######[@]######[.]me>
 
 pkgname=kcodecs-git
-pkgver=5.240.0_r481.gb52a6dc
+pkgver=5.240.0_r491.g49a2729
 pkgrel=1
 pkgdesc='Plugins allowing Qt applications to access further types of images'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(qt6-base)
-makedepends=(extra-cmake-modules gperf git qt6-tools)
+makedepends=(extra-cmake-modules-git gperf git qt6-tools)
 groups=(kf6-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
