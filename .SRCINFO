@@ -1,0 +1,16 @@
+pkgbase = llama.cpp-git
+	pkgdesc = Port of Facebook's LLaMA model in C/C++
+	pkgver = master.34c1072.r1.7e53955
+	pkgrel = 1
+	url = https://github.com/ggerganov/llama.cpp
+	arch = armv7h
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	provides = llama.cpp
+	conflicts = llama.cpp
+	source = llama.cpp::git+https://github.com/ggerganov/llama.cpp
+	sha256sums = SKIP
+
+pkgname = llama.cpp-git
