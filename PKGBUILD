@@ -4,7 +4,7 @@
 _pkgname=openvpn
 _pkgver=2.6.2
 pkgname=${_pkgname}-password-save
-pkgver=2.6.2+42f78959
+pkgver=2.6.2+35774425
 pkgrel=1
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network)'
 arch=('x86_64')
