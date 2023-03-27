@@ -10,6 +10,7 @@ url="https://github.com/R2NorthstarTools/FlightCore"
 license=('MIT')
 depends=('gtk3' 'webkit2gtk-4.1' 'libappindicator-gtk3' 'librsvg')
 makedepends=('npm' 'rust')
+optdepends=('sccache: compiler caching for faster compiling')
 provides=($_pkgname)
 conflicts=($_pkgname)
 _desktop=flightcore.desktop
