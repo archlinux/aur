@@ -1,0 +1,20 @@
+pkgbase = alacritty-colorscheme-git
+	pkgdesc = Change colorscheme of alacritty with ease
+	pkgver = r51.257e466
+	pkgrel = 1
+	url = https://github.com/toggle-corp/alacritty-colorscheme/
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry
+	depends = python-ruamel-yaml
+	depends = python-typed-argument-parser
+	depends = python-pynvim
+	provides = alacritty-colorscheme
+	conflicts = alacritty-colorscheme
+	source = git+https://github.com/toggle-corp/alacritty-colorscheme.git
+	sha256sums = SKIP
+
+pkgname = alacritty-colorscheme-git
