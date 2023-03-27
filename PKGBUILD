@@ -3,7 +3,7 @@
 # Contributor: Florian Hülsmann <fh@cbix.de>
 
 pkgname=clap-validator
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='An automatic CLAP validation and testing tool'
 arch=(aarch64 x86_64)
@@ -13,7 +13,7 @@ groups=(pro-audio)
 depends=(gcc-libs)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/free-audio/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('7e2aeb58b78e926875b94f4ed474acd17b282ed237c39ef3c625186aabd645f1')
+sha256sums=('4738248c0112f338144eedfc0c4678e38feae094ff93139ebb37c73d278c9ea7')
 
 prepare() {
   cd $pkgname-$pkgver
