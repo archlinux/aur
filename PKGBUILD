@@ -1,8 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
-_reponame=ppsspp
-_pkgname=libretro-$_reponame
+_pkgname=libretro-ppsspp
 pkgname=$_pkgname-git
-pkgver=1.13.1.r720.gb73958296
+pkgver=1.14.4.r1087.g668a6d63cb
 pkgrel=1
 pkgdesc="Sony PlayStation Portable core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -11,63 +10,61 @@ license=('GPL2')
 groups=('libretro')
 depends=(
 	'ffmpeg4.4' # https://github.com/hrydgard/ppsspp/issues/15308
+	'gcc-libs'
 	'glew'
-	'glslang'
+	'glibc'
+	'libgl'
+	'libpng'
 	'libretro-core-info'
+	'libzip'
 	'miniupnpc'
 	'snappy'
-)
-makedepends=(
-	'cmake'
-	'git'
-	'libpng'
-	'libzip'
-	'spirv-cross'
+	'zlib'
 	'zstd'
 )
+makedepends=('cmake' 'git' 'python')
 optdepends=('ppsspp-assets')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
-	"$_reponame::git+https://github.com/hrydgard/ppsspp.git"
+	'ppsspp::git+https://github.com/hrydgard/ppsspp.git'
 	'armips::git+https://github.com/Kingcom/armips.git'
+	'cpu_features::git+https://github.com/google/cpu_features.git'
+	'glslang::git+https://github.com/KhronosGroup/glslang.git'
+	'SPIRV-Cross::git+https://github.com/KhronosGroup/SPIRV-Cross.git'
 )
 b2sums=(
+	'SKIP'
+	'SKIP'
+	'SKIP'
 	'SKIP'
 	'SKIP'
 )
 
 pkgver() {
-	cd $_reponame
+	cd ppsspp
 	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd $_reponame
+	cd ppsspp
+	git config submodule.cpu_features.url ../cpu_features
 	git config submodule.ext/armips.url ../armips
+	git config submodule.ext/glslang.url ../glslang
+	git config submodule.ext/SPIRV-Cross.url ../SPIRV-Cross
 	git -c protocol.file.allow=always submodule update
-	sed -i '/COMPILE_FLAGS/s/-O2//;/FLAGS_RELEASE/s/-O2//' CMakeLists.txt
-	# unbundle glslang
-	rmdir ext/glslang
-	ln -s /usr/include/glslang ext/glslang
-	sed -i '/glslang/d' ext/CMakeLists.txt
-	# unbundle spirv-cross
-	rmdir ext/SPIRV-Cross
-	ln -s /usr/include/spirv_cross ext/SPIRV-Cross
-	sed -i '/SPIRV-Cross-build/d' ext/CMakeLists.txt
-	sed -i 's/spirv-cross-glsl/& spirv-cross-core/' CMakeLists.txt
 }
 
 build() {
 	export PKG_CONFIG_PATH=/usr/lib/ffmpeg4.4/pkgconfig
-	cmake -S $_reponame -B build \
+	cmake -S ppsspp -B build \
+		-DARMIPS_USE_STD_FILESYSTEM=ON \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_SKIP_RPATH=ON \
 		-DLIBRETRO=ON \
 		-DUSE_SYSTEM_FFMPEG=ON \
-		-DUSE_SYSTEM_LIBPNG=ON \
 		-DUSE_SYSTEM_LIBZIP=ON \
 		-DUSE_SYSTEM_MINIUPNPC=ON \
 		-DUSE_SYSTEM_SNAPPY=ON \
@@ -79,5 +76,4 @@ build() {
 package() {
 	# shellcheck disable=SC2154
 	install -Dm644 -t "$pkgdir"/usr/lib/libretro build/lib/ppsspp_libretro.so
-	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname $_reponame/LICENSE.TXT
 }
