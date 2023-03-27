@@ -1,0 +1,71 @@
+diff --git a/configure.ac.in b/configure.ac.in
+index 65c5bea4..64dcdf9d 100644
+--- a/configure.ac.in
++++ b/configure.ac.in
+@@ -157,13 +157,6 @@ dnl **************************************
+ XDT_CHECK_OPTIONAL_PACKAGE([LIBNOTIFY], [libnotify], [0.1.3],
+                            [libnotify], [Notification support])
+ 
+-dnl **************************************
+-dnl *** Optional support for colord ***
+-dnl **************************************
+-XDT_CHECK_OPTIONAL_PACKAGE([COLORD], [colord], [1.0.2],
+-                          [colord], [colord support])
+-
+-
+ dnl *********************
+ dnl *** Mime settings ***
+ dnl *********************
+@@ -257,7 +250,6 @@ common/Makefile
+ dialogs/Makefile
+ dialogs/appearance-settings/Makefile
+ dialogs/accessibility-settings/Makefile
+-dialogs/color-settings/Makefile
+ dialogs/display-settings/Makefile
+ dialogs/keyboard-settings/Makefile
+ dialogs/mime-settings/Makefile
+@@ -299,11 +291,6 @@ echo "* Libnotify support:         yes"
+ else
+ echo "* Libnotify support:         no"
+ fi
+-if test x"$COLORD_FOUND" = x"yes"; then
+-echo "* colord support:            yes"
+-else
+-echo "* colord support:            no"
+-fi
+ if test x"$XCURSOR_FOUND" = x"yes"; then
+ echo "* Xcursor support:           yes"
+ else
+diff --git a/dialogs/Makefile.am b/dialogs/Makefile.am
+index 2d64f510..b826db1b 100644
+--- a/dialogs/Makefile.am
++++ b/dialogs/Makefile.am
+@@ -12,8 +12,3 @@ if HAVE_GIO_UNIX
+ SUBDIRS += \
+ 	mime-settings
+ endif
+-
+-if HAVE_COLORD
+-SUBDIRS += \
+-	color-settings
+-endif
+diff --git a/dialogs/display-settings/Makefile.am b/dialogs/display-settings/Makefile.am
+index 7e0b0e37..13f28950 100644
+--- a/dialogs/display-settings/Makefile.am
++++ b/dialogs/display-settings/Makefile.am
+@@ -44,15 +44,6 @@ xfce4_display_settings_LDADD = \
+ 	$(GLIB_LIBS) \
+ 	$(top_builddir)/common/libxfce4-settings.la
+ 
+-# Optional support for colord
+-if HAVE_COLORD
+-xfce4_display_settings_CFLAGS += \
+-	$(COLORD_CFLAGS)
+-
+-xfce4_display_settings_LDADD += \
+-	$(COLORD_LIBS)
+-endif
+-
+ if MAINTAINER_MODE
+ 
+ BUILT_SOURCES = \

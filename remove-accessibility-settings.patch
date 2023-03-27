@@ -10,7 +10,7 @@ index 7ec7b855..2d64f510 100644
  	mouse-settings
  
 diff --git a/xfsettingsd/main.c b/xfsettingsd/main.c
-index 39639911..cd7018f8 100644
+index 2f13a006..23cbf6cb 100644
 --- a/xfsettingsd/main.c
 +++ b/xfsettingsd/main.c
 @@ -52,7 +52,6 @@

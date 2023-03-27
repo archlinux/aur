@@ -1,5 +1,5 @@
 diff --git a/Makefile.am b/Makefile.am
-index aa5067d6..fdd6f315 100644
+index 0a16942e..501bdd9e 100644
 --- a/Makefile.am
 +++ b/Makefile.am
 @@ -3,7 +3,6 @@ ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}

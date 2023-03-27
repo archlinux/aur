@@ -1,5 +1,5 @@
 diff --git a/xfsettingsd/main.c b/xfsettingsd/main.c
-index cd7018f8..aa76e8b5 100644
+index 23cbf6cb..92b6b8db 100644
 --- a/xfsettingsd/main.c
 +++ b/xfsettingsd/main.c
 @@ -80,7 +80,6 @@ static guint owner_id;

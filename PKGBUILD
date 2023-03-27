@@ -2,11 +2,11 @@
 # Do not forget to run `makepkg --printsrcinfo > .SRCINFO`
 
 _pkgname=xfce4-settings
-_pkgver=4.18.1
+_pkgver=4.18.2
 pkgname=${_pkgname}-standalone
-pkgver=4.18.1+1ce79a55
+pkgver=4.18.2+f9cb09a7
 pkgrel=1
-pkgdesc="Settings manager of the Xfce desktop"
+pkgdesc="Xfce's Configuration System"
 arch=('x86_64')
 url="https://docs.xfce.org/xfce/xfce4-settings/start"
 license=('GPL2')
@@ -19,15 +19,17 @@ optdepends=('python: xfce4-compose-mail -- "mailto:" URI handling' 'elementary-i
 provides=("${_pkgname}=${pkgver%%+*}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+https://gitlab.xfce.org/xfce/${_pkgname}#tag=${_pkgname}-${_pkgver}"
-        'default-xsettings-xml.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/default-xsettings-xml.patch?h=packages/xfce4-settings'
+        'default-xsettings-xml.patch'
         'remove-settings-manager.patch'
         'remove-accessibility-settings.patch'
-        'remove-session-manager-connection.patch')
+        'remove-session-manager-connection.patch'
+        'remove-colord-support.patch')
 sha256sums=('SKIP'
-            '8e9a6c70ab0ceb5d91b637dc290768f8a47edb5d7b6e2eebc4459dbc4ee040d7'
-            'c74353e795c54a8c1268835026236fae37ac196a621d871a2e518c1087aa0248'
-            '250ffff5d8c19649e649eed3b2025efbee938432097b8dc50d807581d145ef1b'
-            'd536164dbe05d9f33f3d9b0f022d4146bd74285ac87deaec81e7cd6e9349a252')
+            '4ae19d6ddb5b343490bae5c31342d5c179ab707ec45f0ac74f5b7d3096484353'
+            '32891ce3341b66393278527a77e1fa3091c569c32e722b2906c7af77b5787c65'
+            'faccdfa9d632d8eb5d837ec8e6718ad3e8988f3843d1035bd3133b76046f0aae'
+            '60673ce39d805366abbd512055a2294bece7c1663ae04f013d5271bcbc1a7275'
+            '185f8577db0365086b1f687c0e83a7eee4ad50fce5c3f15882c105a26f7864be')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -48,6 +50,9 @@ prepare() {
 
   # Remove session-manager support
   patch -Np1 -i "$srcdir/remove-session-manager-connection.patch"
+
+  # Remove colord support.
+  patch -Np1 -i "$srcdir/remove-colord-support.patch"
 }
 
 build() {

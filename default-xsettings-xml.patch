@@ -1,8 +1,9 @@
-diff -upr xfce4-settings-4.12.0.orig/xfsettingsd/xsettings.xml xfce4-settings-4.12.0/xfsettingsd/xsettings.xml
---- xfce4-settings-4.12.0.orig/xfsettingsd/xsettings.xml	2015-02-24 03:33:11.000000000 +0200
-+++ xfce4-settings-4.12.0/xfsettingsd/xsettings.xml	2015-03-01 09:52:24.376869688 +0200
+diff --git a/xfsettingsd/xsettings.xml b/xfsettingsd/xsettings.xml
+index d8fe2ac4..ea690ce8 100644
+--- a/xfsettingsd/xsettings.xml
++++ b/xfsettingsd/xsettings.xml
 @@ -6,8 +6,8 @@
- <?xml version="1.0" encoding="UTF-8"?>
+ 
  <channel name="xsettings" version="1.0">
    <property name="Net" type="empty">
 -    <property name="ThemeName" type="empty"/>
