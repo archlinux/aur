@@ -117,7 +117,7 @@ _pkgvermajmin="6.5"
 _pkgverpatch=".0"
 # {alpha/beta/beta2/rc}
 _dev_suffix="rc"
-pkgrel=2
+pkgrel=4
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_local_src_tree && pkgver=6.6.6
 if [[ -n ${_dev_suffix} ]]; then
@@ -169,8 +169,6 @@ optdepends=('qtcreator: Integrated IDE development')
 makedepends=("git" "pkgconfig" "gcc" "gperf" "python" "clang" "cmake" "ninja" "libc++" "pcre" "harfbuzz" "mold")
 #_provider=http://qt.mirror.constant.com/
 _provider=https://download.qt.io
-_tmpfs_dir=/vortex/build
-
 source=()
 sha256sums=('5216feaff1396237a5f43137166c4f8f131cfb3cfd884d1dcef37c4df72d31a6')
 
@@ -231,7 +229,7 @@ build() {
   local _configure_line_fn=configure_line
   local _configure_line="cmake \
                                 -GNinja \
-                                -DCMAKE_BUILD_TYPE=Rel \
+                                -DFEATURE_optimize_size=ON \
                                 -DCMAKE_BUILD_TYPE=RelWithDebInfo \
                                 -DFEATURE_separate_debug_info=ON \
                                 -DBUILD_WITH_PCH=OFF \
