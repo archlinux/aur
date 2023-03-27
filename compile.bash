@@ -37,20 +37,21 @@ build() {
 		# The viewer requires an average of 4GB of memory per core to link
 		requiredmemorykb=$(($(nproc) * mempercorekb))
 		# Source: Total Used Free
-		free_output="$(free --kilo --total | tr -s ' ')"
+		free_output="$(free --kilo --total | tail -n+2| tr -s ' ')"
 		totalmemorykb=$(grep Total <<< "$free_output" | cut -d ' ' -f 2)
-		freememorykb=$(grep Total <<< "$free_output" | cut -d ' ' -f 4)
-		#echo "Total memory:    $totalmemorykb (includes swap)"
-		#echo "Free memory:     $freememorykb"
-		#echo "Required memory: $requiredmemorykb"
+		availablememorykb=$(cut -d ' ' -f 7 <<< "$free_output")
+		echo "Total memory:         $totalmemorykb (includes swap)"
+		echo "Available memory:     $availablememorykb"
+		echo "Required memory:      $requiredmemorykb"
 		if [[ ${requiredmemorykb} -gt ${totalmemorykb} ]]; then
-			echo "Not enough physical memory to build with all cores, adjusting"
+			echo "Warning: Not enough physical memory to build with all cores, adjusting"
 			echo "Estimated required memory to build with all cores: $((requiredmemorykb/1024/1024)) GB"
-			if [[ ${requiredmemorykb} -gt ${freememorykb} ]]; then
+			echo "Available memory on this system: $((availablememorykb/1024/1024)) GB"
+			if [[ ${requiredmemorykb} -gt ${availablememorykb} ]]; then
 				jobs=1
-				echo "Allocating build jobs according to available memory (including swap) (${freememorykb}/${requiredmemorykb})..."
+				echo "Allocating build jobs according to available memory (including swap) (${availablememorykb}/${requiredmemorykb})..."
 				# FIXME: Goes one iteration beyond what it should
-				while [[ $((jobs * mempercorekb)) -lt ${freememorykb} ]]; do
+				while [[ $((jobs * mempercorekb)) -lt ${availablememorykb} ]]; do
 					jobs=$((jobs+1))
 					echo -e "${jobs}...$(((jobs * mempercorekb)/1024/1024))GB"
 				done
