@@ -1,14 +1,13 @@
 pkgbase = dell-command-configure
 	pkgdesc = Configure various BIOS features on Dell laptops
 	pkgver = 4.10.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.dell.com/support/kbdoc/000178000/dell-command-configure
-	install = dell-command-configure.install
 	arch = x86_64
 	license = unknown
 	depends = bash
 	depends = libsmbios
-	depends = openssl
+	depends = openssl-1.1
 	depends = pciutils
 	provides = libdchtvm.so=9
 	provides = libdchipm.so=9
@@ -19,7 +18,7 @@ pkgbase = dell-command-configure
 	provides = libsmbios_c.so=2
 	provides = libhapiintf.so
 	provides = srvadmin-hapi
-	source = dell-command-configure-4.10.0.5.tar.gz::https://dl.dell.com/FOLDER09518608M/1/command-configure_4.10.0-5.ubuntu20_amd64.tar.gz
-	sha256sums = 8c07db9dd7a0e1f450bd58c1649ef654f3afc2cc5b28ba2b2fbdcb243bb4738b
+	source = dell-command-configure-4.10.0.5.tar.gz::https://dl.dell.com/FOLDER09518608M/1/command-configure_4.10.0-5.ubuntu22_amd64.tar.gz
+	sha256sums = 1e27b2f75b53af67ed8b3d720314ef071e860183c891a4371db187a8c4b320d4
 
 pkgname = dell-command-configure

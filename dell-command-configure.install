@@ -1,4 +1,0 @@
-post_upgrade() {
-	echo ":: Re-building initcpio"
-	mkinitcpio -P
-}

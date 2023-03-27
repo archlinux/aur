@@ -4,17 +4,16 @@
 pkgname=dell-command-configure
 _pkgver=4.10.0-5
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc='Configure various BIOS features on Dell laptops'
 arch=('x86_64')
 url='https://www.dell.com/support/kbdoc/000178000/dell-command-configure'
 license=('unknown')
-depends=('bash' 'libsmbios' 'openssl' 'pciutils')
+depends=('bash' 'libsmbios' 'openssl-1.1' 'pciutils')
 provides=('libdchtvm.so=9' 'libdchipm.so=9' 'libdchesm.so=9' 'libdchcfl.so=9'
           'libdchbas.so=9' 'libdchapi.so=9' 'libsmbios_c.so=2' 'libhapiintf.so'
           'srvadmin-hapi')
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
-install=dell-command-configure.install
 source=("${pkgname}-${pkgver}.tar.gz::https://dl.dell.com/FOLDER09518608M/1/command-configure_${_pkgver}.ubuntu22_amd64.tar.gz")
 sha256sums=('1e27b2f75b53af67ed8b3d720314ef071e860183c891a4371db187a8c4b320d4')
 
