@@ -3,8 +3,8 @@
 pkgname=stellarium-bin
 _pkgname=stellarium
 _pkgname2=Stellarium
-pkgver=1.2
-_pkgtag=1.2
+pkgver=23.1
+_pkgtag=v$pkgver
 pkgrel=1
 pkgdesc="Free and open source planetarium showing a realistic sky in 3D"
 arch=('x86_64')
@@ -14,9 +14,10 @@ depends=()
 conflicts=($_pkgname)
 validpgpkeys=('79151C2E6351E7278DA1A730BF38D4D02A328DFF')
 
-_target="$_pkgname2-$pkgver-x86_64.AppImage"
+_qtver=5
+_target="$_pkgname2-$pkgver-qt$_qtver-x86_64.AppImage"
 _verifyfile="${_target}.asc"
-_download_url="https://github.com/Stellarium/$_pkgname/releases/download/v$_pkgtag"
+_download_url="https://github.com/Stellarium/$_pkgname/releases/download/$_pkgtag"
 
 source=(
 	"$_download_url/$_target"
@@ -24,8 +25,8 @@ source=(
 	"$_pkgname.bash"
 )
 sha256sums=(
-	'081c88d008345fc0a73788872687905e54717b9269747e9e776e539720c8fa03'
-	'fcb8c3c9bd61d29cf9559c655ada18ddae14959665809d8e3140791ba6c12f92'
+	'8f59f09c8b156f9384d814995d039b734aa9613beedee845dc74849194c23222'
+	'58f3e469d6b526c5167e59ab8f0cfc2f950467e9494e36a418e7c2203769690e'
 	'cc8903384ef8b8349dda202be45c3f68542dc74d40c4a1c266a5e057e96323ff'
 )
 
@@ -47,7 +48,6 @@ prepare() {
 }
 
 package() {
-	# install -Dm755 ./$_target -t $pkgdir/opt/$_pkgname # Copying the AppImage does not work
 	mkdir -p $pkgdir/opt/$_pkgname
 	cp -rf ./$_squashfs_root $pkgdir/opt/$_pkgname
 
