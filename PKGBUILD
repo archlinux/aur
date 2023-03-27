@@ -1,5 +1,6 @@
 pkgname=hostapd-wifi6
-pkgdesc="hostapd enabled IEEE802.11* in defconfig"
+pkgdesc='the hostapd be enabled AC/AX and ACS support and applied intel lar patch
+and provide useful service unit hostapd@.service and hostapd-ACS@.service'
 pkgver=2.10
 pkgrel=5
 arch=('x86_64')
