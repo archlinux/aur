@@ -1,0 +1,11 @@
+[Unit]
+Description=tgp telegram proxy
+After=network.target
+
+[Service]
+StandardOutput=syslog
+StandardError=syslog
+ExecStart=/usr/bin/tgp /etc/tgp.toml
+
+[Install]
+WantedBy=multi-user.target
