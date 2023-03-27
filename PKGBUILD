@@ -9,7 +9,7 @@ _realname=MTPlayer
 _majorver=13
 _minorver=2023.03.07
 pkgver=${_majorver}__${_minorver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Offers access to the Mediathek of different german tv stations (ARD, ZDF, Arte, etc.)"
 arch=('any')
 url="https://www.p2tools.de/mtplayer/"
@@ -21,7 +21,7 @@ optdepends=('rtmpdump: stream flash'
 source=("https://github.com/xaverW/${_realname}/releases/download/version-${_majorver}/${_realname}-${pkgver}.zip"
         $pkgname.desktop $pkgname.sh)
 sha256sums=('a0ebf17e6321b197afd87677ab6f44488177032ada9951aa51de88952aa4230c'
-            '00ac87b32ec859299ac8ce456a3d2773f5e849779f726711561c32ed5a075dc8'
+            '5194cdac06d08c84d3de151aaf77990a90ff14483329efcb0f6f898f3007ad24'
             'e41444cc5fb59938e1532eeb7d6e9163812226dc8f5790e529858bcf4b38cd30')
 
 package() {

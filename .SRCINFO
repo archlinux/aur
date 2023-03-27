@@ -1,7 +1,7 @@
 pkgbase = mtplayer
 	pkgdesc = Offers access to the Mediathek of different german tv stations (ARD, ZDF, Arte, etc.)
 	pkgver = 13__2023.03.07
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.p2tools.de/mtplayer/
 	arch = any
 	license = GPL3
@@ -14,7 +14,7 @@ pkgbase = mtplayer
 	source = mtplayer.desktop
 	source = mtplayer.sh
 	sha256sums = a0ebf17e6321b197afd87677ab6f44488177032ada9951aa51de88952aa4230c
-	sha256sums = 00ac87b32ec859299ac8ce456a3d2773f5e849779f726711561c32ed5a075dc8
+	sha256sums = 5194cdac06d08c84d3de151aaf77990a90ff14483329efcb0f6f898f3007ad24
 	sha256sums = e41444cc5fb59938e1532eeb7d6e9163812226dc8f5790e529858bcf4b38cd30
 
 pkgname = mtplayer
