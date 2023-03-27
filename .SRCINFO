@@ -1,0 +1,15 @@
+pkgbase = shstatus
+	pkgdesc = A simple statusline generator for i3bar and swaybar
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/acuteenvy/shstatus
+	arch = any
+	license = MIT
+	depends = bash
+	depends = coreutils
+	depends = procps-ng
+	backup = etc/shstatus/config.sh
+	source = shstatus-1.0.0.tar.gz::https://github.com/acuteenvy/shstatus/archive/v1.0.0.tar.gz
+	b2sums = ad1c2adbd57f48f2176424f52e9f4f099f3de5e886c806ecc88895571030e8991236f591ead31d6384242173e59dfb1320cfcc0fa4bf6bf6725160ca27409271
+
+pkgname = shstatus
