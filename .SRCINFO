@@ -1,8 +1,8 @@
 pkgbase = mdsilo-bin
 	pkgdesc = Local-first, lightweight personal wiki, RSS and podcast client (pre-compiled)
 	pkgver = 0.5.5
-	pkgrel = 1
-	url = https://mdsilo.com/
+	pkgrel = 2
+	url = https://github.com/mdSilo/mdSilo-app
 	arch = x86_64
 	license = AGPL3
 	depends = cairo

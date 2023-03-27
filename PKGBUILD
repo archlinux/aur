@@ -4,11 +4,11 @@
 pkgname='mdsilo-bin'
 _pkgname="${pkgname%%-bin}"
 pkgver=0.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Local-first, lightweight personal wiki, RSS and podcast client (pre-compiled)'
 arch=('x86_64')
-url='https://mdsilo.com/'
-_url='https://github.com/mdSilo/mdSilo-app'
+#url='https://mdsilo.com/'
+url='https://github.com/mdSilo/mdSilo-app'
 license=('AGPL3')
 depends=(
   'cairo'
@@ -24,7 +24,7 @@ depends=(
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
-  "$_url/releases/download/app-v$pkgver/${_pkgname}_${pkgver}_amd64.deb"
+  "$url/releases/download/app-v$pkgver/${_pkgname}_${pkgver}_amd64.deb"
 )
 
 package() {
