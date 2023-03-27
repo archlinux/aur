@@ -1,0 +1,78 @@
+diff --unified --recursive --text src.old/scummvm/engines/engine.cpp src.new/scummvm/engines/engine.cpp
+--- src.old/scummvm/engines/engine.cpp	2023-03-27 09:28:33.498078687 +0200
++++ src.new/scummvm/engines/engine.cpp	2023-03-27 09:29:20.918078658 +0200
+@@ -241,74 +241,8 @@
+ #include "logo_data.h"
+ 
+ void splashScreen() {
+-	Common::MemoryReadStream stream(logo_data, ARRAYSIZE(logo_data));
+-
+-	Image::BitmapDecoder bitmap;
+-
+-	if (!bitmap.loadStream(stream)) {
+-		warning("Error loading logo file");
+-		return;
+-	}
+-
+ 	g_system->showOverlay();
+-	float scaleFactor = g_system->getHiDPIScreenFactor();
+-	int16 overlayWidth = g_system->getOverlayWidth();
+-	int16 overlayHeight = g_system->getOverlayHeight();
+-	int16 scaledW = (int16)(overlayWidth / scaleFactor);
+-	int16 scaledH = (int16)(overlayHeight / scaleFactor);
+-
+-	// Fill with orange
+-	Graphics::Surface screen;
+-	screen.create(scaledW, scaledH, g_system->getOverlayFormat());
+-	screen.fillRect(Common::Rect(screen.w, screen.h), screen.format.ARGBToColor(0xff, 0xcc, 0x66, 0x00));
+-
+-	// Print version information
+-	const Graphics::Font *font = FontMan.getFontByUsage(Graphics::FontManager::kConsoleFont);
+-	int w = font->getStringWidth(gScummVMVersionDate);
+-	int x = screen.w - w - 5;
+-	int y = screen.h - font->getFontHeight() - 5;
+-	font->drawString(&screen, gScummVMVersionDate, x, y, w, screen.format.ARGBToColor(0xff, 0, 0, 0));
+-
+-	// Scale if needed and copy to overlay
+-	if (screen.w != overlayWidth) {
+-		Graphics::Surface *scaledScreen = screen.scale(overlayWidth, overlayHeight, false);
+-		g_system->copyRectToOverlay(scaledScreen->getPixels(), scaledScreen->pitch, 0, 0, scaledScreen->w, scaledScreen->h);
+-		scaledScreen->free();
+-		delete scaledScreen;
+-	} else
+-		g_system->copyRectToOverlay(screen.getPixels(), screen.pitch, 0, 0, screen.w, screen.h);
+-	screen.free();
+-
+-	// Draw logo
+-	Graphics::Surface *logo = bitmap.getSurface()->convertTo(g_system->getOverlayFormat(), bitmap.getPalette());
+-	if (scaleFactor != 1.0f) {
+-		Graphics::Surface *tmp = logo->scale(int16(logo->w * scaleFactor), int16(logo->h * scaleFactor), true);
+-		logo->free();
+-		delete logo;
+-		logo = tmp;
+-	}
+-
+-	int lx = MAX((overlayWidth - logo->w) / 2, 0);
+-	int ly = MAX((overlayHeight - logo->h) / 2, 0);
+-	int lw = MIN<uint16>(logo->w, overlayWidth - lx);
+-	int lh = MIN<uint16>(logo->h, overlayHeight - ly);
+-
+-	g_system->copyRectToOverlay(logo->getPixels(), logo->pitch, lx, ly, lw, lh);
+-	logo->free();
+-	delete logo;
+-
+ 	g_system->updateScreen();
+-
+-	// Delay 0.6 secs
+-	uint time0 = g_system->getMillis();
+-	Common::Event event;
+-
+-	// We must poll an event in order to have the window shown at least on Mac
+-	g_system->getEventManager()->pollEvent(event);
+-
+-	while (time0 + 600 > g_system->getMillis()) {
+-		g_system->delayMillis(10);
+-	}
+ 	g_system->hideOverlay();
+ 
+ 	splash = true;

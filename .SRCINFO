@@ -1,6 +1,6 @@
 pkgbase = libretro-scummvm-git
 	pkgdesc = ScummVM core
-	pkgver = 140529.0c4e573ce53
+	pkgver = 140558.8247aad108c
 	pkgrel = 1
 	url = https://github.com/libretro/scummvm
 	arch = x86_64
@@ -12,7 +12,9 @@ pkgbase = libretro-scummvm-git
 	makedepends = unzip
 	conflicts = libretro-scummvm
 	source = git+https://github.com/libretro/scummvm.git
-	sha256sums = SKIP
+	source = remove_splash.patch
+	sha512sums = SKIP
+	sha512sums = 0252280d86140476894a475738e42827dd6371ec50b46d58f432c43ea82330b750b9965ed42d62f5e46e327109546129b2a15410dbedce308e281e55c0abbb61
 
 pkgname = libretro-scummvm-git
 
