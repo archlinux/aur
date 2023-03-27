@@ -1,12 +1,14 @@
 pkgbase = moosync-appimage
 	pkgdesc = Music player capable of playing local audio or from Youtube, Spotify and many more
 	pkgver = 7.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://moosync.app/
 	arch = x86_64
 	license = GPL3
 	depends = hicolor-icon-theme
 	depends = zlib
+	depends = glibc
+	provides = moosync
 	conflicts = moosync
 	options = !strip
 	source = moosync-7.1.0.AppImage::https://github.com/Moosync/Moosync/releases/download/v7.1.0/moosync-7.1.0-linux-x86_64.AppImage
