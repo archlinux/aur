@@ -1,7 +1,7 @@
 # Maintainer: nekgem2 <nekgem2@firemail.cc>
 pkgname=lokinet
 pkgver=0.9.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Anonymous, decentralized and IP based overlay network for the internet."
 arch=('x86_64' 'aarch64')
 url="https://lokinet.org"
@@ -35,6 +35,7 @@ build() {
 
 	# XXX cmake stuff overrides CFLAGS
 	cmake \
+		-DLOKINET_VERSIONTAG=release \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_C_FLAGS="$CFLAGS" \
