@@ -1,7 +1,7 @@
 pkgbase = hostapd-wifi6
-	pkgdesc = hostapd enabled IEEE802.11* in defconfig
+	pkgdesc = hostapd than enabled AC/AX and ACS support and applied intel lar patch and provide useful service unit hostapd@.service and hostapd-ACS@.service
 	pkgver = 2.10
-	pkgrel = 5
+	pkgrel = 6
 	url = https://w1.fi/hostapd
 	arch = x86_64
 	license = BSD
