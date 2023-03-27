@@ -2,9 +2,9 @@
 # Do not forget to run `makepkg --printsrcinfo > .SRCINFO`
 
 _pkgname=openvpn
-_pkgver=2.5.8
+_pkgver=2.6.2
 pkgname=${_pkgname}-password-save
-pkgver=2.5.8+0357ceb8
+pkgver=2.6.2+42f78959
 pkgrel=1
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network)'
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=("git+https://github.com/OpenVPN/openvpn.git#tag=v${_pkgver}?signed"
         'sysusers.conf'
         'tmpfiles.conf')
 sha256sums=('SKIP'
-            '8e7d292514f30729bc37d6681789b1bfdf87a992a3aa77e2a28b8da9cd8d4bfe'
+            '77874824d96c1fd6c14259a6ea16232ae574dda3d5adba1798ccd6c93694846c'
             '3646b865ac67783fafc6652589cfe2a3105ecef06f3907f33de5135815f6a621'
             'b1436f953a4f1be7083711d11928a9924993f940ff56ff92d288d6100df673fc')
 
