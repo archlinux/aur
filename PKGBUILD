@@ -1,4 +1,4 @@
-rust#Maintainer: Rein Fernhout (LevitatingBusinessMan) <me@levitati.ng>
+#Maintainer: Rein Fernhout (LevitatingBusinessMan) <me@levitati.ng>
 
 pkgname=openai-cli
 pkgver=r24.f5ba2b9
