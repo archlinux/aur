@@ -3,13 +3,13 @@
 _gitname=VmChamp
 pkgname=vmchamp-git
 pkgver=v0.0.1.r4.ge37e9ef
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple and fast creation of throwaway VMs on your local machine."
 arch=('x86_64')
 license=('custom')
 url='https://github.com/wubbl0rz/VmChamp'
 
-depends=('zlib')
+depends=('zlib' 'libvirt')
 makedepends=("git" "dotnet-sdk-preview-bin")
 
 source=(
