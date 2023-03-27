@@ -1,5 +1,5 @@
 pkgname=iana-root-hints
-pkgver=2023022203
+pkgver=2023032201
 pkgrel=1
 pkgdesc="Contains the names and IP addresses of the authoritative name servers for the root zone"
 arch=('any')
@@ -8,7 +8,7 @@ license=('unknown')
 source=("https://www.internic.net/domain/named.root"{,.sig})
 
 sha256sums=(
-    '28e2aec65ff32a69f043db66121c07559bc4f1858e9d539714d2e74299a511b2'
+    'fcc364b2b46818a3e415eb522b9d2b0f7802179703835dffbee7ef31867781ff'
     'SKIP'
 )
 
