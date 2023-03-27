@@ -1,13 +1,14 @@
 pkgbase = pipewire-support
 	pkgdesc = Meta package for all important packages to use PipeWire
 	pkgver = 1
-	pkgrel = 15
+	pkgrel = 16
 	url = https://wiki.archlinux.org/index.php/PipeWire
 	install = pipewire-support.install
 	arch = any
 	license = GPL
 	depends = gst-plugin-pipewire
 	depends = pipewire
+	depends = libpipewire
 	depends = pipewire-alsa
 	depends = pipewire-jack
 	depends = pipewire-pulse

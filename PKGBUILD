@@ -1,8 +1,9 @@
 # Maintainer: Librewish <librewish@gmail.com>
+# Contributor: Mikhail Velichko <efklid@gmail.com>
 
 pkgname=pipewire-support
 pkgver=1
-pkgrel=15
+pkgrel=16
 
 arch=('any')
 url="https://wiki.archlinux.org/index.php/PipeWire"
@@ -10,6 +11,7 @@ license=('GPL')
 pkgdesc="Meta package for all important packages to use PipeWire"
 depends=("gst-plugin-pipewire"
         "pipewire"
+        "libpipewire"
         "pipewire-alsa"
         "pipewire-jack"
         "pipewire-pulse"
