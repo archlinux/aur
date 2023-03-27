@@ -1,19 +1,21 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname=netpad-appimage
 _pkgname=netpad
-pkgver=0.1.0
+pkgname="${_pkgname}-appimage"
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A cross-platform C# editor and playground."
 arch=('x86_64')
 url="https://github.com/tareqimbasher/NetPad"
-license=('MIT')
+license=(MIT)
 options=(!strip)
-providers="tareqimbasher"
-conflits=(netpad)
-depends=(zlib hicolor-icon-theme)
-source=("${_pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/netpad-${pkgver}-x86_64.AppImage")
-sha256sums=('58fc52ddabd426918f49eb36e930805d5dabb510d0d5dacc8c35bb4fca9906c0')
+providers=(tareqimbasher)
+conflits=("${_pkgname}")
 _install_path="/opt/appimages" 
+depends=(zlib hicolor-icon-theme glibc)
+source=("${_pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/netpad-${pkgver}-x86_64.AppImage"
+    "LICENSE::${url}/raw/main/LICENSE")
+sha256sums=('3830437465a56059cf5c7aefa8801d5d9e880e15531fcb0d4e73f5380a011359'
+            'bf644b3a7e5dc5d7c4ce8b9db8c8df97d41efa3c1bff8e4c7dfe78e668561341')
 prepare() {
     chmod a+x "${_pkgname}-${pkgver}.AppImage"
     "./${_pkgname}-${pkgver}.AppImage" --appimage-extract > /dev/null
@@ -25,4 +27,5 @@ package() {
         install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png"
     done
     install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
