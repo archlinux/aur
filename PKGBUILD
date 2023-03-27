@@ -1,27 +1,23 @@
 # Maintainer: Christian Schendel (doppelhelix@gmail.com)
 
 pkgname=gnome-shell-extension-pano-git
-pkgver=10.r23.gac43c48
-pkgrel=2
+pkgver=19.r15.g7c6e931
+pkgrel=1
 pkgdesc="Next-gen Clipboard Manager"
 arch=('any')
 url="https://github.com/oae/gnome-shell-pano"
-install=${pkgname%-git}.install
 license=('GPL')
-groups=('gnome-shell-extensions')
 depends=('gnome-shell>=1:42'
          'libgda6'
-         'gobject-introspection'
          'cogl'
          'gsound')
 makedepends=('git'
-             'glib2'
+             'gobject-introspection'
              'yarn'
              'appstream')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+${url}.git")
-options=('!strip')
 md5sums=('SKIP')
 
 pkgver() {
@@ -46,13 +42,10 @@ package() {
   local schema=$(grep -Po '(?<="settings-schema": ")[^"]*' metadata.json).gschema.xml
   local destdir="${pkgdir}/usr/share/gnome-shell/extensions/${uuid}"
   install -dm755 "${destdir}"
-  find . -regextype posix-egrep -regex ".*\.(js|json|xml|css|mo|compiled|svg|png)$" -exec\
+  find . -regextype posix-egrep -regex ".*\.(js|json|xml|css|compiled|svg|png)$" -exec\
      install -Dm 644 {} ${destdir}/{} \;
   install -Dm644 "${srcdir}/${pkgname%-git}/dist/schemas/${schema}" \
     "${pkgdir}/usr/share/glib-2.0/schemas/${schema}"
-# rebuild compiled GSettings schemas if missing
-  if [[ ! -f "${destdir}/schemas/gschemas.compiled" ]]; then
-    glib-compile-schemas "${destdir}/schemas"
-  fi
+  cp -r "${srcdir}/${pkgname%-git}/dist/locale" "$pkgdir/usr/share/"
 }
 
