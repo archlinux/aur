@@ -9,7 +9,6 @@ pkgbase = eww-bin
 	depends = pango
 	depends = cairo
 	depends = glibc
-	optdepends = 
 	provides = eww
 	conflicts = eww
 	conflicts = eww-git
