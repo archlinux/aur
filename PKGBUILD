@@ -1,4 +1,5 @@
 # Maintainer: Deltara <boided420 at gmail dot com>
+# Contributor: Hilton Medeiros <medeiros.hilton@gmail.com>
 pkgname=mun-bin
 pkgver=0.4.0
 pkgrel=1

@@ -8,12 +8,11 @@ pkgbase = mun-bin
 	depends = zlib
 	depends = ncurses5-compat-libs
 	depends = libffi6
-    depends = libffi7
+	depends = libffi7
 	provides = mun
 	conflicts = mun
 	conflicts = mun-git
-	source = https://github.com/mun-lang/mun/releases/download/v0.4.0/mun-linux-x86_64-0.4.0.tar.gz
+	source = https://github.com/mun-lang/mun/releases/download/v0.4.0/mun-linux-x86_64-0.4.0.tar.xz
 	md5sums = 137933b8c9922b7f02e7a5c22574baf1
 
 pkgname = mun-bin
-
