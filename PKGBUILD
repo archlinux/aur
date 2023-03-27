@@ -16,7 +16,7 @@ md5sums=(SKIP)
 
 pkgver() {
   cd "blackchocobo"
-  git describe --long | cut -c2-9 | sed 's/-/./g'
+  git describe --long | sed 's/-/./g;s/v//g'  | grep -o "^[0-9]*.[0-9]*.[0-9]*.[0-9]*"
 }
 
 build() {
