@@ -4,21 +4,21 @@
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 
 pkgname=stellarium
-pkgver=1.2
+pkgver=23.1
 pkgrel=1
 pkgdesc="Software which renders realistic skies in real time with OpenGL"
 arch=(x86_64)
 url="https://${pkgname}.org"
 license=(GPL2)
-depends=('libpng' 'libglvnd' 'freetype2' 'openssl' 'gpsd' 'calcmysky' 'libindi'
-  'qt6-charts' 'qt6-serialport' 'qt6-multimedia' 'qt6-positioning' 'qt6-webengine') # 'qxlsx'
+depends=('libpng' 'libglvnd' 'freetype2' 'openssl' 'gpsd' 'calcmysky'
+  'qt6-charts' 'qt6-serialport' 'qt6-multimedia' 'qt6-positioning' 'qt6-webengine') # 'libindi' 'qxlsx-qt6'
 makedepends=('cmake' 'ninja' 'mesa' 'qt6-tools')
 source=(https://github.com/Stellarium/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz{,.asc})
 validpgpkeys=('79151C2E6351E7278DA1A730BF38D4D02A328DFF') # Alexander Wolf <alex.v.wolf@gmail.com>
-md5sums=('1a9b2b69300ac54fda47cf4b801bf07f'
-         'SKIP')
-sha256sums=('2cbf95839c5fbd312c08ad0f92b2ddf8a7f822bd32bc31e91f3aa28920674f60'
-            'SKIP')
+md5sums=('7dde5f42e434fff6aa622cd239385709'
+  'SKIP')
+sha256sums=('c0d519ef44e78c0609b576c068e1ef2ad09e635d4ff73de7d41bb8c7323bad27'
+  'SKIP')
 
 build() {
   PATH="/usr/bin/core_perl/:$PATH"
@@ -38,6 +38,7 @@ build() {
     -DENABLE_SHOWMYSKY=ON \
     -DENABLE_TESTING=0 \
     -DENABLE_XLSX=0 \
+    -DPREFER_SYSTEM_INDILIB=No \
     -Wno-dev
   cmake --build build --target all
 }
