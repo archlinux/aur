@@ -7,7 +7,7 @@ pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm")
 pkgver=2.0.0
 _pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -128,7 +128,7 @@ b2sums=('SKIP'
         'eea86bbed0a37e1661035913536456f90e0cd1e687c7e4103011f0688bc8347b6fc2ff82019909c41e7c89ddbc3b80dde641e88abf406f4faebc71b0bb693d25'
         '6286b05d5b5143f117363e3ce3c7d693910f53845aeb6f501b3eea64aa71778cb2d7dcd4ac945d5321ef23b4da02446e86dedc6a9b6a998df4a7f3b1ce50550a'
         '232d2aca7cae8da511d1451890f8696d47da72276929ac5731a1a1a481d2a515fa7288bf33730d8ea2c892616551a74ca2439b53de6b1dfee156c30919120741')
-options=('!lto')
+options=('!lto' '!debug')
 
 get_pyver () {
   python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))'
