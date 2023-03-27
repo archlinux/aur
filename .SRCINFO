@@ -1,0 +1,20 @@
+pkgbase = eww-bin
+	pkgdesc = EWW - Widgets for everyone!
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/elkowar/eww
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = pango
+	depends = cairo
+	depends = glibc
+	optdepends = 
+	provides = eww
+	conflicts = eww
+	conflicts = eww-git
+	conflicts = eww-wayland
+	source = https://github.com/TheBearodactyl/eww-bin/releases/download/0.4.0/eww
+	sha256sums = ba430d798b8ef1b2e0a66796fa363046e55ad43e4a05ca787ef5d2bb87e22809
+
+pkgname = eww-bin
