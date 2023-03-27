@@ -1,30 +1,41 @@
-# Maintainer: th1nhhdk <th1nhhdk@tutanota.com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: th1nhhdk <th1nhhdk@tutanota.com>
 # Contributor: Rafael Fontenelle <rafaelff@gnome.org>
-
 pkgname=gnome-obfuscate
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="Censor private information."
 arch=('x86_64')
 url="https://gitlab.gnome.org/World/obfuscate"
 license=('GPL3')
 depends=('libadwaita')
-makedepends=('tar' 'xz' 'meson' 'rust')
+makedepends=('cargo' 'git' 'meson')
 checkdepends=('appstream-glib')
-provides=($pkgname)
-conflicts=($pkgname-git)
-source=("https://gitlab.gnome.org/World/obfuscate/uploads/43de595795bf88e96666e2a28c711175/obfuscate-$pkgver.tar.xz")
-sha256sums=('eac73be3bb259d52acd6d66e383d18466f5c478a96f3f3f7ee96e7cc7cdfb7ca')
+_commit=4dd6b7cd322cff53394473d4426dd2f22c70b82d  # tags/0.0.8^0
+source=("git+https://gitlab.gnome.org/World/obfuscate.git#commit=$_commit")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd obfuscate
+  git describe --tags | sed 's/-/+/g'
+}
+
+prepare() {
+  cd obfuscate
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
-  arch-meson obfuscate-$pkgver build
+  export RUSTUP_TOOLCHAIN=stable
+  arch-meson obfuscate build
   meson compile -C build
 }
 
 check() {
-  meson test -C build
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }

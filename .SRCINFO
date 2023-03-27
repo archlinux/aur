@@ -1,19 +1,16 @@
 pkgbase = gnome-obfuscate
 	pkgdesc = Censor private information.
-	pkgver = 0.0.7
+	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/obfuscate
 	arch = x86_64
 	license = GPL3
 	checkdepends = appstream-glib
-	makedepends = tar
-	makedepends = xz
+	makedepends = cargo
+	makedepends = git
 	makedepends = meson
-	makedepends = rust
 	depends = libadwaita
-	provides = gnome-obfuscate
-	conflicts = gnome-obfuscate-git
-	source = https://gitlab.gnome.org/World/obfuscate/uploads/43de595795bf88e96666e2a28c711175/obfuscate-0.0.7.tar.xz
-	sha256sums = eac73be3bb259d52acd6d66e383d18466f5c478a96f3f3f7ee96e7cc7cdfb7ca
+	source = git+https://gitlab.gnome.org/World/obfuscate.git#commit=4dd6b7cd322cff53394473d4426dd2f22c70b82d
+	sha256sums = SKIP
 
 pkgname = gnome-obfuscate
