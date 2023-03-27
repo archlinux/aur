@@ -1,6 +1,6 @@
 # Maintainer: Sebastiaan de Schaetzen <sebastiaan.de.schaetzen@gmail.com>
 pkgname=binutils-ia16
-pkgver=20221221
+pkgver=20230319
 pkgrel=1
 epoch=
 pkgdesc="IA-16 (Intel 16-bit x86) port of GNU Binutils"
@@ -11,7 +11,7 @@ depends=(glibc zlib)
 checkdepends=(dejagnu bc)
 options=(staticlibs !distcc !ccache)
 source=("https://github.com/tkchia/binutils-ia16/archive/refs/tags/$pkgver.tar.gz")
-md5sums=('36d72eed7f40a91170ec2d7bd8b30ca2')
+md5sums=('f39ea58098ef7be273810494e6db7276')
 
 build() {
 	mkdir -p build-binutils
