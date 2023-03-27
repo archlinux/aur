@@ -4,7 +4,7 @@
 pkgname=sing-box-git
 _pkgname=sing-box
 pkgver=1.2.0.r10.g5647b32
-pkgrel=1
+pkgrel=2
 
 pkgdesc='The universal proxy platform (git version).'
 arch=('x86_64' 'i686')
@@ -36,6 +36,7 @@ build(){
     export CGO_CFLAGS="$CFLAGS"
     export CGO_CXXFLAGS="$CXXFLAGS"
     export CGO_LDFLAGS="$LDFLAGS"
+    export VERSION=$(go run ./cmd/internal/read_tag)
 
     go build \
         -v \
@@ -44,7 +45,10 @@ build(){
         -mod=readonly \
         -modcacherw \
         -tags "$_tags" \
-        -ldflags '-s -w -buildid= -linkmode=external' \
+        -ldflags "
+            -X \"github.com/sagernet/sing-box/constant.Version=$VERSION\"
+            -s -w -buildid= 
+            -linkmode=external" \
         ./cmd/sing-box
 
     sed -i "/^\[Service\]$/a User=$_pkgname
