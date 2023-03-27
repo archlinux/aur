@@ -4,25 +4,25 @@
 
 _pkgname=pytorch
 pkgbase="python-${_pkgname}"
-pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda")
-pkgver=2.0.0rc5
-_pkgver=2.0.0-rc5
-pkgrel=3
+pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm")
+pkgver=2.0.0
+_pkgver=2.0.0
+pkgrel=1
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
 url="https://pytorch.org"
 license=('BSD')
 depends=('google-glog' 'gflags' 'opencv' 'openmp' 'nccl' 'pybind11' 'python' 'python-yaml' 'libuv'
-         'python-numpy' 'protobuf' 'ffmpeg4.4' 'python-future' 'qt5-base' 'intel-oneapi-mkl'
-         'python-typing_extensions')
+         'python-numpy' 'python-sympy' 'protobuf' 'ffmpeg4.4' 'python-future' 'qt5-base'
+         'intel-oneapi-mkl' 'python-typing_extensions')
 # Exclude the magma package here and add the corresponding {cuda, rocm/hip} version
 # to makedepends of the split packages.
 # The magma package does not allow to build the cuda and rocm/hip code at the same time,
 # so we need to work with the split packages magma-{cuda,hip}.
 makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda'
              'cudnn' 'git' 'rocm-hip-sdk' 'roctracer' 'miopen'
-             'ninja' 'pkgconfig' 'doxygen' 'onednn' 'vulkan-headers' 'shaderc')
+             'ninja' 'pkgconfig' 'doxygen' 'vulkan-headers' 'shaderc')
 source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         # generated using parse-submodules
         "${pkgname}-ARM_NEON_2_x86_SSE::git+https://github.com/intel/ARM_NEON_2_x86_SSE.git"
@@ -74,7 +74,9 @@ source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v
         disable-werror2.patch
         disable-werror3.patch
         disable-werror4.patch
-        ffmpeg4.4.patch)
+        ffmpeg4.4.patch
+        rocblas-batched.patch)
+        
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
@@ -125,7 +127,8 @@ b2sums=('SKIP'
         '985e331b2025e1ca5a4fba5188af0900f1f38bd0fd32c9173deb8bed7358af01e387d4654c7e0389e5f98b6f7cbed053226934d180b8b3b1270bdbbb36fc89b2'
         '96de2729b29c7ce3e4fdd8008f575d24c2c3ef9f85d6217e607902d7b870ac71b9290fde71e87a68d75bb75ef28eacbf5ce04e071146809ccf1e76a03f97b479'
         'eea86bbed0a37e1661035913536456f90e0cd1e687c7e4103011f0688bc8347b6fc2ff82019909c41e7c89ddbc3b80dde641e88abf406f4faebc71b0bb693d25'
-        '6286b05d5b5143f117363e3ce3c7d693910f53845aeb6f501b3eea64aa71778cb2d7dcd4ac945d5321ef23b4da02446e86dedc6a9b6a998df4a7f3b1ce50550a')
+        '6286b05d5b5143f117363e3ce3c7d693910f53845aeb6f501b3eea64aa71778cb2d7dcd4ac945d5321ef23b4da02446e86dedc6a9b6a998df4a7f3b1ce50550a'
+        '232d2aca7cae8da511d1451890f8696d47da72276929ac5731a1a1a481d2a515fa7288bf33730d8ea2c892616551a74ca2439b53de6b1dfee156c30919120741')
 options=('!lto')
 
 get_pyver () {
@@ -205,6 +208,9 @@ prepare() {
 
   # build against ffmpeg4.4
   patch -Np1 -i "${srcdir}/ffmpeg4.4.patch"
+  
+  # fix https://github.com/pytorch/pytorch/issues/97640
+  patch -Np1 -i "${srcdir}/rocblas-batched.patch"
 
   cd "${srcdir}"
 
@@ -213,7 +219,10 @@ prepare() {
   cp -r "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-opt-cuda"
   cp -r "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-rocm"
   cp -r "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-opt-rocm"
+}
 
+# Common build configuration, called in all package() functions.
+_prepare() {
   export VERBOSE=1
   export PYTORCH_BUILD_VERSION="${pkgver}"
   export PYTORCH_BUILD_NUMBER=1
@@ -257,6 +266,7 @@ prepare() {
   # Hack to make sure that the generated dnnl_config.h from onednn can be inlcuded.
   export CXXFLAGS="${CXXFLAGS} -I third_party/ideep/mkl-dnn/third_party/oneDNN/include/"
 }
+
 #
 # Important note on the missing build() function
 #
@@ -305,6 +315,7 @@ package_python-pytorch() {
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
   echo "Building without cuda or rocm and without non-x86-64 optimizations"
+  _prepare
   export USE_CUDA=0
   export USE_CUDNN=0
   export USE_ROCM=0
@@ -324,6 +335,7 @@ package_python-pytorch-opt() {
 
   cd "${srcdir}/${_pkgname}-${pkgver}-opt"
   echo "Building without cuda or rocm and with non-x86-64 optimizations"
+  _prepare
   export USE_CUDA=0
   export USE_CUDNN=0
   export USE_ROCM=0
@@ -336,12 +348,13 @@ package_python-pytorch-opt() {
 
 package_python-pytorch-cuda() {
   pkgdesc="${_pkgdesc} (with CUDA)"
-  depends+=(cuda cudnn magma-cuda onednn)
+  depends+=(cuda cudnn magma-cuda)
   conflicts=(python-pytorch)
   provides=(python-pytorch)
 
   cd "${srcdir}/${_pkgname}-${pkgver}-cuda"
   echo "Building with cuda and without non-x86-64 optimizations"
+  _prepare
   export USE_CUDA=1
   export USE_CUDNN=1
   export USE_ROCM=0
@@ -351,11 +364,14 @@ package_python-pytorch-cuda() {
   python setup.py build || python setup.py build
 
   _package
+  # oneDNN from the repos conflicts with the version in the ideep submodule,
+  # so we have to add the dependency after building the package. 
+  depends+=(onednn)
 }
 
 package_python-pytorch-opt-cuda() {
   pkgdesc="${_pkgdesc} (with CUDA and AVX2 CPU optimizations)"
-  depends+=(cuda cudnn magma-cuda onednn)
+  depends+=(cuda cudnn magma-cuda)
   conflicts=(python-pytorch)
   provides=(python-pytorch python-pytorch-cuda)
 
@@ -364,21 +380,25 @@ package_python-pytorch-opt-cuda() {
   export USE_CUDA=1
   export USE_CUDNN=1
   export USE_ROCM=0
+  _prepare
   echo "add_definitions(-march=haswell)" >> cmake/MiscCheck.cmake
   # same horrible hack as above
   python setup.py build || python setup.py build
 
   _package
+  # see above
+  depends+=(onednn)
 }
 
 package_python-pytorch-rocm() {
   pkgdesc="${_pkgdesc} (with ROCm)"
-  depends+=(rocm-hip-sdk roctracer miopen magma-hip onednn)
+  depends+=(rocm-hip-sdk roctracer miopen magma-hip)
   conflicts=(python-pytorch)
   provides=(python-pytorch)
 
   cd "${srcdir}/${_pkgname}-${pkgver}-rocm"
   echo "Building with rocm and without non-x86-64 optimizations"
+  _prepare
   export USE_CUDA=0
   export USE_CUDNN=0
   export USE_ROCM=1
@@ -389,16 +409,19 @@ package_python-pytorch-rocm() {
   python setup.py build || python setup.py build
 
   _package
+  # see above
+  depends+=(onednn)
 }
 
 package_python-pytorch-opt-rocm() {
   pkgdesc="${_pkgdesc} (with ROCm and AVX2 CPU optimizations)"
-  depends+=(rocm-hip-sdk roctracer miopen magma-hip onednn)
+  depends+=(rocm-hip-sdk roctracer miopen magma-hip)
   conflicts=(python-pytorch)
   provides=(python-pytorch python-pytorch-rocm)
 
   cd "${srcdir}/${_pkgname}-${pkgver}-opt-rocm"
   echo "Building with rocm and with non-x86-64 optimizations"
+  _prepare
   export USE_CUDA=0
   export USE_CUDNN=0
   export USE_ROCM=1
@@ -409,6 +432,8 @@ package_python-pytorch-opt-rocm() {
   python setup.py build || python setup.py build
 
   _package
+  # see above
+  depends+=(onednn)
 }
 
 # vim:set ts=2 sw=2 et:
