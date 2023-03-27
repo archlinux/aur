@@ -3,7 +3,7 @@
 _gitname=VmChamp
 pkgname=vmchamp-git
 pkgver=v0.0.1.r4.ge37e9ef
-pkgrel=3
+pkgrel=4
 pkgdesc="Simple and fast creation of throwaway VMs on your local machine."
 arch=('x86_64')
 license=('custom')
@@ -27,7 +27,7 @@ build()
 {
     cd "${_gitname}"
     output="./output/bin/Release/linux-x64"
-    version=$(git describe --abbrev=0 --tags)
+    version=$(git describe)
 
     dotnet publish          .                           \
         --configuration     Release                     \

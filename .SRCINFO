@@ -1,7 +1,7 @@
 pkgbase = vmchamp-git
 	pkgdesc = Simple and fast creation of throwaway VMs on your local machine.
 	pkgver = v0.0.1.r4.ge37e9ef
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/wubbl0rz/VmChamp
 	arch = x86_64
 	license = custom
