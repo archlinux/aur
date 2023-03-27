@@ -7,7 +7,7 @@ arch=("x86_64")
 license=("custom")
 provides=("cumsay")
 conflicts=("cumsay")
-url="https://vilari.be.sexy/"
+url="https://apt.vilari.site/"
 source=("https://apt.vilari.site/cum/cumsay_${pkgver}_1_amd64.deb")
 sha256sums=("b2c085098a6c4f5ee85e869c0bc67629c9fefc77dfb10d003fa99a08b7d6162a")
 
