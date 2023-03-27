@@ -2,7 +2,7 @@
 
 pkgname=carvel-tools
 pkgdesc="Set of Carvel tools: imgpkg kapp kbld kctrl kwt vendir ytt"
-pkgver=20230310
+pkgver=20230327
 pkgrel=1
 url="https://carvel.dev"
 arch=(x86_64 aarch64)
@@ -13,7 +13,7 @@ conflicts_x86_64=(imgpkg kapp kbld kctrl kwt vendir ytt)
 conflicts_aarch64=(imgpkg kapp kbld kctrl vendir ytt)
 
 source_x86_64=(
-imgpkg-v0.36.0::https://github.com/carvel-dev/imgpkg/releases/download/v0.36.0/imgpkg-linux-amd64
+imgpkg-v0.36.1::https://github.com/carvel-dev/imgpkg/releases/download/v0.36.1/imgpkg-linux-amd64
 kapp-v0.55.0::https://github.com/carvel-dev/kapp/releases/download/v0.55.0/kapp-linux-amd64
 kbld-v0.37.0::https://github.com/carvel-dev/kbld/releases/download/v0.37.0/kbld-linux-amd64
 kctrl-v0.45.0::https://github.com/carvel-dev/kapp-controller/releases/download/v0.45.0/kctrl-linux-amd64
@@ -22,7 +22,7 @@ vendir-v0.33.1::https://github.com/carvel-dev/vendir/releases/download/v0.33.1/v
 ytt-v0.45.0::https://github.com/carvel-dev/ytt/releases/download/v0.45.0/ytt-linux-amd64
 )
 sha256sums_x86_64=(
-db5b3f7d8f87790b6df3a4c0fda4ad58e74b8ccf1a3cd6c3c113bf142597190c
+194655166ca74d898c1225b42c9257cd0cb71128da271f233b8f12ceda7c15cc
 9aaa735985efbe240af0ca1d80adf3b43be6cf4ec6620a053082e31bea25dae7
 9f387e18043c95c922efbf879fc1d4d616b20c1c47aeae4f834c6f0069906735
 1841b8684fcee57d4707094092bbc21a88f60293a9a77605fea9cfe10f1d95c7
@@ -31,7 +31,7 @@ db5b3f7d8f87790b6df3a4c0fda4ad58e74b8ccf1a3cd6c3c113bf142597190c
 d05f430ac18b3791d831f4cfd78371a7549f225dfaeb6fef2e5bfcd293d6c382
 )
 source_aarch64=(
-imgpkg-v0.36.0::https://github.com/carvel-dev/imgpkg/releases/download/v0.36.0/imgpkg-linux-arm64
+imgpkg-v0.36.1::https://github.com/carvel-dev/imgpkg/releases/download/v0.36.1/imgpkg-linux-arm64
 kapp-v0.55.0::https://github.com/carvel-dev/kapp/releases/download/v0.55.0/kapp-linux-arm64
 kbld-v0.37.0::https://github.com/carvel-dev/kbld/releases/download/v0.37.0/kbld-linux-arm64
 kctrl-v0.45.0::https://github.com/carvel-dev/kapp-controller/releases/download/v0.45.0/kctrl-linux-arm64
@@ -39,7 +39,7 @@ vendir-v0.33.1::https://github.com/carvel-dev/vendir/releases/download/v0.33.1/v
 ytt-v0.45.0::https://github.com/carvel-dev/ytt/releases/download/v0.45.0/ytt-linux-arm64
 )
 sha256sums_aarch64=(
-1011b7508d0ba447069fec827a2ace7cdac1be4d21475c5891db0be04aeeb1f3
+9422215c35ab7ee7e6f53196679b6cd3c1c0873456082b00c72efdb7e263bc27
 944fdfebfdf1026d318609cc706bad454196f0b1d76e557b56c829b0e6165a9f
 0ffa023c69355ca43ae131be065963e30d576963a066e903c7691fb54a79d08c
 434093ea3bc802b1ad37a5f96ffde3669eec0f57ffc4f1279cc3fa9d07106527
@@ -47,7 +47,7 @@ sha256sums_aarch64=(
 54e228823e851320b848d854218004299d2ff362e0fe9e287d5a52df502baaaf
 )
 package() {
-[[ -f "${srcdir}/imgpkg-v0.36.0" ]] && install -Dm 755 "${srcdir}/imgpkg-v0.36.0" "${pkgdir}/usr/bin/imgpkg"
+[[ -f "${srcdir}/imgpkg-v0.36.1" ]] && install -Dm 755 "${srcdir}/imgpkg-v0.36.1" "${pkgdir}/usr/bin/imgpkg"
 [[ -f "${srcdir}/kapp-v0.55.0" ]] && install -Dm 755 "${srcdir}/kapp-v0.55.0" "${pkgdir}/usr/bin/kapp"
 [[ -f "${srcdir}/kbld-v0.37.0" ]] && install -Dm 755 "${srcdir}/kbld-v0.37.0" "${pkgdir}/usr/bin/kbld"
 [[ -f "${srcdir}/kctrl-v0.45.0" ]] && install -Dm 755 "${srcdir}/kctrl-v0.45.0" "${pkgdir}/usr/bin/kctrl"
