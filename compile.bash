@@ -55,6 +55,9 @@ build() {
 					jobs=$((jobs+1))
 					echo -e "${jobs}...$(((jobs * mempercorekb)/1024/1024))GB"
 				done
+				# Back off one job count. Not sure why I have to do this but
+				# the loop is doing one extra iteration.
+				jobs=$((jobs-1))
 				build_jobs=${jobs}
 				echo "Computed job count: ${build_jobs}"
 			fi
