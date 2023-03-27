@@ -1,8 +1,8 @@
 pkgbase = fvwm-patched
 	pkgdesc = A multiple large virtual desktop window manager originally derived from twm with patches
-	pkgver = 2.6.9
-	pkgrel = 2
-	url = https://github.com/willscreel/fvwm-patched
+	pkgver = 2.7.0
+	pkgrel = 1
+	url = https://www.fvwm.org
 	arch = x86_64
 	license = GPL
 	license = custom
@@ -19,9 +19,10 @@ pkgbase = fvwm-patched
 	optdepends = perl-x11-protocol: for ClickToFocus support
 	provides = fvwm
 	conflicts = fvwm
+	conflicts = fvwm3
 	options = !emptydirs
 	options = !makeflags
-	source = https://github.com/fvwmorg/fvwm/releases/download/2.6.9/fvwm-2.6.9.tar.gz
+	source = https://github.com/fvwmorg/fvwm/releases/download/2.7.0/fvwm-2.7.0.tar.gz
 	source = fvwm.desktop
 	source = 01-TranslucentMenus.patch
 	source = 02-ColourBorders.patch
@@ -40,7 +41,7 @@ pkgbase = fvwm-patched
 	source = 15-FirstItemUnderPointer.patch
 	source = 16-ThinGeometryProxy.patch
 	source = 17-MiniIconSize.patch
-	sha256sums = 1bc64cf3ccd0073008758168327a8265b8059def9b239b451d6b9fab2cc391ae
+	sha256sums = 66826dd60b774447170037d9078fd43e75f7230a49acfb84a988eebce7e3418b
 	sha256sums = 51d345f995f57c6d881d48bf535f71d75041a9bf1f0fa41dd99e1b22fd66aaf3
 	sha256sums = 08d7fef7d0f3216b39f41932705ea68c0d255a0c2a1138bf4614070c7250a4a7
 	sha256sums = 749c536ff838e528f1e9345f18ca3948559cc788bdeb49f03c9676756576fc62
@@ -61,4 +62,3 @@ pkgbase = fvwm-patched
 	sha256sums = cb1a593ebd65a06cdc1d6d26f95de5473269130969ce83ca2259948cbf4d6c33
 
 pkgname = fvwm-patched
-

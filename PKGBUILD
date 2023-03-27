@@ -2,18 +2,18 @@
 
 pkgname=fvwm-patched
 _pkgname=fvwm
-pkgver=2.6.9
-pkgrel=2
+pkgver=2.7.0
+pkgrel=1
 pkgdesc="A multiple large virtual desktop window manager originally derived from twm with patches"
 arch=('x86_64')
-url="https://github.com/willscreel/fvwm-patched"
+url="https://www.fvwm.org"
 license=('GPL' 'custom')
 depends=('fribidi' 'perl' 'libstroke' 'libxpm' 'librsvg' 'libxinerama' 'libxcursor' 'python-xdg')
 makedepends=('libxslt')
 optdepends=('perl-tk: for ClickToFocus support'
             'perl-x11-protocol: for ClickToFocus support')
 provides=(${_pkgname})
-conflicts=(${_pkgname})
+conflicts=(${_pkgname} fvwm3)
 options=('!emptydirs' '!makeflags')
 source=(https://github.com/fvwmorg/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz
             fvwm.desktop
@@ -34,7 +34,7 @@ source=(https://github.com/fvwmorg/${_pkgname}/releases/download/${pkgver}/${_pk
             15-FirstItemUnderPointer.patch
             16-ThinGeometryProxy.patch
 	    17-MiniIconSize.patch)
-sha256sums=('1bc64cf3ccd0073008758168327a8265b8059def9b239b451d6b9fab2cc391ae'
+sha256sums=('66826dd60b774447170037d9078fd43e75f7230a49acfb84a988eebce7e3418b'
             '51d345f995f57c6d881d48bf535f71d75041a9bf1f0fa41dd99e1b22fd66aaf3'
             '08d7fef7d0f3216b39f41932705ea68c0d255a0c2a1138bf4614070c7250a4a7'
             '749c536ff838e528f1e9345f18ca3948559cc788bdeb49f03c9676756576fc62'
