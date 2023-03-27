@@ -230,7 +230,7 @@ source=(
 # ZFS support
 if [ -n "$_build_zfs" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=92e0d9d183ce6752cd52f7277c8321d81df9ffee")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=00e580bca282bf30913fcf5832fc58191cf0ff32")
 fi
 
 ## Latency NICE Support
@@ -842,7 +842,7 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha256sums=('fed0ad87d42f83a70ce019ff2800bc30a855e672e72bf6d54a014d98d344f665'
-            '0a5944e9e1f9e99939550f5cabb68518721ed01aeb46082cb7a135d4e3c9f736'
+            'c37cd629b9044fe1e1ebf86dd1bc5f99aa472d8c4ccad314c36c247a2b97daac'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
             '16b2c66eec48fd51b97a25513fa5a6ebc403e5a257ec43b05e62242b6399c46c'
             'a744e56a322e87c3ab9d4ce5b9ffb42e197b66eb45bc1abf1a1a90dafa9aa06a')
