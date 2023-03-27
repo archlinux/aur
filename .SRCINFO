@@ -1,7 +1,7 @@
 pkgbase = embark-alacritty-git
 	pkgdesc = A dark, ambitious theme for alacritty. A port of the Embark color scheme.
 	pkgver = r7.9a99e7a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://embark-theme.github.io
 	arch = any
 	license = MIT
