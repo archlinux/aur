@@ -1,14 +1,14 @@
 # Maintainer: awumii <awumii@protonmail.com>
 
 pkgname=zerotier-desktop-ui
-pkgver=1.8.4.r65.ga2e2c18
+pkgver=1.8.4.r70.g910e6d3
 pkgrel=1
 pkgdesc='Official ZeroTier Desktop Tray Application and UI'
 url='https://github.com/zerotier/DesktopUI'
 source=("${pkgname}::git+https://github.com/zerotier/DesktopUI.git")
 arch=('any')
 license=('MPL2')
-makedepends=('rust')
+makedepends=('rust' 'meson')
 depends=('zerotier-one' 'libappindicator-gtk3' 'gtk3' 'glib2')
 sha256sums=(SKIP)
 
