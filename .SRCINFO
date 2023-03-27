@@ -1,0 +1,16 @@
+pkgbase = alpaca.cpp-git
+	pkgdesc = Locally run an Instruction-Tuned Chat-Style LLM
+	pkgver = 81bd894.r3.6041736
+	pkgrel = 1
+	url = https://github.com/antimatter15/alpaca.cpp
+	arch = armv7h
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	provides = alpaca.cpp
+	conflicts = alpaca.cpp
+	source = alpaca.cpp::git+https://github.com/antimatter15/alpaca.cpp
+	sha256sums = SKIP
+
+pkgname = alpaca.cpp-git
