@@ -1,49 +1,33 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+
 pkgname=mstpd
-pkgver=0.0.8
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="User-space RSTP and MSTP daemon"
 url="https://github.com/mstpd/mstpd"
-arch=(i686 x86_64)
-license=(GPL2)
-makedepends=(git)
-_commit=03b5ebaa53fc5d2d47617de1e40d8180d18dd506
-source=(git+https://github.com/mstpd/mstpd.git#commit=$_commit
-        mstpd.service)
-sha256sums=('SKIP'
+arch=('i686' 'x86_64')
+license=('GPL2')
+depends=('glibc')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+        'mstpd.service')
+sha256sums=('03d1ff4ca189d54322562cb2891888768af719d2c73ceafa5f1ca96133dffeb2'
             '36c03f67ca55efc2822e2bec04d62c9f43417772b7a10effcf584664ff78227b')
 
-pkgver() {
-  cd "$pkgname"
-  git describe --tags | sed 's/^v//; s/-/.r/; s/-/./'
-}
-
-prepare() {
-  cd "$pkgname"
-  NOCONFIGURE=1 ./autogen.sh
-}
-
 build() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
+  ./autogen.sh
   ./configure \
-    --prefix=/usr         \
-    --sysconfdir=/etc     \
-    --sbindir=/usr/bin    \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --sbindir=/usr/bin \
     --libexecdir=/usr/lib \
-    ;
+    --with-bashcompletiondir=/usr/share/bash-completion/completions
   make
 }
 
 package() {
-  mkdir -p "$pkgdir"/usr/bin
-
-  cd "$pkgname"
-  make DESTDIR="$pkgdir" install
-
-  mkdir -p "$pkgdir"/usr/share/bash-completion
-  mv "$pkgdir"/etc/bash_completion.d "$pkgdir"/usr/share/bash-completion/completions
-
-  cd "$srcdir"
-  install -Dm 644 mstpd.service "$pkgdir"/usr/lib/systemd/system/mstpd.service
+  make -C "$pkgname-$pkgver" DESTDIR="$pkgdir" install
+  install -Dvm644 mstpd.service -t "$pkgdir/usr/lib/systemd/system/"
 }
 
 # vim: ft=sh:ts=2:sw=2:et
