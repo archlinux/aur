@@ -2,7 +2,7 @@
 
 _pkgname=sview
 pkgname=$_pkgname-git
-pkgver=20.08.r31.ga255e0d4
+pkgver=23.02.r0.g301eccf5
 pkgrel=1
 pkgdesc="Stereoscopic 3D video player with OpenGL UI"
 arch=('i686' 'x86_64')
@@ -18,8 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  # this is the version according to AndroidManifest.xml, however no tag was set by the original author
-  git tag -f 19_08 49eb8a009d563ed498ad64960f17a5b98fd74a19
+  git tag -f 23_02 301eccf5f81e0483710e01ec477906a13fb8988b
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/_/./g'
 }
 
