@@ -1,5 +1,5 @@
 diff --git a/Makefile b/Makefile
-index 2ea45e6..02c42ec 100644
+index 2ea45e6..7de6de7 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -20,12 +20,12 @@ OBJECTS=main.o \
@@ -25,7 +25,8 @@ index 2ea45e6..02c42ec 100644
 -	rm -f *.o ts
 +	rm -f *.o tsp
  
- install: ts
+-install: ts
++install: tsp
  	$(INSTALL) -d $(PREFIX)/bin
 -	$(INSTALL) ts $(PREFIX)/bin
 +	$(INSTALL) tsp $(PREFIX)/bin

@@ -3,7 +3,7 @@
 
 pkgname=ts
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Unix batch system where the tasks spooled run one after the other"
 arch=('i686' 'x86_64')
 url="https://viric.name/soft/ts/"
@@ -13,7 +13,7 @@ source=(
   "ts-to-tsp.patch"
 )
 sha256sums=('f73452aed80e2f9a7764883e9353aa7f40e65d3c199ad1f3be60fd58b58eafec'
-            '4ced7e1810d89e5b24686108a25e60eb8079748681e13f87ee2dee5554b77ed1')
+            'ec24528e70d680fed39339b7bc1f7918b23dd5096ea5e9276bb95137d2df2966')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
