@@ -1,7 +1,7 @@
 # Maintainer: Etienne Charland <mysteryx93 at protonmail dot com>
 _pkgname=player432hz
 pkgname=${_pkgname}-appimage
-pkgver=3.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Plays music in 432hz"
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://github.com/mysteryx93/NaturalGroundingPlayer/releases/download/v${pkgver}/Player432hz-${pkgver}_Linux_x64.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('65003a1a8879aa978f6a641ffcbcd08f69d6bc29c4bdb39848d37e7346459f6d')
+sha256sums_x86_64=('42352150fe068bd78b490bef1e35517b349dc61e863707d7ac9380e4a2a9ef9e')
 
 prepare() {
     chmod +x "${_appimage}"
