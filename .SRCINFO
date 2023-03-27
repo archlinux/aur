@@ -1,6 +1,6 @@
 pkgbase = cloudlens
 	pkgdesc = k9s like CLI for AWS
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/one2nc/cloudlens
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = cloudlens
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = git+https://github.com/one2nc/cloudlens.git#tag=v0.1.1
+	source = git+https://github.com/one2nc/cloudlens.git#tag=v0.1.2
 	sha256sums = SKIP
 
 pkgname = cloudlens
