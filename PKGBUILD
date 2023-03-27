@@ -1,6 +1,6 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=cellframe-node
-pkgver=5.1.371
+pkgver=5.1.377
 pkgrel=1
 pkgdesc="Cellframe blockchain node with a powerful SDK"
 arch=('x86_64' 'aarch64')
@@ -10,9 +10,9 @@ depends=(python logrotate)
 makedepends=(git cmake python)
 provides=("cellframe-node" "cellframe-node-cli" "cellframe-node-tool")
 options=(!buildflags !makeflags)
-source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=d36a17fd3ba3e619299d673a78fd8a31bb2484e2
-		git+https://gitlab.demlabs.net/cellframe/cellframe-sdk.git#commit=c6ad97eb675a34c41651a96f705697b377665f01
-		git+https://gitlab.demlabs.net/cellframe/python-cellframe.git#commit=88df88a673fe5af91694d395691b851499c978f4
+source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=7baa046d6264790ef2627039a0f8c56df25cbe62
+		git+https://gitlab.demlabs.net/cellframe/cellframe-sdk.git#commit=4207cb36a7c3d34f029209b04e0343f2ba832bc7
+		git+https://gitlab.demlabs.net/cellframe/python-cellframe.git#commit=4207cb36a7c3d34f029209b04e0343f2ba832bc7
 		cellframe-node.cfg
 		Backbone.cfg
 		kelvpn-minkowski.cfg
