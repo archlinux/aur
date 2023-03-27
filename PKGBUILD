@@ -1,6 +1,6 @@
 # Maintainer: Jonas Malaco <jonas@protocubo.io>
 pkgname=cargo-vet
-pkgver=0.5.1
+pkgver=0.5.2
 # Repository tag omits trailing .0: for example, the tag for v0.3.0 is 0.3.
 _tag=${pkgver%.0}
 pkgrel=1
@@ -15,7 +15,7 @@ depends=(
     zlib
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_tag.tar.gz")
-sha256sums=('b555e72029fe1ac87eaa732c804de8d1eb6a7fcf90ce9bc1ea1e43caa0280e50')
+sha256sums=('d2e299d310003df2c559f5ab02bf2bb041332fa6022f1af419ecfbf05174c8f1')
 
 prepare() {
     cd "$pkgname-$_tag"
