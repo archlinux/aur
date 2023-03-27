@@ -1,32 +1,48 @@
-# Maintainer: Marcel Campello <tucho@prafrentex.com.br>
+# Maintainer: Marcel Campello <marcel.campello@prafrentex.com.br>
 pkgname=leiningen-with-completion
-pkgver=2.9.5
+
+pkgver=2.10.0
 pkgrel=1
-pkgdesc="For automating Clojure projects without setting your hair on fire."
+
+pkgdesc='For automating Clojure projects without setting your hair on fire.'
 arch=('any')
-url="https://github.com/technomancy/leiningen"
-license=("EPL")
+url='https://leiningen.org/'
+license=('EPL')
+
 depends=('java-environment')
 optdepends=('rlwrap: for readline support')
+
+provides=('leiningen')
 conflicts=('leiningen')
 
-source=("${url}/archive/${pkgver}.tar.gz"
-        "${url}/releases/download/${pkgver}/leiningen-${pkgver}-standalone.zip")
-sha256sums=('a29b45966e5cc1a37d5dc07fe436ed7cb172c88c53d44a049956ff53a096d43e'
-            'df490c98bfe8d667bc5d83b80238528877234c285d0d48f61a4c8743c2db1eea')
+source=("https://codeberg.org/leiningen/leiningen/archive/${pkgver}.tar.gz"
+        "https://codeberg.org/leiningen/leiningen/releases/download/${pkgver}/leiningen-${pkgver}-standalone.jar")
+sha256sums=('6b04dbe0934ab4c34dc27b0055ad290d2ba9c0f454c1bda7defa58d62946b743'
+            'd27299bad34075ac2864d0bd0559f835c6e2c476c0b0a283bcbdb574fdadbb34')
 noextract=("leiningen-${pkgver}-standalone.zip")
 
 package() {
-  cd ${srcdir}/leiningen-${pkgver}
-  install -Dm 0755 bin/lein ${pkgdir}/usr/bin/lein
-  install -Dm 0644 zsh_completion.zsh ${pkgdir}/usr/share/zsh/site-functions/_lein
-  install -Dm 0644 -D bash_completion.bash ${pkgdir}/usr/share/bash-completion/completions/lein
-  install -Dm 0644 doc/lein.1 ${pkgdir}/usr/share/man/man1/lein.1
-  install -d ${pkgdir}/usr/share/doc/leiningen
-  install -Dm 0644 doc/*.md ${pkgdir}/usr/share/doc/leiningen
-  install -Dm 0644 CONTRIBUTING.md ${pkgdir}/usr/share/doc/leinigen
-  install -Dm 0644 NEWS.md ${pkgdir}/usr/share/doc/leinigen
-  install -Dm 0644 README.md ${pkgdir}/usr/share/doc/leiningen
+  cd "${srcdir}/leiningen"
 
-  install -D ${srcdir}/leiningen-${pkgver}-standalone.zip ${pkgdir}/usr/share/java/leiningen-${pkgver}-standalone.jar
+  # command script and JAR file
+  install bin/lein -t "${pkgdir}/usr/bin" -Dm 0755
+  install "../leiningen-${pkgver}-standalone.jar" -t "${pkgdir}/usr/share/java" -Dm 0644
+
+  # man page, documentation and license
+  install doc/lein.1 -t "${pkgdir}/usr/share/man/man1" -Dm 0644
+  install doc/ja/lein_ja.1 -T "${pkgdir}/usr/share/man/ja/man1/lein.1" -Dm 0644
+
+  local docdir="${pkgdir}/usr/share/doc/leiningen"
+  install doc/*.md -t "${docdir}" -Dm 0644
+  install CONTRIBUTING.md -t "${docdir}" -Dm 0644
+  install NEWS.md -t "${docdir}" -Dm 0644
+  install README.md -t "${docdir}" -Dm 0644
+  install sample.project.clj -t "${docdir}" -Dm 0644
+
+  install  COPYING -t "${pkgdir}/usr/share/licenses/leiningen" -Dm 0644
+
+  # shell completions
+  install bash_completion.bash -T "${pkgdir}/usr/share/bash-completion/completions/lein" -Dm 0644
+  install zsh_completion.zsh -T "${pkgdir}/usr/share/zsh/site-functions/_lein" -Dm 0644
+  install pcmpl-lein.el -t "${pkgdir}/usr/share/emacs/site-lisp" -Dm 0644
 }
