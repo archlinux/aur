@@ -1,20 +1,22 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname=p3x-redis-ui-appimage
 _pkgname=p3x-redis-ui
+pkgname="${_pkgname}-appimage"
 pkgver=2022.10.105
-pkgrel=1
+pkgrel=2
 pkgdesc="A very functional handy database GUI and works in your pocket on the responsive web or as a desktop app"
 arch=('x86_64')
 url="https://www.corifeus.com/redis-ui"
 _githuburl="https://github.com/patrikx3/redis-ui"
-license=('MIT')
+license=(MIT)
 options=(!strip)
-conflicts=()
+conflicts=("${_pkgname}")
 providers=(patrikx3)
-depends=('zlib' 'hicolor-icon-theme')
+depends=(zlib hicolor-icon-theme glibc)
 _install_path="/opt/appimages"
-source=("${_pkgname}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/P3X-Redis-UI-${pkgver}.AppImage")
-sha512sums=('76390f8119f8a3ff1881307b9b9b0123db78701d5cdbe70ed7aaf3cf0529e7dba2bc2b6b359a4b022f9c356e94ea10ff01febaf9f7f141c7852da370f59736b9')
+source=("${_pkgname}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/P3X-Redis-UI-${pkgver}.AppImage"
+    "LICENSE::${_githuburl}/raw/master/LICENSE")
+sha256sums=('f319cce94d28969291ac5115ca5dc1fe1b01363cda67839e7e26222ca156d507'
+            'e6d817ec803c1f81999c72a6fdaf2d7fb0873e4d05320ae6156f52c25ada1c21')
 prepare() {
     chmod a+x "${_pkgname}-${pkgver}.AppImage"
     "./${_pkgname}-${pkgver}.AppImage" --appimage-extract > /dev/null
@@ -26,4 +28,5 @@ package() {
         install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png"
     done
     install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
