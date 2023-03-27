@@ -11,7 +11,7 @@ license=(GPL2)
 provides=('xwaylandvideobridge' 'pwbypass')
 depends=('qt5-base' 'qt5-x11extras' 'qt5-declarative' 'kcoreaddons' 'kwindowsystem' 'kwidgetsaddons' 'knotifications' 'ki18n' 'gettext' 'xdg-desktop-portal' 'libxcb')
 makedepends=('git' 'ostree')
-optdepends=('freetype' 'fontconfig' 'pkgconf')
+optdepends=('freetype2' 'fontconfig' 'pkgconf')
 source=("https://invent.kde.org/davidedmundson/${_name}/-/jobs/${_job}/artifacts/raw/${_name}.flatpak"
 		pwbypass.sh)
 sha512sums=('c6e1a395bf8f8192958a53b88681bf3d3ac24beae4dd780cdcd3a6d85d7510d338fe6f36b2e3ba01b0362ab601a05d1ae5ff2dd556a71da877c256b07b5e2f91'
