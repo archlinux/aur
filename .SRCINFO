@@ -1,13 +1,13 @@
 pkgbase = dasel-bin
 	pkgdesc = Query and update data structures from the command line.
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 2
 	url = https://github.com/TomWright/dasel
 	arch = x86_64
 	license = MIT
-	source = dasel-bin-v2.1.1.gz::https://github.com/TomWright/dasel/releases/download/v2.1.1/dasel_linux_amd64.gz
-	source = dasel-bin-v2.1.1_repo.tar.gz::https://github.com/TomWright/dasel/archive/refs/tags/v2.1.1.tar.gz
-	sha256sums = 3899ad599ba19d8dd0a8a2a2eb37e5d998e3043875d376d528956a1c6af64b6f
-	sha256sums = 2cbf72eaa81989bcd8b8db441f06f54ff5ad8beac87cf2f0793d26324fa462eb
+	source = dasel-bin-v2.1.2.gz::https://github.com/TomWright/dasel/releases/download/v2.1.2/dasel_linux_amd64.gz
+	source = dasel-bin-v2.1.2_repo.tar.gz::https://github.com/TomWright/dasel/archive/refs/tags/v2.1.2.tar.gz
+	sha256sums = eae422674dbdb01ed3c98a5899411291292ef9f1b5cb1a8a24615d22c5a4eda2
+	sha256sums = 0ef6525a3618c24999f8b44f7f65ed94004a393fd73cea4ae7757d7ed55ba485
 
 pkgname = dasel-bin
