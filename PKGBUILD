@@ -5,9 +5,9 @@
 
 pkgname=qt5-base-headless
 _basever=5.15.8
-pkgver=5.15.8+kde+r183
+pkgver=5.15.8+kde+r185
 pkgrel=1
-_commit=38c54b3ff58972fa16810740fc43933620b6dc0d
+_commit=6c09620dc84900c31a2d307a8640dbc15b1fcfdd
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
