@@ -1,7 +1,7 @@
 # Maintainer: Victor Mingueza <victormingueza at gmail.com>
 pkgname=journal-viewer-bin
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern linux desktop application to visualize systemd logs."
 arch=('x86_64')
 url="https://github.com/mingue/journal-viewer"
@@ -9,15 +9,6 @@ license=('GNU General Public License v3.0')
 depends=(
   'systemd'
   'webkit2gtk'
-  'base-devel'
-  'curl'
-  'wget'
-  'openssl'
-  'appmenu-gtk-module'
-  'gtk3'
-  'libappindicator-gtk3'
-  'librsvg'
-  'libvips'
 )
 optdepends=(
 )
