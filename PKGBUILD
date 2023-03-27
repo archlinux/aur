@@ -12,7 +12,8 @@ depends=('python' 'pyside6' 'python-pyffms2' 'python-mpv'
          'python-pysubs2' 'python-cleantext' 'python-translate' 'python-speechrecognition'
          'python-docx' 'python-google-api-python-client' 'python-setuptools'
          'python-pysrt' 'python-certifi' 'python-i18n' 'python-importlib-metadata'
-         'python-beautifulsoup4' 'python-six' 'python-chardet' 'hicolor-icon-theme'
+         'python-beautifulsoup4' 'python-lxml' 'python-six' 'python-chardet'
+         'hicolor-icon-theme'
 )
 source=("https://gitlab.com/jonata/$pkgname/-/archive/$pkgver/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('83381cd697fa4355bc0d4689dfc063efe9ec41c8e177b8e55e35b7b4e6af3ace')

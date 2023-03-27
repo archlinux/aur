@@ -26,6 +26,7 @@ pkgbase = subtitld
 	depends = python-i18n
 	depends = python-importlib-metadata
 	depends = python-beautifulsoup4
+	depends = python-lxml
 	depends = python-six
 	depends = python-chardet
 	depends = hicolor-icon-theme
