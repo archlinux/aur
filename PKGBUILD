@@ -12,17 +12,13 @@ makedepends=('git' 'cargo')
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
-pkgver() {
-	printf "1.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 build() {
-	cd "$_pkgname-$pkgver"
+	cd "$_pkgname"
 	cargo build --release
 }
 
 package() {
-	cd "$_pkgname-$pkgver"
+	cd "$_pkgname"
 	install -Dm755 "target/release/bellsym" "$pkgdir/usr/bin/bellsym"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
