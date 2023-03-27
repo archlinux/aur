@@ -25,8 +25,8 @@ pkgver() {
 
 build()
 {
-    output="./${_gitname}/bin/Release/linux-x64"
     cd "${_gitname}"
+    output="./output/bin/Release/linux-x64"
     version=$(git describe --abbrev=0 --tags)
 
     dotnet publish          .                           \
@@ -41,7 +41,7 @@ build()
 
 package()
 {
-    cd "$srcdir/${_gitname}/${_gitname}/bin/Release/linux-x64"
+    cd "$srcdir/${_gitname}/output/bin/Release/linux-x64"
 
     # Copy Linux binary
     install -d -m0755 -g 0 "${pkgdir}"/usr/bin
