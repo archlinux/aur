@@ -6,6 +6,7 @@ pkgbase = totalmapper-git
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
+	makedepends = git
 	provides = totalmapper
 	conflicts = totalmapper
 	conflicts = totalmapper-bin
