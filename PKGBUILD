@@ -1,8 +1,8 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 pkgname=gnome-session-properties
-pkgver=3.10.0
-pkgrel=4
+pkgver=3.10.1
+pkgrel=1
 pkgdesc="The GNOME Session Properties Tool"
 arch=('x86_64')
 url="https://www.gnome.org"
@@ -10,16 +10,17 @@ license=('GPL2')
 depends=('gtk3' 'hicolor-icon-theme' 'dbus-glib')
 makedepends=('gnome-common' 'gtk-doc' 'intltool')
 source=("https://download-fallback.gnome.org/sources/gnome-session/${pkgver%.*}/gnome-session-${pkgver}.tar.xz"
-        'https://raw.githubusercontent.com/chenxiaolong/AUR-Files/b8632ea084b21e5fdef70a5ba7787c5567403146/gnome-session-properties/0001-Remove-unneeded-stuff.patch'
-        'https://raw.githubusercontent.com/chenxiaolong/AUR-Files/b8632ea084b21e5fdef70a5ba7787c5567403146/gnome-session-properties/0002-Fix-GTK-3.14-incompatibilities.patch')
-sha256sums=('38d90c5d5a33ec8a3002f1e77e201c1554eeb8bbba8923d94fab81b3a8e0696e'
-            '8ded70b5567ffef768300af496f2d8b7544b2adae707ca7e5592e87670af8730'
+        # Patch too large to upload to aurweb
+        'https://raw.githubusercontent.com/yochananmarqos/pkgbuilds/master/gnome-session-properties/0001-Remove-unneeded-stuff.patch'
+        '0002-Fix-GTK-3.14-incompatibilities.patch')
+sha256sums=('f620704e07e6bbf49aa6c65897475a46f80f7ac5593606f2b6889c7cb4f6a9cc'
+            '4a064778dbbd235322bbbefd086ea7653679a0714230ebcac772eab373d83991'
             'a06118f85b26ef13d82f666f8a86cae1fb3e9ca12cd45703ef4dd9ecadfa3aab')
 
 prepare() {
   cd "gnome-session-${pkgver}"
-  patch -p1 -i ../0001-Remove-unneeded-stuff.patch
-  patch -p1 -i ../0002-Fix-GTK-3.14-incompatibilities.patch
+  patch -Np1 -i ../0001-Remove-unneeded-stuff.patch
+  patch -Np1 -i ../0002-Fix-GTK-3.14-incompatibilities.patch
 
   # Fix icon
   sed -ri '/^Icon/ s/session-/gnome-session-/g' \

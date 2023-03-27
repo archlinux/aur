@@ -5,3 +5,4 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
+!0002-Fix-GTK-3.14-incompatibilities.patch

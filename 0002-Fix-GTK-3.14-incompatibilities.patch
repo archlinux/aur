@@ -1,0 +1,56 @@
+From fde630356c1ec89d996f8a68d770dd499cab7e90 Mon Sep 17 00:00:00 2001
+From: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date: Sat, 1 Nov 2014 13:52:02 -0400
+Subject: [PATCH 2/2] Fix GTK 3.14 incompatibilities
+
+---
+ capplet/gsm-app-dialog.c        | 6 ++++++
+ capplet/gsm-properties-dialog.c | 2 ++
+ 2 files changed, 8 insertions(+)
+
+diff --git a/capplet/gsm-app-dialog.c b/capplet/gsm-app-dialog.c
+index e7369dd..b072d10 100644
+--- a/capplet/gsm-app-dialog.c
++++ b/capplet/gsm-app-dialog.c
+@@ -179,10 +179,14 @@ setup_dialog (GsmAppDialog *dialog)
+         gtk_container_set_border_width (GTK_CONTAINER (dialog), 6);
+         gtk_window_set_icon_name (GTK_WINDOW (dialog), "session-properties");
+ 
++#if !GTK_CHECK_VERSION (3, 14, 0)
+         g_object_set (dialog,
+                       "allow-shrink", FALSE,
+                       "allow-grow", FALSE,
+                       NULL);
++#else
++        gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
++#endif
+ 
+         gtk_dialog_add_button (GTK_DIALOG (dialog),
+                                GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL);
+@@ -250,7 +254,9 @@ gsm_app_dialog_constructor (GType                  type,
+ 
+         setup_dialog (dialog);
+ 
++#if !GTK_CHECK_VERSION (3, 14, 0)
+         gtk_widget_show_all (GTK_WIDGET (dialog));
++#endif
+ 
+         return G_OBJECT (dialog);
+ }
+diff --git a/capplet/gsm-properties-dialog.c b/capplet/gsm-properties-dialog.c
+index 24bf907..81f26da 100644
+--- a/capplet/gsm-properties-dialog.c
++++ b/capplet/gsm-properties-dialog.c
+@@ -659,7 +659,9 @@ gsm_properties_dialog_constructor (GType                  type,
+ 
+         setup_dialog (dialog);
+ 
++#if !GTK_CHECK_VERSION (3, 14, 0)
+         gtk_widget_show (GTK_WIDGET (dialog));
++#endif
+ 
+         return G_OBJECT (dialog);
+ }
+-- 
+2.1.3
+
