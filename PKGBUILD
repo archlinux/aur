@@ -1,6 +1,5 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb@dralias.com>
 
-_pkgname=flightcore
 pkgname=flightcore
 pkgver=1.11.1
 pkgrel=1
@@ -11,8 +10,8 @@ license=('MIT')
 depends=('gtk3' 'webkit2gtk-4.1' 'libappindicator-gtk3' 'librsvg')
 makedepends=('npm' 'rust')
 optdepends=('sccache: compiler caching for faster compiling')
-provides=($_pkgname)
-conflicts=($_pkgname)
+provides=($pkgname)
+conflicts=($pkgname)
 _desktop=flightcore.desktop
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('1eb1c52d2378a801515ac877c73e5f37b4f795d18c2822138078376a5c7c1640')
@@ -50,9 +49,9 @@ build() {
 
 package() {
   cd FlightCore-$pkgver
-  install -Dm644 docs/assets/Square310x310Logo.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+  install -Dm644 docs/assets/Square310x310Logo.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
   install -Dm644 ${_desktop} "$pkgdir/usr/share/applications/$_desktop"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
-  install -Dm644 docs/FAQ.md -t "$pkgdir/usr/share/doc/$_pkgname"
-  install -Dm755 src-tauri/target/release/flight-core "$pkgdir/usr/bin/$_pkgname"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 docs/FAQ.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm755 src-tauri/target/release/flight-core "$pkgdir/usr/bin/$pkgname"
 }
