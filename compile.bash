@@ -44,16 +44,16 @@ build() {
 		echo "Available memory:     $availablememorykb"
 		echo "Required memory:      $requiredmemorykb"
 		if [[ ${requiredmemorykb} -gt ${totalmemorykb} ]]; then
-			echo "Warning: Not enough physical memory to build with all cores, adjusting"
 			echo "Estimated required memory to build with all cores: $((requiredmemorykb/1024/1024)) GB"
 			echo "Available memory on this system: $((availablememorykb/1024/1024)) GB"
+			echo "Warning: Not enough physical memory to build with all cores, adjusting"
 			if [[ ${requiredmemorykb} -gt ${availablememorykb} ]]; then
 				jobs=1
 				echo "Allocating build jobs according to available memory (including swap) (${availablememorykb}/${requiredmemorykb})..."
 				# FIXME: Goes one iteration beyond what it should
 				while [[ $((jobs * mempercorekb)) -lt ${availablememorykb} ]]; do
 					jobs=$((jobs+1))
-					echo -e "${jobs}...$(((jobs * mempercorekb)/1024/1024))GB"
+					echo -e "${jobs} jobs would consume $(((jobs * mempercorekb)/1024/1024))GB"
 				done
 				# Back off one job count. Not sure why I have to do this but
 				# the loop is doing one extra iteration.
