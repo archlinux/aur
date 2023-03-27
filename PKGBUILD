@@ -2,7 +2,7 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=python-databricks-cli
 _pkgname=databricks-cli
-pkgver=0.17.5
+pkgver=0.17.6
 pkgrel=1
 pkgdesc='Command Line Interface for Databricks'
 arch=('any')
@@ -19,7 +19,7 @@ depends=(
 )
 makedepends=(python-build python-installer python-wheel)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/databricks/databricks-cli/archive/$pkgver.tar.gz")
-sha512sums=('e7b87bd47dbcb6b66cae4ca2be9b3f920b17b25726fca8b86e5ad059f05c7ed669446fd6acef413d4fdf229280ad23ffa45f8a57a3a47ef51c6d493e581b68ac')
+sha512sums=('e77b499fdaba7884b05a7e87db1c8089902d964edca2f1276fc0e3021d1a3c2a2cd8d1236f4d8db888b51f0c5b145448512b777962091542c43431fdfea2d2d0')
 
 
 build() {
@@ -30,4 +30,5 @@ build() {
 package() {
   cd "${_pkgname}-${pkgver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
