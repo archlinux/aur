@@ -1,7 +1,8 @@
 # Maintainer: Christian Schendel <doppelhelix@gmail.com>
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-shell-extension-favourites-in-appgrid-git
 pkgver=r11.cb75d26
-pkgrel=1
+pkgrel=2
 pkgdesc="Keep favourite applications in AppGrid. For GNOME Shell 40+"
 arch=('any')
 url="https://gitlab.gnome.org/harshadgavali/favourites-in-appgrid"
@@ -12,7 +13,6 @@ conflicts=("${pkgname%-git}")
 provides=(${pkgname%-git})
 source=("${pkgname%-git}::git+${url}.git")
 md5sums=('SKIP')
-options=('!strip')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
@@ -28,8 +28,8 @@ package() {
   cd "${srcdir}/${pkgname%-git}"
   local uuid=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
   local extensiondir="${pkgdir}/usr/share/gnome-shell/extensions/${uuid}"
-  install -dm755 "${extensiondir}"
+
+  install -d "${extensiondir}"
   find . -regextype posix-egrep -regex ".*\.(js|json)$" -exec\
      install -Dm 644 {} ${extensiondir}/{} \;
 }
-
