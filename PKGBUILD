@@ -2,8 +2,8 @@
 
 
 pkgname=astrodmx-capture
-pkgver=1.7.2.0
-pkgrel=2
+pkgver=2.0.2
+pkgrel=1
 pkgdesc="AstroDMx Capture Astronomical Imaging"
 arch=('x86_64')
 url="https://www.astrodmx-capture.org.uk/"
@@ -18,7 +18,7 @@ depends=('glibc>=2.27' 'libgphoto2' 'glu' 'libtool' 'gtk3' 'at-spi2-core')
 # can maintain a constant path the file. Hopefully this will allow us to continue installing older versions
 # without breakage after a new version is released. Thanks Nicola!
 source=("https://www.astrodmx-capture.org.uk/downloads/astrodmx/current/x86-64/astrodmx-capture_${pkgver}_x86-64-manual.tar.gz")
-sha256sums=("1ad1a3dba3ea8b8347e5d891609b48286e96cbcfdac2538655214a3f0a268cad")
+sha256sums=("47c9b2478bd0e6452e43a3ed986d796c3e0a795804864ea08cfb10f70701d8fb")
 
 _instdir="/opt/AstroDMx-Capture"
 _prefix="AstroDMx-${pkgver}-manual"
