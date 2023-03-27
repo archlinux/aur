@@ -1,5 +1,5 @@
 pkgname=identity
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Compare multiple versions of an image or video'
 arch=(x86_64)
@@ -17,7 +17,7 @@ makedepends=(
 	python-gobject
 )
 source=(https://gitlab.gnome.org/YaLTeR/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz)
-sha256sums=('2a6da7d25e21939f545d36dddca06b82ddda2580b9f083f2b22f9cdb527c4c37')
+sha256sums=('ca6f5a7b1a251f11da99877849f6fd10cf8660e6c149ab932a140d0f256f7443')
 
 prepare() {
 	cd ${pkgname}-v${pkgver}
