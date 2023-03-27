@@ -3,13 +3,13 @@
 
 pkgname=sing-box-git
 _pkgname=sing-box
-pkgver=1.2.0.r3.g46b2d3b
+pkgver=1.2.0.r10.g5647b32
 pkgrel=1
 
 pkgdesc='The universal proxy platform (git version).'
 arch=('x86_64' 'i686')
 url='https://sing-box.sagernet.org/'
-license=('GPL3 with name use or association exception')
+license=('GPL3 with name use or association addition')
 
 provides=("$_pkgname")
 conflicts=("sing-box" "sing-box-beta")
@@ -56,7 +56,7 @@ build(){
 package() {
     cd "$_pkgname"
 
-    install -Dm644 LICENSE                             -t "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+    install -Dm644 LICENSE                             -t "$pkgdir/usr/share/licenses/$_pkgname"
     install -Dm755 "$_pkgname"                         -t "$pkgdir/usr/bin"
     install -Dm644 "release/config/config.json"        -t "$pkgdir/etc/$_pkgname"
     install -Dm644 "release/config/$_pkgname.service"  -t "$pkgdir/usr/lib/systemd/system"
