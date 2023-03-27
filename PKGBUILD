@@ -1,6 +1,6 @@
 # Maintainer: Craig McLure <craig@mclure.net>
 pkgname=goxlr-utility
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="A utility for monitoring and controlling a TC-Helicon GoXLR or GoXLR Mini."
 arch=('x86_64')
@@ -10,12 +10,13 @@ depends=('libusb' 'bzip2' 'libpulse')
 makedepends=('cargo' 'jq')
 install=goxlr-utility.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/GoXLR-on-Linux/goxlr-utility/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('0b98c39083f4e7e184b450c742c67b3be38fad63fd8ede56cdaa9ab076a74944041a88db2ebb621fd0eaabe42603700053c9e8a415eb107607dcd3a7a394f43c')
+sha512sums=('f9275fc5a45c273b14b7d834ddfb917eb36774b2a8d8422d656816f0c1949af0bd05a08e4a3735ffa879978fb6e92b1e3563a848bd5ef2c8b32463a59afb3cb8')
 
 prepare() {
     cd "$pkgname-$pkgver"
 
     # Don't lock the fetch, Cargo.lock isn't present in the repository
+    export RUSTUP_TOOLCHAIN=stable
     cargo fetch
 }
 
