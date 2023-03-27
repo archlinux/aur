@@ -14,12 +14,12 @@ provides=("${pkgname%-git}")
 source=("${pkgname%-git}::git+${url}")
 
 pkgver() {
-  cd "${pkgname%-git}"
+  cd "${srcdir}/${pkgname%-git}"
   printf "%s" "$(git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname%-git}"
 
   cmake -B ./build \
     -S . \
@@ -30,7 +30,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname%-git}"
 
   cmake --install ./build
 
