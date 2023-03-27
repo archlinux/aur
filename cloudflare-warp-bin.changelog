@@ -1,3 +1,27 @@
+cloudflare-warp (2023.3.258) unstable; urgency=medium
+  * Improve timeouts with broken CNAME records that could result in very long load times for certain apps
+  * Fixed issue where systems with significantly out of sync system clocks could fail registration
+  * Improved user validation logic during manual ZT login
+  * Fixed issue where the WARP daemon can crash and lose connectivity
+  * Fixed issue where warp-diag could run traceroutes longer than expected.
+    Traceroute tests will now timeout after 65 seconds.
+  * Fixed issue where manually logging into a ZT org could fail if certificate authentication was used
+  * Added support for Zero Trust Digital Experience Monitoring.
+    More information coming soon for customers who signed up for the beta
+  * Added new log message to help customers and support identify when a users local
+    network IP space overlaps with a remote network configured to go through the tunnel
+  * Added support for Zero Trust customers to opt in to having the WARP Client install the root CA
+    for your organization if TLS Decryption is enabled.
+    A new toggle switch will appear in the dashboard under Settings->WARP Client soon to enable this
+  * Modified behavior of Managed networks tests to always happen outside the tunnel as per original intent
+  * Improved logging of application posture checks to understand rationale behind
+    statuses of application checks (file missing, process not found, etc.)
+  * Added support for more detailed statuses in the output of warp-cli status
+  * Modified initial connectivity check behavior to retry on errors
+
+ -- Logan Praneis <lpraneis@cloudflare.com>  Wed, 22 Mar 2023 12:33:12 -0500
+ 
+
 cloudflare-warp (2023.1.133) unstable; urgency=medium
   * Fixed an issue where clients could lose IPv4 connectivity
   * Fixed an issue where clients would attempt to configure DNS in posture-only or proxy modes.
