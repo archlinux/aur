@@ -2,19 +2,16 @@
 
 pkgname=gnome-shell-extension-compiz-windows-effect-git
 pkgver=r27.823aebb
-pkgrel=2
+pkgrel=3
 pkgdesc="Compiz wobbly windows effect with libanimation engine."
 arch=('any')
 url="https://github.com/hermes83/compiz-windows-effect"
-install=${pkgname%-git}.install
 license=('GPL3')
 depends=("gnome-shell>=1:3.28")
-makedepends=('git'
-             'glib2')
+makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+${url}.git")
-options=('!strip')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -29,17 +26,12 @@ package() {
   cd "${srcdir}/${pkgname%-git}"
 
   local uuid=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
-  #local schema=$(grep -Po '(?<="settings-schema": ")[^"]*' metadata.json).gschema.xml
   local schema=org.gnome.shell.extensions.com.github.hermes83.compiz-windows-effect.gschema.xml
   local destdir="${pkgdir}/usr/share/gnome-shell/extensions/${uuid}"
 
-  install -dm755 "${destdir}"
-  find . -regextype posix-egrep -regex ".*\.(js|json|xml|compiled|)$" -exec\
-     install -Dm 644 {} ${destdir}/{} \;
+  install -d "${destdir}"
+  find . -regextype posix-egrep -regex ".*\.(js|json)$" -exec\
+     install -Dm644 {} ${destdir}/{} \;
   install -Dm644 "${srcdir}/${pkgname%-git}/schemas/${schema}" \
     "${pkgdir}/usr/share/glib-2.0/schemas/${schema}"
-# rebuild compiled GSettings schemas if missing
-  if [[ ! -f "${destdir}/schemas/gschemas.compiled" ]]; then
-    glib-compile-schemas "${destdir}/schemas"
-  fi
 }
