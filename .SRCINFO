@@ -1,0 +1,19 @@
+pkgbase = mastotool-git
+	pkgdesc = A collection of tools to work with your Mastodon account
+	pkgver = 0.2.4.43a1766
+	pkgrel = 1
+	url = https://github.com/muesli/mastotool
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = mastotool
+	conflicts = mastotool
+	source = git+https://github.com/muesli/mastotool.git
+	sha256sums = SKIP
+
+pkgname = mastotool-git
