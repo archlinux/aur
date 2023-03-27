@@ -4,7 +4,7 @@ _pkgname=moonscraper-chart-editor
 pkgname=${_pkgname}-bin
 pkgdesc="Moonscraper Chart Editor is a song editor for Guitar Hero style rhythm games."
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 url="https://github.com/FireFox2000000/Moonscraper-Chart-Editor"
@@ -19,6 +19,11 @@ sha1sums=('b224f1fb532016a5e10c8756c1fd85f16c51186b'
           'e4c64c84730ee05b26e521537fc09fa82925fe72'
           '2d61750d08d43082718a1548810f76be186a9030')
 options=(!strip)
+
+prepare() {
+  # Fix the desktop file
+  sed -i -E "s:moonscraper-chart-editor-git:moonscraper-chart-editor:" "$_pkgname.desktop"
+}
 
 package() {
   find "$srcdir" -maxdepth 1 -type d -name "Moonscraper Chart Editor * Linux (Universal)" -exec mv '{}' "$srcdir/moonscraper" \;

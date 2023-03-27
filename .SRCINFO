@@ -1,7 +1,7 @@
 pkgbase = moonscraper-chart-editor-bin
 	pkgdesc = Moonscraper Chart Editor is a song editor for Guitar Hero style rhythm games.
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FireFox2000000/Moonscraper-Chart-Editor
 	arch = x86_64
 	arch = i686
