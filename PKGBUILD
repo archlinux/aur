@@ -1,28 +1,24 @@
 # Maintainer: Christian Schendel (doppelhelix@gmail.com)
 
 pkgname=gnome-shell-extension-nightthemeswitcher-git
-pkgver=74.r0.geff03a9
-pkgrel=2
+pkgver=74.r1.gb480820
+pkgrel=1
 pkgdesc="Automatically toggle your light and dark themes variants"
 arch=('any')
 url="https://gitlab.com/rmnvgr/nightthemeswitcher-gnome-shell-extension"
-install=${pkgname%-git}.install
 license=('GPL3'
          'MIT'
          'GPL2'
          'LGPL'
          'CCPL:by-nc-sa')
-groups=('gnome-shell-extensions')
 depends=('gnome-shell>=1:44')
 makedepends=('git'
-             'glib2'
              'eslint'
              'meson')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+${url}.git")
 md5sums=('SKIP')
-options=('!strip')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
@@ -37,6 +33,22 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname%-git}"
-  meson install -C build --destdir "$pkgdir"
-}
 
+  local uuid=$(grep -Po '(?<=UUID = \x27)[^\x27]*' meson.build)
+  local schema=$(grep -Po '(?<=DNS = \x27)[^\x27]*' meson.build).gschema.xml
+  local destdir="${pkgdir}/usr/share/gnome-shell/extensions/${uuid}"
+
+  meson install -C build --destdir "$pkgdir"
+
+  install -Dm644 "$destdir/schemas/$schema" -t \
+    "$pkgdir/usr/share/glib-2.0/schemas/"
+  rm -rf "$destdir/schemas/"
+
+  cp -r "$pkgdir/usr/share/gnome-shell/extensions/${uuid}/locale" "$pkgdir/usr/share/"
+  rm -rf "$destdir/locale/"
+
+  install -Dm644 "README.md" "CONTRIBUTING.md" "CHANGELOG.md" -t "$pkgdir/usr/share/doc/${pkgname%-git}"
+    cp -r "res" "$pkgdir/usr/share/doc/${pkgname%-git}"
+
+  install -Dm644 "LICENSE.md" -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
+}
