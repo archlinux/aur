@@ -10,6 +10,7 @@ pkgbase = kcodecs-git
 	makedepends = gperf
 	makedepends = git
 	makedepends = qt6-tools
+	makedepends = doxygen
 	depends = qt6-base
 	provides = kcodecs
 	conflicts = kcodecs
