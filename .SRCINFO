@@ -1,12 +1,12 @@
 pkgbase = mdt
 	pkgdesc = Commandline markdown todo list manager
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/basilioss/mdt
 	arch = any
 	license = GPL3
 	depends = gum
-	source = mdt-1.1.0.tar.gz::https://github.com/basilioss/mdt/archive/refs/tags/1.1.0.tar.gz
-	sha256sums = f56f3f69f50b2380182be6755651d019737de7394160c1a7200b6e1985cfec2d
+	source = mdt-1.1.1.tar.gz::https://github.com/basilioss/mdt/archive/refs/tags/1.1.1.tar.gz
+	sha256sums = 12bc8ec4c70487349a216b07182b88b9cb62d15816abae3a9f2b03207d5e019d
 
 pkgname = mdt
