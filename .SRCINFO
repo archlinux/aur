@@ -1,7 +1,7 @@
 pkgbase = r-rmarkdown
 	pkgdesc = Dynamic Documents for R
-	pkgver = 2.20
-	pkgrel = 2
+	pkgver = 2.21
+	pkgrel = 1
 	url = https://cran.r-project.org/package=rmarkdown
 	arch = any
 	license = GPL3
@@ -11,9 +11,10 @@ pkgbase = r-rmarkdown
 	checkdepends = texlive-core
 	checkdepends = texlive-latexextra
 	checkdepends = ttf-font
-	depends = pandoc-cli
+	depends = pandoc
 	depends = r-bslib
 	depends = r-evaluate
+	depends = r-fontawesome
 	depends = r-htmltools
 	depends = r-jquerylib
 	depends = r-jsonlite
@@ -34,7 +35,7 @@ pkgbase = r-rmarkdown
 	optdepends = r-tibble
 	optdepends = r-vctrs
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/rmarkdown_2.20.tar.gz
-	sha256sums = d7f7059bfcb43e4b92432d69ba0e0c74ad10a20f153689262a3e848adb60159d
+	source = https://cran.r-project.org/src/contrib/rmarkdown_2.21.tar.gz
+	sha256sums = c25b20a422d11a115c93460f41c488874002154abb349b14e0d6518682fdac28
 
 pkgname = r-rmarkdown
