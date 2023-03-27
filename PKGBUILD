@@ -1,5 +1,5 @@
 pkgname=ntfs3-dkms-git
-pkgver=6.2.r0.g1b929c0
+pkgver=6.3.r0.g197b6b6
 pkgrel=1
 epoch=1
 pkgdesc="NTFS3 is fully functional NTFS Read-Write driver. The driver works with NTFS versions up to 3.1."
@@ -18,12 +18,12 @@ source=(
 )
 
 sha256sums=(
-    'ebb7f7cb975c5ee7a49475190403c11ddffab2664e594ac11d1fc0a5542e872c'
+    '5cd4763c42fc4ad8ff54cdf41e4b1d075ea200c1c9e871389996aa17095759b0'
     'fd4cf0e2dc160efecc55d4ea99667669b870599e4e81be435ec2201381b7e2ac'
 )
 
-_ver="6.2"
-_since="1672004499"
+_ver="6.3"
+_since="1679866820"
 
 # The whole kernel history is very huge, so downloading it is a pain.
 # Also commits count is insane and we don't want to see all that in pkgver.
@@ -33,9 +33,8 @@ _since="1672004499"
 pkgver() {
     cd "repo"
 
-    local rev
+    local rev sha
     rev=$(("$(git rev-list --count HEAD)" - 1))
-    local sha
     sha="$(git rev-parse HEAD)"
 
     echo "${_ver}.r${rev}.g${sha:0:7}"
