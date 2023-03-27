@@ -2,8 +2,8 @@
 
 _pkgname=flightcore
 pkgname=flightcore
-pkgver=1.11.0
-pkgrel=2
+pkgver=1.11.1
+pkgrel=1
 pkgdesc="A Northstar installer, updater, and mod-manager"
 arch=('x86_64')
 url="https://github.com/R2NorthstarTools/FlightCore"
@@ -14,7 +14,7 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 _desktop=flightcore.desktop
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ae0e238ba5ccb9770afefb3692d57360c9577e76d8c45b212dd7a733e610e2a9')
+sha256sums=('1eb1c52d2378a801515ac877c73e5f37b4f795d18c2822138078376a5c7c1640')
 
 prepare() {
   # Create a shortcut
