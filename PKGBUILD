@@ -1,8 +1,7 @@
 pkgname=hostapd-wifi6
-pkgdesc='hostapd than enabled AC/AX and ACS support and applied intel lar patch
-and provide useful service unit hostapd@.service and hostapd-ACS@.service'
+pkgdesc='hostapd than enabled AC/AX and ACS support and applied intel lar patch, provide useful service unit hostapd@.service and hostapd-ACS@.service'
 pkgver=2.10
-pkgrel=6
+pkgrel=7
 arch=('x86_64')
 url=https://w1.fi/hostapd
 license=('BSD')
