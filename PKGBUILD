@@ -1,31 +1,31 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname=yuview-appimage
 _pkgname=yuview
-_orginame=de.rwth_aachen.ient.YUView
+pkgname="${_pkgname}-appimage"
+_appname=de.rwth_aachen.ient.YUView
 pkgver=2.13
-pkgrel=1
+pkgrel=2
 pkgdesc="The Free and Open Source Cross Platform YUV Viewer with an advanced analytics toolset"
-arch=('any')
+arch=('x86_64')
 url="http://ient.github.io/YUView"
 _githuburl="https://github.com/IENT/YUView"
 license=('GPL3')
 options=(!strip)
-conflits=(yuview)
-depends=(zlib hicolor-icon-theme)
+conflits=("${_pkgname}")
+depends=(zlib hicolor-icon-theme glibc)
+_install_path="/opt/appimages"
 source=("${_pkgname}-${pkgver}.AppImage::${_githuburl}/releases/download/v.${pkgver}/YUView.AppImage")
 sha256sums=('91b521f1b55fb396e5b873c633d464d4fd33fb1ca95eeaedff3a7b8a06cf774f')
-_install_path="/opt/appimages"
 prepare() {
     chmod a+x "${_pkgname}-${pkgver}.AppImage"
-    "./${_pkgname}-${pkgver}.AppImage" --appimage-extract
-    sed 's/Exec=/\#Exec=/g;s/Icon=/#Icon=/g' -i "${srcdir}/squashfs-root/${_orginame}.desktop"
-    echo "Exec=/opt/appimages/yuview.AppImage %F" >> "${srcdir}/squashfs-root/${_orginame}.desktop"
-    echo "Icon=yuview" >> "${srcdir}/squashfs-root/${_orginame}.desktop"
+    "./${_pkgname}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed 's/Exec=/Exec=\/opt\/appimages\/yuview.AppImage/g;s/Icon=de.rwth_aachen.ient.YUView/Icon=yuview/g' -i "${srcdir}/squashfs-root/${_appname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${_pkgname}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${_pkgname}.AppImage"
     for _icons in 64x64 128x128 256x256 512x512;do
-        install -Dm644 "${srcdir}/squashfs-root/local/share/icons/hicolor/${_icons}/apps/${_orginame}.png" "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png"
+        install -Dm644 "${srcdir}/squashfs-root/local/share/icons/hicolor/${_icons}/apps/${_appname}.png" "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png"
     done
-    install -Dm644 "${srcdir}/squashfs-root/${_orginame}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/${_appname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/local/share/mime/packages/${_appname}.xml" "${pkgdir}/usr/share/mime/packages/${_pkgname}.xml"
+    install -Dm644 "${srcdir}/squashfs-root/local/share/metainfo/${_appname}.appdata.xml" "${pkgdir}/usr/share/metainfo/${_pkgname}.appdata.xml"
 }
