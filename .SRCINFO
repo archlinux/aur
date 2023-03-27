@@ -1,0 +1,13 @@
+pkgbase = bellsym-git
+	pkgdesc = A simple command line tool to move all config files from a directory to another, and create symbolic links where needed.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/isabelroses/bellsym
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	source = git+https://github.com/isabelroses/bellsym
+	md5sums = SKIP
+
+pkgname = bellsym-git
