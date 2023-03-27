@@ -9,7 +9,7 @@ pkgbase = python-dearpygui
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = https://github.com/hoffstadt/DearPyGui/archive/refs/tags/v1.9.0.tar.gz
-	b2sums = df4afeea1fbd08206f9b6c044cda5a8819a7138f28f0df94585c6a288066dac7ff0c72454fc88096ed2704dcaf2932d80f9a019af5f697f058ab3f22b21dc4ea
+	source = git+https://github.com/hoffstadt/DearPyGui#commit=0e583d615966f80c4eef2e1e9d8d354b249ab25e
+	b2sums = SKIP
 
 pkgname = python-dearpygui
