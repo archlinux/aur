@@ -1,7 +1,7 @@
 pkgbase = xfce4-settings-standalone
 	pkgdesc = Xfce's Configuration System
 	pkgver = 4.18.2+f9cb09a7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.xfce.org/xfce/xfce4-settings/start
 	arch = x86_64
 	groups = xfce4
