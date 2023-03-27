@@ -4,7 +4,7 @@
 # Contributor: Mark Dixon <mark@markdixon.name>
 
 pkgname=neo4j-community
-pkgver=5.5.0
+pkgver=5.6.0
 pkgrel=1
 pkgdesc='A fully transactional graph database implemented in Java'
 arch=(any)
@@ -29,7 +29,7 @@ source=(
   neo4j.install
 )
 sha256sums=(
-  '4725f05273cf0c99da42daaa3b231b950159a65e9622a2567eb94298c5d350e5'
+  '7d5d4061be91fe7b168baf0dd948af923b81b3d057d8497915af92ce1f9be443'
   '583635b1736267222d429e6b049af70f6ebd4f76388e8f621f369538bced5718'
   'd3daadb19de811c9d978dba81432c68d78eeff82bc39e11cc493736dadd5660f'
   'e1311352e05b1e698599b91883141b938ceb418abd7e6bc11cc964854f0a21e1'
@@ -87,7 +87,7 @@ package() {
   # Labs directory
   install -Dm644 var/lib/neo4j/labs/LICENSE $pkgdir/var/lib/neo4j/labs/LICENSE
   install -Dm644 var/lib/neo4j/labs/README.txt $pkgdir/var/lib/neo4j/labs/README.txt
-  install -Dm644 var/lib/neo4j/labs/apoc-5.5.0-core.jar $pkgdir/var/lib/neo4j/labs/apoc-5.5.0-core.jar
+  install -Dm644 var/lib/neo4j/labs/apoc-$pkgver-core.jar $pkgdir/var/lib/neo4j/labs/apoc-$pkgver-core.jar
 
   # Lintian
   install -Dm644 usr/share/lintian/overrides/neo4j $pkgdir/usr/share/lintian/overrides/neo4j
