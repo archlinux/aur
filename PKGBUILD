@@ -1,11 +1,11 @@
-# Maintainer: Iván Zaera Avellón <ivan dot zaera at protonmail dot com>
+# Maintainer: Iván Zaera Avellón <ivan.zaera@posteo.net>
 pkgname=bautista
-pkgver=0.0.12
+pkgver=0.0.13
 pkgrel=1
 pkgdesc='A domotic butler bot'
 arch=('pentium4' 'x86_64')
-url='https://github.com/joshi-stuff/bautista'
-license=('GPL3')
+url='https://codeberg.com/ivan.zaera/bautista'
+license=('GPL-3.0-or-later')
 depends=(
 	'nodejs'
 )
@@ -20,32 +20,32 @@ backup=(
 	'etc/bautista/config.toml'
 )
 install='install.sh'
+
 source=(
-	"$pkgname-$pkgver.tar.gz::https://github.com/joshi-stuff/bautista/archive/refs/tags/$pkgver.tar.gz"
+	"$pkgname-$pkgver.tar.gz::https://codeberg.org/ivan.zaera/$pkgname/archive/$pkgver.tar.gz"
 )
-sha256sums=("2c329bdd5ba26e9590730afb61375d8cef291aaf609754331320bbc297bf9df2")
+sha256sums=("d6e56a0e89b0e6a477f3ecad1c88ea2d59d8d8f83cc9c2c4bfec9e0a7fa42814")
 
 build() {
-	cd $srcdir/$pkgname-$pkgver
-	make clean
-	make build
+	cd $srcdir/$pkgname
+	make MODE=release build
 }
 
 check() {
-	cd $srcdir/$pkgname-$pkgver
+	cd $srcdir/$pkgname
 	make lint
 	make test
 }
 
 package() {
-	cd $srcdir/$pkgname-$pkgver
+	cd $srcdir/$pkgname
 
 	cp -arv arch/root/* $pkgdir
 
 	mkdir -p $pkgdir/usr/lib/bautista
-	cp -arv rust/target/debug/bautista-bot $pkgdir/usr/lib/bautista
+	cp -arv rust/target/release/bautista-bot $pkgdir/usr/lib/bautista
 
-	mkdir -p $pkgdir/usr/lib/bautista/meross-bridge
-	cp -arv node/meross-bridge/*.js $pkgdir/usr/lib/bautista/meross-bridge
-	cp -ar node/node_modules $pkgdir/usr/lib/bautista
+	mkdir -p $pkgdir/usr/lib/bautista/node/meross-bridge
+	cp -arv node/meross-bridge/*.js $pkgdir/usr/lib/bautista/node/meross-bridge
+	cp -ar node/node_modules $pkgdir/usr/lib/bautista/node
 }

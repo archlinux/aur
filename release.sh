@@ -11,8 +11,8 @@ fi
 echo == Cleaning up things...
 rm -rf pkg
 rm -rf src
-rm bautista-*.tar.gz
-rm bautista-*.zst
+rm -f bautista-*.tar.gz
+rm -f bautista-*.zst
 
 echo == Changing pkgver in PKGBUILD...
 sed -i "s/^pkgver=.*$/pkgver=$VERSION/" PKGBUILD
@@ -27,18 +27,18 @@ echo == Changing sha256sums in PKGBUILD...
 sed -i "s/^sha256sums=.*$/sha256sums=\(\"${SHA256}\"\)/" PKGBUILD
 
 echo == Updating PKGBUILD and install.sh...
-tar xvf bautista-${VERSION}.tar.gz 
-mv bautista-${VERSION}/arch/install.sh .
-# TODO: transform PKGBUILD sources/prepare fields to match AUR build and overwrite
+tar xvf bautista-${VERSION}.tar.gz
+mv bautista/arch/install.sh .
 
-rm -rf bautista-${VERSION}
+#rm -rf bautista-${VERSION}      # GitHub adds version to tar's internal folder
+rm -rf bautista                  # Codeberg doesn't
 
 echo == Checking package build...
 if ! makepkg -frs
 then
-	echo 
+	echo
 	echo "PACKAGE BUILD FAILED !!!"
-	echo 
+	echo
 	exit 1
 fi
 
