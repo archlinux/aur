@@ -1,6 +1,6 @@
 # Maintainer: Christian Pinedo <chr.pinedo@gmail.com>
 pkgname=idazki-desktop
-pkgver=3.6.0
+pkgver=3.6.1
 pkgrel=1
 _pkgdld="idazki-desktop-linux64.run"
 epoch=
@@ -24,7 +24,7 @@ source=("https://www.izenpe.eus/contenidos/informacion/idazki_izenpe/es_def/adju
 	"idazki-desktop.desktop.patch"
 	"idazki-delegado.desktop.patch")
 noextract=()
-sha256sums=('f11d82f36fd841d62d52db7b2a47dfb52bb59eb279c5331174e9eac4245a99da'
+sha256sums=('3ca101ad6c105183c893445812aefd833a7b0ef1e9708d38c362c9e25ee2bb75'
             'bb6634429b75a64e3cc04c6415ebea72cababbe8bffce9dfaedf59d6b09281a7'
             '9cbab6ae4e506ab57223fabac18a7da9160ccb3d9f1a07b37e9999a8993ffb75')
 validpgpkeys=()
