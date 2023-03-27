@@ -1,7 +1,7 @@
 pkgbase = calibre-web
 	pkgdesc = Web app for browsing, reading and downloading eBooks stored in a Calibre database
 	pkgver = 0.6.20
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/janeczku/calibre-web
 	arch = any
 	license = GPL3
@@ -23,6 +23,7 @@ pkgbase = calibre-web
 	depends = python-iso639
 	depends = python-lxml
 	depends = python-flask-wtf
+	depends = python-flask-limiter
 	depends = python-pycountry
 	optdepends = python-jsonschema: kobo sync support
 	provides = calibre-web

@@ -4,7 +4,7 @@
 
 pkgname=calibre-web
 pkgver=0.6.20
-pkgrel=2
+pkgrel=3
 pkgdesc="Web app for browsing, reading and downloading eBooks stored in a Calibre database"
 arch=('any')
 url="https://github.com/janeczku/calibre-web"
@@ -28,6 +28,7 @@ depends=(
   'python-iso639'
   'python-lxml'
   'python-flask-wtf'
+  'python-flask-limiter'
   'python-pycountry'
 )
 optdepends=(
