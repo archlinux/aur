@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-types-python-dateutil
 _pkgname=${pkgname:7}
-pkgver=2.8.19.10
+pkgver=2.8.19.11
 pkgrel=1
 pkgdesc="Typing stubs for python-dateutil"
 arch=('any')
@@ -11,7 +11,7 @@ license=(Apache)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 depends=(python)
 source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
-sha256sums=('c640f2eb71b4b94a9d3bfda4c04250d29a24e51b8bad6e12fddec0cf6e96f7a3')
+sha256sums=('de66222c54318c2e05ceb4956976d16696240a45fc2c98e54bfe9a56ce5e1eff')
 
 build() {
     cd ${srcdir}/${_pkgname}-${pkgver}
