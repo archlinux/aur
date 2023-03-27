@@ -8,17 +8,17 @@ url="https://github.com/isabelroses/bellsym"
 license=('MIT')
 depends=()
 makedepends=('git' 'cargo')
-source=("git+$url")
+source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "${pkgname}"
+	cd "$pkgname"
 	printf "1.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
 	cd "$pkgname-$pkgver"
-    cargo build --release
+	cargo build --release
 }
 
 package() {

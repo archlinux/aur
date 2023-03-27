@@ -7,7 +7,7 @@ pkgbase = bellsym-git
 	license = MIT
 	makedepends = git
 	makedepends = cargo
-	source = git+https://github.com/isabelroses/bellsym
+	source = bellsym-git::git+https://github.com/isabelroses/bellsym
 	md5sums = SKIP
 
 pkgname = bellsym-git
