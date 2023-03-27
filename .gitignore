@@ -1,4 +1,6 @@
-/*.deb
-/*.tar.xz
-/pkg/
-/src/
+.gitignore
+pkg/
+src/
+*.deb
+*.tar.zst
+.PKGBUILD.*
