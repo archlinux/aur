@@ -1,15 +1,19 @@
 pkgbase = museeks-appimage
 	pkgdesc = A simple, clean and cross-platform music player
 	pkgver = 0.13.1
-	pkgrel = 1
-	url = https://github.com/martpie/museeks
+	pkgrel = 2
+	url = https://museeks.io/
 	arch = x86_64
 	license = MIT
 	depends = hicolor-icon-theme
 	depends = zlib
-	conflicts = museeks-bin
+	depends = glibc
+	provides = martpie
+	conflicts = museeks
 	options = !strip
 	source = museeks-0.13.1.AppImage::https://github.com/martpie/museeks/releases/download/0.13.1/museeks-x86_64.AppImage
+	source = LICENSE::https://github.com/martpie/museeks/raw/master/LICENSE
 	sha256sums = 2efba7842166a6fd344e75f35a3a779105008682a99a9ea9a8a81c694a9957ea
+	sha256sums = 6f09c1eea17a3c9d1b6ad335090a9b102552079a15e4de1fc5d106c401106ba4
 
 pkgname = museeks-appimage
