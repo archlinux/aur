@@ -1,0 +1,5 @@
+hostapd-*.patch
+hostapd-*.tar.gz
+hostapd-wifi6-*.pkg.tar.zst
+pkg/
+src/
