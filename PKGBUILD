@@ -1,38 +1,34 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname=srware-iron-bin
-_pkgname=iron
-pkgver=110.5600.0
-pkgrel=1
-epoch=
+_pkgname=srware-iron
+pkgname="${_pkgname}-bin"
+pkgver=110.0.5600.0
+pkgrel=2
 pkgdesc="SRWare Iron Browser is a light-weight browser,based on Chromium"
 arch=("x86_64")
-url="https://www.srware.net/"
-license=('custom:freeware')
-depends=('gtk2' 'alsa-lib' 'qt5-base' 'nss' 'at-spi2-core')
-optdepends=()
-conflicts=()
+url="https://www.srware.net"
+license=('custom')
+depends=(gtk2 alsa-lib qt5-base nss at-spi2-core libx11 libxcb expat libxfixes cairo libxcomposite libdrm glib2 gcc-libs \
+    libxext libxdamage gdk-pixbuf2 glibc pango nspr mesa libxrandr libcups sh libxkbcommon dbus hicolor-icon-theme)
+conflicts=("${_pkgname}")
 provides=("SRWare")
-install=
 source=(
-    "${_pkgname}_${pkgver}_amd64.deb::${url}/downloads/${_pkgname}64.deb"
-    "LICENSE::https://www.srware.net/license.txt"
-    "${pkgname}.desktop"
+    "${_pkgname}-${pkgver}.deb::${url}/downloads/iron64.deb"
+    "LICENSE::${url}/license.txt"
     )
-md5sums=('155e21af68e45c78b3f203005b332a1e'
-         '7e5c8bc3986be55cd2d4649361287a22'
-         '7415fbccd4a3539dfdb2f410264d7871')
-  
-prepare() {
-    bsdtar -xf data.tar.xz
-    mkdir -p "${srcdir}/opt"
-    mv "${srcdir}/usr/share/${_pkgname}" "${srcdir}/opt/${pkgname}"
-    chmod +x "${srcdir}/opt/${pkgname}/chrome-wrapper"
-    chmod 755 "${srcdir}/opt/${pkgname}/extensions"
-}
-
+sha256sums=('57fe78e5c379d679629ce324665f3447ead2ea2ac55dbb2378604b7d9d19aecc'
+            'a29953afc386e2a9a95906cfa0de4bf58a332260d7199a5f99d3e15db9381022')
 package() {
-    cp -r "${srcdir}/opt/" "${pkgdir}"
-    install -Dm644 "${srcdir}/usr/share/pixmaps/iron_product_logo.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.png"
-    install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    bsdtar -xf data.tar.xz -C "${pkgdir}"
+    install -Dm755 -d "${pkgdir}/opt"
+    mv "${pkgdir}/usr/share/iron" "${pkgdir}/opt/${_pkgname}"
+    find "${pkgdir}" -type d -exec chmod 755 {} \;
+    find "${pkgdir}" -type f -exec chmod 644 {} \;
+    chmod +x "${pkgdir}/opt/${_pkgname}/"chrome*
+    sed 's/Exec=\/usr\/share\/iron\/chrome-wrapper/Exec=\/opt\/srware-iron\/chrome-wrapper/g;s/Icon=iron_product_logo/Icon=srware-iron/g' \
+        -i "${pkgdir}/usr/share/applications/iron.desktop"
+    sed 's/Exec=\/usr\/share\/iron\/IronConfigBackup/Exec=\/opt\/srware-iron\/IronConfigBackup/g;s/Icon=iron_product_logo/Icon=srware-iron/g' \
+        -i "${pkgdir}/usr/share/applications/iron_backup.desktop"
+    install -Dm644 "${pkgdir}/usr/share/pixmaps/iron_product_logo.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.png"
+    rm -rf "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
