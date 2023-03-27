@@ -1,10 +1,10 @@
 # Maintainer: Chris Rizzitello <sithlord48@gmail.com>
 pkgname=hyne-git
 conflicts=('hyne')
-pkgver=continuous.r0.g05d2bf6
+pkgver=1.11.2.2
 pkgrel=1
 pkgdesc="Final Fantasy 8 Save Editor"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://github.com/myst6re/hyne"
 license=('GPL3')
 depends=('qt5-base' 'zlib') #Qt5)
@@ -16,7 +16,7 @@ md5sums=(SKIP)
 
 pkgver() {
   cd "hyne"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --match '[0-9]*' | sed 's/-/./g;s/v//g' | grep -o "^[0-9]*.[0-9]*.[0-9]*.[0-9]*"
 }
 
 build() {
