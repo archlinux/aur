@@ -2,7 +2,7 @@
 
 pkgname=multimc-bin
 _pkgname=multimc
-pkgver=0.7.0.3710
+pkgver=0.7.0.3728
 pkgrel=1
 pkgdesc="A custom launcher for Minecraft that allows you to easily manage multiple installations of Minecraft at once."
 arch=('x86_64')
@@ -20,8 +20,8 @@ optdepends=('mcedit: Allows editing of minecraft worlds'
 source=("$_pkgname-$pkgver.tar.gz::https://files.multimc.org/downloads/mmc-develop-lin64.tar.gz"
         "multimc.svg"
         "multimc.desktop"
-        "multimc.sh")
-sha256sums=('7b357564c47aaa4a561b79a03575d45c33d6f9498e4c385a577ceb66ab61e34a'
+        "wrapper.sh")
+sha256sums=('3892140c96c74da22c5127c3391cb13823cfa0d507e9ca698b9cc2c07d81d8ee'
             '8c2c1ff1f4ce4ca7a7453ec1f7f666087f4319db7c654f81a7827a34f0c17e33'
             '6d12903a5630c9ff7aa35769566f29a8b4b591024cc61be826f4a3b1e8bea3bc'
             '53c3044ae1e7c28a5458f51c00395a14c1a9dc43a0235c882e524da499e0aef8')
@@ -36,5 +36,5 @@ package() {
 
   install -Dm 644 "$srcdir/multimc.svg" "$pkgdir/usr/share/pixmaps/multimc.svg"
   install -Dm 644 "$srcdir/multimc.desktop" "$pkgdir/usr/share/applications/multimc.desktop"
-  install -Dm 755 "$srcdir/multimc.sh" "$pkgdir/usr/bin/multimc"
+  install -Dm 755 "$srcdir/wrapper.sh" "$pkgdir/usr/bin/multimc"
 }
