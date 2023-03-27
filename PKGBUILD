@@ -2,12 +2,12 @@
 
 pkgname=fightcade2
 pkgver=2.1.38
-pkgrel=1
+pkgrel=2
 pkgdesc='The best way to play your favorite retro games with or against any other player in the world.'
 url='https://www.fightcade.com/'
 arch=('any')
 license=('custom')
-depends=(rsync wine wine-mono lib32-mpg123 lib32-libxss lib32-libcurl-gnutls libcurl-gnutls libzip miniupnpc)
+depends=(rsync wine wine-mono lib32-mpg123 lib32-libxss lib32-libcurl-gnutls libcurl-gnutls libzip miniupnpc lua53)
 makedepends=(gendesk)
 source=("$pkgname-$pkgver.tar.gz::https://web.fightcade.com/download/Fightcade-linux-latest.tar.gz")
 md5sums=('SKIP')
@@ -76,6 +76,11 @@ prepare() {
 }
 
 package() {
+	# fix flycast lib not found error
+	install -dm755 $pkgdir/usr/lib
+	ln -s "/usr/lib/libzip.so" "$pkgdir/usr/lib/libzip.so.4"
+	ln -s "/usr/lib/liblua5.3.so" "$pkgdir/usr/lib/liblua5.3.so.0"
+	
 	install -dm755 $HOME/.$pkgname/
 	install -dm755 $pkgdir/opt/
 	install -Dm644 "$srcdir/Fightcade/fc2-electron/resources/app/icon.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"

@@ -1,7 +1,7 @@
 pkgbase = fightcade2
 	pkgdesc = The best way to play your favorite retro games with or against any other player in the world.
 	pkgver = 2.1.38
-	pkgrel = 1
+	pkgrel = 4
 	url = https://www.fightcade.com/
 	arch = any
 	license = custom
@@ -15,6 +15,7 @@ pkgbase = fightcade2
 	depends = libcurl-gnutls
 	depends = libzip
 	depends = miniupnpc
+	depends = lua53
 	source = fightcade2-2.1.38.tar.gz::https://web.fightcade.com/download/Fightcade-linux-latest.tar.gz
 	md5sums = SKIP
 
