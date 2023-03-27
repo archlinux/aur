@@ -1,7 +1,7 @@
 pkgbase = mcron
 	pkgdesc = Pure Guile, compatible replacement for cron
-	pkgver = 1.2.1
-	pkgrel = 2
+	pkgver = 1.2.3
+	pkgrel = 1
 	url = https://gnu.org/software/mcron/
 	arch = x86_64
 	license = GPL3
@@ -9,10 +9,10 @@ pkgbase = mcron
 	provides = cron
 	conflicts = cron
 	options = !strip
-	source = mcron-1.2.1.tar.gz::https://ftp.gnu.org/gnu/mcron/mcron-1.2.1.tar.gz
-	source = mcron-1.2.1.tar.gz.sig::https://ftp.gnu.org/gnu/mcron/mcron-1.2.1.tar.gz.sig
+	source = mcron-1.2.3.tar.gz::https://ftp.gnu.org/gnu/mcron/mcron-1.2.3.tar.gz
+	source = mcron-1.2.3.tar.gz.sig::https://ftp.gnu.org/gnu/mcron/mcron-1.2.3.tar.gz.sig
 	validpgpkeys = 961AB15C62EF3B92DAB5965988C3D2BEA81462EB
-	sha256sums = 20fe726c8c53e00261a3a8e191051228b07558292de5abe3714445f1ca10762e
+	sha256sums = 1bc8c0d362d3b1a30fa0071d7fab696bbfc1da1ed536c42e0480bb9ffd22154e
 	sha256sums = SKIP
 
 pkgname = mcron
