@@ -1,7 +1,7 @@
 pkgbase = kodi-addon-vfs-rar-git
 	pkgdesc = Rar Addon for Kodi - git version
 	pkgver = 4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xbmc/vfs.rar
 	arch = i686
 	arch = x86_64
@@ -13,11 +13,10 @@ pkgbase = kodi-addon-vfs-rar-git
 	makedepends = cmake
 	makedepends = kodi-platform
 	makedepends = git
-	makedepends = kodi-dev>=19.0
+	makedepends = kodi-dev>=20.0
 	depends = kodi
 	depends = p8-platform
-	source = git+https://github.com/xbmc/vfs.rar.git#branch=Matrix
+	source = git+https://github.com/xbmc/vfs.rar.git#branch=Nexus
 	md5sums = SKIP
 
 pkgname = kodi-addon-vfs-rar-git
-
