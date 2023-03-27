@@ -8,6 +8,7 @@ pkgbase = papa
 	makedepends = cargo
 	makedepends = openssl
 	makedepends = pkgconf
+	optdepends = sccache: compiler caching for faster compiling
 	provides = papa
 	conflicts = papa
 	source = git+https://github.com/AnActualEmerald/papa.git#commit=ecb6306027e12007da86541fbdac145fa69bc2d4

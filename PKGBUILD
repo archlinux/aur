@@ -10,6 +10,7 @@ arch=('any')
 url="https://github.com/AnActualEmerald/papa"
 license=('MIT')
 makedepends=('cargo' 'openssl' 'pkgconf')
+optdepends=('sccache: compiler caching for faster compiling')
 provides=($_pkgname)
 conflicts=($_pkgname)
 _commit=ecb6306027e12007da86541fbdac145fa69bc2d4
