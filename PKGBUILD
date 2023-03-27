@@ -2,14 +2,14 @@
 # Contributor Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=solid-git
-pkgver=5.240.0_r861.g86e4d87
+pkgver=5.240.0_r866.gb865f92
 pkgrel=1
 pkgdesc='Hardware integration and detection'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(qt6-declarative media-player-info udisks2 upower-git)
-makedepends=(extra-cmake-modules-git git qt6-tools)
+makedepends=(extra-cmake-modules-git git qt6-tools doxygen)
 groups=(kf6)
 conflicts=(solid)
 provides=(solid)

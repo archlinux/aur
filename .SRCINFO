@@ -1,6 +1,6 @@
 pkgbase = solid-git
 	pkgdesc = Hardware integration and detection
-	pkgver = 5.240.0_r861.g86e4d87
+	pkgver = 5.240.0_r866.gb865f92
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = solid-git
 	makedepends = extra-cmake-modules-git
 	makedepends = git
 	makedepends = qt6-tools
+	makedepends = doxygen
 	depends = qt6-declarative
 	depends = media-player-info
 	depends = udisks2
