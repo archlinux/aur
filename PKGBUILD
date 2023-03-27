@@ -1,6 +1,6 @@
 # Maintainer: Mik Mueller <imse335@gmail.com>
 pkgname=smarthome-commander
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=5
 pkgdesc="Microservice for executing shell commands via API requests"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/smarthome-go/commander/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('ddf4f04b4dd2206e6eab906a29997bad10c0682fb5fa70585f255af7ac17482cc4369bb4a53cb0a47fd2ff4a07b151df7d70549d623caa06c1c188360a5ea6a9')
+b2sums=('36590de9c7f31a5d17dad443759155fc53bf9efc6e6cdb4467745c769b18c05df4f8bd74918d2586182cdda53b069b644a76949418abf21988a50d3239402383')
 
 prepare() {
     cd "$srcdir/commander-$pkgver"
