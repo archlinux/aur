@@ -3,13 +3,13 @@
 _gitname=VmChamp
 pkgname=vmchamp-git
 pkgver=v0.0.1.r4.ge37e9ef
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and fast creation of throwaway VMs on your local machine."
 arch=('x86_64')
 license=('custom')
 url='https://github.com/wubbl0rz/VmChamp'
 
-#depends=()
+depends=('zlib')
 makedepends=("git" "dotnet-sdk-preview-bin")
 
 source=(
@@ -41,13 +41,12 @@ build()
 
 package()
 {
-    mkdir -p "$pkgdir/opt/${_gitname}"
     cd "$srcdir/${_gitname}/${_gitname}/bin/Release/linux-x64"
 
     # Copy Linux binary
     install -d -m0755 -g 0 "${pkgdir}"/usr/bin
     install -m0755 -g 0 -t "${pkgdir}"/usr/bin/ ${_gitname}
 
-    # Copy Linux dependencies
+    # Copy Linux dependencies (if any needed in future)
     #install -m0755 -g 0 -t "${pkgdir}"/usr/lib *.so
 }

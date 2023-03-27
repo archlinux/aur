@@ -1,12 +1,13 @@
 pkgbase = vmchamp-git
 	pkgdesc = Simple and fast creation of throwaway VMs on your local machine.
 	pkgver = v0.0.1.r4.ge37e9ef
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wubbl0rz/VmChamp
 	arch = x86_64
 	license = custom
 	makedepends = git
 	makedepends = dotnet-sdk-preview-bin
+	depends = zlib
 	source = git+https://github.com/wubbl0rz/VmChamp
 	sha256sums = SKIP
 
