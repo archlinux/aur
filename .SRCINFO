@@ -1,13 +1,14 @@
 pkgbase = tgp
 	pkgdesc = tgp telegram proxy written in go
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/geovex/tgp
 	arch = x86_64
 	arch = aarch64
 	arch = i686
 	makedepends = git
 	makedepends = go
+	backup = etc/tgp.toml
 	source = https://github.com/geovex/tgp/archive/refs/tags/v0.2.2.tar.gz
 	source = tgp.service
 	source = tgp.toml
