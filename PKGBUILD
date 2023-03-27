@@ -3,7 +3,7 @@
 pkgname=tgp
 pkgrel=1
 pkgver=0.2.1
-pkgdesc="tgp telegram proxy"
+pkgdesc="tgp telegram proxy written in go"
 arch=('x86_64' 'aarch64' 'i686')
 url="https://github.com/geovex/tgp"
 makedepends=('git' 'go')
