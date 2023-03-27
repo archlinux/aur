@@ -2,7 +2,7 @@
 
 pkgname=python-scikit-learn-extra
 _module=${pkgname#python-}
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Python module for machine learning that extends scikit-learn'
 arch=('x86_64')
@@ -23,7 +23,7 @@ makedepends=(
             )
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('3b1bb5fedde47920eb4b3fa0a0c18f80cc7359d9d0496720178788c6153b8019')
+sha256sums=('7912d43384470d77609e53819d0291967f21010e5c3a3847f9026fc02f9c7893')
 
 build() {
     cd "$_module-$pkgver"

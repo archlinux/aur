@@ -1,6 +1,6 @@
 pkgbase = python-scikit-learn-extra
 	pkgdesc = Python module for machine learning that extends scikit-learn
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/scikit-learn-contrib/scikit-learn-extra
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = python-scikit-learn-extra
 	depends = python-matplotlib
 	depends = python-pytest
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/s/scikit-learn-extra/scikit-learn-extra-0.2.0.tar.gz
-	sha256sums = 3b1bb5fedde47920eb4b3fa0a0c18f80cc7359d9d0496720178788c6153b8019
+	source = https://files.pythonhosted.org/packages/source/s/scikit-learn-extra/scikit-learn-extra-0.3.0.tar.gz
+	sha256sums = 7912d43384470d77609e53819d0291967f21010e5c3a3847f9026fc02f9c7893
 
 pkgname = python-scikit-learn-extra
