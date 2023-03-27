@@ -1,7 +1,7 @@
 pkgbase = wemeet-bin
 	pkgdesc = Tencent Video Conferencing, tencent meeting 腾讯会议
 	pkgver = 3.14.0.401
-	pkgrel = 1
+	pkgrel = 2
 	url = https://source.meeting.qq.com/download-center.html
 	arch = x86_64
 	arch = aarch64
@@ -16,7 +16,7 @@ pkgbase = wemeet-bin
 	provides = tencent-meeting
 	source = wemeet.sh
 	source = wrap.c
-	sha512sums = a8e617c33b0be41d1b6e34b6f5e444a54b7b336a7159ce0edaa3dbc42497c7d4e8916e60903b8e989081ca8d0f25b84eb0102954c0e9a4cd4afee2e2c45526a1
+	sha512sums = e5b85510cebc3b73c65228feaa97a5bb3eb360ac467ef6cb8bdcde8e912819000b859b0e0fba8fa154272d613dc6541a9a29d64f56ecbb0877288d1de011029c
 	sha512sums = 48e40dfaf425f096802bfff081a9a1a3122f1f677227f1dbe67cfb37cef7ab8fe6060258161c79b07cd559c4022de6cea42245400ccfd1eac8456c7b42260550
 	source_x86_64 = wemeet-3.14.0.401-x86_64.deb::https://updatecdn.meeting.qq.com/cos/1b001ef75914a1d6948decb8c2550b47/TencentMeeting_0300000000_3.14.0.401_x86_64_default.publish.deb
 	sha512sums_x86_64 = df1528be8b58f61f2fb7e53e012fb4c6d9c014a9f0d60e47ebee2bfc89b7a54db13dbbaa83b27c2a7650628f3844fb333637e6cde22622e6cd42ac15eed7954e
