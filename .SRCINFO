@@ -1,12 +1,15 @@
 pkgbase = sigma-file-manager-appimage
 	pkgdesc = A free, open-source, quickly evolving, modern file manager (explorer / finder) app for Windows and Linux.
 	pkgver = 1.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/aleksey-hoffman/sigma-file-manager
 	arch = x86_64
 	license = GPL3
 	depends = hicolor-icon-theme
 	depends = zlib
+	depends = glibc
+	provides = aleksey-hoffman
+	conflicts = sigma-file-manager
 	options = !strip
 	source = sigma-file-manager-1.6.0.AppImage::https://github.com/aleksey-hoffman/sigma-file-manager/releases/download/v1.6.0/Sigma-File-Manager-1.6.0-Linux-Debian.AppImage
 	sha256sums = ca4bb1d6707776d3cb2cf3ae589f155173d5e043c51a72970197d24cf3cf9e34
