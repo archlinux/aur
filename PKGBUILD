@@ -1,7 +1,7 @@
 pkgname=hostapd-wifi6
 pkgdesc="hostapd enabled IEEE802.11* in defconfig"
 pkgver=2.10
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url=https://w1.fi/hostapd
 license=('BSD')
@@ -10,12 +10,14 @@ conflicts=('hostapd')
 provides=('hostapd')
 source=(
   "https://w1.fi/releases/hostapd-$pkgver.tar.gz"
-  'hostapd.service'
+  'hostapd@.service'
+  'hostapd-ACS@.service'
   'https://tildearrow.org/storage/hostapd-2.10-lar.patch'
 )
 sha512sums=(
   '243baa82d621f859d2507d8d5beb0ebda15a75548a62451dc9bca42717dcc8607adac49b354919a41d8257d16d07ac7268203a79750db0cfb34b51f80ff1ce8f'
-  '34e16c5d46383477bcb9e0dba5073b7f01354a6adca8e591050aeff6319255f8939926b70d76d109735496bbaf9ff2d04be9cf6e0d057c4d2f4a4140067957a3'
+  'cbc9c01bc264142a270af3d1cbacc53a01211cb14cb38d9a5907c3e18049dbfdad0b3048724c97fce3f2c4faf49754cc693467d19aec7c5220c959b0d13a424e'
+  '3132c58b9eccead25cc399a9761c03863a8a601e71a4e3cec495422c5f09afcbb8c922a4ec98ac0dbccf2633af6f6e41abd4e94cb2723118faa5046f12a3e375'
   '443e5c012b6e2d06ab812b87e995ca7e48751d43b81b3a26a722400f64ccdec0e9486a5e043121f2f1084cc59729f781b6e9d5c05031dac18cdeaaa86ed8ecea'
 )
 prepare() {
@@ -41,7 +43,8 @@ build(){
 package() {
   cd "hostapd-${pkgver}"
   make -C 'hostapd' install DESTDIR="${pkgdir}" BINDIR="/usr/bin"
-  install -vDm 644 "../hostapd.service" -t "$pkgdir/usr/lib/systemd/system/"
+  install -vDm 644 "../hostapd@.service" -t "$pkgdir/usr/lib/systemd/system/"
+  install -vDm 644 "../hostapd-ACS@.service" -t "$pkgdir/usr/lib/systemd/system/"
   install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -vDm 640 "hostapd/hostapd."{accept,conf,deny,eap_user,radius_clients,vlan,wpa_psk} -t "${pkgdir}/etc/hostapd"
   install -vDm 644 "hostapd/"{hostapd.sim_db,wired.conf,hlr_auc_gw.{txt,milenage_db}} "hostapd/"{README*,ChangeLog} -t "${pkgdir}/usr/share/doc/hostapd"

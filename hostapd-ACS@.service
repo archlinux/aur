@@ -1,0 +1,12 @@
+[Unit]
+Description=Hostapd IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator with ACS enabled
+After=network.target
+
+[Service]
+ExecStartPre=+/usr/bin/sh -c "sed /etc/hostapd/hostapd_%i.conf -e '/^#/d' -e '/^$/d' -re 's|^channel=[0-9]+$|channel=acs_survey|g' > /etc/hostapd/hostapd_%i_ACS.conf"
+ExecStart=/usr/bin/hostapd /etc/hostapd/hostapd_%i_ACS.conf
+ExecStopPost=+/usr/bin/rm -f /etc/hostapd/hostapd_%i_ACS.conf
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
