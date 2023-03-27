@@ -1,7 +1,7 @@
 # Maintainer: Chris Rizzitello <sithlord48@gmail.com>
 pkgname=hyne-git
 conflicts=('hyne')
-pkgver=1.9.2c.r2.g480170f
+pkgver=continuous.r0.g05d2bf6
 pkgrel=1
 pkgdesc="Final Fantasy 8 Save Editor"
 arch=('i686' 'x86_64')
@@ -10,7 +10,8 @@ license=('GPL3')
 depends=('qt5-base' 'zlib') #Qt5)
 #optdepends=('otf-ipafont: font for displaying japanese')
 install=$pkgname.install
-source=("git://github.com/myst6re/hyne.git#branch=develop")
+source=("git+https://github.com/myst6re/hyne.git#branch=develop")
+#source=("git://github.com/myst6re/hyne.git#branch=develop")
 md5sums=(SKIP)
 
 pkgver() {
