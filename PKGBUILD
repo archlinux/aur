@@ -10,7 +10,7 @@ license=('GPL3')
 depends=()
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-bin")
-makedepends=('cargo' 'git')
+makedepends=('cargo' 'git' 'glibc' 'gcc-libs')
 source=("${_pkgname}::git+https://github.com/ellbur/${_pkgname}")
 sha512sums=('SKIP')
 
