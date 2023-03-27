@@ -3,7 +3,7 @@ _pkgname=embark-alacritty
 pkgname=$_pkgname-git
 pkgver=r7.9a99e7a
 pkgrel=1
-pkgdesc="An ambitious theme for alacritty"
+pkgdesc="A dark, ambitious theme for alacritty. A port of the Embark color scheme."
 arch=('any')
 url="https://embark-theme.github.io"
 license=('MIT')
@@ -22,6 +22,6 @@ pkgver() {
 package() {
 	cd $_pkgname
 	# shellcheck disable=SC2154
-	install -Dm644 -t "$pkgdir"/usr/share/alacritty embark.yml
+	install -Dm644 -t "$pkgdir"/usr/share/alacritty/themes embark.yml
 	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
 }
