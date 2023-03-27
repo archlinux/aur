@@ -1,8 +1,8 @@
 # Maintainer: Bruno Renié <brutasse@gmail.com>
 pkgname=vaudtax
 pkgver=2022
-_pkgver=1.0-production
-pkgrel=1
+_pkgver=1.1-production
+pkgrel=2
 pkgdesc="VaudTax"
 url="https://www.vd.ch/themes/etat-droit-finances/impots/impots-pour-les-individus/remplir-ma-declaration-dimpot/vaudtax-1"
 depends=('webkit2gtk' 'jre11-openjdk' 'gnome-vfs')
@@ -35,5 +35,5 @@ package() {
 	ln -s ${_app_home}/bin/${pkgname} "${pkgdir}"/usr/bin/${pkgname}
 }
 
-sha256sums=('9b2bcd0107b8ffbcec782537169b62a36e32563f65c907bae5089633b97ba9a8'
-        'e92996587a65052a528cc93f4eab7f95b025935f79fffbe40131e91d2540edba')
+sha256sums=('c4a1e04d403aa4136fc5fa7cfb0125874dddf42b4aabf2d06d8935916ebfa14b'
+            'e92996587a65052a528cc93f4eab7f95b025935f79fffbe40131e91d2540edba')
