@@ -2,3 +2,4 @@ pkg
 src
 rose-pine-alacritty
 *.tar.xz
+*.tar.zst

@@ -2,7 +2,7 @@
 _pkgname=rose-pine-alacritty
 pkgname=$_pkgname-git
 pkgver=r25.7c3625f
-pkgrel=1
+pkgrel=2
 pkgdesc="Dark and light themes for alacritty with all-natural pine, faux fur and a bit of soho vibes for the classy minimalist."
 arch=('any')
 url="https://rosepinetheme.com"
@@ -22,7 +22,7 @@ pkgver() {
 package() {
 	cd $_pkgname/dist
 	# shellcheck disable=SC2154
-	install -Dm644 -t "$pkgdir"/usr/share/alacritty/themes rose-pine.yml
-	install -Dm644 -t "$pkgdir"/usr/share/alacritty/themes rose-pine-dawn.yml
-	install -Dm644 -t "$pkgdir"/usr/share/alacritty/themes rose-pine-moon.yml
+	install -Dm644 -t "$pkgdir"/usr/share/alacritty rose-pine.yml
+	install -Dm644 -t "$pkgdir"/usr/share/alacritty rose-pine-dawn.yml
+	install -Dm644 -t "$pkgdir"/usr/share/alacritty rose-pine-moon.yml
 }
