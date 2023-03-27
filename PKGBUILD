@@ -4,7 +4,7 @@ _pkgname=alfae
 pkgname=$_pkgname-bin
 pkgver=1.4.0
 pkgrel=1
-pkgdesc="An Itch.io/Epic Games/GOG launcher that works through plugins"
+pkgdesc="An Itch.io/Epic Games/GOG launcher that works through plugins (binary release)"
 arch=('x86_64')
 url="https://github.com/suchmememanyskill/Alfae"
 license=('GPL3')
@@ -33,6 +33,8 @@ prepare() {
   sed -i '1 i\Exec=/opt/Alfae/alfae %U' $_desktop
   sed -i '1 i\Name=Alfae' $_desktop
   sed -i '1 i\[Desktop Entry]' $_desktop
+  mkdir -p desktop
+  mv $_desktop desktop
 }
 
 package() {
@@ -41,7 +43,7 @@ package() {
   cp -a Release $pkgdir/opt/Alfae
   ln -fs /opt/Alfae/Alfae ${pkgdir}/usr/bin/${_pkgname}
   install -Dm644 icon.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
-  install -Dm644 ${_desktop} "$pkgdir/usr/share/applications/$_desktop"
+  install -Dm644 desktop/${_desktop} "$pkgdir/usr/share/applications/$_desktop"
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
