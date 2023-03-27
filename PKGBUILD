@@ -76,7 +76,6 @@ source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v
         disable-werror4.patch
         ffmpeg4.4.patch
         rocblas-batched.patch)
-        
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
@@ -185,7 +184,7 @@ prepare() {
 
   git -c protocol.file.allow=always submodule update --init --recursive
 
-  # Fix include with GCC 12 
+  # Fix include with GCC 12
   sed "1i#include <mutex>" -i third_party/kineto/libkineto/src/RoctracerActivityApi.h
 
   # https://bugs.archlinux.org/task/64981
@@ -208,7 +207,7 @@ prepare() {
 
   # build against ffmpeg4.4
   patch -Np1 -i "${srcdir}/ffmpeg4.4.patch"
-  
+
   # fix https://github.com/pytorch/pytorch/issues/97640
   patch -Np1 -i "${srcdir}/rocblas-batched.patch"
 
@@ -365,7 +364,7 @@ package_python-pytorch-cuda() {
 
   _package
   # oneDNN from the repos conflicts with the version in the ideep submodule,
-  # so we have to add the dependency after building the package. 
+  # so we have to add the dependency after building the package.
   depends+=(onednn)
 }
 
