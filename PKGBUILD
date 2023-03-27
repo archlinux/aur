@@ -9,7 +9,7 @@ pkgdesc="PostgreSQL Database Modeler: an open source CASE tool for modeling Post
 url="https://pgmodeler.io"
 license=('GPL3')
 arch=('x86_64')
-depends=('qt6-svg' 'libpqxx')
+depends=('qt6-svg' 'postgresql' 'libxml2')
 
 source=("https://github.com/$pkgname/$pkgname/archive/v${pkgver//_/-}.tar.gz"
         'mimetype.xml'
