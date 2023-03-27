@@ -5,14 +5,14 @@ _pkgname=xfce4-settings
 _pkgver=4.18.2
 pkgname=${_pkgname}-standalone
 pkgver=4.18.2+f9cb09a7
-pkgrel=1
+pkgrel=2
 pkgdesc="Xfce's Configuration System"
 arch=('x86_64')
 url="https://docs.xfce.org/xfce/xfce4-settings/start"
 license=('GPL2')
 groups=('xfce4')
 depends=('exo' 'libxfce4ui' 'xfconf' 'libnotify' 'libcanberra'
-         'colord' 'libxklavier' 'adwaita-icon-theme' 'gnome-themes-extra')
+         'libxklavier' 'adwaita-icon-theme' 'gnome-themes-extra')
 makedepends=('intltool' 'xf86-input-libinput' 'git' 'xfce4-dev-tools' 'garcon')
 optdepends=('python: xfce4-compose-mail -- "mailto:" URI handling' 'elementary-icon-theme')
 

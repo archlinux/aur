@@ -16,7 +16,6 @@ pkgbase = xfce4-settings-standalone
 	depends = xfconf
 	depends = libnotify
 	depends = libcanberra
-	depends = colord
 	depends = libxklavier
 	depends = adwaita-icon-theme
 	depends = gnome-themes-extra
