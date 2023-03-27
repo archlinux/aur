@@ -2,7 +2,7 @@
 
 pkgname=sing-box
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 
 pkgdesc='The universal proxy platform.'
 arch=('x86_64' 'i686')
@@ -36,7 +36,9 @@ build(){
         -mod=readonly \
         -modcacherw \
         -tags "$_tags" \
-        -ldflags '-s -w -buildid= -linkmode=external' \
+        -ldflags "
+            -X \"github.com/sagernet/sing-box/constant.Version=$pkgver\"
+            -s -w -buildid= -linkmode=external" \
         ./cmd/sing-box
 
     sed -i "/^\[Service\]$/a User=$pkgname
