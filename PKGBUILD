@@ -17,12 +17,12 @@ source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
 build() {
-  cd papa
+  cd $pkgname
   cargo build --release
 }
 
 package() {
-  cd papa
+  cd $pkgname
   install -Dm644 CHANGELOG.md README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm755 target/release/$pkgname -t "$pkgdir/usr/bin"
