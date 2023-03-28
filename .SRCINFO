@@ -13,8 +13,10 @@ pkgbase = molly-brown-git
 	source = git+https://tildegit.org/solderpunk/molly-brown.git
 	source = molly-brown.service
 	source = molly-brown.sysusers
+	source = molly-brown.tmpfiles
 	sha256sums = SKIP
 	sha256sums = f80dc777d2b7d6f7bd199d47b7d74c6dc5880cf28e217ccb22fa277f8bb117e7
 	sha256sums = b026a6f0aee9d6c0a71ef702e59ba3c2b5f84a9e5ab77a17dfe3a28137be2ea8
+	sha256sums = 6154ecf97c4dba46065e00993e22b2b140608c25174c1b340123cedf220ba8c1
 
 pkgname = molly-brown-git

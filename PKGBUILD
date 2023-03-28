@@ -14,10 +14,12 @@ provides=('molly-brown')
 backup=("etc/molly.conf")
 source=("git+https://tildegit.org/solderpunk/molly-brown.git"
         "${_pkgname}.service"
-        "${_pkgname}.sysusers")
+        "${_pkgname}.sysusers"
+        "${_pkgname}.tmpfiles")
 sha256sums=('SKIP'
             'f80dc777d2b7d6f7bd199d47b7d74c6dc5880cf28e217ccb22fa277f8bb117e7'
-            'b026a6f0aee9d6c0a71ef702e59ba3c2b5f84a9e5ab77a17dfe3a28137be2ea8')
+            'b026a6f0aee9d6c0a71ef702e59ba3c2b5f84a9e5ab77a17dfe3a28137be2ea8'
+            '6154ecf97c4dba46065e00993e22b2b140608c25174c1b340123cedf220ba8c1')
 
 
 pkgver() {
@@ -47,7 +49,10 @@ package() {
   cd "$_pkgname"
   install -vDm755 build/${_pkgname} "$pkgdir"/usr/bin/${_pkgname}
   install -vDm644 example.conf "$pkgdir"/etc/molly.conf
+  install -vdm 755 "$pkgdir"/var/log/${_pkgname}/
   install -vDm644 LICENSE "$pkgdir"/usr/share/licenses/${_pkgname}/LICENSE
   install -vDm644 ../${_pkgname}.service "$pkgdir"/usr/lib/systemd/system/${_pkgname}.service
-  install -vDm644 ../${_pkgname}.sysusers "${pkgdir}"/usr/lib/sysusers.d/${pkgname}.conf
+  install -vDm644 ../${_pkgname}.sysusers "${pkgdir}"/usr/lib/sysusers.d/${_pkgname}.conf
+  install -vDm644 ../${_pkgname}.sysusers "${pkgdir}"/usr/lib/sysusers.d/${_pkgname}.conf
+  install -vDm644 ../${_pkgname}.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/${_pkgname}.conf
 }
