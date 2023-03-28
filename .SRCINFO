@@ -1,0 +1,17 @@
+pkgbase = cbxv-git
+	pkgdesc = The high fidelity comic book viewer
+	pkgver = 0.4.1.r0.g0c53c74
+	pkgrel = 1
+	url = https://github.com/mftb0/cbxv
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	makedepends = gtk3
+	depends = libunarr
+	provides = cbxv
+	conflicts = cbxv
+	source = cbxv-git::git+https://github.com/mftb0/cbxv
+	sha1sums = SKIP
+
+pkgname = cbxv-git
