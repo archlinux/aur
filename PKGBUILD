@@ -1,6 +1,6 @@
 # Maintainer: Wellington <wellingtonwallace@gmail.com>
 pkgname=wwplot
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="Plotting Tool for Experimental Physics Classes"
 arch=(any)
