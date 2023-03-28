@@ -2,7 +2,7 @@
 _name=ctpv
 pkgname="${_name}-git"
 pkgver=r251.f70bee2
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast image previews for lf"
 arch=('i686' 'x86_64')
 url="https://github.com/NikitaIvanovV/ctpv"
@@ -17,9 +17,11 @@ optdepends=(
     'colordiff: for diff files'
     'diff-so-fancy: for diff files'
     'elinks: for html files'
-    'ffmpegthumbnailer: for video files'
+    'ffmpeg: for audio files'
+    'ffmpegthumbnailer: for audio files'
     'fontforge: for font files'
     'git-delta: for diff files'
+    'glow: for markdown files'
     'gnupg: for gpg-encrypted files'
     'highlight: for text files'
     'imagemagick: for svg files'
