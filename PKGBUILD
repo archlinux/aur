@@ -10,7 +10,7 @@ license=("Apache")
 makedepends=(git go)
 provides=("flyctl")
 conflicts=("flyctl")
-_commit=c51496292b7885982e3f0994f7a548424abb908a        #refs/tags/v0.0.435^{}
+_commit=10c95df6dd1203ad8161a1f85e198be40f0e6c9b        #refs/tags/v0.0.499^{}
 source=("git+$url#commit=$_commit")
 sha256sums=('SKIP')
 
