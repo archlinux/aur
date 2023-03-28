@@ -1,6 +1,6 @@
 pkgbase = snowflake-client
 	pkgdesc = Snowflake Database command line client (snowsql)
-	pkgver = 1.2.23
+	pkgver = 1.2.24
 	pkgrel = 1
 	epoch = 1
 	url = http://www.snowflake.net/
@@ -8,9 +8,9 @@ pkgbase = snowflake-client
 	license = custom:commercial
 	depends = gcc-libs
 	depends = libxcrypt-compat
-	source = snowflake-client-1.2.23.bash::https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_64/snowsql-1.2.23-linux_x86_64.bash
-	source = snowflake-client-1.2.23.bash.sig::https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_64/snowsql-1.2.23-linux_x86_64.bash.sig
-	sha256sums = e0222ed5f75a0e678a1d9a5240dc51a300b8e364d5f209040b43b7afbdbee06d
+	source = snowflake-client-1.2.24.bash::https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_64/snowsql-1.2.24-linux_x86_64.bash
+	source = snowflake-client-1.2.24.bash.sig::https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_64/snowsql-1.2.24-linux_x86_64.bash.sig
+	sha256sums = e5c44e71a4fed99aedf23c9beaea0b21826bbc7fdc9f80090339d92588f3f806
 	sha256sums = SKIP
 
 pkgname = snowflake-client

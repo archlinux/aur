@@ -3,12 +3,12 @@
 
 # To be able to verify the gpg signatures run:
 # ```
-# gpg --keyserver hkp://keyserver.ubuntu.com --recv-keys 37C7086698CB005C EC218558EABB25A1
-# printf "trusted-key 37C7086698CB005C\ntrusted-key EC218558EABB25A1\n" >> ~/.gnupg/gpg.conf
+# gpg --keyserver hkp://keyserver.ubuntu.com --recv-keys 630D9F3CAB551AF3
+# printf "trusted-key 630D9F3CAB551AF3\n" >> ~/.gnupg/gpg.conf
 # ```
 
 pkgname=snowflake-client
-pkgver=1.2.23
+pkgver=1.2.24
 pkgrel=1
 epoch=1
 pkgdesc="Snowflake Database command line client (snowsql)"
@@ -22,7 +22,7 @@ source=(
     "${pkgname}-${pkgver}.bash::https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/$(echo ${pkgver} | awk -F. '{print $1 "." $2}')/linux_x86_64/snowsql-${pkgver}-linux_x86_64.bash"
     "${pkgname}-${pkgver}.bash.sig::https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/$(echo ${pkgver} | awk -F. '{print $1 "." $2}')/linux_x86_64/snowsql-${pkgver}-linux_x86_64.bash.sig"
 )
-sha256sums=('e0222ed5f75a0e678a1d9a5240dc51a300b8e364d5f209040b43b7afbdbee06d'
+sha256sums=('e5c44e71a4fed99aedf23c9beaea0b21826bbc7fdc9f80090339d92588f3f806'
             'SKIP')
 
 package() {
