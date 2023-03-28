@@ -1,0 +1,19 @@
+pkgbase = somebar-git
+	pkgdesc = dwm-like bar for dwl
+	pkgver = 1.0.3.r4.af73bc3
+	pkgrel = 1
+	url = https://git.sr.ht/~raphi/somebar
+	arch = x86_64
+	makedepends = git
+	makedepends = meson
+	makedepends = wayland-protocols
+	makedepends = cairo
+	makedepends = pango
+	provides = somebar
+	conflicts = somebar
+	source = git+https://git.sr.ht/~raphi/somebar
+	source = config.hpp
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = somebar-git
