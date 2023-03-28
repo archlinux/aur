@@ -1,0 +1,33 @@
+
+2023 01 12 Distribution fix and cleanup.
+2022 12 01 More precise obtuse-angle arcs.
+2022 02 02 Minor addition to the manual.
+2021 11 01 Non-LaTeX error-handling cleanup.
+2021 08 01 Line thickness recovery parameter enabled.
+2021 05 15 Redundant code dating from pascal conversion removed.
+2021 05 12 Robustness fixes.
+2021 04 10 Improved robustness for fuzzed input.
+2021 01 01 Added colored svg sprintf text and % appended to selected outputs.
+2020 09 15 Shift operation bugfix.
+2020 09 01 Improved error messaging; additional distribution examples.
+2020 06 01 SVG text adjustments; GCC-10 conformance.
+2020 03 01 Commas protected by brackets; zero-repetition "for" loop bugfix
+           under bison.
+2019 11 30 Fix of environment variable scope, arc attribute; improved error
+           messages; generalized macro definition.
+2019 08 30 Debug fixes.
+2019 07 30 Corrected typos, copyright notices, version number, string treatment.
+2019 07 20 Bugfix for buffer overflow with extreme arguments of wfloat().
+2019 06 20 This is a major clone of the previous distribution, which
+           contained compilable C code together with the original pascal
+           source.  The pascal was translated to C code using p2c,
+           which was included, and parsing was automated by a custom
+           compiler-compiler which was also provided.  The current
+           package includes C source only with parsing automated using
+           GNU bison.  The original lexical analyser has been kept. To
+           avoid introducing bugs, the C code has been changed only to
+           accommodate bison; some p2c idiosyncrasies remain. The result
+           is functionally identical to the previous version for correct
+           input.
+
+           A configure file (only needed for MinGW) added.
