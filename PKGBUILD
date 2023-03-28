@@ -3,7 +3,7 @@
 # Maintainer: Joshua Taillon <jat255 AT gmail DOT com>
 pkgname=python-hyperspy
 pkgshort=hyperspy
-pkgver=1.7.3
+pkgver=1.7.4
 pkgrel=1
 pkgdesc="Hyperspectral data analysis"
 arch=('any')
@@ -11,7 +11,7 @@ url="http://hyperspy.org"
 license=('GPL3')
 
 depends=('python'
-         'python-scipy>=1.1'
+         'python-scipy>=1.4.0'
          'python-matplotlib>=3.1.3'
          'python-numpy>=1.17.1'
          'python-traits>=4.5.0'
@@ -43,7 +43,7 @@ depends=('python'
          'python-llvmlite-git' # AUR (from python-numba, but currently requires git version)
          )
 
-optdepends=('python-scikit-learn: machine learning features'
+optdepends=('python-scikit-learn>=1.0.1: machine learning features'
             'python-hyperspy-gui-ipywidgets: GUI components for Jupyter' # AUR
             'python-hyperspy-gui-traitsui: GUI components for desktop'  # AUR
 	    'python-blosc>=1.5: mrcz file support'
@@ -61,6 +61,8 @@ checkdepends=('python-pytest>=3.6'
               'python-pytest-xdist'
               'python-pytest-rerunfailures'
               'python-pytest-cov'
+              'python-matplotlib>=3.1'
+	      'python-pooch'
                )
 
 replaces=('hyperspy')
@@ -74,4 +76,4 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-md5sums=('9f3d9d99fb4c6c5a21fcc4c399cedc73')
+md5sums=('684d0b691fb368f2a38778d46ee4b699')
