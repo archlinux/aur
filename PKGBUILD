@@ -54,7 +54,7 @@ sha256sums=(
 
 package() {
     # Main files
-    install -dm775 "${pkgdir}/opt"
+    install -dm777 "${pkgdir}/opt"
     install -dm755 "${pkgdir}/usr"
     mv "${srcdir}/opt/"* "${pkgdir}/opt"
     mv "${srcdir}/usr/"* "${pkgdir}/usr"
