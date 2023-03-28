@@ -4,7 +4,7 @@
 # Maintainer: Pepijn Bakker bakker.pepijn+aur@gmail.com
 pkgname=xorciph-bin
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="XOR cipher CLI written in Rust."
 url="https://github.com/peppidesu/xorciph"
 license=("APACHE")
