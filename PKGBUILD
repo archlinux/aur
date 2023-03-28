@@ -1,8 +1,8 @@
 # Maintainer: Purofle <purofle@gmail.com>
 # Contributor: Integral <luckys68@126.com>
 pkgname=linuxqq
-pkgver=3.1.0_9572
-pkgrel=2
+pkgver=3.1.1_11223
+pkgrel=1
 epoch=2
 pkgdesc='New Linux QQ based on Electron'
 arch=('x86_64' 'aarch64')
@@ -11,10 +11,12 @@ license=('custom')
 conflicts=('linuxqq-nt-bwrap')
 depends=('nss' 'alsa-lib' 'gtk3' 'gjs' 'at-spi2-core' 'libvips')
 optdepends=('libappindicator-gtk3: Allow QQ to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).')
-source_x86_64=("https://dldir1.qq.com/qqfile/qq/QQNT/4b2e3220/${pkgname}_${pkgver//_/-}_amd64.deb")
-source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/4b2e3220/${pkgname}_${pkgver//_/-}_arm64.deb")
-sha512sums_x86_64=('f109f8533d351bd31609c7766dc9fd7e86682769c7c48fc640a5b457d9cb0ea25fe5dea03cb1d2d97b7c381c3ddb2680549f8b1e8bd523c4efe98bee91f5933f')
-sha512sums_aarch64=('223ac51bdc96412d211398fa50d02111cd171f7ccec4b2975b53899ae918d567dec61873760bb6de3942846b8c5606d7eae465bef5695dd440c9da67798bdaa4')
+source_x86_64=("https://dldir1.qq.com/qqfile/qq/QQNT/2355235c/${pkgname}_${pkgver//_/-}_amd64.deb")
+source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/2355235c/${pkgname}_${pkgver//_/-}_arm64.deb")
+source=("linuxqq.sh")
+sha512sums_x86_64=('6d9929bbc6d67ac11612db8c8f707cc4d85d4730afd08b01aa78d77d6ae60ac5c8d2556ed6b5e3667fa2f7029f7a3016eb9f2fd69044a37dccf4effeafadcf37')
+sha512sums_aarch64=('459016e9668cdeb3e6ba3206d749f469c3c200916abcb5a7dc3d913fc718497324a5dfb932137e9d1c94d7c5db1912858cb185ee058065e58ac29b6365454594')
+sha512sums=('796cd017fcd8305c0db08dcb99c53720d86669c5269a1c0cde39769a4b977e25dd4e3d405f34b232072dc117b87384a17d0e729c09ba6dbf3f643f717bcbcb3b')
 
 package() {
 	echo "  -> Extracting the data.tar.xz..."
@@ -22,8 +24,7 @@ package() {
 
 	echo "  -> Installing..."
 	# Launcher
-	install -d "${pkgdir}/usr/bin/"
-	ln -s "/opt/QQ/qq" "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm755 "${srcdir}/linuxqq.sh" "${pkgdir}/usr/bin/${pkgname}"
 
 	# Launcher Fix
 	sed -i '3s!/opt/QQ/qq!linuxqq!' "${pkgdir}/usr/share/applications/qq.desktop"
