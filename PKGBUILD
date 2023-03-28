@@ -5,7 +5,7 @@ DOC_DIRS=(opt/hydrus/help)
 pkgname=hydrus
 _pkgname=hydrus
 pkgver=521
-pkgrel=1
+pkgrel=2
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
 license=(WTFPL)
@@ -17,7 +17,7 @@ depends=(python python-opencv python-beautifulsoup4 python-yaml
          python-pysocks python-psutil python-send2trash python-html5lib
          python-requests python-qtpy emoji-font python-mpv
          python-service-identity fmt pyside6)
-makedepends=(git 'mkdocs>=1.3.0' mkdocs-material 'pymdown-extensions>=9.4')
+makedepends=(git)
 optdepends=('ffmpeg: show duration and other information on video thumbnails'
             'miniupnpc: automatic port forwarding'
             'desktop-file-utils: to add Hydrus to your desktop environment menus'
@@ -35,6 +35,18 @@ sha256sums=('SKIP'
             '463841cc16059b516cc327cfbc30d3383e2236b085ba2d503e82f5be39444806'
             '9b8c2603a8040ae80152ff9a718ad3e8803fdc3029a939e3c0e932ea35ded923')
 
+_tweak_package_add_docs() {
+    # Check if the user has skipped doc builds. Added by popular request.
+    # Note: this is called at the end of the PKGBUILD before any other
+    # functions are executed.
+    if check_option docs n; then
+        warning "Skipping $pkgname documentation build; this will break the help menu and report inaccurate --printsrcinfo."
+        return
+    fi
+
+    makedepends+=('mkdocs>=1.3.0' mkdocs-material 'pymdown-extensions>=9.4')
+}
+
 prepare() {
   cd "${srcdir}/${_pkgname}"
   git apply < ../paths-in-opt.patch
@@ -50,8 +62,10 @@ build() {
   msg 'Compiling .py files...'
   python -OO -m compileall -fq .
 
-  msg 'Building documentation...'
-  mkdocs build -d help
+  if check_option docs y; then
+    msg 'Building documentation...'
+    mkdocs build -d help
+  fi
 }
 
 package() {
@@ -59,7 +73,10 @@ package() {
 
   # Create /opt/hydrus and copy hydrus files to there
   install -m755 -d "${pkgdir}/opt/hydrus"
-  cp -r help hydrus static client.pyw server.py "${pkgdir}/opt/hydrus/"
+  cp -r hydrus static client.pyw server.py "${pkgdir}/opt/hydrus/"
+  if check_option docs y; then
+     cp -r help "${pkgdir}/opt/hydrus/"
+  fi
 
   # Create and populate /opt/hydrus/bin
   install -d -m755 "${pkgdir}/opt/hydrus/bin"
@@ -79,3 +96,5 @@ package() {
   install -m644 COPYING "${pkgdir}/usr/share/licenses/${_pkgname}/"
   install -m644 license.txt "${pkgdir}/usr/share/licenses/${_pkgname}/"
 }
+
+_tweak_package_add_docs
