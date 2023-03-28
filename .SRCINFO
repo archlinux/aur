@@ -1,0 +1,17 @@
+pkgbase = unoffical-microsoft-loop-appimage
+	pkgdesc = Unoffical Microsoft Loop Appimage Client.Microsoft Loop is about people—people who want to create together with ease, no matter where they are or what tools they use.
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://www.microsoft.com/en-us/microsoft-loop
+	arch = x86_64
+	license = custom
+	depends = hicolor-icon-theme
+	depends = zlib
+	depends = glibc
+	conflicts = loop-pake
+	source = loop-1.0.8.AppImage::https://github.com/tw93/Pake/releases/download/V1.0.8/Loop_x86_64.AppImage
+	source = LICENSE::https://go.microsoft.com/fwlink/?LinkID=206977
+	sha256sums = 9f2d2305a77951ebd6342b50abf6df48e58b7370abe0873cb28a1289a21ba417
+	sha256sums = d0ea2744b94405b171bbef551183924be0ce8dbd694f6cc230e6a9668543f800
+
+pkgname = unoffical-microsoft-loop-appimage
