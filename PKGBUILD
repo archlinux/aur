@@ -8,13 +8,12 @@ pkgrel=1
 arch=('x86_64')
 url='https://kopia.io'
 license=('APACHE')
-depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kopia/kopia/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('c42d4c7c7d0e3e0c80cfee1e42b7567264d97e36d18d2d5e7b675cd7e2fdb5a6')
 
 build() {
-    cd $srcdir/$pkgname-$pkgver
+    cd $pkgname-$pkgver
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
