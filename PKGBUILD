@@ -2,7 +2,7 @@
 # Contributor: Emanuele 'Lele aka eldios' Calo' <lele@sshadm.in>
 
 pkgname=trufflehog
-pkgver=3.31.0
+pkgver=3.31.2
 pkgrel=1
 pkgdesc="Tool for finding secrets like private keys and credentials."
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('go')
 provides=('trufflehog')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('b5a6db64c31b6ebf864e46bd00155e7244cbb04cb7b1896c88a08584c420e9dcffc08ab086b31b8929e56466052477c51c2d3f01570a2866f6af70d4a0d1ad58')
+sha512sums=('ababa1d0e7bf32ac39cc700e472bb0d0902ba5750e18dbde36ab4b4c038df7c4b533d25de137c3fd41890e3575ed960fef031cbf54a6c95c1d2685f8cec31ad2')
 
 build() {
   cd "$pkgname-$pkgver"
