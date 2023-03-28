@@ -1,5 +1,4 @@
-/src/
-/pkg/
-*.tar.gz
-*.pkg.tar.zst
-docker-machine-gitlab-bin-*
+*
+.gitignore
+.SRCINFO
+PKGBUILD
