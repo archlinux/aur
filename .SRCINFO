@@ -1,13 +1,13 @@
 pkgbase = deluge-plugins-pieces-git
 	pkgdesc = Deluge plugin to show the status of each piece of a torrent in deluge
-	pkgver = r62.3d722b4
+	pkgver = r66.a9dfb9e
 	pkgrel = 1
-	url = https://github.com/nicklan/Deluge-Pieces-Plugin
+	url = https://github.com/petroid/Deluge-Pieces-Plugin
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = python-setuptools
-	source = deluge-plugins-pieces::git+https://github.com/nicklan/Deluge-Pieces-Plugin.git
+	source = deluge-plugins-pieces::git+https://github.com/petroid/Deluge-Pieces-Plugin.git
 	sha256sums = SKIP
 
 pkgname = deluge-plugins-pieces-git
