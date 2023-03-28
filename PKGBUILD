@@ -18,6 +18,7 @@ makedepends=(
     'go'
     'golang-golang-x-text'
     'qt5-base'
+    'qt5-svg'
     'qt5-tools'
     'git'
     'qt-installer-framework'

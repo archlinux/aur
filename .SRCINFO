@@ -8,6 +8,7 @@ pkgbase = riseup-vpn
 	makedepends = go
 	makedepends = golang-golang-x-text
 	makedepends = qt5-base
+	makedepends = qt5-svg
 	makedepends = qt5-tools
 	makedepends = git
 	makedepends = qt-installer-framework
