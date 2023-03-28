@@ -3,7 +3,7 @@
 
 pkgname=conceal-bin
 _pkgname=conceal
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Command line recycle bin"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
     "$pkgname-$pkgver-README.md::$url/raw/v$pkgver/README.md"
 )
 sha256sums=(
-    'aeedf6b7394338c5f73f242e1050edadba0f44280f5a825d23a5ddcac2981bc0'
+    'ac8b95e13ac54a50eaf30962ea4c06ba004a2b9ee7b7593272665774aab5bb55'
     'f8d7fbee17470e5fbbf2ecac3ebb31e45f2539cb4f8b53bed0bad0c5eaf2d17d'
 )
 
