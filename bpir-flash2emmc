@@ -89,7 +89,7 @@ elif [[ "$compatible" == *"bananapi"*"mediatek,mt7986"* ]]; then # BPI-R3
       echo "Writing $1 to EMMC now..."
       xz -dcv "/tmp/tempfile" | dd of=/dev/${mmcblk} conv=fsync,notrunc
       echo "Reboot and enjoy booting from EMMC."
-  fi
+    fi
   elif [[ "$(get_mmctype)" == "MMC" ]]; then
     echo "Switching back to SDMMC..."
     set_sdmmc
@@ -98,7 +98,13 @@ elif [[ "$compatible" == *"bananapi"*"mediatek,mt7986"* ]]; then # BPI-R3
   fi
 fi
 
+#CONFIG_DEBUG_FS=y
+#CONFIG_MMC_DEBUG=y
+#mount -t debugfs none /sys/kernel/debug
+#echo "file drivers/mmc/* +p" > /sys/kernel/debug/dynamic_debug/control
+
 #echo "Testing on mmcblk0boot1..."
+#echo 0 > /sys/block/mmcblk0boot0/force_ro 
 #echo 0 > /sys/block/mmcblk0boot1/force_ro 
 #dd if=/dev/zero of=/dev/mmcblk0boot1
 
