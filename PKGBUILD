@@ -5,24 +5,21 @@
 
 pkgname=spotify-dev
 _pkgname=spotify
-pkgver=1.1.84.716
-_commit=gc5f8b819
-pkgrel=2
+pkgver=1.2.7.1277
+_commit=g2b3ce637
+pkgrel=1
 pkgdesc='A proprietary music streaming service'
 arch=('x86_64')
 license=('custom')
 url='https://www.spotify.com'
-depends=('alsa-lib>=1.0.14'
-	 'at-spi2-atk'
-	 'glib2'
-	 'gtk3'
-	 'libxtst'
-	 'libxss'
-	 'libcurl-gnutls'
-	 'libglvnd'
-	 'nss'
-	 'openssl'
-	 'xdg-utils')
+depends=('alsa-lib'
+	'at-spi2-core'
+	'electron'
+	'gtk3'
+	'libcurl-gnutls'
+	'libglvnd'
+	'libice'
+	'libsm')
 optdepends=('ffmpeg: Adds support for playback of local files'
             'zenity: Adds support for importing local files'
             'libnotify: Desktop notifications')
@@ -30,22 +27,19 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 source=("${_pkgname}-Release::http://repository.spotify.com/dists/testing/Release"
-	"${_pkgname}-Release.sig::http://repository.spotify.com/dists/testing/Release.gpg"
-	"${_pkgname}-${pkgver}-${CARCH}.deb::http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${pkgver}.${_commit}-${pkgrel}_amd64.deb"
+	"${_pkgname}-${pkgver}-${CARCH}.deb::http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${pkgver}.${_commit}_amd64.deb"
 	"${_pkgname}-${CARCH}-Packages::http://repository.spotify.com/dists/testing/non-free/binary-amd64/Packages"
 	'LICENSE')
 sha512sums=('SKIP'
-	'SKIP'
-	'9ba6c2d155f683b9a38222d58a2a53a2a5f4b422ed1c0d603af87919ba8a68309aea3354278fd1d5d8142a1568d93b7e83b14c041e749b0c39f3bc155a633ef8'
+	'f84e51cb3c282a7207eb9144dcc0003efc678d700217892157d538a19ac83d0ced87623eb02f1125bef2cecf6aef39e009df57060edf381fcc9b9e54bb76d522'
 	'SKIP'
 	'2e16f7c7b09e9ecefaa11ab38eb7a792c62ae6f33d95ab1ff46d68995316324d8c5287b0d9ce142d1cf15158e61f594e930260abb8155467af8bc25779960615')
-validpgpkeys=('F9A211976ED662F00E59361E5E3C45D7B312C643')
 
 # Spotify uses different names for the arch
 _SPOTIFY_ARCH=amd64
 
 prepare() {
-    # Validate hashes from the PGP signed "Release" file
+    # Validate hashes from the "Release" file
     echo "$(grep non-free/binary-${_SPOTIFY_ARCH}/Packages ${_pkgname}-Release | tail -n 2 | head -n 1 | awk '{print $1}') ${_pkgname}-${CARCH}-Packages" > "${_pkgname}-${CARCH}-Packages.sha256"
     sha256sum -c "${_pkgname}-${CARCH}-Packages.sha256"
 
