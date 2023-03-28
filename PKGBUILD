@@ -6,6 +6,7 @@ pkgdesc="Another AwesomeWM Testing Tool, with Live Reload and 'proper' display d
 arch=('any')
 url="https://github.com/Curve/aawmtt"
 license=('MIT')
+depends=('xorg-server-xephyr')
 makedepends=('git' 'cmake' 'ninja')
 conflicts=('aawmtt')
 provides=('aawmtt')

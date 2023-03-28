@@ -8,6 +8,7 @@ pkgbase = aawmtt
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
+	depends = xorg-server-xephyr
 	provides = aawmtt
 	conflicts = aawmtt
 	source = git+https://github.com/Curve/aawmtt
