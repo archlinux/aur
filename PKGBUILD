@@ -11,7 +11,7 @@ license=("APACHE")
 arch=("x86_64")
 provides=("xorciph")
 conflicts=("xorciph")
-source=("https://github.com/peppidesu/xorciph/releases/download/v$pkgver/xorciph-$pkgver-x86_64.tar.gz")
+source=("https://github.com/peppidesu/xorciph/releases/download/$pkgver/xorciph-$pkgver-x86_64.tar.gz")
 sha256sums=("e858149d73145e05473a53ee7d5e1937cf225cb0db63cc6c8433ff8c034e5589")
 
 package() {
