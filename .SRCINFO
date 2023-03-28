@@ -1,14 +1,14 @@
 pkgbase = heimer-appimage
-	pkgdesc = Heimer is a simple cross-platform mind map, diagram, and note-taking tool written in Qt.
+	pkgdesc = A simple cross-platform mind map, diagram, and note-taking tool written in Qt.
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/juzzlin/Heimer
 	arch = x86_64
 	license = GPL3
 	depends = hicolor-icon-theme
 	depends = zlib
 	depends = glibc
-	provides = heimer
+	provides = juzzlin
 	conflicts = heimer
 	options = !strip
 	source = heimer-4.1.0.AppImage::https://github.com/juzzlin/Heimer/releases/download/4.1.0/Heimer-4.1.0-x86_64.AppImage
