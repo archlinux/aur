@@ -5,8 +5,6 @@ pkgbase = viper-sh
 	url = https://github.com/0neGal/viper-sh
 	arch = any
 	license = GPL3
-	provides = viper-sh
-	conflicts = viper-sh
 	source = https://github.com/0neGal/viper-sh/archive/refs/tags/v1.0.2.tar.gz
 	sha256sums = a19871ff450f2ae3d1d69b93a16126bf7c4df8dadc27e842209b409fef128304
 

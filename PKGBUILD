@@ -7,8 +7,6 @@ pkgdesc="A Bourne Shell, CLI only, Northstar updater and mod manager"
 arch=('any')
 url="https://github.com/0neGal/viper-sh"
 license=('GPL3')
-provides=($pkgname)
-conflicts=($pkgname)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('a19871ff450f2ae3d1d69b93a16126bf7c4df8dadc27e842209b409fef128304')
 
