@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gggenes
-_pkgver=0.4.1
+_pkgver=0.5.0
 pkgname=r-${_pkgname,,}
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Draw Gene Arrow Maps in 'ggplot2'"
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('53a29d35d7169af18926e54a6adfa1bbcf09624cf40c109734841bf0c4b793e8')
+sha256sums=('09d3af8aa11a7bd4ec84b67036727188301942574cd78d0be7880e08fb53de1b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
