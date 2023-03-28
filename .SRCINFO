@@ -1,0 +1,20 @@
+pkgbase = mapbox-gl-native-git
+	pkgver = r15975.cf734a2fec
+	pkgrel = 1
+	url = https://github.com/mapbox/mapbox-gl-native
+	arch = x86_64
+	arch = aarch64
+	depends = glfw
+	provides = mapbox-gl-native
+	source = mapbox-gl-native::git+https://github.com/mapbox/mapbox-gl-native
+	source = fix-compilation.patch
+	source = allow-qt-deprecations.patch
+	source = 16591.patch
+	source = arch-include-dir.patch
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = mapbox-gl-native-git

@@ -1,0 +1,13 @@
+diff --git a/platform/qt/qt.cmake b/platform/qt/qt.cmake
+index 8184d5079..0025a2a03 100644
+--- a/platform/qt/qt.cmake
++++ b/platform/qt/qt.cmake
+@@ -19,6 +19,8 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
+     add_definitions("-Wno-unused-private-field")
+ endif()
+ 
++add_definitions("-Wno-deprecated-declarations")
++
+ target_sources(
+     mbgl-core
+     PRIVATE
