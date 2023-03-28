@@ -1,8 +1,9 @@
+# Maintainer: Justine Smithies <justine AT smithies DOT me DOT uk>
 # Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
 # Maintainer: gilbus <aur(AT)tinkershell.eu>
 pkgname=swayidle-git
 _pkgname=swayidle
-pkgver=1.6.r9.g85b57cc
+pkgver=1.8.0.r9.ge883186
 pkgrel=1
 license=('MIT')
 pkgdesc='Idle management daemon for Wayland'
