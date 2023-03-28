@@ -1,0 +1,32 @@
+pkgbase = nwg-panel-git
+	pkgdesc = GTK3-based panel for sway Wayland compositor
+	pkgver = r1041.ef79fb8
+	pkgrel = 1
+	url = https://github.com/nwg-piotr/nwg-panel
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-gobject
+	depends = python-i3ipc
+	depends = python-dasbus
+	depends = python-netifaces
+	depends = python-psutil
+	depends = python-requests
+	depends = bluez-utils
+	depends = gtk3
+	depends = gtk-layer-shell
+	depends = light
+	depends = pamixer
+	depends = playerctl
+	depends = nwg-icon-picker
+	optdepends = wlr-randr: for non-sway Wayland WMs support
+	optdepends = swaync: for Sway Notification Center support
+	optdepends = ddcutil: for external displays brightness control
+	provides = nwg-panel
+	conflicts = nwg-panel
+	source = nwg-panel::git+https://github.com/nwg-piotr/nwg-panel#branch=master
+	md5sums = SKIP
+
+pkgname = nwg-panel-git
