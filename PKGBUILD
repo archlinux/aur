@@ -2,15 +2,16 @@
 pkgname=mdt-git
 _reponame=mdt
 pkgver=r36.36bbc05
-pkgrel=1
+pkgrel=2
 pkgdesc='Commandline markdown todo list manager'
 arch=('any')
 url="https://github.com/basilioss/$_reponame"
 license=('GPL3')
+makedepends=('git')
 depends=('gum')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("$_reponame::git+${url}.git")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
