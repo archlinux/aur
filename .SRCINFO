@@ -1,0 +1,27 @@
+pkgbase = texmacs-appimage
+	pkgdesc = Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG editor and CAS-interface.
+	pkgver = 170.1.glibc2.15
+	pkgrel = 1
+	url = http://www.texmacs.org/
+	arch = x86_64
+	license = GPL3
+	depends = texlive-core
+	depends = python
+	depends = libxext
+	depends = freetype2
+	depends = qt5-svg
+	depends = hicolor-icon-theme
+	depends = gawk
+	optdepends = transfig: convert images using fig2ps
+	optdepends = ghostscript: rendering ps files
+	optdepends = imagemagick: convert images
+	optdepends = aspell: spell checking
+	provides = texmacs
+	conflicts = texmacs
+	options = !emptydirs
+	options = !ccache
+	options = !strip
+	source = TeXmacs.AppImage::https://download.opensuse.org/repositories/home:/slowphil:/texmacs-devel/AppImage/texmacs-0-Build170.1.glibc2.15-x86_64.AppImage
+	sha256sums = e8586e35bfaffa58b86d9e96adc438411414e6646fad3578048a6cab65a8f465
+
+pkgname = texmacs-appimage
