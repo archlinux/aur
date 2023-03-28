@@ -11,7 +11,7 @@ depends=(python pyside2 python-numpy python-scipy python-matplotlib qt5-base
 makedepends=('meson')
 options=(!emptydirs)
 source=("$pkgname-$pkgver::https://github.com/wwmm/wwplot/archive/v$pkgver.tar.gz")
-sha256sums=('bd17b0b1ffcaef624fafc931a086a5264369fc434254e1e228c0d845a96739f3')
+sha256sums=('36a9ac68d51dbb62702a2fff0b3cb516e902f7e9800101aa050af9e2a8490a83')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
