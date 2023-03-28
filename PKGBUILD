@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=koodo-reader
 pkgname="${_pkgname}-appimage"
-pkgver=1.5.1
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="A modern ebook manager and reader with sync and backup capacities"
 arch=("x86_64")
@@ -12,8 +12,8 @@ options=(!strip)
 provides=(troyeguo)
 conflicts=("${_pkgname}")
 _install_path="/opt/appimages"
-source=("${_pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Koodo-Reader-${pkgver}.AppImage")
-sha256sums=('7e9917eaf829ec4b48c8c21ce045a7a6c2389b11860f00073ba900728d068b7f')
+source=("${_pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Koodo-Reader-${pkgver}-x86_64.AppImage")
+sha256sums=('07270fc1c1e0ef4658883a8a078a8b5979ec094b9f0a091907e8f12a096781d9')
 prepare() {
     chmod a+x "${_pkgname}-${pkgver}.AppImage"
     "./${_pkgname}-${pkgver}.AppImage" --appimage-extract > /dev/null
