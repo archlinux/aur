@@ -17,14 +17,14 @@ source=("${url}/files/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('319a6926507cb52da5043a5ceaea6cc5b949d3acaa5f39fe074327ae58d65fb5')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
   make DESTDIR="${pkgdir}" install
 
