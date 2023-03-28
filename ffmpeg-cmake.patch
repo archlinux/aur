@@ -1,0 +1,19 @@
+commit 657f710155d4afdd488f1647d6f4d5dc4d7201d5
+Author: Oscar Cowdery Lack <oscar@lightningvisuals.com>
+Date:   Thu Apr 21 22:23:12 2022 +1000
+
+    fix: incorrect variable name in FindFFmpeg (#1394)
+
+diff --git a/src/CMakeModules/FindFFmpeg.cmake b/src/CMakeModules/FindFFmpeg.cmake
+index a5560d808..383c995a3 100644
+--- a/src/CMakeModules/FindFFmpeg.cmake
++++ b/src/CMakeModules/FindFFmpeg.cmake
+@@ -63,7 +63,7 @@ macro(find_component _component _pkgconfig _library _header)
+      # in the FIND_PATH() and FIND_LIBRARY() calls
+      find_package(PkgConfig)
+      if (PKG_CONFIG_FOUND)
+-       pkg_check_modules(${_component} ${_pkgconfig})
++       pkg_check_modules(PC_LIB${_component} ${_pkgconfig})
+      endif ()
+   endif (NOT WIN32)
+ 
