@@ -6,6 +6,7 @@ pkgbase = mscgen
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = gsfonts
 	depends = gd
 	source = http://www.mcternan.me.uk/mscgen/software/mscgen-src-0.20.tar.gz
 	source = debian-width-never-less-than-zero.patch
@@ -13,4 +14,3 @@ pkgbase = mscgen
 	sha256sums = 690f8c1bd3a2e0ce7dbfa1297dbc56145427361563c9a0b4b07f044a007a0511
 
 pkgname = mscgen
-

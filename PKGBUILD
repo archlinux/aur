@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url='http://www.mcternan.me.uk/mscgen/'
 license=('GPL')
 depends=('gd')
-makedepends=()
+makedepends=('gsfonts')
 options=()
 source=("http://www.mcternan.me.uk/mscgen/software/$pkgname-src-$pkgver.tar.gz"
         "debian-width-never-less-than-zero.patch")
@@ -23,7 +23,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure --prefix=/usr --with-freetype
+  ./configure --prefix=/usr --with-freetype --with-png
   make all
 }
 
