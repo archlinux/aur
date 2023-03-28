@@ -1,12 +1,12 @@
 # Maintainer: Nicolas Geniteau <nicolas.geniteau@gmail.com>
 pkgname=someblocks-git
 pkgver=1.0.1.r0.28d7e79
-pkgrel=1
+pkgrel=2
 pkgdesc="dwm-like bar for dwl"
 arch=('x86_64')
 url="https://git.sr.ht/~raphi/someblocks"
 license=('ISC')
-depends=()
+depends=('somebar')
 makedepends=('git' 'make')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
