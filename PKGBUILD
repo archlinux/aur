@@ -2,8 +2,8 @@
 
 _pkgname="rock-paper-scissor"
 pkgname="${_pkgname}-git"
-pkgver=2.0
-pkgrel=2
+pkgver=r3.52f1e7e
+pkgrel=1
 pkgdesc="an rock paper scissor game for linux"
 arch=('any')
 url="https://github.com/kybe236/rock-paper-scissor"
@@ -12,6 +12,12 @@ depends=("python" "python-requests")
 makedepends=('git')
 source=('git+https://github.com/kybe236/rock-paper-scissor.git')
 md5sums=('SKIP')
+
+
+pkgver() {
+  cd "${srcdir}/"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 
 package() {
