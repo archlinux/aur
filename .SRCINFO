@@ -1,7 +1,7 @@
 pkgbase = striked-bin
 	pkgdesc = A community communication platform for game development studios to create, sell, and distribute video games
 	pkgver = 0.0.3
-	pkgrel = 0
+	pkgrel = 1
 	url = https://striked.gg
 	arch = x86_64
 	license = custom
