@@ -1,9 +1,9 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 
 pkgname=obs-studio-rc
-_pkgver=29.0.2
+_pkgver=29.1.0-beta1
 pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgrel=1
 epoch=5
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
@@ -52,6 +52,8 @@ makedepends=(
 
   # AUR Packages
   "libajantv2"
+
+  "cef-minimal-obs=103.0.0_5060_shared_textures_143.2591+g4204d54+chromium_103.0.5060.134_1"
 )
 optdepends=(
   "libfdk-aac: FDK AAC codec support"
@@ -67,7 +69,8 @@ optdepends=(
 )
 provides=("obs-studio=$pkgver" "obs-vst" "obs-websocket")
 conflicts=(
-  "obs-studio" "obs-vst" "obs-websocket"
+  "obs-studio" "obs-vst" "obs-websocket" "obs-browser"
+  "obs-linuxbrowser" # This plugin is obsolete
   "libva-vdpau-driver" # This driver is abandonned and make OBS segfault if it happen to be loaded, try libva-nvidia-driver is you really need Nvidia decode through VAAPI
 )
 options=('debug')
@@ -88,32 +91,13 @@ if [[ $CARCH == 'x86_64' ]]; then
   optdepends+=("decklink: Blackmagic Design DeckLink support")
 fi
 
-if [[ $CARCH == 'x86_64' ]]; then
-  makedepends+=("cef-minimal-obs=103.0.0_5060_shared_textures_143.2591+g4204d54+chromium_103.0.5060.134_1")
-  provides+=("obs-browser")
-  conflicts+=(
-    "obs-browser"
-    "obs-linuxbrowser" # This plugin is obsolete
-  )
-  _browser=ON
-else
-  _browser=OFF
-fi
-
 prepare() {
   cd "$srcdir/obs-studio"
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git config submodule.plugins/obs-websocket.url $srcdir/obs-websocket
   git -c protocol.file.allow=always submodule update
 
-  git cherry-pick -n 2e79d4c902abf3e6bb4ad1b5bf779c0cc22a6fd0
-
   cd plugins/obs-websocket
-  sed -i 's|EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/deps/json/CMakeLists.txt||' CMakeLists.txt
-  sed -i 's|AND EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/deps/websocketpp/CMakeLists.txt||' CMakeLists.txt
-  sed -i 's|AND EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/deps/asio/asio/include/asio.hpp||' CMakeLists.txt
-  sed -i "s|AND EXISTS|EXISTS|" CMakeLists.txt
-  sed -i "s|add_subdirectory(deps/json)|find_package(nlohmann_json 3.10.0 REQUIRED)|" CMakeLists.txt
   git config submodule.deps/qr.url $srcdir/qr
   git -c protocol.file.allow=always submodule update deps/qr
 }
@@ -131,10 +115,10 @@ build() {
     -DENABLE_LIBFDK=ON \
     -DENABLE_JACK=ON \
     -DENABLE_SNDIO=ON \
-    -DENABLE_BROWSER=$_browser \
+    -DENABLE_BROWSER=ON \
     -DCEF_ROOT_DIR=/opt/cef-obs \
-    -DOBS_VERSION_OVERRIDE="$_pkgver" ..
-#    -DBETA="$_pkgver" ..
+    -DBETA="$_pkgver" ..
+#    -DOBS_VERSION_OVERRIDE="$_pkgver" ..
 #    -DRELEASE_CANDIDATE="$_pkgver" ..
 
   sed -i "s|#define OBS_VERSION |#define OBS_VERSION \"$_pkgver-rc-$pkgrel\" //|" config/obsconfig.h
