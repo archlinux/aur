@@ -1,0 +1,4 @@
+/pkg/
+/src/
+/deluge-plugins-pieces/
+/deluge-plugins-pieces*.pkg.tar.*
