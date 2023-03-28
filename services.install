@@ -1,0 +1,29 @@
+post_install() {
+
+ # Enable and start remotepc systemd service
+ systemctl daemon-reload
+ systemctl enable remotepc.service
+ systemctl restart remotepc.service
+ 
+}
+
+
+
+pre_remove() {
+
+ # Stop and distable remotepc systemd service
+ systemctl stop remotepc.service
+ systemctl disable remotepc.service
+
+}
+
+
+
+post_remove() {
+
+ # Some newly created (residual) ROOT "config" files leftover?
+ # Yet, USER config files remain under $HOME/.config/remotepc/
+ # /opt/remotepc is no longer needed
+ rm -rf /opt/remotepc
+ 
+}
