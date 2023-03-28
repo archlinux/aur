@@ -6,7 +6,7 @@ pkgver=0.7.2
 pkgrel=4
 pkgdesc="protects machines from accidental shutdowns/reboots (via ssh)"
 arch=('any')
-url="http://packages.debian.org/source/sid/molly-guard" # Didn't find anything else
+url="https://packages.debian.org/stable/molly-guard"
 license=('Artistic2.0')
 depends=('openssh' 'run-parts')
 optdepends=('inetutils: for the FQDN Hostname support')
@@ -32,7 +32,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
   libdir="/usr/lib"
   bindir="/usr/bin"
@@ -42,7 +42,7 @@ build() {
 
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
   libdir="/usr/lib"
   bindir="/usr/bin"
