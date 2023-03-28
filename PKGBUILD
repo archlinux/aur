@@ -1,23 +1,23 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname=mapeo-desktop-appimage
 _pkgname=mapeo-desktop
+pkgname="${_pkgname}-appimage"
 pkgver=5.6.0
-pkgrel=1
-pkgdesc="Local-first mapping and monitoring in remote environments"
+pkgrel=2
+pkgdesc="An offline map editing application for indigenous territory mapping in remote environments."
 arch=('x86_64')
 url="https://mapeo.app/"
 _githuburl="https://github.com/digidem/mapeo-desktop"
 license=('GPL3')
-conflicts=(mapeo-desktop)
-depends=(zlib hicolor-icon-theme)
+conflicts=("${_pkgname}")
+depends=(zlib hicolor-icon-theme glibc)
 options=(!strip)
 _install_path="/opt/appimages"
 source=("${_pkgname}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Install_Mapeo_v${pkgver}_linux.AppImage")
-sha512sums=('d4b0bb1c2ffe52e29f04014b3fa00ed84d848529b196f530decbd3299d6992b2835c31133c75321932cbc34e48b1b57167ec759f24a514c18aa475f9b484926f')
+sha256sums=('dfaa9f660fc6a7a3875a126e2aa7139f6c77a9a33fff7080a1e8bc17b6d4bf43')
     
 prepare() {
     chmod a+x "${_pkgname}-${pkgver}.AppImage"
-    "./${_pkgname}-${pkgver}.AppImage" --appimage-extract
+    "./${_pkgname}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed 's/AppRun/\/opt\/appimages\/mapeo-desktop.AppImage/g;' -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
 }
     
