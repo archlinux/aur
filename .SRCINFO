@@ -1,0 +1,17 @@
+pkgbase = unoffical-flomo-appimage
+	pkgdesc = Unoffical Flomo Appimage Client.浮墨笔记,像发微博一样记笔记,记录你想法的川流.全平台覆盖,还支持微信服务号输入.
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://flomoapp.com/
+	arch = x86_64
+	license = custom
+	depends = hicolor-icon-theme
+	depends = zlib
+	depends = glibc
+	conflicts = flomo-pake
+	source = flomo-1.0.8.AppImage::https://github.com/tw93/Pake/releases/download/V1.0.8/Flomo_x86_64.AppImage
+	source = LICENSE::https://help.flomoapp.com/legal/
+	sha256sums = b0bf6bc1e851ba602445e66a9798d01a6edb9fdca3e09d0bb0b26b16359c0348
+	sha256sums = c73f9b584e1b15ae5587fb9180ba45c1090b9e247f63c3abd45869ce0de33d78
+
+pkgname = unoffical-flomo-appimage
