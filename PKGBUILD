@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='Neo (or New or Not) Simple (or Small or Suckless) X Image Viewer'
 arch=('x86_64')
 license=('GPL2')
-url='https://codeberg.org/nsxiv/nsxiv'
+url='https://nsxiv.codeberg.page/'
 
 depends=('imlib2' 'libx11'                 # core dependencies
          'libxft' 'fontconfig' 'freetype2' # status bar
