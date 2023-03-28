@@ -1,7 +1,8 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-tokyonight-git
-pkgver=r102.0ead86a
+_pkg="${pkgname%-git}"
+pkgver=1.10.0.r0.g1b0c880
 pkgrel=1
 pkgdesc="Dark and light theme ported from VSCode's TokyoNight"
 arch=('any')
@@ -10,23 +11,21 @@ license=('MIT')
 groups=('neovim-plugins')
 depends=('neovim')
 makedepends=('git')
-provides=("${pkgname%-git}" 'neovim-airline-tokyonight' 'neovim-lightline-tokyonight' 'neovim-lualine-tokyonight')
-conflicts=("${pkgname%-git}" 'neovim-airline-tokyonight' 'neovim-lightline-tokyonight' 'neovim-lualine-tokyonight')
+provides=("$_pkg" 'neovim-airline-tokyonight' 'neovim-lightline-tokyonight' 'neovim-lualine-tokyonight')
+conflicts=("$_pkg" 'neovim-airline-tokyonight' 'neovim-lightline-tokyonight' 'neovim-lualine-tokyonight')
 install="$pkgname.install"
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git -C "$pkgname" describe --match "v[0-9]*" --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 package() {
+	local dirs=(autoload colors doc lua)
 	cd "$pkgname"
-	find autoload colors doc lua ! \( -name 'tags' -prune \) \
-	  -type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
-	find extras \
-	  -type f -exec install -Dm 644 '{}' -t "$pkgdir/usr/share/$pkgname/" \;
-	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	find "${dirs[@]}" -type f -exec install -Dvm644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
+	find extras -type f -exec install -Dvm644 '{}' "$pkgdir/usr/share/$_pkg/{}" \;
+	install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
