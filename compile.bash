@@ -64,8 +64,7 @@ build() {
 		fi
 	fi
 	export AUTOBUILD_CPU_COUNT=$build_jobs
-
-	AL_ARCH_FLAGS=${AL_ARCH_FLAGS:-'-march=x86-64-v2 -mtune=native -w'}
+	AL_ARCH_FLAGS=${AL_ARCH_FLAGS:-'-march=native -mtune=native -w'}
 	AL_CMAKE_CONFIG=(
 		-DLL_TESTS:BOOL=OFF
 		-DDISABLE_FATAL_WARNINGS=ON
