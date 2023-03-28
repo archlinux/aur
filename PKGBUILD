@@ -1,9 +1,9 @@
 # Maintainer: Nikita Ivanov <nikita dot vyach dot ivanov at gmail dot com>
 _name=ctpv
 pkgname="${_name}-git"
-pkgver=r231.0809563
-pkgrel=4
-pkgdesc="Fast previewer for lf (stpv replacement)"
+pkgver=r251.f70bee2
+pkgrel=1
+pkgdesc="Fast image previews for lf"
 arch=('i686' 'x86_64')
 url="https://github.com/NikitaIvanovV/ctpv"
 license=('MIT')
@@ -13,9 +13,8 @@ makedepends=('git')
 optdepends=(
     'atool: for archive files'
     'bat: for text files'
-    'chafa: for image files'
+    'chafa: for image files on Wayland'
     'colordiff: for diff files'
-    'coreutils: for any, directory, text files'
     'diff-so-fancy: for diff files'
     'elinks: for html files'
     'ffmpegthumbnailer: for video files'
@@ -32,7 +31,7 @@ optdepends=(
     'poppler: for pdf files'
     'source-highlight: for text files'
     'transmission-cli: for torrent files'
-    'ueberzug: for image files'
+    'ueberzug: for image files on X11'
     'w3m: for html files'
 )
 source=("git+$url?signed")
