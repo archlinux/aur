@@ -2,8 +2,8 @@
 # To report issues or contribute: https://github.com/spantaleev/PKGBUILDs
 
 pkgname=agru
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.1.3
+pkgrel=1
 pkgdesc="Ansible-Galaxy Requirements Updater - a fast ansible-galaxy replacement"
 arch=('any')
 url="https://gitlab.com/etke.cc/int/agru"
