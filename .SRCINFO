@@ -12,8 +12,6 @@ pkgbase = flightcore
 	depends = libappindicator-gtk3
 	depends = librsvg
 	optdepends = sccache: compiler caching for faster compiling
-	provides = flightcore
-	conflicts = flightcore
 	source = https://github.com/R2NorthstarTools/FlightCore/archive/refs/tags/v1.11.1.tar.gz
 	sha256sums = 1eb1c52d2378a801515ac877c73e5f37b4f795d18c2822138078376a5c7c1640
 
