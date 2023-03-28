@@ -2,15 +2,28 @@
 
 pkgname=playdate-sdk
 pkgver=1.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc='SDK for the Playdate console with Lua and C APIs, docs, and a simulator'
 arch=('x86_64')
 url='https://play.date/dev/'
 license=('custom')
-depends=('glib2' 'hicolor-icon-theme' 'systemd-libs' 'xdg-utils')
+depends=(
+  'cairo'
+  'gdk-pixbuf2'
+  'glib2'
+  'gtk3'
+  'hicolor-icon-theme'
+  'libpng'
+  'libxkbcommon'
+  'pango'
+  'systemd-libs'
+  'webkit2gtk'
+  'xdg-utils'
+)
 makedepends=('curl' 'jq')
 optdepends=(
   'python: to run the firmware_symbolizer.py utility'
+  'wayland: for Wayland compatibility'
   'zeal: read the Playdate SDK docset offline'
 )
 options=('!strip')
