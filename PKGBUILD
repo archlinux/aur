@@ -1,6 +1,6 @@
 pkgname="gourou"
 pkgver=0.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Download and decrypt adobe encrypted (acsm) pdf and epub files"
 arch=('x86_64')
 license=('LGPL3')
@@ -32,14 +32,8 @@ build(){
   make PWD=`pwd` BUILD_STATIC=1 BUILD_SHARED=1
 }
 
-
 package() {
+	cd libgourou
+	DESTDIR=$pkgdir PREFIX=/ make install
 
-	install -d $pkgdir/{usr/bin/,usr/lib/,/usr/include/libgourou}
-	cd "libgourou"
-	cp -a --no-preserve=ownership libgourou*.so "$pkgdir/usr/lib"
-	cp -a --no-preserve=ownership include/*.h "$pkgdir/usr/include/libgourou/"
-	cd "utils"
-	cp -a --no-preserve=ownership {acsmdownloader,adept_activate,adept_remove} "$pkgdir/usr/bin"
-	strip "$pkgdir/usr/bin"/*
 }
