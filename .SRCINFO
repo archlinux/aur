@@ -1,7 +1,7 @@
 pkgbase = molly-brown-git
 	pkgdesc = full-featured Gemini server implemented in Go
-	pkgver = r122.e42c366
-	pkgrel = 2
+	pkgver = r181.2c3225c
+	pkgrel = 1
 	url = https://tildegit.org/solderpunk/molly-brown
 	arch = x86_64
 	license = custom

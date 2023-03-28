@@ -2,8 +2,8 @@
 
 _pkgname=molly-brown
 pkgname=molly-brown-git
-pkgver=r122.e42c366
-pkgrel=2
+pkgver=r181.2c3225c
+pkgrel=1
 pkgdesc='full-featured Gemini server implemented in Go'
 arch=('x86_64')
 url="https://tildegit.org/solderpunk/molly-brown"
@@ -30,9 +30,6 @@ pkgver() {
 prepare(){
   cd "$_pkgname"
   mkdir -p build/
-  # No mod file
-  go mod init "${url#https://}"
-  go mod tidy
 }
 
 build() {
