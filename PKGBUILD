@@ -1,13 +1,14 @@
 # Maintainer: f4iey (f4iey@f6kgl.ampr.org)
 
 pkgname=sparksdr-bin
-pkgver=2.0.18
+pkgver=2.0.33
 pkgrel=1
 pkgdesc="Cross platform sdr application for Hermes Lite and Open HPSDR compatible radios (Red Pitya, Apache labs)."
 arch=('x86_64' 'arm' 'arm64')
 url="https://www.sparksdr.com/download/"
 license=("custom")
-depends=('icu' 'gcc' 'openssl' 'krb5' 'portaudio')
+makedepends=('make' 'gcc')
+depends=('icu' 'openssl' 'krb5' 'portaudio')
 provides=(sparksdr)
 
 if [ "$CARCH" == "x86_64" ]; then
