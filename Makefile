@@ -20,3 +20,5 @@ install:
 verify:
 	$(MAKEPKG) --verifysource
 
+.PHONY: check
+check: .SRCINFO verify

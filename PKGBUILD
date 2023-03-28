@@ -13,11 +13,9 @@ source=(
     "check-reproducible-status"
     "Makefile"
 )
-sha256sums=(
-    'eab9bfc6ea45d1e37582898896696d853b84a332cdbcd66775bd42a8df00641f'
+sha256sums=('eab9bfc6ea45d1e37582898896696d853b84a332cdbcd66775bd42a8df00641f'
     'ca06e6537efca28a552972faf5eac45f087ef5b1825e2c2d0c9f741d4387f55a'
-    'a9a2e1a90fef27cdd21b55e0435c98067af5e116d83c2286280b96710fabf387'
-)
+    '76b0ef1a2d998cc2ae2869bf2b43a1ac5fe5195c25998b35a0352644b4d44d8b')
 
 package() {
     make -C "${srcdir}" DESTDIR="${pkgdir}" install
