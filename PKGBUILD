@@ -1,4 +1,4 @@
-# Maintainer: katt <magunasu.b97@gmail.com>
+# Maintainer: Neko-san < nekoNexus @ protonmail dot ch >
 
 pkgname=striked-bin
 pkgver=0.0.3
