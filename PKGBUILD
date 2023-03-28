@@ -3,38 +3,46 @@
 # Contributor: Alexander Fehr <pizzapunk gmail com>
 
 pkgname=parcellite-git
-_pkgname=parcellite
-pkgver=1.2.1.r11.fa54161
-pkgrel=2
+pkgver=1.2.2.r0.3c3ef48
+pkgrel=1
 pkgdesc="Lightweight GTK+ clipboard manager (git version)"
 arch=('x86_64')
-url="https://github.com/rickyrockrat/parcellite"
+url="https://github.com/rickyrockrat/${pkgname%%-*}"
 license=('GPL3')
 depends=('gtk2')
-makedepends=('intltool' 'git')
+makedepends=('intltool'
+             'git'
+             'psmisc')
 optdepends=('xdotool: auto-paste support')
 conflicts=($_pkgname)
 provides=($_pkgname)
-source=("$pkgname::git+https://github.com/rickyrockrat/${_pkgname}")
-sha256sums=('SKIP')
+source=("$pkgname::git+https://github.com/rickyrockrat/${pkgname%%-*}")
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "${srcdir}/${pkgname}"
   git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/$pkgname"
-  autoreconf -i
+  cd "${srcdir}/${pkgname}"
+  touch src/config.simple.h
 }
 
 build() {
-  cd "$srcdir/$pkgname"
-  ./configure --prefix=/usr --sysconfdir=/etc
+  cd "${srcdir}/${pkgname}"
+	test -x configure || (
+	(sleep 5; killall gettextize) &
+    ./autogen.sh
+  )
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --enable-appindicator=no
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  make DESTDIR="$pkgdir" install
+  cd "${srcdir}/${pkgname}"
+  make DESTDIR="${pkgdir}" install
 }
