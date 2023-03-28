@@ -33,7 +33,7 @@
 # have been modified.
 
 pkgname=ventoy
-pkgver=1.0.89
+pkgver=1.0.90
 _grub_ver=2.04                  # (Jul 2019)
 #_unifont_ver=15.0.01            # FIXME see NOTE below
 _ipxe_ver=3fe683e               # (Sep 29 2019)
@@ -127,7 +127,7 @@ noextract=(
   cryptsetup-"$_crypt_ver".tar.xz
   wimboot-"$_wimboot_ver".tar.gz
 )
-sha256sums=('e5f82113f7423a8c82fe52e3ca7de4dc3cabf6665e9b540476e723f6e6886fc5'
+sha256sums=('edc9cebbce9122410be358c36e0954a25ea19ea7e647bbaa5467f057a028eb5b'
             'e5292496995ad42dabe843a0192cf2a2c502e7ffcc7479398232b10a472df77d'
             'db2a9018392a3984d1e1e649bde0ffc19c90fa4d96b9fd2d4caaf9c1ca2af68b'
             'SKIP'
@@ -236,6 +236,9 @@ prepare() {
 
     # Fix from Debian. Avoid errors when compiling apps against recent kernel headers. FIXME
     patch -Np1 -i "$srcdir"/dietlibc-headers-fix.patch
+
+    # <cpuid.h> compile fix
+    sed -i 's/__leaf/__LEAF/' include/sys/cdefs.h
   )
 
   (
@@ -364,10 +367,10 @@ _build_vtoytool() (
   # Refer "VtoyTool/build.sh"
   cd Ventoy-$pkgver/VtoyTool
 
-  "$srcdir"/dietlibc-$_diet_ver/bin-x86_64/diet -Os gcc -D_FILE_OFFSET_BITS=64 ./*.c BabyISO/*.c \
+  "$srcdir"/dietlibc-$_diet_ver/bin-x86_64/diet -Os gcc -DVTOY_X86_64 -D_FILE_OFFSET_BITS=64 ./*.c BabyISO/*.c \
     -IBabyISO -Wall -DBUILD_VTOY_TOOL -DUSE_DIET_C -o vtoytool_64
 
-  "$srcdir"/dietlibc-$_diet_ver/bin-i386/diet -Os gcc -D_FILE_OFFSET_BITS=64 -m32 ./*.c BabyISO/*.c \
+  "$srcdir"/dietlibc-$_diet_ver/bin-i386/diet -Os gcc -DVTOY_I386 -D_FILE_OFFSET_BITS=64 -m32 ./*.c BabyISO/*.c \
     -IBabyISO -Wall -DBUILD_VTOY_TOOL -DUSE_DIET_C -o vtoytool_32
 
   strip --strip-all vtoytool_{64,32}
