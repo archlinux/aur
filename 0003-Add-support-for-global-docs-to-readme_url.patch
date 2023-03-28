@@ -1,0 +1,42 @@
+From c91aa5d704732a04e64a866c14f7fd71a2753263 Mon Sep 17 00:00:00 2001
+From: Infernio <infernio@icloud.com>
+Date: Tue, 28 Mar 2023 13:21:52 +0200
+Subject: [PATCH 3/4] Add support for global docs to readme_url
+
+Used for our globally installed Linux build.
+---
+ Mopy/bash/bolt.py | 15 ++++++++++++---
+ 1 file changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/Mopy/bash/bolt.py b/Mopy/bash/bolt.py
+index 0a5329084..927eca6ef 100644
+--- a/Mopy/bash/bolt.py
++++ b/Mopy/bash/bolt.py
+@@ -2542,13 +2542,22 @@ def dict_sort(di, values_dex=(), by_value=False, key_f=None, reverse=False):
+
+ #------------------------------------------------------------------------------
+ def readme_url(mopy, advanced=False, skip_local=False):
++    """Returns the URL of the WB readme based on the specified Mopy folder.
++    Note that skip_local is ignored on non-Windows systems, as the bug it works
++    around only exists on Windows."""
+     readme_name = (u'Wrye Bash Advanced Readme.html' if advanced else
+                    u'Wrye Bash General Readme.html')
+-    readme = mopy.join(u'Docs', readme_name)
++    if os_name == 'nt':
++        # Windows, use Docs in Mopy folder
++        readme = mopy.join(u'Docs', readme_name)
++    else:
++        # Linux, use global docs
++        readme = GPath_no_norm('/usr/share/doc/wrye-bash').join(readme_name)
++        skip_local = False # Windows-only bug
+     if not skip_local and readme.is_file():
+-        readme = u'file:///' + readme.s.replace(u'\\', u'/')
++        readme = 'file:///' + readme.s.replace('\\', '/')
+     else:
+-        # Fallback to Git repository
++        # Fallback to hosted version
+         readme = u'http://wrye-bash.github.io/docs/' + readme_name
+     return readme.replace(u' ', u'%20')
+
+--
+2.40.0

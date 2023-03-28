@@ -1,0 +1,43 @@
+From bffbc5bae1cb630cef8cd6570b972a93bedf9ca7 Mon Sep 17 00:00:00 2001
+From: Infernio <infernio@icloud.com>
+Date: Tue, 28 Mar 2023 13:09:00 +0200
+Subject: [PATCH 1/4] Some minor fixups for Linux
+
+Mostly making the BashBugDump work with a global installation.
+---
+ Mopy/bash/bash.py      | 6 +++++-
+ Mopy/bash/env/linux.py | 2 +-
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/Mopy/bash/bash.py b/Mopy/bash/bash.py
+index 8a57c025c..4922534d8 100644
+--- a/Mopy/bash/bash.py
++++ b/Mopy/bash/bash.py
+@@ -68,7 +68,11 @@ def _print(s):
+     if pathToProg:
+         os.chdir(pathToProg)
+     global _bugdump_handle
+-    _bugdump_handle = open(os.path.join(os.getcwd(), 'BashBugDump.log'), 'w',
++    bugdump_base = (os.getcwd() if bolt.os_name == 'nt' else
++                    os.path.join(os.path.expanduser('~'), '.local', 'share',
++                        'wrye-bash'))
++    os.makedirs(bugdump_base, exist_ok=True)
++    _bugdump_handle = open(os.path.join(bugdump_base, 'BashBugDump.log'), 'w',
+         buffering=1, encoding='utf-8')
+     _install_bugdump()
+
+diff --git a/Mopy/bash/env/linux.py b/Mopy/bash/env/linux.py
+index 85af26718..8f8cbdaf3 100644
+--- a/Mopy/bash/env/linux.py
++++ b/Mopy/bash/env/linux.py
+@@ -58,7 +58,7 @@
+ # Internals ===================================================================
+ def _getShellPath(folderKey): ##: mkdirs
+     home = os.path.expanduser(u'~')
+-    return _GPath({u'Personal': home,
++    return _GPath({u'Personal': home + '/Documents',
+                    u'Local AppData': home + u'/.local/share'}[folderKey])
+
+ def _get_error_info():
+--
+2.40.0

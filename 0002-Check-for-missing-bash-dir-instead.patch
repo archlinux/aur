@@ -1,47 +1,51 @@
-From f0de2cde54d6b43977cf75f80511d8e62e82ea1e Mon Sep 17 00:00:00 2001
+From c0f2c8ea50c5bf5fc7f29a0201186cd6d26ef678 Mon Sep 17 00:00:00 2001
 From: Infernio <infernio@icloud.com>
-Date: Sat, 10 Oct 2020 20:20:07 +0200
-Subject: [PATCH 2/5] Check for missing 'bash' dir instead
+Date: Tue, 28 Mar 2023 13:14:55 +0200
+Subject: [PATCH 2/4] Check for missing 'bash' dir instead
 
 Since we'll want the Docs dir to be globally available on Linux. Just
 goes to show how much of a WIP our sanity checks on startup are.
 ---
- Mopy/bash/basher/__init__.py | 11 +++++------
- 1 file changed, 5 insertions(+), 6 deletions(-)
+ Mopy/bash/basher/__init__.py | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
 
 diff --git a/Mopy/bash/basher/__init__.py b/Mopy/bash/basher/__init__.py
-index fabba35c..c5b1977e 100644
+index 01851a780..051a9b5c5 100644
 --- a/Mopy/bash/basher/__init__.py
 +++ b/Mopy/bash/basher/__init__.py
-@@ -4008,7 +4008,7 @@ def RefreshData(self, evt_active=True, booting=False):
+@@ -4069,7 +4069,7 @@ def RefreshData(self, evt_active=True, booting=False):
          self.warn_corrupted(warn_mods=True, warn_saves=True, warn_strings=True,
                              warn_bsas=True)
          self.warn_game_ini()
 -        self._missingDocsDir()
-+        self._missing_bash_dir()
++        self._warn_missing_bash_dir()
          #--Done (end recursion blocker)
          self.inRefreshData = False
          return EventResult.FINISH
-@@ -4119,15 +4119,14 @@ def warn_game_ini(self):
-                     'ini': bosh.oblivionIni.abs_path,
-                     'game': bush.game.displayName}, _(u'Missing game Ini'))
+@@ -4192,15 +4192,15 @@ def warn_game_ini(self):
+                     u'ini': bosh.oblivionIni.abs_path,
+                     u'game': bush.game.displayName}, _(u'Missing game Ini'))
  
 -    def _missingDocsDir(self):
 -        #--Missing docs directory?
 -        testFile = bass.dirs[u'mopy'].join(u'Docs', u'wtxt_teal.css')
-+    def _missing_bash_dir(self):
-+        testFile = bass.dirs[u'mopy'].join(u'bash')
-         if self.incompleteInstallError or testFile.exists(): return
+-        if self.incompleteInstallError or testFile.exists(): return
++    ##: I'm pretty sure we blow up before we ever get here if the bash dir is
++    # missing, so this should be moved earlier in boot
++    def _warn_missing_bash_dir(self):
++        testFile = bass.dirs['mopy'].join('bash', 'images', 'bash.svg')
++        if self.incompleteInstallError or testFile.is_file(): return
          self.incompleteInstallError = True
-         msg = _(u'Installation appears incomplete.  Please re-unzip bash '
-         u'to game directory so that ALL files are installed.') + u'\n\n' + _(
--        u'Correct installation will create %s\\Mopy and '
--        u'%s\\Data\\Docs directories.') % (bush.game.fsName, bush.game.fsName)
-+        u'Correct installation will create a Mopy directory containing at '
-+        u'least the "bash" folder.')
+-        msg = _(u'Installation appears incomplete. Please re-unzip bash to '
+-                u'game directory so that ALL files are installed.') + u'\n\n'\
+-              + _(u'Correct installation will create a Mopy and %s\\Docs '
+-                  u'directories.') % bush.game.mods_dir
++        msg = (_('Installation appears incomplete. Please reinstall Wrye Bash '
++                 'so that ALL files are installed.') + '\n\n' +
++               _('Correct installation will create a Mopy/bash directory.'))
          balt.showWarning(self, msg, _(u'Incomplete Installation'))
  
      def on_closing(self, destroy=True):
 -- 
-2.28.0
+2.40.0
 

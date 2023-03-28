@@ -1,0 +1,27 @@
+From a7352d9f71db4f7747e1faa94a7d6feceb98339b Mon Sep 17 00:00:00 2001
+From: Infernio <infernio@icloud.com>
+Date: Tue, 28 Mar 2023 13:24:12 +0200
+Subject: [PATCH 4/4] Fix wxGTK status bar icons
+
+They take up more space for some reason.
+---
+ Mopy/bash/balt.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/Mopy/bash/balt.py b/Mopy/bash/balt.py
+index 7f21ed8b8..fa78621b2 100644
+--- a/Mopy/bash/balt.py
++++ b/Mopy/bash/balt.py
+@@ -2258,7 +2258,9 @@ def GetLink(self,uid=None,index=None,button=None): raise AbstractError
+
+     @property
+     def iconsSize(self): # +8 as each button has 4 px border on left and right
+-        return _settings[u'bash.statusbar.iconSize'] + 8
++        ##: Image-only buttons take up more space on wxGTK for some reason
++        return _settings['bash.statusbar.iconSize'] + (
++            16 if wx.Platform == '__WXGTK__' else 8)
+
+     def _addButton(self, link):
+         gButton = link.GetBitmapButton(self)
+--
+2.40.0
