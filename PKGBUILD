@@ -23,5 +23,5 @@ package() {
 
   python setup.py bdist_egg
 
-  install -D dist/*.egg ${pkgdir}/usr/lib/python3.10/site-packages/deluge/plugins/pieces.egg
+  install -D dist/*.egg ${pkgdir}/usr/lib/python3.10/site-packages/deluge/plugins/Pieces.egg
 }
