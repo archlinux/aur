@@ -3,7 +3,7 @@
 pkgname=striked-bin
 pkgver=0.0.3
 pkgdesc='A community communication platform for game development studios to create, sell, and distribute video games'
-pkgrel=0
+pkgrel=1
 arch=(x86_64)
 url="https://${pkgname/-bin/}.gg"
 license=('custom' 'MIT' 'Apache')
@@ -54,9 +54,10 @@ sha256sums=(
 
 package() {
     # Main files
-    install -dm777 "${pkgdir}/opt/Striked Launcher"
-    ## Doesn't seem to respect permissions after installation?
-    chmod -R 777 "${pkgdir}/opt/Striked Launcher"
+    install -dm755 "${pkgdir}/opt/Striked Launcher"
+    ## Doesn't seem to respect unprivileged user permissions after installation? Doing this doesn't seem to make a difference
+    ## Calling the striked binary directly instead of with the desktop file desn't seem to work correctly
+    # chmod -R 777 "${pkgdir}/opt/Striked Launcher"
     install -dm755 "${pkgdir}/usr"
     mv "${srcdir}/opt/Striked Launcher/"* "${pkgdir}/opt/Striked Launcher"
     mv "${srcdir}/usr/"* "${pkgdir}/usr"
