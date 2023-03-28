@@ -7,7 +7,7 @@ _I18N_EREGEX='.*'
 _pkgname=collabora-online-server-nodocker
 
 # taking version of coolwsd:
-pkgver=22.05.12.3
+pkgver=22.05.12.4
 pkgrel=1
 arch=('x86_64')
 url="https://www.collaboraoffice.com/code/"
@@ -29,13 +29,13 @@ source=(
   sysusers
   tmpfiles
 )
-sha1sums=('43e7ef77efdb89abd09ea2416f625e18feac64ea'
+sha1sums=('0894f01f806998572f8d5db68587bb38fd41dce0'
           '69c3f1ee98aa44aae759c011fcfac6502676535e'
           '3fe2db88f4f7ee203520c59760582103d3e41210'
           'b44b1ddaa362c6fdf65a0899beaa40dada3b232e'
           '21b07d04a02cd35e9563db94b7101e98878bdd2b'
           'cc71b4c649c349f31351c24cab25102c19aa9aa2'
-          '024f5373c93941ec6162bc8dddc6bca56a907226'
+          '6959c0aaceab082ac6468a22d9b84a8e84cfd6b5'
           '79da0f7bf4bfe7de1e8db71ff63a2f3f826d2e0f'
           'f8a43eecf486938cc88875b871f46b38996d3b38'
           'bfdf0ce51e4a9c622cb85a0d279d50beb86c5700'
