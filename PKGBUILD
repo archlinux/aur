@@ -4,9 +4,8 @@ _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
 _torus_commit="b7bf7965db8c3b2034d6a92f5a1c1fefe13e0e5d"
-pkgver=1.8.1
-# not update to 1.8.2: galpyWarning: libgalpy C extension module not loaded, because of error '/usr/lib/python3.10/site-packages/libgalpy.cpython-310-x86_64-linux-gnu.so: undefined symbol: GOMP_loop_nonmonotonic_dynamic_start'
-pkgrel=2
+pkgver=1.8.3
+pkgrel=1
 pkgdesc="Galactic Dynamics in python"
 arch=('i686' 'x86_64')
 url="https://www.galpy.org"
@@ -21,7 +20,7 @@ makedepends=('python-setuptools' 'gsl'
 #              'python-matplotlib')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "torus-200307.tar.gz::https://github.com/jobovy/Torus/archive/${_torus_commit}.tar.gz")
-md5sums=('02926db04ece780d713e5ef979cae769'
+md5sums=('29c56f24d8377f8b33fcccf7f890b0e6'
          'f84f68196975d1efbac800b1a5703c45')
 
 get_pyver() {
@@ -33,7 +32,7 @@ prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     mv ${srcdir}/{Torus-${_torus_commit},${_pyname}-${pkgver}/galpy/actionAngle/actionAngleTorus_c_ext/torus}
-    sed -i 's/numpy.float)/numpy.float64)/' galpy/util/leung_dop853.py
+#   sed -i 's/numpy.float)/numpy.float64)/' galpy/util/leung_dop853.py
 #   sed -i "/directnbody/s/directnbody/.directnbody/" Snapshot.py
 #   sed -i "/from\ Snapshot/s/Snapshot/.Snapshot/" snapshotMovies.py
 }
@@ -47,13 +46,58 @@ build() {
 }
 
 #check() {
-#    takes a lot of time
+#    # takes a lot of time
 #    cd ${srcdir}/${_pyname}-${pkgver}
 #
 #    PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver):${PYTHONPATH}" pytest -vv --color=yes \
 #        --ignore=tests/test_amuse.py \
 #        --ignore=tests/test_snapshotpotential.py \
-#        --ignore=tests/test_sphericaldf.py
+#        --ignore=tests/test_sphericaldf.py \
+#        --deselect=tests/test_actionAngle.py::test_actionAngleAdiabaticGrid_basicAndConserved_actions \
+#        --deselect=tests/test_actionAngle.py::test_actionAngleStaeckelGrid_basicAndConserved_actions \
+#        --deselect=tests/test_actionAngle.py::test_actionAngleIsochroneApprox_triaxialnfw_linear_angles \
+#        --deselect=tests/test_actionAngle.py::test_actionAngleVerticalInverse_orbit_interpolation_pointtransform \
+#        --deselect=tests/test_actionAngle.py::test_actionAngleVerticalInverse_wrtVertical_interpolation_pointtransform \
+#        --deselect=tests/test_actionAngle.py::test_actionAngleVerticalInverse_freqs_wrtVertical_interpolation_pointtransform \
+#        --deselect=tests/test_diskdf.py::test_dehnendf_cold_flat_kurtosisvt \
+#        --deselect=tests/test_diskdf.py::test_dehnendf_cold_flat_skewvt \
+#        --deselect=tests/test_diskdf.py::test_dehnendf_cold_powerfall_skewvt \
+#        --deselect=tests/test_diskdf.py::test_dehnendf_cold_powerfall_kurtosisvt \
+#        --deselect=tests/test_diskdf.py::test_dehnendf_cold_powerrise_kurtosisvt \
+#        --deselect=tests/test_diskdf.py::test_dehnendf_cold_flat_oortA \
+#        --deselect=tests/test_diskdf.py::test_dehnendf_cold_powerrise_oortA \
+#        --deselect=tests/test_diskdf.py::test_dehnendf_cold_powerrise_srst \
+#        --deselect=tests/test_dynamfric.py::test_dynamfric_c \
+#        --deselect=tests/test_evolveddiskdf.py::test_mildnonaxi_vertexdev_direct \
+#        --deselect=tests/test_evolveddiskdf.py::test_mildnonaxi_oortA_grid \
+#        --deselect=tests/test_evolveddiskdf.py::test_elliptical_cold_oortABCK_position1 \
+#        --deselect=tests/test_evolveddiskdf.py::test_elliptical_cold_oortABCK_position2 \
+#        --deselect=tests/test_galpypaper.py::test_diskdf \
+#        --deselect=tests/test_interp_potential.py::test_interpolation_potential_force_c \
+#        --deselect=tests/test_orbit.py::test_liouville_planar \
+#        --deselect=tests/test_orbit.py::test_analytic_ecc_rperi_rap \
+#        --deselect=tests/test_potential.py::test_poisson_surfdens_potential \
+#        --deselect=tests/test_potential.py::test_McMillan17 \
+#        --deselect=tests/test_potential.py::test_Cautun20 \
+#        --deselect=tests/test_potential.py::test_DehnenBinney98 \
+#        --deselect=tests/test_pv2qdf.py::test_pvTvz_staeckel \
+#        --deselect=tests/test_pv2qdf.py::test_pvTvz_staeckel_diffngl \
+#        --deselect=tests/test_qdf.py::test_sampleV_interpolate \
+#        --deselect=tests/test_quantity.py::test_streamgapdf_method_returntype \
+#        --deselect=tests/test_scf.py::test_scf_compute_spherical_nbody_hernquist \
+#        --deselect=tests/test_scf.py::test_scf_compute_nbody_twopowertriaxial \
+#        --deselect=tests/test_streamdf.py::test_bovy14_callMargXZ \
+#        --deselect=tests/test_streamdf.py::test_bovy14_callMargDPMLL \
+#        --deselect=tests/test_streamdf.py::test_fardalpot_trackaa \
+#        --deselect=tests/test_streamdf.py::test_fardalwmwpot_trackaa \
+#        --deselect=tests/test_streamgapdf.py::test_sanders15_setup \
+#        --deselect=tests/test_streamgapdf.py::test_sanders15_leading_setup \
+#        --deselect=tests/test_streamgapdf.py::test_sample \
+#        --deselect=tests/test_streamgapdf.py::test_sample_offset \
+#        --deselect=tests/test_streamgapdf.py::test_sample_offset_leading \
+#        --deselect=tests/test_streamgapdf_impulse.py::test_impulse_deltav_general_fullintegration_zeroforce \
+#        --deselect=tests/test_streamspraydf.py::test_center || warning "Tests failed"
+#
 ##   nosetests
 #}
 
