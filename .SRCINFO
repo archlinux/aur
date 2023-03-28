@@ -18,6 +18,6 @@ pkgbase = wasabi-wallet-bin
 	validpgpkeys = 6FB3872B5D42292F59920797856348328949861E
 	sha256sums = 889841b32917ac5ec7372d93a91aa6db29ac8b969db26e30340bccfb6f57b597
 	sha256sums = SKIP
-	sha256sums = cc774dc7850f7d097c1a5a987e2d7c89f8fa979e1f20dd8ac7905e6d1c5ec392
+	sha256sums = 4dde8541c5a45ae5f0c12d77415d0423e9547bf0cfe3cd47f360558efdcd9407
 
 pkgname = wasabi-wallet-bin
