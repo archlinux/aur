@@ -1,8 +1,9 @@
 # Maintainer: Yidaozhan Ya <yidaozhan_ya@outlook.com>
 _pkgname=linuxqq
 pkgname=linuxqq-nt-bwrap
-pkgver=3.1.0_9572
-pkgrel=5
+pkgver=3.1.1_11223
+_pkgver_hash=2355235c
+pkgrel=1
 pkgdesc="New Linux QQ based on Electron, with bubblewrap sandbox and some tweaks"
 arch=('x86_64' 'aarch64')
 url='https://im.qq.com/linuxqq/index.shtml'
@@ -15,17 +16,17 @@ provides=('qq' 'linuxqq')
 conflicts=('linuxqq')
 options=('!strip' '!emptydirs')
 install="${pkgname}.install"
-source_x86_64=("https://dldir1.qq.com/qqfile/qq/QQNT/4b2e3220/linuxqq_3.1.0-9572_amd64.deb" )  # 底包
+source_x86_64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_pkgver_hash}/linuxqq_${pkgver//_/-}_amd64.deb" )  # 底包
                # "https://qqpatch.gtimg.cn/hotUpdate_new/release/linux-x64/${pkgver//_/-}/${pkgver//_/-}.zip.zip" )  # 热更新补丁
-source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/4b2e3220/linuxqq_3.1.0-9572_arm64.deb" )  # 底包
+source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_pkgver_hash}/linuxqq_${pkgver//_/-}_arm64.deb" )  # 底包
                 # "https://qqpatch.gtimg.cn/hotUpdate_new/release/linux-arm64/${pkgver//_/-}/${pkgver//_/-}.zip.zip" )  # 热更新补丁
 source=('start.sh' 'config.json' 'xdg-open.sh')
-sha256sums_x86_64=('c6a6f2c94e094a561b02427fb6a2e854f29f42fc589ccc92471ef257512d0e13' )  # 底包
+sha256sums_x86_64=('4c1810ef357e8ee077292808217bafc67626be79ccff5ff05341248a8a48aaf6' )  # 底包
                    # 'e9d7d27c6df425dfface9398be2b14c24f32ae9d880e344ce599593f2919f6dd')  # 热更新补丁
-sha256sums_aarch64=('22d66a855f4e9b271d7d1865ccfda596bcdc219bda8940bf2c988327f90d2241' )  # 底包
+sha256sums_aarch64=('d5b6bf200ffe5ffb3b8d4b48861dceb011d4ecc3e0806ac04ac04fc7c7ae041b' )  # 底包
                     # 'f17bbff10be65135130c7a4cd05ac5f6e324e560a5dafe27113f05a9e7bbc3d5')  # 热更新补丁
-sha256sums=('1d7db58d0746096781b51e74d6f5e0406db09029c94cd57c54bf8f6817a3f5d5'  # start.sh
-            '14873a55c6f0402c8a424808848007d041ecaf8f72a00aac0d9be01270e4e87c'  # config.json
+sha256sums=('d3decdf850a9d9f49fc2114b5cf027eb023eb23079ac0b6f919781f79dbfe824'  # start.sh
+            'bf180fbc93d95cb08608f97896cd5fe99323b7f5e4666844343f6065cf5f8528'  # config.json
             '78a573867355fb4c3e728d0c8ac0746d47fa7d64f90ee2b62ee9f0ccae095edb')  # xdg-open.sh
 
 package() {
