@@ -3,8 +3,8 @@
 _CUDA_ARCH_LIST="52;53;60;61;62;70;72;75;80;86;89"
 pkgname=python-nvidia-dali
 _pkgname=dali
-pkgver=1.23.0
-pkgrel=2
+pkgver=1.24.0
+pkgrel=1
 pkgdesc='A library containing both highly optimized building blocks and an execution engine for data pre-processing in deep learning applications'
 arch=('x86_64')
 url='https://github.com/NVIDIA/DALI'
@@ -31,18 +31,14 @@ optdepends=(
 )
 options=(!emptydirs !lto)
 source=("${pkgname}::git+https://github.com/NVIDIA/DALI.git#tag=v${pkgver}"
-        "https://github.com/NVIDIA/DALI/pull/4692.patch"
 )
-sha512sums=('SKIP'
-            'b7d515e059406dcddf302e534b6040ea223dcfc1399f248d9af0b40e68013c346f67a7bc1d36f7fc6ea10d81437dc8e70c03454f47f7c2b62916ef0616ac5708')
+sha512sums=('SKIP')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
   git submodule update --init --recursive
   # quick fix for https://github.com/archlinuxcn/repo/issues/2877
   export CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
-  # fix constexpr issue
-  patch -p1 -i "${srcdir}/4692.patch"
 }
 
 build() {
@@ -78,7 +74,7 @@ build() {
   python setup.py build
   # built tf plugin
   cmake -B ${srcdir}/build-tf \
-    -DCUDA_VERSION=11.8 \
+    -DCUDA_VERSION=12.1 \
     -S ${srcdir}/${pkgname}/dali_tf_plugin
   make -C ${srcdir}/build-tf
 }
