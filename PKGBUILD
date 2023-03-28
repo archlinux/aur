@@ -2,14 +2,16 @@
 
 pkgname=mapbox-gl-native-git
 _pkgname=mapbox-gl-native
+pkgdesc="C++ library that powers customizable vector maps in native applications"
 pkgver=r15975.cf734a2fec
-pkgrel=1
+pkgrel=2
 arch=("x86_64" "aarch64")
 url="https://github.com/mapbox/mapbox-gl-native"
 source=("$_pkgname::git+https://github.com/mapbox/mapbox-gl-native" "fix-compilation.patch" "allow-qt-deprecations.patch" "16591.patch" "arch-include-dir.patch")
 sha512sums=("SKIP" "SKIP" "SKIP" "SKIP" "SKIP")
 depends=("glfw")
 provides=("mapbox-gl-native")
+conflicts=("mapbox-gl-native")
 
 prepare() {
 	cd "$srcdir/$_pkgname"
