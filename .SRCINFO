@@ -1,13 +1,13 @@
 pkgbase = python-pytube
 	pkgdesc = A lightweight, dependency-free Python library (and command-line utility) for downloading YouTube Videos
-	pkgver = 12.1.2
+	pkgver = 12.1.3
 	pkgrel = 1
 	url = https://github.com/pytube/pytube
 	arch = any
 	license = Unlicense
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/p/pytube/pytube-12.1.2.tar.gz
-	sha256sums = 2d34a484f81cae106ea84e8c00871f97dcc293e8ed8c074e65abc4119f02c98f
+	source = https://files.pythonhosted.org/packages/source/p/pytube/pytube-12.1.3.tar.gz
+	sha256sums = 6a56ce9bbc03a6aaf62a1e5a54bae003c70fe2aa1c86c279037c031d59f571b3
 
 pkgname = python-pytube
