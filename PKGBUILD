@@ -54,9 +54,8 @@ sha256sums=(
 
 package() {
     # Main files
-    install -dm755 "${pkgdir}/opt"
+    install -dm775 "${pkgdir}/opt"
     install -dm755 "${pkgdir}/usr"
-    install -dm755 "${pkgdir}/usr/bin"
     mv "${srcdir}/opt/"* "${pkgdir}/opt"
     mv "${srcdir}/usr/"* "${pkgdir}/usr"
 
@@ -66,4 +65,5 @@ package() {
     # Licenses
     install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
     cp "${pkgdir}/opt/Striked Launcher/LICENSE"* "${pkgdir}/usr/share/licenses/${pkgname}"
+    chmod 644 "${pkgdir}/usr/share/licenses/${pkgname}/"*
 }
