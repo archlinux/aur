@@ -1,7 +1,7 @@
 pkgbase = gourou-git
 	pkgdesc = Download and decrypt adobe encrypted (acsm) pdf and epub files (git version)
 	pkgver = r121.46afe77
-	pkgrel = 2
+	pkgrel = 3
 	url = https://indefero.soutade.fr/p/libgourou
 	arch = x86_64
 	license = LGPL3
