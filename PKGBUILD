@@ -2,7 +2,7 @@
 # Maintainer: Arthur Zamarin <arthurzam@gmail.com> 
 
 pkgname=clib
-pkgver=2.8.1
+pkgver=2.8.3
 pkgrel=1
 pkgdesc="C package manager-ish"
 arch=(i686 x86_64)
@@ -10,8 +10,7 @@ url=https://www.clibs.org
 license=(custom:MIT)
 depends=(curl)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/clibs/clib/archive/$pkgver.tar.gz")
-sha512sums=('62476cadb1c70463bdabf13125778a5f246f2037012a207b6593f2b28cd8149ebaa463cc4a162dc69f77409e27a5896c182865defd4ed28edf313172fa411611')
-b2sums=('9c457bba8b679cad161efb46344dd324835ef083e8db1d8a4b24d13d57b0c399239f6135f5a7b41914815d855332a4c18bb3b570753ff9e6221104a82078caca')
+b2sums=('5334967d51d3109f6d85908dbb876a261ebe70adbc91d80c8e8460830f579033dea5e173cd450668f38b59ba632792aa8e02bef5d4950a2ac1fc4479ad1356f7')
 
 prepare () {
   cat >> "$srcdir/$pkgname-$pkgver/Makefile" <<-EOF
