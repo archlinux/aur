@@ -17,14 +17,10 @@ prepare() {
 		venv
 	fi
 	
-	if command -v autobuild >/dev/null 2>&1 && [[ "$(autobuild --version)" == "autobuild 9.0.0" ]]; then
-		pip3 uninstall --yes autobuild --quiet
-	elif ! command -v autobuild; then
-		echo "Installing autobuild..."
-		pip3 install --upgrade certifi --quiet
-		pip3 install --upgrade llbase --quiet
-		pip3 install --no-cache --upgrade autobuild --quiet
-	fi
+	echo "Installing autobuild..."
+	pip3 install --upgrade certifi --quiet
+	pip3 install --upgrade llbase --quiet
+	pip3 install --no-cache --upgrade autobuild --quiet
 }
 
 build() {
