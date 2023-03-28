@@ -1,5 +1,55 @@
 # Changelog
 
+## [v8.2.0](https://github.com/fastly/cli/releases/tag/v8.2.0) (2023-03-28)
+
+[Full Changelog](https://github.com/fastly/cli/compare/v8.1.2...v8.2.0)
+
+**Enhancements:**
+
+* feat(ratelimit): implement rate-limiter API [#886](https://github.com/fastly/cli/pull/886)
+
+## [v8.1.2](https://github.com/fastly/cli/releases/tag/v8.1.2) (2023-03-21)
+
+[Full Changelog](https://github.com/fastly/cli/compare/v8.1.1...v8.1.2)
+
+**Bug fixes:**
+
+* fix(service/create): input.Type assigned wrong value [#881](https://github.com/fastly/cli/pull/881)
+
+## [v8.1.1](https://github.com/fastly/cli/releases/tag/v8.1.1) (2023-03-20)
+
+[Full Changelog](https://github.com/fastly/cli/compare/v8.1.0...v8.1.1)
+
+**Bug fixes:**
+
+* Pass verbosity flag along to viceroy binary [#878](https://github.com/fastly/cli/pull/878)
+* fix(compute/serve): always display local server address [#879](https://github.com/fastly/cli/pull/879)
+
+## [v8.1.0](https://github.com/fastly/cli/releases/tag/v8.1.0) (2023-03-17)
+
+[Full Changelog](https://github.com/fastly/cli/compare/v8.0.1...v8.1.0)
+
+**Enhancements:**
+
+* fix various lint and CI issues [#873](https://github.com/fastly/cli/pull/873)
+* feat(config-store): Add Config Store commands [#829](https://github.com/fastly/cli/pull/829)
+* fix(compute/deploy): service availability [#875](https://github.com/fastly/cli/pull/875)
+* fix(compute/deploy): check status code range [#876](https://github.com/fastly/cli/pull/876)
+
+## [v8.0.1](https://github.com/fastly/cli/releases/tag/v8.0.1) (2023-03-15)
+
+[Full Changelog](https://github.com/fastly/cli/compare/v8.0.0...v8.0.1)
+
+**Bug fixes:**
+
+* fix(compute/serve): stop spinner before starting another instance [#867](https://github.com/fastly/cli/pull/867)
+* fix(http/client): address confusion with timeout error [#869](https://github.com/fastly/cli/pull/869)
+* fix(http/client): bump timeout to account for poor network conditions [#870](https://github.com/fastly/cli/pull/870)
+
+**Enhancements:**
+
+* refactor(compute/deploy): change default port from 80 to 443 [#866](https://github.com/fastly/cli/pull/866)
+
 ## [v8.0.0](https://github.com/fastly/cli/releases/tag/v8.0.0) (2023-03-08)
 
 [Full Changelog](https://github.com/fastly/cli/compare/v7.0.1...v8.0.0)
