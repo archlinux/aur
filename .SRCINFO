@@ -1,0 +1,18 @@
+pkgbase = lib32-libumem-git
+	pkgdesc = A port of the Solaris libumem memory allocator
+	pkgver = 1.0.r15.g3fc772c
+	pkgrel = 5
+	url = https://github.com/omniti-labs/portableumem/
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = glibc
+	optdepends = libumem-git
+	provides = lib32-libumem
+	conflicts = lib32-libumem
+	source = git+https://github.com/omniti-labs/portableumem.git
+	source = portableumem-various-cleanups.diff
+	sha256sums = SKIP
+	sha256sums = 78688c528903a154edb956e9058e37144a9f2b0e0818b3167d94d3a643ee2ccf
+
+pkgname = lib32-libumem-git
