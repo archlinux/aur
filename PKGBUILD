@@ -54,9 +54,9 @@ sha256sums=(
 
 package() {
     # Main files
-    install -dm777 "${pkgdir}/opt"
+    install -dm777 "${pkgdir}/opt/Striked Launcher"
     install -dm755 "${pkgdir}/usr"
-    mv "${srcdir}/opt/"* "${pkgdir}/opt"
+    mv "${srcdir}/opt/Striked Launcher/"* "${pkgdir}/opt/Striked Launcher"
     mv "${srcdir}/usr/"* "${pkgdir}/usr"
 
     # Symlink to /usr/bin
