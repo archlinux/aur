@@ -15,7 +15,7 @@ PKGEXT='.pkg.tar'
 
 pkgname=chromium-no-extras
 _pkgname=chromium
-pkgver=111.0.5563.110
+pkgver=111.0.5563.146
 pkgrel=1
 _launcher_ver=8
 _gcc_patchset=2
@@ -43,7 +43,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         sql-relax-constraints-on-VirtualCursor-layout.patch
         disable-GlobalMediaControlsCastStartStop.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('49dd6c73b170a2dcf6edbb516cd9f77b550cc3d968f2097927c637015487a765'
+sha256sums=('1e701fa31b55fa0633c307af8537b4dbf67e02d8cad1080c57d845ed8c48b5fe'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'a016588340f1559198e4ce61c6e91c48cf863600f415cb5c46322de7e1f77909'
             'e66be069d932fe18811e789c57b96249b7250257ff91a3d82d15e2a7283891b7'
