@@ -3,7 +3,7 @@
 
 pkgname=chromium-extension-copy-url-on-hover
 _extension=copy-url-on-hover
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Copy URL On Hover - chromium extension"
 arch=('any')
@@ -12,8 +12,10 @@ license=('custom:none')
 makedepends=('chromium' 'openssl' 'jq')
 source=("https://github.com/noahvogt/$_extension/archive/refs/tags/v$pkgver.tar.gz"
         "copy-url-on-hover.pem")
-sha256sums=('dea4ad27481e8ea93bc401aaf59943c80d1f81ab6dbfbcd4f0e9168cbc505b81'
+sha256sums=('8193a3c887467ac8d3148835fe3afa14d053c51760e82832be09ee57e0b95ba8'
             'c06aca0d925d5f6f8ab55e7c3032fee7ffeb56c99fd3625e90bd167bef489dfc')
+provides=('chromium-extension-copy-url-on-hover')
+conflicts=('chromium-extension-copy-url-on-hover')
 
 build() {
     pubkey="$(openssl rsa -in copy-url-on-hover.pem -pubout -outform DER |base64 -w0)"
