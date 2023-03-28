@@ -1,4 +1,4 @@
-# Maintainer: Neko-san < nekoNexus @ protonmail dot ch >
+# Maintainer: Neko-san < nekoNexus at protonmail dot ch >
 
 pkgname=striked-bin
 pkgver=0.0.3
