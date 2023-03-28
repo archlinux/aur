@@ -2,7 +2,7 @@
 
 pkgname=striked-bin
 pkgver=0.0.3
-pkgdesc='A community communication platform for game development studios create, sell, and distribute video games'
+pkgdesc='A community communication platform for game development studios to create, sell, and distribute video games'
 pkgrel=0
 arch=(x86_64)
 url="https://${pkgname/-bin/}.gg"
