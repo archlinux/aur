@@ -6,12 +6,12 @@ _pkgname=betterlockscreen
 pkgname=${_pkgname}-git
 provides=("betterlockscreen")
 conflicts=("betterlockscreen")
-pkgver=v4.0.4.r0.ge6c5530
-pkgrel=3
+pkgver=v4.0.3.r44.g5cb876d
+pkgrel=1
 pkgdesc="A simple lock script for i3lock-color"
 arch=('any')
 url="https://github.com/betterlockscreen/betterlockscreen"
-_git_branch="main"
+_git_branch="next"
 license=('MIT')
 makedepends=('git')
 depends=('i3lock-color>=2.13.c.3-1' 'imagemagick' 'xorg-xrandr' 'xorg-xdpyinfo' 'bc')
