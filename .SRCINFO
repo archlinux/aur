@@ -9,6 +9,7 @@ pkgbase = python-pytaglib
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = cython
 	makedepends = python-wheel
 	depends = python
 	depends = taglib
