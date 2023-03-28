@@ -1,13 +1,13 @@
 # from /usr/share/pacman/proto.install
 
 post_install() {
-   mandb -q
+   mandb -q || true
 }
 
 post_upgrade() {
-   mandb -q
+   mandb -q || true
 }
 
 post_remove() {
-    mandb -q
+    mandb -q || true
 }
