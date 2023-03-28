@@ -11,7 +11,7 @@ makedepends=('go' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 backup=("etc/conf.d/prometheus-mosquitto-exporter")
-source=("$_reponame::git+https://github.com/sapcc/$_reponame.git#branch=master"
+source=("git+https://github.com/sapcc/$_reponame.git"
         prometheus-mosquitto-exporter.conf
         prometheus-mosquitto-exporter.service
         prometheus-mosquitto-exporter.sysusers)

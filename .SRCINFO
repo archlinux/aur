@@ -10,7 +10,7 @@ pkgbase = prometheus-mosquitto-exporter-git
 	provides = prometheus-mosquitto-exporter
 	conflicts = prometheus-mosquitto-exporter
 	backup = etc/conf.d/prometheus-mosquitto-exporter
-	source = mosquitto-exporter::git+https://github.com/sapcc/mosquitto-exporter.git#branch=master
+	source = git+https://github.com/sapcc/mosquitto-exporter.git
 	source = prometheus-mosquitto-exporter.conf
 	source = prometheus-mosquitto-exporter.service
 	source = prometheus-mosquitto-exporter.sysusers
