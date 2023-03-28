@@ -1,6 +1,6 @@
 pkgbase = python-lumispy
 	pkgdesc = Luminescence spectroscopy data analysis extension for HyperSpy
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = http://lumispy.org
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-lumispy
 	depends = python-numpy>=1.17.0
 	depends = python-hyperspy>=1.7.0
 	provides = lumispy
-	source = https://github.com/lumispy/lumispy/archive/v0.2.1.tar.gz
-	md5sums = dd3c4c44c626065168c940e07c053eb1
+	source = https://github.com/lumispy/lumispy/archive/v0.2.2.tar.gz
+	md5sums = de9f4b63f17b35c4e3ce8a8b05a5bc20
 
 pkgname = python-lumispy

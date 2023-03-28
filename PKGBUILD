@@ -2,7 +2,7 @@
 # Maintainer: Jonas Lähnemann <jonas at pdi-berlin dot de>
 pkgname=python-lumispy
 pkgshort=lumispy
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Luminescence spectroscopy data analysis extension for HyperSpy"
 arch=('any')
@@ -26,4 +26,4 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-md5sums=('dd3c4c44c626065168c940e07c053eb1')
+md5sums=('de9f4b63f17b35c4e3ce8a8b05a5bc20')
