@@ -2,8 +2,8 @@
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=sdl2pp
-pkgver=0.17.0
-pkgrel=2
+pkgver=0.18.0
+pkgrel=1
 pkgdesc="C++ bindings/wrapper for SDL2"
 arch=("x86_64")
 url="https://sdl2pp.amdmi3.ru"
@@ -11,7 +11,7 @@ license=("ZLIB")
 depends=("sdl2" "sdl2_image" "sdl2_mixer" "sdl2_ttf")
 makedepends=("cmake")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/libSDL2pp/libSDL2pp/archive/${pkgver}.tar.gz")
-b2sums=("48fa36cd9c3f8b0c3d2b7ae3e075c4ab3bcb3c01b26f10d7f323e813653e56dfb9f1f379eef9e9637901fe0c2f8fe9d6150578c1a2f93be7ecf3cbee799d98ee")
+b2sums=("c706891d968b2625f88a77adf27ebdc8b57cdad85f250563ba90aa7a0addf624eacfc028b4de22fbb36a35f331a681a12db6775235107f8d48d41449ff91f003")
 
 build() {
   cmake -B "build/" -S "libSDL2pp-${pkgver}" \
