@@ -1,14 +1,15 @@
 pkgbase = python-galpy-doc
 	pkgdesc = Documentation for galpy
-	pkgver = 1.8.1
+	pkgver = 1.8.3
 	pkgrel = 1
 	url = https://www.galpy.org
 	arch = any
 	license = BSD
-	makedepends = python-galpy=1.8.1
-	makedepends = python-sphinx
+	makedepends = python-galpy=1.8.3
+	makedepends = python-sphinxext-opengraph
 	makedepends = gsl
-	source = https://github.com/jobovy/galpy/archive/v1.8.1.tar.gz
-	md5sums = 020d28f8b6dd1c488ea47abac8d685c1
+	makedepends = ttf-roboto
+	source = https://github.com/jobovy/galpy/archive/v1.8.3.tar.gz
+	md5sums = 418f395f08582402ee59cbda6c7afc79
 
 pkgname = python-galpy-doc
