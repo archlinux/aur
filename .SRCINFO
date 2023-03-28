@@ -1,0 +1,31 @@
+pkgbase = zim-dev
+	pkgdesc = Zim desktop wiki. Develop branch
+	pkgver = 4110a13c
+	pkgrel = 1
+	url = https://zim-wiki.org/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	checkdepends = xorg-server-xvfb
+	depends = python
+	depends = python-gobject
+	depends = ttf-font
+	depends = gtk3
+	depends = python-xdg
+	optdepends = bzr: Version Control plugin
+	optdepends = git: Version Control plugin
+	optdepends = mercurial: Version Control plugin
+	optdepends = gnuplot: Insert Gnuplot plugin
+	optdepends = ditaa: Insert Ditaa plugin
+	optdepends = graphviz: Insert Diagram plugin
+	optdepends = xdot: Link Map plugin
+	optdepends = gtkspell3: Spell Checker plugin
+	optdepends = r: Insert GNU R Plot plugin
+	optdepends = scrot: Insert Screenshot plugin
+	optdepends = lilypond: Insert Score plugin
+	optdepends = gtksourceview3: Source View plugin
+	optdepends = texlive-bin: Insert Equation plugin
+	source = git+https://github.com/zim-desktop-wiki/zim-desktop-wiki.git#commit=4110a13c
+	sha256sums = SKIP
+
+pkgname = zim-dev
