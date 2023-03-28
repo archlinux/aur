@@ -1,14 +1,14 @@
 # Maintainer: Nikita Ivanov <nikita dot vyach dot ivanov at gmail dot com>
 _name=river-luatile
 pkgname="${_name}-git"
-pkgver=r11.ac23773
-pkgrel=3
+pkgver=r28.f6bb35c
+pkgrel=1
 pkgdesc="Write your own river layout generator in lua"
 arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/MaxVerevkin/river-luatile"
 license=('GPL3')
 provides=("$_name")
-depends=('luajit' 'libxkbcommon')
+depends=('luajit' 'libxkbcommon' 'gcc-libs' 'glibc')
 makedepends=('git' 'cargo')
 source=("git+$url")
 sha512sums=('SKIP')
