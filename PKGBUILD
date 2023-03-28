@@ -50,6 +50,6 @@ package() {
   install -Dm644 docs/assets/Square310x310Logo.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
   install -Dm644 ${_desktop} "$pkgdir/usr/share/applications/$_desktop"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm644 docs/FAQ.md DEVELOPEMENT.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 docs/FAQ.md docs/DEVELOPEMENT.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm755 src-tauri/target/release/flight-core "$pkgdir/usr/bin/$pkgname"
 }
