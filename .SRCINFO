@@ -1,0 +1,80 @@
+pkgbase = java8-openjdk-xdg
+	pkgver = 8.362.u09
+	pkgrel = 1
+	url = https://openjdk.java.net/
+	arch = x86_64
+	license = custom
+	makedepends = alsa-lib
+	makedepends = bash
+	makedepends = ccache
+	makedepends = cpio
+	makedepends = fontconfig
+	makedepends = giflib
+	makedepends = git
+	makedepends = java-environment=8
+	makedepends = libcups
+	makedepends = libxrender
+	makedepends = libxtst
+	makedepends = unzip
+	makedepends = zip
+	options = !lto
+	source = https://github.com/openjdk/jdk8u/archive/refs/tags/jdk8u362-b09.tar.gz
+	source = gcc11.patch
+	source = xdg-basedir-compliant-fontconfig.patch
+	source = xdg-basedir-compliant-userPrefs.patch
+	b2sums = f415dad93d2525f0f02450bd86268cd8382376e80188803995df97e5d04ade8f9818d402f1cbb7b961f5ab0947dc8ce33635cdf187ad637c3f7b959487c86b4a
+	b2sums = 9679e4dfb6027a87376081489c09810812d6849573afac4ea96abe3a3e00ca5b6af7d0ffb010c43b93cfa913f9e97fbb9f11e19fcc86a89b4548442671c32da1
+	b2sums = 6830ceb798143ea63a21aba28852633fd57d28924f60a85a454f19aba4b6d3da06ece2c9423b9ece057977064454f1ec4558f6b0b8acceeb8a3b973809c2e928
+	b2sums = 0569a669d67c278f584bccdb52304ba9ce3cce4dc89d1bc3fdd1ecc13881070981a54fc53125de50713d8c83e1e7f3290f6a5d8fbc4ae94ea1e38fc474549f5c
+
+pkgname = jre8-openjdk-headless-xdg
+	pkgdesc = OpenJDK Java 8 headless runtime environment - with improved Support for the XDG Base Directory Specification
+	install = install_jre8-openjdk-headless.sh
+	depends = java-runtime-common
+	depends = ca-certificates-utils
+	depends = nss
+	optdepends = java-rhino: for some JavaScript support
+	provides = java-runtime-headless=8
+	provides = java-runtime-headless-openjdk=8
+	provides = jre8-openjdk-headless=8.362.u09-1
+	conflicts = jre8-openjdk-headless
+	replaces = jre8-openjdk-headless-wm
+	backup = 
+
+pkgname = jre8-openjdk-xdg
+	pkgdesc = OpenJDK Java 8 full runtime environment - with improved Support for the XDG Base Directory Specification
+	install = install_jre8-openjdk.sh
+	depends = jre8-openjdk-headless=8.362.u09-1
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	depends = giflib
+	optdepends = icedtea-web: web browser plugin + Java Web Start
+	optdepends = alsa-lib: for basic sound support
+	optdepends = gtk2: for the Gtk+ look and feel - desktop usage
+	optdepends = java8-openjfx: for JavaFX GUI components support
+	provides = java-runtime=8
+	provides = java-runtime-openjdk=8
+	provides = jre8-openjdk=8.362.u09-1
+	conflicts = jre8-openjdk
+	replaces = jre8-openjdk-wm
+
+pkgname = jdk8-openjdk-xdg
+	pkgdesc = OpenJDK Java 8 development kit - with improved Support for the XDG Base Directory Specification
+	install = install_jdk8-openjdk.sh
+	depends = java-environment-common
+	depends = jre8-openjdk=8.362.u09-1
+	provides = java-environment=8
+	provides = java-environment-openjdk=8
+	provides = jdk8-openjdk=8.362.u09-1
+	conflicts = jdk8-openjdk
+	replaces = jdk8-openjdk-wm
+
+pkgname = openjdk8-src-xdg
+	pkgdesc = OpenJDK Java 8 sources - with improved Support for the XDG Base Directory Specification
+	provides = openjdk8-src=8.362.u09-1
+	conflicts = openjdk8-src
+
+pkgname = openjdk8-doc-xdg
+	pkgdesc = OpenJDK Java 8 documentation - with improved Support for the XDG Base Directory Specification
+	provides = openjdk8-doc=8.362.u09-1
+	conflicts = openjdk8-doc
