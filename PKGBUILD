@@ -1,4 +1,5 @@
-# Maintainer: Daniel Bermond < gmail-com: danielbermond >
+# Maintainer: Dominik Adrian Grzywak <starterx4 at gmail dot com>
+# Contributor Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=lib32-libumem-git
 _srcname=portableumem
