@@ -5,11 +5,11 @@
 
 _pkgname=renovate
 pkgname=${_pkgname}-git
-pkgver=34.146.0.r2.g35baf4aaa0
+pkgver=35.24.3.r1.g39493b7
 pkgrel=1
 pkgdesc="Renovate - Dependency update tool (git-latest)"
 arch=(any)
-depends=('nodejs>=14')
+depends=('nodejs>=18.12.0')
 makedepends=('git' 'yarn' 'npm' 'node-gyp')
 provides=("${_pkgname}")
 url="https://github.com/renovatebot/renovate"
@@ -21,11 +21,11 @@ build() {
   cd "${pkgname}"
 
   yarn version --no-git-tag-version --new-version "$(git describe --abbrev=0 --tags)"
-  yarn install --frozen-lockfile --ignore-engines
+  yarn install --frozen-lockfile
   yarn build
 
   # 'yarn install --prod' will prune dev packages
-  yarn install --prod --frozen-lockfile --ignore-engines
+  yarn install --prod --frozen-lockfile
 }
 
 package() {
@@ -46,5 +46,5 @@ package() {
 
 pkgver() {
   cd "${pkgname}"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
