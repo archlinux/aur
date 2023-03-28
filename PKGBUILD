@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname=gopeed-bin
 _pkgname=gopeed
+pkgname="${_pkgname}-bin"
 pkgver=1.2.3
-pkgrel=3
+pkgrel=4
 pkgdesc="High speed downloader that supports all platforms."
 arch=('x86_64')
 url="https://gopeed.com/"
@@ -10,21 +10,18 @@ _githuburl="https://github.com/GopeedLab/gopeed"
 license=('GPL3')
 options=()
 providers=(GopeedLab)
-conflicts=(gopeed)
-depends=(at-spi2-core gtk3)
+conflicts=("${_pkgname}")
+depends=(at-spi2-core gtk3 glibc cairo hicolor-icon-theme gdk-pixbuf2 harfbuzz pango gcc-libs libepoxy glib2)
 source=("${_pkgname}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/Gopeed-v${pkgver}-linux-amd64.deb")
-sha512sums=('dc651692611357e20edc866945012c5712527882a9f384fe3e96c756eb425d0fb302d2e6702fe147700386f3a865436827f9bb91343cccbadfe6607af6d346b3')
- 
+sha256sums=('88d13aee095941160097a763f6f1b0d2b5fa18e0edeb3ccfb9867db4f1ffebcb')
+
 package() {
-    bsdtar -xf data.tar.zst -C "${pkgdir}"
-    chown -R root:root "${pkgdir}/"
-    mkdir -p "${pkgdir}/opt"
+    bsdtar -xf data.tar.zst -C "${pkgdir}" --uname root --gname root
+    install -Dm755 -d "${pkgdir}/opt"
     mv "${pkgdir}/usr/local/lib/${_pkgname}" "${pkgdir}/opt"    
-    rm -r "${pkgdir}/usr/local"
-    sed 's/TryExec=/#TryExec=/g;s/Exec=/#Exec/g;s/Categories/#Categories/g' -i "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-    echo -e "\nCategories=Network;Utility;" >> "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-    echo "Icon=${_pkgname}" >> "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-    echo "Exec=/opt/${_pkgname}/${_pkgname}" >> "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    rm -rf "${pkgdir}/usr/local"
+    sed 's/Utility/Network;Utility;/g;s/\/usr\/local\/lib\/gopeed\/gopeed/\/opt\/gopeed\/gopeed/g' -i "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    echo -e "\nIcon=${_pkgname}" >> "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
     install -Dm644 "${pkgdir}/usr/share/icons/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.png"
-    rm -r "${pkgdir}/usr/share/icons/${_pkgname}.png"
+    rm -rf "${pkgdir}/usr/share/icons/${_pkgname}.png"
 }
