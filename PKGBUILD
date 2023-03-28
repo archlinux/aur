@@ -1,6 +1,6 @@
 pkgname=node-hp-scan-to
-pkgver=1.3.0
-pkgrel=5
+pkgver=1.3.1
+pkgrel=0
 pkgdesc="Allow to send scan from HP All-in-One Printer to computer"
 arch=(any)
 url="https://github.com/manuc66/node-hp-scan-to"
@@ -10,7 +10,7 @@ makedepends=('npm' 'jq' 'moreutils')
 backup=('etc/node-hp-scan-to/default.json')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 noextract=(${pkgname}-${pkgver}.tgz)
-sha512sums=('a2e10830bbed2572633f21c336ef586d82f5b69b81e63d285ab651b903a2643e7203dc90ead90e3388145052a0a8c94ba7ed1f96021a0bd3f443fe021ad25dc4')
+sha512sums=('bf911d268c8b8c688edb673a058ba09f8eb1001e05ae5a33333bbb4dd2e587f0b7005d1468d88d4f1cee4e1eb5ac18443d0fe1feb72cf7f1ad06ccacd654ff0f')
 
 build() {
     cat > "$srcdir/$pkgname.service" <<EOF
