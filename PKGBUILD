@@ -2,8 +2,8 @@
 
 _pkgname="rock-paper-scissor"
 pkgname="${_pkgname}-git"
-pkgver=2.0.0
-pkgrel=3
+pkgver=3.0
+pkgrel=1
 pkgdesc="an rock paper scissor game for linux"
 arch=('any')
 url="https://github.com/kybe236/rock-paper-scissor"
