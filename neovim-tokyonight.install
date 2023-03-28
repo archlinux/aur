@@ -1,0 +1,9 @@
+post_install() {
+	echo ':: This plugin requires manual activation.'
+	echo ':: Please consult upstream documentation for instructions.'
+	echo ':: A copy has been installed under /usr/share/neovim-tokyonight-git/README.md for your reference.'
+}
+
+post_remove() {
+	echo ":: Remember to remove all references to this plugin from your init scripts."
+}
