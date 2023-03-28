@@ -1,0 +1,14 @@
+#compdef ehh
+_ehh() {
+    local -a ehh_commands
+    local -a ehh_aliases
+
+    ehh_commands=('add' 'get' 'help' 'ls' 'rm' 'run')
+    ehh_aliases=($(ehh ls | awk -F '  ' '{print $4}' | awk -F ' ' 'NF {print $1}'))
+
+    if [[ $words[2] != 'run' ]]; then
+        compadd $ehh_commands $ehh_aliases
+    else
+        compadd $ehh_aliases
+    fi
+}

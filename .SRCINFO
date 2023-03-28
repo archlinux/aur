@@ -1,0 +1,18 @@
+pkgbase = ehh
+	pkgdesc = Remember linux commands
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/lennardv2/ehh
+	arch = any
+	license = MIT
+	depends = python-colorama
+	depends = python-click
+	depends = python-yaml
+	source = https://github.com/lennardv2/ehh/archive/refs/tags/v1.1.1.tar.gz
+	source = ehh-LICENSE::https://raw.githubusercontent.com/lennardv2/ehh/main/LICENSE
+	source = _ehh
+	sha256sums = 5a6bc3a9c3ba20080cf666cc51e6006fddb16bcae449d0e4a0cb5aa592ce299e
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ehh
