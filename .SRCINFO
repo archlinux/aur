@@ -1,6 +1,6 @@
 pkgbase = calcmysky
 	pkgdesc = Simulator of light scattering by planetary atmospheres
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/10110111/CalcMySky
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = calcmysky
 	depends = eigen
 	depends = glm
 	depends = qt6-base
-	source = CalcMySky-0.2.1.tar.gz::https://github.com/10110111/CalcMySky/archive/v0.2.1.tar.gz
-	sha512sums = 3915b965ee656b259ce7f158dfdd3c9c11a6c3ff907307899ae55e88ad6c1ccfbec8e0a1f784f5232fb0cb2c8300422fa25b8b1d4d11639d3ebb8c76d67059e5
+	source = CalcMySky-0.3.0.tar.gz::https://github.com/10110111/CalcMySky/archive/v0.3.0.tar.gz
+	sha512sums = 529e9cd3d1e71e5ba3e910e9af44e5ddf1af105b499948325401faa9e0cf7911d8ef003570f5bb5395ff6954c37ae6fd7242eb1300f78636232d745012d495ef
 
 pkgname = calcmysky
