@@ -7,13 +7,13 @@
 _pkgname=teleport
 pkgname=teleport-bin
 pkgver=12.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('i386' 'x86_64' 'armv7h' 'aarch64')
-url="https://github.com/gravitational/teleport"
+url="https://goteleport.com/"
 license=('Apache')
-depends=()
 provides=('teleport' 'tctl' 'tsh' 'tbot')
+conflicts=('teleport')
 install=teleport.install
 
 source=("teleport.service"
@@ -40,7 +40,7 @@ sha256sums_aarch64=('175cc817dd75469b923d4cd6bb24c3df629d95dba3b4eb684c4f8698667
 options=(!strip)
 
 package() {
-    cd "${srcdir}/${_pkgname}"
+    cd "${_pkgname}"
 
     # Install binaries
     install -Dm755 teleport "${pkgdir}/usr/bin/teleport"
