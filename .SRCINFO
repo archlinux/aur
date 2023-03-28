@@ -1,0 +1,23 @@
+pkgbase = flomo-pake
+	pkgdesc = Use Pake to package Flomo.浮墨笔记,像发微博一样记笔记,记录你想法的川流.全平台覆盖,还支持微信服务号输入.
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://flomoapp.com/
+	arch = x86_64
+	license = custom
+	depends = hicolor-icon-theme
+	depends = gcc-libs
+	depends = glib2
+	depends = pango
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = glibc
+	depends = cairo
+	depends = webkit2gtk
+	conflicts = flomo
+	source = flomo-1.0.8.deb::https://github.com/tw93/Pake/releases/download/V1.0.8/Flomo_x86_64.deb
+	source = LICENSE::https://help.flomoapp.com/legal/
+	sha256sums = 3e46d347ae7696019ba006a809bbbc701f5ea3b23935f7266df57f9708a25b2f
+	sha256sums = c73f9b584e1b15ae5587fb9180ba45c1090b9e247f63c3abd45869ce0de33d78
+
+pkgname = flomo-pake
