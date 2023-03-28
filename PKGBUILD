@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=notesnook
 pkgname="${_pkgname}-appimage"
-pkgver=2.4.5
+pkgver=2.4.6
 pkgrel=1
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote."
 arch=('x86_64')
@@ -13,14 +13,12 @@ providers=("${_pkgname}")
 depends=(hicolor-icon-theme zlib glibc)
 options=(!strip)
 _install_path="/opt/appimages"
-source=(
-  "${_pkgname}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname}_linux_x86_64.AppImage"
-)
-sha256sums=('c816c20a38d0a78c690bdf3f3d3c3de3268712b8f816e6bbbbd5f60a6675df5c')
+source=("${_pkgname}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname}_linux_x86_64.AppImage")
+sha256sums=('efdaed9ad186dc64a6bdb5e5b9568fd77013559ff0ecd6654cfd0e528f03e1c5')
     
 prepare() {
     chmod a+x "${_pkgname}-${pkgver}.AppImage"
-    ./"${_pkgname}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    "./${_pkgname}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed 's/AppRun/\/opt\/appimages\/notesnook.AppImage/g' -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
 }
     
