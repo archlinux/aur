@@ -1,15 +1,19 @@
 pkgbase = yesplaymusic-appimage
 	pkgdesc = 高颜值的第三方网易云播放器，支持 Windows / macOS / Linux。
 	pkgver = 0.4.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://music.qier222.com/
 	arch = x86_64
 	license = MIT
 	depends = hicolor-icon-theme
 	depends = glibc
 	depends = zlib
+	provides = qier222
+	conflicts = yesplaymusic
 	options = !strip
 	source = yesplaymusic-0.4.7.AppImage::https://github.com/qier222/YesPlayMusic/releases/download/v0.4.7/YesPlayMusic-0.4.7.AppImage
+	source = LICENSE::https://github.com/qier222/YesPlayMusic/raw/master/LICENSE
 	sha256sums = cb4876bbf938502acac84ff68febc863e2bcdf9a5e4a4b964e17309b7ee3704e
+	sha256sums = 58ca0d87d53ea8afd6fed7b393eaf30060034debe576c44ce7a9e4111668dd65
 
 pkgname = yesplaymusic-appimage
