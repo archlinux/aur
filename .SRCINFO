@@ -1,6 +1,6 @@
 pkgbase = quisk
-	pkgdesc = QUISK is a Software Defined Radio (SDR) transceiver that can control various radio hardware.
-	pkgver = 4.2.14
+	pkgdesc = Software Defined Radio (SDR) transceiver that can control various radio hardware.
+	pkgver = 4.2.17
 	pkgrel = 1
 	url = http://james.ahlstrom.name/quisk/
 	arch = x86_64
@@ -17,12 +17,11 @@ pkgbase = quisk
 	depends = fftw
 	depends = python-pyserial
 	optdepends = codec2: Enable FreeDV open digital voice codec
-	optdepends = wdsp: Use high performance DSP library
 	optdepends = soapysdr: Enable SoapySDR support
-	source = quisk-4.2.14.tar.gz::https://pypi.io/packages/source/q/quisk/quisk-4.2.14.tar.gz
+	source = quisk-4.2.17.tar.gz::https://pypi.io/packages/source/q/quisk/quisk-4.2.17.tar.gz
 	source = icon.png
 	source = quisk.desktop
-	sha256sums = 03fba8bed9b6fe21528da6533b49d4f7ac83e902f71bace2ae3511144b9baa83
+	sha256sums = 785ff7fbec111b426e9554d3f86bedaa57813e4ccb4997aef917c70c8d717ce6
 	sha256sums = a20dd6847c4554d79606cc86a1514671cbc2ef9d472d43e9c1b9d8d09665fbc8
 	sha256sums = 634f37687447651cd09d82583ce4a0ef5d39968f92b04671e3fbe6bbadf466a9
 
