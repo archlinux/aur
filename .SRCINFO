@@ -13,11 +13,13 @@ pkgbase = flightcore-bin
 	options = !strip
 	source = https://github.com/R2NorthstarTools/FlightCore/releases/download/v1.11.1/flight-core_1.11.1_amd64.AppImage
 	source = https://raw.githubusercontent.com/R2NorthstarTools/FlightCore/3529654c9c84342c3273302a6cc684916358315b/LICENSE
-	source = https://raw.githubusercontent.com/R2NorthstarTools/FlightCore/3529654c9c84342c3273302a6cc684916358315b/docs/FAQ.md
 	source = https://raw.githubusercontent.com/R2NorthstarTools/FlightCore/3529654c9c84342c3273302a6cc684916358315b/README.md
+	source = https://raw.githubusercontent.com/R2NorthstarTools/FlightCore/3529654c9c84342c3273302a6cc684916358315b/docs/DEVELOPMENT.md
+	source = https://raw.githubusercontent.com/R2NorthstarTools/FlightCore/3529654c9c84342c3273302a6cc684916358315b/docs/FAQ.md
 	sha256sums = b436f5baa0af6d25d4ae3d72773fc356b840fcb4da8b88fe83b2183dd83b10e6
-	sha256sums = b0c734c05a4fd65d214cd1791dfe1c039c8b5181354f83ad7f32df1a7872a959
-	sha256sums = 81cb78d9804d74bcf3f11ebf22cfd04c8d3fb747c6b986c9fd610161efb1c855
-	sha256sums = f51bee45f886b888ea7b9d3b22f5ddb37ebe7f6377a655711ddcce50ee83b686
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = flightcore-bin

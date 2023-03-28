@@ -17,12 +17,14 @@ _desktop=flightcore.desktop
 _url2=https://raw.githubusercontent.com/R2NorthstarTools/FlightCore/3529654c9c84342c3273302a6cc684916358315b
 source=("$url/releases/download/v$pkgver/flight-core_${pkgver}_amd64.AppImage"
         "$_url2/LICENSE"
-        "$_url2/docs/FAQ.md"
-        "$_url2/README.md")
+        "$_url2/README.md"
+        "$_url2/docs/DEVELOPMENT.md"
+        "$_url2/docs/FAQ.md")
 sha256sums=('b436f5baa0af6d25d4ae3d72773fc356b840fcb4da8b88fe83b2183dd83b10e6'
-            'b0c734c05a4fd65d214cd1791dfe1c039c8b5181354f83ad7f32df1a7872a959'
-            '81cb78d9804d74bcf3f11ebf22cfd04c8d3fb747c6b986c9fd610161efb1c855'
-            'f51bee45f886b888ea7b9d3b22f5ddb37ebe7f6377a655711ddcce50ee83b686')
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 prepare() {
   # Create a shortcut
@@ -45,7 +47,7 @@ prepare() {
 package() {
   install -Dm644 squashfs-root/usr/share/icons/hicolor/256x256@2/apps/flight-core.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
   install -Dm644 $_desktop "$pkgdir/usr/share/applications/$_desktop"
-  install -Dm644 FAQ.md README.md -t "$pkgdir/usr/share/doc/$_pkgname"
+  install -Dm644 DEVELOPMENT.md FAQ.md README.md -t "$pkgdir/usr/share/doc/$_pkgname"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
   install -Dm755 flight-core_${pkgver}_amd64.AppImage "$pkgdir/usr/bin/$_pkgname"
 }
