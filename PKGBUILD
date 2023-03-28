@@ -3,14 +3,14 @@
 
 pkgname=aimp
 pkgver=5.11
-pkgrel=2421
+pkgrel=2425
 url="https://www.aimp.ru/"
 pkgdesc="AIMP (on Wine) is powerful free audio player."
 arch=('x86_64')
 license=('custom')
 depends=('wine') 
 source=("https://www.aimp.ru/files/linux/aimp_${pkgver}-${pkgrel}_amd64.deb")
-md5sums=('7f285180690ada562c0ef4501b039a1b')
+md5sums=('bb5927d69121f175b093da91bb32d18b')
 
 build(){
    cd "${srcdir}"
