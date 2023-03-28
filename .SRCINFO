@@ -1,0 +1,13 @@
+pkgbase = dotris
+	pkgdesc = A mini Tetris game made with dots
+	pkgver = 173a54e
+	pkgrel = 1
+	url = https://github.com/trevarj/dotris
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = ncurses
+	source = git+https://github.com/trevarj/dotris
+	sha256sums = SKIP
+
+pkgname = dotris
