@@ -1,9 +1,9 @@
-# Maintainer: dreieck (https://aur.archlinux.org/account/dreieck)
+# Contributor: dreieck (https://aur.archlinux.org/account/dreieck)
 
 _pkgname=edgegpt
 pkgname="${_pkgname}-git"
 pkgver=0.1.12.1.r217.20230329.333770f
-pkgrel=2
+pkgrel=3
 pkgdesc="The reverse engineering the chat feature of the new version of Bing."
 arch=(
   'any'

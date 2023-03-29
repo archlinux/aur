@@ -1,7 +1,7 @@
 pkgbase = edgegpt-git
 	pkgdesc = The reverse engineering the chat feature of the new version of Bing.
 	pkgver = 0.1.12.1.r217.20230329.333770f
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/acheong08/EdgeGPT
 	arch = any
 	license = custom: public domain
