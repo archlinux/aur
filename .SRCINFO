@@ -11,7 +11,7 @@ pkgbase = hatt-bin
 	source = https://raw.githubusercontent.com/FrenchGithubUser/Hatt/main/.pkg/hatt-bin.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
-	source_x86_64 = https://github.com/FrenchGithubUser/Hatt/releases/download/0.1.1/hatt-linux-x86_64
+	source_x86_64 = https://github.com/FrenchGithubUser/Hatt/releases/download/0.1.1/hatt-linux-amd64
 	sha256sums_x86_64 = SKIP
 
 pkgname = hatt-bin
