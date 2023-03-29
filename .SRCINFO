@@ -1,7 +1,7 @@
 pkgbase = kiconthemes-git
 	pkgdesc = Support for icon themes
-	pkgver = 5.240.0_r679.g4bdcd81
-	pkgrel = 2
+	pkgver = 5.240.0_r687.g707d386
+	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
 	groups = kf6-git
@@ -10,6 +10,7 @@ pkgbase = kiconthemes-git
 	makedepends = extra-cmake-modules-git
 	makedepends = doxygen
 	makedepends = qt6-tools
+	makedepends = qt6-wayland
 	depends = qt6-5compat
 	depends = qt6-svg
 	depends = kconfigwidgets-git

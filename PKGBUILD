@@ -3,14 +3,14 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kiconthemes-git
-pkgver=5.240.0_r679.g4bdcd81
-pkgrel=2
+pkgver=5.240.0_r687.g707d386
+pkgrel=1
 pkgdesc='Support for icon themes'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(qt6-5compat qt6-svg kconfigwidgets-git kitemviews-git karchive-git)
-makedepends=(git extra-cmake-modules-git doxygen qt6-tools)
+makedepends=(git extra-cmake-modules-git doxygen qt6-tools qt6-wayland)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 optdepends=('breeze-icons-git: fallback icon theme')
