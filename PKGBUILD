@@ -1,6 +1,5 @@
-# Maintainer: Anthony Ruhier <anthony.ruhier@gmail.com>
-# Many thanks to Justin Dray, maintainer of sickrage, for his PKGBUILD used as
-# a base for this one.
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Anthony Ruhier <anthony.ruhier@gmail.com>
 pkgname=headphones
 pkgver=0.6.0
 pkgrel=2
