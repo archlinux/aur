@@ -2,14 +2,14 @@
 _pkgname=houdunren-camera
 pkgname="${_pkgname}-appimage"
 pkgver=1.0.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop camera software that can be used for online live streaming, distance learning, and video conferencing.桌面摄像头软件，可用于在线直播、远程教学、视频会议"
 arch=('x86_64')
 url="https://www.houdunren.com/"
 _githuburl="https://github.com/houdunwang/camera"
 license=(MIT)
 depends=(hicolor-icon-theme zlib glibc)
-mkdenpends=('nodejs >=16.4' pnpm)
+mkdenpends=('nodejs >=16.4' npm pnpm)
 options=(!strip)
 provides=(houdunwang)
 conflicts=("${_pkgname}")
