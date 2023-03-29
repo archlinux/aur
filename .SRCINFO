@@ -1,7 +1,7 @@
 pkgbase = r-splines2
 	pkgdesc = Regression Spline Functions and Classes
 	pkgver = 0.4.8
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=splines2
 	arch = x86_64
 	license = GPL
@@ -9,6 +9,7 @@ pkgbase = r-splines2
 	depends = r-rcpp
 	depends = r-rcpparmadillo
 	optdepends = r-knitr
+	optdepends = r-rcpparmadillo
 	optdepends = r-rmarkdown
 	optdepends = r-tinytest
 	source = https://cran.r-project.org/src/contrib/splines2_0.4.8.tar.gz

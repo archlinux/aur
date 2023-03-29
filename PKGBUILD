@@ -4,7 +4,7 @@ _pkgname=splines2
 _pkgver=0.4.8
 pkgname=r-${_pkgname,,}
 pkgver=0.4.8
-pkgrel=1
+pkgrel=3
 pkgdesc='Regression Spline Functions and Classes'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,6 +16,7 @@ depends=(
 )
 optdepends=(
   r-knitr
+  r-rcpparmadillo
   r-rmarkdown
   r-tinytest
 )
