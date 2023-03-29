@@ -1,0 +1,22 @@
+--- OrcaSlicer/CMakeLists.txt.orig	2023-03-17 22:30:57.000000000 +0800
++++ OrcaSlicer/CMakeLists.txt	2023-03-19 18:52:11.723560182 +0800
+@@ -697,14 +697,16 @@
+     install(DIRECTORY "${SLIC3R_RESOURCES_DIR}/" DESTINATION "${CMAKE_INSTALL_PREFIX}/resources")
+ elseif (SLIC3R_FHS)
+     # CMAKE_INSTALL_FULL_DATAROOTDIR: read-only architecture-independent data root (share)
+-    set(SLIC3R_FHS_RESOURCES "${CMAKE_INSTALL_FULL_DATAROOTDIR}/OrcaSlicer")
+-    install(DIRECTORY ${SLIC3R_RESOURCES_DIR}/ DESTINATION ${SLIC3R_FHS_RESOURCES}
++    # set(SLIC3R_FHS_RESOURCES "${CMAKE_INSTALL_FULL_DATAROOTDIR}/OrcaSlicer")
++    set(SLIC3R_FHS_RESOURCES "/usr/share/OrcaSlicer")
++    # install(DIRECTORY ${SLIC3R_RESOURCES_DIR}/ DESTINATION ${SLIC3R_FHS_RESOURCES}
++    install(DIRECTORY ${SLIC3R_RESOURCES_DIR}/ DESTINATION "${CMAKE_INSTALL_PREFIX}/share/OrcaSlicer"
+         PATTERN "*/udev" EXCLUDE
+     )
+     install(FILES src/platform/unix/OrcaSlicer.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications)
+     foreach(SIZE 32 128 192)
+         install(FILES ${SLIC3R_RESOURCES_DIR}/images/BambuStudio_${SIZE}px.png
+-            DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/${SIZE}x${SIZE}/apps RENAME BambuStudio.png
++            DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/${SIZE}x${SIZE}/apps RENAME OrcaSlicer.png
+         )
+     endforeach()
+ elseif (CMAKE_MACOSX_BUNDLE)

@@ -1,0 +1,11 @@
+--- OrcaSlicer/src/platform/unix/OrcaSlicer.desktop.orig	2023-03-17 22:30:57.000000000 +0800
++++ OrcaSlicer/src/platform/unix/OrcaSlicer.desktop	2023-03-19 18:56:48.214899627 +0800
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Name=OrcaSlicer
+ GenericName=3D Printing Software
+-Icon=BambuStudio
++Icon=OrcaSlicer
+ Exec=orca-slicer %F
+ Terminal=false
+ Type=Application
