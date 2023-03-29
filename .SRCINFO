@@ -1,0 +1,27 @@
+pkgbase = r-rpostgres
+	pkgdesc = Rcpp Interface to PostgreSQL
+	pkgver = 1.4.5
+	pkgrel = 1
+	url = https://cran.r-project.org/package=RPostgres
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = libpq.so
+	depends = r-bit64
+	depends = r-blob>=1.2.0
+	depends = r-dbi>=1.1.0
+	depends = r-hms>=1.1.0
+	depends = r-lubridate
+	depends = r-plogr>=0.0.2
+	depends = r-rcpp>=1.0.7
+	depends = r-withr
+	depends = r>=3.1.0
+	optdepends = r-callr
+	optdepends = r-covr
+	optdepends = r-dbitest>=1.7.2.9001
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/RPostgres_1.4.5.tar.gz
+	b2sums = e682c3f808d83c0cfc44dfe8a0cfc358666717135a5c09abadfed074f21008bd3531a188408515721127e0d029d84316110650832b72592bbcc3161e0d57f0e5
+
+pkgname = r-rpostgres
