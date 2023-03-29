@@ -19,7 +19,7 @@ source=("git+https://tildegit.org/solderpunk/molly-brown.git"
         "${_pkgname}.tmpfiles")
 sha256sums=('SKIP'
             '56468d70515e9a2bf2cfebd96f3ce253e7843910f531619125a553198b2b26c7'
-            'f80dc777d2b7d6f7bd199d47b7d74c6dc5880cf28e217ccb22fa277f8bb117e7'
+            'cfdb202c50d4141affc1669723bdb9876be60a1c7c82e9c2536695adab4e910c'
             'b026a6f0aee9d6c0a71ef702e59ba3c2b5f84a9e5ab77a17dfe3a28137be2ea8'
             '6154ecf97c4dba46065e00993e22b2b140608c25174c1b340123cedf220ba8c1')
 

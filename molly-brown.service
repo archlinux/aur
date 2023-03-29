@@ -4,7 +4,6 @@ After=network.target
 
 [Service]
 Type=simple
-Restart=always
 User=molly
 ExecStart=/usr/bin/molly-brown -c /etc/molly.conf
 
