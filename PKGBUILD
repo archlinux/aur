@@ -2,7 +2,7 @@
 # https://github.com/TD-Sky/PKGBUILDs
 
 pkgname=conceal
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Command line recycle bin"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('conceal-bin')
 depends=('skim')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('01cffed89ffecae0375ea0fd98b8c3105bf778e4d84e3705a58de4c8229a95b6')
+sha256sums=('565f82c8392dc715c41b10647f3b05caa5fc6081443808ecd9456c3d5ba4dfa8')
 
 prepare() {
   cd "$pkgname-$pkgver"
