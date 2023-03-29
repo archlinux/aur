@@ -1,13 +1,12 @@
 # Maintainer: Chance Chen <ufbycd@163.com>
 
 pkgname=eclipse-embedcpp
-pkgver=4.25
-_release=2022-09
-_src=$pkgname-$_release-R-linux-gtk-x86_64.tar.gz
+pkgver=4.27
+_release=2023-03
 pkgrel=1
-pkgdesc="Embedded C/C++ Development Environment(Chinese Mirror)"
+pkgdesc="Eclipse IDE for Embedded C/C++ Developers(Chinese Mirror)"
 arch=('x86_64')
-url="www.eclipse.org"
+url="https://www.eclipse.org"
 license=('EPL')
 groups=()
 depends=("java-runtime>=11" webkit2gtk unzip)
@@ -18,8 +17,10 @@ conflicts=()
 replaces=()
 backup=()
 options=(!strip)
+
+_src=$pkgname-$_release-R-linux-gtk-x86_64.tar.gz
 source=("$pkgname-$pkgver.tar.gz::https://mirrors.ustc.edu.cn/eclipse/technology/epp/downloads/release/$_release/R/$_src")
-md5sums=('71e73cba07f66b66f6707e262356774d')
+md5sums=('eac527a8fe89282a50c983ac3beb5a95')
 
 package() {
     install -d "$pkgdir/usr/share/$pkgname"
@@ -34,7 +35,7 @@ END
     install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop" <<END
 [Desktop Entry]
 Name=Eclipse-Embedcpp
-Comment=Embedded C/C++ Development Environment
+Comment=Eclipse IDE for Embedded C/C++ Developers
 Icon=/usr/share/$pkgname/icon.xpm
 Exec=/usr/share/$pkgname/eclipse
 Terminal=false

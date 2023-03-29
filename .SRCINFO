@@ -1,15 +1,15 @@
 pkgbase = eclipse-embedcpp
-	pkgdesc = Embedded C/C++ Development Environment(Chinese Mirror)
-	pkgver = 4.25
+	pkgdesc = Eclipse IDE for Embedded C/C++ Developers(Chinese Mirror)
+	pkgver = 4.27
 	pkgrel = 1
-	url = www.eclipse.org
+	url = https://www.eclipse.org
 	arch = x86_64
 	license = EPL
 	depends = java-runtime>=11
 	depends = webkit2gtk
 	depends = unzip
 	options = !strip
-	source = eclipse-embedcpp-4.25.tar.gz::https://mirrors.ustc.edu.cn/eclipse/technology/epp/downloads/release/2022-09/R/eclipse-embedcpp-2022-09-R-linux-gtk-x86_64.tar.gz
-	md5sums = 71e73cba07f66b66f6707e262356774d
+	source = eclipse-embedcpp-4.27.tar.gz::https://mirrors.ustc.edu.cn/eclipse/technology/epp/downloads/release/2023-03/R/eclipse-embedcpp-2023-03-R-linux-gtk-x86_64.tar.gz
+	md5sums = eac527a8fe89282a50c983ac3beb5a95
 
 pkgname = eclipse-embedcpp
