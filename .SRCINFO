@@ -1,0 +1,25 @@
+pkgbase = sylpheed-iconmod-git
+	pkgdesc = Lightweight e-mail client. Latest official beta with the coonsden.com icon theme.
+	pkgver = 3.8.c47d366a
+	pkgrel = 1
+	url = http://sylpheed.sraoss.jp/en/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = automake-1.15
+	depends = gpgme
+	depends = gtk2
+	depends = compface
+	depends = gtkspell
+	provides = sylpheed
+	conflicts = sylpheed
+	conflicts = sylpheed-beta
+	conflicts = sylpheed-beta-iconmod
+	options = libtool
+	source = sylpheed::git+https://github.com/sylpheed-mail/sylpheed.git
+	source = Sylpheed3.0_icon-set.tar.gz
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = sylpheed-iconmod-git
