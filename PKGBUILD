@@ -4,7 +4,7 @@
 pkgname=nextcloud-app-calendar_resource_management
 _name=calendar_resource_management
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Resource manager for nextcloud calendar app"
 arch=('any')
 url="https://github.com/nextcloud/calendar_resource_management"
@@ -12,12 +12,12 @@ license=('GPL')
 depends=('nextcloud')
 makedepends=('ripgrep' 'yq')
 options=('!strip')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/nextcloud/calendar_resource_management/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('848fe268925c53c674ec3635bca2d537e54f743f9a10e200c1009df08a418bb9')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/nextcloud-releases/calendar_resource_management/releases/download/v0.4.0/calendar_resource_management-v$pkgver.tar.gz")
+sha256sums=('71908ab16670180f074ff7066b560c72ddb5d2c041ef2326e02e1054ea2f4b2c')
 
 _get_nextcloud_versions() {
-  _app_min_major_version="$(xq '.info.dependencies.nextcloud["@min-version"]' "${_name}-$pkgver/appinfo/info.xml"| sed 's/"//g')"
-  _app_max_major_version="$(xq '.info.dependencies.nextcloud["@max-version"]' "${_name}-$pkgver/appinfo/info.xml"| sed 's/"//g')"
+  _app_min_major_version="$(xq '.info.dependencies.nextcloud["@min-version"]' "${_name}/appinfo/info.xml"| sed 's/"//g')"
+  _app_max_major_version="$(xq '.info.dependencies.nextcloud["@max-version"]' "${_name}/appinfo/info.xml"| sed 's/"//g')"
   _app_max_major_version=$(expr ${_app_max_major_version} + 1)
 }
 
@@ -38,5 +38,5 @@ package() {
   depends=("nextcloud>=${_app_min_major_version}" "nextcloud<${_app_max_major_version}")
 
   install -d "${pkgdir}"/usr/share/webapps/nextcloud/apps
-  cp -r "${srcdir}"/${_name}-$pkgver "${pkgdir}"/usr/share/webapps/nextcloud/apps/${_name}
+  cp -r "${srcdir}"/${_name} "${pkgdir}"/usr/share/webapps/nextcloud/apps/${_name}
 }
