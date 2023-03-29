@@ -1,14 +1,14 @@
 pkgname=hydroid-git
-pkgver=1.0.0.alpha1.r0.gb737561
+pkgver=1.0.0.alpha1.r3.gc78157d
 pkgrel=1
 pkgdesc="A Hydrus client."
 arch=('i686' 'x86_64')
-url="https://github.com/thatfuckingbird/hydroid"
+url="https://gitgud.io/thatfuckingbird/hydroid"
 license=('AGPL3')
 depends=('qt5-base' 'qt5-quickcontrols2' 'qt5-svg' 'qt5-graphicaleffects' 'qt5-imageformats')
 makedepends=('qt5-tools')
 provides=('hydroid')
-source=("$pkgname"::"git+https://github.com/thatfuckingbird/hydroid.git")
+source=("$pkgname"::"git+https://gitgud.io/thatfuckingbird/hydroid.git")
 sha512sums=('SKIP')
 
 pkgver() {
