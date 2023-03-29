@@ -1,7 +1,8 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=youki
-pkgver=0.0.4
+pkgver=0.0.5
+_commit='04de7bf3b144da81f991d5756d5b284d4c87cec3'
 pkgrel=1
 pkgdesc='A container runtime written in Rust'
 arch=('x86_64')
@@ -14,7 +15,6 @@ optdepends=(
   'podman: run via podman'
 )
 options=('!lto')
-_commit='174448ae372ad7e9d3a378c387238dc71688ad5a'
 source=("$pkgname::git+https://github.com/containers/youki.git#commit=$_commit")
 md5sums=('SKIP')
 
