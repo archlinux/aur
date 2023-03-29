@@ -1,7 +1,7 @@
 pkgbase = gtk4-telegrand
 	pkgdesc = GObject-based multi-platform GUI toolkit (Version required by Telegrand)
 	pkgver = 4.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gtk.org/
 	arch = i686
 	arch = x86_64
@@ -62,8 +62,10 @@ pkgbase = gtk4-telegrand
 	source = git+https://gitlab.gnome.org/GNOME/gtk.git#commit=d776ad789dfd4f69ae251dc8e6248e6ca30abd46
 	source = gtk-reversed-list-4.10.1.patch::https://raw.githubusercontent.com/melix99/telegrand/main/build-aux/gtk-reversed-list.patch
 	source = gtk4-querymodules.hook
+	source = gtk4-querymodules.script
 	sha256sums = SKIP
 	sha256sums = 4bf149a0f547747f13ffcd97f3160b6170dbfc4473d7d56d4f4c80eada4893c2
-	sha256sums = cd8e607eddd9941f279084e1d15309941423d26cca1897f43524a02e58e48816
+	sha256sums = a5074ffc057a3041a4f851b4b4674cfc21f3cb9cc90c5414c3e91816a5d205e9
+	sha256sums = 92d08db5aa30bda276bc3d718e7ff9dd01dc40dcab45b359182dcc290054e24e
 
 pkgname = gtk4-telegrand

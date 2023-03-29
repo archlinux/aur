@@ -3,7 +3,7 @@
 
 pkgname=gtk4-telegrand
 pkgver=4.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GObject-based multi-platform GUI toolkit (Version required by Telegrand)"
 url="https://www.gtk.org/"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -65,10 +65,11 @@ checkdepends=(weston)
 _commit=d776ad789dfd4f69ae251dc8e6248e6ca30abd46  # tags/4.10.1^0
 source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
         gtk-reversed-list-${pkgver}.patch::'https://raw.githubusercontent.com/melix99/telegrand/main/build-aux/gtk-reversed-list.patch'
-        gtk4-querymodules.hook)
+        gtk4-querymodules.{hook,script})
 sha256sums=('SKIP'
             '4bf149a0f547747f13ffcd97f3160b6170dbfc4473d7d56d4f4c80eada4893c2'
-            'cd8e607eddd9941f279084e1d15309941423d26cca1897f43524a02e58e48816')
+            'a5074ffc057a3041a4f851b4b4674cfc21f3cb9cc90c5414c3e91816a5d205e9'
+            '92d08db5aa30bda276bc3d718e7ff9dd01dc40dcab45b359182dcc290054e24e')
 
 pkgver() {
   cd gtk
@@ -113,6 +114,7 @@ gtk-font-name = Cantarell 11
 END
 
   install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 gtk4-querymodules.hook
+  install -D gtk4-querymodules.script "$pkgdir/usr/share/libalpm/scripts/gtk4-querymodules"
 }
 
 # vim:set sw=2 et:
