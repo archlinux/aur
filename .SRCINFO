@@ -1,6 +1,6 @@
 pkgbase = flyctl
 	pkgdesc = Command line tools for fly.io services
-	pkgver = 0.0.499
+	pkgver = 0.0.500
 	pkgrel = 1
 	url = https://github.com/superfly/flyctl
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = flyctl
 	makedepends = go
 	provides = flyctl
 	conflicts = flyctl
-	source = git+https://github.com/superfly/flyctl#commit=10c95df6dd1203ad8161a1f85e198be40f0e6c9b
+	source = git+https://github.com/superfly/flyctl#commit=f71fe0efcbdc3adc8f066c3d9a0d55f5225f1ffe
 	sha256sums = SKIP
 
 pkgname = flyctl
