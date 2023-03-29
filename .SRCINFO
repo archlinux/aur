@@ -1,15 +1,15 @@
 pkgbase = maya-substance
 	pkgdesc = Autodesk Maya Substance Plugin
-	pkgver = 2.3.1
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://www.substance3d.com/ecosystem-plug-ins/substance-in-maya
 	arch = x86_64
 	license = custom
-	depends = maya>=2023.0
-	depends = maya<2024.0
+	depends = maya>=2024.0
+	depends = maya<2025.0
 	optdepends = maya-arnold: Arnold renderer support
 	options = !strip
-	source = manual://AdobeSubstance3DforMaya-2.3.1-2023-Linux.rpm
-	sha256sums = 67d805279ba852a86bca9041be4506f46987143c551f22920ab522e997107443
+	source = manual://AdobeSubstance3DforMaya-2.3.2-2024-linux-x86_64.rpm
+	sha256sums = 7e68facba066f8980c39e2ada4169ffd7b6bfa6fb899a986835ff0afd7ea1ef0
 
 pkgname = maya-substance
