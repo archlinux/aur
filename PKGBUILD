@@ -5,7 +5,7 @@
 # Contributor: xyproto
 
 pkgname=ags
-pkgver=3.5.1.26
+pkgver=3.5.1.27
 pkgrel=1
 pkgdesc='Engine to run adventure/quest games'
 arch=('x86_64')
@@ -18,7 +18,7 @@ license=('Artistic2.0')
 depends=('dumb-a4' 'libtheora' 'freetype2' 'sdl2' 'alsa-lib' 'jack' 'libx11' 'libxext' 'libxcursor' 'libxpm' 'libxxf86vm')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/adventuregamestudio/ags/archive/v.$pkgver.tar.gz")
-sha256sums=('5b172efcb200839a6d4c81ff376da42d2a404931c9759332c8d5183d5f9e23e0')
+sha256sums=('bfd486846b8162965f952aad1ff5bf221e3a98ec462678af4c0b6b6a2123ac0f')
 
 _srcdir="$pkgname-v.$pkgver"
 
