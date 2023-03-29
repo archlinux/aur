@@ -2,7 +2,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=readxl
-_cranver=1.4.1
+_cranver=1.4.2
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=(GPL3)
 depends=(r r-cellranger 'r-cpp11>=0.4.0' 'r-tibble>=1.3.1' r-progress)
 optdepends=(r-covr r-knitr r-rmarkdown r-rprojroot r-testthat)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('f6bebb7f940fb21baacd60345b7075c77eb1d026466c55e6a36148de680da1fa')
+sha256sums=('387304e2c5be0dca4861ec0232f0d92cc1882b660ca917f8f2a8a4ae858aba11')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
