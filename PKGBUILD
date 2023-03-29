@@ -1,19 +1,19 @@
 # Maintainer: William Tang <galaxyking0419@gmail.com>
 
-_mayaver=2023
+_mayaver=2024
 
 pkgname=maya-bifrost
-pkgver=2.5.1.0
+pkgver=2.7.0.0
 pkgrel=1
 pkgdesc='Autodesk Maya Bifrost Plugin'
 arch=('x86_64')
 url='https://area.autodesk.com/bifrost/'
 license=('custom')
-depends=('maya>=2023' 'maya<2024.0')
+depends=('maya>=2024' 'maya<2025.0')
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from the official website')
 source=("manual://Bifrost$_mayaver-$pkgver-$pkgver-1.x86_64.rpm")
-sha256sums=('0f50176d10157b09a0e4e2fe48fc3cf82571f7e5b8824b278c1eeccfc7d1abbe')
+sha256sums=('a4edf6801d6148530f5dbaa72afb621cccd3a80d4d4722072c545418863c098a')
 
 options=(!strip)
 
