@@ -1,32 +1,33 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-lucid-git
-pkgver=27.0.50.r136622
+pkgver=30.0.50.165672
 pkgrel=1
 pkgdesc="GNU Emacs. Official git master."
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
 license=('GPL')
-depends=('alsa-lib' 'gpm' 'hicolor-icon-theme' 'm17n-lib' 'libxrandr'
+depends=('alsa-lib' 'gpm' 'hicolor-icon-theme' 'libxrandr'
 	 'libxinerama' 'librsvg' 'gnutls' 'xaw3d' 'libdbus' 'libxfixes'
-	 'jansson' 'libmagick' 'desktop-file-utils')
+	 'jansson' 'desktop-file-utils')
 makedepends=('git' 'texlive-core')
 conflicts=('emacs')
 options=('docs' '!emptydirs')
 provides=('emacs' 'emacs-seq')
-source=("git://git.savannah.gnu.org/emacs.git")
+source=("emacs-git::git+https://git.savannah.gnu.org/git/emacs.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd emacs
-  _mainver=$(grep AC_INIT configure.ac | sed -e 's/^.\+\ \([0-9]\+\.[0-9]\+\.[0-9]\+\).\+$/\1/')
-  printf "%s.r%s" "$(echo $_mainver)" "$(git rev-list --count HEAD)"
+  cd emacs-git
+  printf "%s.%s" \
+    $(grep AC_INIT configure.ac | \
+    awk -F',' '{ gsub("[ \\[\\]]","",$2); print $2 }') \
+    $(git rev-list --count HEAD)
 }
   
 build() {
-  cd emacs
+  cd emacs-git
   [[ -x configure ]] || ( ./autogen.sh git && ./autogen.sh autoconf )
-  ac_cv_lib_gif_EGifPutExtensionLast=yes PKG_CONFIG_PATH="/usr/lib/imagemagick/pkgconfig" \
     ./configure --program-transform-name='s/^ctags$/ctags.emacs/' \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -36,20 +37,23 @@ build() {
     --mandir=/usr/share/man \
     --pdfdir=/usr/share/doc/emacs \
     --with-modules \
-    --with-xft \
+    --with-cairo \
+    --without-xft \
     --without-gconf \
     --without-gsettings \
-    --with-imagemagick \
+    --without-imagemagick \
     --without-xwidgets \
     --without-pop \
+    --with-sqlite3 \
     --with-gameuser=:games \
+    --with-native-compilation \
     --disable-build-details
-  make
-  make pdf
+    make trampolines
+    make pdf
 }
 
 package() {
-  cd emacs
+  cd emacs-git
   _mainver=$(grep AC_INIT configure.ac | sed -e 's/^.\+\ \([0-9]\+\.[0-9]\+\.[0-9]\+\).\+$/\1/')
   make DESTDIR="$pkgdir/" install install-pdf
   # fix user/root permissions on usr/share files
