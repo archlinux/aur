@@ -5,7 +5,7 @@
 
 # Maintainer: Asuka Minato <asukaminato at nyan dot eu dot org>
 pkgname=llama-rs-git
-pkgver=r121.6403f09
+pkgver=r157.a067431
 pkgrel=1
 epoch=
 pkgdesc="Run LLaMA inference on CPU, with Rust 🦀🚀🦙"
@@ -13,7 +13,7 @@ arch=(any)
 url="https://github.com/setzer22/llama-rs"
 license=('MIT')
 groups=()
-depends=()
+depends=(glibc gcc-libs)
 makedepends=(git cargo)
 checkdepends=()
 optdepends=()
