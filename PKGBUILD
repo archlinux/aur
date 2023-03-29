@@ -2,8 +2,8 @@
 # Maintainer: Aloso <ludwig.stecher@gmx.de>
 
 pkgname=to-html
-pkgver=0.1.3
-pkgrel=2
+pkgver=0.1.4
+pkgrel=1
 pkgdesc='Render a terminal with ANSI colors as HTML'
 arch=(x86_64)
 url="https://github.com/Aloso/$pkgname"
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(util-linux)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('41add7087f5da43463cdc9a688e5e540743cd1f1ec4cbd7db7e3f03d78bc59d582ca06c7d949396b0d776c05414252e8f7d7d0294f9bd13274a96fd86167838d')
+sha512sums=('2d4a18cce32f22318dff7b7fdf82ea2267a1cd1c23b9d8c59213df3e188a71fa263db43c6b2bf1c78eed6164ac86cda80db4648e37858cfc2916cbc0b7868294')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
