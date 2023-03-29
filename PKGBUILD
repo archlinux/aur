@@ -4,7 +4,7 @@
 pkgname=vim-gutentags-git
 _pkg="${pkgname%-git}"
 pkgver=1.0.0.r77.g1337b18
-pkgrel=1
+pkgrel=2
 pkgdesc='A Vim plugin that manages your tag files'
 arch=('any')
 url='https://github.com/ludovicchabant/vim-gutentags'
@@ -12,6 +12,8 @@ license=('MIT')
 groups=('vim-plugins')
 depends=('vim-plugin-runtime')
 makedepends=('git')
+provides=("$_pkg")
+conflicts=("$_pkg")
 source=("$_pkg::git+$url")
 md5sums=('SKIP')
 
