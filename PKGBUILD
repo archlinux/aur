@@ -2,9 +2,9 @@
 # Contributor: etriguba <eugenetriguba@gmail.com>
 # Contributor: NexAdn <nexadn@yandex.com>
 pkgname=cef-standard
-pkgver="99.2.14"
-_pkgcommit="g3f796b8"
-_chromiumver="99.0.4844.84"
+pkgver="101.0.16"
+_pkgcommit="g31bd240"
+_chromiumver="101.0.4951.64"
 _pkgver="${pkgver}+${_pkgcommit}+chromium-${_chromiumver}"
 _url_pkgver="${pkgver}%2B${_pkgcommit}%2Bchromium-${_chromiumver}"
 pkgrel=1
@@ -25,8 +25,8 @@ source_x86_64=(
   "${cdn_build_package_url}/cef_binary_${_url_pkgver}_linux64.tar.bz2"
 )
 
-sha1sums_i686=("0c2d68b2c9853cafb368111d05b185367f40b0ee")
-sha1sums_x86_64=("55d72f6bf9b56d0d8e6742fe3ba82b595f40fa0c")
+sha1sums_i686=("e4224598cbfe3c14564d63f2f427409b1f92073f")
+sha1sums_x86_64=("29edf263b0d5555f4c678289d44a8f91f3be040a")
 
 [[ "$CARCH" = "i686" ]] && _arch="32"
 [[ "$CARCH" = "x86_64" ]] && _arch="64"
