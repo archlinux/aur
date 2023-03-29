@@ -51,8 +51,8 @@ if [[ -z "$FFMPEG_OBS_VULKAN" ]]; then
 fi
 
 pkgname=ffmpeg-obs
-pkgver=6
-pkgrel=4
+pkgver=6.0.r11.g3980415
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('i686' 'x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -158,8 +158,8 @@ provides=(
   libswscale.so
 )
 conflicts=(ffmpeg)
-_tag=ea3d24bbe3c58b171e55fe2151fc7ffaca3ab3d2
-_deps_tag=2022-08-02
+_tag=3980415627a187d188dc25669cea6b12912eb178
+_deps_tag=2023-03-20
 source=(
   "ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}"
   "obs-deps::git+https://github.com/obsproject/obs-deps.git#tag=${_deps_tag}"
@@ -403,7 +403,7 @@ prepare() {
   # This patch applies:
   #  - Fix decoding of certain malformed FLV files
   #  - Add additional CPU levels for libaom
-  patch -Np1 -i "${srcdir}"/obs-deps/deps.ffmpeg/patches/FFmpeg/0002-FFmpeg-5.0.1-OBS.patch
+  patch -Np1 -i "${srcdir}"/obs-deps/deps.ffmpeg/patches/FFmpeg/0001-FFmpeg-6.0-OBS.patch
 
   ### Package features changes
 
