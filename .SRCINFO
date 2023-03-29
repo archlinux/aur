@@ -1,0 +1,12 @@
+pkgbase = keyb
+	pkgdesc = Create and view your own custom hotkey cheatsheet in the terminal
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/kencx/keyb
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = keyb-0.3.0.tar.gz::https://github.com/kencx/keyb/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = cc1180ee0fa93bc4c65ce911939ac51bef5c98206151495cff0232a45877b391
+
+pkgname = keyb
