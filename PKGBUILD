@@ -5,13 +5,13 @@
 # - veger
 pkgname=capt-src
 pkgver=2.71
-pkgrel=3
+pkgrel=4
 pkgdesc="Canon CAPT Printer Driver for Linux. Compiled from source code."
 arch=('i686' 'x86_64')
 url='http://support-asia.canon-asia.com/'
 license=('custom')
 depends=('cups' 'glib2' 'libglade' 'gtk2' 'atk' 'libxml2' 'popt' 'ghostscript')
-depends_x86_64=('lib32-libxml2' 'lib32-popt' 'lib32-gcc-libs')
+depends_x86_64=('lib32-libxml2' 'lib32-popt' 'lib32-gcc-libs' 'lib32-libcups' 'lib32-glibc')
 conflicts=('cndrvcups-lb' 'cndrvcups-lb' 'cndrvcups-common-lb')
 install=${pkgname}.install
 _tardir=linux-capt-drv-v271-uken
