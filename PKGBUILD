@@ -40,7 +40,7 @@ depends=('python'
        # 'python-pywavelets' # AUR (from scikit-image)
          'python-tifffile>=2020.2.16'  # AUR (from scikit-image)        
          'python-numba>=0.52'  # AUR (from python-sparse, but currently requires git version)
-         'python-llvmlite-git' # AUR (from python-numba, but currently requires git version)
+         'python-llvmlite' # AUR (from python-numba, but currently requires git version)
          )
 
 optdepends=('python-scikit-learn>=1.0.1: machine learning features'

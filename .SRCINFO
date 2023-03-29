@@ -41,7 +41,7 @@ pkgbase = python-hyperspy
 	depends = python-zarr
 	depends = python-tifffile>=2020.2.16
 	depends = python-numba>=0.52
-	depends = python-llvmlite-git
+	depends = python-llvmlite
 	optdepends = python-scikit-learn>=1.0.1: machine learning features
 	optdepends = python-hyperspy-gui-ipywidgets: GUI components for Jupyter
 	optdepends = python-hyperspy-gui-traitsui: GUI components for desktop
