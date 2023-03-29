@@ -4,7 +4,7 @@
 
 _pkgname=lammps
 pkgname=${_pkgname}-git
-pkgver=34715.7fbb609
+pkgver=35378.ff96eb2
 pkgrel=1
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
 url="https://lammps.sandia.gov/"
@@ -67,7 +67,6 @@ build() {
     -C ../cmake/presets/basic.cmake \
       -D BUILD_SHARED_LIBS=on \
       -D LAMMPS_EXCEPTIONS=on \
-      -D PKG_PYTHON=on \
       -D PKG_PHONON=on \
     ../cmake \
     -DCMAKE_BUILD_TYPE=Release \
@@ -90,6 +89,7 @@ build() {
   sleep 1
 
   cmake --build . -j
+  make install-python
 }
 
 package() {
@@ -97,4 +97,12 @@ package() {
 
   cmake --install .
 
+  if (( $_INSTALL_EXAMPLES )) ; then
+    mkdir -p "${pkgdir}/usr/share/examples/lammps"
+    cp -r "../examples/." "${pkgdir}/usr/share/examples/lammps/"
+    find "${pkgdir}/usr/share/examples/lammps/" -type f -exec chmod 644 '{}' +
+  fi
+
+  install -Dm644 "../tools/vim/lammps.vim" "${pkgdir}/usr/share/vim/vimfiles/syntax/lammps.vim"
+  install -Dm644 "../tools/vim/filetype.vim" "${pkgdir}/usr/share/vim/vimfiles/ftdetect/lammps.vim"
 }
