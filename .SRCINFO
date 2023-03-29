@@ -1,0 +1,14 @@
+pkgbase = rexturl
+	pkgdesc = A simple tool in Rust to split urls in their protocol, host, port, path and query parts.
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/vschwaberow/rexturl
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = cargo
+	options = !lto
+	source = rexturl-0.2.2.tar.gz::https://github.com/vschwaberow/rexturl/archive/refs/tags/v0.2.2.tar.gz
+	sha256sums = ad0cf2a9b9a9d1b3e1f56a7bfb799fed405e83bf43714827c04441fc736c6088
+
+pkgname = rexturl
