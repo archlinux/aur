@@ -13,7 +13,7 @@
 # You can pass parameters to `ninja` via MAKEFLAGS
 
 pkgname=telegram-desktop-dev
-pkgver=4.6.9
+pkgver=4.7.1
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
