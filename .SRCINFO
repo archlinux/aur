@@ -1,6 +1,6 @@
 pkgbase = python-uncompyle6
 	pkgdesc = Python byte-code disassembler and source-code converter.
-	pkgver = 3.8.0
+	pkgver = 3.9.0
 	pkgrel = 1
 	url = https://github.com/rocky/python-uncompyle6/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-uncompyle6
 	depends = python-spark-parser<1.9.0
 	depends = python-xdis>=6.0.2
 	depends = python-xdis<6.1.0
-	source = https://files.pythonhosted.org/packages/source/u/uncompyle6/uncompyle6-3.8.0.tar.gz
-	sha256sums = 620633618f6dfc1f3e78187e220934d78ffc639c0e39daeca1fc535aab817014
+	source = https://files.pythonhosted.org/packages/source/u/uncompyle6/uncompyle6-3.9.0.tar.gz
+	sha256sums = 1e6a902de60ea5c3f7d2af7e2745006b4e4b9bdede888a07f8441c9938f2ee7d
 
 pkgname = python-uncompyle6
