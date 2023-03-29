@@ -1,0 +1,34 @@
+pkgbase = r-lahman
+	pkgdesc = Sean ‘Lahman’ Baseball Database
+	pkgver = 10.0.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=Lahman
+	arch = any
+	license = GPL2
+	license = GPL3
+	checkdepends = r-car
+	checkdepends = r-data.table
+	checkdepends = r-ggplot2
+	checkdepends = r-googlevis
+	checkdepends = r-knitr
+	checkdepends = r-lattice
+	checkdepends = r-reshape2
+	checkdepends = r-rmarkdown
+	checkdepends = r-tidyr
+	checkdepends = r-vcd
+	depends = r-dplyr
+	depends = r>=3.5.0
+	optdepends = r-car
+	optdepends = r-data.table
+	optdepends = r-ggplot2
+	optdepends = r-googlevis
+	optdepends = r-knitr
+	optdepends = r-lattice
+	optdepends = r-reshape2
+	optdepends = r-rmarkdown
+	optdepends = r-tidyr
+	optdepends = r-vcd
+	source = https://cran.r-project.org/src/contrib/Lahman_10.0-1.tar.gz
+	b2sums = b2e8d887f828705e421938694ec77792eae9f8d5c612723feb2602e637a9a905eee8f86d6e74bef07cea5b6680169e1b72af3516b27914f90e4e88bb0563dcb5
+
+pkgname = r-lahman
