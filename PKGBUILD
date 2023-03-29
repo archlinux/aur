@@ -3,7 +3,7 @@
 # Co-maintainer: Gabriel Brown <gabriel.h.brown@gmail.com>
 
 pkgname=chapel
-pkgver=1.29.0
+pkgver=1.30.0
 pkgrel=2
 pkgdesc="Programming language designed for productive parallel computing at scale"
 url="https://chapel-lang.org/"
@@ -12,7 +12,7 @@ license=('Apache')
 depends=('python' 'perl' 'llvm14' 'llvm14-libs' 'clang14') # depend on 14s temporarily
 makedepends=('git' 'cmake')
 source=("https://github.com/chapel-lang/chapel/releases/download/${pkgver}/chapel-${pkgver}.tar.gz")
-sha256sums=('f87bc7285c4641ed540f806c63ab904137b650b1e232a11c15f76e874e079804')
+sha256sums=('8d933f4b6e497d9699a14deedd222e18c77c523483957d66201731d0d94285d2')
             
 
 build() {
