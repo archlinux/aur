@@ -5,8 +5,8 @@
 
 pkgbase=mutter-dynamic-buffering
 pkgname=(mutter-dynamic-buffering)
-pkgver=43.3
-pkgrel=3
+pkgver=43.4
+pkgrel=1
 pkgdesc="Window manager and compositor for GNOME (with dynamic triple/double buffering)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -46,15 +46,13 @@ _checkdepends=(
   xorg-server-xvfb
   zenity
 )
-_commit=a63755bdad7d8bffdbbc649178d759c37dacce01  # tags/43.3^0
+_commit=0e7506ff6d8e4940fc6654f2711e5decb23440dc  # tags/43.4^0
 source=(
   "$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
   'mr1441.patch'
 )
-sha256sums=(
-  'SKIP'
-  '690a31df2e61de3fbd0b51ec86ab4b84f54e6453926b06c14c9cd2ec93c27db0'
-)
+sha256sums=('SKIP'
+            '690a31df2e61de3fbd0b51ec86ab4b84f54e6453926b06c14c9cd2ec93c27db0')
 
 pkgver() {
   cd $pkgname
@@ -64,9 +62,9 @@ pkgver() {
 prepare() {
   cd "$srcdir/$pkgname"
 
-  # Fix broken focus handling with XWayland
-  # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2848
-  git cherry-pick -n 12ce58dba4f96f6a948c1d166646d263253e3ee0
+  # Fix crash on resume from suspend
+  # https://gitlab.gnome.org/GNOME/mutter/-/issues/2570
+  git cherry-pick -n c1ab3f39d73a041b488acf7296456840fa83c0da
 
   patch -p1 < "$srcdir/mr1441.patch"
 }
