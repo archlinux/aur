@@ -3,7 +3,7 @@
 # Contributor: sukanka <su975853527 at gmail dot com>
 
 pkgname=beast2
-pkgver=2.7.3
+pkgver=2.7.4
 _pkgver=2.7.2
 pkgrel=1
 pkgdesc="Bayesian Evolutionary Analysis by Sampling Trees. https://doi.org/10.1371/journal.pcbi.1003537"
@@ -17,7 +17,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/CompEvol/beast2/archive
 # excutables
 ${pkgname}-{beauti,densitree,logcombiner,treeannotator,beast2,loganalyser,applauncher,packagemanager,environment}
 )
-sha256sums=('04e62e7d3dc108d15d1c01dc4693c7ba362ae7c2efd969c6ae706e69a2cf28b3'
+sha256sums=('cd16e9bc5615aff063d61ec1edd66d4cd8bb87dcaabcb1508b42809f34b7b258'
             '1b4cca8ee299459469bfdf8a98b701ed5e47f0b015ef0e04964a195fd9fb74d5'
             'f35255c946a105a60e81fcf44ed3f5c28e6903f0e9cedc015b1ae9d08ab6eb42'
             '39d8fe84e7262a11fb49700254fd54a9823ad25069f6cb9539d830c708d8864e'
