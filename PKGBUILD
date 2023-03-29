@@ -7,7 +7,7 @@
 _plugin=playbooks
 pkgname=mattermost-plugin-$_plugin
 pkgver=1.36.1
-pkgrel=1
+pkgrel=2
 pkgdesc='reliable and repeatable processes using checklists, automation, and retrospectives'
 arch=(x86_64)
 url="https://github.com/${pkgname%%-*}/$pkgname"
