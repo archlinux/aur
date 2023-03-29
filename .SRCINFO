@@ -1,6 +1,6 @@
 pkgbase = pnpm
 	pkgdesc = Fast, disk space efficient package manager
-	pkgver = 7.30.3
+	pkgver = 8.0.0
 	pkgrel = 1
 	url = https://pnpm.js.org/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = pnpm
 	makedepends = git
 	makedepends = npm
 	makedepends = jq
-	depends = nodejs>=14.6.0
-	source = git+https://github.com/pnpm/pnpm.git?signed#tag=v7.30.3
+	depends = nodejs>=16.14
+	source = git+https://github.com/pnpm/pnpm.git?signed#tag=v8.0.0
 	validpgpkeys = 7B74D1299568B586BA9962B5649E4D4AF74E7DEC
 	sha256sums = SKIP
 
