@@ -60,6 +60,10 @@ prepare() {
   git -c protocol.file.allow=always submodule update --init --remote
 # fix track_obj deprecated in libsigc
   sed '/DSIGCXX_DISABLE_DEPRECATED/d' -i CMakeScripts/DefineDependsandFlags.cmake
+# fix lib2geom header location
+  sed -E '/^#include/s/"(point.h)/"2geom\/\1/' -i src/path/splinefit/bezier-fit.cpp src/ui/tool/path-manipulator.cpp src/ui/dialog/symbols.cpp
+  sed -E '/^#include/s/(forward.h)/2geom\/\1/' -i src/ui/tool/path-manipulator.cpp
+  sed -E '/^#include/s/"(rect.h)/"2geom\/\1/' -i src/ui/dialog/object-attributes.cpp
 }
 
 pkgver() {
