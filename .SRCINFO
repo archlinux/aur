@@ -1,0 +1,16 @@
+pkgbase = see-git
+	pkgdesc = Simple and fast Web server.
+	pkgver = r58.eff32b9
+	pkgrel = 1
+	url = https://github.com/wyhaya/see
+	arch = any
+	license = MIT
+	makedepends = rust
+	depends = base-devel
+	depends = git
+	provides = see
+	conflicts = see
+	source = see-git::git+https://github.com/wyhaya/see
+	sha256sums = SKIP
+
+pkgname = see-git
