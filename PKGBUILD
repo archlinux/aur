@@ -21,7 +21,7 @@ pkgver() {
 
 
 package() {
-  cd "${_pkgname}"
+  cd "rock-paper-scissor"
   install -Dvm755 "main.py" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dvm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${_pkgname}-git/LICENSE"
 }
