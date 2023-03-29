@@ -1,7 +1,7 @@
 pkgbase = someblocks-git
 	pkgdesc = dwm-like bar for dwl
 	pkgver = 1.0.1.r0.28d7e79
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.sr.ht/~raphi/someblocks
 	arch = x86_64
 	license = ISC
@@ -11,8 +11,10 @@ pkgbase = someblocks-git
 	provides = someblocks
 	conflicts = someblocks
 	source = git+https://git.sr.ht/~raphi/someblocks
+	source = someblocks.service
 	source = blocks.h
 	sha256sums = SKIP
+	sha256sums = 19c7f77354377f8cb767e6e1916ea7a65f7af23de992ba359527cd5b5431c126
 	sha256sums = SKIP
 
 pkgname = someblocks-git
