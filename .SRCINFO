@@ -1,6 +1,6 @@
 pkgbase = unciv-bin
 	pkgdesc = Open-source remake of Civilization V
-	pkgver = get_tag_test_1
+	pkgver = get_tag_test_2
 	pkgrel = 0
 	url = https://github.com/yairm210/Unciv
 	arch = any
@@ -10,12 +10,12 @@ pkgbase = unciv-bin
 	depends = xorg-xrandr
 	provides = unciv
 	conflicts = unciv
-	noextract = Unciv-get-tag-test-1.jar
-	source = Unciv-get-tag-test-1.jar::https://github.com/yairm210/Unciv/releases/download/get-tag-test-1/Unciv.jar
-	source = Unciv-get-tag-test-1.png::https://raw.githubusercontent.com/yairm210/Unciv/get-tag-test-1/extraImages/Icons/Unciv%20icon%20v5.png
-	source = Unciv-get-tag-test-1.zip::https://github.com/yairm210/Unciv/releases/download/get-tag-test-1/linuxFilesForJar.zip
-	md5sums = 5babab875054aefbc5c278b3f719d471
+	noextract = Unciv-get-tag-test-2.jar
+	source = Unciv-get-tag-test-2.jar::https://github.com/yairm210/Unciv/releases/download/get-tag-test-2/Unciv.jar
+	source = Unciv-get-tag-test-2.png::https://raw.githubusercontent.com/yairm210/Unciv/get-tag-test-2/extraImages/Icons/Unciv%20icon%20v5.png
+	source = Unciv-get-tag-test-2.zip::https://github.com/yairm210/Unciv/releases/download/get-tag-test-2/linuxFilesForJar.zip
+	md5sums = bbfe1845ef42d85c9e6dfc860c29bb05
 	md5sums = c3f79bbc7e80620b3cdc4f90f21f4d68
-	md5sums = 38c6aabd0ec7b3d9b4949c6a54fe1a97
+	md5sums = 102280f535c59e66a2669acc576bac30
 
 pkgname = unciv-bin
