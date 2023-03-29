@@ -1,6 +1,6 @@
 pkgbase = falkon-git
 	pkgdesc = Cross-platform QtWebEngine browser
-	pkgver = 3.1.99_r5703.g9bebc144
+	pkgver = 23.07.70_r5935.gcdcdd3379
 	pkgrel = 1
 	url = https://www.falkon.org/
 	arch = x86_64
