@@ -14,7 +14,6 @@ url='https://github.com/rocky/python-xdis'
 _url_pypi='https://pypi.org/project/xdis'
 license=('GPL2')
 depends=('python-click'
-        'python-nose'
         'python-six')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
