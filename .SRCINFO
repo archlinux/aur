@@ -1,0 +1,22 @@
+pkgbase = kicad-diff-git
+	pkgdesc = Scripts for performing image diffs between pcbnew layout revisions Resources
+	pkgver = r381.4500fef
+	pkgrel = 1
+	url = https://github.com/leoheck/KiCad-Diff
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python-pip
+	depends = patch
+	depends = dos2unix
+	depends = python
+	depends = kicad
+	depends = imagemagick
+	depends = xdotool
+	depends = perl-rename
+	provides = kicad-diff
+	conflicts = kicad-diff
+	source = KiCad-Diff::git+https://github.com/leoheck/KiCad-Diff.git
+	sha256sums = SKIP
+
+pkgname = kicad-diff-git
