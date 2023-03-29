@@ -1,0 +1,17 @@
+pkgbase = unoffical-yuque-appimage
+	pkgdesc = Unoffical YuQue Appimage Client.语雀是一个专业的云端知识库,孵化自蚂蚁集团,已是10万阿里员工进行文档编写、知识沉淀的标配。
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://www.yuque.com/
+	arch = x86_64
+	license = custom
+	depends = hicolor-icon-theme
+	depends = zlib
+	depends = glibc
+	conflicts = yuque-pake
+	source = yuque-1.0.8.AppImage::https://github.com/tw93/Pake/releases/download/V1.0.8/YuQue_x86_64.AppImage
+	source = LICENSE.html::https://www.yuque.com/terms
+	sha256sums = 33c5ce8aac5b05b5bc35dda19d793a2002f6c70dc0c28b4612a5ba562e2f3577
+	sha256sums = c27442b711aea30ac31f6966742fbc57278b159174d0dd8c15e999da993bafe0
+
+pkgname = unoffical-yuque-appimage
