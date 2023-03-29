@@ -1,9 +1,9 @@
-pkgbase = netbeans-jtatto-jar
+pkgbase = netbeans-jtattoo-jar
 	pkgdesc = Additional themes for Netbeans
 	pkgver = 1.6.13
 	pkgrel = 1
 	url = http://www.jtattoo.net
-	install = netbeans-jtatto-jar.install
+	install = netbeans-jtattoo-jar.install
 	arch = any
 	license = GPL
 	license = LGPL
@@ -13,4 +13,4 @@ pkgbase = netbeans-jtatto-jar
 	source = http://www.jtattoo.net/downloads/JTattoo-1.6.13.jar
 	md5sums = acebee0f33787ae843e018a6a96adf4f
 
-pkgname = netbeans-jtatto-jar
+pkgname = netbeans-jtattoo-jar

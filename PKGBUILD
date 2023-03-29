@@ -1,4 +1,4 @@
-pkgname=netbeans-jtatto-jar
+pkgname=netbeans-jtattoo-jar
 pkgver=1.6.13
 pkgrel=1
 pkgdesc="Additional themes for Netbeans"
