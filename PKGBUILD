@@ -1,7 +1,7 @@
 # Maintainer: Michael Clayfield <me asdf michaelclayfield asdf com asdf>
 
 pkgname=hyprland-workspaces
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A multi-monitor aware Hyprland workspace widget for use with bars."
 url="https://github.com/FieldofClay/hyprland-workspaces"
@@ -10,7 +10,7 @@ depends=('hyprland')
 arch=('x86_64')
 license=('MIT')
 source=("https://github.com/FieldofClay/hyprland-workspaces/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e21ab7440dd112de32cee6afc21cb38ebc4572743076952fbd80e345dbb15ced')
+sha256sums=('3bab2311261fd2e68fe3a3059a3529537eeaa19e083c0ef2de5c3ed173b009f6')
 
 build() {
   cd "$pkgname-$pkgver"
