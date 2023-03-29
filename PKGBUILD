@@ -3,7 +3,7 @@
 _pkgname="rock-paper-scissors"
 pkgname="${_pkgname}-git"
 pkgver=r7.07947de
-pkgrel=1
+pkgrel=2
 pkgdesc="an rock paper scissor game for linux"
 arch=('any')
 url="https://github.com/kybe236/rock-paper-scissor"
