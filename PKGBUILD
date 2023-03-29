@@ -2,7 +2,7 @@
 
 pkgname=jlink-systemview-target-src
 pkgver=3.50a
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="Segger SystemView target src for Linux"
 arch=('i686' 'x86_64')
@@ -16,8 +16,6 @@ url="https://www.segger.com/downloads/free-utilities/#SystemView"
 package(){
     # Cleanup
     rm -f cookie
-    # Work around a stupid behaviour of Yay
-    rm -rf ${HOME}/.cache/yay/jlink-systemview-target-src
 
     # Match package in /opt
     install -dm755 "${pkgdir}/opt/SEGGER/Target-src" \
