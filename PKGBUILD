@@ -9,8 +9,8 @@ url="https://buf.build"
 license=('Apache')
 provides=('buf')
 conflicts=('buf')
-source=("https://github.com/bufbuild/buf/releases/download/v1.15.1/buf-Linux-x86_64.tar.gz")
-sha256sums=('39b58126938e265a7dd60fc4716a4a43931896e62db3d69c704d7dd63d5889dd')
+source=("https://github.com/bufbuild/buf/releases/download/v1.16.0/buf-Linux-x86_64.tar.gz")
+sha256sums=('fe859ffacab481a6ee62f7d04259fd4bcc110dd48cb26182ea35d37a256d7819')
 
 package() {
   install -D -m755 "$srcdir/buf/bin/buf" "$pkgdir/usr/bin/buf"
