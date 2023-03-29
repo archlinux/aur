@@ -1,7 +1,7 @@
 # Maintainer:  kxxt <rsworktech at outlook dot com>
 _name=aspeak
 pkgname="$_name-bin"
-pkgver=4.1.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="A simple text-to-speech client for Azure TTS API"
 arch=('x86_64')
