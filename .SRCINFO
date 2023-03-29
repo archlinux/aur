@@ -1,0 +1,17 @@
+pkgbase = unoffical-xiaohongshu-appimage
+	pkgdesc = Unoffical xiaohongshu Appimage Client.小红书 App,是年轻人的生活方式社区,每月有超过2亿人在这里分享生活经验,发现真实、美好、多元的世界,找到想要的生活.
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://www.xiaohongshu.com/
+	arch = x86_64
+	license = custom
+	depends = hicolor-icon-theme
+	depends = zlib
+	depends = glibc
+	conflicts = xiaohongshu-pake
+	source = xiaohongshu-1.0.8.AppImage::https://github.com/tw93/Pake/releases/download/V1.0.8/XiaoHongShu_x86_64.AppImage
+	source = LICENSE
+	sha256sums = 1abd894042f25713731c84bb8eed2fec2f82feb95047e7790acdf7e3c81da6ad
+	sha256sums = b653f3f9e1592bfc7182092e5bd1ad2024f3b579a37c2491f65fcf3f34798894
+
+pkgname = unoffical-xiaohongshu-appimage
