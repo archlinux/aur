@@ -1,6 +1,6 @@
 pkgbase = kicad-pcb-diff
 	pkgdesc = Tool to generate a PDF file showing the changes between two KiCad PCB/SCH files. Also a git plug-in.
-	pkgver = 2.4.5
+	pkgver = 2.4.6
 	pkgrel = 0
 	url = https://github.com/INTI-CMNB/KiDiff
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = kicad-pcb-diff
 	provides = kicad-diff
 	provides = kicad-pcb-diff
 	options = !strip
-	source = KiDiff-2.4.5.tar.gz::https://github.com/INTI-CMNB/KiDiff/archive/refs/tags/v2.4.5.tar.gz
-	sha256sums = 3cb168f7018e5a7dad188b13a6a3f7d3ea55353949db2f41861882c64a140a4c
+	source = KiDiff-2.4.6.tar.gz::https://github.com/INTI-CMNB/KiDiff/archive/refs/tags/v2.4.6.tar.gz
+	sha256sums = 0888f06d20dd3c36a636919c7ade208f0b159cd6f6ea348bd1b5b805ae87d544
 
 pkgname = kidiff
