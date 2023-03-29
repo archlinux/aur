@@ -4,7 +4,7 @@ _pkgname=sortable
 _pkgver=0.5.0
 pkgname=r-${_pkgname,,}
 pkgver=0.5.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Drag-and-Drop in 'shiny' Apps with 'SortableJS'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -21,7 +21,7 @@ depends=(
   r-shiny
 )
 optdepends=(
-  r-base64
+  r-base64enc
   r-covr
   r-knitr
   r-magrittr

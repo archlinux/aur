@@ -1,7 +1,7 @@
 pkgbase = r-sortable
 	pkgdesc = Drag-and-Drop in 'shiny' Apps with 'SortableJS'
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=sortable
 	arch = any
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = r-sortable
 	depends = r-learnr
 	depends = r-rlang
 	depends = r-shiny
-	optdepends = r-base64
+	optdepends = r-base64enc
 	optdepends = r-covr
 	optdepends = r-knitr
 	optdepends = r-magrittr
