@@ -6,14 +6,14 @@
 # Maintainer: Asuka Minato <asukaminato at nyan dot eu dot org>
 pkgname=ghostz
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A homology search tool which can detect remote homologues."
 arch=(any)
 url="http://www.bi.cs.titech.ac.jp/ghostz/"
 license=('BSD')
 groups=()
-depends=()
+depends=(gcc-libs glibc)
 makedepends=('gcc>4.3')
 checkdepends=()
 optdepends=()
