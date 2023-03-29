@@ -10,8 +10,8 @@ depends=('somebar')
 makedepends=('git' 'make')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+https://git.sr.ht/~raphi/someblocks" "blocks.h")
-sha256sums=('SKIP' 'SKIP')
+source=("git+https://git.sr.ht/~raphi/someblocks" "someblocks.service" "blocks.h")
+sha256sums=('SKIP' '19c7f77354377f8cb767e6e1916ea7a65f7af23de992ba359527cd5b5431c126' 'SKIP')
 
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
@@ -34,4 +34,5 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	DESTDIR="$pkgdir/" PREFIX=/usr make install
+	install -Dm644  $srcdir/someblocks.service ${pkgdir}/usr/lib/systemd/user/someblocks.service
 }
