@@ -1,3 +1,2 @@
-*
-!PKGBUILD
-!.SRCINFO
+*.log
+*.gz
