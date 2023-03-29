@@ -1,31 +1,44 @@
-# Maintainer: ml <>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: ml <>
+
+# GPG keys: https://github.com/hurl-bot.gpg
+
 pkgname=hurl-rs
 pkgver=2.0.1
-pkgrel=1
+_commit=0c73781
+pkgrel=2
 pkgdesc='HTTP Client to run and test requests'
 arch=('x86_64')
 url='https://github.com/Orange-OpenSource/hurl'
 license=('Apache')
-depends=('curl' 'libxml2')
-makedepends=('cargo' 'gcc' 'python')
-source=("$url"/archive/"$pkgver"/hurl-"$pkgver".tar.gz)
-sha512sums=('ff0a7d83f2743ac7f9baefcbd41e489e95e59bcb004aa114989f5a8ee4a994ab0f5f04d090e07dca87a9347c711f71ee86f3b748d30da5acc090505e0b73fd45')
+depends=('curl' 'libxml2' 'openssl')
+makedepends=('cargo' 'git' 'python')
+options=('!lto')
+source=("$pkgname::git+$url#commit=$_commit?signed")
+sha256sums=('SKIP')
+validpgpkeys=('2A8D14993928B676E424009F1283A2B4A0DCAF8D') ## hurl-bot on GitHub
 
 prepare() {
-  cd hurl-"$pkgver"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	cd "$pkgname"
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  cd hurl-"$pkgver"
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  ./bin/release/man.sh
-  ./bin/release/release.sh
+	cd "$pkgname"
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --release --frozen --all-features
+	./bin/release/man.sh
+}
+
+check() {
+	cd "$pkgname"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo test --frozen --all-features --workspace || echo 'Tests failed'
 }
 
 package() {
-  cd hurl-"$pkgver"
-  install -Dm755 target/release/hurl{,fmt} -t "$pkgdir"/usr/bin
-  install -Dm644 target/man/hurl{,fmt}.1.gz -t "$pkgdir"/usr/share/man/man1
+	cd "$pkgname"
+	install -Dv target/release/hurl{,fmt} -t "$pkgdir/usr/bin"
+	install -Dvm644 target/man/hurl{,fmt}.1.gz -t "$pkgdir/usr/share/man/man1"
 }
