@@ -2,14 +2,14 @@
 # Contributor: sparklespdx <josh.farwell@gmail.com>
 
 pkgname="gpu-burn-git"
-pkgver="r50.1e9a84f"
+pkgver=r76.5f0a86c
 pkgrel=1
 pkgdesc="Multi-GPU CUDA stress test"
 arch=("x86_64")
 url="https://github.com/wilicc/gpu-burn"
 license=("BSD")
 makedepends=("git")
-depends=("nvidia" "opencl-nvidia" "cuda")
+depends=("nvidia-utils" "cuda")
 provides=("gpu-burn")
 conflicts=("gpu_burn-git" "gpu-burn")
 replaces=("gpu_burn-git")
@@ -25,10 +25,10 @@ pkgver() {
 }
 
 prepare () {
-  sed -i "s|CUDAPATH ?= /usr/local/cuda|CUDAPATH ?= /opt/cuda|g" "${pkgname}"/Makefile
+  sed -i "s|/usr/local/cuda|/opt/cuda|g" "${pkgname}"/Makefile
 
   # Hax to make the program pick up compare.ptx in /usr/lib
-  sed -i 's|const char \*kernelFile = "compare.ptx"|const char \*kernelFile = "/usr/lib/gpu_burn/compare.ptx"|g' "${pkgname}"/gpu_burn-drv.cpp
+  sed -i 's|"compare.ptx"|"/usr/lib/gpu_burn/compare.ptx"|g' "${pkgname}"/gpu_burn-drv.cpp
 }
 
 build () {
