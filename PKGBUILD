@@ -1,7 +1,7 @@
 # Maintainer: Conner Will (DampSock) <conner.will@connerwill.com>
 
 pkgname=yayfzf
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=0
 pkgdesc="AUR package fzf finder to search, install, remove, and manage packages using yay"
 arch=("any")
