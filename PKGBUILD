@@ -1,19 +1,19 @@
 # Maintainer: Grant G <grant@fig.io>
 
 pkgname='fig-beta'
-pkgver='2.14.0_beta.7'
+pkgver='2.15.0_beta.1'
 pkgrel=1
 pkgdesc='Adds IDE-style autocomplete to your existing terminal.'
 arch=('x86_64')
 url='https://fig.io'
 license=('custom')
-depends=('gtk3' 'webkit2gtk' 'libappindicator-gtk3' 'ibus' 'xdg-utils')
+depends=('gtk3' 'webkit2gtk-4.1' 'libappindicator-gtk3' 'ibus' 'xdg-utils')
 provides=('fig')
 conflicts=('fig')
 makedepends=('jq' 'xz')
 source=("${pkgname}-${pkgver//_/-}.tar.xz::https://repo.fig.io/generic/beta/asset/${pkgver//_/-}/x86_64/fig.tar.xz")
 
-sha256sums=('9ee34a6b90a482e51e6d1455829bd8960a8396eab495504b768dd674d97e0be5')
+sha256sums=('3ee77667404c48df539b2c0765f58d1145d927e948ece5652ea7fcd3f8453c9a')
 
 package() {
   cp -r "${srcdir}/usr" "${pkgdir}/usr"
