@@ -1,0 +1,214 @@
+#!/usr/bin/bash
+
+### Help 
+Help() {
+    echo -e "\nUse fzf to search and install with Pacman and Yay"
+    echo -e "Defaults to Pacman if no options passed\n"
+    echo -e "SYNTAX\n\tfpf [-a| --aur] [-l| --list-installed] [-la| --list-aur-installed]\n\t\t[R| --remove] [-o| --orphans] [-h | --help]\n"
+	echo -e "EXAMPLE\n\tfpf [pkg name] for official repo search\n\tfpf-a [pkg name] for aur search\n"
+	echo -e "OPTIONS"
+	echo -e "\t-a, --aur\n\t\tSearch/List and install from AUR with Yay\n"
+	echo -e "\t-l, --list-installed\n\t\tSearch/List installed packages from official repo\n"
+	echo -e "\t-la, --list-aur-installed\n\t\tSearch/List installed packages from AUR\n"
+	echo -e "\t-R, -remove\n\t\tSearch/List installed packages for removal\n"
+	echo -e "\t-o, --orphans\n\t\tSearch/List orphaned packages for removal\n"
+	echo -e "\t-h, --help\n\t\tPrint this help screen\n"
+}
+
+#	Check things are up to date
+UpdateInfos() {
+	[ -f /var/lib/pacman/sync/core.files ] || { echo -e "Syncing files database"; sudo pacman -Fy; }
+    d1=$(stat -c %y /var/lib/pacman/sync/core.files)
+    d2=$(stat -c %y /var/lib/pacman/sync/core.db)
+	d1="${d1:0:10}"
+	d2="${d2:0:10}"
+	[[ "${d2///-/}" > "${d1//-/}" ]] && { echo -e "Files database is out of date\nSyncing now..."; sudo pacman -Fy; }
+}
+
+UpdateAurInfos() {
+	echo -e "Syncing AUR package information..."
+	[[ ! -d /tmp/aur ]] && mkdir -p /tmp/aur
+	zcat <(curl  https://aur.archlinux.org/packages-meta-ext-v1.json.gz) |
+	jq --compact-output '.[] |
+	{ Name, Description } ' |
+	awk -F'"' '{ printf "%-20s\t%s\n", $4, $8}' > /tmp/aur/packages-meta
+	while IFS= read -r pkgName; do
+		grep -w "^$pkgName " /tmp/aur/packages-meta >> /tmp/aur/installed
+	done < <(pacman -Qqm)
+	sort <(comm -23 <(cat /tmp/aur/packages-meta | sort) <( cat /tmp/aur/installed | sort)) <(comm -12 <( cat /tmp/aur/packages-meta | sort) <(cat /tmp/aur/installed | sort) | awk -F"\t" '{print $1" \033[32m*\033[0m  ", $2}') -o /tmp/aur/packages-meta
+}
+
+#	Check AUR helper
+AHELPR=""
+if [[ -z "$AHELPR" ]]
+then
+    if [[ -f /usr/bin/paru ]]
+    then 
+    	AHELPR="paru"
+    elif [[ -f /usr/bin/yay ]]
+    then
+    	AHELPR="yay"
+    else
+    	echo -e "Suitable AUR Helper not found.\nPlease install \"paru\" or \"yay\" to continue."
+		exit 1
+	fi
+fi
+
+### Official Repo
+#	Get Official package list, sort, mark installed, preview infos and finally hand off to pacman for install
+Official() {
+	echo "Setting things up..."
+	sort <(comm -23 <(expac -S '%-20n\t%d' | sort) <(expac '%-20n\t%d' | sort)) <(comm -12 <(expac -S '%-20n\t%d' | sort) <(expac '%-20n\t%d' | sort) | awk -F"\t" '{print $1"\033[32m*\033[0m  ", $2}') &>/dev/null  >  /tmp/packages
+  	cat /tmp/packages |
+  	fzf -q "$1" -e -m \
+  	--preview='cat <(pacman -Si {1}) <(pacman -Fl {1} | awk "{print \$2}")' \
+  	--preview-window=55%:wrap:border-sharp \
+  	--preview-label="| Package Information |" \
+  	--layout=reverse \
+  	--marker='>>' \
+  	--header="$(echo -e ' Select packages to install\n (use TAB to toggle selection)\n')" \
+  	--info=hidden \
+  	--ansi \
+  	--margin="2%,1%,2%,1%" \
+  	--cycle |
+  	awk '{print $1}' |
+  	sed -e 's/\*$//' |
+  	xargs -ro sudo pacman -S
+}
+
+#	List installed pkgs
+Installed() {
+	sort <(pacman -Qqs) > /tmp/installed_packages
+	echo "$(echo -e ' Select packages to print info\n (use TAB to toggle selection)'; cat /tmp/installed_packages)" > /tmp/installed_packages
+	cat /tmp/installed_packages |
+	fzf -q "$1" -e -m \
+	--preview='cat <(pacman -Qik {1}) <(echo "") <(pacman -Fl {1} | awk "{print \$2}")' \
+	--preview-window=65%:wrap \
+	--layout=reverse \
+	--marker='>>' \
+	--header-lines=2 \
+	--info=hidden \
+	--ansi \
+	--margin="2%,1%,2%,1%" \
+	--cycle |
+	xargs -ro pacman -Qik
+}
+
+#	Remove installed pkgs
+Remove() {
+	sort <(pacman -Qqs) > /tmp/installed_packages
+	echo "$(echo -e ' Select packages to remove\n (use TAB to toggle selection)'; cat /tmp/installed_packages)" > /tmp/installed_packages
+	cat /tmp/installed_packages |
+	fzf -q "$1" -e -m \
+	--preview='cat <(pacman -Si {1} 2>/dev/null || yay -Qi {1} 2>/dev/null || paru -Qi {1}) <(pacman -Ql {1} | awk "{print \$2}")' \
+	--preview-window=65%:wrap \
+	--layout=reverse \
+	--marker='>>' \
+	--header-lines=2 \
+	--info=hidden \
+	--ansi \
+	--margin="2%,1%,2%,1%" \
+	--cycle |
+	xargs -ro sudo pacman -Rsn
+}
+
+### AUR
+#	Get AUR package database, remove unwanted lines, sort, mark installed, preview infos and finally hand off to yay for install
+Aur() {
+	[ -f /tmp/aur/packages-meta ] || UpdateAurInfos
+	d1=$(stat -c %y /tmp/aur/packages-meta)
+	d1="${d1:0:10}"
+	d2=$(date -I'date')
+	[[ "${d2///-/}" > "${d1//-/}" ]] && UpdateAurInfos		
+	cat /tmp/aur/packages-meta |
+	fzf -q "$1" -e -m \
+	--preview='cat <(yay -Si {1} 2>/dev/null || paru -Si {1}) <(pacman -Ql {1} 2>/dev/null | awk "{print \$2}")' \
+	--preview-window=55%:wrap:border-sharp \
+	--layout=reverse \
+	--marker='>>' \
+	--header="$(echo -e ' Select packages to install\n (use TAB to toggle selection)\n')" \
+	--info=hidden \
+	--ansi \
+	--margin="2%,1%,2%,1%" \
+	--cycle \
+	--bind=ctrl-p:preview:'curl --silent https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD\?h={1}' \
+	--bind=ctrl-x:preview:'cat <(yay -Si {1} 2>/dev/null || paru -Si {1}) <(pacman -Ql {1} 2>/dev/null | awk "{print \$2}")' |
+	awk '{print $1}' |
+	sed -e 's/\*$//' |
+	xargs -ro $AHELPR -S
+}
+
+#	List installed pkgs only from AUR
+AurInstalled() {
+	sort <(pacman -Qqm) > /tmp/aur_installed_packages
+	echo "$(echo -e ' Select packages to print info\n (use TAB to toggle selection)'; cat /tmp/aur_installed_packages)" > /tmp/aur_installed_packages
+	cat /tmp/aur_installed_packages |
+	fzf -q "$1" -e -m \
+	--preview 'cat <(pacman -Qik {1}) <(echo "") <(pacman -Ql {1} | awk "{print \$2}")' \
+	--preview-window=65%:wrap \
+	--layout=reverse \
+	--marker='>>' \
+	--header-lines=2 \
+	--info=hidden \
+	--ansi \
+	--margin="2%,1%,2%,1%" \
+	--cycle \
+	--bind=ctrl-p:preview:'curl --silent https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD\?h={1}' \
+	--bind=ctrl-x:preview:'cat <(pacman -Si {1} 2>/dev/null || yay -Qi {1} 2>/dev/null || paru -Qi {1}) <(pacman -Ql {1} | awk "{print \$2}")' |
+	xargs -ro pacman -Qik
+}
+
+### ORPHANS
+#	List orphaned packages and remove selected 
+Orphans() {
+	sort <(pacman -Qtdq) > /tmp/orphaned
+	echo "$(echo -e ' Select packages to remove\n (use TAB to toggle selection)'; cat /tmp/orphaned)" > /tmp/orphaned
+	cat /tmp/orphaned |
+	fzf -q "$1" -e -m \
+	--preview='cat <(pacman -Qik {1} 2>/dev/null || yay -Qi {1} 2>/dev/null || paru -Qi {1}) <(pacman -Ql {1} | awk "{print \$2}")' \
+	--preview-window=65%:wrap \
+	--layout=reverse \
+	--marker='>>' \
+	--header-lines=2 \
+	--info=hidden \
+	--ansi \
+	--margin="2%,1%,2%,1%" \
+	--cycle |
+	xargs -ro sudo pacman -Rsn	
+}
+
+### MAIN
+
+#	Update the files database
+UpdateInfos
+#   Test for AUR option, if not run with pacman
+if [[ ! "$1" =~ ^- ]]; then
+	Official "$1"
+else
+	for opt in "$@"; do
+		case $opt in
+    		-a|--aur)
+				Aur "$2"
+				;;
+       		-l|--list-installed)
+       			Installed "$2"
+       			;;
+       		-la|--list-aur-installed)
+       			AurInstalled "$2"
+       			;;
+       		-o|--orphans)
+       			Orphans "$2"
+       			;;
+       		-R|--remove)
+       			Remove "$2"
+       			;;
+    		-h|--help)
+       			Help
+       			;;       			
+    		-*) 
+       			echo "Invalid Usage"
+       			Help
+       			;;
+    	esac
+	done
+fi

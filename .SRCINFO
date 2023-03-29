@@ -1,6 +1,6 @@
 pkgbase = fuzzy-pkg-finder
 	pkgdesc = Simple cli command for using fzf to search and install packages
-	pkgver = 0.9.6
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/ericlay/fuzzy-pkg-finder
 	arch = x86_64
@@ -10,10 +10,13 @@ pkgbase = fuzzy-pkg-finder
 	makedepends = git
 	depends = pacman
 	depends = fzf
-	depends = wget
+	depends = expac
+	depends = curl
+	depends = gzip
+	depends = jq
 	optdepends = yay: AUR helper
 	optdepends = paru: AUR helper
-	source = git+https://gitlab.com/airclay/fuzzy-pkg-finder.git#tag=v0.9.6
+	source = git+https://github.com/ericlay/fuzzy-pkg-finder.git#tag=v1.0
 	md5sums = SKIP
 
 pkgname = fuzzy-pkg-finder
