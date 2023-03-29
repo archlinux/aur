@@ -1,16 +1,17 @@
+# Maintainer: dreieck (https://aur.archlinux.org/account/dreieck)
 # Maintainer: Nicolas Quiénot <niQo @ aur>
-# Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+# Contributor: Xiao-Long Chen <chenxiaolong [at[ cxl.epac.to>
 # Contributor: thn81 <root@scrat>
 
 pkgname=grail
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Gesture Recognition And Instantiation Library"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/grail"
 license=('GPL')
 depends=('frame>=2.5.0' 'libxi')
-makedepends=('inputproto')
+makedepends=('xorgproto')
 conflicts=('utouch-grail')
 replaces=('utouch-grail')
 options=('!libtool')
