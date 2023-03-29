@@ -43,13 +43,15 @@ build() {
 }
 
 package() {
-  cd "$_pkgname"
-  install -vDm755 build/${_pkgname} "$pkgdir"/usr/bin/${_pkgname}
-  install -vDm644 example.conf "$pkgdir"/etc/molly.conf
-  install -vdm 755 "$pkgdir"/var/log/${_pkgname}/
-  install -vDm644 LICENSE "$pkgdir"/usr/share/licenses/${_pkgname}/LICENSE
-  install -vDm644 ../${_pkgname}.service "$pkgdir"/usr/lib/systemd/system/${_pkgname}.service
-  install -vDm644 ../${_pkgname}.sysusers "${pkgdir}"/usr/lib/sysusers.d/${_pkgname}.conf
-  install -vDm644 ../${_pkgname}.sysusers "${pkgdir}"/usr/lib/sysusers.d/${_pkgname}.conf
-  install -vDm644 ../${_pkgname}.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/${_pkgname}.conf
+  install -vDm755 ${_pkgname}/build/${_pkgname} "${pkgdir}"/usr/bin/${_pkgname}
+  install -vDm644 ${_pkgname}/example.conf "${pkgdir}"/etc/molly.conf
+  install -vDm644 ${_pkgname}/LICENSE "${pkgdir}"/usr/share/licenses/${_pkgname}/LICENSE
+  
+  # Log folder
+  install -vdm 755 "${pkgdir}"/var/log/${_pkgname}/
+
+  # SystemD integration
+  install -vDm644 ${_pkgname}.service "${pkgdir}"/usr/lib/systemd/system/${_pkgname}.service
+  install -vDm644 ${_pkgname}.sysusers "${pkgdir}"/usr/lib/sysusers.d/${_pkgname}.conf
+  install -vDm644 ${_pkgname}.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/${_pkgname}.conf
 }
