@@ -1,0 +1,15 @@
+pkgbase = python-protes
+	pkgdesc = Probability optimizer with tensor sampling
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/anabatsh/protes
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python-jax
+	depends = python-optax
+	source = protes-0.2.3.tar.gz::https://github.com/anabatsh/protes/archive/421029b501fdebe87bf35521cdfad95f921bf108.zip
+	sha256sums = 7099db4d9bcbe6f0ca20fe510e7fdee078cb8c17f15680c175c1da5ee016f78f
+
+pkgname = python-protes
