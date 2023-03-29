@@ -3,7 +3,7 @@
 # Contributor: David Runge <dave@sleepmap.de>
 
 pkgname=nextcloud-app-files-antivirus
-pkgver=3.3.2
+pkgver=4.0.3
 pkgrel=1
 pkgdesc="Antivirus app for Nextcloud"
 arch=('any')
@@ -12,10 +12,10 @@ license=('AGPL3')
 depends=('nextcloud' 'clamav')
 makedepends=()
 options=('!strip')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nextcloud/files_antivirus/releases/download/v${pkgver}/files_antivirus.tar.gz")
-sha512sums=('d329a403e3b4d27167fc083f8ba80089bec12fbb8a72fa4907a59676bcc82b44d41017bcda47b7d02c0dc15b73d09815cd7686b55443970ae0a334f35ada8f1e')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nextcloud/files_antivirus/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('2b632553575ecca509f67f73e3d78484e5de89d4a14daeed04c5469604837a57363c720ac1583a1d6d60533d185be333fae63f61463c6fb9e03393e98324be06')
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
-  cp -R "${srcdir}/files_antivirus" "${pkgdir}/usr/share/webapps/nextcloud/apps/files_antivirus"
+  cp -R "${srcdir}/files_antivirus-${pkgver}" "${pkgdir}/usr/share/webapps/nextcloud/apps/files_antivirus"
 }
