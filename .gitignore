@@ -3,3 +3,4 @@
 !.SRCINFO
 !PKGBUILD
 !raven-reader.desktop
+!.package.json.patch
