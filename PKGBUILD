@@ -2,7 +2,7 @@
 # Contributor: cubercsl <hi@cubercsl.site>
 # Contributor: glitsj16
 pkgname=linuxqq-firejail
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 epoch=1
 pkgdesc='New Linux QQ based on Electron, running in Firejail sandbox.'
@@ -32,7 +32,7 @@ package() {
 	mkdir "${pkgdir}/usr/share/applications" -p
 	cp "/usr/share/applications/qq.desktop" "${launcher}"
 	sed -i "2s!QQ!QQ in Firejail!" "${launcher}"
-	sed -i "3s!Exec=!Exec=sh -c \"env PATH=/usr/lib/flatpak-xdg-utils:\$PATH firejail --private-bin=linuxqq,xdg-open,xdg-mime !" "${launcher}"
+	sed -i "3s!Exec=!Exec=sh -c \"env PATH=/usr/lib/flatpak-xdg-utils:\$PATH firejail --private-bin=linuxqq,xdg-open,xdg-mime,bash !" "${launcher}"
 	sed -i "3s!%U!\"%U!" "${launcher}"
 	sed -i "6s!qq!linuxqq-firejail!" "${launcher}"
 

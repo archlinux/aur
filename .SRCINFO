@@ -1,6 +1,6 @@
 pkgbase = linuxqq-firejail
 	pkgdesc = New Linux QQ based on Electron, running in Firejail sandbox.
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/BeautyYuYanli/linuxqq-firejail
