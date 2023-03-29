@@ -17,19 +17,17 @@ pkgname=('rabbitvcs-git'
          'rabbitvcs-nemo-git'
          'rabbitvcs-thunar-git')
 
-pkgver=r1900.c424618
+pkgver=r1906.51cd7a3
 pkgrel=1
 pkgdesc="A set of graphical tools written to provide simple and straightforward access to the version control systems you use"
 arch=('any')
 url="https://github.com/rabbitvcs/rabbitvcs"
-source=("${pkgbase%-git}::git+${url}.git"
-        "${pkgbase%-git}-ignore-post-install.patch")
+source=("${pkgbase%-git}::git+${url}.git")
 makedepends=('git'
              'python-setuptools')
 
 license=('GPL')
-sha256sums=('SKIP'
-            '7b33b096752a104ad27ee22b3f939f4a9ee80e19e63815914033baeb4cd8d4ee')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgbase%-git}"
@@ -37,11 +35,6 @@ pkgver() {
     git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
-}
-
-prepare() {
-  cd "${srcdir}/${pkgbase%-git}"
-  patch -Np1 -i "${srcdir}/${pkgbase%-git}-ignore-post-install.patch"
 }
 
 build() {
