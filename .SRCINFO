@@ -1,7 +1,7 @@
 pkgbase = molly-brown-git
 	pkgdesc = full-featured Gemini server implemented in Go
 	pkgver = r181.2c3225c
-	pkgrel = 2
+	pkgrel = 3
 	url = https://tildegit.org/solderpunk/molly-brown
 	arch = x86_64
 	license = custom
@@ -17,7 +17,7 @@ pkgbase = molly-brown-git
 	source = molly-brown.tmpfiles
 	sha256sums = SKIP
 	sha256sums = 56468d70515e9a2bf2cfebd96f3ce253e7843910f531619125a553198b2b26c7
-	sha256sums = f80dc777d2b7d6f7bd199d47b7d74c6dc5880cf28e217ccb22fa277f8bb117e7
+	sha256sums = 147b34e2544ac86603aeed16b37e354a5dfcf9092939c66df2fff7a5ad1e52c7
 	sha256sums = b026a6f0aee9d6c0a71ef702e59ba3c2b5f84a9e5ab77a17dfe3a28137be2ea8
 	sha256sums = 6154ecf97c4dba46065e00993e22b2b140608c25174c1b340123cedf220ba8c1
 

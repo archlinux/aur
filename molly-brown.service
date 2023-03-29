@@ -4,6 +4,10 @@ After=network.target
 
 [Service]
 Type=simple
+NoNewPrivileges=true
+ProtectSystem=true
+ProtectHome=true
+PrivateDevices=true
 User=molly
 ExecStart=/usr/bin/molly-brown -c /etc/molly.conf
 
