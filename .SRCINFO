@@ -1,7 +1,7 @@
 pkgbase = r-gdtools
 	pkgdesc = Utilities for Graphical Rendering
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=gdtools
 	arch = x86_64
 	license = GPL
@@ -13,9 +13,9 @@ pkgbase = r-gdtools
 	depends = r-fontquiver
 	depends = r-gfonts
 	depends = r-htmltools
-	depends = r-memoise
 	depends = r-rcpp
 	depends = r-systemfonts
+	optdepends = r-methods
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/gdtools_0.3.3.tar.gz
 	sha256sums = da5a189841475b1d69c94a30ff834eb44560c69e6c0ec0a257006e1f59e83483
