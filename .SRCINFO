@@ -1,6 +1,6 @@
 pkgbase = fig
 	pkgdesc = Adds IDE-style autocomplete to your existing terminal.
-	pkgver = 2.14.2
+	pkgver = 2.15.0
 	pkgrel = 1
 	url = https://fig.io
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = fig
 	makedepends = jq
 	makedepends = xz
 	depends = gtk3
-	depends = webkit2gtk
+	depends = webkit2gtk-4.1
 	depends = libappindicator-gtk3
 	depends = ibus
 	depends = xdg-utils
-	source = fig-2.14.2.tar.xz::https://repo.fig.io/generic/stable/asset/2.14.2/x86_64/fig.tar.xz
-	sha256sums = 357a118ea045dc2891061892e4203cc544e8e9abda3d10c1010ee7b30d7148ed
+	source = fig-2.15.0.tar.xz::https://repo.fig.io/generic/stable/asset/2.15.0/x86_64/fig.tar.xz
+	sha256sums = 5afee22785fd5557b84d91297da54d9fb7ed37f6b7749144b5a00ebf953795f3
 
 pkgname = fig
