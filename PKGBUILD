@@ -1,8 +1,8 @@
-# Maintainer: Shawn Chen <ufbycd@163.com>
+# Maintainer: Chance Chen <ufbycd@163.com>
 
 pkgname=mounriver-studio-community
-pkgver=1.30
-pkgrel=2
+pkgver=1.40
+pkgrel=1
 arch=('x86_64')
 pkgdesc="为 Eclipse 平台爱好者提供的一款 RISC-V 内核芯片集成开发环境，支持 WCH 系列 MCU 的工程模板、代码编译、下载、调试等功能。 "
 url='www.mounriver.com'
@@ -20,7 +20,7 @@ optdepends=('ch34x-dkms-git: CH341SER driver with fixed bug'
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.xz::http://file.mounriver.com/upgrade/MounRiver_Studio_Community_Linux_x64_V${pkgver//./}.tar.xz"
         "udev-rules.patch")
-sha256sums=('dd692f617b1c67a66d27a85d3e19e65668e8f462df7a732d6cd40803d663c762'
+sha256sums=('4abfab4afa64aa41c209b4a3b05aaa5428be3a71430547226fbbc2901b52ed84'
             '7ed97c1a494ddbd5b6d594223bc35aa31949c416c0b23a3adabfda239b9f3c73')
 
 prepare() {
