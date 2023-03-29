@@ -16,7 +16,7 @@ source=("${_pkgname}-${pkgver}.bin::${url}/releases/download/${pkgver}/${_pkgnam
     "LICENSE::${url}/raw/main/LICENSE.md"
     "${_pkgname}.svg::${url}/raw/main/docs/logo/logo-original.svg")
 sha256sums=('b3be56d3c84b101f092fbde820d4eab11682b142b6c467a3a253f087ac2cc40b'
-            '23e144b1e664fc4bf6a9fd0617c8435e96d4c69023223841b872665794caa8ff'
+            '4b3ac81a7b14c015809f784bcd33f9c84c5ce5230626965274856d73042b1db7'
             '06227eca5759dded2d55052673cc2d287b548747d3228dfb0b001efaf9fd14c6')
 
 package() {
