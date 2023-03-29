@@ -1,6 +1,6 @@
 pkgbase = dotris-git
 	pkgdesc = A mini Tetris game made with dots
-	pkgver = r5.8220e58
+	pkgver = r6.e388285
 	pkgrel = 1
 	url = https://github.com/trevarj/dotris
 	arch = any
