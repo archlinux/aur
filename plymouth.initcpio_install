@@ -1,76 +1,75 @@
 #!/bin/bash
-# /etc/initcpio/install/plymouth — mkinitcpio hook for plymouth
 
 build() {
-	add_dir /dev/pts
-	add_dir /usr/share/plymouth/themes
-	add_dir /run/plymouth
+  # get default theme settings
+  local PLYMOUTH_THEME_NAME=$(plymouth-set-default-theme)
+  local PLYMOUTH_THEME_DIR="/usr/share/plymouth/themes/$PLYMOUTH_THEME_NAME"
+  local PLYMOUTH_MODULE_NAME=$(sed -n "s/^ *ModuleName *= *//p" "$PLYMOUTH_THEME_DIR/$PLYMOUTH_THEME_NAME.plymouth")
+  local PLYMOUTH_IMAGE_DIR=$(sed -n "s/^ *ImageDir *= *//p" "$PLYMOUTH_THEME_DIR/$PLYMOUTH_THEME_NAME.plymouth")
+  local PLYMOUTH_FONT_NAME=$(sed -n "s/^ *Font *= *\([^ ]*\).*/\1/p" "$PLYMOUTH_THEME_DIR/$PLYMOUTH_THEME_NAME.plymouth")
+  local PLYMOUTH_FONT_PATH=$(fc-match -f %{file} "$PLYMOUTH_FONT_NAME")
 
-	DATADIR="/usr/share/plymouth"
-	PLYMOUTH_LOGO_FILE="${DATADIR}/artix-logo.png"
-	PLYMOUTH_THEME_NAME="$(/usr/bin/plymouth-set-default-theme)"
-	PLYMOUTH_THEME_DIR="${DATADIR}/themes/${PLYMOUTH_THEME_NAME}"
-	PLYMOUTH_IMAGE_DIR=$(grep "ImageDir *= *" ${PLYMOUTH_THEME_DIR}/${PLYMOUTH_THEME_NAME}.plymouth | sed 's/ImageDir *= *//')
-	PLYMOUTH_PLUGIN_PATH="$(plymouth --get-splash-plugin-path)"
-	PLYMOUTH_MODULE_NAME="$(grep "ModuleName *= *" ${PLYMOUTH_THEME_DIR}/${PLYMOUTH_THEME_NAME}.plymouth | sed 's/ModuleName *= *//')"
+  # exit if no module exists on the system for the theme
+  if [ ! -f "/usr/lib/plymouth/$PLYMOUTH_MODULE_NAME.so" ]; then
+    error "The default plymouth plugin (%s) doesn't exist" "$PLYMOUTH_MODULE_NAME"
+    return 1
+  fi
 
-	add_binary /usr/bin/plymouthd
-	add_binary /usr/bin/plymouth
-	add_binary /usr/lib/plymouth/plymouthd-fd-escrow
+  # copy binaries and base plugins
+  map add_binary \
+    'plymouthd' \
+    'plymouth' \
+    '/usr/lib/plymouth/plymouthd-fd-escrow' \
+    '/usr/lib/plymouth/text.so' \
+    '/usr/lib/plymouth/details.so' \
+    '/usr/lib/plymouth/label.so' \
+    '/usr/lib/plymouth/renderers/drm.so' \
+    '/usr/lib/plymouth/renderers/frame-buffer.so' \
+    "/usr/lib/plymouth/$PLYMOUTH_MODULE_NAME.so"
 
-	add_file ${DATADIR}/themes/text/text.plymouth
-	add_binary ${PLYMOUTH_PLUGIN_PATH}/text.so
-	add_file ${DATADIR}/themes/details/details.plymouth
-	add_binary ${PLYMOUTH_PLUGIN_PATH}/details.so
+  # copy base themes and logo
+  map add_file \
+    '/usr/share/plymouth/themes/text/text.plymouth' \
+    '/usr/share/plymouth/themes/details/details.plymouth' \
+    '/usr/share/plymouth/artix-logo.png' \
+    '/usr/share/plymouth/plymouthd.defaults' \
+    '/etc/plymouth/plymouthd.conf' \
+    "$PLYMOUTH_FONT_PATH"
 
-	add_file "${PLYMOUTH_LOGO_FILE}"
-	add_file /etc/os-release
-	add_file /etc/plymouth/plymouthd.conf
-	add_file ${DATADIR}/plymouthd.defaults
-	
-	
-	if [ -f "/usr/share/fonts/cantarell/Cantarell-VF.otf" ]; then
-		add_binary ${PLYMOUTH_PLUGIN_PATH}/label.so
-		add_file "/etc/fonts/fonts.conf"
-		add_file "/usr/share/fonts/cantarell/Cantarell-VF.otf"
-		if [ -f "/etc/fonts/conf.d/60-latin.conf" ]; then
-		  add_file "/etc/fonts/conf.d/60-latin.conf"
-		fi
-	fi
+  # copy configured theme
+  if [ -d "$PLYMOUTH_THEME_DIR" ]; then
+    add_full_dir "$PLYMOUTH_THEME_DIR"
+  fi
 
-	if [ ! -f ${PLYMOUTH_PLUGIN_PATH}/${PLYMOUTH_MODULE_NAME}.so ]; then
-		echo "The default plymouth plugin (${PLYMOUTH_MODULE_NAME}) doesn't exist" > /dev/stderr
-		exit 1
-	fi
+  # copy images for the configured theme
+  if [ "$PLYMOUTH_IMAGE_DIR" != "$PLYMOUTH_THEME_DIR" -a -d "$PLYMOUTH_IMAGE_DIR" ]; then
+    add_full_dir "$PLYMOUTH_IMAGE_DIR"
+  fi
 
-	add_binary ${PLYMOUTH_PLUGIN_PATH}/${PLYMOUTH_MODULE_NAME}.so
+  # needed to access DRM devices
+  add_udev_rule '71-seat.rules'
 
-	add_binary ${PLYMOUTH_PLUGIN_PATH}/renderers/drm.so
-	add_binary ${PLYMOUTH_PLUGIN_PATH}/renderers/frame-buffer.so
-
-	if [ -d ${PLYMOUTH_THEME_DIR} ]; then
-		add_full_dir ${PLYMOUTH_THEME_DIR}
-	fi
-
-	if [ "${PLYMOUTH_IMAGE_DIR}" != "${PLYMOUTH_THEME_DIR}" -a -d ${PLYMOUTH_IMAGE_DIR} ]; then
-		add_full_dir ${PLYMOUTH_IMAGE_DIR}
-	fi
-
-	add_file /usr/lib/udev/rules.d/70-uaccess.rules
-	add_file /usr/lib/udev/rules.d/71-seat.rules
-
-	# suppress a warning in glib (which the label control uses)
-	# about uid 0 by building a dummy NSS stack (LP #649917)
-	add_file /etc/passwd
-	add_file /etc/nsswitch.conf
-	add_binary "$(readlink -e /lib/libnss_files.so.2)"
-	add_file /lib/libnss_files.so.2
-
-	add_runscript
+  # copy systemd unit files for systemd boot, otherwise use runscript
+  if command -v add_systemd_unit >/dev/null; then
+    map add_systemd_unit \
+      'plymouth-halt.service' \
+      'plymouth-kexec.service' \
+      'plymouth-poweroff.service' \
+      'plymouth-quit-wait.service' \
+      'plymouth-quit.service' \
+      'plymouth-reboot.service' \
+      'plymouth-start.service' \
+      'plymouth-switch-root.service' \
+      'systemd-ask-password-plymouth.path' \
+      'systemd-ask-password-plymouth.service'
+  else
+    add_runscript
+  fi
 }
 
 help() {
-	cat <<HELPEOF
-This hook includes plymouth in the initramfs image.
+  cat <<HELPEOF
+This hook includes Plymouth in initramfs. It shows a graphical splash screen
+during boot if the 'splash' kernel parameter is specified.
 HELPEOF
 }
