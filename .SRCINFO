@@ -10,6 +10,7 @@ pkgbase = rst2gemtext
 	depends = python-pygments
 	depends = python-setuptools
 	depends = python-importlib-metadata
+	provides = FLOZz
 	options = zipman
 	source = rst2gemtext-0.3.0.tar.gz::https://github.com/flozz/rst2gemtext/archive/refs/tags/v0.3.0.tar.gz
 	sha256sums = f11601f0f14edb2b804617a1c51ede477f7f3fbf7a0cba882c771e854f0eede8

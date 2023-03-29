@@ -8,7 +8,7 @@ url="https://github.com/flozz/rst2gemtext"
 license=('GPL3')
 depends=('python>=3.7' 'python-docutils' 'python-pygments' 'python-setuptools' 'python-importlib-metadata')
 options=('zipman')
-providers="FLOZz"
+provides=(FLOZz)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('f11601f0f14edb2b804617a1c51ede477f7f3fbf7a0cba882c771e854f0eede8')
 package() {
