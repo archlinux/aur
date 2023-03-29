@@ -1,0 +1,14 @@
+pkgbase = rprobe
+	pkgdesc = A tool in Rust that can check which HTTP or HTTPS hosts are online
+	pkgver = 0.5.4
+	pkgrel = 1
+	url = https://github.com/vschwaberow/rprobe
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = cargo
+	options = !lto
+	source = rprobe-0.5.4.tar.gz::https://github.com/vschwaberow/rprobe/archive/refs/tags/v0.5.4.tar.gz
+	sha256sums = ecddd6dab0300a635b00d019dd0458e967abe0bdfbd5b27cf390a7ec1ae336ba
+
+pkgname = rprobe
