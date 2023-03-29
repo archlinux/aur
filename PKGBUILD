@@ -1,8 +1,8 @@
 # Maintainer: TimeTrap <zhaoyuanpan at gmail dot com>
 pkgname=cursor-bin
-_pkgname=Cursor
+_pkgname=cursor
 pkgver=0.1.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Write, edit, and chat about your code with GPT-4.(AppImage)"
 arch=('x86_64')
 url="https://cursor.so"
@@ -16,7 +16,7 @@ _install_path="/opt/appimages"
 prepare() {
     chmod a+x "${_pkgname}-${pkgver}.AppImage"
     "./${_pkgname}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's/AppRun/\/opt\/appimages\/Cursor.AppImage/g' -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
+    sed 's/AppRun/\/opt\/appimages\/cursor.AppImage/g' -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${_pkgname}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${_pkgname}.AppImage"
