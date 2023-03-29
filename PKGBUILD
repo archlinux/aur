@@ -1,7 +1,7 @@
 # Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=wpimath
-pkgver=2023.4.2
+pkgver=2023.4.3
 pkgrel=1
 pkgdesc="WPILib's mathematics and controls library"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('fmt' 'eigen')
 makedepends=('cmake')
 license=('BSD' 'MIT')
 options=('!strip' 'staticlibs')
-source=('git+https://github.com/wpilibsuite/allwpilib#tag=v2023.4.2'
+source=('git+https://github.com/wpilibsuite/allwpilib#tag=v2023.4.3'
         'Suppress-Eigen-warning.patch')
 md5sums=('SKIP'
          '0116ecb4c78683a00db29f15c23b2920')
