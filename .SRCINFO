@@ -1,7 +1,7 @@
 pkgbase = ventoy
 	pkgdesc = A new bootable USB solution
 	pkgver = 1.0.90
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ventoy.net/
 	arch = x86_64
 	license = GPL3
@@ -69,7 +69,7 @@ pkgbase = ventoy
 	sha256sums = SKIP
 	sha256sums = c6f691aa91afbaab811a369fe729f61d8e5b58bb5ad79a45446c9ee849c1a60b
 	sha256sums = 0e6f338f78d26ff30a921078a31fd294143ee603166a476dd38d2b2277e4b049
-	sha256sums = 03171f233e7d7472a7fc212ea5cca0ab5b6dace7976bb2ffb1379a3f83960dd9
+	sha256sums = a2f1813d98559c723e7baadf3a194d7646fe19ecf7affdeddedbf406cde35164
 	sha256sums = 7994ad5a63d00446da2e95da1f3f03355b272f096d7eb9830417ab14393b3ace
 	sha256sums = 313aa962c7f80a02f41758d90d6f67687c77c74a6126b060337f248bc1b637f6
 	sha256sums = 7d5b0b6062521e4627e099e4c9dc8248d32a30285e959b7eecaa780cf8cfd4a4

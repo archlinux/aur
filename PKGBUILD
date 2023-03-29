@@ -56,7 +56,7 @@ _busybox_ver=1.32.0             # (Jun 2020) old! FIXME
 _crypt_ver=1.7.5                # (Apr 2017) old! FIXME for veritysetup
 _lunzip_ver=1.11                # (Jan 2019) old! FIXME
 _wimboot_ver=2.7.3              # (Apr 2021) old! FIXME
-pkgrel=1
+pkgrel=2
 pkgdesc="A new bootable USB solution"
 arch=(x86_64)
 url="https://www.ventoy.net/"
@@ -133,7 +133,7 @@ sha256sums=('edc9cebbce9122410be358c36e0954a25ea19ea7e647bbaa5467f057a028eb5b'
             'SKIP'
             'c6f691aa91afbaab811a369fe729f61d8e5b58bb5ad79a45446c9ee849c1a60b'
             '0e6f338f78d26ff30a921078a31fd294143ee603166a476dd38d2b2277e4b049'
-            '03171f233e7d7472a7fc212ea5cca0ab5b6dace7976bb2ffb1379a3f83960dd9'
+            'a2f1813d98559c723e7baadf3a194d7646fe19ecf7affdeddedbf406cde35164'
             '7994ad5a63d00446da2e95da1f3f03355b272f096d7eb9830417ab14393b3ace'
             '313aa962c7f80a02f41758d90d6f67687c77c74a6126b060337f248bc1b637f6'
             '7d5b0b6062521e4627e099e4c9dc8248d32a30285e959b7eecaa780cf8cfd4a4'
