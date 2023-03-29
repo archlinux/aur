@@ -1,0 +1,22 @@
+post_install() {
+    echo "Add the following argument at netbeans_default_options in /usr/etc/netbeans.conf:
+         --laf [THEME] --fontsize [FONTSIZE, DEFAULT: 12]
+
+    This package disables default Look and Feel theems in Appearance tab
+    Themes:
+        * com.jtattoo.plaf.acryl.AcrylLookAndFeel
+        * com.jtattoo.plaf.aero.AeroLookAndFeel
+        * com.jtattoo.plaf.aluminium.AluminiumLookAndFeel
+        * com.jtattoo.plaf.bernstein.BernsteinLookAndFeel
+        * com.jtattoo.plaf.fast.FastLookAndFeel
+        * com.jtattoo.plaf.graphite.GraphiteLookAndFeel
+        * com.jtattoo.plaf.hifi.HiFiLookAndFeel
+        * com.jtattoo.plaf.luna.LunaLookAndFeel
+        * com.jtattoo.plaf.mcwin.McWinLookAndFeel
+        * com.jtattoo.plaf.mint.MintLookAndFeel
+        * com.jtattoo.plaf.noire.NoireLookAndFeel
+        * com.jtattoo.plaf.smart.SmartLookAndFeel
+        * com.jtattoo.plaf.texture.TextureLookAndFeel
+
+        More information at: http://www.jtattoo.net/HowTo_NetBeans.html"
+}
