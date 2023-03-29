@@ -3,7 +3,7 @@ _pkgname=gourou
 pkgname="${_pkgname}-bin"
 __pkgname="lib${_pkgname}"
 pkgver=0.8.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Download and decrypt adobe encrypted (acsm) pdf and epub files"
 arch=('x86_64')
 license=('LGPL3')
@@ -42,7 +42,7 @@ package() {
 	cp -a --no-preserve=ownership {acsmdownloader,adept_activate,adept_remove,adept_loan_mgt} "$pkgdir"/usr/bin
 	# somewhat cleaner
 	for _exec in "$pkgdir"/usr/bin/*; do
-		patchelf --replace-needed libzip.so.4 libzip.so.5 "$_exec"
+		patchelf --replace-needed libzip.so.4 libzip.so "$_exec"
 	done
 	__so="${pkgdir}/usr/lib/${__pkgname}.so"
 	__sov="$__so"."$pkgver"
