@@ -12,4 +12,3 @@ echo ">>> Current version of settings file is:"
 echo ">>> ~/.secondlife/user_settings/settings_coolvlviewer_1302.xml."
 echo ">>> To use SLVoice, please make sure Wine is installed on your system and then simply run the script "install-wine-SLVoice.sh" to setup everything for the viewer."
 }
-
