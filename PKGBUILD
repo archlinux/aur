@@ -11,7 +11,7 @@
 
 pkgname=ungoogled-chromium-xdg
 pkgver=111.0.5563.146
-pkgrel=1
+pkgrel=2
 _launcher_ver=8
 _gcc_patchset=2
 _manual_clone=0
@@ -66,7 +66,7 @@ source=(${source[@]}
         vaapi-add-av1-support.patch
         remove-main-main10-profile-limit.patch)
 sha256sums=(${sha256sums[@]}
-            '2ad44997d95ae66b36125bf62bf1308006ec62da26ba04f8b5480d7271675079'
+            'df09f3adeb27ac6c619522ea524be0450cfe5324599eb2d5462f1c63e661a2f8'
             'e9e8d3a82da818f0a67d4a09be4ecff5680b0534d7f0198befb3654e9fab5b69'
             'e742cc5227b6ad6c3e0c2026edd561c6d3151e7bf0afb618578ede181451b307'
             'fc810e3c495c77ac60b383a27e48cf6a38b4a95b65dd2984baa297c5df83133c')
