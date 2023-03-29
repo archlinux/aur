@@ -1,7 +1,7 @@
 # Maintainer: Pierre Grasser <pierre.grasser@proton.me>
 pkgname=save3ds_fuse-git
 _reponame=${pkgname%_fuse-git}
-pkgver=1.3.0.r16.g169078a
+pkgver=1.3.0.r20.gc42ef53
 pkgrel=1
 pkgdesc="Extract/Import/FUSE for 3DS save/extdata/database"
 arch=('x86_64' 'i686' 'aarch64')
