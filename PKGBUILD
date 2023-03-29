@@ -12,7 +12,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 depends=("hidapi" "libsamplerate" "speexdsp" "minizip" "sdl2" "zlib" "freetype2" "qt6-base" "qt6-svg" "xdg-user-dirs")
-makedepends=("git" "pkg-config" "nasm" "cmake" "cargo" "ninja")
+makedepends=("git" "pkg-config" "nasm" "cmake" "ninja")
 
 source=("git+https://github.com/Rosalie241/${_pkgname}.git")
 sha256sums=('SKIP')
@@ -34,6 +34,7 @@ build()
     cmake -S "$srcdir/${_pkgname}" -B "$srcdir/${_pkgname}/build" \
                 -DCMAKE_BUILD_TYPE="Release" \
                 -DPORTABLE_INSTALL="OFF" \
+                -DNO_RUST="ON" \
                 -DCMAKE_INSTALL_PREFIX="/usr" \
                 -G "Ninja"
 

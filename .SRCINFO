@@ -9,7 +9,6 @@ pkgbase = rmg-git
 	makedepends = pkg-config
 	makedepends = nasm
 	makedepends = cmake
-	makedepends = cargo
 	makedepends = ninja
 	depends = hidapi
 	depends = libsamplerate
