@@ -59,7 +59,9 @@ package() {
   mv "${srcdir}/${pkgname}/out/devel/WebCord-linux-x64/" "${pkgdir}/opt/webcord-git"
 
   mkdir -p "${pkgdir}/usr/bin/"
-  ln -s "${pkgdir}/opt/webcord-git/webcord" "${pkgdir}/usr/bin/webcord-git"
+  cd "${pkgdir}/usr/bin/"
+  ln -s "../../opt/webcord-git/webcord" "./webcord-git"
+  chmod 755 "${pkgdir}/opt/webcord-git/"
   chmod +x "${pkgdir}/usr/bin/webcord-git"
 }
 
