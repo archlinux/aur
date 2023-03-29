@@ -1,7 +1,7 @@
 pkgbase = thunderbird-bin
 	pkgdesc = Standalone Mail/News reader - binary version
-	pkgver = 102.9.0
-	pkgrel = 2
+	pkgver = 102.9.1
+	pkgrel = 1
 	url = https://www.mozilla.org/thunderbird
 	install = thunderbird-bin.install
 	arch = x86_64
@@ -17,24 +17,24 @@ pkgbase = thunderbird-bin
 	optdepends = hunspell: Spell checking
 	optdepends = hyphen: Hyphenation
 	optdepends = libcanberra: Sound support
-	provides = thunderbird=102.9.0
+	provides = thunderbird=102.9.1
 	conflicts = thunderbird
 	source = thunderbird-bin.desktop
 	source = vendor.js
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
 	sha512sums = 6813e1dfd43c67ad7517714988ac27e7fdfe4857c8e6612c165a8aa89fa013c5ab4f270c13945010422d3bda82a7b7cd5496eaa5cb5524f6b2fa1732e59fd737
 	sha512sums = aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5
-	source_x86_64 = thunderbird-102.9.0-x86_64.tar.bz2::https://ftp.mozilla.org/pub/thunderbird/releases/102.9.0/linux-x86_64/en-US/thunderbird-102.9.0.tar.bz2
-	source_x86_64 = thunderbird-102.9.0-x86_64.tar.bz2::https://ftp.mozilla.org/pub/thunderbird/releases/102.9.0/linux-x86_64/en-US/thunderbird-102.9.0.tar.bz2.asc
-	sha512sums_x86_64 = 01250f6e1c1c4918bf458764dcfea643c37f8f70d83251bed3801cdab4e57182e6e4e99e33a3ff9d6e9661f9f6862cc5fe33bb895039cd30da63c03254894eae
-	sha512sums_x86_64 = 01250f6e1c1c4918bf458764dcfea643c37f8f70d83251bed3801cdab4e57182e6e4e99e33a3ff9d6e9661f9f6862cc5fe33bb895039cd30da63c03254894eae
-	source_pentium4 = thunderbird-102.9.0-pentium4.tar.bz2::https://ftp.mozilla.org/pub/thunderbird/releases/102.9.0/linux-i686/en-US/thunderbird-102.9.0.tar.bz2
-	source_pentium4 = thunderbird-102.9.0-pentium4.tar.bz2::https://ftp.mozilla.org/pub/thunderbird/releases/102.9.0/linux-i686/en-US/thunderbird-102.9.0.tar.bz2.asc
-	sha512sums_pentium4 = 1ef1172c238d2b9f49b1dddf9abd608fc52eb4df8ac3de5d0d94b5a4e17fbec216eb76642cf79443fea017541bce00ed78ff16a0d5aa5a3f911524f9b705d231
-	sha512sums_pentium4 = 1ef1172c238d2b9f49b1dddf9abd608fc52eb4df8ac3de5d0d94b5a4e17fbec216eb76642cf79443fea017541bce00ed78ff16a0d5aa5a3f911524f9b705d231
-	source_i686 = thunderbird-102.9.0-i686.tar.bz2::https://ftp.mozilla.org/pub/thunderbird/releases/102.9.0/linux-i686/en-US/thunderbird-102.9.0.tar.bz2
-	source_i686 = thunderbird-102.9.0-i686.tar.bz2::https://ftp.mozilla.org/pub/thunderbird/releases/102.9.0/linux-i686/en-US/thunderbird-102.9.0.tar.bz2.asc
-	sha512sums_i686 = 1ef1172c238d2b9f49b1dddf9abd608fc52eb4df8ac3de5d0d94b5a4e17fbec216eb76642cf79443fea017541bce00ed78ff16a0d5aa5a3f911524f9b705d231
-	sha512sums_i686 = 1ef1172c238d2b9f49b1dddf9abd608fc52eb4df8ac3de5d0d94b5a4e17fbec216eb76642cf79443fea017541bce00ed78ff16a0d5aa5a3f911524f9b705d231
+	source_x86_64 = thunderbird-102.9.1-x86_64.tar.bz2::https://ftp.mozilla.org/pub/thunderbird/releases/102.9.1/linux-x86_64/en-US/thunderbird-102.9.1.tar.bz2
+	source_x86_64 = thunderbird-102.9.1-x86_64.tar.bz2::https://ftp.mozilla.org/pub/thunderbird/releases/102.9.1/linux-x86_64/en-US/thunderbird-102.9.1.tar.bz2.asc
+	sha512sums_x86_64 = 104c33f836ab95902832f1049e2d13ef37a3936eb985ecead86d56abda118137a073a526bacff39bcebb7cc632f4f6bd727375fd408579b8a5a82c5cb5d16170
+	sha512sums_x86_64 = 104c33f836ab95902832f1049e2d13ef37a3936eb985ecead86d56abda118137a073a526bacff39bcebb7cc632f4f6bd727375fd408579b8a5a82c5cb5d16170
+	source_pentium4 = thunderbird-102.9.1-pentium4.tar.bz2::https://ftp.mozilla.org/pub/thunderbird/releases/102.9.1/linux-i686/en-US/thunderbird-102.9.1.tar.bz2
+	source_pentium4 = thunderbird-102.9.1-pentium4.tar.bz2::https://ftp.mozilla.org/pub/thunderbird/releases/102.9.1/linux-i686/en-US/thunderbird-102.9.1.tar.bz2.asc
+	sha512sums_pentium4 = c15a313e42f9990c9861a702168840d2d974572ff9e7dcca5252a6425684807f7bdff354e40107b81b0db2b764de40677eeb7412b8240ebade72f136ea8d0c50
+	sha512sums_pentium4 = c15a313e42f9990c9861a702168840d2d974572ff9e7dcca5252a6425684807f7bdff354e40107b81b0db2b764de40677eeb7412b8240ebade72f136ea8d0c50
+	source_i686 = thunderbird-102.9.1-i686.tar.bz2::https://ftp.mozilla.org/pub/thunderbird/releases/102.9.1/linux-i686/en-US/thunderbird-102.9.1.tar.bz2
+	source_i686 = thunderbird-102.9.1-i686.tar.bz2::https://ftp.mozilla.org/pub/thunderbird/releases/102.9.1/linux-i686/en-US/thunderbird-102.9.1.tar.bz2.asc
+	sha512sums_i686 = c15a313e42f9990c9861a702168840d2d974572ff9e7dcca5252a6425684807f7bdff354e40107b81b0db2b764de40677eeb7412b8240ebade72f136ea8d0c50
+	sha512sums_i686 = c15a313e42f9990c9861a702168840d2d974572ff9e7dcca5252a6425684807f7bdff354e40107b81b0db2b764de40677eeb7412b8240ebade72f136ea8d0c50
 
 pkgname = thunderbird-bin
