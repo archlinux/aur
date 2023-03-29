@@ -14,7 +14,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 backup=('etc/conf.d/networkd-dispatcher.conf')
 source=("https://gitlab.com/craftyguy/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-sha512sums=('6eb8a3d2d2c4b1c57b10e6b7539744c6747e5a0e3680937190d3a802fab55c491a3560727a7f84354be71dc8bf50a7432deaa624a0bdd6671ebc9cd655f1e564')
+sha512sums=('7d3288ddfc83236b8c8378c48dce5892c7e3495e3c11869a78730f5f363c645b51fb1c781eb63393c6e28c7444a93190bf86c8abae2d6715db23ea22a4999401')
 
 package() {
         cd "${pkgname}-${pkgver}"
