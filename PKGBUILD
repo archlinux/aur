@@ -2,7 +2,7 @@
 # Contributor: lsf
 # Contributor: Daniel Haß <aur@hass.onl>
 pkgname=standardnotes-desktop
-pkgver=3.150.7
+pkgver=3.150.33
 pkgrel=1
 _electronversion=22
 pkgdesc="An end-to-end encrypted notes app for digitalists and professionals."
@@ -14,7 +14,7 @@ makedepends=('libxcrypt-compat' 'nvm' 'yarn')
 source=("standardnotes-$pkgver.tar.gz::https://github.com/standardnotes/app/archive/refs/tags/@standardnotes/desktop@${pkgver}.tar.gz"
         "standard-notes.desktop"
         "standard-notes.sh")
-sha256sums=('5a1e84ab31f5155d2c5a854a7e9ed697b15831649d9c18de1a3d301129f34579'
+sha256sums=('f04481b117a390dd341ccb55ccfab2289ba70a3d67f520c3dec3971382301a2d'
             '274cd3914ff2a6a0999485a26cbded3ad597763482a90eee8ee34490ddffda00'
             '5fa1b6ed3cedfbf233d8e7f34edd7d643d43d7299d19645d098ae6cd2bd3f8d6')
 
