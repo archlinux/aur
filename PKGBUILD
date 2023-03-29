@@ -3,7 +3,8 @@
 pkgname=komikku
 _author=valos
 _gitname=Komikku
-pkgver=1.16.0
+pkgver=1.17.0
+commitnum=97162e033dcef7d2ecdd9da7465cc27e8e1f9858
 pkgrel=1
 pkgdesc='Online/Offline Manga reader based on GNOME | PinePhone/Librem 5 Support'
 arch=(any)
@@ -24,6 +25,7 @@ depends=(
   python-magic
   python-natsort
   python-pillow
+  python-piexif
   python-pure-protobuf
   python-unidecode
   python-wheel
@@ -37,10 +39,11 @@ makedepends=(
 )
 optdepends=('org.freedesktop.secrets: store passwords safely')
 source=("https://gitlab.com/$_author/$_gitname/-/archive/v$pkgver/$_gitname-v$pkgver.tar.gz")
-sha256sums=('f30606abc71aaf98ef4dc6112b37f409631cef732499dd89c9e31851a5c6ebad')
+sha256sums=('76fafad31480dde10bf75969870d212337618be242919f53c28661bef949647e')
 
+#Build has a janky fix; Git clone didn't clone into v1.17.0 but its commitnum
 build() {
-  arch-meson $_gitname-v$pkgver build
+  arch-meson $_gitname-$commitnum build
   ninja -C build
 }
 
