@@ -1,13 +1,12 @@
 pkgbase = perccli
 	pkgdesc = Proprietary controller binary for DELL PERC RAID cards.
-	pkgver = 7.3_007.0318
-	pkgrel = 0
-	url = https://www.dell.com/support/home/us/en/04/drivers/driversdetails?driverid=f48c2
+	pkgver = 7.5.007.0529
+	pkgrel = 1
+	url = https://www.dell.com/support/home/en-us/drivers/driversdetails?driverId=NF8G9
+	arch = i686
 	arch = x86_64
-	license = GPL
-	makedepends = rpmextract
-	source = https://dl.dell.com/FOLDER04830419M/1/perccli_7.3-007.0318_linux.tar.gz
-	sha256sums = 8c37be8c2a2ccd4fb013362b9b772807e05d65f17bcbb773002098dab8ee1c93
+	license = custom
+	source = https://dl.dell.com/FOLDER05235308M/1/perccli_linux_NF8G9_A07_7.529.00.tar.gz
+	sha256sums = bf5b364d5d3d7035f5973159b569731b9535e2a35f63a7f6a900a8cca15b9f29
 
 pkgname = perccli
-
