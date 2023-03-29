@@ -9,7 +9,6 @@ license=('Apache')
 provides=(shimmer-firefly-wallet)
 options=('!strip')
 depends=('gnome-keyring' 'libsecret' 'gtk3' 'libxss' 'nss')
-conflicts=('iota-firefly-wallet')
 
 source_x86_64=("https://github.com/iotaledger/firefly/releases/download/desktop-$pkgver/firefly-desktop-$pkgver.AppImage")
 sha256sums_x86_64=('4474f38d9ddf526d045927ad9cba08a841d550731a8994de6ed04b603582f050')
