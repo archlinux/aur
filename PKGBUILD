@@ -3,7 +3,7 @@
 
 pkgname=nextcloud-app-impersonate
 _name=impersonate
-pkgver=1.12.0
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="Allow administrators to become a different user by adding an impersonate action to the user list"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL')
 makedepends=('nextcloud' 'php' 'ripgrep' 'yq')
 options=('!strip')
 source=("$pkgname-$pkgver.tgz::https://github.com/nextcloud-releases/impersonate/releases/download/v$pkgver/impersonate-v$pkgver.tar.gz")
-sha256sums=('3a7b7f1655b5711ce0941604db4c678410ed06eea5a0c8855f64bf06238808bb')
+sha256sums=('b3ac078ba0dfce264efc47668c89d614e3a074016f22b72106635dee69f0b1ac')
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
 # 1. Call respective function helpers in check() and package() *after* cd'ing to the source directory
