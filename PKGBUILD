@@ -4,7 +4,7 @@
 pkgname=python-hyperspy
 pkgshort=hyperspy
 pkgver=1.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Hyperspectral data analysis"
 arch=('any')
 url="http://hyperspy.org"
@@ -39,7 +39,7 @@ depends=('python'
        # 'python-imageio'  # AUR (from scikit-image)
        # 'python-pywavelets' # AUR (from scikit-image)
          'python-tifffile>=2020.2.16'  # AUR (from scikit-image)        
-         'python-numba-git>=0.52'  # AUR (from python-sparse, but currently requires git version)
+         'python-numba>=0.52'  # AUR (from python-sparse, but currently requires git version)
          'python-llvmlite-git' # AUR (from python-numba, but currently requires git version)
          )
 
