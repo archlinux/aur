@@ -1,12 +1,16 @@
 pkgbase = archinstall-git
 	pkgdesc = Just another guided/automated Arch Linux installer with a twist
-	pkgver = 2.4.0.dev0
+	pkgver = 2.5.4.r1.g9f102a6
 	pkgrel = 1
 	url = https://github.com/archlinux/archinstall
 	arch = any
 	license = GPL3
+	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python-sphinx
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	provides = python-archinstall
 	conflicts = python-archinstall
