@@ -1,0 +1,6 @@
+post_upgrade() {
+  # Show warning for users of the old package from AUR
+  if (( $(vercmp $2 '22.02.122-5') < 0 )); then
+    echo "WARNING: The 'plymouth-encrypt' hook no longer exists in the package. You should replace ithem with 'encrypt' hook in your 'mkinitcpio.conf'."
+  fi
+}
