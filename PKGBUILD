@@ -6,7 +6,7 @@
 pkgname=imagemagick6
 _pkgver=6.9.12-83
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="An image viewing/manipulation program (legacy 6.9.12-* series)"
 url="https://legacy.imagemagick.org/"
 arch=('x86_64')
@@ -47,6 +47,9 @@ prepare() {
 
   # Fix up typemaps to match our packages, where possible
   patch -p1 -i ../arch-fonts.diff
+
+  # Fix typo
+  sed -i 's/jps_images/jps_image/g' coders/jpeg.c
 }
 
 build() {
