@@ -1,6 +1,6 @@
 # Maintainer: Hugo Denizart <hugo at denizart dot pro>
 pkgname=obs-streamfx-git
-pkgver=0.12.0a170.r1.g7234ae97
+pkgver=0.12.0b191.r10.g5dfb8bca
 pkgrel=1
 pkgdesc="Bring your stream back to life with modern effects!"
 arch=("x86_64")
@@ -14,8 +14,10 @@ makedepends=("cmake" "git" "libfdk-aac" "libxcomposite" "x264" "jack"
              "vlc" "swig" "luajit" "python" "ninja")
 provides=("obs-streamfx")
 conflicts=("obs-streamfx")
-source=("$pkgname::git+https://github.com/Xaymar/obs-StreamFX.git#branch=root")
-md5sums=("SKIP")
+source=("$pkgname::git+https://github.com/Xaymar/obs-StreamFX.git#branch=root"
+        "00001-fix-build-on-ffmpeg-6.patch")
+md5sums=("SKIP"
+         "e532ab3c20aa2b40099706990ec92ba0")
 
 pkgver() {
   cd "$pkgname"
@@ -25,6 +27,7 @@ pkgver() {
 prepare() {
   cd $pkgname
   git submodule update --init --recursive
+  git apply ../00001-fix-build-on-ffmpeg-6.patch
 }
 
 build() {
