@@ -7,7 +7,7 @@
 _pkgname='xdis'
 pkgname="python-${_pkgname}"
 pkgver=6.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Python cross-version bytecode library and disassembler'
 arch=('any')
 url='https://github.com/rocky/python-xdis'

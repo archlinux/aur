@@ -1,7 +1,7 @@
 pkgbase = python-xdis
 	pkgdesc = Python cross-version bytecode library and disassembler
 	pkgver = 6.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rocky/python-xdis
 	arch = any
 	license = GPL2
