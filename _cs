@@ -1,0 +1,4 @@
+#compdef _cs cs
+function _cs {
+  eval "$(cs complete zsh-v1 $CURRENT $words[@])"
+}
