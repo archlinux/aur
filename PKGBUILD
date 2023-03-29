@@ -1,7 +1,7 @@
 # Maintainer: asukaminato <asukaminato@nyan.eu.org>
 pkgname=deeplx-bin
 pkgver=0.7.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Permanently free DeepL API written in Golang"
 arch=('x86_64' 'i686' 'aarch64' 'mips')
 url="https://github.com/OwO-Network/DeepLX"
@@ -36,6 +36,6 @@ validpgpkeys=()
 
 package() {
 		install -Dm755 "deeplx-${CARCH}-${pkgver}" "${pkgdir}/usr/bin/deeplx"
-		install -Dm644 deeplx.service -t "${pkgdir}/etc/systemd/system/"
+		install -Dm644 deeplx.service -t "${pkgdir}/usr/lib/systemd/system/"
 		install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
