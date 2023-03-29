@@ -1,27 +1,27 @@
-# Maintainer: olddog <jeff@impcode.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: olddog <jeff@impcode.com>
 
 pkgname=vim-gutentags-git
-pkgver=r266.50705e8
+_pkg="${pkgname%-git}"
+pkgver=1.0.0.r77.g1337b18
 pkgrel=1
 pkgdesc='A Vim plugin that manages your tag files'
 arch=('any')
-url='https://bolt80.com/gutentags/'
+url='https://github.com/ludovicchabant/vim-gutentags'
 license=('MIT')
-makedepends=('git')
 groups=('vim-plugins')
-depends=('vim-runtime')
-source=("git+https://github.com/ludovicchabant/${pkgname%-git}.git")
+depends=('vim-plugin-runtime')
+makedepends=('git')
+source=("$_pkg::git+$url")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git -C "$_pkg" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 package() {
-  cd "${pkgname%-git}"
-  _installpath="${pkgdir}/usr/share/vim/vimfiles"
-  mkdir -p "${_installpath}"
-  cp -r autoload doc plugin res plat "${_installpath}"
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	local dirs=(autoload doc plat/unix plugin res)
+	cd "$_pkg"
+	find "${dirs[@]}" -type f -exec install -Dvm644 '{}' "$pkgdir/usr/share/vim/vimfiles/{}" \;
+	install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
