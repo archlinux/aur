@@ -1,41 +1,41 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=crm
-pkgver=0.1.9
-pkgrel=1
-pkgdesc="crm 是一个在终端运行的镜像管理程序，能够对 Cargo 镜像源进行简单的添加、修改、删除操作，并能帮助您快速的切换不同的 Cargo 镜像源。"
+pkgver=0.2.0
+pkgrel=0
+pkgdesc="crm (Cargo registry manager)"
 arch=('any')
 url="https://github.com/wtklbm/crm"
 license=('MIT' 'Apache-2.0')
 provides=(${pkgname})
-conflicts=(${pkgname} ${pkgname}-git)
-#replaces=(${pkgname})
+conflicts=(${pkgname})
+replaces=()
 depends=('cargo')
-makedepends=('make' 'git' 'cmake' 'gcc' 'rust')
+makedepends=('rust')
 backup=()
-options=('!strip')
-#install=${pkgname}.install
-source=("${pkgname}-${pkgver}.tar.gz::https://ghproxy.com/https://github.com//wtklbm/crm/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('92b58b8f87f996171618e65ea6a5d83a10cf7a055769574eb51424e82a8e7e3a')
+options=('!strip' '!lto')
+install=
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('6f86492f0798293795b5febf8d367b29bbbd939b1542e1b139470b90cddc7ed4')
+
 build() {
-# build crm
     cd "${srcdir}/${pkgname}-${pkgver}/"
-    cargo build --release
+
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --release --all-features
 }
 
 check() {
     cd "${srcdir}/${pkgname}-${pkgver}/"
-    cargo test --release
+
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --all-features
 }
 
 package() {
-# install crm
-    install -Dm0755 "${srcdir}/${pkgname}-${pkgver}/target/release/${pkgname}" "${pkgdir}/usr/share/${pkgname}/${pkgname}"
+    cd "${srcdir}/${pkgname}-${pkgver}/"
 
-    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" << EOF
-#!/bin/env bash
-cd /usr/share/${pkgname}/
-./${pkgname} "\$@"
-EOF
-
+    export RUSTUP_TOOLCHAIN=stable
+    cargo install --no-track --all-features --root "$pkgdir/usr/" --path .
 }
