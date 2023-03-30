@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=AnnotationForge
-_pkgver=1.40.1
+_pkgver=1.40.2
 pkgname=r-${_pkgname,,}
-pkgver=1.40.1
+pkgver=1.40.2
 pkgrel=1
 pkgdesc='Tools for building SQLite-based annotation data packages'
 arch=('any')
@@ -38,7 +38,7 @@ optdepends=(
   r-org.hs.eg.db
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('de073ce37a6c661696d4de2e577882c7379af49f20181b6be62896660a658d9b')
+sha256sums=('8d1b474b2e15235b0ec80c9e426e462a795830fec96499259f14d2fc13b567a9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
