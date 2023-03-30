@@ -2,7 +2,7 @@
 
 pkgname='ztoim'
 _pkgname='ztoim'
-pkgver='8.1.10';
+pkgver='8.18.1';
 _major="${pkgver%%.*}"
 pkgrel='1'
 pkgdesc="ZTO BAOHE ${_major}"
