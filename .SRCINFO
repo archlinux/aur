@@ -1,12 +1,12 @@
 pkgbase = python-broadlink
 	pkgdesc = broadlink_cli script for interacting with broadlink remote control devices
-	pkgver = 0.18.2
+	pkgver = 0.18.3
 	pkgrel = 1
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-cryptography
-	source = https://github.com/mjg59/python-broadlink/archive/refs/tags/0.18.2.tar.gz
-	sha256sums = 6b11e6173a57e32982a44ca214b71bfcdd725b1081e9bc0a5f9fb63dab4b4f9e
+	source = https://github.com/mjg59/python-broadlink/archive/refs/tags/0.18.3.tar.gz
+	sha256sums = e0fb1223429d86cab1a9eb7d0ac9514c32f0b8aa67ae4497aef518816d2deed4
 
 pkgname = python-broadlink
