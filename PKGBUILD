@@ -10,7 +10,7 @@
 
 pkgname=webcord-vencord-git
 pkgver=4.1.1.r837.9d291fe
-pkgrel=1
+pkgrel=2
 pkgdesc="A Discord and Fosscord client made with the Electron (master branch with Vencord)."
 arch=("any")
 
@@ -91,7 +91,7 @@ prepare() {
   curl "$_VENCORD_CRX_URL" -L -o "${srcdir:?}/vencord.crx"
   mkdir -p "${srcdir:?}/vencord"
   7z x "${srcdir:?}/vencord.crx" -o"${srcdir:?}/vencord" -y
-  sed -i "361i session.defaultSession.loadExtension(\"${srcdir:?}/vencord\").then(() => console.log(\"Vencord loaded.\"));" "${srcdir:?}/webcord/sources/code/common/main.ts"
+  sed -i "361i session.defaultSession.loadExtension(\"/usr/share/webcord/vencord\").then(() => console.log(\"Vencord loaded.\"));" "${srcdir:?}/webcord/sources/code/common/main.ts"
   sed -i "4i \ \ \ \ \ \ \ \ \"ignoreDeprecations\": \"5.0\"," "${srcdir:?}/webcord/tsconfig.json"
 
   _echo_times "Generating / updating a changelog..."
@@ -314,6 +314,9 @@ _pack() {
   # Package to ASAR
   _echo_times "Packaging app to ASAR archive..."
   install -dm755 "${1}/${pkgname%-vencord-git}"
+  cd "${srcdir:?}"
+  find "./vencord" -type f -exec install -Dm644 "{}" "${1}/${pkgname%-vencord-git}/{}" \;
+  cd "${srcdir:?}/${pkgname%-vencord-git}"
   asar pack --exclude-hidden . "${1}/${pkgname%-vencord-git}/app.asar" || {
     echo "Failed to package to ASAR!"
     exit 2
