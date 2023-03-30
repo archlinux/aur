@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _cranname=hardhat
-_cranver=1.2.0
+_cranver=1.3.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -10,6 +10,7 @@ arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(MIT)
 depends=(
+    r-cli
     r-glue
     r-rlang
     r-tibble
@@ -29,7 +30,7 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
         "CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT")
-sha256sums=('f9320eccb1b5f624a46fa074e3ccc202c383b77098ecd08b193aeb47daedad78'
+sha256sums=('fe9ff009e2ba6dd4d70cbb541430f88d85c0a28d6a1c2772e4910c79b81fe82e'
             'e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b')
 
 build() {
