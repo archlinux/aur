@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-scotch
+	pkgdesc = network Common Data Form interface for array-oriented data access and corresponding library (mingw-w64)
+	pkgver = 7.0.3
+	pkgrel = 1
+	url = https://www.unidata.ucar.edu/software/netcdf/
+	arch = any
+	license = custom
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-bzip2
+	depends = mingw-w64-zlib
+	depends = mingw-w64-xz
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = https://gitlab.inria.fr/scotch/scotch/-/archive/v7.0.3/scotch-v7.0.3.tar.gz
+	sha256sums = SKIP
+
+pkgname = mingw-w64-scotch
