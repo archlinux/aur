@@ -3,7 +3,7 @@
 
 pkgname=adsklicensing
 pkgver=13.0.0.8122
-pkgrel=1
+pkgrel=2
 pkgdesc='Autodesk License Checking Software'
 arch=('x86_64')
 url="https://www.autodesk.com/"
@@ -11,10 +11,8 @@ license=('custom')
 depends=('adlmapps>=28')
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from the official website')
-source=("manual://adsklicensing${pkgver}-0-0.x86_64.rpm"
-		'adsklicensing.install')
-sha256sums=('047e01e421defb7c094552df4e552fb1b55f058bedc39391e9ce0687c6b7892e'
-			'ab9da8ffde6480cd29a7235b3fe874b08b045ccab0e060e0af55499eb739f225')
+source=("manual://adsklicensing${pkgver}-0-0.x86_64.rpm")
+sha256sums=('047e01e421defb7c094552df4e552fb1b55f058bedc39391e9ce0687c6b7892e')
 
 options=(!strip)
 install='adsklicensing.install'
