@@ -4,7 +4,7 @@
 
 pkgname=mycli
 pkgver=1.26.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Terminal Client for MySQL with AutoCompletion and Syntax Highlighting'
 arch=('any')
 url='https://github.com/dbcli/mycli'
@@ -12,7 +12,7 @@ license=('BSD')
 depends=(
     'python'
     'python-click'
-    'python-cryptography=36.0.2'
+    'python-cryptography'
     'python-pygments'
     'python-prompt_toolkit'
     'python-pymysql'
