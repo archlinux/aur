@@ -2,7 +2,7 @@
 
 pkgname=hunspell-ar
 pkgver=3.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Arabic dictionary for hunspell"
 arch=(any)
 url="http://ayaspell.sourceforge.net"
@@ -14,8 +14,6 @@ sha256sums=('966faf94e7d05d52e9afdd20b266e28932edf5b32fe26aa83d554d6a2c6021ea')
 
 package() {
   cd "$srcdir"
-  # bdic dosn't support the IGNORE command yet
-  sed -i '/^IGNORE/d' ar.aff
   install -vDm 644 ar.dic ar.aff -t "$pkgdir/usr/share/hunspell"
 
   pushd "$pkgdir/usr/share/hunspell/"
@@ -26,16 +24,17 @@ package() {
     done
   popd
 
-  # Install webengine dictionary
-  install -d "$pkgdir"/usr/share/qt{,6}/qtwebengine_dictionaries/
-  for _file in "$pkgdir"/usr/share/hunspell/*.dic; do
-  _filename=$(basename $_file)
+  # Install webengine dictionary; the IGNORE command is not supported by bdic (https://bugs.chromium.org/p/chromium/issues/detail?id=1374955)
+  sed -i '/^IGNORE/d' ar.aff
+  install -vd "$pkgdir"/usr/share/qt{,6}/qtwebengine_dictionaries/
+  for _file in *.dic; do
+    _filename=$(basename $_file)
     /usr/lib/qt6/qwebengine_convert_dict $_file "$pkgdir"/usr/share/qt6/qtwebengine_dictionaries/${_filename/\.dic/\.bdic}
-  ln -rs "$pkgdir"/usr/share/qt6/qtwebengine_dictionaries/${_filename/\.dic/\.bdic} "$pkgdir"/usr/share/qt/qtwebengine_dictionaries/
+    ln -rs "$pkgdir"/usr/share/qt6/qtwebengine_dictionaries/${_filename/\.dic/\.bdic} "$pkgdir"/usr/share/qt/qtwebengine_dictionaries/
   done
 
   # myspell symlinks
-  install -dm755 "${pkgdir}/usr/share/myspell/dicts"
+  install -vdm755 "${pkgdir}/usr/share/myspell/dicts"
   pushd "$pkgdir/usr/share/myspell/dicts"
     for file in "$pkgdir/usr/share/hunspell/"*; do
       ln -sv "/usr/share/hunspell/$(basename "$file")" .
@@ -43,6 +42,6 @@ package() {
   popd
 
   # docs
-  install -d $pkgdir/usr/share/doc/$pkgname
-  install -m644 AUTHORS ChangeLog* README* TODO* "$pkgdir/usr/share/doc/$pkgname/"
+  install -vd $pkgdir/usr/share/doc/$pkgname
+  install -vm644 AUTHORS ChangeLog* README* TODO* "$pkgdir/usr/share/doc/$pkgname/"
 }

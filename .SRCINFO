@@ -1,7 +1,7 @@
 pkgbase = hunspell-ar
 	pkgdesc = Arabic dictionary for hunspell
 	pkgver = 3.5
-	pkgrel = 3
+	pkgrel = 4
 	url = http://ayaspell.sourceforge.net
 	arch = any
 	license = GPL
