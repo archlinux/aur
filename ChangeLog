@@ -603,3 +603,24 @@ Fixes:
 - We fixed a problem that caused multiple events to be created when dragging a task into the calendar.
 - We improved the event panel layout to prevent events with long notes from overflowing beyond the app window, which made some information inaccessible.
 - We reduced the sensitivity of events when being dragged across weeks to avoid accidental triggering on large screens.
+
+
+=== Morgen 2.6.8
+New Features:
+- Desktop: With this new release, you can now select a default calendar for tasks that is distinct from the default calendar for events. You can also now choose to make the titles of scheduled tasks' visible by default to those who share your calendar. Like in the past, you can always switch the calendar and other preferences associated with an individual task once it is scheduled.
+
+Improvements:
+- Updated time zone definitions.
+- The current-time line indicator now updates faster when the computer resumes from sleep.
+- Outlook and CalDAV calendars now have a default reminder that will alert you 10 minutes in advance of an event. This can be tuned in Preferences > Accounts.
+- A new style for all-day tasks uses a light background, ensuring tasks extending over multiple days are easily identified.
+- You can now select and copy the title of events regardless of whether you are the organizer. You can also now copy the event and paste its details into any text field outside of Morgen.
+- App icon style updated on Windows.
+
+Fixes:
+- Margins of ordered lists in event or task notes have been fixed.
+- A problem that could cause some events to be covered by other events has been solved.
+- A visual glitch that caused events or tasks to duplicate in the calendar has been fixed.
+- The problem that could cause the location auto-completion field to miss some options has been solved.
+- We fixed an issue impacting event creation in connected Infomaniak calendars after a recent update to their infrastructure.
+
