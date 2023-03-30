@@ -1,0 +1,13 @@
+pkgbase = nouveau-reclocking
+	pkgdesc = A small utility to reclocking your GPU with Nouveau
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/ventureoo/nouveau-reclocking
+	arch = any
+	license = GPL
+	depends = lua
+	provides = nouveau-reclocking
+	source = nouveau-reclocking-1.0.tar.gz::https://github.com/ventureoo/nouveau-reclocking/archive/refs/tags/v1.0.tar.gz
+	sha256sums = d1b7cc1ec0794f4815000de9d24e724108e4fd4023fa68bedf747a709532c659
+
+pkgname = nouveau-reclocking
