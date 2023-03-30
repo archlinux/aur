@@ -3,7 +3,7 @@
 pkgname='python-optax'
 _pkgname=${pkgname#python-}
 pkgver=0.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc='A gradient processing and optimization library for JAX'
 arch=('x86_64')
 url='https://github.com/deepmind/optax'
@@ -25,7 +25,7 @@ build() {
 }
 
 package() {
-    echo python -m installer \
+    python -m installer \
         --compile-bytecode 1 \
         --destdir $pkgdir \
         $_pkgname-$pkgver/dist/$_pkgname-$pkgver-*.whl
