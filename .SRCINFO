@@ -1,7 +1,7 @@
 pkgbase = intel-cpu-runtime
 	pkgdesc = Intel(R) CPU Runtime for OpenCL(TM) Applications
-	pkgver = 2023.0.0
-	pkgrel = 25370
+	pkgver = 2023.1.0
+	pkgrel = 46305
 	url = https://software.intel.com/content/www/us/en/develop/articles/opencl-runtime-release-notes.html
 	arch = x86_64
 	license = custom
@@ -9,10 +9,10 @@ pkgbase = intel-cpu-runtime
 	depends = hwloc
 	provides = opencl-intel
 	provides = opencl-driver
-	noextract = intel-oneapi-runtime-tbb-2021.8.0-25334_amd64.deb
-	noextract = intel-oneapi-runtime-opencl-2023.0.0-25370_amd64.deb
-	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-runtime-tbb-2021.8.0-25334_amd64.deb
-	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-runtime-opencl-2023.0.0-25370_amd64.deb
+	noextract = intel-oneapi-runtime-tbb-2021.9.0-43484_amd64.deb
+	noextract = intel-oneapi-runtime-opencl-2023.1.0-46305_amd64.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-runtime-tbb-2021.9.0-43484_amd64.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-runtime-opencl-2023.1.0-46305_amd64.deb
 	sha256sums = SKIP
 	sha256sums = SKIP
 
