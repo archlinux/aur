@@ -1,6 +1,6 @@
 # Maintainer: Curve <curve.platin at gmail.com>
 pkgname=aawmtt
-pkgver=r1.00c8a35
+pkgver=2.1
 pkgrel=1
 pkgdesc="Another AwesomeWM Testing Tool, with Live Reload and 'proper' display detection"
 arch=('any')
@@ -10,16 +10,11 @@ depends=('xorg-server-xephyr')
 makedepends=('git' 'cmake' 'ninja')
 conflicts=('aawmtt')
 provides=('aawmtt')
-source=("git+https://github.com/Curve/$pkgname")
+source=("https://github.com/Curve/aawmtt/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
-pkgver() {
-        cd "$pkgname"
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 build() {
-  cd "${srcdir}/$pkgname"
+  cd "${srcdir}/$pkgname-$pkgver"
   mkdir -p build
   cd build
   cmake -GNinja -DCMAKE_BUILD_TYPE=Release ..
@@ -28,5 +23,5 @@ build() {
 
 package() {
   # install binary
-  install -Dm 755 "${srcdir}/$pkgname/build/$pkgname" "${pkgdir}/usr/bin/$pkgname"
+  install -Dm 755 "${srcdir}/$pkgname-$pkgver/build/$pkgname" "${pkgdir}/usr/bin/$pkgname"
 }

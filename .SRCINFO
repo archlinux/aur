@@ -1,6 +1,6 @@
 pkgbase = aawmtt
 	pkgdesc = Another AwesomeWM Testing Tool, with Live Reload and 'proper' display detection
-	pkgver = r1.00c8a35
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://github.com/Curve/aawmtt
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = aawmtt
 	depends = xorg-server-xephyr
 	provides = aawmtt
 	conflicts = aawmtt
-	source = git+https://github.com/Curve/aawmtt
+	source = https://github.com/Curve/aawmtt/archive/refs/tags/v2.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = aawmtt
