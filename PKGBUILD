@@ -1,3 +1,5 @@
+# Maintainer: yuhldr <yuhldr@qq.com>
+
 pkgname=('python-dynaphopy')
 pkgver=1.17.0
 pkgrel=1
