@@ -6,8 +6,13 @@
 # NOTE: libtool requires rebuilt with each new gcc version
 
 pkgname=gcc-ada-debug
-pkgver=12.2.0
-_commit=2ee5e4300186a92ad73f1a1a64cb918dc76c8d67
+
+pkgver=12.2.1
+# Don't forget to update version in ada-strippers !
+
+_commit=abaa8f9cc4c06dcdae13a33be9253762861d8657
+# Don't forget to update _commit !
+
 _majorver=${pkgver%%.*}
 pkgrel=1
 provides=(gcc-ada)
@@ -55,8 +60,8 @@ sha256sums=('SKIP'
             'de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931'
             '2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a'
             '1773f5137f08ac1f48f0f7297e324d5d868d55201c03068670ee4602babdef2f'
-            '259f1d6791597ce1383a93611a6bdb21d896fbf63e1503f2549770a656eda413'
-            '31e8ee1137195cb9e6eb7655832f0435bb2b2d4e95d387e10cd6560217e107be')
+            'ee1e0086894e0d65125dd88a1666434b5defacdc0ff691427fd9b9ae3c4e8ba6'
+            'b340af39b91d10a6bf15ac795ada5a509e4b0f993ef6f4415bb504fc0fcc76ba')
 
 prepare() {
   [[ ! -d gcc ]] && ln -s gcc-${pkgver/+/-} gcc
