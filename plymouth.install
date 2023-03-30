@@ -1,0 +1,6 @@
+post_upgrade() {
+  # Show warning for users of a version from before the community adoption
+  if (( $(vercmp $2 '22.02.122.r170.ge8e19371') < 0 )); then
+    echo "WARNING: The 'plymouth-encrypt' and 'sd-plymouth' hooks no longer exist in the package. You should replace them with 'encrypt' and 'plymouth' hooks in your 'mkinitcpio.conf'. Likewise, the 'lxdm-plymouth.service', 'lightdm-plymouth.service' and 'sddm-plymouth.service' systemd service files no longer exist in the package. You should enable 'lxdm.service', 'lightdm.service' or 'sddm.service' instead."
+  fi
+}
