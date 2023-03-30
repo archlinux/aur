@@ -1,4 +1,5 @@
-# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>pkgname=play-in-mpv
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: 	ston <ston dot jia at qq dot com>
 pkgname=play-in-mpv
 pkgver=1.0.4
 pkgrel=1
