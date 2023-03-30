@@ -1,7 +1,7 @@
 pkgbase = gapi-ocaml
 	pkgdesc = A simple OCaml client for Google Services.
-	pkgver = 0.4.2
-	pkgrel = 3
+	pkgver = 0.4.3
+	pkgrel = 1
 	url = https://astrada.github.io/gapi-ocaml/
 	arch = x86_64
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = gapi-ocaml
 	depends = ocaml-yojson<2.0.0
 	options = !strip
 	options = staticlibs
-	source = gapi-ocaml-0.4.2.tar.gz::https://github.com/astrada/gapi-ocaml/archive/v0.4.2.tar.gz
-	sha256sums = 9c4c6dfa43443675d2ac0a14ec6ff5a105e274dc8bb4cdef657fb5f6e0af5b2a
+	source = gapi-ocaml-0.4.3.tar.gz::https://github.com/astrada/gapi-ocaml/archive/v0.4.3.tar.gz
+	sha256sums = d8d551fae40494e0042bf25335e04fee57df38f490a0e4e8f6ec189fbfdada0d
 
 pkgname = gapi-ocaml
