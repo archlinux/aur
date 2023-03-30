@@ -8,6 +8,6 @@ pkgbase = gridtracker
 	depends = nwjs-bin>=0.54.0
 	replaces = gridtracker-bin
 	source = https://gitlab.com/gridtracker.org/gridtracker/-/archive/v1.23.0328/gridtracker-v1.23.0328.tar.gz
-	sha256sums = 6b6e5119b7865c0bfb7ab758374d26c07b396d7b8b26b93b7e1eb4f27141e030
+	sha256sums = 8600877d415d0929bd65894cfeed33d44fe63e50b71355f1c8a7f893bbb4bc75
 
 pkgname = gridtracker
