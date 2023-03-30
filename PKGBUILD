@@ -4,7 +4,7 @@
 _arch=x64v2
 _pkgbase=linux-xanmod-lts
 _major=6.1
-_minor=21
+_minor=22
 _branch=6.x
 _xanmodrel=1
 
@@ -33,8 +33,8 @@ validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha256sums=('0bf34d3e3804b9bfde325679da07364421eead811f160682396854276a0f915d'
-            '771efca9910ad89a5df46e104f0e9a366656ab8e35900d4bf9267fc553745e47')
+sha256sums=('9a793fc80e67f6e36e0c6e3c7d4d78a90bd79795f3ce285c20b2d24b5269a6f1'
+            '10f10925fdf1da727a52ff53dd9ebeaa59fc4702c485fee9adc1fae0911f37af')
 
 prepare() {
   bsdtar -xf ${_file_image} data.tar.xz
