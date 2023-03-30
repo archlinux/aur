@@ -9,6 +9,7 @@ pkgbase = sqlitebrowser-git
 	license = GPL3
 	makedepends = cmake
 	makedepends = qt5-tools
+	makedepends = git
 	depends = qt5-base
 	depends = sqlite
 	depends = libxkbcommon-x11
