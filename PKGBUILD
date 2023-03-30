@@ -2,7 +2,7 @@
 
 pkgname=gpu-screen-recorder-git
 pkgver=r217.8592a46
-pkgrel=2
+pkgrel=3
 pkgdesc='A shadowplay-like screen recorder for Linux. The fastest screen recorder for Linux. Currently only available for NVIDIA (on x11)'
 arch=('x86_64')
 url="https://git.dec05eba.com/gpu-screen-recorder"
@@ -21,4 +21,5 @@ build() {
 package() {
   cd "$srcdir"
   install -Dm755 "gpu-screen-recorder" "$pkgdir/usr/bin/gpu-screen-recorder"
+  [ -f "/proc/driver/nvidia/version" ] && install -Dm644 "88-gsr-coolbits.conf" "$pkgdir/etc/X11/xorg.conf.d/88-gsr-coolbits.conf"
 }
