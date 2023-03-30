@@ -13,7 +13,7 @@ makedepends=(hq)
 source=("$_font-$pkgver.zip::https://www.neogrey.com/fonts-download/${_font/-/_}_medium.zip"
         'font-licenses.html::https://www.neogrey.com/font-licenses')
 sha256sums=('b20ced0a17a7f89c73f5b8e73b931c83b2afcf7b7e99b1f41459a92f33f8ecbb'
-            '0ce165375175192c7a637a46cb6bd7ce62d737f57deef7a6b0bc60cc451c20c2')
+            'SKIP')
 
 prepare() {
 	hq article text < font-licenses.html > FFPU.txt
