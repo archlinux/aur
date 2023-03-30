@@ -9,7 +9,7 @@
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=110.0.5449.0
+pkgver=110.0.5449.3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -29,7 +29,7 @@ depends=(
 #          'libevent'
 #          'ffmpeg'
 #          'icu'       # https://crbug.com/678661.
-         'gtk3'
+#          'gtk3'
 #          'openh264'
          'libpulse'
          'libwebp'
@@ -41,14 +41,13 @@ depends=(
          'bluez-libs'
          'libnet'
          'pipewire'
-         'qt5-base'
+#          'qt5-base'
          )
 makedepends=(
              'gperf'
              'ninja'
              'python-protobuf'
              'python-setuptools'
-             'python'
              'yasm'
              'nasm'
              'git'
@@ -59,10 +58,12 @@ makedepends=(
 optdepends=(
             'pepper-flash: PPAPI Flash Player'
             'chromium-widevine: Widevine plugin (eg: Netflix)'
+            'xdg-desktop-portal-gnome'
+            'xdg-desktop-portal-kde'
             #
             'kdialog: Needed for file dialogs in KF5'
             'kwalletmanager: Needed for storing passwords in KWallet5'
-            'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
+            'org.freedesktop.secrets: password storage backend on GNOME/Xfce'
             #
             'ttf-font: For some typography'
             )
@@ -72,11 +73,11 @@ source=(
         'git+https://github.com/foutrelis/chromium-launcher.git'
         'chromium-dev.svg'
         # Patch form Gentoo.
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-93-InkDropHost-crash.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/36cdd5fd5e71c12c1ebc982a98d258b4e03b2ddb/www-client/chromium/files/chromium-93-InkDropHost-crash.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-108-EnumTable-crash.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-108-revert-GlobalMediaControlsCastStartStop.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/98c8f2a8a2a47606f677ab582ed942b457ded8e9/www-client/chromium/files/chromium-108-revert-GlobalMediaControlsCastStartStop.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-cross-compile.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-shim_headers.patch'
+        'https://github.com/gentoo/gentoo/blob/36cdd5fd5e71c12c1ebc982a98d258b4e03b2ddb/www-client/chromium/files/chromium-shim_headers.patch'
         # Misc Patches.
 #
         # Patch from crbug.com (chromium bugtracker), chromium-review.googlesource.com / Gerrit or Arch chromium package.
@@ -556,9 +557,6 @@ prepare() {
       -i third_party/blink/renderer/core/xml/*.cc \
       -i third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
       -i third_party/libxml/chromium/libxml_utils.cc
-
-  # Fix build if enable HEVC in non-chromeOS system
-#   patch -p1 -i "${srcdir}/fix_hevc_in_non_cromeos_r1.patch"
 
   # # Patch from Gentoo
   patch -p1 -i "${srcdir}/chromium-93-InkDropHost-crash.patch"
