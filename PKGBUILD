@@ -1,7 +1,7 @@
 # Arch User Repository PKGBUILD
 # Maintainer: Your Name <tmarjeski at gmail dot com>
 pkgname=dotris-git
-pkgver=r7.b474638
+pkgver=r8.9e0443a
 pkgrel=1
 pkgdesc="A mini Tetris game made with dots"
 arch=('any')
