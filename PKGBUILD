@@ -1,5 +1,5 @@
 pkgname=diylc
-pkgver=4.35.0
+pkgver=4.36.0
 pkgrel=1
 pkgdesc="Multi platform circuit layout and schematic drawing tool"
 arch=('any')
@@ -9,11 +9,11 @@ depends=('jre11-openjdk' 'sh' 'hicolor-icon-theme')
 optdepends=()
 makedepends=('unzip')
 source=(
-    "https://github.com/bancika/diy-layout-creator/releases/download/v${pkgver}a/diylc-${pkgver}.zip"
+    "https://github.com/bancika/diy-layout-creator/releases/download/v${pkgver}/diylc-${pkgver}.zip"
     "diylc"
     "diylc.desktop"
 )
-sha256sums=('727d5f0c269c5e918e9482d752de4b24158d5d1433083edde0557740e12356b3'
+sha256sums=('5671d208b3a2a077c19f1330cfa50d450dcd34653be8dd4b8c519f0c74214ef0'
             '3833f2cba943d43aa3d46b06483ba79c93f83f3a15fb902518ef3b7474ea64fc'
             'ab080ea3c5baf0dc310f13ae269b9ff81944bb1e6c24173269c047887ebf33b1')
 noextract=("diylc-$pkgver.zip")
