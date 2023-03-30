@@ -1,0 +1,5 @@
+huniq-*.pkg.tar.zst
+huniq-*.pkg.tar.zst.sig
+huniq/
+pkg/
+src/

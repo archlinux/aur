@@ -1,6 +1,6 @@
-pkgbase = huniq-git
+pkgbase = huniq
 	pkgdesc = Filter out duplicates on the command line (git)
-	pkgver = r62.1d3c47e
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://github.com/koraa/huniq
 	arch = x86_64
@@ -8,7 +8,8 @@ pkgbase = huniq-git
 	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs
-	source = git+https://github.com/koraa/huniq
+	conflicts = huniq-git
+	source = huniq::git+https://github.com/koraa/huniq.git#commit=1e4d1f23bbb88c34f7c128f7eb4a500e97eabf4b
 	sha512sums = SKIP
 
-pkgname = huniq-git
+pkgname = huniq
