@@ -1,3 +1,5 @@
+# Maintainer: yuhldr <yuhldr@qq.com>
+
 pkgname=('python-seekpath')
 pkgver=2.0.1
 pkgrel=1
