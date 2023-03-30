@@ -70,7 +70,8 @@ Official() {
   	--info=hidden \
   	--ansi \
   	--margin="2%,1%,2%,1%" \
-  	--cycle |
+  	--cycle \
+	--tiebreak=begin,chunk,length |
   	awk '{print $1}' |
   	sed -e 's/\*$//' |
   	xargs -ro sudo pacman -S
@@ -131,6 +132,7 @@ Aur() {
 	--ansi \
 	--margin="2%,1%,2%,1%" \
 	--cycle \
+	--tiebreak=begin,chunk,length \
 	--bind=ctrl-p:preview:'curl --silent https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD\?h={1}' \
 	--bind=ctrl-x:preview:'cat <(yay -Si {1} 2>/dev/null || paru -Si {1}) <(pacman -Ql {1} 2>/dev/null | awk "{print \$2}")' |
 	awk '{print $1}' |
