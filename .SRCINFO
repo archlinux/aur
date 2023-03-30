@@ -1,7 +1,7 @@
 pkgbase = conceal
 	pkgdesc = Command line recycle bin
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TD-Sky/conceal
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,6 @@ pkgbase = conceal
 	depends = skim
 	conflicts = conceal-bin
 	source = conceal-0.3.1.tar.gz::https://github.com/TD-Sky/conceal/archive/v0.3.1.tar.gz
-	sha256sums = 565f82c8392dc715c41b10647f3b05caa5fc6081443808ecd9456c3d5ba4dfa8
+	sha256sums = 838dd429a6775730b4642caeb7febef0a5c49141de8a6d51a95ea115e6a383f9
 
 pkgname = conceal
