@@ -2,7 +2,7 @@
 
 pkgname=easyeda-pro-electron
 _pkgname=${pkgname%-electron}
-pkgver=1.9.29
+pkgver=1.9.30
 pkgrel=1
 pkgdesc="EasyEDA Professional Edition. Run with system electron."
 arch=('any')
@@ -15,12 +15,14 @@ conflicts=($_pkgname $_pkgname-git $_pkgname-bin)
 install=$pkgname.install
 source=("LICENSE"
         "$pkgname.install"
-        "$_pkgname.sh"
-        "$_pkgname-x86_64-$pkgver.zip::https://image.easyeda.com/files/easyeda-pro-linux-x64-$pkgver.zip")
+        "$_pkgname.sh")
+source_x86_64=("$_pkgname-x86_64-$pkgver.zip::https://image.easyeda.com/files/easyeda-pro-linux-x64-$pkgver.zip")
+source_aarch64=("$_pkgname-aarch64-$pkgver.zip::https://image.easyeda.com/files/easyeda-pro-linux-arm64-$pkgver.zip")
 sha256sums=('c25d162b032c680a34856d65062aa7ffab56a478ee972eeb3e78543d2eb40f74'
             'cc1661c75c9366d2fe43c4b864cf81acb9aae7cab505ce21e7de2db3c68cde76'
-            '89289056ed4b5d051280e3a69dfb550b6914f470f201be1ca3b165ddd4f3e435'
-            '501cbbb6196f77031474d02756d29530c442f6a4720efe908ac791b5d38f7b83')
+            '89289056ed4b5d051280e3a69dfb550b6914f470f201be1ca3b165ddd4f3e435')
+sha256sums_x86_64=('9e9f1d56ce7b3fd3621576713ba4b7ea98733d120b2bbde8634b422da6ccd932')
+sha256sums_aarch64=('a97e66c8a1b537de5d99add25148eb9f5f5d14218282d564e999a55b33648c75')
 
 package() {
     cd $srcdir
