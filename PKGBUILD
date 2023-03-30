@@ -5,8 +5,8 @@
 # Contributor: flbzh <frederic_lebouc (a) yahoo.fr>
 
 pkgname=mozillavpn
-pkgver=2.13.1
-pkgrel=2
+pkgver=2.14.0
+pkgrel=1
 pkgdesc="A fast, secure and easy to use VPN. Built by the makers of Firefox."
 arch=('x86_64')
 url="https://mozilla.org/products/vpn"
