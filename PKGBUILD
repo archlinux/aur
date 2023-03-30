@@ -5,7 +5,7 @@ _patch=02
 
 pkgname=nexus-oss
 pkgver=${_version}.${_patch}
-pkgrel=1
+pkgrel=2
 pkgdesc='Nexus 3 Repository OSS'
 arch=('any')
 url='http://nexus.sonatype.org'
@@ -18,7 +18,6 @@ backup=("var/lib/$pkgname/etc/nexus.properties"
 		)
 source=(
 		"https://download.sonatype.com/nexus/3/nexus-$_version-$_patch-unix.tar.gz"
-		#"https://sonatype-download.global.ssl.fastly.net/repository/downloads-prod-group/3/nexus-$_version-$_patch-unix.tar.gz"
 		"$pkgname"
 		"$pkgname.install"
 		"$pkgname.properties"
@@ -45,7 +44,6 @@ package() {
 	install -dm750 $pkgdir/var/lib/$pkgname
 
 	cp -a $srcdir/nexus-$_version-$_patch $pkgdir/usr/lib/$pkgname
-	cp -a $srcdir/sonatype-work/nexus3/orient $pkgdir/var/lib/$pkgname
 
 	pushd $pkgdir/usr/lib/$pkgname
 	rm -rf bin/nexus.rc \

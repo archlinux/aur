@@ -1,7 +1,7 @@
 pkgbase = nexus-oss
 	pkgdesc = Nexus 3 Repository OSS
 	pkgver = 3.49.0.02
-	pkgrel = 1
+	pkgrel = 2
 	url = http://nexus.sonatype.org
 	install = nexus-oss.install
 	arch = any
