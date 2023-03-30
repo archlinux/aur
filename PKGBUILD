@@ -3,7 +3,7 @@
 
 pkgname=scrivener
 pkgver=1.9.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A powerful content-generation tool for writers"
 arch=('i686' 'x86_64')
 url="http://www.literatureandlatte.com/scrivener.php"
@@ -45,6 +45,9 @@ package() {
   rm -r $pkgdir/opt/scrivener/bin/Aspell/dict/espa*ol.alias
   rm -r $pkgdir/opt/scrivener/bin/Aspell/dict/rom*ne*te.alias
   rm -r $pkgdir/opt/scrivener/bin/Aspell/dict/f*royskt.alias
+
+  #remove old version of libfreetype
+  rm $pkgdir/opt/scrivener/lib/libfreetype.so.6
 
   #clean up files that libtool is leaving behind
   rm "${pkgdir}"/opt/"${pkgname}"/lib/*la
