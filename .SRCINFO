@@ -1,13 +1,13 @@
 pkgbase = xorciph-bin
 	pkgdesc = XOR cipher CLI written in Rust.
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/peppidesu/xorciph
 	arch = x86_64
 	license = APACHE
 	provides = xorciph
 	conflicts = xorciph
-	source = https://github.com/peppidesu/xorciph/releases/download/0.3.0/xorciph-0.3.0-x86_64.tar.gz
-	sha256sums = 66559e8ec218dcce14842edb6c4adbb839e4c214dc6be9c49fa1f264db5d145f
+	source = https://github.com/peppidesu/xorciph/releases/download/0.3.1/xorciph-0.3.1-x86_64.tar.gz
+	sha256sums = 696bee7b1be86e47b1a66c14bcad6f7bdafc70d834ead62d05a9491f43121ca8
 
 pkgname = xorciph-bin
