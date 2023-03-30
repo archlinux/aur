@@ -3,7 +3,7 @@
 # Maintainer: Patrick Münch <patrick@mondoo.com>
 #
 pkgname=mondoo
-orignalVersion="8.2.0"
+orignalVersion="8.3.0"
 pkgver="${orignalVersion/-/_}"
 pkgrel=1
 pkgdesc="Mondoo Client CLI for the Mondoo Policy as Code Platform"
@@ -19,7 +19,7 @@ source=(
 arch=('x86_64')
 depends=()
 
-sha256sums=('3bd49e97f262f7b66cec14853bfa0cc1c66c312b39dd9388525ddbde40f144b5'
+sha256sums=('06a598f45999ff6d3f917f8e91db35577f8b9e5c16a530178ccfe6ce1dd572a6'
             'c8d346670913c91bf712405e57c2311e6fbda37261f8abfadf9ca7e5fdd768bd'
             'cd99e204a986af5a91f46c43478b28f556a4f50fd9721844d0b600d45ac43cb8'
             '2febf46353886823e6a61ca15c73e651d71d45579b0a1a17e18905a61387e7e6'
