@@ -2,8 +2,8 @@
 
 pkgname=scid
 _pkgname=Scid
-pkgver=5.0.0
-_pkgver=5.0
+pkgver=5.0.2
+_pkgver=5.0.2
 pkgrel=1
 pkgdesc="A Free Chess Database Application"
 url="http://scid.sourceforge.net"
@@ -15,7 +15,7 @@ optdepends=('snack: for sound support'
 options=('!emptydirs')
 install="${pkgname}.install"
 source=("https://github.com/benini/scid/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b15d12f4988977c878646aafcff34b017b81bcd14f6a3fd4ad33da3532b15191')
+sha256sums=('54b1b3c66810d806464966cafd73f0afa2aa39bd2e17549ebf1d12f659e46301')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
