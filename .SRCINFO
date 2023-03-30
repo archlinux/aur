@@ -1,6 +1,6 @@
 pkgbase = opengamepadui-bin
 	pkgdesc = Open source game launcher
-	pkgver = v0.2.0
+	pkgver = v0.2.1
 	pkgrel = 1
 	url = https://github.com/ShadowBlip/OpenGamepadUI
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = opengamepadui-bin
 	depends = networkmanager
 	provides = opengamepadui
 	conflicts = opengamepadui-git
-	source = opengamepadui.tar.gz::https://github.com/ShadowBlip/OpenGamepadUI/releases/download/v0.2.0/opengamepadui.tar.gz
-	sha256sums = 9f068e0e77992127721be6ede0f618daca90df097a136d2cd1752a951c7da048
+	source = opengamepadui.tar.gz::https://github.com/ShadowBlip/OpenGamepadUI/releases/download/v0.2.1/opengamepadui.tar.gz
+	sha256sums = 6717152766f2c83d52d33855db24f7eaaa40454859097461096875e42cd0bc6c
 
 pkgname = opengamepadui-bin
 	options = !strip
