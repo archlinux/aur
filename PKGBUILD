@@ -4,7 +4,7 @@
 pkgbase=usockets
 pkgname=usockets
 pkgver=0.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Miniscule cross-platform eventing, networking & crypto for async applications"
 url="https://github.com/uNetworking/uSockets"
 license=('Apache')
