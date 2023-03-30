@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://audiorelay.net"
 license=('unknown')
 depends=('alsa-lib' 'flac' 'harfbuzz' 'libogg' 'libpulse' # "java-runtime=${_jre_ver}"
-         'libvorbis' 'libxau' 'libxcb' 'systemd-libs' 'xdg-utils') # 'opus' 'portaudio'
+         'libvorbis' 'libxau' 'libxcb' 'systemd-libs' 'xdg-utils') # 'opus' 'portaudio' 'rtaudio'
 source=("https://dl.audiorelay.net/setups/linux/$pkgname-$pkgver.deb")
 sha256sums=('f991b34d88f9e9a94cd915ef0f74011099c5df7eec19352cbec595a54d0810b7')
 
@@ -31,4 +31,5 @@ package() {
   # Symlink libs
 #  ln -s /usr/lib/libportaudio.so "$pkgdir/usr/lib/libnative-portaudio.so"
 #  ln -s /usr/lib/libopus.so "$pkgdir/usr/lib/libnative-opus.so"
+#  ln -s /usr/lib/librtaudio.so "$pkgdir/usr/lib/libnative-rtaudio.so"
 }
