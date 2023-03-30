@@ -1,8 +1,8 @@
 # Maintainer: Jacob Wang <jatcwang@gmail.com>
 
 pkgname=jdk-mission-control-bin
-pkgver=8.2.0
-pkgrel=2
+pkgver=8.3.0
+pkgrel=1
 pkgdesc="OpenJDK Mission Control"
 arch=('x86_64')
 license=('UPL')
@@ -15,7 +15,7 @@ source=(
   "jdk-mission-control.desktop"
 )
 sha512sums=(
-  '0c760e6f5c715769667891c987749332d495d9c19ec668ab688817f6101c0f57b1819e93d76635b27322fe44a76e086fcb0164fec3dec5a6a0ef988a376a4dd8'
+  '3af1a31dd2e916c57c300ec8ed5a91105cdec7eadd1ecee7c39f256f4ebb4f5e5aaa79e3d14d4da5994875551ba8968412a004ec9831b1b1d8c0aaac3bc30809'
   'af6dbb956d9e522919d90029a1b147e79e9003e32042bbaba9535923682144b169e3fb7106a4b557c05f9b257efc0bdd221e33608bcdae9bbee5bf74f84ae5de'
 )
 
