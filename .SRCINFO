@@ -1,6 +1,6 @@
 pkgbase = linux-amd-staging-drm-next-git
 	pkgdesc = Linux kernel with WIP AMDGPU material
-	pkgver = 6.0.r1126446.5f30521b5f5e
+	pkgver = 6.1.r1143506.12e200fa9c3d
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/agd5f/linux
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = linux-amd-staging-drm-next-git
 	source = linux-amd-staging-drm-next-git::git+https://gitlab.freedesktop.org/agd5f/linux.git#branch=amd-staging-drm-next
 	source = config
 	sha256sums = SKIP
-	sha256sums = f9a0027bea53a7160759858c535eb0ba0b3bea34c0130f47f2d5bba75d102170
+	sha256sums = 81a9379fd2eac51bb2dc69d83737d7fbdd41fcaca5af4873e3666d3c706760d1
 
 pkgname = linux-amd-staging-drm-next-git
 	pkgdesc = The Linux kernel with WIP AMDGPU material kernel and modules
