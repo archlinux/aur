@@ -1,8 +1,8 @@
 pkgname=opengamepadui-session-git
 _gitdir=OpenGamepadUI-session
-pkgver=r4.e168bcf
+pkgver=r5.800f513
 pkgrel=1
-pkgdesc="OpenGamepadUI Gamescope session for ChimeraOS Experimental"
+pkgdesc="OpenGamepadUI Gamescope session"
 arch=('any')
 url="https://github.com/ShadowBlip/OpenGamepadUI-session"
 makedepends=('git')
