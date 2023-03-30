@@ -1,13 +1,13 @@
 pkgname=sunshine
-pkgver=0.18.4
-pkgrel=4
+pkgver=0.19.0
+pkgrel=1
 pkgdesc="A self-hosted GameStream host for Moonlight."
 arch=('x86_64' 'aarch64')
 url=https://app.lizardbyte.dev
 license=('GPL3')
 install=sunshine.install
 
-depends=('avahi' 'boost-libs' 'curl' 'libevdev' 'libmfx' 'libpulse' 'libva' 'libvdpau' 'libx11' 'libxcb' 'libxfixes' 'libxrandr' 'libxtst' 'numactl' 'openssl' 'opus' 'udev')
+depends=('avahi' 'boost-libs' 'curl' 'libappindicator-gtk3' 'libevdev' 'libmfx' 'libpulse' 'libva' 'libvdpau' 'libx11' 'libxcb' 'libxfixes' 'libxrandr' 'libxtst' 'numactl' 'openssl' 'opus' 'udev')
 makedepends=('boost' 'cmake' 'git' 'make' 'nodejs' 'npm')
 optdepends=('cuda: NvFBC capture support'
             'libcap'
@@ -21,10 +21,16 @@ sha256sums=('SKIP')
 
 prepare() {
     cd "$pkgname"
+    # Skip submodules that we don't want
     git rm -f third-party/ffmpeg-windows-x86_64
     git rm -f third-party/ffmpeg-macos-x86_64
     git rm -f third-party/ffmpeg-macos-aarch64
 
+    if [[ $CARCH == "x86_64" ]]; then
+        git rm -f third-party/ffmpeg-linux-aarch64
+    elif [[ $CARCH == "aarch64" ]]; then
+        git rm -f third-party/ffmpeg-linux-x86_64
+    fi
     git submodule update --recursive --init
 }
 
