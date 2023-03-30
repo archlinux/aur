@@ -1,0 +1,20 @@
+pkgbase = python-phononlammps
+	pkgdesc = Dynaphopy allows to calculate anharmonic phonon linewidhts and frequency shifts using the mode descomposition technique
+	pkgver = 0.8.1
+	pkgrel = 2
+	url = https://phonolammps.readthedocs.io/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python
+	depends = python-phonopy
+	depends = python-numpy
+	depends = python-matplotlib
+	depends = python-seekpath
+	depends = python-dynaphopy
+	source = https://github.com/abelcarreras/phonolammps/archive/refs/tags/0.8.1.tar.gz
+	source = plot_phonon_dispersion_bands-add-param.patch
+	sha256sums = 5abdf6bf1caeb5e2a0ca872784a396ca7f4e37e5e64d11a13e12cda49fc74884
+	sha256sums = a10947d5cc04d1db6fa3d2b1d303edac0c35ff9c84d2a7d474a0b686bfbd76a0
+
+pkgname = python-phononlammps
