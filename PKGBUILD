@@ -18,7 +18,7 @@ depends=(
   python-click-plugins
   python-setuptools
 )
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python-build python-installer cython python-wheel)
 # checkdepends=(
 #   openexr
 #   cfitsio
