@@ -2,7 +2,7 @@
 # Based on zstd
 
 pkgname=zstd-static
-pkgver=1.5.2
+pkgver=1.5.4
 pkgrel=1
 pkgdesc='Zstandard - Fast real-time compression algorithm (with static lib)'
 arch=(x86_64)
@@ -15,7 +15,7 @@ checkdepends=('gtest')
 conflicts=('zstd')
 provides=("zstd=${pkgver}" "libzstd.so=1-64")
 source=("https://github.com/facebook/zstd/releases/download/v${pkgver}/zstd-${pkgver}.tar.gz")
-sha256sums=('7c42d56fac126929a6a85dbc73ff1db2411d04f104fae9bdea51305663a83fd0')
+sha256sums=('0f470992aedad543126d06efab344dc5f3e171893810455787d38347343a4424')
 
 build() {
   export CFLAGS+=' -ffat-lto-objects'
