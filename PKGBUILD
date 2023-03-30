@@ -1,5 +1,6 @@
 pkgname=netlify-application
 _pkgname=Netlify
+pkgrlname=netlify
 pkgver=1.0.7
 pkgrel=1
 pkgdesc="Unofficial Netlify desktop application"
@@ -14,21 +15,21 @@ sha256sums=('SKIP')
 package() {
     for dir in application-$pkgver-$pkgrel ; do mv "${dir}" "$_pkgname" ;done
     cd "$srcdir/$_pkgname"
-    chmod +x netlify.sh
+    chmod +x $pkgrlname.sh
     ln -sf "/opt/libelectron/node_modules" "$srcdir/$_pkgname"
     install -dm755 "$pkgdir/opt/$_pkgname"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
     cp -r ./ "$pkgdir/opt/$_pkgname"
-    cp -r "$pkgdir/opt/$_pkgname/$pkgname.svg" "$pkgdir/usr/share/pixmaps" 
-    cp -r "$pkgdir/opt/Netlify/netlify.svg" "$pkgdir/usr/share/pixmaps"  
+    cp -r "$pkgdir/opt/$_pkgname/$pkgrlname.svg" "$pkgdir/usr/share/pixmaps" 
+    cp -r "$pkgdir/opt/Netlify/$pkgrlname.svg" "$pkgdir/usr/share/pixmaps"  
 
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/Netlify/netlify.sh" "$pkgdir/usr/bin/netlify"
+    ln -s "/opt/Netlify/$pkgrlname.sh" "$pkgdir/usr/bin/$pkgrlname"
 
     # Desktop Entry
-    install -Dm644 "$srcdir/application/Netlify.desktop" \
-        "$pkgdir/usr/share/applications/Netlify.desktop"
-    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/Netlify.desktop"
+    install -Dm644 "$srcdir/$_pkgname/$_pkgname.desktop" \
+        "$pkgdir/usr/share/applications/$_pkgname.desktop"
+    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$_pkgname.desktop"
 }
