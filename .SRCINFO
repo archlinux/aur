@@ -1,0 +1,13 @@
+pkgbase = grub-android-x86
+	pkgdesc = GRUB Configuration for Android x86 detection (Only works with NTFS, extFS and vFat)
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/shadichy/grub-android-x86.git
+	arch = any
+	license = MIT
+	depends = grub
+	depends = bash
+	source = 30_android-x86.sh
+	sha512sums = SKIP
+
+pkgname = grub-android-x86
