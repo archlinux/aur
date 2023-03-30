@@ -24,13 +24,17 @@ conflicts=('texmacs')
 package() {
   chmod +x ${_appimage}
 
-  echo Extracting icons and .desktop
+  echo Extracting icons, .desktop, man doc, mime info
   ./${_appimage} --appimage-extract "TeXmacs.xpm" > /dev/null 2>&1
-  ./${_appimage} --appimage-extract "org.texmacs.texmacs.desktop" > /dev/null 2>&1
+  ./${_appimage} --appimage-extract "usr/share/TeXmacs/misc/mime/texmacs.desktop" > /dev/null 2>&1
+  ./${_appimage} --appimage-extract "usr/share/man/man1/" > /dev/null 2>&1
+  ./${_appimage} --appimage-extract "usr/share/TeXmacs/misc/mime/texmacs.xml" > /dev/null 2>&1
 
-  echo Installing icons and .desktop
+  echo Installing icons, .desktop, man doc, mime info
   install -Dm644 "squashfs-root/TeXmacs.xpm" "${pkgdir}/usr/share/pixmaps/TeXmacs.xpm"
-  install -Dm644 "squashfs-root/org.texmacs.texmacs.desktop" "${pkgdir}/usr/share/applications/org.texmacs.texmacs.desktop"
+  install -Dm644 "squashfs-root/usr/share/TeXmacs/misc/mime/texmacs.desktop" "${pkgdir}/usr/share/applications/texmacs.desktop"
+  install -dm755 "squashfs-root/usr/share/man/man1/" "${pkgdir}/usr/share/man/man1/"
+  install -Dm644 "squashfs-root/usr/share/TeXmacs/misc/mime/texmacs.xml" "${pkgdir}/usr/share/mime/packages/texmacs.xml"
 
   echo Installing AppImage file
   install -Dm755 "${_appimage}" "${pkgdir}/${_install_to}"

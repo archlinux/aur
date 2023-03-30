@@ -1,0 +1,4 @@
+TeXmacs.AppImage
+pkg/
+src/
+texmacs-appimage*.zst
