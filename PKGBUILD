@@ -19,6 +19,7 @@ _author="SpacingBat3"
 
 url="https://github.com/${_author}/${_repo}"
 license=('MIT')
+depends=('electron21')
 optdepends=(
   'xdg-desktop-portal-impl: Screen share UI and other portals under Wayland'
   'pipewire: WebRTC screen sharing under Wayland'
@@ -338,6 +339,7 @@ _postcompile() {
 # system-wide Electron binary.
 _script() {
   mkdir -p "$(dirname "$1")"
-  echo -ne "#!/bin/bash\nelectron$(_getelectron) /usr/share/${pkgname%-vencord-git}/app.asar \"\$@\"\nexit \$?">"$1"
+  #echo -ne "#!/bin/bash\nelectron$(_getelectron) /usr/share/${pkgname%-vencord-git}/app.asar \"\$@\"\nexit \$?">"$1"
+  echo -ne "#!/bin/bash\nelectron21 /usr/share/${pkgname%-vencord-git}/app.asar \"\$@\"\nexit \$?">"$1"
   chmod 755 "$1"
 }
