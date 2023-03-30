@@ -1,0 +1,22 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=WebCord
+GenericName=Instant Messenger
+GenericName[pl]=Komunikator internetowy
+Comment=Discord and Fosscord client based on Electron framework (with Vencord).
+Comment[pl]=Klient Discord'a i Fosscord'a oparty o framework: „Electron” (z Vencord).
+Exec=webcord
+Icon=webcord
+Categories=Network;Chat;InstantMessaging
+Keywords=Electron;Web;Talk;Chat;Message;Internet;Screen share;Meeting;Fosscord;FreeCord;Vencord
+Keywords[pl]=Electron;Sieć;Rozmowa;Czat;Wiadomość;Internet;Przesyłanie ekranu;Spotkanie;Fosscord;FreeCord;Vencord
+Terminal=false
+StartupNotify=false
+StartupWMClass=WebCord
+Actions=StartHidden
+
+[Desktop Action StartHidden]
+Name=Start hidden in system tray
+Name[pl]=Uruchom ukrywając w zasobniku systemowym.
+Exec=webcord -m
