@@ -15,7 +15,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
 )
 sha256sums=(
-  '7d59ca5ba341316e58cf72c6aff85cca2541cf5056c4af45cb63af9a814bed3e'
+  'd5d692f90bc8f5987b636e47e36384b9bbda499aaf0a77aa0b0bbe834c76923d'
 )
 
 build() {

@@ -8,6 +8,6 @@ pkgbase = python-face
 	makedepends = python-setuptools
 	depends = python-boltons
 	source = https://files.pythonhosted.org/packages/source/f/face/face-22.0.0.tar.gz
-	sha256sums = 7d59ca5ba341316e58cf72c6aff85cca2541cf5056c4af45cb63af9a814bed3e
+	sha256sums = d5d692f90bc8f5987b636e47e36384b9bbda499aaf0a77aa0b0bbe834c76923d
 
 pkgname = python-face
