@@ -4,13 +4,14 @@
 _pkgname=pim
 pkgname=pim-git
 pkgver=0.10.1.r0.g2f8d537
-pkgrel=3
+pkgrel=4
 pkgdesc="Python image viewer with vim-like keybindings. Git-Version"
 arch=('any')
 url="https://github.com/Narrat/Pim"
 license=('MIT')
 depends=('desktop-file-utils' 'python-gobject>=3.22')
-optdepends=("libjxl: support for JPEG XL"
+optdepends=("libheif: support for HEIF/HEIC"
+            "libjxl: support for JPEG XL"
             "webp-pixbuf-loader: support for the webp format")
 makedepends=('git')
 conflicts=('pim')
