@@ -1,0 +1,32 @@
+post_install() {
+cat << EOF
+	Run "pip install spacy_pkuseg deepl sentencepiece ctranslate2 docxtxt opencc"
+	because those packages are not in the AUR (yet)
+	
+	Install the other optional dependecies with whatever like 
+	"yay -S python-docx python-jaconv python-keyboard python-fugashi python-einops python-transformers python-pytorch python-torchvision"
+	and change "python-pytorch python-torchvision" that matches your hardware or just don't install them
+	because "nccl" and friends (dependecies) takes a lot of space, so go to the pytorch website if you don't have an NVIDIA GPU
+
+	OCRs 
+	mit32px: "supports recognizing English, Japanese, Chinese, and Korean characters"
+	mit48px: "same as above"
+	manga_ocr: "only recognizes Japanese characters"
+
+	Inpainters
+	lama_mpe: "a deep-learning model: Lama with Masking Positional Encoding"
+	aot: "a deep-learning model"
+	patchmatch: "a randomized correspondence algorithm, Adobe uses this algorithm"
+	opencv-telea: "based on the Fast Marching Method algorithm"
+	
+	Offline Translator
+	sugoi: "offline Japanese to English"
+	
+	Download them and put them into /opt/ballontranslator/data/models
+	or see and run "/opt/ballontranslator/scripts/download_models.sh" (may change in the future)
+EOF
+}
+
+post_upgrade() {
+    post_install
+}
