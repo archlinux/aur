@@ -3,7 +3,7 @@
 
 pkgname=himitsu
 pkgver='0.3'
-pkgrel=1
+pkgrel=2
 pkgdesc='Secret storage manager'
 arch=(x86_64)
 url='https://himitsustore.org/'
@@ -17,7 +17,7 @@ source=(
 	'himitsud.service'
 )
 sha256sums=(
-	'920a1e06dfc5a385a213e5c93015d2b4beeb3ebc6963c6b36d344d38b5389a81'
+	'a4b8da08045af3b20d7fa4b94dabea6e1a400f63f3ed8c810d092048713a0d3b'
 	'0d84a1ceb17b6be53066f9f617ee35f233ada2283c3f9b3cbea5f2c8b6c7001e'
 )
 

@@ -1,7 +1,7 @@
 pkgbase = himitsu
 	pkgdesc = Secret storage manager
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://himitsustore.org/
 	arch = x86_64
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = himitsu
 	optdepends = hiprompt-gtk-py: prompter support (GTK+)
 	source = himitsu-0.3.tar.gz::https://git.sr.ht/~sircmpwn/himitsu/archive/0.3.tar.gz
 	source = himitsud.service
-	sha256sums = 920a1e06dfc5a385a213e5c93015d2b4beeb3ebc6963c6b36d344d38b5389a81
+	sha256sums = a4b8da08045af3b20d7fa4b94dabea6e1a400f63f3ed8c810d092048713a0d3b
 	sha256sums = 0d84a1ceb17b6be53066f9f617ee35f233ada2283c3f9b3cbea5f2c8b6c7001e
 
 pkgname = himitsu
