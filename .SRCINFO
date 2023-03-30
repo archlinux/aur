@@ -1,0 +1,16 @@
+pkgbase = python-seekpath
+	pkgdesc = A module to obtain and visualize k-vector coefficients and obtain band paths in the Brillouin zone of crystal structures
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/giovannipizzi/seekpath
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python
+	depends = python-numpy
+	depends = python-spglib
+	optdepends = python-scipy
+	source = https://github.com/giovannipizzi/seekpath/archive/refs/tags/v2.0.1.tar.gz
+	sha256sums = 3d54bc497343a4e4ceb4002c20cfe93409f72a111c7acf3668042e39dc0010bc
+
+pkgname = python-seekpath
