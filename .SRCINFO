@@ -1,23 +1,22 @@
 pkgbase = tllocalmgr
 	pkgdesc = A shell and command-line utility to manage TeXLive on Arch Linux
-	pkgver = 0.8
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://github.com/hv15/tllocalmgr
 	arch = any
 	license = GPL
 	makedepends = git
-	depends = texlive-core>=2016
-	depends = texlive-core<2023
+	depends = texlive-core>=2022
 	depends = perl-libwww
 	depends = perl-term-shellui
 	depends = perl-term-readline-gnu
 	depends = perl-list-moreutils
 	depends = perl-lwp-protocol-https
-	provides = texlive-localmanager=0.8
+	provides = texlive-localmanager=0.8.3
 	conflicts = texlive-localmanager
 	conflicts = texlive-localmanager-git
 	conflicts = tllocalmgr-git
-	source = tllocalmgr::git+https://github.com/hv15/tllocalmgr.git#tag=v0.8
+	source = tllocalmgr::git+https://github.com/hv15/tllocalmgr.git#tag=v0.8.3
 	sha256sums = SKIP
 
 pkgname = tllocalmgr

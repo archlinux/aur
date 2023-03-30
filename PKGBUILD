@@ -5,7 +5,7 @@
 # Contributor: Firmicus <francois . archlinux . org>
 
 pkgname=tllocalmgr
-pkgver=0.8
+pkgver=0.8.3
 pkgrel=1
 pkgdesc='A shell and command-line utility to manage TeXLive on Arch Linux'
 arch=('any')
@@ -15,8 +15,7 @@ provides=("texlive-localmanager=$pkgver")
 conflicts=('texlive-localmanager'
            'texlive-localmanager-git'
            'tllocalmgr-git')
-depends=('texlive-core>=2016'
-         'texlive-core<2023'
+depends=('texlive-core>=2022'
          'perl-libwww'
          'perl-term-shellui'
          'perl-term-readline-gnu'
@@ -29,10 +28,10 @@ sha256sums=('SKIP')
 
 package() {
   cd "$pkgname"
-  install -d "$pkgdir/usr/"{bin,share/texmf/arch/tlpkg/TeXLive}
+  install -d "$pkgdir/usr/"{bin,share/tllmgr/TLLocalMgr}
   install -m755 tllocalmgr "$pkgdir/usr/bin/"
-  cd tlpkg/TeXLive
+  cd tllmgr/TLLocalMgr
   for _f in *; do
-    install -m644 "$_f" "$pkgdir/usr/share/texmf/arch/tlpkg/TeXLive/"
+    install -m644 "$_f" "$pkgdir/usr/share/tllmgr/TLLocalMgr/"
   done
 }
