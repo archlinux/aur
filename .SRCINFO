@@ -1,0 +1,17 @@
+pkgbase = gtultra-git
+	pkgdesc = Extensively modified GoatTracker Stereo (2.76) version with many new features
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/jpage8580/GTUltra
+	arch = x86_64
+	license = GPL
+	makedepends = gendesk
+	depends = gcc-libs
+	depends = sdl12-compat
+	depends = hicolor-icon-theme
+	source = git+https://github.com/jpage8580/GTUltra.git
+	source = fix-format-warnings.patch
+	sha512sums = SKIP
+	sha512sums = 1f1d9f431585b841ad0a163915ed0fd0923c9690d58448faf6f61c5b4393c035fabdc03aa92852e2043dee25ee565ede74d318c86da2b9f0cb37426f0ef39f6e
+
+pkgname = gtultra-git
