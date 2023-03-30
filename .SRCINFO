@@ -1,0 +1,17 @@
+pkgbase = adaogg
+	pkgdesc = A complete interface layer that brings the Ogg, Vorbis, and Theora libraries to the Ada 2012 programming language.
+	pkgver = 2021.10.14
+	pkgrel = 1
+	url = https://phasercat.com/adaogg/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gprbuild
+	source = https://phasercat.com/wp-content/uploads/2020/08/adaogg_10142021.zip
+	source = adaogg.gpr
+	source = debug.pra
+	sha256sums = 30d2d50c3f6dc9d6998ced24dd26cb52a097c1b768e74b397ab8cfe2ae709c8a
+	sha256sums = 1d90650a88548354357f843cd3396a883493105a981492fbfefee088094ad128
+	sha256sums = 4514c213830bce24e2290046238e768daa54c7552d824afd832e018f5bcdffd9
+
+pkgname = adaogg
