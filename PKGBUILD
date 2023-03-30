@@ -3,15 +3,27 @@
 
 _pkgname="authsae"
 pkgname="${_pkgname}-git"
-pkgrel=3
+pkgrel=4
 pkgver=1.3.1+r440.20190806.73f31dd
 epoch=5
 pkgdesc="Authsae provides secure password-based authentication for 802.11s mesh networking."
-arch=('x86' 'x86_64')
+arch=(
+  'x86'
+  'x86_64'
+)
 url="https://github.com/cozybit/${_pkgname}"
 license=("BSD")
-depends=("glibc" "openssl" "libconfig" "libnl")
-makedepends=("git" "cmake")
+depends=(
+  "glibc"
+  "openssl-1.1"
+  "libconfig"
+  # "libcrypto.so>=1.1" "libcrypto.so<2" # openssl-1.1
+  "libnl"
+)
+makedepends=(
+  "cmake"
+  "git"
+)
 provides=("authsae=${pkgver}")
 conflicts=("authsae")
 md5sums=("SKIP")
@@ -42,17 +54,18 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  export ADDR2LINE=addr2line
-  export AR=ar
-  export CC=gcc
-  export CC_AR=gcc-ar
-  export CC_RANLIB=gcc-ranlib
-  export LD=ld
-  export NM=nm
-  export OBJCOPY=objcopy
-  export OBJDUMP=objdump
-  export RANLIB=ranlib
-  export READELF=readelf
+  export PKG_CONFIG_PATH=/usr/lib/openssl-1.1/pkgconfig
+  export ADDR2LINE=/usr/bin/addr2line
+  export AR=/usr/bin/ar
+  export CC=/usr/bin/gcc
+  export CC_AR=/usr/bin/gcc-ar
+  export CC_RANLIB=/usr/bin/gcc-ranlib
+  export LD=/usr/bin/ld
+  export NM=/usr/bin/nm
+  export OBJCOPY=/usr/bin/objcopy
+  export OBJDUMP=/usr/bin/objdump
+  export RANLIB=/usr/bin/ranlib
+  export READELF=/usr/bin/readelf
 
   msg2 "Configuring with 'cmake' ..."
   cmake \

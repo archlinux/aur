@@ -1,16 +1,16 @@
 pkgbase = authsae-git
 	pkgdesc = Authsae provides secure password-based authentication for 802.11s mesh networking.
 	pkgver = 1.3.1+r440.20190806.73f31dd
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 5
 	url = https://github.com/cozybit/authsae
 	arch = x86
 	arch = x86_64
 	license = BSD
-	makedepends = git
 	makedepends = cmake
+	makedepends = git
 	depends = glibc
-	depends = openssl
+	depends = openssl-1.1
 	depends = libconfig
 	depends = libnl
 	provides = authsae=1.3.1+r440.20190806.73f31dd
