@@ -1,6 +1,6 @@
 pkgbase = sunshine
 	pkgdesc = A self-hosted GameStream host for Moonlight.
-	pkgver = 0.19.0
+	pkgver = 0.19.1
 	pkgrel = 1
 	url = https://app.lizardbyte.dev
 	install = sunshine.install
@@ -34,7 +34,7 @@ pkgbase = sunshine
 	optdepends = cuda: NvFBC capture support
 	optdepends = libcap
 	optdepends = libdrm
-	source = sunshine::git+https://github.com/LizardByte/Sunshine.git#tag=v0.19.0
+	source = sunshine::git+https://github.com/LizardByte/Sunshine.git#tag=v0.19.1
 	sha256sums = SKIP
 
 pkgname = sunshine

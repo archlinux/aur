@@ -1,5 +1,5 @@
 pkgname=sunshine
-pkgver=0.19.0
+pkgver=0.19.1
 pkgrel=1
 pkgdesc="A self-hosted GameStream host for Moonlight."
 arch=('x86_64' 'aarch64')
