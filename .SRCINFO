@@ -1,6 +1,6 @@
 pkgbase = crm-git
-	pkgdesc = crm 是一个在终端运行的镜像管理程序，能够对 Cargo 镜像源进行简单的添加、修改、删除操作，并能帮助您快速的切换不同的 Cargo 镜像源。
-	pkgver = 0.1.8.r8.gd6277b1
+	pkgdesc = crm (Cargo registry manager)
+	pkgver = 0.2.0.r1.gcb4f0ce
 	pkgrel = 1
 	url = https://github.com/wtklbm/crm
 	arch = any
@@ -9,11 +9,11 @@ pkgbase = crm-git
 	makedepends = git
 	makedepends = rust
 	depends = cargo
-	provides = crm-git
-	conflicts = crm-git
+	provides = crm
 	conflicts = crm
 	options = !strip
-	source = crm::git+https://ghproxy.com/https://github.com//wtklbm/crm.git
+	options = !lto
+	source = crm::git+https://github.com/wtklbm/crm.git
 	sha256sums = SKIP
 
 pkgname = crm-git
