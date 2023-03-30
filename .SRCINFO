@@ -1,0 +1,20 @@
+pkgbase = cheesecutter-git
+	pkgdesc = Tracker program for composing music for the C64 SID chip
+	pkgver = 2.9.beta.3.r30.g84450d3
+	pkgrel = 1
+	url = https://github.com/theyamo/CheeseCutter
+	arch = x86_64
+	license = GPL2
+	makedepends = acme
+	makedepends = gcc-d
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	provides = cheesecutter
+	conflicts = cheesecutter
+	conflicts = cheesecutter-stereo
+	source = git+https://github.com/theyamo/CheeseCutter
+	sha256sums = SKIP
+
+pkgname = cheesecutter-git
