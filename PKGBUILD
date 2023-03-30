@@ -1,3 +1,5 @@
+# Maintainer: yuhldr <yuhldr@qq.com>
+
 pkgname=('python-phononlammps')
 pkgver=0.8.1
 pkgrel=2
