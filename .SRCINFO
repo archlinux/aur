@@ -1,0 +1,12 @@
+pkgbase = ciderpress
+	pkgdesc = Apple II file and disk image utility
+	pkgver = 4.1.1d1
+	pkgrel = 1
+	url = https://a2ciderpress.com/
+	arch = x86_64
+	license = GPL
+	depends = zlib
+	source = ciderpress-4.1.1d1.tar.gz::https://github.com/fadden/ciderpress/archive/refs/tags/v4.1.1-d1.tar.gz
+	md5sums = 2449d265b89c7dd8df0c2ca6e15f3dc5
+
+pkgname = ciderpress
