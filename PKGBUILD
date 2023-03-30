@@ -1,7 +1,7 @@
 # Maintainer: Derek J. Clark <derekjohn.clark@gmail.com>
 pkgname=opengamepadui-git
 _pkgbase=OpenGamepadUI
-pkgver=v0.2.1.r5.g1280f97
+pkgver=v0.3.0.r0.gf30a307
 pkgrel=1
 pkgdesc="Open source game launcher"
 arch=('x86_64')
@@ -18,7 +18,7 @@ makedepends=('godot' 'scons' 'pkgconf' 'gcc' 'libxcursor' 'libxinerama'
 	     )
 provides=('opengamepadui')
 conflicts=('opengamepadui-bin')
-_tag=1280f97001b557122b6b1c8eabc769fc5131a664
+_tag=f30a3070ef2ba10e778127c25117e884666a6116
 source=("${_pkgbase}::git+https://github.com/ShadowBlip/${_pkgbase}.git#tag=${_tag}")
 sha256sums=('SKIP')
 
@@ -33,7 +33,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/${_pkgbase}"
-	make addons import build
+	make build
 }
 
 package() {
