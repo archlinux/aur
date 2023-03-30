@@ -1,12 +1,12 @@
 pkgbase = cnspec
 	pkgdesc = Cloud-Native Security and Policy Framework
-	pkgver = 8.3.0
+	pkgver = 8.3.1
 	pkgrel = 1
 	url = https://mondoo.com
 	arch = x86_64
 	license = MPL 2.0
 	depends = cnquery
-	source = https://releases.mondoo.com/cnspec/8.3.0/cnspec_8.3.0_linux_amd64.tar.gz
-	sha256sums = fd9edfdc67005aa79be0772e4ba8d7670f17c1deb172851c45a9e7ac65703f69
+	source = https://releases.mondoo.com/cnspec/8.3.1/cnspec_8.3.1_linux_amd64.tar.gz
+	sha256sums = 1a93fa574208665c19d03b75ccf7ef17733401a148481b3e2516cdb285a3ce84
 
 pkgname = cnspec
