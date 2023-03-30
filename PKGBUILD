@@ -1,7 +1,7 @@
 # Maintainer: Norbert Pfeiler <norbert.pfeiler+aur ät gmail.com>
 
 pkgname=cmake-doc-qch
-pkgver=3.26.0
+pkgver=3.26.2
 pkgrel=1
 pkgdesc="CMake documentation in Qt Help format"
 arch=('any')
@@ -10,7 +10,7 @@ url='https://cmake.org/documentation'
 # rename to include version of each release
 # (prevents accidentally using the file of an older version)
 source=("CMake-$pkgver.qch::https://www.cmake.org/cmake/help/v${pkgver%.*}/CMake.qch")
-md5sums=('0e904bd3747e302315d13a6eeadc9a85')
+md5sums=('7e76560f92236590c29f850ba30c8493')
 
 package() {
   mkdir -p "$pkgdir/usr/share/doc/qt"
