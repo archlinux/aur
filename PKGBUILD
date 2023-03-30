@@ -7,20 +7,37 @@
 
 pkgname=python-cloudscraper
 _name=${pkgname#python-}
-pkgver=1.2.68
+pkgver=1.2.69
 pkgrel=1
 pkgdesc="Python module to bypass Cloudflare's anti-bot page"
 arch=(any)
 url="https://github.com/VeNoMouS/cloudscraper"
 license=(MIT)
-depends=(python-pyparsing python-requests python-requests-toolbelt)
-optdepends=('python-js2py: alternative interpreter/solver'
-  'nodejs: alternative interpreter/solver')
-makedepends=(python-build python-installer python-setuptools python-wheel)
-checkdepends=(python-pytest python-responses python-js2py nodejs)
+depends=(
+  python-pyparsing
+  python-requests
+  python-requests-toolbelt
+  python-brotli
+)
+optdepends=(
+  'python-js2py: alternative interpreter/solver'
+  'nodejs: alternative interpreter/solver'
+)
+makedepends=(
+  python-build
+  python-installer
+  python-setuptools
+  python-wheel
+)
+checkdepends=(
+  python-pytest
+  python-responses
+  python-js2py
+  nodejs
+)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha512sums=('42fa90127c6348c52a8327728683719966ae69c7b945cb9b485907e89e3b29b8053d31cd9cd4326e71ffd4c33e0fce20dd3d0e046fab62d89110eb4510535ad9')
-b2sums=('69e896ad704ce776594fb89714bb75316ebff1b03387cba8575be6d60b496d18556690cfad109c2fa55c72ce3d91dcd21a21467a2d9820c579fea7482b688800')
+sha512sums=('9da8d3d42117768a0a38843448248e3a124c864aaa76d62125d3a1dad8ea4f1921954e6efaa2eb9b40c283d6889c15c0c33378db7008155e46ccb5ae219c11d6')
+b2sums=('ea7325353aa9c4bfaca1834a1f9fdb2201cee1946a990d059540500e58322899469a48d847b6d7688b8f671bf4bbe762d1f61ed080587f3a553771ba8e9c2a93')
 
 _archive="${_name}-${pkgver}"
 
