@@ -1,3 +1,5 @@
+# Maintainer: yuhldr <yuhldr@qq.com>
+
 pkgname=('python-phonopy')
 pkgver=2.17.2
 pkgrel=1
