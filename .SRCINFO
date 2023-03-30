@@ -1,12 +1,13 @@
 pkgbase = pim
 	pkgdesc = Python image viewer with vim-like keybindings
 	pkgver = 0.10.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Narrat/Pim
 	arch = any
 	license = MIT
 	depends = desktop-file-utils
 	depends = python-gobject
+	optdepends = libheif: support for HEIF/HEIC
 	optdepends = libjxl: support for JPEG XL
 	optdepends = webp-pixbuf-loader: support for the webp format
 	source = pim-0.10.1.tar.gz::https://github.com/Narrat/Pim/archive/0.10.1.tar.gz
