@@ -11,7 +11,7 @@ license=('MIT')
 provides=('ligo')
 conflicts=('ligo' 'ligo-next')
 
-source=(https://gitlab.com/ligolang/ligo/-/jobs//artifacts/raw/ligo.deb)
+source=(https://gitlab.com/ligolang/ligo/-/jobs/4034533287/artifacts/raw/ligo.deb)
 md5sums=('SKIP')
 
 prepare() {
