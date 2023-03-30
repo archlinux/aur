@@ -10,9 +10,9 @@ pre_remove() {
 	systemctl stop adsklicensing.service
 	systemctl disable adsklicensing.service
 
-	if [ -d /opt/Autodesk/AdskLicensing/13.0.0.8122 ]
+	if [ -d /opt/Autodesk/AdskLicensing/13.1.0.8534 ]
 	then
-		rm -rf /opt/Autodesk/AdskLicensing/13.0.0.8122
+		rm -rf /opt/Autodesk/AdskLicensing/13.1.0.8534
 		rmdir --ignore-fail-on-non-empty /opt/Autodesk/AdskLicensing
 		rmdir --ignore-fail-on-non-empty /opt/Autodesk
 	fi

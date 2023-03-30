@@ -1,14 +1,14 @@
 pkgbase = adsklicensing
 	pkgdesc = Autodesk License Checking Software
-	pkgver = 13.0.0.8122
-	pkgrel = 2
+	pkgver = 13.1.0.8534
+	pkgrel = 1
 	url = https://www.autodesk.com/
 	install = adsklicensing.install
 	arch = x86_64
 	license = custom
 	depends = adlmapps>=28
 	options = !strip
-	source = manual://adsklicensing13.0.0.8122-0-0.x86_64.rpm
-	sha256sums = 047e01e421defb7c094552df4e552fb1b55f058bedc39391e9ce0687c6b7892e
+	source = manual://adsklicensing13.1.0.8534-0-0.x86_64.rpm
+	sha256sums = 29d0f0ba4530b2ef0a153b6bdb3dd47195dba2facaae9053bbf7485a7c1ec2aa
 
 pkgname = adsklicensing
