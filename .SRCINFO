@@ -1,6 +1,6 @@
 pkgbase = go-musicfox-bin
 	pkgdesc = Command-line Netease Cloud Music written in Go.
-	pkgver = 3.7.2
+	pkgver = 3.7.7
 	pkgrel = 1
 	url = https://github.com/anhoder/go-musicfox
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = go-musicfox-bin
 	provides = musicfox
 	conflicts = musicfox
 	conflicts = go-musicfox
-	source = https://github.com/go-musicfox/go-musicfox/releases/download/v3.7.2/go-musicfox_3.7.2_linux_amd64.zip
+	source = https://github.com/go-musicfox/go-musicfox/releases/download/v3.7.7/go-musicfox_3.7.7_linux_amd64.zip
 	source = LICENSE
-	sha256sums = 4fc52f40f8a4dd0b14e270aa67c86d5665e886cc389da167f193c360c0061a64
+	sha256sums = 462e4cfb0bc0c64ca84ab8c72b2236a944a211d97a6de506de33c86556d0a21a
 	sha256sums = 20535828272932407c2f5172aeb714ac7b374a34e5ecb1825af509f2902cde54
 
 pkgname = go-musicfox-bin
