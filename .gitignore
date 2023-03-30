@@ -1,1 +1,4 @@
-persway-*.tar*
+pkg/
+src/
+persway-*.tar.gz
+persway-*.pkg.tar.*
