@@ -3,7 +3,7 @@
 
 _pkgname="authsae"
 pkgname="${_pkgname}-git"
-pkgrel=4
+pkgrel=5
 pkgver=1.3.1+r440.20190806.73f31dd
 epoch=5
 pkgdesc="Authsae provides secure password-based authentication for 802.11s mesh networking."
@@ -22,6 +22,7 @@ depends=(
 )
 makedepends=(
   "cmake"
+  "gcc9"
   "git"
 )
 provides=("authsae=${pkgver}")
@@ -57,9 +58,9 @@ build() {
   export PKG_CONFIG_PATH=/usr/lib/openssl-1.1/pkgconfig
   export ADDR2LINE=/usr/bin/addr2line
   export AR=/usr/bin/ar
-  export CC=/usr/bin/gcc
-  export CC_AR=/usr/bin/gcc-ar
-  export CC_RANLIB=/usr/bin/gcc-ranlib
+  export CC=/usr/bin/gcc-9
+  export CC_AR=/usr/bin/gcc-ar-9
+  export CC_RANLIB=/usr/bin/gcc-ranlib-9
   export LD=/usr/bin/ld
   export NM=/usr/bin/nm
   export OBJCOPY=/usr/bin/objcopy
