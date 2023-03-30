@@ -1,7 +1,7 @@
 pkgbase = astronaut
 	pkgdesc = A Gemini browser for the terminal.
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sr.ht/~adnano/astronaut/
 	arch = x86_64
 	license = GPL3
@@ -10,6 +10,6 @@ pkgbase = astronaut
 	conflicts = astronaut-git
 	conflicts = astronaut-bin
 	source = astronaut-0.1.1.tar.gz::https://git.sr.ht/~adnano/astronaut/archive/0.1.1.tar.gz
-	sha256sums = d50d17c6f23205668c4d5eb5b55ea7d6215e6a302fa6bc13c638d2053ee8afc0
+	sha256sums = b392fd4f716ecc50ab9fc67ecb5d4f7562cae63d74d849f15fff652046f80f22
 
 pkgname = astronaut
