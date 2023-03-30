@@ -1,0 +1,16 @@
+pkgbase = python-diffrax
+	pkgdesc = GPU+autodiff-capable ODE/SDE/CDE solvers written in JAX
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/patrick-kidger/diffrax
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-equinox
+	source = diffrax-0.3.1.tar.gz::https://github.com/patrick-kidger/diffrax/archive/v0.3.1.tar.gz
+	sha512sums = 9e207559f812080fd558ff9e7b763f8b9aa7cc7ceaa41b1065e77fccf410d1011d42dca9a61d193853ca24dd6af8b6147928476731cc1437246df787d4e6abb1
+
+pkgname = python-diffrax
