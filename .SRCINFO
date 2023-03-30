@@ -1,6 +1,6 @@
 pkgbase = linux-xanmod-lts-linux-bin-x64v3
 	pkgdesc = The Linux kernel and modules with Xanmod patches - Current Stable (LTS) - Prebuilt version - x64v3
-	pkgver = 6.1.21
+	pkgver = 6.1.22
 	pkgrel = 2
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -10,12 +10,12 @@ pkgbase = linux-xanmod-lts-linux-bin-x64v3
 	noextract = 
 	noextract = 
 	options = !strip
-	source = https://github.com/xanmod/linux/releases/download/6.1.21-xanmod1/linux-image-6.1.21-x64v3-xanmod1_6.1.21-x64v3-xanmod1-0.20230322.019f648_amd64.deb
-	source = https://github.com/xanmod/linux/releases/download/6.1.21-xanmod1/linux-headers-6.1.21-x64v3-xanmod1_6.1.21-x64v3-xanmod1-0.20230322.019f648_amd64.deb
+	source = https://github.com/xanmod/linux/releases/download/6.1.22-xanmod1/linux-image-6.1.22-x64v3-xanmod1_6.1.22-x64v3-xanmod1-0.20230330.446c29a_amd64.deb
+	source = https://github.com/xanmod/linux/releases/download/6.1.22-xanmod1/linux-headers-6.1.22-x64v3-xanmod1_6.1.22-x64v3-xanmod1-0.20230330.446c29a_amd64.deb
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 8937c81471def8880b2371aa081aa123c3e9df18d85842f432dab769f9c22779
-	sha256sums = 28b603fb917dce29e91d85281b9aed3773ca81f2a9679f746052a1797d9ad476
+	sha256sums = 93d84152ac71333ca085a35f620165765082ffc12363be8c59acb18538ebe4f2
+	sha256sums = 9372f3f8a1b7fd137105d8034e0c2e95ad1be55ccab3b69707b041768bd198de
 
 pkgname = linux-xanmod-lts-linux-bin-x64v3
 
