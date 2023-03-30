@@ -1,7 +1,7 @@
 # Maintainer: DeedleFake <deedlefake@users.noreply.github.com>
 
 pkgname=trayscale
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="An unofficial GUI wrapper for the Tailscale CLI client."
 arch=(i686 x86_64 aarch64)
@@ -12,20 +12,16 @@ makedepends=('go>=2:1.18' 'gobject-introspection')
 optdepends=('tailscale: provides daemon that manages connection')
 provides=(trayscale)
 source=("https://github.com/DeedleFake/trayscale/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('78919ef35f7f784771ff94191e5fde6bdd0c0e4748de49e88b27a76471f59753')
+sha256sums=('ccd8bf2f1359c4ffda4c34f59fa95a26fafa9932a816ef4e06b334a32d788a0c')
 
 build() {
   cd "$pkgname-$pkgver"
-  go build -v -trimpath -ldflags="-X 'deedles.dev/trayscale/internal/version.version=v${pkgver}'" -o trayscale ./cmd/trayscale
+  ./dist.sh build "v$pkgver"
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  install -D trayscale "$pkgdir/usr/bin/trayscale"
-  install -Dm644 dev.deedles.Trayscale.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/dev.deedles.Trayscale.png"
-  install -Dm644 dev.deedles.Trayscale.desktop "$pkgdir/usr/share/applications/dev.deedles.Trayscale.desktop"
-  install -Dm644 dev.deedles.Trayscale.metainfo.xml "$pkgdir/usr/share/metainfo/dev.deedles.Trayscale.metainfo.xml"
-  install -Dm644 dev.deedles.Trayscale.gschema.xml "$pkgdir/usr/share/glib-2.0/schemas/dev.deedles.Trayscale.gschema.xml"
+  ./dist.sh install "$pkgdir/usr"
 }
 
 # vim: ts=2 sw=2 et
