@@ -1,0 +1,18 @@
+pkgbase = hvm-git
+	pkgdesc = A massively parallel, optimal functional runtime in Rust
+	pkgver = r841.5e52131
+	pkgrel = 1
+	url = https://github.com/HigherOrderCO/HVM
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cargo-nightly
+	depends = glibc
+	depends = gcc-libs
+	provides = hvm
+	conflicts = hvm
+	conflicts = hvm-bin
+	source = git+https://github.com/HigherOrderCO/HVM.git
+	sha256sums = SKIP
+
+pkgname = hvm-git
