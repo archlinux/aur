@@ -6,7 +6,7 @@ _use_poppler=OFF  # ON or OFF
 _qt_version_major=6  # 5 or 6
 
 pkgname=beamerpresenter-git
-pkgver=0.2.3_783.40e6087
+pkgver=0.2.3_801.27ab695
 pkgrel=1
 pkgdesc="Modular multi-screen pdf presenter (git)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ url="https://github.com/stiglers-eponym/BeamerPresenter"
 license=('AGPL3' 'GPL3')
 # depends and makedepends will be filled based on the PDF engine.
 depends=("qt${_qt_version_major}-multimedia")
-optdepends=('gst-libav: show videos' 'gst-plugins-good: show videos' 'hicolor-icon-theme: action button icons' "qt${_qt_version_major}-svg: tool button icons")
+optdepends=('hicolor-icon-theme: action button icons' "qt${_qt_version_major}-svg: tool button icons")
 makedepends=('cmake' 'git' "qt${_qt_version_major}-tools")
 backup=('etc/xdg/beamerpresenter/beamerpresenter.conf' 'etc/xdg/beamerpresenter/gui.json')
 source=('git+https://github.com/stiglers-eponym/BeamerPresenter.git')
@@ -34,9 +34,9 @@ then
     depends+=("poppler-qt${_qt_version_major}")
 fi
 
-if [ "${_qt_version_major}" == "6" ]
+if [ "${_qt_version_major}" == "5" ]
 then
-    makedepends+=('qt6-multimedia-ffmpeg' 'qt6-multimedia-gstreamer')
+    optdepends+=('gst-libav: show videos' 'gst-plugins-good: show videos')
 fi
 
 
