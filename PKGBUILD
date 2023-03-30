@@ -2,7 +2,7 @@
 
 pkgname=himitsu-firefox
 pkgver='0.4'
-pkgrel=1
+pkgrel=2
 pkgdesc='Native messaging component for the Himitsu Firefox extension'
 arch=(x86_64)
 url='https://git.sr.ht/~sircmpwn/himitsu-firefox'
@@ -12,7 +12,7 @@ makedepends=(hare hare-json)
 install=himitsu-firefox.install
 _extracted="$pkgname-$pkgver"
 source=("$_extracted.tar.gz::https://git.sr.ht/~sircmpwn/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('0103d2e950b9efd3fcd120ab1b6bb838f8de427805b1da3176503a5ebd05d591')
+sha256sums=('8d2ac3b8ce1b1ce1f05b92668da10b194293c36a2d39f29f74bfe8579a7b6a0f')
 
 build() {
 	cd "$srcdir/$_extracted"
