@@ -1,7 +1,8 @@
 # Maintainer:  chocotan < loli at linux.com>
 
 pkgname='ztoim'
-pkgver='6.23.0.1013';
+_pkgname='ztoim'
+pkgver='8.1.10';
 _major="${pkgver%%.*}"
 pkgrel='1'
 pkgdesc="ZTO BAOHE ${_major}"
@@ -9,15 +10,28 @@ arch=('x86_64')
 url='https://baohe.zto.com'
 license=('custom')
 provides=()
+_filename=CgRReWQlXGyABqwLBfmYf8VW6Qo.AppIma
 source=(
-  "https://fscdn.zto.com/fs8/M05/7D/64/wKhBD2Abp1OAKCOaCCNvUuKJy_4452.deb?filename=baohe-linux-release-6.23.0.1013.deb"
+  "https://fscdn.zto.com/fs41/M08/C0/C9/${_filename}"
 )
 
-md5sums=('3c5baff235a5237cc607b1c582b8cf85')
-sha256sums=('20a525c4344e4313cac0cf26af34100be1edebfb97c70c087e1c0de148957492')
+md5sums=('9e0eeca27f56c78a0bf9079848b020d9')
+sha256sums=('6d88efb81bb46cc6f5a4ec19a5e3e947ef5aac4b941bc4630c4eaed92d1d1cc0')
+
+options=(!strip)
+prepare() {
+    cd "${srcdir}"
+    chmod +x ${_filename}
+    eval ./${_filename} --appimage-extract "*/*/*/*/*x*/apps/*.png"
+    eval ./${_filename} --appimage-extract "*/*/applications/*.desktop"
+}
+
 
 package() {
-    echo "  -> Extracting the data.tar.xz..."
-	bsdtar -xf data.tar.xz -C "$pkgdir/"
-    install -d "${pkgdir}${pkgname}"
+    install -Dm755 "${srcdir}/${_filename}" "${pkgdir}/opt/appimages/${_filename}"
+    # Install Exec Script
+    ExecScript="#!/bin/sh\nexec /opt/appimages/${_filename} \"\$@\""
+    install -dm755 "${pkgdir}/usr/bin"
+    echo -e $ExecScript > "${pkgdir}/usr/bin/${_pkgname}"
+    chmod +x "${pkgdir}/usr/bin/${_pkgname}"
 }
