@@ -1,7 +1,7 @@
 pkgname=('python-phononlammps')
 pkgver=0.8.1
 pkgrel=2
-pkgdesc="Dynaphopy allows to calculate anharmonic phonon linewidhts and frequency shifts using the mode descomposition technique"
+pkgdesc="LAMMPS interface for phonon calculations using phonopy"
 arch=('any')
 url="https://phonolammps.readthedocs.io/"
 license=('MIT')
