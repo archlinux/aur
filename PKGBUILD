@@ -1,7 +1,7 @@
 # Maintainer: Thayne McCombs <astrothayne at gmail dot com>
 pkgname=wev
 pkgver=1.0.0
-pkgrel=7
+pkgrel=8
 pkgdesc="tool for debugging wayland events, similar to xev"
 url='https://git.sr.ht/~sircmpwn/wev'
 license=(MIT)
@@ -10,7 +10,7 @@ depends=('wayland' 'libxkbcommon')
 makedepends=('scdoc' 'wayland-protocols')
 conflicts=('wev-git')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~sircmpwn/wev/archive/$pkgver.tar.gz")
-b2sums=('e777cf1f19a5ad051b81ccd878067ba043c5121f460aed26fa41c999812d9c52e30837cbcb72351de4e532f0427cb2e8f707ca1ddaa09d992cdff3c422638ec2')
+b2sums=('7a7d17575cf7d2e97bfd01f107cba6512d70f014fbf306c95fdd9e2424ff87dfaa628ba9f5b6883741ad0e4d702020de86535464941c967bd6098e451daaee6e')
 
 build() {
   cd "$pkgname-$pkgver"
