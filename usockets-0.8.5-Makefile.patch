@@ -1,9 +1,12 @@
 diff --git a/Makefile b/Makefile
-index f6e2c6b..4525b38 100644
+index f6e2c6b..71d4d05 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -3,96 +3,61 @@ ifneq ($(WITH_LTO),0)
- 	override CFLAGS += -flto
+@@ -1,98 +1,63 @@
+ # By default we use LTO, but Windows does not support it
+ ifneq ($(WITH_LTO),0)
+-	override CFLAGS += -flto
++CFLAGS += -flto
  endif
  
 -# WITH_BORINGSSL=1 enables BoringSSL support, linked statically (preferred over OpenSSL)
@@ -94,12 +97,12 @@ index f6e2c6b..4525b38 100644
 -ifeq ($(WITH_ASIO),1)
 -	$(CXX) $(CXXFLAGS) -Isrc -std=c++14 -flto -O3 -c src/eventing/asio.cpp
 -endif
-+	$(CC) $(CFLAGS) -fPIC -c -I src src/*.c src/eventing/*.c src/crypto/*.c
++	$(CC) $(CFLAGS) -fPIC -c src/*.c src/eventing/*.c src/crypto/*.c
  
 -# For now we do rely on C++17 for OpenSSL support but we will be porting this work to C11
  ifeq ($(WITH_OPENSSL),1)
 -	$(CXX) $(CXXFLAGS) -std=c++17 -flto -O3 -c src/crypto/*.cpp
-+	$(CXX) $(CXXFLAGS) -fPIC -c -I src src/crypto/*.cpp
++	$(CXX) $(CXXFLAGS) -fPIC -c src/crypto/*.cpp
  endif
 -ifeq ($(WITH_BORINGSSL),1)
 -	$(CXX) $(CXXFLAGS) -std=c++17 -flto -O3 -c src/crypto/*.cpp
