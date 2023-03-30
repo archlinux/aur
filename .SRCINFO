@@ -1,7 +1,7 @@
 pkgbase = maya
 	pkgdesc = Autodesk Maya 3D Animation, Modelling, Simulation and Rendering Software
 	pkgver = 2024.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.autodesk.com/products/maya/overview
 	install = maya.install
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = maya
 	depends = audiofile
 	depends = xorg-fonts-75dpi
 	depends = xorg-fonts-100dpi
-	depends = adsklicensing=13.0.0.8122
+	depends = adsklicensing>=13.0.0.8122
 	depends = libxp
 	depends = gtk2
 	depends = libxcrypt-compat

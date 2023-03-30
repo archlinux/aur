@@ -7,12 +7,12 @@
 pkgname=maya
 pkgver=2024.0
 _majorver="${pkgver%%.*}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Autodesk Maya 3D Animation, Modelling, Simulation and Rendering Software'
 arch=('x86_64')
 url='http://www.autodesk.com/products/maya/overview'
 license=('custom')
-depends=('audiofile' 'xorg-fonts-75dpi' 'xorg-fonts-100dpi' 'adsklicensing=13.0.0.8122' 'libxp' 'gtk2' 'libxcrypt-compat'
+depends=('audiofile' 'xorg-fonts-75dpi' 'xorg-fonts-100dpi' 'adsklicensing>=13.0.0.8122' 'libxp' 'gtk2' 'libxcrypt-compat'
          'libjpeg6-turbo' 'libffi6' 'nss' 'libxaw' 'libpng15' 'libtool' 'ncurses5-compat-libs' 'libpulse'
          'glu' 'gst-plugins-base-libs' 'libxtst' 'libtiff5')
 optdepends=('maya-arnold: Maya Arnold Renderer Plugin'
