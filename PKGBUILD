@@ -1,5 +1,7 @@
+# Maintainer: noctulus <fangyuhao0612@gmail.com>
+
 pkgname=flutter-dmzj-bin
-pkgver=2.0.4_beta
+pkgver=2.0.6_beta
 pkgrel=1
 pkgdesc="使用Flutter编写的动漫之家跨平台第三方客户端 "
 arch=('x86_64')
@@ -7,9 +9,9 @@ url="https://github.com/xiaoyaocz/flutter_dmzj"
 license=('GPL3')
 depends=('gtk3')
 source=(
-	"https://github.com/xiaoyaocz/flutter_dmzj/releases/download/v2.0.4-beta/flutter_dmzj-2.0.4+20004-linux.zip"
+	"https://github.com/xiaoyaocz/flutter_dmzj/releases/download/v2.0.6-beta/flutter_dmzj-2.0.6+20006-linux.zip"
 	flutter_dmzj.desktop)
-sha256sums=('2a31da9c498c924d93842864d40b009f2cc975c3f2f6f54e7b1dcb075badd4f3'
+sha256sums=('abaa4bf6d114b584a9de3cb19ec54922db8388d0b352ab26ba01f3e062d0c237'
             '962d471c2aa068e6daa4496a9104c58d41119d4106c09232e5b98d3ed4ecf11a')
 
 package() {
