@@ -2,7 +2,7 @@
 pkgname=lemurs-git
 _pkgname=lemurs
 pkgver=0.3.1.r3.g60fda2a
-pkgrel=4
+pkgrel=5
 pkgdesc="TUI Display/Login Manager"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/coastalwhite/lemurs"
