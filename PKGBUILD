@@ -11,7 +11,7 @@ url="https://${_base}.org"
 license=('custom:BSD-3-clause')
 depends=(python-colorcet python-dask python-datashape python-numba python-pillow python-xarray python-scipy) #python-requests
 source=(${_base}-${pkgver}.tar.gz::https://github.com/holoviz/${_base}/archive/v${pkgver}.tar.gz)
-sha512sums=('71d4c0c6a5f3c42c2f22e07273435f5f98d9e117018b588bbcf791c9e73a7e91c3f4c01407065233ae5731f38632a7f6c3da0542abb7416bca3f77092e382b22')
+sha512sums=('65ea2bca4b2017a817c7eae189760495c909987d5f052c3aa94adac20d36582969087645975a307e9b7a99d48bec2e52624489b8c0d026b2d94d722b6b638e14')
 
 build() {
   cd ${_base}-${pkgver}
