@@ -7,11 +7,11 @@
 #_qmake_args="CONFIG+=debug"
 _building=true
 pkgname=qtcreator-prerelease
-_pkgvermajmin=9.0
+_pkgvermajmin=10.0
 _pkgver=${_pkgvermajmin}.0
-_verpostfix="rc1"
+_verpostfix=""
 pkgver="${_pkgver}${_verpostfix}"
-pkgrel=3
+pkgrel=1
 _urlbase="https://download.qt.io/official_releases"
 if [[ -n $_verpostfix ]]; then
   _pkgver=${_pkgver}-${_verpostfix}
@@ -26,8 +26,7 @@ provides=('qtcreator')
 conflicts=('qtcreator')
 depends=('python-beautifulsoup4' 'qt6-base' 'qt6-tools' 'qt6-declarative' 'qt6-quickcontrols2' 'clang' 'llvm' 'lld')
 install=qtcreator-prerelease.install
-optdepends=('qbs'
-            'qt6-doc: integrated Qt documentation'
+optdepends=('qt6-doc: integrated Qt documentation'
             'qt6-examples: welcome page examples'
             'qt6-translations: for other languages'
             'gdb: debugger'
@@ -37,9 +36,9 @@ optdepends=('qbs'
             'mercurial: mercurial support'
             'bzr: bazaar support'
             'valgrind: analyze support')
-makedepends=('qbs' 'clang' 'qt6-base' 'patchelf')
+makedepends=('clang' 'qt6-base' 'patchelf')
 source=("${_urlbase}/qtcreator/${_pkgvermajmin}/${_pkgver}/${_source_archive_name}.tar.xz")
-sha512sums=('0fe077b3502e085993d0970403a062177b1b5eb3e6a375107f0b077c8a7aa8d07c71f96beecbbc400ac985559a61cd26e62575cd43c805b1599aa45241d6d10e')
+sha512sums=('33087c1ca4557a62e03b9a8213d1e00abda78cac09320421497e9908eef3bd454a60e968d7898f9928f90cbf1cdd5c1bea42f1d3f6f9f1095f9a2a24c78a5a01')
 
 prepare() {
   local working_dir=${srcdir}/${_source_archive_name}
@@ -50,6 +49,7 @@ build() {
   local working_dir=${srcdir}/${_source_archive_name}
   local build_dir=${working_dir}/build
 
+  rm -Rf ${build_dir}
   mkdir -p ${build_dir}
   cd ${build_dir}
 
