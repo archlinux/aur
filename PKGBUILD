@@ -4,8 +4,8 @@ DOC_DIRS=(opt/hydrus/help)
 
 pkgname=hydrus
 _pkgname=hydrus
-pkgver=521
-pkgrel=2
+pkgver=522
+pkgrel=1
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
 license=(WTFPL)
@@ -24,13 +24,13 @@ optdepends=('ffmpeg: show duration and other information on video thumbnails'
             'python-cloudscraper: bypass cloudflare "checking your browser" challenges'
             'python-pyqt6-charts: display bandwidth usage charts'
             'python-pyopenssl: to generate certificates for accessing client API and server via HTTPS')
-source=("${_pkgname}::git+https://github.com/hydrusnetwork/${_pkgname}.git#commit=7bd42868c54de08286b54f3b159f9cc41e0df880"
+source=("${_pkgname}::git+https://github.com/hydrusnetwork/${_pkgname}.git#commit=91e1c54d2423cb086830e6994a2a96200ae8b9f6"
         paths-in-opt.patch
         hydrus-client
         hydrus-server
         hydrus.desktop)
 sha256sums=('SKIP'
-            '061490f052086dadf453c208834f14b48f101eb1a95e29e8dee4960f8a72e74d'
+            'f34b3cbe1ee548975f98b339200e79c95ab1482c8e96636e9a27db4ee8ade27a'
             'd2cb826ce0dd1892ab95fc3b14dbe6bd312210f653d0aea31938eeb7e361fdc5'
             '463841cc16059b516cc327cfbc30d3383e2236b085ba2d503e82f5be39444806'
             '9b8c2603a8040ae80152ff9a718ad3e8803fdc3029a939e3c0e932ea35ded923')
@@ -49,11 +49,7 @@ _tweak_package_add_docs() {
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
-  git apply < ../paths-in-opt.patch
-
-  # Remove unit tests
-  rm -f "hydrus/Test"*.py
-  rm -rf "static/testing"
+  patch -Np1 < ../paths-in-opt.patch
 }
 
 build() {
@@ -78,6 +74,9 @@ package() {
      cp -r help "${pkgdir}/opt/hydrus/"
   fi
 
+  # Remove unit tests
+  rm -rf "${pkgdir}/opt/hydrus/hydrus/test" "${pkgdir}/opt/hydrus/static/testing"
+
   # Create and populate /opt/hydrus/bin
   install -d -m755 "${pkgdir}/opt/hydrus/bin"
   ln -s /usr/bin/upnpc "${pkgdir}/opt/hydrus/bin/upnpc_linux"
@@ -96,5 +95,12 @@ package() {
   install -m644 COPYING "${pkgdir}/usr/share/licenses/${_pkgname}/"
   install -m644 license.txt "${pkgdir}/usr/share/licenses/${_pkgname}/"
 }
+
+# Tests (they don't pass!)
+# makedepends+=(python-httmock)
+# check() {
+#   cd "${srcdir}/${_pkgname}"
+#   python -m unittest discover -s hydrus/test -p 'Test*.py'
+# }
 
 _tweak_package_add_docs
