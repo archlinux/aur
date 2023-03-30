@@ -1,11 +1,16 @@
-listen_url = "0.0.0.0:443"
+listen_url = ["0.0.0.0:6666", "[::]:6666"]
+# listen_url = "0.0.0.0:6666" #you can specify one listen address
+ipv6 = true # try IPv6 while connecting to DC
+# optional fallback host for dpi connection testers
+host = "google.com:443"
 # You can specify global secret for user _ here
 secret = "dd000102030405060708090a0b0c0d0e0f"
 # Set socks5 proxy in case you need to use one
-# socks5 = "127.0.0.1:9050"
-# For now empty password is not allowed. because of https://github.com/golang/go/issues/57285
-# user = "test"
-# password = "test"
+socks5 = "127.0.0.1:9050"
+# Optional auth
+# Now empty password is not allowed. because of https://github.com/golang/go/issues/57285
+# socks5_user = "test"
+# socks5_pass = "test"
 # [users]
 # 1 = "dd000102030405060708090a0b0c0d0e0f"
 # [users.2] 
