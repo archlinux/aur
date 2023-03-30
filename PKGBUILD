@@ -2,20 +2,21 @@
 # Maintainer: Simon Perry <aur [at] sanxion [dot] net>
 
 pkgname=broguelite
-_distname=BrogueLite
-pkgver=1.9.3
-pkgrel=2
+pkgver=1.11.1_RC2
+_distname=BrogueCE-Lite
+_distver=v1.11.1-RC2
+pkgrel=1
 pkgdesc="No item-ID fork of Brogue Community Edition: A 26-level dungeon crawl to the Amulet of Yendor."
 arch=('i686' 'x86_64')
-url="https://github.com/HomebrewHomunculus/BrogueLite"
+url="https://github.com/HomebrewHomunculus/BrogueCE"
 license=('AGPL3')
 depends=('sdl2_image' 'sdl2')
-source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/HomebrewHomunculus/${_distname}/archive/v${pkgver}.tar.gz" brogue.sh)
-sha256sums=('bc95355cdb089c608594b539f2af8a8f94d1ff68f9b745ddcf7c6e3f845fbe23'
+source=(${pkgname}-${pkgver}.tar.gz::"${url}/archive/refs/tags/Lite-${_distver}.tar.gz" brogue.sh)
+sha256sums=('8702229a3e019425a8c11b9bf7be8a497dbb2e563613df852aa716d271f26f18'
             '296083114076a47fea7aa3e287e4c4b889f697dbb0e30e09230963d7ae840173')
 
 build() {
-  cd "$srcdir/$_distname-$pkgver"
+  cd "$srcdir/$_distname-$_distver"
   
   make clean
   make DATADIR="/opt/$pkgname" RELEASE="YES"
@@ -31,7 +32,7 @@ build() {
 
 package() {
 
-  cd "$srcdir/$_distname-$pkgver"
+  cd "$srcdir/$_distname-$_distver"
 
   install -Dm644 "linux/brogue.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
 
