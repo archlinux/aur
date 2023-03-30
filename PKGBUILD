@@ -20,14 +20,12 @@ _opt_FLUTTER=1
 set -u
 _pkgname='rustdesk'
 pkgname="${_pkgname}-git"
-pkgver=1.2.0.r1361.g1a3dcbd2
+pkgver=1.2.0.r2672.gd7d49353
 pkgrel=1
 pkgdesc='Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!'
 arch=('x86_64')
 url='https://github.com/rustdesk/rustdesk'
 license=('GPL3')
-provides=("${_pkgname}=${pkgver%.r*}")
-conflicts=("${_pkgname}")
 _dpr=('gtk3' 'xdotool' 'libxcb' 'libxfixes' 'alsa-lib' 'curl' 'libva' 'libvdpau' 'libappindicator-gtk3') # from res/PKGBUILD/depends
 depends=("${_dpr[@]}" 'pulseaudio' 'gst-plugins-base-libs')
 depends+=('hicolor-icon-theme' 'xdg-utils')
@@ -35,7 +33,10 @@ depends+=('xdg-user-dirs')
 _mdp=('unzip' 'git' 'cmake' 'gcc' 'curl' 'wget' 'yasm' 'nasm' 'zip' 'make' 'pkg-config' 'clang') # from Readme.MD
 makedepends=("${_mdp[@]}" 'rust' 'python')
 makedepends+=('ninja') # vcpkg build can use the latest ninja
+provides=("${_pkgname}=${pkgver%.r*}")
+conflicts=("${_pkgname}")
 options=('!strip' '!makeflags')
+install="${pkgname}.install"
 source=("git+${url}.git")
 _vcs=(
   'https://cmake.org/files/v3.18/cmake-3.18.4-Linux-x86_64.tar.gz'
