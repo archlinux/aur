@@ -1,18 +1,18 @@
-# Maintainer: dreieck
-# Contributor: BrainDamage
+# Maintainer: dreieck (https://aur.archlinux.org/account/dreieck)
+# Contributor: BrainDamage (https://aur.archlinux.org/account/BrainDamage)
 
 _pkgname="authsae"
 pkgname="${_pkgname}-git"
-pkgrel=1
+pkgrel=2
 pkgver=1.3.1+r440.20190806.73f31dd
 epoch=5
 pkgdesc="Authsae provides secure password-based authentication for 802.11s mesh networking."
 arch=('x86' 'x86_64')
 url="https://github.com/cozybit/${_pkgname}"
 license=("BSD")
-depends=("openssl" "libconfig")
+depends=("glibc" "openssl" "libconfig")
 makedepends=("git" "cmake")
-provides=("authsae")
+provides=("authsae=${pkgver}")
 conflicts=("authsae")
 md5sums=("SKIP")
 source=("${_pkgname}::git+https://github.com/cozybit/authsae.git")
