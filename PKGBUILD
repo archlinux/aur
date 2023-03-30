@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=0.35.0.255.g16f0cd546d
+pkgver=0.35.0.348.g0f13c38e72
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
@@ -45,6 +45,8 @@ depends=(
          'spirv-cross'
          'davs2'
          'glslang'
+         'ffnvcodec-headers'
+         'wayland-protocols'
          )
 license=('GPL2' 'GPL3' 'LGPL3' 'LGPL2.1' 'BSD')
 url='http://mpv.io'
@@ -189,6 +191,7 @@ _ffmpeg_options=(
     '-Dgl-x11=enabled'
     '-Djpeg=enabled'
     '-Dlibplacebo=enabled'
+    '-Dlibplacebo-next=enabled'
     '-Dsdl2-video=enabled'
     '-Dshaderc=enabled'
     '-Dsixel=enabled'
