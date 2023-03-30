@@ -1,4 +1,6 @@
-# Maintainer: Reza Jahanbakhshi <reza.jahanbakhshi at gmail dot com
+#!/bin/hint/bash
+# Maintainer: Fredrick R. Brennan <copypaste@kittens.ph>
+# Contributor: Reza Jahanbakhshi <reza.jahanbakhshi at gmail dot com>
 # Contributor: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
 # Contributor: yurikoles <root@yurikoles.com>
 # Contributor: bearoso <bearoso@gmail.com>
@@ -14,35 +16,39 @@
 # Contributor: Tomas Lindquist Olsen <tomas@famolsen.dk>
 # Contributor: Tomas Wilhelmsson <tomas.wilhelmsson@gmail.com>
 
-
-pkgname=('llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
-pkgver=16.0.0_r439853.1fe096ef59d1
+pkgname=(llvm-opt-git
+         llvm-libs-opt-git
+         llvm-ocaml-opt-git)
+pkgver='17.0.0_r456210.236c9217a9de'
 pkgrel=1
-arch=('x86_64')
-url="https://llvm.org/"
+arch=(x86_64)
+url='https://llvm.org/'
 license=('custom:Apache 2.0 with LLVM Exception')
-makedepends=('git' 'cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2' 
-             'python-setuptools' 'lldb' 'ocaml' 'ocaml-ctypes' 'ocaml-findlib'
-             'python-sphinx' 'python-recommonmark' 'swig' 'python' 'python-six' 'lua53'
-             'ocl-icd' 'opencl-headers' 'z3' 'jsoncpp' 'ocaml-stdlib-shims')
-checkdepends=("python-psutil")
-source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
-        "llvm-config.h")
-
-md5sums=('SKIP'
-         '295c343dcd457dc534662f011d7cff1a')
+makedepends=(git cmake libffi libedit ncurses libxml2 python-setuptools lldb
+             lua53 ocl-icd opencl-headers z3 jsoncpp
+             python-sphinx python-recommonmark swig python python-six
+             ocaml ocaml-ctypes ocaml-findlib ocaml-stdlib-shims)
+checkdepends=(python-psutil)
+source=('llvm-project::git+https://github.com/llvm/llvm-project.git'
+         llvm-config.h)
 sha512sums=('SKIP'
             '75e743dea28b280943b3cc7f8bbb871b57d110a7f2b9da2e6845c1c36bf170dd883fca54e463f5f49e0c3effe07fbd0db0f8cf5a12a2469d3f792af21a73fcdd')
-options=('staticlibs')
-
-# NINJAFLAGS is an env var used to pass commandline options to ninja
-# NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
-# NINJAFLAGS="-j20"
+options=(staticlibs)
 
 _python_optimize() {
-  python -m compileall "$@"
-  python -O -m compileall "$@"
-  python -OO -m compileall "$@"
+    python -m compileall "$@"
+    python -O -m compileall "$@"
+    python -OO -m compileall "$@"
+}
+
+_python_version() {
+    python <(\
+        cat << 'EOF'
+import sys
+vi = sys.version_info
+print(f"{vi.major}.{vi.minor}")
+EOF
+    )
 }
 
 pkgver() {
@@ -60,16 +66,14 @@ pkgver() {
 }
 
 build() {
-    
     export CFLAGS+=" ${CPPFLAGS}"
     export CXXFLAGS+=" ${CPPFLAGS}"
     cmake \
         -B _build \
         -S "$srcdir"/llvm-project/llvm  \
-        -G Ninja \
         -D CMAKE_BUILD_TYPE=Release \
-        -D CMAKE_INSTALL_PREFIX=/usr \
-        -D LLVM_BINUTILS_INCDIR=/usr/include \
+        -D CMAKE_INSTALL_PREFIX=/opt \
+        -D LLVM_BINUTILS_INCDIR=/opt/include \
         -D LLVM_APPEND_VC_REV=ON \
         -D LLVM_VERSION_SUFFIX="" \
         -D LLVM_HOST_TRIPLE=$CHOST \
@@ -90,119 +94,116 @@ build() {
         -D LLVM_LIT_ARGS="-sv --ignore-fail" \
         -Wno-dev
 
-    ninja -C _build $NINJAFLAGS
-    ninja -C _build $NINJAFLAGS ocaml_doc
+    make -C _build
+    make -C _build ocaml_doc
 }
 
 check() {
-    ninja -C _build $NINJAFLAGS check-llvm
-    ninja -C _build $NINJAFLAGS check-clang
-    ninja -C _build $NINJAFLAGS check-clang-tools
-    ninja -C _build $NINJAFLAGS check-polly
-    ninja -C _build $NINJAFLAGS check-lld
-    ninja -C _build $NINJAFLAGS check-lldb
+    make -C _build check-llvm
+    make -C _build check-clang
+    make -C _build check-clang-tools
+    make -C _build check-polly
+    make -C _build check-lld
+    make -C _build check-lldb
 }
 
-package_llvm-git() {
-    pkgdesc="LLVM development version. includes clang and many other tools"
-    depends=("llvm-libs-git=$pkgver-$pkgrel" 'perl')
+package_llvm-opt-git() {
+    #!/bin/bash
+    pkgdesc="LLVM development version. includes clang and many other tools (installs to /opt)"
+    depends=("llvm-libs-opt-git=$pkgver-$pkgrel" 'perl')
     optdepends=('python: for scripts')
-    provides=(aur-llvm-git compiler-rt-git clang-git lldb-git lld-git polly-git
-              llvm compiler-rt clang lldb polly lld )
-    # A package always provides itself, so there's no need to provide llvm-git
-    conflicts=('llvm' 'compiler-rt' 'clang' 'lldb' 'polly' 'lld')
-    
-    DESTDIR="$pkgdir" ninja -C _build $NINJAFLAGS install
+    DESTDIR="$pkgdir" make -C _build $NINJAFLAGS install
 
     # Include lit for running lit-based tests in other projects
     pushd llvm-project/llvm/utils/lit
-    python setup.py install --root="$pkgdir" -O1
+    python setup.py install --root="$pkgdir" --prefix="/opt" -O1
     popd
     
-    # Move analyzer scripts out of /usr/libexec
-    mv "$pkgdir"/usr/libexec/{ccc,c++}-analyzer "$pkgdir"/usr/lib/clang/
-    mv "$pkgdir"/usr/libexec/analyze-{cc,c++} "$pkgdir"/usr/lib/clang/
-    mv "$pkgdir"/usr/libexec/intercept-{cc,c++} "$pkgdir"/usr/lib/clang/
-    rmdir "$pkgdir"/usr/libexec
-    sed -i 's|libexec|lib/clang|' "$pkgdir"/usr/bin/scan-build
+    # Move analyzer scripts out of /opt/libexec
+    mv "$pkgdir"/opt/libexec/{ccc,c++}-analyzer "$pkgdir"/opt/lib/clang/
+    mv "$pkgdir"/opt/libexec/analyze-{cc,c++} "$pkgdir"/opt/lib/clang/
+    mv "$pkgdir"/opt/libexec/intercept-{cc,c++} "$pkgdir"/opt/lib/clang/
+    rmdir "$pkgdir"/opt/libexec
+    sed -i 's|libexec|lib/clang|' "$pkgdir"/opt/bin/scan-build
 
-    # The runtime libraries go into llvm-libs-git
-    mv -f "$pkgdir"/usr/lib/lib{LLVM,LTO,Remarks}*.so* "$srcdir"
-    mv -f "$pkgdir"/usr/lib/LLVMgold.so "$srcdir"
+    # The runtime libraries go into llvm-libs-opt-git
+    mv -f "$pkgdir"/opt/lib/lib{LLVM,LTO,Remarks}*.so* "$srcdir"
+    mv -f "$pkgdir"/opt/lib/LLVMgold.so "$srcdir"
 
     # OCaml bindings go to a separate package
     rm -rf "$srcdir"/ocaml.{lib,doc}
     mv "$pkgdir"/usr/lib/ocaml "$srcdir"/ocaml.lib
 
-    if [[ -d "${pkgdir}/usr/share/doc/LLVM/llvm/ocaml-html" && ! -d "${pkgdir}/usr/share/doc/llvm/ocaml-html" ]]
+    if [[ -d "${pkgdir}/opt/share/doc/LLVM/llvm/ocaml-html" && ! -d "${pkgdir}/opt/share/doc/llvm/ocaml-html" ]]
     then
-        mv "$pkgdir"/usr/share/doc/LLVM/llvm/ocaml-html "$srcdir"/ocaml.doc
+        mv "$pkgdir"/opt/share/doc/LLVM/llvm/ocaml-html "$srcdir"/ocaml.doc
     else
-        mv "$pkgdir"/usr/share/doc/llvm/ocaml-html "$srcdir"/ocaml.doc
+        mv "$pkgdir"/opt/share/doc/llvm/ocaml-html "$srcdir"/ocaml.doc
     fi
     
     if [[ $CARCH == x86_64 ]]; then
         # Needed for multilib (https://bugs.archlinux.org/task/29951)
         # Header stub is taken from Fedora
-        mv "$pkgdir"/usr/include/llvm/Config/llvm-config{,-64}.h
-        cp "$srcdir"/llvm-config.h "$pkgdir"/usr/include/llvm/Config/llvm-config.h
+        mv "$pkgdir"/opt/include/llvm/Config/llvm-config{,-64}.h
+        cp "$srcdir"/llvm-config.h "$pkgdir"/opt/include/llvm/Config/llvm-config.h
     fi
 
-    _py="3.10"
+    _py=$(_python_version)
     cd llvm-project
     # Install Python bindings and optimize them
-    cp -a llvm/bindings/python/llvm  "$pkgdir"/usr/lib/python$_py/site-packages/
-    cp -a clang/bindings/python/clang  "$pkgdir"/usr/lib/python$_py/site-packages/
-    _python_optimize "$pkgdir"/usr/lib/python$_py/site-packages
+    cp -a llvm/bindings/python/llvm  "$pkgdir"/opt/lib/python$_py/site-packages/
+    cp -a clang/bindings/python/clang  "$pkgdir"/opt/lib/python$_py/site-packages/
+    _python_optimize "$pkgdir"/opt/lib/python$_py/site-packages
 
     #optimize other python files except 2 problem cases
-    _python_optimize "$pkgdir"/usr/share -x 'clang-include-fixer|run-find-all-symbols'
+    _python_optimize "$pkgdir"/opt/share -x 'clang-include-fixer|run-find-all-symbols'
 
-    install -Dm644 llvm/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/llvm-LICENSE
-    install -Dm644 clang/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-LICENSE
-    install -Dm644 clang-tools-extra/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-tools-extra-LICENSE
-    install -Dm644 compiler-rt/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/compiler-rt-LICENSE
-    install -Dm644 lld/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/lld-LICENSE
-    install -Dm644 lldb/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/lldb-LICENSE
-    install -Dm644 polly/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/polly-LICENSE
+    install -Dm644 llvm/LICENSE.TXT "$pkgdir"/opt/share/licenses/$pkgname/llvm-LICENSE
+    install -Dm644 clang/LICENSE.TXT "$pkgdir"/opt/share/licenses/$pkgname/clang-LICENSE
+    install -Dm644 clang-tools-extra/LICENSE.TXT "$pkgdir"/opt/share/licenses/$pkgname/clang-tools-extra-LICENSE
+    install -Dm644 compiler-rt/LICENSE.TXT "$pkgdir"/opt/share/licenses/$pkgname/compiler-rt-LICENSE
+    install -Dm644 lld/LICENSE.TXT "$pkgdir"/opt/share/licenses/$pkgname/lld-LICENSE
+    install -Dm644 lldb/LICENSE.TXT "$pkgdir"/opt/share/licenses/$pkgname/lldb-LICENSE
+    install -Dm644 polly/LICENSE.TXT "$pkgdir"/opt/share/licenses/$pkgname/polly-LICENSE
 }
 
-package_llvm-libs-git() {
-    pkgdesc="runtime libraries for llvm-git"
+package_llvm-libs-opt-git() {
+    pkgdesc="runtime libraries for llvm-git (installs to /opt)"
     depends=('gcc-libs' 'zlib' 'libffi' 'libedit' 'ncurses' 'libxml2' 'z3' 'lua53')
-    provides=(aur-llvm-libs-git llvm-libs)
-    conflicts=('llvm-libs')
 
-    install -d "$pkgdir"/usr/lib
+    install -d "$pkgdir"/opt/lib
     cp -P \
         "$srcdir"/lib{LLVM,LTO,Remarks}*.so* \
         "$srcdir"/LLVMgold.so \
-        "$pkgdir"/usr/lib/
+        "$pkgdir"/opt/lib/
 
-    # Symlink LLVMgold.so from /usr/lib/bfd-plugins
+    # Symlink LLVMgold.so from /opt/lib/bfd-plugins
     # https://bugs.archlinux.org/task/28479
-    install -d "$pkgdir"/usr/lib/bfd-plugins
-    ln -s ../LLVMgold.so "$pkgdir"/usr/lib/bfd-plugins/LLVMgold.so
+    install -d "$pkgdir"/opt/lib/bfd-plugins
+    ln -s ../LLVMgold.so "$pkgdir"/opt/lib/bfd-plugins/LLVMgold.so
     
     cd llvm-project/
-    install -Dm644 llvm/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/llvm-LICENSE
-    install -Dm644 clang/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-LICENSE
-    install -Dm644 clang-tools-extra/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/clang-tools-extra-LICENSE
-    install -Dm644 compiler-rt/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/compiler-rt-LICENSE
-    install -Dm644 lld/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/lld-LICENSE
-    install -Dm644 lldb/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/lldb-LICENSE
-    install -Dm644 polly/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/polly-LICENSE
+    install -Dm644 llvm/LICENSE.TXT "$pkgdir"/opt/share/licenses/$pkgname/llvm-LICENSE
+    install -Dm644 clang/LICENSE.TXT "$pkgdir"/opt/share/licenses/$pkgname/clang-LICENSE
+    install -Dm644 clang-tools-extra/LICENSE.TXT "$pkgdir"/opt/share/licenses/$pkgname/clang-tools-extra-LICENSE
+    install -Dm644 compiler-rt/LICENSE.TXT "$pkgdir"/opt/share/licenses/$pkgname/compiler-rt-LICENSE
+    install -Dm644 lld/LICENSE.TXT "$pkgdir"/opt/share/licenses/$pkgname/lld-LICENSE
+    install -Dm644 lldb/LICENSE.TXT "$pkgdir"/opt/share/licenses/$pkgname/lldb-LICENSE
+    install -Dm644 polly/LICENSE.TXT "$pkgdir"/opt/share/licenses/$pkgname/polly-LICENSE
 }
 
-package_llvm-ocaml-git() {
-    pkgdesc="OCaml bindings for LLVM"
-    depends=("llvm-git=$pkgver-$pkgrel" "ocaml" 'ocaml-ctypes')
-    conflicts=('llvm-ocaml')
-    provides=("llvm-ocaml")
+package_llvm-ocaml-opt-git() {
+    pkgdesc="OCaml bindings for LLVM (installs to /opt)"
+    depends=("llvm-opt-git=$pkgver-$pkgrel" "ocaml" 'ocaml-ctypes')
     
-    install -d "$pkgdir"/{usr/lib,usr/share/doc/$pkgname}
-    cp -a "$srcdir"/ocaml.lib "$pkgdir"/usr/lib/ocaml
-    cp -a "$srcdir"/ocaml.doc "$pkgdir"/usr/share/doc/$pkgname/html
+    install -d "$pkgdir"/{opt/lib,opt/share/doc/$pkgname}
+    mkdir -p "$pkgdir"/opt/lib/ocaml
+    cp -a "$srcdir"/ocaml.lib "$pkgdir"/opt/lib/ocaml
+    mkdir -p "$pkgdir"/opt/share/doc/$pkgname/html
+    cp -a "$srcdir"/ocaml.doc "$pkgdir"/opt/share/doc/$pkgname/html
 
-    install -Dm644 "$srcdir"/llvm-project/llvm/LICENSE.TXT  "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    mkdir -p "$pkgdir"/opt/share/licenses/$pkgname
+    install -Dm644 "$srcdir"/llvm-project/llvm/LICENSE.TXT  "$pkgdir"/opt/share/licenses/$pkgname/LICENSE
 }
+
+# vim: syntax=bash et sw=4 ts=4
