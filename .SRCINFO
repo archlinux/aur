@@ -1,13 +1,13 @@
 pkgbase = fisoco
 	pkgdesc = FInd, Sort, Order and COnvert your files with a free software
-	pkgver = 0.8.3
+	pkgver = 0.8.4
 	pkgrel = 0
 	url = http://fisoco.nongnu.org
 	arch = x86_64
 	license = GPL3
 	makedepends = intltool
-	source = http://download.savannah.gnu.org/releases/fisoco/source/fisoco-0.8.3.tar.gz
-	md5sums = bf688430b04ee0f8add992bf11cd80d2
+	source = http://download.savannah.gnu.org/releases/fisoco/source/fisoco-0.8.4.tar.gz
+	md5sums = 5870bff0d7f6115f44188157852fa6e8
 
 pkgname = fisoco
 
