@@ -59,7 +59,8 @@ package()
   for CPU in ${CPU_LIST}; do
     for SYNTAX in ${SYNTAX_LIST}; do
       echo "CPU=${CPU} SYNTAX=${SYNTAX}:"
-      cp "vasm${CPU}_${SYNTAX}" "${pkgdir}/usr/bin/"
+      cp "vasm${CPU}_${SYNTAX}" "${pkgdir}/usr/bin/vasm_${CPU}_${SYNTAX}"
+      ln -s "vasm_${CPU}_${SYNTAX}" "${pkgdir}/usr/bin/vasm${CPU}_${SYNTAX}"
     done
   done
 
