@@ -1,6 +1,6 @@
 # Maintainer: Luc <luc@dougy147.com>
 pkgname=scitopdf
-pkgver=0.6
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="bash script to quickly fetch, download and open scientific papers from Sci-Hub's database."
 arch=(x86_64 i686)
