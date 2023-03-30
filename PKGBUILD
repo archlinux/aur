@@ -1,35 +1,40 @@
 # Maintainer: Tilla <carlosfritz@posteo.net>
 
 pkgname=libretro-dosbox-core-git
-pkgver=r4939.dffa80e6
+pkgver=r4948.4032f8b
 pkgrel=1
-pkgdesc="Best DOSBox core"
+pkgdesc="DOSBox core"
 arch=(x86_64 aarch64)
 url="https://github.com/realnc/dosbox-core"
 license=(GPL2)
 groups=(libretro)
 depends=(gcc-libs libretro-core-info mpg123 flac opusfile opus libvorbis libogg alsa-lib libsndfile sdl sdl_net)
 makedepends=(git cmake ninja meson)
-_gitname=dosbox-core
-source=("git+https://github.com/realnc/${_gitname}.git")
+source=(git+https://github.com/realnc/dosbox-core.git)
 sha256sums=(SKIP)
 
 pkgver() {
-  cd ${_gitname}
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd dosbox-core
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
-  cd ${_gitname}
+  cd dosbox-core
   git submodule update --init
 }
 
 build() {
-  cd ${_gitname}/libretro
-  make platform=unix BUNDLED_AUDIO_CODECS=0 BUNDLED_LIBSNDFILE=0 BUNDLED_SDL=0 WITH_BASSMIDI=0 WITH_FLUIDSYNTH=0 deps
-  make platform=unix BUNDLED_AUDIO_CODECS=0 BUNDLED_LIBSNDFILE=0 BUNDLED_SDL=0 WITH_BASSMIDI=0 WITH_FLUIDSYNTH=0
+  cd dosbox-core/libretro
+  export platform=unix
+  export BUNDLED_AUDIO_CODECS=0
+  export BUNDLED_LIBSNDFILE=0
+  export BUNDLED_SDL=0
+  export WITH_BASSMIDI=0
+  export WITH_FLUIDSYNTH=0
+  make deps
+  make
 }
 
 package() {
-  install -Dm644 "${_gitname}/libretro/dosbox_core_libretro.so" "${pkgdir}/usr/lib/libretro/dosbox_core_libretro.so"
+  install -Dm644 "dosbox-core/libretro/dosbox_core_libretro.so" "${pkgdir}/usr/lib/libretro/dosbox_core_libretro.so"
 }

@@ -1,6 +1,6 @@
 pkgbase = libretro-dosbox-core-git
-	pkgdesc = Best DOSBox core
-	pkgver = r4939.dffa80e6
+	pkgdesc = DOSBox core
+	pkgver = r4948.4032f8b
 	pkgrel = 1
 	url = https://github.com/realnc/dosbox-core
 	arch = x86_64
