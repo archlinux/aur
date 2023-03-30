@@ -6,11 +6,12 @@
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 # Contributor: Michele <king_duckz@gmx.com>
 
+declare -r _version_frequi="0.6.9"
 readonly _pkgname="freqtrade"
 
 pkgname="python-freqtrade"
 pkgver="2023.2"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="Free, open source crypto trading bot."
 arch=("any")
 url="https://github.com/freqtrade/${_pkgname}"
@@ -21,10 +22,10 @@ checkdepends=(
     "python-httpx" "python-pytest" "python-pytest-asyncio" "python-pytest-cov" "python-pytest-mock" "python-pytest-random-order" "python-time-machine")
 conflicts=("python-freqtrade-git")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
-    "https://github.com/freqtrade/frequi/releases/download/0.6.8/freqUI.zip"
-    "freqtrade@.service")
+    "frequi-v${_version_frequi}::https://github.com/freqtrade/frequi/releases/download/${_frequi_version}/freqUI.zip"
+    "${_pkgname}@.service")
 sha512sums=("e9800a26aed5a2271bfdc99ec69dfeedc33e6cef4cde47dd1da0c0cddfe7a91b7eb334d654dd60d7e5892d9033d2e7e899cf6e6e6ee6a60a88572ace7ee6e866"
-    "d70532b47b405aa06cd1930dd7ba08202ad2762375cf677c928515b70be43f3ebc6067f83956c012becb01761e097decb3eaa80b6a29bc684a20225fba4d378b"
+    "51d86723a202f65067eaf87098e20c7e6dbccbe954456ff1ef1e1c761ec5e178a591f67ee091217d7044b03ae946367df27085fa35e890387630f688c303e4cb"
     "5126cdd86136ae7f2b93fa22b3f01f811121a9cde875b4d699d92ae74f40bf017ee04cd8fc7df39d73660a2bad180063994cf6890d51e2dcfff312fb2e622df2")
 
 build()
@@ -59,7 +60,7 @@ package()
     cp -r "${srcdir}"/assets/ "${pkgdir}"/"${_site_packages}"/freqtrade/rpc/api_server/ui/installed/
     install -Dm644 "${srcdir}"/favicon.ico "${srcdir}"/index.html "${pkgdir}"/"${_site_packages}"/freqtrade/rpc/api_server/ui/installed/
 
-    install -Dm644 "${srcdir}"/freqtrade@.service "${pkgdir}"/usr/lib/systemd/system/
+    install -Dm644 "${srcdir}"/"${_pkgname}"@.service "${pkgdir}"/usr/lib/systemd/system/
 
     # Install the documentation.
     install -Dm644 "${srcdir}"/"${_pkgname}"-"${pkgver}"/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
