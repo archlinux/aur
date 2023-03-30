@@ -1,13 +1,14 @@
 pkgbase = pim-git
 	pkgdesc = Python image viewer with vim-like keybindings. Git-Version
 	pkgver = 0.10.1.r0.g2f8d537
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Narrat/Pim
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = desktop-file-utils
 	depends = python-gobject>=3.22
+	optdepends = libjxl: support for JPEG XL
 	optdepends = webp-pixbuf-loader: support for the webp format
 	provides = pim=0.10.0
 	conflicts = pim
