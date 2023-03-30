@@ -1,7 +1,7 @@
 # Maintainer: Tilla <carlosfritz@posteo.net>
 
 pkgname=(libretro-scummvm-git libretro-scummvm-datafiles-git libretro-scummvm-coreinfo-git)
-pkgver=140558.8247aad108c
+pkgver=r140537.75051b5
 pkgrel=1
 pkgdesc="ScummVM core"
 arch=(x86_64 aarch64)
@@ -31,8 +31,7 @@ prepare() {
 
 pkgver() {
   cd scummvm
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-  #git rev-list --count HEAD
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {

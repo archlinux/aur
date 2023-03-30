@@ -1,6 +1,6 @@
 pkgbase = libretro-scummvm-git
 	pkgdesc = ScummVM core
-	pkgver = 140558.8247aad108c
+	pkgver = r140537.75051b5
 	pkgrel = 1
 	url = https://github.com/libretro/scummvm
 	arch = x86_64
