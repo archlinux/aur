@@ -1,3 +1,22 @@
+[Desktop Entry]
+Version=1.0
+Name=AIMP (Wine)
+Name[ru_RU]=AIMP (Wine)
+GenericName=AIMP
+GenericName[ru_RU]=
+Comment[ru_RU]=Свободный полнофункциональный аудио проигрыватель (Wine)
+Comment=Свободный полнофункциональный аудио проигрыватель (Wine)
+Icon=aimp
+Exec=aimp %F
+Terminal=false
+MimeType=x-content/audio-cdda;audio/x-xm;audio/x-wavpack;audio/x-vorbis+ogg;audio/x-tta;audio/x-stm;audio/x-scpls;audio/x-s3m;audio/x-musepack;audio/x-ms-wma;audio/x-mpegurl;audio/x-mod;audio/x-it;audio/x-ape;audio/mpeg;audio/mpeg;audio/mpeg;audio/mpeg;audio/mp4;audio/mp4;audio/flac;audio/aac;audio/aac;application/x-cue;application/ogg;application/ogg;
+Categories=AudioVideo;Player;Audio;
+Keywords=player;audio;video;multimedia;wine;
+StartupNotify=false
+Type=Application
+X-KDE-SubstituteUID=false
+Actions=Play;Pause;Stop;Previous;Next;
+
 [Desktop Action Next]
 Exec=aimp /NEXT
 Name[ru_RU]=Следующая музыка
@@ -47,26 +66,3 @@ Name[sr@Ijekavian]=Заустави
 Name[sr@ijekavianlatin]=Zaustavi
 Name[sr@latin]=Zaustavi
 Name[sr]=Заустави
-
-[Desktop Entry]
-Actions=Play;Pause;Stop;Previous;Next;
-Categories=AudioVideo;Player;Audio;
-Comment[ru_RU]=Свободный полнофункциональный аудио проигрыватель (Wine)
-Comment=Свободный полнофункциональный аудио проигрыватель (Wine)
-Exec=aimp %F
-GenericName[ru_RU]=
-GenericName=
-Icon=/opt/aimp/AIMP/Assets/logo.png
-Keywords=player;audio;video;multimedia;wine;
-MimeType=x-content/audio-cdda;audio/x-xm;audio/x-wavpack;audio/x-vorbis+ogg;audio/x-tta;audio/x-stm;audio/x-scpls;audio/x-s3m;audio/x-musepack;audio/x-ms-wma;audio/x-mpegurl;audio/x-mod;audio/x-it;audio/x-ape;audio/mpeg;audio/mpeg;audio/mpeg;audio/mpeg;audio/mp4;audio/mp4;audio/flac;audio/aac;audio/aac;application/x-cue;application/ogg;application/ogg;
-Name[ru_RU]=AIMP (Wine)
-Name=AIMP (Wine)
-Path=
-StartupNotify=true
-Terminal=false
-TerminalOptions=
-Type=Application
-X-DBUS-ServiceName=
-X-DBUS-StartupType=
-X-KDE-SubstituteUID=false
-X-KDE-Username=
