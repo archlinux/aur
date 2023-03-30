@@ -1,0 +1,22 @@
+pkgbase = openeb-git
+	pkgdesc = Open source SDK for event based cameras by Prophesee
+	pkgver = r89.04022c2
+	pkgrel = 1
+	url = https://github.com/prophesee-ai/openeb
+	arch = any
+	license = custom
+	makedepends = git
+	depends = opencv
+	depends = boost
+	depends = eigen
+	depends = libusb
+	depends = glew
+	depends = glfw
+	depends = ffmpeg
+	depends = libcanberra
+	source = openeb::git+https://github.com/prophesee-ai/openeb
+	source = python-version.patch
+	sha256sums = SKIP
+	sha256sums = a0a156d1f96bcfb100ff29c27fd0a1de9216da60302d77687ab1cdcdda9bfae7
+
+pkgname = openeb-git
