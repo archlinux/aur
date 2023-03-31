@@ -2,9 +2,9 @@
 # Contributor: jingutech
 # Contributor: Bruce Zhang
 pkgname=listen1-desktop
-pkgver=2.26.2
+pkgver=2.28.0
 _electron=electron13
-pkgrel=2
+pkgrel=1
 pkgdesc="One for all free music in China (Build from source)"
 arch=('any')
 url="https://github.com/listen1/listen1_desktop"
@@ -19,8 +19,8 @@ source=(
 	"listen1.sh"
 	"listen1.desktop"
 )
-sha256sums=('b0c78cc08b69730930919cdf604e1767f9b9796a7676cfc3c31b5ce4a509878d'
-            '7bf4e4ba07797bb4183a413e7c1df144671da4727829d2862ea1e831edafea7f'
+sha256sums=('161060943ebf64d22b48096acf943f35c25cc6b5c305b2119e41c2e17bbb7c86'
+            'cd3b4129351b75faee9255893fe0b86354b055027e1385bc0bfd678eeacf6422'
             '6e13f2757600659fe5d48ba88bc24ae632049c2f4c3f1a8c95eac75fba4e38d2'
             '4fb54621e98ddd1cfe8d10619d193256fd0702b58ab01736aec512765f43d9df')
 
