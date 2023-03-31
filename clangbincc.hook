@@ -1,0 +1,11 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = gcc
+
+[Action]
+Description = Re-pointing /bin/cc symlink to clang...
+When = PostTransaction
+Exec = /usr/bin/ln -sfT clang /usr/bin/cc
+Depends = clang

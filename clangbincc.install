@@ -1,0 +1,11 @@
+post_install() {
+	/usr/bin/ln -sfT clang /usr/bin/cc
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	/usr/bin/ln -sfT gcc /usr/bin/cc
+}

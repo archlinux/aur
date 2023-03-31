@@ -1,0 +1,13 @@
+pkgbase = clangbincc
+	pkgdesc = Relink /bin/cc to clang
+	pkgver = 0.1
+	pkgrel = 1
+	install = clangbincc.install
+	arch = any
+	license = GPL
+	depends = clang
+	provides = cc
+	source = clangbincc.hook
+	sha256sums = c9326720d93b264fb9cb9da80196c875c04555e6718c67278d005033de3101db
+
+pkgname = clangbincc
