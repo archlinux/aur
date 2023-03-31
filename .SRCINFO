@@ -1,0 +1,22 @@
+pkgbase = libretro-virtualxt-git
+	pkgdesc = IBM PC/XT core
+	pkgver = 0.7.r256.gf7f8744
+	pkgrel = 1
+	url = https://virtualxt.org/
+	arch = aarch64
+	arch = armv7h
+	arch = i486
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	groups = libretro
+	license = custom
+	makedepends = git
+	depends = glibc
+	depends = libretro-core-info
+	provides = libretro-virtualxt=0.7.r256.gf7f8744
+	conflicts = libretro-virtualxt
+	source = virtualxt::git+https://github.com/andreas-jonsson/virtualxt.git
+	b2sums = SKIP
+
+pkgname = libretro-virtualxt-git
