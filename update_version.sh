@@ -10,10 +10,11 @@ PKG="microsoft-edge-${CHANNEL}"
 
 # Get latest version
 VER=$(curl -sSf https://packages.microsoft.com/repos/edge/dists/stable/main/binary-amd64/Packages |
-    grep -A6 "Package: ${PKG}" |
-    awk '/Version/{print $2}' |
-	cut -d '-' -f1 |
-    head -n1)
+grep -A6 "Package: ${PKG}" |
+     awk '/Version/{print $2}' |
+     cut -d '-' -f1 |
+     sort -V -r |
+     head -n1)	
 
 # Insert latest version into PKGBUILD and update hashes
 sed -i \
@@ -33,9 +34,12 @@ SUM256=$(curl -sSf https://packages.microsoft.com/repos/edge/dists/stable/main/b
     head -n1)
 
 # Insert latest shasum into PKGBUILD and update hashes
-sed -i \
-    -e "s/^sha256sums=('.*/sha256sums=('${SUM256}'/" \
-    PKGBUILD
+SUM256=$(curl -sSf https://packages.microsoft.com/repos/edge/dists/stable/main/binary-amd64/Packages |
+     grep -A15 "Package: ${PKG}" |
+     awk '/SHA256/{print $2}' |
+    sort -V -r |
+    head -n1)
+    
 
 # Reset pkgrel
 sed -i \
