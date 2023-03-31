@@ -1,6 +1,6 @@
 pkgbase = openelearning-bin
 	pkgdesc = A free, open-source Elearning editor for Linux
-	pkgver = 1.5.2
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://www.openelearning.org
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = openelearning-bin
 	depends = java-runtime
 	provides = openelearning
 	options = emptydirs
-	source = openelearning-1.5.2.deb::https://www.openelearning.org/addScript/download/openelearning_1.5.2_amd64.deb
-	sha256sums = c171f1d58b94c560da08abe4e204c8711b03c473b745bafd497338ff39ab233c
+	source = openelearning-1.6.2.deb::https://www.openelearning.org/addScript/download/openelearning_1.6.2_amd64.deb
+	sha256sums = 1034e6cd0510e59a547dc9de4bce20a2d2b31138e2a3271dcbf2687490632ae5
 
 pkgname = openelearning-bin
