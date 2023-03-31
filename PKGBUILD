@@ -1,7 +1,7 @@
 # Maintainer: Simone Scalabrino <s.scalabrino9@gmail.com>
 _appname="google-calendar"
 _appdesc="Standalone silo app for Google Calendar"
-_gittag="0.2"
+_gittag="0.3"
 
 _gitname=silos-apps
 pkgname="silo-${_appname}"
