@@ -11,6 +11,7 @@ pkgbase = salome-medcoupling
 	depends = libxml2
 	depends = python-scipy
 	depends = metis
+	depends = scotch
 	source = git+https://git.salome-platform.org/gitpub/tools/medcoupling.git#tag=V9_10_0
 	md5sums = SKIP
 
