@@ -1,5 +1,5 @@
 pkgbase = llvm-opt-git
-	pkgver = 17.0.0_r456210.236c9217a9de
+	pkgver = 17.0.0_r456290.a755e80ed1d2
 	pkgrel = 1
 	url = https://llvm.org/
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = llvm-opt-git
 
 pkgname = llvm-opt-git
 	pkgdesc = LLVM development version. includes clang and many other tools (installs to /opt)
-	depends = llvm-libs-opt-git=17.0.0_r456210.236c9217a9de-1
+	depends = llvm-libs-opt-git=17.0.0_r456290.a755e80ed1d2-1
 	depends = perl
 	optdepends = python: for scripts
 
@@ -52,6 +52,6 @@ pkgname = llvm-libs-opt-git
 
 pkgname = llvm-ocaml-opt-git
 	pkgdesc = OCaml bindings for LLVM (installs to /opt)
-	depends = llvm-opt-git=17.0.0_r456210.236c9217a9de-1
+	depends = llvm-opt-git=17.0.0_r456290.a755e80ed1d2-1
 	depends = ocaml
 	depends = ocaml-ctypes

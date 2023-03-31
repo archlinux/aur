@@ -19,7 +19,7 @@
 pkgname=(llvm-opt-git
          llvm-libs-opt-git
          llvm-ocaml-opt-git)
-pkgver='17.0.0_r456210.236c9217a9de'
+pkgver=17.0.0_r456290.a755e80ed1d2
 pkgrel=1
 arch=(x86_64)
 url='https://llvm.org/'
@@ -86,7 +86,9 @@ build() {
         -D LLVM_BUILD_DOCS=ON \
         -D LLVM_ENABLE_DOXYGEN=OFF \
         -D LLVM_ENABLE_SPHINX=ON \
-        -D SPHINX_OUTPUT_HTML:BOOL=OFF \
+        -D SPHINX_OUTPUT_HTML:BOOL=ON \
+        -D CMAKE_C_COMPILER="${CC:=$(which cc)}" \
+        -D CMAKE_CXX_COMPILER="${CXX:=$(which c++)}" \
         -D SPHINX_WARNINGS_AS_ERRORS=OFF \
         -D POLLY_ENABLE_GPGPU_CODEGEN=ON \
         -D LLDB_USE_SYSTEM_SIX=1 \
