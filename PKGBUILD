@@ -2,7 +2,7 @@
 _target='compass-isolated-beta'
 _edition=' Isolated Edition Beta'
 pkgname="mongodb-$_target"
-_pkgver='1.36.2-beta.1'
+_pkgver='1.36.2-beta.2'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Isolated Edition - beta version'
@@ -18,7 +18,7 @@ source=(
 	'hadron-build.diff'
 	'fix-argv.diff'
 )
-sha512sums=('dd5cf3097640892de9dd5cd0723a54b052e24692deff5f3fef5866e9fd5fa4cc43a325056f8e8dbebb1d0190e46ac0088f552940f035470da6d6651eeb01e463'
+sha512sums=('1fe1b3e90fe09181561beca9d7cd08646a785d7ba631d430517999805bb2963d9e74f204c4d1f8848ddcc415bef9933fda84ae5065e52994ab995acc9a21bf8b'
             '18029ff1479cbacb413f7154d5ca7589855273c559ee15bb5b5006eed65b8edcb58fac64cc8deabd20c36e06f298dc4b7152f61391975d2a3ecb6351b787fae7'
             '1a2345b90196d3c856d0288d9406cfd667d0ebcce400e6886c7eba2825fa52d7813d45f2c375fcaf4e28d116b68107219e6f662b5bdbb12bf0e402ca61194cf7')
 
