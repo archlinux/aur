@@ -1,4 +1,4 @@
-# Maintainer: geov <code@mail.geov.name>
+# Maintainer: tormozex <code@mail.geov.name>
 
 pkgname=tgp
 pkgrel=1
