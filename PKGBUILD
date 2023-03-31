@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Neidel <aur@jneidel.com>
 
 pkgname=nodejs-webpack
-pkgver=5.76.2
+pkgver="5.77.0"
 pkgrel=1
 pkgdesc="JavaScript bundler (CommonJs, AMD, ES6 modules, CSS, Images, JSON, CoffeeScript, LESS)"
 arch=(any)
@@ -11,7 +11,7 @@ depends=(nodejs)
 makedepends=(npm)
 source=("${pkgname}-${pkgver}.tgz::http://registry.npmjs.org/${pkgname#nodejs-}/-/${pkgname#nodejs-}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=("6418fdd692295a1c8e89974bfed13ca487e55fe5f70efcea4473c04f7a4ac5a4")
+sha256sums=("66aa68ba84eef30c18d230ce846d5f2289db05b18caf4a5e88d032935b67a833")
 
 package() {
   # copied from: nodejs-nativefier
