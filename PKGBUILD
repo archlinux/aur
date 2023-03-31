@@ -3,7 +3,7 @@
 pkgname=chatgpt-shell-cli-git
 _pkgname=chatGPT-shell-cli
 pkgver=1.0.r161.ea41590
-pkgrel=1
+pkgrel=2
 pkgdesc="Use OpenAI's ChatGPT and DALL-E from the terminal."
 arch=(any)
 url="https://github.com/0xacx/chatGPT-shell-cli.git"
