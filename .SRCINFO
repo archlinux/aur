@@ -1,6 +1,6 @@
 pkgbase = blender-git
 	pkgdesc = A fully integrated 3D graphics creation suite (development)
-	pkgver = 3.6.r122735.g2f4a7d67b7b
+	pkgver = 3.6.r122857.gcde99075e87
 	pkgrel = 1
 	url = https://blender.org/
 	arch = i686

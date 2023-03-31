@@ -20,7 +20,7 @@ _fragment="${FRAGMENT:-#branch=main}"
 _CMAKE_FLAGS+=( -DWITH_CYCLES_NETWORK=OFF )
 
 pkgname=blender-git
-pkgver=3.6.r122735.g2f4a7d67b7b
+pkgver=3.6.r122857.gcde99075e87
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
@@ -99,6 +99,8 @@ build() {
   _CUDA_PKG=$(pacman -Qq cuda 2>/dev/null) || true
   if [ "$_CUDA_PKG" != "" ]; then
     _CMAKE_FLAGS+=( -DWITH_CYCLES_CUDA_BINARIES=ON
+                    # https://wiki.blender.org/wiki/Building_Blender/GPU_Binaries
+                    -DWITH_COMPILER_ASAN=OFF
                     -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda )
   fi
 
@@ -122,39 +124,54 @@ build() {
                     -DUSD_ROOT=/usr )
   fi
 
-  CC=`which clang`
-  CXX=`which clang++`
+  export CC=`which clang`
+  export CXX=`which clang++`
+  export LLVM_ROOT_DIR=/usr/bin
   # check for oneapi
-  _ONEAPI_SETVARS=/opt/intel/oneapi/setvars.sh
-  [ -f "$_ONEAPI_SETVARS" ] && . "$_ONEAPI_SETVARS" --force
-  _ONEAPI_CLANG=/opt/intel/oneapi/compiler/latest/linux/bin-llvm/clang
+  export _ONEAPI_SETVARS=/opt/intel/oneapi/setvars.sh
+  export _ONEAPI_CLANG_LIBS="/usr/lib;/usr/lib/clang/`llvm-config --version`/lib/linux/;/opt/intel/oneapi/compiler/latest/linux/lib/x64"
+  export _ONEAPI_CLANG=/opt/intel/oneapi/compiler/latest/linux/bin-llvm/clang
+  export _ONEAPI_CLANGXX=/opt/intel/oneapi/compiler/latest/linux/bin-llvm/clang++
+  export _CLANG_LIBRARIES="$_ONEAPI_CLANG_LIBS"
   [ -f "$_ONEAPI_CLANG" ] && (
     warning "Intel's clang will be used."
-    _CMAKE_FLAGS+=( -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON )
-    CC="${_ONEAPI_CLANG}"
-    CXX="$CC"
+    _CMAKE_FLAGS+=( -DWITH_CYCLES_DEVICE_ONEAPI=ON \
+                    -DWITH_CYCLES_ONEAPI_BINARIES=ON \
+                    -DCLANG_INCLUDE_DIR=/usr/include \
+                    -DCLANG_LIBRARY_DIRS="$_CLANG_LIBRARIES "'${CLANG_LIBRARY_DIRS}' \
+                    -DCLANG_ROOT_DIR=/opt/intel/oneapi/compiler/latest/linux/
+                    -DLLVM_ROOT_DIR=/opt/intel/oneapi/compiler/latest/linux/
+                    -DWITH_CLANG=ON )
+    export CC="${_ONEAPI_CLANG}"
+    export CXX="${_ONEAPI_CLANGXX}"
+    export LLVM_ROOT_DIR=/opt/intel/oneapi/compiler/latest/linux/
   )
 
+  [ -f "$srcdir/blender/CMakeCache.txt" ] && rm "$srcdir/blender/CMakeCache.txt"
   cmake -G Ninja -S "$srcdir/blender" -B build \
         -C "${srcdir}/blender/build_files/cmake/config/blender_release.cmake" \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release \
+        -DWITH_STATIC_LIBS=OFF \
+        -DCMAKE_BUILD_TYPE=Debug \
         -DWITH_INSTALL_PORTABLE=OFF \
         -DWITH_SYSTEM_GLEW=OFF \
+        -DWITH_LIBS_PRECOMPILED=OFF \
         -DWITH_PYTHON_INSTALL=OFF \
+        -DOCLOC_INSTALL_DIR=/usr/bin \
         -DXR_OPENXR_SDK_ROOT_DIR=/usr \
-        -DPYTHON_VERSION="${_pyver}" \
         -DCMAKE_C_COMPILER="$CC" \
         -DCMAKE_CXX_COMPILER="$CXX" \
+        -DPYTHON_VERSION="${_pyver}" \
         "${_CMAKE_FLAGS[@]}"
-  NINJA_CMD="ninja -C ""$srcdir/build"
+        #--trace-expand \
+  NINJA_CMD="ninja -C ""$srcdir/build"" ${MAKEFLAGS:--j1}"
   if [[ "x$BLENDER_GIT_USE_SLICE_AUR" == "xy" ]]; then
     killninja() { killall ninja; }
     trap killninja INT
     systemd-run --uid=`whoami` --slice=user-`id -u`-blender.slice -P --working-directory="$PWD" --wait --send-sighup bash -c "$NINJA_CMD"
   else
     warning 'If you use systemd, consider trying `BLENDER_GIT_USE_SLICE_AUR=y`.'
-    $NINJA_CMD ${MAKEFLAGS:--j1}
+    $NINJA_CMD
   fi
 }
 
@@ -170,8 +187,8 @@ package() {
   # This prevents an error due to missing file in LD_LIBRARY_PATH when using Intel OpenCL kernels.
   mkdir -p "$pkgdir"/usr/lib
   [ -f "$pkgdir/usr/share/blender/lib/libcycles_kernel_oneapi_jit.so" ] && \
-    ln -s "$pkgdir/usr/share/blender/lib/libcycles_kernel_oneapi_jit.so" "$pkgdir/usr/lib/libcycles_kernel_oneapi_jit.so"
-  chmod 444 "$pkgdir"/usr/lib/libcycles_kernel_oneapi_jit.so
+    ln -s "$pkgdir/usr/share/blender/lib/libcycles_kernel_oneapi_jit.so" "$pkgdir/usr/lib/libcycles_kernel_oneapi_jit.so" && \
+      chmod 444 "$pkgdir"/usr/lib/libcycles_kernel_oneapi_jit.so
 }
 
 # vim: et:ts=2:sw=2
