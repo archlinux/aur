@@ -2,3 +2,5 @@ pkg
 src
 podman-desktop
 *.pkg.tar.*
+*.log
+

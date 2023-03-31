@@ -2,13 +2,14 @@
 # Contributor: Juliette Cordor 
 
 pkgname=("podman-desktop")
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Manage Podman and other container engines from a single UI and tray."
 arch=('x86_64' 'aarch64')
 url=https://github.com/containers/podman-desktop
 license=('Apache-2.0')
-makedepends=('yarn' 'git' 'python' 'npm')
+depends=()
+makedepends=('yarn' 'git' 'python' 'npm' 'nodejs-lts-gallium')
 optdepends=(
     "podman: podman plugin"
     "crc: crc plugin"
@@ -17,18 +18,38 @@ optdepends=(
 )
 source=(
     "git+${url}#tag=v${pkgver}"
-    podman-desktop.desktop
+    "podman-desktop.desktop"
     )
 sha256sums=('SKIP'
             'f520d11b747dc29bcc63dd7d75f235e446104f924142be4ecc6f26b23e3a7c1c')
+_electron_depends=(
+    "c-ares" "gtk3" "libevent" "nss" "wayland" "fontconfig" "woff2" "aom" "brotil"
+    "libjpeg" "icu" "dav1d" "flac" "snappy" "libxml2" "ffmpeg" "libwebp" "minizip"
+    "opus" "harfbuzz" "re2" "libavif" "jsoncpp" "libxslt" "libpng" "freetype2"
+)
+_electron_optdepends=(
+    "kde-cli-tools: file deletion support (kioclient5)"
+    "libappindicator-gtk3: StatusNotifierItem support"
+    "pipewire: WebRTC desktop sharing under Wayland"
+    "qt5-base: enable Qt5 with --enable-features=AllowQt"
+    "trash-cli: file deletion support (trash-put)"
+    "xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)"
+)
 
 build(){
     cd "${srcdir}/podman-desktop"
-    yarn --frozen-lockfile
-    yarn run build
-    yarn run electron-builder --dir --config .electron-builder.config.cjs
+    yarn --frozen-lockfile --network-timeout 180000
+    yarn run compile
 }
 package_podman-desktop(){
+    for element in ${_electron_depends[@]}
+    do
+        depends+=($element)
+    done
+    for element in ${_electron_optdepends[@]}
+    do
+        optdepends+=($element)
+    done
     case ${CARCH} in
         x86_64)
             _arch=-
