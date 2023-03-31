@@ -4,7 +4,7 @@ _pname=${pkgbase#python-}
 _pyname=${_pname//-/_}
 pkgname=("python-${_pname}")
 #"python-${_pname}-doc")
-pkgver=0.13.1
+pkgver=0.13.3
 pkgrel=1
 pkgdesc="Bootstrap-based Sphinx theme from the PyData community"
 arch=('any')
@@ -35,7 +35,7 @@ checkdepends=('python-nose'
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
 #        'Makefile')
 source=("https://files.pythonhosted.org/packages/py3/${_pyname:0:1}/${_pyname}/${_pyname//-/_}-${pkgver}-py3-none-any.whl")
-md5sums=('90b7074ce387b0b91c60ec7fbab0d597')
+md5sums=('7b2fa05ebe0d453b83940521652de1b6')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
@@ -69,7 +69,8 @@ package_python-pydata-sphinx-theme() {
              'python-docutils>0.17.0'
              'python-packaging'
              'python-babel'
-             'python-accessible-pygments')
+             'python-accessible-pygments'
+             'python-typing_extensions')
 #   cd ${srcdir}/${_pyname}-${pkgver}
 
 #   install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
