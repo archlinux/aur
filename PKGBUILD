@@ -3,12 +3,12 @@
 
 pkgname=python-pymc
 _name=${pkgname#python-}
-pkgver=5.1.2
-pkgrel=2
+pkgver=5.2.0
+pkgrel=1
 pkgdesc="Markov chain Monte Carlo for Python"
 arch=(any)
 url="https://github.com/pymc-devs/pymc"
-license=('MIT')
+license=(MIT)
 makedepends=(python-setuptools)
 depends=(
   python-arviz
@@ -23,7 +23,7 @@ depends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('85194d25ba151d4c4b8f099bfa29f25bcbdd10f03269510334b1d506eb765ddd')
+sha256sums=('4745263bfb2d760676e9c3156dd9578323be4518c331da2ba6fd57ae4bcf0e6d')
 
 _archive="$_name-$pkgver"
 
