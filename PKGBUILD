@@ -2,7 +2,7 @@
 
 _pkgname=yattag
 pkgname=python-${_pkgname}
-pkgver=1.15.0
+pkgver=1.15.1
 pkgrel=1
 pkgdesc='Python library for generating HTML or XML in a pythonic way.'
 url='http://yattag.org'
@@ -14,14 +14,14 @@ makedepends=('python-build'
 license=('LGPL')
 arch=('any')
 source=("https://pypi.python.org/packages/source/y/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('6a9ff3fd330a60287804ea7370a84166b624ebf4b7ad9ed788b7c57779b65263')
+sha256sums=('960fa54be1229d96f43178133e0b195c003391fdc49ecdb6b69b7374db6be416')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
     python -m build --wheel --no-isolation
 }
 
-package_python-yattag() {
+package() {
     cd "$srcdir/$_pkgname-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
     rm -rf ${pkgdir}/usr/lib/python3*/site-packages/tests/
