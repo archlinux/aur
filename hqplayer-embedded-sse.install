@@ -12,9 +12,15 @@ fi
 if [ ! -f "libomp.so.5" ]; then
 ln -s libomp.so libomp.so.5
 fi
+if [ ! -f "libFLAC.so.8" ]; then
+ln -s libFLAC.so.12 libFLAC.so.8
+fi
 if [ ! -f "/etc/pki/tls/certs/ca-bundle.crt" ]; then
 mkdir -p /etc/pki/tls/certs
 ln -s /etc/ssl/certs/ca-certificates.crt /etc/pki/tls/certs/ca-bundle.crt
+fi
+if [ ! -f "libsgllnx64-2.29.02.so" ]; then
+ln -s /opt/hqplayerd/lib/libsgllnx64-2.29.02.so libsgllnx64-2.29.02.so
 fi
 }
 
@@ -32,8 +38,14 @@ fi
 if [ ! -f "libomp.so.5" ]; then
 ln -s libomp.so libomp.so.5
 fi
+if [ ! -f "libFLAC.so.8" ]; then
+ln -s libFLAC.so.12 libFLAC.so.8
+fi
 if [ ! -f "/etc/pki/tls/certs/ca-bundle.crt" ]; then
 mkdir -p /etc/pki/tls/certs
 ln -s /etc/ssl/certs/ca-certificates.crt /etc/pki/tls/certs/ca-bundle.crt
+fi
+if [ ! -f "libsgllnx64-2.29.02.so" ]; then
+ln -s /opt/hqplayerd/lib/libsgllnx64-2.29.02.so libsgllnx64-2.29.02.so
 fi
 }
