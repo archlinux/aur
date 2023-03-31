@@ -1,7 +1,7 @@
 pkgbase = orca-slicer
 	pkgdesc = Orca Slicer is a fork of Bambu Studio. It was previously known as BambuStudio-SoftFever
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/SoftFever/OrcaSlicer
 	arch = x86_64
 	license = AGPLv3
