@@ -1,14 +1,14 @@
 pkgbase = libfprint-2-tod1-broadcom
 	pkgdesc = Proprietary driver for the fingerprint reader on the Dell Latitude 7300 - direct from Dell's Ubuntu repo
-	pkgver = 5.8.012.0
-	pkgrel = 2
+	pkgver = 5.12.018.0
+	pkgrel = 1
 	url = https://git.launchpad.net/~oem-solutions-engineers/libfprint-2-tod1-broadcom/+git/libfprint-2-tod1-broadcom/
 	arch = x86_64
 	groups = fprint
 	license = custom
 	makedepends = git
 	depends = libfprint-tod
-	source = git+https://git.launchpad.net/~oem-solutions-engineers/libfprint-2-tod1-broadcom/+git/libfprint-2-tod1-broadcom/#branch=master
+	source = git+https://git.launchpad.net/~oem-solutions-engineers/libfprint-2-tod1-broadcom/+git/libfprint-2-tod1-broadcom/#branch=upstream
 	sha256sums = SKIP
 
 pkgname = libfprint-2-tod1-broadcom
