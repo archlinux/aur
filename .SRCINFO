@@ -1,0 +1,13 @@
+pkgbase = curseofwar
+	pkgdesc = Fast-paced RTS/Action game with ncurses interface
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/a-nikolaev/curseofwar/wiki
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	depends = ncurses
+	source = curseofwar-1.3.0.tar.gz::https://github.com/a-nikolaev/curseofwar/archive/v1.3.0.tar.gz
+	sha512sums = 87d151af2a4eadbecd3f87867db8fb2277209e89a120443c9ee41065efc2004512f0b033626c2acddb98867eea6097c71b9aa7e4153f8b04b7b847682bc84705
+
+pkgname = curseofwar
