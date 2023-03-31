@@ -3,7 +3,7 @@
 
 _name=archinstall
 pkgname=archinstall-git
-pkgver=2.5.4.r7.gc3e3ac6
+pkgver=2.5.4.r8.g315f87c
 pkgrel=1
 pkgdesc="Just another guided/automated Arch Linux installer with a twist"
 arch=('any')
