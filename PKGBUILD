@@ -3,7 +3,7 @@
 
 _basename=renderdoc
 pkgname=${_basename}-bin
-pkgver=1.25
+pkgver=1.26
 _tarname=${_basename}_${pkgver}
 pkgrel=1
 pkgdesc="OpenGL and Vulkan debugging tool - binary version"
@@ -14,7 +14,7 @@ conflicts=('renderdoc')
 depends=("libgl" "libxcb" "libx11" "fontconfig" "freetype2" "glu" "libproxy" "python" "desktop-file-utils" "hicolor-icon-theme")
 source=("https://renderdoc.org/stable/$pkgver/$_tarname.tar.gz"
         "https://renderdoc.org/stable/$pkgver/$_tarname.tar.gz.sig")
-sha256sums=('95d95d4c694d38b4f6e8e01c872246dcd20fa84d73de59ba32460fc024871fb3'
+sha256sums=('6bf1a4a861d3f10e6393b2230276bff6a83620b9011bd71cf01fad5d249684b5'
             'SKIP')
 validpgpkeys=('1B039DB9A4718A2D699DE031AC612C3120C34695')
 
