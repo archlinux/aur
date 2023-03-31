@@ -1,13 +1,13 @@
 pkgbase = tijolo
 	pkgdesc = Lightweight, keyboard-oriented IDE for the masses
-	pkgver = 0.7.2
-	pkgrel = 2
+	pkgver = 0.7.3
+	pkgrel = 1
 	url = https://github.com/hugopl/tijolo
 	arch = x86_64
 	license = MIT
 	makedepends = make
 	makedepends = git
-	makedepends = crystal>=1.6.0
+	makedepends = crystal>=1.6.2
 	makedepends = shards>=0.14.0
 	makedepends = libyaml
 	depends = gc
@@ -24,7 +24,7 @@ pkgbase = tijolo
 	optdepends = yaml-language-server: YAML LSP support
 	optdepends = python-language-server: Python LSP support
 	conflicts = tijolo-git
-	source = tijolo-0.7.2.tar.gz::https://github.com/hugopl/tijolo/archive/v0.7.2.tar.gz
-	sha256sums = 91a3d0df079fa035681372727ab759a8ef0c21bb19b84bb9248867fbe0d1a400
+	source = tijolo-0.7.3.tar.gz::https://github.com/hugopl/tijolo/archive/v0.7.3.tar.gz
+	sha256sums = fc003b9b25bc744059c241613d5c9f6330fe10eb46cfb2608cddd58679cbbffc
 
 pkgname = tijolo
