@@ -52,13 +52,23 @@ class Directory(Entry, dict[str, Entry]):
 
 @dataclass
 class File(Entry):
-    content: Union[str, None]
+    __cached_content: Union[str, None]
     mod_time: Union[int, None]
     loaded: bool = False
 
     @property
-    def size(self):
-        return len(self.content)
+    def content(self):
+        if time() > self.expiration:
+            self.loaded = False
+            self.__cached_content = None
+
+        if self.loaded:
+            return self.__cached_content
+        raise FuseOSError(errno.EIO)
+
+    @content.setter
+    def content(self, value):
+        self.__cached_content = value
 
 
 def parse_history_line(line: str) -> int:
@@ -187,7 +197,7 @@ class GopassFilesystem(LoggingMixIn, Operations):
         else:
             return entry
 
-    def load_file(self, file: File) -> None:
+    def get_file_content(self, file: File) -> Union[str, None]:
         if not file.loaded:
             secret: Union[str, None] = get_secret(file)
             if secret is None:
@@ -199,8 +209,9 @@ class GopassFilesystem(LoggingMixIn, Operations):
             file.mod_time = parse_history_line(history[0]) * (10 ** 9)
             file.loaded = True
             file.expiration = time() + self.refresh_interval
+        return file.content
 
-    def getattr(self, path: str, _) -> dict[str, int]:
+    def getattr(self, path: str, _=None) -> dict[str, int]:
         now: int = time_ns()
         st: dict[str, int] = dict(st_atime=now, st_mode=0, st_uid=self.user_id, st_gid=self.group_id)
 
@@ -212,8 +223,7 @@ class GopassFilesystem(LoggingMixIn, Operations):
             if isinstance(entry, File):
                 st['st_mode'] = stat.S_IFREG | 0o400
                 st['st_nlink'] = 1
-                self.load_file(entry)
-                st['st_size'] = len(entry.content)
+                st['st_size'] = len(self.get_file_content(entry))
                 st['st_ctime'] = entry.mod_time
                 st['st_mtime'] = entry.mod_time
             elif isinstance(entry, Directory):
@@ -229,8 +239,7 @@ class GopassFilesystem(LoggingMixIn, Operations):
     def read(self, path: str, *_) -> bytes:
         entry: Union[Entry, None] = self.get_entry(path)
         if isinstance(entry, File):
-            self.load_file(entry)
-            return ('%s\n' % entry.content).encode('utf-8')
+            return ('%s\n' % self.get_file_content(entry)).encode('utf-8')
         elif isinstance(entry, Directory):
             raise FuseOSError(errno.EISDIR)
         elif entry is None:
