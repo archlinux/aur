@@ -9,6 +9,7 @@ pkgbase = astrofox-appimage
 	depends = hicolor-icon-theme
 	depends = glibc
 	provides = astrofox
+	conflicts = astrofox
 	options = !strip
 	source = astrofox-1.4.0.AppImage::https://files.astrofox.io/download/Astrofox-1.4.0.AppImage
 	source = LICENSE::https://github.com/astrofox-io/astrofox/raw/master/LICENSE
