@@ -1,7 +1,7 @@
 pkgbase = tgp
 	pkgdesc = tgp telegram proxy written in go
 	pkgver = 0.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/geovex/tgp
 	arch = x86_64
 	arch = aarch64

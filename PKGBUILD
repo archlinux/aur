@@ -1,7 +1,7 @@
-# Maintainer: tormozex <code@mail.geov.name>
+# Maintainer: geov <code@mail.geov.name>
 
 pkgname=tgp
-pkgrel=2
+pkgrel=3
 pkgver=0.5.1
 pkgdesc="tgp telegram proxy written in go"
 arch=('x86_64' 'aarch64' 'i686')
