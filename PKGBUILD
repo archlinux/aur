@@ -4,8 +4,8 @@
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>, youngunix <>
 
 pkgname=swift-bin
-pkgver=5.7.3
-pkgrel=2
+pkgver=5.8
+pkgrel=1
 pkgdesc="Binary builds of the Swift programming language"
 arch=('x86_64')
 url="https://www.swift.org/"
@@ -16,7 +16,7 @@ options=('!strip')
 provides=('swift-language')
 replaces=('swift-language-bin')
 source=("https://download.swift.org/swift-$pkgver-release/centos7/swift-$pkgver-RELEASE/swift-$pkgver-RELEASE-centos7.tar.gz")
-sha256sums=('10138dce4306309fdd77c530a7c19e4d00586cdaf5698dd7412004bcb6d86d28')
+sha256sums=('c9b5ba7d01dca69089f2651c49af370879156f9f2dca062853831a908fca16b2')
 
 package() {
   mkdir -p "${pkgdir}/usr/lib/swift"
