@@ -1,0 +1,15 @@
+pkgbase = gut-bin
+	pkgdesc = Easy-to-use git client
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = gut-cli.dev
+	arch = x86_64
+	arch = i386
+	license = MIT
+	provides = gut
+	source_x86_64 = gut-bin-0.2.5.tar.gz::https://github.com/julien040/gut/releases/download/0.2.5/gut_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = b1cdfe986e9d5c33dfe7e2312bfd3ee1c1242163dc05386c6a636248e2a1b686
+	source_i386 = gut-bin-0.2.5.tar.gz::https://github.com/julien040/gut/releases/download/0.2.5/gut_Linux_i386.tar.gz
+	sha256sums_i386 = 8c4e365d6101f0a048ade405e55374d26135ddcf2b38913c7a72bb77b29b9735
+
+pkgname = gut-bin
