@@ -1,24 +1,25 @@
 pkgbase = python-binance-git
 	pkgdesc = An unofficial Python wrapper for the Binance exchange REST API
-	pkgver = 1.0.15.r2.g217f1e2
-	pkgrel = 4
+	pkgver = 1.0.17.r1.g1b9dd48
+	pkgrel = 1
 	url = https://github.com/sammchardy/python-binance
 	arch = any
 	license = MIT
-	checkdepends = python-pytest
-	checkdepends = python-requests-mock
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	depends = python
+	makedepends = python-wheel
 	depends = python-aiohttp
+	depends = python-pycryptodome
 	depends = python-dateparser
 	depends = python-pytz
 	depends = python-requests
 	depends = python-ujson
 	depends = python-websockets
-	provides = python-binance
+	provides = python-binance=1.0.17
 	conflicts = python-binance
-	source = git+https://github.com/sammchardy/python-binance.git
-	sha512sums = SKIP
+	source = python-binance::git+https://github.com/sammchardy/python-binance
+	sha256sums = SKIP
 
 pkgname = python-binance-git
