@@ -1,0 +1,13 @@
+pkgbase = cpuburn
+	pkgdesc = CPU testing utilities in optimized assembler for maximum loading of CPUs
+	pkgver = 1.4a
+	pkgrel = 7
+	url = https://launchpad.net/ubuntu/+source/cpuburn/
+	arch = x86_64
+	license = GPL
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/cpuburn_1.4a.orig.tar.gz
+	source = cpuburn.patch
+	sha256sums = eb191ce9bfbf453d30c218c3419573df102a3588f96c4a43686c84bb9da4bed6
+	sha256sums = 984cbb5479ebe6b39ead3bcd50f508c8403d137e9d5d55d5609570581fd6ef99
+
+pkgname = cpuburn
