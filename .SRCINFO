@@ -1,0 +1,13 @@
+pkgbase = mdbook-admonish
+	pkgdesc = A preprocessor for mdbook to add Material Design admonishments
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/tommilligan/mdbook-admonish
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	source = https://github.com/tommilligan/mdbook-admonish/archive/v1.8.0.tar.gz
+	sha256sums = 3559dc6b7293cea16592b137863d93035aee6f08cdb5242dd294ddcad2389446
+
+pkgname = mdbook-admonish
