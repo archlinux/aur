@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=rapidobj
-pkgver=0.1
+pkgver=1.0.1
 pkgrel=1
 epoch=
 pkgdesc="A fast, header-only, C++17 library for parsing Wavefront .obj files."
@@ -16,37 +16,12 @@ optdepends=()
 provides=()
 conflicts=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6b1fd3c2d3b75c997cc0da5561c7b580e0726fecfdb5463876182e13edd18aa5')
+sha256sums=('73eca15cdc583e1f770f51d694b856c5acafd80db521df5e63d95bb17f418114')
 
 prepare() {
 	cd "$pkgname-$pkgver"
 
 	mkdir -p build
-
-	# https://github.com/guybrush77/rapidobj/pull/1
-	cat > include/RapidObj.pc.in <<-EOF
-	prefix=@CMAKE_INSTALL_PREFIX@
-	includedir=\${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
-
-	Name: @PROJECT_NAME@
-	Version: @PROJECT_VERSION@
-
-	Requires:
-	Libs: -pthread -aio
-	Cflags: -I\${includedir}
-	EOF
-
-	cat >> include/CMakeLists.txt <<-EOF
-	# pkg-config file
-	configure_file(\${PROJECT_NAME}.pc.in
-		\${CMAKE_BINARY_DIR}/\${PROJECT_NAME}.pc
-		@ONLY
-	)
-	install(FILES
-		\${CMAKE_BINARY_DIR}/\${PROJECT_NAME}.pc
-		DESTINATION \${CMAKE_INSTALL_DATAROOTDIR}/pkgconfig
-	)
-	EOF
 }
 
 build() {
@@ -63,5 +38,5 @@ package() {
 
 	make DESTDIR="$pkgdir/" install
 
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
