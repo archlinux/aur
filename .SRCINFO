@@ -1,0 +1,12 @@
+pkgbase = cfn-teleport
+	pkgdesc = A command-line tool which can move CloudFormation resources between stacks
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/udondan/cfn-teleport
+	arch = x86_64
+	license = APACHE
+	makedepends = cargo
+	source = cfn-teleport-0.3.0.tar.gz::https://github.com/udondan/cfn-teleport/archive/refs/tags/v0.3.0.tar.gz
+	sha512sums = e585cf39255bb20a452086b70d11615d51910293e070e3ffc2301b55c748cba02cb37fd2a6345724421726015a0a233ebdf8a7d51581826e8e3619e7e6297fff
+
+pkgname = cfn-teleport
