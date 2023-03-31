@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=densEstBayes
-_pkgver=1.0-2.1
+_pkgver=1.0-2.2
 pkgname=r-${_pkgname,,}
-pkgver=1.0.2.1
-pkgrel=3
+pkgver=1.0.2.2
+pkgrel=1
 pkgdesc='Density Estimation via Bayesian Inference Engines'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -23,7 +23,7 @@ depends=(
   r-rstantools
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4b7066e18902ee2a0ea084513b237b5fb8e43fe3102354c2fb216d5a8c7df5df')
+sha256sums=('8361df9cd4b34fabfca19360bb680a8a3c68386a72bb69cf00dfa19daf97b679')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
