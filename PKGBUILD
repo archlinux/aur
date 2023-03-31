@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=llama.cpp-git
-pkgver=master.34c1072.r1.7e53955
+pkgver=master.02c5b27
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
@@ -15,6 +15,7 @@ source=("${pkgname%-git}::git+${url}")
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
+
   printf "%s" "$(git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
@@ -36,10 +37,10 @@ package() {
 
   for i in build/bin/*; do
     install -Dm755 "${i}" \
-      "${pkgdir}/usr/bin/${pkgname}-${i//build\/bin\//}"
+      "${pkgdir}/usr/bin/${pkgname%-git}-${i//build\/bin\//}"
   done
-  mv "${pkgdir}/usr/bin/${pkgname}-main" \
-    "${pkgdir}/usr/bin/${pkgname}"
+  mv "${pkgdir}/usr/bin/${pkgname%-git}-main" \
+    "${pkgdir}/usr/bin/${pkgname%-git}"
 }
 
 sha256sums=('SKIP')
