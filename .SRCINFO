@@ -1,0 +1,19 @@
+pkgbase = albumartcreator-bin
+	pkgdesc = Create amazing looking Album Art in seconds!
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/0neGal/albumArtCreator
+	arch = x86_64
+	license = GPL3
+	provides = albumartcreator
+	conflicts = albumartcreator
+	source = https://github.com/0neGal/albumArtCreator/releases/download/0.1.2-beta/linux-albumartcreator-v0.1.2-beta.tar.gz
+	source = https://raw.githubusercontent.com/0neGal/albumArtCreator/997db65bac74ce8d9ce13980ba1252523303d6e1/icons/icon.png
+	source = https://raw.githubusercontent.com/0neGal/albumArtCreator/997db65bac74ce8d9ce13980ba1252523303d6e1/README.md
+	source = https://raw.githubusercontent.com/0neGal/albumArtCreator/997db65bac74ce8d9ce13980ba1252523303d6e1/LICENSE
+	sha256sums = 149ab4af47811a444269fd416cb3bbefcf301b694471cf48ded108c83d6f5d84
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = albumartcreator-bin
