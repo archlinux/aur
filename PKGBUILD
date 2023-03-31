@@ -3,7 +3,7 @@
 pkgname=flashbrowser-git
 _reponame=FlashBrowser
 pkgver=0.81.r27.g0d97b17
-pkgrel=1
+pkgrel=2
 pkgdesc="A browser dedicating to supporting adobe flash"
 url="https://flash.pm/browser/"
 arch=(any)
@@ -14,8 +14,8 @@ makedepends=(
 	imagemagick
 	npm
 )
-provides=("FlashBrowser-git=${pkgver}")
-conflicts=('FlashBrowser-git')
+provides=("flashbrowser-git=${pkgver}")
+conflicts=('flashbrowser-git')
 source=(
 	git+https://github.com/radubirsan/FlashBrowser.git
 	FlashBrowser.desktop
@@ -75,7 +75,7 @@ package() {
 	done
 
 	for icons in 16 24 32 48 256; do
-		if 		[ $icons = '16' ];	then layer=0;
+		if 	[ $icons = '16' ];	then layer=0;
 		elif 	[ $icons = '24' ];	then layer=1;
 		elif 	[ $icons = '32' ];	then layer=2;
 		elif 	[ $icons = '48' ];	then layer=3;
@@ -86,6 +86,6 @@ package() {
 	done
 
 	# install desktop entry file
-	install -Dvm644 ../$_reponame.desktop \
+	install -Dm644 ../$_reponame.desktop \
 		"$pkgdir/usr/share/applications/$_reponame.desktop"
 }
