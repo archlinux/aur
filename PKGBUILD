@@ -2,7 +2,7 @@
 
 pkgname="orca-slicer"
 pkgver=1.5.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Orca Slicer is a fork of Bambu Studio. It was previously known as BambuStudio-SoftFever"
 arch=('x86_64')
 url="https://github.com/SoftFever/OrcaSlicer"
@@ -17,14 +17,12 @@ source=(
   'CMakeLists.txt.patch'
   'OrcaSlicer.desktop.patch'
   'orca-slicer.sh'
-  'TIFF.cmake.patch'
   )
 sha256sums=('c0a91e3b99a63234aaad72a534720f6a7976374a925b04937dc6f6d5b41fdcb7'
             'bb2662d0a4c58c43726ec98ef4acf201fcf98719c9bbfd207e2d6cdf695a2093'
             'f2b56d64bc5d80cf726ab0a4931ecf84cdaa938bb6da6134d36e6a05d3a0eee4'
             '030d32a60c7bbecacaf1f3844ed6157c1eb1d67b7009a8132e91b0a07deb77c0'
             '30d860958f3fd5fc657daa6addce45e91689d9833b931c9feb646da760d61de8'
-            '0ad3d60c5fee231cc94707d23de0b96355afbc2b3a2097ad7f63bfdcdd1c4399'
             )
 
 prepare() {
@@ -36,8 +34,6 @@ prepare() {
   cp 0001-Boost-fix.patch OrcaSlicer/deps/Boost
   # icons conflict with BambuStudio
   patch -p0 < "$srcdir/OrcaSlicer.desktop.patch"
-  # libtiff chhecksum mismatch
-  patch -p0 < "$srcdir/TIFF.cmake.patch"
 }
 
 build() {
