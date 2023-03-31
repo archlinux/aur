@@ -1,10 +1,10 @@
 pkgbase = mingw-w64-scotch
-	pkgdesc = network Common Data Form interface for array-oriented data access and corresponding library (mingw-w64)
+	pkgdesc = Software package and libraries for graph, mesh and hypergraph partitioning, static mapping, and sparse matrix block ordering. (mingw-w64)
 	pkgver = 7.0.3
 	pkgrel = 1
 	url = https://www.unidata.ucar.edu/software/netcdf/
 	arch = any
-	license = custom
+	license = custom:CeCILL-C
 	makedepends = mingw-w64-cmake
 	depends = mingw-w64-bzip2
 	depends = mingw-w64-zlib

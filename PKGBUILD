@@ -1,15 +1,13 @@
 pkgname=mingw-w64-scotch
 pkgver=7.0.3
 pkgrel=1
-pkgdesc="network Common Data Form interface for array-oriented data access and corresponding library (mingw-w64)"
+pkgdesc="Software package and libraries for graph, mesh and hypergraph partitioning, static mapping, and sparse matrix block ordering. (mingw-w64)"
 arch=('any')
 url="https://www.unidata.ucar.edu/software/netcdf/"
 depends=('mingw-w64-bzip2' 'mingw-w64-zlib' 'mingw-w64-xz')
 makedepends=('mingw-w64-cmake')
 options=('staticlibs' '!buildflags' '!strip')
-license=('custom')
-source=("https://github.com/Unidata/netcdf-c/archive/v${pkgver}.tar.gz")
-sha256sums=('9f4cb864f3ab54adb75409984c6202323d2fc66c003e5308f3cdf224ed41c0a6')
+license=('custom:CeCILL-C')
 source=("https://gitlab.inria.fr/scotch/scotch/-/archive/v${pkgver}/scotch-v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
@@ -26,7 +24,7 @@ build() {
   cd "${srcdir}/scotch-v${pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake -DENABLE_TESTS=OFF -DBUILD_UTILITIES=OFF -DBUILD_PTSCOTCH=OFF ..
+    ${_arch}-cmake -DBUILD_PTSCOTCH=OFF -DINSTALL_METIS_HEADERS=OFF ..
     make
     popd
   done
