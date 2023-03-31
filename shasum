@@ -1,4 +1,0 @@
-#! /bin/sh
-
-VERSION=$(grep pkgver PKGBUILD | head -n1 | cut -d= -f2)
-wget "http://registry.npmjs.org/webpack/-/webpack-$VERSION.tgz" -qO - 2>/dev/null | sha256sum | cut -d\  -f1 | tr -d "\n" | xclip -f -sel clip
