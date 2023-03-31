@@ -1,6 +1,6 @@
 pkgbase = deepin-wine-quarkclouddrive
 	pkgdesc = 夸克网盘是夸克推出的一款云服务产品，可轻松进行照片、视频、文档、音频等文件的在线备份、同步和分享，并支持电脑/手机/iPad端等多个端。
-	pkgver = 2.5.11
+	pkgver = 2.5.17
 	pkgrel = 1
 	url = https://pan.quark.cn/
 	install = deepin-wine-quarkclouddrive.install
@@ -13,14 +13,14 @@ pkgbase = deepin-wine-quarkclouddrive
 	optdepends = wqy-zenhei
 	provides = Quark
 	source = cn.quarkclouddrive.spark_2.5.1spark1_amd64.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/network/cn.quarkclouddrive.spark/cn.quarkclouddrive.spark_2.5.1spark1_amd64.deb
-	source = quark-cloud-drive-2.5.11.exe::https://pdds.ucweb.com/download/stfile/nntoswvvunornpvpb/QuarkCloudDrive-2.5.11-win-release.exe
+	source = quark-cloud-drive-2.5.17.exe::https://webcdn.m.qq.com/spcmgr/download/QuarkCloudDrive-2.5.17-win-release2.exe
 	source = LICENSE::https://broccoli.uc.cn/apps/quark_icloud_pay/routes/service_help?uc_param_str=dsdnfrpfbivesscpgimibtbmnijblauputogpintnwktprchmt&uc_biz_str=S%3Acustom|C%3Atitlebar_hover_2
 	source = deepin-wine-quarkclouddrive.install
 	source = run.sh
 	sha256sums = a7426b5b1fac66aa464b62d81740d5c86067f6bd00d64d0dd9708f2b05b91b04
-	sha256sums = f81b39ce6423b9600c4d307af6d96cd9427f69c4d07d3970b8f531fdfab75efb
-	sha256sums = fcddb4800cb3832eedf0bf4b75b34468686a352d7bc803cdc8f6fd498dcb2321
+	sha256sums = 11138dc2c415c28226323f4db1d495dbe5f49aad079dfc1f110ba3c2c3ac9ac3
+	sha256sums = 7b9b1a3ec72f29f0d38b2c0438942c22767d7adef8205ed0600ad080e921cb7b
 	sha256sums = d7f46cae43addb386fd3dddf469530b6942143c2a4ce00e1b92d7f256ed90b70
-	sha256sums = 1592ad9f9fc7cae159e6254d5aa6193f01f27a4707ca4a95be27065ae75345a4
+	sha256sums = 85b028b2d823bea5f2cc807996a34887cf4e26e40a59399f09724e3e76451a98
 
 pkgname = deepin-wine-quarkclouddrive
