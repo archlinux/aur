@@ -1,6 +1,6 @@
 # Maintainer: Axel Navarro <navarroaxel at gmail>
 pkgname=orogene
-pkgver=0.3.14
+pkgver=0.3.15
 pkgrel=1
 pkgdesc='A next-generation platform and package manager for Node.js-compatible and frontend JavaScript projects'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/$pkgname/$pkgname"
 license=('APACHE')
 makedepends=('rust')
 source=(https://github.com/$pkgname/$pkgname/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('38e42b4d6c63e4accf7faefc7f426f6508d404b80a672df60d3355befb2c5e41')
+sha256sums=('4ed1ee806e3dae7a1e7b1657f0b0071822f605eb1e3e5b464e50aad5c284080f')
 
 prepare() {
   # Assist chroot builds with a persistent cargo cache (hat tip @ccorn for this patch)

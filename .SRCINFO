@@ -1,12 +1,12 @@
 pkgbase = orogene
 	pkgdesc = A next-generation platform and package manager for Node.js-compatible and frontend JavaScript projects
-	pkgver = 0.3.14
+	pkgver = 0.3.15
 	pkgrel = 1
 	url = https://github.com/orogene/orogene
 	arch = x86_64
 	license = APACHE
 	makedepends = rust
-	source = https://github.com/orogene/orogene/archive/refs/tags/v0.3.14.tar.gz
-	sha256sums = 38e42b4d6c63e4accf7faefc7f426f6508d404b80a672df60d3355befb2c5e41
+	source = https://github.com/orogene/orogene/archive/refs/tags/v0.3.15.tar.gz
+	sha256sums = 4ed1ee806e3dae7a1e7b1657f0b0071822f605eb1e3e5b464e50aad5c284080f
 
 pkgname = orogene
