@@ -2,7 +2,7 @@
 _name=starc
 
 pkgname="${_name}-appimage"
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="Text editor for film, theatre, radio scripts or comic books."
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=(!strip)
 source=("${pkgname}-${pkgver}::https://github.com/story-apps/starc/releases/download/v${pkgver}/${_name}-setup.AppImage"
 		"${_name}.desktop.patch"
 		"${_name}.sh")
-sha256sums=('ce2eac4c874609603ce6ef43f2dc2c20ea749b6e0facd6ffc8534e7a9e1ceddc'
+sha256sums=('147fd3d18bf42dbc9842d8ab36b4b62638948eb426bf7d9595dbc8dbfe9f4be8'
 			'583fcc57942d9c9e1a8e41a0a95fcc3f4cdd1660767e014921c30a3fa272f5fa'
 			'642005557de950e4fd37bc87fe2fb051e7f93f61e7287161fe3c99c9918977c7')
 
