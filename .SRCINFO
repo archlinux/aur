@@ -1,6 +1,6 @@
 pkgbase = python-zigpy-znp
 	pkgdesc = Zigpy support for common Texas Instruments ZNP radio modules
-	pkgver = 0.9.3
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/zigpy/zigpy-znp
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-zigpy-znp
 	depends = python-coloredlogs
 	depends = python-jsonschema
 	depends = python-pyserial-asyncio
-	source = zigpy-znp-0.9.3.tar.gz::https://github.com/zigpy/zigpy-znp/archive/v0.9.3.tar.gz
-	b2sums = 2a410fe3dac23df4f1b1360edffc3011ae417cf4ab704def717d82bf5f49572a2c78cb461d215a3b74e352d9d3b932e1972016f78e26f3dd7001da32fb1baadd
+	source = zigpy-znp-0.10.0.tar.gz::https://github.com/zigpy/zigpy-znp/archive/v0.10.0.tar.gz
+	b2sums = 81eb181be70b8a12f7a87082ae2472cd5c6e6b8cfb17c03e645cf1e28f67ea4161a32836962cdb80782b4d35e8d235957b19e22a7cf9e5db42788aa8b352fc7a
 
 pkgname = python-zigpy-znp
