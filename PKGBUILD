@@ -4,8 +4,8 @@
 
 pkgname=lf-sixel-git
 _pkgname=lf-sixel
-pkgver=27.sixel.r2.g8aea3d4
-pkgrel=2
+pkgver=28.1.r1.g8997e5b
+pkgrel=1
 license=('MIT')
 pkgdesc='lf is a terminal file manager written in Go from fork supporting sixel'
 depends=("glibc")
