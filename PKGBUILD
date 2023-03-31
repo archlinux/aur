@@ -1,7 +1,7 @@
 # Maintainer: Emil Edholm <bobby @ verypublic.org>
 
 pkgname=mcap-cli-bin
-pkgver=0.0.29
+pkgver=0.0.30
 pkgrel=1
 pkgdesc='MCAP is a modular container format and logging library for pub/sub messages with arbitrary message serialization.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('mcap-cli')
 provides=('mcap-cli')
 
 source=("${pkgname}-${pkgver}-x86_64::https://github.com/foxglove/mcap/releases/download/releases%2Fmcap-cli%2Fv${pkgver}/mcap-linux-amd64")
-sha512sums=('a936e3f5242e7c12e2e379398c00a335c2a415724901d43cb9ac3ca4e877625ef169570ddfe32912ca6bb8591fc0d202693cc42422eb2bc95f8cd53621e78d1c')
+sha512sums=('c1626fe33fc59c243047c4565e92c1baf1faf858e960319799bd1f8619eb032178beed1fa4d9e7694a798246b87f4b608ee91951e266bc5d939025d20019cf79')
 
 #prepare() {
 #}
