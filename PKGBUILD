@@ -236,7 +236,7 @@ if [ "${CARCH}" = "i486" -o  "${CARCH}" = "i686" -o "${CARCH}" = "pentium4" ]; t
 
   # patch architecture when copying the kernel Makefile
   eval "$(
-    declare -f package_linux515-headers | \
+    declare -f package_linux-lts515-headers | \
       sed '
         \,/tools/objtool" ,d
         \,arch/x86/Makefile, {
