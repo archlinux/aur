@@ -27,7 +27,7 @@ validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha256sums=('5a1c111e7eeb5721efc61ff621c886bf6c16fced0e216ae280e2cc331d7fd250')
+sha256sums=('8c60ad2a26340c82691d6fea581ca17b0ee9718ad9901e7bc9df63e9415bcfe4')
 
 prepare() {
   bsdtar -xf 'data.tar.xz'
