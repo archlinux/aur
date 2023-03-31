@@ -3,3 +3,4 @@ Type=Application
 Name=wowup-cf
 Icon=/usr/share/pixmaps/wowup_logo_cf.png
 Exec=/usr/bin/wowup-cf
+Categories=Game;Application;
