@@ -1,13 +1,14 @@
 pkgbase = fienode-git
 	pkgdesc = Discover identical CoW copies, analogous to an inode
 	pkgver = 1.0+9+g57ab25b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pwaller/fienode
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = go
 	provides = fienode
+	conflicts = fienode
 	options = !lto
 	source = fienode-git::git+https://github.com/pwaller/fienode.git
 	source = go-fibmap::git+https://github.com/frostschutz/go-fibmap
