@@ -1,12 +1,12 @@
 # Maintainer: Dennis van der Schagt <dennisschagt@gmail.com>
 pkgname=eprosima-micro-xrce-dds-agent
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="eProsima's XRCE DDS agent"
 arch=('x86_64')
 url="https://github.com/eProsima/Micro-XRCE-DDS-Agent"
 license=('Apache')
-depends=('eprosima-micro-xrce-dds-client' 'eprosima-fast-cdr' 'foonathan_memory-shared' 'eprosima-fast-dds' 'cli11' 'spdlog')
+depends=('eprosima-micro-xrce-dds-client' 'eprosima-fast-cdr>=1.0.27' 'foonathan_memory-shared' 'eprosima-fast-dds' 'cli11' 'spdlog')
 makedepends=('cmake' 'git')
 checkdepends=()
 optdepends=()
@@ -20,7 +20,7 @@ changelog=
 source=("https://github.com/eProsima/Micro-XRCE-DDS-Agent/archive/v${pkgver}.tar.gz"
         "git+https://github.com/arsenm/sanitizers-cmake.git")
 noextract=()
-sha256sums=('e1da91add92dc3d65ae9841ccec04eb5c738aa322fe14d681b4a5140a4257478'
+sha256sums=('8a9ebb3217e390a5db55db9bffb0226353f28714361bb2317e6df073df35236b'
             'SKIP')
 validpgpkeys=()
 
