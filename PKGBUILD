@@ -4,7 +4,7 @@ _pkgname=SCFA
 _pkgver=1.8.1
 pkgname=r-${_pkgname,,}
 pkgver=1.8.1
-pkgrel=1
+pkgrel=3
 pkgdesc='SCFA: Subtyping via Consensus Factor Analysis'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -12,7 +12,6 @@ license=('LGPL')
 depends=(
   r
   r-biocparallel
-  r-clustercrit
   r-coro
   r-glmnet
   r-igraph
