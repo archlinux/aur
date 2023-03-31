@@ -9,6 +9,7 @@ pkgbase = python-msgcheck
 	checkdepends = python-pyenchant
 	checkdepends = aspell-en
 	checkdepends = aspell-fr
+	checkdepends = libxml2
 	makedepends = python-setuptools
 	depends = python
 	optdepends = enchant: for check PO files
