@@ -1,7 +1,7 @@
 # Maintainer: Mika Cousin <mika dot cousin at gmail dot com>
 
 pkgname=olc-git
-pkgver=0.7.1.beta
+pkgver=0.7.2.beta
 pkgrel=1
 pkgdesc='Open Lighting Console'
 arch=(any)
@@ -12,7 +12,6 @@ depends=(
   gtk3
   python-cairo
   python-gobject
-  python-psutil
   portmidi
   python-mido
   python-pyliblo
