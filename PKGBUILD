@@ -3,8 +3,8 @@
 
 _pkgname=citra
 pkgname=$_pkgname-canary-git
-pkgver=r9426.726c74840
-pkgrel=2
+pkgver=r9468.daf0b9069
+pkgrel=1
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 arch=('i686' 'x86_64')
 url='https://github.com/citra-emu/citra-canary'
@@ -98,10 +98,10 @@ build() {
     
     # Trick the compiler into thinking we're building from a continuous
     # integration tool so the build number is correctly shown in the title
-    export CI=true
-    export TRAVIS=true
-    export TRAVIS_REPO_SLUG=citra-emu/citra-canary
-    export TRAVIS_TAG=$(git describe --tags)
+    #export CI=true
+    #export TRAVIS=true
+    #export TRAVIS_REPO_SLUG=citra-emu/citra-canary
+    #export TRAVIS_TAG=$(git describe --tags)
     
     # Fix to help cmake find libusb
     CXXFLAGS+=" -I/usr/include/libusb-1.0"
