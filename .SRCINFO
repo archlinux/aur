@@ -1,0 +1,22 @@
+pkgbase = python-rotepy-git
+	pkgdesc = Basic, repeat ML operations.
+	pkgver = 0.1.0.r1.gf067d52
+	pkgrel = 1
+	url = https://gitlab.com/GeorgeRaven/rotepy.git
+	arch = x86_64
+	arch = aarch64
+	license = OSL-3.0
+	makedepends = git
+	depends = python-setuptools
+	depends = python
+	depends = python-configargparse
+	depends = python-numpy
+	depends = python-tqdm
+	depends = python-seaborn
+	depends = python-pytorch
+	provides = python-rotepy
+	provides = rotepy
+	source = rotepy::git+https://gitlab.com/GeorgeRaven/rotepy.git#branch=master
+	md5sums = SKIP
+
+pkgname = python-rotepy-git
