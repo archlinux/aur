@@ -1,6 +1,6 @@
 pkgbase = lib32-libxnvctrl-470xx
 	pkgdesc = NVIDIA NV-CONTROL X extension (470 legacy branch, 32-bit)
-	pkgver = 470.161.03
+	pkgver = 470.182.03
 	pkgrel = 1
 	url = https://github.com/NVIDIA/nvidia-settings
 	arch = x86_64
