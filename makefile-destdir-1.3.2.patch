@@ -1,0 +1,36 @@
+diff -Naurb a/Makefile.in b/Makefile.in
+--- a/Makefile.in	2015-08-05 02:30:19.000000000 +0200
++++ b/Makefile.in	2023-03-31 09:19:24.299045586 +0200
+@@ -91,19 +91,19 @@
+ #
+ 
+ install: tworld
+-	mkdir -p $(bindir)
+-	mkdir -p $(sharedir)/sets
+-	mkdir -p $(sharedir)/data
+-	mkdir -p $(sharedir)/res
+-	mkdir -p $(mandir)/man6
+-	cp -i ./tworld $(bindir)/.
+-	cp -i sets/*.dac $(sharedir)/sets/.
+-	cp -i data/*.dat $(sharedir)/data/.
+-	cp -i res/rc $(sharedir)/res/.
+-	cp -i res/*.bmp $(sharedir)/res/.
+-	cp -i res/*.txt $(sharedir)/res/.
+-	cp -i res/*.wav $(sharedir)/res/.
+-	cp -i docs/tworld.6 $(mandir)/man6/.
++	mkdir -p $(DESTDIR)$(bindir)
++	mkdir -p $(DESTDIR)$(sharedir)/sets
++	mkdir -p $(DESTDIR)$(sharedir)/data
++	mkdir -p $(DESTDIR)$(sharedir)/res
++	mkdir -p $(DESTDIR)$(mandir)/man6
++	cp -i ./tworld $(DESTDIR)$(bindir)/.
++	cp -i sets/*.dac $(DESTDIR)$(sharedir)/sets/.
++	cp -i data/*.dat $(DESTDIR)$(sharedir)/data/.
++	cp -i res/rc $(DESTDIR)$(sharedir)/res/.
++	cp -i res/*.bmp $(DESTDIR)$(sharedir)/res/.
++	cp -i res/*.txt $(DESTDIR)$(sharedir)/res/.
++	cp -i res/*.wav $(DESTDIR)$(sharedir)/res/.
++	cp -i docs/tworld.6 $(DESTDIR)$(mandir)/man6/.
+ 
+ all: tworld
+ 
