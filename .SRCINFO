@@ -1,0 +1,22 @@
+pkgbase = gmime
+	pkgdesc = A C/C++ MIME creation and parser library with support for S/MIME, PGP, and Unix mbox spools
+	pkgver = 2.6.23+4+g91dcee38
+	pkgrel = 3
+	url = https://github.com/jstedfast/gmime
+	arch = x86_64
+	license = GPL
+	makedepends = gtk-sharp-2
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	makedepends = git
+	makedepends = vala
+	makedepends = docbook-utils
+	depends = glib2
+	depends = gpgme
+	depends = zlib
+	source = git+https://github.com/jstedfast/gmime#commit=91dcee38ea301463fb9c6bc936f08b9fd1c0969f
+	source = 0001-Avoid-non-UTF-8-code.patch
+	sha256sums = SKIP
+	sha256sums = 516e339e92e419f5744abfd9b7608816115cca103727755994356b0984edcb10
+
+pkgname = gmime
