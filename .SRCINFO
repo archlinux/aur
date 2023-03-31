@@ -1,0 +1,16 @@
+pkgbase = ipfs-desktop-electron-bin
+	pkgdesc = An unobtrusive and user-friendly desktop application for IPFS on Windows, Mac and Linux.
+	pkgver = 0.27.0
+	pkgrel = 1
+	url = https://ipfs.tech/
+	arch = x86_64
+	license = MIT
+	depends = electron
+	source = https://github.com/ipfs-shipyard/ipfs-desktop/releases/download/v0.27.0/ipfs-desktop-0.27.0-linux-amd64.deb
+	source = ipfs-desktop.sh
+	source = https://raw.githubusercontent.com/ipfs/ipfs-desktop/main/LICENSE
+	sha256sums = 3328446caba1b99c21ec83b0943901a34a31e15a0fa11210ee0799611664f546
+	sha256sums = 98dbb9525cefe2c32563708d95df999174bdd20b20897efc48905fc08b4801ef
+	sha256sums = 12987594680fa07203d37f691267bfea6eafc5e8b441f3c9ac7afcbda09c92ef
+
+pkgname = ipfs-desktop-electron-bin
