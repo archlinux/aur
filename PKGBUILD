@@ -15,7 +15,7 @@ b2sums=('04fe14bcd9a03fab616231f4a594322535eca503b07d3180fc04f4acc0204d659aae80f
 
 
 build() {
-  meson --prefix=/usr "$pkgname-$pkgver" build
+  arch-meson "$pkgname-$pkgver" build
   meson compile -C build
 }
 
