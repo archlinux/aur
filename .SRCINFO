@@ -1,7 +1,7 @@
 pkgbase = hydrogen-drumkits-flac
 	pkgdesc = Hydrogen drum kits (FLAC format)
 	pkgver = 20220929
-	pkgrel = 3
+	pkgrel = 4
 	url = https://sourceforge.net/projects/hydrogen/files/Sound%20Libraries/
 	changelog = ChangeLog
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = hydrogen-drumkits-flac
 	makedepends = flac
 	makedepends = python
 	makedepends = sox
-	depends = hydrogen
+	optdepends = hydrogen: use the drumkits with hydrogen
 	provides = hydrogen-drumkits
 	conflicts = hydrogen-drumkits
 	source = convert-samples.py

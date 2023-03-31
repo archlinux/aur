@@ -5,12 +5,12 @@
 _pkgname=hydrogen-drumkits
 pkgname=$_pkgname-flac
 pkgver=20220929
-pkgrel=3
+pkgrel=4
 pkgdesc='Hydrogen drum kits (FLAC format)'
 arch=(any)
 url='https://sourceforge.net/projects/hydrogen/files/Sound%20Libraries/'
 license=(GPL2)
-depends=(hydrogen)
+optdepends=('hydrogen: use the drumkits with hydrogen')
 makedepends=(flac python sox)
 provides=($_pkgname)
 conflicts=($_pkgname)
