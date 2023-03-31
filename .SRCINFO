@@ -1,17 +1,22 @@
 pkgbase = windscribe-v2-bin
 	pkgdesc = Windscribe GUI tool for Linux
-	pkgver = 2.5.18
-	pkgrel = 2
+	pkgver = 2.6.14
+	pkgrel = 1
 	url = https://windscribe.com/guides/linux
 	install = windscribe-v2-bin.install
 	arch = x86_64
 	license = GPL2
-	depends = bash
 	depends = nftables
+	depends = c-ares
+	depends = freetype2
+	depends = hicolor-icon-theme
+	depends = curl
+	depends = systemd
+	depends = glibc>=2.28
 	provides = windscribe
 	conflicts = windscribe-cli
 	options = !strip
-	source = https://deploy.totallyacdn.com/desktop-apps/2.5.18/windscribe_2.5.18_amd64.deb
+	source = https://deploy.totallyacdn.com/desktop-apps/2.6.14/windscribe_2.6.14_x86_64.pkg.tar.zst
 	sha1sums = f539a4e0254ee800203b3671885d2ca433f610f7
 
 pkgname = windscribe-v2-bin
