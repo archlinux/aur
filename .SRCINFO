@@ -1,6 +1,6 @@
 pkgbase = basis-universal
 	pkgdesc = Basis Universal GPU Texture Codec
-	pkgver = 1.16.3
+	pkgver = 1.16.4
 	pkgrel = 1
 	url = https://github.com/BinomialLLC/basis_universal
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = basis-universal
 	makedepends = cmake
 	makedepends = ninja
 	provides = basisu
-	source = https://github.com/BinomialLLC/basis_universal/archive/1.16.3.tar.gz
-	sha256sums = b89563aa5879eed20f56b9cfa03b52848e759531fd5a1d51a8f63c846f96c2ac
+	source = https://github.com/BinomialLLC/basis_universal/archive/1.16.4.tar.gz
+	sha256sums = e5740fd623a2f8472c9700b9447a8725a6f27d65b0b47c3e3926a60db41b8a64
 
 pkgname = basis-universal
