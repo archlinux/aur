@@ -1,8 +1,8 @@
 # Maintainer: Conrad Hoffmann <ch@bitfehler.net>
 
 pkgname=ipcalc-redhat
-pkgver=1.0.1
-pkgrel=1
+pkgver=1.0.2
+pkgrel=2
 pkgdesc="Redhat's modernized ipcalc fork with IPv6 support"
 arch=('x86_64')
 url="https://gitlab.com/ipcalc/ipcalc"
@@ -11,7 +11,7 @@ conflicts=('ipcalc')
 depends=('glibc')
 makedepends=('meson' 'ruby-ronn')
 source=("https://gitlab.com/ipcalc/ipcalc/-/archive/${pkgver}/ipcalc-${pkgver}.tar.gz")
-sha256sums=('60c21355fc74e6c8d4ef926bd992fcb36238d70d98aaa8e80f5b66375c9beee9')
+sha256sums=('0c08a63be9e75201b42038f22f9ae81bdc63a9cc540739df04c2084faca6e605')
 
 build() {
   cd "$srcdir/ipcalc-$pkgver"
