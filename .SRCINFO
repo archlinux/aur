@@ -12,6 +12,6 @@ pkgbase = linux-xanmod-headers-bin
 	source = https://github.com/xanmod/linux/releases/download/6.2.9-xanmod1/linux-headers-6.2.9-x64v1-xanmod1_6.2.9-x64v1-xanmod1-0.20230330.3ab01be_amd64.deb
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = b0880c49c8399888ddbbcfbfb688f8198aaefeb1506b94a06fc6a02668ad2991
+	sha256sums = b168a34bc73db5a735e2cde7465f2bf17828984780f56eab10c266a32041efc1
 
 pkgname = linux-xanmod-headers-bin
