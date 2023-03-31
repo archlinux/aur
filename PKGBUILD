@@ -2,20 +2,23 @@
 
 _pkgname='raytracinginvulkan'
 pkgname="${_pkgname}-git"
-pkgver='6.r18.gefb71ef'
-pkgrel=1
+pkgver=7.r10.g164e530
+pkgrel=2
 pkgdesc="Implementation of Peter Shirley's Ray Tracing In One Weekend book"
 arch=('x86_64')
 url='https://github.com/GPSnoopy/RayTracingInVulkan'
 license=('BSD')
-
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-
-source=("${_pkgname}::git+${url}.git")
 depends=('boost-libs' 'glfw-x11' 'glm' 'imgui' 'tinyobjloader' 'vulkan-icd-loader' 'glslang' 'freetype2')
+optdepends=('amdvlk: Standalone driver for radeon gpus')
 makedepends=('cmake' 'boost' 'vulkan-headers' 'stb')
-sha256sums=('SKIP')
+
+source=(	"${_pkgname}::git+${url}.git"
+		'0001-Update-GuiKeys.patch'
+)
+sha256sums=(	'SKIP'
+		'SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -28,6 +31,14 @@ prepare() {
   sed -i'' 's/find_package(freetype CONFIG/find_package(Freetype/' CMakeLists.txt
   sed -i'' 's/glm::glm/glm/;s/\${Boost_LIBRARIES} freetype/\${Boost_LIBRARIES} Freetype::Freetype/g' src/CMakeLists.txt
   mkdir -p build
+
+  # Implement all packaged patches and reverts.
+  cd "${_srcname}"
+  msg2 "Implementing custom patches"
+  while read patch; do
+   echo "Applying $patch"
+   git apply $patch || exit 2
+  done <<< $(ls ../*.patch)
 }
 
 build() {
@@ -52,8 +63,7 @@ package() {
   install -dm755 "$pkgdir/opt/${_pkgname}/bin"
   install -dm755 "$pkgdir/opt/${_pkgname}/assets"
 
-  install -m755 bin/RayTracer "$pkgdir/opt/${_pkgname}/bin/RayTracer" 
-  
+  install -m755 bin/RayTracer "$pkgdir/opt/${_pkgname}/bin/RayTracer"
   cp -dr --no-preserve=ownership \
     -t "$pkgdir/opt/${_pkgname}/assets/" \
     assets/{fonts,models,textures,shaders}
