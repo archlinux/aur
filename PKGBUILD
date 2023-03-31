@@ -2,7 +2,7 @@
 
 pkgname=web-ext
 # https://github.com/mozilla/web-ext/releases
-pkgver=7.5.0
+pkgver=7.6.0
 pkgrel=1
 pkgdesc='A command line tool to help build, run, and test web extensions'
 arch=(any)
@@ -17,18 +17,11 @@ conflicts=('nodejs-web-ext')
 # to speed up the build
 options=('!strip')
 # tarball on npmjs lacks scripts for building from sources
-source=("https://github.com/mozilla/web-ext/archive/$pkgver/web-ext-$pkgver.tar.gz"
-        "nodejs19.diff")
-sha256sums=('5a1f57be9be07c231a62a88e328eecde4bd6cabcb240e1147ae38431d9935493'
-            '9475a50851a8442dd8edad55f5b678923808396eedfae45dd29a960cc0646529')
+source=("https://github.com/mozilla/web-ext/archive/$pkgver/web-ext-$pkgver.tar.gz")
+sha256sums=('0c2afcb5658dd65a8146a4850ac04a17155feba3902fc0fecbc726d05005dd34')
 
 prepare() {
   cd "$srcdir"
-
-  # Make tests pass with Node.js 19 https://github.com/mozilla/web-ext/issues/2564
-  pushd $pkgname-$pkgver
-  patch -Np1 -i ../nodejs19.diff
-  popd
 
   # -build for running webpack and tests, and the original for actual packaging
   cp -r $pkgname-$pkgver{,-build}
