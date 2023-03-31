@@ -18,6 +18,9 @@ pkgbase = snapshot-git
 	depends = gst-plugins-good>=1.20.0
 	depends = gtk4>=4.9.0
 	depends = glib2>=2.75.0
+	depends = xdg-desktop-portal
+	depends = pipewire
+	depends = gst-plugin-pipewire
 	provides = snapshot
 	conflicts = snapshot
 	source = git+https://gitlab.gnome.org/msandova/snapshot.git
