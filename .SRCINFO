@@ -1,0 +1,12 @@
+pkgbase = bbe
+	pkgdesc = A sed-like editor for binary files
+	pkgver = 0.2.2
+	pkgrel = 3
+	url = https://sourceforge.net/projects/bbe-/?source=directory
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = https://downloads.sourceforge.net/bbe-/bbe-0.2.2.tar.gz
+	sha256sums = baaeaf5775a6d9bceb594ea100c8f45a677a0a7d07529fa573ba0842226edddb
+
+pkgname = bbe
