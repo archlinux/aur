@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=oxker-git
-pkgver=0.2.5.r0.g1ff5599
+pkgver=0.3.0.r0.g12e953d
 pkgrel=1
 pkgdesc="A simple TUI to view & control Docker containers"
 arch=('x86_64')
