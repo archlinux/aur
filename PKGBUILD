@@ -6,8 +6,8 @@ pkgdesc="An open-source pixel-art science-fiction real-time-strategy game."
 arch=('any')
 url="https://www.openhv.net"
 license=('GPL3')
-depends=('ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolor-icon-theme'
-         'gtk-update-icon-cache' 'desktop-file-utils' 'xdg-utils' 'zenity' 'dotnet-sdk-6.0')
+depends=('dotnet-sdk-6.0' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolor-icon-theme'
+         'gtk-update-icon-cache' 'desktop-file-utils' 'xdg-utils' 'zenity')
 makedepends=('git' 'unzip')
 options=(!debug)
 source=("git+https://github.com/OpenHV/OpenHV.git#tag=${pkgver}"
