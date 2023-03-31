@@ -9,9 +9,21 @@ pkgdesc="Just another guided/automated Arch Linux installer with a twist"
 arch=('any')
 url="https://github.com/archlinux/$_name"
 license=('GPL3')
-depends=('python' 'systemd')
-makedepends=('git' 'python-setuptools' 'python-sphinx' 'python-build' 'python-installer' 'python-wheel')
-optdepends=('python-systemd: Adds journald logging')
+depends=(
+  'python'
+  'systemd'
+)
+makedepends=(
+  'git'
+  'python-setuptools'
+  'python-sphinx'
+  'python-build'
+  'python-installer'
+  'python-wheel'
+)
+optdepends=(
+  'python-systemd: Adds journald logging'
+)
 provides=('python-archinstall' 'archinstall')
 conflicts=('python-archinstall' 'archinstall')
 replaces=('python-archinstall' 'archinstall')
