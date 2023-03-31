@@ -2,7 +2,7 @@
 
 pkgbase=gowin-eda-edu
 pkgver=1.9.8.09
-pkgrel=1
+pkgrel=2
 _desc="Gowin EDA, an easy to use integrated design environment provides design engineers one-stop solution from design entry to verification. (education version)"
 arch=('x86_64')
 url="http://www.gowinsemi.com.cn/faq.aspx"
@@ -31,6 +31,7 @@ _install_exec() {
 _package-ide() {
   pkgdesc="Gowin EDA IDE - ${_desc}"
   depends=('fontconfig' 'freetype2')
+  optdepends=('openfpgaloader: open source fpga programmer, as a replacement to Gowin Programmer')
   provides=("gowin-eda-ide" "gowin-ide")
   
   cd ${srcdir}/IDE
