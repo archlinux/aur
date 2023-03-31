@@ -3,7 +3,7 @@
 pkgbase=jetbrains-gateway
 pkgname=(jetbrains-gateway jetbrains-gateway-jre)
 pkgver=2023.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An entry point to Remote Development'
 arch=('x86_64' 'i686')
 license=('custom:jetbrains')
@@ -22,13 +22,14 @@ package_jetbrains-gateway() {
               'java-runtime: JRE - Required if jetbrains-gateway-jre is not installed'
               'gnome-keyring: save login/deployment credentials safely'
               'java-openjfx: rendering Markdown files')
+  _buildver="$(ls | grep -Eo 'JetBrainsGateway-[[:digit:]]+\.[[:digit:]]{2,5}\.[[:digit:]]+' | sort -r | head -1 | sed 's#JetBrainsGateway-##')"
 
   install -dm755 "${pkgdir}"/opt/
   install -dm755 "${pkgdir}"/usr/bin/
   install -dm755 "${pkgdir}"/usr/share/applications/
   install -dm755 "${pkgdir}"/usr/share/pixmaps/
 
-  cp -a "${srcdir}"/JetBrainsGateway-${pkgver}/ "${pkgdir}"/opt/${pkgbase}
+  cp -a "${srcdir}"/JetBrainsGateway-${_buildver}/ "${pkgdir}"/opt/${pkgbase}
   rm -rf "${pkgdir}"/opt/${pkgbase}/jbr
 
   ln -s /opt/${pkgbase}/bin/${pkgbase#*-}.sh "${pkgdir}"/usr/bin/${pkgbase}
@@ -40,7 +41,8 @@ package_jetbrains-gateway() {
 package_jetbrains-gateway-jre() {
   pkgdesc='JBR (JetBrains Runtime) for JetBrains Gateway - a patched JRE'
   url='https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime'
+  _buildver="$(ls | grep -Eo 'JetBrainsGateway-[[:digit:]]+\.[[:digit:]]{2,5}\.[[:digit:]]+' | sort -r | head -1 | sed 's#JetBrainsGateway-##')"
 
   install -d -m 755 "${pkgdir}"/opt/${pkgbase}
-  cp -a "${srcdir}"/JetBrainsGateway-${pkgver}/jbr "${pkgdir}"/opt/${pkgbase}
+  cp -a "${srcdir}"/JetBrainsGateway-${_buildver}/jbr "${pkgdir}"/opt/${pkgbase}
 }

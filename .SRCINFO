@@ -1,7 +1,7 @@
 pkgbase = jetbrains-gateway
 	pkgdesc = An entry point to Remote Development
 	pkgver = 2023.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jetbrains.com/remote-development/gateway/
 	arch = x86_64
 	arch = i686
