@@ -1,0 +1,15 @@
+pkgbase = python-openai-cli
+	pkgdesc = OpenAI command-line client
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/peterdemin/openai-cli
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/o/openai-cli/openai-cli-0.0.3.tar.gz
+	md5sums = e88042874b26e960cac385eb11be2b08
+
+pkgname = python-openai-cli
