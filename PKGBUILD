@@ -9,7 +9,7 @@ depends=('mingw-w64-qt5-tools' 'mingw-w64-qt5-svg' 'mingw-w64-boost' 'mingw-w64-
 makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-utf8cpp' 'mingw-w64-cli11' 'mingw-w64-exprtk' 'mingw-w64-wine' 'protobuf' 'mingw-w64-nlohmann-json' 'mingw-w64-fmt')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("${url}/files/v${pkgver:0:4}/ParaView-v${pkgver}.tar.xz")
-sha256sums=('a0c8cb84c4b638714b0880678c48dba0f06713bce9b9174c9458bbedec9670cd')
+sha256sums=('5cc2209f7fa37cd3155d199ff6c3590620c12ca4da732ef7698dec37fa8dbb34')
 
 _architectures="x86_64-w64-mingw32"
 

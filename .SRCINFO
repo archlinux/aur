@@ -38,6 +38,6 @@ pkgbase = mingw-w64-paraview
 	options = !strip
 	options = staticlibs
 	source = https://www.paraview.org/files/v5.11/ParaView-v5.11.1.tar.xz
-	sha256sums = a0c8cb84c4b638714b0880678c48dba0f06713bce9b9174c9458bbedec9670cd
+	sha256sums = 5cc2209f7fa37cd3155d199ff6c3590620c12ca4da732ef7698dec37fa8dbb34
 
 pkgname = mingw-w64-paraview
