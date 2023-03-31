@@ -1,6 +1,6 @@
 pkgbase = blender-git
 	pkgdesc = A fully integrated 3D graphics creation suite (development)
-	pkgver = 3.6.r122857.gcde99075e87
+	pkgver = 3.6.r122861.g324ba509b53
 	pkgrel = 1
 	url = https://blender.org/
 	arch = i686
@@ -46,6 +46,7 @@ pkgbase = blender-git
 	optdepends = usd=21.05: USD export Scene
 	optdepends = openpgl: Intel Path Guiding library in Cycles
 	optdepends = openimagedenoise: Intel Open Image Denoise support in compositing
+	optdepends = materialx: MaterialX materials
 	optdepends = level-zero-headers: Intel OpenCL FPGA kernels (all four needed)
 	optdepends = intel-compute-runtime: Intel OpenCL FPGA kernels (all four needed)
 	optdepends = intel-graphics-compiler: Intel OpenCL FPGA kernels (all four needed)
@@ -53,14 +54,16 @@ pkgbase = blender-git
 	provides = blender
 	conflicts = blender
 	source = blender::git+https://github.com/blender/blender#branch=main
-	source = blender/scripts/addons::git+https://github.com/blender/blender-addons
+	source = blender-addons::git+https://github.com/blender/blender-addons
 	source = blender/translations::git+https://github.com/blender/blender-translations
-	source = blender/addons_contrib::git+https://github.com/blender/blender-addons-contrib
+	source = blender-addons-contrib::git+https://github.com/blender/blender-addons-contrib
 	source = blender/dev_tools::git+https://github.com/blender/blender-dev-tools
+	source = blender/assets::svn+https://svn.blender.org/svnroot/bf-blender/trunk/lib/assets
 	source = user-blender.slice
 	source = 0001-Use-github.com-for-make-update-git.patch
 	source = 0003-usd_python.patch
 	source = 0002-embree.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

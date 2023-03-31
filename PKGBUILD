@@ -20,7 +20,7 @@ _fragment="${FRAGMENT:-#branch=main}"
 _CMAKE_FLAGS+=( -DWITH_CYCLES_NETWORK=OFF )
 
 pkgname=blender-git
-pkgver=3.6.r122857.gcde99075e87
+pkgver=3.6.r122861.g324ba509b53
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
@@ -35,6 +35,7 @@ optdepends=('cuda: CUDA support in Cycles'
             'usd=21.05: USD export Scene'
             'openpgl: Intel Path Guiding library in Cycles'
             'openimagedenoise: Intel Open Image Denoise support in compositing'
+            'materialx: MaterialX materials'
             'level-zero-headers: Intel OpenCL FPGA kernels (all four needed)'
             'intel-compute-runtime: Intel OpenCL FPGA kernels (all four needed)'
             'intel-graphics-compiler: Intel OpenCL FPGA kernels (all four needed)'
@@ -45,10 +46,11 @@ provides=('blender')
 conflicts=('blender')
 license=('GPL')
 source=("blender::git+https://github.com/blender/blender${_fragment}"
-        'blender/scripts/addons::git+https://github.com/blender/blender-addons'
+        'blender-addons::git+https://github.com/blender/blender-addons'
         'blender/translations::git+https://github.com/blender/blender-translations'
-        'blender/addons_contrib::git+https://github.com/blender/blender-addons-contrib'
+        'blender-addons-contrib::git+https://github.com/blender/blender-addons-contrib'
         'blender/dev_tools::git+https://github.com/blender/blender-dev-tools'
+        'blender/assets::svn+https://svn.blender.org/svnroot/bf-blender/trunk/lib/assets'
         'user-blender.slice' #systemd compilation unit
         # Patches...
         '0001-Use-github.com-for-make-update-git.patch'
@@ -56,6 +58,7 @@ source=("blender::git+https://github.com/blender/blender${_fragment}"
         '0002-embree.patch' #add missing embree link.
         )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -76,15 +79,19 @@ pkgver() {
 
 prepare() {
   cd "$srcdir"
+  mkdir -p blender/scripts/addons
+  rm -rf blender/scripts/addons{,/contrib}
+  mv blender-addons blender/scripts/addons
+  mv blender-addons-contrib blender/scripts/addons/contrib
   cp user-blender.slice user-`id -u`-blender.slice
   cd "blender"
-  make update
   # update the submodules
   git -c protocol.file.allow=always submodule update --init --recursive --remote
   git apply -v "${srcdir}"/*.patch
 }
 
 build() {
+  export PATH="/opt/lib:/opt/bin:$PATH"
   _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
   msg "python version detected: ${_pyver}"
 
@@ -95,13 +102,36 @@ build() {
                     -DWITH_PYTHON_INSTALL=ON )
   fi
 
+  export CC=`which clang`
+  export CXX=`which clang++`
+  export CUDAHOSTCXX="$CC"
+
+  # check for oneapi
+  export _ONEAPI_CLANG=/opt/intel/oneapi/compiler/latest/linux/bin-llvm/clang
+  export _ONEAPI_CLANGXX=/opt/intel/oneapi/compiler/latest/linux/bin-llvm/clang++
+  [[ -f "$_ONEAPI_CLANG" ]] && (
+    _CMAKE_FLAGS+=( -DWITH_CYCLES_DEVICE_ONEAPI=ON \
+                    -DWITH_CYCLES_ONEAPI_BINARIES=ON \
+                    -DWITH_CLANG=ON )
+  )
+  [[ -f /opt/bin/clang ]] && _CMAKE_FLAGS+=-DLLVM_ROOT_DIR=/opt/lib
+
   # determine whether we can precompile CUDA kernels
   _CUDA_PKG=$(pacman -Qq cuda 2>/dev/null) || true
   if [ "$_CUDA_PKG" != "" ]; then
+    CUDAHOSTCXX=`which gcc-11`
     _CMAKE_FLAGS+=( -DWITH_CYCLES_CUDA_BINARIES=ON
                     # https://wiki.blender.org/wiki/Building_Blender/GPU_Binaries
                     -DWITH_COMPILER_ASAN=OFF
+                    -DCMAKE_CUDA_HOST_COMPILER=`which gcc-11`
                     -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda )
+  fi
+
+  # check for materialx
+  _MX_PKG=$(pacman -Qq materialx 2>/dev/null) || true
+  if [ "$_MX_PKG" != "" ]; then
+    _CMAKE_FLAGS+=( -DWITH_MATERIALX=ON )
+    PATH="/usr/materialx:$PATH"  
   fi
 
   # check for optix
@@ -118,49 +148,22 @@ build() {
   fi
 
   # check for universal scene descriptor
-  _USD_PKG=$(pacman -Qq usd=21.02 2>/dev/null) || true
+  _USD_PKG=$(pacman -Qq usd>=21.02 2>/dev/null) || true
   if [ "$_USD_PKG" != "" ]; then
     _CMAKE_FLAGS+=( -DWITH_USD=ON
                     -DUSD_ROOT=/usr )
   fi
 
-  export CC=`which clang`
-  export CXX=`which clang++`
-  export LLVM_ROOT_DIR=/usr/bin
-  # check for oneapi
-  export _ONEAPI_SETVARS=/opt/intel/oneapi/setvars.sh
-  export _ONEAPI_CLANG_LIBS="/usr/lib;/usr/lib/clang/`llvm-config --version`/lib/linux/;/opt/intel/oneapi/compiler/latest/linux/lib/x64"
-  export _ONEAPI_CLANG=/opt/intel/oneapi/compiler/latest/linux/bin-llvm/clang
-  export _ONEAPI_CLANGXX=/opt/intel/oneapi/compiler/latest/linux/bin-llvm/clang++
-  export _CLANG_LIBRARIES="$_ONEAPI_CLANG_LIBS"
-  [ -f "$_ONEAPI_CLANG" ] && (
-    warning "Intel's clang will be used."
-    _CMAKE_FLAGS+=( -DWITH_CYCLES_DEVICE_ONEAPI=ON \
-                    -DWITH_CYCLES_ONEAPI_BINARIES=ON \
-                    -DCLANG_INCLUDE_DIR=/usr/include \
-                    -DCLANG_LIBRARY_DIRS="$_CLANG_LIBRARIES "'${CLANG_LIBRARY_DIRS}' \
-                    -DCLANG_ROOT_DIR=/opt/intel/oneapi/compiler/latest/linux/
-                    -DLLVM_ROOT_DIR=/opt/intel/oneapi/compiler/latest/linux/
-                    -DWITH_CLANG=ON )
-    export CC="${_ONEAPI_CLANG}"
-    export CXX="${_ONEAPI_CLANGXX}"
-    export LLVM_ROOT_DIR=/opt/intel/oneapi/compiler/latest/linux/
-  )
-
   [ -f "$srcdir/blender/CMakeCache.txt" ] && rm "$srcdir/blender/CMakeCache.txt"
-  cmake -G Ninja -S "$srcdir/blender" -B build \
+  CUDAHOSTCXX="$CUDAHOSTCXX" cmake -G Ninja -S "$srcdir/blender" -B build --fresh \
         -C "${srcdir}/blender/build_files/cmake/config/blender_release.cmake" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DWITH_STATIC_LIBS=OFF \
-        -DCMAKE_BUILD_TYPE=Debug \
+        -DCMAKE_BUILD_TYPE=Release \
         -DWITH_INSTALL_PORTABLE=OFF \
-        -DWITH_SYSTEM_GLEW=OFF \
         -DWITH_LIBS_PRECOMPILED=OFF \
-        -DWITH_PYTHON_INSTALL=OFF \
         -DOCLOC_INSTALL_DIR=/usr/bin \
         -DXR_OPENXR_SDK_ROOT_DIR=/usr \
-        -DCMAKE_C_COMPILER="$CC" \
-        -DCMAKE_CXX_COMPILER="$CXX" \
         -DPYTHON_VERSION="${_pyver}" \
         "${_CMAKE_FLAGS[@]}"
         #--trace-expand \
@@ -188,7 +191,7 @@ package() {
   mkdir -p "$pkgdir"/usr/lib
   [ -f "$pkgdir/usr/share/blender/lib/libcycles_kernel_oneapi_jit.so" ] && \
     ln -s "$pkgdir/usr/share/blender/lib/libcycles_kernel_oneapi_jit.so" "$pkgdir/usr/lib/libcycles_kernel_oneapi_jit.so" && \
-      chmod 444 "$pkgdir"/usr/lib/libcycles_kernel_oneapi_jit.so
+      chmod 444 "$pkgdir"/usr/lib/libcycles_kernel_oneapi_jit.so || true
 }
 
 # vim: et:ts=2:sw=2
