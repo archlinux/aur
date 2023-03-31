@@ -29,7 +29,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgname}.tmpfiles")
 
 sha256sums=('e96755547b6a6cd63f2a916d4bdfd5f5a3cc62e1b89db021de441c94c064ddc6'
-            'cb362da63786c752d928770d22c8f8ad0a85ca1b6bafe83982bdcb9b4455bbf9'
+            'e2ba604cdd1f16274a3267f5354972bb60f462ff60ac069391e8ab778af8ec3c'
             '348abc0627d63762a97655b5893c306e5b923857be5d0b876e9df5fea7ef9ed9'
             'ff2a4be9594518b670dafe80023772affc5e8cca85bb4c95972c7c14c72453c2')
 
