@@ -1,0 +1,14 @@
+pkgbase = dina-font
+	pkgdesc = A monospace bitmap font, primarily aimed at programmers
+	pkgver = 2.92
+	pkgrel = 10
+	url = https://www.dcmembers.com/jibsen/download/61/
+	arch = any
+	license = custom
+	makedepends = xorg-bdftopcf
+	source = dina-2.92-new.zip::https://www.dcmembers.com/jibsen/download/61/?wpdmdl=61
+	source = 75-yes-dina.conf
+	sha256sums = 1f51bba53f75a64d2d8bd037e8e0f84b6f8064e50a72ee954033bede173508cf
+	sha256sums = 2596b25f3e20936dbe189f8574a55950b5ee2605bfdeaaac1ec47d0ff14855b6
+
+pkgname = dina-font
