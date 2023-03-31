@@ -11,7 +11,7 @@
 # Contributor: Tim Zebulla <amon at faumrahrer dot de>
 
 pkgname=weechat-git
-pkgver=3.4.r93.gf81a0dc4d
+pkgver=3.8.r263.ge23100c09
 pkgrel=1
 pkgdesc='Fast, light and extensible IRC client (curses UI). Development version.'
 arch=(i686 x86_64 armv7h aarch64)
@@ -45,6 +45,7 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DENABLE_MAN=ON \
 		-DENABLE_DOC=ON \
+		-DENABLE_DOC_INCOMPLETE=ON \
 		-DENABLE_JAVASCRIPT=OFF \
 		-DENABLE_PHP=OFF
 	make -C build

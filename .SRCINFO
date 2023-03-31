@@ -1,6 +1,6 @@
 pkgbase = weechat-git
 	pkgdesc = Fast, light and extensible IRC client (curses UI). Development version.
-	pkgver = 3.4.r93.gf81a0dc4d
+	pkgver = 3.8.r263.ge23100c09
 	pkgrel = 1
 	url = https://weechat.org
 	arch = i686
@@ -28,7 +28,7 @@ pkgbase = weechat-git
 	optdepends = python: support for python scripts
 	optdepends = ruby: support for ruby scripts
 	optdepends = tcl: support for tcl scripts
-	provides = weechat=3.4.r93.gf81a0dc4d
+	provides = weechat=3.8.r263.ge23100c09
 	conflicts = weechat
 	source = git+https://github.com/weechat/weechat.git
 	sha512sums = SKIP
