@@ -1,0 +1,15 @@
+pkgbase = python-item_synchronizer
+	pkgdesc = This library aims to offer an abstract and versatile way to create, update and/or delete items to keep two sources in sync.
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/bergercookie/item_synchronizer
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	source = https://github.com/bergercookie/item_synchronizer/archive/refs/tags/v1.1.4.tar.gz
+	sha256sums = 3192d2f48ecdbc1d507d29000754b136e0b71e1652e6c9b4b4d4c623468e4a11
+
+pkgname = python-item_synchronizer
