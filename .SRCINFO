@@ -1,7 +1,7 @@
 pkgbase = matplotplusplus-git
 	pkgdesc = Matplot++: A C++ Graphics Library for Data Visualization
 	pkgver = r437.2a8eada
-	pkgrel = 1
+	pkgrel = 2
 	url = https://alandefreitas.github.io/matplotplusplus/
 	arch = x86_64
 	license = MIT
