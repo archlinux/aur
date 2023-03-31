@@ -3,7 +3,7 @@
 pkgname=fienode-git
 _pkgname=fienode
 pkgver=1.0+9+g57ab25b
-pkgrel=1
+pkgrel=2
 pkgdesc="Discover identical CoW copies, analogous to an inode"
 arch=("x86_64")
 url="https://github.com/pwaller/fienode"
@@ -11,6 +11,7 @@ license=("MIT")
 depends=()
 makedepends=("git" "go")
 provides=("$_pkgname")
+conflicts=("$_pkgname")
 options=(!lto)
 source=(
   "$pkgname::git+${url}.git"
