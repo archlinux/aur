@@ -1,0 +1,15 @@
+pkgbase = python-bubop
+	pkgdesc = Bergercookie's Useful Bits Of Python
+	pkgver = 0.1.10
+	pkgrel = 1
+	url = https://github.com/bergercookie/bubop
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	source = https://github.com/bergercookie/python-bubop/archive/refs/tags/v0.1.10.tar.gz
+	sha256sums = ef77a8388e1580a2ff42975e5e9bbb94cddca0e27a09e38529d4d9b10360df08
+
+pkgname = python-bubop
