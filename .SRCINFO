@@ -1,0 +1,15 @@
+pkgbase = cpulimit
+	pkgdesc = Limit cpu usage of a process in percentage. Actually sends SIGSTOP/SIGCONT POSIX signals to processes
+	pkgver = 0.2
+	pkgrel = 3
+	epoch = 1
+	url = https://github.com/opsengine/cpulimit
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = cpulimit-0.2.tar.gz::https://github.com/opsengine/cpulimit/archive/v0.2.tar.gz
+	source = 0000-fix-includes.patch
+	sha256sums = 64312f9ac569ddcadb615593cd002c94b76e93a0d4625d3ce1abb49e08e2c2da
+	sha256sums = b3255614bf8b190cc8b4b80b287fee955096da801c9897c586fda732ff7c863b
+
+pkgname = cpulimit
