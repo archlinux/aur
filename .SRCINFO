@@ -13,9 +13,11 @@ pkgbase = libretro-melonds-git
 	groups = libretro
 	license = GPL3
 	makedepends = git
+	depends = gcc-libs
+	depends = glibc
 	depends = libgl
 	depends = libretro-core-info
-	provides = libretro-melonds
+	provides = libretro-melonds=2012.0e1f06da
 	conflicts = libretro-melonds
 	source = libretro-melonds::git+https://github.com/libretro/melonDS.git
 	b2sums = SKIP
