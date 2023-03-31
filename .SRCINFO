@@ -1,0 +1,19 @@
+pkgbase = slashbase
+	pkgdesc = Modern database IDE for your dev & data workflows. Supports MySQL, PostgreSQL & MongoDB. Free open-source database client.
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://github.com/slashbaseide/slashbase
+	arch = x86_64
+	license = APACHE
+	depends = gtk3
+	depends = glibc
+	depends = webkit2gtk
+	depends = gdk-pixbuf2
+	source = slashbase-0.8.3.zip::https://github.com/slashbaseide/slashbase/releases/download/v0.8.3/linux_amd64.zip
+	source = slashbase.desktop
+	source = slashbase.png
+	sha256sums = bfe1f9141c48af09e7a441d48e02372bedc91b4621dd3239efeedec6307ebe91
+	sha256sums = 1134b6d0bde7a77b2398201c57a6ad4a442d1d70291ba8a1863f49c92440f033
+	sha256sums = 35827b3f55629db3a8f772f928d02e8d9257ad160cb8fd9d0615ce94eac8a191
+
+pkgname = slashbase

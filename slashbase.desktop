@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Slashbase
+StartupWMClass=Slashbase
+Comment=Slashbase IDE
+GenericName=Slashbase IDE
+Exec=/usr/bin/slashbase
+Icon=slashbase
+Type=Application
+StartupNotify=true
