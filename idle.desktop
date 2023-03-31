@@ -3,6 +3,7 @@ Name=IDLE
 GenericName=Python IDE
 Comment=Python Integrated Development and Learning Environment
 Exec=/usr/bin/idle %F
+TryExec=/usr/bin/idle
 Icon=idle
 Terminal=false
 Type=Application
