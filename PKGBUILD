@@ -1,7 +1,7 @@
 # Maintainer: Simone Scalabrino <s.scalabrino9@gmail.com>
 _appname="whatsapp"
 _appdesc="Standalone silo app for WhatsApp"
-_gittag="0.4"
+_gittag="0.5"
 
 _gitname=silos-apps
 pkgname="silo-${_appname}"
