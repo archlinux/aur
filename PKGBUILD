@@ -3,8 +3,7 @@
 # Contributor: Gleidson Echeli <gleidson dot echeli at gmail dot com>
 
 pkgname=umlet
-pkgver=15.0.0
-_pkgver=15_0
+pkgver=15.1
 pkgrel=1
 pkgdesc="Free UML Tool for Fast UML Diagrams (stand-alone version)"
 arch=('any')
@@ -12,10 +11,10 @@ url="https://www.umlet.com"
 license=('GPL')
 depends=('java-runtime')
 makedepends=('unzip' 'patch')
-source=("http://www.umlet.com/umlet_${_pkgver}/umlet-standalone-${pkgver}.zip"
+source=("https://www.umlet.com/download/umlet_${pkgver//./_}/umlet-standalone-${pkgver}.zip"
 	'umlet.desktop'
 	'UMLet.sh.diff')
-md5sums=('0d77cc21066a3f8fb7f05f671d818177'
+md5sums=('57929dbd0dd4cf11be46538af6d06007'
          '4efcfeea2f54b849bc86e3f1905449be'
          '6ff2efb31dd588eeebf57720fdd13267')
 

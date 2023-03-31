@@ -1,6 +1,6 @@
 pkgbase = umlet
 	pkgdesc = Free UML Tool for Fast UML Diagrams (stand-alone version)
-	pkgver = 15.0.0
+	pkgver = 15.1
 	pkgrel = 1
 	url = https://www.umlet.com
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = umlet
 	makedepends = unzip
 	makedepends = patch
 	depends = java-runtime
-	source = http://www.umlet.com/umlet_15_0/umlet-standalone-15.0.0.zip
+	source = https://www.umlet.com/download/umlet_15_1/umlet-standalone-15.1.zip
 	source = umlet.desktop
 	source = UMLet.sh.diff
-	md5sums = 0d77cc21066a3f8fb7f05f671d818177
+	md5sums = 57929dbd0dd4cf11be46538af6d06007
 	md5sums = 4efcfeea2f54b849bc86e3f1905449be
 	md5sums = 6ff2efb31dd588eeebf57720fdd13267
 
