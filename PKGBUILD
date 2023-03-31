@@ -22,8 +22,6 @@ options=(!strip)
 prepare() {
     cd "${srcdir}"
     chmod +x ${_filename}
-    eval ./${_filename} --appimage-extract "*/*/*/*/*x*/apps/*.png"
-    eval ./${_filename} --appimage-extract "*/*/applications/*.desktop"
 }
 
 
