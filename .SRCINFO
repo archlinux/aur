@@ -1,16 +1,19 @@
 pkgbase = python-parsita
 	pkgdesc = Parser combinator library for Python.
-	pkgver = 1.7.0
-	pkgrel = 2
+	pkgver = 1.7.2
+	pkgrel = 1
 	url = https://pypi.org/project/parsita
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
-	makedepends = python-setuptools
-	makedepends = python-dephell
+	checkdepends = python-pytest-timeout
+	makedepends = python-poetry-core
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
-	source = python-parsita-1.7.0.tar.gz::https://github.com/drhagen/parsita/archive/refs/tags/v1.7.0.tar.gz
-	sha256sums = 080f72c24250d2efbca2a10a388fb9ae6d040ef7bdf62cbd448fd39540ec55a0
-	b2sums = 04851b52cb8386e633c5bde2c603a45dc444c84de3955b2086253b0a06f0a75c0ffcb2a7cd34c4a665686adf543a0b158c53267ac66bf8bc687654f79179aa51
+	source = python-parsita-1.7.2.tar.gz::https://github.com/drhagen/parsita/archive/refs/tags/v1.7.2.tar.gz
+	sha256sums = 11679121bca3b1964137cf3f2f1cde9ceb3db2ddca2c66106c1e09fe3a125fec
+	b2sums = ce99a3975da5b977d34ef2f41c36ff6902703ccb7b984064c50f814f99e73b50001b095010581784c4868ff6d079b020def9b5dd67b0e454a12591b84493d6a0
 
 pkgname = python-parsita

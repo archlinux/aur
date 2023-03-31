@@ -1,42 +1,37 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 _pkgname=parsita
-pkgname="python-${_pkgname}"
-pkgver=1.7.0
-pkgrel=2
+pkgname="python-$_pkgname"
+pkgver=1.7.2
+pkgrel=1
 pkgdesc="Parser combinator library for Python."
 arch=('any')
 url="https://pypi.org/project/parsita"
 license=('MIT')
 depends=('python')
-makedepends=('python-setuptools' 'python-dephell')
-checkdepends=('python-pytest')
+makedepends=('python-poetry-core' 'python-build' 'python-installer' 'python-wheel')
+checkdepends=('python-pytest' 'python-pytest-timeout')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/drhagen/parsita/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('080f72c24250d2efbca2a10a388fb9ae6d040ef7bdf62cbd448fd39540ec55a0')
-b2sums=('04851b52cb8386e633c5bde2c603a45dc444c84de3955b2086253b0a06f0a75c0ffcb2a7cd34c4a665686adf543a0b158c53267ac66bf8bc687654f79179aa51')
-
-prepare() {
-  cd "$_pkgname-$pkgver"
-
-  dephell deps convert --from pyproject.toml --to setup.py
-}
+sha256sums=('11679121bca3b1964137cf3f2f1cde9ceb3db2ddca2c66106c1e09fe3a125fec')
+b2sums=('ce99a3975da5b977d34ef2f41c36ff6902703ccb7b984064c50f814f99e73b50001b095010581784c4868ff6d079b020def9b5dd67b0e454a12591b84493d6a0')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
   cd "$_pkgname-$pkgver"
 
-  export PYTHONPATH="build/lib"
-  python setup.py test
+  export PYTHONPATH="src"
+  pytest
 }
 
 package() {
   cd "$_pkgname-$pkgver"
 
-  python setup.py install --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
   install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
