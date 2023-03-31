@@ -1,6 +1,6 @@
 pkgbase = archinstall-git
 	pkgdesc = Just another guided/automated Arch Linux installer with a twist
-	pkgver = 2.5.4.r1.g9f102a6
+	pkgver = 2.5.4.r7.gc3e3ac6
 	pkgrel = 1
 	url = https://github.com/archlinux/archinstall
 	arch = any
@@ -12,9 +12,14 @@ pkgbase = archinstall-git
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
+	depends = systemd
+	optdepends = python-systemd: Adds journald logging
 	provides = python-archinstall
+	provides = archinstall
 	conflicts = python-archinstall
+	conflicts = archinstall
 	replaces = python-archinstall
+	replaces = archinstall
 	source = git+https://github.com/archlinux/archinstall.git
 	sha256sums = SKIP
 
