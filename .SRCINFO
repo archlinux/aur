@@ -1,7 +1,7 @@
 pkgbase = ghidra-xtensa-git
 	pkgdesc = Tensilica Xtensa processor module for Ghidra
 	pkgver = 20230331
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yath/ghidra-xtensa
 	arch = x86_64
 	license = MIT
