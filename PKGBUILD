@@ -1,8 +1,8 @@
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
 
 pkgbase=gowin-eda
-pkgver=1.9.8.10
-pkgrel=3
+pkgver=1.9.8.11
+pkgrel=1
 _desc="Gowin EDA, an easy to use integrated design environment provides design engineers one-stop solution from design entry to verification."
 arch=('x86_64')
 url="http://www.gowinsemi.com.cn/faq.aspx"
@@ -12,7 +12,7 @@ source=("http://cdn.gowinsemi.com.cn/Gowin_V${pkgver/_/-}_linux.tar.gz"
         "${pkgbase}.png"
         "${pkgbase}-ide.desktop"
         "${pkgbase}-programmer.desktop")
-sha256sums=('eb11013c4b6a440c16caff8f785b5a93532898a7ecdfef6dbeddea46edeb9bc3'
+sha256sums=('d27325f6419c32f3aa454c1fbd797f87a3f202b7ebd19817d1df9ef60e56a32b'
             '346991b57db67aa4a8373ad09fd221e310c87ac7a6c90313cad7b48f7e6934ab'
             '607b4dbfe204859a8946789747992fa93e9e41692f3729c2132409bac92e01f9'
             '13ada31589ca39eecf95dc3516f5db179ce53ac0ffbd140879f346d0d90a9829')
@@ -33,6 +33,7 @@ _install_exec() {
 _package-ide() {
   pkgdesc="Gowin EDA IDE - ${_desc}"
   depends=('fontconfig' 'freetype2')
+  optdepends=('openfpgaloader: open source fpga programmer, as a replacement to Gowin Programmer')
   provides=("gowin-eda-ide" "gowin-ide")
   backup=("opt/${pkgname}/bin/gwlicense.ini")
   
