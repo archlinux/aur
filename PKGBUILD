@@ -1,8 +1,9 @@
 # Maintainer: VHSgunzo <vhsgunzo.github.io>
 
 pkgname='linux-xanmod-headers-bin'
-pkgver='6.2.8'
-pkgrel="1"
+pkgver='6.2.9'
+pkgrel='1'
+psabi='x64v1'
 pkgbase="$pkgname"
 pkgdesc='Headers and scripts for building modules for the Linux Xanmod - Prebuilt version'
 url="http://www.xanmod.org/"
@@ -13,19 +14,19 @@ depends=('pahole')
 makedepends=('curl')
 conflicts=("${pkgname%-bin}")
 _url="https://api.github.com/repos/xanmod/linux/releases"
-source=("$(curl -L -s "$_url"|grep -o "https:.*/download/${pkgver}-xanmod1/linux-headers.*deb"|grep 'x64v1')")
+source=("$(curl -L -s "$_url"|grep -o "https:.*/download/${pkgver}-xanmod1/linux-headers.*deb"|grep "$psabi")")
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha256sums=('328515b2b1c66f5cd1833286c785ca247bcb478be0a0242825ead2274b6fabfa')
+sha256sums=('b0880c49c8399888ddbbcfbfb688f8198aaefeb1506b94a06fc6a02668ad2991')
 
 prepare() {
   bsdtar -xf 'data.tar.xz'
 }
 
 package() {
-  local kernver="${pkgver}-x64v1-xanmod1"
+  local kernver="${pkgver}-$psabi-xanmod1"
   local modulesdir="$pkgdir/usr/lib/modules/${kernver}"
   mkdir -p "${modulesdir}"
   cp -r lib/modules/${kernver}/* ${modulesdir}
