@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Tile World
+Comment=An emulation of the game Chip's Challenge
+Exec=tworld
+StartupWMClass=Tile World
+Terminal=false
+Type=Application
+Categories=Game;LogicGame;
