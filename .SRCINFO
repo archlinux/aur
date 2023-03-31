@@ -1,0 +1,15 @@
+pkgbase = fontproof
+	pkgdesc = A font design testing class and CLI tool for SILE
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/sile-typesetter/fontproof
+	arch = any
+	license = MIT
+	makedepends = luarocks
+	depends = lua
+	depends = lua-cliargs
+	depends = sile
+	source = https://github.com/sile-typesetter/fontproof/archive/v2.0.0/fontproof-2.0.0.tar.gz
+	sha256sums = ca2c9dc276150aff1185ad0a6dae7f61df57f65176239b4249910fbe46ebd948
+
+pkgname = fontproof
