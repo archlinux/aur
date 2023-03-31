@@ -1,5 +1,5 @@
 # Maintainer: Gustavo Chain <me@qustavo.cc>
-
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=notesnook
 pkgname="${_pkgname}-bin"
 pkgver=2.4.6
