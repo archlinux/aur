@@ -1,6 +1,6 @@
 pkgbase = anki-qt5
 	pkgdesc = Helps you remember facts (like words/phrases in a foreign language) - Qt5 Build
-	pkgver = 2.1.60
+	pkgver = 2.1.61
 	pkgrel = 1
 	url = https://apps.ankiweb.net/
 	arch = x86_64
@@ -12,34 +12,35 @@ pkgbase = anki-qt5
 	makedepends = python-installer
 	makedepends = libxcrypt-compat
 	makedepends = nodejs
+	depends = python>=3.9
 	depends = python-beautifulsoup4
-	depends = python-waitress
+	depends = python-waitress>=2.0.0
+	depends = python-requests
 	depends = python-decorator
 	depends = python-markdown
 	depends = python-orjson
-	depends = python-protobuf
+	depends = python-protobuf>=4.21
 	depends = python-pysocks
 	depends = python-distro
 	depends = python-flask-cors
 	depends = python-jsonschema
-	depends = python-requests
 	depends = python-send2trash
-	depends = python-flask-cors
 	depends = python-certifi
-	depends = python-waitress
-	depends = python-pyqt5
+	depends = python-pyqt5>=5.14
 	depends = qt5-svg
 	optdepends = lame: record sound
 	optdepends = mpv: play sound. prefered over mplayer
 	optdepends = mplayer: play sound
 	optdepends = texlive-most: render LaTex in cards
 	provides = anki
+	provides = anki-debug
 	conflicts = anki
 	conflicts = anki-bin
 	conflicts = anki-git
 	conflicts = anki-official-binary-bundle
+	conflicts = anki-debug
 	options = !lto
-	source = anki::git+https://github.com/ankitects/anki#tag=2.1.60
+	source = anki::git+https://github.com/ankitects/anki#tag=2.1.61
 	source = no-update.patch
 	source = force_qt5.patch
 	sha256sums = SKIP

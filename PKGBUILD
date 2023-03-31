@@ -7,37 +7,36 @@
 # Contributor: Dave Pretty <david dot pretty at gmail dot com>
 
 pkgname=anki-qt5
-pkgver=2.1.60
+pkgver=2.1.61
 pkgrel=1
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) - Qt5 Build"
 url="https://apps.ankiweb.net/"
 license=('AGPL3')
 arch=('x86_64')
-provides=('anki')
-conflicts=('anki' 'anki-bin' 'anki-git' 'anki-official-binary-bundle')
+provides=('anki' anki-debug)
+conflicts=('anki' 'anki-bin' 'anki-git' 'anki-official-binary-bundle' 'anki-debug')
 options=('!lto')
 depends=(
     # anki & aqt
+    'python>=3.9'
     'python-beautifulsoup4'
-    'python-waitress'
+    'python-waitress>=2.0.0'
+    'python-requests'
 
     # anki
     'python-decorator'
     'python-markdown'
     'python-orjson'
-    'python-protobuf'
+    'python-protobuf>=4.21'
     'python-pysocks'
     'python-distro'
 
     #aqt
-    'python-flask-cors'
-    'python-jsonschema'
-    'python-requests'
-    'python-send2trash'
     'python-flask-cors' # python-flask required for anki & aqt but a dependency of -cors
+    'python-jsonschema'
+    'python-send2trash'
     'python-certifi'
-    'python-waitress'
-    'python-pyqt5'
+    'python-pyqt5>=5.14'
     'qt5-svg'
 )
 
