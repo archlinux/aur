@@ -2,7 +2,7 @@
 
 pkgname='geant4-full'
 pkgver=11.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A simulation toolkit for particle physics interactions - includes all the optional libraries"
 depends=(
   'cmake>=3.16'
@@ -14,6 +14,7 @@ depends=(
   'zlib'
   'python>=3'
   'boost'
+  'tbb'
 )
 provides=('geant4')
 conflicts=(
@@ -108,12 +109,13 @@ setenv G4PARTICLEHPDATA /opt/Geant4/Libraries/G4TENDL1.4" > Geant4.csh
     -DGEANT4_USE_XM=ON \
     -DGEANT4_INSTALL_PACKAGE_CACHE=OFF \
     -DGEANT4_USE_PYTHON=ON \
+    -DGEANT4_USE_TBB=ON \
     -DGEANT4_BUILD_TLS_MODEL=global-dynamic \
     -DGEANT4_INSTALL_DATADIR=/opt/Geant4/Libraries \
     ../geant4-v${pkgver}
 
   #set GEANT4_BUILD_TLS_MODEL=global-dynamic and GEANT4_USE_PYTHON=ON for compatibility with g4python
-  make VERBOSE=1
+  make #VERBOSE=1
 }
 
 package() {
