@@ -12,7 +12,7 @@
 
 _pkgname=video-hub-app
 pkgname="${_pkgname}"-appimage
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Video Hub App 3 is the fastest way to browse and search for videos on your computer. Think of it like YouTube for videos on your computer: browse, search, and preview. Works on Windows, Mac, and Linux!"
 
@@ -25,7 +25,7 @@ _appimage="Video Hub App 3-${pkgver}.AppImage"
 _desktop="video-hub-app-3"
 source_x86_64=("${_appimage[@]/#/file://}")
 noextract=("${_appimage}")
-sha256sums_x86_64=('81384d6754848bc3183eeb17d239fe3962959c015ffa9aedae76add6bf3db35f')
+sha256sums_x86_64=('38a51e6f6482e12abaa90faf06e77dcb9abb5066e9f59e10795fcb2aa1e1ac8b')
 
 prepare() {
     chmod +x "${_appimage}"
