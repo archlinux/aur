@@ -16,8 +16,10 @@ pkgbase = recaf-git
 	conflicts = recaf-bin
 	replaces = recaf
 	source = recaf::git+https://github.com/Col-E/Recaf#branch=master
+	source = MavenUtil.patch
 	source = settings.xml
 	md5sums = SKIP
+	md5sums = c6d14c04cb3313413e306a9e45cb6757
 	md5sums = 4bde901d55aa06e6db09994266f19a3f
 
 pkgname = recaf-git

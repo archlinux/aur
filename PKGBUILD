@@ -13,8 +13,10 @@ provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-bin")
 replaces=("recaf")
 source=("recaf::git+https://github.com/Col-E/Recaf#branch=master"
+        "MavenUtil.patch"
         "settings.xml")
 md5sums=("SKIP"
+         "c6d14c04cb3313413e306a9e45cb6757"
          "4bde901d55aa06e6db09994266f19a3f")
 
 pkgver() {
