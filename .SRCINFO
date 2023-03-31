@@ -1,7 +1,7 @@
 pkgbase = immich
 	pkgdesc = Self-hosted photos and videos backup tool
 	pkgver = 1.50.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/immich-app/immich
 	arch = x86_64
 	license = MIT
@@ -21,6 +21,7 @@ pkgbase = immich
 	depends = python-flask
 	depends = python-pillow
 	depends = python-sentence-transformers
+	depends = numactl
 	backup = etc/immich.conf
 	source = https://github.com/immich-app/immich/archive/refs/tags/v1.50.1.tar.gz
 	source = immich-server.service

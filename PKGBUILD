@@ -1,12 +1,12 @@
 pkgname=immich
-pkgrel=1
+pkgrel=2
 pkgver=1.50.1
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
 license=('MIT')
 arch=(x86_64)
 makedepends=('npm' 'nodejs-lts-hydrogen')
-depends=('redis' 'postgresql' 'nodejs' 'python-pytorch' 'python-transformers' 'python-tqdm' 'python-numpy' 'python-scikit-learn' 'python-scipy' 'python-nltk' 'python-sentencepiece-git' 'python-flask' 'python-pillow' 'python-sentence-transformers')
+depends=('redis' 'postgresql' 'nodejs' 'python-pytorch' 'python-transformers' 'python-tqdm' 'python-numpy' 'python-scikit-learn' 'python-scipy' 'python-nltk' 'python-sentencepiece-git' 'python-flask' 'python-pillow' 'python-sentence-transformers' 'numactl')
 source=("https://github.com/immich-app/immich/archive/refs/tags/v${pkgver}.tar.gz"
 	"${pkgname}-server.service"
 	"${pkgname}-microservices.service"
