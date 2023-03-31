@@ -1,21 +1,23 @@
 # Maintainer: jmcb <joelsgp@protonmail.com>
 pkgname=idle
-pkgver=3.10.8
-pkgrel=3
+pkgver=3.10.10
+pkgrel=1
 pkgdesc="Python Integrated Development and Learning Environment (desktop entry)"
 arch=('any')
 url="https://packages.debian.org/stable/python/idle"
 license=("Python")
 groups=()
-depends=('python>=3.10' 'python<3.11'
+depends=('python'
+         'tk'
          'hicolor-icon-theme')
 optdepends=()
-provides=()
-conflicts=('idle3'
-           'python-idle')
+makedepends=('python>=3.10' 'python<3.11')
+provides=('idle3'
+          'python-idle')
+conflicts=()
 replaces=()
 source=('idle.desktop')
-sha256sums=('8bbde2b6be32cd47bc4547fb941466fc89d13f2538a2c30594e5e21d83ca0800')
+sha256sums=('d341c2f5ca1233de8d148f08d54cc08c4d0775eb6d6d28fdc149616d8701d838')
 
 
 package() {
