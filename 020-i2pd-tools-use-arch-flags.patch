@@ -1,31 +1,21 @@
 --- a/Makefile
 +++ b/Makefile
-@@ -9,7 +9,7 @@ CXX ?= g++
- FLAGS = -Wall -std=c++11 -Wno-misleading-indentation
+@@ -7,15 +7,15 @@ LIBI2PD_PATH = $(I2PD_PATH)/libi2pd
+ LIBI2PD_CLIENT_PATH = $(I2PD_PATH)/libi2pd_client
  
- ifeq ($(UNAME),Linux)
--	FLAGS += -g
-+	FLAGS +=
- else ifeq ($(UNAME),Darwin)
- 	FLAGS += -g
- else ifeq ($(UNAME),FreeBSD)
-@@ -21,8 +21,8 @@ else
- endif
- 
+ CXX ?= g++
+-CXXFLAGS = -Wall -std=c++17
++CXXFLAGS += -Wall -std=c++17
  INCFLAGS = -I/usr/include/i2pd
--CXXFLAGS = $(FLAGS)
+ DEFINES = -DOPENSSL_SUPPRESS_DEPRECATED
+ 
 -LDFLAGS = 
-+CXXFLAGS += $(FLAGS)
-+LDFLAGS +=
- LIBS = -li2pd -lboost_system$(BOOST_SUFFIX) -lboost_date_time$(BOOST_SUFFIX) -lboost_filesystem$(BOOST_SUFFIX) -lboost_program_options$(BOOST_SUFFIX) -lssl -lcrypto -lz
++LDFLAGS += 
+ LDLIBS = -li2pd -lboost_system$(BOOST_SUFFIX) -lboost_date_time$(BOOST_SUFFIX) -lboost_filesystem$(BOOST_SUFFIX) -lboost_program_options$(BOOST_SUFFIX) -lssl -lcrypto -lz
  
  ifeq ($(UNAME),Linux)
-@@ -89,7 +89,7 @@ $(I2PD_LIB):
- 	$(MAKE) -C $(I2PD_PATH) mk_obj_dir $(I2PD_LIB)
- 
- %.o: %.cpp
--	$(CXX) -o $@ -c $(CXXFLAGS) $(INCFLAGS) $<
-+	$(CXX) -o $@ -c $(CPPFLAGS) $(CXXFLAGS) $(INCFLAGS) $<
- 
- count:
- 	wc *.c *.cc *.C *.cpp *.h *.hpp
+-	CXXFLAGS += -g
++	CXXFLAGS +=
+ else ifeq ($(UNAME),Darwin)
+ 	CXXFLAGS += -g
+ else ifeq ($(UNAME),FreeBSD)

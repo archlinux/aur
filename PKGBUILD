@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=i2pd-tools-git
-pkgver=r242.gaadc780
+pkgver=r243.gf934897
 pkgrel=1
 pkgdesc='Useful tools for I2P (git version)'
 arch=('x86_64')
@@ -15,8 +15,8 @@ source=('git+https://github.com/PurpleI2P/i2pd-tools.git'
         '010-i2pd-tools-use-shared-lib.patch'
         '020-i2pd-tools-use-arch-flags.patch')
 sha256sums=('SKIP'
-            '94d523b7fb9e32872f152c7ae76f4cb49cf142d7dde87a3df4268defb8b96481'
-            '49393f88c3d9577bb82b5ccba90e3f4d6737238a32571e2b99369c9e78066adf')
+            'a45d0b54980f25072708b2a754927c920c444aaf469ed3951c6f4cce32d727a2'
+            '9a25958f6a53132e24e3551f9b4c70d09599bc1885987eddb8d0d32958281860')
 
 prepare() {
     patch -d i2pd-tools -Np1 -i "${srcdir}/010-i2pd-tools-use-shared-lib.patch"

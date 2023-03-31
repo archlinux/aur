@@ -1,20 +1,21 @@
 --- a/Makefile
 +++ b/Makefile
-@@ -20,10 +20,10 @@ else
- 	BOOST_SUFFIX = -mt
- endif
+@@ -8,11 +8,11 @@ LIBI2PD_CLIENT_PATH = $(I2PD_PATH)/libi2
  
+ CXX ?= g++
+ CXXFLAGS = -Wall -std=c++17
 -INCFLAGS = -I$(LIBI2PD_PATH) -I$(LIBI2PD_CLIENT_PATH)
 +INCFLAGS = -I/usr/include/i2pd
- CXXFLAGS = $(FLAGS)
+ DEFINES = -DOPENSSL_SUPPRESS_DEPRECATED
+ 
  LDFLAGS = 
--LIBS = $(I2PD_PATH)/$(I2PD_LIB) -lboost_system$(BOOST_SUFFIX) -lboost_date_time$(BOOST_SUFFIX) -lboost_filesystem$(BOOST_SUFFIX) -lboost_program_options$(BOOST_SUFFIX) -lssl -lcrypto -lz
-+LIBS = -li2pd -lboost_system$(BOOST_SUFFIX) -lboost_date_time$(BOOST_SUFFIX) -lboost_filesystem$(BOOST_SUFFIX) -lboost_program_options$(BOOST_SUFFIX) -lssl -lcrypto -lz
+-LDLIBS = $(I2PD_PATH)/$(I2PD_LIB) -lboost_system$(BOOST_SUFFIX) -lboost_date_time$(BOOST_SUFFIX) -lboost_filesystem$(BOOST_SUFFIX) -lboost_program_options$(BOOST_SUFFIX) -lssl -lcrypto -lz
++LDLIBS = -li2pd -lboost_system$(BOOST_SUFFIX) -lboost_date_time$(BOOST_SUFFIX) -lboost_filesystem$(BOOST_SUFFIX) -lboost_program_options$(BOOST_SUFFIX) -lssl -lcrypto -lz
  
  ifeq ($(UNAME),Linux)
- 	LIBS += -lrt -lpthread
-@@ -41,45 +41,45 @@ else
- 	LDFLAGS += -s -Wl,-Bstatic -static-libgcc -static-libstdc++
+ 	CXXFLAGS += -g
+@@ -43,45 +43,45 @@ else
+ 	LDFLAGS += -s -static
  endif
  
 -all: $(I2PD_LIB) keygen keyinfo famtool routerinfo regaddr regaddr_3ld vain i2pbase64 offlinekeys b33address regaddralias x25519 verifyhost
@@ -22,67 +23,67 @@
  
 -routerinfo: routerinfo.o $(I2PD_LIB)
 +routerinfo: routerinfo.o
- 	$(CXX) -o routerinfo routerinfo.o $(LDFLAGS) $(LIBS)
+ 	$(CXX) -o routerinfo $(LDFLAGS) routerinfo.o $(LDLIBS)
  
 -keygen: keygen.o $(I2PD_LIB)
 +keygen: keygen.o
- 	$(CXX) -o keygen keygen.o $(LDFLAGS) $(LIBS)
+ 	$(CXX) -o keygen $(DEFINES) $(LDFLAGS) keygen.o $(LDLIBS)
  
 -keyinfo: keyinfo.o $(I2PD_LIB)
 +keyinfo: keyinfo.o
- 	$(CXX) -o keyinfo keyinfo.o $(LDFLAGS) $(LIBS)
+ 	$(CXX) -o keyinfo $(DEFINES) $(LDFLAGS) keyinfo.o $(LDLIBS)
  
 -famtool: famtool.o $(I2PD_LIB)
 +famtool: famtool.o
- 	$(CXX) -o famtool famtool.o $(LDFLAGS) $(LIBS)
+ 	$(CXX) -o famtool $(DEFINES) $(LDFLAGS) famtool.o $(LDLIBS)
  
 -regaddr: regaddr.o $(I2PD_LIB)
 +regaddr: regaddr.o
- 	$(CXX) -o regaddr regaddr.o $(LDFLAGS) $(LIBS)
+ 	$(CXX) -o regaddr $(DEFINES) $(LDFLAGS) regaddr.o $(LDLIBS)
  
 -regaddr_3ld: regaddr_3ld.o $(I2PD_LIB)
 +regaddr_3ld: regaddr_3ld.o
- 	$(CXX) -o regaddr_3ld regaddr_3ld.o $(LDFLAGS) $(LIBS)
+ 	$(CXX) -o regaddr_3ld $(DEFINES) $(LDFLAGS) regaddr_3ld.o $(LDLIBS)
  
 -vain: vanitygen.o $(I2PD_LIB)
 +vain: vanitygen.o
- 	$(CXX) -o vain vanitygen.o $(LDFLAGS) $(LIBS)
+ 	$(CXX) -o vain $(DEFINES) $(LDFLAGS) vanitygen.o $(LDLIBS)
  
 -i2pbase64: i2pbase64.o $(I2PD_LIB)
 +i2pbase64: i2pbase64.o
- 	$(CXX) -o i2pbase64 i2pbase64.o $(LDFLAGS) $(LIBS)
+ 	$(CXX) -o i2pbase64 $(DEFINES) $(LDFLAGS) i2pbase64.o $(LDLIBS)
  
 -offlinekeys: offlinekeys.o $(I2PD_LIB)
 +offlinekeys: offlinekeys.o
- 	$(CXX) -o offlinekeys offlinekeys.o $(LDFLAGS) $(LIBS)
+ 	$(CXX) -o offlinekeys $(DEFINES) $(LDFLAGS) offlinekeys.o $(LDLIBS)
  
 -b33address: b33address.o $(I2PD_LIB)
 +b33address: b33address.o
- 	$(CXX) -o b33address b33address.o $(LDFLAGS) $(LIBS)
+ 	$(CXX) -o b33address $(DEFINES) $(LDFLAGS) b33address.o $(LDLIBS)
  
 -regaddralias: regaddralias.o $(I2PD_LIB)
 +regaddralias: regaddralias.o
- 	$(CXX) -o regaddralias regaddralias.o $(LDFLAGS) $(LIBS)
- 	
+ 	$(CXX) -o regaddralias $(DEFINES) $(LDFLAGS) regaddralias.o $(LDLIBS)
+ 
 -x25519: x25519.o $(I2PD_LIB)
 +x25519: x25519.o
- 	$(CXX) -o x25519 x25519.o $(LDFLAGS) $(LIBS)
+ 	$(CXX) -o x25519 $(DEFINES) $(LDFLAGS) x25519.o $(LDLIBS)
  
 -verifyhost: verifyhost.o $(I2PD_LIB)
 +verifyhost: verifyhost.o
- 	$(CXX) -o verifyhost verifyhost.o $(LDFLAGS) $(LIBS)
+ 	$(CXX) -o verifyhost $(DEFINES) $(LDFLAGS) verifyhost.o $(LDLIBS)
  
  .SUFFIXES:
-@@ -88,7 +88,7 @@ verifyhost: verifyhost.o $(I2PD_LIB)
+@@ -90,7 +90,7 @@ verifyhost: verifyhost.o $(I2PD_LIB)
  $(I2PD_LIB):
  	$(MAKE) -C $(I2PD_PATH) mk_obj_dir $(I2PD_LIB)
  
 -%.o: %.cpp $(I2PD_LIB)
 +%.o: %.cpp
- 	$(CXX) -o $@ -c $(CXXFLAGS) $(INCFLAGS) $<
+ 	$(CXX) $(CXXFLAGS) $(DEFINES) $(INCFLAGS) -c -o $@ $<
  
  count:
-@@ -103,7 +103,7 @@ clean-obj:
+@@ -105,7 +105,7 @@ clean-obj:
  clean-bin:
  	rm -f b33address famtool i2pbase64 keygen keyinfo offlinekeys regaddr regaddr_3ld regaddralias routerinfo vain x25519 verifyhost
  
