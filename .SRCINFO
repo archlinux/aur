@@ -1,7 +1,7 @@
 pkgbase = eiquadprog
 	pkgdesc = Quadratic Programing solver with eigen
-	pkgver = 1.2.5
-	pkgrel = 2
+	pkgver = 1.2.6
+	pkgrel = 1
 	url = https://github.com/stack-of-tasks/eiquadprog
 	arch = any
 	license = LGPL
@@ -10,10 +10,10 @@ pkgbase = eiquadprog
 	makedepends = boost-libs
 	makedepends = eigen
 	optdepends = doxygen
-	source = https://github.com/stack-of-tasks/eiquadprog/releases/download/v1.2.5/eiquadprog-1.2.5.tar.gz
-	source = https://github.com/stack-of-tasks/eiquadprog/releases/download/v1.2.5/eiquadprog-1.2.5.tar.gz.sig
+	source = https://github.com/stack-of-tasks/eiquadprog/releases/download/v1.2.6/eiquadprog-1.2.6.tar.gz
+	source = https://github.com/stack-of-tasks/eiquadprog/releases/download/v1.2.6/eiquadprog-1.2.6.tar.gz.sig
 	validpgpkeys = 9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28
-	sha256sums = c90a8bfa35e316cccef852392e4584381f0394c03adefcdcaa5a153c2ee86f7e
+	sha256sums = e4ac25a0236dd08f5d5f1890a33ca78a9c8a5808f7e34d0269d942fa9320036d
 	sha256sums = SKIP
 
 pkgname = eiquadprog
