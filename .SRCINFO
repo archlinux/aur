@@ -1,13 +1,14 @@
 pkgbase = vim-gutentags-git
 	pkgdesc = A Vim plugin that manages your tag files
 	pkgver = 1.0.0.r77.g1337b18
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ludovicchabant/vim-gutentags
 	arch = any
 	groups = vim-plugins
 	license = MIT
 	makedepends = git
 	depends = vim-plugin-runtime
+	depends = ctags
 	provides = vim-gutentags
 	conflicts = vim-gutentags
 	source = vim-gutentags::git+https://github.com/ludovicchabant/vim-gutentags
