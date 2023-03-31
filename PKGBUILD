@@ -6,8 +6,8 @@
 # Contributor: Chris Severance aur.severach aATt spamgourmet dott com
 
 pkgname='rustdesk-flutter-git'
-pkgver=1.2.0.r2009.g4f8dd59c
-pkgrel=2
+pkgver=1.2.0.r2681.g02561c3f
+pkgrel=1
 pkgdesc='A open source virtual / remote desktop infrastructure for everyone with flutter UI'
 provides=('rustdesk' 'rustdesk-flutter')
 conflicts=('rustdesk' 'rustdesk-flutter')
@@ -96,7 +96,7 @@ package(){
     install -Dm644 "${srcdir}/rustdesk/res/128x128@2x.png" \
         "${pkgdir}/usr/share/icons/hicolor/256x256/apps/rustdesk.png"
     install -Dm644 "${srcdir}/rustdesk/res/icon.png" \
-        "${pkgdir}/usr/share/icons/hicolor/1024x1024x/apps/rustdesk.png"
+        "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/rustdesk.png"
     install -Dm644 "${srcdir}/rustdesk/res/rustdesk-link.desktop" \
         "${pkgdir}/usr/share/applications/rustdesk-link.desktop"
     install -Dm644 "${srcdir}/rustdesk/res/rustdesk.desktop" \
