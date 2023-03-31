@@ -1,0 +1,16 @@
+pkgbase = dietlibc
+	pkgdesc = a libc optimized for small size
+	pkgver = 0.34
+	pkgrel = 2
+	url = https://www.fefe.de/dietlibc/
+	arch = x86_64
+	license = GPL
+	options = staticlibs
+	source = https://www.fefe.de/dietlibc/dietlibc-0.34.tar.xz
+	source = https://www.fefe.de/dietlibc/dietlibc-0.34.tar.xz.sig
+	validpgpkeys = 878CBE5DA9A50595E674183F15396A7933EB059A
+	validpgpkeys = 2DEC330151BB9F7DAD8B0BDCFC32CEECA534A9C6
+	sha256sums = 7994ad5a63d00446da2e95da1f3f03355b272f096d7eb9830417ab14393b3ace
+	sha256sums = SKIP
+
+pkgname = dietlibc
