@@ -2,8 +2,8 @@
 
 _pkgname=wayland-utils
 pkgname=wayland-utils-git
-pkgver=1.1.0.r2.gbaa65ba
-pkgrel=2
+pkgver=1.1.0.r11.g1469c7e
+pkgrel=1
 pkgdesc="Wayland tools to display information about current compositor"
 url="https://gitlab.freedesktop.org/wayland/wayland-utils"
 arch=(x86_64)
@@ -22,7 +22,7 @@ pkgver() {
 }
 
 build() {
-  meson ${_pkgname} build --prefix=/usr
+  arch-meson ${_pkgname} build
   meson compile -C build
 }
 
