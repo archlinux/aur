@@ -1,48 +1,53 @@
 pkgbase = r-broom
-	pkgdesc = Convert Statistical Analysis Objects into Tidy Tibbles
-	pkgver = 1.0.1
+	pkgdesc = Convert Statistical Objects into Tidy Tibbles
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=broom
 	arch = any
 	license = MIT
-	depends = r>=3.1
+	depends = r>=3.5
 	depends = r-backports
 	depends = r-dplyr>=1.0.0
 	depends = r-ellipsis
 	depends = r-generics>=0.0.2
 	depends = r-glue
+	depends = r-lifecycle
 	depends = r-purrr
 	depends = r-rlang
 	depends = r-stringr
 	depends = r-tibble>=3.0.0
 	depends = r-tidyr>=1.0.0
-	depends = r-ggplot2
 	optdepends = r-aer
-	optdepends = r-akima
 	optdepends = r-auc
 	optdepends = r-bbmle
 	optdepends = r-betareg
 	optdepends = r-biglm
 	optdepends = r-bingroup
-	optdepends = r-btergm
+	optdepends = r-boot
+	optdepends = r-btergm>=1.10.6
 	optdepends = r-car
+	optdepends = r-cardata
 	optdepends = r-caret
+	optdepends = r-cluster
+	optdepends = r-cmprsk
 	optdepends = r-coda
 	optdepends = r-covr
 	optdepends = r-drc
 	optdepends = r-e1071
 	optdepends = r-emmeans
 	optdepends = r-epir
-	optdepends = r-ergm
-	optdepends = r-fixest
-	optdepends = r-gam
+	optdepends = r-ergm>=3.10.4
+	optdepends = r-fixest>=0.9.0
+	optdepends = r-gam>=1.15
 	optdepends = r-gee
 	optdepends = r-geepack
+	optdepends = r-ggplot2
 	optdepends = r-glmnet
 	optdepends = r-glmnetutils
 	optdepends = r-gmm
 	optdepends = r-hmisc
 	optdepends = r-irlba
+	optdepends = r-interp
 	optdepends = r-joinerml
 	optdepends = r-kendall
 	optdepends = r-knitr
@@ -54,22 +59,25 @@ pkgbase = r-broom
 	optdepends = r-lm.beta
 	optdepends = r-lme4
 	optdepends = r-lmodel2
-	optdepends = r-lmtest
+	optdepends = r-lmtest>=0.9.38
 	optdepends = r-lsmeans
 	optdepends = r-maps
 	optdepends = r-maptools
 	optdepends = r-margins
+	optdepends = r-mass
 	optdepends = r-mclust
 	optdepends = r-mediation
 	optdepends = r-metafor
 	optdepends = r-mfx
+	optdepends = r-mgcv
 	optdepends = r-mlogit
 	optdepends = r-modeldata
 	optdepends = r-modeltests
 	optdepends = r-muhaz
 	optdepends = r-multcomp
 	optdepends = r-network
-	optdepends = r-orcutt
+	optdepends = r-nnet
+	optdepends = r-orcutt>=2.2
 	optdepends = r-ordinal
 	optdepends = r-plm
 	optdepends = r-polca
@@ -82,17 +90,17 @@ pkgbase = r-broom
 	optdepends = r-rsample
 	optdepends = r-sandwich
 	optdepends = r-sp
-	optdepends = r-spdep
+	optdepends = r-spdep>=1.1
 	optdepends = r-spatialreg
 	optdepends = r-speedglm
 	optdepends = r-spelling
 	optdepends = r-survey
+	optdepends = r-survival
 	optdepends = r-systemfit
-	optdepends = r-testthat
 	optdepends = r-tseries
 	optdepends = r-vars
 	optdepends = r-zoo
-	source = https://cran.r-project.org/src/contrib/broom_1.0.1.tar.gz
-	sha256sums = 4b5e5aa485f0e23ed993088fc84159e31a00087e3a12327071dda25193382892
+	source = https://cran.r-project.org/src/contrib/broom_1.0.4.tar.gz
+	b2sums = 05fa38c748a8f6eb37664773fa26e6a5bc5b8caebfe8336b5fc43fb633afacbe91db037b5bd4244def546645c1f5a52d290e1c5b6e72f2728691bbf93313c2c2
 
 pkgname = r-broom
