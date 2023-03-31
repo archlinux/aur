@@ -1,6 +1,6 @@
 pkgbase = snapshot-git
 	pkgdesc = Take pictures and videos
-	pkgver = r214.323c5e3
+	pkgver = r217.4d62a98
 	pkgrel = 1
 	url = https://gitlab.gnome.org/msandova/snapshot
 	arch = x86_64

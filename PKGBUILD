@@ -1,5 +1,5 @@
 pkgname=snapshot-git
-pkgver=r214.323c5e3
+pkgver=r217.4d62a98
 pkgrel=1
 pkgdesc='Take pictures and videos'
 arch=('x86_64' 'aarch64')
