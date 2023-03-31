@@ -2,7 +2,7 @@
 
 _pkgname=mercury-browser
 pkgname=${_pkgname}-bin
-pkgver=110.0a1 
+pkgver=111.0.2
 pkgrel=1
 pkgdesc="Firefox fork with compiler optimizations and patches from Librewolf, Waterfox, and GNU IceCat."
 arch=('x86_64')
@@ -19,8 +19,8 @@ optdepends=('ffmpeg: H264/AAC/MP3 decoding'
 source=("https://github.com/Alex313031/Mercury/releases/download/v.$pkgver/Mercury-$pkgver.en-US.linux-x86_64.tar.bz2"
         "$_pkgname.sh"
         "$_pkgname.desktop")
-sha256sums=('63e327b78b6688b1c0482f4b927027e2d358aa68182cc8eaa8b70d56796d4228'
-            '60955647fd96fff4d16dd77278d845c8205b00dcb37fbad3bd3d362aa013602b'
+sha256sums=('5713f8dea5579db8886f045b1cebbacfbc51ac66df598f746bbbb0ad95fc4d98'
+            '3e70b82d2f477d5d032338a3c66a3ececaaaf5bf606ab5f5d018321a6fb6afab'
             '8370ee50614115b06e0f8fa96dfbc2db80e2b9ab41368bf9b4ba42fb8ded9982')
 
 package() {
@@ -30,7 +30,7 @@ package() {
   mkdir -p "$pkgdir"/opt
 
   # Install
-  cp -r Mercury/ "$pkgdir"/opt/$_pkgname
+  cp -r mercury/ "$pkgdir"/opt/$_pkgname
 
   # Launchers
   install -m755 $_pkgname.sh "$pkgdir"/usr/bin/$_pkgname
