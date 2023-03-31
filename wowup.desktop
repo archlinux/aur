@@ -3,3 +3,4 @@ Type=Application
 Name=wowup
 Icon=/usr/share/pixmaps/wowup_logo_512np.png
 Exec=/usr/bin/wowup
+Categories=Game;Application;
