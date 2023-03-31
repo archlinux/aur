@@ -6,7 +6,7 @@
 _tag=latest
 pkgname=whatpulse
 pkgver=5.3
-pkgrel=2
+pkgrel=3
 
 pkgdesc="Measures your keyboard, mouse and application usage, network traffic and uptime."
 arch=('x86_64')
@@ -54,7 +54,8 @@ package() {
 	install -Dm 644 LICENSE                 "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 
     # Set capabilities so that whatpulse can monitor network traffic
-    setcap    cap_net_raw,cap_net_admin=eip "${pkgdir}/usr/bin/whatpulse"
+    # Disable network monitor caps to prevent segfaults
+    # setcap    cap_net_raw,cap_net_admin=eip "${pkgdir}/usr/bin/whatpulse"
 
 	# Generate and install icons
 	for size in 16 20 22 24 28 32 36 44 48 64 72 96 128 150 192 256 310 384 512 1024
