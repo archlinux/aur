@@ -1,4 +1,5 @@
 # Maintainer: Adrian Lopez <zeioth@hotmail.com>
+# Contributors: malmerri
 pkgname=chatgpt-shell-cli-git
 _pkgname=chatGPT-shell-cli
 pkgver=1.0.r161.ea41590
