@@ -1,19 +1,16 @@
 pkgbase = cpptoml
-	pkgdesc = A header-only library for parsing TOML configuration files.
+	pkgdesc = A header-only library for parsing TOML
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/skystrife/cpptoml
 	arch = any
 	license = MIT
 	makedepends = cmake
-	makedepends = doxygen
-	makedepends = git
-	makedepends = graphviz
-	makedepends = texlive-core
-	source = https://github.com/skystrife/cpptoml/archive/v0.1.1.tar.gz
-	sha256sums = 23af72468cfd4040984d46a0dd2a609538579c78ddc429d6b8fd7a10a6e24403
+	source = https://github.com/skystrife/cpptoml/archive/v0.1.1/cpptoml-v0.1.1.tar.gz
+	source = cpptoml-0.1.1-limit_header.patch::https://github.com/skystrife/cpptoml/pull/123/commits/c55a516e90133d89d67285429c6474241346d27a.patch
+	sha512sums = 14edce576514d53a7e13562d7f8d2b66ea2b95f44038396c0e26232ec81783042ebecec31ee272a99afef96d5c8582a8e81ea5167a787844b98de6ee6f545cc5
+	sha512sums = ca47dbabd54043ffce74da1cb56dc698325e94c85e0049a3f0220efc787e8d1af90b47b0aab16c0417650872d282c34f8e929565d19387134587d0ffb2618322
+	b2sums = c0ce036bec4731c4dfe96d01076b9ca18a1c4108180d5dbc839dfc44b37eb0c7af85f685a6356ef92fa684219e2883dd341e64a2012505dacc3df73dfb9e28ca
+	b2sums = 8225603953596ffaeff5aac63f602ea695d3af997f737ea4167d57772c39e3796e4b0ace167e876bd2135b3251f863800f2c9eb4f2f7190b8bf2314403a4cad7
 
 pkgname = cpptoml
-
-pkgname = cpptoml-doc
-
