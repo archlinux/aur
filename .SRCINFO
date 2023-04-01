@@ -1,0 +1,16 @@
+pkgbase = lwm
+	pkgdesc = A very light weight window manager
+	pkgver = 1.2.4
+	pkgrel = 4
+	url = http://www.jfc.org.uk/software/lwm.html
+	arch = x86_64
+	license = GPL
+	makedepends = imake
+	depends = xorg-server
+	depends = libxext
+	depends = libsm
+	source = http://www.jfc.org.uk/files/lwm/lwm-1.2.4.tar.gz
+	md5sums = 69fc645ded46b6801092183e01be8518
+	sha256sums = 7ec05d5572c90340335a586e7a227b561512f21b7710ea5d30f401374ec88dad
+
+pkgname = lwm
