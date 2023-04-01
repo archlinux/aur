@@ -5,7 +5,6 @@ pkgbase = mongodb-compass-git
 	epoch = 1
 	url = https://www.mongodb.com/products/compass
 	arch = x86_64
-	arch = i686
 	arch = armv7h
 	arch = aarch64
 	license = custom:SSPL
