@@ -1,11 +1,12 @@
 # Maintainer: ChongChengAC <408173145@qq.com>
 pkgname=extfstools-git
 pkgver=r64.dc7c547
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for extracting files from ext2,3,4 filesystem images"
 arch=('any')
 url="https://github.com/nlitsme/extfstools"
 license=('MIT')
+provides=('extfstools')
 depends=('gcc-libs')
 makedepends=('git' 'cmake')
 source=("git+https://github.com/nlitsme/extfstools.git")
