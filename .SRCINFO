@@ -1,0 +1,27 @@
+pkgbase = pigar
+	pkgdesc = A fantastic tool to generate requirements for your Python project, and more than that
+	pkgver = 2.0.5
+	pkgrel = 1
+	url = https://github.com/Damnever/pigar
+	arch = any
+	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = jupyter-nbformat
+	depends = python-colorama
+	depends = python-requests
+	depends = python-packaging
+	depends = python-rich
+	depends = python-tenacity
+	depends = python-cachecontrol
+	depends = python-certifi
+	depends = python-distlib
+	depends = python-aiohttp
+	depends = python-distro
+	depends = python-click
+	source = https://github.com/Damnever/pigar/archive/v2.0.5/pigar-2.0.5.tar.gz
+	sha512sums = 339661ce1f5dd1a56ae0c31004337c00952714dd8b7b14752c4068202a7b5f7c1ba14e7921e40da2028e042471d432a9760804e3c919669ca7bafc7d48aae526
+
+pkgname = pigar
