@@ -6,10 +6,9 @@ pkgver=v0.0.2.r8.g1e2da17
 pkgrel=1
 pkgdesc="Simple and fast creation of throwaway VMs on your local machine."
 arch=('x86_64')
-license=('custom')
+license=('GPL3')
 conflicts=('vmchamp-bin')
 url='https://github.com/wubbl0rz/VmChamp'
-
 depends=('zlib' 'libvirt')
 makedepends=("git" "dotnet-sdk-preview-bin")
 
