@@ -1,23 +1,20 @@
 pkgbase = ocaml-lablgl
 	pkgdesc = OCaml interface to OpenGL
-	pkgver = 1.05
-	pkgrel = 4
-	url = https://forge.ocamlcore.org/projects/lablgl/
-	arch = i686
+	pkgver = 1.06
+	pkgrel = 12
+	url = https://github.com/garrigue/lablgl
 	arch = x86_64
 	license = BSD
-	makedepends = camlp4
 	depends = glu
 	depends = glut
 	depends = libxi
 	depends = libxmu
 	depends = libgl
-	depends = ocaml>=4.02
+	depends = ocaml>=4.14.0
 	options = !strip
 	options = !makeflags
 	options = staticlibs
-	source = https://forge.ocamlcore.org/frs/download.php/1254/lablgl-1.05.tar.gz
-	sha256sums = d8ff03e35b970d2b23a942f9e6ed65da5a6c123986bd0ecf5424a6205af34b61
+	source = ocaml-lablgl-1.06.tar.gz::https://github.com/garrigue/lablgl/archive/v1.06.tar.gz
+	sha256sums = d11852cbdbd40a14a22b30a218d009033c810de461e5717582f5dbe480296a7a
 
 pkgname = ocaml-lablgl
-
