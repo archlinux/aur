@@ -5,7 +5,7 @@
 # Contributor: xyproto
 
 pkgname=ags
-pkgver=3.5.1.27
+pkgver=3.6.0.47
 pkgrel=1
 pkgdesc='Engine to run adventure/quest games'
 arch=('x86_64')
@@ -15,10 +15,10 @@ license=('Artistic2.0')
 # https://github.com/adventuregamestudio/ags/issues/403
 # https://github.com/adventuregamestudio/ags/issues/762
 # https://github.com/adventuregamestudio/ags/issues/1051#issuecomment-602217650
-depends=('dumb-a4' 'libtheora' 'freetype2' 'sdl2' 'alsa-lib' 'jack' 'libx11' 'libxext' 'libxcursor' 'libxpm' 'libxxf86vm')
+depends=('dumb-a4' 'libtheora' 'sdl2' 'libvorbis')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/adventuregamestudio/ags/archive/v.$pkgver.tar.gz")
-sha256sums=('bfd486846b8162965f952aad1ff5bf221e3a98ec462678af4c0b6b6a2123ac0f')
+sha256sums=('2f6980c06df7815c6967242fe5100ec4ff21bb8790550c847635fed00fbb5328')
 
 _srcdir="$pkgname-v.$pkgver"
 
@@ -27,19 +27,20 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE='Release' \
 		-DCMAKE_C_FLAGS_RELEASE='-DNDEBUG -w' \
-		-DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG -w'
-		#-DAGS_USE_LOCAL_ALL_LIBRARIES=ON \
-		#-DAGS_BUILD_TOOLS=ON
+		-DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG -w' \
+		-DAGS_USE_LOCAL_ALL_LIBRARIES=ON \
+		-DAGS_USE_LOCAL_SDL2_SOUND=OFF \
+		-DAGS_BUILD_TOOLS=OFF
 	cmake --build 'build'
 }
 
-#check() {
-#	cmake -S "$_srcdir" -B 'build' -DAGS_TESTS=ON
-#	cmake --build 'build' --target test
-#}
+check() {
+	cmake -S "$_srcdir" -B 'build' -DAGS_TESTS=ON
+	cmake --build 'build'
+	cmake --build 'build' --target test
+}
 
 package() {
-	#cd "ags-v.$pkgver"
-	#DESTDIR="${pkgdir}" cmake --install "build"
-	install -Dm755 'build/ags' -t "$pkgdir/usr/bin/"
+	DESTDIR="${pkgdir}" cmake --install 'build'
+	install -Dm644 "${_srcdir}/License.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
