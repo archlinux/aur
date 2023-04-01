@@ -11,9 +11,8 @@
 
 pkgname=discord-electron-bin
 _pkgname=discord
-_electron=13
-#_electron=19
-pkgver=0.0.25
+_electron=22
+pkgver=0.0.26
 pkgrel=1
 pkgdesc="Discord using system provided electron (v${_electron}) for increased security and performance"
 arch=('x86_64')
@@ -29,7 +28,7 @@ optdepends=(
 	'xdg-utils: Open files'
 )
 source=("https://dl.discordapp.net/apps/linux/${pkgver}/discord-${pkgver}.tar.gz")
-sha512sums=('21a3e6dff2fd33fe0cd5b1c9c340cbeebc6fd214d9f0be8c05ac9faad2f287d17726bd45bebb4ecebe90533da20f501ad1156ac8097318d7545f78811ebe1224')
+sha512sums=('65477c2c033f30850a699706a6502ff4f4af8838185716d968d641fdab3033555139b04bf91a111a847aca14113e33ba6248d49ba317fd43cbacb099e974117b')
 
 _tarname='Discord'
 
@@ -77,7 +76,6 @@ EOF
 	rm $_tarname/resources/app.asar
 	sed -i "s|process.resourcesPath|'/usr/lib/${_pkgname}'|" $_tarname/resources/app/app_bootstrap/buildInfo.js
 	sed -i "s|exeDir,|'/usr/share/pixmaps',|" $_tarname/resources/app/app_bootstrap/autoStart/linux.js
-	sed -i "s#^module\.paths.*;#module.paths = [(process.env.XDG_CONFIG_HOME || (process.env.HOME + \"/.config\")) + \"/discord/$pkgver/modules\"];#" Discord/resources/app/app_bootstrap/requireNative.js
 	asar p $_tarname/resources/app $_tarname/resources/app.asar --unpack-dir '**'
 	rm -rf $_tarname/resources/app
 }

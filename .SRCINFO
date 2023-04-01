@@ -1,6 +1,6 @@
 pkgbase = discord-electron-bin
-	pkgdesc = Discord using system provided electron (v13) for increased security and performance
-	pkgver = 0.0.25
+	pkgdesc = Discord using system provided electron (v22) for increased security and performance
+	pkgver = 0.0.26
 	pkgrel = 1
 	url = https://discord.com
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = discord-electron-bin
 	makedepends = asar
 	makedepends = curl
 	makedepends = python-html2text
-	depends = electron13
+	depends = electron22
 	optdepends = libpulse: Pulseaudio support
 	optdepends = xdg-utils: Open files
 	provides = discord
 	conflicts = discord
 	options = !strip
-	source = https://dl.discordapp.net/apps/linux/0.0.25/discord-0.0.25.tar.gz
-	sha512sums = 21a3e6dff2fd33fe0cd5b1c9c340cbeebc6fd214d9f0be8c05ac9faad2f287d17726bd45bebb4ecebe90533da20f501ad1156ac8097318d7545f78811ebe1224
+	source = https://dl.discordapp.net/apps/linux/0.0.26/discord-0.0.26.tar.gz
+	sha512sums = 65477c2c033f30850a699706a6502ff4f4af8838185716d968d641fdab3033555139b04bf91a111a847aca14113e33ba6248d49ba317fd43cbacb099e974117b
 
 pkgname = discord-electron-bin
