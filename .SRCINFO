@@ -1,0 +1,13 @@
+pkgbase = python-blessings
+	pkgdesc = A thin, practical wrapper around terminal coloring, styling, and positioning
+	pkgver = 1.7
+	pkgrel = 9
+	url = https://github.com/erikrose/blessings
+	arch = any
+	license = MIT
+	makedepends = python-distribute
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/b/blessings/blessings-1.7.tar.gz
+	sha256sums = 98e5854d805f50a5b58ac2333411b0482516a8210f23f43308baeb58d77c157d
+
+pkgname = python-blessings
