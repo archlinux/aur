@@ -1,0 +1,21 @@
+Description: Remove_nondeterminism
+--- a/menu.c
++++ b/menu.c
+@@ -1275,7 +1275,7 @@
+ /***************************************************************************/
+ int  printinfo(void) {  
+ # if defined (__FILE__ )
+-  printf("\n\tSource   : %s", __FILE__);
++  /* printf("\n\tSource   : %s", __FILE__); */
+ # endif 
+ # if defined  (DEBUG)
+   printf("(Debug version)");
+@@ -1288,7 +1288,7 @@
+ 	 (int) strlen(Author) - 10, Author + 9);
+   
+ #if defined(__DATE__ ) && defined(__TIME__)
+-  printf("\n\tCompiled : %s %s\n", __DATE__, __TIME__);
++  /* printf("\n\tCompiled : %s %s\n", __DATE__, __TIME__); */
+ #endif
+   
+   printf("\n\t-------------------------------\n\n");

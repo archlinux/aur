@@ -1,0 +1,62 @@
+Description: Hardening
+--- a/Makefile
++++ b/Makefile
+@@ -1,17 +1,10 @@
+-override cflags  = $(CFLAGS) -g
+-
+ objects  = codon_us.o codons.o open_fil.o commline.o menu.o tester.o coresp.o
+ linked   = rscu cu aau raau tidy reader cutab cutot transl bases base3s dinuc cai fop gc3s gc cbi enc
+ 
+-CC=cc
+-CFLAGS= -O -DBSD
+-LN=ln -f
+-
+-
+-all: codonw links   
++all: codonw links
+ 
+ codonw: $(objects)
+-	$(CC) $(CFLAGS)  $(objects) -o codonw -lm
++	$(CC) $(CFLAGS) $(LDFLAGS) $(objects) -o codonw -lm
+ 
+ clean:
+ 	\rm -f $(objects)
+@@ -22,26 +15,26 @@
+ realclean:
+ 	\rm -f $(objects) codonw Makefile $(linked)
+ 
+-codon_us.o: codon_us.c codonW.h 
+-	$(CC) -c $(CFLAGS) codon_us.c  
++codon_us.o: codon_us.c codonW.h
++	$(CC) -c $(CFLAGS) $(CPPFLAGS) codon_us.c
+ 
+-menu.o: menu.c codonW.h 
+-	$(CC) -c $(CFLAGS) menu.c
++menu.o: menu.c codonW.h
++	$(CC) -c $(CFLAGS) $(CPPFLAGS) menu.c
+ 
+-codons.o: codons.c codonW.h 
+-	$(CC) -c $(CFLAGS) codons.c
++codons.o: codons.c codonW.h
++	$(CC) -c $(CFLAGS) $(CPPFLAGS) codons.c
+ 
+-coresp.o: coresp.c codonW.h 
+-	$(CC) -c $(CFLAGS) coresp.c
++coresp.o: coresp.c codonW.h
++	$(CC) -c $(CFLAGS) $(CPPFLAGS) coresp.c
+ 
+ open_fil.o:    open_fil.c codonW.h
+-	$(CC) -c $(CFLAGS) open_fil.c
++	$(CC) -c $(CFLAGS) $(CPPFLAGS) open_fil.c
+ 
+-commline.o:    commline.c codonW.h 
+-	$(CC) -c $(CFLAGS) commline.c
++commline.o:    commline.c codonW.h
++	$(CC) -c $(CFLAGS) $(CPPFLAGS) commline.c
+ 
+ tester.o:      tester.c codonW.h
+-	$(CC) -c $(CFLAGS) tester.c
++	$(CC) -c $(CFLAGS) $(CPPFLAGS) tester.c
+ 
+ links: codonw
+ 		$(LN) codonw rscu

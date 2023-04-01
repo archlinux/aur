@@ -1,0 +1,30 @@
+Description: Enable_clean
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,7 @@
+ objects  = codon_us.o codons.o open_fil.o commline.o menu.o tester.o coresp.o
+ linked   = rscu cu aau raau tidy reader cutab cutot transl bases base3s dinuc cai fop gc3s gc cbi enc
+ 
+-all: codonw links
++all: codonw
+ 
+ codonw: $(objects)
+ 	$(CC) $(CFLAGS) $(LDFLAGS) $(objects) -o codonw -lm
+@@ -10,10 +10,10 @@
+ 	\rm -f $(objects)
+ 
+ cleanall:
+-	\rm -f $(objects) codonw Makefile $(linked)
++	\rm -f $(objects) codonw $(linked)
+ 
+ realclean:
+-	\rm -f $(objects) codonw Makefile $(linked)
++	\rm -f $(objects) codonw $(linked)
+ 
+ codon_us.o: codon_us.c codonW.h
+ 	$(CC) -c $(CFLAGS) $(CPPFLAGS) codon_us.c
+@@ -55,4 +55,3 @@
+ 		$(LN) codonw gc
+ 		$(LN) codonw cbi
+ 		$(LN) codonw enc
+-

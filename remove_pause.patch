@@ -1,0 +1,27 @@
+Description: Remove_pause
+--- a/commline.c
++++ b/commline.c
+@@ -100,7 +100,6 @@
+ 		   "positions\n"
+ 
+                );
+-	pause;
+ 	printf(
+ 	       " -L_sym\t\tNumber of synonymous codons\n"
+ 	       " -L_aa\t\tTotal number of synonymous and non-synonymous codons\n"
+@@ -124,7 +123,6 @@
+ 	       " -raau\t\tRelative Amino Acid Usage (RAAU)\n"
+ 	       " -cu\t\tCodon Usage (CU) (default)\n"
+ 	       );
+-	pause;
+ 	printf(
+ 	       " -cutab\t\tTabulation of codon usage\n"
+ 	       " -cutot\t\tTabulation of dataset's codon usage\n"
+@@ -139,7 +137,6 @@
+ 	       "\nWhere {file} represents an input filename, and N an integer"
+            " value"
+             );
+-        pause;
+         my_exit(99,"");             /* after writing out help quit         */
+     }
+     

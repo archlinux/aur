@@ -1,0 +1,12 @@
+Description: Define_linux
+--- a/Makefile
++++ b/Makefile
+@@ -3,6 +3,8 @@
+ 
+ all: codonw
+ 
++CFLAGS+=-DLINUX
++
+ codonw: $(objects)
+ 	$(CC) $(CFLAGS) $(LDFLAGS) $(objects) -o codonw -lm
+ 

@@ -1,0 +1,8 @@
+hardening.patch
+enable_clean.patch
+remove_pause.patch
+define_linux.patch
+spelling.patch
+helpfile_location.patch
+fix_link_name_clashes.patch
+remove_nondeterminism.patch

@@ -1,0 +1,52 @@
+Description: Spelling
+--- a/tester.c
++++ b/tester.c
+@@ -63,7 +63,7 @@
+ 
+     printf(" Welcome to TESTER \n(which just tests your "
+ 	     "knowledge of the Genetic code)\n"
+-           " The genetic code used is dependant on\n what"
++           " The genetic code used is dependent on\n what"
+ 	     " code is selected in menu 3\n"
+            " The current code is %s %s\n"
+            "\n If you get stuck try typing ? for a hint\n"
+--- a/coresp.c
++++ b/coresp.c
+@@ -185,7 +185,7 @@
+ if( (fics=open_file("",nfics, "w",FALSE))==NULL) my_exit(1,"nfics2");
+ 
+ fprintf(summary,"\n\nThe position of each %s by axis \n"
+-	"also see %s for seperate output\n", 
++	"also see %s for separate output\n", 
+ 	(pm->coa=='a')? "amino acid":"codon",nfics);
+ 
+ fprintf(fics   , "%s","label");
+--- a/menu.c
++++ b/menu.c
+@@ -614,7 +614,7 @@
+                 printf("See the menu 'Change defaults' to change this "
+                        "selection\n\n");  
+                 printf("If you wish to use a personal choice of CAI "
+-                       "vaules\n");
++                       "values\n");
+                 printf("\tplease continue and you will be prompted for"
+                        " input\n\n");  
+                 pause;
+@@ -634,7 +634,7 @@
+                 printf("See the menu 'Change defaults' to change Fop "
+                        "selection\n\n");
+                 printf("If you wish to use a personal choice of Fop "
+-                       "vaules\n");
++                       "values\n");
+                 printf("\tplease continue and you will be prompted for "
+                        "input\n\n");            
+                 pause;
+@@ -654,7 +654,7 @@
+                 printf("See the menu 'Change defaults' to change CBI "
+                        "selection\n\n");
+                 printf("If you wish to use a personal choice of CBI "
+-                       "vaules\n");
++                       "values\n");
+                 printf("\tplease continue and you will be prompted for "
+                        "input\n\n");               
+                 pause;

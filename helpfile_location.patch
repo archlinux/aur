@@ -1,0 +1,12 @@
+Description: Helpfile_location
+--- a/codons.c
++++ b/codons.c
+@@ -1060,7 +1060,7 @@
+  if ( p != NULL ) 
+      strcpy ( helplib , p );   
+  else {
+-     strcpy ( helplib , "codonW.hlp");
++     strcpy ( helplib , "/usr/share/doc/codonw/codonW.hlp");
+   }
+ 
+  hfp=open_file("",helplib, "r", FALSE);
