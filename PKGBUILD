@@ -1,47 +1,34 @@
-# Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
-# Former maintainer: Florian Schweikert <kelvan at ist-total.org>
+# Maintainer: Nicola Squartini <tensor5@gmail.com>
+
 pkgname=qpid-proton
-pkgver=0.17.0
-pkgrel=2
-pkgdesc="Proton is a high-performance, lightweight messaging library"
-arch=('i686' 'x86_64' 'armv7h')
-url="https://qpid.apache.org/releases/"
-license=('APACHE')
-depends=('python2' 'openssl-1.0')
-makedepends=('util-linux' 'python2' 'cmake' 'swig')
-optdepends=()
-source=("https://www-us.apache.org/dist/qpid/proton/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('6ffd26d3d0e495bfdb5d9fefc5349954e6105ea18cc4bb191161d27742c5a01a')
+pkgver=0.38.0
+pkgrel=1
+pkgdesc='High-performance, lightweight messaging library'
+arch=('x86_64')
+url='https://qpid.apache.org/proton'
+license=('Apache')
+depends=('libjsoncpp.so' 'python')
+makedepends=('cmake' 'doxygen' 'go' 'python-setuptools' 'python-sphinx' 'python-wheel' 'swig')
+options=(!emptydirs)
+source=("https://www.apache.org/dist/qpid/proton/${pkgver}/qpid-proton-${pkgver}.tar.gz")
+sha512sums=('5333046c954d8b63c59579b05173fa2345e0a61f37a305d23b9e3afee461280c82f9f1c19c30954ba32176ce5fef9ce1f0afc57c99d6c614b2d66cdbb71ff00e')
 
 build() {
-	cd "${srcdir}/qpid-proton-${pkgver}"
+    cmake -B build -S $pkgname-$pkgver \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DLIB_SUFFIX='' \
+        -DSYSINSTALL_BINDINGS=ON \
+        -DENABLE_TOX_TEST=OFF \
+        -DBUILD_TLS=ON
+    cmake --build build
+}
 
-	mkdir build
-	cd build
+check() {
+    cd build
 
-	cmake .. \
-		-DSYSINSTALL_BINDINGS=ON \
-		-DPYTHON_EXECUTABLE=/usr/bin/python2.7 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python2.7/ \
-		-DPYTHON_LIBRARY=/lib/libpython2.7.so \
-		-DOPENSSL_SSL_LIBRARY=/usr/lib/libssl.so.1.0.0 \
-		-DOPENSSL_CRYPTO_LIBRARY=/usr/lib/libcrypto.so.1.0.0 \
-		-DOPENSSL_INCLUDE_DIR=/usr/include/openssl-1.0 \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DBUILD_PHP=OFF \
-		-DBUILD_RUBY=OFF \
-		-DBUILD_PERL=OFF \
-		-DBUILD_JAVA=OFF \
-		-DBUILD_PYTHON=ON \
-		-DCMAKE_INSTALL_LIBDIR=/lib \
-		-DLIB_SUFFIX=""
-
-	cmake --build .
+    make test || true
 }
 
 package() {
-	cd "${srcdir}/qpid-proton-${pkgver}/build"
-
-	make DESTDIR="${pkgdir}/" install
+    DESTDIR="${pkgdir}" cmake --install build
 }
-
