@@ -1,5 +1,5 @@
 pkgbase = git-completion
-	pkgdesc = Git completions for Zsh and Bash
+	pkgdesc = Git completions for zsh and bash
 	pkgver = 1.4
 	pkgrel = 1
 	url = https://github.com/felipec/git-completion

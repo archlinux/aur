@@ -3,7 +3,7 @@
 pkgname=git-completion
 pkgver=1.4
 pkgrel=1
-pkgdesc='Git completions for Zsh and Bash'
+pkgdesc='Git completions for zsh and bash'
 url="https://github.com/felipec/$pkgname"
 arch=('any')
 license=('GPL2')
@@ -12,12 +12,12 @@ source=("${url}/archive/v${pkgver}.tar.gz")
 sha1sums=('e969109cafff4909b4421d709e4905a2b52b8a99')
 
 check() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-$pkgver" || exit 1
 	make test
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-$pkgver" || exit 1
 	# TODO find a better location than /usr/local/share
 	DESTDIR="$pkgdir/" make \
 		zshfuncdir=/usr/share/zsh/site-functions \
