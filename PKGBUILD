@@ -4,7 +4,7 @@ pkgname="ocaml-$_projectname"
 pkgver='2.0.0'
 pkgrel='4'
 pkgdesc='A ppx rewriter that transforms a recursive module expression into a `struct`'
-# If you're running on i686 or pentium4, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
+# If you're running on i686, pentium4, armv7h or aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/flow/$pkgname"
 license=('MIT')
