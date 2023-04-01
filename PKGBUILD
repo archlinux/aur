@@ -1,13 +1,14 @@
 # Maintainer: Benoît Allard <benoit.allard@gmx.de>
 pkgname=python-grpclib
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Pure-Python gRPC implementation for asyncio"
 arch=('any')
 url="http://grpclib.readthedocs.io/"
 license=('BSD')
-makedepends=("python" "python-pytest" "python-pytest-asyncio" "python-async-timeout" "python-faker")
-depends=("python" "python-h2" "python-multidict")
+makedepends=("python-pytest" "python-pytest-asyncio" "python-async-timeout" "python-faker")
+depends=("python" "python-h2" "python-multidict"
+         "python-importlib-metadata" "python-setuptools" "python-googleapis-common-protos" "python-certifi")
 optdepends=(
     "python-protobuf: for protobuf support"
 )
@@ -23,8 +24,8 @@ build() {
 
 check() {
     cd $_name-$pkgver
-    export PYTHONPATH=.
-    pytest -k 'not test_default_ssl_context'
+    # test is failing, see https://github.com/vmagamedov/grpclib/issues/173
+    python -m pytest -k 'not test_default_ssl_context' -p no:warnings
 }
 
 package() {

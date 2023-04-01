@@ -1,7 +1,7 @@
 pkgbase = python-grpclib
 	pkgdesc = Pure-Python gRPC implementation for asyncio
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://grpclib.readthedocs.io/
 	arch = any
 	license = BSD
