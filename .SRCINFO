@@ -1,5 +1,5 @@
 pkgbase = zoomdl
-	pkgdesc = Download Zoom recorded meetings easily
+	pkgdesc = [Deprecated 28.03.2023]Download Zoom recorded meetings easily
 	pkgver = 2021.12.13c
 	pkgrel = 1
 	url = https://github.com/Battleman/zoomdl
