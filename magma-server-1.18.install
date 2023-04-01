@@ -1,0 +1,7 @@
+post_install() {
+	echo "The world data is stored under /srv/magma-1.18 and the server runs as magma-1-18 user to increase security."
+	echo "Use the magma-1.18 script under /usr/bin/magma-1.18d to start, stop or backup the server."
+	echo "Adjust the configuration file under /etc/conf.d/magma-1.18 to your liking."
+	echo "For the server to start you have to accept the EULA in /srv/magma-1.18/eula.txt !"
+	echo "The EULA file is generated after the first server start."
+}
