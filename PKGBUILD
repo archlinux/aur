@@ -6,7 +6,7 @@ pkgver='0.15.0'
 pkgrel='4'
 epoch='1'
 pkgdesc='Syntax extension for writing in-line benchmarks in ocaml code'
-# If you're running on i686 or pentium4, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
+# If you're running on i686, pentium4, armv7h or aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
