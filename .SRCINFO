@@ -1,0 +1,20 @@
+pkgbase = python-grpclib
+	pkgdesc = Pure-Python gRPC implementation for asyncio
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = http://grpclib.readthedocs.io/
+	arch = any
+	license = BSD
+	makedepends = python
+	makedepends = python-pytest
+	makedepends = python-pytest-asyncio
+	makedepends = python-async-timeout
+	makedepends = python-faker
+	depends = python
+	depends = python-h2
+	depends = python-multidict
+	optdepends = python-protobuf: for protobuf support
+	source = python-grpclib-0.4.3.tar.gz::https://github.com/vmagamedov/grpclib/archive/v0.4.3.tar.gz
+	sha256sums = b8f191a0596698f40777af007056ababb92c74561cf67fbc62bd8d5b5a19b12a
+
+pkgname = python-grpclib
