@@ -1,5 +1,6 @@
 pkgname=pkcs11-provider
-pkgver=r340.g24c3eac
+_commit=d58bc51dc96658290e5860be07957764588f7dcc
+pkgver=0.1.r1.gd58bc51
 pkgrel=1
 pkgdesc="OpenSSL 3.0 provider for PKCS#11 hardware-backed private keys"
 url="https://github.com/latchset/pkcs11-provider"
@@ -22,13 +23,12 @@ checkdepends=(
   nss
   softhsm
 )
-_commit=24c3eac6c1a09c46ba824e069fa98628cb7f9ce2
 source=("git+https://github.com/latchset/pkcs11-provider#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  echo "r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  git describe --tags | sed "s/^v//; s/-/.r/; s/-/./"
 }
 
 prepare() {
