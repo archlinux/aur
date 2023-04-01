@@ -28,7 +28,6 @@ sha256sums=(
 )
 conflicts=(
   'upscayl'
-  'upscayl-bin'
 )
 provides=(
   'upscayl'

@@ -11,7 +11,6 @@ pkgbase = upscayl-appimage
 	depends = bash
 	provides = upscayl
 	conflicts = upscayl
-	conflicts = upscayl-bin
 	source = https://github.com/upscayl/upscayl/releases/download/v2.0.1/upscayl-2.0.1-linux.AppImage
 	source = https://github.com/upscayl/upscayl/raw/v2.0.1/Real-ESRGAN_LICENSE.txt
 	source = upscayl.desktop
