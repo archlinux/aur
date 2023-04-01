@@ -1,0 +1,4 @@
+post_install() {
+  chown root:games /var/games/ltris.hscr
+  chmod 664 /var/games/ltris.hscr
+}
