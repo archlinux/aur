@@ -1,0 +1,11 @@
+pkgbase = bbyt
+	pkgdesc = A search centric youtube client
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/port19x/bbyt
+	arch = any
+	license = Unlicense
+	source = bbyt::https://github.com/port19x/bbyt/releases/download/v1.0/bbyt
+	sha256sums = 2a68862ec190d2d7183b433ba61e649c65ddaf3e328d6342625c4655985df521
+
+pkgname = bbyt
