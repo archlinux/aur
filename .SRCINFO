@@ -1,0 +1,18 @@
+pkgbase = piano-rs-git
+	pkgdesc = A multiplayer piano using UDP sockets that can be played using computer keyboard, in the terminal
+	pkgver = v0.1.0.r99.ge7d1163
+	pkgrel = 1
+	url = https://github.com/ritiek/piano-rs/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	depends = alsa-lib
+	source = git+https://github.com/ritiek/piano-rs.git
+	source = piano-rs.sh
+	sha256sums = SKIP
+	sha256sums = 99d9bea2b2bc084e48a703fc1dad2066e9b419b7869ea69f43d673f3cfae9b45
+
+pkgname = piano-rs-git
