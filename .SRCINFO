@@ -1,0 +1,13 @@
+pkgbase = clash-meta-tun-hook
+	pkgdesc = A hook which automatically runs setcap to enable TUN support
+	pkgver = 1
+	pkgrel = 1
+	install = clash-meta-tun-hook.install
+	arch = any
+	license = MIT
+	depends = bash
+	provides = clash-meta-tun-hook
+	source = clash-meta.hook
+	md5sums = SKIP
+
+pkgname = clash-meta-tun-hook

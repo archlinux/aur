@@ -1,0 +1,20 @@
+function post_install(){
+	note "Running setcap..."
+	sudo /usr/bin/setcap cap_net_admin,cap_net_bind_service=ep /usr/bin/clash-meta
+}
+
+function post_upgrade(){
+    post_install
+}
+
+function note() {
+	if [ -f /usr/bin/pamac ]; then
+		echo "  ==> [Info]: $@"
+	else
+	all_off="$(tput sgr0)"
+	bold="${all_off}$(tput bold)"
+	blue="${bold}$(tput setaf 4)"
+	yellow="${bold}$(tput setaf 3)"
+    printf "${blue}==>${yellow} [Info]:${bold} $1${all_off}\n"
+    fi
+}
