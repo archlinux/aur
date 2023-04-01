@@ -11,7 +11,7 @@ pkgbase = jeff
 	depends = python
 	depends = qt5-base
 	options = strip
-	source = git+https://github.com/markcda/jeff.git#tag=aeca6020684918f2c7055c0cb62b84e6c82b64fa
+	source = git+https://github.com/markcda/jeff.git#tag=f19bd19935459c3a092f4bd0cc14cb0c906837d6
 	sha256sums = SKIP
 
 pkgname = jeff
