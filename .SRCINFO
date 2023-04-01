@@ -25,20 +25,22 @@ pkgbase = mesa-dri1
 	md5sums = 5c65a0fe315dd347e09b1f2826a1df5a
 	md5sums = 489feaf524440ff2e4fa32e65e7037ce
 	md5sums = b1da35125d638bb3ea673cc18ce9f9e3
+	sha256sums = 57746aa8c60bc6f5596ec6c6c7274de40fa12edce5ec33fe899e704fa00b5357
+	sha256sums = 7fdc119cf53c8ca65396ea73f6d10af641ba41ea1dd2bd44a824726e01c8b3f2
+	sha256sums = 68570caa94de6956aa942c34889e3cf98198d934faa29419cdd90f2bdb9801b6
+	sha256sums = bdce7f2e8890a3f2a25c885005b43ab732ab6b9ec48504f813a8d5c1ff568e6e
 
 pkgname = unichrome-dri
 	pkgdesc = Mesa DRI drivers for S3 Graphics/VIA Unichrome
 	depends = expat
 	depends = libdrm
 	depends = gcc-libs
-	conflicts = mesa>=21.0
 
 pkgname = i810-dri
 	pkgdesc = Mesa DRI drivers for Intel i810
 	depends = expat
 	depends = libdrm
 	depends = gcc-libs
-	conflicts = mesa>=21.0
 
 pkgname = mach64-dri
 	pkgdesc = Mesa DRI drivers for ATI Mach64
@@ -46,7 +48,6 @@ pkgname = mach64-dri
 	depends = libdrm
 	depends = gcc-libs
 	conflicts = xf86-video-mach64<6.8.2
-	conflicts = mesa>=21.0
 
 pkgname = mga-dri
 	pkgdesc = Mesa DRI drivers for Matrox
@@ -54,7 +55,6 @@ pkgname = mga-dri
 	depends = libdrm
 	depends = gcc-libs
 	conflicts = xf86-video-mga<1.4.11
-	conflicts = mesa>=21.0
 
 pkgname = r128-dri
 	pkgdesc = Mesa DRI drivers for ATI Rage128
@@ -62,7 +62,6 @@ pkgname = r128-dri
 	depends = libdrm
 	depends = gcc-libs
 	conflicts = xf86-video-r128<6.8.1
-	conflicts = mesa>=21.0
 
 pkgname = savage-dri
 	pkgdesc = Mesa DRI drivers for S3 Sraphics/VIA Savage
@@ -70,7 +69,6 @@ pkgname = savage-dri
 	depends = libdrm
 	depends = gcc-libs
 	conflicts = xf86-video-savage<2.3.1
-	conflicts = mesa>=21.0
 
 pkgname = sis-dri
 	pkgdesc = Mesa DRI drivers for SiS
@@ -78,7 +76,6 @@ pkgname = sis-dri
 	depends = libdrm
 	depends = gcc-libs
 	conflicts = xf86-video-sis<0.10.2
-	conflicts = mesa>=21.0
 
 pkgname = tdfx-dri
 	pkgdesc = Mesa DRI drivers for 3dfx
@@ -86,4 +83,3 @@ pkgname = tdfx-dri
 	depends = libdrm
 	depends = gcc-libs
 	conflicts = xf86-video-tdfx<1.4.3
-	conflicts = mesa>=21.0
