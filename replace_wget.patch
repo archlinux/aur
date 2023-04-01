@@ -1,0 +1,29 @@
+--- tests/test_pytest_localftpserver.py
++++ tests/test_pytest_localftpserver.py
+@@ -12,7 +12,7 @@  Replace import
+ import os
+ 
+ import pytest
+-import wget
++import urllib.request
+ 
+ from pytest_localftpserver.plugin import PytestLocalFTPServer
+ from pytest_localftpserver.servers import USE_PROCESS
+@@ -156,14 +156,11 @@  Replace download code
+         Contains urls to check
+     """
+     # checking files by url
+-    download_dir = tmpdir.mkdir("download_url")
+     for url in url_iterable:
+         _, filename = os.path.split(os.path.relpath(url, base_url))
+-        download_file = download_dir.join(filename)
+-        wget.download(url, str(download_file))
+-        with open(str(download_file)) as f:
+-            assert f.read() == filename
+-    download_dir.remove()
++        response = urllib.request.urlopen(url)
++        contents = response.read().decode("utf8")
++        assert contents == filename
+ 
+ 
+ def check_get_file_contents(

@@ -1,0 +1,5 @@
+pytest_localftpserver-*.tar.gz
+python-pytest-localftpserver-*-any.pkg.tar*
+*.log
+src/
+pkg/
