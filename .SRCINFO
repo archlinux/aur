@@ -5,6 +5,7 @@ pkgbase = ocaml-ppx_gen_rec
 	url = https://github.com/flow/ocaml-ppx_gen_rec
 	arch = x86_64
 	arch = i686
+	arch = pentium4
 	arch = armv7h
 	arch = aarch64
 	license = MIT
