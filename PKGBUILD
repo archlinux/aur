@@ -6,11 +6,13 @@ _pkgver='1.36.2'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Isolated Edition'
+# If you're running on armv7h or aarch64, use the electron22-bin package from the AUR for the electron dependency
+# If you're running on armv7h, you have to add it to the arch and source arrays of the electron22-bin AUR dependency
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('custom:SSPL')
 _electronpkg='electron'
-depends=("$_electronpkg" 'krb5' 'libsecret' 'lsb-release')
+depends=("$_electronpkg>=22.0.0" 'krb5' 'libsecret' 'lsb-release')
 makedepends=('git' 'nodejs>=16.0.0' 'npm>=8.0.0' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
 source=(
