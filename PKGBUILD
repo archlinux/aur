@@ -5,7 +5,8 @@ pkgname="ocaml-$_projectname"
 pkgver='1.1.2'
 pkgrel='1'
 pkgdesc='Lwt-friendly logger'
-arch=('x86_64' 'i686' 'armv7h' 'aarch64')
+# If you're running on i686 or pentium4, you have to add it to the arch array of the cppo, ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
+arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/ocsigen/$_projectname"
 license=('custom:LGPL2.1 with linking exception')
 depends=('ocaml>=4.03.0' 'ocaml-lwt>=4.0.0')
