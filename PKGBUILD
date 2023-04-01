@@ -1,13 +1,13 @@
 # Maintainer:
 pkgname=eprosima-fast-dds-statistics-backend
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='eProsima Fast DDS Statistics Backend is a C++ library that provides collection and procession the statistics measurements reported by Fast DDS Statistics Module.'
 arch=('x86_64')
 url='https://github.com/eProsima/Fast-DDS-statistics-backend'
 license=('Apache')
 makedepends=('ninja' 'cmake')
-depends=('tinyxml' 'asio')  # for documentation add: 'doxygen' 'python' 'python-pip' 'python-virtualenv' 'python-sphinx' 'python-breathe' 'python-sphinxcontrib-spelling' 'python-doc8' 'imagemagick'
+depends=('tinyxml' 'asio' 'eprosima-fast-cdr' 'eprosima-fast-dds')  # for documentation add: 'doxygen' 'python' 'python-pip' 'python-virtualenv' 'python-sphinx' 'python-breathe' 'python-sphinxcontrib-spelling' 'python-doc8' 'imagemagick'
 provides=('eprosima-fast-dds-statistics-backend')
 
 _build_directory=build
@@ -18,7 +18,7 @@ source=(
 )
 
 sha512sums=(
-	"bdd31db240b35ab46981077ce394a0b4c39d21a9c1eadbddf2afcce9053e1815adec5e108e30ae9ce9b53a152c112eb195ac01bb134744114fbc56e4580cbd4e"
+	"651d2833d303fd52917372c9fa9f4e265dc60d7a32192e527a98fd39abdea8047ee92ae7ea3aa35c821f66fa1647dbaaaca830bb6c64af4f8fe6ac0d64f03249"
 )
 
 prepare() {
