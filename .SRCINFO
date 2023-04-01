@@ -1,6 +1,6 @@
 pkgbase = anki-official-binary-bundle
 	pkgdesc = The official binary shipped with the tested versions of the dependent libraries.
-	pkgver = 2.1.60
+	pkgver = 2.1.61
 	pkgrel = 1
 	url = https://github.com/ankitects/anki
 	install = anki-official-binary-bundle.install
@@ -12,9 +12,9 @@ pkgbase = anki-official-binary-bundle
 	conflicts = anki
 	conflicts = anki-bin
 	conflicts = anki-git
-	source = https://github.com/ankitects/anki/releases/download/2.1.60/anki-2.1.60-linux-qt6.tar.zst
+	source = https://github.com/ankitects/anki/releases/download/2.1.61/anki-2.1.61-linux-qt6.tar.zst
 	source = install_sh.patch
-	sha256sums = 21780854c71a6414dab11b5e673ded45a0d0dabb167a5d9c3689dd2b6567cd35
+	sha256sums = 7fe3e778fdaf07b1c5c48de6be4ae6fe4caf74166029bbb9a583d4351e5710ee
 	sha256sums = 991297cb02434d753f55980205a22971ed98655b0f62f0104ae4692155355d8c
 
 pkgname = anki-official-binary-bundle

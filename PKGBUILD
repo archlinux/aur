@@ -3,7 +3,7 @@
 
 
 pkgname=anki-official-binary-bundle
-pkgver=2.1.60
+pkgver=2.1.61
 _pkgname="anki-$pkgver-linux-qt6"
 pkgrel=1
 epoch=
@@ -22,7 +22,7 @@ options=()
 install=$pkgname.install
 source=("https://github.com/ankitects/anki/releases/download/${pkgver}/${_pkgname}.tar.zst"
         "install_sh.patch")
-sha256sums=('21780854c71a6414dab11b5e673ded45a0d0dabb167a5d9c3689dd2b6567cd35'
+sha256sums=('7fe3e778fdaf07b1c5c48de6be4ae6fe4caf74166029bbb9a583d4351e5710ee'
             '991297cb02434d753f55980205a22971ed98655b0f62f0104ae4692155355d8c')
 
 prepare() {
