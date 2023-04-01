@@ -1,0 +1,12 @@
+pkgbase = ttyload
+	pkgdesc = A color-coded console load graph.
+	pkgver = 0.5.3
+	pkgrel = 3
+	url = https://www.daveltd.com/src/util/ttyload/
+	arch = x86_64
+	license = custom
+	depends = glibc
+	source = https://www.daveltd.com/src/util/ttyload/ttyload-0.5.3.tar.bz2
+	sha256sums = 7d3147b22530e6de865279aaad8b9e0348575379413ed1a2d410257baf92d783
+
+pkgname = ttyload
