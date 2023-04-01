@@ -1,0 +1,10 @@
+--- sphinxcontrib-blockdiag-3.0.0/tests/test_errors.py.orig	2022-11-13 03:36:24.915816674 +0000
++++ sphinxcontrib-blockdiag-3.0.0/tests/test_errors.py	2022-11-13 03:36:29.122741097 +0000
+@@ -1,6 +1,6 @@
+ # -*- coding: utf-8 -*-
+ 
+-from mock import patch
++from unittest.mock import patch
+ from sphinx_testing import with_app
+ 
+ import sys

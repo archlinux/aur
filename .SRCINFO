@@ -1,0 +1,24 @@
+pkgbase = python-sphinxcontrib-blockdiag
+	pkgdesc = A sphinx extension for embedding block diagram using blockdiag
+	pkgver = 3.0.0
+	pkgrel = 2
+	url = https://github.com/blockdiag/sphinxcontrib-blockdiag
+	arch = any
+	license = BSD
+	checkdepends = python-nose
+	checkdepends = python-sphinx-testing
+	checkdepends = python-reportlab
+	checkdepends = otf-ipafont
+	makedepends = python-setuptools
+	depends = python
+	depends = blockdiag
+	depends = python-sphinx
+	optdepends = python-reportlab: for using PDF as the format of images
+	source = https://github.com/blockdiag/sphinxcontrib-blockdiag/archive/3.0.0/python-sphinxcontrib-blockdiag-3.0.0.tar.gz
+	source = ipafont-path.diff
+	source = use-unittest-mock.diff
+	sha256sums = 9061847004d900b458c2d611b4b539b2a3d594648060a222959f49c837cb41dc
+	sha256sums = cd127f6f66d49d91d1b8716b5361d917c354e8eed6b6817e037d2c2441b7e9e8
+	sha256sums = 63d132b35ebb7702c2d8d638787bd54c3a12506a634d9181f008d4c66d3bb938
+
+pkgname = python-sphinxcontrib-blockdiag
