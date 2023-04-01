@@ -1,14 +1,15 @@
 pkgbase = shc-git
-	pkgdesc = A generic shell script compiler.
-	pkgver = 4.0.3
+	pkgdesc = Generic shell script compiler
+	pkgver = 4.0.3.r10.6495e11e
 	pkgrel = 1
 	url = https://github.com/neurobin/shc
-	arch = any
-	license = GPLv3
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = glibc
 	provides = shc
 	conflicts = shc
-	source = shc::git+https://github.com/neurobin/shc.git
-	md5sums = SKIP
+	source = git+https://github.com/neurobin/shc.git
+	b2sums = SKIP
 
 pkgname = shc-git
-

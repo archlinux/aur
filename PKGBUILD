@@ -1,31 +1,37 @@
-# Maintainer: wangjiezhe <wangjiezhe AT yandex DOT com>
+# Maintainer: éclairevoyant
 
-pkgname=shc-git
 _pkgname=shc
-pkgver=4.0.3
+pkgname=shc-git
+pkgver=4.0.3.r10.6495e11e
 pkgrel=1
-pkgdesc="A generic shell script compiler."
-arch=('any')
-url="https://github.com/neurobin/shc"
-license=('GPLv3')
-provides=("shc")
-conflicts=("shc")
-source=("$_pkgname::git+${url}.git")
-md5sums=('SKIP')
+pkgdesc="Generic shell script compiler"
+arch=(x86_64)
+url="https://github.com/neurobin/$_pkgname"
+license=(GPL3)
+depends=(glibc)
+makedepends=(git)
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("git+$url.git")
+b2sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
-  git describe --tags | sed 's/^v//;s/-/./g'
+	cd $_pkgname
+	git blame -s -L"/^PACKAGE_VERSION=/,+1" configure | awk '{
+		ver = gensub(/[^0-9.]/, "", "g", $3);
+		"git rev-list --count "$1"..HEAD" | getline commit_count;
+		print ver".r"commit_count"."$1
+	}'
 }
 
 build() {
-  cd $_pkgname
-  ./autogen.sh
-  ./configure --prefix=/usr
-  make
+	cd $_pkgname
+	./autogen.sh
+	./configure --prefix=/usr
+	make
 }
 
 package() {
-  cd $_pkgname
-  make DESTDIR="$pkgdir/" install
+	cd $_pkgname
+	make DESTDIR="$pkgdir/" install
 }
