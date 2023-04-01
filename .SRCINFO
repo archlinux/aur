@@ -1,18 +1,16 @@
 pkgbase = dotherside
-	pkgdesc = C language library for creating bindings for the Qt QML language
-	pkgver = 0.6.3
+	pkgdesc = C library for creating bindings to Qt QML
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/filcuc/DOtherSide
 	arch = x86_64
-	license = LGPL
-	license = GPL
-	makedepends = meson
+	license = LGPL3
+	makedepends = cmake
+	makedepends = doxygen
 	makedepends = git
-	depends = qt5-base
-	depends = qt5-quickcontrols2
-	depends = qt5-declarative
-	source = dotherside-0.6.3.tar.gz::https://github.com/filcuc/DOtherSide/archive/v0.6.3.tar.gz
-	sha512sums = d7da098613bf96b17825ea268ff9278b7805073117fdac4cba62226c8e75722e62a17dfc767cdd8816eaa14760ad7e02fd07d8fd0969df4e4eeed9066575956f
+	makedepends = graphviz
+	depends = qt6-declarative
+	source = dotherside-0.9.0.tar.gz::https://github.com/filcuc/DOtherSide/archive/v0.9.0.tar.gz
+	b2sums = 4b656f0fe7f7377a9aa6d053802dbf3f126f29da3388fb3265b916f7513050aee33fd0426ea2a3ebaf1cc756f4c8e511216be5fd51fc30097a72d0461968cddd
 
 pkgname = dotherside
-

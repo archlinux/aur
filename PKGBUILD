@@ -1,33 +1,24 @@
-# Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
+# Maintainer: éclairevoyant
 
-pkgname=dotherside
 _pkgname=DOtherSide
-pkgver=0.6.3
+pkgname=dotherside
+pkgver=0.9.0
 pkgrel=1
-pkgdesc='C language library for creating bindings for the Qt QML language'
-arch=('x86_64')
-url='https://github.com/filcuc/DOtherSide'
-license=('LGPL' 'GPL')
-depends=('qt5-base' 'qt5-quickcontrols2' 'qt5-declarative')
-makedepends=('meson' 'git')
+pkgdesc='C library for creating bindings to Qt QML'
+arch=(x86_64)
+url="https://github.com/filcuc/$_pkgname"
+license=(LGPL3)
+depends=(qt6-declarative)
+makedepends=(cmake doxygen git graphviz)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('d7da098613bf96b17825ea268ff9278b7805073117fdac4cba62226c8e75722e62a17dfc767cdd8816eaa14760ad7e02fd07d8fd0969df4e4eeed9066575956f')
+b2sums=('4b656f0fe7f7377a9aa6d053802dbf3f126f29da3388fb3265b916f7513050aee33fd0426ea2a3ebaf1cc756f4c8e511216be5fd51fc30097a72d0461968cddd')
 
 build() {
-  mkdir -p $_pkgname-$pkgver/build
-  cd $_pkgname-$pkgver/build
-
-  arch-meson ..
-
-  ninja
+	cmake -B build -S $pkgname-$pkgver \
+		-DCMAKE_INSTALL_PREFIX=/usr
+	cmake --build build
 }
 
 package() {
-  cd $_pkgname-$pkgver/build
-
-  DESTDIR="$pkgdir" ninja install
-
-  # Install license
-  install -Dm 644 ../LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	DESTDIR="$pkgdir" cmake --install build
 }
-
