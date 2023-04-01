@@ -1,0 +1,15 @@
+pkgbase = xcursor-flatbed
+	pkgdesc = Flatbed XCursor Theme
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://www.limitland.de/flatbedcursors.html
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = xorg-xcursorgen
+	makedepends = librsvg
+	makedepends = bc
+	source = git+https://gitlab.com/limitland/flatbedcursors.git#tag=0.5
+	md5sums = SKIP
+
+pkgname = xcursor-flatbed
