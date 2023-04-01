@@ -1,7 +1,7 @@
 # Maintainer: Georg Nagel <g.schlmm at gmail dot com>
 
 pkgname=remine
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="A simple command line tool for list and quickly update issues"
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=('npm')
 optdepends=()
 source=(https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
 noextract=($pkgname-$pkgver.tgz)
-sha1sums=('bcd799944c1b4aca4ca3b76fc5e6669bb3a241db')
+sha1sums=('1c22297d614582da98f03eb2f03e56ad8509294f')
 
 package() {
     local _npmdir="$pkgdir/usr/lib/node_modules/"
