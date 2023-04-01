@@ -1,0 +1,15 @@
+pkgbase = snuba
+	pkgdesc = a service that provides a rich data model on top of Clickhouse
+	pkgver = 23.3.1
+	pkgrel = 1
+	url = https://github.com/getsentry/snuba
+	arch = any
+	license = BSD
+	makedepends = python-pip
+	makedepends = python-setuptools
+	depends = python
+	options = !strip
+	source = snuba-devserver.service
+	sha256sums = 20ecfc39ac9f1ee7fad481c339bc120dce9a3e893fb48c541621e1cfa5422b43
+
+pkgname = snuba
