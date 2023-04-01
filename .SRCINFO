@@ -1,0 +1,11 @@
+pkgbase = xcursor-neutral
+	pkgdesc = A smoothed and shadowed X cursors theme
+	pkgver = 1.13a
+	pkgrel = 9
+	url = https://store.kde.org/p/999947/
+	arch = any
+	license = PerlArtistic
+	source = https://distribute.kde.org/khotnewstuff/mousethemes/downloads/28310-neutral-1.13a.tar.gz
+	sha256sums = f67f613fa1e16742f144f26ef149fb24a55fe59c4237aa9a7d124c133484b0f9
+
+pkgname = xcursor-neutral
