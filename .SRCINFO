@@ -1,0 +1,31 @@
+pkgbase = smalltalk
+	pkgdesc = GNU Smalltalk interpreter and libraries
+	pkgver = 3.2.91
+	pkgrel = 13
+	url = https://www.gnu.org/software/smalltalk/
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = freeglut
+	makedepends = gdbm
+	makedepends = git
+	makedepends = glew
+	makedepends = glu
+	makedepends = gmp
+	makedepends = mesa
+	makedepends = sqlite
+	makedepends = tk
+	makedepends = zip
+	depends = gmp
+	depends = libffi
+	depends = libltdl
+	depends = libsigsegv
+	depends = sdl
+	optdepends = sqlite: database in a file
+	optdepends = tk: for gst-blox
+	options = !emptydirs
+	options = staticlibs
+	source = git+https://git.savannah.gnu.org/git/smalltalk.git#commit=edb6bad6950c787f4b4c7f8ac5f7047ac1e8b984
+	b2sums = SKIP
+
+pkgname = smalltalk
