@@ -5,7 +5,8 @@ pkgname="ocaml-$_projectname"
 pkgver='20210608'
 pkgrel='4'
 pkgdesc='An OCaml syntax extension for generating visitor classes'
-arch=('x86_64' 'i686' 'armv7h' 'aarch64')
+# If you're running on i686 or pentium4, you have to add it to the arch array of the cppo, ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
+arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://gitlab.inria.fr/fpottier/$_projectname"
 license=('LGPL2.1')
 depends=('ocaml>=4.05.0' 'ocaml-ppx_deriving>=5.0' 'ocaml-ppxlib>=0.22.0' 'ocaml-result')

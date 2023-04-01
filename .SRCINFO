@@ -5,6 +5,7 @@ pkgbase = ocaml-visitors
 	url = https://gitlab.inria.fr/fpottier/visitors
 	arch = x86_64
 	arch = i686
+	arch = pentium4
 	arch = armv7h
 	arch = aarch64
 	license = LGPL2.1
