@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Pathfinder: Kingmaker
+Exec=pathfinder_kingmaker
+Icon=pathfinder_kingmaker.png
+Terminal=false
+Type=Application
+X-DCOP-ServiceType=Multi
+X-KDE-StartupNotify=true
+Categories=Game;

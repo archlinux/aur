@@ -1,0 +1,16 @@
+pkgbase = gog-pathfinder_kingmaker
+	pkgdesc = Explore the Stolen Lands, a region that has been contested territory for centuries. Hundreds of kingdoms have risen and fallen in these lands, and now it is time for you to make your mark by building your own kingdom!
+	pkgver = 2.1.5d
+	pkgrel = 1
+	url = https://www.gog.com/en/game/pathfinder_kingmaker_explorer_edition
+	arch = x86_64
+	license = custom
+	makedepends = gogextract
+	noextract = pathfinder_kingmaker_2_1_5d_41987.sh
+	noextract = pathfinder_kingmaker.desktop
+	source = pathfinder_kingmaker_2_1_5d_41987.sh::gog://pathfinder_kingmaker_2_1_5d_41987.sh
+	source = pathfinder_kingmaker.desktop
+	sha256sums = 2af0ace90faf3d3d557e51e975c9519107ccb5dac966d449ba74a2501641455c
+	sha256sums = 25015b70ee3ea11a524aa70649157301bba759a761ecf15059381141156d5e12
+
+pkgname = gog-pathfinder_kingmaker
