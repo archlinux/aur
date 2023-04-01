@@ -14,7 +14,7 @@ license=('GPL')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_assets_url/frontend/public/images/hatt-logo.png" "$_assets_url/.pkg/hatt-bin.desktop")
-source_x86_64=("${url}/releases/download/${pkgver}/hatt-linux-x86_64")
+source_x86_64=("${url}/releases/download/${pkgver}/hatt-linux-amd64")
 sha256sums_x86_64=('SKIP')
 sha256sums=('SKIP' 'SKIP')
 
