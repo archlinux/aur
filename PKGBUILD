@@ -2,7 +2,7 @@
 _name="r2modman"
 pkgname="r2modman-bin"
 pkgver=3.1.40
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and easy to use mod manager for several games using Thunderstore."
 arch=('x86_64')
 url="https://github.com/ebkr/r2modmanPlus"
@@ -11,16 +11,27 @@ depends=(c-ares ffmpeg gtk3 http-parser libevent libvpx libxslt libxss minizip n
 libappindicator-gtk3)
 provides=("r2modman")
 conflicts=("r2modman")
-source=("${url}/releases/download/v${pkgver}/${_name}-$pkgver.tar.gz"
+source=("${url}/releases/download/v${pkgver}/${_name}-$pkgver.x86_64.rpm"
 	"LICENSE")
 md5sums=(
-	'77747a10071f8d3ee4bd3f4864d76575'
+	'5f71c1b7f9e16f30804bcc9422258c3a'
 	'cdc88d3d1b56736d0dbc702aaa7de854')
 
 package() {
-	mkdir -p ${pkgdir}/opt/r2modman ${pkgdir}/usr/bin/ ${pkgdir}/usr/share/licenses/${pkgname}
-	cp -r ${srcdir}/${_name}-${pkgver}/* "${pkgdir}/opt/r2modman/."
-	cp "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/."
+	mkdir -p ${pkgdir}/opt \
+		${pkgdir}/usr/bin/ \
+		${pkgdir}/usr/share/licenses/${pkgname}
 
-	ln -s "/opt/r2modman/r2modman" "${pkgdir}/usr/bin/r2modman"
+	cp -a "${srcdir}/opt/${_name}" "${pkgdir}/opt/${_name}"
+	install -Dm 644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/."
+
+	ln -s "/opt/${_name}/${_name}" "${pkgdir}/usr/bin/${_name}"
+
+	install -Dm 644 "usr/share/applications/${_name}.desktop" \
+		"${pkgdir}/usr/share/applications/${_name}.desktop"
+
+	for icon_size in $(ls "${srcdir}/usr/share/icons/hicolor" | cut -d "x" -f 1); do
+		install -Dm 644 "usr/share/icons/hicolor/${icon_size}x${icon_size}/apps/${_name}.png" \
+			"${pkgdir}/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps/${_name}.png"
+	done
 }
