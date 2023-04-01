@@ -1,0 +1,15 @@
+pkgbase = doublecmd-admin
+	pkgdesc = Run Double Commander as root.
+	pkgver = 0.1
+	pkgrel = 0
+	url = http://doublecmd.sourceforge.net/
+	arch = any
+	license = GPL3
+	depends = doublecmd
+	provides = doublecmd-admin
+	conflicts = doublecmd-admin
+	options = !strip
+	source = https://gitlab.com/linux-stuffs/doublecmd-admin/-/raw/main/distrib/doublecmd-admin-0.1-0.tar.gz
+	sha256sums = SKIP
+
+pkgname = doublecmd-admin
