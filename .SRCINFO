@@ -1,0 +1,18 @@
+pkgbase = python-poethepoet
+	pkgdesc = A task runner that works well with poetry
+	pkgver = 0.19.0
+	pkgrel = 1
+	url = https://github.com/nat-n/poethepoet
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-pastel
+	depends = python-tomli
+	depends = python-poetry
+	source = poethepoet-0.19.0.tar.gz::https://github.com/nat-n/poethepoet/archive/v0.19.0.tar.gz
+	sha512sums = d950609bdd679e20bc115684b6dbf78ded5d4bd8ef7915cb982ae11f914ef4525881ba2083aa5b1a891949358705ce8711554a6f85b41a1ea95979f28cbc02fc
+
+pkgname = python-poethepoet
