@@ -1,6 +1,6 @@
 pkgbase = gpgfrontend
 	pkgdesc = OpenPGP crypto tool and gui frontend for modern GnuPG
-	pkgver = 2.0.10
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/saturneric/GpgFrontend
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = gpgfrontend
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = git
+	makedepends = git-lfs
 	makedepends = boost
 	depends = gnupg
 	depends = gpgme
@@ -15,11 +16,12 @@ pkgbase = gpgfrontend
 	depends = libassuan
 	depends = libconfig
 	depends = libgpg-error
-	depends = qt5-base
-	source = gpgfrontend::git+https://github.com/saturneric/GpgFrontend#tag=v2.0.10
-	source = git+https://github.com/saturneric/json
-	source = git+https://github.com/saturneric/easyloggingpp
-	source = git+https://github.com/saturneric/Qt-AES
+	depends = qt6-base
+	depends = qt6-5compat
+	source = gpgfrontend::git+https://github.com/saturneric/GpgFrontend#tag=v2.1.0
+	source = git+https://git.bktus.com/GpgFrontend/json.git
+	source = git+https://git.bktus.com/GpgFrontend/Qt-AES.git
+	source = git+https://git.bktus.com/GpgFrontend/spdlog.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
