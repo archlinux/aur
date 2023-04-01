@@ -1,0 +1,24 @@
+pkgbase = plowshare
+	pkgdesc = CLI downloader and uploader for Rapidshare, Mediafire and other file sharing websites
+	pkgver = 2.1.7
+	pkgrel = 7
+	url = https://github.com/mcrapet/plowshare
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = curl
+	depends = js78
+	depends = recode
+	depends = git
+	optdepends = bash-completion: enable bash auto completion
+	optdepends = imagemagick: X11 picture viewer for captchas
+	optdepends = sxiv: X11 picture viewer for captchas
+	optdepends = feh: X11 picture viewer for captchas
+	optdepends = qiv: X11 picture viewer for captchas
+	optdepends = fbida: framebuffer picture viewer for captchas
+	optdepends = libcaca: framebuffer ascii picture viewer for captchas
+	source = https://github.com/mcrapet/plowshare/archive/v2.1.7/plowshare-v2.1.7.tar.gz
+	sha512sums = 7fe91d3756c55ffc1daf9275bfd2413f2644accd8fa69f2b1064696e1435f9b8be9515907c8249ffde85436dc6966f1d42bad94ccfbde93ae584dcc0d642c215
+	b2sums = bfec7fba200d783fcba5051738f98f7cd862eede1661b4d72062bd111b394800406443e52ecf2f0b771b90a9834a87fae01a6055828e8a12446126c593daa01c
+
+pkgname = plowshare
