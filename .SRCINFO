@@ -1,0 +1,19 @@
+pkgbase = mathomatic
+	pkgdesc = General purpose Computer Algebra System written in C
+	pkgver = 16.0.5
+	pkgrel = 8
+	url = http://mathomatic.orgserve.de/math/
+	arch = x86_64
+	license = LGPL
+	makedepends = time
+	makedepends = python
+	depends = readline
+	optdepends = python: for running /usr/share/doc/mathomatic/factorial/factorial
+	optdepends = bash: for running a test script
+	optdepends = m4: for complex operations using the matho script
+	optdepends = rlwrap: for readline editing
+	optdepends = gnuplot: for plotting
+	source = https://github.com/Atsutane/mathomatic/raw/master/mathomatic-16.0.5.tar.bz2
+	sha256sums = 976e6fed1014586bcd584e417c074fa86e4ca6a0fcc2950254da2efde99084ca
+
+pkgname = mathomatic
