@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=loupe
-pkgver=0.0.0+r284+844b990
+pkgver=0.0.0+r285+b60656c
 pkgrel=1
 pkgdesc='Simple image viewer for GNOME'
 arch=(x86_64 aarch64)
@@ -19,8 +19,8 @@ makedepends=(
 	meson
 	rust
 )
-_commit=('844b9909289e5be22a7963366acdd5923b83c8d8')
-source=("git+${url}.git")
+_commit=('b60656cf5ce3dd23706c6bfd684c5bd33d516913')
+source=("git+${url}.git#commit=${_commit}")
 b2sums=('SKIP')
 
 pkgver() {
