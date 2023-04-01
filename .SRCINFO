@@ -1,6 +1,6 @@
 pkgbase = pot-translation-git
 	pkgdesc = 一个跨平台的划词翻译软件
-	pkgver = 0.0.6.r0.g873fc5a
+	pkgver = 0.1.9.r6.g9f89cfa
 	pkgrel = 1
 	url = https://github.com/Pylogmon/pot
 	arch = x86_64
@@ -12,8 +12,6 @@ pkgbase = pot-translation-git
 	depends = webkit2gtk
 	depends = gtk3
 	depends = libayatana-appindicator
-	depends = xsel
-	depends = xdotool
 	provides = pot-translation
 	conflicts = pot-translation
 	conflicts = pot-translation-bin

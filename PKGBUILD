@@ -3,7 +3,7 @@
 pkgname=pot-translation-git
 _pkgname=pot-translation
 prjname=pot
-pkgver=0.0.6.r0.g873fc5a
+pkgver=0.1.9.r6.g9f89cfa
 pkgrel=1
 pkgdesc="一个跨平台的划词翻译软件"
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/Pylogmon/pot"
 license=('GPL3')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-bin")
-depends=('libappindicator-gtk3' 'webkit2gtk' 'gtk3' 'libayatana-appindicator' 'xsel' 'xdotool')
+depends=('libappindicator-gtk3' 'webkit2gtk' 'gtk3' 'libayatana-appindicator')
 makedepends=('nodejs' 'pnpm' 'rust')
 
 source=(git+$url.git)
