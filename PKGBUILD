@@ -3,7 +3,8 @@ pkgname='beekeeper-studio'
 pkgver='3.8.10'
 pkgrel='2'
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more'
-# If you're running on i686 or pentium4, you have to add it to the arch array of the electron13 AUR dependency
+# If you're running on i686 or pentium4, use the electron13-bin package from the AUR for the electron13 dependency
+# If you're running on pentium4, you have to add it to the arch array of the electron13-bin AUR dependency
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/$pkgname/$pkgname"
 license=('GPL3')
