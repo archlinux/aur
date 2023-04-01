@@ -6,7 +6,7 @@ _pkgver='1.36.2'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition'
-arch=('x86_64' 'i686' 'armv7h' 'aarch64')
+arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('custom:SSPL')
 _electronpkg='electron'
@@ -63,9 +63,6 @@ build() {
 package() {
 	local _distFolder="$srcdir/$_sourcedirectory/packages/compass/dist/MongoDB Compass$_edition-linux"
 	case "$CARCH" in
-		i686)
-			_distFolder="$_distFolder-ia32"
-		;;
 		armv7h)
 			_distFolder="$_distFolder-armv7l"
 		;;
