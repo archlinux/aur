@@ -1,0 +1,23 @@
+pkgbase = python-betterproto-git
+	pkgdesc = Clean, modern, Python 3.6+ code generator & library for Protobuf 3 and async gRPC
+	pkgver = r372.e7f07fa
+	pkgrel = 1
+	url = https://github.com/danielgtaylor/python-betterproto
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry
+	makedepends = python-pytest
+	makedepends = python-pytest-asyncio
+	makedepends = python-grpcio-tools
+	depends = python-grpclib
+	depends = python-jinja
+	depends = python-dateutil
+	depends = python-isort
+	source = git+https://github.com/danielgtaylor/python-betterproto.git
+	sha256sums = SKIP
+
+pkgname = python-betterproto-git
