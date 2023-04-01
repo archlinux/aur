@@ -22,6 +22,7 @@ else
 fi
 makedepends=('git' 'help2man')
 checkdepends=('swtpm')
+conflicts=('tpm2-openssl')
 source=("$pkgname::git+https://git.kernel.org/pub/scm/linux/kernel/git/jejb/openssl_tpm2_engine.git#commit=$_commit")
 sha256sums=('SKIP')
 

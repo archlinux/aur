@@ -10,6 +10,7 @@ pkgbase = openssl-tpm2-engine
 	makedepends = help2man
 	depends = openssl
 	depends = ibm-tss
+	conflicts = tpm2-openssl
 	source = openssl-tpm2-engine::git+https://git.kernel.org/pub/scm/linux/kernel/git/jejb/openssl_tpm2_engine.git#commit=a3368236effc8309d139b570c603ce60e3ab4d95
 	sha256sums = SKIP
 
