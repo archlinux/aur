@@ -1,0 +1,13 @@
+pkgbase = gog-pathfinder_kingmaker_beneath_the_stolen_lands_dlc
+	pkgdesc = DLC for the pathfinder kingmaker game.
+	pkgver = 2.1.5d
+	pkgrel = 1
+	url = https://www.gog.com/en/game/pathfinder_kingmaker_beneath_the_stolen_lands
+	arch = x86_64
+	license = custom
+	depends = gog-pathfinder_kingmaker
+	noextract = pathfinder_kingmaker_beneath_the_stolen_lands_2_1_5d_41987.sh
+	source = pathfinder_kingmaker_beneath_the_stolen_lands_2_1_5d_41987.sh::gog://pathfinder_kingmaker_beneath_the_stolen_lands_2_1_5d_41987.sh
+	sha256sums = 406933a0887833c41de91982739c1febb6662ab675dcdf6212904075a7e9cd80
+
+pkgname = gog-pathfinder_kingmaker_beneath_the_stolen_lands_dlc
