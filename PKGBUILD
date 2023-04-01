@@ -1,7 +1,7 @@
 # Maintainer: TheBill2001 <tuantran1632001 at gmail dot com>
 
 pkgname=qtcreator-spellchecker-plugin
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Spell Checker plugin for the Qt Creator IDE"
 groups=('qt')
@@ -12,7 +12,7 @@ depends=('qtcreator' 'hunspell')
 makedepends=('cmake' 'qtcreator-devel')
 conflicts=('qtcreator-spellchecker-plugin-git' 'qtcreator-spellchecker-plugin-bin')
 source=("${url}/archive/v$pkgver.tar.gz")
-sha256sums=('ad0a32cd0986a981fec94cbb4be0352ad0805044bce52169ec588858e37f01ea')
+sha256sums=('0d2de8de7d128c073000c82050eb7a619f3cfc236e1ebecd8279ea5a656f2075')
 
 build() {
     cmake \
