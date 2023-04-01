@@ -1,6 +1,6 @@
 pkgbase = kclock
 	pkgdesc = Convergent clock application for Plasma
-	pkgver = 23.03.80
+	pkgver = 23.03.90
 	pkgrel = 1
 	url = https://invent.kde.org/plasma-mobile/kclock
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = kclock
 	provides = kclockd
 	conflicts = kclock
 	conflicts = kclockd
-	source = https://invent.kde.org/plasma-mobile/kclock/-/archive/v23.03.80/kclock-v23.03.80.tar.gz
-	sha256sums = 4648405ae0fe9c381426711cbda8df6b2c83c17e0c37117c07a5423db8f328d2
+	source = https://invent.kde.org/plasma-mobile/kclock/-/archive/v23.03.90/kclock-v23.03.90.tar.gz
+	sha256sums = 64200a9ac28cdee47c8c58683d5c332bb3751b4f1de9e335e67e7ff86bdfefc9
 
 pkgname = kclock
