@@ -1,0 +1,53 @@
+diff -ruN a/plugins/Ninjas2/Makefile b/plugins/Ninjas2/Makefile
+--- a/plugins/Ninjas2/Makefile	2020-01-11 16:49:17.000000000 +0100
++++ b/plugins/Ninjas2/Makefile	2023-04-01 14:14:35.312574972 +0200
+@@ -72,11 +72,10 @@
+ LINK_FLAGS += $(shell $(PKG_CONFIG) --libs aubio)
+ else
+ BASE_FLAGS += -I../../aubio/src
+-LINK_FLAGS += ../../aubio/libaubio.a
+ endif
+ 
+-BASE_FLAGS += $(shell $(PKG_CONFIG) --cflags sndfile samplerate )
+-LINK_FLAGS += $(shell $(PKG_CONFIG) --libs sndfile samplerate )
++BASE_FLAGS += $(shell $(PKG_CONFIG) --cflags aubio sndfile samplerate )
++LINK_FLAGS += $(shell $(PKG_CONFIG) --libs aubio sndfile samplerate )
+ 
+ # Set PARANOID_MODE=true to make the build error out on warnings
+ ifeq ($(PARANOID_MODE),true)
+diff -ruN a/plugins/Ninjas2/Ninjas2Plugin.cpp b/plugins/Ninjas2/Ninjas2Plugin.cpp
+--- a/plugins/Ninjas2/Ninjas2Plugin.cpp	2020-01-15 18:55:27.000000000 +0100
++++ b/plugins/Ninjas2/Ninjas2Plugin.cpp	2023-04-01 14:19:00.283842969 +0200
+@@ -27,7 +27,7 @@
+ #include <limits>
+ #include <algorithm>
+ #include <samplerate.h>
+-#include "aubio.h"
++#include <aubio.h>
+ #include <stdio.h>
+ #include <cstdlib>
+ //#include <cerrno>
+diff -ruN a/plugins/Ninjas2/Ninjas2Plugin.hpp b/plugins/Ninjas2/Ninjas2Plugin.hpp
+--- a/plugins/Ninjas2/Ninjas2Plugin.hpp	2020-01-16 15:10:00.000000000 +0100
++++ b/plugins/Ninjas2/Ninjas2Plugin.hpp	2023-04-01 14:19:25.627296040 +0200
+@@ -25,7 +25,7 @@
+ #include <sndfile.hh>
+ #include <vector>
+ #include <iostream>
+-#include "aubio.h"
++#include <aubio.h>
+ #include <algorithm>
+ #include <string>
+ 
+diff -ruN a/plugins/Ninjas2/Ninjas2UI.hpp b/plugins/Ninjas2/Ninjas2UI.hpp
+--- a/plugins/Ninjas2/Ninjas2UI.hpp	2020-01-06 16:34:01.000000000 +0100
++++ b/plugins/Ninjas2/Ninjas2UI.hpp	2023-04-01 14:20:14.550859916 +0200
+@@ -28,7 +28,7 @@
+ #include "iterator"
+ #include "algorithm"
+ #include "array"
+-#include "aubio.h"
++#include <aubio.h>
+ #include <math.h>
+ #include <string>
+ #include <cstdlib>
