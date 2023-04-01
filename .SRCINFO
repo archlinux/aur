@@ -1,0 +1,13 @@
+pkgbase = smem
+	pkgdesc = Generate reports on memory usage.
+	pkgver = 1.5
+	pkgrel = 3
+	url = https://www.selenic.com/smem/
+	arch = x86_64
+	license = GPL
+	depends = python
+	optdepends = python-matplotlib: for chart generation
+	source = smem-1.5.tgz::https://selenic.com/repo/smem/archive/1.5.tar.gz
+	sha256sums = 5c3907b0ac9d3252cbbc5cb9ebe93f0c2b602df67376d9050c09146871822293
+
+pkgname = smem
