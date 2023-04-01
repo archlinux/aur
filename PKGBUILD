@@ -6,7 +6,8 @@ pkgver='5.2.1'
 pkgrel='4'
 epoch='1'
 pkgdesc='Type-driven code generation for OCaml'
-arch=('x86_64' 'i686' 'armv7h' 'aarch64')
+# If you're running on i686 or pentium4, you have to add it to the arch array of the cppo, ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
+arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/ocaml-ppx/$_projectname"
 license=('MIT')
 depends=('ocaml>=4.05.0' 'ocaml-findlib' 'ocaml-ppx_derivers' 'ocaml-ppxlib>=0.20.0' 'ocaml-result')
