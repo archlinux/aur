@@ -1,0 +1,12 @@
+pkgbase = ucl
+	pkgdesc = Portable lossless data compression library written in ANSI C
+	pkgver = 1.03
+	pkgrel = 9
+	url = https://www.oberhumer.com/opensource/ucl/
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = https://www.oberhumer.com/opensource/ucl/download/ucl-1.03.tar.gz
+	sha256sums = b865299ffd45d73412293369c9754b07637680e5c826915f097577cd27350348
+
+pkgname = ucl
