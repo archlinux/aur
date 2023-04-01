@@ -6,13 +6,12 @@ pkgname=xf86-video-openchrome
 _commit=0c752742e54fa34140386547947c81a832c9cad1 # master 2022-09-21 // v0.6.602
 pkgver=0.6.0.r798.g0c75274
 #pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="X.Org Openchrome drivers"
 arch=(x86_64)
 license=('custom')
 url="https://www.freedesktop.org/wiki/Openchrome/"
 depends=('libdrm' 'libxvmc' 'systemd-libs')
-optdepends=('unichrome-dri')
 makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=25.2' 'systemd' 'libxv'
              'git')
 conflicts=('xorg-server<21.1.1' 'X-ABI-VIDEODRV_VERSION<25' 'X-ABI-VIDEODRV_VERSION>=26'
