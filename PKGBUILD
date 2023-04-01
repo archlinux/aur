@@ -12,7 +12,7 @@ arch=("x86_64")
 provides=("tod")
 conflicts=("tod")
 source=("https://github.com/alanvardy/tod/releases/download/v$pkgver/tod-$pkgver-x86_64.tar.gz")
-sha256sums=("7d53378e85230638c39b31aa5f06ae833506508a394881b09631d2a0e3b0dd2a")
+sha256sums=("c0a2f663bbf8a0e947a7ed4c5cedccb2440e025c6d3c629841e1d626abce093d")
 
 package() {
     install -Dm755 tod -t "$pkgdir/usr/bin"
