@@ -1,6 +1,6 @@
 # Maintainer: Alexander Pohl <alex at ahpohl dot com>
 pkgname=gasmeter
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 epoch=
 pkgdesc="Analog gasmeter readout with an IR dongle"
