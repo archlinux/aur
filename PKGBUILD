@@ -8,7 +8,7 @@ url="http://doublecmd.sourceforge.net/"
 license=('GPL3')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-depends=('doublecmd')
+depends=('doublecmd-qt5' 'pkexec')
 options=('!strip')
 
 source=('https://gitlab.com/linux-stuffs/doublecmd-admin/-/raw/main/distrib/doublecmd-admin-0.1-0.tar.gz')
