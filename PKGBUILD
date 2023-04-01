@@ -3,45 +3,54 @@
 
 _pkgname="authsae"
 pkgname="${_pkgname}-git"
-pkgrel=5
-pkgver=1.3.1+r440.20190806.73f31dd
-epoch=5
+pkgrel=1
+pkgver=r444.20230331.cb04ef4
+epoch=6
 pkgdesc="Authsae provides secure password-based authentication for 802.11s mesh networking."
 arch=(
   'x86'
   'x86_64'
 )
-url="https://github.com/cozybit/${_pkgname}"
+# url="https://github.com/cozybit/${_pkgname}"
+url="https://github.com/elockman/${_pkgname}"
 license=("BSD")
 depends=(
   "glibc"
-  "openssl-1.1"
+  #"openssl-1.1"
+  "openssl>=3"
   "libconfig"
   # "libcrypto.so>=1.1" "libcrypto.so<2" # openssl-1.1
   "libnl"
 )
 makedepends=(
   "cmake"
-  "gcc9"
+  #"gcc9"
   "git"
 )
 provides=("authsae=${pkgver}")
 conflicts=("authsae")
 md5sums=("SKIP")
-source=("${_pkgname}::git+https://github.com/cozybit/authsae.git")
+source=("${_pkgname}::git+${url}.git")
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
-  _ver="$(git describe --tags | sed 's|^v||' | sed 's|\-[^-]*$||' | tr '-' '_')"
+  # _ver="$(git describe --tags | sed 's|^v||' | sed 's|\-[^-]*$||' | tr '-' '_')"
   _rev="$(git rev-list --count HEAD)"
   _hash="$(git rev-parse --short HEAD)"
   _date="$(git log -n 1 --format=tformat:%ci | awk '{print $1}' | tr -d '-')"
 
-  if [ -n "${_ver}" ]; then
-    printf %s "${_ver}+r${_rev}.${_date}.${_hash}"
+#   if [ -n "${_ver}" ]; then
+#     printf %s "${_ver}+r${_rev}.${_date}.${_hash}"
+#   else
+#     error "Could not determine version."
+#     return 1
+#   fi
+
+  if [ -n "${_rev}" ]; then
+    printf %s "r${_rev}.${_date}.${_hash}"
   else
-    error "Could not determine version."
+    error "Could not determine git commit count."
     return 1
   fi
 }
@@ -55,12 +64,15 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  export PKG_CONFIG_PATH=/usr/lib/openssl-1.1/pkgconfig
+  #export PKG_CONFIG_PATH=/usr/lib/openssl-1.1/pkgconfig
   export ADDR2LINE=/usr/bin/addr2line
   export AR=/usr/bin/ar
-  export CC=/usr/bin/gcc-9
-  export CC_AR=/usr/bin/gcc-ar-9
-  export CC_RANLIB=/usr/bin/gcc-ranlib-9
+  #export CC=/usr/bin/gcc-9
+  export CC=/usr/bin/gcc
+  #export CC_AR=/usr/bin/gcc-ar-9
+  export CC_AR=/usr/bin/gcc-ar
+  #export CC_RANLIB=/usr/bin/gcc-ranlib-9
+  export CC_RANLIB=/usr/bin/gcc-ranlib
   export LD=/usr/bin/ld
   export NM=/usr/bin/nm
   export OBJCOPY=/usr/bin/objcopy
