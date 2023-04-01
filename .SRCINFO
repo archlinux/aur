@@ -1,0 +1,14 @@
+pkgbase = gprolog
+	pkgdesc = GNU Prolog
+	pkgver = 1.5.0
+	pkgrel = 2
+	url = http://www.gprolog.org/
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	options = staticlibs
+	options = !lto
+	source = https://ftp.gnu.org/gnu/gprolog/gprolog-1.5.0.tar.gz
+	sha256sums = 670642b43c0faa27ebd68961efb17ebe707688f91b6809566ddd606139512c01
+
+pkgname = gprolog
