@@ -1,0 +1,13 @@
+pkgbase = gog-pathfinder_kingmaker_varnhold_s_lot_dlc
+	pkgdesc = DLC for the pathfinder kingmaker game.
+	pkgver = 2.1.5d
+	pkgrel = 1
+	url = https://www.gog.com/en/game/pathfinder_kingmaker_varnholds_lot
+	arch = x86_64
+	license = custom
+	depends = gog-pathfinder_kingmaker
+	noextract = pathfinder_kingmaker_varnhold_s_lot_2_1_5d_41987.sh
+	source = pathfinder_kingmaker_varnhold_s_lot_2_1_5d_41987.sh::gog://pathfinder_kingmaker_varnhold_s_lot_2_1_5d_41987.sh
+	sha256sums = 6baa49feefc80013c06ad5820945215f880c83759ad051a7f3c796a00a875387
+
+pkgname = gog-pathfinder_kingmaker_varnhold_s_lot_dlc
