@@ -1,0 +1,19 @@
+pkgbase = python-sphinxcontrib-seqdiag
+	pkgdesc = A sphinx extension for embedding sequence diagram using seqdiag
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/blockdiag/sphinxcontrib-seqdiag
+	arch = any
+	license = BSD
+	checkdepends = python-nose
+	checkdepends = python-mock
+	checkdepends = python-reportlab
+	checkdepends = python-sphinx-testing
+	makedepends = python-setuptools
+	depends = blockdiag
+	depends = seqdiag
+	depends = python-sphinx
+	source = python-sphinxcontrib-seqdiag-3.0.0.tar.gz::https://github.com/blockdiag/sphinxcontrib-seqdiag/archive/3.0.0.tar.gz
+	sha512sums = c66d823e264a75ebce4234fce24de7b308e98baa4aca080ee12baa3da8a20a0d6a667349a6ed1a8f26e31d01edf23f7e999707d2212f378db625f0b84cd009b1
+
+pkgname = python-sphinxcontrib-seqdiag
