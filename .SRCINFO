@@ -10,7 +10,7 @@ pkgbase = libretro-virtualxt-git
 	arch = pentium4
 	arch = x86_64
 	groups = libretro
-	license = custom
+	license = custom:zlib-acknowledgement
 	makedepends = git
 	depends = glibc
 	depends = libretro-core-info>=1.15.0.r1

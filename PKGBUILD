@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="IBM PC/XT core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://virtualxt.org/"
-license=('custom')
+license=('custom:zlib-acknowledgement')
 groups=('libretro')
 depends=('glibc' 'libretro-core-info>=1.15.0.r1')
 makedepends=('git')
