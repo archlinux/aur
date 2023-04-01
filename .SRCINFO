@@ -1,0 +1,11 @@
+pkgbase = xcursor-bluecurve
+	pkgdesc = Redhat's Bluecurve X mouse cursor theme
+	pkgver = 0.1.1
+	pkgrel = 7
+	url = https://opendesktop.org/content/show.php?content=39229
+	arch = any
+	license = GPL
+	source = https://pkgbuild.com/~kkeen/sources/39229-bluecurve-0.1.1.tar.gz
+	sha256sums = bdc5e16b74be9c6141a1a938840fa7a7a7aff5b5e18793f20a1f900d12602dce
+
+pkgname = xcursor-bluecurve
