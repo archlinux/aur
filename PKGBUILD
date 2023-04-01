@@ -6,13 +6,13 @@ _tag=f19bd19935459c3a092f4bd0cc14cb0c906837d6
 source=(git+https://github.com/markcda/jeff.git#tag=$_tag)
 
 pkgver=2.2.3.r0.gf19bd19
-pkgrel=1
+pkgrel=2
 pkgdesc="Extensible chatbot and automation tool"
 arch=("x86_64")
 url="https://github.com/markcda/jeff"
 license=('MIT')
 depends=('python' 'qt5-base')
-makedepends=('git' 'cmake' 'qt5-tools')
+makedepends=('git' 'base-devel' 'cmake' 'qt5-tools')
 options=('strip')
 sha256sums=('SKIP')
 
