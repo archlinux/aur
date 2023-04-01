@@ -12,7 +12,6 @@ pkgbase = pot-translation
 	depends = webkit2gtk
 	depends = gtk3
 	depends = libayatana-appindicator
-	depends = xdotool
 	provides = pot-translation
 	conflicts = pot-translation-bin
 	conflicts = pot-translation-git
