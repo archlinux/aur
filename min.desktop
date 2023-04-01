@@ -1,9 +1,10 @@
 [Desktop Entry]
-Name=Min
-Comment=A smarter, faster web browser
-GenericName=Web Browser
-Exec=electron --app=/usr/lib/min
-Icon=/usr/lib/min/icons/icon256.png
 Type=Application
+Name=Min
+GenericName=Web Browser
+Comment=A fast, minimal browser that protects your privacy
+Icon=min
+Exec=min %U
+Categories=GTK;Network;WebBrowser;
 StartupNotify=true
-Categories=GNOME;GTK;Network;WebBrowser;
+MimeType=application/pdf;application/rdf+xml;application/rss+xml;application/xhtml+xml;application/xml;image/gif;image/jpeg;image/png;image/webp;text/html;text/xml;x-scheme-handler/http;x-scheme-handler/https;

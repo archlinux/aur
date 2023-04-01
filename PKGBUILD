@@ -1,54 +1,92 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=min
-pkgver=1.4.1
-pkgrel=1
-pkgdesc='A smarter, faster web browser'
-arch=('any')
-url='https://minbrowser.github.io/min'
+pkgver=1.27.0
+_electronver=22
+pkgrel=3
+pkgdesc='A fast, minimal browser that protects your privacy'
+arch=('x86_64')
+url='https://minbrowser.org/'
 license=('Apache')
-depends=('electron')
-makedepends=('nodejs-grunt-cli' 'npm')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/minbrowser/min/archive/v${pkgver}.tar.gz"
+depends=("electron${_electronver}" 'libsecret')
+makedepends=('git' 'npm')
+options=(!emptydirs)
+source=(https://github.com/minbrowser/min/archive/v$pkgver/$pkgname-$pkgver.tar.gz
         'min.desktop'
-        'min.sh')
-sha256sums=('c8eebc28282429eaf74854864f8d8fdf21ae17687fc1c87378016f2a86214b9c'
-            'ceda16e70597b535018965e56ac4f2da0f40c6fa648b7477400b255365b07d27'
-            '5b7451246eeada602ce0c6bf8635ef8a4918ab76ba652a562c4f8b114f5e3f24')
+        'min.js'
+        'icon.patch')
+sha256sums=('c6ac5c46faf8e2ce612e0c76541db368deffa590c067af56988307f74fe3b616'
+            'a069caac07638ca2bafde5f96a4db646ec7484741ff9b44788c2e159b5142650'
+            '58925a72ab69500d4b2b2b9fe216aca44276423dfcb337063516fb8024a01b0a'
+            '3cff8e5613907c3776115ccdb14f37a4899c96874f662281a630912d893c1d87')
+
+prepare() {
+    cd $pkgname-$pkgver
+
+    patch -Np1 -i "${srcdir}"/icon.patch
+}
 
 build() {
-    cd ${pkgname}-${pkgver}
+    cd $pkgname-$pkgver
 
     npm install
-    grunt
-    npm prune --production
+    npm run build
+    rm -r node_modules
+
+    npm install --production --no-optional
 }
 
 package() {
-    cd ${pkgname}-${pkgver}
+    cd $pkgname-$pkgver
 
-    _appdir=/usr/lib/${pkgname}
+    appdir=/usr/lib/${pkgname}
 
-    install -d "${pkgdir}"${_appdir}
-    cp -r * "${pkgdir}"${_appdir}
+    install -dm755 "${pkgdir}"${appdir}
+    cp -r * "${pkgdir}"${appdir}
 
-    install -D -m 755 "${srcdir}"/${pkgname}.sh "${pkgdir}"/usr/bin/${pkgname}
-    install -D -m644 "${srcdir}"/${pkgname}.desktop \
+    install -dm755 "${pkgdir}"/usr/share/icons/hicolor/256x256/apps
+    mv icons/icon256.png \
+        "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/${pkgname}.png
+
+    install -d "${pkgdir}/usr/bin"
+    sed "s|@ELECTRON@|electron${_electronver=19}|" "${srcdir}/${pkgname}.js" \
+        > "${pkgdir}/usr/bin/${pkgname}"
+    chmod 755 "${pkgdir}/usr/bin/${pkgname}"
+
+    install -Dm644 "${srcdir}"/${pkgname}.desktop \
             "${pkgdir}"/usr/share/applications/${pkgname}.desktop
 
     # Clean up
-    find "${pkgdir}"${_appdir} \
+    rm "${pkgdir}"${appdir}/dist/build.js
+    rm -r "${pkgdir}"${appdir}/icons
+    rm -r "${pkgdir}"${appdir}/localization
+    rm -r "${pkgdir}"${appdir}/main
+    rm -r "${pkgdir}"${appdir}/scripts
+    find "${pkgdir}"${appdir} \
         -name "package.json" \
-            -exec sed -e "s|${srcdir}/${pkgname}-${pkgver}|${_appdir}|" \
+            -exec sed -e "s|${srcdir}/${pkgname}|${appdir}|" \
                 -i {} \; \
-        -or -name "bin" -prune -exec rm -r '{}' \; \
         -or -name ".*" -prune -exec rm -r '{}' \; \
-        -or -name "*.yml" -exec rm '{}' \; \
-        -or -name "doc" -prune -exec rm -r '{}' \; \
+        -or -name "*.Makefile" -exec rm '{}' \; \
+        -or -name "*.h" -exec rm '{}' \; \
+        -or -name "*.c" -exec rm '{}' \; \
+        -or -name "*.cc" -exec rm '{}' \; \
+        -or -name "*.gypi" -exec rm '{}' \; \
+        -or -name "*.mk" -exec rm '{}' \; \
+        -or -name "Gruntfile.js" -exec rm '{}' \; \
         -or -name "Makefile" -exec rm '{}' \; \
+        -or -name "bin" -prune -exec rm -r '{}' \; \
+        -or -name "bin.js" -exec rm '{}' \; \
+        -or -name "bower.json" -exec rm '{}' \; \
+        -or -name "cli.js" -exec rm '{}' \; \
+        -or -name "cmd.js" -exec rm '{}' \; \
+        -or -name "coffee" -prune -exec rm -r '{}' \; \
+        -or -name "example" -prune -exec rm -r '{}' \; \
+        -or -name "examples" -prune -exec rm -r '{}' \; \
+        -or -name "gulpfile.js" -exec rm '{}' \; \
+        -or -name "man" -prune -exec rm -r '{}' \; \
+        -or -name "obj.target" -prune -exec rm -r '{}' \; \
         -or -name "scripts" -prune -exec rm -r '{}' \; \
         -or -name "test" -prune -exec rm -r '{}' \; \
         -or -name "tests" -prune -exec rm -r '{}' \;
-    cd "${pkgdir}"${_appdir}/node_modules
-    rm nlp_compromise/cmd.js
 }
