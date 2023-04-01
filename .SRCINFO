@@ -1,0 +1,14 @@
+pkgbase = xdiskusage
+	pkgdesc = A user-friendly program to show you what is using up all your disk space
+	pkgver = 1.60
+	pkgrel = 2
+	url = https://xdiskusage.sourceforge.net
+	arch = x86_64
+	license = GPL
+	makedepends = libxi
+	depends = fltk
+	options = !emptydirs
+	source = https://xdiskusage.sourceforge.net/xdiskusage-1.60.tgz
+	sha256sums = 7b536dc6f1bdc6d9bec7c29b9435c23d9d32bff8a0ebee26b9966b273dc9f67e
+
+pkgname = xdiskusage
