@@ -6,6 +6,7 @@ pkgbase = ocaml-lambda-term
 	install = ocaml-lambda-term.install
 	arch = x86_64
 	arch = i686
+	arch = pentium4
 	arch = armv7h
 	arch = aarch64
 	license = BSD
