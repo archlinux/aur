@@ -1,0 +1,11 @@
+pkgbase = xcursor-premium
+	pkgdesc = Premium X Cursor Theme
+	pkgver = 0.3
+	pkgrel = 10
+	url = https://store.kde.org/p/999861/
+	arch = any
+	license = GPL
+	source = https://distro.ibiblio.org/fatdog/source/800/14485-Premium-0.3.tar.bz2
+	sha256sums = e4c74d06fd1de21038e57bfa4273ab58f786a91ff703844dd3ee23fcef739596
+
+pkgname = xcursor-premium
