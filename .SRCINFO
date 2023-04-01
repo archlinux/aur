@@ -1,0 +1,13 @@
+pkgbase = python-pyblake2
+	pkgdesc = BLAKE2 hash function for Python
+	pkgver = 1.1.2
+	pkgrel = 9
+	url = https://pythonhosted.org/pyblake2
+	arch = x86_64
+	license = custom
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/pyblake2/pyblake2-1.1.2.tar.gz
+	sha256sums = 5ccc7eb02edb82fafb8adbb90746af71460fbc29aa0f822526fc976dff83e93f
+
+pkgname = python-pyblake2
