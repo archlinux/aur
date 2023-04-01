@@ -22,7 +22,7 @@ source_aarch64=("https://julianfairfax.gitlab.io/${_pkgname}-prebuilt/arm64/${_p
 sha256sums=('6b5a4a8a9833c27ec3a0643e10bd321853f7d86a5f1b6e96c5c8bb53cb29a0f2')
 sha256sums_x86_64=('6b5a4a8a9833c27ec3a0643e10bd321853f7d86a5f1b6e96c5c8bb53cb29a0f2'
                   'SKIP')
-sha256sums_aarch64=('7f6bd9e1eee3007c7cc7d2172ace392fc8bc2343af6302ba03a601e9ed3d3984'
+sha256sums_aarch64=('be1f5da8433f1bfbe6dd05a9e7a587dba53295fcce81e98223c519adcde1e22c'
                    'SKIP')
 validpgpkeys=('C123CB2B21B9F68C80A03AE005B2039A85E7C70A')
 
