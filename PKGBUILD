@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=libphidget
-pkgver=1.13.20230224
+pkgver=1.14.20230331
 pkgrel=1
 epoch=2
 url=https://www.phidgets.com
@@ -12,7 +12,7 @@ arch=('x86_64')
 license=('LGPL3')
 depends=('libusb')
 source=("https://www.phidgets.com/downloads/${pkgname#lib}22/libraries/linux/${pkgname}22/${pkgname}22-$pkgver.tar.gz")
-sha256sums=('1d0795110517eb18c806472887cafc861dd0b6a1c1045246c555bc47f6bd77e3')
+sha256sums=('0999eb6ea1d7af58d2471f563398bb249f1507704d8c828739371d22810e3bb4')
 
 build() {
   cd ${pkgname}22-$pkgver
