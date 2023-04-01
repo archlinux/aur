@@ -4,7 +4,7 @@ pkgname="ocaml-$_projectname"
 pkgver='15.0.0'
 pkgrel='2'
 pkgdesc='Unicode character properties for OCaml'
-# If you're running on i486 or pentium4, you have to add it to the arch array of the ocaml-cmdliner, ocaml-uchar and ocaml-uutf AUR dependencies
+# If you're running on i486, pentium4, armv7h or aarch64, you have to add it to the arch array of the ocaml-cmdliner, ocaml-uchar and ocaml-uutf AUR dependencies
 arch=('x86_64' 'i486' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://erratique.ch/software/$_projectname"
 license=('ISC')
