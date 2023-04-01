@@ -5,6 +5,7 @@ pkgbase = ocaml-ppx_string
 	url = https://github.com/janestreet/ppx_string
 	arch = x86_64
 	arch = i686
+	arch = pentium4
 	arch = armv7h
 	arch = aarch64
 	license = MIT
