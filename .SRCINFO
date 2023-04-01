@@ -1,6 +1,6 @@
 pkgbase = devbox
 	pkgdesc = A cli tool to easily create isolated shells and containers
-	pkgver = 0.4.5
+	pkgver = 0.4.6
 	pkgrel = 1
 	url = https://github.com/jetpack-io/devbox
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = devbox
 	makedepends = go
 	depends = nix
 	optdepends = docker: for container support
-	source = https://github.com/jetpack-io/devbox/archive/0.4.5/devbox-0.4.5.tar.gz
-	sha256sums = fa936f4f9713db363c03fdd4a31538f5871a6917117895a4880fd3591bb07bfc
+	source = https://github.com/jetpack-io/devbox/archive/0.4.6/devbox-0.4.6.tar.gz
+	sha256sums = 1800b5484994b933f97a797601a5d63891e0a3e88f07b9bb151eccaa6fe702a9
 
 pkgname = devbox
