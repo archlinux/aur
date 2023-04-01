@@ -3,31 +3,19 @@
 
 pkgname=("podman-desktop")
 pkgver=0.13.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Manage Podman and other container engines from a single UI and tray."
 arch=('x86_64' 'aarch64')
 url=https://github.com/containers/podman-desktop
 license=('Apache-2.0')
-depends=()
+
 makedepends=('yarn' 'git' 'python' 'npm' 'nodejs-lts-gallium')
 optdepends=(
     "podman: podman plugin"
     "crc: crc plugin"
     "lima: lima plugin"
     "docker: docker plugin"
-)
-source=(
-    "git+${url}#tag=v${pkgver}"
-    "podman-desktop.desktop"
-    )
-sha256sums=('SKIP'
-            'f520d11b747dc29bcc63dd7d75f235e446104f924142be4ecc6f26b23e3a7c1c')
-_electron_depends=(
-    "c-ares" "gtk3" "libevent" "nss" "wayland" "fontconfig" "woff2" "aom" "brotli"
-    "libjpeg" "icu" "dav1d" "flac" "snappy" "libxml2" "ffmpeg" "libwebp" "minizip"
-    "opus" "harfbuzz" "re2" "libavif" "jsoncpp" "libxslt" "libpng" "freetype2"
-)
-_electron_optdepends=(
+    # Electron optional depends
     "kde-cli-tools: file deletion support (kioclient5)"
     "libappindicator-gtk3: StatusNotifierItem support"
     "pipewire: WebRTC desktop sharing under Wayland"
@@ -35,6 +23,12 @@ _electron_optdepends=(
     "trash-cli: file deletion support (trash-put)"
     "xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)"
 )
+source=(
+    "git+${url}#tag=v${pkgver}"
+    "podman-desktop.desktop"
+    )
+sha256sums=('SKIP'
+            'f520d11b747dc29bcc63dd7d75f235e446104f924142be4ecc6f26b23e3a7c1c')
 
 build(){
     cd "${srcdir}/podman-desktop"
@@ -42,14 +36,12 @@ build(){
     yarn run compile
 }
 package_podman-desktop(){
-    for element in ${_electron_depends[@]}
-    do
-        depends+=($element)
-    done
-    for element in ${_electron_optdepends[@]}
-    do
-        optdepends+=($element)
-    done
+    depends=(
+        # Electron depends
+        "c-ares" "gtk3" "libevent" "nss" "wayland" "fontconfig" "woff2" "aom" "brotli"
+        "libjpeg" "icu" "dav1d" "flac" "snappy" "libxml2" "ffmpeg" "libwebp" "minizip"
+        "opus" "harfbuzz" "re2" "libavif" "jsoncpp" "libxslt" "libpng" "freetype2"
+    )
     case ${CARCH} in
         x86_64)
             _arch=-
