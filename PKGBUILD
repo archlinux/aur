@@ -6,7 +6,8 @@ pkgver='0.15.0'
 pkgrel='3'
 epoch='1'
 pkgdesc='Expands [%here] into its location'
-arch=('x86_64' 'i686' 'armv7h' 'aarch64')
+# If you're running on i686 or pentium4, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
+arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
 depends=('ocaml>=4.08.0' 'ocaml-base>=0.15.0' 'ocaml-ppxlib>=0.23.0')
