@@ -1,6 +1,6 @@
 # Maintainer: Conrad Hoffmann <ch@bitfehler.net>
 pkgname=makeimg
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc='Declarative way to build Linux system images'
 arch=(any)
@@ -26,7 +26,7 @@ provides=('makeimg')
 conflicts=('makeimg-git')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://git.sr.ht/~bitfehler/makeimg/archive/v${pkgver}.tar.gz")
-sha512sums=('14fc4f167321da2df841aa6babe2dfd80620942f7945543075a134a6109edcd22fd74225020da813678d2e9619f3ffef49da99e0bec4ef78d08d4ef662435b54')
+sha512sums=('b280c4689ae17ca357661d05250988a959fbcce3680967cf08cd8a63fcc540727ebfa5c941e7e74f470912dd47ecd0bb629bb6de7a209059a7ddbdbb7f9fff61')
 
 build() {
   cd "${pkgname}-v${pkgver}"
