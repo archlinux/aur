@@ -3,7 +3,7 @@
 
 _pkgname=revchatgpt
 pkgname="${_pkgname}-git"
-pkgver=4.0.8+3.r1323.20230324.9ae8a8e
+pkgver=4.1.1.1+6.r1372.20230401.0b78290
 pkgrel=1
 pkgdesc="Lightweight package for interacting with ChatGPT's API by OpenAI. Uses reverse engineered official API."
 arch=(
@@ -16,7 +16,9 @@ depends=(
   'python'
   'python-argparse'
   'python-httpx'
+  'python-openai'
   'python-openaiauth'
+  'python-prompt_toolkit'
   'python-requests'
   'python-tiktoken'
   'python-undetected-chromedriver'
@@ -100,11 +102,11 @@ package() {
   install -D -v -m644 logo.png                      "${pkgdir}/usr/share/pixmaps/revchatgpt.png"
 
   install -D -v -m644 LICENSE                       "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  for _docfile in CONTRIBUTING.md README.md SECURITY.md; do
-    install -D -v -m644 "${_docfile}"               "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
+  for _docfile in README.md docs/*.md; do
+    install -D -v -m644 "${_docfile}"               "${pkgdir}/usr/share/doc/${_pkgname}/$(basename "${_docfile}")"
   done
   install -d -v -m755                               "${pkgdir}/usr/share/doc/${_pkgname}/wiki"
-  cp -av wiki/*                                     "${pkgdir}/usr/share/doc/${_pkgname}/wiki"/
+  cp -av docs/wiki/*                                "${pkgdir}/usr/share/doc/${_pkgname}/wiki"/
   install -D -v -m644 "${srcdir}/git.log"           "${pkgdir}/usr/share/doc/${_pkgname}/git.log"
   ln -svf "/usr/share/licenses/${pkgname}/LICENSE"  "${pkgdir}/usr/share/doc/${_pkgname}/LICENSE"
   ln -svf "/usr/share/pixmaps/revchatgpt.png"       "${pkgdir}/usr/share/doc/${_pkgname}/logo.png"
