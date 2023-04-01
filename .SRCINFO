@@ -1,0 +1,13 @@
+pkgbase = rogue
+	pkgdesc = The original dungeon crawl game.
+	pkgver = 5.4.5
+	pkgrel = 1
+	url = http://www.roguebasin.com/index.php?title=Rogue
+	arch = x86_64
+	license = custom
+	depends = ncurses
+	provides = rouge
+	source = rogue-5.4.5.tgz::https://github.com/phs/rogue/archive/v5.4.5.tar.gz
+	sha256sums = aea2204f046576e06ba1bc53808cc193306e4a694a92a573e739289117f91a41
+
+pkgname = rogue
