@@ -8,7 +8,7 @@ pkgver='8.5.5'
 pkgrel='4'
 epoch='1'
 pkgdesc='Build cross platform desktop apps with web technologies - version 8 - binary version'
-arch=('x86_64' 'i686' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://${_projectname}js.org"
 license=('MIT')
 provides=("$_pkgname")
@@ -29,6 +29,10 @@ source_i686=(
 	"$pkgname-chromedriver-$epoch:$pkgver-$pkgrel-i686.zip::$_releaseurl/chromedriver-v$pkgver-linux-ia32.zip"
 	"$pkgname-$epoch:$pkgver-$pkgrel-i686.zip::$_releaseurl/$_projectname-v$pkgver-linux-ia32.zip"
 )
+source_pentium4=(
+	"$pkgname-chromedriver-$epoch:$pkgver-$pkgrel-pentium4.zip::$_releaseurl/chromedriver-v$pkgver-linux-ia32.zip"
+	"$pkgname-$epoch:$pkgver-$pkgrel-pentium4.zip::$_releaseurl/$_projectname-v$pkgver-linux-ia32.zip"
+)
 source_armv7h=(
 	"$pkgname-chromedriver-$epoch:$pkgver-$pkgrel-armv7h.zip::$_releaseurl/chromedriver-v$pkgver-linux-armv7l.zip"
 	"$pkgname-$epoch:$pkgver-$pkgrel-armv7h.zip::$_releaseurl/$_projectname-v$pkgver-linux-armv7l.zip"
@@ -43,6 +47,8 @@ sha512sums_x86_64=('2d6d314b17c10bb4c567be1443c973955074b1591dab24beca2e5575187e
                    '6e58b1d0f009cde205b8d06bad5df3f1a1457308d6045cd65eae0246d874d810dc1bec0ba51ccc0d7e1f4a32399c678c017377e218ed09e339b6f5c2419dc21c')
 sha512sums_i686=('22dc96a8bcacc685cc9cdc53ae03c24e48637c59374d29e4a5fe84206919a920add3b1c7da1afce71bc9722481bc33b0302728edc84a74570ebe8848605036b7'
                  '8d00540024a96e3cc36ca0506cece5fa96c1a0ef884290e47097e7aa2b15cc52bfa66697f14bcc0f8d7973ad2a8b33992d76f64063b0f405dd63682ec91f8bcc')
+sha512sums_pentium4=('22dc96a8bcacc685cc9cdc53ae03c24e48637c59374d29e4a5fe84206919a920add3b1c7da1afce71bc9722481bc33b0302728edc84a74570ebe8848605036b7'
+                     '8d00540024a96e3cc36ca0506cece5fa96c1a0ef884290e47097e7aa2b15cc52bfa66697f14bcc0f8d7973ad2a8b33992d76f64063b0f405dd63682ec91f8bcc')
 sha512sums_armv7h=('2b1587e06b54dd25210e3dfd0aa40e376c7ed69c3776974e0a80f662de92300d0f2555e41003651fa5bafba37c20f0e6372c9991f428bdcb438c5a82c2ec0d1b'
                    'd774af6c894ad393407752e240885cecc4eacf70cda45c9d1f6453795b13fe6d22580a5971311888ca0916e7465ec58c80c1d653eea65c8c28af3aae56638241')
 sha512sums_aarch64=('0708979c3ce47ff473d8a07f49cd444a18744554d0b7492ac3aa0850cf039e343c688f93700a5dc434ce4908eda4921b81b445e9de8bc74c2219e192b1f88d17'
