@@ -1,17 +1,17 @@
 pkgbase = quantlib-git
 	pkgdesc = A free/open-source library for quantitative finance.
-	pkgver = 20130919
+	pkgver = 1.29.r189.g617c043f8
 	pkgrel = 1
-	url = http://quantlib.org
-	arch = i686
+	url = https://github.com/lballabio/quantlib
 	arch = x86_64
-	groups = devel
 	license = BSD
+	makedepends = boost
 	makedepends = git
-	depends = boost
-	depends = boost-libs
+	depends = gcc-libs
 	provides = quantlib
+	provides = libQuantLib.so
 	conflicts = quantlib
+	source = quantlib::git+https://github.com/lballabio/quantlib
+	sha256sums = SKIP
 
 pkgname = quantlib-git
-

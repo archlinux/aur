@@ -1,54 +1,56 @@
-# Maintainer: Sergey Khorev <sergey.khorev@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Allen Hoffmeyer <allen dot hoffmeyer at gmail dot com>
+# (adapted from work by Louis R. Marascio <lrm at fitnr dot com>)
+# Contributor: trader <trader9 at gawab dot com>
+# Contributor: masutu <masutu dot arch at googlemail dot com>
+# Contributor: Guillaume Horel <guillaume.horel@gmail.com>
+
 pkgname=quantlib-git
-pkgver=20130919
+_pkg="${pkgname%-git}"
+pkgver=1.29.r189.g617c043f8
 pkgrel=1
 pkgdesc="A free/open-source library for quantitative finance."
-arch=('i686' 'x86_64')
-url="http://quantlib.org"
+arch=('x86_64')
+url='https://github.com/lballabio/quantlib'
 license=('BSD')
-groups=('devel')
-depends=('boost' 'boost-libs')
-makedepends=('git')
-provides=('quantlib')
-conflicts=('quantlib')
+depends=('gcc-libs')
+makedepends=('boost' 'git')
+provides=("$_pkg" 'libQuantLib.so')
+conflicts=("$_pkg")
+source=("$_pkg::git+$url")
+sha256sums=('SKIP')
 
-_gitroot=https://github.com/lballabio/quantlib.git
-_gitname=quantlib
+pkgver() {
+  git -C "$_pkg" describe --long --tags | sed 's/^QuantLib-v//;s/-/.r/;s/-/./'
+}
+
+prepare() {
+  cd "$_pkg"
+  autoupdate acinclude.m4 configure.ac
+  autoreconf -if
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build/QuantLib"
-
-  ./autogen.sh
-  ./configure --prefix=/usr --bindir=/usr/lib/quantlib/bin --enable-benchmark --enable-examples
+  cd "$_pkg"
+  ./configure --prefix=/usr \
+    --enable-intraday \
+    --enable-openmp \
+    --disable-static \
+    --enable-std-classes \
+    --enable-null-as-functions \
+    --enable-parallel-unit-test-runner
   make
 }
 
+check() {
+  make -C "$_pkg" check
+}
+
 package() {
-  cd "$srcdir/$_gitname-build/QuantLib"
+  cd "$_pkg"
   make DESTDIR="$pkgdir/" install
-	install -D -m644 LICENSE.TXT $pkgdir/usr/share/licenses/$pkgname/LICENSE.TXT
-  mkdir -p $pkgdir/usr/bin
-	mv $pkgdir/usr/lib/quantlib/bin/quantlib-config $pkgdir/usr/bin/
-	mv $pkgdir/usr/lib/quantlib/bin/quantlib-benchmark $pkgdir/usr/bin/
-	mv $pkgdir/usr/lib/quantlib/bin/quantlib-test-suite $pkgdir/usr/bin/
-  
-  
-  
+  install -Dvm644 LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
+
