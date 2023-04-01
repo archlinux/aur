@@ -1,0 +1,17 @@
+pkgbase = python-pproxy
+	pkgdesc = Versatile TCP/UDP asynchronous tunnel proxy implemented in Python 3 asyncio
+	pkgver = 2.7.8
+	pkgrel = 3
+	url = https://github.com/qwj/python-proxy
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python
+	optdepends = python-pycryptodome: accelerated cipher operations
+	optdepends = python-uvloop: faster asynchronous operations
+	optdepends = python-daemon: run the server as a daemon
+	source = https://files.pythonhosted.org/packages/source/p/pproxy/pproxy-2.7.8.tar.gz
+	sha256sums = fab73cc13b2bb10c9fc4d9c1a8ec8011a354c9bcbffa446d91229e13c5d996c8
+
+pkgname = python-pproxy
