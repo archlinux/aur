@@ -1,0 +1,17 @@
+pkgbase = pinfo
+	pkgdesc = A hypertext info file viewer
+	pkgver = 0.6.13
+	pkgrel = 2
+	url = http://pinfo.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	depends = readline
+	source = pinfo-0.6.13.tgz::https://github.com/baszoetekouw/pinfo/archive/v0.6.13.tar.gz
+	source = gcc10-stringop.diff
+	source = https://github.com/baszoetekouw/pinfo/commit/ab604fdb.patch
+	sha256sums = 9dc5e848a7a86cb665a885bc5f0fdf6d09ad60e814d75e78019ae3accb42c217
+	sha256sums = 876fd9e3fbb6e129abe183dceb4db03cbd152467e7f0b7edd7cb03c5bc201c32
+	sha256sums = 7690ed298a139b82b763979e59998afdac88b4265d867f746811e317a152f57d
+
+pkgname = pinfo

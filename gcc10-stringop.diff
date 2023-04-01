@@ -1,0 +1,28 @@
+diff --git a/src/utils.c b/src/utils.c
+index cb2fe76..2e4139c 100644
+--- a/src/utils.c
++++ b/src/utils.c
+@@ -848,10 +848,9 @@ char *
+ make_tempfile()
+ {
+ 	char *filename;
+-	size_t len;
+ 
+ 	/* TODO: fix hardcoded /tmp */
+-	char tmpfile_template[] = "/tmp/pinfo.XXXXXX";
++	char tmpfile_template[32] = "/tmp/pinfo.XXXXXX";
+ 
+ 	/* create a tmpfile */
+ 	int fd = mkstemp(tmpfile_template);
+@@ -864,9 +863,8 @@ make_tempfile()
+ 	}
+ 
+ 	/* allocate a new string and copy the filename there */
+-	len = strlen(tmpfile_template)+1;
+-	filename = xmalloc(len+1); /* guarenteerd to be set to \0's */
+-	strncpy(filename, tmpfile_template, len);
++	filename = xmalloc(33); /* guarenteerd to be set to \0's */
++	strncpy(filename, tmpfile_template, 32);
+ 
+ 	/* close the file */
+ 	close(fd);
