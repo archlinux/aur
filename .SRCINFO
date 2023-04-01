@@ -1,6 +1,6 @@
 pkgbase = rssbridge
 	pkgdesc = The RSS feed for websites missing it
-	pkgver = 2022_06_14
+	pkgver = 2023_03_22
 	pkgrel = 1
 	url = https://github.com/RSS-Bridge/rss-bridge/wiki
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = rssbridge
 	depends = php
 	backup = etc/webapps/rss-bridge/config.ini.php
 	backup = etc/webapps/rss-bridge/whitelist.txt
-	source = https://github.com/RSS-Bridge/rss-bridge/archive/2022-06-14.tar.gz
+	source = https://github.com/RSS-Bridge/rss-bridge/archive/2023-03-22.tar.gz
 	source = rss-bridge.sysusers
 	source = rss-bridge.tmpfiles
 	sha256sums = 88daee9604adcb2193ee771c260bcf422a806c284a46c4f263d42cf323d42fe1
