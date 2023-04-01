@@ -1,35 +1,32 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Chris Tam <lchris314 at gmail dot com>
+# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Contributor: Chris Tam <lchris314 at gmail dot com>
 # Contributor: Daniel Micay <danielmicay at gmail dotcom>
 # Contributor: David Herrmann <dh.herrmann@googlemail dot com>
+
 pkgname=kmscon
-pkgver=8
-pkgrel=4
+pkgver=9.0.0
+pkgrel=1
 pkgdesc='Terminal emulator based on Kernel Mode Setting (KMS)'
-arch=(x86_64)
-url='http://www.freedesktop.org/wiki/Software/kmscon/'
+arch=('x86_64')
+url='https://github.com/Aetf/kmscon/'
 license=('MIT')
-depends=(systemd libdrm mesa libgl pango libxkbcommon xkeyboard-config libtsm)
-makedepends=(libxslt docbook-xsl linux-api-headers)
-source=(http://www.freedesktop.org/software/kmscon/releases/kmscon-${pkgver}.tar.xz)
-md5sums=('90d39c4ef53a11c53f27be4a7e9acee4')
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
-  sed -i -e '302s/SIGUNUSED/SIGSYS/' src/pty.c
-}
+depends=('systemd' 'libdrm' 'mesa' 'libgl' 'pango' 'libxkbcommon'
+         'xkeyboard-config' 'libtsm')
+makedepends=('libxslt' 'docbook-xsl' 'linux-api-headers' 'meson')
+source=("https://github.com/Aetf/kmscon/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
+sha256sums=('48be605bd874260d9bd7a59e82421ceacf875e4a2c5dba9c62d7f0359df694b6')
 
 build() {
-  cd $pkgname-$pkgver
-  ./configure --prefix=/usr
-  make
+  meson build $pkgname-$pkgver \
+   --prefix=/usr \
+   --libexecdir=lib \
+   -D werror=false
+  meson compile -C build
 }
 
 package() {
-  cd $pkgname-$pkgver
-  make DESTDIR="$pkgdir/" install
-  mkdir -p "$pkgdir/usr/share/licenses/$pkgname" "$pkgdir/usr/lib/systemd/system"
-  cp COPYING "$pkgdir/usr/share/licenses/$pkgname/"
-  cp docs/kmscon{,vt@}.service "$pkgdir/usr/lib/systemd/system/"
+  meson install -C build --destdir="$pkgdir"
+  install -Dm644 $pkgname-$pkgver/COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+#  install -d "$pkgdir/usr/lib/systemd/system"
+#  cp docs/kmscon{,vt@}.service "$pkgdir/usr/lib/systemd/system/"
 }
