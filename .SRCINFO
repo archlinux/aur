@@ -1,0 +1,13 @@
+pkgbase = gog-pathfinder_kingmaker_premium_digital_copy_dlc
+	pkgdesc = DLC for the pathfinder kingmaker game.
+	pkgver = 2.1.5d
+	pkgrel = 1
+	url = https://www.gog.com/en/game/pathfinder_kingmaker_imperial_edition
+	arch = x86_64
+	license = custom
+	depends = gog-pathfinder_kingmaker
+	noextract = pathfinder_kingmaker_premium_digital_copy_2_1_5d_41987.sh
+	source = pathfinder_kingmaker_premium_digital_copy_2_1_5d_41987.sh::gog://pathfinder_kingmaker_premium_digital_copy_2_1_5d_41987.sh
+	sha256sums = f7f6bf18b57f4a857839e57fb1593288a5d340740f9468e65161e0fcd97afc4f
+
+pkgname = gog-pathfinder_kingmaker_premium_digital_copy_dlc
