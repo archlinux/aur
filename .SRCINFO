@@ -1,0 +1,20 @@
+pkgbase = python-envisage
+	pkgdesc = Extensible Application Framework
+	pkgver = 6.1.0
+	pkgrel = 2
+	url = https://github.com/enthought/envisage
+	arch = any
+	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-apptools
+	depends = python-traitsui
+	optdepends = ipython: for IPython shell plugin
+	source = https://github.com/enthought/envisage/archive/6.1.0/python-envisage-6.1.0.tar.gz
+	source = https://github.com/enthought/envisage/commit/f23ea386.patch
+	sha256sums = 4576e5e1028a2bc2f2c8dc253af9d4b2b615bca694707cc185f2a052d6b0b6d4
+	sha256sums = fab5b1ed3eed0baed51731b2001bee89743f43ee2b8ea4fc7838a1650586c0a4
+
+pkgname = python-envisage
