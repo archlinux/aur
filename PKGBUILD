@@ -1,58 +1,58 @@
-# Maintainer: Dennis Fink <the_metalgamer@hackerspace.lu>
-#
-# Heavily based on the thttpd PKGBUILD
+# Maintainer: Gaetan Bisson <bisson@archlinux.org>
+# Contributor: Damir Perisa <damir.perisa@bluewin.ch>
+# Contributor: Stewart Starbuck <stewart@stewartstarbuck.co.uk>
 
 pkgname=sthttpd
-pkgver=2.27.0
-pkgrel=1
-pkgdesc='Simple, small, portable, fast, and secure HTTP server'
-url='http://opensource.dyc.edu/sthttpd'
+pkgver=2.27.1
+pkgrel=4
+pkgdesc='Supported fork of the thttpd web server'
+url='https://github.com/blueness/sthttpd'
 license=('custom:BSD')
-arch=('i686' 'x86_64' 'armv7h' 'armv6h')
+arch=('x86_64')
+depends=('libxcrypt')
 backup=('etc/thttpd.conf')
-source=("http://opensource.dyc.edu/pub/sthttpd/${pkgname}-${pkgver}.tar.gz"
-        'logrotate.d'
+validpgpkeys=('1FEDFAD9D82C52A53BABDC799384FA6EF52D4BBA')
+source=("$pkgname-$pkgver.tgz::https://github.com/blueness/sthttpd/archive/v2.27.1.tar.gz"
+        'discreet.patch'
         'service'
-        'config'
-        )
+        'config')
+sha256sums=('a1ee2806432eaf5b5dd267a0523701f9f1fa00fefd499d5bec42165a41e05846'
+            'be953777f2b5b860f1c5a8c96d8478535fe517d76bd4b76597d743a96c2659cf'
+            '6fea42a6876e2a44eff4f76ed64befabe400e5c844b11b782b1507299e5eb986'
+            '1f42c7625422944bd035731d264a711f50b47f4e4f58b6c67693f09fabb76350')
+
 conflicts=('thttpd')
-sha1sums=('40dabbc0ba3769241a9f0cbe55428f3f0e941378'
-          '36ffeefd1675ca4920605b1b5ca32dd5141a8f23'
-          '73bd76de0e89a9cc31e5605659837d83b3c8dfde'
-          '16640870a69cfc48021ee3acfea7c95834549d46'
-          '5f0e499ecd3371f7f495e4c751ccfcbfdcd20e14')
+provides=('thttpd')
+replaces=('thttpd')
+
+prepare() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	patch -p1 -i ../discreet.patch
+	./autogen.sh
+}
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
+	export WEBDIR=/srv/http
+	export WEBGROUP=root
+	./configure \
+		--prefix=/usr \
+		--sbindir=/usr/bin \
+		--mandir=/usr/share/man \
 
-	./configure --prefix=/usr --mandir=/usr/share/man
-	sed "s/^CFLAGS =/CFLAGS = ${CFLAGS} /" -i Makefile */Makefile
 	make
 }
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-
-	install -d "${pkgdir}"/usr/{bin,share/man/man{1,8}}
-	make \
-		bindir="${pkgdir}"/usr/bin \
-		sbindir="${pkgdir}"/usr/bin \
-		WEBDIR="${pkgdir}"/srv/http \
-		mandir="${pkgdir}"/usr/share/man \
-		WEBGROUP=root install
-
+	make DESTDIR="${pkgdir}" install
 	rm -fr "${pkgdir}"/srv
-	chown root:root -R "${pkgdir}"
-	chmod 755 -R "${pkgdir}"/usr/bin # strip needs u+w
 
 	install -Dm644 ../config "${pkgdir}"/etc/thttpd.conf
 	install -Dm644 ../service "${pkgdir}"/usr/lib/systemd/system/thttpd.service
-	install -Dm644 ../logrotate.d "${pkgdir}"/etc/logrotate.d/thttpd
+	install -Dm644 README.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-	install -d "${pkgdir}"/{usr/share/licenses/"${pkgname}",var/log/thttpd}
-    head -n 26 src/thttpd.c > "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+	# Avoid conflicts with Apache
+	mv "${pkgdir}"/usr/bin/htpasswd{,-thttpd}
+	mv "${pkgdir}"/usr/share/man/man1/htpasswd{,-thttpd}.1
 }
-sha1sums=('27ea739c4e3c7922979c4357a80fe6d141da4356'
-          '36ffeefd1675ca4920605b1b5ca32dd5141a8f23'
-          '73bd76de0e89a9cc31e5605659837d83b3c8dfde'
-          '16640870a69cfc48021ee3acfea7c95834549d46')
