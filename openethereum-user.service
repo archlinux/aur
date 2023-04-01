@@ -1,0 +1,14 @@
+[Unit]
+Description=OpenEthereum Daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/openethereum
+Restart=on-failure
+
+# Specifies which signal to use when killing a service. Defaults to SIGTERM.
+# SIGHUP gives openethereum time to exit cleanly before SIGKILL (default 90s)
+KillSignal=SIGHUP
+
+[Install]
+WantedBy=default.target

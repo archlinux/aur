@@ -1,0 +1,30 @@
+pkgbase = openethereum
+	pkgdesc = Fast and feature-rich multi-network Ethereum client
+	pkgver = 3.3.5
+	pkgrel = 2
+	url = https://parity.io/ethereum
+	arch = x86_64
+	license = GPL3
+	makedepends = clang
+	makedepends = cmake
+	makedepends = git
+	makedepends = rust
+	depends = gcc-libs
+	provides = parity
+	provides = parity-ethereum
+	conflicts = parity
+	conflicts = parity-ethereum
+	replaces = parity
+	replaces = parity-ethereum
+	options = !lto
+	backup = etc/openethereum/config.toml
+	source = git+https://github.com/openethereum/openethereum.git#commit=6c2d392d867b058ff867c4373e40850ca3f96969
+	source = config.toml
+	source = openethereum-system.service
+	source = openethereum-user.service
+	sha256sums = SKIP
+	sha256sums = 03f0e3a001927cdd25cf12956e8e3a13bd55bad937a9f2509ccbc1fc58f10899
+	sha256sums = dca7c5e537d29c27f83ddbe4483cbadaff7835afc14ce0d11872fbfb03f23298
+	sha256sums = 4bbad4dc416759013e91edcb3acdc9a1c656f0b47e2c6c8fa9a0e3a354846a0b
+
+pkgname = openethereum
