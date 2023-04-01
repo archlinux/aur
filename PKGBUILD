@@ -1,26 +1,26 @@
-# Maintainer:  Federico Cinelli <cinelli@aur.archlinux.org>
+# Maintainer:  BBaoVanC <bbaovanc@bbaovanc.com>
+# Contributor: Federico Cinelli <cinelli@aur.archlinux.org>
 # Contributor: Dave Reisner <d@falconindy.com>
 # Contributor: Isaac Dupree <id@isaac.cedarswampstudios.org>
 # Contributor: Sebastien Duquette <ekse.0x@gmail.com>
 
 pkgname=smem
 pkgver=1.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Generate reports on memory usage."
 url="https://www.selenic.com/smem/"
 license=("GPL")
 depends=('python')
 optdepends=('python-matplotlib: for chart generation')
 arch=('x86_64')
-#source=("http://www.selenic.com/smem/download/$pkgname-$pkgver.tar.gz")
-source=("$pkgname-$pkgver.tgz::https://selenic.com/repo/smem/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tgz::https://www.selenic.com/repo/smem/archive/$pkgver.tar.gz")
 sha256sums=('5c3907b0ac9d3252cbbc5cb9ebe93f0c2b602df67376d9050c09146871822293')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  #sed -i '1s/python$/python2/' smem
   make smemcap
+  # smem itself doesn't need to be compiled because it's python
 }
 
 package() {
