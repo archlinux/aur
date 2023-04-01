@@ -1,5 +1,5 @@
 diff --git a/Makefile b/Makefile
-index f6e2c6b..71d4d05 100644
+index f6e2c6b..fdce16d 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -1,98 +1,63 @@
@@ -117,7 +117,7 @@ index f6e2c6b..71d4d05 100644
 +	$(AR) rvs libusockets.a *.o
 +	$(CC) -shared -o $(LIBTARGET) *.o -Wl,-soname,$(LIBTARGET) `$(PKG_CONFIG) --libs $(REQUIRES)` $(LDFLAGS)
 +	sed -e "s:@PREFIX@:$(prefix):" -e "s:@REQUIRES@:$(REQUIRES):" \
-+	-e "s:@LIB@:$(LIB):" -e "s:@VERSION@:$(VERSION):" libusockets.pc.in > libusockets.pc
++	-e "s:@LIB@:$(LIB):" -e "s:@VERSION@:$(VERSION):" usockets.pc.in > usockets.pc
  
 -# Builds all examples
 -.PHONY: examples
@@ -132,21 +132,21 @@ index f6e2c6b..71d4d05 100644
 +	install -m 755 $(LIBTARGET) "$(DESTDIR)$(libdir)"
 +	ln -sf $(LIBTARGET) "$(DESTDIR)$(libdir)/libusockets.so"
 +	install -m 755 libusockets.a "$(DESTDIR)$(libdir)/"
-+	install -m 644 libusockets.pc "$(DESTDIR)$(libdir)/pkgconfig/"
++	install -m 644 usockets.pc "$(DESTDIR)$(libdir)/pkgconfig/"
  
  clean:
  	rm -f *.o
  	rm -f *.a
 +	rm -f *.so
  	rm -rf .certs
-+	rm -f libusockets.pc
++	rm -f usockets.pc
 +
 +.PHONY: default install clean
-diff --git a/libusockets.pc.in b/libusockets.pc.in
+diff --git a/usockets.pc.in b/usockets.pc.in
 new file mode 100644
 index 0000000..b818020
 --- /dev/null
-+++ b/libusockets.pc.in
++++ b/usockets.pc.in
 @@ -0,0 +1,12 @@
 +prefix=@PREFIX@
 +libdir=${prefix}/@LIB@
