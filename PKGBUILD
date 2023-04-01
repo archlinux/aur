@@ -17,22 +17,25 @@ depends=(
 )
 makedepends=(zip)
 
-source=("https://download.cyberghostvpn.com/linux/cyberghostvpn-fedora-32-${pkgver}.zip")
-sha256sums=('772d3278eaffa7dd5f91a5d988efbf0ff6e0521188cfb5445c14207d3172ee44')
+_variant=ubuntu-20.04
+source=("https://download.cyberghostvpn.com/linux/cyberghostvpn-${_variant}-${pkgver}.zip")
+sha256sums=('c976ed4f19adbf0c4d0a7a7032419b66f19684977dec8c5237ed1b0675141a96')
 
-_archive="${pkgname}-fedora-32-${pkgver}"
+_archive="${pkgname}-${_variant}-${pkgver}"
 
 package() {
+  _installdir=usr/local/cyberghost
+
   cd "$_archive"
 
-  install -Dm 755 cyberghost/cyberghostvpn "$pkgdir/opt/cyberghost/cyberghostvpn"
-  install -Dm 755 cyberghost/update-systemd-resolved "$pkgdir/opt/cyberghost/update-systemd-resolved"
+  install -Dm 755 cyberghost/cyberghostvpn "$pkgdir/${_installdir}/cyberghostvpn"
+  install -Dm 755 cyberghost/update-systemd-resolved "$pkgdir/${_installdir}/update-systemd-resolved"
 
-  install -Dm 644 cyberghost/certs/openvpn/ca.crt "$pkgdir/opt/cyberghost/certs/openvpn/ca.crt"
-  install -Dm 644 cyberghost/certs/openvpn/client.crt "$pkgdir/opt/cyberghost/certs/openvpn/client.crt"
-  install -Dm 644 cyberghost/certs/openvpn/client.key "$pkgdir/opt/cyberghost/certs/openvpn/client.key"
+  install -Dm 644 cyberghost/certs/openvpn/ca.crt "$pkgdir/${_installdir}/certs/openvpn/ca.crt"
+  install -Dm 644 cyberghost/certs/openvpn/client.crt "$pkgdir/${_installdir}/certs/openvpn/client.crt"
+  install -Dm 644 cyberghost/certs/openvpn/client.key "$pkgdir/${_installdir}/certs/openvpn/client.key"
 
   install -dm 755 $pkgdir/usr/bin
-  ln -s /opt/cyberghost/cyberghostvpn $pkgdir/usr/bin/cyberghostvpn
-  ln -s /opt/cyberghost/update-systemd-resolved $pkgdir/usr/bin/update-systemd-resolved
+  ln -s /${_installdir}/cyberghostvpn $pkgdir/usr/bin/cyberghostvpn
+  ln -s /${_installdir}/update-systemd-resolved $pkgdir/usr/bin/update-systemd-resolved
 }
