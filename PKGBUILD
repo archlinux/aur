@@ -2,7 +2,7 @@
 
 pkgname=sing-box-beta
 _pkgname=sing-box
-_version="1.2.1"
+_version="1.2.2"
 pkgver="${_version//-/.}"
 pkgrel=1
 
@@ -14,7 +14,7 @@ license=('GPL3 with name use or association addition')
 makedepends=('go')
 
 source=("$_pkgname-$_version.tar.gz::https://github.com/SagerNet/sing-box/archive/v$_version.tar.gz")
-sha256sums=('0f304b75c2e9f61e3f7808f23fe8fbe08161553475d9bec0dea4a5acf4452d2d')
+sha256sums=('eaac366539cba4c736f3957e959f9a62b53f932e442fba584577218fa2e71b5f')
 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -43,8 +43,7 @@ build(){
         -ldflags "-s -w -buildid= -X github.com/sagernet/sing-box/constant.Version=v$_version -linkmode=external" \
         ./cmd/sing-box
 
-    sed -i "/^\[Service\]$/a User=$_pkgname
-            s|WorkingDirectory=\(.*\)$|WorkingDirectory=-\1\nExecStartPre=+install -o $_pkgname -g $_pkgname -d -m 0700 \1|" release/config/$_pkgname*.service
+    sed -i "/^\[Service\]$/a User=$_pkgname" release/config/$_pkgname*.service
 
     echo "u $_pkgname - \"Sing-box Service\" - -" > "release/config/$_pkgname.sysusers"
 }
