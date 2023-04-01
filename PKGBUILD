@@ -1,9 +1,9 @@
 # Maintainer: Bjoern Franke <bjo+aur@schafweide.org>
 pkgname=python-markdownify
 _name=markdownify
-pkgver=0.9.2
+pkgver=0.11.6
 pkgrel=1
-pkgdesc="Python software for USB Wireless WeatherStations"
+pkgdesc="Convert HTML to Markdown"
 arch=('any')
 url="http://github.com/matthewwithanm/python-markdownify"
 license=('MIT')
@@ -11,7 +11,7 @@ makedepends=('python-pip')
 depends=('python-beautifulsoup4' 'python-six')
 options=(!emptydirs)
 source=(https://pypi.io/packages/source/m/$_name/$_name-$pkgver.tar.gz)
-sha512sums=('6ee76aa0eedcec1e25a61197d8913a543f9d7ac0a0ca8454d8a0927999d18a6fb77db32589b6bb76976fec69dd523081df339cd512c9881bbe8d69cedd893a02')
+sha512sums=('9ab2bf56981081737e5ed95aa96ec16c2644fecca62763a4ea4ba1f6ebb61b671cecc857abd4a92a738a9762104b2d9beb92b320638d80dca3ad4ee7621d02e7')
 
 
 package() {
