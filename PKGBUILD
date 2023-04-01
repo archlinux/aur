@@ -6,24 +6,19 @@ function _ifmod {
 
 pkgname=alvr-git
 _pkgname=${pkgname%-git}
-pkgver=r2361.1845b3ba
+pkgver=r2427.fa2bcea7
 pkgrel=1
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
 url="https://github.com/alvr-org/ALVR"
 license=('MIT')
 groups=()
-depends=('vulkan-driver' 'libunwind')
-makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'jack' 'libxrandr' 'nasm')
-if _ifmod nvidia_drm; then
-    depends+=('ffmpeg')
-else
-    makedepends+=('unzip')
-fi
+depends=('vulkan-driver' 'libunwind' 'libdrm')
+makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'jack' 'libxrandr' 'nasm' 'unzip' 'ffnvcodec-headers')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!lto')
-source=("${_pkgname}"::'git+https://github.com/alvr-org/ALVR.git' "${_pkgname}-nvidia.patch")
+source=("${_pkgname}"::'git+https://github.com/alvr-org/ALVR.git')
 md5sums=('SKIP'
          'e03757b1ef3c152a340c08f23c7fe38b')
 
@@ -41,10 +36,6 @@ prepare() {
 	echo "[profile.release]
 lto=true" >> Cargo.toml
 
-    if _ifmod nvidia_drm; then
-        patch -p1 -i "$srcdir/$_pkgname-nvidia.patch"
-    fi
-
 	cargo update
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
@@ -61,29 +52,26 @@ build() {
 	export ALVR_OPENVR_DRIVER_ROOT_DIR=$ALVR_LIBRARIES_DIR/steamvr/alvr/
 	export ALVR_VRCOMPOSITOR_WRAPPER_DIR=$ALVR_LIBRARIES_DIR/alvr/
 
-    if ! _ifmod nvidia_drm; then
-        cargo xtask prepare-deps --platform linux --no-nvidia
-    fi
+    cargo xtask prepare-deps --platform linux
 
 	cargo build \
 		--frozen \
 		--release \
 		-p alvr_server \
 		-p alvr_dashboard \
-		-p alvr_launcher \
 		-p alvr_vulkan_layer \
 		-p alvr_vrcompositor_wrapper
 
 	for res in 16x16 32x32 48x48 64x64 128x128 256x256; do
 		mkdir -p "icons/hicolor/${res}/apps/"
-		convert 'alvr/launcher/res/launcher.ico' -thumbnail "${res}" -alpha on -background none -flatten "./icons/hicolor/${res}/apps/alvr.png"
+		convert 'alvr/dashboard/resources/dashboard.ico' -thumbnail "${res}" -alpha on -background none -flatten "./icons/hicolor/${res}/apps/alvr.png"
 	done
 }
 
 package() {
 	cd "$srcdir/${_pkgname}"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm755 target/release/{alvr_dashboard,alvr_launcher} -t "$pkgdir/usr/bin/"
+	install -Dm755 target/release/alvr_dashboard -t "$pkgdir/usr/bin/"
 
 	# vrcompositor wrapper
 	install -Dm755 target/release/alvr_vrcompositor_wrapper "$pkgdir/usr/lib/alvr/vrcompositor-wrapper"
@@ -95,10 +83,6 @@ package() {
 	# Vulkan Layer
 	install -Dm644 target/release/libalvr_vulkan_layer.so -t "$pkgdir/usr/lib/"
 	install -Dm644 alvr/vulkan_layer/layer/alvr_x86_64.json -t "$pkgdir/usr/share/vulkan/explicit_layer.d/"
-
-	# resources (dashboard)
-	install -d $pkgdir/usr/share/alvr/dashboard
-	cp -ar dashboard $pkgdir/usr/share/alvr/
 
 	# Desktop
 	install -Dm644 packaging/freedesktop/alvr.desktop -t "$pkgdir/usr/share/applications"
