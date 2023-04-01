@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile-git
-pkgver=0.10.15.r20.g24b32c0
-pkgrel=1
+pkgver=0.10.16.r0.g558d51f
+pkgrel=2
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
 url="https://github.com/sile-typesetter/${pkgname%-git}"
