@@ -1,29 +1,32 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 
 pkgname=gnu-apl
-pkgver=1.7
+pkgver=1.8
 pkgrel=3
-url="http://www.gnu.org/software/apl/"
+url="https://www.gnu.org/software/apl/"
 pkgdesc="An (almost) complete implementation of ISO standard 13751"
-arch=('i686' 'x86_64')
-depends=('ncurses' 'postgresql-libs' 'gcc-libs' 'sqlite')
+arch=('x86_64')
+depends=('ncurses' 'postgresql-libs' 'gcc-libs' 'sqlite' 'libnsl' 'pcre')
 license=('GPL3')
-source=("ftp://ftp.gnu.org/gnu/apl/apl-${pkgver}.tar.gz")
-md5sums=('a06456f4aa9e349700da51c8efd14150')
+#source=("https://ftpmirror.gnu.org/apl/apl-${pkgver}.tar.gz"{,.sig})
+# official https gnu site not updated any more?
+source=("https://mirrors.kernel.org/gnu/apl/apl-${pkgver}.tar.gz"{,.sig})
+sha256sums=('144f4c858a0d430ce8f28be90a35920dd8e0951e56976cb80b55053fa0d8bbcb'
+            'SKIP')
+validpgpkeys=('3EB2E2ECCB2F040A26CB7F2192B68B71531B6686')
 
 prepare() {
     cd "$srcdir/apl-$pkgver"
     # The default color scheme is black-on-black in some terminals
-    sed -i 's/^  Color.*ANSI/#&/' gnu-apl.d/preferences
-    sed -i '0,/^# Color.*CURSES/{s/^# Color.*CURSES/Color\tCURSES/}' gnu-apl.d/preferences
-
-    # SVN 908 (remove in 1.8)
-    sed -i '888 s/ || / || nc == /g' src/Symbol.cc
+    sed -i '64 s/^.*Color.*ANSI/#&/' gnu-apl.d/preferences{,.in}
+    sed -i '65 s/^#.*Color.*CURSES/Color\tCURSES/' gnu-apl.d/preferences{,.in}
 }
 
 build() {
     cd "$srcdir/apl-$pkgver"
-    CFLAGS='-std=gnu99' ./configure --prefix=/usr 
+    #CFLAGS='-std=gnu99' ./configure --prefix=/usr --sysconfdir=/etc
+    # FS#60643 (remove in 1.8)
+    CFLAGS='-std=gnu99' CXX_WERROR='no' ./configure --prefix=/usr --sysconfdir=/etc
     make PREFIX=/usr -j1
 }
 
@@ -31,4 +34,3 @@ package() {
     cd "$srcdir/apl-$pkgver"
     make PREFIX=/usr DESTDIR="$pkgdir" install
 }
-
