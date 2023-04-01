@@ -12,7 +12,8 @@ pkgname="ocaml-$_projectname"
 pkgver='2.2.7'
 pkgrel='1'
 pkgdesc='Unit testing framework for OCaml'
-arch=('x86_64' 'i686' 'armv7h' 'aarch64')
+# If you're running on i686 or pentium4, you have to add it to the arch array of the cppo, ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
+arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/gildor478/$_projectname"
 license=('MIT')
 depends=('ocaml>=4.04.0' 'ocaml-lwt>=2.5.2' 'ocaml-seq' 'ocaml-stdlib-shims')
