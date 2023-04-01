@@ -5,7 +5,7 @@ _zrtpcppver='6b3cd8e6783642292bad0c21e3e5e5ce45ff3e03'
 _pkgname=python3-sipsimple
 pkgname=python-sipsimple
 pkgver=5.2.6
-pkgrel=2
+pkgrel=3
 pkgdesc='SIP SIMPLE SDK is a Python library for desktop operating'
 license=('GPL-3+')
 arch=('aarch64' 'x86_64')
@@ -28,6 +28,7 @@ depends=(
   'python-msrplib'
   'python-xcaplib'
   'util-linux'
+  'libvpx'
   )
 conflicts=('python3-sipsimple')
 provides=('python3-sipsimple')

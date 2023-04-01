@@ -1,7 +1,7 @@
 pkgbase = python-sipsimple
 	pkgdesc = SIP SIMPLE SDK is a Python library for desktop operating
 	pkgver = 5.2.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AGProjects/python3-sipsimple
 	arch = aarch64
 	arch = x86_64
@@ -23,6 +23,7 @@ pkgbase = python-sipsimple
 	depends = python-msrplib
 	depends = python-xcaplib
 	depends = util-linux
+	depends = libvpx
 	provides = python3-sipsimple
 	conflicts = python3-sipsimple
 	replaces = python3-sipsimple
