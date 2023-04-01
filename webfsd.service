@@ -1,0 +1,11 @@
+[Unit]
+Description=Simple and instant http server.
+Documentation=man:webfsd(1)
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/conf.d/webfsd
+ExecStart=/usr/bin/webfsd $WEBFSD_ARGS -F
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,250 @@
+# This patch performs the following:
+#
+# 1) user/group names my now be set to the system maximum using
+#    sysconf(_SC_LOGIN_NAME_MAX). They were previously hardcoded to 16 chars.
+#
+# 2) supplementary groups are now set according to the user webfs is running as.
+#    previously they were left as the calling user, which could be dangerous
+#    ex: sudo webfsd -u nobody, would leave webfsd with all of root's groups!
+#
+# 3) the supplementary group list is no longer made empty when using -g
+#
+# 4) supplementary groups are now checked for read access when generating
+#    directory listings
+#
+# 5) in ls.c/ls() changed type of uid and gid to uid_t and gid_t
+#
+# 6) in ls.c/ls() fixed a problem where the uid of the file was being compared
+#    to the gid of the user to check for readability
+#
+# 7) added a -G option to ignore/remove all supplementary groups
+#
+# 8) updated man page to reflect -G option
+#
+# 9) when the uid is 0, all files are now displayed as readable.
+#
+
+diff -urp webfs-1.21-orig/httpd.h webfs-1.21/httpd.h
+--- webfs-1.21-orig/httpd.h	2004-06-10 05:45:50.000000000 -0400
++++ webfs-1.21/httpd.h	2010-03-27 14:57:07.631540000 -0400
+@@ -169,6 +169,8 @@ extern int    lifespan;
+ extern int    no_listing;
+ extern time_t now;
+ extern int     have_tty;
++extern gid_t  *grp_list;
++extern int    grp_num;
+ 
+ #ifdef USE_SSL
+ extern int      with_ssl;
+diff -urp webfs-1.21-orig/ls.c webfs-1.21/ls.c
+--- webfs-1.21-orig/ls.c	2004-06-10 05:45:50.000000000 -0400
++++ webfs-1.21/ls.c	2010-03-28 10:52:09.449259926 -0400
+@@ -194,7 +194,9 @@ ls(time_t now, char *hostname, char *fil
+     struct myfile  **files = NULL;
+     struct myfile  **re1;
+     char           *h1,*h2,*re2,*buf = NULL;
+-    int            count,len,size,i,uid,gid;
++    int            count,len,size,i;
++    uid_t          uid;
++    gid_t          gid;
+     char           line[1024];
+     char           *pw = NULL, *gr = NULL;
+ 
+@@ -241,14 +243,23 @@ ls(time_t now, char *hostname, char *fil
+ 	files[count]->r = 0;
+ 	if (S_ISDIR(files[count]->s.st_mode) ||
+ 	    S_ISREG(files[count]->s.st_mode)) {
+-	    if (files[count]->s.st_uid == uid &&
++	    if (uid == 0)
++	        files[count]->r = 1;
++	    else if (files[count]->s.st_uid == uid &&
+ 		files[count]->s.st_mode & 0400)
+ 		files[count]->r = 1;
+-	    else if (files[count]->s.st_uid == gid &&
++	    else if (files[count]->s.st_gid == gid &&
+ 		     files[count]->s.st_mode & 0040)
+-		files[count]->r = 1; /* FIXME: check additional groups */
++		files[count]->r = 1;
+ 	    else if (files[count]->s.st_mode & 0004)
+ 		files[count]->r = 1;
++	    else {
++	        for (i = 0; i < grp_num; i++) {
++	            if (files[count]->s.st_gid == grp_list[i] &&
++	                files[count]->s.st_mode & 0400)
++	                files[count]->r = 1;
++	        }
++	    }
+ 	}
+     }
+     closedir(dir);
+diff -urp webfs-1.21-orig/webfsd.c webfs-1.21/webfsd.c
+--- webfs-1.21-orig/webfsd.c	2004-06-10 05:45:50.000000000 -0400
++++ webfs-1.21/webfsd.c	2010-03-28 10:36:33.992517000 -0400
+@@ -42,8 +42,8 @@ char    *listen_port   = "8000";
+ int     virtualhosts   = 0;
+ int     canonicalhost  = 0;
+ char    server_host[256];
+-char    user[17];
+-char    group[17];
++char    *user;
++char    *group;
+ char    *mimetypes     = MIMEFILE;
+ char    *pidfile       = NULL;
+ char    *logfile       = NULL;
+@@ -57,6 +57,9 @@ int     have_tty       = 1;
+ int     max_conn       = 32;
+ int     lifespan       = -1;
+ int     no_listing     = 0;
++int     setsupgroups   = 1;
++gid_t   *grp_list      = NULL;
++int     grp_num        = 0;
+ 
+ time_t  now;
+ int     slisten;
+@@ -167,6 +170,7 @@ usage(char *name)
+ 	gr = getgrgid(getgid());
+ 	fprintf(stderr,
+ 		"  -u user  run as user >user<                  [%s]\n"
++		"  -G       set supplementary group list to empty\n"
+ 		"  -g group run as group >group<                [%s]\n",
+ 		pw ? pw->pw_name : "???",
+ 		gr ? gr->gr_name : "???");
+@@ -189,6 +193,7 @@ fix_ug(void)
+ {
+     struct passwd  *pw = NULL;
+     struct group   *gr = NULL;
++    int numgroupsmax, i;
+     
+     /* root is allowed to use any uid/gid,
+      * others will get their real uid/gid */
+@@ -214,6 +219,20 @@ fix_ug(void)
+ 	exit(1);
+     }
+ 
++    /* get supplementary groups */
++    if (setsupgroups) {
++        numgroupsmax = sysconf(_SC_NGROUPS_MAX) + 1;
++        grp_list = (gid_t*) malloc(numgroupsmax * sizeof(gid_t));
++
++    	if (grp_list != NULL) {
++            grp_num = getgrouplist(pw->pw_name, pw->pw_gid,
++                                      grp_list, &numgroupsmax);
++        } else {
++            xerror(LOG_ERR, "failed to get group list - "
++                       "removing all sup groups", NULL);
++        }
++    }
++
+     /* chroot to $DOCUMENT_ROOT (must be done here as getpwuid needs
+        /etc and chroot works as root only) */
+     if (do_chroot) {
+@@ -227,14 +246,22 @@ fix_ug(void)
+     /* set group */
+     if (getegid() != gr->gr_gid || getgid() != gr->gr_gid) {
+ 	setgid(gr->gr_gid);
+-	setgroups(0, NULL);
+     }
+     if (getegid() != gr->gr_gid || getgid() != gr->gr_gid) {
+ 	xerror(LOG_ERR,"setgid failed",NULL);
+ 	exit(1);
+     }
+-    strncpy(group,gr->gr_name,16);
++    
++    if (strlen(gr->gr_name) < sysconf(_SC_LOGIN_NAME_MAX))
++        strcpy(group,gr->gr_name);
++    else
++        xerror(LOG_ERR,"groupname too long",NULL);
+ 
++    /* set supplementary groups */
++    if (geteuid() == 0)
++        if (setgroups(grp_num, grp_list) != 0)
++            xerror(LOG_ERR, "failed to set supplementary groups", NULL);
++    
+     /* set user */
+     if (geteuid() != pw->pw_uid || getuid() != pw->pw_uid)
+ 	setuid(pw->pw_uid);
+@@ -242,11 +269,23 @@ fix_ug(void)
+ 	xerror(LOG_ERR,"setuid failed",NULL);
+ 	exit(1);
+     }
+-    strncpy(user,pw->pw_name,16);
+-
+-    if (debug)
+-	fprintf(stderr,"fix_ug: uid=%d euid=%d / gid=%d egid=%d\n",
++    
++    if (strlen(pw->pw_name) < sysconf(_SC_LOGIN_NAME_MAX))
++        strcpy(user,pw->pw_name);
++    else
++        xerror(LOG_ERR,"username too long",NULL);
++    
++    if (debug) {
++	fprintf(stderr,"fix_ug: uid=%d euid=%d / gid=%d egid=%d / gids: ",
+ 		getuid(),geteuid(),getgid(),getegid());
++
++	for (i = 0; i < grp_num; i++) {
++		fprintf(stderr, "%d ", grp_list[i]);
++	}
++
++	fprintf(stderr, "\n");
++    }
++
+ }
+ 
+ /* ---------------------------------------------------------------------- */
+@@ -687,6 +726,10 @@ main(int argc, char *argv[])
+     char serv[16];
+     char mypid[12];
+ 
++    /* allocate space for user/group names. _SC_LOGIN_NAME_MAX includes \0 */
++    user  = (char *)malloc(sizeof(char) * sysconf(_SC_LOGIN_NAME_MAX));
++    group = (char *)malloc(sizeof(char) * sysconf(_SC_LOGIN_NAME_MAX));
++
+     uid  = getuid();
+     euid = geteuid();
+     if (uid != euid)
+@@ -702,7 +745,7 @@ main(int argc, char *argv[])
+     /* parse options */
+     for (;;) {
+ 	if (-1 == (c = getopt(argc,argv,"hvsdF46jS"
+-			      "r:R:f:p:n:N:i:t:c:a:u:g:l:L:m:y:b:k:e:x:C:P:~:")))
++			      "r:R:f:p:n:N:i:t:c:a:u:Gg:l:L:m:y:b:k:e:x:C:P:~:")))
+ 	    break;
+ 	switch (c) {
+ 	case 'h':
+@@ -759,10 +802,19 @@ main(int argc, char *argv[])
+ 	    max_dircache = atoi(optarg);
+ 	    break;
+ 	case 'u':
+-	    strncpy(user,optarg,16);
++	    if (strlen(optarg) < sysconf(_SC_LOGIN_NAME_MAX))
++	    	strcpy(user,optarg);
++	    else
++                xerror(LOG_ERR,"username too long",NULL);
++	    break;
++	case 'G':
++	    setsupgroups = 0;
+ 	    break;
+ 	case 'g':
+-	    strncpy(group,optarg,16);
++	    if (strlen(optarg) < sysconf(_SC_LOGIN_NAME_MAX))
++	    	strcpy(group,optarg);
++	    else
++                xerror(LOG_ERR,"groupname too long",NULL);
+ 	    break;
+ 	case 'L':
+ 	    flushlog = 1;
+diff -urp webfs-1.21-orig/webfsd.man webfs-1.21/webfsd.man
+--- webfs-1.21-orig/webfsd.man	2004-06-08 08:52:02.000000000 -0400
++++ webfs-1.21/webfsd.man	2010-03-28 10:37:09.495798000 -0400
+@@ -95,6 +95,9 @@ Use >file< as pidfile.
+ Set \fBu\fPid to >user< (after binding to the tcp port).  This
+ option is allowed for root only.
+ .TP
++.B -G
++Set the supplementary group list to empty.
++.TP
+ .B -g group
+ Set \fBg\fPid to >group< (after binding to the tcp port).  This
+ option is allowed for root only.
+
+
