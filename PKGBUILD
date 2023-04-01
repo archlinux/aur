@@ -3,7 +3,7 @@
 pkgbase=purc
 pkgname=purc
 pkgver=0.9.7
-pkgrel=4
+pkgrel=6
 pkgdesc="The prime HVML interpreter for C Language."
 arch=(x86_64
     aarch64
@@ -18,8 +18,10 @@ provides=(${pkgname}
         purc-fetcher)
 conflicts=(${pkgname})
 replaces=(domruler
-        purc-fetcher)
-depends=(glib2)
+          purc-fetcher)
+depends=(glib2
+        glibc
+        python)
 makedepends=(bison
             cmake
             cython
@@ -29,26 +31,37 @@ makedepends=(bison
             ccache
             curl
             gcc
+            gperf
+            lua-lgi
             ncurses
+            libgcrypt
             libjpeg-turbo
+            libnotify
+            libmanette
+            libtasn1
+            libsecret
+            libseccomp
+            libpsl
             libxml2
             libxslt
             libsoup
             icu
             mariadb
-            python
             openssl
             sqlite
             systemd
             pkgconf
-            wtf
             zlib)
+checkdepends=(check
+            gtest
+            valgrind)
 optdepends=('python-numpy: Scientific tools for Python'
             'webkit2gtk-hvml: Web content engine for GTK (HVML)'
             'webkit2gtk: Web content engine for GTK'
             'xguipro: xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit.')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/ver-${pkgver}.tar.gz")
 sha256sums=('8dff65b5f2bce1e4743c062b29e6860f8e7d37dfa251437473cb5917fc1c37ed')
+options=('!strip')
 
 build() {
     cd "${srcdir}/PurC-ver-${pkgver}/"
@@ -65,6 +78,12 @@ build() {
         -G Ninja
 
     ninja -C build
+}
+
+check() {
+    cd "${srcdir}/PurC-ver-${pkgver}/build"
+#     ctest --test-dir build --output-on-failure
+    bash run_all_tests.sh
 }
 
 package() {
