@@ -21,7 +21,7 @@ pkgbase = messenger-notify-bin
 	sha256sums_x86_64 = SKIP
 	source_aarch64 = https://julianfairfax.gitlab.io/messenger-notify-prebuilt/arm64/messenger-notify
 	source_aarch64 = https://julianfairfax.gitlab.io/messenger-notify-prebuilt/arm64/messenger-notify.asc
-	sha256sums_aarch64 = 7f6bd9e1eee3007c7cc7d2172ace392fc8bc2343af6302ba03a601e9ed3d3984
+	sha256sums_aarch64 = be1f5da8433f1bfbe6dd05a9e7a587dba53295fcce81e98223c519adcde1e22c
 	sha256sums_aarch64 = SKIP
 
 pkgname = messenger-notify-bin
