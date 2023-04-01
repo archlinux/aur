@@ -1,4 +1,5 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: André Herbst <moormaster@gmx.net>
+# Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 # Contributor: Hojjat Ali Mohammadi <safeith@gmail.com>
 
 pkgname=cyberghostvpn
