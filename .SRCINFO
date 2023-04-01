@@ -5,6 +5,7 @@ pkgbase = beekeeper-studio
 	url = https://github.com/beekeeper-studio/beekeeper-studio
 	arch = x86_64
 	arch = i686
+	arch = pentium4
 	arch = armv7h
 	arch = aarch64
 	license = GPL3
