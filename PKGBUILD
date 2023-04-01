@@ -3,7 +3,7 @@
 pkgbase=ninjas2
 pkgname=(ninjas2 ninjas2-{lv2,standalone,vst})
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A sample slicer audio plugin"
 arch=(x86_64)
 url="https://github.com/rghvdberg/ninjas2"
