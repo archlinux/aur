@@ -1,6 +1,6 @@
 pkgbase = gplugin-hg
 	pkgdesc = GObject based library that implements a reusable plugin system
-	pkgver = 1951.7e519d51af72
+	pkgver = 1960.7371e0ba5b32
 	pkgrel = 1
 	url = https://keep.imfreedom.org/gplugin/gplugin/
 	arch = i686
@@ -17,6 +17,7 @@ pkgbase = gplugin-hg
 	makedepends = libxslt
 	makedepends = help2man
 	makedepends = vala
+	makedepends = gi-docgen
 	depends = glib2
 	depends = gtk4
 	depends = lua
