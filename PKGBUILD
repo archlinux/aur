@@ -5,7 +5,7 @@ pkgname='ocaml-inotify'
 pkgver='2.4.1'
 pkgrel='1'
 pkgdesc='OCaml bindings for inotify'
-# If you're running on i686 or pentium4, you have to add it to the arch array of the cppo, ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
+# If you're running on i686, pentium4, armv7h or aarch64, you have to add it to the arch array of the cppo, ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/whitequark/$pkgname"
 license=('custom:LGPL2.1 with linking exception')
