@@ -4,7 +4,7 @@ pkgname="ocaml-$_projectname"
 pkgver='15.0.0'
 pkgrel='2'
 pkgdesc='Unicode character database decoder for OCaml'
-arch=('x86_64' 'i686' 'armv7h' 'aarch64')
+arch=('x86_64' 'i486' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://erratique.ch/software/$_projectname"
 license=('ISC')
 depends=('ocaml>=4.01.0' 'ocaml-xmlm')
