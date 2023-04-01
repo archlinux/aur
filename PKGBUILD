@@ -1,5 +1,9 @@
 # Maintainer: Łukasz Mariański <lmarianski at protonmail dot com>
 
+function _ifmod {
+    lsmod | grep "$1" &> /dev/null
+}
+
 pkgname=alvr
 pkgver=19.1.0.r0.g969899c7
 pkgrel=2
@@ -45,7 +49,11 @@ build() {
 	export ALVR_OPENVR_DRIVER_ROOT_DIR="$ALVR_LIBRARIES_DIR/steamvr/alvr/"
 	export ALVR_VRCOMPOSITOR_WRAPPER_DIR="$ALVR_LIBRARIES_DIR/alvr/"
 
-    cargo xtask prepare-deps --platform linux
+	if ! _ifmod nvidia_drm; then
+	    cargo xtask prepare-deps --platform linux --no-nvidia
+	else
+		cargo xtask prepare-deps --platform linux
+	fi
 
 	cargo build \
 		--frozen \
