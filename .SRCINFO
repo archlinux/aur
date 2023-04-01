@@ -1,20 +1,17 @@
 pkgbase = ucx
 	pkgdesc = UltraCompare is a powerful compare tool for files and folders.
 	pkgver = 21.00.0.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ultraedit.com/products/ultracompare/
 	install = ucx.install
 	arch = x86_64
 	license = custom
 	depends = desktop-file-utils
 	depends = gtk2
-	depends = libjpeg6
+	depends = libjpeg-turbo
 	depends = libpng12
 	depends = libsm
 	source = https://downloads.ultraedit.com/main/uc/linux/tar/ucx-21.00.0.18_amd64.tar.gz
-	source = https://www.ultraedit.com/assets/images/icons/uc.png
 	md5sums = e3277d6d1c792294ae17be4d9bc63405
-	md5sums = 8d3fc8b36460656eb1636abbace1996b
 
 pkgname = ucx
-
