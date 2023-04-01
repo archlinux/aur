@@ -1,7 +1,7 @@
 pkgbase = blink
 	pkgdesc = Fully featured, easy to use SIP client with a Qt based UI
 	pkgver = 5.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://icanblink.com
 	arch = aarch64
 	arch = x86_64
@@ -17,7 +17,6 @@ pkgbase = blink
 	depends = python-oauth2client
 	depends = python-pgpy
 	depends = python-pyopenssl
-	depends = python-pyqt5
 	depends = python-pyqt5-webkit
 	depends = python-requests
 	depends = python-service-identity

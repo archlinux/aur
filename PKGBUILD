@@ -4,7 +4,7 @@
 _pkgname=blink-qt
 pkgname=blink
 pkgver=5.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fully featured, easy to use SIP client with a Qt based UI'
 arch=('aarch64' 'x86_64')
 url='https://icanblink.com'
@@ -21,7 +21,7 @@ depends=(
   'python-oauth2client'
   'python-pgpy'
   'python-pyopenssl'
-  'python-pyqt5'
+#  'python-pyqt5' currently python-pyqt5-webkit provides python-pyqt5
   'python-pyqt5-webkit'
   'python-requests'
   'python-service-identity'
