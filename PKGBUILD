@@ -1,6 +1,6 @@
 pkgname=vapoursynth-preview-iew-git
 pkgver=0.4.3.3.g3e69628
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone previewer for VapourSynth scripts (GIT version)"
 arch=('any')
 url='https://github.com/Irrational-Encoding-Wizardry/vs-preview'
@@ -19,7 +19,7 @@ makedepends=('git'
     'python-wheel'
 )
 provides=("vapoursynth-preview")
-conflicts=("vapoursynth-preview")
+conflicts=("vapoursynth-preview" "vapoursynth-preview-git")
 source=("vapoursynth-preview::git+https://github.com/Irrational-Encoding-Wizardry/vs-preview.git")
 sha256sums=('SKIP')
 
