@@ -3,7 +3,7 @@ pkgname='shd'
 pkgver='0.1.4'
 pkgrel='2'
 pkgdesc='Console tool to display drive list with commonly checked smart info'
-arch=('x86_64' 'i686' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/alttch/$pkgname"
 license=('MIT')
 depends=('smartmontools>=7.0')
