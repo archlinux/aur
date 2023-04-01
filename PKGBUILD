@@ -8,10 +8,10 @@
 : ${use_ibm_tss:=1}
 
 pkgname=openssl-tpm2-engine
-_commit=261becb65db0cbbefc1bcd32fa610e03e1cde628
-pkgver=3.4.0
+_commit=a3368236effc8309d139b570c603ce60e3ab4d95
+pkgver=4.0.0
 pkgrel=1
-pkgdesc="OpenSSL engine for TPM-backed keys using IBM's TPM2 software stack"
+pkgdesc="OpenSSL engine & provider for TPM-backed keys using IBM's TPM2 software stack"
 arch=(x86_64)
 url="https://git.kernel.org/pub/scm/linux/kernel/git/jejb/openssl_tpm2_engine.git"
 license=('LGPL2.1')
