@@ -2,11 +2,12 @@
 
 _gitname=VmChamp
 pkgname=vmchamp-git
-pkgver=v0.0.1.r4.ge37e9ef
-pkgrel=4
+pkgver=v0.0.2.r8.g1e2da17
+pkgrel=1
 pkgdesc="Simple and fast creation of throwaway VMs on your local machine."
 arch=('x86_64')
 license=('custom')
+conflicts=('vmchamp-bin')
 url='https://github.com/wubbl0rz/VmChamp'
 
 depends=('zlib' 'libvirt')
@@ -44,9 +45,7 @@ package()
     cd "$srcdir/${_gitname}/output/bin/Release/linux-x64"
 
     # Copy Linux binary
-    install -d -m0755 -g 0 "${pkgdir}"/usr/bin
-    install -m0755 -g 0 -t "${pkgdir}"/usr/bin/ ${_gitname}
-
-    # Copy Linux dependencies (if any needed in future)
-    #install -m0755 -g 0 -t "${pkgdir}"/usr/lib *.so
+    install -dm 0755 "${pkgdir}"/usr/bin
+    install -m 0755 ${_gitname} "${pkgdir}"/usr/bin/
+    ln -s VmChamp "${pkgdir}"/usr/bin/vmchamp
 }
