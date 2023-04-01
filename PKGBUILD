@@ -1,7 +1,7 @@
 # Maintainer: Matt Fields (0x6d617474) <aur at 0x6d617474 dot net>
 
 pkgname=wp-cli-bin
-pkgver=2.6.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="A command-line tool for managing WordPress"
 url="http://wp-cli.org/"
@@ -19,7 +19,7 @@ source=(
   "https://raw.githubusercontent.com/wp-cli/wp-cli/v${pkgver}/LICENSE"
   "https://raw.githubusercontent.com/wp-cli/wp-cli/v${pkgver}/utils/wp-completion.bash"
 )
-md5sums=('8b44375de9a7aa128a8a135380a8e550'
+md5sums=('7bc3c3122d8b89b7b5da8c94bda55f4e'
          '54c364ebdc0efbdfa4d2c0f19d523e24'
          'f8acb424f1460428796451679631be86')
 
