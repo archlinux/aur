@@ -1,4 +1,5 @@
-# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
+# Maintainer: Yang Jeong Hun (Nevuly) <onyxclover9931@gmail.com>
+# Contributor: Yurii Kolesnykov <root@yurikoles.com>
 # Contributor: Jonathon Fernyhough <jonathon"m2x+dev>
 # Contributor: Sam Guymer <sam at guymer dot me>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
@@ -8,9 +9,9 @@
 
 _jdkname=liberica-jdk-full
 pkgname="${_jdkname}-bin"
-_java_ver=19
-_pkgver=${_java_ver}.0.2+9
-pkgver=${_pkgver/+/.u}
+_java_ver=20
+_pkgver=${_java_ver}+37
+pkgver=${_pkgver/+/.0.0.u}
 pkgrel=1
 pkgdesc='BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads. Full version includes OpenJFX.'
 arch=(aarch64 armv7h armv8h x86_64)
@@ -63,10 +64,10 @@ sha1sums=('19873c53aaf234d215b9892450bfd4e95c13ed7c'
           'b8233f9ff931ce97a265827fac18ed90f4e248c6'
           'a0da2952bc87a425182c3ac88e88649fbaa7cb65'
           'eb36aa73a9be98164447774217865b91e79d503c')
-sha1sums_aarch64=('c715c79d22972d930df3325751154525faabe85d')
-sha1sums_armv7h=('1a92fbbeefb0f43355f7567109e64c8ea98d7194')
-sha1sums_armv8h=('1a92fbbeefb0f43355f7567109e64c8ea98d7194')
-sha1sums_x86_64=('59ea7fb5561214b1713ef830529c32a96a8b5734')
+sha1sums_aarch64=('36cff56c70add85e53388668607e81e7c0810bad')
+sha1sums_armv7h=('08b1007b77f100a9514a82d980389511fc368a80')
+sha1sums_armv8h=('08b1007b77f100a9514a82d980389511fc368a80')
+sha1sums_x86_64=('f67f5008a45eecd76cf38d672e80532d4bd610b3')
 
 source_aarch64=(https://download.bell-sw.com/java/$_pkgver/bellsoft-jdk$_pkgver-linux-aarch64-full.tar.gz)
 source_armv7h=(https://download.bell-sw.com/java/$_pkgver/bellsoft-jdk$_pkgver-linux-arm32-vfp-hflt-full.tar.gz)
