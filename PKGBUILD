@@ -7,7 +7,8 @@ pkgname="ocaml-$_projectname"
 pkgver='3.2.1'
 pkgrel='2'
 pkgdesc='Abstract engine for text edition in OCaml'
-arch=('x86_64' 'i686' 'armv7h' 'aarch64')
+# If you're running on i486 or pentium4, you have to add it to the arch array of the ocaml-cmdliner, ocaml-uchar and ocaml-uutf AUR dependencies
+arch=('x86_64' 'i486' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/ocaml-community/$_projectname"
 license=('BSD')
 depends=('ocaml>=4.02.3' 'ocaml-react' 'ocaml-result' 'ocaml-uchar' 'ocaml-uuseg' 'ocaml-uucp>=2.0.0' 'ocaml-uutf')
