@@ -19,8 +19,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!lto')
 source=("${_pkgname}"::'git+https://github.com/alvr-org/ALVR.git')
-md5sums=('SKIP'
-         'e03757b1ef3c152a340c08f23c7fe38b')
+md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${_pkgname}"
