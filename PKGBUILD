@@ -2,11 +2,11 @@
 _name=python-betterproto
 pkgname="$_name-git"
 pkgver=r372.e7f07fa
-pkgrel=1
+pkgrel=2
 pkgdesc="Clean, modern, Python 3.6+ code generator & library for Protobuf 3 and async gRPC"
 arch=('any')
 url="https://github.com/danielgtaylor/python-betterproto"
-license=('Apache')
+license=('MIT')
 makedepends=(git python-build python-installer python-wheel "python-poetry" "python-pytest" "python-pytest-asyncio" "python-grpcio-tools")
 depends=("python-grpclib" "python-jinja" "python-dateutil" "python-isort")
 source=("git+https://github.com/danielgtaylor/${_name}.git")
