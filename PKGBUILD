@@ -51,7 +51,11 @@ build() {
 	export ALVR_OPENVR_DRIVER_ROOT_DIR=$ALVR_LIBRARIES_DIR/steamvr/alvr/
 	export ALVR_VRCOMPOSITOR_WRAPPER_DIR=$ALVR_LIBRARIES_DIR/alvr/
 
-    cargo xtask prepare-deps --platform linux
+    if ! _ifmod nvidia_drm; then
+        cargo xtask prepare-deps --platform linux --no-nvidia
+    else
+        cargo xtask prepare-deps --platform linux
+    fi
 
 	cargo build \
 		--frozen \
