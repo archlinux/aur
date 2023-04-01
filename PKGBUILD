@@ -43,5 +43,6 @@ package() {
   make prefix="/usr" DESTDIR="$pkgdir" install_lib
 
   install -Dm755 src/libnethogs.h "$pkgdir/usr/include/libnethogs.h"
-  ln -s "/usr/lib/libnethogs.so.$pkgver" "$pkgdir/usr/lib/libnethogs.so"
+  _pkgver="$(git describe --long --abbrev=7 | sed 's/^v//')"
+  ln -s "/usr/lib/libnethogs.so.$_pkgver" "$pkgdir/usr/lib/libnethogs.so"
 }
