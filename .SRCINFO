@@ -12,7 +12,7 @@ pkgbase = mongodb-compass-readonly-beta
 	makedepends = npm>=8.0.0
 	makedepends = python
 	makedepends = unzip
-	depends = electron
+	depends = electron>=22.0.0
 	depends = krb5
 	depends = libsecret
 	depends = lsb-release
