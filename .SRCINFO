@@ -1,0 +1,22 @@
+pkgbase = zile
+	pkgdesc = A small, fast, and powerful Emacs clone
+	pkgver = 2.6.2
+	pkgrel = 2
+	url = https://www.gnu.org/software/zile/
+	arch = x86_64
+	license = GPL3
+	makedepends = help2man
+	makedepends = vala
+	depends = acl
+	depends = gc
+	depends = ncurses
+	depends = glib2
+	depends = libgee
+	source = https://ftp.gnu.org/gnu/zile/zile-2.6.2.tar.gz
+	source = https://ftp.gnu.org/gnu/zile/zile-2.6.2.tar.gz.sig
+	validpgpkeys = 92978852A62FA5E285B2A17468089F7380EE4A00
+	validpgpkeys = 24093F016FFE8602EF449BB84C8EF3DA3FD37230
+	sha256sums = 77eb7daff3c98bdc88daa1ac040dccca72b81dc32fc3166e079dd7a63e42c741
+	sha256sums = SKIP
+
+pkgname = zile
