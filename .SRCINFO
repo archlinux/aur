@@ -1,0 +1,20 @@
+pkgbase = python-torchdyn
+	pkgdesc = A PyTorch library entirely dedicated to neural differential equations, implicit models and related numerical methods
+	pkgver = 1.4.0.1
+	pkgrel = 1
+	url = https://github.com/DiffEqML/torchdyn
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry
+	depends = python-torchcde
+	depends = python-scikit-learn
+	depends = python-pytorch-lightning
+	depends = python-torchvision
+	depends = python-matplotlib
+	source = torchdyn-1.4.0.1.tar.gz::https://github.com/DiffEqML/torchdyn/archive/1.4.0.1.tar.gz
+	sha512sums = 119632764113c7c03300202c3b4bdde138c6b450f60aedf054ba57257e726f011d94638ebb800e4375c54ad1db5c94b14e9bd77d7add86c12a77e500c04196b6
+
+pkgname = python-torchdyn
