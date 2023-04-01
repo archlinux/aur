@@ -1,0 +1,13 @@
+pkgbase = gog-pathfinder_kingmaker_the_wildcards_dlc
+	pkgdesc = DLC for the pathfinder kingmaker game.
+	pkgver = 2.1.5d
+	pkgrel = 1
+	url = https://www.gog.com/en/game/pathfinder_kingmaker_the_wildcards
+	arch = x86_64
+	license = custom
+	depends = gog-pathfinder_kingmaker
+	noextract = pathfinder_kingmaker_the_wildcards_2_1_5d_41987.sh
+	source = pathfinder_kingmaker_the_wildcards_2_1_5d_41987.sh::gog://pathfinder_kingmaker_the_wildcards_2_1_5d_41987.sh
+	sha256sums = 43e64f35ddaafa4e4e4fe805f135504939a7347d52c3e1dbaf0f3b4caa6ce698
+
+pkgname = gog-pathfinder_kingmaker_the_wildcards_dlc
