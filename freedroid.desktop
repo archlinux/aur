@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=FreeDroid
+Comment=An SDL Paranoid(c) clone game
+Exec=freedroid
+Icon=paraicon
+Terminal=false
+Type=Application
+Categories=Game;Arcade;

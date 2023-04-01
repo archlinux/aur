@@ -1,0 +1,19 @@
+pkgbase = freedroid
+	pkgdesc = a clone of the classic game 'Paradroid' on Commodore 64
+	pkgver = 1.2.1
+	pkgrel = 2
+	url = http://freedroid.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = sdl_gfx
+	source = freedroid-1.2.1.tgz::https://github.com/ReinhardPrix/FreedroidClassic/archive/refs/tags/release-1.2.1.tar.gz
+	source = freedroid.desktop
+	source = paraicon.png
+	sha256sums = 33f4c3da941798b7dbdc41c831bb65c3925288e6737a7f1e3275965f83b4151c
+	sha256sums = b76e84adc15e8d83722e91843db80bbb664b3e330e03561977de90a06d4d8baf
+	sha256sums = 29e9d5bc1a5833c10fc8b26fac1f4a64338d3a624e18d280abe1d29837202239
+
+pkgname = freedroid
