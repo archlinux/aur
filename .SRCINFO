@@ -1,0 +1,23 @@
+pkgbase = xcircuit
+	pkgdesc = A program for drawing publishable-quality electrical circuit schematic diagrams
+	pkgver = 3.10.30
+	pkgrel = 2
+	url = http://opencircuitdesign.com/xcircuit
+	arch = x86_64
+	license = GPL2
+	makedepends = chrpath
+	makedepends = imagemagick
+	depends = tk
+	depends = libxpm
+	depends = zlib
+	depends = cairo
+	source = http://opencircuitdesign.com/xcircuit/archive/xcircuit-3.10.30.tgz
+	source = xcircuit.desktop
+	source = http://opencircuitdesign.com/xcircuit/xcicon_sm.gif
+	source = https://github.com/RTimothyEdwards/XCircuit/commit/7f57ebbf.patch
+	sha256sums = b2f63cba605e79cc2a08714bf3888f7be7174384ed724db3c70f8bf25c36f554
+	sha256sums = 3c29f55ee6196b554d6fc5791f29ac7cab2fecc184c699e80ee265be0b609456
+	sha256sums = 8e7b132d9803443e6f3ae65ed1990362a5a977e7856b1e54f2edf8cd4a3d7259
+	sha256sums = 5f56153f37fa7764148e498e17542388fa4fe6a3ba3af3c4f87f370cf41c4973
+
+pkgname = xcircuit
