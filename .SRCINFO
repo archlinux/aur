@@ -1,10 +1,9 @@
 pkgbase = pcb
 	pkgdesc = Interactive printed circuit board editor
-	pkgver = 20140316
-	pkgrel = 1
+	pkgver = 4.3.0
+	pkgrel = 2
+	epoch = 1
 	url = http://pcb.geda-project.org/
-	install = pcb.install
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = intltool
@@ -15,8 +14,7 @@ pkgbase = pcb
 	optdepends = tcl: additional tools
 	optdepends = perl: additional tools
 	optdepends = desktop-file-utils: desktop integration
-	source = http://downloads.sourceforge.net/pcb/pcb-20140316.tar.gz
-	sha1sums = ec714ff136d1817e500e1a9e654e786883b9501e
+	source = https://downloads.sourceforge.net/pcb/pcb-4.3.0.tar.gz
+	sha256sums = ae852f46af84aba7f51d813fb916fc7fcdbeea43f7134f150507024e1743fb5e
 
 pkgname = pcb
-

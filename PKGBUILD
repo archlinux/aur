@@ -1,4 +1,5 @@
-# Maintainer: Matthias Blankertz <matthias at blankertz dot org>
+# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Contributor: Matthias Blankertz <matthias at blankertz dot org>
 # Contributor: Egon Geerardyn <egon dot geerardyn at gmail dot com>
 # Contributor: kfgz <kfgz at interia pl>
 # Contributor: Gaetan Bisson <bisson at archlinux dot org>
@@ -6,24 +7,25 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=pcb
-pkgver=20140316
-pkgrel=1
+epoch=1
+# switched from YYYYMMDD to I.J.K
+pkgver=4.3.0
+pkgrel=2
 pkgdesc='Interactive printed circuit board editor'
 url='http://pcb.geda-project.org/'
 license=('GPL')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 depends=('gtkglext' 'gd')
 optdepends=('tk: additional tools'
             'tcl: additional tools'
             'perl: additional tools'
 	    'desktop-file-utils: desktop integration')
 makedepends=('intltool' 'tk')
-source=("http://downloads.sourceforge.net/pcb/${pkgname}-${pkgver}.tar.gz")
-sha1sums=('ec714ff136d1817e500e1a9e654e786883b9501e')
-install=pcb.install
+source=("https://downloads.sourceforge.net/pcb/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('ae852f46af84aba7f51d813fb916fc7fcdbeea43f7134f150507024e1743fb5e')
 
 build() {
-  cd "${srcdir}"/${pkgname}-${pkgver}
+  cd "$srcdir/$pkgname-$pkgver"
   ./configure \
       --prefix=/usr \
       --enable-dbus \
@@ -33,8 +35,8 @@ build() {
 }
 
 package() {
-  cd "${srcdir}"/${pkgname}-${pkgver}
-  make -j1 prefix="${pkgdir}"/usr install
+  cd "$srcdir/$pkgname-$pkgver"
+  make -j1 prefix="$pkgdir/usr" install
 
-  rm "${pkgdir}"/usr/share/info/dir
+  rm "$pkgdir/usr/share/info/dir"
 }
