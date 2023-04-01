@@ -5,6 +5,7 @@ pkgbase = ocaml-ppx_module_timer
 	url = https://github.com/janestreet/ppx_module_timer
 	arch = x86_64
 	arch = i686
+	arch = pentium4
 	arch = armv7h
 	arch = aarch64
 	license = MIT
