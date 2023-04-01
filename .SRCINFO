@@ -6,6 +6,7 @@ pkgbase = ocaml-core_kernel
 	url = https://github.com/janestreet/core_kernel
 	arch = x86_64
 	arch = i686
+	arch = pentium4
 	arch = armv7h
 	arch = aarch64
 	license = MIT
