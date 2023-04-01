@@ -1,7 +1,7 @@
 pkgbase = uwebsockets
 	pkgdesc = Simple, secure & standards compliant web server for the most demanding of applications
 	pkgver = 20.37.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/uNetworking/uWebSockets
 	arch = x86_64
 	license = Apache
