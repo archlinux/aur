@@ -4,7 +4,7 @@ pkgname="$_pkgname-git"
 pkgver='0.1.4.r6.g7c05853'
 pkgrel='1'
 pkgdesc='Console tool to display drive list with commonly checked smart info - git version'
-arch=('x86_64' 'i686' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/alttch/$_pkgname"
 license=('MIT')
 depends=('smartmontools>=7.0')
