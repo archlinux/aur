@@ -20,7 +20,7 @@ sha256sums=('SKIP' 'SKIP')
 
 
 package() {
-	install -Dm755 "$_pkgname-linux-$CARCH" "$pkgdir/usr/bin/$_pkgname"
+	install -Dm755 "$_pkgname-linux-amd64" "$pkgdir/usr/bin/$_pkgname"
 	install -Dm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$_pkgname.desktop
 	install -Dm644 $srcdir/$_pkgname-logo.png $pkgdir/usr/share/pixmaps/$_pkgname.png
 }
