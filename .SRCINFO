@@ -1,0 +1,19 @@
+pkgbase = python-pdoc
+	pkgdesc = A simple program and library to auto generate API documentation for Python modules.
+	pkgver = 12.3.0
+	pkgrel = 1
+	url = https://pdoc.dev/
+	arch = any
+	license = Unlicense
+	checkdepends = python-pytest
+	checkdepends = python-pytest-timeout
+	checkdepends = python-hypothesis
+	checkdepends = nodejs
+	makedepends = python-setuptools
+	depends = python-jinja
+	depends = python-pygments
+	depends = python-markupsafe
+	source = https://github.com/mitmproxy/pdoc/archive/v12.3.0/python-pdoc-12.3.0.tar.gz
+	sha512sums = 5bfe47d742a5c8368710497630de4d8419e62e3b95f654dec761d42c3d11cce8b7e242eee67452c303d540411a9fab2f0fb094b7d2d8ac097374a5419cdbe877
+
+pkgname = python-pdoc
