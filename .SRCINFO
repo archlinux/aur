@@ -1,0 +1,16 @@
+pkgbase = python-minimal-snowplow-tracker
+	pkgdesc = A minimal snowplow event tracker for Python
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://pypi.org/project/minimal-snowplow-tracker/
+	arch = any
+	license = Apache
+	makedepends = python
+	makedepends = python-pytest
+	depends = python-requests
+	depends = python-six
+	conflicts = python-snowplow-tracker
+	source = https://files.pythonhosted.org/packages/source/m/minimal-snowplow-tracker/minimal-snowplow-tracker-0.0.2.tar.gz
+	sha256sums = acabf7572db0e7f5cbf6983d495eef54081f71be392330eb3aadb9ccb39daaa4
+
+pkgname = python-minimal-snowplow-tracker
