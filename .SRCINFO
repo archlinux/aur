@@ -5,6 +5,7 @@ pkgbase = ocaml-jst-config
 	url = https://github.com/janestreet/jst-config
 	arch = x86_64
 	arch = i686
+	arch = pentium4
 	arch = armv7h
 	arch = aarch64
 	license = MIT
