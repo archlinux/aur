@@ -1,13 +1,13 @@
 # Maintainer:
 pkgname=eprosima-fast-dds-monitor
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='eProsima Fast DDS Monitor is a graphical desktop application aimed at monitoring DDS environments deployed using the eProsima Fast DDS library.'
 arch=('x86_64')
 url='https://github.com/eProsima/Fast-DDS-monitor'
 license=('GPL3')
 makedepends=('ninja' 'cmake')
-depends=('eprosima-fast-dds' 'eprosima-fast-dds-statistics-backend' 'qt5-quickcontrols' 'qt5-charts' 'qt5-quickcontrols2')
+depends=('eprosima-fast-dds' 'eprosima-fast-dds-statistics-backend' 'qt5-quickcontrols' 'qt5-charts' 'qt5-quickcontrols2' 'qt5-graphicaleffects')
 provides=('eprosima-fast-dds-monitor')
 
 _build_directory=build
