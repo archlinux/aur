@@ -1,0 +1,54 @@
+2021-11-25 Kyle Keen <keenerd@gmail.com>
+	* 2.8.1-1
+	- Version bump
+	- Change sources to github
+
+2018-01-28 Kyle Keen <keenerd@gmail.com>
+	* 2.7.0-1
+	- Version bump
+	- Remove autopoint patch
+	- Add dconf dependency
+
+2017-05-10 Kyle Keen <keenerd@gmail.com>
+	* 2.6.2-1
+	- Version bump
+
+2016-04-28 Kyle Keen <keenerd@gmail.com>
+	* 2.6.1-4
+	- Install hook rebuild
+
+2013-07-24 Kyle Keen <keenerd@gmail.com>
+	* 2.6.1-1
+	- Version bump
+
+2011-12-31 Kyle Keen <keenerd@gmail.com>
+	* 2.6.0-1
+	- Version bump
+
+2010-12-31 Stefan Husmann <stefan-husmann@t-online.de>
+	* 2.4.0-2
+	- Move to [community]
+	
+2010-02-26 Jared Casper <jaredcasper@gmail.com>
+	* 2.4.0-1
+	- Version bump
+
+2009-07-11 Jared Casper <jaredcasper@gmail.com>
+	* 2.3.0-1
+	- Version bump
+
+2009-01-23 Jared Casper <jaredcasper@gmail.com>
+	* 2.2.0-1
+	- Version bump
+
+2008-09-28 Jared Casper <jaredcasper@gmail.com>
+	* 2.1.0-1
+	- Version bump
+	- Added icon cache update
+	- Added icon cache and desktop update to post_update
+
+2008-06-13 Jared Casper <jaredcasper@gmail.com>
+
+	* 2.0.1-1
+	- Version bump
+	- Added ChangeLog
