@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=downzemall
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="A mass download manager that helps you to select, organize, prioritize and run your downloads in parallel."
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('libnotify: desktop notifications'
             'libappindicator-gtk3: tray icon')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/setvisible/DownZemAll/archive/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('459098ea3107e22fc26ecdda2dc42753f868cf4404d61da885b385ceaeb6a013'
+sha256sums=('f9b1ad2d2a43c0e39606085b35d8eeb2fc147afd32cef2d34eb1fc119bcb6a98'
             '3cb8f2eefbd9f04dd4b3a706058d8ab82c42514db81fbfbdf213fc833ca01eff')
 
 prepare() {
@@ -42,7 +42,7 @@ package() {
   cd "DownZemAll-$pkgver"
   install -Dm755 ../build/src/DownZemAll -t "$pkgdir/opt/$pkgname/"
   install -Dm755 ../build/web-extension/launcher/launcher -t "$pkgdir/opt/$pkgname/"
-  install -Dm644 src/locale/*.qm -t "$pkgdir/opt/$pkgname/locale/"
+  install -Dm644 src/locale/*.ts -t "$pkgdir/opt/$pkgname/locale/"
 
   install -Dm644 web-extension/launcher/unix/launcher-manifest-chrome.json \
     "$pkgdir/etc/chromium/native-messaging-hosts/com.setvisible.downrightnow.json"
