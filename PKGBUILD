@@ -6,7 +6,7 @@
 pkgbase='drawpile'
 pkgname=("${pkgbase}"{,'-client','-server'})
 pkgver=2.1.20
-pkgrel=3
+pkgrel=4
 pkgdesc='Collaborative drawing program specially made for use with pen tablets'
 arch=('i686' 'x86_64')
 url='https://drawpile.net/'
