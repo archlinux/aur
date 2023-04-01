@@ -6,6 +6,7 @@ pkgbase = magma-server-git
 	install = magma-server-git.install
 	arch = any
 	license = custom
+	makedepends = git
 	makedepends = gettext
 	makedepends = java-environment-openjdk=8
 	depends = java-runtime=8
@@ -16,6 +17,7 @@ pkgbase = magma-server-git
 	depends = sed
 	optdepends = tar: needed in order to create world backups
 	optdepends = netcat: required in order to suspend an idle server
+	provides = magma-server
 	conflicts = magma-server
 	backup = etc/conf.d/magma-
 	source = magma-server-git::git+http://git.magmafoundation.org/magmafoundation/Magma.git

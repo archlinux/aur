@@ -12,8 +12,9 @@ license=('custom')
 depends=('java-runtime=8' 'tmux' 'sudo' 'bash' 'awk' 'sed')
 optdepends=("tar: needed in order to create world backups"
 	"netcat: required in order to suspend an idle server")
-makedepends=('gettext' 'java-environment-openjdk=8')
+makedepends=('git' 'gettext' 'java-environment-openjdk=8')
 conflicts=('magma-server')
+provides=('magma-server')
 backup=("etc/conf.d/magma-${_gamever%.*}")
 install="${pkgname}.install"
 # See https://launchermeta.mojang.com/mc/game/version_manifest.json for a list of all releases
