@@ -1,17 +1,17 @@
 # Maintainer: Konsonanz <maximilian.lehmann@protonmail.com>
 pkgname=gpgfrontend
-pkgver=2.0.10
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="OpenPGP crypto tool and gui frontend for modern GnuPG"
 arch=('x86_64')
 url="https://github.com/saturneric/GpgFrontend"
 license=('GPL3')
-depends=('gnupg' 'gpgme' 'libarchive' 'libassuan' 'libconfig' 'libgpg-error' 'qt5-base')
-makedepends=('cmake' 'ninja' 'git' 'boost')
+depends=('gnupg' 'gpgme' 'libarchive' 'libassuan' 'libconfig' 'libgpg-error' 'qt6-base' 'qt6-5compat')
+makedepends=('cmake' 'ninja' 'git' 'git-lfs' 'boost')
 source=("${pkgname}::git+${url}#tag=v${pkgver}"
-        "git+https://github.com/saturneric/json"
-        "git+https://github.com/saturneric/easyloggingpp"
-        "git+https://github.com/saturneric/Qt-AES")
+        "git+https://git.bktus.com/GpgFrontend/json.git"
+        "git+https://git.bktus.com/GpgFrontend/Qt-AES.git"
+        "git+https://git.bktus.com/GpgFrontend/spdlog.git")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -20,10 +20,16 @@ sha256sums=('SKIP'
 prepare() {
     cd "$pkgname"
 
+    git lfs install
+    # Fetch all lfs-objects into git-mirror outside of makepkg workdir
+    git -C "$(git remote get-url origin)" lfs fetch --all
+    # Now sync workdir git lfs with mirror
+    git lfs pull
+
     git submodule init
     git config submodule.third_party/json.url "$srcdir/json"
-    git config submodule.third_party/easyloggingpp.url "$srcdir/easyloggingpp"
-    git config submodule.third_party/Qt-AES.url "$srcdir/Qt-AES"
+    git config submodule.third_party/qt-aes.url "$srcdir/Qt-AES"
+    git config submodule.third_party/spdlog.url "$srcdir/spdlog"
 
     # https://bugs.archlinux.org/task/76255
     # https://wiki.archlinux.org/title/VCS_package_guidelines#Git_submodules
