@@ -5,6 +5,7 @@ pkgbase = orbterm
 	url = https://gitlab.redox-os.org/redox-os/orbterm
 	arch = x86_64
 	arch = i686
+	arch = pentium4
 	arch = armv7h
 	arch = aarch64
 	license = MIT
