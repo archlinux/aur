@@ -1,0 +1,12 @@
+pkgbase = ps_mem
+	pkgdesc = List processes by memory usage
+	pkgver = 3.14
+	pkgrel = 2
+	url = https://github.com/pixelb/ps_mem
+	arch = any
+	license = GPL
+	depends = python
+	source = ps_mem-3.14.tgz::https://github.com/pixelb/ps_mem/archive/v3.14.tar.gz
+	sha256sums = ad8bf87f9b9acd9b0b4997445bd99a8eeace4d816b207d56b03c5a83fec00514
+
+pkgname = ps_mem
