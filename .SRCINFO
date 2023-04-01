@@ -1,0 +1,15 @@
+pkgbase = memconf
+	pkgdesc = Identify sizes of installed memory modules.
+	pkgver = 3.16
+	pkgrel = 1
+	url = https://www.4schmidts.com/memconf.html
+	arch = any
+	license = GPL
+	depends = dmidecode
+	depends = perl
+	source = memconf-3.16.gz::https://www.4schmidts.com/unix/memconf.gz
+	source = memconf-3.16.man::https://www.4schmidts.com/unix/memconf.man
+	sha256sums = c58758cc84eca54cba90ec6171e3185f31edd28827d18c624bd65bfcb4ed8498
+	sha256sums = 7e79e41ac719e6ebd7669967965d47a07692a5924c2a249b0d32fc5f6ee0a2fe
+
+pkgname = memconf
