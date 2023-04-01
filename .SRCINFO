@@ -1,0 +1,26 @@
+pkgbase = magma-server-git
+	pkgdesc = Magma is the next generation of hybrid minecraft server softwares
+	pkgver = 1.12.2.r504.d04e549e
+	pkgrel = 1
+	url = https://magmafoundation.org/
+	install = magma-server-git.install
+	arch = any
+	license = custom
+	makedepends = gettext
+	makedepends = java-environment-openjdk=8
+	depends = java-runtime=8
+	depends = tmux
+	depends = sudo
+	depends = bash
+	depends = awk
+	depends = sed
+	optdepends = tar: needed in order to create world backups
+	optdepends = netcat: required in order to suspend an idle server
+	conflicts = magma-server
+	backup = etc/conf.d/magma-
+	source = magma-server-git::git+http://git.magmafoundation.org/magmafoundation/Magma.git
+	source = minecraft-server-1.0.2.tar.gz::https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v1.0.2.tar.gz
+	sha512sums = SKIP
+	sha512sums = 11d708d511b63e5541bcc1dbcaf29abbf7cb9583b1d313028770a39b26b41d48dcba023f7e1d6fe30f3c093d20e10a43363011edd432e5785a4580e5c5f852a6
+
+pkgname = magma-server-git
