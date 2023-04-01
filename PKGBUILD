@@ -3,12 +3,12 @@
 # Contributor: Anatoly Bashmakov anatoly at posteo dot net
 
 pkgname=asciidoctor-pdf
-pkgver=2.3.4
+pkgver=2.3.5
 pkgrel=1
 pkgdesc='Translate asciidoctor directly to pdf'
 arch=(any)
 url='https://asciidoctor.org/'
-license=('MIT')
+license=(MIT)
 depends=(
   asciidoctor
   ruby
@@ -24,7 +24,7 @@ depends=(
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/$pkgname-$pkgver.gem")
 noextract=("$pkgname-$pkgver.gem")
-sha256sums=('0d738d806712c0806adb9424f2c1f30cbe9acf306cea03f1cdb23de70bc0576c')
+sha256sums=('bae5368637928558eb155e2c193ceccdd687505d251039474ca736aece357416')
 
 package() {
     local _gemdir="$(ruby -e 'puts Gem.default_dir')"
