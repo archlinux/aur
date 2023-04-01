@@ -1,6 +1,6 @@
 # Maintainer: Funami
 pkgname=jetbrains-fleet
-pkgver=1.16.92
+pkgver=1.17.63
 pkgrel=1
 pkgdesc="Next-generation IDE by JetBrains"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('custom:jetbrains')
 source=("https://download-cdn.jetbrains.com/fleet/installers/linux_x64/Fleet-${pkgver}.tar.gz"
         "${pkgname}.desktop"
         'LICENSE')
-sha256sums=('2c09075e0cd29666a0f0ba26daab4618eac76073409087b4d92bdafb4285419d'
+sha256sums=('5ed632ec43022eeffc43f39c9a9e6a14a6d1b396f28f93afa302726c95adf0c7'
             'af62a597c595edc5b4a8ea3f80ab0a18ea953bfc2d4feaf30e41c6e0dd23d426'
             '823bce80facc46ff161e0a800bdda27452e8beeb396bb163af560e9e6c796c75')
 
