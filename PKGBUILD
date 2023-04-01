@@ -3,7 +3,7 @@
 
 pkgname=("podman-desktop")
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage Podman and other container engines from a single UI and tray."
 arch=('x86_64' 'aarch64')
 url=https://github.com/containers/podman-desktop
@@ -23,7 +23,7 @@ source=(
 sha256sums=('SKIP'
             'f520d11b747dc29bcc63dd7d75f235e446104f924142be4ecc6f26b23e3a7c1c')
 _electron_depends=(
-    "c-ares" "gtk3" "libevent" "nss" "wayland" "fontconfig" "woff2" "aom" "brotil"
+    "c-ares" "gtk3" "libevent" "nss" "wayland" "fontconfig" "woff2" "aom" "brotli"
     "libjpeg" "icu" "dav1d" "flac" "snappy" "libxml2" "ffmpeg" "libwebp" "minizip"
     "opus" "harfbuzz" "re2" "libavif" "jsoncpp" "libxslt" "libpng" "freetype2"
 )
