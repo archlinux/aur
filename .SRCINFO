@@ -1,0 +1,13 @@
+pkgbase = xcursor-simpleandsoft
+	pkgdesc = A simple and soft X cursor theme
+	pkgver = 0.2
+	pkgrel = 9
+	url = https://store.kde.org/p/999946/
+	arch = any
+	license = GPL
+	source = https://distribute.kde.org/khotnewstuff/mousethemes/downloads/28427-simpleandsoft-0.2.tar.gz
+	source = index.theme
+	sha256sums = d55e2e3c60544a66eab492b818e40b605a0516fe22096456c3907710bd8a8297
+	sha256sums = 2f410b3699a9ed2b49f6e13bc9958e7a6d91045f33e59780c24ae76b7c0c2ec1
+
+pkgname = xcursor-simpleandsoft
