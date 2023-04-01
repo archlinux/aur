@@ -1,0 +1,13 @@
+pkgbase = gog-pathfinder_kingmaker_in_game_pet_red_panda_dlc
+	pkgdesc = DLC for the pathfinder kingmaker game.
+	pkgver = 2.1.5d
+	pkgrel = 1
+	url = https://www.gog.com/en/game/pathfinder_kingmaker_imperial_edition
+	arch = x86_64
+	license = custom
+	depends = gog-pathfinder_kingmaker
+	noextract = pathfinder_kingmaker_in_game_pet_red_panda_2_1_5d_41987.sh
+	source = pathfinder_kingmaker_in_game_pet_red_panda_2_1_5d_41987.sh::gog://pathfinder_kingmaker_in_game_pet_red_panda_2_1_5d_41987.sh
+	sha256sums = f689b3ae12caefb2c7166d4614ef9e369cfc92cf8b3120c5688a3d51c0733714
+
+pkgname = gog-pathfinder_kingmaker_in_game_pet_red_panda_dlc
