@@ -1,0 +1,16 @@
+pkgbase = wtf
+	pkgdesc = Acronym dictionary, with additions from NetBSD and wikipedia
+	pkgver = 20220926
+	pkgrel = 1
+	url = http://www.mu.org/~mux/wtf/
+	arch = any
+	license = BSD
+	makedepends = git
+	source = https://sourceforge.net/projects/bsdwtf/files/wtf-20220926.tar.gz
+	source = https://raw.github.com/keenerd/wtf/0623381d92b2c5d3e94b00c9eb06fb5d4d85d014/acronyms.computing
+	source = LICENSE
+	md5sums = fcf774ca93e2509f1a7a38b268db6be1
+	md5sums = 3d99862438ec7977ff8d7f4e3e5dd300
+	md5sums = abac213cf24e9d5cab4e8115441eb717
+
+pkgname = wtf
