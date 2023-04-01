@@ -18,7 +18,6 @@ sha256sums=('233f487a90654b03f32b290579f24d5b188a65361b8a7787154f5c4cd8f5f144')
 build() {
   cd $srcdir/dosbox-x-dosbox-x-v${pkgver}
   sed -i -e 's/-j3/-j$(nproc)/g' build
-# sed -i 's|$LIBS $SDL_LIBS|$LIBS $SDL_LIBS -lm -lGL|' configure.ac  #fluidsynth fix
   ./build
 }
 
