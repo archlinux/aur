@@ -1,29 +1,33 @@
-# Maintainer: Christoph Wiechert <wio@psitrax.de>
+# Maintainer: Balló György <ballogyor+arch at gmail dot com>
+
 pkgname=purple-facebook
-pkgver=0.9.0
-pkgrel=2
-epoch=1
-COMMIT=c9b74a765767
-pkgdesc="Facebook Messenger protocol into pidgin, finch, and libpurple"
-url="https://github.com/jgeboski/purple-facebook"
-arch=('x86_64' 'i686')
+pkgver=0.9.6
+pkgrel=6
+pkgdesc='Facebook protocol plugin for libpurple'
+arch=('x86_64')
+url='https://github.com/dequis/purple-facebook'
 license=('GPL')
-depends=('libpurple' 'json-glib')
+depends=('json-glib' 'libpurple')
+source=("https://github.com/dequis/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
+        'fix-taNewMessage-bug.patch')
+sha256sums=('1db6ed9e8f81cbd4ae10d75c04f5393e5cd4ca11ced74408ca6d07c7b888f3f7'
+            '404ebdf6d47991a00ddf24acc433db024e9c5e7cece52ba36e20ea620b09fb07')
 
-makedepends=('make')
-source=("https://github.com/dequis/purple-facebook/releases/download/v$pkgver-$COMMIT/purple-facebook-$pkgver-$COMMIT.tar.gz")
-
-md5sums=("52b3b21a7a2ef6fca450876830ad9aed")
+prepare() {
+  cd $pkgname-$pkgver/pidgin
+  # Upstream fixes
+  patch -Np1 -i ../../fix-taNewMessage-bug.patch
+  sed -i 's/192.0.0.31.101/537.0.0.31.101/
+          /FB_API_TCHK(id == 2);/d' libpurple/protocols/facebook/api.h
+}
 
 build() {
-  cd "${srcdir}/purple-facebook-$pkgver-${COMMIT}"
-  ./configure
+  cd $pkgname-$pkgver
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-  cd "${srcdir}/purple-facebook-$pkgver-${COMMIT}"
-  make DESTDIR="${pkgdir}" install
-  libtool --finish /usr/lib/purple-2
+  cd $pkgname-$pkgver
+  make DESTDIR="$pkgdir" install
 }
-
-# vim:set ts=2 sw=2 et:
