@@ -1,29 +1,21 @@
 # Maintainer: Łukasz Mariański <lmarianski at protonmail dot com>
 
-function _ifmod {
-    lsmod | grep "$1" &> /dev/null
-}
-
 pkgname=alvr
 pkgver=19.1.0.r0.g969899c7
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
 url="https://github.com/alvr-org/ALVR"
 license=('MIT')
 groups=()
-depends=('vulkan-driver' 'libunwind')
-if _ifmod nvidia_drm; then
-    depends+=('ffmpeg')
-fi
-makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'jack' 'libxrandr' 'nasm')
+depends=('vulkan-driver' 'libunwind' 'libdrm')
+makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'jack' 'libxrandr' 'nasm' 'unzip' 'ffnvcodec-headers')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 options=('!lto')
 _tag="v19.1.0"
-source=('alvr'::"git+https://github.com/alvr-org/ALVR.git#tag=${_tag}" "${pkgname}-nvidia.patch")
-md5sums=('SKIP'
-         'e03757b1ef3c152a340c08f23c7fe38b')
+source=('alvr'::"git+https://github.com/alvr-org/ALVR.git#tag=${_tag}")
+md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname}"
@@ -37,10 +29,6 @@ prepare() {
 
 	echo "[profile.release]
 lto=true" >> Cargo.toml
-
-   if _ifmod nvidia_drm; then
-        patch -p1 -i "$srcdir/$pkgname-nvidia.patch"
-    fi
 
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
@@ -57,9 +45,7 @@ build() {
 	export ALVR_OPENVR_DRIVER_ROOT_DIR="$ALVR_LIBRARIES_DIR/steamvr/alvr/"
 	export ALVR_VRCOMPOSITOR_WRAPPER_DIR="$ALVR_LIBRARIES_DIR/alvr/"
 
-    if ! _ifmod nvidia_drm; then
-        cargo xtask prepare-deps --platform linux --no-nvidia
-    fi
+    cargo xtask prepare-deps --platform linux --no-nvidia
 
 	cargo build \
 		--frozen \
