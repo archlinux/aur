@@ -1,0 +1,26 @@
+pkgbase = pidgin-libnotify
+	pkgdesc = Pidgin plugin that enables popups when someone logs in or messages you
+	pkgver = 0.14
+	pkgrel = 15
+	url = http://gaim-libnotify.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	depends = pidgin
+	depends = libnotify
+	source = https://downloads.sourceforge.net/gaim-libnotify/pidgin-libnotify-0.14.tar.gz
+	source = language_fixes.patch
+	source = pidgin-libnotify-0.14-libnotify-0.7.patch
+	source = pidgin-libnotify-showbutton.patch
+	source = pidgin-libnotify-getfocus.patch
+	source = pidgin-libnotify-notify-osd.patch
+	source = pidgin-libnotify.metainfo.xml
+	sha256sums = 74f4a9f20e0a483df39974178f1f2380786176189512bcd438e4ada280ec3abe
+	sha256sums = 11f24523acd0dd740e17f98b360fc2f4679536a8dd79d19e247bc0e90a65045d
+	sha256sums = e9c8d71b74985e11ef2939033fc2feeac037eb6553272a11ddc8417a79baafda
+	sha256sums = 897a1f99255476110dd3d5e888134f255e60e9539f65e8c3c516640a0790838b
+	sha256sums = 1712c96e0cea68c21a909981246e06ea2d60ad41f77da1e399503443867e2186
+	sha256sums = f8996bba9e3b169ac606499d6cbffd971ed5dc3c57097fbfb2582ad0cdf6fd7f
+	sha256sums = a4c2a983eeffe9146a6e3d8349c12bdc3a5b7fb622980db164ea7c8426a90723
+
+pkgname = pidgin-libnotify

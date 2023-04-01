@@ -1,0 +1,33 @@
+diff -aur pidgin-libnotify-0.14/src/pidgin-libnotify.c pidgin-libnotify-0.14.new/src/pidgin-libnotify.c
+--- pidgin-libnotify-0.14/src/pidgin-libnotify.c
++++ pidgin-libnotify-0.14.new/src/pidgin-libnotify.c
+@@ -287,6 +287,16 @@
+ 	return purple_status_is_online (status) && purple_status_is_available (status);
+ }
+ 
++gboolean
++server_has_caps(const char *id)
++{
++	GList *caps = notify_get_server_caps();
++	gboolean result;
++	result = (g_list_find_custom(caps, id, (GCompareFunc)g_strcmp0) != NULL);
++	g_list_free_full(caps, g_free);
++	return result;
++}
++
+ static void
+ notify (const gchar *title,
+ 		const gchar *body,
+@@ -389,7 +415,11 @@
+ 
+ 	notify_notification_set_urgency (notification, NOTIFY_URGENCY_NORMAL);
+ 
+-	notify_notification_add_action (notification, "show", _("Show"), action_cb, NULL, NULL);
++	/* Check if notification server can use actions */
++	if (server_has_caps("actions"))
++	{
++		notify_notification_add_action (notification, "show", _("Show"), action_cb, NULL, NULL);
++	}
+ 
+ 	notify_notification_set_timeout(notification, purple_prefs_get_int("/plugins/gtk/libnotify/timeout"));
+ 	if (!notify_notification_show (notification, NULL)) {

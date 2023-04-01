@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2015 Jiri Eischmann <eischmann@redhat.com> 
+-->
+<component type="addon">
+<id>pidgin-libnotify</id>
+<extends>pidgin.desktop</extends>
+<name>Libnotify Plugin</name>
+<summary>Plugin that uses libnotify to display graphic notifications of new messages and other events such as a buddy signing on or off</summary>
+<url type="homepage">https://sourceforge.net/projects/gaim-libnotify/</url>
+<url type="bugtracker">https://sourceforge.net/p/gaim-libnotify/bugs/</url>
+<metadata_license>GFDL-1.3</metadata_license>
+<project_license>GPL-2.0+</project_license>
+<updatecontact>eischmann_at_redhat.com</updatecontact>
+​</component>
