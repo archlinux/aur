@@ -1,8 +1,8 @@
 # Maintainer: Nikita Ivanov <nikita dot vyach dot ivanov at gmail dot com>
 _name=ctpv
 pkgname="${_name}-git"
-pkgver=r251.f70bee2
-pkgrel=2
+pkgver=r255.4c14f6d
+pkgrel=1
 pkgdesc="Fast image previews for lf"
 arch=('i686' 'x86_64')
 url="https://github.com/NikitaIvanovV/ctpv"
@@ -54,6 +54,10 @@ package() {
     local license_prefix="$pkgdir/usr/share/licenses/$pkgname"
     mkdir -p "$license_prefix"
     cp "$srcdir/$_name/LICENSE" "$license_prefix"
+
+    local doc_prefix="$pkgdir/usr/share/doc/$pkgname"
+    mkdir -p "$doc_prefix"
+    cp "$srcdir/$_name/README.md" "$doc_prefix"
 
     cd "$srcdir/${_name}"
     make PREFIX="/usr" DESTDIR="$pkgdir" install
