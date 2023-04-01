@@ -1,20 +1,16 @@
 pkgbase = twin
 	pkgdesc = A text-mode window environment
-	pkgver = 0.8.0
-	pkgrel = 1
-	url = http://sourceforge.net/projects/twin/
-	arch = i686
+	pkgver = 0.9.0
+	pkgrel = 2
+	url = https://sourceforge.net/projects/twin/
 	arch = x86_64
 	license = GPL2
 	license = LGPL2.1
 	depends = gpm
 	depends = zlib
 	depends = libxpm
-	provides = twin
-	conflicts = twin
 	options = !makeflags
-	source = https://github.com/cosmos72/twin/archive/v0.8.0.tar.gz
-	md5sums = 35ca4512dceaff97e700b06665c3c8dc
+	source = twin-0.9.0.tgz::https://github.com/cosmos72/twin/archive/v0.9.0.tar.gz
+	sha256sums = 10b1acac5ee88f3cf0d9c5ba238db9cb3e20a009fea7fe66cfa14d59b473f8fe
 
 pkgname = twin
-
