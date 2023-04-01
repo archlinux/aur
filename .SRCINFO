@@ -1,0 +1,23 @@
+pkgbase = rdiff-backup
+	pkgdesc = A utility for local/remote mirroring and incremental backups.
+	pkgver = 2.0.5
+	pkgrel = 3
+	url = https://www.nongnu.org/rdiff-backup/
+	arch = x86_64
+	license = GPL
+	checkdepends = python-pylibacl
+	checkdepends = python-pyxattr
+	makedepends = git
+	makedepends = python-setuptools-scm
+	depends = python-setuptools
+	depends = librsync
+	optdepends = python-pylibacl: access control list support
+	optdepends = python-pyxattr: extended attribute support
+	source = git+https://github.com/rdiff-backup/rdiff-backup.git#commit=040f122a5b181d7e1894f1fda632a4742e0c87bb?signed
+	source = git+https://github.com/rdiff-backup/rdiff-backup-filesrepo.git
+	validpgpkeys = B572DE9BC6537B9D5A4735B114C2601BDCA52872
+	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = rdiff-backup
