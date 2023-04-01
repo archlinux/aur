@@ -1,10 +1,10 @@
 # Maintainer: Vincent Lee < vincent at vincent dash lee dot net >
 _realname=sapling  # Already taken on AUR
 pkgname="$_realname-scm"
-_realver=0.2.20230228-144002-h9440b05e
+_realver=0.2.20230330-193452-h69692651
 pkgver="${_realver//-/.}"  # dashes aren't allowed in pkgver
 epoch=1  # Version scheme was changed from YYYYMMDD-.... to prepend a number: 0.1-YYYYMMDD-...
-pkgrel=2
+pkgrel=1
 pkgdesc="A Scalable, User-Friendly Source Control System"
 arch=("x86_64")
 url="https://sapling-scm.com"
@@ -17,7 +17,7 @@ depends=('curl' 'nodejs' 'python')
 makedepends=("cargo" "cmake" "rust" "yarn")
 optdepends=("github-cli: for integration with GitHub")
 source=("https://github.com/facebook/sapling/archive/refs/tags/$_realver.tar.gz")
-sha256sums=('70483afad6d0b437cb755447120a34b1996ec09a7e835b40ac8cccdfe44e4b90')
+sha256sums=('d02130197dcc4be07e3697a55e298a1178c71d2255019287ea25f451f9f42541')
 
 prepare() {
 	cd "$_realname-$_realver"
