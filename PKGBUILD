@@ -2,7 +2,7 @@
 
 pkgbase=purc-git
 pkgname=purc-git
-pkgver=0.9.7.r32.g2e2fb8bec
+pkgver=0.9.7.r233.g8c97398ba
 pkgrel=1
 pkgdesc="The prime HVML interpreter for C/C++ Language."
 arch=(x86_64
@@ -18,8 +18,10 @@ provides=(${pkgbase%-git}
         purc-fetcher)
 conflicts=(${pkgbase%-git})
 replaces=(domruler
-        purc-fetcher)
-depends=(glib2)
+          purc-fetcher)
+depends=(glib2
+        glibc
+        python)
 makedepends=(bison
             cmake
             cython
@@ -29,26 +31,37 @@ makedepends=(bison
             ccache
             curl
             gcc
+            gperf
+            lua-lgi
             ncurses
+            libgcrypt
             libjpeg-turbo
+            libnotify
+            libmanette
+            libtasn1
+            libsecret
+            libseccomp
+            libpsl
             libxml2
             libxslt
             libsoup
             icu
             mariadb
-            python
             openssl
             sqlite
             systemd
             pkgconf
-            wtf
             zlib)
+checkdepends=(check
+            gtest
+            valgrind)
 optdepends=('python-numpy: Scientific tools for Python'
             'webkit2gtk-hvml: Web content engine for GTK (HVML)'
             'webkit2gtk: Web content engine for GTK'
             'xguipro: xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit.')
 source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
+options=('!strip')
 
 pkgver() {
     cd "${srcdir}/${pkgname%-git}/"
@@ -72,8 +85,9 @@ build() {
 }
 
 check() {
-    cd "${srcdir}/${pkgname%-git}/build"
+#     cd "${srcdir}/${pkgname%-git}"
 #     ctest --test-dir build --output-on-failure
+    cd "${srcdir}/${pkgname%-git}/build"
     bash run_all_tests.sh
 }
 
