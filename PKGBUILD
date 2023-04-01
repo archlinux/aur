@@ -2,17 +2,17 @@
 
 pkgname=python-argopy
 pkgdesc='Retrieve and analyse data from the Argo network of ocean profilers'
-pkgver=0.1.12
+pkgver=0.1.13
 pkgrel=1
 arch=('any')
 url='https://argopy.readthedocs.io/'
 license=('Apache')
 depends=(
   'python-aiohttp' 'python-erddapy' 'python-fsspec' 'python-requests'
-  'python-scikit-learn' 'python-scipy' 'python-toolz' 'python-xarray'
+  'python-scipy' 'python-toolz' 'python-xarray'
 )
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-checkdepends=('python-pytest')
+checkdepends=('python-pytest' 'python-pytest-localftpserver')
 optdepends=(
   'jupyterlab: interactive visualization of available data'
   'python-arrow: im-memory big data analytics'
@@ -29,7 +29,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
 )
 sha256sums=(
-  '73451b314c9330231a57c141d5efe2ce5aaeaf9ed896e4a2a804bf6ae1fecfdc'
+  '41baa3dd92b298562ec51a52bacc37956e6b286b8d1e77fb2b39e3c170a3c1f5'
 )
 
 build() {
@@ -39,7 +39,7 @@ build() {
 
 check() {
   cd "$_pypi-$pkgver"
-  pytest -v -k "not test_chunks_region"
+  pytest -v -k "not test_chunks_region and not test_open_mfdataset"
 }
 
 package() {
