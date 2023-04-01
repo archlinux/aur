@@ -4,7 +4,7 @@
 # Contributor: Daenyth
 pkgname=nethogs-git
 _pkgname=nethogs
-pkgver=0.8.7.r19.g8f43d02
+pkgver=0.8.7.r21.g2497311
 pkgrel=1
 pkgdesc="A net top tool which displays traffic used per process instead of per IP or interface. GIT version"
 arch=("x86_64")
@@ -41,4 +41,7 @@ package() {
   cd "$_pkgname"
   make prefix="/usr" DESTDIR="$pkgdir" install
   make prefix="/usr" DESTDIR="$pkgdir" install_lib
+
+  install -Dm755 src/libnethogs.h "$pkgdir/usr/include/libnethogs.h"
+  ln -s "/usr/lib/libnethogs.so.$pkgver" "$pkgdir/usr/lib/libnethogs.so"
 }
