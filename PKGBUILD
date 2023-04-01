@@ -7,7 +7,9 @@ pkgname="ocaml-$_projectname"
 pkgver='2.11.0'
 pkgrel='1'
 pkgdesc='Universal toplevel for OCaml'
-arch=('x86_64' 'i686' 'armv7h' 'aarch64')
+# If you're running on i686 or pentium4, you have to add it to the arch array of the cppo, ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
+# If you're running on pentium4, you have to add it to the arch array of the ocaml-cmdliner, ocaml-uchar and ocaml-uutf AUR dependencies
+arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/ocaml-community/$_projectname"
 license=('BSD')
 depends=('ocaml>=4.08.0' 'ocaml-findlib>=1.7.2' 'ocaml-lambda-term>=3.1.0' 'ocaml-logs' 'ocaml-lwt' 'ocaml-react>=1.0.0' 'ocaml-zed>=3.2.0')
