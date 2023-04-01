@@ -4,7 +4,7 @@ pkgname="ocaml-$_projectname"
 pkgver='1.0.0'
 pkgrel='6'
 pkgdesc='Strict impure trie tree'
-arch=('x86_64' 'i686' 'armv7h' 'aarch64')
+arch=('x86_64' 'i486' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/kandu/$_projectname"
 license=('MIT')
 depends=('ocaml>=4.02.0')
