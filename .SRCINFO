@@ -1,0 +1,13 @@
+pkgbase = tamsyn-font
+	pkgdesc = A monospaced bitmap font for the console and X11
+	pkgver = 1.11
+	pkgrel = 6
+	url = https://www.fial.com/~scott/tamsyn-font
+	arch = any
+	license = custom
+	depends = xorg-fonts-encodings
+	source = https://web.archive.org/web/20200616131205if_/http://www.fial.com/~scott/tamsyn-font/download/tamsyn-font-1.11.tar.gz
+	md5sums = 6ec13672d2f0d6a829f2403cdeebd980
+	sha256sums = 97be1b604441b725548c454a92603993eb96e493f508845638a86c8d64fbf24e
+
+pkgname = tamsyn-font
