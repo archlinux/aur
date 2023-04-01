@@ -1,0 +1,107 @@
+diff -ruN a/ImageLounge/CMakeLists.txt b/ImageLounge/CMakeLists.txt
+--- a/ImageLounge/CMakeLists.txt	2020-08-13 10:15:07.000000000 +0200
++++ b/ImageLounge/CMakeLists.txt	2020-10-06 00:47:58.624994682 +0200
+@@ -188,26 +188,6 @@
+ 
+ endif()
+ 
+-if (Python_FOUND)
+-    
+-    add_custom_command(
+-        TARGET ${DLL_CORE_NAME} PRE_BUILD 
+-        COMMAND ${Python_EXECUTABLE}
+-        ${CMAKE_CURRENT_SOURCE_DIR}/../scripts/versionupdate.py 
+-        ${CMAKE_BINARY_DIR}/DkVersion.h)
+-
+-    # I am having issues with the PRE_BUILD above
+-    # if version increment is off, we just need to run the update once (for version won't change)
+-    # so let's do that:
+-    execute_process(COMMAND ${Python_EXECUTABLE}
+-            ${CMAKE_CURRENT_SOURCE_DIR}/../scripts/versionupdate.py 
+-            ${CMAKE_BINARY_DIR}/DkVersion.h)
+-
+-else()
+-    message(WARNING "Python not found: the version number will be incorrect!")
+-endif()
+-
+-
+ NMC_INSTALL()
+ 
+ NMC_COPY_FILES()
+diff -ruN a/ImageLounge/cmake/FindQuaZip5.cmake b/ImageLounge/cmake/FindQuaZip5.cmake
+--- a/ImageLounge/cmake/FindQuaZip5.cmake	2020-08-13 10:15:07.000000000 +0200
++++ b/ImageLounge/cmake/FindQuaZip5.cmake	2020-10-06 00:32:51.825194896 +0200
+@@ -24,15 +24,15 @@
+ 		FIND_PATH(QUAZIP_ZLIB_INCLUDE_DIR NAMES zlib.h)
+ 	ELSE(WIN32)
+ 		FIND_PACKAGE(PkgConfig)
+-		pkg_check_modules(PC_QUAZIP quazip)
++		pkg_check_modules(PC_QUAZIP quazip1-qt5)
+ 		FIND_LIBRARY(QUAZIP_LIBRARIES
+ 			WIN32_DEBUG_POSTFIX d
+-            NAMES quazip${QUAZIP_LIB_VERSION_SUFFIX}
++            NAMES quazip1-qt5
+ 			HINTS /usr/lib /usr/lib64
+ 		)
+ 		FIND_PATH(QUAZIP_INCLUDE_DIR quazip.h
+ 			HINTS /usr/include /usr/local/include
+-			PATH_SUFFIXES quazip${QUAZIP_LIB_VERSION_SUFFIX}
++			PATH_SUFFIXES quazip${QUAZIP_LIB_VERSION_SUFFIX} QuaZip-Qt5-1.0/quazip QuaZip-Qt5-1.1/quazip QuaZip-Qt5-1.2/quazip QuaZip-Qt5-1.3/quazip QuaZip-Qt5-1.4/quazip 
+ 		)
+ 		FIND_PATH(QUAZIP_ZLIB_INCLUDE_DIR zlib.h HINTS /usr/include /usr/local/include)
+ 	ENDIF (WIN32)
+diff -ruN a/ImageLounge/src/DkCore/DkBasicLoader.cpp b/ImageLounge/src/DkCore/DkBasicLoader.cpp
+--- a/ImageLounge/src/DkCore/DkBasicLoader.cpp	2020-08-13 10:15:07.000000000 +0200
++++ b/ImageLounge/src/DkCore/DkBasicLoader.cpp	2020-10-06 00:35:40.138500425 +0200
+@@ -54,7 +54,7 @@
+ 
+ // quazip
+ #ifdef WITH_QUAZIP
+-#include <quazip5/JlCompress.h>
++#include <JlCompress.h>
+ #endif
+ 
+ // opencv
+diff -ruN a/ImageLounge/src/DkCore/DkImageContainer.cpp b/ImageLounge/src/DkCore/DkImageContainer.cpp
+--- a/ImageLounge/src/DkCore/DkImageContainer.cpp	2020-08-13 10:15:07.000000000 +0200
++++ b/ImageLounge/src/DkCore/DkImageContainer.cpp	2020-10-06 00:36:03.241829445 +0200
+@@ -41,7 +41,7 @@
+ 
+ // quazip
+ #ifdef WITH_QUAZIP
+-#include <quazip5/JlCompress.h>
++#include <JlCompress.h>
+ #endif
+ #pragma warning(pop)		// no warnings from includes - end
+ 
+diff -ruN a/ImageLounge/src/DkCore/DkImageLoader.cpp b/ImageLounge/src/DkCore/DkImageLoader.cpp
+--- a/ImageLounge/src/DkCore/DkImageLoader.cpp	2020-08-13 10:15:07.000000000 +0200
++++ b/ImageLounge/src/DkCore/DkImageLoader.cpp	2020-10-06 00:36:15.288493824 +0200
+@@ -79,7 +79,7 @@
+ 
+ // quazip
+ #ifdef WITH_QUAZIP
+-#include <quazip5/JlCompress.h>
++#include <JlCompress.h>
+ #endif
+ 
+ // opencv
+@@ -2212,4 +2212,4 @@
+ 	return mCurrentImage->fileName();
+ }
+ 
+-}
+\ No newline at end of file
++}
+diff -ruN a/ImageLounge/src/DkGui/DkDialog.cpp b/ImageLounge/src/DkGui/DkDialog.cpp
+--- a/ImageLounge/src/DkGui/DkDialog.cpp	2020-08-13 10:15:07.000000000 +0200
++++ b/ImageLounge/src/DkGui/DkDialog.cpp	2020-10-06 00:36:50.795153578 +0200
+@@ -97,7 +97,7 @@
+ 
+ // quazip
+ #ifdef WITH_QUAZIP
+-#include <quazip5/JlCompress.h>
++#include <JlCompress.h>
+ #endif
+ 
+ #pragma warning(pop)		// no warnings from includes - end
