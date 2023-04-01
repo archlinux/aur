@@ -1,7 +1,7 @@
 # Maintainer: sum01 <sum01@protonmail.com>
 pkgname=cpp-httplib-compiled
 _pkgname='cpp-httplib'
-pkgver=0.12.1
+pkgver=0.12.2
 pkgrel=1
 pkgdesc='A C++ HTTP/HTTPS server and client library (compiled version)'
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ conflicts=('cpp-httplib')
 depends=('openssl>=1.1.1' 'zlib' 'brotli')
 makedepends=('cmake>=3.14' 'python>=3')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yhirose/cpp-httplib/archive/v$pkgver.tar.gz")
-sha512sums=('a65ee9b4990572f92ade06fa6dc79535bc4d7c2bac47b85eba5e224fcb2d6dff7911127be72543b82a370628081acc81a88d1169a9cf30714f11c1227c40fe52')
+sha512sums=('dda47f76eaf5b4daa35f1295e482f1d81dd8823ae06339b9f4c93e4fbe7b54ae28760d3083b5d5cff212f1a679616adfa47dbb9d06c6810fac4b58197f575429')
 build() {
 	mkdir -p "$srcdir/$_pkgname-$pkgver/build"
 	cd "$srcdir/$_pkgname-$pkgver/build"
