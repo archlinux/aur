@@ -1,0 +1,5 @@
+#!/bin/bash
+
+export PYTHONPATH=/opt/sentry/usr/lib/python3.10/site-packages/
+export PATH=/opt/sentry/bin:/opt/sentry/usr/bin:/usr/bin
+exec /opt/sentry/usr/bin/sentry $*
