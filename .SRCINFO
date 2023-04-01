@@ -1,6 +1,6 @@
 pkgbase = openrct2-git
 	pkgdesc = Open source re-implementation of Roller Coaster Tycoon 2 (requires full copy of the game)
-	pkgver = 0.4.3.r416.g62b0a5edfe
+	pkgver = 0.4.4.r18.g1174063c27
 	pkgrel = 1
 	url = https://openrct2.io
 	install = openrct2.install
@@ -11,6 +11,7 @@ pkgbase = openrct2-git
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = nlohmann-json
 	depends = hicolor-icon-theme
 	depends = sdl2
