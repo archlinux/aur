@@ -2,7 +2,7 @@
 # Maintainer: chengxuncc <chengxuncc@gmail.com>
 
 pkgname=prysm
-pkgver=3.2.1
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Prysm is an Ethereum proof-of-stake client written in Go."
 arch=('x86_64' 'arm64')
@@ -18,7 +18,7 @@ sha256sums=('fc52438b1319fb1e61c85c6d96abce83009c3898e517051f140093944b45f2e3'
             'cc19fe37cd80972e3a214f5de577b315996e428c8e93cb362c5beb8204d8a173'
             '143147f19424a17147d342d1ac4006d8a154dbbb9e4b5a2f8e594d43e90bd305')
 
-downloadBinary(){
+downloadBinary() {
 	binary=$1
 	prysmArch=${arch/x86_64/amd64}
 	prysmArch=${prysmArch/aarch64/arm64}
