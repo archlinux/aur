@@ -4,7 +4,9 @@ pkgname="ocaml-$_projectname"
 pkgver='0.7.0'
 pkgrel='3'
 pkgdesc='Logging infrastructure for OCaml'
-arch=('x86_64' 'i686' 'armv7h' 'aarch64')
+# If you're running on i686 or pentium4, you have to add it to the arch array of the cppo, ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
+# If you're running on pentium4, you have to add it to the arch array of the ocaml-cmdliner AUR dependency
+arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://erratique.ch/software/$_projectname"
 license=('ISC')
 depends=('ocaml>=4.03.0' 'ocaml-cmdliner' 'ocaml-lwt')
