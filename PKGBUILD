@@ -1,7 +1,7 @@
 # Maintainer: Jake Stanger <mail@jstanger.dev>
 
 pkgname=ironbar-git
-pkgver=v0.10.0.r0.82875cd
+pkgver=v0.11.0.r0.1b0287b
 pkgrel=1
 makedepends=('rust' 'cargo')
 depends=('gtk3' 'gtk-layer-shell')
