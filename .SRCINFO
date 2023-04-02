@@ -1,0 +1,28 @@
+pkgbase = rdkit-inchi
+	pkgdesc = A collection of cheminformatics and machine-learning software written in C++ and Python. This version includes InChI support.
+	pkgver = 2022_09_5
+	pkgrel = 1
+	url = http://rdkit.org/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = BSD
+	makedepends = cmake>=3.1
+	depends = python
+	depends = python-numpy
+	depends = python-cairocffi
+	depends = python-pillow
+	depends = boost
+	depends = boost-libs
+	depends = sqlite
+	depends = cairo
+	depends = eigen
+	provides = rdkit
+	conflicts = rdkit-python2
+	conflicts = rdkit-git
+	conflicts = rdkit
+	conflicts = openbabel
+	source = https://github.com/rdkit/rdkit/archive/Release_2022_09_5.tar.gz
+	sha256sums = 2efe7ce3b527df529ed3e355e2aaaf14623e51876be460fa4ad2b7f7ad54c9b1
+
+pkgname = rdkit-inchi

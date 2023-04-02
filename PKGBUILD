@@ -1,0 +1,36 @@
+# Old Maintainers: Samo Turk <samo.turk@gmail.com>, Hector Mtz-Seara <hseara # gmail.com>
+# Maintainer: Benjamin Smith <newzealandbenjy@gmail.com>
+pkgname=rdkit-inchi
+pkgver=2022_09_5
+pkgrel=1
+pkgdesc="A collection of cheminformatics and machine-learning software written in C++ and Python. This version includes InChI support."
+arch=("i686" "x86_64" "armv7h")
+url="http://rdkit.org/"
+license=('BSD')
+depends=(python python-numpy python-cairocffi python-pillow boost boost-libs sqlite cairo eigen)
+makedepends=('cmake>=3.1')
+source=("https://github.com/rdkit/rdkit/archive/Release_${pkgver}.tar.gz")
+sha256sums=('2efe7ce3b527df529ed3e355e2aaaf14623e51876be460fa4ad2b7f7ad54c9b1')
+conflicts=('rdkit-python2' 'rdkit-git' 'rdkit' 'openbabel')
+provides=(rdkit)
+
+
+build() {
+  cd "${srcdir}/${pkgname}-Release_${pkgver}"
+  mkdir -p build
+  cd build
+
+  cmake .. \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DRDK_INSTALL_INTREE=OFF \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DRDK_BUILD_INCHI_SUPPORT=ON \
+    -DBoost_NO_BOOST_CMAKE=ON \
+    -DRDK_BUILD_CAIRO_SUPPORT=ON
+  make
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-Release_${pkgver}/build"
+  DESTDIR=${pkgdir} make install
+}
