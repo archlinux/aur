@@ -2,7 +2,7 @@
 # Maintainer: Benjamin Smith <newzealandbenjy@gmail.com>
 pkgname=rdkit-inchi
 pkgver=2022_09_5
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of cheminformatics and machine-learning software written in C++ and Python. This version includes InChI support."
 arch=("i686" "x86_64" "armv7h")
 url="http://rdkit.org/"
@@ -16,7 +16,7 @@ provides=(rdkit)
 
 
 build() {
-  cd "${srcdir}/${pkgname}-Release_${pkgver}"
+  cd "${srcdir}/rdkit-Release_${pkgver}"
   mkdir -p build
   cd build
 

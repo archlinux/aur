@@ -1,7 +1,7 @@
 pkgbase = rdkit-inchi
 	pkgdesc = A collection of cheminformatics and machine-learning software written in C++ and Python. This version includes InChI support.
 	pkgver = 2022_09_5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://rdkit.org/
 	arch = i686
 	arch = x86_64
