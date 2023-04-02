@@ -1,0 +1,33 @@
+pkgbase = dpkg-full
+	pkgdesc = dpkg is Debian's package manager (low-level utility, does not include apt)
+	pkgver = 1.21.21
+	pkgrel = 1
+	url = https://tracker.debian.org/pkg/dpkg
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	depends = perl-io-string
+	depends = perl-timedate
+	depends = bzip2
+	depends = perl
+	depends = xz
+	depends = zlib
+	optdepends = libselinux: SELinux support
+	optdepends = start-stop-daemon: Debian's daemon starter/stopper
+	source = http://deb.debian.org/debian/pool/main/d/dpkg/dpkg_1.21.21.tar.xz
+	b2sums = e815770bf6b9fb3a9f918a1a41b5c088e2da8689ff62fdce977b15527d4d0d1eb3c508f3aba2e3f92f128fc13c5137d1b7b6a9ecfa0269055b26566422104b87
+
+pkgname = dpkg-full
+	pkgdesc = Debian package management system - binary utilities
+	provides = dpkg
+	conflicts = dpkg
+	conflicts = dpkg-git
+
+pkgname = dpkg-docs
+	pkgdesc = Debian package management system - documentation
+
+pkgname = update-alternatives
+	pkgdesc = Debian's alternatives management system
+	provides = alternatives
+	conflicts = alternatives
