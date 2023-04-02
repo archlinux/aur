@@ -1,0 +1,14 @@
+pkgbase = openscad-threadlib-git
+	pkgdesc = Library containing standard threads for OpenSCAD
+	pkgver = r71.ad42e03
+	pkgrel = 1
+	url = https://github.com/adrianschlatter/threadlib
+	arch = x86_64
+	arch = i686
+	license = BSD
+	depends = openscad
+	depends = openscad-thread-profile-git
+	source = git+https://github.com/adrianschlatter/threadlib.git
+	sha512sums = SKIP
+
+pkgname = openscad-threadlib-git
