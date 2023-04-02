@@ -7,7 +7,8 @@ pkgdesc="Like pyenv and rbenv, but for Go."
 arch=('i686' 'x86_64')
 url="https://github.com/syndbg/goenv"
 license=('MIT')
-source=("git://github.com/syndbg/goenv.git")
+source=("git+https://github.com/syndbg/goenv.git")
+makedepends=('git')
 options=('!libtool' 'docs' 'strip')
 md5sums=('SKIP')
 
