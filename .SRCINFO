@@ -1,0 +1,15 @@
+pkgbase = openscad-thread-profile-git
+	pkgdesc = thread_profile.scad for threads in OpenSCAD. Part of the IoP-satellite repo
+	pkgver = r19.a78b36f
+	pkgrel = 1
+	url = https://github.com/MisterHW/IoP-satellite
+	arch = x86_64
+	arch = i686
+	license = unknown
+	depends = openscad
+	depends = openscad-scad-utils-git
+	depends = openscad-list-compr-demos-git
+	source = git+https://github.com/MisterHW/IoP-satellite.git
+	sha512sums = SKIP
+
+pkgname = openscad-thread-profile-git
