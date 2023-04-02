@@ -38,6 +38,6 @@ package() {
 	install -Dm 644 ${srcdir}/${_pkgname}/README.md ${pkgdir}/usr/local/share/doc/${_pkgname}/README.md
 
 	# install license
-	install -Dm 644 ${srcdir}/${_pkgname}/LICENSE ${pkgdir}/usr/share/licenses/${_pkgname}
+	install -Dm 644 ${srcdir}/${_pkgname}/LICENSE ${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE
 
 }
