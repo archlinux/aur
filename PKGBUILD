@@ -1,7 +1,7 @@
 # Maintainer: Kyuunex <kyuunex at protonmail dot ch>
 
 pkgname=xorg-xwayland-osu
-pkgver=22.1.8
+pkgver=23.1.0
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -19,7 +19,7 @@ makedepends=('meson' 'xorgproto' 'xtrans' 'libxkbfile' 'dbus'
 )
 source=(https://xorg.freedesktop.org/archive/individual/xserver/xwayland-$pkgver.tar.xz{,.sig}
         xwayland-vsync.diff)
-sha512sums=('f52c6f99d8ef7605bc1c651d5ee5e306c12af30649a2d712b1c4c3cf4c7c80246ae24bd9ac39461d47aafc78f5d659446a459cd6259e05ef3128b204981d114a'
+sha512sums=('984213a193b903e6023ecb3144a15f483dc3e9ec7cb02c36d8e67c6859b501b8b3e5a6e1ade9cb245450ad93002322f392b81d9286377ac34350cc3ea1f9679f'
             'SKIP'
             'ce461fde80aeddf1ed0b412e1b79486759e3981448ccbc1af45591aa1b80a094386f0ecb1aa5bfb68ab6f2169c0a1ab9e6517cb6bc04317290077ded2f8b78b6')
 provides=('xorg-server-xwayland'
@@ -56,10 +56,11 @@ build() {
 
 package() {
 
-  # bin + manpage + .pc file
-  install -m755 -Dt "${pkgdir}"/usr/bin build/hw/xwayland/Xwayland
-  install -m644 -Dt "${pkgdir}"/usr/share/man/man1 build/hw/xwayland/Xwayland.1
-  install -m644 -Dt "${pkgdir}"/usr/lib/pkgconfig build/hw/xwayland/xwayland.pc
+  DESTDIR="${pkgdir}" ninja -C build install
+  # xorg-server-common file /usr/lib/xorg/protocol.txt
+  rm "${pkgdir}"/usr/lib/xorg/protocol.txt
+  rmdir "${pkgdir}"/usr/lib/xorg
+  rm "${pkgdir}"/usr/share/man/man1/Xserver.1
 
   # license
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xwayland-$pkgver/COPYING
