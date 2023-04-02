@@ -23,7 +23,7 @@ depends=(
         'spirv-cross'
 )
 makedepends=('git' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
-             'wayland-protocols')
+             'wayland-protocols' 'meson')
 optdepends=('youtube-dl: for video-sharing websites playback')
 provides=('mpv' 'mpv-git')
 conflicts=('mpv')

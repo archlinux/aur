@@ -11,6 +11,7 @@ pkgbase = mpv-amd-full-git
 	makedepends = ladspa
 	makedepends = vulkan-headers
 	makedepends = wayland-protocols
+	makedepends = meson
 	depends = cmocka
 	depends = lcms2
 	depends = libcdio-paranoia
