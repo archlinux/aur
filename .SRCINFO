@@ -1,0 +1,24 @@
+pkgbase = mcy-nightly
+	pkgdesc = Mutation Cover with Yosys
+	pkgver = 20230402_d8f33b0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/YosysHQ/eqy
+	arch = any
+	license = custom:ISC
+	makedepends = git
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = boost
+	depends = yosys-nightly
+	depends = sby-nightly
+	depends = python
+	depends = python-click
+	depends = qt5-base
+	depends = boost-libs
+	optdepends = python-flask
+	options = !strip
+	source = mcy::git+https://github.com/YosysHQ/mcy.git#commit=d8f33b0
+	sha256sums = SKIP
+
+pkgname = mcy-nightly
