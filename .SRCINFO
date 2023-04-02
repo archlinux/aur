@@ -1,7 +1,7 @@
 pkgbase = sentry
 	pkgdesc = Python-based realtime logging and aggregation server.
 	pkgver = 23.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pypi.python.org/pypi/sentry
 	install = sentry.install
 	arch = any
@@ -27,6 +27,7 @@ pkgbase = sentry
 	source = sentry-web.service
 	source = sentry.target
 	source = sentry-sysusers.conf
+	sha256sums = 9d1b774945d9294a1bfdbe03b4e6b8e874426028145e85bac4b4e4990885c4d8
 	sha256sums = 3be04bc47f4f037bf157da9986874c343e6c7d1af9e30269b4f0aabf303d3291
 	sha256sums = 104beae867352c577d3c8f2d3c53d44fa14eb052208ed787ebb515f8dd2eb40d
 	sha256sums = f22d39acafe5ed22d21fc8e2735835388ad0f1a126cccc8783c9eef3207364b1

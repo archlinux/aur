@@ -4,7 +4,7 @@
 pkgbase=sentry
 pkgname=('sentry')
 pkgver=23.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python-based realtime logging and aggregation server."
 arch=(any)
 url="http://pypi.python.org/pypi/sentry"
@@ -47,7 +47,8 @@ source=(
     "sentry.target"
     "sentry-sysusers.conf"
 )
-sha256sums=('3be04bc47f4f037bf157da9986874c343e6c7d1af9e30269b4f0aabf303d3291'
+sha256sums=('9d1b774945d9294a1bfdbe03b4e6b8e874426028145e85bac4b4e4990885c4d8'
+            '3be04bc47f4f037bf157da9986874c343e6c7d1af9e30269b4f0aabf303d3291'
             '104beae867352c577d3c8f2d3c53d44fa14eb052208ed787ebb515f8dd2eb40d'
             'f22d39acafe5ed22d21fc8e2735835388ad0f1a126cccc8783c9eef3207364b1'
             '3c471417a279ac6605d3bb82b7377eaab0e24efe9cf582a11eef0d9e4c89428e'
@@ -71,11 +72,11 @@ package() {
     find "${pkgdir}" -name '.DS_Store' -delete
 
     # fixes
-    touch /opt/sentry/usr/lib/python3.10/site-packages/sentry_auth_ldap/__init__.py
-    ln -s sentry_ldap_auth /opt/sentry/usr/lib/python3.10/site-packages/sentry_auth_ldap
+    touch "${pkgdir}"/opt/sentry/usr/lib/python3.10/site-packages/sentry_auth_ldap/__init__.py
+    (cd "${pkgdir}"/opt/sentry/usr/lib/python3.10/site-packages/ && ln -s sentry_ldap_auth sentry_auth_ldap)
 
     # systemd files and wrappers
-    install -Dm0644 "${srcdir}/sentry" "${pkgdir}/opt/sentry/bin/sentry"
+    install -Dm0755 "${srcdir}/sentry" "${pkgdir}/opt/sentry/bin/sentry"
     install -Dm0644 "${srcdir}/sentry-celery.service" "${pkgdir}/usr/lib/systemd/system/sentry-celery.service"
     install -Dm0644 "${srcdir}/sentry-cron.service" "${pkgdir}/usr/lib/systemd/system/sentry-cron.service"
     install -Dm0644 "${srcdir}/sentry-web.service" "${pkgdir}/usr/lib/systemd/system/sentry-web.service"
