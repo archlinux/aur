@@ -10,9 +10,9 @@ license=("GPL3")
 depends=('mpv')
 conflicts=("wiliwili-git")
 source=("https://gitee.com/hellopoisonx/aur-wiliwili-bin/raw/master/wiliwili.tar.gz" "https://gitee.com/hellopoisonx/aur-wiliwili-bin/raw/master/wiliwili.desktop" "https://gitee.com/hellopoisonx/aur-wiliwili-bin/raw/master/resources.tar.gz")
-sha256sums=('d163d532e0dc9785fa33511bdbb81891d82768e4cdcd681a6f064fdea7021399'
+sha256sums=('3684c3158caba48d2047d1983530fb1f3a940b37dce7e735d460d582cd860590'
             'd7c4fb2600d372c43026b9a4f63ba23592dcb62916eb2dfd90b8e05b21ad369b'
-            'a31cd4eda9c2da1f690fee526265214f282ebcf6471f1fd51b39e5beb5744f80')
+            '4bfcf70e927004d47a567e1e6b13fda2e8104f8cedbe0a83694971a4537519b8')
 prepare() {
   cd ${srcdir}
   tar xpvf wiliwili.tar.gz -C "$srcdir"
