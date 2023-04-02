@@ -1,3 +1,11 @@
+2022-03-25 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.4.4.3-1:
+    Implemented new login flow which fixes Steam breaking change rendering previously used login keys mechanism invalid (@JustArchi #2840).
+    Added support for StartupVideo (item_class_17) item type (@JustArchi).
+    Fixed regression introduced in V5.4.3.0 that could cause SSL issues on some incorrectly configured machines (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2022-02-26 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.4.3.2-1:
     Added new MobileAuthenticator plugin which adds two new commands: 2fainit and 2fafinalize, see wiki for more info (@JustArchi).
