@@ -2,7 +2,7 @@
 
 _gemname=gtk4
 pkgname=ruby-$_gemname
-pkgver=4.0.6
+pkgver=4.1.2
 pkgrel=1
 pkgdesc='Ruby/GTK4 is a Ruby binding of GTK+-4.x.'
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(gtk4 ruby ruby-atk=$pkgver ruby-gdk4=$pkgver)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('64523cb6f86d59e1321594a8dca55bc3be96969ee9285a6bf986b2793261ce26')
+sha256sums=('1237d874fac285ddf150d097a078199b8e9b9c4490463c482bbb0341d07ede75')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
