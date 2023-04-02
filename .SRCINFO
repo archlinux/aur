@@ -1,7 +1,7 @@
 pkgbase = kadu-git
 	pkgdesc = Qt-based Jabber/XMPP and Gadu-Gadu client
 	pkgver = 20170821
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.com/kadu/kadu
 	arch = i686
 	arch = x86_64
@@ -22,6 +22,7 @@ pkgbase = kadu-git
 	depends = qt5-svg
 	depends = qt5-webkit
 	depends = qt5-x11extras
+	depends = qt5-xmlpatterns
 	depends = qxmpp
 	provides = kadu
 	conflicts = kadu

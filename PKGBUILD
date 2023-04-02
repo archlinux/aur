@@ -8,13 +8,13 @@ _name=kadu
 _commit=c2007766
 pkgname=$_name-git
 pkgver=20170821
-pkgrel=3
+pkgrel=4
 pkgdesc='Qt-based Jabber/XMPP and Gadu-Gadu client'
 arch=('i686' 'x86_64')
 url='https://gitlab.com/kadu/kadu'
 license=('GPL')
 depends=('enchant' 'boost' 'hicolor-icon-theme' 'injeqt' 'libarchive' 'libgadu' 'libmpdclient' 'libotr'
-         'libxss' 'qt5-multimedia' 'qt5-script' 'qt5-svg' 'qt5-webkit' 'qt5-x11extras' 'qxmpp')
+         'libxss' 'qt5-multimedia' 'qt5-script' 'qt5-svg' 'qt5-webkit' 'qt5-x11extras' 'qt5-xmlpatterns' 'qxmpp')
 makedepends=('cmake' 'qt5-tools')
 provides=('kadu')
 conflicts=('kadu')
