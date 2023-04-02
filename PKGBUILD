@@ -11,9 +11,7 @@ arch=('i686' 'x86_64')
 url='https://invent.kde.org/libraries/polkit-qt-1'
 license=('LGPL')
 depends=('polkit' 'qt6-base')
-makedepends=('git')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+makedepends=('git' 'cmake')
 source=("$_pkgname::git+https://invent.kde.org/libraries/polkit-qt-1.git")
 sha256sums=('SKIP')
 
@@ -32,7 +30,7 @@ build() {
     cmake "$srcdir/$_pkgname" \
       -DCMAKE_BUILD_TYPE=Release \
       -DQT_MAJOR_VERSION=6 \
-      -DCMAKE_INSTALL_PREFIX=/opt/KF5-qt6/
+      -DCMAKE_INSTALL_PREFIX=/usr
      make
 }
 

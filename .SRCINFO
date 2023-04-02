@@ -7,10 +7,9 @@ pkgbase = polkit-qt6-git
 	arch = x86_64
 	license = LGPL
 	makedepends = git
+	makedepends = cmake
 	depends = polkit
 	depends = qt6-base
-	provides = polkit-qt6
-	conflicts = polkit-qt6
 	source = polkit-qt6::git+https://invent.kde.org/libraries/polkit-qt-1.git
 	sha256sums = SKIP
 
