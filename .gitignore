@@ -1,0 +1,5 @@
+*.pkg.tar
+*.pkg.tar.xz
+karoto-git/
+pkg/
+src/
