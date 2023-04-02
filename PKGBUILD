@@ -5,13 +5,14 @@ _pkgname=stellarium
 _pkgname2=Stellarium
 pkgver=23.1
 _pkgtag=v$pkgver
-pkgrel=1
-pkgdesc="Free and open source planetarium showing a realistic sky in 3D"
+pkgrel=2
+pkgdesc="Free GPL software which renders realistic skies in real time with OpenGL"
 arch=('x86_64')
 url="https://${_pkgname}.org/"
 license=('GPL2')
 depends=()
 conflicts=($_pkgname)
+provides=($_pkgname)
 validpgpkeys=('79151C2E6351E7278DA1A730BF38D4D02A328DFF')
 
 _qtver=5

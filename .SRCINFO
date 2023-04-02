@@ -1,10 +1,11 @@
 pkgbase = stellarium-bin
-	pkgdesc = Free and open source planetarium showing a realistic sky in 3D
+	pkgdesc = Free GPL software which renders realistic skies in real time with OpenGL
 	pkgver = 23.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://stellarium.org/
 	arch = x86_64
 	license = GPL2
+	provides = stellarium
 	conflicts = stellarium
 	source = https://github.com/Stellarium/stellarium/releases/download/v23.1/Stellarium-23.1-qt5-x86_64.AppImage
 	source = https://github.com/Stellarium/stellarium/releases/download/v23.1/Stellarium-23.1-qt5-x86_64.AppImage.asc
