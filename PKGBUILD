@@ -1,17 +1,15 @@
 # Maintainer: Hermann Höhne <hoehermann@gmx.de>
-# Contributor: GI_Jack <GI_Jack@hackermail.com>
-
 pkgname=purple-gowhatsapp-git
 pkgnam=${pkgname%-git}
-pkgver=1.0.0r113_
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="A libpurple/Pidgin plugin for WhatsApp, powered by whatsmeow"
 arch=('x86_64' 'i686')
 url="https://github.com/hoehermann/purple-gowhatsapp"
 license=('GPLv3')
 groups=()
-depends=('libpurple')
-makedepends=('git' 'go' 'cmake' 'make' 'pkg-config')
+depends=('libpurple' 'opusfile' 'gdk-pixbuf2' 'webp-pixbuf-loader')
+makedepends=('git' 'go' 'cmake' 'make' 'pkg-config' 'opusfile' 'gdk-pixbuf2' 'webp-pixbuf-loader' 'jq')
 provides=("${pkgnam}")
 conflicts=("${pkgnam}")
 install=
