@@ -3,7 +3,7 @@
 
 pkgname=snuba
 pkgver=23.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="a service that provides a rich data model on top of Clickhouse"
 arch=(any)
 url="https://github.com/getsentry/snuba"
@@ -19,7 +19,7 @@ depends=(
 
 options=(!strip)
 source=(snuba-devserver.service)
-sha256sums=('20ecfc39ac9f1ee7fad481c339bc120dce9a3e893fb48c541621e1cfa5422b43')
+sha256sums=('52fcea894f35a7c960e1e25cd015268679fe54cbcaf2038df595925ee16a486c')
 
 package() {
     mkdir -p "${pkgdir}/opt/sentry"
