@@ -1,13 +1,13 @@
 pkgbase = objconv
 	pkgdesc = Object file converter and disassembler
 	pkgver = 2.54
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.agner.org/optimize/#objconv
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = gcc-libs
 	source = objconv-2.54.zip::http://www.agner.org/optimize/objconv.zip
-	sha256sums = 483c27a4f1dcd8dc9cb712913ab8630835ecdfa5868fc8ece5b95a4245226d61
+	sha256sums = 0c5ca8fbc7ef1c4afe3cc7cc9018711a5885afacbe8bcebc48028d1ec90ccc7c
 
 pkgname = objconv
