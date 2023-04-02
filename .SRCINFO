@@ -1,0 +1,29 @@
+pkgbase = webcord-screenshare-vencord-git
+	pkgdesc = A Discord and Fosscord client made with the Electron (screenshare-with-audio branch with Vencord).
+	pkgver = 4.1.1.r884.e5c2ded
+	pkgrel = 1
+	url = https://github.com/SpacingBat3,kakxem/WebCord
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	makedepends = imagemagick
+	makedepends = typescript
+	makedepends = asar
+	makedepends = p7zip
+	makedepends = nodejs-lts-hydrogen
+	depends = electron21
+	optdepends = xdg-desktop-portal-impl: Screen share UI and other portals under Wayland
+	optdepends = pipewire: WebRTC screen sharing under Wayland
+	optdepends = org.freedesktop.secrets: Encryption using stored key in the secret service
+	provides = webcord
+	conflicts = webcord
+	conflicts = webcord-git
+	conflicts = webcord-vencord-git
+	conflicts = webcord-git-screenshare
+	source = webcord::git+https://github.com/kakxem/WebCord.git#branch=feature/screenshare-with-audio
+	source = webcord.desktop
+	md5sums = SKIP
+	md5sums = 2c5ab330755922ad846d3a972a4dadcf
+
+pkgname = webcord-screenshare-vencord-git
