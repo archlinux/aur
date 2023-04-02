@@ -1,0 +1,16 @@
+pkgbase = i3-insert-workspace-git
+	pkgdesc = Insert a new named workspace between two other named workspaces.
+	pkgver = 1.3.2.r0.g6cb94c9
+	pkgrel = 2
+	url = https://github.com/corrodedHash/i3-insert-workspace
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	provides = i3-insert-workspace
+	conflicts = i3-insert-workspace
+	source = i3-insert-workspace-git::git+https://github.com/corrodedHash/i3-insert-workspace#branch=main
+	sha256sums = SKIP
+
+pkgname = i3-insert-workspace-git
