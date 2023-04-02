@@ -3,8 +3,8 @@
 
 pkgname=emacs-ng
 pkgver=30.0.50
-_fix_commit=1ce413e
-pkgrel=9
+_fix_commit=b944567
+pkgrel=10
 pkgdesc="A new approach to Emacs - Including TypeScript, Threading, Async I/O, and WebRender"
 arch=('x86_64')
 url="https://emacs-ng.github.io/emacs-ng"
@@ -17,7 +17,7 @@ depends=('jansson' 'ncurses' 'libgccjit' 'librsvg' 'libxcb' 'libxml2' 'gpm'
 	 'gtk3' 'libsm' 'xcb-util' 'libxcb' 'libwebp')
 makedepends=('cargo' 'rustup' 'git' 'python' 'texlive-core')
 source=("$pkgname-$pkgver_${_fix_commit}.tar.gz::https://github.com/emacs-ng/emacs-ng/archive/refs/tags/v0.0.${_fix_commit}.tar.gz")
-sha256sums=('00ca2dd49671952849c062d127cbf7fe4d0b8fba3a212f8d0129771f52667a92')
+sha256sums=('ca61fcbe12ef759bca8a315de3e7980e5988555fd49ee1da8ae668dd27543bf2')
 
 #source=(git+https://github.com/emacs-ng/emacs-ng)
  
@@ -43,7 +43,6 @@ build() {
 	      --with-zlib \
 	      --with-libsystemd \
 	      --with-rsvg \
-	      --with-native-compilation=aot \
 	      --without-imagemagick \
 	      --with-gpm \
 	      --without-xaw3d \
