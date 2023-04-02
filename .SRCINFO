@@ -1,8 +1,8 @@
 pkgbase = tuxpaint-config
 	pkgdesc = Tux Paint configuration tool
-	pkgver = 0.0.19
+	pkgver = 0.0.20
 	pkgrel = 1
-	url = http://www.tuxpaint.org/
+	url = https://www.tuxpaint.org/
 	arch = x86_64
 	license = GPL
 	depends = tuxpaint
@@ -11,7 +11,7 @@ pkgbase = tuxpaint-config
 	depends = libxext
 	depends = libunibreak
 	options = !makeflags
-	source = https://downloads.sourceforge.net/sourceforge/tuxpaint/tuxpaint-config-0.0.19.tar.gz
-	sha256sums = 2ba2039ee6700fe7193c74342d07cc271ce307a15f8d4816406e2e75206ae11b
+	source = https://downloads.sourceforge.net/sourceforge/tuxpaint/tuxpaint-config-0.0.20.tar.gz
+	sha256sums = aa17449ff6e7856ec2c406a2ab2d4a3beb28ff074311d5adf88f8a6e7fff195d
 
 pkgname = tuxpaint-config

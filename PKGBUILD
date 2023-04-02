@@ -1,17 +1,17 @@
-# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
+# Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: royrocks <royrocks13@gmail.com>
 
 pkgname=tuxpaint-config
-pkgver=0.0.19
+pkgver=0.0.20
 pkgrel=1
 pkgdesc='Tux Paint configuration tool'
 arch=('x86_64')
-url='http://www.tuxpaint.org/' # no https available
+url='https://www.tuxpaint.org/'
 license=('GPL')
 depends=('tuxpaint' 'fltk' 'libxft' 'libxext' 'libunibreak')
 options=('!makeflags')
 source=("https://downloads.sourceforge.net/sourceforge/tuxpaint/$pkgname-$pkgver.tar.gz")
-sha256sums=('2ba2039ee6700fe7193c74342d07cc271ce307a15f8d4816406e2e75206ae11b')
+sha256sums=('aa17449ff6e7856ec2c406a2ab2d4a3beb28ff074311d5adf88f8a6e7fff195d')
 
 build() {
   make -C "$pkgname-$pkgver" PREFIX=/usr
