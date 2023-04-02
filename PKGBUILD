@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Jun Bo Bi <jambonmcyeah@gmail.com>
 pkgname=('canta-gtk-theme' 'canta-icon-theme')
 pkgbase=canta-theme
