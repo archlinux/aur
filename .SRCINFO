@@ -1,4 +1,4 @@
-pkgbase = photo-stats
+pkgbase = phosta
 	pkgdesc = photo stats for your terminal
 	pkgver = 1.1
 	pkgrel = 1
@@ -17,4 +17,4 @@ pkgbase = photo-stats
 	source = git+https://git.sr.ht/~rwa/photo-stats#tag=1.1
 	sha256sums = SKIP
 
-pkgname = photo-stats
+pkgname = phosta

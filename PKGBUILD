@@ -1,6 +1,6 @@
 # Maintainer: René Wagner < rwagner at rw-net dot de >
 
-pkgname=photo-stats
+pkgname=phosta
 pkgver=1.1
 pkgrel=1
 pkgdesc='photo stats for your terminal'
@@ -14,7 +14,7 @@ source=("git+https://git.sr.ht/~rwa/photo-stats#tag=${pkgver}")
 sha256sums=('SKIP')
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/photo-stats"
   mkdir -p "${pkgdir}/usr/bin"
   install -Dm755 phosta "${pkgdir}/usr/bin/"
 }
