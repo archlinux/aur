@@ -1,6 +1,6 @@
 # Maintainer: Jiayi Wu <wjy@516wjy.xyz>
 pkgname='zff-reload'
-pkgver='6.0.15beta'
+pkgver='6.0.17beta'
 pkgrel=1
 pkgdesc="New Zff, the lightest adventure game."
 arch=('any')
