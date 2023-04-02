@@ -31,6 +31,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-Release_${pkgver}/build"
+  cd "${srcdir}/rdkit-Release_${pkgver}/build"
   DESTDIR=${pkgdir} make install
 }
