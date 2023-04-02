@@ -1,17 +1,17 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: royrocks <royrocks13@gmail.com>
 
 pkgname=tuxpaint-stamps
-pkgver=2022.06.04
+pkgver=2023.04.02
 pkgrel=1
 pkgdesc='Additional stamps for Tux Paint'
 arch=('any')
-url='http://tuxpaint.org/'
+url='https://tuxpaint.org/'
 license=('GPL')
 optdepends=('tuxpaint')
 options=('!strip')
 source=("https://downloads.sourceforge.net/tuxpaint/$pkgname-$pkgver.tar.gz")
-sha256sums=('842065576fae554358e00e51d71a492616a6490b12b592228067477c287a0bf8')
+sha256sums=('42924b70298e0a86978cd121b1e0a8be930fa126e1ee6209e5f8c50b4ee33fac')
 
 build() {
   make -C "$pkgname-$pkgver" PREFIX=/usr
