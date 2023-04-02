@@ -1,6 +1,6 @@
 # Maintainer: Stefan Ott <stefan@ott.net>
 pkgname=synodl
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="Command-line client for Synology's DownloadStation"
 arch=("any")
