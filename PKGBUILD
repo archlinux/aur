@@ -8,7 +8,7 @@ pkgdesc="An Arknights assistant"
 arch=(x86_64)
 url="https://github.com/MaaAssistantArknights/MaaAssistantArknights"
 license=('AGPL')
-depends=(opencv onnxruntime)
+depends=(opencv onnxruntime cpr)
 makedepends=(asio eigen git cmake)
 source=("$url/archive/refs/tags/$_pkgver.tar.gz"
         'https://github.com/MaaAssistantArknights/FastDeploy/archive/1e4f600e5e5ab23528f77b98a8c5167b46ddfce2.tar.gz')
