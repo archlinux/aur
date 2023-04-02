@@ -2,7 +2,7 @@
 
 _gemname=vte3
 pkgname=ruby-$_gemname
-pkgver=4.0.6
+pkgver=4.1.2
 pkgrel=1
 pkgdesc='a Ruby binding of VTE.'
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(vte3 ruby ruby-gtk3)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('7c54d461061855ab19f0d2564c00554d442b357e442a2e5650c85cf0f9ee98eb')
+sha256sums=('51e208b67bbc6fcf8d60cf831c26603adca4279f45f194cbcb8d1cbea1ab8a23')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
