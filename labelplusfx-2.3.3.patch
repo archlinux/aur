@@ -1,0 +1,88 @@
+diff --unified --recursive --text LabelPlusFX-2.3.3.orig/pom.xml LabelPlusFX-2.3.3.new/pom.xml
+--- LabelPlusFX-2.3.3.orig/pom.xml	2022-05-27 18:27:38.000000000 +0800
++++ LabelPlusFX-2.3.3.new/pom.xml	2023-03-02 07:16:56.954959323 +0800
+@@ -90,14 +90,14 @@
+         <dependency>
+             <groupId>com.twelvemonkeys.imageio</groupId>
+             <artifactId>imageio-webp</artifactId>
+-            <version>3.9.0-SNAPSHOT</version>
++            <version>3.9.0</version>
+         </dependency>
+ 
+         <!-- Jsoup, see my GitHub repo -->
+         <dependency>
+             <groupId>org.jsoup</groupId>
+             <artifactId>jsoup</artifactId>
+-            <version>1.14.3-module</version>
++            <version>1.14.3</version>
+         </dependency>
+ 
+         <!-- Tests -->
+@@ -108,6 +108,28 @@
+             <scope>test</scope>
+         </dependency>
+ 
++        <!-- javafx -->
++        <dependency>
++            <groupId>org.openjfx</groupId>
++            <artifactId>javafx-base</artifactId>
++            <version>17.0.2</version>
++        </dependency>
++        <dependency>
++            <groupId>org.openjfx</groupId>
++            <artifactId>javafx-controls</artifactId>
++            <version>17.0.2</version>
++        </dependency>
++        <dependency>
++            <groupId>org.openjfx</groupId>
++            <artifactId>javafx-graphics</artifactId>
++            <version>17.0.2</version>
++        </dependency>
++        <dependency>
++            <groupId>org.openjfx</groupId>
++            <artifactId>javafx-swing</artifactId>
++            <version>17.0.2</version>
++        </dependency>
++
+     </dependencies>
+ 
+     <build>
+@@ -121,6 +143,19 @@
+             </plugin>
+             <plugin>
+                 <groupId>org.apache.maven.plugins</groupId>
++                <artifactId>maven-jar-plugin</artifactId>
++                <version>3.2.1</version>
++                <configuration>
++                    <archive>
++                        <manifest>
++                            <addClasspath>true</addClasspath>
++                            <mainClass>ink.meodinger.lpfx.LauncherKt</mainClass>
++                        </manifest>
++                    </archive>
++                </configuration>
++            </plugin>
++            <plugin>
++                <groupId>org.apache.maven.plugins</groupId>
+                 <artifactId>maven-source-plugin</artifactId>
+                 <version>3.2.1</version>
+                 <executions>
+@@ -232,4 +267,4 @@
+         </plugins>
+     </build>
+ 
+-</project>
+\ No newline at end of file
++</project>
+diff --unified --recursive --text LabelPlusFX-2.3.3.orig/src/main/kotlin/ink/meodinger/lpfx/component/properties/DialogSettings.kt LabelPlusFX-2.3.3.new/src/main/kotlin/ink/meodinger/lpfx/component/properties/DialogSettings.kt
+--- LabelPlusFX-2.3.3.orig/src/main/kotlin/ink/meodinger/lpfx/component/properties/DialogSettings.kt	2023-03-02 07:18:33.817603051 +0800
++++ LabelPlusFX-2.3.3.new/src/main/kotlin/ink/meodinger/lpfx/component/properties/DialogSettings.kt	2023-03-02 07:17:52.086459109 +0800
+@@ -94,6 +94,7 @@
+ 
+     init {
+         title = I18N["settings.title"]
++        setResizable(true)
+         dialogPane.prefWidth = 600.0
+         dialogPane.prefHeight = 480.0
+         dialogPane.buttonTypes.addAll(ButtonType.OK, ButtonType.CANCEL)
+

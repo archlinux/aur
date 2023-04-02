@@ -1,0 +1,4 @@
+#!/bin/sh
+
+/usr/lib/jvm/java-17-openjdk/bin/java -jar /opt/labelplusfx/runtime/labelplusfx.jar --disable-jni --no-check-update "$@"
+
