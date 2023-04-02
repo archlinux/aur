@@ -5,7 +5,7 @@
 pkgname=('flutter-light-common' 'flutter-light-android-arm' 'flutter-light-android-arm64' 'flutter-light-android-x86' 'flutter-light-android-x64' 'flutter-light-web' 'flutter-light-linux')
 pkgbase=flutter-light
 _pkgname=flutter
-pkgver=3.7.3
+pkgver=3.7.9
 pkgrel=1
 makedepends=("python")
 optdepends=("android-sdk" "android-studio" "intellij-idea-community-edition" "intellij-idea-ultimate-edition" "ninja" "perl" "python")
@@ -13,23 +13,23 @@ optdepends=("android-sdk" "android-studio" "intellij-idea-community-edition" "in
 arch=("x86_64" "aarch64")
 url="https://${_pkgname}.dev"
 license=("custom" "BSD" "CCPL")
-options=("!emptydirs")
+options=("!emptydirs" "!strip")
 source=(
-  "${_pkgname}-${pkgver}.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/${_pkgname}_linux_${pkgver/.hotfix/+hotfix}-stable.tar.xz"
   "${_pkgname}.sh"
   "${_pkgname}.csh"
 )
 
-sha256sums=('7b3d2900ce0e367d73d85591d5d43a11f94a223278dd3220776b03a83e234865'
-            '1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a'
+sha256sums=('1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a'
             '7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f')
 
-build() {
-  rm -rf "${srcdir}/${_pkgname}/bin/cache/"
+prepare() {
+  rm -rf $srcdir/_pkgname
+  git clone https://github.com/flutter/flutter.git --depth 1 -b $pkgver
+  cd $srcdir/$_pkgname
+  rm -rf bin/cache .pub-cache
   #sed -i "s/\$FLUTTER_ROOT\/bin\/cache\/dart-sdk/\/opt\/dart-sdk/g" "${srcdir}/${_pkgname}/bin/internal/shared.sh"
   sed -i "/\"\$FLUTTER_ROOT\/bin\/internal\/update_dart_sdk.sh\"/d" "${srcdir}/${_pkgname}/bin/internal/shared.sh"
   mkdir -p "${srcdir}/${_pkgname}/bin/cache/"
-  rm -rf ${srcdir}/${_pkgname}/bin/cache/{dart-sdk,engine.stamp}
   ln -sf "/opt/dart-sdk" "${srcdir}/${_pkgname}/bin/cache/dart-sdk"
   ln -s "${srcdir}/${_pkgname}/bin/internal/engine.version" "${srcdir}/${_pkgname}/bin/cache/engine.stamp"
   "${srcdir}/${_pkgname}/bin/flutter" precache
