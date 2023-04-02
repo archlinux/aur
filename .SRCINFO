@@ -1,17 +1,17 @@
 pkgbase = ignition-physics
 	pkgdesc = Abstract physics interface designed to support simulation and rapid development of robot applications.
 	pkgver = 6.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gazebosim.org/libs/physics
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
-	depends = ignition-cmake
-	depends = ignition-math
+	depends = ignition-cmake>2
+	depends = ignition-math>6
 	depends = ignition-plugin
-	depends = ignition-common
+	depends = ignition-common>3
 	depends = libdart
-	depends = sdformat
+	depends = sdformat>9
 	source = ignition-physics-6.3.0.tar.gz::https://github.com/gazebosim/gz-physics/archive/gz-physics6_6.3.0.tar.gz
 	sha256sums = 30be46667ab4db00de64580019ab4f27c0cd0e517b463750188e07f2e89c7fa9
 
