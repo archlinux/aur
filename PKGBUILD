@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=blanket-git
-pkgver=0.6.0.r25.g2e0d2b8
+pkgver=0.6.0.r42.ge2cded9
 pkgrel=1
 pkgdesc="Improve focus and increase your productivity by listening to different sounds."
 arch=('any')
@@ -22,10 +22,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${pkgname%-git}"
-
-  # Specify GstPlay version before import
-  sed -i "/^from gi.repository import GObject, Gst/i import gi\ngi.require_version('GstPlay', '1.0')" \
-    "${pkgname%-git}/sound.py"
 }
 
 build() {

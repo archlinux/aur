@@ -1,6 +1,6 @@
 pkgbase = blanket-git
 	pkgdesc = Improve focus and increase your productivity by listening to different sounds.
-	pkgver = 0.6.0.r25.g2e0d2b8
+	pkgver = 0.6.0.r42.ge2cded9
 	pkgrel = 1
 	url = https://apps.gnome.org/app/com.rafaelmardojai.Blanket
 	arch = any
