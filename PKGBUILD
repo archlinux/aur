@@ -18,7 +18,7 @@ provides=("thunderbird=$pkgver")
 conflicts=('thunderbird-beta')
 install=$pkgname.install
 source=("https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-x86_64/en-US/thunderbird-$pkgver.tar.bz2"
-        'thunderbird-beta-bin.desktop'
+        'org.mozilla.thunderbird-beta-bin.desktop'
         'vendor.js')
 sha512sums=('b76b3d00a05bfd2e359f2bb9fb3385205095fdcf86bd3de0c5742a9286113e81263a0a93899aa4d2fa2cbd79a3aa55b3457985a788942cf2009d0cd622d4c4e2'
             'b42b4b86aa072dca7f9e401c1f0c593396cda45fe56326af997db4042549cf895f1f0682c0d007647cda5200f11c06cef13e006a5973eae2bfa31b86d4d32f79'
@@ -59,7 +59,7 @@ pref("extensions.shownSelectionUI", true);
 END
 
   # Desktop
-  install -m644 $pkgname.desktop "$pkgdir"/usr/share/applications/
+  install -m644 org.mozilla.thunderbird-beta-bin.desktop "$pkgdir"/usr/share/applications/
 
   # Icons
   for i in 16 22 24 32 48 256; do
