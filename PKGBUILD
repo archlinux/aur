@@ -4,7 +4,7 @@
 pkgname=astronaut
 pkgver=0.1.1
 pkgrel=3
-pkgdesc='A Gemini browser for the terminal.'
+pkgdesc='Gemini browser for the terminal'
 arch=('x86_64')
 url='https://sr.ht/~adnano/astronaut/'
 license=('GPL3')
