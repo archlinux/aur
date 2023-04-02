@@ -19,8 +19,11 @@ if [ ! -f "/etc/pki/tls/certs/ca-bundle.crt" ]; then
 mkdir -p /etc/pki/tls/certs
 ln -s /etc/ssl/certs/ca-certificates.crt /etc/pki/tls/certs/ca-bundle.crt
 fi
-if [ ! -f "libsgllnx64-2.29.02.so" ]; then
+if [ ! -f "libsgllnx64-2.29.02.so" ] &&  [ -f "/opt/hqplayerd/lib/libsgllnx64-2.29.02.so" ] ; then
 ln -s /opt/hqplayerd/lib/libsgllnx64-2.29.02.so libsgllnx64-2.29.02.so
+fi
+if [ ! -f "libsglarm64-2.31.0.0.so" ] &&  [ -f "/opt/hqplayerd/lib/libsglarm64-2.31.0.0.so" ] ; then
+ln -s /opt/hqplayerd/lib/libsglarm64-2.31.0.0.so libsglarm64-2.31.0.0.so
 fi
 }
 
@@ -45,7 +48,10 @@ if [ ! -f "/etc/pki/tls/certs/ca-bundle.crt" ]; then
 mkdir -p /etc/pki/tls/certs
 ln -s /etc/ssl/certs/ca-certificates.crt /etc/pki/tls/certs/ca-bundle.crt
 fi
-if [ ! -f "libsgllnx64-2.29.02.so" ]; then
+if [ ! -f "libsgllnx64-2.29.02.so" ] &&  [ -f "/opt/hqplayerd/lib/libsgllnx64-2.29.02.so" ] ; then
 ln -s /opt/hqplayerd/lib/libsgllnx64-2.29.02.so libsgllnx64-2.29.02.so
+fi
+if [ ! -f "libsglarm64-2.31.0.0.so" ] &&  [ -f "/opt/hqplayerd/lib/libsglarm64-2.31.0.0.so" ] ; then
+ln -s /opt/hqplayerd/lib/libsglarm64-2.31.0.0.so libsglarm64-2.31.0.0.so
 fi
 }
