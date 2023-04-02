@@ -2,7 +2,7 @@
 
 _gemname=gdk4
 pkgname=ruby-$_gemname
-pkgver=4.0.6
+pkgver=4.1.2
 pkgrel=1
 pkgdesc='Ruby/GDK4 is a Ruby binding of GDK-4.x.'
 arch=(x86_64)
@@ -13,7 +13,7 @@ makedepends=(ruby-native-package-installer rake)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('34152e9cf3a669f5d3f2000b38cb758bb178c619d2290baecdc0c39f76b2ed19')
+sha256sums=('3902c58c3c0291341cd042807da83339193cdef21a548af3255f91a0e5b458cd')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
