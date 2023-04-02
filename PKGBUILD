@@ -1,16 +1,16 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=conjure
 _app_id=io.github.nate_xyz.Conjure
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Magically transform your images."
 arch=('any')
 url="https://github.com/nate-xyz/conjure"
-license=('GPL')
+license=('GPL3')
 depends=('libadwaita' 'python-gobject' 'python-loguru' 'python-wand')
 makedepends=('git' 'meson')
 checkdepends=('appstream-glib')
-_commit=e8c3319fd70f839277e6ccb2d7d2541097677f35  # v0.1.1
+_commit=bdbea03359109be6ebe0bea9fa5678c4ce541987  # 0.1.2
 source=("git+https://github.com/nate-xyz/conjure.git#commit=$_commit")
 sha256sums=('SKIP')
 
