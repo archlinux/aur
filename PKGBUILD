@@ -4,7 +4,7 @@
 pkgbase=sentry
 pkgname=('sentry')
 pkgver=23.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Python-based realtime logging and aggregation server."
 arch=(any)
 url="http://pypi.python.org/pypi/sentry"
@@ -73,7 +73,7 @@ package() {
 
     # fixes
     touch "${pkgdir}"/opt/sentry/usr/lib/python3.10/site-packages/sentry_auth_ldap/__init__.py
-    (cd "${pkgdir}"/opt/sentry/usr/lib/python3.10/site-packages/ && ln -s sentry_ldap_auth sentry_auth_ldap)
+    ln -s sentry_auth_ldap "${pkgdir}"/opt/sentry/usr/lib/python3.10/site-packages/sentry_ldap_auth
 
     # systemd files and wrappers
     install -Dm0755 "${srcdir}/sentry" "${pkgdir}/opt/sentry/bin/sentry"
