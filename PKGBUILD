@@ -2,8 +2,8 @@
 
 pkgname=flips
 # Each commit to master should be treated as a release as per upstream recommendation.
-pkgver=137
-_commit=ce2e7ca2175b7e8bf2b8d64216887ac3747fc750
+pkgver=142
+_commit=fdd5c6e34285beef5b9be759c9b91390df486c66
 pkgrel=1
 pkgdesc="Patcher for IPS and BPS files"
 depends=('gtk3')
