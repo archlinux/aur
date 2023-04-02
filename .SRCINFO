@@ -1,0 +1,20 @@
+pkgbase = eqy-nightly
+	pkgdesc = Equivalence Checking with Yosys
+	pkgver = 20230402_cc91b45
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/YosysHQ/eqy
+	arch = any
+	license = custom:ISC
+	makedepends = git
+	makedepends = gcc
+	makedepends = yosys-nightly
+	depends = yosys-nightly
+	depends = sby-nightly
+	depends = python
+	depends = python-click
+	options = !strip
+	source = eqy::git+https://github.com/YosysHQ/eqy.git#commit=cc91b45
+	sha256sums = SKIP
+
+pkgname = eqy-nightly
