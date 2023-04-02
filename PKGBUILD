@@ -9,11 +9,10 @@ _major=6.2
 _minor=9
 _branch=6.x
 _xanmodrel=1
-
+pkgrel=3
 pkgbase=${_pkgbase}-linux-bin-${_arch}
 pkgver=${_major}.${_minor}
 pkgname=("${pkgbase}" "${_pkgbase}-linux-headers-bin-${_arch}")
-pkgrel=2
 pkgdesc="The Linux kernel and modules with Xanmod patches - Current Stable (MAIN) - Prebuilt version - ${_arch}"
 url="http://www.xanmod.org/"
 arch=(x86_64)
@@ -71,7 +70,7 @@ _package() {
   install -Dm644 "boot/vmlinuz-${kernver}" "${modulesdir}/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
-  echo "${kernver}" | install -Dm644 /dev/stdin "${modulesdir}/pkgbase"
+  echo "${pkgbase}" | install -Dm644 /dev/stdin "${modulesdir}/pkgbase"
 }
 
 _package-headers() {
