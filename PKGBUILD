@@ -1,17 +1,18 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=qiv
-pkgver=2.3.2
-pkgrel=4
+pkgver=2.3.3
+pkgrel=1
 pkgdesc="Quick Image Viewer (qiv) is a very small and fast GDK/Imlib image viewer"
 arch=('x86_64')
 url="https://spiegl.de/qiv/"
 license=('GPL2')
 depends=('file' 'gtk2' 'imlib2' 'libexif' 'lcms2' 'desktop-file-utils')
 source=(https://spiegl.de/qiv/download/$pkgname-$pkgver.tgz)
-sha256sums=('48e0a088a0d5cf5fac2314a60b3aed62c4913e792627f64f03986865ad7080d5')
+sha256sums=('ef085ffde2d48b05b3665939e5ae1e359d3a381008fb827684f7d6fd4c533704')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
