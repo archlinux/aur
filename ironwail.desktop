@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Ironwail
+Keywords=quake;ironwail
+Icon=ironwail
+Exec=ironwail
+Categories=Game;Shooter;
+Comment=Quake (Ironwail engine)
+Terminal=false
+StartupNotify=true
