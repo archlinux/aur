@@ -3,7 +3,7 @@
 pkgname=mdbook-rss-git
 _pkgname=mdbook-rss
 pkgver=8.dc948c6
-pkgrel=1
+pkgrel=2
 pkgdesc="A preprocessor for mdbook to generate an RSS feed from your chapters"
 url="https://gitlab.com/albalitz/mdbook-rss"
 arch=(x86_64)
@@ -12,7 +12,7 @@ makedepends=(rust cargo)
 source=("git+${url}.git"
         'mdbook-rss.patch')
 sha256sums=('SKIP'
-            'd81c8b821e17ee91daf5e2e2d33707a815eb01ec1b55c4deb220058589d3b85d')
+            'b644bfb8e6b1efb5f0f2bb314b629d7c2079503b2677a9130ee1a116134077a2')
 
 # https://wiki.archlinux.org/index.php/VCS_package_guidelines#The_pkgver()_function
 pkgver() {
