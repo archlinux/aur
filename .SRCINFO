@@ -1,6 +1,6 @@
 pkgbase = midibench-git
 	pkgdesc = MIDI tool for developers
-	pkgver = 15.16e806d
+	pkgver = 17.d9bf151
 	pkgrel = 1
 	url = https://github.com/jpcima/midibench
 	arch = x86_64
@@ -17,4 +17,3 @@ pkgbase = midibench-git
 	sha512sums = SKIP
 
 pkgname = midibench-git
-
