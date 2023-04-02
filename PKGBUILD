@@ -9,7 +9,7 @@ arch=('any')
 license=('GPL3')
 depends=('ksh')
 optdepends=(
-	'coreutils: c-code date, convert input to iso-8601'
+	'coreutils: c-code date to convert input to iso-8601'
 	'bc: fractional time units (bash only)'
 )
 source=("https://github.com/mountaineerbr/${_pkgname}/releases/download/v${pkgver}/${_pkgname}.tar.zst")
