@@ -1,6 +1,6 @@
 pkgbase = bibtex-tidy
 	pkgdesc = BibTeX Tidy - Cleaner and Formatter for BibTeX files
-	pkgver = 1.10.1
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://github.com/FlamingTempura/bibtex-tidy
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = bibtex-tidy
 	makedepends = jq
 	makedepends = txt2man
 	depends = nodejs
-	noextract = bibtex-tidy-1.10.1.tgz
-	source = https://registry.npmjs.org/bibtex-tidy/-/bibtex-tidy-1.10.1.tgz
-	sha256sums = 33f541444e97faf6d578a484a3296d07fa5e1f5d3090db121ce9b4ae241e6ded
+	noextract = bibtex-tidy-1.11.0.tgz
+	source = https://registry.npmjs.org/bibtex-tidy/-/bibtex-tidy-1.11.0.tgz
+	sha256sums = bb5a12ab08fbcfac8e03e983aaaaa735ac9e80e083dc3820e06a93a6650967d3
 
 pkgname = bibtex-tidy
