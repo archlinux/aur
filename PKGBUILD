@@ -1,14 +1,14 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=boxedwine
 pkgver=21.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An emulator that runs 16-bit and 32-bit Windows applications"
 arch=('x86_64')
-url="http://www.boxedwine.org"
+url="https://www.boxedwine.org"
 license=('GPL2')
-depends=('minizip' 'openssl' 'sdl2')
-makedepends=('apache' 'apr-util' 'cmake' 'glu' 'libmysqlclient' 'postgresql'
-             'unixodbc')
+depends=('minizip' 'openssl' 'poco' 'sdl2')
+makedepends=('apache' 'apr-util' 'cmake' 'glu' 'libmysqlclient' 'postgresql')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/danoon2/Boxedwine/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop")
 sha256sums=('d8b9402658f71225913f0b8de1ecfcda8de3848b08cf3d0741fff80aa2ce8235'
