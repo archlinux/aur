@@ -1,8 +1,9 @@
+
 # Maintainer: Byron Torres <b@torresjrjr.com>
 
 pkgname=astronaut
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A Gemini browser for the terminal.'
 arch=('x86_64')
 url='https://sr.ht/~adnano/astronaut/'
@@ -10,7 +11,7 @@ license=('GPL3')
 depends=('go' 'scdoc')
 conflicts=('astronaut-git' 'astronaut-bin')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~adnano/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('b392fd4f716ecc50ab9fc67ecb5d4f7562cae63d74d849f15fff652046f80f22')
+sha256sums=('d50d17c6f23205668c4d5eb5b55ea7d6215e6a302fa6bc13c638d2053ee8afc0')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
