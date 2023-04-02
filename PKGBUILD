@@ -8,6 +8,8 @@ pkgdesc="A modding tool for osu!"
 arch=("x86_64")
 url="https://github.com/Naxesss/MapsetVerifier"
 
+depends=('openssl-1.1')
+
 provides=(mapset-verifier)
 conflicts=(mapset-verifier)
 

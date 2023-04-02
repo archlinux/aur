@@ -4,6 +4,7 @@ pkgbase = mapset-verifier-bin
 	pkgrel = 2
 	url = https://github.com/Naxesss/MapsetVerifier
 	arch = x86_64
+	depends = openssl-1.1
 	provides = mapset-verifier
 	conflicts = mapset-verifier
 	options = staticlibs
@@ -15,4 +16,3 @@ pkgbase = mapset-verifier-bin
 	sha256sums = 26bbe0ef4b125e240c936ca570cd8e420ec1acbef826210a73f97ddcb7aa97a1
 
 pkgname = mapset-verifier-bin
-
