@@ -1,7 +1,8 @@
-# Maintainer: João Miguel <jmcf125 at openmailbox dot org>
+# Maintainer: begin-theadventure <begin-thecontact.ncncb@dralias.com>
+# Previous-Maintainer: João Miguel <jmcf125 at openmailbox dot org>
 pkgname=ghc-raspbian-bin
-pkgver=7.10.3
-pkgrel=7
+pkgver=8.8.4
+pkgrel=2
 pkgdesc="GHC binaries for Raspberry Pi from Raspian repositories"
 arch=('armv6h')
 url='https://www.haskell.org/ghc/'
@@ -61,8 +62,8 @@ options=('staticlibs')
 install="${pkgname}.install"
 options=('staticlibs')
 _filename="ghc_${pkgver}-${pkgrel}+rpi1_armhf.deb"
-source=("http://archive.raspbian.org/raspbian/pool/main/g/ghc/$_filename")
-sha256sums=('61b90723e5a10cf32964bb7292f4ae914f45dcbc2e9bd169f3b4fe137fe3dbc4')
+source=("https://archive.raspbian.org/raspbian/pool/main/g/ghc/$_filename")
+sha256sums=('8c502b462ba3bcd3a8418789c2a917a0a0c82dfa75429092a345c6532cabb9e7')
 
 package() {
    echo '==> Extracting with dpkg. Note: packaging may take over 40 minutes.'
