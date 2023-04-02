@@ -1,8 +1,8 @@
 # Maintainer: Filipe Bertelli <filipebertelli@tutanota.com>
 
 pkgname=fname
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc=' Generate random, human-friendly names.'
 arch=('any')
 url='https://github.com/Splode/fname'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('29c403ffc4c48a7b787ac855231b0792e212b74f7d23da19551548b3f1be4618')
+sha256sums=('8e5a22556adc08877e67cecb710342d4d225edfcc4b11163b2abbe2ccecbcda7')
 
 build() {
 	cd "${pkgname}-${pkgver}/cmd/${pkgname}"

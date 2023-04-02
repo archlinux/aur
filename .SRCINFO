@@ -1,13 +1,13 @@
 pkgbase = fname
 	pkgdesc = Generate random, human-friendly names.
-	pkgver = 0.3.0
-	pkgrel = 2
+	pkgver = 0.4.1
+	pkgrel = 1
 	url = https://github.com/Splode/fname
 	arch = any
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = fname-0.3.0.tar.gz::https://github.com/Splode/fname/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 29c403ffc4c48a7b787ac855231b0792e212b74f7d23da19551548b3f1be4618
+	source = fname-0.4.1.tar.gz::https://github.com/Splode/fname/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = 8e5a22556adc08877e67cecb710342d4d225edfcc4b11163b2abbe2ccecbcda7
 
 pkgname = fname
