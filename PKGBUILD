@@ -7,8 +7,8 @@
 # Contributor: orbisvicis <orbisvicis at gmail dot com>
 pkgname=rdarktable-git
 _gitname=ansel
-pkgver=v0.0.0.r187.g70c875b2d
-pkgrel=2
+pkgver=v0.0.0.r283.g9405171cc
+pkgrel=1
 pkgdesc="Ansel camera raw editor and asset manager from Aurélien Pierre, forked deom darktable."
 pkgdesc="Aurélien Pierre's Ansel fork of the darktable camera raw editor/asset manager"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ optdepends=('dcraw: base curve script'
             'ghostscript: noise profile script'
             'gnuplot: noise profile script')
 makedepends=(git cmake intltool desktop-file-utils llvm clang python-jsonschema libwebp)
-conflicts=()
+conflicts=(ansel-git)
 provides=(ansel)
 install=ansel.install
 options=(!emptydirs !libtool)
