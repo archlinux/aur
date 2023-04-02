@@ -10,7 +10,7 @@ pkgbase = pi-hole-server
 	depends = pi-hole-ftl>=5.0
 	depends = bc
 	depends = perl
-	depends = gnu-netcat
+	depends = netcat
 	depends = inetutils
 	depends = iproute2
 	depends = logrotate
