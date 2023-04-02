@@ -1,0 +1,20 @@
+pkgbase = photo-stats
+	pkgdesc = photo stats for your terminal
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://sr.ht/~rwa/photo-apps
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = BSD
+	depends = perl-image-exiftool
+	depends = sqlite3
+	depends = perl-text-simpletable-autowidth
+	depends = perl-file-homedir
+	depends = perl-dbd-sqlite
+	provides = photo-stats
+	options = !strip
+	source = git+https://git.sr.ht/~rwa/photo-stats#tag=1.1
+	sha256sums = SKIP
+
+pkgname = photo-stats
