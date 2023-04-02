@@ -3,7 +3,7 @@
 
 _basename=gossip
 pkgname=${_basename}-git
-pkgver=0.3.91.r308.gcf530a8
+pkgver=0.6.0.r389.g6321c6f
 pkgrel=1
 pkgdesc="gossip nostr client, rust, egui based."
 arch=('x86_64')
@@ -23,7 +23,7 @@ sha256sums=(
 
 pkgver() {
   cd $pkgname
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+  echo $(cat Cargo.toml | grep ^version | awk -F= '{print $2}' | awk -F\" '{print $2}' | awk -F- '{print $1}').$(git describe --long --tags | awk -F- '{print "r"$2"." $3}')
 }
 
 build() {
