@@ -3,10 +3,9 @@
 # Contributor: Sergio Jovani Guzman <moret.sjg@gmail.com>
 # Contributor: royrocks <royrocks13@gmail.com>
 
-_pkgtype=sdl2
 pkgname=tuxpaint
-pkgver=0.9.28
-pkgrel=3
+pkgver=0.9.29
+pkgrel=1
 pkgdesc='Drawing program designed for young children'
 arch=('x86_64')
 url='https://tuxpaint.org/'
@@ -18,38 +17,34 @@ makedepends=('gperf' 'setconf' 'imagemagick')
 optdepends=('tuxpaint-stamps: more stamps'
             'tuxpaint-config: configuration manager'
             'python2: zh_tw font generator script')
-source=("https://downloads.sourceforge.net/sourceforge/tuxpaint/$pkgname-$pkgver-$_pkgtype.tar.gz" "freetype2.patch")
-sha256sums=('4f1ed9330feab324070b93630d79ced50ccc4816ab76750119f012b5d904709d' SKIP)
+source=("https://downloads.sourceforge.net/sourceforge/tuxpaint/$pkgname-$pkgver.tar.gz")
+sha256sums=('575403c54c7243e5b269a71fc1aa0738e3937764787e2acf89686bd77c5ae6ca')
 
 prepare() {
-  cd "$pkgname-$pkgver-$_pkgtype"
+  cd "$pkgname-$pkgver"
 
   # python2 fix
   for f in docs/outdated/zh_tw/mkTuxpaintIM.py fonts/locale/zh_tw_docs/maketuxfont.py; do
     sed -i '0,/on/s//on2/' $f
   done
 
-  # desktop shortcut categories
-  setconf src/tuxpaint.desktop Categories='Game;KidsGame;Graphics;RasterGraphics;'
-
-  # fullscreen by default
-  setconf -u src/tuxpaint.conf fullscreen=true
+  # native fullscreen by default
+  setconf -u src/tuxpaint.conf fullscreen=yes
+  setconf -u src/tuxpaint.conf native=yes
 
   # location of bash completion files
   setconf Makefile COMPLETIONDIR='$(DESTDIR)/usr/share/bash-completion/completions'
 
   # no KDE4-related requirements at installation-time
   setconf Makefile ARCH_INSTALL='install-man install-importscript install-bash-completion'
-
-  patch -Np1 < "../freetype2.patch"
 }
 
 build() {
-  make -C "$pkgname-$pkgver-$_pkgtype" PREFIX=/usr clean translations all -j1
+  make -C "$pkgname-$pkgver" PREFIX=/usr clean translations all -j1
 }
 
 package() {
-  make -C "$pkgname-$pkgver-$_pkgtype" \
+  make -C "$pkgname-$pkgver" \
     PREFIX=/usr \
     GNOME_PREFIX=/usr \
     X11_ICON_PREFIX="$pkgdir/usr/share/pixmaps" \
@@ -65,7 +60,7 @@ package() {
     "$pkgdir/usr/share/doc/$pkgname"
 
   # desktop shortcut
-  install -Dm644 "$pkgname-$pkgver-$_pkgtype/src/$pkgname.desktop" \
+  install -Dm644 "$pkgname-$pkgver/src/$pkgname.desktop" \
     "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
 
