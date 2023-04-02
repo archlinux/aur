@@ -72,7 +72,6 @@ pkgname = linux-jcore
 	depends = kmod
 	depends = initramfs
 	optdepends = dkms: Dynamic Kernel Module System
-	optdepends = nvidia-dkms: NVIDIA drivers - module sources
 	optdepends = wireless-regdb: to set the correct wireless channels of your country
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
