@@ -1,0 +1,5 @@
+*
+!/.gitignore
+!/PKGBUILD
+!/.SRCINFO
+!/maa-assistant-arknights.install
