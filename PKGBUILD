@@ -36,7 +36,7 @@ provides=(repman)
 conflicts=(repman)
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_pkgname" || return
   ( set -o pipefail
     git describe --tags --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -44,11 +44,11 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_pkgname" || return
   make
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_pkgname" || return
   make DESTDIR="$pkgdir" install
 }
