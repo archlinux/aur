@@ -6,6 +6,7 @@ pkgbase = fcitx5-fbterm-git
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
+	makedepends = git
 	depends = fcitx5
 	depends = fcitx5-gtk
 	optdepends = fbterm: fbterm to use fcitx5-fbterm
