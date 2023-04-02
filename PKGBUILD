@@ -5,7 +5,7 @@
 # PKGBUILD based on bobpaul's ${pkgname}-git package
 
 pkgname=maubot
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A plugin-based Matrix bot system"
 arch=(any)
@@ -24,7 +24,7 @@ source=("${pkgname}-${pkgver/_rc/-rc}.tar.gz"::"${url}/archive/v${pkgver/_rc/-rc
     "sysusers-${pkgname}.conf"
     "tmpfiles-${pkgname}.conf"
     "${pkgname}.service")
-sha256sums=('c51e62bf6cc1573745735f09e57674881cad77d161939eacce22c093c88ba24d'
+sha256sums=('801229aaaf493978335367c99cd81b11188a5184a549763846276d9793dc82f8'
             '1c28db3c74b2d634f97b25c3b117a5d8198dbb3c8afb1fa31a429ab3479334b7'
             '3fda190e5e5a2dff7c6192c27427a902c286069fac6b56e9abf61b021d49bf9a'
             '8dfbed8ad630cc5ab0e111a7e5da3245ddf82881a00ed6b540bfdcb7ece33083')
