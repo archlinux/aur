@@ -1,11 +1,11 @@
 pkgbase = wowlet-bin
 	pkgdesc = A free Wownero desktop wallet
-	pkgver = 3.2.0
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://git.wownero.com
 	arch = x86_64
 	license = custom
-	source = wowlet-v3.2.0-x86_64-linux.zip::https://git.wownero.com/attachments/53d14db5-cbc4-450f-a1c6-1078659bf819
-	sha512sums = 0d61f6187a63a505a4354991e5f62e6d8fd2082a208e90378a5761328aec4b63df566469c174364bb8e66a99ee8a8816c9a8a0aa6dc04ce6c8e64a17e466f63a
+	source = wowlet-v4.0.0-x86_64-linux.zip::https://git.wownero.com/attachments/2ed9abc2-3e71-4251-8b19-75b676cfc8a7
+	sha512sums = 4341aa304ccfa51ec7568e68866c8152b63751a21ac4a912f1e79cc02567dbbe921314b9d4193d9b652292ede453aabf00ad9ca1dc38ba3763cbb35ffbf020e9
 
 pkgname = wowlet-bin
