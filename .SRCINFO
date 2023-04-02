@@ -1,0 +1,18 @@
+pkgbase = convertwithmoss-git
+	pkgdesc = A tool for converting multi-sample from one format to another.
+	pkgver = r118.ca9732a
+	pkgrel = 1
+	url = https://mossgrabers.de/Software/ConvertWithMoss/ConvertWithMoss.html
+	arch = any
+	groups = pro-audio
+	license = LGPL3
+	makedepends = git
+	makedepends = maven
+	depends = java-runtime>=16
+	depends = java-openjfx
+	provides = convertwithmoss
+	conflicts = convertwithmoss
+	source = convertwithmoss::git+https://github.com/git-moss/ConvertWithMoss
+	sha512sums = SKIP
+
+pkgname = convertwithmoss-git
