@@ -2,7 +2,7 @@
 # Based on testing/linux by Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-amd-staging-drm-next-git
-pkgver=6.1.r1143506.12e200fa9c3d
+pkgver=6.1.r1143556.27994504f6a1
 pkgrel=1
 pkgdesc='Linux kernel with WIP AMDGPU material'
 _product="${pkgbase%-git}"
@@ -22,7 +22,7 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            '81a9379fd2eac51bb2dc69d83737d7fbdd41fcaca5af4873e3666d3c706760d1')
+            'd94121102aad556443d2daecdba8e8ecd59e3e9b34d1917a242fe8ef6f1ff2ef')
 
 pkgver() {
   cd $_srcname
@@ -197,7 +197,7 @@ _package-docs() {
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 }
 
-pkgname=("${_product}-git" "${_product}-headers-git") #"${_product}-docs-git")
+pkgname=("${_product}-git" "${_product}-headers-git" "${_product}-docs-git")
 for _package in "${pkgname[@]}"; do
   local _package_no_git="${_package%-git}"
   local _package_stripped="${_package_no_git#$_product}"
