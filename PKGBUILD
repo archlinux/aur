@@ -75,7 +75,7 @@ package() {
 	# create convenience script
 	mkdir ${pkgdir}/usr/bin
 	echo "#!/bin/bash" > ${pkgdir}/usr/bin/${_prgname}
-	echo "mono /opt/${_prgname}/MPF.Check.exe" >> ${pkgdir}/usr/bin/${_prgname}
+	echo "mono /opt/${_prgname}/MPF.Check.exe $@" >> ${pkgdir}/usr/bin/${_prgname}
 	chmod 755 ${pkgdir}/usr/bin/${_prgname}
 
 }
