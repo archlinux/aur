@@ -1,7 +1,7 @@
 # Maintainer: Jan Claussen <jan dot claussen10 at web dot de>
 pkgname=webos-dev-manager-bin
 _pkgname=webos-dev-manager
-pkgver=1.9.9
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="Easy tool to manage developer mode and sideload applications on your webOS TV"
 arch=(x86_64)
@@ -20,7 +20,7 @@ noextract=("${_pkgname}-${pkgver}.AppImage")
 
 sha256sums_x86_64=('739240d83b15aa19e5d1b8b2589f50be7de3bec3a9c781e3cf97261fa3de4a22'
 				   'ba969ef1cd5a46ce953620bc097c18c9d82432e6c23afef8f67ff620417b80a3'
-				   '5fef66f9542ebf94ae9de3e3152a980a9f77d6a005c1f61ecae40946352eadf8')
+				   '56730d50c650ed4ebf80ce3eb5a9b84002fdb1d941db451a62fe17f10cdb1094')
 
 package() {
 
