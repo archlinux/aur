@@ -1,0 +1,46 @@
+From 90eb869e4031f6705263d6cd4c65c5b70c303919 Mon Sep 17 00:00:00 2001
+From: Vladimir Magamedov <vladimir@magamedov.com>
+Date: Sun, 2 Apr 2023 08:47:56 +0300
+Subject: [PATCH] Fixed test_default_ssl_context for the case when certifi
+ points to system certificates
+
+---
+ tests/test_client_channel.py | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/tests/test_client_channel.py b/tests/test_client_channel.py
+index 2537838..4cbd3dc 100644
+--- a/tests/test_client_channel.py
++++ b/tests/test_client_channel.py
+@@ -3,6 +3,7 @@
+ from unittest.mock import patch, ANY
+ 
+ import pytest
++import certifi
+ 
+ from grpclib.client import Channel
+ from grpclib.testing import ChannelFor
+@@ -35,14 +36,13 @@ async def create_connection(*args, **kwargs):
+     po.assert_awaited_once_with(ANY, '127.0.0.1', 50051, ssl=None)
+ 
+ 
+-@pytest.mark.asyncio
+-async def test_default_ssl_context():
+-    certifi_channel = Channel(ssl=True)
+-    with patch.dict('sys.modules', {'certifi': None}):
+-        system_channel = Channel(ssl=True)
+-
+-    certifi_certs = certifi_channel._ssl.get_ca_certs(binary_form=True)
+-    system_certs = system_channel._ssl.get_ca_certs(binary_form=True)
++def test_default_ssl_context():
++    with patch.object(certifi, "where", return_value=certifi.where()) as po:
++        certifi_channel = Channel(ssl=True)
++        assert certifi_channel._ssl
++        po.assert_called_once()
+ 
+-    assert certifi_certs
+-    assert certifi_certs != system_certs
++    with patch.object(certifi, "where", side_effect=AssertionError):
++        with patch.dict("sys.modules", {"certifi": None}):
++            system_channel = Channel(ssl=True)
++            assert system_channel._ssl

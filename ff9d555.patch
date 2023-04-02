@@ -1,0 +1,23 @@
+From ff9d555bb915dc6310bf31b0b9825a16e0762a64 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Beno=C3=AEt=20Allard?= <benoit.allard@gmx.de>
+Date: Sat, 1 Apr 2023 21:36:28 +0200
+Subject: [PATCH] Fix DeprecationWarning filter
+
+Somehow, the filter based on the package name did not worked for me.
+---
+ setup.cfg | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.cfg b/setup.cfg
+index dbba6ef..86c8ca4 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -50,7 +50,7 @@ testpaths = tests
+ asyncio_mode = auto
+ filterwarnings =
+     error
+-    ignore::DeprecationWarning:google.*
++    ignore:.*pkg_resources.*:DeprecationWarning
+     ignore::ResourceWarning
+ 
+ [coverage:run]
