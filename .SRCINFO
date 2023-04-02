@@ -1,7 +1,7 @@
 pkgbase = mapset-verifier-bin
 	pkgdesc = A modding tool for osu!
 	pkgver = 1.8.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Naxesss/MapsetVerifier
 	arch = x86_64
 	depends = openssl-1.1
