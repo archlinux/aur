@@ -3,7 +3,7 @@ _prgname=mpf-check
 pkgname=mpf-check-bin
 url="https://github.com/SabreTools/MPF"
 arch=('x86_64')
-pkgdesc="Media Preservation Frontend for DiscImageCreator/Aaru/Redumper in C# (.NET 4.5 version)"
+pkgdesc="Media Preservation Frontend for DiscImageCreator/Aaru/Redumper in C# (.NET 4.8 version)"
 provides=('mpf-check')
 depends=('mono')
 pkgver=2.5
@@ -18,7 +18,7 @@ sha256sums=('ab0859c56e218bcf98093f04f0b59cd061033fb715df7c7839a89d86e649ea14'
 
 package() {
 
-	# install binaries
+	# install mpf-check distribution
 	install -Dm 644 ${srcdir}/BurnOutSharp.ASN1.dll ${pkgdir}/opt/${_prgname}/BurnOutSharp.ASN1.dll
 	install -Dm 644 ${srcdir}/BurnOutSharp.Builders.dll ${pkgdir}/opt/${_prgname}/BurnOutSharp.Builders.dll
 	install -Dm 644 ${srcdir}/BurnOutSharp.Compression.dll ${pkgdir}/opt/${_prgname}/BurnOutSharp.Compression.dll
