@@ -6,7 +6,7 @@ _tag=44cdad7216fe9a50881a8b21f5d7fb07f6c244e0
 source=(git+https://github.com/markcda/jeff.git#tag=$_tag)
 
 pkgver=2.3.0.r1.g44cdad7
-pkgrel=1
+pkgrel=2
 pkgdesc="Extensible chatbot and automation tool"
 arch=("x86_64")
 url="https://github.com/markcda/jeff"
@@ -32,7 +32,7 @@ build() {
 package() {
   cd jeff
   install -Dm644 packaging/icons/hicolor/24x24/apps/jeff.png "$pkgdir/usr/share/icons/hicolor/24x24/jeff.png"
-  install -Dm644 packaging/icons/hicolor/36x36/apps/jeff.png "$pkgdir/usr/share/icons/hicolor/36x36/jeff.png"
+  install -Dm644 packaging/icons/hicolor/32x32/apps/jeff.png "$pkgdir/usr/share/icons/hicolor/32x32/jeff.png"
   install -Dm644 packaging/icons/hicolor/48x48/apps/jeff.png "$pkgdir/usr/share/icons/hicolor/48x48/jeff.png"
   install -Dm644 packaging/icons/hicolor/64x64/apps/jeff.png "$pkgdir/usr/share/icons/hicolor/64x64/jeff.png"
   install -Dm644 packaging/icons/hicolor/72x72/apps/jeff.png "$pkgdir/usr/share/icons/hicolor/72x72/jeff.png"
