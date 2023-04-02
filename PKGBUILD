@@ -1,4 +1,5 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
+# Maintainer: Fabian Bornschein <fabiscafe-cat-mailbox-dog-org>
 
 pkgname=loupe
 pkgver=0.0.0+r285+b60656c
