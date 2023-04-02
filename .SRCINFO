@@ -1,7 +1,7 @@
 pkgbase = genymotion-beta
 	pkgdesc = Complete set of tools that provides a virtual environment for Android. Beta Release
 	pkgver = 3.3.0beta1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.genymotion.com/
 	install = genymotion-beta.install
 	arch = x86_64
