@@ -2,7 +2,7 @@
 
 pkgname=alpine-minirootfs
 pkgver=3.17.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimal root filesystem in a chroot"
 arch=(x86_64)
 url="https://alpinelinux.org/"
@@ -18,8 +18,8 @@ source=(
 sha256sums=(
   'b10fc6a33e462b9ccf704436071771051728d30f5d8b48adcddb9523c4c45328'
   '78c1271cb0c5221a7960223fba2487081a71929c74e9f59d7638090031acfe6b'
-  'cec5f09c3994a6126f11c7a6115f4cabed9db0256d39bf3991d707d492709d07'
-  'c2cf38600b814531e46f398aca6725d748ea0c36155e89a830600d31a5e716fd'
+  'e7d45319f5107d446ffc86f01e85eb79a34696669e91fa732b6242923febae8e'
+  '19137bcce680558ff4428d2fbbac08360ffcc69b9efc3b876b4fa384dcbbe9c5'
 )
 validpgpkeys=('0482D84022F52DF1C4E7CD43293ACD0907D9495A')
 

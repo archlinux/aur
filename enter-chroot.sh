@@ -35,6 +35,18 @@ monitor_chroot_exit() {
         fi
     done < $MOUNT_POINT/exit.fifo
 
+    if grep -qs "$MOUNT_POINT/sys" /proc/mounts
+    then umount -l $MOUNT_POINT/sys
+    fi
+
+    if grep -qs "$MOUNT_POINT/dev" /proc/mounts
+    then umount -l $MOUNT_POINT/dev
+    fi
+
+    if grep -qs "$MOUNT_POINT/proc" /proc/mounts
+    then umount -l $MOUNT_POINT/proc
+    fi
+
     # Send a SIGTERM signal to the parent process (which is running the chroot command)
     kill -s TERM $$
 }
