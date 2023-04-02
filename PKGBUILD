@@ -20,7 +20,7 @@ package() {
  cd ${srcdir}
   
  # Extract files from the .deb archive
- ar xvf ${altpkgname}.deb
+ ar xvf ${altpkgname}-${pkgver}.deb
  tar xvf data.tar.xz
  tar xvf control.tar.gz
 
