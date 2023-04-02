@@ -1,6 +1,6 @@
 pkgname=immich
-pkgrel=2
-pkgver=1.50.1
+pkgrel=0
+pkgver=1.52.1
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
 license=('MIT')
@@ -16,13 +16,13 @@ source=("https://github.com/immich-app/immich/archive/refs/tags/v${pkgver}.tar.g
 	"immich.conf"
 	"nginx.immich.conf"
 )
-sha256sums=('07607726c347bd9e3701a996e0f426bbdc7941c83b67ba02f031aef1e081c8fa'
+sha256sums=('99c506ec161913ff590035950a087110dbd2316446711ff8d629e7e5d0c0a9da'
             '4610abec7e1d14eb4b9c33dcbf1362537281e46c96eb79c9a0cef72ad03bd0e2'
             'dc16ca71d9e1644653570562e672f8e3b9a3c06a95893b20181c9bf2500c03ff'
             '7507075f88cf2757aca8d8a480c69674c9be92d65927c4eb643064d6b66bf728'
             '64fd6dcbe66ffb47805221a4122da3defe421bcb636a4ce0fdaa64bd2c7e8bc0'
             'c7db0e5e2eb50bd48892a7e669a2ced65988af43fb82ad67d8e2cc607a6aeb47'
-            '45350c8b032783360eec0619d4cccb30c26f590c771561026f78e02d9b12ebc5'
+            'd8d1e3da01efd56bccd864235604118e0d3e5b3c412c2412a4be997225b41c4f'
             'a56e17b6bcde900a4abc6e0b04fa9363979d3e2cda21f27421b3727a7e9320e9')
 
 backup=("etc/immich.conf")
