@@ -1,11 +1,11 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Maintener: Kewl <kewl at alto dot eu dot org>
+# Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Kurt Marasco <celilo _at_ lavabit _dot_ com>
 # Contributor: Pascal Ernster <aur at hardfalcon dot net>
-# Contributor: Kewl <kewl at alto dot eu dot org>
 
 pkgname=hiawatha
 pkgver=10.12
-pkgrel=2
+pkgrel=3
 pkgdesc="Secure and advanced webserver"
 url="https://www.hiawatha-webserver.org/"
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=('cmake')
 backup=('etc/hiawatha/hiawatha.conf'
         'etc/hiawatha/cgi-wrapper.conf'
         'etc/hiawatha/mimetype.conf')
-source=("https://www.hiawatha-webserver.org/files/$pkgname-$pkgver.tar.gz" 
+source=("https://www.hiawatha-webserver.org/files/hiawatha-10/$pkgname-$pkgver.tar.gz" 
         'hiawatha.conf.sample'
         'hiawatha.service'
         'lefh-renew.service'
@@ -25,7 +25,7 @@ source=("https://www.hiawatha-webserver.org/files/$pkgname-$pkgver.tar.gz"
 sha256sums=('61bf41146c51244769984135529fcffd0f6cb92be18dc12d460effc42f19f50d'
             '4671d2586cbe3cd6497b16ff422c6143cdab40641ef3c9c4988c478351a8f5e7'
             'b5a2671703b52eec376cfc4697b86aafa4f7fdd9b2b9203798e2117770bafa53'
-            'db1d647d86370583c24ae7a37feab78e3f0015d441ff5bc8f9b32e1a91ec4c8e'
+            '2598480f8b249aaf7028ea66bac0195e1c017fb17c2c169b69e0b66413728457'
             'd12c5a68c293f66d95ae4df704ea349adbad972fb25475ab1a0a24fb42bfc70b')
 
 prepare() {
