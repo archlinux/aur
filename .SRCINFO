@@ -1,7 +1,7 @@
 pkgbase = codonw
 	pkgdesc = Multivariate analysis (correspondence analysis) of codon and amino acid usage
 	pkgver = 1.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codonw.sourceforge.net/
 	arch = x86_64
 	license = GPL2
