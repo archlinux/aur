@@ -2,7 +2,7 @@
 
 pkgname=ungoogled-chromium-bin
 pkgver=111.0.5563.146
-pkgrel=1
+pkgrel=3
 pkgdesc="A lightweight approach to removing Google web service dependency"
 arch=('x86_64')
 url="https://github.com/ungoogled-software/ungoogled-chromium"
@@ -17,7 +17,7 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kwallet: support for storing passwords in KWallet on Plasma')
 provides=('chromium')
 conflicts=('chromium')
-source=(https://github.com/ungoogled-software/ungoogled-chromium-archlinux/releases/download/$pkgver-$pkgrel/ungoogled-chromium-$pkgver-$pkgrel-x86_64.pkg.tar.zst)
+source=(https://github.com/ungoogled-software/ungoogled-chromium-archlinux/releases/download/$pkgver-$pkgrel/ungoogled-chromium-$pkgver-1-x86_64.pkg.tar.zst)
 sha256sums=('ab0b687935c592699357d17f76f99321f8e943731cdeb9f661248fcc9c000bab')
 
 declare -gA _system_libs=(
