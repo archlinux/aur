@@ -2,7 +2,7 @@
 
 _gemname=gdk3
 pkgname=ruby-$_gemname
-pkgver=4.0.6
+pkgver=4.1.2
 pkgrel=1
 pkgdesc='Ruby/GDK3 is a Ruby binding of GDK-3.x.'
 arch=(x86_64)
@@ -13,7 +13,7 @@ makedepends=(ruby-native-package-installer rake)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('1e2224482c4dab71babe4a65589958a4cd8649f02b201044bf8ed6c5456b4e6b')
+sha256sums=('414c5b2eca21aa293ce1c1b90577902143c7f22c71c0c8a8fa67b95379fdab12')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
