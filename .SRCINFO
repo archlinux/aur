@@ -1,6 +1,6 @@
 pkgbase = blastem-hg
 	pkgdesc = Fast and accurate Sega Genesis/Mega Drive emulator (Development build)
-	pkgver = r2242.31fc1186ffbb
+	pkgver = r2315.b67e4e930fa4
 	pkgrel = 1
 	url = https://www.retrodev.com/blastem/
 	arch = x86_64

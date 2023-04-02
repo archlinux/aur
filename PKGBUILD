@@ -1,7 +1,8 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 # Contributor: Lukas Sabota <lukas@lwsabota.com>
+
 pkgname=blastem-hg
-pkgver=r2242.31fc1186ffbb
+pkgver=r2315.b67e4e930fa4
 pkgrel=1
 pkgdesc="Fast and accurate Sega Genesis/Mega Drive emulator (Development build)"
 arch=('x86_64')
@@ -22,23 +23,31 @@ pkgver() {
 build() {
   cd "${srcdir}/${pkgname%-hg}"
   make blastem
+  make termhelper
   make menu.bin
+  make tmss.md
 }
 
 package() {
   cd "${srcdir}/${pkgname%-hg}"
+
   install -d -g games "${pkgdir}/opt/blastem"
-  install -m 755 -g games -D blastem "${pkgdir}/opt/blastem"
-  install -m 666 -g games -D default.cfg "${pkgdir}/opt/blastem"
-  install -m 666 -g games -D systems.cfg "${pkgdir}/opt/blastem"
-  install -m 666 -g games rom.db gamecontrollerdb.txt "${pkgdir}/opt/blastem"
-  install -m 644 -g games -d "${pkgdir}/opt/blastem/shaders"
-  install -m 644 -g games -D shaders/* "${pkgdir}/opt/blastem/shaders"
-  install -m 644 -g games -D menu.bin "${pkgdir}/opt/blastem"
-  chmod 755 "${pkgdir}/opt/blastem/blastem"
-  chown root:games "${pkgdir}/opt/blastem"
-  chown root:games "${pkgdir}/opt/blastem/shaders"
-  chmod 755 "${pkgdir}/opt/blastem/shaders"
-  mkdir -p "${pkgdir}/usr/bin"
+  install -d -g games "${pkgdir}/opt/blastem/shaders"
+  install -d -g games "${pkgdir}/opt/blastem/images"
+
+  install -Dm 755 -g games blastem termhelper "${pkgdir}/opt/blastem"
+
+  install -Dm 644 -g games default.cfg \
+                           gamecontrollerdb.txt \
+                           menu.bin \
+                           rom.db \
+                           systems.cfg \
+                           tmss.md \
+    "${pkgdir}/opt/blastem"
+
+  install -Dm 644 -g games shaders/* "${pkgdir}/opt/blastem/shaders"
+  install -Dm 644 -g games images/* "${pkgdir}/opt/blastem/images"
+
+  install -d "${pkgdir}/usr/bin"
   ln -s "/opt/blastem/blastem" "${pkgdir}/usr/bin/blastem"
 }
