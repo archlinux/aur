@@ -2,8 +2,8 @@
 
 _pkgname=openimageio
 pkgname=mingw-w64-${_pkgname}
-pkgver=2.4.9.0
-pkgrel=2
+pkgver=2.4.10.0
+pkgrel=1
 pkgdesc='A library for reading and writing images, including classes, utilities, and applications (mingw-w64)'
 url='http://www.openimageio.org/'
 license=('BSD-3-Clause')
@@ -32,7 +32,7 @@ arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/OpenImageIO/oiio/archive/v${pkgver}.tar.gz")
-sha256sums=('d04c12575d63d13ed64fc037ea37da616224736213d785de9f50337f6eb5a9ed')
+sha256sums=('59f523a0b9a1014993bedcf7752993af43b348761165f52ea6eb84787f57aed5')
 
 _srcdir="oiio-${pkgver}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
