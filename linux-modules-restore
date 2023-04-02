@@ -3,7 +3,7 @@
 kver=$(uname -r)
 while read -r line; do
     # We only care about the running kernel
-    if [[ "$line" == usr/lib/modules/$kver/vmlinuz && -d "${line/$kver/running-kernel}" ]];then
+    if [[ "$line" == usr/lib/modules/$kver/vmlinuz && -d usr/lib/modules/running-kernel ]];then
         mount --mkdir --bind --options ro /usr/lib/modules/{running-kernel,$kver}
         # Mounting read-only since the only modification here should be unmounting
         # when rebooting or reinstalling the running kernel

@@ -10,19 +10,19 @@ provides=("$_pkgname")
 url="https://github.com/VannTen/$_pkgname"
 license=('GPL3')
 source=("linux-modules-cleanup.conf"
-        "10-linux-modules-post.hook"
         "10-linux-modules-pre.hook"
+        "61-linux-modules-post.hook"
         "linux-modules-restore"
         "linux-modules-save"
 )
 sha256sums=('950f851eba08dac4d0b93ff62b3fb16ddacd4f8ebb98a2435f80bf05f2ea5a29'
-            'fc4d53dec520c80fe97dfda65b238c7d678e7ef26aaebffc5b43f924477ea4f4'
             '087e5ed70b2fc512d814fbded9e873955b1da5b6bf1e31975174d704ad143156'
-            '28b995f6ea62899620d43d71e542bfc3432ad3ce90a6582f4ded1173fe8c0837'
-            '5d9092689d9baa3d8e5ac65ae92d1c201e23c4ef42c99d131f9465c99d6505ef')
+            'fc4d53dec520c80fe97dfda65b238c7d678e7ef26aaebffc5b43f924477ea4f4'
+            'a6e3013f04f45e6d1ed63b4545fb0d4f102d230db582bec76568dbf40c529fbb'
+            '36a8ab6bcb3e0bf8c82324877471ec8798e5ae273b26bdfbc4b6f59035af0351')
 
 package() {
 	install -Dm644 'linux-modules-cleanup.conf' "${pkgdir}/usr/lib/tmpfiles.d/linux-modules-cleanup.conf"
-	install -Dm644 10-linux-modules-{pre,post}.hook -t "${pkgdir}/usr/share/libalpm/hooks/"
+	install -Dm644 10-linux-modules-pre.hook 61-linux-modules-post.hook -t "${pkgdir}/usr/share/libalpm/hooks/"
 	install -Dm755 linux-modules-{save,restore} -t "${pkgdir}/usr/share/libalpm/scripts/"
 }
