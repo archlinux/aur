@@ -1,7 +1,7 @@
 # Maintainer: Lukas Wölfer (domain is thasky) <aur at [domain] dot one>
 pkgname=i3-insert-workspace-git
 pkgver=1.3.2.r0.g6cb94c9
-pkgrel=2
+pkgrel=3
 pkgdesc='Insert a new named workspace between two other named workspaces.'
 url='https://github.com/corrodedHash/i3-insert-workspace'
 source=("${pkgname}::git+https://github.com/corrodedHash/${pkgname%-git}#branch=main")
