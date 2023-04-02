@@ -1,6 +1,6 @@
 pkgbase = astc-encoder-git
 	pkgdesc = A tool for compressing and decompressing images using the ASTC texture compression standard (git version)
-	pkgver = 4.2.0.r0.g3103c70
+	pkgver = 4.4.0.r3.gc9217e1
 	pkgrel = 1
 	url = https://github.com/ARM-software/astc-encoder/
 	arch = x86_64
@@ -13,9 +13,7 @@ pkgbase = astc-encoder-git
 	conflicts = astc-encoder
 	source = git+https://github.com/ARM-software/astc-encoder.git#branch=main
 	source = git+https://github.com/google/googletest.git
-	source = 010-astc-encoder-use-shared-library.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = de18c29f9a12f00562487e73d255135184bb74cd0ebacd0576363655e7071e55
 
 pkgname = astc-encoder-git
