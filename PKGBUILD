@@ -24,12 +24,15 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+
+  RUSTUP_TOOLCHAIN=stable \
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build () {
   cd "$srcdir/$pkgname"
 
+  RUSTUP_TOOLCHAIN=stable \
   CARGO_TARGET_DIR=target \
     cargo build --frozen --release
 }
