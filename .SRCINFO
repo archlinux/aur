@@ -1,7 +1,7 @@
 pkgbase = jeff
 	pkgdesc = Extensible chatbot and automation tool
-	pkgver = 2.2.3.r0.gf19bd19
-	pkgrel = 2
+	pkgver = 2.3.0.r1.g44cdad7
+	pkgrel = 1
 	url = https://github.com/markcda/jeff
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = jeff
 	depends = python
 	depends = qt5-base
 	options = strip
-	source = git+https://github.com/markcda/jeff.git#tag=f19bd19935459c3a092f4bd0cc14cb0c906837d6
+	source = git+https://github.com/markcda/jeff.git#tag=44cdad7216fe9a50881a8b21f5d7fb07f6c244e0
 	sha256sums = SKIP
 
 pkgname = jeff
