@@ -2,7 +2,7 @@
 
 pkgname=openvino
 pkgver=2022.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A toolkit for developing artificial inteligence and deep learning applications'
 arch=('x86_64')
 url='https://docs.openvinotoolkit.org/'
@@ -17,8 +17,8 @@ optdepends=('intel-compute-runtime: for GPU (clDNN) plugin'
             'python: for Python API'
             'python-numpy: for Python API'
             'cython: for Python API')
-makedepends=('git' 'git-lfs' 'cmake' 'intel-compute-runtime' 'libusb' 'ocl-icd' 'opencv'
-             'python' 'cython' 'shellcheck' 'tbb')
+makedepends=('git' 'git-lfs' 'cmake' 'intel-compute-runtime' 'libusb' 'opencl-clhpp'
+             'ocl-icd' 'opencv' 'patchelf' 'python' 'cython' 'shellcheck' 'tbb')
 provides=('intel-openvino')
 conflicts=('intel-openvino')
 replaces=('intel-openvino')
@@ -55,7 +55,8 @@ source=("git+https://github.com/openvinotoolkit/openvino.git#tag=${pkgver}"
         'openvino.conf'
         'setupvars.sh'
         '010-ade-disable-werror.patch'
-        '020-openvino-use-protobuf-shared-libs.patch')
+        '020-openvino-use-protobuf-shared-libs.patch'
+        '030-openvino-fix-opencl-headers.patch')
 noextract=("firmware_usb-ma2x8x_${_firmware_ver}.zip"
            "firmware_pcie-ma2x8x_${_firmware_ver}.zip")
 sha256sums=('SKIP'
@@ -83,7 +84,8 @@ sha256sums=('SKIP'
             '335a55533ab26bd1f63683921baf33b8e8e3f2732a94554916d202ee500f90af'
             'e5024ad3382f285fe63dc58faca379f11a669bbe9f5d90682c59ad588aab434c'
             '502fcbb3fcbb66aa5149ad2cc5f1fa297b51ed12c5c9396a16b5795a03860ed0'
-            '5661837265c8e9cb1876982c7fc192ac694b7aa25448d8987c84ac545d31a4c6')
+            '5661837265c8e9cb1876982c7fc192ac694b7aa25448d8987c84ac545d31a4c6'
+            '5dc27990682d2d44a1397de2e2d8f822a6b627f6f799b00dd971ed7cee323a32')
 
 export GIT_LFS_SKIP_SMUDGE='1'
 
@@ -127,6 +129,7 @@ prepare() {
     
     patch -d openvino/thirdparty/ade -Np1 -i "${srcdir}/010-ade-disable-werror.patch"
     patch -d openvino -Np1 -i "${srcdir}/020-openvino-use-protobuf-shared-libs.patch"
+    patch -d openvino -Np1 -i "${srcdir}/030-openvino-fix-opencl-headers.patch"
 }
 
 build() {
@@ -137,6 +140,7 @@ build() {
     
     # note: does not accept 'None' build type
     cmake -B build -S openvino \
+        -G 'Unix Makefiles' \
         -DBUILD_TESTING:BOOL='OFF' \
         -DCMAKE_BUILD_TYPE:STRING='Release' \
         -DCMAKE_INSTALL_PREFIX:PATH='/opt/intel/openvino' \
@@ -150,10 +154,10 @@ build() {
         -DENABLE_ONEDNN_FOR_GPU:BOOL='OFF' \
         -DTREAT_WARNING_AS_ERROR:BOOL='OFF' \
         -Wno-dev
-    make -C build
+    cmake --build build
 }
 
 package() {
-    make -C build DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake --install build
     install -D -m644 openvino.conf -t "${pkgdir}/etc/ld.so.conf.d"
 }

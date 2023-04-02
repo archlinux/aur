@@ -1,0 +1,11 @@
+--- a/thirdparty/ocl/CMakeLists.txt
++++ b/thirdparty/ocl/CMakeLists.txt
+@@ -37,7 +37,7 @@ if(WIN32)
+ endif()
+ set(OPENCL_ICD_LOADER_HEADERS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/cl_headers/" CACHE PATH "Path to OCL includes" FORCE)
+ 
+-set(OPENCL_HEADERS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/cl_headers/" "${CMAKE_CURRENT_SOURCE_DIR}/clhpp_headers/include/" CACHE PATH "Path to OCL (CL and CLHPP) includes" FORCE)
++set(OPENCL_HEADERS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/cl_headers/" CACHE PATH "Path to OCL (CL and CLHPP) includes" FORCE)
+ 
+ # Reset compilation options for ICD loader as default IE options lead to removing a lot of symbols from the library
+ set(CMAKE_C_VISIBILITY_PRESET default)
