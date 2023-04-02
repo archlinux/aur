@@ -5,7 +5,7 @@
 
 _pkgname=phpunit
 pkgname=${_pkgname}
-pkgver=10.0.14
+pkgver=10.0.19
 pkgrel=1
 pkgdesc="PHPUnit is a programmer-oriented testing framework for PHP."
 conflicts=('phpunit-bin')
@@ -18,7 +18,7 @@ install="${_pkgname}.install"
 source=("git+https://github.com/sebastianbergmann/phpunit.git#tag=${pkgver}"
         "composer.lock")
 sha256sums=('SKIP'
-            'f30e3c7e14f92fe4031ffd766be364edac9e61584ee67dfa891d24e1c88c69ee')
+            '2503b9fc9042a12d9731727a5590c9094316ee89b4fe8ea4452ae11040a70243')
 
 prepare() {
   cd ${_pkgname}
