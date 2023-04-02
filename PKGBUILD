@@ -1,5 +1,5 @@
 # Maintainer: gsh <gsh.gsh.gsh@protonmail.com>
-# Maintainer: so1ar <so1ar114514@gmail.com>
+# Contributor: so1ar <so1ar114514@gmail.com>
 
 pkgname=v2ray-domain-list-custom
 pkgver=202304012208
