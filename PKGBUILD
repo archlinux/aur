@@ -1,7 +1,7 @@
 # Maintainer: sohlk <sohlk at outlook dot com>
 
 pkgname=eleventy-plugin-rss
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A pack of Eleventy plugins for generating an RSS feed"
 arch=('any')
