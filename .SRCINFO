@@ -1,6 +1,6 @@
 pkgbase = i3-cinnamon-git
 	pkgdesc = Starts i3 inside a cinnamon session.
-	pkgver = 5.0
+	pkgver = 5.1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/jthomaschewski/i3-cinnamon/
@@ -16,4 +16,3 @@ pkgbase = i3-cinnamon-git
 	sha256sums = SKIP
 
 pkgname = i3-cinnamon-git
-

@@ -1,8 +1,7 @@
 # Maintainer: Janek Thomaschewski <janek@thomaschewski.dev>
-# Contributors: Jesús Castro <x51v4n@gmail.com>, @killajoe, @Snowmobil, @ThomasWeiser (GitHub)
 pkgname=i3-cinnamon-git
 _pkgname=i3-cinnamon
-pkgver=5.0
+pkgver=5.1
 pkgrel=1
 epoch=1
 pkgdesc="Starts i3 inside a cinnamon session."
