@@ -40,9 +40,10 @@ pkgbase = anki-qt5
 	conflicts = anki-official-binary-bundle
 	conflicts = anki-debug
 	options = !lto
-	source = anki::git+https://github.com/ankitects/anki#tag=2.1.61
+	source = anki-qt5::git+https://github.com/ankitects/anki#tag=00556663989832a51b24da237ef3be77677c1bb6?signed
 	source = no-update.patch
 	source = force_qt5.patch
+	validpgpkeys = 814EA4E90C34AF39A712DE703F5566A2D16899FB
 	sha256sums = SKIP
 	sha256sums = 137827586d2a72adddaaf98599afa9fc80cdd73492d7f5cbcf4d2f6082e5f797
 	sha256sums = c5e6e1b2ed7999e9ef7f855aed4c97c4ace846237421507f408a64a8258a09fd

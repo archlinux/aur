@@ -8,6 +8,7 @@
 
 pkgname=anki-qt5
 pkgver=2.1.61
+_tag=00556663989832a51b24da237ef3be77677c1bb6 #git rev-parse $pkgver
 pkgrel=1
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) - Qt5 Build"
 url="https://apps.ankiweb.net/"
@@ -58,7 +59,7 @@ optdepends=(
 
 # using the tag tarballs does not work with the new (>= 2.1.55) build process.
 # the '.git' folder is not included in those but is required for a sucessful build
-source=("anki::git+https://github.com/ankitects/anki#tag=${pkgver}"
+source=("$pkgname::git+https://github.com/ankitects/anki#tag=${_tag}?signed"
 "no-update.patch"
 "force_qt5.patch"
 )
@@ -67,9 +68,12 @@ sha256sums=('SKIP'
 'c5e6e1b2ed7999e9ef7f855aed4c97c4ace846237421507f408a64a8258a09fd'
 )
 
+validpgpkeys=(
+   814EA4E90C34AF39A712DE703F5566A2D16899FB # Anki Signatures <gpg@ankiweb.net>
+)
 
 prepare(){
-    cd "anki"
+    cd "$pkgname"
     # pro-actively prevent "module not found" error
     [ -d ts/node_modules ] && rm -r ts/node_modules
     patch -p1 < "$srcdir/no-update.patch"
@@ -77,12 +81,17 @@ prepare(){
 }
 
 build() {
-    cd "anki"
+    cd "$pkgname"
     ./tools/build
 }
 
+pkgver(){
+	cd "$pkgname"
+	git describe
+}
+
 package() {
-    cd "anki"
+    cd "$pkgname"
     for file in out/wheels/*.whl; do
     	python -m installer --destdir="$pkgdir" $file
     done
