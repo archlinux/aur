@@ -2,13 +2,13 @@
 _PkgName=LabelPlusFX
 pkgname=labelplusfx
 pkgver=2.3.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Easy tool for comic translation."
 arch=(x86_64)
 url="https://github.com/Meodinger/LabelPlusFX"
 license=('AGPL3')
-depends=('jre17-openjdk')
+depends=('jre17-openjdk' 'gsettings-desktop-schemas')
 makedepends=('jdk17-openjdk' 'maven' 'dos2unix')
 checkdepends=()
 optdepends=('ttf-arphic-uming: ttf CJK support')
