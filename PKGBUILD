@@ -2,7 +2,7 @@
 
 pkgname=rnr
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A CLI tool to rename files and directories that supports regex.'
 provides=('rnr')
 makedepends=('rust')
@@ -14,6 +14,7 @@ md5sums=('63adf1eb4eab88aa043e6611640cbcf7')
 
 build () {
   cd ${pkgname}-$pkgver
+  export CARGO_TARGET_DIR=target
   cargo build --release --locked --all-features
 }
 
