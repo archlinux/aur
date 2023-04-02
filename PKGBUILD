@@ -12,11 +12,14 @@ license=('GPL3')
 depends=(
   'python'
   'python-advocate'
+  'python-apscheduler'
   'python-babel'
+  'python-flask'
   'python-flask-babel'
+  'python-flask-limiter'
   'python-flask-login'
   'python-flask-principal'
-  'python-flask'
+  'python-flask-wtf'
   'python-pypdf2'
   'python-pytz'
   'python-requests'
@@ -27,8 +30,6 @@ depends=(
   'python-blinker'
   'python-iso639'
   'python-lxml'
-  'python-flask-wtf'
-  'python-flask-limiter'
   'python-pycountry'
 )
 optdepends=(
