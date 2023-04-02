@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('ksh')
 optdepends=(
 	'date: convert input to iso-8601'
-	'extra/bc: fractional time units (bash)'
+	'bc: fractional time units (bash)'
 )
 source=("https://github.com/mountaineerbr/${_pkgname}/releases/download/v${pkgver}/${_pkgname}.tar.zst")
 sha256sums=('bc2e303ee264f131de5b53580784c89fbdb6d3cb22592ecc5e9bd1a7496c1fdf')
