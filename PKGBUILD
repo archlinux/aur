@@ -2,8 +2,8 @@
 
 pkgname=adapterremoval
 pkgver=2.3.3
-pkgrel=1
-pkgdesc='Remove remnant adapter sequences from High-Throughput Sequencing (HTS) data trims low quality bases from the 3 prime end'
+pkgrel=2
+pkgdesc='Remove remnant adapter sequences from High-Throughput Sequencing (HTS) data and trim low quality bases from the 3 prime end'
 arch=('x86_64')
 url='https://github.com/MikkelSchubert/adapterremoval'
 license=('GPL3')
