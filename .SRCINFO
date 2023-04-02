@@ -1,6 +1,6 @@
 pkgbase = libretro-vice-x64-git
 	pkgdesc = VICE x64 core
-	pkgver = 21069.5ae4a7433
+	pkgver = r21108.86eca8b
 	pkgrel = 1
 	url = https://github.com/libretro/vice-libretro
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = libretro-vice-x64-git
 	depends = gcc-libs
 	depends = zlib
 	depends = libretro-core-info
-	provides = libretro-vice-x64
-	conflicts = libretro-vice-x64
+	conflicts = libretro-vice
+	conflicts = libretro-vice-git
 	source = git+https://github.com/libretro/vice-libretro.git
 	sha256sums = SKIP
 

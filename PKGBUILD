@@ -1,7 +1,7 @@
 # Maintainer: Tilla <carlosfritz@posteo.net>
 
 pkgname=libretro-vice-x64-git
-pkgver=21069.5ae4a7433
+pkgver=r21108.86eca8b
 pkgrel=1
 pkgdesc="VICE x64 core"
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
@@ -10,22 +10,21 @@ license=(GPL2)
 groups=(libretro)
 depends=(gcc-libs zlib libretro-core-info)
 makedepends=(git)
-provides=(libretro-vice-x64)
-conflicts=(libretro-vice-x64)
-_gitname=vice-libretro
-source=("git+https://github.com/libretro/${_gitname}.git")
+conflicts=(libretro-vice libretro-vice-git)
+source=(git+https://github.com/libretro/vice-libretro.git)
 sha256sums=(SKIP)
 
 pkgver() {
-  cd "${_gitname}"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd vice-libretro
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
-  cd "${_gitname}"
+  cd vice-libretro
+  make clean
   make
 }
 
 package() {
-  install -Dm644 "${_gitname}/vice_x64_libretro.so" "${pkgdir}/usr/lib/libretro/vice_x64_libretro.so"
+  install -Dm644 "vice-libretro/vice_x64_libretro.so" "${pkgdir}/usr/lib/libretro/vice_x64_libretro.so"
 }
