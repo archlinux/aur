@@ -2,7 +2,7 @@
 
 pkgname=ziit
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A cli to track times in combination with to the ziit-server."
 arch=('x86_64')
 url="https://dev.acosom.com/acosom/ziit/ziit-cli/"
@@ -20,5 +20,5 @@ check() {
 }
 
 package() {
-  make prefix=/ bindir=/usr/bin DESTDIR="$pkgdir" install
+  make prefix=/usr DESTDIR="$pkgdir" install
 }
