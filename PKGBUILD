@@ -6,24 +6,30 @@ pkgver=0.6.8
 pkgrel=4
 _imgui_ver=1.81
 _spdlog_ver=1.8.5
+_vulkan_ver=1.2.158
 arch=('x86_64')
 url="https://github.com/flightlessmango/MangoHud"
 license=('MIT')
-makedepends=('git' 'glfw-x11' 'glslang' 'lib32-dbus' 'lib32-libglvnd' 'libxnvctrl'
-             'meson' 'nlohmann-json' 'python-mako' 'vulkan-headers')
-_commit=efdcc6d2f54e37a3a32475453407f1eb33d1bef2
+makedepends=('git' 'glfw-x11' 'glslang' 'lib32-cmocka' 'lib32-dbus' 'lib32-libglvnd'
+             'libxnvctrl' 'meson' 'nlohmann-json' 'python-mako')
+_commit=41b0cf117da681460cf383a786eb5d19916b8f8a  # master
+_cmocka_commit=59dc0013f9f29fcf212fe4911c78e734263ce24c
 source=("git+https://github.com/flightlessmango/MangoHud.git#commit=${_commit}"
         'git+https://github.com/flightlessmango/minhook.git'
         "https://github.com/ocornut/imgui/archive/refs/tags/v${_imgui_ver}/imgui-${_imgui_ver}.tar.gz"
         "https://wrapdb.mesonbuild.com/v2/imgui_${_imgui_ver}-1/get_patch#/imgui-${_imgui_ver}-1-wrap.zip"
         "spdlog-${_spdlog_ver}.tar.gz::https://github.com/gabime/spdlog/archive/refs/tags/v${_spdlog_ver}.tar.gz"
-        "spdlog-${_spdlog_ver}-1-wrap.zip::https://wrapdb.mesonbuild.com/v1/projects/spdlog/${_spdlog_ver}/1/get_zip")
+        "spdlog-${_spdlog_ver}-1-wrap.zip::https://wrapdb.mesonbuild.com/v1/projects/spdlog/${_spdlog_ver}/1/get_zip"
+        "Vulkan-Headers-${_vulkan_ver}.tar.gz::https://github.com/KhronosGroup/Vulkan-Headers/archive/v${_vulkan_ver}.tar.gz"
+        "https://wrapdb.mesonbuild.com/v2/vulkan-headers_${_vulkan_ver}-2/get_patch#/vulkan-headers-${_vulkan_ver}-2-wrap.zip")
 sha256sums=('SKIP'
             'SKIP'
             'f7c619e03a06c0f25e8f47262dbc32d61fd033d2c91796812bf0f8c94fca78fb'
             '6d00b442690b6a5c5d8f898311daafbce16d370cf64f53294c3b8c5c661e435f'
             '944d0bd7c763ac721398dca2bb0f3b5ed16f67cef36810ede5061f35a543b4b8'
-            '3c38f275d5792b1286391102594329e98b17737924b344f98312ab09929b74be')
+            '3c38f275d5792b1286391102594329e98b17737924b344f98312ab09929b74be'
+            '53361271cfe274df8782e1e47bdc9e61b7af432ba30acbfe31723f9df2c257f3'
+            '860358cf5e73f458cd1e88f8c38116d123ab421d5ce2e4129ec38eaedd820e17')
 
 pkgver() {
   cd "$srcdir/MangoHud"
@@ -39,12 +45,16 @@ prepare() {
   ln -sfv \
     "$srcdir/imgui-${_imgui_ver}" \
     "$srcdir/spdlog-${_spdlog_ver}" \
-    subprojects
+    "$srcdir/Vulkan-Headers-${_vulkan_ver}" \
+      subprojects
+
+  # Use system lib32-cmocka instead of subproject
+  sed -i "s/  cmocka = subproject('cmocka')//g" meson.build
+  sed -i "s/cmocka_dep = cmocka.get_variable('cmocka_dep')/cmocka_dep = dependency('cmocka')/g" meson.build
 }
 
 build() {
 local meson_options=(
-    -Duse_system_vulkan=enabled
     -Dmangoapp_layer=true
     -Dinclude_doc=false
   )
@@ -62,6 +72,7 @@ package_lib32-mangohud() {
   pkgdesc="MangoHud 32-bit library"
   depends=('lib32-dbus' 'lib32-gcc-libs' 'lib32-libx11' 'lib32-vulkan-icd-loader' 'mangohud-common')
 #  optdepends=('lib32-libxnvctrl: NVIDIA GPU stats by XNVCtrl') # AUR
+  provides=('libMangoHud.so' 'libMangoHud_dlsym.so')
   replaces=("$pkgname-x11" "$pkgname-wayland")
 
   meson install --tags runtime -C build --destdir "$pkgdir"
