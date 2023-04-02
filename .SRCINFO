@@ -1,0 +1,18 @@
+pkgbase = kodi-addon-vfs-libarchive-git
+	pkgdesc = Kodi VFS addon to support archives. Git version.
+	pkgver = r201.44acd30
+	pkgrel = 1
+	url = https://github.com/xbmc/vfs.libarchive
+	arch = x86_64
+	groups = kodi-addons
+	license = GPL2
+	makedepends = cmake
+	makedepends = kodi-dev
+	makedepends = git
+	depends = kodi
+	provides = kodi-addon-vfs-libarchive
+	conflicts = kodi-addon-vfs-libarchive
+	source = kodi-addon-vfs-libarchive-git::git+https://github.com/xbmc/vfs.libarchive.git
+	sha256sums = SKIP
+
+pkgname = kodi-addon-vfs-libarchive-git
