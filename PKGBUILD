@@ -7,7 +7,7 @@ pkgdesc="Media Preservation Frontend for DiscImageCreator/Aaru/Redumper in C# (.
 provides=('mpf-check')
 depends=('mono')
 pkgver=2.5
-pkgrel=1
+pkgrel=2
 license=('GPL3')
 source=('https://github.com/SabreTools/MPF/releases/download/2.5/MPF.Check_2.5-net48.zip'
 'https://raw.githubusercontent.com/SabreTools/MPF/master/README.md'
