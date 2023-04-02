@@ -1,13 +1,13 @@
 pkgname="gourou"
 pkgver=0.8.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Download and decrypt adobe encrypted (acsm) pdf and epub files"
 arch=('x86_64')
 license=('LGPL3')
 url="https://indefero.soutade.fr/p/libgourou"
 depends=(glibc gcc-libs zlib libzip openssl pugixml curl)
 conflicts=(gourou-git gourou-bin)
-provides=("gourou=${pkgver}")
+provides=("gourou=${pkgver}" "libgourou=${pkgver}")
 options=(strip)
 source=(
 	"git://soutade.fr/libgourou.git#tag=v$pkgver"
@@ -34,6 +34,6 @@ build(){
 
 package() {
 	cd libgourou
-	DESTDIR=$pkgdir PREFIX=/ make install
+	DESTDIR=$pkgdir PREFIX=/ make install install_headers
 
 }
