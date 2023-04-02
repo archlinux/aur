@@ -8,6 +8,7 @@
 
 pkgname=anki
 pkgver=2.1.61
+_tag=00556663989832a51b24da237ef3be77677c1bb6 #git rev-parse $pkgver
 pkgrel=1
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="https://apps.ankiweb.net/"
@@ -57,23 +58,32 @@ optdepends=(
 )
 # using the tag tarballs does not work with the new (>= 2.1.55) build process.
 # the '.git' folder is not included in those but is required for a sucessful build
-source=("anki::git+https://github.com/ankitects/anki#tag=${pkgver}"
+source=("$pkgname::git+https://github.com/ankitects/anki#tag=${_tag}?signed"
 "no-update.patch"
 )
 sha256sums=('SKIP'
 '137827586d2a72adddaaf98599afa9fc80cdd73492d7f5cbcf4d2f6082e5f797'
 )
 
+validpgpkeys=(
+   814EA4E90C34AF39A712DE703F5566A2D16899FB # Anki Signatures <gpg@ankiweb.net>
+)
+
 prepare(){
-    cd "anki"
+    cd "$pkgname"
     # pro-actively prevent "module not found" error (TODO: verify whether still required)
     [ -d ts/node_modules ] && rm -r ts/node_modules
     patch -p1 < "$srcdir/no-update.patch"
 }
 
 build() {
-    cd "anki"
+    cd "$pkgname"
     ./tools/build
+}
+
+pkgver(){
+	cd "$pkgname"
+	git describe
 }
 
 package() {
