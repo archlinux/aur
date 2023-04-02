@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=openvino-git
-pkgver=2022.3.0.r990.ga1cde2e7901
+pkgver=2022.3.0.r1415.ge978db3132c
 pkgrel=1
 pkgdesc='A toolkit for developing artificial inteligence and deep learning applications (git version)'
 arch=('x86_64')
@@ -17,8 +17,9 @@ optdepends=('intel-compute-runtime: for GPU (clDNN) plugin'
             'python: for Python API'
             'python-numpy: for Python API'
             'cython: for Python API')
-makedepends=('git' 'git-lfs' 'cmake' 'intel-compute-runtime' 'libusb' 'ocl-icd' 'opencv'
-             'patchelf' 'python' 'cython' 'shellcheck' 'aria2' 'wget' 'tbb')
+makedepends=('git' 'git-lfs' 'cmake' 'intel-compute-runtime' 'libusb' 'opencl-clhpp'
+             'ocl-icd' 'opencv' 'patchelf' 'python' 'cython' 'shellcheck' 'aria2' 'wget'
+             'tbb')
 provides=('openvino' 'intel-openvino-git')
 conflicts=('openvino' 'intel-openvino-git')
 replaces=('intel-openvino-git')
@@ -43,11 +44,14 @@ source=('git+https://github.com/openvinotoolkit/openvino.git'
         'git+https://github.com/openvinotoolkit/open_model_zoo.git'
         'git+https://github.com/nlohmann/json.git'
         'git+https://github.com/google/flatbuffers.git'
+        'git+https://github.com/google/snappy.git'
         'openvino.conf'
         'setupvars.sh'
         '010-ade-disable-werror.patch'
-        '020-openvino-use-protobuf-shared-libs.patch')
+        '020-openvino-use-protobuf-shared-libs.patch'
+        '030-openvion-fix-opencl-headers.patch')
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -70,7 +74,8 @@ sha256sums=('SKIP'
             '335a55533ab26bd1f63683921baf33b8e8e3f2732a94554916d202ee500f90af'
             'e5024ad3382f285fe63dc58faca379f11a669bbe9f5d90682c59ad588aab434c'
             '502fcbb3fcbb66aa5149ad2cc5f1fa297b51ed12c5c9396a16b5795a03860ed0'
-            '9faccd9dc8088e36560a402b7613e149b773479b5070002d9504bf7bb2a267ed')
+            '64284c112215ab6c78a70f04bec72b9bf2b487e4808a61a1581ac37f7c6ce34e'
+            '34b54fb39dd080e04fca2a8285030a2b9ec867b1fdf1908aec5d91a06e8ed482')
 
 export GIT_LFS_SKIP_SMUDGE='1'
 
@@ -98,10 +103,12 @@ prepare() {
     git -C openvino config --local submodule.tools/pot/thirdparty/open_model_zoo.url "${srcdir}/open_model_zoo"
     git -C openvino config --local submodule.thirdparty/json/nlohmann_json.url "${srcdir}/json"
     git -C openvino config --local submodule.thirdparty/flatbuffers/flatbuffers.url "${srcdir}/flatbuffers"
+    git -C openvino config --local submodule.thirdparty/snappy.url "${srcdir}/snappy"
     git -C openvino -c protocol.file.allow='always' submodule update
     
     patch -d openvino/thirdparty/ade -Np1 -i "${srcdir}/010-ade-disable-werror.patch"
     patch -d openvino -Np1 -i "${srcdir}/020-openvino-use-protobuf-shared-libs.patch"
+    patch -d openvino -Np1 -i "${srcdir}/030-openvion-fix-opencl-headers.patch"
 }
 
 pkgver() {
