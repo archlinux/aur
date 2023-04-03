@@ -1,65 +1,103 @@
-# Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
+# Maintainer: Manuel Hüsers <aur@huesers.de>
+# Contributor: Stick <stick@stma.is>
+# Contributor: johnnyapol <arch@johnnyapol.me>
+# Contributor: huyizheng <huyizheng@hotmail.com>
+# Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
+# Contributor: Morgan <morganamilo@archlinux.org>
 
-_electron=electron
+# Based off the discord_arch_electron_wayland PKGBUILD from Stick
+# Based off the discord_arch_electron PKGBUILD from johnnyapol and huyizheng
+# Based off the discord community repo PKGBUILD by Filipe Laíns (FFY00)
+
 pkgname=discord-electron
 _pkgname=discord
-_Pkgname=Discord
-pkgver=0.0.15
+_electron=22
+pkgver=0.0.26
 pkgrel=1
-pkgdesc="All-in-one voice and text chat for gamers that's free and secure."
+pkgdesc="Discord using system provided electron (v${_electron}) for increased security and performance"
 arch=('x86_64')
-url='https://discordapp.com'
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+url='https://discord.com'
 license=('custom')
-depends=("$_electron" 'libnotify' 'libxss' 'nspr' 'nss' 'gtk3')
-makedepends=('asar')
-optdepends=('libpulse: Pulseaudio support'
-            'xdg-utils: Open files')
-conflicts=(discord)
-source=("https://dl.discordapp.net/apps/linux/$pkgver/$_pkgname-$pkgver.tar.gz"
-				'discord.sh'
-        'LICENSE.html::https://discordapp.com/terms'
-        'OSS-LICENSES.html::https://discordapp.com/licenses')
-sha512sums=('4f220ecd0e0c9fcd793ed065055479391506d9401b75ca541cde4136d0290f2720fccca87139091faf269fdb2c020adb5b7333710a31ca603ce8552f3dd4841b'
-            'b5fe7bfd31ae1867f3392605bd52ac155c6c02c4a2a132419d9806c08e61715461818919c2e480ba8e7f14b51aefcd588dcaa247f15d24286e177e45f43e17f9'
-            '6a2ebf7aadf06ba804c1c6f10677a014b2b9eb17a2bb34538426bf4c76686c4c11976bd682610965535f7a5d4a2f6b36dfa5aa875578defef1213ed866acb530'
-            'f6d46b7a2dd6c8475625a988f36419788ab90149317c9a4e5e8ffea8613f27d0746c1557467332770c033349abd370bf721990ecadc383b4aee63cb8b74a280c')
+options=('!strip')
+depends=("electron${_electron}")
+makedepends=('asar' 'curl' 'python-html2text')
+optdepends=(
+	'libpulse: Pulseaudio support'
+	'xdg-utils: Open files'
+)
+source=("https://dl.discordapp.net/apps/linux/${pkgver}/discord-${pkgver}.tar.gz")
+sha512sums=('65477c2c033f30850a699706a6502ff4f4af8838185716d968d641fdab3033555139b04bf91a111a847aca14113e33ba6248d49ba317fd43cbacb099e974117b')
 
 prepare() {
-  cd "$_Pkgname"
+	# create launcher script
+	cat >> "${srcdir}"/discord-launcher.sh <<EOF
+#!/bin/sh
 
-	# Change exec entry for desktop file
-  sed -i "s|Exec=.*|Exec=/usr/bin/$_pkgname|" "$_pkgname.desktop"
-	sed -i "s|Icon=.*|Icon=$pkgname|" "$_pkgname.desktop"
-  echo 'Path=/usr/bin' >> "$_pkgname.desktop"
+if [ "\$XDG_SESSION_TYPE" = wayland ]; then
+	# Using wayland
+	exec electron${_electron} \\
+		--enable-features=UseOzonePlatform \\
+		--ozone-platform=wayland \\
+		--enable-accelerated-mjpeg-decode \\
+		--enable-accelerated-video \\
+		--ignore-gpu-blacklist \\
+		--enable-native-gpu-memory-buffers \\
+		--enable-gpu-rasterization \\
+		--enable-gpu \\
+		--enable-features=WebRTCPipeWireCapturer \\
+		/usr/lib/discord/app.asar \$@
+else
+	# Using x11
+	exec electron${_electron} \\
+		--enable-accelerated-mjpeg-decode \\
+		--enable-accelerated-video \\
+		--ignore-gpu-blacklist \\
+		--enable-native-gpu-memory-buffers \\
+		--enable-gpu-rasterization \\
+		--enable-gpu \\
+		/usr/lib/discord/app.asar \$@
+fi
+EOF
 
-	# Change resource path in asar archive
-	asar extract resources/app.asar resources/app.asar.dest
-	sed -i "s|process\.resourcesPath|'/', 'opt', '$pkgname'|" resources/app.asar.dest/app_bootstrap/buildInfo.js
-	asar pack resources/app.asar.dest resources/app.asar
-	# Cleanup unpacked files
-	rm -r resources/app.asar.dest
+	# fix the .desktop file
+	sed -i "s|Exec=.*|Exec=/usr/bin/${_pkgname}|" Discord/$_pkgname.desktop
+	echo 'Path=/usr/bin' >> Discord/$_pkgname.desktop
 
-	cd "$srcdir"
-
-	# Set electron version in startup script
-	sed -i "s|@ELECTRON@|$_electron|" "$_pkgname.sh"
+	# create the license files
+	curl https://discord.com/terms | html2text >"${srcdir}"/LICENSE.md
+	curl https://discord.com/licenses | html2text >"${srcdir}"/OSS-LICENSES.md
 }
 
 package() {
-  # Install the app
-  install -d "$pkgdir/opt/$pkgname"
-  cp -a "$_Pkgname/resources/." "$pkgdir/opt/$pkgname"
+	# create necessary directories
+	install -d "${pkgdir}"/usr/{lib/$_pkgname,bin}
+	install -d "${pkgdir}"/usr/share/{pixmaps,applications,licenses/$_pkgname}
 
-	# Install startup script
-	install -Dm755 "$_pkgname.sh" "$pkgdir/usr/bin/$pkgname"
-	ln -s "/usr/bin/$pkgname" "$pkgdir/usr/bin/$_pkgname"
+	cd "${srcdir}/Discord"
 
-	# Install icon and desktop file
-	install -Dm644 "$_Pkgname/$_pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
-	install -Dm644 "$_Pkgname/$_pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+	# use system electron
+	asar e resources/app.asar resources/app
+	rm resources/app.asar
+	sed -i "s|process.resourcesPath|'/usr/lib/${_pkgname}'|" resources/app/app_bootstrap/buildInfo.js
+	sed -i "s|exeDir,|'/usr/share/pixmaps',|" resources/app/app_bootstrap/autoStart/linux.js
+	asar p resources/app resources/app.asar
+	rm -rf resources/app
 
-  # Licenses
-  install -Dm644 LICENSE.html "$pkgdir/usr/share/licenses/$pkgname/LICENSE.html"
-  install -Dm644 OSS-LICENSES.html "$pkgdir/usr/share/licenses/$pkgname/OSS-LICENSES.html"
+	# copy relevant data
+	cp -r resources/* "${pkgdir}"/usr/lib/$_pkgname/
+	cp $_pkgname.png \
+		"${pkgdir}"/usr/share/pixmaps/$_pkgname.png
+	cp $_pkgname.desktop \
+		"${pkgdir}"/usr/share/applications/$_pkgname.desktop
+
+	cd "${srcdir}"
+
+	# install the launch script
+	install -Dm 755 discord-launcher.sh "${pkgdir}"/usr/bin/$_pkgname
+
+	# install licenses
+	install -Dm 644 LICENSE.md "${pkgdir}"/usr/share/licenses/$_pkgname/
+	install -Dm 644 OSS-LICENSES.md "${pkgdir}"/usr/share/licenses/$_pkgname/
 }
-
