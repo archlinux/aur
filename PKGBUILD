@@ -1,6 +1,6 @@
 # Maintainer: chung <me@chungn.com>
 pkgname=sunshine-bin
-pkgver=0.18.4
+pkgver=0.19.0
 pkgrel=1
 pkgdesc='A self-hosted GameStream host for Moonlight (prebuilt version).'
 url='https://github.com/LizardByte/Sunshine'
@@ -13,13 +13,13 @@ optdepends=('cuda: NvFBC capture support'
             'libdrm')
 conflicts=('sunshine' 'sunshine-git')
 provides=('sunshine')
-sha256sums_x86_64=('defa74086f371d3ee86315fd0bf2864a64b78db5e3948877a3d438005e8e7f0f')
+sha256sums_x86_64=('8c93127bda4704dd65e24dfc62ed89ce0148d87c7fe96680d3413aa015a1843c')
 
 package() {
   cd "$srcdir/"
 
   install -Dm755 "usr/bin/sunshine" "${pkgdir}/usr/bin/sunshine"
-  install -Dm755 "usr/bin/sunshine-${pkgver}" "${pkgdir}/usr/bin/sunshine-${pkgver}"
+  install -Dm755 "usr/bin/sunshine-v${pkgver}" "${pkgdir}/usr/bin/sunshine-${pkgver}"
 
   install -Dm644 "usr/lib/systemd/user/sunshine.service" "${pkgdir}/usr/lib/systemd/user/sunshine.service"
   install -Dm644 "usr/lib/udev/rules.d/85-sunshine.rules" "${pkgdir}/usr/lib/rules.d/85-sunshine.rules"
