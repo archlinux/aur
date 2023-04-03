@@ -46,4 +46,3 @@ package() {
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
   install -Dm755 $_pkgname -t "$pkgdir/usr/bin"
 }
-
