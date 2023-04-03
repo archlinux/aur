@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-glfw
 	pkgdesc = A free, open source, portable framework for OpenGL application development (mingw-w64)
-	pkgver = 3.3.4
+	pkgver = 3.3.8
 	pkgrel = 1
 	url = http://www.glfw.org/
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = mingw-w64-glfw
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/glfw/glfw/releases/download/3.3.4/glfw-3.3.4.zip
-	sha256sums = bbd2c42c660b725e9755eb417e40b373f0d4c03138c9b2e210d02cd308bd99cd
+	source = https://github.com/glfw/glfw/releases/download/3.3.8/glfw-3.3.8.zip
+	sha256sums = 4d025083cc4a3dd1f91ab9b9ba4f5807193823e565a5bcf4be202669d9911ea6
 
 pkgname = mingw-w64-glfw
-
