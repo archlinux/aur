@@ -1,0 +1,18 @@
+pkgbase = vtex2-bin
+	pkgdesc = A VTF conversion and creation tool
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/StrataSource/vtex2
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	optdepends = qt6-base
+	optdepends = wget
+	optdepends = curl
+	provides = vtex2
+	conflicts = vtex2
+	source = https://github.com/StrataSource/vtex2/releases/download/v0.1.1/vtex2.linux-amd64.zip
+	md5sums = SKIP
+
+pkgname = vtex2-bin
