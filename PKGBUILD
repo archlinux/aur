@@ -1,7 +1,7 @@
 # Maintainer: Xuanwo <xuanwo@archlinuxcn.org>
 pkgname=openai-translator-bin
 _pkgname=openai-translator
-pkgver=0.0.34
+pkgver=0.0.37
 pkgrel=1
 pkgdesc="Browser extension and cross-platform desktop application for translation based on ChatGPT API."
 arch=("x86_64")
@@ -13,7 +13,7 @@ depends=('webkit2gtk' 'xdotool' 'libayatana-appindicator')
 source=(
     "https://github.com/yetone/openai-translator/releases/download/v${pkgver}/open-ai-translator_${pkgver}_amd64.deb"
 )
-sha256sums=('7843aead15047d8b19d41ee4ca0271757b6a9f685d31ea638ccec2ff1eb9bb96')
+sha256sums=('9ba000b3ae3a6fbef54a02b9eb819ad1c97b76a8f12e350f93d4f4494adb0f9c')
 
 package() {
     cd "$srcdir/"
