@@ -36,11 +36,11 @@ makedepends=(
   'libva-vdpau-driver' 'libxrandr' 'libxslt' 'lirc' 'lzo' 'mesa' 'nasm'
   'python-pycryptodomex' 'python-pillow' 'python-pybluez'
   'python-simplejson' 'shairplay' 'smbclient' 'taglib' 'tinyxml' 'swig'
-  'upower' 'giflib'             'ghostscript' 'meson' 'gtest' 'graphviz'
+  'upower' 'giflib' 'ghostscript' 'meson' 'gtest' 'graphviz'
   # wayland
   'wayland-protocols' 'waylandpp' 'libxkbcommon'
   # gbm
-  'libinput' 'mpp-git'
+  'libinput' 'mpp-git' 'flatbuffers'
 )
 options=(!lto debug strip)
 
@@ -69,7 +69,6 @@ _fmt_version="9.1.0"
 _spdlog_version="1.10.0"
 _crossguid_version="ca1bf4b810e2d188d04cb6286f957008ee1b7681"
 _fstrcmp_version="0.7.D001"
-_flatbuffers_version="2.0.0"
 _libudfread_version="1.1.2"
 source=(
   "git+https://github.com/xbmc/xbmc.git#branch=$_codename"
@@ -82,7 +81,6 @@ source=(
   "https://mirrors.kodi.tv/build-deps/sources/spdlog-$_spdlog_version.tar.gz"
   "https://mirrors.kodi.tv/build-deps/sources/crossguid-$_crossguid_version.tar.gz"
   "https://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
-  "https://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   "https://mirrors.kodi.tv/build-deps/sources/libudfread-$_libudfread_version.tar.gz"
   0001-ffmpeg-buildsys.patch
   0002-rkmpp-4.patch
@@ -98,7 +96,6 @@ noextract=(
   "spdlog-$_spdlog_version.tar.gz"
   "crossguid-$_crossguid_version.tar.gz"
   "fstrcmp-$_fstrcmp_version.tar.gz"
-  "flatbuffers-$_flatbuffers_version.tar.gz"
   "libudfread-$_libudfread_version.tar.gz"
 )
 
@@ -112,7 +109,6 @@ b2sums=('SKIP'
         'e40afa9fd1dd791e1f703392f0f54fc798ed70537a9f1ee9c8598dd449f4cd4dd03bc4ce95e416cbbe224711a17e70708a106f0432384542d6316cf232cf8757'
         '0f78a8ab5a420297f666b3b8156d499a9141ec25c049d4d2bb2ba594dc585abe211a149b83c605cce4f5530207231a065d5f3a87a0c969781de8c6381afa2527'
         'a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e'
-        'ccd827a43da39cf831727b439beed0cea216cdf50dbfe70954854bbe388b2c47ed4e78cc87e3fc0d5568034b13baa2ea96480914cc8129747bccbf8ea928847c'
         '1801d84a0ca38410a78f23e7d44f37e6d53346753c853df2e7380d259ce1ae7f0c712825b95a5753ad0bc6360cfffe1888b9e7bc30da8b84549e0f1198248f61'
         'a4c52a1efe8957c2d941a47caeb1b3ec86741d902ae2c58eff4aaba369475e72257bf63c43a1b5f55fc8d07bb2d0c5ea0b7717a028278eae6a34f5a91eb5047f'
         '31c0902cdde645b724a48b65a6ef824da6a69e5187b507175bf50a0ecb338a6e9576df4d2d5ef1d3c4f75819552b2b0aea3a1ffa6f14897af7f0ba66e6e26522'
@@ -168,7 +164,6 @@ build() {
     -DENABLE_INTERNAL_SPDLOG=ON
     -DENABLE_INTERNAL_CROSSGUID=ON
     -DENABLE_INTERNAL_FSTRCMP=ON
-    -DENABLE_INTERNAL_FLATBUFFERS=ON
     -DENABLE_INTERNAL_UDFREAD=ON
     -DENABLE_MYSQLCLIENT=ON
     -DENABLE_VAAPI=ON
@@ -181,7 +176,6 @@ build() {
     -DSPDLOG_URL="$srcdir/spdlog-$_spdlog_version.tar.gz"
     -DCROSSGUID_URL="$srcdir/crossguid-$_crossguid_version.tar.gz"
     -DFSTRCMP_URL="$srcdir/fstrcmp-$_fstrcmp_version.tar.gz"
-    -DFLATBUFFERS_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz"
     -DUDFREAD_URL="$srcdir/libudfread-$_libudfread_version.tar.gz"
     -DAPP_RENDER_SYSTEM=gl
   )
@@ -215,7 +209,7 @@ package_kodi-nexus-mpp-git() {
     'mesa' 'python-pillow' 'python-pycryptodomex' 'python-simplejson'
     'shairplay' 'smbclient' 'sqlite' 'taglib' 'tinyxml'
     'libxrandr' 'libxkbcommon' 'waylandpp' 'libinput'
-    'pcre' 'mpp-git'
+    'pcre' 'mpp-git' 'flatbuffers'
   )
   [[ -n "$_clangbuild" ]] && depends+=('glu')
 
