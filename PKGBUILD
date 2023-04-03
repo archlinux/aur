@@ -1,13 +1,13 @@
 # Maintainer: José Ferreira <jose.filipe.matos.ferreira@gmail.com>
 pkgname=thonkbar-git
-pkgver=r37.2641b7a
+pkgver=r38.9b99225
 pkgrel=1
 pkgdesc="minimalist block based lemonbar wrapper"
 arch=('any')
 url="https://github.com/JoseFilipeFerreira/${pkgname%-git}"
 license=('GPL3')
 makedepends=(git)
-depends=(lemonbar-xft-git)
+depends=(lemonbar-xft-git iniparser)
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("git+$url")
