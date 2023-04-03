@@ -1,0 +1,38 @@
+# Maintainer: coffebar i8ehkvien@mozmail.com
+
+pkgname=hyprland-monitor-attached
+pkgver=0.1
+pkgrel=1
+pkgdesc='Run bash script when you attach the monitor on Hyprland'
+arch=('x86_64')
+url="https://github.com/coffebar/$pkgname"
+license=('MIT')
+makedepends=(cargo)
+depends=()
+_commit=d7f539e
+source=("git+$url#commit=$_commit")
+sha256sums=('SKIP')
+
+pkgver(){
+    cd "$pkgname"
+    git describe --tags | sed 's/^v//;s/-/+/g'
+}
+
+prepare() {
+    cd "$pkgname"
+    export RUSTUP_TOOLCHAIN=stable
+    test -f /usr/bin/rustup && /usr/bin/rustup update --no-self-update $RUSTUP_TOOLCHAIN
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
+build() {
+    cd "$pkgname"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release
+}
+
+package() {
+    cd "$pkgname"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+}
