@@ -3,7 +3,7 @@
 pkgname=crispy-doom
 pkgdesc="Vanilla-compatible enhanced Doom engine"
 pkgver=6.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'aarch64')
 url="http://fabiangreffrath.github.io/crispy-doom"
 license=('GPL2')
@@ -44,5 +44,6 @@ package() {
   rm -rf share/man/man5/default.cfg.5              \
          share/man/man5/heretic.cfg.5              \
          share/man/man5/hexen.cfg.5                \
+         share/man/man5/strife.cfg.5               \
          share/man/man6/chocolate-{server,setup}.6
 }
