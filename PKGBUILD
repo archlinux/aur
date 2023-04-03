@@ -1,22 +1,17 @@
 # Maintainer: Areskul <areskul@areskul.com>
 pkgname="pipelight"
 pkgrel=1
-pkgver=0.4.25
+pkgver=0.4.26
 pkgdesc="A Rust based quick automation tool"
 arch=("any")
-url="https://gitea.com/pipelight/pipelight.git"
+url=https://pipelight.dev/packages/$pkgname-git.$pkgver-$pkgrel.pkg.tar.zst
 license=('GPL2')
 depends=(deno)
 makedepends=(git make cargo)
 provides=("pipelight")
 conflicts=("pipelight-git")
-source=(git+$url)
+source=($url)
 md5sums=('SKIP') #autofill using updpkgsums
-
-build() {
-  cd $pkgname
-  cargo build --release
-}
 
 package() {
   cd $pkgname
@@ -26,7 +21,6 @@ package() {
   install -Dm755 $bin-trigger -t $pkgdir/usr/bin
 }
 
-pkgver() {
-  cd "$pkgname"
-  git describe --tags --abbrev=0 | sed s/v//
+url() {
+  https://pipelight.dev/packages/$pkgname-git.$pkgver-$pkgrel.pkg.tar.zst
 }

@@ -1,5 +1,5 @@
 pipelight
 src
-pkb
+pkg
 *.tar.*
 .pipelight/logs
