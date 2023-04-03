@@ -1,4 +1,6 @@
 2022-04-03 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.4.4.5-1:
+    Defaulted new device confirmation prompt to N in Headless and --service modes (@JustArchi #2867).
   * 5.4.4.4-1:
     Added support for logging in through device confirmations, this allows you to approve the login on your phone and avoid typing 2FA code in ASF (@JustArchi #2857).
     Added support for handling DuplicateRequest during logging in (@JustArchi #2864).
