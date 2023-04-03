@@ -3,8 +3,8 @@
 
 pkgname=conceal-bin
 _pkgname=conceal
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.3.2
+pkgrel=1
 pkgdesc="Command line recycle bin"
 arch=('x86_64')
 url="https://github.com/TD-Sky/conceal"
@@ -12,7 +12,7 @@ license=('MIT')
 conflicts=('conceal')
 depends=('skim')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$arch-unknown-linux-gnu.tar.gz")
-sha256sums=('288119c76d5625ba59208e66d2d4f32581653b3e645bc7fadd00ef20a09de627')
+sha256sums=('5711c5981921697fc268b2d391055f517244e075755905dd3d459971282d76a4')
 
 package() {
   install -Dm 755 conceal -t "$pkgdir/usr/bin"
