@@ -1,19 +1,24 @@
 # Contributor: Roberto Alsina <ralsina@netmanagers.com.ar>
 
 pkgname=ttf-orthodox-herbertarian
-pkgver=1
-pkgrel=2
-pkgdesc="The Dune Font"
+pkgver=1.00
+pkgrel=1
+pkgdesc="Typeface used on Frank Herbert books in the 70s and 80s"
 arch=('any')
-url="http://dunefont.dribble-sponge.co.uk/?p=109"
-license=('custom:Public domain')
-depends=('fontconfig' 'xorg-font-utils')
+# http://www.kullwahad.com/
+url="https://archive.org/details/orthodox-herbertarian"
+license=("Public Domain")
+depends=()
+makedepends=()
 
-install=ttf.install
-source=('http://dunefont.dribble-sponge.co.uk/ccount/click.php?id=2')
-md5sums=('1a084c983b5136e35914a4981ce87644')
+source=(
+  'https://archive.org/download/orthodox-herbertarian/OrthodoxHerbertarian.ttf'
+)
+sha256sums=(
+  '4bb75bd65b9c23e69fb7ce6987c9524d2ebaeb2b1717f16d0c23da3e7f19efea'
+)
 
 package() {
-    cd "$srcdir"
-    install -Dm 644 click.php?id=2 "$pkgdir/usr/share/fonts/TTF/orthodoxherbertarian.ttf"
+  cd "$srcdir"
+  install -Dm644 -t "$pkgdir/usr/share/fonts/TTF" "OrthodoxHerbertarian.ttf"
 }

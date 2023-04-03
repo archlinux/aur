@@ -1,15 +1,11 @@
 pkgbase = ttf-orthodox-herbertarian
-	pkgdesc = The Dune Font
-	pkgver = 1
-	pkgrel = 2
-	url = http://dunefont.dribble-sponge.co.uk/?p=109
-	install = ttf.install
+	pkgdesc = Typeface used on Frank Herbert books in the 70s and 80s
+	pkgver = 1.00
+	pkgrel = 1
+	url = https://archive.org/details/orthodox-herbertarian
 	arch = any
-	license = custom:Public domain
-	depends = fontconfig
-	depends = xorg-font-utils
-	source = http://dunefont.dribble-sponge.co.uk/ccount/click.php?id=2
-	md5sums = 1a084c983b5136e35914a4981ce87644
+	license = Public Domain
+	source = https://archive.org/download/orthodox-herbertarian/OrthodoxHerbertarian.ttf
+	sha256sums = 4bb75bd65b9c23e69fb7ce6987c9524d2ebaeb2b1717f16d0c23da3e7f19efea
 
 pkgname = ttf-orthodox-herbertarian
-
