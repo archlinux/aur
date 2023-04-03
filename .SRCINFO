@@ -1,6 +1,6 @@
 pkgbase = grep-git
 	pkgdesc = A string search utility
-	pkgver = 3.7.r98.gc9ac429
+	pkgver = 3.10.r2.gc63a095
 	pkgrel = 1
 	url = https://www.gnu.org/software/grep/
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = grep-git
 	makedepends = tar
 	makedepends = texinfo
 	depends = glibc
-	depends = pcre
-	provides = grep=3.7.r98.gc9ac429
+	depends = pcre2
+	provides = grep=3.10.r2.gc63a095
 	conflicts = grep
 	source = git+https://git.savannah.gnu.org/git/grep.git
 	sha256sums = SKIP

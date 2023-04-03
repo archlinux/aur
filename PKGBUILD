@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=grep-git
-pkgver=3.7.r98.gc9ac429
+pkgver=3.10.r2.gc63a095
 pkgrel=1
 pkgdesc="A string search utility"
 arch=('i686' 'x86_64')
 url="https://www.gnu.org/software/grep/"
 license=('GPL3')
-depends=('glibc' 'pcre')
+depends=('glibc' 'pcre2')
 makedepends=('git' 'gettext' 'gperf' 'gzip' 'perl' 'rsync' 'tar' 'texinfo')
 provides=("grep=$pkgver")
 conflicts=('grep')
@@ -26,8 +26,7 @@ build() {
 
   ./bootstrap
   ./configure \
-    --prefix="/usr" \
-    --without-included-regex
+    --prefix="/usr"
   make
 }
 
