@@ -1,6 +1,6 @@
 # Mainintainer : Lucas Rooyakkers <lucas dot rooyakkers at pm dot me>
 pkgname="openutau"
-pkgver=0.1.2
+pkgver=0.1.52
 pkgrel=2
 pkgdesc="Open source UTAU successor"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('fuse2' 'fuse3' 'fuse-common')
 _appimage="OpenUtau-linux-x64.tar.gz"
 source_x86_64=("${_appimage}::https://github.com/stakira/OpenUtau/releases/download/build/${pkgver}/${_appimage}")
 #noextract=("${_appimage}")
-sha256sums_x86_64=('feb998678a4b5ba8d0a03b8cd80305fb0a0b587a5278ac212707184dd6576615')
+sha256sums_x86_64=('0a7b654148364802247673b628c4b66af70d041d80504a77b36e79d6d5e0248e')
 options+=('!strip')
 
 package() {
