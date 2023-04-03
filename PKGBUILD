@@ -1,11 +1,12 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Maintainer: bruceutut@aur
+# Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
 # Contributor: Ryan Coyner <rcoyner@gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgbase=pyglet
 pkgname=('python-pyglet')
-pkgver=2.0.2
+pkgver=2.0.5
 pkgrel=1
 pkgdesc="A cross-platform windowing and multimedia library for Python"
 arch=('any')
@@ -16,8 +17,8 @@ makedepends=('python-setuptools')
 optdepends=('ffmpeg: provides audio&video support'
             'openal: live audio')
 source=("https://files.pythonhosted.org/packages/source/p/pyglet/pyglet-$pkgver.zip")
-md5sums=('dfaa7ae65c2a2a255c953c213a66dc83')
-sha256sums=('a241f2352f391cb8f205e3f2b061ef74606e8d1698a762a3b99c5588e56830fc')
+md5sums=('e95796373a952beb7cbb0027d9d02d2f')
+sha256sums=('c47ff4eded95104d030e0697eedd6082b61dc987460bbca83ec47b6e7cbfd38a')
 
 prepare() {
 	cd "$srcdir/$pkgbase-$pkgver"
