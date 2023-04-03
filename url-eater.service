@@ -1,0 +1,12 @@
+[Unit]
+Description=url-eater
+After=default.target
+#Before=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/url-eater /etc/url-eater.kdl
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

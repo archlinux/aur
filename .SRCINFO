@@ -1,0 +1,20 @@
+pkgbase = url-eater-git
+	pkgdesc = Clean unnecessary parameters from URLs copied to clipboard
+	pkgver = r3.089835f
+	pkgrel = 1
+	url = https://github.com/AgathaSorceress/url-eater
+	arch = any
+	makedepends = cargo
+	depends = systemd
+	provides = url-eater
+	conflicts = url-eater
+	conflicts = url-eater-bin
+	backup = etc/url-eater.kdl
+	source = url-eater::git+https://github.com/AgathaSorceress/url-eater.git
+	source = default.kdl::https://thermalpaste.technogothic.net/Eh00rL.kdl
+	source = url-eater.service
+	sha256sums = SKIP
+	sha256sums = e86c33eb0ef751bfd342734ae2fbf6a15d974948a4f6bd3f45d851da1f5a7fbd
+	sha256sums = 7eb0a4c37f76caad7554c2da76f78d56f25a9f883e3d03d4b1561e7977bdb5f5
+
+pkgname = url-eater-git
