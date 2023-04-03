@@ -1,7 +1,7 @@
 pkgbase = python-jupyter_ascending
 	pkgdesc = Edit Jupyter notebooks using your favorite editor
 	pkgver = 0.1.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/untitled-ai/jupyter_ascending
 	arch = any
 	license = MIT

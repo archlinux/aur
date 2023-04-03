@@ -3,7 +3,7 @@
 pkgname=python-jupyter_ascending
 _pkgname="${pkgname#python-}"
 pkgver=0.1.24
-pkgrel=1
+pkgrel=2
 pkgdesc='Edit Jupyter notebooks using your favorite editor'
 arch=('any')
 url=https://github.com/untitled-ai/jupyter_ascending
@@ -30,5 +30,5 @@ package() {
 	cd "${_pkgname}-${pkgver}"
 	python -m installer --destdir="${pkgdir}" dist/*.whl
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" "README.md"
+	install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" "README.md"
 }
