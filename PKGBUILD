@@ -1,13 +1,15 @@
-# Maintainer: David Runge <dvzrv@archlinux.org>
+# Maintainer: MoetaYuko <loli at yuko dot moe>
+# Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Alexander Epaneshnikov <alex19ep@archlinux.org>
 
 _brotli_ver=1.0.9
 _openssl_ver=1.1.1s
-pkgbase=edk2
-pkgname=(edk2-arm edk2-aarch64)
+_pkgbase=edk2
+pkgbase=$_pkgbase-grubfix
+pkgname=(edk2-grubfix-arm edk2-grubfix-aarch64)
 pkgver=202211
 _commit=fff6d81270b57ee786ea18ad74f43149b9f03494  # refs/tags/edk2-stable202211
-pkgrel=3
+pkgrel=1
 pkgdesc="Modern, feature-rich firmware development environment for the UEFI specifications"
 arch=(any)
 url="https://github.com/tianocore/edk2"
@@ -22,7 +24,7 @@ source=(
   60-edk2-aarch64.json
   60-edk2-arm.json
   Revert-ArmVirtPkg-make-EFI_LOADER_DATA-non-executabl.patch
-  $pkgbase-202202-brotli.patch
+  $_pkgbase-202202-brotli.patch
 )
 sha512sums=('SKIP'
             'SKIP'
@@ -46,11 +48,11 @@ _build_plugin=GCC5
 
 prepare() {
   # patch to be able to use brotli 1.0.9
-  patch -Np1 -d $pkgbase -i ../$pkgbase-202202-brotli.patch
+  patch -Np1 -d $_pkgbase -i ../$_pkgbase-202202-brotli.patch
 
-  patch -Np1 -d $pkgbase -i ../Revert-ArmVirtPkg-make-EFI_LOADER_DATA-non-executabl.patch
+  patch -Np1 -d $_pkgbase -i ../Revert-ArmVirtPkg-make-EFI_LOADER_DATA-non-executabl.patch
 
-  cd $pkgbase
+  cd $_pkgbase
 
   git submodule init
   git submodule deinit BaseTools/Source/C/BrotliCompress/brotli
@@ -94,7 +96,7 @@ build() {
     -D TPM2_ENABLE
   )
 
-  cd $pkgbase
+  cd $_pkgbase
   export GCC5_AARCH64_PREFIX="aarch64-linux-gnu-"
   export GCC5_ARM_PREFIX="arm-none-eabi-"
   echo "Building base tools (AARCH64)"
@@ -146,47 +148,48 @@ build() {
   done
 }
 
-package_edk2-aarch64() {
+package_edk2-grubfix-aarch64() {
   local _arch=AARCH64
 
-  pkgdesc="Firmware for Virtual Machines (aarch64)"
+  pkgdesc="Firmware for Virtual Machines (aarch64) Patched for Old GRUB"
   url="https://github.com/tianocore/tianocore.github.io/wiki/ArmVirtPkg"
-  conflicts=('edk2-armvirt<202211')
-  provides=(edk2-armvirt)
-  replaces=('edk2-armvirt<202211')
+  conflicts=(edk2-aarch64)
+  provides=(edk2-aarch64)
 
-  cd $pkgbase
-  install -vDm 644 Build/ArmVirtQemu-$_arch/${_build_type}_${_build_plugin}/FV/*.fd -t "$pkgdir/usr/share/$pkgbase/${_arch,,}/"
+  cd $_pkgbase
+  install -vDm 644 Build/ArmVirtQemu-$_arch/${_build_type}_${_build_plugin}/FV/*.fd -t "$pkgdir/usr/share/$_pkgbase/${_arch,,}/"
   # add libvirt compatibility (which hardcodes the following paths)
   install -vdm 755 "$pkgdir/usr/share/AAVMF"
-  ln -svf /usr/share/$pkgbase/${_arch,,}/QEMU_CODE.fd "$pkgdir/usr/share/AAVMF/AAVMF_CODE.fd"
-  ln -svf /usr/share/$pkgbase/${_arch,,}/QEMU_VARS.fd "$pkgdir/usr/share/AAVMF/AAVMF_VARS.fd"
+  ln -svf /usr/share/$_pkgbase/${_arch,,}/QEMU_CODE.fd "$pkgdir/usr/share/AAVMF/AAVMF_CODE.fd"
+  ln -svf /usr/share/$_pkgbase/${_arch,,}/QEMU_VARS.fd "$pkgdir/usr/share/AAVMF/AAVMF_VARS.fd"
   # install qemu descriptors in accordance with qemu:
   # https://git.qemu.org/?p=qemu.git;a=tree;f=pc-bios/descriptors
-  install -vDm 644 ../*$pkgname.json -t "$pkgdir/usr/share/qemu/firmware/"
+  install -vDm 644 ../*edk2-aarch64.json -t "$pkgdir/usr/share/qemu/firmware/"
   # license
   install -vDm 644 License.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
 
   # add symlink for previous aarch64 location
-  ln -svf /usr/share/$pkgbase "$pkgdir/usr/share/$pkgbase-armvirt"
+  ln -svf /usr/share/$_pkgbase "$pkgdir/usr/share/$_pkgbase-armvirt"
 }
 
-package_edk2-arm() {
+package_edk2-grubfix-arm() {
   local _arch=ARM
 
-  pkgdesc="Firmware for Virtual Machines (armv7)"
+  pkgdesc="Firmware for Virtual Machines (armv7) Patched for Old GRUB"
   url="https://github.com/tianocore/tianocore.github.io/wiki/ArmVirtPkg"
+  conflicts=(edk2-arm)
+  provides=(edk2-arm)
 
-  cd $pkgbase
-  install -vDm 644 Build/ArmVirtQemu-$_arch/${_build_type}_$_build_plugin/FV/*.fd -t "$pkgdir/usr/share/$pkgbase/${_arch,,}/"
+  cd $_pkgbase
+  install -vDm 644 Build/ArmVirtQemu-$_arch/${_build_type}_$_build_plugin/FV/*.fd -t "$pkgdir/usr/share/$_pkgbase/${_arch,,}/"
   # add libvirt compatibility (which hardcodes the following paths)
   install -vdm 755 "$pkgdir/usr/share/AAVMF"
-  ln -svf /usr/share/$pkgbase/${_arch,,}/QEMU_CODE.fd "$pkgdir/usr/share/AAVMF/AAVMF32_CODE.fd"
-  ln -svf /usr/share/$pkgbase/${_arch,,}/QEMU_VARS.fd "$pkgdir/usr/share/AAVMF/AAVMF32_VARS.fd"
+  ln -svf /usr/share/$_pkgbase/${_arch,,}/QEMU_CODE.fd "$pkgdir/usr/share/AAVMF/AAVMF32_CODE.fd"
+  ln -svf /usr/share/$_pkgbase/${_arch,,}/QEMU_VARS.fd "$pkgdir/usr/share/AAVMF/AAVMF32_VARS.fd"
 
   # install qemu descriptors in accordance with qemu:
   # https://git.qemu.org/?p=qemu.git;a=tree;f=pc-bios/descriptors
-  install -vDm 644 ../*$pkgname.json -t "$pkgdir/usr/share/qemu/firmware/"
+  install -vDm 644 ../*edk2-arm.json -t "$pkgdir/usr/share/qemu/firmware/"
   # license
   install -vDm 644 License.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

@@ -1,7 +1,7 @@
-pkgbase = edk2
+pkgbase = edk2-grubfix
 	pkgdesc = Modern, feature-rich firmware development environment for the UEFI specifications
 	pkgver = 202211
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/tianocore/edk2
 	arch = any
 	license = BSD
@@ -15,7 +15,7 @@ pkgbase = edk2
 	makedepends = python
 	options = !makeflags
 	source = git+https://github.com/tianocore/edk2#tag=fff6d81270b57ee786ea18ad74f43149b9f03494
-	source = edk2-softfloat::git+https://github.com/ucb-bar/berkeley-softfloat-3.git
+	source = edk2-grubfix-softfloat::git+https://github.com/ucb-bar/berkeley-softfloat-3.git
 	source = https://www.openssl.org/source/openssl-1.1.1s.tar.gz
 	source = brotli-1.0.9.tar.gz::https://github.com/google/brotli/archive/v1.0.9.tar.gz
 	source = 60-edk2-aarch64.json
@@ -39,13 +39,14 @@ pkgbase = edk2
 	b2sums = 4aabdde26038eefe6c5c15150cc7c54e0d2aa1c8d145bf82de33ab7e28a95979c3323594bb95d8083ce3217c81f69c651fc9b80cec9336b290d3d466bc88b5da
 	b2sums = 644c071dc4fbbccaa64b0b1babcad60395ffce1a7a317a6f5380eff44cbb886be5f29156a8e967ab02b508a33954fcf5602606b43362cc3bb1936a8cfc3a3c07
 
-pkgname = edk2-arm
-	pkgdesc = Firmware for Virtual Machines (armv7)
+pkgname = edk2-grubfix-arm
+	pkgdesc = Firmware for Virtual Machines (armv7) Patched for Old GRUB
 	url = https://github.com/tianocore/tianocore.github.io/wiki/ArmVirtPkg
+	provides = edk2-arm
+	conflicts = edk2-arm
 
-pkgname = edk2-aarch64
-	pkgdesc = Firmware for Virtual Machines (aarch64)
+pkgname = edk2-grubfix-aarch64
+	pkgdesc = Firmware for Virtual Machines (aarch64) Patched for Old GRUB
 	url = https://github.com/tianocore/tianocore.github.io/wiki/ArmVirtPkg
-	provides = edk2-armvirt
-	conflicts = edk2-armvirt<202211
-	replaces = edk2-armvirt<202211
+	provides = edk2-aarch64
+	conflicts = edk2-aarch64
