@@ -1,7 +1,7 @@
 # Maintainer: 咸粽子 <xianzongzi aliyun.com>
 _pkgname=lbrowser
 pkgname=lbrowser-v3
-pkgver=3.2.1453.0
+pkgver=3.2.1815.1
 pkgrel=1
 pkgdesc="龙芯浏览器V3版（基于 Chromium）"
 arch=('x86_64' 'loongarch64')
@@ -10,8 +10,8 @@ license=('unknown')
 conflicts=("lbrowser-v2")
 source_x86_64=("http://ftp.loongnix.cn/browser/${_pkgname}/${pkgver}/amd64/${_pkgname}_${pkgver}-1.stable.amd64.deb")
 source_loongarch64=("http://ftp.loongnix.cn/browser/${_pkgname}/${pkgver}/la64/${_pkgname}_${pkgver}-1.stable.loongarch64.deb")
-sha512sums_x86_64=('77647ae930a0b85de8975c52fbe4f09c4a972c2eb461f9227fd2d6d9c10563fe80156781c3386ddb55a7c1e3b610847475f18ad56c9c099906544b59605269ce')
-sha512sums_loongarch64=('67206b649304c5144afad7325e442eccf0fde08f7417d1a4d2bf592555e6ddbb0e39054ada4597239520d21cb68b44723624defa635db82ad48ddfecfa900f36')
+sha512sums_x86_64=('a5b75c79d6eaf04bf55ef592df8d7d6c2a1c34ce49b34fcfa2bbc431dbee43ba6fe746a97cceee1ad8909657520e9106841421b49898df99649c013237610699')
+sha512sums_loongarch64=('631a1c9c20f0b5da471850ef10942bd0664f2cbc27c5e71cd1b9e1152d111f8d1866baaaa9d6207fb599ed3314549d77742f21aa1aa67fa5113c05b35aee02a9')
 
 package() {
 	cd "${srcdir}"
