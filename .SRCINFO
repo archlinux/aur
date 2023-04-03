@@ -1,7 +1,7 @@
 pkgbase = sweethome3d-3dmodels-blendswap-ccby
 	pkgdesc = Free 3D models advertised on SweetHome3D website
-	pkgver = 1.8
-	pkgrel = 1
+	pkgver = 1.9
+	pkgrel = 2
 	url = http://www.sweethome3d.com/freeModels.jsp
 	install = sweethome3d-3dmodels-blendswap-ccby.install
 	arch = any
@@ -16,8 +16,7 @@ pkgbase = sweethome3d-3dmodels-blendswap-ccby
 	optdepends = sweethome3d-3dmodels-trees: More 3D models
 	optdepends = sweethome3d-textures-contributions: More textures
 	optdepends = sweethome3d-textures-scopia: More textures
-	source = http://prdownloads.sourceforge.net/sweethome3d/3DModels-BlendSwap-CC-BY-1.8.zip
-	sha1sums = 46fc71c28d656fc98b351bc8323ad7e6f50ca53e
+	source = http://prdownloads.sourceforge.net/sweethome3d/3DModels-BlendSwap-CC-BY-1.9.zip
+	sha1sums = 3eeb8e8d88e2d5e9996c192bb3bfc42c4fd3b59a
 
 pkgname = sweethome3d-3dmodels-blendswap-ccby
-
