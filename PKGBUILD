@@ -1,7 +1,7 @@
 # Maintainer: Fabio Lenherr <dashie@dashie.org>
 
 pkgname=hyprdock
-pkgver="0.3.1"
+pkgver="0.3.2"
 pkgrel=1
 arch=('x86_64')
 pkgdir="/usr/bin/${pkgname}"
