@@ -1,0 +1,67 @@
+diff --git a/sound/soc/codecs/es8316.c b/../pop-os-linux/sound/soc/codecs/es8316.c
+index 056c3082f..acf21ef59 100644
+--- a/sound/soc/codecs/es8316.c
++++ b/../pop-os-linux/sound/soc/codecs/es8316.c
+@@ -26,10 +26,11 @@
+ /* In slave mode at single speed, the codec is documented as accepting 5
+  * MCLK/LRCK ratios, but we also add ratio 400, which is commonly used on
+  * Intel Cherry Trail platforms (19.2MHz MCLK, 48kHz LRCK).
++ * Ratio 1000 is needed for at least one SKU where MCLK is 48Mhz.
+  */
+-#define NR_SUPPORTED_MCLK_LRCK_RATIOS 6
++#define NR_SUPPORTED_MCLK_LRCK_RATIOS 7
+ static const unsigned int supported_mclk_lrck_ratios[] = {
+-	256, 384, 400, 512, 768, 1024
++	256, 384, 400, 512, 768, 1000, 1024
+ };
+ 
+ struct es8316_priv {
+@@ -465,6 +466,8 @@ static int es8316_pcm_hw_params(struct snd_pcm_substream *substream,
+ 	u8 bclk_divider;
+ 	u16 lrck_divider;
+ 	int i;
++	bool mclk_div_option = false;
++	unsigned int mclk_div = 1;
+ 
+ 	/* Validate supported sample rates that are autodetected from MCLK */
+ 	for (i = 0; i < NR_SUPPORTED_MCLK_LRCK_RATIOS; i++) {
+@@ -477,7 +480,17 @@ static int es8316_pcm_hw_params(struct snd_pcm_substream *substream,
+ 	}
+ 	if (i == NR_SUPPORTED_MCLK_LRCK_RATIOS)
+ 		return -EINVAL;
+-	lrck_divider = es8316->sysclk / params_rate(params);
++
++	mclk_div_option = device_property_read_bool(component->dev,
++						    "everest,mclk-div-by-2");
++	if (mclk_div_option) {
++		snd_soc_component_update_bits(component, ES8316_CLKMGR_CLKSW,
++					      ES8316_CLKMGR_CLKSW_MCLK_DIV,
++					      ES8316_CLKMGR_CLKSW_MCLK_DIV);
++		mclk_div = 2;
++	}
++
++	lrck_divider = es8316->sysclk / params_rate(params) / mclk_div;
+ 	bclk_divider = lrck_divider / 4;
+ 	switch (params_format(params)) {
+ 	case SNDRV_PCM_FORMAT_S16_LE:
+@@ -520,7 +533,7 @@ static int es8316_mute(struct snd_soc_dai *dai, int mute, int direction)
+ }
+ 
+ #define ES8316_FORMATS (SNDRV_PCM_FMTBIT_S16_LE | SNDRV_PCM_FMTBIT_S20_3LE | \
+-			SNDRV_PCM_FMTBIT_S24_LE)
++			SNDRV_PCM_FMTBIT_S24_LE | SNDRV_PCM_FMTBIT_S32_LE)
+ 
+ static const struct snd_soc_dai_ops es8316_ops = {
+ 	.startup = es8316_pcm_startup,
+diff --git a/sound/soc/codecs/es8316.h b/../pop-os-linux/sound/soc/codecs/es8316.h
+index c335138e2..0ff16f948 100644
+--- a/sound/soc/codecs/es8316.h
++++ b/../pop-os-linux/sound/soc/codecs/es8316.h
+@@ -129,4 +129,7 @@
+ #define ES8316_GPIO_FLAG_GM_NOT_SHORTED		0x02
+ #define ES8316_GPIO_FLAG_HP_NOT_INSERTED	0x04
+ 
++/* ES8316_CLKMGR_CLKSW */
++#define ES8316_CLKMGR_CLKSW_MCLK_DIV	0x80
++
+ #endif

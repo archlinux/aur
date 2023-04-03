@@ -1,7 +1,7 @@
 pkgbase=linux-lts-huawei-amd-audio
 pkgver=6.1.21
-pkgrel=1
-pkgdesc='LTS Linux with patch for huawei amd devices from https://github.com/codepayne/linux-sound-huawei'
+pkgrel=2
+pkgdesc='LTS Linux with patch for huawei amd devices from https://github.com/codepayne/pop-os-linux'
 url="https://www.kernel.org/"
 arch=(x86_64)
 license=(GPL2)
@@ -16,6 +16,7 @@ source=(
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-huawei-amd-sound.patch
+  0003-es8316.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -26,7 +27,8 @@ sha256sums=('b33cb1b86ae13441db36f7e8099ff9edb10494bfd141b4efb41bc44bf815d93a'
             'SKIP'
             'e44bf3238033390bc6353957d8b770b9a5a67e7a2aef58b5c07490d158c0a45c'
             '1bd8388fcb6ed4eec46450c65eb7a0889a8c541f164a39e3064633981a7a4a3d'
-            '90fcbdd47c9d11089e3a521b9d9ad131004e101024776d9f52574d4a79581e7f')
+            '533635d950865c160edbd6720174ca45ffbb45374e06b9c08b9a8b709881dce9'
+            'a6b974fb18b1a7e344518c9dd2b3d37d0c10c613dce1176f7581a7e738b0ed3b')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
