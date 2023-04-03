@@ -1,21 +1,19 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=apifox
 pkgname="${_pkgname}-appimage"
-pkgver=2.2.29
+pkgver=2.2.30
 pkgrel=1
 pkgdesc="Apifox=Postman+Swagger+Mock+JMeter.API 文档、API 调试、API Mock、API 自动化测试"
 arch=('x86_64')
 url="https://www.apifox.cn/"
-license=('unknow')
+license=('custom')
 conflicts=("${_pkgname}")
 providers=("${_pkgname}")
-depends=(hicolor-icon-theme zlib glibc)
+depends=('hicolor-icon-theme' 'zlib' 'glibc')
 options=(!strip)
 _install_path="/opt/appimages"
-source=(
-  "${_pkgname}-${pkgver}.zip::https://cdn.apifox.cn/download/Apifox-linux-latest.zip"
-)
-sha256sums=('d00625c43fc8b42c562e7b0ff8c4419472177b2f91e6e3030958bce0ebf9a7d2')
+source=("${_pkgname}-${pkgver}.zip::https://cdn.apifox.cn/download/Apifox-linux-latest.zip")
+sha256sums=('7a4c9992e93db98d7e370ba1c59dfe6f84601629cceae660e1464dec34d5cbf2')
    
 prepare() {
     chmod a+x "Apifox.AppImage"
