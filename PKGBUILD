@@ -1,7 +1,7 @@
 # Maintainer: Alexis BRENON <brenon.alexis+arch at gmail dot com>
 pkgname=sweethome3d-3dmodels-trees
-pkgver=1.8
-pkgrel=1
+pkgver=1.9
+pkgrel=2
 pkgdesc="Free 3D models advertised on SweetHome3D website"
 arch=('any')
 url="http://www.sweethome3d.com/freeModels.jsp"
@@ -17,8 +17,8 @@ optdepends=("sweethome3d: Models rendering"
 "sweethome3d-textures-contributions: More textures"
 "sweethome3d-textures-scopia: More textures")
 install="$pkgname.install"
-source=("http://prdownloads.sourceforge.net/sweethome3d/3DModels-Trees-1.8.zip")
-sha1sums=("9b5dee68a4f21c92e74b45ff7f26da8a31affd8f")
+source=("http://prdownloads.sourceforge.net/sweethome3d/3DModels-Trees-1.9.zip")
+sha1sums=("289c28ef5b389932b4d839050446ff58effa6ab2")
 
 package() {
     mkdir -p $pkgdir/usr/share/eteks/sweethome3d/furniture/3dmodels-trees
