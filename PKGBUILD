@@ -1,6 +1,6 @@
 # Maintainer: Rayr https://rayr.ml/LinkInBio/
 pkgname=discord-rpc-cli
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 pkgdesc="A Discord RPC cli client written purely in Rust"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/Rayrsn/Discord-RPC-cli"
 license=('GPL')
 makedepends=('cargo')
 source=("https://github.com/Rayrsn/Discord-RPC-cli/archive/refs/tags/V$pkgver.zip")
-md5sums=('2a4b5488c83b9e9685545f74d9566da3')
+md5sums=('0afa123982c2bf0b8a8da7cdc1f411d0')
 build() {
     cd "Discord-RPC-cli-$pkgver"
     cargo build --release
