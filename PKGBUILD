@@ -1,7 +1,7 @@
 # Maintainer: Mathias Nedrebø <mathias.nedrebo@zivid.com>
 
 pkgname=zivid-genicam
-pkgver='2.8.1+dd4dffea_1'
+pkgver='2.9.0+4dbba385_1'
 pkgrel=1
 pkgdesc='Defining the Future of 3D Machine Vision'
 arch=('x86_64')
@@ -14,8 +14,8 @@ provides=()
 
 groups=(zivid-all)
 
-source=(https://www.zivid.com/hubfs/softwarefiles/releases/2.8.1+dd4dffea-1/u18/zivid-genicam_2.8.1+dd4dffea-1_amd64.deb)
-sha256sums=(d950573ee1f9133803642d2aa081e13a5097a41678bd1b9abfee1e2920bb0114)
+source=(https://zivpublicdownloads.blob.core.windows.net/zividpublicdownloads/releases/2.9.0+4dbba385-1/u18/zivid-genicam_2.9.0+4dbba385-1_amd64.deb)
+sha256sums=(e50163f0be41f8d0f352de197482f5c716565341793439d9c9c426fb31cd5c8b)
 
 options=(!strip)
 
