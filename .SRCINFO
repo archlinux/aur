@@ -1,4 +1,4 @@
-pkgbase = pipelight
+pkgbase = pipelight-git
 	pkgdesc = A Rust based quick automation tool
 	pkgver = 0.4.26
 	pkgrel = 1
