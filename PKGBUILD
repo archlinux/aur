@@ -3,7 +3,7 @@
 pkgname=('lib32-mangohud' 'lib32-mangoapp')
 pkgbase=lib32-mangohud
 pkgver=0.6.8+134+g80d394c
-pkgrel=1
+pkgrel=2
 _imgui_ver=1.81
 _spdlog_ver=1.8.5
 _vulkan_ver=1.2.158
@@ -76,8 +76,6 @@ package_lib32-mangohud() {
   replaces=("$pkgname-x11" "$pkgname-wayland")
 
   meson install --tags runtime -C build --destdir "$pkgdir"
-
-  rm -rf "$pkgdir/usr/share/"
 }
 
 package_lib32-mangoapp() {
@@ -85,6 +83,4 @@ package_lib32-mangoapp() {
   depends=('lib32-mangohud')
 
   meson install --tags mangoapp -C build --destdir "$pkgdir"
-
-  rm -rf "$pkgdir/usr/share/"
 }
