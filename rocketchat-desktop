@@ -1,2 +1,2 @@
 #!/bin/sh
-exec electron /usr/lib/rocketchat-desktop "$@"
+exec electron21 /usr/lib/rocketchat-desktop "$@"

@@ -4,7 +4,7 @@
 # Contributor: sum01 <sum01@protonmail.com>
 
 pkgname=rocketchat-desktop
-pkgver=3.9.0
+pkgver=3.9.1
 pkgrel=1
 pkgdesc='Rocket.Chat Native Cross-Platform Desktop Application via Electron'
 arch=('any')
@@ -18,13 +18,13 @@ changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver/$pkgname-$pkgver.tar.gz"
         rocketchat-desktop
         rocketchat-desktop.desktop)
-sha256sums=('42ebea08de48ea6ed668f2e5d9d6c8f7d25f9070c874a1376be2011ff4385e6f'
-            '5fe8f552b4ac1917a1bb08e86f957e9b892220a2aab59b88e8256e2e092e1b1c'
+sha256sums=('8cd59f3f3e6ad72a98091780b1e4946921ad7759fb2db6340b8d74fb3deb2e58'
+            '1333c748e97f358d46d46f8b3808b74ccfc520f6bcd30aaf704b10b3512c9f21'
             '31fae4f98a61a774f84030fd43d2ef92c7633740dc5aa55967a21d0e29ea621a')
 # validpgpkeys=('9EA06BE6FD613A03') # Tasso Evangelista
 
 prepare() {
-    _ver="$(</usr/lib/"$_electron"/version)"
+    _ver="$(</usr/lib/${_electron}/version)"
     cd "Rocket.Chat.Electron-$pkgver"
     yarn install
     yarn upgrade "electron@$_ver"
