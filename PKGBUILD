@@ -3,6 +3,7 @@
 pkgname='quikc'
 pkgver='0.5.3'
 pkgrel='1'
+url="https://github.com/Ramenu/$pkgname"
 pkgdesc='A minimalistic, safety-focused build system for C/C++'
 arch=('x86_64')
 makedepends=('cargo')
