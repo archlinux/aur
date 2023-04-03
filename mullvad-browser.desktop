@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Mullvad Browser
+GenericName=Web Browser
+Comment=Mullvad Browser is +1 for privacy and −1 for mass surveillance
+Categories=Network;WebBrowser;Security;
+Exec=mullvad-browser %U
+Icon=web-browser
+StartupWMClass=Mullvad Browser
+
