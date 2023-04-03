@@ -2,7 +2,7 @@
 # Previous maintainer: T. Jameson Little <t.jameson.little@gmail.com>
 
 pkgname=geckodriver-bin
-pkgver=0.32.2
+pkgver=0.33.0
 pkgrel=1
 pkgdesc="WebDriver for Firefox"
 arch=('i686' 'x86_64' 'aarch64')
@@ -13,11 +13,11 @@ conflicts=('geckodriver')
 source_i686=("https://github.com/mozilla/geckodriver/releases/download/v${pkgver}/geckodriver-v${pkgver}-linux32.tar.gz"{,.asc})
 source_x86_64=("https://github.com/mozilla/geckodriver/releases/download/v${pkgver}/geckodriver-v${pkgver}-linux64.tar.gz"{,.asc})
 source_aarch64=("https://github.com/mozilla/geckodriver/releases/download/v${pkgver}/geckodriver-v${pkgver}-linux-aarch64.tar.gz"{,.asc})
-sha256sums_i686=('adc594696c6364d6068a27ba74c22650f3fa1f02cfb824123b439f17443d5577'
+sha256sums_i686=('71f4e7ef229ce7964afcee82750a910e4bdd3dd0ec1d4b155c62c77903439f91'
                  'SKIP')
-sha256sums_x86_64=('1eab226bf009599f5aa1d77d9ed4c374e10a03fd848b500be1b32cefd2cbec64'
+sha256sums_x86_64=('5f5e89bb31fe5f55f963f56ef7e55a5c8e9dc415d94b1ddc539171a327b8e6c4'
                    'SKIP')
-sha256sums_aarch64=('abe7aa14104eacd451d06993c024b4cdb32bbded476230ae7e1c349b93b5601c'
+sha256sums_aarch64=('00325caac5cbd9a45b4c5d1733cfdbeb43d0629f6cc5f5be909f23109548f88f'
                     'SKIP')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353')  # Mozilla Software Releases <release@mozilla.com>
 
