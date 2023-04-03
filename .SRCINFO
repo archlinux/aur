@@ -1,4 +1,4 @@
-pkgbase = nomad-device-nvidia-bin
+pkgbase = nomad-device-nvidia
 	pkgdesc = Nomad device driver for Nvidia GPU
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -11,13 +11,7 @@ pkgbase = nomad-device-nvidia-bin
 	license = MPL2
 	provides = nomad-device-nvidia
 	options = !strip
-	source_i686 = https://releases.hashicorp.com/nomad-device-nvidia/1.0.0/nomad-device-nvidia_1.0.0_linux_386.zip
-	sha256sums_i686 = 70f9096deee98bcf3adc68e6e032be45e93153e9822a17965cbba5d1b555d9db
-	source_x86_64 = https://releases.hashicorp.com/nomad-device-nvidia/1.0.0/nomad-device-nvidia_1.0.0_linux_amd64.zip
-	sha256sums_x86_64 = 74646b955c7ed6d4177e9c4f394d3153b1e196fad5ce5201ed2a3a5aca52a47d
-	source_arm = https://releases.hashicorp.com/nomad-device-nvidia/1.0.0/nomad-device-nvidia_1.0.0_linux_arm.zip
-	sha256sums_arm = 6bfdc3d8492dde6cf65ae7968eafffebf203b76697faf98b49f8edf761697903
-	source_aarch64 = https://releases.hashicorp.com/nomad-device-nvidia/1.0.0/nomad-device-nvidia_1.0.0_linux_arm64.zip
-	sha256sums_aarch64 = 97853a37df92282b19befcc47851ea661069622f37ca4c19d7be32f381c3cacd
+	source = nomad-device-nvidia-1.0.0.tar.gz::https://github.com/hashicorp/nomad-device-nvidia/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = c08e2735df78c3a02c6e2573a62150c0b905362757a0a8b5bbc5a3ea12901ccd
 
-pkgname = nomad-device-nvidia-bin
+pkgname = nomad-device-nvidia
