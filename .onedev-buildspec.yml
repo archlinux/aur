@@ -26,9 +26,19 @@ jobs:
     withLfs: false
     force: false
     condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
+  - !CommandStep
+    name: Push tags
+    runInContainer: false
+    interpreter: !DefaultInterpreter
+      commands:
+      - git push --tags
+    useTTY: false
+    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
   triggers:
   - !BranchUpdateTrigger
     branches: master
+    projects: polarrepo/reposilite
+  - !TagCreateTrigger
     projects: polarrepo/reposilite
   retryCondition: never
   maxRetries: 3
