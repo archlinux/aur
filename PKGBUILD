@@ -1,7 +1,7 @@
 # Maintainer: Ernesto Castellotti <erny.castell@gmail.com>
 
 pkgname=blivet-gui-git
-pkgver=2.4.0.1.r56.gfb5726a
+pkgver=2.4.1.r5.gf2c954c
 pkgrel=1
 pkgdesc='GUI tool for storage configuration'
 arch=('any')
