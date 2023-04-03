@@ -1,6 +1,6 @@
 pkgbase = cni-plugins-nftables-git
 	pkgdesc = CNI plugins compatible with nftables
-	pkgver = v1.0.9.r0.ge25d348
+	pkgver = 1.0.12.r0.g5a16b82
 	pkgrel = 1
 	url = https://github.com/greenpau/cni-plugins
 	arch = x86_64

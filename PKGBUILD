@@ -2,7 +2,7 @@
 
 _pkgname=cni-plugins-nftables
 pkgname="${_pkgname}-git"
-pkgver=v1.0.9.r0.ge25d348
+pkgver=1.0.12.r0.g5a16b82
 pkgrel=1
 pkgdesc='CNI plugins compatible with nftables'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare(){
@@ -46,4 +46,6 @@ package() {
   install -Dm755 build/cni-nftables-firewall "$pkgdir"/usr/lib/cni/cni-nftables-firewall
   install -Dm755 build/cni-nftables-portmap  "$pkgdir"/opt/cni/bin/cni-nftables-portmap
   install -Dm755 build/cni-nftables-firewall "$pkgdir"/opt/cni/bin/cni-nftables-firewall
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
 }
