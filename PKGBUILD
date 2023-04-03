@@ -41,6 +41,7 @@ source=(
   81-edk2-ovmf-ia32-on-x86_64-4m.json
   82-edk2-ovmf-ia32-on-x86_64-csm.json
   82-edk2-ovmf-ia32-on-x86_64-csm-4m.json
+  Revert-ArmVirtPkg-make-EFI_LOADER_DATA-non-executabl.patch
   $pkgbase-202202-brotli.patch
 )
 sha512sums=('SKIP'
@@ -69,6 +70,7 @@ sha512sums=('SKIP'
             'c9dbe7b2b6b8c18b7b8fdfef5bc329d9142c442f2f3dbae3ca4919255dcaf2ab576cd305648228d5dd48040ca3b14f44ee33b05cb6ca13b49e2836947b78ea53'
             '692e5bdefb61ae7b8d6e2063f163e2b68136b2522d606806766186f10c5fae1f7583fd83cda52c235d0d8eb0651e5a711f505021a8d8d949d8dccfce7f0c82ac'
             'c699ad500f24569643a4581f4bb5be0e4a90d160f0b3ae7728cf8e27b39665983b80439ca7b853b1bd9a174c8c123cbaf7ed3cd4a17d6460f4fec670c62a1183'
+            '1dcd12f9c243f47f7cb72642175956a3bc3ef81cd5cd1335e06590549825e8699cf1caf868122d0bc686ff694670d936651825b57c3e36e79ee97358edf7147f'
             'd074c794796d17d77eed7c34201d93d7ef3f1322fe1ea4a2ddd7137fae884d49f94f465ee39cfd8346b026142668a41f5a8671e521409505dd6d002f71c0eebc')
 b2sums=('SKIP'
         'SKIP'
@@ -96,6 +98,7 @@ b2sums=('SKIP'
         '0c1e145109de9a25339633b563e47f6c09ea314f636023d09a58559a499dd0bd283a45e050fc99fe34c4d712bd00a035064fa8406734d57029c67b9adb4b11ce'
         '0ad956e3e662909abafd0b9a2b7ef12e35a8832183cb41e17dcafaa4f5db1e47ef20b3040268644daebb24f66c18b99de07f41e7d62089691c07de688a08f05a'
         'a44b5ffc35d78925ac7362ec2cf75475d02e05ed0b9e8771c909d090187aaff7436e8d856d58b8a56827990006b813c63318b60a8a7780844c829a2b13a502cf'
+        '4aabdde26038eefe6c5c15150cc7c54e0d2aa1c8d145bf82de33ab7e28a95979c3323594bb95d8083ce3217c81f69c651fc9b80cec9336b290d3d466bc88b5da'
         '644c071dc4fbbccaa64b0b1babcad60395ffce1a7a317a6f5380eff44cbb886be5f29156a8e967ab02b508a33954fcf5602606b43362cc3bb1936a8cfc3a3c07')
 _arch_list=(ARM AARCH64 IA32 X64)
 _build_type=RELEASE
@@ -104,6 +107,8 @@ _build_plugin=GCC5
 prepare() {
   # patch to be able to use brotli 1.0.9
   patch -Np1 -d $pkgbase -i ../$pkgbase-202202-brotli.patch
+
+  patch -Np1 -d $pkgbase -i ../Revert-ArmVirtPkg-make-EFI_LOADER_DATA-non-executabl.patch
 
   cd $pkgbase
 
