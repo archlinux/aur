@@ -3,9 +3,9 @@
 # Contributor: Michael J. Pento <mjpento@verizon.net>
 # Contributor: grimi <grimi at poczta dot fm>
 pkgname=matcha-gtk-theme
-_pkgver=2022-11-15
+_pkgver=2023-04-03
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="A flat design theme for GTK 3, GTK 2 and GNOME Shell"
 arch=('any')
 url="https://vinceliuice.github.io/theme-matcha.html"
@@ -16,17 +16,14 @@ optdepends=('gtk-engine-murrine: GTK2 theme support'
 options=('!strip')
 install="$pkgname.install"
 source=("$pkgname-$_pkgver.tar.gz::https://github.com/vinceliuice/Matcha-gtk-theme/archive/$_pkgver.tar.gz")
-sha256sums=('bd6f46607fc5c7ff97a7b5ee8cb061bc4dfc45978c86181247da163c0a3d3968')
+sha256sums=('0d56e41402d4b8b84568a77f31851dd26536467f7ac899aa8fad23862e5a1fd6')
 
 package() {
   cd "Matcha-gtk-theme-$_pkgver"
   install -d "$pkgdir/usr/share/themes"
   ./install.sh -d "$pkgdir/usr/share/themes/"
 
-  # Plank theme
-  install -Dm644 src/plank/dock.theme -t "$pkgdir/usr/share/plank/themes/Matcha/"
-
-  # Firefox & Gedit theme
-  install -d "$pkgdir/usr/share/doc/$pkgname"
-  cp -r src/extra/* "$pkgdir/usr/share/doc/$pkgname/"
+  # Install script fails to honor dest DIR for GTKSV_DIR, install files manually
+  install -Dm644 src/extra/gtksourceview/*.xml -t \
+    "$pkgdir/usr/share/gtksourceview-3.0/styles/"
 }

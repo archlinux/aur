@@ -1,13 +1,14 @@
 post_install() {
   echo ""
-  echo "Firefox theme"
-  echo "See /usr/share/doc/matcha-gtk-theme/firefox/README.md"
+  echo "To force Libadwaita appliations to use the gtk-4.0 theme,"
+  echo "symlink the gtk-4.0 theme to config folder"
+  echo "(replace Matcha-dark-sea with chosen theme variant):"
   echo ""
-  echo "Gedit theme"
-  echo "See /usr/share/doc/matcha-gtk-theme/gedit/README.md"
+  echo "mkdir -p ~/.config/gtk-4.0/"
+  echo "ln -sf /usr/share/themes/Matcha-dark-sea/gtk-4.0/{assets,gtk.css,gtk-dark.css} ~/.config/gtk-4.0/"
   echo ""
 }
 
 post_upgrade() {
-  post_install
+   post_install
 }
