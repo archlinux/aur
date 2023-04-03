@@ -2,8 +2,8 @@
 # Co-Maintainer: Ranieri Althoff <ranisalt+aur at gmail dot com>
 pkgname=('lib32-mangohud' 'lib32-mangoapp')
 pkgbase=lib32-mangohud
-pkgver=0.6.8
-pkgrel=4
+pkgver=0.6.8+134+g80d394c
+pkgrel=1
 _imgui_ver=1.81
 _spdlog_ver=1.8.5
 _vulkan_ver=1.2.158
@@ -12,7 +12,7 @@ url="https://github.com/flightlessmango/MangoHud"
 license=('MIT')
 makedepends=('git' 'glfw-x11' 'glslang' 'lib32-cmocka' 'lib32-dbus' 'lib32-libglvnd'
              'libxnvctrl' 'meson' 'nlohmann-json' 'python-mako')
-_commit=41b0cf117da681460cf383a786eb5d19916b8f8a  # master
+_commit=80d394c0cdb8d7c808aa2b7855e2a2f60e8d9a64  # master
 _cmocka_commit=59dc0013f9f29fcf212fe4911c78e734263ce24c
 source=("git+https://github.com/flightlessmango/MangoHud.git#commit=${_commit}"
         'git+https://github.com/flightlessmango/minhook.git'
