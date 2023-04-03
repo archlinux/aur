@@ -1,13 +1,13 @@
 # Maintainer: Slenderchat <slenderchat@sl-chat.ru>
 pkgname='https-dns-proxy-git'
-pkgver=r192.3402e45
-pkgrel=3
+pkgver=r288.58bdca9
+pkgrel=1
 arch=('x86_64')
 url='https://github.com/aarond10/https_dns_proxy'
 license=('MIT')
 makedepends=('cmake' 'c-ares' 'libev')
 depends=('keyutils' 'krb5' 'libunistring' 'zlib' 'zstd' 'e2fsprogs' 'openssl' 'libpsl' 'libssh2' 'libidn2' 'libnghttp2' 'curl' 'c-ares' 'libev')
-source=('git://github.com/aarond10/https_dns_proxy.git' https_dns_proxy.service)
+source=('git+https://github.com/aarond10/https_dns_proxy.git' https_dns_proxy.service)
 sha512sums=('SKIP' '707b5451848d0a8f1859d769271e8822d2408f23a5ddc5ede415995911547171260123d3356d87b2fd0500861ae57287362a8df2c150be61e0352ea2c10ebf49')
 pkgver() {
 	cd "${srcdir}/https_dns_proxy"
