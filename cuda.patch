@@ -1,0 +1,11 @@
+diff --color --unified --recursive --text openeb.orig/sdk/modules/core/cpp/samples/metavision_event_frame_gpu_loading/CMakeLists.txt openeb.new/sdk/modules/core/cpp/samples/metavision_event_frame_gpu_loading/CMakeLists.txt
+--- openeb.orig/sdk/modules/core/cpp/samples/metavision_event_frame_gpu_loading/CMakeLists.txt	2023-04-03 14:26:30.771286242 +0200
++++ openeb.new/sdk/modules/core/cpp/samples/metavision_event_frame_gpu_loading/CMakeLists.txt	2023-04-03 14:24:55.660978587 +0200
+@@ -15,6 +15,7 @@
+ 
+ check_language(CUDA)
+ if (CMAKE_CUDA_COMPILER)
++	find_package(CUDA REQUIRED)
+     enable_language(CUDA)
+ 
+     add_library(cuda_event_frame_convert STATIC ${cuda_source_files})

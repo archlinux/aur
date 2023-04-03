@@ -12,9 +12,14 @@ pkgbase = openeb-git
 	depends = libusb
 	depends = glew
 	depends = glfw
+	depends = hdf5
 	depends = ffmpeg
+	depends = openscenegraph
+	depends = cuda
 	depends = libcanberra
 	source = openeb::git+https://github.com/prophesee-ai/openeb
+	source = cuda.patch
 	sha256sums = SKIP
+	sha256sums = f0cc6beff220d69e629d01ab84923cb3abc895a4df716dd0a9a07a1c140800bc
 
 pkgname = openeb-git
