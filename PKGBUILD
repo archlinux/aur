@@ -5,6 +5,7 @@ pkgver="0.3.2"
 pkgrel=1
 arch=('x86_64')
 pkgdir="/usr/bin/${pkgname}"
+url="https://github.com/DashieTM/hyprdock"
 pkgdesc="An automatic docking tool for hyprland."
 depends=('gtk3' 'gtk-layer-shell')
 makedepends=('rust' 'gendesk' 'git')
