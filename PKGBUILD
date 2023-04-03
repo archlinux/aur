@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=optivorbis
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Application for lossless, format-preserving, two-pass optimization and repair of Vorbis data"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('AGPL3' 'BSD')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/OptiVorbis/OptiVorbis/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1bc9c9227f3e6acae080a02892f880dd95e4ab855d53406fe1795d20dc017cff')
+sha256sums=('7d3431f689b04c8034d4cf9e33a163e99f2be60fef8e3b4e74ab99ff2a82960a')
 
 
 prepare() {
