@@ -32,5 +32,5 @@ package() {
     cd "${srcdir}/eSearch-${pkgver}-beta.${pkgrel}-linux-x64"
     ln -s "/usr/lib/esearch/assets/e-search.desktop" "${pkgdir}/usr/share/applications/"
     cp --no-preserve=mode,ownership "resources/app/assets/icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/e-search.svg"
-    cp -r --no-preserve=mode,ownership "resources/app" "${pkgdir}/usr/lib/esearch"
+    cp -r --no-preserve=ownership "resources/app" "${pkgdir}/usr/lib/esearch"
 }
