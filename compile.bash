@@ -17,10 +17,11 @@ prepare() {
 		venv
 	fi
 
-	echo "Installing autobuild..."
+	echo "Installing build toolchain..."
 	pip3 install --upgrade certifi --quiet
 	pip3 install --upgrade llbase --quiet
 	pip3 install --no-cache --upgrade autobuild --quiet
+	pip3 install --upgrade cmake ninja
 }
 
 build() {

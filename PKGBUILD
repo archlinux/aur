@@ -12,7 +12,7 @@ arch=('x86_64')
 url=https://www.alchemyviewer.org
 license=('LGPL')
 depends=(dbus-glib glu gtk3 libgl libiconv libidn libjpeg-turbo libpng libxss libxml2 mesa nss openal sdl2 vlc zlib)
-makedepends=('cmake' 'gcc' 'lld' 'python-virtualenv' 'python-pip' 'git' 'boost' 'xz' 'ninja')
+makedepends=('gcc' 'python-virtualenv' 'python-pip' 'git' 'xz')
 optdepends=(
 	'alsa-lib: ALSA support'
 	'freealut: OpenAL support'
@@ -31,7 +31,7 @@ install=alchemy.install
 source=("${pkgname}"::'git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch='"${AL_BRANCH_OVERRIDE:-main}"
 	'compile.bash')
 sha256sums=('SKIP'
-            '152dba0c45a146e3dfb6801af9885820414f271dbf48b1ae6f8603143a2e83f7')
+            '02c3696c9931b06d1a04c256fac4022bb669441b821979c012aed67d4f0279ab')
 
 pkgver() {
 	cd "${pkgname}" || exit 1
