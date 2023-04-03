@@ -3,7 +3,7 @@
 
 pkgname=offline-cheatbreaker
 _pkgname=offline-cheatbreaker
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc='Continuation of the abandoned PvP modpack for Minecraft called CheatBreaker'
 url=https://offlinecheatbreaker.com
@@ -13,7 +13,7 @@ depends=(fuse xorg-xrandr)
 options=(!strip)
 _appimage="Offline_CheatBreaker.AppImage"
 source=("https://github.com/Offline-CheatBreaker/Launcher/releases/download/${pkgver}/Offline_CheatBreaker.AppImage")
-sha256sums=('5ae205bbda1b0000a1f0aad565f578f5b29fcc3ade376a3787c44491b03a6e0e')
+sha256sums=('151a37f9536f43595ce31b554e54c428e9c2818dcd8c1b739a9f4f3b14a681fd')
 
 prepare() {
 	chmod +x "${_appimage}"
