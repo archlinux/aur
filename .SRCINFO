@@ -1,7 +1,7 @@
 pkgbase = vvvvvv-git
 	pkgdesc = A retro-styled 2D platformer
-	pkgver = 20201123.9f5f697
-	pkgrel = 2
+	pkgver = 20230402.c88f249f
+	pkgrel = 1
 	url = https://thelettervsixtim.es/
 	install = vvvvvv-git.install
 	arch = i686
@@ -14,13 +14,22 @@ pkgbase = vvvvvv-git
 	provides = vvvvvv
 	conflicts = vvvvvv
 	source = git+https://github.com/TerryCavanagh/VVVVVV.git
+	source = git+https://github.com/lvandeve/lodepng
+	source = git+https://github.com/icculus/physfs/
+	source = git+https://github.com/leethomason/tinyxml2/
+	source = git+https://github.com/FNA-XNA/FAudio
+	source = git+https://github.com/Mashpoe/c-hashmap
 	source = vvvvvv.desktop
 	source = vvvvvv.sh
 	source = https://thelettervsixtim.es/makeandplay/data.zip
 	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = 8c704e92e6abc8172d7d9fe726f1a0bba4b8630682745d6daf1f34ce12e0e3e4
 	sha256sums = 883913125c4630d16fe0081d9a96bf65f2bc08ace7fa345613669d827a8ea7c1
-	sha256sums = 6fae3cdec06062d05827d4181c438153f3ea3900437a44db73bcd29799fe57e0
+	sha256sums = c767809594f6472da9f56136e76657e38640d584164a46112250ac6293ecc0ea
 
 pkgname = vvvvvv-git
-
