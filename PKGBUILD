@@ -13,7 +13,6 @@ license=('MIT')
 makedepends=('git' 'glfw-x11' 'glslang' 'lib32-cmocka' 'lib32-dbus' 'lib32-libglvnd'
              'libxnvctrl' 'meson' 'nlohmann-json' 'python-mako')
 _commit=1b3f8b29bc434c2f52fcbf371c893cf0e99f8f5c  # master
-_cmocka_commit=59dc0013f9f29fcf212fe4911c78e734263ce24c
 source=("git+https://github.com/flightlessmango/MangoHud.git#commit=${_commit}"
         'git+https://github.com/flightlessmango/minhook.git'
         "https://github.com/ocornut/imgui/archive/refs/tags/v${_imgui_ver}/imgui-${_imgui_ver}.tar.gz"
