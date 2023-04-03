@@ -1,5 +1,8 @@
 makepkg
 makepkg --printsrcinfo > .SRCINFO 
+git commit
 git push
 
 # Increment package rel if the update is important
+# Or:
+git push ssh://aur@aur.archlinux.org/deepqt.git 
