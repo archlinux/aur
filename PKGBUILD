@@ -2,7 +2,7 @@
 
 pkgname=cider
 _pkgname=Cider
-_pkgbranch=stable
+_pkgbranch=main
 pkgver=1.6.0
 pkgrel=5
 pkgdesc="Project Cider. An open-source Apple Music client built from the ground up with Vue.js and Electron. Compiled from the GitHub repositories ${_pkgbranch} branch."
@@ -10,7 +10,7 @@ arch=("armv7h" "i686" "x86_64")
 url="https://github.com/ciderapp/${_pkgname}.git"
 license=("GPL")
 depends=('gtk3' 'nss')
-makedepends=('git' 'npm' 'pnpm' 'python')
+makedepends=('git' 'npm' 'pnpm' 'python' 'yarn')
 optdepends=('libnotify: Playback notifications')
 source=(
     "git+https://github.com/CiderApp/${_pkgname}.git#branch=${_pkgbranch}"
@@ -29,10 +29,8 @@ build() {
     cd "${srcdir}/${_pkgname}"
     git submodule update --init --recursive
 
-    echo "store-dir=.pnpm-store" >>.npmrc
-
     echo "Building ${_pkgname} on v${pkgver} : [Install Build Dependencies] | Build | Done"
-    pnpm install --frozen-lockfile
+    pnpm install
 
     echo "Building : Install Build Dependencies | [Build] | Done"
     pnpm dist --linux dir
