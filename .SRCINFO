@@ -1,13 +1,15 @@
 pkgbase = python-pyprojroot
 	pkgdesc = Find project root paths and return relative project files
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/chendaniely/pyprojroot
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
-	source = python-pyprojroot-0.2.0.tar.gz::https://files.pythonhosted.org/packages/source/p/pyprojroot/pyprojroot-0.2.0.tar.gz
-	sha512sums = 0385909b4d8a9c0a7ff10a1ef68f263fc81833ce5b1e8451a8cc5530ea6ba9c6a96d734f7b7661b3b4f1bfb51dc4d4a7d21b03f8315222a5f82111ef5b2b7c2e
+	source = python-pyprojroot-0.3.0.tar.gz::https://files.pythonhosted.org/packages/source///-0.3.0.tar.gz
+	sha512sums = 679c6a4e228ec418fdd0196ba5620df6e55bdaf446e5037eb0ab3b097610543298f9f1802ebbaa9d244c6f463b5548778b00923374970fd15ac001a98c6c8a54
 
 pkgname = python-pyprojroot
