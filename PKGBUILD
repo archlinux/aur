@@ -1,7 +1,7 @@
 # Maintainer: Alexis BRENON <brenon.alexis+arch at gmail dot com>
 pkgname=sweethome3d-3dmodels-scopia
-pkgver=1.8
-pkgrel=1
+pkgver=1.9
+pkgrel=2
 pkgdesc="Free 3D models advertised on SweetHome3D website"
 arch=('any')
 url="http://www.sweethome3d.com/freeModels.jsp"
@@ -17,8 +17,8 @@ optdepends=("sweethome3d: Models rendering"
 "sweethome3d-textures-contributions: More textures"
 "sweethome3d-textures-scopia: More textures")
 install="$pkgname.install"
-source=("http://prdownloads.sourceforge.net/sweethome3d/3DModels-Scopia-1.8.zip")
-sha1sums=("045a43f92719f70b34bd53c49aaafe125b49e3b5")
+source=("http://prdownloads.sourceforge.net/sweethome3d/3DModels-Scopia-1.9.zip")
+sha1sums=("1a336437a81576ec9630c822e46502986fc8a426")
 
 package() {
     mkdir -p $pkgdir/usr/share/eteks/sweethome3d/furniture/3dmodels-scopia
