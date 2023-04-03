@@ -1,0 +1,11 @@
+pkgbase = quikc
+	pkgdesc = A minimalistic, safety-focused build system for C/C++
+	pkgver = 0.5.3
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = https://github.com/Ramenu/quikc/archive/refs/tags/v0.5.3.tar.gz
+	b2sums = 9818f42a3888b75160de6c0d32a7e0b6361f5dd1c6a2210a41ba99b5c57aaddd17aa10d1034d91807c455dcc3f374addf115e2ceb67b79697f8e489c62e290df
+
+pkgname = quikc
