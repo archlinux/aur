@@ -1,3 +1,12 @@
+## GE-Proton7-54
+
+* update wine bleeding edge: brings is fall guys eac fix from upstream
+* update vkd3d-proton: brings in some fixes for the last of us, uncharted, and a few more
+* update dxvk
+* protonfixes: Remove deprecated Saints Row 2 fix (thanks Bitwolfies)
+* protonfixes: add fix for Carnage cross (thanks ranplayer)
+* protonfixes: correct Outlaws fix script (thanks Sterophonick)
+
 ## GE-Proton7-53
 
 This is a hotfix that brings the Star Citizen specific EAC patch to upstream. It allows Star Citizen to run without needing to change the /etc/hosts file and does not interfere with EAC for other games.
