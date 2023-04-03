@@ -14,8 +14,8 @@ pkgbase = unciv-bin
 	source = Unciv-4.5.16.jar::https://github.com/yairm210/Unciv/releases/download/4.5.16/Unciv.jar
 	source = Unciv-4.5.16.png::https://raw.githubusercontent.com/yairm210/Unciv/4.5.16/extraImages/Icons/Unciv%20icon%20v5.png
 	source = Unciv-4.5.16.zip::https://github.com/yairm210/Unciv/releases/download/4.5.16/linuxFilesForJar.zip
-	md5sums = 602e279aa0c3cb83935e829fdee6ef55
+	md5sums = 9a61aa9e0b83ce6f7a6a9858092cd9bd
 	md5sums = c3f79bbc7e80620b3cdc4f90f21f4d68
-	md5sums = 5d399969ce845f2c67e858c804dbc722
+	md5sums = b0de1e2c9a55abd9b8d4af4051f59c23
 
 pkgname = unciv-bin
