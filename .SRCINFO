@@ -1,5 +1,5 @@
 pkgbase = harmonyvpktool-bin
-	pkgdesc = An electron-based app for unpacking Respawn VPK files
+	pkgdesc = An electron-based app for unpacking Respawn VPK files (binary release)
 	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/harmonytf/HarmonyVPKTool

@@ -2,7 +2,7 @@
 
 _pkgname=harmonyvpktool
 pkgname=$_pkgname-bin
-pkgdesc="An electron-based app for unpacking Respawn VPK files"
+pkgdesc="An electron-based app for unpacking Respawn VPK files (binary release)"
 pkgver=1.2.0
 pkgrel=1
 arch=('x86_64')
@@ -71,9 +71,9 @@ package() {
   cp -r squashfs-root "$pkgdir/opt/HarmonyVPKTool"
 
   cd squashfs-root
-  ln -fs /opt/HarmonyVPKTool/harmony_vpk_tool $pkgdir/usr/bin/$_pkgname
-  ln -fs /opt/HarmonyVPKTool/harmony_vpk_tool.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
-  ln -fs /opt/HarmonyVPKTool/harmony_vpk_tool.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  ln -s /opt/HarmonyVPKTool/harmony_vpk_tool $pkgdir/usr/bin/$_pkgname
+  ln -s /opt/HarmonyVPKTool/harmony_vpk_tool.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+  ln -s /opt/HarmonyVPKTool/harmony_vpk_tool.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
   find "$pkgdir" | while read -r target; do
     _fix_permissions "$target"
