@@ -1,11 +1,11 @@
 # Maintainer: Charles Vejnar <first name [dot] last name [at] gmail [dot] com>
 
 pkgname=python-labxdb-tools
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="LabxDB tools"
 arch=("any")
-url="https://gitlab.com/vejnar/LabxDB-tools"
+url="https://sr.ht/~vejnar/LabxDB"
 license=("MPLv2")
 depends=('python'
          'python-pyfnutils'
@@ -15,8 +15,8 @@ makedepends=('python-build'
              'python-setuptools'
              'python-setuptools-scm'
              'python-wheel')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/vejnar/LabxDB-tools/archive/v${pkgver}.tar.gz")
-sha1sums=('0359557e3671a6de60a2d4e2f211ce771bd48745')
+source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~vejnar/LabxDB-tools/archive/v${pkgver}.tar.gz")
+sha256sums=('5fbcd424e95e694239a39c8874a31324e47b4d7e1a19353dfd1c67cf96e22033')
 
 build() {
     cd "$srcdir/LabxDB-tools-$pkgver"

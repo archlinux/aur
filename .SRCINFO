@@ -1,8 +1,8 @@
 pkgbase = python-labxdb-tools
 	pkgdesc = LabxDB tools
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
-	url = https://gitlab.com/vejnar/LabxDB-tools
+	url = https://sr.ht/~vejnar/LabxDB
 	arch = any
 	license = MPLv2
 	makedepends = python-build
@@ -13,7 +13,7 @@ pkgbase = python-labxdb-tools
 	depends = python
 	depends = python-pyfnutils
 	depends = python-requests
-	source = python-labxdb-tools-0.6.0.tar.gz::https://github.com/vejnar/LabxDB-tools/archive/v0.6.0.tar.gz
-	sha1sums = 0359557e3671a6de60a2d4e2f211ce771bd48745
+	source = python-labxdb-tools-0.7.0.tar.gz::https://git.sr.ht/~vejnar/LabxDB-tools/archive/v0.7.0.tar.gz
+	sha256sums = 5fbcd424e95e694239a39c8874a31324e47b4d7e1a19353dfd1c67cf96e22033
 
 pkgname = python-labxdb-tools
