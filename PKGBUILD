@@ -11,7 +11,7 @@ depends=(fuse xorg-xrandr)
 options=(!strip)
 _appimage="Offline_CheatBreaker.AppImage"
 source=("https://github.com/Offline-CheatBreaker/Launcher/releases/download/${pkgver}/Offline_CheatBreaker.AppImage")
-md5sums=(SKIP)
+md5sums=('15c126a6077643f7e07d35f3fbca7c00  ./Offline_CheatBreaker.AppImage')
 
 prepare() {
 	chmod +x "${_appimage}"
