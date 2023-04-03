@@ -1,7 +1,7 @@
 pkgbase = python-backupcrawl-git
 	pkgdesc = Crawls through the given directory, and checks which directories are not version controlled.
-	pkgver = 0.1.0.r1.g8d9987f
-	pkgrel = 2
+	pkgver = 0.2.1.r0.g25ec603
+	pkgrel = 1
 	url = https://github.com/corrodedHash/backupcrawl
 	arch = x86_64
 	arch = i686
@@ -10,6 +10,10 @@ pkgbase = python-backupcrawl-git
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-poetry
+	depends = git
+	depends = pacman
+	depends = python
+	depends = python-rich
 	provides = python-backupcrawl
 	conflicts = python-backupcrawl
 	source = python-backupcrawl-git::git+https://github.com/corrodedHash/backupcrawl#branch=main
