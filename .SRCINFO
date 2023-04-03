@@ -1,6 +1,6 @@
 pkgbase = release-plz
 	pkgdesc = Release Rust packages without using the command line
-	pkgver = 0.2.61
+	pkgver = 0.2.62
 	pkgrel = 1
 	url = https://github.com/MarcoIeni/release-plz
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = release-plz
 	depends = curl
 	optdepends = cargo-semver-checks: check for API breaking changes
 	options = !lto
-	source = release-plz-0.2.61.tar.gz::https://github.com/MarcoIeni/release-plz/archive/release-plz-v0.2.61.tar.gz
-	sha512sums = b8eb7750e075e7ca59a1e7a2624c29fb79febc8d49ab826e19bb87c99604662cfa559c8f0a9a257bc499d12d1e5d37788944798ef93eef06b45f7ccfe0135ef2
+	source = release-plz-0.2.62.tar.gz::https://github.com/MarcoIeni/release-plz/archive/release-plz-v0.2.62.tar.gz
+	sha512sums = d92cca9ccd404155e5b0fd3b0ab094c69336afb72608cd1e94b304ba4935202f948c239c079863f8158e9d54437440677d3916adde1cbc932e3e77b4fdf3ba5f
 
 pkgname = release-plz
