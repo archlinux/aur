@@ -3,7 +3,7 @@
 pkgname=("php-pdlib")
 _pkgbase=("pdlib")
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="PDlib - A PHP extension for Dlib"
 arch=('x86_64')
 url="https://github.com/goodspb/pdlib"
@@ -51,7 +51,7 @@ check() {
 
 package_php-pdlib() {
     cd "${srcdir}/${_pkgbase}-${pkgver}"
-    install -Dm644 "modules/pdlib.so" "${pkgdir}/usr/lib/php/modules/pdlib.so"
+    install -Dm744 "modules/pdlib.so" "${pkgdir}/usr/lib/php/modules/pdlib.so"
     # install ini file
     install -Dm644 "../pdlib.ini" "${pkgdir}/etc/php/conf.d/pdlib.ini"
 }
