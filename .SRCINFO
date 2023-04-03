@@ -1,6 +1,6 @@
 pkgbase = python-msgspec
 	pkgdesc = A fast and friendly JSON/MessagePack library, with optional schema validation
-	pkgver = 0.11.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/Fraunhofer-AISEC/gallia
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-msgspec
 	makedepends = python-installer
 	makedepends = git
 	depends = python
-	source = https://github.com/jcrist/msgspec/archive/refs/tags/0.11.0.tar.gz
-	sha256sums = f7b2c258301c8f00a7d49fef5f3f0e58a49b1a0a0eaca67e2804066718affa26
+	source = https://github.com/jcrist/msgspec/archive/refs/tags/0.14.0.tar.gz
+	sha256sums = d53acf64ac48c3f704de59d5b0935e337d2d2d18b04af6934d9bf89d8251e41e
 
 pkgname = python-msgspec
