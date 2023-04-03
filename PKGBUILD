@@ -1,7 +1,7 @@
 # Maintainer: Fabio Lenherr <dashie@dashie.org>
 
 pkgname=hyprdock
-pkgver="0.3.2"
+pkgver="0.3.3"
 pkgrel=1
 arch=('x86_64')
 pkgdir="/usr/bin/${pkgname}"
@@ -10,7 +10,7 @@ pkgdesc="An automatic docking tool for hyprland."
 depends=('gtk3' 'gtk-layer-shell')
 makedepends=('rust' 'gendesk' 'git')
 source=("${pkgver}.tar.gz::https://github.com/DashieTM/Hyprdock/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('be300650baf8b89f01845642991002da122c0245049434ab3aae75006f5ff4f1')
+sha256sums=('691a1445e8fc5bd7b6b5c17c452112292a83b1c1f93420b7a95a1f576f07b7ab')
 
 build() {
   cd hyprdock-${pkgver}
