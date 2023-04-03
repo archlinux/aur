@@ -85,16 +85,11 @@ build() {
 		fi
 	fi
 	export AUTOBUILD_CPU_COUNT=$build_jobs
-	AL_ARCH_FLAGS=${AL_ARCH_FLAGS:-'-march=native -mtune=native -w'}
 	AL_CMAKE_CONFIG=(
 		-DLL_TESTS:BOOL=ON
 		-DDISABLE_FATAL_WARNINGS=ON
-		-DUSE_LTO:BOOL=OFF
+		-DUSE_LTO:BOOL=ON
 		-DVIEWER_CHANNEL="Alchemy Test"
-		-DCMAKE_C_FLAGS="$AL_ARCH_FLAGS"
-		-DCMAKE_CXX_FLAGS="$AL_ARCH_FLAGS"
-		-DCMAKE_C_COMPILER="${CC:-gcc}"
-		-DCMAKE_CXX_COMPILER="${CXX:-g++}"
 	)
 	# I could not find the documentation on how to handle BUILDENV/OPTION in
 	# makepkg.conf. If you are reading this and know where it is,
