@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=DbSchema
 Comment=Relational Data Browse, Query Builder, SQL Editor, schema deployment and synchronization.
-Icon=/opt/dbschema/config/appearance/images/icon.png
+Icon=/opt/dbschema/forms/img/favicon.ico
 Exec=/usr/bin/dbschema
 Terminal=false
 Type=Application
