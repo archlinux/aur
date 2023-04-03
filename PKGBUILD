@@ -1,11 +1,10 @@
 # Maintainer: 7Ji <pugokughin@gmail.com>
 
 _desc="flippy's AArch64-focused fork aiming to increase usability. Prebuilt by ophub."
-_pkgver_main=6.1.18
-_pkgver_suffix=flippy-82+
+_pkgver_main=6.1.22
+_pkgver_suffix=ophub
 _pkgver_uname="${_pkgver_main}-${_pkgver_suffix}"
 _url_repo="https://github.com/ophub/kernel"
-_url_raw="${_url_repo}/raw/main/pub/stable/${_pkgver_main}"
 _pkgbase=linux-aarch64-flippy
 
 pkgbase="${_pkgbase}-bin"
@@ -22,25 +21,22 @@ arch=('aarch64')
 url="${_url_repo}"
 license=('GPL2')
 options=(!strip)
+_srcname="${_pkgver_main}.tar.gz"
 source=(
-  "${_url_raw}/boot-${_pkgver_uname}.tar.gz"
-  "${_url_raw}/dtb-allwinner-${_pkgver_uname}.tar.gz"
-  "${_url_raw}/dtb-amlogic-${_pkgver_uname}.tar.gz"
-  "${_url_raw}/dtb-rockchip-${_pkgver_uname}.tar.gz"
-  "${_url_raw}/header-${_pkgver_uname}.tar.gz"
-  "${_url_raw}/modules-${_pkgver_uname}.tar.gz"
+  "${_url_repo}/releases/download/kernel_stable/${_srcname}"
 )
-noextract=("${source[@]##*/}")
+noextract=(
+  "${_srcname}"
+)
 sha256sums=(
-  '2e8ffb50302295f2951d1b64eae193872c0a4db0e60675b31c03795e9d03c187'
-  'f28e12c38b78af423b73d3aec4524fce831ac5a57b2ea032b9b92e9a55b16f99'
-  '7fe4b3fe880ee5d48e68a281da118493276ae07e8c4956bf7941bdaa158794e3'
-  '6032bbe10cad9ec75a496c8d4593b9784e549622aa4ee7e857ac40653915efc4'
-  'cb8cf1d488967e0c564f854acef391d348eff5b99313fbc1d9f6316483dc53b9'
-  'c9b1aa23c0635288d9be7a6be992b40bb20e98c26053e3738359766534d4eb69'
+  '5e91a9977449fe8ecab420fd52b8474971b20e96d48ebff47dfcb0c30526d246'
 )
 
 _dtb_common_pkg="${_pkgbase}-dtb"
+
+prepare() {
+  tar -C "${srcdir}" -xvf "${srcdir}/${_srcname}" --strip-components=1
+}
 
 package_linux-aarch64-flippy-bin() {
   pkgdesc="The Linux Kernel and module - ${_desc}"
