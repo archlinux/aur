@@ -2,6 +2,7 @@
 # vim: set ft=sh ts=4 sw=4 et:
 
 major_version=12
+vers=
 
 set -e
 . /usr/share/makepkg/util/util.sh
@@ -10,13 +11,18 @@ warning "This script calls out to github's API to determine the latest"
 warning "version and build number. Press Ctrl+C within 2 seconds to abort."
 sleep 2
 
-msg "Getting latest Teleport release"
-gh_url="https://api.github.com/repos/gravitational/teleport/git/matching-refs/tags/v${major_version}."
-vers=$(curl -SsLl "${gh_url}" | jq -r 'reverse | .[0].ref' | sed -re 's;^refs/tags/v;;')
-if ! [[ "$vers" =~ ^[0-9]+(\.[0-9]+)+$ ]]; then
-	echo "Version string "\""${vers}"\"" doesn't look like a valid version number" >&2
-	exit 1
+if [ -n "$1" ]; then
+    vers="$1"; shift
+else
+    msg "Getting latest Teleport release"
+    gh_url="https://api.github.com/repos/gravitational/teleport/git/matching-refs/tags/v${major_version}."
+    vers=$(curl -SsLl "${gh_url}" | jq -r 'reverse | .[0].ref' | sed -re 's;^refs/tags/v;;')
+    if ! [[ "$vers" =~ ^[0-9]+(\.[0-9]+)+$ ]]; then
+		echo "Version string "\""${vers}"\"" doesn't look like a valid version number" >&2
+		exit 1
+    fi
 fi
+
 msg "Using teleport version: ${vers}"
 
 sed -re "s;^pkgver=.+$;pkgver=${vers};" -i PKGBUILD
