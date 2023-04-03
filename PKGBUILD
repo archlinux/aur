@@ -4,7 +4,7 @@ _pkgname=${pkgname/-bin/}
 _githuborg=skycoin
 pkgdesc="Skywire: Building a new Internet. Skycoin.com"
 pkgver='1.3.7'
-pkgrel='2'
+pkgrel='3'
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
@@ -42,13 +42,13 @@ sha256sums=('a55c345c144f18a1a58161630635aa08c7ff6cd4a73752368d0eaa43ecf7af92'
             'b8d0b0afd03bf6c1cf9814874d7aa465f4d7e57075260f797993e46b33ab8480'
             '41c0a4a42ae64479b008392053f4a947618acd6bb9c3ed2672dafdb2453caa14'
             'dcb3b8bc1f6fa58dd64b95045b8b010489352c815f737bf2cbf8812973a8dc49')
-sha256sums_x86_64=('040a14c2e62ca991dece1c7401808a21708dd990b2c54619ad477438d5329fed')
-sha256sums_aarch64=('54a71213f7e229fdd3a2d0f35e6e2cd3de75d48ae3b1c677b9d70a7a473214bb')
-sha256sums_armv8=('54a71213f7e229fdd3a2d0f35e6e2cd3de75d48ae3b1c677b9d70a7a473214bb')
-sha256sums_armv7=('2dfddb36aec4dd3e5e9fc6a935b95c8b5bc375a101ffaa4d339db3bb73e796cc')
-sha256sums_armv7l=('2dfddb36aec4dd3e5e9fc6a935b95c8b5bc375a101ffaa4d339db3bb73e796cc')
-sha256sums_armv7h=('2dfddb36aec4dd3e5e9fc6a935b95c8b5bc375a101ffaa4d339db3bb73e796cc')
-sha256sums_arm=('dfa5d2b44271b6396bebeea1c6b44548cdc2c4e181c9ce8086c8bb3377f965f0')
+sha256sums_x86_64=('f890827593d5a8afd65ab6435c8d8b4ddbc66032ecb7fd875df98771ea6d89e8')
+sha256sums_aarch64=('ebf8b5317f863100efbe6c10053e75bd4a7177679640485ed2d6ddf2a15a6a2a')
+sha256sums_armv8=('ebf8b5317f863100efbe6c10053e75bd4a7177679640485ed2d6ddf2a15a6a2a')
+sha256sums_armv7=('e4ae31c884d3560c50385e558bb67f17f9262575d6fd6bb86568bd6525313989')
+sha256sums_armv7l=('e4ae31c884d3560c50385e558bb67f17f9262575d6fd6bb86568bd6525313989')
+sha256sums_armv7h=('e4ae31c884d3560c50385e558bb67f17f9262575d6fd6bb86568bd6525313989')
+sha256sums_arm=('ca93b9659cadee025f36d3e0c8674f60966b0a80f3082f905666f6bd57675a5f')
 #https://github.com/skycoin/skywire/releases/download/v1.2.1/skywire-v1.2.1-linux-amd64.tar.gz
 #https://github.com/skycoin/skywire/releases/download/v1.2.1/skywire-v1.2.1-linux-arm64.tar.gz
 #https://github.com/skycoin/skywire/releases/download/v1.2.1/skywire-v1.2.1-linux-armhf.tar.gz
