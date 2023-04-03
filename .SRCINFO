@@ -1,0 +1,14 @@
+pkgbase = hyprdock
+	pkgdesc = An automatic docking tool for hyprland.
+	pkgver = 0.3.1
+	pkgrel = 1
+	arch = x86_64
+	makedepends = rust
+	makedepends = gendesk
+	makedepends = git
+	depends = gtk3
+	depends = gtk-layer-shell
+	source = 0.3.1.tar.gz::https://github.com/DashieTM/Hyprdock/archive/refs/tags/0.3.1.tar.gz
+	sha256sums = be300650baf8b89f01845642991002da122c0245049434ab3aae75006f5ff4f1
+
+pkgname = hyprdock
