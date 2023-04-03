@@ -6,7 +6,7 @@ pkgver=0.14.0
 pkgrel=1
 pkgdesc='A fast and friendly JSON/MessagePack library, with optional schema validation'
 arch=(any)
-url="https://github.com/Fraunhofer-AISEC/gallia"
+url="https://jcristharif.com/msgspec/"
 license=("BSD")
 depends=(
     "python"
