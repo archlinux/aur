@@ -3,20 +3,23 @@
 
 pkgname=python-pyhanko-certvalidator
 _name=certvalidator
-pkgver=0.20.1
+pkgver=0.21.1
 pkgrel=1
 pkgdesc="Validates X.509 certificates and paths"
 url="https://github.com/MatthiasValvekens/certvalidator"
 license=(MIT)
 arch=(any)
-makedepends=(python-setuptools)
+makedepends=(
+  python-{build,installer,wheel}
+  python-pytest-runner
+)
 checkdepends=(
-  python-aiohttp
   python-freezegun
   python-pytest
   python-pytest-asyncio
 )
 depends=(
+  python-aiohttp
   python-asn1crypto
   python-cryptography
   python-oscrypto
@@ -25,14 +28,14 @@ depends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('13c4ea7528ba9c0beba67947e23664ec3df7d180819cdc161385f3214fc83dcd')
+sha256sums=('1bc7adc687895e94574cfb80873791e32dedf0f3e15b1c95178e72e86c5efeb8')
 
 _archive="$_name-$pkgver"
 
 build() {
   cd "$_archive"
 
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -44,8 +47,7 @@ check() {
 package() {
   cd "$_archive"
 
-  export PYTHONHASHSEED=0
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer -d "$pkgdir" dist/*.whl
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
