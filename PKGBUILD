@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb@dralias.com>
 
 _pkgname=mdlshit
-pkgname=mdlshit-bin
+pkgname=$_pkgname-bin
 pkgver=2.3.2
 pkgrel=1
 pkgdesc="source engine .mdl v49 -> v53 converter "
