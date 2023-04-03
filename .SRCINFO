@@ -1,7 +1,7 @@
 pkgbase = remote-desktop-manager
 	pkgdesc = Devolutions Remote Desktop Manager centralizes all remote connections on a single platform that is securely shared between users and across the entire team.
 	pkgver = 2023.1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://remotedesktopmanager.com/
 	install = remote-desktop-manager.install
 	arch = x86_64
