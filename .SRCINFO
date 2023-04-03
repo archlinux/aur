@@ -75,6 +75,7 @@ pkgbase = gdal-ecw
 	optdepends = mariadb: mariadb database support
 	optdepends = perl: perl binding support
 	optdepends = unixodbc: when present while building, will add odbc support
+	optdepends = libkml: when present while building, adds kml support
 	provides = gdal=3.6.2
 	conflicts = gdal
 	options = !emptydirs
