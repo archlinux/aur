@@ -1,21 +1,19 @@
 pkgbase = scala
 	pkgdesc = A Java-interoperable language with object-oriented and functional features
-	pkgver = 2.13.8
+	pkgver = 2.13.10
 	pkgrel = 1
 	url = https://www.scala-lang.org
 	arch = any
 	license = Apache
 	makedepends = git
 	makedepends = sbt
-	depends = java-environment=8
-	depends = java-runtime=8
-	source = scala-2.13.8.tar.gz::https://github.com/scala/scala/archive/v2.13.8.tar.gz
-	source = scala-docs-2.13.8.tar.xz::https://www.scala-lang.org/files/archive/scala-docs-2.13.8.txz
-	sha512sums = cba6a474ec0f1ec926b345b1905a79ea03055bb7dba3863d11002a18ee05dafd68d58e4351e253754fac6493c82dc117608613fba5dc2cc641ef23dc046ad3ee
-	sha512sums = 0b985701e6873d083203dfde88b5c695d449638933c42699c46fc88221ed7b83f14723b2903bfbc93a5406bf58a679c78c3427ce0651acd91b76fea78be47877
+	source = scala-2.13.10.tar.gz::https://github.com/scala/scala/archive/v2.13.10.tar.gz
+	source = scala-docs-2.13.10.tar.xz::https://www.scala-lang.org/files/archive/scala-docs-2.13.10.txz
+	sha512sums = 7a89ee746d892640faf0ad3a91715c91bd174acbae22fde7dcbc16a71c6bd84d4f448071fd497a778ef5aaba48c306150e591ad1d2c263764aeac79bcc021529
+	sha512sums = 0ccbae59327b7a2254115d729f08c75e80c3d0f07a4ebd0f7947307b1cbd4a77a9581a8baa6bba0f98472485b441e5daaf153b9c78c0613c7886e9dc3e8650b3
 
 pkgname = scala
-	depends = java-runtime
+	depends = java-runtime>=8
 	optdepends = scala-docs
 	optdepends = scala-sources
 	optdepends = graphviz: generate diagrams
