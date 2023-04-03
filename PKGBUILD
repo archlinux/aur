@@ -1,6 +1,6 @@
 # Maintainer: Alexis BRENON <brenon.alexis+arch at gmail dot com>
 pkgname=sweethome3d-textures-scopia
-pkgver=1.2
+pkgver=1.3
 pkgrel=2
 pkgdesc="Free textures advertised on SweetHome3D website"
 arch=('any')
@@ -17,8 +17,8 @@ optdepends=("sweethome3d: Models rendering"
 "sweethome3d-3dmodels-trees: More 3D models"
 "sweethome3d-textures-contributions: More textures")
 install="$pkgname.install"
-source=("http://prdownloads.sourceforge.net/sweethome3d/Textures-eTeksScopia-1.2.zip")
-sha1sums=("c9bbc84aa2b1dc35b24897bc47cd89db78560c61")
+source=("http://prdownloads.sourceforge.net/sweethome3d/Textures-eTeksScopia-1.3.zip")
+sha1sums=("80bda232d961901f2af885108c20449b0bfcbce6")
 
 package() {
     mkdir -p $pkgdir/usr/share/eteks/sweethome3d/textures/textures-scopia

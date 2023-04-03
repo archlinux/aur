@@ -1,6 +1,6 @@
 pkgbase = sweethome3d-textures-scopia
 	pkgdesc = Free textures advertised on SweetHome3D website
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 2
 	url = http://www.sweethome3d.com/importTextures.jsp
 	install = sweethome3d-textures-scopia.install
@@ -16,8 +16,7 @@ pkgbase = sweethome3d-textures-scopia
 	optdepends = sweethome3d-3dmodels-scopia: More 3D models
 	optdepends = sweethome3d-3dmodels-trees: More 3D models
 	optdepends = sweethome3d-textures-contributions: More textures
-	source = http://prdownloads.sourceforge.net/sweethome3d/Textures-eTeksScopia-1.2.zip
-	sha1sums = c9bbc84aa2b1dc35b24897bc47cd89db78560c61
+	source = http://prdownloads.sourceforge.net/sweethome3d/Textures-eTeksScopia-1.3.zip
+	sha1sums = 80bda232d961901f2af885108c20449b0bfcbce6
 
 pkgname = sweethome3d-textures-scopia
-
