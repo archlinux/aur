@@ -1,7 +1,7 @@
 pkgbase = mullvad-browser-bin
 	pkgdesc = Privacy-focused web browser developed in a collaboration between Mullvad VPN and the Tor Project.
 	pkgver = 12.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://mullvad.net/en/browser
 	arch = x86_64
 	license = GPL
@@ -25,8 +25,10 @@ pkgbase = mullvad-browser-bin
 	provides = mullvad-browser
 	conflicts = mullvad-browser
 	options = !strip
+	source = mullvad-browser.sh
 	source = mullvad-browser.desktop
-	sha256sums = 82de45a644102a8e4c63b74e8b6d99ec553d9ceb526ef1514fe65b6bc72d61f1
+	sha256sums = 7be1e26a22d71c795a53a93492358861169bac32cd9a4499aed00dff75007110
+	sha256sums = 7d6036df369a79bd54625f621479eff5c02a93ad749da3315f0e5ce14ba1f241
 	source_x86_64 = mullvad-browser-bin-12.0.4-x86_64.tar.xz::https://cdn.mullvad.net/browser/12.0.4/mullvad-browser-linux64-12.0.4_ALL.tar.xz
 	sha256sums_x86_64 = ab875328d42472a691c22176e6254e412bf054b037b494654380f30b7b6e1b90
 

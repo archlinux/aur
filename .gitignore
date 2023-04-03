@@ -3,4 +3,5 @@
 !.gitignore
 !PKGBUILD
 !mullvad-browser.desktop
+!mullvad-browser.sh
 
