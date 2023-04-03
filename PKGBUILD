@@ -2,10 +2,13 @@
 # Adapted from ABS:
 # Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
+#
+# My modifications:
+# - gdb and binutils are packaged together (https://stackoverflow.com/a/34045476), `--disable-gdb`.
 
 _target=riscv64-elf
 pkgname=$_target-binutils-git
-pkgver=gdb.13.branchpoint.r268.gb46632ca160
+pkgver=gdb.13.branchpoint.r1831.gd466f7492ec
 pkgrel=1
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the RISCV64 (bare-metal) target'
 arch=(x86_64)
@@ -38,7 +41,7 @@ build() {
               --enable-interwork \
               --with-gnu-as \
               --with-gnu-ld \
-              --disable-nls \
+              --disable-nls --disable-gdb \
               --enable-ld=default \
               --enable-gold \
               --enable-plugins \
