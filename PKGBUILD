@@ -2,7 +2,7 @@
 
 _pkgname=regreet
 pkgname="$_pkgname-git"
-pkgver=r98.94aad06
+pkgver=0.1.0.r0.1353d2a
 pkgrel=1
 pkgdesc="Clean and customizable greeter for greetd"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(greetd gtk4)
 
 pkgver() {
     cd "$_pkgname"
-    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
