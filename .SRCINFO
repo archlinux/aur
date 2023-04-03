@@ -1,13 +1,13 @@
 pkgbase = pluto
 	pkgdesc = A cli tool to help discover deprecated apiVersions in Kubernetes
-	pkgver = 5.15.1
+	pkgver = 5.16.0
 	pkgrel = 1
 	url = https://github.com/FairwindsOps/pluto
 	arch = x86_64
 	license = Apache
 	makedepends = go
 	depends = glibc
-	source = pluto-5.15.1.tar.gz::https://github.com/FairwindsOps/pluto/archive/v5.15.1.tar.gz
-	sha256sums = a0c294558bfd05679f499cbe700c88ebe895856feeecf7eb9992033a316f2580
+	source = pluto-5.16.0.tar.gz::https://github.com/FairwindsOps/pluto/archive/v5.16.0.tar.gz
+	sha256sums = bdbfe9a11ebbcf5df9f16ce432bb7b78bd4b310bdb31445675d714b3f99fb40a
 
 pkgname = pluto
