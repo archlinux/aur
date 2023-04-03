@@ -13,8 +13,8 @@ _pkgbase=gdal
 provides=('gdal=3.6.2')
 conflicts=('gdal')
 pkgname=('gdal-ecw' 'python-gdal-ecw')
-pkgver=3.6.2
-pkgrel=1
+pkgver=3.6.3
+pkgrel=2
 pkgdesc="A translator library for raster geospatial data formats, with support to ECW format. Based on gdal-hdf4 AUR package."
 arch=('x86_64')
 url="https://gdal.org/"
@@ -38,11 +38,12 @@ optdepends=('postgresql: postgresql database support'
 options=('!emptydirs')
 changelog=$pkgbase.changelog
 source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz)
-b2sums=('c90606b642c632dd5ec224d63aa80c158c9ee04c6ca0341815f7449b319bf9442d65c2f9b981aedd242713ef6909a30f620b448ba26baf6cd8a31e2a9ae0dd8a')
+b2sums=('c9d6817e74d0ec377979a060db231ec989e676f9aa0c1c04a8bcd6913c271eaccbb43a59b8bd52f0e297844759a3925039b83c73c4e0773943eeec8af656bb8a')
 
 build() {
   cmake -B build -S $_pkgbase-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_CXX_STANDARD=17 \
     -DENABLE_IPO=ON \
     -DBUILD_PYTHON_BINDINGS=ON \
     -DGDAL_ENABLE_PLUGINS=ON \
@@ -62,6 +63,7 @@ build() {
     -DGDAL_USE_ICONV=ON \
     -DGDAL_USE_JPEG=ON \
     -DGDAL_USE_JSONC=ON \
+    -DGDAL_USE_JXL=ON \
     -DGDAL_USE_LIBKML=ON \
     -DGDAL_USE_LIBLZMA=ON \
     -DGDAL_USE_LIBXML2=ON \
@@ -131,4 +133,7 @@ package_python-gdal-ecw () {
   mv lib/* "${pkgdir}"/usr/lib
   install -dm755 "${pkgdir}"/usr/share/licenses
   ln -s $_pkgbase "${pkgdir}"/usr/share/licenses/$pkgname
+  # byte-compile python modules since the CMake build does not do it.
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  python -m compileall -o 0 -o 1 -o 2 --hardlink-dupes -s "${pkgdir}" "${pkgdir}"${site_packages}
 }
