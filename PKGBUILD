@@ -6,7 +6,7 @@
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-next-viewer-git
 pkgver=6.11.50889.0d21c42e3c
-pkgrel=1
+pkgrel=2
 pkgdesc="A Second Life client with focus on performance and code correctness. - Git Source build"
 arch=('x86_64')
 url=https://www.alchemyviewer.org
