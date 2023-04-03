@@ -1,0 +1,19 @@
+pkgbase = vtex2-git
+	pkgdesc = A VTF conversion and creation tool
+	pkgver = 0.1.r86.825dc77
+	pkgrel = 1
+	url = https://github.com/StrataSource/vtex2
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = make
+	makedepends = git
+	optdepends = qt6-base
+	provides = vtex2
+	conflicts = vtex2
+	source = git+https://github.com/StrataSource/vtex2.git
+	md5sums = SKIP
+
+pkgname = vtex2-git
