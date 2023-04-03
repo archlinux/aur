@@ -1,11 +1,11 @@
 pkgbase = restbed
 	pkgdesc = Framework bringing asynchronous RESTful functionality to C++14 applications
-	pkgver = 4.8.0
-	pkgrel = 1
+	pkgver = 4.8.r0.g5817f08
+	pkgrel = 2
 	url = https://github.com/Corvusoft/restbed
 	arch = i686
 	arch = x86_64
-	license = AGPL,
+	license = AGPL
 	license = CPL
 	makedepends = git
 	options = staticlibs
