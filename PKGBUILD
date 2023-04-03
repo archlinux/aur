@@ -1,7 +1,8 @@
 # Maintainer: Hayate Nakamura <is01.njb at gmail dot com>
 pkgname=unifetch-git
 _pkgname=unifetch
-pkgver=20230114
+epoch=1
+pkgver=r5413.bdb34a5a
 pkgrel=1
 pkgdesc="An unofficial inheritor of neofetch, fresh version."
 arch=('any')
@@ -24,13 +25,18 @@ optdepends=(
 )
 makedepends=('git')
 checkdepends=('shellcheck')
-conflicts=("unifetch")
+conflicts=("unifetch" "neofetch")
+provides=("unifetch" "neofetch")
 source=(${_pkgname}::"git+${url}/${_pkgname}.git")
 sha512sums=('SKIP')
 
+pkgver() {
+	cd "${srcdir}/${_pkgname}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 package() {
   cd ${_pkgname}
-  git checkout master
   make DESTDIR="$pkgdir" install
   install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
