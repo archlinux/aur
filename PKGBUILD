@@ -30,10 +30,11 @@
 PGO=auto
 
 pkgdesc='Wayland terminal emulator - fast, lightweight and minimalistic'
-pkgname=(foot-git foot-themes-git)
-pkgver=1.13.1
+pkgname=foot-git
+pkgver=1.14.0
 pkgrel=1
 conflicts=('foot')
+replaces=('foot-themes')
 provides=('foot')
 arch=('x86_64' 'aarch64')
 url=https://codeberg.org/dnkl/foot
@@ -42,7 +43,6 @@ makedepends=('git' 'meson' 'ninja' 'scdoc' 'python' 'wayland-protocols' 'tllist'
 checkdepends=('check')
 depends=('libxkbcommon' 'wayland' 'pixman' 'fontconfig' 'libutf8proc' 'ncurses' 'fcft>=3.0.0')
 optdepends=("foot-terminfo: alternative to ncurses' terminfo, with additional non-standard capabilities"
-            "foot-themes: color schemes"
             "libnotify: desktop notifications"
             "xdg-utils: URI launching"
             "bash-completion: bash completions for foot itself")
@@ -61,8 +61,7 @@ build() {
     . build \
     --prefix=/usr \
     --wrap-mode=nodownload \
-    -Dterminfo=disabled \
-    -Dthemes=false
+    -Dterminfo=disabled
 }
 
 check() {
@@ -74,16 +73,4 @@ package_foot-git() {
   cd foot
   DESTDIR="${pkgdir}/" ninja -C build install
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/foot/LICENSE"
-}
-
-package_foot-themes-git() {
-  pkgdesc="Color schemes for the foot terminal emulator"
-  conflicts=(foot-themes)
-  provides=(foot-themes)
-  depends=(foot-git)
-  optdepends=()
-  arch=(any)
-  cd foot
-  install -d "${pkgdir}/usr/share/foot/themes"
-  install -m 644 themes/* "${pkgdir}/usr/share/foot/themes/"
 }
