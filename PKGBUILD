@@ -2,7 +2,7 @@
 
 pkgname=yuki-iptv-git
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="IPTV player with EPG support"
 arch=('any')
 url="https://github.com/yuki-iptv/yuki-iptv"
@@ -28,17 +28,5 @@ build() {
 
 package() {
         cd ${pkgname/-git}
-        install -D      -t "${pkgdir}"/usr/bin usr/bin/yuki-iptv
-        install -Dm644  -t "${pkgdir}"/usr/lib/yuki-iptv usr/lib/yuki-iptv/yuki-iptv.py
-        install -Dm644  -t "${pkgdir}"/usr/share/applications usr/share/applications/yuki-iptv.desktop
-        install -Dm644  -t "${pkgdir}"/usr/share/yuki-iptv/icons usr/share/yuki-iptv/icons/*.{gif,png}
-        install -Dm644  -t "${pkgdir}"/usr/share/yuki-iptv/icons_dark usr/share/yuki-iptv/icons_dark/*.{gif,png}
-        install -Dm644  -t "${pkgdir}"/usr/share/icons/hicolor/scalable/apps usr/share/icons/hicolor/scalable/apps/yuki-iptv.svg
-        install -Dm644  -t "${pkgdir}"/usr/share/metainfo usr/share/metainfo/yuki-iptv.appdata.xml
-        install -Dm644  -t "${pkgdir}"/usr/share/yuki-iptv usr/share/yuki-iptv/license.txt
-        cp -a usr/lib/yuki-iptv/yuki_iptv "${pkgdir}"/usr/lib/yuki-iptv/yuki_iptv
-        cp -a usr/lib/yuki-iptv/thirdparty "${pkgdir}"/usr/lib/yuki-iptv/thirdparty
- 
-        # Translations
-        cp -a usr/share/locale "${pkgdir}"/usr/share/locale
+        cp -r usr/ "$pkgdir/"
 }
