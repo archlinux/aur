@@ -20,7 +20,7 @@
 
 pkgname=ffmpeg-mpp
 pkgver=6.0
-pkgrel=3
+pkgrel=4
 epoch=2
 pkgdesc='Complete solution to record, convert and stream audio and video supporting rockchip MPP hardware decoder'
 arch=(aarch64 arm7f)
@@ -121,9 +121,11 @@ source=(
   add-av_stream_get_first_dts-for-chromium.patch
   rkmpp-6.patch
 )
+
 b2sums=('SKIP'
         '555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de'
-        'c855795d756a78872ba97bcd4f1af383632a1b6b15beb18d660d16926dbdac21767db8e063364ad556d0895e07e7f3b50fff84b20f6bf3bc87783406d5ab68c2')
+        '80419a6130ce6882ccb3b78c6edb0a10028693335ab4c374a9e8d021d361f5aea03da269df5f42fa0b3d66c7b34aac7b607069fd3ab7b8471c0c0a624aed1120')
+
 validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
 
 prepare() {

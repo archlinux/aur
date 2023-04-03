@@ -1,7 +1,7 @@
 From 6b9ecc5eb21be3e36a6e6030c7e514ae72b8fa21 Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Wed, 4 Sep 2019 17:24:37 +0800
-Subject: [PATCH 01/15] avcodec/rkmppdec: Clear eos flag after reset
+Subject: [PATCH 01/16] avcodec/rkmppdec: Clear eos flag after reset
 
 Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
 ---
@@ -21,13 +21,13 @@ index 8bf7c6ed16..e31e0c44dc 100644
          av_log(avctx, AV_LOG_ERROR, "Failed to reset MPI (code = %d)\n", ret);
  }
 -- 
-2.39.2
+2.40.0
 
 
 From 813c793c9fe63361721ca0b52548328902397890 Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Wed, 4 Sep 2019 17:27:46 +0800
-Subject: [PATCH 02/15] avcodec/rkmppdec: Compatible with old reordered_opaque
+Subject: [PATCH 02/16] avcodec/rkmppdec: Compatible with old reordered_opaque
  and pkt_pts
 
 Some users might still using these deprecated APIs.
@@ -65,13 +65,13 @@ index e31e0c44dc..7ae4682f1b 100644
          frame->color_primaries  = mpp_frame_get_color_primaries(mppframe);
          frame->color_trc        = mpp_frame_get_color_trc(mppframe);
 -- 
-2.39.2
+2.40.0
 
 
 From eb58482785f794935924c9d6f0edb00fc998ed41 Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Wed, 19 May 2021 09:55:03 +0800
-Subject: [PATCH 03/15] rkmppdec: Remove frame buffer limit
+Subject: [PATCH 03/16] rkmppdec: Remove frame buffer limit
 
 It would hang when reaching the limit.
 
@@ -107,13 +107,13 @@ index 7ae4682f1b..f4b6d98e6a 100644
  
      av_log(avctx, AV_LOG_DEBUG, "RKMPP decoder initialized successfully.\n");
 -- 
-2.39.2
+2.40.0
 
 
 From 0d9141fac8e4f168c8292e8d25662c8b9f262f40 Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Thu, 20 May 2021 10:19:15 +0800
-Subject: [PATCH 04/15] avcodec/rkmppdec: Rework decoding flow
+Subject: [PATCH 04/16] avcodec/rkmppdec: Rework decoding flow
 
 Stop using the deprecated MPP_DEC_GET_STREAM_COUNT API.
 
@@ -791,13 +791,13 @@ index f4b6d98e6a..18af1f0ef7 100644
  
  static const AVCodecHWConfigInternal *const rkmpp_hw_configs[] = {
 -- 
-2.39.2
+2.40.0
 
 
 From 6ddc3d6d2c5f0b0802dee00dd06cdd4188daa894 Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Fri, 21 May 2021 04:23:36 +0800
-Subject: [PATCH 05/15] HACK: avcodec/rkmppdec: Force aligning coded width and
+Subject: [PATCH 05/16] HACK: avcodec/rkmppdec: Force aligning coded width and
  height to 64
 
 The chromium would try to align planes' width and height to 32, which
@@ -827,13 +827,13 @@ index 18af1f0ef7..bf9d91607a 100644
          decoder->mpi->control(decoder->ctx, MPP_DEC_SET_INFO_CHANGE_READY, NULL);
  
 -- 
-2.39.2
+2.40.0
 
 
 From 2ca547d0d02008311cf8b17a96eaf3ff70cf5ec1 Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Thu, 20 May 2021 10:20:17 +0800
-Subject: [PATCH 06/15] HACK: avcodec/rkmppdec: Support outputing YUV420P
+Subject: [PATCH 06/16] HACK: avcodec/rkmppdec: Support outputing YUV420P
 
 Lots of users support YUV420P format rather than DRM_PRIME.
 
@@ -1061,13 +1061,13 @@ index bf9d91607a..3fd5f908b4 100644
          .hw_configs     = rkmpp_hw_configs, \
          .bsfs           = BSFS, \
 -- 
-2.39.2
+2.40.0
 
 
 From 696294810aca963490ce50c3e9a9174829b32e63 Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Mon, 27 Sep 2021 10:20:54 +0800
-Subject: [PATCH 07/15] avcodec/rkmppdec: Support logging fps
+Subject: [PATCH 07/16] avcodec/rkmppdec: Support logging fps
 
 Set env FFMPEG_RKMPP_LOG_FPS=1 to enable it.
 
@@ -1183,13 +1183,13 @@ index 3fd5f908b4..0e5c22290e 100644
      av_packet_unref(&decoder->packet);
  }
 -- 
-2.39.2
+2.40.0
 
 
-From 100744015b3a8804b50b097ff9c21b03c379633f Mon Sep 17 00:00:00 2001
-From: boogie <boogiepop@gmx.com>
+From 723ec8aea503280855798c2a10c4550a128299e3 Mon Sep 17 00:00:00 2001
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Sat, 7 Jan 2023 00:43:42 +0100
-Subject: [PATCH 08/15] HACK: libavcodec & rkmppdec: Add
+Subject: [PATCH 08/16] HACK: libavcodec & rkmppdec: Add
  FF_CODEC_CAP_CONTIGUOUS_BUFFERS
 
 Add FF_CODEC_CAP_CONTIGUOUS_BUFFERS to alloc contiguous buffers.
@@ -1318,13 +1318,13 @@ index 0e5c22290e..930a4434a8 100644
                                                           AV_PIX_FMT_YUV420P, \
                                                           AV_PIX_FMT_NONE}, \
 -- 
-2.39.2
+2.40.0
 
 
-From 19af6f3ff78034aed01f32f13cec496a79a2b8b6 Mon Sep 17 00:00:00 2001
+From d3cd21e137f3f81d865dfabe390e6a5c2fb29cea Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Mon, 13 Dec 2021 15:44:43 +0800
-Subject: [PATCH 09/15] HACK: avcodec/rkmppdec: Define DRM_FORMAT_NV12_10
+Subject: [PATCH 09/16] HACK: avcodec/rkmppdec: Define DRM_FORMAT_NV12_10
 
 DRM_FORMAT_NV12_10 is a downstream custom format for Rockchip.
 
@@ -1359,13 +1359,13 @@ index 930a4434a8..1d8a3703dc 100644
      }
  }
 -- 
-2.39.2
+2.40.0
 
 
-From a9a7eeb8c310181342ca5b110fa72ba7021f15a9 Mon Sep 17 00:00:00 2001
+From 96b0f9d033270d03bffa65a9eeb039de8c980e93 Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Wed, 15 Dec 2021 15:34:48 +0800
-Subject: [PATCH 10/15] avcodec/rkmppdec: Support NV16
+Subject: [PATCH 10/16] avcodec/rkmppdec: Support NV16
 
 The MPP might output NV16 format.
 
@@ -1418,13 +1418,13 @@ index 1d8a3703dc..edb88a7867 100644
          hwframes->height    = avctx->height;
          ret = av_hwframe_ctx_init(decoder->frames_ref);
 -- 
-2.39.2
+2.40.0
 
 
-From 06e011f2cffe98943f807460c4c995d494e35019 Mon Sep 17 00:00:00 2001
+From 76c40354c615e42905a4b0a90e21c4ed631cc34d Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Wed, 23 Mar 2022 14:20:16 +0800
-Subject: [PATCH 11/15] avcodec/rkmppdec: Support sync mode
+Subject: [PATCH 11/16] avcodec/rkmppdec: Support sync mode
 
 Some people just don't know how to handle async APIs :(
 
@@ -1476,13 +1476,13 @@ index edb88a7867..6e742e5407 100644
          }
      }
 -- 
-2.39.2
+2.40.0
 
 
-From 76897014cde5456c0c1c109dbc23e184cd574144 Mon Sep 17 00:00:00 2001
-From: boogie <boogiepop@gmx.com>
+From 2c6cdbc2acd2c5cf35d239abda24ec9af72ddbd3 Mon Sep 17 00:00:00 2001
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Sun, 8 Jan 2023 01:32:15 +0100
-Subject: [PATCH 12/15] Add rkmpp H263 MPEG1 MPEG2 MPEG4 DECODERS Priotize
+Subject: [PATCH 12/16] Add rkmpp H263 MPEG1 MPEG2 MPEG4 DECODERS Priotize
  RKMPP decoders first Allow NV15
 
 ---
@@ -1637,13 +1637,13 @@ index 6e742e5407..f2cb8e6a0b 100644
 +RKMPP_DEC(mpeg2, AV_CODEC_ID_MPEG2VIDEO,    NULL)
 +RKMPP_DEC(mpeg4, AV_CODEC_ID_MPEG4,         "mpeg4_unpack_bframes")
 -- 
-2.39.2
+2.40.0
 
 
-From c24213c79338a153cae114e1a04aa25878054f01 Mon Sep 17 00:00:00 2001
-From: boogie <boogiepop@gmx.com>
+From 906b0decaee22732b756aad86f602ca4012e641c Mon Sep 17 00:00:00 2001
+From: icecream95 <the.real.icecream95@gmail.com>
 Date: Fri, 13 Jan 2023 22:27:01 +0100
-Subject: [PATCH 13/15] rkmpp: interface with kernel directly for rga and ditch
+Subject: [PATCH 13/16] rkmpp: interface with kernel directly for rga and ditch
  librga
 
 ---
@@ -2632,13 +2632,13 @@ index f2cb8e6a0b..d15016fbd2 100644
          if (ret < 0)
              goto out;
 -- 
-2.39.2
+2.40.0
 
 
-From 3de2c88b311bb7369b48287e92638b7cf98d3c60 Mon Sep 17 00:00:00 2001
+From f0d0d122ad7de33891a47c9f73b25ca37cc3c0f0 Mon Sep 17 00:00:00 2001
 From: boogie <boogiepop@gmx.com>
 Date: Tue, 17 Jan 2023 01:02:19 +0100
-Subject: [PATCH 14/15] ugliest hack: vp8&9 color space workaround
+Subject: [PATCH 14/16] ugliest hack: vp8&9 color space workaround
 
 ---
  libavcodec/rkmppdec.c | 15 +++++++++++++++
@@ -2671,13 +2671,13 @@ index d15016fbd2..94d38b1886 100644
      frame->interlaced_frame = ((mode & MPP_FRAME_FLAG_FIELD_ORDER_MASK) == MPP_FRAME_FLAG_DEINTERLACED);
      frame->top_field_first  = ((mode & MPP_FRAME_FLAG_FIELD_ORDER_MASK) == MPP_FRAME_FLAG_TOP_FIRST);
 -- 
-2.39.2
+2.40.0
 
 
-From 4b35ea03c5b522a5ce06c848919effcee77d9193 Mon Sep 17 00:00:00 2001
+From d41c46e520ce5890ecb0e09113ee99f38fa00fbd Mon Sep 17 00:00:00 2001
 From: Jeffy Chen <jeffy.chen@rock-chips.com>
 Date: Tue, 17 Jan 2023 18:31:57 +0800
-Subject: [PATCH 15/15] rkmppdec: AV1 support
+Subject: [PATCH 15/16] rkmppdec: AV1 support
 
 ---
  configure              |  1 +
@@ -2764,5 +2764,52 @@ index 94d38b1886..626a962f85 100644
  RKMPP_DEC(vp9,   AV_CODEC_ID_VP9,           NULL)
  RKMPP_DEC(mpeg1, AV_CODEC_ID_MPEG1VIDEO,    NULL)
 -- 
-2.39.2
+2.40.0
+
+
+From b5b3550b5e84fd7f24cf54243c9d42863aa1bbf3 Mon Sep 17 00:00:00 2001
+From: Jeffy Chen <jeffy.chen@rock-chips.com>
+Date: Mon, 27 Mar 2023 17:44:09 +0800
+Subject: [PATCH 16/16] rkmppdec: Ignore special MPP format masks
+
+We should use the basic format in format conversion.
+
+Signed-off-by: Jeffy Chen <jeffy.chen@rock-chips.com>
+---
+ libavcodec/rkmppdec.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/libavcodec/rkmppdec.c b/libavcodec/rkmppdec.c
+index 626a962f85..088454a9a2 100644
+--- a/libavcodec/rkmppdec.c
++++ b/libavcodec/rkmppdec.c
+@@ -108,7 +108,7 @@ static MppCodingType rkmpp_get_codingtype(AVCodecContext *avctx)
+ 
+ static uint32_t rkmpp_get_frameformat(MppFrameFormat mppformat)
+ {
+-    switch (mppformat) {
++    switch (mppformat & MPP_FRAME_FMT_MASK) {
+     case MPP_FMT_YUV420SP:          return DRM_FORMAT_NV12;
+     case MPP_FMT_YUV420SP_10BIT:    return DRM_FORMAT_NV12_10;
+     case MPP_FMT_YUV422SP:          return DRM_FORMAT_NV16;
+@@ -118,7 +118,7 @@ static uint32_t rkmpp_get_frameformat(MppFrameFormat mppformat)
+ 
+ static uint32_t rkmpp_get_avformat(MppFrameFormat mppformat)
+ {
+-    switch (mppformat) {
++    switch (mppformat & MPP_FRAME_FMT_MASK) {
+     case MPP_FMT_YUV420SP:          return AV_PIX_FMT_NV12;
+     case MPP_FMT_YUV420SP_10BIT:    return AV_PIX_FMT_NONE;
+     case MPP_FMT_YUV422SP:          return AV_PIX_FMT_NV16;
+@@ -128,7 +128,7 @@ static uint32_t rkmpp_get_avformat(MppFrameFormat mppformat)
+ 
+ static uint32_t rkmpp_get_rgaformat(MppFrameFormat mppformat)
+ {
+-    switch (mppformat) {
++    switch (mppformat & MPP_FRAME_FMT_MASK) {
+     case MPP_FMT_YUV420SP:          return RGA_FORMAT_YCbCr_420_SP;
+     case MPP_FMT_YUV420SP_10BIT:    return RGA_FORMAT_YCbCr_420_SP_10B;
+     case MPP_FMT_YUV422SP:          return RGA_FORMAT_YCbCr_422_SP;
+-- 
+2.40.0
 
