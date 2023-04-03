@@ -1,18 +1,17 @@
 pkgbase = moonfm-appimage
-	pkgdesc = An easy to use podcast player for podcast lovers, discover the best of over 600,000+ podcasts.(AppImage version)
-	pkgver = 2.0.17
+	pkgdesc = A modern, fully featured audio podcast player in a simple, intuitive interface.
+	pkgver = 4.0.25
 	pkgrel = 1
-	url = https://moon.fm/
+	url = https://moon.fm
 	arch = x86_64
-	license = unknown
+	license = custom
 	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
 	provides = moonfm
 	conflicts = moonfm
 	options = !strip
-	source = https://moon.fm/dist/MoonFM-2.0.17-x86_64.AppImage
-	source = moonfm.sh
-	sha256sums = d8738d9009f628f2d4d48313d09ca486b5ad19c45fcae46e67d5b127ba29894f
-	sha256sums = f416432624a4c44dbee95dc0c7554345fc8f6310bea4bbbeefca878dafe7cdcb
+	source = moonfm-4.0.25.AppImage::https://moon.fm/download/linux/MoonFM.AppImage
+	sha256sums = 7254337eb7c9447c2de726fdc76ade0471955a46f23331f47b9062a5f6f30e50
 
 pkgname = moonfm-appimage
-
