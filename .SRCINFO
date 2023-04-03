@@ -1,8 +1,8 @@
 pkgbase = oolite
 	pkgdesc = A space-sim based on the classic Elite
 	pkgver = 1.90
-	pkgrel = 3
-	url = http://www.oolite.org/
+	pkgrel = 4
+	url = http://oolite.space/
 	arch = x86_64
 	license = GPL2
 	makedepends = gnustep-make
@@ -23,4 +23,3 @@ pkgbase = oolite
 	md5sums = c34c6f88606be75c90cc52c5a4173611
 
 pkgname = oolite
-

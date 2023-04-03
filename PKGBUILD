@@ -4,10 +4,10 @@
 
 pkgname=oolite
 pkgver=1.90
-pkgrel=3
+pkgrel=4
 pkgdesc="A space-sim based on the classic Elite"
 arch=('x86_64')
-url="http://www.oolite.org/"
+url="http://oolite.space/"
 license=('GPL2')
 depends=('espeak' 'gnustep-base' 'sdl_mixer' 'sdl_image' 'glu' 'nspr' 'openal')
 makedepends=('gnustep-make' 'curl' 'zip' 'mesa' 'gcc-objc')
