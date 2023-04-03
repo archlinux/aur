@@ -1,6 +1,6 @@
 # Maintainer: chung <me@chungn.com>
 pkgname=sunshine-bin
-pkgver=0.19.0
+pkgver=0.19.1
 pkgrel=1
 pkgdesc='A self-hosted GameStream host for Moonlight (prebuilt version).'
 url='https://github.com/LizardByte/Sunshine'
@@ -13,7 +13,7 @@ optdepends=('cuda: NvFBC capture support'
             'libdrm')
 conflicts=('sunshine' 'sunshine-git')
 provides=('sunshine')
-sha256sums_x86_64=('8c93127bda4704dd65e24dfc62ed89ce0148d87c7fe96680d3413aa015a1843c')
+sha256sums_x86_64=('ea159c8f5c13471cde0028443f48201bc747e9ea5b898e6dca91eb5043010723')
 
 package() {
   cd "$srcdir/"
