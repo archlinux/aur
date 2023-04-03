@@ -1,7 +1,7 @@
 pkgbase='pip2pkgbuild'
 pkgname=('pip2pkgbuild' 'python2-pip2pkgbuild')
 _module='pip2pkgbuild'
-pkgver='0.3.2'
+pkgver='0.3.3'
 pkgrel=1
 pkgdesc="Generate PKGBUILD file for a Python module from PyPI"
 url="https://github.com/wenLiangcan/pip2pkgbuild"
@@ -9,8 +9,8 @@ depends=()
 makedepends=('python-setuptools' 'python2-setuptools')
 license=('MIT')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('8ef75fad20cad213a6624be495ca50ba822355e5f5df14a68011b05bd28e68a5')
+source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/${_module/-/_}-$pkgver.tar.gz")
+sha256sums=('90172b48a10a2e416a7844e38892fa9b592af1cabc766938804f91fe62be8fc2')
 
 prepare() {
     cp -a "${srcdir}/${_module}-${pkgver}"{,-python2}
