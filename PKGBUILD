@@ -3,13 +3,13 @@
 _pkgname=catcli
 pkgname="${_pkgname}-git"
 pkgver=0.5.4.r0.gc69cd67
-pkgrel=1
+pkgrel=2
 pkgdesc="The command line catalog tool for your offline data"
 arch=('any')
 url="https://github.com/deadc0de6/catcli"
 license=('GPL')
 groups=()
-depends=('python' 'python-setuptools' 'python-docopt' 'python-anytree' 'python-psutil')
+depends=('python' 'python-setuptools' 'python-docopt' 'python-anytree' 'python-psutil' 'python-pyfzf' 'python-fusepy')
 makedepends=('git')
 provides=(catcli)
 conflicts=(catcli)

@@ -1,7 +1,7 @@
 pkgbase = catcli-git
 	pkgdesc = The command line catalog tool for your offline data
 	pkgver = 0.5.4.r0.gc69cd67
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/deadc0de6/catcli
 	arch = any
 	license = GPL
@@ -11,10 +11,11 @@ pkgbase = catcli-git
 	depends = python-docopt
 	depends = python-anytree
 	depends = python-psutil
+	depends = python-pyfzf
+	depends = python-fusepy
 	provides = catcli
 	conflicts = catcli
 	source = git+https://github.com/deadc0de6/catcli.git
 	md5sums = SKIP
 
 pkgname = catcli-git
-
