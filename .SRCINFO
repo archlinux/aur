@@ -1,22 +1,23 @@
 pkgbase = awl-dns-git
-	pkgdesc = A DNS client
-	pkgver = 0.5.10.r3.g7e7c88d
-	pkgrel = 2
-	url = https://git.froth.zone/sam/awl
-	arch = i686
-	arch = pentium4
-	arch = x86_64
-	arch = arm
-	arch = armv6h
-	arch = armv7h
-	arch = aarch64
-	license = BSD
-	makedepends = git
-	makedepends = go>=1.18
-	makedepends = scdoc
-	provides = awl-dns
-	conflicts = awl-dns
-	source = awl-dns-git::git+https://git.froth.zone/sam/awl.git
-	sha256sums = SKIP
+        pkgdesc = A DNS client
+        pkgver = 0.6.6.r3.g928123e
+        pkgrel = 1
+        url = https://git.froth.zone/sam/awl
+        arch = i686
+        arch = pentium4
+        arch = x86_64
+        arch = arm
+        arch = armv6h
+        arch = armv7h
+        arch = aarch64
+        license = BSD
+        makedepends = git
+        makedepends = go>=1.19
+        makedepends = scdoc
+        provides = awl-dns
+        conflicts = awl-dns
+        options = !lto
+        source = awl-dns-git::git+https://git.froth.zone/sam/awl.git
+        sha256sums = SKIP
 
 pkgname = awl-dns-git

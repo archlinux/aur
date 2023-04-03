@@ -5,6 +5,7 @@ pkgrel=2
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="A DNS client"
 url="https://git.froth.zone/sam/awl"
+options=(!lto)
 license=('BSD')
 makedepends=(
  'git'
