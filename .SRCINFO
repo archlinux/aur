@@ -1,0 +1,27 @@
+pkgbase = vdhcoapp-git
+	pkgdesc = Companion application for Video DownloadHelper browser add-on
+	pkgver = 1.6.3.r2.g6ebd8ae
+	pkgrel = 1
+	url = https://github.com/mi-g/vdhcoapp
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = gulp
+	makedepends = nodejs
+	makedepends = npm
+	provides = vdhcoapp
+	conflicts = vdhcoapp
+	options = !strip
+	source = vdhcoapp::git+https://github.com/mi-g/vdhcoapp
+	source = vdhcoapp-install.hook
+	source = vdhcoapp-remove.hook
+	source = vdhcoapp-fix-paths.patch
+	source = vdhcoapp-fix-esm.patch::https://github.com/mi-g/vdhcoapp/pull/149.patch
+	sha256sums = SKIP
+	sha256sums = cd9b85b365f4ba005d382475655a9bb8a59c3d6f23bf490e64dba9f73aae65e0
+	sha256sums = 5e256cccaf7a6dff80807b3fdf93f93bce986e3336fc76ea2e67bd4b37c1f98a
+	sha256sums = 2ac3273ac5f1250e06ee4a4df14c63c7e60dc36a6122f6047800275dc830072e
+	sha256sums = 21afcc17fb2a53d1da77d1f84fc46b82ee2ba09ad327776427ec27d186b97858
+
+pkgname = vdhcoapp-git
+	depends = ffmpeg
