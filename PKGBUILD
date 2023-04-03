@@ -1,38 +1,44 @@
 # Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
 pkgname=emilua
-pkgver=0.3.2
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Lua execution engine"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/emilua/emilua"
 license=('boost')
-depends=('luajit' 'fmt' 'openssl' 'ncurses')
-makedepends=('meson' 'boost' 're2c' 'xxd' 'asciidoctor')
-#checkdepends=('gawk')
+depends=('luajit' 'boost-libs' 'fmt' 'openssl' 'ncurses' 'serd' 'sord' 'liburing' 'libcap')
+makedepends=('git' 'meson' 'boost' 're2c' 'gawk' 'gperf' 'xxd' 'asciidoctor')
 source=("${pkgname}::git+https://gitlab.com/emilua/emilua.git#tag=v${pkgver}"
-	"boost.http::git+https://github.com/BoostGSoC14/boost.http.git#commit=07ba4ef67fc1488bf789008b43550526931ab412"
-	"trial.protocol::git+https://github.com/breese/trial.protocol.git#commit=cd0055431ec42f30c53b295411ee00cade8b9b5e")
+	"emilua-http::git+https://github.com/BoostGSoC14/boost.http.git#commit=93ae527c89ffc517862e1f5f54c8a257278f1195"
+	"trial-protocol::git+https://github.com/breese/trial.protocol.git#commit=79149f604a49b8dfec57857ca28aaf508069b669")
 md5sums=('SKIP'
 	 'SKIP'
 	 'SKIP')
 #validpgpkeys=()
 
 prepare() {
-	cd "${srcdir}/${pkgname}"
-	git submodule init
-	git config submodule.boost.http.url "${srcdir}/boost.http"
-	git config submodule.trial.protocol.url "${srcdir}/trial.protocol"
-	git submodule update
+	cd "${srcdir}/${pkgname}/subprojects"
+	ln -s "${srcdir}/emilua-http" .
+	cp "packagefiles/emilua-http/meson.build" "emilua-http/"
+	ln -s "${srcdir}/trial-protocol" .
+	cp "packagefiles/trial.protocol/meson.build" "trial-protocol/"
 }
 
 build() {
 	arch-meson emilua build \
-		   -D enable_tests=false \
+		   -D version_suffix=-arch${pkgrel} \
 		   -D enable_http=true \
-		   -D version_suffix=-arch1
+		   -D enable_file_io=true \
+		   -D enable_io_uring=true \
+		   -D enable_linux_namespaces=true
 	meson compile -C build
 }
 
+check() {
+	cd build
+	meson test --print-errorlogs
+}
+
 package() {
-	DESTDIR="$pkgdir/" meson install -C build
+	meson install -C build --destdir "$pkgdir"
 }
