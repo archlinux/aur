@@ -1,6 +1,6 @@
 pkgbase = llama-git
 	pkgdesc = Terminal file manager
-	pkgver = 1.0.1.r3.g58c042e
+	pkgver = 1.4.0.r1.gc32e9f7
 	pkgrel = 1
 	url = https://github.com/antonmedv/llama
 	arch = x86_64

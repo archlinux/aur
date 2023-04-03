@@ -2,7 +2,7 @@
 # Contributor: Emilio Reggi <nag@mailbox.org>
 
 pkgname=llama-git
-pkgver=1.0.1.r3.g58c042e
+pkgver=1.4.0.r1.gc32e9f7
 pkgrel=1
 pkgdesc="Terminal file manager"
 arch=('x86_64' 'i686' 'arm')
@@ -22,7 +22,7 @@ pkgver() {
 prepare() {
 	cd "$pkgname"
 	mkdir -p build
-	go mod tidy
+	go mod download
 }
 
 build() {
@@ -33,13 +33,13 @@ build() {
 	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
 	cd "$pkgname"
-	go build -o build/ -ldflags "-linkmode=external -extldflags=${LDFLAGS}"
+	go build -o build/ -ldflags "-linkmode=external -extldflags \"${LDFLAGS}\""
 }
 
 package() {
 	cd "$pkgname"
-	install -D build/llama -t "$pkgdir/usr/bin/"
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dv build/llama -t "$pkgdir/usr/bin/"
+	install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
