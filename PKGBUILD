@@ -16,7 +16,7 @@ optdepends=("org.freedesktop.secrets: keyring/password support"
 conflicts=("$_pkgname" "$_pkgname-bin" "$_pkgname-preview-bin"
            "$_pkgname-beta-bin" "skype")
 provides=("$_pkgname" "skype")
-install=install.sh
+install="$pkgname-install"
 source=(
 "https://repo.skype.com/rpm/stable/${_pkgname}_${pkgver}-1.x86_64.rpm"
 )
