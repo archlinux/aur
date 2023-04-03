@@ -33,7 +33,7 @@ build() {
 	if [[ -z "$NO_SMART_JOB_COUNT" ]]; then
 		if [[ ${build_jobs} -gt 1 ]]; then
 			jobs=1
-			# The viewer requires an average of 4GB of memory per core to link
+			# The viewer requires an average of 2GB of memory per core to link
 			# Note: Behaviour change compared to the previous versions:
 			# This script will no longer try to allocate build memory into swap
 			# This is bad practice, and swap should be reserved to evict process
@@ -41,7 +41,7 @@ build() {
 			# This script will now try to check if swap is present and sufficent
 			# for the current used memory to be stored in swap before allocating,
 			# and will fallback to conservative allocation if swap is not available
-			gigperlinkprocess=4
+			gigperlinkprocess=2
 			mempercorekb=$((gigperlinkprocess * 1048576))
 			requiredmemorykb=$(($(nproc) * mempercorekb))
 			free_output="$(free --kilo --total | tail -n+2 | tr -s ' ')"
