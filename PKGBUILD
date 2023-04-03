@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-mainline-mod-cache_purge
-pkgver=2.5.2
+pkgver=2.5.3
 pkgrel=1
 
 _modname="${pkgname#nginx-mainline-mod-}"
@@ -14,7 +14,7 @@ url="https://github.com/nginx-modules/ngx_cache_purge"
 license=('CUSTOM')
 
 source=(https://github.com/nginx-modules/ngx_cache_purge/archive/$pkgver/ngx_cache_purge-$pkgver.tar.gz)
-sha256sums=('552ff1b9a8bcf77b21093b0e2e59a86852870ffda8c97af8ca9422ccd90ccd5f')
+sha256sums=('43158a75bbc8d4ba66ec9c60a1ec13a792803a36b62ffc3fa01088d8675108e0')
 
 prepare() {
 	mkdir -p build
