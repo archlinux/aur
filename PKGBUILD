@@ -2,7 +2,7 @@
 # Contributor: Emilio Reggi <nag@mailbox.org>
 
 pkgname=llama
-pkgver=1.2.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Terminal file manager"
 arch=('x86_64' 'i686' 'aarch64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('cf6fe219f2554c90aadbe4d0ebb961b53fe3296873addab1a3af941646e19ca2')
+sha256sums=('301f5dff2b8f27595a08a12626125d28313b5a92e97ccdaf4d0cb89111ebab9a')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -25,10 +25,8 @@ build() {
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -ldflags=-linkmode=external -trimpath -mod=readonly -modcacherw"
-
 	cd "$pkgname-$pkgver"
-	go build -o build \
-		-ldflags "-linkmode=external -extldflags \"${LDFLAGS}\""
+	go build -o build -ldflags "-linkmode=external -extldflags \"${LDFLAGS}\""
 }
 
 package() {
