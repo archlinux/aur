@@ -1,7 +1,7 @@
 pkgbase = psiphon-tunnel-core-git
 	pkgdesc = Psiphon Tunnelling Proxy
-	pkgver = 2.0.27.r3656.3b2cfbca
-	pkgrel = 3
+	pkgver = 2.0.29.r3767.afd5c1b1
+	pkgrel = 2
 	epoch = 3
 	url = https://github.com/Psiphon-Labs/psiphon-tunnel-core
 	install = psiphon.install

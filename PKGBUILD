@@ -4,8 +4,8 @@
 
 _pkgname=psiphon-tunnel-core
 pkgname="$_pkgname-git"
-pkgver=2.0.27.r3656.3b2cfbca
-pkgrel=3
+pkgver=2.0.29.r3767.afd5c1b1
+pkgrel=2
 epoch=3
 pkgdesc='Psiphon Tunnelling Proxy'
 arch=('i686' 'x86_64')
@@ -48,10 +48,9 @@ build() {
   mkdir -p "${GOPATH}/src/github.com/Psiphon-Labs"
   rm -rf "${GOPATH}/src/github.com/Psiphon-Labs/${_pkgname}"
   ln -srf  "$srcdir/${_pkgname}/" "${GOPATH}/src/github.com/Psiphon-Labs/${_pkgname}"
-  
-  # Modified to disable quic-go (it is not compatible with current go version 1.19)
-  go build -tags "PSIPHON_DISABLE_QUIC" -o bin/$console_binary "github.com/Psiphon-Labs/$_pkgname/ConsoleClient"
-  go build -tags "PSIPHON_DISABLE_QUIC" -o bin/$server_binary "github.com/Psiphon-Labs/$_pkgname/Server"
+
+  go build -o bin/$console_binary "github.com/Psiphon-Labs/$_pkgname/ConsoleClient"
+  go build -o bin/$server_binary "github.com/Psiphon-Labs/$_pkgname/Server"
 }
 
 package() {
