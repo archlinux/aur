@@ -7,7 +7,7 @@ unchanged:
                                      ${CMAKE_SOURCE_DIR}/tools/depends/target/ffmpeg/FindGnuTls.cmake
 -                                    <SOURCE_DIR>)
 +                                    <SOURCE_DIR> &&
-+                                    patch -p1 -N -i ${CMAKE_SOURCE_DIR}/tools/depends/target/ffmpeg/0003-rkmpp-4.patch && patch -p1 -N -i ${CMAKE_SOURCE_DIR}/tools/depends/target/ffmpeg/0004-build-fix-for-dav1d-1.0.0.patch && patch -p1 -N -i ${CMAKE_SOURCE_DIR}/tools/depends/target/ffmpeg/0005-av_image_fill_plane_sizes.patch &&
++                                    patch -p1 -N -i ${CMAKE_SOURCE_DIR}/tools/depends/target/ffmpeg/0003-rkmpp-4.patch &&
 +                                    echo "########################################## patched ffmpeg ##############################"
 +                     )
 +

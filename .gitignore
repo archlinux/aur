@@ -1,0 +1,4 @@
+*.tar.gz
+*.tar.xz
+*.project
+0001-upstream-build-fixes-from-debian.patch
