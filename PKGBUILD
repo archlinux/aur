@@ -3,7 +3,7 @@
 pkgname=mullvad-browser-bin
 _pkgbase="${pkgname%-bin}"
 pkgver=12.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Privacy-focused web browser developed in a collaboration between Mullvad VPN and the Tor Project.'
 arch=(x86_64)
 url=https://mullvad.net/en/browser
@@ -21,20 +21,21 @@ conflicts=("$_pkgbase")
 options=(!strip)
 
 source=(mullvad-browser.desktop)
-source_x86_64=(${pkgname}-${pkgver}-x86_64.zip::https://cdn.mullvad.net/browser/$pkgver/mullvad-browser-linux64-${pkgver}_ALL.tar.xz)
+source_x86_64=(${pkgname}-${pkgver}-x86_64.tar.xz::https://cdn.mullvad.net/browser/$pkgver/mullvad-browser-linux64-${pkgver}_ALL.tar.xz)
 
-sha256sums=('7d6036df369a79bd54625f621479eff5c02a93ad749da3315f0e5ce14ba1f241')
+sha256sums=('82de45a644102a8e4c63b74e8b6d99ec553d9ceb526ef1514fe65b6bc72d61f1')
 sha256sums_x86_64=('ab875328d42472a691c22176e6254e412bf054b037b494654380f30b7b6e1b90')
 
 package() {
   install -dm0755 "$pkgdir/opt"
   cp -a mullvad-browser "$pkgdir/opt/$pkgname"
 
+  # by default, only owner has access to all files
   chmod -R ugo+r "$pkgdir/opt/$pkgname"
   find "$pkgdir/opt/$pkgname" -executable -execdir chmod ugo+x '{}' +
 
-  install -dm0755 "$pkgdir/usr/bin"
-  ln -s "$pkgdir/opt/$pkgname/Browser/start-mullvad-browser" "$pkgdir/usr/bin/mullvad-browser"
+  # ask it to create profiles in ~
+  touch "$pkgdir/opt/$pkgname/Browser/system-install"
 
   install -Dm0644 -t "$pkgdir/usr/share/applications/" mullvad-browser.desktop
 
