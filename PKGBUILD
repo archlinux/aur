@@ -1,19 +1,17 @@
-# Maintainer: he3als@disroot.org
-# Contributor: Fork of lunar-client by 'mail@nixuge.me'/'Nixuge'
+# Maintainer: AUR@offlinecheatbreaker.com
 
 pkgname=offline-cheatbreaker
 _pkgname=offline-cheatbreaker
 pkgver=2.3.1
 pkgrel=1
-pkgdesc='Continuation of the abandoned PvP modpack for Minecraft called CheatBreaker'
+pkgdesc='Offline CheatBreaker is a continuation of the original CheatBreaker (which was shutdown in 2018 and was a modpack and FPS booster combined!). In most cases, Offline CheatBreaker more than doubles your normal Minecraft frames!'
 url=https://offlinecheatbreaker.com
 arch=(x86_64)
-license=(unknown)
 depends=(fuse xorg-xrandr)
 options=(!strip)
 _appimage="Offline_CheatBreaker.AppImage"
 source=("https://github.com/Offline-CheatBreaker/Launcher/releases/download/${pkgver}/Offline_CheatBreaker.AppImage")
-sha256sums=('151a37f9536f43595ce31b554e54c428e9c2818dcd8c1b739a9f4f3b14a681fd')
+md5sums=(SKIP)
 
 prepare() {
 	chmod +x "${_appimage}"
@@ -52,4 +50,3 @@ package() {
 		"/opt/${_pkgname}/${_pkgname}.AppImage" \
 		"${pkgdir}/usr/bin/${_pkgname}"
 }
-# vim:set ts=4 sw=4 noet:
