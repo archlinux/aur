@@ -33,6 +33,7 @@ needed_pkgs=(
 	pulseaudio
 	python-pywal
 	rofi
+	rofi-greenclip
 	scrot
 	skippy-xd
 	sxiv

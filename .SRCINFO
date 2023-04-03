@@ -32,6 +32,7 @@ pkgbase = dots-git
 	depends = pulseaudio
 	depends = python-pywal
 	depends = rofi
+	depends = rofi-greenclip
 	depends = scrot
 	depends = skippy-xd
 	depends = sxiv
