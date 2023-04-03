@@ -1,0 +1,3 @@
+pre_remove() {
+  rm -f /opt/upsmon/event.log /opt/upsmon/data_*.log
+}

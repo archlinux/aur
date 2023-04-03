@@ -1,0 +1,1 @@
+SUBSYSTEM=="tty", SUBSYSTEMS=="usb", ATTRS{idVendor}=="04b4", ATTRS{idProduct}=="5500", SYMLINK+="powershield", RUN+="/bin/systemctl restart powershield.service"

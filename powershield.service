@@ -1,0 +1,32 @@
+[Unit]
+Description=The UPSMON daemon control the UPS.
+After=syslog.target network-online.target
+
+[Service]
+Type=forking
+ExecStartPre=+-/usr/bin/chgrp --silent powershield /opt/upsmon
+ExecStartPre=+-/usr/bin/chmod --silent g+rw /opt/upsmon
+ExecStartPre=+-/usr/bin/chgrp --silent powershield /opt/upsmon/event.log
+ExecStartPre=+-/bin/bash -c '/usr/bin/chgrp --silent powershield /opt/upsmon/data_*.log'
+ExecStart=/opt/upsmon/upsagent -start
+WorkingDirectory=/opt/upsmon
+ReadWritePaths=/opt/upsmon
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateUsers=true
+ProtectKernelTunables=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+DeviceAllow=char-ttyS rw
+DeviceAllow=char-ttyUSB rw
+DeviceAllow=char-ttyACM rw
+DeviceAllow=char-rfcomm rw
+DynamicUser=true
+SupplementaryGroups=uucp
+UMask=0113
+User=powershield
+Group=powershield
+
+[Install]
+WantedBy=multi-user.target
