@@ -8,6 +8,6 @@ pkgbase = offline-cheatbreaker
 	depends = xorg-xrandr
 	options = !strip
 	source = https://github.com/Offline-CheatBreaker/Launcher/releases/download/2.3.1/Offline_CheatBreaker.AppImage
-	md5sums = 15c126a6077643f7e07d35f3fbca7c00 ./Offline_CheatBreaker.AppImage
+	md5sums = 15c126a6077643f7e07d35f3fbca7c00
 
 pkgname = offline-cheatbreaker
