@@ -1,7 +1,7 @@
 pkgbase = git-gone
 	pkgdesc = Prune stale local Git branches
-	pkgver = 0.4.3
-	pkgrel = 2
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://github.com/swsnr/git-gone
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = git-gone
 	depends = git
 	depends = libgit2
 	conflicts = git-gone-git
-	source = git-gone-0.4.3.tar.gz::https://github.com/swsnr/git-gone/archive/v0.4.3.tar.gz
-	sha512sums = 47eb0080a22a29ab12783b0cc1f4b7b6f5cee19646ea64d0785172ee9fccf416609422e87736fd6857bbf5572f125c019bf8226d696ad2fefd78dcf638622772
+	source = git-gone-0.5.0.tar.gz::https://github.com/swsnr/git-gone/archive/v0.5.0.tar.gz
+	sha512sums = 501367d4685c2dbbe3d2685544710d634f11623fed108b786c7fca850ebce978d7d724babaeb1e18d16444e54e1434aefb0e7fd09ffde325c4d5fbd3af6b0ac3
 
 pkgname = git-gone
