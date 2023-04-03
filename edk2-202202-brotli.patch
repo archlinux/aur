@@ -1,0 +1,15 @@
+diff -ruN a/BaseTools/Source/C/BrotliCompress/GNUmakefile b/BaseTools/Source/C/BrotliCompress/GNUmakefile
+--- a/BaseTools/Source/C/BrotliCompress/GNUmakefile	2022-02-21 16:19:40.000000000 +0100
++++ b/BaseTools/Source/C/BrotliCompress/GNUmakefile	2022-04-07 13:13:20.119878689 +0200
+@@ -11,11 +11,9 @@
+ OBJECTS = \
+   BrotliCompress.o \
+   brotli/c/common/platform.o \
+-  brotli/c/common/shared_dictionary.o \
+   brotli/c/common/constants.o \
+   brotli/c/common/context.o \
+   brotli/c/enc/command.o \
+-  brotli/c/enc/compound_dictionary.o \
+   brotli/c/enc/fast_log.o \
+   brotli/c/common/dictionary.o \
+   brotli/c/common/transform.o \

@@ -1,0 +1,6 @@
+post_install() {
+  # note for users of ovmf
+  if [ "$(vercmp "$1" '202002-9')" -le 0 ]; then
+    echo -e "The firmware location has changed to /usr/share/edk2-ovmf/. Symlinks are provided for backwards compatibility.\nNOTE: To update the paths run 'virsh edit' on virtual machines that use OVMF."
+  fi
+}
