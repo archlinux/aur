@@ -1,7 +1,7 @@
 # Maintainer: Mathias Nedrebø <mathias.nedrebo@zivid.com>
 
 pkgname=zivid
-pkgver='2.8.1+dd4dffea_1'
+pkgver='2.9.0+4dbba385_1'
 pkgrel=1
 pkgdesc='Defining the Future of 3D Machine Vision'
 arch=('x86_64')
@@ -14,8 +14,8 @@ provides=()
 
 groups=(zivid-all)
 
-source=(https://www.zivid.com/hubfs/softwarefiles/releases/2.8.1+dd4dffea-1/u18/zivid_2.8.1+dd4dffea-1_amd64.deb)
-sha256sums=(008ea4f587c82678d29ca972e377a506374ffc084c38f7945264dd9be1c4a01d)
+source=(https://zivpublicdownloads.blob.core.windows.net/zividpublicdownloads/releases/2.9.0+4dbba385-1/u18/zivid_2.9.0+4dbba385-1_amd64.deb)
+sha256sums=(bcd579ad44673597894af928f34c7b270f706f8e906550a4f39cc0b7287f3b6f)
 
 options=(!strip)
 
