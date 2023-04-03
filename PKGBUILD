@@ -8,8 +8,8 @@ _tag="4.8"
 
 pkgname="restbed"
 arch=('i686' 'x86_64')
-pkgver=4.8.0
-pkgrel=1
+pkgver=4.8.r0.g5817f08
+pkgrel=2
 pkgdesc="Framework bringing asynchronous RESTful functionality to C++14 applications"
 url='https://github.com/Corvusoft/restbed'
 license=('AGPL' 'CPL')
