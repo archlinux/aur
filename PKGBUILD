@@ -17,7 +17,7 @@ conflicts=("$_pkgname" "$_pkgname-bin" "$_pkgname-stable-bin"
            "$_pkgname-beta-bin" "skype")
 provides=("$_pkgname" "skype")
 replaces=("$_pkgname-bin")
-install=install.sh
+install="$pkgname-install"
 source=(
 https://repo.skype.com/rpm/unstable/${_pkgname}_${pkgver}-1.x86_64.rpm
 )
