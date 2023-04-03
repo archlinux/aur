@@ -1,0 +1,16 @@
+pkgbase = vapoursynth-plugin-chickendream-git
+	pkgdesc = Plugin for Vapoursynth: chickendream (GIT version)
+	pkgver = r2.1.ga59183f
+	pkgrel = 1
+	url = https://github.com/EleonoreMizo/chickendream
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = autogen
+	depends = vapoursynth
+	provides = vapoursynth-plugin-chickendream
+	conflicts = vapoursynth-plugin-chickendream
+	source = chickendream::git+https://github.com/EleonoreMizo/chickendream.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-chickendream-git
