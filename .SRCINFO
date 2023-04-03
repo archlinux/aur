@@ -1,8 +1,8 @@
 pkgbase = mingw-w64-sdl2_image
 	pkgdesc = SDL2 image libraries (mingw-w64)
-	pkgver = 2.0.5
+	pkgver = 2.6.3
 	pkgrel = 1
-	url = http://www.libsdl.org/projects/SDL_image
+	url = https://github.com/libsdl-org/SDL_image
 	arch = any
 	license = MIT
 	makedepends = mingw-w64-configure
@@ -15,8 +15,7 @@ pkgbase = mingw-w64-sdl2_image
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = http://www.libsdl.org/projects/SDL_image/release/SDL2_image-2.0.5.tar.gz
-	sha1sums = c0aed07994f670a3758f6b8b93d9034a58df5781
+	source = https://github.com/libsdl-org/SDL_image/releases/download/release-2.6.3/SDL2_image-2.6.3.tar.gz
+	sha256sums = 931c9be5bf1d7c8fae9b7dc157828b7eee874e23c7f24b44ba7eff6b4836312c
 
 pkgname = mingw-w64-sdl2_image
-
