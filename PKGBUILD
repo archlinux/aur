@@ -2,7 +2,7 @@
 # Maintainer: Fabian Bornschein <fabiscafe-cat-mailbox-dog-org>
 
 pkgname=loupe
-pkgver=0.0.0+r285+b60656c
+pkgver=0.0.0+r297+6d694c6
 pkgrel=1
 pkgdesc='Simple image viewer for GNOME'
 arch=(x86_64 aarch64)
@@ -20,7 +20,7 @@ makedepends=(
 	meson
 	rust
 )
-_commit=('b60656cf5ce3dd23706c6bfd684c5bd33d516913')
+_commit=('6d694c6bebb71654e897fd18a220150cac30dfd6')
 source=("git+${url}.git#commit=${_commit}")
 b2sums=('SKIP')
 
