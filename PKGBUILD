@@ -24,6 +24,9 @@ pkgver() {
 package() {
   cd "${srcdir}/${pkgname%-git}"
   ./install -P "${pkgdir}/usr"
+
+  find docs -name "*.md" \
+    -exec install -Dm 644 -t "${pkgdir}/usr/share/doc/${pkgname%-git}" {} +
 }
 
 sha256sums=('SKIP')
