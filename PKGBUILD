@@ -1,9 +1,9 @@
 # Maintainer: tarball <bootctl@gmail.com>
+# Contributor: Mark Wagie <mark.wagie@proton.me>
 
 pkgname=mullvad-browser-bin
-_pkgbase="${pkgname%-bin}"
 pkgver=12.0.4
-pkgrel=3
+pkgrel=4
 pkgdesc='Privacy-focused web browser developed in a collaboration between Mullvad VPN and the Tor Project.'
 arch=(x86_64)
 url=https://mullvad.net/en/browser
@@ -16,37 +16,46 @@ optdepends=(
   'pulseaudio: Audio support'
   'speech-dispatcher: Text-to-Speech'
   'xdg-desktop-portal: Screensharing with Wayland')
-provides=("$_pkgbase=$pkgver" 'mullvad-browser')
-conflicts=("$_pkgbase")
-options=(!strip)
+provides=(mullvad-browser=$pkgver mullvad-browser)
+conflicts=(mullvad-browser)
 
-source=($_pkgbase.sh mullvad-browser.desktop)
-source_x86_64=(${pkgname}-${pkgver}-x86_64.tar.xz::https://cdn.mullvad.net/browser/$pkgver/mullvad-browser-linux64-${pkgver}_ALL.tar.xz)
+source=(
+  https://cdn.mullvad.net/browser/$pkgver/mullvad-browser-linux64-${pkgver}_ALL.tar.xz{,.asc}
+  mullvad-browser.sh
+  mullvad-browser.desktop
+)
+validpgpkeys=(
+  'EF6E286DDA85EA2A4BA7DE684E2C6E8793298290' # Tor Browser Developers (signing key) <torbrowser@torproject.org>
+)
 
-sha256sums=('7be1e26a22d71c795a53a93492358861169bac32cd9a4499aed00dff75007110'
-            '7d6036df369a79bd54625f621479eff5c02a93ad749da3315f0e5ce14ba1f241')
-sha256sums_x86_64=('ab875328d42472a691c22176e6254e412bf054b037b494654380f30b7b6e1b90')
+sha256sums=('ab875328d42472a691c22176e6254e412bf054b037b494654380f30b7b6e1b90'
+            'SKIP'
+            '0fbfcc63591c661fd73de462a123e6daeae01d7ebc5981c8793227369d77b565'
+            '9bb24b8e210112b1222d028285c6d68ab599f8382b2b108ab69284948bb4ac70')
 
 package() {
-  install -dm0755 "$pkgdir/opt"
-  cp -a mullvad-browser "$pkgdir/opt/$pkgname"
+  cd mullvad-browser
 
-  # by default, only owner has access to all files
-  chmod -R ugo+r "$pkgdir/opt/$pkgname"
-  find "$pkgdir/opt/$pkgname" -executable -execdir chmod ugo+x '{}' +
+  # only owner has access to all files
+  chmod --recursive a+r .
+  find . -executable -execdir chmod a+x '{}' +
+
+  # copy files from archive
+  install -dm0755 "$pkgdir/opt/mullvad-browser/"
+  cp --archive Browser/* "$pkgdir/opt/mullvad-browser/"
 
   # ask it to create profiles in ~
-  touch "$pkgdir/opt/$pkgname/Browser/system-install"
+  touch "$pkgdir/opt/mullvad-browser/system-install"
 
   # cli wrapper
-  install -Dm0755 $_pkgbase.sh "$pkgdir/usr/bin/$_pkgbase"
+  install -Dm0755 "$srcdir/mullvad-browser.sh" "$pkgdir/usr/bin/mullvad-browser"
 
   # desktop file for various launchers
-  install -Dm0644 -t "$pkgdir/usr/share/applications/" $_pkgbase.desktop
+  install -Dm0644 -t "$pkgdir/usr/share/applications/" "$srcdir/mullvad-browser.desktop"
 
   # icons
-  for size in 16x16 32x32 48x48 64x64 128x128; do
-    install -Dm0644 "$pkgdir/opt/$pkgname/Browser/browser/chrome/icons/default/default${size/x*/}.png" \
-      "$pkgdir/usr/share/icons/hicolor/$size/apps/mullvad-browser.png"
+  for size in 16 32 48 64 128; do
+    install -Dm0644 "$pkgdir/opt/mullvad-browser/browser/chrome/icons/default/default$size.png" \
+      "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/mullvad-browser.png"
   done
 }
