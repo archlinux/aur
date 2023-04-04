@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='vrf-decompiler'
 _reponame='ValveResourceFormat'
-pkgver='0.3.1'
+pkgver='0.3.2'
 pkgrel='1'
 pkgdesc="File data viewer and decompiler for Valve's Source 2 resource file format"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ depends=('dotnet-runtime' 'skia-sharp')
 makedepends=('dotnet-sdk')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('8f8bff9240e2ade9cdfd601d975e5590ba174459cab48381257ce15e54ac616553d9ad38ccb4329f58061a0c8261e08a6c37c1166eb18984f95170dc61f84273')
+sha512sums=('8c1d92eb0eb069beee345d974d5103446b3498141bcbcaa4f95d2817f45ac7a442351b6733e491bc888960b5723542160147d9b3cd5e5952aaf408cfe24eed7c')
 
 _sourcedirectory="$_reponame-$pkgver"
 
