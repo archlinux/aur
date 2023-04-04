@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ddpcr
-_pkgver=1.15
+_pkgver=1.15.1
 pkgname=r-${_pkgname,,}
-pkgver=1.15
-pkgrel=4
+pkgver=1.15.1
+pkgrel=1
 pkgdesc='Analysis and Visualization of Droplet Digital PCR in R and on the Web'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -20,6 +20,7 @@ depends=(
   r-plyr
   r-readr
   r-shiny
+  r-shinydisconnect
   r-shinyjs
   r-tibble
 )
@@ -35,7 +36,7 @@ optdepends=(
   r-utils
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9ad78906d8aec5ca0f57f403d15a2f09e913a726686515cd4b1d8fa7a6990213')
+sha256sums=('9dcd410f73982f81725fff36e01180082943ea6b8c28f27f4c6f9d5998a0d6c4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
