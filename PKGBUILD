@@ -106,8 +106,8 @@ else
 pkgname="emacs-pgtk-git"
 fi
 pkgver=29.0.60.164954
-pkgrel=1
-pkgdesc="GNU Emacs. Development master branch."
+pkgrel=2
+pkgdesc="GNU Emacs. Development branch, with PGTK enabled."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
 license=('GPL3')
