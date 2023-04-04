@@ -2,7 +2,7 @@
 # Contributor: qubidt <qubidt at gmail dot com>
 pkgname=sniffnet
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Application to comfortably monitor your network traffic"
 arch=('x86_64')
 url="https://github.com/GyulyVGC/$pkgname"
