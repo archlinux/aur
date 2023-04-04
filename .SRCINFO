@@ -5,7 +5,6 @@ pkgbase = corplink-bin
 	url = https://www.volcengine.com/product/feilian
 	install = corplink-bin.install
 	arch = x86_64
-	groups = 
 	license = unknown
 	depends = gtk3
 	depends = libxss

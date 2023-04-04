@@ -8,7 +8,6 @@ pkgdesc="Linux client of Feilian (veCorpLink) from Bytedance."
 arch=('x86_64')
 url="https://www.volcengine.com/product/feilian"
 license=('unknown')
-groups=('')
 depends=('gtk3' 'libxss' 'nss')
 optdepends=('dnsmasq: NetworkManager integration'
             'networkmanager: NetworkManager integration')
