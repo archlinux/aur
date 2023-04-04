@@ -18,8 +18,8 @@
 pkgbase="zfs-linux-hardened"
 pkgname=("zfs-linux-hardened" "zfs-linux-hardened-headers")
 _zfsver="2.1.9"
-_kernelver="6.1.20.hardened1-1"
-_kernelver_full="6.1.20.hardened1-1"
+_kernelver="6.1.21.hardened1-1"
+_kernelver_full="6.1.21.hardened1-1"
 _extramodules="${_kernelver/.hardened/-hardened}-hardened"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
@@ -27,10 +27,16 @@ pkgrel=1
 makedepends=("linux-hardened-headers=${_kernelver}")
 arch=("x86_64")
 url="https://openzfs.org/"
-source=("https://github.com/openzfs/zfs/releases/download/zfs-${_zfsver}/zfs-${_zfsver}.tar.gz")
-sha256sums=("6b172cdf2eb54e17fcd68f900fab33c1430c5c59848fa46fab83614922fe50f6")
+source=("https://github.com/openzfs/zfs/releases/download/zfs-${_zfsver}/zfs-${_zfsver}.tar.gz"
+                "linux-6.3-compat-add-another-bdev_io_acct-case.patch")
+sha256sums=("6b172cdf2eb54e17fcd68f900fab33c1430c5c59848fa46fab83614922fe50f6"
+                          "14b099062abdb8923266f8f39c50d4b98755e6324ae6ce36d322c361b85387ee")
 license=("CDDL")
 depends=("kmod" "zfs-utils=${_zfsver}" "linux-hardened=${_kernelver}")
+prepare() {
+    cd "${srcdir}/zfs-${_zfsver}"
+    patch -Np1 -i ${srcdir}/linux-6.3-compat-add-another-bdev_io_acct-case.patch
+}
 
 build() {
     cd "${srcdir}/zfs-${_zfsver}"
