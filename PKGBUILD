@@ -2,7 +2,7 @@
 _base=nbQA
 pkgname=${_base,,}
 pkgdesc="Run any standard Python code quality tool on a Jupyter Notebook"
-pkgver=1.6.4
+pkgver=1.7.0
 pkgrel=1
 arch=(any)
 url="https://github.com/${_base}-dev/${_base}"
@@ -19,7 +19,7 @@ optdepends=('python-black: toolchain support'
   'python-pylint: toolchain support'
   'pyupgrade: toolchain support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('39f63b17cbf3b981d11e9d96c57cbf9f430063ca64f5cb02e656efb2384da0c16f96a5013cdc04ec38b3ac19a567d443e23c3c71acdebfe5828b827edeaf677a')
+sha512sums=('f367325e9d67ffc2fafbf19afe98622b1f3d86e6466923b85118e3c3aad47b0eb25b85dce3b823e3d3ec27f29461b2fd0c977e1ea47648946cbf08fbfdba7117')
 
 build() {
   cd ${_base}-${pkgver}
