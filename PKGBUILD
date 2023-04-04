@@ -7,7 +7,7 @@
 # Contributor : Geoffrey Teale <tealeg@googlemail.com>
 
 pkgname=google-breakpad
-pkgver=v2022.07.12
+pkgver=v2023.01.27
 pkgrel=1
 _lssver=v2022.10.12
 pkgdesc="An open-source multi-platform crash reporting system"
