@@ -1,7 +1,7 @@
 # Maintainer: WildboarG, mm62633482@gmail.com
 _pkgname=fscan
 pkgname=${_pkgname}-git
-pkgver=1.8.1
+pkgver=1.8.2 
 pkgrel=2
 pkgdesc="Intranet scanning tool"
 arch=('any')
@@ -21,12 +21,10 @@ build() {
 	export GO111MODULE=on
     export GOPROXY=https://mirrors.aliyun.com/goproxy/,direct
     go mod tidy
-	go build -ldflags="-s -w " -trimpath main.go
+	go build -ldflags="-s -w " -o build .
 }
 
 package() {
 	cd "${_pkgname}"
-	upx -9 main 
-	mv main fscan
 	install -Dm755 $srcdir/fscan/fscan  -t "${pkgdir}"/usr/bin/
 }
