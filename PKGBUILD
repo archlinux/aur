@@ -1,4 +1,4 @@
-# Maintainer:  <edgar@localhost>
+# Maintainer:  <edgar [ no ] openmail [d] cc>
 _base=tvm
 # pkgname="${_base}"-git
 pkgname="${_base}"
