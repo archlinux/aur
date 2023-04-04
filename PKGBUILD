@@ -6,9 +6,9 @@
 pkgname=featherpad-qt5
 _pkgname=featherpad
 pkgver=1.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight Qt5 plain text editor'
-arch=('any')
+arch=(x86_64 i686 aarch64 armv7h)
 url='https://github.com/tsujan/FeatherPad'
 license=('GPL3')
 depends=('hicolor-icon-theme' 'hunspell' 'qt5-svg' 'qt5-translations' 'qt5-x11extras')

@@ -1,9 +1,12 @@
 pkgbase = featherpad-qt5
 	pkgdesc = Lightweight Qt5 plain text editor
 	pkgver = 1.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tsujan/FeatherPad
-	arch = any
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
 	license = GPL3
 	makedepends = cmake
 	makedepends = ninja
