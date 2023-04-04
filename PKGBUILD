@@ -6,7 +6,7 @@
 pkgname=intel-mas-cli-tool
 pkgver=2.2
 pkgrel=1
-pkgdesc="Intel Memory and Storage Tool (MAS) supports firmware upgrades and 4Kn sector size changes for PCIe/NVMe/SATA flash/Optane SSDs"
+pkgdesc="A drive management CLI tool for Intel Optane SSDs and Intel Optane Memory devices"
 arch=(x86_64)
 url="https://www.intel.com/content/www/us/en/download/19520/"
 license=()
