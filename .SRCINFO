@@ -1,0 +1,16 @@
+pkgbase = clashctl-bin
+	pkgdesc = CLI for interacting with clash
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/George-Miao/clashctl
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	provides = clashctl
+	source = https://github.com/George-Miao/clashctl/releases/download/0.3.3/clashctl-Linux
+	source = https://raw.githubusercontent.com/George-Miao/clashctl/0.3.3/LICENSE
+	sha256sums = 628dbaa85d178967227c9af06de45c97f6be02caebb99b4d69a9a2edc5e635c6
+	sha256sums = 4a3a27267134942a753ba749a89027b628f73965c2f6e354bde7eff120c34319
+
+pkgname = clashctl-bin
