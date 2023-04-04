@@ -1,0 +1,16 @@
+pkgbase = omalleys-irish-whistles-bin
+	pkgdesc = OMalleys Irish Whistles (VST)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://librewave.com/product/omalleys-irish-whistles/
+	arch = x86_64
+	groups = pro-audio
+	groups = vst-plugins
+	license = EULA
+	makedepends = xdg-user-dirs
+	depends = glibc
+	depends = libcurl-gnutls
+	conflicts = omalleys-irish-whistles-vst
+	replaces = omalleys-irish-whistles-vst
+
+pkgname = omalleys-irish-whistles-bin
