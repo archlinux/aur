@@ -1,7 +1,7 @@
 pkgbase = dkopp
 	pkgdesc = A backup program using DVDs
 	pkgver = 7.9
-	pkgrel = 5
+	pkgrel = 6
 	url = https://kornelix.net/dkopp/dkopp.html
 	arch = i686
 	arch = x86_64
