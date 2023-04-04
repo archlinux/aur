@@ -2,13 +2,13 @@
 # Contributor: Jiaxi Hu < sftrytry at gmail dot com >
 
 _pkgname=OpenBLAS
-_lapackver=3.9.0
-_blasver=3.8.0
+_lapackver=3.11.0
+_blasver=3.11.0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
-BUILDFLAG="USE_OPENMP=1 USE_THREAD=1 MAJOR_VERSION=3 NO_LAPACK=0 BUILD_LAPACK_DEPRECATED=1 CROSS=1 HOSTCC=gcc"
+BUILDFLAG="USE_OPENMP=1 USE_THREAD=1 USE_TLS=1 MAJOR_VERSION=${_lapackver:0:1} CROSS=1 HOSTCC=gcc"
 
 pkgname=mingw-w64-openblas-lapack
-pkgver=0.3.21
+pkgver=0.3.23
 pkgrel=1
 pkgdesc="An optimized BLAS library based on GotoBLAS2 1.13 BSD, providing optimized blas, lapack, and cblas (mingw-w64)"
 arch=('any')
@@ -29,7 +29,7 @@ conflicts=('mingw-w64-openblas'
            'mingw-w64-lapacke')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/xianyi/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('f36ba3d7a60e7c8bcc54cd9aaa9b1223dd42eaf02c811791c37e8ca707c241ca')
+sha256sums=('5d9491d07168a5d00116cdc068a40022c3455bf9293c7cb86a65b1054d7e5114')
 
 prepare() {
   cd ${srcdir}
@@ -48,14 +48,12 @@ build() {
       _BUILDFLAG="${BUILDFLAG} BINARY=64"
     fi
 
-    make ${_BUILDFLAG} CC=${_arch}-gcc FC=${_arch}-gfortran libs
-    make ${_BUILDFLAG} CC=${_arch}-gcc FC=${_arch}-gfortran netlib
     make ${_BUILDFLAG} CC=${_arch}-gcc FC=${_arch}-gfortran shared
     popd
   done
 }
 
-check() {
+package() {
   cd ${srcdir}
   for _arch in ${_architectures}; do
     pushd "${_pkgname}-build-${_arch}"
@@ -67,17 +65,7 @@ check() {
       _BUILDFLAG="${BUILDFLAG} BINARY=64"
     fi
 
-    # this is actually build tests only, not execute test
-    make ${_BUILDFLAG} CC=${_arch}-gcc FC=${_arch}-gfortran tests
-    popd
-  done
-}
-
-package() {
-  cd ${srcdir}
-  for _arch in ${_architectures}; do
-    pushd "${_pkgname}-build-${_arch}"
-    make ${BUILDFLAG} PREFIX="/usr/${_arch}" DESTDIR="${pkgdir}" install
+    make ${_BUILDFLAG} CC=${_arch}-gcc FC=${_arch}-gfortran PREFIX="/usr/${_arch}" DESTDIR="${pkgdir}" install
     install -Dm644 libopenblas.dll.a "${pkgdir}/usr/${_arch}/lib"
 
     ${_arch}-strip --strip-unneeded "${pkgdir}/usr/${_arch}/bin/"*.dll
