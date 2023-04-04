@@ -1,6 +1,6 @@
 pkgbase = urn-git
 	pkgdesc = Split timer for speedrunning
-	pkgver = r124.79817db
+	pkgver = r133.09c0756
 	pkgrel = 1
 	url = https://github.com/leflores-fisi/urn
 	install = urn-git.install
@@ -13,7 +13,7 @@ pkgbase = urn-git
 	depends = gtk3
 	depends = jansson
 	depends = hicolor-icon-theme
-	source = git+https://github.com/leflores-fisi/urn.git
+	source = git+https://github.com/paoloose/urn.git
 	source = git+https://github.com/3snowp7im/urn-themes.git
 	source = urn.desktop
 	sha1sums = SKIP

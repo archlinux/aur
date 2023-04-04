@@ -1,7 +1,7 @@
 # Maintainer: beltsmith <aur@alexgirdler.com>
 # Maintainer: codl <aur@codl.fr>
 pkgname='urn-git'
-pkgver=r124.79817db
+pkgver=r133.09c0756
 pkgrel=1
 pkgdesc='Split timer for speedrunning'
 url='https://github.com/leflores-fisi/urn'
@@ -13,7 +13,7 @@ makedepends=('imagemagick' 'xxd' 'git')
 
 install='urn-git.install'
 
-source=('git+https://github.com/leflores-fisi/urn.git'
+source=('git+https://github.com/paoloose/urn.git'
         'git+https://github.com/3snowp7im/urn-themes.git'
         'urn.desktop')
 sha1sums=('SKIP'
@@ -48,8 +48,8 @@ package () {
     install -D -m 644 urn-gtk.gschema.xml "$pkgdir/usr/share/glib-2.0/schemas/urn-gtk.gschema.xml"
     mkdir -p "$pkgdir/usr/share/urn/themes"
     cp -a themes/* "$pkgdir/usr/share/urn/themes/"
-    mkdir -p "$pkgdir/usr/share/urn/splits"
-    cp -a splits/* "$pkgdir/usr/share/urn/splits/"
+    mkdir -p "$pkgdir/usr/share/urn/splits_examples"
+    cp -a splits_examples/* "$pkgdir/usr/share/urn/splits_examples/"
 
     for size in 16 22 24 32 36 48 64 72 96 128 256 512; do
         convert static/urn.png -resize ${size}x${size} urn-${size}x${size}.png
