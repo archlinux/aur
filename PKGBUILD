@@ -1,18 +1,21 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=chwall-git
 _gitname=chwall
-pkgver=v0.5.12.dev.ca23d74
+pkgver=v0.6.0.dev.99e8347
 pkgrel=1
 pkgdesc="A tiny wallpaper changer, written in python"
 arch=("any")
 url="https://git.umaneti.net/chwall/about/"
-license=("WTFPL")
-depends=("gtk3" "procps-ng" "python-cssselect" "python-gobject" "python-lxml"
-         "python-pillow" "python-requests" "python-xdg" "python-yaml")
-makedepends=("python-setuptools" "imagemagick" "git")
+license=("custom:WTFPL")
+depends=("gdk-pixbuf2" "gobject-introspection-runtime" "gtk3"
+         "hicolor-icon-theme" "procps-ng" "python" "python-cssselect"
+         "python-gobject" "python-importlib-metadata" "python-lxml"
+         "python-pillow" "python-requests" "python-setuptools" "python-xdg"
+         "python-yaml")
+makedepends=("imagemagick" "git")
 optdepends=('imagemagick: to extract wallpaper size in nitrogen mode'
             'libnotify: to send notification when wallpaper change'
-            'nitrogen: to apply wallpaper on independant desktop manager'
+            'feh: to apply wallpaper on independant desktop manager'
             'xorg-xrandr: to extract screen config in nitrogen mode')
 conflicts=("chwall")
 source=("git+https://git.umaneti.net/${_gitname}/")
