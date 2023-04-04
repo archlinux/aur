@@ -2,7 +2,7 @@ PhyloSuite
 [Desktop Entry]
 Name=PhyloSuite
 MimeType=
-Exec=/usr/bin/phylosuite/PhyloSuite
+Exec=/usr/bin/phylosuite/PhyloSuite %U
 Type=Application
 Terminal=true
 Icon=/usr/bin/phylosuite/PhyloSuite.png

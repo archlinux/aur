@@ -3,7 +3,7 @@
 
 pkgname=phylosuite
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="an integrated and scalable desktop platform for streamlined molecular sequence data management and evolutionary phylogenetics studies. https://doi.org/10.1111/1755-0998.13096"
 arch=('x86_64')
 url="https://github.com/dongzhang0725/PhyloSuite"
@@ -13,7 +13,7 @@ depends=(
 )
 source=("https://github.com/dongzhang0725/PhyloSuite/releases/download/${pkgver}/PhyloSuite_v${pkgver}_Linux.tar.gz" "PhyloSuite.desktop" "PhyloSuite.png")
 md5sums=('7fd6209f3ec5e20e48a7b63249e60fb8'
-         '29b089eb8ab6a37d184f74cdfd21c569'
+         'b8783008d96fa26dfd2570221243a86a'
          'aca08e388f8d6a180a570b31ccebe764')
 
 package() {
