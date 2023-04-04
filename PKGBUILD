@@ -2,8 +2,8 @@
 # Fediverse: @fabiscafe@mstdn.social
 
 pkgname=tuba
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc='Browse the Fediverse'
 arch=(
   aarch64 #ALARM
@@ -17,20 +17,20 @@ depends=(
   gtk4
   libadwaita
   libgee
-  libsoup
-  # Not a hard dependency of Tuba
-  ## but it's UX breaking & so important
-  ## enough to be in this list instead of
-  ## optdepends
-  ## https://github.com/GeopJr/Tuba/issues/32#issuecomment-1483280966
-  webp-pixbuf-loader
+  libsoup3
+  gtksourceview5
 )
 makedepends=(
   git
   meson
   vala
 )
-_commit=3d952be8d31136873fe1261c460baf88aafb8e7f # tags/0.1.0^0
+
+optdepends=(
+  ## https://github.com/GeopJr/Tuba/issues/32#issuecomment-1483280966
+  'webp-pixbuf-loader: calckey support (webp)'
+)
+_commit=85e8c02b387a30f0d3627cb7d95def456f64d796 # tags/0.2.0^0
 source=("git+https://github.com/GeopJr/Tuba.git#commit=$_commit")
 sha256sums=('SKIP')
 

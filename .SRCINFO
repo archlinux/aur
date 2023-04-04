@@ -1,7 +1,7 @@
 pkgbase = tuba
 	pkgdesc = Browse the Fediverse
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://tuba.geopjr.dev/
 	arch = aarch64
 	arch = armv7h
@@ -14,9 +14,10 @@ pkgbase = tuba
 	depends = gtk4
 	depends = libadwaita
 	depends = libgee
-	depends = libsoup
-	depends = webp-pixbuf-loader
-	source = git+https://github.com/GeopJr/Tuba.git#commit=3d952be8d31136873fe1261c460baf88aafb8e7f
+	depends = libsoup3
+	depends = gtksourceview5
+	optdepends = webp-pixbuf-loader: calckey support (webp)
+	source = git+https://github.com/GeopJr/Tuba.git#commit=85e8c02b387a30f0d3627cb7d95def456f64d796
 	sha256sums = SKIP
 
 pkgname = tuba
