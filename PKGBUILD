@@ -2,7 +2,7 @@
 _base=sport-activities-features
 pkgname=python-${_base}
 pkgdesc="Minimalistic toolbox for extracting features from sports activity files written in Python"
-pkgver=0.3.10
+pkgver=0.3.11
 pkgrel=1
 arch=(any)
 url="https://github.com/firefly-cpp/${_base}"
@@ -11,7 +11,7 @@ depends=(python-geopy python-requests python-overpy python-gpxpy python-geotiler
 makedepends=(python-build python-installer python-poetry-core)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('01f46497d9136648330fa8d8229c752a72336d23522788a893f8e2ffc70faf8fa7a497aeaf4d7a3f4dd9dfafe91b5ddcdcec397b553cf9bfe80d53dd22843446')
+sha512sums=('eb372251d02360b556e2e2af50e5163674c7beb82fae0ab39fa6d27f7ab3209d73209bcfd0efdc9038692401f610c629f98f7d24514eccb77ffafae25c0f9927')
 
 build() {
   cd ${_base}-${pkgver}
