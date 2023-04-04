@@ -22,7 +22,7 @@ prepare() {
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     test -f /usr/bin/rustup && /usr/bin/rustup update --no-self-update $RUSTUP_TOOLCHAIN
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
