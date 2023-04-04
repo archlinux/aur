@@ -1,7 +1,7 @@
 # Maintainer: beelzy
 pkgname=kame-tools-git
 pkgver=5ae1ae1
-pkgrel=3
+pkgrel=4
 pkgdesc="A tool for bundling 3DS theme files"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://gitlab.com/beelzy/kame-tools"
@@ -26,7 +26,7 @@ prepare() {
     git submodule init
     git config submodule.buildtools.url $srcdir/buildtools
     git submodule sync
-    git -c protocol.file.allow=always submodule update
+    git -c protocol.file.allow=always submodule update --force
     cd buildtools
     git apply ../aarch64.patch
 }
