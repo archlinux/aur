@@ -1,0 +1,14 @@
+pkgbase = rhapsody-bin
+	pkgdesc = Rhapsody Sampler (VST3)
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://librewave.com/rhapsody/
+	arch = x86_64
+	groups = pro-audio
+	groups = vst3-plugins
+	license = EULA
+	makedepends = xdg-user-dirs
+	depends = glibc
+	depends = libcurl-gnutls
+
+pkgname = rhapsody-bin
