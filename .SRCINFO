@@ -1,6 +1,6 @@
 pkgbase = browser360-bin
 	pkgdesc = 360 Browser stable version
-	pkgver = 13.2.1030.17
+	pkgver = 13.2.1031.17
 	pkgrel = 1
 	url = https://browser.360.cn
 	arch = x86_64
@@ -36,8 +36,9 @@ pkgbase = browser360-bin
 	depends = libxtst
 	depends = libusb
 	depends = openssl-1.1
+	depends = sh
 	conflicts = browser360-stable-bin
-	source = https://down.360safe.com/gc/signed_com.360.browser-stable_13.2.1030.17-1_amd64.deb
-	sha256sums = ab5136481a48fd14d26347d80e047830752dc64c0479b51fa911c2c946052d5e
+	source = https://down.360safe.com/gc/signed_com.360.browser-stable_13.2.1031.17-1_amd64.deb
+	sha256sums = 98236be5a5a228d6901ec77745fd34793e810dd8c0fed48ceb76d3450c39dc37
 
 pkgname = browser360-bin
