@@ -1,0 +1,10 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: IXWebSocket
+Description: websocket and http client and server library, with TLS support and very few dependencies
+Version: 11.4.3
+Libs: -L${libdir} -lixwebsocket
+Requires: openssl
