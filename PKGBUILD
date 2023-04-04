@@ -1,6 +1,6 @@
 # Maintainer: Arnab Bose <hirak99+arch@gmail.com>
 pkgname=yabsnap
-pkgver=1.08.2
+pkgver=1.08.3
 pkgrel=1
 pkgdesc="Btrfs automated snapshot manager."
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python3')
 makedepends=('rsync')
 provides=('yabsnap')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('b2502b56a8e7539631789051927f7dae')
+md5sums=('2b0dfdef6d592c2435698b93a262f065')
 
 check() {
   cd "$pkgname"-$pkgver
