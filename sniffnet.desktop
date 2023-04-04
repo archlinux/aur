@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Sniffnet
+GenericName=Network Traffic Monitor
+Comment=Application to comfortably monitor your network traffic
+Icon=sniffnet
+Exec=sniffnet
+Terminal=false
+Categories=System;Monitor;
+Keywords=system;process;task
