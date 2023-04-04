@@ -1,7 +1,7 @@
 _pkgbase=etlegacy
 pkgname=etlegacy32-bin
 pkgdesc="Wolfenstein: Enemy Territory 2.60b compatible client/server (etlegacy engine, 32 bit), binary release"
-pkgver=2.81.0
+pkgver=2.81.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.etlegacy.com/"
@@ -21,13 +21,13 @@ license=('GPL3')
 source=(
     "etl_start.sh"
     "etlded_start.sh"
-    "https://www.etlegacy.com/download/file/539"
+    "https://www.etlegacy.com/download/file/554"
     "https://github.com/etlegacy/etlegacy/archive/refs/tags/v$pkgver.tar.gz")
 md5sums=(
-    '5dc7a1fe4129a7ca2dd4b1dc15b0ae4d'
-    'f63392f27b823020dfbce3150e9adf53'
-    'f3a7daf81754785b2c888c3f6d15e36e'
-    '37260857118dc97aec1b37fafed7e7fb'
+    '101f6755a6792825b5cd1982fd2ed890'
+    '76d91573489900d41823a30b0920c784'
+    '0770c036845a6aae69e984d5403785c6'
+    '8cf2d7963038627d3da3845f99a9f5dd'
 )
 
 package() {
@@ -35,8 +35,8 @@ package() {
     install -dm 755 "${pkgdir}"/usr/{bin,lib/${_pkgbase}/,share/{applications,icons,licenses/${_pkgbase},/doc/${_pkgbase}}}
     cp -dr --no-preserve='ownership' ./ "${pkgdir}"/usr/lib/${_pkgbase}/
     # Executables
-    install -Dm 755 "${srcdir}"/etl_start.sh "${pkgdir}"/usr/bin/etl.x86
-    install -Dm 755 "${srcdir}"/etlded_start.sh "${pkgdir}"/usr/bin/etlded.x86
+    install -Dm 755 "${srcdir}"/etl_start.sh "${pkgdir}"/usr/bin/etl.i386
+    install -Dm 755 "${srcdir}"/etlded_start.sh "${pkgdir}"/usr/bin/etlded.i386
     # Incorrect permissions on install, fix
     chmod 755 -R "${pkgdir}"/usr/lib/"${_pkgbase}"/legacy/omni-bot
     # assets
@@ -68,7 +68,9 @@ package() {
     mkdir -p $pkgdir/etc/xdg/$_pkgbase/etmain
     mkdir -p $pkgdir/usr/lib/systemd/system
     install -m 644 "${srcdir}"/"$_pkgbase-$pkgver"/misc/etlegacy.conf $pkgdir/etc/xdg/$_pkgbase/
-    install -m 644 "${srcdir}"/"$_pkgbase-$pkgver"/misc/etlegacy-x86.service $pkgdir/usr/lib/systemd/system/
+    sed -i 's/@BIN_DESCRIBE@/(32 bit)/g' "${srcdir}"/"$_pkgbase-$pkgver"/misc/etlegacy.service.in
+    sed -i 's/@BIN_SUFFIX@/.i386/g' "${srcdir}"/"$_pkgbase-$pkgver"/misc/etlegacy.service.in
+    install -m 644 "${srcdir}"/"$_pkgbase-$pkgver"/misc/etlegacy.service.in $pkgdir/usr/lib/systemd/system/etlegacy-x86.service
 
     # config
     mv $pkgdir/usr/lib/$_pkgbase/etmain/*.cfg $pkgdir/etc/xdg/$_pkgbase/etmain/
