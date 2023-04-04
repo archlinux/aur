@@ -1,0 +1,14 @@
+pkgbase = obs-captions-plugin-bin
+	pkgdesc = Standalone OBS Studio plugin providing closed captioning via Google Cloud Speech Recognition API
+	pkgver = 0.28
+	pkgrel = 1
+	url = https://github.com/ratwithacompiler/OBS-captions-plugin
+	arch = x86_64
+	license = GPL
+	depends = obs-studio>=28
+	depends = qt6-tools
+	conflicts = obs-captions-plugin
+	source = https://github.com/ratwithacompiler/OBS-captions-plugin/releases/download/v0.28/Closed_Captions_Plugin__v0.28_Linux.zip
+	b2sums = 9e0c312d4b7117bc31afce1a9103b54b566883ab1506196de9803b60e29e7d98bd26e38ff14b137519fa7e249f14f8847c2e80e7c9be4d5b011934cf614ad840
+
+pkgname = obs-captions-plugin-bin
