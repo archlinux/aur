@@ -1,0 +1,21 @@
+pkgbase = tarsila
+	pkgdesc = Pixel art and spritesheet editor
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/yds12/tarsila
+	arch = x86_64
+	license = MIT
+	license = APACHE
+	makedepends = cargo
+	makedepends = pkgconf
+	makedepends = glib2
+	makedepends = at-spi2-core
+	makedepends = gdk-pixbuf2
+	depends = gcc-libs
+	depends = glibc
+	depends = gtk3
+	depends = alsa-lib
+	source = tarsila-0.1.0.tar.gz::https://github.com/yds12/tarsila/archive/refs/tags/0.1.0.tar.gz
+	sha512sums = a62ded073ae3c543cac1c027b5a91bd7a3fadebf8692f166cace8665f2e216ef68b32295adb7a954164b4e3595f7328bcf01a200d76e1966e9cf94590464da05
+
+pkgname = tarsila
