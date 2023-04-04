@@ -3,7 +3,7 @@
 _pkgname=shinydisconnect
 _pkgver=0.1.0
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Show a Nice Message When a 'Shiny' App Disconnects or Errors"
 arch=('any')
