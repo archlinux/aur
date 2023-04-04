@@ -2,10 +2,10 @@
 _base=tvm
 # pkgname="${_base}"-git
 pkgname="${_base}"
-pkgver=0.8.0
+pkgver=0.11.1
 pkgrel=1
 # epoch=
-pkgdesc=""
+pkgdesc="Apache TVM, a deep learning compiler that enables access to high-performance machine learning anywhere for everyone"
 arch=('x86_64')
 url="https://tvm.apache.org/"
 license=('Apache 2.0')
@@ -70,8 +70,10 @@ options=(!staticlibs)
 #             'SKIP'
 #             'SKIP'
 #             'SKIP')
-source=("https://www.apache.org/dyn/closer.lua/tvm/tvm-v${pkgver}/apache-tvm-src-v${pkgver}.tar.gz")
-sha512sums=("328b3d5d851ac82f12a0d1402094e608dbfa5a4f6fb8d942a95b41695dc069f1cfcbe915294b3ae71bf2433e792d9e00809c63392d12d20d2f8c27476375d1dc")
+source=("https://dlcdn.apache.org/tvm/tvm-v${pkgver}/apache-tvm-src-v${pkgver}.tar.gz"
+       "enable_features.diff")
+sha512sums=("47f70a6a3679f2c7316c6ea8bb0da133b6a2d2c3b40ab175f8cd6c5dfdad3c5300fb4454bcf3f4a173f37b2fff58eef01b423840ad2c523696698f7d0d8b0a97"
+            "25e22842072314aedc0d988f445dfbc2046ba193176b671dffae7920c20fed6aea677ea421f95e5a5c8f17af08cbdbbc6e9e34d8a72716be05febf322f3dcd9f")
 # noextract=()
 
 # pkgver() {
@@ -107,34 +109,23 @@ prepare() {
   # https://tvm.apache.org/docs/install/from_source.html
   _build="${srcdir}"/build
   [ ! -d "${_build}" ] && mkdir "${_build}"
-  cp cmake/config.cmake "${_build}"
+  patch --forward -i "${srcdir}/enable_features.diff" \
+        -o "${_build}"/config.cmake \
+        -d "${srcdir}/${_base}/cmake"
 
   cd "${_build}"
   python3.8 -m venv env
   source env/bin/activate
   # gen_requirements.py
   pip install setuptools numpy decorator attrs\
-      cloudpickle psutil tornado scipy
+      cloudpickle psutil tornado scipy synr
   deactivate
 }
 
 build() {
   _build="${srcdir}"/build
 
-  CONFOPTS=(
-    -DUSE_OPENCL=ON
-    -DUSE_TARGET_ONNX=ON
-    -DUSE_GRAPH_EXECUTOR=ON
-    -DUSE_PROFILE=ON
-    -DUSE_RELAY_DEBUG=ON
-    -DUSE_LLVM=ON
-    -DUSE_CCACHE=AUTO
-    -DUSE_PIPELINE_EXECUTOR=ON
-    -DUSE_BLAS:STRING="openblas"
-    -DUSE_OPENMP:STRING="gnu"
-    -DPYTHON:FILEPATH=/usr/bin/python3.8
-    -DCMAKE_INSTALL_PREFIX=/usr
-  )
+
   cd "${_build}"
   source env/bin/activate
   export TVM_LOG_DEBUG="ir/transform.cc=1,relay/ir/transform.cc=1"

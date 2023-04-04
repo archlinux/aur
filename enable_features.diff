@@ -1,0 +1,65 @@
+--- a/tvm/cmake/config.cmake	2023-03-15 14:19:25.000000000 +0100
++++ b/tvm/cmake/config.cmake	2023-04-04 14:33:53.756510505 +0200
+@@ -69,7 +69,7 @@
+ #       time and trigger dynamic search and loading of OpenCL in runtime
+ # - OFF: disable OpenCL
+ # - /path/to/opencl-sdk: use specific path to opencl-sdk
+-set(USE_OPENCL OFF)
++set(USE_OPENCL ON)
+ 
+ # Whether enable Metal runtime
+ set(USE_METAL OFF)
+@@ -118,7 +118,7 @@
+ set(USE_GRAPH_EXECUTOR_CUDA_GRAPH OFF)
+ 
+ # Whether enable pipeline executor.
+-set(USE_PIPELINE_EXECUTOR OFF)
++set(USE_PIPELINE_EXECUTOR ON)
+ 
+ # Whether to enable the profiler for the graph executor and vm
+ set(USE_PROFILER ON)
+@@ -134,7 +134,7 @@
+ # - OFF: disable llvm, note this will disable CPU codegen
+ #        which is needed for most cases
+ # - /path/to/llvm-config: enable specific LLVM when multiple llvm-dev is available.
+-set(USE_LLVM OFF)
++set(USE_LLVM /usr/bin/llvm-config)
+ 
+ #---------------------------------------------
+ # Contrib libraries
+@@ -149,7 +149,7 @@
+ set(USE_BYODT_POSIT OFF)
+ 
+ # Whether use BLAS, choices: openblas, atlas, apple
+-set(USE_BLAS none)
++set(USE_BLAS openblas)
+ 
+ # Whether to use MKL
+ # Possible values:
+@@ -176,7 +176,7 @@
+ 
+ # Whether use OpenMP thread pool, choices: gnu, intel
+ # Note: "gnu" uses gomp library, "intel" uses iomp5 library
+-set(USE_OPENMP none)
++set(USE_OPENMP gnu)
+ 
+ # Whether use contrib.random in runtime
+ set(USE_RANDOM ON)
+@@ -283,7 +283,7 @@
+ set(USE_ANTLR OFF)
+ 
+ # Whether use Relay debug mode
+-set(USE_RELAY_DEBUG OFF)
++set(USE_RELAY_DEBUG ON)
+ 
+ # Whether to build fast VTA simulator driver
+ set(USE_VTA_FSIM OFF)
+@@ -327,7 +327,7 @@
+ set(USE_HEXAGON_QHL OFF)
+ 
+ # Whether to use ONNX codegen
+-set(USE_TARGET_ONNX OFF)
++set(USE_TARGET_ONNX ON)
+ 
+ # Whether enable BNNS runtime
+ set(USE_BNNS OFF)
