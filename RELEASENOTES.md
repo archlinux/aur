@@ -1,3 +1,8 @@
+## 3.1.0
+
+* made fetch command a little easier to use
+
+
 ### 3.0.1
 
 * Various small improvements
