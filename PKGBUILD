@@ -1,7 +1,7 @@
 # Maintainer: Derek J. Clark <derekjohn.clark@gmail.com>
 pkgname=opengamepadui-git
 _pkgbase=OpenGamepadUI
-pkgver=v0.7.2.r2.g4f93940
+pkgver=v0.8.0.r0.gb96f61b
 pkgrel=1
 pkgdesc="Open source game launcher"
 arch=('x86_64')
@@ -18,7 +18,7 @@ makedepends=('godot' 'scons' 'pkgconf' 'gcc' 'libxcursor' 'libxinerama'
 	     )
 provides=('opengamepadui')
 conflicts=('opengamepadui-bin')
-_tag=4f939405395c51f429402741a9a28f3f5c7ffa2d
+_tag=b96f61b80672cb5598256906ed6ad8f111f7cfd6
 source=("${_pkgbase}::git+https://github.com/ShadowBlip/${_pkgbase}.git#tag=${_tag}")
 sha256sums=('SKIP')
 
@@ -52,6 +52,9 @@ package() {
 	mkdir -p ${pkgdir}/usr/lib/udev/rules.d
 	install -Dm644 rootfs/usr/lib/udev/rules.d/10-opengamepadui-handheld.rules ${pkgdir}/usr/lib/udev/rules.d/10-opengamepadui-handheld.rules
 	
+	mkdir -p ${pkgdir}/usr/share/icons/hicolor/scalable/apps
+	install -Dm444 rootfs/usr/share/icons/hicolor/scalable/apps/opengamepadui.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/opengamepadui.svg
+
 	mkdir -p ${pkgdir}/usr/share/opengamepadui/scripts
 	install -Dm644 build/libevdev.linux.template_debug.x86_64.so ${pkgdir}/usr/share/opengamepadui/libevdev.linux.template_debug.x86_64.so
 	install -Dm644 build/libopensd.linux.template_debug.x86_64.so ${pkgdir}/usr/share/opengamepadui/libopensd.linux.template_debug.x86_64.so
