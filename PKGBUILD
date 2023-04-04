@@ -1,8 +1,8 @@
-# Maintainer: coffebar i8ehkvien@mozmail.com
+# Maintainer: coffeba  i8ehkvieл@mozmail.com
 
 pkgname=hyprland-monitor-attached
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Run bash script when you attach the monitor on Hyprland'
 arch=('x86_64')
 url="https://github.com/coffebar/$pkgname"
