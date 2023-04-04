@@ -20,6 +20,7 @@ build() {
 	cd "${_pkgname}"
 	export GO111MODULE=on
     export GOPROXY=https://mirrors.aliyun.com/goproxy/,direct
+    go mod tidy
 	go build -ldflags="-s -w " -trimpath main.go
 }
 
