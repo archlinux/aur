@@ -1,5 +1,6 @@
+# -*- mode: sh; mode: sh-bash; -*-
 post_install() {
-  echo '==> Remember to enable ble.sh in your .bashrc'
-  echo '==> (add the following line):'
-  echo '[[ $- == *i* ]] && . /usr/share/blesh/ble.sh'
+  printf '\033[1;36m==> Remember to enable ble.sh in your .bashrc\033[m\n'
+  printf '\033[1;36m==> (add the following line):\033[m\n'
+  printf '\033[1;35m[[ $- == *i* ]] && source /usr/share/blesh/ble.sh\033[m\n'
 }
