@@ -2,7 +2,7 @@
 # Contributer: Donn <me@donn.website>
 
 pkgname=cemu-bin
-pkgver=2.0.29
+pkgver=2.0.32
 pkgrel=1
 pkgdesc="Nintendo Wii U Emulator"
 arch=('x86_64')
@@ -18,10 +18,10 @@ source=("https://github.com/cemu-project/Cemu/releases/download/v$_srcver/cemu-$
         "https://raw.githubusercontent.com/cemu-project/Cemu/main/dist/linux/info.cemu.Cemu.desktop"
         "https://github.com/cemu-project/Cemu/raw/main/dist/linux/info.cemu.Cemu.png"
         "https://raw.githubusercontent.com/cemu-project/Cemu/main/dist/linux/info.cemu.Cemu.metainfo.xml")
-sha256sums=('f7dab23afa9bbfa2b86a8f4649c83f765d828e7ec08cd294e83b3e5a645ac601'
+sha256sums=('981a56f5a3fe7dcc89f67727574343d6bdb17b08209149ac665b75be49a576ca'
             '3e9380eb47646fede56c0de59ddab872627c00629820ef5f974be0d07e4f3490'
             '6458a99b8bd54e44857efa0f82bfd6035e7e072e7e080e3330e4e2cfe89cbd33'
-            '3c0ffba6874ebabb4341911b401d4b7062fefeb527badc5caa93355e5968848b')
+            '9a281a8c5b9d0dbe826c5ea0d942f5d2c307d6d9e60729352240e82ee24c5bfe')
             
 prepare() {
   cd $srcdir/Cemu_$_srcver
@@ -33,6 +33,7 @@ prepare() {
   done
 
   patchelf --remove-needed libsepol.so.1 ./Cemu
+  patchelf --remove-needed libselinux.so.1 ./Cemu
   patchelf --remove-needed libselinux.so.1 ./Cemu
 }
 
