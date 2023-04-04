@@ -2,8 +2,7 @@
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: Brian <brain@derelict.garden>
 
-pkgbase=ladybird
-pkgname=(ladybird serenity-wallpapers)
+pkgname=ladybird
 pkgver=20221116
 pkgrel=1
 pkgdesc='Web browser built from scratch using the SerenityOS LibWeb engine'
@@ -33,7 +32,7 @@ build() {
   ninja -C build
 }
 
-package_ladybird() {
+package() {
   install -Dm755 $pkgname.sh "$pkgdir/usr/bin/$pkgname"
   install -Dm644 $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -Dm644 $pkgname.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
@@ -51,12 +50,4 @@ package_ladybird() {
   rm -r "$pkgdir/usr/share/serenity/Base/res/wallpapers"
 
   cp -R serenity/* "$pkgdir/usr/share/serenity/"
-}
-
-package_serenity-wallpapers() {
-  pkgdesc='SerenityOS wallpapers'
-  depends=()
-  install -d "$pkgdir/usr/share/backgrounds"
-  cp -R $pkgbase/build/serenity/Base/res/wallpapers "$pkgdir/usr/share/backgrounds/serenity"
-  install -Dm644 $pkgbase/LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
