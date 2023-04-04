@@ -1,6 +1,6 @@
 # Maintainer: Jonathan Boyle <programmerfalcon@gmail.com>
 pkgname=mulle-test
-pkgver=6.1.0
+pkgver=6.2.0
 pkgrel=1
 epoch=1
 pkgdesc="Runs tests and compares results against expectations"
@@ -8,11 +8,11 @@ arch=('any')
 url="https://github.com/mulle-sde/mulle-test"
 license=('BSD3')
 groups=('mulle-sde-all')
-depends=('bash' 'mulle-bashfunctions>=4.1.1' 'mulle-make>=1.1.1')
+depends=('bash' 'mulle-bashfunctions>=5.0.3' 'mulle-make>=2.0.0')
 changelog="RELEASENOTES.md"
-source=("https://github.com/mulle-sde/mulle-test/archive/6.1.0.tar.gz")
+source=("https://github.com/mulle-sde/mulle-test/archive/6.2.0.tar.gz")
 noextract=()
-md5sums=('6e1692b116ae1646f6afa2be9448c8a6')
+md5sums=('5f5b7378cf032c9d42920a4c14a4a651')
 validpgpkeys=()
 
 package() {

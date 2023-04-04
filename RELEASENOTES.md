@@ -1,3 +1,9 @@
+## 6.2.0
+
+* added --reuse-exe flag to speed up tests run in a loop
+* added --gdb sanitizer, to catch spuriously crashing tests easier
+
+
 ## 6.1.0
 
 * fix for Windows
