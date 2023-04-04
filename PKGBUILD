@@ -1,18 +1,18 @@
 # Maintainer: Jonathan Boyle <programmerfalcon@gmail.com>
 pkgname=mulle-craft
-pkgver=2.0.0
-pkgrel=2
+pkgver=3.0.0
+pkgrel=1
 epoch=1
 pkgdesc="Build projects using mulle-make and mulle-sourcetree"
 arch=('any')
 url="https://github.com/mulle-sde/mulle-craft"
 license=('BSD3')
 groups=('mulle-sde-all')
-depends=('bash' 'mulle-bashfunctions>=4.1.1' 'mulle-dispense>=3.1.0' 'mulle-make>=1.1.1')
+depends=('bash' 'mulle-bashfunctions>=5.0.3' 'mulle-dispense>=3.2.0' 'mulle-make>=2.0.0')
 changelog="RELEASENOTES.md"
-source=("https://github.com/mulle-sde/mulle-craft/archive/2.0.0.tar.gz")
+source=("https://github.com/mulle-sde/mulle-craft/archive/3.0.0.tar.gz")
 noextract=()
-md5sums=('a457dde09f60f54454d0130d0d5fdb45')
+md5sums=('97735d44a96ddf94de8a8d2ded96b87a')
 validpgpkeys=()
 
 package() {

@@ -1,3 +1,10 @@
+# 3.0.0
+
+* `MULLE_CRAFT_..._MAKE_OPTIONS` no longer supported
+* support additional config definitiondirs
+* added --no-donefile option
+
+
 # 2.0.0
 
 * code reorg and bug fixes
