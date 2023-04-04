@@ -1,17 +1,15 @@
 # Maintainer: Ali Rohman <laymoth@pm.me>
 
 pkgname=hidamari
-pkgver=3.2
-_pkgver=3.2
-pkgrel=2
+pkgver=3.3
+_pkgver=3.3
+pkgrel=1
 pkgdesc='Video wallpaper for Linux. Written in Python.'
 arch=('any')
 url='https://github.com/jeffshee/hidamari'
 license=('GPL3')
-depends=('python-gobject' 'python-pillow' 'python-pydbus' 'python-vlc' 'yt-dlp' 'dconf' 'python-requests' 'gnome-desktop-4' 'libwnck3' 'python-setproctitle' 'mesa-utils' 'webkit2gtk')
+depends=('python-gobject' 'python-pillow' 'python-pydbus' 'python-vlc' 'yt-dlp' 'dconf' 'python-requests' 'gnome-desktop-4' 'libwnck3' 'python-setproctitle' 'mesa-utils' 'webkit2gtk' 'xdg-user-dirs' 'vdpauinfo' 'libappindicator-gtk3')
 makedepends=('git' 'meson' 'gtk-update-icon-cache' 'desktop-file-utils')
-optdepends=('vdpauinfo: Query and display VDPAU capabilities'
-            'libappindicator-gtk3: tray icon support')
 source=("git+https://github.com/jeffshee/hidamari.git#tag=v${_pkgver}")
 sha256sums=('SKIP')
 
