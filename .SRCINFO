@@ -1,6 +1,6 @@
 pkgbase = mulle-match
 	pkgdesc = Match filenames against a set of .gitignore like patternfiles
-	pkgver = 1.0.1
+	pkgver = 1.0.3
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/mulle-sde/mulle-match
@@ -9,8 +9,8 @@ pkgbase = mulle-match
 	groups = mulle-sde-all
 	license = BSD3
 	depends = bash
-	depends = mulle-bashfunctions>=4.1.1
-	source = https://github.com/mulle-sde/mulle-match/archive/1.0.1.tar.gz
-	md5sums = 4be4c8d4f26394aa035c9305f5b866df
+	depends = mulle-bashfunctions>=5.0.3
+	source = https://github.com/mulle-sde/mulle-match/archive/1.0.3.tar.gz
+	md5sums = 31c9f044607fb65be1a725b5d97c4fcc
 
 pkgname = mulle-match
