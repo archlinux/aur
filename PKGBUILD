@@ -2,7 +2,7 @@
 
 pkgname=galaxy2
 pkgver=1.8
-pkgrel=5
+pkgrel=6
 pkgdesc="Stellar Simulation"
 url="http://www.kornelix.net/galaxy2/galaxy2.html"
 arch=('i686' 'x86_64')
@@ -21,5 +21,4 @@ package() {
   cd $pkgname
   make DESTDIR="$pkgdir" ICONDIR=/usr/share/pixmaps install  
   rm "$pkgdir"/usr/share/doc/$pkgname/$pkgname.man
-  sed -i 's+/usr/share/galaxy2/icons/++' "$pkgdir"/usr/share/applications/$pkgname.desktop
 }
