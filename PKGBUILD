@@ -4,11 +4,11 @@
 _pkgname=wemeet
 pkgname=$_pkgname-bin
 provides=('wemeet' 'tencent-meeting')
-pkgver=3.14.0.401
+pkgver=3.14.0.402
 _pkgver_arm=${pkgver} # 两个版本有时候不一样
-_x86_md5=1b001ef75914a1d6948decb8c2550b47
-_arm_md5=c62a1d83f5b1a2f4a4f2d189960fc02c
-pkgrel=2
+_x86_md5=5a910969828531efb24add85626e2372
+_arm_md5=985de8a45fa77fd55eaaa0999ebffb74
+pkgrel=1
 pkgdesc="Tencent Video Conferencing, tencent meeting 腾讯会议"
 arch=('x86_64' 'aarch64')
 license=('unknown')
@@ -30,8 +30,8 @@ optdepends=('bubblewrap: Fix abnormal text color in dark mode and prevent messin
 makedepends=('patchelf')
 sha512sums=('e5b85510cebc3b73c65228feaa97a5bb3eb360ac467ef6cb8bdcde8e912819000b859b0e0fba8fa154272d613dc6541a9a29d64f56ecbb0877288d1de011029c'
             '48e40dfaf425f096802bfff081a9a1a3122f1f677227f1dbe67cfb37cef7ab8fe6060258161c79b07cd559c4022de6cea42245400ccfd1eac8456c7b42260550')
-sha512sums_x86_64=('df1528be8b58f61f2fb7e53e012fb4c6d9c014a9f0d60e47ebee2bfc89b7a54db13dbbaa83b27c2a7650628f3844fb333637e6cde22622e6cd42ac15eed7954e')
-sha512sums_aarch64=('44f422daa87f29b83129e0c2313be7813c34333bb41f29e2a38d4b3ef6f01a751cbe0c2ea321ee79e075d6e4908e757877df3d8096edcb68b93a042e187809a0')
+sha512sums_x86_64=('e4fe08190627a333cf3a81ec34ba543b4a6da1a0b1b28fc2116f27ba9113eb4506ab37d5c0f659814cb7dd6ca15c90bb9faf025c2e3d3b83dd5a0829e5b05804')
+sha512sums_aarch64=('7ee1b4f97fd13cd37b11aaa918472de1a0bdf23acfc243bfdb662d344cedeea4f52233d2aa74ccec01c4c71f1cb59eab9fe7fbb0afcb925c8690724eab18c260')
 
 prepare() {
     cd "$srcdir"
