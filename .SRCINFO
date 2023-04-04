@@ -1,0 +1,15 @@
+pkgbase = vnote-appimage
+	pkgdesc = A pleasant note-taking platform.
+	pkgver = 3.15.1
+	pkgrel = 1
+	url = https://app.vnote.fun/
+	arch = x86_64
+	license = LGPL3
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = glibc
+	options = !strip
+	source = vnote-3.15.1.AppImage::https://github.com/vnotex/vnote/releases/download/v3.15.1/vnote-linux-x64_v3.15.1.AppImage
+	sha256sums = d0b2dbf3f43a2ad30361b63f03283e9c2ce8bdb49c2ade02189802584a80a304
+
+pkgname = vnote-appimage
