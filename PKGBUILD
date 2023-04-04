@@ -1,15 +1,13 @@
 # Maintainer: Stephen Seo <seo.disparate@gmail.com>
 pkgname=mingw-w64-raylib
 pkgver=4.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and easy to use game programming library (mingw-w64)"
 arch=(any)
 url="https://www.raylib.com"
 license=(ZLIB)
 groups=()
-# Use internal GLFW for now, since the bundled GLFW is newer
-#depends=(mingw-w64-crt mingw-w64-glfw)
-depends=(mingw-w64-crt)
+depends=(mingw-w64-crt mingw-w64-glfw)
 makedepends=(ninja mingw-w64-cmake)
 replaces=()
 backup=()
@@ -37,7 +35,7 @@ build() {
             -Wno-dev \
             -D CMAKE_BUILD_TYPE=Release \
             -D CMAKE_C_FLAGS="$CFLAGS -fPIC -w" \
-            -D USE_EXTERNAL_GLFW=OFF \
+            -D USE_EXTERNAL_GLFW=ON \
             -D BUILD_EXAMPLES=OFF \
             -D BUILD_GAMES=OFF \
             -D SHARED=ON \
