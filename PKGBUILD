@@ -3,7 +3,7 @@
 
 pkgname=beast
 pkgver=sars__cov__2__origins
-pkgrel=1
+pkgrel=2
 pkgdesc="Bayesian Evolutionary Analysis Sampling Trees. https://doi.org/10.1186/1471-2148-7-214"
 arch=('x86_64')
 url="http://beast.community/"
@@ -17,12 +17,12 @@ source=("https://github.com/beast-dev/beast-mcmc/archive/refs/tags/${pkgver//__/
 	"beast-treestat.desktop"
 	"fix_bin.patch")
 sha256sums=('fab8750313b66844f4dd8dcacfa55913f30bb877bded87057ba347d38cc9dc75'
-            'bd6f29c93a6ff8145de5af3137f976bfd84c4441bb3ee32778af4b0bcbcdb18b'
-            '1b84708063fd2ac39b8ff234c75d0fba2fc1737b82c926d9844db2694a21a91c'
-            '98b7b7cc4c2b744031b27d12bf737a6cb37a58e2e127539b53d49d4b7ada1524'
-            '3f25d0877ee9a4582e4bf7d8e7b964cbb2a5e5b642fc59097f5af18268b554ea'
-            'e9ff41cab265727bf781ad97cc014071a1d9b77890a44bc6005489a709ce542e'
-            '385c9078b0cac257b94a115ed000f71b9eb8b1d6c7edc1ba3e75a9724e11df05'
+            'fa9841f5005be6d743ad278b037de0eb329c642de62e4996cc1df31272ffa185'
+            'e3897ee92348b3e48010af739fcbf7fbb38bcc2c18e1ceb30cd147b3c7067b2d'
+            'dcf674ebe5f1b7b13e746441f7a28a9b0fa86c03f3bef27833c532f323cb6644'
+            '75842d174f246c38dc4600357ef8b41f67e5f12cbd7dba779d224f99b531cb1d'
+            '6e63a619a6fb3101606a85dbc352d579e343d167cf79be67ccf31ed1544d5fd2'
+            '3a21774077658117f36bd289901ec1d560a66bbe435ba4ddbc1980c558fa7362'
             '086b899c6f4bfa43d4af61d497c0265d087e919de5723faa6b3e58ae48fb6813')
 depends=('java-runtime=8')
 makedepends=('java-environment=8' 'ant' 'cmake' 'beagle-lib')

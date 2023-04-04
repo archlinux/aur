@@ -1,7 +1,7 @@
 [Desktop Entry]
 Categories=
 Encoding=UTF-8
-Exec=beauti
+Exec=beauti %U
 Icon=beauti
 MimeType=
 Name=beauti

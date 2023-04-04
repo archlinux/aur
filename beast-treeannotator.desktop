@@ -1,7 +1,7 @@
 [Desktop Entry]
 Categories=
 Encoding=UTF-8
-Exec=treeannotator
+Exec=treeannotator %U
 GenericName=
 GenericName[zh]=
 Icon=utility

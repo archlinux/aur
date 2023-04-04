@@ -1,11 +1,11 @@
 [Desktop Entry]
 Categories=
 Encoding=UTF-8
-Exec=loganalyser
+Exec=loganalyser %U
 Icon=utility
 MimeType=
-Name=logcombiner
-Name[zh]=logcombiner
+Name=loganalyser
+Name[zh]=loganalyser
 ServiceTypes=
 SwallowExec=
 SwallowTitle=

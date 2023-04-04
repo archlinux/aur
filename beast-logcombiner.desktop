@@ -1,7 +1,7 @@
 [Desktop Entry]
 Categories=
 Encoding=UTF-8
-Exec=logcombiner
+Exec=logcombiner %U
 Icon=utility
 MimeType=
 Name=logcombiner

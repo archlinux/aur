@@ -1,7 +1,7 @@
 [Desktop Entry]
 Categories=
 Encoding=UTF-8
-Exec=beast
+Exec=beast %U
 GenericName=
 GenericName[zh]=
 Icon=beast
