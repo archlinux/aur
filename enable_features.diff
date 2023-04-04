@@ -1,7 +1,7 @@
---- a/tvm/cmake/config.cmake	2023-03-15 14:19:25.000000000 +0100
-+++ b/tvm/cmake/config.cmake	2023-04-04 14:33:53.756510505 +0200
-@@ -69,7 +69,7 @@
- #       time and trigger dynamic search and loading of OpenCL in runtime
+--- /home/edgar/Documentos/Linux/Parabola/pkg/tvm/src/tvm/cmake/config.cmake	2021-11-12 22:16:08.000000000 +0100
++++ /home/edgar/Documentos/Linux/Parabola/pkg/tvm/src/build/config.cmake	2023-04-04 15:30:52.253126256 +0200
+@@ -68,7 +68,7 @@
+ # - ON: enable OpenCL with cmake's auto search
  # - OFF: disable OpenCL
  # - /path/to/opencl-sdk: use specific path to opencl-sdk
 -set(USE_OPENCL OFF)
@@ -9,7 +9,7 @@
  
  # Whether enable Metal runtime
  set(USE_METAL OFF)
-@@ -118,7 +118,7 @@
+@@ -106,7 +106,7 @@
  set(USE_GRAPH_EXECUTOR_CUDA_GRAPH OFF)
  
  # Whether enable pipeline executor.
@@ -18,16 +18,16 @@
  
  # Whether to enable the profiler for the graph executor and vm
  set(USE_PROFILER ON)
-@@ -134,7 +134,7 @@
+@@ -122,7 +122,7 @@
  # - OFF: disable llvm, note this will disable CPU codegen
  #        which is needed for most cases
  # - /path/to/llvm-config: enable specific LLVM when multiple llvm-dev is available.
 -set(USE_LLVM OFF)
-+set(USE_LLVM /usr/bin/llvm-config)
++set(USE_LLVM ON)
  
  #---------------------------------------------
  # Contrib libraries
-@@ -149,7 +149,7 @@
+@@ -137,7 +137,7 @@
  set(USE_BYODT_POSIT OFF)
  
  # Whether use BLAS, choices: openblas, atlas, apple
@@ -36,7 +36,7 @@
  
  # Whether to use MKL
  # Possible values:
-@@ -176,7 +176,7 @@
+@@ -154,7 +154,7 @@
  
  # Whether use OpenMP thread pool, choices: gnu, intel
  # Note: "gnu" uses gomp library, "intel" uses iomp5 library

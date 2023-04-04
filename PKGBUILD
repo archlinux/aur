@@ -2,7 +2,7 @@
 _base=tvm
 # pkgname="${_base}"-git
 pkgname="${_base}"
-pkgver=0.11.1
+pkgver=0.8.0
 pkgrel=1
 # epoch=
 pkgdesc="Apache TVM, a deep learning compiler that enables access to high-performance machine learning anywhere for everyone"
@@ -72,8 +72,8 @@ options=(!staticlibs)
 #             'SKIP')
 source=("https://dlcdn.apache.org/tvm/tvm-v${pkgver}/apache-tvm-src-v${pkgver}.tar.gz"
        "enable_features.diff")
-sha512sums=("47f70a6a3679f2c7316c6ea8bb0da133b6a2d2c3b40ab175f8cd6c5dfdad3c5300fb4454bcf3f4a173f37b2fff58eef01b423840ad2c523696698f7d0d8b0a97"
-            "25e22842072314aedc0d988f445dfbc2046ba193176b671dffae7920c20fed6aea677ea421f95e5a5c8f17af08cbdbbc6e9e34d8a72716be05febf322f3dcd9f")
+sha512sums=("328b3d5d851ac82f12a0d1402094e608dbfa5a4f6fb8d942a95b41695dc069f1cfcbe915294b3ae71bf2433e792d9e00809c63392d12d20d2f8c27476375d1dc"
+            "8750d292086f030a1e70f201b86538a7e92444b238573c01424d9f933deb5032c1b82f4b74e45289b87b64eb4267765b162eeadd69732eebea659e856f1e247c")
 # noextract=()
 
 # pkgver() {
