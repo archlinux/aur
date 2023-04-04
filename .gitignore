@@ -1,9 +1,0 @@
-*
-!/.SRCINFO
-!/.gitignore
-!/PKGBUILD
-!/asterisk.install
-!/asterisk.logrotated
-!/asterisk.sysusers
-!/asterisk.tmpfiles
-!/fix-upnp.patch
