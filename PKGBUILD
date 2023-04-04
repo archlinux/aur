@@ -2,8 +2,8 @@
 # shellcheck disable=SC2148,SC2034
 
 pkgname="godot2d"
-pkgver='4.0.1.stable'
-_pkgver_full='4.0.1'
+pkgver='4.0.2.stable'
+_pkgver_full='4.0.2'
 pkgrel=2
 pkgdesc="Godot Game Engine: An advanced, feature packed, multi-platform 2D game engine."
 arch=('any')
