@@ -1,5 +1,6 @@
 *
 !.gitignore
+!cyberghostvpn_wrapper
+!openvpn_wrapper
 !PKGBUILD
 !.SRCINFO
-!cyberghostvpn.install
