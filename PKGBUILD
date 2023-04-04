@@ -1,7 +1,7 @@
 # Maintainer: Hans-Nikolai Viessmann <hans AT viess.mn>
 pkgname=barvinok
-pkgver=0.41.6
-pkgrel=2
+pkgver=0.41.7
+pkgrel=1
 pkgdesc='A library for counting the number of integer points in (non-)parametric polytopes'
 arch=('x86_64')
 url='https://repo.or.cz/barvinok.git'
