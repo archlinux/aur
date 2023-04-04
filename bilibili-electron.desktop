@@ -3,6 +3,7 @@ Type=Application
 Version=pkgver
 Name=bilibili
 Comment=Linux version of bilibili
+StartupWMClass=bilibili
 Exec=bilibili-electron
 Icon=bilibili-electron
 Terminal=false

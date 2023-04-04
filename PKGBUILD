@@ -4,8 +4,8 @@
 # Icon based on https://github.com/Peternal
 pkgname=bilibili-electron
 _pkgname=${pkgname%-bin}
-pkgver=1.9.1
-pkgrel=3
+pkgver=1.9.2
+pkgrel=1
 pkgdesc="A Linux bilibili GUI. Use installed electron."
 arch=("x86_64" "aarch64")
 license=("MIT")
@@ -13,19 +13,19 @@ url="https://github.com/msojocs/bilibili-linux"
 provides=(${_pkgname})
 conflicts=("bilibili-bin")
 depends=("electron" "ffmpeg")
-optdepends=("electron17: Only if you don't want to use latest electron.")
+optdepends=("electron17: Only if you would like to install Electron 17.")
 makedepends=("asar")
 source_x86_64=("${pkgname}-${pkgver}-x86_64-linux.tar.gz::${url}/releases/download/v${pkgver}-${pkgrel}/bilibili-v${pkgver}-${pkgrel}-x86_64.tar.gz")
-# source_aarch64=("${pkgname}-${pkgver}-aarch64-linux.tar.gz::${url}/releases/download/${pkgver}/bilibili-v${pkgver}-arm64.tar.gz")
+source_aarch64=("${pkgname}-${pkgver}-aarch64-linux.tar.gz::${url}/releases/download/${pkgver}/bilibili-v${pkgver}-arm64.tar.gz")
 source=(
     "${pkgname}.desktop"
     "${pkgname}.svg"
     "${pkgname}")
-sha256sums=("772934b365c0dffa836d463fa8600fceb2a2b789cb8eb9d3d51ee6fddad1d21c"
+sha256sums=("3e534d098c8537bd0717501dac69266d88614e62c76c00a4e982987f0e4b8101"
             "256fb103121107cf757ecd89caecffb792fd448ae139a1f18d017171ac8a3a06"
             "5bd642f412a7b182fe5c371a0382f5e232df30048735a60fec935df159ff8933")
-sha256sums_x86_64=("280bb435d379185e298eef9becfce2abcc8efdeb03fb4368b3dd822279abc7d6")
-# sha256sums_aarch64=("e137673bbdf9b2e44fadd961547ed1016d0ad50f4d4f03b56ae8211262f72887")
+sha256sums_x86_64=("fe98a8948b2017e962fc3f46d848b7081649f8559710174be6b58d7da8c98e48")
+sha256sums_aarch64=("0")
 
 build() {
     cd $srcdir
