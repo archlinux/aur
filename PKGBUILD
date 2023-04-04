@@ -64,9 +64,9 @@ AOT="YES"         # Precompile all included elisp. It takes a long time.
 
 CLI=              # CLI only binary.
 
-XINPUT2=          # Use Xinput2 support.
+XINPUT2=          # Use XInput2 support.
                   # https://www.x.org/releases/X11R7.7/doc/inputproto/XI2proto.txt
-                  # This is useless with pgtk.
+                  # This is useless on PGTK.
 
 GPM="YES"         # Mouse support in Linux console using gmpd.
 
@@ -84,12 +84,13 @@ LUCID=            # Use the lucid, a.k.a athena, toolkit. Like XEmacs, sorta.
                
 ALSA="YES"        # Linux sound support.
 
-NOCAIRO=          # Disable here. 
+NOCAIRO=          # Disable cairo here.
                
 XWIDGETS="YES"    # Use GTK+ widgets pulled from webkit2gtk. Usable.
                   # Thanks to Po Lu, xwidgets supports pgtk now!
                
-PGTK="YES"        # Wayland is awesome!
+PGTK="YES"        # Make Emacs GUI use pure GTK to support Wayland.
+                  # Wayland is awesome!
 
 DOCS_HTML=        # Generate and install html documentation.
                
