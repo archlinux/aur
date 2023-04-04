@@ -1,0 +1,16 @@
+pkgbase = python-gprof2dot
+	pkgdesc = Python profiling dot graph generator
+	pkgver = 2022.7.29
+	pkgrel = 1
+	url = https://github.com/jrfonseca/gprof2dot
+	arch = x86_64
+	arch = armv7l
+	arch = armv7h
+	arch = aarch64
+	license = LGPL-3
+	makedepends = python-setuptools
+	depends = python-graphviz
+	source = https://files.pythonhosted.org/packages/source/g/gprof2dot/gprof2dot-2022.7.29.tar.gz
+	b2sums = cc96bcf0cbce2159f6a03bb1b7d3b2e89212a2acdb948fbeb947b8664ed34123102792476d16d11b7b2bdb269aef9ce54a7224a355c5390fe6010e82bc2df189
+
+pkgname = python-gprof2dot
