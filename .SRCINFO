@@ -1,6 +1,6 @@
 pkgbase = harmonoid-bin
 	pkgdesc = Plays & manages your music library. Looks beautiful & juicy. Playlists, visuals, synced lyrics, pitch shift, volume boost & more.
-	pkgver = 0.3.6
+	pkgver = 0.3.7
 	pkgrel = 1
 	url = https://github.com/harmonoid/harmonoid
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = harmonoid-bin
 	depends = mpv
 	depends = xdg-user-dirs
 	options = !strip
-	source = harmonoid-linux-0.3.6-x86_64.tar.gz::https://github.com/alexmercerind2/harmonoid-releases/releases/download/v0.3.6/harmonoid-linux-x86_64.tar.gz
-	sha256sums = 5f054f2340c326d4c9becb325d58159b6205d46122fa5691dcee14df3469fc17
+	source = harmonoid-linux-0.3.7-x86_64.tar.gz::https://github.com/alexmercerind2/harmonoid-releases/releases/download/v0.3.7/harmonoid-linux-x86_64.tar.gz
+	sha256sums = 3946ae4a1e0ee7c285d11fdb45cbef8f698bcd6d1a1ae794c727c2df5f9d6f8c
 
 pkgname = harmonoid-bin
