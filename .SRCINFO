@@ -1,16 +1,15 @@
 pkgbase = rts5227-dkms
 	pkgdesc = Driver to support Realtek RTS5227/5229 SD Card Reader
-	pkgver = 1.07
-	pkgrel = 8
+	pkgver = 1.08
+	pkgrel = 1
 	url = http://www.realtek.com.tw/Downloads/downloadsView.aspx?Langid=1&PNid=15&PFid=25&Level=4&Conn=3&DownTypeID=3&GetDown=false
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = dkms
-	source = rts5229::git+https://github.com/Zibri/Realtek-rts5229-linux-driver
+	source = git+https://github.com/strahl/rts5227-dkms
 	source = rts5227-dkms-suspend.sh
-	md5sums = SKIP
-	md5sums = e59828310982d2943318900d7017b99f
+	sha256sums = SKIP
+	sha256sums = 40b59b1bf1656f755f2faa2a913d53f1e4ba996680e2a4d3067b01a0e973276f
 
 pkgname = rts5227-dkms
-
