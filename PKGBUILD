@@ -6,7 +6,7 @@ _gitbranch="main"
 
 
 pkgname="${_pkgname}-git"
-pkgver=0.11.2.r44.g8eed9c26
+pkgver=0.12.0.r1.g6ff7cfdd
 pkgrel=1
 pkgdesc="A lightweight, self-hosted memo hub. Open Source and Free forever."
 url="https://github.com/${_gitauthor}/${_pkgname}"
