@@ -1,7 +1,7 @@
 [Desktop Entry]
 Categories=
 Encoding=UTF-8
-Exec=beast2-densitree
+Exec=beast2-densitree %U
 GenericName=
 GenericName[zh]=
 Icon=/usr/share/beast2/images/DensiTree.png

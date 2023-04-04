@@ -5,7 +5,7 @@
 pkgname=beast2
 pkgver=2.7.4
 _pkgver=2.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Bayesian Evolutionary Analysis by Sampling Trees. https://doi.org/10.1371/journal.pcbi.1003537"
 arch=('any')
 url="http://www.beast2.org/"
@@ -19,13 +19,13 @@ ${pkgname}-{beauti,densitree,logcombiner,treeannotator,beast2,loganalyser,applau
 )
 sha256sums=('cd16e9bc5615aff063d61ec1edd66d4cd8bb87dcaabcb1508b42809f34b7b258'
             '1b4cca8ee299459469bfdf8a98b701ed5e47f0b015ef0e04964a195fd9fb74d5'
-            'f35255c946a105a60e81fcf44ed3f5c28e6903f0e9cedc015b1ae9d08ab6eb42'
-            '39d8fe84e7262a11fb49700254fd54a9823ad25069f6cb9539d830c708d8864e'
-            '7dc09611d85955ced66dec3f9eb63a3396e59f0bd4f93e6338478a102b01f302'
-            '46c3437979fa9a836c5832f1d92c286b90950f7795903cc34051f48e7f0be403'
-            'df7bbf1363eec2af224251e77cd0a025003cd0ac751163a3e43cbe2bf52870d1'
-            'e4b5398d4e5fe81b0e57b2e5d3a7b1d9621c97d1b8ce40a2d5b169bd94e89397'
-            '8e999cabf53742fa818504a10f326e1275e23349f73267baba9058eda6add1ec'
+            '7f2a6633e5c2ee1ffde58191ae4403ee5b4f4323cea4d6db8fc8c1516294ddf5'
+            'a4c2ae027db8ee3ed687591b25e10581380cb4a3f76f60399018da280276bdfd'
+            '473657ec9975de6f5e604767ee2ee5cbb6a5c22603624fbf7a94af36d9ccf5db'
+            '53de8b25293b6f3f85b0abec0678f47dc999aa009e94b863ef5ae28a53c5deb4'
+            'bf6a7fe7832cc08109f0d1909dbcbbb334928448aaa3dbb4849a6bd1a41430d2'
+            'f908450fbb1106aa261fc58cb2b6180174d6abe31e0dbb4d2ed34b88e103a663'
+            '1d956d06386b285aff90ca52c01c2645155540fdb991f0e18c04bc5628d4d0ae'
             '102d9c9db73968dab199f88480af13746ce61974db2d22761308f6f38d7f7ee4'
             '7c32c0c3c5ea9a429d9a9b52f4c9333a6134fe0e218d16eaf14fb4aa0eba8f3e'
             '913b2ec3fcb7a0bbd6d6632abb00c016fd1ec53b9fc840da2afcf19cf3607c6c'

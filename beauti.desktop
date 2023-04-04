@@ -1,7 +1,7 @@
 [Desktop Entry]
 Categories=
 Encoding=UTF-8
-Exec=beast2-beauti
+Exec=beast2-beauti %U
 Icon=/usr/share/beast2/images/beauti.png
 MimeType=
 Name=beauti
