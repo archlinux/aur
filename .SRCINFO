@@ -1,0 +1,18 @@
+pkgbase = sourcenavigator-ng
+	pkgdesc = a source code analysis tool
+	pkgver = 4.5
+	pkgrel = 1
+	url = https://sourceforge.net/projects/sourcenav/
+	arch = any
+	license = GPL2
+	makedepends = make
+	makedepends = gcc
+	depends = libx11
+	depends = bash
+	depends = perl
+	depends = glibc
+	provides = snavigator
+	source = https://jaist.dl.sourceforge.net/project/sourcenav/NG4.5/sourcenavigator-NG4.5.tar.bz2
+	sha256sums = d5d8f96206f429b446c490b20fda0f7da0b794cc302a567cfebf414f30073b00
+
+pkgname = sourcenavigator-ng
