@@ -1,14 +1,14 @@
 pkgbase = reposilite
 	pkgdesc = Reposilite (formerly NanoMaven) - lightweight repository manager for Maven artifacts. It is a simple solution to replace managers like Nexus, Archiva or Artifactory.
 	pkgver = 3.4.0
-	pkgrel = 1
-	url = https://github.com/dzikoysk/reposilite
+	pkgrel = 2
+	url = https://reposilite.com
 	arch = any
 	license = Apache
-	makedepends = jdk11-openjdk
-	makedepends = nodejs
+	makedepends = java-environment=18
+	makedepends = nodejs-lts-hydrogen
 	makedepends = npm
-	depends = jre11-openjdk-headless
+	depends = java-runtime-headless>=18
 	backup = etc/reposilite/configuration.cdn
 	backup = etc/reposilite/default.env
 	source = reposilite-3.4.0.tar.gz::https://github.com/dzikoysk/reposilite/archive/3.4.0.tar.gz
@@ -21,7 +21,7 @@ pkgbase = reposilite
 	sha256sums = 1e543e7ef39d64ae683156aaa6aad8f164f30de999d15717416410e1750b9a8e
 	sha256sums = 92ccfeff429aa4757ef353677dd99ad7aebe7483d4824706a27250e81efd6323
 	sha256sums = 9587fa49dd66d5f31dee33aa1a9da269a34666b63f62e2550a66c3bc1d397aa7
-	sha256sums = 7affcf3ef54c9c05326281c3496a8744221be312675fd7d4ab17fd50eb320521
-	sha256sums = d06d5686dace4d74dd788ea9f755536678e614af481206969aa457ef79dec400
+	sha256sums = 7869b2925d6d2a897148b282af02992d7b4c5cfb6e7f01f0a277633689614c11
+	sha256sums = 2f7cd3fdada1ba51da3259a2ad7ef6bbdbb5fea5023c8fcc78d4d5c19ff569d3
 
 pkgname = reposilite
