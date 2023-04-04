@@ -1,22 +1,21 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Maintainer: Daniel Menelkir <dmenelkir@gmail.com>
+# Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Jeff Mickey <j@codemac.net>
 
 pkgname=wtf
-pkgver=20220926
+pkgver=20230401
 pkgrel=1
 pkgdesc="Acronym dictionary, with additions from NetBSD and wikipedia"
 arch=('any')
-url="http://www.mu.org/~mux/wtf/"
+url="https://sourceforge.net/projects/bsdwtf/"
 license=('BSD')
 makedepends=('git')
-#source=("http://www.mu.org/~mux/${pkgname}/${pkgname}-${pkgver}.tar.gz"
-#source=("git+https://github.com/void-linux/netbsd-wtf#commit=b1e5be48"
 source=("https://sourceforge.net/projects/bsdwtf/files/wtf-$pkgver.tar.gz"
         "https://raw.github.com/keenerd/wtf/0623381d92b2c5d3e94b00c9eb06fb5d4d85d014/acronyms.computing"
         'LICENSE')
-md5sums=('fcf774ca93e2509f1a7a38b268db6be1'
-         '3d99862438ec7977ff8d7f4e3e5dd300'
-         'abac213cf24e9d5cab4e8115441eb717')
+sha512sums=('6e4f28691933cb710f0a13156c85998c382d5c80c426811c63fc06fa15019868c2838f20e683354168e3f34706a4d36dc39270e1efd68881c7e9fd271681dbe3'
+           'a122d65d9279f0cdae63f73179381a4f0b4e5ffd257e64796cf610c9a844b48ec0f291baaef0f0127792901ffc038c9879c5f507625eae71bd82f8e917cd4078'
+           'c4b25b4408e73a281c536ce02857ce0abe50a184f200bce16be48df2381724277b5b3eaa8d68589d410e7dd0d708fb6d22a75d8e55c272572dd436ad14a62ebd')
 
 prepare() {
   cd "$srcdir/wtf-$pkgver"

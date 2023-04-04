@@ -1,16 +1,16 @@
 pkgbase = wtf
 	pkgdesc = Acronym dictionary, with additions from NetBSD and wikipedia
-	pkgver = 20220926
+	pkgver = 20230401
 	pkgrel = 1
-	url = http://www.mu.org/~mux/wtf/
+	url = https://sourceforge.net/projects/bsdwtf/
 	arch = any
 	license = BSD
 	makedepends = git
-	source = https://sourceforge.net/projects/bsdwtf/files/wtf-20220926.tar.gz
+	source = https://sourceforge.net/projects/bsdwtf/files/wtf-20230401.tar.gz
 	source = https://raw.github.com/keenerd/wtf/0623381d92b2c5d3e94b00c9eb06fb5d4d85d014/acronyms.computing
 	source = LICENSE
-	md5sums = fcf774ca93e2509f1a7a38b268db6be1
-	md5sums = 3d99862438ec7977ff8d7f4e3e5dd300
-	md5sums = abac213cf24e9d5cab4e8115441eb717
+	sha512sums = 6e4f28691933cb710f0a13156c85998c382d5c80c426811c63fc06fa15019868c2838f20e683354168e3f34706a4d36dc39270e1efd68881c7e9fd271681dbe3
+	sha512sums = a122d65d9279f0cdae63f73179381a4f0b4e5ffd257e64796cf610c9a844b48ec0f291baaef0f0127792901ffc038c9879c5f507625eae71bd82f8e917cd4078
+	sha512sums = c4b25b4408e73a281c536ce02857ce0abe50a184f200bce16be48df2381724277b5b3eaa8d68589d410e7dd0d708fb6d22a75d8e55c272572dd436ad14a62ebd
 
 pkgname = wtf
