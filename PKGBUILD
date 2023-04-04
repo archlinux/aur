@@ -4,7 +4,7 @@
 
 pkgname=vieb-bin
 _pkgname=vieb
-pkgver=9.6.0
+pkgver=9.7.0
 pkgrel=1
 pkgdesc="Vim Inspired Electron Browser - Vim bindings for the web by design"
 arch=('x86_64')
@@ -25,7 +25,7 @@ depends=('c-ares'
   'libnotify')
 install="${_pkgname}.install"
 source=("https://github.com/Jelmerro/Vieb/releases/download/${pkgver}/${_pkgname}-${pkgver}.pacman")
-sha512sums=('72ac857d783886a0027d878e30c878c3f43c57f75e0554ae7820a78f208e1e8181914461939d352adfc4c41fbdb190bf388c09f86df8fd11e1b4622bc72ece27')
+sha512sums=('4306b5d6b4f54477f8356e72122a3597fab45d2db224162f35e0a098178fd68de63a44320a875e1a727e6ccebccdaeb6bab94d262f30a5fa32fb56fac4cccef5')
 
 package() {
 	cd "$srcdir"
