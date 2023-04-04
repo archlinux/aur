@@ -1,7 +1,7 @@
 [Desktop Entry]
 Categories=
 Encoding=UTF-8
-Exec=pamlX
+Exec=pamlX %U
 GenericName=pamlX
 Icon=/usr/share/icons/pamlX.png
 MimeType=
