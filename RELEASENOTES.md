@@ -1,3 +1,8 @@
+## 4.2.0
+
+* added unveil command
+
+
 ## 4.1.0
 
 * some fixes for zsh
