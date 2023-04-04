@@ -3,7 +3,7 @@
 
 pkgname=prey-node-client
 pkgver=1.11.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Node.js client for the Prey anti-theft software"
 url="https://github.com/prey/prey-node-client"
 arch=('x86_64')
@@ -30,7 +30,7 @@ prepare() {
 
 package() {
   install -dm755 "${pkgdir}/usr/bin"
-  cp "${srcdir}/prey-tracker" "${pkgdir}/usr/bin/prey-tracker"
+  cp "${srcdir}/prey-tracker.sh" "${pkgdir}/usr/bin/prey-tracker"
 
   install -dm755 "${pkgdir}/opt/${pkgname}"
   cp -r "prey-${pkgver}/." "${pkgdir}/opt/prey-node-client"

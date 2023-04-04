@@ -1,7 +1,7 @@
 pkgbase = prey-node-client
 	pkgdesc = Node.js client for the Prey anti-theft software
 	pkgver = 1.11.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/prey/prey-node-client
 	install = prey-node-client.install
 	arch = x86_64
