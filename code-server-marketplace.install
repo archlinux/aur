@@ -1,0 +1,15 @@
+post_install() {
+  /usr/share/code-server-marketplace/patch.sh
+}
+
+pre_upgrade() {
+  /usr/share/code-server-marketplace/patch.sh -R
+}
+
+post_upgrade() {
+  /usr/share/code-server-marketplace/patch.sh
+}
+
+pre_remove() {
+  /usr/share/code-server-marketplace/patch.sh -R
+}
