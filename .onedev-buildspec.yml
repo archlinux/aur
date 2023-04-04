@@ -18,13 +18,22 @@ jobs:
 - name: Github
   jobExecutor: Server
   steps:
-  - !PushRepository
-    name: Push
-    remoteUrl: https://github.com/reposilite-playground/reposilite-aur
-    userName: PolarianDev
-    passwordSecret: ghpass
+  - !CheckoutStep
+    name: Checkout
+    cloneCredential: !DefaultCredential {}
     withLfs: false
-    force: false
+    withSubmodules: false
+    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
+  - !CommandStep
+    name: Push Tags
+    runInContainer: false
+    interpreter: !DefaultInterpreter
+      commands:
+      - git push https://polarian:@secret:ghpass@@@github.com/reposilite-playground/reposilite-aur
+        HEAD:master
+      - git push --tags https://polarian:@secret:ghpass@@@github.com/reposilite-playground/reposilite-aur
+        HEAD:master
+    useTTY: false
     condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
   triggers:
   - !BranchUpdateTrigger
