@@ -1,7 +1,7 @@
 pkgbase = imhex
 	pkgdesc = A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM
 	pkgver = 1.28.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://imhex.werwolv.net
 	arch = x86_64
 	license = GPL2
@@ -23,6 +23,8 @@ pkgbase = imhex
 	depends = fmt
 	depends = yara
 	optdepends = imhex-patterns-git: ImHex base patterns
+	provides = imhex-patterns
+	conflicts = imhex-patterns-git
 	options = !lto
 	options = !strip
 	source = imhex::git+https://github.com/WerWolv/ImHex.git#tag=v1.28.0
@@ -32,6 +34,7 @@ pkgbase = imhex
 	source = capstone::git+https://github.com/capstone-engine/capstone#branch=next
 	source = libwolv::git+https://github.com/WerWolv/libwolv
 	source = pattern_language::git+https://github.com/WerWolv/PatternLanguage#tag=ImHex-v1.28.0
+	source = imhex-patterns::git+https://github.com/WerWolv/ImHex-Patterns#tag=ImHex-v1.28.0
 	source = 0001-makepkg-Fix-compiler-check.patch
 	source = pl-0001-Use-C-23-standard.patch
 	source = pl-0002-makepkg-Remove-extraneous-compiler-flags.patch
@@ -42,9 +45,11 @@ pkgbase = imhex
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = 43bdbbb6edf567201fa52f1c695f77fea9a27dd5c62de615ef74d64a5e676a98
 	sha256sums = 4c3e667d40eabe2a5ea724125c69f73bcb6774c01db9ad97bc6b633e1c284fc5
 	sha256sums = 7a7f17c95bfe9de4cda023aa29dfa019ea2870c29e14fa559c2be8b725649d57
+	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP

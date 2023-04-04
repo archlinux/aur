@@ -4,7 +4,7 @@
 _pkgname=ImHex
 pkgname=${_pkgname,,}
 pkgver=1.28.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://imhex.werwolv.net'
 license=('GPL2')
@@ -16,6 +16,8 @@ makedepends=('git' 'cmake' 'llvm' 'nlohmann-json' 'librsvg' 'python')
 optdepends=(
   'imhex-patterns-git: ImHex base patterns'
 )
+provides=('imhex-patterns')
+conflicts=('imhex-patterns-git')
 source=("$pkgname::git+https://github.com/WerWolv/ImHex.git#tag=v$pkgver"
         "nativefiledialog::git+https://github.com/btzy/nativefiledialog-extended.git"
         "xdgpp::git+https://git.sr.ht/~danyspin97/xdgpp"
@@ -23,6 +25,7 @@ source=("$pkgname::git+https://github.com/WerWolv/ImHex.git#tag=v$pkgver"
         "capstone::git+https://github.com/capstone-engine/capstone#branch=next"
         "libwolv::git+https://github.com/WerWolv/libwolv"
         "pattern_language::git+https://github.com/WerWolv/PatternLanguage#tag=ImHex-v$pkgver"
+        "imhex-patterns::git+https://github.com/WerWolv/ImHex-Patterns#tag=ImHex-v$pkgver"
         0001-makepkg-Fix-compiler-check.patch
         pl-0001-Use-C-23-standard.patch
         pl-0002-makepkg-Remove-extraneous-compiler-flags.patch)
@@ -33,10 +36,12 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
             '43bdbbb6edf567201fa52f1c695f77fea9a27dd5c62de615ef74d64a5e676a98'
             '4c3e667d40eabe2a5ea724125c69f73bcb6774c01db9ad97bc6b633e1c284fc5'
             '7a7f17c95bfe9de4cda023aa29dfa019ea2870c29e14fa559c2be8b725649d57')
 b2sums=('SKIP'
+        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -109,7 +114,10 @@ package() {
     install -Dm0755 -t "$pkgdir/usr/lib/imhex/plugins" "build/plugins/$plugin.hexplug"
   done
 
+  # Patterns
   install -dm0755 "$pkgdir/usr/share/imhex"
+  cp -r -t "$pkgdir/usr/share/imhex" \
+    "$srcdir/imhex-patterns"/{constants,encodings,includes,magic,patterns,themes,tips}
 
   # Desktop file(s)
   install -Dm0644 -t "$pkgdir/usr/share/applications" "$pkgname/dist/imhex.desktop"
