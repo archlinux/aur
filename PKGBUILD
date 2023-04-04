@@ -2,7 +2,7 @@
 
 pkgname=lbench  
 pkgver=6.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Simple Linux multithread benchmarking tool"
 url="http://www.kornelix.net/lbench/lbench.html"
 arch=('i686' 'x86_64')
@@ -19,7 +19,4 @@ build() {
 package() {
   cd $pkgname
   make DESTDIR="$pkgdir" PREFIX=/usr ICONDIR=/usr/share/pixmaps install
-  chmod 755 "$pkgdir"/usr/bin/$pkgname
-  chmod o+r "$pkgdir"/usr/share/lbench/images/save.png
-  sed -i 's+/usr/share/lbench/icons/++' "$pkgdir"/usr/share/applications/$pkgname.desktop
 }
