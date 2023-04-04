@@ -4,7 +4,7 @@
 pkgbase=garlic
 pkgname=('garlic' 'garlic-doc')
 pkgver=1.6
-pkgrel=12
+pkgrel=13
 arch=('i686' 'x86_64')
 url="http://www.zucic.org/garlic/"
 license=('GPL2')
@@ -16,7 +16,7 @@ source=(http://www.zucic.org/sources/$pkgbase-$pkgver/$pkgbase.1.gz
 md5sums=('5b91358ce8a48e12e6c1d3650aa6ebb4'
          '5fac1f13733d9700925a0cb9a407c651'
          '08ec479898102062250ebd60700e102c'
-         'da42765ab5a03e78121c7e7729b609ca')
+         '7c37d034a97783664237637fdf28ac5b')
 
 build() {
   cd "$pkgbase-$pkgver"
