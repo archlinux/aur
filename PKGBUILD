@@ -3,7 +3,7 @@
 # Contributor: Diab Neiroukh <lazerl0rd@thezest.dev>
 
 pkgname=mimalloc
-pkgver=2.0.9
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='General-purpose allocator with excellent performance characteristics'
 arch=('x86_64')
@@ -11,7 +11,7 @@ url='https://github.com/microsoft/mimalloc'
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'cmake')
-_commit='28cf67e5b64c704cad993c71f29a24e781bee544'
+_commit='3e313478d91c04ac5821743688ce55fc27432c4f'
 source=("$pkgname::git+$url#commit=$_commit")
 b2sums=('SKIP')
 
