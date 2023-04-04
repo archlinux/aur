@@ -2,10 +2,10 @@
 # Contributor: Johann Gründl <mail at johanngruendl dot at>
 
 pkgname=ttf-adobe-source-fonts
-pkgver=20230102300  # because there are three different versions installed by this package, pkgver does not adhere to the upstream version
-_pkgver_source_code_pro="2.038R-ro/1.058R-it/1.018R-VAR"
+pkgver=2023040400  # because there are three different versions installed by this package, pkgver does not adhere to the upstream version
+_pkgver_source_code_pro="2.040R-u/1.060R-i/1.024R-vf"
 _pkgver_source_serif="4.005R"
-_pkgver_source_sans="3.046R"
+_pkgver_source_sans="3.052R"
 pkgrel=1
 pkgdesc="TTF versions of Adobe's Source fonts (includes Source Sans, Source Serif, and Source Code Pro)."
 arch=('any')
@@ -16,13 +16,19 @@ source=("${pkgname}-${pkgver}-source-code-pro.tar.gz::https://github.com/adobe-f
         "${pkgname}-${pkgver}-source-serif.tar.gz::https://github.com/adobe-fonts/source-serif/archive/refs/tags/${_pkgver_source_serif}.tar.gz"
         "${pkgname}-${pkgver}-source-sans.tar.gz::https://github.com/adobe-fonts/source-sans/archive/refs/tags/${_pkgver_source_sans}.tar.gz")
 noextract=("${source[@]%%::*}")
-sha256sums=('d8f879fefd66ecb7291ea2d73984b9c0a97fb499424e58290ba6b81787d0c725'
+sha256sums=('f17728d68dc1b0720f503d990f763738b6647d10d5cd63afa4525754f2c04229'
             '92415a067bfa449876cd3f4a4229d18a9140588574299696da81be0e213d69df'
-            '7a0a3a0c9ff2740380eddc28a53b4b0dc99491da5f900f4add5af2d1a18e06bc')
+            '21f4e24bbd7b24c31ba13ddb10600db3a61565f20f2ccf2347f4e114e6e34596')
 
 prepare() {
-    for archive in "${source[@]%%::*}"; do
-        for pattern in "*TTF/*.ttf" "*VAR/*.ttf" "*LICENSE.md"; do
+    # Source Serif has a VAR folder
+    for pattern in "*TTF/*.ttf" "*VAR/*.ttf" "*LICENSE.md"; do
+        tar -xf "${pkgname}-${pkgver}-source-serif.tar.gz" --wildcards $pattern
+    done
+
+    # Source Sans and Source Code Pro have a VF folder instead
+    for archive in "${pkgname}-${pkgver}-source-code-pro.tar.gz" "${pkgname}-${pkgver}-source-sans.tar.gz"; do
+        for pattern in "*TTF/*.ttf" "*VF/*.ttf" "*LICENSE.md"; do
             tar -xf $archive --wildcards $pattern
         done
     done
@@ -33,7 +39,16 @@ package() {
     for path in *; do
         if [ -d $path ]; then
             install -Dm644 $path/TTF/*.ttf -t "${pkgdir}/usr/share/fonts/${pkgname}"
-            install -Dm644 $path/VAR/*.ttf -t "${pkgdir}/usr/share/fonts/${pkgname}"
+            
+            # Source Serif has a VAR folder
+            if [ -d "${path}/VAR/" ]; then
+                install -Dm644 $path/VAR/*.ttf -t "${pkgdir}/usr/share/fonts/${pkgname}"
+            fi
+
+            # Source Sans and Source Code Pro have a VF folder instead
+            if [ -d "${path}/VF/" ]; then
+            install -Dm644 $path/VF/*.ttf -t "${pkgdir}/usr/share/fonts/${pkgname}"
+            fi
         fi
     done
 
