@@ -1,0 +1,14 @@
+pkgbase = refind-theme-catppuccin-git
+	pkgdesc = Catppuccin - Soothing pastel theme for rEFInd
+	pkgver = r7.60dbd37
+	pkgrel = 1
+	url = https://github.com/catppuccin/refind
+	install = refind-theme-catppuccin-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = refind
+	source = refind-theme-catppuccin-git::git+https://github.com/catppuccin/refind.git
+	sha256sums = SKIP
+
+pkgname = refind-theme-catppuccin-git

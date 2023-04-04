@@ -1,0 +1,78 @@
+post_install() {
+  local install_dir='/usr/share/refind/themes/catppuccin'
+
+  echo "Searching rEFInd installation in EFI partition..."
+  if ! __has_esp__; then 
+    echo "EFI partition not found" >&2
+    exit 1
+  fi
+
+  REFIND_DIR=$(find "$ESP" -type d -iname refind)
+  if ! [[ -d "${REFIND_DIR}" ]]; then
+    echo "rEFInd not installed in $ESP" >&2
+    exit 1
+  fi
+  echo "Found rEFInd in ${REFIND_DIR}"
+
+  echo "Installing theme in ${REFIND_DIR}/themes"
+  cd ${install_dir}
+  install -D -m0644 -t "${REFIND_DIR}/themes/catppuccin/" *.conf
+  find assets -type f -iname *.png -exec install -D -m0644 {} "${REFIND_DIR}/themes/catppuccin/{}" \;
+
+  echo 'Remember to add "include themes/catppuccin/flavour.conf" to your refind.conf file (replace flavour with latte/frappe/macchiato/mocha)'
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  echo "Removal of theme from EFI partition"
+
+  echo "Searching rEFInd installation in EFI partition..."
+  if ! __has_esp__; then 
+    echo "EFI partition not found" >&2
+    exit 1
+  fi
+
+  REFIND_DIR=$(find "$ESP" -type d -iname refind)
+  if ! [[ -d "${REFIND_DIR}" ]]; then
+    echo "rEFInd not installed in $ESP" >&2
+    exit 1
+  fi
+  echo "Found rEFInd in ${REFIND_DIR}"
+
+  if ! [[ -d "${REFIND_DIR}/themes/catppuccin" ]]; then
+    echo "Theme already uninstalled"
+    exit 0
+  fi
+
+  rm -r "${REFIND_DIR}/themes/catppuccin"
+  echo "Theme uninstalled from ${REFIND_DIR}/themes/catppuccin"
+}
+
+# Copied from https://github.com/jaltuna/sbmok/master/verify.sh
+# Verify EFI System Partition
+__has_esp__() {
+  __find_esp__
+
+  mount "$ESP" &>/dev/null
+  [[ -d "$ESP/EFI" ]] && return 0 || return 1  
+}
+
+__find_esp__() {
+  local parttype 
+  local fstype
+  local device 
+
+  while read -r device; do
+    read -r parttype fstype ESP <<<"$(lsblk -o "PARTTYPE,FSTYPE,MOUNTPOINT" "$device" 2>/dev/null | awk 'NR==2')"
+  
+    [[ "${parttype,,}" != "c12a7328-f81f-11d2-ba4b-00a0c93ec93b" ]] && continue
+    [[ "${fstype,,}" != "vfat" ]] && continue      
+    [[ -z $(findmnt -sn "$ESP") ]] && continue 
+
+  done <<< "$(fdisk -l 2>/dev/null | grep -i efi | cut -d " " -f 1)"
+
+  readonly ESP
+}
