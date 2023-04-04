@@ -1,6 +1,6 @@
 # Maintainer: Kevin Stephen <kands-code@qq.com>
 pkgname=torchstudio
-pkgver=0.9.14
+pkgver=0.9.15
 pkgrel=1
 # epoch=1
 pkgdesc="IDE for PyTorch and its ecosystem"
@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://torchstudio.ai/'
 license=('MIT')
 # groups=()
-depends=('python')
+depends=('bash' 'libarchive')
 # makedepends=()
 # checkdepends=()
 # optdepends=()
@@ -21,7 +21,7 @@ options=(!strip !zipman)
 # changelog=
 source=("https://github.com/TorchStudio/${pkgname}/releases/download/${pkgver}/TorchStudio_${pkgver}-Linux_Installer.deb")
 # noextract=()
-sha256sums=('c5c93535676e29048e122fabeffa0eb569496682c8e22b0aab6ba0013dfa4087')
+sha256sums=('c27b687cd43e7cf279c9033ed4bd55eea67e70097d5654503f515290b68d7a2c')
 # validpgpkeys=()
 
 # prepare() {
