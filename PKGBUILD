@@ -2,7 +2,7 @@
 pkgbase=python-ablog
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 pkgdesc=" ABlog for blogging with Sphinx"
 arch=('any')
@@ -24,7 +24,7 @@ checkdepends=('python-pytest')
 # sphinx feedgen already in makedepends, feedgen depends on lxml
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #source=("https://github.com/sunpy/ablog/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('bfa94d6081e8be4b7ebe36a56bfaa251')
+md5sums=('a67e0db465c1a546ea4ca532326cfddf')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
