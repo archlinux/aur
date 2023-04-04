@@ -1,6 +1,6 @@
 pkgbase = mulle-template
 	pkgdesc = Template generator for text files
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/mulle-sde/mulle-template
@@ -9,8 +9,8 @@ pkgbase = mulle-template
 	groups = mulle-sde-all
 	license = BSD3
 	depends = bash
-	depends = mulle-bashfunctions>=4.1.1
-	source = https://github.com/mulle-sde/mulle-template/archive/1.0.1.tar.gz
-	md5sums = cf6f6d2b7fc271ca94d7e05ab99046d7
+	depends = mulle-bashfunctions>=5.0.3
+	source = https://github.com/mulle-sde/mulle-template/archive/1.0.2.tar.gz
+	md5sums = 18adb4e8439a96640cb76e8786455e55
 
 pkgname = mulle-template
