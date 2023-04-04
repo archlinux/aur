@@ -4,7 +4,7 @@
 
 pkgname=free-delta
 pkgver=2.9.7
-pkgrel=1
+pkgrel=2
 pkgdesc="An Open Source System for Processing Taxonomic Descriptions"
 arch=('x86_64')
 url="http://freedelta.sourceforge.net/"
@@ -20,7 +20,7 @@ source=("git+https://github.com/maurobio/freedelta.git#tag=v$pkgver"
 	"https://packages.lazarus-ide.org/HistoryFiles.zip"
 	"git+https://github.com/skalogryz/richmemo.git")
 sha256sums=('SKIP'
-            '51bc24fd50441993bf171da7074da692ef2ab8471b67a2294fb14c5073567f0c'
+            'df398bcf5f3ef5ae7bddd624e309f9b30188eb1200befc436acf11f4a8fcd7c9'
             '025d7782b3edffbebde90d709c4f70a28bac56dd5bfd3802d65afeec7dd1a05a'
             '7d7176cb08b546c6f7537032aba9fbca60c72e17cfc66dc320ebcbb8a239b03a'
             '520f7ec155398c94a96d504453bcc6bfec08108c42e8b5db78c8d7b5187fa04c'
