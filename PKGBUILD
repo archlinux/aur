@@ -8,7 +8,6 @@ arch=('x86_64' 'i686' 'aarch64')
 depends=('perl-image-exiftool' 'sqlite3' 'perl-modern-perl' 'perl-text-simpletable-autowidth' 'perl-file-homedir' 'perl-dbd-sqlite')
 license=('BSD')
 url='https://sr.ht/~rwa/photo-apps'
-provides=('photo-stats') 
 options=(!strip)
 source=("git+https://git.sr.ht/~rwa/photo-stats#tag=${pkgver}") 
 sha256sums=('SKIP')

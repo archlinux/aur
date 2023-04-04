@@ -13,7 +13,6 @@ pkgbase = phosta
 	depends = perl-text-simpletable-autowidth
 	depends = perl-file-homedir
 	depends = perl-dbd-sqlite
-	provides = photo-stats
 	options = !strip
 	source = git+https://git.sr.ht/~rwa/photo-stats#tag=1.1
 	sha256sums = SKIP
