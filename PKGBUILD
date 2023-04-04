@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=json-schema-for-humans
-pkgver=0.44.3
+pkgver=0.44.4
 pkgrel=1
 pkgdesc="Quickly generate HTML documentation from a JSON schema"
 arch=('any')
@@ -29,7 +29,7 @@ depends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9649b4c8a1e8ff86ec5b441a9db31c69039ce4065a45dd3044f619deff429b3c')
+sha256sums=('ca51a6ed7214a09c7252c76d15dd48916794ab0bbf3e5abce7661393a3b1e20f')
 
 _archive="$pkgname-$pkgver"
 
