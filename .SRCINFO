@@ -1,0 +1,13 @@
+pkgbase = reddit-systemd-scheduler
+	pkgdesc = systemd service for scheduling posts to reddit
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/jeanlucthumm/reddit-systemd-scheduler
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = python
+	source = reddit-systemd-scheduler-1.0.1::https://github.com/jeanlucthumm/reddit-systemd-scheduler/archive/v1.0.1.tar.gz
+	sha512sums = fd0b47afe6c29b95ea4b51410fd70c1b1dc396b316641a975b26ada852de14614a582ff472e73815cda7d72ee0002805d8333976a6184ef4ac5ec19c33814f7b
+
+pkgname = reddit-systemd-scheduler
