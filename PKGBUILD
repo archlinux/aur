@@ -4,7 +4,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.4303.r0.g9c91c700a
+pkgver=1.7.4328.r0.gada291c0f
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -115,7 +115,6 @@ pkgver() {
 build() {
     cmake -S pcsx2 -B build \
     -G Ninja \
-    -DCMAKE_CXX_FLAGS_RELEASE="-O2" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_C_COMPILER=clang \
     -DCMAKE_CXX_COMPILER=clang++ \
