@@ -1,0 +1,13 @@
+pkgbase = terraform-variables-generator
+	pkgdesc = Simple Tool to Generate Variables file from Terraform Configuration
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/alexandrst88/terraform-variables-generator
+	arch = x86_64
+	license = unknown
+	provides = terraform-variables-generator
+	conflicts = terraform-variables-generator
+	source = terraform-variables-generator-0.0.2::https://github.com/alexandrst88/terraform-variables-generator/releases/download/v0.0.2/terraform-variables-generator_0.0.2_linux_amd64.tar.gz
+	sha256sums = 45f1b37d25599c1c004b6c9646d13309872034e62604ff09c392552be6d0d23e
+
+pkgname = terraform-variables-generator
