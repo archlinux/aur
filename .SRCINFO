@@ -1,6 +1,6 @@
 pkgbase = sbupdate-mkinitcpio
 	pkgdesc = Generate signed Unified Kernel Images
-	pkgver = 0.11
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/YHNdnzj/sbupdate
 	install = sbupdate.install
@@ -10,8 +10,8 @@ pkgbase = sbupdate-mkinitcpio
 	conflicts = sbupdate
 	conflicts = sbupdate-git
 	backup = etc/sbupdate.conf
-	source = sbupdate-mkinitcpio-0.11.tar.gz::https://github.com/YHNdnzj/sbupdate/archive/0.11.tar.gz
-	b2sums = 79abc8ba4ea6ac42ad05e6c3aad0de3ead0a696eac15109f6989dc9732950063fb899f6ab2105517b48f31b13ffa613f5f5089338095f5e99ec20e1da19283ab
+	source = sbupdate-mkinitcpio-1.0.tar.gz::https://github.com/YHNdnzj/sbupdate/archive/1.0.tar.gz
+	b2sums = 757927d43a992ba7cd97d0d322934f7a40ca743705b6e6306f64a21188e72601efbe30463f12add67031694fc3d75f4b87ae548907665c06f01802bf90d78e30
 
 pkgname = sbupdate-mkinitcpio
 	depends = bash
