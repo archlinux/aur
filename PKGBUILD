@@ -1,7 +1,7 @@
 # Maintainer: Derek J. Clark <derekjohn.clark@gmail.com>
 pkgname=opengamepadui-git
 _pkgbase=OpenGamepadUI
-pkgver=v0.6.0.r0.gc2dc1a0
+pkgver=v0.7.2.r2.g4f93940
 pkgrel=1
 pkgdesc="Open source game launcher"
 arch=('x86_64')
@@ -18,7 +18,7 @@ makedepends=('godot' 'scons' 'pkgconf' 'gcc' 'libxcursor' 'libxinerama'
 	     )
 provides=('opengamepadui')
 conflicts=('opengamepadui-bin')
-_tag=c2dc1a029822a27469cf3323d52eead2eba934cc
+_tag=4f939405395c51f429402741a9a28f3f5c7ffa2d
 source=("${_pkgbase}::git+https://github.com/ShadowBlip/${_pkgbase}.git#tag=${_tag}")
 sha256sums=('SKIP')
 
@@ -33,7 +33,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/${_pkgbase}"
-	make build
+	make import build
 }
 
 package() {
@@ -45,6 +45,12 @@ package() {
 
 	mkdir -p ${pkgdir}/usr/lib/systemd/user
 	install -Dm644 rootfs/usr/lib/systemd/user/ogui-qam.service ${pkgdir}/usr/lib/systemd/user
+	
+	mkdir -p ${pkgdir}/usr/lib/udev/hwdb.d
+	install -Dm644 rootfs/usr/lib/udev/hwdb.d/59-opengamepadui-handheld.hwdb ${pkgdir}/usr/lib/udev/hwdb.d/59-opengamepadui-handheld.hwdb
+
+	mkdir -p ${pkgdir}/usr/lib/udev/rules.d
+	install -Dm644 rootfs/usr/lib/udev/rules.d/10-opengamepadui-handheld.rules ${pkgdir}/usr/lib/udev/rules.d/10-opengamepadui-handheld.rules
 	
 	mkdir -p ${pkgdir}/usr/share/opengamepadui/scripts
 	install -Dm644 build/libevdev.linux.template_debug.x86_64.so ${pkgdir}/usr/share/opengamepadui/libevdev.linux.template_debug.x86_64.so
