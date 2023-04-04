@@ -31,7 +31,7 @@ pkgbase = linux-rust
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	sha256sums = SKIP
-	sha256sums = c9164e69aa39de41e177535f9a34ecfc2f87282b35de3029bf99c691ab87196c
+	sha256sums = 165ebef778236af6407bd50ce99add5e247295b65073257c95514a09cc82d74a
 
 pkgname = linux-rust
 	pkgdesc = The Rust Linux kernel and modules
