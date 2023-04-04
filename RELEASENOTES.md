@@ -1,3 +1,8 @@
+## 1.1.0
+
+* somewhat better detection of the "file" scm
+
+
 ### 1.0.1
 
 * Various small improvements

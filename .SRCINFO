@@ -1,6 +1,6 @@
 pkgbase = mulle-domain
 	pkgdesc = URL management and tag resolution for repositories
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/mulle-sde/mulle-domain
@@ -9,8 +9,8 @@ pkgbase = mulle-domain
 	groups = mulle-sde-all
 	license = BSD3
 	depends = bash
-	depends = mulle-bashfunctions>=4.1.1
-	source = https://github.com/mulle-sde/mulle-domain/archive/1.0.1.tar.gz
-	md5sums = a64e941a3e195884291536dc655c96c8
+	depends = mulle-bashfunctions>=5.0.3
+	source = https://github.com/mulle-sde/mulle-domain/archive/1.1.0.tar.gz
+	md5sums = 3c6be7a090046728bef679a9ed927a5c
 
 pkgname = mulle-domain
