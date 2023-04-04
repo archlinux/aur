@@ -1,4 +1,5 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Maintainer: Tim Schumacher <timschumi@gmx.de>
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: Brian <brain@derelict.garden>
 
 pkgbase=ladybird
