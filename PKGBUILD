@@ -2,7 +2,7 @@
 
 _target=aarch64-none-elf
 pkgname=$_target-gdb
-pkgver=12.1
+pkgver=13.1
 pkgrel=1
 pkgdesc='The GNU Debugger for the ARM64 Baremetal target'
 arch=(i686 x86_64)
@@ -12,20 +12,26 @@ depends=('expat' 'gdb-common' 'guile' 'libelf' 'ncurses' 'mpfr' 'python' 'source
 options=(!emptydirs)
 source=(https://ftp.gnu.org/gnu/gdb/gdb-$pkgver.tar.xz{,.sig})
 validpgpkeys=('F40ADB902B24264AA42E50BF92EDB04BFF325CF3') # Joel Brobecker
-sha256sums=('0e1793bf8f2b54d53f46dea84ccfd446f48f81b297b28c4f7fc017b818d69fed'
+sha256sums=('115ad5c18d69a6be2ab15882d365dda2a2211c14f480b3502c6eba576e2e95a0'
             'SKIP')
 
 prepare() {
-  cd gdb-$pkgver
-  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
+  cd "$srcdir/gdb-$pkgver"
+  [[ -d gdb-build ]] && rm -rf gdb-build
+  mkdir gdb-build
+  #sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
 }
 
 build() {
-  cd gdb-$pkgver
+  cd "$srcdir/gdb-$pkgver/gdb-build"
 
-  export CXXFLAGS="$CXXFLAGS -fpermissive"
+  unset LDFLAGS
+  export CFLAGS="-O2 -pipe"
+  #export CXXFLAGS="-O2 -pipe"
+  export CPPFLAGS="-O2 -pipe"
+  export CXXFLAGS="-fpermissive -O2 -pipe"
 
-  ./configure \
+  ../configure \
     --target=$_target \
     --prefix=/usr \
     --enable-languages=c,c++ \
@@ -36,20 +42,21 @@ build() {
     --enable-source-highlight \
     --disable-nls \
     --with-python=/usr/bin/python \
-    --with-guile=guile-3.0 \
-    --with-system-gdbinit=/etc/gdb/gdbinit-aarch64-none
+    --with-guile \
+    --disable-werror
 
   make
 }
 
 package() {
-  cd gdb-$pkgver
+  cd "$srcdir/gdb-$pkgver/gdb-build"
 
   make DESTDIR="$pkgdir" install
 
   # Following files conflict with 'gdb' package
-  rm -r "$pkgdir"/usr/share/info
-  rm -r "$pkgdir"/usr/share/gdb
-  rm -r "$pkgdir"/usr/include/gdb
-  rm -r "$pkgdir"/usr/share/man/man5
+  rm -r ${pkgdir}/usr/share/info
+  rm -r ${pkgdir}/usr/share/man
+  rm -r ${pkgdir}/usr/share/gdb/
+  rm -r ${pkgdir}/usr/include/gdb
+  rm -r ${pkgdir}/usr/include/sim
 }
