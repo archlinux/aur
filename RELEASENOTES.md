@@ -1,6 +1,25 @@
+### 5.0.3
+
+* fix installer for (gasp) solaris
+
+### 5.0.2
+
+* Various small improvements
+
+# 5.0.0
+
+* BREAKING change `_parallel` functions to `__parallel`
+* `very_short_sleep` can take a microsecond parameter now
+* `log_entry` now truncates argument output for readability
+* `dir_list_files` can be set to list symlinks only
+* mulle-bashfunctions are started now with `'! /usr/bin/env/mulle-bash`
+* removed unused functions like concat `(r_concat` stays)
+* added self-documenting functionality to mulle-bashfunctions
+
+
 ### 4.1.1
 
-* * add `r_de_camel_case_upcase_identifier` back for backwards compatibility
+* add `r_de_camel_case_upcase_identifier` back for backwards compatibility
 * fix `_remove_file_if_present` ignoring `MULLE_FLAG_EXEKUTOR_DRY_RUN`
 
 ## 4.1.0
