@@ -2,7 +2,7 @@
 
 pkgname=iortcw-data
 pkgver=1.51c
-pkgrel=4
+pkgrel=5
 pkgdesc="Return to Castle Wolfenstein Single Player pk3s files (shared use)"
 arch=('any')
 url="https://github.com/iortcw/iortcw"
@@ -22,10 +22,10 @@ package() {
   # Move Data to Package Directory
   mkdir -p "${pkgdir}/opt"
   cp -r main "${pkgdir}/opt/iortcw-data"
-  cp ../sp_pak2.pk3 "${pkgdir}/opt/iortcw-data"
-  cp ../mp_pak1.pk3 "${pkgdir}/opt/iortcw-data"
-  cp ../mp_pak2.pk3 "${pkgdir}/opt/iortcw-data"
-  install -D -m 755 ../openurl.sh \
+  cp sp_pak2.pk3 "${pkgdir}/opt/iortcw-data"
+  cp mp_pak1.pk3 "${pkgdir}/opt/iortcw-data"
+  cp mp_pak2.pk3 "${pkgdir}/opt/iortcw-data"
+  install -D -m 755 openurl.sh \
     "${pkgdir}/opt/iortcw-data"
 
   # Clean unneeded files

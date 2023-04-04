@@ -1,7 +1,7 @@
 pkgbase = iortcw-data
 	pkgdesc = Return to Castle Wolfenstein Single Player pk3s files (shared use)
 	pkgver = 1.51c
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/iortcw/iortcw
 	install = iortcw-data.install
 	arch = any
