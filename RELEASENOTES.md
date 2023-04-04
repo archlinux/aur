@@ -1,3 +1,14 @@
+# 2.0.0
+
+* new command headerorder
+* new command unveil
+* New craftinfo readd command to get the craftinfo back after an accidental delete
+* You now say mulle-sde craft --from instead of mulle-sde craft --clean-domain, which is easier to remember
+* mulle-sde dep list and mulle-sde lib list in recursive mode now lists the originating dependency
+* Made the ignore command somewhat more pleasant
+* move header/footer template files from ~/.mulle to ~/.config/mulle on linux
+
+
 ### 1.1.3
 
 * fix craftinfo command

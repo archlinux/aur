@@ -1,6 +1,6 @@
 pkgbase = mulle-sde
 	pkgdesc = Cross-platform IDE for the command-line
-	pkgver = 1.1.3
+	pkgver = 2.0.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/mulle-sde/mulle-sde
@@ -9,21 +9,21 @@ pkgbase = mulle-sde
 	groups = mulle-sde-all
 	license = BSD3
 	depends = bash
-	depends = mulle-bashfunctions>=4.1.1
-	depends = mulle-craft>=2.0.0
-	depends = mulle-dispense>=3.1.0
-	depends = mulle-domain>=1.0.1
-	depends = mulle-env>=4.1.0
-	depends = mulle-fetch>=3.0.1
-	depends = mulle-make>=1.1.1
-	depends = mulle-match>=1.0.1
-	depends = mulle-monitor>=1.0.1
-	depends = mulle-platform>=1.0.1
-	depends = mulle-semver>=1.0.1
-	depends = mulle-sourcetree>=1.1.0
-	depends = mulle-template>=1.0.1
-	depends = mulle-test>=6.1.0
-	source = https://github.com/mulle-sde/mulle-sde/archive/1.1.3.tar.gz
-	md5sums = d2db7693ee98fff1a6c28db3406a76b2
+	depends = mulle-bashfunctions>=5.0.3
+	depends = mulle-craft>=3.0.0
+	depends = mulle-dispense>=3.2.0
+	depends = mulle-domain>=1.1.0
+	depends = mulle-env>=4.2.0
+	depends = mulle-fetch>=3.1.0
+	depends = mulle-make>=2.0.0
+	depends = mulle-match>=1.0.3
+	depends = mulle-monitor>=1.0.2
+	depends = mulle-platform>=1.0.2
+	depends = mulle-semver>=1.0.2
+	depends = mulle-sourcetree>=1.2.0
+	depends = mulle-template>=1.0.2
+	depends = mulle-test>=6.2.0
+	source = https://github.com/mulle-sde/mulle-sde/archive/2.0.0.tar.gz
+	md5sums = ce88fc20e0bf2b45176a4216505cedf1
 
 pkgname = mulle-sde
