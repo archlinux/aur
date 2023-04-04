@@ -1,7 +1,7 @@
 pkgbase = nvui
 	pkgdesc = Modern frontend for Neovim
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rohit-px2/nvui
 	arch = x86_64
 	license = MIT
