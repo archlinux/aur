@@ -1,3 +1,7 @@
+### 1.0.2
+
+* fixed monitor back into usability for more than just a task starter
+
 ### 1.0.1
 
 * Various small improvements
