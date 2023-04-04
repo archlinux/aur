@@ -7,7 +7,7 @@
 pkgname=spotify-edge
 pkgver=1.2.8.923
 _commit=g4f94bf0d
-pkgrel=1
+pkgrel=2
 pkgdesc='A proprietary music streaming service. Edge version.'
 arch=('x86_64')
 url='https://www.spotify.com'
@@ -62,10 +62,6 @@ package() {
         install -Dm644 "${pkgdir}/opt/spotify/icons/spotify-linux-$size.png" \
             "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/spotify.png"
     done
-
-    # Copy /usr/share/doc/spotify-client/changelog.gz
-    mkdir -p "${pkgdir}/usr/share/doc/spotify-client"
-    cp "${srcdir}/${pkgname}/usr/share/doc/spotify-client/changelog.gz" "${pkgdir}/usr/share/doc/spotify-client/changelog.gz"
 
     # Symlink spotify binary which is located in /opt
     ln -sf /opt/spotify/spotify "${pkgdir}/usr/bin/spotify"

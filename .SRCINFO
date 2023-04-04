@@ -1,7 +1,7 @@
 pkgbase = spotify-edge
 	pkgdesc = A proprietary music streaming service. Edge version.
 	pkgver = 1.2.8.923
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.spotify.com
 	arch = x86_64
 	license = custom
