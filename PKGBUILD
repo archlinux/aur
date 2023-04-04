@@ -11,8 +11,7 @@
 # - use the fastest linker "mold".
 # - enalbe JIT and AOT compilation of emacs-lisp, which
 #   means built-in packages and your own packages are 
-#   native compiled by default. Disabled for now to
-#   avoid bugs.
+#   native compiled by default.
 ################################################################################
 
 ################################################################################
@@ -50,7 +49,7 @@ MOLD="YES"        # Use the mold linker.
                   # This is the default linker.
                   # Notice that it will always be used.
 
-JIT=              # Enable native just-in-time compilation. Use libgccjit,
+JIT="YES"         # Enable native just-in-time compilation. Use libgccjit,
                   # which is in testing repo for now.
                   #
                   # This compiles only performance critical elisp files.
@@ -59,7 +58,7 @@ JIT=              # Enable native just-in-time compilation. Use libgccjit,
                   #    (setq comp-deferred-compilation t)
                   # to your .emacs file.
 
-AOT=              # Precompile all included elisp. It takes a long time.
+AOT="YES"         # Precompile all included elisp. It takes a long time.
                   # You still need to enable on-demand compilation
                   # for your own packages.
 
@@ -105,8 +104,8 @@ if [[ $CLI == "YES" ]] ; then
 else
 pkgname="emacs-pgtk-git"
 fi
-pkgver=30.0.50.165577
-pkgrel=2
+pkgver=29.0.60.164954
+pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -117,7 +116,7 @@ makedepends=('git' 'mold')
 provides=('emacs')
 conflicts=('emacs')
 replaces=('emacs')
-source=("emacs-git::git+https://git.savannah.gnu.org/git/emacs.git")
+source=("emacs-git::git+https://git.savannah.gnu.org/git/emacs.git#branch=emacs-29")
 # If Savannah fails for reasons, use Github's mirror
 #source=("emacs-git::git+https://github.com/emacs-mirror/emacs.git#commit=3f076a8e44b652691ffd4a2a07b04ab956ed4668")
 

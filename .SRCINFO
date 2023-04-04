@@ -1,7 +1,7 @@
 pkgbase = emacs-pgtk-git
 	pkgdesc = GNU Emacs. Development master branch.
-	pkgver = 30.0.50.165577
-	pkgrel = 2
+	pkgver = 29.0.60.164954
+	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	install = emacs-git.install
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = emacs-pgtk-git
 	depends = libxml2
 	depends = jansson
 	depends = harfbuzz
+	depends = libgccjit
 	depends = gtk3
 	depends = libjpeg-turbo
 	depends = libpng
@@ -29,7 +30,7 @@ pkgbase = emacs-pgtk-git
 	conflicts = emacs
 	replaces = emacs
 	options = !strip
-	source = emacs-git::git+https://git.savannah.gnu.org/git/emacs.git
+	source = emacs-git::git+https://git.savannah.gnu.org/git/emacs.git#branch=emacs-29
 	b2sums = SKIP
 
 pkgname = emacs-pgtk-git
