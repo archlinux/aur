@@ -3,7 +3,7 @@
 pkgname=texmacs-appimage
 _appimage=TeXmacs.AppImage
 _install_to=/opt/appimages/TeXmacs.AppImage
-pkgver=171.1.glibc2.15
+pkgver=20230402
 pkgrel=1
 pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG editor and CAS-interface."
 arch=('x86_64')
@@ -15,11 +15,19 @@ optdepends=('transfig: convert images using fig2ps'
             'imagemagick: convert images'
             'aspell: spell checking')
 _url="https://download.opensuse.org/repositories/home:/slowphil:/texmacs-devel/AppImage"
-source=("${_appimage}::${_url}/texmacs-0-Build${pkgver}-x86_64.AppImage")
-sha256sums=('401fbed5a6bfc18d56827fc416882f8604181d712b732092673b888f7a163c7a')
+source=("${_appimage}::${_url}/texmacs-latest-x86_64.AppImage")
+# the repo only provides latest build of appimage
+sha256sums=('SKIP')
 options=('!emptydirs' '!ccache' '!strip')
 provides=('texmacs')
 conflicts=('texmacs')
+
+pkgver() {
+  chmod +x ${_appimage}
+  ./${_appimage} --appimage-extract "var/cache/zypp/solv/BUILD/cookie" > /dev/null 2>&1
+  date +'%Y%m%d' \
+       --date="@$(cat "squashfs-root/var/cache/zypp/solv/BUILD/cookie" | cut -d' ' -f2)"
+}
 
 package() {
   chmod +x ${_appimage}
