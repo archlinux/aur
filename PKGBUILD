@@ -1,8 +1,8 @@
 # Maintainer: Rodrigo Farias <rodrigofarias77@gmail.com>
 
 pkgname=azure-cli-bin
-pkgver=2.46.0
-pkgrel=3
+pkgver=2.47.0
+pkgrel=2
 pkgdesc='Azure Command-Line Interface (Ubuntu package)'
 arch=('x86_64')
 url='https://github.com/Azure/azure-cli'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python')
 conflicts=('azure-cli' 'python-azure-cli')
 source=("https://packages.microsoft.com/repos/azure-cli/pool/main/a/azure-cli/azure-cli_${pkgver}-1~jammy_amd64.deb")
-md5sums=('560251e2e1f3acb9866adcc573916c1f')
+md5sums=('206f6f89a8d4bb40c41e726dda90da5e')
 
 package () {
     cd "${pkgdir}"
