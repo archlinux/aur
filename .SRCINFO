@@ -5,6 +5,7 @@ pkgbase = mondoo
 	url = https://mondoo.com
 	arch = x86_64
 	license = custom
+	depends = cnspec
 	source = https://releases.mondoo.com/mondoo/8.3.0/mondoo_8.3.0_linux_amd64.tar.gz
 	source = LICENSE.html
 	source = OSS-LICENSES.tar.xz

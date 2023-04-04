@@ -17,7 +17,7 @@ source=(
     'mondoo.sh'
     )
 arch=('x86_64')
-depends=()
+depends=('cnspec')
 
 sha256sums=('482319f9e3a315e5cdf5c0fbb2b7e18dab8e2d177619b378d5db00edab77ab91'
             'c8d346670913c91bf712405e57c2311e6fbda37261f8abfadf9ca7e5fdd768bd'
