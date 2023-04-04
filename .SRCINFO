@@ -9,7 +9,7 @@ pkgbase = cyberghostvpn
 	depends = curl
 	depends = openvpn
 	depends = wireguard-tools
-	depends = systemd-resolvconf
+	depends = resolvconf
 	source = https://download.cyberghostvpn.com/linux/cyberghostvpn-fedora-32-1.4.1.zip
 	sha256sums = 772d3278eaffa7dd5f91a5d988efbf0ff6e0521188cfb5445c14207d3172ee44
 

@@ -13,7 +13,7 @@ depends=(
   curl
   openvpn
   wireguard-tools
-  systemd-resolvconf
+  resolvconf
 )
 makedepends=(zip)
 
