@@ -4,7 +4,7 @@ pkgname=tauon-music-box
 _pkgname=tauonmb
 _gitname=TauonMusicBox
 pkgver=7.6.3
-pkgrel=1
+pkgrel=2
 _kissfftver=131.1.0
 _miniaudiocommit=9a7663496fc06f7a9439c752fd7666ca93328c20
 pkgdesc="A modern streamlined music player"
@@ -57,14 +57,17 @@ optdepends=('noto-fonts-cjk: Matching font for CJK characters'
             )
             
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Taiko2k/TauonMusicBox/archive/v$pkgver.tar.gz"
-	"kissfft.tar.gz::https://github.com/mborgerding/kissfft/archive/refs/tags/$_kissfftver.tar.gz"
-	"miniaudio.tar.gz::https://github.com/mackron/miniaudio/archive/$_miniaudiocommit.tar.gz"
+	"kissfft-$_kissfftver.tar.gz::https://github.com/mborgerding/kissfft/archive/refs/tags/$_kissfftver.tar.gz"
+	"miniaudio-$_miniaudiocommit.tar.gz::https://github.com/mackron/miniaudio/archive/$_miniaudiocommit.tar.gz"
 	)
 
+prepare(){
+    cp -r kissfft-$_kissfftver/* $_gitname-$pkgver/src/phazor/kissfft/
+    cp -r miniaudio-$_miniaudiocommit/* $_gitname-$pkgver/src/phazor/miniaudio/
+}
 
 build() {
-    mv kissfft-$_kissfftver/* $_gitname-$pkgver/src/phazor/kissfft/
-    mv miniaudio-$_miniaudiocommit/* $_gitname-$pkgver/src/phazor/miniaudio/
+
     cd "$_gitname-$pkgver"
     python compile-translations.py
     bash compile-phazor.sh
