@@ -1,0 +1,13 @@
+pkgbase = rtx-bin
+	pkgdesc = Runtime Executor (asdf rust clone)
+	pkgver = 1.27.10
+	pkgrel = 1
+	url = https://github.com/jdxcode/rtx
+	arch = x86_64
+	license = MIT
+	provides = rtx
+	conflicts = rtx-git
+	source_x86_64 = https://github.com/jdxcode/rtx/releases/download/v1.27.10/rtx-v1.27.10-linux-x64.tar.gz
+	sha256sums_x86_64 = 3585244a1bb60d3185479c0a80d3c586201932db6ffb7050282049f0c21d91ad
+
+pkgname = rtx-bin
