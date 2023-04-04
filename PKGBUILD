@@ -1,4 +1,5 @@
-# Maintainer: Frank Seifferth <frankseifferth@posteo.net>
+# Maintainer: SanskritFritz (gmail)
+# Contributor: Frank Seifferth <frankseifferth@posteo.net>
 
 pkgname=tmux-xpanes
 pkgver=4.1.4
