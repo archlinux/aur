@@ -1,6 +1,13 @@
+# 2.0.0
+
+* allow mulle-make to pick up `DEFINITION_...` values from the environment (can be disabled with --clear)
+* better support for pkg-config
+* better support for cleaning
+
+
 ### 1.1.1
 
-* * fix command -v being used with mudo
+* fix command -v being used with mudo
 
 ## 1.1.0
 
