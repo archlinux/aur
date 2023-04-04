@@ -5,7 +5,7 @@
 pkgname=figtree
 _pkgname=Figtree
 pkgver=1.4.4
-pkgrel=9
+pkgrel=10
 pkgdesc='Graphical viewer of phylogenetic trees'
 arch=('any')
 url='http://tree.bio.ed.ac.uk/software/figtree'
@@ -17,7 +17,7 @@ source=("git+https://github.com/rambaut/figtree.git#commit=f9085b6"
         "${pkgname}.desktop")
 sha256sums=('SKIP'
             'd799ce29b41f4dcea53ab0337353b244c616a391b197862a9b2d7e0bb703e06d'
-            '803d76b21ab1a8c300b5e5855022fb6309f1ce6b647308e254965790664d36b0')
+            'b254f6074855f01179ffde9a428617f172cdd75bd5d4ff99f97f59f48a0cd53f')
 
 build() {
   cd $pkgname
