@@ -8,7 +8,7 @@ url="https://github.com/bgpkit/bgpkit-parser"
 license=('MIT')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bgpkit/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('d618cdcc986d4d1d7f9346eec2f3854167c1bc09eed7e78669abb2599e424de07e534840e3c01a3fafb5728b79d5092a8b0ed23b4e06dfe40e16fd7a89534472')
+sha512sums=('2aa370453fa641bed7b9d381df07b2672771587e1c4c2e2aa15ab35c2d40c8be5b7300a607bca860e37a30ac296064d142bfc7ee93bf35ee1b283e5d179a59f3')
 
 prepare() {
     cd "$pkgname-$pkgver"
