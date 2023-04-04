@@ -1,7 +1,7 @@
 # Maintainer: Luke Arms <luke@arms.to>
 
 pkgname=pretty-php
-pkgver=0.3.19
+pkgver=0.3.22
 pkgrel=1
 pkgdesc="The opinionated formatter for modern, expressive PHP"
 arch=('any')
