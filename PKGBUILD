@@ -1,6 +1,6 @@
 # Maintainer: Lukas Wölfer (domain is thasky) <aur at [domain] dot one>
 pkgname=python-backupcrawl-git
-pkgver=0.2.1.r0.g25ec603
+pkgver=0.2.2.r0.gdc8038c
 pkgrel=1
 pkgdesc='Crawls through the given directory, and checks which directories are not version controlled.'
 url='https://github.com/corrodedHash/backupcrawl'
