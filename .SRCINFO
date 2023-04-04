@@ -1,7 +1,7 @@
 pkgbase = progress-quest-bin
 	pkgdesc = Progress Quest is an antic and fantastical computer role-playing game
 	pkgver = 6.4.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://progressquest.com/
 	arch = i686
 	arch = x86_64
