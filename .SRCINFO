@@ -1,7 +1,7 @@
 pkgbase = python-stlib-plugins
 	pkgdesc = A set of stlib official plugins
-	pkgver = 1.1.1
-	pkgrel = 2
+	pkgver = 1.2.2
+	pkgrel = 1
 	url = https://github.com/calendulish/stlib-plugins
 	arch = any
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = python-stlib-plugins
 	makedepends = python-wheel
 	depends = python>=3.9
 	depends = python-stlib
-	source = https://github.com/calendulish/stlib-plugins/archive/v1.1.1.tar.gz
-	sha256sums = 1144f582460240933197390b83aa87356b29b763049b938f668114d5cd2f2761
+	source = https://github.com/calendulish/stlib-plugins/archive/v1.2.2.tar.gz
+	sha256sums = 97eeed7232bc7e04bf21eb863f560036e71dc8fdf5a7adadb8a26bef7cbde504
 
 pkgname = python-stlib-plugins
