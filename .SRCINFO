@@ -1,7 +1,7 @@
 pkgbase = fscan-git
 	pkgdesc = Intranet scanning tool
 	pkgver = 1.8.2 
-	pkgrel = 2 
+	pkgrel = 3
 	url = https://github.com/shadow1ng/fscan
 	arch = any
 	license = MIT

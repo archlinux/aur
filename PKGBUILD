@@ -25,6 +25,6 @@ build() {
 }
 
 package() {
-	cd "${_pkgname}"
-	install -Dm755 $srcdir/fscan/fscan  -t "${pkgdir}"/usr/bin/
+	cd "$pkgname-$pkgver"
+	install -Dm755 build/$pkgname "$pkgdir/usr/bin/$pkgname"
 }
