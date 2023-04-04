@@ -1,13 +1,13 @@
 pkgbase = mega
 	pkgdesc = Molecular Evolutionary Genetics Analysis. https://doi.org/10.1093/molbev/msy096
 	pkgver = 11.0.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://megasoftware.net
 	arch = x86_64
 	license = custom
 	depends = desktop-file-utils
 	depends = gconf
-	depends = gtk2>=2.0
+	depends = gtk2
 	depends = hicolor-icon-theme
 	source = https://www.megasoftware.net/releases/mega_11.0.13-1_amd64.deb
 	sha256sums = c86684c5fc24bfdc69c7f8cc84e9a9fc5d1e82465356e7e041eb939ebd28ecdd
