@@ -2,7 +2,7 @@
 
 pkgname=hyprland-autoname-workspaces-git
 _pkgname=${pkgname%-git}
-pkgver=0.3.9.r0.g94b6163
+pkgver=0.4.0.r0.g1543392
 pkgrel=1
 pkgdesc='Hyprland autoname workspace.'
 arch=('x86_64' 'aarch64')
