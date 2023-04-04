@@ -3,8 +3,8 @@
 # Contributor: bebehei <bebe@bebehei.de>
 
 pkgname=icinga2
-pkgver=2.13.6
-pkgrel=2
+pkgver=2.13.7
+pkgrel=1
 pkgdesc="An open source host, service and network monitoring program"
 license=('GPL')
 arch=('i686' 'x86_64')
@@ -45,19 +45,11 @@ backup=(etc/default/icinga2
 install='icinga2.install'
 changelog="icinga2.changelog"
 source=("https://github.com/Icinga/$pkgname/archive/v$pkgver.tar.gz"
-        'https://github.com/Icinga/icinga2/pull/9624.patch'
         "$pkgname.tmpfiles"
         "$pkgname.sysusers")
-sha256sums=('11ea79d4d5c9840cfed19e459f2c9c0bd674add67b0ed9160fb3d7ad3e74fbc2'
-            '95a729bda8c368e15c89ceb98d45cfcd8048d28cb8659eeb79adc07724a4dcf5'
+sha256sums=('8a37b7731b30127c01de8ac4cd2372b2b3a06a3972d896fd206454f6e5b136b4'
             '1302b333f49ead14f8808a379535971501d3a0c1ba02a7bf7b4406b7d27c754c'
             '2f946a33ea50a3c4400a81acd778e6411ffe5e2257a98004288b84a64f382810')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  patch -p1 < ../9624.patch
-}
 
 build() {
   mkdir -p "$srcdir/$pkgname-$pkgver/build"
