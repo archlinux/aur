@@ -1,0 +1,12 @@
+diff --git a/apps/studio/package.json b/apps/studio/package.json
+index 6483c681..9b9317b6 100644
+--- a/apps/studio/package.json
++++ b/apps/studio/package.json
+@@ -1,6 +1,6 @@
+ {
+   "name": "beekeeper-studio",
+-  "version": "3.9.0",
++  "version": "3.9.3",
+   "private": true,
+   "description": "An easy-to use SQL query editor and database UI for Mac, Windows, and Linux",
+   "author": {

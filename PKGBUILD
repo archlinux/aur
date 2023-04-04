@@ -1,23 +1,25 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='beekeeper-studio'
-pkgver='3.8.10'
-pkgrel='2'
+pkgver='3.9.3'
+pkgrel='1'
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more'
-# If you're running on i686 or pentium4, use the electron13-bin package from the AUR for the electron13 dependency
-# If you're running on pentium4, you have to add it to the arch array of the electron13-bin AUR dependency
-arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
+# If you're running on armv7h or aarch64, use the electron22-bin package from the AUR for the electron dependency
+# If you're running on armv7h, you have to add it to the arch and source arrays of the electron22-bin AUR dependency
+arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/$pkgname/$pkgname"
 license=('GPL3')
-_electronpkg='electron13'
-depends=("$_electronpkg")
+_electronpkg='electron'
+depends=("$_electronpkg>=22.0.0")
 makedepends=('git' 'libxcrypt-compat' 'nodejs>=16.0.0' 'nodejs<19.0.0' 'npm' 'python' 'yarn')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz"
+	'fix-version.diff'
 	'electron-builder-config.diff'
 	'configure-environment.diff'
 	'fix-argv.diff'
 )
-sha512sums=('64ed12f492af89be6c788b1db1269f400a0a1687f6f453b86fe1ec125803daa1015b92da8362f47d6d72b548bd242263de8e0dcfdc7ee54eae4de1bdee123f15'
+sha512sums=('c9762d281a7a04245a1f53ac3c50915f88ca6150492c142bd97989b4a4c293ecf155959df1aff03eb09528da3e3e784c768fbfa5df9c202824aef058ddc6d04a'
+            '5feedd8d12bab02b73c0fbc807aa2cdb5c52c3e4e380f8edfa5080f9b05ef042e45a38a663dabad95b5f5f736402da15a810453e22243c608de2ca16fc55e777'
             'c8c63ffdc75ec73f6258aa0020b228f86d883de0c6608b14b3a35604dfeaebac7ae89f0dbc57b3bbb922cbfc3231117d769488f194961c68af646574d9ea49e0'
             'dc653535664904c74c812b589881994c1109c664f9174186ccd362a42172edeb0251712c98f3c9a17d7356bf47f942eff03c2294181402ff9cbc9cb211616d57'
             'ae6b5847bdf65f8fb43b3694c151f55c307b2b402624b627b755133b4173760fa4673158b77c252b8a9b18dc33be3068e2c79e23762a4de05de11447cf259c3c')
@@ -28,6 +30,7 @@ _sourcedirectory="$pkgname-$pkgver"
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 
+	patch --forward -p1 < "$srcdir/fix-version.diff"
 	patch --forward -p1 < "$srcdir/electron-builder-config.diff"
 	patch --forward -p1 < "$srcdir/configure-environment.diff"
 	patch --forward -p1 < "$srcdir/fix-argv.diff"
