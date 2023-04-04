@@ -4,7 +4,7 @@
 
 pkgname=mattermost-desktop-bin
 _pkgname=mattermost-desktop
-pkgver=5.2.2
+pkgver=5.3.1
 pkgrel=1
 pkgdesc="Mattermost Desktop for Linux (binary)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ conflicts=('mattermost-desktop')
 provides=("${_pkgname}")
 
 source=(${_pkgname}.desktop "https://releases.mattermost.com/desktop/${pkgver}/${_pkgname}-${pkgver}-linux-x64.tar.gz")
-sha256sums=('9e60ac9cc5a9cbebccb4180e7de947968aa49858812b5623812a1ab651a91093' 'b8a60053149e0c8963afffd2d305bd4f2c2190fe1c55281b04778d039f1255fb')
+sha256sums=('9e60ac9cc5a9cbebccb4180e7de947968aa49858812b5623812a1ab651a91093' 'af0f926021663765b8b79888584a55f551f172fc132ce724315e7c5916b97591')
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}-linux-x64"

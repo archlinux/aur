@@ -1,6 +1,6 @@
 pkgbase = mattermost-desktop-bin
 	pkgdesc = Mattermost Desktop for Linux (binary)
-	pkgver = 5.2.2
+	pkgver = 5.3.1
 	pkgrel = 1
 	url = https://github.com/mattermost/desktop
 	arch = x86_64
@@ -20,8 +20,8 @@ pkgbase = mattermost-desktop-bin
 	provides = mattermost-desktop
 	conflicts = mattermost-desktop
 	source = mattermost-desktop.desktop
-	source = https://releases.mattermost.com/desktop/5.2.2/mattermost-desktop-5.2.2-linux-x64.tar.gz
+	source = https://releases.mattermost.com/desktop/5.3.1/mattermost-desktop-5.3.1-linux-x64.tar.gz
 	sha256sums = 9e60ac9cc5a9cbebccb4180e7de947968aa49858812b5623812a1ab651a91093
-	sha256sums = b8a60053149e0c8963afffd2d305bd4f2c2190fe1c55281b04778d039f1255fb
+	sha256sums = af0f926021663765b8b79888584a55f551f172fc132ce724315e7c5916b97591
 
 pkgname = mattermost-desktop-bin
