@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=distrobox-git
-pkgver=1.4.2.1.r780.6af1458
+pkgver=1.4.2.1.r822.d925c3f
 pkgrel=1
 pkgdesc="Use any linux distribution inside your terminal."
 arch=('any')
@@ -9,6 +9,7 @@ url="https://github.com/89luca89/distrobox"
 license=('GPL3')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+makedepends=('git')
 optdepends=(
   'docker: enable docker usage'
   'podman: enable podman usage'
