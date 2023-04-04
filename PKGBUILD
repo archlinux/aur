@@ -3,7 +3,7 @@
 # Contributor: Vitaliy Berdinskikh ur6lad[at]i.ua
 
 pkgname=xnec2c-git
-pkgver=4.4.6.r0.gef6f187
+pkgver=4.4.12.r25.g69f9d0a
 pkgrel=1
 pkgdesc="GTK+ Antenna EM Modeling Client"
 arch=('i686' 'x86_64')
@@ -28,14 +28,11 @@ build() {
 	cd "$srcdir/$pkgname"
 	./autogen.sh
 	./configure --prefix=/usr
-	make
+	make desktop-install
 }
 
 package() {
 	cd "$srcdir/$pkgname"
 	make DESTDIR="$pkgdir" install
-
-  # fix absolute link
-  unlink "$pkgdir/usr/share/$_basename/doc"
 }
 

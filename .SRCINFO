@@ -1,6 +1,6 @@
 pkgbase = xnec2c-git
 	pkgdesc = GTK+ Antenna EM Modeling Client
-	pkgver = 4.4.6.r0.gef6f187
+	pkgver = 4.4.12.r25.g69f9d0a
 	pkgrel = 1
 	url = https://www.xnec2c.org/
 	arch = i686
