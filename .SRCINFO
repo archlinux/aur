@@ -1,0 +1,15 @@
+pkgbase = losslesscut-appimage
+	pkgdesc = The swiss army knife of lossless video/audio editing.
+	pkgver = 3.53.0
+	pkgrel = 1
+	url = https://github.com/mifi/lossless-cut
+	arch = x86_64
+	license = GPL2
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = glibc
+	options = !strip
+	source = losslesscut-3.53.0.AppImage::https://github.com/mifi/lossless-cut/releases/download/v3.53.0/LosslessCut-linux-x86_64.AppImage
+	sha256sums = bd38706b6b4c5dd833c3b56f02607776e51666884210d7503811d7f476de2c04
+
+pkgname = losslesscut-appimage
