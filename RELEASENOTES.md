@@ -1,3 +1,8 @@
+## 1.2.0
+
+* added --varbatim option to list and walk, so that error nodes show up and dont abort the listing
+
+
 ## 1.1.0
 
 * added mulle-sourcetree-edit-csv and friends
