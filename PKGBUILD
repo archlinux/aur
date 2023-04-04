@@ -3,7 +3,7 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=r23453.76289c2e9
+pkgver=r23529.10e0f3a4c
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
@@ -11,7 +11,8 @@ url='https://github.com/yuzu-emu/yuzu-mainline'
 license=('GPL2')
 provides=('yuzu' 'yuzu-cmd')
 conflicts=('yuzu-git' 'yuzu-canary-git' 'yuzu')
-options=("!lto") #ThinLTO is already set
+# Set "!strip" to keep the debugging symbols within the package for debugging
+options=("lto" "strip") #Set LTO (Flatpak builds with Full GCC LTO)
 depends=('fmt'
          'cubeb'
          'mbedtls'
@@ -24,7 +25,7 @@ depends=('fmt'
 makedepends=('boost'
              'llvm'
              'catch2'
-             'clang'
+             'gcc'
              'cmake'
              'ffmpeg'
              'git'
@@ -113,10 +114,10 @@ build() {
     cmake -S $_pkgname -B build \
       -GNinja \
       -DCMAKE_INSTALL_PREFIX=/usr \
-      -DCMAKE_C_COMPILER=clang \
-      -DCMAKE_CXX_COMPILER=clang++ \
-      -DCMAKE_C_FLAGS="$CFLAGS -flto=thin" \
-      -DCMAKE_CXX_FLAGS="$CXXFLAGS -flto=thin" \
+      -DCMAKE_C_COMPILER=gcc \
+      -DCMAKE_CXX_COMPILER=g++ \
+      -DCMAKE_C_FLAGS="$CFLAGS -flto=auto" \
+      -DCMAKE_CXX_FLAGS="$CXXFLAGS -flto=auto" \
       -DCMAKE_BUILD_TYPE=RelWithDebInfo \
       -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
       -DYUZU_USE_QT_WEB_ENGINE=ON \
