@@ -1,0 +1,18 @@
+pkgbase = libinsn-git
+	pkgdesc = Instruction decoder/encoder for 64bit ARM
+	pkgver = 30.r6.ge795956
+	pkgrel = 1
+	url = https://github.com/tihmstar/libinsn
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = clang
+	makedepends = git
+	depends = libgeneral
+	depends = gcc-libs
+	provides = libinsn.so
+	provides = libinsn
+	conflicts = libinsn
+	source = libinsn::git+https://github.com/tihmstar/libinsn
+	sha256sums = SKIP
+
+pkgname = libinsn-git
