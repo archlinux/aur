@@ -1,17 +1,20 @@
 pkgbase = 2048term-git
 	pkgdesc = Console version of the game "2048"
 	pkgver = 20220613.bf22f86
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alewmoose/2048-in-terminal.git
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	license = MIT
 	makedepends = git
+	depends = glibc
 	depends = ncurses
 	provides = 2048term
 	conflicts = 2048term
 	source = 2048term::git+https://github.com/alewmoose/2048-in-terminal.git
+	source = 0001-ARCHLINUX-conform-Makefile-to-packaging-standards.patch
 	sha256sums = SKIP
+	sha256sums = 913a3c2a535fa514cfa764ed77e1cf52742bdf1810aa71a2fc34585640e1daa5
 
 pkgname = 2048term-git

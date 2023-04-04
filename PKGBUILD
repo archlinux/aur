@@ -3,20 +3,28 @@
 # Contributor: Aleksandr Grehov <alewmosse@gmail.com>
 
 _pkgname='2048term'
+_patch='0001-ARCHLINUX-conform-Makefile-to-packaging-standards.patch'
 pkgname="${_pkgname}-git"
 pkgver=20220613.bf22f86
-pkgrel=1
+pkgrel=2
 pkgdesc='Console version of the game "2048"'
 url='https://github.com/alewmoose/2048-in-terminal.git'
 arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
-depends=('ncurses')
+depends=('glibc' 'ncurses')
 makedepends=('git')
-source=("${_pkgname}::git+https://github.com/alewmoose/2048-in-terminal.git")
-sha256sums=('SKIP')
+source=("${_pkgname}::git+https://github.com/alewmoose/2048-in-terminal.git"
+        "${_patch}")
+sha256sums=('SKIP'
+            '913a3c2a535fa514cfa764ed77e1cf52742bdf1810aa71a2fc34585640e1daa5')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
+
+prepare() {
+	cd "${srcdir}/${_pkgname}"
+	patch --forward --strip=1 --input="${srcdir}/${_patch}"
+}
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
