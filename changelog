@@ -1,12 +1,13 @@
-# 2023-03-02: Stable release 18678 (23.02)
+# 2023-04-03: Stable release 18700 (23.03)
 
-Major enhancements
-	Fix #20768: Add OAuth 2.0 support 
-Add/improve/fix/change Internal Presets, Map Paint Style and Validation rules
-	Fix #22547: tunnel=culvert should have waterway=* or man_made=tunnel (patch by skyper)
-	Fix #22761: Don't warn about "value '<some value>' for key 'ref' not in presets"
-	Partially fix #21778: oneway + .*:(backward|forward):conditional should not have a warning (patch by Famlam) 
+## Medium enhancements
 
-More minor bug fixes, enhancements, stability improvements, translation updates, code improvements and code documentation, see SVN log messages of milestone 23.02:
+- PBF read support (see #22603) 
 
-https://josm.openstreetmap.de/log/josm/?rev=18678&stop_rev=18647
+## Add/improve/fix/change Internal Presets, Map Paint Style and Validation rules
+
+- Fix #22792: Add natural=shrubbery (icons from JeroenHoek, patch by JeroenHoek) 
+
+## More minor bug fixes, enhancements, stability improvements, translation updates, code improvements and code documentation, see SVN log messages of milestone 23.03:
+
+https://josm.openstreetmap.de/log/josm/?rev=18700&stop_rev=18679
