@@ -35,18 +35,22 @@ prepare() {
 }
 
 build() {
-  cd $pkgname-$pkgver
-  gem build $pkgname.gemspec
+  (
+    cd $pkgname-$pkgver
+    gem build $pkgname.gemspec
+  )
 
-  export GO111MODULE=off # golang 1.16 uses modules by default and packages below fail to compile
-  cd "$srcdir"/vagrant-installers/substrate/launcher
-  go get github.com/mitchellh/osext
+  (
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOPATH="${srcdir}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-  go build \
-    -trimpath \
-    -buildmode=pie \
-    -ldflags "-extldflags \"${LDFLAGS}\"" \
-    -o vagrant
+    cd vagrant-installers/substrate/launcher
+    go build -o $pkgname -ldflags "-compressdwarf=false -linkmode external -extldflags \"${LDFLAGS}\"" .
+  )
 }
 
 package() {
