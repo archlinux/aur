@@ -1,10 +1,11 @@
 pkgbase = distrobox-git
 	pkgdesc = Use any linux distribution inside your terminal.
-	pkgver = 1.4.2.1.r780.6af1458
+	pkgver = 1.4.2.1.r822.d925c3f
 	pkgrel = 1
 	url = https://github.com/89luca89/distrobox
 	arch = any
 	license = GPL3
+	makedepends = git
 	optdepends = docker: enable docker usage
 	optdepends = podman: enable podman usage
 	provides = distrobox
