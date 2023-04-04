@@ -3,7 +3,7 @@
 pkgname=texmacs-appimage
 _appimage=TeXmacs.AppImage
 _install_to=/opt/appimages/TeXmacs.AppImage
-pkgver=170.1.glibc2.15
+pkgver=171.1.glibc2.15
 pkgrel=1
 pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG editor and CAS-interface."
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('transfig: convert images using fig2ps'
             'aspell: spell checking')
 _url="https://download.opensuse.org/repositories/home:/slowphil:/texmacs-devel/AppImage"
 source=("${_appimage}::${_url}/texmacs-0-Build${pkgver}-x86_64.AppImage")
-sha256sums=('e8586e35bfaffa58b86d9e96adc438411414e6646fad3578048a6cab65a8f465')
+sha256sums=('401fbed5a6bfc18d56827fc416882f8604181d712b732092673b888f7a163c7a')
 options=('!emptydirs' '!ccache' '!strip')
 provides=('texmacs')
 conflicts=('texmacs')
