@@ -1,8 +1,8 @@
 pkgbase = ladybird
 	pkgdesc = Web browser built from scratch using the SerenityOS LibWeb engine
-	pkgver = 20221116
+	pkgver = 20230404
 	pkgrel = 1
-	url = https://github.com/SerenityOS/ladybird
+	url = https://github.com/SerenityOS/serenity
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
@@ -18,13 +18,7 @@ pkgbase = ladybird
 	depends = qt6-base
 	depends = qt6-wayland
 	options = !lto
-	source = git+https://github.com/SerenityOS/ladybird#commit=b8812092b1cb7a1e91e0080b2088ee73187f74bc
-	source = ladybird.sh
+	source = git+https://github.com/SerenityOS/serenity#commit=bd46397e1fb5bb2db0c406427801039a2611bbe4
 	b2sums = SKIP
-	b2sums = 8a1124ade2b98ab0b8ef2e03616bdbe4340f16dd493283fccb5f69cb74fc172a936da1f5ea3d346e70792deb56e239170fcae2201d7e8a075d1f82750711b6c3
 
 pkgname = ladybird
-
-pkgname = serenity-wallpapers
-	pkgdesc = SerenityOS wallpapers
-	depends = 
