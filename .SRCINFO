@@ -1,12 +1,12 @@
 pkgbase = python-pysiril
 	pkgdesc = Python package extending scripting capabilities, present natively in Siril.
-	pkgver = 0.0.14
+	pkgver = 0.0.15
 	pkgrel = 1
 	url = https://siril.org/tutorials/pysiril/
 	arch = x86_64
 	license = custom
 	depends = siril
-	source = https://gitlab.com/free-astro/pysiril/-/archive/V0_0_14/pysiril-V0_0_14.tar.gz
-	sha256sums = 44c46e691d6423c76fa59486ac7805bb111975c3bf4da928e35ee6cd86c3e01c
+	source = https://gitlab.com/free-astro/pysiril/-/archive/V0_0_15/pysiril-V0_0_15.tar.gz
+	sha256sums = pysiril-V0_0_15.tar.gz
 
 pkgname = python-pysiril
