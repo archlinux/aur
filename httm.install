@@ -1,0 +1,15 @@
+pre_install() {
+	echo "***************************************************************************"
+        echo "* This package is frozen at 0.25.5 due to source not pushed to crates.io  *"
+        echo "*                                                                         *"
+	echo "* Use aur/httm-bin or aur/httm-git for updated packages                   *"
+	echo "***************************************************************************"
+}
+
+pre_upgrade() {
+	echo "**************************************************************************"
+        echo "* This package is frozen at 0.25.5 due to source not pushed to crates.io *"
+        echo "*                                                                        *"
+        echo "* Use aur/httm-bin or aur/httm-git for updated packages                  *"  
+        echo "**************************************************************************"
+}
