@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# strip --ncp-disable parameter from call
+#  --ncp-disable is removed from openvpn >=2.6
+args=("$@")
+for ((i=0;i<${#args[@]};i++))
+do
+	if [ "${args[$i]}" == "--ncp-disable" ]
+	then
+		unset args[$i]
+	fi
+done
+
+echo "$0: openvpn wrapper for cyberghostvpn utility"
+echo now executing /usr/bin/openvpn "${args[@]}"
+/usr/bin/openvpn "${args[@]}"

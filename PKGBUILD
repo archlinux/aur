@@ -4,12 +4,13 @@
 
 pkgname=cyberghostvpn
 pkgver=1.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="CyberGhost VPN"
 url="https://www.cyberghostvpn.com"
 arch=(any)
 license=(custom:cyberghostvpn)
 depends=(
+  bash
   curl
   openvpn
   wireguard-tools
@@ -18,13 +19,20 @@ depends=(
 makedepends=(zip)
 
 _variant=ubuntu-20.04
-source=("https://download.cyberghostvpn.com/linux/cyberghostvpn-${_variant}-${pkgver}.zip")
-sha256sums=('c976ed4f19adbf0c4d0a7a7032419b66f19684977dec8c5237ed1b0675141a96')
+source=(	"https://download.cyberghostvpn.com/linux/cyberghostvpn-${_variant}-${pkgver}.zip"
+		"cyberghostvpn_wrapper"
+		"openvpn_wrapper")
+sha256sums=(	'c976ed4f19adbf0c4d0a7a7032419b66f19684977dec8c5237ed1b0675141a96'
+		'388e6b86db32e6fb513769257e58efb32392fe5f020cc8bb2f67a506ac59206e'
+		'f26e37ce43385e625b012afd3d27bad9f9279e3d6cb135cd92c412eada36212e')
 
 _archive="${pkgname}-${_variant}-${pkgver}"
 
 package() {
   _installdir=usr/local/cyberghost
+  install -Dm 755 openvpn_wrapper "$pkgdir/${_installdir}/wrapper/openvpn_wrapper"
+  install -Dm 755 cyberghostvpn_wrapper "$pkgdir/${_installdir}/wrapper/cyberghostvpn_wrapper"
+  ln -s "$pkgdir/${_installdir}/wrapper/openvpn_wrapper" "$pkgdir/${_installdir}/openvpn"
 
   cd "$_archive"
 
@@ -36,6 +44,6 @@ package() {
   install -Dm 644 cyberghost/certs/openvpn/client.key "$pkgdir/${_installdir}/certs/openvpn/client.key"
 
   install -dm 755 $pkgdir/usr/bin
-  ln -s /${_installdir}/cyberghostvpn $pkgdir/usr/bin/cyberghostvpn
+  ln -s /${_installdir}/wrapper/cyberghostvpn_wrapper $pkgdir/usr/bin/cyberghostvpn
   ln -s /${_installdir}/update-systemd-resolved $pkgdir/usr/bin/update-systemd-resolved
 }

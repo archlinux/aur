@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# put location of openvpn wrapper first in $PATH
+# to ensure that cyberghost is calling the openvpn wrapper
+export PATH=/usr/local/cyberghost:$PATH
+
+/usr/local/cyberghost/cyberghostvpn "$@"
