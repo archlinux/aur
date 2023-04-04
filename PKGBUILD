@@ -11,7 +11,8 @@
 # - use the fastest linker "mold".
 # - enalbe JIT and AOT compilation of emacs-lisp, which
 #   means built-in packages and your own packages are 
-#   native compiled by default.
+#   native compiled by default. Disabled for now to
+#   avoid bugs.
 ################################################################################
 
 ################################################################################
@@ -105,7 +106,7 @@ else
 pkgname="emacs-pgtk-git"
 fi
 pkgver=30.0.50.165577
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
