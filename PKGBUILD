@@ -14,7 +14,7 @@ install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "${pkgname}.desktop")
 sha512sums=('e215fd29b50e1d1b42c659c8d896f1704c7dd2c0a5624c33cb394eaf93bcaca634b27bfc3f9928fd04fa8951b1254fafb70b11ab5f0890b476f97c9acf749039'
-            '29d009564b2eb5d53584201a622400f1b610f25825de2d87539909feb83988e9e0bfcced977fcc39719bc1c5527a89597534a2b4bfff4af315280ceca8e1dc47')
+            '39d23f967ac05579d9bb87f2c5fcf961f760b0cfab1138253bcc8b22fd9964e27bc9ec6c42e8ed49a287ec5443bf352baf8dd4b4d063c2f6aa29c714d38da2a3')
 
 prepare() {
     cd "$pkgname-$pkgver"
