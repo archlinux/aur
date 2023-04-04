@@ -1,5 +1,5 @@
 pkgname=gdgbatterysaver
-pkgver=v0.2.4
+pkgver=0.2.4
 pkgrel=1.0
 pkgdesc='Green Dam Girl control battery'
 arch=('x86_64' 'aarch64')

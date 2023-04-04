@@ -1,6 +1,6 @@
 pkgbase = gdgbatterysaver
 	pkgdesc = Green Dam Girl control battery
-	pkgver = v0.2.4
+	pkgver = 0.2.4
 	pkgrel = 1.0
 	url = https://github.com/Decodetalkers/gdgbatterysaver
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = gdgbatterysaver
 	makedepends = rust
 	makedepends = qt5-base
 	depends = qt5-base
-	source = gdgbatterysaver-vv0.2.4.tar.gz::https://github.com/Decodetalkers/gdgbatterysaver/archive/refs/tags/vv0.2.4.tar.gz
+	source = gdgbatterysaver-v0.2.4.tar.gz::https://github.com/Decodetalkers/gdgbatterysaver/archive/refs/tags/v0.2.4.tar.gz
 	sha256sums = e8819d322a9aa8ccd55c3434f22fd0f0e56db3f47d85dd442930680c2e78c4d3
 
 pkgname = gdgbatterysaver
