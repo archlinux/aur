@@ -12,14 +12,10 @@ license=(BSD)
 depends=(brotli less libgl python qt6-base qt6-wayland)
 makedepends=(cmake gendesk git ninja qt6-tools unzip)
 options=(!lto)
-source=("git+$url#commit=bd46397e1fb5bb2db0c406427801039a2611bbe4") # 2023-04-04
-b2sums=('SKIP')
-
-prepare() {
-  cd "${srcdir}"
-
-  gendesk -f --pkgname "$pkgname" --pkgdesc "$pkgdesc"
-}
+source=("git+$url#commit=bd46397e1fb5bb2db0c406427801039a2611bbe4" # 2023-04-04
+        "ladybird.desktop")
+b2sums=('SKIP'
+        'SKIP')
 
 build() {
   cd "${srcdir}"
@@ -40,7 +36,7 @@ package() {
   DESTDIR="${pkgdir}" ninja -C build install
 
   install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -Dm644 "${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  install -Dm644 "serenity/Base/res/icons/32x32/app-browser.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
   install -Dm644 serenity/LICENSE -t "${pkgdir}/usr/share/licenses/ladybird/"
 }

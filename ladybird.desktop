@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Ladybird
+Comment=Web browser built from scratch using the SerenityOS LibWeb engine
+Exec=ladybird
+Icon=ladybird
+Terminal=false
+StartupNotify=false
+Categories=Application;Network;

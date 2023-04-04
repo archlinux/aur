@@ -19,6 +19,8 @@ pkgbase = ladybird
 	depends = qt6-wayland
 	options = !lto
 	source = git+https://github.com/SerenityOS/serenity#commit=bd46397e1fb5bb2db0c406427801039a2611bbe4
+	source = ladybird.desktop
+	b2sums = SKIP
 	b2sums = SKIP
 
 pkgname = ladybird
