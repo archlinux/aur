@@ -1,7 +1,7 @@
 # Maintainer: FrenchGithubUser < nomail >
 pkgname='hatt-bin'
 _pkgname="hatt"
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Tool to search for files through multiple websites "
 arch=('x86_64')
@@ -18,9 +18,8 @@ source_x86_64=("${url}/releases/download/${pkgver}/hatt-linux-amd64")
 sha256sums_x86_64=('SKIP')
 sha256sums=('SKIP' 'SKIP')
 
-
 package() {
-	install -Dm755 "$_pkgname-linux-amd64" "$pkgdir/usr/bin/$_pkgname"
-	install -Dm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$_pkgname.desktop
-	install -Dm644 $srcdir/$_pkgname-logo.png $pkgdir/usr/share/pixmaps/$_pkgname.png
+        install -Dm755 "$_pkgname-linux-amd64" "$pkgdir/usr/bin/$_pkgname"
+        install -Dm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$_pkgname.desktop
+        install -Dm644 $srcdir/$_pkgname-logo.png $pkgdir/usr/share/pixmaps/$_pkgname.png
 }
