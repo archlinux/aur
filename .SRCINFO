@@ -1,6 +1,6 @@
 pkgbase = dnsdist
 	pkgdesc = Highly DNS-, DoS- and abuse-aware loadbalancer
-	pkgver = 1.7.3
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://dnsdist.org/
 	arch = x86_64
@@ -21,12 +21,12 @@ pkgbase = dnsdist
 	depends = openssl
 	depends = re2
 	depends = tinycdb
-	source = https://downloads.powerdns.com/releases/dnsdist-1.7.3.tar.bz2
-	source = https://downloads.powerdns.com/releases/dnsdist-1.7.3.tar.bz2.asc
+	source = https://downloads.powerdns.com/releases/dnsdist-1.8.0.tar.bz2
+	source = https://downloads.powerdns.com/releases/dnsdist-1.8.0.tar.bz2.asc
 	source = sysusers.conf
 	validpgpkeys = D6300CABCBF469BBE392E503A208ED4F8AF58446
 	validpgpkeys = FBAE0323821C7706A5CA151BDCF513FA7EED19F3
-	sha512sums = 2a39096709db5b41cf3bd21170689bc85ad2cd550896d02ddd85eff7410780ea59d6cf8e08b0a08962ee93b49b7f3228dfa649275453215e23c25098aca40e1a
+	sha512sums = 426db3e83729bd2f8a8c8b1c02d719c6618acc0aec09d1f2670c159d441c1cad2fdc85c5ffe919e76d1b1e8e24198bf29133802cb857dfacde2dfed2532001f1
 	sha512sums = SKIP
 	sha512sums = d55ccd612cbe08b353815027d30a3b0f0ec7bf6b0d74a0a634939be53ce6e6b41d23e54c2328946f00738c03e9f306ce4f2dabe5e4b11d9fb28d0abf49917893
 
