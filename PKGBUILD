@@ -1,6 +1,6 @@
 # Maintainer: Oliver Gasser <oliver@flowriver.net>
 pkgname=bgpkit-parser
-pkgver=0.8.1
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="bgpkit-parser is a simple cli tool that allow parsing of individual MRT files"
 arch=('x86_64')
