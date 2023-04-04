@@ -3,9 +3,9 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=rcompanion
-_pkgver=2.4.21
+_pkgver=2.4.26
 pkgname=r-${_pkgname,,}
-pkgver=2.4.21
+pkgver=2.4.26
 pkgrel=1
 pkgdesc='Functions to Support Extension Education Program Evaluation'
 arch=('any')
@@ -21,7 +21,7 @@ depends=(
   r-plyr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('83b72316c4f65dd9958aa6fa97c5239cf85bf6f1b15abbb3ad328ed64339ef8d')
+sha256sums=('9a420d2ef95c3146d5d4f573581c41bca476df35f35d2d5a9817b22f5d6e95b1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

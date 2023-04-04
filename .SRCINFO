@@ -1,6 +1,6 @@
 pkgbase = r-rcompanion
 	pkgdesc = Functions to Support Extension Education Program Evaluation
-	pkgver = 2.4.21
+	pkgver = 2.4.26
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rcompanion
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-rcompanion
 	depends = r-multcompview
 	depends = r-nortest
 	depends = r-plyr
-	source = https://cran.r-project.org/src/contrib/rcompanion_2.4.21.tar.gz
-	sha256sums = 83b72316c4f65dd9958aa6fa97c5239cf85bf6f1b15abbb3ad328ed64339ef8d
+	source = https://cran.r-project.org/src/contrib/rcompanion_2.4.26.tar.gz
+	sha256sums = 9a420d2ef95c3146d5d4f573581c41bca476df35f35d2d5a9817b22f5d6e95b1
 
 pkgname = r-rcompanion
