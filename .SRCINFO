@@ -1,13 +1,13 @@
 pkgbase = hyprland-activewindow
 	pkgdesc = A multi-monitor aware Hyprland active window title outputer.
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/FieldofClay/hyprland-activewindow
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = hyprland
-	source = https://github.com/FieldofClay/hyprland-activewindow/archive/refs/tags/v0.2.2.tar.gz
-	sha256sums = 1c5ec606d0dce40fc4442fa2cb95bb713606c181871ec6cd0191673665ae6a8d
+	source = https://github.com/FieldofClay/hyprland-activewindow/archive/refs/tags/v0.2.3.tar.gz
+	sha256sums = 64df722680350d173d42e846cf1a48fc26a9852c54c3395dafe6522ba30c24ac
 
 pkgname = hyprland-activewindow
