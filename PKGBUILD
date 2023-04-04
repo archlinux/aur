@@ -21,8 +21,8 @@ depends=('curl' 'libarchive' 'libssh2' 'libxml2' 'libxslt' 'rsync'
 makedepends=('git' 'go')
 conflicts=('vagrant-substrate')
 replaces=('vagrant-substrate')
-source=($pkgname-$pkgver.tar.gz::https://github.com/mitchellh/$pkgname/archive/v$pkgver.tar.gz
-        "git+https://github.com/mitchellh/vagrant-installers.git#commit=4770b51")
+source=($pkgname-$pkgver.tar.gz::https://github.com/hashicorp/$pkgname/archive/v$pkgver.tar.gz
+        "git+https://github.com/hashicorp/vagrant-installers.git#commit=4770b51")
 sha256sums=('43eb1461c6dcfd23a0c386570e6c2a876e06d2388bbc0f1f0c9c99e393aa2f0f'
             'SKIP')
 
