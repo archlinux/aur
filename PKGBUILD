@@ -3,12 +3,13 @@
 
 pkgname=cemu-bin
 pkgver=2.0.32
-pkgrel=1
+pkgrel=2
 pkgdesc="Nintendo Wii U Emulator"
 arch=('x86_64')
 url="https://cemu.info"
 license=('MPL2')
-depends=('glu' 'graphite' 'gtk3' 'libsm' 'pcre' 'vulkan-driver')
+depends=('at-spi2-core' 'cairo' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'glu' 'gtk3' 'harfbuzz'
+         'hicolor-icon-theme' 'libglvnd' 'libice' 'libsm' 'libx11' 'libxext' 'libxrender' 'pango' 'wayland')
 makedepends=('patchelf')
 provides=('cemu')
 conflicts=('cemu' 'cemu-git')
@@ -26,14 +27,13 @@ sha256sums=('981a56f5a3fe7dcc89f67727574343d6bdb17b08209149ac665b75be49a576ca'
 prepare() {
   cd $srcdir/Cemu_$_srcver
 
-  _libs=('libpcre.so.3' 'libffi.so.7' 'libicuuc.so.71' 'libicui18n.so.71' 'libicudata.so.71')
+  _libs=('libffi.so.7' 'libicuuc.so.71' 'libicui18n.so.71' 'libicudata.so.71')
   for lib in ${_libs[@]} 
   do
     patchelf --replace-needed $lib ${lib%.*} ./Cemu
   done
 
   patchelf --remove-needed libsepol.so.1 ./Cemu
-  patchelf --remove-needed libselinux.so.1 ./Cemu
   patchelf --remove-needed libselinux.so.1 ./Cemu
 }
 
