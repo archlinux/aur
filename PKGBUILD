@@ -10,14 +10,14 @@ license=('GPL3')
 depends=('libadwaita' 'python-gobject' 'python-loguru' 'python-wand')
 makedepends=('git' 'meson')
 checkdepends=('appstream-glib')
-_commit=bdbea03359109be6ebe0bea9fa5678c4ce541987  # 0.1.2
+_commit=bdbea03359109be6ebe0bea9fa5678c4ce541987  # tags/v0.1.2^0
 source=("git+https://github.com/nate-xyz/conjure.git#commit=$_commit")
 sha256sums=('SKIP')
 
-#pkgver() {
-#  cd "$srcdir/$pkgname"
-#  git describe --tags | sed 's/^v//;s/-/+/g'
-#}
+pkgver() {
+  cd "$srcdir/$pkgname"
+  git describe --tags | sed 's/^v//;s/-/+/g'
+}
 
 prepare() {
   cd "$srcdir/$pkgname"
