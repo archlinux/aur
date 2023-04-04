@@ -1,12 +1,16 @@
 pkgbase = envconsul
 	pkgdesc = Launch a subprocess with environment variables using data from @HashiCorp Consul and Vault.
 	pkgver = 0.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hashicorp/envconsul
 	changelog = envconsul.changelog
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = aarch64
 	license = MPL2
 	makedepends = go
+	depends = glibc
 	source = envconsul-0.13.1.tar.gz::https://github.com/hashicorp/envconsul/archive/v0.13.1/venvconsul-0.13.1.tar.gz
 	sha512sums = 69a82bc7f1f50a274824ec02598b7bcd54197b29f073ffe72c1ea0604c084d53f5e68522b59c9709fc3227d17544426de1bce52176fbcf4a9b5b333f88599731
 
