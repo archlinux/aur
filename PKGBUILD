@@ -9,7 +9,7 @@ url='https://github.com/Vanilla-OS/ABRoot'
 license=(GPL3)
 depends=(glibc)
 makedepends=(go)
-source=("ABRoot-${pkgver}::${url}/archive/refs/tags/${pkgver}.tar.gz")
+source=("ABRoot-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 b2sums=('a82493d323cb779082a7a92a7ec050115b8b24062e7f64c11a7f466920088b82cda706fa2973ca9da14682e80e8f1013f09bcde275e22535a2255d3c9605dd03')
 
 prepare(){
