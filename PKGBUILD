@@ -3,8 +3,8 @@
 
 _base=textual
 pkgname=python-${_base}
-pkgver=0.15.1
-pkgrel=2
+pkgver=0.18.0
+pkgrel=1
 pkgdesc="Modern Text User Interface framework"
 arch=(any)
 url="https://github.com/Textualize/${_base}"
@@ -18,7 +18,7 @@ optdepends=('python-aiohttp: for HTTP server'
   'python-click: for click event as mouse button'
   'python-msgpack: for MessagePack serializer')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('75a355e1ce64e3a13cc09b418d87cc3e8ad37a78f0c6bf8df5f3493d7233d41dc5b77a749791a6aa92d1560673ce142995c310e4f37a2fb9aa1477857f6075c6')
+sha512sums=('965181736397334f393138c2c0d1d72e3d242c883be3beb6c2d2cf3f87de2eafbc07c056db58a87ede572744d0c17b851e207af41db7e658b16bd3552491043c')
 
 build() {
   cd ${_base}-${pkgver}
