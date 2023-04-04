@@ -4,7 +4,7 @@
 
 pkgname=tailscale-git
 _pkgname=tailscale
-pkgver=1.39.68+ted10a1769
+pkgver=1.39.107+t5a3da3cd7
 pkgrel=1
 pkgdesc="A mesh VPN that makes it easy to connect your devices, wherever they are."
 arch=("x86_64")
@@ -54,9 +54,8 @@ build() {
     eval "$(./build_dist.sh shellvars)"
     GO_LDFLAGS="\
         -linkmode=external \
-        -X tailscale.com/version.Long=${VERSION_LONG} \
-        -X tailscale.com/version.Short=${VERSION_SHORT} \
-        -X tailscale.com/version.GitCommit=${VERSION_GIT_HASH}"
+        -X tailscale.com/version.longStamp=${VERSION_LONG} \
+        -X tailscale.com/version.shortStamp=${VERSION_SHORT}"
 
     for cmd in ./cmd/tailscale ./cmd/tailscaled; do
         TOOLCHAIN="$PWD/../tailscale-go" ./build_dist.sh -ldflags "$GO_LDFLAGS" $cmd
