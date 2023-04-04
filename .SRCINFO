@@ -1,6 +1,6 @@
 pkgbase = loupe
 	pkgdesc = Simple image viewer for GNOME
-	pkgver = 0.0.0+r297+6d694c6
+	pkgver = 0.0.0+r300+d08b107
 	pkgrel = 1
 	url = https://gitlab.gnome.org/Incubator/loupe
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = loupe
 	depends = libadwaita
 	depends = libgweather-4
 	depends = libheif
-	source = git+https://gitlab.gnome.org/Incubator/loupe.git#commit=6d694c6bebb71654e897fd18a220150cac30dfd6
+	source = git+https://gitlab.gnome.org/Incubator/loupe.git#commit=d08b10764003c97f579e4c82a49e15037811bfcb
 	b2sums = SKIP
 
 pkgname = loupe
