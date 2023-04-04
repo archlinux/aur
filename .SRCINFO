@@ -1,7 +1,7 @@
 pkgbase = stpv-git
 	pkgdesc = File previewer for lf, fzf and the terminal
-	pkgver = r72.ff5ae8d
-	pkgrel = 2
+	pkgver = r125.5c6058c
+	pkgrel = 1
 	url = https://github.com/Naheel-Azawy/stpv
 	install = info.install
 	arch = x86_64
