@@ -2,7 +2,7 @@
 
 pkgname=watsup
 pkgver=7.1
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 depends=('clutter-gtk')
 license=('GPL3')
@@ -20,5 +20,4 @@ build() {
 package() { 
   cd $pkgname
   make DESTDIR="$pkgdir" ICONDIR=/usr/share/pixmaps install
-  sed -i 's+/usr/share/watsup/icons/++' "$pkgdir"/usr/share/applications/$pkgname.desktop
 }
