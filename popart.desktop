@@ -1,7 +1,7 @@
 [Desktop Entry]
 Categories=
 Encoding=UTF-8
-Exec=/usr/share/popart/popart
+Exec=/usr/share/popart/popart %U
 GenericName=
 GenericName[zh]=
 Icon=/usr/share/popart/icons/popart.icns

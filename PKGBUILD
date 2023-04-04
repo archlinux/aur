@@ -2,7 +2,7 @@
 
 pkgname=popart
 pkgver=2019.07.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Full-feature software for haplotype network reconstruction. https://doi.org/10.1111/2041-210X.12410"
 arch=('x86_64')
 url="http://popart.otago.ac.nz/index.shtml"
@@ -11,7 +11,7 @@ depends=('marble' 'lpsolve' 'qt5-base' 'suitesparse')
 makedepends=('git')
 source=("git+https://github.com/jessicawleigh/popart-current.git" "popart.desktop")
 md5sums=('SKIP'
-         '44802b43fa5dba142dbb20cc32e15f45')
+         '4c6ec3407fb15aa4531e8ec13d59da34')
 pkgver(){
   cd $srcdir/${pkgname}-current
   printf $(TZ=UTC git log --no-walk --pretty="%cd" --decorate=full --date=format-local:%Y.%m.%d | head -n 1)
