@@ -1,11 +1,11 @@
 pkgbase = mathomatic
 	pkgdesc = General purpose Computer Algebra System written in C
 	pkgver = 16.0.5
-	pkgrel = 8
+	pkgrel = 9
 	url = http://mathomatic.orgserve.de/math/
 	arch = x86_64
 	license = LGPL
-	makedepends = time
+	checkdepends = time
 	makedepends = python
 	depends = readline
 	optdepends = python: for running /usr/share/doc/mathomatic/factorial/factorial

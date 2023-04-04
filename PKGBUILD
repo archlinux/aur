@@ -1,16 +1,18 @@
 # Contributor: G_Syme <demichan(at)mail(dot)upb(dot)de>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
-# Maintainer:  Thorsten Töpper <atsutane-tu@freethoughts.de>
+# Former Maintainer:  Thorsten Töpper <atsutane-tu@freethoughts.de>
+# Maintainer: ParaSait <parasait at proton dot me>
 
 pkgname=mathomatic
 pkgver=16.0.5
-pkgrel=8
+pkgrel=9
 pkgdesc='General purpose Computer Algebra System written in C'
 arch=('x86_64')
 license=('LGPL')
 url="http://mathomatic.orgserve.de/math/"
 depends=('readline')
-makedepends=('time' 'python')
+makedepends=('python')
+checkdepends=('time')
 optdepends=('python: for running /usr/share/doc/mathomatic/factorial/factorial'
             'bash: for running a test script'
             'm4: for complex operations using the matho script'
