@@ -1,3 +1,8 @@
+## 3.2.0
+
+* improved dispensal of libexec products
+
+
 ## 3.1.0
 
 * rewrote mulle-dispense-mv-force script to support Windows better

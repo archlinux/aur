@@ -1,6 +1,6 @@
 # Maintainer: Jonathan Boyle <programmerfalcon@gmail.com>
 pkgname=mulle-dispense
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 epoch=1
 pkgdesc="Copy build products and reorganize them"
@@ -8,11 +8,11 @@ arch=('any')
 url="https://github.com/mulle-sde/mulle-dispense"
 license=('BSD3')
 groups=('mulle-sde-all')
-depends=('bash' 'mulle-bashfunctions>=4.1.1')
+depends=('bash' 'mulle-bashfunctions>=5.0.3')
 changelog="RELEASENOTES.md"
-source=("https://github.com/mulle-sde/mulle-dispense/archive/3.1.0.tar.gz")
+source=("https://github.com/mulle-sde/mulle-dispense/archive/3.2.0.tar.gz")
 noextract=()
-md5sums=('cc2ef15b9358c1b7dbe04fd6aee23a0e')
+md5sums=('bdaf222290b6c0609715f742f17ea9e9')
 validpgpkeys=()
 
 package() {
