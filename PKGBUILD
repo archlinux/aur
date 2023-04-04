@@ -1,34 +1,47 @@
 # Maintainer: Gustavo Chain <me@qustavo.cc>
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=notesnook
-pkgname="${_pkgname}-bin"
-pkgver=2.4.6
-pkgrel=1
+pkgname=${_pkgname}-bin
+pkgver="2.4.6"
+pkgrel=2
 pkgdesc="Open source zero knowledge private note taking"
 arch=('x86_64')
 url="https://notesnook.com"
-_githuburl="https://github.com/streetwriters/notesnook"
 license=('GPL')
 options=(!strip)
-depends=('gtk2' 'nspr' 'hicolor-icon-theme' 'libxext' 'gtk3' 'libcups' 'libxdamage' 'libxfixes' 'libdrm' 'expat' 'dbus' 'at-spi2-core' \
-	'mesa' 'libdbusmenu-glib' 'gdk-pixbuf2' 'glib2' 'glibc' 'pango' 'wayland' 'alsa-lib' 'libx11' 'nss' 'libxrandr' 'cairo' 'gcc-libs' \
-	'sh' 'libxkbcommon' 'libxcomposite' 'libxcb' 'dbus-glib')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}" "${_pkgname}-appimage")
-source=("${_pkgname}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname}_linux_x86_64.AppImage")
+provides=(${_pkgname})
+conflicts=(${_pkgname})
+depends=('glibc' 'hicolor-icon-theme' 'zlib')
+_appimage="${_pkgname}_linux_x86_64.AppImage"
+_Pkgname=notesnook
+source=(
+	"${_appimage}::https://github.com/streetwriters/notesnook/releases/download/v$pkgver/${_appimage}"
+)
 sha256sums=('efdaed9ad186dc64a6bdb5e5b9568fd77013559ff0ecd6654cfd0e528f03e1c5')
+noextract=("${_appimage}")
+
 prepare() {
-	chmod +x "${_pkgname}-${pkgver}.AppImage"
-	"./${_pkgname}-${pkgver}.AppImage" --appimage-extract > /dev/null
+	chmod +x ${_appimage}
+	./${_appimage} --appimage-extract
+}
+
+build() {
+	sed -i -E "s|Exec=AppRun|Exec=${_pkgname}|" "${srcdir}/squashfs-root/${_Pkgname}.desktop"
 }
 
 package() {
-	install -dm755 "${pkgdir}/opt/${pkgname}"
-	cp -r "${srcdir}/squashfs-root/"* "${pkgdir}/opt/${pkgname}"
-	install -dm755 "${pkgdir}/usr/bin"
-	ln -s "/opt/${pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-	cp -r "${pkgdir}//opt/${pkgname}/usr" "${pkgdir}"
-	sed 's/AppRun/notesnook/g' -i "${pkgdir}/opt/${pkgname}/${_pkgname}.desktop"
-	install -Dm644 "${pkgdir}/opt/${pkgname}/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-	find "${pkgdir}" -type d -exec chmod 755 {} \;
+	# AppImage
+	install -Dm 755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${_appimage}"
+
+	# Symlink
+	install -dm755 ${pkgdir}/usr/bin
+	ln -s "/opt/${pkgname}/${_appimage}" "${pkgdir}/usr/bin/${_pkgname}"
+
+	# Icons
+	install -dm755 ${pkgdir}/usr/share/icons/hicolor/256x256/apps
+	cp -a "${srcdir}/squashfs-root/resources/assets/icons/256x256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_Pkgname}.png"
+
+	# Desktop file
+	install -Dm644 "${srcdir}/squashfs-root/${_Pkgname}.desktop"\
+		"${pkgdir}/usr/share/applications/${_Pkgname}.desktop"
 }
