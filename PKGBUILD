@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rWikiPathways
-_pkgver=1.18.1
+_pkgver=1.18.2
 pkgname=r-${_pkgname,,}
-pkgver=1.18.1
+pkgver=1.18.2
 pkgrel=1
 pkgdesc='rWikiPathways - R client library for the WikiPathways API'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c5489ae9a589eda5fdba4e5296dbfee44e27c69673b613debb4d129dc8f706fe')
+sha256sums=('c606029fa718d234cbfb5b63a0a325977e526824fd74e7d76e8bc3a82e3cb520')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
