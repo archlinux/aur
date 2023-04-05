@@ -1,4 +1,5 @@
 *.tar
+*.zst
 nemini
 src
 pkg
