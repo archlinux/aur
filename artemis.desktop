@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Terminal=false
+Categories=Development;IDE;Java;
+Icon=eclipse
+Exec=/opt/artemis-grading-bin/ArtemisGrading
+Name=Artemis grading Tool

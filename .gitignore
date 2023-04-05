@@ -1,0 +1,9 @@
+# Ignore Packages downloaded and created during testing
+*.tar.gz
+src/
+pkg/
+# Used for development
+eclipse-java/
+
+# built packages
+*.pkg.tar.zst
