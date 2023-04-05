@@ -2,7 +2,7 @@ post_install() {
   local install_dir='/usr/share/refind/themes/catppuccin'
 
   echo "Searching rEFInd installation in EFI partition..."
-  if ! __has_esp__; then 
+  if ! __has_esp__; then
     echo "EFI partition not found" >&2
     exit 1
   fi
@@ -30,7 +30,7 @@ post_remove() {
   echo "Removal of theme from EFI partition"
 
   echo "Searching rEFInd installation in EFI partition..."
-  if ! __has_esp__; then 
+  if ! __has_esp__; then
     echo "EFI partition not found" >&2
     exit 1
   fi
@@ -57,22 +57,22 @@ __has_esp__() {
   __find_esp__
 
   mount "$ESP" &>/dev/null
-  [[ -d "$ESP/EFI" ]] && return 0 || return 1  
+  [[ -d "$ESP/EFI" ]] && return 0 || return 1
 }
 
 __find_esp__() {
-  local parttype 
+  local parttype
   local fstype
-  local device 
+  local device
 
   while read -r device; do
     read -r parttype fstype ESP <<<"$(lsblk -o "PARTTYPE,FSTYPE,MOUNTPOINT" "$device" 2>/dev/null | awk 'NR==2')"
-  
-    [[ "${parttype,,}" != "c12a7328-f81f-11d2-ba4b-00a0c93ec93b" ]] && continue
-    [[ "${fstype,,}" != "vfat" ]] && continue      
-    [[ -z $(findmnt -sn "$ESP") ]] && continue 
 
-  done <<< "$(fdisk -l 2>/dev/null | grep -i efi | cut -d " " -f 1)"
+    [[ "${parttype,,}" != "c12a7328-f81f-11d2-ba4b-00a0c93ec93b" ]] && continue
+    [[ "${fstype,,}" != "vfat" ]] && continue
+    [[ -z $(findmnt -sn "$ESP") ]] && continue
+
+  done <<<"$(fdisk -l 2>/dev/null | grep -i efi | cut -d " " -f 1)"
 
   readonly ESP
 }
