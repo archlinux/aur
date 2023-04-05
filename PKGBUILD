@@ -9,7 +9,7 @@
 
 _pkg=asterisk
 pkgname=${_pkg}-lts-20
-pkgver=20.2.0
+pkgver=20.2.1
 pkgrel=1
 pkgdesc='A complete PBX solution - LTS release 20 version'
 arch=(x86_64 i686 aarch64 armv7h)
