@@ -2,8 +2,8 @@
 _base=islpy
 pkgname=python-${_base}
 pkgdesc="Python wrapper for isl, an integer set library"
-pkgver=2022.2.1
-pkgrel=2
+pkgver=2023.1
+pkgrel=1
 arch=('x86_64')
 url="https://documen.tician.de/${_base}"
 license=(MIT)
@@ -35,6 +35,6 @@ check() {
 }
 
 package() {
-  cd "${_base}"
+  cd ${_base}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 }
