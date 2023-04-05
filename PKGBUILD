@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-multimedia
-_qtver=6.4.3
+_qtver=6.5.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -20,8 +20,8 @@ groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtmultimedia-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Fix-compile-flags-of-resonance-audio-for-mingw-w64.patch')
-sha256sums=('a4a72469e12da1e59ee032ab2e6677d620a5663c354d0ba88906d2bec1567d00'
-            'ec618f9f2d2084793df3f78176344bb9005436084fd83e7b863915cce48c4f45')
+sha256sums=('9480d0c73abdd01aec4899e340938cec046a3f404b9f9ed945288be574dca146'
+            'fa134d80bd74c32839407ec348424b55daf251899e5056adb024bad194e02482')
 
 prepare () {
   cd $_pkgfqn
