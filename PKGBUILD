@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-imageformats
-_qtver=6.4.3
+_qtver=6.5.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -18,7 +18,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtimageformats-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('0aff58062e74b84617c5da8325d8cdad5368d8f4d2a11ceafcd58329fe99b798')
+sha256sums=('f9f810cd3ac7e60132c0da33f34fcfce42e3e764d6cad3020c2f3b1b42046f78')
 
 build() {
   source android-env ${_android_arch}
