@@ -23,7 +23,7 @@ pkgbase = mangohud-git
 	conflicts = mangohud-common
 	conflicts = mangohud-common-git
 	replaces = mangohud-common-git
-	source = mangohud::git+https://github.com/flightlessmango/MangoHud
+	source = mangohud-git::git+https://github.com/flightlessmango/MangoHud
 	sha512sums = SKIP
 
 pkgname = mangohud-git

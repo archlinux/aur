@@ -1,6 +1,5 @@
 # Maintainer: Darvin Delgado <dnmodder at gmail dot com>
 
-_pkgname=mangohud
 pkgname=mangohud-git
 pkgver=0.6.8.r145.g020e848
 pkgrel=1
@@ -17,11 +16,11 @@ optdepends=(
 provides=('mangohud' 'mangohud-common')
 conflicts=('mangohud' 'mangohud-common' 'mangohud-common-git')
 replaces=('mangohud-common-git')
-source=("${_pkgname%"-git"}::git+$url")
+source=("$pkgname::git+$url")
 sha512sums=('SKIP')
 
 pkgver() {
-    cd "${_pkgname%"-git"}"
+    cd $pkgname
     git describe --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
@@ -29,7 +28,7 @@ build() {
     local meson_options=(
         --wrap-mode=forcefallback
         -Dtests=disabled
-        "${_pkgname%"-git"}"
+        $pkgname
     )
     arch-meson "${meson_options[@]}" build
 
@@ -43,5 +42,5 @@ package() {
         mv "$pkgdir/usr/lib/libMangoHud.so" "$pkgdir/usr/lib/mangohud/"
     fi
 
-    install -Dm664 "${_pkgname%"-git"}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm664 "$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
