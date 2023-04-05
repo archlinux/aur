@@ -1,5 +1,5 @@
 pkgname=caches-manager
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="A simple script that helps keep selected directories clean by symlinking or binding to tmpfs ramdisk."
 arch=('any')
@@ -9,7 +9,7 @@ options=('!strip')
 
 _snapshot="${pkgname}-${pkgver}"
 source=("${_snapshot}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('76189df08ec6b3cf281ffe92bd96194ac64170430cd5b67179e86abb6ab81fc6')
+sha256sums=('22206ca1233161945ce2b558c856e2ff1fcdb8637e98401beda5f756a36addfb')
 
 package() {
     local bin="${pkgdir}/usr/bin"
