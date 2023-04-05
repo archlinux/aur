@@ -1,13 +1,13 @@
 # Maintainer: Marius Hirt <marius-hirt@web.de>
 _pkgname=zork++
 pkgname=zork++-git
-pkgver=0.5.0.r0.g9572afd
+pkgver=0.8.6.r0.g50306c5
 pkgrel=1
 pkgdesc="A modern C++ project manager and build system for modern C++"
 arch=('x86_64')
 url='https://github.com/zerodaycode/Zork'
 license=('MIT')
-depends=('gcc-libs')
+depends=('glibc' 'gcc-libs')
 makedepends=('cargo' 'git')
 provides=('zork++')
 conflicts=('zork++')
