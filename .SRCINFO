@@ -1,0 +1,14 @@
+pkgbase = deno-arm
+	pkgdesc = A modern runtime for JavaScript and TypeScript.
+	pkgver = 1.32.3
+	pkgrel = 1
+	url = https://deno.land
+	arch = aarch64
+	license = MIT
+	provides = deno
+	conflicts = deno
+	conflicts = deno-git
+	source_aarch64 = https://github.com/LukeChannings/deno-arm64/releases/download/v1.32.3/deno-linux-arm64.zip
+	sha256sums_aarch64 = cc071e8cbcf0eccbc34c69555891688361caec512d5c1e1aa6602c4798c7362c
+
+pkgname = deno-arm
