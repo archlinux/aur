@@ -4,7 +4,7 @@
 
 pkgname=cosmic-epoch-git
 pkgver=r57.f0b63f7
-pkgrel=3
+pkgrel=4
 pkgdesc="desktop environment in Rust, Iced. GNOME inspired, by System76, Pop! OS."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-epoch"
@@ -95,7 +95,8 @@ prepare() {
   # see discussion: https://github.com/pop-os/cosmic-epoch/issues/87
   sed -i 's|libexecdir = $(prefix)/libexec|libexecdir = $(libdir)|g' \
     xdg-desktop-portal-cosmic/Makefile
-  sed -i 's/libexec/lib/g' cosmic-session/src/main.rs
+  sed -i 's|libexec|lib|g' cosmic-session/src/main.rs
+  sed -i 's|libexec|lib/polkit-1|g' cosmic-osd/src/subscriptions/polkit_agent_helper.rs
 }
 
 build() {
