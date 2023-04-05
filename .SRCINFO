@@ -1,7 +1,7 @@
 pkgbase = debugedit-git
 	pkgdesc = Provides debugedits and scripts for creating debuginfo and source file distributions
 	pkgver = 5.0.r15.g60ee634
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceware.org/debugedit/
 	arch = i686
 	arch = x86_64
