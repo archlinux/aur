@@ -2,7 +2,7 @@
 
 pkgname=freekill
 _upper_pkgname=FreeKill
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/Notify-ctrl/FreeKill'
@@ -13,7 +13,7 @@ depends=('qt6-declarative' 'qt6-multimedia' 'qt6-5compat'
   'readline' )
 makedepends=('cmake' 'flex' 'bison' 'qt6-tools' 'swig' 'clang')
 source=("${url}/releases/download/v${pkgver}/FreeKill-${pkgver}-source.tar.gz")
-sha256sums=('90f33551dcd75696f8c970f97af4dcd40eb04fcc0ebe7e3eac0c1027b2766820')
+sha256sums=('df91a57deb9a6876147f7b2a8a3b7ec264c9c4c7ccb9133729b509709d28c17f')
 
 prepare() {
   cd ${srcdir}/${_upper_pkgname}-${pkgver}
@@ -36,8 +36,11 @@ package() {
   cd ${srcdir}/${_upper_pkgname}-${pkgver}
   cmake --install build --prefix ${pkgdir}/usr --config Release
 
-  cp -r audio fonts image lua packages qml server build/zh_CN.qm \
+  cp -r audio fonts image lua packages qml server fk_ver build/zh_CN.qm \
     ${pkgdir}/usr/share/${_upper_pkgname}
   install -Dm644 image/icon.png ${pkgdir}/usr/share/icons/freekill_logo.png
   install -Dm644 freekill.desktop ${pkgdir}/usr/share/applications/freekill.desktop
+
+  # TODO: remove this
+  rm -r ~/.local/share/FreeKill/lua/lsp
 }
