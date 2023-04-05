@@ -2,9 +2,9 @@
 # Maintainer: johnfanv2 <https://github.com/johnfanv2>
 _pkgname=lenovolegionlinux
 pkgname=${_pkgname}-git
-pkgver=r01.395feaa
+pkgver=r01.09bee53
 pkgrel=1
-pkgdesc="LenovoLegionLinux (LLL) brings additional drivers and tools for Lenovo Legion series laptops to Linux. It is the alternative to Lenovo Vantage or Legion Zone (both Windows only). PLEASE READ THE REPO BEFORE INSTALL THIS PACKAGE!!!"
+pkgdesc="LenovoLegionLinux (LLL) brings additional drivers and tools for Lenovo Legion series laptops to Linux (updated to support dkms). PLEASE READ THE REPO BEFORE INSTALL THIS PACKAGE!!!"
 arch=("x86_64")
 url="https://github.com/johnfanv2/LenovoLegionLinux"
 license=('GPL')
@@ -34,8 +34,6 @@ prepare() {
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}/kernel_module"
-	make
 	cd "${srcdir}/${_pkgname}/python/legion_linux"
 	python3 -m pip install --upgrade build
 	python -m build
@@ -44,8 +42,15 @@ package() {
 	cd "${srcdir}/${_pkgname}"
 	mkdir -p $pkgdir/usr/{local,lib/modules/$(uname -r)/kernel/drivers/platform/x86/}
 	mkdir -p $pkgdir/usr/share/{applications/,icons/,polkit-1/actions/}
+	mkdir -p $pkgdir/usr/src/$_pkgname-1.0.0
+	mkdir -p $pkgdir/etc/pacman.d/hooks
 
-	install -Dm644 kernel_module/*.ko "${pkgdir}/usr/lib/modules/$(uname -r)/kernel/drivers/platform/x86"
+	cd "${srcdir}/${_pkgname}/kernel_module/"
+	cp -r * $pkgdir/usr/src/$_pkgname-1.0.0/
+	install -Dm644 dkms.conf $pkgdir/usr/src/$_pkgname-1.0.0/dkms.conf
+
+	cd "${srcdir}/${_pkgname}/deploy/"
+	install -Dm644 LenovoLegionLinux.hook $pkgdir/etc/pacman.d/hooks/LenovoLegionLinux.hook
 
 	cd "${srcdir}/${_pkgname}/python/legion_linux"
 	install -Dm775 legion_gui.desktop "${pkgdir}/usr/share/applications/"
