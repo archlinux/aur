@@ -1,6 +1,6 @@
 # Maintainer: Look <notkool@protonmail.com>
 pkgname=miru-bin
-pkgver=3.8.1
+pkgver=3.8.3
 pkgrel=1
 pkgdesc="Bittorrent streaming software for cats"
 arch=('x86_64')
@@ -12,7 +12,7 @@ install=${pkgname}.install
 source_x86_64=("https://github.com/ThaUnknown/miru/releases/download/v${pkgver}/linux-Miru-${pkgver}.deb")
 sha512sums_x86_64=('SKIP')
 
-package(){
+package() {
 
 	# Extract package data
 	tar -xJ -f data.tar.xz -C "${pkgdir}"
