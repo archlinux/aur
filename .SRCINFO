@@ -4,11 +4,14 @@ pkgbase = koreader-bin
 	pkgrel = 1
 	url = https://github.com/koreader/koreader/
 	arch = x86_64
+	arch = aarch64
 	license = AGPL3
 	depends = sdl2
 	depends = fonts-noto-hinted
 	depends = fonts-droid-fallback
 	source_x86_64 = https://github.com/koreader/koreader/releases/download/v2023.03/koreader-2023.03-amd64.deb
 	sha256sums_x86_64 = 0b3baa2b32dfe88a683d98b276938a2ed328eb9c3de550c24b23b5488ba3193b
+	source_aarch64 = https://github.com/koreader/koreader/releases/download/v2023.03/koreader-2023.03-arm64.deb
+	sha256sums_aarch64 = 4844d6b8c24b01aa0df879c7cdab014d2d50b8a6fdfaf665ea4c8a977c918056
 
 pkgname = koreader-bin
