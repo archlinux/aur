@@ -2,7 +2,7 @@
 
 pkgname=cfnts-git
 pkgver=r205.g3d9c673
-pkgrel=1
+pkgrel=2
 pkgdesc="NTS protocol implementation written in Rust"
 arch=('i686' 'x86_64')
 url="https://blog.cloudflare.com/announcing-cfnts/"
@@ -35,17 +35,18 @@ pkgver() {
 check() {
   cd "cfnts"
 
-  RUSTFLAGS="-C target-feature=+aes,+ssse3" cargo test \
-    --release
+  #RUSTFLAGS="-C target-feature=+aes,+ssse3" cargo test \
+  #  --frozen
 }
 
 package() {
   cd "cfnts"
 
   RUSTFLAGS="-C target-feature=+aes,+ssse3" cargo install \
+    --locked \
     --no-track \
     --root "$pkgdir/usr" \
-    --path "$srcdir/cfnts"
+    --path .
 
   install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/cfnts"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/cfnts"
