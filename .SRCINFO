@@ -1,0 +1,15 @@
+pkgbase = typst-lsp
+	pkgdesc = Language server for Typst
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/nvarner/typst-lsp
+	arch = i686
+	arch = x86_64
+	license = apache
+	license = MIT
+	makedepends = rust
+	depends = gcc-libs
+	source = typst-lsp-0.3.1-src.tar.gz::https://github.com/nvarner/typst-lsp/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = 27530f8e2e68954faefa0859151de52951d986ef2a5e0f67b6e76e568d285549
+
+pkgname = typst-lsp
