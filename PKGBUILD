@@ -1,7 +1,8 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='beekeeper-studio'
-pkgver='3.9.3'
+pkgver='3.9.1.0'
 pkgrel='1'
+epoch='1'
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more'
 # If you're running on armv7h or aarch64, use the electron22-bin package from the AUR for the electron dependency
 # If you're running on armv7h, you have to add it to the arch and source arrays of the electron22-bin AUR dependency
@@ -12,14 +13,14 @@ _electronpkg='electron'
 depends=("$_electronpkg>=22.0.0")
 makedepends=('git' 'libxcrypt-compat' 'nodejs>=16.0.0' 'nodejs<19.0.0' 'npm' 'python' 'yarn')
 source=(
-	"$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz"
+	"$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz"
 	'fix-version.diff'
 	'electron-builder-config.diff'
 	'configure-environment.diff'
 	'fix-argv.diff'
 )
-sha512sums=('c9762d281a7a04245a1f53ac3c50915f88ca6150492c142bd97989b4a4c293ecf155959df1aff03eb09528da3e3e784c768fbfa5df9c202824aef058ddc6d04a'
-            '5feedd8d12bab02b73c0fbc807aa2cdb5c52c3e4e380f8edfa5080f9b05ef042e45a38a663dabad95b5f5f736402da15a810453e22243c608de2ca16fc55e777'
+sha512sums=('15a1db20d5be8a3807b4efe138b526abd2d300f018b20740f060be4a35f5c47bc7712d5b6d09b5e69fda51f72be9c8d68a09b122a012b0cbf6d3ad6cd5672c55'
+            '0eb03f920b884d1c586848810eb4a244ed97bf624a2944c44e16a67d4789c422bc2cce1d34376a6a6bbfa9c31ed27ac92acb66847d79fb925ea3200b965a7ff4'
             'c8c63ffdc75ec73f6258aa0020b228f86d883de0c6608b14b3a35604dfeaebac7ae89f0dbc57b3bbb922cbfc3231117d769488f194961c68af646574d9ea49e0'
             'dc653535664904c74c812b589881994c1109c664f9174186ccd362a42172edeb0251712c98f3c9a17d7356bf47f942eff03c2294181402ff9cbc9cb211616d57'
             'ae6b5847bdf65f8fb43b3694c151f55c307b2b402624b627b755133b4173760fa4673158b77c252b8a9b18dc33be3068e2c79e23762a4de05de11447cf259c3c')
