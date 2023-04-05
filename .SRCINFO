@@ -1,6 +1,6 @@
 pkgbase = pe-parse-git
 	pkgdesc = Principled, lightweight C/C++ PE parser
-	pkgver = 2.1.1.r3.gc17d4bb
+	pkgver = 2.1.1.r4.gbc0d0d3
 	pkgrel = 1
 	url = https://github.com/trailofbits/pe-parse
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = pe-parse-git
 	makedepends = git
 	makedepends = cmake
 	depends = gcc-libs
-	provides = pe-parse=2.1.1.r3.gc17d4bb
+	provides = pe-parse=2.1.1.r4.gbc0d0d3
 	conflicts = pe-parse
 	source = git+https://github.com/trailofbits/pe-parse.git
 	sha256sums = SKIP

@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=pe-parse-git
-pkgver=2.1.1.r3.gc17d4bb
+pkgver=2.1.1.r4.gbc0d0d3
 pkgrel=1
 pkgdesc="Principled, lightweight C/C++ PE parser"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ prepare() {
 pkgver() {
   cd "pe-parse"
 
-  _tag=$(git tag -l --sort -v:refname | grep -P '^v?[\d\.]+$' | head -n1)
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
   _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
