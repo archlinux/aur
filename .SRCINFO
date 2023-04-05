@@ -1,6 +1,6 @@
 pkgbase = piping-server-git
 	pkgdesc = Infinitely transfer between any device over pure HTTP
-	pkgver = 0.8.5.r1.gf7d40ed
+	pkgver = 0.16.0.r20.g71a054d
 	pkgrel = 1
 	url = https://github.com/nwtgck/piping-server-rust
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = piping-server-git
 	makedepends = git
 	makedepends = rust
 	depends = gcc-libs
-	provides = piping-server
+	provides = piping-server=0.16.0.r20.g71a054d
 	conflicts = piping-server
 	source = git+https://github.com/nwtgck/piping-server-rust.git
 	sha256sums = SKIP
