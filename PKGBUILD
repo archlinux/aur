@@ -1,12 +1,11 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=jasper-gtk-theme-git
-pkgver=r47.24bce43
+pkgver=r60.38bd785
 pkgrel=1
 pkgdesc="Jasper gtk theme for linux"
 arch=('any')
 url="https://www.pling.com/p/1891521"
 license=('GPL3')
-depends=('gnome-themes-extra' 'gtk3')
 makedepends=('git' 'sassc')
 optdepends=('gtk-engine-murrine: GTK2 theme support'
             'colloid-icon-theme: Recommended icon theme')
