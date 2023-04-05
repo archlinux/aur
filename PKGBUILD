@@ -45,6 +45,6 @@ build() {
 
 package() {
 	cd ${srcdir}/${pkgname}
-	# make install
+	make install
 	echo "Made it to install..."
 }
