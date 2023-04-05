@@ -1,12 +1,10 @@
 pkgbase = solidity-bin
 	pkgdesc = Contract-Oriented Programming Language
 	pkgver = 0.8.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ethereum/solidity
 	arch = x86_64
 	license = GPL3
-	optdepends = z3: SMT checker
-	optdepends = cvc4: SMT checker
 	provides = solidity
 	conflicts = solidity
 	source = solidity-0.8.19.bin::https://github.com/ethereum/solidity/releases/download/v0.8.19/solc-static-linux

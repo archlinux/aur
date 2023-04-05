@@ -6,12 +6,11 @@
 _pkgname=solidity
 pkgname="${_pkgname}-bin"
 pkgver=0.8.19
-pkgrel=1
+pkgrel=2
 pkgdesc='Contract-Oriented Programming Language'
 arch=('x86_64')
 url='https://github.com/ethereum/solidity'
 license=('GPL3')
-optdepends=('z3: SMT checker' 'cvc4: SMT checker')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}-${pkgver}.bin::${url}/releases/download/v${pkgver}/solc-static-linux")
