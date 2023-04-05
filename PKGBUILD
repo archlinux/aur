@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=wasmtime-git
-pkgver=0.46.1.r6070.g1c7fa7f78
+pkgver=7.0.0.r157.g7eb891409
 pkgrel=1
 pkgdesc="Standalone JIT-style runtime for WebAssembly"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://wasmtime.dev/"
 license=('apache')
 depends=('gcc-libs')
 makedepends=('git' 'rust')
-provides=('wasmtime')
+provides=("wasmtime=$pkgver")
 conflicts=('wasmtime')
 source=("git+https://github.com/bytecodealliance/wasmtime.git")
 sha256sums=('SKIP')
@@ -18,7 +18,12 @@ sha256sums=('SKIP')
 prepare() {
   cd "wasmtime"
 
-  git submodule update --init
+  git submodule update --init --recursive
+
+  if [ ! -f "Cargo.lock" ]; then
+    cargo update
+  fi
+  cargo fetch
 }
 
 pkgver() {
@@ -34,18 +39,17 @@ check() {
   cd "wasmtime"
 
   #cargo test \
-  #  --locked \
-  #  --release
+  #  --frozen
 }
 
 package() {
   cd "wasmtime"
 
   cargo install \
-    --no-track \
     --locked \
+    --no-track \
     --root "$pkgdir/usr" \
-    --path "$srcdir/wasmtime"
+    --path .
 
   install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/wasmtime"
 }
