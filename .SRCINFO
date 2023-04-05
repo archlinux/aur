@@ -1,6 +1,6 @@
 pkgbase = optivorbis-git
 	pkgdesc = Application for lossless, format-preserving, two-pass optimization and repair of Vorbis data
-	pkgver = 0.1.2.r161.g1e13068
+	pkgver = 0.1.3.r3.g64b1151
 	pkgrel = 1
 	url = https://optivorbis.github.io/OptiVorbis/
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = optivorbis-git
 	makedepends = git
 	makedepends = rust
 	depends = gcc-libs
-	provides = optivorbis=0.1.2.r161.g1e13068
+	provides = optivorbis=0.1.3.r3.g64b1151
 	conflicts = optivorbis
 	source = git+https://github.com/OptiVorbis/OptiVorbis.git
 	sha256sums = SKIP

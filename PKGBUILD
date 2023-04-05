@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=optivorbis-git
-pkgver=0.1.2.r161.g1e13068
+pkgver=0.1.3.r3.g64b1151
 pkgrel=1
 pkgdesc="Application for lossless, format-preserving, two-pass optimization and repair of Vorbis data"
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ prepare() {
 pkgver() {
   cd "OptiVorbis"
 
-  _tag=$(git tag -l --sort -v:refname | grep -P '^v?[\d\.]+$' | head -n1)
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
   _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
