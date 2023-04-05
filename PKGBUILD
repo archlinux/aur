@@ -2,7 +2,7 @@
 _pkgname=vector-audio
 pkgname=vector-audio-git
 pkgver=v0.7.0.r0.gafe2045
-pkgrel=1
+pkgrel=2
 pkgdesc="An Audio-For-VATSIM ATC Client for macOS, Linux and Windows"
 arch=(x86_64 aarch64)
 url="https://github.com/pierr3/VectorAudio"
