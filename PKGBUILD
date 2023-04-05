@@ -1,8 +1,8 @@
 # Maintainer: Paul Wilde<paul@paulwilde.uk>
 _pkgname=nemini
 pkgname=${_pkgname}-git
-pkgver=dadf45a
-pkgrel=1
+pkgver=dcc8657
+pkgrel=2
 pkgdesc="Nemini is a simple to configure Gemini server with virtual host, alias, headers/footers and redirect support"
 url="https://codeberg.org/pswilde/nemini.git"
 arch=(any)
