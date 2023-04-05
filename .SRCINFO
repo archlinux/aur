@@ -13,6 +13,6 @@ pkgbase = pot-translation-bin
 	conflicts = pot-translation
 	conflicts = pot-translation-git
 	source = pot-0.1.12-x86_64.deb::https://github.com/Pylogmon/pot/releases/download/0.1.12/pot_0.1.12_amd64.deb
-	sha512sums = 0bcd316e7e180b5b6e3a1596e117b6d45675c6d53878c5b0cc5849a6d19d3327be2d2111eb1503f01dcd391cc4892927b7af00ac58b5e6904082b2974a2a0fba
+	sha512sums = a886eb16f54df1841de2ef7636f7e24e854bb6d2a6de934b606211a28017f13204ac8849aaf068b90e65475a08484d24e83b9912e43ce0259345c059b598dc87
 
 pkgname = pot-translation-bin
