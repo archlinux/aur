@@ -20,7 +20,6 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-OPTIONS="--prefix=/usr --with-y12=no --with-lapack=yes --enable-python --enable-Werror=no --with-superlu=no"
 prepare() {
 	cd ${srcdir}/${pkgname}
 	git checkout develop
@@ -46,5 +45,4 @@ build() {
 package() {
 	cd ${srcdir}/${pkgname}
 	make install
-	echo "Made it to install..."
 }
