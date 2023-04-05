@@ -1,6 +1,6 @@
 pkgbase = apache-git
 	pkgdesc = Provides useful functions commonly found on BSD systems
-	pkgver = 2.4.56.r11191.g4859071fd0
+	pkgver = 2.4.57.rc1.candidate.r11191.g4859071fd0
 	pkgrel = 1
 	url = https://httpd.apache.org/
 	arch = i686
@@ -26,7 +26,7 @@ pkgbase = apache-git
 	optdepends = lynx: apachectl status
 	optdepends = perl: for apxs and dbmmanage
 	optdepends = uwsgi: for mod_proxy_uwsgi module
-	provides = apache=2.4.56.r11191.g4859071fd0
+	provides = apache=2.4.57.rc1.candidate.r11191.g4859071fd0
 	conflicts = apache
 	backup = etc/httpd/conf/httpd.conf
 	backup = etc/httpd/conf/extra/httpd-autoindex.conf
