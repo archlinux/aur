@@ -1,6 +1,6 @@
 pkgbase = notesnook
 	pkgdesc = Take private notes, capture ideas, make lists & sync them anywhere
-	pkgver = 2.4.4
+	pkgver = 2.4.7
 	pkgrel = 1
 	url = https://notesnook.com/
 	arch = x86_64

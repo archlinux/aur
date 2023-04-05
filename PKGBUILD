@@ -5,7 +5,7 @@
 # Contributor: Christian Finnberg <christian@finnberg.net>
 
 pkgname=notesnook
-pkgver=2.4.4
+pkgver=2.4.7
 pkgrel=1
 _electronversion=21
 pkgdesc="Take private notes, capture ideas, make lists & sync them anywhere"
