@@ -4,7 +4,7 @@
 # $ updaurpkg --apply
 _repo=citation-style-language/styles
 _source_type=github-releases
-_upstreamver='v0.0.153'
+_upstreamver='v0.0.219'
 _pkgname=$(tr A-Z a-z <<<${_repo##*/})
 
 pkgname=$(tr A-Z a-z <<<${_repo/\//-})
@@ -16,10 +16,10 @@ url=https://github.com/$_repo
 license=(CCPL:by-sa)
 optdepends=('pandoc: support pandoc --citeproc')
 source=("$url/archive/$_upstreamver.tar.gz")
-sha256sums=('bbdb60464ae6d0f17fb4b8b0b3d6f56913caaee2bc4297e1ae8f6589860e5b52')
+sha256sums=('e27574f972d94c9967b93c91d537526fd3014755ccafa6f954fe4d31e0215d10')
 
 package() {
 	cd "$srcdir/$_pkgname-$pkgver" || return 1
-	install -D ./*.csl -t "$pkgdir/usr/share/pandoc/$_pkgname"
+	install -D ./*.csl -t "$pkgdir/usr/share/haskell-pandoc/$_pkgname"
 	install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/$pkgname"
 }
