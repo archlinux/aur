@@ -1,0 +1,22 @@
+pkgbase = plymouth-theme-catppuccin-git
+	pkgdesc = Soothing pastel theme for Plymouth
+	pkgver = r4.d4105cf
+	pkgrel = 1
+	url = https://github.com/catppuccin?type=source
+	arch = any
+	license = MIT
+	depends = plymouth
+	source = plymouth-theme-catppuccin-git::git+https://github.com/catppuccin/plymouth.git
+	sha512sums = SKIP
+
+pkgname = plymouth-theme-catppuccin-latte-git
+	pkgdesc = Soothing pastel theme for Plymouth - Latte
+
+pkgname = plymouth-theme-catppuccin-frappe-git
+	pkgdesc = Soothing pastel theme for Plymouth - Frappe
+
+pkgname = plymouth-theme-catppuccin-macchiato-git
+	pkgdesc = Soothing pastel theme for Plymouth - Macchiato
+
+pkgname = plymouth-theme-catppuccin-mocha-git
+	pkgdesc = Soothing pastel theme for Plymouth - Mocha
