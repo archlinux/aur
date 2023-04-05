@@ -13,72 +13,10 @@ blue="${bold}$(tput setaf 4)"
 yellow="${bold}$(tput setaf 3)"
 
 _as_service() {
-    cat << EOF
-
-You might want to run ckb-next-daemon as a systemd service:
-
-    systemctl enable ckb-next-daemon.service
-    systemctl start ckb-next-daemon.service
-
-EOF
+    note "You need to run ckb-next-daemon as a systemd service:
+          systemctl enable --now ckb-next-daemon.service"
 }
 
-_disable_daemon() {
-    running="$(systemctl is-enabled ckb-next-daemon.service)"
-    if [[ "$running" = "enabled" ]]; then
-        systemctl disable ckb-next-daemon.service
-    fi
-}
-
-_terminate_gui_daemon() {
-    msg_blue "Terminating ckb-next GUI"
-
-    killall -TERM ckb 2>/dev/null
-    killall -TERM ckb-next 2>/dev/null
-
-
-    msg_blue "Terminating ckb-next daemon"
-
-    running="$(systemctl is-active ckb-daemon.service)"
-    if [[ "$running" = "active" ]]; then
-        systemctl stop ckb-daemon.service
-    fi
-
-    running="$(systemctl is-active ckb-next-daemon.service)"
-    if [[ "$running" = "active" ]]; then
-        systemctl stop ckb-next-daemon.service
-    fi
-
-    running="$(systemctl is-enabled ckb-daemon.service 2>/dev/null)"
-    if [[ "$running" = "enabled" ]]; then
-        systemctl disable ckb-daemon.service
-    fi
-}
-
-# arg 1:  the new package version
 post_install() {
     _as_service
-}
-
-# arg 1:  the new package version
-# arg 2:  the old package version
-pre_upgrade() {
-    _terminate_gui_daemon
-}
-
-# arg 1:  the new package version
-# arg 2:  the old package version
-post_upgrade() {
-    systemctl daemon-reload
-}
-
-# arg 1:  the old package version
-pre_remove() {
-    _terminate_gui_daemon
-    _disable_daemon
-}
-
-# arg 1:  the old package version
-post_remove() {
-    systemctl daemon-reload
 }
