@@ -1,0 +1,4 @@
+#!/usr/bin/sh
+_args=$(winepath --windows "$@")
+echo "$(basename $0): $_args"
+/usr/bin/wine start /unix '/opt/aimp/AIMP/AIMPate.exe' ${_args}

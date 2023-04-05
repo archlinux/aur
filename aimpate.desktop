@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Name=Tag Editor AIMP (Wine)
+Name[ru_RU]=Редактор тегов AIMP (Wine)
+GenericName=AIMPate
+Icon=aimpate
+Exec=aimpate %F
+Terminal=false
+MimeType=x-content/audio-cdda;audio/x-xm;audio/x-wavpack;audio/x-vorbis+ogg;audio/x-tta;audio/x-stm;audio/x-scpls;audio/x-s3m;audio/x-musepack;audio/x-ms-wma;audio/x-mpegurl;audio/x-mod;audio/x-it;audio/x-ape;audio/mpeg;audio/mpeg;audio/mpeg;audio/mpeg;audio/mp4;audio/mp4;audio/flac;audio/aac;audio/aac;application/x-cue;application/ogg;application/ogg;
+Categories=AudioVideo;Player;Audio;
+Keywords=player;audio;video;multimedia;wine;
+StartupNotify=false
+Type=Application
+X-KDE-SubstituteUID=false
