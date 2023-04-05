@@ -45,7 +45,7 @@ prepare() {
 build() {
   local cmake_options=(
     -DCMAKE_INSTALL_PREFIX=/usr
-    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_BUILD_TYPE=Release
     -Wno-dev
     -B build
     -S $_pkgname
