@@ -1,0 +1,12 @@
+pkgbase = frgm
+	pkgdesc = meta snippet(fragment) manager
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/k1LoW/frgm
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = frgm-0.11.0::https://github.com/k1LoW/frgm/archive/refs/tags/v0.11.0.tar.gz
+	sha256sums = d575c004034dd93bd67215ef07dd65f679ba313c3459b1826ff70041ff61890a
+
+pkgname = frgm
