@@ -4,7 +4,7 @@
 
 pkgname=vosviewer
 _pkgname=VOSviewer
-pkgver=1.6.18
+pkgver=1.6.19
 pkgrel=1
 pkgdesc="Software tool for constructing and visualizing bibliometric networks"
 arch=('any')
@@ -15,7 +15,7 @@ source=("${url}/downloads/${_pkgname}_${pkgver}_jar.zip"
         "$pkgname.desktop"
         "$pkgname"
         "$pkgname.png")
-sha256sums=('170daa59f82a171747b823e7edee8634689974e251de93f9813fc0a26ac62018'
+sha256sums=('d6c035e04abfbb23244fdb70909256932ecefa9d4120ea8b25697dd54e8f8d9b'
             '2efcff7fa1e6a83877e139055862cf2ed65e807367f1132c471262a2fc52e507'
             'eea674622c5939a5618f17e72ba5dba0a56b0b29f16b5fc832a761fe0bab9d33'
             'c1dde0995fff5e73e892ba340eed6c1e6cd680558b785c821e8b343b3afde264')
