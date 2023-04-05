@@ -2,7 +2,7 @@
 _pkgname=recaf
 pkgname=${_pkgname}-git
 pkgver=r2276.3877b1a8
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern Java bytecode editor"
 arch=("any")
 url="https://github.com/Col-E/Recaf"
