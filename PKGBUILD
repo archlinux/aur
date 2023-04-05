@@ -28,6 +28,7 @@ build() {
 
 check() {
 	cd "${srcdir}/${_name}-${pkgver}"
+	export PYTHONPATH=$PYTHONPATH:.
 	pytest
 }
 
