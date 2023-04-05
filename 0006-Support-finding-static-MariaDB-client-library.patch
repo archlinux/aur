@@ -1,4 +1,4 @@
-From 4bd1150d0750b5eb0f9d2ca0aa262d34fcab11aa Mon Sep 17 00:00:00 2001
+From cef672609c101ed359828c7e4b7762f7f464fa20 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 8 Nov 2020 00:33:12 +0100
 Subject: [PATCH 06/12] Support finding static MariaDB client library
@@ -14,10 +14,10 @@ Change-Id: I8f9ba27e638619dba411ad0e37f2f03eab4775bf
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/cmake/FindMySQL.cmake b/cmake/FindMySQL.cmake
-index cdfb469c71..bd634d6cbb 100644
+index b61d0107f2..6fb26e51f1 100644
 --- a/cmake/FindMySQL.cmake
 +++ b/cmake/FindMySQL.cmake
-@@ -60,13 +60,13 @@ find_path(MySQL_INCLUDE_DIR
+@@ -63,13 +63,13 @@ find_path(MySQL_INCLUDE_DIR
  
  find_library(MySQL_LIBRARY
               NO_PACKAGE_ROOT_PATH
@@ -34,5 +34,5 @@ index cdfb469c71..bd634d6cbb 100644
  endif()
  
 -- 
-2.39.2
+2.40.0
 
