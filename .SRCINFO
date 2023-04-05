@@ -8,7 +8,7 @@ pkgbase = koreader-bin
 	depends = sdl2
 	depends = fonts-noto-hinted
 	depends = fonts-droid-fallback
-	source = https://github.com/koreader/koreader/releases/download/v2023.03/koreader-2023.03-amd64.deb
-	sha512sums = 68fb2f0e11c8dd1086453df61571ff76a3fb0ad450ada37d0eb470be94aa9777e62de48c49c0a7c99a9c4d6af11729a2ba90816548f33bc76c7e0fce804053d0
+	source_x86_64 = https://github.com/koreader/koreader/releases/download/v2023.03/koreader-2023.03-amd64.deb
+	sha256sums_x86_64 = 0b3baa2b32dfe88a683d98b276938a2ed328eb9c3de550c24b23b5488ba3193b
 
 pkgname = koreader-bin
