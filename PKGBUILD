@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=nanopolish-git
-pkgver=0.14.0.r6.g07cb03d
+pkgver=0.14.0.r10.g21c75db
 pkgrel=1
 pkgdesc="Provide signal-level analysis of Oxford Nanopore sequencing data"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 prepare() {
   cd "nanopolish"
 
-  git submodule update --init --recursive --remote
+  git submodule update --init --recursive
 }
 
 pkgver() {
