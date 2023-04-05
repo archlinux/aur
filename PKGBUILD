@@ -4,7 +4,7 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=just-git
-pkgver=0.9.4.r137.gfecb5e3
+pkgver=0.9.4.r322.g9f03441e
 pkgrel=1
 pkgdesc="Just a command runner"
 arch=('i686' 'x86_64')
@@ -12,11 +12,20 @@ url="https://just.systems/"
 license=('custom')
 depends=('gcc-libs')
 makedepends=('git' 'rust')
-provides=('just')
+provides=("just=$pkgver")
 conflicts=('just')
 source=("git+https://github.com/casey/just.git")
 sha256sums=('SKIP')
 
+
+prepare() {
+  cd "just"
+
+  if [ ! -f "Cargo.lock" ]; then
+    cargo update
+  fi
+  cargo fetch
+}
 
 pkgver() {
   cd "just"
@@ -31,18 +40,17 @@ check() {
   cd "just"
 
   cargo test \
-    --locked \
-    --release
+    --frozen
 }
 
 package() {
   cd "just"
 
   cargo install \
+    --frozen \
     --no-track \
-    --locked \
     --root "$pkgdir/usr" \
-    --path "$srcdir/just"
+    --path .
 
   install -Dm644 "man/just.1" -t "${pkgdir}/usr/share/man/man1"
   install -Dm644 {README,GRAMMAR}.md -t "${pkgdir}/usr/share/doc/just"
