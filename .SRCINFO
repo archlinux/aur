@@ -1,6 +1,6 @@
 pkgbase = alembic-git
 	pkgdesc = An open framework for storing and sharing scene data
-	pkgver = 1.8.4.r31.gec9c24cd
+	pkgver = 1.8.5.r2.gfdb0dcbb
 	pkgrel = 1
 	url = https://www.alembic.io/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = alembic-git
 	depends = glibc
 	depends = hdf5
 	depends = imath
-	provides = alembic=1.8.4.r31.gec9c24cd
+	provides = alembic=1.8.5.r2.gfdb0dcbb
 	conflicts = alembic
 	source = git+https://github.com/alembic/alembic.git
 	sha256sums = SKIP
