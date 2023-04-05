@@ -1,15 +1,15 @@
 pkgbase = cern-phone-app
 	pkgdesc = CERNPhone Desktop Application
-	pkgver = 1.2.3
+	pkgver = 1.2.8
 	pkgrel = 1
 	url = https://cernphone.docs.cern.ch/
 	arch = x86_64
 	license = custom
 	depends = zlib
 	depends = hicolor-icon-theme
-	noextract = cern-phone-app-1.2.3.AppImage
+	noextract = cern-phone-app-1.2.8.AppImage
 	options = !strip
-	source = cern-phone-app-1.2.3.AppImage::https://cernphone-sw.web.cern.ch/cernphone-sw/releases/cern-phone-app-1.2.3-x86_64-linux.AppImage.d/cern-phone-app.AppImage
-	sha256sums = 16e1c9c47f5e68d0fe8b257db2bb2e089f070d1fa634c190d0b3eb268b528ef8
+	source = cern-phone-app-1.2.8.AppImage::https://cernphone-sw.web.cern.ch/cernphone-sw/releases/cern-phone-app-1.2.8-x86_64-linux.AppImage.d/cern-phone-app.AppImage
+	sha256sums = 25a57d061df843198784e918a108fe3e824b45f50a9efbc2aba9132e281f26d3
 
 pkgname = cern-phone-app
