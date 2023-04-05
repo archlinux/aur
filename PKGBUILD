@@ -1,7 +1,7 @@
 # Maintainer: dreamscache.d <dreamscache.d@gmail.com>
 _pkgname=recaf
 pkgname=${_pkgname}-git
-pkgver=r2275.ca07fc05
+pkgver=r2276.3877b1a8
 pkgrel=1
 pkgdesc="A modern Java bytecode editor"
 arch=("any")
@@ -26,7 +26,7 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$_pkgname"
-    patch "src/main/java/me/coley/recaf/util/MavenUtil.java" "../../MavenUtil.patch"
+    patch "src/main/java/me/coley/recaf/util/MavenUtil.java" "$srcdir/MavenUtil.patch"
 }
 
 build() {
