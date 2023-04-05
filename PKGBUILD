@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=routinator-git
-pkgver=0.11.2.r1.g3029722
+pkgver=0.12.1.r14.gd9191fd
 pkgrel=1
 pkgdesc="RPKI validator written in Rust"
 arch=('i686' 'x86_64')
@@ -16,6 +16,15 @@ source=("git+https://github.com/NLnetLabs/routinator.git")
 sha256sums=('SKIP')
 
 
+prepare() {
+  cd "routinator"
+
+  if [ ! -f "Cargo.lock" ]; then
+    cargo update
+  fi
+  cargo fetch
+}
+
 pkgver() {
   cd "routinator"
 
@@ -29,18 +38,17 @@ check() {
   cd "routinator"
 
   cargo test \
-    --release \
-    --locked
+    --frozen
 }
 
 package() {
   cd "routinator"
 
   cargo install \
-    --no-track \
     --locked \
+    --no-track \
     --root "$pkgdir/usr" \
-    --path "$srcdir/routinator"
+    --path .
 
   install -Dm755 "pkg/common/routinator-init" -t "$pkgdir/usr/bin"
   install -Dm644 "etc/routinator.conf.example" -t "$pkgdir/etc/routinator"
