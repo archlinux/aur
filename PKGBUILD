@@ -1,7 +1,7 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=orbiton-bin
-pkgver=2.60.4
+pkgver=2.60.5
 pkgrel=1
 pkgdesc='Text editor, IDE and gdb frontend (CLI only)'
 arch=(aarch64 armv6 armv7 riscv64 x86_64)
@@ -52,8 +52,8 @@ optdepends=('asciidoctor: for writing man pages'
             'vlang: for compiling and formatting V'
             'yasm: for compiling Assembly'
             'zig: for compiling and formatting Zig')
-sha256sums=('10de54b51b4c7836e9a594dc2f8b213e1ec35ded6afa13e2ee2b5a9f93ed84d6')
-b2sums=('7c46647406208790a063366b1e2e62f82cce8d68912105f2c7e984a2a1ebe5905052d3abcd28782b6ba62608777ee8809fb2f898bb97a7c17c026d150c0bfb85')
+sha256sums=('f0fb78770bb4fedf7de3b486b1f254754e9bbf0ab82a3b36dd854eb0629bf6ab')
+b2sums=('6592e1d23e950c10e1679f027ad309b4bbeb544382fc7441521511aea252ed9da6064e2d3b525d79acbc42d491be2d3bef3d2de34b97fe68709a93a576090795')
 
 package() {
   cd orbiton-$pkgver-linux_${CARCH}_static
