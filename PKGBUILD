@@ -2,7 +2,7 @@
 
 _pkgname=colorpick
 pkgname=$_pkgname-git
-pkgver=r1.52dfc47
+pkgver=r55.623074a
 pkgrel=1
 pkgdesc="Color picker and contrast checker"
 url=https://github.com/agateau/$_pkgname
@@ -20,8 +20,9 @@ makedepends=(
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=($_pkgname::git+$url.git)
-sha256sums=(SKIP)
+sha512sums=(SKIP)
 pkgver() {
+  cd "$srcdir"/$_pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 build() {
