@@ -1,6 +1,6 @@
 pkgbase = mcfly-git
 	pkgdesc = Fly through your shell history
-	pkgver = 0.5.9.r1.g032190a
+	pkgver = 0.8.0.r5.g2e22bab
 	pkgrel = 1
 	url = https://github.com/cantino/mcfly
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = mcfly-git
 	makedepends = git
 	makedepends = rust
 	depends = gcc-libs
-	provides = mcfly
+	provides = mcfly=0.8.0.r5.g2e22bab
 	conflicts = mcfly
 	source = git+https://github.com/cantino/mcfly.git
 	sha256sums = SKIP

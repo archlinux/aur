@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=mcfly-git
-pkgver=0.5.9.r1.g032190a
+pkgver=0.8.0.r5.g2e22bab
 pkgrel=1
 pkgdesc="Fly through your shell history"
 arch=('i686' 'x86_64')
@@ -9,11 +9,20 @@ url="https://github.com/cantino/mcfly"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('git' 'rust')
-provides=('mcfly')
+provides=("mcfly=$pkgver")
 conflicts=('mcfly')
 source=("git+https://github.com/cantino/mcfly.git")
 sha256sums=('SKIP')
 
+
+prepare() {
+  cd "mcfly"
+
+  if [ ! -f "Cargo.lock" ]; then
+    cargo update
+  fi
+  cargo fetch
+}
 
 pkgver() {
   cd "mcfly"
@@ -28,17 +37,16 @@ check() {
   cd "mcfly"
 
   cargo test \
-    --locked \
-    --release
+    --frozen
 }
 
 package() {
   cd "mcfly"
 
   cargo install \
-    --no-track \
     --locked \
+    --no-track \
     --root "$pkgdir/usr" \
-    --path "$srcdir/mcfly"
+    --path .
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/mcfly"
 }
