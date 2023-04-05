@@ -2,17 +2,17 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=ttf-adobe-source-code-pro-fonts
-pkgver=2.038ro+1.058it+1.018var
+pkgver=2.040u+1.060i+1.024vf
 pkgrel=1
 pkgdesc="Monospaced font family for user interface and coding environments"
 url="https://adobe-fonts.github.io/source-code-pro/"
 arch=(any)
 license=(custom)
 provides=("adobe-source-code-pro-fonts=$pkgver")
-_relver=2.038R-ro/1.058R-it/1.018R-VAR
+_relver=2.040R-u/1.060R-i/1.024R-vf
 _tarname=source-code-pro-${_relver//\//-}
 source=("$_tarname.tar.gz::https://github.com/adobe-fonts/source-code-pro/archive/$_relver.tar.gz")
-sha256sums=('d8f879fefd66ecb7291ea2d73984b9c0a97fb499424e58290ba6b81787d0c725')
+sha256sums=('f17728d68dc1b0720f503d990f763738b6647d10d5cd63afa4525754f2c04229')
 
 package() {
   cd $_tarname
