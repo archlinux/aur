@@ -1,13 +1,22 @@
 diff --git a/apps/studio/src/background.ts b/apps/studio/src/background.ts
-index e2f50467..fa297cb7 100644
+index b49e4515..6a6f6d6b 100644
 --- a/apps/studio/src/background.ts
 +++ b/apps/studio/src/background.ts
-@@ -107,7 +107,7 @@ app.on('ready', async () => {
+@@ -109,7 +109,16 @@ app.on('ready', async () => {
        console.error('Vue Devtools failed to install:', e.toString())
      }
    }
 -  const slice = platformInfo.isDevelopment ? 2 : 1
-+  const slice = platformInfo.isDevelopment ? 2 : 2
++
++  let slice = 0;
++
++  for (const arg of process.argv) {
++    slice++;
++    if (arg.includes('app.asar') === true) {
++      break;
++    }
++  }
++
    const parsedArgs = yargs(process.argv.slice(slice))
    log.debug("Parsing app args", parsedArgs)
    const options = parsedArgs._.map((url: string) => ({ url }))
