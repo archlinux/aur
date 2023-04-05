@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=cloud-hypervisor-git
-pkgver=0.9.0.r205.gb3435d51
+pkgver=30.0.r92.g38a1b4578
 pkgrel=1
 pkgdesc="An open source Virtual Machine Monitor (VMM) that runs on top of KVM"
 arch=('x86_64')
@@ -9,11 +9,20 @@ url="https://github.com/cloud-hypervisor/cloud-hypervisor"
 license=('apache' 'BSD')
 depends=('gcc-libs')
 makedepends=('git' 'rust')
-provides=('cloud-hypervisor')
+provides=("cloud-hypervisor=$pkgver")
 conflicts=('cloud-hypervisor')
 source=("git+https://github.com/cloud-hypervisor/cloud-hypervisor.git")
 sha256sums=('SKIP')
 
+
+prepare() {
+  cd "cloud-hypervisor"
+
+  if [ ! -f "Cargo.lock" ]; then
+    cargo update
+  fi
+  cargo fetch
+}
 
 pkgver() {
   cd "cloud-hypervisor"
@@ -28,18 +37,17 @@ check() {
   cd "cloud-hypervisor"
 
   #cargo test \
-  #  --locked \
-  #  --release
+  #  --frozen
 }
 
 package() {
   cd "cloud-hypervisor"
 
   cargo install \
-    --no-track \
     --locked \
+    --no-track \
     --root "$pkgdir/usr" \
-    --path "$srcdir/cloud-hypervisor"
+    --path .
 
   install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/cloud-hypervisor"
   install -Dm644 "docs"/* -t "$pkgdir/usr/share/doc/cloud-hypervisor"
