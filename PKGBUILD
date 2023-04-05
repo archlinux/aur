@@ -6,7 +6,7 @@
 pkgname=plymouth-git
 _pkgname=plymouth
 pkgver=22.02.122.r170.ge8e19371
-pkgrel=1
+pkgrel=2
 pkgdesc='Graphical boot splash screen (git version)'
 arch=('i686' 'x86_64')
 url='https://www.freedesktop.org/wiki/Software/Plymouth/'
@@ -26,7 +26,7 @@ source=("git+https://gitlab.freedesktop.org/$_pkgname/$_pkgname.git"
 
 sha256sums=('SKIP'
             'de852646e615e06d4125eb2e646d0528d1e349bd9e9877c08c5d32c43d288b6f'
-            'f10eb0bed78d4fde549976b00c723db751a0f5a2c1d34bdc61afd9ec18631494'
+            '8397a0703339cc11c0e7304b8e7d5e798f9d76acac7a36d54b7460c0a4f19c07'
             'cfd0c754437d582bbc8d2cbb545a777b00b5c77a6302522577e9d88b169e2f59')
 
 pkgver() {

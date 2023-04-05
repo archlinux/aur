@@ -46,6 +46,9 @@ build() {
   if [ "$PLYMOUTH_IMAGE_DIR" != "$PLYMOUTH_THEME_DIR" -a -d "$PLYMOUTH_IMAGE_DIR" ]; then
     add_full_dir "$PLYMOUTH_IMAGE_DIR"
   fi
+  
+  # adding this back in seems to help with getting the graphical password prompt so work
+  add_dir '/dev/pts'
 
   # needed to access DRM devices
   add_udev_rule '71-seat.rules'
