@@ -2,7 +2,7 @@
 _pkgname=nemini
 pkgname=${_pkgname}-git
 pkgver=f971b6c
-pkgrel=4
+pkgrel=1
 pkgdesc="Nemini is a simple to configure Gemini server with virtual host, alias, headers/footers and redirect support"
 url="https://codeberg.org/pswilde/nemini.git"
 arch=(any)
