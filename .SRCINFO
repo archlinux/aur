@@ -1,0 +1,18 @@
+pkgbase = gpt4all-git
+	pkgdesc = Assistant-style Chatbot with Large Scale Data Distillation from GPT-3.5-Turbo
+	pkgver = r153.1eeaa5c
+	pkgrel = 1
+	url = https://github.com/nomic-ai/gpt4all
+	arch = x86_64
+	license = Unlicensed
+	makedepends = git
+	depends = bash
+	optdepends = aria2: for downloading models using magnet links
+	provides = gpt4all-git
+	conflicts = gpt4all-git
+	source = gpt4all-repo::git+https://github.com/nomic-ai/gpt4all.git#commit=1eeaa5c8eee2a1ced12c0756ee05a6139d8d5eb3
+	source = gpt4all
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = gpt4all-git

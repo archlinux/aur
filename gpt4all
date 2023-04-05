@@ -1,0 +1,127 @@
+#!/bin/bash
+
+CONFIG_DIR="${HOME}/.config/gpt4all"
+CONFIG_FILE="${CONFIG_DIR}/config.ini"
+MODELS_DIR="${HOME}/.local/share/gpt4all/models"
+BIN_DIR="/usr/lib/gpt4all"
+
+# Checksums for model files
+checksum_filtered="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+checksum_unfiltered="25a587b4f1f87c352eca4fecb7f9d7443c1d4b36eaa5fab52de3e8657320b5a8"
+
+# Check if the config directory and file exist; create them if they don't
+if [ ! -d "$CONFIG_DIR" ]; then
+  mkdir -p "$CONFIG_DIR"
+fi
+
+if [ ! -f "$CONFIG_FILE" ]; then
+  cat > "$CONFIG_FILE" << EOF
+[Model]
+default_model =
+EOF
+fi
+
+# Read the default model from the config file
+DEFAULT_MODEL=$(awk -F " = " '/model/ {print $2}' "$CONFIG_FILE")
+
+# Function to check the checksum of a file
+check_checksum() {
+  local file=$1
+  local expected_checksum=$2
+  local actual_checksum=$(sha256sum "$file" | awk '{print $1}')
+
+  if [ "$actual_checksum" == "$expected_checksum" ]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+# Check if the specified model is available in the models directory
+if [ ! -f "${DEFAULT_MODEL}" ]; then
+  echo "Model not found. Download one of the following models or quit:"
+  echo "1. gpt4all-lora-quantized.bin"
+  echo "2. gpt4all-lora-unfiltered-quantized.bin"
+  echo "q. Quit"
+
+  read -p "Enter the number of the model you want to download (1 or 2): " choice
+  if [ "$choice" = "1" ]; then
+    model_file="gpt4all-lora-quantized.bin"
+    direct_link="https://the-eye.eu/public/AI/models/nomic-ai/gpt4all/gpt4all-lora-quantized.bin"
+    magnet_link="magnet:?xt=urn:btih:1f11a9691ee06c18f0040e359361dca0479bcb5a&dn=gpt4all-lora-quantized.bin&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce"
+    checksum="$checksum_filtered"
+  elif [ "$choice" = "2" ]; then
+    model_file="gpt4all-lora-unfiltered-quantized.bin"
+    direct_link="https://the-eye.eu/public/AI/models/nomic-ai/gpt4all/gpt4all-lora-unfiltered-quantized.bin"
+    torrent_link="https://the-eye.eu/public/AI/models/nomic-ai/gpt4all/gpt4all-lora-unfiltered-quantized.bin.torrent"
+    checksum="$checksum_unfiltered"
+  else
+    echo "Invalid choice. Exiting."
+    exit 1
+  fi
+
+  # Check if the model file already exists and has the correct checksum
+  if [ -f "${MODELS_DIR}/${model_file}" ] && check_checksum "${MODELS_DIR}/${model_file}" "$checksum"; then
+    echo "Model file already exists and has the correct checksum. No need to download again."
+  else
+    # Download the chosen model
+    read -p "Enter 'd' for direct download, 't' for torrent, or 'q' to quit: " download_method
+    case "$download_method" in
+      "d"|"D")
+        echo "Downloading $model_file using direct link..."
+        mkdir -p "$MODELS_DIR"
+        curl -L -o "${MODELS_DIR}/${model_file}" "$direct_link"
+        ;;
+      "t"|"T")
+        echo "Downloading $model_file using torrent..."
+        mkdir -p "$MODELS_DIR"
+        if [ "$choice" = "1" ]; then
+          aria2c -d "$MODELS_DIR" --seed-time=0 --bt-stop-timeout=600 --follow-torrent=true "${magnet_link}"
+        else
+          tmp_torrent=$(mktemp)
+          curl -L -o "$tmp_torrent" "$torrent_link"
+          aria2c -d "$MODELS_DIR" --seed-time=0 --bt-stop-timeout=600 "$tmp_torrent"
+          rm "$tmp_torrent"
+        fi
+        ;;
+      "q"|"Q")
+        echo "Quitting."
+        exit 0
+        ;;
+      *)
+        echo "Invalid option. Exiting."
+        exit 1
+        ;;
+    esac
+
+    # Update the config file with the downloaded model
+    sed -i "s|model = .*|model = ${MODELS_DIR}/${model_file}|" "$CONFIG_FILE"
+    DEFAULT_MODEL=$(awk -F " = " '/model/ {print $2}' "$CONFIG_FILE")
+  fi
+fi
+
+# Display the succinct warning message
+printf "\033[5;31mWARNING\033[0m: GPT4All is for research purposes only. Commercial use is prohibited.\n"
+printf "It is based on LLaMA (non-commercial license) and uses data from OpenAI's GPT-3.5-Turbo.\n"
+printf "Competing commercially with OpenAI is not allowed.\n\n"
+printf "For more details, see the technical report: https://s3.amazonaws.com/static.nomic.ai/gpt4all/2023_GPT4All_Technical_Report.pdf\n\n"
+
+# Read the options from config.ini
+config_options=$(grep -E '^[a-zA-Z0-9_-]+[[:space:]]*=' "$CONFIG_FILE" | tr -d '[:space:]')
+
+echo $config_options 
+
+# Construct the command line arguments
+MODEL_OPTIONS=""
+for option in $config_options; do
+  key=$(echo "$option" | cut -d '=' -f 1)
+  value=$(echo "$option" | cut -d '=' -f 2)
+
+  if [[ -n $value ]]; then
+    MODEL_OPTIONS+="--$key $value "
+  fi
+done
+
+# Run the gpt4all-lora-quantized-linux-x86 binary with the constructed command line arguments and any additional user-provided arguments
+"$BIN_DIR/gpt4all-lora-quantized-linux-x86" $MODEL_OPTIONS "$@"
+
