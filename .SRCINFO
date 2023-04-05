@@ -1,0 +1,39 @@
+pkgbase = material-gtk-theme-git
+	pkgdesc = Material gtk themes
+	pkgver = r38.4d828d5d
+	pkgrel = 1
+	url = https://github.com/Fausto-Korpsvart/Material-GTK-Themes
+	arch = any
+	license = GPL3
+	makedepends = git
+	source = git+https://github.com/Fausto-Korpsvart/Material-GTK-Themes.git
+	sha256sums = SKIP
+
+pkgname = material-gtk-theme-git
+	depends = gnome-themes-extra
+	optdepends = gtk-engine-murrine
+	conflicts = material-gtk-theme-deepocean-git
+	conflicts = material-gtk-theme-palenight-git
+
+pkgname = material-gtk-theme-deepocean-git
+	depends = gnome-themes-extra
+	optdepends = gtk-engine-murrine
+	conflicts = material-gtk-theme-git
+
+pkgname = material-gtk-theme-palenight-git
+	depends = gnome-themes-extra
+	optdepends = gtk-engine-murrine
+	conflicts = material-gtk-theme-git
+
+pkgname = material-icon-theme-git
+	depends = gtk-update-icon-cache
+	conflicts = material-icon-theme-deepocean-git
+	conflicts = material-icon-theme-palenight-git
+
+pkgname = material-icon-theme-deepocean-git
+	depends = gtk-update-icon-cache
+	conflicts = material-icon-theme-git
+
+pkgname = material-icon-theme-palenight-git
+	depends = gtk-update-icon-cache
+	conflicts = material-icon-theme-git
