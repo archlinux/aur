@@ -24,7 +24,7 @@ source=(https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pk
         infinality-settings.sh
         xft-settings.sh)
 
-sha256sums=('3333ae7cfda88429c97a7ae63b7d01ab398076c3b67182e960e5684050f2c5c8'
+sha256sums=('5ee23abd047636c24b2d43c6625dcafc66661d1aca64dec9e0d05df29592624c'
             'SKIP'
             'ac11a24b62a6c044cc245ea9fa2a0cbd9e2e62f2371873dd33084c28a76e7176'
             '6d563b1f9f9ef52379818ff3ede26b44e0b4cb6e3cf46ea44ca5d36b6d29ae9d'
@@ -47,7 +47,7 @@ prepare() {
 build() {
     cd freetype2
     ./configure --prefix=/usr --disable-static --with-harfbuzz --with-png
-    make -j6
+    make
 }
 
 check() {
