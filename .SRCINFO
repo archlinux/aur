@@ -1,6 +1,6 @@
 pkgbase = getdns-git
 	pkgdesc = A modern asynchronous DNS API
-	pkgver = 1.5.1.r113.g82b9f578
+	pkgver = 1.7.3.r3.gf8c95b4f
 	pkgrel = 1
 	url = https://getdnsapi.net/
 	arch = i686
@@ -15,11 +15,10 @@ pkgbase = getdns-git
 	depends = libuv
 	depends = openssl
 	depends = unbound
-	provides = getdns
+	provides = getdns=1.7.3.r3.gf8c95b4f
 	conflicts = getdns
 	options = staticlibs
 	source = git+https://github.com/getdnsapi/getdns.git
 	sha256sums = SKIP
 
 pkgname = getdns-git
-

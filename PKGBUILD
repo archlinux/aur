@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=getdns-git
-pkgver=1.5.1.r113.g82b9f578
+pkgver=1.7.3.r3.gf8c95b4f
 pkgrel=1
 pkgdesc="A modern asynchronous DNS API"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('glibc' 'libev' 'libevent' 'libidn2' 'libuv' 'openssl' 'unbound')
 makedepends=('git')
 checkdepends=('check')
-provides=('getdns')
+provides=("getdns=$pkgver")
 conflicts=('getdns')
 options=('staticlibs')
 source=("git+https://github.com/getdnsapi/getdns.git")
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 prepare() {
   cd "getdns"
 
-  git submodule update --init
+  git submodule update --init --recursive
 }
 
 pkgver() {
@@ -54,5 +54,5 @@ package() {
   cd "getdns"
 
   make DESTDIR="$pkgdir" install
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/getdns/LICENSE"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/getdns"
 }
