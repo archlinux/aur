@@ -1,14 +1,16 @@
-# Maintainer: Anton Kudelin <kudelin at protonmail dot com>
+# Maintainer: Anton Kudelin <kudelin at proton dot me>
 
 pkgname=quickfix
 pkgver=1.15.1
-pkgrel=3
+pkgrel=4
 pkgdesc="C++ Fix Engine Library"
 arch=("x86_64")
-url="http://www.quickfixengine.org/"
+url="http://www.quickfixengine.org"
 license=('custom:The QuickFIX Software License, Version 1.0')
-depends=('tbb' 'python')
+depends=('python' 'tbb')
+optdepends=('mysql' 'postgresql-libs' 'ruby')
 makedepends=('boost')
+checkdepends=('ruby')
 conflicts=('quickfix-git')
 source=("https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz"
         "unit_test.patch")
@@ -40,6 +42,12 @@ check() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
-  install -dm755 "$pkgdir/usr/share/licenses/quickfix"
-  install -m755 LICENSE "$pkgdir/usr/share/licenses/quickfix"
+
+  # Copying SQL scripts
+  install -dm755 "$pkgdir/usr/lib/$pkgname"
+  cp -r src/sql "$pkgdir/usr/lib/$pkgname"
+  find "$pkgdir/usr/lib/$pkgname" -name "*.bat" -exec rm {} \;
+  chmod -R 755 "$pkgdir/usr/lib/$pkgname"
+
+  install -Dm755 LICENSE -t "$pkgdir/usr/share/licenses/quickfix"
 } 
