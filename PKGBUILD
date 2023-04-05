@@ -3,7 +3,7 @@
 
 pkgname=caddy-trojan
 pkgver=2.6.4
-pkgrel=4
+pkgrel=5
 pkgdesc="Caddy web server with trojan support"
 arch=('x86_64' 'aarch64')
 url="https://github.com/imgk/caddy-trojan"
@@ -15,10 +15,10 @@ source=(
     "caddy.hook"
     "caddy.sysusers"
     "caddy.tmpfiles"
-    "https://raw.githubusercontent.com/caddyserver/dist/master/init/caddy.service"
-    "https://raw.githubusercontent.com/caddyserver/dist/master/init/caddy-api.service"
-    "https://raw.githubusercontent.com/caddyserver/dist/master/config/Caddyfile"
-    "https://raw.githubusercontent.com/caddyserver/dist/master/welcome/index.html"
+    "https://raw.githubusercontent.com/caddyserver/dist/v${pkgver}/init/caddy.service"
+    "https://raw.githubusercontent.com/caddyserver/dist/v${pkgver}/init/caddy-api.service"
+    "https://raw.githubusercontent.com/caddyserver/dist/v${pkgver}/config/Caddyfile"
+    "https://raw.githubusercontent.com/caddyserver/dist/v${pkgver}/welcome/index.html"
 )
 sha256sums=('dfadb1f4a1f82024a11c110624680f98b3818305a16dd013363ca398020611ad'
             'a9294eeba17a8fd57cf11cef21e2eb3719a016646eeac0764a0d9f9f380a40ef'
@@ -43,6 +43,8 @@ build() {
         github.com/mholt/caddy-webdav
         github.com/imgk/caddy-trojan
         github.com/imgk/caddy-pprof
+        # Let caddy truse CDN's X-Forwarded-For header
+        # Only cloudflare is found now.
         github.com/WeidiDeng/caddy-cloudflare-ip
     )
     xcaddy build v${pkgver} ${MODULES[@]/#/--with }
