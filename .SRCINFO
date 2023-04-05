@@ -1,22 +1,20 @@
 pkgbase = sparrow-wallet
 	pkgdesc = Bitcoin wallet with pro functionalities like single- and multisig, Transaction Editor, built-in Tor, connection to private Electrum and much more. Different Hardware Wallets like Trezor and BitBox supported.
-	pkgver = 1.7.3
+	pkgver = 1.7.4
 	pkgrel = 1
 	url = https://sparrowwallet.com/
 	arch = x86_64
-	arch = arm64
 	license = Apache
 	makedepends = p7zip
 	makedepends = gendesk
-	depends = libnet
 	depends = hicolor-icon-theme
 	depends = alsa-lib
 	depends = libxtst
 	depends = libxrender
 	depends = java-runtime
 	depends = freetype2
-	source = https://github.com/sparrowwallet/sparrow/releases/download/1.7.3/sparrow-1.7.3-x86_64.tar.gz
+	source = https://github.com/sparrowwallet/sparrow/releases/download/1.7.4/sparrow-1.7.4-x86_64.tar.gz
 	validpgpkeys = D4D0D3202FC06849A257B38DE94618334C674B40
-	sha256sums = fed29cb7bdefd335808d8e244e59676fff9207ff04360565f1887f2c4aca4f16
+	sha256sums = cbe5f8d23bb57a0fe32528bc9c7493432fe22b97ef008bdf1e4ebf9158663922
 
 pkgname = sparrow-wallet
