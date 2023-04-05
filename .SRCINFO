@@ -1,0 +1,17 @@
+pkgbase = mdbook-d2
+	pkgdesc = A preprocessor for mdbook to convert d2 codeblocks into SVG images
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/danieleades/mdbook-d2
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = glibc
+	depends = gcc-libs
+	depends = mdbook
+	depends = d2
+	options = !lto
+	source = mdbook-d2-0.2.2.tar.gz::https://static.crates.io/crates/mdbook-d2/mdbook-d2-0.2.2.crate
+	b2sums = SKIP
+
+pkgname = mdbook-d2
