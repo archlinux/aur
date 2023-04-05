@@ -83,8 +83,8 @@ fi
 
 pkgbase=linux-manjaro-xanmod
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-_major=6.1
-pkgver=${_major}.14
+_major=6.2
+pkgver=${_major}.9
 _branch=6.x
 xanmod=1
 pkgrel=1
@@ -92,7 +92,7 @@ pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="ec17648b49c01936a4683146ddbfb42b924f9f56" # 6.1.14
+__commit="c3bc4697f00609370e0106589b0edfea9ccb37ff" # 6.2.9
 
 license=(GPL2)
 makedepends=(
@@ -119,11 +119,11 @@ for _patch in ${_patches[@]}; do
     source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 done
         
-sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'  # kernel tar.xz
+sha256sums=('74862fa8ab40edae85bb3385c0b71fe103288bce518526d63197800b3cbdecb1'  # kernel tar.xz
             'SKIP'                                                              #        tar.sign
-            '9af6527926feca7e9cd39f5bdaffcada5c2ef50658cac5645296bab81a995a6c'  # xanmod
+            '8185c860bb07ea0939b9fa761ef677822c03e8667379e43606915c59ee383eca'  # xanmod
             '5c84bfe7c1971354cff3f6b3f52bf33e7bbeec22f85d5e7bfde383b54c679d30'  # choose-gcc-optimization.sh
-            'c2dd29fe320529f144f5e7fbd3ccf1e7ad5c6899bc4612c1c7d8d9e4bb114af3') # manjaro
+            '4ac0c2fc6a83959b8e9cb347a62aad52808437d53400c8762662e82df0985694') # manjaro
 
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds

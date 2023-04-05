@@ -1,6 +1,6 @@
 pkgbase = linux-manjaro-xanmod
 	pkgdesc = Linux Xanmod
-	pkgver = 6.1.14
+	pkgver = 6.1.9
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -19,14 +19,14 @@ pkgbase = linux-manjaro-xanmod
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.1.tar.sign
-	source = https://github.com/xanmod/linux/releases/download/6.1.14-xanmod1/patch-6.1.14-xanmod1.xz
+	source = https://github.com/xanmod/linux/releases/download/6.1.9-xanmod1/patch-6.1.9-xanmod1.xz
 	source = choose-gcc-optimization.sh
-	source = https://gitlab.manjaro.org/packages/core/linux61/-/archive/ec17648b49c01936a4683146ddbfb42b924f9f56/linux61-ec17648b49c01936a4683146ddbfb42b924f9f56.tar.gz
+	source = https://gitlab.manjaro.org/packages/core/linux61/-/archive/c3bc4697f00609370e0106589b0edfea9ccb37ff/linux61-c3bc4697f00609370e0106589b0edfea9ccb37ff.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb
 	sha256sums = SKIP
-	sha256sums = 9af6527926feca7e9cd39f5bdaffcada5c2ef50658cac5645296bab81a995a6c
+	sha256sums = 8185c860bb07ea0939b9fa761ef677822c03e8667379e43606915c59ee383eca
 	sha256sums = 5c84bfe7c1971354cff3f6b3f52bf33e7bbeec22f85d5e7bfde383b54c679d30
 	sha256sums = c2dd29fe320529f144f5e7fbd3ccf1e7ad5c6899bc4612c1c7d8d9e4bb114af3
 
