@@ -37,7 +37,6 @@ package() {
     install -Dm755 nemini -t "${pkgdir}/usr/local/bin"
     cp -r demo_site/* "${pkgdir}/srv/gemini/demo_site/"
     install -Dm755 config/nemini.default.toml -T "${pkgdir}/etc/nemini/nemini.default.toml"
-    ls "${pkgdir}/etc/nemini/"
     install -Dm644 nemini.service -t "${pkgdir}/usr/lib/systemd/system"
 }
 install=install.sh
