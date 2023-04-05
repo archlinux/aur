@@ -7,7 +7,7 @@
 pkgname=grafana-bin
 _pkgname=grafana
 pkgver=9.4.7
-pkgrel=2
+pkgrel=3
 pkgdesc='Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB - binary version'
 url='https://grafana.com/'
 conflicts=('grafana')
@@ -54,7 +54,7 @@ package() {
   install -Dm640 -o207 -g207 conf/sample.ini "$pkgdir/etc/grafana.ini"
   install -Dm644 conf/defaults.ini "$pkgdir/usr/share/grafana/conf/defaults.ini"
   install -dm755 "$pkgdir/usr/share/grafana/"
-  cp -r public scripts plugins-bundled "$pkgdir/usr/share/grafana/"
+  cp -r public tools "$pkgdir/usr/share/grafana/"
 
   # Remove unit tests
   rm -r "$pkgdir/usr/share/grafana/public/test"
