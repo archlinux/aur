@@ -5,7 +5,7 @@
 
 pkgname=just-git
 pkgver=0.9.4.r322.g9f03441e
-pkgrel=1
+pkgrel=2
 pkgdesc="Just a command runner"
 arch=('i686' 'x86_64')
 url="https://just.systems/"
@@ -47,7 +47,7 @@ package() {
   cd "just"
 
   cargo install \
-    --frozen \
+    --locked \
     --no-track \
     --root "$pkgdir/usr" \
     --path .

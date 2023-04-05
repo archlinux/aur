@@ -1,7 +1,7 @@
 pkgbase = just-git
 	pkgdesc = Just a command runner
 	pkgver = 0.9.4.r322.g9f03441e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://just.systems/
 	arch = i686
 	arch = x86_64
