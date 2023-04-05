@@ -2,7 +2,7 @@
 
 pkgname=python-noseofyeti
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A custom pyton codec that provides an RSpec style dsl for python"
 url="https://github.com/delfick/nose-of-yeti"
 license=('MIT')
