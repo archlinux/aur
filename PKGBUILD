@@ -2,7 +2,7 @@
 
 pkgname=optivorbis-git
 pkgver=0.1.3.r3.g64b1151
-pkgrel=1
+pkgrel=2
 pkgdesc="Application for lossless, format-preserving, two-pass optimization and repair of Vorbis data"
 arch=('i686' 'x86_64')
 url="https://optivorbis.github.io/OptiVorbis/"
@@ -18,10 +18,12 @@ sha256sums=('SKIP')
 prepare() {
   cd "OptiVorbis"
 
-  if [ ! -f "Cargo.lock" ]; then
-    cargo update
+  if [ ! -f "packages/optivorbis_cli/Cargo.lock" ]; then
+    cargo update \
+      --manifest-path "packages/optivorbis_cli/Cargo.toml"
   fi
-  cargo fetch
+  cargo fetch \
+    --manifest-path "packages/optivorbis_cli/Cargo.toml"
 }
 
 pkgver() {
@@ -37,7 +39,8 @@ check() {
   cd "OptiVorbis"
 
   #cargo test \
-    #--frozen
+  #  --frozen \
+  #  --manifest-path "packages/optivorbis_cli/Cargo.toml"
 }
 
 package() {
