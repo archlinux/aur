@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=cfnts-git
-pkgver=r190.g094611f
+pkgver=r205.g3d9c673
 pkgrel=1
 pkgdesc="NTS protocol implementation written in Rust"
 arch=('i686' 'x86_64')
@@ -9,11 +9,20 @@ url="https://blog.cloudflare.com/announcing-cfnts/"
 license=('BSD')
 depends=('gcc-libs')
 makedepends=('git' 'rust')
-provides=('cfnts')
+provides=("cfnts=$pkgver")
 conflicts=('cfnts')
 source=("git+https://github.com/cloudflare/cfnts.git")
 sha256sums=('SKIP')
 
+
+prepare() {
+  cd "cfnts"
+
+  if [ ! -f "Cargo.lock" ]; then
+    cargo update
+  fi
+  cargo fetch
+}
 
 pkgver() {
   cd "cfnts"
@@ -22,7 +31,6 @@ pkgver() {
   _hash=$(git rev-parse --short HEAD)
   printf "r%s.g%s" "$_rev" "$_hash"
 }
-
 
 check() {
   cd "cfnts"
