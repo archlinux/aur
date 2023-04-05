@@ -14,10 +14,12 @@ makedepends=(
     gcc)
 source=(
 	"$_pkgname::git+https://github.com/pierr3/VectorAudio.git#branch=main"
+	"0001-add-linux-convention-config-paths.patch"
 	"vector-audio.desktop"
 )
 sha256sums=('SKIP'
-            'fc3519b53638ff6ed548b8a096c5cb5395513725c097cfc6969d28ad1cf120c8')
+            'd6375ab3974663f0387dbb0a4379082d3185ec8f44dd2a80f0ba06a49127caf2'
+            'ef5c0505a905bb1f1e0a9758aef1e6833c53ec3a06f8ddddfc9035b6d2765d03')
 
 pkgver() {
   cd "$_pkgname"
@@ -28,6 +30,7 @@ prepare() {
   cd "$_pkgname"
   git submodule update --init --recursive
   ./vcpkg/bootstrap-vcpkg.sh -disableMetrics
+  patch -p1 <${srcdir}/0001-add-linux-convention-config-paths.patch
 }
 
 build() {
