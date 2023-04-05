@@ -1,6 +1,6 @@
 pkgbase = osmin
 	pkgdesc = Satellite Navigator & Tracker On-Road/Off-Road for Mobile
-	pkgver = 1.8.7
+	pkgver = 1.9.6
 	pkgrel = 1
 	url = https://github.com/janbar/osmin
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = osmin
 	depends = qt5-svg
 	depends = qt5-wayland
 	depends = qt5-remoteobjects
-	source = git+https://github.com/janbar/osmin.git#commit=033d9e6ca80d979072752a4d1529ff10180fda2a
+	source = git+https://github.com/janbar/osmin.git
 	sha256sums = SKIP
 
 pkgname = osmin
