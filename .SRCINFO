@@ -1,0 +1,15 @@
+pkgbase = python-connectorx
+	pkgdesc = Load data from databases into Python
+	pkgver = 0.3.2.alpha2
+	pkgrel = 1
+	url = https://github.com/sfu-db/connector-x
+	arch = x86_64
+	license = MIT
+	makedepends = python-installer
+	makedepends = maturin
+	makedepends = rust
+	depends = python
+	source = git+https://github.com/sfu-db/connector-x.git#commit=0c16d98b270009b9594
+	sha256sums = SKIP
+
+pkgname = python-connectorx
