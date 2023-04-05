@@ -18,7 +18,7 @@ source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${pkgname}"
+    cd "${_reponame}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
