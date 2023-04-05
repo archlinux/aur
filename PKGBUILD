@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=htslib-git
-pkgver=1.16.r3.g50361863
+pkgver=1.17.r16.g93434e04
 pkgrel=1
 pkgdesc="C library for high-throughput sequencing data formats"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 prepare() {
   cd "htslib"
 
-  git submodule update --init --recursive --remote
+  git submodule update --init --recursive
 }
 
 pkgver() {
