@@ -1,16 +1,16 @@
 # Maintainer: sukanka <su975853527 at gmail dot com>
 
 pkgname=iauto
-pkgver=3.5.8
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Flowchart diagrams drawer"
 arch=('x86_64')
-url="http://www.iautodraw.com"
+url="https://www.iautodraw.com"
 license=('unknown')
 depends=(electron13)
 makedepends=(p7zip gendesk)
-source=("${pkgname}-${pkgver}.exe::https://www.iautodraw.com/static/version/IAuto%20Setup%20${pkgver}(win%2064).exe")
-sha512sums=('37752fb916e88cbfd763a5fe2ca812fe9ab02c00d08dc2bcb3f866633203b93b9d2ce8b013a6f3321dd93353899be89923fbe2436ff020c7434b6036396a155d')
+source=("${pkgname}-${pkgver}.exe::${url}/static/version/IAuto%20Setup%20${pkgver}(win%2064).exe")
+sha512sums=('eadcbf68622cd00c3c7903b12226dcf829ae6050fed1a295a209086f1e44b2d4fef858d052f2f7825bcd804d3d660b6297516d8bee18974d94d50f3d66c3db60')
 
 prepare() {
     cd $srcdir
