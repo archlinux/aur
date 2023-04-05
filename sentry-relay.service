@@ -1,0 +1,11 @@
+[Unit]
+Description=Sentry relay.
+After=network.target
+
+[Service]
+User=sentry
+Restart=always
+ExecStart=/usr/bin/sentry-relay run -c /etc/sentry-relay/
+
+[Install]
+WantedBy=multi-user.target
