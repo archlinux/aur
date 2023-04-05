@@ -1,4 +1,4 @@
-From 42c085d4a746a12ef0ffde8e29fc7fef048bfb19 Mon Sep 17 00:00:00 2001
+From d35043f858eada057e7b12f49354ed95281c6f97 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 5 Nov 2020 21:59:33 +0100
 Subject: [PATCH 04/12] Fix transitive dependencies (of static libraries)
@@ -36,10 +36,10 @@ index 24a194c9cb..a6a16b494f 100644
  endif()
  
 diff --git a/cmake/FindMySQL.cmake b/cmake/FindMySQL.cmake
-index f5cad361d7..cdfb469c71 100644
+index d191d1ac0a..b61d0107f2 100644
 --- a/cmake/FindMySQL.cmake
 +++ b/cmake/FindMySQL.cmake
-@@ -80,6 +80,7 @@ if(MySQL_FOUND)
+@@ -83,6 +83,7 @@ if(MySQL_FOUND)
      add_library(MySQL::MySQL UNKNOWN IMPORTED)
      set_target_properties(MySQL::MySQL PROPERTIES
                            IMPORTED_LOCATION "${MySQL_LIBRARIES}"
@@ -48,20 +48,20 @@ index f5cad361d7..cdfb469c71 100644
      if(MySQL_LIBRARY_DEBUG)
        set_target_properties(MySQL::MySQL PROPERTIES
 diff --git a/cmake/FindWrapDBus1.cmake b/cmake/FindWrapDBus1.cmake
-index bdbcab9eb3..06e9af49f6 100644
+index 8e0ed81f89..0aec7dbb77 100644
 --- a/cmake/FindWrapDBus1.cmake
 +++ b/cmake/FindWrapDBus1.cmake
-@@ -47,4 +47,5 @@ find_package_handle_standard_args(WrapDBus1 REQUIRED_VARS
+@@ -50,4 +50,5 @@ find_package_handle_standard_args(WrapDBus1 REQUIRED_VARS
                                              VERSION_VAR DBus1_VERSION)
  if(TARGET dbus-1)
      set_property(TARGET dbus-1 PROPERTY IMPORTED_IMPLIB ${DBus1_LIBRARY})
 +    set_property(TARGET dbus-1 PROPERTY INTERFACE_LINK_LIBRARIES "${DBUS1_DEPENDENCIES}")
  endif()
 diff --git a/cmake/FindWrapOpenSSL.cmake b/cmake/FindWrapOpenSSL.cmake
-index 7b6dccb1d2..550c5134fb 100644
+index a4341271fe..be6ac7003a 100644
 --- a/cmake/FindWrapOpenSSL.cmake
 +++ b/cmake/FindWrapOpenSSL.cmake
-@@ -11,7 +11,7 @@ set(WrapOpenSSL_FOUND OFF)
+@@ -14,7 +14,7 @@ set(WrapOpenSSL_FOUND OFF)
  find_package(WrapOpenSSLHeaders ${WrapOpenSSL_FIND_VERSION})
  
  if(TARGET OpenSSL::SSL)
@@ -70,7 +70,7 @@ index 7b6dccb1d2..550c5134fb 100644
          get_target_property(libType OpenSSL::Crypto TYPE)
          if(libType STREQUAL "ALIAS")
              get_target_property(writableLib OpenSSL::Crypto ALIASED_TARGET)
-@@ -26,7 +26,7 @@ if(TARGET OpenSSL::SSL)
+@@ -29,7 +29,7 @@ if(TARGET OpenSSL::SSL)
      set(WrapOpenSSL_FOUND ON)
  
      add_library(WrapOpenSSL::WrapOpenSSL INTERFACE IMPORTED)
@@ -80,10 +80,10 @@ index 7b6dccb1d2..550c5134fb 100644
  
  include(FindPackageHandleStandardArgs)
 diff --git a/cmake/FindWrapSystemFreetype.cmake b/cmake/FindWrapSystemFreetype.cmake
-index 2cf6caca19..23dc161e4c 100644
+index d0c27a9f0f..64e14c584c 100644
 --- a/cmake/FindWrapSystemFreetype.cmake
 +++ b/cmake/FindWrapSystemFreetype.cmake
-@@ -44,7 +44,7 @@ find_package_handle_standard_args(WrapSystemFreetype
+@@ -47,7 +47,7 @@ find_package_handle_standard_args(WrapSystemFreetype
  if(WrapSystemFreetype_FOUND)
      add_library(WrapSystemFreetype::WrapSystemFreetype INTERFACE IMPORTED)
      target_link_libraries(WrapSystemFreetype::WrapSystemFreetype
@@ -93,10 +93,10 @@ index 2cf6caca19..23dc161e4c 100644
  unset(__freetype_target_name)
  unset(__freetype_found)
 diff --git a/cmake/FindWrapSystemHarfbuzz.cmake b/cmake/FindWrapSystemHarfbuzz.cmake
-index fc6233d942..1e6105a00c 100644
+index 07b3405bc0..10fb738d7c 100644
 --- a/cmake/FindWrapSystemHarfbuzz.cmake
 +++ b/cmake/FindWrapSystemHarfbuzz.cmake
-@@ -70,7 +70,7 @@ find_package_handle_standard_args(WrapSystemHarfbuzz
+@@ -73,7 +73,7 @@ find_package_handle_standard_args(WrapSystemHarfbuzz
  if(WrapSystemHarfbuzz_FOUND)
      add_library(WrapSystemHarfbuzz::WrapSystemHarfbuzz INTERFACE IMPORTED)
      target_link_libraries(WrapSystemHarfbuzz::WrapSystemHarfbuzz
@@ -106,10 +106,10 @@ index fc6233d942..1e6105a00c 100644
  unset(__harfbuzz_target_name)
  unset(__harfbuzz_find_include_dirs_hints)
 diff --git a/cmake/FindWrapSystemPNG.cmake b/cmake/FindWrapSystemPNG.cmake
-index 372a064ff4..a363bfd31b 100644
+index 967ccc5c02..9a7d5150dc 100644
 --- a/cmake/FindWrapSystemPNG.cmake
 +++ b/cmake/FindWrapSystemPNG.cmake
-@@ -33,7 +33,7 @@ find_package_handle_standard_args(WrapSystemPNG
+@@ -36,7 +36,7 @@ find_package_handle_standard_args(WrapSystemPNG
  if(WrapSystemPNG_FOUND)
      add_library(WrapSystemPNG::WrapSystemPNG INTERFACE IMPORTED)
      target_link_libraries(WrapSystemPNG::WrapSystemPNG
@@ -119,10 +119,10 @@ index 372a064ff4..a363bfd31b 100644
  unset(__png_target_name)
  unset(__png_found)
 diff --git a/src/plugins/sqldrivers/psql/CMakeLists.txt b/src/plugins/sqldrivers/psql/CMakeLists.txt
-index d3a6a8588e..743154fc50 100644
+index d392f4dfa5..165c345e1b 100644
 --- a/src/plugins/sqldrivers/psql/CMakeLists.txt
 +++ b/src/plugins/sqldrivers/psql/CMakeLists.txt
-@@ -16,7 +16,7 @@ qt_internal_add_plugin(QPSQLDriverPlugin
+@@ -17,7 +17,7 @@ qt_internal_add_plugin(QPSQLDriverPlugin
          QT_NO_CAST_FROM_ASCII
          QT_NO_CAST_TO_ASCII
      LIBRARIES
@@ -132,5 +132,5 @@ index d3a6a8588e..743154fc50 100644
          Qt::CorePrivate
          Qt::SqlPrivate
 -- 
-2.39.2
+2.40.0
 
