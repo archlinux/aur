@@ -3,7 +3,7 @@
 _pkgname=litex
 pkgname=python-$_pkgname
 pkgver=2021.08
-pkgrel=1
+pkgrel=2
 pkgdesc='Migen/MiSoC based Core/SoC builder that provides the infrastructure to easily create Cores/SoCs'
 arch=('any')
 url='https://github.com/enjoy-digital/litex'
