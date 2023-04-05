@@ -6,9 +6,11 @@ pkgdesc="The first *free* general purpose Multibody Dynamics analysis software"
 arch=('any')
 url='www.mbdyn.org'
 license=('GPLv2')
-depends=(openblas-lapack suitesparse netcdf netcdf-cxx)
+depends=(suitesparse netcdf netcdf-cxx)
 makedepends=(git autoconf automake gcc-fortran libtool)
-optdepends=('ginac: symbolic elements support')
+optdepends=('ginac: symbolic elements support',
+	    'lapack: eigenanalysis support',
+	    'openblas-lapack: eigenanalysis support, openBLAS version')
 source=("${pkgname}::git+https://public.gitlab.polimi.it/DAER/mbdyn.git")
 sha256sums=('SKIP')
 
