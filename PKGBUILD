@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=bao-git
-pkgver=0.10.1.r2.g59217b9
+pkgver=0.12.1.r3.g1d1f9cf
 pkgrel=1
 pkgdesc="A verified streaming tool"
 arch=('i686' 'x86_64')
@@ -9,11 +9,22 @@ url="https://github.com/oconnor663/bao"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('git' 'rust')
-provides=('bao')
+provides=("bao=$pkgver")
 conflicts=('bao')
 source=("git+https://github.com/oconnor663/bao")
 sha256sums=('SKIP')
 
+
+prepare() {
+  cd "bao"
+
+  if [ ! -f "bao_bin/Cargo.lock" ]; then
+    cargo update \
+      --manifest-path "bao_bin/Cargo.toml"
+  fi
+  cargo fetch \
+    --manifest-path "bao_bin/Cargo.toml"
+}
 
 pkgver() {
   cd "bao"
@@ -28,13 +39,15 @@ check() {
   cd "bao"
 
   cargo test \
-    --release
+    --frozen \
+    --manifest-path "bao_bin/Cargo.toml"
 }
 
 package() {
   cd "bao"
 
   cargo install \
+    --locked \
     --no-track \
     --root "$pkgdir/usr" \
     --path "$srcdir/bao/bao_bin"
