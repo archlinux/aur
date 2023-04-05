@@ -1,4 +1,4 @@
-From abaf4cb4748aefaeacb28d1bc5d1c6e211b761e7 Mon Sep 17 00:00:00 2001
+From ed80128e2e23107bec620442434d4eb987af3cf5 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 9 Jun 2021 17:25:27 +0200
 Subject: [PATCH] Enable only SQL plugins which are known to work
@@ -9,10 +9,10 @@ Change-Id: I0abc44db77cecbd323edc936529fb557e1664de8
  1 file changed, 8 insertions(+)
 
 diff --git a/src/assistant/assistant/CMakeLists.txt b/src/assistant/assistant/CMakeLists.txt
-index 69470c509..dbf68570d 100644
+index 10df7f777..3a2b677c5 100644
 --- a/src/assistant/assistant/CMakeLists.txt
 +++ b/src/assistant/assistant/CMakeLists.txt
-@@ -164,6 +164,14 @@ qt_internal_extend_target(assistant CONDITION UNIX
+@@ -154,6 +154,14 @@ qt_internal_extend_target(assistant CONDITION UNIX
          stdinlistener.cpp stdinlistener.h
  )
  
@@ -28,5 +28,5 @@ index 69470c509..dbf68570d 100644
      set_target_properties(assistant PROPERTIES
          MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/Info_mac.plist"
 -- 
-2.39.2
+2.40.0
 

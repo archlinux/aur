@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt6-tools-static
 	pkgdesc = A cross-platform application and UI framework (tools, mingw-w64)
-	pkgver = 6.4.3
+	pkgver = 6.5.0
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -21,9 +21,9 @@ pkgbase = mingw-w64-qt6-tools-static
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.4/6.4.3/submodules/qttools-everywhere-src-6.4.3.tar.xz
+	source = https://download.qt.io/official_releases/qt/6.5/6.5.0/submodules/qttools-everywhere-src-6.5.0.tar.xz
 	source = 0001-Enable-only-SQL-plugins-which-are-known-to-work.patch
-	sha256sums = 867df829cd5cd3ae8efe62e825503123542764b13c96953511e567df70c5a091
-	sha256sums = 3e83a61fe51f2b18aa5f2fa3b30b8a9fb04a0e83ebfb8f0f03aadd33f5ad51b7
+	sha256sums = 49c33d96b0a44988be954269b8ce3d1a495b439726e03a6be7c0d50a686369c4
+	sha256sums = 65281a163e8e2cc5e75863c49fb017d6d5d2842f154aeec36d88bc1b99560011
 
 pkgname = mingw-w64-qt6-tools-static
