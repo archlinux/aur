@@ -1,7 +1,7 @@
 pkgbase = spotify-edge
 	pkgdesc = A proprietary music streaming service. Edge version.
 	pkgver = 1.2.8.923
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.spotify.com
 	arch = x86_64
 	license = custom
@@ -15,7 +15,7 @@ pkgbase = spotify-edge
 	depends = at-spi2-atk
 	depends = libcurl-gnutls
 	depends = libsm
-	optdepends = ffmpeg-compat-57: Adds support for playback of local files
+	optdepends = ffmpeg4.4: Adds support for playback of local files
 	optdepends = zenity: Adds support for importing local files
 	optdepends = libnotify: Desktop notifications
 	provides = spotify

@@ -7,7 +7,7 @@
 pkgname=spotify-edge
 pkgver=1.2.8.923
 _commit=g4f94bf0d
-pkgrel=2
+pkgrel=3
 pkgdesc='A proprietary music streaming service. Edge version.'
 arch=('x86_64')
 url='https://www.spotify.com'
@@ -15,7 +15,7 @@ provides=('spotify')
 conflicts=('spotify')
 license=('custom')
 depends=('alsa-lib>=1.0.14' 'gtk3' 'libxss' 'desktop-file-utils' 'openssl' 'nss' 'at-spi2-atk' 'libcurl-gnutls' 'libsm')
-optdepends=('ffmpeg-compat-57: Adds support for playback of local files'
+optdepends=('ffmpeg4.4: Adds support for playback of local files'
             'zenity: Adds support for importing local files'
             'libnotify: Desktop notifications')
 makedepends=('squashfs-tools')
