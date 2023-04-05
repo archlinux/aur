@@ -1,18 +1,7 @@
-diff -ruN a/main.js b/main.js
---- a/main.js	2022-11-19 12:15:47.180054024 +0100
-+++ b/main.js	2022-11-19 12:21:38.458818923 +0100
-@@ -92,8 +92,6 @@
-       nodeIntegration: true,
-       webviewTag: true,
-       contextIsolation: false,
--      // Some ads load over HTTP instead of HTTPS :(
--      webSecurity: false,
-     },
-   };
- 
-diff -ruN a/main-view.js b/main-view.js
---- a/main-view.js	2022-05-28 14:17:42.739111678 +0200
-+++ b/main-view.js	2022-05-28 14:50:14.227972642 +0200
+diff --git a/main-view.js b/main-view.js
+index 58214aa..73bb9d8 100644
+--- a/main-view.js
++++ b/main-view.js
 @@ -1,6 +1,5 @@
  const { dialog } = require('@electron/remote');
  const { BaseAppView } = require('./base-app-view');
@@ -20,7 +9,7 @@ diff -ruN a/main-view.js b/main-view.js
  const {
    ExternalLinkService,
  } = require('./scripts/services/external-link-service');
-@@ -85,7 +84,6 @@
+@@ -85,7 +84,6 @@ class MainView extends BaseAppView {
  
      this._mainWindow = mainWindow;
  
@@ -28,7 +17,7 @@ diff -ruN a/main-view.js b/main-view.js
      this._externalLinkService = new ExternalLinkService();
  
      this._mainWindow.game.desktopContentLoaded?.(document);
-@@ -356,12 +354,6 @@
+@@ -356,12 +354,6 @@ class MainView extends BaseAppView {
        this.selectRegion(user.preferredRegion.id, true);
      }
  
@@ -41,7 +30,7 @@ diff -ruN a/main-view.js b/main-view.js
      this._mainWindow.canUseRealTimeLiveLogging = user.canUseRealTimeLiveLogging;
  
      if (this._onboarded) {
-@@ -734,7 +726,6 @@
+@@ -734,7 +726,6 @@ class MainView extends BaseAppView {
    };
  
    fillInLoginForm = () => {
@@ -49,7 +38,7 @@ diff -ruN a/main-view.js b/main-view.js
      document.getElementById('startup-panel').style.display = 'none';
      document.getElementById('logincontent').style.display = '';
      document.getElementById('email').value = this._mainWindow.userName;
-@@ -846,7 +837,6 @@
+@@ -846,7 +837,6 @@ class MainView extends BaseAppView {
  </div>`);
  
        $('body').append(settingsElement);
@@ -57,7 +46,7 @@ diff -ruN a/main-view.js b/main-view.js
  
        const closeOverwolfControlElement = $(
          '.settings__close-overwolf-control'
-@@ -873,7 +863,6 @@
+@@ -873,7 +863,6 @@ class MainView extends BaseAppView {
  
        $('.settings__done-button').on('click', async () => {
          settingsElement.remove();
@@ -65,9 +54,35 @@ diff -ruN a/main-view.js b/main-view.js
        });
      });
    };
-diff -ruN a/scripts/services/ad-service.js b/scripts/services/ad-service.js
---- a/scripts/services/ad-service.js	2022-05-28 14:17:42.739111678 +0200
-+++ b/scripts/services/ad-service.js	1970-01-01 01:00:00.000000000 +0100
+diff --git a/main.js b/main.js
+index fa0a3f7..3e5b2c7 100755
+--- a/main.js
++++ b/main.js
+@@ -92,8 +92,6 @@ async function createWindow() {
+       nodeIntegration: true,
+       webviewTag: true,
+       contextIsolation: false,
+-      // Some ads load over HTTP instead of HTTPS :(
+-      webSecurity: false,
+     },
+   };
+ 
+diff --git a/roots/electron-main-view-root.js b/roots/electron-main-view-root.js
+index b0120bb..ee1405d 100644
+--- a/roots/electron-main-view-root.js
++++ b/roots/electron-main-view-root.js
+@@ -1,6 +1,5 @@
+ const { dialog } = require('@electron/remote');
+ const { BaseAppView } = require('./base-app-view');
+-const { AdService } = require('./scripts/services/ad-service');
+ const {
+   ExternalLinkService,
+ } = require('./scripts/services/external-link-service');
+diff --git a/scripts/services/ad-service.js b/scripts/services/ad-service.js
+deleted file mode 100644
+index 0ef3ae3..0000000
+--- a/scripts/services/ad-service.js
++++ /dev/null
 @@ -1,44 +0,0 @@
 -let adsEnabled = false;
 -
@@ -76,14 +91,14 @@ diff -ruN a/scripts/services/ad-service.js b/scripts/services/ad-service.js
 -  if (!adsEnabled || !adContainer || adContainer.style.display !== 'none')
 -    return;
 -  adContainer.style.display = 'flex';
--  adContainer.innerHTML =
--    "<webview allowpopups httpreferrer='" +
--    window.game.host() +
--    "' style='flex:1' id='electron-ad-view' src='" +
--    window.game.scheme() +
--    '://' +
--    window.game.host() +
--    "/client/ad'></webview>";
+-  const webview = document.createElement('webview');
+-  webview.allowpopups = true;
+-  webview.httpreferrer = window.game.host();
+-  webview.style.flex = "1";
+-  webview.id = 'electron-ad-view';
+-  webview.src = `${window.game.scheme()}://${window.game.host()}/client/ad`;
+-  webview.addEventListener('dom-ready', (event) => event.target?.setAudioMuted(true));
+-  adContainer.appendChild(webview);
 -};
 -
 -const pauseAds = () => {
