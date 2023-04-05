@@ -2,8 +2,8 @@
 # Maintainer: Serge K <arch@phnx47.net>
 
 pkgname=prey-node-client
-pkgver=1.11.3
-pkgrel=2
+pkgver=1.11.4
+pkgrel=1
 pkgdesc="Node.js client for the Prey anti-theft software"
 url="https://github.com/prey/prey-node-client"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/prey-linu
         'prey-tracker.sh'
         'disable-auto-updates.patch'
         'fix-lock.patch')
-sha256sums=('22405f6f2bf076355ebb32d8de05bf55d6377d992ec9fa35c60e86a8e06a2de3'
+sha256sums=('efa048ccc64c9563f8c314d7489d367df9ae75d34c5344b043e2b21758543f2d'
             'f2e837b40bea3a4e24ada3a9ef385f0db71e9c0aa9e463f9c63619563bd27ef3'
             '37094af138edfa0fce31b43025a8b5e56e4a15715b4094e7ae9eea81f44c9e37'
             'd4df726fb87b652b352ca44ddb78afe0e16e40dc130753d86c2cbfa92ac2781d')
