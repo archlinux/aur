@@ -1,7 +1,7 @@
 pkgbase = geckodriver-hg
 	pkgdesc = WebDriver for Firefox
 	pkgver = r552364.1581160e62e6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mozilla/geckodriver
 	arch = i686
 	arch = x86_64
@@ -9,10 +9,9 @@ pkgbase = geckodriver-hg
 	makedepends = mercurial
 	makedepends = rust
 	depends = gcc-libs
-	provides = geckodriver
+	provides = geckodriver=r552364.1581160e62e6
 	conflicts = geckodriver
 	source = hg+https://hg.mozilla.org/mozilla-central/
 	sha256sums = SKIP
 
 pkgname = geckodriver-hg
-
