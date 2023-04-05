@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=criticality_score-git
-pkgver=2.0.0.r0.g1e7ad38
+pkgver=2.0.2.r7.ga486176
 pkgrel=1
 pkgdesc="Gives criticality score for an open source project"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ export GOFLAGS="-buildmode=pie -ldflags=-linkmode=external -trimpath -mod=readon
 pkgver() {
   cd "criticality_score"
 
-  _tag=$(git tag -l --sort -v:refname | grep -P '^v?[\d\.]+$' | head -n1)
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
   _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
