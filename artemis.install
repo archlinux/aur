@@ -1,0 +1,3 @@
+post_install() {
+    chown -R 1000 "/opt/${pkgname}/"
+}

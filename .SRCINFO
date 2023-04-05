@@ -1,8 +1,9 @@
 pkgbase = artemis-grading-bin
 	pkgdesc = Grading tool for Artemis based exercises
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kit-sdq/programming-lecture-eclipse-artemis/
+	install = artemis.install
 	arch = x86_64
 	arch = aarch64
 	license = EPL
