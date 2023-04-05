@@ -28,4 +28,5 @@ check() {
 
 package() {
   DESTDIR="$pkgdir" ninja -C build install
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" "libdisplay-info/LICENSE"
 }
