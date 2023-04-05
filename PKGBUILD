@@ -36,7 +36,8 @@ prepare() {
 	--with-lapack=yes \
 	--enable-python \
 	--enable-Werror=no \
-	--with-superlu=no
+	--with-superlu=no \
+	--libexecdir=/usr/lib/${pkgname}/
 }
 
 build() {
