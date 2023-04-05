@@ -1,6 +1,6 @@
 pkgbase = yay-bin
 	pkgdesc = Yet another yogurt. Pacman wrapper and AUR helper written in go. Pre-compiled.
-	pkgver = 12.0.2
+	pkgver = 12.0.3
 	pkgrel = 1
 	url = https://github.com/Jguer/yay
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = yay-bin
 	optdepends = doas: privilege elevation
 	provides = yay
 	conflicts = yay
-	source_x86_64 = https://github.com/Jguer/yay/releases/download/v12.0.2/yay_12.0.2_x86_64.tar.gz
-	sha256sums_x86_64 = 53d7336a510f4fbaf0d42eae20cf6bddbd49f6dee194e71d5a1756149081d3f3
-	source_aarch64 = https://github.com/Jguer/yay/releases/download/v12.0.2/yay_12.0.2_aarch64.tar.gz
-	sha256sums_aarch64 = a39e0796a633e399d4eb4ab06cc57b9963c970191fb42c351495680ec284e814
-	source_armv7h = https://github.com/Jguer/yay/releases/download/v12.0.2/yay_12.0.2_armv7h.tar.gz
-	sha256sums_armv7h = a40df468db13ca8166ae3b30a0b1cc8728dc078731672efee89e68aa4b1e70a2
+	source_x86_64 = https://github.com/Jguer/yay/releases/download/v12.0.3/yay_12.0.3_x86_64.tar.gz
+	sha256sums_x86_64 = 2aa562ccfdac5bf5285caf1470f91d4b9c45d18ce111a3ba3af1e9779e894e8c
+	source_aarch64 = https://github.com/Jguer/yay/releases/download/v12.0.3/yay_12.0.3_aarch64.tar.gz
+	sha256sums_aarch64 = ad9e5cb1575b5193ef3452a90f813ba5e09fa954228f83a5cfb6d35fe04c2600
+	source_armv7h = https://github.com/Jguer/yay/releases/download/v12.0.3/yay_12.0.3_armv7h.tar.gz
+	sha256sums_armv7h = 64f3bb0f387ace92d8c5b200c64e9732d92a48b5cfa590887623f5fc25ae66c2
 
 pkgname = yay-bin
