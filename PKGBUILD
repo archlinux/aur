@@ -2,7 +2,7 @@
 # Maintainer: Fabian Bornschein <fabiscafe-cat-mailbox-dog-org>
 
 pkgname=loupe
-pkgver=0.0.0+r300+d08b107
+pkgver=44.0
 pkgrel=1
 pkgdesc='Simple image viewer for GNOME'
 arch=(x86_64 aarch64)
@@ -20,17 +20,11 @@ makedepends=(
 	meson
 	rust
 )
-_commit=('d08b10764003c97f579e4c82a49e15037811bfcb')
-source=("git+${url}.git#commit=${_commit}")
-b2sums=('SKIP')
-
-pkgver() {
-	cd loupe
-	printf "0.0.0+r%s+%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+source=("${url}/-/archive/${pkgver}/loupe-${pkgver}.tar.gz")
+b2sums=('89bc97c45b74a93893b29ea85d033f4d1508bbc0b43c2291739cfc545580f81cffa66ba902c75201cbe8bdd3153dbae531345b811d88cc1407625eecb267b0e8')
 
 build() {
-	arch-meson loupe build
+	arch-meson loupe-${pkgver} build
 	meson compile -C build
 }
 
