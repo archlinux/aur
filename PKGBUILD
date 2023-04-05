@@ -40,7 +40,7 @@ build() {
               --tmp="/tmp" \
               --openssl
   ./configure python --config=python3-config
-  ./configure php --config=php-legacy-config --module=php-legacy
+  ./configure php --config=php-config-legacy --module=php-legacy
   ./configure php
   ./configure perl
   ./configure ruby
