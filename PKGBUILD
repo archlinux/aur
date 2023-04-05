@@ -1,6 +1,6 @@
-# Maintainer: Jonathon Fernyhough <jonathon+m2x+dev>
+# Maintainer: Frederik Schwan <freswa at archlinux dot org>
+# Contributor: Jonathon Fernyhough <jonathon+m2x+dev>
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
-# Contributor: Frederik Schwan <freswa at archlinux dot org>
 # Contributor:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Daniel Kozak <kozzi11@gmail.com>
@@ -9,18 +9,16 @@ pkgbase=gcc11
 pkgname=($pkgbase gcc11-libs gcc11-fortran)
 pkgver=11.3.0
 _majorver=${pkgver%%.*}
-_islver=0.24
-pkgrel=1
+pkgrel=5
 pkgdesc='The GNU Compiler Collection (11.x.x)'
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
 url='https://gcc.gnu.org'
-makedepends=(binutils doxygen git libmpc python)
+makedepends=(binutils doxygen git libmpc python libisl.so)
 checkdepends=(dejagnu inetutils)
 options=(!emptydirs !lto)
 _libdir=usr/lib/gcc/$CHOST/${pkgver%%+*}
 source=(https://sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz{,.sig}
-        https://mirror.sobukus.de/files/src/isl/isl-${_islver}.tar.xz
         c89 c99
 )
 validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
@@ -29,16 +27,12 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62) # Jakub Jelinek <jakub@redhat.com>
 b2sums=('7e562d25446ca4ab9fe8cdb714866f66aba3744d78bf84f31bfb097c1a981e4c7f990cb1e6bcfec5ae6671836a4984e2b70eb8fed81dcef5e244f88da8623469'
         'SKIP'
-        '39cbfd18ad05778e3a5a44429261b45e4abc3efe7730ee890674d968890fe5e52c73bc1f8d271c7c3bc72d5754e3f7fcb209bd139e823d19cb9ea4ce1440164d'
-        '9298d353fbbb3a136211eace67c3acb1989fcf225549c921902a8303590b51c91736bb4584d32c577b1b1dc4f5e4d6125b4e039cc400c4767f01827667d15533'
-        '221f7e8e3850e39ed2d8562596f7fe30d22b9a32fd8d9e681f7f62bdd428f477f4c0d62d4826b695949508cf9da4fc4ffa87b9dc1c77537862c6e5de9d4f062f')
+        '2c64090b879d6faea7f20095eff1b9bd6a09fe3b15b3890783d3715171678ab62d32c91af683b878746fb14441dbe09768474417840f96a561443415f76afb63'
+        '3cf318835b9833ac7c5d3a6026fff8b4f18b098e18c9649d00e32273688ff06ec3af41f0d0aee9d2261725e0ff08f47a224ccfe5ebb06646aaf318ff8ac9a0d1')
 
 prepare() {
   [[ ! -d gcc ]] && ln -s gcc-${pkgver/+/-} gcc
   cd gcc
-
-  # link isl for in-tree build
-  ln -s ../isl-${_islver} isl
 
   # Do not run fixincludes
   sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
@@ -50,36 +44,37 @@ prepare() {
 }
 
 build() {
-  local _confflags="--prefix=/usr \
-      --libdir=/usr/lib \
-      --libexecdir=/usr/lib \
-      --mandir=/usr/share/man \
-      --infodir=/usr/share/info \
-      --with-bugurl=https://bugs.archlinux.org/ \
-      --with-isl \
-      --with-linker-hash-style=gnu \
-      --with-system-zlib \
-      --enable-__cxa_atexit \
-      --enable-cet=auto \
-      --enable-checking=release \
-      --enable-clocale=gnu \
-      --enable-default-pie \
-      --enable-default-ssp \
-      --enable-gnu-indirect-function \
-      --enable-gnu-unique-object \
-      --enable-linker-build-id \
-      --enable-lto \
-      --disable-multilib \
-      --enable-plugin \
-      --enable-shared \
-      --enable-threads=posix \
-      --disable-libssp \
-      --disable-libstdcxx-pch \
-      --disable-werror \
-      --with-build-config=bootstrap-lto \
-      --enable-link-serialization=1 \
-      --program-suffix=-${_majorver} \
-      --enable-version-specific-runtime-libs"
+    local _confflags=(
+      --prefix=/usr
+      --libdir=/usr/lib
+      --libexecdir=/usr/lib
+      --mandir=/usr/share/man
+      --infodir=/usr/share/info
+      --with-bugurl=https://bugs.archlinux.org/
+      --with-linker-hash-style=gnu
+      --with-system-zlib
+      --enable-__cxa_atexit
+      --enable-cet=auto
+      --enable-checking=release
+      --enable-clocale=gnu
+      --enable-default-pie
+      --enable-default-ssp
+      --enable-gnu-indirect-function
+      --enable-gnu-unique-object
+      --enable-linker-build-id
+      --enable-lto
+      --enable-plugin
+      --enable-shared
+      --enable-threads=posix
+      --disable-libssp
+      --disable-libstdcxx-pch
+      --disable-werror
+      --with-build-config=bootstrap-lto
+      --enable-link-serialization=1
+      --program-suffix=-${_majorver}
+      --enable-version-specific-runtime-libs
+      --disable-multilib
+)
 
   cd gcc-build
 
@@ -92,8 +87,11 @@ build() {
   "$srcdir/gcc/configure" \
     --enable-languages=c,c++,fortran,lto \
     --enable-bootstrap \
-    --with-pkgversion="Arch Linux $pkgver-$pkgrel" \
-    $_confflags
+    "${_confflags[@]:?_confflags unset}"
+
+  # Work-around `msgfmt: /build/gcc11/src/gcc-build/x86_64-pc-linux-gnu/libstdc++-v3/src/.libs/libstdc++.so.6: version `GLIBCXX_3.4.30' not found (required by /usr/lib/libicuuc.so.72)`
+  # The trick is borrowed from https://aur.archlinux.org/packages/gcc49
+  export LD_PRELOAD=/usr/lib/libstdc++.so
 
   # see https://bugs.archlinux.org/task/71777 for rationale re *FLAGS handling
   make -O STAGE1_CFLAGS="-O2" \
@@ -104,13 +102,6 @@ build() {
 
   # make documentation
   make -O -C $CHOST/libstdc++-v3/doc doc-man-doxygen
-
-  # see https://bugs.archlinux.org/task/71777 for rationale re *FLAGS handling
-  make -O STAGE1_CFLAGS="-O2" \
-          BOOT_CFLAGS="$CFLAGS" \
-          BOOT_LDFLAGS="$LDFLAGS" \
-          LDFLAGS_FOR_TARGET="$LDFLAGS" \
-          all-gcc
 }
 
 check() {
@@ -128,7 +119,6 @@ package_gcc11-libs() {
   pkgdesc="Runtime libraries shipped by GCC (11.x.x)"
   depends=('glibc>=2.27')
   options=(!emptydirs !strip)
-  provides=(libgfortran.so libubsan.so libasan.so libtsan.so liblsan.so)
 
   cd gcc-build
   make -C $CHOST/libgcc DESTDIR="$pkgdir" install-shared
@@ -136,15 +126,17 @@ package_gcc11-libs() {
   rmdir "${pkgdir}/${_libdir}"/../lib
   rm -f "$pkgdir/$_libdir/libgcc_eh.a"
 
-  for lib in libatomic \
-             libgfortran \
-             libgomp \
-             libitm \
-             libquadmath \
-             libsanitizer/{a,l,ub,t}san \
-             libstdc++-v3/src \
-             libvtv; do
-    make -C $CHOST/$lib DESTDIR="$pkgdir" install-toolexeclibLTLIBRARIES
+  for lib in libasan.so \
+             libatomic.so \
+             libgfortran.so \
+             libgomp.so \
+             libitm.so \
+             liblsan.so \
+             libquadmath.so \
+             libstdc++.so \
+             libtsan.so \
+             libubsan.so; do
+    ln -s /usr/lib/$lib "$pkgdir/$_libdir/$lib"
   done
 
   make -C $CHOST/libstdc++-v3/po DESTDIR="$pkgdir" install
@@ -159,7 +151,7 @@ package_gcc11-libs() {
 
 package_gcc11() {
   pkgdesc="The GNU Compiler Collection - C and C++ frontends (11.x.x)"
-  depends=("${pkgbase}-libs=$pkgver-$pkgrel" 'binutils>=2.28' libmpc zstd)
+  depends=("${pkgbase}-libs=$pkgver-$pkgrel" 'binutils>=2.28' libmpc zstd libisl.so)
   options=(!emptydirs staticlibs)
 
   cd gcc-build
@@ -219,7 +211,7 @@ package_gcc11() {
 
 package_gcc11-fortran() {
   pkgdesc='Fortran front-end for GCC (11.x.x)'
-  depends=("${pkgbase}=$pkgver-$pkgrel")
+  depends=("${pkgbase}=$pkgver-$pkgrel" libisl.so)
 
   cd gcc-build
   make -C $CHOST/libgfortran DESTDIR="$pkgdir" install-cafexeclibLTLIBRARIES \

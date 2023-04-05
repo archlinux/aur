@@ -7,4 +7,4 @@ for opt; do
 	    exit 1;;
   esac
 done
-exec gcc-11 $fl ${1+"$@"}
+exec gcc $fl ${1+"$@"}
