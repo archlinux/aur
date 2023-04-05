@@ -3,7 +3,7 @@
 
 pkgname=python-mock
 pkgver=3.0.5
-pkgrel=9
+pkgrel=10
 pkgdesc='Mocking and Patching Library for Testing'
 url='http://www.voidspace.org.uk/python/mock/'
 depends=('python' 'python-six' 'python-pbr')
