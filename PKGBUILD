@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=orchis-theme-git
-pkgver=2023.01.15.r4.g0da05a1
+pkgver=2023.03.18.r7.gec38a73
 pkgrel=1
 pkgdesc="A Material Design theme for GNOME/GTK based desktop environments."
 arch=('any')
@@ -27,12 +27,6 @@ package() {
   cd "$srcdir/${pkgname%-git}"
   install -d "$pkgdir/usr/share/themes"
   ./install.sh -t all --tweaks primary -d "$pkgdir/usr/share/themes/"
-
-  # Remove unnecessary files:
-  rm -rf "$pkgdir"/usr/share/themes/{Orchis,Orchis-*}/gnome-shell/extensions/
-
-  # Plank theme
-  install -Dm644 src/plank/dock.theme -t "$pkgdir/usr/share/plank/themes/Orchis/"
 
   # Wallpapers
   install -Dm644 src/wallpaper/*.jpg -t \
