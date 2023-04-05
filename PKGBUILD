@@ -1,37 +1,42 @@
 # Maintainer: redtide <redtid3@gmail.com>
 
 _pkgname=magnifiqus
-pkgname="${_pkgname}-git"
-pkgver=0.2.0.r0.g93f9847
+pkgname=$_pkgname-git
+pkgver=0.2.1.r0.gb525368
 pkgrel=1
 pkgdesc="Qt based screen magnifier"
-url="https://github.com/redtide/${_pkgname}"
-arch=("x86_64")
-license=("GPL2")
-depends=('qt5-base' 'qt5-x11extras')
-makedepends=('cmake' 'git' 'qt5-tools')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-source=("${pkgname}"::"git+${url}")
-sha512sums=('SKIP')
-
+url=https://github.com/redtide/$_pkgname
+arch=(x86_64)
+license=(GPL2)
+depends=(
+  qt5-base
+  qt5-x11extras
+)
+makedepends=(
+  cmake
+  git
+  qt5-tools
+)
+provides=($_pkgname)
+conflicts=($_pkgname)
+source=($_pkgname::git+$url.git)
+sha512sums=(SKIP)
 pkgver() {
-  cd "${srcdir}/${pkgname}"
+  cd "$srcdir"/$_pkgname
   git describe --tags --long | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g'
 }
-
 build() {
-  cd "${srcdir}/${pkgname}"
-  cmake -DCMAKE_BUILD_TYPE='None' \
-        -DCMAKE_INSTALL_PREFIX="/usr" \
-        -Wno-dev \
-        -B build \
-        -S .
-  cmake --build build --target all
+  local cmake_options=(
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_BUILD_TYPE=None
+    -Wno-dev
+    -B build
+    -S $_pkgname
+  )
+  cmake "${cmake_options[@]}"
+  cmake --build build --verbose
 }
-
 package() {
-  cd "${srcdir}/${pkgname}"
-  DESTDIR="${pkgdir}" cmake --build build --target install
-  install -vDm 644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  DESTDIR="$pkgdir" cmake --install build
+  install -vDm 644 $_pkgname/LICENSE -t "$pkgdir"/usr/share/licenses/$_pkgname/
 }
