@@ -1,4 +1,4 @@
-From 16fc69c4e2081f3e9c27b98a970bd0c177e78221 Mon Sep 17 00:00:00 2001
+From c20640e04fcc1b26e7d608a85e3e0060e0598124 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 7 May 2021 16:10:47 +0200
 Subject: [PATCH 2/3] Build tools for the target platform
@@ -13,55 +13,53 @@ executed using WINE.
  3 files changed, 5 insertions(+), 6 deletions(-)
 
 diff --git a/src/tools/idc/CMakeLists.txt b/src/tools/idc/CMakeLists.txt
-index 3a3e946..11dcad5 100644
+index f1d784e..b595ac5 100644
 --- a/src/tools/idc/CMakeLists.txt
 +++ b/src/tools/idc/CMakeLists.txt
-@@ -5,12 +5,13 @@
+@@ -6,10 +6,11 @@
  #####################################################################
  
  qt_get_tool_target_name(target_name idc)
--qt_internal_add_tool(${target_name} # special case
-+qt_internal_add_app(${target_name} # special case
- #    BOOTSTRAP # special case
+-qt_internal_add_tool(${target_name}
++qt_internal_add_app(${target_name}
      TARGET_DESCRIPTION "Active Qt Interface Description Compiler"
--    TOOLS_TARGET AxServer # special case
+-    TOOLS_TARGET AxServer
      SOURCES
          main.cpp
 +    PUBLIC_LIBRARIES
 +        Qt::Core
  )
  qt_internal_return_unless_building_tools()
- 
 diff --git a/tools/dumpcpp/CMakeLists.txt b/tools/dumpcpp/CMakeLists.txt
-index fb7b1db..d1806ab 100644
+index 571f830..7cbec30 100644
 --- a/tools/dumpcpp/CMakeLists.txt
 +++ b/tools/dumpcpp/CMakeLists.txt
-@@ -5,9 +5,8 @@
+@@ -6,9 +6,8 @@
  #####################################################################
  
  qt_get_tool_target_name(target_name dumpcpp)
--qt_internal_add_tool(${target_name} # special case
-+qt_internal_add_app(${target_name} # special case
+-qt_internal_add_tool(${target_name}
++qt_internal_add_app(${target_name}
      TARGET_DESCRIPTION "Active Qt DumpCpp"
--    TOOLS_TARGET AxContainer # special case
+-    TOOLS_TARGET AxContainer
      SOURCES
          main.cpp
          moc.cpp moc.h
 diff --git a/tools/dumpdoc/CMakeLists.txt b/tools/dumpdoc/CMakeLists.txt
-index 515a5fc..86369ae 100644
+index 84b4018..1dc4b9e 100644
 --- a/tools/dumpdoc/CMakeLists.txt
 +++ b/tools/dumpdoc/CMakeLists.txt
-@@ -5,9 +5,8 @@
+@@ -6,9 +6,8 @@
  #####################################################################
  
  qt_get_tool_target_name(target_name dumpdoc)
--qt_internal_add_tool(${target_name} # special case
-+qt_internal_add_app(${target_name} # special case
+-qt_internal_add_tool(${target_name}
++qt_internal_add_app(${target_name}
      TARGET_DESCRIPTION "Active Qt DumpDoc"
--    TOOLS_TARGET AxContainer # special case
+-    TOOLS_TARGET AxContainer
      SOURCES
          main.cpp
-     PUBLIC_LIBRARIES
+     LIBRARIES
 -- 
-2.39.2
+2.40.0
 

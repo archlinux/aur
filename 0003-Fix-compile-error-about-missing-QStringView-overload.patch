@@ -1,4 +1,4 @@
-From 9bc85106cb4380c723b8e095d700094382d380ac Mon Sep 17 00:00:00 2001
+From fd8c8a7edd18b3fc310073ca1bf6483f1ad46a08 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Mon, 12 Sep 2022 17:38:47 +0200
 Subject: [PATCH 3/3] Fix compile error about missing QStringView overload
@@ -20,7 +20,7 @@ Prevents the following compiler error:
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/tools/dumpcpp/main.cpp b/tools/dumpcpp/main.cpp
-index 435ab1e..3b8c8e9 100644
+index 222aff0..53d2a18 100644
 --- a/tools/dumpcpp/main.cpp
 +++ b/tools/dumpcpp/main.cpp
 @@ -570,7 +570,7 @@ bool generateClassImpl(QTextStream &out, const QMetaObject *mo, const QByteArray
@@ -33,5 +33,5 @@ index 435ab1e..3b8c8e9 100644
          nextTypeAndForceComplete = startType + lengthType;
      } while (true);
 -- 
-2.39.2
+2.40.0
 
