@@ -7,7 +7,7 @@
 # Contributor: Emīls Piņķis <emil at mullvad dot net>
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn
-pkgver=2023.2
+pkgver=2023.3
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop"
 arch=('x86_64')
@@ -17,8 +17,8 @@ depends=('iputils' 'libnotify' 'libappindicator-gtk3' 'nss')
 makedepends=('cargo' 'git' 'go' 'libxcrypt-compat' 'nodejs>=16' 'npm>=8.3' 'protobuf')
 options=('!lto')
 install="$pkgname.install"
-_tag=ccfbaa279d04b4f93dff489880e3fb3ae67025bd  # tags/2023.2^0
-_commit=f6dca66645c82501a330416ad39c7e63bcdae57d
+_tag=52bb628c9ef30e68789e02902cc91a40ea8824b5  # tags/2023.3^0
+_commit=29a4c7205e78c651fcd1b8c3a55181c0d86a50d3
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#commit=${_tag}?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed"
         'no-rpm.diff'
