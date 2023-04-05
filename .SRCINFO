@@ -1,0 +1,17 @@
+pkgbase = sentry-relay
+	pkgdesc = Sentry relay
+	pkgver = 23.3.1
+	pkgrel = 1
+	url = https://github.com/getsentry/relay
+	arch = x86_64
+	license = MIT
+	license = custom
+	makedepends = cargo
+	makedepends = git
+	makedepends = cmake
+	depends = zlib
+	depends = gcc-libs
+	source = git+https://github.com/getsentry/relay/#tag=23.3.1
+	sha512sums = SKIP
+
+pkgname = sentry-relay
