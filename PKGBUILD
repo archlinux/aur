@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=autoconf-archive-git
-pkgver=2019.01.06.r6.gd3b4a9f
-pkgrel=2
+pkgver=2023.02.20.r2.g919e299
+pkgrel=1
 pkgdesc="A collection of freely re-usable Autoconf macros"
 arch=('any')
 url="https://www.gnu.org/software/autoconf-archive/"
@@ -10,7 +10,7 @@ license=('GPL3' 'custom')
 depends=('autoconf')
 optdepends=('automake: macros for use with it')
 makedepends=('git' 'python')
-provides=('autoconf-archive')
+provides=("autoconf-archive=$pkgver")
 conflicts=('autoconf-archive')
 source=("git+https://git.savannah.gnu.org/git/autoconf-archive.git")
 sha256sums=('SKIP')
@@ -32,7 +32,8 @@ build() {
   cd "autoconf-archive"
 
   ./bootstrap.sh
-  ./configure --prefix="/usr"
+  ./configure \
+    --prefix="/usr"
   make maintainer-all
   make
 }
