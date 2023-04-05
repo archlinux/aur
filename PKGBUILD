@@ -1,15 +1,16 @@
 # Maintainer: kamnxt <kamnxt@kamnxt.com>
+# Contributor: RedTide <redtid3@gmail.com>
 
 _pkgname="pugl"
 pkgname="${_pkgname}-git"
-pkgver=r1047.4e81c17
+pkgver=r1100.9b5a087
 pkgrel=1
 pkgdesc="Minimal portable API for GUIs which is suitable for use in plugins."
 url="http://drobilla.net/software/pugl"
 arch=('x86_64')
 license=('custom:ISC')
 depends=('libx11' 'libxcb' 'libxcursor' 'libxext' 'cairo')
-makedepends=('meson')
+makedepends=('meson' 'git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${pkgname}"::"git+https://github.com/lv2/pugl")
