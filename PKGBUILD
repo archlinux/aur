@@ -4,13 +4,13 @@
 
 pkgname=lpd8editor
 pkgver=0.0.16
-pkgrel=1
+pkgrel=2
 pkgdesc='A Linux editor for the Akai LPD8 pad controller'
 arch=(x86_64 aarch64)
 url='https://github.com/charlesfleche/lpd8editor'
 license=(MIT)
-depends=()
-makedepends=(alsa-lib cmake qt5-base qt5-svg qt5-tools)
+depends=(graphite qt5-base)
+makedepends=(alsa-lib cmake qt5-svg qt5-tools)
 groups=(pro-audio)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/charlesfleche/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('2b9709e014102b65711825488d9f081edb40e18c1b316c0ebd5b0248f6728201')
@@ -35,7 +35,7 @@ build() {
 }
 
 package() {
-  depends+=(libasound.so libQt5Sql.so libQt5Widgets.so libQt5Gui.so libQt5Core.so)
+  depends+=(libasound.so)
   DESTDIR="$pkgdir" cmake --install build-$pkgname
   cd $pkgname-$pkgver
   install -Dm644 LICENSE.md "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
