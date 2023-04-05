@@ -10,7 +10,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-epoch"
 license=('GPL3')
 depends=('fontconfig' 'gtk4' 'libinput' 'libglvnd' 'libpipewire' 'libpulse' 'libseat.so'
-         'libxkbcommon' 'pop-icon-theme' 'systemd-libs' 'wayland')
+         'libxkbcommon' 'pop-icon-theme' 'pop-launcher' 'systemd-libs' 'wayland')
 makedepends=('cargo' 'clang' 'desktop-file-utils' 'git' 'just' 'meson' 'mold')
 checkdepends=('appstream-glib')
 optdepends=('ksnip: Screenshots' # See https://github.com/pop-os/cosmic-epoch#screenshots

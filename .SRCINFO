@@ -23,6 +23,7 @@ pkgbase = cosmic-epoch-git
 	depends = libseat.so
 	depends = libxkbcommon
 	depends = pop-icon-theme
+	depends = pop-launcher
 	depends = systemd-libs
 	depends = wayland
 	optdepends = ksnip: Screenshots
