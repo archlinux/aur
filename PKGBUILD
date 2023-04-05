@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=StructuralVariantAnnotation
-_pkgver=1.13.0
+_pkgver=1.14.1
 pkgname=r-${_pkgname,,}
-pkgver=1.13.0
+pkgver=1.14.1
 pkgrel=1
 pkgdesc='Variant annotations for structural variants'
 arch=('any')
@@ -40,7 +40,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8f90f569be8e61a3ac070809c10ca341a7380728289e06dfecd945b53453e387')
+sha256sums=('1c0e2640650125014c2525c25764edb9cf606c2ebd134e30d10e8fcd840c7013')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
