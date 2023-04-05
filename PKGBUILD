@@ -1,16 +1,16 @@
 pkgname=libelectron
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 arch=("x86_64" "aarch64")
 license=('GPL')
 depends=('npm' 'git')
 pkgdesc="A collection of npm dependencies for electron packages."
 _MachineType=`uname -m`
-_electron=23.1.4
-_electroncastlabs=v23.1.3+wvcus
+_electron=24.0.0
+_electroncastlabs=v23.1.4+wvcus
 _ecm=3.6.1
 _electron_ce=3.10.0
-_fs_extra=11.1.0
+_fs_extra=11.1.1
 
 package() {
     if [[ ${_MachineType} == aarch64 ]]; then
