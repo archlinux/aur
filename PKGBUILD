@@ -105,8 +105,8 @@ if [[ $CLI == "YES" ]] ; then
 else
 pkgname="emacs-pgtk-git"
 fi
-pkgver=29.0.60.164954
-pkgrel=2
+pkgver=30.0.50.165738
+pkgrel=1
 pkgdesc="GNU Emacs. Development branch, with PGTK enabled."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -117,7 +117,7 @@ makedepends=('git' 'mold')
 provides=('emacs')
 conflicts=('emacs')
 replaces=('emacs')
-source=("emacs-git::git+https://git.savannah.gnu.org/git/emacs.git#branch=emacs-29")
+source=("emacs-git::git+https://git.savannah.gnu.org/git/emacs.git")
 # If Savannah fails for reasons, use Github's mirror
 #source=("emacs-git::git+https://github.com/emacs-mirror/emacs.git#commit=3f076a8e44b652691ffd4a2a07b04ab956ed4668")
 
