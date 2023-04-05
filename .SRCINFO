@@ -13,7 +13,6 @@ pkgbase = cryptomator
 	depends = fuse3
 	depends = alsa-lib
 	depends = hicolor-icon-theme
-	depends = ttf-dejavu
 	depends = libxtst
 	depends = libnet
 	depends = libxrender
