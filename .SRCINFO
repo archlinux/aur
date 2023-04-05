@@ -1,6 +1,6 @@
 pkgbase = turbobench-git
 	pkgdesc = Compressor benchmark program
-	pkgver = r849.g1995988
+	pkgver = r1300.g70a7ee5
 	pkgrel = 1
 	url = https://github.com/powturbo/TurboBench
 	arch = i686
@@ -8,10 +8,9 @@ pkgbase = turbobench-git
 	license = GPL2
 	makedepends = git
 	depends = gcc-libs
-	provides = turbobench
+	provides = turbobench=r1300.g70a7ee5
 	conflicts = turbobench
 	source = git+https://github.com/powturbo/TurboBench.git
 	sha256sums = SKIP
 
 pkgname = turbobench-git
-

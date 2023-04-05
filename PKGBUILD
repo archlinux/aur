@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=turbobench-git
-pkgver=r849.g1995988
+pkgver=r1300.g70a7ee5
 pkgrel=1
 pkgdesc="Compressor benchmark program"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/powturbo/TurboBench"
 license=('GPL2')
 depends=('gcc-libs')
 makedepends=('git')
-provides=('turbobench')
+provides=("turbobench=$pkgver")
 conflicts=('turbobench')
 source=("git+https://github.com/powturbo/TurboBench.git")
 sha256sums=('SKIP')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 prepare() {
   cd "TurboBench"
 
-  git submodule update --init
+  git submodule update --init --recursive
 }
 
 pkgver() {
