@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-webchannel-static
-_qtver=6.4.3
+_qtver=6.5.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -17,7 +17,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtwebchannel-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('e955044587f0e74a64c88bbbe4d6be9fd869ac89d66a96cce4752756bcbef3a8')
+sha256sums=('d9553d646df3681b8e09c7609bf7eda0cde69b562f180fa50451a987ed00f1bf')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
