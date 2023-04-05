@@ -15,7 +15,7 @@ makedepends=('nodejs' 'pnpm' 'rust')
 
 source=("${prjname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 
-sha512sums=('b9d0a2eef604831b8a5cb43ef4164045042014f2d5ad23276ca492d270e8446dd35c398516ad0f226028dbde338248d40a503ca35b0731d0e04dfb5e343cdaff')
+sha512sums=('62fa98de22ec86a6c2aa699ff7136f9bd6436eb4862e564c0dd31721c44cdef372ec3eab70722afc679d47501eaae8059b924024d0d95b874e78ee8057ccf908')
 
 build(){
     cd $srcdir/${prjname}-${pkgver}
