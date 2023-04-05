@@ -17,7 +17,7 @@ pkgname=('nginx-unitd'
          'nginx-unit-go')
 _shortname='unit'
 pkgver=1.29.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight, dynamic, open-source server for diverse web applications."
 arch=('i686' 'x86_64')
 url="https://unit.nginx.org/"
@@ -40,7 +40,7 @@ build() {
               --tmp="/tmp" \
               --openssl
   ./configure python --config=python3-config
-  ./configure php --config=php-config-legacy --module=php-legacy
+  ./configure php --config=php-legacy-config --module=php-legacy
   ./configure php
   ./configure perl
   ./configure ruby
@@ -73,7 +73,7 @@ package_nginx-unit-php-legacy() {
   depends=('nginx-unitd' 'php-legacy-embed')
 
   cd "${srcdir}/${_shortname}-${pkgver}"
-  make DESTDIR="${pkgdir}" php-install
+  make DESTDIR="${pkgdir}" php-legacy-install
 }
 
 package_nginx-unit-php() {
