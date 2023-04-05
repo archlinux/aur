@@ -1,7 +1,7 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 
 pkgname=perl-alien-gnuplot
-pkgver=1.041
+pkgver=1.042
 pkgrel=1
 pkgdesc="Find and verify functionality of the gnuplot executable."
 arch=('any')
@@ -13,7 +13,7 @@ checkdepends=('perl-test-exception')
 url='https://metacpan.org/dist/Alien-Gnuplot'
 _distdir="Alien-Gnuplot"
 source=("https://cpan.metacpan.org/authors/id/E/ET/ETJ/$_distdir-$pkgver.tar.gz")
-sha512sums=('1ef7c91217d5f613b75e2d2e5df1d97c2ab77526d4325b8decb9d9198a49c8c5e6cfb15196c84ba4be79fc122240bc5bf61d8aeb3c20dc8bab0dbc9cc84d3f95')
+sha512sums=('45015982547ac21b8de83dd6ab125241929a6cefc4b38ac0463fdc7e0ffb3228b16aad681fa41bd288402c16659b9e4839ca106865bc6482a834dacbe4b3123b')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
