@@ -29,7 +29,7 @@ conflicts=($_pkgname)
 source=(https://portland.freedesktop.org/download/$_pkgname-$pkgver.tar.gz
         betterlockscreen_support.diff)
 md5sums=('902042508b626027a3709d105f0b63ff'
-         '067a758be11018efd8f6a3644adfc7821453299fda7c0d7e24adc366b40b4e18')
+         '541eb3c4a9fc57d52394980075bec481')
 
 prepare() {
 	cd $_pkgname-$pkgver
