@@ -17,12 +17,9 @@ pkgbase = gettext-git
 	depends = gperf
 	depends = libunistring
 	depends = ncurses
-	provides = gettext
+	provides = gettext=0.21.r12.ge645b7d56
 	conflicts = gettext
 	source = git+https://git.savannah.gnu.org/git/gettext.git
-	source = git+https://git.savannah.gnu.org/git/gnulib.git
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = gettext-git
-
