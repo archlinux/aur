@@ -1,4 +1,4 @@
-From 6fe99004d9dd3384cab4efe81959f53536581ad2 Mon Sep 17 00:00:00 2001
+From 2400cc9196d3d472ea2632c9541f8878d4698f58 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 24 Apr 2022 23:49:36 +0200
 Subject: [PATCH 10/12] Fix dependency of xcb-image on xcb-util
@@ -15,7 +15,7 @@ Change-Id: Ic87a94ec664c126a5af1012d31b068d3dc7ec947
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/cmake/3rdparty/extra-cmake-modules/find-modules/FindXCB.cmake b/cmake/3rdparty/extra-cmake-modules/find-modules/FindXCB.cmake
-index d530d2d7f4..f5298642ca 100644
+index dc60289401..3dd06d4cd0 100644
 --- a/cmake/3rdparty/extra-cmake-modules/find-modules/FindXCB.cmake
 +++ b/cmake/3rdparty/extra-cmake-modules/find-modules/FindXCB.cmake
 @@ -108,6 +108,7 @@ set(XCB_known_components
@@ -34,7 +34,7 @@ index d530d2d7f4..f5298642ca 100644
      XEVIE
      XF86DRI
      XINERAMA
-@@ -146,7 +146,7 @@ endforeach()
+@@ -142,7 +142,7 @@ endforeach()
  set(XCB_XCB_component_deps)
  set(XCB_COMPOSITE_component_deps XCB XFIXES)
  set(XCB_DAMAGE_component_deps XCB XFIXES)
@@ -44,5 +44,5 @@ index d530d2d7f4..f5298642ca 100644
  set(XCB_XFIXES_component_deps XCB RENDER SHAPE)
  set(XCB_XVMC_component_deps XCB XV)
 -- 
-2.39.2
+2.40.0
 

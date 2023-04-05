@@ -1,4 +1,4 @@
-From 7d188c5f8e0fb4646ba339b429b94f400f7853b3 Mon Sep 17 00:00:00 2001
+From 3a6c3bf10d77edc588264f496f4a437579223fb7 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 26 Jun 2021 22:24:12 +0200
 Subject: [PATCH 08/12] Fix crashes in rasterization code using setjmp
@@ -28,10 +28,10 @@ Change-Id: I01937d13569dd01ab4cb1f608020544c93bc343c
  rename src/gui/painting/{qgrayraster.c => qgrayraster.cpp} (98%)
 
 diff --git a/src/gui/CMakeLists.txt b/src/gui/CMakeLists.txt
-index 36dae764d7..0aa24cca77 100644
+index 5b8bc278e9..e3e2ca1829 100644
 --- a/src/gui/CMakeLists.txt
 +++ b/src/gui/CMakeLists.txt
-@@ -167,7 +167,7 @@ qt_internal_add_module(Gui
+@@ -175,7 +175,7 @@ qt_internal_add_module(Gui
          painting/qdrawingprimitive_sse2_p.h
          painting/qemulationpaintengine.cpp painting/qemulationpaintengine_p.h
          painting/qfixed_p.h
@@ -40,8 +40,8 @@ index 36dae764d7..0aa24cca77 100644
          painting/qicc.cpp painting/qicc_p.h
          painting/qimagescale.cpp painting/qimagescale_p.h
          painting/qmath_p.h
-@@ -274,6 +274,11 @@ qt_internal_add_module(Gui
-     GENERATE_CPP_EXPORTS
+@@ -284,6 +284,11 @@ qt_internal_add_module(Gui
+         "(^|/)qplatform.+\\.h$|(^|/)qwindowsystem.+\\.h$"
  )
  
 +# enable exceptions for painting/qgrayraster.cpp
@@ -248,5 +248,5 @@ index d0f2468e6a..d1d7d2e17a 100644
          "Description": "FreeType is a freely available software library to render fonts.",
          "Homepage": "http://www.freetype.org",
 -- 
-2.39.2
+2.40.0
 
