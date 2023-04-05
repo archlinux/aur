@@ -9,6 +9,7 @@ pkgbase = systemd-timer-notify-git
 	depends = python
 	depends = dunst
 	depends = systemd
+	depends = openssh
 	provides = systemd-timer-notify
 	conflicts = systemd-timer-notify
 	backup = etc/systemd-timer-notify.conf
