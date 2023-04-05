@@ -1,4 +1,5 @@
 # Maintainer: Kamil Krzyżanowski <kamnxt@kamnxt.com>
+# Contributor: Ankit R Gadiya <arch@argp.in>
 
 pkgname=ruby-jekyll-compose
 pkgver=0.12.0
