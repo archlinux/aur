@@ -13,7 +13,7 @@ pkgbase = midibench-git
 	depends = sdl_image
 	provides = midibench
 	conflicts = midibench
-	source = midibench-git::git+https://github.com/jpcima/midibench
+	source = midibench::git+https://github.com/jpcima/midibench.git
 	sha512sums = SKIP
 
 pkgname = midibench-git
