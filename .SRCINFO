@@ -1,0 +1,17 @@
+pkgbase = wthrr-git
+	pkgdesc = Weather companion for the terminal (git)
+	pkgver = 1.0.1.r13.gcc8db90
+	pkgrel = 1
+	url = https://github.com/tobealive/wthrr-the-weathercrab
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = openssl
+	provides = wthrr
+	conflicts = wthrr
+	source = git+https://github.com/tobealive/wthrr-the-weathercrab
+	sha512sums = SKIP
+
+pkgname = wthrr-git
