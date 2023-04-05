@@ -1,15 +1,11 @@
 post_install() {
   echo ""
-  echo "Install Firefox theme - copy from /usr/share/doc/fluent-gtk-theme/firefox/:"
-  echo "https://github.com/vinceliuice/Fluent-gtk-theme/blob/master/src/firefox"
+  echo "To force Libadwaita appliations to use the gtk-4.0 theme,"
+  echo "symlink the gtk-4.0 theme to config folder"
+  echo "(replace Fluent-Dark with chosen theme variant):"
   echo ""
-  echo "Fix for Dash to panel:"
-  echo "cd /usr/share/doc/fluent-gtk-theme/dash-to-panel"
-  echo "sudo ./install.sh "
-  echo ""
-  echo "Restore original styesheet.css before updating Dash to panel:"
-  echo "cd /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com"
-  echo "sudo mv stylesheet.css.back stylesheet.css"
+  echo "mkdir -p ~/.config/gtk-4.0/"
+  echo "ln -sf /usr/share/themes/Fluent-Dark/gtk-4.0/{assets,gtk.css,gtk-dark.css} ~/.config/gtk-4.0/"
   echo ""
 }
 
