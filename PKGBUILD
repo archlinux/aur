@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=uthenticode-git
-pkgver=1.0.9.r0.g3a91122
+pkgver=1.0.9.r5.g6a3c5a0
 pkgrel=1
 pkgdesc="A cross-platform library for verifying Authenticode signatures"
 arch=('i686' 'x86_64')
 url="https://trailofbits.github.io/uthenticode/"
 license=('MIT')
-depends=('gcc-libs' 'openssl')
+depends=('gcc-libs' 'openssl' 'pe-parse')
 makedepends=('git' 'cmake')
 provides=("uthenticode=$pkgver")
 conflicts=('uthenticode')
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "uthenticode"
 
-  _tag=$(git tag -l --sort -v:refname | grep -P '^v?[\d\.]+$' | head -n1)
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
   _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'

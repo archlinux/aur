@@ -1,6 +1,6 @@
 pkgbase = uthenticode-git
 	pkgdesc = A cross-platform library for verifying Authenticode signatures
-	pkgver = 1.0.9.r0.g3a91122
+	pkgver = 1.0.9.r5.g6a3c5a0
 	pkgrel = 1
 	url = https://trailofbits.github.io/uthenticode/
 	arch = i686
@@ -10,7 +10,8 @@ pkgbase = uthenticode-git
 	makedepends = cmake
 	depends = gcc-libs
 	depends = openssl
-	provides = uthenticode=1.0.9.r0.g3a91122
+	depends = pe-parse
+	provides = uthenticode=1.0.9.r5.g6a3c5a0
 	conflicts = uthenticode
 	options = staticlibs
 	source = git+https://github.com/trailofbits/uthenticode.git
