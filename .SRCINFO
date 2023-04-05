@@ -1,7 +1,7 @@
 pkgbase = recaf-bin
 	pkgdesc = A modern Java bytecode editor
 	pkgver = 2.21.13
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/Col-E/Recaf
 	arch = any
 	license = MIT
