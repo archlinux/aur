@@ -1,0 +1,12 @@
+pkgbase = kagiana
+	pkgdesc = It is OAuth Authenticator & Vault Certificate Getter
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/pyama86/kagiana
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = kagiana-0.4.4::https://github.com/pyama86/kagiana/archive/refs/tags/v0.4.4.tar.gz
+	sha256sums = 8e9b7d61cc7a8187002003117d77cda8cc19e5336399e55e850e90af21287be5
+
+pkgname = kagiana
