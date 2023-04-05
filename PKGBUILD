@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=pik-git
-pkgver=r52.gce070d1
+pkgver=r115.gbe30e6e
 pkgrel=1
 pkgdesc="A new lossy image format for the internet"
 arch=('i686' 'x86_64')
 url="https://github.com/google/pik"
-license=('Apache')
+license=('apache')
 depends=('glibc' 'libjpeg' 'libpng')
 makedepends=('git')
-provides=('pik')
+provides=("pik=$pkgver")
 conflicts=('pik')
 source=("git+https://github.com/google/pik.git")
 sha256sums=('SKIP')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 prepare() {
   cd "pik"
 
-  git submodule update --init --remote --recursive --depth 1
+  git submodule update --init --recursive
 }
 
 pkgver() {
@@ -39,6 +39,5 @@ package() {
   cd "pik"
 
   install -d "$pkgdir/usr"
-  install -Dm755 "bin/cpik" "$pkgdir/usr/bin/cpik"
-  install -Dm755 "bin/dpik" "$pkgdir/usr/bin/dpik"
+  install -Dm755 bin/{cpik,dpik} -t "$pkgdir/usr/bin"
 }

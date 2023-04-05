@@ -1,19 +1,18 @@
 pkgbase = pik-git
 	pkgdesc = A new lossy image format for the internet
-	pkgver = r52.gce070d1
+	pkgver = r115.gbe30e6e
 	pkgrel = 1
 	url = https://github.com/google/pik
 	arch = i686
 	arch = x86_64
-	license = Apache
+	license = apache
 	makedepends = git
 	depends = glibc
 	depends = libjpeg
 	depends = libpng
-	provides = pik
+	provides = pik=r115.gbe30e6e
 	conflicts = pik
 	source = git+https://github.com/google/pik.git
 	sha256sums = SKIP
 
 pkgname = pik-git
-
