@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=agate-git
-pkgver=2.4.1.r16.g8fd9ca1
+pkgver=3.3.0.r4.g4020791
 pkgrel=1
 pkgdesc="Very simple server for the Gemini hypertext protocol"
 arch=('i686' 'x86_64')
@@ -9,12 +9,21 @@ url="https://github.com/mbrubeck/agate"
 license=('apache' 'MIT')
 depends=('gcc-libs')
 makedepends=('git' 'rust')
-provides=('agate')
+provides=("agate=$pkgver")
 conflicts=('agate')
 options=('staticlibs')
 source=("git+https://github.com/mbrubeck/agate.git")
 sha256sums=('SKIP')
 
+
+prepare() {
+  cd "agate"
+
+  if [ ! -f "Cargo.lock" ]; then
+    cargo update
+  fi
+  cargo fetch
+}
 
 pkgver() {
   cd "agate"
