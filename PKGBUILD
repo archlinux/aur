@@ -1,12 +1,12 @@
 pkgname=trick-or-treat
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="WebSocket-based virtual private network"
 url="https://github.com/lanthora/trick-or-treat"
 license=('MIT')
 arch=('x86_64' 'aarch64' 'armv7h')
 source=("https://github.com/lanthora/trick-or-treat/archive/refs/tags/v$pkgver.tar.gz" )
-sha256sums=('c53e1a6041a6c42c176d8aa8f2b76c6efdd33d06d4b24436cdf6b906e0188c26')
+sha256sums=('1531ab793ec584dfe16e821cc28b82628f196212b5d8c76c5bba809f881144e1')
 makedepends=('cmake' 'make' 'pkgconf')
 depends=('spdlog' 'openssl' 'libconfig' 'ixwebsocket' 'uriparser')
 backup=('etc/candy.conf')
