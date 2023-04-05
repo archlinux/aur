@@ -1,6 +1,6 @@
 pkgbase = mullvad-vpn-cli
 	pkgdesc = The Mullvad VPN CLI client
-	pkgver = 2023.2
+	pkgver = 2023.3
 	pkgrel = 1
 	url = https://www.mullvad.net
 	install = mullvad-vpn.install
@@ -16,8 +16,8 @@ pkgbase = mullvad-vpn-cli
 	provides = mullvad-vpn
 	conflicts = mullvad-vpn
 	options = !lto
-	source = git+https://github.com/mullvad/mullvadvpn-app.git#commit=ccfbaa279d04b4f93dff489880e3fb3ae67025bd?signed
-	source = git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=f6dca66645c82501a330416ad39c7e63bcdae57d?signed
+	source = git+https://github.com/mullvad/mullvadvpn-app.git#commit=52bb628c9ef30e68789e02902cc91a40ea8824b5?signed
+	source = git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=29a4c7205e78c651fcd1b8c3a55181c0d86a50d3?signed
 	validpgpkeys = EA0A77BF9E115615FC3BD8BC7653B940E494FE87
 	validpgpkeys = 8339C7D2942EB854E3F27CE5AEE9DECFD582E984
 	validpgpkeys = 4B986EF5222BA1B810230C602F391DE6B00D619C
