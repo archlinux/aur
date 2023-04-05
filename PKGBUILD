@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=rtrtr-git
-pkgver=0.1.2.r14.g921276b
+pkgver=0.2.2.r7.g2391ffb
 pkgrel=1
 pkgdesc="An RPKI data proxy"
 arch=('i686' 'x86_64')
@@ -9,11 +9,20 @@ url="https://nlnetlabs.nl/projects/rpki/rtrtr/"
 license=('BSD')
 depends=('gcc-libs')
 makedepends=('git' 'rust')
-provides=('rtrtr')
+provides=("rtrtr=$pkgver")
 conflicts=('rtrtr')
 source=("git+https://github.com/NLnetLabs/rtrtr.git")
 sha256sums=('SKIP')
 
+
+prepare() {
+  cd "rtrtr"
+
+  if [ ! -f "Cargo.lock" ]; then
+    cargo update
+  fi
+  cargo fetch
+}
 
 pkgver() {
   cd "rtrtr"
@@ -25,17 +34,16 @@ check() {
   cd "rtrtr"
 
   #cargo test \
-  #  --locked \
-  #  --release
+  #  --frozen
 }
 
 package() {
   cd "rtrtr"
 
   cargo install \
-    --no-track \
     --locked \
+    --no-track \
     --root "$pkgdir/usr" \
-    --path "$srcdir/rtrtr"
+    --path .
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/rtrtr"
 }
