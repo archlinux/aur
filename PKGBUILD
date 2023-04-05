@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=dropbear-git
-pkgver=2022.82.r21.g17e02fe
+pkgver=2022.83.r33.g2cdc7d6
 pkgrel=1
 pkgdesc="Small SSH server and client"
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ prepare() {
 pkgver() {
   cd "dropbear"
 
-  _tag=$(git tag -l --sort -v:refname | grep "DROPBEAR_" | head -n1)
+  _tag=$(git tag -l --sort -v:refname | grep -E '^DROPBEAR_[0-9\.]+$' | head -n1)
   _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^DROPBEAR_//'
