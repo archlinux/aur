@@ -1,11 +1,12 @@
 pkgbase = typespeed
 	pkgdesc = Test your typing speed, and get your fingers' CPS.
 	pkgver = 0.6.5
-	pkgrel = 9
+	pkgrel = 10
 	url = http://typespeed.sourceforge.net
 	arch = x86_64
 	license = GPL
 	depends = ncurses
+	backup = var/games/typespeed.score
 	source = https://downloads.sourceforge.net/sourceforge/typespeed/typespeed-0.6.5.tar.gz
 	sha256sums = 5c860385ceed8a60f13217cc0192c4c2b4705c3e80f9866f7d72ff306eb72961
 
