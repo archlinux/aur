@@ -1,7 +1,7 @@
 pkgbase = ttf-adobe-source-sans-fonts
 	pkgdesc = Sans-serif font family for user interface environments
 	pkgver = 3.052
-	pkgrel = 1
+	pkgrel = 2
 	url = https://adobe-fonts.github.io/source-sans/
 	arch = any
 	license = custom

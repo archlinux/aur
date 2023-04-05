@@ -3,7 +3,7 @@
 
 pkgname=ttf-adobe-source-sans-fonts
 pkgver=3.052
-pkgrel=1
+pkgrel=2
 pkgdesc="Sans-serif font family for user interface environments"
 url="https://adobe-fonts.github.io/source-sans/"
 arch=(any)
@@ -26,6 +26,6 @@ package() {
 
   # "Source Sans 3"
   cd $_tarname
-  install -Dt "$pkgdir/usr/share/fonts/${pkgname%-fonts}" -m644 TTF/*.ttf VAR/*.ttf
+  install -Dt "$pkgdir/usr/share/fonts/${pkgname%-fonts}" -m644 TTF/*.ttf VF/*.ttf
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 LICENSE.md
 }
