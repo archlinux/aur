@@ -4,7 +4,7 @@
 pkgname=python-pymc
 _name=${pkgname#python-}
 pkgver=5.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Markov chain Monte Carlo for Python"
 arch=(any)
 url="https://github.com/pymc-devs/pymc"
@@ -15,6 +15,7 @@ depends=(
   python-cachetools
   python-cloudpickle
   python-fastprogress
+  python-networkx
   python-numpy
   python-pandas
   python-pytensor
