@@ -1,7 +1,7 @@
 pkgbase = gmenu
 	pkgdesc = desktop application launcher
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://code.rocketnine.space/tslocum/gmenu
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,6 @@ pkgbase = gmenu
 	depends = gtk3
 	depends = at-spi2-core
 	source = gmenu-0.3.0.tar.gz::https://code.rocketnine.space/tslocum/gmenu/archive/v0.3.0.tar.gz
-	sha256sums = d052a6d209c4521d670a97eb3af813b3f7c18fc4a07154d2f8b387da7d6ff9f7
+	sha256sums = f7d610712a228df3472a2eef4f712838cb30ac42a55de7a99f202781da31033c
 
 pkgname = gmenu

@@ -3,7 +3,7 @@
 
 pkgname=gmenu
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="desktop application launcher"
 url="https://code.rocketnine.space/tslocum/gmenu"
 license=('MIT')
@@ -11,7 +11,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 makedepends=('go')
 depends=('gtk3' 'at-spi2-core')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d052a6d209c4521d670a97eb3af813b3f7c18fc4a07154d2f8b387da7d6ff9f7')
+sha256sums=('f7d610712a228df3472a2eef4f712838cb30ac42a55de7a99f202781da31033c')
 
 build() {
   cd "$pkgname"
