@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=bzip3-git
-pkgver=1.2.2.r0.g7b45d73
+pkgver=1.3.0.r1.g5c3674c
 pkgrel=1
 pkgdesc="A better and stronger spiritual successor to BZip2"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "bzip3"
 
-  _tag=$(git tag -l --sort -v:refname | grep -E [\d\.]+ | head -n1)
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
   _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
