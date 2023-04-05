@@ -11,12 +11,12 @@
 
 pkgname=courier-mta
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="IMAP(s)/POP3(s) and SMTP Server with ML-manager, webmail and webconfig"
 arch=(i686 x86_64)
 license=('GPL2')
 url="http://courier-mta.org"
-depends=('courier-authlib>=0.71' 'courier-unicode>=2.1' 'gcc-libs' 'gdbm' 'pcre2' 'mime-types' 'ca-certificates' 'libidn2' 'wget')
+depends=('courier-authlib>=0.71' 'courier-unicode>=2.1' 'gcc-libs' 'gdbm' 'pcre2' 'mime-types' 'ca-certificates' 'libidn2>=2.0.5' 'wget')
 optdepends=('libldap')
 makedepends=('pam' 'expect' 'gnupg' 'libldap')
 provides=('smtp-server' 'smtp-forwarder' 'imap-server' 'pop3-server' 'courier-imap' 'courier-maildrop')
