@@ -1,0 +1,19 @@
+pkgbase = anyrun-git
+	pkgdesc = A rust-based wayland native krunner-like runner, made with customizability in mind.
+	pkgver = r22.795bb00
+	pkgrel = 1
+	url = github.com/Kirottu/anyrun
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	depends = gtk-layer-shell
+	depends = gtk3
+	depends = pango
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	source = anyrun-r22.795bb00::git+https://github.com/Kirottu/anyrun.git
+	sha256sums = SKIP
+
+pkgname = anyrun-git
