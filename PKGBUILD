@@ -1,7 +1,7 @@
 # Maintainer: Oliver Gasser <oliver@flowriver.net>
 pkgname=bgpkit-parser
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="bgpkit-parser is a simple cli tool that allow parsing of individual MRT files"
 arch=('x86_64')
 url="https://github.com/bgpkit/bgpkit-parser"
@@ -18,5 +18,5 @@ prepare() {
 package() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    cargo install --no-track --frozen --offline --all-features --root "$pkgdir/usr/" --path .
+    cargo install --no-track --frozen --offline --all-features --root "$pkgdir/usr/" --path ./bgpkit-parser
 }
