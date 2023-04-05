@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=canu-git
-pkgver=r10451.g6c4193847
+pkgver=r10534.g769108f4b
 pkgrel=1
 pkgdesc="A fork of the Celera Assembler designed for high-noise single-molecule sequencing"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('custom')
 depends=('glibc' 'java-runtime' 'perl')
 makedepends=('git')
 optdepends=('gnuplot')
-provides=('canu')
+provides=("canu=$pkgver")
 conflicts=('canu')
 options=('staticlibs')
 source=("git+https://github.com/marbl/canu.git")
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 prepare() {
   cd "canu"
 
-  git submodule update --init --recursive --remote
+  git submodule update --init --recursive
 }
 
 pkgver() {
