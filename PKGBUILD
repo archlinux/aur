@@ -1,7 +1,7 @@
 pkgname=googlekeep
 _pkgname=GoogleKeep
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Unnofficial Google Keep desktop application"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/googlekeep-desktop/application"
