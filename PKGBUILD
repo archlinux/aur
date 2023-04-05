@@ -1,7 +1,7 @@
 # Maintainer:Zaiic<zaiic@qq.com>
 pkgname=shimo
 _pkgname=shimo
-pkgver=3.1.1
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="石墨文档 Shimo document (An online collaborative office software)."
 arch=('x86_64')
@@ -9,9 +9,9 @@ url="https://shimo.im/"
 license=('custom')
 depends=('nss' 'gtk3' 'libnotify' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libsecret')
 source=(
-	"https://as.smvm.cn/panther/shimo/release/linux/x64/shimo_v${pkgver}-release.6d78b4a.shimo_linux-amd64.deb"
+	"https://oas.shimonote.com/panther/shimo/release/linux/x64/shimo_v${pkgver}-release.32738d1.shimo_linux-amd64.deb"
 )
-sha512sums=('26f762f241dff008a90cbb7952b9bc2c10487a8d1b05fee1551fd028eeaa09d19b0ff7df094ceb0c04c18a0bd5bc096ac0e6cc9a6b1c127fe8c18de2710ab626')
+sha512sums=('74b8c4bef2c385874075a89a08aa5286adceb32d4ea614365849138d0454445a086523fcbf3a4645dfdcb1d7b4e91c838335d49b0f7b0a494bd5ca0f7f521403')
 
 prepare() {
     tar -xpf data.tar.gz -C ${srcdir}
