@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=wolfssh
-pkgver=1.4.12
+pkgver=1.4.13
 pkgrel=1
 pkgdesc="A small, fast, portable SSH implementation, including support for SCP and SFTP"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL' 'custom')
 depends=('glibc' 'wolfssl')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/wolfSSL/wolfssh/archive/refs/tags/v$pkgver-stable.tar.gz"
         "$pkgname-$pkgver-src.tar.gz.asc::https://github.com/wolfSSL/wolfssh/releases/download/v$pkgver-stable/wolfssh-$pkgver-stable.tar.gz.asc")
-sha256sums=('9fbb11ef8a4fefcbbfab27199f90bfa0ab291b85003d2ffbf614339936619c74'
+sha256sums=('95de536d2390ca4a8a7f9be4b2faaaebb61dcedf2c6571107172d4a64347421c'
             'SKIP')
 validpgpkeys=('A2A48E7BCB96C5BECB987314EBC80E415CA29677')  # wolfSSL <secure@wolfssl.com>
 
