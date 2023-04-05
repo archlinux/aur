@@ -12,9 +12,9 @@ pkgname='cnrdrvcups-lb'
 _pkgver='5.70';  _dl='8/0100007658/33';_suffix='11'
 
 pkgver="${_pkgver}"
-pkgrel='1'
+pkgrel='2'
 pkgdesc='CUPS Canon UFR II LIPSLX CARPS2 printer driver for LBP iR MF ImageCLASS ImageRUNNER Laser Shot i-SENSYS ImagePRESS ADVANCE printers and copiers'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 # Direct links to the download reference go bad on the next version. We want something that will persist for a while.
 url='https://www.canon-europe.com/support/products/imagerunner/imagerunner-1730i.aspx'
 license=('GPL2' 'MIT' 'custom')
@@ -23,6 +23,7 @@ makedepends=('jbigkit' 'gzip' 'gtk3')
 depends=('gcc-libs' 'libxml2')
 optdepends=('libjpeg6-turbo: solves cpu hang on some color imageRUNNER/i-SENSYS LBP devices'
                        'libjbig-shared: port of debian/fedora specific jbigkit funtionality that can prevent cpu hangs on some models'
+                       'ghostscript: necessary for printing on some devices'
                         'gtk3: for cnsetuputil2')
 
 
@@ -117,6 +118,10 @@ _setvars() {
     # variables used by the (generated) make.Arch &  make.install.Arch files
     # relative paths start at ${srcdir}/${_srcdir} 
     # _libsarch is architecture dependent
+    
+    local -A _libsarchfolder
+    _libsarchfolder['x86_64']='libs64/intel'
+    _libsarchfolder['aarch64']='libs64/arm'
 
     _vars=(
         _builddir="${srcdir}/${_srcdir}"
@@ -133,7 +138,7 @@ _setvars() {
         _includedir='/usr/include'
         b_lib_dir="${srcdir}/${_srcdir}/lib"
         b_include_dir="${srcdir}/${_srcdir}/include"
-        _libsarch='libs64/intel'
+        _libsarch="${_libsarchfolder[$CARCH]}"
         nobuild=0
   )
 }
