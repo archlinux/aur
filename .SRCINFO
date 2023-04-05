@@ -1,4 +1,4 @@
-pkgbase = netatop
+pkgbase = netatop-lts
 	pkgdesc = Atop network kernel module, enables network statistics in atop
 	pkgver = 3.1
 	pkgrel = 1
@@ -8,10 +8,11 @@ pkgbase = netatop
 	arch = i386
 	groups = modules
 	license = GPL
-	makedepends = linux-headers
+	makedepends = linux-lts-headers
 	depends = atop
+	provides = netatop
+	conflicts = netatop
 	source = http://atoptool.nl/download/netatop-3.1.tar.gz
 	sha256sums = 736f43572c31a90748f023f0a5a814bff58d44c0c3f060d776cfd6e6e8435c62
 
-pkgname = netatop
-
+pkgname = netatop-lts
