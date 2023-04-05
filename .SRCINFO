@@ -1,6 +1,6 @@
 pkgbase = upx-git
 	pkgdesc = A free, portable, extendable, high-performance executable packer for several executable formats
-	pkgver = 3.94.r143.g7a0514d9
+	pkgver = 4.0.2.r13.g15484aa2
 	pkgrel = 1
 	url = https://upx.github.io/
 	arch = i686
@@ -10,10 +10,9 @@ pkgbase = upx-git
 	depends = gcc-libs
 	depends = ucl
 	depends = zlib
-	provides = upx
+	provides = upx=4.0.2.r13.g15484aa2
 	conflicts = upx
 	source = git+https://github.com/upx/upx.git#branch=devel
 	sha256sums = SKIP
 
 pkgname = upx-git
-
