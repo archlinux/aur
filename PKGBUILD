@@ -3,7 +3,7 @@
 pkgname='perl-data-float'
 _dist='Data-Float'
 pkgver='0.013'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Contains the Data::Float module, native floating point numerical data type"
 arch=('x86_64')
 license=('PerlArtistic' 'GPL')
@@ -11,7 +11,7 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=('perl-module-build')
 url="https://metacpan.org/release/$_dist"
-source=("http://search.cpan.org/CPAN/authors/id/Z/ZE/ZEFRAM/$_dist-$pkgver.tar.gz")
+source=("https://search.cpan.org/CPAN/authors/id/Z/ZE/ZEFRAM/$_dist-$pkgver.tar.gz")
 md5sums=('58356ac67e6693311cc6c77f2022183d')
 sha512sums=('7e3be7843df30e581bd8937fde226ac6f24100206a376e1dbed2d4699c95d3f39a25cd1485f5871c46adba88d2fb1899efcd326f908797cdc985ec713cd9a90f')
 _distdir="$_dist-$pkgver"
