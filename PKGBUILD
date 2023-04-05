@@ -1,51 +1,33 @@
-# Maintainer: Donald Carr <sirspudd@gmail.com>
+# Maintainer: Ranadeep B < mail at rnbguy dot at >
 
-#set -e
-
-_qmake="qmake"
-_piver=""
-
-if [[ -z $_piver ]] && [[ -n $LOCAL_PI_VER ]]; then
-  _piver=$LOCAL_PI_VER
-fi
-
-if [[ -n "$_piver" ]]; then
-  _qmake="/opt/qt-sdk-raspberry-pi${_piver}/bin/qmake"
-fi
-
-pkgname="quint"
-pkgver=.0.1
+pkgname=quint
+orgname=informalsystems
+pkgver=0.9.0
 pkgrel=1
-pkgdesc="Live coding demo for the Raspberry Pi"
-arch=("any")
-url="https://github.com/sirspudd/quint"
-makedepends=("qt-sdk-raspberry-pi${_piver}")
-depends=("qt-sdk-raspberry-pi-target-libs")
-source=("git://github.com/sirspudd/${pkgname}.git")
-sha256sums=("SKIP")
-options=('!strip')
+pkgdesc="Quint is an executable specification language with design and tooling focused on usability. It is based on the Temporal Logic of Actions"
+arch=('any')
+url="https://github.com/${orgname}/${pkgname}"
+license=('Apache')
+provides=(${pkgname})
+conflicts=(${pkgname})
+depends=('nodejs')
+makedepends=('npm' 'git')
+source=("https://github.com/${orgname}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('c9b3a077e43bf8959ba26c1498fdb5d5e9caa7fefcd6ba2b157579858cf57bba')
 
-pkgver() {
-  cd ${srcdir}/${pkgname}
-  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}/${pkgname}"
+    npm install
 }
 
 build() {
-  local repo_src=${srcdir}/${pkgname}
-
-  cd ${repo_src}
-  $_qmake
-  make
+    cd "${srcdir}/${pkgname}-${pkgver}/${pkgname}"
+    npm run compile
 }
 
 package() {
-  local repo_src=${srcdir}/${pkgname}
-  local deploy_path=${pkgdir}/opt/${pkgname}
-  local systemd_deploy_path=${pkgdir}/usr/lib/systemd/system
-
-  mkdir -p $deploy_path
-  mkdir -p $systemd_deploy_path
-
-  cp ${repo_src}/${pkgname} ${deploy_path}
-  cp ${startdir}/*.service ${systemd_deploy_path}
+    cd "${srcdir}/${pkgname}-${pkgver}/${pkgname}"
+    npm pack
+    npm install -g --prefix "${pkgdir}/usr" --no-save "${orgname}-${pkgname}-${pkgver}.tgz"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
