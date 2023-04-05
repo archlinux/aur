@@ -7,16 +7,16 @@ pkgrel=1
 epoch=
 pkgdesc="A cross-platform proxy client/server for Linux/Windows/macOS"
 arch=(i686 x86_64)
-url="https://github.com/macronut/$_pkgname"
+url="https://github.com/detiam/$_pkgname"
 #_commit=a521259ffc1cfd8753845997c09644b976af2d6c
 license=('LGPL-3.0')
 groups=()
 depends=('systemd')
-makedepends=('go' 'git')
+makedepends=('go' 'git' 'libpcap')
 checkdepends=()
 optdepends=(
 	'v2raya: for use with v2raya'
-	'libpcap: you can build pcap version if you want, see PKGBUILD build()'
+	#'libpcap: you can build pcap version if you want, see PKGBUILD build()'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -28,8 +28,8 @@ changelog=
 source=(
 	"git+$url"
 	"$_pkgname.sysusers"
-    "$_pkgname.service"
-    "$_pkgname@.service"
+	"$_pkgname.service"
+	"$_pkgname@.service"
 )
 noextract=()
 md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
@@ -46,8 +46,8 @@ pkgver() {
 build() {
 	cd "$_pkgname"
 	# Choose between them
-	go build -tags rawsocket
-	#go build -tags pcap
+	#go build -tags rawsocket
+	go build -tags pcap
 }
 
 package() {
