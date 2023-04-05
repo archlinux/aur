@@ -1,7 +1,7 @@
 # Maintainer: Mark Collins <tera_1225 [aaht] hotmail ðot com>
 pkgname=minuimus
-pkgver="3.8.1"
-pkgrel=3
+pkgver="3.9"
+pkgrel=1
 pkgdesc="file optimiser: makes files smaller without compromising content"
 arch=(x86_64)
 url="https://birds-are-nice.me/software/minuimus.html"
@@ -31,7 +31,7 @@ optdeps=(
 )
 source=("https://birds-are-nice.me/software/minuimus.zip"
         "minuimus_leanify_keep_icc.patch")
-sha256sums=('50360a6ce8570bd8252c342517d23853af59164492b3e280147ea8120f39efc0'
+sha256sums=('3c2e4273a2d4edbf0d56240553cd103535429d4b07b431879bb0ae27798f6432'
             '463cbe3a0f3aa53e3dfccd515a53d101905b9d5beb98ec80b140cadd90e88ce0')
 
 prepare() {
