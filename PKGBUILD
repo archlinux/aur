@@ -8,7 +8,8 @@ pkgname='cnrdrvcups-lb'
 # The download link changes with every version, try to keep changes in one place
 # https://gdlp01.c-wss.com/gds/8/0100007658/27/linux-UFRII-drv-v550-m17n-00.tar.gz
 # https://gdlp01.c-wss.com/gds/8/0100007658/30/linux-UFRII-drv-v560-m17n-08.tar.gz
-_pkgver='5.60';  _dl='8/0100007658/30';_suffix='08'
+#https://gdlp01.c-wss.com/gds/8/0100007658/33/linux-UFRII-drv-v570-m17n-11.tar.gz
+_pkgver='5.70';  _dl='8/0100007658/33';_suffix='11'
 
 pkgver="${_pkgver}"
 pkgrel='1'
@@ -29,8 +30,8 @@ conflicts=('cndrvcups-lb' 'cndrvcups-common-lb')
 options=('!emptydirs' '!strip' '!libtool')
 
 source=(  "http://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-m17n-${_suffix}.tar.gz")
-md5sums=('46f4e538e010f0698d3a3ae02e528a56')
-sha512sums=('7490d3bbfa8d8748d7aafb94c24387fd3f4ee5291bd8826df76d39ef2b2af289bbf707e9e93a9b1c4cd16b47bc02258316cf04750c0ffc11a425514a9ed1a53c')
+md5sums=('6d291972bab44aa2dbdaa60b625dc08b')
+sha512sums=('0ece8479f7bd9a3356f28d5438ba1cfca0f2bf32ac22694a5c959df389c5c1458f489814e083ca856e609f59b2d6754416c2023de00f7549f6e60f7f4d8c995d')
 
 
 # Canon provides the sourcecode in a tarball within the dowload and we need to extract the code manually
@@ -193,14 +194,14 @@ package() {
     # documentation
     pushd "$srcdir/linux-UFRII-drv-v${_pkgver//\./}-m17n/Documents"
     
-    install -Dpm644 deutsch/"README-ufr2-5.6xDE.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.6xDE.html"
-    install -Dpm644 espanol/"README-ufr2-5.6xSP.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.6xSP.html"
-    install -Dpm644 francais/"README-ufr2-5.6xFR.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.6xFR.html"
-    install -Dpm644 italiano/"README-ufr2-5.6xIT.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.6xIT.html"
-    install -Dpm644 korean/"README-ufr2-5.6xKR.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.6xKR.html"
-    install -Dpm644 simplified_chinese/"README-ufr2-5.6xSC.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.6xSC.html"
-    install -Dpm644 traditional_chinese/"README-ufr2-5.6xTC.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.6xTC.html"
-    install -Dpm644 uk_eng/"README-ufr2-5.6xUK.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.6xUK.html"
+    install -Dpm644 deutsch/"README-ufr2-5.7xDE.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.7xDE.html"
+    install -Dpm644 espanol/"README-ufr2-5.7xSP.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.7xSP.html"
+    install -Dpm644 francais/"README-ufr2-5.7xFR.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.7xFR.html"
+    install -Dpm644 italiano/"README-ufr2-5.7xIT.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.7xIT.html"
+    install -Dpm644 korean/"README-ufr2-5.7xKR.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.7xKR.html"
+    install -Dpm644 simplified_chinese/"README-ufr2-5.7xSC.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.7xSC.html"
+    install -Dpm644 traditional_chinese/"README-ufr2-5.7xTC.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.7xTC.html"
+    install -Dpm644 uk_eng/"README-ufr2-5.7xUK.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.7xUK.html"
     
     install -Dpm644 deutsch/"UsersGuide-ufr2-DE.html" "${pkgdir}/usr/share/doc/${pkgname}/UsersGuide-ufr2-DE.html"
     install -Dpm644 espanol/"UsersGuide-ufr2-SP.html" "${pkgdir}/usr/share/doc/${pkgname}/UsersGuide-ufr2-SP.html"
