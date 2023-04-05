@@ -1,7 +1,7 @@
 pkgbase = ttf-adobe-source-code-pro-fonts
 	pkgdesc = Monospaced font family for user interface and coding environments
 	pkgver = 2.040u+1.060i+1.024vf
-	pkgrel = 1
+	pkgrel = 2
 	url = https://adobe-fonts.github.io/source-code-pro/
 	arch = any
 	license = custom
