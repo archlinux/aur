@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=bison-git
-pkgver=3.7.6.r328.g5c554ea8
+pkgver=3.8.2.r46.g97852f39
 pkgrel=1
 pkgdesc="The GNU general-purpose parser generator"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://www.gnu.org/software/bison/bison.html"
 license=('GPL3')
 depends=('glibc')
 makedepends=('git' 'gperf' 'gzip' 'help2man' 'rsync' 'tar' 'wget')
-provides=('bison')
+provides=("bison=$pkgver")
 conflicts=('bison')
 source=("git+https://git.savannah.gnu.org/git/bison.git")
 sha256sums=('SKIP')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 prepare() {
   cd "bison"
 
-  git submodule update --init "submodules/autoconf"
+  git submodule update --init --recursive
 }
 
 pkgver() {
