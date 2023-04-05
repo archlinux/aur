@@ -1,7 +1,7 @@
 pkgbase = usleep_chocobo1-git
 	pkgdesc = Sleep microseconds
-	pkgver = r1.gf36671a
-	pkgrel = 1
+	pkgver = r9.gc3485ce
+	pkgrel = 2
 	url = https://github.com/Chocobo1/usleep
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = usleep_chocobo1-git
 	makedepends = git
 	makedepends = rust
 	depends = gcc-libs
-	provides = usleep_chocobo1=r1.gf36671a
+	provides = usleep_chocobo1=r9.gc3485ce
 	conflicts = usleep_chocobo1
 	source = git+https://github.com/Chocobo1/usleep.git
 	sha256sums = SKIP

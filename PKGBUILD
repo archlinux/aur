@@ -2,7 +2,7 @@
 
 pkgname=usleep_chocobo1-git
 pkgver=r9.gc3485ce
-pkgrel=1
+pkgrel=2
 pkgdesc="Sleep microseconds"
 arch=('i686' 'x86_64')
 url="https://github.com/Chocobo1/usleep"
