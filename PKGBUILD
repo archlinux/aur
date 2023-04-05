@@ -3,7 +3,7 @@ pkgbase=python-asdf
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=2.14.4
+pkgver=2.15.0
 pkgrel=1
 pkgdesc="A Python tool for reading and writing Advanced Scientific Data Format (ASDF) files"
 arch=('any')
@@ -42,9 +42,9 @@ checkdepends=('python-pytest-doctestplus'
               'python-fsspec'
               'python-aiohttp'
               'python-requests')    # psutil pulled in by pytest-openfiles
-#              'python-virtualenv'
+#             'python-virtualenv'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('4a0e9398373d84478c76154e1fdeeb15')
+md5sums=('347b3814aa89e88351fa2c3d0710dc6d')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -74,21 +74,21 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    PYTHONPATH="build/lib:${PYTHONPATH}" pytest "build/lib" --remote-data -vv --color=yes #|| warning "Tests failed" # -vv --color=yes
+    PYTHONPATH="build/lib:${PYTHONPATH}" pytest "build/lib" --remote-data || warning "Tests failed" # -vv --color=yes
 }
 
 package_python-asdf() {
     depends=('python>=3.8'
-             'python-numpy>=1.18'
+             'python-numpy>=1.20'
              'python-jmespath>=0.6.2'
              'python-jsonschema>=4.0.1'
-             'python-packaging>=16.0'
+             'python-packaging>=19.0'
              'python-importlib-metadata>=4.11.4'
-             'python-yaml>=3.10'
+             'python-yaml>=5.4.1'
              'python-semantic-version>=2.8'
              'python-asdf-standard>=1.0.1'
-             'python-asdf_transform_schemas>=0.3.0'
-             'python-asdf_unit_schemas>=0.1.0')
+             'python-asdf_transform_schemas>=0.3'
+             'python-asdf_unit_schemas>=0.1')
     optdepends=('python-astropy: Support for units, time, transform, wcs, or running the tests'
                 'python-lz4>=0.10: Support for lz4 compression'
                 'python-asdf-doc: Documentation for Python-ASDF'
