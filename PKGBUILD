@@ -2,7 +2,7 @@
 # Contributor: Patrik Sundberg <patrik.sundberg at gmail dot com>
 
 pkgname=motivewave
-pkgver=6.6.14
+pkgver=6.6.15
 pkgrel=1
 pkgdesc="Advanced trading and charting application."
 arch=('x86_64')
