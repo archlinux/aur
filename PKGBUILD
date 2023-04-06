@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=cmocka-git
-pkgver=1.1.5.r39.g314602b
+pkgver=1.1.5.r196.g309ee5e
 pkgrel=1
 pkgdesc="An unit testing framework for C with support for mock objects"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://cmocka.org/"
 license=('apache')
 depends=('glibc')
 makedepends=('git' 'cmake')
-provides=('cmocka')
+provides=("cmocka=$pkgver")
 conflicts=('cmocka')
 options=('staticlibs')
 source=("git+https://git.cryptomilk.org/projects/cmocka.git")
