@@ -3,7 +3,7 @@
 pkgname=flashbrowser-git
 _reponame=FlashBrowser
 pkgver=0.81.r27.g0d97b17
-pkgrel=2
+pkgrel=3
 pkgdesc="A browser dedicating to supporting adobe flash"
 url="https://flash.pm/browser/"
 arch=(any)
@@ -11,8 +11,8 @@ license=(unknown)
 depends=(nodejs)
 makedepends=(
 	git
-	imagemagick
 	npm
+	imagemagick
 )
 provides=("flashbrowser-git=${pkgver}")
 conflicts=('flashbrowser-git')
@@ -41,35 +41,20 @@ build() {
 	cd "$srcdir/$_reponame"
 	npm install --legacy-peer-deps --cache "$srcdir/npm-cache"
 
-	# remove all dotfiles and lock.json
-	find "$srcdir/$_reponame" -type f -name ".*" -delete
-	find "$srcdir/$_reponame" -type f -name "package-lock.json" -delete
-
-	# create tgz file
-	cd "$srcdir"
-	tar -czf $_reponame-$pkgver.tgz "$_reponame"
+	# remove all dotfiles and references to pkgdir
+	find . -type f -name ".*" -delete
+	find . -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
 }
 
 package() {
-	npm install -g --prefix "$pkgdir/usr" "$srcdir/$_reponame-$pkgver.tgz"
-	install -Dm755 "$srcdir/FlashBrowser.sh" "$pkgdir/usr/bin/FlashBrowser"
+	# install nodejs application
+	install -d "$pkgdir/usr/lib/node_modules"
+	cp -r --preserve=mode "$srcdir/$_reponame" "$pkgdir/usr/lib/node_modules"
 
-	# remove references to pkgdir
-	find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
+	# install /usr/bin executable
+	install -Dm755 "$srcdir/$_reponame.sh" "$pkgdir/usr/bin/$_reponame"
 
-	# remove all dotfiles and lock.json
-	find "$pkgdir" -type f -name ".*" -delete
-	find "$pkgdir" -type f -name "package-lock.json" -delete
-
-	# Non-deterministic race in npm gives 777 permissions to random directories.
-	# See https://github.com/npm/npm/issues/9359 for details.
-	chmod -R u=rwX,go=rX "$pkgdir"
-
-	# npm installs package.json owned by build user
-	# https://bugs.archlinux.org/task/63396
-	chown -R root:root "$pkgdir"
-
-	# create icons
+	# install icons
 	for dirs in 16 24 32 48 256; do
 		mkdir -p "$pkgdir/usr/share/icons/hicolor/${dirs}x${dirs}/apps"
 	done
