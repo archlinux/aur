@@ -1,6 +1,6 @@
 # Maintainer: zer0def <zer0def@github>
 pkgname=cloud-hypervisor
-pkgver=30.0
+pkgver=31.0
 pkgrel=1
 pkgdesc="A Rust-VMM based cloud hypervisor from Intel"
 url="https://github.com/cloud-hypervisor/cloud-hypervisor"
@@ -27,5 +27,5 @@ package() {
   #  "${srcdir}/${pkgname}-${pkgver}/target/release/vhost_user_fs" \
   #  "${srcdir}/${pkgname}-${pkgver}/target/release/vhost_user_net"
 }
-sha512sums=('a6e73ca995d282e1830c410c09b51ddb069decd64f1f868816fe8035fa0f08a4aabedfde52099686a160b13b2e21625a65049c43a9d4024fc0ff8952a7f00c04')
-b2sums=('3b9f4ba5f32a1cf72b653ba971ff062bff457df13224a78222c3fbeef65c55ce94e0c90a3b674411e75b7a092714146c72807a5f2a2dc42c52cec72eea3475e7')
+sha512sums=('9ddb8bce534331f609d00703e1c47e4359723432661aef4e0b920f8b289f13c9fda68d0f3320bcbc80824f699df1e456375b6268355c8a79d69c78e5d7659f52')
+b2sums=('b88f1cb53fde6085c33e969d508fbccf29d54e2f04cee143340d0a43547a967d7cdea6bc880c24c84e34bfc4a4d8c4e4478aeb54e858d4518e528f07b521b9b3')
