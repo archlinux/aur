@@ -1,6 +1,6 @@
 .PHONY: clean
 clean:
-	rm -rf pkg src *.zst
+	rm -rf pkg src *.zst *.deb
 
 .PHONY: srcinfo
 srcinfo:
