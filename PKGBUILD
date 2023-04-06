@@ -2,7 +2,7 @@
 
 pkgname=cozy-desktop
 pkgver=3.36.1
-pkgrel=1
+pkgrel=2
 pkgdesc="File synchronisation for Cozy Cloud on Desktop"
 arch=(x86_64)
 url="https://cozy-labs.github.io/cozy-desktop/"
