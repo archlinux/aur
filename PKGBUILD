@@ -8,7 +8,7 @@
 
 ## Mozc compile option
 _bldtype='Release'
-_mozc_commit=5fe3662
+_mozc_commit=242b4f7
 _zipcode_rel=202110
 
 # Ut Dictionary
@@ -24,8 +24,8 @@ _dict=(alt-cannadic
 
 pkgbase=mozc-ut-full
 pkgname=("$pkgbase-common" "ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
-pkgver=2.28.5008.102.20230115
-pkgrel=2
+pkgver=2.28.5029.102.20230115
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
@@ -58,7 +58,7 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'e9ec9d604152c939bae001f21db35e2c775fa21b784e4ac17340c86a3dd763efd476487e8b0890f636a6064a8702bc5ac4448aacaba90412d8bd933bf73edced'
+            'e7c6357424f76435586254fb5e7ba808adedd4d5da6338adea7280d3d8730e9300b04991ddf0a6a9a19cd7ea0fa8b512fd7d6e287990c0d545e873da7eb9f7cd'
             '30019a9ce73456046f67edd6fe8f4661bd9a8e9ca201f3bdf22d2fa70dad9544bd595a8820fbed402a0709809d02cabbdea9dc79ee1f5bf30f8ef722ba4a2c17'
             '8ce42d2eb8bda0e79dbe97467621d48615d6cf0296c99d4d99a4dfc755753d6c99392606a0dc94c9472a23d72feb1c8179d0baf601f01a0e85938125887935b2'
             '33beeb84c5fe7ff8717e2e7e8650f2b33a1920564e363776ff357b94c6eb4f9b8d7c34decb8a3549075a1cc41a2a8d406cd2b07f34cdf5cfe3491cfedf2312d5'
@@ -132,7 +132,7 @@ build() {
 
   cd mozc/src || exit
 
-  _targets="unix/fcitx5:fcitx5-mozc.so server:mozc_server gui/tool:mozc_tool renderer:mozc_renderer unix/ibus:ibus_mozc unix/emacs:mozc_emacs_helper"
+  _targets="unix/fcitx5:fcitx5-mozc.so server:mozc_server gui/tool:mozc_tool renderer/qt:mozc_renderer unix/ibus:ibus_mozc unix/emacs:mozc_emacs_helper"
 
   export JAVA_HOME='/usr/lib/jvm/java-11-openjdk/'
   export QT_BASE_PATH=/usr/include/qt
@@ -171,7 +171,7 @@ package_fcitx5-mozc-ut-full() {
 
 package_ibus-mozc-ut-full() {
   pkgdesc="IBus engine module for Mozc with UT dictionary"
-  depends=('ibus>=1.4.1' "$pkgbase-common")
+  depends=('ibus>=1.4.1' "$pkgbase-common" 'qt5-base')
   replaces=('ibus-mozc')
   conflicts=('ibus-mozc')
 
@@ -179,7 +179,7 @@ package_ibus-mozc-ut-full() {
   cd "${srcdir}/mozc/src" || exit
   install -D -m 755 bazel-bin/unix/ibus/ibus_mozc         "$pkgdir/usr/lib/ibus-mozc/ibus-engine-mozc"
   install -D -m 644 bazel-bin/unix/ibus/mozc.xml          "$pkgdir/usr/share/ibus/component/mozc.xml"
-  install -D -m 755 bazel-bin/renderer/mozc_renderer      "${pkgdir}/usr/lib/mozc/mozc_renderer"
+  install -D -m 755 bazel-bin/renderer/qt/mozc_renderer   "$pkgdir/usr/lib/mozc/mozc_renderer"
 
 
   cd bazel-bin/unix || exit
