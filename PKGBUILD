@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=check-git
-pkgver=0.12.0.r5.gf9b5853
+pkgver=0.15.2.r52.g455005d
 pkgrel=1
 pkgdesc="A unit testing framework for C"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://libcheck.github.io/check/"
 license=('LGPL')
 depends=('glibc' 'gawk')
 makedepends=('git')
-provides=('check')
+provides=("check=$pkgver")
 conflicts=('check')
 options=('staticlibs')
 source=("git+https://github.com/libcheck/check.git")
@@ -26,7 +26,8 @@ build() {
   cd "check"
 
   autoreconf -fi
-  ./configure --prefix="/usr"
+  ./configure \
+    --prefix="/usr"
   make
 }
 
