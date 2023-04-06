@@ -2,9 +2,9 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=argc-git
-pkgver=0.15.1.r0.g21e7d04
+pkgver=1.0.0.r0.g9c72b3a
 pkgrel=1
-pkgdesc="Easily create a feature-rich command-line application in Bash"
+pkgdesc="An elegant command-line options, arguments and sub-commands parser for bash (git)"
 arch=('x86_64')
 url="https://github.com/sigoden/argc"
 license=('MIT' 'Apache')
@@ -24,11 +24,16 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  mkdir -p completions
 }
 
 build() {
   cd "${pkgname%-git}"
   cargo build --release --frozen
+  local compgen="target/release/${pkgname%-git} --argc-completions"
+  $compgen bash > "completions/${pkgname%-git}.bash"
+  $compgen fish > "completions/${pkgname%-git}.fish"
+  $compgen zsh  > "completions/${pkgname%-git}.zsh"
 }
 
 check() {
