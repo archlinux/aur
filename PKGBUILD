@@ -7,7 +7,7 @@
 pkgbase=kde-applications-nogames-nodevel-noedu-meta
 pkgname=(kde-applications-nogames-nodevel-noedu-meta
          kde-sdk-nodevel-meta)
-pkgver=23.04
+pkgver=22.12
 pkgrel=1
 arch=(any)
 license=(None)
@@ -19,7 +19,6 @@ package_kde-applications-nogames-nodevel-noedu-meta() {
            kde-graphics-meta
            kde-multimedia-meta
            kde-network-meta
-           kde-office-meta
            kde-pim-meta
            kde-sdk-nodevel-meta
            kde-system-meta

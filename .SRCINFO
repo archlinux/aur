@@ -1,5 +1,5 @@
 pkgbase = kde-applications-nogames-nodevel-noedu-meta
-	pkgver = 23.04
+	pkgver = 22.12
 	pkgrel = 1
 	url = https://www.archlinux.org/
 	arch = any
@@ -11,7 +11,6 @@ pkgname = kde-applications-nogames-nodevel-noedu-meta
 	depends = kde-graphics-meta
 	depends = kde-multimedia-meta
 	depends = kde-network-meta
-	depends = kde-office-meta
 	depends = kde-pim-meta
 	depends = kde-sdk-nodevel-meta
 	depends = kde-system-meta
