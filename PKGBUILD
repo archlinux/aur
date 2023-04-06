@@ -2,7 +2,7 @@
 
 pkgname=python-collada
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="python library for reading and writing collada documents"
 arch=(any)
 url="https://github.com/pycollada/pycollada"
