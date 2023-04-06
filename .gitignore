@@ -1,6 +1,4 @@
 *
-!.gitignore
-!.SRCINFO
 !PKGBUILD
-!wxGTK-collision.patch
-!wxgtk-abicheck.patch
+!.SRCINFO
+!.gitignore
