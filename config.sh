@@ -8,6 +8,7 @@ export FC=gfortran
 export F77=gfortran
 
 export USE_MPI=yes
+export FORCE_MPI_ENV=yes
 export MPI_LOC=/usr
 export MPI_LIB=$MPI_LOC/lib/openmpi
 export MPI_INCLUDE=$MPI_LOC/include
@@ -38,7 +39,7 @@ export NWCHEM_TOP=$(pwd)
 
 export USE_PYTHONCONFIG=y
 export PYTHONHOME=/usr
-export PYTHONVERSION=3.9
+export PYTHONVERSION=3.10
 export PYTHONLIBTYPE=so
 
 export LARGE_FILES=TRUE
