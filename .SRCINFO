@@ -1,0 +1,22 @@
+pkgbase = crossover-overlay-bin
+	pkgdesc = Adjustable Crosshair Overlay for any screen (binary release)
+	pkgver = 3.1.5
+	pkgrel = 1
+	url = https://github.com/lacymorrow/crossover
+	arch = x86_64
+	license = CCPL:by-nc-sa4
+	depends = at-spi2-core
+	depends = gtk3
+	depends = libnotify
+	depends = libnss_nis
+	depends = libsecret
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	optdepends = libappindicator-gtk3: application indicator
+	provides = crossover-overlay
+	conflicts = crossover-overlay
+	source = https://github.com/lacymorrow/crossover/releases/download/v3.1.5/CrossOver-3.1.5-x86_64.rpm
+	sha256sums = c38d1d52e9c27cd35117cfe5e278650c3c9b3144523a722681bfb638d3eaf33c
+
+pkgname = crossover-overlay-bin
