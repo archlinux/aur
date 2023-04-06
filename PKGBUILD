@@ -1,7 +1,7 @@
 # Maintainer: Marcel Robitaille <mail@marcelrobitaille.me>
 
 pkgname=kiri-git
-pkgver=1.2.0.r70.gc1e1f38
+pkgver=1.2.0.r74.gbd94502
 pkgrel=1
 pkgdesc="A tool for reviewing Schematics and Layouts of Git-versioned Kicad-projects, visually"
 url="https://github.com/leoheck/kiri"
@@ -17,6 +17,7 @@ sha256sums=("SKIP" "SKIP" "SKIP" "SKIP" "SKIP")
 
 prepare() {
 	cd kiri
+	pip install -r python-requirements.txt
 	git submodule init
 	git config submodule.kicad_parser.url "$srcdir/kicad_parser"
 	git config submodule.KiCad-Diff.url "$srcdir/KiCad-Diff"
@@ -26,7 +27,6 @@ prepare() {
 	git submodule init
 	git config submodule.sexp_parser.url "$srcdir/sexp_parser"
 	git -c protocol.file.allow=always submodule update
-	pip install "pillow>8.2.0" "six>=1.15.0" "dateutils>=0.6.12" "python_dateutil>=2.8.1" "pytz>=2021.1" "pathlib>=1.0.1" "wxpython>=4.0.7" "wxwidgets>=1.0.5"
 }
 
 package() {
