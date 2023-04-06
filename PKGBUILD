@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=blosc2-git
-pkgver=2.0.0.beta.5.r201.gf4a74cb
+pkgver=2.8.0.r11.g0aa01c65
 pkgrel=1
 pkgdesc="Next generation c-blosc"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://blosc-doc.readthedocs.io/en/latest/"
 license=('BSD')
 depends=('glibc' 'lz4' 'snappy' 'zlib' 'zstd')
 makedepends=('git' 'cmake')
-provides=('blosc2')
+provides=("blosc2=$pkgver")
 conflicts=('blosc2')
 options=('staticlibs')
 source=("git+https://github.com/Blosc/c-blosc2.git")
