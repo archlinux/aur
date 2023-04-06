@@ -4,14 +4,14 @@
 
 pkgname=colormake-git
 pkgver=0.9.20140503.r19.g93dd19b
-pkgrel=2
+pkgrel=3
 pkgdesc="Colorize the output of make"
 arch=('any')
 url="https://bre.klaki.net/programs/colormake/"
 license=('GPL2')
 depends=('perl' 'bash')
 makedepends=('git')
-provides=('colormake')
+provides=("colormake=$pkgver")
 conflicts=('colormake')
 source=("git+https://github.com/pagekite/Colormake.git")
 sha256sums=('SKIP')
