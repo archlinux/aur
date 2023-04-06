@@ -3,7 +3,7 @@
 _name=pytest_metadata
 pkgname=python-pytest-metadata
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for accessing test session metadata"
 arch=(any)
 url="https://github.com/pytest-dev/pytest-metadata"
