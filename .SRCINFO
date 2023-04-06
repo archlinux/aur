@@ -1,0 +1,14 @@
+pkgbase = xorg-ico
+	pkgdesc = A simple animation program that may be used for testing various X11 operations and extensions.
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://xorg.freedesktop.org/
+	arch = x86_64
+	groups = xorg-apps
+	groups = xorg
+	license = custom
+	depends = libx11
+	source = https://xorg.freedesktop.org/archive/individual/app/ico-1.0.6.tar.gz
+	sha512sums = d6b15e516d34aa201eaac2ab53bd911825fb85e516f1efe15d85e2fb309fdd6155b24b0fbb98552dd12d2c6c271047ff94d0e9525b297bd165fefa55565de550
+
+pkgname = xorg-ico
