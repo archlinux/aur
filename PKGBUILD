@@ -2,7 +2,7 @@
 
 pkgname=python-testing.postgresql
 pkgver=1.3.0
-pkgrel=7
+pkgrel=8
 pkgdesc='Helpers for using temporary PostgreSQL databases in tests'
 arch=(any)
 url='https://github.com/tk0miya/testing.postgresql'
