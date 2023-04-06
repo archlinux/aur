@@ -3,14 +3,28 @@
 pkgname=(freedoom freedm)
 pkgbase=${pkgname[0]}
 pkgver=0.12.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Free game based on the Doom engine"
 arch=('any')
 url="https://freedoom.github.io/"
 license=('BSD')
 makedepends=('asciidoc' 'deutex' 'python' 'python-pillow')
-source=(https://github.com/$pkgbase/$pkgbase/releases/download/v$pkgver/$pkgbase-$pkgver.tar.xz)
-sha512sums=('08a8489e1bbd9418262bfefaa9afe67a281b6f3fd38f77ac822438da434229bb034077e53658c06fa93cbf3ba3c5c25dab5fe1844fe23043e310d21866e12810')
+source=(https://github.com/$pkgbase/$pkgbase/releases/download/v$pkgver/$pkgbase-$pkgver.tar.xz
+        0001-manual-build-with-asciidoc.patch)
+b2sums=('db783fd8a3467ab6ec628eb67b036ae069d01516b3f04860d4fda0692921f9a4aa65169ff8b79fa74e88bb496da3686dd7fbbf5e4bb1614ab331023a58c5204d'
+        '08f5fc17055e921a374aaf2cf092bdf1ff8b5a4069f9b9f5b12f0a119291d1f34d891a2b47e01d966340768c620f44f00848ef01b4675777df25f74a2f160645')
+
+prepare() {
+  cd "$pkgbase-$pkgver"
+
+  for patch in ../*.patch; do
+    if [ ! -f "$patch" ]; then
+      break;
+    else
+      patch -p1 -i "$patch"
+    fi
+  done
+}
 
 build() {
   cd "$pkgbase-$pkgver"
