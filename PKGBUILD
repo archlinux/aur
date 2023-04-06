@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=busybox-git
-pkgver=1.33.0.r363.g08ca313d7
+pkgver=1.36.0.r35.g05f2bedae
 pkgrel=1
 pkgdesc="Tiny versions of many common UNIX utilities"
 arch=('i686' 'x86_64')
 url="https://www.busybox.net/"
 license=('GPL')
 makedepends=('git' 'kernel-headers-musl' 'musl' 'ncurses')
-provides=('busybox')
+provides=("busybox=$pkgver")
 conflicts=('busybox')
 source=("git+https://git.busybox.net/busybox"
         "config::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/busybox/trunk/config")
