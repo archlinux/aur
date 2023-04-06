@@ -3,7 +3,7 @@
 pkgbase=srsran-project-git
 pkgname=$pkgbase
 _pkgname=srsRAN_Project
-pkgver=r4764.g77be7d3
+pkgver=23.3.0.r1.gfbe73a4
 pkgrel=1
 pkgdesc='The srsRAN Project is a complete 5G RAN solution, featuring an ORAN-native CU/DU developed by (SRS)'
 arch=('x86_64' 'aarch64')
@@ -37,8 +37,8 @@ options=(!lto)
 pkgver() {
    cd "${_pkgname}"
   ( set -o pipefail
-    # try to get the first reachable tag              | transform to "TAG.rN.gHASH"      | cut prefix "v"
-    git describe --long --tags --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^\(v\)\1*//' ||
+    # try to get the first reachable tag              | append patch version _0 if not present           | remove prefix 'release_'   | transform to "TAG.rN.gHASH"
+    git describe --long --tags --abbrev=7 2>/dev/null | sed 's/\(release_[0-9]\+_[0-9]\+\)\(-\)/\1_0\2/' | sed 's/^\(release_\)\1*//' | sed 's/\([^-]*-g\)/r\1/;s/[-_]/./g' ||
     # no tag reachable, use number of revisions since beginning of the history
     printf "r%s.g%s\n" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   )
