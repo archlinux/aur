@@ -1,0 +1,15 @@
+# Author: James Cherti
+# URL: https://github.com/jamescherti/archlinux-linux-keep-modules
+# License: Distributed under terms of the MIT license.
+[Trigger]
+Operation = Upgrade
+Type = Path
+Target = usr/lib/modules/*
+
+[Action]
+Description = Backup the modules of the currently running Linux kernel
+When = PreTransaction
+Depends = rsync
+Depends = bash
+Depends = coreutils
+Exec = /etc/pacman.d/hooks.bin/pacman-hook-linux-modules.sh backup

@@ -1,0 +1,7 @@
+/release-*
+/*.deb
+/*.rpm
+/*.tar.*
+/*.zst
+/pkg/
+/src/
