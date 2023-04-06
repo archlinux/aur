@@ -1,7 +1,7 @@
 # Maintainer: c0repwn3r <core@coredoes.dev>
 pkgname=i386-elf-binutils
 pkgver=2.40
-pkgrel=0
+pkgrel=1
 epoch=
 pkgdesc="GNU binutils for the i386- toolchain"
 arch=(x86_64)
