@@ -3,7 +3,7 @@
 _pipname=straight.plugin
 pkgname=python-$_pipname
 pkgver=1.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A simple namespaced plugin facility'
 arch=(any)
 url="https://github.com/ironfroggy/$_pipname"
