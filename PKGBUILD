@@ -1,5 +1,5 @@
 pkgname=dnf-plugins-core
-pkgver=4.3.1
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="Core DNF Plugins"
 arch=('any')
@@ -7,9 +7,13 @@ url="https://github.com/rpm-software-management/$pkgname"
 license=('GPL2')
 depends=('dnf>=4.11.0' 'python')
 makedepends=('cmake>=3.13' 'python-sphinx')
-optdepends=('python-dateutil: for changelog plugin'
+checkdepends=('python-dbus' 'python-systemd')
+optdepends=('createrepo_c: for local plugin'
+            'python-dateutil: for changelog plugin'
             'python-dbus: for needs-restarting plugin'
-            'createrepo_c: for local plugin')
+            'python-distro: for copr plugin'
+            'python-systemd: for system-upgrade plugin')
+conflicts=('dnf-plugins-extras<4.1.0')
 backup=('etc/dnf/plugins/copr.conf'
         'etc/dnf/plugins/debuginfo-install.conf'
         'etc/dnf/plugins/local.conf'
@@ -18,7 +22,7 @@ backup=('etc/dnf/plugins/copr.conf'
         'etc/dnf/plugins/versionlock.list')
 options=('!emptydirs')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('75c3351bdf3052e1075e3fad68ebd47f23147223260a84c24998ebb676096ebc')
+sha256sums=('e2fbaa81e5f512c3ec8a4a3e4a7e5a92bf0d7e122becc7ed2b6b756fec76a017')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -44,7 +48,7 @@ check() {
 	cd "$pkgname-$pkgver"
 
 	# Tests fail with non-english locales
-	LC_ALL=en_US.UTF-8 ctest -VV
+	LC_ALL=en_US.UTF-8 ctest -VV --test-dir build
 }
 
 package() {
