@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=cmark-git
-pkgver=0.29.0.r104.g8410d2c
+pkgver=0.30.3.r8.g7195c67
 pkgrel=1
 pkgdesc="CommonMark parsing and rendering library"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/commonmark/cmark"
 license=('BSD' 'custom')
 depends=('glibc')
 makedepends=('git' 'cmake' 'python')
-provides=('cmark')
+provides=("cmark=$pkgver")
 conflicts=('cmark')
 options=('staticlibs')
 source=("git+https://github.com/commonmark/cmark.git")
