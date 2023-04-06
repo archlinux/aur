@@ -6,7 +6,7 @@
 # Contributor: Aaron Griffin <aaron@archlinux.org>
 
 pkgname=bash-devel-git
-pkgver=r1155.g75c5460c
+pkgver=5.2.r1161.gec9447ce
 pkgrel=1
 pkgdesc="The GNU Bourne Again shell (development version)"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ license=('GPL')
 depends=('glibc' 'ncurses' 'readline>=7.0')
 makedepends=('git')
 optdepends=('bash-completion: for tab completion')
-provides=('bash' 'sh')
+provides=("bash=$pkgver" 'sh')
 conflicts=('bash')
 backup=(etc/bash.bash{rc,_logout} etc/skel/.bash{rc,_profile,_logout})
 source=("git+https://git.savannah.gnu.org/git/bash.git#branch=devel"
@@ -35,9 +35,10 @@ sha256sums=('SKIP'
 pkgver() {
   cd "bash"
 
-  _rev=$(git rev-list --count --all)
+  _tag=$(git tag -l --sort -v:refname | grep -E '^bash-[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "r%s.g%s" "$_rev" "$_hash"
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^bash-//'
 }
 
 build() {

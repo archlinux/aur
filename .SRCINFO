@@ -1,6 +1,6 @@
 pkgbase = bash-devel-git
 	pkgdesc = The GNU Bourne Again shell (development version)
-	pkgver = r1155.g75c5460c
+	pkgver = 5.2.r1161.gec9447ce
 	pkgrel = 1
 	url = https://www.gnu.org/software/bash/bash.html
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = bash-devel-git
 	depends = ncurses
 	depends = readline>=7.0
 	optdepends = bash-completion: for tab completion
-	provides = bash
+	provides = bash=5.2.r1161.gec9447ce
 	provides = sh
 	conflicts = bash
 	backup = etc/bash.bashrc
@@ -33,4 +33,3 @@ pkgbase = bash-devel-git
 	sha256sums = SKIP
 
 pkgname = bash-devel-git
-
