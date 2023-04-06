@@ -1,7 +1,7 @@
 # Maintainer: Salamandar <felix@piedallu.me>
 
 pkgname=prusa-slicer-git
-pkgver=2.6.0.alpha5
+pkgver=2.6.0.alpha6.r1.g996a72a27
 pkgrel=1
 pkgdesc='G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)'
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
