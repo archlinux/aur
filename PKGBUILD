@@ -8,6 +8,7 @@ arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
 url='https://github.com/prusa3d/PrusaSlicer'
 license=('AGPL3')
 makedepends=(
+    'git'
     'cmake'
     'ninja'
     'clang'

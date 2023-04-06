@@ -9,6 +9,7 @@ pkgbase = prusa-slicer-git
 	arch = armv6h
 	arch = armv7h
 	license = AGPL3
+	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = clang
