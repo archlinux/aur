@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=netbird-ui
-pkgver=0.15.1
+pkgver=0.15.2
 pkgrel=1
 pkgdesc='Official GUI for the Netbird client'
 url='https://netbird.io'
@@ -17,7 +17,7 @@ optdepends=()
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/netbirdio/netbird/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('61d009bdd7f575d2baf277dc8b8c97c89f3f6e8e35cf9acaf057b2562341b04c')
+sha256sums=('a52b1ba54fd5285496fbd725a5802319c9d4b1dfb1f4f9c6e1cd2591857d503b')
 
 prepare() {
   cd "$srcdir/netbird-$pkgver"
