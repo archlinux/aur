@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=curvedns-git
-pkgver=0.87.r11.gb5a7619
+pkgver=0.87.r13.gf6dc1e7
 pkgrel=1
 pkgdesc="A DNSCurve forwarding name server"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/curvedns/curvedns"
 license=('BSD')
 depends=('glibc' 'libev')
 makedepends=('git')
-provides=('curvedns')
+provides=("curvedns=$pkgver")
 conflicts=('curvedns')
 source=("git+https://github.com/curvedns/curvedns.git")
 sha256sums=('SKIP')
@@ -38,7 +38,6 @@ build() {
 package() {
   cd "curvedns"
 
-  install -Dm755 "curvedns" "$pkgdir/usr/bin/curvedns"
-  install -Dm755 "curvedns-keygen" "$pkgdir/usr/bin/curvedns-keygen"
-  install -Dm644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+  install -Dm755 curvedns{,-keygen} -t "$pkgdir/usr/bin"
+  install -Dm644 "LICENSE.md" -t "$pkgdir/usr/share/licenses/curvedns"
 }
