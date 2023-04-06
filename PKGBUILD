@@ -3,7 +3,7 @@
 _name=senf
 pkgname=python-senf
 pkgver=1.5.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Python module for handling platform native strings"
 arch=('any')
 url="https://github.com/quodlibet/senf"
