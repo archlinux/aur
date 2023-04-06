@@ -3,7 +3,7 @@
 _name=setuptools-declarative-requirements
 pkgname=python-setuptools-declarative-requirements
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="File support for setuptools declarative setup.cfg"
 arch=(any)
 url="https://github.com/s0undt3ch/setuptools-declarative-requirements"
