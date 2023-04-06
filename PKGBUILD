@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=cryfa-git
-pkgver=20.04.r1.g4f6020a
+pkgver=20.04.r52.g06bfbc6
 pkgrel=1
 pkgdesc="A secure encryption tool for genomic data"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/cobilab/cryfa"
 license=('GPL')
 depends=('gcc-libs')
 makedepends=('git' 'cmake')
-provides=('cryfa')
+provides=("cryfa=$pkgver")
 conflicts=('cryfa')
 source=("git+https://github.com/cobilab/cryfa.git")
 sha256sums=('SKIP')
