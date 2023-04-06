@@ -2,14 +2,14 @@
 
 pkgname=bluez-tools-git
 pkgver=r127.gf653217
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of tools to manage bluetooth devices"
 arch=('i686' 'x86_64')
 url="https://github.com/khvzak/bluez-tools"
 license=('GPL')
 depends=('glibc' 'bluez')
 makedepends=('git')
-provides=('bluez-tools')
+provides=("bluez-tools=$pkgver")
 conflicts=('bluez-tools')
 source=("git+https://github.com/khvzak/bluez-tools.git")
 sha256sums=('SKIP')
