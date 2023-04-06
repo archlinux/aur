@@ -1,5 +1,5 @@
 pkgname=dnf-plugins-extras
-pkgver=4.0.17
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Extras DNF Plugins"
 arch=('any')
@@ -7,17 +7,16 @@ url="https://github.com/rpm-software-management/$pkgname"
 license=('GPL2')
 depends=('dnf>=4.4.3' 'python')
 makedepends=('cmake>=3.13' 'python-sphinx')
-checkdepends=('python-pytest' 'python-pykickstart' 'python-systemd')
-optdepends=('dbus-python: for snapper plugin'
+checkdepends=('python-pytest' 'python-pykickstart')
+optdepends=('python-dbus: for snapper plugin'
             'python-pycurl: for torproxy plugin'
             'python-pykickstart: for kickstart plugin'
-            'python-systemd: for system-upgrade plugin'
             'snapper:  for snapper plugin'
             'tracer:  for tracer plugin')
 backup=('etc/dnf/plugins/rpmconf.conf'
         'etc/dnf/plugins/torproxy.conf')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('0f5cd2eba2152ad17b15c211e2e2653dc1a8f8e02046643b47f33291906d7aa1')
+sha256sums=('f48b19694df17573e6743671d8dec4baa3a46822352370ed77af06d9af7b632c')
 
 prepare() {
 	cd "$pkgname-$pkgver"
