@@ -2,7 +2,7 @@
 
 pkgname=offline-cheatbreaker
 _pkgname=offline-cheatbreaker
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc='Offline CheatBreaker is a continuation of the original CheatBreaker (which was shutdown in 2018 and was a modpack and FPS booster combined!). In most cases, Offline CheatBreaker more than doubles your normal Minecraft frames!'
 url=https://offlinecheatbreaker.com
@@ -11,7 +11,7 @@ depends=(fuse xorg-xrandr)
 options=(!strip)
 _appimage="Offline_CheatBreaker.AppImage"
 source=("https://github.com/Offline-CheatBreaker/Launcher/releases/download/${pkgver}/Offline_CheatBreaker.AppImage")
-md5sums=('15c126a6077643f7e07d35f3fbca7c00')
+md5sums=('e26866b92339ac9754087ed995a5088c')
 
 prepare() {
 	chmod +x "${_appimage}"
