@@ -2,8 +2,9 @@
 # Maintainer: Hidde Beydals <hello@hidde.co>
 
 pkgname=flux-scm
-pkgver=2.0.0rc.1
+pkgver=2.0.0rc1
 pkgrel=1
+_srcname=flux
 pkgdesc="Open and extensible continuous delivery solution for Kubernetes"
 url="https://fluxcd.io/"
 arch=("x86_64" "armv6h" "armv7h" "aarch64")
@@ -18,7 +19,6 @@ source=(
   "git+https://github.com/fluxcd/flux2.git"
 )
 md5sums=('SKIP')
-_srcname=flux
 
 pkgver() {
   cd "flux2"
