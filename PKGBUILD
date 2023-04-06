@@ -3,7 +3,7 @@
 _pkgname='hist'
 pkgname="python-${_pkgname}"
 pkgver='2.6.2'
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for Boost's Histogram library."
 arch=('any')
 url='https://github.com/scikit-hep/hist'
