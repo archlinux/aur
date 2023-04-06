@@ -1,0 +1,18 @@
+pkgbase = pypi-search
+	pkgdesc = Allows you to quickly query packages on PyPI
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/asadmoosvi/pypi-search
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/asadmoosvi/pypi-search/archive/refs/tags/v1.2.1.zip
+	md5sums = 7fd0a4a526a5aa397cc9dbd5a4e06ab0
+	sha256sums = 8f266bd3942ca17ab6f4dc89e918da196b00bd3ace08a3505dd8c35daeddfc10
+
+pkgname = pypi-search
+	depends = python
+	depends = python-html2text
+	depends = python-requests
+	depends = python-beautifulsoup4
