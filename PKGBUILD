@@ -1,8 +1,8 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=subconverter-bin
-pkgver=0.7.1
-pkgrel=4
+pkgver=0.7.2
+pkgrel=1
 pkgdesc='Utility to convert between various proxy subscription formats'
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/tindy2013/subconverter"
@@ -14,9 +14,9 @@ source_x86_64=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}
 source_armv7h=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/subconverter_armv7.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/subconverter_aarch64.tar.gz")
 sha256sums=('dddffe61ec8cb6160393c1ac422ec592e534da3c0ac88cc74ae668732fbc3e6e')
-sha256sums_x86_64=('978a6c0e5d3a0c77b1269567a68c4f37cf413f95c40140b7943f6ffcb52255b4')
-sha256sums_armv7h=('46c65f5dea859e03febcd91f59367af5257f6b07113fdcee8f49aaea5e22d11a')
-sha256sums_aarch64=('032c7a87be0efd1ce7f63fb075569121f4db45f30fd09f8e281d30bbaccefd7e')
+sha256sums_x86_64=('06bbe9e50291a0f83a1618697f704a5c002ef5bba60627344b5cd0651c3dc3b3')
+sha256sums_armv7h=('a8fdef6b55f2f9460e2eb4ea977d5287f6d07cb98c9e49b35fd572f248136e5d')
+sha256sums_aarch64=('d1059e22187b0a7e2bf069d8a1b8c097c54750646530893ee0c5e096203798c1')
 
 prepare() {
   cd "${srcdir}/subconverter"

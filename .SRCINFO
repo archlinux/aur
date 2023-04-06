@@ -1,7 +1,7 @@
 pkgbase = subconverter-bin
 	pkgdesc = Utility to convert between various proxy subscription formats
-	pkgver = 0.7.1
-	pkgrel = 4
+	pkgver = 0.7.2
+	pkgrel = 1
 	url = https://github.com/tindy2013/subconverter
 	arch = x86_64
 	arch = armv7h
@@ -11,11 +11,11 @@ pkgbase = subconverter-bin
 	provides = subconverter
 	source = subconverter.service
 	sha256sums = dddffe61ec8cb6160393c1ac422ec592e534da3c0ac88cc74ae668732fbc3e6e
-	source_x86_64 = subconverter-bin-0.7.1.tar.gz::https://github.com/tindy2013/subconverter/releases/download/v0.7.1/subconverter_linux64.tar.gz
-	sha256sums_x86_64 = 978a6c0e5d3a0c77b1269567a68c4f37cf413f95c40140b7943f6ffcb52255b4
-	source_armv7h = subconverter-bin-0.7.1.tar.gz::https://github.com/tindy2013/subconverter/releases/download/v0.7.1/subconverter_armv7.tar.gz
-	sha256sums_armv7h = 46c65f5dea859e03febcd91f59367af5257f6b07113fdcee8f49aaea5e22d11a
-	source_aarch64 = subconverter-bin-0.7.1.tar.gz::https://github.com/tindy2013/subconverter/releases/download/v0.7.1/subconverter_aarch64.tar.gz
-	sha256sums_aarch64 = 032c7a87be0efd1ce7f63fb075569121f4db45f30fd09f8e281d30bbaccefd7e
+	source_x86_64 = subconverter-bin-0.7.2.tar.gz::https://github.com/tindy2013/subconverter/releases/download/v0.7.2/subconverter_linux64.tar.gz
+	sha256sums_x86_64 = 06bbe9e50291a0f83a1618697f704a5c002ef5bba60627344b5cd0651c3dc3b3
+	source_armv7h = subconverter-bin-0.7.2.tar.gz::https://github.com/tindy2013/subconverter/releases/download/v0.7.2/subconverter_armv7.tar.gz
+	sha256sums_armv7h = a8fdef6b55f2f9460e2eb4ea977d5287f6d07cb98c9e49b35fd572f248136e5d
+	source_aarch64 = subconverter-bin-0.7.2.tar.gz::https://github.com/tindy2013/subconverter/releases/download/v0.7.2/subconverter_aarch64.tar.gz
+	sha256sums_aarch64 = d1059e22187b0a7e2bf069d8a1b8c097c54750646530893ee0c5e096203798c1
 
 pkgname = subconverter-bin
