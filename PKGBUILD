@@ -2,7 +2,7 @@
 
 pkgname=python-biscuits
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and tasty cookies handling"
 url="https://github.com/pyrates/biscuits"
 license=('MIT')
