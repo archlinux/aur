@@ -1,4 +1,4 @@
-# Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
+# Maintainer: João Costa <joaocosta.work@posteo.net>
 
 _pkgname=babelfish
 pkgname=babelfish-fish
@@ -15,7 +15,7 @@ sha512sums=('26090a43f329a33c4e3d757475fbc5cd5ffe18975bf3c2e7a0b8f5f7c036ea23a32
 
 
 build() {
-	cd "$_pkgname-$pkgver"
+    cd "$_pkgname-$pkgver"
 
     go build \
         -trimpath \
@@ -27,11 +27,11 @@ build() {
 }
 
 package() {
-	cd "$_pkgname-$pkgver"
+    cd "$_pkgname-$pkgver"
 
     install -Dvm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
     install -Dm644 "babel.fish" "$pkgdir/usr/share/fish/vendor_conf.d/babel.fish"
-    
+
     install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
