@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=aom-git
-pkgver=r33631.g6b231dc136
+pkgver=3.6.0.r463.gdc985c81d66
 pkgrel=1
 pkgdesc="An open, royalty-free video coding format designed for video transmissions over the Internet"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('BSD' 'custom:PATENTS')
 depends=('gcc-libs')
 makedepends=('git' 'cmake' 'doxygen' 'graphviz' 'perl' 'yasm')
 checkdepends=('python')
-provides=('aom' 'libaom.so')
+provides=("aom=$pkgver" 'libaom.so')
 conflicts=('aom')
 source=("git+https://aomedia.googlesource.com/aom")
 sha256sums=('SKIP')
@@ -19,9 +19,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd "aom"
 
-  _rev=$(git rev-list --count --all)
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "r%s.g%s" "$_rev" "$_hash"
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
