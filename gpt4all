@@ -17,7 +17,7 @@ fi
 if [ ! -f "$CONFIG_FILE" ]; then
   cat > "$CONFIG_FILE" << EOF
 [Model]
-default_model =
+model =
 EOF
 fi
 
