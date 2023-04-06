@@ -21,6 +21,10 @@ pkgbase = baca-ereader-git
 	provides = baca-ereader
 	conflicts = baca-ereader
 	source = baca-ereader::git+https://github.com/wustho/baca
+	source = baca_fit.png::https://user-images.githubusercontent.com/43810055/227891952-45df1c36-5113-4793-84b6-249725d3ba19.png
+	source = pretty_yes_no_cap.png::https://user-images.githubusercontent.com/43810055/228417623-ac78fb84-0ee0-4930-a843-752ef693822d.png
 	sha256sums = SKIP
+	sha256sums = 0ba4c5e919d4db2704b7810c7790b2a73d8367e0db983a64cc7fa292c1ba1dd8
+	sha256sums = 4039932020078108773333842b308f1b3f34af6bcb4ac9a54649ada5ace18c90
 
 pkgname = baca-ereader-git
