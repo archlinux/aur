@@ -2,7 +2,7 @@
 # Former maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 
 pkgname=binaryen-git
-pkgver=r6565.gcdf9ee0fd
+pkgver=112.r106.g1b25a3cb0
 pkgrel=1
 pkgdesc="Compiler infrastructure and toolchain library for WebAssembly"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('apache')
 depends=('gcc-libs')
 makedepends=('git' 'cmake')
 #checkdepends=('python')
-provides=('binaryen')
+provides=("binaryen=$pkgver")
 conflicts=('binaryen')
 source=("git+https://github.com/WebAssembly/binaryen.git"
         "binaryen.sh::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/binaryen/trunk/binaryen.sh")
@@ -22,9 +22,10 @@ sha256sums=('SKIP'
 pkgver() {
   cd "binaryen"
 
-  _rev=$(git rev-list --count --all)
+  _tag=$(git tag -l --sort -v:refname | grep -E '^version_[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "r%s.g%s" "$_rev" "$_hash"
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^version_//'
 }
 
 build() {
