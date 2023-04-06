@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=coreutils-git
-pkgver=8.28.r32.ga4eedb251
+pkgver=9.2.r13.g5891d28ed
 pkgrel=1
 pkgdesc="Basic file, shell and text manipulation utilities of the GNU operating system"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://www.gnu.org/software/coreutils/coreutils.html"
 license=('GPL3')
 depends=('glibc' 'gmp' 'libcap' 'openssl')
 makedepends=('git' 'gettext' 'gperf' 'gzip' 'perl' 'rsync' 'tar' 'texinfo')
-provides=('coreutils')
+provides=("coreutils=$pkgver")
 conflicts=('coreutils')
 source=("git+https://git.savannah.gnu.org/git/coreutils.git")
 sha256sums=('SKIP')
@@ -25,7 +25,11 @@ build() {
   cd "coreutils"
 
   ./bootstrap
-  ./configure --prefix="/usr" --libexecdir="/usr/lib" --with-openssl --enable-no-install-program="groups,hostname,kill,uptime"
+  ./configure \
+    --prefix="/usr" \
+    --libexecdir="/usr/lib" \
+    --with-openssl \
+    --enable-no-install-program="groups,hostname,kill,uptime"
   make
 }
 

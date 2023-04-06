@@ -1,6 +1,6 @@
 pkgbase = coreutils-git
 	pkgdesc = Basic file, shell and text manipulation utilities of the GNU operating system
-	pkgver = 8.28.r32.ga4eedb251
+	pkgver = 9.2.r13.g5891d28ed
 	pkgrel = 1
 	url = https://www.gnu.org/software/coreutils/coreutils.html
 	arch = i686
@@ -18,10 +18,9 @@ pkgbase = coreutils-git
 	depends = gmp
 	depends = libcap
 	depends = openssl
-	provides = coreutils
+	provides = coreutils=9.2.r13.g5891d28ed
 	conflicts = coreutils
 	source = git+https://git.savannah.gnu.org/git/coreutils.git
 	sha256sums = SKIP
 
 pkgname = coreutils-git
-
