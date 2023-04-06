@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=colm-git
-pkgver=0.14.7.r0.ge88bda06
+pkgver=0.14.7.r44.g28b6e0a0
 pkgrel=1
 pkgdesc="A programming language designed for the analysis and transformation of computer languages"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://www.colm.net/open-source/colm/"
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'asciidoc' 'fig2dev')
-provides=('colm')
+provides=("colm=$pkgver")
 conflicts=('colm')
 options=('staticlibs')
 source=("git+https://github.com/adrian-thurston/colm.git")
