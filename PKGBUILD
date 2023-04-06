@@ -11,15 +11,15 @@ url='https://www.srsran.com'
 license=('AGPL3')
 depends=(
   'fftw'         # discrete Fourier transform
-  'mbedtls'      # cryptography
-  'lksctp-tools' # SCTP libraries
-  'yaml-cpp'     # config file and command line parser
   'libelf'       # backtraces
   'libuhd'       # driver for Universal Software Radio Peripheral (USRP)
-  'boost'        # requirement by libuhd
-  'python'       # requirement by libuhd
+  'lksctp-tools' # SCTP libraries
+  'mbedtls'      # cryptography
+  'python'       # python (required by libuhd)
+  'yaml-cpp'     # config file and command line parser
 )
 makedepends=(
+  'boost' # boost development headers (required by libuhd)
   'cmake' # build system
   'git'   # version control system
   'gtest' # testing suite
