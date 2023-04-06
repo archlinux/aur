@@ -1,6 +1,6 @@
 pkgbase = redpanda-cpp-bin
 	pkgdesc = A light-weight C/C++ IDE based on Qt
-	pkgver = 1.1.0
+	pkgver = 2.20
 	pkgrel = 1
 	url = https://github.com/royqh1979/RedPanda-CPP
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = redpanda-cpp-bin
 	optdepends = raylib-drawing
 	provides = redpanda-cpp
 	conflicts = redpanda-cpp
-	noextract = redpanda-cpp_1.1.0-1_debian11_amd64.deb
+	noextract = redpanda-cpp_2.20-1_debian11_amd64.deb
 	options = !strip
-	source = https://github.com/royqh1979/RedPanda-CPP/releases/download/1.1.0/redpanda-cpp_1.1.0-1_debian11_amd64.deb
-	sha256sums = b4f32ecc2dbd7c627ead6f385fdb2dba8d43a71fea17e2d102cd9d47295eb3cd
+	source = https://github.com/royqh1979/RedPanda-CPP/releases/download/2.20/redpanda-cpp_2.20-1_amd64.debian11.deb
+	sha256sums = SKIP
 
 pkgname = redpanda-cpp-bin
