@@ -10,7 +10,7 @@ pkgbase = meshroom-bin
 	provides = meshroom
 	conflicts = meshroom
 	options = !strip
-	source = https://download.fosshub.com/Protected/expiretime=1680854294;badurl=aHR0cHM6Ly93d3cuZm9zc2h1Yi5jb20vTWVzaHJvb20uaHRtbA==/af4e281ac212863dbd4157b12cf5cf28ece87c733bb189e31fd10b37c34b2bbf/5c6fe99776dd983e3dec2213/6421d7745c7b021d082ca1b5/Meshroom-2023.1.0-linux.tar.gz
+	source = https://www.fosshub.com/Meshroom.html?dwl=Meshroom-2023.1.0-linux.tar.gz
 	source = Meshroom
 	source = meshroom_photogrammetry
 	source = Meshroom.png
