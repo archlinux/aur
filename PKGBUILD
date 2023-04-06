@@ -2,7 +2,7 @@
 
 pkgname=python-dbapi-compliance
 pkgver=1.15.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Python DB API 2.0 driver compliance unit test suite'
 arch=(any)
 url='https://github.com/baztian/dbapi-compliance'
