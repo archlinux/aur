@@ -3,7 +3,7 @@
 _name=piccata
 pkgname=python-piccata
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple CoAP (RFC7252) toolkit"
 arch=(any)
 url="https://github.com/NordicSemiconductor/piccata"
