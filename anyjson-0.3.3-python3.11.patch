@@ -1,0 +1,12 @@
+diff -ruN a/setup.py b/setup.py
+--- a/setup.py	2012-06-22 00:59:59.000000000 +0200
++++ b/setup.py	2023-04-06 23:40:43.050931363 +0200
+@@ -2,8 +2,6 @@
+ import sys
+ 
+ extra = {}
+-if sys.version_info >= (3, 0):
+-    extra.update(use_2to3=True)
+ 
+ try:
+     from setuptools import setup, find_packages
