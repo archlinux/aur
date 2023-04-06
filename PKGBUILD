@@ -2,7 +2,7 @@
 
 pkgname=aspell-git
 pkgver=0.60.8.20190921.r37.gcef82a8
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and Open Source spell checker"
 arch=('i686' 'x86_64')
 url="http://aspell.net/"
@@ -10,7 +10,7 @@ license=('LGPL')
 depends=('gcc-libs' 'ncurses')
 makedepends=('git')
 optdepends=('perl: to import old dictionaries')
-provides=('aspell')
+provides=("aspell=$pkgver")
 conflicts=('aspell')
 options=('staticlibs')
 source=("git+https://git.savannah.gnu.org/git/aspell.git")

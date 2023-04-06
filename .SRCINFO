@@ -1,7 +1,7 @@
 pkgbase = aspell-git
 	pkgdesc = Free and Open Source spell checker
 	pkgver = 0.60.8.20190921.r37.gcef82a8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://aspell.net/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = aspell-git
 	depends = gcc-libs
 	depends = ncurses
 	optdepends = perl: to import old dictionaries
-	provides = aspell
+	provides = aspell=0.60.8.20190921.r37.gcef82a8
 	conflicts = aspell
 	options = staticlibs
 	source = git+https://git.savannah.gnu.org/git/aspell.git
