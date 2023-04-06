@@ -2,15 +2,15 @@
 # Co-Maintainer: Polarian <polarian@polarian.dev>
 
 pkgname=reposilite
+<<<<<<< HEAD
 pkgver=3.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Reposilite (formerly NanoMaven) - lightweight repository manager for Maven artifacts. It is a simple solution to replace managers like Nexus, Archiva or Artifactory."
 arch=(any)
 url="https://reposilite.com"
 license=('Apache')
-depends=('java-runtime-headless>=18')
-makedepends=('java-environment=18' 'nodejs-lts-hydrogen' 'npm')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/dzikoysk/reposilite/archive/$pkgver.tar.gz"
+depends=('java-runtime-headless')
+source=("https://maven.reposilite.com/releases/com/reposilite/$pkgname/$pkgver/$pkgname-$pkgver-all.jar"
         "$pkgname.service"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles"
@@ -25,19 +25,12 @@ sha256sums=('e18f7b9da3207db7c938580ce8121c773aa4bf8a4734a2fa5a1a964e5eac8d7e'
 backup=('etc/reposilite/configuration.cdn'
         'etc/reposilite/default.env')
 
-build() {
-  cd "$pkgname-$pkgver"
-  sed -i -r -e "s/(\\s+)version\\s*=.*/\\1version = \"$pkgver\"/" build.gradle.kts
-  chmod a+x gradlew
-  JAVA_HOME="/usr/lib/jvm/java-18-openjdk" ./gradlew :reposilite-backend:shadowJar --no-daemon --stacktrace
-}
-
 package() {
   install -Dm 644 $pkgname.service -t "${pkgdir}/usr/lib/systemd/system"
   install -Dm 644 $pkgname.sysusers "${pkgdir}/usr/lib/sysusers.d/$pkgname.conf"
   install -Dm 644 $pkgname.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/$pkgname.conf"
-  install -Dm 644 $pkgname-$pkgver/reposilite-backend/build/libs/$pkgname-$pkgver.jar "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
+  install -Dm 644 "$pkgname-$pkgver-all.jar" "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
   install -Dm 644 $pkgname.env "${pkgdir}/etc/reposilite/default.env"
-  /usr/lib/jvm/java-18-openjdk/bin/java -jar "$pkgdir/usr/share/java/$pkgname/$pkgname.jar" -wd "${pkgdir}/etc/reposilite" -gc configuration.cdn
+  java -jar "$pkgdir/usr/share/java/$pkgname/$pkgname.jar" -wd "${pkgdir}/etc/reposilite" -gc configuration.cdn
   install -Dm 755 $pkgname.wrapper "${pkgdir}/usr/bin/reposilite"
 }

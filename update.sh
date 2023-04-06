@@ -33,7 +33,7 @@ if git branch -r | grep release/ &>/dev/null; then
 fi
 
 build_ver=`grep ^pkgver= PKGBUILD | cut -d= -f2`
-release_ver=`curl --silent "https://api.github.com/repos/dzikoysk/reposilite/releases/latest" | jq -r .tag_name`
+release_ver=`curl --silent 'https://maven.reposilite.com/api/maven/latest/version/releases/com/reposilite/reposilite' | jq -r .version`
 new_ver=`echo -e "$release_ver\n$build_ver" | sort -rV | head -n 1`
 
 if [ $new_ver = $build_ver -a "${initial}x" = "x" ] ; then
