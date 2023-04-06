@@ -1,6 +1,6 @@
 pkgbase = blosc-git
 	pkgdesc = A blocking, shuffling and loss-less compression library
-	pkgver = 1.20.1.r1.g5352508
+	pkgver = 1.21.3.r32.g6f6940c
 	pkgrel = 1
 	url = https://blosc.org/
 	arch = i686
@@ -13,11 +13,10 @@ pkgbase = blosc-git
 	depends = snappy
 	depends = zlib
 	depends = zstd
-	provides = blosc
+	provides = blosc=1.21.3.r32.g6f6940c
 	conflicts = blosc
 	options = staticlibs
 	source = git+https://github.com/Blosc/c-blosc.git
 	sha256sums = SKIP
 
 pkgname = blosc-git
-

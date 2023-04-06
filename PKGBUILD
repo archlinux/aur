@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=blosc-git
-pkgver=1.20.1.r1.g5352508
+pkgver=1.21.3.r32.g6f6940c
 pkgrel=1
 pkgdesc="A blocking, shuffling and loss-less compression library"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://blosc.org/"
 license=('BSD')
 depends=('glibc' 'lz4' 'snappy' 'zlib' 'zstd')
 makedepends=('git' 'cmake')
-provides=('blosc')
+provides=("blosc=$pkgver")
 conflicts=('blosc')
 options=('staticlibs')
 source=("git+https://github.com/Blosc/c-blosc.git")
