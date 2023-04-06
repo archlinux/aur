@@ -2,11 +2,11 @@
 _pkgname=keenwrite
 pkgname="${_pkgname}-bin"
 pkgver=3.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Free, open-source, cross-platform desktop Markdown text editor with live preview, string interpolation, and math."
 arch=('x86_64')
 url="https://github.com/DaveJarvis/KeenWrite"
-license=(GPL3)
+license=('custom:BSD2-ClauseLicense')
 depends=(hicolor-icon-theme gendesk)
 options=(!strip)
 provides=(DaveJarvis)

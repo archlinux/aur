@@ -1,10 +1,10 @@
 pkgbase = keenwrite-bin
 	pkgdesc = Free, open-source, cross-platform desktop Markdown text editor with live preview, string interpolation, and math.
 	pkgver = 3.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/DaveJarvis/KeenWrite
 	arch = x86_64
-	license = GPL3
+	license = custom:BSD2-ClauseLicense
 	depends = hicolor-icon-theme
 	depends = gendesk
 	provides = DaveJarvis
