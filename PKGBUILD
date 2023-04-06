@@ -1,24 +1,29 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-_pkgname=veyon
-pkgname="${_pkgname}-bin"
+# Maintainer: yochananmarqos <mark dot wagie at proton dot me>
+pkgname=veyon-bin
 pkgver=4.7.5
 pkgrel=1
-pkgdesc="A free and open source software for monitoring and controlling computers across multiple platforms."
-arch=("x86_64")
+pkgdesc="Cross-platform computer monitoring and classroom management"
+arch=('x86_64')
 url="https://veyon.io/"
-_githuburl="https://github.com/veyon/veyon"
-license=(GPL2)
-depends=('qt5-base' 'libxcomposite' 'libxdamage' 'gcc-libs' 'libxfixes' 'libxi' 'libxext' 'libxtst' 'libxrandr' 'procps-ng' \
-    'libxinerama' 'openssl' 'pam' 'hicolor-icon-theme' 'glibc' 'libx11')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-source=("${_pkgname}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}.1-ubuntu.jammy_amd64.deb")
-sha256sums=('95cb94794c4c4c2433ca2b154028e0db0494f6d0ecea0c8e4166aae9a333be2c')
-    
+license=('GPL2')
+depends=('hicolor-icon-theme' 'libfakekey' 'libldap' 'libsasl' 'libvncserver' 'libxi' 'qt5-base' 'libx11' 'glibc' 'openssl' 'libxcursor' \
+    'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxinerama' 'libxrandr' 'libxtst' 'pam' 'procps-ng' 'qca-qt5' 'gcc-libs')
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
+source=("https://github.com/veyon/veyon/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.0-fedora.37.x86_64.rpm")
+noextract=("${pkgname%-bin}-${pkgver}.0-fedora.37.x86_64.rpm")
+sha256sums=('c5b429913bb2b2fe327cd8b2ca75c2a198a48afe78e148da0209408dd81f3a97')
+
+prepare() {
+  mkdir -p "${pkgname%-bin}-${pkgver}"
+  bsdtar -xvf "${pkgname%-bin}-${pkgver}.0-fedora.37.x86_64.rpm" -C "${pkgname%-bin}-${pkgver}"
+}
+
 package() {
-    bsdtar -xvf data.tar.xz -C "${pkgdir}"
-    mv "${pkgdir}/lib/systemd" "${pkgdir}/usr/lib"
-    mv "${pkgdir}/usr/lib/x86_64-linux-gnu/${_pkgname}" "${pkgdir}/usr/lib/${_pkgname}"
-    rm -rf "${pkgdir}/lib" "${pkgdir}/usr/lib/x86_64-linux-gnu"
-    chmod 0755  "${pkgdir}/usr/bin/veyon-auth-helper"
+  cd "${pkgname%-bin}-${pkgver}"
+  install -Dm755 usr/bin/* -t "${pkgdir}/usr/bin/"
+  install -d "${pkgdir}/usr/lib"
+  cp -r lib/systemd "usr/lib64/${pkgname%-bin}" "${pkgdir}/usr/lib/"
+  cp -r usr/share "${pkgdir}/usr/"
 }
