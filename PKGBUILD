@@ -1,7 +1,7 @@
 # Contributor: Patrick McCarty <pnorcks at gmail dot com>
 
 pkgname=createrepo_c
-pkgver=0.21.0
+pkgver=0.21.1
 pkgrel=1
 pkgdesc="A C implementation of createrepo, a tool to create yum repositories"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('bash-completion' 'cmake>=3.13' 'doxygen'
              'pkg-config' 'python' 'python-setuptools' 'python-sphinx')
 optdepends=('python: for python bindings')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('caa46626c400e87e0b9338fb4fa055d732ff88834f224784a81cda7ac50d03c6')
+sha256sums=('41efa8382e903c4fb0c3c9e3e88e8e5e2a7bb3d4e000221dc247915846ac9c4f')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -28,21 +28,21 @@ build() {
 	      -DWITH_ZCHUNK=ON \
 	      -Wno-dev
 
-	make -C build
-	make -C build doc
+	cmake --build build
+	cmake --build build --target doc
 }
 
 check() {
 	cd "$pkgname-$pkgver"
 
-	make -C build tests
-	make -C build ARGS="-V" test
+	cmake --build build --target tests
+	ctest --test-dir build --output-on-failure
 }
 
 package() {
 	cd "$pkgname-$pkgver"
 
-	make -C build DESTDIR="$pkgdir/" install
+	DESTDIR="$pkgdir" cmake --install build
 
 	install -Dp -m644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
