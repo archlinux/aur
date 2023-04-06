@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=acl-git
-pkgver=2.2.53.r4.g40c190d
+pkgver=2.3.1.r20.gd26507b
 pkgrel=1
 pkgdesc="Commands for manipulating POSIX access control lists"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://savannah.nongnu.org/projects/acl"
 license=('GPL' 'LGPL')
 depends=('glibc' 'attr')
 makedepends=('git')
-provides=('acl' 'xfsacl' 'libacl.so')
+provides=("acl=$pkgver" 'xfsacl' 'libacl.so')
 conflicts=('acl' 'xfsacl')
 replaces=('xfsacl')
 options=('staticlibs')
