@@ -3,7 +3,7 @@
 
 _gemname=emoji_regex
 pkgname=ruby-$_gemname
-pkgver=3.2.3
+pkgver=15.0.0
 pkgrel=1
 pkgdesc="A set of Ruby regular expressions for matching Unicode Emoji symbols"
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=(rubygems ruby-rdoc ruby-bundler ruby-rake nodejs yarn)
 checkdepends=(ruby-rspec)
 options=(!emptydirs)
 source=(${url}/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
-sha256sums=('4e7120e2f54c82f830434e57ff161033738e701944f6bd40baf5b46d36d7c78d')
+sha256sums=('eac012ffb8d41adccfa4c27ee7f8af8b5f4835d999f19aa73d94d60000a52cc5')
 
 build() {
   cd ruby-emoji-regex-$pkgver
