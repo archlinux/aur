@@ -1,32 +1,9 @@
 diff --git a/Makefile b/Makefile
-index 565befcc..199b4d9c 100644
+index 60f1dd72..fd0d0061 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -750,22 +750,6 @@ uninstall:	uninstall-i18n
- 	-if [ "x$(BUNDLE)" != "x" ]; then \
- 	  rm -rf $(BUNDLE); \
- 	fi
--	@if [ "x$(shell which xdg-icon-resource install)" != "x" ]; then \
--	  xdg-icon-resource uninstall --size 192 tux4kids-tuxpaint ; \
--	  xdg-icon-resource uninstall --size 128 tux4kids-tuxpaint ; \
--	  xdg-icon-resource uninstall --size 96 tux4kids-tuxpaint ; \
--	  xdg-icon-resource uninstall --size 64 tux4kids-tuxpaint ; \
--	  xdg-icon-resource uninstall --size 48 tux4kids-tuxpaint ; \
--	  xdg-icon-resource uninstall --size 32 tux4kids-tuxpaint ; \
--	  xdg-icon-resource uninstall --size 22 tux4kids-tuxpaint ; \
--	  xdg-icon-resource uninstall --size 16 tux4kids-tuxpaint ; \
--	fi
--	@if [ "x$(shell which xdg-desktop-menu)" != "x" ]; then \
--	  xdg-desktop-menu uninstall tux4kids-tuxpaint.desktop ; \
--	fi
--	-if [ "x$(shell which update-desktop-database)" != "x" ]; then \
--	  update-desktop-database; \
--	fi
- 
- # Install default config file:
- .PHONY: install-default-config
-@@ -946,24 +930,14 @@ install-nokia770:
- install-xdg: src/tuxpaint.desktop src/org.tuxpaint.Tuxpaint.appdata.xml
+@@ -968,35 +968,14 @@ install-nokia770:
+ install-xdg: src/tuxpaint.desktop src/tuxpaint-fullscreen.desktop src/org.tuxpaint.Tuxpaint.appdata.xml
  	@echo
  	@echo "...Installing launcher icon into desktop environment..."
 -	@if [ "x$(shell which xdg-icon-resource)" != "x" ]; then \
@@ -38,11 +15,22 @@ index 565befcc..199b4d9c 100644
 -	  xdg-icon-resource install --size 32 data/images/icon32x32.png tux4kids-tuxpaint ; \
 -	  xdg-icon-resource install --size 22 data/images/icon22x22.png tux4kids-tuxpaint ; \
 -	  xdg-icon-resource install --size 16 data/images/icon16x16.png tux4kids-tuxpaint ; \
+-	  xdg-icon-resource install --size 192 data/images/icon192x192.png tux4kids-tuxpaint-fullscreen ; \
+-	  xdg-icon-resource install --size 128 data/images/icon128x128.png tux4kids-tuxpaint-fullscreen ; \
+-	  xdg-icon-resource install --size 96 data/images/icon96x96.png tux4kids-tuxpaint-fullscreen ; \
+-	  xdg-icon-resource install --size 64 data/images/icon64x64.png tux4kids-tuxpaint-fullscreen ; \
+-	  xdg-icon-resource install --size 48 data/images/icon48x48.png tux4kids-tuxpaint-fullscreen ; \
+-	  xdg-icon-resource install --size 32 data/images/icon32x32.png tux4kids-tuxpaint-fullscreen ; \
+-	  xdg-icon-resource install --size 22 data/images/icon22x22.png tux4kids-tuxpaint-fullscreen ; \
+-	  xdg-icon-resource install --size 16 data/images/icon16x16.png tux4kids-tuxpaint-fullscreen ; \
 -	fi
 -	@if [ "x$(shell which xdg-desktop-menu)" != "x" ]; then \
 -	  cp src/tuxpaint.desktop ./tux4kids-tuxpaint.desktop ; \
 -	  xdg-desktop-menu install tux4kids-tuxpaint.desktop ; \
 -	  rm ./tux4kids-tuxpaint.desktop ; \
+-	  cp src/tuxpaint-fullscreen.desktop ./tux4kids-tuxpaint-fullscreen.desktop ; \
+-	  xdg-desktop-menu install tux4kids-tuxpaint-fullscreen.desktop ; \
+-	  rm ./tux4kids-tuxpaint-fullscreen.desktop ; \
 -	fi
 -	@if [ "x$(shell which update-desktop-database)" != "x" ]; then \
 -	  update-desktop-database ; \
