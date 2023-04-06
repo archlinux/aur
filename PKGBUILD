@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=bcftools-git
-pkgver=1.10.2.r123.gdc26549
-pkgrel=2
+pkgver=1.17.r18.g60c65eb9
+pkgrel=1
 pkgdesc="Tools for variant calling and manipulating VCFs and BCFs"
 arch=('i686' 'x86_64')
 url="https://samtools.github.io/bcftools/"
@@ -10,7 +10,7 @@ license=('custom')
 depends=('glibc' 'gsl' 'htslib' 'zlib')
 makedepends=('git')
 optdepends=('python')
-provides=('bcftools')
+provides=("bcftools=$pkgver")
 conflicts=('bcftools')
 source=("git+https://github.com/samtools/bcftools.git")
 sha256sums=('SKIP')
