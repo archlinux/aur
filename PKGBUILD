@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=cloudlens
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="k9s like CLI for AWS"
 arch=(x86_64)
