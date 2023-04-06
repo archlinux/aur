@@ -3,7 +3,7 @@
 
 pkgname=amazon-workspaces-bin
 pkgver=4.5.0.2006
-pkgrel=2
+pkgrel=3
 _aptdist=focal
 pkgdesc='Amazon Workspace Client'
 arch=('x86_64')
@@ -18,6 +18,9 @@ depends=(
     'hiredis'
     'libva'
 )
+optdepends=(
+    'pcoip-client: Might be required if you have issues connecting to a workspace - please comment on AUR'
+)
 options=('staticlibs')
 makedepends=(
   'binutils'
@@ -28,10 +31,8 @@ source=(
     "$pkgname-$pkgver.info::https://d3nt0h4h6pmmc4.cloudfront.net/ubuntu/dists/${_aptdist}/main/binary-amd64/Packages"
 )
 
-sha256sums=(
-    "SKIP"
-    "SKIP"
-)
+sha256sums=('d72b23d36d1f60e98846f651dbbfbb64da9dcea900d906eb0b00d4d7ca2ec5a2'
+            'fbaac63a54bf9256b15d242bc59a152ffe66a07cdba9b724957cfde2fa9a1f1e')
 
 prepare() {
     # Verify the checksum
