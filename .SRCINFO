@@ -1,0 +1,19 @@
+pkgbase = python-pyxel-fedic
+	pkgdesc = Python FE-DIC library
+	pkgver = 3.0.3.ga211380
+	pkgrel = 1
+	url = https://github.com/jcpassieux/pyxel
+	arch = any
+	license = CeCILL
+	makedepends = python-setuptools
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-matplotlib
+	depends = python-opencv
+	depends = python-scikit-image
+	depends = python-meshio
+	depends = gmsh
+	source = git+https://github.com/jcpassieux/pyxel.git
+	sha512sums = SKIP
+
+pkgname = python-pyxel-fedic
