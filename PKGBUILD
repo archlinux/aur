@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gsubs
 pkgver=1.0.3
 pkgrel=3
