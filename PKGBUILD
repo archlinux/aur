@@ -5,7 +5,7 @@
 
 # Maintainer: Asuka Minato <asukaminato at nyan dot eu dot org>
 pkgname=typst-bin
-pkgver=0.1
+pkgver=0.1.0
 pkgrel=1
 epoch=
 pkgdesc="A new markup-based typesetting system that is powerful and easy to learn."
