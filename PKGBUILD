@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname=journalctl-desktop-notification-git
-pkgver=r14.50a2639
+pkgver=r15.90d3cce
 pkgrel=1
 pkgdesc="The notification notifies on the desktop when any error message appeared in Journalctl log."
 arch=('any')
