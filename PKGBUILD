@@ -3,7 +3,7 @@
 pkgname=python-ansicolors
 pkgver=1.1.8
 _commit=c965f5b9103c5bd32a1572adb8024ebe83278fb0
-pkgrel=5
+pkgrel=6
 pkgdesc="ANSI colors for Python"
 url="https://github.com/jonathaneunice/colors"
 license=('ISC')
