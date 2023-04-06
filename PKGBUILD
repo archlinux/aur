@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=glmmTMB
-_pkgver=1.1.6
+_pkgver=1.1.7
 pkgname=r-${_pkgname,,}
-pkgver=1.1.6
+pkgver=1.1.7
 pkgrel=1
 pkgdesc='Generalized Linear Mixed Models using Template Model Builder'
 arch=('x86_64')
@@ -50,7 +50,7 @@ optdepends=(
   r-xtable
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('11565e405b1983602d2fe7204f51decb6bea13e4b92865a426915bf8e89a588e')
+sha256sums=('a38be6e3b8a65a928d19970aee2b13d28535e42b97a046b2f00014f78475c1f1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

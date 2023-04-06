@@ -1,6 +1,6 @@
 pkgbase = r-glmmtmb
 	pkgdesc = Generalized Linear Mixed Models using Template Model Builder
-	pkgver = 1.1.6
+	pkgver = 1.1.7
 	pkgrel = 1
 	url = https://cran.r-project.org/package=glmmTMB
 	arch = x86_64
@@ -40,7 +40,7 @@ pkgbase = r-glmmtmb
 	optdepends = r-testthat
 	optdepends = r-texreg
 	optdepends = r-xtable
-	source = https://cran.r-project.org/src/contrib/glmmTMB_1.1.6.tar.gz
-	sha256sums = 11565e405b1983602d2fe7204f51decb6bea13e4b92865a426915bf8e89a588e
+	source = https://cran.r-project.org/src/contrib/glmmTMB_1.1.7.tar.gz
+	sha256sums = a38be6e3b8a65a928d19970aee2b13d28535e42b97a046b2f00014f78475c1f1
 
 pkgname = r-glmmtmb
