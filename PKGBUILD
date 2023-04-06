@@ -1,11 +1,11 @@
-# Maintainer: Anton Kudelin <kudelin at protonmail dot com>
+# Maintainer: Anton Kudelin <kudelin at proton dot me>
 
 pkgname=libvdwxc
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A library for vdW-DF exchange-correlation functionals"
-arch=("x86_64")
-url="https://libvdwxc.org/"
+arch=("x86_64" "aarch64")
+url="https://libvdwxc.org"
 license=('GPL')
 depends=('fftw')
 makedepends=('gcc-fortran')
@@ -20,9 +20,9 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   ./configure \
-              --prefix=/usr \
-              --with-fftw3 \
-              --with-mpi
+    --prefix=/usr \
+    --with-fftw3 \
+    --with-mpi
   make
 }
 
