@@ -2,7 +2,7 @@
 
 pkgname=serverless
 pkgver=3.30.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Serverless Framework - Build web, mobile and IoT applications with serverless architectures'
 url='https://github.com/serverless/serverless'
 arch=('any')
