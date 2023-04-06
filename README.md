@@ -17,17 +17,17 @@ $ cd archlinux-linux-keep-modules/
 Make the `linux-keep-modules` package:
 ```
 $ makepkg -f
-==> Making package: linux-keep-modules 1.0.0-1 (Thu 06 Apr 2023 12:34:48 PM EDT)
+==> Making package: linux-keep-modules
 ==> Checking runtime dependencies...
 ==> Checking buildtime dependencies...
 ...
-==> Finished making: linux-keep-modules 1.0.0-1 (Thu 06 Apr 2023 12:34:50 PM EDT)
+==> Finished making: linux-keep-modules
 ```
 
 Install the `linux-keep-modules` package:
 
 ```
-$ sudo pacman -U linux-keep-modules-1.0.0-1-any.pkg.tar.zst
+$ sudo pacman -U linux-keep-modules-*-any.pkg.tar.*
 ```
 
 Finally, enable the cleanup-linux-modules service:
