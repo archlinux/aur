@@ -3,7 +3,7 @@
 _name=pytest-skip-markers
 pkgname=python-pytest-skip-markers
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Pytest plugin which implements a few useful skip markers"
 arch=(any)
 url="https://github.com/saltstack/pytest-skip-markers"
