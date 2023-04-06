@@ -3,7 +3,7 @@
 
 pkgname=ssh-audit
 pkgver=2.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="SSH server and client configuration auditing"
 arch=('any')
 url="https://github.com/jtesta/ssh-audit"
