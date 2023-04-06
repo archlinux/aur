@@ -3,10 +3,10 @@
 
 pkgname=latex-mk
 pkgver=2.1
-pkgrel=4
+pkgrel=5
 pkgdesc="tool for managing LaTeX projects"
 arch=('any')
-url="http://latex-mk.sourceforge.net"
+url="https://latex-mk.sourceforge.net"
 license=('GPL')
 depends=('make' 'texlive-core')
 optdepends=('cups: Common UNIX Printing System(tm)'
@@ -16,7 +16,7 @@ optdepends=('cups: Common UNIX Printing System(tm)'
             'latex2rtf: Converts documents from LaTeX to RTF format'
             'tgif: Interactive 2-D drawing facility under X11'
             'transfig: Utilities for converting XFig figure files')
-source=(http://downloads.sourceforge.net/latex-mk/$pkgname-$pkgver.tar.gz
+source=(https://downloads.sourceforge.net/latex-mk/$pkgname-$pkgver.tar.gz
         ${pkgname}.profile texinfo.patch)
 sha256sums=('6e9df1c60dafdadccc00c44dc966330fe300256dcb829cd1b04647d7b7956dde'
             '5b75ef55c25e44ca78e8b85d1b0d116f5d5532a880b1952d9e9921b2ddda5765'
