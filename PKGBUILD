@@ -3,16 +3,20 @@
 
 pkgname=amazon-workspaces-bin
 pkgver=4.5.0.2006
-pkgrel=1
+pkgrel=2
 _aptdist=focal
 pkgdesc='Amazon Workspace Client'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://clients.amazonworkspaces.com/"
 license=('non-free')
 depends=(
     'gtk3'
     'webkit2gtk'
     'icu63'
+    'libsoup'
+    'graphicsmagick'
+    'hiredis'
+    'libva'
 )
 options=('staticlibs')
 makedepends=(
