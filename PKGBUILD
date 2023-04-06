@@ -2,7 +2,7 @@
 
 pkgname=python-http-parser
 pkgver=0.9.0
-pkgrel=6
+pkgrel=7
 pkgdesc="HTTP request/response parser for Python"
 arch=('x86_64')
 license=('MIT')
