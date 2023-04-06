@@ -2,25 +2,30 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=argc
-pkgver=0.15.1
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="Easily create a feature-rich command-line application in Bash"
+pkgdesc="An elegant command-line options, arguments and sub-commands parser for bash"
 arch=('x86_64')
 url="https://github.com/sigoden/argc"
 license=('MIT' 'Apache')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('499c26688ee654d24de8804184c9c4c2ed558c2c1a3f3d0228bf0916a5a9eb80d7cc931117d575f5cc2a0c616bcc4a2b92fd1bf130f11746b7bd2a40668f65a8')
+sha512sums=('ccde770f576ce291725a31e119d6963928b9f266679e6800b5ea543da723aa07552dec94506a73d0be4ced349d54d2893baa8c657900928c348cfb58975364a9')
 
 prepare() {
   cd "$pkgname-$pkgver"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  mkdir -p completions
 }
 
 build() {
   cd "$pkgname-$pkgver"
   cargo build --release --frozen
+  local compgen="target/release/$pkgname --argc-completions"
+  $compgen bash > "completions/$pkgname.bash"
+  $compgen fish > "completions/$pkgname.fish"
+  $compgen zsh  > "completions/$pkgname.zsh"
 }
 
 check() {
