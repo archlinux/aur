@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 
-import os, json
+import os, json, http.client
 from pyperclip import paste
-from urllib.request import Request, urlopen
 
 
 # 调用deepl，获取翻译结果
@@ -10,17 +9,20 @@ def deepl_api(text):
     if not text.replace("\n", "").replace("\r", ""):
         os.system("zenity --warning --text='剪贴板为空，请选择文本'")
         exit(1)
-    api = "https://deepl.aya1.pro/api"
-    data = json.dumps({"text": text, "target_lang": "ZH"})
-    req = Request(url=api, data=bytes(data, "u8"), method="POST")
-    result = json.loads(urlopen(req).read().decode("utf-8"))
-    if result.get("code") == 200:
-        return result.get("data")
-    os.system("zenity --error --text='翻译出错，请稍后再试'")
-    exit(1)
+    try:
+        conn = http.client.HTTPSConnection("deepl.aya1.pro")
+        payload = json.dumps({"text": text, "target_lang": "ZH"})
+        conn.request("POST", "/api", payload)
+        res = conn.getresponse().read()
+        return json.loads(res).get("data")
+    except:
+        os.system("zenity --error --text='翻译出错，请稍后再试'")
+        exit(1)
 
 
 if __name__ == "__main__":
-    translate_results = deepl_api(paste())  # 获取剪贴板，调用翻译接口
+    text = paste()  # 获取剪贴板
+    print(text)
+    translate_results = deepl_api(text)  # 调用翻译接口
     print(translate_results, file=open("/tmp/deepl.txt", "w"))  # 将翻译结果写入文件
     os.system(f"zenity --title=Deepl --text-info --filename=/tmp/deepl.txt")  # 显示翻译结果
