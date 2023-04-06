@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=automake-git
-pkgver=1.15.r180.gcc7231cc3
+pkgver=1.16.5.r102.gc04c4e885
 pkgrel=1
 pkgdesc="A tool for automatically generating Makefiles"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://www.gnu.org/software/automake/"
 license=('GPL2')
 depends=('sh' 'perl')
 makedepends=('git')
-provides=('automake')
+provides=("automake=$pkgver")
 conflicts=('automake')
 source=("git+https://git.savannah.gnu.org/git/automake.git")
 sha256sums=('SKIP')
@@ -25,7 +25,8 @@ build() {
   cd "automake"
 
   ./bootstrap
-  ./configure --prefix="/usr"
+  ./configure \
+    --prefix="/usr"
   make
 }
 
