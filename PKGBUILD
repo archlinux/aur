@@ -2,7 +2,7 @@
 
 pkgname=python-compiler
 pkgver=1.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Python bytecode compiler written in Python'
 arch=(any)
 url='https://github.com/facebookincubator/python-compiler'
