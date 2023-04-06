@@ -2,8 +2,10 @@
 # Maintainer: Hidde Beydals <hello@hidde.co>
 
 pkgname=flux-go
-pkgver=2.0.0rc.1
+pkgver=2.0.0rc1
 pkgrel=1
+_srcname=flux
+_srcver=2.0.0-rc.1
 pkgdesc="Open and extensible continuous delivery solution for Kubernetes"
 url="https://fluxcd.io/"
 arch=("x86_64" "armv6h" "armv7h" "aarch64")
@@ -16,26 +18,25 @@ makedepends=('go>=1.17', 'kustomize>=3.0')
 optdepends=('bash-completion: auto-completion for flux in Bash',
 'zsh-completions: auto-completion for flux in ZSH')
 source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/fluxcd/flux2/archive/v${pkgver}.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/fluxcd/flux2/archive/v${_srcver}.tar.gz"
 )
 sha256sums=(
-  d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed
+  71cee6cbc9ddda18401244c1151c6244b7d0aab320b0049624b5697f63818f1c
 )
-_srcname=flux
 
 build() {
-  cd "flux2-${pkgver}"
+  cd "flux2-${_srcver}"
   export CGO_LDFLAGS="$LDFLAGS"
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_CPPFLAGS="$CPPFLAGS"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
   make cmd/flux/.manifests.done
-  go build -ldflags "-linkmode=external -X main.VERSION=${pkgver}" -o ${_srcname} ./cmd/flux
+  go build -ldflags "-linkmode=external -X main.VERSION=${_srcver}" -o ${_srcname} ./cmd/flux
 }
 
 check() {
-  cd "flux2-${pkgver}"
+  cd "flux2-${_srcver}"
   case $CARCH in
     aarch64)
       export ENVTEST_ARCH=arm64
@@ -48,7 +49,7 @@ check() {
 }
 
 package() {
-  cd "flux2-${pkgver}"
+  cd "flux2-${_srcver}"
   install -Dm755 ${_srcname} "${pkgdir}/usr/bin/${_srcname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
