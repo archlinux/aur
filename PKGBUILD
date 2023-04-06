@@ -2,7 +2,7 @@
 
 _pkgname=rime-ice
 pkgname=rime-ice
-pkgver=2023_03_30T13_40_53Z
+pkgver=2023_04_05T18_16_16Z
 pkgrel=1
 pkgdesc="Rime 配置：雾凇拼音 | 长期维护的简体词库"
 arch=("any")
