@@ -4,7 +4,7 @@
 # $ updaurpkg --apply
 _repo=Freed-Wu/translate-shell
 _source_type=pypi-releases
-_upstreamver='0.0.18'
+_upstreamver='0.0.22'
 _pkgname=$(tr A-Z a-z <<<${_repo##*/})
 _pypi_package=$_pkgname
 
@@ -30,35 +30,14 @@ optdepends=(
 	'festival: speaker support'
 )
 conflicts=("$_pkgname")
-license=(GPLv3)
+license=(GPL3)
 _py=py3
-_bin=trans
 source=(
 	"https://files.pythonhosted.org/packages/$_py/${_pkgname:0:1}/$_pkgname/${_pkgname//-/_}-$pkgver-$_py-none-any.whl"
-	"https://raw.githubusercontent.com/$_repo/main/assets/desktop/$_pkgname.desktop"
-	"https://raw.githubusercontent.com/$_repo/main/LICENSE"
-	"$url/releases/download/$pkgver/$_bin.1.gz"
-	"$url/releases/download/$pkgver/$_bin"
-	"$url/releases/download/$pkgver/_$_bin"
-	"$url/releases/download/$pkgver/$_bin.csh"
 )
-sha256sums=('5821b9842a7d35a6732da3420278bcab47e32de24032f2f8c8757e3ea80184f5'
-            '11f0c6092d30867b09ea9f2f1562169ce8cc0c4476181dd62dbad63b16752972'
-            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            '5b6958399a7e222002a6317282802cf9b7d544eee17815894671d0395bb2f3c1'
-            '3a111e40861566af47f0c440c8d5989f9fd5971bf4d57789d8c2e0cce81cf2dc'
-            '6a437deae1674c41648bfc8f7ab0272a564213d43fa2e29a664b9e3256ab8214'
-            '85ca52dfe53aa61fdf9ed935dd238c38789d6e69471eefeab1315bf59492b3e9')
+sha256sums=('f3438ad8cccf96b95c4f471f8878ea10f240306bb60427cc254e7259a5622ab3')
 
 package() {
 	cd "$srcdir" || return 1
 	python -m installer --destdir="$pkgdir" ./*.whl
-
-	install -Dm644 "$pkgdir$(python -c'import sys; print(sys.path[-1])')/${_pkgname//-/_}/assets/images/$_pkgname.png" -t "$pkgdir/usr/share/icons/hicolor/36x36/apps/"
-	install -Dm644 "$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-	install -Dm644 "$_bin.1.gz" -t "$pkgdir/usr/share/man/man1"
-	install -Dm644 "$_bin" -t "$pkgdir/usr/share/bash-completion/completions"
-	install -Dm644 "_$_bin" -t "$pkgdir/usr/share/zsh/site-functions"
-	install -Dm644 "$_bin.csh" -t "$pkgdir/etc/profile.d"
 }
