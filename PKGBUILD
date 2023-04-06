@@ -1,7 +1,7 @@
 # Maintainer: Markus Kitsinger (SwooshyCueb) <root@swooshalicio.us>
 
 pkgname=ovpn-dco-dkms-git
-pkgver=0.20201204.r258.git8f04ed8
+pkgver=0.20230327.r477.git961c60d
 pkgrel=1
 pkgdesc='Optional Data Channel Offload kernel module for OpenVPN 3'
 arch=('any')
@@ -14,7 +14,7 @@ conflicts=('ovpn-dco' 'ovpn-dco-git' 'ovpn-dco-dkms')
 source=('git+https://github.com/OpenVPN/ovpn-dco.git'
         dkms.conf.in)
 b2sums=('SKIP'
-        'ef58d221d70302cc41831e7ef3337954510540f2d59d85cb1f2767ee718324ad5568544053f64b7de00377d9620bb9f6df1ed1befcefabfc5530bec317ffde47')
+        '4c4d9ef50500f76766861dd7037974b71f3d7183897095e78d91db7ec6416e7d43e2a6bbb9f2625143845b5762f1ebc12b559b909944948d27deb26bb9c96226')
 
 pkgver() {
 	# Debian packages are currently versioned like so:
