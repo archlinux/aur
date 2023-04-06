@@ -1,6 +1,6 @@
 pkgbase = botan-git
 	pkgdesc = Cryptography library written in C++
-	pkgver = 2.7.0.r3.gf639dae0a
+	pkgver = 3.0.0.rc1.r31.g70d06e464
 	pkgrel = 1
 	url = https://botan.randombit.net/
 	arch = i686
@@ -10,11 +10,10 @@ pkgbase = botan-git
 	makedepends = python
 	depends = glibc
 	depends = zlib
-	provides = botan
+	provides = botan=3.0.0.rc1.r31.g70d06e464
 	conflicts = botan
 	options = staticlibs
 	source = git+https://github.com/randombit/botan.git
 	sha256sums = SKIP
 
 pkgname = botan-git
-
