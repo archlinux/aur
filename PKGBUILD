@@ -3,7 +3,7 @@
 
 _pkgname=PuLP
 pkgname=python-pulp
-pkgver=2.5.1
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="A Linear Programming modeler written in Python"
 arch=("any")
@@ -12,7 +12,7 @@ url="https://github.com/coin-or/pulp"
 depends=('python-amply')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-b2sums=('ace8e52eac3d911039ea9c81417de615c1cb7b2ef136c206bdc2fc01657d67379168617148718156314b1d45f27cc099e226a08e561b297b7d2991b5effe9735')
+b2sums=('ae41e5daacad7401761ef6cbc7669b36d04552d5bbf3da31cee7c27db3382eb724b243f9428d59588977e4800d1fc008274e55d95d07d13ed35b6980c6b6cc12')
 
 prepare() {
 	rm -fr python-pulp
