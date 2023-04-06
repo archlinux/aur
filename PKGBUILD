@@ -4,7 +4,7 @@ pkgrel=1
 pkgver=0.4.26
 pkgdesc="A Rust based quick automation tool"
 arch=("any")
-url=https://pipelight.dev/packages/$pkgname-git.$pkgver-$pkgrel.pkg.tar.zst
+url=https://packages.pipelight.dev/$pkgname-$pkgver-$pkgrel-any.pkg.tar.zst
 license=('GPL2')
 depends=(deno)
 makedepends=(git make cargo)
@@ -22,5 +22,5 @@ package() {
 }
 
 url() {
-  https://pipelight.dev/packages/$pkgname-git.$pkgver-$pkgrel.pkg.tar.zst
+  https://packages.pipelight.dev/$pkgname-$pkgver-$pkgrel-any.pkg.tar.zst
 }
