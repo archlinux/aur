@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=vnote
 pkgname="${_pkgname}-appimage"
-pkgver=3.15.1
+pkgver=3.16.0
 pkgrel=1
 pkgdesc="A pleasant note-taking platform."
 arch=('x86_64')
@@ -12,11 +12,12 @@ options=(!strip)
 providers=("${_pkgname}x")
 conflits=("${_pkgname}")
 depends=(zlib hicolor-icon-theme glibc)
-source=("${_pkgname}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-linux-x64_v${pkgver}.AppImage")
-sha256sums=('d0b2dbf3f43a2ad30361b63f03283e9c2ce8bdb49c2ade02189802584a80a304')
+source=("${_pkgname}-${pkgver}.zip::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-linux-x64_v${pkgver}.zip")
+sha256sums=('99804e841ca73df2021fe2424612025234ebd768c65e1ca111f3134ae10483a8')
 _install_path="/opt/appimages"
    
 prepare() {
+    mv "${srcdir}/${_pkgname}-linux-x64_v${pkgver}.AppImage" "${srcdir}/${_pkgname}-${pkgver}.AppImage"
     chmod a+x "${_pkgname}-${pkgver}.AppImage"
     "./${_pkgname}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed 's/Exec=vnote/Exec=\/opt\/appimages\/vnote.AppImage/g' -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
