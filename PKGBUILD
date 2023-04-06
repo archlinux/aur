@@ -4,11 +4,13 @@
 # $ updaurpkg --apply
 _repo=Freed-Wu/Reply-Plugin-Prompt
 _source_type=github-releases
-_upstreamver='0.0.10'
+_upstreamver='0.0.11'
 _pkgname=${_repo##*/}
 
 pkgname=perl-$(tr A-Z a-z <<<${_repo##*/})
-pkgver=${_upstreamver##v}
+_major_minor=${_upstreamver%.*}
+_revision=${_upstreamver##*.}
+pkgver="$_major_minor.$((_revision + 1))"
 pkgrel=1
 pkgdesc="Reply plugin for powerlevel10k style prompt"
 arch=(any)
@@ -17,7 +19,7 @@ license=(GPL3)
 depends=(perl-reply)
 optdepends=('perl-file-xdg>=1.00: support configure file')
 source=("https://cpan.metacpan.org/authors/id/F/FR/FREED/$_pkgname-$pkgver.tar.gz")
-sha256sums=('437278c6ce07211e9b90751d175f049fd14fc95cf01c170f281a44ef592f8166')
+sha256sums=('52e1c09b78e56ed59d56597b55ed084c0c75257a2f024e7a4bed1ea4ecf73c7f')
 
 build() {
   cd $_pkgname-$pkgver || return 1
