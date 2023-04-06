@@ -1,19 +1,20 @@
 # Maintainer: eclairevoyant
+
 _fontname=NomNaTong-Regular.ttf
 pkgname=ttf-nomnatong
-pkgver=5.04
+pkgver=5.05
 pkgrel=1
 pkgdesc="The Hán-Nôm Coded Character Set and Nom Na Tong Regular Reference Font"
-arch=('any')
+arch=(any)
 url="http://www.nomfoundation.org/nom-tools/Nom-Font"
-license=('MIT')
+license=(MIT)
 _ghprefix='https://github.com/nomfoundation/font'
 source=("$pkgname-$pkgver.ttf::$_ghprefix/releases/download/v$pkgver/$_fontname"
         "$pkgname-$pkgver-LICENSE::$_ghprefix/raw/master/LICENSE")
-sha256sums=('e964ad9de32c1d0f0820936cb1304c94c3ffe4a2132d024b738218f2499b11c8'
-            '5a96128ab441fd6df1ca8aa48a7223dfa3c4bd2c001262712373698bb24e8e72')
+b2sums=('8d09ed99ef6cc5e7f6ad68989bcf2031b1c3c851f5b4bdb7ccfdcb7a0e9924480b00fa9eca7d115f6d874769d75083c5e862c7967eda07583afdd70699de74aa'
+        '802c1065236acacfe17f0bcbe53f0e46e4e51c15cd22adf7d76e9dbf99a2ac67e8d898a6c8a45d14f404a8bbe29e5f28c48d2fded79f090bae40de68c71fbfc3')
 
 package() {
-  install -Dm644 $pkgname-$pkgver.ttf "$pkgdir/usr/share/fonts/TTF/$_fontname"
-  install -Dm444 $pkgname-$pkgver-LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 $pkgname-$pkgver.ttf "$pkgdir/usr/share/fonts/TTF/$_fontname"
+	install -Dm444 $pkgname-$pkgver-LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
