@@ -2,7 +2,7 @@
 
 pkgname=neovim-catppuccin-git
 _pkg="${pkgname%-git}"
-pkgver=0.2.3.r17.g8deefde
+pkgver=1.1.1.r0.g73587f9
 pkgrel=1
 pkgdesc="Soothing pastel theme for Neovim"
 arch=('any')
@@ -26,7 +26,8 @@ pkgver() {
 
 package() {
 	cd "$_pkg"
-	find autoload colors doc lua -type f -exec install -Dm644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
-	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	local dirs=(after autoload colors doc lua)
+	find "${dirs[@]}" -type f -exec install -Dvm644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
+	install -Dvm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
