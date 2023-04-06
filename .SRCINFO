@@ -1,0 +1,16 @@
+pkgbase = babelfish-fish-git
+	pkgdesc = Translate bash scripts to fish
+	pkgver = 1.1.0.r4.g2123634
+	pkgrel = 1
+	url = https://github.com/bouk/babelfish
+	arch = x86_64
+	license = custom:MIT
+	makedepends = go
+	depends = glibc
+	depends = git
+	provides = babelfish-fish-git
+	conflicts = babelfish-fish
+	source = babelfish::git+https://github.com/bouk/babelfish.git
+	sha256sums = SKIP
+
+pkgname = babelfish-fish-git
