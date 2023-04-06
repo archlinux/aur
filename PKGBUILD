@@ -2,7 +2,7 @@
 
 pkgname=python-salsa20
 pkgver=0.3.0
-pkgrel=9
+pkgrel=10
 pkgdesc='Bindings for the NaCL implementation of Salsa20 and XSalsa20 by D. J. Bernstein'
 arch=('x86_64')
 url="https://github.com/keybase/python-salsa20"
@@ -18,7 +18,7 @@ build() {
 
 check() {
   cd salsa20-$pkgver
-  PYTHONPATH="$PWD/build/lib.linux-$CARCH-3.10:$PYTHONPATH" python -m doctest -v README.rst
+  PYTHONPATH="$PWD/build/lib.linux-$CARCH-3.11" python -m doctest -v README.rst
 }
 
 package() {
