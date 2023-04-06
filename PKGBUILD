@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=butteraugli-git
-pkgver=r33.g856a4da
+pkgver=r36.g71b18b6
 pkgrel=1
 pkgdesc="A tool for measuring perceived differences between images"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/google/butteraugli"
 license=('Apache')
 depends=('glibc' 'libjpeg' 'libpng')
 makedepends=('git')
-provides=('butteraugli')
+provides=("butteraugli=$pkgver")
 conflicts=('butteraugli')
 source=("git+https://github.com/google/butteraugli.git")
 sha256sums=('SKIP')
@@ -26,12 +26,13 @@ pkgver() {
 build() {
   cd "butteraugli"
 
-  make --directory="butteraugli"
+  make \
+    --directory="butteraugli"
 }
 
 package() {
   cd "butteraugli"
 
   install -d "$pkgdir/usr"
-  install -Dm755 "butteraugli/butteraugli" "$pkgdir/usr/bin/butteraugli"
+  install -Dm755 "butteraugli/butteraugli" -t "$pkgdir/usr/bin"
 }
