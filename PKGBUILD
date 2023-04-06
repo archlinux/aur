@@ -3,7 +3,7 @@
 pkgname='python-nine'
 _pkgbase="${pkgname#python-}"
 pkgver=1.1.0
-pkgrel=6
+pkgrel=7
 arch=('any')
 pkgdesc="Python 3/2 compatibility library, allowing to add py2 compat to py3 code"
 url="https://github.com/nandoflorestan/nine/"
