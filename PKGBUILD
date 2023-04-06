@@ -87,12 +87,10 @@ package_sxmo-utils-git() {
 
     # Core GUI dependencies
     'conky'
-    'dunst'
     'libnotify'
     'light'
     'lisgd'
     'mpv'
-    'sxmo-ui'
     'ttf-dejavu-nerd')
   optdepends=('bemenu-ncurses: sxmo menus over ssh'
               'bonsai: better multikey script'
