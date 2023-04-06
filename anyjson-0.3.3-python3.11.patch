@@ -1,3 +1,53 @@
+diff -ruN a/anyjson/__init__.py b/anyjson/__init__.py
+--- a/anyjson/__init__.py	2012-06-22 01:08:51.000000000 +0200
++++ b/anyjson/__init__.py	2023-04-06 23:50:40.210072875 +0200
+@@ -64,9 +64,9 @@
+         self._encode_error = modinfo["encerror"]
+         self._decode_error = modinfo["decerror"]
+ 
+-        if isinstance(modinfo["encerror"], basestring):
++        if isinstance(modinfo["encerror"], str):
+             self._encode_error = getattr(module, modinfo["encerror"])
+-        if isinstance(modinfo["decerror"], basestring):
++        if isinstance(modinfo["decerror"], str):
+             self._decode_error = getattr(module, modinfo["decerror"])
+ 
+         self.name = modinfo["modname"]
+@@ -85,8 +85,8 @@
+         TypeError if the object could not be serialized."""
+         try:
+             return self._encode(data)
+-        except self._encode_error, exc:
+-            raise TypeError, TypeError(*exc.args), sys.exc_info()[2]
++        except self._encode_error as exc:
++            raise TypeError(TypeError(*exc.args)).with_traceback(sys.exc_info()[2])
+     serialize = dumps
+ 
+     def loads(self, s):
+@@ -94,11 +94,11 @@
+         ValueError if the string could not be parsed."""
+         # uses StringIO to support buffer objects.
+         try:
+-            if self._filedecode and not isinstance(s, basestring):
++            if self._filedecode and not isinstance(s, str):
+                 return self._filedecode(StringIO(s))
+             return self._decode(s)
+-        except self._decode_error, exc:
+-            raise ValueError, ValueError(*exc.args), sys.exc_info()[2]
++        except self._decode_error as exc:
++            raise ValueError(ValueError(*exc.args)).with_traceback(sys.exc_info()[2])
+     deserialize = loads
+ 
+ 
+@@ -117,7 +117,7 @@
+     # We do NOT try to load a compatible module because that may throw an
+     # exception, which renders the package uninstallable with easy_install
+     # (It trys to execfile the script when installing, to make sure it works)
+-    print "Running anyjson as a stand alone script is not supported"
++    print("Running anyjson as a stand alone script is not supported")
+     sys.exit(1)
+ else:
+     for modspec in _modules:
 diff -ruN a/setup.py b/setup.py
 --- a/setup.py	2012-06-22 00:59:59.000000000 +0200
 +++ b/setup.py	2023-04-06 23:40:43.050931363 +0200
