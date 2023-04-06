@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=croc-git
-pkgver=9.1.4.r3.ga9e7767
+pkgver=9.6.4.r14.gcd1162f
 pkgrel=1
 pkgdesc="Easily and securely send things from one computer to another"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://schollz.com/blog/croc6/"
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
-provides=('croc')
+provides=("croc=$pkgver")
 conflicts=('croc')
 source=("git+https://github.com/schollz/croc.git")
 sha256sums=('SKIP')
