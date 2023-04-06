@@ -4,7 +4,7 @@
 pkgname=katago-avx2
 _pkgname=KataGo
 pkgver=1.12.4
-pkgrel=2
+pkgrel=3
 pkgdesc='AlphaZero-like open source Go bot, built for AVX2'
 url='https://github.com/lightvector/KataGo'
 provides=('katago')
@@ -37,7 +37,5 @@ package() {
 	install -Dm755 cpp/katago "${pkgdir}/usr/bin/katago"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/katago-cpu/LICENSE"
 	install -d "${pkgdir}/usr/share/katago"
-	cp ../kata1-*.gz "${pkgdir}/usr/share/katago"
-	cd "${pkgdir}/usr/share/katago"
-	ln -s kata1-* model.gz
+	cp ../kata1-*.gz "${pkgdir}/usr/share/katago/model.gz"
 }
