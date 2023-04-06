@@ -33,8 +33,8 @@ build() {
 
   npm i pnpm
   export PATH="$PWD/node_modules/.bin:$PATH"
-  npm run build
-  npm run package:dir
+  pnpm run build
+  pnpm run package:dir
 }
 
 package() {
