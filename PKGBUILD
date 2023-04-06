@@ -2,7 +2,7 @@
 
 pkgname=python-handy-archives
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Handy archive helpers for Python'
 arch=('any')
 url='https://handy-archives.readthedocs.io/'
