@@ -2,14 +2,14 @@
 
 pkgname=bootstrap-dht-git
 pkgver=r122.679c661
-pkgrel=2
+pkgrel=3
 pkgdesc="Bittorrent DHT bootstrap server"
 arch=('i686' 'x86_64')
 url="https://github.com/bittorrent/bootstrap-dht"
 license=('MIT')
 depends=('glibc' 'boost-libs')
 makedepends=('git' 'boost')
-provides=('bootstrap-dht')
+provides=("bootstrap-dht=$pkgver")
 conflicts=('bootstrap-dht')
 source=("git+https://github.com/bittorrent/bootstrap-dht.git"
         "boost.patch::https://github.com/bittorrent/bootstrap-dht/commit/131e4d2caccc227afa62837899123f424dccb296.patch")
