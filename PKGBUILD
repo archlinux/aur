@@ -3,7 +3,7 @@
 
 pkgbase=gridcoinresearch
 pkgname=(gridcoinresearch-qt gridcoinresearchd)
-pkgver=5.4.2.0
+pkgver=5.4.3.0
 pkgrel=1
 pkgdesc="A cryptocurrency that rewards users for participating on the BOINC network"
 makedepends=('boost' 'qt5-charts' 'qt5-tools' 'qrencode')
@@ -17,7 +17,7 @@ _sourcename="Gridcoin-Research-$pkgver"
 
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/gridcoin-community/Gridcoin-Research/archive/$pkgver.tar.gz")
 
-sha256sums=('ab75405f4cd277bb66669c9b23bbc786c160437b736f2bc610e4c9c473c76222')
+sha256sums=('0746f63f9dd58a8df2e50e9ed62c137f6ee0319377fc39375a20e5b3d0224a66')
 
 # leaving in case needed for future patches
 #prepare() {
@@ -30,7 +30,8 @@ build() {
 
   ./autogen.sh
   mkdir -p build && cd build
-  BDB_LIBS="-ldb_cxx-5.3" BDB_CFLAGS="-I/usr/include/db5.3" ../configure --prefix=/usr --with-gui=qt5 --with-incompatible-bdb
+  #BDB_LIBS="-ldb_cxx-5.3" BDB_CFLAGS="-I/usr/include/db5.3" ../configure --prefix=/usr --with-gui=qt5 --with-incompatible-bdb
+  ../configure --prefix=/usr --with-gui=qt5
   make DESTDIR="$srcdir/$_sourcename" install
 }
 
