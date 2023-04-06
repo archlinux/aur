@@ -1,4 +1,5 @@
 # Maintainer: Jakob Kreuze <jakob@memeware.net>
+# Contributor: Bader <Bad3r@unsigned.sh>
 pkgname=pince-git
 pkgver=r1222.9db33c3
 pkgrel=1
@@ -6,7 +7,7 @@ pkgdesc="A Linux reverse engineering tool inspired by Cheat Engine."
 arch=('any')
 url="https://github.com/korcankaraokcu/PINCE"
 license=('GPL3')
-depends=('python' 'python-pexpect' 'python-psutil' 'python-pyqt5' 'python-distorm' 'python-pygdbmi' 'python-gobject' 'python-keyboard' 'gdb' 'sudo')
+depends=('python' 'python-pexpect' 'python-psutil' 'python-pyqt6' 'python-distorm' 'python-pygdbmi' 'python-gobject' 'python-keyboard' 'gdb' 'sudo')
 makedepends=('git' 'intltool')
 source=("$pkgname::git+https://github.com/korcankaraokcu/PINCE.git")
 md5sums=('SKIP')
@@ -34,8 +35,8 @@ package() {
 
   sed -i 's/import misc/from \. import misc/g' libpince/libscanmem/scanmem.py
   sed -i 's/\.\/gdb_pince\/gdb.*\/bin\/gdb/\/usr\/bin\/gdb/g' libpince/type_defs.py
-  sed -i 's/\ssudo/cd \/usr\/share\/pince \&\& sudo/' PINCE.sh
-  sed -i 's/\sgksudo/cd \/usr\/share\/pince \&\& gksudo/' PINCE.sh
+  sed -i 's/\ssudo/cd \/usr\/share\/PINCE \&\& sudo/' PINCE.sh
+  sed -i 's/\sgksudo/cd \/usr\/share\/PINCE \&\& gksudo/' PINCE.sh
   sed -i 's/OS=.*/OS="Arch"/' PINCE.sh
 
   install -d "$pkgdir/usr/bin"
