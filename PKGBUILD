@@ -3,7 +3,7 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=cmake
-pkgver=3.26.2
+pkgver=3.26.3
 pkgrel=1
 pkgdesc='A cross-platform open-source make system'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('curl' 'libarchive' 'hicolor-icon-theme' 'jsoncpp' 'libjsoncpp.so' 'lib
 makedepends=('qt6-base' 'python-sphinx' 'emacs')
 optdepends=('qt6-base: cmake-gui')
 source=("https://www.cmake.org/files/v${pkgver%.*}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('7f4eefbffce2bad241261583b0b8962519dc266fa0c6c5ea6917a785eb2b81ebeda637ed9035965a43e9f89f072bc509d4583b5d595a7b72f5e54bb5170f7c9c')
+sha512sums=('b09447318512b91c772e36c764049789224032c6c650289a94f6311f999ca104b617bf2dced57b723da23472f015549affabd9c8c076857490c47a1aee7eb7a0')
 
 build() {
   cd ${pkgname}-${pkgver}
