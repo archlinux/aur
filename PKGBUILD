@@ -2,8 +2,8 @@
 
 _pkgname=hplip
 pkgname="${_pkgname}-lite"
-pkgver=3.22.10
-pkgrel=2
+pkgver=3.23.3
+pkgrel=1
 pkgdesc="Only Print drivers for HP DeskJet, OfficeJet, Photosmart, Business Inkjet and some LaserJet"
 arch=('x86_64')
 url="https://hplipopensource.com"
@@ -15,7 +15,7 @@ backup=('etc/hp/hplip.conf')
 conflicts=('hplip')
 optdepends=('cups: for printing support')
 source=(https://downloads.sourceforge.net/${_pkgname}/${_pkgname}-${pkgver}.tar.gz)
-sha256sums=('533c3f2f6b53e4163ded4fd81d1f11ae6162a0f6451bd5e62a8382d0c1366624')
+sha256sums=('e4260a98a2b1d88d21e82562de419aa21c95bc9e2ace3583346a80fd217e07b6')
 
 prepare() {
  cd "${_pkgname}-${pkgver}"
@@ -30,7 +30,7 @@ build() {
     --disable-fax-build \
     --disable-network-build \
     --disable-scan-build
-  make
+  make -j $(($(nproc) - 1))
 }
 
 package() {
