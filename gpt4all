@@ -5,10 +5,6 @@ CONFIG_FILE="${CONFIG_DIR}/config.ini"
 MODELS_DIR="${HOME}/.local/share/gpt4all/models"
 BIN_DIR="/usr/lib/gpt4all"
 
-# Checksums for model files
-checksum_filtered="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-checksum_unfiltered="25a587b4f1f87c352eca4fecb7f9d7443c1d4b36eaa5fab52de3e8657320b5a8"
-
 # Check if the config directory and file exist; create them if they don't
 if [ ! -d "$CONFIG_DIR" ]; then
   mkdir -p "$CONFIG_DIR"
@@ -17,25 +13,12 @@ fi
 if [ ! -f "$CONFIG_FILE" ]; then
   cat > "$CONFIG_FILE" << EOF
 [Model]
-model =
+model = 
 EOF
 fi
 
 # Read the default model from the config file
 DEFAULT_MODEL=$(awk -F " = " '/model/ {print $2}' "$CONFIG_FILE")
-
-# Function to check the checksum of a file
-check_checksum() {
-  local file=$1
-  local expected_checksum=$2
-  local actual_checksum=$(sha256sum "$file" | awk '{print $1}')
-
-  if [ "$actual_checksum" == "$expected_checksum" ]; then
-    return 0
-  else
-    return 1
-  fi
-}
 
 # Check if the specified model is available in the models directory
 if [ ! -f "${DEFAULT_MODEL}" ]; then
@@ -61,8 +44,12 @@ if [ ! -f "${DEFAULT_MODEL}" ]; then
   fi
 
   # Check if the model file already exists and has the correct checksum
-  if [ -f "${MODELS_DIR}/${model_file}" ] && check_checksum "${MODELS_DIR}/${model_file}" "$checksum"; then
-    echo "Model file already exists and has the correct checksum. No need to download again."
+ 
+  echo "Checking whether" "${MODELS_DIR}/${model_file}" "exists"
+  if [ -f "${MODELS_DIR}/${model_file}" ]; then
+    echo "Model file already exists. No need to download again. If it fails to load, remove ${MODELS_DIR}/${model_file} and try again."
+    sed -i "s|model = .*|model = ${MODELS_DIR}/${model_file}|" "$CONFIG_FILE"
+    DEFAULT_MODEL=$(awk -F " = " '/model/ {print $2}' "$CONFIG_FILE")    
   else
     # Download the chosen model
     read -p "Enter 'd' for direct download, 't' for torrent, or 'q' to quit: " download_method
