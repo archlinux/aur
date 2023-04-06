@@ -3,7 +3,7 @@
 _name=sly
 pkgname=python-sly
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Python implementation of the lex and yacc tools"
 arch=(any)
 url="https://github.com/dabeaz/sly"
