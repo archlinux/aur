@@ -3,7 +3,7 @@
 _pyname="mt940"
 pkgname="python-mt-940"
 pkgver="4.29.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="A library to parse MT940 files and returns smart Python collections for statistics and manipulation"
 arch=(any)
 url="https://github.com/WoLpH/mt940"
