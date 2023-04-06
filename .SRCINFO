@@ -1,6 +1,6 @@
 pkgbase = typos-git
 	pkgdesc = Source code spell checker
-	pkgver = r1330.g66d82e5
+	pkgver = 1.14.5.r0.g66d82e5
 	pkgrel = 1
 	url = https://github.com/crate-ci/typos
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = typos-git
 	makedepends = git
 	makedepends = rust
 	depends = gcc-libs
-	provides = typos=r1330.g66d82e5
+	provides = typos=1.14.5.r0.g66d82e5
 	conflicts = typos
 	source = git+https://github.com/crate-ci/typos.git
 	sha256sums = SKIP
