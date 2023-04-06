@@ -8,7 +8,7 @@
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn
 pkgver=2023.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The Mullvad VPN client app for desktop"
 arch=('x86_64')
 url="https://www.mullvad.net"
@@ -92,11 +92,11 @@ build() {
   cargo build --frozen --release
 
   echo "Preparing for packaging Mullvad VPN ${PRODUCT_VERSION}..."
-  mkdir -p dist-assets/shell-completions
+  mkdir -p build/shell-completions
   for sh in bash zsh fish; do
     echo "Generating shell completion script for ${sh}..."
     cargo run --bin mullvad --frozen --release -- shell-completions ${sh} \
-      dist-assets/shell-completions/
+      build/shell-completions/
   done
 
   echo "Updating relays.json..."
@@ -146,11 +146,11 @@ package() {
   install -m755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 
   # Install completions
-  install -Dm644 dist-assets/shell-completions/mullvad.bash \
+  install -Dm644 build/shell-completions/mullvad.bash \
     "$pkgdir/usr/share/bash-completion/completions/mullvad"
-  install -Dm644 dist-assets/shell-completions/_mullvad -t \
+  install -Dm644 build/shell-completions/_mullvad -t \
     "$pkgdir/usr/share/zsh/site-functions/"
-  install -Dm644 dist-assets/shell-completions/mullvad.fish -t \
+  install -Dm644 build/shell-completions/mullvad.fish -t \
     "$pkgdir/usr/share/fish/vendor_completions.d/"
 
   # Install desktop file & icons from deb
