@@ -1,9 +1,9 @@
 
 _pkgbase=hid-nintendo
 pkgname=hid-nintendo-nso-dkms
-pkgver=1.2
+pkgver=20230406
 pkgrel=1
-pkgdesc="HID driver for Nintendo Switch controllers patched with Switch Online NES and SNES controller support."
+pkgdesc="HID driver for Nintendo Switch controllers patched with Switch Online NES, SNES and N64 controller support."
 arch=('x86_64' 'aarch64')
 url="https://github.com/nadiaholmquist/linux/tree/hid-nintendo"
 license=("GPL2")
@@ -11,9 +11,9 @@ depends=('dkms')
 source=('hid-nintendo.c' 'dkms.conf' 'hid-ids.h' 'Makefile')
 conflicts=(hid-nintendo-dkms)
 
-md5sums=('f6592f96d94c215e3de807bd8a80c612'
-         '6d97239c33773b3f2fc5d497e98a1017'
-         '6d1c428af9d73b4fd493ee1d4465700b'
+md5sums=('95aaf1a8aeaee02a8e7ba2c23e74f020'
+         '54ffcf23a7c3c8e002b58c580d920f87'
+         '86ce3f841c60b66bf3e0278f8e93659c'
          '3a628988ca479023b45d2bd6b9b1cfb8')
 
 package() {
