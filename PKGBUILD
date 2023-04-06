@@ -2,7 +2,7 @@
 
 pkgname=python-editdistance-s
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Fast implementation of the edit distance (Levenshtein distance)"
 url="https://github.com/asottile/editdistance-s"
 license=('MIT')
@@ -20,7 +20,7 @@ build() {
 
 check() {
   cd editdistance-s-$pkgver
-  PYTHONPATH="$PWD/build/lib.linux-x86_64-3.10" pytest
+  PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-311" pytest
 }
 
 package() {
