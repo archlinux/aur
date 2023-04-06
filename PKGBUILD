@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=cpio-git
-pkgver=2.13.r15.g86dacfe
+pkgver=2.13.r19.g18ea636
 pkgrel=1
 pkgdesc="Utility that copy files into or out of a cpio or tar archive"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://www.gnu.org/software/cpio/"
 license=('GPL')
 depends=('glibc')
 makedepends=('git' 'rsync')
-provides=('cpio')
+provides=("cpio=$pkgver")
 conflicts=('cpio')
 source=("git+https://git.savannah.gnu.org/git/cpio.git"
         "gettext-version.patch")
