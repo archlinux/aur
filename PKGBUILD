@@ -3,13 +3,13 @@
 
 _pkgname=hydrogen
 pkgname="$_pkgname-git"
-pkgver=1.1.1.r1064.ga219c3092
+pkgver=1.1.1.r1355.gc92f20469
 pkgrel=1
 pkgdesc='An advanced drum machine (git version)'
 arch=(x86_64)
 license=(GPL)
 groups=(pro-audio)
-url="https://github.com/hydrogen-music/hydrogen"
+url='https://github.com/hydrogen-music/hydrogen'
 depends=(gcc-libs glibc hicolor-icon-theme qt5-base qt5-xmlpatterns)
 makedepends=(git alsa-lib cmake itstool jack ladspa libarchive liblo
              liblrdf libpulse libsndfile libxml2 portaudio portmidi
@@ -40,7 +40,7 @@ prepare() {
   # link docs sources
   git submodule init
   git config submodule.doc.url "$srcdir"/hydrogen-docs
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 
   # update docbook dtd version
   patch -Np1 -r - -i "$srcdir"/fix_dtd_version.patch || true
@@ -66,11 +66,11 @@ build() {
   make VERBOSE=1 -C build
   # build html manual & tutorial
   cd data/doc
-  msg2 "Making manual..."
+  echo "Making manual..."
   make -j1
   # update translations
   cd ../i18n
-  msg2 "Updating translations..."
+  echo "Updating translations..."
   ./updateTranslations.sh
 }
 
@@ -83,7 +83,7 @@ package() {
   make DESTDIR="$pkgdir" -C build install
 
   # install docs
-  install -vDm644 ChangeLog DEVELOPERS INSTALL.md README.txt \
+  install -vDm644 ChangeLog DEVELOPERS INSTALL.md README.md \
       -t "$pkgdir"/usr/share/doc/$pkgname
   # install html manual & tutorial
   cd data/doc
