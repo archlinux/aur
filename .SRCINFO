@@ -1,6 +1,6 @@
 pkgbase = r-openmx
 	pkgdesc = Extended Structural Equation Modelling
-	pkgver = 2.21.1
+	pkgver = 2.21.8
 	pkgrel = 1
 	url = https://cran.r-project.org/package=OpenMx
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = r-openmx
 	optdepends = r-snowfall
 	optdepends = r-testthat
 	optdepends = r-umx
-	source = https://cran.r-project.org/src/contrib/OpenMx_2.21.1.tar.gz
-	sha256sums = 631b5c896baf083827338e115db8665d2f86df203ebc5eb314182c8a0f3b6a8e
+	source = https://cran.r-project.org/src/contrib/OpenMx_2.21.8.tar.gz
+	sha256sums = bfe13368360434ab5804496bb7f28053f75669b6b264e0e679261a3e705a74ef
 
 pkgname = r-openmx
