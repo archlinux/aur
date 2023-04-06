@@ -10,7 +10,7 @@ license=("Unlicense")
 depends=("python-pyperclip" "zenity")
 provides=("deepl-clipboard")
 source=("deepl-clipboard")
-sha256sums=('73e0b786ce3ef5ad1d9b376ea81952eee53a706023e4567daa3c8d3e7397c599')
+sha256sums=('d76a2d289c064a693985e93b513feb5f5c4d335411ac22908d95a8aef82d0235')
 
 package() {
     install -Dm755 "deepl-clipboard" -t "$pkgdir/usr/bin"

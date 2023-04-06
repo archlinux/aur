@@ -4,7 +4,6 @@ import os, json, http.client
 from pyperclip import paste
 
 
-# 调用deepl，获取翻译结果
 def deepl_api(text):
     if not text.replace("\n", "").replace("\r", ""):
         os.system("zenity --warning --text='剪贴板为空，请选择文本'")
@@ -22,7 +21,6 @@ def deepl_api(text):
 
 if __name__ == "__main__":
     text = paste()  # 获取剪贴板
-    print(text)
     translate_results = deepl_api(text)  # 调用翻译接口
     print(translate_results, file=open("/tmp/deepl.txt", "w"))  # 将翻译结果写入文件
     os.system(f"zenity --title=Deepl --text-info --filename=/tmp/deepl.txt")  # 显示翻译结果
