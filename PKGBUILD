@@ -5,7 +5,7 @@
 
 _pkgname=pamac
 pkgname=${_pkgname}-all
-pkgver=10.4.3
+pkgver=10.5.0
 pkgrel=1
 _pkgfixver=$pkgver
 
@@ -19,9 +19,9 @@ makedepends=('gettext' 'itstool' 'vala>=0.45' 'meson' 'ninja' 'gobject-introspec
 conflicts=('pamac' 'pamac-gtk' 'pamac-cli' 'pamac-common' 'pamac-aur' 'pamac-aur-git' 'pamac-flatpak' 'pamac-flatpak-gnome')
 provides=("pamac=$pkgver-$pkgrel")
 options=(!emptydirs)
-install=pamac.install
+install='pamac.install'
 source=("pamac-$pkgver.tar.gz::$url/-/archive/v$pkgver/pamac-v$pkgver.tar.gz") 
-sha256sums=('a58c47f43599fd6e8db5adbd0d52345df220bd7a9d6acef130c3b3219f00ee14')
+sha256sums=('66f724bce7ab37481f1d51e385c9c38c39e2f0426d1ebb121a15317df1b92920')
 
 _srcdir="$_pkgname-v$pkgver"
 
@@ -32,15 +32,12 @@ prepare() {
 }
 
 build() {
-  mkdir -p 'builddir'
-  meson --prefix='/usr' --sysconfdir='/etc' --buildtype=release -Denable-fake-gnome-software=false \
-    builddir "$_srcdir"
-  # build
-  meson compile -C 'builddir'
+  arch-meson "$_srcdir" 'build' -Denable-fake-gnome-software=false
+  meson compile -C 'build'
 }
 
 package() {
-  meson install -C 'builddir' --destdir "$pkgdir"
+  meson install -C 'build' --destdir "$pkgdir"
   install -Dm644 "$_srcdir/COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
 # vim:set ts=2 sw=2 et:
