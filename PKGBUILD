@@ -1,7 +1,7 @@
 # Maintainer: c0repwn3r <core@coredoes.dev>
 pkgname=i386-elf-gcc
-pkgver=11.2.0
-pkgrel=2
+pkgver=12.2.0
+pkgrel=0
 epoch=
 pkgdesc="GNU gcc for the i386- toolchain"
 arch=(x86_64)
@@ -12,18 +12,15 @@ makedepends=(gmp mpfr gcc)
 depends=(xz libmpc i386-elf-binutils)
 source=(
     "http://ftpmirror.gnu.org/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
-    "gcc11-Wno-format-security.patch" # https://bugs.archlinux.org/task/70701
 )
 sha256sums=(
-    d08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b
-    6f9a34812a07e49a568467df11d6ab19b9fd7d953e9ecd739c7a38d9df821b52
+    e549cf9cf3594a00e27b6589d4322d70e0720cdd213f39beb4181e06926230ff
 )
 
 build() {
-    # Patch gcc
-    cd "gcc-$pkgver"
-    patch --strip=1 --input="$srcdir/gcc11-Wno-format-security.patch"
-    cd ..
+    # GCC build fails with format-security.
+    CFLAGS=${CFLAGS/-Werror=format-security/}
+    CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
     # Create temporary build dir
     mkdir -p "i386-gcc-$pkgver-build"
     cd "i386-gcc-$pkgver-build"
@@ -36,7 +33,7 @@ build() {
 	--disable-multilib \
 	--without-headers \
 	--enable-languages=c,c++ \
-	--disable-build-format-warnings # https://bugs.archlinux.org/task/70701
+  --disable-werror
 
     # Build
     make all-gcc
