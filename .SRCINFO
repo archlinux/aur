@@ -1,6 +1,6 @@
 pkgbase = fotoxx
 	pkgdesc = A program for improving image files made with a digital camera, stable version
-	pkgver = 23.31
+	pkgver = 23.32
 	pkgrel = 1
 	url = http://www.kornelix.net/fotoxx/fotoxx.html
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = fotoxx
 	optdepends = darktable: organize and develop raw images
 	optdepends = ghostscript: handle .pdf, .ps or eps-files
 	optdepends = vlc: for viewing films
-	source = http://www.kornelix.net/downloads/downloads/fotoxx-23.31-source.tar.gz
-	sha256sums = 9aaf7761e9334d34f4e261c05bd309ada97366d07306d9e439f007e03d322471
+	source = http://www.kornelix.net/downloads/downloads/fotoxx-23.32-source.tar.gz
+	sha256sums = 3d88f483b671f4ba7005a9f9195994408ceb97289a77acd3981462ac92397537
 
 pkgname = fotoxx
