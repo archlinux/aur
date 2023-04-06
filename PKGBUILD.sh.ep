@@ -1,6 +1,6 @@
 % layout 'mingw-w64-qt6-module';
 \
-_qtver=6.3.2
+_qtver=6.5.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -10,3 +10,19 @@ pkgdesc='Classes for audio, video, radio and camera functionality (mingw-w64)'
 depends=(<%== qt6deps qw(base) %>)
 optdepends=(<%== qt6optdeps declarative => 'QML bindings' %>)
 makedepends=('mingw-w64-cmake<%== $static_suffix %>' <%== qt6deps qw(declarative shadertools) %> 'mingw-w64-vulkan-headers' 'mingw-w64-vulkan-icd-loader' 'qt6-declarative' 'qt6-shadertools' 'ninja')
+% \
+% content_for additional_cmake_args => begin
+ \\
+      -DFEATURE_wmsdk=ON \\
+      -DFEATURE_ffmpeg=OFF \\
+      -DFEATURE_gstreamer=OFF
+    # note: Enable Windows Media SDK as it is not optional (disabling it would lead to build errors).
+    #       Unfortunately it doesn't build as well (maybe it would using a newer mingw-w64 version).
+    #       Disabling ffmpeg and gstreamer at this point explicitly due to lack of testing.\
+% end
+% content_for prepare => begin
+  # work around case-insensitive includes on case-sensitive filesystems
+  sed -i'' 's/\(.*\) \(Mf.*\|Propsys\) HINTS \(.*\)/\1 \L\2 HINTS \3/g' cmake/FindWMF.cmake
+  find src -type f -exec sed -i'' 's/#include <\(Dbt.*\|InitGuid.*\|Mf.*\|Wmcodec.*\|Functiondiscoverykeys_devpkey.*\)>/#include <\L\1>/g' {} \;
+  find src -type f -exec sed -i'' 's/#include "\(Dbt.*\|InitGuid.*\|Mf.*\|Wmcodec.*\|QUrl.*\)"/#include "\L\1"/g' {} \;
+%end

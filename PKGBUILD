@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-multimedia
-_qtver=6.3.2
+_qtver=6.5.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -17,16 +17,38 @@ makedepends=('mingw-w64-cmake' 'mingw-w64-qt6-declarative' 'mingw-w64-qt6-shader
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtmultimedia-everywhere-src-${_qtver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('7f6829aa4509e23a9804260b6d859531b20a806c4dadedfd2c0c7dd314c01c43')
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
+        '0001-Fix-compile-flags-of-resonance-audio-for-mingw-w64.patch')
+sha256sums=('9480d0c73abdd01aec4899e340938cec046a3f404b9f9ed945288be574dca146'
+            'fa134d80bd74c32839407ec348424b55daf251899e5056adb024bad194e02482')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+
+prepare () {
+  cd $_pkgfqn
+
+  # apply patches; further descriptions can be found in patch files itself
+  for patch in "$srcdir/"*.patch; do
+    msg2 "Applying patch $patch"
+    patch -p1 -i "$patch"
+  done
+  # work around case-insensitive includes on case-sensitive filesystems
+  sed -i'' 's/\(.*\) \(Mf.*\|Propsys\) HINTS \(.*\)/\1 \L\2 HINTS \3/g' cmake/FindWMF.cmake
+  find src -type f -exec sed -i'' 's/#include <\(Dbt.*\|InitGuid.*\|Mf.*\|Wmcodec.*\|Functiondiscoverykeys_devpkey.*\)>/#include <\L\1>/g' {} \;
+  find src -type f -exec sed -i'' 's/#include "\(Dbt.*\|InitGuid.*\|Mf.*\|Wmcodec.*\|QUrl.*\)"/#include "\L\1"/g' {} \;
+}
 
 build() {
   for _arch in ${_architectures}; do
     export PKG_CONFIG=/usr/bin/$_arch-pkg-config
     $_arch-cmake -G Ninja -B build-$_arch -S $_pkgfqn \
-      -DFEATURE_pkg_config=ON
+      -DFEATURE_pkg_config=ON \
+      -DFEATURE_wmsdk=ON \
+      -DFEATURE_ffmpeg=OFF \
+      -DFEATURE_gstreamer=OFF
+    # note: Enable Windows Media SDK as it is not optional (disabling it would lead to build errors).
+    #       Unfortunately it doesn't build as well (maybe it would using a newer mingw-w64 version).
+    #       Disabling ffmpeg and gstreamer at this point explicitly due to lack of testing.
     cmake --build build-$_arch
   done
 }
