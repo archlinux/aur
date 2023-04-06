@@ -1,6 +1,6 @@
 pkgbase = conntrack-tools-git
 	pkgdesc = A tool to view and manage the in-kernel connection tracking state table from userspace
-	pkgver = 1.4.6.r44.g2ca6ac9
+	pkgver = 1.4.7.r9.ga6ec82b
 	pkgrel = 1
 	url = https://www.netfilter.org/projects/conntrack-tools/
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = conntrack-tools-git
 	depends = libnetfilter_queue
 	depends = libnfnetlink
 	depends = systemd-libs
-	provides = conntrack-tools
+	provides = conntrack-tools=1.4.7.r9.ga6ec82b
 	conflicts = conntrack-tools
 	backup = etc/conntrackd.conf
 	source = git://git.netfilter.org/conntrack-tools
