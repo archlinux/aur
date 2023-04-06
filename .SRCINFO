@@ -10,7 +10,7 @@ pkgbase = typst-bin
 	provides = typst
 	conflicts = typst
 	conflicts = typst-git
-	source = https://github.com/typst/typst/releases/download/v0.1.0/typst-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 9d14f7fa1f6674623502dc5280867066dea41ece560c3fc1887eafe43ac287dc
+	source = typst-bin-0.1.0.tar.gz::https://github.com/typst/typst/releases/download/v0.1.0/typst-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 590efbd05d45ce46a951f09b88cd69eb1d7013953f96c4fba1d7809778b956f5
 
 pkgname = typst-bin

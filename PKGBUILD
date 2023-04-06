@@ -24,9 +24,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/typst/typst/releases/download/v$pkgver/typst-x86_64-unknown-linux-gnu.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/typst/typst/releases/download/v$pkgver/typst-x86_64-unknown-linux-gnu.tar.gz")
 noextract=()
-sha256sums=('9d14f7fa1f6674623502dc5280867066dea41ece560c3fc1887eafe43ac287dc')
+sha256sums=('590efbd05d45ce46a951f09b88cd69eb1d7013953f96c4fba1d7809778b956f5')
 validpgpkeys=()
 
 package() {
