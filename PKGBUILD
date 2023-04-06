@@ -1,4 +1,4 @@
-# Maintainer: @RubenKelevra
+# Maintainer: @RubenKelevra <cyrond@gmail.com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
@@ -7,7 +7,7 @@
 pkgbase=kde-applications-nogames-nodevel-noedu-meta
 pkgname=(kde-applications-nogames-nodevel-noedu-meta
          kde-sdk-nodevel-meta)
-pkgver=22.04
+pkgver=23.04
 pkgrel=1
 arch=(any)
 license=(None)
@@ -19,6 +19,7 @@ package_kde-applications-nogames-nodevel-noedu-meta() {
            kde-graphics-meta
            kde-multimedia-meta
            kde-network-meta
+           kde-office-meta
            kde-pim-meta
            kde-sdk-nodevel-meta
            kde-system-meta
@@ -33,7 +34,6 @@ package_kde-sdk-nodevel-meta() {
   provides=(kde-sdk-meta)
   conflicts=(kde-sdk-meta)
   depends=(dolphin-plugins
+           kirigami-gallery
            kdesdk-thumbnailers)
 }
-
-
