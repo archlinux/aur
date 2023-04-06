@@ -1,6 +1,6 @@
 pkgbase = autoconf-git
 	pkgdesc = An extensible package of M4 macros that produce shell scripts to automatically configure software source code packages
-	pkgver = 2.69.r195.g487d6aaa
+	pkgver = 2.72c.r15.g1982523c
 	pkgrel = 1
 	url = https://www.gnu.org/software/autoconf/autoconf.html
 	arch = any
@@ -13,10 +13,9 @@ pkgbase = autoconf-git
 	depends = awk
 	depends = m4
 	depends = texinfo
-	provides = autoconf
+	provides = autoconf=2.72c.r15.g1982523c
 	conflicts = autoconf
 	source = git+https://git.savannah.gnu.org/git/autoconf.git
 	sha256sums = SKIP
 
 pkgname = autoconf-git
-
