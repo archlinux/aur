@@ -2,7 +2,7 @@
 _pkgname="anyrun"
 pkgname="${_pkgname}-git"
 pkgver=r29.c74235a
-pkgrel=2
+pkgrel=3
 pkgdesc="A rust-based wayland native krunner-like runner, made with customizability in mind."
 arch=("x86_64")
 url="github.com/Kirottu/anyrun"
@@ -26,7 +26,7 @@ build() {
   cd "${srcdir}/${_pkgname}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
+  cargo build --frozen --release 
 }
 
 package() {
