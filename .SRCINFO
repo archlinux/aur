@@ -1,0 +1,19 @@
+pkgbase = secret-diary-bin
+	pkgdesc = linux / windows desktop diary tool. crypt with AES 256. 安全日记本，一个加密信息管理软件，加密强度非常强，只能暴力破解数据，只要密码足够复杂，数据就足够安全。
+	pkgver = 1.2.16
+	pkgrel = 1
+	url = http://rocket049.cn/
+	arch = x86_64
+	license = custom:Apache2
+	depends = glibc
+	depends = qt5-base
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	provides = rocket049
+	conflicts = secret-diary
+	source = secret-diary-1.2.16.deb::https://github.com/rocket049/secret-diary/releases/download/v1.2.16/secret-diary-1.2.16-ubuntu2204_amd64.deb
+	source = LICENSE::https://github.com/rocket049/secret-diary/raw/master/LICENSE
+	sha256sums = a0d688214e98d391d61b44440bbe9249245041e97e1578e57868bcdcae6ac05b
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+
+pkgname = secret-diary-bin
