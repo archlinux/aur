@@ -2,14 +2,14 @@
 
 pkgname=arptables-git
 pkgver=0.0.5.r0.gefae894
-pkgrel=1
+pkgrel=2
 pkgdesc="ARP filtering utility"
 arch=('i686' 'x86_64')
 url="https://ebtables.netfilter.org/"
 license=('GPL2')
 depends=('glibc' 'perl')
 makedepends=('git')
-provides=('arptables')
+provides=("arptables=$pkgver")
 conflicts=('arptables')
 backup=('etc/arptables.conf')
 source=("git://git.netfilter.org/arptables"
@@ -41,8 +41,7 @@ package() {
     MANDIR="/usr/share/man" \
     install
 
-  install -Dm644 "$srcdir/arptables.service" \
-    "$pkgdir/usr/lib/systemd/system/arptables.service"
+  install -Dm644 "$srcdir/arptables.service" -t "$pkgdir/usr/lib/systemd/system"
 
   install -Dm644 /dev/null "$pkgdir/etc/arptables.conf"
 }

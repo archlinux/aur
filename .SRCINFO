@@ -1,7 +1,7 @@
 pkgbase = arptables-git
 	pkgdesc = ARP filtering utility
 	pkgver = 0.0.5.r0.gefae894
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ebtables.netfilter.org/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = arptables-git
 	makedepends = git
 	depends = glibc
 	depends = perl
-	provides = arptables
+	provides = arptables=0.0.5.r0.gefae894
 	conflicts = arptables
 	backup = etc/arptables.conf
 	source = git://git.netfilter.org/arptables
