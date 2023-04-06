@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=apptainer-git
-pkgver=1.0.0.r137.ga7df110a8
+pkgver=1.1.7.r536.g9d77c63a2
 pkgrel=1
 pkgdesc="Application containers for Linux"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://apptainer.org/"
 license=('BSD')
 depends=('glibc' 'libseccomp' 'squashfs-tools')
 makedepends=('git' 'cryptsetup' 'go')
-provides=('apptainer' 'singularity-container')
+provides=("apptainer=$pkgver" 'singularity-container')
 conflicts=('apptainer' 'singularity-container')
 backup=('etc/singularity/capability.json'
         'etc/singularity/cgroups/cgroups.toml'
@@ -26,7 +26,7 @@ backup=('etc/singularity/capability.json'
         'etc/singularity/seccomp-profiles/default.json'
         'etc/singularity/singularity.conf')
 source=("git+https://github.com/apptainer/apptainer.git"
-        "tmpfiles.conf::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/singularity-container/trunk/tmpfiles.conf")
+        "tmpfiles.conf::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/apptainer/trunk/tmpfiles.conf")
 sha256sums=('SKIP'
             'SKIP')
 
