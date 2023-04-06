@@ -3,7 +3,7 @@
 _name=argparse_addons
 pkgname=python-argparse-addons
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Additional Python argparse types and actions"
 arch=(any)
 url="https://github.com/eerimoq/argparse_addons"
