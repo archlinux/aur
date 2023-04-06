@@ -2,35 +2,30 @@
 
 _pipname=vttLib
 pkgname=python-${_pipname,,}
-pkgver=0.11.0
-pkgrel=3
+pkgver=0.12.0
+pkgrel=1
 pkgdesc='Dump, merge and compile Visual TrueType data in UFO3 with FontTools'
 arch=(any)
 url="https://github.com/daltonmaag/$_pipname"
 license=(MIT)
 _py_deps=(fonttools
-          fs # optdepends of fonttools required for [ufo]
+          fs # for fonttools[ufo]
           pyparsing
           ufolib2)
 depends=(python
          "${_py_deps[@]/#/python-}")
-makedepends=(python-setuptools-scm
-             python-toml)
+makedepends=(python-{build,installer,wheel}
+             python-setuptools-scm)
 _archive=$_pipname-$pkgver
-source=("https://files.pythonhosted.org/packages/source/${_pipname::1}/$_pipname/$_archive.zip")
-sha256sums=('5b57017ee80ba3091b48719a98c198d7540a1daaa5b513a10bfe1451b28b8476')
-
-prepare() {
-	cd "$_archive"
-	sed -i -e '/wheel/d' setup.cfg
-}
+source=("https://files.pythonhosted.org/packages/source/${_pipname::1}/$_pipname/$_archive.tar.gz")
+sha256sums=('76c1422de87473a81679f55161027b60afdca838666dcb20e0bc380b01c7c216')
 
 build() {
 	cd "$_archive"
-	python setup.py build
+	python -m build -wn
 }
 
 package() {
 	cd "$_archive"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer -d "$pkgdir" dist/*.whl
 }
