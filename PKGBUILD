@@ -2,8 +2,8 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=gnome-shell-extension-gtile-git
-pkgver=51.r17.ga252d2b
-pkgrel=2
+pkgver=51.r19.g6087d6c
+pkgrel=1
 pkgdesc="A window tiling extension for GNOME"
 arch=('any')
 url="https://github.com/gTile/gTile"
@@ -20,17 +20,27 @@ pkgver() {
   git describe --long --tags | sed 's/^V//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "$srcdir/${pkgname%-git}"
+
+  # Bump Bazel version:
+  sed -i 's/6.0.0/6.1.1/g' .bazelversion
+}
+
 build() {
   cd "$srcdir/${pkgname%-git}"
-  bazel --output_user_root="$srcdir/bazel-cache" build :install-extension
+  bazel --output_user_root="$srcdir/bazel-cache" build :dist
 }
 
 package() {
   cd "$srcdir/${pkgname%-git}"
   install -d "$pkgdir/usr/share/gnome-shell/extensions/gTile@vibou"
 #  bsdtar -xvf bazel-bin/install-extension.runfiles/gtile/dist.tar.gz -C \
+#    "$pkgdir/usr/share/gnome-shell/extensions/gTile@vibou/"
 
   # Temporary workaround for tarball not being copied properly from cache
-  bsdtar -xvf "$srcdir/bazel-cache/0b5fc7d4bbd34f8962010e75d3c172c0/execroot/_main/bazel-out/k8-fastbuild/bin/dist.tar.gz" -C \
+  cd $srcdir/bazel-cache
+  _tarball=$(find -name dist.tar.gz)
+  bsdtar -xvf "${_tarball}" -C \
     "$pkgdir/usr/share/gnome-shell/extensions/gTile@vibou/"
 }
