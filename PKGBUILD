@@ -1,5 +1,5 @@
 pkgname=gnome-shell-extension-bing-wallpaper
-pkgver=44
+pkgver=45
 pkgrel=1
 pkgdesc="Changes your wallpaper daily to the bing.com background image"
 arch=(any)
@@ -13,7 +13,7 @@ intltool
 jq
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/neffo/bing-wallpaper-gnome-extension/archive/v${pkgver}.tar.gz")
-sha256sums=('8849aa45303e3ceee3b8e7385c7f6d71a22923442560339335abd42f425c6a4b')
+sha256sums=('642c086c46be4dacc6ce4c7b390d44296a2ec4159ee2356d4a38423bd8f537b1')
 
 build() {
   cd bing-wallpaper-gnome-extension-${pkgver}
