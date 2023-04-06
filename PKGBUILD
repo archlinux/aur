@@ -2,7 +2,7 @@
 
 pkgname=python-webtest-aiohttp
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Provides integration of WebTest with aiohttp.web applications'
 arch=(any)
 url='https://github.com/sloria/webtest-aiohttp'
