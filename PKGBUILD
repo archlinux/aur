@@ -2,14 +2,14 @@
 
 pkgname=audiofile-git
 pkgver=0.3.6.r25.gb62c902
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for reading and writing audio files in many common formats"
 arch=('i686' 'x86_64')
 url="https://audiofile.68k.org/"
 license=('LGPL')
 depends=('glibc' 'alsa-lib' 'flac')
 makedepends=('git')
-provides=('audiofile')
+provides=("audiofile=$pkgver")
 conflicts=('audiofile')
 options=('staticlibs')
 source=("git+https://github.com/mpruett/audiofile.git")
@@ -26,7 +26,9 @@ build() {
   cd "audiofile"
 
   ./autogen.sh
-  ./configure --prefix="/usr" --disable-docs
+  ./configure \
+    --prefix="/usr" \
+    --disable-docs
   make
 }
 
