@@ -1,7 +1,7 @@
 pkgbase = purc
 	pkgdesc = The prime HVML interpreter for C Language.
-	pkgver = 0.9.7
-	pkgrel = 6
+	pkgver = 0.9.8
+	pkgrel = 0
 	url = https://github.com/HVML/PurC
 	arch = x86_64
 	arch = aarch64
@@ -57,7 +57,7 @@ pkgbase = purc
 	replaces = domruler
 	replaces = purc-fetcher
 	options = !strip
-	source = purc-0.9.7.tar.gz::https://github.com/HVML/PurC/archive/refs/tags/ver-0.9.7.tar.gz
-	sha256sums = 8dff65b5f2bce1e4743c062b29e6860f8e7d37dfa251437473cb5917fc1c37ed
+	source = purc-0.9.8.tar.gz::https://github.com/HVML/PurC/archive/refs/tags/ver-0.9.8.tar.gz
+	sha256sums = 5d055b1e6cc666ba666ee28aaa8c56a93e098bb50d643b6a7a4e97d99ccac557
 
 pkgname = purc
