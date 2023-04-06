@@ -1,24 +1,23 @@
 pkgbase = whisper-git
 	pkgdesc = General-purpose speech recognition model by OpenAI
-	pkgver = 1.0.r44.7f3e408
+	pkgver = r102.b5851c6
 	pkgrel = 1
 	url = https://github.com/openai/whisper
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	depends = python
-	depends = python-numpy
-	depends = python-pytorch
-	depends = python-tqdm
-	depends = python-more-itertools
-	depends = python-transformers>=4.19.0
-	depends = python-ffmpeg-patched-git>=0.2.0
-	depends = python-huggingface-hub
-	depends = python-requests
-	depends = ffmpeg
+	makedepends = python-wheel
 	provides = whisper
 	source = git+https://github.com/openai/whisper
 	sha256sums = SKIP
 
 pkgname = whisper-git
+	depends = python-more-itertools
+	depends = python-numba
+	depends = python-pytorch
+	depends = python-tqdm
+	depends = python-ffmpeg
+	depends = python-tiktoken
