@@ -2,7 +2,7 @@
 pkgname=vencord-desktop-git
 pkgdesc="A standalone Electron app that loads Discord & Vencord"
 pkgver=r41.8b68eef
-pkgrel=1
+pkgrel=2
 
 arch=("x86_64" "aarch64")
 url="https://github.com/Vencord/Desktop"
@@ -33,7 +33,7 @@ build() {
 
   npm i pnpm
   export PATH="$PWD/node_modules/.bin:$PATH"
-  pnpm run build
+  pnpm i
   pnpm run package:dir
 }
 
