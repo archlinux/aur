@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=attr-git
-pkgver=2.4.47.r49.gc1a7b53
-pkgrel=3
+pkgver=2.5.1.r22.g2af4dd8
+pkgrel=1
 pkgdesc="Commands for manipulating filesystem extended attributes"
 arch=('i686' 'x86_64')
 url="https://savannah.nongnu.org/projects/attr"
 license=('GPL' 'LGPL')
 depends=('glibc')
 makedepends=('git' 'gettext')
-provides=('attr' 'xfsattr')
+provides=("attr=$pkgver" 'xfsattr')
 conflicts=('attr' 'xfsattr')
 replaces=('xfsattr')
 options=('staticlibs')
@@ -27,7 +27,8 @@ build() {
   cd "attr"
 
   ./autogen.sh
-  ./configure --prefix="/usr"
+  ./configure \
+    --prefix="/usr"
   make
 }
 
