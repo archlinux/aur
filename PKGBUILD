@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=kmon-bin
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="Linux kernel manager and activity monitor"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gcc-libs' 'libxcb')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("$url/releases/download/v$pkgver/${pkgname%-bin}-$pkgver-x86_64-unknown-linux-gnu.tar.gz"{,.sig})
-sha512sums_x86_64=('b01b52e2e54663cbdaee12dbf475a6f309c9e0f8f855cbc382aa5825277fc99de38f3261d08a8ac5d5e6c3eea207b9ec4715cc897c0dca929f18ab2e6076132a'
+sha512sums_x86_64=('3e81f9616b7027121ecbee47e24d722541f561258b86b3dfb1550f9afffc2bd3c5dd715785a2649ebc3b5d72a40035c23f580080b556065fbada6118098fc3ca'
                    'SKIP')
 validpgpkeys=('C4B2D24CF87CD188C79D00BB485B7C52E9EC0DC6') # kmon releases <kmonlinux@protonmail.com>
 
