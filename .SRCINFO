@@ -1,16 +1,15 @@
 pkgbase = bitstream-git
 	pkgdesc = A set of C headers allowing a simpler access to binary structures such as specified by MPEG, DVB, IETF, SMPTE, IEEE, SCTE, etc
-	pkgver = 1.2.r14.ge940899
+	pkgver = 1.4.r67.gba7576b
 	pkgrel = 1
 	url = https://www.videolan.org/developers/bitstream.html
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = glibc
-	provides = bitstream
+	provides = bitstream=1.4.r67.gba7576b
 	conflicts = bitstream
 	source = git+https://code.videolan.org/videolan/bitstream.git
 	sha256sums = SKIP
 
 pkgname = bitstream-git
-
