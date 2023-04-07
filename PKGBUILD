@@ -8,7 +8,7 @@ url="https://github.com/alba4k/albafetch"
 license=('MIT')
 makedepends=(git make gcc)
 depends=(pciutils libcurl-gnutls)
-conflicts=(albafetch-git)
+conflicts=(albafetch-git albafetch-bin)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 md5sums=('SKIP')
 
