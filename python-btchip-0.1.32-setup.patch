@@ -1,0 +1,12 @@
+diff -ruN a/setup.py b/setup.py
+--- a/setup.py	2021-02-09 19:03:55.000000000 +0100
++++ b/setup.py	2023-04-07 15:22:53.755022135 +0200
+@@ -17,7 +17,7 @@
+     packages=find_packages(),
+     install_requires=['hidapi>=0.7.99', 'ecdsa>=0.9'],
+     extras_require = {
+-	'smartcard': [ 'python-pyscard>=1.6.12-4build1' ]
++	'smartcard': [ 'python-pyscard>=1.6.12' ]
+     },
+     include_package_data=True,
+     zip_safe=False,
