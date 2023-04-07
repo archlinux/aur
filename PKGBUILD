@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=desktop-file-utils-git
-pkgver=0.26.r2.g1926ae7
+pkgver=0.26.r5.g56d220d
 pkgrel=1
 pkgdesc="Command line utilities for working with desktop entries"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://www.freedesktop.org/wiki/Software/desktop-file-utils/"
 license=('GPL')
 depends=('glibc' 'glib2')
 makedepends=('git')
-provides=('desktop-file-utils')
+provides=("desktop-file-utils=$pkgver")
 conflicts=('desktop-file-utils')
 source=("git+https://gitlab.freedesktop.org/xdg/desktop-file-utils.git"
         "update-desktop-database.hook::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/desktop-file-utils/trunk/update-desktop-database.hook")
