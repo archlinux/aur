@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=ebtables-git
-pkgver=2.0.11.r4.g52f88f8
+pkgver=2.0.11.r7.g916d420
 pkgrel=1
 pkgdesc="A filtering tool for a Linux-based bridging firewall"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://ebtables.netfilter.org/"
 license=('GPL2')
 depends=('glibc' 'perl' 'iptables')
 makedepends=('git')
-provides=('ebtables')
+provides=("ebtables=$pkgver")
 conflicts=('ebtables')
 backup=('etc/ebtables.conf')
 source=("git://git.netfilter.org/ebtables"
