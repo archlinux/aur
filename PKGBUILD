@@ -2,7 +2,7 @@
 pkgname='beekeeper-studio'
 pkgver='3.9.4.0'
 _packagejsonver='3.9.4'
-pkgrel='2'
+pkgrel='1'
 epoch='1'
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more'
 # If you're running on armv7h or aarch64, use the electron22-bin package from the AUR for the electron dependency
