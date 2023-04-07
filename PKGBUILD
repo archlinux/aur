@@ -3,7 +3,7 @@
 _name=pythonfinder
 pkgname=python-pythonfinder
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross Platform Search Tool for Finding Pythons"
 arch=(any)
 url="https://github.com/sarugaku/pythonfinder"
