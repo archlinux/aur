@@ -1,11 +1,13 @@
 #!/bin/sh
 BOTTLENAME="Deepin-MailMaster"
-APPVER="4.18.1.1007"
+APPVER="4.19.1.1003"
 EXEC_PATH="c:/Program Files (x86)/Netease/MailMaster-bin/mailmaster.exe"
 START_SHELL_PATH="/opt/deepinwine/tools/run_v4.sh"
- 
+ARCHIVE_FILE_DIR="/opt/apps/$DEB_PACKAGE_NAME/files"
+
 export MIME_TYPE=""
 export DEB_PACKAGE_NAME="deepin-wine-mailmaster"
+export WINEPREDLL="$ARCHIVE_FILE_DIR/dlls"
 export APPRUN_CMD="deepin-wine6-stable"
  
 if [ -n "$EXEC_PATH" ];then
