@@ -3,7 +3,7 @@
 _name=tree-format
 pkgname=python-tree-format
 pkgver=0.1.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Python library for printing trees on the console"
 arch=('any')
 url="https://github.com/jml/tree-format"
