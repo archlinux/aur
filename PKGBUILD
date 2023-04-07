@@ -4,7 +4,7 @@ url="https://github.com/Curve/AltServer-Linux"
 pkgname=altserver-linux-curve-git
 pkgdesc='AltServer for Linux'
 pkgver=r41.7e601b6
-pkgrel=1
+pkgrel=2
 
 makedepends=('git' 'cmake' 'ninja' 'zlib')
 depends=('boost' 'python3' 'avahi' 'libcorecrypto-git' 'openssl')
@@ -35,7 +35,7 @@ build() {
 }
 
 package() {
-  install -Dm 755 "${srcdir}/${_pkgname}/build/altserver-linux" "${pkgdir}/usr/bin/altserver-linux"
+  install -Dm 755 "${srcdir}/${_pkgname}/build/altserver-linux" "${pkgdir}/usr/bin/altserver"
 
   # install license
   install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/${_pkgname}/LICENSE"
