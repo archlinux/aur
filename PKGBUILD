@@ -3,7 +3,7 @@
 _name=memory_profiler
 pkgname=python-memory-profiler
 pkgver=0.61
-pkgrel=2
+pkgrel=3
 pkgdesc="A module for monitoring memory usage of a python program"
 url="https://github.com/pythonprofilers/memory_profiler"
 license=('BSD')
