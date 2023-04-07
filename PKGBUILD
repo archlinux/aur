@@ -7,7 +7,7 @@
 
 pkgname=intel-opencl-sdk
 pkgver=2020.3.494
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel SDK for OpenCL Applications"
 arch=('x86_64')
 url="https://software.intel.com/en-us/intel-opencl/download"
