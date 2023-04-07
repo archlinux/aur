@@ -2,7 +2,7 @@
 
 pkgname=lite-xl-git
 _pkgname=${pkgname%-git}
-pkgver=v2.1.0.r1970.334ef427
+pkgver=v2.1.1.r2172.86fa90a7
 pkgrel=1
 pkgdesc='A lightweight text editor written in Lua (master branch)'
 arch=('x86_64')
