@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=expat-git
-pkgver=2.2.10.r5.g0d9b0812
+pkgver=2.5.0.r67.g76640353
 pkgrel=1
 pkgdesc="A stream-oriented XML parser library written in C"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://libexpat.github.io/"
 license=('custom')
 depends=('glibc')
 makedepends=('git' 'cmake')
-provides=('expat')
+provides=("expat=$pkgver")
 conflicts=('expat')
 source=("git+https://github.com/libexpat/libexpat.git")
 sha256sums=('SKIP')
