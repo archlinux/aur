@@ -2,7 +2,7 @@
 
 pkgname=python-hid-parser
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Typed pure Python library to parse HID report descriptors'
 arch=('any')
 url='https://github.com/usb-tools/python-hid-parser'
