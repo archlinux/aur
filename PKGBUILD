@@ -7,7 +7,7 @@
 pkgbase=libxml2
 pkgname=(libxml2 libxml2-docs)
 pkgver=2.10.3
-pkgrel=2
+pkgrel=3
 pkgdesc="XML C parser and toolkit"
 url="https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home"
 arch=(x86_64)
