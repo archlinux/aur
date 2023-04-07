@@ -1,0 +1,14 @@
+pkgbase = nodejs-birthday
+	pkgdesc = Know when a friend's birthday is coming.
+	pkgver = 1.2.12
+	pkgrel = 1
+	url = https://github.com/IonicaBizau/birthday
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = birthday-1.2.12.tgz
+	source = birthday-1.2.12.tgz::https://registry.npmjs.org/birthday/-/birthday-1.2.12.tgz
+	sha1sums = a3ada4bda3a228d3fc1b5c44da3d061bd557c79c
+
+pkgname = nodejs-birthday
