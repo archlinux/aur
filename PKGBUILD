@@ -1,10 +1,10 @@
-# Maintainer: Anton Kudelin <kudelin at protonmail dot com>
+# Maintainer: Anton Kudelin <kudelin at proton dot me>
 
 pkgname=fleur
 pkgver=6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A full-potential linearized augmented planewave code"
-arch=("x86_64")
+arch=("x86_64" "aarch64")
 url="https://www.flapw.de"
 license=('MIT')
 depends=('libxml2' 'hdf5' 'scalapack' 'libxc' 'fftw')

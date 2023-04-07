@@ -1,9 +1,10 @@
 pkgbase = fleur
 	pkgdesc = A full-potential linearized augmented planewave code
 	pkgver = 6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.flapw.de
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = cmake
 	makedepends = gcc-fortran
