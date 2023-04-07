@@ -2,7 +2,7 @@
 pkgname=albafetch-bin
 pkgver=4.0
 pkgrel=1
-pkgdesc="Neofetch, but written in C; both faster and worse than the original"
+pkgdesc="Neofetch, but written in C; both faster and worse than the original (binary build)"
 arch=(x86_64 aarch64)
 url="https://github.com/alba4k/albafetch"
 license=('MIT')
