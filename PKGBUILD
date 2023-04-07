@@ -4,7 +4,7 @@
 
 pkgname=balena-etcher
 _pkgname=etcher
-pkgver=1.18.3
+pkgver=1.18.6
 pkgrel=1
 epoch=2
 pkgdesc='Flash OS images to SD cards & USB drives, safely and easily'
@@ -13,7 +13,7 @@ _github_url='https://github.com/balena-io/etcher'
 url='https://balena.io/etcher'
 license=(Apache)
 depends=("electron19" "gtk3" "libxtst" "libxss" "nss" "alsa-lib" "glib2" "polkit" "libusb")
-makedepends=("npm" "nodejs")
+makedepends=("nvm")
 optdepends=("libnotify: for notifications")
 conflicts=("${_pkgname}"
   "${_pkgname}-git"
@@ -28,13 +28,28 @@ sha256sums=('SKIP'
             'f6b04145e6173965c52c3cdb7ca13741f1c296d01fe9f5b787e3cb91c3259a6c'
             'c950d9578f9cf60998c920bb60c6617559963f06a4918e7072fdc706b0ef5754')
 
+_ensure_local_nvm() {
+    # let's be sure we are starting clean
+    which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+    export NVM_DIR="${srcdir}/.nvm"
+
+    # The init script returns 3 if version specified
+    # in ./.nvrc is not (yet) installed in $NVM_DIR
+    # but nvm itself still gets loaded ok
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+}
+
 prepare() {
   cd "${_pkgname}"
   git submodule init
   git submodule update || cd "${srcdir}/${_pkgname}/scripts/resin" && git checkout --
+  _ensure_local_nvm
+  nvm install 16
 }
 
 build() {
+  unset MAKEFLAGS       # unset MAKEFLAGS to avoid some error
+  _ensure_local_nvm
   cd "${_pkgname}"
   npm ci --openssl_fips=""
   npm run webpack
