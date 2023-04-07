@@ -1,6 +1,6 @@
 pkgbase = editorconfig-geany-git
 	pkgdesc = EditorConfig plugin for Geany
-	pkgver = r26.f03782f
+	pkgver = 0.2.r4.gb55ebcb
 	pkgrel = 1
 	url = https://github.com/editorconfig/editorconfig-geany
 	arch = i686
@@ -9,10 +9,9 @@ pkgbase = editorconfig-geany-git
 	makedepends = git
 	depends = geany
 	depends = editorconfig-core-c
-	provides = editorconfig-geany
+	provides = editorconfig-geany=0.2.r4.gb55ebcb
 	conflicts = editorconfig-geany
 	source = git+https://github.com/editorconfig/editorconfig-geany.git
 	sha256sums = SKIP
 
 pkgname = editorconfig-geany-git
-
