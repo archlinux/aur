@@ -5,18 +5,18 @@
 pkgbase=lib32-gobject-introspection
 _pkgbase=gobject-introspection
 pkgname=(lib32-gobject-introspection lib32-gobject-introspection-runtime)
-pkgver=1.74.0
+pkgver=1.76.1
 pkgrel=1
 pkgdesc="Introspection system for GObject-based libraries (32-bit)"
 url="https://wiki.gnome.org/Projects/GObjectIntrospection"
 arch=(x86_64)
 license=(LGPL GPL)
-_glibver=2.74.4
-_glib_commit=e35768fe299d6389f8f5eef15593762389d2c07d  # tags/2.74.4^0
+_glibver=2.76.1
+_glib_commit=180713772f4e7bcdddf2c793f2f34a498184ed15 # tags/2.76.1^0
 _pyver=3.10
 depends=("python-mako" "python-markdown" "lib32-python>=${_pyver}")
 makedepends=(bison lib32-cairo git gtk-doc python-sphinx meson "lib32-glib2=$_glibver")
-_commit=37bde613a7cb77e7399dafb25731e13208f0ae0b  # tags/1.74.0^0
+_commit=1565805460c3fd65f8630debd0337ec0e33ee2e7  # tags/1.76.1^0
 source=("git+https://gitlab.gnome.org/GNOME/gobject-introspection.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_glib_commit"
         "x86-linux-gnu")
