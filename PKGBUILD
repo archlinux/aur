@@ -6,16 +6,17 @@ pkgdesc="Neofetch, but written in C; both faster and worse than the original"
 arch=(x86_64 aarch64)
 url="https://github.com/alba4k/albafetch"
 license=('MIT')
-depends_x86_64=(pciutils libcurl-gnutls)
-depends_aarch64=()
+makedepends=(git make gcc)
+depends=(pciutils libcurl-gnutls)
 conflicts=(albafetch-git)
-source_x86_64=("https://github.com/alba4k/albafetch/releases/download/v$pkgver/albafetch-linux-x64-dynamic.zip")
-source_aarch64=("https://github.com/alba4k/albafetch/releases/download/v4$pkgver/albafetch-linux-aarch64-static.zip")
-md5sums_x86_64=('SKIP')
-md5sums_aarch64=('SKIP')
+source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+md5sums=('SKIP')
 
 package() {
+    cd $pkgname-$pkgver
     mkdir -p "$pkgdir/usr/bin/"
-    install -Dm 755 "$srcdir/albafetch" "$pkgdir/usr/bin/albafetch"
+    make CC=gcc DESTDIR="$pkgdir" install
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
 }
 
