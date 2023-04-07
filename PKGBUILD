@@ -4,10 +4,11 @@
 _arch=x64v2
 _pkgbase=linux-xanmod-lts
 _major=6.1
-_minor=22
+_minor=23
 _branch=6.x
 _xanmodrel=1
-pkgrel=3
+pkgrel=1
+
 pkgbase=${_pkgbase}-linux-bin-${_arch}
 pkgver=${_major}.${_minor}
 pkgname=("${pkgbase}" "${_pkgbase}-linux-headers-bin-${_arch}")
@@ -18,23 +19,16 @@ license=(GPL2)
 options=('!strip')
 makedepends=('jq' 'curl')
 
-# Resolve URL of sources
-_url_image=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${_xanmodrel} | jq --arg PKGVER "${pkgver}" --arg PKGREL "${_xanmodrel}" --arg ARCH "${_arch}" -r '.assets[] | select(.name | startswith("linux-image-" + $PKGVER + "-" + $ARCH + "-xanmod" + $PKGREL) and endswith(".deb")).browser_download_url')
-_url_headers=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${_xanmodrel} | jq --arg PKGVER "${pkgver}" --arg PKGREL "${_xanmodrel}" --arg ARCH "${_arch}" -r '.assets[] | select(.name | startswith("linux-headers-" + $PKGVER + "-" + $ARCH + "-xanmod" + $PKGREL) and endswith(".deb")).browser_download_url')
+# Resolve URL of sources from GiHub provider
+# cache the response of the API to reduce the number of calls made to GitHub; not authenticated calls are limited to 60 per hour
+_json_data=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${_xanmodrel})
+_url_image=$(echo "${_json_data}" | jq --arg PKGVER "${pkgver}" --arg PKGREL "${_xanmodrel}" --arg ARCH "${_arch}" -r '.assets[] | select(.name | startswith("linux-image-" + $PKGVER + "-" + $ARCH + "-xanmod" + $PKGREL) and endswith(".deb")).browser_download_url')
+_url_headers=$(echo "${_json_data}" | jq --arg PKGVER "${pkgver}" --arg PKGREL "${_xanmodrel}" --arg ARCH "${_arch}" -r '.assets[] | select(.name | startswith("linux-headers-" + $PKGVER + "-" + $ARCH + "-xanmod" + $PKGREL) and endswith(".deb")).browser_download_url')
 source=("${_url_image}" "${_url_headers}")
-noextract=("${_file_image}" "${_file_headers}")
-
+noextract=("${_url_image}" "${_url_headers}")
 # Save files we will extract later manually
 _file_image="${_url_image##*/}"
 _file_headers="${_url_headers##*/}"
-
-validpgpkeys=(
-    'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
-    '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
-)
-sha256sums=('9a793fc80e67f6e36e0c6e3c7d4d78a90bd79795f3ce285c20b2d24b5269a6f1'
-            '10f10925fdf1da727a52ff53dd9ebeaa59fc4702c485fee9adc1fae0911f37af')
-
 prepare() {
   bsdtar -xf ${_file_image} data.tar.xz
   bsdtar -xf data.tar.xz
@@ -44,8 +38,15 @@ prepare() {
   rm -f data.tar.xz
 }
 
+validpgpkeys=(
+    'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
+    '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
+)
+sha256sums=('4f872b2787299cc0cc31628c2024f7d3ee064df655d9b67ec80cc8bfa3be92a6'
+            '1a065cec3700d2aa83068b1dafd275b3f4d9f76efa801bbcd8a645c94a39505b')
+
 _package() {
-  pkgdesc="The Linux kernel and modules with Xanmod patches - Current Stable (LTS) - Prebuilt version - ${_arch}"
+  pkgdesc="The Linux kernel and modules with Xanmod patches - Current Stable (MAIN) - Prebuilt version - ${_arch}"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
@@ -57,6 +58,7 @@ _package() {
   local kernver="${pkgver}-${_arch}-xanmod${_xanmodrel}"
   local modulesdir="${pkgdir}/usr/lib/modules/${kernver}"
   mkdir -p "${modulesdir}" "${pkgdir}/usr/share/doc"
+  mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
 
   msg2 "Installing modules..."
   cp -r lib/modules/${kernver}/* "${modulesdir}/"
@@ -71,10 +73,22 @@ _package() {
 
   # Used by mkinitcpio to name the kernel
   echo "${pkgbase}" | install -Dm644 /dev/stdin "${modulesdir}/pkgbase"
+  echo "${kernver}" | install -Dm644 /dev/stdin "${modulesdir}/kernelbase"
+
+  echo "${kernver}" > "${pkgdir}/boot/${pkgbase}.kver"
+
+  local _extramodules="extramodules-${kernver}"
+  ln -s "../${_extramodules}" "${modulesdir}/extramodules"
+
+  # add real version for building modules and running depmod from hook
+  echo "${kernver}" | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules/${_extramodules}/version"
+
+  # now we call depmod...
+  # depmod -b "${pkgdir}/usr" -F "${srcdir}/boot/System.map-${kernver}"
 }
 
 _package-headers() {
-  pkgdesc="Headers and scripts for building modules for the Linux Xanmod - Current Stable (LTS) - Prebuilt version - ${_arch}"
+  pkgdesc="Headers and scripts for building modules for the Linux Xanmod - Current Stable (MAIN) - Prebuilt version - ${_arch}"
   depends=(pahole)
 
   mkdir -p "${pkgdir}"/usr/share/doc
