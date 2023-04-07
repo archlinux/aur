@@ -1,7 +1,7 @@
 pkgbase = dbt-core
 	pkgdesc = Tool for data analysts to build analytics the way engineers build applications
 	pkgver = 1.4.5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://getdbt.com/
 	arch = any
 	license = Apache
@@ -31,8 +31,10 @@ pkgbase = dbt-core
 	source = dbt-core-1.4.5.tar.gz::https://github.com/dbt-labs/dbt-core/archive/v1.4.5.tar.gz
 	source = pathspec.patch
 	source = mashumaro.patch
+	source = hologram.patch
 	md5sums = d48661b0bc490829192af3dbac8d40c0
 	md5sums = 8da5228598d2427e4430d70929415bdf
 	md5sums = 2fc3a072a73cc43cd506b845d326fff4
+	md5sums = 73283a7ec7579ee5583c2bc5f09092bd
 
 pkgname = dbt-core
