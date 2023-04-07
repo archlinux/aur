@@ -1,0 +1,17 @@
+pkgbase = brother-mfc-t800w-bin
+	pkgdesc = Binary Driver for Brother MFC-T800W printer
+	pkgver = 3.0.2_0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/downloadlist.aspx?c=us_ot&lang=en&prod=mfct800w_all&os=128#SelectLanguageType-561_0_1
+	arch = i686
+	arch = x86_64
+	license = custom:Brother Industries EULA
+	depends = cups
+	optdepends = brscan4: Scanner support
+	source = https://download.brother.com/welcome/dlf101982/mfct800wcupswrapper-3.0.2-0.i386.rpm
+	source = https://download.brother.com/welcome/dlf101983/mfct800wlpr-3.0.2-0.i386.rpm
+	md5sums = 1be57d6c362a3cc2f9ce36dd0591f100
+	md5sums = 1034f2311810b652bd175c869d8f2340
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-mfc-t800w-bin
