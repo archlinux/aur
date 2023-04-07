@@ -1,0 +1,27 @@
+pkgbase = altserver-linux-curve-git
+	pkgdesc = AltServer for Linux
+	pkgver = r41.7e601b6
+	pkgrel = 1
+	url = https://github.com/Curve/AltServer-Linux
+	arch = any
+	license = AGPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = boost
+	makedepends = zlib
+	makedepends = python3
+	makedepends = avahi
+	makedepends = libcorecrypto-git
+	makedepends = openssl
+	depends = boost
+	depends = python3
+	depends = avahi
+	depends = libcorecrypto-git
+	depends = openssl
+	provides = altserver
+	conflicts = altserver
+	source = git+https://github.com/Curve/AltServer-Linux
+	sha256sums = SKIP
+
+pkgname = altserver-linux-curve-git
