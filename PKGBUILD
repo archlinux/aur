@@ -2,12 +2,13 @@
 
 pkgname=electron-fiddle-bin
 pkgver=0.32.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The easiest way to get started with Electron"
 arch=('x86_64' 'aarch64' 'armhf')
 provides=("${pkgname%-bin}")
 url='https://github.com/electron/fiddle/'
 license=('MIT')
+conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
 depends=('gtk3' 'alsa-lib' 'nss' 'electron')
 source_x86_64=("https://github.com/electron/fiddle/releases/download/v${pkgver}/electron-fiddle_${pkgver}_amd64.deb")
 sha256sums_x86_64=('ce20ce129066d152e3fa7d7868b86570bf5541352db996aad882f2bda97d70f9')
