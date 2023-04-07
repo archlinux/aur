@@ -3,7 +3,7 @@
 pkgname=python-pycapnp
 pkgver=1.3.0
 _commit=33c453eff788295804c094601b657ec4fdadc6f8
-pkgrel=1
+pkgrel=2
 pkgdesc="A cython wrapping of the C++ Cap'n Proto library"
 url="https://github.com/capnproto/pycapnp"
 license=(BSD)
@@ -22,7 +22,7 @@ build() {
 
 check() {
   cd pycapnp
-  PYTHONPATH="build/lib.linux-$CARCH-cpython-310" pytest
+  PYTHONPATH="build/lib.linux-$CARCH-cpython-311" pytest
 }
 
 package() {
