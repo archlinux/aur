@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.35.0.r142.gc25682f09e
+pkgver=0.35.1.r355.g7ae7fc0112
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -54,6 +54,7 @@ depends=(
          'libmodplug'
          'libmysofa'
          'libomxil-bellagio'
+         'libopenmpt'
          'libplacebo'
          'libpng'
          'libpulse'
@@ -141,25 +142,9 @@ makedepends=(
              'vulkan-headers'
              'wayland-protocols'
              )
-optdepends=(
-            'cuda: mpv ffmpeg nvcc and libnpp support'
-            'davs2: Additional libdavs2 support for ffmpeg'
-            'intel-media-sdk: Intel QuickSync support for ffmpeg'
-            'libklvanc: Additional libklvanc support for ffmpeg'
-            'libopenmpt: Additional libopenmpt support for ffmpeg'
-            'libsixel: Allow mpv to implement sixel as a output device'
-            'nvidia-utils: for hardware accelerated video decoding with CUDA'
-            'openh264: Additional libopenh264 support for ffmpeg'
-            'shine: Additional libshine support for ffmpeg'
-            'spirv-cross: Additional spirv support for mpv'
-            'tensorflow: mpv ffmpeg DNN module backend'
-            'vo-amrwbenc: Additional libvo-amrwbenc support for ffmpeg'
-            'xavs: Additional libxavs support for ffmpeg'
-            'xavs2: Additional libxavs2 support for ffmpeg'
-
-            'youtube-dl: Another way to view youtuve videos with mpv'
-            'zsh-completions: Additional completion definitions for Zsh users'
-            )
+             
+optdepends=('youtube-dl: Another way to view youtuve videos with mpv'
+            'zsh-completions: Additional completion definitions for Zsh users')
 provides=('mpv' 'mpv-git' 'mpv-build-git' 'mpv-full-git' 'libmpv.so')
 conflicts=('mpv' 'mpv-git' 'mpv-build-git' 'mpv-full-git' 'libmpv.so')
 replaces=('mpv' 'mpv-git' 'mpv-build-git' 'mpv-full-git' 'libmpv.so')
@@ -185,15 +170,31 @@ backup=('etc/mpv/encoding-profiles.conf')
 # for example
 # MPV_NO_CHECK_OPT_DEPEND=yes makepkg -si
 
+_makeoptdepends=('cuda: mpv ffmpeg nvcc and libnpp support'
+                 'davs2: Additional libdavs2 support for ffmpeg'
+                 'intel-media-sdk: Intel QuickSync support for ffmpeg'
+                 'libklvanc: Additional libklvanc support for ffmpeg'
+                 'libsixel: Allow mpv to implement sixel as a output device'
+                 'nvidia-utils: for hardware accelerated video decoding with CUDA'
+                 'onevpl: mpv ffmpeg intel graphic support'
+                 'openh264: Additional libopenh264 support for ffmpeg'
+                 'shine: Additional libshine support for ffmpeg'
+                 'spirv-cross: Additional spirv support for mpv'
+                 'tensorflow: mpv ffmpeg DNN module backend'
+                 'vo-amrwbenc: Additional libvo-amrwbenc support for ffmpeg'
+                 'xavs: Additional libxavs support for ffmpeg'
+                 'xavs2: Additional libxavs2 support for ffmpeg')
+
+for _pkginfo in "${_makeoptdepends[@]}"; do
+  optdepends+=("$_pkginfo")
+done
+
 if [ -z ${MPV_NO_CHECK_OPT_DEPEND+yes} ]; then
   if [ -f /usr/lib/libdavs2.so ]; then
     depends+=('davs2')
   fi
   if [ -f /usr/lib/libklvanc.so ]; then
     depends+=('libklvanc')
-  fi
-  if [ -f /usr/lib/libopenmpt.so ]; then
-    depends+=('libopenmpt')
   fi
   if [ -f /usr/lib/libopenh264.so ]; then
     depends+=('openh264')
@@ -206,6 +207,9 @@ if [ -z ${MPV_NO_CHECK_OPT_DEPEND+yes} ]; then
   fi
   if [ -f /usr/lib/libsixel.so ]; then
     depends+=('libsixel')
+  fi
+  if [ -f /usr/lib/libvpl.so ]; then
+    depends+=('onevpl')
   fi
   if [ -f /usr/lib/libtensorflow.so ]; then
     depends+=('tensorflow')
@@ -292,13 +296,13 @@ prepare() {
     '--enable-libjxl'
     '--enable-libkvazaar'
     '--disable-liblensfun'
-    '--enable-libmfx'
     '--enable-libmodplug'
     '--enable-libmp3lame'
     '--enable-libmysofa'
     '--enable-libopencore-amrnb'
     '--enable-libopencore-amrwb'
     '--enable-libopenjpeg'
+    '--enable-libopenmpt'
     '--enable-libopus'
     '--enable-libpulse'
     '--enable-librabbitmq'
@@ -428,6 +432,7 @@ prepare() {
     '-Dgl-win32=disabled'
     '-Djpeg=enabled'
     '-Dlibplacebo=enabled'
+    '-Dlibplacebo-next=enabled'
     '-Drpi=disabled'
     '-Dsdl2-video=enabled'
     '-Dshaderc=enabled'
@@ -473,17 +478,12 @@ prepare() {
   )
 
 
-  local _ffmpeg_cflags=''
-  local _ffmpeg_ldflags=''
   if [ -z ${MPV_NO_CHECK_OPT_DEPEND+yes} ]; then
     if [ -f /usr/lib/libdavs2.so ]; then
       _ffmpeg_options+=('--enable-libdavs2')
     fi
     if [ -f /usr/lib/libklvanc.so ]; then
       _ffmpeg_options+=('--enable-libklvanc')
-    fi
-    if [ -f /usr/lib/libopenmpt.so ]; then
-      _ffmpeg_options+=('--enable-libopenmpt')
     fi
     if [ -f /usr/lib/libopenh264.so ]; then
       _ffmpeg_options+=('--enable-libopenh264')
@@ -496,6 +496,11 @@ prepare() {
     fi
     if [ -f /usr/lib/libsixel.so ]; then
       _mpv_options+=('-Dsixel=enabled')
+    fi
+    if [ -f /usr/lib/libvpl.so ]; then
+      _ffmpeg_options+=('--enable-libvpl')
+    else
+      _ffmpeg_options+=('--enable-libmfx')
     fi
     if [ -f /usr/lib/libtensorflow.so ]; then
       _ffmpeg_options+=('--enable-libtensorflow')
