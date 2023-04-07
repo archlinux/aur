@@ -4,7 +4,7 @@
 
 pkgname=electron-fiddle
 _pkgname=fiddle
-pkgver=0.32.1
+pkgver=0.32.2
 pkgrel=1
 pkgdesc="The easiest way to get started with Electron"
 arch=('x86_64' 'aarch64' 'armhf')
@@ -14,14 +14,18 @@ license=('MIT')
 depends=('electron')
 makedepends=('npm')
 provides=("$pkgname" "$pkgname")
+conflicts=("$pkgname-bin" "$pkgname-git")
 source=("$_pkgname-$pkgver.src.tar.gz::https://github.com/electron/fiddle/archive/v$pkgver.tar.gz")
-sha256sums=('d07796b9dfe2084ec42b48580227893ae57a005321df4556c421045dc0200a07')
+sha256sums=('5b72623a3d5e7060c2b53b84b153d704225f7ad9127791bcfaecf826f28e3a00')
 
 prepare() {
 	local cache="$srcdir/npm-cache"
 	local dist="/usr/lib/electron"
 
 	cd "$srcdir/$_pkgname-$pkgver"
+
+	# Workaround Husky error
+	git init
 	
 	npm install --cache "$cache"
 }
@@ -32,18 +36,22 @@ build() {
 }
 
 package() {
+	# Install program
 	cd "$srcdir/$_pkgname-$pkgver/out/Electron Fiddle-linux-x64/resources"
 	install -Dm644 app.asar "$pkgdir/usr/lib/electron-fiddle/app.asar"
 
+	# Install icon
 	cd "$srcdir/$_pkgname-$pkgver/assets/icons"
 	install -Dm644 fiddle.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/electron-fiddle.svg"
 
+	# Install entry script
 	cd "$srcdir"
 	echo "#!/bin/env sh
 exec electron /usr/lib/electron-fiddle/app.asar \$@
 " > electron-fiddle.sh
 	install -Dm755 electron-fiddle.sh "$pkgdir/usr/bin/electron-fiddle"
 
+	# Install desktop file
 	echo "[Desktop Entry]
 Name=Electron Fiddle
 Comment=The easiest way to get started with Electron
@@ -55,6 +63,7 @@ StartupNotify=true
 Categories=GNOME;GTK;Utility;
 " > electron-fiddle.desktop
 	install -Dm755 electron-fiddle.desktop "$pkgdir/usr/share/applications/electron-fiddle.desktop"
-	install -Dm644 $srcdir/$_pkgname-$pkgver/LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
+	# Install LICENSE.md
+	install -Dm644 $srcdir/$_pkgname-$pkgver/LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
