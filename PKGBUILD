@@ -3,7 +3,7 @@
 # Contributor: Joe Davison <joe@warhaggis.com>
 
 pkgname=lgogdownloader-qt5
-pkgver=3.9
+pkgver=3.11
 pkgrel=1
 pkgdesc="Open source downloader for GOG.com games, with QT5 enabled for solving reCAPTCHA"
 url="https://sites.google.com/site/gogdownloader/"
@@ -14,7 +14,7 @@ makedepends=(help2man cmake boost)
 provides=(lgogdownloader)
 conflicts=(lgogdownloader)
 source=("https://github.com/Sude-/lgogdownloader/releases/download/v${pkgver}/lgogdownloader-${pkgver}.tar.gz")
-sha256sums=('d0b3b6198e687f811294abb887257c5c28396b5af74c7f3843347bf08c68e3d0')
+sha256sums=('d8d015cce6e002876305517367dc006c332e4d492263173b58bfe5a94b057b09')
 
 prepare() {
   cd "${srcdir}/lgogdownloader-${pkgver}"
