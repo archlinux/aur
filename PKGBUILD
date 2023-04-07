@@ -11,14 +11,15 @@ arch=('i686' 'x86_64' 'x86_64_v3')
 license=('LGPL')
 
 depends=('wine' 'jack')
+makedepends=('git')
 depends_x86_64+=('lib32-jack')
 makedepends_x86_64=('gcc-multilib')
 provides=('wineasio')
 conflicts=('wineasio')
 
 source=(
-  'git+https://github.com/wineasio/wineasio.git'
-  'git+https://github.com/falkTX/rtaudio.git'
+  'wineasio'::'git+https://github.com/wineasio/wineasio.git'
+  'rtaudio'::'git+https://github.com/falkTX/rtaudio.git'
   'setup_wineasio.sh'
 )
 sha256sums=(
@@ -34,9 +35,15 @@ pkgver() {
 
 prepare() {
   cd "${_basename}"
-  git submodule init
-  git config submodule.rtaudio.url "$srcdir/rtaudio"
-  git submodule update
+
+  _submodules=(
+    'rtaudio'
+  )
+  for submodule in ${_submodules[@]} ; do
+    git submodule init ${submodule}
+    git submodule set-url ${submodule} "${srcdir}/${submodule##*/}"
+    git -c protocol.file.allow=always submodule update ${submodule}
+  done
 }
 
 build() {
