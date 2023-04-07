@@ -1,0 +1,12 @@
+pkgbase = it-tools-web
+	pkgdesc = Collection of handy online tools for developers, with great UX
+	pkgver = 2.19.0
+	pkgrel = 1
+	url = https://github.com/CorentinTh/it-tools
+	arch = any
+	license = GPL3
+	makedepends = npm
+	source = https://github.com/CorentinTh/it-tools/archive/refs/tags/v2.19.0.tar.gz
+	sha256sums = a00161c9009ac4f953b61873b46ad45dae7f83a7c0602f7d7160773100b3d08f
+
+pkgname = it-tools-web
