@@ -3,7 +3,7 @@
 pkgname=mtplvcap-bin
 _pkgname=mtplvcap
 provides=('mtplvcap')
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 license=('BSD')
 pkgdesc="mtplvcap relays the Live View of Nikon cameras via WebSocket"
