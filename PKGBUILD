@@ -10,7 +10,8 @@ makedepends=(git make gcc)
 depends=(pciutils libcurl-gnutls)
 conflicts=(albafetch-git albafetch-bin)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('SKIP')
+
+md5sums=('f29ac555c344f5537ef72a2e33daaa09')
 
 package() {
     cd $pkgname-$pkgver
