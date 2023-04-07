@@ -1,13 +1,13 @@
 pkgbase = millet
 	pkgdesc = Language server implementation for Standard ML
-	pkgver = 0.8.6
+	pkgver = 0.8.8
 	pkgrel = 1
 	url = https://github.com/azdavis/millet
 	arch = x86_64
 	license = APACHE
 	license = MIT
 	makedepends = cargo
-	source = millet-0.8.6.tgz::https://github.com/azdavis/millet/archive/refs/tags/v0.8.6.tar.gz
-	md5sums = ef67c3597700ce6fe6ba277ed8818d54
+	source = millet-0.8.8.tgz::https://github.com/azdavis/millet/archive/refs/tags/v0.8.8.tar.gz
+	md5sums = c4e06594310826204b2f3349d7c15434
 
 pkgname = millet
