@@ -1,7 +1,8 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
+# Contributor: Rafael Silva (perigoso) <perigoso@riseup.net>
 
 pkgname=curlcpp
-pkgver=1.4
+pkgver=3.0
 pkgrel=1
 epoch=
 pkgdesc="An object oriented C++ wrapper for CURL"
@@ -9,52 +10,27 @@ arch=('x86_64')
 url="https://github.com/JosephP91/curlcpp"
 license=('MIT')
 groups=()
-depends=()
+depends=('curl')
 makedepends=('cmake')
 checkdepends=()
 optdepends=()
 provides=()
 conflicts=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('c2faa9bc27a5ecf609bffb7e6c38cba3d61b6def4e853cfc6259640bcd985083')
-
-prepare() {
-	cd "$pkgname-$pkgver"
-	mkdir -p "build"
-
-	sed -i "s/CMAKE_INSTALL_PREFIX/CMAKE_BINARY_DIR/" CMakeLists.txt
-	sed -i "s#/lib/curlcpp##" CMakeLists.txt
-
-	echo "include(GNUInstallDirs)" >> CMakeLists.txt
-
-	echo 'install(FILES' >> CMakeLists.txt
-	echo '${CMAKE_BINARY_DIR}/curlcppConfig.cmake' >> CMakeLists.txt
-	echo 'DESTINATION ${CMAKE_INSTALL_LIBDIR}/curlcpp' >> CMakeLists.txt
-	echo ')' >> CMakeLists.txt
-
-	echo "set_target_properties(curlcpp" >> src/CMakeLists.txt
-	echo "PROPERTIES" >> src/CMakeLists.txt
-	echo "VERSION $pkgver" >> src/CMakeLists.txt
-	echo "SOVERSION ${pkgver%%.*}" >> src/CMakeLists.txt
-	echo ")" >> src/CMakeLists.txt
-}
+sha256sums=('fcb78774c493ca8f7fa51741dd75d43c8a5a04a788b47e44216ca4d9cf672344')
 
 build() {
-	cd "$pkgname-$pkgver/build"
-	cmake \
+	cmake -B build -S "$pkgname-$pkgver" \
+		-DCMAKE_BUILD_TYPE='None' \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_UNITY_BUILD=ON \
 		-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
-		-DCURLCPP_USE_PKGCONFIG=ON \
-		-DBUILD_SHARED_LIBS=ON \
-		..
-	make
+		-DBUILD_SHARED_LIBS='SHARED'
+
+	cmake --build build
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	DESTDIR="$pkgdir" cmake --install build
 
-	cd "build"
-	make DESTDIR="$pkgdir/" install
+	install -Dm644 "$pkgname-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
