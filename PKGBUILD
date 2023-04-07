@@ -1,9 +1,9 @@
 # Maintainer: David Čuček <observ33r@gmail.com>
 
 pkgname="code-translucent"
-pkgver=1.77.0
+pkgver=1.77.1
 pkgrel=1
-pkgdesc="The Open Source build of Visual Studio Code (vscode) editor with translucent window and official marketplace support!"
+pkgdesc="The Open Source build of Visual Studio Code (vscode) editor with translucent window, official marketplace, unblocked proprietary features and wayland support!"
 
 arch=(
 	"x86_64"
@@ -51,15 +51,17 @@ makedepends=(
 )
 
 source=(
-	"${pkgname}::git+${url}.git#branch=main"
+	"${pkgname}::git+${url}.git#tag=${pkgver}"
 	"build-with-chroot.sh"
 	"translucent.patch"
+	"code-oss.sh"
 )
 
 sha512sums=(
 	"SKIP"
 	"59f8d08395e384966fb1825bf0b043ec99334e0562d651b3a06f07647e91989bff6800dd857095a5279a5f457acde5be67ff70b878ae9418d5b821dc81b999af"
-	"9934f8bff056a2d4a55799165b975db0c0e0c4d25da89a6e912605c3e54ee39f55a9e0edcad5fb8b1a7436aaaea580c27e51d9604c94945d16eaa172aa9d51dc"
+	"0c621bcaf1c44878203b9783f43c0b68b69560810292103d41ebbab7ec1b16a367b802a8f175eb78eca56ea33531577d0e798935bb4594aab8066516157c1be8"
+	"77c4c023cb2911066491bf7bbacaeb2307f626bf476dead046911e73a93e3b74dc99c037b93283524a2433bf62a5ea7ce98f6a74839e921e61e64c39ab462fc2"
 )
 
 case "${CARCH}" in
@@ -80,21 +82,9 @@ case "${CARCH}" in
 		;;
 esac
 
-pkgver() {
-
-	echo "${_tag}"
-
-}
-
 prepare() {
 
 	cd "${pkgname}"
-
-	# Checkout git to latest release
-	git fetch --tags
-	local _commit="$(git rev-list --tags --max-count=1)"
-	declare -g _tag="$(git describe --tags "${_commit}")"
-	git checkout "${_tag}"
 
 	# Apply patch to source
 	patch -p1 < "../translucent.patch"
@@ -139,25 +129,23 @@ package() {
 
 	local _appdir="VSCode-linux-${_vscode_arch}"
 
-	install -d "${pkgdir}/usr/share/"{licenses/${pkgname},metainfo,mime/packages,applications,icons}
-	install -d "${pkgdir}/opt/${pkgname}"
-	install -d "${pkgdir}/usr/bin"
+	install -Dm 644 "${_appdir}/resources/app/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+	install -Dm 644 "${_appdir}/resources/app/ThirdPartyNotices.txt" "${pkgdir}/usr/share/licenses/${pkgname}/ThirdPartyNotices.txt"
 
-	install -m 644 "${_appdir}/resources/app/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
-	install -m 644 "${_appdir}/resources/app/ThirdPartyNotices.txt" "${pkgdir}/usr/share/licenses/${pkgname}/ThirdPartyNotices.txt"
+	install -Dm 644 "${pkgname}/resources/linux/code.appdata.xml" "${pkgdir}/usr/share/metainfo/code-oss.appdata.xml"
+	install -Dm 644 "${pkgname}/resources/linux/code-workspace.xml" "${pkgdir}/usr/share/mime/packages/code-oss-workspace.xml"
+	install -Dm 644 "${pkgname}/resources/linux/code.desktop" "${pkgdir}/usr/share/applications/code-oss.desktop"
+	install -Dm 644 "${pkgname}/resources/linux/code-url-handler.desktop" "${pkgdir}/usr/share/applications/code-oss-url-handler.desktop"
 
-	install -m 644 "${pkgname}/resources/linux/code.appdata.xml" "${pkgdir}/usr/share/metainfo/code-oss.appdata.xml"
-	install -m 644 "${pkgname}/resources/linux/code-workspace.xml" "${pkgdir}/usr/share/mime/packages/code-oss-workspace.xml"
-	install -m 644 "${pkgname}/resources/linux/code.desktop" "${pkgdir}/usr/share/applications/code-oss.desktop"
-	install -m 644 "${pkgname}/resources/linux/code-url-handler.desktop" "${pkgdir}/usr/share/applications/code-oss-url-handler.desktop"
-
-	install -m 644 "${_appdir}/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/icons/code.png"
+	install -Dm 644 "${_appdir}/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/icons/code.png"
 
 	install -Dm 644 "${_appdir}/resources/completions/bash/code-oss" "${pkgdir}/usr/share/bash-completion/completions/code-oss"
 	install -Dm 644 "${_appdir}/resources/completions/zsh/_code-oss" "${pkgdir}/usr/share/zsh/site-functions/_code-oss"
 
+	install -dm 755 "${pkgdir}/opt/${pkgname}"
+
 	cp -r --no-preserve=ownership --preserve=mode "${srcdir}/${_appdir}/"* "${pkgdir}/opt/${pkgname}" -R
 
-	ln -sf "/opt/${pkgname}/bin/code-oss" "${pkgdir}/usr/bin/code-oss"
+	install -Dm 755 code-oss.sh "${pkgdir}/usr/bin/code-oss"
 
 }

@@ -1,6 +1,6 @@
 pkgbase = code-translucent
-	pkgdesc = The Open Source build of Visual Studio Code (vscode) editor with translucent window and official marketplace support!
-	pkgver = 1.77.0
+	pkgdesc = The Open Source build of Visual Studio Code (vscode) editor with translucent window, official marketplace, unblocked proprietary features and wayland support!
+	pkgver = 1.77.1
 	pkgrel = 1
 	url = https://github.com/microsoft/vscode
 	arch = x86_64
@@ -33,11 +33,13 @@ pkgbase = code-translucent
 	optdepends = icu69: Needed for live share
 	provides = code-oss
 	conflicts = code-oss
-	source = code-translucent::git+https://github.com/microsoft/vscode.git#branch=main
+	source = code-translucent::git+https://github.com/microsoft/vscode.git#tag=1.77.1
 	source = build-with-chroot.sh
 	source = translucent.patch
+	source = code-oss.sh
 	sha512sums = SKIP
 	sha512sums = 59f8d08395e384966fb1825bf0b043ec99334e0562d651b3a06f07647e91989bff6800dd857095a5279a5f457acde5be67ff70b878ae9418d5b821dc81b999af
-	sha512sums = 9934f8bff056a2d4a55799165b975db0c0e0c4d25da89a6e912605c3e54ee39f55a9e0edcad5fb8b1a7436aaaea580c27e51d9604c94945d16eaa172aa9d51dc
+	sha512sums = 0c621bcaf1c44878203b9783f43c0b68b69560810292103d41ebbab7ec1b16a367b802a8f175eb78eca56ea33531577d0e798935bb4594aab8066516157c1be8
+	sha512sums = 77c4c023cb2911066491bf7bbacaeb2307f626bf476dead046911e73a93e3b74dc99c037b93283524a2433bf62a5ea7ce98f6a74839e921e61e64c39ab462fc2
 
 pkgname = code-translucent
