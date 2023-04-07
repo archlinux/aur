@@ -1,0 +1,9 @@
+PACKAGE_NAME="ch343"
+PACKAGE_VERSION="#MODULE_VERSION#"
+
+MAKE[0]="pwd && make KERNEL_DIR=${kernel_source_dir}"
+CLEAN="make KERNEL_DIR=${kernel_source_dir} clean"
+
+BUILT_MODULE_NAME[0]="ch343"
+DEST_MODULE_LOCATION[0]="/extramodules"
+AUTOINSTALL="yes"
