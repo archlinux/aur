@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=dosfstools-git
-pkgver=4.2.r15.g77ffb87
+pkgver=4.2.r42.g58212c5
 pkgrel=1
 pkgdesc="DOS filesystem utilities"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/dosfstools/dosfstools"
 license=('GPL3')
 depends=('glibc')
 makedepends=('git')
-provides=('dosfstools')
+provides=("dosfstools=$pkgver")
 conflicts=('dosfstools')
 source=("git+https://github.com/dosfstools/dosfstools.git")
 sha256sums=('SKIP')
