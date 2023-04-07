@@ -12,6 +12,7 @@ pkgbase = albafetch-git
 	depends = pciutils
 	depends = libcurl-gnutls
 	conflicts = albafetch
+	conflicts = albafetch-bin
 	source = git+https://github.com/alba4k/albafetch
 	md5sums = SKIP
 
