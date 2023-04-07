@@ -1,0 +1,13 @@
+pkgbase = python-pygpgme
+	pkgdesc = A Python interface to the gpgme GnuPG library
+	pkgver = 0.3
+	pkgrel = 10
+	url = https://launchpad.net/pygpgme
+	arch = x86_64
+	license = LGPL
+	depends = python
+	depends = gpgme
+	source = https://launchpad.net/pygpgme/trunk/0.3/+download/pygpgme-0.3.tar.gz
+	sha256sums = 5fd887c407015296a8fd3f4b867fe0fcca3179de97ccde90449853a3dfb802e1
+
+pkgname = python-pygpgme
