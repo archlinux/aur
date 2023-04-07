@@ -10,8 +10,6 @@ pkgbase = openai-client-git
 	provides = openai-client
 	options = !strip
 	source = git+https://github.com/awesomeDev12/openai-client.git
-	source = launch_arch.sh
-	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = openai-client-git

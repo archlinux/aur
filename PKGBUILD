@@ -21,11 +21,10 @@ provides=("openai-client")
 # backup=(~/.config/openai-client)
 # backup=(home/${USER}/.config/openai-client)
 
-source=("git+https://github.com/awesomeDev12/openai-client.git"
-        "launch_arch.sh")
+source=("git+https://github.com/awesomeDev12/openai-client.git")
 
 # sha512sums=("SKIP")
-sha512sums=("SKIP" "SKIP")
+sha512sums=("SKIP")
 
 package() {
 
@@ -38,7 +37,7 @@ package() {
   mkdir -p "${pkgdir}/opt"
   mkdir -p "${pkgdir}/opt/openai-client"
 
-  cp "${srcdir}/launch_arch.sh" "${pkgdir}/usr/bin/openai-client"
+  cp "${srcdir}/openai-client/scripts/launchers/launch_arch.sh" "${pkgdir}/usr/bin/openai-client"
 
   cp "${srcdir}/openai-client/desktop/openai-client.jpg" "${pkgdir}/usr/share/icons/openai-client.jpg"  
   cp "${srcdir}/openai-client/desktop/openai-client.desktop" "${pkgdir}/usr/share/applications/openai-client.desktop"  
