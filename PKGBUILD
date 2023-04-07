@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=fontproof
-pkgver=2.0.0
+pkgver=2.0.2
 pkgrel=1
 _rockrel=1
 pkgdesc='A font design testing class and CLI tool for SILE'
@@ -16,7 +16,7 @@ _archive="$pkgname-$pkgver"
 _rock="$_archive-$_rockrel.all.rock"
 _rockspec="$_archive-$_rockrel.rockspec"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('ca2c9dc276150aff1185ad0a6dae7f61df57f65176239b4249910fbe46ebd948')
+sha256sums=('4d8b8ecc9d0800ac3752239f8d6b8677e04f0bfec9fc783792a71b9826ed5815')
 
 build() {
 	cd "$_archive"
