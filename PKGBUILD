@@ -3,7 +3,7 @@
 
 pkgname=python-nspektr
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A distribution package dependency inspector"
 arch=('any')
 url="https://github.com/jaraco/nspektr"
