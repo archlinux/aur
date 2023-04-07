@@ -1,0 +1,33 @@
+pkgbase = firebirdsql-server
+	pkgdesc = A open source SQL relational database management system (RDMS)
+	pkgver = 4.0.2.2816
+	pkgrel = 1
+	url = http://www.firebirdsql.org/
+	install = firebird-server.install
+	arch = x86_64
+	license = custom:IPL
+	license = custom:IDPL
+	makedepends = unzip
+	depends = libtommath
+	depends = libedit
+	depends = libtomcrypt
+	depends = libiconv
+	provides = libfbclient=4.0.2.2816
+	conflicts = firebird-superserver
+	conflicts = firebird-classicserver
+	conflicts = libfbclient
+	conflicts = firebird
+	backup = etc/firebird/firebird.conf
+	backup = etc/firebird/fbtrace.conf
+	backup = etc/firebird/databases.conf
+	backup = var/lib/firebird/system/security4.fdb
+	source = https://github.com/FirebirdSQL/firebird/releases/download/v4.0.2/Firebird-4.0.2.2816-0.tar.xz
+	source = firebird-tmpfiles.conf
+	source = firebird-sysusers.conf
+	source = firebird.service
+	sha256sums = fb28140cec1eb32ea683bdf552dd1d6b7d455db61282fcf96fae18b3103af6c6
+	sha256sums = 4ae6765011641202b7f8220c7c8190f097c6f615a02a8445837059ec164622a5
+	sha256sums = b106ca58628c9e1d1983533897f1d18d6262c1cc3e62651f361a104ff679c161
+	sha256sums = dc2a65713dd1539bef122daeff1f632871ec080cf4955a0a5c32aeb7309d3c78
+
+pkgname = firebirdsql-server
