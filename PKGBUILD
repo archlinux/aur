@@ -5,7 +5,7 @@
 # Maintainer: Uffe Jakobsen <microtop@starion.dk>
 #
 pkgname=opencbm-git
-pkgver=r1436.7134118b
+pkgver=r1505.c4150875
 pkgrel=1
 epoch=
 pkgdesc="OpenCBM allows access to Commodore (C64) storage devices VIC 1540, 1541, 1570, 1571, or even 1581 floppy drive"
@@ -18,7 +18,7 @@ makedepends=('git' 'cc65')
 checkdepends=()
 optdepends=('ncurses: enable interactive mode for cbmlinetester')
 provides=('opencbm')
-conflicts=()
+conflicts=('opencbm')
 replaces=()
 backup=('etc/opencbm.conf')
 options=()
@@ -46,7 +46,7 @@ prepare()
 {
   cd "${srcdir}/${_repodirname}"
   # kernel module: add includes to kernel module source
-  sed -i '\!#include <asm/uaccess.h>!s!.*!&\n#include <linux/uaccess.h>\n#include <linux/sched/signal.h>!' opencbm/sys/linux/cbm_module.c
+  #sed -i '\!#include <asm/uaccess.h>!s!.*!&\n#include <linux/uaccess.h>\n#include <linux/sched/signal.h>!' opencbm/sys/linux/cbm_module.c
   # kernel module: Makefile is needed later
   sed -i '\!-rm -f Makefile!d' opencbm/sys/linux/LINUX/Makefile
 }
