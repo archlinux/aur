@@ -1,7 +1,7 @@
 pkgbase = eldiron
 	pkgdesc = A cross platform classic RPG game creator written in Rust.
 	pkgver = 0.7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/markusmoenig/Eldiron
 	arch = x86_64
 	license = MIT

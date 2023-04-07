@@ -2,7 +2,7 @@
 
 pkgname=eldiron
 pkgver=0.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross platform classic RPG game creator written in Rust."
 arch=('x86_64')
 url="https://github.com/markusmoenig/Eldiron"
