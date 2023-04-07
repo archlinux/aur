@@ -3,7 +3,7 @@
 pkgname=maa-assistant-arknights
 _pkgver=v4.13.0-rc.1
 pkgver="$(echo ${_pkgver//-/} | sed -e 's/^v//')"
-pkgrel=1
+pkgrel=2
 pkgdesc="An Arknights assistant"
 arch=(x86_64)
 url="https://github.com/MaaAssistantArknights/MaaAssistantArknights"
@@ -21,6 +21,8 @@ prepare() {
     sed -i 's/RUNTIME\sDESTINATION\s\./ /g; s/LIBRARY\sDESTINATION\s\./ /g; s/PUBLIC_HEADER\sDESTINATION\s\./ /g' CMakeLists.txt
     sed -i 's/find_package(asio /# find_package(asio /g' CMakeLists.txt
     sed -i 's/asio::asio/ /g' CMakeLists.txt
+
+    sed -i 's/find_package(OpenCV REQUIRED COMPONENTS core imgproc imgcodecs)/find_package(OpenCV REQUIRED COMPONENTS core imgproc videoio)/g' CMakeLists.txt
 }
 
 build() {

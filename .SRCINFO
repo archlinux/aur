@@ -1,7 +1,7 @@
 pkgbase = maa-assistant-arknights
 	pkgdesc = An Arknights assistant
 	pkgver = 4.13.0rc.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MaaAssistantArknights/MaaAssistantArknights
 	install = maa-assistant-arknights.install
 	arch = x86_64
