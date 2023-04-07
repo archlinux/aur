@@ -1,6 +1,6 @@
 pkgbase = dhcpcd-git
 	pkgdesc = A DHCP and DHCPv6 client
-	pkgver = 9.3.4.r0.ge04f03ce
+	pkgver = 9.4.0.r155.g293f2af6
 	pkgrel = 1
 	url = https://roy.marples.name/projects/dhcpcd/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = dhcpcd-git
 	depends = sh
 	depends = systemd-libs
 	optdepends = openresolv: resolvconf support
-	provides = dhcpcd
+	provides = dhcpcd=9.4.0.r155.g293f2af6
 	provides = dhcp-client
 	conflicts = dhcpcd
 	options = emptydirs
@@ -28,4 +28,3 @@ pkgbase = dhcpcd-git
 	sha256sums = SKIP
 
 pkgname = dhcpcd-git
-
