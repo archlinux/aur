@@ -3,7 +3,7 @@
 pkgname=python-testflo
 pkgver=1.4.12
 _commit=62c7d8e04ad09179c0b2c3736335ec525a0b6296
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple flow-based testing framework"
 url="https://github.com/OpenMDAO/testflo"
 license=('Apache')
