@@ -7,7 +7,7 @@ pkgname=python-$_pkgname
 pkgver=1.4.2
 # curl https://api.github.com/repos/latchset/jwcrypto/git/ref/tags/v$pkgver | jq -r .object.sha
 _tag=65b76952a91a792d234aab529ef5cd5f82258f1c
-pkgrel=1
+pkgrel=2
 pkgdesc='Python implementation of JWK, JWS, JWE specifications'
 arch=(any)
 url='https://github.com/latchset/jwcrypto'
