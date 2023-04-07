@@ -1,6 +1,6 @@
 pkgbase = enet-git
 	pkgdesc = A thin, simple and robust network communication layer on top of UDP
-	pkgver = r254.g0eaf48e
+	pkgver = 1.3.17.r29.gea4607a
 	pkgrel = 1
 	url = http://enet.bespin.org/
 	arch = i686
@@ -8,11 +8,10 @@ pkgbase = enet-git
 	license = MIT
 	makedepends = git
 	depends = glibc
-	provides = enet
+	provides = enet=1.3.17.r29.gea4607a
 	conflicts = enet
 	options = staticlibs
 	source = git+https://github.com/lsalzman/enet.git
 	sha256sums = SKIP
 
 pkgname = enet-git
-
