@@ -1,7 +1,7 @@
 # Maintainer: Bennett Petzold <dansecob.aur gmail com>
 
 pkgname='qsv'
-pkgver='0.97.0'
+pkgver='0.98.0'
 pkgrel='1'
 pkgdesc='A command line program for CSV files. Fork of xsv.'
 arch=('any')
@@ -14,9 +14,9 @@ optdepends=('bash-completion: tab completion for bash')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         'completion.patch')
 
-md5sums=('e96b997505ebe13d31969c40e5e614b0'
+md5sums=('3cd0a9b5384ed0833c085b08fe96ac76'
          'b6ac3fc857e4d2657be8c4e81c86a56c')
-sha512sums=('3113c0937d189a896164973aa4295cac7a970bd36ed6006c51dc2704cadaa8112390a6173bbefc883b66488a751d4cd63702f061087ebcd582833b9a93670238'
+sha512sums=('b20e7bdf2aca64d0082f8f67db32b2a0bfaaaaa962f694913c717a921dca07dfce33e90d3015901fb58bb23d7ec4c1bb67dd0760bce3ff89988955341c53175b'
             '809cd1ad542319a8f98c061b222e386afe90668acdc3b4f9183aa5cb3d3e70548fd72d2a160841072fc6ab29d6cd6d1f6c0596f19451dc21ff63449d00b7d2db')
 
 prepare() {
@@ -29,13 +29,13 @@ build() {
     cd $pkgname-$pkgver
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --features all_full
+    cargo build --frozen --release --features all_features
 }
 
 check() {
     cd $pkgname-$pkgver
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --features all_full
+    cargo test --frozen --features all_features
 }
 
 package() {
