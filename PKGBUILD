@@ -3,7 +3,7 @@
 _name=cmsis_pack_manager
 pkgname=python-cmsis-pack-manager
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Rust and Python module for handling CMSIS Pack files"
 arch=(x86_64)
 url="https://github.com/pyocd/cmsis-pack-manager"
