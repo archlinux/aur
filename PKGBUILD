@@ -2,7 +2,7 @@
 
 pkgname=granite7-git
 _pkgname=${pkgname%-git}
-pkgver=7.0.0.r11.f476f592
+pkgver=7.2.0.r11.6f035b73
 pkgrel=1
 pkgdesc='Library that extends GTK with common widgets and utilities'
 arch=(x86_64)

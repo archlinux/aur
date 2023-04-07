@@ -1,6 +1,6 @@
 pkgbase = granite7-git
 	pkgdesc = Library that extends GTK with common widgets and utilities
-	pkgver = 7.0.0.r11.f476f592
+	pkgver = 7.2.0.r11.6f035b73
 	pkgrel = 1
 	url = https://github.com/elementary/granite
 	arch = x86_64
