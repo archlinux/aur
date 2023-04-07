@@ -88,6 +88,11 @@ package() {
   install -dm0755 "$pkgdir/usr/share/aurorae/themes"
   for FLAVOURNAME in Latte Frappe Macchiato Mocha; do
     cp -r ./Resources/Aurorae/Catppuccin$FLAVOURNAME-Modern "$pkgdir/usr/share/aurorae/themes"
+    if [[ $FLAVOURNAME = "Latte" ]]; then
+      cp ./Resources/Aurorae/Common/CatppuccinLatte-Modernrc "$pkgdir/usr/share/aurorae/themes/CatppuccinLatte-Modern/CatppuccinLatte-Modernrc"
+    else
+      cp ./Resources/Aurorae/Common/Catppuccin-Modernrc "$pkgdir/usr/share/aurorae/themes/Catppuccin$FLAVOURNAME-Modern/Catppuccin$FLAVOURNAME-Modernrc"
+    fi
   done
 
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
