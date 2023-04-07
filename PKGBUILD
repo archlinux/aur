@@ -1,6 +1,6 @@
 #Maintainer: semtor<semtorcc@gmail.com>
 pkgname=cs
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 epoch= 
 pkgdesc="The Ls command with icons implemented in C++"
@@ -14,11 +14,12 @@ md5sums=('SKIP')
 
 build() {
 	cd "$pkgname-$pkgver"
-  xmake
+  mkdir build&&cd build
+  cmake -DCMAKE_INSTALL_PREFIX=$pkgdir/usr ..
 }
 
 package() {
 	cd "$pkgname-$pkgver"
-  mkdir $pkgdir/usr/bin -p
-  cp build/linux/x86_64/release/cs $pkgdir/usr/bin
+  cd build
+  make && make install
 }
