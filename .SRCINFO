@@ -1,6 +1,6 @@
 pkgbase = deheader-git
 	pkgdesc = Find and remove unneeded includes in C/C++ sourcefiles
-	pkgver = 1.7.r0.g571921f
+	pkgver = 1.10.r0.gd3d73b1
 	pkgrel = 1
 	url = http://www.catb.org/~esr/deheader/
 	arch = any
@@ -10,10 +10,9 @@ pkgbase = deheader-git
 	makedepends = docbook-xsl
 	makedepends = xmlto
 	depends = python
-	provides = deheader
+	provides = deheader=1.10.r0.gd3d73b1
 	conflicts = deheader
 	source = git+https://gitlab.com/esr/deheader.git
 	sha256sums = SKIP
 
 pkgname = deheader-git
-
