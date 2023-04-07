@@ -1,6 +1,6 @@
 pkgbase = elfutils-git
 	pkgdesc = Utilities and libraries to handle ELF object files and DWARF debugging information
-	pkgver = 0.170.r8.g760925bc
+	pkgver = 0.189.r14.g6e971808
 	pkgrel = 1
 	url = https://sourceware.org/elfutils/
 	arch = i686
@@ -9,10 +9,10 @@ pkgbase = elfutils-git
 	makedepends = git
 	depends = glibc
 	depends = bzip2
+	depends = sh
 	depends = xz
 	depends = zlib
-	depends = sh
-	provides = elfutils
+	provides = elfutils=0.189.r14.g6e971808
 	provides = libelf
 	conflicts = elfutils
 	conflicts = libelf
@@ -21,4 +21,3 @@ pkgbase = elfutils-git
 	sha256sums = SKIP
 
 pkgname = elfutils-git
-

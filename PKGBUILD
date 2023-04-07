@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=elfutils-git
-pkgver=0.170.r8.g760925bc
+pkgver=0.189.r14.g6e971808
 pkgrel=1
 pkgdesc="Utilities and libraries to handle ELF object files and DWARF debugging information"
 arch=('i686' 'x86_64')
 url="https://sourceware.org/elfutils/"
 license=('GPL3')
-depends=('glibc' 'bzip2' 'xz' 'zlib' 'sh')
+depends=('glibc' 'bzip2' 'sh' 'xz' 'zlib')
 makedepends=('git')
-provides=('elfutils' 'libelf')
+provides=("elfutils=$pkgver" 'libelf')
 conflicts=('elfutils' 'libelf')
 options=('staticlibs')
 source=("git+https://sourceware.org/git/elfutils.git")
@@ -27,7 +27,10 @@ build() {
 
   autoreconf -fi
   CFLAGS+=" -g"  # required for test-suite success
-  ./configure --prefix="/usr" --program-prefix="eu-" --enable-maintainer-mode
+  ./configure \
+    --prefix="/usr" \
+    --program-prefix="eu-" \
+    --enable-maintainer-mode
   make
 }
 
