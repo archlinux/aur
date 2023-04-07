@@ -1,11 +1,11 @@
 pkgbase = python-markdownify
 	pkgdesc = Convert HTML to Markdown
 	pkgver = 0.11.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/matthewwithanm/python-markdownify
 	arch = any
 	license = MIT
-	makedepends = python-pip
+	makedepends = python-pippython-setuptools
 	depends = python-beautifulsoup4
 	depends = python-six
 	options = !emptydirs

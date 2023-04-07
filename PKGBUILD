@@ -2,12 +2,12 @@
 pkgname=python-markdownify
 _name=markdownify
 pkgver=0.11.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert HTML to Markdown"
 arch=('any')
 url="http://github.com/matthewwithanm/python-markdownify"
 license=('MIT')
-makedepends=('python-pip')
+makedepends=('python-pip''python-setuptools')
 depends=('python-beautifulsoup4' 'python-six')
 options=(!emptydirs)
 source=(https://pypi.io/packages/source/m/$_name/$_name-$pkgver.tar.gz)
