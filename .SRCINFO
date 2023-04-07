@@ -1,13 +1,14 @@
 pkgbase = typst-lsp-bin
 	pkgdesc = A brand-new language server for Typst,
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nvarner/typst-lsp
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
-	license = GPL3
-	depends = qt5-base
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
 	provides = typst-lsp
 	source_x86_64 = typst-lsp-0.3.2::https://github.com/nvarner/typst-lsp/releases/download/v0.3.2/typst-lsp-linux-x64
 	sha256sums_x86_64 = 0b3f629ea1350fb03c864661949d338b5d720b5aefbc72f0241fa3c60b020dad
