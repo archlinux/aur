@@ -6,7 +6,7 @@ pkgdesc='AltServer for Linux'
 pkgver=r41.7e601b6
 pkgrel=1
 
-makedepends=('git' 'cmake' 'ninja' 'boost' 'zlib' 'python3' 'avahi' 'libcorecrypto-git' 'openssl')
+makedepends=('git' 'cmake' 'ninja' 'zlib')
 depends=('boost' 'python3' 'avahi' 'libcorecrypto-git' 'openssl')
 
 source=('git+https://github.com/Curve/AltServer-Linux')
