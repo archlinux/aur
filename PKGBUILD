@@ -1,14 +1,14 @@
 # Maintainer: database64128 <free122448@hotmail.com>
 
 pkgname=f38-backgrounds
-pkgver=38.1.0
+pkgver=38.1.1
 pkgrel=1
 pkgdesc="Desktop backgrounds of the Fedora 38 default theme for GNOME, KDE, Mate and Xfce desktops"
 arch=('any')
 url="https://github.com/fedoradesign/backgrounds"
 license=('custom')
 source=("https://github.com/fedoradesign/backgrounds/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-b2sums=('f25d9ffd12ccffbbe32859c31f082b1a02968d4cbfd204dc7497f9b1db5277f2f0d9a448bc07fd926c048c9dbc5867bb2988bb1fda5159fde8a3d266c3d8e9c9')
+b2sums=('44942432788bcbba62fd207091ad3c42d7db15586c8b46fb42f0f81b653b27ece10688b464651865517290f9d2cb90ef0e85543e80f9acaeb29d6f3f653dfff8')
 
 build() {
     cd $pkgname
