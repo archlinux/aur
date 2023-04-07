@@ -1,6 +1,6 @@
 pkgbase = mips64-elf-gdb
 	pkgdesc = The GNU Debugger (mips64-elf)
-	pkgver = 12.1
+	pkgver = 13.1
 	pkgrel = 1
 	url = http://www.gnu.org/software/gdb/
 	arch = i686
@@ -10,10 +10,10 @@ pkgbase = mips64-elf-gdb
 	makedepends = python
 	depends = mpfr
 	depends = gdb-common
-	depends = guile2.0
+	depends = guile
 	depends = libelf
 	options = !emptydirs
-	source = ftp://ftp.gnu.org/gnu/gdb/gdb-12.1.tar.xz
-	sha256sums = 0e1793bf8f2b54d53f46dea84ccfd446f48f81b297b28c4f7fc017b818d69fed
+	source = ftp://ftp.gnu.org/gnu/gdb/gdb-13.1.tar.xz
+	sha256sums = 115ad5c18d69a6be2ab15882d365dda2a2211c14f480b3502c6eba576e2e95a0
 
 pkgname = mips64-elf-gdb

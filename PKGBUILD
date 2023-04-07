@@ -1,17 +1,17 @@
 # Maintainer: Joey Dumont <joey.dumont@gmail.com>
 _target=mips64-elf
 pkgname=$_target-gdb
-pkgver=12.1
+pkgver=13.1
 pkgrel=1
 pkgdesc="The GNU Debugger (${_target})"
 arch=(i686 x86_64)
 url='http://www.gnu.org/software/gdb/'
 license=(GPL3)
-depends=(mpfr gdb-common guile2.0 libelf)
+depends=(mpfr gdb-common guile libelf)
 makedepends=(texinfo python)
 options=(!emptydirs)
 source=("ftp://ftp.gnu.org/gnu/gdb/gdb-$pkgver.tar.xz")
-sha256sums=('0e1793bf8f2b54d53f46dea84ccfd446f48f81b297b28c4f7fc017b818d69fed')
+sha256sums=('115ad5c18d69a6be2ab15882d365dda2a2211c14f480b3502c6eba576e2e95a0')
 
 prepare() {
   cd "${srcdir}/gdb-${pkgver}"
@@ -27,8 +27,9 @@ build() {
   "${srcdir}"/gdb-${pkgver}/configure --prefix=/usr \
               --target=${_target} \
               --disable-nls \
-              --with-python=/usr/bin/python3 \
-              --with-guile=guile-2.0 \
+              --with-python=/usr/bin/python \
+	      --enable-tui \
+	      --with-system-readline \
               --with-sysroot=/usr/${_target} \
               --enable-lto \
 	      --disable-sim
