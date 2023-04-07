@@ -4,14 +4,14 @@
 #
 name=hg-git
 pkgname=$name-hg
-pkgver=1774.b963d11cc1c8
+pkgver=1860.d6672f726bcf
 pkgrel=1
 pkgdesc="the Hg-Git mercurial plugin"
 arch=(any)
 url="http://hg-git.github.io/"
 license=('GPL2')
 depends=('mercurial' 'python-dulwich')
-makedepends=('mercurial' 'python-setuptools')
+makedepends=('mercurial' 'python-setuptools-scm')
 provides=('hg-git')
 conflicts=('hg-git')
 source=('hg+https://foss.heptapod.net/mercurial/hg-git'
