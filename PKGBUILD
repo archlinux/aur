@@ -132,7 +132,7 @@ prepare() {
 
   # Custom Patches
   patch -Np1 -i ../ozone-add-va-api-support-to-wayland.patch
-  patch -Np1 -i ../remove-main-main10-profile-limit.patch
+  #patch -Np1 -i ../remove-main-main10-profile-limit.patch
   patch -Np1 -i ../vaapi-add-av1-support.patch
 
   # Ungoogled Chromium changes
