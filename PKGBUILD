@@ -1,47 +1,44 @@
 # Maintainer: Gustavo Chain <me@qustavo.cc>
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-_pkgname=notesnook
-pkgname=${_pkgname}-bin
-pkgver="2.4.6"
-pkgrel=2
+pkgname=notesnook-bin
+pkgver="2.4.7"
+pkgrel=1
 pkgdesc="Open source zero knowledge private note taking"
 arch=('x86_64')
 url="https://notesnook.com"
+_githuburl=https://github.com/streetwriters/notesnook
 license=('GPL')
 options=(!strip)
-provides=(${_pkgname})
-conflicts=(${_pkgname})
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
 depends=('glibc' 'hicolor-icon-theme' 'zlib')
-_appimage="${_pkgname}_linux_x86_64.AppImage"
-_Pkgname=notesnook
-source=(
-	"${_appimage}::https://github.com/streetwriters/notesnook/releases/download/v$pkgver/${_appimage}"
-)
-sha256sums=('efdaed9ad186dc64a6bdb5e5b9568fd77013559ff0ecd6654cfd0e528f03e1c5')
-noextract=("${_appimage}")
+_appimage="${pkgname%-bin}_linux_x86_64.AppImage"
+source=("${_appimage}::${_githuburl}/releases/download/v${pkgver}/${_appimage}")
+sha256sums=('661f7acf4987e0328159926a15a45e7db52b6292caa8f0c6bcf66d3c7256185d')
 
 prepare() {
-	chmod +x ${_appimage}
-	./${_appimage} --appimage-extract
+	chmod +x "${_appimage}"
+	"./${_appimage}" --appimage-extract > /dev/null
 }
 
 build() {
-	sed -i -E "s|Exec=AppRun|Exec=${_pkgname}|" "${srcdir}/squashfs-root/${_Pkgname}.desktop"
+	sed -i -E "s|Exec=AppRun|Exec=${pkgname%-bin}|g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 
 package() {
-	# AppImage
+	# Install AppImage
 	install -Dm 755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${_appimage}"
 
-	# Symlink
-	install -dm755 ${pkgdir}/usr/bin
-	ln -s "/opt/${pkgname}/${_appimage}" "${pkgdir}/usr/bin/${_pkgname}"
+	#  Install a Symlink
+	install -dm755 -d "${pkgdir}/usr/bin"
+	ln -sf "/opt/${pkgname}/${_appimage}" "${pkgdir}/usr/bin/${pkgname%-bin}"
 
-	# Icons
-	install -dm755 ${pkgdir}/usr/share/icons/hicolor/256x256/apps
-	cp -a "${srcdir}/squashfs-root/resources/assets/icons/256x256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_Pkgname}.png"
+	# Install Icons
+	for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
+		install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
+			"${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
+	done
 
-	# Desktop file
-	install -Dm644 "${srcdir}/squashfs-root/${_Pkgname}.desktop"\
-		"${pkgdir}/usr/share/applications/${_Pkgname}.desktop"
+	# Install Desktop file
+	install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
