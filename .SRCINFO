@@ -1,6 +1,6 @@
 pkgbase = dvblast-git
 	pkgdesc = A simple and powerful MPEG-2/TS demux and streaming application
-	pkgver = 3.4.r2.g6a4b9c1
+	pkgver = 3.4.r14.g4270dca
 	pkgrel = 1
 	url = https://www.videolan.org/projects/dvblast.html
 	arch = i686
@@ -10,10 +10,9 @@ pkgbase = dvblast-git
 	makedepends = bitstream
 	depends = glibc
 	depends = libev
-	provides = dvblast
+	provides = dvblast=3.4.r14.g4270dca
 	conflicts = dvblast
 	source = git+https://code.videolan.org/videolan/dvblast.git
 	sha256sums = SKIP
 
 pkgname = dvblast-git
-
