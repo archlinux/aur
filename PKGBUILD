@@ -2,7 +2,7 @@
 
 pkgname=python-railroad
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A functional library for data processing"
 url="https://github.com/s-m-i-t-a/railroad"
 license=('MIT')
