@@ -1,89 +1,180 @@
-# Maintainer: Darvin Delgado <dnmodder@gmail.com>
+# Contributor: Darvin Delgado <dnmodder@gmail.com>
 # Contributor: Mesmer <mesmer@fisica.if.uff.br>
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 # Contributor: aldelaro5 <aldelaro5@gmail.com>
 
-_pkgname='decaf-emu'
-pkgname="${_pkgname}-git"
-pkgver=r5112.dd444a08
+_pkgname="decaf-emu"
+pkgname="$_pkgname-git"
+pkgver=r5216.e8c9af30
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo Wii U emulator"
 arch=('x86_64')
 url="https://github.com/decaf-emu/decaf-emu"
 license=('GPL3')
-depends=('curl' 'ffmpeg' 'c-ares' 'openssl' 'qt5-base' 'qt5-svg' 'sdl2' 'vulkan-icd-loader' 'zlib')
-makedepends=('cmake' 'c-ares' 'glslang' 'git' 'python' 'vulkan-validation-layers')
-optdepends=('qt5-wayland: for Wayland support')
-source=("git+$url"
-        "qtads::git+https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System"
-        "catch::git+https://github.com/philsquared/Catch"
-        "addrlib::git+https://github.com/decaf-emu/addrlib"
-        "cereal::git+https://github.com/USCiLab/cereal"
-        "cnl::git+https://github.com/decaf-emu/cnl"
-        "cpp-peglib::git+https://github.com/yhirose/cpp-peglib"
-        "cpptoml::git+https://github.com/decaf-emu/cpptoml"
-        "excmd::git+https://github.com/exjam/excmd"
-        "fmt::git+https://github.com/fmtlib/fmt"
-        "glslang::git+https://github.com/KhronosGroup/glslang"
-        "gsl-lite::git+https://github.com/gsl-lite/gsl-lite"
-        "imgui::git+https://github.com/ocornut/imgui"
-        "libbinrec::git+https://github.com/decaf-emu/libbinrec"
-        "ovsocket::git+https://github.com/exjam/ovsocket"
-        "pugixml::git+https://github.com/zeux/pugixml"
-        "spdlog::git+https://github.com/gabime/spdlog"
-        )
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP')
+depends=(
+  'c-ares'
+  'curl'
+  'ffmpeg'
+  'openssl'
+  'qt5-base'
+  'qt5-svg'
+  'sdl2'
+  'vulkan-icd-loader'
+  'zlib'
+)
+makedepends=(
+  'c-ares'
+  'cmake'
+  'git'
+  'glslang'
+  'python'
+  'qt5-x11extras'
+  'vulkan-validation-layers'
+)
+
+optdepends=(
+  'qt5-wayland: for Wayland support'
+)
+source=(
+  "$_pkgname"::"git+$url"
+  "skip-check-vk-result.patch"
+
+  # decaf-emu submodules
+  "addrlib"::"git+https://github.com/decaf-emu/addrlib"
+  "catch"::"git+https://github.com/philsquared/Catch"
+  "cereal"::"git+https://github.com/USCiLab/cereal"
+  "cnl"::"git+https://github.com/johnmcfarlane/cnl"
+  "cpp-peglib"::"git+https://github.com/yhirose/cpp-peglib"
+  "excmd"::"git+https://github.com/exjam/excmd"
+  "fmt"::"git+https://github.com/fmtlib/fmt"
+  "glslang"::"git+https://github.com/KhronosGroup/glslang"
+  "gsl-lite"::"git+https://github.com/gsl-lite/gsl-lite"
+  "imgui"::"git+https://github.com/ocornut/imgui"
+  "libbinrec"::"git+https://github.com/decaf-emu/libbinrec"
+  "ovsocket"::"git+https://github.com/exjam/ovsocket"
+  "pugixml"::"git+https://github.com/zeux/pugixml"
+  "qtads"::"git+https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System"
+  "spdlog"::"git+https://github.com/gabime/spdlog"
+  "tomlplusplus"::"git+https://github.com/marzer/tomlplusplus"
+  "vcpkg"::"git+https://github.com/microsoft/vcpkg"
+
+  # tomlplusplus submodules
+  "Catch2"::"git+https://github.com/catchorg/Catch2"
+  "json"::"git+https://github.com/nlohmann/json"
+  "tloptional"::"git+https://github.com/TartanLlama/optional"
+  "toml-spec-tests"::"git+https://github.com/iarna/toml-spec-tests"
+  "toml-test"::"git+https://github.com/BurntSushi/toml-test"
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+)
 
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
-
-    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  cd "$srcdir/$_pkgname"
+  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    cd "$srcdir/$_pkgname"
+  # decaf-emu submodules
+  cd "$srcdir/$_pkgname"
+  _submodules=(
+    'libraries/addrlib'
+    'libraries/catch'
+    'libraries/cereal'
+    'libraries/cnl'
+    'libraries/cpp-peglib'
+    'libraries/excmd'
+    'libraries/fmt'
+    'libraries/glslang'
+    'libraries/gsl-lite'
+    'libraries/imgui'
+    'libraries/libbinrec'
+    'libraries/ovsocket'
+    'libraries/pugixml'
+    'libraries/qtads'
+    'libraries/spdlog'
+    'libraries/tomlplusplus'
+    'libraries/vcpkg'
+  )
+  for submodule in ${_submodules[@]} ; do
+    mkdir -p "$submodule"
+    git submodule init ${submodule}
+    git submodule set-url ${submodule} "${srcdir}/${submodule##*/}"
+    git -c protocol.file.allow=always submodule update ${submodule}
+  done
 
-    git submodule init
-    for mod_url in ${source[@]:1}
-    do
-      mod_name=${mod_url%%:*}
-      echo $mod_name
-      git config submodule.libraries/$mod_name.url $srcdir/$mod_name
-    done
+  # tomlplusplus submodules
+  cd "libraries/tomlplusplus"
+  _submodules=(
+    'external/Catch2'
+    'external/json'
+    'external/tloptional'
+    'external/toml-spec-tests'
+    'external/toml-test'
+  )
+  for submodule in ${_submodules[@]} ; do
+    mkdir -p "$submodule"
+    git submodule init ${submodule}
+    git submodule set-url ${submodule} "${srcdir}/${submodule##*/}"
+    git -c protocol.file.allow=always submodule update ${submodule}
+  done
 
-    git submodule update
+  # any remaining submodules
+  cd "$srcdir/$_pkgname"
+  git submodule sync
+  git submodule update --init --recursive
+
+  # Apply patches
+  for p in "$srcdir"/*.patch ; do
+    if [ -f "$p" ] ; then
+      echo "Applying patch: ${p##*/}"
+      patch -Np1 -F100 -i "$p"
+    fi
+  done
 }
 
 build() {
-    cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_pkgname"
 
-    mkdir -p build && cd build
-    cmake .. \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DDECAF_QT=ON
-    make
+  mkdir -p build && cd build
+  cmake .. \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DDECAF_BUILD_TESTS=OFF \
+    -DDECAF_FFMPEG=ON \
+    -DDECAF_VULKAN=ON \
+    -DDECAF_QT=ON
+  make
 }
 
 package() {
-    cd "$srcdir/$_pkgname/build"
+  cd "$srcdir/$_pkgname/build"
 
-    make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" install
 }
