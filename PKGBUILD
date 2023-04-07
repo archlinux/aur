@@ -2,7 +2,7 @@
 
 _pkgname=mmaction2
 pkgname=python-mmaction2
-pkgver=0.24.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="OpenMMLab's Next Generation Action Understanding Toolbox and Benchmark"
 arch=('any')
@@ -18,8 +18,10 @@ depends=(
   python-torchvision
 )
 makedepends=(
-  python-pip
+  python-build
+  python-installer
   python-setuptools
+  python-wheel
 )
 optdepends=(
   python-av
@@ -31,21 +33,18 @@ optdepends=(
   python-timm
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/open-mmlab/mmaction2/archive/v${pkgver}.tar.gz")
-sha512sums=('9fb4d2ed742aebc722186cd9ffdd4417de630fcdeae9434b797f7113569c80741f5c31c145fac94ea09e62cc02f83ef316e7453ae118be4440e0e391a76e1ced')
-
-prepare() {
-  cd "${_pkgname}-${pkgver}"
-  # uncomment this line to relax mmcv version requirement
-  sed -i '10,14d' "mmaction/__init__.py"
-}
+sha512sums=('e2a3502c70ccbfafed97feacbd56348614ed60cc86271f2198822630294e6dac53b76698f6c75a36ce61a0a2f79220b334ed1e185686d946751f7fa5cbd66e71')
 
 build() {
   cd "${_pkgname}-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${_pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+  # delete unused .mim dir
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  rm -rfv "${pkgdir}${site_packages}/mmaction/.mim"
 }
 # vim:set ts=2 sw=2 et:
