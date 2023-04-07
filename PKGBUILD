@@ -41,7 +41,7 @@ source=("https://downloads.sourceforge.net/infozip/${_pkgname}${_pkgver}.tar.gz"
         'https://src.fedoraproject.org/rpms/unzip/raw/rawhide/f/unzip-zipbomb-part6.patch'
         'https://src.fedoraproject.org/rpms/unzip/raw/rawhide/f/unzip-zipbomb-switch.patch'
         'unzip-6.0_CVE-2021-4217.patch'
-        'https://sources.debian.org/data/main/u/unzip/6.0-27/debian/patches/28-cve-2022-0529-and-cve-2022-0530.patch'
+        'https://sources.debian.org/data/main/u/unzip/6.0-28/debian/patches/28-cve-2022-0529-and-cve-2022-0530.patch'
         'add-zstd-support.diff')
 sha512sums=('0694e403ebc57b37218e00ec1a406cae5cc9c5b52b6798e0d4590840b6cdbf9ddc0d9471f67af783e960f8fa2e620394d51384257dca23d06bcd90224a80ce5d'
             '3c7f525687b198aaa8547a8b30e744f7f184943624279d5c70170d5b9bb3f0c0f27f3e69bc808dd0d144690107bc76a10c06e160bf99c54fd5684246208b7cff'
