@@ -1,10 +1,10 @@
 # Maintainer: Jamie Nadeau <james2432 at gmail dot com>
 pkgname=tippecanoe
-pkgver=1.36.0
+pkgver=2.24.0
 pkgrel=1
 pkgdesc="Builds vector tilesets from large (or small) collections of GeoJSON features"
 arch=('i686' 'x86_64')
-url="https://github.com/mapbox/tippecanoe"
+url="https://github.com/felt/tippecanoe/"
 license=('BSD')
 groups=()
 depends=()
@@ -15,18 +15,18 @@ provides=('tippecanoe')
 backup=()
 options=()
 install=''
-source=("https://github.com/mapbox/tippecanoe/archive/${pkgver}.tar.gz")
-md5sums=('cdb81462cdb7a3adb9d42ebc9ffca7e7')
+source=("https://github.com/felt/tippecanoe/archive/${pkgver}.tar.gz")
+md5sums=('eda696978ba4b3e35ed2a2534d7f4343')
 
 check() {
   cd "$pkgname-$pkgver"
-
+  sed -i 's/CXXFLAGS := $(CXXFLAGS) -std=c++11/CXXFLAGS := $(CXXFLAGS) -std=c++17/g' Makefile
   make test
 }
 
 build() {
   cd "$pkgname-$pkgver"
-
+  sed -i 's/CXXFLAGS := $(CXXFLAGS) -std=c++11/CXXFLAGS := $(CXXFLAGS) -std=c++17/g' Makefile
   make tippecanoe tippecanoe-enumerate tippecanoe-decode tile-join tippecanoe-json-tool
 }
 
