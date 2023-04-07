@@ -15,4 +15,4 @@ package() {
     install -Dm755 x-pixiv -t "$pkgdir/usr/bin"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-sha256sums_x86_64=('c72b47da6f4b761f2cfd8855267261e622adaafdfcf9974fe46050cec750316a')
+sha256sums_x86_64=('b63b23138e0a2e8d8da63f9950d1f78c4a55514f5b292f13cc80a768ef31ed8f')
