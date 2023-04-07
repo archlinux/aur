@@ -1,0 +1,23 @@
+pkgbase = nordvpn-git
+	pkgdesc = NordVPN client for Linux (Git version)
+	pkgver = r29.a02cd17
+	pkgrel = 1
+	url = https://github.com/NordSecurity/nordvpn-linux
+	install = nordvpn-git.install
+	arch = x86_64
+	arch = arm64
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	makedepends = rust
+	makedepends = mage
+	depends = iptables
+	depends = iproute2
+	provides = nordvpn
+	conflicts = openvpn-nordvpn
+	conflicts = nordvpn-bin
+	conflicts = nordvpn-cli-bin
+	source = nordvpn-git::git+https://github.com/NordSecurity/nordvpn-linux.git
+	sha256sums = SKIP
+
+pkgname = nordvpn-git
