@@ -1,8 +1,8 @@
 # Maintainer: Joey Dumont <joey.dumont@gmail.com>
 _target=mips64-ultra-elf
 pkgname=${_target}-gdb
-_gdbver=12.1
-pkgver=12.1_r171.c378110
+_gdbver=13.1
+pkgver=13.1_r171.c378110
 pkgrel=1
 pkgdesc="The GNU Debugger (${_target})"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=(!emptydirs)
 depends=(zstd gdb-common mpfr guile libelf)
 source=("https://ftp.gnu.org/gnu/gdb/gdb-${_gdbver}.tar.xz"
         "git+https://github.com/glankk/n64.git#branch=n64-ultra")
-sha256sums=('0e1793bf8f2b54d53f46dea84ccfd446f48f81b297b28c4f7fc017b818d69fed'
+sha256sums=('115ad5c18d69a6be2ab15882d365dda2a2211c14f480b3502c6eba576e2e95a0'
             'SKIP')
 
 pkgver() {
@@ -43,6 +43,7 @@ build() {
     --with-sysroot=/usr/${_target}/n64-sysroot/ \
     --with-newlib \
     --enable-multilib \
+    --enable-tui \
     --disable-nls \
     --disable-sim
   make
