@@ -1,6 +1,6 @@
 pkgbase = dash-git
 	pkgdesc = A POSIX compliant shell that aims to be as small as possible
-	pkgver = 0.5.10.2.r18.g03cbaba
+	pkgver = 0.5.12.r24.gb00288f
 	pkgrel = 1
 	url = http://gondor.apana.org.au/~herbert/dash/
 	install = dash.install
@@ -9,10 +9,9 @@ pkgbase = dash-git
 	license = BSD
 	makedepends = git
 	depends = glibc
-	provides = dash
+	provides = dash=0.5.12.r24.gb00288f
 	conflicts = dash
 	source = git+https://git.kernel.org/pub/scm/utils/dash/dash.git
 	sha256sums = SKIP
 
 pkgname = dash-git
-

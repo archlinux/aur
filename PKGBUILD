@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=dash-git
-pkgver=0.5.10.2.r18.g03cbaba
+pkgver=0.5.12.r24.gb00288f
 pkgrel=1
 pkgdesc="A POSIX compliant shell that aims to be as small as possible"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://gondor.apana.org.au/~herbert/dash/"
 license=('BSD')
 depends=('glibc')
 makedepends=('git')
-provides=('dash')
+provides=("dash=$pkgver")
 conflicts=('dash')
 install=dash.install
 source=("git+https://git.kernel.org/pub/scm/utils/dash/dash.git")
@@ -26,7 +26,10 @@ build() {
   cd "dash"
 
   ./autogen.sh
-  ./configure --prefix="/usr" --enable-fnmatch --with-libedit
+  ./configure \
+    --prefix="/usr" \
+    --enable-fnmatch \
+    --with-libedit
 
   make
 }
@@ -35,5 +38,5 @@ package() {
   cd "dash"
 
   make DESTDIR="$pkgdir" install
-  install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/dash/COPYING"
+  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/dash"
 }
