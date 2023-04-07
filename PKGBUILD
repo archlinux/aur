@@ -6,10 +6,11 @@
 _arch=x64v2
 _pkgbase=linux-xanmod
 _major=6.2
-_minor=9
+_minor=10
 _branch=6.x
 _xanmodrel=1
-pkgrel=3
+pkgrel=1
+
 pkgbase=${_pkgbase}-linux-bin-${_arch}
 pkgver=${_major}.${_minor}
 pkgname=("${pkgbase}" "${_pkgbase}-linux-headers-bin-${_arch}")
@@ -21,8 +22,10 @@ options=('!strip')
 makedepends=('jq' 'curl')
 
 # Resolve URL of sources from GiHub provider
-_url_image=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${_xanmodrel} | jq --arg PKGVER "${pkgver}" --arg PKGREL "${_xanmodrel}" --arg ARCH "${_arch}" -r '.assets[] | select(.name | startswith("linux-image-" + $PKGVER + "-" + $ARCH + "-xanmod" + $PKGREL) and endswith(".deb")).browser_download_url')
-_url_headers=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${_xanmodrel} | jq --arg PKGVER "${pkgver}" --arg PKGREL "${_xanmodrel}" --arg ARCH "${_arch}" -r '.assets[] | select(.name | startswith("linux-headers-" + $PKGVER + "-" + $ARCH + "-xanmod" + $PKGREL) and endswith(".deb")).browser_download_url')
+# cache the response of the API to reduce the number of calls made to GitHub; not authenticated calls are limited to 60 per hour
+_json_data=$(curl -L -s https://api.github.com/repos/xanmod/linux/releases/tags/${pkgver}-xanmod${_xanmodrel})
+_url_image=$(echo "${_json_data}" | jq --arg PKGVER "${pkgver}" --arg PKGREL "${_xanmodrel}" --arg ARCH "${_arch}" -r '.assets[] | select(.name | startswith("linux-image-" + $PKGVER + "-" + $ARCH + "-xanmod" + $PKGREL) and endswith(".deb")).browser_download_url')
+_url_headers=$(echo "${_json_data}" | jq --arg PKGVER "${pkgver}" --arg PKGREL "${_xanmodrel}" --arg ARCH "${_arch}" -r '.assets[] | select(.name | startswith("linux-headers-" + $PKGVER + "-" + $ARCH + "-xanmod" + $PKGREL) and endswith(".deb")).browser_download_url')
 source=("${_url_image}" "${_url_headers}")
 noextract=("${_url_image}" "${_url_headers}")
 # Save files we will extract later manually
@@ -41,8 +44,8 @@ validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha256sums=('900869c4e32216b7fd1368c42561804f36b665c6e9320a047f4649e5d35bf113'
-            'e91541f198b3d871398a3fb769adf4c7f61a20980876b762324fe5fd146ba721')
+sha256sums=('e091211abe754d24707a1343d4ceb0c4872dcbb1accb44fe4fdf474559ec8260'
+            'c8b9befd18b6282ae19fbe72dfe5d91f5f97655d07503ada2c37cfadfa3564af')
 
 _package() {
   pkgdesc="The Linux kernel and modules with Xanmod patches - Current Stable (MAIN) - Prebuilt version - ${_arch}"
@@ -57,7 +60,7 @@ _package() {
   local kernver="${pkgver}-${_arch}-xanmod${_xanmodrel}"
   local modulesdir="${pkgdir}/usr/lib/modules/${kernver}"
   mkdir -p "${modulesdir}" "${pkgdir}/usr/share/doc"
-  #mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
+  mkdir -p "${pkgdir}"/{boot,usr/lib/modules}
 
   msg2 "Installing modules..."
   cp -r lib/modules/${kernver}/* "${modulesdir}/"
@@ -72,6 +75,18 @@ _package() {
 
   # Used by mkinitcpio to name the kernel
   echo "${pkgbase}" | install -Dm644 /dev/stdin "${modulesdir}/pkgbase"
+  echo "${kernver}" | install -Dm644 /dev/stdin "${modulesdir}/kernelbase"
+
+  echo "${kernver}" > "${pkgdir}/boot/${pkgbase}.kver"
+
+  local _extramodules="extramodules-${kernver}"
+  ln -s "../${_extramodules}" "${modulesdir}/extramodules"
+
+  # add real version for building modules and running depmod from hook
+  echo "${kernver}" | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules/${_extramodules}/version"
+
+  # now we call depmod...
+  # depmod -b "${pkgdir}/usr" -F "${srcdir}/boot/System.map-${kernver}"
 }
 
 _package-headers() {
