@@ -1,0 +1,13 @@
+pkgbase = mdbook-pagetoc
+	pkgdesc = A preprocessor for mdbook to render a table of contents for each page
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/slowsage/mdbook-pagetoc
+	arch = x86_64
+	license = MPL
+	makedepends = rust
+	makedepends = cargo
+	source = https://github.com/slowsage/mdbook-pagetoc/archive/v0.1.7.tar.gz
+	sha256sums = 3b1fd29a64d2d06ee436e9a02cea3fe18425ec71e703cc011a5d8de022f303f0
+
+pkgname = mdbook-pagetoc
