@@ -1,6 +1,6 @@
 pkgbase = ecal
 	pkgdesc = enhanced Communication Abstraction Layer
-	pkgver = 5.11.3
+	pkgver = 5.11.4
 	pkgrel = 2
 	url = https://github.com/eclipse-ecal/ecal
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = ecal
 	depends = yaml-cpp
 	backup = etc/ecal/ecal.ini
 	backup = etc/ecal/ecaltime.ini
-	source = https://github.com/eclipse-ecal/ecal/releases/download/v5.11.3/ecal-fat-source.tar.gz
-	sha256sums = 6bd89248cb487cc30d599f89f160ef705749fabf1c2a263aaf269adb508ee4a1
+	source = https://github.com/eclipse-ecal/ecal/releases/download/v5.11.4/ecal-fat-source.tar.gz
+	sha256sums = 48cc5522d64b01bd110cbfb97ed8990169b8a9713a424f78e231c139244b649b
 
 pkgname = ecal
