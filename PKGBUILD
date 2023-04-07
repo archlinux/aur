@@ -1,4 +1,3 @@
-# Maintainer: deadYokai <mynameiskitsune at proton dot me>
 
 pkgname=dds10-thumbnailer-kde-git
 pkgver='1'
@@ -22,4 +21,7 @@ package(){
     install -D -m644 -t "$pkgdir/usr/share/licenses/${pkgname%-git}" "${pkgname%-git}/LICENSE"
     DESTDIR="$pkgdir" cmake --install build
 }
+
+
+
 
