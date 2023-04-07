@@ -2,7 +2,7 @@
 # Previous maintainer: Swift Geek <swiftgeek@gmail.com>
 
 pkgname=earlyoom-git
-pkgver=1.6.2.r36.g7c17ac2
+pkgver=1.7.r34.gfabac1f
 pkgrel=1
 pkgdesc="Early OOM Daemon for Linux"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('git' 'pandoc')
 checkdepends=('cppcheck' 'go')
 optdepends=('systembus-notify: desktop notifications')
-provides=('earlyoom')
+provides=("earlyoom=$pkgver")
 conflicts=('earlyoom')
 backup=("etc/default/earlyoom")
 source=("git+https://github.com/rfjakob/earlyoom.git")
