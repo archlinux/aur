@@ -1,6 +1,6 @@
 pkgbase = ethtool-git
 	pkgdesc = Utility for controlling network drivers and hardware
-	pkgver = 4.10.r9.gb888f35
+	pkgver = 6.2.r15.g5cea673
 	pkgrel = 1
 	url = https://www.kernel.org/pub/software/network/ethtool/
 	arch = i686
@@ -8,10 +8,9 @@ pkgbase = ethtool-git
 	license = GPL2
 	makedepends = git
 	depends = glibc
-	provides = ethtool
+	provides = ethtool=6.2.r15.g5cea673
 	conflicts = ethtool
 	source = git+https://git.kernel.org/pub/scm/network/ethtool/ethtool.git
 	sha256sums = SKIP
 
 pkgname = ethtool-git
-
