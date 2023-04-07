@@ -5,7 +5,7 @@
 
 pkgname=solfege
 pkgver=3.23.4
-pkgrel=6
+pkgrel=7
 pkgdesc="Music education and ear training software"
 arch=('x86_64')
 url="https://www.gnu.org/software/solfege/"
