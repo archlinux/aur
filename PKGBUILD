@@ -1,5 +1,4 @@
 # Maintainer: soloturn@gmail.com
-# Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=cosmic-text-editor-git
 pkgver=r15.92f7882
