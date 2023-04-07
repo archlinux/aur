@@ -1,6 +1,6 @@
 pkgbase = asusctltray-git
 	pkgdesc = Simple tray profile switcher for asusctl
-	pkgver = r23.99a8731
+	pkgver = r24.52c44ad
 	pkgrel = 1
 	url = https://github.com/Baldomo/asusctltray
 	arch = any
