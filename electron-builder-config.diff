@@ -1,9 +1,9 @@
 diff --git a/apps/studio/vue.config.js b/apps/studio/vue.config.js
-index f9d45c7b..974f2707 100644
+index 86c82c6a..750d6991 100644
 --- a/apps/studio/vue.config.js
 +++ b/apps/studio/vue.config.js
 @@ -49,6 +49,8 @@ module.exports = {
-         files: ['**/*', 'public/icons/**/*'],
+         files: ['**/*', 'public/icons/**/*', '!**/node_gyp_bins/*'],
          afterSign: "electron-builder-notarize",
          afterPack: "./build/afterPack.js",
 +        electronDist: "%%ELECTRON_DIST%%",
@@ -11,7 +11,7 @@ index f9d45c7b..974f2707 100644
          extraResources: [
            {
              from: 'build/launcher-script.sh',
-@@ -113,53 +115,22 @@ module.exports = {
+@@ -117,53 +119,22 @@ module.exports = {
              role: "Editor"
            }
          ],

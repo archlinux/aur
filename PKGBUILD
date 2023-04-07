@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='beekeeper-studio'
-pkgver='3.9.1.0'
-_packagejsonver='3.9.1'
+pkgver='3.9.4.0'
+_packagejsonver='3.9.4'
 pkgrel='2'
 epoch='1'
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more'
@@ -18,13 +18,11 @@ source=(
 	'electron-builder-config.diff'
 	'configure-environment.diff'
 	'fix-argv.diff'
-	'debug.diff'
 )
-sha512sums=('15a1db20d5be8a3807b4efe138b526abd2d300f018b20740f060be4a35f5c47bc7712d5b6d09b5e69fda51f72be9c8d68a09b122a012b0cbf6d3ad6cd5672c55'
-            'c8c63ffdc75ec73f6258aa0020b228f86d883de0c6608b14b3a35604dfeaebac7ae89f0dbc57b3bbb922cbfc3231117d769488f194961c68af646574d9ea49e0'
-            'dc653535664904c74c812b589881994c1109c664f9174186ccd362a42172edeb0251712c98f3c9a17d7356bf47f942eff03c2294181402ff9cbc9cb211616d57'
-            'e26142437693fbadb34e8421507770458658311c8c199f3333730961600716ecf1b89de438f0b36c56f387804a4b9a708b32f5ec0e89765bb9fdbc8c44b6fcc7'
-            'f9adf19932ba34b9662f1fb6bb6b77cada68e37d330cae4639cc70b91500d09800bdda5cd1247319b30a4d034630528abbd0b5eaa34fe3c0be73f41deceb0e39')
+sha512sums=('c95cb879aecfa313caaf72a177f12b3b8d842e459fdaaa3fb706cbade11644507f33ca78648fe371aba87ba336c563c366fca29f0e6da6a55e2bae26aee5d730'
+            '2bc5d50b17ecc90d9bbe99b528f1ea323e7afda75a92faf645a33ad296e4cdf8fb13e2d4853dcc369571fca131e8c4bf94bda8c6464536c67c434bc589fec4b2'
+            '1a631deaee10d876c875b215cb47d02f86949438bbcf0c1625b1a899d5ddfc10876cdd46460107a36cf5ee2171b7da26acf9fe7015baa279f5d5b3618ed4eddc'
+            'e74d6d85fe4ddd2606efb49834e37f81e44a79270f0be79ea7ea33cfe2759c906a49d6a8bfb761b7877c4511dc6b7ca92484ef3fa15c7f30178cf0b71c56d52d')
 
 _sourcedirectory="$pkgname-$pkgver"
 
@@ -35,7 +33,6 @@ prepare() {
 	patch --forward -p1 < "$srcdir/electron-builder-config.diff"
 	patch --forward -p1 < "$srcdir/configure-environment.diff"
 	patch --forward -p1 < "$srcdir/fix-argv.diff"
-	patch --forward -p1 < "$srcdir/debug.diff"
 
 	sed -i "s|%%ELECTRON_DIST%%|/usr/lib/$_electronpkg|g" 'apps/studio/vue.config.js'
 	sed -i "s|%%ELECTRON_VERSION%%|$(cat "/usr/lib/$_electronpkg/version")|g" 'apps/studio/vue.config.js'
