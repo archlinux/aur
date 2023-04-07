@@ -1,7 +1,7 @@
 # Maintainer: Jake Leahy <jake@lowerCaseLastName.dev
 
 pkgname=typst-lsp-bin
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="A brand-new language server for Typst,"
 arch=("x86_64" "armv7h" "aarch64")
@@ -12,9 +12,9 @@ source_x86_64=("typst-lsp-$pkgver::https://github.com/nvarner/typst-lsp/releases
 source_armv7h=("typst-lsp-$pkgver::https://github.com/nvarner/typst-lsp/releases/download/v$pkgver/typst-lsp-linux-armhf")
 source_aarch64=("typst-lsp-$pkgver::https://github.com/nvarner/typst-lsp/releases/download/v$pkgver/typst-lsp-linux-arm64")
 
-sha256sums_x86_64=('8927a35f00e34908c1b015a5f6da626e187a56fdb4bd4232ff2809076f420389')
-sha256sums_armv7h=('8927a35f00e34908c1b015a5f6da626e187a56fdb4bd4232ff2809076f420389')
-sha256sums_aarch64=('8927a35f00e34908c1b015a5f6da626e187a56fdb4bd4232ff2809076f420389')
+sha256sums_x86_64=('0b3f629ea1350fb03c864661949d338b5d720b5aefbc72f0241fa3c60b020dad')
+sha256sums_armv7h=('0b3f629ea1350fb03c864661949d338b5d720b5aefbc72f0241fa3c60b020dad')
+sha256sums_aarch64=('0b3f629ea1350fb03c864661949d338b5d720b5aefbc72f0241fa3c60b020dad')
 
 provides=("typst-lsp")
 depends=("qt5-base")
