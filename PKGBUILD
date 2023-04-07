@@ -3,7 +3,7 @@
 # Contributor: goodguy <lists.cinelerra-gg.org>
 
 pkgname=cinelerra-gg
-_pkgver=2022-12
+_pkgver=2023-03
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Professional video editing and compositing environment"
@@ -11,7 +11,7 @@ arch=(x86_64)
 url="https://www.cinelerra-gg.org"
 license=(GPL2)
 depends=(alsa-lib aom dav1d fftw flac glu gtk2 libavc1394
-         libdv libiec61883 libpulse libtheora libva libvdpau
+         libdv libiec61883 libpulse libtheora libusb libva libvdpau
          libvorbis libvpx libwebp libxv numactl openexr opus)
 makedepends=(git cmake ctags libxml2 nasm perl-xml-libxml
              perl-xml-parser python xorg-mkfontdir
