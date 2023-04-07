@@ -1,11 +1,12 @@
 pkgbase = knit
 	pkgdesc = A simple and flexible build too using Lua, similar to make/mk
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zyedidia/knit
 	arch = x86_64
 	license = MIT
 	makedepends = go
+	depends = glibc
 	source = https://github.com/zyedidia/knit/archive/v1.0.0/knit-1.0.0.tar.gz
 	sha256sums = 18c78e98c4675f765537b332da0dcbb7eac855220c703a81deaa03b2c0e3a092
 

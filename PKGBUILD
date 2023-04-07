@@ -2,11 +2,12 @@
 
 pkgname=knit
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple and flexible build too using Lua, similar to make/mk'
 arch=(x86_64)
 url="https://github.com/zyedidia/$pkgname"
 license=(MIT)
+depends=(glibc)
 makedepends=(go)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
@@ -18,9 +19,11 @@ build() {
 	export CGO_CFLAGS="$CFLAGS"
 	export CGO_CXXFLAGS="$CXXFLAGS"
 	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+	set -x
 	go build \
 		-ldflags "-linkmode external -extldflags '$LDFLAGS'" \
-		-o $pkgname
+		-o $pkgname \
+		./cmd/$pkgname
 }
 
 package() {
