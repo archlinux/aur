@@ -1,0 +1,21 @@
+pkgbase = fleu-calamares
+	pkgdesc = Calamares installer configured for FleuOS.
+	pkgver = 1
+	pkgrel = 1
+	url = https://dancheg97.ru/dancheg97/calamares
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL3
+	makedepends = go>=1.18
+	depends = pacman>5
+	depends = git
+	optdepends = sudo: privilege elevation
+	optdepends = doas: privilege elevation
+	options = !lto
+
+pkgname = fleu-calamares
