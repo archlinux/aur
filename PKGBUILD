@@ -1,7 +1,8 @@
 
 pkgname=python2-zope-interface
-pkgver=5.4.0
-pkgrel=2
+# Do not update beyond 5.x. Version 6.x dropped support for Python2.
+pkgver=5.5.2
+pkgrel=1
 pkgdesc='Zope Interfaces for Python 2.x'
 license=('ZPL')
 arch=('x86_64')
@@ -11,7 +12,7 @@ makedepends=('python2-setuptools')
 # Can't be bothered to package these just to run some tests.
 #checkdepends=('python2-zope-event' 'python2-zope-testing' 'python2-coverage')
 source=("https://pypi.io/packages/source/z/zope.interface/zope.interface-$pkgver.tar.gz")
-sha512sums=('ef15d63397e05ad9fc44b2d5d786b0399b6973bb5f4866fab839ff612756f3157f2099d0f5c0469b574a5c8b5920a7c2a5c6eab8e8f84c24d5c43e816669bffe')
+sha512sums=('ecc20df9b84c91f7a03ce7be087abcd6288f77b2e04f6974ece5b86a222944baf0dc0a2aa49063c74dc7c4d47c474fd01f512c7686164806d48f360667581205')
 
 build() {
   cd "$srcdir"/zope.interface-$pkgver

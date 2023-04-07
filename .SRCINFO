@@ -1,14 +1,14 @@
 pkgbase = python2-zope-interface
 	pkgdesc = Zope Interfaces for Python 2.x
-	pkgver = 5.4.0
-	pkgrel = 2
+	pkgver = 5.5.2
+	pkgrel = 1
 	url = https://pypi.python.org/pypi/zope.interface
 	arch = x86_64
 	license = ZPL
 	makedepends = python2-setuptools
 	depends = python2
 	depends = glibc
-	source = https://pypi.io/packages/source/z/zope.interface/zope.interface-5.4.0.tar.gz
-	sha512sums = ef15d63397e05ad9fc44b2d5d786b0399b6973bb5f4866fab839ff612756f3157f2099d0f5c0469b574a5c8b5920a7c2a5c6eab8e8f84c24d5c43e816669bffe
+	source = https://pypi.io/packages/source/z/zope.interface/zope.interface-5.5.2.tar.gz
+	sha512sums = ecc20df9b84c91f7a03ce7be087abcd6288f77b2e04f6974ece5b86a222944baf0dc0a2aa49063c74dc7c4d47c474fd01f512c7686164806d48f360667581205
 
 pkgname = python2-zope-interface
