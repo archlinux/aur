@@ -6,10 +6,10 @@ pkgver=2.5
 pkgrel=4
 pkgdesc="A flexible command-line scientific calculator"
 arch=('i686' 'x86_64')
-url="http://w-calc.sourceforge.net/"
+url="https://w-calc.sourceforge.net/"
 license=('GPL')
 depends=('mpfr>=4.0.0' 'readline>=8.0.0')
-source=(http://downloads.sourceforge.net/w-calc/$pkgname-$pkgver.tar.bz2)
+source=(https://downloads.sourceforge.net/w-calc/$pkgname-$pkgver.tar.bz2)
 sha256sums=('0e2c17c20f935328dcdc6cb4c06250a6732f9ee78adf7a55c01133960d6d28ee')
 
 build() {
