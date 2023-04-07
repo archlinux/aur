@@ -3,11 +3,11 @@ pkgname=albafetch-git
 pkgver=4.0.r18.4aff896
 pkgrel=1
 pkgdesc="Neofetch, but written in C; both faster and worse than the original"
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url="https://github.com/alba4k/albafetch"
 license=('MIT')
 makedepends=(git make gcc)
-depends=(pciutils)
+depends=(pciutils libcurl-gnutls)
 source=("git+$url")
 md5sums=('SKIP')
 
