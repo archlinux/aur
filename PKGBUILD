@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gstat
-_pkgver=2.1-0
+_pkgver=2.1-1
 pkgname=r-${_pkgname,,}
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='Spatial and Spatio-Temporal Geostatistical Modelling, Prediction and Simulation'
 arch=('x86_64')
@@ -32,7 +32,7 @@ optdepends=(
   r-xts
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('57a6eb46fa601f159ace1e56ebe8928d210a62d85552a4eb5a5ca4ada48f2d6f')
+sha256sums=('48b205e65155effb6827fca062f2a409a0922241b7714cc6c8248f141b125d25')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
