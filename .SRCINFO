@@ -1,0 +1,17 @@
+pkgbase = openai-client-git
+	pkgdesc = OpenAI client made using PySide6 Qt
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	depends = git>=2.0
+	depends = python>=3.5
+	depends = python-pip>=20.0
+	provides = openai-client
+	options = !strip
+	source = git+https://github.com/awesomeDev12/openai-client.git
+	source = launch_arch.sh
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = openai-client-git

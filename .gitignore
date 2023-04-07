@@ -1,0 +1,12 @@
+# Git ignore
+
+openai-client/
+openai-client-git*
+
+openai-client-arch-binaries/
+openai-client-bin-0.0.0-1-x86_64.pkg.tar.zst
+openai-client-bin-*
+
+pkg/
+src/
+
