@@ -2,7 +2,7 @@
 # Maintainer: Fabian Bornschein <fabiscafe-cat-mailbox-dog-org>
 
 pkgname=loupe
-pkgver=44.0
+pkgver=44.1
 pkgrel=1
 pkgdesc='Simple image viewer for GNOME'
 arch=(x86_64 aarch64)
@@ -21,7 +21,12 @@ makedepends=(
 	rust
 )
 source=("${url}/-/archive/${pkgver}/loupe-${pkgver}.tar.gz")
-b2sums=('89bc97c45b74a93893b29ea85d033f4d1508bbc0b43c2291739cfc545580f81cffa66ba902c75201cbe8bdd3153dbae531345b811d88cc1407625eecb267b0e8')
+b2sums=('284fe08be8e19cb79215e364a9db043f51b7d690f7e4e8a9ef35d68c7aca8f1b0daa3c6dbc7215768589e98dcf454277a68fe4a307bfee4c2bafc8977af26743')
+
+prepare() {
+	cd loupe-${pkgver}
+	sed -i 's|4.11.1|4.10.1|g' meson.build
+}
 
 build() {
 	arch-meson loupe-${pkgver} build
