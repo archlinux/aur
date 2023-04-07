@@ -1,14 +1,14 @@
 pkgbase = spark-transhell
 	pkgdesc = make bash shell i18n.from Spark Store. transhell 是一个bash国际化方案，可以让你的bash脚本拥有国际化的能力
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitee.com/spark-community-works-collections/transhell
 	arch = x86_64
-	license = custom:freeware
-	depends = bash
+	license = LGPL3
+	depends = sh
 	provides = Spark
 	provides = Store
-	source = https://gitee.com/spark-community-works-collections/transhell/releases/download/1.0/transhell_1.0_all.deb
-	md5sums = 2479a633956cde760447af5bc628461e
+	source = spark-transhell.deb::https://gitee.com/spark-community-works-collections/transhell/releases/download/1.0/transhell_1.0_all.deb
+	sha256sums = 137dba51fede2af4b989c46ca18f90b970a6bbc360bfc3d5dc616d4c8e741812
 
 pkgname = spark-transhell
