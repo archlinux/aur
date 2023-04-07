@@ -1,6 +1,6 @@
 pkgbase = cs
 	pkgdesc = The Ls command with icons implemented in C++
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/semtor/cs
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = cs
 	makedepends = glibc
 	makedepends = xmake
 	makedepends = git
-	source = cs-0.1.1::https://github.com/semtor/cs/archive/refs/tags/0.1.1.tar.gz
+	source = cs-0.1.2::https://github.com/semtor/cs/archive/refs/tags/0.1.2.tar.gz
 	md5sums = SKIP
 
 pkgname = cs
