@@ -2,7 +2,7 @@
 
 pkgname=python-nose-fixes
 pkgver=1.3
-pkgrel=6
+pkgrel=7
 pkgdesc="A plugin to make nose behave better"
 arch=('any')
 url="https://github.com/cjw296/nose_fixes"
