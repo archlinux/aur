@@ -1,7 +1,7 @@
 # Maintainer: Jonas Karlsson <jonaskarlsson at fripost dot org>
 
 pkgname=notepadnext-appimage
-pkgver=0.6
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Cross-platform reimplementation of Notepad++ (binary AppImage)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ noextract=("${_appimage}")
 source_x86_64=(
     "${_appimage}::${url}/releases/download/v${pkgver}/${_appimage}"
 )
-sha256sums_x86_64=('1810fdc3dfa2032b6508921887b25004a487b8824502aefb7bf03f6b2786a231')
+sha256sums_x86_64=('1dbc1f6bdfe64d674168e7c9f65d87e4df6e0ea2a53dfc4be5440eb71a8c98b8')
 
 prepare() {
     chmod +x ${srcdir}/${_appimage}
