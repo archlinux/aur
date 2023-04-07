@@ -1,0 +1,14 @@
+pkgbase = npkill
+	pkgdesc = List any node_modules package dir in your system and how heavy they are. You can then select which ones you want to erase to free up space
+	pkgver = 0.11.1
+	pkgrel = 1
+	url = https://github.com/voidcosmos/npkill
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = npkill-0.11.1.tgz
+	source = http://registry.npmjs.org/npkill/-/npkill-0.11.1.tgz
+	sha1sums = 0cf7a32740c2966aa79392a35742749d6ed2a491
+
+pkgname = npkill
