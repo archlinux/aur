@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=editorconfig-gedit-git
-pkgver=0.5.3.r195.ga7190f7
-pkgrel=2
+pkgver=0.5.3.r196.gd6283d7
+pkgrel=1
 pkgdesc="EditorConfig plugin for gedit"
 arch=('any')
 url="https://editorconfig.org/"
 license=('BSD')
 depends=('gedit' 'python-editorconfig')
 makedepends=('git')
-provides=('editorconfig-gedit')
+provides=("editorconfig-gedit=$pkgver")
 conflicts=('editorconfig-gedit')
 source=("git+https://github.com/editorconfig/editorconfig-gedit.git")
 sha256sums=('SKIP')

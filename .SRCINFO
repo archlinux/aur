@@ -1,17 +1,16 @@
 pkgbase = editorconfig-gedit-git
 	pkgdesc = EditorConfig plugin for gedit
-	pkgver = 0.5.3.r195.ga7190f7
-	pkgrel = 2
+	pkgver = 0.5.3.r196.gd6283d7
+	pkgrel = 1
 	url = https://editorconfig.org/
 	arch = any
 	license = BSD
 	makedepends = git
 	depends = gedit
 	depends = python-editorconfig
-	provides = editorconfig-gedit
+	provides = editorconfig-gedit=0.5.3.r196.gd6283d7
 	conflicts = editorconfig-gedit
 	source = git+https://github.com/editorconfig/editorconfig-gedit.git
 	sha256sums = SKIP
 
 pkgname = editorconfig-gedit-git
-
