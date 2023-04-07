@@ -1,13 +1,14 @@
 pkgbase = python-qbittorrent-api
 	pkgdesc = Python client for qBittorrent v4.1+ Web API
 	pkgver = 2023.3.44
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/qbittorrent-api
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python
 	depends = python-requests
 	depends = python-urllib3
