@@ -7,7 +7,7 @@
 #
 pkgname='dbt-core'
 pkgver=1.4.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Tool for data analysts to build analytics the way engineers build applications"
 arch=('any')
 url="https://getdbt.com/"
@@ -24,13 +24,16 @@ depends=(
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/dbt-labs/$pkgname/archive/v$pkgver.tar.gz"
     "pathspec.patch"
+    "mashumaro.patch"
     )
 md5sums=('d48661b0bc490829192af3dbac8d40c0'
-         '8da5228598d2427e4430d70929415bdf')
+         '8da5228598d2427e4430d70929415bdf'
+         '2fc3a072a73cc43cd506b845d326fff4')
 
 prepare() {
     cd $pkgname-$pkgver
     patch --forward --strip=1 --input="${srcdir}/pathspec.patch"
+    patch --forward --strip=1 --input="${srcdir}/mashumaro.patch"
 }
 
 build() {
