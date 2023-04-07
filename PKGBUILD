@@ -2,7 +2,7 @@
 pkgbase=python-photutils
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Astropy Affiliated package for image photometry utilities"
 arch=('i686' 'x86_64')
@@ -17,6 +17,7 @@ makedepends=('cython>=0.29.30'
              'python-numpy'
              'python-sphinx-astropy'
              'python-astropy'
+             'python-rasterio'
              'python-scipy'
              'python-scikit-learn'
              'python-scikit-image'
@@ -25,7 +26,7 @@ checkdepends=('python-pytest-astropy-header'
               'python-pytest-doctestplus'
               'python-pytest-remotedata'
               'python-matplotlib'
-              'python-gwcs')    # scikit-image scikit-learn already in makedepends
+              'python-gwcs')    # scipy scikit-image scikit-learn already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #       "https://github.com/astropy/photutils-datasets/raw/main/data/M6707HH.fits"
 #       "https://github.com/astropy/photutils-datasets/raw/main/data/SA112-SF1-001R1.fit.gz"
@@ -38,7 +39,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #       "https://github.com/astropy/photutils-datasets/raw/main/data/spitzer_example_catalog.xml"
 #       "https://github.com/astropy/photutils-datasets/raw/main/data/spitzer_example_image.fits"
 #       'datasets-use-local.patch')
-md5sums=('3d00daf11259b180cb7add9bd02c3b60')
+md5sums=('e88e47072199e1b41c7cbb083c4b3e81')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -48,7 +49,7 @@ prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     sed -i "/oldest-supported-numpy/d" pyproject.toml
-#   cp -v "${srcdir}"/{*.fit*,*.txt,*.xml} ${_pyname}/datasets/data
+#   install -Dm644 "${srcdir}"/{*.fit*,*.txt,*.xml} -t ${_pyname}/datasets/data
 #   patch -Np1 -i "${srcdir}/datasets-use-local.patch"
 }
 
@@ -63,11 +64,11 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" --remote-data=any || warning "Tests failed" # -vv --color=yes
+    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv --color=yes --remote-data=any
 }
 
 package_python-photutils() {
-    depends=('python>=3.8' 'python-numpy>=1.20' 'python-astropy>=5.0' 'python-setuptools')
+    depends=('python>=3.8' 'python-numpy>=1.20' 'python-astropy>=5.0')
     optdepends=('python-scipy>=1.6.0: To power a variety of features in several modules (strongly recommended)'
                 'python-scikit-image>=0.18.0: Used in deblend_sources for deblending segmented sources'
                 'python-scikit-learn>=1.0:  Used in DBSCANGroup to create star groups'
@@ -75,7 +76,9 @@ package_python-photutils() {
                 'python-gwcs>=0.16: Used in make_gwcs to create a simple celestial gwcs object'
                 'python-photutils-doc: Documentation for python-photutils'
                 'python-bottleneck: Improves the performance of sigma clipping and other functionality that may require computing statistics on arrays with NaN values'
-                'python-tqdm: Used to display optional progress bars')
+                'python-tqdm: Used to display optional progress bars'
+                'python-rasterio: Used for converting source segments into polygon objects'
+                'python-shapley: Used for converting source segments into polygon objects')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"
