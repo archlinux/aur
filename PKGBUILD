@@ -3,7 +3,7 @@
 
 pkgname=blockdiag
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="blockdiag generates block-diagram image from text"
 url="http://blockdiag.com"
 license=('Apache')
