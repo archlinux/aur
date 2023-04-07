@@ -2,8 +2,8 @@
 
 _pkgname=mmpose
 pkgname=python-mmpose
-pkgver=0.29.0
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc='OpenMMLab Pose Estimation Toolbox and Benchmark'
 arch=('any')
 url='https://github.com/open-mmlab/mmpose'
@@ -22,8 +22,10 @@ depends=(
   python-xcocotools
 )
 makedepends=(
-  python-pip
+  python-build
+  python-installer
   python-setuptools
+  python-wheel
 )
 optdepends=(
   python-albumentations
@@ -33,17 +35,19 @@ optdepends=(
   python-trimesh
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/open-mmlab/mmpose/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('587cd6f181df62b7e6ee6775709ef47f626d91c0dd936912a087a8ac0d5c807e52087e29f4dbd4752caa0157554ef190012ce3100d7bd85fde3b7bea860ef5cc')
+sha512sums=('89f815c9eea10c152471e1eae43ed2914122520e7e3573e90b5e23e192494c90ce9a0cdaaf27616b30a0f17b177d50ca6aac587b3f27608d2beb17521b9290be')
 
 build() {
   cd "${_pkgname}-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${_pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python -m installer --destdir="${pkgdir}" dist/*.whl
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  # delete unused .mim and tests dir
+  rm -rfv "${pkgdir}${site_packages}/mmpose/.mim"
   rm -rfv ${pkgdir}${site_packages}/tests
 }
 # vim:set ts=2 sw=2 et:
