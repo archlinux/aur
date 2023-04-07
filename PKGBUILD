@@ -1,9 +1,9 @@
 # Maintainer: Horror Proton <https://github.com/horror-proton>
 
 pkgname=maa-assistant-arknights
-_pkgver=v4.13.0-rc.1
+_pkgver=v4.13.0
 pkgver="$(echo ${_pkgver//-/} | sed -e 's/^v//')"
-pkgrel=2
+pkgrel=1
 pkgdesc="An Arknights assistant"
 arch=(x86_64)
 url="https://github.com/MaaAssistantArknights/MaaAssistantArknights"
@@ -13,7 +13,7 @@ makedepends=(asio eigen git cmake)
 source=("$url/archive/refs/tags/$_pkgver.tar.gz"
         'https://github.com/MaaAssistantArknights/FastDeploy/archive/1e4f600e5e5ab23528f77b98a8c5167b46ddfce2.tar.gz')
 install="${pkgname}.install"
-md5sums=('SKIP'
+md5sums=('73f59e8bcc64c25000ef8ffc13102b61'
          'be1dbba8bfc1ce42dc9fd1a9c74eb79f')
 
 prepare() {
@@ -21,8 +21,6 @@ prepare() {
     sed -i 's/RUNTIME\sDESTINATION\s\./ /g; s/LIBRARY\sDESTINATION\s\./ /g; s/PUBLIC_HEADER\sDESTINATION\s\./ /g' CMakeLists.txt
     sed -i 's/find_package(asio /# find_package(asio /g' CMakeLists.txt
     sed -i 's/asio::asio/ /g' CMakeLists.txt
-
-    sed -i 's/find_package(OpenCV REQUIRED COMPONENTS core imgproc imgcodecs)/find_package(OpenCV REQUIRED COMPONENTS core imgproc videoio)/g' CMakeLists.txt
 }
 
 build() {
