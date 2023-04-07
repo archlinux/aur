@@ -1,11 +1,12 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer: Jeff Mickey <jeff@archlinux.org>
+# Maintainer: tarball <bootctl@gmail.com>
+# Contributor: Kyle Keen <keenerd@gmail.com>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Jeff Mickey <jeff@archlinux.org>
 # Contributor: Steve Sansom <snsansom@gmail.com>
 
 pkgname=units
 pkgver=2.22
-pkgrel=1
+pkgrel=2
 pkgdesc="converts between different units"
 arch=('x86_64')
 url="https://www.gnu.org/software/units/units.html"
@@ -27,6 +28,13 @@ sha256sums=('5d13e1207721fe7726d906ba1d92dc0eddaa9fc26759ed22e3b8d1a793125848'
 build() {
   cd "$pkgname-$pkgver"
   ./configure --prefix=/usr --datadir=/usr/share --sharedstatedir=/var/lib
+
+  # /usr/bin/pager seems to be a Debian-ism; it is not provided by any of the
+  # packages shipped with Arch Linux. Replace it with less, which, according to
+  # pkgstats, is shipped on 100% of Arch systems, and will make the 'help'
+  # function work correctly on systems with an empty $PAGER env var.
+  sed -i 's|DEFAULTPAGER "/usr/bin/pager"|DEFAULTPAGER "/usr/bin/less"|' units.c
+
   make
 }
 
