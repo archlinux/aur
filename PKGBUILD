@@ -2,7 +2,7 @@
 
 _pkgname=mmdetection
 pkgname=python-mmdetection
-pkgver=2.28.2
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='OpenMMLab Detection Toolbox and Benchmark'
 arch=('any')
@@ -17,8 +17,11 @@ depends=(
   python-torchvision
 )
 makedepends=(
-  python-pip
+  numactl
+  python-build
+  python-installer
   python-setuptools
+  python-wheel
 )
 optdepends=(
   python-albumentations
@@ -27,22 +30,18 @@ optdepends=(
   python-mmlvis
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/open-mmlab/mmdetection/archive/v${pkgver}.tar.gz")
-sha512sums=('8d026fe8a77bbb254f7f996c445cd1b34f1a910f6f4508624b365c9189491623996248e66804c5848a4ce6363173e3393173c50e5103eca655787e7e19ecacb9')
-
-
-prepare() {
-  cd "${_pkgname}-${pkgver}"
-  # uncomment this line to relax mmcv version requirement
-  #sed -i '23,26d' "mmdet/__init__.py"
-}
+sha512sums=('23db484d81ce55a868f2c460c363eb9d917ccc4391075304ffda59ec54f4d0023bbca4733350f706fe60044f43bf448aea11dc1bc4497e1e1188293681ab9f09')
 
 build() {
   cd "${_pkgname}-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${_pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+  # delete unused .mim dir
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  rm -rfv "${pkgdir}${site_packages}/mmdet/.mim"
 }
 # vim:set ts=2 sw=2 et:
