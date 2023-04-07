@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
 Version=VERSION_PLACEHOLDER
-Name=Clash For Windows
-Comment=Clash GUI
+Name=Clash for Windows
+Comment=Clash for Windows GUI
 Exec=/opt/clash-for-windows-bin/cfw
 Icon=clash.png
 Terminal=false
