@@ -5,7 +5,7 @@ pkgname=altserver-linux-curve-git
 pkgdesc='AltServer for Linux'
 _pkgname=AltServer-Linux
 pkgver=r41.7e601b6
-pkgrel=2
+pkgrel=3
 
 makedepends=('git' 'cmake' 'ninja' 'zlib')
 depends=('boost' 'python3' 'avahi' 'libcorecrypto-git' 'openssl')
@@ -29,7 +29,7 @@ build() {
   git submodule update --init --recursive
   mkdir -p build
   cd build
-  cmake -GNinja -DCMAKE_BUILD_TYPE=Release ..
+  cmake -GNinja -DBUILD_SHARED_LIBS=OFF -DCMAKE_BUILD_TYPE=Release ..
   ninja
 }
 

@@ -1,7 +1,7 @@
 pkgbase = altserver-linux-curve-git
 	pkgdesc = AltServer for Linux
 	pkgver = r41.7e601b6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Curve/AltServer-Linux
 	arch = any
 	license = AGPL3
