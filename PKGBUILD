@@ -5,7 +5,7 @@
 # Maintainer: Uffe Jakobsen <microtop@starion.dk>
 #
 pkgname=opencbm
-pkgver=0.4.99.99a
+pkgver=0.4.99.104
 pkgrel=1
 epoch=
 _pkgname=OpenCBM
@@ -22,7 +22,7 @@ makedepends=('git' 'cc65')
 checkdepends=()
 optdepends=('ncurses: enable interactive mode for cbmlinetester')
 provides=('opencbm')
-conflicts=()
+conflicts=('opencbm')
 replaces=()
 backup=('etc/opencbm.conf')
 options=()
@@ -31,7 +31,7 @@ changelog=
 noextract=()
 _srcdirname=${_pkgname}-${_pkgver}
 source=("https://github.com/OpenCBM/${_pkgname}/archive/v${_pkgver}.tar.gz")
-md5sums=('c67518fff6c8b3c62b46cb382b115053')
+sha256sums=('5499cd1143b4a246d6d7e93b94efbdf31fda0269d939d227ee5bcc0406b5056a')
 
 build_kernel_module=
 
@@ -43,7 +43,7 @@ prepare()
 {
   cd "${srcdir}/${_srcdirname}"
   # kernel module: add includes to kernel module source
-  sed -i '\!#include <asm/uaccess.h>!s!.*!&\n#include <linux/uaccess.h>\n#include <linux/sched/signal.h>!' opencbm/sys/linux/cbm_module.c
+  #sed -i '\!#include <asm/uaccess.h>!s!.*!&\n#include <linux/uaccess.h>\n#include <linux/sched/signal.h>!' opencbm/sys/linux/cbm_module.c
   # kernel module: Makefile is needed later
   sed -i '\!-rm -f Makefile!d' opencbm/sys/linux/LINUX/Makefile
 }
