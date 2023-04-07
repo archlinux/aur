@@ -1,6 +1,6 @@
 pkgbase = diff-so-fancy-git
 	pkgdesc = Make your diff's human readable instead of machine readable
-	pkgver = 1.4.0.r6.ge5bddde
+	pkgver = 1.4.3.r11.gd7dcc17
 	pkgrel = 1
 	url = https://github.com/so-fancy/diff-so-fancy
 	arch = any
@@ -9,10 +9,9 @@ pkgbase = diff-so-fancy-git
 	checkdepends = bash-bats-support
 	makedepends = git
 	depends = perl
-	provides = diff-so-fancy
+	provides = diff-so-fancy=1.4.3.r11.gd7dcc17
 	conflicts = diff-so-fancy
 	source = git+https://github.com/so-fancy/diff-so-fancy.git
 	sha256sums = SKIP
 
 pkgname = diff-so-fancy-git
-
