@@ -1,11 +1,12 @@
 pkgbase = freedoom
 	pkgdesc = Free game based on the Doom engine
 	pkgver = 0.12.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://freedoom.github.io/
 	arch = any
 	license = BSD
 	makedepends = asciidoc
+	makedepends = dblatex
 	makedepends = deutex
 	makedepends = python
 	makedepends = python-pillow

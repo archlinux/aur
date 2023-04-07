@@ -3,12 +3,12 @@
 pkgname=(freedoom freedm)
 pkgbase=${pkgname[0]}
 pkgver=0.12.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Free game based on the Doom engine"
 arch=('any')
 url="https://freedoom.github.io/"
 license=('BSD')
-makedepends=('asciidoc' 'deutex' 'python' 'python-pillow')
+makedepends=('asciidoc' 'dblatex' 'deutex' 'python' 'python-pillow')
 source=(https://github.com/$pkgbase/$pkgbase/releases/download/v$pkgver/$pkgbase-$pkgver.tar.xz
         0001-manual-build-with-asciidoc.patch)
 b2sums=('db783fd8a3467ab6ec628eb67b036ae069d01516b3f04860d4fda0692921f9a4aa65169ff8b79fa74e88bb496da3686dd7fbbf5e4bb1614ab331023a58c5204d'
