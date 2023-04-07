@@ -1,8 +1,8 @@
 # Maintainer: pysen <pysen {a|t} svartavillan {d|o|t} se>
 pkgname=keptn-bin
 pkgdesc="The Keptn CLI includes commands to perform various tasks to manage the Keptn installation and projects"
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="https://github.com/keptn/keptn"
 license=('Apache')
@@ -16,13 +16,13 @@ b2sums=()
 
 case "$CARCH" in
   x86_64) _pkgarch="amd64"
-    b2sums+=('d0df968e164d9da783d6517a445d2652ba03c823303633bd6b84811a599c671900d005f97c227ceadd5825c9a083dda7bb35c7a87626615aa37ebe0513aac8be')
+    b2sums+=('325f1d7daf2ac9b46e414b7b906af2fdd2d7ca662db2b56d215126511a497d0e79012f91df66aef398ee1ef92db68c7df3a98a3f4f23fb20126c7737a6c594ff')
     ;;
   arm*) _pkgarch="arm"
-    b2sums+=('8387aa082fbf2871f85896c9061968d4c612a9fcadd4c55b8366092f89b483cf6571132ba669b3a0713bcea996c81531421f338ea5dfb18e003fe03e8cb62ec4')
+    b2sums+=('e686cce83fd47c3ce4d8a090b210cab56c39fbbbc16b60eb43e9691acadc020077b6f54a51e2921eea3a3e8d9f092dc8f96590e5685cd9a4bb5f2728e2f8b385')
     ;;
   aarch64) _pkgarch="arm64"
-    b2sums+=('cf24d02aae059a471cc4deae2ea2b22d31767ec5492d9607b516afa0517a663cf5ef18c72b4a299ce4973ad3c964b97dd01c1eb0cd94353dc66383ccd3150be7')
+    b2sums+=('41776e64bacfa88b05f6fcdc69863358aab21e53b2094bb5c73aa25daff8bde5f8273224ded336c019e2eec38a7e9ef9f1a21d14150d5258555e1fac23c60709')
     ;;
 esac
 
