@@ -7,8 +7,8 @@ pkgdesc="A Qt5-based scriptable terminal with Serial/TCP/UDP/SPI/CAN support"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/scriptcommunicator/"
 license=('GPL3')
-depends=('qt5-script' 'qt5-serialport' 'qt5-multimedia')
-makedepends=('qt5-tools')
+depends=( 'qt6-serialport' 'qt6-multimedia')
+makedepends=('qt6-tools')
 
 source=("https://github.com/szieke/ScriptCommunicator_serial-terminal/archive/Release_${_pkgver}.zip"
         "$pkgname.desktop")
@@ -25,11 +25,11 @@ prepare() {
 
 build() {
 	cd $pkgname
-	qmake -o Makefile ScriptCommunicator.pro
+	qmake6 -o Makefile ScriptCommunicator.pro
 	make --no-print-directory
 	
 	cd ScriptEditor/
-	qmake -o Makefile ScriptEditor.pro
+	qmake6 -o Makefile ScriptEditor.pro
 	make --no-print-directory
 }
 
