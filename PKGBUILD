@@ -3,21 +3,20 @@
 url="https://github.com/Curve/AltServer-Linux"
 pkgname=altserver-linux-curve-git
 pkgdesc='AltServer for Linux'
+_pkgname=AltServer-Linux
 pkgver=r41.7e601b6
 pkgrel=2
 
 makedepends=('git' 'cmake' 'ninja' 'zlib')
 depends=('boost' 'python3' 'avahi' 'libcorecrypto-git' 'openssl')
 
-source=('git+https://github.com/Curve/AltServer-Linux')
+source=("git+https://github.com/Curve/${_pkgname}")
 sha256sums=('SKIP')
 
 conflicts=('altserver')
 provides=('altserver')
 license=('AGPL3')
 arch=('any')
-
-_pkgname=AltServer-Linux
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
