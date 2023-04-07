@@ -3,7 +3,7 @@
 _name=pyspinel
 pkgname=python-pyspinel
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python interface to the OpenThread Network Co-Processor (NCP)"
 arch=(any)
 url="https://github.com/openthread/openthread"
