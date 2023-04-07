@@ -2,14 +2,14 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 
 pkgname=cinelerra-gg-git
-pkgver=2022.11.r0.g12dcdddb
-pkgrel=1
+pkgver=2023.03.r3.g3a4fc0d9
+pkgrel=2
 pkgdesc="Professional video editing and compositing environment"
 arch=(x86_64)
 url="https://www.cinelerra-gg.org"
 license=(GPL2)
 depends=(alsa-lib aom dav1d fftw flac glu gtk2 libavc1394
-         libdv libiec61883 libpulse libtheora libva libvdpau
+         libdv libiec61883 libpulse libtheora libusb libva libvdpau
          libvorbis libvpx libwebp libxv numactl openexr opus)
 makedepends=(cmake ctags git libxml2 nasm perl-xml-libxml
              perl-xml-parser python xorg-mkfontdir
