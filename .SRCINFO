@@ -7,6 +7,7 @@ pkgbase = albafetch-bin
 	arch = aarch64
 	license = MIT
 	conflicts = albafetch-git
+	conflicts = albafetch
 	source_x86_64 = https://github.com/alba4k/albafetch/releases/download/v4.0/albafetch-linux-x64-dynamic.zip
 	depends_x86_64 = pciutils
 	depends_x86_64 = libcurl-gnutls
