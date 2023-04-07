@@ -1,8 +1,13 @@
 # Maintainer: Benoît Allard <benoit.allard@gmx.de>
-pkgbase='dbt-core'
-pkgname=('dbt-core' 'dbt-postgres')
+#
+# Note: while those are suposed to be two different python packages, they share 
+# the same package name (dbt.adapter), and hence, (at least) the __init__.py
+# Making it impossible to split in two different packages.
+# So this generates a combined package.
+#
+pkgname='dbt-core'
 pkgver=1.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for data analysts to build analytics the way engineers build applications"
 arch=('any')
 url="https://getdbt.com/"
@@ -16,31 +21,27 @@ depends=(
     "python-pathspec" "python-protobuf" "python-pytz" "python-requests"
     "python-pyyaml" "python-betterproto-git" "python-psycopg2"
 )
-source=("$pkgbase-$pkgver.tar.gz::https://github.com/dbt-labs/$pkgbase/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/dbt-labs/$pkgname/archive/v$pkgver.tar.gz")
 md5sums=('d48661b0bc490829192af3dbac8d40c0')
 
 build() {
     export PYTHONSEED=1
-    cd $pkgbase-$pkgver/core
+    cd $pkgname-$pkgver/core
     python setup.py build
     cd ../plugins/postgres
     python setup.py build
 }
 
 check() {
-    cd $pkgbase-$pkgver
+    cd $pkgname-$pkgver
     export PYTHONPATH=core:plugins/postgres
     pytest --cov=core test/unit
     pytest --cov=core tests/unit
 }
 
-package_dbt-core() {
-    cd $pkgbase-$pkgver/core
+package() {
+    cd $pkgname-$pkgver/core
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-}
-
-package_dbt-postgres() {
-    depends=("python" "dbt-core" "python-psycopg2")
-    cd $pkgbase-$pkgver/plugins/postgres
+    cd ../plugins/postgres
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
