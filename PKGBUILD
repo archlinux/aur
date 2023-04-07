@@ -2,7 +2,7 @@
 pkgbase=python-specutils
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.9.1
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Astropy Affiliated package for 1D spectral operations"
 arch=('any')
@@ -25,17 +25,18 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
         "https://data.sdss.org/sas/dr16/sdss/spectro/redux/26/spectra/1323/spec-1323-52797-0012.fits"
         'use_local_doc_fits_offline.patch')
 #https://dr15.sdss.org/sas/dr15/manga/spectro/redux/v2_4_3/8485/stack/manga-8485-1901-LOGRSS.fits.gz
-md5sums=('a0ff1ee53192ae1d84fdfd23c8dcb81b'
+md5sums=('078f0c62f4d75427bc4b625a4bb5058d'
          '6de4c8ee5659e87a302e3de595074ba5'
          '3586c5d0810108a182ba9146908dc180'
-         'b527ca1f834de432631d530c937d6cd1')
+         '49c57591fdc60365a3e31a0f10e4e57d')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     cp ${srcdir}/*.fits docs
     patch -Np1 -i "${srcdir}/use_local_doc_fits_offline.patch"
-    sed -i "/astropy.utils.exceptions/a \	ignore:Subclassing validator classes is not intended:DeprecationWarning" setup.cfg
+#   sed -i "/astropy.utils.exceptions/a \	ignore:Subclassing validator classes is not intended:DeprecationWarning" setup.cfg
+#   sed -i "/astropy.utils.exceptions/a \	ignore:pkg_resources is deprecated as an API:DeprecationWarning" setup.cfg
 }
 
 build() {
@@ -43,8 +44,7 @@ build() {
     python -m build --wheel --no-isolation
 
     msg "Building Docs"
-    cd ${srcdir}/${_pyname}-${pkgver}/docs
-    PYTHONPATH="../build/lib" make html
+    PYTHONPATH="../build/lib" make -C docs html
 }
 
 check() {
@@ -82,7 +82,7 @@ check() {
 }
 
 package_python-specutils() {
-    depends=('python>=3.8' 'python-scipy' 'python-gwcs>=0.17.0' 'python-ndcube>=2.0')
+    depends=('python>=3.8' 'python-scipy' 'python-gwcs>=0.18' 'python-ndcube>=2.0') # astropy asdf asdf-astropy required by gwcs
     optdepends=('python-specutils-doc: Documentation for Specutils')
     cd ${srcdir}/${_pyname}-${pkgver}
 
