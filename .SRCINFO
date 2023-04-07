@@ -1,7 +1,7 @@
 pkgbase = fleu-calamares
 	pkgdesc = Calamares installer configured for FleuOS.
-	pkgver = 1
-	pkgrel = 1
+	pkgver = 2
+	pkgrel = 2
 	url = https://dancheg97.ru/dancheg97/calamares
 	arch = i686
 	arch = pentium4

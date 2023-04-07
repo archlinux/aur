@@ -1,12 +1,12 @@
 # FleuOS Calamares
-pkgname=calamares
+pkgname=fleu-calamares
 pkgver=3.2.32.1
 pkgrel=1
 pkgdesc='Distribution-independent installer framework'
 arch=('i686' 'x86_64')
 url="https://dancheg97.ru/dancheg97/calamares"
 license=('LGPL')
-conflicts=('calamares-net' 'calamares-dev')
+conflicts=('calamares-net' 'calamares-dev' 'calamares' 'calamares-git')
 
 depends=('kconfig' 'kcoreaddons' 'kiconthemes' 'ki18n' 'kio' 'solid' 'yaml-cpp' 'kpmcore' 'mkinitcpio-openswap'
          'boost-libs'  'hwinfo' 'qt5-svg' 'polkit-qt5' 'gtk-update-icon-cache' 'plasma-framework'
