@@ -7,7 +7,7 @@ pkgdesc='dds10-thumbnailer-kde is a plugin for KDE 5 that creates thumbnail for 
 arch=('x86_64')
 license=('GPLv2')
 url=https://github.com/meyraud705/dds10-thumbnailer-kde
-makedeps=('cmake' 'extra-cmake-modules')
+makedepends=('cmake' 'extra-cmake-modules' 'kdelibs4support')
 depends=('qt5-base' 'kio')
 source=("${pkgname%-git}::git+https://github.com/meyraud705/dds10-thumbnailer-kde.git")
 sha256sums=('SKIP')
@@ -22,7 +22,4 @@ package(){
     install -D -m644 -t "$pkgdir/usr/share/licenses/${pkgname%-git}" "${pkgname%-git}/LICENSE"
     DESTDIR="$pkgdir" cmake --install build
 }
-
-
-
 
