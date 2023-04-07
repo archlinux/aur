@@ -1,7 +1,7 @@
 pkgbase = catppuccin-kde-theme
 	pkgdesc = Soothing pastel theme for KDE
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/catppuccin/kde
 	arch = any
 	license = MIT
