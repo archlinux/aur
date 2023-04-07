@@ -1,7 +1,7 @@
 # Maintainer: hashworks <hashworks@archlinux.org>
 pkgname=chatblade
 pkgdesc="A CLI Swiss Army Knife for ChatGPT"
-pkgver=0.1.1
+pkgver=0.2.1
 pkgrel=1
 arch=("any")
 url="https://github.com/npiv/chatblade"
@@ -34,7 +34,7 @@ depends=(
 	"python-yarl"
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('476c52645f8fff18fe0aee823c461cc6dd5748deb4b0e64ed176974d339cd05a')
+sha256sums=('7e5cfedb0b9b9d724c15df24f71adae0025fb4cac473e72469a5c0037228494c')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
