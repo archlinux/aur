@@ -1,0 +1,20 @@
+pkgbase = xputty-git
+	pkgdesc = A damn tiny abstraction Layer to create X11 window/widgets with cairo surfaces
+	pkgver = r207.bd55d4b
+	pkgrel = 1
+	url = https://github.com/brummer10/libxputty
+	arch = x86_64
+	license = custom:0BSD
+	makedepends = git
+	makedepends = xxd-standalone
+	depends = libx11
+	depends = cairo
+	conflicts = xputty
+	source = xputty::git+https://github.com/brummer10/libxputty
+	sha512sums = SKIP
+
+pkgname = xputty-git
+
+pkgname = xputty-docs-git
+	pkgdesc = A damn tiny abstraction Layer to create X11 window/widgets with cairo surfaces - documentation
+	depends = doxygen
