@@ -10,9 +10,10 @@ depends_x86_64=(pciutils libcurl-gnutls)
 depends_aarch64=()
 conflicts=(albafetch-git albafetch)
 source_x86_64=("$url/releases/download/v$pkgver/albafetch-linux-x64-dynamic.zip")
-source_aarch64=("$url/releases/download/v4$pkgver/albafetch-linux-aarch64-static.zip")
-md5sums_x86_64=('SKIP')
-md5sums_aarch64=('SKIP')
+source_aarch64=("$url/releases/download/v$pkgver/albafetch-linux-aarch64-static.zip")
+
+md5sums_x86_64=('48dc1694e891b936ddb140625ed81877')
+md5sums_aarch64=('cce874f24a56f222a9509b0fdeed975f')
 
 package() {
     mkdir -p "$pkgdir/usr/bin/"

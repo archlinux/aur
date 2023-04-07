@@ -11,8 +11,8 @@ pkgbase = albafetch-bin
 	source_x86_64 = https://github.com/alba4k/albafetch/releases/download/v4.0/albafetch-linux-x64-dynamic.zip
 	depends_x86_64 = pciutils
 	depends_x86_64 = libcurl-gnutls
-	md5sums_x86_64 = SKIP
-	source_aarch64 = https://github.com/alba4k/albafetch/releases/download/v44.0/albafetch-linux-aarch64-static.zip
-	md5sums_aarch64 = SKIP
+	md5sums_x86_64 = 48dc1694e891b936ddb140625ed81877
+	source_aarch64 = https://github.com/alba4k/albafetch/releases/download/v4.0/albafetch-linux-aarch64-static.zip
+	md5sums_aarch64 = cce874f24a56f222a9509b0fdeed975f
 
 pkgname = albafetch-bin
