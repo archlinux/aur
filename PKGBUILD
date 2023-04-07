@@ -8,11 +8,11 @@ pkgver=1.15
 pkgrel=2
 pkgdesc="A simple hex editor with an ncurses, pico-style interface"
 arch=('i686' 'x86_64')
-url="http://shed.sourceforge.net/"
+url="https://shed.sourceforge.net/"
 license=('GPL')
 depends=('ncurses')
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('c7d7d464d6b4fa28a7980270d03e0906')
+source=(https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
+sha256sums=('5bde9f146704ba552293b658a2e8e05acb0a14a1348925b19a296663539917c7')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
