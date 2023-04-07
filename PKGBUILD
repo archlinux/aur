@@ -1,20 +1,21 @@
-# Maintainer: nick black <dankamongmen@gmail.com>
+# Maintainer: batot <archpackager@algrim.pl>
+# Contributor: nick black <dankamongmen@gmail.com>
 # Contributor: ava1ar <maiL@ava1ar.me>
 # Contributor: Daniel Nagy <danielnagy at gmx de>
 # Contributor: Nicolas Bigaouette <nbigaouette@gmail.com>
 # Contributor: Vojtech "kralyk" Kral
 
 pkgname=intel-opencl-sdk
-pkgver=2020.1.395
-pkgrel=2
+pkgver=2020.3.494
+pkgrel=1
 pkgdesc="Intel SDK for OpenCL Applications"
 arch=('x86_64')
 url="https://software.intel.com/en-us/intel-opencl/download"
 license=('custom:intel')
 depends=('cpio' 'opencl-icd-loader' 'libpng12' 'opencl-headers')
 optdepends=('intel-opencl-runtime: OpenCL runtime for Intel Core and Xeon processors')
-source=(http://registrationcenter-download.intel.com/akdlm/irc_nas/vcp/16625/intel_sdk_for_opencl_applications_${pkgver}.tar.gz)
-sha256sums=('4b8a1e39888e9fb13f717ea6f91aaf6ae8677043ff59a95767fb2f5d10f73850')
+source=(https://registrationcenter-download.intel.com/akdlm/IRC_NAS/17205/intel_sdk_for_opencl_applications_${pkgver}.tar.gz)
+sha256sums=('75cc2aa08d652e5e2fddca15b9e0026b69794c97f058c19d1c8594fd57804612')
 
 build() {
 pwd
