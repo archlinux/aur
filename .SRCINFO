@@ -1,0 +1,18 @@
+pkgbase = core-to-core-latency
+	pkgdesc = Measure cross-CPU message send latency
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/nviennot/core-to-core-latency
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = mit
+	makedepends = cargo
+	source = https://github.com/nviennot/core-to-core-latency/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = b6bdd1b6e403228d7c232174a21fd4e0b2be5bc707d9490f04ac6baf1321aaee
+
+pkgname = core-to-core-latency
