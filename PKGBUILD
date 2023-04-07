@@ -4,7 +4,7 @@
 # Contributor: Sebastian Stenzel <sebastian.stenzel@gmail.com>
 
 pkgname=cryptomator
-pkgver=1.7.4
+pkgver=1.7.5
 pkgrel=1
 pkgdesc="Multiplatform transparent client-side encryption of your files in the cloud."
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('java-environment>=19' 'java-environment<20' 'java-openjfx>=19' 'ja
 optdepends=('keepassxc-cryptomator: Use KeePassXC to store vault passwords' 'ttf-hanazono: Install this font when using Japanese system language')
 source=("cryptomator-${pkgver}.tar.gz::https://github.com/cryptomator/cryptomator/archive/refs/tags/${pkgver}.tar.gz"
         "cryptomator-${pkgver}.tar.gz.asc::https://github.com/cryptomator/cryptomator/releases/download/${pkgver}/cryptomator-${pkgver}.tar.gz.asc")
-sha256sums=('d4a64d885b926979f3a2327516716fc7178107b6215f59a2fcead10f5021fb08'
+sha256sums=('9ac98e4b8212978b6bf7fb379c89ee7e45c37588ad7fa2e0741f703cb537d940'
             'SKIP')
 options=('!strip')
 
