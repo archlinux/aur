@@ -1,6 +1,6 @@
 pkgbase = briar-desktop-nightly-bin
 	pkgdesc = Prototyping the next generation for Briar on desktop devices
-	pkgver = 23688
+	pkgver = 27231
 	pkgrel = 1
 	url = https://code.briarproject.org/briar/briar-desktop
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = briar-desktop-nightly-bin
 	depends = bash
 	provides = briar-desktop-nightly
 	noextract = briar-desktop-nightly.jar
-	source = briar-desktop-nightly.jar::https://code.briarproject.org/briar/briar-desktop/-/jobs/artifacts/main/raw/briar-desktop.jar?job=b_jar
+	source = briar-desktop-nightly.jar::https://code.briarproject.org/briar/briar-desktop/-/jobs/artifacts/main/raw/briar-desktop-linux.jar?job=b_package_linux
 	source = briar-desktop.svg
 	source = briar16.png
 	source = briar32.png
