@@ -1,6 +1,6 @@
 # Maintainer: alba4k <blaskoazzolaaaron@gmail.com>
 pkgname=albafetch-git
-pkgver=4.0.r17.186b608
+pkgver=4.0.r18.4aff896
 pkgrel=1
 pkgdesc="Neofetch, but written in C; both faster and worse than the original"
 arch=(x86_64)
