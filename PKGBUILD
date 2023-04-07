@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=adehabitatMA
-_pkgver=0.3.15
+_pkgver=0.3.16
 pkgname=r-${_pkgname,,}
-pkgver=0.3.15
-pkgrel=3
+pkgver=0.3.16
+pkgrel=1
 pkgdesc='Tools to Deal with Raster Maps'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -19,7 +19,7 @@ optdepends=(
   r-tkrplot
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8cc5030b056ded8dd26d323065b9b934d5f947d6be7fd8921e9d8003f26d31c8')
+sha256sums=('089e415a26b6c45023d04ef64c9cf6d336a233f0b0078fc72adbe601b389b5ca')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
