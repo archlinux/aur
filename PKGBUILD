@@ -7,7 +7,7 @@
 #
 pkgname='dbt-core'
 pkgver=1.4.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool for data analysts to build analytics the way engineers build applications"
 arch=('any')
 url="https://getdbt.com/"
@@ -21,8 +21,17 @@ depends=(
     "python-pathspec" "python-protobuf" "python-pytz" "python-requests"
     "python-pyyaml" "python-betterproto-git" "python-psycopg2"
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/dbt-labs/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('d48661b0bc490829192af3dbac8d40c0')
+source=(
+    "$pkgname-$pkgver.tar.gz::https://github.com/dbt-labs/$pkgname/archive/v$pkgver.tar.gz"
+    "pathspec.patch"
+    )
+md5sums=('d48661b0bc490829192af3dbac8d40c0'
+         '8da5228598d2427e4430d70929415bdf')
+
+prepare() {
+    cd $pkgname-$pkgver
+    patch --forward --strip=1 --input="${srcdir}/pathspec.patch"
+}
 
 build() {
     export PYTHONSEED=1
