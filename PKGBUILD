@@ -1,15 +1,17 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 # Based on testing/systemd by Christian Hesse <mail@eworm.de>
+#
+# PRs are welcome here: https://github.com/yurikoles-aur/systemd-git
+#
 
-_pkgbase=systemd
-pkgbase=${_pkgbase}-git
+pkgbase=systemd-git
 pkgname=('systemd-git'
          'systemd-libs-git'
          'systemd-resolvconf-git'
          'systemd-sysvcompat-git'
          'systemd-ukify-git')
 pkgdesc='systemd (git version)'
-pkgver=253.r63408.600362aa11
+pkgver=253.r65143.c507c81ee7
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
@@ -21,7 +23,7 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'bash-completion' 'p11-kit' 'systemd' 'libfido2' 'tpm2-tss' 'rsync'
              'bpf' 'libbpf' 'clang' 'llvm' 'curl' 'gnutls')
 options=('strip')
-source=('git+https://github.com/systemd/systemd'
+source=("$pkgbase-stable::git+https://github.com/systemd/systemd"
         '0001-Use-Arch-Linux-device-access-groups.patch'
         'initcpio-hook-udev'
         'initcpio-install-systemd'
@@ -49,7 +51,7 @@ sha512sums=('SKIP'
             'c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5'
             '5a1d78b5170da5abe3d18fdf9f2c3a4d78f15ba7d1ee9ec2708c4c9c2e28973469bc19386f70b3cf32ffafbe4fcc4303e5ebbd6d5187a1df3314ae0965b25e75'
             'b90c99d768dc2a4f020ba854edf45ccf1b86a09d2f66e475de21fe589ff7e32c33ef4aa0876d7f1864491488fd7edb2682fc0d68e83a6d4890a0778dc2d6fe19'
-            'a586f62b92268ae1e8a9310b02693548fb114292e1252953b4c9475d29e2817b5042a612f3b3ef09fb5b18126e2c3486ff49dd764d97644f0c510ae0200e075b'
+            'a481662fa406f46f69d721fa47c12b1a9ed9b8bc219205e2a156f27bdc9f353f3ec97753717452f603500e3bdf6062335190797512e4f29c1526c35297abe37b'
             '299dcc7094ce53474521356647bdd2fb069731c08d14a872a425412fcd72da840727a23664b12d95465bf313e8e8297da31259508d1c62cc2dcea596160e21c5'
             '0d6bc3d928cfafe4e4e0bc04dbb95c5d2b078573e4f9e0576e7f53a8fab08a7077202f575d74a3960248c4904b5f7f0661bf17dbe163c524ab51dd30e3cb80f7'
             '2b50b25e8680878f7974fa9d519df7e141ca11c4bfe84a92a5d01bb193f034b1726ea05b3c0030bad1fbda8dbb78bf1dc7b73859053581b55ba813c39b27d9dc'
@@ -61,13 +63,13 @@ sha512sums=('SKIP'
             '825b9dd0167c072ba62cabe0677e7cd20f2b4b850328022540f122689d8b25315005fa98ce867cf6e7460b2b26df16b88bb3b5c9ebf721746dce4e2271af7b97')
 
 pkgver() {
-  cd "$_pkgbase"
+  cd "$pkgbase-stable"
   local _major=`grep -m1 version meson.build | cut -d\' -f2`
   printf "%s.r%s.%s" "${_major}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$_pkgbase"
+  cd "$pkgbase-stable"
 
   # Replace cdrom/dialout/tape groups with optical/uucp/storage
   patch -Np1 -i ../0001-Use-Arch-Linux-device-access-groups.patch
@@ -127,7 +129,7 @@ build() {
     -Dsbat-distro-url="https://aur.archlinux.org/pkgbase/${pkgname}"
   )
 
-  arch-meson "$_pkgbase" build "${_meson_options[@]}"
+  arch-meson "$pkgbase-stable" build "${_meson_options[@]}"
 
   meson compile -C build
 }
@@ -142,7 +144,7 @@ package_systemd-git() {
   license=('GPL2' 'LGPL2.1')
   depends=('acl' 'libacl.so' 'bash' 'cryptsetup' 'libcryptsetup.so' 'dbus'
            'iptables' 'kbd' 'kmod' 'libkmod.so' 'hwdata' 'libcap' 'libcap.so'
-           'libgcrypt' 'libxcrypt' 'libcrypt.so' 'systemd-libs-git' 'libidn2' 'lz4' 'pam'
+           'libgcrypt' 'libxcrypt' 'libcrypt.so' "systemd-libs-git=$pkgver" 'libidn2' 'lz4' 'pam'
            'libelf' 'libseccomp' 'libseccomp.so' 'util-linux' 'libblkid.so'
            'libmount.so' 'xz' 'pcre2' 'audit' 'libaudit.so' 
            'openssl' 'libcrypto.so' 'libssl.so')
@@ -154,7 +156,7 @@ package_systemd-git() {
   optdepends=('libmicrohttpd: systemd-journal-gatewayd and systemd-journal-remote'
               'quota-tools: kernel-level quota management'
               'systemd-sysvcompat: symlink package to provide sysvinit binaries'
-              'systemd-ukify-git: combine kernel and initrd into a signed Unified Kernel Image'
+              "systemd-ukify-git=$pkgver: combine kernel and initrd into a signed Unified Kernel Image"
               'polkit: allow administration as unprivileged user'
               'python: Unified Kernel Image with ukify'
               'curl: systemd-journal-upload, machinectl pull-tar and pull-raw'
@@ -262,7 +264,7 @@ package_systemd-resolvconf-git() {
   pkgdesc='systemd resolvconf replacement (for use with systemd-resolved)'
   pkgdesc+=' (git version)'
   license=('LGPL2.1')
-  depends=('systemd-git')
+  depends=("systemd-git=$pkgver")
   provides=('openresolv' 'resolvconf')
   provides+=("systemd-resolvconf=$pkgver")
   conflicts=('openresolv')
@@ -281,7 +283,7 @@ package_systemd-sysvcompat-git() {
   license=('GPL2')
   conflicts=('sysvinit')
   conflicts+=('systemd-sysvcompat')
-  depends=('systemd-git')
+  depends=("systemd-git=$pkgver")
   provides=("systemd-sysvcompat=$pkgver")
 
   install -D -m0644 -t "$pkgdir"/usr/share/man/man8 \
@@ -301,7 +303,7 @@ package_systemd-ukify-git() {
   conflicts=('systemd-ukify')
   provides=('ukify')
   provides+=("systemd-ukify=$pkgver")
-  depends=('binutils' 'python-pefile' 'systemd-git')
+  depends=('binutils' 'python-pefile' "systemd-git=$pkgver")
   optdepends=('python-pillow: Show the size of splash image'
               'sbsigntools: Sign the embedded kernel')
 
