@@ -3,9 +3,9 @@
 
 _user=shirkdog
 pkgname=pulledpork
-pkgver=3.0.0.5b
+pkgver=3.0.0.5
 _pp2_pkgver=0.7.4
-_pp3_gitrev=f82b285
+_pp3_gitrev=7c4d1f8
 pkgrel=1
 pkgdesc="Tool to automatically update rules for snort"
 arch=('any')
@@ -28,7 +28,7 @@ source=("pulledpork-${_pp2_pkgver}.tar.gz::https://github.com/${_user}/${pkgname
         "pulledpork.service"
         "pulledpork.timer")
 sha256sums=('f0149eb6f723b622024295e0ee00e1acade93fae464b9fdc323fdf15e99c388c'
-            '07d5b8a77267218cf88814459e14ca5225e68f998e4a86e93a99f8f947b9b298'
+            '35ff3fb6a572a38c424b1ab3e9748ad090e3c6064faddbe06c3a65646889f609'
             '07e937f3fa0d4eefd7aee5c2ea5502b8b8060ecb06fda5f830ce74af65c33493'
             '19117d6407ba5cea93cff40c460c1e64a9c2ae68d80ca15d7f3a7586708d5302'
             'd2988ea005afb4f8a84baf20a59b616e6350fef140572794afe82cb44776ca1f'
