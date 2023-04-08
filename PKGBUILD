@@ -29,14 +29,14 @@ build() {
 package() {
     make -C "$srcdir/$_pkgname-$pkgver/build" install DESTDIR="$pkgdir/"
     
-	mkdir -p "$pkgdir/usr/bin"
-	find "$pkgdir/opt/miktex/bin/" -type f -exec chmod 755 {} \;
-	find "$pkgdir/opt/miktex/bin/" -type f -exec basename {} \; | xargs -i ln -s /opt/miktex/bin/{} "$pkgdir/usr/bin/"
+    mkdir -p "$pkgdir/usr/bin"
+    find "$pkgdir/opt/miktex/bin/" -type f -exec chmod 755 {} \;
+    find "$pkgdir/opt/miktex/bin/" -type f -exec basename {} \; | xargs -i ln -s /opt/miktex/bin/{} "$pkgdir/usr/bin/"
     install -Dm644 "$pkgdir/opt/miktex/share/applications/miktex-console.desktop" "$pkgdir/usr/share/applications/miktex-console.desktop"
     cp -R "$pkgdir/opt/miktex/share/applications/icons" "$pkgdir/usr/share/"
-	find "$pkgdir/usr/share/icons" -type d -exec chmod 755 {} \;
-	find "$pkgdir/usr/share/icons" -type f -exec chmod 644 {} \;
+    find "$pkgdir/usr/share/icons" -type d -exec chmod 755 {} \;
+    find "$pkgdir/usr/share/icons" -type f -exec chmod 644 {} \;
     mv "$pkgdir/opt/miktex/man" "$pkgdir/usr/share/man"
-	find "$pkgdir/usr/share/man" -type d -exec chmod 755 {} \;
-	find "$pkgdir/usr/share/man" -type f -exec chmod 644 {} \;
+    find "$pkgdir/usr/share/man" -type d -exec chmod 755 {} \;
+    find "$pkgdir/usr/share/man" -type f -exec chmod 644 {} \;
 }
