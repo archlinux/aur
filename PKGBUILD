@@ -4,7 +4,7 @@
 _name=ethtool
 pkgname=python-ethtool
 pkgver=0.15
-pkgrel=3
+pkgrel=4
 pkgdesc='Python bindings for the ethtool kernel interface.'
 arch=('x86_64')
 url="https://github.com/fedora-python/python-ethtool"
@@ -26,7 +26,7 @@ build() {
 check() {
   cd "${_name}-${pkgver}"
   local _py3_ver=$(python --version | cut -d " " -f2)
-  export PYTHONPATH="build/lib.linux-$CARCH-${_py3_ver%"."*}:${PYTHONPATH}"
+  export PYTHONPATH="build/lib.linux-$CARCH-cpython-$(echo ${_py3_ver%"."*} | sed 's/\.//'):${PYTHONPATH}"
   pytest -v
 }
 
