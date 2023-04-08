@@ -2,7 +2,7 @@
 
 pkgname=python-urlobject
 pkgver=2.4.3
-pkgrel=7
+pkgrel=8
 pkgdesc="A utility class for manipulating URLs"
 url="https://github.com/zacharyvoase/urlobject"
 license=('custom:Unlicense')
