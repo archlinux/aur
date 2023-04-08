@@ -14,22 +14,16 @@ options=('staticlibs' '!lto' '!strip')
 
 source=("git+https://github.com/wine-staging/wine-staging.git#tag=v${_winever}"
         "git+https://github.com/wine-mirror/wine.git#tag=wine-${_winever}"
-        "0002-LoL-6.17+-syscall-fix.patch"
-        "0003-LoL-abi.vsyscall32-alternative_patch_by_using_a_fake_cs_segment.patch"
         "0004-LoL-broken-client-update-fix.patch"
         "0005-LoL-client-slow-start-fix.patch"
-        "0006-LoL-abi-vsyscall32-disable-vDSO.patch"
         "0007-ntdll-stub-NtSetInformationThread-ThreadPriority.patch"
         "0008-ntdll-nopguard-call_vectored_handlers.patch"
         )
 
 sha256sums=('SKIP'
             'SKIP'
-            'c127907db75cd8575da27198c8f46aa19dd2a219324e7491761f206f3ce91601'
-            'c2cb9265567dfe8c9f148e237910792cad7666d9d3cbf68d8717076030cddc92'
             '7607a84fd357a86bc8fb59d2cf002a3e471bd8ec78ecdb844b0b77b1ae6d11a0'
             '49dfbf7546c00958e2b426a61371eedf0119471e9998b354595d5c0ce6dab48b'
-            'fe33c51d492de4685b515781ac157a5d02f8048a528404b4fd8319cfc7f5cf25'
             'fc4fba4db2f691e3686fa84dd81935f0eb183d7c5c1215aba33a575b42b38cb5'
             '2075ddc417ddd11954f76be753c88e04db28f0b3937e60508f178630dd5763eb'
             )
@@ -115,14 +109,6 @@ prepare() {
 
     cd "${srcdir}/wine"
 
-    # Reverts syscall thunks so leagues stub.dll can hook them properly(?)
-    printf 'Apply 0002-LoL-6.17+-syscall-fix\n'
-    patch -Np1 < "${srcdir}/0002-LoL-6.17+-syscall-fix.patch"
-
-    # Fakes cs segment, needs "sudo sysctl -w abi.vsyscall32=0"
-    printf 'Apply 0003-LoL-abi.vsyscall32\n'
-    patch -Np1 < "${srcdir}/0003-LoL-abi.vsyscall32-alternative_patch_by_using_a_fake_cs_segment.patch"
-
     # Something with resolving long paths and symlinks, might not be needed if you keep your install in sane place ???
     printf 'Apply 0004-LoL-broken-client-update-fix\n'
     patch -Np1 < "${srcdir}/0004-LoL-broken-client-update-fix.patch"
@@ -130,10 +116,6 @@ prepare() {
     # Hack for league to start in reasonable time
     printf 'Apply 0005-LoL-client-slow-start-fix.patch\n'
     patch -Np1 < "${srcdir}/0005-LoL-client-slow-start-fix.patch"
-
-    # Disables vDSO in preelink, no need for "sudo sysctl -w abi.vsyscall32=0"
-    printf 'Apply 0006-LoL-abi-vsyscall32-disable-vDSO.patch\n'
-    patch -Np1 < "${srcdir}/0006-LoL-abi-vsyscall32-disable-vDSO.patch"
 
     # Properly stub ThreadPriority for NtSetInformationThread
     printf 'Apply 0007-ntdll-stub-NtSetInformationThread-ThreadPriority.patch\n'
