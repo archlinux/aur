@@ -1,0 +1,15 @@
+pkgbase = mywhatsappweb-git
+	pkgdesc = Wrapper for WhatsApp web application with support for multiple session and hide in tray
+	pkgver = r19.60ad04c
+	pkgrel = 1
+	url = https://github.com/BlackCodec/mywhatsappweb
+	arch = any
+	license = GPL
+	makedepends = vala
+	makedepends = git
+	depends = webkit2gtk-4.1
+	depends = libnotify
+	source = git+https://github.com/BlackCodec/mywhatsappweb.git
+	md5sums = SKIP
+
+pkgname = mywhatsappweb-git
