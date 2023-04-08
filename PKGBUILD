@@ -2,7 +2,7 @@
 
 pkgname=python-domdf-python-tools
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Helpful functions for Python'
 arch=('any')
 url='https://domdf_python_tools.readthedocs.io/'
