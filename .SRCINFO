@@ -1,7 +1,7 @@
 pkgbase = wolframengine
 	pkgdesc = Free Wolfram Engine(TM) for Developers
 	pkgver = 13.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.wolfram.com/engine/
 	arch = x86_64
 	license = proprietary
@@ -43,6 +43,8 @@ pkgbase = wolframengine
 	optdepends = tiled
 	optdepends = tre
 	provides = wolframscript
+	provides = wolframplayer
+	provides = wolfram
 	noextract = WolframEngine_13.2.0_LINUX.sh
 	options = !strip
 	source = WolframEngine_13.2.0_LINUX.sh::https://account.wolfram.com/download/public/wolfram-engine/desktop/LINUX

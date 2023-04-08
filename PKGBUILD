@@ -2,12 +2,12 @@
 # Based on https://aur.archlinux.org/packages/mathematica/
 pkgname=wolframengine
 pkgver=13.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Free Wolfram Engine(TM) for Developers"
 arch=('x86_64')
 url="https://www.wolfram.com/engine/"
 license=('proprietary')
-provides=("wolframscript")
+provides=("wolframscript" "wolframplayer" "wolfram")
 source=(
   "WolframEngine_${pkgver}_LINUX.sh::https://account.wolfram.com/download/public/wolfram-engine/desktop/LINUX"
 )
