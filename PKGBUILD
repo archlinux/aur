@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Nico <d3sox at protonmail dot com>
 pkgname=sysmontask
 pkgver=1.3.9+16+g7c96959
