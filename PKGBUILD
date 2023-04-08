@@ -3,7 +3,7 @@
 _name=pytzdata
 pkgname=python-pytzdata
 pkgver=2020.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Official timezone database for Python."
 arch=(any)
 url="https://github.com/sdispater/pytzdata"
