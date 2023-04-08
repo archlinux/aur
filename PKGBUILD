@@ -2,10 +2,10 @@
 # Maintainer: Fredrick R. Brennan <copypaste@kittens.ph>
 # Contributor: Brian BIdulock <bidulock@openss7.org>
 pkgbase=sensible-utils
-pkgname=(sensible-pager sensible-editor sensible-browser)
+pkgname=(sensible-pager sensible-editor sensible-browser sensible-utils-data)
 pkgver=0.0.17
 _debianextra=+nmu1
-pkgrel=2
+pkgrel=3
 pkgdesc="Utilities for sensible alternative selection"
 arch=('any')
 url="http://packages.debian.org/source/sid/sensible-utils"
@@ -36,7 +36,7 @@ _package_sensible() {
   shopt -s globstar
   cd $pkgdir
   [[ $CURRENTLY_PACKAGING = sensible-utils ]] && return 0
-  find . -type f -and \( -not -iname "*$CURRENTLY_PACKAGING*" -and -not -name gettext \) | xargs rm -v
+  find . -type f -and \( -not -iname "*$CURRENTLY_PACKAGING*" \) | xargs rm -v
 }
 
 package_sensible-pager() {
@@ -53,6 +53,10 @@ package_sensible-editor() {
 
 package_sensible-utils() {
   CURRENTLY_PACKAGING=sensible-utils _package_sensible
+}
+
+package_sensible-utils-data() {
+  CURRENTLY_PACKAGING=gettext _package_sensible
 }
 
 # vim:set ts=2 sw=2 et:

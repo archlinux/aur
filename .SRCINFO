@@ -1,7 +1,7 @@
 pkgbase = sensible-utils
 	pkgdesc = Utilities for sensible alternative selection
 	pkgver = 0.0.17
-	pkgrel = 2
+	pkgrel = 3
 	url = http://packages.debian.org/source/sid/sensible-utils
 	arch = any
 	license = GPL
@@ -16,3 +16,5 @@ pkgname = sensible-pager
 pkgname = sensible-editor
 
 pkgname = sensible-browser
+
+pkgname = sensible-utils-data
