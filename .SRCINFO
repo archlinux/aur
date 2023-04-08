@@ -1,16 +1,16 @@
 pkgbase = docfx-git
-	pkgdesc = Tools for building and publishing API documentation for .NET projects. Build from v3 branch atm
-	pkgver = r3163.fe6402350b
+	pkgdesc = Tools for building and publishing API documentation for .NET projects
+	pkgver = r4367.0f4a61eb87
 	pkgrel = 1
 	url = https://github.com/dotnet/docfx
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = dotnet-sdk
+	makedepends = dotnet-sdk>=7.0.4
 	provides = docfx
 	conflicts = docfx
 	options = !strip
-	source = git+https://github.com/dotnet/docfx.git#branch=v3
+	source = git+https://github.com/dotnet/docfx.git#branch=main
 	md5sums = SKIP
 
 pkgname = docfx-git
