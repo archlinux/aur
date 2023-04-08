@@ -2,13 +2,12 @@ pkgbase = mkclean
 	pkgdesc = Clean up and optimize MKV files
 	pkgver = 0.9.0
 	pkgrel = 1
-	url = http://www.matroska.org/downloads/mkclean.html
+	url = https://www.matroska.org/downloads/mkclean.html
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
 	depends = glibc
-	source = http://sourceforge.net/projects/matroska/files/mkclean/mkclean-0.9.0.tar.bz2
+	source = https://sourceforge.net/projects/matroska/files/mkclean/mkclean-0.9.0.tar.bz2
 	sha256sums = 2f5cdcab0e09b65f9fef8949a55ef00ee3dd700e4b4050e245d442347d7cc3db
 
 pkgname = mkclean
-
