@@ -3,7 +3,7 @@
 
 pkgname=python-influxdb
 pkgver=5.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Python client for InfluxDB"
 arch=('any')
 url="https://github.com/influxdata/influxdb-python/"
