@@ -1,6 +1,6 @@
 pkgbase = tallyard-git
 	pkgdesc = an authenticated voting system that ensures voter privacy while preventing double-voting
-	pkgver = 0.6.1.r0.g03a3e09
+	pkgver = 0.6.2.r0.g4adb761
 	pkgrel = 1
 	url = https://tallyard.xyz
 	arch = x86_64
