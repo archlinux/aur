@@ -8,7 +8,9 @@ pkgbase = optimfrog-bin
 	provides = optimfrog
 	conflicts = optimfrog
 	source = http://www.losslessaudio.org/Downloads/A1C0/5100/Linux/OptimFROG_Linux_x64_5100.zip
+	source = http://www.losslessaudio.org/Downloads/A1C0/5100/Linux/OptimFROG_Linux_x64_5100.zip.sig
+	validpgpkeys = 3BF4DC210E6970D0A0D65A4D1486CC88105CE256
 	sha1sums = e3dd9fd56ee11c544b1faadee24ae6adef661b6a
+	sha1sums = SKIP
 
 pkgname = optimfrog-bin
-

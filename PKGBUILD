@@ -10,8 +10,11 @@ license=('custom:OptimFROG')
 arch=('x86_64')
 provides=('optimfrog')
 conflicts=('optimfrog')
-source=("http://www.losslessaudio.org/Downloads/A1C0/${pkgver//./}/Linux/OptimFROG_Linux_x64_${pkgver//./}.zip")
-sha1sums=("$(curl -s http://www.losslessaudio.org/Downloads/A1C0/${pkgver//./}/Linux/OptimFROG_Linux_x64_${pkgver//./}.zip.sha1 | cut -d ' ' -f1)")
+source=("http://www.losslessaudio.org/Downloads/A1C0/${pkgver//./}/Linux/OptimFROG_Linux_x64_${pkgver//./}".zip{,.sig})
+sha1sums=("$(curl -s http://www.losslessaudio.org/Downloads/A1C0/${pkgver//./}/Linux/OptimFROG_Linux_x64_${pkgver//./}.zip.sha1 | cut -d ' ' -f1)"
+          'SKIP'
+          )
+validpgpkeys=('3BF4DC210E6970D0A0D65A4D1486CC88105CE256')
 
 package() {
   cd "OptimFROG_Linux_x64_${pkgver//./}"
