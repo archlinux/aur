@@ -3,7 +3,7 @@
 pkgname=ruff-lsp
 _name=${pkgname/-/_}
 pkgver=0.0.24
-pkgrel=1
+pkgrel=2
 pkgdesc='Language Server Protocol implementation for Ruff'
 arch=('any')
 url=https://github.com/charliermarsh/ruff-lsp
