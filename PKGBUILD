@@ -94,9 +94,6 @@ optdepends=(
 )
 
 prepare() {
-    rm -rf build-32
-    mkdir -p build-32
-    
     # restore the wine tree to its git origin state, without wine-staging patches
     printf '%s\n' '  -> Cleaning wine source code tree...'
     git -C wine reset --hard HEAD  # restore tracked files
@@ -137,11 +134,26 @@ prepare() {
 
 build() {
     # does not compile without remove these flags as of 4.10
-    export CFLAGS="${CFLAGS/-fno-plt/} -m32"
+    export CFLAGS="${CFLAGS/-fno-plt/}"
     export LDFLAGS="${LDFLAGS/,-z,now/}"
 
-    # build wine-staging 32-bit
-    printf '%s\n' '  -> Building wine-staging-32...'
+    printf '%s\n' '  -> Building wine-lol-staging-64...'
+    mkdir -p "${srcdir}/build-64"
+    cd "${srcdir}/build-64"
+    ../wine/configure \
+        --prefix='/opt/wine-lol-staging' \
+        --libdir='/opt/wine-lol-staging/lib' \
+        --with-x \
+        --with-gstreamer \
+        --with-xattr \
+        --with-mingw \
+        --enable-win64 \
+        --disable-tests \
+        --disable-winemenubuilder
+    make -j`nproc`
+
+    printf '%s\n' '  -> Building wine-lol-staging-32...'
+    mkdir -p "${srcdir}/build-32"
     cd "${srcdir}/build-32"
     export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
     ../wine/configure \
@@ -151,21 +163,29 @@ build() {
         --with-gstreamer \
         --with-xattr \
         --with-mingw \
+        --with-wine64="${srcdir}/build-64" \
         --disable-tests \
-        --disable-winemenubuilder \
-        --disable-win16
+        --disable-winemenubuilder
     make -j`nproc`
 }
 
 package() {
-    # package wine-staging 32-bit
     printf '%s\n' '  -> Packaging wine-staging-32...'
-    cd build-32
+    cd "${srcdir}/build-32"
     make prefix="${pkgdir}/opt/wine-lol-staging" \
          libdir="${pkgdir}/opt/wine-lol-staging/lib32" \
          dlldir="${pkgdir}/opt/wine-lol-staging/lib32/wine" \
          install
 
+    printf '%s\n' '  -> Packaging wine-staging-64...'
+    cd "${srcdir}/build-64"
+    make prefix="${pkgdir}/opt/wine-lol-staging" \
+         libdir="${pkgdir}/opt/wine-lol-staging/lib" \
+         dlldir="${pkgdir}/opt/wine-lol-staging/lib/wine" \
+         install
+
     find "$pkgdir"/opt/wine-lol-staging/lib32/wine -iname "*.a" -delete
     find "$pkgdir"/opt/wine-lol-staging/lib32/wine -iname "*.def" -delete
+    find "$pkgdir"/opt/wine-lol-staging/lib/wine -iname "*.a" -delete
+    find "$pkgdir"/opt/wine-lol-staging/lib/wine -iname "*.def" -delete
 }
