@@ -1,82 +1,65 @@
 pkgname=webcord
-pkgver=4.1.1
-pkgrel=4
+pkgver=4.2.0
+pkgrel=1
 pkgdesc="A Discord and Fosscord client made with the Electron API."
 arch=('any')
 _repo='WebCord'
 url="https://github.com/SpacingBat3/${_repo}"
 license=('MIT')
+_electron='electron24'
+depends=("${_electron}")
 makedepends=('npm')
 options=('!strip' '!emptydirs')
 
-_evers=()
-optdepends=()
-
-for ((i = 22; i >= 17; i--)); do
-    _evers+=("${i}")
-    optdepends+=("electron${i}: runtime")
-done
-
-_srcname="${_repo}-${pkgver}"
-
+_snapshot="${_repo}-${pkgver}"
 source=(
-    "${_srcname}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+    "${_snapshot}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
     "buildInfo.json"
     "webcord.desktop"
 )
 
 sha256sums=(
-    '3f22e5db824b73780f33b1eba8e9bf7cd3998cf65cf9304d3fc0c624319192f9'
+    'f49eb0627ef1cf2ce41cdf22fef81b09614c0080619be6a77016e14a426bc951'
     'c803c7227982fad22390a8d6d11f3707171d5e9b1a394731a6a07773eab75b1f'
     '43ccf5216bb029deb2af2792218b35793f930200117f5bf8201a2406f66af583'
 )
 
 prepare() {
-    npm i -E --ignore-scripts --prefix=. --include=optional "esbuild@0.17"
+    npm i -E --ignore-scripts --include=optional --prefix=. "esbuild@0.17.15"
 
-    cd "${_srcname}"
+    cd "${_snapshot}"
     npm ci --omit=dev --ignore-scripts --prefix=.
     rm -r "sources/code/build"
     rm "sources/assets/icons/app.ic"*
 }
 
 build() {
-    cd "${_srcname}"
+    cd "${_snapshot}"
     shopt -s globstar
-    npx esbuild "sources/code/"**/*".ts" --outbase="sources" --outdir="app" --platform=node --format=cjs --supported:dynamic-import=false
+    npx esbuild "sources/code/"**/*".ts" \
+        --outbase="sources" --outdir="app" --minify \
+        --platform=node --target=es2022 --format=cjs --supported:dynamic-import=false
 }
 
 package() {
-    local lib="/usr/lib/${pkgname}"
     local bin="/usr/bin"
-    local exec="${pkgdir}${bin}/webcord"
-    local sources="${lib}/sources"
+    local lib="/usr/lib/${pkgname}"
     local icons="/usr/share/icons/hicolor/512x512/apps"
 
-    install -dm755 "${pkgdir}"{"${bin}","${sources}","${icons}"}
+    install -dm755 "${pkgdir}"{"${bin}","${lib}","${icons}"}
     install -Dm644 -t "${pkgdir}${lib}" "${source[1]}"
     install -Dm644 -t "${pkgdir}/usr/share/applications" "${source[2]}"
 
-    cd "${_srcname}"
-    cp -rdt "${pkgdir}${lib}" "package.json" "app" "node_modules"
-    cp -rdt "${pkgdir}${sources}" "sources/"{"assets","translations"}
+    cd "${_snapshot}"
+    cp --parents -rt "${pkgdir}${lib}" "package.json" "app" "sources/"{"assets","translations"} "node_modules"
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "LICENSE"
 
     ln -sT "../sources/translations" "${pkgdir}${lib}/app/translations"
-    ln -sT "${sources}/assets/icons/app.png" "${pkgdir}${icons}/${pkgname}.png"
+    ln -sT "${lib}/sources/assets/icons/app.png" "${pkgdir}${icons}/${pkgname}.png"
 
+    local exec="${pkgdir}${bin}/${pkgname}"
     echo "#!/bin/sh
-
-for i in ${_evers[*]}; do
-    cmd=\"electron\${i}\"
-    if command -v \"\${cmd}\" > /dev/null; then
-        echo \"Found Electron \${i}.\"
-        exec \"\${cmd}\" '${lib}' \"\$@\"
-    fi
-done
-
-echo 'No compatible Electron version found!'
-exit 1" > "${exec}"
-
+exec '${_electron}' '${lib}' \"\$@\"
+" > "${exec}"
     chmod +x "${exec}"
 }
