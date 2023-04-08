@@ -2,7 +2,7 @@
 pkgbase=xcursor-simp1e
 pkgname=(xcursor-simp1e{-breeze{,-snow},{,-adw}{,-dark},-catpuccin-{frappe,latte,macchiato,mocha},-{solarized,gruvbox,nord}-{dark,light},-tokyo-night{,-light,-storm}})
 pkgdesc='An aesthetic cursor theme'
-pkgver=20221103.2
+pkgver=20230407
 pkgrel=1
 url=https://gitlab.com/cursors/simp1e
 arch=(any)
