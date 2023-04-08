@@ -1,7 +1,7 @@
 pkgbase = sysbox-ce
 	pkgdesc = Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)
-	pkgver = 0.5.2
-	pkgrel = 2
+	pkgver = 0.6.1
+	pkgrel = 1
 	url = https://github.com/nestybox/sysbox
 	install = install.sh
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = sysbox-ce
 	depends = rsync
 	depends = fuse2
 	optdepends = shiftfs: For uid-mapping on very old kernels without idmapped-mounts
-	source = https://downloads.nestybox.com/sysbox/releases/v0.5.2/sysbox-ce_0.5.2-0.linux_amd64.deb
-	source = git+https://github.com/nestybox/sysbox.git#tag=v0.5.2
+	source = https://downloads.nestybox.com/sysbox/releases/v0.6.1/sysbox-ce_0.6.1-0.linux_amd64.deb
+	source = git+https://github.com/nestybox/sysbox.git#tag=v0.6.1
 	source = git+https://github.com/nestybox/dockerfiles.git#commit=f870cf0cb7a56f800ca5570e490c4db0f2851b1b
 	source = git+https://github.com/nestybox/sysbox-fs.git#commit=95a773a6ea3920f7ab454f1583465c7aea4c701f
 	source = git+https://github.com/nestybox/fuse.git#commit=a499c0dfef7f4306b1d596f0cb11289f3b609c4b
@@ -26,7 +26,7 @@ pkgbase = sysbox-ce
 	source = git+https://github.com/nestybox/libseccomp-golang.git#commit=34080bdd6320612d64400edce4e51188c0d64d72
 	source = git+https://github.com/nestybox/sysbox-mgr.git#commit=ea1b7db91031355cb10b850125e0d6502dc38962
 	source = git+https://github.com/nestybox/sysbox-runc.git#commit=d91c42c2125fd7aaf46f66307eb5c2a025f30289
-	sha256sums = f13fc0e156f72c6f8bd48e206c59482f83f19acc229701c74e0f23baafa724d8
+	sha256sums = d57dc297c60902d4f7316e4f641af00a2a9424e24dde88bb2bb7d3bc419b0f04
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

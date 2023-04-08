@@ -1,7 +1,7 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=sysbox-ce
-pkgver=0.5.2
-pkgrel=2
+pkgver=0.6.1
+pkgrel=1
 pkgdesc="Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)"
 url="https://github.com/nestybox/sysbox"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("https://downloads.nestybox.com/sysbox/releases/v${pkgver}/sysbox-ce_${p
         "git+https://github.com/nestybox/libseccomp-golang.git#commit=34080bdd6320612d64400edce4e51188c0d64d72"
         "git+https://github.com/nestybox/sysbox-mgr.git#commit=ea1b7db91031355cb10b850125e0d6502dc38962"
         "git+https://github.com/nestybox/sysbox-runc.git#commit=d91c42c2125fd7aaf46f66307eb5c2a025f30289")
-sha256sums=('f13fc0e156f72c6f8bd48e206c59482f83f19acc229701c74e0f23baafa724d8'
+sha256sums=('d57dc297c60902d4f7316e4f641af00a2a9424e24dde88bb2bb7d3bc419b0f04'
             'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 install=install.sh
 depends=('rsync' 'fuse2')
@@ -72,7 +72,6 @@ package() {
 	make -C sysbox DESTDIR="${pkgdir}/usr/bin" install
 
 	cd "data"
-	(cd usr/lib/modules-load.d && find . -type f -exec install -Dm644 "{}" "${pkgdir}/usr/lib/modules-load.d/{}" \; )
 	(cd lib/sysctl.d && find . -type f -exec install -Dm644 "{}" "${pkgdir}/usr/lib/sysctl.d/{}" \; )
 	(cd lib/systemd && find . -type f -exec install -Dm644 "{}" "${pkgdir}/usr/lib/systemd/{}" \; )
 	(cd usr/share/doc && find . -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/doc/{}" \; )
