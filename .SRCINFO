@@ -1,0 +1,18 @@
+pkgbase = python-pypardiso
+	pkgdesc = Python interface to the Intel MKL Pardiso library to solve large sparse linear systems of equations
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/haasad/PyPardisoProject
+	arch = x86_64
+	license = custom:BSD-3-clause
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = intel-oneapi-mkl
+	depends = python-scipy
+	source = pypardiso-0.4.2.tar.gz::https://github.com/haasad/PyPardisoProject/archive/v0.4.2.tar.gz
+	sha512sums = defc59769f40447099260f4f9ef9b6707f3c09708275f74fedc44226faa259a7d41b39aaefd36c203a6eb2623167f7fde6404d7d96d551ac9001e3b6c69dd1ef
+
+pkgname = python-pypardiso
