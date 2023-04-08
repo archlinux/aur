@@ -5,14 +5,15 @@
 pkgname=cosmic-applets-git
 pkgver=r450.903a558
 pkgrel=1
-pkgdesc="desktop environment in Rust, Iced. GNOME inspired, by System76, Pop! OS."
+pkgdesc="applets for the COSMIC DE panel."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-applets"
 license=('GPL3')
-depends=('fontconfig' 'gtk4' 'libinput' 'libglvnd' 'libpipewire' 'libpulse'
-         'libxkbcommon' 'pop-icon-theme' 'pop-launcher' 'systemd-libs' 'wayland')
-makedepends=('cargo' 'clang' 'desktop-file-utils' 'git' 'just' 'meson' 'mold')
-checkdepends=('appstream-glib')
+depends=(
+  'gtk4' 'libinput' 'libglvnd' 'libpipewire' 'libpulse'
+  'libxkbcommon' 'pop-icon-theme' 'pop-launcher' 'systemd-libs' 'wayland'
+)
+makedepends=('cargo' 'clang' 'git' 'just' 'meson' 'mold')
 provides=('cosmic-applets')
 conflicts=('cosmic-applets')
 options=('!lto')
@@ -48,4 +49,9 @@ build() {
 
 package() {
   cd "$srcdir/cosmic-applets"
+  mkdir -p $pkgdir/usr/share/applications
+  cp cosmic-*/data/*.desktop $pkgdir/usr/share/applications/
+  mkdir -p $pkgdir/usr/bin
+  rm target/release/cosmic-*\.d
+  cp target/release/cosmic-* $pkgdir/usr/bin/
 }
